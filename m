@@ -2,46 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94C2515FC5
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 May 2019 10:51:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98D6E1601F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 May 2019 11:06:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4759389E33;
-	Tue,  7 May 2019 08:51:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3B03789E98;
+	Tue,  7 May 2019 09:06:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3D45089E33
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 May 2019 08:51:42 +0000 (UTC)
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7E04966993;
- Tue,  7 May 2019 08:51:41 +0000 (UTC)
-Received: from gondolin (dhcp-192-187.str.redhat.com [10.33.192.187])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DB47C171C5;
- Tue,  7 May 2019 08:51:28 +0000 (UTC)
-Date: Tue, 7 May 2019 10:51:26 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH 1/2] vfio/mdev: add version field as mandatory attribute
- for mdev device
-Message-ID: <20190507105126.4be3a6da.cohuck@redhat.com>
-In-Reply-To: <20190507053913.GA14284@joy-OptiPlex-7040>
-References: <20190419083258.19580-1-yan.y.zhao@intel.com>
- <20190419083505.19654-1-yan.y.zhao@intel.com>
- <20190423115932.42619422.cohuck@redhat.com>
- <20190424031036.GB26247@joy-OptiPlex-7040>
- <20190424095624.0ce97328.cohuck@redhat.com>
- <20190424081558.GE26247@joy-OptiPlex-7040>
- <20190430172908.2ae77fa9.cohuck@redhat.com>
- <20190507053913.GA14284@joy-OptiPlex-7040>
-Organization: Red Hat GmbH
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B041B89E98;
+ Tue,  7 May 2019 09:06:30 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 May 2019 02:06:30 -0700
+X-ExtLoop1: 1
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga006.fm.intel.com with ESMTP; 07 May 2019 02:06:28 -0700
+Date: Tue, 7 May 2019 17:05:58 +0800
+From: Zhenyu Wang <zhenyu.z.wang@intel.com>
+To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ Jani Nikula <jani.nikula@intel.com>
+Subject: [PULL] gvt-next-fixes
+Message-ID: <20190507090558.GE12913@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.38]); Tue, 07 May 2019 08:51:41 +0000 (UTC)
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -54,57 +41,110 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "cjia@nvidia.com" <cjia@nvidia.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "aik@ozlabs.ru" <aik@ozlabs.ru>,
- "Zhengxiao.zx@alibaba-inc.com" <Zhengxiao.zx@alibaba-inc.com>,
- "shuangtai.tst@alibaba-inc.com" <shuangtai.tst@alibaba-inc.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "eauger@redhat.com" <eauger@redhat.com>, "Liu, Yi
- L" <yi.l.liu@intel.com>, "eskultet@redhat.com" <eskultet@redhat.com>, "Yang,
- Ziye" <ziye.yang@intel.com>, "mlevitsk@redhat.com" <mlevitsk@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "libvir-list@redhat.com" <libvir-list@redhat.com>,
- "arei.gonglei@huawei.com" <arei.gonglei@huawei.com>,
- "felipe@nutanix.com" <felipe@nutanix.com>, "Ken.Xue@amd.com" <Ken.Xue@amd.com>,
- "Tian, Kevin" <kevin.tian@intel.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Liu, Changpeng" <changpeng.liu@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>,
- "jonathan.davies@nutanix.com" <jonathan.davies@nutanix.com>, "He,
- Shaopeng" <shaopeng.he@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyu.z.wang@intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============0336596322=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gVHVlLCA3IE1heSAyMDE5IDAxOjM5OjEzIC0wNDAwCllhbiBaaGFvIDx5YW4ueS56aGFvQGlu
-dGVsLmNvbT4gd3JvdGU6Cgo+IE9uIFR1ZSwgQXByIDMwLCAyMDE5IGF0IDExOjI5OjA4UE0gKzA4
-MDAsIENvcm5lbGlhIEh1Y2sgd3JvdGU6Cgo+ID4gSWYgSSBmb2xsb3dlZCB0aGUgZGlzY3Vzc2lv
-biBjb3JyZWN0bHksIEkgdGhpbmsgeW91IHBsYW4gdG8gZHJvcCB0aGlzCj4gPiBmb3JtYXQsIGRv
-bid0IHlvdT8gSSdkIGJlIGhhcHB5IGlmIGEgdmVuZG9yIGRyaXZlciBjYW4gdXNlIGEgc2ltcGxl
-Cj4gPiBudW1iZXIgd2l0aG91dCBhbnkgcHJlZml4ZXMgaWYgaXQgc28gY2hvb3Nlcy4KPiA+IAo+
-ID4gSSBhbHNvIGxpa2UgdGhlIGlkZWEgb2YgcmVuYW1pbmcgdGhpcyAibWlncmF0aW9uX3ZlcnNp
-b24iIHNvIHRoYXQgaXQgaXMKPiA+IGNsZWFyIHdlJ3JlIGRlYWxpbmcgd2l0aCB2ZXJzaW9uaW5n
-IG9mIHRoZSBtaWdyYXRpb24gY2FwYWJpbGl0eSAoYW5kCj4gPiBub3QgYSB2ZXJzaW9uIG9mIHRo
-ZSBkZXZpY2Ugb3Igc28pLiAgCj4gaGkgQ29ybmVsaWEsCj4gc29ycnkgSSBqdXN0IHNhdyB0aGlz
-IG1haWwgYWZ0ZXIgc2VuZGluZyB2MiBvZiB0aGlzIHBhdGNoIHNldC4uLgo+IHllcywgSSBkcm9w
-cGVkIHRoZSBjb21tb24gcGFydCBhbmQgdmVuZG9yIGRyaXZlciBub3cgY2FuIGRlZmluZSB3aGF0
-ZXZlciBpdAo+IHdpc2hlcyB0byBpZGVudGlmeSBhIGRldmljZSB2ZXJzaW9uLgoKT2ssIEknbGwg
-bG9vayBhdCB2Mi4KCj4gSG93ZXZlciwgSSBkb24ndCBhZ3JlZSB0byByZW5hbWUgaXQgdG8gIm1p
-Z3JhdGlvbl92ZXJzaW9uIiwgYXMgaXQgc3RpbGwgbWF5Cj4gYnJpbmcgc29tZSBraW5kIG9mIGNv
-bmZ1c2luZyB3aXRoIHRoZSBtaWdyYXRpb24gdmVyc2lvbiBhIHZlbmRvciBkcml2ZXIgaXMKPiB1
-c2luZywgZS5nLiB2ZW5kb3IgZHJpdmVyIGNoYW5nZXMgbWlncmF0aW9uIGNvZGUgYW5kIGluY3Jl
-YXNlcyB0aGF0IG1pZ3JhdGlvbgo+IHZlcnNpb24uCj4gSW4gZmFjdCwgd2hhdCBpbmZvIHdlIHdh
-bnQgdG8gZ2V0IGZyb20gdGhpcyBhdHRyaWJ1dGUgaXMgd2hldGhlciB0aGlzIG1kZXYKPiBkZXZp
-Y2UgaXMgY29tcGF0aWJsZSB3aXRoIGFub3RoZXIgbWRldiBkZXZpY2UsIHdoaWNoIGlzIHRpZWQg
-dG8gZGV2aWNlLCBhbmQgbm90Cj4gbmVjZXNzYXJpbHkgYm91bmQgdG8gbWlncmF0aW9uLgo+IAo+
-IGRvIHlvdSB0aGluayBzbz8KCkknbSBub3QgMTAwJSBjb252aW5jZWQ7IGJ1dCB3ZSBjYW4gY29u
-dGludWUgdGhlIGRpc2N1c3Npb24gb24gdjIuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1k
-ZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
+
+--===============0336596322==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="dQ+ozEaLk2y6HH72"
+Content-Disposition: inline
+
+
+--dQ+ozEaLk2y6HH72
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+
+Hi,
+
+Here's gvt-next-fixes for 5.2-rc, which includes one revert for BXT
+regression, one missed context mmio reg after RCS renaming, sanitize
+display buffer size calculation and some klocwork warning/error fixes.
+
+Thanks
+--
+The following changes since commit 447811a686e8da7325516a78069ccfbd139ef1a7:
+
+  drm/i915/icl: Fix MG_DP_MODE() register programming (2019-04-24 09:39:11 =
++0300)
+
+are available in the Git repository at:
+
+  https://github.com/intel/gvt-linux.git tags/gvt-next-fixes-2019-05-07
+
+for you to fetch changes up to 75fdb811d93c8aa4a9f73b63db032b1e6a8668ef:
+
+  drm/i915/gvt: Add in context mmio 0x20D8 to gen9 mmio list (2019-05-05 17=
+:02:25 +0800)
+
+----------------------------------------------------------------
+gvt-next-fixes-2019-05-07
+
+- Revert MCHBAR save range change for BXT regression (Yakui)
+- Align display dmabuf size for bytes instead of error-prone pages (Xiong)
+- Fix one context MMIO save/restore after RCS0 name change (Colin)
+- Misc klocwork warning/errors fixes (Aleksei)
+
+----------------------------------------------------------------
+Aleksei Gimbitskii (4):
+      drm/i915/gvt: Remove typedef and let the enumeration starts from zero
+      drm/i915/gvt: Do not copy the uninitialized pointer from fb_info
+      drm/i915/gvt: Use snprintf() to prevent possible buffer overflow.
+      drm/i915/gvt: Check if get_next_pt_type() always returns a valid value
+
+Colin Xu (1):
+      drm/i915/gvt: Add in context mmio 0x20D8 to gen9 mmio list
+
+Xiong Zhang (1):
+      drm/i915/gvt: Change fb_info->size from pages to bytes
+
+Zhao Yakui (1):
+      drm/i915/gvt: Revert "drm/i915/gvt: Refine the snapshort range of I91=
+5 MCHBAR to optimize gvt-g boot time"
+
+ drivers/gpu/drm/i915/gvt/debugfs.c      |  4 ++--
+ drivers/gpu/drm/i915/gvt/dmabuf.c       | 19 ++++++++-----------
+ drivers/gpu/drm/i915/gvt/gtt.c          | 15 +++++++++------
+ drivers/gpu/drm/i915/gvt/gtt.h          | 16 ++++++++--------
+ drivers/gpu/drm/i915/gvt/handlers.c     |  4 ++--
+ drivers/gpu/drm/i915/gvt/mmio_context.c |  1 +
+ drivers/gpu/drm/i915/gvt/reg.h          |  3 ---
+ drivers/gpu/drm/i915/gvt/scheduler.c    |  2 +-
+ 8 files changed, 31 insertions(+), 33 deletions(-)
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--dQ+ozEaLk2y6HH72
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXNFKdgAKCRCxBBozTXgY
+J+kGAJwLh4FpHsIaOVSMSpYL+tA0IJLUfwCfZx66arNEK5DuTgOvSJeAJ0fCHzM=
+=KX+W
+-----END PGP SIGNATURE-----
+
+--dQ+ozEaLk2y6HH72--
+
+--===============0336596322==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0336596322==--
