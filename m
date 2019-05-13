@@ -2,54 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 354AD1AEFA
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 May 2019 04:43:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 598BA1AF1F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 May 2019 05:30:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E0BB2893D5;
-	Mon, 13 May 2019 02:43:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BA0F88934B;
+	Mon, 13 May 2019 03:30:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4A073893D5
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 12115892E5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 May 2019 02:43:03 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Mon, 13 May 2019 03:29:59 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 May 2019 19:43:02 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 May 2019 20:29:59 -0700
 X-ExtLoop1: 1
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by orsmga001.jf.intel.com with ESMTP; 12 May 2019 19:43:02 -0700
-Received: from fmsmsx156.amr.corp.intel.com (10.18.116.74) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Sun, 12 May 2019 19:43:02 -0700
-Received: from shsmsx102.ccr.corp.intel.com (10.239.4.154) by
- fmsmsx156.amr.corp.intel.com (10.18.116.74) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Sun, 12 May 2019 19:43:02 -0700
-Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.129]) by
- shsmsx102.ccr.corp.intel.com ([169.254.2.249]) with mapi id 14.03.0415.000;
- Mon, 13 May 2019 10:43:00 +0800
-From: "Li, Weinan Z" <weinan.z.li@intel.com>
-To: "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Subject: RE: [PATCH v3 1/4] drm/i915/gvt: use cmd to restore in-context
- mmios to hw for gen9 platform
-Thread-Topic: [PATCH v3 1/4] drm/i915/gvt: use cmd to restore in-context
- mmios to hw for gen9 platform
-Thread-Index: AQHVBUSCVD+KiH7MKEeXUWmB7kBSq6ZoYG6A
-Date: Mon, 13 May 2019 02:42:59 +0000
-Message-ID: <9BD218709B5F2A4F96F08B4A3B98A89773404406@SHSMSX101.ccr.corp.intel.com>
-References: <20190508021404.17218-1-yan.y.zhao@intel.com>
-In-Reply-To: <20190508021404.17218-1-yan.y.zhao@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjA4NGUwMTAtMjc3ZS00NTRmLWFiNGItN2M1ZGZjZGUxNWMzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjIuNS4xOCIsIlRydXN0ZWRMYWJlbEhhc2giOiJGdzkxaUZIMDRzQkF3Y3M5SUZ4WHlvblhOdzE0TUx0UXhzUGVqVm9UcjBWR1d5ZFl4WXRIZlwvVEVWM2tLN0VFdCJ9
-x-ctpclassification: CTP_NT
-x-originating-ip: [10.239.127.40]
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by orsmga002.jf.intel.com with ESMTP; 12 May 2019 20:29:56 -0700
+Date: Mon, 13 May 2019 11:29:14 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Tina Zhang <tina.zhang@intel.com>
+Subject: Re: [RFC PATCH v2 2/3] drm/i915/gvt: Introduce enable_direct_flip
+ attribute
+Message-ID: <20190513032914.GZ12913@zhen-hp.sh.intel.com>
+References: <1557461728-2831-1-git-send-email-tina.zhang@intel.com>
+ <1557461728-2831-3-git-send-email-tina.zhang@intel.com>
 MIME-Version: 1.0
+In-Reply-To: <1557461728-2831-3-git-send-email-tina.zhang@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,92 +45,135 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: kevin.tian@intel.com, zhenyuw@linux.intel.com, hang.yuan@intel.com,
+ ville.syrjala@linux.intel.com, kraxel@redhat.com, daniel@ffwll.ch,
+ kalyan.kondapally@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com, zhiyuan.lv@intel.com
+Content-Type: multipart/mixed; boundary="===============0758025652=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-QWNrZWQtYnk6IFdlaW5hbiBMaSA8d2VpbmFuLnoubGlAaW50ZWwuY29tPgoKPiAtLS0tLU9yaWdp
-bmFsIE1lc3NhZ2UtLS0tLQo+IEZyb206IFpoYW8sIFlhbiBZCj4gU2VudDogV2VkbmVzZGF5LCBN
-YXkgOCwgMjAxOSAxMDoxNCBBTQo+IFRvOiBpbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZwo+IENjOiBaaGFvLCBZYW4gWSA8eWFuLnkuemhhb0BpbnRlbC5jb20+OyBMaSwgV2VpbmFu
-IFogPHdlaW5hbi56LmxpQGludGVsLmNvbT4KPiBTdWJqZWN0OiBbUEFUQ0ggdjMgMS80XSBkcm0v
-aTkxNS9ndnQ6IHVzZSBjbWQgdG8gcmVzdG9yZSBpbi1jb250ZXh0IG1taW9zCj4gdG8gaHcgZm9y
-IGdlbjkgcGxhdGZvcm0KPiAKPiBmb3IgcmVzdG9yZS1pbmhpYml0IGNvbnRleHQsIGhhcmR3YXJl
-IHdpbGwgbm90IGxvYWQgaW4tY29udGV4dCBtbWlvcyAoZW5naW5lCj4gY29udGV4dCBwYXJ0KSB0
-byBoYXJkd2FyZSwgYnV0IGhhcmR3YXJlIHdpbGwgc2F2ZSB0aGUgbW1pbyB2YWx1ZXMgaW4KPiBo
-YXJkd2FyZSBiYWNrIHRvIGNvbnRleHQgaW1hZ2UuIFNvLCBpbiBvcmRlciB0byBzYXZlIGNvcnJl
-Y3QgdmFsdWVzIG9mIHZHUFUKPiBiYWNrIHRvIGNvbnRleHQgaW1hZ2UsIHZhbHVlcyBvZiB2R1BV
-IG1taW9zIGhhdmUgdG8gYmUgbG9hZGVkIGludG8KPiBoYXJkd2FyZSBmaXJzdCBmb3IgcmVzdG9y
-ZS1pbmhpYml0IGNvbnRleHQuCj4gCj4gSW4gdGhpcyBwYXRjaCwgdGhlIG1lY2hhbmlzbSBpcyBh
-cHBsaWVkIHRvIGFsbCBnZW45IHBsYXRmb3JtLgo+IAo+IFRoZSByZWFzb24gZXhjbHVkaW5nIGdl
-bjggcGxhdGZvcm1zIGlzIG9ubHkgYmVjYXVzZSBvZiBsYWNraW5nIG9mIHRlc3Rpbmcgb24KPiB0
-aG9zZSBwbGF0Zm9ybXMuCj4gCj4gdjM6IGZvciBtb2NzIHJlZ2lzdGVycywgZ290byBpbi1jb250
-ZXh0IG1taW9zIHNhdmUtcmVzdG9yZSBwYXRoIGZvciBza2wKPiBwbGF0Zm9ybSBhcyB3ZWxsICh3
-ZWluYW4gbGkpCj4gdjI6IHVwZGF0ZSB2cmVnIHdoZW4gc2Nhbm5pbmcgaW5kaXJlY3QgY29udGV4
-dCBmb3IgaW5oaWJpdCBjb250ZXh0IGZvcgo+IGdlbjkKPiAKPiBDYzogV2VpbmFuIExpIDx3ZWlu
-YW4uei5saUBpbnRlbC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogWWFuIFpoYW8gPHlhbi55LnpoYW9A
-aW50ZWwuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvY21kX3BhcnNlci5j
-ICAgfCAxNCArKysrKysrKystLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbW1pb19j
-b250ZXh0LmMgfCAxMCArKystLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hl
-ZHVsZXIuYyAgICB8ICA0ICstLS0KPiAgMyBmaWxlcyBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCsp
-LCAxNSBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUv
-Z3Z0L2NtZF9wYXJzZXIuYwo+IGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2NtZF9wYXJzZXIu
-Ywo+IGluZGV4IGFiMDAyY2ZkM2NhYi4uNWNiNTljMGI0YmJlIDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9pOTE1L2d2dC9jbWRfcGFyc2VyLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
-aTkxNS9ndnQvY21kX3BhcnNlci5jCj4gQEAgLTg5NiwxMiArODk2LDE2IEBAIHN0YXRpYyBpbnQg
-Y21kX3JlZ19oYW5kbGVyKHN0cnVjdAo+IHBhcnNlcl9leGVjX3N0YXRlICpzLAo+ICAJfQo+IAo+
-ICAJLyogVE9ETwo+IC0JICogUmlnaHQgbm93IG9ubHkgc2NhbiBMUkkgY29tbWFuZCBvbiBLQkwg
-YW5kIGluIGluaGliaXQgY29udGV4dC4KPiAtCSAqIEl0J3MgZ29vZCBlbm91Z2ggdG8gc3VwcG9y
-dCBpbml0aWFsaXppbmcgbW1pbyBieSBscmkgY29tbWFuZCBpbgo+IC0JICogdmdwdSBpbmhpYml0
-IGNvbnRleHQgb24gS0JMLgo+ICsJICogSW4gb3JkZXIgdG8gbGV0IHdvcmtsb2FkIHdpdGggaW5o
-aWJpdCBjb250ZXh0IHRvIGdlbmVyYXRlCj4gKwkgKiBjb3JyZWN0IGltYWdlIGRhdGEgaW50byBt
-ZW1vcnksIHZyZWdzIHZhbHVlcyB3aWxsIGJlIGxvYWRlZCB0bwo+ICsJICogaHcgdmlhIExSSXMg
-aW4gdGhlIHdvcmtsb2FkIHdpdGggaW5oaWJpdCBjb250ZXh0LiBCdXQgYXMKPiArCSAqIGluZGly
-ZWN0IGNvbnRleHQgaXMgbG9hZGVkIHByaW9yIHRvIExSSXMgaW4gd29ya2xvYWQsIHdlIGRvbid0
-Cj4gKwkgKiB3YW50IHJlZyB2YWx1ZXMgc3BlY2lmaWVkIGluIGluZGlyZWN0IGNvbnRleHQgb3Zl
-cndyaXR0ZW4gYnkKPiArCSAqIExSSXMgaW4gd29ya2xvYWRzLiBTbywgd2hlbiBzY2FubmluZyBh
-biBpbmRpcmVjdCBjb250ZXh0LCB3ZQo+ICsJICogdXBkYXRlIHJlZyB2YWx1ZXMgaW4gaXQgaW50
-byB2cmVncywgc28gTFJJcyBpbiB3b3JrbG9hZCB3aXRoCj4gKwkgKiBpbmhpYml0IGNvbnRleHQg
-d2lsbCByZXN0b3JlIHdpdGggY29ycmVjdCB2YWx1ZXMKPiAgCSAqLwo+IC0JaWYgKChJU19LQUJZ
-TEFLRShzLT52Z3B1LT5ndnQtPmRldl9wcml2KQo+IC0JCXx8IElTX0NPRkZFRUxBS0Uocy0+dmdw
-dS0+Z3Z0LT5kZXZfcHJpdikpICYmCj4gKwlpZiAoSVNfR0VOKGd2dC0+ZGV2X3ByaXYsIDkpICYm
-Cj4gIAkJCWludGVsX2d2dF9tbWlvX2lzX2luX2N0eChndnQsIG9mZnNldCkgJiYKPiAgCQkJIXN0
-cm5jbXAoY21kLCAibHJpIiwgMykpIHsKPiAgCQlpbnRlbF9ndnRfaHlwZXJ2aXNvcl9yZWFkX2dw
-YShzLT52Z3B1LAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbW1pb19j
-b250ZXh0LmMKPiBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tbWlvX2NvbnRleHQuYwo+IGlu
-ZGV4IGU3ZTE0Yzg0MmJlNC4uZmU4N2ZiODc3NzZjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9pOTE1L2d2dC9tbWlvX2NvbnRleHQuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1
-L2d2dC9tbWlvX2NvbnRleHQuYwo+IEBAIC0zOTEsMTAgKzM5MSw3IEBAIHN0YXRpYyB2b2lkIHN3
-aXRjaF9tb2NzKHN0cnVjdCBpbnRlbF92Z3B1ICpwcmUsCj4gc3RydWN0IGludGVsX3ZncHUgKm5l
-eHQsCj4gIAlpZiAoV0FSTl9PTihyaW5nX2lkID49IEFSUkFZX1NJWkUocmVncykpKQo+ICAJCXJl
-dHVybjsKPiAKPiAtCWlmIChyaW5nX2lkID09IFJDUzAgJiYKPiAtCSAgICAoSVNfS0FCWUxBS0Uo
-ZGV2X3ByaXYpIHx8Cj4gLQkgICAgIElTX0JST1hUT04oZGV2X3ByaXYpIHx8Cj4gLQkgICAgIElT
-X0NPRkZFRUxBS0UoZGV2X3ByaXYpKSkKPiArCWlmIChyaW5nX2lkID09IFJDUzAgJiYgSVNfR0VO
-KGRldl9wcml2LCA5KSkKPiAgCQlyZXR1cm47Cj4gCj4gIAlpZiAoIXByZSAmJiAhZ2VuOV9yZW5k
-ZXJfbW9jcy5pbml0aWFsaXplZCkgQEAgLTQ2OSwxMSArNDY2LDEwIEBACj4gc3RhdGljIHZvaWQg
-c3dpdGNoX21taW8oc3RydWN0IGludGVsX3ZncHUgKnByZSwKPiAgCQkJY29udGludWU7Cj4gIAkJ
-LyoKPiAgCQkgKiBObyBuZWVkIHRvIGRvIHNhdmUgb3IgcmVzdG9yZSBvZiB0aGUgbW1pbyB3aGlj
-aCBpcyBpbiBjb250ZXh0Cj4gLQkJICogc3RhdGUgaW1hZ2Ugb24ga2FieWxha2UsIGl0J3MgaW5p
-dGlhbGl6ZWQgYnkgbHJpIGNvbW1hbmQgYW5kCj4gKwkJICogc3RhdGUgaW1hZ2Ugb24gZ2VuOSwg
-aXQncyBpbml0aWFsaXplZCBieSBscmkgY29tbWFuZCBhbmQKPiAgCQkgKiBzYXZlIG9yIHJlc3Rv
-cmUgd2l0aCBjb250ZXh0IHRvZ2V0aGVyLgo+ICAJCSAqLwo+IC0JCWlmICgoSVNfS0FCWUxBS0Uo
-ZGV2X3ByaXYpIHx8IElTX0JST1hUT04oZGV2X3ByaXYpCj4gLQkJCXx8IElTX0NPRkZFRUxBS0Uo
-ZGV2X3ByaXYpKSAmJiBtbWlvLT5pbl9jb250ZXh0KQo+ICsJCWlmIChJU19HRU4oZGV2X3ByaXYs
-IDkpICYmIG1taW8tPmluX2NvbnRleHQpCj4gIAkJCWNvbnRpbnVlOwo+IAo+ICAJCS8vIHNhdmUK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jCj4gYi9k
-cml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMKPiBpbmRleCA4OTk4ZmE1YWIxOTgu
-LjFmM2JhOGVmYjk5NCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2No
-ZWR1bGVyLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMKPiBA
-QCAtMjk5LDkgKzI5OSw3IEBAIHN0YXRpYyBpbnQgY29weV93b3JrbG9hZF90b19yaW5nX2J1ZmZl
-cihzdHJ1Y3QKPiBpbnRlbF92Z3B1X3dvcmtsb2FkICp3b3JrbG9hZCkKPiAgCXZvaWQgKnNoYWRv
-d19yaW5nX2J1ZmZlcl92YTsKPiAgCXUzMiAqY3M7Cj4gCj4gLQlpZiAoKElTX0tBQllMQUtFKHJl
-cS0+aTkxNSkgfHwgSVNfQlJPWFRPTihyZXEtPmk5MTUpCj4gLQkJfHwgSVNfQ09GRkVFTEFLRShy
-ZXEtPmk5MTUpKQo+IC0JCSYmIGlzX2luaGliaXRfY29udGV4dChyZXEtPmh3X2NvbnRleHQpKQo+
-ICsJaWYgKElTX0dFTihyZXEtPmk5MTUsIDkpICYmIGlzX2luaGliaXRfY29udGV4dChyZXEtPmh3
-X2NvbnRleHQpKQo+ICAJCWludGVsX3ZncHVfcmVzdG9yZV9pbmhpYml0X2NvbnRleHQodmdwdSwg
-cmVxKTsKPiAKPiAgCS8qIGFsbG9jYXRlIHNoYWRvdyByaW5nIGJ1ZmZlciAqLwo+IC0tCj4gMi4x
-Ny4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRl
-bC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2
-dC1kZXY=
+
+--===============0758025652==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="/qX1VF4Euib7a2dq"
+Content-Disposition: inline
+
+
+--/qX1VF4Euib7a2dq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.10 12:15:27 +0800, Tina Zhang wrote:
+> This attribute is introduced to work as a switch of the gvt-g vGPU direct
+> flip function. Userspace can simply switch on/off the direct flip
+> function by echoing 1/0 to this attributte.
+>=20
+> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> ---
+
+I do not think this is appropriate interface which doesn't align with
+vGPU lifecycle and also doesn't work together with control state of vfio
+gfx ioctl. Why this?
+
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 38 ++++++++++++++++++++++++++++++++++=
+++++
+>  1 file changed, 38 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
+kvmgt.c
+> index a68addf..2911818 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -1581,12 +1581,50 @@ hw_id_show(struct device *dev, struct device_attr=
+ibute *attr,
+>  	return sprintf(buf, "\n");
+>  }
+> =20
+> +static ssize_t
+> +enable_direct_flip_show(struct device *dev, struct device_attribute *att=
+r,
+> +	 char *buf)
+> +{
+> +	struct mdev_device *mdev =3D mdev_from_dev(dev);
+> +
+> +	if (mdev) {
+> +		struct intel_vgpu *vgpu =3D (struct intel_vgpu *)
+> +			mdev_get_drvdata(mdev);
+> +		return sprintf(buf, "%u\n",
+> +			       vgpu->display.shadow_fbs.enable_direct_flip);
+> +	}
+> +	return sprintf(buf, "\n");
+> +}
+> +
+> +static ssize_t
+> +enable_direct_flip_store(struct device *dev, struct device_attribute *at=
+tr,
+> +			     const char *buf, size_t n)
+> +{
+> +	struct mdev_device *mdev =3D mdev_from_dev(dev);
+> +	ssize_t ret;
+> +	u32 val;
+> +
+> +	ret =3D kstrtou32(buf, 0, &val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (mdev) {
+> +		struct intel_vgpu *vgpu =3D (struct intel_vgpu *)
+> +			mdev_get_drvdata(mdev);
+> +		vgpu->display.shadow_fbs.enable_direct_flip =3D !!val;
+> +	}
+> +
+> +	return n;
+> +}
+> +
+>  static DEVICE_ATTR_RO(vgpu_id);
+>  static DEVICE_ATTR_RO(hw_id);
+> +static DEVICE_ATTR_RW(enable_direct_flip);
+> =20
+>  static struct attribute *intel_vgpu_attrs[] =3D {
+>  	&dev_attr_vgpu_id.attr,
+>  	&dev_attr_hw_id.attr,
+> +	&dev_attr_enable_direct_flip.attr,
+>  	NULL
+>  };
+> =20
+> --=20
+> 2.7.4
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--/qX1VF4Euib7a2dq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXNjkigAKCRCxBBozTXgY
+J+EuAJ0UCxi0ZH8qjOb8lG3XG/CSFHIFhACeI7CvfRAQjHI6BxCs0mkxShhOU14=
+=0kES
+-----END PGP SIGNATURE-----
+
+--/qX1VF4Euib7a2dq--
+
+--===============0758025652==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0758025652==--
