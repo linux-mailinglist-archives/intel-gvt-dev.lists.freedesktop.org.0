@@ -2,31 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47DE81E816
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 May 2019 08:02:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B3F0A1E821
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 May 2019 08:08:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CB863894EA;
-	Wed, 15 May 2019 06:02:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6B9FD892EF;
+	Wed, 15 May 2019 06:08:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 01B59894EA
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1888B892EF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 May 2019 06:02:39 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Wed, 15 May 2019 06:08:23 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 May 2019 23:02:36 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 May 2019 23:08:22 -0700
 X-ExtLoop1: 1
-Received: from unknown (HELO xzhan34-rh.bj.intel.com) ([10.238.154.50])
- by fmsmga001.fm.intel.com with ESMTP; 14 May 2019 23:02:35 -0700
-From: Xiaolin Zhang <xiaolin.zhang@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: cancel dma map only for not present ggtt entry
-Date: Wed, 15 May 2019 14:05:59 +0800
-Message-Id: <20190515060559.7506-1-xiaolin.zhang@intel.com>
-X-Mailer: git-send-email 2.15.1
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga005.fm.intel.com with ESMTP; 14 May 2019 23:08:21 -0700
+Date: Wed, 15 May 2019 14:07:34 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Xiaolin Zhang <xiaolin.zhang@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: cancel dma map only for not present ggtt
+ entry
+Message-ID: <20190515060734.GT12913@zhen-hp.sh.intel.com>
+References: <20190515060559.7506-1-xiaolin.zhang@intel.com>
+MIME-Version: 1.0
+In-Reply-To: <20190515060559.7506-1-xiaolin.zhang@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -39,41 +44,115 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>, zhenyuw@linux.intel.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, zhenyuw@linux.intel.com
+Content-Type: multipart/mixed; boundary="===============1157498336=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-b25seSBjYW5jZWwgZ2d0dCBlbnRyeSBkbWEgbWFwIGZvciBpbnZhbGlkIGdndHQgZW50cnksIGRv
-bid0IGRvIGl0CmZvciBwYXJpdGlhbCB1cGRhdGUgb3Igb2xkIGdndHQgZW50cnkuCgp0aGlzIGNo
-YW5nZSBjYW4gYWRkcmVzcyBETUEgImZhdWx0IHJlYXNvbiAyMyIgaXNzdWUgZm9yIHdpbiBndWVz
-dCB3aXRoCmludGVsIGlvbW11IG9uLgoKU2lnbmVkLW9mZi1ieTogWGlhb2xpbiBaaGFuZyA8eGlh
-b2xpbi56aGFuZ0BpbnRlbC5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0dC5j
-IHwgMTcgKysrKysrKy0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyks
-IDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9n
-dHQuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYwppbmRleCBjMmY3ZDIwZjYzNDYu
-LjZkMDIxZDgzMGYzNyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0dC5j
-CisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYwpAQCAtMjI0Myw3ICsyMjQzLDEy
-IEBAIHN0YXRpYyBpbnQgZW11bGF0ZV9nZ3R0X21taW9fd3JpdGUoc3RydWN0IGludGVsX3ZncHUg
-KnZncHUsIHVuc2lnbmVkIGludCBvZmYsCiAJCX0KIAl9CiAKLQlpZiAoIXBhcnRpYWxfdXBkYXRl
-ICYmIChvcHMtPnRlc3RfcHJlc2VudCgmZSkpKSB7CisJaWYgKCFvcHMtPnRlc3RfcHJlc2VudCgm
-ZSkpIHsKKwkJZ2d0dF9nZXRfaG9zdF9lbnRyeShnZ3R0X21tLCAmbSwgZ19ndHRfaW5kZXgpOwor
-CQlnZ3R0X2ludmFsaWRhdGVfcHRlKHZncHUsICZtKTsKKwkJb3BzLT5zZXRfcGZuKCZtLCBndnQt
-Pmd0dC5zY3JhdGNoX21mbik7CisJCW9wcy0+Y2xlYXJfcHJlc2VudCgmbSk7CisJfSBlbHNlIGlm
-ICghcGFydGlhbF91cGRhdGUgJiYgKG9wcy0+dGVzdF9wcmVzZW50KCZlKSkpIHsKIAkJZ2ZuID0g
-b3BzLT5nZXRfcGZuKCZlKTsKIAkJbSA9IGU7CiAKQEAgLTIyNjYsMTkgKzIyNzEsMTEgQEAgc3Rh
-dGljIGludCBlbXVsYXRlX2dndHRfbW1pb193cml0ZShzdHJ1Y3QgaW50ZWxfdmdwdSAqdmdwdSwg
-dW5zaWduZWQgaW50IG9mZiwKIAkJCW9wcy0+c2V0X3BmbigmbSwgZ3Z0LT5ndHQuc2NyYXRjaF9t
-Zm4pOwogCQl9IGVsc2UKIAkJCW9wcy0+c2V0X3BmbigmbSwgZG1hX2FkZHIgPj4gUEFHRV9TSElG
-VCk7Ci0JfSBlbHNlIHsKLQkJb3BzLT5zZXRfcGZuKCZtLCBndnQtPmd0dC5zY3JhdGNoX21mbik7
-Ci0JCW9wcy0+Y2xlYXJfcHJlc2VudCgmbSk7CiAJfQotCiBvdXQ6Ci0JZ2d0dF9zZXRfZ3Vlc3Rf
-ZW50cnkoZ2d0dF9tbSwgJmUsIGdfZ3R0X2luZGV4KTsKLQotCWdndHRfZ2V0X2hvc3RfZW50cnko
-Z2d0dF9tbSwgJmUsIGdfZ3R0X2luZGV4KTsKLQlnZ3R0X2ludmFsaWRhdGVfcHRlKHZncHUsICZl
-KTsKLQogCWdndHRfc2V0X2hvc3RfZW50cnkoZ2d0dF9tbSwgJm0sIGdfZ3R0X2luZGV4KTsKIAln
-Z3R0X2ludmFsaWRhdGUoZ3Z0LT5kZXZfcHJpdik7CisJZ2d0dF9zZXRfZ3Vlc3RfZW50cnkoZ2d0
-dF9tbSwgJmUsIGdfZ3R0X2luZGV4KTsKIAlyZXR1cm4gMDsKIH0KIAotLSAKMi4xNS4xCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2
-IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+
+--===============1157498336==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Eo/fsYe8uqGHvExr"
+Content-Disposition: inline
+
+
+--Eo/fsYe8uqGHvExr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.15 14:05:59 +0800, Xiaolin Zhang wrote:
+> only cancel ggtt entry dma map for invalid ggtt entry, don't do it
+> for paritial update or old ggtt entry.
+>=20
+> this change can address DMA "fault reason 23" issue for win guest with
+> intel iommu on.
+>=20
+> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c | 17 +++++++----------
+>  1 file changed, 7 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index c2f7d20f6346..6d021d830f37 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -2243,7 +2243,12 @@ static int emulate_ggtt_mmio_write(struct intel_vg=
+pu *vgpu, unsigned int off,
+>  		}
+>  	}
+> =20
+> -	if (!partial_update && (ops->test_present(&e))) {
+> +	if (!ops->test_present(&e)) {
+> +		ggtt_get_host_entry(ggtt_mm, &m, g_gtt_index);
+> +		ggtt_invalidate_pte(vgpu, &m);
+> +		ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+> +		ops->clear_present(&m);
+> +	} else if (!partial_update && (ops->test_present(&e))) {
+>  		gfn =3D ops->get_pfn(&e);
+>  		m =3D e;
+
+I think this makes condition check a bit cumbersome, as the special case
+you need to handle is for partial_update instead of test_present.
+
+> =20
+> @@ -2266,19 +2271,11 @@ static int emulate_ggtt_mmio_write(struct intel_v=
+gpu *vgpu, unsigned int off,
+>  			ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+>  		} else
+>  			ops->set_pfn(&m, dma_addr >> PAGE_SHIFT);
+> -	} else {
+> -		ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+> -		ops->clear_present(&m);
+>  	}
+> -
+>  out:
+> -	ggtt_set_guest_entry(ggtt_mm, &e, g_gtt_index);
+> -
+> -	ggtt_get_host_entry(ggtt_mm, &e, g_gtt_index);
+> -	ggtt_invalidate_pte(vgpu, &e);
+
+Can we do unmap for !partial_update only and remove above clear_present?
+So still use scratch for host in case of partial update.
+
+> -
+>  	ggtt_set_host_entry(ggtt_mm, &m, g_gtt_index);
+>  	ggtt_invalidate(gvt->dev_priv);
+> +	ggtt_set_guest_entry(ggtt_mm, &e, g_gtt_index);
+>  	return 0;
+>  }
+> =20
+> --=20
+> 2.15.1
+>=20
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--Eo/fsYe8uqGHvExr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXNuspgAKCRCxBBozTXgY
+J8YIAJwL0jRqLoOsP1Qyb92p9ogIcB2dlwCdGQoSOtKMvAxkK1g3+aRT6xAqH3Y=
+=T6SE
+-----END PGP SIGNATURE-----
+
+--Eo/fsYe8uqGHvExr--
+
+--===============1157498336==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1157498336==--
