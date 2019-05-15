@@ -2,32 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC82B1E9EE
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 May 2019 10:16:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 382191EA91
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 May 2019 11:02:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 73C34892B6;
-	Wed, 15 May 2019 08:15:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E6F9F894D4;
+	Wed, 15 May 2019 09:02:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1CBBE892B6
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C0DCC894D4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 May 2019 08:15:59 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Wed, 15 May 2019 09:02:12 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 May 2019 01:15:58 -0700
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 May 2019 02:02:12 -0700
 X-ExtLoop1: 1
-Received: from unknown (HELO xzhan34-rh.bj.intel.com) ([10.238.154.50])
- by orsmga006.jf.intel.com with ESMTP; 15 May 2019 01:15:57 -0700
-From: Xiaolin Zhang <xiaolin.zhang@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH v2] drm/i915/gvt: cancel dma map only for not present ggtt
- entry
-Date: Wed, 15 May 2019 16:19:21 +0800
-Message-Id: <20190515081921.4394-1-xiaolin.zhang@intel.com>
-X-Mailer: git-send-email 2.15.1
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by orsmga005.jf.intel.com with ESMTP; 15 May 2019 02:02:10 -0700
+Date: Wed, 15 May 2019 17:01:23 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Xiaolin Zhang <xiaolin.zhang@intel.com>
+Subject: Re: [PATCH v2] drm/i915/gvt: cancel dma map only for not present
+ ggtt entry
+Message-ID: <20190515090123.GU12913@zhen-hp.sh.intel.com>
+References: <20190515081921.4394-1-xiaolin.zhang@intel.com>
+MIME-Version: 1.0
+In-Reply-To: <20190515081921.4394-1-xiaolin.zhang@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -40,45 +44,144 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>, zhenyuw@linux.intel.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, zhenyuw@linux.intel.com
+Content-Type: multipart/mixed; boundary="===============1042552653=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-b25seSBjYW5jZWwgZ2d0dCBlbnRyeSBkbWEgbWFwIGZvciBpbnZhbGlkIGdndHQgZW50cnksIGRv
-bid0IGRvIGl0CmZvciBwYXJpdGlhbCB1cGRhdGUgb3Igb2xkIGdndHQgZW50cnkuCgp0aGlzIGNo
-YW5nZSBjYW4gYWRkcmVzcyBETUEgImZhdWx0IHJlYXNvbiAyMyIgaXNzdWUgZm9yIHdpbiBndWVz
-dCB3aXRoCmludGVsIGlvbW11IG9uLgoKdjI6IHVwZGF0ZSBoYW5kbGluZyBvZiBnZ3R0IHBhcnRp
-YWwgdXBkYXRlIChaaGVueXUsIFlhbiwgSGVucnkpCgpTaWduZWQtb2ZmLWJ5OiBYaWFvbGluIFpo
-YW5nIDx4aWFvbGluLnpoYW5nQGludGVsLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9n
-dnQvZ3R0LmMgfCAyMSArKysrKysrKysrKystLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxMiBp
-bnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9pOTE1L2d2dC9ndHQuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYwppbmRleCBj
-MmY3ZDIwZjYzNDYuLjQ4NTZiOWZlYzQxMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5
-MTUvZ3Z0L2d0dC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYwpAQCAtMjI0
-MywxMCArMjI0MywyMSBAQCBzdGF0aWMgaW50IGVtdWxhdGVfZ2d0dF9tbWlvX3dyaXRlKHN0cnVj
-dCBpbnRlbF92Z3B1ICp2Z3B1LCB1bnNpZ25lZCBpbnQgb2ZmLAogCQl9CiAJfQogCi0JaWYgKCFw
-YXJ0aWFsX3VwZGF0ZSAmJiAob3BzLT50ZXN0X3ByZXNlbnQoJmUpKSkgeworCWlmICghb3BzLT50
-ZXN0X3ByZXNlbnQoJmUpKSB7CisJCWdndHRfZ2V0X2hvc3RfZW50cnkoZ2d0dF9tbSwgJm0sIGdf
-Z3R0X2luZGV4KTsKKwkJZ2d0dF9pbnZhbGlkYXRlX3B0ZSh2Z3B1LCAmbSk7CisJCW9wcy0+c2V0
-X3BmbigmbSwgZ3Z0LT5ndHQuc2NyYXRjaF9tZm4pOworCQlvcHMtPmNsZWFyX3ByZXNlbnQoJm0p
-OworCX0gZWxzZSB7CiAJCWdmbiA9IG9wcy0+Z2V0X3BmbigmZSk7CiAJCW0gPSBlOwogCisJCWlm
-IChwYXJ0aWFsX3VwZGF0ZSkgeworCQkJb3BzLT5zZXRfcGZuKCZtLCBndnQtPmd0dC5zY3JhdGNo
-X21mbik7CisJCQlvcHMtPmNsZWFyX3ByZXNlbnQoJm0pOworCQkJZ290byBvdXQ7CisJCX0KKwog
-CQkvKiBvbmUgUFRFIHVwZGF0ZSBtYXkgYmUgaXNzdWVkIGluIG11bHRpcGxlIHdyaXRlcyBhbmQg
-dGhlCiAJCSAqIGZpcnN0IHdyaXRlIG1heSBub3QgY29uc3RydWN0IGEgdmFsaWQgZ2ZuCiAJCSAq
-LwpAQCAtMjI2NiwxNyArMjI3Nyw5IEBAIHN0YXRpYyBpbnQgZW11bGF0ZV9nZ3R0X21taW9fd3Jp
-dGUoc3RydWN0IGludGVsX3ZncHUgKnZncHUsIHVuc2lnbmVkIGludCBvZmYsCiAJCQlvcHMtPnNl
-dF9wZm4oJm0sIGd2dC0+Z3R0LnNjcmF0Y2hfbWZuKTsKIAkJfSBlbHNlCiAJCQlvcHMtPnNldF9w
-Zm4oJm0sIGRtYV9hZGRyID4+IFBBR0VfU0hJRlQpOwotCX0gZWxzZSB7Ci0JCW9wcy0+c2V0X3Bm
-bigmbSwgZ3Z0LT5ndHQuc2NyYXRjaF9tZm4pOwotCQlvcHMtPmNsZWFyX3ByZXNlbnQoJm0pOwog
-CX0KLQogb3V0OgogCWdndHRfc2V0X2d1ZXN0X2VudHJ5KGdndHRfbW0sICZlLCBnX2d0dF9pbmRl
-eCk7Ci0KLQlnZ3R0X2dldF9ob3N0X2VudHJ5KGdndHRfbW0sICZlLCBnX2d0dF9pbmRleCk7Ci0J
-Z2d0dF9pbnZhbGlkYXRlX3B0ZSh2Z3B1LCAmZSk7Ci0KIAlnZ3R0X3NldF9ob3N0X2VudHJ5KGdn
-dHRfbW0sICZtLCBnX2d0dF9pbmRleCk7CiAJZ2d0dF9pbnZhbGlkYXRlKGd2dC0+ZGV2X3ByaXYp
-OwogCXJldHVybiAwOwotLSAKMi4xNS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+
+--===============1042552653==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="WqttXA4Bds05TaHY"
+Content-Disposition: inline
+
+
+--WqttXA4Bds05TaHY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.15 16:19:21 +0800, Xiaolin Zhang wrote:
+> only cancel ggtt entry dma map for invalid ggtt entry, don't do it
+> for paritial update or old ggtt entry.
+>=20
+> this change can address DMA "fault reason 23" issue for win guest with
+> intel iommu on.
+>=20
+> v2: update handling of ggtt partial update (Zhenyu, Yan, Henry)
+>=20
+> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c | 21 ++++++++++++---------
+>  1 file changed, 12 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index c2f7d20f6346..4856b9fec411 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -2243,10 +2243,21 @@ static int emulate_ggtt_mmio_write(struct intel_v=
+gpu *vgpu, unsigned int off,
+>  		}
+>  	}
+> =20
+> -	if (!partial_update && (ops->test_present(&e))) {
+> +	if (!ops->test_present(&e)) {
+> +		ggtt_get_host_entry(ggtt_mm, &m, g_gtt_index);
+> +		ggtt_invalidate_pte(vgpu, &m);
+> +		ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+> +		ops->clear_present(&m);
+> +	} else {
+>  		gfn =3D ops->get_pfn(&e);
+>  		m =3D e;
+> =20
+> +		if (partial_update) {
+> +			ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+> +			ops->clear_present(&m);
+> +			goto out;
+> +		}
+> +
+>  		/* one PTE update may be issued in multiple writes and the
+>  		 * first write may not construct a valid gfn
+>  		 */
+> @@ -2266,17 +2277,9 @@ static int emulate_ggtt_mmio_write(struct intel_vg=
+pu *vgpu, unsigned int off,
+>  			ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+>  		} else
+>  			ops->set_pfn(&m, dma_addr >> PAGE_SHIFT);
+> -	} else {
+> -		ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+> -		ops->clear_present(&m);
+>  	}
+> -
+>  out:
+>  	ggtt_set_guest_entry(ggtt_mm, &e, g_gtt_index);
+> -
+> -	ggtt_get_host_entry(ggtt_mm, &e, g_gtt_index);
+> -	ggtt_invalidate_pte(vgpu, &e);
+> -
+>  	ggtt_set_host_entry(ggtt_mm, &m, g_gtt_index);
+>  	ggtt_invalidate(gvt->dev_priv);
+>  	return 0;
+> --=20
+
+How about below simpler change?
+
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index 08c74e65836b..8f27db9d7a1e 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -2269,16 +2269,16 @@ static int emulate_ggtt_mmio_write(struct intel_vgp=
+u *vgpu, unsigned int off,
+ 			ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+ 		} else
+ 			ops->set_pfn(&m, dma_addr >> PAGE_SHIFT);
+-	} else {
++	} else
+ 		ops->set_pfn(&m, gvt->gtt.scratch_mfn);
+-		ops->clear_present(&m);
+-	}
+=20
+ out:
+ 	ggtt_set_guest_entry(ggtt_mm, &e, g_gtt_index);
+=20
+-	ggtt_get_host_entry(ggtt_mm, &e, g_gtt_index);
+-	ggtt_invalidate_pte(vgpu, &e);
++	if (!partial_update) {
++		ggtt_get_host_entry(ggtt_mm, &e, g_gtt_index);
++		ggtt_invalidate_pte(vgpu, &e);
++	}
+=20
+ 	ggtt_set_host_entry(ggtt_mm, &m, g_gtt_index);
+ 	ggtt_invalidate(gvt->dev_priv);
+
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--WqttXA4Bds05TaHY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXNvVYwAKCRCxBBozTXgY
+J5klAKCbrDEQ9XXPkHDTdlL7Sd4a9BKHoQCeILD/W5Js2dz0qMxiuQRmpoveKGs=
+=yLdX
+-----END PGP SIGNATURE-----
+
+--WqttXA4Bds05TaHY--
+
+--===============1042552653==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1042552653==--
