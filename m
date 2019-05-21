@@ -1,37 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B71EA22B8B
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 May 2019 07:58:50 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5418624778
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 May 2019 07:15:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6CA88891B3;
-	Mon, 20 May 2019 05:58:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E0FCA8920F;
+	Tue, 21 May 2019 05:15:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E096B891B3
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EDE268920F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 May 2019 05:58:47 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Tue, 21 May 2019 05:15:42 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 May 2019 22:58:47 -0700
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 May 2019 22:15:42 -0700
 X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga001.jf.intel.com with ESMTP; 19 May 2019 22:58:46 -0700
-Date: Mon, 20 May 2019 13:57:48 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Tina Zhang <tina.zhang@intel.com>
-Subject: Re: [PATCH 2/2] drm/i915/gvt: Initialize intel_gvt_gtt_entry in stack
-Message-ID: <20190520055748.GG12913@zhen-hp.sh.intel.com>
-References: <20190520053649.5906-1-tina.zhang@intel.com>
- <20190520053649.5906-3-tina.zhang@intel.com>
+Received: from coxu-arch-shz.sh.intel.com (HELO [10.239.160.22])
+ ([10.239.160.22])
+ by fmsmga006.fm.intel.com with ESMTP; 20 May 2019 22:15:41 -0700
+Subject: Re: [PATCH v4 1/2] drm/i915/gvt: Check if cur_pt_type is valid
+To: Aleksei Gimbitskii <aleksei.gimbitskii@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org
+References: <20190502095922.31917-1-aleksei.gimbitskii@intel.com>
+ <20190502095922.31917-2-aleksei.gimbitskii@intel.com>
+From: Colin Xu <Colin.Xu@intel.com>
+Message-ID: <280a6777-a86e-71b1-014d-cd09b7e9b5d4@intel.com>
+Date: Tue, 21 May 2019 13:15:41 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190520053649.5906-3-tina.zhang@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+In-Reply-To: <20190502095922.31917-2-aleksei.gimbitskii@intel.com>
+Content-Language: en-US
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -44,118 +47,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0084648175=="
+Reply-To: Colin.Xu@intel.com
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============0084648175==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="VZx/YQmuLnG2i5Iq"
-Content-Disposition: inline
-
-
---VZx/YQmuLnG2i5Iq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.05.20 13:36:49 +0800, Tina Zhang wrote:
-> In stack, intel_gvt_gtt_entry needs to be initialized before
-> being used, as the fields may have some garbage values.
->=20
-> W/o this patch, set_ggtt_entry prints:
-> -------------------------------------
-> 274.046840: set_ggtt_entry: vgpu1:set ggtt entry 0x9bed8000ffffe900
-> 274.046846: set_ggtt_entry: vgpu1:set ggtt entry 0xe55df001
-> 274.046852: set_ggtt_entry: vgpu1:set ggtt entry 0x9bed8000ffffe900
->=20
-> 0x9bed8000 is the stack grabage.
->=20
-> W/ this patch, set_ggtt_entry prints:
-> ------------------------------------
-> 274.046840: set_ggtt_entry: vgpu1:set ggtt entry 0xffffe900
-> 274.046846: set_ggtt_entry: vgpu1:set ggtt entry 0xe55df001
-> 274.046852: set_ggtt_entry: vgpu1:set ggtt entry 0xffffe900
->=20
-> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/gtt.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
-t.c
-> index dcc207f04b75..bcb649285707 100644
-> --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> @@ -2193,7 +2193,7 @@ static int emulate_ggtt_mmio_write(struct intel_vgp=
-u *vgpu, unsigned int off,
->  	/* the VM may configure the whole GM space when ballooning is used */
->  	if (!vgpu_gmadr_is_valid(vgpu, gma))
->  		return 0;
-> -
-> +	e.val64 =3D 0;
-
-Could we just initialize it during declaration?
-
->  	e.type =3D GTT_TYPE_GGTT_PTE;
->  	memcpy((void *)&e.val64 + (off & (info->gtt_entry_size - 1)), p_data,
->  			bytes);
-> @@ -2246,7 +2246,8 @@ static int emulate_ggtt_mmio_write(struct intel_vgp=
-u *vgpu, unsigned int off,
-> =20
->  	if (!partial_update && (ops->test_present(&e))) {
->  		gfn =3D ops->get_pfn(&e);
-> -		m =3D e;
-> +		m.val64 =3D e.val64;
-> +		m.type =3D e.type;
-
-Better just memcpy which doesn't depend on struct definition.
-
-> =20
->  		/* one PTE update may be issued in multiple writes and the
->  		 * first write may not construct a valid gfn
-> @@ -2268,6 +2269,8 @@ static int emulate_ggtt_mmio_write(struct intel_vgp=
-u *vgpu, unsigned int off,
->  		} else
->  			ops->set_pfn(&m, dma_addr >> PAGE_SHIFT);
->  	} else {
-> +		m.val64 =3D 0;
-> +		m.type =3D GTT_TYPE_GGTT_PTE;
->  		ops->set_pfn(&m, gvt->gtt.scratch_mfn);
->  		ops->clear_present(&m);
->  	}
-> --=20
-> 2.17.1
->=20
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---VZx/YQmuLnG2i5Iq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOJB3AAKCRCxBBozTXgY
-J2Z9AJ9PxVCDLuBhh6DZIZXtD2r1b4FlfwCfW9N/DjnYkascTkNs8RRw+LPH2xw=
-=rPZk
------END PGP SIGNATURE-----
-
---VZx/YQmuLnG2i5Iq--
-
---===============0084648175==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0084648175==--
+QWNrZWQtYnk6IENvbGluIFh1IDxjb2xpbi54dUBpbnRlbC5jb20+CgpJJ20gT0sgd2l0aCB0aGUg
+Y2hhbmdlLiBaaGVueXUgaGFzIHNvbWUgY29tbWVudHMgaW4gdjMgc2VlIGlmIGhlIGhhcyAKbW9y
+ZSBjb21tZW50cyBpbiB2NC4gVGhhbmtzLgoKT24gMjAxOS0wNS0wMiAxNzo1OSwgQWxla3NlaSBH
+aW1iaXRza2lpIHdyb3RlOgo+IFN0YXRpYyBjb2RlIGFuYWx5emVyIHdhcm5zIHRoYXQgaW5kZXgg
+dmFsdWUgZm9yIHNjcmF0Y2hfcHQgbWF5IGJlIGVxdWFsCj4gdG8gLTEuIEluZGV4IHZhbHVlIHR5
+cGUgaXMgaW50ZWxfZ3Z0X2d0dF90eXBlX3QsIHNvIGl0IG1heSBiZSBhbnkgbnVtYmVyCj4gYXQg
+cmFuZ2UgLTEgdG8gMTcuIENoZWNrIGZpcnN0IGlmIGN1cl9wdF90eXBlIGFuZCBjdXJfcHRfdHlw
+ZSsxIGlzIHZhbGlkCj4gdmFsdWVzLgo+Cj4gdjI6Cj4gICAtIFByaW50IHNvbWUgZXJyb3IgbWVz
+c2FnZXMgaWYgcGFnZSB0YWJsZSB0eXBlIGlzIGludmFsaWQuIChDb2xpbiBYdSkKPgo+IHY0Ogo+
+ICAgLSBQcmludCBjdXJfcHRfdHlwZSBpbiBlcnJvciBtZXNzYWdlLiAoQ29saW4gWHUpCj4KPiBU
+aGlzIHBhdGNoIGZpeGVkIHRoZSBjcml0aWFsIGlzc3VlICM0MjIgcmVwb3J0ZWQgYnkga2xvY3dv
+cmsuCj4KPiBTaWduZWQtb2ZmLWJ5OiBBbGVrc2VpIEdpbWJpdHNraWkgPGFsZWtzZWkuZ2ltYml0
+c2tpaUBpbnRlbC5jb20+Cj4gQ2M6IFpoZW55dSBXYW5nIDx6aGVueXV3QGxpbnV4LmludGVsLmNv
+bT4KPiBDYzogWmhpIFdhbmcgPHpoaS5hLndhbmdAaW50ZWwuY29tPgo+IENjOiBDb2xpbiBYdSA8
+Y29saW4ueHVAaW50ZWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0
+dC5jIHwgMTEgKysrKysrKysrKy0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxMCBpbnNlcnRpb25zKCsp
+LCAxIGRlbGV0aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0
+L2d0dC5jIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0dC5jCj4gaW5kZXggMDhjNzRlNjU4
+MzZiLi43ZTYxMzk2YTY1YzYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0
+L2d0dC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0dC5jCj4gQEAgLTk0Miw3
+ICs5NDIsMTYgQEAgc3RhdGljIGludCBwcGd0dF9pbnZhbGlkYXRlX3NwdF9ieV9zaGFkb3dfZW50
+cnkoc3RydWN0IGludGVsX3ZncHUgKnZncHUsCj4gICAKPiAgIAlpZiAoZS0+dHlwZSAhPSBHVFRf
+VFlQRV9QUEdUVF9ST09UX0wzX0VOVFJZCj4gICAJCSYmIGUtPnR5cGUgIT0gR1RUX1RZUEVfUFBH
+VFRfUk9PVF9MNF9FTlRSWSkgewo+IC0JCWN1cl9wdF90eXBlID0gZ2V0X25leHRfcHRfdHlwZShl
+LT50eXBlKSArIDE7Cj4gKwkJY3VyX3B0X3R5cGUgPSBnZXRfbmV4dF9wdF90eXBlKGUtPnR5cGUp
+Owo+ICsKPiArCQlpZiAoIWd0dF90eXBlX2lzX3B0KGN1cl9wdF90eXBlKSB8fAo+ICsJCQkJIWd0
+dF90eXBlX2lzX3B0KGN1cl9wdF90eXBlICsgMSkpIHsKPiArCQkJV0FSTigxLCAiSW52YWxpZCBw
+YWdlIHRhYmxlIHR5cGUsIGN1cl9wdF90eXBlIGlzOiAlZFxuIiwgY3VyX3B0X3R5cGUpOwo+ICsJ
+CQlyZXR1cm4gLUVJTlZBTDsKPiArCQl9Cj4gKwo+ICsJCWN1cl9wdF90eXBlICs9IDE7Cj4gKwo+
+ICAgCQlpZiAob3BzLT5nZXRfcGZuKGUpID09Cj4gICAJCQl2Z3B1LT5ndHQuc2NyYXRjaF9wdFtj
+dXJfcHRfdHlwZV0ucGFnZV9tZm4pCj4gICAJCQlyZXR1cm4gMDsKCi0tIApCZXN0IFJlZ2FyZHMs
+CkNvbGluIFh1CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
+dGVsLWd2dC1kZXY=
