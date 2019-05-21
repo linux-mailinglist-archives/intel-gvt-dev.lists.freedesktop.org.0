@@ -2,34 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B65724804
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 May 2019 08:25:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACAEA24A4E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 May 2019 10:26:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6744789229;
-	Tue, 21 May 2019 06:25:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 54DBB89254;
+	Tue, 21 May 2019 08:26:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 065DB8921B;
- Tue, 21 May 2019 06:25:09 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 76B1489248;
+ Tue, 21 May 2019 08:26:42 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 May 2019 23:25:09 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 May 2019 01:26:41 -0700
 X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by FMSMGA003.fm.intel.com with ESMTP; 20 May 2019 23:25:07 -0700
-Date: Tue, 21 May 2019 14:24:08 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20190521062408.GH12913@zhen-hp.sh.intel.com>
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by fmsmga004.fm.intel.com with ESMTP; 21 May 2019 01:26:41 -0700
+Received: from FMSMSX109.amr.corp.intel.com (10.18.116.9) by
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Tue, 21 May 2019 01:26:40 -0700
+Received: from shsmsx108.ccr.corp.intel.com (10.239.4.97) by
+ fmsmsx109.amr.corp.intel.com (10.18.116.9) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Tue, 21 May 2019 01:26:40 -0700
+Received: from shsmsx107.ccr.corp.intel.com ([169.254.9.7]) by
+ SHSMSX108.ccr.corp.intel.com ([169.254.8.126]) with mapi id 14.03.0415.000;
+ Tue, 21 May 2019 16:26:39 +0800
+From: "Zhang, Xiaolin" <xiaolin.zhang@intel.com>
+To: Chris Wilson <chris@chris-wilson.co.uk>, "intel-gfx@lists.freedesktop.org"
+ <intel-gfx@lists.freedesktop.org>, "intel-gvt-dev@lists.freedesktop.org"
+ <intel-gvt-dev@lists.freedesktop.org>
+Subject: Re: [PATCH v5 4/8] drm/i915: vgpu context submission pv optimization
+Thread-Topic: [PATCH v5 4/8] drm/i915: vgpu context submission pv optimization
+Thread-Index: AQHU/jlEg9hZVmsQ5kWB2SiNoes8uQ==
+Date: Tue, 21 May 2019 08:26:39 +0000
+Message-ID: <073732E20AE4C540AE91DBC3F07D4460876606C1@SHSMSX107.ccr.corp.intel.com>
+References: <1556507458-24684-1-git-send-email-xiaolin.zhang@intel.com>
+ <1556507458-24684-5-git-send-email-xiaolin.zhang@intel.com>
+ <155653215521.27886.14694707069719603445@skylake-alporthouse-com>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.239.4.80]
 MIME-Version: 1.0
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -42,106 +59,50 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============1850133319=="
+Cc: "Wang, Zhenyu Z" <zhenyu.z.wang@intel.com>,
+ "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>, "He, Min" <min.he@intel.com>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, "Wang, Zhi A" <zhi.a.wang@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1850133319==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ygbU922Pc5eyHI0n"
-Content-Disposition: inline
-
-
---ygbU922Pc5eyHI0n
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-
-Hi,
-
-Here's gvt-fixes for 5.2-rc. It contains vgpu reset fix with
-proper timeline handling, fixes for guest TRTT setting which
-should be handled in context state instead of pushing directly
-to hardware and one error return fix.
-
-Thanks.
---
-The following changes since commit a491cc8e1597ea25803191cded49d3686702a406:
-
-  drm/i915: Truly bump ready tasks ahead of busywaits (2019-05-20 18:29:20 =
-+0300)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux.git tags/gvt-fixes-2019-05-21
-
-for you to fetch changes up to 591c39ffac4ab1ddf2ea6d49331cb614e0682b28:
-
-  drm/i915/gvt: Fix an error code in ppgtt_populate_spt_by_guest_entry() (2=
-019-05-21 10:58:16 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2019-05-21
-
-- vGPU reset fix with sane init breadcrumb (Weinan)
-- Fix TRTT handling to use context state (Yan)
-- Fix one error return (Dan)
-
-----------------------------------------------------------------
-Dan Carpenter (1):
-      drm/i915/gvt: Fix an error code in ppgtt_populate_spt_by_guest_entry()
-
-Weinan (1):
-      drm/i915/gvt: emit init breadcrumb for gvt request
-
-Yan Zhao (4):
-      drm/i915/gvt: use cmd to restore in-context mmios to hw for gen9 plat=
-form
-      drm/i915/gvt: Tiled Resources mmios are in-context mmios for gen9+
-      drm/i915/gvt: add 0x4dfc to gen9 save-restore list
-      drm/i915/gvt: do not let TRTTE and 0x4dfc write passthrough to hardwa=
-re
-
- drivers/gpu/drm/i915/gvt/cmd_parser.c   | 14 +++++++++-----
- drivers/gpu/drm/i915/gvt/gtt.c          |  4 +++-
- drivers/gpu/drm/i915/gvt/handlers.c     | 15 ---------------
- drivers/gpu/drm/i915/gvt/mmio_context.c | 23 ++++++++++-------------
- drivers/gpu/drm/i915/gvt/scheduler.c    | 23 ++++++++++++++++++++---
- 5 files changed, 42 insertions(+), 37 deletions(-)
-
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---ygbU922Pc5eyHI0n
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOOZhwAKCRCxBBozTXgY
-J7O+AJ4w7Nbagv/sX9Jmv0pDe2AQtswQygCcC+ivARcyVbdetTEVREPEADZ9MDs=
-=rr6a
------END PGP SIGNATURE-----
-
---ygbU922Pc5eyHI0n--
-
---===============1850133319==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1850133319==--
+T24gMDQvMjkvMjAxOSAwNjowMyBQTSwgQ2hyaXMgV2lsc29uIHdyb3RlOgo+IFF1b3RpbmcgWGlh
+b2xpbiBaaGFuZyAoMjAxOS0wNC0yOSAwNDoxMDo1NCkKPj4gK3N0YXRpYyB2b2lkIHB2X3N1Ym1p
+dChzdHJ1Y3QgaW50ZWxfZW5naW5lX2NzICplbmdpbmUpCj4+ICt7Cj4+ICsgICAgICAgc3RydWN0
+IGludGVsX2VuZ2luZV9leGVjbGlzdHMgKiBjb25zdCBleGVjbGlzdHMgPSAmZW5naW5lLT5leGVj
+bGlzdHM7Cj4+ICsgICAgICAgc3RydWN0IGV4ZWNsaXN0X3BvcnQgKnBvcnQgPSBleGVjbGlzdHMt
+PnBvcnQ7Cj4+ICsgICAgICAgdW5zaWduZWQgaW50IG47Cj4+ICsgICAgICAgc3RydWN0IGd2dF9z
+aGFyZWRfcGFnZSAqc2hhcmVkX3BhZ2UgPSBlbmdpbmUtPmk5MTUtPnZncHUuc2hhcmVkX3BhZ2U7
+Cj4+ICsgICAgICAgdTY0IGRlc2NzWzJdOwo+PiArCj4+ICsgICAgICAgZm9yIChuID0gMDsgbiA8
+IGV4ZWNsaXN0c19udW1fcG9ydHMoZXhlY2xpc3RzKTsgbisrKSB7Cj4+ICsgICAgICAgICAgICAg
+ICBzdHJ1Y3QgaTkxNV9yZXF1ZXN0ICpycTsKPj4gKyAgICAgICAgICAgICAgIHVuc2lnbmVkIGlu
+dCBjb3VudCA9IDA7Cj4+ICsKPj4gKyAgICAgICAgICAgICAgIGRlc2NzW25dID0gMDsKPj4gKyAg
+ICAgICAgICAgICAgIHJxID0gcG9ydF91bnBhY2soJnBvcnRbbl0sICZjb3VudCk7Cj4+ICsgICAg
+ICAgICAgICAgICBpZiAocnEgJiYgY291bnQgPT0gMCkgewo+PiArICAgICAgICAgICAgICAgICAg
+ICAgICBwb3J0X3NldCgmcG9ydFtuXSwgcG9ydF9wYWNrKHJxLCArK2NvdW50KSk7Cj4+ICsgICAg
+ICAgICAgICAgICAgICAgICAgIGRlc2NzW25dID0gZXhlY2xpc3RzX3VwZGF0ZV9jb250ZXh0KHJx
+KTsKPj4gKyAgICAgICAgICAgICAgIH0KPj4gKyAgICAgICB9Cj4+ICsKPj4gKyAgICAgICBzcGlu
+X2xvY2soJmVuZ2luZS0+aTkxNS0+dmdwdS5zaGFyZWRfcGFnZV9sb2NrW2VuZ2luZS0+aWRdKTsK
+PiBPbmx5IG9uZSBlbmdpbmUgYXQgYSB0aW1lIG5vdyBhY2Nlc3NlcyB0aGF0IHBvcnRpb24gb2Yg
+cHZfZWxzcCwgc28gdGhlCj4gc3BpbiBsb2NrIGlzIG5vdCByZXF1aXJlZCBwZXItc2UsIGFpdWku
+Cj4KPiBUaGUgcHJvYmxlbSBpcyB0aGF0IHRoZXJlIGlzIG5vIGNvb3JkaW5hdGlvbiBiZXR3ZWVu
+IHB2X3N1Ym1pdCBhbmQgdGhlCj4gb3RoZXIgc2lkZSBvZiB0aGUgcGlwZSwgYXMgZmFyIGFzIEkg
+Y2FuIHNlZS4gU28gaXQgc2VlbXMgdmVyeSBwb3NzaWJsZQo+IGZvciB1cyB0byBvdmVyd3JpdGUg
+ZW50cmllcyBiZWZvcmUgdGhleSBoYXZlIGJlZW4gcmVhZC4gSSBleHBlY3QgdG8gc2VlCj4gc29t
+ZSBhY2sgbWVjaGFuaXNtIGZvciBWR1RfRzJWX1BWX1NVQk1JU1NJT04uCj4KPj4gKyAgICAgICBm
+b3IgKG4gPSAwOyBuIDwgZXhlY2xpc3RzX251bV9wb3J0cyhleGVjbGlzdHMpOyBuKyspCj4+ICsg
+ICAgICAgICAgICAgICBzaGFyZWRfcGFnZS0+cHZfZWxzcFtlbmdpbmUtPmlkXS5kZXNjc1tuXSA9
+IGRlc2NzW25dOwo+IEknZCByZWNvbW1lbmQgbm90IHVzaW5nIGVuZ2luZS0+aWQsIHRoYXQncyBq
+dXN0IG91ciBpbnRlcm5hbCBpZCBhbmQgbWF5Cj4gdmFyeSBiZXR3ZWVuIGhvc3QvZ3Vlc3QuIFVz
+ZSBlbmdpbmUtPmh3X2lkPyBPciBuZWdvdGlhdGUgdXNpbmcgcHYgc2V0dXAKPiBhbmQgc3RvcmUg
+cHZfaWQ/Cj4KPiBCdXQgc3RhcnRpbmcgdG8gbG9vayBtb3JlIHNvbGlkIG92ZXIgYWxsLiBXZSBq
+dXN0IG5lZWQgdG8gZmluaXNoCj4gc3BsaXR0aW5nIG91dCB0aGUgdmFyaW91cyBzaW1pbGFyLWJ1
+dC1xdWl0ZS1kaWZmZXJlbnQtcmVhbGx5IHN1Ym1pc3Npb24KPiBiYWNrZW5kcy4gOikKPiAtQ2hy
+aXMKPgpDaHJpcywgVGhhbmtzIHlvdXIgZ3JlYXQgY29tbWVudHMgYW5kIHdpbGwgYmUgYWRkcmVz
+c2VkIG5leHQgdmVyc2lvbgood2lsbCByZW1vdmUgc3BpbiBsb2NrLCB1c2UgaHdfaWQsICBhZGQg
+YWNrIG1lY2hhbmlzbSBhbmQgcmVmaW5lIHBhdGNoZXMpLiAKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50
+ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
