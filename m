@@ -2,31 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B83A025DF5
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 May 2019 08:19:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ADB0925DF6
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 May 2019 08:20:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4D1E789760;
-	Wed, 22 May 2019 06:19:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6882589760;
+	Wed, 22 May 2019 06:20:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7573989760
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 69E7A89760
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 May 2019 06:19:56 +0000 (UTC)
+ Wed, 22 May 2019 06:20:21 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 May 2019 23:19:56 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 May 2019 23:20:20 -0700
 X-ExtLoop1: 1
 Received: from coxu-arch-shz.sh.intel.com ([10.239.160.22])
- by fmsmga001.fm.intel.com with ESMTP; 21 May 2019 23:19:55 -0700
+ by orsmga002.jf.intel.com with ESMTP; 21 May 2019 23:20:20 -0700
 From: Colin Xu <colin.xu@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: Return -EINVAL when cmd parser access shadowed
- mmio
-Date: Wed, 22 May 2019 14:19:52 +0800
-Message-Id: <20190522061952.13821-1-colin.xu@intel.com>
+Subject: [PATCH] drm/i915/gvt: Update force-to-nonpriv register whitelist
+Date: Wed, 22 May 2019 14:20:18 +0800
+Message-Id: <20190522062018.14017-1-colin.xu@intel.com>
 X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -47,21 +46,21 @@ Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Y21kX3JlZ19oYW5kbGVyKCkgZG9lc24ndCBhbGxvdyBhY2Nlc3Mgc2hhZG93ZWQgbW1pbyBidXQg
-c3RpbGwgcmV0dXJucyAwLgpSZXR1cm4gLUVJTlZBTCBpbnN0ZWFkIHNvIHRoYXQgY2FsbGVyIGNh
-biBoYW5kbGUgcHJvcGVybHkuCgpGaXhlczogYmUxZGE3MDcwYWVhICgiZHJtL2k5MTUvZ3Z0OiB2
-R1BVIGNvbW1hbmQgc2Nhbm5lciIpCgpTaWduZWQtb2ZmLWJ5OiBDb2xpbiBYdSA8Y29saW4ueHVA
-aW50ZWwuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9jbWRfcGFyc2VyLmMgfCAy
-ICstCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvY21kX3BhcnNlci5jIGIvZHJpdmVycy9n
-cHUvZHJtL2k5MTUvZ3Z0L2NtZF9wYXJzZXIuYwppbmRleCA1Y2I1OWMwYjRiYmUuLmM1MGVmMjA1
-MzI1YyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2NtZF9wYXJzZXIuYwor
-KysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvY21kX3BhcnNlci5jCkBAIC04NzgsNyArODc4
-LDcgQEAgc3RhdGljIGludCBjbWRfcmVnX2hhbmRsZXIoc3RydWN0IHBhcnNlcl9leGVjX3N0YXRl
-ICpzLAogCiAJaWYgKGlzX3NoYWRvd2VkX21taW8ob2Zmc2V0KSkgewogCQlndnRfdmdwdV9lcnIo
-ImZvdW5kIGFjY2VzcyBvZiBzaGFkb3dlZCBNTUlPICV4XG4iLCBvZmZzZXQpOwotCQlyZXR1cm4g
-MDsKKwkJcmV0dXJuIC1FSU5WQUw7CiAJfQogCiAJaWYgKGlzX21vY3NfbW1pbyhvZmZzZXQpICYm
-Ci0tIAoyLjIxLjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-aW50ZWwtZ3Z0LWRldg==
+SG9zdCBwcmludHMgYmVsb3cgd2FybmluZyBtZXNzYWdlIHdoZW4gZ3Vlc3QgcnVubmluZyBzb21l
+IGFwcGxpY2F0aW9uOgoiZ3Z0OiB2Z3B1KDEpIEludmFsaWQgRk9SQ0VfTk9OUFJJViB3cml0ZSAy
+NzU0IGF0IDI0ZjAiLgoiZ3Z0OiB2Z3B1KDEpIEludmFsaWQgRk9SQ0VfTk9OUFJJViB3cml0ZSAy
+OGEwIGF0IDI0ZjAiLgoKUmVnaXN0ZXJzIDB4Mjc1NCBhbmQgMHgyOGEwIGFyZSByZXF1aXJlZCBi
+eSBndWVzdCBzbyBhZGQgdG8gd2hpdGVsaXN0LgoKU2lnbmVkLW9mZi1ieTogQ29saW4gWHUgPGNv
+bGluLnh1QGludGVsLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMu
+YyB8IDIgKysKIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1
+L2d2dC9oYW5kbGVycy5jCmluZGV4IGUwOWJkNmUwY2M0ZC4uYjRmYzdmOTVjYmUxIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMuYworKysgYi9kcml2ZXJzL2dw
+dS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMuYwpAQCAtNDY0LDYgKzQ2NCw4IEBAIHN0YXRpYyBpOTE1
+X3JlZ190IGZvcmNlX25vbnByaXZfd2hpdGVfbGlzdFtdID0gewogCV9NTUlPKDB4MjY5MCksCiAJ
+X01NSU8oMHgyNjk0KSwKIAlfTU1JTygweDI2OTgpLAorCV9NTUlPKDB4Mjc1NCksCisJX01NSU8o
+MHgyOGEwKSwKIAlfTU1JTygweDRkZTApLAogCV9NTUlPKDB4NGRlNCksCiAJX01NSU8oMHg0ZGZj
+KSwKLS0gCjIuMjEuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9pbnRlbC1ndnQtZGV2
