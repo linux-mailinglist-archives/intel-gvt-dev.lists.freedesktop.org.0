@@ -2,34 +2,35 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BE19274AD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2019 05:02:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5AAD2775D
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2019 09:46:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 56C6789C18;
-	Thu, 23 May 2019 03:02:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 89772897CD;
+	Thu, 23 May 2019 07:46:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 43C6D89C18
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4A9C3897CD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 May 2019 03:02:10 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+ Thu, 23 May 2019 07:46:40 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 May 2019 20:02:09 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 May 2019 00:46:38 -0700
 X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by fmsmga007.fm.intel.com with ESMTP; 22 May 2019 20:02:08 -0700
-Date: Thu, 23 May 2019 11:01:04 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Colin Xu <colin.xu@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: Update force-to-nonpriv register whitelist
-Message-ID: <20190523030104.GQ12913@zhen-hp.sh.intel.com>
-References: <20190522062018.14017-1-colin.xu@intel.com>
+Received: from coxu-arch-shz.sh.intel.com (HELO [10.239.160.22])
+ ([10.239.160.22])
+ by orsmga002.jf.intel.com with ESMTP; 23 May 2019 00:46:37 -0700
+To: intel-gvt-dev@lists.freedesktop.org, colin.xu@intel.com
+From: Colin Xu <Colin.Xu@intel.com>
+Subject: [PATCH] drm/i915/gvt: Fix GFX_MODE handling
+Message-ID: <c4c97c60-ad1c-9669-aea7-d2a60b672848@intel.com>
+Date: Thu, 23 May 2019 15:46:37 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190522062018.14017-1-colin.xu@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Language: en-US
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -42,86 +43,34 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0696471983=="
+Reply-To: Colin.Xu@intel.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============0696471983==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="0jY2StU1AwXETVkK"
-Content-Disposition: inline
-
-
---0jY2StU1AwXETVkK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.05.22 14:20:18 +0800, Colin Xu wrote:
-> Host prints below warning message when guest running some application:
-> "gvt: vgpu(1) Invalid FORCE_NONPRIV write 2754 at 24f0".
-> "gvt: vgpu(1) Invalid FORCE_NONPRIV write 28a0 at 24f0".
->=20
-> Registers 0x2754 and 0x28a0 are required by guest so add to whitelist.
->=20
-> Signed-off-by: Colin Xu <colin.xu@intel.com>
-> ---
-
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
->  drivers/gpu/drm/i915/gvt/handlers.c | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/g=
-vt/handlers.c
-> index e09bd6e0cc4d..b4fc7f95cbe1 100644
-> --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> @@ -464,6 +464,8 @@ static i915_reg_t force_nonpriv_white_list[] =3D {
->  	_MMIO(0x2690),
->  	_MMIO(0x2694),
->  	_MMIO(0x2698),
-> +	_MMIO(0x2754),
-> +	_MMIO(0x28a0),
->  	_MMIO(0x4de0),
->  	_MMIO(0x4de4),
->  	_MMIO(0x4dfc),
-> --=20
-> 2.21.0
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---0jY2StU1AwXETVkK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOYM8AAKCRCxBBozTXgY
-J3SOAJ9BUqOuEpzq0NbIk0omhO6UDMl7rgCgn9b8cHNwXXcJslwsNhCYo0jWjEQ=
-=p3ar
------END PGP SIGNATURE-----
-
---0jY2StU1AwXETVkK--
-
---===============0696471983==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0696471983==--
+RW50ZXIgZmFpbHNhZmUgaWYgdmdwdSB0cmllcyB0byBjaGFuZ2UgR0ZYX01PREUgY29udHJvbGxl
+ZCBieSBob3N0LgoKU2lnbmVkLW9mZi1ieTogQ29saW4gWHU8Y29saW4ueHVAaW50ZWwuY29tPgot
+LS0KICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMuYyB8IDE0ICsrKysrKysrKysr
+KysrCiAgMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2
+dC9oYW5kbGVycy5jCmluZGV4IGI0ZmM3Zjk1Y2JlMS4uZWRiMTQxNjU4NWY1IDEwMDY0NAotLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMuYworKysgYi9kcml2ZXJzL2dwdS9k
+cm0vaTkxNS9ndnQvaGFuZGxlcnMuYwpAQCAtMTY5Miw4ICsxNjkyLDIyIEBAIHN0YXRpYyBpbnQg
+cmluZ19tb2RlX21taW9fd3JpdGUoc3RydWN0IGludGVsX3ZncHUgKnZncHUsIHVuc2lnbmVkIGlu
+dCBvZmZzZXQsCiAgCWJvb2wgZW5hYmxlX2V4ZWNsaXN0OwogIAlpbnQgcmV0OwogIAorCSgqKHUz
+MiAqKXBfZGF0YSkgJj0gfl9NQVNLRURfQklUX0VOQUJMRSgxKTsKKwlpZiAoSVNfQ09GRkVFTEFL
+RSh2Z3B1LT5ndnQtPmRldl9wcml2KSkKKwkJKCoodTMyICopcF9kYXRhKSAmPSB+X01BU0tFRF9C
+SVRfRU5BQkxFKDIpOwogIAl3cml0ZV92cmVnKHZncHUsIG9mZnNldCwgcF9kYXRhLCBieXRlcyk7
+CiAgCisJaWYgKGRhdGEgJiBfTUFTS0VEX0JJVF9FTkFCTEUoMSkpIHsKKwkJZW50ZXJfZmFpbHNh
+ZmVfbW9kZSh2Z3B1LCBHVlRfRkFJTFNBRkVfVU5TVVBQT1JURURfR1VFU1QpOworCQlyZXR1cm4g
+MDsKKwl9CisKKwlpZiAoSVNfQ09GRkVFTEFLRSh2Z3B1LT5ndnQtPmRldl9wcml2KSAmJgorCSAg
+ICBkYXRhICYgX01BU0tFRF9CSVRfRU5BQkxFKDIpKSB7CisJCWVudGVyX2ZhaWxzYWZlX21vZGUo
+dmdwdSwgR1ZUX0ZBSUxTQUZFX1VOU1VQUE9SVEVEX0dVRVNUKTsKKwkJcmV0dXJuIDA7CisJfQor
+CiAgCS8qIHdoZW4gUFBHVFQgbW9kZSBlbmFibGVkLCB3ZSB3aWxsIGNoZWNrIGlmIGd1ZXN0IGhh
+cyBjYWxsZWQKICAJICogcHZpbmZvLCBpZiBub3QsIHdlIHdpbGwgdHJlYXQgdGhpcyBndWVzdCBh
+cyBub24tZ3Z0Zy1hd2FyZQogIAkgKiBndWVzdCwgYW5kIHN0b3AgZW11bGF0aW5nIGl0cyBjZmcg
+c3BhY2UsIG1taW8sIGd0dCwgZXRjLgoKLS0gCjIuMjEuMAoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50
+ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
