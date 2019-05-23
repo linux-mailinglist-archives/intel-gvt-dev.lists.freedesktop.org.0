@@ -1,33 +1,36 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F191F273EF
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2019 03:21:46 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 432B927488
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2019 04:47:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C291289C5E;
-	Thu, 23 May 2019 01:21:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BA69489C52;
+	Thu, 23 May 2019 02:47:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4D66989C5E
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 64A2A89C52
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 May 2019 01:21:44 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Thu, 23 May 2019 02:47:34 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 May 2019 18:21:43 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 May 2019 19:47:33 -0700
 X-ExtLoop1: 1
-Received: from xzhan34-mobl3.bj.intel.com ([10.238.154.54])
- by fmsmga007.fm.intel.com with ESMTP; 22 May 2019 18:21:42 -0700
-From: Xiaolin Zhang <xiaolin.zhang@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH V3] drm/i915/gvt: save RING_HEAD into vreg when vgpu switched
- out
-Date: Thu, 23 May 2019 09:21:41 +0800
-Message-Id: <1558574501-8229-1-git-send-email-xiaolin.zhang@intel.com>
-X-Mailer: git-send-email 2.7.4
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by orsmga008.jf.intel.com with ESMTP; 22 May 2019 19:47:32 -0700
+Date: Thu, 23 May 2019 10:46:28 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Tina Zhang <tina.zhang@intel.com>
+Subject: Re: [PATCH v2] drm/i915/gvt: Add set_ggtt_entry tracing event
+Message-ID: <20190523024628.GM12913@zhen-hp.sh.intel.com>
+References: <20190522221114.3548-1-tina.zhang@intel.com>
+MIME-Version: 1.0
+In-Reply-To: <20190522221114.3548-1-tina.zhang@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -40,36 +43,117 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============0353223383=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-dG8gc2F2ZSBSSU5HX0hFQUQgaW50byB2Z3B1IHJlZyB3aGVuIHZncHUgc3dpdGNoZWQgb3V0IGFu
-ZCByZXBvcnQKaXQncyB2YWx1ZSBiYWNrIHRvIGd1ZXN0LgoKdjM6IHNhdmUgUklORyBIRUFEL1RB
-SUwgdmdwdSByZWcgaW4gc2F2ZV9yaW5nX2h3X3N0YXRlLiAoWmhlbnl1IFdhbmcpCnYyOiBzYXZl
-IFJJTkdfVEFJTCBhcyB3ZWxsIGR1cmluZyB2Z3B1IG1taW8gc3dpdGNoIHRvIG1lZXQgcmluZ19p
-c19pZGxlCmNvbmRpdGlvbi4gKEZyZWQgR2FvKQp2MTogYmFzZWQgb24gaW5wdXQgZnJvbSBXZWlu
-YW4uIChXZWluYW4gTGkpCgpGaXhlczogNTE5YTAxOTQ5MWI4ICgiZHJtL2k5MTUvaGFuZ2NoZWNr
-OiBSZXBsYWNlIGhhbmdjaGVjay5zZXFubyB3aXRoIFJJTkdfSEVBRCIpCgpTaWduZWQtb2ZmLWJ5
-OiBYaWFvbGluIFpoYW5nIDx4aWFvbGluLnpoYW5nQGludGVsLmNvbT4KLS0tCiBkcml2ZXJzL2dw
-dS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMgfCA0ICsrKysKIDEgZmlsZSBjaGFuZ2VkLCA0IGlu
-c2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1
-bGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMKaW5kZXggMzg4OTdk
-Mi4uMzUzYjRkMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxl
-ci5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYwpAQCAtMjE4LDYg
-KzIxOCwxMCBAQCBzdGF0aWMgdm9pZCBzYXZlX3JpbmdfaHdfc3RhdGUoc3RydWN0IGludGVsX3Zn
-cHUgKnZncHUsIGludCByaW5nX2lkKQogCXZncHVfdnJlZyh2Z3B1LCBpOTE1X21taW9fcmVnX29m
-ZnNldChyZWcpKSA9IEk5MTVfUkVBRF9GVyhyZWcpOwogCXJlZyA9IFJJTkdfQUNUSERfVURXKHJp
-bmdfYmFzZSk7CiAJdmdwdV92cmVnKHZncHUsIGk5MTVfbW1pb19yZWdfb2Zmc2V0KHJlZykpID0g
-STkxNV9SRUFEX0ZXKHJlZyk7CisJcmVnID0gUklOR19IRUFEKHJpbmdfYmFzZSk7CisJdmdwdV92
-cmVnKHZncHUsIGk5MTVfbW1pb19yZWdfb2Zmc2V0KHJlZykpID0gSTkxNV9SRUFEX0ZXKHJlZyk7
-CisJcmVnID0gUklOR19UQUlMKHJpbmdfYmFzZSk7CisJdmdwdV92cmVnKHZncHUsIGk5MTVfbW1p
-b19yZWdfb2Zmc2V0KHJlZykpID0gSTkxNV9SRUFEX0ZXKHJlZyk7CiB9CiAKIHN0YXRpYyBpbnQg
-c2hhZG93X2NvbnRleHRfc3RhdHVzX2NoYW5nZShzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgKm5iLAot
-LSAKMi43LjQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50
-ZWwtZ3Z0LWRldg==
+
+--===============0353223383==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="KKlV3Q509gERURet"
+Content-Disposition: inline
+
+
+--KKlV3Q509gERURet
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.23 06:11:14 +0800, Tina Zhang wrote:
+> Add set_ggtt_entry tracing event.
+>=20
+> v2:
+> - Add index field. (Zhenyu)
+>=20
+> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c   |  1 +
+>  drivers/gpu/drm/i915/gvt/trace.h | 22 ++++++++++++++++++++++
+>  2 files changed, 23 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index c2f7d20f6346..15216c5b40aa 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -629,6 +629,7 @@ static void ggtt_set_host_entry(struct intel_vgpu_mm =
+*mm,
+>  	struct intel_gvt_gtt_pte_ops *pte_ops =3D mm->vgpu->gvt->gtt.pte_ops;
+> =20
+>  	GEM_BUG_ON(mm->type !=3D INTEL_GVT_MM_GGTT);
+> +	trace_set_ggtt_entry(mm->vgpu->id, entry->val64, index);
+> =20
+>  	pte_ops->set_entry(NULL, entry, index, false, 0, mm->vgpu);
+>  }
+> diff --git a/drivers/gpu/drm/i915/gvt/trace.h b/drivers/gpu/drm/i915/gvt/=
+trace.h
+> index 6d787750d279..981cc36eb50f 100644
+> --- a/drivers/gpu/drm/i915/gvt/trace.h
+> +++ b/drivers/gpu/drm/i915/gvt/trace.h
+> @@ -373,6 +373,28 @@ TRACE_EVENT(render_mmio,
+>  		  __entry->old_val, __entry->new_val)
+>  );
+> =20
+> +TRACE_EVENT(set_ggtt_entry,
+> +	TP_PROTO(int id, unsigned long address,
+> +		    unsigned long index),
+> +
+
+Better stick with u64 for address type and use proper 0x%llx below for prin=
+tk.
+
+> +	TP_ARGS(id, address, index),
+> +
+> +	TP_STRUCT__entry(
+> +		__field(int, id)
+> +		__field(unsigned long, address)
+> +		__field(unsigned long, index)
+> +	),
+> +
+> +	TP_fast_assign(
+> +		__entry->id =3D id;
+> +		__entry->address =3D address;
+> +		__entry->index =3D index;
+> +	),
+> +
+> +	TP_printk("vgpu%d:set ggtt entry 0x%lx, index 0x%lx\n",
+> +		  __entry->id, __entry->address, __entry->index)
+> +);
+> +
+>  #endif /* _GVT_TRACE_H_ */
+> =20
+>  /* This part must be out of protection */
+> --=20
+> 2.17.1
+>=20
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--KKlV3Q509gERURet
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOYJhAAKCRCxBBozTXgY
+J+lwAJ96w1ilIFgvmpi7+4Cx2oUsilUWggCfa5pjtG75pa38PHd3EHFgOTrLmN0=
+=fcQV
+-----END PGP SIGNATURE-----
+
+--KKlV3Q509gERURet--
+
+--===============0353223383==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0353223383==--
