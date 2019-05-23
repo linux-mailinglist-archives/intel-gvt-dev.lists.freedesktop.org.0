@@ -1,37 +1,50 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8321827A04
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2019 12:07:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D673027B0E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2019 12:49:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4309789D7B;
-	Thu, 23 May 2019 10:07:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8E50789D99;
+	Thu, 23 May 2019 10:49:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C928389D7B
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AA1E889DA2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 May 2019 10:07:12 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga107.fm.intel.com with ESMTP; 23 May 2019 03:07:12 -0700
-X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga002.jf.intel.com with ESMTP; 23 May 2019 03:07:11 -0700
-Date: Thu, 23 May 2019 18:06:06 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
+ Thu, 23 May 2019 10:49:56 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id E757E307D976;
+ Thu, 23 May 2019 10:49:50 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-101.ams2.redhat.com
+ [10.36.116.101])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 617EB65F42;
+ Thu, 23 May 2019 10:49:49 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 9E29C16E08; Thu, 23 May 2019 12:49:48 +0200 (CEST)
+Date: Thu, 23 May 2019 12:49:48 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
 To: "Zhang, Tina" <tina.zhang@intel.com>
-Subject: Re: [PATCH v2] drm/i915/gvt: Add set_ggtt_entry tracing event
-Message-ID: <20190523100606.GV12913@zhen-hp.sh.intel.com>
-References: <20190522221114.3548-1-tina.zhang@intel.com>
- <20190523024628.GM12913@zhen-hp.sh.intel.com>
- <237F54289DF84E4997F34151298ABEBC8761D637@SHSMSX101.ccr.corp.intel.com>
+Subject: Re: [RFC PATCH v2 0/3] drm/i915/gvt: Enable vGPU local display
+ direct flip
+Message-ID: <20190523104948.i6kzvmpiziopsng2@sirius.home.kraxel.org>
+References: <1557461728-2831-1-git-send-email-tina.zhang@intel.com>
+ <20190521111143.jdlh6ujnayetmlqw@sirius.home.kraxel.org>
+ <237F54289DF84E4997F34151298ABEBC8761B311@SHSMSX101.ccr.corp.intel.com>
+ <20190521193944.45cgchkcqqsv5jml@sirius.home.kraxel.org>
+ <237F54289DF84E4997F34151298ABEBC8761BFC3@SHSMSX101.ccr.corp.intel.com>
+ <20190522084933.nwbyyb6bbbg5pgk5@sirius.home.kraxel.org>
+ <237F54289DF84E4997F34151298ABEBC8761D5E9@SHSMSX101.ccr.corp.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <237F54289DF84E4997F34151298ABEBC8761D637@SHSMSX101.ccr.corp.intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Disposition: inline
+In-Reply-To: <237F54289DF84E4997F34151298ABEBC8761D5E9@SHSMSX101.ccr.corp.intel.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.48]); Thu, 23 May 2019 10:49:56 +0000 (UTC)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -44,135 +57,54 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Content-Type: multipart/mixed; boundary="===============1692918551=="
+Cc: "Tian, Kevin" <kevin.tian@intel.com>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>,
+ "ville.syrjala@linux.intel.com" <ville.syrjala@linux.intel.com>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "Kondapally, Kalyan" <kalyan.kondapally@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1692918551==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="TfggMnVLY53OX7Tb"
-Content-Disposition: inline
-
-
---TfggMnVLY53OX7Tb
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.05.23 09:33:18 +0000, Zhang, Tina wrote:
->=20
->=20
-> > -----Original Message-----
-> > From: Zhenyu Wang [mailto:zhenyuw@linux.intel.com]
-> > Sent: Thursday, May 23, 2019 10:46 AM
-> > To: Zhang, Tina <tina.zhang@intel.com>
-> > Cc: intel-gvt-dev@lists.freedesktop.org
-> > Subject: Re: [PATCH v2] drm/i915/gvt: Add set_ggtt_entry tracing event
-> >=20
-> > On 2019.05.23 06:11:14 +0800, Tina Zhang wrote:
-> > > Add set_ggtt_entry tracing event.
-> > >
-> > > v2:
-> > > - Add index field. (Zhenyu)
-> > >
-> > > Signed-off-by: Tina Zhang <tina.zhang@intel.com>
-> > > ---
-> > >  drivers/gpu/drm/i915/gvt/gtt.c   |  1 +
-> > >  drivers/gpu/drm/i915/gvt/trace.h | 22 ++++++++++++++++++++++
-> > >  2 files changed, 23 insertions(+)
-> > >
-> > > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c
-> > > b/drivers/gpu/drm/i915/gvt/gtt.c index c2f7d20f6346..15216c5b40aa
-> > > 100644
-> > > --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> > > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> > > @@ -629,6 +629,7 @@ static void ggtt_set_host_entry(struct
-> > intel_vgpu_mm *mm,
-> > >  	struct intel_gvt_gtt_pte_ops *pte_ops =3D mm->vgpu->gvt-
-> > >gtt.pte_ops;
-> > >
-> > >  	GEM_BUG_ON(mm->type !=3D INTEL_GVT_MM_GGTT);
-> > > +	trace_set_ggtt_entry(mm->vgpu->id, entry->val64, index);
-> > >
-> > >  	pte_ops->set_entry(NULL, entry, index, false, 0, mm->vgpu);  } diff
-> > > --git a/drivers/gpu/drm/i915/gvt/trace.h
-> > > b/drivers/gpu/drm/i915/gvt/trace.h
-> > > index 6d787750d279..981cc36eb50f 100644
-> > > --- a/drivers/gpu/drm/i915/gvt/trace.h
-> > > +++ b/drivers/gpu/drm/i915/gvt/trace.h
-> > > @@ -373,6 +373,28 @@ TRACE_EVENT(render_mmio,
-> > >  		  __entry->old_val, __entry->new_val)  );
-> > >
-> > > +TRACE_EVENT(set_ggtt_entry,
-> > > +	TP_PROTO(int id, unsigned long address,
-> > > +		    unsigned long index),
-> > > +
-> >=20
-> > Better stick with u64 for address type and use proper 0x%llx below for =
-printk.
-> About type, do you mean ggtt or ppgtt? We only trace ggtt here. Thanks.
->=20
-
-I mean for ggtt entry's val64.
-
-> >=20
-> > > +	TP_ARGS(id, address, index),
-> > > +
-> > > +	TP_STRUCT__entry(
-> > > +		__field(int, id)
-> > > +		__field(unsigned long, address)
-> > > +		__field(unsigned long, index)
-> > > +	),
-> > > +
-> > > +	TP_fast_assign(
-> > > +		__entry->id =3D id;
-> > > +		__entry->address =3D address;
-> > > +		__entry->index =3D index;
-> > > +	),
-> > > +
-> > > +	TP_printk("vgpu%d:set ggtt entry 0x%lx, index 0x%lx\n",
-> > > +		  __entry->id, __entry->address, __entry->index) );
-> > > +
-> > >  #endif /* _GVT_TRACE_H_ */
-> > >
-> > >  /* This part must be out of protection */
-> > > --
-> > > 2.17.1
-> > >
-> >=20
-> > --
-> > Open Source Technology Center, Intel ltd.
-> >=20
-> > $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---TfggMnVLY53OX7Tb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOZwjgAKCRCxBBozTXgY
-JxlsAJ9e2keXEZ/8eOatdpqXUgd7R6ZrLQCePNKuAncus74IIcOwmRPsWZxfQ9w=
-=0hIy
------END PGP SIGNATURE-----
-
---TfggMnVLY53OX7Tb--
-
---===============1692918551==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1692918551==--
+ICBIaSwKCj4gPiBTbywgZG1hYnVmIG9iamVjdCB5b3UnbGwgZ2V0IGlzIHRoZSBzYW1lIHRoaW5n
+IG5vIG1hdHRlciB3aGVuZXZlciB0aGUKPiA+IHN3aXRjaCBpcyBvbiBvciBvZmY/ICBCdXQgd2hl
+biBpbXBvcnRpbmcgdGhlIGRtYWJ1ZiBhbmQgY3JlYXRpbmcgYQo+ID4gZHJtX2ZyYW1lYnVmZmVy
+IGZyb20gaXQgeW91IGdldCB0cmFkaXRpb25hbCBmcmFtZWJ1ZmZlciB3aXRoIHRoZSBzd2l0Y2gK
+PiA+IGJlaW5nIG9mZiBhbmQgYSBmcmFtZWJ1ZmZlciB3aXRoIGluLWtlcm5lbCBwYWdlLWZsaXAg
+c3VwcG9ydCBpbiBjYXNlIHRoZQo+ID4gc3dpdGNoIGlzIG9uPwoKPiBUaGUgdXNlciBzcGFjZSBj
+YW4gdXNlIGRtYWJ1ZiBpbiB0aGUgdHJhZGl0aW9uYWwgd2F5LCBubyBtYXR0ZXIgdGhlCj4gc3dp
+dGNoIGlzIG9uIG9yIG9mZi4gVGhlIGZyYW1lYnVmZmVyIGZyb20gdGhlIGRybWJ1ZiBpcyBkaWZm
+ZXJlbnQgd2l0aAo+IHRoZSBvbmUgaW4gZ3Z0LWcgZm9yICJpbi1rZXJuZWwiIGRpcmVjdCBmbGlw
+LgoKT0suCgo+IElmIHN3aXRjaCBpcyBvZmYsIGRtYWJ1ZiB0aHJlYWQgbWlnaHQgYmUgdGhlIG9u
+bHkgdGhyZWFkIHdoaWNoIGNhbgo+IHRyaWdnZXIgdGhlIHBhZ2UgZmlscCBpbiB1c2VyIHNwYWNl
+LiBJZiB0aGUgc3dpdGNoIGlzIG9uLCBib3RoIGRtYWJ1Zgo+IHRocmVhZCBpbiB1c2VyIHNwYWNl
+IGFuZCBndnQtZyBpbiBrZXJuZWwgc3BhY2UgY2FuIHRyaWdnZXIgdGhlIHBhZ2UKPiBmbGlwLiBI
+b3dldmVyLCBpbiBjYXNlIG9mIHN3aXRjaD1vbiwgZG1hYnVmIHRocmVhZCBpbiB1c2VyIHNwYWNl
+IGlzCj4gZXhwZWN0ZWQgdG8gc3RvcCBmbGlwcGluZywgYXMgZ3Z0LWcgaXMgZG9pbmcgaXQgZmFz
+dGVyIGluIGtlcm5lbC4KCkhhdmluZyB0aGUgc3dpdGNoIGluIHN5c2ZzIGlzIG9rIGZvciB0aGUg
+cHJvb2Ytb2YtY29uY2VwdCwgYnV0IGxvbmctdGVybQp3ZSBuZWVkIHNvbWV0aGluZyBiZXR0ZXIu
+ICBGaXJzdCwgc29tZSB3YXkgdG8gZGV0ZWN0IHdoZW5ldmVyIHRoZQppbi1rZXJuZWwgcGFnZS1m
+bGlwIGlzIHN1cHBvcnRlZCBvciBub3Qgd291bGQgYmUgZ29vZC4gIEFsc28gSSB0aGluawp1c2Vy
+c3BhY2Ugc2hvdWxkIGJlIGFibGUgdG8gcmVxdWVzdCB0aGUgZGVzaXJlZCBiZWhhdmlvciB3aGVu
+IGNyZWF0aW5nCnRoZSBmcmFtZWJ1ZmZlci4gIE1heWJlIGFkZCBhIGZsYWcgZm9yIGRybU1vZGVB
+ZGRGQjJXaXRoTW9kaWZpZXJzKCk/Ck9yIHVzZSBhIHNwZWNpYWwgbW9kaWZpZXI/Cgo+ID4gWWVz
+LiAgZHJtIG91dHB1dCBzaG91bGRuJ3QgYmUgaGFyZCB0byB3aXJlIHVwLiAgSGFuZGxpbmcgaW5w
+dXQgd2lsbCBiZSBhIGJpdAo+ID4gbW9yZSB0cmlja3kgdGhvdWdoLgo+IEhvdyBhYm91dCBwYXNz
+aW5nIHRocm91Z2ggdGhlIGlucHV0IGRldmljZXMgdG8gZ3Vlc3RzPyBJdCBzZWVtcyBlYXNpZXIu
+Cgpkcm0gVUkgdXNlcyBsaWJpbnB1dC4KCldoZW4gc3RhcnRlZCBkaXJlY3RseSBmcm9tIHRoZSBj
+b25zb2xlIGFuZCBvcGVyYXRpbmcgaW4gZHJtLW1hc3RlciBtb2RlCnFlbXUgY2FuIHNpbXBseSBn
+cmFiIGFsbCBpbnB1dCBkZXZpY2VzIHdoaWNoIGJlbG9uZyB0byB0aGUgc2VhdC4KCldoZW4gcnVu
+bmluZyBvbiBhIGRybS1sZWFzZSB0aGF0IHdvdWxkIGJlIGEgYml0IHJ1ZGUuICBBbHNvIEkgZG9u
+J3QKdGhpbmsgbG9naW5kIHdpbGwgaGFuZCBvdXQgaW5wdXQgZmlsZSBoYW5kbGVzIGluIHRoYXQg
+Y2FzZS4gIEluIGNhc2UKdGhlcmUgYXJlIGRlZGljYXRlZCBpbnB1dCBkZXZpY2VzIGZvciB0aGUg
+Z3Vlc3QgeW91IGNhbiB1c2UgaW5wdXQtbGludXgKb3IgdXNiIHBhc3MtdGhyb3VnaC4gIElmIG5v
+dCwgdGhlbiwgaG1tLCBubyBpZGVhLgoKPiBBbmQgdGhlICJ0b3BpYy9kcm0tdWktZGlyZWN0LWZs
+aXAiIGJyYW5jaCBpcyB0cmFja2luZyBkcm0gdWkgYnJhbmNoLgoKQ29vbCwgdGhhbmtzLCBJJ2xs
+IHBsYXkgd2l0aCB0aGF0LgoKY2hlZXJzLAogIEdlcmQKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVs
+LWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
