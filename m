@@ -2,41 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FEC82ADFC
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 May 2019 07:21:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D6A512ADFF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 May 2019 07:27:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C3F789739;
-	Mon, 27 May 2019 05:21:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9F61989395;
+	Mon, 27 May 2019 05:27:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DC0A089739
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 019B289395
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 May 2019 05:21:43 +0000 (UTC)
+ Mon, 27 May 2019 05:27:05 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 May 2019 22:21:43 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 May 2019 22:27:06 -0700
 X-ExtLoop1: 1
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by orsmga007.jf.intel.com with ESMTP; 26 May 2019 22:21:42 -0700
-Received: from fmsmsx119.amr.corp.intel.com (10.18.124.207) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Sun, 26 May 2019 22:21:42 -0700
-Received: from shsmsx152.ccr.corp.intel.com (10.239.6.52) by
- FMSMSX119.amr.corp.intel.com (10.18.124.207) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Sun, 26 May 2019 22:21:42 -0700
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by fmsmga008.fm.intel.com with ESMTP; 26 May 2019 22:27:05 -0700
+Received: from FMSMSX110.amr.corp.intel.com (10.18.116.10) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Sun, 26 May 2019 22:27:05 -0700
+Received: from shsmsx102.ccr.corp.intel.com (10.239.4.154) by
+ fmsmsx110.amr.corp.intel.com (10.18.116.10) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Sun, 26 May 2019 22:27:04 -0700
 Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.129]) by
- SHSMSX152.ccr.corp.intel.com ([169.254.6.18]) with mapi id 14.03.0415.000;
- Mon, 27 May 2019 13:21:41 +0800
+ shsmsx102.ccr.corp.intel.com ([169.254.2.249]) with mapi id 14.03.0415.000;
+ Mon, 27 May 2019 13:27:03 +0800
 From: "Zhang, Tina" <tina.zhang@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Subject: RE: [PATCH] drm/i915/gvt: Pin vgpu dma address before using
 Thread-Topic: [PATCH] drm/i915/gvt: Pin vgpu dma address before using
 Thread-Index: AQHVEd2LEfmqR9xIuUqKiEIxJ4MRF6Z5Uf4AgAUesbA=
-Date: Mon, 27 May 2019 05:21:41 +0000
-Message-ID: <237F54289DF84E4997F34151298ABEBC876204E5@SHSMSX101.ccr.corp.intel.com>
+Date: Mon, 27 May 2019 05:27:02 +0000
+Message-ID: <237F54289DF84E4997F34151298ABEBC8762050D@SHSMSX101.ccr.corp.intel.com>
 References: <20190524025954.3031-1-tina.zhang@intel.com>
  <20190524065714.GX12913@zhen-hp.sh.intel.com>
 In-Reply-To: <20190524065714.GX12913@zhen-hp.sh.intel.com>
