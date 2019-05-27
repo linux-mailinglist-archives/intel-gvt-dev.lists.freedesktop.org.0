@@ -2,55 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6A512ADFF
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 May 2019 07:27:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B33252AE31
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 May 2019 07:40:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9F61989395;
-	Mon, 27 May 2019 05:27:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 73E21897B4;
+	Mon, 27 May 2019 05:40:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 019B289395
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0CC70897B4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 May 2019 05:27:05 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Mon, 27 May 2019 05:40:15 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 May 2019 22:27:06 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 May 2019 22:40:15 -0700
 X-ExtLoop1: 1
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by fmsmga008.fm.intel.com with ESMTP; 26 May 2019 22:27:05 -0700
-Received: from FMSMSX110.amr.corp.intel.com (10.18.116.10) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Sun, 26 May 2019 22:27:05 -0700
-Received: from shsmsx102.ccr.corp.intel.com (10.239.4.154) by
- fmsmsx110.amr.corp.intel.com (10.18.116.10) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Sun, 26 May 2019 22:27:04 -0700
-Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.129]) by
- shsmsx102.ccr.corp.intel.com ([169.254.2.249]) with mapi id 14.03.0415.000;
- Mon, 27 May 2019 13:27:03 +0800
-From: "Zhang, Tina" <tina.zhang@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: RE: [PATCH] drm/i915/gvt: Pin vgpu dma address before using
-Thread-Topic: [PATCH] drm/i915/gvt: Pin vgpu dma address before using
-Thread-Index: AQHVEd2LEfmqR9xIuUqKiEIxJ4MRF6Z5Uf4AgAUesbA=
-Date: Mon, 27 May 2019 05:27:02 +0000
-Message-ID: <237F54289DF84E4997F34151298ABEBC8762050D@SHSMSX101.ccr.corp.intel.com>
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga005.fm.intel.com with ESMTP; 26 May 2019 22:40:14 -0700
+Date: Mon, 27 May 2019 13:39:01 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Zhang, Tina" <tina.zhang@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: Pin vgpu dma address before using
+Message-ID: <20190527053901.GD12913@zhen-hp.sh.intel.com>
 References: <20190524025954.3031-1-tina.zhang@intel.com>
  <20190524065714.GX12913@zhen-hp.sh.intel.com>
-In-Reply-To: <20190524065714.GX12913@zhen-hp.sh.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMjc0MTk0ODItNDM3YS00ZmIzLTg0ZWMtYjI0MDAwMzQwZDFjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRmk4RHRCRG5yczM3bFRNYmY0TERpbis4OXJvSFJUb3F0VktKbktPMzY3WFRiTzMwemltV0doQ0J2ZmljdmtUTSJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.600.7
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
+ <237F54289DF84E4997F34151298ABEBC876204E5@SHSMSX101.ccr.corp.intel.com>
 MIME-Version: 1.0
+In-Reply-To: <237F54289DF84E4997F34151298ABEBC876204E5@SHSMSX101.ccr.corp.intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,170 +45,344 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Cc: "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>, "Yuan, Hang" <hang.yuan@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ <intel-gvt-dev@lists.freedesktop.org>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ "Yuan, Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============1191419688=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Cgo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4gRnJvbTogWmhlbnl1IFdhbmcgW21haWx0
-bzp6aGVueXV3QGxpbnV4LmludGVsLmNvbV0KPiBTZW50OiBGcmlkYXksIE1heSAyNCwgMjAxOSAy
-OjU3IFBNCj4gVG86IFpoYW5nLCBUaW5hIDx0aW5hLnpoYW5nQGludGVsLmNvbT4KPiBDYzogaW50
-ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc7IFl1YW4sIEhhbmcgPGhhbmcueXVhbkBp
-bnRlbC5jb20+Cj4gU3ViamVjdDogUmU6IFtQQVRDSF0gZHJtL2k5MTUvZ3Z0OiBQaW4gdmdwdSBk
-bWEgYWRkcmVzcyBiZWZvcmUgdXNpbmcKPiAKPiBPbiAyMDE5LjA1LjI0IDEwOjU5OjU0ICswODAw
-LCBUaW5hIFpoYW5nIHdyb3RlOgo+ID4gRG1hLWJ1ZiBkaXNwbGF5IHVzZXMgdGhlIHZncHUgZG1h
-IGFkZHJlc3Mgc2F2ZWQgaW4gdGhlIGd1ZXN0IHBhcnQgR0dUVAo+ID4gdGFibGUgd2hpY2ggaXMg
-dXBkYXRlZCBieSB2Q1BVIHRocmVhZC4gSW4gaG9zdCBzaWRlLCB3aGVuIHRoZSBkbWEKPiA+IGFk
-ZHJlc3MgaXMgdXNlZCBieSBxZW11IHVpIHRocmVhZCwgZ3Z0LWcgbXVzdCBtYWtlIHN1cmUgdGhl
-IGRtYQo+ID4gYWRkcmVzcyBpcyB2YWxpZGF0ZWQgYmVmb3JlIGxldHRpbmcgaXQgZ28gdG8gdGhl
-IEhXLiBJbnZhbGlkIGd1ZXN0IGRtYQo+ID4gYWRkcmVzcyB3aWxsIGVhc2lseSBjYXVzZSBETUEg
-ZmF1bHQgYW5kIG1ha2UgR1BVIGhhbmcuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogVGluYSBaaGFu
-ZyA8dGluYS56aGFuZ0BpbnRlbC5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vaTkx
-NS9ndnQvZG1hYnVmLmMgICAgfCA1OQo+ICsrKysrKysrKysrKysrKysrKysrKysrKysrLS0KPiA+
-ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaHlwZXJjYWxsLmggfCAgMiArCj4gPiAgZHJpdmVy
-cy9ncHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMgICAgIHwgMjcgKysrKysrKysrKysrKwo+ID4gIGRy
-aXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tcHQuaCAgICAgICB8IDE0ICsrKysrKysKPiA+ICA0IGZp
-bGVzIGNoYW5nZWQsIDk5IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gPgo+ID4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9kbWFidWYuYwo+ID4gYi9kcml2ZXJz
-L2dwdS9kcm0vaTkxNS9ndnQvZG1hYnVmLmMKPiA+IGluZGV4IGI2ZDkzMTc1YmRkZi4uOWRiNDMy
-OGU5NzMyIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2RtYWJ1Zi5j
-Cj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZG1hYnVmLmMKPiA+IEBAIC0zNiwx
-MCArMzYsMjggQEAKPiA+Cj4gPiAgI2RlZmluZSBHRU44X0RFQ09ERV9QVEUocHRlKSAocHRlICYg
-R0VOTUFTS19VTEwoNjMsIDEyKSkKPiA+Cj4gPiArc3RhdGljIGludCB2Z3B1X3Bpbl9kbWFfYWRk
-cmVzcyhzdHJ1Y3QgaW50ZWxfdmdwdSAqdmdwdSwgdW5zaWduZWQgbG9uZwo+IHNpemUsCj4gPiAr
-CQlkbWFfYWRkcl90IGRtYV9hZGRyKQo+ID4gK3sKPiA+ICsJaW50IHJldCA9IDA7Cj4gPiArCj4g
-PiArCWlmIChpbnRlbF9ndnRfaHlwZXJ2aXNvcl9kbWFfZ2V0X2d1ZXN0X3BhZ2UodmdwdSwgZG1h
-X2FkZHIpKQo+ID4gKwkJcmV0ID0gLUVOT01FTTsKPiA+ICsKPiA+ICsJcmV0dXJuIHJldDsKPiA+
-ICt9Cj4gPiArCj4gPiArc3RhdGljIHZvaWQgdmdwdV91bnBpbl9kbWFfYWRkcmVzcyhzdHJ1Y3Qg
-aW50ZWxfdmdwdSAqdmdwdSwKPiA+ICsJCQkJICBkbWFfYWRkcl90IGRtYV9hZGRyKQo+ID4gK3sK
-PiA+ICsJaW50ZWxfZ3Z0X2h5cGVydmlzb3JfZG1hX3VubWFwX2d1ZXN0X3BhZ2UodmdwdSwgZG1h
-X2FkZHIpOyB9Cj4gPiArCj4gPiAgc3RhdGljIGludCB2Z3B1X2dlbV9nZXRfcGFnZXMoCj4gPiAg
-CQlzdHJ1Y3QgZHJtX2k5MTVfZ2VtX29iamVjdCAqb2JqKQo+ID4gIHsKPiA+ICAJc3RydWN0IGRy
-bV9pOTE1X3ByaXZhdGUgKmRldl9wcml2ID0gdG9faTkxNShvYmotPmJhc2UuZGV2KTsKPiA+ICsJ
-c3RydWN0IGludGVsX3ZncHUgKnZncHU7Cj4gPiAgCXN0cnVjdCBzZ190YWJsZSAqc3Q7Cj4gPiAg
-CXN0cnVjdCBzY2F0dGVybGlzdCAqc2c7Cj4gPiAgCWludCBpLCByZXQ7Cj4gPiBAQCAtNTAsNiAr
-NjgsMTAgQEAgc3RhdGljIGludCB2Z3B1X2dlbV9nZXRfcGFnZXMoCj4gPiAgCWlmIChXQVJOX09O
-KCFmYl9pbmZvKSkKPiA+ICAJCXJldHVybiAtRU5PREVWOwo+ID4KPiA+ICsJdmdwdSA9IGZiX2lu
-Zm8tPm9iai0+dmdwdTsKPiA+ICsJaWYgKFdBUk5fT04oIXZncHUpKQo+ID4gKwkJcmV0dXJuIC1F
-Tk9ERVY7Cj4gPiArCj4gPiAgCXN0ID0ga21hbGxvYyhzaXplb2YoKnN0KSwgR0ZQX0tFUk5FTCk7
-Cj4gPiAgCWlmICh1bmxpa2VseSghc3QpKQo+ID4gIAkJcmV0dXJuIC1FTk9NRU07Cj4gPiBAQCAt
-NjIsMjEgKzg0LDUxIEBAIHN0YXRpYyBpbnQgdmdwdV9nZW1fZ2V0X3BhZ2VzKAo+ID4gIAlndHRf
-ZW50cmllcyA9IChnZW44X3B0ZV90IF9faW9tZW0gKilkZXZfcHJpdi0+Z2d0dC5nc20gKwo+ID4g
-IAkJKGZiX2luZm8tPnN0YXJ0ID4+IFBBR0VfU0hJRlQpOwo+ID4gIAlmb3JfZWFjaF9zZyhzdC0+
-c2dsLCBzZywgZmJfaW5mby0+c2l6ZSwgaSkgewo+ID4gKwkJZG1hX2FkZHJfdCBkbWFfYWRkciA9
-Cj4gPiArCQkJR0VOOF9ERUNPREVfUFRFKHJlYWRxKCZndHRfZW50cmllc1tpXSkpOwo+ID4gKwkJ
-aWYgKHZncHVfcGluX2RtYV9hZGRyZXNzKHZncHUsIFBBR0VfU0laRSwgZG1hX2FkZHIpKSB7Cj4g
-PiArCQkJcmV0ID0gLUVOT01FTTsKPiAKPiBXaGF0IHdlIHJlYWxseSB3YW50IHRvIHRyYWNrIGhl
-cmU/IElzIGl0IHRoYXQgaWYgZ3Vlc3QgcGxhbmUgZmxpcCB0byBuZXcgYnVmZmVyLAo+IHdlIG5l
-ZWQgdG8gbWFrZSBzdXJlIG9sZCBleHBvc2VkIGRtYWJ1ZiBjYW4ndCBiZSBhY2Nlc3NlZCBmb3Ig
-ZGlzcGxheQo+IHB1cnBvc2U/CldlIHdhbnQgdG8gbWFrZSBzdXJlIHRoZSBkbWEgYWRkcmVzcyB1
-c2VkIGJ5IGhvc3QgaXMgdmFsaWQuIFNpbmNlIHRoZSBkbWEgYWRkcmVzcyBtYXAvdW5tYXAgaXMg
-aGFuZGxlZCBieSB2Q1BVIHRocmVhZCwgZ3Z0LWcgbmVlZHMgdG8gY2hlY2sgdGhlIGRtYSBhZGRy
-ZXNzIHZhbGlkYXRpb24gYmVmb3JlIEdQVSBIVyB1c2luZyBpdC4KCgo+IAo+IFRoaXMgb25seSBj
-aGVja3MgaWYgc29tZSBndWVzdCBnZ3R0IHJhbmdlIGhhcyBiZWVuIG1hcHBlZCB3aXRoIGd1ZXN0
-IHBhZ2VzLAo+IGhvdyBjb3VsZCB0aGF0IHRyYW5zbGF0ZSB0byBkaXNwbGF5IGJ1ZmZlciB0cmFj
-a2luZz8gZS5nIGhvdyBkbyB5b3Uga25vdwo+IGZiX2luZm8tPnN0YXJ0IGlzIHN0aWxsIGEgdmFs
-aWQgb2Zmc2V0IHRoZW4/Ck9ubHkgZ3Vlc3QgT1MgY2FuIHVuZGVyc3RhbmQgdGhlIHBsYW5lIHN0
-YXJ0IGFkZHJlc3Mgd2VsbC4KCj4gCj4gSSB0aGluayB3ZSBuZWVkIHRvIGRvIGFjdGl2ZSB0cmFj
-a2luZyBvZiBndWVzdCBwbGFuZSBjaGFuZ2UsIHdoaWNoIHdlIGRvbid0Cj4gZG8gbm93IGFzIGZv
-ciBwb2xsaW5nIG1vZGUgb2YgZ2Z4IGRtYWJ1ZiBpbnRlcmZhY2UsIGFuZCBiZXNpZGVzIHBsYW5l
-IG1taW8KPiByZWcgdHJhY2tpbmcgd2UgbmVlZCB0byB0cmFjayBnZ3R0IHJhbmdlIHVzZWQgZm9y
-IGRpc3BsYXkgcGxhbmUgdG9vLCBlLmcgaWYKPiBndWVzdCBkb2Vzbid0IGNoYW5nZSBnZ3R0IG9m
-ZnNldCBidXQgb25seSBiYWNraW5nIHBhZ2VzLCB3ZSBuZWVkIHRvIGZvcmNlCj4gdW5waW4sIGFu
-ZCBsZXQgZnVydGhlciBhY3Rpb24gdG8gZ2V0IG5ldyBwYWdlcywgZXRjLgpNYWtlIHNlbnNlLiBI
-b3cgYWJvdXQgbWFraW5nIHRoaXMgaWRlYSBpbnRvIGFub3RoZXIgcGF0Y2g/IEFmdGVyIGFsbCwg
-dGhlIG9ubHkgdGhpbmcgdGhpcyBwYXRjaCBjYW4gZG8gaXMgdG8gdmFsaWRhdGUgdGhlIGRtYSBh
-ZGRyZXNzIGdvdCBmcm9tIGd1ZXN0IGdndHQgZW50cmllcy4KVGhhbmtzLgoKQlIsClRpbmEKCj4g
-Cj4gPiArCQkJZ290byBvdXQ7Cj4gPiArCQl9Cj4gPiAgCQlzZy0+b2Zmc2V0ID0gMDsKPiA+ICAJ
-CXNnLT5sZW5ndGggPSBQQUdFX1NJWkU7Cj4gPiAtCQlzZ19kbWFfYWRkcmVzcyhzZykgPQo+ID4g
-LQkJCUdFTjhfREVDT0RFX1BURShyZWFkcSgmZ3R0X2VudHJpZXNbaV0pKTsKPiA+ICAJCXNnX2Rt
-YV9sZW4oc2cpID0gUEFHRV9TSVpFOwo+ID4gKwkJc2dfZG1hX2FkZHJlc3Moc2cpID0gZG1hX2Fk
-ZHI7Cj4gPiAgCX0KPiA+Cj4gPiAgCV9faTkxNV9nZW1fb2JqZWN0X3NldF9wYWdlcyhvYmosIHN0
-LCBQQUdFX1NJWkUpOwo+ID4gK291dDoKPiA+ICsJaWYgKHJldCkgewo+ID4gKwkJZG1hX2FkZHJf
-dCBkbWFfYWRkcjsKPiA+Cj4gPiAtCXJldHVybiAwOwo+ID4gKwkJZm9yX2VhY2hfc2coc3QtPnNn
-bCwgc2csIGZiX2luZm8tPnNpemUsIGkpIHsKPiA+ICsJCQlkbWFfYWRkciA9IHNnX2RtYV9hZGRy
-ZXNzKHNnKTsKPiA+ICsJCQlpZiAoZG1hX2FkZHIpCj4gPiArCQkJCXZncHVfdW5waW5fZG1hX2Fk
-ZHJlc3ModmdwdSwgZG1hX2FkZHIpOwo+ID4gKwkJfQo+ID4gKwkJc2dfZnJlZV90YWJsZShzdCk7
-Cj4gPiArCQlrZnJlZShzdCk7Cj4gPiArCX0KPiA+ICsKPiA+ICsJcmV0dXJuIHJldDsKPiA+ICB9
-Cj4gPgo+ID4gIHN0YXRpYyB2b2lkIHZncHVfZ2VtX3B1dF9wYWdlcyhzdHJ1Y3QgZHJtX2k5MTVf
-Z2VtX29iamVjdCAqb2JqLAo+ID4gIAkJc3RydWN0IHNnX3RhYmxlICpwYWdlcykKPiA+ICB7Cj4g
-PiArCXN0cnVjdCBzY2F0dGVybGlzdCAqc2c7Cj4gPiArCj4gPiArCWlmIChvYmotPmJhc2UuZG1h
-X2J1Zikgewo+ID4gKwkJc3RydWN0IGludGVsX3ZncHVfZmJfaW5mbyAqZmJfaW5mbyA9IG9iai0+
-Z3Z0X2luZm87Cj4gPiArCQlzdHJ1Y3QgaW50ZWxfdmdwdV9kbWFidWZfb2JqICpvYmogPSBmYl9p
-bmZvLT5vYmo7Cj4gPiArCQlzdHJ1Y3QgaW50ZWxfdmdwdSAqdmdwdSA9IG9iai0+dmdwdTsKPiA+
-ICsJCWludCBpOwo+ID4gKwo+ID4gKwkJZm9yX2VhY2hfc2cocGFnZXMtPnNnbCwgc2csIGZiX2lu
-Zm8tPnNpemUsIGkpCj4gPiArCQkJdmdwdV91bnBpbl9kbWFfYWRkcmVzcyh2Z3B1LAo+ID4gKwkJ
-CQkJICAgICAgIHNnX2RtYV9hZGRyZXNzKHNnKSk7Cj4gPiArCX0KPiA+ICsKPiA+ICAJc2dfZnJl
-ZV90YWJsZShwYWdlcyk7Cj4gPiAgCWtmcmVlKHBhZ2VzKTsKPiA+ICB9Cj4gPiBAQCAtMTA4LDYg
-KzE2MCw3IEBAIHN0YXRpYyB2b2lkIGRtYWJ1Zl9nZW1fb2JqZWN0X2ZyZWUoc3RydWN0IGtyZWYK
-PiAqa3JlZikKPiA+ICAJCWtmcmVlKG9iai0+aW5mbyk7Cj4gPiAgCQlrZnJlZShvYmopOwo+ID4g
-IAl9Cj4gPiArCj4gPiAgfQo+ID4KPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L2k5MTUvZ3Z0L2h5cGVyY2FsbC5oCj4gPiBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9oeXBl
-cmNhbGwuaAo+ID4gaW5kZXggNDg2MmZiMTI3NzhlLi43NTZhZGNjNzE2MDIgMTAwNjQ0Cj4gPiAt
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaHlwZXJjYWxsLmgKPiA+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9pOTE1L2d2dC9oeXBlcmNhbGwuaAo+ID4gQEAgLTYyLDYgKzYyLDggQEAgc3Ry
-dWN0IGludGVsX2d2dF9tcHQgewo+ID4gIAkJCQkgIHVuc2lnbmVkIGxvbmcgc2l6ZSwgZG1hX2Fk
-ZHJfdCAqZG1hX2FkZHIpOwo+ID4gIAl2b2lkICgqZG1hX3VubWFwX2d1ZXN0X3BhZ2UpKHVuc2ln
-bmVkIGxvbmcgaGFuZGxlLCBkbWFfYWRkcl90Cj4gPiBkbWFfYWRkcik7Cj4gPgo+ID4gKwlpbnQg
-KCpkbWFfZ2V0X2d1ZXN0X3BhZ2UpKHVuc2lnbmVkIGxvbmcgaGFuZGxlLCBkbWFfYWRkcl90Cj4g
-PiArZG1hX2FkZHIpOwo+ID4gKwo+ID4gIAlpbnQgKCptYXBfZ2ZuX3RvX21mbikodW5zaWduZWQg
-bG9uZyBoYW5kbGUsIHVuc2lnbmVkIGxvbmcgZ2ZuLAo+ID4gIAkJCSAgICAgIHVuc2lnbmVkIGxv
-bmcgbWZuLCB1bnNpZ25lZCBpbnQgbnIsIGJvb2wgbWFwKTsKPiA+ICAJaW50ICgqc2V0X3RyYXBf
-YXJlYSkodW5zaWduZWQgbG9uZyBoYW5kbGUsIHU2NCBzdGFydCwgdTY0IGVuZCwgZGlmZgo+ID4g
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQva3ZtZ3QuYwo+ID4gYi9kcml2ZXJzL2dw
-dS9kcm0vaTkxNS9ndnQva3ZtZ3QuYwo+ID4gaW5kZXggMjkxMTgxODI4NmE1Li5lMzNmMjQwZWE5
-ZDYgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQva3ZtZ3QuYwo+ID4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMKPiA+IEBAIC0yMTMsNiArMjEz
-LDEwIEBAIHN0YXRpYyB2b2lkIGd2dF9kbWFfdW5tYXBfcGFnZShzdHJ1Y3QKPiBpbnRlbF92Z3B1
-ICp2Z3B1LCB1bnNpZ25lZCBsb25nIGdmbiwKPiA+ICAJc3RydWN0IGRldmljZSAqZGV2ID0gJnZn
-cHUtPmd2dC0+ZGV2X3ByaXYtPmRybS5wZGV2LT5kZXY7Cj4gPgo+ID4gIAlkbWFfdW5tYXBfcGFn
-ZShkZXYsIGRtYV9hZGRyLCBzaXplLCBQQ0lfRE1BX0JJRElSRUNUSU9OQUwpOwo+ID4gKwlpZiAo
-ZG1hX21hcHBpbmdfZXJyb3IoZGV2LCBkbWFfYWRkcikpIHsKPiA+ICsJCWd2dF92Z3B1X2Vycigi
-RE1BIHVubWFwcGluZyBmYWlsZWQgZm9yIGRtYV9hZGRyCj4gMHglbGx4XG4iLAo+ID4gKwkJCSAg
-ICAgZG1hX2FkZHIpOwo+ID4gKwl9Cj4gPiAgCWd2dF91bnBpbl9ndWVzdF9wYWdlKHZncHUsIGdm
-biwgc2l6ZSk7ICB9Cj4gPgo+ID4gQEAgLTE5NjQsNiArMTk2OCwyOCBAQCBzdGF0aWMgaW50Cj4g
-a3ZtZ3RfZG1hX21hcF9ndWVzdF9wYWdlKHVuc2lnbmVkIGxvbmcgaGFuZGxlLCB1bnNpZ25lZCBs
-b25nIGdmbiwKPiA+ICAJcmV0dXJuIHJldDsKPiA+ICB9Cj4gPgo+ID4gK3N0YXRpYyBpbnQga3Zt
-Z3RfZG1hX2dldF9ndWVzdF9wYWdlKHVuc2lnbmVkIGxvbmcgaGFuZGxlLCBkbWFfYWRkcl90Cj4g
-PiArZG1hX2FkZHIpIHsKPiA+ICsJc3RydWN0IGt2bWd0X2d1ZXN0X2luZm8gKmluZm87Cj4gPiAr
-CXN0cnVjdCBndnRfZG1hICplbnRyeTsKPiA+ICsJaW50IHJldCA9IDA7Cj4gPiArCj4gPiArCWlm
-ICghaGFuZGxlX3ZhbGlkKGhhbmRsZSkpCj4gPiArCQlyZXR1cm4gLUVOT0RFVjsKPiA+ICsKPiA+
-ICsJaW5mbyA9IChzdHJ1Y3Qga3ZtZ3RfZ3Vlc3RfaW5mbyAqKWhhbmRsZTsKPiA+ICsKPiA+ICsJ
-bXV0ZXhfbG9jaygmaW5mby0+dmdwdS0+dmRldi5jYWNoZV9sb2NrKTsKPiA+ICsJZW50cnkgPSBf
-X2d2dF9jYWNoZV9maW5kX2RtYV9hZGRyKGluZm8tPnZncHUsIGRtYV9hZGRyKTsKPiA+ICsJaWYg
-KGVudHJ5KQo+ID4gKwkJa3JlZl9nZXQoJmVudHJ5LT5yZWYpOwo+ID4gKwllbHNlCj4gPiArCQly
-ZXQgPSAtRU5PTUVNOwo+ID4gKwltdXRleF91bmxvY2soJmluZm8tPnZncHUtPnZkZXYuY2FjaGVf
-bG9jayk7Cj4gPiArCj4gPiArCXJldHVybiByZXQ7Cj4gPiArfQo+ID4gKwo+ID4gIHN0YXRpYyB2
-b2lkIF9fZ3Z0X2RtYV9yZWxlYXNlKHN0cnVjdCBrcmVmICpyZWYpICB7Cj4gPiAgCXN0cnVjdCBn
-dnRfZG1hICplbnRyeSA9IGNvbnRhaW5lcl9vZihyZWYsIHR5cGVvZigqZW50cnkpLCByZWYpOyBA
-QAo+ID4gLTIwNzUsNiArMjEwMSw3IEBAIHN0YXRpYyBzdHJ1Y3QgaW50ZWxfZ3Z0X21wdCBrdm1n
-dF9tcHQgPSB7Cj4gPiAgCS5nZm5fdG9fbWZuID0ga3ZtZ3RfZ2ZuX3RvX3BmbiwKPiA+ICAJLmRt
-YV9tYXBfZ3Vlc3RfcGFnZSA9IGt2bWd0X2RtYV9tYXBfZ3Vlc3RfcGFnZSwKPiA+ICAJLmRtYV91
-bm1hcF9ndWVzdF9wYWdlID0ga3ZtZ3RfZG1hX3VubWFwX2d1ZXN0X3BhZ2UsCj4gPiArCS5kbWFf
-Z2V0X2d1ZXN0X3BhZ2UgPSBrdm1ndF9kbWFfZ2V0X2d1ZXN0X3BhZ2UsCj4gPiAgCS5zZXRfb3By
-ZWdpb24gPSBrdm1ndF9zZXRfb3ByZWdpb24sCj4gPiAgCS5zZXRfZWRpZCA9IGt2bWd0X3NldF9l
-ZGlkLAo+ID4gIAkuZ2V0X3ZmaW9fZGV2aWNlID0ga3ZtZ3RfZ2V0X3ZmaW9fZGV2aWNlLCBkaWZm
-IC0tZ2l0Cj4gPiBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tcHQuaCBiL2RyaXZlcnMvZ3B1
-L2RybS9pOTE1L2d2dC9tcHQuaAo+ID4gaW5kZXggMGY5NDQwMTI4MTIzLi40ZTkzOTFhNTIwOTgg
-MTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbXB0LmgKPiA+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tcHQuaAo+ID4gQEAgLTI1NCw2ICsyNTQsMjAgQEAg
-c3RhdGljIGlubGluZSB2b2lkCj4gaW50ZWxfZ3Z0X2h5cGVydmlzb3JfZG1hX3VubWFwX2d1ZXN0
-X3BhZ2UoCj4gPiAgCWludGVsX2d2dF9ob3N0Lm1wdC0+ZG1hX3VubWFwX2d1ZXN0X3BhZ2Uodmdw
-dS0+aGFuZGxlLAo+IGRtYV9hZGRyKTsgIH0KPiA+Cj4gPiArLyoqCj4gPiArICogaW50ZWxfZ3Z0
-X2h5cGVydmlzb3JfZG1hX2dldF9ndWVzdF9wYWdlIC0gZ2V0IGd1ZXN0IGRtYSBtYXAgYWRkcgo+
-ID4gKyAqIEB2Z3B1OiBhIHZHUFUKPiA+ICsgKiBAZG1hX2FkZHI6IGd1ZXN0IGRtYSBhZGRyCj4g
-PiArICoKPiA+ICsgKiBSZXR1cm5zOgo+ID4gKyAqIDAgb24gc3VjY2VzcywgbmVnYXRpdmUgZXJy
-b3IgY29kZSBpZiBmYWlsZWQuCj4gPiArICovCj4gPiArc3RhdGljIGlubGluZSBpbnQgaW50ZWxf
-Z3Z0X2h5cGVydmlzb3JfZG1hX2dldF9ndWVzdF9wYWdlKAo+ID4gKwkJc3RydWN0IGludGVsX3Zn
-cHUgKnZncHUsIGRtYV9hZGRyX3QgZG1hX2FkZHIpIHsKPiA+ICsJcmV0dXJuIGludGVsX2d2dF9o
-b3N0Lm1wdC0+ZG1hX2dldF9ndWVzdF9wYWdlKHZncHUtPmhhbmRsZSwKPiA+ICtkbWFfYWRkcik7
-IH0KPiA+ICsKPiA+ICAvKioKPiA+ICAgKiBpbnRlbF9ndnRfaHlwZXJ2aXNvcl9tYXBfZ2ZuX3Rv
-X21mbiAtIG1hcCBhIEdGTiByZWdpb24gdG8gTUZOCj4gPiAgICogQHZncHU6IGEgdkdQVQo+ID4g
-LS0KPiA+IDIuMTcuMQo+ID4KPiAKPiAtLQo+IE9wZW4gU291cmNlIFRlY2hub2xvZ3kgQ2VudGVy
-LCBJbnRlbCBsdGQuCj4gCj4gJGdwZyAtLWtleXNlcnZlciB3d3drZXlzLnBncC5uZXQgLS1yZWN2
-LWtleXMgNEQ3ODE4MjcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9pbnRlbC1ndnQtZGV2
+
+--===============1191419688==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="P/V1btyD6Sui+5oI"
+Content-Disposition: inline
+
+
+--P/V1btyD6Sui+5oI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.27 05:21:41 +0000, Zhang, Tina wrote:
+>=20
+>=20
+> > -----Original Message-----
+> > From: Zhenyu Wang [mailto:zhenyuw@linux.intel.com]
+> > Sent: Friday, May 24, 2019 2:57 PM
+> > To: Zhang, Tina <tina.zhang@intel.com>
+> > Cc: intel-gvt-dev@lists.freedesktop.org; Yuan, Hang <hang.yuan@intel.co=
+m>
+> > Subject: Re: [PATCH] drm/i915/gvt: Pin vgpu dma address before using
+> >=20
+> > On 2019.05.24 10:59:54 +0800, Tina Zhang wrote:
+> > > Dma-buf display uses the vgpu dma address saved in the guest part GGTT
+> > > table which is updated by vCPU thread. In host side, when the dma
+> > > address is used by qemu ui thread, gvt-g must make sure the dma
+> > > address is validated before letting it go to the HW. Invalid guest dma
+> > > address will easily cause DMA fault and make GPU hang.
+> > >
+> > > Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> > > ---
+> > >  drivers/gpu/drm/i915/gvt/dmabuf.c    | 59
+> > ++++++++++++++++++++++++++--
+> > >  drivers/gpu/drm/i915/gvt/hypercall.h |  2 +
+> > >  drivers/gpu/drm/i915/gvt/kvmgt.c     | 27 +++++++++++++
+> > >  drivers/gpu/drm/i915/gvt/mpt.h       | 14 +++++++
+> > >  4 files changed, 99 insertions(+), 3 deletions(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.c
+> > > b/drivers/gpu/drm/i915/gvt/dmabuf.c
+> > > index b6d93175bddf..9db4328e9732 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/dmabuf.c
+> > > +++ b/drivers/gpu/drm/i915/gvt/dmabuf.c
+> > > @@ -36,10 +36,28 @@
+> > >
+> > >  #define GEN8_DECODE_PTE(pte) (pte & GENMASK_ULL(63, 12))
+> > >
+> > > +static int vgpu_pin_dma_address(struct intel_vgpu *vgpu, unsigned lo=
+ng
+> > size,
+> > > +		dma_addr_t dma_addr)
+> > > +{
+> > > +	int ret =3D 0;
+> > > +
+> > > +	if (intel_gvt_hypervisor_dma_get_guest_page(vgpu, dma_addr))
+> > > +		ret =3D -ENOMEM;
+> > > +
+> > > +	return ret;
+> > > +}
+> > > +
+> > > +static void vgpu_unpin_dma_address(struct intel_vgpu *vgpu,
+> > > +				  dma_addr_t dma_addr)
+> > > +{
+> > > +	intel_gvt_hypervisor_dma_unmap_guest_page(vgpu, dma_addr); }
+> > > +
+> > >  static int vgpu_gem_get_pages(
+> > >  		struct drm_i915_gem_object *obj)
+> > >  {
+> > >  	struct drm_i915_private *dev_priv =3D to_i915(obj->base.dev);
+> > > +	struct intel_vgpu *vgpu;
+> > >  	struct sg_table *st;
+> > >  	struct scatterlist *sg;
+> > >  	int i, ret;
+> > > @@ -50,6 +68,10 @@ static int vgpu_gem_get_pages(
+> > >  	if (WARN_ON(!fb_info))
+> > >  		return -ENODEV;
+> > >
+> > > +	vgpu =3D fb_info->obj->vgpu;
+> > > +	if (WARN_ON(!vgpu))
+> > > +		return -ENODEV;
+> > > +
+> > >  	st =3D kmalloc(sizeof(*st), GFP_KERNEL);
+> > >  	if (unlikely(!st))
+> > >  		return -ENOMEM;
+> > > @@ -62,21 +84,51 @@ static int vgpu_gem_get_pages(
+> > >  	gtt_entries =3D (gen8_pte_t __iomem *)dev_priv->ggtt.gsm +
+> > >  		(fb_info->start >> PAGE_SHIFT);
+> > >  	for_each_sg(st->sgl, sg, fb_info->size, i) {
+> > > +		dma_addr_t dma_addr =3D
+> > > +			GEN8_DECODE_PTE(readq(&gtt_entries[i]));
+> > > +		if (vgpu_pin_dma_address(vgpu, PAGE_SIZE, dma_addr)) {
+> > > +			ret =3D -ENOMEM;
+> >=20
+> > What we really want to track here? Is it that if guest plane flip to ne=
+w buffer,
+> > we need to make sure old exposed dmabuf can't be accessed for display
+> > purpose?
+> We want to make sure the dma address used by host is valid. Since the dma=
+ address map/unmap is handled by vCPU thread, gvt-g needs to check the dma =
+address validation before GPU HW using it.
+>
+
+Yes, that's true for all guest ggtt mapping not just for display.
+
+>=20
+> >=20
+> > This only checks if some guest ggtt range has been mapped with guest pa=
+ges,
+> > how could that translate to display buffer tracking? e.g how do you know
+> > fb_info->start is still a valid offset then?
+> Only guest OS can understand the plane start address well.
+>
+
+My question is how this should be resolved. We can detect guest display upd=
+ate
+=66rom handler or ggtt change, so we can manage dmabuf lifecycle without is=
+sue.
+Instead of hacking like dma address checking, which you don't even know if =
+that
+ggtt offset is still valid for display, e.g guest can already use that for =
+other
+things with sane dma mapping as well, we need to manage dmabuf lifecycle gr=
+acefully
+with guest display state.
+
+> >=20
+> > I think we need to do active tracking of guest plane change, which we d=
+on't
+> > do now as for polling mode of gfx dmabuf interface, and besides plane m=
+mio
+> > reg tracking we need to track ggtt range used for display plane too, e.=
+g if
+> > guest doesn't change ggtt offset but only backing pages, we need to for=
+ce
+> > unpin, and let further action to get new pages, etc.
+> Make sense. How about making this idea into another patch? After all, the=
+ only thing this patch can do is to validate the dma address got from guest=
+ ggtt entries.
+> Thanks.
+>=20
+> BR,
+> Tina
+>=20
+> >=20
+> > > +			goto out;
+> > > +		}
+> > >  		sg->offset =3D 0;
+> > >  		sg->length =3D PAGE_SIZE;
+> > > -		sg_dma_address(sg) =3D
+> > > -			GEN8_DECODE_PTE(readq(&gtt_entries[i]));
+> > >  		sg_dma_len(sg) =3D PAGE_SIZE;
+> > > +		sg_dma_address(sg) =3D dma_addr;
+> > >  	}
+> > >
+> > >  	__i915_gem_object_set_pages(obj, st, PAGE_SIZE);
+> > > +out:
+> > > +	if (ret) {
+> > > +		dma_addr_t dma_addr;
+> > >
+> > > -	return 0;
+> > > +		for_each_sg(st->sgl, sg, fb_info->size, i) {
+> > > +			dma_addr =3D sg_dma_address(sg);
+> > > +			if (dma_addr)
+> > > +				vgpu_unpin_dma_address(vgpu, dma_addr);
+> > > +		}
+> > > +		sg_free_table(st);
+> > > +		kfree(st);
+> > > +	}
+> > > +
+> > > +	return ret;
+> > >  }
+> > >
+> > >  static void vgpu_gem_put_pages(struct drm_i915_gem_object *obj,
+> > >  		struct sg_table *pages)
+> > >  {
+> > > +	struct scatterlist *sg;
+> > > +
+> > > +	if (obj->base.dma_buf) {
+> > > +		struct intel_vgpu_fb_info *fb_info =3D obj->gvt_info;
+> > > +		struct intel_vgpu_dmabuf_obj *obj =3D fb_info->obj;
+> > > +		struct intel_vgpu *vgpu =3D obj->vgpu;
+> > > +		int i;
+> > > +
+> > > +		for_each_sg(pages->sgl, sg, fb_info->size, i)
+> > > +			vgpu_unpin_dma_address(vgpu,
+> > > +					       sg_dma_address(sg));
+> > > +	}
+> > > +
+> > >  	sg_free_table(pages);
+> > >  	kfree(pages);
+> > >  }
+> > > @@ -108,6 +160,7 @@ static void dmabuf_gem_object_free(struct kref
+> > *kref)
+> > >  		kfree(obj->info);
+> > >  		kfree(obj);
+> > >  	}
+> > > +
+> > >  }
+> > >
+> > >
+> > > diff --git a/drivers/gpu/drm/i915/gvt/hypercall.h
+> > > b/drivers/gpu/drm/i915/gvt/hypercall.h
+> > > index 4862fb12778e..756adcc71602 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/hypercall.h
+> > > +++ b/drivers/gpu/drm/i915/gvt/hypercall.h
+> > > @@ -62,6 +62,8 @@ struct intel_gvt_mpt {
+> > >  				  unsigned long size, dma_addr_t *dma_addr);
+> > >  	void (*dma_unmap_guest_page)(unsigned long handle, dma_addr_t
+> > > dma_addr);
+> > >
+> > > +	int (*dma_get_guest_page)(unsigned long handle, dma_addr_t
+> > > +dma_addr);
+> > > +
+> > >  	int (*map_gfn_to_mfn)(unsigned long handle, unsigned long gfn,
+> > >  			      unsigned long mfn, unsigned int nr, bool map);
+> > >  	int (*set_trap_area)(unsigned long handle, u64 start, u64 end, diff
+> > > --git a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > > b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > > index 2911818286a5..e33f240ea9d6 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > > +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > > @@ -213,6 +213,10 @@ static void gvt_dma_unmap_page(struct
+> > intel_vgpu *vgpu, unsigned long gfn,
+> > >  	struct device *dev =3D &vgpu->gvt->dev_priv->drm.pdev->dev;
+> > >
+> > >  	dma_unmap_page(dev, dma_addr, size, PCI_DMA_BIDIRECTIONAL);
+> > > +	if (dma_mapping_error(dev, dma_addr)) {
+> > > +		gvt_vgpu_err("DMA unmapping failed for dma_addr
+> > 0x%llx\n",
+> > > +			     dma_addr);
+> > > +	}
+> > >  	gvt_unpin_guest_page(vgpu, gfn, size);  }
+> > >
+> > > @@ -1964,6 +1968,28 @@ static int
+> > kvmgt_dma_map_guest_page(unsigned long handle, unsigned long gfn,
+> > >  	return ret;
+> > >  }
+> > >
+> > > +static int kvmgt_dma_get_guest_page(unsigned long handle, dma_addr_t
+> > > +dma_addr) {
+> > > +	struct kvmgt_guest_info *info;
+> > > +	struct gvt_dma *entry;
+> > > +	int ret =3D 0;
+> > > +
+> > > +	if (!handle_valid(handle))
+> > > +		return -ENODEV;
+> > > +
+> > > +	info =3D (struct kvmgt_guest_info *)handle;
+> > > +
+> > > +	mutex_lock(&info->vgpu->vdev.cache_lock);
+> > > +	entry =3D __gvt_cache_find_dma_addr(info->vgpu, dma_addr);
+> > > +	if (entry)
+> > > +		kref_get(&entry->ref);
+> > > +	else
+> > > +		ret =3D -ENOMEM;
+> > > +	mutex_unlock(&info->vgpu->vdev.cache_lock);
+> > > +
+> > > +	return ret;
+> > > +}
+> > > +
+> > >  static void __gvt_dma_release(struct kref *ref)  {
+> > >  	struct gvt_dma *entry =3D container_of(ref, typeof(*entry), ref); @@
+> > > -2075,6 +2101,7 @@ static struct intel_gvt_mpt kvmgt_mpt =3D {
+> > >  	.gfn_to_mfn =3D kvmgt_gfn_to_pfn,
+> > >  	.dma_map_guest_page =3D kvmgt_dma_map_guest_page,
+> > >  	.dma_unmap_guest_page =3D kvmgt_dma_unmap_guest_page,
+> > > +	.dma_get_guest_page =3D kvmgt_dma_get_guest_page,
+> > >  	.set_opregion =3D kvmgt_set_opregion,
+> > >  	.set_edid =3D kvmgt_set_edid,
+> > >  	.get_vfio_device =3D kvmgt_get_vfio_device, diff --git
+> > > a/drivers/gpu/drm/i915/gvt/mpt.h b/drivers/gpu/drm/i915/gvt/mpt.h
+> > > index 0f9440128123..4e9391a52098 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/mpt.h
+> > > +++ b/drivers/gpu/drm/i915/gvt/mpt.h
+> > > @@ -254,6 +254,20 @@ static inline void
+> > intel_gvt_hypervisor_dma_unmap_guest_page(
+> > >  	intel_gvt_host.mpt->dma_unmap_guest_page(vgpu->handle,
+> > dma_addr);  }
+> > >
+> > > +/**
+> > > + * intel_gvt_hypervisor_dma_get_guest_page - get guest dma map addr
+> > > + * @vgpu: a vGPU
+> > > + * @dma_addr: guest dma addr
+> > > + *
+> > > + * Returns:
+> > > + * 0 on success, negative error code if failed.
+> > > + */
+> > > +static inline int intel_gvt_hypervisor_dma_get_guest_page(
+> > > +		struct intel_vgpu *vgpu, dma_addr_t dma_addr) {
+> > > +	return intel_gvt_host.mpt->dma_get_guest_page(vgpu->handle,
+> > > +dma_addr); }
+> > > +
+> > >  /**
+> > >   * intel_gvt_hypervisor_map_gfn_to_mfn - map a GFN region to MFN
+> > >   * @vgpu: a vGPU
+> > > --
+> > > 2.17.1
+> > >
+> >=20
+> > --
+> > Open Source Technology Center, Intel ltd.
+> >=20
+> > $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--P/V1btyD6Sui+5oI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOt39QAKCRCxBBozTXgY
+JxCUAJ9Vg5ohTkPM888b+vk9Wq8eXu7yCgCePad8+IkPObPPq9f67Hl4uZqgDs0=
+=zfgb
+-----END PGP SIGNATURE-----
+
+--P/V1btyD6Sui+5oI--
+
+--===============1191419688==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1191419688==--
