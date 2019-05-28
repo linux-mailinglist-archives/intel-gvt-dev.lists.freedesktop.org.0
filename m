@@ -2,56 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F9752BCED
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 May 2019 03:43:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B83072BD6A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 May 2019 04:52:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1B1F989A6D;
-	Tue, 28 May 2019 01:43:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7580D89AB9;
+	Tue, 28 May 2019 02:52:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ED05689A6D
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3E59D89AB9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 May 2019 01:42:59 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Tue, 28 May 2019 02:52:45 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 May 2019 18:43:00 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 May 2019 19:52:44 -0700
 X-ExtLoop1: 1
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by fmsmga007.fm.intel.com with ESMTP; 27 May 2019 18:42:59 -0700
-Received: from fmsmsx157.amr.corp.intel.com (10.18.116.73) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Mon, 27 May 2019 18:42:58 -0700
-Received: from shsmsx153.ccr.corp.intel.com (10.239.6.53) by
- FMSMSX157.amr.corp.intel.com (10.18.116.73) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Mon, 27 May 2019 18:42:58 -0700
-Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.129]) by
- SHSMSX153.ccr.corp.intel.com ([169.254.12.150]) with mapi id 14.03.0415.000;
- Tue, 28 May 2019 09:42:57 +0800
-From: "Zhang, Tina" <tina.zhang@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: RE: [PATCH 1/2] vfio: ABI for setting mdev display flip eventfd
-Thread-Topic: [PATCH 1/2] vfio: ABI for setting mdev display flip eventfd
-Thread-Index: AQHVFGkBZrgUKUW3hkmSal0+smAhlaZ+e0YAgAFF88A=
-Date: Tue, 28 May 2019 01:42:57 +0000
-Message-ID: <237F54289DF84E4997F34151298ABEBC87620FF2@SHSMSX101.ccr.corp.intel.com>
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by orsmga002.jf.intel.com with ESMTP; 27 May 2019 19:52:42 -0700
+Date: Tue, 28 May 2019 10:51:27 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH 1/2] vfio: ABI for setting mdev display flip eventfd
+Message-ID: <20190528025127.GI29553@zhen-hp.sh.intel.com>
 References: <20190527084312.8872-1-tina.zhang@intel.com>
  <20190527084312.8872-2-tina.zhang@intel.com>
- <20190527080430.28f40888@x1.home>
-In-Reply-To: <20190527080430.28f40888@x1.home>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDQwMTZkZTEtMWVlOC00OTdkLTkzZGEtNjE3M2M3Zjc4MWQ1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoidXpaRkw3MVpkR1l3Tk0yVjU0NERYREI2SUVpdnRGcHl1QVJHeE1DbDFTbXBaKzRoNXcrY2lhcEEwc0xyNUJ5ZiJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.600.7
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
+ <20190527090741.GE29553@zhen-hp.sh.intel.com>
+ <20190527122237.uhd7qm62h6wfv5w7@sirius.home.kraxel.org>
 MIME-Version: 1.0
+In-Reply-To: <20190527122237.uhd7qm62h6wfv5w7@sirius.home.kraxel.org>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -64,64 +45,74 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>, "kraxel@redhat.com" <kraxel@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Lv, Zhiyuan" <zhiyuan.lv@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: kvm@vger.kernel.org, linux-kernel@vger.kernel.org, hang.yuan@intel.com,
+ alex.williamson@redhat.com, zhiyuan.lv@intel.com,
+ Tina Zhang <tina.zhang@intel.com>, intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============0777277632=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogaW50ZWwtZ3Z0LWRldiBb
-bWFpbHRvOmludGVsLWd2dC1kZXYtYm91bmNlc0BsaXN0cy5mcmVlZGVza3RvcC5vcmddIE9uDQo+
-IEJlaGFsZiBPZiBBbGV4IFdpbGxpYW1zb24NCj4gU2VudDogTW9uZGF5LCBNYXkgMjcsIDIwMTkg
-MTA6MDUgUE0NCj4gVG86IFpoYW5nLCBUaW5hIDx0aW5hLnpoYW5nQGludGVsLmNvbT4NCj4gQ2M6
-IGt2bUB2Z2VyLmtlcm5lbC5vcmc7IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc7DQo+IHpo
-ZW55dXdAbGludXguaW50ZWwuY29tOyBZdWFuLCBIYW5nIDxoYW5nLnl1YW5AaW50ZWwuY29tPjsN
-Cj4ga3JheGVsQHJlZGhhdC5jb207IGludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-OyBMdiwgWmhpeXVhbg0KPiA8emhpeXVhbi5sdkBpbnRlbC5jb20+DQo+IFN1YmplY3Q6IFJlOiBb
-UEFUQ0ggMS8yXSB2ZmlvOiBBQkkgZm9yIHNldHRpbmcgbWRldiBkaXNwbGF5IGZsaXAgZXZlbnRm
-ZA0KPiANCj4gT24gTW9uLCAyNyBNYXkgMjAxOSAxNjo0MzoxMSArMDgwMA0KPiBUaW5hIFpoYW5n
-IDx0aW5hLnpoYW5nQGludGVsLmNvbT4gd3JvdGU6DQo+IA0KPiA+IEFkZCBWRklPX0RFVklDRV9T
-RVRfR0ZYX0ZMSVBfRVZFTlRGRCBpb2N0bCBjb21tYW5kIHRvIHNldCBldmVudGZkDQo+ID4gYmFz
-ZWQgc2lnbmFsaW5nIG1lY2hhbmlzbSB0byBkZWxpdmVyIHZHUFUgZnJhbWVidWZmZXIgcGFnZSBm
-bGlwIGV2ZW50DQo+ID4gdG8gdXNlcnNwYWNlLg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogVGlu
-YSBaaGFuZyA8dGluYS56aGFuZ0BpbnRlbC5jb20+DQo+ID4gLS0tDQo+ID4gIGluY2x1ZGUvdWFw
-aS9saW51eC92ZmlvLmggfCAxMiArKysrKysrKysrKysNCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDEy
-IGluc2VydGlvbnMoKykNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3VhcGkvbGludXgv
-dmZpby5oIGIvaW5jbHVkZS91YXBpL2xpbnV4L3ZmaW8uaA0KPiA+IGluZGV4IDAyYmI3YWQ2ZTk4
-Ni4uMjczMDA1OTc3MTdmIDEwMDY0NA0KPiA+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC92Zmlv
-LmgNCj4gPiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgvdmZpby5oDQo+ID4gQEAgLTY5Niw2ICs2
-OTYsMTggQEAgc3RydWN0IHZmaW9fZGV2aWNlX2lvZXZlbnRmZCB7DQo+ID4NCj4gPiAgI2RlZmlu
-ZSBWRklPX0RFVklDRV9JT0VWRU5URkQJCV9JTyhWRklPX1RZUEUsIFZGSU9fQkFTRSArDQo+IDE2
-KQ0KPiA+DQo+ID4gKy8qKg0KPiA+ICsgKiBWRklPX0RFVklDRV9TRVRfR0ZYX0ZMSVBfRVZFTlRG
-RCAtIF9JT1coVkZJT19UWVBFLCBWRklPX0JBU0UNCj4gKyAxNywNCj4gPiArX19zMzIpDQo+ID4g
-KyAqDQo+ID4gKyAqIFNldCBldmVudGZkIGJhc2VkIHNpZ25hbGluZyBtZWNoYW5pc20gdG8gZGVs
-aXZlciB2R1BVIGZyYW1lYnVmZmVyDQo+ID4gK3BhZ2UNCj4gPiArICogZmxpcCBldmVudCB0byB1
-c2Vyc3BhY2UuIEEgdmFsdWUgb2YgLTEgaXMgdXNlZCB0byBzdG9wIHRoZSBwYWdlDQo+ID4gK2Zs
-aXANCj4gPiArICogZGVsaXZlcmluZy4NCj4gPiArICoNCj4gPiArICogUmV0dXJuOiAwIG9uIHN1
-Y2Nlc3MsIC1lcnJubyBvbiBmYWlsdXJlLg0KPiA+ICsgKi8NCj4gPiArDQo+ID4gKyNkZWZpbmUg
-VkZJT19ERVZJQ0VfU0VUX0dGWF9GTElQX0VWRU5URkQgX0lPKFZGSU9fVFlQRSwNCj4gVkZJT19C
-QVNFICsNCj4gPiArMTcpDQo+ID4gKw0KPiA+ICAvKiAtLS0tLS0tLSBBUEkgZm9yIFR5cGUxIFZG
-SU8gSU9NTVUgLS0tLS0tLS0gKi8NCj4gPg0KPiA+ICAvKioNCj4gDQo+IFdoeSBjYW4ndCB3ZSB1
-c2UgVkZJT19ERVZJQ0VfU0VUX0lSUVMgZm9yIHRoaXM/ICBXZSBjYW4gYWRkIGEgY2FwYWJpbGl0
-eQ0KPiB0byB2ZmlvX2lycV9pbmZvIGluIHRoZSBzYW1lIHdheSB0aGF0IHdlIGRpZCBmb3IgcmVn
-aW9ucyB0byBkZXNjcmliZSBkZXZpY2UNCj4gc3BlY2lmaWMgSVJRIHN1cHBvcnQuICBUaGFua3Ms
-DQpBZGQgYSBuZXcga2luZCBvZiBpbmRleCwgbGlrZSB0aGlzPw0KZW51bSB7DQogICAgICAgIFZG
-SU9fUENJX0lOVFhfSVJRX0lOREVYLA0KICAgICAgICBWRklPX1BDSV9NU0lfSVJRX0lOREVYLA0K
-ICAgICAgICBWRklPX1BDSV9NU0lYX0lSUV9JTkRFWCwNCiAgICAgICAgVkZJT19QQ0lfRVJSX0lS
-UV9JTkRFWCwNCiAgICAgICAgVkZJT19QQ0lfUkVRX0lSUV9JTkRFWCwNCisgICAgICBWRklPX1BD
-SV9HRlhfRkxJUF9FVkVOVF9JTkRFWCwNCiAgICAgICAgVkZJT19QQ0lfTlVNX0lSUVMNCn07DQpQ
-ZXJoYXBzIHRoaXMgaXMgd2hhdCB3ZSBkb24ndCB3YW50LiBUaGlzIFZGSU9fUENJX0dGWF9GTElQ
-X0VWRU5UX0lOREVYIGlzIHNwZWNpZmljIHRvIGdyYXBoaWNzIGNhcmQgYW5kIGl0J3MgYWN0dWFs
-bHkgYW4gZXZlbnQgd2hpY2ggaXMgcmVwb3J0ZWQgYnkgSU5UWC9NU0kvIE1TSVggSVJRLg0KVGhh
-bmtzLg0KDQpCUiwNClRpbmENCj4gDQo+IEFsZXgNCj4gX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18NCj4gaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QNCj4g
-aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcNCj4gaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2DQpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcg
-bGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+
+--===============0777277632==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="z9ECzHErBrwFF8sy"
+Content-Disposition: inline
+
+
+--z9ECzHErBrwFF8sy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.27 14:22:37 +0200, Gerd Hoffmann wrote:
+> On Mon, May 27, 2019 at 05:07:41PM +0800, Zhenyu Wang wrote:
+> > On 2019.05.27 16:43:11 +0800, Tina Zhang wrote:
+> > > Add VFIO_DEVICE_SET_GFX_FLIP_EVENTFD ioctl command to set eventfd
+> > > based signaling mechanism to deliver vGPU framebuffer page flip
+> > > event to userspace.
+> >=20
+> > Should we add probe to see if driver can support gfx flip event?
+>=20
+> Userspace can simply call VFIO_DEVICE_SET_GFX_FLIP_EVENTFD and see if it
+> worked.  If so -> use the eventfd.  Otherwise take the fallback path
+> (timer based polling).  I can't see any advantage a separate feature
+> probe steps adds.
+>=20
+
+Then we need to define error return which means driver doesn't support
+e.g -ENOTTY, and driver shouldn't return that for other possible
+failure, so user space won't get confused.
+
+I think if we can define this as generic display event notification?
+Not necessarily just for flip, just a display change notification to
+let user space query current state.
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--z9ECzHErBrwFF8sy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOyiLwAKCRCxBBozTXgY
+Jy7ZAJ9IHhuCGPDYDK9ZUsQm0JS1aSlYrQCfZ2G/aRCELpKd+cSxiSFDvUAuhnM=
+=AbnB
+-----END PGP SIGNATURE-----
+
+--z9ECzHErBrwFF8sy--
+
+--===============0777277632==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0777277632==--
