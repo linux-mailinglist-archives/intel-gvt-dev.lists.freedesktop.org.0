@@ -2,36 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B83072BD6A
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 May 2019 04:52:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B12AD2BDC1
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 May 2019 05:31:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7580D89AB9;
-	Tue, 28 May 2019 02:52:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6DF7189A88;
+	Tue, 28 May 2019 03:31:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3E59D89AB9
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E70F789A88
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 May 2019 02:52:45 +0000 (UTC)
+ Tue, 28 May 2019 03:31:04 +0000 (UTC)
 X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 May 2019 19:52:44 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 May 2019 20:31:04 -0700
 X-ExtLoop1: 1
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga002.jf.intel.com with ESMTP; 27 May 2019 19:52:42 -0700
-Date: Tue, 28 May 2019 10:51:27 +0800
+ by fmsmga008.fm.intel.com with ESMTP; 27 May 2019 20:31:03 -0700
+Date: Tue, 28 May 2019 11:29:47 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH 1/2] vfio: ABI for setting mdev display flip eventfd
-Message-ID: <20190528025127.GI29553@zhen-hp.sh.intel.com>
-References: <20190527084312.8872-1-tina.zhang@intel.com>
- <20190527084312.8872-2-tina.zhang@intel.com>
- <20190527090741.GE29553@zhen-hp.sh.intel.com>
- <20190527122237.uhd7qm62h6wfv5w7@sirius.home.kraxel.org>
+To: Xiong Zhang <xiong.y.zhang@intel.com>
+Subject: Re: [PATCH 1/4] drm/i915/gvt: refine ggtt range validation
+Message-ID: <20190528032947.GJ29553@zhen-hp.sh.intel.com>
+References: <1558935953-3944-1-git-send-email-xiong.y.zhang@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190527122237.uhd7qm62h6wfv5w7@sirius.home.kraxel.org>
+In-Reply-To: <1558935953-3944-1-git-send-email-xiong.y.zhang@intel.com>
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
@@ -46,66 +43,101 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: kvm@vger.kernel.org, linux-kernel@vger.kernel.org, hang.yuan@intel.com,
- alex.williamson@redhat.com, zhiyuan.lv@intel.com,
- Tina Zhang <tina.zhang@intel.com>, intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0777277632=="
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============1396650107=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0777277632==
+--===============1396650107==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="z9ECzHErBrwFF8sy"
+	protocol="application/pgp-signature"; boundary="17/8oYur5Y32USnW"
 Content-Disposition: inline
 
 
---z9ECzHErBrwFF8sy
+--17/8oYur5Y32USnW
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2019.05.27 14:22:37 +0200, Gerd Hoffmann wrote:
-> On Mon, May 27, 2019 at 05:07:41PM +0800, Zhenyu Wang wrote:
-> > On 2019.05.27 16:43:11 +0800, Tina Zhang wrote:
-> > > Add VFIO_DEVICE_SET_GFX_FLIP_EVENTFD ioctl command to set eventfd
-> > > based signaling mechanism to deliver vGPU framebuffer page flip
-> > > event to userspace.
-> >=20
-> > Should we add probe to see if driver can support gfx flip event?
+On 2019.05.27 13:45:50 +0800, Xiong Zhang wrote:
+> The vgpu ggtt range should be in vgpu aperture or hidden range. This
+> patch enforce begin and end address check and guarantee both of them are
+> in the valid range.
 >=20
-> Userspace can simply call VFIO_DEVICE_SET_GFX_FLIP_EVENTFD and see if it
-> worked.  If so -> use the eventfd.  Otherwise take the fallback path
-> (timer based polling).  I can't see any advantage a separate feature
-> probe steps adds.
+> For size=3D0, it will regress to vgpu_gmadr_is_valid(), will refine
+> this usage in a later fix.
 >=20
+> Fixes: 2707e4446688 ("drm/i915/gvt: vGPU graphics memory virtualization")
+> Signed-off-by: Xiong Zhang <xiong.y.zhang@intel.com>
+> ---
 
-Then we need to define error return which means driver doesn't support
-e.g -ENOTTY, and driver shouldn't return that for other possible
-failure, so user space won't get confused.
+Ack for this series.
 
-I think if we can define this as generic display event notification?
-Not necessarily just for flip, just a display change notification to
-let user space query current state.
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+>  drivers/gpu/drm/i915/gvt/gtt.c | 20 +++++++++++++-------
+>  1 file changed, 13 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index f3a75bb..d767c45 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -53,13 +53,19 @@ static int preallocated_oos_pages =3D 8192;
+>   */
+>  bool intel_gvt_ggtt_validate_range(struct intel_vgpu *vgpu, u64 addr, u3=
+2 size)
+>  {
+> -	if ((!vgpu_gmadr_is_valid(vgpu, addr)) || (size
+> -			&& !vgpu_gmadr_is_valid(vgpu, addr + size - 1))) {
+> -		gvt_vgpu_err("invalid range gmadr 0x%llx size 0x%x\n",
+> -				addr, size);
+> -		return false;
+> -	}
+> -	return true;
+> +	if (size =3D=3D 0)
+> +		return vgpu_gmadr_is_valid(vgpu, addr);
+> +
+> +	if (vgpu_gmadr_is_aperture(vgpu, addr) &&
+> +	    vgpu_gmadr_is_aperture(vgpu, addr + size - 1))
+> +		return true;
+> +	else if (vgpu_gmadr_is_hidden(vgpu, addr) &&
+> +		 vgpu_gmadr_is_hidden(vgpu, addr + size - 1))
+> +		return true;
+> +
+> +	gvt_dbg_mm("Invalid ggtt range at 0x%llx, size: 0x%x\n",
+> +		     addr, size);
+> +	return false;
+>  }
+> =20
+>  /* translate a guest gmadr to host gmadr */
+> --=20
+> 2.7.4
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
 --=20
 Open Source Technology Center, Intel ltd.
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---z9ECzHErBrwFF8sy
+--17/8oYur5Y32USnW
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOyiLwAKCRCxBBozTXgY
-Jy7ZAJ9IHhuCGPDYDK9ZUsQm0JS1aSlYrQCfZ2G/aRCELpKd+cSxiSFDvUAuhnM=
-=AbnB
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXOyrKwAKCRCxBBozTXgY
+J+T6AJ4jErqvUNWq+eSSjR+ECU0OrSJHlQCfeZjsXfHG+stoUD840OhjuJ3SG08=
+=iRj/
 -----END PGP SIGNATURE-----
 
---z9ECzHErBrwFF8sy--
+--17/8oYur5Y32USnW--
 
---===============0777277632==
+--===============1396650107==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -115,4 +147,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============0777277632==--
+--===============1396650107==--
