@@ -2,40 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B2202D2E3
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 May 2019 02:39:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92AA02D419
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 May 2019 05:09:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E051D6E04E;
-	Wed, 29 May 2019 00:39:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4CCED6E069;
+	Wed, 29 May 2019 03:09:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E140E6E04E
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0B4786E069
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 May 2019 00:39:12 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Wed, 29 May 2019 03:09:15 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 May 2019 17:39:12 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 May 2019 20:09:14 -0700
 X-ExtLoop1: 1
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.9])
- by fmsmga004.fm.intel.com with ESMTP; 28 May 2019 17:39:07 -0700
-Date: Tue, 28 May 2019 20:33:23 -0400
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Cornelia Huck <cohuck@redhat.com>
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by orsmga008.jf.intel.com with ESMTP; 28 May 2019 20:09:08 -0700
+Date: Wed, 29 May 2019 11:07:50 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
 Subject: Re: [PATCH v3 2/2] drm/i915/gvt: export migration_version to mdev
  sysfs for Intel vGPU
-Message-ID: <20190529003323.GH27438@joy-OptiPlex-7040>
+Message-ID: <20190529030750.GN29553@zhen-hp.sh.intel.com>
 References: <20190527034155.31473-1-yan.y.zhao@intel.com>
  <20190527034437.31594-1-yan.y.zhao@intel.com>
- <20190528110135.222aa24e.cohuck@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190528110135.222aa24e.cohuck@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20190527034437.31594-1-yan.y.zhao@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,160 +44,470 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: "cjia@nvidia.com" <cjia@nvidia.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "aik@ozlabs.ru" <aik@ozlabs.ru>,
- "Zhengxiao.zx@alibaba-inc.com" <Zhengxiao.zx@alibaba-inc.com>,
- "shuangtai.tst@alibaba-inc.com" <shuangtai.tst@alibaba-inc.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "eauger@redhat.com" <eauger@redhat.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- "eskultet@redhat.com" <eskultet@redhat.com>, "Yang,
- Ziye" <ziye.yang@intel.com>, "mlevitsk@redhat.com" <mlevitsk@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "libvir-list@redhat.com" <libvir-list@redhat.com>,
- "felipe@nutanix.com" <felipe@nutanix.com>, "Ken.Xue@amd.com" <Ken.Xue@amd.com>,
- "Tian, Kevin" <kevin.tian@intel.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "jonathan.davies@nutanix.com" <jonathan.davies@nutanix.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Liu, Changpeng" <changpeng.liu@intel.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, "dinechin@redhat.com" <dinechin@redhat.com>,
- "He, Shaopeng" <shaopeng.he@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: cjia@nvidia.com, kvm@vger.kernel.org, aik@ozlabs.ru,
+ Zhengxiao.zx@alibaba-inc.com, shuangtai.tst@alibaba-inc.com,
+ qemu-devel@nongnu.org, kwankhede@nvidia.com, eauger@redhat.com,
+ yi.l.liu@intel.com, eskultet@redhat.com, ziye.yang@intel.com,
+ mlevitsk@redhat.com, pasic@linux.ibm.com, libvir-list@redhat.com,
+ felipe@nutanix.com, Ken.Xue@amd.com, kevin.tian@intel.com, dgilbert@redhat.com,
+ zhenyuw@linux.intel.com, dinechin@redhat.com, alex.williamson@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org, changpeng.liu@intel.com,
+ berrange@redhat.com, cohuck@redhat.com, linux-kernel@vger.kernel.org,
+ zhi.a.wang@intel.com, jonathan.davies@nutanix.com, shaopeng.he@intel.com
+Content-Type: multipart/mixed; boundary="===============1518380778=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gVHVlLCBNYXkgMjgsIDIwMTkgYXQgMDU6MDE6MzVQTSArMDgwMCwgQ29ybmVsaWEgSHVjayB3
-cm90ZToKPiBPbiBTdW4sIDI2IE1heSAyMDE5IDIzOjQ0OjM3IC0wNDAwCj4gWWFuIFpoYW8gPHlh
-bi55LnpoYW9AaW50ZWwuY29tPiB3cm90ZToKPiAKPiA+IFRoaXMgZmVhdHVyZSBpbXBsZW1lbnRz
-IHRoZSBtaWdyYXRpb25fdmVyc2lvbiBhdHRyaWJ1dGUgZm9yIEludGVsJ3MgdkdQVQo+ID4gbWRl
-diBkZXZpY2VzLgo+ID4gCj4gPiBtaWdyYXRpb25fdmVyc2lvbiBhdHRyaWJ1dGUgaXMgcncuCj4g
-PiBJdCdzIHVzZWQgdG8gY2hlY2sgbWlncmF0aW9uIGNvbXBhdGliaWxpdHkgZm9yIHR3byBtZGV2
-IGRldmljZXMgb2YgdGhlCj4gPiBzYW1lIG1kZXYgdHlwZS4KPiA+IG1pZ3JhdGlvbl92ZXJzaW9u
-IHN0cmluZyBpcyBkZWZpbmVkIGJ5IHZlbmRvciBkcml2ZXIgYW5kIG9wYXF1ZSB0bwo+ID4gdXNl
-cnNwYWNlLgo+ID4gCj4gPiBGb3IgSW50ZWwgdkdQVSBvZiBnZW44IGFuZCBnZW45LCB0aGUgZm9y
-bWF0IG9mIG1pZ3JhdGlvbl92ZXJzaW9uIHN0cmluZwo+ID4gaXM6Cj4gPiAgIDx2ZW5kb3IgaWQ+
-LTxkZXZpY2UgaWQ+LTx2Z3B1IHR5cGU+LTxzb2Z0d2FyZSB2ZXJzaW9uPi4KPiA+IAo+ID4gRm9y
-IGZ1dHVyZSBwbGF0Zm9ybXMsIHRoZSBmb3JtYXQgb2YgbWlncmF0aW9uX3ZlcnNpb24gc3RyaW5n
-IGlzIHRvIGJlCj4gPiBleHBhbmRlZCB0byBpbmNsdWRlIG1vcmUgbWV0YSBkYXRhIHRvIGlkZW50
-aWZ5IEludGVsIHZHUFVzIGZvciBsaXZlCj4gPiBtaWdyYXRpb24gY29tcGF0aWJpbGl0eSBjaGVj
-awo+ID4gCj4gPiBGb3Igb2xkIHBsYXRmb3JtcywgYW5kIGZvciBHVlQgbm90IHN1cHBvcnRpbmcg
-dkdQVSBsaXZlIG1pZ3JhdGlvbgo+ID4gZmVhdHVyZSwgLUVOT0RFViBpcyByZXR1cm5lZCBvbiBy
-ZWFkKDIpL3dyaXRlKDIpIG9mIG1pZ3JhdGlvbl92ZXJzaW9uCj4gPiBhdHRyaWJ1dGUuCj4gPiBG
-b3IgdkdQVXMgcnVubmluZyBvbGQgR1ZUIHdobyBkbyBub3QgZXhwb3NlIG1pZ3JhdGlvbl92ZXJz
-aW9uCj4gPiBhdHRyaWJ1dGUsIGxpdmUgbWlncmF0aW9uIGlzIHJlZ2FyZGVkIGFzIG5vdCBzdXBw
-b3J0ZWQgZm9yIHRob3NlIHZHUFVzLgo+ID4gCj4gPiBDYzogQWxleCBXaWxsaWFtc29uIDxhbGV4
-LndpbGxpYW1zb25AcmVkaGF0LmNvbT4KPiA+IENjOiBFcmlrIFNrdWx0ZXR5IDxlc2t1bHRldEBy
-ZWRoYXQuY29tPgo+ID4gQ2M6ICJEci4gRGF2aWQgQWxhbiBHaWxiZXJ0IiA8ZGdpbGJlcnRAcmVk
-aGF0LmNvbT4KPiA+IENjOiBDb3JuZWxpYSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT4KPiA+IENj
-OiAiVGlhbiwgS2V2aW4iIDxrZXZpbi50aWFuQGludGVsLmNvbT4KPiA+IENjOiBaaGVueXUgV2Fu
-ZyA8emhlbnl1d0BsaW51eC5pbnRlbC5jb20+Cj4gPiBDYzogIldhbmcsIFpoaSBBIiA8emhpLmEu
-d2FuZ0BpbnRlbC5jb20+Cj4gPiBjOiBOZW8gSmlhIDxjamlhQG52aWRpYS5jb20+Cj4gPiBDYzog
-S2lydGkgV2Fua2hlZGUgPGt3YW5raGVkZUBudmlkaWEuY29tPgo+ID4gCj4gPiBTaWduZWQtb2Zm
-LWJ5OiBZYW4gWmhhbyA8eWFuLnkuemhhb0BpbnRlbC5jb20+Cj4gPiAKPiA+IC0tLQo+ID4gdjM6
-Cj4gPiAxLiByZW5hbWVkIHZlcnNpb24gdG8gbWlncmF0aW9uX3ZlcnNpb24KPiA+IChDaHJpc3Rv
-cGhlIGRlIERpbmVjaGluLCBDb3JuZWxpYSBIdWNrLCBBbGV4IFdpbGxpYW1zb24pCj4gPiAyLiBp
-bnN0ZWFkIG9mIGdlbmVyYXRpbmcgbWlncmF0aW9uIHZlcnNpb24gc3RyaW5ncyBlYWNoIHRpbWUs
-IHN0b3JpbmcKPiA+IHRoZW0gaW4gdmdwdSB0eXBlcyBnZW5lcmF0ZWQgZHVyaW5nIGluaXRpYWxp
-emF0aW9uLgo+ID4gKFpoZW55dSBXYW5nLCBDb3JuZWxpYSBIdWNrKQo+ID4gMy4gcmVwbGFjZWQg
-bXVsdGlwbGUgc25wcmludGYgdG8gb25lIGJpZyBzbnByaW50ZiBpbgo+ID4gaW50ZWxfZ3Z0X2dl
-dF92ZmlvX21pZ3JhdGlvbl92ZXJzaW9uKCkKPiA+IChEci4gRGF2aWQgQWxhbiBHaWxiZXJ0KQo+
-ID4gNC4gcHJpbnRlZCBkZXRhaWxlZCBlcnJvciBsb2cKPiA+IChBbGV4IFdpbGxpYW1zb24sIEVy
-aWsgU2t1bHRldHksIENvcm5lbGlhIEh1Y2ssIERyLiBEYXZpZCBBbGFuIEdpbGJlcnQpCj4gPiA1
-LiBpbmNvcnBvcmF0ZWQgPHNvZnR3YXJlIHZlcnNpb24+IGludG8gbWlncmF0aW9uX3ZlcnNpb24g
-c3RyaW5nCj4gPiAoQWxleCBXaWxsaWFtc29uKQo+ID4gNi4gZG8gbm90IHVzZSBpZm5kZWYgbWFj
-cm8gdG8gc3dpdGNoIG9mZiBtaWdyYXRpb25fdmVyc2lvbiBhdHRyaWJ1dGUKPiA+IChaaGVueXUg
-V2FuZykKPiA+IAo+ID4gdjI6Cj4gPiAxLiByZW1vdmVkIDMyIGNvbW1vbiBwYXJ0IG9mIHZlcnNp
-b24gc3RyaW5nCj4gPiAoQWxleCBXaWxsaWFtc29uKQo+ID4gMi4gZG8gbm90IHJlZ2lzdGVyIHZl
-cnNpb24gYXR0cmlidXRlIGZvciBHVlQgbm90IHN1cHBvcnRpbmcgbGl2ZQo+ID4gbWlncmF0aW9u
-LihDb3JuZWxpYSBIdWNrKQo+ID4gMy4gZm9yIHBsYXRmb3JtcyBvdXQgb2YgZ2VuOCwgZ2VuOSwg
-cmV0dXJuIC1FSU5WQUwgLS0+IC1FTk9ERVYgZm9yCj4gPiBpbmNvbXBhdGlibGUuIChDb3JuZWxp
-YSBIdWNrKQo+ID4gLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L01ha2VmaWxlICAg
-ICAgICAgICAgfCAgIDIgKy0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3Z0LmMgICAg
-ICAgICAgICAgICB8ICAzOSArKysrKwo+ID4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQu
-aCAgICAgICAgICAgICAgIHwgICA1ICsKPiA+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbWln
-cmF0aW9uX3ZlcnNpb24uYyB8IDE2NyArKysrKysrKysrKysrKysrKysrCj4gPiAgZHJpdmVycy9n
-cHUvZHJtL2k5MTUvZ3Z0L3ZncHUuYyAgICAgICAgICAgICAgfCAgMTMgKy0KPiA+ICA1IGZpbGVz
-IGNoYW5nZWQsIDIyMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+ID4gIGNyZWF0ZSBt
-b2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbWlncmF0aW9uX3ZlcnNpb24uYwo+
-ID4gCj4gCj4gKC4uLikKPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9n
-dnQvZ3Z0LmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3Z0LmMKPiA+IGluZGV4IDQzZjQy
-NDIwNjJkZC4uYmUyOTgwZThhYzc1IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5
-MTUvZ3Z0L2d2dC5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3Z0LmMKPiA+
-IEBAIC0xMDUsMTQgKzEwNSw1MyBAQCBzdGF0aWMgc3NpemVfdCBkZXNjcmlwdGlvbl9zaG93KHN0
-cnVjdCBrb2JqZWN0ICprb2JqLCBzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gPiAgCQkgICAgICAgdHlw
-ZS0+d2VpZ2h0KTsKPiA+ICB9Cj4gPiAgCj4gPiArc3RhdGljIHNzaXplX3QgbWlncmF0aW9uX3Zl
-cnNpb25fc2hvdyhzdHJ1Y3Qga29iamVjdCAqa29iaiwgc3RydWN0IGRldmljZSAqZGV2LAo+ID4g
-KwkJY2hhciAqYnVmKQo+IAo+IEluZGVudGF0aW9uIGxvb2tzIGEgYml0IG9kZD8gKEFsc28gYmVs
-b3cuKQo+Cnllcy4gTGV0IG1lIGNvcnJlY3QgaXQgaW4gbmV4dCByZXZpc2lvbi4KCj4gPiArewo+
-ID4gKwlzdHJ1Y3QgaW50ZWxfdmdwdV90eXBlICp0eXBlOwo+ID4gKwl2b2lkICpndnQgPSBrZGV2
-X3RvX2k5MTUoZGV2KS0+Z3Z0Owo+ID4gKwo+ID4gKwl0eXBlID0gaW50ZWxfZ3Z0X2ZpbmRfdmdw
-dV90eXBlKGd2dCwga29iamVjdF9uYW1lKGtvYmopKTsKPiA+ICsJaWYgKCF0eXBlIHx8ICF0eXBl
-LT5taWdyYXRpb25fdmVyc2lvbikgewo+ID4gKwkJZ3Z0X2VycigiRG9lcyBub3Qgc3VwcG9ydCBt
-aWdyYWlvbiBvbiB0eXBlICVzLiBQbGVhc2Ugc2VhcmNoIHByZXZpb3VzIGRldGFpbGVkIGxvZ1xu
-IiwKPiAKPiBzL21pZ3JhaW9uL21pZ3JhdGlvbi8gKGFsc28gYmVsb3cpCj4KU29ycnkgZm9yIHR5
-cG9zIGFnYWluLiBJJ2xsIGJlIG1vcmUgY2FyZWZ1bCBuZXh0IHRpbWUuIHRoYW5rIHlvdTopCgo+
-IE9yIHJld29yZCB0byAiTWlncmF0aW9uIG5vdCBzdXBwb3J0ZWQgb24gdHlwZSAlcy4iPwo+Clll
-cywgYmV0dGVyIDopCgo+ID4gKwkJCQlrb2JqZWN0X25hbWUoa29iaikpOwo+ID4gKwkJcmV0dXJu
-IC1FTk9ERVY7Cj4gPiArCX0KPiA+ICsKPiA+ICsJcmV0dXJuIHNucHJpbnRmKGJ1Ziwgc3RybGVu
-KHR5cGUtPm1pZ3JhdGlvbl92ZXJzaW9uKSArIDIsCj4gPiArCQkJIiVzXG4iLCB0eXBlLT5taWdy
-YXRpb25fdmVyc2lvbik7Cj4gPiArfQo+ID4gKwo+ID4gK3N0YXRpYyBzc2l6ZV90IG1pZ3JhdGlv
-bl92ZXJzaW9uX3N0b3JlKHN0cnVjdCBrb2JqZWN0ICprb2JqLCBzdHJ1Y3QgZGV2aWNlICpkZXYs
-Cj4gPiArCQljb25zdCBjaGFyICpidWYsIHNpemVfdCBjb3VudCkKPiA+ICt7Cj4gPiArCWludCBy
-ZXQgPSAwOwo+ID4gKwlzdHJ1Y3QgaW50ZWxfdmdwdV90eXBlICp0eXBlOwo+ID4gKwl2b2lkICpn
-dnQgPSBrZGV2X3RvX2k5MTUoZGV2KS0+Z3Z0Owo+ID4gKwo+ID4gKwl0eXBlID0gaW50ZWxfZ3Z0
-X2ZpbmRfdmdwdV90eXBlKGd2dCwga29iamVjdF9uYW1lKGtvYmopKTsKPiA+ICsJaWYgKCF0eXBl
-IHx8ICF0eXBlLT5taWdyYXRpb25fdmVyc2lvbikgewo+ID4gKwkJZ3Z0X2VycigiRG9lcyBub3Qg
-c3VwcG9ydCBtaWdyYWlvbiBvbiB0eXBlICVzLiBQbGVhc2Ugc2VhcmNoIHByZXZpb3VzIGRldGFp
-bGVkIGxvZ1xuIiwKPiA+ICsJCQkJa29iamVjdF9uYW1lKGtvYmopKTsKPiA+ICsJCXJldHVybiAt
-RU5PREVWOwo+ID4gKwl9Cj4gPiArCj4gPiArCXJldCA9IGludGVsX2d2dF9jaGVja192ZmlvX21p
-Z3JhdGlvbl92ZXJzaW9uKGd2dCwKPiA+ICsJCQl0eXBlLT5taWdyYXRpb25fdmVyc2lvbiwgYnVm
-KTsKPiA+ICsKPiA+ICsJcmV0dXJuIChyZXQgPCAwID8gcmV0IDogY291bnQpOwo+ID4gK30KPiA+
-ICsKPiA+ICBzdGF0aWMgTURFVl9UWVBFX0FUVFJfUk8oYXZhaWxhYmxlX2luc3RhbmNlcyk7Cj4g
-PiAgc3RhdGljIE1ERVZfVFlQRV9BVFRSX1JPKGRldmljZV9hcGkpOwo+ID4gIHN0YXRpYyBNREVW
-X1RZUEVfQVRUUl9STyhkZXNjcmlwdGlvbik7Cj4gPiArc3RhdGljIE1ERVZfVFlQRV9BVFRSX1JX
-KG1pZ3JhdGlvbl92ZXJzaW9uKTsKPiA+ICAKPiA+ICBzdGF0aWMgc3RydWN0IGF0dHJpYnV0ZSAq
-Z3Z0X3R5cGVfYXR0cnNbXSA9IHsKPiA+ICAJJm1kZXZfdHlwZV9hdHRyX2F2YWlsYWJsZV9pbnN0
-YW5jZXMuYXR0ciwKPiA+ICAJJm1kZXZfdHlwZV9hdHRyX2RldmljZV9hcGkuYXR0ciwKPiA+ICAJ
-Jm1kZXZfdHlwZV9hdHRyX2Rlc2NyaXB0aW9uLmF0dHIsCj4gPiArCSZtZGV2X3R5cGVfYXR0cl9t
-aWdyYXRpb25fdmVyc2lvbi5hdHRyLAo+ID4gIAlOVUxMLAo+ID4gIH07Cj4gCj4gKC4uLikKPiAK
-PiA+ICtjaGFyICoKPiA+ICtpbnRlbF9ndnRfZ2V0X3ZmaW9fbWlncmF0aW9uX3ZlcnNpb24oc3Ry
-dWN0IGludGVsX2d2dCAqZ3Z0LAo+ID4gKwkJY29uc3QgY2hhciAqdmdwdV90eXBlKQo+ID4gK3sK
-PiA+ICsJaW50IGNudCA9IDA7Cj4gPiArCXN0cnVjdCBkcm1faTkxNV9wcml2YXRlICpkZXZfcHJp
-diA9IGd2dC0+ZGV2X3ByaXY7Cj4gPiArCWNoYXIgKnZlcnNpb24gPSBOVUxMOwo+ID4gKwo+ID4g
-KwkvKiBjdXJyZW50bHkgb25seSBnZW44ICYgZ2VuOSBhcmUgc3VwcG9ydGVkICovCj4gPiArCWlm
-ICghSVNfR0VOKGRldl9wcml2LCA4KSAmJiAhSVNfR0VOKGRldl9wcml2LCA5KSkgewo+ID4gKwkJ
-Z3Z0X2VycigiTG9jYWwgaGFyZHdhcmUgZG9lcyBub3Qgc3VwcG9ydCBtaWdyYXRpb24gb24gJWRc
-biIsCj4gPiArCQkJCUlOVEVMX0lORk8oZGV2X3ByaXYpLT5nZW4pOwo+ID4gKwkJcmV0dXJuIE5V
-TEw7Cj4gPiArCX0KPiA+ICsKPiA+ICsJaWYgKEdWVF9WRklPX01JR1JBVElPTl9TT0ZUV0FSRV9W
-RVJTSU9OID09IElOVl9TT0ZUV0FSRV9WRVJTSU9OKSB7Cj4gPiArCQlndnRfZXJyKCJMb2NhbCBH
-VlQgZG9lcyBub3Qgc3VwcG9ydCBtaWdyYXRpb25cbiIpOwo+ID4gKwkJcmV0dXJuIE5VTEw7Cj4g
-PiArCX0KPiA+ICsKPiA+ICsJdmVyc2lvbiA9IGt6YWxsb2MoTUlHUkFUSU9OX1ZFUlNJT05fVE9U
-QUxfTEVOLCBHRlBfS0VSTkVMKTsKPiA+ICsKPiA+ICsJaWYgKHVubGlrZWx5KCF2ZXJzaW9uKSkg
-ewo+ID4gKwkJZ3Z0X2VycigibWVtb3J5IGFsbG9jYXRpb24gZmFpbGVkIHdoZW4gZ2V0IGxvY2Fs
-IG1pZ3JhaXRvbiB2ZXJzaW9uXG4iKTsKPiAKPiBzL21pZ3JhaXRvbi9taWdyYXRpb24vCj4gCj4g
-T3IgImNhbm5vdCBhbGxvY2F0ZSBtZW1vcnkgZm9yIGxvY2FsIG1pZ3JhdGlvbiB2ZXJzaW9uIj8K
-PgpPay4KCj4gPiArCQlyZXR1cm4gTlVMTDsKPiA+ICsJfQo+ID4gKwo+ID4gKwkvKiB2ZW5kb3Ig
-aWQgKyBkZXZpY2UgaWQgKyB2Z3B1IHR5cGUgKyBzb2Z0d2FyZSB2ZXJzaW9uICovCj4gPiArCWNu
-dCA9IHNucHJpbnRmKHZlcnNpb24sIE1JR1JBVElPTl9WRVJTSU9OX1RPVEFMX0xFTiwgUFJJTlRG
-X0ZPUk1BVCwKPiA+ICsJCQlQQ0lfVkVORE9SX0lEX0lOVEVMLAo+ID4gKwkJCUlOVEVMX0RFVklE
-KGRldl9wcml2KSwKPiA+ICsJCQl2Z3B1X3R5cGUsCj4gPiArCQkJR1ZUX1ZGSU9fTUlHUkFUSU9O
-X1NPRlRXQVJFX1ZFUlNJT04pOwo+ID4gKwo+ID4gKwlpZiAoY250KQo+ID4gKwkJcmV0dXJuIHZl
-cnNpb247Cj4gPiArCj4gPiArCWd2dF9lcnIoInN0cmluZyBnZW5lcmF0aW9uIGZhaWxlZCB3aGVu
-IGdldCBsb2NhbCBtaWdyYXRpb24gdmVyc2lvblxuIik7Cj4gPiArCXJldHVybiBOVUxMOwo+ID4g
-K30KPiAKPiAoLi4uKQo+IAo+IE9ubHkgc29tZSBuaXRwaWNrcyBmcm9tIG1lLCBidXQgSSdtIG5v
-dCByZWFsbHkgZmFtaWxpYXIgd2l0aCB0aGlzCj4gZHJpdmVyLiBPdmVyYWxsLCB0aGlzIGxvb2tz
-IHNhbmUgdG8gbWUsIHNvIGhhdmUgYW4KPiAKPiBBY2tlZC1ieTogQ29ybmVsaWEgSHVjayA8Y29o
-dWNrQHJlZGhhdC5jb20+CgoKVGhhbmsgeW91IHNvIG11Y2ggQ29ybmVsaWEgOikKCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGludGVsLWd2dC1kZXYg
-bWFpbGluZyBsaXN0Cj4gaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+
+--===============1518380778==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="qDymnuGqqhW10CwH"
+Content-Disposition: inline
+
+
+--qDymnuGqqhW10CwH
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.26 23:44:37 -0400, Yan Zhao wrote:
+> This feature implements the migration_version attribute for Intel's vGPU
+> mdev devices.
+>=20
+> migration_version attribute is rw.
+> It's used to check migration compatibility for two mdev devices of the
+> same mdev type.
+> migration_version string is defined by vendor driver and opaque to
+> userspace.
+>=20
+> For Intel vGPU of gen8 and gen9, the format of migration_version string
+> is:
+>   <vendor id>-<device id>-<vgpu type>-<software version>.
+>=20
+> For future platforms, the format of migration_version string is to be
+> expanded to include more meta data to identify Intel vGPUs for live
+> migration compatibility check
+>=20
+> For old platforms, and for GVT not supporting vGPU live migration
+> feature, -ENODEV is returned on read(2)/write(2) of migration_version
+> attribute.
+> For vGPUs running old GVT who do not expose migration_version
+> attribute, live migration is regarded as not supported for those vGPUs.
+>=20
+> Cc: Alex Williamson <alex.williamson@redhat.com>
+> Cc: Erik Skultety <eskultet@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: "Tian, Kevin" <kevin.tian@intel.com>
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Cc: "Wang, Zhi A" <zhi.a.wang@intel.com>
+> c: Neo Jia <cjia@nvidia.com>
+> Cc: Kirti Wankhede <kwankhede@nvidia.com>
+>=20
+> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+>=20
+> ---
+> v3:
+> 1. renamed version to migration_version
+> (Christophe de Dinechin, Cornelia Huck, Alex Williamson)
+> 2. instead of generating migration version strings each time, storing
+> them in vgpu types generated during initialization.
+> (Zhenyu Wang, Cornelia Huck)
+> 3. replaced multiple snprintf to one big snprintf in
+> intel_gvt_get_vfio_migration_version()
+> (Dr. David Alan Gilbert)
+> 4. printed detailed error log
+> (Alex Williamson, Erik Skultety, Cornelia Huck, Dr. David Alan Gilbert)
+> 5. incorporated <software version> into migration_version string
+> (Alex Williamson)
+> 6. do not use ifndef macro to switch off migration_version attribute
+> (Zhenyu Wang)
+>=20
+> v2:
+> 1. removed 32 common part of version string
+> (Alex Williamson)
+> 2. do not register version attribute for GVT not supporting live
+> migration.(Cornelia Huck)
+> 3. for platforms out of gen8, gen9, return -EINVAL --> -ENODEV for
+> incompatible. (Cornelia Huck)
+> ---
+>  drivers/gpu/drm/i915/gvt/Makefile            |   2 +-
+>  drivers/gpu/drm/i915/gvt/gvt.c               |  39 +++++
+>  drivers/gpu/drm/i915/gvt/gvt.h               |   5 +
+>  drivers/gpu/drm/i915/gvt/migration_version.c | 167 +++++++++++++++++++
+>  drivers/gpu/drm/i915/gvt/vgpu.c              |  13 +-
+>  5 files changed, 223 insertions(+), 3 deletions(-)
+>  create mode 100644 drivers/gpu/drm/i915/gvt/migration_version.c
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt=
+/Makefile
+> index 271fb46d4dd0..a9d561c93ab8 100644
+> --- a/drivers/gpu/drm/i915/gvt/Makefile
+> +++ b/drivers/gpu/drm/i915/gvt/Makefile
+> @@ -3,7 +3,7 @@ GVT_DIR :=3D gvt
+>  GVT_SOURCE :=3D gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o fir=
+mware.o \
+>  	interrupt.o gtt.o cfg_space.o opregion.o mmio.o display.o edid.o \
+>  	execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o debug=
+fs.o \
+> -	fb_decoder.o dmabuf.o page_track.o
+> +	fb_decoder.o dmabuf.o page_track.o migration_version.o
+> =20
+>  ccflags-y				+=3D -I$(src) -I$(src)/$(GVT_DIR)
+>  i915-y					+=3D $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gv=
+t.c
+> index 43f4242062dd..be2980e8ac75 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.c
+> @@ -105,14 +105,53 @@ static ssize_t description_show(struct kobject *kob=
+j, struct device *dev,
+>  		       type->weight);
+>  }
+> =20
+> +static ssize_t migration_version_show(struct kobject *kobj, struct devic=
+e *dev,
+> +		char *buf)
+> +{
+> +	struct intel_vgpu_type *type;
+> +	void *gvt =3D kdev_to_i915(dev)->gvt;
+> +
+> +	type =3D intel_gvt_find_vgpu_type(gvt, kobject_name(kobj));
+> +	if (!type || !type->migration_version) {
+> +		gvt_err("Does not support migraion on type %s. Please search previous =
+detailed log\n",
+> +				kobject_name(kobj));
+> +		return -ENODEV;
+> +	}
+> +
+> +	return snprintf(buf, strlen(type->migration_version) + 2,
+> +			"%s\n", type->migration_version);
+> +}
+> +
+> +static ssize_t migration_version_store(struct kobject *kobj, struct devi=
+ce *dev,
+> +		const char *buf, size_t count)
+> +{
+> +	int ret =3D 0;
+> +	struct intel_vgpu_type *type;
+> +	void *gvt =3D kdev_to_i915(dev)->gvt;
+> +
+> +	type =3D intel_gvt_find_vgpu_type(gvt, kobject_name(kobj));
+> +	if (!type || !type->migration_version) {
+> +		gvt_err("Does not support migraion on type %s. Please search previous =
+detailed log\n",
+> +				kobject_name(kobj));
+> +		return -ENODEV;
+> +	}
+> +
+> +	ret =3D intel_gvt_check_vfio_migration_version(gvt,
+> +			type->migration_version, buf);
+> +
+> +	return (ret < 0 ? ret : count);
+> +}
+> +
+>  static MDEV_TYPE_ATTR_RO(available_instances);
+>  static MDEV_TYPE_ATTR_RO(device_api);
+>  static MDEV_TYPE_ATTR_RO(description);
+> +static MDEV_TYPE_ATTR_RW(migration_version);
+> =20
+>  static struct attribute *gvt_type_attrs[] =3D {
+>  	&mdev_type_attr_available_instances.attr,
+>  	&mdev_type_attr_device_api.attr,
+>  	&mdev_type_attr_description.attr,
+> +	&mdev_type_attr_migration_version.attr,
+>  	NULL,
+>  };
+> =20
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
+> index f5a328b5290a..265319d35c25 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> @@ -296,6 +296,7 @@ struct intel_vgpu_type {
+>  	unsigned int fence;
+>  	unsigned int weight;
+>  	enum intel_vgpu_edid resolution;
+> +	char *migration_version;
+>  };
+> =20
+>  struct intel_gvt {
+> @@ -687,6 +688,10 @@ void intel_gvt_debugfs_remove_vgpu(struct intel_vgpu=
+ *vgpu);
+>  int intel_gvt_debugfs_init(struct intel_gvt *gvt);
+>  void intel_gvt_debugfs_clean(struct intel_gvt *gvt);
+> =20
+> +ssize_t intel_gvt_check_vfio_migration_version(struct intel_gvt *gvt,
+> +		const char *self, const char *remote);
+> +char *intel_gvt_get_vfio_migration_version(struct intel_gvt *gvt,
+> +		const char *vgpu_type);
+> =20
+>  #include "trace.h"
+>  #include "mpt.h"
+> diff --git a/drivers/gpu/drm/i915/gvt/migration_version.c b/drivers/gpu/d=
+rm/i915/gvt/migration_version.c
+> new file mode 100644
+> index 000000000000..e6acf188b29a
+> --- /dev/null
+> +++ b/drivers/gpu/drm/i915/gvt/migration_version.c
+> @@ -0,0 +1,167 @@
+> +/*
+> + * Copyright(c) 2011-2017 Intel Corporation. All rights reserved.
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a
+> + * copy of this software and associated documentation files (the "Softwa=
+re"),
+> + * to deal in the Software without restriction, including without limita=
+tion
+> + * the rights to use, copy, modify, merge, publish, distribute, sublicen=
+se,
+> + * and/or sell copies of the Software, and to permit persons to whom the
+> + * Software is furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice (including the =
+next
+> + * paragraph) shall be included in all copies or substantial portions of=
+ the
+> + * Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SH=
+ALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN THE
+> + * SOFTWARE.
+> + *
+> + * Authors:
+> + *    Yan Zhao <yan.y.zhao@intel.com>
+> + */
+> +#include <linux/vfio.h>
+> +#include "i915_drv.h"
+> +#include "gvt.h"
+> +
+> +#define INV_SOFTWARE_VERSION (-1U)
+> +#define VENDOR_ID_LEN (4)
+> +#define DEVICE_ID_LEN (4)
+> +#define VGPU_TYPE_LEN (16)
+> +#define SOFTWARE_VER_LEN (8)
+> +
+> +/* total length of vfio migration version string.
+> + * never exceed limit of PATH_MAX (4096)
+> + */
+> +#define MIGRATION_VERSION_TOTAL_LEN (VENDOR_ID_LEN + DEVICE_ID_LEN + \
+> +					VGPU_TYPE_LEN + SOFTWARE_VER_LEN + 4)
+> +
+> +#define GVT_VFIO_MIGRATION_SOFTWARE_VERSION INV_SOFTWARE_VERSION
+> +
+> +
+> +#define PRINTF_FORMAT "%04x-%04x-%s-%08x"
+> +#define SCANF_FORMAT "%x-%x-%16[^-]-%x"
+> +
+> +enum incompatible_reason {
+> +	IREASON_WRONG_REMOTE_FORMAT =3D 0,
+> +	IREASON_HARDWARE_MISMATCH,
+> +	IREASON_SOFTWARE_VERSION_MISMATCH,
+> +	IREASON_VGPU_TYPE_MISMATCH,
+> +};
+> +
+> +static const char *const incompatible_reason_str[] =3D {
+> +	[IREASON_WRONG_REMOTE_FORMAT] =3D
+> +		"wrong string format. probably wrong GVT version",
+> +	[IREASON_HARDWARE_MISMATCH] =3D
+> +		"physical device not matched",
+> +	[IREASON_SOFTWARE_VERSION_MISMATCH] =3D
+> +		"migration software version not matched",
+> +	[IREASON_VGPU_TYPE_MISMATCH] =3D
+> +		"vgpu type not matched"
+> +};
+> +
+> +static bool is_compatible(const char *local, const char *remote)
+> +{
+> +	bool ret;
+> +
+> +	ret =3D sysfs_streq(local, remote);
+> +
+> +	if (!ret) {
+> +		int vid_l =3D 0, did_l =3D 0, vid_r =3D 0, did_r =3D 0;
+> +		char type_l[VGPU_TYPE_LEN], type_r[VGPU_TYPE_LEN];
+> +		u32 sv_l =3D 0, sv_r =3D 0;
+> +		int rl =3D 0, rr =3D 0;
+> +		enum incompatible_reason reason =3D IREASON_WRONG_REMOTE_FORMAT;
+> +
+> +		memset(type_l, 0, sizeof(type_l));
+> +		memset(type_r, 0, sizeof(type_r));
+> +
+> +		rl =3D sscanf(local, SCANF_FORMAT,
+> +				&vid_l, &did_l, type_l, &sv_l);
+> +		rr =3D sscanf(remote, SCANF_FORMAT,
+> +				&vid_r, &did_r, type_r, &sv_r);
+> +
+> +		if (rl =3D=3D rr) {
+> +			if (vid_l !=3D vid_r || did_l !=3D did_r)
+> +				reason =3D IREASON_HARDWARE_MISMATCH;
+> +			else if (sv_l !=3D sv_r)
+> +				reason =3D IREASON_SOFTWARE_VERSION_MISMATCH;
+> +			else if (strncmp(type_l, type_r, VGPU_TYPE_LEN))
+> +				reason =3D IREASON_VGPU_TYPE_MISMATCH;
+> +		}
+> +
+> +		gvt_err("Migration version mismatched. Possible reason: %s. Local migr=
+ation version:%s, Remote migration version:%s\n",
+> +				incompatible_reason_str[reason], local,	remote);
+> +
+> +	}
+> +	return ret;
+> +
+> +}
+> +
+> +
+> +char *
+> +intel_gvt_get_vfio_migration_version(struct intel_gvt *gvt,
+> +		const char *vgpu_type)
+> +{
+> +	int cnt =3D 0;
+> +	struct drm_i915_private *dev_priv =3D gvt->dev_priv;
+> +	char *version =3D NULL;
+> +
+> +	/* currently only gen8 & gen9 are supported */
+> +	if (!IS_GEN(dev_priv, 8) && !IS_GEN(dev_priv, 9)) {
+> +		gvt_err("Local hardware does not support migration on %d\n",
+> +				INTEL_INFO(dev_priv)->gen);
+> +		return NULL;
+> +	}
+> +
+> +	if (GVT_VFIO_MIGRATION_SOFTWARE_VERSION =3D=3D INV_SOFTWARE_VERSION) {
+> +		gvt_err("Local GVT does not support migration\n");
+> +		return NULL;
+> +	}
+> +
+> +	version =3D kzalloc(MIGRATION_VERSION_TOTAL_LEN, GFP_KERNEL);
+> +
+> +	if (unlikely(!version)) {
+> +		gvt_err("memory allocation failed when get local migraiton version\n");
+> +		return NULL;
+> +	}
+> +
+> +	/* vendor id + device id + vgpu type + software version */
+> +	cnt =3D snprintf(version, MIGRATION_VERSION_TOTAL_LEN, PRINTF_FORMAT,
+> +			PCI_VENDOR_ID_INTEL,
+> +			INTEL_DEVID(dev_priv),
+> +			vgpu_type,
+> +			GVT_VFIO_MIGRATION_SOFTWARE_VERSION);
+> +
+> +	if (cnt)
+> +		return version;
+> +
+> +	gvt_err("string generation failed when get local migration version\n");
+> +	return NULL;
+
+Handle version kfree for possible error here. The approach looks fine to me.
+I think some of those messages might be too chatty or maybe debug message i=
+nstead.
+Others are good to me.
+
+Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+> +}
+> +
+> +ssize_t intel_gvt_check_vfio_migration_version(struct intel_gvt *gvt,
+> +		const char *self, const char *remote)
+> +{
+> +	struct drm_i915_private *dev_priv =3D gvt->dev_priv;
+> +
+> +	/* currently only gen8 & gen9 are supported */
+> +	if (!IS_GEN(dev_priv, 8) && !IS_GEN(dev_priv, 9)) {
+> +		gvt_err("Local hardware does not support migration on %d\n",
+> +				INTEL_INFO(dev_priv)->gen);
+> +		return -ENODEV;
+> +	}
+> +
+> +	if (GVT_VFIO_MIGRATION_SOFTWARE_VERSION =3D=3D INV_SOFTWARE_VERSION) {
+> +		gvt_err("Local GVT does not support migration\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	if (!is_compatible(self, remote))
+> +		return -EINVAL;
+> +
+> +	return 0;
+> +}
+> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/v=
+gpu.c
+> index 44ce3c2b9ac1..7642b21641bd 100644
+> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+> @@ -155,13 +155,18 @@ int intel_gvt_init_vgpu_types(struct intel_gvt *gvt)
+>  			sprintf(gvt->types[i].name, "GVTg_V5_%s",
+>  						vgpu_types[i].name);
+> =20
+> -		gvt_dbg_core("type[%d]: %s avail %u low %u high %u fence %u weight %u =
+res %s\n",
+> +		gvt->types[i].migration_version =3D
+> +			intel_gvt_get_vfio_migration_version(gvt,
+> +					gvt->types[i].name);
+> +		gvt_dbg_core("type[%d]: %s avail %u low %u high %u fence %u weight %u =
+res %s, migratio_version:%s\n",
+>  			     i, gvt->types[i].name,
+>  			     gvt->types[i].avail_instance,
+>  			     gvt->types[i].low_gm_size,
+>  			     gvt->types[i].high_gm_size, gvt->types[i].fence,
+>  			     gvt->types[i].weight,
+> -			     vgpu_edid_str(gvt->types[i].resolution));
+> +			     vgpu_edid_str(gvt->types[i].resolution),
+> +			     (gvt->types[i].migration_version ?
+> +			     gvt->types[i].migration_version : "null"));
+>  	}
+> =20
+>  	gvt->num_types =3D i;
+> @@ -170,6 +175,10 @@ int intel_gvt_init_vgpu_types(struct intel_gvt *gvt)
+> =20
+>  void intel_gvt_clean_vgpu_types(struct intel_gvt *gvt)
+>  {
+> +	int i;
+> +
+> +	for (i =3D 0; i < gvt->num_types; i++)
+> +		kfree(gvt->types[i].migration_version);
+>  	kfree(gvt->types);
+>  }
+> =20
+> --=20
+> 2.17.1
+>=20
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--qDymnuGqqhW10CwH
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXO33hgAKCRCxBBozTXgY
+J1nkAKCZtc3iswsrf9qHQxaC2UOMoSXHTgCfQrcnRcG3WOGT+LqMefdZ4cruirA=
+=0Ra5
+-----END PGP SIGNATURE-----
+
+--qDymnuGqqhW10CwH--
+
+--===============1518380778==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
 X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1518380778==--
