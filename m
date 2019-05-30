@@ -1,34 +1,35 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A544D2F861
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 May 2019 10:15:05 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9011F2F955
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 May 2019 11:23:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 523DE6E130;
-	Thu, 30 May 2019 08:15:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 453806E13A;
+	Thu, 30 May 2019 09:23:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0DC406E130
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3AB346E13A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 May 2019 08:15:03 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Thu, 30 May 2019 09:23:53 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 May 2019 01:15:01 -0700
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 May 2019 02:23:52 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,530,1549958400"; d="scan'208";a="179867169"
-Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.9])
- by fmsmga002.fm.intel.com with ESMTP; 30 May 2019 01:15:00 -0700
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: defer page unmap until after finish referencing
- it
-Date: Thu, 30 May 2019 04:09:06 -0400
-Message-Id: <20190530080906.30941-1-yan.y.zhao@intel.com>
-X-Mailer: git-send-email 2.17.1
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga006.fm.intel.com with ESMTP; 30 May 2019 02:23:51 -0700
+Date: Thu, 30 May 2019 17:22:30 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Aleksei Gimbitskii <aleksei.gimbitskii@intel.com>
+Subject: Re: [PATCH v4 0/2] Fix issues reported by klocwork
+Message-ID: <20190530092230.GF3211@zhen-hp.sh.intel.com>
+References: <20190502095922.31917-1-aleksei.gimbitskii@intel.com>
+MIME-Version: 1.0
+In-Reply-To: <20190502095922.31917-1-aleksei.gimbitskii@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -41,30 +42,76 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yan Zhao <yan.y.zhao@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============0683031553=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-SXQgaXMgYmV0dGVyIHRvIG1vdmUga3VubWFwIHRvIGFmdGVyIHJlZmVyZW5jaW5nIHRoZSB2aXJ0
-dWFsIGFkZHJlc3MKClNpZ25lZC1vZmYtYnk6IFlhbiBaaGFvIDx5YW4ueS56aGFvQGludGVsLmNv
-bT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMgfCA3ICsrKysrLS0K
-IDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jIGIvZHJpdmVycy9ncHUv
-ZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jCmluZGV4IDM1M2I0ZDBkYTZiNC4uOGYzYmE0OWIwNmY1
-IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMKKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jCkBAIC0xNjYsMTAgKzE2NiwxMyBA
-QCBzdGF0aWMgaW50IHBvcHVsYXRlX3NoYWRvd19jb250ZXh0KHN0cnVjdCBpbnRlbF92Z3B1X3dv
-cmtsb2FkICp3b3JrbG9hZCkKIAkJCUk5MTVfR1RUX1BBR0VfU0laRSAtIHNpemVvZigqc2hhZG93
-X3JpbmdfY29udGV4dCkpOwogCiAJc3Jfb2FfcmVncyh3b3JrbG9hZCwgKHUzMiAqKXNoYWRvd19y
-aW5nX2NvbnRleHQsIGZhbHNlKTsKLQlrdW5tYXAocGFnZSk7CiAKLQlpZiAoSVNfUkVTVE9SRV9J
-TkhJQklUKHNoYWRvd19yaW5nX2NvbnRleHQtPmN0eF9jdHJsLnZhbCkpCisJaWYgKElTX1JFU1RP
-UkVfSU5ISUJJVChzaGFkb3dfcmluZ19jb250ZXh0LT5jdHhfY3RybC52YWwpKSB7CisJCWt1bm1h
-cChwYWdlKTsKIAkJcmV0dXJuIDA7CisJfQorCisJa3VubWFwKHBhZ2UpOwogCiAJZ3Z0X2RiZ19z
-Y2hlZCgicmluZyBpZCAlZCB3b3JrbG9hZCBscmNhICV4IiwgcmluZ19pZCwKIAkJCXdvcmtsb2Fk
-LT5jdHhfZGVzYy5scmNhKTsKLS0gCjIuMTcuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0
-LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0683031553==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="XStn23h1fwudRqtG"
+Content-Disposition: inline
+
+
+--XStn23h1fwudRqtG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.05.02 12:59:20 +0300, Aleksei Gimbitskii wrote:
+> The klocwork static code analyzer found 11 critical issues and 7 error
+> issues in GVT-g source code. After the analyzation, one critical issue
+> and 6 "errors" was concluded as harmless. This patchset fixes other
+> cases, which might cause potential issues in future.
+>=20
+> v4:
+> - Minor changes to one error message in patch 1. (Colin Xu)=20
+> - After discusion we agreed that patch 2 remains unmodified.
+>=20
+> v3:
+> - Remove typedef and let the enumeration starts from zero. (Zhi Wang)
+>=20
+> V2:
+> - Print some error messages if page table type is invalid. (Colin Xu)
+> - Increase the size of the buffer. (Colin Xu)
+> - Initialize fb_info.obj in vgpu_get_plane_info(). (Colin Xu)
+>=20
+> Aleksei Gimbitskii (2):
+>   drm/i915/gvt: Check if cur_pt_type is valid
+>   drm/i915/gvt: Assign NULL to the pointer after memory free.
+>=20
+
+Applied these. For second one, pls check to refine error message later.
+
+thanks
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--XStn23h1fwudRqtG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXO+g1gAKCRCxBBozTXgY
+J13GAKCd2HvbnX77d+1TuycjPixYabol0ACfXEqaXVof/+XEdYZutmbRbvdVFqE=
+=rF9I
+-----END PGP SIGNATURE-----
+
+--XStn23h1fwudRqtG--
+
+--===============0683031553==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0683031553==--
