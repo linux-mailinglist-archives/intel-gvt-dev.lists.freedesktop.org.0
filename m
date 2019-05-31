@@ -2,35 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84CC43081C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 May 2019 07:43:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F0433099F
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 May 2019 09:43:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 11C4C89834;
-	Fri, 31 May 2019 05:43:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 22B6A891F4;
+	Fri, 31 May 2019 07:43:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8A98989834
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CB97F891F4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 31 May 2019 05:43:47 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+ Fri, 31 May 2019 07:43:29 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 May 2019 22:43:47 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 May 2019 00:43:29 -0700
 X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga003.jf.intel.com with ESMTP; 30 May 2019 22:43:46 -0700
-Date: Fri, 31 May 2019 13:42:23 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Xiaolin Zhang <xiaolin.zhang@intel.com>
-Subject: Re: [PATCH v5] drm/i915/gvt: save RING_HEAD into vreg when vgpu
- switched out
-Message-ID: <20190531054223.GL3211@zhen-hp.sh.intel.com>
-References: <1559279889-5741-1-git-send-email-xiaolin.zhang@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <1559279889-5741-1-git-send-email-xiaolin.zhang@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Received: from vgt-optiplex-9020.sh.intel.com ([10.239.160.51])
+ by orsmga001.jf.intel.com with ESMTP; 31 May 2019 00:43:27 -0700
+From: Weinan Li <weinan.z.li@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: add F_CMD_ACCESS flag for wa regs
+Date: Fri, 31 May 2019 15:33:48 +0800
+Message-Id: <20190531073348.26490-1-weinan.z.li@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -43,183 +39,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0903042828=="
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>, Weinan Li <weinan.z.li@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============0903042828==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ai3I8gwHc37+ASRI"
-Content-Disposition: inline
-
-
---ai3I8gwHc37+ASRI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.05.31 13:18:09 +0800, Xiaolin Zhang wrote:
-> Save RING_HEAD into vgpu reg when vgpu switched out and report
-> it's value back to guest.
->=20
-> v5: ring head wrap count support.
-> v4: updated HEAD/TAIL with guest value, not host value. (Yan Zhao)
-> v3: save RING HEAD/TAIL vgpu reg in save_ring_hw_state. (Zhenyu Wang)
-> v2: save RING_TAIL as well during vgpu mmio switch to meet ring_is_idle
-> condition. (Fred Gao)
-> v1: based on input from Weinan. (Weinan Li)
->=20
-> [zhenyuw: Include this fix for possible future guest kernel that
-> would utilize RING_HEAD for hangcheck.]
->=20
-> Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
-> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/reg.h       |  3 +++
->  drivers/gpu/drm/i915/gvt/scheduler.c | 28 ++++++++++++++++++++++++++++
->  drivers/gpu/drm/i915/gvt/scheduler.h |  1 +
->  3 files changed, 32 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/reg.h b/drivers/gpu/drm/i915/gvt/re=
-g.h
-> index 33aaa14..b210e9a 100644
-> --- a/drivers/gpu/drm/i915/gvt/reg.h
-> +++ b/drivers/gpu/drm/i915/gvt/reg.h
-> @@ -102,6 +102,9 @@
->  #define FORCEWAKE_ACK_MEDIA_GEN9_REG 0x0D88
->  #define FORCEWAKE_ACK_HSW_REG 0x130044
-> =20
-> +#define RB_HEAD_WRAP_CNT_MAX	((1 << 11) - 1)
-> +#define RB_HEAD_WRAP_CNT_OFF	21
-> +#define RB_HEAD_WRAP_CNT_MASK	(0xFFE00000)
->  #define RB_HEAD_OFF_MASK	((1U << 21) - (1U << 2))
->  #define RB_TAIL_OFF_MASK	((1U << 21) - (1U << 3))
->  #define RB_TAIL_SIZE_MASK	((1U << 21) - (1U << 12))
-> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
-gvt/scheduler.c
-> index 38897d2..e6523e8 100644
-> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> @@ -793,10 +793,34 @@ static void update_guest_context(struct intel_vgpu_=
-workload *workload)
->  	void *src;
->  	unsigned long context_gpa, context_page_num;
->  	int i;
-> +	struct drm_i915_private *dev_priv =3D gvt->dev_priv;
-> +	i915_reg_t reg;
-> +	u32 ring_base;
-> +	u32 head, tail;
-> +	u16 wrap_count;
-> =20
->  	gvt_dbg_sched("ring id %d workload lrca %x\n", rq->engine->id,
->  		      workload->ctx_desc.lrca);
-> =20
-> +	head =3D workload->rb_head;
-> +	tail =3D workload->rb_tail;
-> +	wrap_count =3D workload->guest_rb_head & RB_HEAD_WRAP_CNT_MASK;
-> +
-
-Looks missed the shift for real counter here.
-
-> +	if (tail < head) {
-> +		if (wrap_count =3D=3D RB_HEAD_WRAP_CNT_MAX)
-> +			wrap_count =3D 0;
-> +		else
-> +			wrap_count +=3D 1;
-> +	}
-> +
-> +	head =3D (wrap_count << RB_HEAD_WRAP_CNT_OFF) | tail;
-> +
-> +	ring_base =3D dev_priv->engine[workload->ring_id]->mmio_base;
-> +	reg =3D RING_TAIL(ring_base);
-> +	vgpu_vreg(vgpu, i915_mmio_reg_offset(reg)) =3D tail;
-> +	reg =3D RING_HEAD(ring_base);
-> +	vgpu_vreg(vgpu, i915_mmio_reg_offset(reg)) =3D head;
-> +
-
-Can write as
-
-        vgpu_vreg_t(vgpu, RING_TAIL(ring_base)) =3D tail;
-        vgpu_vreg_t(vgpu, RING_HEAD(ring_base)) =3D head;
-
-
->  	context_page_num =3D rq->engine->context_size;
->  	context_page_num =3D context_page_num >> PAGE_SHIFT;
-> =20
-> @@ -1418,6 +1442,7 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,=
- int ring_id,
->  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
->  	u64 ring_context_gpa;
->  	u32 head, tail, start, ctl, ctx_ctl, per_ctx, indirect_ctx;
-> +	u32 guest_head;
->  	int ret;
-> =20
->  	ring_context_gpa =3D intel_vgpu_gma_to_gpa(vgpu->gtt.ggtt_mm,
-> @@ -1433,6 +1458,8 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,=
- int ring_id,
->  	intel_gvt_hypervisor_read_gpa(vgpu, ring_context_gpa +
->  			RING_CTX_OFF(ring_tail.val), &tail, 4);
-> =20
-> +	guest_head =3D head;
-> +
->  	head &=3D RB_HEAD_OFF_MASK;
->  	tail &=3D RB_TAIL_OFF_MASK;
-> =20
-> @@ -1465,6 +1492,7 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,=
- int ring_id,
->  	workload->ctx_desc =3D *desc;
->  	workload->ring_context_gpa =3D ring_context_gpa;
->  	workload->rb_head =3D head;
-> +	workload->guest_rb_head =3D guest_head;
->  	workload->rb_tail =3D tail;
->  	workload->rb_start =3D start;
->  	workload->rb_ctl =3D ctl;
-> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.h b/drivers/gpu/drm/i915/=
-gvt/scheduler.h
-> index 90c6756..c50d14a 100644
-> --- a/drivers/gpu/drm/i915/gvt/scheduler.h
-> +++ b/drivers/gpu/drm/i915/gvt/scheduler.h
-> @@ -100,6 +100,7 @@ struct intel_vgpu_workload {
->  	struct execlist_ctx_descriptor_format ctx_desc;
->  	struct execlist_ring_context *ring_context;
->  	unsigned long rb_head, rb_tail, rb_ctl, rb_start, rb_len;
-> +	unsigned long guest_rb_head;
->  	bool restore_inhibit;
->  	struct intel_vgpu_elsp_dwords elsp_dwords;
->  	bool emulate_schedule_in;
-> --=20
-> 2.7.4
->=20
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---ai3I8gwHc37+ASRI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXPC+vwAKCRCxBBozTXgY
-JwJOAJ9KkROvLmDeBniisQuwwqBKUy2BGQCfRywrjvMpqMsUuRt1kwKbhye+2PU=
-=lxn7
------END PGP SIGNATURE-----
-
---ai3I8gwHc37+ASRI--
-
---===============0903042828==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0903042828==--
+SW5zdGVhZCBvZiB1cGRhdGluZyBieSBNTUlPIHdyaXRlLCBhbGwgb2YgdGhlIHdhIHJlZ3MgYXJl
+IGluaXRpYWxpemVkIGJ5CndhX2N0eC4gRnJvbSBob3N0IHNpZGUsIGl0IHNob3VsZCBtYWtlIHRo
+aXMgYmVoYXZpb3IgYXMgZXhwZWN0ZWQsIGFkZAonRl9DTURfQUNDRVNTJyBmbGFnIHRvIHRoZXNl
+IHJlZ3MgYW5kIGFsbG93IGFjY2VzcyBieSBjb21tYW5kcy4KClsgIDEyMy41NTc2MDhdIGd2dDog
+dmdwdSAyOiBzcm0gYWNjZXNzIHRvIG5vbi1yZW5kZXIgcmVnaXN0ZXIgKGIxMWMpClsgIDEyMy41
+NjM3MjhdIGd2dDogdmdwdSAyOiBNSV9TVE9SRV9SRUdJU1RFUl9NRU0gaGFuZGxlciBlcnJvcgpb
+ICAxMjMuNTY5NDA5XSBndnQ6IHZncHUgMjogY21kIHBhcnNlciBlcnJvcgpbICAxMjMuNTczNDI0
+XSAweDAKWyAgMTIzLjU3MzQyNV0gMHgyNAoKWyAgMTIzLjU3ODY4Nl0gZ3Z0OiB2Z3B1IDI6IHNj
+YW4gd29ya2xvYWQgZXJyb3IKWyAgMTIzLjU4Mjk1OF0gR1ZUIEludGVybmFsIGVycm9yICBmb3Ig
+dGhlIGd1ZXN0ClsgIDEyMy41ODczMTddIE5vdyB2Z3B1IDIgd2lsbCBlbnRlciBmYWlsc2FmZSBt
+b2RlLgpbICAxMjMuNTkxOTM4XSBndnQ6IHZncHUgMjogZmFpbGVkIHRvIHN1Ym1pdCBkZXNjIDAK
+WyAgMTIzLjU5NjU1N10gZ3Z0OiB2Z3B1IDI6IGZhaWwgc3VibWl0IHdvcmtsb2FkIG9uIHJpbmcg
+MApbICAxMjMuNjAxNzg2XSBndnQ6IHZncHUgMjogZmFpbCB0byBlbXVsYXRlIE1NSU8gd3JpdGUg
+MDAwMDIyMzAgbGVuIDQKClNpZ25lZC1vZmYtYnk6IFdlaW5hbiBMaSA8d2VpbmFuLnoubGlAaW50
+ZWwuY29tPgpTaWduZWQtb2ZmLWJ5OiBaaGVueXUgV2FuZyA8emhlbnl1d0BsaW51eC5pbnRlbC5j
+b20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2hhbmRsZXJzLmMgfCAxMyArKysrKysr
+LS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9oYW5kbGVycy5jIGIvZHJpdmVy
+cy9ncHUvZHJtL2k5MTUvZ3Z0L2hhbmRsZXJzLmMKaW5kZXggNzczMmNhYTFhNTQ2Li5hNmFkZTY2
+MzQ5YmQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9oYW5kbGVycy5jCisr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9oYW5kbGVycy5jCkBAIC0xOTI0LDcgKzE5MjQs
+OCBAQCBzdGF0aWMgaW50IGluaXRfZ2VuZXJpY19tbWlvX2luZm8oc3RydWN0IGludGVsX2d2dCAq
+Z3Z0KQogCU1NSU9fREZIKF9NTUlPKDB4MjBkYyksIERfQUxMLCBGX01PREVfTUFTSyB8IEZfQ01E
+X0FDQ0VTUywgTlVMTCwgTlVMTCk7CiAJTU1JT19ERkgoXzNEX0NISUNLRU4zLCBEX0FMTCwgRl9N
+T0RFX01BU0sgfCBGX0NNRF9BQ0NFU1MsIE5VTEwsIE5VTEwpOwogCU1NSU9fREZIKF9NTUlPKDB4
+MjA4OCksIERfQUxMLCBGX01PREVfTUFTSyB8IEZfQ01EX0FDQ0VTUywgTlVMTCwgTlVMTCk7Ci0J
+TU1JT19ERkgoX01NSU8oMHgyMGU0KSwgRF9BTEwsIEZfTU9ERV9NQVNLIHwgRl9DTURfQUNDRVNT
+LCBOVUxMLCBOVUxMKTsKKwlNTUlPX0RGSChGRl9TTElDRV9DU19DSElDS0VOMiwgRF9BTEwsCisJ
+CSBGX01PREVfTUFTSyB8IEZfQ01EX0FDQ0VTUywgTlVMTCwgTlVMTCk7CiAJTU1JT19ERkgoX01N
+SU8oMHgyNDcwKSwgRF9BTEwsIEZfTU9ERV9NQVNLIHwgRl9DTURfQUNDRVNTLCBOVUxMLCBOVUxM
+KTsKIAlNTUlPX0RGSChHQU1fRUNPQ0hLLCBEX0FMTCwgRl9DTURfQUNDRVNTLCBOVUxMLCBOVUxM
+KTsKIAlNTUlPX0RGSChHRU43X0NPTU1PTl9TTElDRV9DSElDS0VOMSwgRF9BTEwsIEZfTU9ERV9N
+QVNLIHwgRl9DTURfQUNDRVNTLApAQCAtMzAyOCw3ICszMDI5LDcgQEAgc3RhdGljIGludCBpbml0
+X3NrbF9tbWlvX2luZm8oc3RydWN0IGludGVsX2d2dCAqZ3Z0KQogCU1NSU9fRChDU1JfSFRQX1NL
+TCwgRF9TS0xfUExVUyk7CiAJTU1JT19EKENTUl9MQVNUX1dSSVRFLCBEX1NLTF9QTFVTKTsKIAot
+CU1NSU9fRChCRFdfU0NSQVRDSDEsIERfU0tMX1BMVVMpOworCU1NSU9fREZIKEJEV19TQ1JBVENI
+MSwgRF9TS0xfUExVUywgRl9DTURfQUNDRVNTLCBOVUxMLCBOVUxMKTsKIAogCU1NSU9fRChTS0xf
+REZTTSwgRF9TS0xfUExVUyk7CiAJTU1JT19EKERJU1BJT19DUl9UWF9CTVVfQ1IwLCBEX1NLTF9Q
+TFVTKTsKQEAgLTMwNDEsOCArMzA0Miw4IEBAIHN0YXRpYyBpbnQgaW5pdF9za2xfbW1pb19pbmZv
+KHN0cnVjdCBpbnRlbF9ndnQgKmd2dCkKIAlNTUlPX0QoUlBNX0NPTkZJRzAsIERfU0tMX1BMVVMp
+OwogCU1NSU9fRChfTU1JTygweGQwOCksIERfU0tMX1BMVVMpOwogCU1NSU9fRChSQzZfTE9DQVRJ
+T04sIERfU0tMX1BMVVMpOwotCU1NSU9fREZIKEdFTjdfRkZfU0xJQ0VfQ1NfQ0hJQ0tFTjEsIERf
+U0tMX1BMVVMsIEZfTU9ERV9NQVNLLAotCQlOVUxMLCBOVUxMKTsKKwlNTUlPX0RGSChHRU43X0ZG
+X1NMSUNFX0NTX0NISUNLRU4xLCBEX1NLTF9QTFVTLAorCQkgRl9NT0RFX01BU0sgfCBGX0NNRF9B
+Q0NFU1MsIE5VTEwsIE5VTEwpOwogCU1NSU9fREZIKEdFTjlfQ1NfREVCVUdfTU9ERTEsIERfU0tM
+X1BMVVMsIEZfTU9ERV9NQVNLIHwgRl9DTURfQUNDRVNTLAogCQlOVUxMLCBOVUxMKTsKIApAQCAt
+MzA2MSw3ICszMDYyLDcgQEAgc3RhdGljIGludCBpbml0X3NrbF9tbWlvX2luZm8oc3RydWN0IGlu
+dGVsX2d2dCAqZ3Z0KQogCU1NSU9fRChfTU1JTygweDQ2NTIwKSwgRF9TS0xfUExVUyk7CiAKIAlN
+TUlPX0QoX01NSU8oMHhjNDAzYyksIERfU0tMX1BMVVMpOwotCU1NSU9fRChfTU1JTygweGIwMDQp
+LCBEX1NLTF9QTFVTKTsKKwlNTUlPX0RGSChHRU44X0dBUkJDTlRMLCBEX1NLTF9QTFVTLCBGX0NN
+RF9BQ0NFU1MsIE5VTEwsIE5VTEwpOwogCU1NSU9fREgoRE1BX0NUUkwsIERfU0tMX1BMVVMsIE5V
+TEwsIGRtYV9jdHJsX3dyaXRlKTsKIAogCU1NSU9fRChfTU1JTygweDY1OTAwKSwgRF9TS0xfUExV
+Uyk7CkBAIC0zMjczLDcgKzMyNzQsNyBAQCBzdGF0aWMgaW50IGluaXRfYnh0X21taW9faW5mbyhz
+dHJ1Y3QgaW50ZWxfZ3Z0ICpndnQpCiAJTU1JT19EKEdFTjhfUFVTSEJVU19FTkFCTEUsIERfQlhU
+KTsKIAlNTUlPX0QoR0VOOF9QVVNIQlVTX1NISUZULCBEX0JYVCk7CiAJTU1JT19EKEdFTjZfR0ZY
+UEFVU0UsIERfQlhUKTsKLQlNTUlPX0QoR0VOOF9MM1NRQ1JFRzEsIERfQlhUKTsKKwlNTUlPX0RG
+SChHRU44X0wzU1FDUkVHMSwgRF9CWFQsIEZfQ01EX0FDQ0VTUywgTlVMTCwgTlVMTCk7CiAKIAlN
+TUlPX0RGSChHRU45X0NUWF9QUkVFTVBUX1JFRywgRF9CWFQsIEZfQ01EX0FDQ0VTUywgTlVMTCwg
+TlVMTCk7CiAKLS0gCjIuMTcuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9pbnRlbC1ndnQtZGV2
