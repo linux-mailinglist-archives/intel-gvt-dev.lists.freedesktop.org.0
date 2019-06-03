@@ -2,35 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E791C327F6
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Jun 2019 07:22:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4887132833
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Jun 2019 08:03:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A1CD5896E4;
-	Mon,  3 Jun 2019 05:22:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D450F898E4;
+	Mon,  3 Jun 2019 06:03:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7BCD1896E4
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  3 Jun 2019 05:22:02 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9E93C898CE;
+ Mon,  3 Jun 2019 06:03:15 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Jun 2019 22:22:01 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2019 23:03:15 -0700
 X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by fmsmga005.fm.intel.com with ESMTP; 02 Jun 2019 22:22:00 -0700
-Date: Mon, 3 Jun 2019 13:20:32 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Xiaolin Zhang <xiaolin.zhang@intel.com>
-Subject: Re: [PATCH v6] drm/i915/gvt: save RING_HEAD into vreg when vgpu
- switched out
-Message-ID: <20190603052031.GH9684@zhen-hp.sh.intel.com>
-References: <1559530553-9244-1-git-send-email-xiaolin.zhang@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <1559530553-9244-1-git-send-email-xiaolin.zhang@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Received: from xzhan34-mobl3.bj.intel.com ([10.238.154.54])
+ by orsmga003.jf.intel.com with ESMTP; 02 Jun 2019 23:03:12 -0700
+From: Xiaolin Zhang <xiaolin.zhang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org,
+	intel-gfx@lists.freedesktop.org
+Subject: [PATCH v6 0/8] i915 vgpu PV to improve vgpu performance
+Date: Mon,  3 Jun 2019 14:02:41 +0800
+Message-Id: <1559541769-25279-1-git-send-email-xiaolin.zhang@intel.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -43,71 +39,78 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1777834497=="
+Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>, zhenyu.z.wang@intel.com,
+ joonas.lahtinen@linux.intel.com, hang.yuan@intel.com, min.he@intel.com,
+ zhiyuan.lv@intel.com, chris@chris-wilson.co.uk, zhi.a.wang@intel.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1777834497==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="mYYhpFXgKVw71fwr"
-Content-Disposition: inline
-
-
---mYYhpFXgKVw71fwr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.06.03 10:55:53 +0800, Xiaolin Zhang wrote:
-> Save RING_HEAD into vgpu reg when vgpu switched out and report
-> it's value back to guest.
->=20
-> v6: addressed comment for ring head wrap count support. (Zhenyu)
-> v5: ring head wrap count support.
-> v4: updated HEAD/TAIL with guest value, not host value. (Yan Zhao)
-> v3: save RING HEAD/TAIL vgpu reg in save_ring_hw_state. (Zhenyu Wang)
-> v2: save RING_TAIL as well during vgpu mmio switch to meet ring_is_idle
-> condition. (Fred Gao)
-> v1: based on input from Weinan. (Weinan Li)
->=20
-> [zhenyuw: Include this fix for possible future guest kernel that
-> would utilize RING_HEAD for hangcheck.]
->=20
-> Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
-> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> ---
-
-Applied this, thanks!
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---mYYhpFXgKVw71fwr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXPSuHwAKCRCxBBozTXgY
-J3l6AJ0VgKHOLq6/5AnDiflQ80R85MsfJwCeKZ5N+8ipW53Xq0z77dh3hxrdmMs=
-=pZbE
------END PGP SIGNATURE-----
-
---mYYhpFXgKVw71fwr--
-
---===============1777834497==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1777834497==--
+VG8gaW1wcm92ZSB2Z3B1IHBlcmZvcm1hbmNlLCBpdCBjb3VsZCBpbXBsZW1lbnQgc29tZSBQViBv
+cHRpbWl6YXRpb24Kc3VjaCBhcyB0byByZWR1Y2UgdGhlIG1taW8gYWNjZXNzIHRyYXAgbnVtYmVy
+cyBvciBlbGltaW5hdGUgY2VydGFpbiBwaWVjZQpvZiBIVyBlbXVsYXRpb24gd2l0aGluIGd1ZXN0
+IGRyaXZlciB0byByZWR1Y2Ugdm0gZXhpdC92bSBlbnRlciBjb3N0LgoKdGhlIHNvbHV0aW9ucyBp
+biB0aGlzIHBhdGNoIHNldCBhcmUgaW1wbGVtZW50ZWQgdHdvIFBWIG9wdGltaXphdGlvbnMgYmFz
+ZWQKb24gdGhlIHNoYXJlZCBtZW1vcnkgcmVnaW9uIGJldHdlZW4gZ3Vlc3QgYW5kIEdWVGcgZm9y
+IGRhdGEgY29tbXVuaWNhdGlvbi4KVGhlIHNoYXJlZCBtZW1vcnkgcmVnaW9uIGlzIGFsbG9jYXRl
+ZCBieSBndWVzdCBkcml2ZXIgYW5kIHRoaXMKcmVnaW9uJ3MgbWVtb3J5IGd1ZXN0IHBoeXNpY2Fs
+IGFkZHJlc3Mgd2lsbCBiZSBwYXNzZWQgdG8gR1ZUZyB0aHJvdWdoClBWSU5GTyByZWdpc3RlciBh
+bmQgbGF0ZXIgR1ZUZyBjYW4gYWNjZXNzIHRoaXMgcmVnaW9uIGRpcmVjdGx5IHdpdGhvdXQKdHJh
+cCBjb3N0IHRvIGFjaGlldmUgZGF0YSBleGNoYW5nZSBwdXJwb3NlIGJldHdlZW4gZ3Vlc3QgYW5k
+IEdWVGcuCgppbiB0aGlzIHBhdGNoIHNldCwgMiBraW5kIG9mIFBWIG9wdGltaXphdGlvbiBpbXBs
+ZW1lbnRlZCBjb250cm9sbGVkIGJ5CnB2X2NhcHMgUFZJTk8gcmVnaXN0ZXIgd2l0aCBkaWZmZXJl
+bnQgcHYgYml0LgoxLiB3b3JrbG9hZCBQViBzdWJtaXNzaW9uIChjb250ZXh0IHN1Ym1pc3Npb24p
+OiByZWR1Y2UgNCB0cmFwcyB0byAxIHRyYXAKYW5kIGVsaW1pbmF0ZWQgZXhlY2xpc3RzIEhXIGJl
+aGF2aW91ciBlbXVsYXRpb24uCjIuIHBwZ3R0IFBWIHVwZGF0ZTogZWxpbWluYXRlIHRoZSBjb3N0
+IG9mIHBwZ3R0IHdyaXRlIHByb3RlY3Rpb24uCgpiYXNlZCBvbiB0aGUgZXhwZXJpbWVudCwgZm9y
+IHNtYWxsIHdvcmtsb2Fkcywgc3BlY2lmYWxseSwgZ2x4Z2VhcnMgd2l0aAp2YmxhbmtfbW9kZSBv
+ZmYsIHRoZSBhdmVyYWdlIHBlcmZvcm1hbmNlIGdhaW4gb24gc2luZ2xlIHZncHUgaXMgMzB+NTAl
+Lgpmb3IgbGFyZ2Ugd29ya2xvYWQgc3VjaCBhcyBtZWRpYSBhbmQgM0QsIHRoZSBhdmVyYWdlIHBl
+cmZvcm1hbmNlIGdhaW4KaXMgYWJvdXQgNCUuIAoKYmFzZWQgb24gdGhlIFBWIG1lY2hhbmlzbSwg
+aXQgY291bGQgYWNoaXZlIG1vcmUgdmdwdSBmZWF0dXJlIG9wdGltaXphdGlvbgpzdWNoIGFzIGds
+b2JsZSBHVFQgdXBkYXRlLCBkaXNwbGF5IHBsYW5lIGFuZCB3YXRlciBtYXJrIHVwZGF0ZS4KCnYw
+OiBSRkMgcGF0Y2ggc2V0CnYxOiBhZGRyZXNzZWQgUkZDIHJldmlldyBjb21tZW50cwp2MjogYWRk
+cmVzc2VkIHYxIHJldmlldyBjb21tZW50cywgYWRkZWQgcHYgY2FsbGJhY2tzIGZvciBwdiBvcGVy
+YXRpb25zCnYzOgoxLiBhZGRyZXNzZWQgdjIgcmV2aWV3IGNvbW1lbnRzLCByZW1vdmVkIHB2IGNh
+bGxiYWNrcyBjb2RlIGR1cGxpY2F0aW9uIGluCnYyIGFuZCB1bmlmaWVkIHB2IGNhbGxzIHVuZGVy
+IGcydiBub3RpZmljYXRpb24gcmVnaXN0ZXIuIGRpZmZlcmVudCBnMnYgcHYKbm90aWZpY2F0aW9u
+cyBkZWZpbmVkLgoyLiBkcm9wcGVkIHB2IG1hc3RlciBpcnEgZmVhdHVyZSBkdWUgdG8gaGFyZCBj
+b25mbGljdCB3aXRoIHJlY25ldCBpOTE1CmNoYW5nZSBhbmQgdGFrZSB0aW1lIHRvIHJld29yay4K
+djQ6CjEuIGFkZHJlc3NlZCB2MyByZXZpZXcgY29tbWVudHMuCjIuIGV4dGVuZGVkIHdvcmtsb2Fk
+IFBWIHN1Ym1pc3Npb24gYnkgc2tpcCBleGVjbGlzdHMgSFcgYmVoYXZpb3VyIGVtdWxhdGlvbgph
+bmQgY29udGV4dCBzd2l0Y2ggaW50ZXJydXB0IGluamVjdGlvbi4gIAp2NToKMS4gYWRkcmVzc2Vk
+IHY0IHJldmlldyBjb21tZW50cyBmcm9tIENocmlzIGZvciBwdiBzdWJtaXNzaW9uLgoyLiBwZXIt
+ZW5naW5lIGNvbW11bmljYXRpb24gYmV0d2VlbiBQViBndWVzdCBhbmQgaG9zdC4KdjY6CjEuIGFk
+ZHJlc3NlZCB2NSByZXZpZXcgY29tbWVudCBmcm9tIENocmlzIGZvciBwdiBzdWJtaXNzaW9uLgoy
+LiBhZGRyZXNzZWQgdjUgcmV2aWV3IGNvbW1lbnQgZnJvbSBaaGVueXUgZm9yIFBWIHZlcnNpb24g
+c3VwcG9ydC4KClhpYW9saW4gWmhhbmcgKDgpOgogIGRybS9pOTE1OiBpbnRyb2R1Y2VkIHZncHUg
+cHYgY2FwYWJpbGl0eQogIGRybS9pOTE1OiB2Z3B1IHNoYXJlZCBtZW1vcnkgc2V0dXAgZm9yIHB2
+IG9wdGltaXphdGlvbgogIGRybS9pOTE1OiB2Z3B1IHBwZ3R0IHVwZGF0ZSBwdiBvcHRpbWl6YXRp
+b24KICBkcm0vaTkxNTogdmdwdSBjb250ZXh0IHN1Ym1pc3Npb24gcHYgb3B0aW1pemF0aW9uCiAg
+ZHJtL2k5MTUvZ3Z0OiBHVlRnIGhhbmRsZSBwdl9jYXBzIFBWSU5GTyByZWdpc3RlcgogIGRybS9p
+OTE1L2d2dDogR1ZUZyBoYW5kbGUgc2hhcmVkX3BhZ2Ugc2V0dXAKICBkcm0vaTkxNS9ndnQ6IEdW
+VGcgc3VwcG9ydCBwcGd0dCBwdiBvcHRpbWl6YXRpb24KICBkcm0vaTkxNS9ndnQ6IEdWVGcgc3Vw
+cG9ydCBjb250ZXh0IHN1Ym1pc3Npb24gcHYgb3B0aW1pemF0aW9uCgogZHJpdmVycy9ncHUvZHJt
+L2k5MTUvTWFrZWZpbGUgICAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vaTkx
+NS9ndC9pbnRlbF9scmMuYyAgICAgICAgfCAgIDggKy0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2
+dC9leGVjbGlzdC5jICAgICAgICB8ICAgNiArCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3R0
+LmMgICAgICAgICAgICAgfCAzMTcgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKIGRyaXZl
+cnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuaCAgICAgICAgICAgICB8ICAgOSArCiBkcml2ZXJzL2dw
+dS9kcm0vaTkxNS9ndnQvZ3Z0LmggICAgICAgICAgICAgfCAgMTIgKy0KIGRyaXZlcnMvZ3B1L2Ry
+bS9pOTE1L2d2dC9oYW5kbGVycy5jICAgICAgICB8ICA2NSArKysrKy0KIGRyaXZlcnMvZ3B1L2Ry
+bS9pOTE1L2d2dC92Z3B1LmMgICAgICAgICAgICB8ICA1MCArKysrKwogZHJpdmVycy9ncHUvZHJt
+L2k5MTUvaTkxNV9kcnYuaCAgICAgICAgICAgIHwgICA1ICstCiBkcml2ZXJzL2dwdS9kcm0vaTkx
+NS9pOTE1X2dlbS5jICAgICAgICAgICAgfCAgIDMgKy0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2k5
+MTVfZ2VtX2d0dC5jICAgICAgICB8ICAgOSArLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV9n
+ZW1fZ3R0LmggICAgICAgIHwgICA4ICsKIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfcHZpbmZv
+LmggICAgICAgICB8ICAxMiArLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV92Z3B1LmMgICAg
+ICAgICAgIHwgMTgyICsrKysrKysrKysrKysrKystCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1
+X3ZncHUuaCAgICAgICAgICAgfCAgNTkgKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9pbnRl
+bF9wdl9zdWJtaXNzaW9uLmMgfCAxNjYgKysrKysrKysrKysrKysrCiAxNiBmaWxlcyBjaGFuZ2Vk
+LCA5MDAgaW5zZXJ0aW9ucygrKSwgMTMgZGVsZXRpb25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfcHZfc3VibWlzc2lvbi5jCgotLSAKMi43LjQKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1k
+ZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
