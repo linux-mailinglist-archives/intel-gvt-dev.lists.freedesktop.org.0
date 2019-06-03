@@ -1,35 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD881327DF
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Jun 2019 07:03:49 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 47855327E9
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Jun 2019 07:15:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7FDEB89333;
-	Mon,  3 Jun 2019 05:03:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F0081890F5;
+	Mon,  3 Jun 2019 05:15:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5627889333
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 474DB890F5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  3 Jun 2019 05:03:47 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Mon,  3 Jun 2019 05:15:43 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Jun 2019 22:03:46 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2019 22:15:43 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,545,1549958400"; d="scan'208";a="181030836"
-Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.9])
- by fmsmga002.fm.intel.com with ESMTP; 02 Jun 2019 22:03:45 -0700
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH 2/2] drm/i915/gvt: optimization for save-inhibit context
-Date: Mon,  3 Jun 2019 00:57:57 -0400
-Message-Id: <20190603045757.31090-1-yan.y.zhao@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190603045617.31011-1-yan.y.zhao@intel.com>
-References: <20190603045617.31011-1-yan.y.zhao@intel.com>
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga005.fm.intel.com with ESMTP; 02 Jun 2019 22:15:42 -0700
+Date: Mon, 3 Jun 2019 13:14:13 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: add F_CMD_ACCESS flag for wa regs
+Message-ID: <20190603051413.GG9684@zhen-hp.sh.intel.com>
+References: <20190531073348.26490-1-weinan.z.li@intel.com>
+ <20190603034845.GA8675@joy-OptiPlex-7040>
+MIME-Version: 1.0
+In-Reply-To: <20190603034845.GA8675@joy-OptiPlex-7040>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -42,96 +44,155 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, Weinan Li <weinan.z.li@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, Weinan Li <weinan.z.li@intel.com>
+Content-Type: multipart/mixed; boundary="===============1581035111=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-c29tZXRpbWVzLCBsaW51eCBndWVzdCB3b3VsZCBzZW5kIHByZWVtcHQgY29udGV4dHMgd2hpY2gg
-YXJlIGJvdGgKcmVzdG9yZSBpbmhpYml0IGNvbnRleHQgYW5kIHNhdmUgaW5oaWJpdCBjb250ZXh0
-LgpFLmcuIGdsbWFyazIgc2VuZHMgMzAgcHJlZW1wdCBjb250ZXh0cyBldmVyeSBzZWMgb24gYXZl
-cmFnZS4KCkZvciB0aGlzIGtpbmQgb2YgY29udGV4dCwKMS4gbm8gbmVlZCB0byBsb2FkIG1taW9z
-IGluIHNhdmUtcmVzdG9yZSBsaXN0IGJhY2sgdG8gaGFyZHdhcmUKMi4gbm8gbmVlZCB0byBjb3B5
-IGNvbnRleHQgbW1pb3MgYmFjayB0byBndWVzdAoKQ2M6IFdlaW5hbiBMaSA8d2VpbmFuLnoubGlA
-aW50ZWwuY29tPgpTaWduZWQtb2ZmLWJ5OiBZYW4gWmhhbyA8eWFuLnkuemhhb0BpbnRlbC5jb20+
-Ci0tLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L21taW9fY29udGV4dC5jIHwgIDggKysrKwog
-ZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L21taW9fY29udGV4dC5oIHwgIDUgKysrCiBkcml2ZXJz
-L2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMgICAgfCA0OSArKysrKysrKysrKysrKy0tLS0t
-LS0tLS0tCiAzIGZpbGVzIGNoYW5nZWQsIDQxIGluc2VydGlvbnMoKyksIDIxIGRlbGV0aW9ucygt
-KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tbWlvX2NvbnRleHQuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tbWlvX2NvbnRleHQuYwppbmRleCAwYzNlMmYyMWUy
-OGMuLjliOTYzMGY0Mjk3YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L21t
-aW9fY29udGV4dC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tbWlvX2NvbnRleHQu
-YwpAQCAtNDQ1LDYgKzQ0NSwxNCBAQCBib29sIGlzX3Jlc3RvcmVfaW5oaWJpdF9jb250ZXh0KHN0
-cnVjdCBpbnRlbF9jb250ZXh0ICpjZSkKIAlyZXR1cm4gSVNfUkVTVE9SRV9JTkhJQklUKHJlZ19z
-dGF0ZVtDVFhfQ09OVEVYVF9DT05UUk9MX1ZBTF0pOwogfQogCitib29sIGlzX3NhdmVfaW5oaWJp
-dF9jb250ZXh0KHN0cnVjdCBpbnRlbF9jb250ZXh0ICpjZSkKK3sKKwljb25zdCB1MzIgKnJlZ19z
-dGF0ZSA9IGNlLT5scmNfcmVnX3N0YXRlOworCisJcmV0dXJuIElTX1NBVkVfSU5ISUJJVChyZWdf
-c3RhdGVbQ1RYX0NPTlRFWFRfQ09OVFJPTF9WQUxdKTsKK30KKworCiAvKiBTd2l0Y2ggcmluZyBt
-bWlvIHZhbHVlcyAoY29udGV4dCkuICovCiBzdGF0aWMgdm9pZCBzd2l0Y2hfbW1pbyhzdHJ1Y3Qg
-aW50ZWxfdmdwdSAqcHJlLAogCQkJc3RydWN0IGludGVsX3ZncHUgKm5leHQsCmRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmggYi9kcml2ZXJzL2dwdS9k
-cm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmgKaW5kZXggMDhlM2E3NzVmYWU3Li5kYWZmZDJkM2Qw
-MjMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tbWlvX2NvbnRleHQuaAor
-KysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmgKQEAgLTUwLDYgKzUw
-LDcgQEAgdm9pZCBpbnRlbF9ndnRfc3dpdGNoX21taW8oc3RydWN0IGludGVsX3ZncHUgKnByZSwK
-IHZvaWQgaW50ZWxfZ3Z0X2luaXRfZW5naW5lX21taW9fY29udGV4dChzdHJ1Y3QgaW50ZWxfZ3Z0
-ICpndnQpOwogCiBib29sIGlzX3Jlc3RvcmVfaW5oaWJpdF9jb250ZXh0KHN0cnVjdCBpbnRlbF9j
-b250ZXh0ICpjZSk7Citib29sIGlzX3NhdmVfaW5oaWJpdF9jb250ZXh0KHN0cnVjdCBpbnRlbF9j
-b250ZXh0ICpjZSk7CiAKIGludCBpbnRlbF92Z3B1X3Jlc3RvcmVfaW5oaWJpdF9jb250ZXh0KHN0
-cnVjdCBpbnRlbF92Z3B1ICp2Z3B1LAogCQkJCSAgICAgICBzdHJ1Y3QgaTkxNV9yZXF1ZXN0ICpy
-ZXEpOwpAQCAtNTcsNCArNTgsOCBAQCBpbnQgaW50ZWxfdmdwdV9yZXN0b3JlX2luaGliaXRfY29u
-dGV4dChzdHJ1Y3QgaW50ZWxfdmdwdSAqdmdwdSwKIAkoX01BU0tFRF9CSVRfRU5BQkxFKENUWF9D
-VFJMX0VOR0lORV9DVFhfUkVTVE9SRV9JTkhJQklUKSA9PSBcCiAJKChhKSAmIF9NQVNLRURfQklU
-X0VOQUJMRShDVFhfQ1RSTF9FTkdJTkVfQ1RYX1JFU1RPUkVfSU5ISUJJVCkpKQogCisjZGVmaW5l
-IElTX1NBVkVfSU5ISUJJVChhKQlcCisJKF9NQVNLRURfQklUX0VOQUJMRShDVFhfQ1RSTF9FTkdJ
-TkVfQ1RYX1NBVkVfSU5ISUJJVCkgPT0gXAorCSgoYSkgJiBfTUFTS0VEX0JJVF9FTkFCTEUoQ1RY
-X0NUUkxfRU5HSU5FX0NUWF9TQVZFX0lOSElCSVQpKSkKKwogI2VuZGlmCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkx
-NS9ndnQvc2NoZWR1bGVyLmMKaW5kZXggNWMyMDg3NjAwNDQyLi45ZmI2OWJmMzdiYzEgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYworKysgYi9kcml2ZXJz
-L2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMKQEAgLTMxMyw3ICszMTMsOSBAQCBzdGF0aWMg
-aW50IGNvcHlfd29ya2xvYWRfdG9fcmluZ19idWZmZXIoc3RydWN0IGludGVsX3ZncHVfd29ya2xv
-YWQgKndvcmtsb2FkKQogCXUzMiAqY3M7CiAJaW50IGVycjsKIAotCWlmIChJU19HRU4ocmVxLT5p
-OTE1LCA5KSAmJiBpc19yZXN0b3JlX2luaGliaXRfY29udGV4dChyZXEtPmh3X2NvbnRleHQpKQor
-CWlmIChJU19HRU4ocmVxLT5pOTE1LCA5KSAmJgorCQkJaXNfcmVzdG9yZV9pbmhpYml0X2NvbnRl
-eHQocmVxLT5od19jb250ZXh0KSAmJgorCQkJIWlzX3NhdmVfaW5oaWJpdF9jb250ZXh0KHJlcS0+
-aHdfY29udGV4dCkpCiAJCWludGVsX3ZncHVfcmVzdG9yZV9pbmhpYml0X2NvbnRleHQodmdwdSwg
-cmVxKTsKIAogCS8qCkBAIC04MDQsNiArODA2LDMxIEBAIHN0YXRpYyB2b2lkIHVwZGF0ZV9ndWVz
-dF9jb250ZXh0KHN0cnVjdCBpbnRlbF92Z3B1X3dvcmtsb2FkICp3b3JrbG9hZCkKIAlndnRfZGJn
-X3NjaGVkKCJyaW5nIGlkICVkIHdvcmtsb2FkIGxyY2EgJXhcbiIsIHJxLT5lbmdpbmUtPmlkLAog
-CQkgICAgICB3b3JrbG9hZC0+Y3R4X2Rlc2MubHJjYSk7CiAKKwlwYWdlID0gaTkxNV9nZW1fb2Jq
-ZWN0X2dldF9wYWdlKGN0eF9vYmosIExSQ19TVEFURV9QTik7CisJc2hhZG93X3JpbmdfY29udGV4
-dCA9IGttYXAocGFnZSk7CisJaWYgKElTX1NBVkVfSU5ISUJJVChzaGFkb3dfcmluZ19jb250ZXh0
-LT5jdHhfY3RybC52YWwpKSB7CisJCWt1bm1hcChwYWdlKTsKKwkJcmV0dXJuOworCX0KKworI2Rl
-ZmluZSBDT1BZX1JFRyhuYW1lKSBcCisJaW50ZWxfZ3Z0X2h5cGVydmlzb3Jfd3JpdGVfZ3BhKHZn
-cHUsIHdvcmtsb2FkLT5yaW5nX2NvbnRleHRfZ3BhICsgXAorCQlSSU5HX0NUWF9PRkYobmFtZS52
-YWwpLCAmc2hhZG93X3JpbmdfY29udGV4dC0+bmFtZS52YWwsIDQpCisKKwlDT1BZX1JFRyhjdHhf
-Y3RybCk7CisJQ09QWV9SRUcoY3R4X3RpbWVzdGFtcCk7CisKKyN1bmRlZiBDT1BZX1JFRworCisJ
-aW50ZWxfZ3Z0X2h5cGVydmlzb3Jfd3JpdGVfZ3BhKHZncHUsCisJCQl3b3JrbG9hZC0+cmluZ19j
-b250ZXh0X2dwYSArCisJCQlzaXplb2YoKnNoYWRvd19yaW5nX2NvbnRleHQpLAorCQkJKHZvaWQg
-KilzaGFkb3dfcmluZ19jb250ZXh0ICsKKwkJCXNpemVvZigqc2hhZG93X3JpbmdfY29udGV4dCks
-CisJCQlJOTE1X0dUVF9QQUdFX1NJWkUgLSBzaXplb2YoKnNoYWRvd19yaW5nX2NvbnRleHQpKTsK
-KworCWt1bm1hcChwYWdlKTsKKwogCWNvbnRleHRfcGFnZV9udW0gPSBycS0+ZW5naW5lLT5jb250
-ZXh0X3NpemU7CiAJY29udGV4dF9wYWdlX251bSA9IGNvbnRleHRfcGFnZV9udW0gPj4gUEFHRV9T
-SElGVDsKIApAQCAtODMyLDI2ICs4NTksNiBAQCBzdGF0aWMgdm9pZCB1cGRhdGVfZ3Vlc3RfY29u
-dGV4dChzdHJ1Y3QgaW50ZWxfdmdwdV93b3JrbG9hZCAqd29ya2xvYWQpCiAJaW50ZWxfZ3Z0X2h5
-cGVydmlzb3Jfd3JpdGVfZ3BhKHZncHUsIHdvcmtsb2FkLT5yaW5nX2NvbnRleHRfZ3BhICsKIAkJ
-UklOR19DVFhfT0ZGKHJpbmdfaGVhZGVyLnZhbCksICZ3b3JrbG9hZC0+cmJfdGFpbCwgNCk7CiAK
-LQlwYWdlID0gaTkxNV9nZW1fb2JqZWN0X2dldF9wYWdlKGN0eF9vYmosIExSQ19TVEFURV9QTik7
-Ci0Jc2hhZG93X3JpbmdfY29udGV4dCA9IGttYXAocGFnZSk7Ci0KLSNkZWZpbmUgQ09QWV9SRUco
-bmFtZSkgXAotCWludGVsX2d2dF9oeXBlcnZpc29yX3dyaXRlX2dwYSh2Z3B1LCB3b3JrbG9hZC0+
-cmluZ19jb250ZXh0X2dwYSArIFwKLQkJUklOR19DVFhfT0ZGKG5hbWUudmFsKSwgJnNoYWRvd19y
-aW5nX2NvbnRleHQtPm5hbWUudmFsLCA0KQotCi0JQ09QWV9SRUcoY3R4X2N0cmwpOwotCUNPUFlf
-UkVHKGN0eF90aW1lc3RhbXApOwotCi0jdW5kZWYgQ09QWV9SRUcKLQotCWludGVsX2d2dF9oeXBl
-cnZpc29yX3dyaXRlX2dwYSh2Z3B1LAotCQkJd29ya2xvYWQtPnJpbmdfY29udGV4dF9ncGEgKwot
-CQkJc2l6ZW9mKCpzaGFkb3dfcmluZ19jb250ZXh0KSwKLQkJCSh2b2lkICopc2hhZG93X3Jpbmdf
-Y29udGV4dCArCi0JCQlzaXplb2YoKnNoYWRvd19yaW5nX2NvbnRleHQpLAotCQkJSTkxNV9HVFRf
-UEFHRV9TSVpFIC0gc2l6ZW9mKCpzaGFkb3dfcmluZ19jb250ZXh0KSk7Ci0KLQlrdW5tYXAocGFn
-ZSk7CiB9CiAKIHZvaWQgaW50ZWxfdmdwdV9jbGVhbl93b3JrbG9hZHMoc3RydWN0IGludGVsX3Zn
-cHUgKnZncHUsCi0tIAoyLjE3LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
+
+--===============1581035111==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="kadn00tgSopKmJ1H"
+Content-Disposition: inline
+
+
+--kadn00tgSopKmJ1H
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+
+On 2019.06.02 23:48:45 -0400, Yan Zhao wrote:
+> Acked-by: Yan Zhao <yan.y.zhao@intel.com>
+>
+
+Thanks for the patch and review! Applied this.
+
+> On Fri, May 31, 2019 at 03:33:48PM +0800, Weinan Li wrote:
+> > Instead of updating by MMIO write, all of the wa regs are initialized by
+> > wa_ctx. From host side, it should make this behavior as expected, add
+> > 'F_CMD_ACCESS' flag to these regs and allow access by commands.
+> >=20
+> > [  123.557608] gvt: vgpu 2: srm access to non-render register (b11c)
+> > [  123.563728] gvt: vgpu 2: MI_STORE_REGISTER_MEM handler error
+> > [  123.569409] gvt: vgpu 2: cmd parser error
+> > [  123.573424] 0x0
+> > [  123.573425] 0x24
+> >=20
+> > [  123.578686] gvt: vgpu 2: scan workload error
+> > [  123.582958] GVT Internal error  for the guest
+> > [  123.587317] Now vgpu 2 will enter failsafe mode.
+> > [  123.591938] gvt: vgpu 2: failed to submit desc 0
+> > [  123.596557] gvt: vgpu 2: fail submit workload on ring 0
+> > [  123.601786] gvt: vgpu 2: fail to emulate MMIO write 00002230 len 4
+> >=20
+> > Signed-off-by: Weinan Li <weinan.z.li@intel.com>
+> > Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > ---
+> >  drivers/gpu/drm/i915/gvt/handlers.c | 13 +++++++------
+> >  1 file changed, 7 insertions(+), 6 deletions(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915=
+/gvt/handlers.c
+> > index 7732caa1a546..a6ade66349bd 100644
+> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
+> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> > @@ -1924,7 +1924,8 @@ static int init_generic_mmio_info(struct intel_gv=
+t *gvt)
+> >  	MMIO_DFH(_MMIO(0x20dc), D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL=
+);
+> >  	MMIO_DFH(_3D_CHICKEN3, D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
+> >  	MMIO_DFH(_MMIO(0x2088), D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL=
+);
+> > -	MMIO_DFH(_MMIO(0x20e4), D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL=
+);
+> > +	MMIO_DFH(FF_SLICE_CS_CHICKEN2, D_ALL,
+> > +		 F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
+> >  	MMIO_DFH(_MMIO(0x2470), D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL=
+);
+> >  	MMIO_DFH(GAM_ECOCHK, D_ALL, F_CMD_ACCESS, NULL, NULL);
+> >  	MMIO_DFH(GEN7_COMMON_SLICE_CHICKEN1, D_ALL, F_MODE_MASK | F_CMD_ACCES=
+S,
+> > @@ -3028,7 +3029,7 @@ static int init_skl_mmio_info(struct intel_gvt *g=
+vt)
+> >  	MMIO_D(CSR_HTP_SKL, D_SKL_PLUS);
+> >  	MMIO_D(CSR_LAST_WRITE, D_SKL_PLUS);
+> > =20
+> > -	MMIO_D(BDW_SCRATCH1, D_SKL_PLUS);
+> > +	MMIO_DFH(BDW_SCRATCH1, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL);
+> > =20
+> >  	MMIO_D(SKL_DFSM, D_SKL_PLUS);
+> >  	MMIO_D(DISPIO_CR_TX_BMU_CR0, D_SKL_PLUS);
+> > @@ -3041,8 +3042,8 @@ static int init_skl_mmio_info(struct intel_gvt *g=
+vt)
+> >  	MMIO_D(RPM_CONFIG0, D_SKL_PLUS);
+> >  	MMIO_D(_MMIO(0xd08), D_SKL_PLUS);
+> >  	MMIO_D(RC6_LOCATION, D_SKL_PLUS);
+> > -	MMIO_DFH(GEN7_FF_SLICE_CS_CHICKEN1, D_SKL_PLUS, F_MODE_MASK,
+> > -		NULL, NULL);
+> > +	MMIO_DFH(GEN7_FF_SLICE_CS_CHICKEN1, D_SKL_PLUS,
+> > +		 F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
+> >  	MMIO_DFH(GEN9_CS_DEBUG_MODE1, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS,
+> >  		NULL, NULL);
+> > =20
+> > @@ -3061,7 +3062,7 @@ static int init_skl_mmio_info(struct intel_gvt *g=
+vt)
+> >  	MMIO_D(_MMIO(0x46520), D_SKL_PLUS);
+> > =20
+> >  	MMIO_D(_MMIO(0xc403c), D_SKL_PLUS);
+> > -	MMIO_D(_MMIO(0xb004), D_SKL_PLUS);
+> > +	MMIO_DFH(GEN8_GARBCNTL, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL);
+> >  	MMIO_DH(DMA_CTRL, D_SKL_PLUS, NULL, dma_ctrl_write);
+> > =20
+> >  	MMIO_D(_MMIO(0x65900), D_SKL_PLUS);
+> > @@ -3273,7 +3274,7 @@ static int init_bxt_mmio_info(struct intel_gvt *g=
+vt)
+> >  	MMIO_D(GEN8_PUSHBUS_ENABLE, D_BXT);
+> >  	MMIO_D(GEN8_PUSHBUS_SHIFT, D_BXT);
+> >  	MMIO_D(GEN6_GFXPAUSE, D_BXT);
+> > -	MMIO_D(GEN8_L3SQCREG1, D_BXT);
+> > +	MMIO_DFH(GEN8_L3SQCREG1, D_BXT, F_CMD_ACCESS, NULL, NULL);
+> > =20
+> >  	MMIO_DFH(GEN9_CTX_PREEMPT_REG, D_BXT, F_CMD_ACCESS, NULL, NULL);
+> > =20
+> > --=20
+> > 2.17.1
+> >=20
+> > _______________________________________________
+> > intel-gvt-dev mailing list
+> > intel-gvt-dev@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--kadn00tgSopKmJ1H
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXPSspAAKCRCxBBozTXgY
+J2PSAJ9L7PXLFwmwE8WT4h+0NgHDLGnGQACfZdw8/RiNNJPl+7iTuhkmQdLol/k=
+=Li3x
+-----END PGP SIGNATURE-----
+
+--kadn00tgSopKmJ1H--
+
+--===============1581035111==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1581035111==--
