@@ -2,27 +2,25 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D8E539455
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Jun 2019 20:29:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C43939928
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  8 Jun 2019 00:51:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C490F89E3E;
-	Fri,  7 Jun 2019 18:29:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19EDB891AD;
+	Fri,  7 Jun 2019 22:51:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mx1.gamebox.com (unknown [47.90.106.191])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3BEF089E3E;
- Fri,  7 Jun 2019 18:29:19 +0000 (UTC)
-Received: from User (unknown [2.29.142.16])
- by mx1.gamebox.com (Postfix) with ESMTPA id 940FACDB01;
- Fri,  7 Jun 2019 21:37:28 +0800 (CST)
-From: "Raymond Chien Hang Seng"<sahnounm52@outlook.com>
-Subject: REPLY AS SOON AS POSSIBLE 
-Date: Fri, 7 Jun 2019 14:37:44 +0100
+ by gabe.freedesktop.org (Postfix) with ESMTP id 75BB4891A6;
+ Fri,  7 Jun 2019 22:51:41 +0000 (UTC)
+Received: from DESKTOP-2SJ3DIV.default (unknown [2.29.142.16])
+ by mx1.gamebox.com (Postfix) with ESMTPA id 9E62216BD38;
+ Sat,  8 Jun 2019 04:08:53 +0800 (CST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Content-Description: Mail message body
+Subject: REPLY AS SOON AS POSSIBLE   
+To: Recipients <pg2018428@gmail.com>
+From: "Raymond Chien Hang Seng" <pg2018428@gmail.com>
+Date: Fri, 07 Jun 2019 21:08:44 +0100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -40,7 +38,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20190607182920.C490F89E3E@gabe.freedesktop.org>
+Message-Id: <20190607225143.19EDB891AD@gabe.freedesktop.org>
 
 SSBhbSBWaWNlIENoYWlybWFuIG9mIEhhbmcgU2VuZyBCYW5rLCBJIGhhdmUgSW1wb3J0YW50IE1h
 dHRlciB0byBEaXNjdXNzIHdpdGggeW91IGNvbmNlcm5pbmcgbXkgbGF0ZSBjbGllbnQuIERpZWQg
