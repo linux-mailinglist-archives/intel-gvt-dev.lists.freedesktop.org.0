@@ -2,30 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 395823B408
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Jun 2019 13:32:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F37423AC82
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Jun 2019 01:51:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CEE9B89125;
-	Mon, 10 Jun 2019 11:32:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A9D1289056;
+	Sun,  9 Jun 2019 23:51:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from fireflyinternet.com (mail.fireflyinternet.com [109.228.58.192])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7CB9F89125;
- Mon, 10 Jun 2019 11:32:13 +0000 (UTC)
-X-Default-Received-SPF: pass (skip=forwardok (res=PASS))
- x-ip-name=78.156.65.138; 
-Received: from localhost (unverified [78.156.65.138]) 
- by fireflyinternet.com (Firefly Internet (M1)) with ESMTP (TLS) id
- 16851670-1500050 for multiple; Mon, 10 Jun 2019 12:32:10 +0100
+Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com
+ [IPv6:2607:f8b0:4864:20::841])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E83BC89058
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun,  9 Jun 2019 23:51:53 +0000 (UTC)
+Received: by mail-qt1-x841.google.com with SMTP id 33so522453qtr.8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 09 Jun 2019 16:51:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=OjI7uVSeJaY9rKmYy1I4vdUqnUh9s6EsZRjJ+BsrZ3I=;
+ b=SHEel9mXhTL9YzeKpp22PaVrKN4V30Stk2QS6s3tQg749YDpdi5WQ0ly6XVF/p/KeH
+ ExFb5reeHrdqbSs1deVJRsUguZJXkcXmK0vcN6/tIpJHRLaqHK5H+peGoWj9xxBmd6fO
+ 0dTPFAp/4zht7W8dPYqpqtMgWDU/ENi1tvHTvqkAlvSMIeTI4Pv7zc5UA3h8lIHhKDlP
+ Sv6sNL9CdGPt4ICWi23IknJByOewtkGwMKQ8s+fWaTR12gH/4UKpzHsQPNS6A7ub84P0
+ +oIWSguP7n2lZsDmK02f1HfHEhJ5z1iK51tOP8KpT2EdVlAMHV4mTpweOIOquW7qWr8H
+ 7/Og==
+X-Gm-Message-State: APjAAAUDCdvRLVPBOFOrzb3OdF9xjaAfPe4iQPQDpTkxdvnXM1z/VIF8
+ mx6YKUHKbQXVYX2K/gAFN5DfrtFuCb+3Dddz3bk=
+X-Google-Smtp-Source: APXvYqwvyMqp+d9yHBzx6aipr8b/yg1tshdaL5CMF/lFth14NLkIkNDzxoiIovNXcvuhAKIXWY/PDdyARr4f3JKFMD0=
+X-Received: by 2002:ac8:17c8:: with SMTP id r8mr57713794qtk.319.1560124312742; 
+ Sun, 09 Jun 2019 16:51:52 -0700 (PDT)
 MIME-Version: 1.0
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gfx@lists.freedesktop.org
-From: Chris Wilson <chris@chris-wilson.co.uk>
-In-Reply-To: <20190610092819.11371-1-zhenyuw@linux.intel.com>
-References: <20190610092819.11371-1-zhenyuw@linux.intel.com>
-Message-ID: <156016632855.383.1461535048828757502@skylake-alporthouse-com>
-User-Agent: alot/0.6
-Subject: Re: [Intel-gfx] [PATCH] drm/i915: Fix GVT balloon fail path handling
-Date: Mon, 10 Jun 2019 12:32:08 +0100
+From: "Dr. Monica Rice" <csmith.anviachem@gmail.com>
+Date: Sun, 9 Jun 2019 23:50:47 -1200
+Message-ID: <CAEYOzcyWHq1mqoWaa2U4=RBoop5QL1Q-N0gRCVhA76cvTO8TiA@mail.gmail.com>
+Subject: International Conference Meeting Invitation
+To: undisclosed-recipients:;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=OjI7uVSeJaY9rKmYy1I4vdUqnUh9s6EsZRjJ+BsrZ3I=;
+ b=W3JNFg3FTikfQijY+fjA+Tch0QduCjftCQXMWZBOKamH9DbiDeU/LpbHxjwVhdtmEa
+ xUD84Pq06nxMGUpBwln4/k3/2qBpbZQ3IcVTjr9UFc+S4Q5awTw99IlTtWh5KPK8SsIA
+ Hws8iuqrXz1gWa3bVa1OkI+6smULJtoqXY4Woygi3nQQ4Ka6DlEe4rmKFGJooSzpG0vy
+ V3PhSawLuU7Em6vyOX/1P4ue0y3KpULhPwzGTMnvUQxmtnnRTSy7Fuxmd4HO87AYHZcO
+ eTMa8yt8/wK5WnMjHqXa8u7cgwhdXU9px07POp0fmfwxKT6gY0utzxPfMeUPZfB7yfvb
+ 1L/g==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -38,45 +61,98 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: wehro.regdesk@aol.com
+Content-Type: multipart/mixed; boundary="===============0101011814=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-UXVvdGluZyBaaGVueXUgV2FuZyAoMjAxOS0wNi0xMCAxMDoyODoxOSkKPiBGb3IgYW55IHJlYXNv
-biBpZiBHVlQgYmFsbG9vbiBmYWlsZWQsIGRlYmFsbG9vbiB3b3VsZCBiZSBjYWxsZWQuCj4gVGhp
-cyBhZGRzIGEgc2ltcGxlIG1hc2sgdG8gY2hlY2sgdmFsaWRpdHkgb2YgYmFsbG9vbiBzcGFjZXMu
-IFdoZW4KPiBmYWlsdXJlIGhhcHBlbnMsIHRoYXQgbWFzayBpcyB1c2VkIHRvIHRyYWNrIGZvciBk
-ZWJhbGxvb24sIHNvIGl0Cj4gd29uJ3QgY2F1c2UgYW55IGludmFsaWQgc3BhY2UgcmVmZXJlbmNl
-IGluIGZhaWwgcGF0aCwgd2hpY2ggZml4ZWQKPiBrZXJuZWwgb29wcyB3aGVuIGJhbGxvb24gZXJy
-b3IgaGFwcGVuZWQuCgpBZ2FpbnN0IHRoZSB1cHN0cmVhbSwgaXQgdXNlcyBhbiBvbmlvbiB1bndp
-bmQuIE9ubHkgdGhvc2Ugbm9kZXMKc3VjY2Vzc2Z1bGx5IHJlc2VydmVkIGFyZSByZW1vdmVkLgoK
-PiBTaWduZWQtb2ZmLWJ5OiBaaGVueXUgV2FuZyA8emhlbnl1d0BsaW51eC5pbnRlbC5jb20+Cj4g
-LS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfdmdwdS5jIHwgMjcgKysrKysrKysrKysr
-KysrLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxMiBk
-ZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV92
-Z3B1LmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3ZncHUuYwo+IGluZGV4IDk0ZDM5OTJi
-NTk5ZC4uNWFlYzM0ZGIxYWFhIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5
-MTVfdmdwdS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV92Z3B1LmMKPiBAQCAt
-OTQsNiArOTQsNyBAQCBzdHJ1Y3QgX2JhbGxvb25faW5mb18gewo+ICAgICAgICAgICogZ3JhcGhp
-YyBtZW1vcnksIDIvMyBmb3IgdW5tYXBwYWJsZSBncmFwaGljIG1lbW9yeS4KPiAgICAgICAgICAq
-Lwo+ICAgICAgICAgc3RydWN0IGRybV9tbV9ub2RlIHNwYWNlWzRdOwo+ICsgICAgICAgdTggdmFs
-aWQ7Cj4gIH07Cj4gIAo+ICBzdGF0aWMgc3RydWN0IF9iYWxsb29uX2luZm9fIGJsX2luZm87Cj4g
-QEAgLTEyNiw4ICsxMjcsMTIgQEAgdm9pZCBpbnRlbF92Z3RfZGViYWxsb29uKHN0cnVjdCBkcm1f
-aTkxNV9wcml2YXRlICpkZXZfcHJpdikKPiAgCj4gICAgICAgICBEUk1fREVCVUcoIlZHVCBkZWJh
-bGxvb24uXG4iKTsKPiAgCj4gLSAgICAgICBmb3IgKGkgPSAwOyBpIDwgNDsgaSsrKQo+IC0gICAg
-ICAgICAgICAgICB2Z3RfZGViYWxsb29uX3NwYWNlKCZkZXZfcHJpdi0+Z2d0dCwgJmJsX2luZm8u
-c3BhY2VbaV0pOwo+ICsgICAgICAgZm9yIChpID0gMDsgaSA8IDQ7IGkrKykgewo+ICsgICAgICAg
-ICAgICAgICBpZiAoYmxfaW5mby52YWxpZCAmIEJJVChpKSkgewo+ICsgICAgICAgICAgICAgICAg
-ICAgICAgIHZndF9kZWJhbGxvb25fc3BhY2UoJmRldl9wcml2LT5nZ3R0LCAmYmxfaW5mby5zcGFj
-ZVtpXSk7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgYmxfaW5mby52YWxpZCAmPSB+KHU4KUJJ
-VChpKTsKCklzIHRoZSBwcm9ibGVtIHRoYXQgeW91IGFyZSBjYWxsaW5nIGl0IHR3aWNlPyBBcyBm
-YXIgSSBjYW4gc2VlIHdlIG9ubHkKY2FsbCBpdCBmcm9tIGk5MTVfZ2d0dF9jbGVhbnVwX2h3Li4u
-IE9oLCBub3RlIHRoYXQgaTkxNV9nZW1faW5pdF9nZ3R0KCkKZmFpbHMgdG8gdW53aW5kIGNvcnJl
-Y3RseSwgYW5kIGludGVsX3ZndF9kZWJhbGxvb24gaXMgY2FsbGVkIGZyb20gdGhlCndyb25nIHBv
-aW50LgoKRndpdywgeW91IGNvdWxkIGp1c3QgdXNlCglpZiAoIWRybV9tbV9ub2RlX2FsbG9jZWQo
-bm9kZSkpCgkJcmV0dXJuOwoKLUNocmlzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
+--===============0101011814==
+Content-Type: multipart/alternative; boundary="0000000000007789be058aecbfc1"
+
+--0000000000007789be058aecbfc1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Sir/Madam,
+
+It is with great pleasure that we invite you to our conference with the
+theme =E2=80=9CChild Marriage, Rape, Terrorism, Racial and Gender Discrimin=
+ation: A
+Challenge to Economic Development=E2=80=9D this conference is being organiz=
+ed by
+the Women Empowerment and Human Rights Organization (WEHRO) and will take
+place from July 22nd to 27th, 2019 @ Diamond Valentino Dallas Hotel which
+is located in Dallas Texas USA.
+
+The conference meeting will contain various talks and mini workshops
+related to the issues of Challenges to Human Rights & Economic Development
+as a result of Child Marriage, Rape and Social Discrimination in our
+society. The sponsors of this event shall cover your round-trip flight
+tickets from your country to the USA and back to your country and we shall
+also provide visa assistance with the U.S Embassy in your country of
+residence. The hotel accommodation booking cost will be your own
+responsibility. Please contact the conference secretariat for more
+information and registration for participation:[wehro.regdesk@aol.com].
+
+We look forward to your confirmed presence at the conference.
+
+Respectfully Yours,
+Dr. Monica Rice,
+Program Assistant.
+
+--0000000000007789be058aecbfc1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div style=3D"color:rgb(0,0,0);font-family:&quot;Helvetica=
+ Neue&quot;"><span style=3D"font-family:Arial,Helvetica,sans-serif">Dear Si=
+r/Madam,</span></div><div style=3D"color:rgb(0,0,0);font-family:&quot;Helve=
+tica Neue&quot;"><span style=3D"font-family:Arial,Helvetica,sans-serif">=C2=
+=A0</span></div><div style=3D"color:rgb(0,0,0);font-family:&quot;Helvetica =
+Neue&quot;"><span style=3D"font-family:Arial,Helvetica,sans-serif">It is wi=
+th great pleasure that we invite you to our conference with the theme =E2=
+=80=9CChild Marriage, Rape, Terrorism, Racial and Gender Discrimination: A =
+Challenge to Economic Development=E2=80=9D this conference is being organiz=
+ed by the Women Empowerment and Human Rights Organization (WEHRO) and will =
+take place from July 22nd to 27th, 2019 @ Diamond Valentino Dallas Hotel wh=
+ich is located in Dallas Texas USA.</span></div><div style=3D"color:rgb(0,0=
+,0);font-family:&quot;Helvetica Neue&quot;"><span style=3D"font-family:Aria=
+l,Helvetica,sans-serif"><br></span></div><div style=3D"color:rgb(0,0,0);fon=
+t-family:&quot;Helvetica Neue&quot;"><span style=3D"font-family:Arial,Helve=
+tica,sans-serif">The conference meeting will contain various talks and mini=
+ workshops related to the issues of Challenges to Human Rights &amp; Econom=
+ic Development as a result of Child Marriage, Rape and Social Discriminatio=
+n in our society. The sponsors of this event shall cover your round-trip fl=
+ight tickets from your country to the USA and back to your country and we s=
+hall also provide visa assistance with the U.S Embassy in your country of r=
+esidence. The hotel accommodation booking cost will be your own responsibil=
+ity. Please contact the conference secretariat for more information and reg=
+istration for participation:[<a href=3D"mailto:wehro.regdesk@aol.com">wehro=
+.regdesk@aol.com</a>].</span></div><div style=3D"color:rgb(0,0,0);font-fami=
+ly:&quot;Helvetica Neue&quot;"><span style=3D"font-family:Arial,Helvetica,s=
+ans-serif">=C2=A0</span></div><div style=3D"color:rgb(0,0,0);font-family:&q=
+uot;Helvetica Neue&quot;"><span style=3D"font-family:Arial,Helvetica,sans-s=
+erif">We look forward to your confirmed presence at the conference.</span><=
+/div><div style=3D"color:rgb(0,0,0);font-family:&quot;Helvetica Neue&quot;"=
+><span style=3D"font-family:Arial,Helvetica,sans-serif">=C2=A0</span></div>=
+<div style=3D"color:rgb(0,0,0);font-family:&quot;Helvetica Neue&quot;"><spa=
+n style=3D"font-family:Arial,Helvetica,sans-serif">Respectfully Yours,</spa=
+n></div><div style=3D"color:rgb(0,0,0);font-family:&quot;Helvetica Neue&quo=
+t;"><span style=3D"font-family:Arial,Helvetica,sans-serif">Dr. Monica Rice,=
+</span></div><div style=3D"color:rgb(0,0,0);font-family:&quot;Helvetica Neu=
+e&quot;"><span style=3D"font-family:Arial,Helvetica,sans-serif">Program Ass=
+istant.</span></div></div>
+
+--0000000000007789be058aecbfc1--
+
+--===============0101011814==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0101011814==--
