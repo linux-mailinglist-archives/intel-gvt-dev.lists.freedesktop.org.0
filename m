@@ -1,35 +1,69 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29D5441AAD
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Jun 2019 05:24:34 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 68BBF42EC7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Jun 2019 20:37:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6458989217;
-	Wed, 12 Jun 2019 03:24:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2737A8981D;
+	Wed, 12 Jun 2019 18:37:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 985FF891C7;
- Wed, 12 Jun 2019 03:24:30 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Jun 2019 20:24:29 -0700
-X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga003.jf.intel.com with ESMTP; 11 Jun 2019 20:24:26 -0700
-Date: Wed, 12 Jun 2019 11:22:36 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com
+ [IPv6:2607:f8b0:4864:20::543])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 764A78981D;
+ Wed, 12 Jun 2019 18:37:01 +0000 (UTC)
+Received: by mail-pg1-x543.google.com with SMTP id n2so9379010pgp.11;
+ Wed, 12 Jun 2019 11:37:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=DXItd4QKKcMyTRkmGL6RVgljzEiWFbcFIOw7FfH00GY=;
+ b=Dyai7gyT1/GK72FkueAXMMUvXR0mhrNt/p+Y1aaJpy76xu0G77bOPea/GPDIAyM4/i
+ IhTXDqs4KscWXAlsVVJ5f5Xq7pKuALyUrrHpwd1lNs/HmjCAwB3vQruwGE9WeLRBsK2z
+ pMaoufeACGi85v5DCvsD99oydUxWpxjWdHX9yylVVR2bX+LpkzIzg+FFwCWliElTlFHy
+ rDz68/WqYXZl6v33LmvvEYocRRpfsnooDsdXI4YCj12XgLLIBaqJxwz1sDvStYg+o0RR
+ TzORAYuRnb6fWfNk8+IEyCtKR4PGqkLDi2PB/u1ZzGcBY9cGgmfaI94GcsWULYYYp+Pp
+ 0j2w==
+X-Gm-Message-State: APjAAAXw3Ky7LUIEGDV5nnMHbWYMkQ7R7MdalJGFi7AZh4E3Z7TjWZVH
+ 8Kj+7H+WUVTiRHGmB+AX3BJ6bO8s
+X-Google-Smtp-Source: APXvYqzjdoMxCVuEJbHHk09NkgKkEkrFSeajkMZcGBlMNFEnpUY9Mfd7qwmsZB2dZpGscl2+DABZMA==
+X-Received: by 2002:a62:4d04:: with SMTP id a4mr87702880pfb.177.1560364621102; 
+ Wed, 12 Jun 2019 11:37:01 -0700 (PDT)
+Received: from hari-Inspiron-1545 ([183.83.89.153])
+ by smtp.gmail.com with ESMTPSA id 3sm250910pfp.114.2019.06.12.11.36.57
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 12 Jun 2019 11:37:00 -0700 (PDT)
+Date: Thu, 13 Jun 2019 00:06:55 +0530
+From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] drm/i915/gvt: remove duplicate entry of trace
-Message-ID: <20190612032236.GH9684@zhen-hp.sh.intel.com>
+Message-ID: <20190612183654.GA16750@hari-Inspiron-1545>
 References: <20190526075633.GA9245@hari-Inspiron-1545>
+ <20190612032236.GH9684@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190526075633.GA9245@hari-Inspiron-1545>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Disposition: inline
+In-Reply-To: <20190612032236.GH9684@zhen-hp.sh.intel.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20161025;
+ h=date:from:to:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=DXItd4QKKcMyTRkmGL6RVgljzEiWFbcFIOw7FfH00GY=;
+ b=V1ykHWXuVctHxVCMZR31Lhf3ekEW5RMkXg6I05eaOkPCMQsvEUB1GVZaePVtkB/AkR
+ bWSJpUjVq7yRTAKhi/PaorCVoSomgKPHQvsWCaE+dw/19ArzU5MGJLobYMvq1YBz3bCg
+ CaZVseF+pNS62h+aqbO+KjLTbqJwEe1uqAAfLm39CR4/eXxMhNmm0pN471EUwlAs+qhh
+ leT90bOaEEsVRv/62wmo+FKl1YZoiEhxSA+DsweI4ZqY6+So33HOn5cK68e3IKzNWBAp
+ JcPEAhEDlISCS4ivdeUEp8kSAGLMQzJI513eyyHD1dHe8C150IH+AaURoTChf1U7GI+R
+ M53A==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -42,127 +76,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============1590849126=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1590849126==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="JSVXQxoTSdH0Ya++"
-Content-Disposition: inline
-
-
---JSVXQxoTSdH0Ya++
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.05.26 13:26:33 +0530, Hariprasad Kelam wrote:
-> Remove duplicate include of trace.h
->=20
-> Issue identified by includecheck
->=20
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> ---
->  drivers/gpu/drm/i915/gvt/trace_points.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/trace_points.c b/drivers/gpu/drm/i9=
-15/gvt/trace_points.c
-> index a3deed69..569f5e3 100644
-> --- a/drivers/gpu/drm/i915/gvt/trace_points.c
-> +++ b/drivers/gpu/drm/i915/gvt/trace_points.c
-> @@ -32,5 +32,4 @@
-> =20
->  #ifndef __CHECKER__
->  #define CREATE_TRACE_POINTS
-> -#include "trace.h"
->  #endif
-> --=20
-
-This actually caused build issue like
-ERROR: "__tracepoint_gma_index" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_render_mmio" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_gvt_command" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_spt_guest_change" [drivers/gpu/drm/i915/i915.ko] undef=
-ined!
-ERROR: "__tracepoint_gma_translate" [drivers/gpu/drm/i915/i915.ko] undefine=
-d!
-ERROR: "__tracepoint_spt_alloc" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_spt_change" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_oos_sync" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_write_ir" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_propagate_event" [drivers/gpu/drm/i915/i915.ko] undefi=
-ned!
-ERROR: "__tracepoint_inject_msi" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_spt_refcount" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_spt_free" [drivers/gpu/drm/i915/i915.ko] undefined!
-ERROR: "__tracepoint_oos_change" [drivers/gpu/drm/i915/i915.ko] undefined!
-scripts/Makefile.modpost:91: recipe for target '__modpost' failed
-
-Looks we need fix like below.
-
-Subject: [PATCH] drm/i915/gvt: remove duplicate include of trace.h
-
-This removes duplicate include of trace.h. Found by Hariprasad Kelam
-with includecheck.
-
-Reported-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
----
- drivers/gpu/drm/i915/gvt/trace_points.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/trace_points.c b/drivers/gpu/drm/i915=
-/gvt/trace_points.c
-index a3deed692b9c..fe552e877e09 100644
---- a/drivers/gpu/drm/i915/gvt/trace_points.c
-+++ b/drivers/gpu/drm/i915/gvt/trace_points.c
-@@ -28,8 +28,6 @@
-  *
-  */
-=20
--#include "trace.h"
--
- #ifndef __CHECKER__
- #define CREATE_TRACE_POINTS
- #include "trace.h"
---=20
-2.20.1
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---JSVXQxoTSdH0Ya++
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXQBv/AAKCRCxBBozTXgY
-J6qvAJ9q4SpHBMazUVGyrExwIyT3tac9zQCbB8m/t9a9wlOqkm0W0bss9NDOds0=
-=lNiG
------END PGP SIGNATURE-----
-
---JSVXQxoTSdH0Ya++--
-
---===============1590849126==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1590849126==--
+T24gV2VkLCBKdW4gMTIsIDIwMTkgYXQgMTE6MjI6MzZBTSArMDgwMCwgWmhlbnl1IFdhbmcgd3Jv
+dGU6Cj4gT24gMjAxOS4wNS4yNiAxMzoyNjozMyArMDUzMCwgSGFyaXByYXNhZCBLZWxhbSB3cm90
+ZToKPiA+IFJlbW92ZSBkdXBsaWNhdGUgaW5jbHVkZSBvZiB0cmFjZS5oCj4gPiAKPiA+IElzc3Vl
+IGlkZW50aWZpZWQgYnkgaW5jbHVkZWNoZWNrCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEhhcmlw
+cmFzYWQgS2VsYW0gPGhhcmlwcmFzYWQua2VsYW1AZ21haWwuY29tPgo+ID4gLS0tCj4gPiAgZHJp
+dmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3RyYWNlX3BvaW50cy5jIHwgMSAtCj4gPiAgMSBmaWxlIGNo
+YW5nZWQsIDEgZGVsZXRpb24oLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9pOTE1L2d2dC90cmFjZV9wb2ludHMuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC90cmFj
+ZV9wb2ludHMuYwo+ID4gaW5kZXggYTNkZWVkNjkuLjU2OWY1ZTMgMTAwNjQ0Cj4gPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvdHJhY2VfcG9pbnRzLmMKPiA+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9pOTE1L2d2dC90cmFjZV9wb2ludHMuYwo+ID4gQEAgLTMyLDUgKzMyLDQgQEAKPiA+
+ICAKPiA+ICAjaWZuZGVmIF9fQ0hFQ0tFUl9fCj4gPiAgI2RlZmluZSBDUkVBVEVfVFJBQ0VfUE9J
+TlRTCj4gPiAtI2luY2x1ZGUgInRyYWNlLmgiCj4gPiAgI2VuZGlmCj4gPiAtLSAKPiAKPiBUaGlz
+IGFjdHVhbGx5IGNhdXNlZCBidWlsZCBpc3N1ZSBsaWtlCj4gRVJST1I6ICJfX3RyYWNlcG9pbnRf
+Z21hX2luZGV4IiBbZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNS5rb10gdW5kZWZpbmVkIQo+IEVS
+Uk9SOiAiX190cmFjZXBvaW50X3JlbmRlcl9tbWlvIiBbZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkx
+NS5rb10gdW5kZWZpbmVkIQo+IEVSUk9SOiAiX190cmFjZXBvaW50X2d2dF9jb21tYW5kIiBbZHJp
+dmVycy9ncHUvZHJtL2k5MTUvaTkxNS5rb10gdW5kZWZpbmVkIQo+IEVSUk9SOiAiX190cmFjZXBv
+aW50X3NwdF9ndWVzdF9jaGFuZ2UiIFtkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1LmtvXSB1bmRl
+ZmluZWQhCj4gRVJST1I6ICJfX3RyYWNlcG9pbnRfZ21hX3RyYW5zbGF0ZSIgW2RyaXZlcnMvZ3B1
+L2RybS9pOTE1L2k5MTUua29dIHVuZGVmaW5lZCEKPiBFUlJPUjogIl9fdHJhY2Vwb2ludF9zcHRf
+YWxsb2MiIFtkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1LmtvXSB1bmRlZmluZWQhCj4gRVJST1I6
+ICJfX3RyYWNlcG9pbnRfc3B0X2NoYW5nZSIgW2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTUua29d
+IHVuZGVmaW5lZCEKPiBFUlJPUjogIl9fdHJhY2Vwb2ludF9vb3Nfc3luYyIgW2RyaXZlcnMvZ3B1
+L2RybS9pOTE1L2k5MTUua29dIHVuZGVmaW5lZCEKPiBFUlJPUjogIl9fdHJhY2Vwb2ludF93cml0
+ZV9pciIgW2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTUua29dIHVuZGVmaW5lZCEKPiBFUlJPUjog
+Il9fdHJhY2Vwb2ludF9wcm9wYWdhdGVfZXZlbnQiIFtkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1
+LmtvXSB1bmRlZmluZWQhCj4gRVJST1I6ICJfX3RyYWNlcG9pbnRfaW5qZWN0X21zaSIgW2RyaXZl
+cnMvZ3B1L2RybS9pOTE1L2k5MTUua29dIHVuZGVmaW5lZCEKPiBFUlJPUjogIl9fdHJhY2Vwb2lu
+dF9zcHRfcmVmY291bnQiIFtkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1LmtvXSB1bmRlZmluZWQh
+Cj4gRVJST1I6ICJfX3RyYWNlcG9pbnRfc3B0X2ZyZWUiIFtkcml2ZXJzL2dwdS9kcm0vaTkxNS9p
+OTE1LmtvXSB1bmRlZmluZWQhCj4gRVJST1I6ICJfX3RyYWNlcG9pbnRfb29zX2NoYW5nZSIgW2Ry
+aXZlcnMvZ3B1L2RybS9pOTE1L2k5MTUua29dIHVuZGVmaW5lZCEKPiBzY3JpcHRzL01ha2VmaWxl
+Lm1vZHBvc3Q6OTE6IHJlY2lwZSBmb3IgdGFyZ2V0ICdfX21vZHBvc3QnIGZhaWxlZAo+IAo+IExv
+b2tzIHdlIG5lZWQgZml4IGxpa2UgYmVsb3cuCj4gCj4gU3ViamVjdDogW1BBVENIXSBkcm0vaTkx
+NS9ndnQ6IHJlbW92ZSBkdXBsaWNhdGUgaW5jbHVkZSBvZiB0cmFjZS5oCj4gCj4gVGhpcyByZW1v
+dmVzIGR1cGxpY2F0ZSBpbmNsdWRlIG9mIHRyYWNlLmguIEZvdW5kIGJ5IEhhcmlwcmFzYWQgS2Vs
+YW0KPiB3aXRoIGluY2x1ZGVjaGVjay4KPiAKPiBSZXBvcnRlZC1ieTogSGFyaXByYXNhZCBLZWxh
+bSA8aGFyaXByYXNhZC5rZWxhbUBnbWFpbC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogWmhlbnl1IFdh
+bmcgPHpoZW55dXdAbGludXguaW50ZWwuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkx
+NS9ndnQvdHJhY2VfcG9pbnRzLmMgfCAyIC0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGRlbGV0aW9u
+cygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvdHJhY2VfcG9p
+bnRzLmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvdHJhY2VfcG9pbnRzLmMKPiBpbmRleCBh
+M2RlZWQ2OTJiOWMuLmZlNTUyZTg3N2UwOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+aTkxNS9ndnQvdHJhY2VfcG9pbnRzLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQv
+dHJhY2VfcG9pbnRzLmMKPiBAQCAtMjgsOCArMjgsNiBAQAo+ICAgKgo+ICAgKi8KPiAgCj4gLSNp
+bmNsdWRlICJ0cmFjZS5oIgo+IC0KPiAgI2lmbmRlZiBfX0NIRUNLRVJfXwo+ICAjZGVmaW5lIENS
+RUFURV9UUkFDRV9QT0lOVFMKPiAgI2luY2x1ZGUgInRyYWNlLmgiCj4gLS0gCj4gMi4yMC4xCj4g
+Cj4gLS0gCj4gT3BlbiBTb3VyY2UgVGVjaG5vbG9neSBDZW50ZXIsIEludGVsIGx0ZC4KPiAKPiAk
+Z3BnIC0ta2V5c2VydmVyIHd3d2tleXMucGdwLm5ldCAtLXJlY3Yta2V5cyA0RDc4MTgyNwoKSGkg
+Wmhlbnl1IFdhbmcsClRoYW5rcyBmb3IgY29ycmVjdGluZyB0aGUgcGF0Y2guCkl0IHNlZW1zIHdl
+IHNob3VsZCBmaXJzdCBkZWZpbmUgQ1JFQVRFX1RSQUNFX1BPSU5UUyBhbmQgaW5jbHVkZSB0cmFj
+ZS5oIGFzIHBlciBkb2N1bWVudGF0aW9uLgoKVGhhbmtzLApIYXJpcHJhc2FkIGsKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWls
+aW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
