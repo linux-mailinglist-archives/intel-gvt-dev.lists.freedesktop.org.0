@@ -2,42 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 744D2436AB
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Jun 2019 15:34:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B3A7D450D0
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Jun 2019 02:44:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1DCC989A60;
-	Thu, 13 Jun 2019 13:34:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5AB72892EE;
+	Fri, 14 Jun 2019 00:44:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DF01F89A59;
- Thu, 13 Jun 2019 13:34:21 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 516B72082C;
- Thu, 13 Jun 2019 13:34:21 +0000 (UTC)
-Date: Thu, 13 Jun 2019 15:34:19 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH] i915: gvt: no need to check return value of debugfs_create
- functions
-Message-ID: <20190613133419.GB6634@kroah.com>
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1E80A892EE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 14 Jun 2019 00:44:40 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2019 17:44:40 -0700
+X-ExtLoop1: 1
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga001.fm.intel.com with ESMTP; 13 Jun 2019 17:44:38 -0700
+Date: Fri, 14 Jun 2019 08:42:45 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Li, Weinan Z" <weinan.z.li@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: always return zero if read pvinfo failed
+Message-ID: <20190614004245.GB18885@zhen-hp.sh.intel.com>
+References: <20190613030517.30539-1-weinan.z.li@intel.com>
+ <20190613081510.GN9684@zhen-hp.sh.intel.com>
+ <9BD218709B5F2A4F96F08B4A3B98A89773451256@SHSMSX101.ccr.corp.intel.com>
+ <20190613083643.GO9684@zhen-hp.sh.intel.com>
+ <9BD218709B5F2A4F96F08B4A3B98A89773451292@SHSMSX101.ccr.corp.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.12.0 (2019-05-25)
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=default; t=1560432861;
- bh=MvQopuunmC1RCWKLMI7EZobRiBhf3+8XdazaXmdvfKI=;
- h=Date:From:To:Cc:Subject:From;
- b=G39JwBTWO7NFvPpV6dUXwjt4KodohkafxnmOtyKmpP6+QyppmiMcIV8K5mtT91gsu
- J6HdTRD8SP7Y61cV+LnKk2RKRN+zt1pMwhRisWxk7KZKcrU93aMWVOeF/+DZxv3fNK
- B4yUaNiicRRgo5e7MR6888rsIxiIsLMhZCMoWtu0=
+In-Reply-To: <9BD218709B5F2A4F96F08B4A3B98A89773451292@SHSMSX101.ccr.corp.intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -50,111 +47,103 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: multipart/mixed; boundary="===============0690326664=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-V2hlbiBjYWxsaW5nIGRlYnVnZnMgZnVuY3Rpb25zLCB0aGVyZSBpcyBubyBuZWVkIHRvIGV2ZXIg
-Y2hlY2sgdGhlCnJldHVybiB2YWx1ZS4gIFRoZSBmdW5jdGlvbiBjYW4gd29yayBvciBub3QsIGJ1
-dCB0aGUgY29kZSBsb2dpYyBzaG91bGQKbmV2ZXIgZG8gc29tZXRoaW5nIGRpZmZlcmVudCBiYXNl
-ZCBvbiB0aGlzLgoKQmVjYXVzZSB0aGVyZSBpcyBubyBuZWVkIHRvIGNoZWNrIHRoZXNlIGZ1bmN0
-aW9ucywgYSBudW1iZXIgb2YgbG9jYWwKZnVuY3Rpb25zIGNhbiBiZSBtYWRlIHRvIHJldHVybiB2
-b2lkIHRvIHNpbXBsaWZ5IHRoaW5ncyBhcyBub3RoaW5nIGNhbgpmYWlsLgoKQ2M6IFpoZW55dSBX
-YW5nIDx6aGVueXV3QGxpbnV4LmludGVsLmNvbT4KQ2M6IFpoaSBXYW5nIDx6aGkuYS53YW5nQGlu
-dGVsLmNvbT4KQ2M6IEphbmkgTmlrdWxhIDxqYW5pLm5pa3VsYUBsaW51eC5pbnRlbC5jb20+CkNj
-OiBKb29uYXMgTGFodGluZW4gPGpvb25hcy5sYWh0aW5lbkBsaW51eC5pbnRlbC5jb20+CkNjOiBS
-b2RyaWdvIFZpdmkgPHJvZHJpZ28udml2aUBpbnRlbC5jb20+CkNjOiBEYXZpZCBBaXJsaWUgPGFp
-cmxpZWRAbGludXguaWU+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+CkNjOiBp
-bnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpDYzogaW50ZWwtZ2Z4QGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpDYzogZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpTaWduZWQt
-b2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgot
-LS0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9kZWJ1Z2ZzLmMgfCA0NyArKysrKystLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQuYyAgICAgfCAg
-NCArLS0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQuaCAgICAgfCAgNCArLS0KIGRyaXZl
-cnMvZ3B1L2RybS9pOTE1L2d2dC9rdm1ndC5jICAgfCAgMyAtLQogZHJpdmVycy9ncHUvZHJtL2k5
-MTUvZ3Z0L3ZncHUuYyAgICB8ICA0ICstLQogNSBmaWxlcyBjaGFuZ2VkLCAxMyBpbnNlcnRpb25z
-KCspLCA0OSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9n
-dnQvZGVidWdmcy5jIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2RlYnVnZnMuYwppbmRleCA4
-YTk2MDZmOTFlNjguLmZkZDkwNThhYjhmMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5
-MTUvZ3Z0L2RlYnVnZnMuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZGVidWdmcy5j
-CkBAIC0xODksMzYgKzE4OSwxOSBAQCBERUZJTkVfU0lNUExFX0FUVFJJQlVURSh2Z3B1X3NjYW5f
-bm9ucHJpdmJiX2ZvcHMsCiAvKioKICAqIGludGVsX2d2dF9kZWJ1Z2ZzX2FkZF92Z3B1IC0gcmVn
-aXN0ZXIgZGVidWdmcyBlbnRyaWVzIGZvciBhIHZHUFUKICAqIEB2Z3B1OiBhIHZHUFUKLSAqCi0g
-KiBSZXR1cm5zOgotICogWmVybyBvbiBzdWNjZXNzLCBuZWdhdGl2ZSBlcnJvciBjb2RlIGlmIGZh
-aWxlZC4KICAqLwotaW50IGludGVsX2d2dF9kZWJ1Z2ZzX2FkZF92Z3B1KHN0cnVjdCBpbnRlbF92
-Z3B1ICp2Z3B1KQordm9pZCBpbnRlbF9ndnRfZGVidWdmc19hZGRfdmdwdShzdHJ1Y3QgaW50ZWxf
-dmdwdSAqdmdwdSkKIHsKLQlzdHJ1Y3QgZGVudHJ5ICplbnQ7CiAJY2hhciBuYW1lWzE2XSA9ICIi
-OwogCiAJc25wcmludGYobmFtZSwgMTYsICJ2Z3B1JWQiLCB2Z3B1LT5pZCk7CiAJdmdwdS0+ZGVi
-dWdmcyA9IGRlYnVnZnNfY3JlYXRlX2RpcihuYW1lLCB2Z3B1LT5ndnQtPmRlYnVnZnNfcm9vdCk7
-Ci0JaWYgKCF2Z3B1LT5kZWJ1Z2ZzKQotCQlyZXR1cm4gLUVOT01FTTsKLQotCWVudCA9IGRlYnVn
-ZnNfY3JlYXRlX2Jvb2woImFjdGl2ZSIsIDA0NDQsIHZncHUtPmRlYnVnZnMsCi0JCQkJICAmdmdw
-dS0+YWN0aXZlKTsKLQlpZiAoIWVudCkKLQkJcmV0dXJuIC1FTk9NRU07Ci0KLQllbnQgPSBkZWJ1
-Z2ZzX2NyZWF0ZV9maWxlKCJtbWlvX2RpZmYiLCAwNDQ0LCB2Z3B1LT5kZWJ1Z2ZzLAotCQkJCSAg
-dmdwdSwgJnZncHVfbW1pb19kaWZmX2ZvcHMpOwotCWlmICghZW50KQotCQlyZXR1cm4gLUVOT01F
-TTsKIAotCWVudCA9IGRlYnVnZnNfY3JlYXRlX2ZpbGUoInNjYW5fbm9ucHJpdmJiIiwgMDY0NCwg
-dmdwdS0+ZGVidWdmcywKLQkJCQkgdmdwdSwgJnZncHVfc2Nhbl9ub25wcml2YmJfZm9wcyk7Ci0J
-aWYgKCFlbnQpCi0JCXJldHVybiAtRU5PTUVNOwotCi0JcmV0dXJuIDA7CisJZGVidWdmc19jcmVh
-dGVfYm9vbCgiYWN0aXZlIiwgMDQ0NCwgdmdwdS0+ZGVidWdmcywgJnZncHUtPmFjdGl2ZSk7CisJ
-ZGVidWdmc19jcmVhdGVfZmlsZSgibW1pb19kaWZmIiwgMDQ0NCwgdmdwdS0+ZGVidWdmcywgdmdw
-dSwKKwkJCSAgICAmdmdwdV9tbWlvX2RpZmZfZm9wcyk7CisJZGVidWdmc19jcmVhdGVfZmlsZSgi
-c2Nhbl9ub25wcml2YmIiLCAwNjQ0LCB2Z3B1LT5kZWJ1Z2ZzLCB2Z3B1LAorCQkJICAgICZ2Z3B1
-X3NjYW5fbm9ucHJpdmJiX2ZvcHMpOwogfQogCiAvKioKQEAgLTIzNCwyNyArMjE3LDE1IEBAIHZv
-aWQgaW50ZWxfZ3Z0X2RlYnVnZnNfcmVtb3ZlX3ZncHUoc3RydWN0IGludGVsX3ZncHUgKnZncHUp
-CiAvKioKICAqIGludGVsX2d2dF9kZWJ1Z2ZzX2luaXQgLSByZWdpc3RlciBndnQgZGVidWdmcyBy
-b290IGVudHJ5CiAgKiBAZ3Z0OiBHVlQgZGV2aWNlCi0gKgotICogUmV0dXJuczoKLSAqIHplcm8g
-b24gc3VjY2VzcywgbmVnYXRpdmUgaWYgZmFpbGVkLgogICovCi1pbnQgaW50ZWxfZ3Z0X2RlYnVn
-ZnNfaW5pdChzdHJ1Y3QgaW50ZWxfZ3Z0ICpndnQpCit2b2lkIGludGVsX2d2dF9kZWJ1Z2ZzX2lu
-aXQoc3RydWN0IGludGVsX2d2dCAqZ3Z0KQogewogCXN0cnVjdCBkcm1fbWlub3IgKm1pbm9yID0g
-Z3Z0LT5kZXZfcHJpdi0+ZHJtLnByaW1hcnk7Ci0Jc3RydWN0IGRlbnRyeSAqZW50OwogCiAJZ3Z0
-LT5kZWJ1Z2ZzX3Jvb3QgPSBkZWJ1Z2ZzX2NyZWF0ZV9kaXIoImd2dCIsIG1pbm9yLT5kZWJ1Z2Zz
-X3Jvb3QpOwotCWlmICghZ3Z0LT5kZWJ1Z2ZzX3Jvb3QpIHsKLQkJZ3Z0X2VycigiQ2Fubm90IGNy
-ZWF0ZSBkZWJ1Z2ZzIGRpclxuIik7Ci0JCXJldHVybiAtRU5PTUVNOwotCX0KIAotCWVudCA9IGRl
-YnVnZnNfY3JlYXRlX3Vsb25nKCJudW1fdHJhY2tlZF9tbWlvIiwgMDQ0NCwgZ3Z0LT5kZWJ1Z2Zz
-X3Jvb3QsCi0JCQkJICAgJmd2dC0+bW1pby5udW1fdHJhY2tlZF9tbWlvKTsKLQlpZiAoIWVudCkK
-LQkJcmV0dXJuIC1FTk9NRU07Ci0KLQlyZXR1cm4gMDsKKwlkZWJ1Z2ZzX2NyZWF0ZV91bG9uZygi
-bnVtX3RyYWNrZWRfbW1pbyIsIDA0NDQsIGd2dC0+ZGVidWdmc19yb290LAorCQkJICAgICAmZ3Z0
-LT5tbWlvLm51bV90cmFja2VkX21taW8pOwogfQogCiAvKioKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9pOTE1L2d2dC9ndnQuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQuYwpp
-bmRleCA0M2Y0MjQyMDYyZGQuLjhmMzdlZWZhMGEwMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL2k5MTUvZ3Z0L2d2dC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQuYwpA
-QCAtMzc1LDkgKzM3NSw3IEBAIGludCBpbnRlbF9ndnRfaW5pdF9kZXZpY2Uoc3RydWN0IGRybV9p
-OTE1X3ByaXZhdGUgKmRldl9wcml2KQogCX0KIAlndnQtPmlkbGVfdmdwdSA9IHZncHU7CiAKLQly
-ZXQgPSBpbnRlbF9ndnRfZGVidWdmc19pbml0KGd2dCk7Ci0JaWYgKHJldCkKLQkJZ3Z0X2Vycigi
-ZGVidWdmcyByZWdpc3RyYXRpb24gZmFpbGVkLCBnbyBvbi5cbiIpOworCWludGVsX2d2dF9kZWJ1
-Z2ZzX2luaXQoZ3Z0KTsKIAogCWd2dF9kYmdfY29yZSgiZ3Z0IGRldmljZSBpbml0aWFsaXphdGlv
-biBpcyBkb25lXG4iKTsKIAlkZXZfcHJpdi0+Z3Z0ID0gZ3Z0OwpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL2k5MTUvZ3Z0L2d2dC5oIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2dC5o
-CmluZGV4IGY1YTMyOGI1MjkwYS4uYjczYzdlNjNiMmQ1IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vaTkxNS9ndnQvZ3Z0LmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2dC5o
-CkBAIC02ODIsOSArNjgyLDkgQEAgc3RhdGljIGlubGluZSB2b2lkIGludGVsX2d2dF9tbWlvX3Nl
-dF9pbl9jdHgoCiAJZ3Z0LT5tbWlvLm1taW9fYXR0cmlidXRlW29mZnNldCA+PiAyXSB8PSBGX0lO
-X0NUWDsKIH0KIAotaW50IGludGVsX2d2dF9kZWJ1Z2ZzX2FkZF92Z3B1KHN0cnVjdCBpbnRlbF92
-Z3B1ICp2Z3B1KTsKK3ZvaWQgaW50ZWxfZ3Z0X2RlYnVnZnNfYWRkX3ZncHUoc3RydWN0IGludGVs
-X3ZncHUgKnZncHUpOwogdm9pZCBpbnRlbF9ndnRfZGVidWdmc19yZW1vdmVfdmdwdShzdHJ1Y3Qg
-aW50ZWxfdmdwdSAqdmdwdSk7Ci1pbnQgaW50ZWxfZ3Z0X2RlYnVnZnNfaW5pdChzdHJ1Y3QgaW50
-ZWxfZ3Z0ICpndnQpOwordm9pZCBpbnRlbF9ndnRfZGVidWdmc19pbml0KHN0cnVjdCBpbnRlbF9n
-dnQgKmd2dCk7CiB2b2lkIGludGVsX2d2dF9kZWJ1Z2ZzX2NsZWFuKHN0cnVjdCBpbnRlbF9ndnQg
-Kmd2dCk7CiAKIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMg
-Yi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQva3ZtZ3QuYwppbmRleCBhNjhhZGRmOTVjMjMuLjNj
-MjZmYjI4YTJkMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMK
-KysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMKQEAgLTE3OTgsOSArMTc5OCw2
-IEBAIHN0YXRpYyBpbnQga3ZtZ3RfZ3Vlc3RfaW5pdChzdHJ1Y3QgbWRldl9kZXZpY2UgKm1kZXYp
-CiAJCQkJCQkia3ZtZ3RfbnJfY2FjaGVfZW50cmllcyIsCiAJCQkJCQkwNDQ0LCB2Z3B1LT5kZWJ1
-Z2ZzLAogCQkJCQkJJnZncHUtPnZkZXYubnJfY2FjaGVfZW50cmllcyk7Ci0JaWYgKCFpbmZvLT5k
-ZWJ1Z2ZzX2NhY2hlX2VudHJpZXMpCi0JCWd2dF92Z3B1X2VycigiQ2Fubm90IGNyZWF0ZSBrdm1n
-dCBkZWJ1Z2ZzIGVudHJ5XG4iKTsKLQogCXJldHVybiAwOwogfQogCmRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vaTkxNS9ndnQvdmdwdS5jIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3Zn
-cHUuYwppbmRleCA0NGNlM2MyYjlhYzEuLmQ1YTZlNGUzZDBmZCAxMDA2NDQKLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL2k5MTUvZ3Z0L3ZncHUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQv
-dmdwdS5jCkBAIC00MjAsOSArNDIwLDcgQEAgc3RhdGljIHN0cnVjdCBpbnRlbF92Z3B1ICpfX2lu
-dGVsX2d2dF9jcmVhdGVfdmdwdShzdHJ1Y3QgaW50ZWxfZ3Z0ICpndnQsCiAJaWYgKHJldCkKIAkJ
-Z290byBvdXRfY2xlYW5fc3VibWlzc2lvbjsKIAotCXJldCA9IGludGVsX2d2dF9kZWJ1Z2ZzX2Fk
-ZF92Z3B1KHZncHUpOwotCWlmIChyZXQpCi0JCWdvdG8gb3V0X2NsZWFuX3NjaGVkX3BvbGljeTsK
-KwlpbnRlbF9ndnRfZGVidWdmc19hZGRfdmdwdSh2Z3B1KTsKIAogCXJldCA9IGludGVsX2d2dF9o
-eXBlcnZpc29yX3NldF9vcHJlZ2lvbih2Z3B1KTsKIAlpZiAocmV0KQotLSAKMi4yMi4wCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2
-IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+
+--===============0690326664==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="gKMricLos+KVdGMg"
+Content-Disposition: inline
+
+
+--gKMricLos+KVdGMg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.06.13 08:45:02 +0000, Li, Weinan Z wrote:
+> > > > On 2019.06.13 11:05:17 +0800, Weinan Li wrote:
+> > > > > There is pvinfo reading come from vgpu might be failed, like
+> > > > > reading from one unknown address, now GVT-g returns the vreg which
+> > > > > is one uncertain value. To avoid misunderstanding, GVT-g will
+> > > > > always return zero if reading failed occurred.
+> > > > >
+> > > > > Signed-off-by: Weinan Li <weinan.z.li@intel.com>
+> > > > > ---
+> > > > >  drivers/gpu/drm/i915/gvt/handlers.c | 7 +++++--
+> > > > >  1 file changed, 5 insertions(+), 2 deletions(-)
+> > > > >
+> > > > > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c
+> > > > > b/drivers/gpu/drm/i915/gvt/handlers.c
+> > > > > index a6ade66349bd..eab657d65276 100644
+> > > > > --- a/drivers/gpu/drm/i915/gvt/handlers.c
+> > > > > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> > > > > @@ -1199,9 +1199,12 @@ static int pvinfo_mmio_read(struct
+> > > > > intel_vgpu
+> > > > *vgpu, unsigned int offset,
+> > > > >  		invalid_read =3D true;
+> > > > >  		break;
+> > > > >  	}
+> > > > > -	if (invalid_read)
+> > > > > -		gvt_vgpu_err("invalid pvinfo read: [%x:%x] =3D %x\n",
+> > > > > +	if (invalid_read) {
+> > > > > +		gvt_vgpu_err("invalid pvinfo read: [0x%x:0x%x] =3D 0x0 instead
+> > of
+> > > > > +0x%x\n",
+> > > > >  				offset, bytes, *(u32 *)p_data);
+> > > > > +		memset(p_data, 0, bytes);
+> > > > > +	}
+> > > > > +
+> > > >
+> > > > Shouldn't we make sure to set zero for undefined pvinfo memory?
+> > > > Instead of keep setting return value like this?
+> > > >
+> > > There might be usage like this, write first then read back and check =
+the
+> > return value.
+> > >
+> >=20
+> > yeah, better we can follow like reserved bit definition, discard write =
+for
+> > undefined bits and return zero.
+> >=20
+> Do you mean add write data verification in pvinfo_mmio_write? and let fre=
+e read?
+>=20
+
+yeah, fixing the write behavior properly instead of this kind of hack seems=
+ more
+reasonable to me.
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--gKMricLos+KVdGMg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXQLthQAKCRCxBBozTXgY
+Jy+TAJ0V/LxtI2Kp72VAvygjDplZ8kUbMACfc/LjtkNOObQ83UawLGN1R047iJs=
+=LLTQ
+-----END PGP SIGNATURE-----
+
+--gKMricLos+KVdGMg--
+
+--===============0690326664==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0690326664==--
