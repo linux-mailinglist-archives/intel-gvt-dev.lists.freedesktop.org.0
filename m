@@ -2,34 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D036447B02
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Jun 2019 09:30:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 58EDF47BF6
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Jun 2019 10:17:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7864F8916C;
-	Mon, 17 Jun 2019 07:30:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 049F389048;
+	Mon, 17 Jun 2019 08:17:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 662918916C
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 937AF8918A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Jun 2019 07:30:18 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+ Mon, 17 Jun 2019 08:17:46 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jun 2019 00:30:17 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2019 01:17:45 -0700
 X-ExtLoop1: 1
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by fmsmga008.fm.intel.com with ESMTP; 17 Jun 2019 00:30:17 -0700
-Date: Mon, 17 Jun 2019 15:28:16 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Weinan Li <weinan.z.li@intel.com>
-Subject: Re: [PATCH v2] drm/i915/gvt: ignore unexpected pvinfo write
-Message-ID: <20190617072816.GB9684@zhen-hp.sh.intel.com>
-References: <20190614013519.13672-1-weinan.z.li@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <20190614013519.13672-1-weinan.z.li@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.9])
+ by fmsmga004.fm.intel.com with ESMTP; 17 Jun 2019 01:17:45 -0700
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH v2] drm/i915/gvt: rename F_IN_CTX flag to F_IN_CTX_SR
+Date: Mon, 17 Jun 2019 04:11:50 -0400
+Message-Id: <20190617081150.1367-1-yan.y.zhao@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -42,127 +39,78 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1580906972=="
+Cc: Yan Zhao <yan.y.zhao@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1580906972==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="kPcv0S3lnZZ9UV+7"
-Content-Disposition: inline
-
-
---kPcv0S3lnZZ9UV+7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.06.14 09:35:19 +0800, Weinan Li wrote:
-> There is pvinfo writing come from vgpu might be unexpected, like writing
-> to one unknown address, now GVT-g lets it write to the vreg with prompt
-> error message. It's better to ignore the unexpected pvinfo write access
-> and leave the vreg as the default value.
->=20
-> v2: ignore unexpected pvinfo write instead of return predefined value
->=20
-> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Signed-off-by: Weinan Li <weinan.z.li@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/handlers.c | 15 +++++++++------
->  1 file changed, 9 insertions(+), 6 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/g=
-vt/handlers.c
-> index a6ade66349bd..25f78196b964 100644
-> --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> @@ -1254,18 +1254,15 @@ static int send_display_ready_uevent(struct intel=
-_vgpu *vgpu, int ready)
->  static int pvinfo_mmio_write(struct intel_vgpu *vgpu, unsigned int offse=
-t,
->  		void *p_data, unsigned int bytes)
->  {
-> -	u32 data;
-> -	int ret;
-> -
-> -	write_vreg(vgpu, offset, p_data, bytes);
-> -	data =3D vgpu_vreg(vgpu, offset);
-> +	u32 data =3D *(u32 *)p_data;
-> +	bool invalid_write =3D false;
-
-maybe add assert here later for bytes not equal to dword for any surprise,
-others look fine to me.
-
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
-> =20
->  	switch (offset) {
->  	case _vgtif_reg(display_ready):
->  		send_display_ready_uevent(vgpu, data ? 1 : 0);
->  		break;
->  	case _vgtif_reg(g2v_notify):
-> -		ret =3D handle_g2v_notification(vgpu, data);
-> +		handle_g2v_notification(vgpu, data);
->  		break;
->  	/* add xhot and yhot to handled list to avoid error log */
->  	case _vgtif_reg(cursor_x_hot):
-> @@ -1282,13 +1279,19 @@ static int pvinfo_mmio_write(struct intel_vgpu *v=
-gpu, unsigned int offset,
->  	case _vgtif_reg(execlist_context_descriptor_hi):
->  		break;
->  	case _vgtif_reg(rsv5[0])..._vgtif_reg(rsv5[3]):
-> +		invalid_write =3D true;
->  		enter_failsafe_mode(vgpu, GVT_FAILSAFE_INSUFFICIENT_RESOURCE);
->  		break;
->  	default:
-> +		invalid_write =3D true;
->  		gvt_vgpu_err("invalid pvinfo write offset %x bytes %x data %x\n",
->  				offset, bytes, data);
->  		break;
->  	}
-> +
-> +	if (!invalid_write)
-> +		write_vreg(vgpu, offset, p_data, bytes);
-> +
->  	return 0;
->  }
-> =20
-> --=20
-> 2.17.1
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---kPcv0S3lnZZ9UV+7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXQdBEAAKCRCxBBozTXgY
-J+fZAKCJRYYTbLSDewZfP4FsDC3tFoBuwwCfTwT16zZbLhmHWYKpu1Flp2LtBKA=
-=viZA
------END PGP SIGNATURE-----
-
---kPcv0S3lnZZ9UV+7--
-
---===============1580906972==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1580906972==--
+Rl9JTl9DVFggaXMgYW4gaW5hY2N1cmF0ZSBmbGFnIG5hbWUsIGJlY2F1c2UgcGVvcGxlIG1heSBm
+YWxzbHkgdGhpbmsgYWxsCm1taW9zIGluIGNvbnRleHQgaW1hZ2UgYXJlIG9mIHRoaXMgZmxhZy4g
+QnV0IGFjdHVhbGx5LCB0aGlzIGZsYWcgaXMgb25seQpmb3IgbW1pb3MgYm90aCBpbiBHVlQncyBz
+YXZlLXJlc3RvcmUgbGlzdCBhbmQgaW4gaGFyZGFyZSBsb2dpY2FsCmNvbnRleHQncyBpbWFnZS4K
+CnYyOiByZW5hbWUgRl9JTl9TUkxJU1RfQU5EX0NUWCB0byBGX0lOX0NUWF9TUiAoemhlbnl1IHdh
+bmcpCgpTaWduZWQtb2ZmLWJ5OiBZYW4gWmhhbyA8eWFuLnkuemhhb0BpbnRlbC5jb20+Ci0tLQog
+ZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2NtZF9wYXJzZXIuYyAgIHwgIDIgKy0KIGRyaXZlcnMv
+Z3B1L2RybS9pOTE1L2d2dC9ndnQuaCAgICAgICAgICB8IDIzICsrKysrKysrKysrKysrLS0tLS0t
+LS0tCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmMgfCAgMyArKy0KIDMg
+ZmlsZXMgY2hhbmdlZCwgMTcgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pCgpkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2NtZF9wYXJzZXIuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9pOTE1L2d2dC9jbWRfcGFyc2VyLmMKaW5kZXggNmVhODgyNzBjODE4Li43OGI4YzliNmIy
+YmMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9jbWRfcGFyc2VyLmMKKysr
+IGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2NtZF9wYXJzZXIuYwpAQCAtOTA2LDcgKzkwNiw3
+IEBAIHN0YXRpYyBpbnQgY21kX3JlZ19oYW5kbGVyKHN0cnVjdCBwYXJzZXJfZXhlY19zdGF0ZSAq
+cywKIAkgKiBpbmhpYml0IGNvbnRleHQgd2lsbCByZXN0b3JlIHdpdGggY29ycmVjdCB2YWx1ZXMK
+IAkgKi8KIAlpZiAoSVNfR0VOKGd2dC0+ZGV2X3ByaXYsIDkpICYmCi0JCQlpbnRlbF9ndnRfbW1p
+b19pc19pbl9jdHgoZ3Z0LCBvZmZzZXQpICYmCisJCQlpbnRlbF9ndnRfbW1pb19pc19pbl9jdHhf
+c3IoZ3Z0LCBvZmZzZXQpICYmCiAJCQkhc3RybmNtcChjbWQsICJscmkiLCAzKSkgewogCQlpbnRl
+bF9ndnRfaHlwZXJ2aXNvcl9yZWFkX2dwYShzLT52Z3B1LAogCQkJcy0+d29ya2xvYWQtPnJpbmdf
+Y29udGV4dF9ncGEgKyAxMiwgJmN0eF9zcl9jdGwsIDQpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL2k5MTUvZ3Z0L2d2dC5oIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2dC5oCmlu
+ZGV4IGI1NGYyYmRjMTNhNC4uYTRiZWM1MDg2ZTM1IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vaTkxNS9ndnQvZ3Z0LmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2dC5oCkBA
+IC0yNzEsOCArMjcxLDEwIEBAIHN0cnVjdCBpbnRlbF9ndnRfbW1pbyB7CiAjZGVmaW5lIEZfQ01E
+X0FDQ0VTU0VECSgxIDw8IDUpCiAvKiBUaGlzIHJlZyBjb3VsZCBiZSBhY2Nlc3NlZCBieSB1bmFs
+aWduZWQgYWRkcmVzcyAqLwogI2RlZmluZSBGX1VOQUxJR04JKDEgPDwgNikKLS8qIFRoaXMgcmVn
+IGlzIHNhdmVkL3Jlc3RvcmVkIGluIGNvbnRleHQgKi8KLSNkZWZpbmUgRl9JTl9DVFgJKDEgPDwg
+NykKKy8qIFRoaXMgcmVnIGlzIGluIEdWVCdzIG1taW8gc2F2ZS1yZXN0b3IgbGlzdCBhbmQgaW4g
+aGFyZHdhcmUKKyAqIGxvZ2ljYWwgY29udGV4dCBpbWFnZQorICovCisjZGVmaW5lIEZfSU5fQ1RY
+X1NSCSgxIDw8IDcpCiAKIAlzdHJ1Y3QgZ3Z0X21taW9fYmxvY2sgKm1taW9fYmxvY2s7CiAJdW5z
+aWduZWQgaW50IG51bV9tbWlvX2Jsb2NrOwpAQCAtNjU2LDMwICs2NTgsMzMgQEAgc3RhdGljIGlu
+bGluZSBib29sIGludGVsX2d2dF9tbWlvX2hhc19tb2RlX21hc2soCiB9CiAKIC8qKgotICogaW50
+ZWxfZ3Z0X21taW9faXNfaW5fY3R4IC0gY2hlY2sgaWYgYSBNTUlPIGhhcyBpbi1jdHggbWFzawor
+ICogaW50ZWxfZ3Z0X21taW9faXNfaW5fY3R4X3NyIC0KKyAqCQljaGVjayBpZiBhbiBNTUlPIGhh
+cyBpbi1jdHgtc3IgbWFzawogICogQGd2dDogYSBHVlQgZGV2aWNlCiAgKiBAb2Zmc2V0OiByZWdp
+c3RlciBvZmZzZXQKICAqCiAgKiBSZXR1cm5zOgotICogVHJ1ZSBpZiBhIE1NSU8gaGFzIGEgaW4t
+Y29udGV4dCBtYXNrLCBmYWxzZSBpZiBpdCBpc24ndC4KKyAqIFRydWUgaWYgYW4gTU1JTyBoYXMg
+YSBpbi1jb250ZXh0LXNyIG1hc2ssIGZhbHNlIGlmIGl0IGlzbid0LgogICoKICAqLwotc3RhdGlj
+IGlubGluZSBib29sIGludGVsX2d2dF9tbWlvX2lzX2luX2N0eCgKK3N0YXRpYyBpbmxpbmUgYm9v
+bCBpbnRlbF9ndnRfbW1pb19pc19pbl9jdHhfc3IoCiAJCQlzdHJ1Y3QgaW50ZWxfZ3Z0ICpndnQs
+IHVuc2lnbmVkIGludCBvZmZzZXQpCiB7Ci0JcmV0dXJuIGd2dC0+bW1pby5tbWlvX2F0dHJpYnV0
+ZVtvZmZzZXQgPj4gMl0gJiBGX0lOX0NUWDsKKwlyZXR1cm4gZ3Z0LT5tbWlvLm1taW9fYXR0cmli
+dXRlW29mZnNldCA+PiAyXSAmIEZfSU5fQ1RYX1NSOwogfQogCiAvKioKLSAqIGludGVsX2d2dF9t
+bWlvX3NldF9pbl9jdHggLSBtYXNrIGEgTU1JTyBpbiBsb2dpY2FsIGNvbnRleHQKKyAqIGludGVs
+X2d2dF9tbWlvX3NldF9pbl9jdHhfc3IgLQorICoJCW1hc2sgYW4gTU1JTyBpbiBHVlQncyBtbWlv
+IHNhdmUtcmVzdG9yZSBsaXN0IGFuZCBhbHNvCisgKgkJaW4gaGFyZHdhcmUgbG9naWNhbCBjb250
+ZXh0IGltYWdlCiAgKiBAZ3Z0OiBhIEdWVCBkZXZpY2UKICAqIEBvZmZzZXQ6IHJlZ2lzdGVyIG9m
+ZnNldAogICoKICAqLwotc3RhdGljIGlubGluZSB2b2lkIGludGVsX2d2dF9tbWlvX3NldF9pbl9j
+dHgoCitzdGF0aWMgaW5saW5lIHZvaWQgaW50ZWxfZ3Z0X21taW9fc2V0X2luX2N0eF9zcigKIAkJ
+CXN0cnVjdCBpbnRlbF9ndnQgKmd2dCwgdW5zaWduZWQgaW50IG9mZnNldCkKIHsKLQlndnQtPm1t
+aW8ubW1pb19hdHRyaWJ1dGVbb2Zmc2V0ID4+IDJdIHw9IEZfSU5fQ1RYOworCWd2dC0+bW1pby5t
+bWlvX2F0dHJpYnV0ZVtvZmZzZXQgPj4gMl0gfD0gRl9JTl9DVFhfU1I7CiB9CiAKIGludCBpbnRl
+bF9ndnRfZGVidWdmc19hZGRfdmdwdShzdHJ1Y3QgaW50ZWxfdmdwdSAqdmdwdSk7CmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmMgYi9kcml2ZXJzL2dw
+dS9kcm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmMKaW5kZXggMjk5ODk5OWU4NTY4Li4zOTU4Y2Nl
+ODhjNDEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tbWlvX2NvbnRleHQu
+YworKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmMKQEAgLTU3NCw3
+ICs1NzQsOCBAQCB2b2lkIGludGVsX2d2dF9pbml0X2VuZ2luZV9tbWlvX2NvbnRleHQoc3RydWN0
+IGludGVsX2d2dCAqZ3Z0KQogCSAgICAgaTkxNV9tbWlvX3JlZ192YWxpZChtbWlvLT5yZWcpOyBt
+bWlvKyspIHsKIAkJaWYgKG1taW8tPmluX2NvbnRleHQpIHsKIAkJCWd2dC0+ZW5naW5lX21taW9f
+bGlzdC5jdHhfbW1pb19jb3VudFttbWlvLT5yaW5nX2lkXSsrOwotCQkJaW50ZWxfZ3Z0X21taW9f
+c2V0X2luX2N0eChndnQsIG1taW8tPnJlZy5yZWcpOworCQkJaW50ZWxfZ3Z0X21taW9fc2V0X2lu
+X2N0eF9zcihndnQsCisJCQkJCW1taW8tPnJlZy5yZWcpOwogCQl9CiAJfQogfQotLSAKMi4xNy4x
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1n
+dnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1k
+ZXY=
