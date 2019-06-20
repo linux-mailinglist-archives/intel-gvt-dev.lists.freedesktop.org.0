@@ -2,29 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C77A04CAC5
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Jun 2019 11:25:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DC5E54EF4
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Jun 2019 14:34:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 892EF89C1F;
-	Thu, 20 Jun 2019 09:25:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E97AE6E0EE;
+	Tue, 25 Jun 2019 12:34:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 25780 seconds by postgrey-1.36 at gabe;
- Thu, 20 Jun 2019 09:25:49 UTC
-Received: from nmf.or.jp (nmf.or.jp [210.140.88.31])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0F2D089C1F;
- Thu, 20 Jun 2019 09:25:48 +0000 (UTC)
-Received: from User (113x43x74x50.ap113.ftth.ucom.ne.jp [113.43.74.50])
- by nmf.or.jp (Postfix) with ESMTPA id 4F63636FA94;
- Thu, 20 Jun 2019 07:06:25 +0900 (JST)
-From: "Reem E. Al-Hashimi"<rekrutacja@metropoliapoznan.pl>
-Subject: I Resend This Email Again?
-Date: Wed, 19 Jun 2019 22:06:33 -0000
+X-Greylist: delayed 22463 seconds by postgrey-1.36 at gabe;
+ Tue, 25 Jun 2019 12:34:32 UTC
+Received: from mail.bdtechservers.com (unknown [198.154.112.56])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 230986E0EE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 25 Jun 2019 12:34:32 +0000 (UTC)
+Received: from gmail.com (UnknownHost [103.99.1.147]) by
+ mail.bdtechservers.com with SMTP; Thu, 20 Jun 2019 14:13:48 +0530
+From: Sven Roland <sven4nd@gmail.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Business Investment
+Date: 20 Jun 2019 01:43:17 -0700
+Message-ID: <20190620014317.D43C6D378D4D5AFB@gmail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -37,38 +35,36 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ar1501502@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0968076795=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20190620092549.892EF89C1F@gabe.freedesktop.org>
 
-TXkgbmFtZSBpcyBSZWVtIEUuIEFsLUhhc2hpbWksIHRoZSBFbWlyYXRlcyBNaW5pc3RlciBvZiBT
-dGF0ZSBhbmQgTWFuYWdpbmcgRGlyZWN0b3IgZm9yIHRoZSBVbml0ZWQgQXJhYiBFbWlyYXRlcyAo
-RHViYWkpIFdvcmxkIEV4cG8gMjAyMCBDb21taXR0ZWUuIEkgYW0gd3JpdGluZyB5b3UgdG8gc3Rh
-bmQgYXMgbXkgcGFydG5lciB0byByZWNlaXZlIG15IHNoYXJlIG9mIGdyYXRpZmljYXRpb24gZnJv
-bSBmb3JlaWduIGNvbXBhbmllcyB3aG9tIEkgaGVscGVkIGR1cmluZyB0aGUgYmlkZGluZyBleGVy
-Y2lzZSB0b3dhcmRzIHRoZSBEdWJhaSBXb3JsZCBFeHBvIDIwMjAgQ29tbWl0dGVlLgoKQXMgYSBt
-YXJyaWVkIEFyYWIgd29tZW4gc2VydmluZyBhcyBhIG1pbmlzdGVyLCB0aGVyZSBpcyBhIGxpbWl0
-IHRvIG15IHBlcnNvbmFsIGluY29tZSBhbmQgaW52ZXN0bWVudCBsZXZlbC4gRm9yIHRoaXMgcmVh
-c29uLCBJIGNhbm5vdCByZWNlaXZlIHN1Y2ggYSBodWdlIHN1bSBiYWNrIHRvIG15IGNvdW50cnks
-IHNvIGFuIGFncmVlbWVudCB3YXMgcmVhY2hlZCB3aXRoIHRoZSBmb3JlaWduIGNvbXBhbmllcyB0
-byBkaXJlY3QgdGhlIGdyYXRpZmljYXRpb25zIHRvIGFuIG9wZW4gYmVuZWZpY2lhcnkgYWNjb3Vu
-dCB3aXRoIGEgZmluYW5jaWFsIGluc3RpdHV0aW9uIHdoZXJlIGl0IHdpbGwgYmUgcG9zc2libGUg
-Zm9yIG1lIHRvIGluc3RydWN0IGZ1cnRoZXIgdHJhbnNmZXIgb2YgdGhlIGZ1bmQgdG8gYSB0aGly
-ZCBwYXJ0eSBhY2NvdW50IGZvciBpbnZlc3RtZW50IHB1cnBvc2Ugd2hpY2ggaXMgdGhlIHJlYXNv
-biBpIGNvbnRhY3RlZCB5b3UgdG8gcmVjZWl2ZSB0aGUgZnVuZCBhcyBteSBwYXJ0bmVyIGZvciBp
-bnZlc3RtZW50IGluIHlvdXIgY291bnRyeS4KClRoZSBhbW91bnQgaXMgdmFsdWVkIGF0ICQ0Nyw3
-NDUsNTMzLjAwIFVuaXRlZCBTdGF0ZXMgZG9sbGFycyB3aXRoIGEgZmluYW5jaWFsIGluc3RpdHV0
-aW9uIHdhaXRpbmcgbXkgaW5zdHJ1Y3Rpb24gZm9yIGZ1cnRoZXIgdHJhbnNmZXIgdG8gYSBkZXN0
-aW5hdGlvbiBhY2NvdW50IGFzIHNvb24gYXMgSSBoYXZlIHlvdXIgaW5mb3JtYXRpb24gaW5kaWNh
-dGluZyBpbnRlcmVzdCB0byByZWNlaXZlIGFuZCBpbnZlc3QgdGhlIGZ1bmQuSSB3aWxsIGNvbXBl
-bnNhdGUgeW91IHdpdGggMzAlIG9mIHRoZSB0b3RhbCBhbW91bnQgYW5kIHlvdSB3aWxsIGFsc28g
-Z2V0IGJlbmVmaXQgZnJvbSB0aGUgaW52ZXN0bWVudC4KSWYgeW91IGNhbiBoYW5kbGUgdGhlIGZ1
-bmQgaW4gYSBnb29kIGludmVzdG1lbnQsIGdldCBiYWNrIHRvIG1lIGZvciBtb3JlIGRldGFpbHMg
-b24gdGhpcyBlbWFpbDsgKCBzbTk1NDY3MjlAZ21haWwuY29tICkKU2luY2VyZWx5LApNcy4gUmVl
-bS4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwt
-Z3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQt
-ZGV2
+--===============0968076795==
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML>
+
+<html><head><title></title>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body style=3D"margin: 0.4em;"><p>Good Day,</p><p>I am a senior Consultant =
+for Pacific Investments<br>We solicit for a private entrepreneur who can ma=
+nage<br>our Investor Funds into any profitable project<br>My Investor own l=
+imited Funds in Treasury Bill Scheme in UK.<br>Kindly reply me with a good =
+idea and we discuss further.</p><p>Best Regards</p><p>Senior Investment Con=
+sultant.<br>Pacific Investments Ltd<br>Mr. Sven Roland<br>LLB Hons.</p></bo=
+dy></html>
+
+
+--===============0968076795==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0968076795==--
