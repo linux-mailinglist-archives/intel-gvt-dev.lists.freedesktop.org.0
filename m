@@ -1,64 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBB875ABC3
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Jun 2019 16:25:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 480635ACA5
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Jun 2019 18:54:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 802E66E9A8;
-	Sat, 29 Jun 2019 14:25:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0219C89C18;
+	Sat, 29 Jun 2019 16:54:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com
- [IPv6:2a00:1450:4864:20::343])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 846506E9A8;
- Sat, 29 Jun 2019 14:25:29 +0000 (UTC)
-Received: by mail-wm1-x343.google.com with SMTP id 207so11707336wma.1;
- Sat, 29 Jun 2019 07:25:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=tSfTfCg1RYrQS9+orWf92BVXcSGyjMupz270+2KJ+Us=;
- b=F4R3smTj1HbQHthYGx9M6V2/OlbaVwdxiZyEypDzqbwxXl2efXeg6E+tl4Zq41jqq0
- EJjWLbdmdxhgvJ6DZcmBTllHE1TebU2Un5P2ZYaAoX8c/OImv7BJgGUgdLI4PF9hLJwQ
- X2fEMm6zlk8OVjpuBEhXuH/N1DcHOCJw/JjWtaNllpxNPr59TARRvR/3ak+BHWvJQ7No
- VxCwiNXk0eN65/J4u0O3s4VvbfW73wQ/5psb5vBlbGkrumiNhvw+mUhzOZ+NfCKmhFGX
- 5rbqYoP08Z4owuDUOpOUDdlW4gyyg2ypD3gDp3HNYnvBgjmKgA4ZuSz9lxGTskXFe7Z/
- 51mw==
-X-Gm-Message-State: APjAAAUNvjtTA1c+rIRoDrT5HOkznFkw9g8pztp64hr1FMVLI6iEd0Gg
- JyV0LYHWPf/ARxHgzGSKdw==
-X-Google-Smtp-Source: APXvYqzYjeGlAIXCK0Otnr3tBdPOmwP6gFHgUXBBLaR5nRWD1D7mhQsGKJ7ZXMMjG4yeTA5UDqjZKg==
-X-Received: by 2002:a1c:dc46:: with SMTP id t67mr9957034wmg.159.1561818328264; 
- Sat, 29 Jun 2019 07:25:28 -0700 (PDT)
-Received: from avx2 ([46.53.248.49])
- by smtp.gmail.com with ESMTPSA id g123sm3503855wme.12.2019.06.29.07.25.26
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 29 Jun 2019 07:25:27 -0700 (PDT)
-Date: Sat, 29 Jun 2019 17:25:10 +0300
-From: Alexey Dobriyan <adobriyan@gmail.com>
-To: Andreas Dilger <adilger@dilger.ca>
+X-Greylist: delayed 552 seconds by postgrey-1.36 at gabe;
+ Sat, 29 Jun 2019 16:54:46 UTC
+Received: from smtprelay.hostedemail.com (smtprelay0058.hostedemail.com
+ [216.40.44.58])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8C22D89A60
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 29 Jun 2019 16:54:46 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave06.hostedemail.com (Postfix) with ESMTP id 06C3D8123E26
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 29 Jun 2019 16:45:35 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay08.hostedemail.com (Postfix) with ESMTP id 72872182CF666;
+ Sat, 29 Jun 2019 16:45:32 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com,
+ :::::::::::::::::::::::::::::::::::::::,
+ RULES_HIT:41:355:379:599:800:960:968:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1431:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3353:3622:3865:3866:3867:3868:3870:3871:3872:3874:4037:4321:5007:6742:10004:10400:10848:10967:11232:11658:11914:12043:12297:12663:12740:12760:12895:13069:13138:13231:13311:13357:13439:14096:14097:14181:14659:14721:21080:21433:21627:30034:30054:30070:30090:30091,
+ 0,
+ RBL:23.242.196.136:@perches.com:.lbl8.mailshell.net-62.14.0.180 64.201.201.201,
+ CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none, DomainCache:0,
+ MSF:not bulk, SPF:fn, MSBL:0, DNSBL:neutral, Custom_rules:0:0:0, LFtime:24,
+ LUA_SUMMARY:none
+X-HE-Tag: wood26_67b7f2b025644
+X-Filterd-Recvd-Size: 3038
+Received: from XPS-9350 (cpe-23-242-196-136.socal.res.rr.com [23.242.196.136])
+ (Authenticated sender: joe@perches.com)
+ by omf01.hostedemail.com (Postfix) with ESMTPA;
+ Sat, 29 Jun 2019 16:45:12 +0000 (UTC)
+Message-ID: <c3b83ba7f9b003dd4fb9cad885461ce93165dc04.camel@perches.com>
 Subject: Re: [PATCH V2] include: linux: Regularise the use of FIELD_SIZEOF
  macro
-Message-ID: <20190629142510.GA10629@avx2>
+From: Joe Perches <joe@perches.com>
+To: Alexey Dobriyan <adobriyan@gmail.com>, Andreas Dilger <adilger@dilger.ca>
+Date: Sat, 29 Jun 2019 09:45:10 -0700
+In-Reply-To: <20190629142510.GA10629@avx2>
 References: <20190611193836.2772-1-shyam.saini@amarulasolutions.com>
  <20190611134831.a60c11f4b691d14d04a87e29@linux-foundation.org>
  <6DCAE4F8-3BEC-45F2-A733-F4D15850B7F3@dilger.ca>
+ <20190629142510.GA10629@avx2>
+User-Agent: Evolution 3.30.5-0ubuntu0.18.10.1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6DCAE4F8-3BEC-45F2-A733-F4D15850B7F3@dilger.ca>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=tSfTfCg1RYrQS9+orWf92BVXcSGyjMupz270+2KJ+Us=;
- b=Wmn42cCjIZF370922nlT8XBZNT0vFC3qdUoivrJz5yLafRIjdx1Vw+bUvno+QUBVO5
- oMyQcmwqGx4DE3Y07CmSTM0IATWqZAW8kgg+hDEKwh+1CP4NznlAWonwVsCaGpQLaVCV
- I2vA/VdkUZjqS9WvauRGJBO3Xjdwe01bpXzqQP8wAMh3LJ6yI1E5Z9SfpRw+TuNVA5cx
- Mol2Xo2HUenKPsAtO6b1Hxjmm06+PdB0ii0cFoQihuSTWnRJjwjpf6NZuH7lsl3/21RK
- LnPOrpaBytkjll+vsC5zrv5VKacw2e2sTlF82+ldUSC/dM1uFOjAFEnxgQGkqlBXSG7l
- +TOw==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,28 +79,33 @@ Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gVHVlLCBKdW4gMTEsIDIwMTkgYXQgMDM6MDA6MTBQTSAtMDYwMCwgQW5kcmVhcyBEaWxnZXIg
-d3JvdGU6Cj4gT24gSnVuIDExLCAyMDE5LCBhdCAyOjQ4IFBNLCBBbmRyZXcgTW9ydG9uIDxha3Bt
-QGxpbnV4LWZvdW5kYXRpb24ub3JnPiB3cm90ZToKPiA+IAo+ID4gT24gV2VkLCAxMiBKdW4gMjAx
-OSAwMTowODozNiArMDUzMCBTaHlhbSBTYWluaSA8c2h5YW0uc2FpbmlAYW1hcnVsYXNvbHV0aW9u
-cy5jb20+IHdyb3RlOgoKPiBJIGRpZCBhIGNoZWNrLCBhbmQgRklFTERfU0laRU9GKCkgaXMgdXNl
-ZCBhYm91dCAzNTB4LCB3aGlsZSBzaXplb2ZfZmllbGQoKQo+IGlzIGFib3V0IDMweCwgYW5kIFNJ
-WkVPRl9GSUVMRCgpIGlzIG9ubHkgYWJvdXQgNXguCj4gCj4gVGhhdCBzYWlkLCBJJ20gbXVjaCBt
-b3JlIGluIGZhdm91ciBvZiAic2l6ZW9mX2ZpZWxkKCkiIG9yICJzaXplb2ZfbWVtYmVyKCkiCj4g
-dGhhbiBGSUVMRF9TSVpFT0YoKS4gIE5vdCBvbmx5IGRvZXMgdGhhdCBiZXR0ZXIgbWF0Y2ggIm9m
-ZnNldG9mKCkiLCB3aXRoCj4gd2hpY2ggaXQgaXMgY2xvc2VseSByZWxhdGVkLCBidXQgaXMgYWxz
-byBjbG9zZXIgdG8gdGhlIG9yaWdpbmFsICJzaXplb2YoKSIuCj4gCj4gU2luY2UgdGhpcyBpcyBh
-IHJhdGhlciB0cml2aWFsIGNoYW5nZSwgaXQgY2FuIGJlIHNwbGl0IGludG8gYSBudW1iZXIgb2YK
-PiBwYXRjaGVzIHRvIGdldCBhcHByb3ZhbC9sYW5kaW5nIHZpYSBzdWJzeXN0ZW0gbWFpbnRhaW5l
-cnMsIGFuZCB0aGVyZSBpcyBubwo+IGh1Z2UgdXJnZW5jeSB0byByZW1vdmUgdGhlIG9yaWdpbmFs
-IG1hY3JvcyB1bnRpbCB0aGUgdXNlcnMgYXJlIGdvbmUuICBJdAo+IHdvdWxkIG1ha2Ugc2Vuc2Ug
-dG8gcmVtb3ZlIFNJWkVPRl9GSUVMRCgpIGFuZCBzaXplb2ZfZmllbGQoKSBxdWlja2x5IHNvCj4g
-dGhleSBkb24ndCBnYWluIG1vcmUgdXNlcnMsIGFuZCB0aGUgcmVtYWluaW5nIEZJRUxEX1NJWkVP
-RigpIHVzZXJzIGNhbiBiZQo+IHdoaXR0bGVkIGF3YXkgYXMgdGhlIHBhdGNoZXMgY29tZSB0aHJv
-dWdoIHRoZSBtYWludGFpbmVyIHRyZWVzLgoKVGhlIHNpZ25hdHVyZSBzaG91bGQgYmUKCglzaXpl
-b2ZfbWVtYmVyKFQsIG0pCgppdCBpcyBwcm9wZXIgRW5nbGlzaCwKaXQgaXMgbG93ZXJjYXNlLCBz
-byBpcyBlYXNpZXIgdG8gdHlwZSwKaXQgdXNlcyBzdGFuZGFyZCB0ZXJtIChtZW1iZXIsIG5vdCBm
-aWVsZCksCml0IGJsZW5kcyBpbiB3aXRoIHN0YW5kYXJkICJzaXplb2YiIG9wZXJhdG9yLApfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2
-IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+T24gU2F0LCAyMDE5LTA2LTI5IGF0IDE3OjI1ICswMzAwLCBBbGV4ZXkgRG9icml5YW4gd3JvdGU6
+Cj4gT24gVHVlLCBKdW4gMTEsIDIwMTkgYXQgMDM6MDA6MTBQTSAtMDYwMCwgQW5kcmVhcyBEaWxn
+ZXIgd3JvdGU6Cj4gPiBPbiBKdW4gMTEsIDIwMTksIGF0IDI6NDggUE0sIEFuZHJldyBNb3J0b24g
+PGFrcG1AbGludXgtZm91bmRhdGlvbi5vcmc+IHdyb3RlOgo+ID4gPiBPbiBXZWQsIDEyIEp1biAy
+MDE5IDAxOjA4OjM2ICswNTMwIFNoeWFtIFNhaW5pIDxzaHlhbS5zYWluaUBhbWFydWxhc29sdXRp
+b25zLmNvbT4gd3JvdGU6Cj4gPiBJIGRpZCBhIGNoZWNrLCBhbmQgRklFTERfU0laRU9GKCkgaXMg
+dXNlZCBhYm91dCAzNTB4LCB3aGlsZSBzaXplb2ZfZmllbGQoKQo+ID4gaXMgYWJvdXQgMzB4LCBh
+bmQgU0laRU9GX0ZJRUxEKCkgaXMgb25seSBhYm91dCA1eC4KPiA+IAo+ID4gVGhhdCBzYWlkLCBJ
+J20gbXVjaCBtb3JlIGluIGZhdm91ciBvZiAic2l6ZW9mX2ZpZWxkKCkiIG9yICJzaXplb2ZfbWVt
+YmVyKCkiCj4gPiB0aGFuIEZJRUxEX1NJWkVPRigpLiAgTm90IG9ubHkgZG9lcyB0aGF0IGJldHRl
+ciBtYXRjaCAib2Zmc2V0b2YoKSIsIHdpdGgKPiA+IHdoaWNoIGl0IGlzIGNsb3NlbHkgcmVsYXRl
+ZCwgYnV0IGlzIGFsc28gY2xvc2VyIHRvIHRoZSBvcmlnaW5hbCAic2l6ZW9mKCkiLgo+ID4gCj4g
+PiBTaW5jZSB0aGlzIGlzIGEgcmF0aGVyIHRyaXZpYWwgY2hhbmdlLCBpdCBjYW4gYmUgc3BsaXQg
+aW50byBhIG51bWJlciBvZgo+ID4gcGF0Y2hlcyB0byBnZXQgYXBwcm92YWwvbGFuZGluZyB2aWEg
+c3Vic3lzdGVtIG1haW50YWluZXJzLCBhbmQgdGhlcmUgaXMgbm8KPiA+IGh1Z2UgdXJnZW5jeSB0
+byByZW1vdmUgdGhlIG9yaWdpbmFsIG1hY3JvcyB1bnRpbCB0aGUgdXNlcnMgYXJlIGdvbmUuICBJ
+dAo+ID4gd291bGQgbWFrZSBzZW5zZSB0byByZW1vdmUgU0laRU9GX0ZJRUxEKCkgYW5kIHNpemVv
+Zl9maWVsZCgpIHF1aWNrbHkgc28KPiA+IHRoZXkgZG9uJ3QgZ2FpbiBtb3JlIHVzZXJzLCBhbmQg
+dGhlIHJlbWFpbmluZyBGSUVMRF9TSVpFT0YoKSB1c2VycyBjYW4gYmUKPiA+IHdoaXR0bGVkIGF3
+YXkgYXMgdGhlIHBhdGNoZXMgY29tZSB0aHJvdWdoIHRoZSBtYWludGFpbmVyIHRyZWVzLgo+IAo+
+IFRoZSBzaWduYXR1cmUgc2hvdWxkIGJlCj4gCj4gCXNpemVvZl9tZW1iZXIoVCwgbSkKPiAKPiBp
+dCBpcyBwcm9wZXIgRW5nbGlzaCwKPiBpdCBpcyBsb3dlcmNhc2UsIHNvIGlzIGVhc2llciB0byB0
+eXBlLAo+IGl0IHVzZXMgc3RhbmRhcmQgdGVybSAobWVtYmVyLCBub3QgZmllbGQpLAo+IGl0IGJs
+ZW5kcyBpbiB3aXRoIHN0YW5kYXJkICJzaXplb2YiIG9wZXJhdG9yLAoKeWVzIHBsZWFzZS4KCkFs
+c28sIGEgc2ltcGxlIHNjcmlwdCBjb252ZXJzaW9uIGFwcGxpZWQKaW1tZWRpYXRlbHkgYWZ0ZXIg
+YW4gcmMxIG1pZ2h0IGJlIGVhc2llc3QKcmF0aGVyIHRoYW4gaW5kaXZpZHVhbCBwYXRjaGVzLgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2
+dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRl
+dg==
