@@ -1,35 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22B865B26F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Jul 2019 02:14:40 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 008465B304
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Jul 2019 05:12:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 122C689C49;
-	Mon,  1 Jul 2019 00:14:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 81A6189D84;
+	Mon,  1 Jul 2019 03:12:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from tor-mxpf01.hostmanagement.net (tor-mxpf01.hostmanagement.net
- [104.153.56.143])
- by gabe.freedesktop.org (Postfix) with ESMTP id D9F8D89C49;
- Mon,  1 Jul 2019 00:14:36 +0000 (UTC)
-Received: from TOR-EXHUB01.prov.ad.hostmanagement.net (unknown
- [104.153.56.138])
- by tor-mxpf01.hostmanagement.net (Postfix) with ESMTP id 1ABCA4882A2;
- Sun, 30 Jun 2019 14:58:58 -0400 (EDT)
-Received: from User (172.16.6.19) by smtp02.myexchangeemail.com (172.16.6.10)
- with Microsoft SMTP Server id 14.3.339.0;
- Sun, 30 Jun 2019 14:58:50 -0400
-From: "Mr. Peter Brook" <pbrook@occ.co.uk>
-Subject: The Abandoned Project..   
-Date: Sun, 30 Jun 2019 11:58:52 -0700
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 94BF689D89
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  1 Jul 2019 03:12:01 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Jun 2019 20:12:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,437,1557212400"; 
+ d="asc'?scan'208";a="165682225"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by orsmga003.jf.intel.com with ESMTP; 30 Jun 2019 20:11:52 -0700
+Date: Mon, 1 Jul 2019 11:09:19 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Zhang, Tina" <tina.zhang@intel.com>
+Subject: Re: [RFC PATCH v3 0/4] Deliver vGPU display vblank event to userspace
+Message-ID: <20190701030919.GJ9684@zhen-hp.sh.intel.com>
+References: <20190627033802.1663-1-tina.zhang@intel.com>
+ <20190627062231.57tywityo6uyhmyd@sirius.home.kraxel.org>
+ <237F54289DF84E4997F34151298ABEBC876835E5@SHSMSX101.ccr.corp.intel.com>
+ <20190627103133.6ekdwazggi5j5lcl@sirius.home.kraxel.org>
+ <20190628032149.GD9684@zhen-hp.sh.intel.com>
+ <20190628054346.3uc3k4c4cffrqcy3@sirius.home.kraxel.org>
+ <237F54289DF84E4997F34151298ABEBC87685825@SHSMSX101.ccr.corp.intel.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <2184f828-28bd-4d46-b692-e82d78e99359@TOR-EXHUB01.prov.ad.hostmanagement.net>
-To: Undisclosed recipients:;
+In-Reply-To: <237F54289DF84E4997F34151298ABEBC87685825@SHSMSX101.ccr.corp.intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -42,57 +51,201 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: pbrookk01@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: "Tian, Kevin" <kevin.tian@intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, "Yuan, Hang" <hang.yuan@intel.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>
+Content-Type: multipart/mixed; boundary="===============1547322818=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-R29vZCBkYXkuCgpJIGFtIHRoZSBuZXcgRVhFQ1VUSVZFIERJUkVDVE9SIGFuZCBIZWFkIG9mIE9w
-ZXJhdGlvbnMgb2YgT3ZlcnNlYXMgQ3JlZGl0IENvbW1pc3Npb24gTG9uZG9uLCBVSy4gU29tZXRp
-bWUgYWdvLCBpbgpvdXIgb3JnYW5pemF0aW9uIHlvdXIgb3ZlcmR1ZSBjb25zaWdubWVudCBmdW5k
-IHdhcyBicm91Z2h0IHRvIG91ciBvZmZpY2UgZm9yIGZpbmFsIGRlbGl2ZXJ5IGNsZWFyYW5jZS4K
-Ckhvd2V2ZXIsIHVwb24gbXkgYXJyaXZhbCB0byB0aGlzIG9mZmljZSwgSSBmb3VuZCB5b3VyIGNv
-bnNpZ25tZW50IGNsZWFyYW5jZSBmaWxlIGx5aW5nIGZhbGxvdyBvbiBteSBkZXNrIHdpdGhvdXQg
-YW55IGF0dGVudGlvbi4gT24gYSB0aG9yb3VnaCBzY3J1dGlueSBJIGRpc2NvdmVyZWQgdGhhdCB5
-b3VyIGNvbnNpZ25tZW50IGhhdmUgYmVlbiBhYmFuZG9uZWQgYnkgeW91ciBkZWxpdmVyeSBhZ2Vu
-dC4gTWVhbndoaWxlLCBJIGhhdmUgbWFkZSBzZXZlcmFsIGF0dGVtcHRzIHRvIGNvbnRhY3QgeW91
-ciBkZWxpdmVyeSBhZ2VudCBidXQgdG8gbm8gYXZhaWwuIFRvIG15IGdyZWF0ZXN0IHN1cnByaXNl
-LCBkdXJpbmcgbXkgcmVjZW50IHJvdXRpbmUgY2hlY2tpbmcsIEkgcGVyc29uYWxseSBkaXNjb3Zl
-cmVkIHRoYXQgeW91ciBjb25zaWdubWVudCBjb250ZW50IGRlY2xhcmF0aW9uIGRvY3VtZW50cyBz
-dGF0ZWQgdGhhdCB5b3VyIGNvbnNpZ25tZW50IGNvbnRhaW5zIHBlcnNvbmFsIGVmZmVjdHMgbWVh
-bndoaWxlLCBpdCBjb250YWlucyBVbml0ZWQgU3RhdGVzIGRvbGxhciBiaWxscyB3b3J0aCBvdmVy
-IFVTJCAxMC41IE1pbGxpb24gZG9sbGFycywgd2hpY2ggbWFkZSBpdCBpbXBvc3NpYmxlIGZvciB0
-aGUgY29uc2lnbm1lbnQgdG8gYmUgZGVsaXZlcmVkIHRvIHlvdSBlYXJsaWVyIGJlZm9yZSBub3cu
-CgpCYXNlZCBvbiB0aGlzIHBlcnNvbmFsIGRpc2NvdmVyeSwgSSBhbSBjb250YWN0aW5nIHlvdSBu
-b3cgdG8gbGV0IHlvdSBrbm93IHRoYXQgd2l0aCBteSBwb3NpdGlvbiBhbmQgcG93ZXIgaW4gdGhp
-cyBvZmZpY2UsIEkgY2FuIGFzc2lzdCB5b3UgdG8gbGVnYWxseSBjbGVhciB5b3VyIGNvbnNpZ25t
-ZW50IGZ1bmQsIGJ1dCB5b3UgbXVzdCBhZ3JlZSB3aXRoIHRoZSBmb2xsb3dpbmcgY29uZGl0aW9u
-czoKCllvdSBtdXN0IG5vdCBkaXNjbG9zZSB0byBhbnkgbWVtYmVyIG9mIG15IG9yZ2FuaXphdGlv
-biB3aGF0ZXZlciBhc3Npc3RhbmNlIHRoYXQgSSBhbSBnb2luZyB0byByZW5kZXIgdG8geW91IGlu
-IHJlc3BlY3Qgb2YgY2xlYXJpbmcgdGhpcyBjb25zaWdubWVudCBmdW5kIGludG8geW91ciBjdXN0
-b2R5LgoKWW91IHdpbGwgcHJvdmlkZSBtZSB3aXRoIGFuIGF1dGhlbnRpY2F0ZWQgcHJvbWlzc29y
-eSBub3RlLCBvdGhlciB3aXNlIGtub3duIGFzIHBhcnRuZXJzaGlwIGFncmVlbWVudCwgdGhhdCB1
-cG9uIHRoZSBzYWZlIGFycml2YWwgb2YgdGhlIGNvbnNpZ25tZW50IGZ1bmQgdG8geW91ciBjdXN0
-b2R5LCB0aGF0IHlvdSBnaXZlIG1lIDMwJSBvZiB0aGUgdG90YWwgZnVuZCBjb250YWluZWQgaW4g
-dGhlIGNvbnNpZ25tZW50LgoKWW91IG11c3QgZ2l2ZSBhZGVxdWF0ZSBhdHRlbnRpb24gdG8gdGhp
-cyBtYXR0ZXIgdW50aWwgd2Ugc3VjY2Vzc2Z1bGx5IGFuZCBsZWdhbGx5IGNsZWFyIHRoZSBjb25z
-aWdubWVudCBmdW5kIGludG8geW91ciBjdXN0b2R5LgoKVXBvbiB5b3VyIGFjY2VwdGFuY2Ugd2l0
-aCBteSBhYm92ZSBjb25kaXRpb25zLCBJIHdpbGwgZnVybmlzaCB5b3Ugd2l0aCBmdXJ0aGVyIGRl
-dGFpbHMgb2Ygd2hhdCBzaG91bGQgYmUgZG9uZSB0byBsZWdhbGx5IGdldCB0aGUgY29uc2lnbm1l
-bnQgZnVuZCBjbGVhcmVkIGFuZCBkZWxpdmVyZWQgdG8geW91IGFzIHRoZSByaWdodGZ1bCBvd25l
-ciBvZiB0aGUgY29uc2lnbm1lbnQuCgpNZWFud2hpbGUsIGlmIHlvdSBrbm93IHRoYXQgeW91IHdv
-dWxkIGJlIHVuYWJsZSB0byBrZWVwIHRoZSBzZWNyZXQgb2YgbXkgYXNzaXN0YW5jZSB0byB5b3Ug
-aW4gdGhpcyByZWdhcmRzLCBwbGVhc2UgZG8gbm90IGJvcmRlciB0byByZXBseS4KCkhlbmNlIHRo
-ZSBjb25zaWdubWVudCBmdW5kIHdvdWxkIGJlIHJlY292ZXJlZCBpbnRvIG91ciBvcmdhbml6YXRp
-b24gdHJlYXN1cnkgYWNjb3VudCBhcyB1bmNsYWltZWQgY29uc2lnbm1lbnQgZnVuZC4gQmUgaW5m
-b3JtZWQgdGhhdCB0aGUgY29uc2lnbm1lbnQgY29udGFpbiB0aGUgc3VtIG9mICQxMC41IG1pbGxp
-b24gZG9sbGFycyBpbiB0aGUgbHVnZ2FnZS4KCkJ1dCBpZiB5b3UgY2FuIGFzc3VyZSBtZSBvZiB5
-b3VyIGNvbXBldGVuY3kgdG8ga2VlcCB0aGlzIHNlY3JldCwgSSB3b3VsZCBsaWtlIHRvIGhlYXIg
-ZnJvbSB5b3Ugc29vbiBhcyBwb3NzaWJsZSBzbyB0aGF0IEkgY2FuIGVtYWlsIHlvdSBmdXJ0aGVy
-IGRldGFpbHMgYW5kIGd1aWRlbGluZXMuCgpJIGFtIGxvb2tpbmcgZm9yd2FyZCB0byB5b3VyIGVh
-cmxpZXN0IHJlc3BvbnNlLgpIYXZlIGEgR3JlYXQgRGF5CgpNci4gUGV0ZXIgQnJvb2sKSGVhZCBv
-ZiBPcGVyYXRpb25zCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-aW50ZWwtZ3Z0LWRldg==
+
+--===============1547322818==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="9IEn5YSSuHr7pCxV"
+Content-Disposition: inline
+
+
+--9IEn5YSSuHr7pCxV
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.06.28 12:43:47 +0000, Zhang, Tina wrote:
+> Hi,
+>=20
+> How about GVT-g supports both vblank and page flip events. Then QEMU UI c=
+an mask/unmask the events to decide which kind of event is expected.
+> For DRM UI, it can decide to mask vblank event and use page flip events. =
+We tried DRM UI with page flip events, the performance is great, even in th=
+e case of front buffer rendering. For the UI like GTK, vblank event is bett=
+er.=20
+>=20
+> Besides, with the irq mask/unmask mechanism, userspace can dynamically ch=
+oose between the UI timer and the events.=20
+>=20
+
+The idea is to deliver an event to tell userspace that "guest has
+display update, you need to refresh your UI". How driver
+implementation uses either vblank or page flip to determine that is
+driver specific, as same routine of vfio gfx interface will be used to
+refresh on guest display.
+
+If userspace doesn't set irq for vfio gfx display, it would just use
+own timer.
+
+>=20
+> > -----Original Message-----
+> > From: Zhang, Tina
+> > Sent: Friday, June 28, 2019 4:45 PM
+> > To: 'Gerd Hoffmann' <kraxel@redhat.com>; Zhenyu Wang
+> > <zhenyuw@linux.intel.com>
+> > Cc: Tian, Kevin <kevin.tian@intel.com>; kvm@vger.kernel.org; linux-
+> > kernel@vger.kernel.org; alex.williamson@redhat.com; Lv, Zhiyuan
+> > <zhiyuan.lv@intel.com>; Yuan, Hang <hang.yuan@intel.com>; intel-gvt-
+> > dev@lists.freedesktop.org; Wang, Zhi A <zhi.a.wang@intel.com>
+> > Subject: RE: [RFC PATCH v3 0/4] Deliver vGPU display vblank event to
+> > userspace
+> >=20
+> >=20
+> >=20
+> > > -----Original Message-----
+> > > From: intel-gvt-dev
+> > > [mailto:intel-gvt-dev-bounces@lists.freedesktop.org] On Behalf Of Gerd
+> > > Hoffmann
+> > > Sent: Friday, June 28, 2019 1:44 PM
+> > > To: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > > Cc: Tian, Kevin <kevin.tian@intel.com>; kvm@vger.kernel.org; linux-
+> > > kernel@vger.kernel.org; Zhang, Tina <tina.zhang@intel.com>;
+> > > alex.williamson@redhat.com; Lv, Zhiyuan <zhiyuan.lv@intel.com>; Yuan,
+> > > Hang <hang.yuan@intel.com>; intel-gvt-dev@lists.freedesktop.org; Wang,
+> > > Zhi A <zhi.a.wang@intel.com>
+> > > Subject: Re: [RFC PATCH v3 0/4] Deliver vGPU display vblank event to
+> > > userspace
+> > >
+> > > On Fri, Jun 28, 2019 at 11:21:49AM +0800, Zhenyu Wang wrote:
+> > > > On 2019.06.27 12:31:33 +0200, Gerd Hoffmann wrote:
+> > > > > > >   Hi,
+> > > > > > >
+> > > > > > > > Instead of delivering page flip events, we choose to post
+> > > > > > > > display vblank event. Handling page flip events for both
+> > > > > > > > primary plane and cursor plane may make user space quite
+> > > > > > > > busy, although we have the mask/unmask mechansim for
+> > mitigation.
+> > > > > > > > Besides, there are some cases that guest app only uses one
+> > > framebuffer for both drawing and display.
+> > > > > > > > In such case, guest OS won't do the plane page flip when the
+> > > > > > > > framebuffer is updated, thus the user land won't be notified
+> > > > > > > > about the
+> > > > > > > updated framebuffer.
+> > > > > > >
+> > > > > > > What happens when the guest is idle and doesn't draw anything
+> > > > > > > to the framebuffer?
+> > > > > > The vblank event will be delivered to userspace as well, unless
+> > > > > > guest OS
+> > > disable the pipe.
+> > > > > > Does it make sense to vfio/display?
+> > > > >
+> > > > > Getting notified only in case there are actual display updates
+> > > > > would be a nice optimization, assuming the hardware is able to do=
+ that.
+> > > > > If the guest pageflips this is obviously trivial.  Not sure this
+> > > > > is possible in case the guest renders directly to the frontbuffer.
+> > > > >
+> > > > > What exactly happens when the guest OS disables the pipe?  Is a
+> > > > > vblank event delivered at least once?  That would be very useful
+> > > > > because it will be possible for userspace to stop polling
+> > > > > altogether without missing the "guest disabled pipe" event.
+> > > > >
+> > > >
+> > > > It looks like purpose to use vblank here is to replace user space
+> > > > polling totally by kernel event? Which just act as display update
+> > > > event to replace user space timer to make it query and update plane=
+s?
+> > >
+> > > I think it makes sense to design it that way, so userspace will either
+> > > use the events (when supported by the driver) or a timer (fallback if
+> > > not) but not both.
+> > >
+> > > > Although in theory vblank is not appropriate for this which doesn't
+> > > > align with plane update or possible front buffer rendering at all,
+> > > > but looks it's just a compromise e.g not sending event for every
+> > > > cursor position change, etc.
+> > > >
+> > > > I think we need to define semantics for this event properly, e.g
+> > > > user space purely depends on this event for display update, the
+> > > > opportunity for issuing this event is controlled by driver when it's
+> > > > necessary for update, etc. Definitely not named as vblank event or
+> > > > only issue at vblank, that need to happen for other plane change to=
+o.
+> > >
+> > > I think it should be "display update notification", i.e. userspace
+> > > should check for plane changes and update the display.
+> > >
+> > > Most events will probably come from vblank (typically plane update are
+> > > actually committed at vblank time to avoid tearing, right?).  That is
+> > > an
+> > Yes.
+> > > implementation detail though.
+> >=20
+> > We have two WIP branches: one is for vblank event delivery and the other
+> > one is for page flip event delivery.
+> > Repo:
+> > - QEMU: https://github.com/intel/Igvtg-qemu.git
+> > - Kernel: https://github.com/intel/gvt-linux.git
+> > Two branches: topic/userspace_direct_flip_page_event and
+> > topic/userspace_direct_flip_vblank_event
+> >=20
+> > With GTK UI, the user experience is bad on branch
+> > topic/userspace_direct_flip_page_event, as most of the CPU efforts are
+> > spent on event handling in user space.
+> > However, with the DRM UI both of the two branches have good user
+> > experience, as the event handling in DRM UI is pretty simple.
+> >=20
+> > Thanks.
+> >=20
+> > BR,
+> > Tina
+> >=20
+> > >
+> > > cheers,
+> > >   Gerd
+> > >
+> > > _______________________________________________
+> > > intel-gvt-dev mailing list
+> > > intel-gvt-dev@lists.freedesktop.org
+> > > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--9IEn5YSSuHr7pCxV
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXRl5XwAKCRCxBBozTXgY
+J9iDAJwLOF/qLoZefonm1vaszR45i7E0cQCeO96Kx6L0VBRYU3c2bL4z8GwinMc=
+=SmFJ
+-----END PGP SIGNATURE-----
+
+--9IEn5YSSuHr7pCxV--
+
+--===============1547322818==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1547322818==--
