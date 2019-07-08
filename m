@@ -2,38 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96AE45FF8D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Jul 2019 04:44:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C578618E2
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Jul 2019 03:35:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3CA706E3F5;
-	Fri,  5 Jul 2019 02:44:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C809B89950;
+	Mon,  8 Jul 2019 01:35:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BA7D96E3F5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  5 Jul 2019 02:44:05 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B05F689950;
+ Mon,  8 Jul 2019 01:35:32 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Jul 2019 19:44:04 -0700
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Jul 2019 18:35:32 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,453,1557212400"; 
- d="asc'?scan'208";a="191503248"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by fmsmga002.fm.intel.com with ESMTP; 04 Jul 2019 19:44:04 -0700
-Date: Fri, 5 Jul 2019 10:41:23 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Colin Xu <colin.xu@intel.com>
-Subject: Re: [PATCH v3] drm/i915/gvt: Adding ppgtt to GVT GEM context after
- shadow pdps settled.
-Message-ID: <20190705024123.GX9684@zhen-hp.sh.intel.com>
-References: <20190704084506.28360-1-colin.xu@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <20190704084506.28360-1-colin.xu@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+X-IronPort-AV: E=Sophos;i="5.63,464,1557212400"; d="scan'208";a="173131234"
+Received: from xzhan34-mobl3.bj.intel.com ([10.238.154.53])
+ by FMSMGA003.fm.intel.com with ESMTP; 07 Jul 2019 18:35:30 -0700
+From: Xiaolin Zhang <xiaolin.zhang@intel.com>
+To: intel-gfx@lists.freedesktop.org
+Subject: [PATCH v7 0/8] i915 vgpu PV to improve vgpu performance
+Date: Mon,  8 Jul 2019 09:35:13 +0800
+Message-Id: <1562549722-27046-1-git-send-email-xiaolin.zhang@intel.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -46,193 +39,80 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1362595159=="
+Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1362595159==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="rNtzt+pFA3UwHi4l"
-Content-Disposition: inline
-
-
---rNtzt+pFA3UwHi4l
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.07.04 16:45:06 +0800, Colin Xu wrote:
-> Windows guest can't run after force-TDR with host log:
-> ...
-> gvt: vgpu 1: workload shadow ppgtt isn't ready
-> gvt: vgpu 1: fail to dispatch workload, skip
-> ...
->=20
-> The error is raised by set_context_ppgtt_from_shadow(), when it checks
-> and found the shadow_mm isn't marked as shadowed.
->=20
-> In work thread before each submission, a shadow_mm is set to shadowed in:
-> shadow_ppgtt_mm()
-> <-intel_vgpu_pin_mm()
-> <-prepare_workload()
-> <-dispatch_workload()
-> <-workload_thread()
-> However checking whether or not shadow_mm is shadowed is prior to it:
-> set_context_ppgtt_from_shadow()
-> <-dispatch_workload()
-> <-workload_thread()
->=20
-> In normal case, create workload will check the existence of shadow_mm,
-> if not it will create a new one and marked as shadowed. If already exist
-> it will reuse the old one. Since shadow_mm is reused, checking of shadowed
-> in set_context_ppgtt_from_shadow() actually always see the state set in
-> creation, but not the state set in intel_vgpu_pin_mm().
->=20
-> When force-TDR, all engines are reset, since it's not dmlr level, all
-> ppgtt_mm are invalidated but not destroyed. Invalidation will mark all
-> reused shadow_mm as not shadowed but still keeps in ppgtt_mm_list_head.
-> If workload submission phase those shadow_mm are reused with shadowed
-> not set, then set_context_ppgtt_from_shadow() will report error.
->=20
-> Pin for context after shadow_mm pinned and shadow pdps settled.
->=20
-> Fixes: 4f15665ccbba (drm/i915: Add ppgtt to GVT GEM context)
->=20
-> v2:
-> Move set_context_ppgtt_from_shadow() after prepare_workload(). (zhenyu)
-> v3:
-> Move set_context_ppgtt_from_shadow() after shadow pdps updated.(zhenyu)
->=20
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Colin Xu <colin.xu@intel.com>
-
-Applied, thanks!
-
-> ---
->  drivers/gpu/drm/i915/gvt/scheduler.c | 27 ++++++++++++---------------
->  1 file changed, 12 insertions(+), 15 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
-gvt/scheduler.c
-> index 196b4155a309..9f3fd7d96a69 100644
-> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> @@ -364,16 +364,13 @@ static void release_shadow_wa_ctx(struct intel_shad=
-ow_wa_ctx *wa_ctx)
->  	wa_ctx->indirect_ctx.shadow_va =3D NULL;
->  }
-> =20
-> -static int set_context_ppgtt_from_shadow(struct intel_vgpu_workload *wor=
-kload,
-> -					 struct i915_gem_context *ctx)
-> +static void set_context_ppgtt_from_shadow(struct intel_vgpu_workload *wo=
-rkload,
-> +					  struct i915_gem_context *ctx)
->  {
->  	struct intel_vgpu_mm *mm =3D workload->shadow_mm;
->  	struct i915_ppgtt *ppgtt =3D i915_vm_to_ppgtt(ctx->vm);
->  	int i =3D 0;
-> =20
-> -	if (mm->type !=3D INTEL_GVT_MM_PPGTT || !mm->ppgtt_mm.shadowed)
-> -		return -EINVAL;
-> -
->  	if (mm->ppgtt_mm.root_entry_type =3D=3D GTT_TYPE_PPGTT_ROOT_L4_ENTRY) {
->  		px_dma(ppgtt->pd) =3D mm->ppgtt_mm.shadow_pdps[0];
->  	} else {
-> @@ -384,8 +381,6 @@ static int set_context_ppgtt_from_shadow(struct intel=
-_vgpu_workload *workload,
->  			px_dma(pd) =3D mm->ppgtt_mm.shadow_pdps[i];
->  		}
->  	}
-> -
-> -	return 0;
->  }
-> =20
->  static int
-> @@ -614,6 +609,8 @@ static void release_shadow_batch_buffer(struct intel_=
-vgpu_workload *workload)
->  static int prepare_workload(struct intel_vgpu_workload *workload)
->  {
->  	struct intel_vgpu *vgpu =3D workload->vgpu;
-> +	struct intel_vgpu_submission *s =3D &vgpu->submission;
-> +	int ring =3D workload->ring_id;
->  	int ret =3D 0;
-> =20
->  	ret =3D intel_vgpu_pin_mm(workload->shadow_mm);
-> @@ -622,8 +619,16 @@ static int prepare_workload(struct intel_vgpu_worklo=
-ad *workload)
->  		return ret;
->  	}
-> =20
-> +	if (workload->shadow_mm->type !=3D INTEL_GVT_MM_PPGTT ||
-> +	    !workload->shadow_mm->ppgtt_mm.shadowed) {
-> +		gvt_vgpu_err("workload shadow ppgtt isn't ready\n");
-> +		return -EINVAL;
-> +	}
-> +
->  	update_shadow_pdps(workload);
-> =20
-> +	set_context_ppgtt_from_shadow(workload, s->shadow[ring]->gem_context);
-> +
->  	ret =3D intel_vgpu_sync_oos_pages(workload->vgpu);
->  	if (ret) {
->  		gvt_vgpu_err("fail to vgpu sync oos pages\n");
-> @@ -674,7 +679,6 @@ static int dispatch_workload(struct intel_vgpu_worklo=
-ad *workload)
->  {
->  	struct intel_vgpu *vgpu =3D workload->vgpu;
->  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
-> -	struct intel_vgpu_submission *s =3D &vgpu->submission;
->  	struct i915_request *rq;
->  	int ring_id =3D workload->ring_id;
->  	int ret;
-> @@ -685,13 +689,6 @@ static int dispatch_workload(struct intel_vgpu_workl=
-oad *workload)
->  	mutex_lock(&vgpu->vgpu_lock);
->  	mutex_lock(&dev_priv->drm.struct_mutex);
-> =20
-> -	ret =3D set_context_ppgtt_from_shadow(workload,
-> -					    s->shadow[ring_id]->gem_context);
-> -	if (ret < 0) {
-> -		gvt_vgpu_err("workload shadow ppgtt isn't ready\n");
-> -		goto err_req;
-> -	}
-> -
->  	ret =3D intel_gvt_workload_req_alloc(workload);
->  	if (ret)
->  		goto err_req;
-> --=20
-> 2.22.0
->=20
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---rNtzt+pFA3UwHi4l
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXR640wAKCRCxBBozTXgY
-Jwu7AJ9VQY56FrBWJp63O3JzJjg9ryqamgCfZKSFTNXd12ufqdlhMHlKvtXT8Og=
-=UbQV
------END PGP SIGNATURE-----
-
---rNtzt+pFA3UwHi4l--
-
---===============1362595159==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1362595159==--
+VG8gaW1wcm92ZSB2Z3B1IHBlcmZvcm1hbmNlLCBpdCBjb3VsZCBpbXBsZW1lbnQgc29tZSBQViBv
+cHRpbWl6YXRpb24Kc3VjaCBhcyB0byByZWR1Y2UgdGhlIG1taW8gYWNjZXNzIHRyYXAgbnVtYmVy
+cyBvciBlbGltaW5hdGUgY2VydGFpbiBwaWVjZQpvZiBIVyBlbXVsYXRpb24gd2l0aGluIGd1ZXN0
+IGRyaXZlciB0byByZWR1Y2Ugdm0gZXhpdC92bSBlbnRlciBjb3N0LgoKdGhlIHNvbHV0aW9ucyBp
+biB0aGlzIHBhdGNoIHNldCBhcmUgaW1wbGVtZW50ZWQgdHdvIFBWIG9wdGltaXphdGlvbnMgYmFz
+ZWQKb24gdGhlIHNoYXJlZCBtZW1vcnkgcmVnaW9uIGJldHdlZW4gZ3Vlc3QgYW5kIEdWVGcgZm9y
+IGRhdGEgY29tbXVuaWNhdGlvbi4KVGhlIHNoYXJlZCBtZW1vcnkgcmVnaW9uIGlzIGFsbG9jYXRl
+ZCBieSBndWVzdCBkcml2ZXIgYW5kIHRoaXMKcmVnaW9uJ3MgbWVtb3J5IGd1ZXN0IHBoeXNpY2Fs
+IGFkZHJlc3Mgd2lsbCBiZSBwYXNzZWQgdG8gR1ZUZyB0aHJvdWdoClBWSU5GTyByZWdpc3RlciBh
+bmQgbGF0ZXIgR1ZUZyBjYW4gYWNjZXNzIHRoaXMgcmVnaW9uIGRpcmVjdGx5IHdpdGhvdXQKdHJh
+cCBjb3N0IHRvIGFjaGlldmUgZGF0YSBleGNoYW5nZSBwdXJwb3NlIGJldHdlZW4gZ3Vlc3QgYW5k
+IEdWVGcuCgppbiB0aGlzIHBhdGNoIHNldCwgMiBraW5kIG9mIFBWIG9wdGltaXphdGlvbiBpbXBs
+ZW1lbnRlZCBjb250cm9sbGVkIGJ5CnB2X2NhcHMgUFZJTk8gcmVnaXN0ZXIgd2l0aCBkaWZmZXJl
+bnQgcHYgYml0LgoxLiB3b3JrbG9hZCBQViBzdWJtaXNzaW9uIChjb250ZXh0IHN1Ym1pc3Npb24p
+OiByZWR1Y2UgNCB0cmFwcyB0byAxIHRyYXAKYW5kIGVsaW1pbmF0ZWQgZXhlY2xpc3RzIEhXIGJl
+aGF2aW91ciBlbXVsYXRpb24uCjIuIHBwZ3R0IFBWIHVwZGF0ZTogZWxpbWluYXRlIHRoZSBjb3N0
+IG9mIHBwZ3R0IHdyaXRlIHByb3RlY3Rpb24uCgpiYXNlZCBvbiB0aGUgZXhwZXJpbWVudCwgZm9y
+IHNtYWxsIHdvcmtsb2Fkcywgc3BlY2lmYWxseSwgZ2x4Z2VhcnMgd2l0aAp2YmxhbmtfbW9kZSBv
+ZmYsIHRoZSBhdmVyYWdlIHBlcmZvcm1hbmNlIGdhaW4gb24gc2luZ2xlIHZncHUgaXMgMzB+NTAl
+Lgpmb3IgbGFyZ2Ugd29ya2xvYWQgc3VjaCBhcyBtZWRpYSBhbmQgM0QsIHRoZSBhdmVyYWdlIHBl
+cmZvcm1hbmNlIGdhaW4KaXMgYWJvdXQgNCUuIAoKYmFzZWQgb24gdGhlIFBWIG1lY2hhbmlzbSwg
+aXQgY291bGQgYWNoaXZlIG1vcmUgdmdwdSBmZWF0dXJlIG9wdGltaXphdGlvbgpzdWNoIGFzIGds
+b2JsZSBHVFQgdXBkYXRlLCBkaXNwbGF5IHBsYW5lIGFuZCB3YXRlciBtYXJrIHVwZGF0ZS4KCnYw
+OiBSRkMgcGF0Y2ggc2V0CnYxOiBhZGRyZXNzZWQgUkZDIHJldmlldyBjb21tZW50cwp2MjogYWRk
+cmVzc2VkIHYxIHJldmlldyBjb21tZW50cywgYWRkZWQgcHYgY2FsbGJhY2tzIGZvciBwdiBvcGVy
+YXRpb25zCnYzOgoxLiBhZGRyZXNzZWQgdjIgcmV2aWV3IGNvbW1lbnRzLCByZW1vdmVkIHB2IGNh
+bGxiYWNrcyBjb2RlIGR1cGxpY2F0aW9uIGluCnYyIGFuZCB1bmlmaWVkIHB2IGNhbGxzIHVuZGVy
+IGcydiBub3RpZmljYXRpb24gcmVnaXN0ZXIuIGRpZmZlcmVudCBnMnYgcHYKbm90aWZpY2F0aW9u
+cyBkZWZpbmVkLgoyLiBkcm9wcGVkIHB2IG1hc3RlciBpcnEgZmVhdHVyZSBkdWUgdG8gaGFyZCBj
+b25mbGljdCB3aXRoIHJlY25ldCBpOTE1CmNoYW5nZSBhbmQgdGFrZSB0aW1lIHRvIHJld29yay4K
+djQ6CjEuIGFkZHJlc3NlZCB2MyByZXZpZXcgY29tbWVudHMuCjIuIGV4dGVuZGVkIHdvcmtsb2Fk
+IFBWIHN1Ym1pc3Npb24gYnkgc2tpcCBleGVjbGlzdHMgSFcgYmVoYXZpb3VyIGVtdWxhdGlvbgph
+bmQgY29udGV4dCBzd2l0Y2ggaW50ZXJydXB0IGluamVjdGlvbi4gIAp2NToKMS4gYWRkcmVzc2Vk
+IHY0IHJldmlldyBjb21tZW50cyBmcm9tIENocmlzIGZvciBwdiBzdWJtaXNzaW9uLgoyLiBwZXIt
+ZW5naW5lIGNvbW11bmljYXRpb24gYmV0d2VlbiBQViBndWVzdCBhbmQgaG9zdC4KdjY6CjEuIGFk
+ZHJlc3NlZCB2NSByZXZpZXcgY29tbWVudCBmcm9tIENocmlzIGZvciBwdiBzdWJtaXNzaW9uLgoy
+LiBhZGRyZXNzZWQgdjUgcmV2aWV3IGNvbW1lbnQgZnJvbSBaaGVueXUgZm9yIFBWIHZlcnNpb24g
+c3VwcG9ydC4Kdjc6CjEuIGFkZGVzc2VkIHY1IHJldmlldyBjb21tZW50IGZyb20gQ2hyaXMgc3Rh
+cnRpbmcgdG8gdXNlIHB2IGNtZCBidWZmZXIKY29tbXVuaWNhdGlvbiBiZXR3ZWVuIHB2IGd1ZXN0
+IGFuZCBHVlQuCgpYaWFvbGluIFpoYW5nICg5KToKICBkcm0vaTkxNTogaW50cm9kdWNlZCB2Z3B1
+IHB2IGNhcGFiaWxpdHkKICBkcm0vaTkxNTogdmdwdSBzaGFyZWQgbWVtb3J5IHNldHVwIGZvciBw
+diBvcHRpbWl6YXRpb24KICBkcm0vaTkxNTogdmdwdSBwdiBjb21tYW5kIGJ1ZmZlciBzdXBwb3J0
+CiAgZHJtL2k5MTU6IHZncHUgcHBndHQgdXBkYXRlIHB2IG9wdGltaXphdGlvbgogIGRybS9pOTE1
+OiB2Z3B1IGNvbnRleHQgc3VibWlzc2lvbiBwdiBvcHRpbWl6YXRpb24KICBkcm0vaTkxNS9ndnQ6
+IEdWVGcgaGFuZGxlIHB2X2NhcHMgUFZJTkZPIHJlZ2lzdGVyCiAgZHJtL2k5MTUvZ3Z0OiBHVlRn
+IGhhbmRsZSBzaGFyZWRfcGFnZSBzZXR1cAogIGRybS9pOTE1L2d2dDogR1ZUZyBzdXBwb3J0IHBw
+Z3R0IHB2IG9wdGltaXphdGlvbgogIGRybS9pOTE1L2d2dDogR1ZUZyBzdXBwb3J0IGNvbnRleHQg
+c3VibWlzc2lvbiBwdiBvcHRpbWl6YXRpb24KCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9NYWtlZmls
+ZSAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d0L2ludGVsX2xy
+Yy5jICAgICAgICB8ICAgOCArLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2V4ZWNsaXN0LmMg
+ICAgICAgIHwgICA2ICsKIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYyAgICAgICAgICAg
+ICB8IDI5NSArKysrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0
+dC5oICAgICAgICAgICAgIHwgIDExICsKIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQuaCAg
+ICAgICAgICAgICB8ICAxMiArLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2hhbmRsZXJzLmMg
+ICAgICAgIHwgMTgxICsrKysrKysrKysrKy0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC92Z3B1
+LmMgICAgICAgICAgICB8ICA1MCArKysrCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X2Rydi5o
+ICAgICAgICAgICAgfCAgIDYgKy0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfZ2VtLmMgICAg
+ICAgICAgICB8ICAgMyArLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV9nZW1fZ3R0LmMgICAg
+ICAgIHwgICA5ICstCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X2dlbV9ndHQuaCAgICAgICAg
+fCAgIDggKwogZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV9wdmluZm8uaCAgICAgICAgIHwgICA5
+ICstCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3ZncHUuYyAgICAgICAgICAgfCA0MTQgKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKy0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfdmdw
+dS5oICAgICAgICAgICB8IDEzMiArKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2ludGVs
+X3B2X3N1Ym1pc3Npb24uYyB8IDE4OSArKysrKysrKysrKysrCiAxNiBmaWxlcyBjaGFuZ2VkLCAx
+MzIyIGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvZ3B1L2RybS9pOTE1L2ludGVsX3B2X3N1Ym1pc3Npb24uYwoKLS0gCjIuNy40CgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2
+IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
