@@ -2,37 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D92D268092
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 14 Jul 2019 19:56:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30DC1680B4
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 14 Jul 2019 20:30:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9481C89870;
-	Sun, 14 Jul 2019 17:55:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D388D8989C;
+	Sun, 14 Jul 2019 18:30:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 12537 seconds by postgrey-1.36 at gabe;
- Sun, 14 Jul 2019 17:55:57 UTC
-Received: from www2127.sakura.ne.jp (www2127.sakura.ne.jp [182.48.49.37])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CFAC489870
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 14 Jul 2019 17:55:57 +0000 (UTC)
-Received: from www2127.sakura.ne.jp (localhost [127.0.0.1])
- by www2127.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id x6EEQwDp055785
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 14 Jul 2019 23:26:58 +0900 (JST)
- (envelope-from drone-lab@www2127.sakura.ne.jp)
-Received: (from drone-lab@localhost)
- by www2127.sakura.ne.jp (8.15.2/8.15.2/Submit) id x6EEQwFx055784;
- Sun, 14 Jul 2019 23:26:58 +0900 (JST) (envelope-from drone-lab)
-Date: Sun, 14 Jul 2019 23:26:58 +0900 (JST)
-Message-Id: <201907141426.x6EEQwFx055784@www2127.sakura.ne.jp>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: RE: YOUR MAIL
-X-PHP-Originating-Script: 1271:Ochuko-oGrace.php
+Received: from nas1.duga.jp (unknown [133.242.97.205])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 86B99898B7;
+ Sun, 14 Jul 2019 18:30:11 +0000 (UTC)
+Received: from nas1.duga.jp (localhost [127.0.0.1])
+ by nas1.duga.jp (Postfix) with ESMTP id 551A7CC7C5E;
+ Mon, 15 Jul 2019 01:31:18 +0900 (JST)
+Received: from DESKTOP-2SJ3DIV.default (unknown [2.28.148.139])
+ by nas1.duga.jp (Postfix) with ESMTPA id A0CBDCC7D18;
+ Mon, 15 Jul 2019 01:31:09 +0900 (JST)
 MIME-Version: 1.0
-From: "Mrs.Palsdottir" <anna202@mynet.com>
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: drone-lab.sakura.ne.jp
+Content-Description: Mail message body
+Subject: REPLY AS SOON AS POSSIBLE     
+To: Recipients <pg2018428@gmail.com>
+From: "Raymond Chien Hang Seng" <pg2018428@gmail.com>
+Date: Sun, 14 Jul 2019 17:31:00 +0100
+Message-Id: <20190714163118.551A7CC7C5E@nas1.duga.jp>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -45,31 +37,17 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: annna27277@gmail.com
-Content-Type: multipart/mixed; boundary="===============1286113647=="
+Reply-To: draymndch@yahoo.co.jp
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1286113647==
-Content-type: text/html; charset=iso-8859-1
-
-Greetings , Anna Palsdottir From Iceland,
-
-
-Can you help us to Invest in your Country ,We need a sincere Ready and Capable person to manage and Invest my funds. honest and trustworthy Individual or Company , Please reply : annna272722@gmail.com or you send me your email address to enable us give you the full details about the investment plan . 
-
-
-Thanks and Best regards
-Mrs.Anna
-
---===============1286113647==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1286113647==--
+SSBhbSBWaWNlIENoYWlybWFuIG9mIEhhbmcgU2VuZyBCYW5rLCBJIGhhdmUgSW1wb3J0YW50IE1h
+dHRlciB0byBEaXNjdXNzIHdpdGggeW91IGNvbmNlcm5pbmcgbXkgbGF0ZSBjbGllbnQuIERpZWQg
+d2l0aG91dCBhIE5FWFQgT0YgS0lOLiBTZW5kIG1lIHlvdXIgcHJpdmF0ZSBlbWFpbCBmb3IgZnVs
+bCBkZXRhaWxzIGluZm9ybWF0aW9uLiBlbWFpbCBtZSBhdCBFLU1haWw6IGRyMjk4NzZkckBnbWFp
+bC5jb20KClJlZ2FyZHMgCk1yLkZ1bmcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
