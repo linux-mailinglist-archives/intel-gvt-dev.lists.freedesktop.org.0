@@ -1,35 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C50668517
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Jul 2019 10:25:46 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A1B268579
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Jul 2019 10:32:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E3C8D8940E;
-	Mon, 15 Jul 2019 08:25:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0542D89369;
+	Mon, 15 Jul 2019 08:32:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 888 seconds by postgrey-1.36 at gabe;
- Mon, 15 Jul 2019 08:25:43 UTC
-Received: from s2mx03.siteserve.jp (s2mx03.siteserve.jp [210.248.135.118])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1846A8940E;
- Mon, 15 Jul 2019 08:25:43 +0000 (UTC)
+Received: from s2mx01.siteserve.jp (s2mx01.siteserve.jp [210.248.135.120])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E6CC089369;
+ Mon, 15 Jul 2019 08:32:28 +0000 (UTC)
 Received: from localhost (localhost.localdomain [127.0.0.1])
- by s2mx03.siteserve.jp (Postfix) with ESMTP id E013B11BE26;
- Mon, 15 Jul 2019 17:25:40 +0900 (JST)
-X-Virus-Scanned: amavisd-new at s2mx03.siteserve.jp
-Received: from s2mx03.siteserve.jp ([127.0.0.1])
+ by s2mx01.siteserve.jp (Postfix) with ESMTP id 1595F11C1BC;
+ Mon, 15 Jul 2019 17:11:05 +0900 (JST)
+X-Virus-Scanned: amavisd-new at s2mx01.siteserve.jp
+Received: from s2mx01.siteserve.jp ([127.0.0.1])
  by localhost (mail.siteserve.jp [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hHrPN3Q9swcp; Mon, 15 Jul 2019 17:25:40 +0900 (JST)
+ with ESMTP id ezQG3wNSh5aR; Mon, 15 Jul 2019 17:11:03 +0900 (JST)
 Received: from webmail.nakagawa-consul.com (localhost.localdomain [127.0.0.1])
- by s2mx03.siteserve.jp (Postfix) with ESMTP id 1F41B11BC25;
- Mon, 15 Jul 2019 17:25:39 +0900 (JST)
+ by s2mx01.siteserve.jp (Postfix) with ESMTP id 8292511C170;
+ Mon, 15 Jul 2019 17:11:02 +0900 (JST)
 Received: from 174.128.236.106
  (RisuMail authenticated user morita@nakagawa-consul.com)
  by webmail.nakagawa-consul.com with HTTP;
- Mon, 15 Jul 2019 17:25:39 +0900 (JST)
-Message-ID: <48009.174.128.236.106.1563179139.risu@webmail.nakagawa-consul.com>
-Date: Mon, 15 Jul 2019 17:25:39 +0900 (JST)
+ Mon, 15 Jul 2019 17:11:02 +0900 (JST)
+Message-ID: <3372.174.128.236.106.1563178262.risu@webmail.nakagawa-consul.com>
+Date: Mon, 15 Jul 2019 17:11:02 +0900 (JST)
 Subject: Loan offer !!
 From: "Smith Jerry" <morita@nakagawa-consul.com>
 User-Agent: RisuMail 3.1
