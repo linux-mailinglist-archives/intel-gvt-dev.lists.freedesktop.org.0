@@ -1,41 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4EC76B7B3
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jul 2019 09:55:12 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C28E6B7DC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jul 2019 10:08:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5D3716E282;
-	Wed, 17 Jul 2019 07:55:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C03416E287;
+	Wed, 17 Jul 2019 08:08:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8ED7D6E282
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 02C546E287
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 17 Jul 2019 07:55:09 +0000 (UTC)
-Received: from localhost (unknown [113.157.217.50])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B27DC2077C;
- Wed, 17 Jul 2019 07:55:08 +0000 (UTC)
-Date: Wed, 17 Jul 2019 16:55:07 +0900
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Xiaolin Zhang <xiaolin.zhang@intel.com>
+ Wed, 17 Jul 2019 08:08:33 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2019 01:08:33 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,273,1559545200"; d="scan'208";a="167894267"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by fmsmga008.fm.intel.com with ESMTP; 17 Jul 2019 01:08:33 -0700
+Received: from fmsmsx101.amr.corp.intel.com (10.18.124.199) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 17 Jul 2019 01:08:33 -0700
+Received: from shsmsx104.ccr.corp.intel.com (10.239.4.70) by
+ fmsmsx101.amr.corp.intel.com (10.18.124.199) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 17 Jul 2019 01:08:33 -0700
+Received: from shsmsx107.ccr.corp.intel.com ([169.254.9.162]) by
+ SHSMSX104.ccr.corp.intel.com ([169.254.5.110]) with mapi id 14.03.0439.000;
+ Wed, 17 Jul 2019 16:08:31 +0800
+From: "Zhang, Xiaolin" <xiaolin.zhang@intel.com>
+To: Greg KH <gregkh@linuxfoundation.org>
 Subject: Re: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page
  mapping
-Message-ID: <20190717075507.GA14238@kroah.com>
+Thread-Topic: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page
+ mapping
+Thread-Index: AQHVPHA72TBsFrNvyUOTc0TP27TZJQ==
+Date: Wed, 17 Jul 2019 08:08:31 +0000
+Message-ID: <073732E20AE4C540AE91DBC3F07D4460876B39CE@SHSMSX107.ccr.corp.intel.com>
 References: <1563378987-21880-1-git-send-email-xiaolin.zhang@intel.com>
+ <20190717075507.GA14238@kroah.com>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.239.4.160]
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1563378987-21880-1-git-send-email-xiaolin.zhang@intel.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=default; t=1563350109;
- bh=Za+2Z/KvbFxy7TAfDN86HVciROQnNMDwUAxkAE548iY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=gPA2brW/gUgNjPQkKr4q84B5qjQIS048StG5wruBzelsrVEalzqDau7MnLX4HoBaa
- kcqrEX59baIvYd9lDujDt3bg7wzV24NbMuc5I7469eF4/G80P19fz9AkEofT/C+88a
- RQOtxDU4o5Hr6TrrSeigxLLig09+kEn4RKGxj1uI=
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,28 +60,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org, stable@vger.kernel.org
+Cc: "intel-gvt-dev@lists.freedesktop.org"
+ <intel-gvt-dev@lists.freedesktop.org>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gV2VkLCBKdWwgMTcsIDIwMTkgYXQgMTE6NTY6MjdQTSArMDgwMCwgWGlhb2xpbiBaaGFuZyB3
-cm90ZToKPiBHUFUgaGFuZyBvYnNlcnZlZCBkdXJpbmcgdGhlIGd1ZXN0IE9DTCBjb25mb3JtYW5j
-ZSB0ZXN0IHdoaWNoIGlzIGNhdXNlZAo+IGJ5IFRIUCBHVFQgZmVhdHVyZSB1c2VkIGR1cm5pbmcg
-dGhlIHRlc3QuCj4gCj4gSXQgd2FzIG9ic2VydmVkIHRoZSBzYW1lIEdGTiB3aXRoIGRpZmZlcmVu
-dCBzaXplICg0SyBhbmQgMk0pIHJlcXVlc3RlZAo+IGZyb20gdGhlIGd1ZXN0IGluIEdWVC4gU28g
-ZHVyaW5nIHRoZSBndWVzdCBwYWdlIGRtYSBtYXAgc3RhZ2UsIGl0IGlzCj4gcmVxdWlyZWQgdG8g
-dW5tYXAgZmlyc3Qgd2l0aCBvcmdpbmFsIHNpemUgYW5kIHRoZW4gcmVtYXAgYWdhaW4gd2l0aAo+
-IHJlcXVlc3RlZCBzaXplLgo+IAo+IEZpeGVzOiBiOTAxYjI1MmI2Y2YgKCJkcm0vaTkxNS9ndnQ6
-IEFkZCAyTSBodWdlIGd0dCBzdXBwb3J0IikKPiBTaWduZWQtb2ZmLWJ5OiBYaWFvbGluIFpoYW5n
-IDx4aWFvbGluLnpoYW5nQGludGVsLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUv
-Z3Z0L2t2bWd0LmMgfCAxMiArKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2Vy
-dGlvbnMoKykKCjxmb3JtbGV0dGVyPgoKVGhpcyBpcyBub3QgdGhlIGNvcnJlY3Qgd2F5IHRvIHN1
-Ym1pdCBwYXRjaGVzIGZvciBpbmNsdXNpb24gaW4gdGhlCnN0YWJsZSBrZXJuZWwgdHJlZS4gIFBs
-ZWFzZSByZWFkOgogICAgaHR0cHM6Ly93d3cua2VybmVsLm9yZy9kb2MvaHRtbC9sYXRlc3QvcHJv
-Y2Vzcy9zdGFibGUta2VybmVsLXJ1bGVzLmh0bWwKZm9yIGhvdyB0byBkbyB0aGlzIHByb3Blcmx5
-LgoKPC9mb3JtbGV0dGVyPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2ludGVsLWd2dC1kZXY=
+T24gMDcvMTcvMjAxOSAwMzo1NSBQTSwgR3JlZyBLSCB3cm90ZToKPiBPbiBXZWQsIEp1bCAxNywg
+MjAxOSBhdCAxMTo1NjoyN1BNICswODAwLCBYaWFvbGluIFpoYW5nIHdyb3RlOgo+PiBHUFUgaGFu
+ZyBvYnNlcnZlZCBkdXJpbmcgdGhlIGd1ZXN0IE9DTCBjb25mb3JtYW5jZSB0ZXN0IHdoaWNoIGlz
+IGNhdXNlZAo+PiBieSBUSFAgR1RUIGZlYXR1cmUgdXNlZCBkdXJuaW5nIHRoZSB0ZXN0Lgo+Pgo+
+PiBJdCB3YXMgb2JzZXJ2ZWQgdGhlIHNhbWUgR0ZOIHdpdGggZGlmZmVyZW50IHNpemUgKDRLIGFu
+ZCAyTSkgcmVxdWVzdGVkCj4+IGZyb20gdGhlIGd1ZXN0IGluIEdWVC4gU28gZHVyaW5nIHRoZSBn
+dWVzdCBwYWdlIGRtYSBtYXAgc3RhZ2UsIGl0IGlzCj4+IHJlcXVpcmVkIHRvIHVubWFwIGZpcnN0
+IHdpdGggb3JnaW5hbCBzaXplIGFuZCB0aGVuIHJlbWFwIGFnYWluIHdpdGgKPj4gcmVxdWVzdGVk
+IHNpemUuCj4+Cj4+IEZpeGVzOiBiOTAxYjI1MmI2Y2YgKCJkcm0vaTkxNS9ndnQ6IEFkZCAyTSBo
+dWdlIGd0dCBzdXBwb3J0IikKPj4gU2lnbmVkLW9mZi1ieTogWGlhb2xpbiBaaGFuZyA8eGlhb2xp
+bi56aGFuZ0BpbnRlbC5jb20+Cj4+IC0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2
+bWd0LmMgfCAxMiArKysrKysrKysrKysKPj4gIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25z
+KCspCj4gPGZvcm1sZXR0ZXI+Cj4KPiBUaGlzIGlzIG5vdCB0aGUgY29ycmVjdCB3YXkgdG8gc3Vi
+bWl0IHBhdGNoZXMgZm9yIGluY2x1c2lvbiBpbiB0aGUKPiBzdGFibGUga2VybmVsIHRyZWUuICBQ
+bGVhc2UgcmVhZDoKPiAgICAgaHR0cHM6Ly93d3cua2VybmVsLm9yZy9kb2MvaHRtbC9sYXRlc3Qv
+cHJvY2Vzcy9zdGFibGUta2VybmVsLXJ1bGVzLmh0bWwKPiBmb3IgaG93IHRvIGRvIHRoaXMgcHJv
+cGVybHkuCj4KPiA8L2Zvcm1sZXR0ZXI+Cj4KR3JlZywgVGhhbmtzIGdyZWF0IGluZm9ybWF0aW9u
+IHRvIHBvaW50IG91dCB0aGlzIEkgYW0gbm90IGZ1bGx5IGF3YXJlLgp3aWxsIHJlc2VuZCB0byBj
+b3JyZWN0IHRoaXMuCgotWGlhb2xpbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
