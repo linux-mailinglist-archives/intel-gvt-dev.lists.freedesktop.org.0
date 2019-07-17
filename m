@@ -2,52 +2,32 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C28E6B7DC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jul 2019 10:08:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E4786B84E
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jul 2019 10:35:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C03416E287;
-	Wed, 17 Jul 2019 08:08:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 01AE26E123;
+	Wed, 17 Jul 2019 08:35:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 02C546E287
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F258F6E123
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 17 Jul 2019 08:08:33 +0000 (UTC)
+ Wed, 17 Jul 2019 08:35:22 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2019 01:08:33 -0700
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2019 01:35:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,273,1559545200"; d="scan'208";a="167894267"
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by fmsmga008.fm.intel.com with ESMTP; 17 Jul 2019 01:08:33 -0700
-Received: from fmsmsx101.amr.corp.intel.com (10.18.124.199) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 17 Jul 2019 01:08:33 -0700
-Received: from shsmsx104.ccr.corp.intel.com (10.239.4.70) by
- fmsmsx101.amr.corp.intel.com (10.18.124.199) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 17 Jul 2019 01:08:33 -0700
-Received: from shsmsx107.ccr.corp.intel.com ([169.254.9.162]) by
- SHSMSX104.ccr.corp.intel.com ([169.254.5.110]) with mapi id 14.03.0439.000;
- Wed, 17 Jul 2019 16:08:31 +0800
-From: "Zhang, Xiaolin" <xiaolin.zhang@intel.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page
- mapping
-Thread-Topic: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page
- mapping
-Thread-Index: AQHVPHA72TBsFrNvyUOTc0TP27TZJQ==
-Date: Wed, 17 Jul 2019 08:08:31 +0000
-Message-ID: <073732E20AE4C540AE91DBC3F07D4460876B39CE@SHSMSX107.ccr.corp.intel.com>
-References: <1563378987-21880-1-git-send-email-xiaolin.zhang@intel.com>
- <20190717075507.GA14238@kroah.com>
-Accept-Language: en-US, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.239.4.160]
-MIME-Version: 1.0
+X-IronPort-AV: E=Sophos;i="5.64,273,1559545200"; d="scan'208";a="342970661"
+Received: from vca-bj102.bj.intel.com ([10.240.193.76])
+ by orsmga005.jf.intel.com with ESMTP; 17 Jul 2019 01:35:21 -0700
+From: Xiaolin Zhang <xiaolin.zhang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page mapping
+Date: Thu, 18 Jul 2019 01:10:24 +0800
+Message-Id: <1563383424-23315-1-git-send-email-xiaolin.zhang@intel.com>
+X-Mailer: git-send-email 1.8.3.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,33 +40,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>
+Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>, stable@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gMDcvMTcvMjAxOSAwMzo1NSBQTSwgR3JlZyBLSCB3cm90ZToKPiBPbiBXZWQsIEp1bCAxNywg
-MjAxOSBhdCAxMTo1NjoyN1BNICswODAwLCBYaWFvbGluIFpoYW5nIHdyb3RlOgo+PiBHUFUgaGFu
-ZyBvYnNlcnZlZCBkdXJpbmcgdGhlIGd1ZXN0IE9DTCBjb25mb3JtYW5jZSB0ZXN0IHdoaWNoIGlz
-IGNhdXNlZAo+PiBieSBUSFAgR1RUIGZlYXR1cmUgdXNlZCBkdXJuaW5nIHRoZSB0ZXN0Lgo+Pgo+
-PiBJdCB3YXMgb2JzZXJ2ZWQgdGhlIHNhbWUgR0ZOIHdpdGggZGlmZmVyZW50IHNpemUgKDRLIGFu
-ZCAyTSkgcmVxdWVzdGVkCj4+IGZyb20gdGhlIGd1ZXN0IGluIEdWVC4gU28gZHVyaW5nIHRoZSBn
-dWVzdCBwYWdlIGRtYSBtYXAgc3RhZ2UsIGl0IGlzCj4+IHJlcXVpcmVkIHRvIHVubWFwIGZpcnN0
-IHdpdGggb3JnaW5hbCBzaXplIGFuZCB0aGVuIHJlbWFwIGFnYWluIHdpdGgKPj4gcmVxdWVzdGVk
-IHNpemUuCj4+Cj4+IEZpeGVzOiBiOTAxYjI1MmI2Y2YgKCJkcm0vaTkxNS9ndnQ6IEFkZCAyTSBo
-dWdlIGd0dCBzdXBwb3J0IikKPj4gU2lnbmVkLW9mZi1ieTogWGlhb2xpbiBaaGFuZyA8eGlhb2xp
-bi56aGFuZ0BpbnRlbC5jb20+Cj4+IC0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2
-bWd0LmMgfCAxMiArKysrKysrKysrKysKPj4gIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25z
-KCspCj4gPGZvcm1sZXR0ZXI+Cj4KPiBUaGlzIGlzIG5vdCB0aGUgY29ycmVjdCB3YXkgdG8gc3Vi
-bWl0IHBhdGNoZXMgZm9yIGluY2x1c2lvbiBpbiB0aGUKPiBzdGFibGUga2VybmVsIHRyZWUuICBQ
-bGVhc2UgcmVhZDoKPiAgICAgaHR0cHM6Ly93d3cua2VybmVsLm9yZy9kb2MvaHRtbC9sYXRlc3Qv
-cHJvY2Vzcy9zdGFibGUta2VybmVsLXJ1bGVzLmh0bWwKPiBmb3IgaG93IHRvIGRvIHRoaXMgcHJv
-cGVybHkuCj4KPiA8L2Zvcm1sZXR0ZXI+Cj4KR3JlZywgVGhhbmtzIGdyZWF0IGluZm9ybWF0aW9u
-IHRvIHBvaW50IG91dCB0aGlzIEkgYW0gbm90IGZ1bGx5IGF3YXJlLgp3aWxsIHJlc2VuZCB0byBj
-b3JyZWN0IHRoaXMuCgotWGlhb2xpbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+R1BVIGhhbmcgb2JzZXJ2ZWQgZHVyaW5nIHRoZSBndWVzdCBPQ0wgY29uZm9ybWFuY2UgdGVzdCB3
+aGljaCBpcyBjYXVzZWQKYnkgVEhQIEdUVCBmZWF0dXJlIHVzZWQgZHVybmluZyB0aGUgdGVzdC4K
+Ckl0IHdhcyBvYnNlcnZlZCB0aGUgc2FtZSBHRk4gd2l0aCBkaWZmZXJlbnQgc2l6ZSAoNEsgYW5k
+IDJNKSByZXF1ZXN0ZWQKZnJvbSB0aGUgZ3Vlc3QgaW4gR1ZULiBTbyBkdXJpbmcgdGhlIGd1ZXN0
+IHBhZ2UgZG1hIG1hcCBzdGFnZSwgaXQgaXMKcmVxdWlyZWQgdG8gdW5tYXAgZmlyc3Qgd2l0aCBv
+cmdpbmFsIHNpemUgYW5kIHRoZW4gcmVtYXAgYWdhaW4gd2l0aApyZXF1ZXN0ZWQgc2l6ZS4KCkZp
+eGVzOiBiOTAxYjI1MmI2Y2YgKCJkcm0vaTkxNS9ndnQ6IEFkZCAyTSBodWdlIGd0dCBzdXBwb3J0
+IikKQ2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKU2lnbmVkLW9mZi1ieTogWGlhb2xpbiBaaGFu
+ZyA8eGlhb2xpbi56aGFuZ0BpbnRlbC5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0
+L2t2bWd0LmMgfCAxMiArKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25z
+KCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMgYi9kcml2
+ZXJzL2dwdS9kcm0vaTkxNS9ndnQva3ZtZ3QuYwppbmRleCBhNjhhZGRmLi40YTdjZjg2IDEwMDY0
+NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQva3ZtZ3QuYworKysgYi9kcml2ZXJzL2dw
+dS9kcm0vaTkxNS9ndnQva3ZtZ3QuYwpAQCAtMTkxMSw2ICsxOTExLDE4IEBAIHN0YXRpYyBpbnQg
+a3ZtZ3RfZG1hX21hcF9ndWVzdF9wYWdlKHVuc2lnbmVkIGxvbmcgaGFuZGxlLCB1bnNpZ25lZCBs
+b25nIGdmbiwKIAkJcmV0ID0gX19ndnRfY2FjaGVfYWRkKGluZm8tPnZncHUsIGdmbiwgKmRtYV9h
+ZGRyLCBzaXplKTsKIAkJaWYgKHJldCkKIAkJCWdvdG8gZXJyX3VubWFwOworCX0gZWxzZSBpZiAo
+ZW50cnktPnNpemUgIT0gc2l6ZSkgeworCQkvKiB0aGUgc2FtZSBnZm4gd2l0aCBkaWZmZXJlbnQg
+c2l6ZTogdW5tYXAgYW5kIHJlLW1hcCAqLworCQlndnRfZG1hX3VubWFwX3BhZ2UodmdwdSwgZ2Zu
+LCBlbnRyeS0+ZG1hX2FkZHIsIGVudHJ5LT5zaXplKTsKKwkJX19ndnRfY2FjaGVfcmVtb3ZlX2Vu
+dHJ5KHZncHUsIGVudHJ5KTsKKworCQlyZXQgPSBndnRfZG1hX21hcF9wYWdlKHZncHUsIGdmbiwg
+ZG1hX2FkZHIsIHNpemUpOworCQlpZiAocmV0KQorCQkJZ290byBlcnJfdW5sb2NrOworCisJCXJl
+dCA9IF9fZ3Z0X2NhY2hlX2FkZChpbmZvLT52Z3B1LCBnZm4sICpkbWFfYWRkciwgc2l6ZSk7CisJ
+CWlmIChyZXQpCisJCQlnb3RvIGVycl91bm1hcDsKIAl9IGVsc2UgewogCQlrcmVmX2dldCgmZW50
+cnktPnJlZik7CiAJCSpkbWFfYWRkciA9IGVudHJ5LT5kbWFfYWRkcjsKLS0gCjEuOC4zLjEKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1k
+ZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
