@@ -1,33 +1,41 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A4816B755
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jul 2019 09:21:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A4EC76B7B3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jul 2019 09:55:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2EC2E6E270;
-	Wed, 17 Jul 2019 07:21:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5D3716E282;
+	Wed, 17 Jul 2019 07:55:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 44CC16E270
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8ED7D6E282
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 17 Jul 2019 07:21:19 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2019 00:21:18 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,273,1559545200"; d="scan'208";a="172783189"
-Received: from vca-bj102.bj.intel.com ([10.240.193.76])
- by orsmga006.jf.intel.com with ESMTP; 17 Jul 2019 00:21:17 -0700
-From: Xiaolin Zhang <xiaolin.zhang@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page mapping
-Date: Wed, 17 Jul 2019 23:56:27 +0800
-Message-Id: <1563378987-21880-1-git-send-email-xiaolin.zhang@intel.com>
-X-Mailer: git-send-email 1.8.3.1
+ Wed, 17 Jul 2019 07:55:09 +0000 (UTC)
+Received: from localhost (unknown [113.157.217.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B27DC2077C;
+ Wed, 17 Jul 2019 07:55:08 +0000 (UTC)
+Date: Wed, 17 Jul 2019 16:55:07 +0900
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Xiaolin Zhang <xiaolin.zhang@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page
+ mapping
+Message-ID: <20190717075507.GA14238@kroah.com>
+References: <1563378987-21880-1-git-send-email-xiaolin.zhang@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1563378987-21880-1-git-send-email-xiaolin.zhang@intel.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=default; t=1563350109;
+ bh=Za+2Z/KvbFxy7TAfDN86HVciROQnNMDwUAxkAE548iY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=gPA2brW/gUgNjPQkKr4q84B5qjQIS048StG5wruBzelsrVEalzqDau7MnLX4HoBaa
+ kcqrEX59baIvYd9lDujDt3bg7wzV24NbMuc5I7469eF4/G80P19fz9AkEofT/C+88a
+ RQOtxDU4o5Hr6TrrSeigxLLig09+kEn4RKGxj1uI=
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -40,38 +48,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>, stable@vger.kernel.org
-MIME-Version: 1.0
+Cc: intel-gvt-dev@lists.freedesktop.org, stable@vger.kernel.org
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-R1BVIGhhbmcgb2JzZXJ2ZWQgZHVyaW5nIHRoZSBndWVzdCBPQ0wgY29uZm9ybWFuY2UgdGVzdCB3
-aGljaCBpcyBjYXVzZWQKYnkgVEhQIEdUVCBmZWF0dXJlIHVzZWQgZHVybmluZyB0aGUgdGVzdC4K
-Ckl0IHdhcyBvYnNlcnZlZCB0aGUgc2FtZSBHRk4gd2l0aCBkaWZmZXJlbnQgc2l6ZSAoNEsgYW5k
-IDJNKSByZXF1ZXN0ZWQKZnJvbSB0aGUgZ3Vlc3QgaW4gR1ZULiBTbyBkdXJpbmcgdGhlIGd1ZXN0
-IHBhZ2UgZG1hIG1hcCBzdGFnZSwgaXQgaXMKcmVxdWlyZWQgdG8gdW5tYXAgZmlyc3Qgd2l0aCBv
-cmdpbmFsIHNpemUgYW5kIHRoZW4gcmVtYXAgYWdhaW4gd2l0aApyZXF1ZXN0ZWQgc2l6ZS4KCkZp
-eGVzOiBiOTAxYjI1MmI2Y2YgKCJkcm0vaTkxNS9ndnQ6IEFkZCAyTSBodWdlIGd0dCBzdXBwb3J0
-IikKU2lnbmVkLW9mZi1ieTogWGlhb2xpbiBaaGFuZyA8eGlhb2xpbi56aGFuZ0BpbnRlbC5jb20+
-Ci0tLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMgfCAxMiArKysrKysrKysrKysK
-IDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL2k5MTUvZ3Z0L2t2bWd0LmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQva3ZtZ3Qu
-YwppbmRleCBhNjhhZGRmLi40YTdjZjg2IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkx
-NS9ndnQva3ZtZ3QuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQva3ZtZ3QuYwpAQCAt
-MTkxMSw2ICsxOTExLDE4IEBAIHN0YXRpYyBpbnQga3ZtZ3RfZG1hX21hcF9ndWVzdF9wYWdlKHVu
-c2lnbmVkIGxvbmcgaGFuZGxlLCB1bnNpZ25lZCBsb25nIGdmbiwKIAkJcmV0ID0gX19ndnRfY2Fj
-aGVfYWRkKGluZm8tPnZncHUsIGdmbiwgKmRtYV9hZGRyLCBzaXplKTsKIAkJaWYgKHJldCkKIAkJ
-CWdvdG8gZXJyX3VubWFwOworCX0gZWxzZSBpZiAoZW50cnktPnNpemUgIT0gc2l6ZSkgeworCQkv
-KiB0aGUgc2FtZSBnZm4gd2l0aCBkaWZmZXJlbnQgc2l6ZTogdW5tYXAgYW5kIHJlLW1hcCAqLwor
-CQlndnRfZG1hX3VubWFwX3BhZ2UodmdwdSwgZ2ZuLCBlbnRyeS0+ZG1hX2FkZHIsIGVudHJ5LT5z
-aXplKTsKKwkJX19ndnRfY2FjaGVfcmVtb3ZlX2VudHJ5KHZncHUsIGVudHJ5KTsKKworCQlyZXQg
-PSBndnRfZG1hX21hcF9wYWdlKHZncHUsIGdmbiwgZG1hX2FkZHIsIHNpemUpOworCQlpZiAocmV0
-KQorCQkJZ290byBlcnJfdW5sb2NrOworCisJCXJldCA9IF9fZ3Z0X2NhY2hlX2FkZChpbmZvLT52
-Z3B1LCBnZm4sICpkbWFfYWRkciwgc2l6ZSk7CisJCWlmIChyZXQpCisJCQlnb3RvIGVycl91bm1h
-cDsKIAl9IGVsc2UgewogCQlrcmVmX2dldCgmZW50cnktPnJlZik7CiAJCSpkbWFfYWRkciA9IGVu
-dHJ5LT5kbWFfYWRkcjsKLS0gCjEuOC4zLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1k
-ZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
+T24gV2VkLCBKdWwgMTcsIDIwMTkgYXQgMTE6NTY6MjdQTSArMDgwMCwgWGlhb2xpbiBaaGFuZyB3
+cm90ZToKPiBHUFUgaGFuZyBvYnNlcnZlZCBkdXJpbmcgdGhlIGd1ZXN0IE9DTCBjb25mb3JtYW5j
+ZSB0ZXN0IHdoaWNoIGlzIGNhdXNlZAo+IGJ5IFRIUCBHVFQgZmVhdHVyZSB1c2VkIGR1cm5pbmcg
+dGhlIHRlc3QuCj4gCj4gSXQgd2FzIG9ic2VydmVkIHRoZSBzYW1lIEdGTiB3aXRoIGRpZmZlcmVu
+dCBzaXplICg0SyBhbmQgMk0pIHJlcXVlc3RlZAo+IGZyb20gdGhlIGd1ZXN0IGluIEdWVC4gU28g
+ZHVyaW5nIHRoZSBndWVzdCBwYWdlIGRtYSBtYXAgc3RhZ2UsIGl0IGlzCj4gcmVxdWlyZWQgdG8g
+dW5tYXAgZmlyc3Qgd2l0aCBvcmdpbmFsIHNpemUgYW5kIHRoZW4gcmVtYXAgYWdhaW4gd2l0aAo+
+IHJlcXVlc3RlZCBzaXplLgo+IAo+IEZpeGVzOiBiOTAxYjI1MmI2Y2YgKCJkcm0vaTkxNS9ndnQ6
+IEFkZCAyTSBodWdlIGd0dCBzdXBwb3J0IikKPiBTaWduZWQtb2ZmLWJ5OiBYaWFvbGluIFpoYW5n
+IDx4aWFvbGluLnpoYW5nQGludGVsLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUv
+Z3Z0L2t2bWd0LmMgfCAxMiArKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2Vy
+dGlvbnMoKykKCjxmb3JtbGV0dGVyPgoKVGhpcyBpcyBub3QgdGhlIGNvcnJlY3Qgd2F5IHRvIHN1
+Ym1pdCBwYXRjaGVzIGZvciBpbmNsdXNpb24gaW4gdGhlCnN0YWJsZSBrZXJuZWwgdHJlZS4gIFBs
+ZWFzZSByZWFkOgogICAgaHR0cHM6Ly93d3cua2VybmVsLm9yZy9kb2MvaHRtbC9sYXRlc3QvcHJv
+Y2Vzcy9zdGFibGUta2VybmVsLXJ1bGVzLmh0bWwKZm9yIGhvdyB0byBkbyB0aGlzIHByb3Blcmx5
+LgoKPC9mb3JtbGV0dGVyPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2ludGVsLWd2dC1kZXY=
