@@ -2,37 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F1006C5A6
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Jul 2019 05:08:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51A426C8DB
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Jul 2019 07:44:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C77E76E2F3;
-	Thu, 18 Jul 2019 03:08:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 015526E30B;
+	Thu, 18 Jul 2019 05:44:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3D6E66E2F3
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CFFDD6E30B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 18 Jul 2019 03:08:53 +0000 (UTC)
+ Thu, 18 Jul 2019 05:44:44 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2019 20:08:52 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2019 22:44:43 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.64,276,1559545200"; 
- d="asc'?scan'208";a="343232767"
+ d="asc'?scan'208";a="169755439"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga005.jf.intel.com with ESMTP; 17 Jul 2019 20:08:51 -0700
-Date: Thu, 18 Jul 2019 11:05:41 +0800
+ by fmsmga007.fm.intel.com with ESMTP; 17 Jul 2019 22:44:42 -0700
+Date: Thu, 18 Jul 2019 13:41:32 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Xiaolin Zhang <xiaolin.zhang@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: fix incorrect cache entry for guest page
- mapping
-Message-ID: <20190718030541.GC16681@zhen-hp.sh.intel.com>
-References: <1563383424-23315-1-git-send-email-xiaolin.zhang@intel.com>
+To: fred gao <fred.gao@intel.com>
+Subject: Re: [PATCH v1 1/3] drm/i915/gvt: Utility for valid command length
+ check
+Message-ID: <20190718054132.GH16681@zhen-hp.sh.intel.com>
+References: <20190714220704.13812-1-fred.gao@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <1563383424-23315-1-git-send-email-xiaolin.zhang@intel.com>
+In-Reply-To: <20190714220704.13812-1-fred.gao@intel.com>
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
@@ -47,93 +47,79 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, stable@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1843849494=="
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============0437955633=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============1843849494==
+--===============0437955633==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="p11K2BJEgMZL61bg"
+	protocol="application/pgp-signature"; boundary="tauoZ0QFNrdllat7"
 Content-Disposition: inline
 
 
---p11K2BJEgMZL61bg
+--tauoZ0QFNrdllat7
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2019.07.18 01:10:24 +0800, Xiaolin Zhang wrote:
-> GPU hang observed during the guest OCL conformance test which is caused
-> by THP GTT feature used durning the test.
+On 2019.07.15 06:07:04 +0800, fred gao wrote:
+> From: "Gao, Fred" <fred.gao@intel.com>
 >=20
-> It was observed the same GFN with different size (4K and 2M) requested
-> from the guest in GVT. So during the guest page dma map stage, it is
-> required to unmap first with orginal size and then remap again with
-> requested size.
+> Add utility for valid command length check.
 >=20
-> Fixes: b901b252b6cf ("drm/i915/gvt: Add 2M huge gtt support")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
+> v2: Add F_VAL_CONST flag to identify the value is const
+>     although LEN maybe variable. (Zhenyu)
+> v3: unused code removal, flag rename/conflict. (Zhenyu)
+> v4: redefine F_IP_ADVANCE_CUSTOM and move the check function to
+>     next patch. (Zhenyu)
+>=20
+> Signed-off-by: Gao, Fred <fred.gao@intel.com>
 > ---
 
-Applied, thanks!
+I just try to test this series as I haven't checked all definition correctn=
+ess
+for these cmds. On latest gvt-staging for host/guest, I got below error that
+failed linux guest.
 
->  drivers/gpu/drm/i915/gvt/kvmgt.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
-kvmgt.c
-> index a68addf..4a7cf86 100644
-> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -1911,6 +1911,18 @@ static int kvmgt_dma_map_guest_page(unsigned long =
-handle, unsigned long gfn,
->  		ret =3D __gvt_cache_add(info->vgpu, gfn, *dma_addr, size);
->  		if (ret)
->  			goto err_unmap;
-> +	} else if (entry->size !=3D size) {
-> +		/* the same gfn with different size: unmap and re-map */
-> +		gvt_dma_unmap_page(vgpu, gfn, entry->dma_addr, entry->size);
-> +		__gvt_cache_remove_entry(vgpu, entry);
-> +
-> +		ret =3D gvt_dma_map_page(vgpu, gfn, dma_addr, size);
-> +		if (ret)
-> +			goto err_unlock;
-> +
-> +		ret =3D __gvt_cache_add(info->vgpu, gfn, *dma_addr, size);
-> +		if (ret)
-> +			goto err_unmap;
->  	} else {
->  		kref_get(&entry->ref);
->  		*dma_addr =3D entry->dma_addr;
-> --=20
-> 1.8.3.1
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+[  578.692201] vfio_mdev 59f41f94-a91e-11e9-bca5-77e06e0f5813: Adding to io=
+mmu group 0
+[  578.692204] vfio_mdev 59f41f94-a91e-11e9-bca5-77e06e0f5813: MDEV: group_=
+id =3D 0
+[  602.103214] [drm:drm_mode_addfb2] [FB:104]
+[  603.301618] gvt: len is not valid:  len=3D19  valid_len=3D3
+[  603.301621] gvt: vgpu 1: cmd parser error
+[  603.301622] 0x0=20
+[  603.301622] 0x22=20
+
+[  603.301624] gvt: vgpu 1: scan workload error
+[  603.301625] GVT Internal error  for the guest
+[  603.301626] Now vgpu 1 will enter failsafe mode.
+[  603.301627] gvt: vgpu 1: failed to submit desc 0
+[  603.301628] gvt: vgpu 1: fail submit workload on ring 0
+[  603.301629] gvt: vgpu 1: fail to emulate MMIO write 00002230 len 4
+
+Pls verify this series against latest gvt-staging.
 
 --=20
 Open Source Technology Center, Intel ltd.
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---p11K2BJEgMZL61bg
+--tauoZ0QFNrdllat7
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXS/iBQAKCRCxBBozTXgY
-J8AZAJ994iBkcLjTJOZSs5VsyDpn7kn+RQCdEyVtanjb3XVy00Ve6A12JZpZaMw=
-=jkcs
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXTAGjAAKCRCxBBozTXgY
+J7H0AJ425FxFh9jxrpfw0i7YBnaFTJRohQCfT0Dil5IAI9stYeviZU9o6m2hhi0=
+=2Q4h
 -----END PGP SIGNATURE-----
 
---p11K2BJEgMZL61bg--
+--tauoZ0QFNrdllat7--
 
---===============1843849494==
+--===============0437955633==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -143,4 +129,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============1843849494==--
+--===============0437955633==--
