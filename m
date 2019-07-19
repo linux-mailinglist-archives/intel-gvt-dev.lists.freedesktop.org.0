@@ -1,60 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7B976E384
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Jul 2019 11:33:54 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 921F16E3D2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Jul 2019 12:02:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 898046E7EC;
-	Fri, 19 Jul 2019 09:33:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 562146E7F7;
+	Fri, 19 Jul 2019 10:02:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6D8AF6E7EA
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9F9DD6E7F3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 19 Jul 2019 09:33:51 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Fri, 19 Jul 2019 10:02:42 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jul 2019 02:33:50 -0700
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2019 03:02:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,281,1559545200"; d="scan'208";a="162357222"
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by orsmga008.jf.intel.com with ESMTP; 19 Jul 2019 02:33:50 -0700
-Received: from fmsmsx117.amr.corp.intel.com (10.18.116.17) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 19 Jul 2019 02:33:50 -0700
-Received: from shsmsx107.ccr.corp.intel.com (10.239.4.96) by
- fmsmsx117.amr.corp.intel.com (10.18.116.17) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 19 Jul 2019 02:33:49 -0700
-Received: from shsmsx102.ccr.corp.intel.com ([169.254.2.3]) by
- SHSMSX107.ccr.corp.intel.com ([169.254.9.162]) with mapi id 14.03.0439.000;
- Fri, 19 Jul 2019 17:33:48 +0800
-From: "Lu, Kechen" <kechen.lu@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: RE: [RFC PATCH v4 6/6] drm/i915/gvt: Add cursor plane reg update
- trap emulation handler
-Thread-Topic: [RFC PATCH v4 6/6] drm/i915/gvt: Add cursor plane reg update
- trap emulation handler
-Thread-Index: AQHVPT6GHpgHu0dxKUC491TWCC0KxabQ93+AgAC2oDA=
-Date: Fri, 19 Jul 2019 09:33:47 +0000
-Message-ID: <31185F57AF7C4B4F87C41E735C23A6FE64DFF0@shsmsx102.ccr.corp.intel.com>
+X-IronPort-AV: E=Sophos;i="5.64,281,1559545200"; 
+ d="asc'?scan'208";a="176257422"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by FMSMGA003.fm.intel.com with ESMTP; 19 Jul 2019 03:02:39 -0700
+Date: Fri, 19 Jul 2019 17:59:27 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Lu, Kechen" <kechen.lu@intel.com>
+Subject: Re: [RFC PATCH v4 1/6] vfio: Define device specific irq type
+ capability
+Message-ID: <20190719095927.GG28809@zhen-hp.sh.intel.com>
 References: <20190718155640.25928-1-kechen.lu@intel.com>
- <20190718155640.25928-7-kechen.lu@intel.com>
- <20190719063443.GE28809@zhen-hp.sh.intel.com>
-In-Reply-To: <20190719063443.GE28809@zhen-hp.sh.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTcxNDdkOGItY2Y2Zi00MDkxLWIwZTQtYTZiMjAyN2Y5YjVkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWGtqSEE0dkFIMTN4cVVmdlF5MnJYYVNFTUZNUHlPRnBzcUdnZDBvS0FmcW82Y0dsZG9ab3M5NVpkNDZPdFVteSJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.600.7
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
+ <20190718155640.25928-2-kechen.lu@intel.com>
+ <20190719060540.GC28809@zhen-hp.sh.intel.com>
+ <31185F57AF7C4B4F87C41E735C23A6FE64DFC7@shsmsx102.ccr.corp.intel.com>
 MIME-Version: 1.0
+In-Reply-To: <31185F57AF7C4B4F87C41E735C23A6FE64DFC7@shsmsx102.ccr.corp.intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,142 +49,158 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Cc: "Tian, Kevin" <kevin.tian@intel.com>,
  "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Yuan,
- Hang" <hang.yuan@intel.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, "Zhang, Tina" <tina.zhang@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Zhang,
+ Tina" <tina.zhang@intel.com>, Eric Auger <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "kraxel@redhat.com" <kraxel@redhat.com>, "Yuan, Hang" <hang.yuan@intel.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Wang, Zhi A" <zhi.a.wang@intel.com>, "kraxel@redhat.com" <kraxel@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ "Wang, Zhi A" <zhi.a.wang@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>
+Content-Type: multipart/mixed; boundary="===============0798834580=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-SGksCgo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4gRnJvbTogWmhlbnl1IFdhbmcgW21h
-aWx0bzp6aGVueXV3QGxpbnV4LmludGVsLmNvbV0KPiBTZW50OiBGcmlkYXksIEp1bHkgMTksIDIw
-MTkgMjozNSBQTQo+IFRvOiBMdSwgS2VjaGVuIDxrZWNoZW4ubHVAaW50ZWwuY29tPgo+IENjOiBp
-bnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZzsga3ZtQHZnZXIua2VybmVsLm9yZzsg
-bGludXgtIAo+IGtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc7IGtyYXhlbEByZWRoYXQuY29tOyB6aGVu
-eXV3QGxpbnV4LmludGVsLmNvbTsgCj4gTHYsIFpoaXl1YW4gPHpoaXl1YW4ubHZAaW50ZWwuY29t
-PjsgV2FuZywgWmhpIEEgCj4gPHpoaS5hLndhbmdAaW50ZWwuY29tPjsgVGlhbiwgS2V2aW4gPGtl
-dmluLnRpYW5AaW50ZWwuY29tPjsgWXVhbiwgSGFuZyAKPiA8aGFuZy55dWFuQGludGVsLmNvbT47
-IGFsZXgud2lsbGlhbXNvbkByZWRoYXQuY29tCj4gU3ViamVjdDogUmU6IFtSRkMgUEFUQ0ggdjQg
-Ni82XSBkcm0vaTkxNS9ndnQ6IEFkZCBjdXJzb3IgcGxhbmUgcmVnIAo+IHVwZGF0ZSB0cmFwIGVt
-dWxhdGlvbiBoYW5kbGVyCj4gCj4gT24gMjAxOS4wNy4xOCAyMzo1Njo0MCArMDgwMCwgS2VjaGVu
-IEx1IHdyb3RlOgo+ID4gVGhpcyBwYXRjaCBhZGRzIHRoZSBjdXJzb3IgcGxhbmUgQ1VSQkFTRSBy
-ZWcgdXBkYXRlIHRyYXAgaGFuZGxlciBpbiAKPiA+IG9yZGVyIHRvIDoKPiA+Cj4gPiAtIERlbGl2
-ZXIgdGhlIGN1cnNvciByZWZyZXNoIGV2ZW50IGF0IGVhY2ggdmJsYW5rIGVtdWxhdGlvbiwgdGhl
-IAo+ID4gZmxpcF9kb25lX2V2ZW50IGJpdCBjaGVjayBpcyBzdXBwb3NlZCB0byBkbyBoZXJlLiBJ
-ZiBjdXJzb3IgcGxhbmUgCj4gPiB1cGRhdGVzIGhhcHBlbiwgZGVsaXZlciB0aGUgY3Vyc29yIHJl
-ZnJlc2ggZXZlbnRzLgo+ID4KPiA+IC0gU3VwcG9ydCB0aGUgc3luYyBhbmQgYXN5bmMgY3Vyc29y
-IHBsYW5lIHVwZGF0ZXMgYW5kIGNvcnJlc3BvbmRpbmcgCj4gPiBjdXJzb3IgcGxhbmUgZmxpcCBp
-bnRlcnJ1cHRzIHJlcG9ydGluZy4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBLZWNoZW4gTHUgPGtl
-Y2hlbi5sdUBpbnRlbC5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQv
-ZGlzcGxheS5jICAgfCAxMSArKysrKysrKysrKwo+ID4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2
-dC9oYW5kbGVycy5jICB8IDI3IAo+ID4gKysrKysrKysrKysrKysrKysrKysrKysrLS0tIGRyaXZl
-cnMvZ3B1L2RybS9pOTE1L2d2dC9pbnRlcnJ1cHQuYyB8ICAKPiA+IDcgKysrKysrKyBkcml2ZXJz
-L2dwdS9kcm0vaTkxNS9ndnQvaW50ZXJydXB0LmggfCAgMyArKysKPiA+ICA0IGZpbGVzIGNoYW5n
-ZWQsIDQ1IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gPgo+ID4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9kaXNwbGF5LmMKPiA+IGIvZHJpdmVycy9ncHUvZHJt
-L2k5MTUvZ3Z0L2Rpc3BsYXkuYwo+ID4gaW5kZXggZGY1MmU0YjRjMWIwLi5hMGFjY2M1MWQ0NGYg
-MTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZGlzcGxheS5jCj4gPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZGlzcGxheS5jCj4gPiBAQCAtMzk5LDYgKzM5
-OSw3IEBAIHN0YXRpYyB2b2lkIGVtdWxhdGVfdmJsYW5rX29uX3BpcGUoc3RydWN0IAo+ID4gaW50
-ZWxfdmdwdQo+ICp2Z3B1LCBpbnQgcGlwZSkKPiA+ICAJCVtQSVBFX0NdID0gUElQRV9DX1ZCTEFO
-SywKPiA+ICAJfTsKPiA+ICAJaW50IHByaV9mbGlwX2V2ZW50ID0gU0tMX0ZMSVBfRVZFTlQocGlw
-ZSwgUExBTkVfUFJJTUFSWSk7Cj4gPiArCWludCBjdXJfZmxpcF9ldmVudCA9IENVUlNPUl9BX0ZM
-SVBfRE9ORSArIHBpcGU7Cj4gPiAgCWludCBldmVudDsKPiA+ICAJdTY0IGV2ZW50ZmRfc2lnbmFs
-X3ZhbCA9IDA7Cj4gPiAgCXN0YXRpYyBpbnQgcGFnZWZsaXBfY291bnQ7Cj4gPiBAQCAtNDE3LDYg
-KzQxOCwxMSBAQCBzdGF0aWMgdm9pZCBlbXVsYXRlX3ZibGFua19vbl9waXBlKHN0cnVjdAo+IGlu
-dGVsX3ZncHUgKnZncHUsIGludCBwaXBlKQo+ID4gIAkJCXBhZ2VmbGlwX2NvdW50ICs9IFBBR0VG
-TElQX0lOQ19DT1VOVDsKPiA+ICAJCX0KPiA+Cj4gPiArCQlpZiAoZXZlbnQgPT0gY3VyX2ZsaXBf
-ZXZlbnQpIHsKPiA+ICsJCQlldmVudGZkX3NpZ25hbF92YWwgKz0KPiBESVNQTEFZX0NVUl9SRUZS
-RVNIX0VWRU5UX0lOQzsKPiA+ICsJCQlwYWdlZmxpcF9jb3VudCArPSBQQUdFRkxJUF9JTkNfQ09V
-TlQ7Cj4gPiArCQl9Cj4gPiArCj4gPiAgCQlpbnRlbF92Z3B1X3RyaWdnZXJfdmlydHVhbF9ldmVu
-dCh2Z3B1LCBldmVudCk7Cj4gPiAgCX0KPiA+Cj4gPiBAQCAtNDMwLDYgKzQzNiwxMSBAQCBzdGF0
-aWMgdm9pZCBlbXVsYXRlX3ZibGFua19vbl9waXBlKHN0cnVjdAo+IGludGVsX3ZncHUgKnZncHUs
-IGludCBwaXBlKQo+ID4gIAkJCWV2ZW50ZmRfc2lnbmFsX3ZhbCArPQo+IERJU1BMQVlfUFJJX1JF
-RlJFU0hfRVZFTlRfSU5DOwo+ID4gIAkJCXBhZ2VmbGlwX2NvdW50ICs9IFBBR0VGTElQX0lOQ19D
-T1VOVDsKPiA+ICAJCX0KPiA+ICsKPiA+ICsJCWlmIChldmVudCA9PSBQTEFORV9DVVJTT1IpIHsK
-PiA+ICsJCQlldmVudGZkX3NpZ25hbF92YWwgKz0KPiBESVNQTEFZX0NVUl9SRUZSRVNIX0VWRU5U
-X0lOQzsKPiA+ICsJCQlwYWdlZmxpcF9jb3VudCArPSBQQUdFRkxJUF9JTkNfQ09VTlQ7Cj4gPiAr
-CQl9Cj4gPiAgCX0KPiA+Cj4gPiAgCWlmICgtLXBhZ2VmbGlwX2NvdW50IDwgMCkgewo+ID4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9oYW5kbGVycy5jCj4gPiBiL2RyaXZl
-cnMvZ3B1L2RybS9pOTE1L2d2dC9oYW5kbGVycy5jCj4gPiBpbmRleCA2YWQyOWM0ZjA4ZTUuLjgy
-MWZmODg5NzdkOCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9oYW5k
-bGVycy5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaGFuZGxlcnMuYwo+ID4g
-QEAgLTc2Nyw2ICs3NjcsMjcgQEAgc3RhdGljIGludCBwcmlfc3VyZl9tbWlvX3dyaXRlKHN0cnVj
-dCAKPiA+IGludGVsX3ZncHUKPiAqdmdwdSwgdW5zaWduZWQgaW50IG9mZnNldCwKPiA+ICAJcmV0
-dXJuIDA7Cj4gPiAgfQo+ID4KPiA+ICsjZGVmaW5lIENVUkJBU0VfVE9fUElQRShyZWcpIFwKPiA+
-ICsJY2FsY19pbmRleChvZmZzZXQsIF9DVVJBQkFTRSwgX0NVUkJCQVNFLCAwLCBDVVJCQVNFKFBJ
-UEVfQykpCj4gPiArCj4gPiArc3RhdGljIGludCBjdXJfc3VyZl9tbWlvX3dyaXRlKHN0cnVjdCBp
-bnRlbF92Z3B1ICp2Z3B1LCB1bnNpZ25lZCBpbnQgb2Zmc2V0LAo+ID4gKwkJdm9pZCAqcF9kYXRh
-LCB1bnNpZ25lZCBpbnQgYnl0ZXMpIHsKPiA+ICsJc3RydWN0IGRybV9pOTE1X3ByaXZhdGUgKmRl
-dl9wcml2ID0gdmdwdS0+Z3Z0LT5kZXZfcHJpdjsKPiA+ICsJdTMyIHBpcGUgPSBDVVJCQVNFX1RP
-X1BJUEUob2Zmc2V0KTsKPiA+ICsJaW50IGV2ZW50ID0gQ1VSU09SX0FfRkxJUF9ET05FICsgcGlw
-ZTsKPiA+ICsKPiA+ICsJd3JpdGVfdnJlZyh2Z3B1LCBvZmZzZXQsIHBfZGF0YSwgYnl0ZXMpOwo+
-ID4gKwo+ID4gKwlpZiAodmdwdV92cmVnX3QodmdwdSwgQ1VSQ05UUihwaXBlKSkgJiBQTEFORV9D
-VExfQVNZTkNfRkxJUCkgewo+ID4gKwkJaW50ZWxfdmdwdV90cmlnZ2VyX3ZpcnR1YWxfZXZlbnQo
-dmdwdSwgZXZlbnQpOwo+ID4gKwkJc2V0X2JpdChQTEFORV9DVVJTT1IsIHZncHUtPmRpc3BsYXku
-YXN5bmNfZmxpcF9ldmVudFtwaXBlXSk7Cj4gPiArCX0gZWxzZQo+ID4gKwkJc2V0X2JpdChldmVu
-dCwgdmdwdS0+aXJxLmZsaXBfZG9uZV9ldmVudFtwaXBlXSk7Cj4gPiArCj4gPiArCXJldHVybiAw
-Owo+ID4gK30KPiA+ICsKPiA+ICAjZGVmaW5lIFNQUlNVUkZfVE9fUElQRShvZmZzZXQpIFwKPiA+
-ICAJY2FsY19pbmRleChvZmZzZXQsIF9TUFJBX1NVUkYsIF9TUFJCX1NVUkYsIDAsIFNQUlNVUkYo
-UElQRV9DKSkKPiA+Cj4gPiBAQCAtMTk1NSw5ICsxOTc2LDkgQEAgc3RhdGljIGludCBpbml0X2dl
-bmVyaWNfbW1pb19pbmZvKHN0cnVjdCAKPiA+IGludGVsX2d2dAo+ICpndnQpCj4gPiAgCU1NSU9f
-RChDVVJQT1MoUElQRV9CKSwgRF9BTEwpOwo+ID4gIAlNTUlPX0QoQ1VSUE9TKFBJUEVfQyksIERf
-QUxMKTsKPiA+Cj4gPiAtCU1NSU9fRChDVVJCQVNFKFBJUEVfQSksIERfQUxMKTsKPiA+IC0JTU1J
-T19EKENVUkJBU0UoUElQRV9CKSwgRF9BTEwpOwo+ID4gLQlNTUlPX0QoQ1VSQkFTRShQSVBFX0Mp
-LCBEX0FMTCk7Cj4gPiArCU1NSU9fREgoQ1VSQkFTRShQSVBFX0EpLCBEX0FMTCwgTlVMTCwgY3Vy
-X3N1cmZfbW1pb193cml0ZSk7Cj4gPiArCU1NSU9fREgoQ1VSQkFTRShQSVBFX0IpLCBEX0FMTCwg
-TlVMTCwgY3VyX3N1cmZfbW1pb193cml0ZSk7Cj4gPiArCU1NSU9fREgoQ1VSQkFTRShQSVBFX0Mp
-LCBEX0FMTCwgTlVMTCwgY3VyX3N1cmZfbW1pb193cml0ZSk7Cj4gCj4gSSB0aGluayB3ZSBzaG91
-bGQgYWxzbyB0cmFjayBjdXJzb3IgcG9zIGNoYW5nZSByaWdodD8KPiAKClllcywgdGhpcyBtYXkg
-YmUgdGhlIGNhc2UsIGFjY29yZGluZyB0byB0aGUgYnNwZWMsIHRoZSBDVVJQT1MgcmVncyB0YWtl
-IGludG8gZWZmZWN0cyBhdCB2YmxhbmtzLiBCdXQgaW4gTGludXggaTkxNSBkcml2ZXIsIHRoZSBD
-VVJQT1MgcmVncyBwcm9ncmFtbWluZyBjb21wYW5pZXMgd2l0aCBDVVJCQVNFIHJlZ3MuIEknbSBu
-b3Qgc3VyZSB0aGUgV2luZG93cyBkcml2ZXIgbG9naWMsIGJ1dCBJIGNhbiBkbyBzb21lIGV4cGVy
-aW1lbnRzLiBJZiB0aGF0IGlzIHRoZSBjYXNlLCB5ZXMsIHdlIGFsc28gbmVlZCB0byB0cmFwIHRo
-ZSBjdXJzb3IgcG9zIGNoYW5nZS4gClRoYW5rcy4KCkJlc3QgUmVnYXJkcywKS2VjaGVuCgo+ID4K
-PiA+ICAJTU1JT19EKENVUl9GQkNfQ1RMKFBJUEVfQSksIERfQUxMKTsKPiA+ICAJTU1JT19EKENV
-Ul9GQkNfQ1RMKFBJUEVfQiksIERfQUxMKTsgZGlmZiAtLWdpdCAKPiA+IGEvZHJpdmVycy9ncHUv
-ZHJtL2k5MTUvZ3Z0L2ludGVycnVwdC5jCj4gPiBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9p
-bnRlcnJ1cHQuYwo+ID4gaW5kZXggOTUxNjgxODEzMjMwLi45YzJiOWQyZTE1MjkgMTAwNjQ0Cj4g
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaW50ZXJydXB0LmMKPiA+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9pbnRlcnJ1cHQuYwo+ID4gQEAgLTExMyw2ICsxMTMsOSBA
-QCBzdGF0aWMgY29uc3QgY2hhciAqIGNvbnN0Cj4gaXJxX25hbWVbSU5URUxfR1ZUX0VWRU5UX01B
-WF0gPSB7Cj4gPiAgCVtTUFJJVEVfQV9GTElQX0RPTkVdID0gIlNwcml0ZSBQbGFuZSBBIGZsaXAg
-ZG9uZSIsCj4gPiAgCVtTUFJJVEVfQl9GTElQX0RPTkVdID0gIlNwcml0ZSBQbGFuZSBCIGZsaXAg
-ZG9uZSIsCj4gPiAgCVtTUFJJVEVfQ19GTElQX0RPTkVdID0gIlNwcml0ZSBQbGFuZSBDIGZsaXAg
-ZG9uZSIsCj4gPiArCVtDVVJTT1JfQV9GTElQX0RPTkVdID0gIkN1cnNvciBQbGFuZSBBIGZsaXAg
-ZG9uZSIsCj4gPiArCVtDVVJTT1JfQl9GTElQX0RPTkVdID0gIkN1cnNvciBQbGFuZSBCIGZsaXAg
-ZG9uZSIsCj4gPiArCVtDVVJTT1JfQ19GTElQX0RPTkVdID0gIkN1cnNvciBQbGFuZSBDIGZsaXAg
-ZG9uZSIsCj4gPgo+ID4gIAlbUENVX1RIRVJNQUxdID0gIlBDVSBUaGVybWFsIEV2ZW50IiwKPiA+
-ICAJW1BDVV9QQ09ERTJEUklWRVJfTUFJTEJPWF0gPSAiUENVIHBjb2RlMmRyaXZlciBtYWlsYm94
-IGV2ZW50IiwKPiBAQAo+ID4gLTU5Myw2ICs1OTYsMTAgQEAgc3RhdGljIHZvaWQgZ2VuOF9pbml0
-X2lycSgKPiA+ICAJCVNFVF9CSVRfSU5GTyhpcnEsIDQsIFNQUklURV9BX0ZMSVBfRE9ORSwKPiBJ
-TlRFTF9HVlRfSVJRX0lORk9fREVfUElQRV9BKTsKPiA+ICAJCVNFVF9CSVRfSU5GTyhpcnEsIDQs
-IFNQUklURV9CX0ZMSVBfRE9ORSwKPiBJTlRFTF9HVlRfSVJRX0lORk9fREVfUElQRV9CKTsKPiA+
-ICAJCVNFVF9CSVRfSU5GTyhpcnEsIDQsIFNQUklURV9DX0ZMSVBfRE9ORSwgCj4gPiBJTlRFTF9H
-VlRfSVJRX0lORk9fREVfUElQRV9DKTsKPiA+ICsKPiA+ICsJCVNFVF9CSVRfSU5GTyhpcnEsIDYs
-IENVUlNPUl9BX0ZMSVBfRE9ORSwKPiBJTlRFTF9HVlRfSVJRX0lORk9fREVfUElQRV9BKTsKPiA+
-ICsJCVNFVF9CSVRfSU5GTyhpcnEsIDYsIENVUlNPUl9CX0ZMSVBfRE9ORSwKPiBJTlRFTF9HVlRf
-SVJRX0lORk9fREVfUElQRV9CKTsKPiA+ICsJCVNFVF9CSVRfSU5GTyhpcnEsIDYsIENVUlNPUl9D
-X0ZMSVBfRE9ORSwgCj4gPiArSU5URUxfR1ZUX0lSUV9JTkZPX0RFX1BJUEVfQyk7Cj4gPiAgCX0K
-PiA+Cj4gPiAgCS8qIEdFTjggaW50ZXJydXB0IFBDVSBldmVudHMgKi8KPiA+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvaW50ZXJydXB0LmgKPiA+IGIvZHJpdmVycy9ncHUv
-ZHJtL2k5MTUvZ3Z0L2ludGVycnVwdC5oCj4gPiBpbmRleCA1MzEzZmIxYjMzZTEuLjE1OGYxYzdh
-MjNmMiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9pbnRlcnJ1cHQu
-aAo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2ludGVycnVwdC5oCj4gPiBAQCAt
-OTIsNiArOTIsOSBAQCBlbnVtIGludGVsX2d2dF9ldmVudF90eXBlIHsKPiA+ICAJU1BSSVRFX0Ff
-RkxJUF9ET05FLAo+ID4gIAlTUFJJVEVfQl9GTElQX0RPTkUsCj4gPiAgCVNQUklURV9DX0ZMSVBf
-RE9ORSwKPiA+ICsJQ1VSU09SX0FfRkxJUF9ET05FLAo+ID4gKwlDVVJTT1JfQl9GTElQX0RPTkUs
-Cj4gPiArCUNVUlNPUl9DX0ZMSVBfRE9ORSwKPiA+Cj4gPiAgCVBDVV9USEVSTUFMLAo+ID4gIAlQ
-Q1VfUENPREUyRFJJVkVSX01BSUxCT1gsCj4gPiAtLQo+ID4gMi4xNy4xCj4gPgo+IAo+IC0tCj4g
-T3BlbiBTb3VyY2UgVGVjaG5vbG9neSBDZW50ZXIsIEludGVsIGx0ZC4KPiAKPiAkZ3BnIC0ta2V5
-c2VydmVyIHd3d2tleXMucGdwLm5ldCAtLXJlY3Yta2V5cyA0RDc4MTgyNwpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcg
-bGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+
+--===============0798834580==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="HKEL+t8MFpg/ASTE"
+Content-Disposition: inline
+
+
+--HKEL+t8MFpg/ASTE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.07.19 09:02:33 +0000, Lu, Kechen wrote:
+> Hi,
+>=20
+> > -----Original Message-----
+> > From: Zhenyu Wang [mailto:zhenyuw@linux.intel.com]
+> > Sent: Friday, July 19, 2019 2:06 PM
+> > To: Lu, Kechen <kechen.lu@intel.com>
+> > Cc: intel-gvt-dev@lists.freedesktop.org; kvm@vger.kernel.org; linux-=20
+> > kernel@vger.kernel.org; Zhang, Tina <tina.zhang@intel.com>;=20
+> > kraxel@redhat.com; zhenyuw@linux.intel.com; Lv, Zhiyuan=20
+> > <zhiyuan.lv@intel.com>; Wang, Zhi A <zhi.a.wang@intel.com>; Tian,=20
+> > Kevin <kevin.tian@intel.com>; Yuan, Hang <hang.yuan@intel.com>;=20
+> > alex.williamson@redhat.com; Eric Auger <eric.auger@redhat.com>
+> > Subject: Re: [RFC PATCH v4 1/6] vfio: Define device specific irq type=
+=20
+> > capability
+> >=20
+> > On 2019.07.18 23:56:35 +0800, Kechen Lu wrote:
+> > > From: Tina Zhang <tina.zhang@intel.com>
+> > >
+> > > Cap the number of irqs with fixed indexes and use capability chains=
+=20
+> > > to chain device specific irqs.
+> > >
+> > > Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> > > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > > ---
+> > >  include/uapi/linux/vfio.h | 19 ++++++++++++++++++-
+> > >  1 file changed, 18 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h=20
+> > > index 8f10748dac79..be6adab4f759 100644
+> > > --- a/include/uapi/linux/vfio.h
+> > > +++ b/include/uapi/linux/vfio.h
+> > > @@ -448,11 +448,27 @@ struct vfio_irq_info {
+> > >  #define VFIO_IRQ_INFO_MASKABLE		(1 << 1)
+> > >  #define VFIO_IRQ_INFO_AUTOMASKED	(1 << 2)
+> > >  #define VFIO_IRQ_INFO_NORESIZE		(1 << 3)
+> > > +#define VFIO_IRQ_INFO_FLAG_CAPS		(1 << 4) /* Info supports caps
+> > */
+> > >  	__u32	index;		/* IRQ index */
+> > >  	__u32	count;		/* Number of IRQs within this index */
+> > > +	__u32	cap_offset;	/* Offset within info struct of first cap */
+> >=20
+> > This still breaks ABI as argsz would be updated with this new field,=20
+> > so it would cause compat issue. I think my last suggestion was to=20
+> > assume cap list starts after vfio_irq_info.
+> >
+> =20
+> In the common practice, the general logic is first use the "count" as the=
+ "minsz" boundary to perform copy from user, and then perform following log=
+ic, so that the incompatibility issue would not happen. BTW, this patch has=
+ been double checked by Eric Auger before included in his patch-set.=20
+>=20
+
+yeah, sorry I was thinking vfio might fail in that case but it seems
+current code assume argsz should be larger than minsz for count here,
+so that's fine.
+
+>=20
+> > >  };
+> > >  #define VFIO_DEVICE_GET_IRQ_INFO	_IO(VFIO_TYPE, VFIO_BASE + 9)
+> > >
+> > > +/*
+> > > + * The irq type capability allows irqs unique to a specific device=
+=20
+> > > +or
+> > > + * class of devices to be exposed.
+> > > + *
+> > > + * The structures below define version 1 of this capability.
+> > > + */
+> > > +#define VFIO_IRQ_INFO_CAP_TYPE      3
+> > > +
+> > > +struct vfio_irq_info_cap_type {
+> > > +	struct vfio_info_cap_header header;
+> > > +	__u32 type;     /* global per bus driver */
+> > > +	__u32 subtype;  /* type specific */ };
+> > > +
+> > >  /**
+> > >   * VFIO_DEVICE_SET_IRQS - _IOW(VFIO_TYPE, VFIO_BASE + 10, struct
+> > vfio_irq_set)
+> > >   *
+> > > @@ -554,7 +570,8 @@ enum {
+> > >  	VFIO_PCI_MSIX_IRQ_INDEX,
+> > >  	VFIO_PCI_ERR_IRQ_INDEX,
+> > >  	VFIO_PCI_REQ_IRQ_INDEX,
+> > > -	VFIO_PCI_NUM_IRQS
+> > > +	VFIO_PCI_NUM_IRQS =3D 5	/* Fixed user ABI, IRQ indexes >=3D5 use
+> > */
+> > > +				/* device specific cap to define content */
+> > >  };
+> > >
+> > >  /*
+> > > --
+> > > 2.17.1
+> > >
+> >=20
+> > --
+> > Open Source Technology Center, Intel ltd.
+> >=20
+> > $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--HKEL+t8MFpg/ASTE
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXTGUfwAKCRCxBBozTXgY
+J/UoAJ44zsldWP7UQPboscULWpi5vt3WswCePRPUL9w/jjULfR02ApGsutPBcso=
+=0x0A
+-----END PGP SIGNATURE-----
+
+--HKEL+t8MFpg/ASTE--
+
+--===============0798834580==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0798834580==--
