@@ -1,33 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A0B56CD3C
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Jul 2019 13:18:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 58D0D6E0E2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Jul 2019 08:09:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F0B126E398;
-	Thu, 18 Jul 2019 11:18:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 175D76E583;
+	Fri, 19 Jul 2019 06:08:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BECC96E398
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F1D9F6E583
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 18 Jul 2019 11:18:38 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Fri, 19 Jul 2019 06:08:57 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Jul 2019 04:18:37 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Jul 2019 23:08:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,278,1559545200"; d="scan'208";a="162044987"
-Received: from gvt-nuc-fi.tm.intel.com ([10.237.55.101])
- by orsmga008.jf.intel.com with ESMTP; 18 Jul 2019 04:18:36 -0700
-From: Aleksei Gimbitskii <aleksei.gimbitskii@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: factor out tlb and mocs register offset table
-Date: Thu, 18 Jul 2019 14:14:49 +0300
-Message-Id: <20190718111449.16217-1-aleksei.gimbitskii@intel.com>
-X-Mailer: git-send-email 2.17.1
+X-IronPort-AV: E=Sophos;i="5.64,281,1559545200"; 
+ d="asc'?scan'208";a="170814276"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by orsmga003.jf.intel.com with ESMTP; 18 Jul 2019 23:08:53 -0700
+Date: Fri, 19 Jul 2019 14:05:40 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Kechen Lu <kechen.lu@intel.com>
+Subject: Re: [RFC PATCH v4 1/6] vfio: Define device specific irq type
+ capability
+Message-ID: <20190719060540.GC28809@zhen-hp.sh.intel.com>
+References: <20190718155640.25928-1-kechen.lu@intel.com>
+ <20190718155640.25928-2-kechen.lu@intel.com>
+MIME-Version: 1.0
+In-Reply-To: <20190718155640.25928-2-kechen.lu@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -40,95 +47,119 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Zhi Wang <zhi.a.wang@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: kevin.tian@intel.com, kvm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ zhenyuw@linux.intel.com, Tina Zhang <tina.zhang@intel.com>,
+ Eric Auger <eric.auger@redhat.com>, alex.williamson@redhat.com,
+ kraxel@redhat.com, hang.yuan@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com, zhiyuan.lv@intel.com
+Content-Type: multipart/mixed; boundary="===============1462914583=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-RnJvbTogWmhpIFdhbmcgPHpoaS5hLndhbmdAaW50ZWwuY29tPgoKRmFjdG9yIG91dCB0bGIgYW5k
-IG1vY3MgcmVnaXN0ZXIgb2Zmc2V0IHRhYmxlIHRvIGZpeCB0aGUgaXNzdWVzIHJlcG9ydGVkCmJ5
-IGtsb2N3b3JrLCAjNTEyIGFuZCAjNTUwLiBNb3N0bHksIHRoZSByZWFzb24gd2h5IHRoZSBrbG9j
-d29yayByZXBvcnRzCnRoZXNlIHByb2JsZW1zIGlzIGJlY2F1c2UgdGhlcmUgY2FuIGJlIHBvc3Ni
-aWxpdGllcyBmb3IgcGxhdGZvcm1zLCB3aGljaApoYXZlIG1vcmUgcmluZ3MgdGhhbiB0aGUgcmlu
-ZyBvZmZzZXQgdGFibGUsIHRvIHRha2UgdGhlIGRpcnR5IGRhdGEgZnJvbQp0aGUgc3RhY2sgYXMg
-dGhlIHJlZ2lzdGVyIG9mZnNldC4gSXQgcmVzdWx0cyB0byBhIHJhbmRvbSBIVyByZWdpc3Rlcgpv
-ZmZzZXQgd3JpdHRpbmcgaW4gdGhpcyBzY2VuYWlybyB3aGVuIGRvaW5nIGNvbnRleHQgc3dpdGNo
-IGJldHdlZW4gdkdQVXMuCgpBZnRlciB0aGUgZmFjdG9yaW5nLCB0aGUgcmluZyBvZmZzZXQgdGFi
-bGUgb2YgVExCIGFuZCBNT0NTIHNob3VsZCBiZSBwZXIKcGxhdGZvcm0uCgpTaWduZWQtb2ZmLWJ5
-OiBaaGkgV2FuZyA8emhpLmEud2FuZ0BpbnRlbC5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2k5
-MTUvZ3Z0L2d2dC5oICAgICAgICAgIHwgIDQgKysKIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9t
-bWlvX2NvbnRleHQuYyB8IDU1ICsrKysrKysrKysrKysrKysrLS0tLS0tLS0KIDIgZmlsZXMgY2hh
-bmdlZCwgNDEgaW5zZXJ0aW9ucygrKSwgMTggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2dC5oIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2
-dC5oCmluZGV4IDNmZjU5ZGNmNjk3Ny4uYjQ3YzZhY2FmOWMwIDEwMDY0NAotLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vaTkxNS9ndnQvZ3Z0LmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2
-dC5oCkBAIC0zMzQsNiArMzM0LDEwIEBAIHN0cnVjdCBpbnRlbF9ndnQgewogCXN0cnVjdCB7CiAJ
-CXN0cnVjdCBlbmdpbmVfbW1pbyAqbW1pbzsKIAkJaW50IGN0eF9tbWlvX2NvdW50W0k5MTVfTlVN
-X0VOR0lORVNdOworCQl1MzIgKnRsYl9tbWlvX29mZnNldF9saXN0OworCQl1MzIgdGxiX21taW9f
-b2Zmc2V0X2xpc3RfY250OworCQl1MzIgKm1vY3NfbW1pb19vZmZzZXRfbGlzdDsKKwkJdTMyIG1v
-Y3NfbW1pb19vZmZzZXRfbGlzdF9jbnQ7CiAJfSBlbmdpbmVfbW1pb19saXN0OwogCiAJc3RydWN0
-IGRlbnRyeSAqZGVidWdmc19yb290OwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUv
-Z3Z0L21taW9fY29udGV4dC5jIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L21taW9fY29udGV4
-dC5jCmluZGV4IDI5OTg5OTllODU2OC4uZTdiNTcyMDY5N2NjIDEwMDY0NAotLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vaTkxNS9ndnQvbW1pb19jb250ZXh0LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5
-MTUvZ3Z0L21taW9fY29udGV4dC5jCkBAIC0xNDgsMTkgKzE0OCwyNyBAQCBzdGF0aWMgc3RydWN0
-IHsKIAl1MzIgbDNjY190YWJsZVtHRU45X01PQ1NfU0laRSAvIDJdOwogfSBnZW45X3JlbmRlcl9t
-b2NzOwogCitzdGF0aWMgdTMyIGdlbjlfbW9jc19tbWlvX29mZnNldF9saXN0W10gPSB7CisJW1JD
-UzBdICA9IDB4YzgwMCwKKwlbVkNTMF0gID0gMHhjOTAwLAorCVtWQ1MxXSAgPSAweGNhMDAsCisJ
-W0JDUzBdICA9IDB4Y2MwMCwKKwlbVkVDUzBdID0gMHhjYjAwLAorfTsKKwogc3RhdGljIHZvaWQg
-bG9hZF9yZW5kZXJfbW9jcyhzdHJ1Y3QgZHJtX2k5MTVfcHJpdmF0ZSAqZGV2X3ByaXYpCiB7CisJ
-c3RydWN0IGludGVsX2d2dCAqZ3Z0ID0gZGV2X3ByaXYtPmd2dDsKIAlpOTE1X3JlZ190IG9mZnNl
-dDsKLQl1MzIgcmVnc1tdID0gewotCQlbUkNTMF0gID0gMHhjODAwLAotCQlbVkNTMF0gID0gMHhj
-OTAwLAotCQlbVkNTMV0gID0gMHhjYTAwLAotCQlbQkNTMF0gID0gMHhjYzAwLAotCQlbVkVDUzBd
-ID0gMHhjYjAwLAotCX07CisJdTMyIGNudCA9IGd2dC0+ZW5naW5lX21taW9fbGlzdC5tb2NzX21t
-aW9fb2Zmc2V0X2xpc3RfY250OworCXUzMiAqcmVncyA9IGd2dC0+ZW5naW5lX21taW9fbGlzdC5t
-b2NzX21taW9fb2Zmc2V0X2xpc3Q7CiAJaW50IHJpbmdfaWQsIGk7CiAKLQlmb3IgKHJpbmdfaWQg
-PSAwOyByaW5nX2lkIDwgQVJSQVlfU0laRShyZWdzKTsgcmluZ19pZCsrKSB7CisJLyogUGxhdGZv
-cm0gZG9lc24ndCBoYXZlIG1vY3MgbW1pb3MuICovCisJaWYgKCFyZWdzKQorCQlyZXR1cm47CisK
-Kwlmb3IgKHJpbmdfaWQgPSAwOyByaW5nX2lkIDwgY250OyByaW5nX2lkKyspIHsKIAkJaWYgKCFI
-QVNfRU5HSU5FKGRldl9wcml2LCByaW5nX2lkKSkKIAkJCWNvbnRpbnVlOwogCQlvZmZzZXQucmVn
-ID0gcmVnc1tyaW5nX2lkXTsKQEAgLTMyNywyMiArMzM1LDI4IEBAIGludCBpbnRlbF92Z3B1X3Jl
-c3RvcmVfaW5oaWJpdF9jb250ZXh0KHN0cnVjdCBpbnRlbF92Z3B1ICp2Z3B1LAogCXJldHVybiBy
-ZXQ7CiB9CiAKK3N0YXRpYyB1MzIgZ2VuOV90bGJfbW1pb19vZmZzZXRfbGlzdFtdID0geworCVtS
-Q1MwXSAgPSAweDQyNjAsCisJW1ZDUzBdICA9IDB4NDI2NCwKKwlbVkNTMV0gID0gMHg0MjY4LAor
-CVtCQ1MwXSAgPSAweDQyNmMsCisJW1ZFQ1MwXSA9IDB4NDI3MCwKK307CisKIHN0YXRpYyB2b2lk
-IGhhbmRsZV90bGJfcGVuZGluZ19ldmVudChzdHJ1Y3QgaW50ZWxfdmdwdSAqdmdwdSwgaW50IHJp
-bmdfaWQpCiB7CiAJc3RydWN0IGRybV9pOTE1X3ByaXZhdGUgKmRldl9wcml2ID0gdmdwdS0+Z3Z0
-LT5kZXZfcHJpdjsKIAlzdHJ1Y3QgaW50ZWxfdW5jb3JlICp1bmNvcmUgPSAmZGV2X3ByaXYtPnVu
-Y29yZTsKIAlzdHJ1Y3QgaW50ZWxfdmdwdV9zdWJtaXNzaW9uICpzID0gJnZncHUtPnN1Ym1pc3Np
-b247CisJdTMyICpyZWdzID0gdmdwdS0+Z3Z0LT5lbmdpbmVfbW1pb19saXN0LnRsYl9tbWlvX29m
-ZnNldF9saXN0OworCXUzMiBjbnQgPSB2Z3B1LT5ndnQtPmVuZ2luZV9tbWlvX2xpc3QudGxiX21t
-aW9fb2Zmc2V0X2xpc3RfY250OwogCWVudW0gZm9yY2V3YWtlX2RvbWFpbnMgZnc7CiAJaTkxNV9y
-ZWdfdCByZWc7Ci0JdTMyIHJlZ3NbXSA9IHsKLQkJW1JDUzBdICA9IDB4NDI2MCwKLQkJW1ZDUzBd
-ICA9IDB4NDI2NCwKLQkJW1ZDUzFdICA9IDB4NDI2OCwKLQkJW0JDUzBdICA9IDB4NDI2YywKLQkJ
-W1ZFQ1MwXSA9IDB4NDI3MCwKLQl9OwogCi0JaWYgKFdBUk5fT04ocmluZ19pZCA+PSBBUlJBWV9T
-SVpFKHJlZ3MpKSkKKwlpZiAoIXJlZ3MpCisJCXJldHVybjsKKworCWlmIChXQVJOX09OKHJpbmdf
-aWQgPj0gY250KSkKIAkJcmV0dXJuOwogCiAJaWYgKCF0ZXN0X2FuZF9jbGVhcl9iaXQocmluZ19p
-ZCwgKHZvaWQgKilzLT50bGJfaGFuZGxlX3BlbmRpbmcpKQpAQCAtNTY1LDEwICs1NzksMTUgQEAg
-dm9pZCBpbnRlbF9ndnRfaW5pdF9lbmdpbmVfbW1pb19jb250ZXh0KHN0cnVjdCBpbnRlbF9ndnQg
-Kmd2dCkKIHsKIAlzdHJ1Y3QgZW5naW5lX21taW8gKm1taW87CiAKLQlpZiAoSU5URUxfR0VOKGd2
-dC0+ZGV2X3ByaXYpID49IDkpCisJaWYgKElOVEVMX0dFTihndnQtPmRldl9wcml2KSA+PSA5KSB7
-CiAJCWd2dC0+ZW5naW5lX21taW9fbGlzdC5tbWlvID0gZ2VuOV9lbmdpbmVfbW1pb19saXN0Owot
-CWVsc2UKKwkJZ3Z0LT5lbmdpbmVfbW1pb19saXN0LnRsYl9tbWlvX29mZnNldF9saXN0ID0gZ2Vu
-OV90bGJfbW1pb19vZmZzZXRfbGlzdDsKKwkJZ3Z0LT5lbmdpbmVfbW1pb19saXN0LnRsYl9tbWlv
-X29mZnNldF9saXN0X2NudCA9IEFSUkFZX1NJWkUoZ2VuOV90bGJfbW1pb19vZmZzZXRfbGlzdCk7
-CisJCWd2dC0+ZW5naW5lX21taW9fbGlzdC5tb2NzX21taW9fb2Zmc2V0X2xpc3QgPSBnZW45X21v
-Y3NfbW1pb19vZmZzZXRfbGlzdDsKKwkJZ3Z0LT5lbmdpbmVfbW1pb19saXN0Lm1vY3NfbW1pb19v
-ZmZzZXRfbGlzdF9jbnQgPSBBUlJBWV9TSVpFKGdlbjlfbW9jc19tbWlvX29mZnNldF9saXN0KTsK
-Kwl9IGVsc2UgewogCQlndnQtPmVuZ2luZV9tbWlvX2xpc3QubW1pbyA9IGdlbjhfZW5naW5lX21t
-aW9fbGlzdDsKKwl9CiAKIAlmb3IgKG1taW8gPSBndnQtPmVuZ2luZV9tbWlvX2xpc3QubW1pbzsK
-IAkgICAgIGk5MTVfbW1pb19yZWdfdmFsaWQobW1pby0+cmVnKTsgbW1pbysrKSB7Ci0tIAoyLjE3
-LjEKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLQpJbnRlbCBGaW5sYW5kIE95ClJlZ2lzdGVyZWQgQWRkcmVzczogUEwg
-MjgxLCAwMDE4MSBIZWxzaW5raSAKQnVzaW5lc3MgSWRlbnRpdHkgQ29kZTogMDM1NzYwNiAtIDQg
-CkRvbWljaWxlZCBpbiBIZWxzaW5raSAKClRoaXMgZS1tYWlsIGFuZCBhbnkgYXR0YWNobWVudHMg
-bWF5IGNvbnRhaW4gY29uZmlkZW50aWFsIG1hdGVyaWFsIGZvcgp0aGUgc29sZSB1c2Ugb2YgdGhl
-IGludGVuZGVkIHJlY2lwaWVudChzKS4gQW55IHJldmlldyBvciBkaXN0cmlidXRpb24KYnkgb3Ro
-ZXJzIGlzIHN0cmljdGx5IHByb2hpYml0ZWQuIElmIHlvdSBhcmUgbm90IHRoZSBpbnRlbmRlZApy
-ZWNpcGllbnQsIHBsZWFzZSBjb250YWN0IHRoZSBzZW5kZXIgYW5kIGRlbGV0ZSBhbGwgY29waWVz
-LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwt
-Z3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQt
-ZGV2
+
+--===============1462914583==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="1ccMZA6j1vT5UqiK"
+Content-Disposition: inline
+
+
+--1ccMZA6j1vT5UqiK
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.07.18 23:56:35 +0800, Kechen Lu wrote:
+> From: Tina Zhang <tina.zhang@intel.com>
+>=20
+> Cap the number of irqs with fixed indexes and use capability chains
+> to chain device specific irqs.
+>=20
+> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  include/uapi/linux/vfio.h | 19 ++++++++++++++++++-
+>  1 file changed, 18 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
+> index 8f10748dac79..be6adab4f759 100644
+> --- a/include/uapi/linux/vfio.h
+> +++ b/include/uapi/linux/vfio.h
+> @@ -448,11 +448,27 @@ struct vfio_irq_info {
+>  #define VFIO_IRQ_INFO_MASKABLE		(1 << 1)
+>  #define VFIO_IRQ_INFO_AUTOMASKED	(1 << 2)
+>  #define VFIO_IRQ_INFO_NORESIZE		(1 << 3)
+> +#define VFIO_IRQ_INFO_FLAG_CAPS		(1 << 4) /* Info supports caps */
+>  	__u32	index;		/* IRQ index */
+>  	__u32	count;		/* Number of IRQs within this index */
+> +	__u32	cap_offset;	/* Offset within info struct of first cap */
+
+This still breaks ABI as argsz would be updated with this new field, so it =
+would
+cause compat issue. I think my last suggestion was to assume cap list start=
+s after
+vfio_irq_info.
+
+>  };
+>  #define VFIO_DEVICE_GET_IRQ_INFO	_IO(VFIO_TYPE, VFIO_BASE + 9)
+> =20
+> +/*
+> + * The irq type capability allows irqs unique to a specific device or
+> + * class of devices to be exposed.
+> + *
+> + * The structures below define version 1 of this capability.
+> + */
+> +#define VFIO_IRQ_INFO_CAP_TYPE      3
+> +
+> +struct vfio_irq_info_cap_type {
+> +	struct vfio_info_cap_header header;
+> +	__u32 type;     /* global per bus driver */
+> +	__u32 subtype;  /* type specific */
+> +};
+> +
+>  /**
+>   * VFIO_DEVICE_SET_IRQS - _IOW(VFIO_TYPE, VFIO_BASE + 10, struct vfio_ir=
+q_set)
+>   *
+> @@ -554,7 +570,8 @@ enum {
+>  	VFIO_PCI_MSIX_IRQ_INDEX,
+>  	VFIO_PCI_ERR_IRQ_INDEX,
+>  	VFIO_PCI_REQ_IRQ_INDEX,
+> -	VFIO_PCI_NUM_IRQS
+> +	VFIO_PCI_NUM_IRQS =3D 5	/* Fixed user ABI, IRQ indexes >=3D5 use   */
+> +				/* device specific cap to define content */
+>  };
+> =20
+>  /*
+> --=20
+> 2.17.1
+>=20
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--1ccMZA6j1vT5UqiK
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXTFdtAAKCRCxBBozTXgY
+J+A6AKCdu+X82qvxu8+c+G7Xf2KT4EPb+QCcDuu89yudz4pTfaN3llmqJsIf1LQ=
+=mAF2
+-----END PGP SIGNATURE-----
+
+--1ccMZA6j1vT5UqiK--
+
+--===============1462914583==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1462914583==--
