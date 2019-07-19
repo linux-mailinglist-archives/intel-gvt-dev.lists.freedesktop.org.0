@@ -1,39 +1,60 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 589BA6E129
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Jul 2019 08:49:01 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 534C16E30A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Jul 2019 11:02:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E31E56E491;
-	Fri, 19 Jul 2019 06:48:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1CBDE6E5D0;
+	Fri, 19 Jul 2019 09:02:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 69A866E491
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B0A506E5D0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 19 Jul 2019 06:48:59 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Fri, 19 Jul 2019 09:02:37 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Jul 2019 23:48:58 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2019 02:02:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,281,1559545200"; 
- d="asc'?scan'208";a="252071370"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga001.jf.intel.com with ESMTP; 18 Jul 2019 23:48:57 -0700
-Date: Fri, 19 Jul 2019 14:45:45 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Aleksei Gimbitskii <aleksei.gimbitskii@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: factor out tlb and mocs register offset
- table
-Message-ID: <20190719064545.GF28809@zhen-hp.sh.intel.com>
-References: <20190718111449.16217-1-aleksei.gimbitskii@intel.com>
+X-IronPort-AV: E=Sophos;i="5.64,281,1559545200"; d="scan'208";a="195888255"
+Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
+ by fmsmga002.fm.intel.com with ESMTP; 19 Jul 2019 02:02:36 -0700
+Received: from fmsmsx155.amr.corp.intel.com (10.18.116.71) by
+ FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 19 Jul 2019 02:02:36 -0700
+Received: from shsmsx153.ccr.corp.intel.com (10.239.6.53) by
+ FMSMSX155.amr.corp.intel.com (10.18.116.71) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 19 Jul 2019 02:02:36 -0700
+Received: from shsmsx102.ccr.corp.intel.com ([169.254.2.3]) by
+ SHSMSX153.ccr.corp.intel.com ([169.254.12.60]) with mapi id 14.03.0439.000;
+ Fri, 19 Jul 2019 17:02:34 +0800
+From: "Lu, Kechen" <kechen.lu@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, "Zhang, Tina" <tina.zhang@intel.com>
+Subject: RE: [RFC PATCH v4 1/6] vfio: Define device specific irq type
+ capability
+Thread-Topic: [RFC PATCH v4 1/6] vfio: Define device specific irq type
+ capability
+Thread-Index: AQHVPfh+laa+mTOUHUqdBIkmECCN6KbRmVnQ
+Date: Fri, 19 Jul 2019 09:02:33 +0000
+Message-ID: <31185F57AF7C4B4F87C41E735C23A6FE64DFC7@shsmsx102.ccr.corp.intel.com>
+References: <20190718155640.25928-1-kechen.lu@intel.com>
+ <20190718155640.25928-2-kechen.lu@intel.com>
+ <20190719060540.GC28809@zhen-hp.sh.intel.com>
+In-Reply-To: <20190719060540.GC28809@zhen-hp.sh.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTA2Nzc3ZWUtZDM0Ny00MDhmLTk3OWYtMjRlYWExMjQwYjEyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoicEVwaUZEbVBtSzBnYUpWMnY4clwvV201N2c0MlNWQlZZOTlSM0FlN2NNMElKb1g2VzVFUGVtVlNxSEp4MWJcL0JTIn0=
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.0.600.7
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
 MIME-Version: 1.0
-In-Reply-To: <20190718111449.16217-1-aleksei.gimbitskii@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -46,209 +67,77 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============1004182200=="
+Cc: "Tian, Kevin" <kevin.tian@intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Yuan,
+ Hang" <hang.yuan@intel.com>, Eric Auger <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>, "kraxel@redhat.com" <kraxel@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1004182200==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ni93GHxFvA+th69W"
-Content-Disposition: inline
-
-
---ni93GHxFvA+th69W
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.07.18 14:14:49 +0300, Aleksei Gimbitskii wrote:
-> From: Zhi Wang <zhi.a.wang@intel.com>
->=20
-> Factor out tlb and mocs register offset table to fix the issues reported
-> by klocwork, #512 and #550. Mostly, the reason why the klocwork reports
-> these problems is because there can be possbilities for platforms, which
-> have more rings than the ring offset table, to take the dirty data from
-> the stack as the register offset. It results to a random HW register
-> offset writting in this scenairo when doing context switch between vGPUs.
->=20
-> After the factoring, the ring offset table of TLB and MOCS should be per
-> platform.
->=20
-> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/gvt.h          |  4 ++
->  drivers/gpu/drm/i915/gvt/mmio_context.c | 55 +++++++++++++++++--------
->  2 files changed, 41 insertions(+), 18 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
-t.h
-> index 3ff59dcf6977..b47c6acaf9c0 100644
-> --- a/drivers/gpu/drm/i915/gvt/gvt.h
-> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
-> @@ -334,6 +334,10 @@ struct intel_gvt {
->  	struct {
->  		struct engine_mmio *mmio;
->  		int ctx_mmio_count[I915_NUM_ENGINES];
-> +		u32 *tlb_mmio_offset_list;
-> +		u32 tlb_mmio_offset_list_cnt;
-> +		u32 *mocs_mmio_offset_list;
-> +		u32 mocs_mmio_offset_list_cnt;
->  	} engine_mmio_list;
-> =20
->  	struct dentry *debugfs_root;
-> diff --git a/drivers/gpu/drm/i915/gvt/mmio_context.c b/drivers/gpu/drm/i9=
-15/gvt/mmio_context.c
-> index 2998999e8568..e7b5720697cc 100644
-> --- a/drivers/gpu/drm/i915/gvt/mmio_context.c
-> +++ b/drivers/gpu/drm/i915/gvt/mmio_context.c
-> @@ -148,19 +148,27 @@ static struct {
->  	u32 l3cc_table[GEN9_MOCS_SIZE / 2];
->  } gen9_render_mocs;
-> =20
-> +static u32 gen9_mocs_mmio_offset_list[] =3D {
-> +	[RCS0]  =3D 0xc800,
-> +	[VCS0]  =3D 0xc900,
-> +	[VCS1]  =3D 0xca00,
-> +	[BCS0]  =3D 0xcc00,
-> +	[VECS0] =3D 0xcb00,
-> +};
-> +
->  static void load_render_mocs(struct drm_i915_private *dev_priv)
->  {
-> +	struct intel_gvt *gvt =3D dev_priv->gvt;
->  	i915_reg_t offset;
-> -	u32 regs[] =3D {
-> -		[RCS0]  =3D 0xc800,
-> -		[VCS0]  =3D 0xc900,
-> -		[VCS1]  =3D 0xca00,
-> -		[BCS0]  =3D 0xcc00,
-> -		[VECS0] =3D 0xcb00,
-> -	};
-> +	u32 cnt =3D gvt->engine_mmio_list.mocs_mmio_offset_list_cnt;
-> +	u32 *regs =3D gvt->engine_mmio_list.mocs_mmio_offset_list;
->  	int ring_id, i;
-> =20
-> -	for (ring_id =3D 0; ring_id < ARRAY_SIZE(regs); ring_id++) {
-> +	/* Platform doesn't have mocs mmios. */
-> +	if (!regs)
-> +		return;
-> +
-> +	for (ring_id =3D 0; ring_id < cnt; ring_id++) {
->  		if (!HAS_ENGINE(dev_priv, ring_id))
->  			continue;
->  		offset.reg =3D regs[ring_id];
-> @@ -327,22 +335,28 @@ int intel_vgpu_restore_inhibit_context(struct intel=
-_vgpu *vgpu,
->  	return ret;
->  }
-> =20
-> +static u32 gen9_tlb_mmio_offset_list[] =3D {
-> +	[RCS0]  =3D 0x4260,
-> +	[VCS0]  =3D 0x4264,
-> +	[VCS1]  =3D 0x4268,
-> +	[BCS0]  =3D 0x426c,
-> +	[VECS0] =3D 0x4270,
-> +};
-> +
->  static void handle_tlb_pending_event(struct intel_vgpu *vgpu, int ring_i=
-d)
->  {
->  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
->  	struct intel_uncore *uncore =3D &dev_priv->uncore;
->  	struct intel_vgpu_submission *s =3D &vgpu->submission;
-> +	u32 *regs =3D vgpu->gvt->engine_mmio_list.tlb_mmio_offset_list;
-> +	u32 cnt =3D vgpu->gvt->engine_mmio_list.tlb_mmio_offset_list_cnt;
->  	enum forcewake_domains fw;
->  	i915_reg_t reg;
-> -	u32 regs[] =3D {
-> -		[RCS0]  =3D 0x4260,
-> -		[VCS0]  =3D 0x4264,
-> -		[VCS1]  =3D 0x4268,
-> -		[BCS0]  =3D 0x426c,
-> -		[VECS0] =3D 0x4270,
-> -	};
-> =20
-> -	if (WARN_ON(ring_id >=3D ARRAY_SIZE(regs)))
-> +	if (!regs)
-> +		return;
-> +
-> +	if (WARN_ON(ring_id >=3D cnt))
->  		return;
-> =20
->  	if (!test_and_clear_bit(ring_id, (void *)s->tlb_handle_pending))
-> @@ -565,10 +579,15 @@ void intel_gvt_init_engine_mmio_context(struct inte=
-l_gvt *gvt)
->  {
->  	struct engine_mmio *mmio;
-> =20
-> -	if (INTEL_GEN(gvt->dev_priv) >=3D 9)
-> +	if (INTEL_GEN(gvt->dev_priv) >=3D 9) {
->  		gvt->engine_mmio_list.mmio =3D gen9_engine_mmio_list;
-> -	else
-> +		gvt->engine_mmio_list.tlb_mmio_offset_list =3D gen9_tlb_mmio_offset_li=
-st;
-> +		gvt->engine_mmio_list.tlb_mmio_offset_list_cnt =3D ARRAY_SIZE(gen9_tlb=
-_mmio_offset_list);
-> +		gvt->engine_mmio_list.mocs_mmio_offset_list =3D gen9_mocs_mmio_offset_=
-list;
-> +		gvt->engine_mmio_list.mocs_mmio_offset_list_cnt =3D ARRAY_SIZE(gen9_mo=
-cs_mmio_offset_list);
-
-mocs is for >=3D gen9, but tlb mmio also applied to gen8.
-
-> +	} else {
->  		gvt->engine_mmio_list.mmio =3D gen8_engine_mmio_list;
-> +	}
-> =20
->  	for (mmio =3D gvt->engine_mmio_list.mmio;
->  	     i915_mmio_reg_valid(mmio->reg); mmio++) {
-> --=20
-> 2.17.1
->=20
-> ---------------------------------------------------------------------
-> Intel Finland Oy
-> Registered Address: PL 281, 00181 Helsinki=20
-> Business Identity Code: 0357606 - 4=20
-> Domiciled in Helsinki=20
->=20
-> This e-mail and any attachments may contain confidential material for
-> the sole use of the intended recipient(s). Any review or distribution
-> by others is strictly prohibited. If you are not the intended
-> recipient, please contact the sender and delete all copies.
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---ni93GHxFvA+th69W
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iFwEARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXTFnGQAKCRCxBBozTXgY
-J/7JAJ9VotsUUy+Vk9u1wg0V5DeJlZFIiACXcFBIwe0xBQhCgvnwK4bLIxjcBg==
-=dT2I
------END PGP SIGNATURE-----
-
---ni93GHxFvA+th69W--
-
---===============1004182200==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1004182200==--
+SGksCgo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4gRnJvbTogWmhlbnl1IFdhbmcgW21h
+aWx0bzp6aGVueXV3QGxpbnV4LmludGVsLmNvbV0KPiBTZW50OiBGcmlkYXksIEp1bHkgMTksIDIw
+MTkgMjowNiBQTQo+IFRvOiBMdSwgS2VjaGVuIDxrZWNoZW4ubHVAaW50ZWwuY29tPgo+IENjOiBp
+bnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZzsga3ZtQHZnZXIua2VybmVsLm9yZzsg
+bGludXgtIAo+IGtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc7IFpoYW5nLCBUaW5hIDx0aW5hLnpoYW5n
+QGludGVsLmNvbT47IAo+IGtyYXhlbEByZWRoYXQuY29tOyB6aGVueXV3QGxpbnV4LmludGVsLmNv
+bTsgTHYsIFpoaXl1YW4gCj4gPHpoaXl1YW4ubHZAaW50ZWwuY29tPjsgV2FuZywgWmhpIEEgPHpo
+aS5hLndhbmdAaW50ZWwuY29tPjsgVGlhbiwgCj4gS2V2aW4gPGtldmluLnRpYW5AaW50ZWwuY29t
+PjsgWXVhbiwgSGFuZyA8aGFuZy55dWFuQGludGVsLmNvbT47IAo+IGFsZXgud2lsbGlhbXNvbkBy
+ZWRoYXQuY29tOyBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+Cj4gU3ViamVjdDog
+UmU6IFtSRkMgUEFUQ0ggdjQgMS82XSB2ZmlvOiBEZWZpbmUgZGV2aWNlIHNwZWNpZmljIGlycSB0
+eXBlIAo+IGNhcGFiaWxpdHkKPiAKPiBPbiAyMDE5LjA3LjE4IDIzOjU2OjM1ICswODAwLCBLZWNo
+ZW4gTHUgd3JvdGU6Cj4gPiBGcm9tOiBUaW5hIFpoYW5nIDx0aW5hLnpoYW5nQGludGVsLmNvbT4K
+PiA+Cj4gPiBDYXAgdGhlIG51bWJlciBvZiBpcnFzIHdpdGggZml4ZWQgaW5kZXhlcyBhbmQgdXNl
+IGNhcGFiaWxpdHkgY2hhaW5zIAo+ID4gdG8gY2hhaW4gZGV2aWNlIHNwZWNpZmljIGlycXMuCj4g
+Pgo+ID4gU2lnbmVkLW9mZi1ieTogVGluYSBaaGFuZyA8dGluYS56aGFuZ0BpbnRlbC5jb20+Cj4g
+PiBTaWduZWQtb2ZmLWJ5OiBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+Cj4gPiAt
+LS0KPiA+ICBpbmNsdWRlL3VhcGkvbGludXgvdmZpby5oIHwgMTkgKysrKysrKysrKysrKysrKysr
+LQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4g
+Pgo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvdWFwaS9saW51eC92ZmlvLmggYi9pbmNsdWRlL3Vh
+cGkvbGludXgvdmZpby5oIAo+ID4gaW5kZXggOGYxMDc0OGRhYzc5Li5iZTZhZGFiNGY3NTkgMTAw
+NjQ0Cj4gPiAtLS0gYS9pbmNsdWRlL3VhcGkvbGludXgvdmZpby5oCj4gPiArKysgYi9pbmNsdWRl
+L3VhcGkvbGludXgvdmZpby5oCj4gPiBAQCAtNDQ4LDExICs0NDgsMjcgQEAgc3RydWN0IHZmaW9f
+aXJxX2luZm8gewo+ID4gICNkZWZpbmUgVkZJT19JUlFfSU5GT19NQVNLQUJMRQkJKDEgPDwgMSkK
+PiA+ICAjZGVmaW5lIFZGSU9fSVJRX0lORk9fQVVUT01BU0tFRAkoMSA8PCAyKQo+ID4gICNkZWZp
+bmUgVkZJT19JUlFfSU5GT19OT1JFU0laRQkJKDEgPDwgMykKPiA+ICsjZGVmaW5lIFZGSU9fSVJR
+X0lORk9fRkxBR19DQVBTCQkoMSA8PCA0KSAvKiBJbmZvIHN1cHBvcnRzIGNhcHMKPiAqLwo+ID4g
+IAlfX3UzMglpbmRleDsJCS8qIElSUSBpbmRleCAqLwo+ID4gIAlfX3UzMgljb3VudDsJCS8qIE51
+bWJlciBvZiBJUlFzIHdpdGhpbiB0aGlzIGluZGV4ICovCj4gPiArCV9fdTMyCWNhcF9vZmZzZXQ7
+CS8qIE9mZnNldCB3aXRoaW4gaW5mbyBzdHJ1Y3Qgb2YgZmlyc3QgY2FwICovCj4gCj4gVGhpcyBz
+dGlsbCBicmVha3MgQUJJIGFzIGFyZ3N6IHdvdWxkIGJlIHVwZGF0ZWQgd2l0aCB0aGlzIG5ldyBm
+aWVsZCwgCj4gc28gaXQgd291bGQgY2F1c2UgY29tcGF0IGlzc3VlLiBJIHRoaW5rIG15IGxhc3Qg
+c3VnZ2VzdGlvbiB3YXMgdG8gCj4gYXNzdW1lIGNhcCBsaXN0IHN0YXJ0cyBhZnRlciB2ZmlvX2ly
+cV9pbmZvLgo+CiAKSW4gdGhlIGNvbW1vbiBwcmFjdGljZSwgdGhlIGdlbmVyYWwgbG9naWMgaXMg
+Zmlyc3QgdXNlIHRoZSAiY291bnQiIGFzIHRoZSAibWluc3oiIGJvdW5kYXJ5IHRvIHBlcmZvcm0g
+Y29weSBmcm9tIHVzZXIsIGFuZCB0aGVuIHBlcmZvcm0gZm9sbG93aW5nIGxvZ2ljLCBzbyB0aGF0
+IHRoZSBpbmNvbXBhdGliaWxpdHkgaXNzdWUgd291bGQgbm90IGhhcHBlbi4gQlRXLCB0aGlzIHBh
+dGNoIGhhcyBiZWVuIGRvdWJsZSBjaGVja2VkIGJ5IEVyaWMgQXVnZXIgYmVmb3JlIGluY2x1ZGVk
+IGluIGhpcyBwYXRjaC1zZXQuIAoKQmVzdCBSZWdhcmRzLApLZWNoZW4KCj4gPiAgfTsKPiA+ICAj
+ZGVmaW5lIFZGSU9fREVWSUNFX0dFVF9JUlFfSU5GTwlfSU8oVkZJT19UWVBFLCBWRklPX0JBU0Ug
+KyA5KQo+ID4KPiA+ICsvKgo+ID4gKyAqIFRoZSBpcnEgdHlwZSBjYXBhYmlsaXR5IGFsbG93cyBp
+cnFzIHVuaXF1ZSB0byBhIHNwZWNpZmljIGRldmljZSAKPiA+ICtvcgo+ID4gKyAqIGNsYXNzIG9m
+IGRldmljZXMgdG8gYmUgZXhwb3NlZC4KPiA+ICsgKgo+ID4gKyAqIFRoZSBzdHJ1Y3R1cmVzIGJl
+bG93IGRlZmluZSB2ZXJzaW9uIDEgb2YgdGhpcyBjYXBhYmlsaXR5Lgo+ID4gKyAqLwo+ID4gKyNk
+ZWZpbmUgVkZJT19JUlFfSU5GT19DQVBfVFlQRSAgICAgIDMKPiA+ICsKPiA+ICtzdHJ1Y3QgdmZp
+b19pcnFfaW5mb19jYXBfdHlwZSB7Cj4gPiArCXN0cnVjdCB2ZmlvX2luZm9fY2FwX2hlYWRlciBo
+ZWFkZXI7Cj4gPiArCV9fdTMyIHR5cGU7ICAgICAvKiBnbG9iYWwgcGVyIGJ1cyBkcml2ZXIgKi8K
+PiA+ICsJX191MzIgc3VidHlwZTsgIC8qIHR5cGUgc3BlY2lmaWMgKi8gfTsKPiA+ICsKPiA+ICAv
+KioKPiA+ICAgKiBWRklPX0RFVklDRV9TRVRfSVJRUyAtIF9JT1coVkZJT19UWVBFLCBWRklPX0JB
+U0UgKyAxMCwgc3RydWN0Cj4gdmZpb19pcnFfc2V0KQo+ID4gICAqCj4gPiBAQCAtNTU0LDcgKzU3
+MCw4IEBAIGVudW0gewo+ID4gIAlWRklPX1BDSV9NU0lYX0lSUV9JTkRFWCwKPiA+ICAJVkZJT19Q
+Q0lfRVJSX0lSUV9JTkRFWCwKPiA+ICAJVkZJT19QQ0lfUkVRX0lSUV9JTkRFWCwKPiA+IC0JVkZJ
+T19QQ0lfTlVNX0lSUVMKPiA+ICsJVkZJT19QQ0lfTlVNX0lSUVMgPSA1CS8qIEZpeGVkIHVzZXIg
+QUJJLCBJUlEgaW5kZXhlcyA+PTUgdXNlCj4gKi8KPiA+ICsJCQkJLyogZGV2aWNlIHNwZWNpZmlj
+IGNhcCB0byBkZWZpbmUgY29udGVudCAqLwo+ID4gIH07Cj4gPgo+ID4gIC8qCj4gPiAtLQo+ID4g
+Mi4xNy4xCj4gPgo+IAo+IC0tCj4gT3BlbiBTb3VyY2UgVGVjaG5vbG9neSBDZW50ZXIsIEludGVs
+IGx0ZC4KPiAKPiAkZ3BnIC0ta2V5c2VydmVyIHd3d2tleXMucGdwLm5ldCAtLXJlY3Yta2V5cyA0
+RDc4MTgyNwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpp
+bnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LWd2dC1kZXY=
