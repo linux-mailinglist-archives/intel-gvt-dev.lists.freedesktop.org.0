@@ -2,36 +2,35 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9F17783A8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jul 2019 05:31:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5617B783AB
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jul 2019 05:37:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 82983899DC;
-	Mon, 29 Jul 2019 03:31:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E466A89A32;
+	Mon, 29 Jul 2019 03:37:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E6698899DC
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 29 Jul 2019 03:31:12 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3B46289A32;
+ Mon, 29 Jul 2019 03:37:50 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2019 20:31:12 -0700
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Jul 2019 20:37:24 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.64,321,1559545200"; 
- d="asc'?scan'208";a="255081345"
+ d="asc'?scan'208";a="190415506"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga001.jf.intel.com with ESMTP; 28 Jul 2019 20:31:10 -0700
-Date: Mon, 29 Jul 2019 11:27:35 +0800
+ by fmsmga001.fm.intel.com with ESMTP; 28 Jul 2019 20:37:22 -0700
+Date: Mon, 29 Jul 2019 11:33:47 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Tina Zhang <tina.zhang@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: Double check batch buffer size after copy
-Message-ID: <20190729032735.GP8319@zhen-hp.sh.intel.com>
-References: <20190729004220.3171-1-tina.zhang@intel.com>
+To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Subject: Re: [PULL] gvt-fixes
+Message-ID: <20190729033347.GQ8319@zhen-hp.sh.intel.com>
+References: <20190723092958.GD8319@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190729004220.3171-1-tina.zhang@intel.com>
+In-Reply-To: <20190723092958.GD8319@zhen-hp.sh.intel.com>
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
@@ -46,166 +45,114 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- zhiyuan.lv@intel.com, zhenyuw@linux.intel.com, hang.yuan@intel.com
-Content-Type: multipart/mixed; boundary="===============0827729888=="
+Cc: Jani Nikula <jani.nikula@intel.com>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>, "Yuan,
+ Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
+ Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============0170743525=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0827729888==
+--===============0170743525==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="HcXnUX77nabWBLF4"
+	protocol="application/pgp-signature"; boundary="TdMwOTenGjBWB1uY"
 Content-Disposition: inline
 
 
---HcXnUX77nabWBLF4
+--TdMwOTenGjBWB1uY
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2019.07.29 08:42:20 +0800, Tina Zhang wrote:
-> Double check the size of the privilege buffer to make sure the size
-> remains unchanged after copy.
 
-It's confusing when reading the commit description vs. below actual code,
-which doesn't double check the size but detect the batch end instead.
+ping..
 
+On 2019.07.23 17:29:58 +0800, Zhenyu Wang wrote:
 >=20
-> v3:
-> - To get the right offset of the batch buffer end cmd. (Yan)
+> Hi,
 >=20
-> v2:
-> - Use lightweight way to audit batch buffer end. (Yan)
+> Here's recent gvt-fixes for 5.3-rc. It includes safety guard
+> for possible ggtt access error with related checks, includecheck
+> fix and one cache entry size fix for 2MB ppgtt guest.
 >=20
-> Cc: Yan Zhao <yan.y.zhao@intel.com>
-> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/cmd_parser.c | 39 +++++++++++++++++++++++++--
->  1 file changed, 37 insertions(+), 2 deletions(-)
+> Thanks.
+> --
+> The following changes since commit d7e8a19b38c8ac1a32b6b03af049e2c88d4155=
+db:
 >=20
-> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
-/gvt/cmd_parser.c
-> index 6ea88270c818..a641e3ee1fe4 100644
-> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> @@ -1661,7 +1661,9 @@ static int batch_buffer_needs_scan(struct parser_ex=
-ec_state *s)
->  	return 1;
->  }
-> =20
-> -static int find_bb_size(struct parser_exec_state *s, unsigned long *bb_s=
-ize)
-> +static int find_bb_size(struct parser_exec_state *s,
-> +			unsigned long *bb_size,
-> +			unsigned long *bb_end_cmd_offset)
->  {
->  	unsigned long gma =3D 0;
->  	const struct cmd_info *info;
-> @@ -1673,6 +1675,7 @@ static int find_bb_size(struct parser_exec_state *s=
-, unsigned long *bb_size)
->  		s->vgpu->gtt.ggtt_mm : s->workload->shadow_mm;
-> =20
->  	*bb_size =3D 0;
-> +	*bb_end_cmd_offset =3D 0;
-> =20
->  	/* get the start gm address of the batch buffer */
->  	gma =3D get_gma_bb_from_cmd(s, 1);
-> @@ -1708,6 +1711,10 @@ static int find_bb_size(struct parser_exec_state *=
-s, unsigned long *bb_size)
->  				/* chained batch buffer */
->  				bb_end =3D true;
->  		}
-> +
-> +		if (bb_end)
-> +			*bb_end_cmd_offset =3D *bb_size;
-> +
->  		cmd_len =3D get_cmd_length(info, cmd) << 2;
->  		*bb_size +=3D cmd_len;
->  		gma +=3D cmd_len;
-> @@ -1716,12 +1723,36 @@ static int find_bb_size(struct parser_exec_state =
-*s, unsigned long *bb_size)
->  	return 0;
->  }
-> =20
-> +static int audit_bb_end(struct parser_exec_state *s, void *va)
-> +{
-> +	struct intel_vgpu *vgpu =3D s->vgpu;
-> +	u32 cmd =3D *(u32 *)va;
-> +	const struct cmd_info *info;
-> +
-> +	info =3D get_cmd_info(s->vgpu->gvt, cmd, s->ring_id);
-> +	if (info =3D=3D NULL) {
-> +		gvt_vgpu_err("unknown cmd 0x%x, opcode=3D0x%x, addr_type=3D%s, ring %d=
-, workload=3D%p\n",
-> +			cmd, get_opcode(cmd, s->ring_id),
-> +			(s->buf_addr_type =3D=3D PPGTT_BUFFER) ?
-> +			"ppgtt" : "ggtt", s->ring_id, s->workload);
-> +		return -EBADRQC;
-> +	}
-> +
-> +	if ((info->opcode =3D=3D OP_MI_BATCH_BUFFER_END) ||
-> +	    ((info->opcode =3D=3D OP_MI_BATCH_BUFFER_START) &&
-> +	     (BATCH_BUFFER_2ND_LEVEL_BIT(cmd) =3D=3D 0)))
-> +		return 0;
-> +
-> +	return -EBADRQC;
-> +}
-> +
->  static int perform_bb_shadow(struct parser_exec_state *s)
->  {
->  	struct intel_vgpu *vgpu =3D s->vgpu;
->  	struct intel_vgpu_shadow_bb *bb;
->  	unsigned long gma =3D 0;
->  	unsigned long bb_size;
-> +	unsigned long bb_end_cmd_offset;
->  	int ret =3D 0;
->  	struct intel_vgpu_mm *mm =3D (s->buf_addr_type =3D=3D GTT_BUFFER) ?
->  		s->vgpu->gtt.ggtt_mm : s->workload->shadow_mm;
-> @@ -1732,7 +1763,7 @@ static int perform_bb_shadow(struct parser_exec_sta=
-te *s)
->  	if (gma =3D=3D INTEL_GVT_INVALID_ADDR)
->  		return -EFAULT;
-> =20
-> -	ret =3D find_bb_size(s, &bb_size);
-> +	ret =3D find_bb_size(s, &bb_size, &bb_end_cmd_offset);
->  	if (ret)
->  		return ret;
-> =20
-> @@ -1788,6 +1819,10 @@ static int perform_bb_shadow(struct parser_exec_st=
-ate *s)
->  		goto err_unmap;
->  	}
-> =20
-> +	ret =3D audit_bb_end(s, bb->va + start_offset + bb_end_cmd_offset);
-> +	if (ret)
-> +		goto err_unmap;
-> +
->  	INIT_LIST_HEAD(&bb->list);
->  	list_add(&bb->list, &s->workload->shadow_bb);
-> =20
+>   drm/i915: Don't dereference request if it may have been retired when pr=
+inting (2019-07-09 16:16:18 +0300)
+>=20
+> are available in the Git repository at:
+>=20
+>   https://github.com/intel/gvt-linux.git tags/gvt-fixes-2019-07-23
+>=20
+> for you to fetch changes up to 8642656299cf86cfeceb1a48b0e1874de6874a2b:
+>=20
+>   drm/i915/gvt: fix incorrect cache entry for guest page mapping (2019-07=
+-18 11:06:41 +0800)
+>=20
+> ----------------------------------------------------------------
+> gvt-fixes-2019-07-23
+>=20
+> - Guard against potential ggtt access error (Xiong)
+> - Fix includecheck (Zhenyu)
+> - Fix cache entry for guest page mapping found by 2M ppgtt guest (Xiaolin)
+>=20
+> ----------------------------------------------------------------
+> Xiaolin Zhang (1):
+>       drm/i915/gvt: fix incorrect cache entry for guest page mapping
+>=20
+> Xiong Zhang (3):
+>       drm/i915/gvt: Warning for invalid ggtt access
+>       drm/i915/gvt: Don't use ggtt_validdate_range() with size=3D0
+>       drm/i915/gvt: Checking workload's gma earlier
+>=20
+> Zhenyu Wang (1):
+>       drm/i915/gvt: remove duplicate include of trace.h
+>=20
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c   | 10 ----------
+>  drivers/gpu/drm/i915/gvt/fb_decoder.c   |  6 +++---
+>  drivers/gpu/drm/i915/gvt/gtt.c          |  9 +++++++++
+>  drivers/gpu/drm/i915/gvt/kvmgt.c        | 12 ++++++++++++
+>  drivers/gpu/drm/i915/gvt/scheduler.c    | 28 ++++++++++++++++++++++++++++
+>  drivers/gpu/drm/i915/gvt/trace_points.c |  2 --
+>  6 files changed, 52 insertions(+), 15 deletions(-)
+>=20
 > --=20
-> 2.17.1
+> Open Source Technology Center, Intel ltd.
 >=20
+> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+
+
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
 
 --=20
 Open Source Technology Center, Intel ltd.
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---HcXnUX77nabWBLF4
+--TdMwOTenGjBWB1uY
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXT5npwAKCRCxBBozTXgY
-JxSCAJ431Ux9XUb9f2jWcD9Uy1dnEaAT+QCfWP1QktcIW1sXf5eqb3+tcV5wU2s=
-=eHqO
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXT5pGwAKCRCxBBozTXgY
+J1upAJ4loGeJQUdxWBbmRrd+4LQtcqPOhwCfSKnHGcPODbdbl6ySnJ8bqlDWrfk=
+=+E6Y
 -----END PGP SIGNATURE-----
 
---HcXnUX77nabWBLF4--
+--TdMwOTenGjBWB1uY--
 
---===============0827729888==
+--===============0170743525==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -215,4 +162,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============0827729888==--
+--===============0170743525==--
