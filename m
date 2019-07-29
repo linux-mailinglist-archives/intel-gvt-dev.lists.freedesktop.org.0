@@ -1,36 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5617B783AB
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jul 2019 05:37:53 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D795578456
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jul 2019 07:14:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E466A89A32;
-	Mon, 29 Jul 2019 03:37:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8515D89C52;
+	Mon, 29 Jul 2019 05:14:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3B46289A32;
- Mon, 29 Jul 2019 03:37:50 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6421989C52
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 29 Jul 2019 05:13:59 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2019 20:37:24 -0700
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Jul 2019 22:13:58 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.64,321,1559545200"; 
- d="asc'?scan'208";a="190415506"
+ d="asc'?scan'208";a="322743387"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by fmsmga001.fm.intel.com with ESMTP; 28 Jul 2019 20:37:22 -0700
-Date: Mon, 29 Jul 2019 11:33:47 +0800
+ by orsmga004.jf.intel.com with ESMTP; 28 Jul 2019 22:13:57 -0700
+Date: Mon, 29 Jul 2019 13:10:22 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Subject: Re: [PULL] gvt-fixes
-Message-ID: <20190729033347.GQ8319@zhen-hp.sh.intel.com>
-References: <20190723092958.GD8319@zhen-hp.sh.intel.com>
+To: fred gao <fred.gao@intel.com>
+Subject: Re: [PATCH v3 1/3] drm/i915/gvt: Utility for valid command length
+ check
+Message-ID: <20190729051022.GR8319@zhen-hp.sh.intel.com>
+References: <20190718013901.3267-1-fred.gao@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190723092958.GD8319@zhen-hp.sh.intel.com>
+In-Reply-To: <20190718013901.3267-1-fred.gao@intel.com>
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
@@ -45,114 +47,120 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Jani Nikula <jani.nikula@intel.com>,
- intel-gfx <intel-gfx@lists.freedesktop.org>, "Yuan,
- Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============0170743525=="
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============1854033110=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0170743525==
+--===============1854033110==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="TdMwOTenGjBWB1uY"
+	protocol="application/pgp-signature"; boundary="iKKZt69u2Wx/rspf"
 Content-Disposition: inline
 
 
---TdMwOTenGjBWB1uY
+--iKKZt69u2Wx/rspf
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
+On 2019.07.18 09:39:01 +0800, fred gao wrote:
+> From: "Gao, Fred" <fred.gao@intel.com>
+>=20
+> Add utility for valid command length check.
+>=20
+> v2: Add F_VAL_CONST flag to identify the value is const
+>     although LEN maybe variable. (Zhenyu)
+> v3: unused code removal, flag rename/conflict. (Zhenyu)
+> v4: redefine F_IP_ADVANCE_CUSTOM and move the check function to
+>     next patch. (Zhenyu)
+>=20
+> Signed-off-by: Gao, Fred <fred.gao@intel.com>
 
-ping..
+Double checked this w/o regression so far. Thanks.
 
-On 2019.07.23 17:29:58 +0800, Zhenyu Wang wrote:
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+> ---
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c | 15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
 >=20
-> Hi,
->=20
-> Here's recent gvt-fixes for 5.3-rc. It includes safety guard
-> for possible ggtt access error with related checks, includecheck
-> fix and one cache entry size fix for 2MB ppgtt guest.
->=20
-> Thanks.
-> --
-> The following changes since commit d7e8a19b38c8ac1a32b6b03af049e2c88d4155=
-db:
->=20
->   drm/i915: Don't dereference request if it may have been retired when pr=
-inting (2019-07-09 16:16:18 +0300)
->=20
-> are available in the Git repository at:
->=20
->   https://github.com/intel/gvt-linux.git tags/gvt-fixes-2019-07-23
->=20
-> for you to fetch changes up to 8642656299cf86cfeceb1a48b0e1874de6874a2b:
->=20
->   drm/i915/gvt: fix incorrect cache entry for guest page mapping (2019-07=
--18 11:06:41 +0800)
->=20
-> ----------------------------------------------------------------
-> gvt-fixes-2019-07-23
->=20
-> - Guard against potential ggtt access error (Xiong)
-> - Fix includecheck (Zhenyu)
-> - Fix cache entry for guest page mapping found by 2M ppgtt guest (Xiaolin)
->=20
-> ----------------------------------------------------------------
-> Xiaolin Zhang (1):
->       drm/i915/gvt: fix incorrect cache entry for guest page mapping
->=20
-> Xiong Zhang (3):
->       drm/i915/gvt: Warning for invalid ggtt access
->       drm/i915/gvt: Don't use ggtt_validdate_range() with size=3D0
->       drm/i915/gvt: Checking workload's gma earlier
->=20
-> Zhenyu Wang (1):
->       drm/i915/gvt: remove duplicate include of trace.h
->=20
->  drivers/gpu/drm/i915/gvt/cmd_parser.c   | 10 ----------
->  drivers/gpu/drm/i915/gvt/fb_decoder.c   |  6 +++---
->  drivers/gpu/drm/i915/gvt/gtt.c          |  9 +++++++++
->  drivers/gpu/drm/i915/gvt/kvmgt.c        | 12 ++++++++++++
->  drivers/gpu/drm/i915/gvt/scheduler.c    | 28 ++++++++++++++++++++++++++++
->  drivers/gpu/drm/i915/gvt/trace_points.c |  2 --
->  6 files changed, 52 insertions(+), 15 deletions(-)
->=20
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.c
+> index b09dc315e2da..42a10b200744 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> @@ -378,17 +378,17 @@ struct cmd_info {
+>  	const char *name;
+>  	u32 opcode;
+> =20
+> -#define F_LEN_MASK	(1U<<0)
+> +#define F_LEN_MASK	3U
+>  #define F_LEN_CONST  1U
+>  #define F_LEN_VAR    0U
+> +/* value is const although LEN maybe variable */
+> +#define F_LEN_VAR_FIXED    (1<<1)
+> =20
+>  /*
+>   * command has its own ip advance logic
+>   * e.g. MI_BATCH_START, MI_BATCH_END
+>   */
+> -#define F_IP_ADVANCE_CUSTOM (1<<1)
+> -
+> -#define F_POST_HANDLE	(1<<2)
+> +#define F_IP_ADVANCE_CUSTOM (1<<2)
+>  	u32 flag;
+> =20
+>  #define R_RCS	BIT(RCS0)
+> @@ -418,9 +418,12 @@ struct cmd_info {
+>  	 * flag =3D=3D F_LEN_VAR : length bias bits
+>  	 * Note: length is in DWord
+>  	 */
+> -	u8 len;
+> +	u32 len;
+> =20
+>  	parser_cmd_handler handler;
+> +
+> +	/* valid length in DWord */
+> +	u32 valid_len;
+>  };
+> =20
+>  struct cmd_entry {
+> @@ -1912,7 +1915,7 @@ static const struct cmd_info cmd_info[] =3D {
+>  	{"MI_RS_CONTEXT", OP_MI_RS_CONTEXT, F_LEN_CONST, R_RCS, D_ALL, 0, 1,
+>  		NULL},
+> =20
+> -	{"MI_DISPLAY_FLIP", OP_MI_DISPLAY_FLIP, F_LEN_VAR | F_POST_HANDLE,
+> +	{"MI_DISPLAY_FLIP", OP_MI_DISPLAY_FLIP, F_LEN_VAR,
+>  		R_RCS | R_BCS, D_ALL, 0, 8, cmd_handler_mi_display_flip},
+> =20
+>  	{"MI_SEMAPHORE_MBOX", OP_MI_SEMAPHORE_MBOX, F_LEN_VAR, R_ALL, D_ALL,
 > --=20
-> Open Source Technology Center, Intel ltd.
+> 2.17.1
 >=20
-> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
-
-
 > _______________________________________________
 > intel-gvt-dev mailing list
 > intel-gvt-dev@lists.freedesktop.org
 > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
 
 --=20
 Open Source Technology Center, Intel ltd.
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---TdMwOTenGjBWB1uY
+--iKKZt69u2Wx/rspf
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXT5pGwAKCRCxBBozTXgY
-J1upAJ4loGeJQUdxWBbmRrd+4LQtcqPOhwCfSKnHGcPODbdbl6ySnJ8bqlDWrfk=
-=+E6Y
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXT5/vgAKCRCxBBozTXgY
+JwIiAJ9OrFMLVEi9R7+gMxLGEyH/2EYoRgCfaOQ2sXUjUpNrq2a+m4xNWTSTfrU=
+=J5w6
 -----END PGP SIGNATURE-----
 
---TdMwOTenGjBWB1uY--
+--iKKZt69u2Wx/rspf--
 
---===============0170743525==
+--===============1854033110==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -162,4 +170,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============0170743525==--
+--===============1854033110==--
