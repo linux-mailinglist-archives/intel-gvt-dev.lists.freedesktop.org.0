@@ -2,33 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44F928B4E4
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Aug 2019 12:03:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D9EF28B510
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Aug 2019 12:10:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F10D66E0E0;
-	Tue, 13 Aug 2019 10:02:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 950C56E0E9;
+	Tue, 13 Aug 2019 10:10:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D47A06E0DF;
- Tue, 13 Aug 2019 10:02:57 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B76416E0E9;
+ Tue, 13 Aug 2019 10:10:15 +0000 (UTC)
 X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2019 03:02:57 -0700
+ 13 Aug 2019 03:10:15 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.64,381,1559545200"; 
- d="asc'?scan'208";a="178627116"
+ d="asc'?scan'208";a="187730207"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga003.jf.intel.com with ESMTP; 13 Aug 2019 03:02:55 -0700
-Date: Tue, 13 Aug 2019 17:58:45 +0800
+ by orsmga002.jf.intel.com with ESMTP; 13 Aug 2019 03:10:13 -0700
+Date: Tue, 13 Aug 2019 18:06:04 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jani Nikula <jani.nikula@intel.com>,
+To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20190813095845.GF19140@zhen-hp.sh.intel.com>
+ Jani Nikula <jani.nikula@intel.com>
+Subject: [PULL] gvt-next
+Message-ID: <20190813100604.GG19140@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -48,18 +48,18 @@ Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
  intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
  Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
  Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============1966190634=="
+Content-Type: multipart/mixed; boundary="===============1272978916=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============1966190634==
+--===============1272978916==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Bu8it7iiRSEf40bY"
+	protocol="application/pgp-signature"; boundary="hxkXGo8AKqTJ+9QI"
 Content-Disposition: inline
 
 
---Bu8it7iiRSEf40bY
+--hxkXGo8AKqTJ+9QI
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
@@ -67,36 +67,68 @@ Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-Here's one gvt fix for 5.3-rc, to fix one use-after-free issue
-introduced in last fixes pull.
+Here's gvt-next stuff for next kernel which include several enhancement
+for cmd parser and batch buffer shadow, remove extra debugfs function
+return check, and with other misc changes like typo, static check fix,
+etc.
 
 Thanks
 --
-The following changes since commit 4187414808095f645ca0661f8dde77617e2e7cb3:
+The following changes since commit e0e712fe42ef67bdf45fc348767d1d0a4eeba77f:
 
-  drm/i915/gvt: Adding ppgtt to GVT GEM context after shadow pdps settled. =
-(2019-07-30 14:30:56 +0800)
+  drm/i915: Update DRIVER_DATE to 20190730 (2019-07-30 11:50:24 -0700)
 
 are available in the Git repository at:
 
-  https://github.com/intel/gvt-linux.git tags/gvt-fixes-2019-08-13
+  https://github.com/intel/gvt-linux.git tags/gvt-next-2019-08-13
 
-for you to fetch changes up to eac4471d0882da14be652ef0a55b914145fab15a:
+for you to fetch changes up to 220b65d8009dff397a112ee560c297299ba5e423:
 
-  drm/i915: Use after free in error path in intel_vgpu_create_workload() (2=
-019-08-09 16:04:18 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2019-08-13
-
-- Fix one use-after-free error (Dan)
+  drm/i915/gvt: Double check batch buffer size after copy (2019-08-13 17:55=
+:06 +0800)
 
 ----------------------------------------------------------------
-Dan Carpenter (1):
-      drm/i915: Use after free in error path in intel_vgpu_create_workload()
+gvt-next-2019-08-13
 
- drivers/gpu/drm/i915/gvt/scheduler.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+- Enhance command parser for extra length check (Fred)
+- remove debugfs function return check (Greg)
+- batch buffer end double check after shadow copy (Tina)
+- one typo fix (Zhenyu)
+- klocwork warning fix (Zhi)
+- use struct_size() helper (Gustavo)
+
+----------------------------------------------------------------
+Gao, Fred (3):
+      drm/i915/gvt: Utility for valid command length check
+      drm/i915/gvt: Add MI command valid length check
+      drm/i915/gvt: Add valid length check for MI variable commands
+
+Greg Kroah-Hartman (1):
+      drm/i915/gvt: no need to check return value of debugfs_create functio=
+ns
+
+Gustavo A. R. Silva (1):
+      drm/i915/kvmgt: Use struct_size() helper
+
+Tina Zhang (1):
+      drm/i915/gvt: Double check batch buffer size after copy
+
+Zhenyu Wang (1):
+      drm/i915/gvt: Fix typo of VBLANK_TIMER_PERIOD
+
+Zhi Wang (1):
+      drm/i915/gvt: factor out tlb and mocs register offset table
+
+ drivers/gpu/drm/i915/gvt/cmd_parser.c   | 180 ++++++++++++++++++++++++++--=
+----
+ drivers/gpu/drm/i915/gvt/debugfs.c      |  47 ++-------
+ drivers/gpu/drm/i915/gvt/gvt.c          |   4 +-
+ drivers/gpu/drm/i915/gvt/gvt.h          |   8 +-
+ drivers/gpu/drm/i915/gvt/interrupt.c    |   4 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c        |  15 +--
+ drivers/gpu/drm/i915/gvt/mmio_context.c |  57 ++++++----
+ drivers/gpu/drm/i915/gvt/vgpu.c         |   4 +-
+ 8 files changed, 212 insertions(+), 107 deletions(-)
 
 
 --=20
@@ -104,19 +136,19 @@ Open Source Technology Center, Intel ltd.
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---Bu8it7iiRSEf40bY
+--hxkXGo8AKqTJ+9QI
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXVKJ1QAKCRCxBBozTXgY
-J7oqAJ9QIMK3tpzpsA+1t5SESnqXfuwhMACeM5KXY/353KHK2hU64wGuUsUHqzU=
-=E9hf
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXVKLjAAKCRCxBBozTXgY
+J8TlAJ0fIm0XGn5kAK2S5Po9HwH+PtzqSgCfY9pOjLkjbJicBBq4GaHAh3csJ4g=
+=5P70
 -----END PGP SIGNATURE-----
 
---Bu8it7iiRSEf40bY--
+--hxkXGo8AKqTJ+9QI--
 
---===============1966190634==
+--===============1272978916==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -126,4 +158,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============1966190634==--
+--===============1272978916==--
