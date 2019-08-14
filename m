@@ -2,35 +2,59 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 177108C24F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Aug 2019 22:48:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D32B8CF18
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Aug 2019 11:11:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C0D916E042;
-	Tue, 13 Aug 2019 20:48:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2D2146E46F;
+	Wed, 14 Aug 2019 09:11:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1B5346E042;
- Tue, 13 Aug 2019 20:48:05 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2019 13:48:04 -0700
-X-IronPort-AV: E=Sophos;i="5.64,382,1559545200"; d="scan'208";a="167171129"
-Received: from rdvivi-losangeles.jf.intel.com (HELO intel.com) ([10.7.196.65])
- by orsmga007-auth.jf.intel.com with
- ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Aug 2019 13:48:04 -0700
-Date: Tue, 13 Aug 2019 13:48:37 -0700
-From: Rodrigo Vivi <rodrigo.vivi@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PULL] gvt-next
-Message-ID: <20190813204836.GA17273@intel.com>
-References: <20190813100604.GG19140@zhen-hp.sh.intel.com>
+X-Greylist: delayed 1800 seconds by postgrey-1.36 at gabe;
+ Wed, 14 Aug 2019 09:11:34 UTC
+Received: from bosmailout01.eigbox.net (bosmailout01.eigbox.net [66.96.185.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E889C6E46F;
+ Wed, 14 Aug 2019 09:11:34 +0000 (UTC)
+Received: from bosmailscan06.eigbox.net ([10.20.15.6])
+ by bosmailout01.eigbox.net with esmtp (Exim)
+ id 1hxoqb-0004fz-J2; Wed, 14 Aug 2019 04:41:33 -0400
+Received: from [10.115.3.31] (helo=bosimpout11)
+ by bosmailscan06.eigbox.net with esmtp (Exim)
+ id 1hxoqb-00039J-HR; Wed, 14 Aug 2019 04:41:33 -0400
+Received: from boswebmail05.eigbox.net ([10.20.16.5]) by bosimpout11 with 
+ id owhK2000706ZEP601whNLn; Wed, 14 Aug 2019 04:41:33 -0400
+X-Authority-Analysis: v=2.2 cv=RKvDJ8q+ c=1 sm=1 tr=0
+ a=ugAwYMi5Ce8m9tm4hY6jtQ==:117 a=UuIbADj5wyglL54oTYG/ew==:17
+ a=T37_3-_xDYUA:10 a=x7bEGLp0ZPQA:10 a=FmdZ9Uzk2mMA:10
+ a=v7K953DbmOMTLgNcn5AA:9 a=CjuIK1q_8ugA:10 a=fwGTFvqGrGwt2QmmicoA:9
+ a=_W_S_7VecoQA:10 a=QEXdDO2ut3YA:10 a=NMy4LrQXOexfsfnTc0V3:22
+Received: from [127.0.0.1] (helo=ipage)
+ by boswebmail05.eigbox.net with esmtp (Exim)
+ id 1hxoqN-0004wy-8u; Wed, 14 Aug 2019 04:41:19 -0400
+Received: from 112.208.40.164.pldt.net ([112.208.40.164]) by emailmg.ipage.com
+ with HTTP (HTTP/1.1 POST); Wed, 14 Aug 2019 04:41:19 -0400
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190813100604.GG19140@zhen-hp.sh.intel.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Date: Wed, 14 Aug 2019 02:41:19 -0600
+From: sophia@gorohachiro.com
+To: undisclosed-recipients:;
+Subject: My humble request
+Mail-Reply-To: urmsophia@gmail.com
+Message-ID: <0d44cd59e6ab346546757a0cfdf8e684@gorohachiro.com>
+X-Sender: sophia@gorohachiro.com
+User-Agent: Roundcube Webmail/1.3.8
+X-EN-AuthUser: sophia@gorohachiro.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=gorohachiro.com; s=dkim; h=Sender:Message-ID:Reply-To:Subject:To:From:Date:
+ Content-Type:MIME-Version:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=cfrGpB7zmjcMKGJWA+FrE6+DMrKejDR5IsoLNWMzk6I=; b=kOBs7UFsvrm/o3B2/HZmWAu8Zm
+ /Zn1FfE6eFeQXp9PrhI0OwXwtf3+5fQk9qx6wz+djw/sYBdOudc7QN/PLpXk1WvgKotaH83lO+fPp
+ 73BlEboxqW4Sx4987q4+0rpc8YJ1mMWDdxwCR8PAFxQh7AaeZVAp0TaZr1Kxmv6eQ3eVhHvI9sQVT
+ Ks7Pi9VmOZfCvQ3MsoMjgvR453Xc45DAxEn7m9DCEC555Jf0pFPOsO+Hx0mDkA2FQ9SYSqcboJ9qK
+ bqEHaUF+9h5AZATN+QrBWCeTwyVtt1BSslJoVNgDfA9VWTFfC2cFVB4ASBvlv3o0eFhZTIbYn4SiD
+ kaGnNMtg==;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -43,61 +67,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jani Nikula <jani.nikula@intel.com>,
- intel-gfx <intel-gfx@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: urmsophia@gmail.com
+Content-Type: multipart/mixed; boundary="===============1836052725=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gVHVlLCBBdWcgMTMsIDIwMTkgYXQgMDY6MDY6MDRQTSArMDgwMCwgWmhlbnl1IFdhbmcgd3Jv
-dGU6Cj4gCj4gSGksCj4gCj4gSGVyZSdzIGd2dC1uZXh0IHN0dWZmIGZvciBuZXh0IGtlcm5lbCB3
-aGljaCBpbmNsdWRlIHNldmVyYWwgZW5oYW5jZW1lbnQKPiBmb3IgY21kIHBhcnNlciBhbmQgYmF0
-Y2ggYnVmZmVyIHNoYWRvdywgcmVtb3ZlIGV4dHJhIGRlYnVnZnMgZnVuY3Rpb24KPiByZXR1cm4g
-Y2hlY2ssIGFuZCB3aXRoIG90aGVyIG1pc2MgY2hhbmdlcyBsaWtlIHR5cG8sIHN0YXRpYyBjaGVj
-ayBmaXgsCj4gZXRjLgoKUHVsbGVkLCBUaGFua3MKCj4gCj4gVGhhbmtzCj4gLS0KPiBUaGUgZm9s
-bG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IGUwZTcxMmZlNDJlZjY3YmRmNDVmYzM0ODc2N2Qx
-ZDBhNGVlYmE3N2Y6Cj4gCj4gICBkcm0vaTkxNTogVXBkYXRlIERSSVZFUl9EQVRFIHRvIDIwMTkw
-NzMwICgyMDE5LTA3LTMwIDExOjUwOjI0IC0wNzAwKQo+IAo+IGFyZSBhdmFpbGFibGUgaW4gdGhl
-IEdpdCByZXBvc2l0b3J5IGF0Ogo+IAo+ICAgaHR0cHM6Ly9naXRodWIuY29tL2ludGVsL2d2dC1s
-aW51eC5naXQgdGFncy9ndnQtbmV4dC0yMDE5LTA4LTEzCj4gCj4gZm9yIHlvdSB0byBmZXRjaCBj
-aGFuZ2VzIHVwIHRvIDIyMGI2NWQ4MDA5ZGZmMzk3YTExMmVlNTYwYzI5NzI5OWJhNWU0MjM6Cj4g
-Cj4gICBkcm0vaTkxNS9ndnQ6IERvdWJsZSBjaGVjayBiYXRjaCBidWZmZXIgc2l6ZSBhZnRlciBj
-b3B5ICgyMDE5LTA4LTEzIDE3OjU1OjA2ICswODAwKQo+IAo+IC0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiBndnQtbmV4dC0y
-MDE5LTA4LTEzCj4gCj4gLSBFbmhhbmNlIGNvbW1hbmQgcGFyc2VyIGZvciBleHRyYSBsZW5ndGgg
-Y2hlY2sgKEZyZWQpCj4gLSByZW1vdmUgZGVidWdmcyBmdW5jdGlvbiByZXR1cm4gY2hlY2sgKEdy
-ZWcpCj4gLSBiYXRjaCBidWZmZXIgZW5kIGRvdWJsZSBjaGVjayBhZnRlciBzaGFkb3cgY29weSAo
-VGluYSkKPiAtIG9uZSB0eXBvIGZpeCAoWmhlbnl1KQo+IC0ga2xvY3dvcmsgd2FybmluZyBmaXgg
-KFpoaSkKPiAtIHVzZSBzdHJ1Y3Rfc2l6ZSgpIGhlbHBlciAoR3VzdGF2bykKPiAKPiAtLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-Cj4gR2FvLCBGcmVkICgzKToKPiAgICAgICBkcm0vaTkxNS9ndnQ6IFV0aWxpdHkgZm9yIHZhbGlk
-IGNvbW1hbmQgbGVuZ3RoIGNoZWNrCj4gICAgICAgZHJtL2k5MTUvZ3Z0OiBBZGQgTUkgY29tbWFu
-ZCB2YWxpZCBsZW5ndGggY2hlY2sKPiAgICAgICBkcm0vaTkxNS9ndnQ6IEFkZCB2YWxpZCBsZW5n
-dGggY2hlY2sgZm9yIE1JIHZhcmlhYmxlIGNvbW1hbmRzCj4gCj4gR3JlZyBLcm9haC1IYXJ0bWFu
-ICgxKToKPiAgICAgICBkcm0vaTkxNS9ndnQ6IG5vIG5lZWQgdG8gY2hlY2sgcmV0dXJuIHZhbHVl
-IG9mIGRlYnVnZnNfY3JlYXRlIGZ1bmN0aW9ucwo+IAo+IEd1c3Rhdm8gQS4gUi4gU2lsdmEgKDEp
-Ogo+ICAgICAgIGRybS9pOTE1L2t2bWd0OiBVc2Ugc3RydWN0X3NpemUoKSBoZWxwZXIKPiAKPiBU
-aW5hIFpoYW5nICgxKToKPiAgICAgICBkcm0vaTkxNS9ndnQ6IERvdWJsZSBjaGVjayBiYXRjaCBi
-dWZmZXIgc2l6ZSBhZnRlciBjb3B5Cj4gCj4gWmhlbnl1IFdhbmcgKDEpOgo+ICAgICAgIGRybS9p
-OTE1L2d2dDogRml4IHR5cG8gb2YgVkJMQU5LX1RJTUVSX1BFUklPRAo+IAo+IFpoaSBXYW5nICgx
-KToKPiAgICAgICBkcm0vaTkxNS9ndnQ6IGZhY3RvciBvdXQgdGxiIGFuZCBtb2NzIHJlZ2lzdGVy
-IG9mZnNldCB0YWJsZQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvY21kX3BhcnNlci5j
-ICAgfCAxODAgKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0KPiAgZHJpdmVycy9ncHUv
-ZHJtL2k5MTUvZ3Z0L2RlYnVnZnMuYyAgICAgIHwgIDQ3ICsrLS0tLS0tLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vaTkxNS9ndnQvZ3Z0LmMgICAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJt
-L2k5MTUvZ3Z0L2d2dC5oICAgICAgICAgIHwgICA4ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1
-L2d2dC9pbnRlcnJ1cHQuYyAgICB8ICAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQv
-a3ZtZ3QuYyAgICAgICAgfCAgMTUgKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9tbWlv
-X2NvbnRleHQuYyB8ICA1NyArKysrKystLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC92
-Z3B1LmMgICAgICAgICB8ICAgNCArLQo+ICA4IGZpbGVzIGNoYW5nZWQsIDIxMiBpbnNlcnRpb25z
-KCspLCAxMDcgZGVsZXRpb25zKC0pCj4gCj4gCj4gLS0gCj4gT3BlbiBTb3VyY2UgVGVjaG5vbG9n
-eSBDZW50ZXIsIEludGVsIGx0ZC4KPiAKPiAkZ3BnIC0ta2V5c2VydmVyIHd3d2tleXMucGdwLm5l
-dCAtLXJlY3Yta2V5cyA0RDc4MTgyNwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
+--===============1836052725==
+Content-Type: multipart/alternative;
+ boundary="=_04321ca11d2aecc2e4cb3cf1fce6a8ba"
+
+--=_04321ca11d2aecc2e4cb3cf1fce6a8ba
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
+
+Greetings 
+How are you today,
+I am a NATO soldier serving in Afghanistan.I and my comrades, we are
+seeking your assistance as a business entrepreneur or business
+development manager to help us receive/invest our funds in your country
+in any lucrative business.Please if this proposal is acceptable by you,
+kindly respond back
+
+Best Regards
+Sophia
+--=_04321ca11d2aecc2e4cb3cf1fce6a8ba
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8" /></head><body style=3D'font-size: 10pt; font-family: Verdana,Gen=
+eva,sans-serif'>
+<p><br /></p>
+<div>
+<div class=3D"pre" style=3D"margin: 0; padding: 0; font-family: monospace">=
+Greetings <br /> How are you today,<br /> I am a NATO soldier serving in Af=
+ghanistan.I and my comrades, we are seeking your assistance as a business e=
+ntrepreneur or business development manager to help us receive/invest our f=
+unds in your country in any lucrative business.Please if this proposal is a=
+cceptable by you, kindly respond back<br /> <br /> Best Regards<br /> Sophi=
+a</div>
+</div>
+</body></html>
+
+--=_04321ca11d2aecc2e4cb3cf1fce6a8ba--
+
+--===============1836052725==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1836052725==--
