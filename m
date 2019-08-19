@@ -2,27 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 079BD917E7
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Aug 2019 18:46:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2340A9488C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Aug 2019 17:32:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BF59E6E084;
-	Sun, 18 Aug 2019 16:46:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D68476E1D8;
+	Mon, 19 Aug 2019 15:32:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from itzamna.techcave.pl (techcave.pl [192.162.248.2])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B6F856E084;
- Sun, 18 Aug 2019 16:46:13 +0000 (UTC)
-Received: from User (h38.si.estore.co.jp [210.248.168.38])
- by itzamna.techcave.pl (Postfix) with ESMTPA id 445BC517966A;
- Sun, 18 Aug 2019 14:08:26 +0200 (CEST)
-From: "DOUGLAS O'CONNOR"<kishi@techcave.pl>
-Subject: Your response is needed.....!!!
-Date: Sun, 18 Aug 2019 14:03:45 +0200
+Received: from sonic305-27.consmr.mail.ne1.yahoo.com
+ (sonic305-27.consmr.mail.ne1.yahoo.com [66.163.185.153])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F3F1B6E1D8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 19 Aug 2019 15:32:28 +0000 (UTC)
+X-YMail-OSG: KMBP7EcVM1nA0usTDBtPPYya15ox0TIWE6uvMJITTGhUftQqwxs1JCjOkf1pyQx
+ .2UvqbnGl5ouFXbO4GZF2RyGYwfPf3MAyaeaVyhjwwr0.X3T7aLX_ZIljVrSEMm0gLrM0lhipunX
+ SChfBhYvbAb0MwZ858AJ8lyags2nYroebxBunlC7s0j7V9udbErFTBY3UQvA0TqTV6p6LJgVSli3
+ VpOku0WDK9I8mJyFEBhvboFCpUhoFii8HyivABjidsW_vU19aqAVjQYuWDz6wiqaKjL1xiAfD4kn
+ 5c_RDPga1R62JUE7QCkDK4phrz8wJ9piuBV5I0y07TomDnGp6IEwoHPv6w9OxLJyE0HwtsDSoL6o
+ 52D2ShFBLOFE5kHDR3qRitAvKlWK3Orvq1VwOi3_IRwSqI070OfJYFCBaPNpjZX0JD5TnT0El.kB
+ BrD4oJdnq1HCC2l4vmhriHoHqKYfFQBsbAMWRryEAXiTFE62WD7386CtIYRqchIxJNVJWE.rreR4
+ c8AsVVnDtR58KHBKvNVQmq8mAlLCntTjGubs5gGLaak3vLXOart837rIO13iFDCiaGzdmg4bEKlg
+ .kwVH8x04UzjNUeGHjhJ0jP2KmmTW.foR6_Bw7gkRwARWF1KAFAN.QfA4mpwKqYMEjJ0P5bU1zKE
+ 0VdRbNpixgrbvD8w5IyLODz6bLg86mqsrGFiYBapCVEB024X98ocIfUPEVr6lMtsbOEtaqunw2Yd
+ pkXigUvSanr94DkbTNlfctPE3SlXrt.I0L6_AREBZUzGJhnYoRLyLYUH17gCPLNm4KRU0UJxVq6O
+ 2qgJB2kn5qmFi3GMc3V7h6AXBIQrHulCHr.I1nANH5I7XkMw0fXHKKX4186PGOVIzlTtLH6bKJzF
+ RWKvqIp6N9K8se5yKh3sTjBwoIl7AzzyBvQRvgf0Lr40WVomnviJ1b3jaD7V8eLRHPv7.Gf_Kblc
+ EjU70KmahyKkApeZguc9S_3HGjTsehOaLDigjXg2Q20kOeurNuHQxyKRe_MVhcdY.WkJ7L0nJXAu
+ zAzLPjwHB7AYoF4PBfvq6R.yvZz0mAYBECoT1i9783esf3l_D86GNMPq4IcgUYHRMqWSbE_KP5pL
+ WSj4LHg9MHnsZqWFOLwQr0yRcEWo7RABDo6v9rm8HqxRNibUGf7oKKBxs.pbs1B0pJY.m_EcMry1
+ xq23GiHQbyifqfcIUdqWZXJKx7j0Bat5McCiaiFcaLri1qNf0GaILvzHPqrir5FY-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic305.consmr.mail.ne1.yahoo.com with HTTP; Mon, 19 Aug 2019 15:32:26 +0000
+Date: Mon, 19 Aug 2019 15:32:24 +0000 (UTC)
+From: "Engr.Francisco Pinto." <coz34@gatku.online>
+Message-ID: <1849833002.7292175.1566228744985@mail.yahoo.com>
+Subject: Crude Oil Lifting Contract Offer.
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=yahoo.com; s=s2048; t=1566228746;
+ bh=47frjXP+ZIzYlnqEqbmJOhe9g4EhEvadJJ0Vh1NSIJc=;
+ h=Date:From:Reply-To:Subject:From:Subject;
+ b=qFPUtbEuL6mvqIyspHN7udLpFXOX0ijoiAkWCeR71VvHBul5XRtl1OBXkSYoOTFIfiJMkCmssYcJ7jzk7IFeyAE1QY/2hFs1qRv9qG9zJLYZ6fHd0EO9uq5m634LIgyaJnjZI8/ueGWFa9lbJyTNVXQkcJeOvp/sBjei6HuBvqICtQK7ZfHCh9PnsEnHUStvjWIe7l2a5NTkjVqHV6fX9ns34qq6gOdrI1i7s5Ou/gp4OrxDoaAtZEhAAy+TiSmiZMsQeCN+6rS5m/+rpCAVZ5SK39MUYOtBZJ1gBN8Zs2cmMgjFg29xoq43VLcshpcdJu6ozn6KWPm9TlOwflURFA==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -35,92 +55,89 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: dougoconnor54@gmail.com
-Content-Type: multipart/mixed; boundary="===============0620537693=="
+Reply-To: engr.frcopinto@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20190818164614.BF59E6E084@gabe.freedesktop.org>
 
---===============0620537693==
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-Hello Dear,</DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-My name is Douglas O'Connor. I am an American soldier, presently in Iraq for the training, advising the Iraqi forces and also helping in stabilizing the country against security challenges. With a very desperate need for assistance, I have decided to contact you for your kind assistance to move the sum of (US$38,000,000.00) Thirty eight Million United States Dollars to you for investment purposes if I can be assured that my share will be safe in your care until I complete my service.</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-Some money in various currencies was discovered in boxes at a farmhouse during a rescue operation we conducted in one of the attacks by the terrorists and it was agreed by my colleagues and I that some part of this money be shared among us. The above figure was given to me as my share, and to conceal this kind of money became a problem for me, so with the help of a British doctor working with Red Cross, I was able to get the package out to a safe location entirely out of trouble spot. he does not know the real content of the package, and believes that it belongs to a British /American medical doctor who died in a raid here in Afghanistan, and before giving up, trusted me to hand over the package to his Family.</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-I have now found a much secured way of getting the package out of Iraq to you for pick up and I will discuss this with you when I am sure that you are willing to assist me. I am ready to compensate you with 30% of the $38 million USD for your assistance.</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-I do not know how long we will remain here, and I have been shot, wounded and survived two suicide bomb attacks by the special grace of God, this and other reasons I will mention later has prompted me to reach out for help.</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-Please contact me as soon as possible with the following details:</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-Full Name:</DIV>
-<DIV>
-Full Address:</DIV>
-<DIV>
-Tel/cell numbers:</DIV>
-<DIV>
-Occupation:</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-God Bless you as I look forward to your positive response.</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-Truly yours,</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-Douglas O'Connor.</DIV>
-</FONT>
-</BODY></HTML>
-
---===============0620537693==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0620537693==--
+CgpEZWFyIFBhcnRuZXIsCiBDT05GSURFTlRJQUwgT0ZGRVIgUkVHQVJESU5HIENSVURFIE9JTCBM
+SUZUSU5HIENPTlRSQUNULgogQ1JVREUgT0lMIExJRlRJTkcgTElDRU5TRSBOTzogQU5QLUMtU1RQ
+LzA1NjQzMi4KIFJlcGx5IEVtYWlsOiBlbmdyLmZyY29waW50b0BnbWFpbC5jb20KClRoaXMgaXMg
+YSBjb25maWRlbnRpYWwgYnVzaW5lc3Mgb2ZmZXIgZnJvbSB0aGUgb2lsIHJpY2ggU2FvIFRvbWUg
+YW5kIFByaW5jaXBlLiBQbGVhc2UgZW5zdXJlIHRoYXQgeW91IHJlcGx5IHRoaXMgZW1haWwgc3Ry
+aWN0bHkgYXQgOiBlbmdyLmZyY29waW50b0BnbWFpbC5jb20KCkkgbWFrZSB0aGlzIGludHJvZHVj
+dGlvbiBiYXNlZCBvbiBteSByZWdhcmQgZm9yIHlvdXIgY3JlZGliaWxpdHkuIE15IG5hbWUgaXMg
+RW5nci4gRnJhbmNpc2NvIFBpbnRvLiBJIHdvcmsgd2l0aCB0aGUgU2FvIFRvbWUgYW5kIFByaW5j
+aXBlIG5hdGlvbmFsIHBldHJvbGV1bSBhZ2VuY3kuIFRvIGJlIHByZWNpc2UsIEkgb3ZlcnNlZSB0
+aGUgaXNzdWFuY2Ugb2Ygb2lsIGFsbG9jYXRpb24gbGljZW5zZSBmb3Igb3VyIG9pbCBjb21wYW55
+LiBNeSBwb3NpdGlvbiBpbiB0aGUgYWdlbmN5IGVudGl0bGVzIG1lIHRvIHJlY29tbWVuZCBvaWwg
+YWxsb2NhdGlvbiBiaWRkZXJzIGFuZCBhY3R1YWxpemUgb2lsIGxpZnRpbmcgYW5kIGV4cGxvcmF0
+aW9uIGFsbG9jYXRpb24gbGljZW5zZXMgdG8gbXkgY2FuZGlkYXRlcyBiYXNlZCBvbiBteSBpbnRl
+cmVzdC4gSSBhbHNvIG92ZXJzZWUgYW5kIGFwcHJvdmUgdGhlIGlzc3VhbmNlIG9mIHRoZSBsaWNl
+bnNlIGZvciBvaWwgYWxsb2NhdGlvbiBpbiBvdXIgY29tcGFueSBhbmQgYWxzbyBtb25pdG9yIHRo
+ZSBsaWZ0aW5nIHByb2NlZHVyZXMgaW4gb3VyIGNvbXBhbnkuCgpJbiBKdW5lIDIwMDcsIEkgZmFj
+aWxpdGF0ZWQgYW5kIGFjdHVhbGl6ZWQgdGhlIGxpY2Vuc2Ugb2YgYSBjYW5kaWRhdGUuIEEgYnVz
+aW5lc3MgbWFuIGZyb20gS29yZWEgKENvbXByZWhlbnNpdmUgZGV0YWlscyB0byBiZSBwcm92aWRl
+ZCBzdWJzZXF1ZW50bHkpLiBUaGUgbGljZW5zZSB3YXMgZm9yIDEgeWVhciBhdCAyNCBtaWxsaW9u
+IEJCTFMvMTIgbW9udGhzLiBJbmNpZGVudGFsbHkgdGhlIGNhbmRpZGF0ZSB3YXMgbm8gbW9yZS4g
+VGhlIGxpY2Vuc2UgaGFzIGJlZW4gdmFsaWQgdGlsbCBkYXRlIChhcyBJIGFsd2F5cyBlbnN1cmUg
+dGhhdCBJIGtlZXAgdG8gbXkgc2lkZSBvZiB0aGUgYmFyZ2FpbiksIEkgaGF2ZSBkZWNpZGVkIHRv
+IGJlZ2luIHVzaW5nIHRoZSBsaWNlbnNlIGZyb20gQVVHVVNULiBJIGFtIGluIG5lZWQgb2YgYSBw
+YXJ0bmVyIGZyb20geW91ciBjb3VudHJ5IHdob20gSSBjYW4gdHJ1c3QuIEkgd2lsbCBwYWNrYWdl
+IHRoaXMgcGFydG5lciBhcyB0aGUgYWxsb2NhdGlvbiBsaWNlbnNlIGJlbmVmaWNpYXJ5IGFuZCBh
+c3NpZ24gdGhlIGxpY2Vuc2UgdG8gdGhpcyBwYXJ0bmVyLiBEdWUgdG8gbXkgcG9zaXRpb24gaW4g
+dGhlIHBldHJvbGV1bSBhZ2VuY3ksIEkgY2Fubm90IGhhbmRsZSB0aGlzIHBvc2l0aW9uLiBZb3Vy
+IHByb2ZpbGUgZml0cyBpbnRvIHRoZSBjcml0ZXJpYSBvZiBhIHBhcnRuZXIgSSBuZWVkLiBUaGlz
+IGlzIHdoeSBJIGFtIGNvbnRhY3RpbmcgeW91LiBXaXRoIHRoZSB0cmVuZCBvZiBldmVudHMgaW4g
+U2FvIFRvbWUgYW5kIFByaW5jaXBlLCB3ZSBzaGFsbCBiZSBhYmxlIHRvIGxpZnQgYSBtaW5pbXVt
+IG9mIDQwMCwwMDAgYmFycmVscyBvZiBCTENPIHBlciBtb250aC4gVGhpcyB3aWxsIGZldGNoIHVz
+IGFuIGF2ZXJhZ2Ugb2YgVVMkMjggbWlsbGlvbiBwZXIgbW9udGguIEFuZCB3ZSBoYXZlIGZyb20g
+QVVHVVNUIDIwMTkgdXAgdW50aWwgQVVHVVNUIDIwMjAgdG8gbGlmdCBjcnVkZSBvaWwgd2hpY2gg
+d2lsbCBmZXRjaCB1cyBhcHByb3hpbWF0ZWx5ICgxMikgeCAoMjgpIE1pbGxpb24gZG9sbGFycy4g
+VGhpcyBpcyBhcHByb3hpbWF0ZWx5IDMzNiBNaWxsaW9uIGRvbGxhcnMgZm9yIHRoZSByZXN0IG9m
+IHRoZSB0aW1lIG9mIHRoZSBsaWNlbnNlIGFsbG9jYXRpb24uIEkgaGF2ZSByZWFkeSBidXllcnMg
+d2hvIGFyZSB3YWl0aW5nIGFuZCB3b3VsZCBiZSByZWFkeSB0byBzY3JhbWJsZSBmb3IgYW55IG51
+bWJlciBvZiBiYXJyZWxzIHdlIGxpZnQuIEFsc28sIEkgd2lsbCBvdmVyc2VlIGFsbCBsaWZ0aW5n
+IHByb2NlZHVyZXMgd2l0aCB0aGUgYXZhaWxhYmxlIG1lcmNlbmFyeSBhcm91bmQuCgogVEhJUyBJ
+UyBXSEFUIEkgUFJPUE9TRS4KCnsxfSBZb3VyIENvbXBhbnkgcHJvZmlsZSBzaGFsbCBiZSB1c2Vk
+IGluIHBsYWNlIG9mIHRoZSBpbml0aWFsIGxpY2Vuc2UgT3BlcmF0b3IuIFRoaXMgSSBzaGFsbCBo
+YW5kbGUgd2l0aCBteSBjYXBhY2l0eSBpbiB0aGUgY29tcGFueS4KezJ9IEkgd2lsbCBlbnN1cmUg
+dGhhdCB5b3VyIGNvbXBhbnkncyBwcm9maWxlIGlzIHJlY29nbml6ZWQgYXMgdGhlIGN1cnJlbnQg
+bGljZW5zZSBvcGVyYXRvciBhbmQgdGhhdCB3ZSBoYXZlIGEgbWFuZGF0ZSBmb3IgYXQgbGVhc3Qg
+bWluIG9mIDQwMCwwMDAgYmFycmVscyBwZXIgbW9udGgsIGEgbWF4aW11bSBvZiA1MDAsMDAwIGJh
+cnJlbHMgcGVyIG1vbnRoLiBTdGFydGluZyBmcm9tIEFVR1VTVC4KezN9SSB3aWxsIGVuc3VyZSB0
+aGF0IGFsbCBsaWZ0aW5nIHByb2NlZHVyZXMgYXJlIGluIHBsYWNlIGFuZCBidXllcnMgcmVhZGls
+eSBhdmFpbGFibGUgdG8gcHVyY2hhc2UgdGhlIHByb2R1Y3QuCns0fSBZb3Ugc2hhbGwgc3RhbmQg
+aW4gYXMgdGhlIGxpY2Vuc2Ugb3BlcmF0b3IgZm9yIGFsbCBsaWZ0aW5nIGFuZCBzYWxlcyB0cmFu
+c2FjdGlvbnM7IHdlIHNoYWxsIG9wZW4gYW4gYWNjb3VudCBmb3IgdGhlIHJlY2VpcHQgb2YgdGhl
+IG9pbCBzYWxlIHByb2NlZWRzIGluIHdoaWNoIGJvdGggb2YgdXMgc2hhbGwgYmUgc2lnbmF0b3Jp
+ZXMgdG8gdGhlIGFjY291bnQgb3IgeW91IGNhbiBwcm92aWRlIHlvdXIgcGVyc29uYWwgb3IgY29t
+cGFueSBiYW5rIGFjY291bnQgdG8gcmVjZWl2ZSB0aGUgcGF5bWVudHMgb24gb3VyIGJlaGFsZi4K
+ezV9IFdlIHNoYWxsIHNwbGl0IHRoZSBvaWwgc2FsZSBwcm9jZWVkcyBpbiB0aGUgcmF0aW8gb2Yg
+NjA6NDAgZXF1aXR5IHNoYXJlcy4gSSBzaGFsbCBiZSBlbnRpdGxlZCB0byA2MCUgc2hhcmUgd2hp
+bGUgeW91ciBjb21wYW55IHNoYWxsIGJlIGVudGl0bGVkIHRvIDQwJSBzaGFyZS4KClBsZWFzZSBu
+b3RlOiBubyB0aGlyZC1wYXJ0eSBhcnJhbmdlbWVudCBzaGFsbCBiZSBhbGxvd2VkLiBJIGJlbGll
+dmUgeW91IGFyZSBhIG1hbiBvZiB3aXNkb20gYW5kIGludGVsbGlnZW5jZS4gVGhpcyBvZmZlciBJ
+IG1ha2UgdG8geW91IGlzIGJhc2VkIG9uIHV0bW9zdCBnb29kIGZhaXRoLiBJIGNvdWxkIGJlIEpl
+b3BhcmRpemluZyBteSBwb3NpdGlvbiBpbiB0aGUgYWdlbmN5IGlmIGEgd29yZCBvZiB0aGlzIGdv
+ZXMgb3V0LiBUaGVyZWZvcmUsIHdpdGhvdXQgbWluY2luZyB3b3JkcywgSSByZWx5IG9uIHlvdSBm
+b3IgdXRtb3N0IGNvbmZpZGVudGlhbGl0eSBvbiBldmVyeSBiaXQgb2YgZGV0YWlsIHJlbGF0aW5n
+IHRvIHRoaXMgdHJhbnNhY3Rpb24uIEkgYW0gaW4gTG9uZG9uIG9uIG9mZmljaWFsIGR1dGllcyBh
+dCB0aGUgbW9tZW50IHdhaXRpbmcgZm9yIHlvdXIgcmVzcG9uc2UuIFVwb24geW91ciBwb3NpdGl2
+ZSByZXNwb25zZSwgSSB3aWxsIGJlIHdpbGxpbmcgdG8gZm9yd2FyZCB0byB5b3UgcHJvb2Ygb2Yg
+bXkgcHJvcG9zaXRpb24gYW5kIG15IHBlcnNvbmFsIGlkZW50aXR5LiBBbHNvLCBJIHNoYWxsIGZs
+eSBiYWNrIHRvIFNhbyBUb21lIGFuZCBQcmluY2lwZSBhbmQgZnJvbSB0aGVyZSB3ZSBzaGFsbCBj
+b21tZW5jZSBvcGVyYXRpb25zLiBJIHNoYWxsIGFsc28gcHJvdmlkZSB5b3UgZGV0YWlscyBvZiB0
+aGUgZm9ybWVyIGxpY2Vuc2Ugb3BlcmF0b3IgYW5kIGEgY29weSBvZiB0aGUgbGljZW5zZSBpc3N1
+ZWQgdG8gaGltIGZvciB0aGUgbGlmdGluZyBvZiBjcnVkZSBvaWwgaW4gb3VyIGNvbXBhbnkgd2hp
+Y2ggSSBwZXJzb25hbGx5IGFwcHJvdmVkIGFuZCBlbmRvcnNlZC4gQWxzbywgcHJvY2VkdXJlcyBm
+b3IgbGljZW5zZSByZWFzc2lnbm1lbnQgYW5kIGFjdHVhbGl6aW5nIHRoZSByZXN0IG9mIHRoZSBw
+cm9qZWN0IHNoYWxsIGJlIHByb3ZpZGVkIHRvIHlvdS4KClBsZWFzZSBpbiByZXNwb25zZSB0byB0
+aGlzIGVtYWlsOiBlbmdyLmZyY29waW50b0BnbWFpbC5jb20sIHF1b3RlIHRoZSByZWZlcmVuY2Ug
+bnVtYmVyLiBDUlVERSBPSUwgTElGVElORyBMSUNFTlNFIE5POiBBTlAtQy1TVFAvMDU2NDMyLgpJ
+IGxvb2sgZm9yd2FyZCB0byBhIHByb3NwZWN0aXZlIGJ1c2luZXNzIHJlbGF0aW9uc2hpcCBiZXR3
+ZWVuIHVzLgpUaGFua3MsCkVuZ3IuIEZyYW5jaXNjbyBQaW50bwpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdApp
+bnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
