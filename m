@@ -1,38 +1,34 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EB7697071
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Aug 2019 05:40:30 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 634F1980F8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Aug 2019 19:04:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E8BD06E1CE;
-	Wed, 21 Aug 2019 03:40:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2355D6E95E;
+	Wed, 21 Aug 2019 17:04:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1383C6E1B2;
- Wed, 21 Aug 2019 03:40:26 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Aug 2019 20:40:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,410,1559545200"; 
- d="asc'?scan'208";a="169288711"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga007.jf.intel.com with ESMTP; 20 Aug 2019 20:40:23 -0700
-Date: Wed, 21 Aug 2019 11:35:56 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Xiong Zhang <xiong.y.zhang@intel.com>
+Received: from fireflyinternet.com (mail.fireflyinternet.com [109.228.58.192])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7EAFF6E95E;
+ Wed, 21 Aug 2019 17:04:35 +0000 (UTC)
+X-Default-Received-SPF: pass (skip=forwardok (res=PASS))
+ x-ip-name=78.156.65.138; 
+Received: from localhost (unverified [78.156.65.138]) 
+ by fireflyinternet.com (Firefly Internet (M1)) with ESMTP (TLS) id
+ 18217451-1500050 for multiple; Wed, 21 Aug 2019 18:04:30 +0100
+MIME-Version: 1.0
+To: Xiong Zhang <xiong.y.zhang@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
+From: Chris Wilson <chris@chris-wilson.co.uk>
+In-Reply-To: <20190821033556.GA11927@zhen-hp.sh.intel.com>
+References: <1566279978-9659-1-git-send-email-xiong.y.zhang@intel.com>
+ <20190821033556.GA11927@zhen-hp.sh.intel.com>
+Message-ID: <156640706795.20466.7242407780817145904@skylake-alporthouse-com>
+User-Agent: alot/0.6
 Subject: Re: [Intel-gfx] [PATCH 1/2] drm/i915: Don't deballoon unused ggtt
  drm_mm_node in linux guest
-Message-ID: <20190821033556.GA11927@zhen-hp.sh.intel.com>
-References: <1566279978-9659-1-git-send-email-xiong.y.zhang@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <1566279978-9659-1-git-send-email-xiong.y.zhang@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Date: Wed, 21 Aug 2019 18:04:27 +0100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -45,120 +41,69 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
  stable@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1626167463=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1626167463==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="7JfCtLOvnd9MIVvH"
-Content-Disposition: inline
-
-
---7JfCtLOvnd9MIVvH
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.08.20 13:46:17 +0800, Xiong Zhang wrote:
-> The following call trace may exist in linux guest dmesg when guest i915
-> driver is unloaded.
-> [   90.776610] [drm:vgt_deballoon_space.isra.0 [i915]] deballoon space: r=
-ange [0x0 - 0x0] 0 KiB.
-> [   90.776621] BUG: unable to handle kernel NULL pointer dereference at 0=
-0000000000000c0
-> [   90.776691] IP: drm_mm_remove_node+0x4d/0x320 [drm]
-> [   90.776718] PGD 800000012c7d0067 P4D 800000012c7d0067 PUD 138e4c067 PM=
-D 0
-> [   90.777091] task: ffff9adab60f2f00 task.stack: ffffaf39c0fe0000
-> [   90.777142] RIP: 0010:drm_mm_remove_node+0x4d/0x320 [drm]
-> [   90.777573] Call Trace:
-> [   90.777653]  intel_vgt_deballoon+0x4c/0x60 [i915]
-> [   90.777729]  i915_ggtt_cleanup_hw+0x121/0x190 [i915]
-> [   90.777792]  i915_driver_unload+0x145/0x180 [i915]
-> [   90.777856]  i915_pci_remove+0x15/0x20 [i915]
-> [   90.777890]  pci_device_remove+0x3b/0xc0
-> [   90.777916]  device_release_driver_internal+0x157/0x220
-> [   90.777945]  driver_detach+0x39/0x70
-> [   90.777967]  bus_remove_driver+0x51/0xd0
-> [   90.777990]  pci_unregister_driver+0x23/0x90
-> [   90.778019]  SyS_delete_module+0x1da/0x240
-> [   90.778045]  entry_SYSCALL_64_fastpath+0x24/0x87
-> [   90.778072] RIP: 0033:0x7f34312af067
-> [   90.778092] RSP: 002b:00007ffdea3da0d8 EFLAGS: 00000206
-> [   90.778297] RIP: drm_mm_remove_node+0x4d/0x320 [drm] RSP: ffffaf39c0fe=
-3dc0
-> [   90.778344] ---[ end trace f4b1bc8305fc59dd ]---
->=20
-> Four drm_mm_node are used to reserve guest ggtt space, but some of them
-> may be skipped and not initialised due to space constraints in
-> intel_vgt_balloon(). If drm_mm_remove_node() is called with
-> uninitialized drm_mm_node, the above call trace occurs.
->=20
-> This patch check drm_mm_node's validity before calling
-> drm_mm_remove_node().
->=20
-> Fixes: ff8f797557c7("drm/i915: return the correct usable aperture size un=
-der gvt environment")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Xiong Zhang <xiong.y.zhang@intel.com>
-> ---
->  drivers/gpu/drm/i915/i915_vgpu.c | 3 +++
->  1 file changed, 3 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/i915/i915_vgpu.c b/drivers/gpu/drm/i915/i915=
-_vgpu.c
-> index bf2b837..d2fd66f 100644
-> --- a/drivers/gpu/drm/i915/i915_vgpu.c
-> +++ b/drivers/gpu/drm/i915/i915_vgpu.c
-> @@ -119,6 +119,9 @@ static struct _balloon_info_ bl_info;
->  static void vgt_deballoon_space(struct i915_ggtt *ggtt,
->  				struct drm_mm_node *node)
->  {
-> +	if (!node->allocated)
-> +		return;
-> +
->  	DRM_DEBUG_DRIVER("deballoon space: range [0x%llx - 0x%llx] %llu KiB.\n",
->  			 node->start,
->  			 node->start + node->size,
-
-Searching shows this is pretty old one and also with r-b from Chris,
-but be ignored that nobody picked this up..
-
-I think I hit this once too and tried to fix it another way,
-but this looks simpler to me.
-
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---7JfCtLOvnd9MIVvH
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXVy8HAAKCRCxBBozTXgY
-J7xcAJ9iqr4h7QnTx9tzdFbWg4y/mhDMZgCdHJaG2eTRmA8W3tkLza74nJ3bEiM=
-=RYoi
------END PGP SIGNATURE-----
-
---7JfCtLOvnd9MIVvH--
-
---===============1626167463==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1626167463==--
+UXVvdGluZyBaaGVueXUgV2FuZyAoMjAxOS0wOC0yMSAwNDozNTo1NikKPiBPbiAyMDE5LjA4LjIw
+IDEzOjQ2OjE3ICswODAwLCBYaW9uZyBaaGFuZyB3cm90ZToKPiA+IFRoZSBmb2xsb3dpbmcgY2Fs
+bCB0cmFjZSBtYXkgZXhpc3QgaW4gbGludXggZ3Vlc3QgZG1lc2cgd2hlbiBndWVzdCBpOTE1Cj4g
+PiBkcml2ZXIgaXMgdW5sb2FkZWQuCj4gPiBbICAgOTAuNzc2NjEwXSBbZHJtOnZndF9kZWJhbGxv
+b25fc3BhY2UuaXNyYS4wIFtpOTE1XV0gZGViYWxsb29uIHNwYWNlOiByYW5nZSBbMHgwIC0gMHgw
+XSAwIEtpQi4KPiA+IFsgICA5MC43NzY2MjFdIEJVRzogdW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwg
+TlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IDAwMDAwMDAwMDAwMDAwYzAKPiA+IFsgICA5MC43
+NzY2OTFdIElQOiBkcm1fbW1fcmVtb3ZlX25vZGUrMHg0ZC8weDMyMCBbZHJtXQo+ID4gWyAgIDkw
+Ljc3NjcxOF0gUEdEIDgwMDAwMDAxMmM3ZDAwNjcgUDREIDgwMDAwMDAxMmM3ZDAwNjcgUFVEIDEz
+OGU0YzA2NyBQTUQgMAo+ID4gWyAgIDkwLjc3NzA5MV0gdGFzazogZmZmZjlhZGFiNjBmMmYwMCB0
+YXNrLnN0YWNrOiBmZmZmYWYzOWMwZmUwMDAwCj4gPiBbICAgOTAuNzc3MTQyXSBSSVA6IDAwMTA6
+ZHJtX21tX3JlbW92ZV9ub2RlKzB4NGQvMHgzMjAgW2RybV0KPiA+IFsgICA5MC43Nzc1NzNdIENh
+bGwgVHJhY2U6Cj4gPiBbICAgOTAuNzc3NjUzXSAgaW50ZWxfdmd0X2RlYmFsbG9vbisweDRjLzB4
+NjAgW2k5MTVdCj4gPiBbICAgOTAuNzc3NzI5XSAgaTkxNV9nZ3R0X2NsZWFudXBfaHcrMHgxMjEv
+MHgxOTAgW2k5MTVdCj4gPiBbICAgOTAuNzc3NzkyXSAgaTkxNV9kcml2ZXJfdW5sb2FkKzB4MTQ1
+LzB4MTgwIFtpOTE1XQo+ID4gWyAgIDkwLjc3Nzg1Nl0gIGk5MTVfcGNpX3JlbW92ZSsweDE1LzB4
+MjAgW2k5MTVdCj4gPiBbICAgOTAuNzc3ODkwXSAgcGNpX2RldmljZV9yZW1vdmUrMHgzYi8weGMw
+Cj4gPiBbICAgOTAuNzc3OTE2XSAgZGV2aWNlX3JlbGVhc2VfZHJpdmVyX2ludGVybmFsKzB4MTU3
+LzB4MjIwCj4gPiBbICAgOTAuNzc3OTQ1XSAgZHJpdmVyX2RldGFjaCsweDM5LzB4NzAKPiA+IFsg
+ICA5MC43Nzc5NjddICBidXNfcmVtb3ZlX2RyaXZlcisweDUxLzB4ZDAKPiA+IFsgICA5MC43Nzc5
+OTBdICBwY2lfdW5yZWdpc3Rlcl9kcml2ZXIrMHgyMy8weDkwCj4gPiBbICAgOTAuNzc4MDE5XSAg
+U3lTX2RlbGV0ZV9tb2R1bGUrMHgxZGEvMHgyNDAKPiA+IFsgICA5MC43NzgwNDVdICBlbnRyeV9T
+WVNDQUxMXzY0X2Zhc3RwYXRoKzB4MjQvMHg4Nwo+ID4gWyAgIDkwLjc3ODA3Ml0gUklQOiAwMDMz
+OjB4N2YzNDMxMmFmMDY3Cj4gPiBbICAgOTAuNzc4MDkyXSBSU1A6IDAwMmI6MDAwMDdmZmRlYTNk
+YTBkOCBFRkxBR1M6IDAwMDAwMjA2Cj4gPiBbICAgOTAuNzc4Mjk3XSBSSVA6IGRybV9tbV9yZW1v
+dmVfbm9kZSsweDRkLzB4MzIwIFtkcm1dIFJTUDogZmZmZmFmMzljMGZlM2RjMAo+ID4gWyAgIDkw
+Ljc3ODM0NF0gLS0tWyBlbmQgdHJhY2UgZjRiMWJjODMwNWZjNTlkZCBdLS0tCj4gPiAKPiA+IEZv
+dXIgZHJtX21tX25vZGUgYXJlIHVzZWQgdG8gcmVzZXJ2ZSBndWVzdCBnZ3R0IHNwYWNlLCBidXQg
+c29tZSBvZiB0aGVtCj4gPiBtYXkgYmUgc2tpcHBlZCBhbmQgbm90IGluaXRpYWxpc2VkIGR1ZSB0
+byBzcGFjZSBjb25zdHJhaW50cyBpbgo+ID4gaW50ZWxfdmd0X2JhbGxvb24oKS4gSWYgZHJtX21t
+X3JlbW92ZV9ub2RlKCkgaXMgY2FsbGVkIHdpdGgKPiA+IHVuaW5pdGlhbGl6ZWQgZHJtX21tX25v
+ZGUsIHRoZSBhYm92ZSBjYWxsIHRyYWNlIG9jY3Vycy4KPiA+IAo+ID4gVGhpcyBwYXRjaCBjaGVj
+ayBkcm1fbW1fbm9kZSdzIHZhbGlkaXR5IGJlZm9yZSBjYWxsaW5nCj4gPiBkcm1fbW1fcmVtb3Zl
+X25vZGUoKS4KPiA+IAo+ID4gRml4ZXM6IGZmOGY3OTc1NTdjNygiZHJtL2k5MTU6IHJldHVybiB0
+aGUgY29ycmVjdCB1c2FibGUgYXBlcnR1cmUgc2l6ZSB1bmRlciBndnQgZW52aXJvbm1lbnQiKQo+
+ID4gQ2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKPiA+IFNpZ25lZC1vZmYtYnk6IFhpb25nIFpo
+YW5nIDx4aW9uZy55LnpoYW5nQGludGVsLmNvbT4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS9pOTE1L2k5MTVfdmdwdS5jIHwgMyArKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRp
+b25zKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3Zn
+cHUuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfdmdwdS5jCj4gPiBpbmRleCBiZjJiODM3
+Li5kMmZkNjZmIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV92Z3B1
+LmMKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfdmdwdS5jCj4gPiBAQCAtMTE5
+LDYgKzExOSw5IEBAIHN0YXRpYyBzdHJ1Y3QgX2JhbGxvb25faW5mb18gYmxfaW5mbzsKPiA+ICBz
+dGF0aWMgdm9pZCB2Z3RfZGViYWxsb29uX3NwYWNlKHN0cnVjdCBpOTE1X2dndHQgKmdndHQsCj4g
+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX21tX25vZGUgKm5vZGUp
+Cj4gPiAgewo+ID4gKyAgICAgaWYgKCFub2RlLT5hbGxvY2F0ZWQpCj4gPiArICAgICAgICAgICAg
+IHJldHVybjsKPiA+ICsKPiA+ICAgICAgIERSTV9ERUJVR19EUklWRVIoImRlYmFsbG9vbiBzcGFj
+ZTogcmFuZ2UgWzB4JWxseCAtIDB4JWxseF0gJWxsdSBLaUIuXG4iLAo+ID4gICAgICAgICAgICAg
+ICAgICAgICAgICBub2RlLT5zdGFydCwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgbm9kZS0+
+c3RhcnQgKyBub2RlLT5zaXplLAo+IAo+IFNlYXJjaGluZyBzaG93cyB0aGlzIGlzIHByZXR0eSBv
+bGQgb25lIGFuZCBhbHNvIHdpdGggci1iIGZyb20gQ2hyaXMsCj4gYnV0IGJlIGlnbm9yZWQgdGhh
+dCBub2JvZHkgcGlja2VkIHRoaXMgdXAuLgo+IAo+IEkgdGhpbmsgSSBoaXQgdGhpcyBvbmNlIHRv
+byBhbmQgdHJpZWQgdG8gZml4IGl0IGFub3RoZXIgd2F5LAo+IGJ1dCB0aGlzIGxvb2tzIHNpbXBs
+ZXIgdG8gbWUuCj4gCj4gQWNrZWQtYnk6IFpoZW55dSBXYW5nIDx6aGVueXV3QGxpbnV4LmludGVs
+LmNvbT4KCkJldHRlciBsYXRlIHRoYW4gbmV2ZXIsIEkgZ3Vlc3MuIFRoYW5rcyBmb3IgdGhlIHBh
+dGNoIGFuZCBjaGVja2luZyBpdApvdmVyLCBwdXNoZWQuCi1DaHJpcwpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlz
+dAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
