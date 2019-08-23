@@ -1,33 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC8F59A7E7
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Aug 2019 08:57:45 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 343CF9A8DA
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Aug 2019 09:32:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 726BB6E03F;
-	Fri, 23 Aug 2019 06:57:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 680246EBD3;
+	Fri, 23 Aug 2019 07:32:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 99F2C6E03F;
- Fri, 23 Aug 2019 06:57:42 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9024E6EBD3;
+ Fri, 23 Aug 2019 07:32:00 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Aug 2019 23:57:41 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Aug 2019 22:23:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,420,1559545200"; d="scan'208";a="179091192"
+X-IronPort-AV: E=Sophos;i="5.64,420,1559545200"; d="scan'208";a="208429209"
 Received: from xzhan34-mobl3.bj.intel.com ([10.238.154.72])
- by fmsmga008.fm.intel.com with ESMTP; 22 Aug 2019 23:57:39 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 22 Aug 2019 22:23:28 -0700
 From: Xiaolin Zhang <xiaolin.zhang@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org,
 	intel-gfx@lists.freedesktop.org
-Subject: [PATCH v2] drm/i915: to make vgpu ppgtt notificaiton as atomic
- operation
-Date: Fri, 23 Aug 2019 14:57:31 +0800
-Message-Id: <1566543451-13955-1-git-send-email-xiaolin.zhang@intel.com>
+Subject: [PATCH] drm/i915: to make vgpu ppgtt notificaiton as atomic operation
+Date: Fri, 23 Aug 2019 13:23:12 +0800
+Message-Id: <1566537792-12728-1-git-send-email-xiaolin.zhang@intel.com>
 X-Mailer: git-send-email 2.7.4
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
@@ -69,7 +68,7 @@ MSw3IEBAIHN0cnVjdCBpOTE1X2Zyb250YnVmZmVyX3RyYWNraW5nIHsKIH07CiAKIHN0cnVjdCBp
 OTE1X3ZpcnR1YWxfZ3B1IHsKKwlzdHJ1Y3QgbXV0ZXggbG9jazsKIAlib29sIGFjdGl2ZTsKIAl1
 MzIgY2FwczsKIH07CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X2dlbV9n
 dHQuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfZ2VtX2d0dC5jCmluZGV4IDJjZDJkYWIu
-LmZmMGIxNzggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfZ2VtX2d0dC5j
+LjFiYjkzYjcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfZ2VtX2d0dC5j
 CisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5MTVfZ2VtX2d0dC5jCkBAIC04MzMsNiArODMz
 LDggQEAgc3RhdGljIGludCBnZW44X3BwZ3R0X25vdGlmeV92Z3Qoc3RydWN0IGk5MTVfcHBndHQg
 KnBwZ3R0LCBib29sIGNyZWF0ZSkKIAllbnVtIHZndF9nMnZfdHlwZSBtc2c7CiAJaW50IGk7CiAK
@@ -77,16 +76,16 @@ KwltdXRleF9sb2NrKCZkZXZfcHJpdi0+dmdwdS5sb2NrKTsKKwogCWlmIChjcmVhdGUpCiAJCWF0
 b21pY19pbmMocHhfdXNlZChwcGd0dC0+cGQpKTsgLyogbmV2ZXIgcmVtb3ZlICovCiAJZWxzZQpA
 QCAtODYwLDYgKzg2Miw4IEBAIHN0YXRpYyBpbnQgZ2VuOF9wcGd0dF9ub3RpZnlfdmd0KHN0cnVj
 dCBpOTE1X3BwZ3R0ICpwcGd0dCwgYm9vbCBjcmVhdGUpCiAKIAlJOTE1X1dSSVRFKHZndGlmX3Jl
-ZyhnMnZfbm90aWZ5KSwgbXNnKTsKIAorCW11dGV4X3VubG9jaygmZGV2X3ByaXYtPnZncHUubG9j
-ayk7CisKIAlyZXR1cm4gMDsKIH0KIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUv
-aTkxNV92Z3B1LmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3ZncHUuYwppbmRleCBiZjJi
-ODM3Li43NDkzNTQ0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3ZncHUu
-YworKysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3ZncHUuYwpAQCAtOTQsNiArOTQsNyBA
-QCB2b2lkIGk5MTVfZGV0ZWN0X3ZncHUoc3RydWN0IGRybV9pOTE1X3ByaXZhdGUgKmRldl9wcml2
-KQogCWRldl9wcml2LT52Z3B1LmNhcHMgPSByZWFkbChzaGFyZWRfYXJlYSArIHZndGlmX29mZnNl
-dCh2Z3RfY2FwcykpOwogCiAJZGV2X3ByaXYtPnZncHUuYWN0aXZlID0gdHJ1ZTsKKwltdXRleF9p
-bml0KCZkZXZfcHJpdi0+dmdwdS5sb2NrKTsKIAlEUk1fSU5GTygiVmlydHVhbCBHUFUgZm9yIElu
-dGVsIEdWVC1nIGRldGVjdGVkLlxuIik7CiAKIG91dDoKLS0gCjIuNy40CgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcg
-bGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+ZyhnMnZfbm90aWZ5KSwgbXNnKTsKIAorCW11dGV4X2xvY2soJmRldl9wcml2LT52Z3B1LmxvY2sp
+OworCiAJcmV0dXJuIDA7CiB9CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5
+MTVfdmdwdS5jIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV92Z3B1LmMKaW5kZXggYmYyYjgz
+Ny4uNzQ5MzU0NCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV92Z3B1LmMK
+KysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV92Z3B1LmMKQEAgLTk0LDYgKzk0LDcgQEAg
+dm9pZCBpOTE1X2RldGVjdF92Z3B1KHN0cnVjdCBkcm1faTkxNV9wcml2YXRlICpkZXZfcHJpdikK
+IAlkZXZfcHJpdi0+dmdwdS5jYXBzID0gcmVhZGwoc2hhcmVkX2FyZWEgKyB2Z3RpZl9vZmZzZXQo
+dmd0X2NhcHMpKTsKIAogCWRldl9wcml2LT52Z3B1LmFjdGl2ZSA9IHRydWU7CisJbXV0ZXhfaW5p
+dCgmZGV2X3ByaXYtPnZncHUubG9jayk7CiAJRFJNX0lORk8oIlZpcnR1YWwgR1BVIGZvciBJbnRl
+bCBHVlQtZyBkZXRlY3RlZC5cbiIpOwogCiBvdXQ6Ci0tIAoyLjcuNAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxp
+c3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
