@@ -1,40 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FBAD9C7A3
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Aug 2019 05:16:53 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79F909CB2C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Aug 2019 10:00:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 51B866E13B;
-	Mon, 26 Aug 2019 03:16:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3251A6E06D;
+	Mon, 26 Aug 2019 08:00:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AAF546E13B;
- Mon, 26 Aug 2019 03:16:51 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6879E6E06D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 26 Aug 2019 08:00:38 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Aug 2019 20:16:51 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Aug 2019 01:00:37 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.64,431,1559545200"; 
- d="asc'?scan'208";a="263804410"
+ d="asc'?scan'208";a="182366789"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga001.jf.intel.com with ESMTP; 25 Aug 2019 20:16:49 -0700
-Date: Mon, 26 Aug 2019 11:12:10 +0800
+ by orsmga003.jf.intel.com with ESMTP; 26 Aug 2019 01:00:32 -0700
+Date: Mon, 26 Aug 2019 15:55:53 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Chris Wilson <chris@chris-wilson.co.uk>
-Subject: Re: [Intel-gfx] [PATCH v2] drm/i915: to make vgpu ppgtt notificaiton
- as atomic operation
-Message-ID: <20190826031210.GB29455@zhen-hp.sh.intel.com>
-References: <1566543451-13955-1-git-send-email-xiaolin.zhang@intel.com>
- <156654711627.27716.4474982727513548344@skylake-alporthouse-com>
- <073732E20AE4C540AE91DBC3F07D4460876D3410@SHSMSX107.ccr.corp.intel.com>
- <156654932243.27716.13325423141754929364@skylake-alporthouse-com>
+To: Tina Zhang <tina.zhang@intel.com>
+Subject: Re: [PATCH v5 4/6] drm/i915/gvt: Deliver vGPU refresh event to
+ userspace
+Message-ID: <20190826075553.GC29455@zhen-hp.sh.intel.com>
+References: <20190816023528.30210-1-tina.zhang@intel.com>
+ <20190816023528.30210-5-tina.zhang@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <156654932243.27716.13325423141754929364@skylake-alporthouse-com>
+In-Reply-To: <20190816023528.30210-5-tina.zhang@intel.com>
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
@@ -49,122 +48,416 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Zhang,
- Xiaolin" <xiaolin.zhang@intel.com>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>
-Content-Type: multipart/mixed; boundary="===============0347508939=="
+Cc: kvm@vger.kernel.org, linux-kernel@vger.kernel.org, hang.yuan@intel.com,
+ alex.williamson@redhat.com, kraxel@redhat.com, Kechen Lu <kechen.lu@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, zhiyuan.lv@intel.com
+Content-Type: multipart/mixed; boundary="===============2090416167=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0347508939==
+--===============2090416167==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="qlTNgmc+xy1dBmNv"
+	protocol="application/pgp-signature"; boundary="Clx92ZfkiYIKRjnr"
 Content-Disposition: inline
 
 
---qlTNgmc+xy1dBmNv
+--Clx92ZfkiYIKRjnr
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2019.08.23 09:35:22 +0100, Chris Wilson wrote:
-> Quoting Zhang, Xiaolin (2019-08-23 09:07:01)
-> > On 08/23/2019 03:58 PM, Chris Wilson wrote:
-> > > Quoting Xiaolin Zhang (2019-08-23 07:57:31)
-> > >> vgpu ppgtt notification was split into 2 steps, the first step is to
-> > >> update PVINFO's pdp register and then write PVINFO's g2v_notify regi=
-ster
-> > >> with action code to tirgger ppgtt notification to GVT side.
-> > >>
-> > >> currently these steps were not atomic operations due to no any prote=
-ction,
-> > >> so it is easy to enter race condition state during the MTBF, stress =
-and
-> > >> IGT test to cause GPU hang.
-> > >>
-> > >> the solution is to add a lock to make vgpu ppgtt notication as atomic
-> > >> operation.
-> > >>
-> > >> Cc: stable@vger.kernel.org
-> > >> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
-> > >> ---
-> > >>  drivers/gpu/drm/i915/i915_drv.h     | 1 +
-> > >>  drivers/gpu/drm/i915/i915_gem_gtt.c | 4 ++++
-> > >>  drivers/gpu/drm/i915/i915_vgpu.c    | 1 +
-> > >>  3 files changed, 6 insertions(+)
-> > >>
-> > >> diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/=
-i915_drv.h
-> > >> index eb31c16..32e17c4 100644
-> > >> --- a/drivers/gpu/drm/i915/i915_drv.h
-> > >> +++ b/drivers/gpu/drm/i915/i915_drv.h
-> > >> @@ -961,6 +961,7 @@ struct i915_frontbuffer_tracking {
-> > >>  };
-> > >> =20
-> > >>  struct i915_virtual_gpu {
-> > >> +       struct mutex lock;
-> > >>         bool active;
-> > >>         u32 caps;
-> > >>  };
-> > >> diff --git a/drivers/gpu/drm/i915/i915_gem_gtt.c b/drivers/gpu/drm/i=
-915/i915_gem_gtt.c
-> > >> index 2cd2dab..ff0b178 100644
-> > >> --- a/drivers/gpu/drm/i915/i915_gem_gtt.c
-> > >> +++ b/drivers/gpu/drm/i915/i915_gem_gtt.c
-> > >> @@ -833,6 +833,8 @@ static int gen8_ppgtt_notify_vgt(struct i915_ppg=
-tt *ppgtt, bool create)
-> > >>         enum vgt_g2v_type msg;
-> > >>         int i;
-> > >> =20
-> > >> +       mutex_lock(&dev_priv->vgpu.lock);
-> > >> +
-> > >>         if (create)
-> > >>                 atomic_inc(px_used(ppgtt->pd)); /* never remove */
-> > >>         else
-> > >> @@ -860,6 +862,8 @@ static int gen8_ppgtt_notify_vgt(struct i915_ppg=
-tt *ppgtt, bool create)
-> > >> =20
-> > >>         I915_WRITE(vgtif_reg(g2v_notify), msg);
-> > >> =20
-> > > How do you know the operation is complete and it is now safe to
-> > > overwrite the data regs?
-> > > -Chris
-> > >
-> > by design, the data reg value is copied out to use, so as long as the
-> > action and data is operated together, how long the operation is not a
-> > issue and  it is safe to overwrite the data regs with new action next t=
-ime.
+On 2019.08.16 10:35:26 +0800, Tina Zhang wrote:
+> Deliver the display refresh events to the user land. Userspace can use
+> the irq mask/unmask mechanism to disable or enable the event delivery.
 >=20
-> When and how quickly is it copied? Consider that it will be immediately
-> overwritten by the next packet. Does the vgpu mmio write cause the
-> calling CPU to be trapped?
+> As we know, delivering refresh event at each vblank safely avoids
+> tearing and unexpected event overwhelming, but there are still spaces
+> to optimize.
+>=20
+> For handling the normal case, deliver the page flip refresh
+> event at each vblank, in other words, bounded by vblanks. Skipping some
+> events bring performance enhancement while not hurting user experience.
+>=20
+> For single framebuffer case, deliver the refresh events to userspace at
+> all vblanks. This heuristic at each vblank leverages pageflip_count
+> incresements to determine if there is no page flip happens after a certain
+> period and so that the case is regarded as single framebuffer one.
+> Although this heuristic makes incorrect decision sometimes and it depends
+> on guest behavior, for example, when no cursor movements happen, the
+> user experience does not harm and front buffer is still correctly acquire=
+d.
+> Meanwhile, in actual single framebuffer case, the user experience is
+> enhanced compared with page flip events only.
+>=20
+> Addtionally, to mitigate the events delivering footprints, one eventfd and
+> 8 byte eventfd counter partition are leveraged.
+>=20
+> v2:
+> - Support vfio_irq_info_cap_display_plane_events. (Tina)
+>=20
+> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> Signed-off-by: Kechen Lu <kechen.lu@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/display.c |  22 ++++
+>  drivers/gpu/drm/i915/gvt/gvt.h     |   2 +
+>  drivers/gpu/drm/i915/gvt/kvmgt.c   | 159 +++++++++++++++++++++++++++--
+>  3 files changed, 174 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gv=
+t/display.c
+> index 1a0a4ae4826e..616285e4a014 100644
+> --- a/drivers/gpu/drm/i915/gvt/display.c
+> +++ b/drivers/gpu/drm/i915/gvt/display.c
+> @@ -34,6 +34,8 @@
+> =20
+>  #include "i915_drv.h"
+>  #include "gvt.h"
+> +#include <uapi/linux/vfio.h>
+> +#include <drm/drm_plane.h>
+> =20
+>  static int get_edp_pipe(struct intel_vgpu *vgpu)
+>  {
+> @@ -387,6 +389,8 @@ void intel_gvt_check_vblank_emulation(struct intel_gv=
+t *gvt)
+>  	mutex_unlock(&gvt->lock);
+>  }
+> =20
+> +#define PAGEFLIP_DELAY_THR 10
+> +
+>  static void emulate_vblank_on_pipe(struct intel_vgpu *vgpu, int pipe)
+>  {
+>  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
+> @@ -396,7 +400,10 @@ static void emulate_vblank_on_pipe(struct intel_vgpu=
+ *vgpu, int pipe)
+>  		[PIPE_B] =3D PIPE_B_VBLANK,
+>  		[PIPE_C] =3D PIPE_C_VBLANK,
+>  	};
+> +	int pri_flip_event =3D SKL_FLIP_EVENT(pipe, PLANE_PRIMARY);
+>  	int event;
+> +	u64 eventfd_signal_val =3D 0;
+> +	static int no_pageflip_count;
+> =20
+>  	if (pipe < PIPE_A || pipe > PIPE_C)
+>  		return;
+> @@ -407,11 +414,26 @@ static void emulate_vblank_on_pipe(struct intel_vgp=
+u *vgpu, int pipe)
+>  		if (!pipe_is_enabled(vgpu, pipe))
+>  			continue;
+> =20
+> +		if (event =3D=3D pri_flip_event)
+> +			eventfd_signal_val |=3D DISPLAY_PRI_REFRESH_EVENT_VAL;
+> +
+>  		intel_vgpu_trigger_virtual_event(vgpu, event);
+>  	}
+> =20
+> +	if (eventfd_signal_val)
+> +		no_pageflip_count =3D 0;
+> +	else if (!eventfd_signal_val && no_pageflip_count > PAGEFLIP_DELAY_THR)
 
-yeah, mmio write will always be trapped, this data is got in notify
-mmio reg write trap handler. We need to add doc to tell that for
-current gvt notify interface, client needs to ensure serialized write
-but without data overwrite.
+extra !eventfd_signal_val
+
+> +		eventfd_signal_val |=3D DISPLAY_PRI_REFRESH_EVENT_VAL;
+> +	else
+> +		no_pageflip_count++;
+
+no_pageflip_count should be per-vgpu instead of static.
+
+> +
+> +	if (vgpu->vdev.vblank_trigger && !vgpu->vdev.display_event_mask &&
+> +		eventfd_signal_val)
+> +		eventfd_signal(vgpu->vdev.vblank_trigger, eventfd_signal_val);
+> +
+>  	if (pipe_is_enabled(vgpu, pipe)) {
+>  		vgpu_vreg_t(vgpu, PIPE_FRMCOUNT_G4X(pipe))++;
+> +
+
+extra line
+
+>  		intel_vgpu_trigger_virtual_event(vgpu, vblank_event[pipe]);
+>  	}
+>  }
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
+> index cd29ea28d7ed..6c8ed030c30b 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> @@ -205,6 +205,8 @@ struct intel_vgpu {
+>  		int num_irqs;
+>  		struct eventfd_ctx *intx_trigger;
+>  		struct eventfd_ctx *msi_trigger;
+> +		struct eventfd_ctx *vblank_trigger;
+> +		u32 display_event_mask;
+> =20
+>  		/*
+>  		 * Two caches are used to avoid mapping duplicated pages (eg.
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
+kvmgt.c
+> index fd1633342e53..9ace1f4ff9eb 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -1250,6 +1250,8 @@ static int intel_vgpu_get_irq_count(struct intel_vg=
+pu *vgpu, int type)
+>  {
+>  	if (type =3D=3D VFIO_PCI_INTX_IRQ_INDEX || type =3D=3D VFIO_PCI_MSI_IRQ=
+_INDEX)
+>  		return 1;
+> +	else if (type < VFIO_PCI_NUM_IRQS + vgpu->vdev.num_irqs)
+> +		return vgpu->vdev.irq[type - VFIO_PCI_NUM_IRQS].count;
+> =20
+>  	return 0;
+>  }
+> @@ -1297,7 +1299,60 @@ static int intel_vgpu_set_msi_trigger(struct intel=
+_vgpu *vgpu,
+>  	return 0;
+>  }
+> =20
+> -static int intel_vgpu_set_irqs(struct intel_vgpu *vgpu, u32 flags,
+> +static int intel_vgu_set_display_irq_mask(struct intel_vgpu *vgpu,
+> +		unsigned int index, unsigned int start, unsigned int count,
+> +		u32 flags, void *data)
+> +{
+> +	if (start !=3D 0 || count > 2)
+> +		return -EINVAL;
+> +
+> +	if (flags & VFIO_IRQ_SET_DATA_NONE)
+> +		vgpu->vdev.display_event_mask |=3D 1;
+
+see below..
+
+> +
+> +	return 0;
+> +}
+> +
+> +static int intel_vgu_set_display_irq_unmask(struct intel_vgpu *vgpu,
+> +		unsigned int index, unsigned int start, unsigned int count,
+> +		u32 flags, void *data)
+> +{
+> +	if (start !=3D 0 || count > 2)
+> +		return -EINVAL;
+> +
+> +	if (flags & VFIO_IRQ_SET_DATA_NONE)
+> +		vgpu->vdev.display_event_mask &=3D 0;
+
+looks display_event_mask is used as flag for enable/disable, just write 1 o=
+r 0?
+
+
+> +
+> +	return 0;
+> +}
+> +
+> +static int intel_vgpu_set_display_event_trigger(struct intel_vgpu *vgpu,
+> +		unsigned int index, unsigned int start, unsigned int count,
+> +		u32 flags, void *data)
+> +{
+> +	struct eventfd_ctx *trigger;
+> +
+> +	if (flags & VFIO_IRQ_SET_DATA_EVENTFD) {
+> +		int fd =3D *(int *)data;
+> +
+> +		trigger =3D eventfd_ctx_fdget(fd);
+> +		if (IS_ERR(trigger)) {
+> +			gvt_vgpu_err("eventfd_ctx_fdget failed\n");
+> +			return PTR_ERR(trigger);
+> +		}
+> +		vgpu->vdev.vblank_trigger =3D trigger;
+> +		vgpu->vdev.display_event_mask =3D 0;
+> +	} else if ((flags & VFIO_IRQ_SET_DATA_NONE) && !count) {
+> +		trigger =3D vgpu->vdev.vblank_trigger;
+> +		if (trigger) {
+> +			eventfd_ctx_put(trigger);
+> +			vgpu->vdev.vblank_trigger =3D NULL;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +int intel_vgpu_set_irqs(struct intel_vgpu *vgpu, u32 flags,
+>  		unsigned int index, unsigned int start, unsigned int count,
+>  		void *data)
+>  {
+> @@ -1330,6 +1385,35 @@ static int intel_vgpu_set_irqs(struct intel_vgpu *=
+vgpu, u32 flags,
+>  			break;
+>  		}
+>  		break;
+> +	default:
+> +	{
+> +		int i;
+> +
+> +		if (index >=3D VFIO_PCI_NUM_IRQS +
+> +					vgpu->vdev.num_irqs)
+> +			return -EINVAL;
+> +		index =3D
+> +			array_index_nospec(index,
+> +						VFIO_PCI_NUM_IRQS +
+> +						vgpu->vdev.num_irqs);
+> +
+> +		i =3D index - VFIO_PCI_NUM_IRQS;
+> +		if (vgpu->vdev.irq[i].type =3D=3D VFIO_IRQ_TYPE_GFX &&
+> +		    vgpu->vdev.irq[i].subtype =3D=3D
+> +		    VFIO_IRQ_SUBTYPE_GFX_DISPLAY_IRQ) {
+> +			switch (flags & VFIO_IRQ_SET_ACTION_TYPE_MASK) {
+> +			case VFIO_IRQ_SET_ACTION_MASK:
+> +				func =3D intel_vgu_set_display_irq_mask;
+> +				break;
+> +			case VFIO_IRQ_SET_ACTION_UNMASK:
+> +				func =3D intel_vgu_set_display_irq_unmask;
+> +				break;
+> +			case VFIO_IRQ_SET_ACTION_TRIGGER:
+> +				func =3D intel_vgpu_set_display_event_trigger;
+> +				break;
+> +			}
+> +		}
+> +	}
+>  	}
+> =20
+>  	if (!func)
+> @@ -1361,7 +1445,7 @@ static long intel_vgpu_ioctl(struct mdev_device *md=
+ev, unsigned int cmd,
+>  		info.flags |=3D VFIO_DEVICE_FLAGS_RESET;
+>  		info.num_regions =3D VFIO_PCI_NUM_REGIONS +
+>  				vgpu->vdev.num_regions;
+> -		info.num_irqs =3D VFIO_PCI_NUM_IRQS;
+> +		info.num_irqs =3D VFIO_PCI_NUM_IRQS + vgpu->vdev.num_irqs;
+> =20
+>  		return copy_to_user((void __user *)arg, &info, minsz) ?
+>  			-EFAULT : 0;
+> @@ -1521,32 +1605,88 @@ static long intel_vgpu_ioctl(struct mdev_device *=
+mdev, unsigned int cmd,
+>  			-EFAULT : 0;
+>  	} else if (cmd =3D=3D VFIO_DEVICE_GET_IRQ_INFO) {
+>  		struct vfio_irq_info info;
+> +		struct vfio_info_cap caps =3D { .buf =3D NULL, .size =3D 0 };
+> +		unsigned int i;
+> +		int ret;
+> =20
+>  		minsz =3D offsetofend(struct vfio_irq_info, count);
+> =20
+>  		if (copy_from_user(&info, (void __user *)arg, minsz))
+>  			return -EFAULT;
+> =20
+> -		if (info.argsz < minsz || info.index >=3D VFIO_PCI_NUM_IRQS)
+> +		if (info.argsz < minsz)
+>  			return -EINVAL;
+> =20
+>  		switch (info.index) {
+>  		case VFIO_PCI_INTX_IRQ_INDEX:
+>  		case VFIO_PCI_MSI_IRQ_INDEX:
+> +			info.flags =3D VFIO_IRQ_INFO_EVENTFD;
+>  			break;
+> -		default:
+> +		case VFIO_PCI_MSIX_IRQ_INDEX:
+> +		case VFIO_PCI_ERR_IRQ_INDEX:
+> +		case VFIO_PCI_REQ_IRQ_INDEX:
+>  			return -EINVAL;
+> -		}
+> +		default:
+> +		{
+> +			struct vfio_irq_info_cap_type cap_type =3D {
+> +				.header.id =3D VFIO_IRQ_INFO_CAP_TYPE,
+> +				.header.version =3D 1 };
+> =20
+> -		info.flags =3D VFIO_IRQ_INFO_EVENTFD;
+> +			if (info.index >=3D VFIO_PCI_NUM_IRQS +
+> +					vgpu->vdev.num_irqs)
+> +				return -EINVAL;
+> +			info.index =3D
+> +				array_index_nospec(info.index,
+> +						VFIO_PCI_NUM_IRQS +
+> +						vgpu->vdev.num_irqs);
+> +
+> +			i =3D info.index - VFIO_PCI_NUM_IRQS;
+> +
+> +			info.flags =3D vgpu->vdev.irq[i].flags;
+> +			cap_type.type =3D vgpu->vdev.irq[i].type;
+> +			cap_type.subtype =3D vgpu->vdev.irq[i].subtype;
+> +
+> +			ret =3D vfio_info_add_capability(&caps,
+> +						&cap_type.header,
+> +						sizeof(cap_type));
+> +			if (ret)
+> +				return ret;
+> +
+> +			if (vgpu->vdev.irq[i].ops->add_capability) {
+> +				ret =3D vgpu->vdev.irq[i].ops->add_capability(vgpu,
+> +									    &caps);
+> +				if (ret)
+> +					return ret;
+> +			}
+> +		}
+> +		}
+> =20
+>  		info.count =3D intel_vgpu_get_irq_count(vgpu, info.index);
+> =20
+>  		if (info.index =3D=3D VFIO_PCI_INTX_IRQ_INDEX)
+>  			info.flags |=3D (VFIO_IRQ_INFO_MASKABLE |
+>  				       VFIO_IRQ_INFO_AUTOMASKED);
+> -		else
+> -			info.flags |=3D VFIO_IRQ_INFO_NORESIZE;
+> +
+> +		if (caps.size) {
+> +			info.flags |=3D VFIO_IRQ_INFO_FLAG_CAPS;
+> +			if (info.argsz < sizeof(info) + caps.size) {
+> +				info.argsz =3D sizeof(info) + caps.size;
+> +				info.cap_offset =3D 0;
+> +			} else {
+> +				vfio_info_cap_shift(&caps, sizeof(info));
+> +				if (copy_to_user((void __user *)arg +
+> +						  sizeof(info), caps.buf,
+> +						  caps.size)) {
+> +					kfree(caps.buf);
+> +					return -EFAULT;
+> +				}
+> +				info.cap_offset =3D sizeof(info);
+> +				if (offsetofend(struct vfio_irq_info, cap_offset) > minsz)
+> +					minsz =3D offsetofend(struct vfio_irq_info, cap_offset);
+> +			}
+> +
+> +			kfree(caps.buf);
+> +		}
+> =20
+>  		return copy_to_user((void __user *)arg, &info, minsz) ?
+>  			-EFAULT : 0;
+> @@ -1565,7 +1705,8 @@ static long intel_vgpu_ioctl(struct mdev_device *md=
+ev, unsigned int cmd,
+>  			int max =3D intel_vgpu_get_irq_count(vgpu, hdr.index);
+> =20
+>  			ret =3D vfio_set_irqs_validate_and_prepare(&hdr, max,
+> -						VFIO_PCI_NUM_IRQS, &data_size);
+> +					VFIO_PCI_NUM_IRQS + vgpu->vdev.num_irqs,
+> +								 &data_size);
+>  			if (ret) {
+>  				gvt_vgpu_err("intel:vfio_set_irqs_validate_and_prepare failed\n");
+>  				return -EINVAL;
+> --=20
+> 2.17.1
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
 --=20
 Open Source Technology Center, Intel ltd.
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---qlTNgmc+xy1dBmNv
+--Clx92ZfkiYIKRjnr
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXWNOCgAKCRCxBBozTXgY
-JzzRAJ0X7LbFKhBwy4X/+yw15A/XA4mnegCdHFH6sMkgG0A4ZdteToz+xg8BFzA=
-=gV9R
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXWOQiQAKCRCxBBozTXgY
+J+ijAJ4ihAfuPS5xnKtpSJDpIKCPhrfXEACfVpCvQOHwIbgHw2DkdgO0IKBrYJc=
+=xe22
 -----END PGP SIGNATURE-----
 
---qlTNgmc+xy1dBmNv--
+--Clx92ZfkiYIKRjnr--
 
---===============0347508939==
+--===============2090416167==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -174,4 +467,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============0347508939==--
+--===============2090416167==--
