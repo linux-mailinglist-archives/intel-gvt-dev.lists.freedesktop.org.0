@@ -1,37 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E732C9E246
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Aug 2019 10:22:04 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44D1C9E2D9
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Aug 2019 10:39:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9C30488F0D;
-	Tue, 27 Aug 2019 08:22:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EFF0089444;
+	Tue, 27 Aug 2019 08:39:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 21E9988F0D
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B41E289444
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Aug 2019 08:22:02 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+ Tue, 27 Aug 2019 08:39:28 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2019 01:22:01 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2019 01:39:27 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,436,1559545200"; 
- d="asc'?scan'208";a="380835504"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by fmsmga006.fm.intel.com with ESMTP; 27 Aug 2019 01:22:00 -0700
-Date: Tue, 27 Aug 2019 16:17:19 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Xiaolin Zhang <xiaolin.zhang@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: update vgpu workload head pointer correctly
-Message-ID: <20190827081719.GG30445@zhen-hp.sh.intel.com>
-References: <1566884338-16616-1-git-send-email-xiaolin.zhang@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <1566884338-16616-1-git-send-email-xiaolin.zhang@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+X-IronPort-AV: E=Sophos;i="5.64,436,1559545200"; d="scan'208";a="182713561"
+Received: from xzhan34-mobl3.bj.intel.com ([10.238.154.72])
+ by orsmga003.jf.intel.com with ESMTP; 27 Aug 2019 01:39:26 -0700
+From: Xiaolin Zhang <xiaolin.zhang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH v2] drm/i915/gvt: update vgpu workload head pointer correctly
+Date: Tue, 27 Aug 2019 16:39:23 +0800
+Message-Id: <1566895163-3772-1-git-send-email-xiaolin.zhang@intel.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -44,139 +40,63 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, stable@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0286471077=="
+Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>, stable@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============0286471077==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="1XWsVB21DFCvn2e8"
-Content-Disposition: inline
-
-
---1XWsVB21DFCvn2e8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.08.27 13:38:58 +0800, Xiaolin Zhang wrote:
-> when creating a vGPU workload, the guest context head pointer should
-> be updated correctly by comparing with the exsiting workload in the
-> guest worklod queue including the current running context.
->=20
-> in some situation, there is a running context A and then received 2 new
-> vGPU workload context B and A. in the new workload context A, it's head
-> pointer should be updated with the running context A's tail.
->=20
-> Fixes: 09975b861aa0 ("drm/i915/execlists: Disable preemption under GVT")
-> Fixes: 22b7a426bbe1 ("drm/i915/execlists: Preempt-to-busy")
->=20
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/scheduler.c | 31 ++++++++++++++++++-------------
->  1 file changed, 18 insertions(+), 13 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
-gvt/scheduler.c
-> index 8940fa8..89057c6 100644
-> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> @@ -1438,9 +1438,6 @@ static int prepare_mm(struct intel_vgpu_workload *w=
-orkload)
->  #define same_context(a, b) (((a)->context_id =3D=3D (b)->context_id) && \
->  		((a)->lrca =3D=3D (b)->lrca))
-> =20
-> -#define get_last_workload(q) \
-> -	(list_empty(q) ? NULL : container_of(q->prev, \
-> -	struct intel_vgpu_workload, list))
->  /**
->   * intel_vgpu_create_workload - create a vGPU workload
->   * @vgpu: a vGPU
-> @@ -1460,7 +1457,8 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,=
- int ring_id,
->  {
->  	struct intel_vgpu_submission *s =3D &vgpu->submission;
->  	struct list_head *q =3D workload_q_head(vgpu, ring_id);
-> -	struct intel_vgpu_workload *last_workload =3D get_last_workload(q);
-> +	struct list_head *pos;
-> +	struct intel_vgpu_workload *last_workload =3D NULL;
->  	struct intel_vgpu_workload *workload =3D NULL;
->  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
->  	u64 ring_context_gpa;
-> @@ -1486,15 +1484,22 @@ intel_vgpu_create_workload(struct intel_vgpu *vgp=
-u, int ring_id,
->  	head &=3D RB_HEAD_OFF_MASK;
->  	tail &=3D RB_TAIL_OFF_MASK;
-> =20
-> -	if (last_workload && same_context(&last_workload->ctx_desc, desc)) {
-> -		gvt_dbg_el("ring id %d cur workload =3D=3D last\n", ring_id);
-> -		gvt_dbg_el("ctx head %x real head %lx\n", head,
-> -				last_workload->rb_tail);
-> -		/*
-> -		 * cannot use guest context head pointer here,
-> -		 * as it might not be updated at this time
-> -		 */
-> -		head =3D last_workload->rb_tail;
-> +	list_for_each(pos, q) {
-> +		last_workload =3D container_of(pos, struct intel_vgpu_workload,
-> +				list);
-> +		if (!last_workload)
-> +			continue;
-
-Just use list_for_each_entry() and to look up last uncompleted workload
-should try to search backward, hopefully we can just fix it once.
-
-> +		if (same_context(&last_workload->ctx_desc, desc)) {
-> +			gvt_dbg_el("ring id %d cur workload =3D=3D last\n",
-> +					ring_id);
-> +			gvt_dbg_el("ctx head %x real head %lx\n", head,
-> +					last_workload->rb_tail);
-> +			/*
-> +			 * cannot use guest context head pointer here,
-> +			 * as it might not be updated at this time
-> +			 */
-> +			head =3D last_workload->rb_tail;
-> +		}
->  	}
-> =20
->  	gvt_dbg_el("ring id %d begin a new workload\n", ring_id);
-> --=20
-> 2.7.4
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---1XWsVB21DFCvn2e8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXWTnDwAKCRCxBBozTXgY
-J/f9AJ4oWB8M2V5ff9yisNTgo6ShiQsJuQCght4VJANZIbzbVI/t6hiVX60B4lc=
-=KOkg
------END PGP SIGNATURE-----
-
---1XWsVB21DFCvn2e8--
-
---===============0286471077==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0286471077==--
+d2hlbiBjcmVhdGluZyBhIHZHUFUgd29ya2xvYWQsIHRoZSBndWVzdCBjb250ZXh0IGhlYWQgcG9p
+bnRlciBzaG91bGQKYmUgdXBkYXRlZCBjb3JyZWN0bHkgYnkgY29tcGFyaW5nIHdpdGggdGhlIGV4
+c2l0aW5nIHdvcmtsb2FkIGluIHRoZQpndWVzdCB3b3JrbG9kIHF1ZXVlIGluY2x1ZGluZyB0aGUg
+Y3VycmVudCBydW5uaW5nIGNvbnRleHQuCgppbiBzb21lIHNpdHVhdGlvbiwgdGhlcmUgaXMgYSBy
+dW5uaW5nIGNvbnRleHQgQSBhbmQgdGhlbiByZWNlaXZlZCAyIG5ldwp2R1BVIHdvcmtsb2FkIGNv
+bnRleHQgQiBhbmQgQS4gaW4gdGhlIG5ldyB3b3JrbG9hZCBjb250ZXh0IEEsIGl0J3MgaGVhZApw
+b2ludGVyIHNob3VsZCBiZSB1cGRhdGVkIHdpdGggdGhlIHJ1bm5pbmcgY29udGV4dCBBJ3MgdGFp
+bC4KCkZpeGVzOiAwOTk3NWI4NjFhYTAgKCJkcm0vaTkxNS9leGVjbGlzdHM6IERpc2FibGUgcHJl
+ZW1wdGlvbiB1bmRlciBHVlQiKQpGaXhlczogMjJiN2E0MjZiYmUxICgiZHJtL2k5MTUvZXhlY2xp
+c3RzOiBQcmVlbXB0LXRvLWJ1c3kiKQoKdjI6IHdhbGsgdGhyb3VnaCBndWVzdCB3b3JrbG9hZCBs
+aXN0IGluIGJhY2t3YXJkIHdheS4KCkNjOiBzdGFibGVAdmdlci5rZXJuZWwub3JnClNpZ25lZC1v
+ZmYtYnk6IFhpYW9saW4gWmhhbmcgPHhpYW9saW4uemhhbmdAaW50ZWwuY29tPgotLS0KIGRyaXZl
+cnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYyB8IDI4ICsrKysrKysrKysrKysrKy0tLS0t
+LS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxMyBkZWxldGlvbnMo
+LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMKaW5kZXggODk0MGZhOC4uMTY2Yjk5
+OCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jCisrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYwpAQCAtMTQzOCw5ICsxNDM4LDYg
+QEAgc3RhdGljIGludCBwcmVwYXJlX21tKHN0cnVjdCBpbnRlbF92Z3B1X3dvcmtsb2FkICp3b3Jr
+bG9hZCkKICNkZWZpbmUgc2FtZV9jb250ZXh0KGEsIGIpICgoKGEpLT5jb250ZXh0X2lkID09IChi
+KS0+Y29udGV4dF9pZCkgJiYgXAogCQkoKGEpLT5scmNhID09IChiKS0+bHJjYSkpCiAKLSNkZWZp
+bmUgZ2V0X2xhc3Rfd29ya2xvYWQocSkgXAotCShsaXN0X2VtcHR5KHEpID8gTlVMTCA6IGNvbnRh
+aW5lcl9vZihxLT5wcmV2LCBcCi0Jc3RydWN0IGludGVsX3ZncHVfd29ya2xvYWQsIGxpc3QpKQog
+LyoqCiAgKiBpbnRlbF92Z3B1X2NyZWF0ZV93b3JrbG9hZCAtIGNyZWF0ZSBhIHZHUFUgd29ya2xv
+YWQKICAqIEB2Z3B1OiBhIHZHUFUKQEAgLTE0NjAsNyArMTQ1Nyw3IEBAIGludGVsX3ZncHVfY3Jl
+YXRlX3dvcmtsb2FkKHN0cnVjdCBpbnRlbF92Z3B1ICp2Z3B1LCBpbnQgcmluZ19pZCwKIHsKIAlz
+dHJ1Y3QgaW50ZWxfdmdwdV9zdWJtaXNzaW9uICpzID0gJnZncHUtPnN1Ym1pc3Npb247CiAJc3Ry
+dWN0IGxpc3RfaGVhZCAqcSA9IHdvcmtsb2FkX3FfaGVhZCh2Z3B1LCByaW5nX2lkKTsKLQlzdHJ1
+Y3QgaW50ZWxfdmdwdV93b3JrbG9hZCAqbGFzdF93b3JrbG9hZCA9IGdldF9sYXN0X3dvcmtsb2Fk
+KHEpOworCXN0cnVjdCBpbnRlbF92Z3B1X3dvcmtsb2FkICpsYXN0X3dvcmtsb2FkID0gTlVMTDsK
+IAlzdHJ1Y3QgaW50ZWxfdmdwdV93b3JrbG9hZCAqd29ya2xvYWQgPSBOVUxMOwogCXN0cnVjdCBk
+cm1faTkxNV9wcml2YXRlICpkZXZfcHJpdiA9IHZncHUtPmd2dC0+ZGV2X3ByaXY7CiAJdTY0IHJp
+bmdfY29udGV4dF9ncGE7CkBAIC0xNDg2LDE1ICsxNDgzLDIwIEBAIGludGVsX3ZncHVfY3JlYXRl
+X3dvcmtsb2FkKHN0cnVjdCBpbnRlbF92Z3B1ICp2Z3B1LCBpbnQgcmluZ19pZCwKIAloZWFkICY9
+IFJCX0hFQURfT0ZGX01BU0s7CiAJdGFpbCAmPSBSQl9UQUlMX09GRl9NQVNLOwogCi0JaWYgKGxh
+c3Rfd29ya2xvYWQgJiYgc2FtZV9jb250ZXh0KCZsYXN0X3dvcmtsb2FkLT5jdHhfZGVzYywgZGVz
+YykpIHsKLQkJZ3Z0X2RiZ19lbCgicmluZyBpZCAlZCBjdXIgd29ya2xvYWQgPT0gbGFzdFxuIiwg
+cmluZ19pZCk7Ci0JCWd2dF9kYmdfZWwoImN0eCBoZWFkICV4IHJlYWwgaGVhZCAlbHhcbiIsIGhl
+YWQsCi0JCQkJbGFzdF93b3JrbG9hZC0+cmJfdGFpbCk7Ci0JCS8qCi0JCSAqIGNhbm5vdCB1c2Ug
+Z3Vlc3QgY29udGV4dCBoZWFkIHBvaW50ZXIgaGVyZSwKLQkJICogYXMgaXQgbWlnaHQgbm90IGJl
+IHVwZGF0ZWQgYXQgdGhpcyB0aW1lCi0JCSAqLwotCQloZWFkID0gbGFzdF93b3JrbG9hZC0+cmJf
+dGFpbDsKKwlsaXN0X2Zvcl9lYWNoX2VudHJ5X3JldmVyc2UobGFzdF93b3JrbG9hZCwgcSwgbGlz
+dCkgeworCisJCWlmIChzYW1lX2NvbnRleHQoJmxhc3Rfd29ya2xvYWQtPmN0eF9kZXNjLCBkZXNj
+KSkgeworCQkJZ3Z0X2RiZ19lbCgicmluZyBpZCAlZCBjdXIgd29ya2xvYWQgPT0gbGFzdFxuIiwK
+KwkJCQkJcmluZ19pZCk7CisJCQlndnRfZGJnX2VsKCJjdHggaGVhZCAleCByZWFsIGhlYWQgJWx4
+XG4iLCBoZWFkLAorCQkJCQlsYXN0X3dvcmtsb2FkLT5yYl90YWlsKTsKKwkJCS8qCisJCQkgKiBj
+YW5ub3QgdXNlIGd1ZXN0IGNvbnRleHQgaGVhZCBwb2ludGVyIGhlcmUsCisJCQkgKiBhcyBpdCBt
+aWdodCBub3QgYmUgdXBkYXRlZCBhdCB0aGlzIHRpbWUKKwkJCSAqLworCQkJaGVhZCA9IGxhc3Rf
+d29ya2xvYWQtPnJiX3RhaWw7CisJCQlicmVhazsKKwkJfQogCX0KIAogCWd2dF9kYmdfZWwoInJp
+bmcgaWQgJWQgYmVnaW4gYSBuZXcgd29ya2xvYWRcbiIsIHJpbmdfaWQpOwotLSAKMi43LjQKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1k
+ZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
