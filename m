@@ -2,32 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66C4E9DD38
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Aug 2019 07:39:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E732C9E246
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Aug 2019 10:22:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 238A789B7B;
-	Tue, 27 Aug 2019 05:39:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9C30488F0D;
+	Tue, 27 Aug 2019 08:22:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B9CA889B57
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 21E9988F0D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Aug 2019 05:39:03 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+ Tue, 27 Aug 2019 08:22:02 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Aug 2019 22:39:03 -0700
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2019 01:22:01 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,436,1559545200"; d="scan'208";a="355660206"
-Received: from xzhan34-mobl3.bj.intel.com ([10.238.154.72])
- by orsmga005.jf.intel.com with ESMTP; 26 Aug 2019 22:39:01 -0700
-From: Xiaolin Zhang <xiaolin.zhang@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: update vgpu workload head pointer correctly
-Date: Tue, 27 Aug 2019 13:38:58 +0800
-Message-Id: <1566884338-16616-1-git-send-email-xiaolin.zhang@intel.com>
-X-Mailer: git-send-email 2.7.4
+X-IronPort-AV: E=Sophos;i="5.64,436,1559545200"; 
+ d="asc'?scan'208";a="380835504"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga006.fm.intel.com with ESMTP; 27 Aug 2019 01:22:00 -0700
+Date: Tue, 27 Aug 2019 16:17:19 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Xiaolin Zhang <xiaolin.zhang@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: update vgpu workload head pointer correctly
+Message-ID: <20190827081719.GG30445@zhen-hp.sh.intel.com>
+References: <1566884338-16616-1-git-send-email-xiaolin.zhang@intel.com>
+MIME-Version: 1.0
+In-Reply-To: <1566884338-16616-1-git-send-email-xiaolin.zhang@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -40,64 +44,139 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Xiaolin Zhang <xiaolin.zhang@intel.com>, stable@vger.kernel.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, stable@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============0286471077=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-d2hlbiBjcmVhdGluZyBhIHZHUFUgd29ya2xvYWQsIHRoZSBndWVzdCBjb250ZXh0IGhlYWQgcG9p
-bnRlciBzaG91bGQKYmUgdXBkYXRlZCBjb3JyZWN0bHkgYnkgY29tcGFyaW5nIHdpdGggdGhlIGV4
-c2l0aW5nIHdvcmtsb2FkIGluIHRoZQpndWVzdCB3b3JrbG9kIHF1ZXVlIGluY2x1ZGluZyB0aGUg
-Y3VycmVudCBydW5uaW5nIGNvbnRleHQuCgppbiBzb21lIHNpdHVhdGlvbiwgdGhlcmUgaXMgYSBy
-dW5uaW5nIGNvbnRleHQgQSBhbmQgdGhlbiByZWNlaXZlZCAyIG5ldwp2R1BVIHdvcmtsb2FkIGNv
-bnRleHQgQiBhbmQgQS4gaW4gdGhlIG5ldyB3b3JrbG9hZCBjb250ZXh0IEEsIGl0J3MgaGVhZApw
-b2ludGVyIHNob3VsZCBiZSB1cGRhdGVkIHdpdGggdGhlIHJ1bm5pbmcgY29udGV4dCBBJ3MgdGFp
-bC4KCkZpeGVzOiAwOTk3NWI4NjFhYTAgKCJkcm0vaTkxNS9leGVjbGlzdHM6IERpc2FibGUgcHJl
-ZW1wdGlvbiB1bmRlciBHVlQiKQpGaXhlczogMjJiN2E0MjZiYmUxICgiZHJtL2k5MTUvZXhlY2xp
-c3RzOiBQcmVlbXB0LXRvLWJ1c3kiKQoKQ2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKU2lnbmVk
-LW9mZi1ieTogWGlhb2xpbiBaaGFuZyA8eGlhb2xpbi56aGFuZ0BpbnRlbC5jb20+Ci0tLQogZHJp
-dmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jIHwgMzEgKysrKysrKysrKysrKysrKysr
-LS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDE4IGluc2VydGlvbnMoKyksIDEzIGRlbGV0
-aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYwppbmRleCA4OTQwZmE4Li44
-OTA1N2M2IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2NoZWR1bGVyLmMK
-KysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jCkBAIC0xNDM4LDkgKzE0
-MzgsNiBAQCBzdGF0aWMgaW50IHByZXBhcmVfbW0oc3RydWN0IGludGVsX3ZncHVfd29ya2xvYWQg
-Kndvcmtsb2FkKQogI2RlZmluZSBzYW1lX2NvbnRleHQoYSwgYikgKCgoYSktPmNvbnRleHRfaWQg
-PT0gKGIpLT5jb250ZXh0X2lkKSAmJiBcCiAJCSgoYSktPmxyY2EgPT0gKGIpLT5scmNhKSkKIAot
-I2RlZmluZSBnZXRfbGFzdF93b3JrbG9hZChxKSBcCi0JKGxpc3RfZW1wdHkocSkgPyBOVUxMIDog
-Y29udGFpbmVyX29mKHEtPnByZXYsIFwKLQlzdHJ1Y3QgaW50ZWxfdmdwdV93b3JrbG9hZCwgbGlz
-dCkpCiAvKioKICAqIGludGVsX3ZncHVfY3JlYXRlX3dvcmtsb2FkIC0gY3JlYXRlIGEgdkdQVSB3
-b3JrbG9hZAogICogQHZncHU6IGEgdkdQVQpAQCAtMTQ2MCw3ICsxNDU3LDggQEAgaW50ZWxfdmdw
-dV9jcmVhdGVfd29ya2xvYWQoc3RydWN0IGludGVsX3ZncHUgKnZncHUsIGludCByaW5nX2lkLAog
-ewogCXN0cnVjdCBpbnRlbF92Z3B1X3N1Ym1pc3Npb24gKnMgPSAmdmdwdS0+c3VibWlzc2lvbjsK
-IAlzdHJ1Y3QgbGlzdF9oZWFkICpxID0gd29ya2xvYWRfcV9oZWFkKHZncHUsIHJpbmdfaWQpOwot
-CXN0cnVjdCBpbnRlbF92Z3B1X3dvcmtsb2FkICpsYXN0X3dvcmtsb2FkID0gZ2V0X2xhc3Rfd29y
-a2xvYWQocSk7CisJc3RydWN0IGxpc3RfaGVhZCAqcG9zOworCXN0cnVjdCBpbnRlbF92Z3B1X3dv
-cmtsb2FkICpsYXN0X3dvcmtsb2FkID0gTlVMTDsKIAlzdHJ1Y3QgaW50ZWxfdmdwdV93b3JrbG9h
-ZCAqd29ya2xvYWQgPSBOVUxMOwogCXN0cnVjdCBkcm1faTkxNV9wcml2YXRlICpkZXZfcHJpdiA9
-IHZncHUtPmd2dC0+ZGV2X3ByaXY7CiAJdTY0IHJpbmdfY29udGV4dF9ncGE7CkBAIC0xNDg2LDE1
-ICsxNDg0LDIyIEBAIGludGVsX3ZncHVfY3JlYXRlX3dvcmtsb2FkKHN0cnVjdCBpbnRlbF92Z3B1
-ICp2Z3B1LCBpbnQgcmluZ19pZCwKIAloZWFkICY9IFJCX0hFQURfT0ZGX01BU0s7CiAJdGFpbCAm
-PSBSQl9UQUlMX09GRl9NQVNLOwogCi0JaWYgKGxhc3Rfd29ya2xvYWQgJiYgc2FtZV9jb250ZXh0
-KCZsYXN0X3dvcmtsb2FkLT5jdHhfZGVzYywgZGVzYykpIHsKLQkJZ3Z0X2RiZ19lbCgicmluZyBp
-ZCAlZCBjdXIgd29ya2xvYWQgPT0gbGFzdFxuIiwgcmluZ19pZCk7Ci0JCWd2dF9kYmdfZWwoImN0
-eCBoZWFkICV4IHJlYWwgaGVhZCAlbHhcbiIsIGhlYWQsCi0JCQkJbGFzdF93b3JrbG9hZC0+cmJf
-dGFpbCk7Ci0JCS8qCi0JCSAqIGNhbm5vdCB1c2UgZ3Vlc3QgY29udGV4dCBoZWFkIHBvaW50ZXIg
-aGVyZSwKLQkJICogYXMgaXQgbWlnaHQgbm90IGJlIHVwZGF0ZWQgYXQgdGhpcyB0aW1lCi0JCSAq
-LwotCQloZWFkID0gbGFzdF93b3JrbG9hZC0+cmJfdGFpbDsKKwlsaXN0X2Zvcl9lYWNoKHBvcywg
-cSkgeworCQlsYXN0X3dvcmtsb2FkID0gY29udGFpbmVyX29mKHBvcywgc3RydWN0IGludGVsX3Zn
-cHVfd29ya2xvYWQsCisJCQkJbGlzdCk7CisJCWlmICghbGFzdF93b3JrbG9hZCkKKwkJCWNvbnRp
-bnVlOworCQlpZiAoc2FtZV9jb250ZXh0KCZsYXN0X3dvcmtsb2FkLT5jdHhfZGVzYywgZGVzYykp
-IHsKKwkJCWd2dF9kYmdfZWwoInJpbmcgaWQgJWQgY3VyIHdvcmtsb2FkID09IGxhc3RcbiIsCisJ
-CQkJCXJpbmdfaWQpOworCQkJZ3Z0X2RiZ19lbCgiY3R4IGhlYWQgJXggcmVhbCBoZWFkICVseFxu
-IiwgaGVhZCwKKwkJCQkJbGFzdF93b3JrbG9hZC0+cmJfdGFpbCk7CisJCQkvKgorCQkJICogY2Fu
-bm90IHVzZSBndWVzdCBjb250ZXh0IGhlYWQgcG9pbnRlciBoZXJlLAorCQkJICogYXMgaXQgbWln
-aHQgbm90IGJlIHVwZGF0ZWQgYXQgdGhpcyB0aW1lCisJCQkgKi8KKwkJCWhlYWQgPSBsYXN0X3dv
-cmtsb2FkLT5yYl90YWlsOworCQl9CiAJfQogCiAJZ3Z0X2RiZ19lbCgicmluZyBpZCAlZCBiZWdp
-biBhIG5ldyB3b3JrbG9hZFxuIiwgcmluZ19pZCk7Ci0tIAoyLjcuNAoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxp
-c3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0286471077==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="1XWsVB21DFCvn2e8"
+Content-Disposition: inline
+
+
+--1XWsVB21DFCvn2e8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2019.08.27 13:38:58 +0800, Xiaolin Zhang wrote:
+> when creating a vGPU workload, the guest context head pointer should
+> be updated correctly by comparing with the exsiting workload in the
+> guest worklod queue including the current running context.
+>=20
+> in some situation, there is a running context A and then received 2 new
+> vGPU workload context B and A. in the new workload context A, it's head
+> pointer should be updated with the running context A's tail.
+>=20
+> Fixes: 09975b861aa0 ("drm/i915/execlists: Disable preemption under GVT")
+> Fixes: 22b7a426bbe1 ("drm/i915/execlists: Preempt-to-busy")
+>=20
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/scheduler.c | 31 ++++++++++++++++++-------------
+>  1 file changed, 18 insertions(+), 13 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
+gvt/scheduler.c
+> index 8940fa8..89057c6 100644
+> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
+> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+> @@ -1438,9 +1438,6 @@ static int prepare_mm(struct intel_vgpu_workload *w=
+orkload)
+>  #define same_context(a, b) (((a)->context_id =3D=3D (b)->context_id) && \
+>  		((a)->lrca =3D=3D (b)->lrca))
+> =20
+> -#define get_last_workload(q) \
+> -	(list_empty(q) ? NULL : container_of(q->prev, \
+> -	struct intel_vgpu_workload, list))
+>  /**
+>   * intel_vgpu_create_workload - create a vGPU workload
+>   * @vgpu: a vGPU
+> @@ -1460,7 +1457,8 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,=
+ int ring_id,
+>  {
+>  	struct intel_vgpu_submission *s =3D &vgpu->submission;
+>  	struct list_head *q =3D workload_q_head(vgpu, ring_id);
+> -	struct intel_vgpu_workload *last_workload =3D get_last_workload(q);
+> +	struct list_head *pos;
+> +	struct intel_vgpu_workload *last_workload =3D NULL;
+>  	struct intel_vgpu_workload *workload =3D NULL;
+>  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
+>  	u64 ring_context_gpa;
+> @@ -1486,15 +1484,22 @@ intel_vgpu_create_workload(struct intel_vgpu *vgp=
+u, int ring_id,
+>  	head &=3D RB_HEAD_OFF_MASK;
+>  	tail &=3D RB_TAIL_OFF_MASK;
+> =20
+> -	if (last_workload && same_context(&last_workload->ctx_desc, desc)) {
+> -		gvt_dbg_el("ring id %d cur workload =3D=3D last\n", ring_id);
+> -		gvt_dbg_el("ctx head %x real head %lx\n", head,
+> -				last_workload->rb_tail);
+> -		/*
+> -		 * cannot use guest context head pointer here,
+> -		 * as it might not be updated at this time
+> -		 */
+> -		head =3D last_workload->rb_tail;
+> +	list_for_each(pos, q) {
+> +		last_workload =3D container_of(pos, struct intel_vgpu_workload,
+> +				list);
+> +		if (!last_workload)
+> +			continue;
+
+Just use list_for_each_entry() and to look up last uncompleted workload
+should try to search backward, hopefully we can just fix it once.
+
+> +		if (same_context(&last_workload->ctx_desc, desc)) {
+> +			gvt_dbg_el("ring id %d cur workload =3D=3D last\n",
+> +					ring_id);
+> +			gvt_dbg_el("ctx head %x real head %lx\n", head,
+> +					last_workload->rb_tail);
+> +			/*
+> +			 * cannot use guest context head pointer here,
+> +			 * as it might not be updated at this time
+> +			 */
+> +			head =3D last_workload->rb_tail;
+> +		}
+>  	}
+> =20
+>  	gvt_dbg_el("ring id %d begin a new workload\n", ring_id);
+> --=20
+> 2.7.4
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--1XWsVB21DFCvn2e8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXWTnDwAKCRCxBBozTXgY
+J/f9AJ4oWB8M2V5ff9yisNTgo6ShiQsJuQCght4VJANZIbzbVI/t6hiVX60B4lc=
+=KOkg
+-----END PGP SIGNATURE-----
+
+--1XWsVB21DFCvn2e8--
+
+--===============0286471077==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0286471077==--
