@@ -2,36 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 515029FA38
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Aug 2019 08:11:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AB5D9FA42
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Aug 2019 08:12:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1790689958;
-	Wed, 28 Aug 2019 06:11:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EABB989958;
+	Wed, 28 Aug 2019 06:12:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2DFAC89958;
- Wed, 28 Aug 2019 06:11:44 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C734789958
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 28 Aug 2019 06:12:36 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2019 23:11:43 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2019 23:12:36 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.64,440,1559545200"; 
- d="asc'?scan'208";a="192483221"
+ d="asc'?scan'208";a="210036256"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by orsmga002.jf.intel.com with ESMTP; 27 Aug 2019 23:11:42 -0700
-Date: Wed, 28 Aug 2019 14:06:59 +0800
+ by fmsmga002.fm.intel.com with ESMTP; 27 Aug 2019 23:12:35 -0700
+Date: Wed, 28 Aug 2019 14:07:52 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Xiong Zhang <xiong.y.zhang@intel.com>
-Subject: Re: [PATCH v2] drm/i915: Move vgpu balloon info into
- i915_virtual_gpu struct
-Message-ID: <20190828060659.GA4868@zhen-hp.sh.intel.com>
-References: <1566279978-9659-2-git-send-email-xiong.y.zhang@intel.com>
- <1566357790-5003-1-git-send-email-xiong.y.zhang@intel.com>
+To: Xiaolin Zhang <xiaolin.zhang@intel.com>
+Subject: Re: [PATCH v2] drm/i915/gvt: update vgpu workload head pointer
+ correctly
+Message-ID: <20190828060752.GB4868@zhen-hp.sh.intel.com>
+References: <1566895163-3772-1-git-send-email-xiaolin.zhang@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <1566357790-5003-1-git-send-email-xiong.y.zhang@intel.com>
+In-Reply-To: <1566895163-3772-1-git-send-email-xiaolin.zhang@intel.com>
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
@@ -46,183 +47,105 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0729228355=="
+Cc: intel-gvt-dev@lists.freedesktop.org, stable@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============0243836824=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0729228355==
+--===============0243836824==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="tThc/1wpZn/ma/RB"
+	protocol="application/pgp-signature"; boundary="CUfgB8w4ZwR/yMy5"
 Content-Disposition: inline
 
 
---tThc/1wpZn/ma/RB
+--CUfgB8w4ZwR/yMy5
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2019.08.21 11:23:10 +0800, Xiong Zhang wrote:
-> vgpu ballon info consists of four drm_mm_node which is used to reserve
-> ggtt space, then linux guest won't use these reserved ggtt space.
+On 2019.08.27 16:39:23 +0800, Xiaolin Zhang wrote:
+> when creating a vGPU workload, the guest context head pointer should
+> be updated correctly by comparing with the exsiting workload in the
+> guest worklod queue including the current running context.
 >=20
-> Each vgpu has its own ballon info, so move ballon info into
-> i915_virtual_gpu structure.
+> in some situation, there is a running context A and then received 2 new
+> vGPU workload context B and A. in the new workload context A, it's head
+> pointer should be updated with the running context A's tail.
 >=20
-> v2: Fix dim PARENTHESIS_ALIGNMENT check warning
+> Fixes: 09975b861aa0 ("drm/i915/execlists: Disable preemption under GVT")
+> Fixes: 22b7a426bbe1 ("drm/i915/execlists: Preempt-to-busy")
 >=20
-> Signed-off-by: Xiong Zhang <xiong.y.zhang@intel.com>
+> v2: walk through guest workload list in backward way.
+>=20
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
 > ---
-
-Looks fine to me. You need to refresh after deballoon fix merged.
 
 Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
->  drivers/gpu/drm/i915/i915_drv.h  | 14 ++++++++++++++
->  drivers/gpu/drm/i915/i915_vgpu.c | 40 +++++++++++++++++-----------------=
-------
->  2 files changed, 31 insertions(+), 23 deletions(-)
+Thanks for the fix!
+
+>  drivers/gpu/drm/i915/gvt/scheduler.c | 28 +++++++++++++++-------------
+>  1 file changed, 15 insertions(+), 13 deletions(-)
 >=20
-> diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_=
-drv.h
-> index 18be8b2..9c14095 100644
-> --- a/drivers/gpu/drm/i915/i915_drv.h
-> +++ b/drivers/gpu/drm/i915/i915_drv.h
-> @@ -1024,6 +1024,20 @@ struct i915_frontbuffer_tracking {
->  struct i915_virtual_gpu {
->  	bool active;
->  	u32 caps;
+> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
+gvt/scheduler.c
+> index 8940fa8..166b998 100644
+> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
+> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+> @@ -1438,9 +1438,6 @@ static int prepare_mm(struct intel_vgpu_workload *w=
+orkload)
+>  #define same_context(a, b) (((a)->context_id =3D=3D (b)->context_id) && \
+>  		((a)->lrca =3D=3D (b)->lrca))
+> =20
+> -#define get_last_workload(q) \
+> -	(list_empty(q) ? NULL : container_of(q->prev, \
+> -	struct intel_vgpu_workload, list))
+>  /**
+>   * intel_vgpu_create_workload - create a vGPU workload
+>   * @vgpu: a vGPU
+> @@ -1460,7 +1457,7 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,=
+ int ring_id,
+>  {
+>  	struct intel_vgpu_submission *s =3D &vgpu->submission;
+>  	struct list_head *q =3D workload_q_head(vgpu, ring_id);
+> -	struct intel_vgpu_workload *last_workload =3D get_last_workload(q);
+> +	struct intel_vgpu_workload *last_workload =3D NULL;
+>  	struct intel_vgpu_workload *workload =3D NULL;
+>  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
+>  	u64 ring_context_gpa;
+> @@ -1486,15 +1483,20 @@ intel_vgpu_create_workload(struct intel_vgpu *vgp=
+u, int ring_id,
+>  	head &=3D RB_HEAD_OFF_MASK;
+>  	tail &=3D RB_TAIL_OFF_MASK;
+> =20
+> -	if (last_workload && same_context(&last_workload->ctx_desc, desc)) {
+> -		gvt_dbg_el("ring id %d cur workload =3D=3D last\n", ring_id);
+> -		gvt_dbg_el("ctx head %x real head %lx\n", head,
+> -				last_workload->rb_tail);
+> -		/*
+> -		 * cannot use guest context head pointer here,
+> -		 * as it might not be updated at this time
+> -		 */
+> -		head =3D last_workload->rb_tail;
+> +	list_for_each_entry_reverse(last_workload, q, list) {
 > +
-> +	struct balloon_info {
-> +		/*
-> +		 * There are up to 2 regions per mappable/unmappable graphic
-> +		 * memory that might be ballooned. Here, index 0/1 is for
-> +		 * mappable graphic memory, 2/3 for unmappable graphic memory.
-> +		 */
-> +#define VGPU_MAPPABLE_BALLOON_LOW     0
-> +#define VGPU_MAPPABLE_BALLOON_HIGH    1
-> +#define VGPU_UNMAPPABLE_BALLOON_LOW   2
-> +#define VGPU_UNMAPPABLE_BALLOON_HIGH  3
-> +#define VGPU_MAX_BALLOON_NUM          4
-> +		struct drm_mm_node space[VGPU_MAX_BALLOON_NUM];
-> +	} bl_info;
->  };
-> =20
->  /* used in computing the new watermarks state */
-> diff --git a/drivers/gpu/drm/i915/i915_vgpu.c b/drivers/gpu/drm/i915/i915=
-_vgpu.c
-> index d2fd66f..0ed35f4 100644
-> --- a/drivers/gpu/drm/i915/i915_vgpu.c
-> +++ b/drivers/gpu/drm/i915/i915_vgpu.c
-> @@ -105,17 +105,6 @@ bool intel_vgpu_has_full_ppgtt(struct drm_i915_priva=
-te *dev_priv)
->  	return dev_priv->vgpu.caps & VGT_CAPS_FULL_PPGTT;
->  }
-> =20
-> -struct _balloon_info_ {
-> -	/*
-> -	 * There are up to 2 regions per mappable/unmappable graphic
-> -	 * memory that might be ballooned. Here, index 0/1 is for mappable
-> -	 * graphic memory, 2/3 for unmappable graphic memory.
-> -	 */
-> -	struct drm_mm_node space[4];
-> -};
-> -
-> -static struct _balloon_info_ bl_info;
-> -
->  static void vgt_deballoon_space(struct i915_ggtt *ggtt,
->  				struct drm_mm_node *node)
->  {
-> @@ -140,15 +129,16 @@ static void vgt_deballoon_space(struct i915_ggtt *g=
-gtt,
->   */
->  void intel_vgt_deballoon(struct i915_ggtt *ggtt)
->  {
-> +	struct drm_i915_private *dev_priv =3D ggtt->vm.i915;
->  	int i;
-> =20
-> -	if (!intel_vgpu_active(ggtt->vm.i915))
-> +	if (!intel_vgpu_active(dev_priv))
->  		return;
-> =20
->  	DRM_DEBUG("VGT deballoon.\n");
-> =20
-> -	for (i =3D 0; i < 4; i++)
-> -		vgt_deballoon_space(ggtt, &bl_info.space[i]);
-> +	for (i =3D 0; i < VGPU_MAX_BALLOON_NUM; i++)
-> +		vgt_deballoon_space(ggtt, &dev_priv->vgpu.bl_info.space[i]);
->  }
-> =20
->  static int vgt_balloon_space(struct i915_ggtt *ggtt,
-> @@ -219,6 +209,7 @@ static int vgt_balloon_space(struct i915_ggtt *ggtt,
->  int intel_vgt_balloon(struct i915_ggtt *ggtt)
->  {
->  	struct intel_uncore *uncore =3D &ggtt->vm.i915->uncore;
-> +	struct drm_mm_node *space;
->  	unsigned long ggtt_end =3D ggtt->vm.total;
-> =20
->  	unsigned long mappable_base, mappable_size, mappable_end;
-> @@ -253,9 +244,11 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
->  		return -EINVAL;
+> +		if (same_context(&last_workload->ctx_desc, desc)) {
+> +			gvt_dbg_el("ring id %d cur workload =3D=3D last\n",
+> +					ring_id);
+> +			gvt_dbg_el("ctx head %x real head %lx\n", head,
+> +					last_workload->rb_tail);
+> +			/*
+> +			 * cannot use guest context head pointer here,
+> +			 * as it might not be updated at this time
+> +			 */
+> +			head =3D last_workload->rb_tail;
+> +			break;
+> +		}
 >  	}
 > =20
-> +	space =3D ggtt->vm.i915->vgpu.bl_info.space;
->  	/* Unmappable graphic memory ballooning */
->  	if (unmappable_base > ggtt->mappable_end) {
-> -		ret =3D vgt_balloon_space(ggtt, &bl_info.space[2],
-> +		ret =3D vgt_balloon_space(ggtt,
-> +					&space[VGPU_UNMAPPABLE_BALLOON_LOW],
->  					ggtt->mappable_end, unmappable_base);
-> =20
->  		if (ret)
-> @@ -263,7 +256,8 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
->  	}
-> =20
->  	if (unmappable_end < ggtt_end) {
-> -		ret =3D vgt_balloon_space(ggtt, &bl_info.space[3],
-> +		ret =3D vgt_balloon_space(ggtt,
-> +					&space[VGPU_UNMAPPABLE_BALLOON_HIGH],
->  					unmappable_end, ggtt_end);
->  		if (ret)
->  			goto err_upon_mappable;
-> @@ -271,17 +265,17 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
-> =20
->  	/* Mappable graphic memory ballooning */
->  	if (mappable_base) {
-> -		ret =3D vgt_balloon_space(ggtt, &bl_info.space[0],
-> +		ret =3D vgt_balloon_space(ggtt,
-> +					&space[VGPU_MAPPABLE_BALLOON_LOW],
->  					0, mappable_base);
-> -
->  		if (ret)
->  			goto err_upon_unmappable;
->  	}
-> =20
->  	if (mappable_end < ggtt->mappable_end) {
-> -		ret =3D vgt_balloon_space(ggtt, &bl_info.space[1],
-> +		ret =3D vgt_balloon_space(ggtt,
-> +					&space[VGPU_MAPPABLE_BALLOON_HIGH],
->  					mappable_end, ggtt->mappable_end);
-> -
->  		if (ret)
->  			goto err_below_mappable;
->  	}
-> @@ -290,11 +284,11 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
->  	return 0;
-> =20
->  err_below_mappable:
-> -	vgt_deballoon_space(ggtt, &bl_info.space[0]);
-> +	vgt_deballoon_space(ggtt, &space[VGPU_MAPPABLE_BALLOON_LOW]);
->  err_upon_unmappable:
-> -	vgt_deballoon_space(ggtt, &bl_info.space[3]);
-> +	vgt_deballoon_space(ggtt, &space[VGPU_UNMAPPABLE_BALLOON_HIGH]);
->  err_upon_mappable:
-> -	vgt_deballoon_space(ggtt, &bl_info.space[2]);
-> +	vgt_deballoon_space(ggtt, &space[VGPU_UNMAPPABLE_BALLOON_LOW]);
->  err:
->  	DRM_ERROR("VGT balloon fail\n");
->  	return ret;
+>  	gvt_dbg_el("ring id %d begin a new workload\n", ring_id);
 > --=20
 > 2.7.4
 >=20
@@ -236,19 +159,19 @@ Open Source Technology Center, Intel ltd.
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---tThc/1wpZn/ma/RB
+--CUfgB8w4ZwR/yMy5
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXWYaAwAKCRCxBBozTXgY
-J0EeAJ0RouK01hZJND7Ax0clEh1wsclGXgCfRgD/Wlj5vlhr/t7EgXIHzYPVJww=
-=Bsgs
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXWYaOAAKCRCxBBozTXgY
+J3bmAJ9AClMvXTn6U7fw7NfsDl5SlLck2ACfZyjXn7rd8ODWjCR1s1aZuCZEjfs=
+=QCGW
 -----END PGP SIGNATURE-----
 
---tThc/1wpZn/ma/RB--
+--CUfgB8w4ZwR/yMy5--
 
---===============0729228355==
+--===============0243836824==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -258,4 +181,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============0729228355==--
+--===============0243836824==--
