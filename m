@@ -2,28 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 149FDA0C98
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Aug 2019 23:44:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 17F80A26E9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Aug 2019 21:04:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AAE2789EB8;
-	Wed, 28 Aug 2019 21:44:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BAE986E16D;
+	Thu, 29 Aug 2019 19:04:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 96419 seconds by postgrey-1.36 at gabe;
- Wed, 28 Aug 2019 21:44:17 UTC
-Received: from mon.com (unknown [89.38.149.100])
- by gabe.freedesktop.org (Postfix) with ESMTP id 02F8889EB8
+X-Greylist: delayed 316 seconds by postgrey-1.36 at gabe;
+ Thu, 29 Aug 2019 19:04:13 UTC
+Received: from cmta503.odn.ne.jp (mta503.odn.ne.jp [210.134.90.67])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7B4A16E159
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Aug 2019 21:44:17 +0000 (UTC)
-Received: from 18071001 (unknown [217.61.107.95])
- by mon.com (Postfix) with ESMTPA id 6E4677B6D1
+ Thu, 29 Aug 2019 19:04:13 +0000 (UTC)
+Received: from vmsa502.odn.ne.jp by cmsa502.odn.ne.jp with ESMTP
+ id <20190829185857283.SKGJ.4247.cmsa502.odn.ne.jp@msa502.odn.ne.jp>
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Aug 2019 11:33:22 -0400 (EDT)
-From: "Ulrich Bredemeyer" <abhi@nakio.ga>
-Subject: Need  Your Response
-To: intel-gvt-dev@lists.freedesktop.org
+ Fri, 30 Aug 2019 03:58:57 +0900
+Received: from msrg5021.rgserv.odn.ne.jp by vmsa502.odn.ne.jp with ESMTP
+ id <20190829185857217.HTWH.110056.vmsa502.odn.ne.jp@msa502.odn.ne.jp>;
+ Fri, 30 Aug 2019 03:58:57 +0900
+Received: from wem502 (210.134.90.72) by msrg5021.rgserv.odn.ne.jp
+ (9.0.018.07.06) id 5D234F69008780AA; Fri, 30 Aug 2019 03:58:57 +0900
+Message-ID: <5D234F69008780AA@msrg5021.rgserv.odn.ne.jp> (added by
+ postmaster@msrg5021.rgserv.odn.ne.jp)
+Date: Fri, 30 Aug 2019 3:58:57 +0900
+From: Zaya Hero <aap70820@hkg.odn.ne.jp>
+Subject: RE: Urgent
 MIME-Version: 1.0
-Date: Tue, 27 Aug 2019 17:33:22 +0200
+X-Priority: 3 (Normal)
+Sensitivity: Normal
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -36,190 +44,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: bredemeyeru@gmail.com
-Content-Type: multipart/mixed; boundary="===============1082127263=="
+Reply-To: zayahero1992@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20190828214419.AAE2789EB8@gabe.freedesktop.org>
 
-This is a multi-part message in MIME format
-
---===============1082127263==
-Content-Type: multipart/alternative; boundary="y3SPDXp2bICSFMNDt=_jBHGGBxiGNTogxf0"
-
-This is a multi-part message in MIME format
-
---y3SPDXp2bICSFMNDt=_jBHGGBxiGNTogxf0
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
- - This mail is in HTML. Some elements may be ommited in plain text. -
-
-Good Day,
-I want to seek for your approvals to share some information with you, =
-which I believe will be of interest to you. Please Let me know if I sh=
-ould , by confirming this email address that its your own. On hearing =
-from you, I will give you details of the message which both of us will=
- benefit from. My sincere intention in writing you is to gain your kin=
-d permission and acceptance to assist me secure this funds on my behal=
-f in your position for establishment of investment with you in your Co=
-untry.  I cannot handle the business myself because of the nature of m=
-y job.
-Reply me with this email address:  bredulrich@yahoo.com
-For your permission and acceptance, you are entitled to 40% commission=
- of the total amount if you have accept to do this transaction with me=
- honestly.
-Regards,
-Ulrich Bredemeyer.
-
---y3SPDXp2bICSFMNDt=_jBHGGBxiGNTogxf0
-Content-Type: text/html
-Content-Transfer-Encoding: quoted-printable
-
-<HTML><HEAD></HEAD>
-<BODY><SPAN style=3D"FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Ca=
-libri, Helvetica, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: basel=
-ine; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-=
-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-BOTTO=
-M: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGI=
-N: 0px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !impo=
-rtant; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: r=
-gb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; fon=
-t-variant-caps: normal; font-variant-numeric: inherit; font-variant-ea=
-st-asian: inherit; font-stretch: inherit; -webkit-text-stroke-width: 0=
-px; text-decoration-style: initial; text-decoration-color: initial">Go=
-od Day,</SPAN><BR style=3D"FONT-SIZE: 14px; FONT-FAMILY: Calibri, Helv=
-etica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSF=
-ORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal;=
- ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(=
-255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-v=
-ariant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-s=
-tyle: initial; text-decoration-color: initial"><BR style=3D"FONT-SIZE:=
- 14px; FONT-FAMILY: Calibri, Helvetica, sans-serif; WHITE-SPACE: norma=
-l; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: r=
-gb(32,31,30); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACIN=
-G: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-=
-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
-oke-width: 0px; text-decoration-style: initial; text-decoration-color:=
- initial"><SPAN style=3D"FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY=
-: Calibri, Helvetica, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: b=
-aseline; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; T=
-EXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-B=
-OTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; M=
-ARGIN: 0px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !=
-important; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLO=
-R: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; font-variant-numeric: inherit; font-varian=
-t-east-asian: inherit; font-stretch: inherit; -webkit-text-stroke-widt=
-h: 0px; text-decoration-style: initial; text-decoration-color: initial=
-">I want to seek for your approvals to share some information with you=
-, which I believe will be of interest to you. Please Let me know if I =
-should , by confirming this email address that its your own. On hearin=
-g from you, I will give you details of the message which both of us wi=
-ll benefit from. My sincere intention in writing you is to gain your k=
-ind permission and acceptance to assist me secure this funds on my beh=
-alf in your position for establishment of investment with you in your =
-Country.&nbsp; I cannot handle the business myself because of the natu=
-re of my job.</SPAN><BR style=3D"FONT-SIZE: 14px; FONT-FAMILY: Calibri=
-, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-=
-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: n=
-ormal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR=
-: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; =
-font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial"><BR style=3D"FONT=
--SIZE: 14px; FONT-FAMILY: Calibri, Helvetica, sans-serif; WHITE-SPACE:=
- normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; CO=
-LOR: rgb(32,31,30); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-=
-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px;=
- font-variant-ligatures: normal; font-variant-caps: normal; -webkit-te=
-xt-stroke-width: 0px; text-decoration-style: initial; text-decoration-=
-color: initial"><SPAN style=3D"FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-=
-FAMILY: Calibri, Helvetica, sans-serif; BORDER-RIGHT: 0px; VERTICAL-AL=
-IGN: baseline; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: =
-0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PAD=
-DING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: =
-0px; MARGIN: 0px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; DISPLAY: in=
-line !important; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUN=
-D-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: n=
-ormal; font-variant-caps: normal; font-variant-numeric: inherit; font-=
-variant-east-asian: inherit; font-stretch: inherit; -webkit-text-strok=
-e-width: 0px; text-decoration-style: initial; text-decoration-color: i=
-nitial">Reply me with this email address:&nbsp; bredulrich@yahoo.com&n=
-bsp;&nbsp;</SPAN><BR style=3D"FONT-SIZE: 14px; FONT-FAMILY: Calibri, H=
-elvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRA=
-NSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: norm=
-al; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: r=
-gb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; fon=
-t-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoratio=
-n-style: initial; text-decoration-color: initial"><SPAN style=3D"FONT-=
-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Calibri, Helvetica, sans-ser=
-if; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: normal; =
-WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIG=
-HT: 400; COLOR: rgb(32,31,30); PADDING-BOTTOM: 0px; FONT-STYLE: normal=
-; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; =
-ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: nor=
-mal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDE=
-NT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; fo=
-nt-variant-numeric: inherit; font-variant-east-asian: inherit; font-st=
-retch: inherit; -webkit-text-stroke-width: 0px; text-decoration-style:=
- initial; text-decoration-color: initial">For your permission and acce=
-ptance, you are entitled to 40% commission of the total amount if you =
-have accept to do this transaction with me honestly.</SPAN><BR style=
-=3D"FONT-SIZE: 14px; FONT-FAMILY: Calibri, Helvetica, sans-serif; WHIT=
-E-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT:=
- 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2;=
- LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDE=
-NT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -w=
-ebkit-text-stroke-width: 0px; text-decoration-style: initial; text-dec=
-oration-color: initial"><BR style=3D"FONT-SIZE: 14px; FONT-FAMILY: Cal=
-ibri, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; T=
-EXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYL=
-E: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-C=
-OLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: norm=
-al; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-de=
-coration-style: initial; text-decoration-color: initial"><SPAN style=
-=3D"FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Calibri, Helvetica,=
- sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE:=
- normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; =
-FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-BOTTOM: 0px; FONT-STYL=
-E: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LE=
-FT: 0px; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPA=
-CING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); =
-TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: n=
-ormal; font-variant-numeric: inherit; font-variant-east-asian: inherit=
-; font-stretch: inherit; -webkit-text-stroke-width: 0px; text-decorati=
-on-style: initial; text-decoration-color: initial">Regards,</SPAN><BR =
-style=3D"FONT-SIZE: 14px; FONT-FAMILY: Calibri, Helvetica, sans-serif;=
- WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WE=
-IGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; ORPHANS: 2; WIDOW=
-S: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT=
--INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: norma=
-l; -webkit-text-stroke-width: 0px; text-decoration-style: initial; tex=
-t-decoration-color: initial"><SPAN style=3D"FONT-SIZE: 14px; BORDER-TO=
-P: 0px; FONT-FAMILY: Calibri, Helvetica, sans-serif; BORDER-RIGHT: 0px=
-; VERTICAL-ALIGN: baseline; WHITE-SPACE: normal; WORD-SPACING: 0px; BO=
-RDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(3=
-2,31,30); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; P=
-ADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2=
-; DISPLAY: inline !important; LETTER-SPACING: normal; PADDING-RIGHT: 0=
-px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant=
--ligatures: normal; font-variant-caps: normal; font-variant-numeric: i=
-nherit; font-variant-east-asian: inherit; font-stretch: inherit; -webk=
-it-text-stroke-width: 0px; text-decoration-style: initial; text-decora=
-tion-color: initial">Ulrich Bredemeyer.</SPAN></BODY></HTML>
-
---y3SPDXp2bICSFMNDt=_jBHGGBxiGNTogxf0--
-
-
---===============1082127263==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1082127263==--
-
+RGVhciBGcmllbmQsCgpNeSBuYW1lIGlzIENhcHQuIFpheWEgSGVybywgYW0gbG9va2luZyBmb3Ig
+YSByZWxpYWJsZSBhbmQgdHJ1c3Qgd29ydGh5IHBlcnNvbiBmb3IgYSBjb3JkaWFsIHJlbGF0aW9u
+c2hpcCwgcGxlYXNlIEknbGwgYmUgZ2xhZCBpZiB5b3UgY2FuIGtpbmRseSBnZXQgYmFjayB0byBt
+ZSBmb3IgbW9yZSBkZXRhaWxzIGFib3V0IGJ1c2luZXNzIHRyYW5zYWN0aW9uIHdvcnRoIDIuNSBN
+aWxsaW9uIERvbGxhcnMgaW4gYm94LCBpIG5lZWQgeW91ciBoZWxwIHRvIGRlbGl2ZXIgdGhpcyAy
+LjUgTWlsbGlvbiBEb2xsYXJzIGludG8geW91ciBob21lIGFkZHJlc3MgdGhyb3VnaCBkaXBsb21h
+dGljIG1ldGhvZC4gCgpPbiBKYW51YXJ5IDEsIDIwMTguIGR1cmluZyBvdXIgcmVzY3VlIG1pc3Np
+b24gYXNzaWdubWVudCBmb3IgYSBKb3JkYW5pYW4gUGlsb3QgKGhvc3RhZ2UpIGF0IElTSVMgT2ls
+IEZhY2lsaXR5LCB0aGVyZSB3YXMgYSBwYXJ0aWN1bGFybHkgYnJ1dGFsIGZpcmVmaWdodCBpbiBS
+YXFxYSwgSVNJU+KAmXMgY2FwaXRhbCBpbiBTeXJpYSwgYWZ0ZXIgZGVmZWF0aW5nIHRoZW0sIGkg
+Y2FtZSBhY3Jvc3MgYSB0d28gY3Jlc3QgYm94IHRoYXQgY29udGFpbiBodWdlIGFtb3VudCBvZiBt
+b25leSB0aGF0IGJlbG9uZ3MgdG8gdGhlIHNwb25zb3JzIGFuZCBzdXBwb3J0ZXIgb2YgSVNJUywg
+d2hpY2ggaSBiZWxpZXZlIHRoYXQgdGhlIG1vbmV5IHdhcyBtZWFudCBmb3IgYnV5aW5nIG9mIHdl
+YXBvbnMgYW5kIGFtbXVuaXRpb24ncywgc28gd2UgYWdyZWVkIGJ5IDkgQXJteSBvZmZpY2VyIG9u
+IHRoYXQgcmVzY3VlIG1pc3Npb24gdGhhdCB0aGUgbW9uZXkgd2lsbCBiZSBlbmNsb3NlZCBhbmQg
+YmUgc2hhcmVkIGFtb25nIGFsbCBvZiB1cy4KCkFmdGVyIHdlIHNoYXJlZCB0aGUgbW9uZXksIGkg
+Z290IGEgc2hhcmUgb2YgJCAyLDUwMC4wMDAuMDAgKCBUd28gTWlsbGlvbiwgRml2ZSBIdW5kcmVk
+IFRob3VzYW5kIFVuaXRlZCBTdGF0ZXMgRG9sbGFycyksCgpJIGFtIHNvbGljaXRpbmcgb24geW91
+IHRvIGtlZXAgaXQgc2FmZSBvbiBteSBiZWhhbGYgdGlsbCBpIGNvbWUgb3ZlciB0byB5b3VyIGNv
+dW50cnksIEl0J3MgY2xlYXIgdG8gbWUgdGhhdCB5b3UgbWlnaHQgYmUgc2NhcmVkIG9mIHRoaXMg
+cHJvcG9zYWwsIGJ1dCBpIHdhbnQgdG8gbGV0IHlvdSBrbm93IHRoYXQgaSBoYXZlIG1hZGUgc29s
+aWQgYXJyYW5nZW1lbnRzIHdpdGggYSBTZWN1cml0eSBDYXJnbyBDb21wYW55IHRoYXQgc3BlY2lh
+bGl6ZSBvbiBkaXBsb21hdGljIGRlbGl2ZXJ5IGFuZCB0aGV5IGhhdmUgcHJvbWlzZWQgdG8gZGVs
+aXZlciB0aGUgZnVuZCB0aHJvdWdoIGRpcGxvbWF0aWMgbWV0aG9kIHRvIGFueSBvZiBteSBjaG9v
+c2luZyBkZXN0aW5hdGlvbi4KCkJlbG93IGlzIHRoZSBkZWxpdmVyeSBjb21wYW55IGFkZHJlc3Mu
+CgpJbnRlcmNvbnRpbmVudGFsIERlbGl2ZXJ5IFNlcnZpY2UKSGVhZCBPZmZpY2U6IFRlcm1pbmFs
+IDMgRHViYWkgSW50ZXJuYXRpb25hbCBBaXJwb3J0LCBVQUUKUGhvbmU6ICs5NzEgMTU1NyA0Njg3
+IDk4CkVtYWlsOiBpbmZvQGludGVyY29udGRlbGl2ZXJ5LmNvbQpFbWFpbDogYXNpYUBpbnRlcmNv
+bnRkZWxpdmVyeS5jb20KRW1haWw6IHVzYUBpbnRlcmNvbnRkZWxpdmVyeS5jb20KV2Vic2l0ZTog
+d3d3LmludGVyY29udGRlbGl2ZXJ5LmNvbQoKVGhlIGRlbGl2ZXJ5IHNlcnZpY2UgaXMgZ29pbmcg
+dG8gYmUgaGFuZGxlIGxlZ2FsbHkgYnkgdGhlIFNlY3VyaXR5IENhcmdvIENvbXBhbnkgYW5kIHRo
+ZXJlIHdpbGwgYmUgbm8gZm9ybSBvZiByaXNrIGluIHRoZSBwcm9jZXNzIGFuZCB0aGUgbW9uZXkg
+d2lsbCBiZSBzZWFsZWQgYW5kIHBhY2sgc2FmZWx5IGFzIGEgZGlwbG9tYXRpYyBjYXJnbyBhbmQg
+aXQgd2lsbCBiZSBkZWxpdmVyIHRvIHlvdSBpbiB5b3VyIGNvdW50cnkgYnkgYSBEaXBsb21hdCBt
+ZXRob2QuIEkgaGF2ZSBkZWNpZGUgdG8gY29tcGVuc2F0ZSB5b3Ugd2l0aCA0MCUgb2YgdGhlIHRv
+dGFsIG1vbmV5IG9uY2UgYWZ0ZXIgdGhlIG1vbmV5IGlzIGRlbGl2ZXJlZCB0byB5b3UsIHdoaWxl
+IHRoZSByZXN0IGJhbGFuY2Ugc2hhbGwgYmUgbXkgaW52ZXN0bWVudCBjYXBpdGFsIGluIHlvdXIg
+Y291bnRyeSB3aXNoIHlvdSB3aWxsIGFzc2lzdCBtZS4KCkJlc3QgcmVnYXJkcwoKVVNTLiBaYXlh
+IEhlcm8KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50
+ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1n
+dnQtZGV2
