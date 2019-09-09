@@ -2,28 +2,28 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A585FAD2B6
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Sep 2019 06:45:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2D0AAD46F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Sep 2019 10:09:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5A4CB8979D;
-	Mon,  9 Sep 2019 04:45:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8B2A989944;
+	Mon,  9 Sep 2019 08:08:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from smtp.hobien.com.vn (unknown [203.162.76.154])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6B0E08979D
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5921389944
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Sep 2019 04:45:14 +0000 (UTC)
+ Mon,  9 Sep 2019 08:08:58 +0000 (UTC)
 Received: from IP-220-110.dataclub.eu (unknown [46.183.220.110])
  (Authenticated sender: henry@com.vn)
- by smtp.hobien.com.vn (Postfix) with ESMTPA id F3C311DC4751
+ by smtp.hobien.com.vn (Postfix) with ESMTPA id 99FD668C227
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Sep 2019 11:25:25 +0700 (+07)
+ Mon,  9 Sep 2019 14:44:19 +0700 (+07)
 MIME-Version: 1.0
 Subject: Your E-mail intel-gvt-dev@lists.freedesktop.org,
  have 5 Pending Incoming Messages.
 To: intel-gvt-dev@lists.freedesktop.org
 From: "Postmaster " <no-reply@servicemail.com>
-Date: Mon, 09 Sep 2019 07:25:23 +0300
+Date: Mon, 09 Sep 2019 10:44:17 +0300
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -36,17 +36,17 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1198484215=="
+Content-Type: multipart/mixed; boundary="===============0464648540=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20190909044516.5A4CB8979D@gabe.freedesktop.org>
+Message-Id: <20190909080859.8B2A989944@gabe.freedesktop.org>
 
 You will not see this in a MIME-aware mail reader.
---===============1198484215==
-Content-Type: multipart/alternative; boundary="===============0005634956=="
+--===============0464648540==
+Content-Type: multipart/alternative; boundary="===============0730248656=="
 
 You will not see this in a MIME-aware mail reader.
---===============0005634956==
+--===============0730248656==
 Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -87,7 +87,7 @@ lease do not reply =
 Thanks and Regards,
 Mail Admin (C) 2019 Secured Service.
 
---===============0005634956==
+--===============0730248656==
 Content-Type: text/html; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -147,9 +147,9 @@ ists.freedesktop.org"><SPAN>Update intel-gvt-dev@lists.freedesktop.org now<=
 <DIV><BR><SPAN><STRONG>Thanks and Regards,<BR>Mail Admin (C) 2019 Secured S=
 ervice.</STRONG></SPAN><BR type=3D"_moz"></DIV></DIV></DIV></DIV></BODY></H=
 TML>
---===============0005634956==--
+--===============0730248656==--
 
---===============1198484215==
+--===============0464648540==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -159,4 +159,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============1198484215==--
+--===============0464648540==--
