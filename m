@@ -2,27 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC2F4BF012
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Sep 2019 12:50:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EDB7EBF2B0
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Sep 2019 14:15:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2CBAC6ED0B;
-	Thu, 26 Sep 2019 10:50:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 756406ECFB;
+	Thu, 26 Sep 2019 12:15:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C32B16ECFF;
- Thu, 26 Sep 2019 10:50:48 +0000 (UTC)
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 700526ECCB
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Sep 2019 12:15:23 +0000 (UTC)
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 74AC92D7E1;
- Thu, 26 Sep 2019 10:50:47 +0000 (UTC)
-Received: from [10.72.12.101] (ovpn-12-101.pek2.redhat.com [10.72.12.101])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 012735D6A7;
- Thu, 26 Sep 2019 10:49:15 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id EEAE6C0578F8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Sep 2019 12:15:22 +0000 (UTC)
+Received: by mail-qk1-f199.google.com with SMTP id q80so2108189qke.22
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Sep 2019 05:15:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=WoMvRKtykTYDsX19tL7CCxZ7vdSAP87++ul9jUPZqPM=;
+ b=QNUmmv5+oeof+041Fje2Ntsk6bONshxHAv7+blPTbjEQuFBQLttf8eMs3WA8jz+wBk
+ gY7QP3JACIo4yu/e4ZUKyvt9kL9zjZLYkiQLVeFG4NUiMWSWICLS9xY18qoMbg+9JMZa
+ sE+SFCqO2lbAym2bjU1a2G3DBsnedQ8Qn4s6q7ynMIgPJbnZ6uW4NoJ1QY4IrTMKkHHJ
+ a1UJUWhI9bFlACqMfRWotyHO/Ip2ympIpzONx1e1a/TTC394RXZNyUAC3RX5CCwDx87f
+ /iPvgzhkTJaBOcb+BlzNm2PVcYFXNk2Ke+ppeUTPfrsClLuHyCQyEteSk1l1fpbMobnj
+ ss4g==
+X-Gm-Message-State: APjAAAVHifJdG1Q2lmxWOQj2lkOxse1UA+5y4ENfp10JKJvOhrkXtFeV
+ vxhiD5tNcTEiv/SC3hbRvJ3ZezKLzTRU2SCPNnwaKVP9jELfYsuImBCVF9Ex/etCHzqpziZT/zq
+ vD19l34yVAzSDrs4MI/L9lqJolETIC87EuQ==
+X-Received: by 2002:ac8:184:: with SMTP id x4mr3591098qtf.249.1569500122286;
+ Thu, 26 Sep 2019 05:15:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzPTpW78dOXtowZ8lrDddxbCYHPF7M3/HG68ZTdILYDvfvFJG+QYoihU1Xiv24jrNMXunrPAg==
+X-Received: by 2002:ac8:184:: with SMTP id x4mr3591073qtf.249.1569500122133;
+ Thu, 26 Sep 2019 05:15:22 -0700 (PDT)
+Received: from redhat.com (bzq-79-176-40-226.red.bezeqint.net. [79.176.40.226])
+ by smtp.gmail.com with ESMTPSA id o38sm1025365qtc.39.2019.09.26.05.15.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Sep 2019 05:15:21 -0700 (PDT)
+Date: Thu, 26 Sep 2019 08:15:09 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Jason Wang <jasowang@redhat.com>
 Subject: Re: [PATCH V2 6/8] mdev: introduce virtio device and its device ops
-To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20190926081506-mutt-send-email-mst@kernel.org>
 References: <20190924135332.14160-1-jasowang@redhat.com>
  <20190924135332.14160-7-jasowang@redhat.com>
  <AADFC41AFE54684AB9EE6CBC0274A5D19D58F7DA@SHSMSX104.ccr.corp.intel.com>
@@ -30,17 +59,10 @@ References: <20190924135332.14160-1-jasowang@redhat.com>
  <20190925092044-mutt-send-email-mst@kernel.org>
  <eb7c76b5-2938-2e73-d847-b174a289c5c9@redhat.com>
  <20190926042102-mutt-send-email-mst@kernel.org>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <d6a66de5-5774-5ad6-8e9d-26bb6d8eaa8c@redhat.com>
-Date: Thu, 26 Sep 2019 18:48:54 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <d6a66de5-5774-5ad6-8e9d-26bb6d8eaa8c@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190926042102-mutt-send-email-mst@kernel.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Thu, 26 Sep 2019 10:50:48 +0000 (UTC)
+Content-Disposition: inline
+In-Reply-To: <d6a66de5-5774-5ad6-8e9d-26bb6d8eaa8c@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,24 +112,26 @@ Cc: "christophe.de.dinechin@gmail.com" <christophe.de.dinechin@gmail.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "maxime.coquelin@redhat.com" <maxime.coquelin@redhat.com>,
  "daniel@ffwll.ch" <daniel@ffwll.ch>, "Zhu, Lingshan" <lingshan.zhu@intel.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Ck9uIDIwMTkvOS8yNiDkuIvljYg0OjIxLCBNaWNoYWVsIFMuIFRzaXJraW4gd3JvdGU6Cj4gT24g
-VGh1LCBTZXAgMjYsIDIwMTkgYXQgMTI6MDQ6NDZQTSArMDgwMCwgSmFzb24gV2FuZyB3cm90ZToK
-Pj4+Pj4gSSdtIG5vdCBzdXJlIGhvdyBzdGFibGUgYWJvdmUgb3BzIGFyZS4KPj4+PiBJdCdzIHRo
-ZSBrZXJuZWwgaW50ZXJuYWwgQVBJLCBzbyB0aGVyZSdzIG5vIHN0cmljdCByZXF1aXJlbWVudCBm
-b3IgdGhpcy4gV2UKPj4+PiB3aWxsIGV4cG9ydCBhIHZlcnNpb24gdmFsdWUgZm9yIHVzZXJzcGFj
-ZSBmb3IgY29tcGF0aWJpbGl0eS4KPj4+IEdpdmVuIGl0J3MgdGllZCB0byB2aXJ0aW8gd2UgcHJv
-YmFibHkgd2FudCBrZXJuZWwrdXNlcnNwYWNlCj4+PiBmZWF0dXJlIGJpdHM/Cj4+Cj4+IFllcywg
-dGhlbiBJIHRoaW5rIHdlIGNvdWxkIHByb2JhYmx5IGhhdmUgYSB2ZXJzaW9uIGZpZWxkIGluc2lk
-ZSBlLmcKPj4gZGV2aWNlX29wcyBzdHJ1Y3R1cmUuIFRoZW4gaXQgY291bGQgYmUgZmV0Y2hlZCBm
-cm9tIGJvdGgga2VybmVsIGFuZAo+PiB1c2Vyc3BhY2UgZHJpdmVyLgo+Pgo+PiBUaGFua3MKPj4K
-Pgo+IG15IHBvaW50IHdhcyBmZWF0dXJlIGJpdHMgbm90IGEgdmVyc2lvbiBudW1iZXIuCgoKU29t
-ZXRoaW5nIGxpa2UgYmFja2VuZF9mZWF0dXJlIHRoYXQgY3VycmVudCB2aG9zdF9uZXQgZGlkPwoK
-VGhhbmtzCgoKPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
-dGVsLWd2dC1kZXY=
+T24gVGh1LCBTZXAgMjYsIDIwMTkgYXQgMDY6NDg6NTRQTSArMDgwMCwgSmFzb24gV2FuZyB3cm90
+ZToKPiAKPiBPbiAyMDE5LzkvMjYg5LiL5Y2INDoyMSwgTWljaGFlbCBTLiBUc2lya2luIHdyb3Rl
+Ogo+ID4gT24gVGh1LCBTZXAgMjYsIDIwMTkgYXQgMTI6MDQ6NDZQTSArMDgwMCwgSmFzb24gV2Fu
+ZyB3cm90ZToKPiA+ID4gPiA+ID4gSSdtIG5vdCBzdXJlIGhvdyBzdGFibGUgYWJvdmUgb3BzIGFy
+ZS4KPiA+ID4gPiA+IEl0J3MgdGhlIGtlcm5lbCBpbnRlcm5hbCBBUEksIHNvIHRoZXJlJ3Mgbm8g
+c3RyaWN0IHJlcXVpcmVtZW50IGZvciB0aGlzLiBXZQo+ID4gPiA+ID4gd2lsbCBleHBvcnQgYSB2
+ZXJzaW9uIHZhbHVlIGZvciB1c2Vyc3BhY2UgZm9yIGNvbXBhdGliaWxpdHkuCj4gPiA+ID4gR2l2
+ZW4gaXQncyB0aWVkIHRvIHZpcnRpbyB3ZSBwcm9iYWJseSB3YW50IGtlcm5lbCt1c2Vyc3BhY2UK
+PiA+ID4gPiBmZWF0dXJlIGJpdHM/Cj4gPiA+IAo+ID4gPiBZZXMsIHRoZW4gSSB0aGluayB3ZSBj
+b3VsZCBwcm9iYWJseSBoYXZlIGEgdmVyc2lvbiBmaWVsZCBpbnNpZGUgZS5nCj4gPiA+IGRldmlj
+ZV9vcHMgc3RydWN0dXJlLiBUaGVuIGl0IGNvdWxkIGJlIGZldGNoZWQgZnJvbSBib3RoIGtlcm5l
+bCBhbmQKPiA+ID4gdXNlcnNwYWNlIGRyaXZlci4KPiA+ID4gCj4gPiA+IFRoYW5rcwo+ID4gPiAK
+PiA+IAo+ID4gbXkgcG9pbnQgd2FzIGZlYXR1cmUgYml0cyBub3QgYSB2ZXJzaW9uIG51bWJlci4K
+PiAKPiAKPiBTb21ldGhpbmcgbGlrZSBiYWNrZW5kX2ZlYXR1cmUgdGhhdCBjdXJyZW50IHZob3N0
+X25ldCBkaWQ/Cj4gCj4gVGhhbmtzCj4gCj4gCj4gPiAKCnJpZ2h0Cl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0
+CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
