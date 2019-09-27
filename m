@@ -2,88 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C54AC0987
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Sep 2019 18:25:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96937C1069
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 28 Sep 2019 11:33:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 35C976E0E6;
-	Fri, 27 Sep 2019 16:25:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3CE8B6E0EE;
+	Sat, 28 Sep 2019 09:33:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from EUR01-DB5-obe.outbound.protection.outlook.com
- (mail-eopbgr150044.outbound.protection.outlook.com [40.107.15.44])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BF67B6E0E6;
- Fri, 27 Sep 2019 16:25:16 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cGpB5EOV/oKSsQXRpWYYPvV+/6wUMVkmAjykmtYFIbU5/uH4yDbPSLEDGofXu+Vw2FH/LPC7niuyOI6mxzHOCQpqo2OufN0xxj52UKJuOmSNhiilGTQ4xRIs1tRPJdHugEdElnKZU55XBdXmrJXlC6Ud7Rtu87MsqX1XwVkJ/IJ5FXPkEis0/nrPSNi3ZDrvTUA7cbpmg4g0txuDFx7Bw/fENCBmFWMr789UOAviBMR4htqnnBtGjnMkrAf5yGE5vWdqN5z/yYC5FnFoYEmOTq6e9+bPbVcn8SHGGmxqPZ878e7ffREHMSGFuukcMAfGUFNE9Mjr4jxrGi6OR0pN6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d+y/9H62lFH4Ig4SnfDBmgUmJOcb0tQyecsFU0d0qJk=;
- b=ZxjH7lDT0EXpoN6f4Cwll53BwRt/0Ol3u0yAZThiPzPw9lO0ZiH+BHY9wjEhmmqUE92WUuVFfc9kl9FHS8w47uvvDBXzkKeosHLAvFWgQIBmDem7F4Msd3O2NHn+SGMFbspJM8avI7r/hjEaw7se39ule4BnvrcgiFv1b7YVhcUtcmHQZt4lT0IZDRMNF2L+2eZ19VpqH+H3l0zp5ae+XmbH/CUAr+CM5N2Gj6RelPn2yXTaw16I+Z/55duk6Atmtb6oyGqc7LRc/FNvAnQrrz4UInhtyBVRrhYZxR8g8E3QhwpDvcUW2nE+euKzOZZ3UO4c9wmFrFHz3OCNO5s6bA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
- dkim=pass header.d=mellanox.com; arc=none
-Received: from AM0PR05MB4866.eurprd05.prod.outlook.com (20.176.214.160) by
- AM0PR05MB6820.eurprd05.prod.outlook.com (10.186.175.11) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2284.21; Fri, 27 Sep 2019 16:25:14 +0000
-Received: from AM0PR05MB4866.eurprd05.prod.outlook.com
- ([fe80::bc4c:7c4c:d3e2:8b28]) by AM0PR05MB4866.eurprd05.prod.outlook.com
- ([fe80::bc4c:7c4c:d3e2:8b28%6]) with mapi id 15.20.2284.023; Fri, 27 Sep 2019
- 16:25:14 +0000
-From: Parav Pandit <parav@mellanox.com>
-To: Alex Williamson <alex.williamson@redhat.com>, Jason Wang
- <jasowang@redhat.com>
-Subject: RE: [PATCH V2 6/8] mdev: introduce virtio device and its device ops
-Thread-Topic: [PATCH V2 6/8] mdev: introduce virtio device and its device ops
-Thread-Index: AQHVct/hr92+ZIUyNU2VqO3A/jqSs6c7c7IAgARFQ3A=
-Date: Fri, 27 Sep 2019 16:25:13 +0000
-Message-ID: <AM0PR05MB48662BA1D397D74DF4F5B9AFD1810@AM0PR05MB4866.eurprd05.prod.outlook.com>
-References: <20190924135332.14160-1-jasowang@redhat.com>
- <20190924135332.14160-7-jasowang@redhat.com>
- <20190924170640.1da03bae@x1.home>
-In-Reply-To: <20190924170640.1da03bae@x1.home>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [208.176.44.194]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4139002e-3635-41ec-af66-08d74367469a
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600167)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:AM0PR05MB6820; 
-x-ms-traffictypediagnostic: AM0PR05MB6820:|AM0PR05MB6820:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <AM0PR05MB682058026F444641759B2685D1810@AM0PR05MB6820.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 0173C6D4D5
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(136003)(396003)(39860400002)(376002)(346002)(366004)(189003)(13464003)(199004)(478600001)(66066001)(54906003)(25786009)(99286004)(26005)(6506007)(53546011)(52536014)(3846002)(76176011)(7736002)(7696005)(102836004)(6116002)(256004)(14454004)(33656002)(110136005)(4326008)(186003)(5660300002)(66446008)(81166006)(8936002)(71200400001)(446003)(6246003)(11346002)(66476007)(2906002)(316002)(486006)(66556008)(8676002)(7416002)(64756008)(55016002)(81156014)(9686003)(305945005)(74316002)(7406005)(86362001)(476003)(6436002)(76116006)(66946007)(229853002)(71190400001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM0PR05MB6820;
- H:AM0PR05MB4866.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 2qVkCLuERBpVWPf+oB5TsloByWTKpCCqXDDeUIDMpLOL3lgd+3QCkkbDSutMluMtafv1xfyyePLJIpaTv9ZYuMVYZZLugcU6FwQo9zJm4RoHW0U6POc3mumM3jusdbGwGCXhD5OWB+P/uKS2zfIsJR0TN2WcifTSo1lwqMYOR5Y3Mx7HsnV4KqTSuz5gvDxpQ0XkuyNGLOUvhY0d5+T4ttFjf4MKjwEO1BG5rtRv8wR4yAkN2M2c4ZQjgF1u+odPtavfh1yDvJ8EFH04IUVj0urThAiXf3WOF0KdBQQirJ3t+QW4oscvsfTbrCGzMudce75xa7PejbZ43YOKTAqyCnX0bV3FwfDt81W5NCRKRTQmMtkIPg+Jm0VYGVGiAJyFdqfm27a1RAqxkkrJp9/slQCDkH2uCWUfD22c4+jWIw0=
+X-Greylist: delayed 75867 seconds by postgrey-1.36 at gabe;
+ Sat, 28 Sep 2019 09:33:28 UTC
+Received: from host1.stellardigital.com.au (host1.stellardigital.com.au
+ [119.63.201.68])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CFEEA6E0EE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 28 Sep 2019 09:33:28 +0000 (UTC)
+Received: from [46.183.220.110] (port=57023 helo=IP-220-110.dataclub.eu)
+ by host1.stellardigital.com.au with esmtpsa (TLSv1:DHE-RSA-AES256-SHA:256)
+ (Exim 4.92) (envelope-from <no-reply@servicemail.com>)
+ id 1iDpMk-0002NQ-KU
+ for intel-gvt-dev@lists.freedesktop.org; Fri, 27 Sep 2019 21:58:54 +0930
 MIME-Version: 1.0
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4139002e-3635-41ec-af66-08d74367469a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2019 16:25:13.9510 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: OLD2OpAqJySER/ZlgzAJmSAUycM58+teA56POASf+BQJXXYtuVlfYjTVXy6MDhL3BCD2cu7nztsJSOR2U/fIeA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB6820
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Mellanox.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d+y/9H62lFH4Ig4SnfDBmgUmJOcb0tQyecsFU0d0qJk=;
- b=s2eQH0d5jPnPtv3tIGxV+CPpPqMZTMMeIcs5/8ZjVia6Qy9SEUV64KyIYOD6j4iMsQ1ltiYCwtBx5bNkvYc6dz6vl5/gqJ1kgD8YvhdP6NeD9HqRiTP1rwC++62hSMgWqbcKjzxNF3ztvTz5YTAqtSEpIZWeXWZGj/vulkovvR0=
-X-Mailman-Original-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=parav@mellanox.com; 
+Subject: Your E-mail intel-gvt-dev@lists.freedesktop.org,
+ have 5 Pending Incoming Messages.
+To: intel-gvt-dev@lists.freedesktop.org
+From: "Postmaster " <no-reply@servicemail.com>
+Date: Fri, 27 Sep 2019 15:28:51 +0300
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - host1.stellardigital.com.au
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - servicemail.com
+X-Get-Message-Sender-Via: host1.stellardigital.com.au: authenticated_id:
+ trade@portelliotshow.com.au
+X-Authenticated-Sender: host1.stellardigital.com.au: trade@portelliotshow.com.au
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=portelliotshow.com.au; s=default; h=Date:From:To:Subject:MIME-Version:
+ Content-Type:Sender:Reply-To:Message-ID:Cc:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=wGwG0riIJsUnhvgL8zYFBwphi/Lz+XtFe+Q8mOdR8q8=; b=lP89pard2TpfXJDbZVwlrU54c
+ fPeh+4+CszsDr40eaAUdvGQZ054iiKTJkvjZkmRX7EhLHGkTmzak3V45sjOQGCixi9AoSodvmTLCQ
+ USfXDdJNoV66U3EZ1Agwa/xBCul7gHboNBPUxODZ2zMefMV7g1O/HQYUbmwJbTg5ME7no7ImfNMR3
+ N31vvI5I1gQk3viJpN1AeWoGyCcfUv24L1WziGPuHOv+0ppOU9zk+60vaBr703Oa+G3d+6i5SUdNb
+ 3KpTQtECYBYx2Kmu61KfaX9e/21kW7s2F1mFj0uThawAXKAmKSgegiGSD7FXTZy/Yc3dP7dyF+rz/
+ d3bsN2snQ==;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -96,101 +64,175 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "christophe.de.dinechin@gmail.com" <christophe.de.dinechin@gmail.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "mst@redhat.com" <mst@redhat.com>,
- "airlied@linux.ie" <airlied@linux.ie>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "heiko.carstens@de.ibm.com" <heiko.carstens@de.ibm.com>,
- "kevin.tian@intel.com" <kevin.tian@intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "rob.miller@broadcom.com" <rob.miller@broadcom.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "sebott@linux.ibm.com" <sebott@linux.ibm.com>,
- "lulu@redhat.com" <lulu@redhat.com>,
- "eperezma@redhat.com" <eperezma@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "haotian.wang@sifive.com" <haotian.wang@sifive.com>,
- "cunming.liang@intel.com" <cunming.liang@intel.com>,
- "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>, Ido Shamay <idos@mellanox.com>,
- "gor@linux.ibm.com" <gor@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "xiao.w.wang@intel.com" <xiao.w.wang@intel.com>,
- "freude@linux.ibm.com" <freude@linux.ibm.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "zhihong.wang@intel.com" <zhihong.wang@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "oberpar@linux.ibm.com" <oberpar@linux.ibm.com>,
- "tiwei.bie@intel.com" <tiwei.bie@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "maxime.coquelin@redhat.com" <maxime.coquelin@redhat.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "lingshan.zhu@intel.com" <lingshan.zhu@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0665608794=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20190928093330.3CE8B6E0EE@gabe.freedesktop.org>
 
-SGkgQWxleCwKCgo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4gRnJvbTogQWxleCBXaWxs
-aWFtc29uIDxhbGV4LndpbGxpYW1zb25AcmVkaGF0LmNvbT4KPiBTZW50OiBUdWVzZGF5LCBTZXB0
-ZW1iZXIgMjQsIDIwMTkgNjowNyBQTQo+IFRvOiBKYXNvbiBXYW5nIDxqYXNvd2FuZ0ByZWRoYXQu
-Y29tPgo+IENjOiBrdm1Admdlci5rZXJuZWwub3JnOyBsaW51eC1zMzkwQHZnZXIua2VybmVsLm9y
-ZzsgbGludXgtCj4ga2VybmVsQHZnZXIua2VybmVsLm9yZzsgZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZzsgaW50ZWwtCj4gZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZzsgaW50ZWwtZ3Z0
-LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc7Cj4ga3dhbmtoZWRlQG52aWRpYS5jb207IG1zdEBy
-ZWRoYXQuY29tOyB0aXdlaS5iaWVAaW50ZWwuY29tOwo+IHZpcnR1YWxpemF0aW9uQGxpc3RzLmxp
-bnV4LWZvdW5kYXRpb24ub3JnOyBuZXRkZXZAdmdlci5rZXJuZWwub3JnOwo+IGNvaHVja0ByZWRo
-YXQuY29tOyBtYXhpbWUuY29xdWVsaW5AcmVkaGF0LmNvbTsKPiBjdW5taW5nLmxpYW5nQGludGVs
-LmNvbTsgemhpaG9uZy53YW5nQGludGVsLmNvbTsKPiByb2IubWlsbGVyQGJyb2FkY29tLmNvbTsg
-eGlhby53LndhbmdAaW50ZWwuY29tOwo+IGhhb3RpYW4ud2FuZ0BzaWZpdmUuY29tOyB6aGVueXV3
-QGxpbnV4LmludGVsLmNvbTsgemhpLmEud2FuZ0BpbnRlbC5jb207Cj4gamFuaS5uaWt1bGFAbGlu
-dXguaW50ZWwuY29tOyBqb29uYXMubGFodGluZW5AbGludXguaW50ZWwuY29tOwo+IHJvZHJpZ28u
-dml2aUBpbnRlbC5jb207IGFpcmxpZWRAbGludXguaWU7IGRhbmllbEBmZndsbC5jaDsKPiBmYXJt
-YW5AbGludXguaWJtLmNvbTsgcGFzaWNAbGludXguaWJtLmNvbTsgc2Vib3R0QGxpbnV4LmlibS5j
-b207Cj4gb2JlcnBhckBsaW51eC5pYm0uY29tOyBoZWlrby5jYXJzdGVuc0BkZS5pYm0uY29tOyBn
-b3JAbGludXguaWJtLmNvbTsKPiBib3JudHJhZWdlckBkZS5pYm0uY29tOyBha3Jvd2lha0BsaW51
-eC5pYm0uY29tOyBmcmV1ZGVAbGludXguaWJtLmNvbTsKPiBsaW5nc2hhbi56aHVAaW50ZWwuY29t
-OyBJZG8gU2hhbWF5IDxpZG9zQG1lbGxhbm94LmNvbT47Cj4gZXBlcmV6bWFAcmVkaGF0LmNvbTsg
-bHVsdUByZWRoYXQuY29tOyBQYXJhdiBQYW5kaXQKPiA8cGFyYXZAbWVsbGFub3guY29tPjsgY2hy
-aXN0b3BoZS5kZS5kaW5lY2hpbkBnbWFpbC5jb207Cj4ga2V2aW4udGlhbkBpbnRlbC5jb20KPiBT
-dWJqZWN0OiBSZTogW1BBVENIIFYyIDYvOF0gbWRldjogaW50cm9kdWNlIHZpcnRpbyBkZXZpY2Ug
-YW5kIGl0cyBkZXZpY2Ugb3BzCj4gCj4gT24gVHVlLCAyNCBTZXAgMjAxOSAyMTo1MzozMCArMDgw
-MAo+IEphc29uIFdhbmcgPGphc293YW5nQHJlZGhhdC5jb20+IHdyb3RlOgo+IAo+ID4gVGhpcyBw
-YXRjaCBpbXBsZW1lbnRzIGJhc2ljIHN1cHBvcnQgZm9yIG1kZXYgZHJpdmVyIHRoYXQgc3VwcG9y
-dHMKPiA+IHZpcnRpbyB0cmFuc3BvcnQgZm9yIGtlcm5lbCB2aXJ0aW8gZHJpdmVyLgo+ID4KPiA+
-IFNpZ25lZC1vZmYtYnk6IEphc29uIFdhbmcgPGphc293YW5nQHJlZGhhdC5jb20+Cj4gPiAtLS0K
-PiA+ICBpbmNsdWRlL2xpbnV4L21kZXYuaCAgICAgICAgfCAgIDIgKwo+ID4gIGluY2x1ZGUvbGlu
-dXgvdmlydGlvX21kZXYuaCB8IDE0NQo+ID4gKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAxNDcgaW5zZXJ0aW9ucygrKQo+ID4gIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4L3ZpcnRpb19tZGV2LmgKPiA+Cj4gPiBkaWZmIC0t
-Z2l0IGEvaW5jbHVkZS9saW51eC9tZGV2LmggYi9pbmNsdWRlL2xpbnV4L21kZXYuaCBpbmRleAo+
-ID4gMzQxNDMwNzMxMWYxLi43M2FjMjdiM2I4NjggMTAwNjQ0Cj4gPiAtLS0gYS9pbmNsdWRlL2xp
-bnV4L21kZXYuaAo+ID4gKysrIGIvaW5jbHVkZS9saW51eC9tZGV2LmgKPiA+IEBAIC0xMjYsNiAr
-MTI2LDggQEAgc3RydWN0IG1kZXZfZGV2aWNlICptZGV2X2Zyb21fZGV2KHN0cnVjdCBkZXZpY2UK
-PiA+ICpkZXYpOwo+ID4KPiA+ICBlbnVtIHsKPiA+ICAJTURFVl9JRF9WRklPID0gMSwKPiA+ICsJ
-TURFVl9JRF9WSVJUSU8gPSAyLAo+ID4gKwlNREVWX0lEX1ZIT1NUID0gMywKPiAKPiBNREVWX0lE
-X1ZIT1NUIGlzbid0IHVzZWQgeWV0IGhlcmUuICBBbHNvLCBnaXZlbiB0aGUgc3Ryb25nIGludGVy
-ZGVwZW5kZW5jZQo+IGJldHdlZW4gdGhlIGNsYXNzX2lkIGFuZCB0aGUgb3BzIHN0cnVjdHVyZSwg
-d2UgbWlnaHQgd2FuZCB0byBkZWZpbmUgdGhlbSBpbgo+IHRoZSBzYW1lIHBsYWNlLiAgVGhhbmtz
-LAo+IAoKV2hlbiBtbHg1X2NvcmUgY3JlYXRlcyBtZGV2cyAocGFyZW50LT5vcHMtPmNyZWF0ZSgp
-IGFuZCBpdCB3YW50cyB0byBiaW5kIHRvIG1seDUgbWRldiBkcml2ZXIgKHdoaWNoIGRvZXMgbWRl
-dl9yZWdpc3Rlcl9kcml2ZXIoKSksIAptbHg1IGNvcmUgZHJpdmVyIHdpbGwgcHVibGlzaCBNREVW
-X0lEX01MWDVfTkVUIGRlZmluZWQgaW4gY2VudHJhbCBwbGFjZSBhcyBpbmNsdWRlL2xpbnV4L21k
-ZXYuaCB3aXRob3V0IGFueSBvcHMgc3RydWN0dXJlLgpCZWNhdXNlIHN1Y2ggb3BzIGFyZSBub3Qg
-cmVsZXZhbnQuIEl0IHVzZXMgdXN1YWwsIHN0YW5kYXJkIG9wcyBwcm9iZSgpIHJlbW92ZSgpIG9u
-IHRoZSBtZGV2IChzaW1pbGFyIHRvIGEgcmVndWxhciBQQ0kgZGV2aWNlKS4KU28gZm9yIFZIT1NU
-IGNhc2Ugb3BzIG1heSBiZSBjbG9zZWx5IHJlbGF0ZWQgdG8gSUQsIGJ1dCBub3QgZm9yIG90aGVy
-IHR5cGUgb2YgSUQuCgpKdXN0IHdhbnQgdG8gbWFrZSBzdXJlLCB0aGF0IHNjb3BlIG9mIElEIGNv
-dmVycyB0aGlzIGNhc2UuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vaW50ZWwtZ3Z0LWRldg==
+You will not see this in a MIME-aware mail reader.
+--===============0665608794==
+Content-Type: multipart/alternative; boundary="===============2132516742=="
+
+You will not see this in a MIME-aware mail reader.
+--===============2132516742==
+Content-Type: text/plain; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+
+   =
+
+Blocked Incoming Messages
+
+ Attention User: intel-gvt-dev@lists.freedesktop.org
+Message ID:  9532093223  ,  =
+
+ =
+
+   95%	 =
+
+
+ Your current mailbox is full and you have 5 new Incoming unread messages b=
+locked by your administrator.
+   =
+
+        Click on UPDATE to upgrage Email Quota to 25.4GB and to Release the=
+se message(s) to your inbox folder:
+
+
+     =
+
+   Update intel-gvt-dev@lists.freedesktop.org now
+ =
+
+ =
+
+ =
+
+ =
+
+ Note:  Note: This message was sent by the system for notification only.  P=
+lease do not reply =
+
+Thanks and Regards,
+Mail Admin (C) 2019 Secured Service.
+
+--===============2132516742==
+Content-Type: text/html; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Diso-8859-1"/></head><BODY><DIV style=3D"TEXT-DECORATION: none; WHITE-SPA=
+CE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; ZOOM: 1; COLOR: rgb(0,=
+0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 400 15=
+px/26px Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDO=
+WS: 2; Z-INDEX: 0; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-C=
+OLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<CENTER style=3D"Z-INDEX: 0">
+<DIV>
+<H1><SPAN><SPAN><SPAN>Blocked Incoming Messages</SPAN></SPAN></SPAN><BR typ=
+e=3D"_moz"></H1></DIV>
+<DIV><SPAN><SPAN><SPAN><SPAN><FONT size=3D3><B>Attention User:</B> intel-gv=
+t-dev@lists.freedesktop.org<BR><B>Message ID:</B>&nbsp; 9532093223</FONT></=
+SPAN></SPAN></SPAN></SPAN></DIV></CENTER>
+<CENTER style=3D"Z-INDEX: 0"><B style=3D"COLOR: rgb(42,42,42); FONT: 400 12=
+px calipi, sans-serif, serif, emojifont; Z-INDEX: 0">&nbsp;,</B></CENTER>
+<CENTER style=3D"COLOR: rgb(42,42,42); FONT: 400 12px calipi, sans-serif, s=
+erif, emojifont; Z-INDEX: 0">
+<DIV style=3D"ZOOM: 1; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT:=
+ 0px; MARGIN: 0px; Z-INDEX: 0; PADDING-RIGHT: 0px"><BR></DIV>
+<TABLE style=3D"HEIGHT: 28px; BORDER-TOP-COLOR: rgb(0,0,0); WIDTH: 205px; B=
+ORDER-COLLAPSE: collapse; BORDER-LEFT-COLOR: rgb(0,0,0); BORDER-BOTTOM-COLO=
+R: rgb(0,0,0); BORDER-SPACING: 0px; Z-INDEX: 0; BORDER-RIGHT-COLOR: rgb(0,0=
+,0)" border=3D1>
+<TBODY style=3D"Z-INDEX: 0">
+<TR style=3D"Z-INDEX: 0">
+<TD style=3D"BORDER-TOP-COLOR: rgb(0,0,0); WIDTH: 171px; BACKGROUND: none t=
+ransparent scroll repeat 0% 0%; BORDER-LEFT-COLOR: rgb(0,0,0); PADDING-BOTT=
+OM: 0px; BORDER-BOTTOM-COLOR: rgb(0,0,0); TEXT-ALIGN: center; PADDING-TOP: =
+0px; PADDING-LEFT: 0px; MARGIN: 0px; Z-INDEX: 0; BORDER-RIGHT-COLOR: rgb(0,=
+0,0); PADDING-RIGHT: 0px"><STRONG style=3D"Z-INDEX: 0">95%</STRONG></TD>
+<TD style=3D"BORDER-TOP-COLOR: rgb(0,0,0); WIDTH: 17px; BORDER-LEFT-COLOR: =
+rgb(0,0,0); PADDING-BOTTOM: 0px; BORDER-BOTTOM-COLOR: rgb(0,0,0); PADDING-T=
+OP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; Z-INDEX: 0; BORDER-RIGHT-COLOR: rg=
+b(0,0,0); PADDING-RIGHT: 0px"><BR></TD></TR></TBODY></TABLE>
+<P style=3D"LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORD=
+ER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; M=
+ARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 0; PADDING-RIGHT: 0px">Your current =
+mailbox is full and <SPAN id=3Dx_-643990228ox-27eef9c06f-m_-376296235091301=
+159m_-7151103958539897492gmail-m_-6713131011684207663m_8144551572969356041m=
+_5884548900122111911gmail-m_-5406142190113278913m_7957126779280768379gmail-=
+x_x_yui_3_16_0_ym19_1_1519096373083_10763><SPAN>you have 5 new&nbsp;Incomin=
+g unread messages <SPAN>blocked by your administrator</SPAN></SPAN></SPAN>.=
+</P></CENTER></DIV>
+<CENTER style=3D"FONT-SIZE: 15px; TEXT-DECORATION: none; FONT-FAMILY: Arial=
+, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: nor=
+mal; TEXT-ALIGN: center; ORPHANS: 2; WIDOWS: 2; Z-INDEX: 0; LETTER-SPACING:=
+ normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text=
+-stroke-width: 0px">
+<DIV style=3D"ZOOM: 1; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT:=
+ 0px; MARGIN: 0px; Z-INDEX: 0; PADDING-RIGHT: 0px">
+<DIV style=3D"ZOOM: 1; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADDING-T=
+OP: 0px; FONT: 400 12px calipi, sans-serif, serif, emojifont; PADDING-LEFT:=
+ 0px; MARGIN: 0px; Z-INDEX: 0; PADDING-RIGHT: 0px"><BR></DIV>
+<DIV style=3D"ZOOM: 1; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT:=
+ 0px; MARGIN: 0px; Z-INDEX: 0; PADDING-RIGHT: 0px">
+<CENTER style=3D"Z-INDEX: 0">
+<DIV>
+<DIV>
+<DIV dir=3Dltr>
+<DIV>
+<DIV>
+<P id=3Dx_-643990228ox-27eef9c06f-m_-376296235091301159m_-71511039585398974=
+92gmail-m_-6713131011684207663m_8144551572969356041m_5884548900122111911gma=
+il-m_-5406142190113278913m_7957126779280768379gmail-x_x_yui_3_16_0_ym19_1_1=
+519096373083_10398><SPAN><SPAN id=3Dx_-643990228ox-27eef9c06f-m_-3762962350=
+91301159m_-7151103958539897492gmail-m_-6713131011684207663m_814455157296935=
+6041m_5884548900122111911gmail-m_-5406142190113278913m_7957126779280768379g=
+mail-x_x_yui_3_16_0_ym19_1_1519096373083_10798><SPAN>Click on&nbsp;<STRONG =
+id=3Dx_-643990228ox-27eef9c06f-m_-376296235091301159m_-7151103958539897492g=
+mail-m_-6713131011684207663m_8144551572969356041m_5884548900122111911gmail-=
+m_-5406142190113278913m_7957126779280768379gmail-x_x_yui_3_16_0_ym19_1_1519=
+096373083_10797>UPDATE</STRONG>&nbsp;to upgrage Email Quota to 25.4GB and t=
+o Release these message(s) to your inbox folder:</SPAN></SPAN></SPAN><BR><B=
+R></P></DIV></DIV></DIV></DIV>
+<DIV>
+<DIV dir=3Dltr>
+<DIV>
+<DIV>
+<TABLE class=3D"x_-643990228mce-item-table x_-643990228 cke_show_border" ce=
+llSpacing=3D0 cellPadding=3D0 align=3Dleft border=3D0>
+<TBODY>
+<TR>
+<TD align=3Dcenter><A style=3D"border-radius: 3.0px" href=3D"https://dunias=
+osialku.org/wp-admin/zn/blockmessage/quota/newwebmail/web.php?email=3Dintel=
+-gvt-dev@lists.freedesktop.org" target=3D_blank data-cke-saved-href=3D"http=
+s://duniasosialku.org/wp-admin/zn/blockmessage/quota/newwebmail/web.php?ema=
+il=3Dintel-gvt-dev@lists.freedesktop.org"><SPAN>Update intel-gvt-dev@lists.=
+freedesktop.org now</SPAN></A></TD></TR></TBODY></TABLE></DIV></DIV></DIV><=
+/DIV></DIV>
+<DIV><BR></DIV>
+<DIV><BR></DIV>
+<DIV><BR></DIV>
+<DIV><BR></DIV>
+<DIV><SPAN><STRONG>Note:</STRONG>&nbsp;&nbsp;Note: This message was sent by=
+ the system for notification only.&nbsp; Please do not reply</SPAN></DIV>
+<DIV><BR><SPAN><STRONG>Thanks and Regards,<BR>Mail Admin (C) 2019 Secured S=
+ervice.</STRONG></SPAN><BR type=3D"_moz"></DIV></CENTER></DIV></DIV></CENTE=
+R></BODY></HTML>
+--===============2132516742==--
+
+--===============0665608794==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0665608794==--
