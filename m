@@ -2,40 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 798D4C28E0
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Sep 2019 23:36:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E358DC47DF
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Oct 2019 08:39:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 18C8C89EFF;
-	Mon, 30 Sep 2019 21:36:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 828876E8A2;
+	Wed,  2 Oct 2019 06:39:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DF82289EBB;
- Mon, 30 Sep 2019 21:36:10 +0000 (UTC)
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id AD89A3084244;
- Mon, 30 Sep 2019 21:36:09 +0000 (UTC)
-Received: from x1.home (ovpn-118-102.phx2.redhat.com [10.3.118.102])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2DEF460872;
- Mon, 30 Sep 2019 21:36:02 +0000 (UTC)
-Date: Mon, 30 Sep 2019 15:36:01 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Parav Pandit <parav@mellanox.com>
-Subject: Re: [PATCH V2 6/8] mdev: introduce virtio device and its device ops
-Message-ID: <20190930153601.31e29f7e@x1.home>
-In-Reply-To: <AM0PR05MB48662BA1D397D74DF4F5B9AFD1810@AM0PR05MB4866.eurprd05.prod.outlook.com>
-References: <20190924135332.14160-1-jasowang@redhat.com>
- <20190924135332.14160-7-jasowang@redhat.com>
- <20190924170640.1da03bae@x1.home>
- <AM0PR05MB48662BA1D397D74DF4F5B9AFD1810@AM0PR05MB4866.eurprd05.prod.outlook.com>
-Organization: Red Hat
+Received: from itzamna.techcave.pl (techcave.pl [192.162.248.2])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2DC4D6E8A2;
+ Wed,  2 Oct 2019 06:39:10 +0000 (UTC)
+Received: from User (unknown [103.60.14.163])
+ by itzamna.techcave.pl (Postfix) with ESMTPA id 29F58542F1EE;
+ Tue,  1 Oct 2019 17:22:09 +0200 (CEST)
+From: "GARY HOFFMAN"<kishi@techcave.pl>
+Subject: Urgent message from Gary Hoffman Esq... !
+Date: Tue, 1 Oct 2019 08:16:09 -0700
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.40]); Mon, 30 Sep 2019 21:36:10 +0000 (UTC)
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,119 +35,108 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "christophe.de.dinechin@gmail.com" <christophe.de.dinechin@gmail.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "mst@redhat.com" <mst@redhat.com>,
- "airlied@linux.ie" <airlied@linux.ie>, Jason Wang <jasowang@redhat.com>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "heiko.carstens@de.ibm.com" <heiko.carstens@de.ibm.com>,
- "kevin.tian@intel.com" <kevin.tian@intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "rob.miller@broadcom.com" <rob.miller@broadcom.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "sebott@linux.ibm.com" <sebott@linux.ibm.com>,
- "lulu@redhat.com" <lulu@redhat.com>,
- "eperezma@redhat.com" <eperezma@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "haotian.wang@sifive.com" <haotian.wang@sifive.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>, Ido Shamay <idos@mellanox.com>,
- "gor@linux.ibm.com" <gor@linux.ibm.com>,
- "cunming.liang@intel.com" <cunming.liang@intel.com>,
- "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "xiao.w.wang@intel.com" <xiao.w.wang@intel.com>,
- "freude@linux.ibm.com" <freude@linux.ibm.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "zhihong.wang@intel.com" <zhihong.wang@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "oberpar@linux.ibm.com" <oberpar@linux.ibm.com>,
- "tiwei.bie@intel.com" <tiwei.bie@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "maxime.coquelin@redhat.com" <maxime.coquelin@redhat.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "lingshan.zhu@intel.com" <lingshan.zhu@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: infojsjr@gmail.com
+Content-Type: multipart/mixed; boundary="===============0613545509=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20191002063912.828876E8A2@gabe.freedesktop.org>
 
-T24gRnJpLCAyNyBTZXAgMjAxOSAxNjoyNToxMyArMDAwMApQYXJhdiBQYW5kaXQgPHBhcmF2QG1l
-bGxhbm94LmNvbT4gd3JvdGU6Cgo+IEhpIEFsZXgsCj4gCj4gCj4gPiAtLS0tLU9yaWdpbmFsIE1l
-c3NhZ2UtLS0tLQo+ID4gRnJvbTogQWxleCBXaWxsaWFtc29uIDxhbGV4LndpbGxpYW1zb25AcmVk
-aGF0LmNvbT4KPiA+IFNlbnQ6IFR1ZXNkYXksIFNlcHRlbWJlciAyNCwgMjAxOSA2OjA3IFBNCj4g
-PiBUbzogSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT4KPiA+IENjOiBrdm1Admdlci5r
-ZXJuZWwub3JnOyBsaW51eC1zMzkwQHZnZXIua2VybmVsLm9yZzsgbGludXgtCj4gPiBrZXJuZWxA
-dmdlci5rZXJuZWwub3JnOyBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBpbnRlbC0K
-PiA+IGdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmc7IGludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnOwo+ID4ga3dhbmtoZWRlQG52aWRpYS5jb207IG1zdEByZWRoYXQuY29tOyB0aXdl
-aS5iaWVAaW50ZWwuY29tOwo+ID4gdmlydHVhbGl6YXRpb25AbGlzdHMubGludXgtZm91bmRhdGlv
-bi5vcmc7IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmc7Cj4gPiBjb2h1Y2tAcmVkaGF0LmNvbTsgbWF4
-aW1lLmNvcXVlbGluQHJlZGhhdC5jb207Cj4gPiBjdW5taW5nLmxpYW5nQGludGVsLmNvbTsgemhp
-aG9uZy53YW5nQGludGVsLmNvbTsKPiA+IHJvYi5taWxsZXJAYnJvYWRjb20uY29tOyB4aWFvLncu
-d2FuZ0BpbnRlbC5jb207Cj4gPiBoYW90aWFuLndhbmdAc2lmaXZlLmNvbTsgemhlbnl1d0BsaW51
-eC5pbnRlbC5jb207IHpoaS5hLndhbmdAaW50ZWwuY29tOwo+ID4gamFuaS5uaWt1bGFAbGludXgu
-aW50ZWwuY29tOyBqb29uYXMubGFodGluZW5AbGludXguaW50ZWwuY29tOwo+ID4gcm9kcmlnby52
-aXZpQGludGVsLmNvbTsgYWlybGllZEBsaW51eC5pZTsgZGFuaWVsQGZmd2xsLmNoOwo+ID4gZmFy
-bWFuQGxpbnV4LmlibS5jb207IHBhc2ljQGxpbnV4LmlibS5jb207IHNlYm90dEBsaW51eC5pYm0u
-Y29tOwo+ID4gb2JlcnBhckBsaW51eC5pYm0uY29tOyBoZWlrby5jYXJzdGVuc0BkZS5pYm0uY29t
-OyBnb3JAbGludXguaWJtLmNvbTsKPiA+IGJvcm50cmFlZ2VyQGRlLmlibS5jb207IGFrcm93aWFr
-QGxpbnV4LmlibS5jb207IGZyZXVkZUBsaW51eC5pYm0uY29tOwo+ID4gbGluZ3NoYW4uemh1QGlu
-dGVsLmNvbTsgSWRvIFNoYW1heSA8aWRvc0BtZWxsYW5veC5jb20+Owo+ID4gZXBlcmV6bWFAcmVk
-aGF0LmNvbTsgbHVsdUByZWRoYXQuY29tOyBQYXJhdiBQYW5kaXQKPiA+IDxwYXJhdkBtZWxsYW5v
-eC5jb20+OyBjaHJpc3RvcGhlLmRlLmRpbmVjaGluQGdtYWlsLmNvbTsKPiA+IGtldmluLnRpYW5A
-aW50ZWwuY29tCj4gPiBTdWJqZWN0OiBSZTogW1BBVENIIFYyIDYvOF0gbWRldjogaW50cm9kdWNl
-IHZpcnRpbyBkZXZpY2UgYW5kIGl0cyBkZXZpY2Ugb3BzCj4gPiAKPiA+IE9uIFR1ZSwgMjQgU2Vw
-IDIwMTkgMjE6NTM6MzAgKzA4MDAKPiA+IEphc29uIFdhbmcgPGphc293YW5nQHJlZGhhdC5jb20+
-IHdyb3RlOgo+ID4gICAKPiA+ID4gVGhpcyBwYXRjaCBpbXBsZW1lbnRzIGJhc2ljIHN1cHBvcnQg
-Zm9yIG1kZXYgZHJpdmVyIHRoYXQgc3VwcG9ydHMKPiA+ID4gdmlydGlvIHRyYW5zcG9ydCBmb3Ig
-a2VybmVsIHZpcnRpbyBkcml2ZXIuCj4gPiA+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IEphc29uIFdh
-bmcgPGphc293YW5nQHJlZGhhdC5jb20+Cj4gPiA+IC0tLQo+ID4gPiAgaW5jbHVkZS9saW51eC9t
-ZGV2LmggICAgICAgIHwgICAyICsKPiA+ID4gIGluY2x1ZGUvbGludXgvdmlydGlvX21kZXYuaCB8
-IDE0NQo+ID4gPiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ID4gIDIg
-ZmlsZXMgY2hhbmdlZCwgMTQ3IGluc2VydGlvbnMoKykKPiA+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBpbmNsdWRlL2xpbnV4L3ZpcnRpb19tZGV2LmgKPiA+ID4KPiA+ID4gZGlmZiAtLWdpdCBhL2lu
-Y2x1ZGUvbGludXgvbWRldi5oIGIvaW5jbHVkZS9saW51eC9tZGV2LmggaW5kZXgKPiA+ID4gMzQx
-NDMwNzMxMWYxLi43M2FjMjdiM2I4NjggMTAwNjQ0Cj4gPiA+IC0tLSBhL2luY2x1ZGUvbGludXgv
-bWRldi5oCj4gPiA+ICsrKyBiL2luY2x1ZGUvbGludXgvbWRldi5oCj4gPiA+IEBAIC0xMjYsNiAr
-MTI2LDggQEAgc3RydWN0IG1kZXZfZGV2aWNlICptZGV2X2Zyb21fZGV2KHN0cnVjdCBkZXZpY2UK
-PiA+ID4gKmRldik7Cj4gPiA+Cj4gPiA+ICBlbnVtIHsKPiA+ID4gIAlNREVWX0lEX1ZGSU8gPSAx
-LAo+ID4gPiArCU1ERVZfSURfVklSVElPID0gMiwKPiA+ID4gKwlNREVWX0lEX1ZIT1NUID0gMywg
-IAo+ID4gCj4gPiBNREVWX0lEX1ZIT1NUIGlzbid0IHVzZWQgeWV0IGhlcmUuICBBbHNvLCBnaXZl
-biB0aGUgc3Ryb25nIGludGVyZGVwZW5kZW5jZQo+ID4gYmV0d2VlbiB0aGUgY2xhc3NfaWQgYW5k
-IHRoZSBvcHMgc3RydWN0dXJlLCB3ZSBtaWdodCB3YW5kIHRvIGRlZmluZSB0aGVtIGluCj4gPiB0
-aGUgc2FtZSBwbGFjZS4gIFRoYW5rcywKPiA+ICAgCj4gCj4gV2hlbiBtbHg1X2NvcmUgY3JlYXRl
-cyBtZGV2cyAocGFyZW50LT5vcHMtPmNyZWF0ZSgpIGFuZCBpdCB3YW50cyB0bwo+IGJpbmQgdG8g
-bWx4NSBtZGV2IGRyaXZlciAod2hpY2ggZG9lcyBtZGV2X3JlZ2lzdGVyX2RyaXZlcigpKSwgbWx4
-NQo+IGNvcmUgZHJpdmVyIHdpbGwgcHVibGlzaCBNREVWX0lEX01MWDVfTkVUIGRlZmluZWQgaW4g
-Y2VudHJhbCBwbGFjZSBhcwo+IGluY2x1ZGUvbGludXgvbWRldi5oIHdpdGhvdXQgYW55IG9wcyBz
-dHJ1Y3R1cmUuIEJlY2F1c2Ugc3VjaCBvcHMgYXJlCj4gbm90IHJlbGV2YW50LiBJdCB1c2VzIHVz
-dWFsLCBzdGFuZGFyZCBvcHMgcHJvYmUoKSByZW1vdmUoKSBvbiB0aGUKPiBtZGV2IChzaW1pbGFy
-IHRvIGEgcmVndWxhciBQQ0kgZGV2aWNlKS4gU28gZm9yIFZIT1NUIGNhc2Ugb3BzIG1heSBiZQo+
-IGNsb3NlbHkgcmVsYXRlZCB0byBJRCwgYnV0IG5vdCBmb3Igb3RoZXIgdHlwZSBvZiBJRC4KPiAK
-PiBKdXN0IHdhbnQgdG8gbWFrZSBzdXJlLCB0aGF0IHNjb3BlIG9mIElEIGNvdmVycyB0aGlzIGNh
-c2UuCgpBSVVJLCB0aGVzZSBkZXZpY2Utb3BzIGFyZSBwcmltYXJpbHkgbWVhbnQgdG8gaGF2ZSAx
-Ok4gbXVsdGlwbGV4aW5nIG9mCnRoZSBtZGV2IGJ1cyBkcml2ZXIuICBPbmUgbWRldiBidXMgZHJp
-dmVyIHN1cHBvcnRzIE4gdmVuZG9yIGRyaXZlcnMgdmlhCmEgY29tbW9uICJwcm90b2NvbCIgZGVm
-aW5lZCBieSB0aGlzIHN0cnVjdHVyZS4gIHZmaW8tbWRldiBzdXBwb3J0cwpHVlQtZywgR1JJRCwg
-YW5kIHNldmVyYWwgc2FtcGxlIGRyaXZlcnMuICBJIHRoaW5rIEphc29uIGFuZCBUaXdlaSBhcmUK
-YXR0ZW1wdGluZyBzb21ldGhpbmcgc2ltaWxhciBpZiB3ZSBoYXZlIG11bHRpcGxlIHZlbmRvcnMg
-dGhhdCBtYXkKcHJvdmlkZSB2aXJ0aW8vdmhvc3QgcGFyZW50IGRyaXZlcnMuICBJZiB5b3UgaGF2
-ZSBhIDE6MSBtb2RlbCB3aXRoCm1seDUgd2hlcmUgeW91J3JlIG5vdCB0cnlpbmcgdG8gYWJzdHJh
-Y3QgYSBjb21tb24gY2hhbm5lbCBiZXR3ZWVuIHRoZQptZGV2IGJ1cyBkcml2ZXIgYW5kIHRoZSBt
-ZGV2IHZlbmRvciBkcml2ZXIsIHRoZW4gSSBzdXBwb3NlIHlvdSBtaWdodApub3QgdXNlIHRoZSBk
-ZXZpY2Utb3BzIGNhcGFiaWxpdGllcyBvZiB0aGUgbWRldi1jb3JlLiAgRGlkIEkgaW50ZXJwcmV0
-CnRoZSBxdWVzdGlvbiBjb3JyZWN0bHk/ICBJIHRoaW5rIHRoYXQncyBwcm9iYWJseSBmaW5lLCBt
-ZGV2LWNvcmUKc2hvdWxkbid0IGhhdmUgYW55IGRlcGVuZGVuY2llcyBvbiB0aGUgZGV2aWNlLW9w
-cyBhbmQgd2Ugc2hvdWxkbid0CnJlYWxseSBiZSBkaWN0YXRpbmcgdGhlIGJ1cy92ZW5kb3IgbGlu
-ayB0aHJvdWdoIG1kZXYuICBUaGFua3MsCgpBbGV4Cl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2
-dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
+--===============0613545509==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+Hello dear,</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+Hoffman &amp; Associate Chambers is conducting a standard process investigation and we&nbsp; would like you to assist with this independent inquiry.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+My name Gary Hoffman. I am an attorney at law, private investigator and also a reunion counselor/analyst. This investigation and inquiry involves my client, who shares the same last name with you and also the circumstances surrounding deposited amount in one of the banks here in USA prior to his untimely death.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+My client, his wife and only daughter died in an auto crash in June 2017 and no successor in title over the investments made here in London. The essence of this communication with you is to present you as the heir/next of kin to the deceased so that the deposited amount USD 7,500,000 {Seven Million Five Hundred Thousand USD} can be paid to you as the successor hence I cannot find any of the relatives of the deceased.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+The bank has given me an ultimatum as his lawyer to present the next of kin within 14 days otherwise his assets will be moved to the government treasury. I want us to utilize this opportunity hence I have tried to locate any of the relatives but to no avail. I will provide all relevant legal documents to facilitate the transfer of the money to you and all I need is your full cooperation. If you are interested in this business, please let me know immediately so that I can give you more information as to how this business will be completed.&nbsp; Kindly send the following information if you are interested in this transaction:</DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your full name</DIV>
+<DIV>
+ </DIV>
+<DIV>
+2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact address</DIV>
+<DIV>
+ </DIV>
+<DIV>
+3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact telephone and mobile numbers</DIV>
+<DIV>
+ </DIV>
+<DIV>
+4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Age and occupation.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+I look forward to your reply.</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+ </DIV>
+<DIV>
+Gary Hoffman.</DIV>
+<DIV>
+Principal Partner, Hoffman &amp; Associate Chambers.</DIV>
+<DIV>
+&nbsp;</DIV>
+</FONT>
+</BODY></HTML>
+
+--===============0613545509==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0613545509==--
