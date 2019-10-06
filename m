@@ -1,28 +1,35 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E358DC47DF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Oct 2019 08:39:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D1CFCD1BC
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  6 Oct 2019 13:30:11 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 828876E8A2;
-	Wed,  2 Oct 2019 06:39:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2BA616E3FB;
+	Sun,  6 Oct 2019 11:30:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from itzamna.techcave.pl (techcave.pl [192.162.248.2])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2DC4D6E8A2;
- Wed,  2 Oct 2019 06:39:10 +0000 (UTC)
-Received: from User (unknown [103.60.14.163])
- by itzamna.techcave.pl (Postfix) with ESMTPA id 29F58542F1EE;
- Tue,  1 Oct 2019 17:22:09 +0200 (CEST)
-From: "GARY HOFFMAN"<kishi@techcave.pl>
-Subject: Urgent message from Gary Hoffman Esq... !
-Date: Tue, 1 Oct 2019 08:16:09 -0700
+Received: from tor-mxpf01.hostmanagement.net (tor-mxpf01.hostmanagement.net
+ [104.153.56.143])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 16F7C6E243;
+ Sun,  6 Oct 2019 11:30:08 +0000 (UTC)
+Received: from TOR-EXHUB01.prov.ad.hostmanagement.net (unknown
+ [104.153.56.138])
+ by tor-mxpf01.hostmanagement.net (Postfix) with ESMTP id 3BA5F4A3C38;
+ Sun,  6 Oct 2019 00:51:55 -0400 (EDT)
+Received: from User (172.16.6.19) by smtp02.myexchangeemail.com (172.16.6.10)
+ with Microsoft SMTP Server id 14.3.339.0;
+ Sun, 6 Oct 2019 00:51:42 -0400
+From: Adams <ajc62523434@gmail.com>
+Subject: RE: From Adams
+Date: Sat, 5 Oct 2019 21:51:42 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <81554318-9e3f-43fd-bf5f-18ff0b11def8@TOR-EXHUB01.prov.ad.hostmanagement.net>
+To: Undisclosed recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -35,108 +42,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: infojsjr@gmail.com
-Content-Type: multipart/mixed; boundary="===============0613545509=="
+Reply-To: ajc62423434@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20191002063912.828876E8A2@gabe.freedesktop.org>
 
---===============0613545509==
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-Hello dear,</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
-Hoffman &amp; Associate Chambers is conducting a standard process investigation and we&nbsp; would like you to assist with this independent inquiry.</DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-My name Gary Hoffman. I am an attorney at law, private investigator and also a reunion counselor/analyst. This investigation and inquiry involves my client, who shares the same last name with you and also the circumstances surrounding deposited amount in one of the banks here in USA prior to his untimely death.</DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-My client, his wife and only daughter died in an auto crash in June 2017 and no successor in title over the investments made here in London. The essence of this communication with you is to present you as the heir/next of kin to the deceased so that the deposited amount USD 7,500,000 {Seven Million Five Hundred Thousand USD} can be paid to you as the successor hence I cannot find any of the relatives of the deceased.</DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-The bank has given me an ultimatum as his lawyer to present the next of kin within 14 days otherwise his assets will be moved to the government treasury. I want us to utilize this opportunity hence I have tried to locate any of the relatives but to no avail. I will provide all relevant legal documents to facilitate the transfer of the money to you and all I need is your full cooperation. If you are interested in this business, please let me know immediately so that I can give you more information as to how this business will be completed.&nbsp; Kindly send the following information if you are interested in this transaction:</DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your full name</DIV>
-<DIV>
- </DIV>
-<DIV>
-2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact address</DIV>
-<DIV>
- </DIV>
-<DIV>
-3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact telephone and mobile numbers</DIV>
-<DIV>
- </DIV>
-<DIV>
-4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Age and occupation.</DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-I look forward to your reply.</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
- </DIV>
-<DIV>
-Gary Hoffman.</DIV>
-<DIV>
-Principal Partner, Hoffman &amp; Associate Chambers.</DIV>
-<DIV>
-&nbsp;</DIV>
-</FONT>
-</BODY></HTML>
-
---===============0613545509==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0613545509==--
+RGVhciBGcmllbmQKCkhvdyBhcmUgeW91IHRvZGF5PyBJIHByYXkgdGhpc8KgZW1haWwgZmluZHMg
+eW91IHdlbGwuIE15IG5hbWUgaXMgQWRhbXMgSmVzc2UgQ29vayBhbmQgcmlnaHQgbm93IEkgYW0g
+b24gYSBidXNpbmVzcyB0cmlwIGluIE1hbGF5c2lhLMKgIEkgcmVzaWRlwqBpbiB0aGXCoExvbmRv
+biwgVW5pdGVkwqBLaW5nZG9tIGFuZCBJIGFtIGEgZmFtaWx5IGxhd3llciB0byBsYXRlIENhcmwg
+RC4g0JVrZXJoaWVsbS7CoCBDYXJsIEQuINCVa2VyaGllbG0gYW5kIGhpcyB3aWZlIGhhcyBhIHRl
+cm1pbmFswqBkaXNlYXNlLMKgQWNxdWlyZWQgaW1tdW5vZGVmaWNpZW5jeSBzeW5kcm9tZSAoQUlE
+UykgYW5kIGJyZWFzdCBjYW5jZXLCoHdoaWNoIGdyYWR1YWxsecKgdGVybWluYXRlZCB0aGVpciBs
+aXZlcyzCoENhcmwgRC4g0JVrZXJoaWVsbSBkaWVkIDggeWVhcnMgYWdvIHdoeSBoaXMgd2lmZSBk
+aWVkIHRocmVlIGFuZCBhIGhhbGYgeWVhciBhZ2/CoMKgCgpCZWZvcmUgdGhlIGRlYXRoIG9mIENh
+cmwgRC4g0JVrZXJoaWVsbSBhbmQgTWFyaWUtTG91aXNlINCVa2VyaGllbG0sIHRoZXkgdG9sZCBt
+ZSB0aGF0IHRoZXkgZG8gbm90IGtub3cgdGhlaXIgYmlvbG9naWNhbCBwYXJlbnRzIGFzIGJvdGgg
+Z3JldyB1cCBpbiBhIG1vdGhlcmxlc3MgaG9tZSBpbiBTd2VkZW4gYmVmb3JlIHRoZXkgcGxhbm5l
+ZCBhbmQgcmVsb2NhdGVkIHRvIEZyYW5jZSBmcm9tIEZyYW5jZSB0byBMb25kb24sIHdoZXJlIHRo
+ZXkgbWV0IG1lLCBhbmQgdGhleSBnb3QgZ29vZCBqb2IgYW5kIGZpbmFsbHkgbWFycmllZCB0byBl
+YWNoIG90aGVyLCBidXQgdW5mb3J0dW5hdGVseSB0aGV5IHdlcmUgY2hpbGRsZXNzLiAKClRoZSBk
+ZWNlYXNlZCBjbGllbnRzIGxpZmUgc2F2aW5ncyBHQlAxMiw1MDAsMDAwLjAwIHdhcyBkZXBvc2l0
+ZWQgaW4gdGhlIG9uZSBvZiB0aGUgTG9uZG9uIGJhbmtzLCBhbmQgb24gc2VhcmNoaW5nIGZvciB0
+aGUgZGVjZWFzZWQgcmVsYXRpdmVzIHdoZW4gdGhlIGJhbmsgaXMgdGhyZWF0ZW5pbmcgdG8gY29u
+ZmlzY2F0ZSB0aGUgZnVuZHMgSSBkaXNjb3ZlcmVkIHRoZSBuZXh0IG9mIGtpbiB3YXMgYSByZXZl
+cmVuZCBzaXN0ZXIgdGhhdCBhbGwgb2YgdGhlbSBncmV3IHVwIGluIGEgbW90aGVybGVzcyBob21l
+IGFuZCBzaGUgd2FzIGRlYWQgdHdvIHllYXJzIGFnbyBhbmQgc2luY2UgSSBoYXZlIGFsbCB0aGUg
+ZG9jdW1lbnRzIGFuZCB0aGUgbGF0ZSBuZXh0IG9mIGtpbiBoYXZlIHRoZSBzYW1lIHN1cm5hbWUg
+d2l0aCB5b3UgdGhhdCBpcyB3aHkgSSBhbSBjb250YWN0aW5nIHlvdSBpZiBzdWNoIGEgZGVhbCBp
+cyBub3QgYWdhaW5zdCB5b3VyIHdpc2ggwqByZXBseSBhbmQgSSB3aWxsIGd1aWRlIHlvdSBvbiBo
+b3cgdG8gYXBwbHkgZm9yIHRoZSBjbGFpbSwgYW5kIHdlIHdpbGwgd29yayB0b2dldGhlciBvbiBo
+b3cgdG8gb2J0YWluIGFsbCB0aGUgbmVjZXNzYXJ5IGRvY3VtZW50cyBpbiB5b3VyIGZhdm91ci7C
+oCDCoAoKTWV0aG9kIG9mIHNoYXJpbmcgdGhlIGZ1bmQsIDUwLzUwLCB0aGF0IGlzIGVxdWFsIHBl
+cmNlbnRhZ2UgcmF0aW9zLiBQbGVhc2UgZmVlbCB2ZXJ5IGZyZWUgdG8gYXNrIHF1ZXN0aW9uL3Mu
+IE5vdGUsIHVwb24geW91ciBjb29wZXJhdGlvbiwgMyB0byA1IG9mZmljaWFsIHdvcmtpbmcgZGF5
+cyBjb25zaWRlciB0aGUgZnVuZHMgdHJhbnNmZXIgYW5kIGNyZWRpdGVkIGludG8geW91ciBsb2Nh
+bCBiYW5rIGFjY291bnQgLgoKSSB3aWxsIGJlIHZlcnkgZ2xhZCB0byByZWFkIGZyb20geW91IEFT
+QVAuCgpZb3VycyBmYWl0aGZ1bGx5CkFkYW1zIEplc3NlIENvb2ssIExlZ2FsIHByYWN0aXRpb25l
+cgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1n
+dnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1k
+ZXY=
