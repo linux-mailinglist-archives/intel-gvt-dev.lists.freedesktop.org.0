@@ -1,56 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75EA8D2A44
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Oct 2019 15:03:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9A6AD3829
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Oct 2019 05:59:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1B4306EB23;
-	Thu, 10 Oct 2019 13:03:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 966856EA88;
+	Fri, 11 Oct 2019 03:59:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com
- [IPv6:2a00:1450:4864:20::342])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 66BF06EB26
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 10 Oct 2019 13:03:31 +0000 (UTC)
-Received: by mail-wm1-x342.google.com with SMTP id m18so6718172wmc.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 10 Oct 2019 06:03:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=GO77O9NugfDMF3sM0pFxjAVwqVXEKORDEOteZl6SPpM=;
- b=GQs2RmOaaqjj4fKIDKkR3QaN+IVS7QYdUhIG/0BEvj+1yMjRvjg6e5LfaJRbO1cynE
- HwC0ucmKszDJhFPip3UBPMboA87fWsEcN8cwdjXvziOCS+FqAvKpuQPM1oPhiII4Gl/d
- OdtI2lxUkGvqbdwPsq0VfOW0W/53LQstBalUarWq6Hl2LyNzkgrQPVV/pp4IGZMBQ3ab
- fHkVX4MGIV1P9pllmR0YXqRBIuCyk1TT1k3xRMcV/z1rrU+t26rZBuohL1LEW6sQ4QAg
- xkXhLCBo0UqVwLI7imShmb9RXCIlISYEOhAVrXKq138HGTlzWUdy6JCFXua+XaMSNsLb
- x5vg==
-X-Gm-Message-State: APjAAAWEFbRh5E31IWLfO926BXch8zYJqc5tLG+nFihXm+MeJiC82I0w
- pGcMmYm8S7CTvbLQP3Mo9VPN38V5zTY/RlxlvI+9MQ==
-X-Google-Smtp-Source: APXvYqxiw0zubU9CyBO2869dqgMa2GIcVwycdViJTgYS1lr7wGGO7qFeX22Aij1arMlwOl7Ap7NFCZ3VQF+kXtrQdS8=
-X-Received: by 2002:a7b:c3cf:: with SMTP id t15mr7359198wmj.85.1570712609807; 
- Thu, 10 Oct 2019 06:03:29 -0700 (PDT)
+X-Greylist: delayed 11477 seconds by postgrey-1.36 at gabe;
+ Fri, 11 Oct 2019 03:59:04 UTC
+Received: from mail.pafiac.com (vpssvr157-205-32-99.alpha-vps.jp
+ [157.205.32.99])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D576F6EA88;
+ Fri, 11 Oct 2019 03:59:04 +0000 (UTC)
+Received: from DESKTOP-2SJ3DIV.home (unknown [109.180.135.189])
+ by mail.pafiac.com (Postfix) with ESMTPA id C9636171C891;
+ Fri, 11 Oct 2019 08:42:19 +0900 (JST)
 MIME-Version: 1.0
-Received: by 2002:adf:efc4:0:0:0:0:0 with HTTP; Thu, 10 Oct 2019 06:03:29
- -0700 (PDT)
-From: "Coryna Rizky Amelia, SST" <coryna_fk@ub.ac.id>
-Date: Thu, 10 Oct 2019 14:03:29 +0100
-Message-ID: <CADotR_oy9ratPJcm7xuCnzMzvr-rUwioHAok3LkoQeLsECETGQ@mail.gmail.com>
-Subject: Apply For Financial investment at a lower rate 2%
-To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ub-ac-id.20150623.gappssmtp.com; s=20150623;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=GO77O9NugfDMF3sM0pFxjAVwqVXEKORDEOteZl6SPpM=;
- b=UrT4PCXOF+KY3kZPBj8pWcEH62+tKkTSqbcYQD5jRwe1hlz48us9Pd47S6yJpDlR20
- 1kteP4zI3hh/nw+FBGEs3aKSzB9feNRcZvGi0aT5juen9Ht1+irUpVpMo/AD/7ZP8oao
- KHGluV28zVAFaURC9XIpDvtHNrWgEMP9vRRugNqlrnnIiaAUkz2j0BYNfSgyFVPAuR2K
- OaPsR3pgL1xz2w2hpOmIZuC1J1STNm0rJMjXCj77qudVvd6DuFlxdl26ydk5s4+X1Byw
- 6h9BkZFSSoDd8q4efR5JVVNhTfe3hYweAyCJT0Eh5Nkx+AXqkI7TzPSdmVS67rQ1tdr8
- 0IPw==
+Content-Description: Mail message body
+Subject: REPLY AS SOON AS POSSIBLE     
+To: Recipients <pg2018428@gmail.com>
+From: "Raymond Chien Hang Seng" <pg2018428@gmail.com>
+Date: Fri, 11 Oct 2019 00:42:11 +0100
+X-Virus-Scanned: clamav-milter 0.97.3 at c1000099
+X-Virus-Status: Clean
+X-Spam-Flag: YES
+X-Spam-Status: Yes, score=5.1 required=5.0 tests=ADVANCE_FEE_4_NEW,
+ DKIM_ADSP_CUSTOM_MED,FREEMAIL_ENVFROM_END_DIGIT,FREEMAIL_FROM,
+ FREEMAIL_REPLYTO,HK_SCAM,MISSING_MID,NML_ADSP_CUSTOM_MED,SUBJ_ALL_CAPS,
+ UNPARSEABLE_RELAY autolearn=no version=3.3.1
+X-Spam-Report: * 0.0 FREEMAIL_FROM Sender email is commonly abused enduser
+ mail provider *      (pg2018428[at]gmail.com)
+ *  0.0 DKIM_ADSP_CUSTOM_MED No valid author signature, adsp_override is
+ *      CUSTOM_MED *  0.5 SUBJ_ALL_CAPS Subject is all capitals
+ *  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends in
+ *      digit (pg2018428[at]gmail.com)
+ *  0.1 MISSING_MID Missing Message-Id: header
+ *  0.0 UNPARSEABLE_RELAY Informational: message has unparseable relay lines
+ *  2.0 HK_SCAM HK_SCAM
+ *  1.0 FREEMAIL_REPLYTO Reply-To/From or Reply-To/body contain different
+ *      freemails
+ *  1.2 NML_ADSP_CUSTOM_MED ADSP custom_med hit, and not from a mailing list
+ *  0.0 ADVANCE_FEE_4_NEW Appears to be advance fee fraud (Nigerian 419)
+X-Spam-Level: *****
+X-Spam-Checker-Version: SpamAssassin 3.3.1 (2010-03-16) on c1000099
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,27 +58,18 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: sunrisefundingltd50@gmail.com
+Reply-To: draymndch@yahoo.co.jp
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20191011035906.966856EA88@gabe.freedesktop.org>
 
-LS0gCkhlbGxvLAoKV2UgYXJlIHByaXZhdGUgbGVuZGVycyBiYXNlZCBpbiBVSy4KRG8geW91IG5l
-ZWQgYSBsb2FuIChjcmVkaXQpIGFzIHNvb24gYXMgcG9zc2libGUuIEFyZSB5b3UgaW4gc2VhcmNo
-IG9mCm1vbmV5IHRvIHNvbHZlIHlvdXIgcGVyc29uYWwgbmVlZHMgb3IgZmluYW5jZSB5b3VyIGJ1
-c2luZXNzIHZlbnR1cmUsCnRoZW4gZ2V0IFlvdXIgZGVzaXJlZCBsb2FuIHRvZGF5ISBDb25zdWx0
-IHVzIGF0IFN1bnJpc2UgRnVuZGluZyBMdGQuCgoqIFdlIG9mZmVyIHBlcnNvbmFsIGxvYW4gJiBo
-dWdlIGNhcGl0YWwgbG9hbiBhdCAyJSBpbnRlcmVzdCByYXRlIHRvCnRoZSBnZW5lcmFsIHB1Ymxp
-YyBib3RoIGxvY2FsbHkgYW5kIGludGVybmF0aW9uYWxseS4KKiBDcmVkaXQgYW1vdW50IHJhbmdl
-IGZyb20gJDUsMDAwLjAwIC0tICQ1MDAsMDAwLjAwIGFuZCBhYm92ZS4KKiBTcGVjaWFsICQxMCww
-MDAsMDAwLjAwIExvYW4gb2ZmZXIgZm9yIGh1Z2UgcHJvamVjdCBhbHNvIGF2YWlsYWJsZS4KKiBM
-b2FuIHBlcmlvZCBvZiA2IG1vbnRocyAtLSAxMCB5ZWFycy4KKiBMb2FuIGlzIGdyYW50ZWQgMjQg
-aG91cnMgYWZ0ZXIgYXBwcm92YWwgYW5kIGFjY3JlZGl0ZWQsIGRpcmVjdGx5IGluCmhhbmQgb3Ig
-YmFuayBhY2NvdW50LgoKUGxlYXNlIG5vdGUgdGhhdCB5b3UgYXJlIGFkdmlzZWQgdG8gY29udGFj
-dCB1cyBmb3IgbW9yZSBkZXRhaWxzIHZpYQp0aGUgZm9sbG93aW5nIGUtbWFpbCBhZGRyZXNzIGJl
-bG93OwoKRU1BSUwgOiBzdW5yaXNlZnVuZGluZ2x0ZDUwQGdtYWlsLmNvbQpGSVJNIDogU3Vucmlz
-ZSBGdW5kaW5nIEx0ZCBVSy4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9pbnRlbC1ndnQtZGV2
+SSBhbSBWaWNlIENoYWlybWFuIG9mIEhhbmcgU2VuZyBCYW5rLCBJIGhhdmUgSW1wb3J0YW50IE1h
+dHRlciB0byBEaXNjdXNzIHdpdGggeW91IGNvbmNlcm5pbmcgbXkgbGF0ZSBjbGllbnQuIERpZWQg
+d2l0aG91dCBhIE5FWFQgT0YgS0lOLiBTZW5kIG1lIHlvdXIgcHJpdmF0ZSBlbWFpbCBmb3IgZnVs
+bCBkZXRhaWxzIGluZm9ybWF0aW9uLiBlbWFpbCBtZSBhdCBFLU1haWw6IGRyMjk4NzZkckBnbWFp
+bC5jb20KClJlZ2FyZHMgCk1yLkZ1bmcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
