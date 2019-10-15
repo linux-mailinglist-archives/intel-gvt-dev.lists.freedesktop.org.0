@@ -2,41 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5C32D7644
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 15 Oct 2019 14:17:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F648D78C9
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 15 Oct 2019 16:37:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 836B96E7BC;
-	Tue, 15 Oct 2019 12:17:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19C5D6E826;
+	Tue, 15 Oct 2019 14:37:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D86F46E7BC;
- Tue, 15 Oct 2019 12:17:33 +0000 (UTC)
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 12DEBC05B00E;
- Tue, 15 Oct 2019 12:17:33 +0000 (UTC)
-Received: from [10.72.12.168] (ovpn-12-168.pek2.redhat.com [10.72.12.168])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 99C9760BE2;
- Tue, 15 Oct 2019 12:17:02 +0000 (UTC)
-Subject: Re: [PATCH V3 4/7] mdev: introduce device specific ops
-To: Cornelia Huck <cohuck@redhat.com>
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com
+ [IPv6:2a00:1450:4864:20::444])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C56D36E826;
+ Tue, 15 Oct 2019 14:37:24 +0000 (UTC)
+Received: by mail-wr1-x444.google.com with SMTP id j18so24169523wrq.10;
+ Tue, 15 Oct 2019 07:37:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=neBsjR3UuUvIqjWSRW2rTQl/yD7xf9xUmzZJeouSucY=;
+ b=ibHSF06CcCsIZomQ1iCRMbnAQ0Lw40rRy6YwacpAFQQ97NdXNgrKEcBfiD5f9Wef1X
+ 0xaK//4azH/iWfpUGeOBOmkCIn/AQKCnEWmsnwlTeKACQrCKLJdUWFus7lfL+ge6F/eF
+ 2asTRrIdrTrQH1mG6b/nQ3SsDCLd3y6CH21M0QCHfFHofcEkcdt7E7CtoxQC3ROG1WI/
+ 0xF3q9nybi+OZ/DDjHGq5dKgSGmD3zwAtF8CrjbkibasMRPRDsuzpmiLIkdRHKXAJ/hS
+ yFMTU4MlKlAZATMX55FEKFiPsll2KEIvNKlH+fG3ocNZ4mUkiiNyHL0muBgQkyBNxwFC
+ eb4Q==
+X-Gm-Message-State: APjAAAXOKa9qXCUc52uxeatRqDy1hNa6q9X6VMm3AbSnXrbeYCRfB20t
+ y/tcXA9iyt2jd1jIwtDM2OK219YUoBkPFA==
+X-Google-Smtp-Source: APXvYqzV3/RVLumtjzKMF39X/kb+3GTjFjA6Zi36mjTbF3VD42lPRp342ZlZGPdL0S+AnrxMQCU2bw==
+X-Received: by 2002:a5d:674e:: with SMTP id l14mr29799012wrw.45.1571150243309; 
+ Tue, 15 Oct 2019 07:37:23 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id r20sm29954681wrg.61.2019.10.15.07.37.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Oct 2019 07:37:22 -0700 (PDT)
+Date: Tue, 15 Oct 2019 15:37:20 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH V3 0/7] mdev based hardware virtio offloading support
+Message-ID: <20191015143720.GA13108@stefanha-x1.localdomain>
 References: <20191011081557.28302-1-jasowang@redhat.com>
- <20191011081557.28302-5-jasowang@redhat.com>
- <20191015124137.4f948bd2.cohuck@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <eb7ecd99-7465-6be4-7ecd-84c11f66e0ac@redhat.com>
-Date: Tue, 15 Oct 2019 20:17:01 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <20191014174946.GC5359@stefanha-x1.localdomain>
+ <6d12ad8f-8137-e07d-d735-da59a326e8ed@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191015124137.4f948bd2.cohuck@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.31]); Tue, 15 Oct 2019 12:17:33 +0000 (UTC)
+In-Reply-To: <6d12ad8f-8137-e07d-d735-da59a326e8ed@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=neBsjR3UuUvIqjWSRW2rTQl/yD7xf9xUmzZJeouSucY=;
+ b=Ha/JGsd50SAmjoukDYzVJ+uuPpyS6R2PO/eaw9gkiIRIoM/HGQIlw9cEAjxcehLXgX
+ xtPrKatNFAft1UWxIzn3Defz+Km3jvCRPXTsAq9Pq3ufY6HVgJoOWyGxGPfjPvEdYCas
+ nmFfVEj8/OM25w2meSCjx2zxPPI1LmHgXKvgVJTMlwuYyyzncaqGB6hSe47Jkm2BmDdE
+ 7Q1oVk61trb1ophCLz3TyIvG+5B4wxLnGIWfh8XXAXF2YWMuNcBZpEq+5iu4OQD/KM2o
+ pmgr9RP7X7EJ6h82CRMMDcjBoylZdxySRDcK25cQYOVMInHl93hoNZ/0PIMDNaEQWzXg
+ 37Ig==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,97 +83,107 @@ Cc: christophe.de.dinechin@gmail.com, kvm@vger.kernel.org, mst@redhat.com,
  zhihong.wang@intel.com, rodrigo.vivi@intel.com,
  intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
  oberpar@linux.ibm.com, tiwei.bie@intel.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, maxime.coquelin@redhat.com, daniel@ffwll.ch,
- lingshan.zhu@intel.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, maxime.coquelin@redhat.com,
+ daniel@ffwll.ch, lingshan.zhu@intel.com
+Content-Type: multipart/mixed; boundary="===============1074494851=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Ck9uIDIwMTkvMTAvMTUg5LiL5Y2INjo0MSwgQ29ybmVsaWEgSHVjayB3cm90ZToKPiBPbiBGcmks
-IDExIE9jdCAyMDE5IDE2OjE1OjU0ICswODAwCj4gSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0
-LmNvbT4gd3JvdGU6Cj4KPj4gQ3VycmVudGx5LCBleGNlcHQgZm9yIHRoZSBjcmVhdGUgYW5kIHJl
-bW92ZSwgdGhlIHJlc3Qgb2YKPj4gbWRldl9wYXJlbnRfb3BzIGlzIGRlc2lnbmVkIGZvciB2Zmlv
-LW1kZXYgZHJpdmVyIG9ubHkgYW5kIG1heSBub3QgaGVscAo+PiBmb3Iga2VybmVsIG1kZXYgZHJp
-dmVyLiBXaXRoIHRoZSBoZWxwIG9mIGNsYXNzIGlkLCB0aGlzIHBhdGNoCj4+IGludHJvZHVjZXMg
-ZGV2aWNlIHNwZWNpZmljIGNhbGxiYWNrcyBpbnNpZGUgbWRldl9kZXZpY2UKPj4gc3RydWN0dXJl
-LiBUaGlzIGFsbG93cyBkaWZmZXJlbnQgc2V0IG9mIGNhbGxiYWNrIHRvIGJlIHVzZWQgYnkKPj4g
-dmZpby1tZGV2IGFuZCB2aXJ0aW8tbWRldi4KPj4KPj4gU2lnbmVkLW9mZi1ieTogSmFzb24gV2Fu
-ZyA8amFzb3dhbmdAcmVkaGF0LmNvbT4KPj4gLS0tCj4+ICAgLi4uL2RyaXZlci1hcGkvdmZpby1t
-ZWRpYXRlZC1kZXZpY2UucnN0ICAgICAgIHwgMjIgKysrKystLS0KPj4gICBNQUlOVEFJTkVSUyAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMSArCj4+ICAgZHJpdmVycy9ncHUv
-ZHJtL2k5MTUvZ3Z0L2t2bWd0LmMgICAgICAgICAgICAgIHwgMTggKysrKy0tLQo+PiAgIGRyaXZl
-cnMvczM5MC9jaW8vdmZpb19jY3dfb3BzLmMgICAgICAgICAgICAgICB8IDE4ICsrKystLS0KPj4g
-ICBkcml2ZXJzL3MzOTAvY3J5cHRvL3ZmaW9fYXBfb3BzLmMgICAgICAgICAgICAgfCAxNCArKyst
-LQo+PiAgIGRyaXZlcnMvdmZpby9tZGV2L21kZXZfY29yZS5jICAgICAgICAgICAgICAgICB8ICA5
-ICsrKy0KPj4gICBkcml2ZXJzL3ZmaW8vbWRldi9tZGV2X3ByaXZhdGUuaCAgICAgICAgICAgICAg
-fCAgMSArCj4+ICAgZHJpdmVycy92ZmlvL21kZXYvdmZpb19tZGV2LmMgICAgICAgICAgICAgICAg
-IHwgMzcgKysrKysrLS0tLS0tLQo+PiAgIGluY2x1ZGUvbGludXgvbWRldi5oICAgICAgICAgICAg
-ICAgICAgICAgICAgICB8IDQyICsrKy0tLS0tLS0tLS0tLQo+PiAgIGluY2x1ZGUvbGludXgvdmZp
-b19tZGV2LmggICAgICAgICAgICAgICAgICAgICB8IDUyICsrKysrKysrKysrKysrKysrKysKPj4g
-ICBzYW1wbGVzL3ZmaW8tbWRldi9tYm9jaHMuYyAgICAgICAgICAgICAgICAgICAgfCAyMCArKysr
-LS0tCj4+ICAgc2FtcGxlcy92ZmlvLW1kZXYvbWRweS5jICAgICAgICAgICAgICAgICAgICAgIHwg
-MjEgKysrKystLS0KPj4gICBzYW1wbGVzL3ZmaW8tbWRldi9tdHR5LmMgICAgICAgICAgICAgICAg
-ICAgICAgfCAxOCArKysrLS0tCj4+ICAgMTMgZmlsZXMgY2hhbmdlZCwgMTc3IGluc2VydGlvbnMo
-KyksIDk2IGRlbGV0aW9ucygtKQo+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4
-L3ZmaW9fbWRldi5oCj4+Cj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkv
-dmZpby1tZWRpYXRlZC1kZXZpY2UucnN0IGIvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL3ZmaW8t
-bWVkaWF0ZWQtZGV2aWNlLnJzdAo+PiBpbmRleCAyMDM1ZTQ4ZGE3YjIuLjU1MzU3NGViYmE3MyAx
-MDA2NDQKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL3ZmaW8tbWVkaWF0ZWQtZGV2
-aWNlLnJzdAo+PiArKysgYi9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvdmZpby1tZWRpYXRlZC1k
-ZXZpY2UucnN0Cj4+IEBAIC0xNTIsMTEgKzE1MiwyMCBAQCBjYWxsYmFja3MgcGVyIG1kZXYgcGFy
-ZW50IGRldmljZSwgcGVyIG1kZXYgdHlwZSwgb3IgYW55IG90aGVyIGNhdGVnb3JpemF0aW9uLgo+
-PiAgIFZlbmRvciBkcml2ZXJzIGFyZSBleHBlY3RlZCB0byBiZSBmdWxseSBhc3luY2hyb25vdXMg
-aW4gdGhpcyByZXNwZWN0IG9yCj4+ICAgcHJvdmlkZSB0aGVpciBvd24gaW50ZXJuYWwgcmVzb3Vy
-Y2UgcHJvdGVjdGlvbi4pCj4+ICAgCj4+IC1UaGUgY2FsbGJhY2tzIGluIHRoZSBtZGV2X3BhcmVu
-dF9vcHMgc3RydWN0dXJlIGFyZSBhcyBmb2xsb3dzOgo+PiArSW4gb3JkZXIgdG8gc3VwcG9ydCBt
-dWx0aXBsZSB0eXBlcyBvZiBkZXZpY2UvZHJpdmVyLCBkZXZpY2UgbmVlZHMgdG8KPj4gK3Byb3Zp
-ZGUgYm90aCBjbGFzc19pZCBhbmQgZGV2aWNlX29wcyB0aHJvdWdoOgo+ICJBcyBtdWx0aXBsZSB0
-eXBlcyBvZiBtZWRpYXRlZCBkZXZpY2VzIG1heSBiZSBzdXBwb3J0ZWQsIHRoZSBkZXZpY2UKPiBu
-ZWVkcyB0byBzZXQgdXAgdGhlIGNsYXNzIGlkIGFuZCB0aGUgZGV2aWNlIHNwZWNpZmljIGNhbGxi
-YWNrcyB2aWE6Igo+Cj4gPwo+Cj4+ICAgCj4+IC0qIG9wZW46IG9wZW4gY2FsbGJhY2sgb2YgbWVk
-aWF0ZWQgZGV2aWNlCj4+IC0qIGNsb3NlOiBjbG9zZSBjYWxsYmFjayBvZiBtZWRpYXRlZCBkZXZp
-Y2UKPj4gLSogaW9jdGw6IGlvY3RsIGNhbGxiYWNrIG9mIG1lZGlhdGVkIGRldmljZQo+PiArICAg
-IHZvaWQgbWRldl9zZXRfY2xhc3Moc3RydWN0IG1kZXZfZGV2aWNlICptZGV2LCB1MTYgaWQsIGNv
-bnN0IHZvaWQgKm9wcyk7Cj4+ICsKPj4gK1RoZSBjbGFzc19pZCBpcyB1c2VkIHRvIGJlIHBhaXJl
-ZCB3aXRoIGlkcyBpbiBpZF90YWJsZSBpbiBtZGV2X2RyaXZlcgo+PiArc3RydWN0dXJlIGZvciBw
-cm9iaW5nIHRoZSBjb3JyZWN0IGRyaXZlci4KPiAiVGhlIGNsYXNzIGlkICAoc3BlY2lmaWVkIGlu
-IGlkKSBpcyB1c2VkIHRvIG1hdGNoIGEgZGV2aWNlIHdpdGggYW4gbWRldgo+IGRyaXZlciB2aWEg
-aXRzIGlkIHRhYmxlLiIKPgo+ID8KPgo+PiBUaGUgZGV2aWNlX29wcyBpcyBkZXZpY2UKPj4gK3Nw
-ZWNpZmljIGNhbGxiYWNrcyB3aGljaCBjYW4gYmUgZ2V0IHRocm91Z2ggbWRldl9nZXRfZGV2X29w
-cygpCj4+ICtmdW5jdGlvbiBieSBtZGV2IGJ1cyBkcml2ZXIuCj4gIlRoZSBkZXZpY2Ugc3BlY2lm
-aWMgY2FsbGJhY2tzIChzcGVjaWZpZWQgaW4gKm9wcykgYXJlIG9idGFpbmFibGUgdmlhCj4gbWRl
-dl9nZXRfZGV2X29wcygpIChmb3IgdXNlIGJ5IHRoZSBtZGV2IGJ1cyBkcml2ZXIuKSIKPgo+ID8K
-Pgo+PiBGb3IgdmZpby1tZGV2IGRldmljZSwgaXRzIGRldmljZSBzcGVjaWZpYwo+PiArb3BzIGFy
-ZSBhcyBmb2xsb3dzOgo+ICJBIHZmaW8tbWRldiBkZXZpY2UgKGNsYXNzIGlkIE1ERVZfSURfVkZJ
-TykgdXNlcyB0aGUgZm9sbG93aW5nCj4gZGV2aWNlLXNwZWNpZmljIG9wczoiCj4KPiA/CgoKQWxs
-IHlvdSBwcm9wb3NlIGlzIGJldHRlciB0aGFuIHdoYXQgSSB3cm90ZSwgd2lsbCBjaGFuZ2UgdGhl
-IGRvY3MuCgoKPgo+PiArCj4+ICsqIG9wZW46IG9wZW4gY2FsbGJhY2sgb2YgdmZpbyBtZWRpYXRl
-ZCBkZXZpY2UKPj4gKyogY2xvc2U6IGNsb3NlIGNhbGxiYWNrIG9mIHZmaW8gbWVkaWF0ZWQgZGV2
-aWNlCj4+ICsqIGlvY3RsOiBpb2N0bCBjYWxsYmFjayBvZiB2ZmlvIG1lZGlhdGVkIGRldmljZQo+
-PiAgICogcmVhZCA6IHJlYWQgZW11bGF0aW9uIGNhbGxiYWNrCj4+ICAgKiB3cml0ZTogd3JpdGUg
-ZW11bGF0aW9uIGNhbGxiYWNrCj4+ICAgKiBtbWFwOiBtbWFwIGVtdWxhdGlvbiBjYWxsYmFjawo+
-PiBAQCAtMTY3LDkgKzE3NiwxMCBAQCByZWdpc3RlciBpdHNlbGYgd2l0aCB0aGUgbWRldiBjb3Jl
-IGRyaXZlcjo6Cj4+ICAgCWV4dGVybiBpbnQgIG1kZXZfcmVnaXN0ZXJfZGV2aWNlKHN0cnVjdCBk
-ZXZpY2UgKmRldiwKPj4gICAJICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3Qg
-c3RydWN0IG1kZXZfcGFyZW50X29wcyAqb3BzKTsKPj4gICAKPj4gLUl0IGlzIGFsc28gcmVxdWly
-ZWQgdG8gc3BlY2lmeSB0aGUgY2xhc3NfaWQgdGhyb3VnaDo6Cj4+ICtJdCBpcyBhbHNvIHJlcXVp
-cmVkIHRvIHNwZWNpZnkgdGhlIGNsYXNzX2lkIGFuZCBkZXZpY2Ugc3BlY2lmaWMgb3BzIHRocm91
-Z2g6Ogo+PiAgIAo+PiAtCWV4dGVybiBpbnQgbWRldl9zZXRfY2xhc3Moc3RydWN0IGRldmljZSAq
-ZGV2LCB1MTYgaWQpOwo+PiArCWV4dGVybiBpbnQgbWRldl9zZXRfY2xhc3Moc3RydWN0IGRldmlj
-ZSAqZGV2LCB1MTYgaWQsCj4+ICsJICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdCB2b2lk
-ICpvcHMpOwo+IEFwb2xvZ2llcyBpZiB0aGF0IGhhcyBhbHJlYWR5IGJlZW4gZGlzY3Vzc2VkLCBi
-dXQgZG8gd2Ugd2FudCBhIDE6MQo+IHJlbGF0aW9uc2hpcCBiZXR3ZWVuIGlkIGFuZCBvcHMsIG9y
-IGNhbiBkaWZmZXJlbnQgZGV2aWNlcyB3aXRoIHRoZSBzYW1lCj4gaWQgcmVnaXN0ZXIgZGlmZmVy
-ZW50IG9wcz8KCgpJIHRoaW5rIHdlIGhhdmUgYSBOOjEgbWFwcGluZyBiZXR3ZWVuIGlkIGFuZCBv
-cHMsIGUuZyB3ZSB3YW50IGJvdGggCnZpcnRpby1tZGV2IGFuZCB2aG9zdC1tZGV2IHVzZSBhIHNp
-bmdsZSBzZXQgb2YgZGV2aWNlIG9wcy4KClRoYW5rcwoKCj4gSWYgdGhlIGZvcm1lciwgd291bGQg
-aXQgbWFrZSBzZW5zZSB0byBmaXJzdAo+IHJlZ2lzdGVyIHRoZSBvcHMgZm9yIGFuIGlkIChvbmNl
-KSwgYW5kIHRoZW4gaGF2ZSB0aGUgLT5jcmVhdGUgY2FsbGJhY2sKPiBvbmx5IHNldCB0aGUgY2xh
-c3MgaWQgKHdpdGggdGhlIGNvcmUgZG9pbmcgdGhlIGxvb2t1cCBvZiB0aGUgb3BzKT8KPgo+PiAg
-IAo+PiAgIEhvd2V2ZXIsIHRoZSBtZGV2X3BhcmVudF9vcHMgc3RydWN0dXJlIGlzIG5vdCByZXF1
-aXJlZCBpbiB0aGUgZnVuY3Rpb24gY2FsbAo+PiAgIHRoYXQgYSBkcml2ZXIgc2hvdWxkIHVzZSB0
-byB1bnJlZ2lzdGVyIGl0c2VsZiB3aXRoIHRoZSBtZGV2IGNvcmUgZHJpdmVyOjoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWls
-aW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1074494851==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ew6BAiZeqk4r7MaW"
+Content-Disposition: inline
+
+
+--ew6BAiZeqk4r7MaW
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Oct 15, 2019 at 11:37:17AM +0800, Jason Wang wrote:
+>=20
+> On 2019/10/15 =E4=B8=8A=E5=8D=881:49, Stefan Hajnoczi wrote:
+> > On Fri, Oct 11, 2019 at 04:15:50PM +0800, Jason Wang wrote:
+> > > There are hardware that can do virtio datapath offloading while having
+> > > its own control path. This path tries to implement a mdev based
+> > > unified API to support using kernel virtio driver to drive those
+> > > devices. This is done by introducing a new mdev transport for virtio
+> > > (virtio_mdev) and register itself as a new kind of mdev driver. Then
+> > > it provides a unified way for kernel virtio driver to talk with mdev
+> > > device implementation.
+> > >=20
+> > > Though the series only contains kernel driver support, the goal is to
+> > > make the transport generic enough to support userspace drivers. This
+> > > means vhost-mdev[1] could be built on top as well by resuing the
+> > > transport.
+> > >=20
+> > > A sample driver is also implemented which simulate a virito-net
+> > > loopback ethernet device on top of vringh + workqueue. This could be
+> > > used as a reference implementation for real hardware driver.
+> > >=20
+> > > Consider mdev framework only support VFIO device and driver right now,
+> > > this series also extend it to support other types. This is done
+> > > through introducing class id to the device and pairing it with
+> > > id_talbe claimed by the driver. On top, this seris also decouple
+> > > device specific parents ops out of the common ones.
+> > I was curious so I took a quick look and posted comments.
+> >=20
+> > I guess this driver runs inside the guest since it registers virtio
+> > devices?
+>=20
+>=20
+> It could run in either guest or host. But the main focus is to run in the
+> host then we can use virtio drivers in containers.
+>=20
+>=20
+> >=20
+> > If this is used with physical PCI devices that support datapath
+> > offloading then how are physical devices presented to the guest without
+> > SR-IOV?
+>=20
+>=20
+> We will do control path meditation through vhost-mdev[1] and vhost-vfio[2=
+].
+> Then we will present a full virtio compatible ethernet device for guest.
+>=20
+> SR-IOV is not a must, any mdev device that implements the API defined in
+> patch 5 can be used by this framework.
+
+What I'm trying to understand is: if you want to present a virtio-pci
+device to the guest (e.g. using vhost-mdev or vhost-vfio), then how is
+that related to this patch series?
+
+Does this mean this patch series is useful mostly for presenting virtio
+devices to containers or the host?
+
+Stefan
+
+--ew6BAiZeqk4r7MaW
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl2l2aAACgkQnKSrs4Gr
+c8ji7wf9FHyYry8VO4FqVBdQWMz/h/mmNTgeyBCpCasw+joJ3LRHOyyGPsu2BiOX
+IhAuZvK3azvtP7vh1etYaoBrCPmyFBTh2UXsIYoGK1qpUzPNkB7nuGYTBPJgZbxd
+jmJNDjc9wrrn9sWBJjkJaFYSjEDfob63FtUG2VM6f109LXI4bTyt03KqS1tZ75Hi
+SSjVt95GYQ1xENjKUcVqV9ULwfsv0Wz/WQ2XIvn8Oij7NK9bKHWl3HLirrUE62FP
+y6/3Y2fKKhes58jmY09L37Ym625X95M//6g2WYv+uR5rTTfo7jQBlLZ1tklwNY/k
+X8Sw0iHJKxZjvZqItbu49kJtRJwm9g==
+=nOrh
+-----END PGP SIGNATURE-----
+
+--ew6BAiZeqk4r7MaW--
+
+--===============1074494851==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1074494851==--
