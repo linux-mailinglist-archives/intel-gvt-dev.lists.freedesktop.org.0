@@ -2,64 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EF06DA8C2
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Oct 2019 11:43:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 70288DAA4B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Oct 2019 12:49:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C74EA6EA2D;
-	Thu, 17 Oct 2019 09:43:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6D2EE6EA48;
+	Thu, 17 Oct 2019 10:49:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com
- [IPv6:2a00:1450:4864:20::344])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E2A8B6EA2D;
- Thu, 17 Oct 2019 09:43:44 +0000 (UTC)
-Received: by mail-wm1-x344.google.com with SMTP id i16so1836278wmd.3;
- Thu, 17 Oct 2019 02:43:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=j33Q+AxJlhfJ2zQyBdLBD2zOlPBTBa+TDiJdmF/d4B0=;
- b=I/Z3+JT/xLYZrguo80fjCE59CpRolyJWt/lJQvJACPa1/DdQ0pbqIt2ye0yusuO8lD
- sRxQua9KR24rbX1Sqj9CRfu5SFwHyvUpCxXN3yam93r3kYYOzFli+YnXazdRE18yup4U
- zvbzH+MXS+I3iDPUCN/ZYhIzvEyATwdUkUT4Igwy8gWvaGaL3l64dkF0eccn5g6bIMze
- TW3A3kYxfcmN+YeIuFWY3l+URDZO+Bfd3HkBI4tU0sOJZrpG2BJLuY6VapijsXmEA064
- HSDDmFdeGH1btQ/6QhwUoV42oninUx8uytee14tGOHIhQXZYsvSa0Y+8PwN30YQE9w2C
- aOkg==
-X-Gm-Message-State: APjAAAUO9AtvXDp6kvBmRWZGZOKSoU+GfeLPl3crSJmO7cBPRNNswpvL
- 035PW4JQSl3oyobcQHVIHgk=
-X-Google-Smtp-Source: APXvYqxHJt9ec/ig4bgPywnDn38DGreAT5nDreVbx5QqzUYuzF0nTYOT9L67QUVhr9q6+o+HntA0Mw==
-X-Received: by 2002:a05:600c:21d2:: with SMTP id
- x18mr2121283wmj.146.1571305423433; 
- Thu, 17 Oct 2019 02:43:43 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id l6sm2029963wmg.2.2019.10.17.02.43.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2019 02:43:42 -0700 (PDT)
-Date: Thu, 17 Oct 2019 10:43:41 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jason Wang <jasowang@redhat.com>
-Subject: Re: [PATCH V3 0/7] mdev based hardware virtio offloading support
-Message-ID: <20191017094341.GF23557@stefanha-x1.localdomain>
-References: <20191011081557.28302-1-jasowang@redhat.com>
- <20191014174946.GC5359@stefanha-x1.localdomain>
- <6d12ad8f-8137-e07d-d735-da59a326e8ed@redhat.com>
- <20191015143720.GA13108@stefanha-x1.localdomain>
- <ba81e603-cb7d-b152-8fae-97f070a7e460@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 640C46EA46;
+ Thu, 17 Oct 2019 10:49:05 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 625A62E97D5;
+ Thu, 17 Oct 2019 10:49:04 +0000 (UTC)
+Received: from jason-ThinkPad-X1-Carbon-6th.redhat.com
+ (ovpn-12-185.pek2.redhat.com [10.72.12.185])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5A5E55D721;
+ Thu, 17 Oct 2019 10:48:39 +0000 (UTC)
+From: Jason Wang <jasowang@redhat.com>
+To: kvm@vger.kernel.org, linux-s390@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ kwankhede@nvidia.com, alex.williamson@redhat.com, mst@redhat.com,
+ tiwei.bie@intel.com
+Subject: [PATCH V4 0/6] mdev based hardware virtio offloading support
+Date: Thu, 17 Oct 2019 18:48:30 +0800
+Message-Id: <20191017104836.32464-1-jasowang@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <ba81e603-cb7d-b152-8fae-97f070a7e460@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=j33Q+AxJlhfJ2zQyBdLBD2zOlPBTBa+TDiJdmF/d4B0=;
- b=PBJfc4iKYLoGVwZHVtTO0lO3ez5BpGeXPZAlj4Qxx0c4NWNvQiQJdK1Zm22yFqjtaV
- XO4FHG92jwHETc95eBaAqW8My3/55VjWzgdzO1Z7VFGBKZ6/SSKp6CTcrfC3PtlNKUqL
- Gz5RKw3w65f80M9hxVCyoUP5nbQbEGYqA7zONJtbqiZZSQ4kJoIXDkriUorZx149Ov6V
- hp2VI/XVNAKT6jIOvk6lx29b+UyYLiw1dTHMppE7KWb8k9vetl5lYmF5oE0pBsoCnQOR
- RSu0PTM8fVta3TCkFFq1fEmhNZJQ4CHICquFivetIufuHrOzmlAiCgVnt5JDfNQxaSMU
- /cUg==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.29]); Thu, 17 Oct 2019 10:49:04 +0000 (UTC)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,148 +47,124 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: christophe.de.dinechin@gmail.com, kvm@vger.kernel.org, mst@redhat.com,
- airlied@linux.ie, joonas.lahtinen@linux.intel.com, heiko.carstens@de.ibm.com,
- kevin.tian@intel.com, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, kwankhede@nvidia.com,
- rob.miller@broadcom.com, linux-s390@vger.kernel.org, sebott@linux.ibm.com,
+Cc: christophe.de.dinechin@gmail.com, sebott@linux.ibm.com, airlied@linux.ie,
+ Jason Wang <jasowang@redhat.com>, joonas.lahtinen@linux.intel.com,
+ heiko.carstens@de.ibm.com, kevin.tian@intel.com,
+ virtualization@lists.linux-foundation.org, rob.miller@broadcom.com,
  lulu@redhat.com, eperezma@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, haotian.wang@sifive.com, cunming.liang@intel.com,
- zhi.a.wang@intel.com, farman@linux.ibm.com, idos@mellanox.com,
- gor@linux.ibm.com, intel-gfx@lists.freedesktop.org,
- jani.nikula@linux.intel.com, alex.williamson@redhat.com, xiao.w.wang@intel.com,
- freude@linux.ibm.com, zhenyuw@linux.intel.com, parav@mellanox.com,
- zhihong.wang@intel.com, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
- oberpar@linux.ibm.com, tiwei.bie@intel.com, netdev@vger.kernel.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, maxime.coquelin@redhat.com,
- daniel@ffwll.ch, lingshan.zhu@intel.com
-Content-Type: multipart/mixed; boundary="===============0947561807=="
+ borntraeger@de.ibm.com, haotian.wang@sifive.com, zhi.a.wang@intel.com,
+ farman@linux.ibm.com, idos@mellanox.com, gor@linux.ibm.com,
+ cunming.liang@intel.com, zhenyuw@linux.intel.com, rodrigo.vivi@intel.com,
+ xiao.w.wang@intel.com, freude@linux.ibm.com, jani.nikula@linux.intel.com,
+ parav@mellanox.com, zhihong.wang@intel.com, stefanha@redhat.com,
+ akrowiak@linux.ibm.com, netdev@vger.kernel.org, cohuck@redhat.com,
+ oberpar@linux.ibm.com, maxime.coquelin@redhat.com, daniel@ffwll.ch,
+ lingshan.zhu@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============0947561807==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Pql/uPZNXIm1JCle"
-Content-Disposition: inline
-
-
---Pql/uPZNXIm1JCle
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Oct 17, 2019 at 09:42:53AM +0800, Jason Wang wrote:
->=20
-> On 2019/10/15 =E4=B8=8B=E5=8D=8810:37, Stefan Hajnoczi wrote:
-> > On Tue, Oct 15, 2019 at 11:37:17AM +0800, Jason Wang wrote:
-> > > On 2019/10/15 =E4=B8=8A=E5=8D=881:49, Stefan Hajnoczi wrote:
-> > > > On Fri, Oct 11, 2019 at 04:15:50PM +0800, Jason Wang wrote:
-> > > > > There are hardware that can do virtio datapath offloading while h=
-aving
-> > > > > its own control path. This path tries to implement a mdev based
-> > > > > unified API to support using kernel virtio driver to drive those
-> > > > > devices. This is done by introducing a new mdev transport for vir=
-tio
-> > > > > (virtio_mdev) and register itself as a new kind of mdev driver. T=
-hen
-> > > > > it provides a unified way for kernel virtio driver to talk with m=
-dev
-> > > > > device implementation.
-> > > > >=20
-> > > > > Though the series only contains kernel driver support, the goal i=
-s to
-> > > > > make the transport generic enough to support userspace drivers. T=
-his
-> > > > > means vhost-mdev[1] could be built on top as well by resuing the
-> > > > > transport.
-> > > > >=20
-> > > > > A sample driver is also implemented which simulate a virito-net
-> > > > > loopback ethernet device on top of vringh + workqueue. This could=
- be
-> > > > > used as a reference implementation for real hardware driver.
-> > > > >=20
-> > > > > Consider mdev framework only support VFIO device and driver right=
- now,
-> > > > > this series also extend it to support other types. This is done
-> > > > > through introducing class id to the device and pairing it with
-> > > > > id_talbe claimed by the driver. On top, this seris also decouple
-> > > > > device specific parents ops out of the common ones.
-> > > > I was curious so I took a quick look and posted comments.
-> > > >=20
-> > > > I guess this driver runs inside the guest since it registers virtio
-> > > > devices?
-> > >=20
-> > > It could run in either guest or host. But the main focus is to run in=
- the
-> > > host then we can use virtio drivers in containers.
-> > >=20
-> > >=20
-> > > > If this is used with physical PCI devices that support datapath
-> > > > offloading then how are physical devices presented to the guest wit=
-hout
-> > > > SR-IOV?
-> > >=20
-> > > We will do control path meditation through vhost-mdev[1] and vhost-vf=
-io[2].
-> > > Then we will present a full virtio compatible ethernet device for gue=
-st.
-> > >=20
-> > > SR-IOV is not a must, any mdev device that implements the API defined=
- in
-> > > patch 5 can be used by this framework.
-> > What I'm trying to understand is: if you want to present a virtio-pci
-> > device to the guest (e.g. using vhost-mdev or vhost-vfio), then how is
-> > that related to this patch series?
->=20
->=20
-> This series introduce some infrastructure that would be used by vhost-mde=
-v:
->=20
-> 1) allow new type of mdev devices/drivers other than vfio (through class_=
-id
-> and device ops)
->=20
-> 2) a set of virtio specific callbacks that will be used by both vhost-mdev
-> and virtio-mdev defined in patch 5
->=20
-> Then vhost-mdev can be implemented on top: a new mdev class id but reuse =
-the
-> callback defined in 2. Through this way the parent can provides a single =
-set
-> of callbacks (device ops) for both kernel virtio driver (through
-> virtio-mdev) or userspace virtio driver (through vhost-mdev).
-
-Okay, thanks for explaining!
-
-Stefan
-
---Pql/uPZNXIm1JCle
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl2oN8wACgkQnKSrs4Gr
-c8gqswf/fQBq+qX21L3QGLUXUsf7OZ9kLP3ksR+9RYfGDJaFva/fV/aULknTmAiO
-OA0s+Eiw7K5Hy2ooKGPQXPYgAJhgnHqmhKgOEdsOGDWyCilYAiJzk/YXkpPvaCTp
-ovWC5Fz/shXyY3m2YGPXuwnWjbCam7cqMCRVPrmzJWoS6kdvsYsPxBVnhGFOm0Ms
-gbll/8mZQDQWsOZ8ZFeXLXCcHifXaiLa+yiGcZfxtV37oHsSapT+MOXEstGy4jEe
-uvos/V8tSLLMOJ+zgMYGOI0oOJIejMOrLU2zxPlktTbBVcM1RQtpJL69F30gi89K
-qCue5w57Z1UNfPVbXLiobIkPcZBGVw==
-=EXDt
------END PGP SIGNATURE-----
-
---Pql/uPZNXIm1JCle--
-
---===============0947561807==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0947561807==--
+SGkgYWxsOgoKVGhlcmUgYXJlIGhhcmR3YXJlcyB0aGF0IGNhbiBkbyB2aXJ0aW8gZGF0YXBhdGgg
+b2ZmbG9hZGluZyB3aGlsZQpoYXZpbmcgaXRzIG93biBjb250cm9sIHBhdGguIFRoaXMgcGF0aCB0
+cmllcyB0byBpbXBsZW1lbnQgYSBtZGV2IGJhc2VkCnVuaWZpZWQgQVBJIHRvIHN1cHBvcnQgdXNp
+bmcga2VybmVsIHZpcnRpbyBkcml2ZXIgdG8gZHJpdmUgdGhvc2UKZGV2aWNlcy4gVGhpcyBpcyBk
+b25lIGJ5IGludHJvZHVjaW5nIGEgbmV3IG1kZXYgdHJhbnNwb3J0IGZvciB2aXJ0aW8KKHZpcnRp
+b19tZGV2KSBhbmQgcmVnaXN0ZXIgaXRzZWxmIGFzIGEgbmV3IGtpbmQgb2YgbWRldiBkcml2ZXIu
+IFRoZW4KaXQgcHJvdmlkZXMgYSB1bmlmaWVkIHdheSBmb3Iga2VybmVsIHZpcnRpbyBkcml2ZXIg
+dG8gdGFsayB3aXRoIG1kZXYKZGV2aWNlIGltcGxlbWVudGF0aW9uLgoKVGhvdWdoIHRoZSBzZXJp
+ZXMgb25seSBjb250YWlucyBrZXJuZWwgZHJpdmVyIHN1cHBvcnQsIHRoZSBnb2FsIGlzIHRvCm1h
+a2UgdGhlIHRyYW5zcG9ydCBnZW5lcmljIGVub3VnaCB0byBzdXBwb3J0IHVzZXJzcGFjZSBkcml2
+ZXJzLiBUaGlzCm1lYW5zIHZob3N0LW1kZXZbMV0gY291bGQgYmUgYnVpbHQgb24gdG9wIGFzIHdl
+bGwgYnkgcmVzdWluZyB0aGUKdHJhbnNwb3J0LgoKQSBzYW1wbGUgZHJpdmVyIGlzIGFsc28gaW1w
+bGVtZW50ZWQgd2hpY2ggc2ltdWxhdGUgYSB2aXJpdG8tbmV0Cmxvb3BiYWNrIGV0aGVybmV0IGRl
+dmljZSBvbiB0b3Agb2YgdnJpbmdoICsgd29ya3F1ZXVlLiBUaGlzIGNvdWxkIGJlCnVzZWQgYXMg
+YSByZWZlcmVuY2UgaW1wbGVtZW50YXRpb24gZm9yIHJlYWwgaGFyZHdhcmUgZHJpdmVyLgoKQWxz
+byBhIHJlYWwgSUNGIFZGIGRyaXZlciB3YXMgYWxzbyBwb3N0ZWQgaGVyZVsyXSB3aGljaCBpcyBh
+IGdvb2QKcmVmZXJlbmNlIGZvciB2ZW5kb3JzIHdobyBpcyBpbnRlcmVzdGVkIGluIHRoZWlyIG93
+biB2aXJ0aW8gZGF0YXBhdGgKb2ZmbG9hZGluZyBwcm9kdWN0LgoKQ29uc2lkZXIgbWRldiBmcmFt
+ZXdvcmsgb25seSBzdXBwb3J0IFZGSU8gZGV2aWNlIGFuZCBkcml2ZXIgcmlnaHQgbm93LAp0aGlz
+IHNlcmllcyBhbHNvIGV4dGVuZCBpdCB0byBzdXBwb3J0IG90aGVyIHR5cGVzLiBUaGlzIGlzIGRv
+bmUKdGhyb3VnaCBpbnRyb2R1Y2luZyBjbGFzcyBpZCB0byB0aGUgZGV2aWNlIGFuZCBwYWlyaW5n
+IGl0IHdpdGgKaWRfdGFsYmUgY2xhaW1lZCBieSB0aGUgZHJpdmVyLiBPbiB0b3AsIHRoaXMgc2Vy
+aXMgYWxzbyBkZWNvdXBsZQpkZXZpY2Ugc3BlY2lmaWMgcGFyZW50cyBvcHMgb3V0IG9mIHRoZSBj
+b21tb24gb25lcy4KClBrdGdlbiB0ZXN0IHdhcyBkb25lIHdpdGggdmlyaXRvLW5ldCArIG12bmV0
+IGxvb3AgYmFjayBkZXZpY2UuCgpQbGVhc2UgcmV2aWV3LgoKWzFdIGh0dHBzOi8vbGttbC5vcmcv
+bGttbC8yMDE5LzkvMjYvMTUKWzJdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE5LzEwLzE1LzEy
+MjYKCkNoYW5nZXMgZnJvbSBWMzoKCi0gZG9jdW1lbnQgdGhhdCBjbGFzcyBpZCAoZGV2aWNlIG9w
+cykgbXVzdCBiZSBzcGVjaWZpZWQgaW4gY3JlYXRlKCkKLSBhZGQgV0FSTigpIHdoZW4gdHJ5aW5n
+IHRvIHNldCBjbGFzc19pZCB3aGVuIGl0IGhhcyBhbHJlYWR5IHNldAotIGFkZCBXQVJOKCkgd2hl
+biBjbGFzc19pZCBpcyBub3Qgc3BlY2lmaWVkIGluIGNyZWF0ZSgpIGFuZCBjb3JyZWN0bHkKICBy
+ZXR1cm4gYW4gZXJyb3IgaW4gdGhpcyBjYXNlCi0gY29ycmVjdCB0aGUgcHJvdG90eXBlIG9mIG1k
+ZXZfc2V0X2NsYXNzKCkgaW4gdGhlIGRvYwotIGFkZCBkb2N1bWVudGlvbiBvZiBtZGV2X3NldF9j
+bGFzcygpCi0gcmVtb3ZlIHRoZSB1bm5lY2Vzc2FyeSAiY2xhc3NfaWRfZmFpbCIgbGFiZWwgd2hl
+biBjbGFzcyBpZCBpcyBub3QKICBzcGVjaWZpZWQgaW4gY3JlYXRlKCkKLSBjb252ZXJ0IGlkX3Rh
+YmxlIGluIHZmaW9fbWRldiB0byBjb25zdAotIG1vdmUgbWRldl9zZXRfY2xhc3MgYW5kIGl0cyBm
+cmllbmRzIGFmdGVyIG1kZXZfdXVpZCgpCi0gc3VxYXNoIHRoZSBwYXRjaCBvZiBidXMgdWV2ZW50
+IGludG8gcGF0Y2ggb2YgaW50cm9kdWNpbmcgY2xhc3MgaWQKLSB0d2VhayB0aGUgd29yZHMgaW4g
+dGhlIGRvY3MgcGVyIENvcm5lbGlhIHN1Z2dlc3Rpb24KLSB0aWUgY2xhc3NfaWQgYW5kIGRldmlj
+ZSBvcHMgdGhyb3VnaCBjbGFzcyBzcGVjaWZpYyBpbml0aWFsaXphdGlvbgogIHJvdXRpbmUgbGlr
+ZSBtZGV2X3NldF92ZmlvX29wcygpCi0gdHlwb3MgZml4ZXMgaW4gdGhlIGRvY3Mgb2YgdmlydGlv
+LW1kZXYgY2FsbGJhY2tzCi0gZG9jdW1lbnQgdGhlIHVzYWdlIG9mIHZpcnRxdWV1ZXMgaW4gc3Ry
+dWN0IHZpcnRpb19tZGV2X2RldmljZQotIHJlbW92ZSB0aGUgdXNlbGVzcyB2cXMgYXJyYXkgaW4g
+c3RydWN0IHZpcnRpb19tZGV2X2RldmljZQotIHJlbmFtZSBNREVWX0lEX1hYWCB0byBNREVWX0NM
+QVNTX0lEX1hYWAoKQ2hhbmdlcyBmcm9tIFYyOgoKLSBmYWlsIHdoZW4gY2xhc3NfaWQgaXMgbm90
+IHNwZWNpZmllZAotIGRyb3AgdGhlIHZyaW5naCBwYXRjaAotIG1hdGNoIHRoZSBkb2MgdG8gdGhl
+IGNvZGUKLSB0d2VhayB0aGUgY29tbWl0IGxvZwotIG1vdmUgZGV2aWNlX29wcyBmcm9tIHBhcmVu
+dCB0byBtZGV2IGRldmljZQotIHJlbW92ZSB0aGUgdW51c2VkIE1ERVZfSURfVkhPU1QKCkNoYW5n
+ZXMgZnJvbSBWMToKCi0gbW92ZSB2aXJ0aW9fbWRldi5jIHRvIGRyaXZlcnMvdmlydGlvCi0gc3Rv
+cmUgY2xhc3NfaWQgaW4gbWRldl9kZXZpY2UgaW5zdGVhZCBvZiBtZGV2X3BhcmVudAotIHN0b3Jl
+IGRldmljZV9vcHMgaW4gbWRldl9kZXZpY2UgaW5zdGVhZCBvZiBtZGV2X3BhcmVudAotIHJlb3Jk
+ZXIgdGhlIHBhdGNoLCB2cmluZ2ggZml4IGNvbWVzIGZpcnN0Ci0gcmVhbGx5IHNpbGVudCBjb21w
+aWxpbmcgd2FybmluZ3MKLSByZWFsbHkgc3dpdGNoIHRvIHVzZSB1MTYgZm9yIGNsYXNzX2lkCi0g
+dWV2ZW50IGFuZCBtb2Rwb3N0IHN1cHBvcnQgZm9yIG1kZXYgY2xhc3NfaWQKLSB2cmFpb3VzIHR3
+ZWFrcyBwZXIgY29tbWVudHMgZnJvbSBQYXJhdgoKQ2hhbmdlcyBmcm9tIFJGQy1WMjoKCi0gc2ls
+ZW50IGNvbXBpbGUgd2FybmluZ3Mgb24gc29tZSBzcGVjaWZpYyBjb25maWd1cmF0aW9uCi0gdXNl
+IHUxNiBpbnN0ZWFkIHU4IGZvciBjbGFzcyBpZAotIHJlc2V2ZSBNREVWX0lEX1ZIT1NUIGZvciBm
+dXR1cmUgdmhvc3QtbWRldiB3b3JrCi0gaW50cm9kdWNlICJ2aXJ0aW8iIHR5cGUgZm9yIG12bmV0
+IGFuZCBtYWtlICJ2aG9zdCIgdHlwZSBmb3IgZnV0dXJlCiAgd29yawotIGFkZCBlbnRyaWVzIGlu
+IE1BSU5UQUlORVIKLSB0d2VhayBhbmQgdHlwb3MgZml4ZXMgaW4gY29tbWl0IGxvZwoKQ2hhbmdl
+cyBmcm9tIFJGQy1WMToKCi0gcmVuYW1lIGRldmljZSBpZCB0byBjbGFzcyBpZAotIGFkZCBkb2Nz
+IGZvciBjbGFzcyBpZCBhbmQgZGV2aWNlIHNwZWNpZmljIG9wcyAoZGV2aWNlX29wcykKLSBzcGxp
+dCBkZXZpY2Vfb3BzIGludG8gc2VwZXJhdGUgaGVhZGVycwotIGRyb3AgdGhlIG1kZXZfc2V0X2Rt
+YV9vcHMoKQotIHVzZSBkZXZpY2Vfb3BzIHRvIGltcGxlbWVudCB0aGUgdHJhbnNwb3J0IEFQSSwg
+dGhlbiBpdCdzIG5vdCBhIHBhcnQKICBvZiBVQVBJIGFueSBtb3JlCi0gdXNlIEdGUF9BVE9NSUMg
+aW4gbXZuZXQgc2FtcGxlIGRldmljZSBhbmQgb3RoZXIgdHdlYWtzCi0gc2V0X3ZyaW5nX2Jhc2Uv
+Z2V0X3ZyaW5nX2Jhc2Ugc3VwcG9ydCBmb3IgbXZuZXQgZGV2aWNlCgpKYXNvbiBXYW5nICg2KToK
+ICBtZGV2OiBjbGFzcyBpZCBzdXBwb3J0CiAgbW9kcG9zdDogYWRkIHN1cHBvcnQgZm9yIG1kZXYg
+Y2xhc3MgaWQKICBtZGV2OiBpbnRyb2R1Y2UgZGV2aWNlIHNwZWNpZmljIG9wcwogIG1kZXY6IGlu
+dHJvZHVjZSB2aXJ0aW8gZGV2aWNlIGFuZCBpdHMgZGV2aWNlIG9wcwogIHZpcnRpbzogaW50cm9k
+dWNlIGEgbWRldiBiYXNlZCB0cmFuc3BvcnQKICBkb2NzOiBzYW1wbGUgZHJpdmVyIHRvIGRlbW9u
+c3RyYXRlIGhvdyB0byBpbXBsZW1lbnQgdmlydGlvLW1kZXYKICAgIGZyYW1ld29yawoKIC4uLi9k
+cml2ZXItYXBpL3ZmaW8tbWVkaWF0ZWQtZGV2aWNlLnJzdCAgICAgICB8ICAyMiArLQogTUFJTlRB
+SU5FUlMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAyICsKIGRyaXZlcnMv
+Z3B1L2RybS9pOTE1L2d2dC9rdm1ndC5jICAgICAgICAgICAgICB8ICAxNyArLQogZHJpdmVycy9z
+MzkwL2Npby92ZmlvX2Njd19vcHMuYyAgICAgICAgICAgICAgIHwgIDE3ICstCiBkcml2ZXJzL3Mz
+OTAvY3J5cHRvL3ZmaW9fYXBfb3BzLmMgICAgICAgICAgICAgfCAgMTMgKy0KIGRyaXZlcnMvdmZp
+by9tZGV2L21kZXZfY29yZS5jICAgICAgICAgICAgICAgICB8ICAzOCArCiBkcml2ZXJzL3ZmaW8v
+bWRldi9tZGV2X2RyaXZlci5jICAgICAgICAgICAgICAgfCAgMjIgKwogZHJpdmVycy92ZmlvL21k
+ZXYvbWRldl9wcml2YXRlLmggICAgICAgICAgICAgIHwgICAyICsKIGRyaXZlcnMvdmZpby9tZGV2
+L3ZmaW9fbWRldi5jICAgICAgICAgICAgICAgICB8ICA0NSArLQogZHJpdmVycy92aXJ0aW8vS2Nv
+bmZpZyAgICAgICAgICAgICAgICAgICAgICAgIHwgICA3ICsKIGRyaXZlcnMvdmlydGlvL01ha2Vm
+aWxlICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBkcml2ZXJzL3ZpcnRpby92aXJ0aW9f
+bWRldi5jICAgICAgICAgICAgICAgICAgfCA0MDkgKysrKysrKysrKysKIGluY2x1ZGUvbGludXgv
+bWRldi5oICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA1NSArLQogaW5jbHVkZS9saW51eC9t
+b2RfZGV2aWNldGFibGUuaCAgICAgICAgICAgICAgIHwgICA4ICsKIGluY2x1ZGUvbGludXgvdmZp
+b19tZGV2LmggICAgICAgICAgICAgICAgICAgICB8ICA1MiArKwogaW5jbHVkZS9saW51eC92aXJ0
+aW9fbWRldi5oICAgICAgICAgICAgICAgICAgIHwgMTUxICsrKysKIHNhbXBsZXMvS2NvbmZpZyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgNyArCiBzYW1wbGVzL3ZmaW8tbWRldi9N
+YWtlZmlsZSAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwogc2FtcGxlcy92ZmlvLW1kZXYvbWJv
+Y2hzLmMgICAgICAgICAgICAgICAgICAgIHwgIDE5ICstCiBzYW1wbGVzL3ZmaW8tbWRldi9tZHB5
+LmMgICAgICAgICAgICAgICAgICAgICAgfCAgMTkgKy0KIHNhbXBsZXMvdmZpby1tZGV2L210dHku
+YyAgICAgICAgICAgICAgICAgICAgICB8ICAxNyArLQogc2FtcGxlcy92ZmlvLW1kZXYvbXZuZXQu
+YyAgICAgICAgICAgICAgICAgICAgIHwgNjkxICsrKysrKysrKysrKysrKysrKwogc2NyaXB0cy9t
+b2QvZGV2aWNldGFibGUtb2Zmc2V0cy5jICAgICAgICAgICAgIHwgICAzICsKIHNjcmlwdHMvbW9k
+L2ZpbGUyYWxpYXMuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxMCArCiAyNCBmaWxlcyBjaGFu
+Z2VkLCAxNTQxIGluc2VydGlvbnMoKyksIDg3IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvdmlydGlvL3ZpcnRpb19tZGV2LmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNs
+dWRlL2xpbnV4L3ZmaW9fbWRldi5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVkZS9saW51eC92
+aXJ0aW9fbWRldi5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgc2FtcGxlcy92ZmlvLW1kZXYvbXZuZXQu
+YwoKLS0gCjIuMTkuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9pbnRlbC1ndnQtZGV2
