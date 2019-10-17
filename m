@@ -1,75 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9EC90DA72A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Oct 2019 10:23:59 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAC78DA75B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Oct 2019 10:28:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3F9976E456;
-	Thu, 17 Oct 2019 08:23:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 36DA26E478;
+	Thu, 17 Oct 2019 08:28:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from EUR03-DB5-obe.outbound.protection.outlook.com
- (mail-oln040092071027.outbound.protection.outlook.com [40.92.71.27])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4B45E6E456;
- Thu, 17 Oct 2019 08:23:57 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cQb3nyDSodSRK4Wk5SofW91OW78Q/nBfRPwQccNiEhlZXqbki8Nfkh02To4GYn9zNmkNX8VXwExRDQKSyw5OA0aROhgBsu/CEW1lIjRhchvjHWbevtpsDxKMi6Hk6JFtVlN4zbc9rdrsnTJmaAbMXiLhMHGo5W3bTNKJ/rvvzBp7BwdnpMTDXpq2dOHmtKoiwB1c+4WB4hQihI1y0SDeIHZO2A2KqePTsCf67pM/YWmn8GPuoLm/yGSCSsFkn9TOOW942axjwYDtAH5N1f/m8ZOPDaHklx78cP0Pt6AnAJ3iL0/auppRQ3ihazkLOoOs1U/yGNV3Rwkh17GyvQiczQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=83Q0VjTkIhQXGnBEQA4pXuBq8nfP8O24gU2jTjZdkok=;
- b=BZROpIsbWxaxoF1+6lFca/lxRu6RfORiHTVMtPqCSHZkKZQGMD8faNYWJjxhkchnd3UvNz+/w6LRX5W1ijqJguJN5+nk8yZJN1c9Da+4j5nuFRalJ2Grc8izebhuffus6IwRIHmWs7u360WYZ0d658bFI5vX5l77ld9I/Xi2/L9FdTIzSzGCHrQbn3GQUmez61l1OoW6WZ3PHjx5dijeWevNZpdwX0e+i8IqhuDU5wgXvjSZJ2vjrEknIwXbPvmDF0q2HXTy1k16t22J1UCzzFMBbBr/aGSHBOnCtxX95mEtV0PFBgSOo4otzOyMejyZ4GmLomCl4A/jQwlURaoH/g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from VE1EUR03FT046.eop-EUR03.prod.protection.outlook.com
- (10.152.18.60) by VE1EUR03HT232.eop-EUR03.prod.protection.outlook.com
- (10.152.19.193) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2305.15; Thu, 17 Oct
- 2019 08:23:55 +0000
-Received: from AM0PR0702MB3778.eurprd07.prod.outlook.com (10.152.18.58) by
- VE1EUR03FT046.mail.protection.outlook.com (10.152.19.226) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.2305.15 via Frontend Transport; Thu, 17 Oct 2019 08:23:55 +0000
-Received: from AM0PR0702MB3778.eurprd07.prod.outlook.com
- ([fe80::b5ad:d4de:2d19:83f6]) by AM0PR0702MB3778.eurprd07.prod.outlook.com
- ([fe80::b5ad:d4de:2d19:83f6%7]) with mapi id 15.20.2347.023; Thu, 17 Oct 2019
- 08:23:54 +0000
-From: vicky johnson <vicky4js@hotmail.com>
-Subject: wish you all the best.
-Thread-Topic: wish you all the best.
-Thread-Index: AQHVhFqS3CmCotZW5E+g92ljLOjzcw==
-Date: Thu, 17 Oct 2019 08:23:54 +0000
-Message-ID: <AM0PR0702MB37783D5B4D2FBD873F6D3E0A8C920@AM0PR0702MB3778.eurprd07.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-incomingtopheadermarker: OriginalChecksum:92DCE24459BED42B95FB47F9E02D973B6B1459528CD747991DFFE8DA16161006;
- UpperCasedChecksum:EDB19AED307E3E2C9627E12EE3316597F7D70BF7A923F1610AFF210324D1AF8E;
- SizeAsReceived:7096; Count:40
-x-tmn: [OTGc5b9bhCgyGSBkvO6zssHU0DJEXv/6]
-x-ms-publictraffictype: Email
-x-incomingheadercount: 40
-x-eopattributedmessage: 0
-x-ms-traffictypediagnostic: VE1EUR03HT232:
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: q/4y5LEDNhYMxD8AFLlaN/NrRVDELYDFK+DbLabtWaccPhdJSDcA4BVeshBpfUg7og6rOFuwXDlOnB0uww2alDhvMQT8ZFGloAjqGaWVygs3/TBk4806LrG838XxWTVM7rAUVhlPl5sds7FgQvI4sIJbiiAPa8qUmGDKYwo99C4wA9qx2y2HmYsw2MLEPPwd
-x-ms-exchange-transport-forked: True
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7B4326E456;
+ Thu, 17 Oct 2019 08:28:12 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6813018CB90E;
+ Thu, 17 Oct 2019 08:28:11 +0000 (UTC)
+Received: from [10.72.12.185] (ovpn-12-185.pek2.redhat.com [10.72.12.185])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6719F60BE1;
+ Thu, 17 Oct 2019 08:27:43 +0000 (UTC)
+Subject: Re: [PATCH V3 1/7] mdev: class id support
+To: Parav Pandit <parav@mellanox.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "mst@redhat.com" <mst@redhat.com>, "tiwei.bie@intel.com"
+ <tiwei.bie@intel.com>
+References: <20191011081557.28302-1-jasowang@redhat.com>
+ <20191011081557.28302-2-jasowang@redhat.com>
+ <AM0PR05MB4866481AEE614FDF766C6A25D1920@AM0PR05MB4866.eurprd05.prod.outlook.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <67b645a6-1b70-094d-6a12-fc6591e07a13@redhat.com>
+Date: Thu, 17 Oct 2019 16:27:41 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: 76b6ed53-c7fe-4bd9-8058-08d752db597d
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Oct 2019 08:23:54.7737 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Internet
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1EUR03HT232
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=hotmail.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=83Q0VjTkIhQXGnBEQA4pXuBq8nfP8O24gU2jTjZdkok=;
- b=iG4DG1w4sID+jygPgOcavRkrWcMjggvmxxodIFFGwlgRoabmO+UFLpINh5gfQZd8WKuyEW9vMFQ+s/mVql6RWz5T6wiZhw5xZc1wWgxDtD3LOGH31PN5zOdpQj0sdDL+uUrvbOunlSCCE4D3IeaN1ImYLdggpc4e58aDW+W/PdraGtC/VX1QDGeJWITj4xL5x+Ez1ZKPW4mPRy51XciBz5m8CZ1HXJFNkRSRP3N9kmAVTgRwoqRyTDdzmD6C/Uo1LxSjVTRAC0CR2ce85G6u9mTiN73SmrH+jJLyv919PZUrz6OQU0RweEmtUr4JQZJOEgdPqNIWIon99oUCeqoAOw==
+In-Reply-To: <AM0PR05MB4866481AEE614FDF766C6A25D1920@AM0PR05MB4866.eurprd05.prod.outlook.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.63]); Thu, 17 Oct 2019 08:28:12 +0000 (UTC)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,71 +59,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0769122802=="
+Cc: "christophe.de.dinechin@gmail.com" <christophe.de.dinechin@gmail.com>,
+ "sebott@linux.ibm.com" <sebott@linux.ibm.com>,
+ "airlied@linux.ie" <airlied@linux.ie>,
+ "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
+ "heiko.carstens@de.ibm.com" <heiko.carstens@de.ibm.com>,
+ "kevin.tian@intel.com" <kevin.tian@intel.com>,
+ "virtualization@lists.linux-foundation.org"
+ <virtualization@lists.linux-foundation.org>,
+ "rob.miller@broadcom.com" <rob.miller@broadcom.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "eperezma@redhat.com" <eperezma@redhat.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
+ "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
+ "haotian.wang@sifive.com" <haotian.wang@sifive.com>,
+ "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>, Ido Shamay <idos@mellanox.com>,
+ "gor@linux.ibm.com" <gor@linux.ibm.com>,
+ "cunming.liang@intel.com" <cunming.liang@intel.com>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
+ "xiao.w.wang@intel.com" <xiao.w.wang@intel.com>,
+ "freude@linux.ibm.com" <freude@linux.ibm.com>,
+ "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "zhihong.wang@intel.com" <zhihong.wang@intel.com>,
+ "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "oberpar@linux.ibm.com" <oberpar@linux.ibm.com>,
+ "maxime.coquelin@redhat.com" <maxime.coquelin@redhat.com>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "lingshan.zhu@intel.com" <lingshan.zhu@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0769122802==
-Content-Language: en-US
-Content-Type: multipart/alternative;
-	boundary="_000_AM0PR0702MB37783D5B4D2FBD873F6D3E0A8C920AM0PR0702MB3778_"
-
---_000_AM0PR0702MB37783D5B4D2FBD873F6D3E0A8C920AM0PR0702MB3778_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-
- I hope this email finds you.
-I want to know if you received the last message I sent you?
-I really want to hear from you.
-wish you all the best.
-Vicky Johnson
-I look forward to your response.
-
---_000_AM0PR0702MB37783D5B4D2FBD873F6D3E0A8C920AM0PR0702MB3778_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-<span><br>
-</span></div>
-<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
-t; color:rgb(0,0,0)">
-<span></span>
-<div>&nbsp;I hope this email finds you.<br>
-</div>
-<div>I want to know if you received the last message I sent you?<br>
-</div>
-<div>I really want to hear from you.<br>
-</div>
-<div>wish you all the best.<br>
-</div>
-<div>Vicky Johnson<br>
-</div>
-<span>I look forward to your response.</span><br>
-</div>
-</body>
-</html>
-
---_000_AM0PR0702MB37783D5B4D2FBD873F6D3E0A8C920AM0PR0702MB3778_--
-
---===============0769122802==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
-LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============0769122802==--
+Ck9uIDIwMTkvMTAvMTYg5LiL5Y2IMTI6NTcsIFBhcmF2IFBhbmRpdCB3cm90ZToKPj4gK3N0YXRp
+YyBzdHJ1Y3QgbWRldl9jbGFzc19pZCBpZF90YWJsZVtdID0gewo+IHN0YXRpYyBjb25zdAo+Cj4+
+ICsJeyBNREVWX0lEX1ZGSU8gfSwKPiBJIGd1ZXNzIHlvdSBkb24ndCBuZWVkIGV4dHJhIGJyYWNl
+cyBmb3IgZWFjaCBlbnRyeS4KPiBTaW5jZSB0aGlzIGVudW0gcmVwcmVzZW50cyBNREVWIGNsYXNz
+IGlkLCBpdCBiZXR0ZXIgdG8gbmFtZSBpdCBhcyBNREVWX0NMQVNTX0lEX1ZGSU8uCj4gKFNpbWls
+YXIgdG8gIFBDSV9WRU5ET1JfSUQsIFBDSV9ERVZJQ0VfSUQpLi4KPgoKR2NjIHN0YXJ0IHRvIGNv
+bXBsYWluIGxpa2U6Cgp3YXJuaW5nOiBtaXNzaW5nIGJyYWNlcyBhcm91bmQgaW5pdGlhbGl6ZXIg
+Wy1XbWlzc2luZy1icmFjZXNdCiDCoHN0YXRpYyBjb25zdCBzdHJ1Y3QgbWRldl9jbGFzc19pZCBp
+ZF90YWJsZVtdID0gewogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBeCiDC
+oCBNREVWX0lEX1ZGSU8sIDAsCiDCoCB7wqDCoMKgwqDCoMKgwqDCoMKgwqAgfSB7CiDCoH07CiDC
+oH0KClNvIEkgd2lsbCBrZWVwIHRoaXMgcGFydCB1bnRvdWNoZWQuCgpUaGFua3MKCgo+PiArCXsg
+MCB9LAo+PiArfTsKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
+bnRlbC1ndnQtZGV2
