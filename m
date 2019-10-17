@@ -2,49 +2,64 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9B77DA7AD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Oct 2019 10:46:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EF06DA8C2
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Oct 2019 11:43:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E811D6EA0A;
-	Thu, 17 Oct 2019 08:46:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C74EA6EA2D;
+	Thu, 17 Oct 2019 09:43:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B551D6EA0A;
- Thu, 17 Oct 2019 08:46:41 +0000 (UTC)
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B183918C8933;
- Thu, 17 Oct 2019 08:46:40 +0000 (UTC)
-Received: from [10.72.12.185] (ovpn-12-185.pek2.redhat.com [10.72.12.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5716B600CC;
- Thu, 17 Oct 2019 08:46:22 +0000 (UTC)
-Subject: Re: [PATCH V3 4/7] mdev: introduce device specific ops
-To: Cornelia Huck <cohuck@redhat.com>
+Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com
+ [IPv6:2a00:1450:4864:20::344])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E2A8B6EA2D;
+ Thu, 17 Oct 2019 09:43:44 +0000 (UTC)
+Received: by mail-wm1-x344.google.com with SMTP id i16so1836278wmd.3;
+ Thu, 17 Oct 2019 02:43:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=j33Q+AxJlhfJ2zQyBdLBD2zOlPBTBa+TDiJdmF/d4B0=;
+ b=I/Z3+JT/xLYZrguo80fjCE59CpRolyJWt/lJQvJACPa1/DdQ0pbqIt2ye0yusuO8lD
+ sRxQua9KR24rbX1Sqj9CRfu5SFwHyvUpCxXN3yam93r3kYYOzFli+YnXazdRE18yup4U
+ zvbzH+MXS+I3iDPUCN/ZYhIzvEyATwdUkUT4Igwy8gWvaGaL3l64dkF0eccn5g6bIMze
+ TW3A3kYxfcmN+YeIuFWY3l+URDZO+Bfd3HkBI4tU0sOJZrpG2BJLuY6VapijsXmEA064
+ HSDDmFdeGH1btQ/6QhwUoV42oninUx8uytee14tGOHIhQXZYsvSa0Y+8PwN30YQE9w2C
+ aOkg==
+X-Gm-Message-State: APjAAAUO9AtvXDp6kvBmRWZGZOKSoU+GfeLPl3crSJmO7cBPRNNswpvL
+ 035PW4JQSl3oyobcQHVIHgk=
+X-Google-Smtp-Source: APXvYqxHJt9ec/ig4bgPywnDn38DGreAT5nDreVbx5QqzUYuzF0nTYOT9L67QUVhr9q6+o+HntA0Mw==
+X-Received: by 2002:a05:600c:21d2:: with SMTP id
+ x18mr2121283wmj.146.1571305423433; 
+ Thu, 17 Oct 2019 02:43:43 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id l6sm2029963wmg.2.2019.10.17.02.43.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Oct 2019 02:43:42 -0700 (PDT)
+Date: Thu, 17 Oct 2019 10:43:41 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH V3 0/7] mdev based hardware virtio offloading support
+Message-ID: <20191017094341.GF23557@stefanha-x1.localdomain>
 References: <20191011081557.28302-1-jasowang@redhat.com>
- <20191011081557.28302-5-jasowang@redhat.com>
- <20191015124137.4f948bd2.cohuck@redhat.com>
- <eb7ecd99-7465-6be4-7ecd-84c11f66e0ac@redhat.com>
- <20191015112646.3776dc29@x1.home>
- <AM0PR05MB4866954855AF080639ED2384D1920@AM0PR05MB4866.eurprd05.prod.outlook.com>
- <20191016105232.663dd3c9.cohuck@redhat.com>
- <AM0PR05MB486625E53B8ADBA2BBAA80F6D1920@AM0PR05MB4866.eurprd05.prod.outlook.com>
- <20191016105303.6e01936f@x1.home>
- <4886a6cd-a165-05b7-9f62-175076bbb2ba@redhat.com>
- <20191017104516.52374ab6.cohuck@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <08e67f0d-adb3-a99c-a14d-4fec6d52209f@redhat.com>
-Date: Thu, 17 Oct 2019 16:46:20 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <20191014174946.GC5359@stefanha-x1.localdomain>
+ <6d12ad8f-8137-e07d-d735-da59a326e8ed@redhat.com>
+ <20191015143720.GA13108@stefanha-x1.localdomain>
+ <ba81e603-cb7d-b152-8fae-97f070a7e460@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191017104516.52374ab6.cohuck@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.70]); Thu, 17 Oct 2019 08:46:41 +0000 (UTC)
+In-Reply-To: <ba81e603-cb7d-b152-8fae-97f070a7e460@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=j33Q+AxJlhfJ2zQyBdLBD2zOlPBTBa+TDiJdmF/d4B0=;
+ b=PBJfc4iKYLoGVwZHVtTO0lO3ez5BpGeXPZAlj4Qxx0c4NWNvQiQJdK1Zm22yFqjtaV
+ XO4FHG92jwHETc95eBaAqW8My3/55VjWzgdzO1Z7VFGBKZ6/SSKp6CTcrfC3PtlNKUqL
+ Gz5RKw3w65f80M9hxVCyoUP5nbQbEGYqA7zONJtbqiZZSQ4kJoIXDkriUorZx149Ov6V
+ hp2VI/XVNAKT6jIOvk6lx29b+UyYLiw1dTHMppE7KWb8k9vetl5lYmF5oE0pBsoCnQOR
+ RSu0PTM8fVta3TCkFFq1fEmhNZJQ4CHICquFivetIufuHrOzmlAiCgVnt5JDfNQxaSMU
+ /cUg==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -57,73 +72,148 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "christophe.de.dinechin@gmail.com" <christophe.de.dinechin@gmail.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "mst@redhat.com" <mst@redhat.com>,
- "airlied@linux.ie" <airlied@linux.ie>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "heiko.carstens@de.ibm.com" <heiko.carstens@de.ibm.com>,
- "kevin.tian@intel.com" <kevin.tian@intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "rob.miller@broadcom.com" <rob.miller@broadcom.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "sebott@linux.ibm.com" <sebott@linux.ibm.com>,
- "lulu@redhat.com" <lulu@redhat.com>,
- "eperezma@redhat.com" <eperezma@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "haotian.wang@sifive.com" <haotian.wang@sifive.com>,
- "cunming.liang@intel.com" <cunming.liang@intel.com>,
- "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- Parav Pandit <parav@mellanox.com>, "gor@linux.ibm.com" <gor@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "xiao.w.wang@intel.com" <xiao.w.wang@intel.com>,
- "freude@linux.ibm.com" <freude@linux.ibm.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "zhihong.wang@intel.com" <zhihong.wang@intel.com>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "oberpar@linux.ibm.com" <oberpar@linux.ibm.com>,
- "tiwei.bie@intel.com" <tiwei.bie@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "maxime.coquelin@redhat.com" <maxime.coquelin@redhat.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "lingshan.zhu@intel.com" <lingshan.zhu@intel.com>,
- Ido Shamay <idos@mellanox.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: christophe.de.dinechin@gmail.com, kvm@vger.kernel.org, mst@redhat.com,
+ airlied@linux.ie, joonas.lahtinen@linux.intel.com, heiko.carstens@de.ibm.com,
+ kevin.tian@intel.com, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, kwankhede@nvidia.com,
+ rob.miller@broadcom.com, linux-s390@vger.kernel.org, sebott@linux.ibm.com,
+ lulu@redhat.com, eperezma@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, haotian.wang@sifive.com, cunming.liang@intel.com,
+ zhi.a.wang@intel.com, farman@linux.ibm.com, idos@mellanox.com,
+ gor@linux.ibm.com, intel-gfx@lists.freedesktop.org,
+ jani.nikula@linux.intel.com, alex.williamson@redhat.com, xiao.w.wang@intel.com,
+ freude@linux.ibm.com, zhenyuw@linux.intel.com, parav@mellanox.com,
+ zhihong.wang@intel.com, rodrigo.vivi@intel.com,
+ intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
+ oberpar@linux.ibm.com, tiwei.bie@intel.com, netdev@vger.kernel.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, maxime.coquelin@redhat.com,
+ daniel@ffwll.ch, lingshan.zhu@intel.com
+Content-Type: multipart/mixed; boundary="===============0947561807=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Ck9uIDIwMTkvMTAvMTcg5LiL5Y2INDo0NSwgQ29ybmVsaWEgSHVjayB3cm90ZToKPiBPbiBUaHUs
-IDE3IE9jdCAyMDE5IDE2OjMwOjQzICswODAwCj4gSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0
-LmNvbT4gd3JvdGU6Cj4KPj4gT24gMjAxOS8xMC8xNyDkuIrljYgxMjo1MywgQWxleCBXaWxsaWFt
-c29uIHdyb3RlOgo+Pj4+PiBZZXQgYW5vdGhlciBzdWdnZXN0aW9uOiBoYXZlIHRoZSBjbGFzcyBp
-ZCBkZXJpdmUgZnJvbSB0aGUgZnVuY3Rpb24KPj4+Pj4geW91IHVzZSB0byBzZXQgdXAgdGhlIG9w
-cy4KPj4+Pj4KPj4+Pj4gdm9pZCBtZGV2X3NldF92ZmlvX29wcyhzdHJ1Y3QgbWRldl9kZXZpY2Ug
-Km1kZXYsIGNvbnN0IHN0cnVjdAo+Pj4+PiB2ZmlvX21kZXZfb3BzICp2ZmlvX29wcykgewo+Pj4+
-PiAJbWRldi0+ZGV2aWNlX29wcyA9IHZmaW9fb3BzOwo+Pj4+PiAJbWRldi0+Y2xhc3NfaWQgPSBN
-REVWX0lEX1ZGSU87Cj4+Pj4+IH0KPj4+Pj4KPj4+Pj4gdm9pZCBtZGV2X3NldF92aXJ0aW9fb3Bz
-KHN0cnVjdCBtZGV2X2RldmljZSAqbWRldiwgY29uc3Qgc3RydWN0Cj4+Pj4+IHZpcnRpb19tZGV2
-X29wcyAqdmlydGlvX29wcykgewo+Pj4+PiAJbWRldi0+ZGV2aWNlX29wcyA9IHZpcnRpb19vcHM7
-Cj4+Pj4+IAltZGV2LT5jbGFzc19pZCA9IE1ERVZfSURfVklSVElPOwo+Pj4+PiB9Cj4+Pj4+Cj4+
-Pj4+IHZvaWQgbWRldl9zZXRfdmhvc3Rfb3BzKHN0cnVjdCBtZGV2X2RldmljZSAqbWRldiwgY29u
-c3Qgc3RydWN0Cj4+Pj4+IHZpcnRpb19tZGV2X29wcyAqdmlydGlvX29wcykgewo+Pj4+PiAJbWRl
-di0+ZGV2aWNlX29wcyA9IHZpcnRpb19vcHM7Cj4+Pj4+IAltZGV2LT5jbGFzc19pZCA9IE1ERVZf
-SURfVkhPU1Q7Cj4+Pj4+IH0KPj4+Pj4KPj4+Pj4gdm9pZCBtZGV2X3NldF92ZW5kb3Jfb3BzKHN0
-cnVjdCBtZGV2X2RldmljZSAqbWRldikgLyogbm8gb3BzICovIHsKPj4+Pj4gCW1kZXYtPmNsYXNz
-X2lkID0gTURFVl9JRF9WRU5ET1I7Cj4+Pj4+IH0KPj4+IE9uZSBmdXJ0aGVyIHN0ZXAgdG93YXJk
-cyBtYWtpbmcgdGhpcyBoYXJkIHRvIHVzZSBpbmNvcnJlY3RseSBtaWdodCBiZQo+Pj4gdG8gcmV0
-dXJuIGFuIGVycm9yIGlmIGNsYXNzX2lkIGlzIGFscmVhZHkgc2V0LiAgVGhhbmtzLAo+Pj4KPj4+
-IEFsZXgKPj4KPj4gSSB3aWxsIGFkZCBhIEJVR19PTigpIHdoZW4gY2xhc3NfaWQgaGFzIGFscmVh
-ZHkgc2V0Lgo+IFByb2JhYmx5IGJldHRlciBhIFdBUk5fT04oKT8KCgpSaWdodC4KClRoYW5rcwoK
+
+--===============0947561807==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Pql/uPZNXIm1JCle"
+Content-Disposition: inline
+
+
+--Pql/uPZNXIm1JCle
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Oct 17, 2019 at 09:42:53AM +0800, Jason Wang wrote:
+>=20
+> On 2019/10/15 =E4=B8=8B=E5=8D=8810:37, Stefan Hajnoczi wrote:
+> > On Tue, Oct 15, 2019 at 11:37:17AM +0800, Jason Wang wrote:
+> > > On 2019/10/15 =E4=B8=8A=E5=8D=881:49, Stefan Hajnoczi wrote:
+> > > > On Fri, Oct 11, 2019 at 04:15:50PM +0800, Jason Wang wrote:
+> > > > > There are hardware that can do virtio datapath offloading while h=
+aving
+> > > > > its own control path. This path tries to implement a mdev based
+> > > > > unified API to support using kernel virtio driver to drive those
+> > > > > devices. This is done by introducing a new mdev transport for vir=
+tio
+> > > > > (virtio_mdev) and register itself as a new kind of mdev driver. T=
+hen
+> > > > > it provides a unified way for kernel virtio driver to talk with m=
+dev
+> > > > > device implementation.
+> > > > >=20
+> > > > > Though the series only contains kernel driver support, the goal i=
+s to
+> > > > > make the transport generic enough to support userspace drivers. T=
+his
+> > > > > means vhost-mdev[1] could be built on top as well by resuing the
+> > > > > transport.
+> > > > >=20
+> > > > > A sample driver is also implemented which simulate a virito-net
+> > > > > loopback ethernet device on top of vringh + workqueue. This could=
+ be
+> > > > > used as a reference implementation for real hardware driver.
+> > > > >=20
+> > > > > Consider mdev framework only support VFIO device and driver right=
+ now,
+> > > > > this series also extend it to support other types. This is done
+> > > > > through introducing class id to the device and pairing it with
+> > > > > id_talbe claimed by the driver. On top, this seris also decouple
+> > > > > device specific parents ops out of the common ones.
+> > > > I was curious so I took a quick look and posted comments.
+> > > >=20
+> > > > I guess this driver runs inside the guest since it registers virtio
+> > > > devices?
+> > >=20
+> > > It could run in either guest or host. But the main focus is to run in=
+ the
+> > > host then we can use virtio drivers in containers.
+> > >=20
+> > >=20
+> > > > If this is used with physical PCI devices that support datapath
+> > > > offloading then how are physical devices presented to the guest wit=
+hout
+> > > > SR-IOV?
+> > >=20
+> > > We will do control path meditation through vhost-mdev[1] and vhost-vf=
+io[2].
+> > > Then we will present a full virtio compatible ethernet device for gue=
+st.
+> > >=20
+> > > SR-IOV is not a must, any mdev device that implements the API defined=
+ in
+> > > patch 5 can be used by this framework.
+> > What I'm trying to understand is: if you want to present a virtio-pci
+> > device to the guest (e.g. using vhost-mdev or vhost-vfio), then how is
+> > that related to this patch series?
+>=20
+>=20
+> This series introduce some infrastructure that would be used by vhost-mde=
+v:
+>=20
+> 1) allow new type of mdev devices/drivers other than vfio (through class_=
+id
+> and device ops)
+>=20
+> 2) a set of virtio specific callbacks that will be used by both vhost-mdev
+> and virtio-mdev defined in patch 5
+>=20
+> Then vhost-mdev can be implemented on top: a new mdev class id but reuse =
+the
+> callback defined in 2. Through this way the parent can provides a single =
+set
+> of callbacks (device ops) for both kernel virtio driver (through
+> virtio-mdev) or userspace virtio driver (through vhost-mdev).
+
+Okay, thanks for explaining!
+
+Stefan
+
+--Pql/uPZNXIm1JCle
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl2oN8wACgkQnKSrs4Gr
+c8gqswf/fQBq+qX21L3QGLUXUsf7OZ9kLP3ksR+9RYfGDJaFva/fV/aULknTmAiO
+OA0s+Eiw7K5Hy2ooKGPQXPYgAJhgnHqmhKgOEdsOGDWyCilYAiJzk/YXkpPvaCTp
+ovWC5Fz/shXyY3m2YGPXuwnWjbCam7cqMCRVPrmzJWoS6kdvsYsPxBVnhGFOm0Ms
+gbll/8mZQDQWsOZ8ZFeXLXCcHifXaiLa+yiGcZfxtV37oHsSapT+MOXEstGy4jEe
+uvos/V8tSLLMOJ+zgMYGOI0oOJIejMOrLU2zxPlktTbBVcM1RQtpJL69F30gi89K
+qCue5w57Z1UNfPVbXLiobIkPcZBGVw==
+=EXDt
+-----END PGP SIGNATURE-----
+
+--Pql/uPZNXIm1JCle--
+
+--===============0947561807==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
 X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0947561807==--
