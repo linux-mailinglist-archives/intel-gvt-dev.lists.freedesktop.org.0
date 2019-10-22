@@ -1,38 +1,63 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89F6BDF2DE
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 21 Oct 2019 18:22:08 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A673E0996
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Oct 2019 18:47:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4A4CB6E175;
-	Mon, 21 Oct 2019 16:22:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 89A096E891;
+	Tue, 22 Oct 2019 16:47:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 519306E175
+Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com
+ [IPv6:2607:f8b0:4864:20::429])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D50A16E891
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 21 Oct 2019 16:22:06 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2019 09:22:05 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,324,1566889200"; d="scan'208";a="281010278"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 21 Oct 2019 09:22:04 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iMaRX-000GfR-Fy; Tue, 22 Oct 2019 00:22:03 +0800
-Date: Tue, 22 Oct 2019 00:21:08 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 1f9f6d41a3ee8467d50a7b4362e6277d213e45ed
-Message-ID: <5daddaf4.u9+gtQi+l4YjwVrz%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Tue, 22 Oct 2019 16:47:54 +0000 (UTC)
+Received: by mail-pf1-x429.google.com with SMTP id y22so11011835pfr.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 22 Oct 2019 09:47:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :thread-index:content-language:disposition-notification-to;
+ bh=0zCpds5iWETionW3p7LDWd9AfeWg8+9qCo1ykVVJVXg=;
+ b=RHNAJLajLi/EScfYDG3gNI/DLh7ztXBYdul0L49gmveD0MfIXOs9sTv4sBuJKSwIQm
+ aVKV6wm0Ulxu1kfc9IHd0m1phGADAiyd8tyw+HRYsiY03L8CnTbUmecT4IwCc/qKixi2
+ LQA2GZ5AVkbSFeO3WFdzHQ2G1EUs2gomNrw3bBxRI/72Z+23dv3uSP1A/ZY3m42DyduU
+ HokNE03g47Jzd5n6ICBSRvo77hNX8/qUcnrDabwi7SgtB9gSgxAbNBUqES/32ZROhuQE
+ xjXdfBawnfDEfqpJ7IxbzBe0qdRm0S2lXPiVtvjrb3DdxUs+O/w2KPSs+H23KwaDHhTW
+ +MnA==
+X-Gm-Message-State: APjAAAVVkxehumwf9SFFoY0JFyX8Ib4H5RrRYXMO5jLj/fR9zhZGGY/u
+ 69TaTe1nyB1NyUBjrD1AfgO0Sbadb+c=
+X-Google-Smtp-Source: APXvYqy76+m3nXDgS5eHOLpFFuocmGOTMyVTmVZEJKnXT9Gn3VweVeeJMUXGiKS1JPUybThsHOc7Mw==
+X-Received: by 2002:a63:778f:: with SMTP id s137mr4769848pgc.147.1571762874012; 
+ Tue, 22 Oct 2019 09:47:54 -0700 (PDT)
+Received: from SNBS17 ([183.82.19.142])
+ by smtp.gmail.com with ESMTPSA id o123sm6889702pfg.161.2019.10.22.09.47.52
+ for <intel-gvt-dev@lists.freedesktop.org>
+ (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Tue, 22 Oct 2019 09:47:53 -0700 (PDT)
+From: "Angela Wang" <angela@technologydatahub.com>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: 10Gen
+Date: Tue, 22 Oct 2019 12:49:05 -0400
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAACr8CvNeCztNrsWvpezUrLLCgAAAEAAAAGVeHrEPSaVHs05DV9wFjtgBAAAAAA==@technologydatahub.com>
 MIME-Version: 1.0
+X-Mailer: Microsoft Outlook 15.0
+Thread-Index: AdWI+JnpU1/mjnnuQleI/lUBctxDkQ==
+Content-Language: en-us
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=technologydatahub-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:subject:date:message-id:mime-version:thread-index
+ :content-language:disposition-notification-to;
+ bh=0zCpds5iWETionW3p7LDWd9AfeWg8+9qCo1ykVVJVXg=;
+ b=YKOeiXesfr1qbGP1yLES5ZaI2NSFflExJDz0KOsN0+w9a10pZmMFFheMoTCHuAjMRP
+ lp96Pc9Dh/4aZEbmSlWaSC6RJ/Rv9r4FQ7jC+TN5QGehyPRwJPkW3q5RWk/UnNpimLdz
+ Nw7HsfPUbcJ+b2CxQXMfYUyTR4LrtifP9oXb9BVYMCa7gRPFlOaQDgPr0pwBZrr8bi+x
+ Ep3fU5WRxga+ZAG0nRpOXEzcAd0OL1idm/gbycmxoA45NWKeayC16TUWSXZdAS6wUlvx
+ 5VTvp8XeRqCSVfRy3NvTEuOBi2rRq8AzDiBqYe6MCIiGYD4czG2eYuq3J+WlOwL41vB8
+ o68Q==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -45,133 +70,185 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: libo.zhu@intel.com, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0277547083=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-dHJlZS9icmFuY2g6IGh0dHBzOi8vZ2l0aHViLmNvbS9pbnRlbC9ndnQtbGludXguZ2l0ICBndnQt
-c3RhZ2luZwpicmFuY2ggSEVBRDogMWY5ZjZkNDFhM2VlODQ2N2Q1MGE3YjQzNjJlNjI3N2QyMTNl
-NDVlZCAgZ3Z0LXN0YWdpbmc6IDIwMTl5LTEwbS0yMWQtMTdoLTI5bS0xMnMgQ1NUIGludGVncmF0
-aW9uIG1hbmlmZXN0CgplbGFwc2VkIHRpbWU6IDM5OW0KCmNvbmZpZ3MgdGVzdGVkOiAxMzgKClRo
-ZSBmb2xsb3dpbmcgY29uZmlncyBoYXZlIGJlZW4gYnVpbHQgc3VjY2Vzc2Z1bGx5LgpNb3JlIGNv
-bmZpZ3MgbWF5IGJlIHRlc3RlZCBpbiB0aGUgY29taW5nIGRheXMuCgpyaXNjdiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKcmlzY3YgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgZGVmY29uZmlnCm5kczMyICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRl
-ZmNvbmZpZwphbHBoYSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKbmRz
-MzIgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29uZmlnCmkzODYgICAgICAgICAg
-ICAgICAgICAgcmFuZGNvbmZpZy1iMDAxLTIwMTk0Mgp4ODZfNjQgICAgICAgICAgICAgICAgIHJh
-bmRjb25maWctYjAwMi0yMDE5NDIKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWIw
-MDMtMjAxOTQyCmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1iMDAzLTIwMTk0Mgpp
-Mzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctYjAwNC0yMDE5NDIKeDg2XzY0ICAgICAg
-ICAgICAgICAgICByYW5kY29uZmlnLWIwMDQtMjAxOTQyCng4Nl82NCAgICAgICAgICAgICAgICAg
-cmFuZGNvbmZpZy1iMDAxLTIwMTk0MgppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWct
-YjAwMi0yMDE5NDIKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWMwMDEtMjAxOTQy
-CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1jMDAxLTIwMTk0Mgp4ODZfNjQgICAg
-ICAgICAgICAgICAgIHJhbmRjb25maWctYzAwMi0yMDE5NDIKaTM4NiAgICAgICAgICAgICAgICAg
-ICByYW5kY29uZmlnLWMwMDQtMjAxOTQyCmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZp
-Zy1jMDAzLTIwMTk0Mgp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctYzAwNC0yMDE5
-NDIKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWMwMDItMjAxOTQyCng4Nl82NCAg
-ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1jMDAzLTIwMTk0Mgp4ODZfNjQgICAgICAgICAgICAg
-ICAgIHJhbmRjb25maWctZzAwMi0yMDE5NDIKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLWcwMDQtMjAxOTQyCng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1nMDAxLTIw
-MTk0MgppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctZzAwMi0yMDE5NDIKeDg2XzY0
-ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWcwMDQtMjAxOTQyCng4Nl82NCAgICAgICAgICAg
-ICAgICAgcmFuZGNvbmZpZy1nMDAzLTIwMTk0MgppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRj
-b25maWctZzAwMy0yMDE5NDIKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWcwMDEt
-MjAxOTQyCmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1kMDAyLTIwMTk0Mgp4ODZf
-NjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctZDAwMi0yMDE5NDIKbTY4ayAgICAgICAgICAg
-ICAgICAgICAgICAgICAgbXVsdGlfZGVmY29uZmlnCm02OGsgICAgICAgICAgICAgICAgICAgICAg
-IG01NDc1ZXZiX2RlZmNvbmZpZwpoODMwMCAgICAgICAgICAgICAgICAgICAgaDgzMDBoLXNpbV9k
-ZWZjb25maWcKaDgzMDAgICAgICAgICAgICAgICAgICAgICBlZG9zazI2NzRfZGVmY29uZmlnCm02
-OGsgICAgICAgICAgICAgICAgICAgICAgICAgICBzdW4zX2RlZmNvbmZpZwpoODMwMCAgICAgICAg
-ICAgICAgICAgICAgICAgaDhzLXNpbV9kZWZjb25maWcKbTY4ayAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgYWxsbW9kY29uZmlnCng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1o
-MDAyLTIwMTk0Mgp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctaDAwMS0yMDE5NDIK
-aTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWgwMDQtMjAxOTQyCmkzODYgICAgICAg
-ICAgICAgICAgICAgcmFuZGNvbmZpZy1oMDAzLTIwMTk0Mgp4ODZfNjQgICAgICAgICAgICAgICAg
-IHJhbmRjb25maWctaDAwMy0yMDE5NDIKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmln
-LWgwMDItMjAxOTQyCmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1oMDAxLTIwMTk0
-Mgp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctaDAwNC0yMDE5NDIKeDg2XzY0ICAg
-ICAgICAgICAgICAgICByYW5kY29uZmlnLWUwMDQtMjAxOTQyCng4Nl82NCAgICAgICAgICAgICAg
-ICAgcmFuZGNvbmZpZy1lMDAxLTIwMTk0Mgp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25m
-aWctZTAwMy0yMDE5NDIKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWUwMDItMjAx
-OTQyCmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1lMDAzLTIwMTk0MgppMzg2ICAg
-ICAgICAgICAgICAgICAgIHJhbmRjb25maWctZTAwNC0yMDE5NDIKaTM4NiAgICAgICAgICAgICAg
-ICAgICByYW5kY29uZmlnLWUwMDEtMjAxOTQyCmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNv
-bmZpZy1lMDAyLTIwMTk0Mgp1bSAgICAgICAgICAgICAgICAgICAgICAgICAgIHg4Nl82NF9kZWZj
-b25maWcKdW0gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGkzODZfZGVmY29uZmlnCnVtICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwphcmMgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBhbGx5ZXNjb25maWcKcG93ZXJwYyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgZGVmY29uZmlnCm1pY3JvYmxhemUgICAgICAgICAgICAgICAgICAgIG5vbW11X2Rl
-ZmNvbmZpZwpwb3dlcnBjICAgICAgICAgICAgICAgICAgICAgICBwcGM2NF9kZWZjb25maWcKbWlj
-cm9ibGF6ZSAgICAgICAgICAgICAgICAgICAgICBtbXVfZGVmY29uZmlnCmFyYyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwpwb3dlcnBjICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgYWxsbm9jb25maWcKeDg2XzY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgbGtwCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmhlbAp4
-ODZfNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmhlbC03LjYKeDg2XzY0ICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgZmVkb3JhLTI1Cng4Nl82NCAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBrZXhlYwpwYXJpc2MgICAgICAgICAgICAgICAgICAgICAgICBjMzAw
-MF9kZWZjb25maWcKcGFyaXNjICAgICAgICAgICAgICAgICAgICAgICAgIGIxODBfZGVmY29uZmln
-CnBhcmlzYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwpwYXJpc2MgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKaWE2NCAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgYWxsbW9kY29uZmlnCmlhNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBhbGxub2NvbmZpZwppYTY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25m
-aWcKaWE2NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsZGVmY29uZmlnCmkzODYgICAg
-ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1mMDAyLTIwMTk0MgppMzg2ICAgICAgICAgICAgICAg
-ICAgIHJhbmRjb25maWctZjAwMS0yMDE5NDIKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLWYwMDMtMjAxOTQyCng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1mMDA0LTIw
-MTk0Mgp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctZjAwMi0yMDE5NDIKaTM4NiAg
-ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWYwMDMtMjAxOTQyCng4Nl82NCAgICAgICAgICAg
-ICAgICAgcmFuZGNvbmZpZy1mMDAxLTIwMTk0MgppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRj
-b25maWctZjAwNC0yMDE5NDIKbWlwcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9k
-Y29uZmlnCm1pcHMgICAgICAgICAgICAgICAgICAgICAgICAgICAzMnIyX2RlZmNvbmZpZwptaXBz
-ICAgICAgICAgICAgICAgICAgICAgIG1hbHRhX2t2bV9kZWZjb25maWcKbWlwcyAgICAgICAgICAg
-ICAgICAgICAgICAgICA2NHI2ZWxfZGVmY29uZmlnCm1pcHMgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBhbGxub2NvbmZpZwptaXBzICAgICAgICAgICAgICAgICAgICAgIGZ1bG9vbmcyZV9k
-ZWZjb25maWcKeHRlbnNhICAgICAgICAgICAgICAgICAgICAgICBjb21tb25fZGVmY29uZmlnCm9w
-ZW5yaXNjICAgICAgICAgICAgICAgICAgICBvcjFrc2ltX2RlZmNvbmZpZwpuaW9zMiAgICAgICAg
-ICAgICAgICAgICAgICAgICAzYzEyMF9kZWZjb25maWcKeHRlbnNhICAgICAgICAgICAgICAgICAg
-ICAgICAgICBpc3NfZGVmY29uZmlnCmM2eCAgICAgICAgICAgICAgICAgICAgICAgIGV2bWM2Njc4
-X2RlZmNvbmZpZwpjNnggICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGx5ZXNjb25maWcK
-bmlvczIgICAgICAgICAgICAgICAgICAgICAgICAgMTBtNTBfZGVmY29uZmlnCm9wZW5yaXNjICAg
-ICAgICAgICAgICAgICBzaW1wbGVfc21wX2RlZmNvbmZpZwp4ODZfNjQgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBhbGx5ZXNjb25maWcKaTM4NiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-YWxsbW9kY29uZmlnCmkzODYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZp
-ZwppMzg2ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKaTM4NiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgYWxsZGVmY29uZmlnCnNoICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIGFsbG1vZGNvbmZpZwpzaCAgICAgICAgICAgICAgICAgICAgICAgICAgcnNr
-NzI2OV9kZWZjb25maWcKc2ggICAgICAgICAgICAgICAgICBzaDc3ODVsY3JfMzJiaXRfZGVmY29u
-ZmlnCnNoICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwpzaCAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB0aXRhbl9kZWZjb25maWcKczM5MCAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIGFsbG5vY29uZmlnCnMzOTAgICAgICAgICAgICAgICAgICAgICAgICAg
-IGRlYnVnX2RlZmNvbmZpZwpzMzkwICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxtb2Rj
-b25maWcKczM5MCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCnNwYXJj
-NjQgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZpZwpzcGFyYyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKc3BhcmM2NCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIGFsbG5vY29uZmlnCnNwYXJjNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRl
-ZmNvbmZpZwphcm0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxtb2Rjb25maWcKYXJt
-ICAgICAgICAgICAgICAgICAgICAgICAgIGF0OTFfZHRfZGVmY29uZmlnCmFybTY0ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwphcm0gICAgICAgICAgICAgICAgICAgICAg
-ICBtdWx0aV92NV9kZWZjb25maWcKYXJtNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxs
-eWVzY29uZmlnCmFybSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwph
-cm0gICAgICAgICAgICAgICAgICAgICAgICAgICBlZm0zMl9kZWZjb25maWcKYXJtICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgc3VueGlfZGVmY29uZmlnCmFybTY0ICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBhbGxub2NvbmZpZwphcm02NCAgICAgICAgICAgICAgICAgICAgICAgICAgICBh
-bGxtb2Rjb25maWcKYXJtICAgICAgICAgICAgICAgICAgICAgICAgICBleHlub3NfZGVmY29uZmln
-CmFybSAgICAgICAgICAgICAgICAgICAgICAgIHNobW9iaWxlX2RlZmNvbmZpZwphcm0gICAgICAg
-ICAgICAgICAgICAgICAgICBtdWx0aV92N19kZWZjb25maWcKeDg2XzY0ICAgICAgICAgICAgICAg
-ICByYW5kY29uZmlnLWEwMDQtMjAxOTQyCng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZp
-Zy1hMDAxLTIwMTk0MgppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctYTAwMi0yMDE5
-NDIKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWEwMDItMjAxOTQyCmkzODYgICAg
-ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1hMDAxLTIwMTk0MgppMzg2ICAgICAgICAgICAgICAg
-ICAgIHJhbmRjb25maWctYTAwMy0yMDE5NDIKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLWEwMDQtMjAxOTQyCng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1hMDAzLTIw
-MTk0MgoKLS0tCjAtREFZIGtlcm5lbCB0ZXN0IGluZnJhc3RydWN0dXJlICAgICAgICAgICAgICAg
-IE9wZW4gU291cmNlIFRlY2hub2xvZ3kgQ2VudGVyCmh0dHBzOi8vbGlzdHMuMDEub3JnL3BpcGVy
-bWFpbC9rYnVpbGQtYWxsICAgICAgICAgICAgICAgICAgIEludGVsIENvcnBvcmF0aW9uCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYg
-bWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldg==
+This is a multipart message in MIME format.
+
+--===============0277547083==
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_19F0_01D588D7.194758B0"
+Content-Language: en-us
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_19F0_01D588D7.194758B0
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+ 
+
+I would like to know if you are interested in acquiring a list of customers
+that use 10Gen Software Users.
+
+ 
+
+Our data file contains 15plus points with Email address, Contact Numbers and
+Contact profiles.
+
+ 
+
+We do have decision maker's data from Industry like: Manufacturing and
+Logistics, Retail, Healthcare, Media and Entertainment and
+Telecommunication.
+
+ 
+
+Please let me know If you like to see sample file as per your requirements.
+
+ 
+
+Note: - As per your requirement, I can break down the list.
+
+ 
+
+---
+
+ 
+
+Thanking you,
+
+Angela Wang.
+
+Manager | Demand Generation
+
+ 
+
+Note: Before saying no to our product please check the quality and quantity
+of our product.
+
+ 
+
+
+------=_NextPart_000_19F0_01D588D7.194758B0
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
+xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
+xmlns=3D"http://www.w3.org/TR/REC-html40"><head><META =
+HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dus-ascii"><meta name=3DGenerator content=3D"Microsoft Word 15 =
+(filtered medium)"><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;
+	position:relative;
+	top:0pt;
+	mso-text-raise:0pt;
+	letter-spacing:0pt;
+	text-decoration:none none;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri","sans-serif";}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]--></head><body lang=3DEN-US =
+link=3D"#0563C1" vlink=3D"#954F72"><div class=3DWordSection1><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'>Hi,<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span style=3D'color:#1F4E79'>I would like =
+to know if you are interested in acquiring a list of customers that use =
+<b>10Gen Software Users.</b><o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span style=3D'color:#1F4E79'>Our data =
+file contains 15plus points with Email address, Contact Numbers and =
+Contact profiles.<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span style=3D'color:#1F4E79'>We do have =
+decision maker&#8217;s data from Industry like: <b>Manufacturing and =
+Logistics, Retail, Healthcare, Media and Entertainment and =
+Telecommunication.</b><o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span style=3D'color:#1F4E79'>Please let =
+me know If you like to see <b>sample file</b> as per your =
+requirements.<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span style=3D'color:#1F4E79'>Note: - As =
+per your requirement, I can break down the list.<o:p></o:p></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'>---<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span style=3D'color:#1F4E79'>Thanking =
+you,<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><b><span style=3D'color:#1F4E79'>Angela =
+Wang.<o:p></o:p></span></b></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span style=3D'color:#1F4E79'>Manager | =
+Demand Generation<o:p></o:p></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></p><p =
+class=3DMsoNormal><span style=3D'font-size:10.0pt;color:#1F4E79'>Note: =
+Before saying no to our product please check the quality and quantity of =
+our product.<o:p></o:p></span></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></body></html>
+------=_NextPart_000_19F0_01D588D7.194758B0--
+
+
+--===============0277547083==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0277547083==--
+
