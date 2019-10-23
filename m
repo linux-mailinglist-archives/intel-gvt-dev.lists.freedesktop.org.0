@@ -1,59 +1,67 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AC9AE1C8B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 23 Oct 2019 15:27:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37BDBE1C13
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 23 Oct 2019 15:15:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 254306EAB5;
-	Wed, 23 Oct 2019 13:27:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EABB26EA9B;
+	Wed, 23 Oct 2019 13:15:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7783C6EAB6
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com
+ [IPv6:2607:f8b0:4864:20::543])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C62246EA9B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 23 Oct 2019 13:27:39 +0000 (UTC)
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-41-8WBxIzTIPzGprfzevcSLWw-1; Wed, 23 Oct 2019 09:27:34 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B77D801E66;
- Wed, 23 Oct 2019 13:27:30 +0000 (UTC)
-Received: from jason-ThinkPad-X1-Carbon-6th.redhat.com
- (ovpn-12-126.pek2.redhat.com [10.72.12.126])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D733C60126;
- Wed, 23 Oct 2019 13:25:34 +0000 (UTC)
-From: Jason Wang <jasowang@redhat.com>
-To: kvm@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- kwankhede@nvidia.com, alex.williamson@redhat.com, mst@redhat.com,
- tiwei.bie@intel.com
-Subject: [PATCH V5 6/6] docs: sample driver to demonstrate how to implement
- virtio-mdev framework
-Date: Wed, 23 Oct 2019 21:07:52 +0800
-Message-Id: <20191023130752.18980-7-jasowang@redhat.com>
-In-Reply-To: <20191023130752.18980-1-jasowang@redhat.com>
-References: <20191023130752.18980-1-jasowang@redhat.com>
+ Wed, 23 Oct 2019 13:15:49 +0000 (UTC)
+Received: by mail-pg1-x543.google.com with SMTP id k20so12162331pgi.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 23 Oct 2019 06:15:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:references:in-reply-to:subject:date
+ :message-id:mime-version:thread-index:content-language
+ :disposition-notification-to;
+ bh=z/J/j/g6ErJ92Ci97AnYu1di2SzOTtWDej49jZgDWW8=;
+ b=qdZoNe0YVgW1JCOaKou0jXgnsX2RK0ZR9vCRWv817+36adzFqi+ZjzL9ll+EItjpit
+ MS5xH1HunoYkZYPqbf3+5Xixz1n8hf0pY5hW8qon+fEp/8xp+VY4SiwGDUGb88/9rB/3
+ haX3IZyD0Ejql05HIoYaI18uc4sf5EG+nrejbh/iQfxH+qxKhRkuvVa3VbrNuz5V9/im
+ 4EgpnTUJlt6LoVNwjpJiLiwTgHpGtzt+KX3Hdclz+afXfkpOAexUpclHh6SeINWcqgW6
+ kJ4fKqAMtaCtvZ0eoBKoJFejDHXjRlPTG36NmQmYK1CnEZhCQzxBixW6QPksH8TJ0NL5
+ +BNQ==
+X-Gm-Message-State: APjAAAUjlyR7/yoQGTky5Qq8sQ48MNjQ63kmsmgoXxkQdooVI46k6pzv
+ wBoUYLSQdPGmcu+mRbGjgC80ahOYETs=
+X-Google-Smtp-Source: APXvYqwjKwkkULbXg7O+HFK6EffkF9xI6iud6gy4WRXRp+aFX+rXy612El+rILdPGTuZ7v3E6Aa2rg==
+X-Received: by 2002:a17:90a:c244:: with SMTP id
+ d4mr3396787pjx.117.1571836548986; 
+ Wed, 23 Oct 2019 06:15:48 -0700 (PDT)
+Received: from SNBS17 ([183.82.16.76])
+ by smtp.gmail.com with ESMTPSA id a11sm24749367pfg.94.2019.10.23.06.15.46
+ for <intel-gvt-dev@lists.freedesktop.org>
+ (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Wed, 23 Oct 2019 06:15:48 -0700 (PDT)
+From: "Angela Wang" <angela@technologydatahub.com>
+To: <intel-gvt-dev@lists.freedesktop.org>
+References: 
+In-Reply-To: 
+Subject: RE: 10Gen
+Date: Wed, 23 Oct 2019 09:13:39 -0400
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAACr8CvNeCztNrsWvpezUrLLCgAAAEAAAAJj6bsXByZRMv4pQOF2C25gBAAAAAA==@technologydatahub.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: 8WBxIzTIPzGprfzevcSLWw-1
-X-Mimecast-Spam-Score: 0
+X-Mailer: Microsoft Outlook 15.0
+Thread-Index: AdWI+JnpU1/mjnnuQleI/lUBctxDkQAqlx5g
+Content-Language: en-us
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1571837258;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+QwaX1cTcMJpIPw4pGz+8aksK5AS2TfxLcxj423/inA=;
- b=RtcnXXWdCjI3vsU+BeThoCdeHnj10NwtiaqB/zOq/QtYojy4Ik5vOVGGPW1BVkszoQyPIT
- kIud1f6U6hS7TEXraXUh3gT79LIG87esWYBXN/aQK04mrRmTLQPh/+hmi/9GHWqG/i63AC
- LmokQ9IylgLsG69tckJSC8g3KhPRM9w=
+ d=technologydatahub-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:references:in-reply-to:subject:date:message-id:mime-version
+ :thread-index:content-language:disposition-notification-to;
+ bh=z/J/j/g6ErJ92Ci97AnYu1di2SzOTtWDej49jZgDWW8=;
+ b=A/RFGGjr+SCY60HWfrBztoM3QoeYuwDS0FUa79tZtgeAHOndeMEM4ukxkQs+8N9GqZ
+ eDYDF7GEDGupBJL14TW09X7Mit+llVFAipQ8zDSwWKH7eoolznexlg0FOXGdStVtpxjb
+ /dfD7eJo4SecfoFLInDuNDRF8yiwsC4U/tRpRAmMqYr1z1/VG5glpBtaCoOPcJtbnOxw
+ fzbMHjzVCv2c4ywnPuBpFuKxXpvWZD6xSDZMi9N6sEznVrhaphMrouPNCt5mD0Nhizen
+ J99MkLuelu0FtMxSn6G31UMgEE+K0+h/WuQyNwN/CvWlkUGl8gqTGhZNygDsgp8dH1py
+ Seag==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,360 +74,1068 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: christophe.de.dinechin@gmail.com, sebott@linux.ibm.com, airlied@linux.ie,
- Jason Wang <jasowang@redhat.com>, joonas.lahtinen@linux.intel.com,
- heiko.carstens@de.ibm.com, kevin.tian@intel.com,
- virtualization@lists.linux-foundation.org, rob.miller@broadcom.com,
- lulu@redhat.com, eperezma@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, haotian.wang@sifive.com, zhi.a.wang@intel.com,
- farman@linux.ibm.com, idos@mellanox.com, gor@linux.ibm.com,
- cunming.liang@intel.com, zhenyuw@linux.intel.com, rodrigo.vivi@intel.com,
- xiao.w.wang@intel.com, freude@linux.ibm.com, jani.nikula@linux.intel.com,
- parav@mellanox.com, zhihong.wang@intel.com, stefanha@redhat.com,
- akrowiak@linux.ibm.com, netdev@vger.kernel.org, cohuck@redhat.com,
- oberpar@linux.ibm.com, maxime.coquelin@redhat.com, daniel@ffwll.ch,
- lingshan.zhu@intel.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0143804516=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-VGhpcyBzYW1wbGUgZHJpdmVyIGNyZWF0ZXMgbWRldiBkZXZpY2UgdGhhdCBzaW11bGF0ZSB2aXJ0
-aW8gbmV0IGRldmljZQpvdmVyIHZpcnRpbyBtZGV2IHRyYW5zcG9ydC4gVGhlIGRldmljZSBpcyBp
-bXBsZW1lbnRlZCB0aHJvdWdoIHZyaW5naAphbmQgd29ya3F1ZXVlLiBBIGRldmljZSBzcGVjaWZp
-YyBkbWEgb3BzIGlzIHRvIG1ha2Ugc3VyZSBIVkEgaXMgdXNlZApkaXJlY3RseSBhcyB0aGUgSU9W
-QS4gVGhpcyBzaG91bGQgYmUgc3VmZmljaWVudCBmb3Iga2VybmVsIHZpcnRpbwpkcml2ZXIgdG8g
-d29yay4KCk9ubHkgJ3ZpcnRpbycgdHlwZSBpcyBzdXBwb3J0ZWQgcmlnaHQgbm93LiBJIHBsYW4g
-dG8gYWRkICd2aG9zdCcgdHlwZQpvbiB0b3Agd2hpY2ggcmVxdWlyZXMgc29tZSB2aXJ0dWFsIElP
-TU1VIGltcGxlbWVudGVkIGluIHRoaXMgc2FtcGxlCmRyaXZlci4KClNpZ25lZC1vZmYtYnk6IEph
-c29uIFdhbmcgPGphc293YW5nQHJlZGhhdC5jb20+Ci0tLQogTUFJTlRBSU5FUlMgICAgICAgICAg
-ICAgICAgfCAgIDEgKwogc2FtcGxlcy9LY29uZmlnICAgICAgICAgICAgfCAgIDcgKwogc2FtcGxl
-cy92ZmlvLW1kZXYvTWFrZWZpbGUgfCAgIDEgKwogc2FtcGxlcy92ZmlvLW1kZXYvbXZuZXQuYyAg
-fCA2OTEgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwogNCBmaWxlcyBjaGFu
-Z2VkLCA3MDAgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IHNhbXBsZXMvdmZpby1t
-ZGV2L212bmV0LmMKCmRpZmYgLS1naXQgYS9NQUlOVEFJTkVSUyBiL01BSU5UQUlORVJTCmluZGV4
-IDllMTBhZTljMmI0ZC4uOGIxNzkyN2E4MWZkIDEwMDY0NAotLS0gYS9NQUlOVEFJTkVSUworKysg
-Yi9NQUlOVEFJTkVSUwpAQCAtMTcyNDgsNiArMTcyNDgsNyBAQCBGOglpbmNsdWRlL2xpbnV4L3Zp
-cnRpbyouaAogRjoJaW5jbHVkZS91YXBpL2xpbnV4L3ZpcnRpb18qLmgKIEY6CWRyaXZlcnMvY3J5
-cHRvL3ZpcnRpby8KIEY6CW1tL2JhbGxvb25fY29tcGFjdGlvbi5jCitGOglzYW1wbGVzL3ZmaW8t
-bWRldi9tdm5ldC5jCiAKIFZJUlRJTyBCTE9DSyBBTkQgU0NTSSBEUklWRVJTCiBNOgkiTWljaGFl
-bCBTLiBUc2lya2luIiA8bXN0QHJlZGhhdC5jb20+CmRpZmYgLS1naXQgYS9zYW1wbGVzL0tjb25m
-aWcgYi9zYW1wbGVzL0tjb25maWcKaW5kZXggYzhkYWNiNGRkYTgwLi5hMWExY2EyYzAwYjcgMTAw
-NjQ0Ci0tLSBhL3NhbXBsZXMvS2NvbmZpZworKysgYi9zYW1wbGVzL0tjb25maWcKQEAgLTEzMSw2
-ICsxMzEsMTMgQEAgY29uZmlnIFNBTVBMRV9WRklPX01ERVZfTURQWQogCSAgbWVkaWF0ZWQgZGV2
-aWNlLiAgSXQgaXMgYSBzaW1wbGUgZnJhbWVidWZmZXIgYW5kIHN1cHBvcnRzCiAJICB0aGUgcmVn
-aW9uIGRpc3BsYXkgaW50ZXJmYWNlIChWRklPX0dGWF9QTEFORV9UWVBFX1JFR0lPTikuCiAKK2Nv
-bmZpZyBTQU1QTEVfVklSVElPX01ERVZfTkVUCisgICAgICAgIHRyaXN0YXRlICJCdWlsZCB2aXJ0
-aW8gbWRldiBuZXQgZXhhbXBsZSBtZWRpYXRlZCBkZXZpY2Ugc2FtcGxlIGNvZGUgLS0gbG9hZGFi
-bGUgbW9kdWxlcyBvbmx5IgorCWRlcGVuZHMgb24gVklSVElPX01ERVZfREVWSUNFICYmIFZIT1NU
-X1JJTkcgJiYgbQorCWhlbHAKKwkgIEJ1aWxkIGEgbmV0d29ya2luZyBzYW1wbGUgZGV2aWNlIGZv
-ciB1c2UgYXMgYSB2aXJ0aW8KKwkgIG1lZGlhdGVkIGRldmljZS4KKwogY29uZmlnIFNBTVBMRV9W
-RklPX01ERVZfTURQWV9GQgogCXRyaXN0YXRlICJCdWlsZCBWRklPIG1kcHkgZXhhbXBsZSBndWVz
-dCBmYmRldiBkcml2ZXIgLS0gbG9hZGFibGUgbW9kdWxlIG9ubHkiCiAJZGVwZW5kcyBvbiBGQiAm
-JiBtCmRpZmYgLS1naXQgYS9zYW1wbGVzL3ZmaW8tbWRldi9NYWtlZmlsZSBiL3NhbXBsZXMvdmZp
-by1tZGV2L01ha2VmaWxlCmluZGV4IDEwZDE3OWM0ZmRlYi4uZjM0YWY5MGVkMGEwIDEwMDY0NAot
-LS0gYS9zYW1wbGVzL3ZmaW8tbWRldi9NYWtlZmlsZQorKysgYi9zYW1wbGVzL3ZmaW8tbWRldi9N
-YWtlZmlsZQpAQCAtMywzICszLDQgQEAgb2JqLSQoQ09ORklHX1NBTVBMRV9WRklPX01ERVZfTVRU
-WSkgKz0gbXR0eS5vCiBvYmotJChDT05GSUdfU0FNUExFX1ZGSU9fTURFVl9NRFBZKSArPSBtZHB5
-Lm8KIG9iai0kKENPTkZJR19TQU1QTEVfVkZJT19NREVWX01EUFlfRkIpICs9IG1kcHktZmIubwog
-b2JqLSQoQ09ORklHX1NBTVBMRV9WRklPX01ERVZfTUJPQ0hTKSArPSBtYm9jaHMubworb2JqLSQo
-Q09ORklHX1NBTVBMRV9WSVJUSU9fTURFVl9ORVQpICs9IG12bmV0Lm8KZGlmZiAtLWdpdCBhL3Nh
-bXBsZXMvdmZpby1tZGV2L212bmV0LmMgYi9zYW1wbGVzL3ZmaW8tbWRldi9tdm5ldC5jCm5ldyBm
-aWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAwMC4uYTJhOTAyZDU5ZmI3Ci0tLSAvZGV2
-L251bGwKKysrIGIvc2FtcGxlcy92ZmlvLW1kZXYvbXZuZXQuYwpAQCAtMCwwICsxLDY5MSBAQAor
-Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seQorLyoKKyAqIE1lZGlhdGVk
-IHZpcnR1YWwgdmlydGlvLW5ldCBkZXZpY2UgZHJpdmVyLgorICoKKyAqIENvcHlyaWdodCAoYykg
-MjAxOSwgUmVkIEhhdCBJbmMuIEFsbCByaWdodHMgcmVzZXJ2ZWQuCisgKiAgICAgQXV0aG9yOiBK
-YXNvbiBXYW5nIDxqYXNvd2FuZ0ByZWRoYXQuY29tPgorICoKKyAqIFNhbXBsZSBkcml2ZXIgdGhh
-dCBjcmVhdGVzIG1kZXYgZGV2aWNlIHRoYXQgc2ltdWxhdGVzIGV0aGVybmV0IGxvb3BiYWNrCisg
-KiBkZXZpY2UuCisgKgorICogVXNhZ2U6CisgKgorICogIyBtb2Rwcm9iZSB2aXJ0aW9fbWRldgor
-ICogIyBtb2Rwcm9iZSBtdm5ldAorICogIyBjZCAvc3lzL2RldmljZXMvdmlydHVhbC9tdm5ldC9t
-dm5ldC9tZGV2X3N1cHBvcnRlZF90eXBlcy9tdm5ldC12aXJ0aW8KKyAqICMgZWNobyAiODNiOGY0
-ZjItNTA5Zi0zODJmLTNjMWUtZTZiZmUwZmExMDAxIiA+IC4vY3JlYXRlCisgKiAjIGNkIGRldmlj
-ZXMvODNiOGY0ZjItNTA5Zi0zODJmLTNjMWUtZTZiZmUwZmExMDAxCisgKiAjIGxzIC1kIHZpcnRp
-bzAKKyAqIHZpcnRpbzAKKyAqLworCisjaW5jbHVkZSA8bGludXgvaW5pdC5oPgorI2luY2x1ZGUg
-PGxpbnV4L21vZHVsZS5oPgorI2luY2x1ZGUgPGxpbnV4L2RldmljZS5oPgorI2luY2x1ZGUgPGxp
-bnV4L2tlcm5lbC5oPgorI2luY2x1ZGUgPGxpbnV4L2ZzLmg+CisjaW5jbHVkZSA8bGludXgvcG9s
-bC5oPgorI2luY2x1ZGUgPGxpbnV4L3NsYWIuaD4KKyNpbmNsdWRlIDxsaW51eC9zY2hlZC5oPgor
-I2luY2x1ZGUgPGxpbnV4L3dhaXQuaD4KKyNpbmNsdWRlIDxsaW51eC91dWlkLmg+CisjaW5jbHVk
-ZSA8bGludXgvaW9tbXUuaD4KKyNpbmNsdWRlIDxsaW51eC9zeXNmcy5oPgorI2luY2x1ZGUgPGxp
-bnV4L2ZpbGUuaD4KKyNpbmNsdWRlIDxsaW51eC9ldGhlcmRldmljZS5oPgorI2luY2x1ZGUgPGxp
-bnV4L21kZXYuaD4KKyNpbmNsdWRlIDxsaW51eC92cmluZ2guaD4KKyNpbmNsdWRlIDxsaW51eC92
-aXJ0aW9fbWRldl9vcHMuaD4KKyNpbmNsdWRlIDx1YXBpL2xpbnV4L3ZpcnRpb19jb25maWcuaD4K
-KyNpbmNsdWRlIDx1YXBpL2xpbnV4L3ZpcnRpb19uZXQuaD4KKworI2RlZmluZSBWRVJTSU9OX1NU
-UklORyAgIjAuMSIKKyNkZWZpbmUgRFJJVkVSX0FVVEhPUiAgICJSZWQgSGF0IENvcnBvcmF0aW9u
-IgorCisjZGVmaW5lIE1WTkVUX0NMQVNTX05BTUUgIm12bmV0IgorI2RlZmluZSBNVk5FVF9OQU1F
-ICAgICAgICJtdm5ldCIKKworLyoKKyAqIEdsb2JhbCBTdHJ1Y3R1cmVzCisgKi8KKworc3RhdGlj
-IHN0cnVjdCBtdm5ldF9kZXYgeworCXN0cnVjdCBjbGFzcwkqdmRfY2xhc3M7CisJc3RydWN0IGlk
-cgl2ZF9pZHI7CisJc3RydWN0IGRldmljZQlkZXY7Cit9IG12bmV0X2RldjsKKworc3RydWN0IG12
-bmV0X3ZpcnRxdWV1ZSB7CisJc3RydWN0IHZyaW5naCB2cmluZzsKKwlzdHJ1Y3QgdnJpbmdoX2tp
-b3YgaW92OworCXVuc2lnbmVkIHNob3J0IGhlYWQ7CisJYm9vbCByZWFkeTsKKwl1NjQgZGVzY19h
-ZGRyOworCXU2NCBkZXZpY2VfYWRkcjsKKwl1NjQgZHJpdmVyX2FkZHI7CisJdTMyIG51bTsKKwl2
-b2lkICpwcml2YXRlOworCWlycXJldHVybl90ICgqY2IpKHZvaWQgKmRhdGEpOworfTsKKworI2Rl
-ZmluZSBNVk5FVF9RVUVVRV9BTElHTiBQQUdFX1NJWkUKKyNkZWZpbmUgTVZORVRfUVVFVUVfTUFY
-IDI1NgorI2RlZmluZSBNVk5FVF9ERVZJQ0VfSUQgMHgxCisjZGVmaW5lIE1WTkVUX1ZFTkRPUl9J
-RCAwCisKK3U2NCBtdm5ldF9mZWF0dXJlcyA9ICgxVUxMIDw8IFZJUlRJT19GX0FOWV9MQVlPVVQp
-IHwKKwkJICAgICAoMVVMTCA8PCBWSVJUSU9fRl9WRVJTSU9OXzEpIHwKKwkJICAgICAoMVVMTCA8
-PCBWSVJUSU9fRl9JT01NVV9QTEFURk9STSk7CisKKy8qIFN0YXRlIG9mIGVhY2ggbWRldiBkZXZp
-Y2UgKi8KK3N0cnVjdCBtdm5ldF9zdGF0ZSB7CisJc3RydWN0IG12bmV0X3ZpcnRxdWV1ZSB2cXNb
-Ml07CisJc3RydWN0IHdvcmtfc3RydWN0IHdvcms7CisJc3BpbmxvY2tfdCBsb2NrOworCXN0cnVj
-dCBtZGV2X2RldmljZSAqbWRldjsKKwlzdHJ1Y3QgdmlydGlvX25ldF9jb25maWcgY29uZmlnOwor
-CXZvaWQgKmJ1ZmZlcjsKKwl1MzIgc3RhdHVzOworCXUzMiBnZW5lcmF0aW9uOworCXU2NCBmZWF0
-dXJlczsKKwlzdHJ1Y3QgbGlzdF9oZWFkIG5leHQ7Cit9OworCitzdGF0aWMgc3RydWN0IG11dGV4
-IG1kZXZfbGlzdF9sb2NrOworc3RhdGljIHN0cnVjdCBsaXN0X2hlYWQgbWRldl9kZXZpY2VzX2xp
-c3Q7CisKK3N0YXRpYyB2b2lkIG12bmV0X3F1ZXVlX3JlYWR5KHN0cnVjdCBtdm5ldF9zdGF0ZSAq
-bXZuZXQsIHVuc2lnbmVkIGludCBpZHgpCit7CisJc3RydWN0IG12bmV0X3ZpcnRxdWV1ZSAqdnEg
-PSAmbXZuZXQtPnZxc1tpZHhdOworCWludCByZXQ7CisKKwlyZXQgPSB2cmluZ2hfaW5pdF9rZXJu
-KCZ2cS0+dnJpbmcsIG12bmV0X2ZlYXR1cmVzLCBNVk5FVF9RVUVVRV9NQVgsCisJCQkgICAgICAg
-ZmFsc2UsIChzdHJ1Y3QgdnJpbmdfZGVzYyAqKXZxLT5kZXNjX2FkZHIsCisJCQkgICAgICAgKHN0
-cnVjdCB2cmluZ19hdmFpbCAqKXZxLT5kcml2ZXJfYWRkciwKKwkJCSAgICAgICAoc3RydWN0IHZy
-aW5nX3VzZWQgKil2cS0+ZGV2aWNlX2FkZHIpOworfQorCitzdGF0aWMgdm9pZCBtdm5ldF92cV9y
-ZXNldChzdHJ1Y3QgbXZuZXRfdmlydHF1ZXVlICp2cSkKK3sKKwl2cS0+cmVhZHkgPSAwOworCXZx
-LT5kZXNjX2FkZHIgPSAwOworCXZxLT5kcml2ZXJfYWRkciA9IDA7CisJdnEtPmRldmljZV9hZGRy
-ID0gMDsKKwl2cS0+Y2IgPSBOVUxMOworCXZxLT5wcml2YXRlID0gTlVMTDsKKwl2cmluZ2hfaW5p
-dF9rZXJuKCZ2cS0+dnJpbmcsIG12bmV0X2ZlYXR1cmVzLCBNVk5FVF9RVUVVRV9NQVgsCisJCQlm
-YWxzZSwgMCwgMCwgMCk7Cit9CisKK3N0YXRpYyB2b2lkIG12bmV0X3Jlc2V0KHN0cnVjdCBtdm5l
-dF9zdGF0ZSAqbXZuZXQpCit7CisJaW50IGk7CisKKwlmb3IgKGkgPSAwOyBpIDwgMjsgaSsrKQor
-CQltdm5ldF92cV9yZXNldCgmbXZuZXQtPnZxc1tpXSk7CisKKwltdm5ldC0+ZmVhdHVyZXMgPSAw
-OworCW12bmV0LT5zdGF0dXMgPSAwOworCSsrbXZuZXQtPmdlbmVyYXRpb247Cit9CisKK3N0YXRp
-YyB2b2lkIG12bmV0X3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQoreworCXN0cnVjdCBt
-dm5ldF9zdGF0ZSAqbXZuZXQgPSBjb250YWluZXJfb2Yod29yaywgc3RydWN0CisJCQkJCQkgbXZu
-ZXRfc3RhdGUsIHdvcmspOworCXN0cnVjdCBtdm5ldF92aXJ0cXVldWUgKnR4cSA9ICZtdm5ldC0+
-dnFzWzFdOworCXN0cnVjdCBtdm5ldF92aXJ0cXVldWUgKnJ4cSA9ICZtdm5ldC0+dnFzWzBdOwor
-CXNpemVfdCByZWFkLCB3cml0ZSwgdG90YWxfd3JpdGU7CisJaW50IGVycjsKKwlpbnQgcGt0cyA9
-IDA7CisKKwlzcGluX2xvY2soJm12bmV0LT5sb2NrKTsKKworCWlmICghdHhxLT5yZWFkeSB8fCAh
-cnhxLT5yZWFkeSkKKwkJZ290byBvdXQ7CisKKwl3aGlsZSAodHJ1ZSkgeworCQl0b3RhbF93cml0
-ZSA9IDA7CisJCWVyciA9IHZyaW5naF9nZXRkZXNjX2tlcm4oJnR4cS0+dnJpbmcsICZ0eHEtPmlv
-diwgTlVMTCwKKwkJCQkJICAmdHhxLT5oZWFkLCBHRlBfQVRPTUlDKTsKKwkJaWYgKGVyciA8PSAw
-KQorCQkJYnJlYWs7CisKKwkJZXJyID0gdnJpbmdoX2dldGRlc2Nfa2VybigmcnhxLT52cmluZywg
-TlVMTCwgJnJ4cS0+aW92LAorCQkJCQkgICZyeHEtPmhlYWQsIEdGUF9BVE9NSUMpOworCQlpZiAo
-ZXJyIDw9IDApIHsKKwkJCXZyaW5naF9jb21wbGV0ZV9rZXJuKCZ0eHEtPnZyaW5nLCB0eHEtPmhl
-YWQsIDApOworCQkJYnJlYWs7CisJCX0KKworCQl3aGlsZSAodHJ1ZSkgeworCQkJcmVhZCA9IHZy
-aW5naF9pb3ZfcHVsbF9rZXJuKCZ0eHEtPmlvdiwgbXZuZXQtPmJ1ZmZlciwKKwkJCQkJCSAgICBQ
-QUdFX1NJWkUpOworCQkJaWYgKHJlYWQgPD0gMCkKKwkJCQlicmVhazsKKworCQkJd3JpdGUgPSB2
-cmluZ2hfaW92X3B1c2hfa2VybigmcnhxLT5pb3YsIG12bmV0LT5idWZmZXIsCisJCQkJCQkgICAg
-IHJlYWQpOworCQkJaWYgKHdyaXRlIDw9IDApCisJCQkJYnJlYWs7CisKKwkJCXRvdGFsX3dyaXRl
-ICs9IHdyaXRlOworCQl9CisKKwkJLyogTWFrZSBzdXJlIGRhdGEgaXMgd3JvdGUgYmVmb3JlIGFk
-dmFuY2luZyBpbmRleCAqLworCQlzbXBfd21iKCk7CisKKwkJdnJpbmdoX2NvbXBsZXRlX2tlcm4o
-JnR4cS0+dnJpbmcsIHR4cS0+aGVhZCwgMCk7CisJCXZyaW5naF9jb21wbGV0ZV9rZXJuKCZyeHEt
-PnZyaW5nLCByeHEtPmhlYWQsIHRvdGFsX3dyaXRlKTsKKworCQkvKiBNYWtlIHN1cmUgdXNlZCBp
-cyB2aXNpYmxlIGJlZm9yZSByYXNpbmcgdGhlIGludGVycnVwdC4gKi8KKwkJc21wX3dtYigpOwor
-CisJCWxvY2FsX2JoX2Rpc2FibGUoKTsKKwkJaWYgKHR4cS0+Y2IpCisJCQl0eHEtPmNiKHR4cS0+
-cHJpdmF0ZSk7CisJCWlmIChyeHEtPmNiKQorCQkJcnhxLT5jYihyeHEtPnByaXZhdGUpOworCQls
-b2NhbF9iaF9lbmFibGUoKTsKKworCQlpZiAoKytwa3RzID4gNCkgeworCQkJc2NoZWR1bGVfd29y
-aygmbXZuZXQtPndvcmspOworCQkJZ290byBvdXQ7CisJCX0KKwl9CisKK291dDoKKwlzcGluX3Vu
-bG9jaygmbXZuZXQtPmxvY2spOworfQorCitzdGF0aWMgZG1hX2FkZHJfdCBtdm5ldF9tYXBfcGFn
-ZShzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBwYWdlICpwYWdlLAorCQkJCSB1bnNpZ25lZCBs
-b25nIG9mZnNldCwgc2l6ZV90IHNpemUsCisJCQkJIGVudW0gZG1hX2RhdGFfZGlyZWN0aW9uIGRp
-ciwKKwkJCQkgdW5zaWduZWQgbG9uZyBhdHRycykKK3sKKwkvKiBWcmluZ2ggY2FuIG9ubHkgdXNl
-IEhWQSAqLworCXJldHVybiAoZG1hX2FkZHJfdCkocGFnZV9hZGRyZXNzKHBhZ2UpICsgb2Zmc2V0
-KTsKK30KKworc3RhdGljIHZvaWQgbXZuZXRfdW5tYXBfcGFnZShzdHJ1Y3QgZGV2aWNlICpkZXYs
-IGRtYV9hZGRyX3QgZG1hX2FkZHIsCisJCQkgICAgIHNpemVfdCBzaXplLCBlbnVtIGRtYV9kYXRh
-X2RpcmVjdGlvbiBkaXIsCisJCQkgICAgIHVuc2lnbmVkIGxvbmcgYXR0cnMpCit7Cit9CisKK3N0
-YXRpYyB2b2lkICptdm5ldF9hbGxvY19jb2hlcmVudChzdHJ1Y3QgZGV2aWNlICpkZXYsIHNpemVf
-dCBzaXplLAorCQkJCSAgZG1hX2FkZHJfdCAqZG1hX2FkZHIsIGdmcF90IGZsYWcsCisJCQkJICB1
-bnNpZ25lZCBsb25nIGF0dHJzKQoreworCXZvaWQgKmFkZHIgPSBrbWFsbG9jKHNpemUsIGZsYWcp
-OworCisJaWYgKGFkZHIgPT0gTlVMTCkKKwkJKmRtYV9hZGRyID0gRE1BX01BUFBJTkdfRVJST1I7
-CisJZWxzZQorCQkqZG1hX2FkZHIgPSAoZG1hX2FkZHJfdCkgYWRkcjsKKworCXJldHVybiBhZGRy
-OworfQorCitzdGF0aWMgdm9pZCBtdm5ldF9mcmVlX2NvaGVyZW50KHN0cnVjdCBkZXZpY2UgKmRl
-diwgc2l6ZV90IHNpemUsCisJCQkJdm9pZCAqdmFkZHIsIGRtYV9hZGRyX3QgZG1hX2FkZHIsCisJ
-CQkJdW5zaWduZWQgbG9uZyBhdHRycykKK3sKKwlrZnJlZSgodm9pZCAqKWRtYV9hZGRyKTsKK30K
-Kworc3RhdGljIGNvbnN0IHN0cnVjdCBkbWFfbWFwX29wcyBtdm5ldF9kbWFfb3BzID0geworCS5t
-YXBfcGFnZSA9IG12bmV0X21hcF9wYWdlLAorCS51bm1hcF9wYWdlID0gbXZuZXRfdW5tYXBfcGFn
-ZSwKKwkuYWxsb2MgPSBtdm5ldF9hbGxvY19jb2hlcmVudCwKKwkuZnJlZSA9IG12bmV0X2ZyZWVf
-Y29oZXJlbnQsCit9OworCitzdGF0aWMgY29uc3Qgc3RydWN0IHZpcnRpb19tZGV2X2RldmljZV9v
-cHMgdmlydGlvX21kZXZfb3BzOworCitzdGF0aWMgaW50IG12bmV0X2NyZWF0ZShzdHJ1Y3Qga29i
-amVjdCAqa29iaiwgc3RydWN0IG1kZXZfZGV2aWNlICptZGV2KQoreworCXN0cnVjdCBtdm5ldF9z
-dGF0ZSAqbXZuZXQ7CisJc3RydWN0IHZpcnRpb19uZXRfY29uZmlnICpjb25maWc7CisJc3RydWN0
-IGRldmljZSAqZGV2ID0gbWRldl9kZXYobWRldik7CisKKwlpZiAoIW1kZXYpCisJCXJldHVybiAt
-RUlOVkFMOworCisJbXZuZXQgPSBremFsbG9jKHNpemVvZihzdHJ1Y3QgbXZuZXRfc3RhdGUpLCBH
-RlBfS0VSTkVMKTsKKwlpZiAobXZuZXQgPT0gTlVMTCkKKwkJcmV0dXJuIC1FTk9NRU07CisKKwlt
-dm5ldC0+YnVmZmVyID0ga21hbGxvYyhQQUdFX1NJWkUsIEdGUF9LRVJORUwpOworCWlmICghbXZu
-ZXQtPmJ1ZmZlcikgeworCQlrZnJlZShtdm5ldCk7CisJCXJldHVybiAtRU5PTUVNOworCX0KKwor
-CWNvbmZpZyA9ICZtdm5ldC0+Y29uZmlnOworCWNvbmZpZy0+bXR1ID0gMTUwMDsKKwljb25maWct
-PnN0YXR1cyA9IFZJUlRJT19ORVRfU19MSU5LX1VQOworCWV0aF9yYW5kb21fYWRkcihjb25maWct
-Pm1hYyk7CisKKwlJTklUX1dPUksoJm12bmV0LT53b3JrLCBtdm5ldF93b3JrKTsKKworCXNwaW5f
-bG9ja19pbml0KCZtdm5ldC0+bG9jayk7CisJbXZuZXQtPm1kZXYgPSBtZGV2OworCW1kZXZfc2V0
-X2RydmRhdGEobWRldiwgbXZuZXQpOworCisJbXV0ZXhfbG9jaygmbWRldl9saXN0X2xvY2spOwor
-CWxpc3RfYWRkKCZtdm5ldC0+bmV4dCwgJm1kZXZfZGV2aWNlc19saXN0KTsKKwltdXRleF91bmxv
-Y2soJm1kZXZfbGlzdF9sb2NrKTsKKworCWRldi0+Y29oZXJlbnRfZG1hX21hc2sgPSBETUFfQklU
-X01BU0soNjQpOworCXNldF9kbWFfb3BzKGRldiwgJm12bmV0X2RtYV9vcHMpOworCisJbWRldl9z
-ZXRfdmlydGlvX29wcyhtZGV2LCAmdmlydGlvX21kZXZfb3BzKTsKKworCXJldHVybiAwOworfQor
-CitzdGF0aWMgaW50IG12bmV0X3JlbW92ZShzdHJ1Y3QgbWRldl9kZXZpY2UgKm1kZXYpCit7CisJ
-c3RydWN0IG12bmV0X3N0YXRlICptZHMsICp0bXBfbWRzOworCXN0cnVjdCBtdm5ldF9zdGF0ZSAq
-bXZuZXQgPSBtZGV2X2dldF9kcnZkYXRhKG1kZXYpOworCWludCByZXQgPSAtRUlOVkFMOworCisJ
-bXV0ZXhfbG9jaygmbWRldl9saXN0X2xvY2spOworCWxpc3RfZm9yX2VhY2hfZW50cnlfc2FmZSht
-ZHMsIHRtcF9tZHMsICZtZGV2X2RldmljZXNfbGlzdCwgbmV4dCkgeworCQlpZiAobXZuZXQgPT0g
-bWRzKSB7CisJCQlsaXN0X2RlbCgmbXZuZXQtPm5leHQpOworCQkJbWRldl9zZXRfZHJ2ZGF0YSht
-ZGV2LCBOVUxMKTsKKwkJCWtmcmVlKG12bmV0LT5idWZmZXIpOworCQkJa2ZyZWUobXZuZXQpOwor
-CQkJcmV0ID0gMDsKKwkJCWJyZWFrOworCQl9CisJfQorCW11dGV4X3VubG9jaygmbWRldl9saXN0
-X2xvY2spOworCisJcmV0dXJuIHJldDsKK30KKworc3RhdGljIHNzaXplX3QKK3NhbXBsZV9tdm5l
-dF9kZXZfc2hvdyhzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2VfYXR0cmlidXRlICph
-dHRyLAorCQkgICAgIGNoYXIgKmJ1ZikKK3sKKwlpZiAobWRldl9mcm9tX2RldihkZXYpKQorCQly
-ZXR1cm4gc3ByaW50ZihidWYsICJUaGlzIGlzIE1ERVYgJXNcbiIsIGRldl9uYW1lKGRldikpOwor
-CisJcmV0dXJuIHNwcmludGYoYnVmLCAiXG4iKTsKK30KKworc3RhdGljIERFVklDRV9BVFRSX1JP
-KHNhbXBsZV9tdm5ldF9kZXYpOworCitzdGF0aWMgc3RydWN0IGF0dHJpYnV0ZSAqbXZuZXRfZGV2
-X2F0dHJzW10gPSB7CisJJmRldl9hdHRyX3NhbXBsZV9tdm5ldF9kZXYuYXR0ciwKKwlOVUxMLAor
-fTsKKworc3RhdGljIGNvbnN0IHN0cnVjdCBhdHRyaWJ1dGVfZ3JvdXAgbXZuZXRfZGV2X2dyb3Vw
-ID0geworCS5uYW1lICA9ICJtdm5ldF9kZXYiLAorCS5hdHRycyA9IG12bmV0X2Rldl9hdHRycywK
-K307CisKK3N0YXRpYyBjb25zdCBzdHJ1Y3QgYXR0cmlidXRlX2dyb3VwICptdm5ldF9kZXZfZ3Jv
-dXBzW10gPSB7CisJJm12bmV0X2Rldl9ncm91cCwKKwlOVUxMLAorfTsKKworc3RhdGljIHNzaXpl
-X3QKK3NhbXBsZV9tZGV2X2Rldl9zaG93KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmlj
-ZV9hdHRyaWJ1dGUgKmF0dHIsCisJCSAgICAgY2hhciAqYnVmKQoreworCWlmIChtZGV2X2Zyb21f
-ZGV2KGRldikpCisJCXJldHVybiBzcHJpbnRmKGJ1ZiwgIlRoaXMgaXMgTURFViAlc1xuIiwgZGV2
-X25hbWUoZGV2KSk7CisKKwlyZXR1cm4gc3ByaW50ZihidWYsICJcbiIpOworfQorCitzdGF0aWMg
-REVWSUNFX0FUVFJfUk8oc2FtcGxlX21kZXZfZGV2KTsKKworc3RhdGljIHN0cnVjdCBhdHRyaWJ1
-dGUgKm1kZXZfZGV2X2F0dHJzW10gPSB7CisJJmRldl9hdHRyX3NhbXBsZV9tZGV2X2Rldi5hdHRy
-LAorCU5VTEwsCit9OworCitzdGF0aWMgY29uc3Qgc3RydWN0IGF0dHJpYnV0ZV9ncm91cCBtZGV2
-X2Rldl9ncm91cCA9IHsKKwkubmFtZSAgPSAidmVuZG9yIiwKKwkuYXR0cnMgPSBtZGV2X2Rldl9h
-dHRycywKK307CisKK3N0YXRpYyBjb25zdCBzdHJ1Y3QgYXR0cmlidXRlX2dyb3VwICptZGV2X2Rl
-dl9ncm91cHNbXSA9IHsKKwkmbWRldl9kZXZfZ3JvdXAsCisJTlVMTCwKK307CisKKyNkZWZpbmUg
-TVZORVRfU1RSSU5HX0xFTiAxNgorCitzdGF0aWMgc3NpemVfdAorbmFtZV9zaG93KHN0cnVjdCBr
-b2JqZWN0ICprb2JqLCBzdHJ1Y3QgZGV2aWNlICpkZXYsIGNoYXIgKmJ1ZikKK3sKKwljaGFyIG5h
-bWVbTVZORVRfU1RSSU5HX0xFTl07CisJY29uc3QgY2hhciAqbmFtZV9zdHIgPSAidmlydGlvLW5l
-dCI7CisKKwlzbnByaW50ZihuYW1lLCBNVk5FVF9TVFJJTkdfTEVOLCAiJXMiLCBkZXZfZHJpdmVy
-X3N0cmluZyhkZXYpKTsKKwlpZiAoIXN0cmNtcChrb2JqLT5uYW1lLCBuYW1lKSkKKwkJcmV0dXJu
-IHNwcmludGYoYnVmLCAiJXNcbiIsIG5hbWVfc3RyKTsKKworCXJldHVybiAtRUlOVkFMOworfQor
-CitzdGF0aWMgTURFVl9UWVBFX0FUVFJfUk8obmFtZSk7CisKK3N0YXRpYyBzc2l6ZV90CithdmFp
-bGFibGVfaW5zdGFuY2VzX3Nob3coc3RydWN0IGtvYmplY3QgKmtvYmosIHN0cnVjdCBkZXZpY2Ug
-KmRldiwgY2hhciAqYnVmKQoreworCXJldHVybiBzcHJpbnRmKGJ1ZiwgIiVkXG4iLCBJTlRfTUFY
-KTsKK30KKworc3RhdGljIE1ERVZfVFlQRV9BVFRSX1JPKGF2YWlsYWJsZV9pbnN0YW5jZXMpOwor
-CitzdGF0aWMgc3NpemVfdCBkZXZpY2VfYXBpX3Nob3coc3RydWN0IGtvYmplY3QgKmtvYmosIHN0
-cnVjdCBkZXZpY2UgKmRldiwKKwkJCSAgICAgICBjaGFyICpidWYpCit7CisJcmV0dXJuIHNwcmlu
-dGYoYnVmLCAiJXNcbiIsIFZJUlRJT19NREVWX0RFVklDRV9BUElfU1RSSU5HKTsKK30KKworc3Rh
-dGljIE1ERVZfVFlQRV9BVFRSX1JPKGRldmljZV9hcGkpOworCitzdGF0aWMgc3RydWN0IGF0dHJp
-YnV0ZSAqbWRldl90eXBlc19hdHRyc1tdID0geworCSZtZGV2X3R5cGVfYXR0cl9uYW1lLmF0dHIs
-CisJJm1kZXZfdHlwZV9hdHRyX2RldmljZV9hcGkuYXR0ciwKKwkmbWRldl90eXBlX2F0dHJfYXZh
-aWxhYmxlX2luc3RhbmNlcy5hdHRyLAorCU5VTEwsCit9OworCitzdGF0aWMgc3RydWN0IGF0dHJp
-YnV0ZV9ncm91cCBtZGV2X3R5cGVfZ3JvdXAgPSB7CisJLm5hbWUgID0gInZpcnRpbyIsCisJLmF0
-dHJzID0gbWRldl90eXBlc19hdHRycywKK307CisKKy8qIFRCRDogInZob3N0IiB0eXBlICovCisK
-K3N0YXRpYyBzdHJ1Y3QgYXR0cmlidXRlX2dyb3VwICptZGV2X3R5cGVfZ3JvdXBzW10gPSB7CisJ
-Jm1kZXZfdHlwZV9ncm91cCwKKwlOVUxMLAorfTsKKworc3RhdGljIGludCBtdm5ldF9zZXRfdnFf
-YWRkcmVzcyhzdHJ1Y3QgbWRldl9kZXZpY2UgKm1kZXYsIHUxNiBpZHgsCisJCQkJdTY0IGRlc2Nf
-YXJlYSwgdTY0IGRyaXZlcl9hcmVhLCB1NjQgZGV2aWNlX2FyZWEpCit7CisJc3RydWN0IG12bmV0
-X3N0YXRlICptdm5ldCA9IG1kZXZfZ2V0X2RydmRhdGEobWRldik7CisJc3RydWN0IG12bmV0X3Zp
-cnRxdWV1ZSAqdnEgPSAmbXZuZXQtPnZxc1tpZHhdOworCisJdnEtPmRlc2NfYWRkciA9IGRlc2Nf
-YXJlYTsKKwl2cS0+ZHJpdmVyX2FkZHIgPSBkcml2ZXJfYXJlYTsKKwl2cS0+ZGV2aWNlX2FkZHIg
-PSBkZXZpY2VfYXJlYTsKKworCXJldHVybiAwOworfQorCitzdGF0aWMgdm9pZCBtdm5ldF9zZXRf
-dnFfbnVtKHN0cnVjdCBtZGV2X2RldmljZSAqbWRldiwgdTE2IGlkeCwgdTMyIG51bSkKK3sKKwlz
-dHJ1Y3QgbXZuZXRfc3RhdGUgKm12bmV0ID0gbWRldl9nZXRfZHJ2ZGF0YShtZGV2KTsKKwlzdHJ1
-Y3QgbXZuZXRfdmlydHF1ZXVlICp2cSA9ICZtdm5ldC0+dnFzW2lkeF07CisKKwl2cS0+bnVtID0g
-bnVtOworfQorCitzdGF0aWMgdm9pZCBtdm5ldF9raWNrX3ZxKHN0cnVjdCBtZGV2X2RldmljZSAq
-bWRldiwgdTE2IGlkeCkKK3sKKwlzdHJ1Y3QgbXZuZXRfc3RhdGUgKm12bmV0ID0gbWRldl9nZXRf
-ZHJ2ZGF0YShtZGV2KTsKKwlzdHJ1Y3QgbXZuZXRfdmlydHF1ZXVlICp2cSA9ICZtdm5ldC0+dnFz
-W2lkeF07CisKKwlpZiAodnEtPnJlYWR5KQorCQlzY2hlZHVsZV93b3JrKCZtdm5ldC0+d29yayk7
-Cit9CisKK3N0YXRpYyB2b2lkIG12bmV0X3NldF92cV9jYihzdHJ1Y3QgbWRldl9kZXZpY2UgKm1k
-ZXYsIHUxNiBpZHgsCisJCQkgICAgc3RydWN0IHZpcnRpb19tZGV2X2NhbGxiYWNrICpjYikKK3sK
-KwlzdHJ1Y3QgbXZuZXRfc3RhdGUgKm12bmV0ID0gbWRldl9nZXRfZHJ2ZGF0YShtZGV2KTsKKwlz
-dHJ1Y3QgbXZuZXRfdmlydHF1ZXVlICp2cSA9ICZtdm5ldC0+dnFzW2lkeF07CisKKwl2cS0+Y2Ig
-PSBjYi0+Y2FsbGJhY2s7CisJdnEtPnByaXZhdGUgPSBjYi0+cHJpdmF0ZTsKK30KKworc3RhdGlj
-IHZvaWQgbXZuZXRfc2V0X3ZxX3JlYWR5KHN0cnVjdCBtZGV2X2RldmljZSAqbWRldiwgdTE2IGlk
-eCwgYm9vbCByZWFkeSkKK3sKKwlzdHJ1Y3QgbXZuZXRfc3RhdGUgKm12bmV0ID0gbWRldl9nZXRf
-ZHJ2ZGF0YShtZGV2KTsKKwlzdHJ1Y3QgbXZuZXRfdmlydHF1ZXVlICp2cSA9ICZtdm5ldC0+dnFz
-W2lkeF07CisKKwlzcGluX2xvY2soJm12bmV0LT5sb2NrKTsKKwl2cS0+cmVhZHkgPSByZWFkeTsK
-KwlpZiAodnEtPnJlYWR5KQorCQltdm5ldF9xdWV1ZV9yZWFkeShtdm5ldCwgaWR4KTsKKwlzcGlu
-X3VubG9jaygmbXZuZXQtPmxvY2spOworfQorCitzdGF0aWMgYm9vbCBtdm5ldF9nZXRfdnFfcmVh
-ZHkoc3RydWN0IG1kZXZfZGV2aWNlICptZGV2LCB1MTYgaWR4KQoreworCXN0cnVjdCBtdm5ldF9z
-dGF0ZSAqbXZuZXQgPSBtZGV2X2dldF9kcnZkYXRhKG1kZXYpOworCXN0cnVjdCBtdm5ldF92aXJ0
-cXVldWUgKnZxID0gJm12bmV0LT52cXNbaWR4XTsKKworCXJldHVybiB2cS0+cmVhZHk7Cit9CisK
-K3N0YXRpYyBpbnQgbXZuZXRfc2V0X3ZxX3N0YXRlKHN0cnVjdCBtZGV2X2RldmljZSAqbWRldiwg
-dTE2IGlkeCwgdTY0IHN0YXRlKQoreworCXN0cnVjdCBtdm5ldF9zdGF0ZSAqbXZuZXQgPSBtZGV2
-X2dldF9kcnZkYXRhKG1kZXYpOworCXN0cnVjdCBtdm5ldF92aXJ0cXVldWUgKnZxID0gJm12bmV0
-LT52cXNbaWR4XTsKKwlzdHJ1Y3QgdnJpbmdoICp2cmggPSAmdnEtPnZyaW5nOworCisJc3Bpbl9s
-b2NrKCZtdm5ldC0+bG9jayk7CisJdnJoLT5sYXN0X2F2YWlsX2lkeCA9IHN0YXRlOworCXNwaW5f
-dW5sb2NrKCZtdm5ldC0+bG9jayk7CisKKwlyZXR1cm4gMDsKK30KKworc3RhdGljIHU2NCBtdm5l
-dF9nZXRfdnFfc3RhdGUoc3RydWN0IG1kZXZfZGV2aWNlICptZGV2LCB1MTYgaWR4KQoreworCXN0
-cnVjdCBtdm5ldF9zdGF0ZSAqbXZuZXQgPSBtZGV2X2dldF9kcnZkYXRhKG1kZXYpOworCXN0cnVj
-dCBtdm5ldF92aXJ0cXVldWUgKnZxID0gJm12bmV0LT52cXNbaWR4XTsKKwlzdHJ1Y3QgdnJpbmdo
-ICp2cmggPSAmdnEtPnZyaW5nOworCisJcmV0dXJuIHZyaC0+bGFzdF9hdmFpbF9pZHg7Cit9CisK
-K3N0YXRpYyB1MTYgbXZuZXRfZ2V0X3ZxX2FsaWduKHN0cnVjdCBtZGV2X2RldmljZSAqbWRldikK
-K3sKKwlyZXR1cm4gTVZORVRfUVVFVUVfQUxJR047Cit9CisKK3N0YXRpYyB1NjQgbXZuZXRfZ2V0
-X2ZlYXR1cmVzKHN0cnVjdCBtZGV2X2RldmljZSAqbWRldikKK3sKKwlyZXR1cm4gbXZuZXRfZmVh
-dHVyZXM7Cit9CisKK3N0YXRpYyBpbnQgbXZuZXRfc2V0X2ZlYXR1cmVzKHN0cnVjdCBtZGV2X2Rl
-dmljZSAqbWRldiwgdTY0IGZlYXR1cmVzKQoreworCXN0cnVjdCBtdm5ldF9zdGF0ZSAqbXZuZXQg
-PSBtZGV2X2dldF9kcnZkYXRhKG1kZXYpOworCisJLyogRE1BIG1hcHBpbmcgbXVzdCBiZSBkb25l
-IGJ5IGRyaXZlciAqLworCWlmICghKGZlYXR1cmVzICYgKDFVTEwgPDwgVklSVElPX0ZfSU9NTVVf
-UExBVEZPUk0pKSkKKwkJcmV0dXJuIC1FSU5WQUw7CisKKwltdm5ldC0+ZmVhdHVyZXMgPSBmZWF0
-dXJlcyAmIG12bmV0X2ZlYXR1cmVzOworCisJcmV0dXJuIDA7Cit9CisKK3N0YXRpYyB2b2lkIG12
-bmV0X3NldF9jb25maWdfY2Ioc3RydWN0IG1kZXZfZGV2aWNlICptZGV2LAorCQkJCXN0cnVjdCB2
-aXJ0aW9fbWRldl9jYWxsYmFjayAqY2IpCit7CisJLyogV2UgZG9uJ3Qgc3VwcG9ydCBjb25maWcg
-aW50ZXJydXB0ICovCit9CisKK3N0YXRpYyB1MTYgbXZuZXRfZ2V0X3ZxX251bV9tYXgoc3RydWN0
-IG1kZXZfZGV2aWNlICptZGV2KQoreworCXJldHVybiBNVk5FVF9RVUVVRV9NQVg7Cit9CisKK3N0
-YXRpYyB1MzIgbXZuZXRfZ2V0X2RldmljZV9pZChzdHJ1Y3QgbWRldl9kZXZpY2UgKm1kZXYpCit7
-CisJcmV0dXJuIE1WTkVUX0RFVklDRV9JRDsKK30KKworc3RhdGljIHUzMiBtdm5ldF9nZXRfdmVu
-ZG9yX2lkKHN0cnVjdCBtZGV2X2RldmljZSAqbWRldikKK3sKKwlyZXR1cm4gTVZORVRfVkVORE9S
-X0lEOworfQorCitzdGF0aWMgdTggbXZuZXRfZ2V0X3N0YXR1cyhzdHJ1Y3QgbWRldl9kZXZpY2Ug
-Km1kZXYpCit7CisJc3RydWN0IG12bmV0X3N0YXRlICptdm5ldCA9IG1kZXZfZ2V0X2RydmRhdGEo
-bWRldik7CisKKwlyZXR1cm4gbXZuZXQtPnN0YXR1czsKK30KKworc3RhdGljIHZvaWQgbXZuZXRf
-c2V0X3N0YXR1cyhzdHJ1Y3QgbWRldl9kZXZpY2UgKm1kZXYsIHU4IHN0YXR1cykKK3sKKwlzdHJ1
-Y3QgbXZuZXRfc3RhdGUgKm12bmV0ID0gbWRldl9nZXRfZHJ2ZGF0YShtZGV2KTsKKworCW12bmV0
-LT5zdGF0dXMgPSBzdGF0dXM7CisKKwlpZiAoc3RhdHVzID09IDApIHsKKwkJc3Bpbl9sb2NrKCZt
-dm5ldC0+bG9jayk7CisJCW12bmV0X3Jlc2V0KG12bmV0KTsKKwkJc3Bpbl91bmxvY2soJm12bmV0
-LT5sb2NrKTsKKwl9Cit9CisKK3N0YXRpYyB2b2lkIG12bmV0X2dldF9jb25maWcoc3RydWN0IG1k
-ZXZfZGV2aWNlICptZGV2LCB1bnNpZ25lZCBpbnQgb2Zmc2V0LAorCQkJICAgICB2b2lkICpidWYs
-IHVuc2lnbmVkIGludCBsZW4pCit7CisJc3RydWN0IG12bmV0X3N0YXRlICptdm5ldCA9IG1kZXZf
-Z2V0X2RydmRhdGEobWRldik7CisKKwlpZiAob2Zmc2V0ICsgbGVuIDwgc2l6ZW9mKHN0cnVjdCB2
-aXJ0aW9fbmV0X2NvbmZpZykpCisJCW1lbWNweShidWYsICZtdm5ldC0+Y29uZmlnICsgb2Zmc2V0
-LCBsZW4pOworfQorCitzdGF0aWMgdm9pZCBtdm5ldF9zZXRfY29uZmlnKHN0cnVjdCBtZGV2X2Rl
-dmljZSAqbWRldiwgdW5zaWduZWQgaW50IG9mZnNldCwKKwkJCSAgICAgY29uc3Qgdm9pZCAqYnVm
-LCB1bnNpZ25lZCBpbnQgbGVuKQoreworCS8qIE5vIHdyaXRhYmxlIGNvbmZpZyBzdXBwb3J0dGVk
-IGJ5IG12bmV0ICovCit9CisKK3N0YXRpYyB1NjQgbXZuZXRfZ2V0X21kZXZfZmVhdHVyZXMoc3Ry
-dWN0IG1kZXZfZGV2aWNlICptZGV2KQoreworCXJldHVybiBWSVJUSU9fTURFVl9GX1ZFUlNJT05f
-MTsKK30KKworc3RhdGljIHUzMiBtdm5ldF9nZXRfZ2VuZXJhdGlvbihzdHJ1Y3QgbWRldl9kZXZp
-Y2UgKm1kZXYpCit7CisJc3RydWN0IG12bmV0X3N0YXRlICptdm5ldCA9IG1kZXZfZ2V0X2RydmRh
-dGEobWRldik7CisKKwlyZXR1cm4gbXZuZXQtPmdlbmVyYXRpb247Cit9CisKK3N0YXRpYyBjb25z
-dCBzdHJ1Y3QgdmlydGlvX21kZXZfZGV2aWNlX29wcyB2aXJ0aW9fbWRldl9vcHMgPSB7CisJLnNl
-dF92cV9hZGRyZXNzICAgICAgICAgPSBtdm5ldF9zZXRfdnFfYWRkcmVzcywKKwkuc2V0X3ZxX251
-bSAgICAgICAgICAgICA9IG12bmV0X3NldF92cV9udW0sCisJLmtpY2tfdnEgICAgICAgICAgICAg
-ICAgPSBtdm5ldF9raWNrX3ZxLAorCS5zZXRfdnFfY2IgICAgICAgICAgICAgID0gbXZuZXRfc2V0
-X3ZxX2NiLAorCS5zZXRfdnFfcmVhZHkgICAgICAgICAgID0gbXZuZXRfc2V0X3ZxX3JlYWR5LAor
-CS5nZXRfdnFfcmVhZHkgICAgICAgICAgID0gbXZuZXRfZ2V0X3ZxX3JlYWR5LAorCS5zZXRfdnFf
-c3RhdGUgICAgICAgICAgID0gbXZuZXRfc2V0X3ZxX3N0YXRlLAorCS5nZXRfdnFfc3RhdGUgICAg
-ICAgICAgID0gbXZuZXRfZ2V0X3ZxX3N0YXRlLAorCS5nZXRfdnFfYWxpZ24gICAgICAgICAgID0g
-bXZuZXRfZ2V0X3ZxX2FsaWduLAorCS5nZXRfZmVhdHVyZXMgICAgICAgICAgID0gbXZuZXRfZ2V0
-X2ZlYXR1cmVzLAorCS5zZXRfZmVhdHVyZXMgICAgICAgICAgID0gbXZuZXRfc2V0X2ZlYXR1cmVz
-LAorCS5zZXRfY29uZmlnX2NiICAgICAgICAgID0gbXZuZXRfc2V0X2NvbmZpZ19jYiwKKwkuZ2V0
-X3ZxX251bV9tYXggICAgICAgICA9IG12bmV0X2dldF92cV9udW1fbWF4LAorCS5nZXRfZGV2aWNl
-X2lkICAgICAgICAgID0gbXZuZXRfZ2V0X2RldmljZV9pZCwKKwkuZ2V0X3ZlbmRvcl9pZCAgICAg
-ICAgICA9IG12bmV0X2dldF92ZW5kb3JfaWQsCisJLmdldF9zdGF0dXMgICAgICAgICAgICAgPSBt
-dm5ldF9nZXRfc3RhdHVzLAorCS5zZXRfc3RhdHVzICAgICAgICAgICAgID0gbXZuZXRfc2V0X3N0
-YXR1cywKKwkuZ2V0X2NvbmZpZyAgICAgICAgICAgICA9IG12bmV0X2dldF9jb25maWcsCisJLnNl
-dF9jb25maWcgICAgICAgICAgICAgPSBtdm5ldF9zZXRfY29uZmlnLAorCS5nZXRfbWRldl9mZWF0
-dXJlcyAgICAgID0gbXZuZXRfZ2V0X21kZXZfZmVhdHVyZXMsCisJLmdldF9nZW5lcmF0aW9uICAg
-ICAgICAgPSBtdm5ldF9nZXRfZ2VuZXJhdGlvbiwKK307CisKK3N0YXRpYyBjb25zdCBzdHJ1Y3Qg
-bWRldl9wYXJlbnRfb3BzIG1kZXZfZm9wcyA9IHsKKwkub3duZXIgICAgICAgICAgICAgICAgICA9
-IFRISVNfTU9EVUxFLAorCS5kZXZfYXR0cl9ncm91cHMgICAgICAgID0gbXZuZXRfZGV2X2dyb3Vw
-cywKKwkubWRldl9hdHRyX2dyb3VwcyAgICAgICA9IG1kZXZfZGV2X2dyb3VwcywKKwkuc3VwcG9y
-dGVkX3R5cGVfZ3JvdXBzICA9IG1kZXZfdHlwZV9ncm91cHMsCisJLmNyZWF0ZSAgICAgICAgICAg
-ICAgICAgPSBtdm5ldF9jcmVhdGUsCisJLnJlbW92ZQkJCT0gbXZuZXRfcmVtb3ZlLAorfTsKKwor
-c3RhdGljIHZvaWQgbXZuZXRfZGV2aWNlX3JlbGVhc2Uoc3RydWN0IGRldmljZSAqZGV2KQorewor
-CWRldl9kYmcoZGV2LCAibXZuZXQ6IHJlbGVhc2VkXG4iKTsKK30KKworc3RhdGljIGludCBfX2lu
-aXQgbXZuZXRfZGV2X2luaXQodm9pZCkKK3sKKwlpbnQgcmV0ID0gMDsKKworCXByX2luZm8oIm12
-bmV0X2RldjogJXNcbiIsIF9fZnVuY19fKTsKKworCW1lbXNldCgmbXZuZXRfZGV2LCAwLCBzaXpl
-b2YobXZuZXRfZGV2KSk7CisKKwlpZHJfaW5pdCgmbXZuZXRfZGV2LnZkX2lkcik7CisKKwltdm5l
-dF9kZXYudmRfY2xhc3MgPSBjbGFzc19jcmVhdGUoVEhJU19NT0RVTEUsIE1WTkVUX0NMQVNTX05B
-TUUpOworCisJaWYgKElTX0VSUihtdm5ldF9kZXYudmRfY2xhc3MpKSB7CisJCXByX2VycigiRXJy
-b3I6IGZhaWxlZCB0byByZWdpc3RlciBtdm5ldF9kZXYgY2xhc3NcbiIpOworCQlyZXQgPSBQVFJf
-RVJSKG12bmV0X2Rldi52ZF9jbGFzcyk7CisJCWdvdG8gZmFpbGVkMTsKKwl9CisKKwltdm5ldF9k
-ZXYuZGV2LmNsYXNzID0gbXZuZXRfZGV2LnZkX2NsYXNzOworCW12bmV0X2Rldi5kZXYucmVsZWFz
-ZSA9IG12bmV0X2RldmljZV9yZWxlYXNlOworCWRldl9zZXRfbmFtZSgmbXZuZXRfZGV2LmRldiwg
-IiVzIiwgTVZORVRfTkFNRSk7CisKKwlyZXQgPSBkZXZpY2VfcmVnaXN0ZXIoJm12bmV0X2Rldi5k
-ZXYpOworCWlmIChyZXQpCisJCWdvdG8gZmFpbGVkMjsKKworCXJldCA9IG1kZXZfcmVnaXN0ZXJf
-ZGV2aWNlKCZtdm5ldF9kZXYuZGV2LCAmbWRldl9mb3BzKTsKKwlpZiAocmV0KQorCQlnb3RvIGZh
-aWxlZDM7CisKKwltdXRleF9pbml0KCZtZGV2X2xpc3RfbG9jayk7CisJSU5JVF9MSVNUX0hFQUQo
-Jm1kZXZfZGV2aWNlc19saXN0KTsKKworCWdvdG8gYWxsX2RvbmU7CisKK2ZhaWxlZDM6CisKKwlk
-ZXZpY2VfdW5yZWdpc3RlcigmbXZuZXRfZGV2LmRldik7CitmYWlsZWQyOgorCWNsYXNzX2Rlc3Ry
-b3kobXZuZXRfZGV2LnZkX2NsYXNzKTsKKworZmFpbGVkMToKK2FsbF9kb25lOgorCXJldHVybiBy
-ZXQ7Cit9CisKK3N0YXRpYyB2b2lkIF9fZXhpdCBtdm5ldF9kZXZfZXhpdCh2b2lkKQoreworCW12
-bmV0X2Rldi5kZXYuYnVzID0gTlVMTDsKKwltZGV2X3VucmVnaXN0ZXJfZGV2aWNlKCZtdm5ldF9k
-ZXYuZGV2KTsKKworCWRldmljZV91bnJlZ2lzdGVyKCZtdm5ldF9kZXYuZGV2KTsKKwlpZHJfZGVz
-dHJveSgmbXZuZXRfZGV2LnZkX2lkcik7CisJY2xhc3NfZGVzdHJveShtdm5ldF9kZXYudmRfY2xh
-c3MpOworCW12bmV0X2Rldi52ZF9jbGFzcyA9IE5VTEw7CisJcHJfaW5mbygibXZuZXRfZGV2OiBV
-bmxvYWRlZCFcbiIpOworfQorCittb2R1bGVfaW5pdChtdm5ldF9kZXZfaW5pdCkKK21vZHVsZV9l
-eGl0KG12bmV0X2Rldl9leGl0KQorCitNT0RVTEVfTElDRU5TRSgiR1BMIHYyIik7CitNT0RVTEVf
-SU5GTyhzdXBwb3J0ZWQsICJTaW11bGF0ZSBsb29wYmFjayBldGhlcm5ldCBkZXZpY2Ugb3ZlciBt
-ZGV2Iik7CitNT0RVTEVfVkVSU0lPTihWRVJTSU9OX1NUUklORyk7CitNT0RVTEVfQVVUSE9SKERS
-SVZFUl9BVVRIT1IpOwotLSAKMi4xOS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+This is a multipart message in MIME format.
+
+--===============0143804516==
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0362_01D58982.A348AAE0"
+Content-Language: en-us
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_0362_01D58982.A348AAE0
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Hi,
+ 
+Can you let me know what type of Technology User are you looking for?
+ 
+Target Technology: 
+Target Geography:
+ 
+Regards,
+-Angela
+ 
+From: Angela Wang [mailto:angela@technologydatahub.com] 
+Sent: Tuesday, October 22, 2019 12:49 PM
+To: 'intel-gvt-dev@lists.freedesktop.org'
+Subject: 10Gen
+ 
+Hi,
+ 
+I would like to know if you are interested in acquiring a list of customers
+that use 10Gen Software Users.
+ 
+Our data file contains 15plus points with Email address, Contact Numbers and
+Contact profiles.
+ 
+We do have decision maker's data from Industry like: Manufacturing and
+Logistics, Retail, Healthcare, Media and Entertainment and
+Telecommunication.
+ 
+Please let me know If you like to see sample file as per your requirements.
+ 
+Note: - As per your requirement, I can break down the list.
+ 
+---
+ 
+Thanking you,
+Angela Wang.
+Manager | Demand Generation
+ 
+Note: Before saying no to our product please check the quality and quantity
+of our product.
+ 
+
+------=_NextPart_000_0362_01D58982.A348AAE0
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
+xmlns=3D"http://www.w3.org/TR/REC-html40"><head><meta =
+http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dus-ascii"><meta name=3DProgId content=3DWord.Document><meta =
+name=3DGenerator content=3D"Microsoft Word 15"><meta name=3DOriginator =
+content=3D"Microsoft Word 15"><link rel=3DFile-List =
+href=3D"cid:filelist.xml@01D58981.6F6EB350"><!--[if gte mso 9]><xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+</o:OfficeDocumentSettings>
+</xml><![endif]--><link rel=3DthemeData href=3D"~~themedata~~"><link =
+rel=3DcolorSchemeMapping href=3D"~~colorschememapping~~"><!--[if gte mso =
+9]><xml>
+<w:WordDocument>
+<w:View>Normal</w:View>
+<w:Zoom>96</w:Zoom>
+<w:TrackMoves/>
+<w:TrackFormatting/>
+<w:EnvelopeVis/>
+<w:ValidateAgainstSchemas/>
+<w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+<w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+<w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+<w:DoNotPromoteQF/>
+<w:LidThemeOther>EN-US</w:LidThemeOther>
+<w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+<w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+<w:Compatibility>
+<w:DoNotExpandShiftReturn/>
+<w:BreakWrappedTables/>
+<w:SplitPgBreakAndParaMark/>
+<w:EnableOpenTypeKerning/>
+</w:Compatibility>
+<w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+<m:mathPr>
+<m:mathFont m:val=3D"Cambria Math"/>
+<m:brkBin m:val=3D"before"/>
+<m:brkBinSub m:val=3D"&#45;-"/>
+<m:smallFrac m:val=3D"off"/>
+<m:dispDef/>
+<m:lMargin m:val=3D"0"/>
+<m:rMargin m:val=3D"0"/>
+<m:defJc m:val=3D"centerGroup"/>
+<m:wrapIndent m:val=3D"1440"/>
+<m:intLim m:val=3D"subSup"/>
+<m:naryLim m:val=3D"undOvr"/>
+</m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<w:LatentStyles DefLockedState=3D"false" DefUnhideWhenUsed=3D"false" =
+DefSemiHidden=3D"false" DefQFormat=3D"false" DefPriority=3D"99" =
+LatentStyleCount=3D"371">
+<w:LsdException Locked=3D"false" Priority=3D"0" QFormat=3D"true" =
+Name=3D"Normal"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" QFormat=3D"true" =
+Name=3D"heading 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 7"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 8"/>
+<w:LsdException Locked=3D"false" Priority=3D"9" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"heading 9"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 5"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 6"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 7"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 8"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index 9"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 7"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 8"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toc 9"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Normal Indent"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"footnote text"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"annotation text"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"header"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"footer"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"index heading"/>
+<w:LsdException Locked=3D"false" Priority=3D"35" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"caption"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"table of figures"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"envelope address"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"envelope return"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"footnote reference"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"annotation reference"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"line number"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"page number"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"endnote reference"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"endnote text"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"table of authorities"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"macro"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"toa heading"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Bullet"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Number"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List 5"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Bullet 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Bullet 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Bullet 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Bullet 5"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Number 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Number 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Number 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Number 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"10" QFormat=3D"true" =
+Name=3D"Title"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Closing"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Signature"/>
+<w:LsdException Locked=3D"false" Priority=3D"1" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Default Paragraph Font"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text Indent"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Continue"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Continue 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Continue 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Continue 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"List Continue 5"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Message Header"/>
+<w:LsdException Locked=3D"false" Priority=3D"11" QFormat=3D"true" =
+Name=3D"Subtitle"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Salutation"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Date"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text First Indent"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text First Indent 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Note Heading"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text Indent 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Body Text Indent 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Block Text"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Hyperlink"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"FollowedHyperlink"/>
+<w:LsdException Locked=3D"false" Priority=3D"22" QFormat=3D"true" =
+Name=3D"Strong"/>
+<w:LsdException Locked=3D"false" Priority=3D"20" QFormat=3D"true" =
+Name=3D"Emphasis"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Document Map"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Plain Text"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"E-mail Signature"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Top of Form"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Bottom of Form"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Normal (Web)"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Acronym"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Address"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Cite"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Code"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Definition"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Keyboard"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Preformatted"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Sample"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Typewriter"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"HTML Variable"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Normal Table"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"annotation subject"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"No List"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Outline List 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Outline List 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Outline List 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Simple 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Simple 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Simple 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Classic 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Classic 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Classic 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Classic 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Colorful 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Colorful 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Colorful 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Columns 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Columns 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Columns 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Columns 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Columns 5"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 5"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 6"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 7"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Grid 8"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 4"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 5"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 6"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 7"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table List 8"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table 3D effects 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table 3D effects 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table 3D effects 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Contemporary"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Elegant"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Professional"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Subtle 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Subtle 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Web 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Web 2"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Web 3"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Balloon Text"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" Name=3D"Table Grid"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Table Theme"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" Name=3D"Placeholder =
+Text"/>
+<w:LsdException Locked=3D"false" Priority=3D"1" QFormat=3D"true" =
+Name=3D"No Spacing"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" Name=3D"Light =
+Shading"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" Name=3D"Light List"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" Name=3D"Light Grid"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" Name=3D"Medium Shading =
+1"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" Name=3D"Medium Shading =
+2"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" Name=3D"Medium List =
+1"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" Name=3D"Medium List =
+2"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" Name=3D"Medium Grid =
+1"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" Name=3D"Medium Grid =
+2"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" Name=3D"Medium Grid =
+3"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" Name=3D"Dark List"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" Name=3D"Colorful =
+Shading"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" Name=3D"Colorful =
+List"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" Name=3D"Colorful =
+Grid"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" Name=3D"Light Shading =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" Name=3D"Light List =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" Name=3D"Light Grid =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" Name=3D"Medium Shading =
+1 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" Name=3D"Medium Shading =
+2 Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" Name=3D"Medium List 1 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" SemiHidden=3D"true" Name=3D"Revision"/>
+<w:LsdException Locked=3D"false" Priority=3D"34" QFormat=3D"true" =
+Name=3D"List Paragraph"/>
+<w:LsdException Locked=3D"false" Priority=3D"29" QFormat=3D"true" =
+Name=3D"Quote"/>
+<w:LsdException Locked=3D"false" Priority=3D"30" QFormat=3D"true" =
+Name=3D"Intense Quote"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" Name=3D"Medium List 2 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" Name=3D"Medium Grid 1 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" Name=3D"Medium Grid 2 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" Name=3D"Medium Grid 3 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" Name=3D"Dark List =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" Name=3D"Colorful =
+Shading Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" Name=3D"Colorful List =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" Name=3D"Colorful Grid =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" Name=3D"Light Shading =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" Name=3D"Light List =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" Name=3D"Light Grid =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" Name=3D"Medium Shading =
+1 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" Name=3D"Medium Shading =
+2 Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" Name=3D"Medium List 1 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" Name=3D"Medium List 2 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" Name=3D"Medium Grid 1 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" Name=3D"Medium Grid 2 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" Name=3D"Medium Grid 3 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" Name=3D"Dark List =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" Name=3D"Colorful =
+Shading Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" Name=3D"Colorful List =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" Name=3D"Colorful Grid =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" Name=3D"Light Shading =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" Name=3D"Light List =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" Name=3D"Light Grid =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" Name=3D"Medium Shading =
+1 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" Name=3D"Medium Shading =
+2 Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" Name=3D"Medium List 1 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" Name=3D"Medium List 2 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" Name=3D"Medium Grid 1 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" Name=3D"Medium Grid 2 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" Name=3D"Medium Grid 3 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" Name=3D"Dark List =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" Name=3D"Colorful =
+Shading Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" Name=3D"Colorful List =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" Name=3D"Colorful Grid =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" Name=3D"Light Shading =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" Name=3D"Light List =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" Name=3D"Light Grid =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" Name=3D"Medium Shading =
+1 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" Name=3D"Medium Shading =
+2 Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" Name=3D"Medium List 1 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" Name=3D"Medium List 2 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" Name=3D"Medium Grid 1 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" Name=3D"Medium Grid 2 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" Name=3D"Medium Grid 3 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" Name=3D"Dark List =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" Name=3D"Colorful =
+Shading Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" Name=3D"Colorful List =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" Name=3D"Colorful Grid =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" Name=3D"Light Shading =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" Name=3D"Light List =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" Name=3D"Light Grid =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" Name=3D"Medium Shading =
+1 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" Name=3D"Medium Shading =
+2 Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" Name=3D"Medium List 1 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" Name=3D"Medium List 2 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" Name=3D"Medium Grid 1 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" Name=3D"Medium Grid 2 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" Name=3D"Medium Grid 3 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" Name=3D"Dark List =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" Name=3D"Colorful =
+Shading Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" Name=3D"Colorful List =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" Name=3D"Colorful Grid =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"60" Name=3D"Light Shading =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"61" Name=3D"Light List =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"62" Name=3D"Light Grid =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"63" Name=3D"Medium Shading =
+1 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"64" Name=3D"Medium Shading =
+2 Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"65" Name=3D"Medium List 1 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"66" Name=3D"Medium List 2 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"67" Name=3D"Medium Grid 1 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"68" Name=3D"Medium Grid 2 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"69" Name=3D"Medium Grid 3 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"70" Name=3D"Dark List =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"71" Name=3D"Colorful =
+Shading Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"72" Name=3D"Colorful List =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"73" Name=3D"Colorful Grid =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"19" QFormat=3D"true" =
+Name=3D"Subtle Emphasis"/>
+<w:LsdException Locked=3D"false" Priority=3D"21" QFormat=3D"true" =
+Name=3D"Intense Emphasis"/>
+<w:LsdException Locked=3D"false" Priority=3D"31" QFormat=3D"true" =
+Name=3D"Subtle Reference"/>
+<w:LsdException Locked=3D"false" Priority=3D"32" QFormat=3D"true" =
+Name=3D"Intense Reference"/>
+<w:LsdException Locked=3D"false" Priority=3D"33" QFormat=3D"true" =
+Name=3D"Book Title"/>
+<w:LsdException Locked=3D"false" Priority=3D"37" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" Name=3D"Bibliography"/>
+<w:LsdException Locked=3D"false" Priority=3D"39" SemiHidden=3D"true" =
+UnhideWhenUsed=3D"true" QFormat=3D"true" Name=3D"TOC Heading"/>
+<w:LsdException Locked=3D"false" Priority=3D"41" Name=3D"Plain Table =
+1"/>
+<w:LsdException Locked=3D"false" Priority=3D"42" Name=3D"Plain Table =
+2"/>
+<w:LsdException Locked=3D"false" Priority=3D"43" Name=3D"Plain Table =
+3"/>
+<w:LsdException Locked=3D"false" Priority=3D"44" Name=3D"Plain Table =
+4"/>
+<w:LsdException Locked=3D"false" Priority=3D"45" Name=3D"Plain Table =
+5"/>
+<w:LsdException Locked=3D"false" Priority=3D"40" Name=3D"Grid Table =
+Light"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"Grid Table 1 =
+Light"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"Grid Table 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"Grid Table 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"Grid Table 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"Grid Table 5 =
+Dark"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"Grid Table 6 =
+Colorful"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"Grid Table 7 =
+Colorful"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"Grid Table 1 =
+Light Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"Grid Table 2 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"Grid Table 3 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"Grid Table 4 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"Grid Table 5 =
+Dark Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"Grid Table 6 =
+Colorful Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"Grid Table 7 =
+Colorful Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"Grid Table 1 =
+Light Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"Grid Table 2 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"Grid Table 3 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"Grid Table 4 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"Grid Table 5 =
+Dark Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"Grid Table 6 =
+Colorful Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"Grid Table 7 =
+Colorful Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"Grid Table 1 =
+Light Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"Grid Table 2 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"Grid Table 3 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"Grid Table 4 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"Grid Table 5 =
+Dark Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"Grid Table 6 =
+Colorful Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"Grid Table 7 =
+Colorful Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"Grid Table 1 =
+Light Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"Grid Table 2 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"Grid Table 3 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"Grid Table 4 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"Grid Table 5 =
+Dark Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"Grid Table 6 =
+Colorful Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"Grid Table 7 =
+Colorful Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"Grid Table 1 =
+Light Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"Grid Table 2 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"Grid Table 3 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"Grid Table 4 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"Grid Table 5 =
+Dark Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"Grid Table 6 =
+Colorful Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"Grid Table 7 =
+Colorful Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"Grid Table 1 =
+Light Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"Grid Table 2 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"Grid Table 3 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"Grid Table 4 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"Grid Table 5 =
+Dark Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"Grid Table 6 =
+Colorful Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"Grid Table 7 =
+Colorful Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"List Table 1 =
+Light"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"List Table 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"List Table 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"List Table 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"List Table 5 =
+Dark"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"List Table 6 =
+Colorful"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"List Table 7 =
+Colorful"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"List Table 1 =
+Light Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"List Table 2 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"List Table 3 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"List Table 4 =
+Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"List Table 5 =
+Dark Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"List Table 6 =
+Colorful Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"List Table 7 =
+Colorful Accent 1"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"List Table 1 =
+Light Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"List Table 2 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"List Table 3 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"List Table 4 =
+Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"List Table 5 =
+Dark Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"List Table 6 =
+Colorful Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"List Table 7 =
+Colorful Accent 2"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"List Table 1 =
+Light Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"List Table 2 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"List Table 3 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"List Table 4 =
+Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"List Table 5 =
+Dark Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"List Table 6 =
+Colorful Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"List Table 7 =
+Colorful Accent 3"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"List Table 1 =
+Light Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"List Table 2 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"List Table 3 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"List Table 4 =
+Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"List Table 5 =
+Dark Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"List Table 6 =
+Colorful Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"List Table 7 =
+Colorful Accent 4"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"List Table 1 =
+Light Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"List Table 2 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"List Table 3 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"List Table 4 =
+Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"List Table 5 =
+Dark Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"List Table 6 =
+Colorful Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"List Table 7 =
+Colorful Accent 5"/>
+<w:LsdException Locked=3D"false" Priority=3D"46" Name=3D"List Table 1 =
+Light Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"47" Name=3D"List Table 2 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"48" Name=3D"List Table 3 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"49" Name=3D"List Table 4 =
+Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"50" Name=3D"List Table 5 =
+Dark Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"51" Name=3D"List Table 6 =
+Colorful Accent 6"/>
+<w:LsdException Locked=3D"false" Priority=3D"52" Name=3D"List Table 7 =
+Colorful Accent 6"/>
+</w:LatentStyles>
+</xml><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;
+	text-underline:single;}
+span.EmailStyle17
+	{mso-style-type:personal;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-hansi-font-family:Calibri;
+	color:windowtext;
+	mso-text-animation:none;
+	position:relative;
+	top:0pt;
+	mso-text-raise:0pt;
+	letter-spacing:0pt;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;}
+span.EmailStyle18
+	{mso-style-type:personal-reply;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 10]><style>/* Style Definitions */
+table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style><![endif]--></head><body lang=3DEN-US link=3D"#0563C1" =
+vlink=3D"#954F72" style=3D'tab-interval:.5in'><div =
+class=3DWordSection1><p class=3DMsoNormal>Hi,<o:p></o:p></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3DMsoNormal>Can you let =
+me know what type of Technology User are you looking =
+for?<o:p></o:p></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
+class=3DMsoNormal>Target Technology: <o:p></o:p></p><p =
+class=3DMsoNormal>Target Geography:<o:p></o:p></p><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><p =
+class=3DMsoNormal>Regards,<o:p></o:p></p><p =
+class=3DMsoNormal>-Angela<span =
+style=3D'mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;m=
+so-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-fo=
+nt-family:"Times New =
+Roman";mso-bidi-theme-font:minor-bidi;color:#1F497D'><o:p></o:p></span></=
+p><p class=3DMsoNormal><span =
+style=3D'mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;m=
+so-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-fo=
+nt-family:"Times New =
+Roman";mso-bidi-theme-font:minor-bidi;color:#1F497D'><o:p>&nbsp;</o:p></s=
+pan></p><div><div style=3D'border:none;border-top:solid #E1E1E1 =
+1.0pt;padding:3.0pt 0in 0in 0in'><p class=3DMsoNormal><a =
+name=3D"_MailOriginal"><b><span style=3D'mso-fareast-font-family:"Times =
+New Roman"'>From:</span></b></a><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'mso-fareast-font-family:"Times New Roman"'> Angela Wang =
+[mailto:angela@technologydatahub.com] <br><b>Sent:</b> Tuesday, October =
+22, 2019 12:49 PM<br><b>To:</b> =
+'intel-gvt-dev@lists.freedesktop.org'<br><b>Subject:</b> =
+10Gen<o:p></o:p></span></span></p></div></div><p class=3DMsoNormal><span =
+style=3D'mso-bookmark:_MailOriginal'><o:p>&nbsp;</o:p></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'>Hi,<o:p></o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span style=3D'color:#1F4E79'>I =
+would like to know if you are interested in acquiring a list of =
+customers that use <b>10Gen Software =
+Users.</b><o:p></o:p></span></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span style=3D'color:#1F4E79'>Our =
+data file contains 15plus points with Email address, Contact Numbers and =
+Contact profiles.<o:p></o:p></span></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span style=3D'color:#1F4E79'>We do =
+have decision maker&#8217;s data from Industry like: <b>Manufacturing =
+and Logistics, Retail, Healthcare, Media and Entertainment and =
+Telecommunication.</b><o:p></o:p></span></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'>Please let me know If you like to see <b>sample =
+file</b> as per your requirements.<o:p></o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span style=3D'color:#1F4E79'>Note: =
+- As per your requirement, I can break down the =
+list.<o:p></o:p></span></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'>---<o:p></o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'>Thanking you,<o:p></o:p></span></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><b><span =
+style=3D'color:#1F4E79'>Angela Wang.<o:p></o:p></span></b></span></p><p =
+class=3DMsoNormal style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'>Manager | Demand =
+Generation<o:p></o:p></span></span></p><p class=3DMsoNormal =
+style=3D'text-autospace:none'><span =
+style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'color:#1F4E79'><o:p>&nbsp;</o:p></span></span></p><p =
+class=3DMsoNormal><span style=3D'mso-bookmark:_MailOriginal'><span =
+style=3D'font-size:10.0pt;color:#1F4E79'>Note: Before saying no to our =
+product please check the quality and quantity of our =
+product.<o:p></o:p></span></span></p><span =
+style=3D'mso-bookmark:_MailOriginal'></span><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></body></html>
+------=_NextPart_000_0362_01D58982.A348AAE0--
+
+
+--===============0143804516==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============0143804516==--
+
