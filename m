@@ -2,58 +2,64 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B8AEF2C01
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Nov 2019 11:19:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AA9BF2D58
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Nov 2019 12:21:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A6A496F534;
-	Thu,  7 Nov 2019 10:19:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 53F286F657;
+	Thu,  7 Nov 2019 11:21:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E01BB6F4F4
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E86906F653
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  7 Nov 2019 10:19:37 +0000 (UTC)
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-337-Cx0drvkqM2Go8N6RKbHCzw-1; Thu, 07 Nov 2019 05:19:33 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ Thu,  7 Nov 2019 11:21:40 +0000 (UTC)
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 262F41005500;
- Thu,  7 Nov 2019 10:19:29 +0000 (UTC)
-Received: from [10.72.12.214] (ovpn-12-214.pek2.redhat.com [10.72.12.214])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9DF295D6B7;
- Thu,  7 Nov 2019 10:18:47 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id F2F057C0B9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu,  7 Nov 2019 11:21:39 +0000 (UTC)
+Received: by mail-qt1-f200.google.com with SMTP id x21so2205355qtp.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 07 Nov 2019 03:21:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=wnfHxd+h5ByIy6pNIpYUPsi2zmTYpBRj65XvOkNtL/w=;
+ b=tpxnQIp+98s88YgQGSYXxsCRBYDAjVxevE5u/lohvbyeSnToo2F7At4tBeCy8+rTiY
+ MqT9MJqCpLZm0Drs4SCbFNMiHTF7KaiuKk3BiUR5cMF64lTkoX7nKTqN4MLgnO3z9P+e
+ zLUWwsn8Xuk+GUh7ps6qDXyfCKItaqP0rg+UPjouvY2yr/djZKUecqqEiFevTgJ7Fvga
+ L1b258eNFJeWkgyEKTjCJS4T1PSyqklFeMznqO3ONgaz/EmCFNrx3MCDGsnl7lpwGNei
+ ml10o/dOjnLS1OP71lgbscrhiKh0eRxYoUdcAULL3mKChFRMxgdrSp+c5nCkqK/neuXe
+ rrsw==
+X-Gm-Message-State: APjAAAXJ51nmDAOU/YQ9aNlDZTGdBpWi6VC/4ZpVGuYRL5/s/3bQsZiD
+ VlkRTD8kqEWjcVsDixORBikzDEYFxZl1ebke+cr626OZ7SkclOb6KXCUoi3k20s16e0lh2ZgeDz
+ hvYuwXXAM1EZbbWJ2Chi0C8HFXoI4HIFhBg==
+X-Received: by 2002:ac8:289d:: with SMTP id i29mr3319322qti.24.1573125698928; 
+ Thu, 07 Nov 2019 03:21:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwLKHqje2IEEYthZFjXYN+ipb1SMK7JO7Dpv9RPMHrWqUxiMCMx6JeRQige0AiW+TwcjzGM5w==
+X-Received: by 2002:ac8:289d:: with SMTP id i29mr3319270qti.24.1573125698659; 
+ Thu, 07 Nov 2019 03:21:38 -0800 (PST)
+Received: from redhat.com (bzq-79-178-12-128.red.bezeqint.net. [79.178.12.128])
+ by smtp.gmail.com with ESMTPSA id u27sm1182961qtj.5.2019.11.07.03.21.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Nov 2019 03:21:37 -0800 (PST)
+Date: Thu, 7 Nov 2019 06:21:26 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Jason Wang <jasowang@redhat.com>
 Subject: Re: [PATCH V10 6/6] docs: sample driver to demonstrate how to
  implement virtio-mdev framework
-To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20191107061942-mutt-send-email-mst@kernel.org>
 References: <20191106133531.693-1-jasowang@redhat.com>
  <20191106133531.693-7-jasowang@redhat.com>
  <20191107040700-mutt-send-email-mst@kernel.org>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <bd2f7796-8d88-0eb3-b55b-3ec062b186b7@redhat.com>
-Date: Thu, 7 Nov 2019 18:18:45 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <bd2f7796-8d88-0eb3-b55b-3ec062b186b7@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191107040700-mutt-send-email-mst@kernel.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: Cx0drvkqM2Go8N6RKbHCzw-1
-X-Mimecast-Spam-Score: 0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1573121976;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QVyZz1ahjF7M+iWo4uedK2mFPa9wav89AuEX9XZyCnc=;
- b=YNOYXZtEX09J5QL202sdJT6pox/xkIiRF1yZv1NHT+Iyxs/jyBxfPOfIUhDGgTlWbUKYD2
- 7rjEXu1a7Rmrip58wMtLKpEyyW8LcPcFEsWZobKmXqG+/Y22OTnBDcCL4hHFkeJgx2rrds
- 9n2WHKXPoKaqomSbQizsBWSsiPSrIs0=
+Content-Disposition: inline
+In-Reply-To: <bd2f7796-8d88-0eb3-b55b-3ec062b186b7@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,30 +88,36 @@ Cc: stefanha@redhat.com, christophe.de.dinechin@gmail.com, kvm@vger.kernel.org,
  oberpar@linux.ibm.com, tiwei.bie@intel.com, netdev@vger.kernel.org,
  cohuck@redhat.com, linux-kernel@vger.kernel.org, maxime.coquelin@redhat.com,
  daniel@ffwll.ch, lingshan.zhu@intel.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Ck9uIDIwMTkvMTEvNyDkuIvljYg1OjA4LCBNaWNoYWVsIFMuIFRzaXJraW4gd3JvdGU6Cj4gT24g
-V2VkLCBOb3YgMDYsIDIwMTkgYXQgMDk6MzU6MzFQTSArMDgwMCwgSmFzb24gV2FuZyB3cm90ZToK
-Pj4gVGhpcyBzYW1wbGUgZHJpdmVyIGNyZWF0ZXMgbWRldiBkZXZpY2UgdGhhdCBzaW11bGF0ZSB2
-aXJ0aW8gbmV0IGRldmljZQo+PiBvdmVyIHZpcnRpbyBtZGV2IHRyYW5zcG9ydC4gVGhlIGRldmlj
-ZSBpcyBpbXBsZW1lbnRlZCB0aHJvdWdoIHZyaW5naAo+PiBhbmQgd29ya3F1ZXVlLiBBIGRldmlj
-ZSBzcGVjaWZpYyBkbWEgb3BzIGlzIHRvIG1ha2Ugc3VyZSBIVkEgaXMgdXNlZAo+PiBkaXJlY3Rs
-eSBhcyB0aGUgSU9WQS4gVGhpcyBzaG91bGQgYmUgc3VmZmljaWVudCBmb3Iga2VybmVsIHZpcnRp
-bwo+PiBkcml2ZXIgdG8gd29yay4KPj4KPj4gT25seSAndmlydGlvJyB0eXBlIGlzIHN1cHBvcnRl
-ZCByaWdodCBub3cuIEkgcGxhbiB0byBhZGQgJ3Zob3N0JyB0eXBlCj4+IG9uIHRvcCB3aGljaCBy
-ZXF1aXJlcyBzb21lIHZpcnR1YWwgSU9NTVUgaW1wbGVtZW50ZWQgaW4gdGhpcyBzYW1wbGUKPj4g
-ZHJpdmVyLgo+Pgo+PiBBY2tlZC1ieTogQ29ybmVsaWEgSHVjazxjb2h1Y2tAcmVkaGF0LmNvbT4K
-Pj4gU2lnbmVkLW9mZi1ieTogSmFzb24gV2FuZzxqYXNvd2FuZ0ByZWRoYXQuY29tPgo+IEknZCBw
-cmVmZXIgaXQgdGhhdCB3ZSBjYWxsIHRoaXMgc29tZXRoaW5nIGVsc2UsIGUuZy4KPiBtdm5ldC1s
-b29wYmFjay4gSnVzdCBzbyBwZW9wbGUgZG9uJ3QgZXhwZWN0IGEgZnVsbHkKPiBmdW5jdGlvbmFs
-IGRldmljZSBzb21laG93LiBDYW4gYmUgcmVuYW1lZCB3aGVuIGFwcGx5aW5nPwoKCkFjdHVhbGx5
-LCBJIHBsYW4gdG8gZXh0ZW5kIGl0IGFzIGFub3RoZXIgc3RhbmRhcmQgbmV0d29yayBpbnRlcmZh
-Y2UgZm9yIAprZXJuZWwuIEl0IGNvdWxkIGJlIGVpdGhlciBhIHN0YW5kYWxvbmUgcHNldWRvIGRl
-dmljZSBvciBhIHN0YWNrIGRldmljZS4gCkRvZXMgdGhpcyBzb3VuZHMgZ29vZCB0byB5b3U/CgpU
-aGFua3MKCgo+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-aW50ZWwtZ3Z0LWRldg==
+T24gVGh1LCBOb3YgMDcsIDIwMTkgYXQgMDY6MTg6NDVQTSArMDgwMCwgSmFzb24gV2FuZyB3cm90
+ZToKPiAKPiBPbiAyMDE5LzExLzcg5LiL5Y2INTowOCwgTWljaGFlbCBTLiBUc2lya2luIHdyb3Rl
+Ogo+ID4gT24gV2VkLCBOb3YgMDYsIDIwMTkgYXQgMDk6MzU6MzFQTSArMDgwMCwgSmFzb24gV2Fu
+ZyB3cm90ZToKPiA+ID4gVGhpcyBzYW1wbGUgZHJpdmVyIGNyZWF0ZXMgbWRldiBkZXZpY2UgdGhh
+dCBzaW11bGF0ZSB2aXJ0aW8gbmV0IGRldmljZQo+ID4gPiBvdmVyIHZpcnRpbyBtZGV2IHRyYW5z
+cG9ydC4gVGhlIGRldmljZSBpcyBpbXBsZW1lbnRlZCB0aHJvdWdoIHZyaW5naAo+ID4gPiBhbmQg
+d29ya3F1ZXVlLiBBIGRldmljZSBzcGVjaWZpYyBkbWEgb3BzIGlzIHRvIG1ha2Ugc3VyZSBIVkEg
+aXMgdXNlZAo+ID4gPiBkaXJlY3RseSBhcyB0aGUgSU9WQS4gVGhpcyBzaG91bGQgYmUgc3VmZmlj
+aWVudCBmb3Iga2VybmVsIHZpcnRpbwo+ID4gPiBkcml2ZXIgdG8gd29yay4KPiA+ID4gCj4gPiA+
+IE9ubHkgJ3ZpcnRpbycgdHlwZSBpcyBzdXBwb3J0ZWQgcmlnaHQgbm93LiBJIHBsYW4gdG8gYWRk
+ICd2aG9zdCcgdHlwZQo+ID4gPiBvbiB0b3Agd2hpY2ggcmVxdWlyZXMgc29tZSB2aXJ0dWFsIElP
+TU1VIGltcGxlbWVudGVkIGluIHRoaXMgc2FtcGxlCj4gPiA+IGRyaXZlci4KPiA+ID4gCj4gPiA+
+IEFja2VkLWJ5OiBDb3JuZWxpYSBIdWNrPGNvaHVja0ByZWRoYXQuY29tPgo+ID4gPiBTaWduZWQt
+b2ZmLWJ5OiBKYXNvbiBXYW5nPGphc293YW5nQHJlZGhhdC5jb20+Cj4gPiBJJ2QgcHJlZmVyIGl0
+IHRoYXQgd2UgY2FsbCB0aGlzIHNvbWV0aGluZyBlbHNlLCBlLmcuCj4gPiBtdm5ldC1sb29wYmFj
+ay4gSnVzdCBzbyBwZW9wbGUgZG9uJ3QgZXhwZWN0IGEgZnVsbHkKPiA+IGZ1bmN0aW9uYWwgZGV2
+aWNlIHNvbWVob3cuIENhbiBiZSByZW5hbWVkIHdoZW4gYXBwbHlpbmc/Cj4gCj4gCj4gQWN0dWFs
+bHksIEkgcGxhbiB0byBleHRlbmQgaXQgYXMgYW5vdGhlciBzdGFuZGFyZCBuZXR3b3JrIGludGVy
+ZmFjZSBmb3IKPiBrZXJuZWwuIEl0IGNvdWxkIGJlIGVpdGhlciBhIHN0YW5kYWxvbmUgcHNldWRv
+IGRldmljZSBvciBhIHN0YWNrIGRldmljZS4KPiBEb2VzIHRoaXMgc291bmRzIGdvb2QgdG8geW91
+Pwo+IAo+IFRoYW5rcwoKVGhhdCdzIGEgYmlnIGNoYW5nZSBpbiBhbiBpbnRlcmZhY2Ugc28gaXQn
+cyBhIGdvb2QgcmVhc29uCnRvIHJlbmFtZSB0aGUgZHJpdmVyIGF0IHRoYXQgcG9pbnQgcmlnaHQ/
+Ck9oZXJ3aXNlIHVzZXJzIG9mIGFuIG9sZCBrZXJuZWwgd291bGQgZXhwZWN0IGEgc3RhY2tlZCBk
+cml2ZXIKYW5kIGdldCBhIGxvb3BiYWNrIGluc3RlYWQuCgpPciBkaWQgSSBtaXNzIHNvbWV0aGlu
+Zz8KCj4gCj4gPiAKPiA+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2ludGVsLWd2dC1kZXY=
