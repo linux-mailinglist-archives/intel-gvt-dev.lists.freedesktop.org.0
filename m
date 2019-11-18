@@ -2,41 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7BB9C1007F9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Nov 2019 16:17:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAD6F10088F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Nov 2019 16:45:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 85CEE6E560;
-	Mon, 18 Nov 2019 15:17:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 840D789826;
+	Mon, 18 Nov 2019 15:45:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6BB006E55E;
- Mon, 18 Nov 2019 15:17:08 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [207.211.31.81])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2327C89B3B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 18 Nov 2019 15:45:45 +0000 (UTC)
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-297-CUpLGAmmNbCKwd_ow3c15Q-1; Mon, 18 Nov 2019 10:45:40 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B7FDF2071B;
- Mon, 18 Nov 2019 15:17:07 +0000 (UTC)
-Date: Mon, 18 Nov 2019 16:17:06 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4F31A8FBB57;
+ Mon, 18 Nov 2019 15:45:34 +0000 (UTC)
+Received: from gondolin (ovpn-117-194.ams2.redhat.com [10.36.117.194])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 87D6B1CD;
+ Mon, 18 Nov 2019 15:45:13 +0000 (UTC)
+Date: Mon, 18 Nov 2019 16:45:10 +0100
+From: Cornelia Huck <cohuck@redhat.com>
 To: Jason Wang <jasowang@redhat.com>
 Subject: Re: [PATCH V13 6/6] docs: sample driver to demonstrate how to
  implement virtio-mdev framework
-Message-ID: <20191118151706.GA371978@kroah.com>
+Message-ID: <20191118164510.549c097b.cohuck@redhat.com>
+In-Reply-To: <20191118105923.7991-7-jasowang@redhat.com>
 References: <20191118105923.7991-1-jasowang@redhat.com>
  <20191118105923.7991-7-jasowang@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191118105923.7991-7-jasowang@redhat.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=default; t=1574090228;
- bh=8oHPpeDbLVKRHKTWyH/2Nazz8CQb+rciG+W4BGLrxYk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=oMK2djkOvzobOaiHFUdV/NwyvoeGQBFH4E22D8bD5h9VL+fIAzUhP2aahtZr9MDC6
- 85zlmPnZB0619QLhN/FKp0ZTRDONgMtpeAScAFAaIBy6P6ysHMD47tGEXpITRoKg7/
- BQtEMXYMdswww7DcDQr9+w4lK3T4zrPUh4O0C0ZM=
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: CUpLGAmmNbCKwd_ow3c15Q-1
+X-Mimecast-Spam-Score: 0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1574091944;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KQqXtzuR5gTdo1f2yUDL09SryFyi+NfHrzjVbuoXnyc=;
+ b=emNWkQJINdk83N0FDDDgSJ2YpIc0QUahtGzmbTUDUE35hy04hW8Fmu43Epj7ty6UbCe4EK
+ 7SwevyZ13PCPt3m6etR7UCxe8oIMwD7Krood+CwF79ii6sWbUyiTIRD2j0ni8AwHwiHFqo
+ wCGb4Nq0hnjcQ9lGoGHx9dR6mrgvQ8Q=
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,9 +63,9 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: rdunlap@infradead.org, jakub.kicinski@netronome.com,
- christophe.de.dinechin@gmail.com, kvm@vger.kernel.org, mst@redhat.com,
- airlied@linux.ie, joonas.lahtinen@linux.intel.com, heiko.carstens@de.ibm.com,
+Cc: jakub.kicinski@netronome.com, christophe.de.dinechin@gmail.com,
+ kvm@vger.kernel.org, mst@redhat.com, airlied@linux.ie,
+ joonas.lahtinen@linux.intel.com, heiko.carstens@de.ibm.com,
  haotian.wang@sifive.com, dri-devel@lists.freedesktop.org,
  oberpar@linux.ibm.com, kwankhede@nvidia.com, rob.miller@broadcom.com,
  linux-s390@vger.kernel.org, sebott@linux.ibm.com, lulu@redhat.com,
@@ -63,41 +77,42 @@ Cc: rdunlap@infradead.org, jakub.kicinski@netronome.com,
  xiao.w.wang@intel.com, freude@linux.ibm.com, zhenyuw@linux.intel.com,
  stefanha@redhat.com, zhihong.wang@intel.com, rodrigo.vivi@intel.com,
  intel-gvt-dev@lists.freedesktop.org, hch@infradead.org, akrowiak@linux.ibm.com,
- jiri@mellanox.com, tiwei.bie@intel.com, netdev@vger.kernel.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, maxime.coquelin@redhat.com,
- daniel@ffwll.ch, aadam@redhat.com, lingshan.zhu@intel.com
+ aadam@redhat.com, jiri@mellanox.com, tiwei.bie@intel.com,
+ gregkh@linuxfoundation.org, rdunlap@infradead.org,
+ linux-kernel@vger.kernel.org, maxime.coquelin@redhat.com, daniel@ffwll.ch,
+ netdev@vger.kernel.org, lingshan.zhu@intel.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gTW9uLCBOb3YgMTgsIDIwMTkgYXQgMDY6NTk6MjNQTSArMDgwMCwgSmFzb24gV2FuZyB3cm90
-ZToKPiArc3RhdGljIHZvaWQgbXZuZXRfZGV2aWNlX3JlbGVhc2Uoc3RydWN0IGRldmljZSAqZGV2
-KQo+ICt7Cj4gKwlkZXZfZGJnKGRldiwgIm12bmV0OiByZWxlYXNlZFxuIik7Cj4gK30KCldlIHVz
-ZWQgdG8gaGF2ZSBkb2N1bWVudGF0aW9uIGluIHRoZSBrZXJuZWwgc291cmNlIHRyZWUgdGhhdCBz
-YWlkIHRoYXQKd2hlbmV2ZXIgYW55b25lIGRpZCB0aGlzLCBJIGdvdCB0byBtYWtlIGZ1biBvZiB0
-aGVtLiAgVW5mb3J0dW5hdGVseSB0aGF0CmhhcyBiZWVuIHJlbW92ZWQuCgpUaGluayBhYm91dCB3
-aGF0IHlvdSBkaWQgcmlnaHQgaGVyZS4gIFlvdSBzaWxlbmNlZCBhIGtlcm5lbCBydW50aW1lCndh
-cm5pbmcgdGhhdCBzYWlkIHNvbWV0aGluZyBsaWtlICJFUlJPUiEgTk8gUkVMRUFTRSBGVU5DVElP
-TiBGT1VORCEiIGJ5CmRvaW5nIHRoZSBhYm92ZSBiZWNhdXNlICJJIGFtIHNtYXJ0ZXIgdGhhbiB0
-aGUga2VybmVsLCBJIHdpbGwgc2lsZW5jZSBpdApieSBwdXR0aW5nIGFuIGVtcHR5IHJlbGVhc2Ug
-ZnVuY3Rpb24gaW4gdGhlcmUuIgoKe3NpZ2h9CgpEaWQgeW91IGV2ZXIgdGhpbmsgX3doeV8gd2Ug
-dG9vayB0aGUgdGltZSBhbmQgZWZmb3J0IHRvIGFkZCB0aGF0IHdhcm5pbmcKdGhlcmU/ICBJdCB3
-YXNuJ3QganVzdCBzbyB0aGF0IHBlb3BsZSBjYW4gY2lyY3VtdmVudCBpdCwgaXQgaXMgdG8KUFJF
-VkVOVCBBIE1BSk9SIEJVRyBJTiBZT1VSIERFU0lHTiEgIFdlIGFyZSB0cnlpbmcgdG8gYmUgbmlj
-ZSBoZXJlIGFuZApnaXZlIHBlb3BsZSBhIF9jaGFuY2VfIHRvIGdldCB0aGluZ3MgcmlnaHQgaW5z
-dGVhZCBvZiBoYXZpbmcgeW91IGp1c3QKbGl2ZSB3aXRoIGEgc2lsZW50IG1lbW9yeSBsZWFrLgoK
-QWZ0ZXIgMTMgdmVyc2lvbnMgb2YgdGhpcyBzZXJpZXMsIGJhc2ljIHRoaW5ncyBsaWtlIHRoaXMg
-YXJlIHN0aWxsIGhlcmU/CldobyBpcyByZXZpZXdpbmcgdGhpcyB0aGluZz8KCnt1Z2h9CgpBbHNv
-LCBzZWUgdGhlIG90aGVyIGNvbnZlcnNhdGlvbnMgd2UgYXJlIGhhdmluZyBhYm91dCBhICJ2aXJ0
-dWFsIiBidXMKYW5kIGRldmljZXMuICBJIGRvIG5vdCB3YW50IHRvIGhhdmUgdHdvIGRpZmZlcmVu
-dCB3YXlzIG9mIGRvaW5nIHRoZSBzYW1lCnRoaW5nIGluIHRoZSBrZXJuZWwgYXQgdGhlIHNhbWUg
-dGltZSBwbGVhc2UuICBQbGVhc2Ugd29yayB0b2dldGhlciB3aXRoCnRoZSBJbnRlbCBkZXZlbG9w
-ZXJzIHRvIHNvbHZlIHRoaXMgaW4gYSB1bmlmaWVkIHdheSwgYXMgeW91IGJvdGgKbmVlZC93YW50
-IHRoZSBzYW1lIHRoaW5nIGhlcmUuCgpOZWl0aGVyIHRoaXMsIG5vciB0aGUgb3RoZXIgcHJvcG9z
-YWwgY2FuIGJlIGFjY2VwdGVkIHVudGlsIHlvdSBhbGwgYWdyZWUKb24gdGhlIGRlc2lnbiBhbmQg
-aW1wbGVtZW50YXRpb24uCgovbWUgZ29lcyBvZmYgdG8gZmluZCBhIG5pY2UgZnJ1aXR5IGRyaW5r
-IHdpdGggYW4gdW1icmVsbGEuCgpncmVnIGstaApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQt
-ZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXY=
+T24gTW9uLCAxOCBOb3YgMjAxOSAxODo1OToyMyArMDgwMApKYXNvbiBXYW5nIDxqYXNvd2FuZ0By
+ZWRoYXQuY29tPiB3cm90ZToKCltOb3RlOiBJIGhhdmUgbm90IGxvb2tlZCBpbnRvIHRoZSByZXdv
+cmtlZCBhcmNoaXRlY3R1cmUgb2YgdGhpcyAqYXQgYWxsKgpzbyBmYXI7IGp1c3Qgc29tZXRoaW5n
+IHRoYXQgSSBub3RlZC4uLl0KCj4gVGhpcyBzYW1wbGUgZHJpdmVyIGNyZWF0ZXMgbWRldiBkZXZp
+Y2UgdGhhdCBzaW11bGF0ZSB2aXJ0aW8gbmV0IGRldmljZQo+IG92ZXIgdmlydGlvIG1kZXYgdHJh
+bnNwb3J0LiBUaGUgZGV2aWNlIGlzIGltcGxlbWVudGVkIHRocm91Z2ggdnJpbmdoCj4gYW5kIHdv
+cmtxdWV1ZS4gQSBkZXZpY2Ugc3BlY2lmaWMgZG1hIG9wcyBpcyB0byBtYWtlIHN1cmUgSFZBIGlz
+IHVzZWQKPiBkaXJlY3RseSBhcyB0aGUgSU9WQS4gVGhpcyBzaG91bGQgYmUgc3VmZmljaWVudCBm
+b3Iga2VybmVsIHZpcnRpbwo+IGRyaXZlciB0byB3b3JrLgo+IAo+IE9ubHkgJ3ZpcnRpbycgdHlw
+ZSBpcyBzdXBwb3J0ZWQgcmlnaHQgbm93LiBJIHBsYW4gdG8gYWRkICd2aG9zdCcgdHlwZQo+IG9u
+IHRvcCB3aGljaCByZXF1aXJlcyBzb21lIHZpcnR1YWwgSU9NTVUgaW1wbGVtZW50ZWQgaW4gdGhp
+cyBzYW1wbGUKPiBkcml2ZXIuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmFzb24gV2FuZyA8amFzb3dh
+bmdAcmVkaGF0LmNvbT4KPiAtLS0KPiAgTUFJTlRBSU5FUlMgICAgICAgICAgICAgICAgICAgICAg
+ICB8ICAgMSArCj4gIHNhbXBsZXMvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgfCAgMTAgKwo+
+ICBzYW1wbGVzL3ZmaW8tbWRldi9NYWtlZmlsZSAgICAgICAgIHwgICAxICsKPiAgc2FtcGxlcy92
+ZmlvLW1kZXYvbXZuZXRfbG9vcGJhY2suYyB8IDY5MCArKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKwo+ICA0IGZpbGVzIGNoYW5nZWQsIDcwMiBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBzYW1wbGVzL3ZmaW8tbWRldi9tdm5ldF9sb29wYmFjay5jCj4gCgo+ICtzdGF0aWMg
+c3RydWN0IG12bmV0X2RldiB7Cj4gKwlzdHJ1Y3QgY2xhc3MJKnZkX2NsYXNzOwo+ICsJc3RydWN0
+IGlkcgl2ZF9pZHI7Cj4gKwlzdHJ1Y3QgZGV2aWNlCWRldjsKPiArfSBtdm5ldF9kZXY7CgpUaGlz
+IHN0cnVjdHVyZSBlbWJlZHMgYSBzdHJ1Y3QgZGV2aWNlIChhIHJlZmVyZW5jZS1jb3VudGVkIHN0
+cnVjdHVyZSksCnlldCBpdCBpcyBhIHN0YXRpYyB2YXJpYWJsZS4gVGhpcyBpcyBnaXZpbmcgYSBi
+YWQgZXhhbXBsZSB0byBwb3RlbnRpYWwKaW1wbGVtZW50ZXJzOyBqdXN0IGFsbG9jYXRlIGl0IGR5
+bmFtaWNhbGx5LgoKPiArc3RhdGljIHZvaWQgbXZuZXRfZGV2aWNlX3JlbGVhc2Uoc3RydWN0IGRl
+dmljZSAqZGV2KQo+ICt7Cj4gKwlkZXZfZGJnKGRldiwgIm12bmV0OiByZWxlYXNlZFxuIik7CgpB
+bmQgdGhhdCBhbHNvIG1lYW5zIHlvdSBuZWVkIGEgcHJvcGVyIHJlbGVhc2UgZnVuY3Rpb24gaGVy
+ZSwgb2YKY291cnNlLgoKPiArfQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9pbnRlbC1ndnQtZGV2
