@@ -2,70 +2,91 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E3FD100D1A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Nov 2019 21:27:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3CF3100D1D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Nov 2019 21:28:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C8B436E82C;
-	Mon, 18 Nov 2019 20:27:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B3BAB6E82C;
+	Mon, 18 Nov 2019 20:28:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-1.mimecast.com [207.211.31.81])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A69B46E82C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Nov 2019 20:27:24 +0000 (UTC)
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-17-j9yxDwH0O5WYMay7Sdn4Rw-1; Mon, 18 Nov 2019 15:27:22 -0500
-Received: by mail-wm1-f72.google.com with SMTP id f21so651447wmh.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Nov 2019 12:27:22 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=4CSRr0wqSYSaWBGreVA5UshqfJyUlItqJkHJJ7DXvXA=;
- b=ivHJrrKvym2jCkU/9BFpUCm8eYi8m4o7xaaT0psmsDHdt5pEa1hpr/HgeZUlFmwXpt
- tZHJRIPGoBK55/fym2debtavYh0Gb6ik68Ovh2ADKnLql5OQIJPMmECZBrbSMU5t0fck
- 7ZVMlAUYJdQ5iGu90/bqburgllLHB4M5WNqTm1xvR8HIPUj7QGTkd3AEYuQPBTQCBlUg
- h0U0z7XgM7cFDO4HMdQLAl3Va+lIb/Me8Pn56U5a+KToBFoCsKbULPo4JXI3j9hY5be2
- 5PJPbl+8a1YMS951LzZUAMEXPQ1kmLJM97UKoRUJ7XMr5Dv+LD+B+wwKJ5HdfNPcXnJt
- xBqQ==
-X-Gm-Message-State: APjAAAWyfix6cQFOJsreOyrBuURSy799+RDGG8FusW+/ro0YXX+KVVgs
- HPGhvhpgxRqBQ8KEyN/e15SU0QCbyhgi/Ew/gYk77m/LK2csGgRx2nEV99fyTe8m3WnwzOPGlm9
- Mc+z4dfM1JWgf0NW+BSkZtoddvXrqCPQFoQ==
-X-Received: by 2002:a5d:490c:: with SMTP id x12mr19881071wrq.301.1574108841332; 
- Mon, 18 Nov 2019 12:27:21 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw31yFDrp/nUVQehJkoIE0NmJKGe+zacK1mZHaf8dckH0iFWZ5NwNGMNlo/b/EQ1sdZlgIyIA==
-X-Received: by 2002:a5d:490c:: with SMTP id x12mr19881034wrq.301.1574108841171; 
- Mon, 18 Nov 2019 12:27:21 -0800 (PST)
-Received: from redhat.com (bzq-79-176-6-42.red.bezeqint.net. [79.176.6.42])
- by smtp.gmail.com with ESMTPSA id l10sm27849030wrg.90.2019.11.18.12.27.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Nov 2019 12:27:20 -0800 (PST)
-Date: Mon, 18 Nov 2019 15:27:13 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Jason Gunthorpe <jgg@mellanox.com>
+Received: from EUR02-AM5-obe.outbound.protection.outlook.com
+ (mail-eopbgr00077.outbound.protection.outlook.com [40.107.0.77])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2FC046E82C;
+ Mon, 18 Nov 2019 20:28:52 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=BrmkXkXZqO2h79XHgqZa/6VSJfMlSE3/NY+hfeoCS9McnvtICCB11pKfSA6sZo3kHLGO5EAHEvSmu8D/jYgtmMKFGpJdrR0pKGBsehmSitGLWBACTFAOcSmdvif0uH7yEE8CxMY6KoFtV/aMPOuti1dQ3af28+/mcrH+KFvaIwirJfQ67F5kop2FFhpj5mW1y4DuMsmApGOrpyqBx6NaIoSgiQEhb+plxJVHecqsYbHgoMEe33fBaA9DgtAgRjvWrG2WWpyfY5MOneXbTxnFwahoXVLLXsRgSHJlnEUhQ4ciXwpKIOWlr6KdAVNOofcWPUMkr6xGRYmK7iTJCxYb7A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hu3RarQ3Suje4W/JTSQpw8g0zav4Ec+FF4uZVpGAtJ8=;
+ b=kPIADUaWq+qHobadNNz9hHuca5fKJUDFPCTnBIjqu2ROezkWsNIhsutZOsuUESsUvSjdmGQlrSHkNoPOQIobvOadZ/uLGu+Gax7XzoySrrp20GHF8jtWLeOBHdi9pQfVuH5geutmvH5/duivjth89o9dGlquGc5oFx4Qnt/l8k8uRFkyWtQpzgIibyjPPjoOCdGXBr4MX2TmneA1F5UhOfCdqUIsRczUStJ3PZ87tR59i5cRNoqjpDzwXiHCqMNo+Hv0JbQFW7zf7gs5Ds7lsGyBVliNA7iUbWyVhqtYrQdBVqZoDbIY/nhAZw4iZ1mvvR4k4DttWfpfN2lg2NWG8w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
+ dkim=pass header.d=mellanox.com; arc=none
+Received: from VI1PR05MB4141.eurprd05.prod.outlook.com (52.133.14.15) by
+ VI1PR05MB4286.eurprd05.prod.outlook.com (10.171.182.155) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2451.30; Mon, 18 Nov 2019 20:28:48 +0000
+Received: from VI1PR05MB4141.eurprd05.prod.outlook.com
+ ([fe80::b179:e8bf:22d4:bf8d]) by VI1PR05MB4141.eurprd05.prod.outlook.com
+ ([fe80::b179:e8bf:22d4:bf8d%5]) with mapi id 15.20.2451.029; Mon, 18 Nov 2019
+ 20:28:48 +0000
+From: Jason Gunthorpe <jgg@mellanox.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
 Subject: Re: [PATCH V13 4/6] mdev: introduce mediated virtio bus
-Message-ID: <20191118152642-mutt-send-email-mst@kernel.org>
+Thread-Topic: [PATCH V13 4/6] mdev: introduce mediated virtio bus
+Thread-Index: AQHVnf+nErtejYVqgk+5ox/jEh/QtKeQ75wAgABxg4CAAABsgA==
+Date: Mon, 18 Nov 2019 20:28:48 +0000
+Message-ID: <20191118202843.GN3873@mellanox.com>
 References: <20191118105923.7991-1-jasowang@redhat.com>
  <20191118105923.7991-5-jasowang@redhat.com>
  <20191118134056.GJ3873@mellanox.com>
+ <20191118152642-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20191118152642-mutt-send-email-mst@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: BN8PR04CA0040.namprd04.prod.outlook.com
+ (2603:10b6:408:d4::14) To VI1PR05MB4141.eurprd05.prod.outlook.com
+ (2603:10a6:803:44::15)
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [142.162.113.180]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: cc2753cf-3fb1-4062-5061-08d76c65eaa3
+x-ms-traffictypediagnostic: VI1PR05MB4286:|VI1PR05MB4286:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <VI1PR05MB4286177B41F320A612C29DF3CF4D0@VI1PR05MB4286.eurprd05.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-forefront-prvs: 0225B0D5BC
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(136003)(346002)(39860400002)(396003)(376002)(366004)(199004)(189003)(1076003)(4326008)(6486002)(71200400001)(71190400001)(8676002)(8936002)(81156014)(81166006)(33656002)(6512007)(4744005)(76176011)(2906002)(66446008)(102836004)(36756003)(66556008)(66946007)(64756008)(316002)(386003)(6506007)(6116002)(186003)(3846002)(54906003)(52116002)(256004)(26005)(5660300002)(66476007)(99286004)(478600001)(86362001)(476003)(11346002)(229853002)(14454004)(6436002)(25786009)(7736002)(66066001)(305945005)(2616005)(6246003)(486006)(6916009)(7406005)(446003)(7416002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR05MB4286;
+ H:VI1PR05MB4141.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: mellanox.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: P3z0Z1tuJtkxkogv69aBdYPvMsi2Jzk/p0fMlpbmtlYq6iJqbk4NiABhZ3cJ3D9ZMgdYJh01juRxZypc/L/2PF0tc0CdPqaOD7SN4uHrEKEhtZvTwQjX6KfL4ZV3X85nIrKjxE/iMFIaT4dhqWzJe+Y33cLAwWtI6dYWi9UqucSG+BMVuPp/1t2SutFtJgEk3Dpi30NjGWcwczqt374Dz5sVxGr9MmRcidr6SEDxuiKDZmw6I5msO+GsdGI7UokcSYNYT+7PMR+1R1BZbfYEncfYHqEOLUB4dFVgbE5mgMbYXELa7OOLUUpGrZoVecJQ6LjrZ/eSgJaHuII4vhffs7vlXLr1E4Em7fUgJo3p4GrDgBwBzKtXa1qVIbIOC8DpM1E1L1+loVJOeisETcdqSvP8eqdowpl9oxSn/RkQ8/49qdI3wiPf/ja1KRI1uO7J
+Content-ID: <89948722630ABD4FA06903337DA274A3@eurprd05.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <20191118134056.GJ3873@mellanox.com>
-X-MC-Unique: j9yxDwH0O5WYMay7Sdn4Rw-1
-X-Mimecast-Spam-Score: 0
-Content-Disposition: inline
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cc2753cf-3fb1-4062-5061-08d76c65eaa3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Nov 2019 20:28:48.5869 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Re/Ii7+HhbMQlhXGXPowgZLpW9QIHWDdudvwiG8Ia8kry/LLkk1kTBZkKNZsdhgUU3c1mnz9b1NEHMpIhMDrBw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR05MB4286
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1574108843;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MrzR/CZ37kLKu+aMpz2wgHs5trU1arLDMcmgOmdvzKE=;
- b=LQiLhsRnShWkfJ3gF6IA4MPCTexT5IzhcgC7S2IQxZ5y3uYt4qHelqYYA9QoRNQqzDN6Ib
- GaokqqwBNdUufS+hMIjwgvTSA5I5UlfhcKVjVhjr+rPTZi+XQeDP/NBvkRfeC1xhgplM7K
- iokyND9h2mIZ5LULEPiyx687T4+4PFY=
+ d=Mellanox.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hu3RarQ3Suje4W/JTSQpw8g0zav4Ec+FF4uZVpGAtJ8=;
+ b=SZ5Eehe3ERykSnzxjrgQK6ONWS7zFySBXDLteublzCw4bbZ+YOTdNWTNJt4OfB9crbZyIA6Bdn2pPwIv4To/9SzBqNztQE7LxS/7TdxTjR0Ymc1QxnvKBJ4wL8l+JF1K9GzOkLGZ6svxpaX4xrDeuDKxGzKc7GqpJ7vgBjWZlOw=
+X-Mailman-Original-Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=jgg@mellanox.com; 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,15 +149,17 @@ Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gTW9uLCBOb3YgMTgsIDIwMTkgYXQgMDE6NDE6MDBQTSArMDAwMCwgSmFzb24gR3VudGhvcnBl
-IHdyb3RlOgo+IE9uIE1vbiwgTm92IDE4LCAyMDE5IGF0IDA2OjU5OjIxUE0gKzA4MDAsIEphc29u
-IFdhbmcgd3JvdGU6Cj4gPiArc3RydWN0IGJ1c190eXBlIG1kZXZfdmlydGlvX2J1c190eXBlOwo+
-ID4gKwo+ID4gK3N0cnVjdCBtZGV2X3ZpcnRpb19kZXZpY2Ugewo+ID4gKwlzdHJ1Y3QgbWRldl9k
-ZXZpY2UgbWRldjsKPiA+ICsJY29uc3Qgc3RydWN0IG1kZXZfdmlydGlvX29wcyAqb3BzOwo+ID4g
-Kwl1MTYgY2xhc3NfaWQ7Cj4gPiArfTsKPiAKPiBUaGlzIHNlZW1zIHRvIHNoYXJlIG5vdGhpbmcg
-d2l0aCBtZGV2IChpZSBtZGV2LXZmaW8pLCB3aHkgaXMgaXQgb24gdGhlCj4gc2FtZSBidXM/CgpJ
-IG11c3QgYmUgbWlzc2luZyBzb21ldGhpbmcgLSB3aGljaCBidXMgZG8gdGhleSBzaGFyZT8KCi0t
-IApNU1QKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmlu
-dGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwt
-Z3Z0LWRldg==
+T24gTW9uLCBOb3YgMTgsIDIwMTkgYXQgMDM6Mjc6MTNQTSAtMDUwMCwgTWljaGFlbCBTLiBUc2ly
+a2luIHdyb3RlOgo+IE9uIE1vbiwgTm92IDE4LCAyMDE5IGF0IDAxOjQxOjAwUE0gKzAwMDAsIEph
+c29uIEd1bnRob3JwZSB3cm90ZToKPiA+IE9uIE1vbiwgTm92IDE4LCAyMDE5IGF0IDA2OjU5OjIx
+UE0gKzA4MDAsIEphc29uIFdhbmcgd3JvdGU6Cj4gPiA+ICtzdHJ1Y3QgYnVzX3R5cGUgbWRldl92
+aXJ0aW9fYnVzX3R5cGU7Cj4gPiA+ICsKPiA+ID4gK3N0cnVjdCBtZGV2X3ZpcnRpb19kZXZpY2Ug
+ewo+ID4gPiArCXN0cnVjdCBtZGV2X2RldmljZSBtZGV2Owo+ID4gPiArCWNvbnN0IHN0cnVjdCBt
+ZGV2X3ZpcnRpb19vcHMgKm9wczsKPiA+ID4gKwl1MTYgY2xhc3NfaWQ7Cj4gPiA+ICt9Owo+ID4g
+Cj4gPiBUaGlzIHNlZW1zIHRvIHNoYXJlIG5vdGhpbmcgd2l0aCBtZGV2IChpZSBtZGV2LXZmaW8p
+LCB3aHkgaXMgaXQgb24gdGhlCj4gPiBzYW1lIGJ1cz8KPiAKPiBJIG11c3QgYmUgbWlzc2luZyBz
+b21ldGhpbmcgLSB3aGljaCBidXMgZG8gdGhleSBzaGFyZT8KCm1kZXZfYnVzX3R5cGUgPwoKSmFz
+b24gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVs
+LWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0
+LWRldg==
