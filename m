@@ -1,40 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F212110C276
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Nov 2019 03:40:53 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67BB310CE52
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Nov 2019 19:06:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9759B6E5EA;
-	Thu, 28 Nov 2019 02:40:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 00D5A6E0D3;
+	Thu, 28 Nov 2019 18:06:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CFB876E5EA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 28 Nov 2019 02:40:50 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Nov 2019 18:40:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,251,1571727600"; 
- d="asc'?scan'208";a="261176125"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by FMSMGA003.fm.intel.com with ESMTP; 27 Nov 2019 18:40:49 -0800
-Date: Thu, 28 Nov 2019 10:39:43 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Gao, Fred" <fred.gao@intel.com>
-Subject: Re: [PATCH v1] drm/i915/gvt: Fix guest boot warning
-Message-ID: <20191128023943.GT4196@zhen-hp.sh.intel.com>
-References: <20191126161904.25281-1-fred.gao@intel.com>
- <20191127045329.GM4196@zhen-hp.sh.intel.com>
- <12E1D2244F454645A164A13EDCBDDB3B42A5247E@SHSMSX104.ccr.corp.intel.com>
+Received: from mail.metaseter.com.br (mail.metaseter.com.br [186.208.81.227])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9643E6E0D3;
+ Thu, 28 Nov 2019 18:06:37 +0000 (UTC)
+Received: from User (ip15.ip-54-39-160.net [54.39.160.15])
+ (Authenticated sender: marketing@fotografiahd.com.br)
+ by mail.metaseter.com.br (Postfix) with ESMTPA id 7E6466B60B;
+ Wed, 27 Nov 2019 16:32:57 -0300 (EST)
+From: "Kenneth Farrugia"<ken.farrugia7@gmail.com>
+Subject: Re: Spirina G. Alekseevna Deposits.
+Date: Wed, 27 Nov 2019 11:33:10 -0800
 MIME-Version: 1.0
-In-Reply-To: <12E1D2244F454645A164A13EDCBDDB3B42A5247E@SHSMSX104.ccr.corp.intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,90 +36,66 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Content-Type: multipart/mixed; boundary="===============2058019584=="
+Reply-To: ken.farrugia07@gmail.com
+Content-Type: multipart/mixed; boundary="===============1953940124=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20191128180639.00D5A6E0D3@gabe.freedesktop.org>
 
+--===============1953940124==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
---===============2058019584==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="mixpuywmQk4RxeDV"
-Content-Disposition: inline
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+<FONT size=3><I>Greetings from Malta,</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>&nbsp;</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>This is in regards to my previous email message you didn’t receive, kindly accept my apology for sending you email without your consent. I believe you are a highly respected personality, considering the fact that I sourced your email contact from the peoples search database on the web during my descry search for a competent foreign partner whom can assist me in executing this project successfully. Although, I do not know to what extent you are familiar with events, I have a discreet proposal for you. This, however is not mandatory nor will I in any manner compel you to honor against your will, but I hope you will read on and consider my offer.</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>&nbsp;</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>I'm Mr. Kenneth Farrugia, Chief Business Development Officer, Bank of Valletta Plc, BOV Centre Canon Road, St. Venera SVR 9030, our client who was a Russian Investor by name Spirina Galina Alekseevna made a numbered of fixed deposit in our bank on 17th February, 2012 for 24 calendar months with a value of US$18,000,000.00 (Eighteen Million US Dollars Only) before his death on 10th April, 2012. After his death, my bank discovered that Spirina Galina Alekseevna did not declare any next of kin of his official documents including the paper work of his fixed deposit. I was his personal relationship banker for these years, and he did confide in me the last time he was at my office that no one knew of this deposit in my bank. So, US$18,000,000.00 including accrued interest is still lying in my bank, and no one will ever come forward to claim it. What bothers me most is that according to the laws of Malta, if the deposit account remain inactive for the next six months, and, n
+ o existing next of kin sh
+<DIV>
+<FONT size=3><I>&nbsp;</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>Against this backdrop, my suggestion to you is that I will like you as a foreigner to contact my Bank and stand as close relative of Spirina Galina Alekseevna, so that you will be able to claim the funds in question, and invest same in your region.</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>&nbsp;</I></FONT></DIV>
+<DIV>
+<FONT size=3><B><I>WHAT IS TO BE DONE:</B></I></FONT></DIV>
+<DIV>
+<FONT size=3><I>I want you to know that I have had everything planned out carefully so that we shall come out successful. I have contacted a Will &amp; Probate Attorney that will prepare the necessary legal documents that will back you up as the next of kin/close relative&nbsp; of our late customer Spirina Galina Alekseevna. All that is required from you is to furnish me with valid data so that the attorney will also file in for claims on your behalf and secure the necessary approval and letter of probate in your favor for the movement of the entire funds to a suitable finance company or numbered account that will be opened by you.</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>&nbsp;</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>There is no risk involved at all in this matter as we are going to adopt a legalized method and the attorney will prepare all necessary legal documents that would empower you as the rightful heir to receive the funds in your names. Please endeavor to observe utmost discretion in all matters concerning this project. Once the funds have been re-profiled and transferred to your designated bank account, we shall share in the ratio of 70% for me and 30% for you. Should you be interested, please send me the following information below:</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>&nbsp;</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>Full Names:</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>Current Residential Address:</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>Country of Origin:</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>Mobile/Tel:</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>&nbsp;</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>Kind Regards,</I></FONT></DIV>
+<DIV>
+<FONT size=3><I>Kenneth Farrugia.</I></FONT></DIV>
+</FONT>
+</BODY></HTML>
 
-
---mixpuywmQk4RxeDV
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2019.11.27 08:51:49 +0000, Gao, Fred wrote:
-> Thanks, comments in line.
->=20
-> -----Original Message-----
-> From: Zhenyu Wang <zhenyuw@linux.intel.com>=20
-> Sent: 2019=E5=B9=B411=E6=9C=8827=E6=97=A5 12:53
-> To: Gao, Fred <fred.gao@intel.com>
-> Cc: intel-gvt-dev@lists.freedesktop.org
-> Subject: Re: [PATCH v1] drm/i915/gvt: Fix guest boot warning
->=20
-> On 2019.11.27 00:19:04 +0800, Gao, Fred wrote:
-> > Simulate MIA core in reset status once GUC engine is reset.
-> >=20
-> > Signed-off-by: Gao Fred <fred.gao@intel.com>
-> > ---
-> >  drivers/gpu/drm/i915/gvt/handlers.c | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >=20
-> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c=20
-> > b/drivers/gpu/drm/i915/gvt/handlers.c
-> > index 3de664deb2f8..78f4d41b9005 100644
-> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> > @@ -341,6 +341,11 @@ static int gdrst_mmio_write(struct intel_vgpu *vgp=
-u, unsigned int offset,
-> >  			gvt_dbg_mmio("vgpu%d: request VCS2 Reset\n", vgpu->id);
-> >  			engine_mask |=3D BIT(VCS1);
-> >  		}
-> > +		if (data & GEN9_GRDOM_GUC) {
-> > +			gvt_dbg_mmio("vgpu%d: request GUC Reset\n", vgpu->id);
-> > +			vgpu_vreg(vgpu, i915_mmio_reg_offset(GUC_STATUS))
-> > +				|=3D GS_MIA_IN_RESET;
-> > +		}
->=20
-> Can write as vgpu_vreg_t(vgpu, GUC_STATUS) =3D ...
-> [fred] ok
-> Looks we can do this better in GUC_STATUS handler that we can clear IN_RE=
-SET value after reading.
-> [Fred] since the value is always 1 after guc_reset in native i915, so I d=
-o not do the change as well.
-> (0x0000c000): 0x00000001
->
-
-As we don't really handle GuC reset now, we just emulate reset status,
-if always leaving in_reset bit, guest might think reset is not done yet,
-so by clear it after once reading should tell guest reset is not in progress
-any more.
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---mixpuywmQk4RxeDV
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXd8zbwAKCRCxBBozTXgY
-JzWCAKCV7olUa5lZNf8thvT4qHPExe8h7gCeLWJQMyECSzNNEG+4d2AB4sczjBM=
-=nNA9
------END PGP SIGNATURE-----
-
---mixpuywmQk4RxeDV--
-
---===============2058019584==
+--===============1953940124==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -140,4 +105,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
 
---===============2058019584==--
+--===============1953940124==--
