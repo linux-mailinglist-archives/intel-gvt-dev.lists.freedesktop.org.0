@@ -1,29 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67BB310CE52
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Nov 2019 19:06:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B02CB10D118
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Nov 2019 06:40:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 00D5A6E0D3;
-	Thu, 28 Nov 2019 18:06:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 69B226E889;
+	Fri, 29 Nov 2019 05:40:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.metaseter.com.br (mail.metaseter.com.br [186.208.81.227])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9643E6E0D3;
- Thu, 28 Nov 2019 18:06:37 +0000 (UTC)
-Received: from User (ip15.ip-54-39-160.net [54.39.160.15])
- (Authenticated sender: marketing@fotografiahd.com.br)
- by mail.metaseter.com.br (Postfix) with ESMTPA id 7E6466B60B;
- Wed, 27 Nov 2019 16:32:57 -0300 (EST)
-From: "Kenneth Farrugia"<ken.farrugia7@gmail.com>
-Subject: Re: Spirina G. Alekseevna Deposits.
-Date: Wed, 27 Nov 2019 11:33:10 -0800
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0A93A6E889
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 29 Nov 2019 05:40:38 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Nov 2019 21:40:38 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,256,1571727600"; d="scan'208";a="240928129"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 28 Nov 2019 21:40:36 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1iaZ19-000Fu5-Uj; Fri, 29 Nov 2019 13:40:35 +0800
+Date: Fri, 29 Nov 2019 13:39:41 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt-linux:gvt-staging] BUILD INCOMPLETE
+ edbb3c77cec47fcd407d0f19924caede5fa96a38
+Message-ID: <5de0af1d.6iHvXd5do2FwP5av%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -36,73 +45,122 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ken.farrugia07@gmail.com
-Content-Type: multipart/mixed; boundary="===============1953940124=="
+Cc: libo.zhu@intel.com, terrence.xu@intel.com,
+ intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20191128180639.00D5A6E0D3@gabe.freedesktop.org>
 
---===============1953940124==
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-<FONT size=3><I>Greetings from Malta,</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>&nbsp;</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>This is in regards to my previous email message you didn’t receive, kindly accept my apology for sending you email without your consent. I believe you are a highly respected personality, considering the fact that I sourced your email contact from the peoples search database on the web during my descry search for a competent foreign partner whom can assist me in executing this project successfully. Although, I do not know to what extent you are familiar with events, I have a discreet proposal for you. This, however is not mandatory nor will I in any manner compel you to honor against your will, but I hope you will read on and consider my offer.</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>&nbsp;</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>I'm Mr. Kenneth Farrugia, Chief Business Development Officer, Bank of Valletta Plc, BOV Centre Canon Road, St. Venera SVR 9030, our client who was a Russian Investor by name Spirina Galina Alekseevna made a numbered of fixed deposit in our bank on 17th February, 2012 for 24 calendar months with a value of US$18,000,000.00 (Eighteen Million US Dollars Only) before his death on 10th April, 2012. After his death, my bank discovered that Spirina Galina Alekseevna did not declare any next of kin of his official documents including the paper work of his fixed deposit. I was his personal relationship banker for these years, and he did confide in me the last time he was at my office that no one knew of this deposit in my bank. So, US$18,000,000.00 including accrued interest is still lying in my bank, and no one will ever come forward to claim it. What bothers me most is that according to the laws of Malta, if the deposit account remain inactive for the next six months, and, n
- o existing next of kin sh
-<DIV>
-<FONT size=3><I>&nbsp;</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>Against this backdrop, my suggestion to you is that I will like you as a foreigner to contact my Bank and stand as close relative of Spirina Galina Alekseevna, so that you will be able to claim the funds in question, and invest same in your region.</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>&nbsp;</I></FONT></DIV>
-<DIV>
-<FONT size=3><B><I>WHAT IS TO BE DONE:</B></I></FONT></DIV>
-<DIV>
-<FONT size=3><I>I want you to know that I have had everything planned out carefully so that we shall come out successful. I have contacted a Will &amp; Probate Attorney that will prepare the necessary legal documents that will back you up as the next of kin/close relative&nbsp; of our late customer Spirina Galina Alekseevna. All that is required from you is to furnish me with valid data so that the attorney will also file in for claims on your behalf and secure the necessary approval and letter of probate in your favor for the movement of the entire funds to a suitable finance company or numbered account that will be opened by you.</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>&nbsp;</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>There is no risk involved at all in this matter as we are going to adopt a legalized method and the attorney will prepare all necessary legal documents that would empower you as the rightful heir to receive the funds in your names. Please endeavor to observe utmost discretion in all matters concerning this project. Once the funds have been re-profiled and transferred to your designated bank account, we shall share in the ratio of 70% for me and 30% for you. Should you be interested, please send me the following information below:</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>&nbsp;</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>Full Names:</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>Current Residential Address:</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>Country of Origin:</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>Mobile/Tel:</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>&nbsp;</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>Kind Regards,</I></FONT></DIV>
-<DIV>
-<FONT size=3><I>Kenneth Farrugia.</I></FONT></DIV>
-</FONT>
-</BODY></HTML>
-
---===============1953940124==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
+dHJlZS9icmFuY2g6IGh0dHBzOi8vZ2l0aHViLmNvbS9pbnRlbC9ndnQtbGludXguZ2l0ICBndnQt
+c3RhZ2luZwpicmFuY2ggSEVBRDogZWRiYjNjNzdjZWM0N2ZjZDQwN2QwZjE5OTI0Y2FlZGU1ZmE5
+NmEzOCAgZ3Z0LXN0YWdpbmc6IDIwMTl5LTExbS0yN2QtMTNoLTEwbS00N3MgQ1NUIGludGVncmF0
+aW9uIG1hbmlmZXN0CgpUSU1FT1VUIGFmdGVyIDI4ODNtCgoKU29ycnkgd2UgY2Fubm90IGZpbmlz
+aCB0aGUgdGVzdHNldCBmb3IgeW91ciBicmFuY2ggd2l0aGluIGEgcmVhc29uYWJsZSB0aW1lLgpJ
+dCdzIG91ciBmYXVsdCAtLSBlaXRoZXIgc29tZSBidWlsZCBzZXJ2ZXIgaXMgZG93biBvciBzb21l
+IGJ1aWxkIHdvcmtlciBpcyBidXN5CmRvaW5nIGJpc2VjdHMgZm9yIF9vdGhlcl8gdHJlZXMuIFRo
+ZSBicmFuY2ggd2lsbCBnZXQgbW9yZSBjb21wbGV0ZSBjb3ZlcmFnZSBhbmQKcG9zc2libGUgZXJy
+b3IgcmVwb3J0cyB3aGVuIG91ciBidWlsZCBpbmZyYXN0cnVjdHVyZSBpcyByZXN0b3JlZCBvciBj
+YXRjaGVzIHVwLgpUaGVyZSB3aWxsIGJlIG5vIG1vcmUgYnVpbGQgc3VjY2VzcyBub3RpZmljYXRp
+b24gZm9yIHRoaXMgYnJhbmNoIGhlYWQsIGJ1dCB5b3UKY2FuIGV4cGVjdCByZWFzb25hYmx5IGdv
+b2QgdGVzdCBjb3ZlcmFnZSBhZnRlciB3YWl0aW5nIGZvciAxIGRheS4KCmNvbmZpZ3MgdGltZWQg
+b3V0OiA2CgppMzg2ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGx5ZXNjb25maWcKeDg2
+XzY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZmVkb3JhLTI1Cng4Nl82NCAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBrZXhlYwp4ODZfNjQgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICBsa3AKeDg2XzY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICByaGVsCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByaGVsLTcuNgoK
+Y29uZmlncyB0ZXN0ZWQ6IDExMAoKaTM4NiAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1oMDAy
+LTIwMTkxMTI3Cng4Nl82NCAgICAgICAgICAgICAgIHJhbmRjb25maWctaDAwMS0yMDE5MTEyNwp4
+ODZfNjQgICAgICAgICAgICAgICByYW5kY29uZmlnLWgwMDMtMjAxOTExMjcKaTM4NiAgICAgICAg
+ICAgICAgICAgcmFuZGNvbmZpZy1oMDAxLTIwMTkxMTI3CmkzODYgICAgICAgICAgICAgICAgIHJh
+bmRjb25maWctaDAwMy0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAgICAgICByYW5kY29uZmlnLWgw
+MDItMjAxOTExMjcKYXJtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9kY29uZmln
+CmFybSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwphcm0gICAgICAg
+ICAgICAgICAgICAgICAgICAgYXQ5MV9kdF9kZWZjb25maWcKYXJtICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgZWZtMzJfZGVmY29uZmlnCmFybSAgICAgICAgICAgICAgICAgICAgICAgICAgZXh5
+bm9zX2RlZmNvbmZpZwphcm0gICAgICAgICAgICAgICAgICAgICAgICBtdWx0aV92NV9kZWZjb25m
+aWcKYXJtICAgICAgICAgICAgICAgICAgICAgICAgbXVsdGlfdjdfZGVmY29uZmlnCmFybSAgICAg
+ICAgICAgICAgICAgICAgICAgIHNobW9iaWxlX2RlZmNvbmZpZwphcm0gICAgICAgICAgICAgICAg
+ICAgICAgICAgICBzdW54aV9kZWZjb25maWcKYXJtNjQgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgYWxsbW9kY29uZmlnCmFybTY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2Nv
+bmZpZwphcm02NCAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGx5ZXNjb25maWcKYXJtNjQg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCmkzODYgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIGFsbGRlZmNvbmZpZwppMzg2ICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgYWxsbm9jb25maWcKaTM4NiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVm
+Y29uZmlnCnBhcmlzYyAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwpwYXJp
+c2MgICAgICAgICAgICAgICAgICAgICAgICAgYjE4MF9kZWZjb25maWcKcGFyaXNjICAgICAgICAg
+ICAgICAgICAgICAgICAgYzMwMDBfZGVmY29uZmlnCnBhcmlzYyAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIGRlZmNvbmZpZwphbHBoYSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBk
+ZWZjb25maWcKbmRzMzIgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29uZmlnCm5k
+czMyICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwpyaXNjdiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKcmlzY3YgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgZGVmY29uZmlnCmkzODYgICAgICAgICAgICAgICAgIHJhbmRjb25maWctZjAw
+My0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWYwMDItMjAxOTExMjcK
+eDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1mMDAyLTIwMTkxMTI3Cng4Nl82NCAgICAg
+ICAgICAgICAgIHJhbmRjb25maWctZjAwMy0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICBy
+YW5kY29uZmlnLWYwMDEtMjAxOTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1m
+MDAxLTIwMTkxMTI3CnNoICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZp
+ZwpzaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKc2ggICAgICAg
+ICAgICAgICAgICAgICAgICAgIHJzazcyNjlfZGVmY29uZmlnCnNoICAgICAgICAgICAgICAgICAg
+c2g3Nzg1bGNyXzMyYml0X2RlZmNvbmZpZwpzaCAgICAgICAgICAgICAgICAgICAgICAgICAgICB0
+aXRhbl9kZWZjb25maWcKaDgzMDAgICAgICAgICAgICAgICAgICAgICBlZG9zazI2NzRfZGVmY29u
+ZmlnCmg4MzAwICAgICAgICAgICAgICAgICAgICBoODMwMGgtc2ltX2RlZmNvbmZpZwpoODMwMCAg
+ICAgICAgICAgICAgICAgICAgICAgaDhzLXNpbV9kZWZjb25maWcKbTY4ayAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgYWxsbW9kY29uZmlnCm02OGsgICAgICAgICAgICAgICAgICAgICAgIG01
+NDc1ZXZiX2RlZmNvbmZpZwptNjhrICAgICAgICAgICAgICAgICAgICAgICAgICBtdWx0aV9kZWZj
+b25maWcKbTY4ayAgICAgICAgICAgICAgICAgICAgICAgICAgIHN1bjNfZGVmY29uZmlnCnVtICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwp1bSAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgaTM4Nl9kZWZjb25maWcKdW0gICAgICAgICAgICAgICAgICAgICAgICAg
+ICB4ODZfNjRfZGVmY29uZmlnCmlhNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1v
+ZGNvbmZpZwppYTY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKaWE2
+NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCmlhNjQgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIGFsbGRlZmNvbmZpZwptaXBzICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgMzJyMl9kZWZjb25maWcKbWlwcyAgICAgICAgICAgICAgICAgICAgICAgICA2NHI2ZWxf
+ZGVmY29uZmlnCm1pcHMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZpZwpt
+aXBzICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKbWlwcyAgICAgICAg
+ICAgICAgICAgICAgICBmdWxvb25nMmVfZGVmY29uZmlnCm1pcHMgICAgICAgICAgICAgICAgICAg
+ICAgbWFsdGFfa3ZtX2RlZmNvbmZpZwppMzg2ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWcw
+MDItMjAxOTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1nMDAxLTIwMTkxMTI3
+Cng4Nl82NCAgICAgICAgICAgICAgIHJhbmRjb25maWctZzAwMi0yMDE5MTEyNwppMzg2ICAgICAg
+ICAgICAgICAgICByYW5kY29uZmlnLWcwMDMtMjAxOTExMjcKaTM4NiAgICAgICAgICAgICAgICAg
+cmFuZGNvbmZpZy1nMDAxLTIwMTkxMTI3Cng4Nl82NCAgICAgICAgICAgICAgIHJhbmRjb25maWct
+ZzAwMy0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWIwMDItMjAxOTEx
+MjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1iMDAyLTIwMTkxMTI3Cng4Nl82NCAg
+ICAgICAgICAgICAgIHJhbmRjb25maWctYjAwMS0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAg
+ICByYW5kY29uZmlnLWIwMDMtMjAxOTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZp
+Zy1iMDAzLTIwMTkxMTI3CmkzODYgICAgICAgICAgICAgICAgIHJhbmRjb25maWctYjAwMS0yMDE5
+MTEyNwpzcGFyYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKc3BhcmM2
+NCAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9kY29uZmlnCnNwYXJjNjQgICAgICAgICAg
+ICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwpzcGFyYzY0ICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBkZWZjb25maWcKczM5MCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9k
+Y29uZmlnCnMzOTAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwpzMzkw
+ICAgICAgICAgICAgICAgICAgICAgICAgICBkZWJ1Z19kZWZjb25maWcKczM5MCAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCng4Nl82NCAgICAgICAgICAgICAgIHJhbmRj
+b25maWctYzAwMS0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAgICAgICByYW5kY29uZmlnLWMwMDMt
+MjAxOTExMjcKaTM4NiAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1jMDAzLTIwMTkxMTI3Cmkz
+ODYgICAgICAgICAgICAgICAgIHJhbmRjb25maWctYzAwMi0yMDE5MTEyNwp4ODZfNjQgICAgICAg
+ICAgICAgICByYW5kY29uZmlnLWMwMDItMjAxOTExMjcKaTM4NiAgICAgICAgICAgICAgICAgcmFu
+ZGNvbmZpZy1jMDAxLTIwMTkxMTI3CmFyYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFs
+bHllc2NvbmZpZwphcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcK
+bWljcm9ibGF6ZSAgICAgICAgICAgICAgICAgICAgICBtbXVfZGVmY29uZmlnCm1pY3JvYmxhemUg
+ICAgICAgICAgICAgICAgICAgIG5vbW11X2RlZmNvbmZpZwpwb3dlcnBjICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgYWxsbm9jb25maWcKcG93ZXJwYyAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgZGVmY29uZmlnCnBvd2VycGMgICAgICAgICAgICAgICAgICAgICAgIHBwYzY0X2RlZmNvbmZp
+Zwpwb3dlcnBjICAgICAgICAgICAgICAgICAgICAgICAgICByaGVsLWtjb25maWcKeHRlbnNhICAg
+ICAgICAgICAgICAgICAgICAgICBjb21tb25fZGVmY29uZmlnCm9wZW5yaXNjICAgICAgICAgICAg
+ICAgICAgICBvcjFrc2ltX2RlZmNvbmZpZwpuaW9zMiAgICAgICAgICAgICAgICAgICAgICAgICAz
+YzEyMF9kZWZjb25maWcKeHRlbnNhICAgICAgICAgICAgICAgICAgICAgICAgICBpc3NfZGVmY29u
+ZmlnCmM2eCAgICAgICAgICAgICAgICAgICAgICAgIGV2bWM2Njc4X2RlZmNvbmZpZwpjNnggICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBhbGx5ZXNjb25maWcKbmlvczIgICAgICAgICAgICAg
+ICAgICAgICAgICAgMTBtNTBfZGVmY29uZmlnCm9wZW5yaXNjICAgICAgICAgICAgICAgICBzaW1w
+bGVfc21wX2RlZmNvbmZpZwppMzg2ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWUwMDItMjAx
+OTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1lMDAzLTIwMTkxMTI3CmkzODYg
+ICAgICAgICAgICAgICAgIHJhbmRjb25maWctZTAwMS0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAg
+ICAgICByYW5kY29uZmlnLWUwMDEtMjAxOTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNv
+bmZpZy1lMDAyLTIwMTkxMTI3CmkzODYgICAgICAgICAgICAgICAgIHJhbmRjb25maWctZTAwMy0y
+MDE5MTEyNwoKLS0tCjAtREFZIGtlcm5lbCB0ZXN0IGluZnJhc3RydWN0dXJlICAgICAgICAgICAg
+ICAgICBPcGVuIFNvdXJjZSBUZWNobm9sb2d5IENlbnRlcgpodHRwczovL2xpc3RzLjAxLm9yZy9o
+eXBlcmtpdHR5L2xpc3Qva2J1aWxkLWFsbEBsaXN0cy4wMS5vcmcgSW50ZWwgQ29ycG9yYXRpb24K
 X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
 LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
 cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
-
---===============1953940124==--
