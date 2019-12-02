@@ -1,38 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C65A10D117
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Nov 2019 06:40:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A94F10E540
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Dec 2019 06:18:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D7FE36E886;
-	Fri, 29 Nov 2019 05:40:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 94CB389EEB;
+	Mon,  2 Dec 2019 05:18:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E249F6E886
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Nov 2019 05:40:37 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 23BDF89EEB;
+ Mon,  2 Dec 2019 05:18:29 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Nov 2019 21:40:37 -0800
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 01 Dec 2019 21:18:27 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,256,1571727600"; d="scan'208";a="207338172"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 28 Nov 2019 21:40:35 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iaZ19-000FqN-8f; Fri, 29 Nov 2019 13:40:35 +0800
-Date: Fri, 29 Nov 2019 13:39:44 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-next-fixes] BUILD INCOMPLETE
- 68421940b0d66f3806bfd0cd0f78a6935c75cb55
-Message-ID: <5de0af20.rSufES0Hv+QgsTuZ%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.69,268,1571727600"; 
+ d="asc'?scan'208";a="207959345"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
+ by fmsmga008.fm.intel.com with ESMTP; 01 Dec 2019 21:18:25 -0800
+Date: Mon, 2 Dec 2019 13:17:11 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ Jani Nikula <jani.nikula@intel.com>
+Subject: [PULL] gvt-next-fixes
+Message-ID: <20191202051711.GZ4196@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -45,132 +44,93 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: libo.zhu@intel.com, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============1203858340=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-dHJlZS9icmFuY2g6IGh0dHBzOi8vZ2l0aHViLmNvbS9pbnRlbC9ndnQtbGludXguZ2l0ICBndnQt
-bmV4dC1maXhlcwpicmFuY2ggSEVBRDogNjg0MjE5NDBiMGQ2NmYzODA2YmZkMGNkMGY3OGE2OTM1
-Yzc1Y2I1NSAgZHJtL2k5MTUvZ3Z0OiBVcGRhdGUgZm9yY2UtdG8tbm9ucHJpdiByZWdpc3RlciB3
-aGl0ZWxpc3QKClRJTUVPVVQgYWZ0ZXIgMjg4M20KCgpTb3JyeSB3ZSBjYW5ub3QgZmluaXNoIHRo
-ZSB0ZXN0c2V0IGZvciB5b3VyIGJyYW5jaCB3aXRoaW4gYSByZWFzb25hYmxlIHRpbWUuCkl0J3Mg
-b3VyIGZhdWx0IC0tIGVpdGhlciBzb21lIGJ1aWxkIHNlcnZlciBpcyBkb3duIG9yIHNvbWUgYnVp
-bGQgd29ya2VyIGlzIGJ1c3kKZG9pbmcgYmlzZWN0cyBmb3IgX290aGVyXyB0cmVlcy4gVGhlIGJy
-YW5jaCB3aWxsIGdldCBtb3JlIGNvbXBsZXRlIGNvdmVyYWdlIGFuZApwb3NzaWJsZSBlcnJvciBy
-ZXBvcnRzIHdoZW4gb3VyIGJ1aWxkIGluZnJhc3RydWN0dXJlIGlzIHJlc3RvcmVkIG9yIGNhdGNo
-ZXMgdXAuClRoZXJlIHdpbGwgYmUgbm8gbW9yZSBidWlsZCBzdWNjZXNzIG5vdGlmaWNhdGlvbiBm
-b3IgdGhpcyBicmFuY2ggaGVhZCwgYnV0IHlvdQpjYW4gZXhwZWN0IHJlYXNvbmFibHkgZ29vZCB0
-ZXN0IGNvdmVyYWdlIGFmdGVyIHdhaXRpbmcgZm9yIDEgZGF5LgoKY29uZmlncyB0aW1lZCBvdXQ6
-IDE2Cgphcm0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKYXJtICAg
-ICAgICAgICAgICAgICAgICAgICAgIGF0OTFfZHRfZGVmY29uZmlnCmFybSAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIGVmbTMyX2RlZmNvbmZpZwphcm0gICAgICAgICAgICAgICAgICAgICAgICAg
-IGV4eW5vc19kZWZjb25maWcKYXJtICAgICAgICAgICAgICAgICAgICAgICAgbXVsdGlfdjVfZGVm
-Y29uZmlnCmFybSAgICAgICAgICAgICAgICAgICAgICAgIG11bHRpX3Y3X2RlZmNvbmZpZwphcm0g
-ICAgICAgICAgICAgICAgICAgICAgICBzaG1vYmlsZV9kZWZjb25maWcKYXJtICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgc3VueGlfZGVmY29uZmlnCmFybTY0ICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBhbGxub2NvbmZpZwphcm02NCAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGx5
-ZXNjb25maWcKYXJtNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCmkz
-ODYgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbHllc2NvbmZpZwppYTY0ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBhbGxkZWZjb25maWcKaWE2NCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgYWxsbW9kY29uZmlnCmlhNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBh
-bGxub2NvbmZpZwppYTY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcK
-CmNvbmZpZ3MgdGVzdGVkOiAxMTIKCnVtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IGRlZmNvbmZpZwp1bSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaTM4Nl9kZWZjb25maWcK
-dW0gICAgICAgICAgICAgICAgICAgICAgICAgICB4ODZfNjRfZGVmY29uZmlnCmkzODYgICAgICAg
-ICAgICAgICAgIHJhbmRjb25maWctZTAwMi0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAgICAgICBy
-YW5kY29uZmlnLWUwMDMtMjAxOTExMjcKaTM4NiAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1l
-MDAxLTIwMTkxMTI3Cng4Nl82NCAgICAgICAgICAgICAgIHJhbmRjb25maWctZTAwMS0yMDE5MTEy
-Nwp4ODZfNjQgICAgICAgICAgICAgICByYW5kY29uZmlnLWUwMDItMjAxOTExMjcKaTM4NiAgICAg
-ICAgICAgICAgICAgcmFuZGNvbmZpZy1lMDAzLTIwMTkxMTI3CmkzODYgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIGFsbGRlZmNvbmZpZwppMzg2ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgYWxsbm9jb25maWcKaTM4NiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29u
-ZmlnCnBhcmlzYyAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwpwYXJpc2Mg
-ICAgICAgICAgICAgICAgICAgICAgICAgYjE4MF9kZWZjb25maWcKcGFyaXNjICAgICAgICAgICAg
-ICAgICAgICAgICAgYzMwMDBfZGVmY29uZmlnCnBhcmlzYyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIGRlZmNvbmZpZwphbHBoYSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZj
-b25maWcKbmRzMzIgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29uZmlnCm5kczMy
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwpyaXNjdiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKcmlzY3YgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgZGVmY29uZmlnCmkzODYgICAgICAgICAgICAgICAgIHJhbmRjb25maWctaDAwMi0y
-MDE5MTEyNwp4ODZfNjQgICAgICAgICAgICAgICByYW5kY29uZmlnLWgwMDEtMjAxOTExMjcKeDg2
-XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1oMDAzLTIwMTkxMTI3CmkzODYgICAgICAgICAg
-ICAgICAgIHJhbmRjb25maWctaDAwMS0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICByYW5k
-Y29uZmlnLWgwMDMtMjAxOTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1oMDAy
-LTIwMTkxMTI3CnNoICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZpZwpz
-aCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKc2ggICAgICAgICAg
-ICAgICAgICAgICAgICAgIHJzazcyNjlfZGVmY29uZmlnCnNoICAgICAgICAgICAgICAgICAgc2g3
-Nzg1bGNyXzMyYml0X2RlZmNvbmZpZwpzaCAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aXRh
-bl9kZWZjb25maWcKaWE2NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1hMDAxLTIwMTkxMTI3
-CnNwYXJjICAgICAgICAgICAgICAgIHJhbmRjb25maWctYTAwMS0yMDE5MTEyNwphcmMgICAgICAg
-ICAgICAgICAgIHJhbmRjb25maWctYTAwMzEtMjAxOTExMjcKcG93ZXJwYyAgICAgICAgICAgICAg
-cmFuZGNvbmZpZy1hMDAxLTIwMTkxMTI3CmFybTY0ICAgICAgICAgICAgICAgIHJhbmRjb25maWct
-YTAwMS0yMDE5MTEyNwphcm0gICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWEwMDEtMjAxOTEx
-MjcKaDgzMDAgICAgICAgICAgICAgICAgICAgICBlZG9zazI2NzRfZGVmY29uZmlnCmg4MzAwICAg
-ICAgICAgICAgICAgICAgICBoODMwMGgtc2ltX2RlZmNvbmZpZwpoODMwMCAgICAgICAgICAgICAg
-ICAgICAgICAgaDhzLXNpbV9kZWZjb25maWcKbTY4ayAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgYWxsbW9kY29uZmlnCm02OGsgICAgICAgICAgICAgICAgICAgICAgIG01NDc1ZXZiX2RlZmNv
-bmZpZwptNjhrICAgICAgICAgICAgICAgICAgICAgICAgICBtdWx0aV9kZWZjb25maWcKbTY4ayAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHN1bjNfZGVmY29uZmlnCng4Nl82NCAgICAgICAgICAg
-ICAgIHJhbmRjb25maWctZDAwMi0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLWQwMDEtMjAxOTExMjcKaTM4NiAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1kMDAzLTIw
-MTkxMTI3Cng4Nl82NCAgICAgICAgICAgICAgIHJhbmRjb25maWctZDAwMS0yMDE5MTEyNwppMzg2
-ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWQwMDItMjAxOTExMjcKeDg2XzY0ICAgICAgICAg
-ICAgICAgcmFuZGNvbmZpZy1kMDAzLTIwMTkxMTI3Cm1pcHMgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAzMnIyX2RlZmNvbmZpZwptaXBzICAgICAgICAgICAgICAgICAgICAgICAgIDY0cjZlbF9k
-ZWZjb25maWcKbWlwcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9kY29uZmlnCm1p
-cHMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwptaXBzICAgICAgICAg
-ICAgICAgICAgICAgIGZ1bG9vbmcyZV9kZWZjb25maWcKbWlwcyAgICAgICAgICAgICAgICAgICAg
-ICBtYWx0YV9rdm1fZGVmY29uZmlnCmkzODYgICAgICAgICAgICAgICAgIHJhbmRjb25maWctZjAw
-My0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWYwMDItMjAxOTExMjcK
-eDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1mMDAyLTIwMTkxMTI3Cng4Nl82NCAgICAg
-ICAgICAgICAgIHJhbmRjb25maWctZjAwMy0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICBy
-YW5kY29uZmlnLWYwMDEtMjAxOTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1m
-MDAxLTIwMTkxMTI3Cnh0ZW5zYSAgICAgICAgICAgICAgICAgICAgICAgY29tbW9uX2RlZmNvbmZp
-ZwpvcGVucmlzYyAgICAgICAgICAgICAgICAgICAgb3Ixa3NpbV9kZWZjb25maWcKbmlvczIgICAg
-ICAgICAgICAgICAgICAgICAgICAgM2MxMjBfZGVmY29uZmlnCnh0ZW5zYSAgICAgICAgICAgICAg
-ICAgICAgICAgICAgaXNzX2RlZmNvbmZpZwpjNnggICAgICAgICAgICAgICAgICAgICAgICBldm1j
-NjY3OF9kZWZjb25maWcKYzZ4ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxseWVzY29u
-ZmlnCm5pb3MyICAgICAgICAgICAgICAgICAgICAgICAgIDEwbTUwX2RlZmNvbmZpZwpvcGVucmlz
-YyAgICAgICAgICAgICAgICAgc2ltcGxlX3NtcF9kZWZjb25maWcKaTM4NiAgICAgICAgICAgICAg
-ICAgcmFuZGNvbmZpZy1nMDAyLTIwMTkxMTI3Cng4Nl82NCAgICAgICAgICAgICAgIHJhbmRjb25m
-aWctZzAwMS0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAgICAgICByYW5kY29uZmlnLWcwMDItMjAx
-OTExMjcKaTM4NiAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1nMDAzLTIwMTkxMTI3CmkzODYg
-ICAgICAgICAgICAgICAgIHJhbmRjb25maWctZzAwMS0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAg
-ICAgICByYW5kY29uZmlnLWcwMDMtMjAxOTExMjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNv
-bmZpZy1jMDAxLTIwMTkxMTI3Cng4Nl82NCAgICAgICAgICAgICAgIHJhbmRjb25maWctYzAwMy0y
-MDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLWMwMDMtMjAxOTExMjcKaTM4
-NiAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1jMDAyLTIwMTkxMTI3Cng4Nl82NCAgICAgICAg
-ICAgICAgIHJhbmRjb25maWctYzAwMi0yMDE5MTEyNwppMzg2ICAgICAgICAgICAgICAgICByYW5k
-Y29uZmlnLWMwMDEtMjAxOTExMjcKc3BhcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ZGVmY29uZmlnCnNwYXJjNjQgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZpZwpz
-cGFyYzY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKc3BhcmM2NCAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCnMzOTAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGFsbG1vZGNvbmZpZwpzMzkwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-YWxsbm9jb25maWcKczM5MCAgICAgICAgICAgICAgICAgICAgICAgICAgZGVidWdfZGVmY29uZmln
-CnMzOTAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwphcm0gICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBhbGxtb2Rjb25maWcKYXJtNjQgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgYWxsbW9kY29uZmlnCmkzODYgICAgICAgICAgICAgICAgIHJhbmRjb25maWct
-YjAwMi0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAgICAgICByYW5kY29uZmlnLWIwMDItMjAxOTEx
-MjcKeDg2XzY0ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1iMDAxLTIwMTkxMTI3CmkzODYgICAg
-ICAgICAgICAgICAgIHJhbmRjb25maWctYjAwMy0yMDE5MTEyNwp4ODZfNjQgICAgICAgICAgICAg
-ICByYW5kY29uZmlnLWIwMDMtMjAxOTExMjcKaTM4NiAgICAgICAgICAgICAgICAgcmFuZGNvbmZp
-Zy1iMDAxLTIwMTkxMTI3CmFyYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbHllc2Nv
-bmZpZwphcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKbWljcm9i
-bGF6ZSAgICAgICAgICAgICAgICAgICAgICBtbXVfZGVmY29uZmlnCm1pY3JvYmxhemUgICAgICAg
-ICAgICAgICAgICAgIG5vbW11X2RlZmNvbmZpZwpwb3dlcnBjICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgYWxsbm9jb25maWcKcG93ZXJwYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVm
-Y29uZmlnCnBvd2VycGMgICAgICAgICAgICAgICAgICAgICAgIHBwYzY0X2RlZmNvbmZpZwpwb3dl
-cnBjICAgICAgICAgICAgICAgICAgICAgICAgICByaGVsLWtjb25maWcKeDg2XzY0ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgbGtwCng4Nl82NCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgcmhlbAp4ODZfNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-cmhlbC03LjYKeDg2XzY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZmVkb3JhLTI1Cng4
-Nl82NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXhlYwoKLS0tCjAtREFZIGtl
-cm5lbCB0ZXN0IGluZnJhc3RydWN0dXJlICAgICAgICAgICAgICAgICBPcGVuIFNvdXJjZSBUZWNo
-bm9sb2d5IENlbnRlcgpodHRwczovL2xpc3RzLjAxLm9yZy9oeXBlcmtpdHR5L2xpc3Qva2J1aWxk
-LWFsbEBsaXN0cy4wMS5vcmcgSW50ZWwgQ29ycG9yYXRpb24KX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50
-ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1203858340==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="azIKtn7V5gBmWzzR"
+Content-Disposition: inline
+
+
+--azIKtn7V5gBmWzzR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+
+Hi,
+
+More gvt fixes for 5.5-rc. One is MI_ATOMIC cmd parser fix which
+missed 5.4 and another two for CFL non-priv reg access fixes.
+
+Thanks
+--
+The following changes since commit 83faaf074e6d1ca4d1441aded0d3f01bce413479:
+
+  drm/i915/gvt: Stop initializing pvinfo through reading mmio (2019-11-08 1=
+1:08:07 +0800)
+
+are available in the Git repository at:
+
+  https://github.com/intel/gvt-linux tags/gvt-next-fixes-2019-12-02
+
+for you to fetch changes up to 92b1aa773fadb4e2a90ed5d3beecb422d568ad9a:
+
+  drm/i915/gvt: Fix cmd length check for MI_ATOMIC (2019-12-02 11:06:49 +08=
+00)
+
+----------------------------------------------------------------
+gvt-next-fixes-2019-12-02
+
+- Fix cmd parser for MI_ATOMIC (Zhenyu)
+- Fix non-priv register access warning on CFL (Fred)
+
+----------------------------------------------------------------
+Gao, Fred (2):
+      drm/i915/gvt: Refine non privilege register address calucation
+      drm/i915/gvt: Update force-to-nonpriv register whitelist
+
+Zhenyu Wang (1):
+      drm/i915/gvt: Fix cmd length check for MI_ATOMIC
+
+ drivers/gpu/drm/i915/gvt/cmd_parser.c | 6 +++---
+ drivers/gpu/drm/i915/gvt/handlers.c   | 5 +++--
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--azIKtn7V5gBmWzzR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXeSeVgAKCRCxBBozTXgY
+JzhFAKCCmgQx5Ztogl3pEiRJPKPIbbkUXgCeLICICqbjCn/m81rXK5WU7G2xIbY=
+=ST0n
+-----END PGP SIGNATURE-----
+
+--azIKtn7V5gBmWzzR--
+
+--===============1203858340==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0
+LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2
+
+--===============1203858340==--
