@@ -1,31 +1,36 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56171118894
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Dec 2019 13:34:53 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E65F011C5CF
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Dec 2019 07:07:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0F4F76E8DE;
-	Tue, 10 Dec 2019 12:34:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 89CD36EC54;
+	Thu, 12 Dec 2019 06:07:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 611 seconds by postgrey-1.36 at gabe;
- Tue, 10 Dec 2019 12:34:47 UTC
-Received: from server2.qualityco.top (unknown [43.226.36.125])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9E6DD6E8DD
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Dec 2019 12:34:46 +0000 (UTC)
-Received: from DEEP-2018XXZGRQ (113.116.36.183) by server2.qualityco.top id
- htu8ee0e97cm for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Dec 2019 20:14:09 +0800 (envelope-from <info2@mkbalance.top>)
-From: "Alex (RMT PRODUCTS)" <alex_rmt@outlook.com>
-Subject: Rapid prototype vendor from China.
-To: intel-gvt-dev@lists.freedesktop.org
+X-Greylist: delayed 616 seconds by postgrey-1.36 at gabe;
+ Thu, 12 Dec 2019 06:07:48 UTC
+Received: from spam.soosan.co.kr (spam.plustechglobal.com [61.74.201.69])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 514DE6EC54;
+ Thu, 12 Dec 2019 06:07:48 +0000 (UTC)
+Received: from [178.32.49.93] ([178.32.49.93]) 
+ by spam.soosan.co.kr ([61.74.201.69]) 
+ with ESMTP id 1576130212.856832.140518491117312.spam for <>; 
+ Thu, 12 Dec 2019 14:56:49 +0900 (KST) 
+From: "Google Corporation"<reply9919@googlemail.com>
+Subject: Merry Christmas
+X-TERRACE-DUMMYSUBJECT: Terrace Spam system *
+Date: Wed, 11 Dec 2019 21:56:59 -0800
 MIME-Version: 1.0
-Date: Tue, 10 Dec 2019 20:14:09 +0800
 X-Priority: 3
 X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-TERRACE-SPAMMARK: NOT spam-marked.                              
+ (by Terrace)                                            
+X-TERRACE-SID: 1576130212.856832.140518491117312.spam
+X-TERRACE-CLASSID: Terrace Spam system                                      
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,143 +43,105 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: alex_rmt@outlook.com
-Content-Type: multipart/mixed; boundary="===============1547174707=="
+Reply-To: lpageceog@yandex.ru
+Content-Type: multipart/mixed; boundary="===============0265019546=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20191210123452.0F4F76E8DE@gabe.freedesktop.org>
+Message-Id: <20191212060749.89CD36EC54@gabe.freedesktop.org>
 
---===============1547174707==
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
+--===============0265019546==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgbmFtZT1HRU5FUkFUT1IgY29udGVudD0iTVNIVE1M
-IDExLjAwLjEwNTcwLjEwMDEiPjwvSEVBRD4NCjxCT0RZPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0
-eWxlPSJCQUNLR1JPVU5EOiB3aGl0ZTsgVEVYVC1BTElHTjogbGVmdDsgTUFSR0lOOiAwY20gMGNt
-IDBwdDsgTElORS1IRUlHSFQ6IDE0LjY1cHQ7IG1zby1wYWdpbmF0aW9uOiB3aWRvdy1vcnBoYW4i
-IGFsaWduPWxlZnQ+PFNQQU4gbGFuZz1FTi1VUyBzdHlsZT0nRk9OVC1TSVpFOiAxMHB0OyBGT05U
-LUZBTUlMWTogIkFyaWFsIixzYW5zLXNlcmlmOyBDT0xPUjogYmxhY2s7IG1zby1mYXJlYXN0LWZv
-bnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZvbnQta2VybmluZzogMHB0Jz5E
-ZWFyIHNpciw8L1NQQU4+PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJCQUNLR1JPVU5E
-OiB3aGl0ZTsgVEVYVC1BTElHTjogbGVmdDsgTUFSR0lOOiAwY20gMGNtIDBwdDsgTElORS1IRUlH
-SFQ6IDE0LjY1cHQ7IG1zby1wYWdpbmF0aW9uOiB3aWRvdy1vcnBoYW4iIGFsaWduPWxlZnQ+PFNQ
-QU4gbGFuZz1FTi1VUyBzdHlsZT0nRk9OVC1TSVpFOiAxMHB0OyBGT05ULUZBTUlMWTogIkFyaWFs
-IixzYW5zLXNlcmlmOyBDT0xPUjogYmxhY2s7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWlj
-cm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZvbnQta2VybmluZzogMHB0Jz48L1NQQU4+Jm5ic3A7PC9Q
-Pg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJCQUNLR1JPVU5EOiB3aGl0ZTsgVEVYVC1BTElH
-TjogbGVmdDsgTUFSR0lOOiAwY20gMGNtIDBwdDsgTElORS1IRUlHSFQ6IDE0LjY1cHQ7IG1zby1w
-YWdpbmF0aW9uOiB3aWRvdy1vcnBoYW4iIGFsaWduPWxlZnQ+PFNQQU4gbGFuZz1FTi1VUyBzdHls
-ZT0nRk9OVC1TSVpFOiAxMHB0OyBGT05ULUZBTUlMWTogIkFyaWFsIixzYW5zLXNlcmlmOyBDT0xP
-UjogYmxhY2s7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsg
-bXNvLWZvbnQta2VybmluZzogMHB0Jz5STVQgaXMgUGlvbmVlciBpbiBkaXJlY3QgPFNUUk9ORz48
-Rk9OVCBjb2xvcj0jMDAwMGEwPmRpZ2l0YWwgbWFudWZhY3R1cmluZyA8L0ZPTlQ+PC9TVFJPTkc+
-YW5kIGV4cGVydCBpbiBhZHZhbmNlZCBmYWJyaWNhdGlvbiB0ZWNobm9sb2dpZXMgb2YgPEZPTlQg
-Y29sb3I9IzQwMDA0MD48U1RST05HPkNOQyBtYWNoaW5pbmc8L1NUUk9ORz4sIDxTVFJPTkc+M0Qg
-cHJpbnRpbmcuIHZhY3V1bSBjYXN0aW5nPC9TVFJPTkc+LjwvRk9OVD48L1NQQU4+PC9QPg0KPFAg
-Y2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJCQUNLR1JPVU5EOiB3aGl0ZTsgVEVYVC1BTElHTjogbGVm
-dDsgTUFSR0lOOiAwY20gMGNtIDBwdDsgTElORS1IRUlHSFQ6IDE0LjY1cHQ7IG1zby1wYWdpbmF0
-aW9uOiB3aWRvdy1vcnBoYW4iIGFsaWduPWxlZnQ+PFNQQU4gbGFuZz1FTi1VUyBzdHlsZT0nRk9O
-VC1TSVpFOiAxMHB0OyBGT05ULUZBTUlMWTogIkFyaWFsIixzYW5zLXNlcmlmOyBDT0xPUjogYmxh
-Y2s7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZv
-bnQta2VybmluZzogMHB0Jz5JZiB5b3UgaGF2ZSBhbnkgcmVxdWVzdCBmb3IgcXVvdGUsIHBsZWFz
-ZSBmcmVlbHkgc2VuZCBtZSB0aGUgQ0FEIGRyYXdpbmdzLjwvU1BBTj48L1A+DQo8UCBjbGFzcz1N
-c29Ob3JtYWwgc3R5bGU9IkJBQ0tHUk9VTkQ6IHdoaXRlOyBURVhULUFMSUdOOiBsZWZ0OyBNQVJH
-SU46IDBjbSAwY20gMHB0OyBMSU5FLUhFSUdIVDogMTQuNjVwdDsgbXNvLXBhZ2luYXRpb246IHdp
-ZG93LW9ycGhhbiIgYWxpZ249bGVmdD48U1BBTiBsYW5nPUVOLVVTIHN0eWxlPSdGT05ULVNJWkU6
-IDEwcHQ7IEZPTlQtRkFNSUxZOiAiQXJpYWwiLHNhbnMtc2VyaWY7IENPTE9SOiBibGFjazsgbXNv
-LWZhcmVhc3QtZm9udC1mYW1pbHk6ICJNaWNyb3NvZnQgWWFIZWkgVUkiOyBtc28tZm9udC1rZXJu
-aW5nOiAwcHQnPjwvU1BBTj48L1A+DQo8UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9IkJBQ0tHUk9V
-TkQ6IHdoaXRlOyBURVhULUFMSUdOOiBsZWZ0OyBNQVJHSU46IDBjbSAwY20gMHB0OyBMSU5FLUhF
-SUdIVDogMTQuNjVwdDsgbXNvLXBhZ2luYXRpb246IHdpZG93LW9ycGhhbiIgYWxpZ249bGVmdD48
-U1BBTiBsYW5nPUVOLVVTIHN0eWxlPSdGT05ULVNJWkU6IDEwcHQ7IEZPTlQtRkFNSUxZOiAiQXJp
-YWwiLHNhbnMtc2VyaWY7IENPTE9SOiBibGFjazsgbXNvLWZhcmVhc3QtZm9udC1mYW1pbHk6ICJN
-aWNyb3NvZnQgWWFIZWkgVUkiOyBtc28tZm9udC1rZXJuaW5nOiAwcHQnPjw/eG1sOm5hbWVzcGFj
-ZSBwcmVmaXggPSAibyIgbnMgPSAidXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6b2Zm
-aWNlIiAvPjxvOnA+PC9vOnA+PC9TUEFOPjwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0i
-QkFDS0dST1VORDogd2hpdGU7IFRFWFQtQUxJR046IGxlZnQ7IE1BUkdJTjogMGNtIDBjbSAwcHQ7
-IExJTkUtSEVJR0hUOiAxNS43NXB0OyBtc28tcGFnaW5hdGlvbjogd2lkb3ctb3JwaGFuIiBhbGln
-bj1sZWZ0PjxTUEFOIGxhbmc9RU4tVVMgc3R5bGU9J0ZPTlQtU0laRTogMTBwdDsgRk9OVC1GQU1J
-TFk6ICJBcmlhbCIsc2Fucy1zZXJpZjsgQ09MT1I6IGJsYWNrOyBtc28tZmFyZWFzdC1mb250LWZh
-bWlseTogIk1pY3Jvc29mdCBZYUhlaSBVSSI7IG1zby1mb250LWtlcm5pbmc6IDBwdCc+PG86cD4m
-bmJzcDs8L286cD48L1NQQU4+PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJCQUNLR1JP
-VU5EOiB3aGl0ZTsgVEVYVC1BTElHTjogbGVmdDsgTUFSR0lOOiAwY20gMGNtIDBwdDsgTElORS1I
-RUlHSFQ6IDE1Ljc1cHQ7IG1zby1wYWdpbmF0aW9uOiB3aWRvdy1vcnBoYW4iIGFsaWduPWxlZnQ+
-PFNQQU4gbGFuZz1FTi1VUyBzdHlsZT0nRk9OVC1TSVpFOiAxMHB0OyBGT05ULUZBTUlMWTogIkFy
-aWFsIixzYW5zLXNlcmlmOyBDT0xPUjogYmxhY2s7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAi
-TWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZvbnQta2VybmluZzogMHB0Jz48bzpwPiZuYnNwOzwv
-bzpwPjwvU1BBTj48L1A+DQo8UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9IkJBQ0tHUk9VTkQ6IHdo
-aXRlOyBURVhULUFMSUdOOiBsZWZ0OyBNQVJHSU46IDBjbSAwY20gMHB0OyBtc28tcGFnaW5hdGlv
-bjogd2lkb3ctb3JwaGFuIiBhbGlnbj1sZWZ0PjxCPjxTUEFOIGxhbmc9RU4tVVMgc3R5bGU9J0ZP
-TlQtU0laRTogMTBwdDsgRk9OVC1GQU1JTFk6ICJBcmlhbCIsc2Fucy1zZXJpZjsgQ09MT1I6ICMz
-MzMzMzM7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNv
-LWZvbnQta2VybmluZzogMHB0Jz5TaW5jZXJlbHksPC9TUEFOPjwvQj48U1BBTiBsYW5nPUVOLVVT
-IHN0eWxlPSdGT05ULVNJWkU6IDEycHQ7IEZPTlQtRkFNSUxZOiAiVGFob21hIixzYW5zLXNlcmlm
-OyBDT0xPUjogYmxhY2s7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVp
-IFVJIjsgbXNvLWZvbnQta2VybmluZzogMHB0Jz48bzpwPjwvbzpwPjwvU1BBTj48L1A+DQo8UCBj
-bGFzcz1Nc29Ob3JtYWwgc3R5bGU9IkJBQ0tHUk9VTkQ6IHdoaXRlOyBURVhULUFMSUdOOiBsZWZ0
-OyBNQVJHSU46IDBjbSAwY20gMHB0OyBtc28tcGFnaW5hdGlvbjogd2lkb3ctb3JwaGFuIiBhbGln
-bj1sZWZ0PjxCPjxTUEFOIGxhbmc9RU4tVVMgc3R5bGU9J0ZPTlQtU0laRTogMTBwdDsgRk9OVC1G
-QU1JTFk6ICJBcmlhbCIsc2Fucy1zZXJpZjsgQ09MT1I6ICMzMzMzMzM7IG1zby1mYXJlYXN0LWZv
-bnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZvbnQta2VybmluZzogMHB0Jz5B
-bGV4IEh1IHwgUHJvdG90eXBpbmcgJmFtcDsgTWFudWFmY3R1cmluZyBtYW5hZ2VyPC9TUEFOPjwv
-Qj48L1A+DQo8UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9IkJBQ0tHUk9VTkQ6IHdoaXRlOyBURVhU
-LUFMSUdOOiBsZWZ0OyBNQVJHSU46IDBjbSAwY20gMHB0OyBtc28tcGFnaW5hdGlvbjogd2lkb3ct
-b3JwaGFuIiBhbGlnbj1sZWZ0PjxCPjxTUEFOIGxhbmc9RU4tVVMgc3R5bGU9J0ZPTlQtU0laRTog
-MTBwdDsgRk9OVC1GQU1JTFk6ICJBcmlhbCIsc2Fucy1zZXJpZjsgQ09MT1I6ICMzMzMzMzM7IG1z
-by1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZvbnQta2Vy
-bmluZzogMHB0Jz48L1NQQU4+PC9CPjxTUEFOIGxhbmc9RU4tVVMgc3R5bGU9J0ZPTlQtU0laRTog
-MTBwdDsgRk9OVC1GQU1JTFk6ICJBcmlhbCIsc2Fucy1zZXJpZjsgQ09MT1I6ICM2NjY2NjY7IG1z
-by1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZvbnQta2Vy
-bmluZzogMHB0Jz5Ta3lwZS4gbGl2ZTo8U1RST05HPmFsZXhfcm10PC9TVFJPTkc+IHwmbmJzcDtU
-ZWwuICs4Ni0xODYyMDM1MTAyNCB8Jm5ic3A7cm10LXByb2R1Y3RzLmNvbTwvU1BBTj48U1BBTiBs
-YW5nPUVOLVVTIHN0eWxlPSdGT05ULVNJWkU6IDEwcHQ7IEZPTlQtRkFNSUxZOiAiQXJpYWwiLHNh
-bnMtc2VyaWY7IENPTE9SOiBibGFjazsgbXNvLWZhcmVhc3QtZm9udC1mYW1pbHk6ICJNaWNyb3Nv
-ZnQgWWFIZWkgVUkiOyBtc28tZm9udC1rZXJuaW5nOiAwcHQnPjxvOnA+PC9vOnA+PC9TUEFOPjwv
-UD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iQkFDS0dST1VORDogd2hpdGU7IFRFWFQtQUxJ
-R046IGxlZnQ7IE1BUkdJTjogMGNtIDBjbSAwcHQ7IG1zby1wYWdpbmF0aW9uOiB3aWRvdy1vcnBo
-YW4iIGFsaWduPWxlZnQ+PEI+PFNQQU4gbGFuZz1FTi1VUyBzdHlsZT0nRk9OVC1TSVpFOiAxMHB0
-OyBGT05ULUZBTUlMWTogIkFyaWFsIixzYW5zLXNlcmlmOyBDT0xPUjogIzY2NjY2NjsgbXNvLWZh
-cmVhc3QtZm9udC1mYW1pbHk6ICJNaWNyb3NvZnQgWWFIZWkgVUkiOyBtc28tZm9udC1rZXJuaW5n
-OiAwcHQnPi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS08L1NQQU4+PC9C
-PjxTUEFOIGxhbmc9RU4tVVMgc3R5bGU9J0ZPTlQtU0laRTogMTBwdDsgRk9OVC1GQU1JTFk6ICJB
-cmlhbCIsc2Fucy1zZXJpZjsgQ09MT1I6IGJsYWNrOyBtc28tZmFyZWFzdC1mb250LWZhbWlseTog
-Ik1pY3Jvc29mdCBZYUhlaSBVSSI7IG1zby1mb250LWtlcm5pbmc6IDBwdCc+PG86cD48L286cD48
-L1NQQU4+PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJCQUNLR1JPVU5EOiB3aGl0ZTsg
-VEVYVC1BTElHTjogbGVmdDsgTUFSR0lOOiAwY20gMGNtIDBwdDsgbXNvLXBhZ2luYXRpb246IHdp
-ZG93LW9ycGhhbiIgYWxpZ249bGVmdD48Qj48U1BBTiBsYW5nPUVOLVVTIHN0eWxlPSdGT05ULVNJ
-WkU6IDEwcHQ7IEZPTlQtRkFNSUxZOiAiQXJpYWwiLHNhbnMtc2VyaWY7IENPTE9SOiAjMzMzMzMz
-OyBtc28tZmFyZWFzdC1mb250LWZhbWlseTogIk1pY3Jvc29mdCBZYUhlaSBVSSI7IG1zby1mb250
-LWtlcm5pbmc6IDBwdCc+Uk1UIFBST0RVQ1RTIENPLiwgTFRELjwvU1BBTj48L0I+PFNQQU4gbGFu
-Zz1FTi1VUyBzdHlsZT0nRk9OVC1TSVpFOiAxMHB0OyBGT05ULUZBTUlMWTogIkFyaWFsIixzYW5z
-LXNlcmlmOyBDT0xPUjogYmxhY2s7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0
-IFlhSGVpIFVJIjsgbXNvLWZvbnQta2VybmluZzogMHB0Jz48bzpwPjwvbzpwPjwvU1BBTj48L1A+
-DQo8UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9IkJBQ0tHUk9VTkQ6IHdoaXRlOyBURVhULUFMSUdO
-OiBsZWZ0OyBNQVJHSU46IDBjbSAwY20gMHB0OyBtc28tcGFnaW5hdGlvbjogd2lkb3ctb3JwaGFu
-IiBhbGlnbj1sZWZ0PjxJPjxTUEFOIGxhbmc9RU4tVVMgc3R5bGU9J0ZPTlQtU0laRTogMTBwdDsg
-Rk9OVC1GQU1JTFk6ICJBcmlhbCIsc2Fucy1zZXJpZjsgQ09MT1I6ICM2NjY2NjY7IG1zby1mYXJl
-YXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsgbXNvLWZvbnQta2VybmluZzog
-MHB0Jz5Qcm9kdWN0IERlc2lnbiwmbmJzcDtSYXBpZCBQcm90b3R5cGluZywgQ3VzdG9tIE1hbnVm
-YWN0dXJpbmcsJm5ic3A7VG9vbGluZyAmYW1wOyBQcm9kdWN0aW9uPC9TUEFOPjwvST48U1BBTiBs
-YW5nPUVOLVVTIHN0eWxlPSdGT05ULVNJWkU6IDEwcHQ7IEZPTlQtRkFNSUxZOiAiQXJpYWwiLHNh
-bnMtc2VyaWY7IENPTE9SOiBibGFjazsgbXNvLWZhcmVhc3QtZm9udC1mYW1pbHk6ICJNaWNyb3Nv
-ZnQgWWFIZWkgVUkiOyBtc28tZm9udC1rZXJuaW5nOiAwcHQnPjxvOnA+PC9vOnA+PC9TUEFOPjwv
-UD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iQkFDS0dST1VORDogd2hpdGU7IFRFWFQtQUxJ
-R046IGxlZnQ7IE1BUkdJTjogMGNtIDBjbSAwcHQ7IG1zby1wYWdpbmF0aW9uOiB3aWRvdy1vcnBo
-YW4iIGFsaWduPWxlZnQ+PFNQQU4gbGFuZz1FTi1VUyBzdHlsZT0nRk9OVC1TSVpFOiAxMHB0OyBG
-T05ULUZBTUlMWTogIkFyaWFsIixzYW5zLXNlcmlmOyBDT0xPUjogIzY2NjY2NjsgbXNvLWZhcmVh
-c3QtZm9udC1mYW1pbHk6ICJNaWNyb3NvZnQgWWFIZWkgVUkiOyBtc28tZm9udC1rZXJuaW5nOiAw
-cHQnPk5vLiBCLTMwMSwgTGlsYW4gS2VqaSBCdWlsZGluZywgSmlheml0YW5nIEF2ZW51ZSwgR3Vh
-bmdtaW5nIERpc3QuIFNoZW56aGVuLCBDaGluYS48L1NQQU4+PFNQQU4gbGFuZz1FTi1VUyBzdHls
-ZT0nRk9OVC1TSVpFOiAxMHB0OyBGT05ULUZBTUlMWTogIkFyaWFsIixzYW5zLXNlcmlmOyBDT0xP
-UjogYmxhY2s7IG1zby1mYXJlYXN0LWZvbnQtZmFtaWx5OiAiTWljcm9zb2Z0IFlhSGVpIFVJIjsg
-bXNvLWZvbnQta2VybmluZzogMHB0Jz48bzpwPjwvbzpwPjwvU1BBTj48L1A+DQo8UCBjbGFzcz1N
-c29Ob3JtYWwgc3R5bGU9Ik1BUkdJTjogMGNtIDBjbSAwcHQiPjxTUEFOIGxhbmc9RU4tVVM+PG86
-cD48Rk9OVCBmYWNlPeetiee6vz4mbmJzcDs8L0ZPTlQ+PC9vOnA+PC9TUEFOPjwvUD48L0JPRFk+
-PC9IVE1MPg0K
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+<FONT size=3 face="Calibri">Belgrave House</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">76 Buckingham Palace Road</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">London SW1W 9TQ,</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">United Kingdom.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">GOOGLE ANNIVERSARY WINNING NOTIFICATION.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">We wish to congratulate you over your success in the official publication of results of the E-mail electronic online sweepstake organized by Google, in conjunction with the Foundation for the Promotion of Software Products (F.P.S.P) and confirmed by our co-sponsors Visa®/MasterCard® International. Google earns its profit mainly from advertising using their very own Gmail, Gala, Sify e-mail services, Google Maps, Google Apps, Orkut social networking, You Tube video sharing, Google search engine and the Google ancillary services which are all offered to the public for free.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">This is to inform you that you are among the Ten (10) lucky winners of Category A. Hence we do believe with your winning prize, you will continue to be active to the Google search engine/ancillary services. Google is now the biggest search engine worldwide and in an effort to make sure that it remains the most widely used search engine, we ran an on-line e-mail beta test which your email address won ?950,000.00.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">A winning cheque will be issued in your name by Google Promotion Award; for the sum of Nine Hundred and Fifty Thousand Great British Pounds Sterling (?950,000.00) and also a certificate of prize claims will be sent alongside your winning cheque cashable at any bank.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">You are advised to contact the assigned Google Program Administrator/Coordinator with the following details:</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">VERIFICATION AND FUNDS RELEASE FORM.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">(1) Your Contact Address/Private Email Address</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">(2) Your Tel/Fax Numbers</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">(3) Your Nationality/Country</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">(4) Your Full Name</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">(5) Occupation/Age</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">Contact (Program Administrator/Coordinator) Jeffery Dean - Google Senior Fellow</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">Email: sf.jefferydean@gmail.com</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">Google values your right to privacy! Your information is 100% secured and will be used exclusively for the purpose of this award only.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">The Google Promotion Award Team has discovered a huge number of double claims due to winners informing close</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">friends relatives and third parties about their winning and also sharing their pin numbers. As a result of this, these friends try to claim the lottery on behalf of the real winners. The Google Promotion Award Team has reached a decision from its headquarters that any double claim discovered by the Lottery Board will result to the canceling of that particular winning, leading to a loss for both the double claimer and the real winner, as it is taken that the real winner was the informer to the double claimer about the lottery. So you are hereby strongly advised once more to keep your winnings strictly confidential until you claim your prize.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">Congratulations from the Staffs &amp; Members of the Google interactive Lotteries Board Commission.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri"> </FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">Yours faithfully,</FONT></DIV>
+<DIV>
+<FONT size=3 face="Calibri">Lawrence "Larry" Page - Co-founder and CEO of Google Inc™</FONT></DIV>
+</FONT>
+</BODY></HTML>
 
---===============1547174707==
+
+
+--===============0265019546==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -185,4 +152,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1547174707==--
+--===============0265019546==--
