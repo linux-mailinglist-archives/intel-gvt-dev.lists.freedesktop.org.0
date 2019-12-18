@@ -2,37 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 187641242E9
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Dec 2019 10:20:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B77D912491A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Dec 2019 15:08:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C995A890CE;
-	Wed, 18 Dec 2019 09:20:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 76B566E038;
+	Wed, 18 Dec 2019 14:08:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DF4FD890CE;
- Wed, 18 Dec 2019 09:20:07 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Dec 2019 01:20:07 -0800
-X-IronPort-AV: E=Sophos;i="5.69,328,1571727600"; d="scan'208";a="210027230"
-Received: from jlahtine-desk.ger.corp.intel.com (HELO localhost)
- ([10.252.5.38])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Dec 2019 01:20:04 -0800
+X-Greylist: delayed 39475 seconds by postgrey-1.36 at gabe;
+ Wed, 18 Dec 2019 14:08:48 UTC
+Received: from winningran.club (160.16.84.11.v6.sakura.ne.jp
+ [IPv6:2001:e42:102:1518:160:16:84:11])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5D6336E038;
+ Wed, 18 Dec 2019 14:08:48 +0000 (UTC)
+Received: from [192.168.1.1] (unknown [201.232.31.140])
+ (Authenticated sender: support)
+ by winningran.club (Postfix) with ESMTPSA id 915AF2A2B67;
+ Wed, 18 Dec 2019 18:24:23 +0900 (JST)
 MIME-Version: 1.0
-In-Reply-To: <20191218051657.GA21662@zhen-hp.sh.intel.com>
-References: <20191218051657.GA21662@zhen-hp.sh.intel.com>
-Subject: Re: [PULL] gvt-fixes
-From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Date: Wed, 18 Dec 2019 11:20:01 +0200
-Message-ID: <157666080179.1052.14632016895251847580@jlahtine-desk.ger.corp.intel.com>
-User-Agent: alot/0.8.1
+Content-Description: Mail message body
+Subject: partnerships business ventures
+To: Recipients <rr7035707@gmail.com>
+From: "Mr. Ryan Roger" <rr7035707@gmail.com>
+Date: Wed, 18 Dec 2019 04:23:56 -0500
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,29 +37,24 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
+Reply-To: ryanroger875@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20191218140849.76B566E038@gabe.freedesktop.org>
 
-Quoting Zhenyu Wang (2019-12-18 07:16:57)
-> 
-> Hi,
-> 
-> Here's current gvt fixes which has fix for vGPU display dmabuf,
-> one guest reset warning and one locking issue. Details below.
+Good Day ,
 
-Pulled, thanks for the PR. I'll send out this tomorrow along with
-other fixes once CI results arrive.
+My name is Mr. Ryan Roger the Independent Financial Consultant. We are contacting you concerning funding of your business project. We are interested to partnership with you as we are seeking to diversify our financial portfolio into viable and lucrative business projects that worth it,
 
-I'll be out of office for next two weeks then, please ping Jani/
-Rodrigo if there is something that needs reaction before that.
+We are most interested in partnerships business ventures in Medical and Health care projects, Real estate projects, mining projects, agricultural projects renewable energy projects, Oil and Gas, start-up projects and business expansions / Loan with lower rate,
 
-Regards, Joonas
+Your swift response is highly needed.
+
+Best Regard,
+Ryan Roger
+ 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
