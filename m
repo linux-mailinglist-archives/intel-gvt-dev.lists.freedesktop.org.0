@@ -2,32 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4969812A96D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Dec 2019 01:50:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C060612CBDF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Dec 2019 03:22:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EAE5088CE4;
-	Thu, 26 Dec 2019 00:50:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 620F889C80;
+	Mon, 30 Dec 2019 02:22:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1022 seconds by postgrey-1.36 at gabe;
- Thu, 26 Dec 2019 00:50:16 UTC
-Received: from SMTP01.cse.com.tw (211-20-36-109.HINET-IP.hinet.net
- [211.20.36.109])
- by gabe.freedesktop.org (Postfix) with ESMTP id 85F8D88CE4;
- Thu, 26 Dec 2019 00:50:16 +0000 (UTC)
-Received: from User ([156.96.46.119]) by SMTP01.cse.com.tw with Microsoft
- SMTPSVC(7.5.7601.17514); Thu, 26 Dec 2019 08:33:04 +0800
-From: "Dr. John Knowles."<rufina@imperial.com.my>
-Subject: Please Read : We Are Really Worried.G3.109.
-Date: Wed, 25 Dec 2019 16:33:07 -0800
+Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com
+ [IPv6:2a00:1450:4864:20::344])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 877E389CA4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 30 Dec 2019 02:22:07 +0000 (UTC)
+Received: by mail-wm1-x344.google.com with SMTP id b19so12888290wmj.4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 29 Dec 2019 18:22:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=cCgjmSxLWlMql57U+O40bnMOsF2pBGMu0xtRuJWN4EM=;
+ b=Gb9EIurUSHFtkw1doX68vM3t9X5zftX3p8I5K6SU339qwAKSTMbSt2LLLTANBh4snq
+ Io1/jUBSidqoawPc38vHO4owvBpBxHhTlYM9NMgGcwiMpBH5bFs6lUy5VFUd0g55nw1/
+ AAjKBJSxI4GBOoTvY7Zl6RKXQJ06lqY0Fnuev0q1YZclMwXSUx16NCzf98Y1UpPAHWgM
+ I0q9Sm1ngPEWDR9QHrGGy1Ds3x7R5mBJ6V34ONVRiWIkzOj16m2lTAeLZG9h10tIot6E
+ tdtDe+tQlAao0AK9+bDCfnbxMxPtB4YNOHHGqiI14xc7O3kYnn6fKhLg4gaYSgvsKlWo
+ DQkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=cCgjmSxLWlMql57U+O40bnMOsF2pBGMu0xtRuJWN4EM=;
+ b=saRiqYuSi65ooiJ2UeeXrLZRpipvJKOm1ms2rrm0j1JalwKEJmEnIaxVL8rowHnVYR
+ /duzaKKA/gNyDi1UJMvwR1Ui2Z75trWxUUZbIlR85n8+O8gCx6AH9YjdgkKRxxgDNmy2
+ qpD6H/hZe4yvWjJpS9YQVvKD/JNo0bBzQhJTgAKSxa2xRkl372ZQRC39XExe8ctYtwo4
+ 0cJdRmObf+iivfp+lX97fREyTGE53f5nuWC/Z64R7sFIia/vccUFJMxoNxDWtVa8t3gT
+ NP3JZQ0EUafkHG4GldvnrPez2JVeC0/48pQbvIf1p9ZBh274cdnFOaeRKpCmtNgQZq3q
+ c9OQ==
+X-Gm-Message-State: APjAAAVgdM1GBW+xIcRgDuOxMo/nk7a8WSfR7c/OmDjQNDZ+Fqp/M5by
+ riXjNIo1qyQYHKfs8GGTvhmZdWF5mCRWCa5ZT3Q=
+X-Google-Smtp-Source: APXvYqzGif2wtcscyUTuRFqQmmbgoGwGyfB9xjBsxdkwotJHnuNHUA9Ek9+nCNfGQxLwcfVF01N1HOpVMly7OR6rF78=
+X-Received: by 2002:a05:600c:21ce:: with SMTP id
+ x14mr30201073wmj.120.1577672526115; 
+ Sun, 29 Dec 2019 18:22:06 -0800 (PST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <SMTP01Rf322c1AbQ86H0000770e@SMTP01.cse.com.tw>
-X-OriginalArrivalTime: 26 Dec 2019 00:33:04.0627 (UTC)
- FILETIME=[09788C30:01D5BB84]
+Received: by 2002:adf:ec90:0:0:0:0:0 with HTTP; Sun, 29 Dec 2019 18:22:05
+ -0800 (PST)
+From: Mr Moon David <peter.john00775@gmail.com>
+Date: Mon, 30 Dec 2019 02:22:05 +0000
+Message-ID: <CAEaVSjjp+s=yCi3xweJp=RGY_S=Q8Yt3=G0_GnDcWUJSrNw87w@mail.gmail.com>
+Subject: Greetings
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,62 +63,52 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: johnknowles1960@yahoo.com
+Reply-To: moon.david001@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello,
+Dear Sir/Madam,
 
-I hope that this correspondence is received with the
-urgency and expediency required.
+I have investor that want to invest $6.8 Billion into a  company that
+needs fund  for expansion only.He can not invest the money to new
+Companies that want to start up but into Companies that has been
+making good profits but needs funds for EXPANSION. He can only invest
+in start up if the investment proposal is realistic. The investor is a
+former Petroleum Minister.
 
-It has come to the notice of the Board of Trustees of
-the Federal Clearing House here in Washington, D.C. that
-your outstanding funds application being handled by the
-Remitting Offices in Africa is experiencing some man made
-irregularities. To this effect, it has become necessary
-for the Board of Trustees to assign trained Fund Transfer
-Specialists from the United States to resolve and regularize
-your fund release with immediate effect.
+His Area of concentrations are Real Estate, Biotech,Textiles ,
+Information technology, Pharmaceuticals , Oil & Energy Industries,
+Mining &Metals Industry, Management Consulting Industry ,Maritime
+industry, Hospital & Health Care Industry, Consumer Services Industry,
+International Trade and Development Industry ,Gambling & Casinos
+Industry, Electrical/Electronic Manufacturing Industry, Insurance
+Industry, Chemical industries, Marketing and Advertising Industry,
+Leisure, Travel & Tourism Industry, Agriculture, Aviation, Retail,
+Import and Export, Trade and development industry, Real Estate &
+Construction Industry and any other viable investment opportunities.
 
-We at John Knowles & Consults have been duly consulted
-by the Federal Reserve Board of Trustees in Washington.
-We have been fully informed about how the staff of the
-remitting offices have been taking advantage of you by
-telling you to pay unnecessarily exorbitant charges which
-will only make your fund payment a long drawn out process.
+If you recommend a Company to take loan or investment funds from from
+my client the investor, me and you will be entitled to 5% of any
+amount received by the Company from the investor but if you are taking
+the fund directly as a company i will be entitled to 2.5% and you will
+retain 2.5% as Global Finder's fee commission. There will be a face to
+face meeting between the investor and the investee after signing (MOU)
+the (AORI) should not be less than 3% per annul if it's loan or direct
+project financing.
 
-Due to this development, we have been assigned to step
-into the immediate processing of your claims application
-to enable your funds to be transferred to you within the
-shortest possible time. To implement this, you are to
-get back to us immediately without needing to pay all
-the huge sums of monies that are being demanded from
-you by the previous handlers at the remitting bank.
+Look for a reliable Company that need funding and we can easily make
+5% of the amount received from the investor but we need to maintain
+absolute confidentiality in the transaction as the fund provider want
+to remain silent, so you have to keep it highly confidential between
+us.
 
-All processes to have your funds paid to you immediately
-through the Liaison Remittance Office in New York
-have been initiated to cut out unnecessary costs.
+I will need the company profile and the project summary of the company
+that will need funding to present to my investor.
 
-You are advised to treat this communication with the urgency
-and seriousness required as the Board of Trustees of the Federal
-Reserve has mandated us to resolve this fund payment within
-the next three working days independent of the Remitting
-Offices in Africa.
-
-Furthermore,you are hereby advised to pay no further fees or
-charges to these offices as they shall no longer be handling your
-payment process.
-
-We shall await your immediate correspondence with your direct
-telephone numbers to my private email address at ( john.knowles1960@gmail.com )
-for re-confirmation so that we mayconclude your payment immediately.
-
-Yours Sincerely,
-John Knowles.
-John Knowles & Consults.
+I look forward to hearing from you.
+Mr. Moon David.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
