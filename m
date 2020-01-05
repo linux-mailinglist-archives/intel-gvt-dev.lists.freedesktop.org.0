@@ -2,76 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E9D713028D
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Jan 2020 14:57:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 691EF13094C
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Jan 2020 18:25:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D95F76E426;
-	Sat,  4 Jan 2020 13:57:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2339A89DB0;
+	Sun,  5 Jan 2020 17:25:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from bbsoweb.bbso.njit.edu (bbsoweb.bbso.njit.edu [97.93.171.158])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9A6FE6E426;
- Sat,  4 Jan 2020 13:57:43 +0000 (UTC)
-Received: from User (sr091.sweetesttimes.com [192.99.175.113] (may be forged))
- (authenticated bits=0)
- by bbsoweb.bbso.njit.edu (8.14.7/8.14.7) with ESMTP id 004DuYpx038225;
- Sat, 4 Jan 2020 05:56:35 -0800
-Message-Id: <202001041356.004DuYpx038225@bbsoweb.bbso.njit.edu>
-From: "MRS HELEN GEORGE"<jihs@bbso.njit.edu>
-Subject: CAN YOU HELP ME OUT?
-Date: Sat, 4 Jan 2020 05:57:00 -0800
+X-Greylist: delayed 1585 seconds by postgrey-1.36 at gabe;
+ Sun, 05 Jan 2020 17:25:31 UTC
+Received: from smtp.hudiksvall.se (smtp.hudiksvall.se [80.86.65.80])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7663689DB0;
+ Sun,  5 Jan 2020 17:25:30 +0000 (UTC)
+Received: from webmail.nordanstig.se (mail.nordanstig.se [80.86.68.2])
+ by smtp.hudiksvall.se  with ESMTP id 005GuWlf005041-005GuWlh005041
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=CAFAIL);
+ Sun, 5 Jan 2020 17:56:32 +0100
+Received: from SRVEXH1.NOR.LOCAL ([fe80::4981:204d:c027:2d12]) by
+ SRVEXH1.NOR.LOCAL ([fe80::4981:204d:c027:2d12%13]) with mapi id
+ 14.03.0468.000; Sun, 5 Jan 2020 17:57:04 +0100
+From: =?iso-8859-1?Q?Ter=E9se_Lindblom?= <terese.lindblom@nordanstig.se>
+Subject: Get Back To Me
+Thread-Topic: Get Back To Me
+Thread-Index: AdXD6FjFqNvLuQ+nTz+zyphy4x9pUg==
+Date: Sun, 5 Jan 2020 16:57:03 +0000
+Message-ID: <4CEA810D2198DD4DBC9D021A63ADBB651D7710AE@SRVEXH1.NOR.LOCAL>
+Accept-Language: sv-SE, en-US
+Content-Language: sv-SE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [92.99.121.169]
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Spam-Flag: YES
-X-Spam-Status: Yes, score=38.7 required=1.1 tests=ADVANCE_FEE_5_NEW_MONEY,
- ALL_TRUSTED,AXB_XMAILER_MIMEOLE_OL_024C2,FORGED_MUA_OUTLOOK,
- FORGED_OUTLOOK_HTML,FORGED_OUTLOOK_TAGS,FREEMAIL_FORGED_REPLYTO,
- FREEMAIL_REPLYTO,FREEMAIL_REPLYTO_END_DIGIT,FROM_MISSPACED,
- FROM_MISSP_EH_MATCH,FROM_MISSP_FREEMAIL,FROM_MISSP_MSFT,FROM_MISSP_USER,
- FROM_MISSP_XPRIO,FSL_CTYPE_WIN1251,FSL_NEW_HELO_USER,HK_NAME_MR_MRS,HK_SCAM,
- HTML_MESSAGE,LOTS_OF_MONEY,MIME_HTML_ONLY,MISSING_HEADERS,MISSING_MID,
- MONEY_FRAUD_8,MONEY_FROM_MISSP,NSL_RCVD_FROM_USER,REPLYTO_WITHOUT_TO_CC,
- SUBJ_ALL_CAPS,TO_NO_BRKTS_FROM_MSSP,UPPERCASE_75_100 autolearn=no
- autolearn_force=no version=3.4.0
-X-Spam-Report: * -3.0 ALL_TRUSTED Passed through trusted hosts only via SMTP
- *  2.5 FSL_CTYPE_WIN1251 Content-Type only seen in 419 spam
- *  1.8 NSL_RCVD_FROM_USER Received from User
- *  0.5 SUBJ_ALL_CAPS Subject is all capitals
- *  0.2 FREEMAIL_REPLYTO_END_DIGIT Reply-To freemail username ends in digit
- *      (gessh01[at]gmail.com)
- *  1.2 MISSING_HEADERS Missing To: header
- *  0.0 HTML_MESSAGE BODY: HTML included in message
- *  0.1 MIME_HTML_ONLY BODY: Message only has text/html MIME parts
- *  0.1 MISSING_MID Missing Message-Id: header
- *  1.2 UPPERCASE_75_100 message body is 75-100% uppercase
- *  2.3 FROM_MISSP_MSFT From misspaced + supposed Microsoft tool
- *  2.0 FSL_NEW_HELO_USER Spam's using Helo and User
- *  0.0 FORGED_OUTLOOK_HTML Outlook can't send HTML message only
- *  2.2 FROM_MISSP_USER From misspaced, from "User"
- *  0.6 FORGED_OUTLOOK_TAGS Outlook can't send HTML in this format
- *  1.0 HK_NAME_MR_MRS No description available.
- *  0.0 LOTS_OF_MONEY Huge... sums of money
- *  2.0 HK_SCAM No description available.
- *  2.0 FROM_MISSP_XPRIO Misspaced FROM + X-Priority
- *  1.9 REPLYTO_WITHOUT_TO_CC No description available.
- *  1.3 AXB_XMAILER_MIMEOLE_OL_024C2 Yet another X header trait
- *  2.0 MONEY_FROM_MISSP Lots of money and misspaced From
- *  2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- *  1.0 FREEMAIL_REPLYTO Reply-To/From or Reply-To/body contain different
- *      freemails
- *  2.5 TO_NO_BRKTS_FROM_MSSP Multiple header formatting problems
- *  0.9 FROM_MISSPACED From: missing whitespace
- *  2.0 FROM_MISSP_EH_MATCH From misspaced, matches envelope
- *  2.8 FORGED_MUA_OUTLOOK Forged mail pretending to be from MS Outlook
- *  1.6 FROM_MISSP_FREEMAIL From misspaced + freemail provider
- *  3.0 MONEY_FRAUD_8 Lots of money and very many fraud phrases
- *  0.4 ADVANCE_FEE_5_NEW_MONEY Advance Fee fraud and lots of money
-X-Spam-Level: **************************************
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
- bbsoweb.bbso.njit.edu
+X-FEAS-SPF: spf-result=pass, ip=80.86.68.2, helo=webmail.nordanstig.se,
+ mailFrom=terese.lindblom@nordanstig.se
+Authentication-Results: smtp.hudiksvall.se;
+ spf=pass (hudiksvall.se: domain of terese.lindblom@nordanstig.se designates
+ 80.86.68.2 as permitted sender) smtp.mailfrom=terese.lindblom@nordanstig.se
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; d=nordanstig.se; s=nordanstig;
+ c=relaxed/relaxed; 
+ h=from:subject:date:message-id:content-type:mime-version;
+ bh=D4dNa8dW3fEw3odqdOkr4IX26r64/og07Tq1peG6xUs=;
+ b=EfVlVS/H19em9abKSMz3Ls15OgA/Lse12BUAkoYNphLxqKnyI/7RylHfv+1Yd7N05p4PX3dDQKN3
+ jcODMeYWHO6qAkWoXjS6Vx3Loz7wImSNTL1diX87B49xS0+TEJfl1lJvJJtB1FdGIg7aU8P5Zq7Z
+ o9zCspY/w5yIm+Iny4SyBp6P2lD2NlUZnAZio14fEMPUDBDgf/mBMvzSJESOtyqiF3j2qmAwX474
+ 42A1zbavh6xKw/GCDzu1dfK8gZs0GV/X425+Y3OXyR8RxJTQwvC2iG0qiAsCsFlMWPLew+pMulhM
+ zXmlNymAPdC7GQhvzX9d90qkrd30GWxj0Yg7qQ==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,136 +59,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: gessh01@gmail.com
-Content-Type: multipart/mixed; boundary="===============0467937361=="
+Content-Type: multipart/mixed; boundary="===============0075248348=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0467937361==
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
+--===============0075248348==
+Content-Language: sv-SE
+Content-Type: multipart/alternative;
+	boundary="_000_4CEA810D2198DD4DBC9D021A63ADBB651D7710AESRVEXH1NORLOCAL_"
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-<B><I>GOOD DAY.</B></I></DIV>
-<DIV>
-<B><I>&nbsp;</B></I></DIV>
-<DIV>
-<B><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URGENT - HELP ME DISTRIBUTE MY $12 MILLION TO HUMANITARIAN.</B></I></DIV>
-<DIV>
-<B><I>&nbsp;</B></I></DIV>
-<DIV>
-<B><I>THIS MAIL MIGHT COME TO YOU AS A SURPRISE AND THE TEMPTATION TO IGNORE</B></I></DIV>
-<DIV>
-<B><I>IT AS UNSERIOUS COULD COME INTO YOUR MIND BUT PLEASE</B></I></DIV>
-<DIV>
-<B><I>CONSIDER IT A DIVINE WISH AND ACCEPT IT WITH A DEEP SENSE OF HUMILITY.</B></I></DIV>
-<DIV>
-<B><I>I AM MRS HELEN GEORGE AND I AM A 61 YEARS OLD WOMAN.</B></I></DIV>
-<DIV>
-<B><I>I AM A SOUTH AFRICAN MARRIED TO A SIERRA LEONIA. I WAS THE</B></I></DIV>
-<DIV>
-<B><I>PRESIDENT/CEO OF OIL COMPANY INTERNATIONAL-AN OIL SERVICING COMPANY IN</B></I></DIV>
-<DIV>
-<B><I>JOHANNESBURG. I WAS ALSO MARRIED WITH NO CHILD.</B></I></DIV>
-<DIV>
-<B><I>MY HUSBAND DIED 3YEARS AGO. BEFORE THIS HAPPENED MY BUSINESS AND</B></I></DIV>
-<DIV>
-<B><I>CONCERN FOR MAKING MONEY WAS ALL I WAS LIVING FOR AND I NEVER REALLY</B></I></DIV>
-<DIV>
-<B><I>CARED ABOUT OTHER PEOPLE. BUT SINCE THE LOSS OF MY HUSBAND AND ALSO</B></I></DIV>
-<DIV>
-<B><I>BECAUSE I HAD HAVE NO CHILD TO CALL MY OWN, I HAVE FOUND A NEW DESIRE</B></I></DIV>
-<DIV>
-<B><I>TO ASSIST THE HELPLESS, I HAVE BEEN HELPING ORPHANS IN</B></I></DIV>
-<DIV>
-<B><I>ORPHANAGES/MOTHERLESS OMES/HUMANITARIANS. I HAVE DONATED SOME MONEY TO</B></I></DIV>
-<DIV>
-<B><I>ORPHANS IN SUDAN,ETHIOPIA, CAMEROON, SPAIN, AUSTRIA, GERMANY AND SOME</B></I></DIV>
-<DIV>
-<B><I>ASIAN COUNTRIES.</B></I></DIV>
-<DIV>
-<B><I>&nbsp;</B></I></DIV>
-<DIV>
-<B><I>IN SUMMARY:- I HAVE 12,000,000.00 (TWELVE MILLION) U. S. DOLLARS WHICH</B></I></DIV>
-<DIV>
-<B><I>I DEPOSITED IN A SECURITY COMPANY IN COTONOU BENIN REPUBLIC AS A</B></I></DIV>
-<DIV>
-<B><I>FAMILY TREASURE &amp; ARTEFACTS, PLEASE I WANT YOU TO NOTE THAT THE</B></I></DIV>
-<DIV>
-<B><I>SECURITY COMPANY DOES NOT KNOW THE REAL CONTENT TO BE MONEY AND I WANT</B></I></DIV>
-<DIV>
-<B><I>YOU TO ASSIST ME IN CLAIMING THE CONSIGNMENT &amp; DISTRIBUTING THE MONEY</B></I></DIV>
-<DIV>
-<B><I>TO CHARITY ORGANIZATIONS, I AGREE TO REWARD YOU WITH PART OF THE MONEY</B></I></DIV>
-<DIV>
-<B><I>FOR YOUR ASSISTANCE, KINDNESS AND PARTICIPATION IN THIS GODLY PROJECT.</B></I></DIV>
-<DIV>
-<B><I>BEFORE I BECAME ILL, I KEPT $12 MILLION IN A LONG-TERM DEPOSIT IN A</B></I></DIV>
-<DIV>
-<B><I>SECURITY COMPANY WHICH I DECLARED AS A FAMILY TREASURE ARTIFIARTS.I AM</B></I></DIV>
-<DIV>
-<B><I>IN THE HOSPITAL WHERE I HAVE BEEN UNDERGOING TREATMENT FOR OESOPHAGEAL</B></I></DIV>
-<DIV>
-<B><I>CANCER AND MY DOCTORS HAVE TOLD ME THAT I HAVE ONLY A FEW MONTHS TO</B></I></DIV>
-<DIV>
-<B><I>LIVE. IT IS MY LAST WISH TO SEE THIS MONEY DISTRIBUTED TO CHARITY</B></I></DIV>
-<DIV>
-<B><I>ORGANIZATIONS.</B></I></DIV>
-<DIV>
-<B><I>BECAUSE MY RELATIVES AND FRIENDS HAVE PLUNDERED SO MUCH OF MY WEALTH</B></I></DIV>
-<DIV>
-<B><I>SINCE MY ILLNESS, I CANNOT LIVE WITH</B></I></DIV>
-<DIV>
-<B><I>THE AGONY OF ENTRUSTING THIS HUGE RESPONSIBILITY TO ANY OF THEM.</B></I></DIV>
-<DIV>
-<B><I>&nbsp;</B></I></DIV>
-<DIV>
-<B><I>PLEASE, I BEG YOU IN THE NAME OF GOD TO HELP ME COLLECT THE $12</B></I></DIV>
-<DIV>
-<B><I>MILLION WHICH I DEPOSIT WITH THE NAME OF MY LATE HUSBAND AS THE NEXT</B></I></DIV>
-<DIV>
-<B><I>OF KIN BECAUSE NOW DUE TO MY HEALTH THE SECURITY COMPANY IS DEMANDING</B></I></DIV>
-<DIV>
-<B><I>FOR A NEXT OF KIN IN OTHER TO GET THE MONEY TRANSFERRED IN OTHER TO</B></I></DIV>
-<DIV>
-<B><I>SEE THAT MY LAST WISH IS ACCOMPLISHED WHICH IS SHARING THE MONEY AMONG</B></I></DIV>
-<DIV>
-<B><I>CHARITY ORGANIZATIONS.</B></I></DIV>
-<DIV>
-<B><I>YOU ARE AT LIBERTY TO USE YOUR DISCRETION TO DISTRIBUTE THE MONEY AND</B></I></DIV>
-<DIV>
-<B><I>FEEL FREE AS WELL TO REIMBURSE YOURSELF WHEN YOU HAVE THE MONEY FOR</B></I></DIV>
-<DIV>
-<B><I>ANY EXPENSES IN DISTRIBUTING THE MONEY TO CHARITY ORGANIZATIONS.</B></I></DIV>
-<DIV>
-<B><I>I AM WILLING TO REWARD YOU FOR YOUR ASSISTANCE AND KINDNESS. KINDLY</B></I></DIV>
-<DIV>
-<B><I>EXPEDITE ACTION AND CONTACT ME VIA EMAIL AT mrshel@zoho.com FOR</B></I></DIV>
-<DIV>
-<B><I>MORE DETAILS.</B></I></DIV>
-<DIV>
-<B><I>MAY THE GOOD LORD BLESS YOU AND YOUR FAMILY?</B></I></DIV>
-<DIV>
-<B><I>BEST REGARDS.</B></I></DIV>
-<DIV>
-<B><I>MRS HELEN GEORGE&nbsp; </B></I></DIV>
-<DIV>
-<B><I>PLZ REPLLY TO MY PRIVATE EMAILBOX: mrshel@zoho.com</B></I></DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-&nbsp;</DIV>
-</FONT>
-</BODY></HTML>
+--_000_4CEA810D2198DD4DBC9D021A63ADBB651D7710AESRVEXH1NORLOCAL_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
---===============0467937361==
+I have a transaction to discuss with you , please get back to me via this e=
+mail jinbong945@gmail.com  for more explanation.
+
+
+--_000_4CEA810D2198DD4DBC9D021A63ADBB651D7710AESRVEXH1NORLOCAL_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" id=3D"owaParaStyle"></style>
+</head>
+<body fpstyle=3D"1" ocsi=3D"0">
+<div style=3D"direction: ltr;font-family: Tahoma;color: #000000;font-size: =
+10pt;">
+<div>I have a transaction to discuss with you , please get back to me via t=
+his email jinbong945@gmail.com&nbsp; for more explanation.</div>
+<div><br>
+</div>
+</div>
+</body>
+</html>
+
+--_000_4CEA810D2198DD4DBC9D021A63ADBB651D7710AESRVEXH1NORLOCAL_--
+
+--===============0075248348==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -224,4 +110,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0467937361==--
+--===============0075248348==--
