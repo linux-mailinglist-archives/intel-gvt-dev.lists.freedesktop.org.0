@@ -1,37 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE0CE131D7B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jan 2020 03:09:15 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90F58133D05
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Jan 2020 09:24:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 733DF6E5CC;
-	Tue,  7 Jan 2020 02:09:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 00A9C6E871;
+	Wed,  8 Jan 2020 08:24:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4FD7B6E5CC;
- Tue,  7 Jan 2020 02:09:13 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Jan 2020 18:09:12 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,404,1571727600"; 
- d="asc'?scan'208";a="420896975"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.116])
- by fmsmga005.fm.intel.com with ESMTP; 06 Jan 2020 18:09:11 -0800
-Date: Tue, 7 Jan 2020 10:06:37 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Julian Stecklina <julian.stecklina@cyberus-technology.de>
+Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 281846E870;
+ Wed,  8 Jan 2020 08:24:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cyberus-technology.de; s=default1911; h=MIME-Version:Content-Type:
+ References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=JBlWYGGSvBWACbm7HRiuPkVho02AyIMjSgIaZ7f4e1Q=; b=TD4KfA1mHsPk/otH1nsJhcfx2
+ 6qMbUG8qh3Ag+InObwXGU1QjJ5b8J0+nvAXqzzzNrUd9Uarn2o3GB5AU+KsXEpmm37+MnJCBKZrPx
+ A3S6FfMg2BTQuxXDat1VNUmpEtlM08UgFaErOIV5VqS0QoaiBoMoegmfB7Mz37cmfKX8uTW6HB1j2
+ DVdc4kQ+GQ4GGKBgWTGwVUW/NnoYxlAFb2JWS3qaDdW/ItuzT72Bt20hWhpk9UjOOE8hW5vM4Jey1
+ tg8Qqsf9ZID9xNjchIdKF+1R0qAmL8sm+DEc7y8RmFI8bfs7iF8gQmv+BJAwOGEwJrtawIYa2w0pd
+ LuMtXVm1Q==;
+Received: from sslproxy02.your-server.de ([78.47.166.47])
+ by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+ (Exim 4.89_1)
+ (envelope-from <julian.stecklina@cyberus-technology.de>)
+ id 1ip6dd-00062z-4J; Wed, 08 Jan 2020 09:24:25 +0100
+Received: from [24.134.37.229] (helo=192-168-0-109.rdsnet.ro)
+ by sslproxy02.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <julian.stecklina@cyberus-technology.de>)
+ id 1ip6dc-0007FL-PG; Wed, 08 Jan 2020 09:24:24 +0100
+Message-ID: <ab56cd76c4a4c1266ca35df1645d05bfeae58e25.camel@cyberus-technology.de>
 Subject: Re: [PATCH 1/3] drm/i915/gvt: fix file paths in documentation
-Message-ID: <20200107020637.GA5894@zhen-hp.sh.intel.com>
+From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Date: Wed, 08 Jan 2020 10:24:22 +0200
+In-Reply-To: <20200107020637.GA5894@zhen-hp.sh.intel.com>
 References: <20200106140622.14393-1-julian.stecklina@cyberus-technology.de>
+ <20200107020637.GA5894@zhen-hp.sh.intel.com>
+Organization: Cyberus Technology GmbH
+User-Agent: Evolution 3.34.2 (3.34.2-1.fc31) 
 MIME-Version: 1.0
-In-Reply-To: <20200106140622.14393-1-julian.stecklina@cyberus-technology.de>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
+X-Virus-Scanned: Clear (ClamAV 0.101.4/25687/Tue Jan  7 10:56:22 2020)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,95 +58,95 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- hang.yuan@intel.com, dri-devel@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, zhiyuan.lv@intel.com
-Content-Type: multipart/mixed; boundary="===============0581086748=="
+Cc: zhiyuan.lv@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ hang.yuan@intel.com
+Content-Type: multipart/mixed; boundary="===============2063994119=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0581086748==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="PEIAKu/WMn1b1Hv9"
-Content-Disposition: inline
+--===============2063994119==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-YmIID+xuIDInK9HOwQWr"
 
 
---PEIAKu/WMn1b1Hv9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--=-YmIID+xuIDInK9HOwQWr
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On 2020.01.06 16:06:20 +0200, Julian Stecklina wrote:
-> The documentation had some stale paths to i915 graphics virtualization
-> code. Fix them to point to existing files.
->=20
-> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Cc: zhiyuan.lv@intel.com
-> Cc: hang.yuan@intel.com
->=20
-> Signed-off-by: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-> ---
->  Documentation/gpu/i915.rst | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/Documentation/gpu/i915.rst b/Documentation/gpu/i915.rst
-> index e539c42a3e78..d644683c5249 100644
-> --- a/Documentation/gpu/i915.rst
-> +++ b/Documentation/gpu/i915.rst
-> @@ -43,19 +43,19 @@ Interrupt Handling
->  Intel GVT-g Guest Support(vGPU)
->  -------------------------------
-> =20
-> -.. kernel-doc:: drivers/gpu/drm/i915/i915_vgpu.c
-> +.. kernel-doc:: drivers/gpu/drm/i915/gvt/vgpu.c
->     :doc: Intel GVT-g guest support
-> =20
-> -.. kernel-doc:: drivers/gpu/drm/i915/i915_vgpu.c
-> +.. kernel-doc:: drivers/gpu/drm/i915/gvt/vgpu.c
->     :internal:
-> =20
->  Intel GVT-g Host Support(vGPU device model)
->  -------------------------------------------
-> =20
-> -.. kernel-doc:: drivers/gpu/drm/i915/intel_gvt.c
-> +.. kernel-doc:: drivers/gpu/drm/i915/gvt/gvt.c
->     :doc: Intel GVT-g host support
-> =20
-> -.. kernel-doc:: drivers/gpu/drm/i915/intel_gvt.c
-> +.. kernel-doc:: drivers/gpu/drm/i915/gvt/gvt.c
->     :internal:
+On Tue, 2020-01-07 at 10:06 +0800, Zhenyu Wang wrote:
+> On 2020.01.06 16:06:20 +0200, Julian Stecklina wrote:
+> > The documentation had some stale paths to i915 graphics virtualization
+> > code. Fix them to point to existing files.
+> >=20
+> > Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > Cc: zhiyuan.lv@intel.com
+> > Cc: hang.yuan@intel.com
+> >=20
+> > Signed-off-by: Julian Stecklina <julian.stecklina@cyberus-technology.de=
 >
-
-The i915_vgpu.c and intel_gvt.c are still there for guest
-and host part of i915 interface with gvt. We still need them
-in doc. The files in gvt/ directory are gvt device model internals.=20
-
-
->  Workarounds
-> --=20
-> 2.24.1
+> > ---
+> >  Documentation/gpu/i915.rst | 8 ++++----
+> >  1 file changed, 4 insertions(+), 4 deletions(-)
+> >=20
+> > diff --git a/Documentation/gpu/i915.rst b/Documentation/gpu/i915.rst
+> > index e539c42a3e78..d644683c5249 100644
+> > --- a/Documentation/gpu/i915.rst
+> > +++ b/Documentation/gpu/i915.rst
+> > @@ -43,19 +43,19 @@ Interrupt Handling
+> >  Intel GVT-g Guest Support(vGPU)
+> >  -------------------------------
+> > =20
+> > -.. kernel-doc:: drivers/gpu/drm/i915/i915_vgpu.c
+> > +.. kernel-doc:: drivers/gpu/drm/i915/gvt/vgpu.c
+> >     :doc: Intel GVT-g guest support
+> > =20
+> > -.. kernel-doc:: drivers/gpu/drm/i915/i915_vgpu.c
+> > +.. kernel-doc:: drivers/gpu/drm/i915/gvt/vgpu.c
+> >     :internal:
+> > =20
+> >  Intel GVT-g Host Support(vGPU device model)
+> >  -------------------------------------------
+> > =20
+> > -.. kernel-doc:: drivers/gpu/drm/i915/intel_gvt.c
+> > +.. kernel-doc:: drivers/gpu/drm/i915/gvt/gvt.c
+> >     :doc: Intel GVT-g host support
+> > =20
+> > -.. kernel-doc:: drivers/gpu/drm/i915/intel_gvt.c
+> > +.. kernel-doc:: drivers/gpu/drm/i915/gvt/gvt.c
+> >     :internal:
+> >=20
 >=20
+> The i915_vgpu.c and intel_gvt.c are still there for guest
+> and host part of i915 interface with gvt. We still need them
+> in doc. The files in gvt/ directory are gvt device model internals.=20
 
---=20
-Open Source Technology Center, Intel ltd.
+Thanks for clarifying. I'll drop the patch.
 
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+Julian
 
---PEIAKu/WMn1b1Hv9
+--=-YmIID+xuIDInK9HOwQWr
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXhPnrQAKCRCxBBozTXgY
-JyMvAJ9TsnqY3mHUvUBZ/z7Xk72MkvNYRwCeJH2j6DznfHpxHvpobBYCwKxej0k=
-=eCW/
+iQEzBAABCAAdFiEEIO56Pp1G3IBsGtZJ7pdfAn5EfbIFAl4VkbcACgkQ7pdfAn5E
+fbK0dgf+NEF/F4ESZ27i+/L3luQ2NUKGLIdTQZDfA0Wajb8ljuRZuEpM5Uv8D+r3
+o1+hTYRp15yqp1m23KKgvlJm9jUke4rpzNB7dJ1W/dbShshdsxRr90pCC0Mvm7W7
+emIY80YjJLT0hq9Yhy4lEDhXju75Xrt5SHmnBm+XKYn6d+14BgZn9W+s4GzL1zUF
+GdO791wtZpOAN2KK0B3+10ikhIkdtmoVsQvrRNflDWrDlQSSOqsDKu82KQDz2xxo
+ykDmaB/zVvbC5WN5i5CNc/McC538Y1rkrHW3Re7cjEV8U3Pl2zmTXmNODv2fOR8D
+jld35ZwlafJktmjluDQ0nbJUw8OBbA==
+=t/Da
 -----END PGP SIGNATURE-----
 
---PEIAKu/WMn1b1Hv9--
+--=-YmIID+xuIDInK9HOwQWr--
 
---===============0581086748==
+
+--===============2063994119==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -143,4 +157,5 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0581086748==--
+--===============2063994119==--
+
