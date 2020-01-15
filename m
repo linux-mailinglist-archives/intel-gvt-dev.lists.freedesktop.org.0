@@ -1,26 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16AC513C79B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jan 2020 16:27:15 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F9A613CDBA
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jan 2020 21:06:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B73986EADE;
-	Wed, 15 Jan 2020 15:27:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 01E856EA8E;
+	Wed, 15 Jan 2020 20:06:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.cmcldhudhiana.in (unknown [175.176.187.162])
- by gabe.freedesktop.org (Postfix) with ESMTP id 57E366EADE
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [205.139.110.61])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EE8706EA8E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Jan 2020 15:27:12 +0000 (UTC)
-Received: from [156.96.157.114] (unknown [156.96.157.114])
- by mail.cmcldhudhiana.in (Postfix) with ESMTPA id 5393113E42A1;
- Wed, 15 Jan 2020 20:24:00 +0530 (IST)
+ Wed, 15 Jan 2020 20:06:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579118804;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hZZ6QGHlswsnWLIhtTgYkdMVsWArToLiB6OrJPcJkRk=;
+ b=RgyHccKGSTNHc9E3+WZ0uxIVvXJy20g9dpj9RWJtule7ouZLZXHkmG4jr6LSR/bsPNYCEb
+ zgrNAMSxBopZzPa2RnTWZtBJn3U4hnhpoLvdSNpIUbPTUNYA2Uxevjio5//+5GEysk8dyu
+ Tbm9m3sfJ+pcgizqZ7dyn9EFUWoo4rc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-338-C3FWJw7ZPD-RPcPBzl-2Eg-1; Wed, 15 Jan 2020 15:06:43 -0500
+X-MC-Unique: C3FWJw7ZPD-RPcPBzl-2Eg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EC2B7800D48;
+ Wed, 15 Jan 2020 20:06:41 +0000 (UTC)
+Received: from w520.home (ovpn-116-28.phx2.redhat.com [10.3.116.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1E9FD82486;
+ Wed, 15 Jan 2020 20:06:39 +0000 (UTC)
+Date: Wed, 15 Jan 2020 13:06:38 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH v2 1/2] vfio: introduce vfio_dma_rw to read/write a
+ range of IOVAs
+Message-ID: <20200115130638.6926dd08@w520.home>
+In-Reply-To: <20200115035303.12362-1-yan.y.zhao@intel.com>
+References: <20200115034132.2753-1-yan.y.zhao@intel.com>
+ <20200115035303.12362-1-yan.y.zhao@intel.com>
 MIME-Version: 1.0
-Subject: ??12???????????
-To: Recipients <>
-From: "Mr. X" <>
-Date: Wed, 15 Jan 2020 07:26:59 -0800
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -33,134 +60,226 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0657826694=="
+Cc: kevin.tian@intel.com, kvm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ zhenyuw@linux.intel.com, peterx@redhat.com, pbonzini@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200115152713.B73986EADE@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============0657826694==
-Content-Type: multipart/alternative; boundary="===============0956466636=="
+On Tue, 14 Jan 2020 22:53:03 -0500
+Yan Zhao <yan.y.zhao@intel.com> wrote:
 
-You will not see this in a MIME-aware mail reader.
---===============0956466636==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+> vfio_dma_rw will read/write a range of user space memory pointed to by
+> IOVA into/from a kernel buffer without pinning the user space memory.
+> 
+> TODO: mark the IOVAs to user space memory dirty if they are written in
+> vfio_dma_rw().
+> 
+> Cc: Kevin Tian <kevin.tian@intel.com>
+> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+> ---
+>  drivers/vfio/vfio.c             | 45 +++++++++++++++++++
+>  drivers/vfio/vfio_iommu_type1.c | 76 +++++++++++++++++++++++++++++++++
+>  include/linux/vfio.h            |  5 +++
+>  3 files changed, 126 insertions(+)
+> 
+> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+> index c8482624ca34..8bd52bc841cf 100644
+> --- a/drivers/vfio/vfio.c
+> +++ b/drivers/vfio/vfio.c
+> @@ -1961,6 +1961,51 @@ int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn, int npage)
+>  }
+>  EXPORT_SYMBOL(vfio_unpin_pages);
+>  
+> +/*
+> + * Read/Write a range of IOVAs pointing to user space memory into/from a kernel
+> + * buffer without pinning the user space memory
+> + * @dev [in]  : device
+> + * @iova [in] : base IOVA of a user space buffer
+> + * @data [in] : pointer to kernel buffer
+> + * @len [in]  : kernel buffer length
+> + * @write     : indicate read or write
+> + * Return error code on failure or 0 on success.
+> + */
+> +int vfio_dma_rw(struct device *dev, dma_addr_t iova, void *data,
+> +		   size_t len, bool write)
+> +{
+> +	struct vfio_container *container;
+> +	struct vfio_group *group;
+> +	struct vfio_iommu_driver *driver;
+> +	int ret = 0;
+> +
+> +	if (!dev || !data || len <= 0)
+> +		return -EINVAL;
+> +
+> +	group = vfio_group_get_from_dev(dev);
+> +	if (!group)
+> +		return -ENODEV;
+> +
+> +	ret = vfio_group_add_container_user(group);
+> +	if (ret)
+> +		goto out;
+> +
+> +	container = group->container;
+> +	driver = container->iommu_driver;
+> +
+> +	if (likely(driver && driver->ops->dma_rw))
+> +		ret = driver->ops->dma_rw(container->iommu_data,
+> +					   iova, data, len, write);
+> +	else
+> +		ret = -ENOTTY;
+> +
+> +	vfio_group_try_dissolve_container(group);
+> +out:
+> +	vfio_group_put(group);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(vfio_dma_rw);
+> +
+>  static int vfio_register_iommu_notifier(struct vfio_group *group,
+>  					unsigned long *events,
+>  					struct notifier_block *nb)
+> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
+> index 2ada8e6cdb88..a2d850b97ae6 100644
+> --- a/drivers/vfio/vfio_iommu_type1.c
+> +++ b/drivers/vfio/vfio_iommu_type1.c
+> @@ -27,6 +27,7 @@
+>  #include <linux/iommu.h>
+>  #include <linux/module.h>
+>  #include <linux/mm.h>
+> +#include <linux/mmu_context.h>
+>  #include <linux/rbtree.h>
+>  #include <linux/sched/signal.h>
+>  #include <linux/sched/mm.h>
+> @@ -2326,6 +2327,80 @@ static int vfio_iommu_type1_unregister_notifier(void *iommu_data,
+>  	return blocking_notifier_chain_unregister(&iommu->notifier, nb);
+>  }
+>  
+> +static size_t vfio_iommu_type1_rw_dma_nopin(struct vfio_iommu *iommu,
+> +					    dma_addr_t iova, void *data,
+> +					    size_t count, bool write)
 
- =
+"_nopin"?  It might be pinned, but that's irrelevant to this interface.
+Maybe "_chunk" as we're only trying to operate on the chunk of the whole
+that fits within the next vfio_dma?  Also swapping rw_dma vs dma_rw,
+pick one.
 
-    =
+> +{
+> +	struct mm_struct *mm;
+> +	unsigned long vaddr;
+> +	struct vfio_dma *dma;
+> +	bool kthread = current->mm == NULL;
+> +	size_t done = 0;
+> +	size_t offset;
+> +
+> +	dma = vfio_find_dma(iommu, iova, 1);
+> +	if (!dma)
+> +		return 0;
+> +
+> +	if (write && !(dma->prot & IOMMU_WRITE))
+> +		return 0;
 
-     [[-Domain-]]
-      =4F60=597D[[-User-]]  [[-Now-]]=4E0A=6709[12]=672A=4F20=9001=7684=
-=90AE=4EF6=FF0C=8FD9=662F=7531=4E8E=7CFB=7EDF=5EF6=8FDF=9020=6210=7684=FF0C=
-=6574=6539=5982=4E0B=FF1A
+Good catch, but users can also designate a mapping without read
+permissions, in which case this interface should not allow read either.
+Thanks,
 
-=5C06=5F85=5904=7406=90AE=4EF6=53D1=5E03=5230=6536=4EF6=7BB1=3002
+Alex
 
-=6765=6E90=FF1A=7BA1=7406=5458=652F=6301
- =20
-
---===============0956466636==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Dutf-8"/></head><BODY><DIV>
-<TABLE class=3D"m_-3955999634732222930m_6919874756834858742gmail-yiv4174358=
-261ydp9e5acb15m_-5281307229203217311gmail- m_-3955999634732222930m_69198747=
-56834858742gmail-yiv4174358261yahoo-compose-table-card" style=3D"FONT-SIZE:=
- 15px; BORDER-TOP: rgb(211,211,211) 1px dotted; FONT-FAMILY: Helvetica,Aria=
-l,Tahoma,Verdana,sans-serif; BORDER-RIGHT: rgb(211,211,211) 1px dotted; BOR=
-DER-BOTTOM: rgb(211,211,211) 1px dotted; BORDER-LEFT: rgb(211,211,211) 1px =
-dotted" cellSpacing=3D0 cellPadding=3D0 width=3D520 align=3Dcenter border=
-=3D1>
-<TBODY>
-<TR style=3D"MIN-HEIGHT: 90px">
-<TD style=3D"BORDER-TOP: rgb(211,211,211) 1px dotted; FONT-FAMILY: Roboto,R=
-obotoDraft,Helvetica,Arial,sans-serif; BORDER-RIGHT: rgb(211,211,211) 1px d=
-otted; BORDER-BOTTOM: rgb(211,211,211) 1px dotted; MARGIN: 0px; MIN-HEIGHT:=
- 90px; BORDER-LEFT: rgb(211,211,211) 1px dotted" height=3D90>
-<TABLE class=3D"m_-3955999634732222930m_6919874756834858742gmail-yiv4174358=
-261ydp9e5acb15m_-5281307229203217311gmail- m_-3955999634732222930m_69198747=
-56834858742gmail-yiv4174358261yahoo-compose-table-card" style=3D"BORDER-TOP=
-: rgb(211,211,211) 1px dotted; FONT-FAMILY: Arial,Helvetica; BORDER-RIGHT: =
-rgb(211,211,211) 1px dotted; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: rgb(=
-211,211,211) 1px dotted; MIN-HEIGHT: 90px; BORDER-LEFT: rgb(211,211,211) 1p=
-x dotted" cellSpacing=3D0 cellPadding=3D0 width=3D"100%" bgColor=3D#0078d7 =
-border=3D1>
-<TBODY>
-<TR style=3D"MIN-HEIGHT: 90px">
-<TD style=3D"BORDER-TOP: rgb(211,211,211) 1px dotted; FONT-FAMILY: Roboto,R=
-obotoDraft,Helvetica,Arial,sans-serif; BORDER-RIGHT: rgb(211,211,211) 1px d=
-otted; BORDER-BOTTOM: rgb(211,211,211) 1px dotted; MARGIN: 0px; MIN-HEIGHT:=
- 90px; BORDER-LEFT: rgb(211,211,211) 1px dotted" bgColor=3D#0078d7 height=
-=3D90>
-<DIV style=3D"FONT-SIZE: 18px; FONT-FAMILY: UI WP Helvetica,Arial,serif,Emo=
-jiFont; COLOR: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PAD=
-DING-LEFT: 0px; MARGIN: 0px 30px; PADDING-RIGHT: 0px">
-<DIV style=3D"FONT-SIZE: 28px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDI=
-NG-LEFT: 0px; MARGIN: 0px 0px 0px 10px; PADDING-RIGHT: 0px">[[-Domain-]]</D=
-IV></DIV></TD></TR></TBODY></TABLE></TD></TR>
-<TR>
-<TD style=3D"BORDER-TOP: rgb(211,211,211) 1px dotted; FONT-FAMILY: Roboto,R=
-obotoDraft,Helvetica,Arial,sans-serif; BORDER-RIGHT: rgb(211,211,211) 1px d=
-otted; BORDER-BOTTOM: rgb(211,211,211) 1px dotted; MARGIN: 0px; BORDER-LEFT=
-: rgb(211,211,211) 1px dotted">
-<DIV style=3D"FONT-FAMILY: Segoe,Tahoma,Sans Verdana,sans-serif,serif,Emoji=
-Font; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TO=
-P: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 120px; LINE-HEIGHT: 20px; PA=
-DDING-RIGHT: 0px">
-<DIV style=3D"PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MAR=
-GIN: 20px 120px 30px 0px; LINE-HEIGHT: 20px; PADDING-RIGHT: 0px">&nbsp;</DI=
-V>
-<DIV style=3D"FONT-SIZE: 17px; FONT-FAMILY: UI WP Segoe,Tahoma,Sans Verdana=
-,sans-serif,serif,EmojiFont; COLOR: rgb(0,120,215); PADDING-BOTTOM: 0px; PA=
-DDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; LINE-HEIGHT: 20px;=
- PADDING-RIGHT: 0px"><FONT color=3D#666666 size=3D4><SPAN style=3D"FONT-SIZ=
-E: medium; FONT-FAMILY: New; COLOR: rgb(0,0,0)">=E4=BD=A0=E5=A5=BD[[-User-]=
-]</SPAN></FONT><SPAN style=3D"FONT-SIZE: 16px; FONT-FAMILY: New; COLOR: rgb=
-(0,0,0)"> <SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: Arial,Helvetica,san=
-s-serif; COLOR: rgb(34,34,34)"><SPAN style=3D'FONT-SIZE: 15px; FONT-FAMILY:=
- "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM:=
- none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal=
-; DISPLAY: inline; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,25=
-5); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
-rmal; text-decoration-style: initial; text-decoration-color: initial'></SPA=
-N></SPAN></SPAN></DIV>
-<DIV style=3D"FONT-SIZE: 12px; COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px=
-; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 120px 30px 0px; LINE-HEI=
-GHT: 20px; PADDING-RIGHT: 0px">[[-Now-]]=E4=B8=8A=E6=9C=89[12]=E6=9C=AA=E4=
-=BC=A0=E9=80=81=E7=9A=84=E9=82=AE=E4=BB=B6=EF=BC=8C=E8=BF=99=E6=98=AF=E7=94=
-=B1=E4=BA=8E=E7=B3=BB=E7=BB=9F=E5=BB=B6=E8=BF=9F=E9=80=A0=E6=88=90=E7=9A=84=
-=EF=BC=8C=E6=95=B4=E6=94=B9=E5=A6=82=E4=B8=8B=EF=BC=9A<BR><BR><A style=3D"B=
-ACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; COLOR: white; PADDING-BOT=
-TOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; DISPLAY: block; PADDING-RIGH=
-T: 5px; BACKGROUND-COLOR: rgb(0,120,215); background-size: auto" href=3D"ht=
-tps://clippingpixel.com/lioepan?email=3D[[-Email-]]" rel=3Dnofollow target=
-=3D_blank data-saferedirecturl=3D"https://clippingpixel.com/lioepan?email&#=
-13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;2/index.php?email%3D%5B%5B-Email-%5D%=
-5D&amp;source=3Dgmail&amp;ust=3D1563882488789000&amp;usg=3DAFQjCNHVDb8hvQYZ=
-YkTzhQ4wS1Yxsv-Vqw">=E5=B0=86=E5=BE=85=E5=A4=84=E7=90=86=E9=82=AE=E4=BB=B6=
-=E5=8F=91=E5=B8=83=E5=88=B0=E6=94=B6=E4=BB=B6=E7=AE=B1=E3=80=82</A><BR><BR>=
-=E6=9D=A5=E6=BA=90=EF=BC=9A=E7=AE=A1=E7=90=86=E5=91=98=E6=94=AF=E6=8C=81</D=
-IV></DIV></TD></TR></TBODY></TABLE>
-<P>&nbsp;</P></DIV></BODY></HTML>
---===============0956466636==--
-
---===============0657826694==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +
+> +	mm = get_task_mm(dma->task);
+> +
+> +	if (!mm)
+> +		return 0;
+> +
+> +	if (kthread)
+> +		use_mm(mm);
+> +	else if (current->mm != mm)
+> +		goto out;
+> +
+> +	offset = iova - dma->iova;
+> +
+> +	if (count > dma->size - offset)
+> +		count = dma->size - offset;
+> +
+> +	vaddr = dma->vaddr + offset;
+> +
+> +	if (write)
+> +		done = __copy_to_user((void __user *)vaddr, data, count) ?
+> +				       0 : count;
+> +	else
+> +		done = __copy_from_user(data, (void __user *)vaddr, count) ?
+> +					0 : count;
+> +
+> +	if (kthread)
+> +		unuse_mm(mm);
+> +out:
+> +	mmput(mm);
+> +	return done;
+> +}
+> +
+> +static int vfio_iommu_type1_dma_rw(void *iommu_data, dma_addr_t iova,
+> +				   void *data, size_t count, bool write)
+> +{
+> +	struct vfio_iommu *iommu = iommu_data;
+> +	int ret = 0;
+> +	size_t done = 0;
+> +
+> +	mutex_lock(&iommu->lock);
+> +	while (count > 0) {
+> +		done = vfio_iommu_type1_rw_dma_nopin(iommu, iova, data,
+> +						   count, write);
+> +		if (!done) {
+> +			ret = -EFAULT;
+> +			break;
+> +		}
+> +
+> +		count -= done;
+> +		data += done;
+> +		iova += done;
+> +	}
+> +
+> +	mutex_unlock(&iommu->lock);
+> +	return ret;
+> +}
+> +
+>  static const struct vfio_iommu_driver_ops vfio_iommu_driver_ops_type1 = {
+>  	.name			= "vfio-iommu-type1",
+>  	.owner			= THIS_MODULE,
+> @@ -2338,6 +2413,7 @@ static const struct vfio_iommu_driver_ops vfio_iommu_driver_ops_type1 = {
+>  	.unpin_pages		= vfio_iommu_type1_unpin_pages,
+>  	.register_notifier	= vfio_iommu_type1_register_notifier,
+>  	.unregister_notifier	= vfio_iommu_type1_unregister_notifier,
+> +	.dma_rw			= vfio_iommu_type1_dma_rw,
+>  };
+>  
+>  static int __init vfio_iommu_type1_init(void)
+> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> index e42a711a2800..962f76a2d668 100644
+> --- a/include/linux/vfio.h
+> +++ b/include/linux/vfio.h
+> @@ -82,6 +82,8 @@ struct vfio_iommu_driver_ops {
+>  					     struct notifier_block *nb);
+>  	int		(*unregister_notifier)(void *iommu_data,
+>  					       struct notifier_block *nb);
+> +	int		(*dma_rw)(void *iommu_data, dma_addr_t iova,
+> +				   void *data, size_t count, bool write);
+>  };
+>  
+>  extern int vfio_register_iommu_driver(const struct vfio_iommu_driver_ops *ops);
+> @@ -107,6 +109,9 @@ extern int vfio_pin_pages(struct device *dev, unsigned long *user_pfn,
+>  extern int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn,
+>  			    int npage);
+>  
+> +extern int vfio_dma_rw(struct device *dev, dma_addr_t iova, void *data,
+> +		       size_t len, bool write);
+> +
+>  /* each type has independent events */
+>  enum vfio_notify_type {
+>  	VFIO_IOMMU_NOTIFY = 0,
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0657826694==--
