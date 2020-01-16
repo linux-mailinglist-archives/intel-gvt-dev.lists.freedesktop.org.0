@@ -1,40 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6296213D405
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Jan 2020 06:58:57 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95C3313DD19
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Jan 2020 15:13:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D39976EBE3;
-	Thu, 16 Jan 2020 05:58:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 476446ED32;
+	Thu, 16 Jan 2020 14:13:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 55D6F6EBE3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Jan 2020 05:58:54 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Jan 2020 21:58:52 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,325,1574150400"; d="scan'208";a="218408846"
-Received: from unknown (HELO joy-OptiPlex-7040) ([10.239.13.16])
- by orsmga008.jf.intel.com with ESMTP; 15 Jan 2020 21:58:51 -0800
-Date: Thu, 16 Jan 2020 00:49:41 -0500
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v2 2/2] drm/i915/gvt: subsitute kvm_read/write_guest with
- vfio_dma_rw
-Message-ID: <20200116054941.GB1759@joy-OptiPlex-7040>
-References: <20200115034132.2753-1-yan.y.zhao@intel.com>
- <20200115035455.12417-1-yan.y.zhao@intel.com>
- <20200115130651.29d7e9e0@w520.home>
+Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6E6066ED32;
+ Thu, 16 Jan 2020 14:13:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
+ MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=U59tM/hjwBCgD+03ck/n2U6z9Uy02xUfGBDeEOA+9LE=; b=WyfDzBV5WGLSUyUA00FBOniqR
+ a9Gq85FImZoxDN+FVmHJM5WPuqtJNqSsD7kYaZBj+s4Xmy2Moas2+2QSyFhUZRMngFEhPt126BPHs
+ VnubuCv0JkpbhMzQgHPjWcyx+EBkqC55WkOp/Qv6pUL7FEAZZj4562jJAxepMlTyXqC2tcussZZet
+ BhBpEM4nKD5cZcSXKd7aCjUGXwUQHfmhJK6MX7wyDTb0BS09cdgDXghuEgkfnX3DEkGXMvuotYy+L
+ WYPxWE6bc2Y9rg3nrk0tJ/JFR3VnBOLRGdMI3Syz1AeuJdHqHo117g4GSOBcZfk+fwb9HrLGwqvSx
+ K4ZCQ+DNA==;
+Received: from sslproxy06.your-server.de ([78.46.172.3])
+ by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+ (Exim 4.89_1)
+ (envelope-from <julian.stecklina@cyberus-technology.de>)
+ id 1is5tQ-0002lH-BY; Thu, 16 Jan 2020 15:13:04 +0100
+Received: from [2a02:8106:231:700:38db:ba68:aa3a:bbaa]
+ (helo=localhost.localdomain)
+ by sslproxy06.your-server.de with esmtpsa
+ (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
+ (envelope-from <julian.stecklina@cyberus-technology.de>)
+ id 1is5tQ-0008eN-2d; Thu, 16 Jan 2020 15:13:04 +0100
+Message-ID: <9b32e225ee680e61716e300eb1ed8387599cc0dd.camel@cyberus-technology.de>
+Subject: Re: [RFC PATCH 4/4] drm/i915/gvt: move public gvt headers out into
+ global include
+From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
+To: Greg KH <gregkh@linuxfoundation.org>
+Date: Thu, 16 Jan 2020 15:13:01 +0100
+In-Reply-To: <20200115152215.GA3830321@kroah.com>
+References: <4079ce7c26a2d2a3c7e0828ed1ea6008d6e2c805.camel@cyberus-technology.de>
+ <20200109171357.115936-1-julian.stecklina@cyberus-technology.de>
+ <20200109171357.115936-5-julian.stecklina@cyberus-technology.de>
+ <20200115152215.GA3830321@kroah.com>
+Organization: Cyberus Technology GmbH
+User-Agent: Evolution 3.34.2 (3.34.2-1.fc31) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200115130651.29d7e9e0@w520.home>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
+X-Virus-Scanned: Clear (ClamAV 0.101.4/25697/Thu Jan 16 12:42:45 2020)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,145 +63,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ hang.yuan@intel.com, dri-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, zhiyuan.lv@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Jan 16, 2020 at 04:06:51AM +0800, Alex Williamson wrote:
-> On Tue, 14 Jan 2020 22:54:55 -0500
-> Yan Zhao <yan.y.zhao@intel.com> wrote:
-> 
-> > As a device model, it is better to read/write guest memory using vfio
-> > interface, so that vfio is able to maintain dirty info of device IOVAs.
-> > 
-> > Compared to kvm interfaces kvm_read/write_guest(), vfio_dma_rw() has ~600
-> > cycles more overhead on average.
-> > 
-> > -------------------------------------
-> > |    interface     | avg cpu cycles |
-> > |-----------------------------------|
-> > | kvm_write_guest  |     1554       |
-> > | ----------------------------------|
-> > | kvm_read_guest   |     707        |
-> > |-----------------------------------|
-> > | vfio_dma_rw(w)   |     2274       |
-> > |-----------------------------------|
-> > | vfio_dma_rw(r)   |     1378       |
-> > -------------------------------------
-> 
-> In v1 you had:
-> 
-> -------------------------------------
-> |    interface     | avg cpu cycles |
-> |-----------------------------------|
-> | kvm_write_guest  |     1546       |
-> | ----------------------------------|
-> | kvm_read_guest   |     686        |
-> |-----------------------------------|
-> | vfio_iova_rw(w)  |     2233       |
-> |-----------------------------------|
-> | vfio_iova_rw(r)  |     1262       |
-> -------------------------------------
-> 
-> So the kvm numbers remained within +0.5-3% while the vfio numbers are
-> now +1.8-9.2%.  I would have expected the algorithm change to at least
-> not be worse for small accesses and be better for accesses crossing
-> page boundaries.  Do you know what happened?
->
-I only tested the 4 interfaces in GVT's environment, where most of the
-guest memory accesses are less than one page.
-And the different fluctuations should be caused by the locks.
-vfio_dma_rw contends locks with other vfio accesses which are assumed to
-be abundant in the case of GVT.
+Hi Greg, Christoph,
 
-> > Comparison of benchmarks scores are as blow:
-> > ------------------------------------------------------
-> > |  avg score  | kvm_read/write_guest  | vfio_dma_rw  |
-> > |----------------------------------------------------|
-> > |   Glmark2   |         1284          |    1296      |
-> > |----------------------------------------------------|
-> > |  Lightsmark |         61.24         |    61.27     |
-> > |----------------------------------------------------|
-> > |  OpenArena  |         140.9         |    137.4     |
-> > |----------------------------------------------------|
-> > |   Heaven    |          671          |     670      |
-> > ------------------------------------------------------
-> > No obvious performance downgrade found.
+On Wed, 2020-01-15 at 16:22 +0100, Greg KH wrote:
+> On Thu, Jan 09, 2020 at 07:13:57PM +0200, Julian Stecklina wrote:
+> > Now that the GVT interface to hypervisors does not depend on i915/GVT
+> > internals anymore, we can move the headers to the global include/.
 > > 
-> > Cc: Kevin Tian <kevin.tian@intel.com>
-> > Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
-> > ---
-> >  drivers/gpu/drm/i915/gvt/kvmgt.c | 26 +++++++-------------------
-> >  1 file changed, 7 insertions(+), 19 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> > index bd79a9718cc7..17edc9a7ff05 100644
-> > --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> > +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> > @@ -1966,31 +1966,19 @@ static int kvmgt_rw_gpa(unsigned long handle, unsigned long gpa,
-> >  			void *buf, unsigned long len, bool write)
-> >  {
-> >  	struct kvmgt_guest_info *info;
-> > -	struct kvm *kvm;
-> > -	int idx, ret;
-> > -	bool kthread = current->mm == NULL;
-> > +	int ret;
-> > +	struct intel_vgpu *vgpu;
-> > +	struct device *dev;
-> >  
-> >  	if (!handle_valid(handle))
-> >  		return -ESRCH;
-> >  
-> >  	info = (struct kvmgt_guest_info *)handle;
-> > -	kvm = info->kvm;
-> > -
-> > -	if (kthread) {
-> > -		if (!mmget_not_zero(kvm->mm))
-> > -			return -EFAULT;
-> > -		use_mm(kvm->mm);
-> > -	}
-> > -
-> > -	idx = srcu_read_lock(&kvm->srcu);
-> > -	ret = write ? kvm_write_guest(kvm, gpa, buf, len) :
-> > -		      kvm_read_guest(kvm, gpa, buf, len);
-> > -	srcu_read_unlock(&kvm->srcu, idx);
-> > +	vgpu = info->vgpu;
-> > +	dev = mdev_dev(vgpu->vdev.mdev);
-> >  
-> > -	if (kthread) {
-> > -		unuse_mm(kvm->mm);
-> > -		mmput(kvm->mm);
-> > -	}
-> > +	ret = write ? vfio_dma_rw(dev, gpa, buf, len, true) :
-> > +			vfio_dma_rw(dev, gpa, buf, len, false);
+> > This makes out-of-tree modules for hypervisor integration possible.
 > 
-> As Paolo suggested previously, this can be simplified:
-> 
-> ret = vfio_dma_rw(dev, gpa, buf, len, write);
->
-> >  
-> >  	return ret;
-> 
-> Or even more simple, remove the ret variable:
-> 
-> return vfio_dma_rw(dev, gpa, buf, len, write);
-> 
-oh, it seems that I missed Paolo's mail. will change it. thank you!
+> What kind of out-of-tree modules do you need/want for this?
 
-Thanks
-Yan
+The mediated virtualization support in the i915 driver needs a backend to the
+hypervisor. There is currently one backend for KVM in the tree
+(drivers/gpu/drm/i915/gvt/kvmgt.c) and at least 3 other hypervisor backends out
+of tree in various states of development that I know of. We are currently
+developing one of these.
+
 > 
-> >  }
-> 
+> Also, as Christoph said, adding exports for functions that are not used
+> by anything within the kernel tree itself is not ok, that's not how we
+> work.
+
+The exports are used by the KVM hypervisor backend. The patchset I sent
+basically decouples KVMGT from i915 driver internals. So personally I would
+count this as a benefit in itself.
+
+There is already an indirection in place that looks like it is intended to
+decouple the hypervisor backends from the i915 driver core: intel_gvt_ops. This
+is a struct of function pointers that the hypervisor backend uses to talk to the
+GPU mediator code.
+
+Unfortunately, this struct doesn't cover all usecases and the KVM hypervisor
+backend directly touches the i915 devices' internal state in very few places. My
+current solution was to wrap these accesses in accessor functions and
+EXPORT_SYMBOL_GPL them.
+
+If the more acceptable solution is to add more function pointers to
+intel_gvt_ops instead of exporting symbols, I'm happy to go along this route.
+
+> And why do they somehow have to be out of the tree?  We want them in the
+> tree, and so should you, as it will save you time and money if they are.
+
+I also want these hypervisor backends in the tree, but from a development
+workflow having the ability to build them as a out-of-tree modules is very
+convenient. I guess this is also true for the developers working on the other
+hypervisor backends.
+
+When I looked at the status quo in i915/gvt a couple of weeks ago, it seemed
+like it would be a win for everyone. Let me just clearly say that we have no
+intention of doing binary blob drivers. :)
+
+Thanks,
+Julian
+
+[1] 
+https://elixir.bootlin.com/linux/latest/source/drivers/gpu/drm/i915/gvt/gvt.h#L555
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
