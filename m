@@ -2,41 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A2181401E4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jan 2020 03:27:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4904140CE2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jan 2020 15:43:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A3E286F37D;
-	Fri, 17 Jan 2020 02:27:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6CBB76F5B3;
+	Fri, 17 Jan 2020 14:43:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5369B6F37C;
- Fri, 17 Jan 2020 02:27:26 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B0F1C6F5B3;
+ Fri, 17 Jan 2020 14:43:32 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Jan 2020 18:27:25 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,327,1574150400"; 
- d="asc'?scan'208";a="214325648"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.14])
- by orsmga007.jf.intel.com with ESMTP; 16 Jan 2020 18:27:23 -0800
-Date: Fri, 17 Jan 2020 10:15:39 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-Subject: Re: [RFC PATCH 4/4] drm/i915/gvt: move public gvt headers out into
- global include
-Message-ID: <20200117021539.GA6715@zhen-hp.sh.intel.com>
-References: <4079ce7c26a2d2a3c7e0828ed1ea6008d6e2c805.camel@cyberus-technology.de>
- <20200109171357.115936-1-julian.stecklina@cyberus-technology.de>
- <20200109171357.115936-5-julian.stecklina@cyberus-technology.de>
- <20200115152215.GA3830321@kroah.com>
- <9b32e225ee680e61716e300eb1ed8387599cc0dd.camel@cyberus-technology.de>
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2020 06:36:31 -0800
+X-IronPort-AV: E=Sophos;i="5.70,330,1574150400"; d="scan'208";a="218923877"
+Received: from jnikula-mobl3.fi.intel.com (HELO localhost) ([10.237.66.161])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2020 06:36:29 -0800
+From: Jani Nikula <jani.nikula@intel.com>
+To: Chris Wilson <chris@chris-wilson.co.uk>, intel-gfx@lists.freedesktop.org
+Subject: Re: [Intel-gfx] [PATCH 01/10] drm/i915/gvt: use intel uncore
+ functions for forcewake register access
+In-Reply-To: <157530277477.27263.6028188613442603598@skylake-alporthouse-com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <cover.1575302334.git.jani.nikula@intel.com>
+ <bdd0c16b8e2a37589a67e43c70a507001e0e5d27.1575302334.git.jani.nikula@intel.com>
+ <157530277477.27263.6028188613442603598@skylake-alporthouse-com>
+Date: Fri, 17 Jan 2020 16:36:26 +0200
+Message-ID: <87k15qgnf9.fsf@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <9b32e225ee680e61716e300eb1ed8387599cc0dd.camel@cyberus-technology.de>
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,130 +45,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>,
- Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, hang.yuan@intel.com,
- Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gvt-dev@lists.freedesktop.org,
- zhiyuan.lv@intel.com
-Content-Type: multipart/mixed; boundary="===============0567246475=="
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============0567246475==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
-Content-Disposition: inline
-
-
---TB36FDmn/VVEgNH/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2020.01.16 15:13:01 +0100, Julian Stecklina wrote:
-> Hi Greg, Christoph,
->=20
-> On Wed, 2020-01-15 at 16:22 +0100, Greg KH wrote:
-> > On Thu, Jan 09, 2020 at 07:13:57PM +0200, Julian Stecklina wrote:
-> > > Now that the GVT interface to hypervisors does not depend on i915/GVT
-> > > internals anymore, we can move the headers to the global include/.
-> > >=20
-> > > This makes out-of-tree modules for hypervisor integration possible.
-> >=20
-> > What kind of out-of-tree modules do you need/want for this?
->=20
-> The mediated virtualization support in the i915 driver needs a backend to=
- the
-> hypervisor. There is currently one backend for KVM in the tree
-> (drivers/gpu/drm/i915/gvt/kvmgt.c) and at least 3 other hypervisor backen=
-ds out
-> of tree in various states of development that I know of. We are currently
-> developing one of these.
->=20
-> >=20
-> > Also, as Christoph said, adding exports for functions that are not used
-> > by anything within the kernel tree itself is not ok, that's not how we
-> > work.
->=20
-> The exports are used by the KVM hypervisor backend. The patchset I sent
-> basically decouples KVMGT from i915 driver internals. So personally I wou=
-ld
-> count this as a benefit in itself.
->=20
-> There is already an indirection in place that looks like it is intended to
-> decouple the hypervisor backends from the i915 driver core: intel_gvt_ops=
-=2E This
-> is a struct of function pointers that the hypervisor backend uses to talk=
- to the
-> GPU mediator code.
->=20
-> Unfortunately, this struct doesn't cover all usecases and the KVM hypervi=
-sor
-> backend directly touches the i915 devices' internal state in very few pla=
-ces. My
-> current solution was to wrap these accesses in accessor functions and
-> EXPORT_SYMBOL_GPL them.
->=20
-> If the more acceptable solution is to add more function pointers to
-> intel_gvt_ops instead of exporting symbols, I'm happy to go along this ro=
-ute.
+On Mon, 02 Dec 2019, Chris Wilson <chris@chris-wilson.co.uk> wrote:
+> Quoting Jani Nikula (2019-12-02 16:00:49)
+>> Move away from I915_READ_FW() and I915_WRITE_FW() and switch to using
+>> intel_uncore_read_fw() and intel_uncore_write_fw(), respectively.
 >
+> I've a patch to switch gvt over to using gt->uncore, gt->engines etc.
 
-That depends on the hypervisor requirement and purpose, if it requires
-gvt device model for some function e.g emulate mmio, we want it to be
-a general gvt_ops, if it just trys to retrieve some vgpu info, we
-might see if some common wrapper of internal data would be more easier.
+Have you posted this?
 
-> > And why do they somehow have to be out of the tree?  We want them in the
-> > tree, and so should you, as it will save you time and money if they are.
->=20
-> I also want these hypervisor backends in the tree, but from a development
-> workflow having the ability to build them as a out-of-tree modules is very
-> convenient. I guess this is also true for the developers working on the o=
-ther
-> hypervisor backends.
->=20
-> When I looked at the status quo in i915/gvt a couple of weeks ago, it see=
-med
-> like it would be a win for everyone. Let me just clearly say that we have=
- no
-> intention of doing binary blob drivers. :)
->
+BR,
+Jani.
 
-yeah, we do like to see more hypervisor support and make more clear interfa=
-ce
-between core device model with that.
 
-thanks
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---TB36FDmn/VVEgNH/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXiEYywAKCRCxBBozTXgY
-J7VAAJ4+GPxnpxcifJMey1RQ7Tu+IykKMQCdFGYEJ8xf6HRdloBoM5olfjQ3+Wo=
-=4F3W
------END PGP SIGNATURE-----
-
---TB36FDmn/VVEgNH/--
-
---===============0567246475==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0567246475==--
