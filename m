@@ -2,35 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B1E3140D0C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jan 2020 15:50:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7AF79140D96
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jan 2020 16:15:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0F6CF6F5CA;
-	Fri, 17 Jan 2020 14:50:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 243616F5E0;
+	Fri, 17 Jan 2020 15:15:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from fireflyinternet.com (mail.fireflyinternet.com [109.228.58.192])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B56AC6F5C8;
- Fri, 17 Jan 2020 14:50:31 +0000 (UTC)
-X-Default-Received-SPF: pass (skip=forwardok (res=PASS))
- x-ip-name=78.156.65.138; 
-Received: from localhost (unverified [78.156.65.138]) 
- by fireflyinternet.com (Firefly Internet (M1)) with ESMTP (TLS) id
- 19917706-1500050 for multiple; Fri, 17 Jan 2020 14:50:29 +0000
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DC7E06F5DD;
+ Fri, 17 Jan 2020 15:15:42 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2020 07:15:42 -0800
+X-IronPort-AV: E=Sophos;i="5.70,330,1574150400"; d="scan'208";a="218934603"
+Received: from jnikula-mobl3.fi.intel.com (HELO localhost) ([10.237.66.161])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2020 07:15:39 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Chris Wilson <chris@chris-wilson.co.uk>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [Intel-gfx] [PATCH 2/2] drm/i915/gvt: Wean gvt off
+ dev_priv->engine[]
+In-Reply-To: <157164501001.24426.17278525357815707355@skylake-alporthouse-com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20191016183902.13614-1-chris@chris-wilson.co.uk>
+ <20191016183902.13614-2-chris@chris-wilson.co.uk>
+ <20191021053724.GB8745@zhen-hp.sh.intel.com>
+ <157164501001.24426.17278525357815707355@skylake-alporthouse-com>
+Date: Fri, 17 Jan 2020 17:15:36 +0200
+Message-ID: <87ftgegllz.fsf@intel.com>
 MIME-Version: 1.0
-To: Jani Nikula <jani.nikula@intel.com>, intel-gfx@lists.freedesktop.org
-From: Chris Wilson <chris@chris-wilson.co.uk>
-In-Reply-To: <157927243314.2389.10934965628435405825@skylake-alporthouse-com>
-References: <cover.1575302334.git.jani.nikula@intel.com>
- <bdd0c16b8e2a37589a67e43c70a507001e0e5d27.1575302334.git.jani.nikula@intel.com>
- <157530277477.27263.6028188613442603598@skylake-alporthouse-com>
- <87k15qgnf9.fsf@intel.com>
- <157927243314.2389.10934965628435405825@skylake-alporthouse-com>
-Message-ID: <157927262699.2389.8233680144609510417@skylake-alporthouse-com>
-User-Agent: alot/0.6
-Subject: Re: [Intel-gfx] [PATCH 01/10] drm/i915/gvt: use intel uncore
- functions for forcewake register access
-Date: Fri, 17 Jan 2020 14:50:27 +0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,29 +47,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Quoting Chris Wilson (2020-01-17 14:47:13)
-> Quoting Jani Nikula (2020-01-17 14:36:26)
-> > On Mon, 02 Dec 2019, Chris Wilson <chris@chris-wilson.co.uk> wrote:
-> > > Quoting Jani Nikula (2019-12-02 16:00:49)
-> > >> Move away from I915_READ_FW() and I915_WRITE_FW() and switch to using
-> > >> intel_uncore_read_fw() and intel_uncore_write_fw(), respectively.
-> > >
-> > > I've a patch to switch gvt over to using gt->uncore, gt->engines etc.
-> > 
-> > Have you posted this?
-> 
-> A few months ago,
-> https://patchwork.freedesktop.org/patch/336201/?series=68117&rev=1
+On Mon, 21 Oct 2019, Chris Wilson <chris@chris-wilson.co.uk> wrote:
+> Quoting Zhenyu Wang (2019-10-21 06:37:24)
+>> On 2019.10.16 19:39:02 +0100, Chris Wilson wrote:
+>> > Stop trying to escape out of the gvt layer to find the engine that we
+>> > initially setup for use with gvt. Record the engines during initialisation
+>> > and use them henceforth.
+>> > 
+>> > add/remove: 1/4 grow/shrink: 22/28 up/down: 341/-1410 (-1069)
+>> > 
+>> > Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
+>> > ---
+>> 
+>> Thanks for this cleanup! Quick review seems good to me, although it
+>> looks pretty fine for me on ring_id replacement, this big one also
+>> includes other changes like indent fix, debugfs item change, etc.
+>> Could we split them for easier merge? Can have a gvt developer to
+>> help on that.
+>
+> Just make gvt/ checkpatch clean so that CI doesn't reject patches
+> because the surrounding code does not conform to coding style.
 
-There's a second for "drm/i915/gvt: Wean gvt off using dev_priv" that
-does the uncore migration after that.
--Chris
+Sadly this has fallen between the cracks. Could someone pick this up
+again please, maybe from the gvt team?
+
+BR,
+Jani.
+
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
