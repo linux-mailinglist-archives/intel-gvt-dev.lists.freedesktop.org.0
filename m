@@ -1,56 +1,57 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94FFC143108
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Jan 2020 18:48:19 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E29E71432B5
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Jan 2020 21:02:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2BCF06EAAC;
-	Mon, 20 Jan 2020 17:48:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A07676EA87;
+	Mon, 20 Jan 2020 20:02:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 64AF46EAAB;
- Mon, 20 Jan 2020 17:48:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=MIME-Version:Content-Type:
- References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=mt6TqnVWsRX++sejRh/VDKAAIcGrOmP2B4gaURoVsOQ=; b=BeAXOL/BB+EmRC8E0SsyK5kRT
- PHQ0dANrneerNVn2tD8GKlr2QPjxSpXAAMvLhtvklSDM1J55LPtRfHtgDX5KFjFs1SiIxNjdkIbUD
- qnSzHZsLT8FLF5Ha91Q3LneE06ZNHDGvyb+C6eI/dgx6VeCcP0LuK0cy1j0ZmKhmzX76MkydVL4fl
- zqg+4Nq01AlO1gc2UQ5qT39ZmEEDa0D8Xs2FkZzJhBf+1f7YANXIjYKIQot+Jw6UyYw9iVsq+m3s/
- YEC2EHsCzIQL2eYMYUfO3ReuBOmOoVehlWGf30ryqQPqJZ9LZRVsnGl5elHk6Ydjj0kAdYSmFBhEf
- LzWAdXXFQ==;
-Received: from sslproxy06.your-server.de ([78.46.172.3])
- by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1itaqI-0007KO-O3; Mon, 20 Jan 2020 18:28:02 +0100
-Received: from [2001:16b8:5700:3700:f1da:99e3:e2a2:9568] (helo=linux.fritz.box)
- by sslproxy06.your-server.de with esmtpsa
- (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1itaqI-000IsV-DH; Mon, 20 Jan 2020 18:28:02 +0100
-Message-ID: <ea0d2226a66efedcfc406f574453a374df1bb338.camel@cyberus-technology.de>
-Subject: Re: [RFC PATCH 1/4] drm/i915/gvt: make gvt oblivious of kvmgt data
- structures
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Date: Mon, 20 Jan 2020 18:28:01 +0100
-In-Reply-To: <20200120063318.GC14597@zhen-hp.sh.intel.com>
-References: <4079ce7c26a2d2a3c7e0828ed1ea6008d6e2c805.camel@cyberus-technology.de>
- <20200109171357.115936-1-julian.stecklina@cyberus-technology.de>
- <20200109171357.115936-2-julian.stecklina@cyberus-technology.de>
- <20200120062210.GA14597@zhen-hp.sh.intel.com>
- <20200120063318.GC14597@zhen-hp.sh.intel.com>
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.34.3 (3.34.3-1.fc31) 
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0E27D6EA87
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 20 Jan 2020 20:02:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579550523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=yXBBxKgjxdPXPXxh/cc9O4GvaQfZZ5zC481c5ThX3+8=;
+ b=HkRIfJVzUIE/3aSamgtnEjQRZwY74N0ahaYkZ2BE0djKT3N0/prMfU0h64IOtkPDbkBhLc
+ nPSfZz44IUO2w5/97U4+4o642EI/tl+v3A1gSpqxeYZbEi7RXQ9FCGkgM//5faPslc8PWq
+ WZ+KLgIOk6RGsees9zU9H+lj6JhBMQc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-21-beGNQvrDNBCvUTRoImg-bw-1; Mon, 20 Jan 2020 15:02:00 -0500
+X-MC-Unique: beGNQvrDNBCvUTRoImg-bw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D4466800D41;
+ Mon, 20 Jan 2020 20:01:58 +0000 (UTC)
+Received: from w520.home (ovpn-116-28.phx2.redhat.com [10.3.116.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3A9321001B35;
+ Mon, 20 Jan 2020 20:01:58 +0000 (UTC)
+Date: Mon, 20 Jan 2020 13:01:57 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH v2 2/2] drm/i915/gvt: subsitute kvm_read/write_guest
+ with vfio_dma_rw
+Message-ID: <20200120130157.0ee7042d@w520.home>
+In-Reply-To: <20200119100637.GD1759@joy-OptiPlex-7040>
+References: <20200115034132.2753-1-yan.y.zhao@intel.com>
+ <20200115035455.12417-1-yan.y.zhao@intel.com>
+ <20200115130651.29d7e9e0@w520.home>
+ <20200116054941.GB1759@joy-OptiPlex-7040>
+ <20200116083729.40983f38@w520.home>
+ <20200119100637.GD1759@joy-OptiPlex-7040>
 MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.101.4/25701/Mon Jan 20 12:41:43 2020)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,59 +64,174 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: zhiyuan.lv@intel.com, intel-gvt-dev@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- hang.yuan@intel.com
-Content-Type: multipart/mixed; boundary="===============0038719302=="
+Cc: "Tian, Kevin" <kevin.tian@intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Sun, 19 Jan 2020 05:06:37 -0500
+Yan Zhao <yan.y.zhao@intel.com> wrote:
 
---===============0038719302==
-Content-Type: multipart/alternative; boundary="=-2itBrIMBf6UwAINAAGa4"
-
-
---=-2itBrIMBf6UwAINAAGa4
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-
-On Mon, 2020-01-20 at 14:33 +0800, Zhenyu Wang wrote:
-> hmm, I failed to apply this one, could you refresh against gvt-staging branch
+> On Thu, Jan 16, 2020 at 11:37:29PM +0800, Alex Williamson wrote:
+> > On Thu, 16 Jan 2020 00:49:41 -0500
+> > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> >   
+> > > On Thu, Jan 16, 2020 at 04:06:51AM +0800, Alex Williamson wrote:  
+> > > > On Tue, 14 Jan 2020 22:54:55 -0500
+> > > > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> > > >     
+> > > > > As a device model, it is better to read/write guest memory using vfio
+> > > > > interface, so that vfio is able to maintain dirty info of device IOVAs.
+> > > > > 
+> > > > > Compared to kvm interfaces kvm_read/write_guest(), vfio_dma_rw() has ~600
+> > > > > cycles more overhead on average.
+> > > > > 
+> > > > > -------------------------------------
+> > > > > |    interface     | avg cpu cycles |
+> > > > > |-----------------------------------|
+> > > > > | kvm_write_guest  |     1554       |
+> > > > > | ----------------------------------|
+> > > > > | kvm_read_guest   |     707        |
+> > > > > |-----------------------------------|
+> > > > > | vfio_dma_rw(w)   |     2274       |
+> > > > > |-----------------------------------|
+> > > > > | vfio_dma_rw(r)   |     1378       |
+> > > > > -------------------------------------    
+> > > > 
+> > > > In v1 you had:
+> > > > 
+> > > > -------------------------------------
+> > > > |    interface     | avg cpu cycles |
+> > > > |-----------------------------------|
+> > > > | kvm_write_guest  |     1546       |
+> > > > | ----------------------------------|
+> > > > | kvm_read_guest   |     686        |
+> > > > |-----------------------------------|
+> > > > | vfio_iova_rw(w)  |     2233       |
+> > > > |-----------------------------------|
+> > > > | vfio_iova_rw(r)  |     1262       |
+> > > > -------------------------------------
+> > > > 
+> > > > So the kvm numbers remained within +0.5-3% while the vfio numbers are
+> > > > now +1.8-9.2%.  I would have expected the algorithm change to at least
+> > > > not be worse for small accesses and be better for accesses crossing
+> > > > page boundaries.  Do you know what happened?
+> > > >    
+> > > I only tested the 4 interfaces in GVT's environment, where most of the
+> > > guest memory accesses are less than one page.
+> > > And the different fluctuations should be caused by the locks.
+> > > vfio_dma_rw contends locks with other vfio accesses which are assumed to
+> > > be abundant in the case of GVT.  
+> > 
+> > Hmm, so maybe it's time to convert vfio_iommu.lock from a mutex to a
+> > rwsem?  Thanks,
+> >   
 > 
-> on https://github.com/intel/gvt-linux?
+> hi Alex
+> I tested your rwsem patches at (https://lkml.org/lkml/2020/1/16/1869).
+> They works without any runtime error at my side. :) 
+> However, I found out that the previous fluctuation may be because I didn't
+> take read/write counts in to account.
+> For example. though the two tests have different avg read/write cycles,
+> their average cycles are almost the same.
+>  ______________________________________________________________________
+> |        | avg read |            | avg write |            |            |
+> |        | cycles   | read cnt   | cycles    | write cnt  | avg cycles |
+> |----------------------------------------------------------------------|
+> | test 1 |   1339   | 29,587,120 |  2258     | 17,098,364 |    1676    |
+> | test 2 |   1340   | 28,454,262 |  2238     | 16,501,788 |    1670    |
+>  ----------------------------------------------------------------------
+> 
+> After measuring the exact read/write cnt and cycles of a specific workload,
+> I get below findings:
+> 
+> (1) with single VM running glmark2 inside.
+> glmark2: 40M+ read+write cnt, among which 63% is read.
+> among reads, 48% is of PAGE_SIZE, the rest is less than a page.
+> among writes, 100% is less than a page.
+> 
+>  __________________________________________________
+> |       cycles         | read | write |  avg | inc |
+> |--------------------------------------------------|
+> | kvm_read/write_page  |  694 |  1506 |  993 |  /  |
+> |--------------------------------------------------|
+> |  vfio_dma_rw(mutex)  | 1340 |  2248 | 1673 | 680 |
+> |--------------------------------------------------|
+> | vfio_dma_rw(rwsem r) | 1323 |  2198 | 1645 | 653 |
+>  ---------------------------------------------------
+> 
+> so vfio_dma_rw generally has 650+ more cycles per each read/write.
+> While kvm->srcu is of 160 cycles on average with one vm is running, the
+> cycles spending on locks for vfio_dma_rw spread like this:
+>  ___________________________
+> |        cycles       | avg |
+> |---------------------------|
+> |     iommu->lock     | 117 |
+> |---------------------------|
+> |   vfio.group_lock   | 108 |
+> |---------------------------|
+> | group->unbound_lock | 114 |
+> |---------------------------|
+> |  group->device_lock | 115 |
+> |---------------------------|
+> |     group->mutex    | 113 |
+>  ---------------------------
+> 
+> I measured the cycles for a mutex without any contention is 104 cycles
+> on average (including time for get_cycles() and measured in the same way
+> as other locks). So the contention of a single lock in a single vm
+> environment is light. probably because there's a vgpu lock hold in GVT already.
+> 
+> (2) with two VMs each running glmark2 inside.
+> The contention increases a little.
+> 
+>  ___________________________________________________
+> |       cycles         | read | write |  avg | inc  |
+> |---------------------------------------------------|
+> | kvm_read/write_page  | 1035 |  1832 | 1325 |  /   |
+> |---------------------------------------------------|
+> |  vfio_dma_rw(mutex)  | 2104 |  2886 | 2390 | 1065 |
+> |---------------------------------------------------|
+> | vfio_dma_rw(rwsem r) | 1965 |  2778 | 2260 | 935  |
+>  ---------------------------------------------------
+> 
+> 
+>  -----------------------------------------------
+> |     avg cycles       |   one VM   |  two VMs  |
+> |-----------------------------------------------|
+> |  iommu lock (mutex)  |     117    |   150     |
+> |-----------------------------------|-----------|
+> | iommu lock (rwsem r) |     117    |   156     |
+> |-----------------------------------|-----------|
+> |   kvm->srcu          |     160    |   213     |
+>  -----------------------------------------------
+> 
+> In the kvm case, avg cycles increased 332 cycles, while kvm->srcu only costed
+> 213 cycles. The rest 109 cycles may be spent on atomic operations.
+> But I didn't measure them, as get_cycles() operation itself would influence final
+> cycles by ~20 cycles.
 
-Done. I've sent out the rebased (and re-tested) patch.
+It seems like we need to extend the vfio external user interface so
+that GVT-g can hold the group and container user references across
+multiple calls.  For instance if we had a
+vfio_group_get_external_user_from_dev() (based on
+vfio_group_get_external_user()) then i915 could get an opaque
+vfio_group pointer which it could use to call vfio_group_dma_rw() which
+would leave us with only the iommu rw_sem locking.  i915 would release
+the reference with vfio_group_put_external_user() when the device is
+released.  The same could be done with the pin pages interface to
+streamline that as well.  Thoughts?  Thanks,
 
-Julian
-
---=-2itBrIMBf6UwAINAAGa4
-Content-Type: text/html; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-
-<html dir=3D"ltr"><head></head><body style=3D"text-align: left; direction: =
-ltr; word-wrap: break-word; -webkit-nbsp-mode: space; line-break: after-whi=
-te-space;"><div>On Mon, 2020-01-20 at 14:33 +0800, Zhenyu Wang wrote:</div>=
-<blockquote type=3D"cite" style=3D"margin:0 0 0 .8ex; border-left:2px #729f=
-cf solid;padding-left:1ex">hmm, I failed to apply this one, could you refre=
-sh against gvt-staging branch<br>
-on <a href=3D"https://github.com/intel/gvt-linux">https://github.com/intel/=
-gvt-linux</a>?</blockquote><div><br></div><div>Done. I've sent out the reba=
-sed (and re-tested) patch.</div><div><br></div><div>Julian</div></body></ht=
-ml>
-
---=-2itBrIMBf6UwAINAAGa4--
-
-
---===============0038719302==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Alex
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0038719302==--
-
