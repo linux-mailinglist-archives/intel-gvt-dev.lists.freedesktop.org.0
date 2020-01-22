@@ -1,37 +1,76 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FBE6144C17
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Jan 2020 07:55:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88335145CF8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Jan 2020 21:17:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BC4536F386;
-	Wed, 22 Jan 2020 06:55:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 33DB96F60D;
+	Wed, 22 Jan 2020 20:17:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5B0506F386
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Jan 2020 06:55:31 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2020 22:55:30 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,348,1574150400"; d="scan'208";a="425754471"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 21 Jan 2020 22:55:29 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iu9vE-0002NQ-SX; Wed, 22 Jan 2020 14:55:28 +0800
-Date: Wed, 22 Jan 2020 14:55:16 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD INCOMPLETE
- f8ce0f3ee0189eddfed0306e4eba6bfbc00e1560
-Message-ID: <5e27f1d4.FW8EATA6AcracB1F%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-Greylist: delayed 426 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Jan 2020 20:17:38 UTC
+Received: from esa2.hc3370-68.iphmx.com (esa2.hc3370-68.iphmx.com
+ [216.71.145.153])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CC5FB6F60D;
+ Wed, 22 Jan 2020 20:17:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=citrix.com; s=securemail; t=1579724259;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=MJa4eYt3crjAenr4CmXGe3xMFCLr5PGiS6d0YsXiFss=;
+ b=ebdFQtgt42IHpMLQ1IKWrjFBoL/H/Ls8hN3GBDSQCRm6YmlmmS7VeawZ
+ j/hxkBAQOdeKPpC2TRvdbYXsdvfpQnmCDmdShtfYmIKq+FBpKKg8PTLcl
+ J6VKi1VoPyXRvNpIwKcYiai317SxtgGtcwMX2Zbb2rOWprtelVcuXACx2 U=;
+Authentication-Results: esa2.hc3370-68.iphmx.com;
+ dkim=none (message not signed) header.i=none;
+ spf=None smtp.pra=igor.druzhinin@citrix.com;
+ spf=Pass smtp.mailfrom=igor.druzhinin@citrix.com;
+ spf=None smtp.helo=postmaster@mail.citrix.com
+Received-SPF: None (esa2.hc3370-68.iphmx.com: no sender
+ authenticity information available from domain of
+ igor.druzhinin@citrix.com) identity=pra;
+ client-ip=162.221.158.21; receiver=esa2.hc3370-68.iphmx.com;
+ envelope-from="igor.druzhinin@citrix.com";
+ x-sender="igor.druzhinin@citrix.com";
+ x-conformance=sidf_compatible
+Received-SPF: Pass (esa2.hc3370-68.iphmx.com: domain of
+ igor.druzhinin@citrix.com designates 162.221.158.21 as
+ permitted sender) identity=mailfrom;
+ client-ip=162.221.158.21; receiver=esa2.hc3370-68.iphmx.com;
+ envelope-from="igor.druzhinin@citrix.com";
+ x-sender="igor.druzhinin@citrix.com";
+ x-conformance=sidf_compatible; x-record-type="v=spf1";
+ x-record-text="v=spf1 ip4:209.167.231.154 ip4:178.63.86.133
+ ip4:195.66.111.40/30 ip4:85.115.9.32/28 ip4:199.102.83.4
+ ip4:192.28.146.160 ip4:192.28.146.107 ip4:216.52.6.88
+ ip4:216.52.6.188 ip4:162.221.158.21 ip4:162.221.156.83
+ ip4:168.245.78.127 ~all"
+Received-SPF: None (esa2.hc3370-68.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@mail.citrix.com) identity=helo;
+ client-ip=162.221.158.21; receiver=esa2.hc3370-68.iphmx.com;
+ envelope-from="igor.druzhinin@citrix.com";
+ x-sender="postmaster@mail.citrix.com";
+ x-conformance=sidf_compatible
+IronPort-SDR: TaUqzM78xDduaVYHQYABbgc2RX5soS0fqo+gu6ahOmZnliE9XG165ViAidcFXDPe5C7WJDiskD
+ RtlvoRkTnx74PwdcwhiG7h3JByPXH1KF/czSSrWh+X4n6oc0NcpZk5yyGecXTZ3XwqrJchhpjL
+ H6GVEjxuTq4Bh4jcTWQ4QTFDAMyb/ayPQg0/cPIfpFNNzSwnYI2AD4V15F2yuENc3hZPrsmGhB
+ 7E77TP4yCJYzZBVd61hpTV3nRoF3VNgTC9RfWBgdmAVbp8N7t7OwJ0S8FLNDRqdB91jLvOiW3m
+ zu8=
+X-SBRS: 2.7
+X-MesageID: 11306633
+X-Ironport-Server: esa2.hc3370-68.iphmx.com
+X-Remote-IP: 162.221.158.21
+X-Policy: $RELAYED
+X-IronPort-AV: E=Sophos;i="5.70,350,1574139600"; d="scan'208";a="11306633"
+From: Igor Druzhinin <igor.druzhinin@citrix.com>
+To: <intel-gvt-dev@lists.freedesktop.org>, <intel-gfx@lists.freedesktop.org>, 
+ <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH] drm/i915/gvt: fix high-order allocation failure on late load
+Date: Wed, 22 Jan 2020 20:10:24 +0000
+Message-ID: <1579723824-25711-1-git-send-email-igor.druzhinin@citrix.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -45,133 +84,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: libo.zhu@intel.com, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
+Cc: Igor Druzhinin <igor.druzhinin@citrix.com>, airlied@linux.ie,
+ joonas.lahtinen@linux.intel.com, jani.nikula@linux.intel.com,
+ zhenyuw@linux.intel.com, daniel@ffwll.ch, rodrigo.vivi@intel.com,
+ zhi.a.wang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: f8ce0f3ee0189eddfed0306e4eba6bfbc00e1560  gvt-staging: 2020y-01m-20d-14h-40m-21s CST integration manifest
+If the module happens to be loaded later at runtime there is a chance
+memory is already fragmented enough to fail allocation of firmware
+blob storage and consequently GVT init. Since it doesn't seem to be
+necessary to have the blob contiguous, use vmalloc() instead to avoid
+the issue.
 
-TIMEOUT after 2887m
-
-
-Sorry we cannot finish the testset for your branch within a reasonable time.
-It's our fault -- either some build server is down or some build worker is busy
-doing bisects for _other_ trees. The branch will get more complete coverage and
-possible error reports when our build infrastructure is restored or catches up.
-There will be no more build success notification for this branch head, but you
-can expect reasonably good test coverage after waiting for 1 day.
-
-configs timed out: 15
-
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-
-configs tested: 82
-configs skipped: 0
-
-mips                             allmodconfig
-mips                           32r2_defconfig
-mips                             allyesconfig
-mips                      malta_kvm_defconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-parisc                            allnoconfig
-parisc                            allyesonfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-arc                              allyesconfig
-powerpc                             defconfig
-microblaze                    nommu_defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-microblaze                      mmu_defconfig
-arc                                 defconfig
-powerpc                           allnoconfig
-openrisc             randconfig-a001-20200120
-xtensa               randconfig-a001-20200120
-csky                 randconfig-a001-20200120
-sh                   randconfig-a001-20200120
-s390                 randconfig-a001-20200120
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                             allyesconfig
-i386                             alldefconfig
-s390                              allnoconfig
-s390                             alldefconfig
-s390                          debug_defconfig
-s390                             allmodconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-s390                             allyesconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-
+Signed-off-by: Igor Druzhinin <igor.druzhinin@citrix.com>
 ---
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+ drivers/gpu/drm/i915/gvt/firmware.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/gvt/firmware.c
+index 049775e..b0c1fda 100644
+--- a/drivers/gpu/drm/i915/gvt/firmware.c
++++ b/drivers/gpu/drm/i915/gvt/firmware.c
+@@ -146,7 +146,7 @@ void intel_gvt_free_firmware(struct intel_gvt *gvt)
+ 		clean_firmware_sysfs(gvt);
+ 
+ 	kfree(gvt->firmware.cfg_space);
+-	kfree(gvt->firmware.mmio);
++	vfree(gvt->firmware.mmio);
+ }
+ 
+ static int verify_firmware(struct intel_gvt *gvt,
+@@ -229,7 +229,7 @@ int intel_gvt_load_firmware(struct intel_gvt *gvt)
+ 
+ 	firmware->cfg_space = mem;
+ 
+-	mem = kmalloc(info->mmio_size, GFP_KERNEL);
++	mem = vmalloc(info->mmio_size);
+ 	if (!mem) {
+ 		kfree(path);
+ 		kfree(firmware->cfg_space);
+-- 
+2.7.4
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
