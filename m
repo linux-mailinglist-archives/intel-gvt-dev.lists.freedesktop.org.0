@@ -2,37 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12FF014614D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Jan 2020 06:19:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6EE3146564
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Jan 2020 11:11:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E5FBF6F9A9;
-	Thu, 23 Jan 2020 05:19:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5E1DE6F9D2;
+	Thu, 23 Jan 2020 10:11:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C46466F9A7;
- Thu, 23 Jan 2020 05:19:27 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0D01F6F9D2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Jan 2020 10:11:43 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2020 21:19:27 -0800
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 Jan 2020 02:11:42 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,352,1574150400"; 
- d="asc'?scan'208";a="216152482"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.14])
- by orsmga007.jf.intel.com with ESMTP; 22 Jan 2020 21:19:24 -0800
-Date: Thu, 23 Jan 2020 13:07:27 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Igor Druzhinin <igor.druzhinin@citrix.com>
-Subject: Re: [PATCH] drm/i915/gvt: fix high-order allocation failure on late
- load
-Message-ID: <20200123050727.GA25905@zhen-hp.sh.intel.com>
-References: <1579723824-25711-1-git-send-email-igor.druzhinin@citrix.com>
+X-IronPort-AV: E=Sophos;i="5.70,353,1574150400"; d="scan'208";a="400293430"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by orsmga005.jf.intel.com with ESMTP; 23 Jan 2020 02:11:40 -0800
+Date: Thu, 23 Jan 2020 05:02:27 -0500
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH v2 2/2] drm/i915/gvt: subsitute kvm_read/write_guest with
+ vfio_dma_rw
+Message-ID: <20200123100227.GJ1759@joy-OptiPlex-7040>
+References: <20200115035455.12417-1-yan.y.zhao@intel.com>
+ <20200115130651.29d7e9e0@w520.home>
+ <20200116054941.GB1759@joy-OptiPlex-7040>
+ <20200116083729.40983f38@w520.home>
+ <20200119100637.GD1759@joy-OptiPlex-7040>
+ <20200120130157.0ee7042d@w520.home>
+ <20200121081207.GE1759@joy-OptiPlex-7040>
+ <20200121095116.05eeae14@w520.home>
+ <20200121221038.GH1759@joy-OptiPlex-7040>
+ <20200122030758.GI1759@joy-OptiPlex-7040>
 MIME-Version: 1.0
-In-Reply-To: <1579723824-25711-1-git-send-email-igor.druzhinin@citrix.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Disposition: inline
+In-Reply-To: <20200122030758.GI1759@joy-OptiPlex-7040>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,97 +56,275 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: jani.nikula@linux.intel.com, airlied@linux.ie,
- intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
- linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- dri-devel@lists.freedesktop.org, daniel@ffwll.ch, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
-Content-Type: multipart/mixed; boundary="===============2022122015=="
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: "Tian, Kevin" <kevin.tian@intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============2022122015==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="vkogqOf2sHV7VnPd"
-Content-Disposition: inline
-
-
---vkogqOf2sHV7VnPd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2020.01.22 20:10:24 +0000, Igor Druzhinin wrote:
-> If the module happens to be loaded later at runtime there is a chance
-> memory is already fragmented enough to fail allocation of firmware
-> blob storage and consequently GVT init. Since it doesn't seem to be
-> necessary to have the blob contiguous, use vmalloc() instead to avoid
-> the issue.
->=20
-> Signed-off-by: Igor Druzhinin <igor.druzhinin@citrix.com>
-> ---
->  drivers/gpu/drm/i915/gvt/firmware.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/g=
-vt/firmware.c
-> index 049775e..b0c1fda 100644
-> --- a/drivers/gpu/drm/i915/gvt/firmware.c
-> +++ b/drivers/gpu/drm/i915/gvt/firmware.c
-> @@ -146,7 +146,7 @@ void intel_gvt_free_firmware(struct intel_gvt *gvt)
->  		clean_firmware_sysfs(gvt);
-> =20
->  	kfree(gvt->firmware.cfg_space);
-> -	kfree(gvt->firmware.mmio);
-> +	vfree(gvt->firmware.mmio);
->  }
-> =20
->  static int verify_firmware(struct intel_gvt *gvt,
-> @@ -229,7 +229,7 @@ int intel_gvt_load_firmware(struct intel_gvt *gvt)
-> =20
->  	firmware->cfg_space =3D mem;
-> =20
-> -	mem =3D kmalloc(info->mmio_size, GFP_KERNEL);
-> +	mem =3D vmalloc(info->mmio_size);
->  	if (!mem) {
->  		kfree(path);
->  		kfree(firmware->cfg_space);
-> --=20
-> 2.7.4
+On Wed, Jan 22, 2020 at 11:07:58AM +0800, Yan Zhao wrote:
+> On Wed, Jan 22, 2020 at 06:10:38AM +0800, Yan Zhao wrote:
+> > On Wed, Jan 22, 2020 at 12:51:16AM +0800, Alex Williamson wrote:
+> > > On Tue, 21 Jan 2020 03:12:07 -0500
+> > > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> > > 
+> > > > On Tue, Jan 21, 2020 at 04:01:57AM +0800, Alex Williamson wrote:
+> > > > > On Sun, 19 Jan 2020 05:06:37 -0500
+> > > > > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> > > > >   
+> > > > > > On Thu, Jan 16, 2020 at 11:37:29PM +0800, Alex Williamson wrote:  
+> > > > > > > On Thu, 16 Jan 2020 00:49:41 -0500
+> > > > > > > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> > > > > > >     
+> > > > > > > > On Thu, Jan 16, 2020 at 04:06:51AM +0800, Alex Williamson wrote:    
+> > > > > > > > > On Tue, 14 Jan 2020 22:54:55 -0500
+> > > > > > > > > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> > > > > > > > >       
+> > > > > > > > > > As a device model, it is better to read/write guest memory using vfio
+> > > > > > > > > > interface, so that vfio is able to maintain dirty info of device IOVAs.
+> > > > > > > > > > 
+> > > > > > > > > > Compared to kvm interfaces kvm_read/write_guest(), vfio_dma_rw() has ~600
+> > > > > > > > > > cycles more overhead on average.
+> > > > > > > > > > 
+> > > > > > > > > > -------------------------------------
+> > > > > > > > > > |    interface     | avg cpu cycles |
+> > > > > > > > > > |-----------------------------------|
+> > > > > > > > > > | kvm_write_guest  |     1554       |
+> > > > > > > > > > | ----------------------------------|
+> > > > > > > > > > | kvm_read_guest   |     707        |
+> > > > > > > > > > |-----------------------------------|
+> > > > > > > > > > | vfio_dma_rw(w)   |     2274       |
+> > > > > > > > > > |-----------------------------------|
+> > > > > > > > > > | vfio_dma_rw(r)   |     1378       |
+> > > > > > > > > > -------------------------------------      
+> > > > > > > > > 
+> > > > > > > > > In v1 you had:
+> > > > > > > > > 
+> > > > > > > > > -------------------------------------
+> > > > > > > > > |    interface     | avg cpu cycles |
+> > > > > > > > > |-----------------------------------|
+> > > > > > > > > | kvm_write_guest  |     1546       |
+> > > > > > > > > | ----------------------------------|
+> > > > > > > > > | kvm_read_guest   |     686        |
+> > > > > > > > > |-----------------------------------|
+> > > > > > > > > | vfio_iova_rw(w)  |     2233       |
+> > > > > > > > > |-----------------------------------|
+> > > > > > > > > | vfio_iova_rw(r)  |     1262       |
+> > > > > > > > > -------------------------------------
+> > > > > > > > > 
+> > > > > > > > > So the kvm numbers remained within +0.5-3% while the vfio numbers are
+> > > > > > > > > now +1.8-9.2%.  I would have expected the algorithm change to at least
+> > > > > > > > > not be worse for small accesses and be better for accesses crossing
+> > > > > > > > > page boundaries.  Do you know what happened?
+> > > > > > > > >      
+> > > > > > > > I only tested the 4 interfaces in GVT's environment, where most of the
+> > > > > > > > guest memory accesses are less than one page.
+> > > > > > > > And the different fluctuations should be caused by the locks.
+> > > > > > > > vfio_dma_rw contends locks with other vfio accesses which are assumed to
+> > > > > > > > be abundant in the case of GVT.    
+> > > > > > > 
+> > > > > > > Hmm, so maybe it's time to convert vfio_iommu.lock from a mutex to a
+> > > > > > > rwsem?  Thanks,
+> > > > > > >     
+> > > > > > 
+> > > > > > hi Alex
+> > > > > > I tested your rwsem patches at (https://lkml.org/lkml/2020/1/16/1869).
+> > > > > > They works without any runtime error at my side. :) 
+> > > > > > However, I found out that the previous fluctuation may be because I didn't
+> > > > > > take read/write counts in to account.
+> > > > > > For example. though the two tests have different avg read/write cycles,
+> > > > > > their average cycles are almost the same.
+> > > > > >  ______________________________________________________________________
+> > > > > > |        | avg read |            | avg write |            |            |
+> > > > > > |        | cycles   | read cnt   | cycles    | write cnt  | avg cycles |
+> > > > > > |----------------------------------------------------------------------|
+> > > > > > | test 1 |   1339   | 29,587,120 |  2258     | 17,098,364 |    1676    |
+> > > > > > | test 2 |   1340   | 28,454,262 |  2238     | 16,501,788 |    1670    |
+> > > > > >  ----------------------------------------------------------------------
+> > > > > > 
+> > > > > > After measuring the exact read/write cnt and cycles of a specific workload,
+> > > > > > I get below findings:
+> > > > > > 
+> > > > > > (1) with single VM running glmark2 inside.
+> > > > > > glmark2: 40M+ read+write cnt, among which 63% is read.
+> > > > > > among reads, 48% is of PAGE_SIZE, the rest is less than a page.
+> > > > > > among writes, 100% is less than a page.
+> > > > > > 
+> > > > > >  __________________________________________________
+> > > > > > |       cycles         | read | write |  avg | inc |
+> > > > > > |--------------------------------------------------|
+> > > > > > | kvm_read/write_page  |  694 |  1506 |  993 |  /  |
+> > > > > > |--------------------------------------------------|
+> > > > > > |  vfio_dma_rw(mutex)  | 1340 |  2248 | 1673 | 680 |
+> > > > > > |--------------------------------------------------|
+> > > > > > | vfio_dma_rw(rwsem r) | 1323 |  2198 | 1645 | 653 |
+> > > > > >  ---------------------------------------------------
+> > > > > > 
+> > > > > > so vfio_dma_rw generally has 650+ more cycles per each read/write.
+> > > > > > While kvm->srcu is of 160 cycles on average with one vm is running, the
+> > > > > > cycles spending on locks for vfio_dma_rw spread like this:
+> > > > > >  ___________________________
+> > > > > > |        cycles       | avg |
+> > > > > > |---------------------------|
+> > > > > > |     iommu->lock     | 117 |
+> > > > > > |---------------------------|
+> > > > > > |   vfio.group_lock   | 108 |
+> > > > > > |---------------------------|
+> > > > > > | group->unbound_lock | 114 |
+> > > > > > |---------------------------|
+> > > > > > |  group->device_lock | 115 |
+> > > > > > |---------------------------|
+> > > > > > |     group->mutex    | 113 |
+> > > > > >  ---------------------------
+> > > > > > 
+> > > > > > I measured the cycles for a mutex without any contention is 104 cycles
+> > > > > > on average (including time for get_cycles() and measured in the same way
+> > > > > > as other locks). So the contention of a single lock in a single vm
+> > > > > > environment is light. probably because there's a vgpu lock hold in GVT already.
+> > > > > > 
+> > > > > > (2) with two VMs each running glmark2 inside.
+> > > > > > The contention increases a little.
+> > > > > > 
+> > > > > >  ___________________________________________________
+> > > > > > |       cycles         | read | write |  avg | inc  |
+> > > > > > |---------------------------------------------------|
+> > > > > > | kvm_read/write_page  | 1035 |  1832 | 1325 |  /   |
+> > > > > > |---------------------------------------------------|
+> > > > > > |  vfio_dma_rw(mutex)  | 2104 |  2886 | 2390 | 1065 |
+> > > > > > |---------------------------------------------------|
+> > > > > > | vfio_dma_rw(rwsem r) | 1965 |  2778 | 2260 | 935  |
+> > > > > >  ---------------------------------------------------
+> > > > > > 
+> > > > > > 
+> > > > > >  -----------------------------------------------
+> > > > > > |     avg cycles       |   one VM   |  two VMs  |
+> > > > > > |-----------------------------------------------|
+> > > > > > |  iommu lock (mutex)  |     117    |   150     |
+> > > > > > |-----------------------------------|-----------|
+> > > > > > | iommu lock (rwsem r) |     117    |   156     |
+> > > > > > |-----------------------------------|-----------|
+> > > > > > |   kvm->srcu          |     160    |   213     |
+> > > > > >  -----------------------------------------------
+> > > > > > 
+> > > > > > In the kvm case, avg cycles increased 332 cycles, while kvm->srcu only costed
+> > > > > > 213 cycles. The rest 109 cycles may be spent on atomic operations.
+> > > > > > But I didn't measure them, as get_cycles() operation itself would influence final
+> > > > > > cycles by ~20 cycles.  
+> > > > > 
+> > > > > It seems like we need to extend the vfio external user interface so
+> > > > > that GVT-g can hold the group and container user references across
+> > > > > multiple calls.  For instance if we had a
+> > > > > vfio_group_get_external_user_from_dev() (based on
+> > > > > vfio_group_get_external_user()) then i915 could get an opaque
+> > > > > vfio_group pointer which it could use to call vfio_group_dma_rw() which
+> > > > > would leave us with only the iommu rw_sem locking.  i915 would release
+> > > > > the reference with vfio_group_put_external_user() when the device is
+> > > > > released.  The same could be done with the pin pages interface to
+> > > > > streamline that as well.  Thoughts?  Thanks,
+> > > > >  
+> > > > hi Alex,
+> > > > it works!
+> > > 
+> > > Hurrah!
+> > > 
+> > > > now the average vfio_dma_rw cycles can reduced to 1198. 
+> > > > one thing I want to propose is that, in sight of dma->task is always user
+> > > > space process, instead of calling get_task_mm(dma->task), can we just use
+> > > > "mmget_not_zero(dma->task->mm)"? in this way, the avg cycles can
+> > > > further reduce to 1051.
+> > > 
+> > > I'm not an expert there.  As noted in the type1 code we hold a
+> > > reference to the task because it's not advised to hold a long term
+> > > reference to the mm, so do we know we can look at task->mm without
+> > > acquiring task_lock()?  It's possible this is safe, but it's not
+> > > abundantly obvious to me.  Please research further and provide
+> > > justification if you think it's correct.  Thanks,
+> > > 
+> > in get_task_mm, 
+> > struct mm_struct *get_task_mm(struct task_struct *task)
+> > {
+> >         struct mm_struct *mm;
+> > 
+> >         task_lock(task);
+> >         mm = task->mm;
+> >         if (mm) {
+> >                 if (task->flags & PF_KTHREAD)
+> >                         mm = NULL;
+> >                 else
+> >                         mmget(mm);
+> >         }
+> >         task_unlock(task);
+> >         return mm;
+> > }
+> > task lock is hold only during the call, so the purpose of it is to
+> > ensure task->flags and task->mm is not changed or gone before mmget(mm)
+> > or function return.
+> > so, if we know for sure the task always has no flag PF_THREAD,
+> > then we only need to ensure mm is not gone before mmget(mm) is done.
+> > 
+> > static inline void mmget(struct mm_struct *mm)
+> > {
+> >         atomic_inc(&mm->mm_users);
+> > }
+> > 
+> > static inline bool mmget_not_zero(struct mm_struct *mm)
+> > {
+> >         return atomic_inc_not_zero(&mm->mm_users);
+> > }
+> > 
+> > the atomic_inc_not_zero() in  mmget_not_zero can ensure mm is not gone
+> > before its ref count inc.
+> > 
+> > So, I think the only thing we need to make sure is dma->task is not a
+> > kernel thread.
+> > Do you think I can make this assumption?
+> > 
+> hi Alex
+> Maybe I can still test PF_KTHREAD without holding task_lock
+> (task->alloc_lock), as it is only used to protect
+> "->fs, ->files, ->mm, ->group_info, ->comm, keyring
+> subscriptions and synchronises with wait4().  Also used in procfs.  Also
+> pins the final release of task.io_context.  Also protects ->cpuset and 
+> ->cgroup.subsys[]. And ->vfork_done."
+> 
+> I checked elsewhere in kernel, e.g.
+> try_to_wake_up
+> 	|->select_task_rq
+> 		|->is_per_cpu_kthread
+> 			|->if (!(p->flags & PF_KTHREAD))
+> task->alloc_lock is not hold there.
+> 
+> So, I would replace get_task_mm(dma->task) into two steps:
+> (1) check dma->task->flags & PF_KTHREAD, and (2) mmget_not_zero(mm).
+> 
+> I'll do more tests and send out new patches after Chinese new year.
+> 
+> Thanks
+> Yan
 >
+hi Alex
+after a second thought, I find out that the task->alloc_lock cannot be
+dropped, as there are chances that dma->task->mm is set to null between
+checking "dma->task->mm != NULL" and "mmget_not_zero(dma->task->mm)".
 
-Looks fine to me. Thanks!
+The chances of this condition can be increased by adding a msleep in-between
+the two lines of code to mimic possible task schedule. Then it was proved that
+dma->task->mm could be set to NULL in exit_mm() by killing QEMU.
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+So I have to keep the call to get_task_mm().  :)
 
---=20
-Open Source Technology Center, Intel ltd.
+Thanks
+Yan
 
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---vkogqOf2sHV7VnPd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXikqDwAKCRCxBBozTXgY
-J+4uAJ96YbLIY0cQA9wjsw2Zc/jXBf4gXwCeMpf5uwvjnowmgSrYjEle8958Ezw=
-=DlrF
------END PGP SIGNATURE-----
-
---vkogqOf2sHV7VnPd--
-
---===============2022122015==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============2022122015==--
