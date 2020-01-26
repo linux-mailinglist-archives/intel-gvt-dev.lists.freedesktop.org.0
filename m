@@ -1,54 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1652814C560
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jan 2020 05:52:21 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B24414E7C0
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 Jan 2020 04:59:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 954876E1B7;
-	Wed, 29 Jan 2020 04:52:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 22D976E175;
+	Fri, 31 Jan 2020 03:59:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from server01.colegionovotempo.com.br (colegionovotempo.com.br
- [192.163.221.155])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8CC2789B99;
- Wed, 29 Jan 2020 04:52:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=colegionovotempo.com.br; s=default; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Date:Subject:From:Reply-To:Sender:Message-ID:To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=RhyPVlEpFhpPkSPfIv20/+zhUSCEiVG12w/PIkHLafg=; b=DKWWs130SqhO4N3yZpaxwE2P8
- fQqrSlAZJoWjDLkrqXOzcI1cWaZVEL6KH6Vt5m8LMGXPWaVM+HQvmyVU1b+UDclPiwgNErjPQxGLc
- K2eMEsSP1jhBGjQdvRKbDHO8HsaW2Y3ywEdv8iFMCkBWEvAjYRHtlMyQvp1F5+DNGB7yYaKRAGZFr
- o3nJKpaJZTbgWJZ1vOUz5Ap2E8TqvHjKCBUNjcBIdvEfGKzpDiLdFWFw6hVJRJM4yYHOUVg7oRWHF
- FBXr91L6oEwK6s42A/dt3/pyZ8fkpOGCBHmHmIoNanpZvalkErrjmXxv2ol5cU2IdjVtXL5aBTg7D
- Reva9SKzw==;
-Received: from [167.99.174.170] (port=62941 helo=User)
- by server01.colegionovotempo.com.br with esmtpa (Exim 4.92)
- (envelope-from <donsonglan@gmail.com>)
- id 1iquaP-0006MX-C6; Mon, 13 Jan 2020 01:56:33 -0600
-From: "Ms. Mathan"<donsonglan@gmail.com>
-Subject: How Are You
-Date: Mon, 13 Jan 2020 07:56:33 -0800
+Received: from capita.co.jp
+ (ec2-3-113-140-42.ap-northeast-1.compute.amazonaws.com [3.113.140.42])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 91F606E1E5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 31 Jan 2020 03:59:28 +0000 (UTC)
+Received: from hotmail.com (unknown [2.30.45.241])
+ by capita.co.jp (Postfix) with ESMTPSA id D90D415CE7D7F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 26 Jan 2020 23:21:24 +0900 (JST)
+From: ":Dr Raymond ChienKuoFung.Chairman of Hang Seng Bank Ltd,
+ Hong Kong"  <auntdarsteers01@hotmail.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: REPLY AS SOON AS POSSIBLE   
+Date: 26 Jan 2020 14:21:23 +0000
+Message-ID: <20200126142123.C0ED85D8350BD590@hotmail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server01.colegionovotempo.com.br
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - gmail.com
-X-Get-Message-Sender-Via: server01.colegionovotempo.com.br: authenticated_id:
- praticaspedagogicas@colegionovotempo.com.br
-X-Authenticated-Sender: server01.colegionovotempo.com.br: praticaspedagogicas@colegionovotempo.com.br
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,45 +37,25 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: unb2015@hotmail.com
-Content-Type: multipart/mixed; boundary="===============1124770432=="
+Reply-To: draymndch@yahoo.co.jp
+Content-Type: multipart/mixed; boundary="===============0777347732=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200129045219.954876E1B7@gabe.freedesktop.org>
 
---===============1124770432==
+--===============0777347732==
 Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-&nbsp;</DIV>
-<DIV>
-Hi, How are you</DIV>
-<DIV>
- </DIV>
-<DIV>
-I hope you are doing well.</DIV>
-<DIV>
- </DIV>
-<DIV>
-I'm Ms. Mathan, I viewed your profile during my search for a partnership. I have a very interesting discussion which i believe will be a great interest and achievement to you. I will avail you more information about myself and partnership details to you if you are interested if not that’s okay.</DIV>
-<DIV>
- </DIV>
-<DIV>
-For partner's Intentions,</DIV>
-<DIV>
-Ms. Mathan</DIV>
-<DIV>
-&nbsp;</DIV>
-</FONT>
-</BODY></HTML>
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
+<body>I am Vice Chairman of Hang Seng Bank, I have Important Matter to Disc=
+uss with you concerning my late client. Died without a NEXT OF KIN. Send me=
+ your private email for full details information. email me at<BR>E-Mail: <A=
+ href=3D"mailto:dr29876dr@gmail.com">dr29876dr@gmail.com</A><BR>Regards <BR=
+>Mr.Fung</BODY></HTML>
 
---===============1124770432==
+--===============0777347732==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -110,4 +66,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1124770432==--
+--===============0777347732==--
