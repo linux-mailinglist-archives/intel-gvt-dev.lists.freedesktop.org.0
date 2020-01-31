@@ -1,30 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B24414E7C0
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 Jan 2020 04:59:31 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A89A14E877
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 Jan 2020 06:32:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 22D976E175;
-	Fri, 31 Jan 2020 03:59:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6191F6E3FB;
+	Fri, 31 Jan 2020 05:32:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from capita.co.jp
- (ec2-3-113-140-42.ap-northeast-1.compute.amazonaws.com [3.113.140.42])
- by gabe.freedesktop.org (Postfix) with ESMTP id 91F606E1E5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 31 Jan 2020 03:59:28 +0000 (UTC)
-Received: from hotmail.com (unknown [2.30.45.241])
- by capita.co.jp (Postfix) with ESMTPSA id D90D415CE7D7F
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 26 Jan 2020 23:21:24 +0900 (JST)
-From: ":Dr Raymond ChienKuoFung.Chairman of Hang Seng Bank Ltd,
- Hong Kong"  <auntdarsteers01@hotmail.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: REPLY AS SOON AS POSSIBLE   
-Date: 26 Jan 2020 14:21:23 +0000
-Message-ID: <20200126142123.C0ED85D8350BD590@hotmail.com>
+X-Greylist: delayed 960 seconds by postgrey-1.36 at gabe;
+ Fri, 31 Jan 2020 05:32:37 UTC
+Received: from ls.graniteschools.org (hr.graniteschools.org [205.124.110.175])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D5DE36E3FB;
+ Fri, 31 Jan 2020 05:32:37 +0000 (UTC)
+Received: from [45.143.222.206] ([45.143.222.206]) by ls.graniteschools.org
+ with Microsoft SMTPSVC(7.0.6002.18222); 
+ Thu, 30 Jan 2020 22:16:28 -0700
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: dear beneficiary
+To: Recipients <perryedwards@yahoo.com>
+From: perryedwards@yahoo.com
+Date: Fri, 31 Jan 2020 06:16:18 +0100
+Message-ID: <ISWEB02Yqwpjr2V94GB0000e890@ls.graniteschools.org>
+X-OriginalArrivalTime: 31 Jan 2020 05:16:28.0263 (UTC)
+ FILETIME=[974C7F70:01D5D7F5]
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,33 +38,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: draymndch@yahoo.co.jp
-Content-Type: multipart/mixed; boundary="===============0777347732=="
+Reply-To: perryedwards0@yahoo.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0777347732==
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Dear Beneficiary, 
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
-<body>I am Vice Chairman of Hang Seng Bank, I have Important Matter to Disc=
-uss with you concerning my late client. Died without a NEXT OF KIN. Send me=
- your private email for full details information. email me at<BR>E-Mail: <A=
- href=3D"mailto:dr29876dr@gmail.com">dr29876dr@gmail.com</A><BR>Regards <BR=
->Mr.Fung</BODY></HTML>
+THIS IS FOR YOUR ATTENTION. 
 
---===============0777347732==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+I wish to notify you that you are the  beneficiary to the total sum of $10,600,000.00 Million (Ten Million Six Hundred Thousand United States Dollars). This is the sum deposited by my late client with the bank months before his eventual and unexpected dismise. 
 
+I am contacting you because you bear the surname identity and I can therefore present you as the beneficiary to the inheritance. I have no iota of doubt that you could receive these funds as you are qualified by your name identity. All the legal papers will be processed in your acceptance.
+
+In your acceptance of this deal, we request that you kindly forward to us your letter of acceptance; your current telephone and fax numbers and a forwarding address to enable us file necessary documents at our high court probate division for the release of this sum of money. 
+
+
+
+Yours Faithfully, 
+
+Mr. Perry Edwards.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0777347732==--
