@@ -2,29 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1112315A235
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Feb 2020 08:39:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C469915A9FF
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Feb 2020 14:23:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BC7516E8F3;
-	Wed, 12 Feb 2020 07:38:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 777166EAA6;
+	Wed, 12 Feb 2020 13:23:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 427 seconds by postgrey-1.36 at gabe;
- Wed, 12 Feb 2020 07:38:58 UTC
-Received: from mail.infoneo.jp (www12302ue.sakura.ne.jp [49.212.151.76])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0A79B6E8F3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Feb 2020 07:38:57 +0000 (UTC)
-Received: from [192.168.1.15] (modemcable062.130-37-24.static.videotron.ca
- [24.37.130.62])
- by mail.infoneo.jp (Postfix) with ESMTPA id BB83C3C0353
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Feb 2020 13:54:03 +0900 (JST)
+Received: from server01.colegionovotempo.com.br (colegionovotempo.com.br
+ [192.163.221.155])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D82FD6EAA6;
+ Wed, 12 Feb 2020 13:23:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=colegionovotempo.com.br; s=default; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:Date:Subject:From:Reply-To:Sender:Message-ID:To:Cc:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=Z8iNZKlHEy+ejH1LLTAtL6b4RUlsaVwgT3tsvMUp/8w=; b=S5EjkOfCwHDYZLBYwu/6E9Pel
+ raYIkYefwkPe9znjQaPtPvUxcUhUs9pg8IDYhIrTmmvndpjjl/QY0aphRHs9e9HdaHcFpOPRJikf2
+ iWqtlOH1VbfXQgpES/wOv/8lEYDn0u7HtQeaVLPGvZ3Sc4DVq4mPf3D7nPcm9e1+Ka5n1XAmBvDg8
+ 5XN/8qC3c/PozOruOScqtrdZTWqU3apsulYWdiXMVCHKQPdFOFrYaINvWiRVfEku7fvcw4d6Pk8xv
+ vIc+h+i8RirmTjTdiwnetnKTXfxChtxV7PAWdmCwQLQ5QDkS1sqxCj4b7CRm2Jo7GiRnABrfdiFWv
+ 1qW31ggjw==;
+Received: from [167.172.202.8] (port=50563 helo=User)
+ by server01.colegionovotempo.com.br with esmtpa (Exim 4.92)
+ (envelope-from <cathrynwilli@gmail.com>)
+ id 1ixsV3-0004gd-Iw; Sat, 01 Feb 2020 07:07:50 -0600
+From: "Dr. H. Alka"<cathrynwilli@gmail.com>
+Subject: Notice For Payment
+Date: Sat, 1 Feb 2020 13:07:49 -0800
 MIME-Version: 1.0
-Subject: Upgrade Your Mail Quota intel-gvt-dev@lists.freedesktop.org 
-To: intel-gvt-dev@lists.freedesktop.org
-From: "Email team" <rdap@ripe.net>
-Date: Wed, 12 Feb 2020 02:31:53 -0500
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server01.colegionovotempo.com.br
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - gmail.com
+X-Get-Message-Sender-Via: server01.colegionovotempo.com.br: authenticated_id:
+ praticaspedagogicas@colegionovotempo.com.br
+X-Authenticated-Sender: server01.colegionovotempo.com.br: praticaspedagogicas@colegionovotempo.com.br
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,102 +61,75 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0359343719=="
+Reply-To: unbint@hotmail.com
+Content-Type: multipart/mixed; boundary="===============1637557142=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200212073858.BC7516E8F3@gabe.freedesktop.org>
+Message-Id: <20200212132345.777166EAA6@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============0359343719==
-Content-Type: multipart/alternative; boundary="===============1629606829=="
+--===============1637557142==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
-You will not see this in a MIME-aware mail reader.
---===============1629606829==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+&nbsp;</DIV>
+<DIV>
+world health organization WHO</DIV>
+<DIV>
+Society Welfare organization</DIV>
+<DIV>
+for social welfare development</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+ </DIV>
+<DIV>
+Commercial Development Soceity Welfare campagn for Health And Safety program for corona virus awareness and safety protection.</DIV>
+<DIV>
+Payment Of Four Million Five Hundred Thousand Us Dollars 4,500,000.00 only, have been approved by the WHO Society Welfare development payable to you</DIV>
+<DIV>
+ </DIV>
+<DIV>
+This payment is a donation from the WHO Society Welfare development. Once you receive the funds, your duty is to apply for admission in University or any academy and study Health And Safety Course (HSC). You shall there for be a chief consultant in your community.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+you will be contacted for Health and safety advice if there is any corona virus patience in the region for a better Health Care System HSC.</DIV>
+<DIV>
+The virus have spread everywhere in the would and it kills very fast. The world Health Organization is doing a research for the cure of the virus but it has not been fully discovered.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+Corona virus is spreading so fast because it is air burn disease that can infect any one through breath of the air and by touching objects. Your duty is to take a 3 or 6 days Health and Safety course HSC in any accredited school to get safety knowledge on projection skilld for you to be advicer to the people in your community when doing their daily activities In market places, shopping mall, train stations, and all public places.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+Reply immediately you read this mail for bank to remit 4,500,000.00 to you</DIV>
+<DIV>
+Yours Faithfully</DIV>
+<DIV>
+Dr. H Alka</DIV>
+<DIV>
+World Health Organization</DIV>
+<DIV>
+doctor of research.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+&nbsp;</DIV>
+</FONT>
+</BODY></HTML>
 
-
-
- =
-
- 	   intel-gvt-dev@lists.freedesktop.org, =
-
-
- Your mailbox quota is full
- This may cause your mailbox faulty or you may not be able to receive more =
-messages on your e-mail
-
- To continue using your mailbox, you need to immediately upgrade your mailb=
-ox quota. =
-
-
- =
-
-    Upgrade mailbox quota here   =
-
- =
-
-
- Once the upgrade is complete, your mailbox will work effectively. =
-
-
- =A92020 Email security team. 	=20
---===============1629606829==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Diso-8859-1"/></head><br><br>
-
-<table width=3D"" align=3D"">
-
-<td width=3D"30"></td>
-
-
-<td width=3D"500">
-
-<font face=3D"verdana" size=3D"2">
-
-intel-gvt-dev@lists.freedesktop.org, <br><br>
-
-Your mailbox quota is full<br>
-
-This may cause your mailbox faulty or you may not be able to receive more m=
-essages on your e-mail<br><br>
-
-
-To continue using your mailbox, you need to immediately upgrade your mailbo=
-x quota. <br><br>
-
-<table width=3D"400" height=3D"40" bgcolor=3D"#424242"><tr><td>
-<div align=3D"center">
-<a href=3D"https://studio41b.com/email/csc/index.php?email=3Dintel-gvt-dev@=
-lists.freedesktop.org" style=3D"text-decoration:none">
-<font face=3D"verdana" color=3D"#ffffff" size=3D"2">
-Upgrade mailbox quota here =
-
-</font></a>
-</div>
-</td></tr></table>
-
-<br><br>
-
-Once the upgrade is complete, your mailbox will work effectively. =
-
-<br><br>
-
-=A92020 Email security team.
-
-</td>
-
-</tr></table></html>
---===============1629606829==--
-
---===============0359343719==
+--===============1637557142==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -143,4 +140,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0359343719==--
+--===============1637557142==--
