@@ -1,52 +1,75 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A99914F538
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Feb 2020 00:32:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AAFBF150918
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Feb 2020 16:07:08 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E21276FC58;
-	Fri, 31 Jan 2020 23:32:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4E1586E3B5;
+	Mon,  3 Feb 2020 15:07:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sonic308-8.consmr.mail.gq1.yahoo.com
- (sonic308-8.consmr.mail.gq1.yahoo.com [98.137.68.32])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4A32A6FC59
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 31 Jan 2020 23:32:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ymail.com; s=s2048;
- t=1580513557; bh=8xpm+cacAfAnFCbwSdgMceaBJxowNWaFZvEVU/zxgKw=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=gXttCFosS7QN5By5jHT8iuaaPvKchiFZTIyZ9uJyHj3Cfdzvdirb3VgxwJ7JWL7K6mPLSNexianczxVcYT2gd2jm+cuENIvYMlQ/jKVN2rtNAxCyhTgU65mOCWrf2ew08mJ1vNRKD4wlXN2ZfEa/4eg1jdIBuvqzGm0ozGVdG6d+wJDtTBU0iDgJ7beHC2a6lqAZ4Bx8arAXizIIIJn3chFtM8DTG/tIKl4pszPfbEekGJID8bd2iv8eDqx8m6zgkn+Fg8+v2nm87OkPpWeUZ5zkiRRYPxddbIDHAXDyZD0eRcSY5PB7aYO/AB3hR6IUMW2Hndd3Whgd8ugbnNDZeQ==
-X-YMail-OSG: bggbNE0VM1mu8jzwloKWhwSxJdcNKgaHOMZX_dP4X1x7Ro.A4qC2HCs_aBQM9Q2
- 2HnHbMJ8HNyQc04V4ulof43szwd0bsbWUU.67jar.z0abY1UW6L.4ZOC8r72HiRr4fgHe1fEtkQX
- UdERuv43NduzLWk5UlCeKnCglLHlBGzFmtuMmzL8ztPP0J1qQy7B7tr8vvjHCBQ0BIxLSXdr1OqB
- tTv23jaPTajiZ3uvfGJ8ZJj0uBWT2y.La2oebyR1y09UB3M1y.7DwyuUyEVLh94j944ocwAEgkXw
- mjvt4Yl8.S5eZLaorPcL2haHZTB.6ShUPgIGOWk1BmDBUbA3n.B3iuYNosfFON6kZOY_WMEaK4Wu
- R0tJ.n2gRI0vZNKVyBxcj0tKAtJEcmCZy2Ufs2SA8BFHkFOEb2FsWiUU9MHaCya.EWpbRDi_v2lf
- 1esOmD.aTJ3ggxaNDAQUYaxZdSaVmf3iet3MwQSY5ys5cIsIq29J8mOwXJ6g8CZ4Y8SWZHGG_1V_
- XG60.bqOgw8sN_.3V3b.o5IQ5oLhbyNQLivjNWLFUeuL5CD9bWQx88i.WwtmPmdjzsyQ4zZSulAE
- mKVqKOkMwq8n.3czlmKLw.5Jltf4GPcedBM3J5yyjuU9ywCjz8zNEUwyrH.YorCBePJGTrtMf8Sf
- 6ko0lCsq.GvmnPtFU9T1Xmzt5yWsfup4sf7wkn3qBBQ8VDOfBDc7ZFiRP8Mlo2TVURo6ErKWWZ1R
- nChK.BH88K0zzrEtoLDHmFR9datBv46Ej4v1_4.NG3_LMFfqWHBC147_u0SqnN4Te2H4PfOphHMh
- XePQ87d9mgRVFLqF2Db6C.Ez8ZJZVkPFUU8Y3AVYRuIz98XqQWDaM.5gglaNJ_zr.u4ZluQbVisG
- sJNywp.iNJAtqr10cUkxkNK5p5UZAqWp12ZVJlN1v6OjHu9brwlsueJ2gLzH4OFE0hhO9uSq_uU8
- 5MGgf.AJuurm1u_ps.aZtS2pLuTUMwS3QoZgchR14AdrCsqnSqC.2ZH_3wV1ibhRuAkKh121Ftg9
- kKZo5jkJ9OY84i9p0ZEi7QpnWZc5TL0rOnwEhWevPFxPuS2lHjJivmR9tywF0dL_tkjce9iJGGoe
- k_3gr_adWb4t17FrTnGVINZeXz0RG4mUHFeTRj.hGTSaZ4J5mbpIkoG5PWCJaDD.w6nsmbRGS3S.
- v0PcV9CafbM88FArg_l.hMFM9TgdNR5J1YnRzDzgxK_yQcUjR5Fz.ThV2nDWUK0kv226FdXr_GA3
- 32lmbMzJM.2VBbGdcmkkWzEnu5S214wPJBaG9Mifaj0LxaDrEHdM7gMdfLDS437S2cWtur2JiKyn
- sH58_
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic308.consmr.mail.gq1.yahoo.com with HTTP; Fri, 31 Jan 2020 23:32:37 +0000
-Date: Fri, 31 Jan 2020 23:32:35 +0000 (UTC)
-From: Cherif Titi <elpumita@ymail.com>
-Message-ID: <621258697.37410.1580513555720@mail.yahoo.com>
-Subject: My Dear
+Received: from esa3.hc3370-68.iphmx.com (esa3.hc3370-68.iphmx.com
+ [216.71.145.155])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9D12A6E3AC;
+ Mon,  3 Feb 2020 15:07:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=citrix.com; s=securemail; t=1580742427;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=VJnsOBv+HbyyQwVNpnxzDWPoec7REoI1chc1vV9mKGk=;
+ b=ctOhKRrrcjUalGZjl0zhxbx1Bjhf2ISVuWzkuKN1u5SkY5F4sbwKxELD
+ RYu7Ygoh6JlUZFv6YuA4Odwae28dDkq4ia7JPYLacmMvNH4itSh/HN4rb
+ 80QPUMdwNdPieuX2ILiM3Rp7v6MS+3McPvkDHBC0gCj1wjXRjLObCtTZy M=;
+Authentication-Results: esa3.hc3370-68.iphmx.com;
+ dkim=none (message not signed) header.i=none;
+ spf=None smtp.pra=igor.druzhinin@citrix.com;
+ spf=Pass smtp.mailfrom=igor.druzhinin@citrix.com;
+ spf=None smtp.helo=postmaster@mail.citrix.com
+Received-SPF: None (esa3.hc3370-68.iphmx.com: no sender
+ authenticity information available from domain of
+ igor.druzhinin@citrix.com) identity=pra;
+ client-ip=162.221.158.21; receiver=esa3.hc3370-68.iphmx.com;
+ envelope-from="igor.druzhinin@citrix.com";
+ x-sender="igor.druzhinin@citrix.com";
+ x-conformance=sidf_compatible
+Received-SPF: Pass (esa3.hc3370-68.iphmx.com: domain of
+ igor.druzhinin@citrix.com designates 162.221.158.21 as
+ permitted sender) identity=mailfrom;
+ client-ip=162.221.158.21; receiver=esa3.hc3370-68.iphmx.com;
+ envelope-from="igor.druzhinin@citrix.com";
+ x-sender="igor.druzhinin@citrix.com";
+ x-conformance=sidf_compatible; x-record-type="v=spf1";
+ x-record-text="v=spf1 ip4:209.167.231.154 ip4:178.63.86.133
+ ip4:195.66.111.40/30 ip4:85.115.9.32/28 ip4:199.102.83.4
+ ip4:192.28.146.160 ip4:192.28.146.107 ip4:216.52.6.88
+ ip4:216.52.6.188 ip4:162.221.158.21 ip4:162.221.156.83
+ ip4:168.245.78.127 ~all"
+Received-SPF: None (esa3.hc3370-68.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@mail.citrix.com) identity=helo;
+ client-ip=162.221.158.21; receiver=esa3.hc3370-68.iphmx.com;
+ envelope-from="igor.druzhinin@citrix.com";
+ x-sender="postmaster@mail.citrix.com";
+ x-conformance=sidf_compatible
+IronPort-SDR: n3OuRVe8G9eYufmHAZT/P2q6Wa0Z7PfSRehb4qvjsUHNrmDY7kTjv5xRnF+nprqvB4gH049Amu
+ 8trAFQQCmgcbK/5Ib1odEq2crfCL+oWZO136igJoPR4+WxBZod7RUdE0tweEhCv3hpEq5JJ3q0
+ lM0PQ+W3voIT6R378+qVbizA3ZQK1vpZiIzChRAgzMCM6SB+FQdw5japO6k7ZoRbmttWJgi/L7
+ EnhslDdgNFtvrDX39N+oOXaxxbj9hPFNMV2PgVzWqiQ2S8iarz6d01XhFHeKwCWlNVQi8n8d/r
+ xHk=
+X-SBRS: 2.7
+X-MesageID: 11848962
+X-Ironport-Server: esa3.hc3370-68.iphmx.com
+X-Remote-IP: 162.221.158.21
+X-Policy: $RELAYED
+X-IronPort-AV: E=Sophos;i="5.70,398,1574139600"; d="scan'208";a="11848962"
+From: Igor Druzhinin <igor.druzhinin@citrix.com>
+To: <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <intel-gfx@lists.freedesktop.org>, <intel-gvt-dev@lists.freedesktop.org>
+Subject: [PATCH] drm/i915/gvt: more locking for ppgtt mm LRU list
+Date: Mon, 3 Feb 2020 15:07:01 +0000
+Message-ID: <1580742421-25194-1-git-send-email-igor.druzhinin@citrix.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-References: <621258697.37410.1580513555720.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.15149 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
- x64; rv:72.0) Gecko/20100101 Firefox/72.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,41 +82,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: cheriftiti268@yahoo.com
+Cc: Igor Druzhinin <igor.druzhinin@citrix.com>, airlied@linux.ie,
+ joonas.lahtinen@linux.intel.com, jani.nikula@linux.intel.com,
+ zhenyuw@linux.intel.com, daniel@ffwll.ch, rodrigo.vivi@intel.com,
+ zhi.a.wang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
- My Dear
+When the lock was introduced in 72aabfb862e40 ("drm/i915/gvt: Add mutual
+lock for ppgtt mm LRU list") one place got lost.
 
-I am Miss cherif Titi,20 years old and the only daughter of my late parents Dr.Richard Tit. My father was a highly reputable real estate developer who operated in the capital city of Ivory coast during his days
+Signed-off-by: Igor Druzhinin <igor.druzhinin@citrix.com>
+---
+ drivers/gpu/drm/i915/gvt/gtt.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-It is sad to say that he passed away mysteriously in UK during one of his business trips abroad year 12th. JUNE 12, 2014. Though his sudden death, But God knows the truth! My mother died when I was just 4 years old,and since then my father took me so special Before his death on JUNE 12, 2014 he called his secretary who accompanied him to the hospital and told him that he has the sum of Nine million,five hundred thousand United State Dollars.(USD$9.500,000) left in bank
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index 34cb404..4a48280 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -1956,7 +1956,11 @@ void _intel_vgpu_mm_release(struct kref *mm_ref)
+ 
+ 	if (mm->type == INTEL_GVT_MM_PPGTT) {
+ 		list_del(&mm->ppgtt_mm.list);
++
++		mutex_lock(&mm->vgpu->gvt->gtt.ppgtt_mm_lock);
+ 		list_del(&mm->ppgtt_mm.lru_list);
++		mutex_unlock(&mm->vgpu->gvt->gtt.ppgtt_mm_lock);
++
+ 		invalidate_ppgtt_mm(mm);
+ 	} else {
+ 		vfree(mm->ggtt_mm.virtual_ggtt);
+-- 
+2.7.4
 
-He further told him that he deposited the money in my name, and finally issued a written instruction to his lawyer whom he said is in possession of all the necessary legal documents to this fund
-
-I am just 20 years old and a university undergraduate and really don't know what to do. Now I want an account overseas where I can transfer this funds. This is because I have suffered a lot of set backs as a result of incessant political crisis here in Ivory coast. The death of my father actually brought sorrow to my life
-
-Dear, I am in a sincere desire of your humble assistance in this regards,Your suggestions and ideas will be highly regarded.
-
-
-Now permit me to ask these few questions:
-
-1. Can you honestly help me as your daughter
-
-2. Can I completely trust you
-
-3. What percentage of the total amount in question will be good for you after the money is in your account
-
-Please contact me with my private email cheriftiti268@yahoo.com
-
-
-Please,Consider this and get back to me as soon as possible.
-
-
-My sincere regards,
-Mrs.cherif TITI
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
