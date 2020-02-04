@@ -2,74 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAFBF150918
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Feb 2020 16:07:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 934C2151A19
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Feb 2020 12:49:23 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4E1586E3B5;
-	Mon,  3 Feb 2020 15:07:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 475F26E7D1;
+	Tue,  4 Feb 2020 11:49:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from esa3.hc3370-68.iphmx.com (esa3.hc3370-68.iphmx.com
- [216.71.145.155])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9D12A6E3AC;
- Mon,  3 Feb 2020 15:07:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=citrix.com; s=securemail; t=1580742427;
- h=from:to:cc:subject:date:message-id:mime-version;
- bh=VJnsOBv+HbyyQwVNpnxzDWPoec7REoI1chc1vV9mKGk=;
- b=ctOhKRrrcjUalGZjl0zhxbx1Bjhf2ISVuWzkuKN1u5SkY5F4sbwKxELD
- RYu7Ygoh6JlUZFv6YuA4Odwae28dDkq4ia7JPYLacmMvNH4itSh/HN4rb
- 80QPUMdwNdPieuX2ILiM3Rp7v6MS+3McPvkDHBC0gCj1wjXRjLObCtTZy M=;
-Authentication-Results: esa3.hc3370-68.iphmx.com;
- dkim=none (message not signed) header.i=none;
- spf=None smtp.pra=igor.druzhinin@citrix.com;
- spf=Pass smtp.mailfrom=igor.druzhinin@citrix.com;
- spf=None smtp.helo=postmaster@mail.citrix.com
-Received-SPF: None (esa3.hc3370-68.iphmx.com: no sender
- authenticity information available from domain of
- igor.druzhinin@citrix.com) identity=pra;
- client-ip=162.221.158.21; receiver=esa3.hc3370-68.iphmx.com;
- envelope-from="igor.druzhinin@citrix.com";
- x-sender="igor.druzhinin@citrix.com";
- x-conformance=sidf_compatible
-Received-SPF: Pass (esa3.hc3370-68.iphmx.com: domain of
- igor.druzhinin@citrix.com designates 162.221.158.21 as
- permitted sender) identity=mailfrom;
- client-ip=162.221.158.21; receiver=esa3.hc3370-68.iphmx.com;
- envelope-from="igor.druzhinin@citrix.com";
- x-sender="igor.druzhinin@citrix.com";
- x-conformance=sidf_compatible; x-record-type="v=spf1";
- x-record-text="v=spf1 ip4:209.167.231.154 ip4:178.63.86.133
- ip4:195.66.111.40/30 ip4:85.115.9.32/28 ip4:199.102.83.4
- ip4:192.28.146.160 ip4:192.28.146.107 ip4:216.52.6.88
- ip4:216.52.6.188 ip4:162.221.158.21 ip4:162.221.156.83
- ip4:168.245.78.127 ~all"
-Received-SPF: None (esa3.hc3370-68.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@mail.citrix.com) identity=helo;
- client-ip=162.221.158.21; receiver=esa3.hc3370-68.iphmx.com;
- envelope-from="igor.druzhinin@citrix.com";
- x-sender="postmaster@mail.citrix.com";
- x-conformance=sidf_compatible
-IronPort-SDR: n3OuRVe8G9eYufmHAZT/P2q6Wa0Z7PfSRehb4qvjsUHNrmDY7kTjv5xRnF+nprqvB4gH049Amu
- 8trAFQQCmgcbK/5Ib1odEq2crfCL+oWZO136igJoPR4+WxBZod7RUdE0tweEhCv3hpEq5JJ3q0
- lM0PQ+W3voIT6R378+qVbizA3ZQK1vpZiIzChRAgzMCM6SB+FQdw5japO6k7ZoRbmttWJgi/L7
- EnhslDdgNFtvrDX39N+oOXaxxbj9hPFNMV2PgVzWqiQ2S8iarz6d01XhFHeKwCWlNVQi8n8d/r
- xHk=
-X-SBRS: 2.7
-X-MesageID: 11848962
-X-Ironport-Server: esa3.hc3370-68.iphmx.com
-X-Remote-IP: 162.221.158.21
-X-Policy: $RELAYED
-X-IronPort-AV: E=Sophos;i="5.70,398,1574139600"; d="scan'208";a="11848962"
-From: Igor Druzhinin <igor.druzhinin@citrix.com>
-To: <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <intel-gfx@lists.freedesktop.org>, <intel-gvt-dev@lists.freedesktop.org>
-Subject: [PATCH] drm/i915/gvt: more locking for ppgtt mm LRU list
-Date: Mon, 3 Feb 2020 15:07:01 +0000
-Message-ID: <1580742421-25194-1-git-send-email-igor.druzhinin@citrix.com>
-X-Mailer: git-send-email 2.7.4
+X-Greylist: delayed 10581 seconds by postgrey-1.36 at gabe;
+ Tue, 04 Feb 2020 11:49:21 UTC
+Received: from mail.moxiege.cf (unknown [94.177.232.49])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 03EA16E7D1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  4 Feb 2020 11:49:21 +0000 (UTC)
+Received: from [86.106.131.147] (unknown [86.106.131.147])
+ by mail.moxiege.cf (Postfix) with ESMTPA id 078041F0AD
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  4 Feb 2020 03:39:59 -0500 (EST)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: WARM GREETINGS
+To: intel-gvt-dev@lists.freedesktop.org
+From: admin@moxiege.cf
+Date: Tue, 04 Feb 2020 08:39:56 -0800
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,42 +37,19 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Igor Druzhinin <igor.druzhinin@citrix.com>, airlied@linux.ie,
- joonas.lahtinen@linux.intel.com, jani.nikula@linux.intel.com,
- zhenyuw@linux.intel.com, daniel@ffwll.ch, rodrigo.vivi@intel.com,
- zhi.a.wang@intel.com
+Reply-To: elmirafernandez1960@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200204114922.475F26E7D1@gabe.freedesktop.org>
 
-When the lock was introduced in 72aabfb862e40 ("drm/i915/gvt: Add mutual
-lock for ppgtt mm LRU list") one place got lost.
+Hello,
+I am Mrs Elmira Fernandez and it's my pleasure to meet you, I saw your profile and i want to discuss an interesting project with you, I am hoping to get your response to give you more details.
 
-Signed-off-by: Igor Druzhinin <igor.druzhinin@citrix.com>
----
- drivers/gpu/drm/i915/gvt/gtt.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index 34cb404..4a48280 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -1956,7 +1956,11 @@ void _intel_vgpu_mm_release(struct kref *mm_ref)
- 
- 	if (mm->type == INTEL_GVT_MM_PPGTT) {
- 		list_del(&mm->ppgtt_mm.list);
-+
-+		mutex_lock(&mm->vgpu->gvt->gtt.ppgtt_mm_lock);
- 		list_del(&mm->ppgtt_mm.lru_list);
-+		mutex_unlock(&mm->vgpu->gvt->gtt.ppgtt_mm_lock);
-+
- 		invalidate_ppgtt_mm(mm);
- 	} else {
- 		vfree(mm->ggtt_mm.virtual_ggtt);
--- 
-2.7.4
-
+Best regards,
+Mrs Elmira Fernandez
+Account Executive
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
