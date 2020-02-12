@@ -1,54 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 522EA158B1B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Feb 2020 09:14:01 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E4762159F20
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Feb 2020 03:37:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 08D4989E3E;
-	Tue, 11 Feb 2020 08:14:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 443736E563;
+	Wed, 12 Feb 2020 02:37:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from smtp.setarnet.aw (smtp.setarnet.aw [209.88.129.169])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8CAF889E3E;
- Tue, 11 Feb 2020 08:13:58 +0000 (UTC)
-X-SENDER-REPUTATION: -1.2
-X-SENDER-IP: 201.229.0.186
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2DD/wCxYUJeWLoA5clQEgSCQ4J4gRASG?=
- =?us-ascii?q?hqBGIJziF6EC18YLIEOgiCFBogMDDOFUAECgTyEZYFnCQEBATsCAQEOdYNigiM?=
- =?us-ascii?q?TEUsSAgcBAQYEBwEZFi+EcjoeQhYBhQQBMgwODQg8CQEJFAoXAhE0LVuCTIF+T?=
- =?us-ascii?q?AECMAOmLIMpgTIaAoF0gVqBUBCCJh8ECxeCC41bGh2BY4VmgwILBQESARVwgiw?=
- =?us-ascii?q?UgkqNQROJf2l+li4OCh6CHJZnjmgSFAOHD4RvhESlWwGDA3GCXgqCFBiOQo4wQ?=
- =?us-ascii?q?IE3iwkoFYIdAQ?=
-X-IPAS-Result: =?us-ascii?q?A2DD/wCxYUJeWLoA5clQEgSCQ4J4gRASGhqBGIJziF6EC18?=
- =?us-ascii?q?YLIEOgiCFBogMDDOFUAECgTyEZYFnCQEBATsCAQEOdYNigiMTEUsSAgcBAQYEB?=
- =?us-ascii?q?wEZFi+EcjoeQhYBhQQBMgwODQg8CQEJFAoXAhE0LVuCTIF+TAECMAOmLIMpgTI?=
- =?us-ascii?q?aAoF0gVqBUBCCJh8ECxeCC41bGh2BY4VmgwILBQESARVwgiwUgkqNQROJf2l+l?=
- =?us-ascii?q?i4OCh6CHJZnjmgSFAOHD4RvhESlWwGDA3GCXgqCFBiOQo4wQIE3iwkoFYIdAQ?=
-X-IronPort-AV: E=Sophos;i="5.70,428,1574136000"; 
- d="scan'208,217";a="115419486"
-Received: from unknown (HELO bunito04.setarnet.aw) ([201.229.0.186])
- by smtp.setarnet.aw with ESMTP; 11 Feb 2020 04:12:35 -0400
-MIME-version: 1.0
-Content-type: multipart/mixed; boundary="Boundary_(ID_YsWY0F754AsMiFLpXR90nQ)"
-Received: from setarnet.aw ([201.229.0.186])
- by bunito04.setarnet.aw (Oracle Communications Messaging Server 8.0.1.0.0
- 64bit (built Sep  4 2015))
- with ESMTPA id <0Q5J00F8S1EYPQ30@bunito04.setarnet.aw>; Tue,
- 11 Feb 2020 03:42:35 -0400 (AST)
-Received: from [201.229.0.186] (Forwarded-For: 197.185.96.160)
- by bunito04.setarnet.aw (mshttpd); Tue, 11 Feb 2020 09:42:34 +0200
-From: "ALL LOANS FINANCIAL SERVICES" <noreplyloans@setarnet.aw>
-Message-id: <76f0c69a12818.5e42770a@setarnet.aw>
-Date: Tue, 11 Feb 2020 09:42:34 +0200
-X-Mailer: Oracle Communications Messenger Express 8.0.1.0.0 64bit (built Sep 4
- 2015)
-Content-language: en
-Subject: CONTACT BELINDA 0764227966 FOR MORE DETAILS
-X-Accept-Language: en
-X-Priority: 1 (Highest)
-Priority: urgent
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9691B6E563
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 12 Feb 2020 02:37:40 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Feb 2020 18:37:40 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,428,1574150400"; d="scan'208";a="432166457"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 11 Feb 2020 18:37:38 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1j1huE-0009mu-Ee; Wed, 12 Feb 2020 10:37:38 +0800
+Date: Wed, 12 Feb 2020 10:37:08 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ b5c23459e47330899a88d41127b216bb87e0d65c
+Message-ID: <5e4364d4.aPhdUHF4cH9Quh+K%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,76 +45,176 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: all.loans@webmail.co.za
+Cc: libo.zhu@intel.com, terrence.xu@intel.com,
+ intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format.
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
+branch HEAD: b5c23459e47330899a88d41127b216bb87e0d65c  gvt-staging: 2020y-02m-10d-10h-05m-24s CST integration manifest
 
---Boundary_(ID_YsWY0F754AsMiFLpXR90nQ)
-Content-type: multipart/alternative;
- boundary="Boundary_(ID_p80Pel9Cxev+JZJiwT4OGg)"
+elapsed time: 2894m
 
-This is a multi-part message in MIME format.
+configs tested: 147
+configs skipped: 0
 
---Boundary_(ID_p80Pel9Cxev+JZJiwT4OGg)
-Content-type: text/plain; CHARSET=US-ASCII
-Content-transfer-encoding: 7BIT
-Content-disposition: inline
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+csky                                defconfig
+s390                             alldefconfig
+nios2                         3c120_defconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                             allyesconfig
+i386                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                                defconfig
+ia64                             alldefconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+m68k                          multi_defconfig
+m68k                       m5475evb_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                           sun3_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+parisc                        c3000_defconfig
+parisc                         b180_defconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                            allnoconfig
+x86_64               randconfig-a001-20200210
+x86_64               randconfig-a002-20200210
+x86_64               randconfig-a003-20200210
+i386                 randconfig-a001-20200210
+i386                 randconfig-a002-20200210
+i386                 randconfig-a003-20200210
+alpha                randconfig-a001-20200210
+m68k                 randconfig-a001-20200210
+mips                 randconfig-a001-20200210
+nds32                randconfig-a001-20200210
+parisc               randconfig-a001-20200210
+riscv                randconfig-a001-20200210
+c6x                  randconfig-a001-20200210
+h8300                randconfig-a001-20200210
+microblaze           randconfig-a001-20200210
+nios2                randconfig-a001-20200210
+sparc64              randconfig-a001-20200210
+csky                 randconfig-a001-20200210
+openrisc             randconfig-a001-20200210
+s390                 randconfig-a001-20200210
+sh                   randconfig-a001-20200210
+xtensa               randconfig-a001-20200210
+x86_64               randconfig-b001-20200210
+x86_64               randconfig-b002-20200210
+x86_64               randconfig-b003-20200210
+i386                 randconfig-b001-20200210
+i386                 randconfig-b002-20200210
+i386                 randconfig-b003-20200210
+x86_64               randconfig-e001-20200210
+x86_64               randconfig-e002-20200210
+x86_64               randconfig-e003-20200210
+i386                 randconfig-e001-20200210
+i386                 randconfig-e002-20200210
+i386                 randconfig-e003-20200210
+x86_64               randconfig-f001-20200210
+i386                 randconfig-f003-20200210
+x86_64               randconfig-f002-20200210
+i386                 randconfig-f001-20200210
+x86_64               randconfig-f003-20200210
+i386                 randconfig-f002-20200210
+i386                 randconfig-g001-20200210
+x86_64               randconfig-g003-20200210
+x86_64               randconfig-g001-20200210
+i386                 randconfig-g003-20200210
+x86_64               randconfig-g002-20200210
+i386                 randconfig-g002-20200210
+arc                  randconfig-a001-20200210
+arm                  randconfig-a001-20200210
+arm64                randconfig-a001-20200210
+ia64                 randconfig-a001-20200210
+powerpc              randconfig-a001-20200210
+sparc                randconfig-a001-20200210
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                             allyesconfig
+s390                          debug_defconfig
+s390                                defconfig
+s390                       zfcpdump_defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+sparc64                          allmodconfig
+sparc                            allyesconfig
+sparc64                          allyesconfig
+sparc                               defconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                               rhel-7.6
 
-
-
-Dear Valued Client,
-
-Kindly view attached document to make application on 3% fixed loan.
-
-We offer Personal,Debt Consolidation and Business Loan.
-
-Send Us The Completed Loan Application Form, A Copy of your ID,
-
-Three Months Bank Statement And Three Months Payslip.
-
-We await your swift response.
-
-Regards,
-Belinda Mayer
-Direct Line: +27(0)764 227 966
-Email 1: all.loans@fastservice.com
-Email 2: all.loans@webmail.co.za
-
---Boundary_(ID_p80Pel9Cxev+JZJiwT4OGg)
-Content-type: text/html; charset=utf-8
-Content-transfer-encoding: quoted-printable
-Content-disposition: inline
-
-=3Cdiv class=3D=22frame message-frame=22 data-embedded-img-loader=3D=22=22=
- data-inject-message-media=3D=22=22=3E=3Cdiv class=3D=22bodyDecrypted em=
-ail message-body-container=22=3E=3Cdiv=3EDear Valued Client=2C=3C/div=3E=
-=3Cdiv=3E=3Cbr /=3E=3C/div=3E=3Cdiv=3EKindly view attached document to m=
-ake application on 3=25 fixed loan=2E=3C/div=3E=3Cdiv=3E=3Cbr /=3E=3C/di=
-v=3E=3Cdiv=3EWe offer Personal=2CDebt Consolidation and Business Loan=2E=
-=3C/div=3E=3Cdiv=3E=3Cbr /=3E=3C/div=3E=3Cdiv=3ESend Us The Completed Lo=
-an Application=C2=A0 Form=2C A Copy of your ID=2C=3C/div=3E=3Cdiv=3E=3Cb=
-r /=3E=3C/div=3E=3Cdiv=3EThree Months Bank Statement And Three Months Pa=
-yslip=2E=3C/div=3E=3Cdiv=3E=3Cbr /=3E=3C/div=3E=3Cdiv=3EWe await your sw=
-ift response=2E=3C/div=3E=3Cdiv=3E=3Cbr /=3E=3C/div=3E=3Cdiv=3ERegards=2C=
-=3C/div=3E=3Cdiv=3EBelinda Mayer=3C/div=3E=3Cdiv=3EDirect Line=3A +27(0)=
-764 227 966=3C/div=3E=3Cdiv=3EEmail 1=3A all=2Eloans=40fastservice=2Ecom=
-=3C/div=3E=3Cdiv=3EEmail 2=3A all=2Eloans=40webmail=2Eco=2Eza=3C/div=3E=3C=
-/div=3E  =3C/div=3E
-
---Boundary_(ID_p80Pel9Cxev+JZJiwT4OGg)--
-
---Boundary_(ID_YsWY0F754AsMiFLpXR90nQ)
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---Boundary_(ID_YsWY0F754AsMiFLpXR90nQ)--
