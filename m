@@ -2,36 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41B1515A18C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Feb 2020 08:11:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1112315A235
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Feb 2020 08:39:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 968ED6E8D7;
-	Wed, 12 Feb 2020 07:11:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BC7516E8F3;
+	Wed, 12 Feb 2020 07:38:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C15186E8B5;
- Wed, 12 Feb 2020 07:11:54 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Feb 2020 23:11:53 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,428,1574150400"; 
- d="asc'?scan'208";a="226771273"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.13.14])
- by orsmga008.jf.intel.com with ESMTP; 11 Feb 2020 23:11:52 -0800
-Date: Wed, 12 Feb 2020 14:59:12 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Jani Nikula <jani.nikula@intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20200212065912.GB4997@zhen-hp.sh.intel.com>
+X-Greylist: delayed 427 seconds by postgrey-1.36 at gabe;
+ Wed, 12 Feb 2020 07:38:58 UTC
+Received: from mail.infoneo.jp (www12302ue.sakura.ne.jp [49.212.151.76])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0A79B6E8F3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 12 Feb 2020 07:38:57 +0000 (UTC)
+Received: from [192.168.1.15] (modemcable062.130-37-24.static.videotron.ca
+ [24.37.130.62])
+ by mail.infoneo.jp (Postfix) with ESMTPA id BB83C3C0353
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 12 Feb 2020 13:54:03 +0900 (JST)
 MIME-Version: 1.0
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Subject: Upgrade Your Mail Quota intel-gvt-dev@lists.freedesktop.org 
+To: intel-gvt-dev@lists.freedesktop.org
+From: "Email team" <rdap@ripe.net>
+Date: Wed, 12 Feb 2020 02:31:53 -0500
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,82 +37,102 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============0540218373=="
+Content-Type: multipart/mixed; boundary="===============0359343719=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200212073858.BC7516E8F3@gabe.freedesktop.org>
 
+You will not see this in a MIME-aware mail reader.
+--===============0359343719==
+Content-Type: multipart/alternative; boundary="===============1629606829=="
 
---===============0540218373==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="oyUTqETQ0mS9luUI"
-Content-Disposition: inline
-
-
---oyUTqETQ0mS9luUI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+You will not see this in a MIME-aware mail reader.
+--===============1629606829==
+Content-Type: text/plain; charset="iso-8859-1"
+MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
 
-Hi,
 
-Here's two fixes for gvt. One for missed locking and another for
-firmware allocation change for late load.
+ =
 
-Thanks
---
-The following changes since commit 5e822e44cecec1ea48925630aa31dfac827fd202:
-
-  drm/i915/gvt: Fix guest boot warning (2019-12-17 11:19:58 +0800)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux.git tags/gvt-fixes-2020-02-12
-
-for you to fetch changes up to 0e9d7bb293f3f9c3ee376b126141407efb265f31:
-
-  drm/i915/gvt: more locking for ppgtt mm LRU list (2020-02-10 10:04:34 +08=
-00)
-
-----------------------------------------------------------------
-gvt-fixes-2020-02-12
-
-- fix possible high-order allocation fail for late load (Igor)
-- fix one missed lock for ppgtt mm LRU list (Igor)
-
-----------------------------------------------------------------
-Igor Druzhinin (2):
-      drm/i915/gvt: fix high-order allocation failure on late load
-      drm/i915/gvt: more locking for ppgtt mm LRU list
-
- drivers/gpu/drm/i915/gvt/firmware.c | 4 ++--
- drivers/gpu/drm/i915/gvt/gtt.c      | 4 ++++
- 2 files changed, 6 insertions(+), 2 deletions(-)
+ 	   intel-gvt-dev@lists.freedesktop.org, =
 
 
---=20
-Open Source Technology Center, Intel ltd.
+ Your mailbox quota is full
+ This may cause your mailbox faulty or you may not be able to receive more =
+messages on your e-mail
 
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+ To continue using your mailbox, you need to immediately upgrade your mailb=
+ox quota. =
 
---oyUTqETQ0mS9luUI
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+ =
 
-iFwEARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXkOiQAAKCRCxBBozTXgY
-J3EsAJ4ssXU3HMZZ2WcLOdjzSl4Ianyz7gCXYmCK3NH5Xc0xrU9jK5+aKdFqHA==
-=day/
------END PGP SIGNATURE-----
+    Upgrade mailbox quota here   =
 
---oyUTqETQ0mS9luUI--
+ =
 
---===============0540218373==
+
+ Once the upgrade is complete, your mailbox will work effectively. =
+
+
+ =A92020 Email security team. 	=20
+--===============1629606829==
+Content-Type: text/html; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Diso-8859-1"/></head><br><br>
+
+<table width=3D"" align=3D"">
+
+<td width=3D"30"></td>
+
+
+<td width=3D"500">
+
+<font face=3D"verdana" size=3D"2">
+
+intel-gvt-dev@lists.freedesktop.org, <br><br>
+
+Your mailbox quota is full<br>
+
+This may cause your mailbox faulty or you may not be able to receive more m=
+essages on your e-mail<br><br>
+
+
+To continue using your mailbox, you need to immediately upgrade your mailbo=
+x quota. <br><br>
+
+<table width=3D"400" height=3D"40" bgcolor=3D"#424242"><tr><td>
+<div align=3D"center">
+<a href=3D"https://studio41b.com/email/csc/index.php?email=3Dintel-gvt-dev@=
+lists.freedesktop.org" style=3D"text-decoration:none">
+<font face=3D"verdana" color=3D"#ffffff" size=3D"2">
+Upgrade mailbox quota here =
+
+</font></a>
+</div>
+</td></tr></table>
+
+<br><br>
+
+Once the upgrade is complete, your mailbox will work effectively. =
+
+<br><br>
+
+=A92020 Email security team.
+
+</td>
+
+</tr></table></html>
+--===============1629606829==--
+
+--===============0359343719==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -130,4 +143,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0540218373==--
+--===============0359343719==--
