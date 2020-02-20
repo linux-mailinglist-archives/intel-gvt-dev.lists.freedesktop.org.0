@@ -1,45 +1,50 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C431163F02
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Feb 2020 09:28:05 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04F12165E1B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Feb 2020 14:04:13 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4819C6EB2C;
-	Wed, 19 Feb 2020 08:28:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AA0726ED76;
+	Thu, 20 Feb 2020 13:04:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 600 seconds by postgrey-1.36 at gabe;
- Wed, 19 Feb 2020 08:28:02 UTC
-Received: from server10.notificat.info (server10.notificat.info
- [192.236.154.106])
- by gabe.freedesktop.org (Postfix) with ESMTP id C71C76EB2C
+Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5DF4A6ED76
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Feb 2020 08:28:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=asdzxcv; d=smtpwala.xyz; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=9/B6j6L1cLo7VQHB7/6Xah5+hDA=;
- b=dpRqXrOiyI9gVfzsXlKud+yFrTyo7e6k+j0WrrOOzO0rLMeRzIxYrrTysJONZv9kHhG8/Op+qBl5
- C2C2C84VZbHHfPahbLXZP5ZuXH3UPfoJJLoN5E3L58drlkLvs4h56K5AhaVY6HfOBre3ipkEFtoU
- BgF6FQPQNviI4VeuuYc=
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=asdzxcv;
- d=webwebmail.info; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=chris.mount@webwebmail.info; 
- bh=9/B6j6L1cLo7VQHB7/6Xah5+hDA=;
- b=S1Peor7ahYxTzWjTxDX4H4zOEDS2UQjdccAvPxZ/Scc+hQ0mHCxwaZsQ9Ibn4iMJ3Z+L5Ao3sM4H
- TTpBdt9PJE9DWvnuHBEXKjlbcvnbXMY8bpfoFWhJr3O3jN5yA+9L9i0Wc/OEKaUu5RndUOYqdlG+
- cdxMgzqT+z9m+AkUi5k=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=asdzxcv; d=webwebmail.info; 
- b=e6YSxJZqJIvAmmFYbg9qTwBEZgb7iVlB9J3vB0JWWPURIuuNdmqQ7DsMHVSzmeZuHbALXsDfa3EN
- hSkdi0Azjco8vfTRZYfSXXJ6VOmAZcQFWfraZL76/8vdHdTUeakySEmuGYwJLSN58eDs03FAe7Qk
- HnQnKRsjBQES7Umv7fQ=;
-From: "C. Mount. (U.K Loans)"<chris.mount@webwebmail.info>
+ Thu, 20 Feb 2020 13:04:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
+ MIME-Version:Content-Type:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=0jzXoAIJsbNLKe2t4d3wk51xq79LbG9WhZDrOomPBuY=; b=bq+tpv9t4ChNAo5JK5UTkEX83
+ 0sFnpmvRXGSPDDiu+DCzNiNi5WVoxRHc9xe8ivFIuIjz7dkmst5wvYcror1X3kX1P9RYY+oSfINv9
+ nQrKQ2X8rnu7qPpQ3unr2lnXBGgKCv8nW4oPpsWZbaHFmhkXXGxsQJ3/jnux8XE1jo6/w/GDlaByn
+ FBXajM4zAAverG3oOJltosgkMOz3EQSDopCRVOQHBzTvxFPQbDq1kz4O8gK2S4pvqw4F6NBVIj0u6
+ cH1AFlONZ6jFQJdPLo1bNPIoWzc8CMata4I+FZ4payePsIM8hJwidfP8/yTeU84nk6UipwSzVgKnG
+ YjPppCiJA==;
+Received: from sslproxy05.your-server.de ([78.46.172.2])
+ by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+ (Exim 4.89_1)
+ (envelope-from <julian.stecklina@cyberus-technology.de>)
+ id 1j4lUs-0008OL-Gs; Thu, 20 Feb 2020 14:04:07 +0100
+Received: from [2a02:8106:231:700:6975:3446:3ada:292d]
+ (helo=localhost.localdomain)
+ by sslproxy05.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <julian.stecklina@cyberus-technology.de>)
+ id 1j4lUs-000DFW-AW; Thu, 20 Feb 2020 14:04:06 +0100
+Message-ID: <b890a3ee8bb81710b65fa4c5d66bfc62f0c59021.camel@cyberus-technology.de>
+Subject: EDID / guest resolution handling
+From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: Project Loan
-Date: 19 Feb 2020 10:18:00 +0200
-Message-ID: <20200219101800.EE002D8C00A7AA85@webwebmail.info>
+Date: Thu, 20 Feb 2020 14:04:05 +0100
+Organization: Cyberus Technology GmbH
+User-Agent: Evolution 3.34.3 (3.34.3-1.fc31) 
 MIME-Version: 1.0
+X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
+X-Virus-Scanned: Clear (ClamAV 0.102.1/25728/Wed Feb 19 15:06:20 2020)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,65 +57,29 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: christophermountffl4@gmail.com
-Content-Type: multipart/mixed; boundary="===============0065820105=="
+Cc: Stefan Hertrampf <stefan.hertrampf@cyberus-technology.de>,
+ Thomas Prescher <thomas.prescher@cyberus-technology.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0065820105==
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Hello,
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+we wondering what the best way is to handle different guest resolutions.
+Specifically, we are looking into adding "normal" FullHD resolution (1920x1080)
+to guests. 
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.19003"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<P>
-<P><SPAN class=3Dfont style=3D"FONT-FAMILY: Georgia">Dear Sir, <BR><BR>Than=
-k you for connecting with us this new year, we are glad to have set our loa=
-n plan this year 2020/2021 towards Europe. <BR>
-I would like to discuss doing business with you in relation to any project =
-finance you may have, and your capital growth. We are hands-on investors so=
-urcing for innovative entrepreneurs and consultants with investment opportu=
-nities in commercial-real estate industrial projects, hotel development , t=
-ourism-hospitality projects, renewable energy, waste-recycling, mineral-min=
-ing, heavy construction, environmental-tech projects,etc, that have the rig=
-ht mix of flair, growth potentials and market=20
-vision. <BR>Whether it&#8217;s a start-up project looking to launch a pilot=
- project, a company with proven technology that needs capital input to reac=
-hing commercial scale. We are open to structure a loan package and agreemen=
-t based on your financial needs and projections. Our financial solutions ha=
-ve many advantages over a traditional commercial loans from other banks. <B=
-R>
-For information on our low interest-rate loans and application and if your =
-interested for a follow-up, kindly let me know so I can give you more detai=
-ls.<BR>Thank you.<BR><BR><SPAN class=3Dsize style=3D"FONT-SIZE: 13px"><SPAN=
- class=3Dcolour style=3D"COLOR: rgb(128,128,0)"><SPAN class=3Dsize style=3D=
-"FONT-SIZE: 13px"><SPAN class=3Dcolour style=3D"COLOR: rgb(128,128,0)"><SPA=
-N class=3Dsize style=3D"FONT-SIZE: 13px"><SPAN class=3Dcolour style=3D"COLO=
-R: rgb(128,128,0)"><SPAN class=3Dfont style=3D"FONT-FAMILY: Georgia"><B>
-Kind Regards, <BR>Christopher Mount<BR>Email: <A href=3D"mailto:christopher=
-mountffl4@gmail.com">christophermountffl4@gmail.com</A></B></SPAN></SPAN></=
-SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
-<DIV>
-<DIV>
-<DIV><BR></DIV></DIV></DIV>
-<DIV>
-<DIV><BR></DIV></DIV>
-<P></P></BODY></HTML>
+At the moment, we do this by adding another vGPU type. This is certainly
+possible, but it seems a more flexible approach is to give the VMM control over
+the EDID information exposed to guests.
 
---===============0065820105==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Is there anything that speaks against uploading the EDID from the VMM?
+
+Thanks,
+Julian
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0065820105==--
