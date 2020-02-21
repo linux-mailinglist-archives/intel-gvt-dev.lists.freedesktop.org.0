@@ -1,50 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04F12165E1B
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Feb 2020 14:04:13 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DDE8166CF1
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Feb 2020 03:37:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA0726ED76;
-	Thu, 20 Feb 2020 13:04:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0AD496E147;
+	Fri, 21 Feb 2020 02:37:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5DF4A6ED76
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F2A646E147
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Feb 2020 13:04:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=0jzXoAIJsbNLKe2t4d3wk51xq79LbG9WhZDrOomPBuY=; b=bq+tpv9t4ChNAo5JK5UTkEX83
- 0sFnpmvRXGSPDDiu+DCzNiNi5WVoxRHc9xe8ivFIuIjz7dkmst5wvYcror1X3kX1P9RYY+oSfINv9
- nQrKQ2X8rnu7qPpQ3unr2lnXBGgKCv8nW4oPpsWZbaHFmhkXXGxsQJ3/jnux8XE1jo6/w/GDlaByn
- FBXajM4zAAverG3oOJltosgkMOz3EQSDopCRVOQHBzTvxFPQbDq1kz4O8gK2S4pvqw4F6NBVIj0u6
- cH1AFlONZ6jFQJdPLo1bNPIoWzc8CMata4I+FZ4payePsIM8hJwidfP8/yTeU84nk6UipwSzVgKnG
- YjPppCiJA==;
-Received: from sslproxy05.your-server.de ([78.46.172.2])
- by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1j4lUs-0008OL-Gs; Thu, 20 Feb 2020 14:04:07 +0100
-Received: from [2a02:8106:231:700:6975:3446:3ada:292d]
- (helo=localhost.localdomain)
- by sslproxy05.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1j4lUs-000DFW-AW; Thu, 20 Feb 2020 14:04:06 +0100
-Message-ID: <b890a3ee8bb81710b65fa4c5d66bfc62f0c59021.camel@cyberus-technology.de>
-Subject: EDID / guest resolution handling
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-To: intel-gvt-dev@lists.freedesktop.org
-Date: Thu, 20 Feb 2020 14:04:05 +0100
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.34.3 (3.34.3-1.fc31) 
-MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.1/25728/Wed Feb 19 15:06:20 2020)
+ Fri, 21 Feb 2020 02:37:26 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Feb 2020 18:37:26 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,466,1574150400"; d="scan'208";a="435049473"
+Received: from kechen-optiplex-9020.bj.intel.com ([10.238.158.100])
+ by fmsmga005.fm.intel.com with ESMTP; 20 Feb 2020 18:37:24 -0800
+From: Tina Zhang <tina.zhang@intel.com>
+To: 
+Subject: [PATCH] drm/i915/gvt: Separate display reset from ALL_ENGINES reset
+Date: Fri, 21 Feb 2020 10:32:34 +0800
+Message-Id: <20200221023234.28635-1-tina.zhang@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,27 +40,40 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Stefan Hertrampf <stefan.hertrampf@cyberus-technology.de>,
- Thomas Prescher <thomas.prescher@cyberus-technology.de>
+Cc: intel-gvt-dev@lists.freedesktop.org, zhenyuw@linux.intel.com,
+ Tina Zhang <tina.zhang@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello,
+ALL_ENGINES reset doesn't clobber display with the current gvt-g
+supported platforms. Thus ALL_ENGINES reset shouldn't reset the
+display engine registers emulated by gvt-g.
 
-we wondering what the best way is to handle different guest resolutions.
-Specifically, we are looking into adding "normal" FullHD resolution (1920x1080)
-to guests. 
+Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/vgpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-At the moment, we do this by adding another vGPU type. This is certainly
-possible, but it seems a more flexible approach is to give the VMM control over
-the EDID information exposed to guests.
-
-Is there anything that speaks against uploading the EDID from the VMM?
-
-Thanks,
-Julian
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index 1e0865905136..42ad6861eb14 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -558,9 +558,9 @@ void intel_gvt_reset_vgpu_locked(struct intel_vgpu *vgpu, bool dmlr,
+ 
+ 		intel_vgpu_reset_mmio(vgpu, dmlr);
+ 		populate_pvinfo_page(vgpu);
+-		intel_vgpu_reset_display(vgpu);
+ 
+ 		if (dmlr) {
++			intel_vgpu_reset_display(vgpu);
+ 			intel_vgpu_reset_cfg_space(vgpu);
+ 			/* only reset the failsafe mode when dmlr reset */
+ 			vgpu->failsafe = false;
+-- 
+2.17.1
 
 _______________________________________________
 intel-gvt-dev mailing list
