@@ -2,37 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E88816AF44
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Feb 2020 19:34:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9109B16B01B
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Feb 2020 20:14:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 262906E851;
-	Mon, 24 Feb 2020 18:34:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3E2A76E8D5;
+	Mon, 24 Feb 2020 19:14:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1F0986E850
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9E0F96E8D5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 24 Feb 2020 18:34:55 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2020 10:34:54 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,481,1574150400"; d="scan'208";a="270993632"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 24 Feb 2020 10:34:52 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1j6IZ9-0002Kv-Ny; Tue, 25 Feb 2020 02:34:51 +0800
-Date: Tue, 25 Feb 2020 02:33:56 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-fixes] BUILD SUCCESS
- 3eb55e6f753a379e293395de8d5f3be28351a7f8
-Message-ID: <5e541714.jOvAXQ2dWBKMAIPp%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Mon, 24 Feb 2020 19:14:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582571691;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mQHousaSxXNRBINVRLMfh+jTIaPMnkH22X4N3Qvicww=;
+ b=CEnRUAjd2vqCH5Mb6HuCRtEd8xBa8DeTsUZua4nEEtgYMCdseIQYU4lopaeR2dunb3iJqd
+ +LaytRNw3scqOgw66K5Q7olL8+wSD071hhJdFPf9rLVm41BMzIxcipNBI6t4nrWlr/qlLp
+ vE/WohbOTlKtoYxxChFJhxNfqUNp1Rk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-311-OiPO4XAvNey-nmhr_mjeFg-1; Mon, 24 Feb 2020 14:14:47 -0500
+X-MC-Unique: OiPO4XAvNey-nmhr_mjeFg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA05118B5F6A;
+ Mon, 24 Feb 2020 19:14:45 +0000 (UTC)
+Received: from w520.home (ovpn-116-28.phx2.redhat.com [10.3.116.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9F31D5D9CD;
+ Mon, 24 Feb 2020 19:14:42 +0000 (UTC)
+Date: Mon, 24 Feb 2020 12:14:42 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH v3 2/7] vfio: introduce vfio_dma_rw to read/write a
+ range of IOVAs
+Message-ID: <20200224121442.297a9931@w520.home>
+In-Reply-To: <20200224084715.31753-1-yan.y.zhao@intel.com>
+References: <20200224084350.31574-1-yan.y.zhao@intel.com>
+ <20200224084715.31753-1-yan.y.zhao@intel.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,198 +60,225 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: libo.zhu@intel.com, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
+Cc: kevin.tian@intel.com, kvm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ zhenyuw@linux.intel.com, peterx@redhat.com, pbonzini@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-fixes
-branch HEAD: 3eb55e6f753a379e293395de8d5f3be28351a7f8  drm/i915/gvt: Separate display reset from ALL_ENGINES reset
+On Mon, 24 Feb 2020 03:47:15 -0500
+Yan Zhao <yan.y.zhao@intel.com> wrote:
 
-elapsed time: 483m
+> vfio_dma_rw will read/write a range of user space memory pointed to by
+> IOVA into/from a kernel buffer without enforcing pinning the user space
+> memory.
+> 
+> TODO: mark the IOVAs to user space memory dirty if they are written in
+> vfio_dma_rw().
+> 
+> Cc: Kevin Tian <kevin.tian@intel.com>
+> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+> ---
+>  drivers/vfio/vfio.c             | 49 +++++++++++++++++++++
+>  drivers/vfio/vfio_iommu_type1.c | 77 +++++++++++++++++++++++++++++++++
+>  include/linux/vfio.h            |  5 +++
+>  3 files changed, 131 insertions(+)
+> 
+> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+> index 914bdf4b9d73..902867627cbf 100644
+> --- a/drivers/vfio/vfio.c
+> +++ b/drivers/vfio/vfio.c
+> @@ -1998,6 +1998,55 @@ int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn, int npage)
+>  }
+>  EXPORT_SYMBOL(vfio_unpin_pages);
+>  
+> +
+> +/*
+> + * This interface allows the CPUs to perform some sort of virtual DMA on
+> + * behalf of the device.
+> + *
+> + * CPUs read/write a range of IOVAs pointing to user space memory into/from
+> + * a kernel buffer.
+> + *
+> + * As the read/write of user space memory is conducted via the CPUs and is
+> + * not a real device DMA, it is not necessary to pin the user space memory.
+> + *
+> + * The caller needs to call vfio_group_get_external_user() or
+> + * vfio_group_get_external_user_from_dev() prior to calling this interface,
+> + * so as to prevent the VFIO group from disposal in the middle of the call.
+> + * But it can keep the reference to the VFIO group for several calls into
+> + * this interface.
+> + * After finishing using of the VFIO group, the caller needs to release the
+> + * VFIO group by calling vfio_group_put_external_user().
+> + *
+> + * @group [in]: vfio group of a device
+> + * @iova [in] : base IOVA of a user space buffer
+> + * @data [in] : pointer to kernel buffer
+> + * @len [in]  : kernel buffer length
+> + * @write     : indicate read or write
+> + * Return error code on failure or 0 on success.
+> + */
+> +int vfio_dma_rw(struct vfio_group *group, dma_addr_t iova,
+> +		void *data, size_t len, bool write)
+> +{
+> +	struct vfio_container *container;
+> +	struct vfio_iommu_driver *driver;
+> +	int ret = 0;
+> +
+> +	if (!group || !data || len <= 0)
+> +		return -EINVAL;
+> +
+> +	container = group->container;
+> +	driver = container->iommu_driver;
+> +
+> +	if (likely(driver && driver->ops->dma_rw))
+> +		ret = driver->ops->dma_rw(container->iommu_data,
+> +					  iova, data, len, write);
+> +	else
+> +		ret = -ENOTTY;
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(vfio_dma_rw);
+> +
+>  static int vfio_register_iommu_notifier(struct vfio_group *group,
+>  					unsigned long *events,
+>  					struct notifier_block *nb)
+> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
+> index 2ada8e6cdb88..74e1c425943c 100644
+> --- a/drivers/vfio/vfio_iommu_type1.c
+> +++ b/drivers/vfio/vfio_iommu_type1.c
+> @@ -27,6 +27,7 @@
+>  #include <linux/iommu.h>
+>  #include <linux/module.h>
+>  #include <linux/mm.h>
+> +#include <linux/mmu_context.h>
+>  #include <linux/rbtree.h>
+>  #include <linux/sched/signal.h>
+>  #include <linux/sched/mm.h>
+> @@ -2326,6 +2327,81 @@ static int vfio_iommu_type1_unregister_notifier(void *iommu_data,
+>  	return blocking_notifier_chain_unregister(&iommu->notifier, nb);
+>  }
+>  
+> +static size_t vfio_iommu_type1_dma_rw_chunk(struct vfio_iommu *iommu,
+> +					    dma_addr_t iova, void *data,
+> +					    size_t count, bool write)
+> +{
+> +	struct mm_struct *mm;
+> +	unsigned long vaddr;
+> +	struct vfio_dma *dma;
+> +	bool kthread = current->mm == NULL;
+> +	size_t done = 0;
+> +	size_t offset;
+> +
+> +	dma = vfio_find_dma(iommu, iova, 1);
+> +	if (!dma)
+> +		return 0;
+> +
+> +	if ((write && !(dma->prot & IOMMU_WRITE)) ||
+> +			!(dma->prot & IOMMU_READ))
+> +		return 0;
+> +
+> +	mm = get_task_mm(dma->task);
+> +
+> +	if (!mm)
+> +		return 0;
+> +
+> +	if (kthread)
+> +		use_mm(mm);
+> +	else if (current->mm != mm)
+> +		goto out;
+> +
+> +	offset = iova - dma->iova;
+> +
+> +	if (count > dma->size - offset)
+> +		count = dma->size - offset;
+> +
+> +	vaddr = dma->vaddr + offset;
+> +
+> +	if (write)
+> +		done = __copy_to_user((void __user *)vaddr,
+> +				       data, count) ? 0 : count;
+> +	else
+> +		done = __copy_from_user(data, (void __user *)vaddr,
+> +					count) ? 0 : count;
+> +
+> +	if (kthread)
+> +		unuse_mm(mm);
+> +out:
+> +	mmput(mm);
+> +	return done;
 
-configs tested: 170
-configs skipped: 0
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Return 0 on error?  Why wouldn't this function decide the errno rather
+than masking them all as -EFAULT by the callee below?  Thanks,
 
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-sparc                            allyesconfig
-ia64                                defconfig
-parisc                generic-32bit_defconfig
-arc                                 defconfig
-s390                          debug_defconfig
-h8300                    h8300h-sim_defconfig
-parisc                generic-64bit_defconfig
-s390                             allmodconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                             alldefconfig
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-h8300                     edosk2674_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                              allyesconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-x86_64               randconfig-a001-20200224
-x86_64               randconfig-a002-20200224
-x86_64               randconfig-a003-20200224
-i386                 randconfig-a001-20200224
-i386                 randconfig-a002-20200224
-i386                 randconfig-a003-20200224
-alpha                randconfig-a001-20200224
-m68k                 randconfig-a001-20200224
-mips                 randconfig-a001-20200224
-nds32                randconfig-a001-20200224
-parisc               randconfig-a001-20200224
-riscv                randconfig-a001-20200224
-nios2                randconfig-a001-20200224
-c6x                  randconfig-a001-20200224
-sparc64              randconfig-a001-20200224
-microblaze           randconfig-a001-20200224
-h8300                randconfig-a001-20200224
-csky                 randconfig-a001-20200224
-openrisc             randconfig-a001-20200224
-s390                 randconfig-a001-20200224
-sh                   randconfig-a001-20200224
-xtensa               randconfig-a001-20200224
-x86_64               randconfig-b001-20200224
-x86_64               randconfig-b002-20200224
-x86_64               randconfig-b003-20200224
-i386                 randconfig-b001-20200224
-i386                 randconfig-b002-20200224
-i386                 randconfig-b003-20200224
-x86_64               randconfig-c001-20200224
-x86_64               randconfig-c002-20200224
-x86_64               randconfig-c003-20200224
-i386                 randconfig-c001-20200224
-i386                 randconfig-c002-20200224
-i386                 randconfig-c003-20200224
-x86_64               randconfig-d001-20200224
-x86_64               randconfig-d002-20200224
-x86_64               randconfig-d003-20200224
-i386                 randconfig-d001-20200224
-i386                 randconfig-d002-20200224
-i386                 randconfig-d003-20200224
-x86_64               randconfig-e001-20200224
-x86_64               randconfig-e002-20200224
-x86_64               randconfig-e003-20200224
-i386                 randconfig-e001-20200224
-i386                 randconfig-e002-20200224
-i386                 randconfig-e003-20200224
-x86_64               randconfig-f001-20200224
-x86_64               randconfig-f002-20200224
-x86_64               randconfig-f003-20200224
-i386                 randconfig-f001-20200224
-i386                 randconfig-f002-20200224
-i386                 randconfig-f003-20200224
-x86_64               randconfig-g001-20200224
-x86_64               randconfig-g002-20200224
-x86_64               randconfig-g003-20200224
-i386                 randconfig-g001-20200224
-i386                 randconfig-g002-20200224
-i386                 randconfig-g003-20200224
-x86_64               randconfig-g001-20200223
-x86_64               randconfig-g002-20200223
-x86_64               randconfig-g003-20200223
-i386                 randconfig-g001-20200223
-i386                 randconfig-g002-20200223
-i386                 randconfig-g003-20200223
-x86_64               randconfig-h001-20200224
-x86_64               randconfig-h002-20200224
-x86_64               randconfig-h003-20200224
-i386                 randconfig-h001-20200224
-i386                 randconfig-h002-20200224
-i386                 randconfig-h003-20200224
-arc                  randconfig-a001-20200224
-arm                  randconfig-a001-20200224
-arm64                randconfig-a001-20200224
-ia64                 randconfig-a001-20200224
-powerpc              randconfig-a001-20200224
-sparc                randconfig-a001-20200224
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-s390                             alldefconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
+Alex
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+> +}
+> +
+> +static int vfio_iommu_type1_dma_rw(void *iommu_data, dma_addr_t iova,
+> +				   void *data, size_t count, bool write)
+> +{
+> +	struct vfio_iommu *iommu = iommu_data;
+> +	int ret = 0;
+> +	size_t done = 0;
+> +
+> +	mutex_lock(&iommu->lock);
+> +	while (count > 0) {
+> +		done = vfio_iommu_type1_dma_rw_chunk(iommu, iova, data,
+> +						     count, write);
+> +		if (!done) {
+> +			ret = -EFAULT;
+> +			break;
+> +		}
+> +
+> +		count -= done;
+> +		data += done;
+> +		iova += done;
+> +	}
+> +
+> +	mutex_unlock(&iommu->lock);
+> +	return ret;
+> +}
+> +
+>  static const struct vfio_iommu_driver_ops vfio_iommu_driver_ops_type1 = {
+>  	.name			= "vfio-iommu-type1",
+>  	.owner			= THIS_MODULE,
+> @@ -2338,6 +2414,7 @@ static const struct vfio_iommu_driver_ops vfio_iommu_driver_ops_type1 = {
+>  	.unpin_pages		= vfio_iommu_type1_unpin_pages,
+>  	.register_notifier	= vfio_iommu_type1_register_notifier,
+>  	.unregister_notifier	= vfio_iommu_type1_unregister_notifier,
+> +	.dma_rw			= vfio_iommu_type1_dma_rw,
+>  };
+>  
+>  static int __init vfio_iommu_type1_init(void)
+> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> index 2e1fa0c7396f..fea0cb1e61d2 100644
+> --- a/include/linux/vfio.h
+> +++ b/include/linux/vfio.h
+> @@ -82,6 +82,8 @@ struct vfio_iommu_driver_ops {
+>  					     struct notifier_block *nb);
+>  	int		(*unregister_notifier)(void *iommu_data,
+>  					       struct notifier_block *nb);
+> +	int		(*dma_rw)(void *iommu_data, dma_addr_t iova,
+> +				  void *data, size_t count, bool write);
+>  };
+>  
+>  extern int vfio_register_iommu_driver(const struct vfio_iommu_driver_ops *ops);
+> @@ -109,6 +111,9 @@ extern int vfio_pin_pages(struct device *dev, unsigned long *user_pfn,
+>  extern int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn,
+>  			    int npage);
+>  
+> +extern int vfio_dma_rw(struct vfio_group *group, dma_addr_t iova, void *data,
+> +		       size_t len, bool write);
+> +
+>  /* each type has independent events */
+>  enum vfio_notify_type {
+>  	VFIO_IOMMU_NOTIFY = 0,
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
