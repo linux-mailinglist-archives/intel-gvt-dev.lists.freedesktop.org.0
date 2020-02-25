@@ -1,53 +1,26 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92D7916B020
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Feb 2020 20:15:19 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BD8D16B7AE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Feb 2020 03:22:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 436526E8E6;
-	Mon, 24 Feb 2020 19:15:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E4FA06E897;
+	Tue, 25 Feb 2020 02:22:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 566006E8E6
+Received: from mail2.rbpf.bs (rbpf.bs [24.51.93.195])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D19FF6E897
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 24 Feb 2020 19:15:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582571716;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tp4/gxoVZyLzsQZK2RbOdubU9uGDPKG6UpGp1hSp4Fo=;
- b=AUMFqsbwLNxzP3dqQhXVcXM7kp6O45AY02zvVsNLx/B0AsRU5IKHbpXFSxNxVHj8sLTCPd
- BLtR+8PZVv4implhY9lscLZaiKbpO6MVVizm8j3KZsF6AjkAcOktEW0v5wZl1OuTQ+boZz
- ctJk3YBCTxfEVYOO2Ctr+avwQmWd+t4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-346-F7BL3YwJPta8MWRBmXzx4w-1; Mon, 24 Feb 2020 14:15:10 -0500
-X-MC-Unique: F7BL3YwJPta8MWRBmXzx4w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE648107ACCC;
- Mon, 24 Feb 2020 19:15:08 +0000 (UTC)
-Received: from w520.home (ovpn-116-28.phx2.redhat.com [10.3.116.28])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 72C7A90F46;
- Mon, 24 Feb 2020 19:15:05 +0000 (UTC)
-Date: Mon, 24 Feb 2020 12:15:04 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH v3 1/7] vfio: allow external user to get vfio group from
- device
-Message-ID: <20200224121504.367cdfb4@w520.home>
-In-Reply-To: <20200224084641.31696-1-yan.y.zhao@intel.com>
-References: <20200224084350.31574-1-yan.y.zhao@intel.com>
- <20200224084641.31696-1-yan.y.zhao@intel.com>
+ Tue, 25 Feb 2020 02:21:59 +0000 (UTC)
+Received: from unknown (HELO corisbank.com) ([103.207.36.17])
+ by mail2.rbpf.bs with ESMTP; 24 Feb 2020 21:21:28 -0500
+From: Coris Bank <derek@corisbank.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Are you still alive? Urgent reply is needed 
+Date: 24 Feb 2020 18:21:26 -0800
+Message-ID: <20200224182126.095F92D24E543D9B@corisbank.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,114 +33,29 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kevin.tian@intel.com, kvm@vger.kernel.org, linux-kernel@vger.kernel.org,
- zhenyuw@linux.intel.com, peterx@redhat.com, pbonzini@redhat.com,
- intel-gvt-dev@lists.freedesktop.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: kentpace@sina.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 24 Feb 2020 03:46:41 -0500
-Yan Zhao <yan.y.zhao@intel.com> wrote:
-
-> external user is able to
-> 1. add a device into an vfio group
-
-How so?  The device is added via existing mechanisms, the only thing
-added here is an interface to get a group reference from a struct
-device.
-
-> 2. call vfio_group_get_external_user_from_dev() with the device pointer
-> to get vfio_group associated with this device and increments the container
-> user counter to prevent the VFIO group from disposal before KVM exits.
-> 3. When the external KVM finishes, it calls vfio_group_put_external_user()
-> to release the VFIO group.
-> 
-> Suggested-by: Alex Williamson <alex.williamson@redhat.com>
-> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
-> ---
->  drivers/vfio/vfio.c  | 37 +++++++++++++++++++++++++++++++++++++
->  include/linux/vfio.h |  2 ++
->  2 files changed, 39 insertions(+)
-> 
-> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> index c8482624ca34..914bdf4b9d73 100644
-> --- a/drivers/vfio/vfio.c
-> +++ b/drivers/vfio/vfio.c
-> @@ -1720,6 +1720,43 @@ struct vfio_group *vfio_group_get_external_user(struct file *filep)
->  }
->  EXPORT_SYMBOL_GPL(vfio_group_get_external_user);
->  
-> +/**
-> + * External user API, exported by symbols to be linked dynamically.
-> + *
-> + * The protocol includes:
-> + * 1. External user add a device into a vfio group
-> + *
-> + * 2. The external user calls vfio_group_get_external_user_from_dev()
-> + * with the device pointer
-> + * to verify that:
-> + *	- there's a vfio group associated with it and is initialized;
-> + *	- IOMMU is set for the vfio group.
-> + * If both checks passed, vfio_group_get_external_user_from_dev()
-> + * increments the container user counter to prevent
-> + * the VFIO group from disposal before KVM exits.
-> + *
-> + * 3. When the external KVM finishes, it calls
-> + * vfio_group_put_external_user() to release the VFIO group.
-> + * This call decrements the container user counter.
-> + */
-
-I don't think we need to duplicate this whole comment block for a
-_from_dev() version of the existing vfio_group_get_external_user().
-Please merge the comments.
-
-> +
-> +struct vfio_group *vfio_group_get_external_user_from_dev(struct device *dev)
-> +{
-> +	struct vfio_group *group;
-> +	int ret;
-> +
-> +	group = vfio_group_get_from_dev(dev);
-> +	if (!group)
-> +		return ERR_PTR(-ENODEV);
-> +
-> +	ret = vfio_group_add_container_user(group);
-> +	if (ret)
-> +		return ERR_PTR(ret);
-
-Error path leaks group reference.
-
-> +
-> +	return group;
-> +}
-> +EXPORT_SYMBOL_GPL(vfio_group_get_external_user_from_dev);
-> +
->  void vfio_group_put_external_user(struct vfio_group *group)
->  {
->  	vfio_group_try_dissolve_container(group);
-> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-> index e42a711a2800..2e1fa0c7396f 100644
-> --- a/include/linux/vfio.h
-> +++ b/include/linux/vfio.h
-> @@ -94,6 +94,8 @@ extern void vfio_unregister_iommu_driver(
->   */
->  extern struct vfio_group *vfio_group_get_external_user(struct file *filep);
->  extern void vfio_group_put_external_user(struct vfio_group *group);
-> +extern
-> +struct vfio_group *vfio_group_get_external_user_from_dev(struct device *dev);
-
-Slight cringe at this line wrap, personally would prefer to wrap the
-args as done repeatedly elsewhere in this file.  Thanks,
-
-Alex
-
->  extern bool vfio_external_group_match_file(struct vfio_group *group,
->  					   struct file *filep);
->  extern int vfio_external_user_iommu_id(struct vfio_group *group);
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+RGVhciBCZW5lZmljaWFyeSwKCgpQbGVhc2UgY29uZmlybSBpZiB5b3UgYXJlIHN0aWxsIGFsaXZl
+IGJlY2F1c2UgdHdvIGdlbnRsZSBtZW4gCndhbGtlZCBpbnRvIG15IG9mZmljZSB0aGlzIG1vcm5p
+bmcgdG8gY2xhaW0geW91ciBpbmhlcml0YW5jZSAKZnVuZHMgd2l0aCBvdXIgYmFuay4gVGhleSBz
+YWlkIHlvdSBhcmUgZGVhZCBhbmQgdGhhdCB0aGV5IGFyZSAKeW91ciByZXByZXNlbnRhdGl2ZXMu
+IAoKT24gTm92ZW1iZXIgMjEsIDIwMDguIEEgYnVzaW5lc3MgbWFuIChuYW1lIHdpdGhoZWxkIGZv
+ciBzZWN1cml0eSAKcmVhc29ucykgd2Fsa2VkIGludG8gb3VyIGJhbmsgdG8gb3BlbiBhIE5PTiBS
+RVNJREVOQ0UgQUNDT1VOVCBhbmQgCm1hZGUgeW91IGhpcyBORVhUIE9GIEtJTi4KSSBnb3QgeW91
+ciBlbWFpbCBhZGRyZXNzIGZyb20gdGhlIGZpbGUgb2YgeW91ciBiZW5lZmFjdG9yIGFzIGhpcyAK
+TkVYVCBPRiBLSU4uCkl0J3MgYmVlbiB5ZWFycyB3ZSBjb25maXJtZWQgeW91ciBiZW5lZmFjdG9y
+J3MgZGVhdGggYW5kIHlvdSBoYXZlIApub3QgY29udGFjdGVkIG91ciBiYW5rIHRvIGNsYWltIHlv
+dXIgaW5oZXJpdGFuY2UuIFlvdSBoYXZlIGEgCnRvdGFsIGJhbGFuY2Ugb2Yg4oKsMjksMDcxLDk3
+MC4wMC4KClRoZSBnZW50bGVtZW4gc3VibWl0dGVkIGFuIGFkZHJlc3Mgd2hlcmUgdGhleSB3YW50
+IHlvdXIgVklTQSAKREVCSVQKQVRNIENBUkQgc2VudC4KCklmIHlvdSBhcmUgc3RpbGwgYWxpdmUs
+IHBsZWFzZSBpbmRpY2F0ZSBieSBzZW5kaW5nIHlvdXIgZnVsbApjb250YWN0IGRldGFpbHMgd2l0
+aGluIDcgZGF5IG9mIHJlY2VpdmluZyB0aGlzIG1lc3NhZ2UsIGZhaWx1cmUKdG8gZG8gc28sIEkg
+d2lsbCBzZW5kIHRoZSBjYXJkIHRvIHRoZSBhZGRyZXNzIHN1Ym1pdHRlZCBieSB5b3VyCnJlcHJl
+c2VudGF0aXZlcy4KCgpSZWdhcmRzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
