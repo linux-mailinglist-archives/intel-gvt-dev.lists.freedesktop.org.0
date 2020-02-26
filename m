@@ -2,39 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E741716BAC1
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Feb 2020 08:36:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3723116FC6E
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Feb 2020 11:42:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 99BB16E9EA;
-	Tue, 25 Feb 2020 07:36:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D733E6E245;
+	Wed, 26 Feb 2020 10:42:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B4BC06E9EA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 25 Feb 2020 07:36:50 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C72AC6E245;
+ Wed, 26 Feb 2020 10:42:15 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2020 23:36:50 -0800
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Feb 2020 02:42:15 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,483,1574150400"; d="scan'208";a="410153033"
-Received: from zwan2-mobl3.ccr.corp.intel.com (HELO [10.249.169.198])
- ([10.249.169.198])
- by orsmga005.jf.intel.com with ESMTP; 24 Feb 2020 23:36:49 -0800
-Subject: Re: [PATCH] drm/i915/gvt: Fix orphan vgpu dmabuf_objs' lifetime
-To: Tina Zhang <tina.zhang@intel.com>
-References: <20200225053527.8336-1-tina.zhang@intel.com>
- <20200225053527.8336-2-tina.zhang@intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,487,1574150400"; 
+ d="asc'?scan'208";a="410562034"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by orsmga005.jf.intel.com with ESMTP; 26 Feb 2020 02:42:13 -0800
+Date: Wed, 26 Feb 2020 18:30:16 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-Message-ID: <3156da24-69bd-4bcf-b7ab-0992ddbe944a@linux.intel.com>
-Date: Tue, 25 Feb 2020 15:36:48 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+To: Jani Nikula <jani.nikula@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
+Subject: [PULL] gvt-fixes
+Message-ID: <20200226103016.GC10413@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20200225053527.8336-2-tina.zhang@intel.com>
-Content-Language: en-US
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,54 +44,92 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============0851696267=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
-On 2/25/2020 1:35 PM, Tina Zhang wrote:
-> Deleting dmabuf item's list head after releasing its container can lead
-> to KASAN-reported issue:
->
->    BUG: KASAN: use-after-free in __list_del_entry_valid+0x15/0xf0
->    Read of size 8 at addr ffff88818a4598a8 by task kworker/u8:3/13119
->
-> So fix this issue by puting deleting dmabuf_objs ahead of releasing its
-> container.
->
-> Fixes: dfb6ae4e14bd6 ("drm/i915/gvt: Handle orphan dmabuf_objs")
-> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
-> ---
->   drivers/gpu/drm/i915/gvt/dmabuf.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.c b/drivers/gpu/drm/i915/gvt/dmabuf.c
-> index b854bd243e11..526ae0a0b66e 100644
-> --- a/drivers/gpu/drm/i915/gvt/dmabuf.c
-> +++ b/drivers/gpu/drm/i915/gvt/dmabuf.c
-> @@ -151,12 +151,12 @@ static void dmabuf_gem_object_free(struct kref *kref)
->   			dmabuf_obj = container_of(pos,
->   					struct intel_vgpu_dmabuf_obj, list);
->   			if (dmabuf_obj == obj) {
-> +				list_del(pos);
->   				intel_gvt_hypervisor_put_vfio_device(vgpu);
->   				idr_remove(&vgpu->object_idr,
->   					   dmabuf_obj->dmabuf_id);
->   				kfree(dmabuf_obj->info);
->   				kfree(dmabuf_obj);
-> -				list_del(pos);
->   				break;
->   			}
->   		}
+--===============0851696267==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="AqsLC8rIMeq19msA"
+Content-Disposition: inline
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-thanks
+--AqsLC8rIMeq19msA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+
+Hi,
+
+Here's gvt-fixes for 5.6-rc with two fixes. One to resolve virtual
+display reset and another one for use-after-free in dmabuf destroy
+function.
+
+Thanks
+--
+The following changes since commit 0e9d7bb293f3f9c3ee376b126141407efb265f31:
+
+  drm/i915/gvt: more locking for ppgtt mm LRU list (2020-02-10 10:04:34 +08=
+00)
+
+are available in the Git repository at:
+
+  https://github.com/intel/gvt-linux tags/gvt-fixes-2020-02-26
+
+for you to fetch changes up to b549c252b1292aea959cd9b83537fcb9384a6112:
+
+  drm/i915/gvt: Fix orphan vgpu dmabuf_objs' lifetime (2020-02-25 16:14:20 =
++0800)
+
+----------------------------------------------------------------
+gvt-fixes-2020-02-26
+
+- Fix virtual display reset (Tina)
+- Fix one use-after-free for dmabuf (Tina)
+
+----------------------------------------------------------------
+Tina Zhang (2):
+      drm/i915/gvt: Separate display reset from ALL_ENGINES reset
+      drm/i915/gvt: Fix orphan vgpu dmabuf_objs' lifetime
+
+ drivers/gpu/drm/i915/gvt/dmabuf.c | 2 +-
+ drivers/gpu/drm/i915/gvt/vgpu.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--AqsLC8rIMeq19msA
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXlZIuAAKCRCxBBozTXgY
+J/06AJoDctvXhNmYi3oHn0Zt7b7M9ZvJ4wCeIlHdyomjP99Tu3oz7DRwGOWYHpk=
+=k0jF
+-----END PGP SIGNATURE-----
+
+--AqsLC8rIMeq19msA--
+
+--===============0851696267==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0851696267==--
