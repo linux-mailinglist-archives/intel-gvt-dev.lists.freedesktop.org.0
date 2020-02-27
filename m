@@ -1,37 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED263170C4E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Feb 2020 00:09:04 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6EC01170D9B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Feb 2020 02:05:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 96EA36E27F;
-	Wed, 26 Feb 2020 23:09:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC8AD6E03F;
+	Thu, 27 Feb 2020 01:05:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 50DAE6E1BB;
- Wed, 26 Feb 2020 23:09:02 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B4EB06E03F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 27 Feb 2020 01:05:37 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Feb 2020 15:09:01 -0800
-X-IronPort-AV: E=Sophos;i="5.70,489,1574150400"; d="scan'208";a="230586727"
-Received: from rdvivi-losangeles.jf.intel.com (HELO intel.com)
- ([10.165.21.202])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Feb 2020 15:09:01 -0800
-Date: Wed, 26 Feb 2020 15:10:00 -0800
-From: Rodrigo Vivi <rodrigo.vivi@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PULL] gvt-next
-Message-ID: <20200226231000.GA2094112@intel.com>
-References: <20200226103840.GD10413@zhen-hp.sh.intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200226103840.GD10413@zhen-hp.sh.intel.com>
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Feb 2020 17:05:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,490,1574150400"; d="scan'208";a="271965918"
+Received: from kechen-optiplex-9020.bj.intel.com ([10.238.158.100])
+ by fmsmga002.fm.intel.com with ESMTP; 26 Feb 2020 17:05:35 -0800
+From: Tina Zhang <tina.zhang@intel.com>
+To: 
+Subject: [PATCH] drm/i915/gvt: Fix dma-buf display blur issue on CFL
+Date: Thu, 27 Feb 2020 09:00:41 +0800
+Message-Id: <20200227010041.32248-1-tina.zhang@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,91 +40,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jani Nikula <jani.nikula@intel.com>,
- intel-gfx <intel-gfx@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, zhenyuw@linux.intel.com,
+ Tina Zhang <tina.zhang@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Feb 26, 2020 at 06:38:40PM +0800, Zhenyu Wang wrote:
-> 
-> Hi,
-> 
-> Here's gvt-next pull. Mostly for cleanup and kvmgt specific struct
-> has been moved to its own module, also enable VFIO edid for all platform
-> including CML. Pls see details below.
+Commit c3b5a8430daad ("drm/i915/gvt: Enable gfx virtualiztion for CFL")
+added the support on CFL. The vgpu emulation hotplug support on CFL was
+supposed to be included in that patch. Without the vgpu emulation
+hotplug support, the dma-buf based display gives us a blur face.
 
-pulled, thanks
+So fix this issue by adding the vgpu emulation hotplug support on CFL.
 
-> 
-> Thanks
-> --
-> The following changes since commit e24bcd34c1dd7dabde4a8546920537f7137e3c5f:
-> 
->   drm/i915/dp: Add all tiled and port sync conns to modeset (2020-02-20 13:55:02 +0530)
-> 
-> are available in the Git repository at:
-> 
->   https://github.com/intel/gvt-linux tags/gvt-next-2020-02-26
-> 
-> for you to fetch changes up to a8bb49b64c4f4284fb36169bdd9fc6efd62eb26a:
-> 
->   drm/i915/gvt: Fix drm_WARN issue where vgpu ptr is unavailable (2020-02-25 16:13:04 +0800)
-> 
-> ----------------------------------------------------------------
-> gvt-next-2020-02-26
-> 
-> - Enable VFIO edid for all platform (Zhenyu)
-> - Code cleanup for attr group and unused vblank complete (Zhenyu, Julian)
-> - Make gvt oblivious of kvmgt data structures (Julian)
-> - Make WARN* drm specific (Pankaj)
-> 
-> ----------------------------------------------------------------
-> Julian Stecklina (2):
->       drm/i915/gvt: remove unused vblank_done completion
->       drm/i915/gvt: make gvt oblivious of kvmgt data structures
-> 
-> Pankaj Bharadiya (2):
->       drm/i915/gvt: Make WARN* drm specific where drm_priv ptr is available
->       drm/i915/gvt: Make WARN* drm specific where vgpu ptr is available
-> 
-> Tina Zhang (1):
->       drm/i915/gvt: Fix drm_WARN issue where vgpu ptr is unavailable
-> 
-> Zhenyu Wang (3):
->       drm/i915/gvt: remove unused type attributes
->       drm/i915/gvt: Enable vfio edid for all GVT supported platform
->       Merge drm-intel-next-queued into gvt-next
-> 
->  drivers/gpu/drm/i915/gvt/aperture_gm.c  |   6 +-
->  drivers/gpu/drm/i915/gvt/cfg_space.c    |  23 ++-
->  drivers/gpu/drm/i915/gvt/cmd_parser.c   |   4 +-
->  drivers/gpu/drm/i915/gvt/display.c      |   6 +-
->  drivers/gpu/drm/i915/gvt/dmabuf.c       |   4 +-
->  drivers/gpu/drm/i915/gvt/edid.c         |  19 +-
->  drivers/gpu/drm/i915/gvt/gtt.c          |  21 ++-
->  drivers/gpu/drm/i915/gvt/gvt.c          |   8 +-
->  drivers/gpu/drm/i915/gvt/gvt.h          |  37 +---
->  drivers/gpu/drm/i915/gvt/handlers.c     |  22 ++-
->  drivers/gpu/drm/i915/gvt/interrupt.c    |  15 +-
->  drivers/gpu/drm/i915/gvt/kvmgt.c        | 303 +++++++++++++++++++-------------
->  drivers/gpu/drm/i915/gvt/mmio.c         |  30 ++--
->  drivers/gpu/drm/i915/gvt/mmio_context.c |   6 +-
->  drivers/gpu/drm/i915/gvt/scheduler.c    |   6 +-
->  drivers/gpu/drm/i915/gvt/vgpu.c         |  10 +-
->  16 files changed, 304 insertions(+), 216 deletions(-)
-> 
-> 
-> -- 
-> Open Source Technology Center, Intel ltd.
-> 
-> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+Fixes: c3b5a8430daad ("drm/i915/gvt: Enable gfx virtualiztion for CFL")
+Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/display.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
+index 9bfc0ae30157..14e139e66e45 100644
+--- a/drivers/gpu/drm/i915/gvt/display.c
++++ b/drivers/gpu/drm/i915/gvt/display.c
+@@ -459,7 +459,8 @@ void intel_vgpu_emulate_hotplug(struct intel_vgpu *vgpu, bool connected)
+ 	struct drm_i915_private *dev_priv = vgpu->gvt->dev_priv;
+ 
+ 	/* TODO: add more platforms support */
+-	if (IS_SKYLAKE(dev_priv) || IS_KABYLAKE(dev_priv)) {
++	if (IS_SKYLAKE(dev_priv) || IS_KABYLAKE(dev_priv) ||
++		IS_COFFEELAKE(dev_priv)) {
+ 		if (connected) {
+ 			vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
+ 				SFUSE_STRAP_DDID_DETECTED;
+-- 
+2.17.1
 
 _______________________________________________
 intel-gvt-dev mailing list
