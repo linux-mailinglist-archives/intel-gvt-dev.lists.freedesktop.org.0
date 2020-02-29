@@ -2,37 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 717C717148A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Feb 2020 10:57:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 306DB174548
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Feb 2020 06:54:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 20FB16E517;
-	Thu, 27 Feb 2020 09:57:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9A0EB6F4EA;
+	Sat, 29 Feb 2020 05:54:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4A5B46E517
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 08FFD6F4EA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 27 Feb 2020 09:57:09 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Sat, 29 Feb 2020 05:54:47 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2020 01:57:08 -0800
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2020 21:54:47 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,491,1574150400"; 
- d="asc'?scan'208";a="272126194"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga002.fm.intel.com with ESMTP; 27 Feb 2020 01:57:07 -0800
-Date: Thu, 27 Feb 2020 17:45:09 +0800
+X-IronPort-AV: E=Sophos;i="5.70,498,1574150400"; 
+ d="scan'208,223";a="231294041"
+Received: from zhangya5-mobl1.ccr.corp.intel.com (HELO
+ dell-xps.ccr.corp.intel.com) ([10.255.29.74])
+ by fmsmga007.fm.intel.com with ESMTP; 28 Feb 2020 21:54:45 -0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Tina Zhang <tina.zhang@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: Fix dma-buf display blur issue on CFL
-Message-ID: <20200227094509.GC5412@zhen-hp.sh.intel.com>
-References: <20200227010041.32248-1-tina.zhang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: Fix unnecessary schedule timer when no vGPU
+ exits
+Date: Sat, 29 Feb 2020 13:54:45 +0800
+Message-Id: <20200229055445.31481-1-zhenyuw@linux.intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200227010041.32248-1-tina.zhang@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,89 +44,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1890113832=="
+Cc: Colin Xu <colin.xu@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+From commit f25a49ab8ab9 ("drm/i915/gvt: Use vgpu_lock to protect per
+vgpu access") the vgpu idr destroy is moved later than vgpu resource
+destroy, then it would fail to stop timer for schedule policy clean
+which to check vgpu idr for any left vGPU. So this trys to destroy
+vgpu idr earlier.
 
---===============1890113832==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="JYK4vJDZwFMowpUq"
-Content-Disposition: inline
+Cc: Colin Xu <colin.xu@intel.com>
+Fixes: f25a49ab8ab9 ("drm/i915/gvt: Use vgpu_lock to protect per vgpu access")
+Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+---
+ drivers/gpu/drm/i915/gvt/vgpu.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-
---JYK4vJDZwFMowpUq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2020.02.27 09:00:41 +0800, Tina Zhang wrote:
-> Commit c3b5a8430daad ("drm/i915/gvt: Enable gfx virtualiztion for CFL")
-> added the support on CFL. The vgpu emulation hotplug support on CFL was
-> supposed to be included in that patch. Without the vgpu emulation
-> hotplug support, the dma-buf based display gives us a blur face.
->=20
-> So fix this issue by adding the vgpu emulation hotplug support on CFL.
->=20
-> Fixes: c3b5a8430daad ("drm/i915/gvt: Enable gfx virtualiztion for CFL")
-> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/display.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gv=
-t/display.c
-> index 9bfc0ae30157..14e139e66e45 100644
-> --- a/drivers/gpu/drm/i915/gvt/display.c
-> +++ b/drivers/gpu/drm/i915/gvt/display.c
-> @@ -459,7 +459,8 @@ void intel_vgpu_emulate_hotplug(struct intel_vgpu *vg=
-pu, bool connected)
->  	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
-> =20
->  	/* TODO: add more platforms support */
-> -	if (IS_SKYLAKE(dev_priv) || IS_KABYLAKE(dev_priv)) {
-> +	if (IS_SKYLAKE(dev_priv) || IS_KABYLAKE(dev_priv) ||
-> +		IS_COFFEELAKE(dev_priv)) {
->  		if (connected) {
->  			vgpu_vreg_t(vgpu, SFUSE_STRAP) |=3D
->  				SFUSE_STRAP_DDID_DETECTED;
-
-Maybe more clean way is to check platform only when enable VFIO edid
-so we don't need to add extra hw check in edid handling, so won't bring
-extra step to miss sth, but can leave that later..
-
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
-thanks
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---JYK4vJDZwFMowpUq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXlePpAAKCRCxBBozTXgY
-J+bFAJ94pbUh6QPZjmrmAA31HV1bdEJaVQCfbu/4okLMfHBHLOxLXXg+wCZ6E+U=
-=p4KG
------END PGP SIGNATURE-----
-
---JYK4vJDZwFMowpUq--
-
---===============1890113832==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index 76fa0493228f..9213b64450c3 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -274,10 +274,17 @@ void intel_gvt_destroy_vgpu(struct intel_vgpu *vgpu)
+ 	struct drm_i915_private *i915 = vgpu->gvt->dev_priv;
+ 	struct intel_gvt *gvt = vgpu->gvt;
+ 
+-	mutex_lock(&vgpu->vgpu_lock);
+-
+ 	drm_WARN(&i915->drm, vgpu->active, "vGPU is still active!\n");
+ 
++	/*
++	 * remove idr first so later clean can judge if need to stop
++	 * service if no active vgpu.
++	 */
++	mutex_lock(&gvt->lock);
++	idr_remove(&gvt->vgpu_idr, vgpu->id);
++	mutex_unlock(&gvt->lock);
++
++	mutex_lock(&vgpu->vgpu_lock);
+ 	intel_gvt_debugfs_remove_vgpu(vgpu);
+ 	intel_vgpu_clean_sched_policy(vgpu);
+ 	intel_vgpu_clean_submission(vgpu);
+@@ -292,7 +299,6 @@ void intel_gvt_destroy_vgpu(struct intel_vgpu *vgpu)
+ 	mutex_unlock(&vgpu->vgpu_lock);
+ 
+ 	mutex_lock(&gvt->lock);
+-	idr_remove(&gvt->vgpu_idr, vgpu->id);
+ 	if (idr_is_empty(&gvt->vgpu_idr))
+ 		intel_gvt_clean_irq(gvt);
+ 	intel_gvt_update_vgpu_types(gvt);
+-- 
+2.25.0
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1890113832==--
