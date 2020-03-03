@@ -2,32 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85085175610
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Mar 2020 09:36:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 230A2176E24
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Mar 2020 05:45:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3D97E89A94;
-	Mon,  2 Mar 2020 08:36:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8E4BA6E977;
+	Tue,  3 Mar 2020 04:45:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6380589A94
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 970286E977
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Mar 2020 08:36:28 +0000 (UTC)
+ Tue,  3 Mar 2020 04:45:03 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2020 00:36:27 -0800
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2020 20:45:02 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,506,1574150400"; d="scan'208";a="239473673"
-Received: from kechen-optiplex-9020.bj.intel.com ([10.238.158.100])
- by orsmga003.jf.intel.com with ESMTP; 02 Mar 2020 00:36:26 -0800
-From: Tina Zhang <tina.zhang@intel.com>
-To: 
-Subject: [PATCH] drm/i915/gvt: Add some regs to force-to-nonpriv whitelist
-Date: Mon,  2 Mar 2020 16:31:30 +0800
-Message-Id: <20200302083130.17831-1-tina.zhang@intel.com>
-X-Mailer: git-send-email 2.17.1
+X-IronPort-AV: E=Sophos;i="5.70,510,1574150400"; d="scan'208";a="412608623"
+Received: from coxu-arch-shz.sh.intel.com (HELO [10.239.160.52])
+ ([10.239.160.52])
+ by orsmga005.jf.intel.com with ESMTP; 02 Mar 2020 20:45:01 -0800
+Subject: Re: [PATCH] drm/i915/gvt: Fix unnecessary schedule timer when no vGPU
+ exits
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gvt-dev@lists.freedesktop.org
+References: <20200229055445.31481-1-zhenyuw@linux.intel.com>
+From: Colin Xu <Colin.Xu@intel.com>
+Message-ID: <5e6958d6-4850-e167-348c-fa718938f4f5@intel.com>
+Date: Tue, 3 Mar 2020 12:45:01 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <20200229055445.31481-1-zhenyuw@linux.intel.com>
+Content-Language: en-US
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,59 +47,77 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org, zhenyuw@linux.intel.com,
- Tina Zhang <tina.zhang@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: Colin.Xu@intel.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Those regs are added in order to slove the following complains:
+Yes vgpu_lock is acquired after gvt->lock and vgpu_idr is in gvt domain 
+so removing
 
- [70811.201818] gvt: vgpu(1) Invalid FORCE_NONPRIV write 2341 at offset 24d8
- [70811.201825] gvt: vgpu(1) Invalid FORCE_NONPRIV write 2351 at offset 24dc
- [70811.201831] gvt: vgpu(1) Invalid FORCE_NONPRIV write 10000d82 at offset 24e0
- [70811.201837] gvt: vgpu(1) Invalid FORCE_NONPRIV write 10064844 at offset 24e4
+it doesn't need vgpu_lock but need gvt->lock. And remove idr first can 
+guarantee
 
-So solve them by adding the required regs to the whitelist.
+that when vgpu destroy is on-going, other vgpu acquiring can exit asap 
+so that no
 
-Signed-off-by: Tina Zhang <tina.zhang@intel.com>
----
- drivers/gpu/drm/i915/gvt/handlers.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+race-condition with the cleanup tasks.
 
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 1793f6991fa8..0946d5618d29 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -460,11 +460,14 @@ static int pipeconf_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
- 	return 0;
- }
- 
--/* ascendingly sorted */
-+/* sorted in ascending order */
- static i915_reg_t force_nonpriv_white_list[] = {
-+	_MMIO(0xd80),
- 	GEN9_CS_DEBUG_MODE1, //_MMIO(0x20ec)
- 	GEN9_CTX_PREEMPT_REG,//_MMIO(0x2248)
--	PS_INVOCATION_COUNT,//_MMIO(0x2348)
-+	CL_PRIMITIVES_COUNT, //_MMIO(0x2340)
-+	PS_INVOCATION_COUNT, //_MMIO(0x2348)
-+	PS_DEPTH_COUNT, //_MMIO(0x2350)
- 	GEN8_CS_CHICKEN1,//_MMIO(0x2580)
- 	_MMIO(0x2690),
- 	_MMIO(0x2694),
-@@ -489,6 +492,7 @@ static i915_reg_t force_nonpriv_white_list[] = {
- 	_MMIO(0xe18c),
- 	_MMIO(0xe48c),
- 	_MMIO(0xe5f4),
-+	_MMIO(0x64844),
- };
- 
- /* a simple bsearch */
+Thanks a lot for the fix!
+
+Acked-by: Colin Xu <colin.xu@intel.com>
+
+On 2020-02-29 13:54, Zhenyu Wang wrote:
+>  From commit f25a49ab8ab9 ("drm/i915/gvt: Use vgpu_lock to protect per
+> vgpu access") the vgpu idr destroy is moved later than vgpu resource
+> destroy, then it would fail to stop timer for schedule policy clean
+> which to check vgpu idr for any left vGPU. So this trys to destroy
+> vgpu idr earlier.
+>
+> Cc: Colin Xu <colin.xu@intel.com>
+> Fixes: f25a49ab8ab9 ("drm/i915/gvt: Use vgpu_lock to protect per vgpu access")
+> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> ---
+>   drivers/gpu/drm/i915/gvt/vgpu.c | 12 +++++++++---
+>   1 file changed, 9 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+> index 76fa0493228f..9213b64450c3 100644
+> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+> @@ -274,10 +274,17 @@ void intel_gvt_destroy_vgpu(struct intel_vgpu *vgpu)
+>   	struct drm_i915_private *i915 = vgpu->gvt->dev_priv;
+>   	struct intel_gvt *gvt = vgpu->gvt;
+>   
+> -	mutex_lock(&vgpu->vgpu_lock);
+> -
+>   	drm_WARN(&i915->drm, vgpu->active, "vGPU is still active!\n");
+>   
+> +	/*
+> +	 * remove idr first so later clean can judge if need to stop
+> +	 * service if no active vgpu.
+> +	 */
+> +	mutex_lock(&gvt->lock);
+> +	idr_remove(&gvt->vgpu_idr, vgpu->id);
+> +	mutex_unlock(&gvt->lock);
+> +
+> +	mutex_lock(&vgpu->vgpu_lock);
+>   	intel_gvt_debugfs_remove_vgpu(vgpu);
+>   	intel_vgpu_clean_sched_policy(vgpu);
+>   	intel_vgpu_clean_submission(vgpu);
+> @@ -292,7 +299,6 @@ void intel_gvt_destroy_vgpu(struct intel_vgpu *vgpu)
+>   	mutex_unlock(&vgpu->vgpu_lock);
+>   
+>   	mutex_lock(&gvt->lock);
+> -	idr_remove(&gvt->vgpu_idr, vgpu->id);
+>   	if (idr_is_empty(&gvt->vgpu_idr))
+>   		intel_gvt_clean_irq(gvt);
+>   	intel_gvt_update_vgpu_types(gvt);
+
 -- 
-2.17.1
+Best Regards,
+Colin Xu
 
 _______________________________________________
 intel-gvt-dev mailing list
