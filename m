@@ -1,38 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C54D917BAB3
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Mar 2020 11:46:06 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50E5917C2E8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Mar 2020 17:28:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E82AE6ECD0;
-	Fri,  6 Mar 2020 10:46:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EEA2C6E49B;
+	Fri,  6 Mar 2020 16:27:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E7D656E0DD
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 60E8F6E49B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Mar 2020 10:46:03 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2020 02:46:03 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,521,1574150400"; d="scan'208";a="244584257"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 06 Mar 2020 02:46:00 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jAAUS-0004GC-5m; Fri, 06 Mar 2020 18:46:00 +0800
-Date: Fri, 06 Mar 2020 18:45:14 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Steven Rostedt <rostedt@goodmis.org>
-Subject: [intel-gvt-linux:gvt-fixes] BUILD SUCCESS
- 2fa7e15c5f466fdd0c0b196b1dc4a65d191efd96
-Message-ID: <5e6229ba.G5VzmGJnSdIr+xbt%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Fri,  6 Mar 2020 16:27:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1583512077;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6kqh0g+8DkB9jTIgFcJTQym/+RkRpyGwJz3Ff5AmMcU=;
+ b=DX3Jf0w/gCzjqu0dfK7x8orrtKc/71HlcJ6sInrHffIVKHk9KADWwE8p0TctAqhLfPNV7K
+ TRaW9MD57SG98O5vZjRAtmUbr9XTst7iDbtBCul3A67TGLQNsHaANDxet/uoJDZ80B6A/C
+ 5OuRAmJrJQdpBEYYs8/d6VQkKLDWGc8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-407-re09S1kfOLaP6IBVkerikQ-1; Fri, 06 Mar 2020 11:27:54 -0500
+X-MC-Unique: re09S1kfOLaP6IBVkerikQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9CB6800D6C;
+ Fri,  6 Mar 2020 16:27:52 +0000 (UTC)
+Received: from x1.home (ovpn-116-28.phx2.redhat.com [10.3.116.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1DBB519C69;
+ Fri,  6 Mar 2020 16:27:47 +0000 (UTC)
+Date: Fri, 6 Mar 2020 09:27:46 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH v3 2/7] vfio: introduce vfio_dma_rw to read/write a
+ range of IOVAs
+Message-ID: <20200306092746.088a01a3@x1.home>
+In-Reply-To: <20200306012148.GB1530@joy-OptiPlex-7040>
+References: <20200224084350.31574-1-yan.y.zhao@intel.com>
+ <20200224084715.31753-1-yan.y.zhao@intel.com>
+ <20200306012148.GB1530@joy-OptiPlex-7040>
+Organization: Red Hat
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,221 +62,86 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: libo.zhu@intel.com, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
+Cc: "Tian, Kevin" <kevin.tian@intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-fixes
-branch HEAD: 2fa7e15c5f466fdd0c0b196b1dc4a65d191efd96  drm/i915/gvt: Fix emulated vbt size issue
+On Thu, 5 Mar 2020 20:21:48 -0500
+Yan Zhao <yan.y.zhao@intel.com> wrote:
 
-elapsed time: 482m
+> On Mon, Feb 24, 2020 at 04:47:15PM +0800, Zhao, Yan Y wrote:
+> > vfio_dma_rw will read/write a range of user space memory pointed to by
+> > IOVA into/from a kernel buffer without enforcing pinning the user space
+> > memory.
+> > 
+> > TODO: mark the IOVAs to user space memory dirty if they are written in
+> > vfio_dma_rw().
+> > 
+> > Cc: Kevin Tian <kevin.tian@intel.com>
+> > Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+> > ---
+> >  drivers/vfio/vfio.c             | 49 +++++++++++++++++++++
+> >  drivers/vfio/vfio_iommu_type1.c | 77 +++++++++++++++++++++++++++++++++
+> >  include/linux/vfio.h            |  5 +++
+> >  3 files changed, 131 insertions(+)
+> > 
+> > diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+> > index 914bdf4b9d73..902867627cbf 100644
+> > --- a/drivers/vfio/vfio.c
+> > +++ b/drivers/vfio/vfio.c
+> > @@ -1998,6 +1998,55 @@ int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn, int npage)
+> >  }
+> >  EXPORT_SYMBOL(vfio_unpin_pages);
+> >  
+> > +
+> > +/*
+> > + * This interface allows the CPUs to perform some sort of virtual DMA on
+> > + * behalf of the device.
+> > + *
+> > + * CPUs read/write a range of IOVAs pointing to user space memory into/from
+> > + * a kernel buffer.
+> > + *
+> > + * As the read/write of user space memory is conducted via the CPUs and is
+> > + * not a real device DMA, it is not necessary to pin the user space memory.
+> > + *
+> > + * The caller needs to call vfio_group_get_external_user() or
+> > + * vfio_group_get_external_user_from_dev() prior to calling this interface,
+> > + * so as to prevent the VFIO group from disposal in the middle of the call.
+> > + * But it can keep the reference to the VFIO group for several calls into
+> > + * this interface.
+> > + * After finishing using of the VFIO group, the caller needs to release the
+> > + * VFIO group by calling vfio_group_put_external_user().
+> > + *
+> > + * @group [in]: vfio group of a device
+> > + * @iova [in] : base IOVA of a user space buffer
+> > + * @data [in] : pointer to kernel buffer
+> > + * @len [in]  : kernel buffer length
+> > + * @write     : indicate read or write
+> > + * Return error code on failure or 0 on success.
+> > + */
+> > +int vfio_dma_rw(struct vfio_group *group, dma_addr_t iova,
+> > +		void *data, size_t len, bool write)  
+> hi Alex
+> May I rename this interface to vfio_dma_rw_from_group() that takes
+> VFIO group as arg and add another interface vfio_dma_rw(struct device *dev...) ?
+> That might be easier for a driver to use the second one if it does not care about
+> performance much.
 
-configs tested: 193
-configs skipped: 0
+Perhaps vfio_group_dma_rw() and vfio_dev_dma_rw()?  I'd be reluctant to
+add the latter, if a caller doesn't care about performance then they
+won't mind making a couple calls to get and release the group reference.
+Thanks,
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Alex
 
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-sparc                            allyesconfig
-microblaze                      mmu_defconfig
-parisc                generic-32bit_defconfig
-s390                                defconfig
-um                                  defconfig
-parisc                            allnoconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                             allyesconfig
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                           allyesconfig
-parisc                generic-64bit_defconfig
-x86_64               randconfig-a001-20200306
-x86_64               randconfig-a002-20200306
-x86_64               randconfig-a003-20200306
-i386                 randconfig-a001-20200306
-i386                 randconfig-a002-20200306
-i386                 randconfig-a003-20200306
-alpha                randconfig-a001-20200306
-m68k                 randconfig-a001-20200306
-mips                 randconfig-a001-20200306
-nds32                randconfig-a001-20200306
-parisc               randconfig-a001-20200306
-riscv                randconfig-a001-20200306
-c6x                  randconfig-a001-20200306
-h8300                randconfig-a001-20200306
-microblaze           randconfig-a001-20200306
-nios2                randconfig-a001-20200306
-sparc64              randconfig-a001-20200306
-csky                 randconfig-a001-20200305
-openrisc             randconfig-a001-20200305
-s390                 randconfig-a001-20200305
-sh                   randconfig-a001-20200305
-xtensa               randconfig-a001-20200305
-csky                 randconfig-a001-20200306
-openrisc             randconfig-a001-20200306
-s390                 randconfig-a001-20200306
-sh                   randconfig-a001-20200306
-xtensa               randconfig-a001-20200306
-x86_64               randconfig-b001-20200305
-x86_64               randconfig-b002-20200305
-x86_64               randconfig-b003-20200305
-i386                 randconfig-b001-20200305
-i386                 randconfig-b002-20200305
-i386                 randconfig-b003-20200305
-x86_64               randconfig-b001-20200306
-x86_64               randconfig-b002-20200306
-x86_64               randconfig-b003-20200306
-i386                 randconfig-b001-20200306
-i386                 randconfig-b002-20200306
-i386                 randconfig-b003-20200306
-x86_64               randconfig-c001-20200306
-x86_64               randconfig-c002-20200306
-x86_64               randconfig-c003-20200306
-i386                 randconfig-c001-20200306
-i386                 randconfig-c002-20200306
-i386                 randconfig-c003-20200306
-x86_64               randconfig-d001-20200306
-x86_64               randconfig-d002-20200306
-x86_64               randconfig-d003-20200306
-i386                 randconfig-d001-20200306
-i386                 randconfig-d002-20200306
-i386                 randconfig-d003-20200306
-x86_64               randconfig-e001-20200305
-x86_64               randconfig-e002-20200305
-x86_64               randconfig-e003-20200305
-i386                 randconfig-e001-20200305
-i386                 randconfig-e002-20200305
-i386                 randconfig-e003-20200305
-x86_64               randconfig-f001-20200305
-x86_64               randconfig-f002-20200305
-x86_64               randconfig-f003-20200305
-i386                 randconfig-f001-20200305
-i386                 randconfig-f002-20200305
-i386                 randconfig-f003-20200305
-x86_64               randconfig-f001-20200306
-x86_64               randconfig-f002-20200306
-x86_64               randconfig-f003-20200306
-i386                 randconfig-f001-20200306
-i386                 randconfig-f002-20200306
-i386                 randconfig-f003-20200306
-x86_64               randconfig-g001-20200305
-x86_64               randconfig-g002-20200305
-x86_64               randconfig-g003-20200305
-i386                 randconfig-g001-20200305
-i386                 randconfig-g002-20200305
-i386                 randconfig-g003-20200305
-x86_64               randconfig-h001-20200306
-x86_64               randconfig-h002-20200306
-x86_64               randconfig-h003-20200306
-i386                 randconfig-h001-20200306
-i386                 randconfig-h002-20200306
-i386                 randconfig-h003-20200306
-x86_64               randconfig-h001-20200305
-x86_64               randconfig-h002-20200305
-x86_64               randconfig-h003-20200305
-i386                 randconfig-h001-20200305
-i386                 randconfig-h002-20200305
-i386                 randconfig-h003-20200305
-arc                  randconfig-a001-20200306
-arm                  randconfig-a001-20200306
-arm64                randconfig-a001-20200306
-ia64                 randconfig-a001-20200306
-powerpc              randconfig-a001-20200306
-sparc                randconfig-a001-20200306
-arc                  randconfig-a001-20200305
-arm                  randconfig-a001-20200305
-arm64                randconfig-a001-20200305
-ia64                 randconfig-a001-20200305
-powerpc              randconfig-a001-20200305
-sparc                randconfig-a001-20200305
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                       zfcpdump_defconfig
-sh                          rsk7269_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
