@@ -1,41 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 561F817B3C6
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Mar 2020 02:31:20 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B46D017B411
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Mar 2020 02:55:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0A98C6EC4C;
-	Fri,  6 Mar 2020 01:31:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5E9E46EC4F;
+	Fri,  6 Mar 2020 01:55:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 593B26EC4C
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2C3FD6EC4F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Mar 2020 01:31:17 +0000 (UTC)
+ Fri,  6 Mar 2020 01:55:14 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2020 17:31:16 -0800
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2020 17:55:13 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,520,1574150400"; d="scan'208";a="234628571"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by orsmga008.jf.intel.com with ESMTP; 05 Mar 2020 17:31:13 -0800
-Date: Thu, 5 Mar 2020 20:21:48 -0500
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: "alex.williamson@redhat.com" <alex.williamson@redhat.com>
-Subject: Re: [PATCH v3 2/7] vfio: introduce vfio_dma_rw to read/write a range
- of IOVAs
-Message-ID: <20200306012148.GB1530@joy-OptiPlex-7040>
-References: <20200224084350.31574-1-yan.y.zhao@intel.com>
- <20200224084715.31753-1-yan.y.zhao@intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,520,1574150400"; 
+ d="asc'?scan'208";a="275356221"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga002.fm.intel.com with ESMTP; 05 Mar 2020 17:55:11 -0800
+Date: Fri, 6 Mar 2020 09:42:56 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [PATCH 1/3] drm/i915/gvt: cleanup debugfs scan_nonprivbb
+Message-ID: <20200306014256.GQ28483@zhen-hp.sh.intel.com>
+References: <20200304032307.2983-1-zhenyuw@linux.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200224084715.31753-1-yan.y.zhao@intel.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200304032307.2983-1-zhenyuw@linux.intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,233 +45,135 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Ding Zhuocheng <zhuocheng.ding@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Chris Wilson <chris@chris-wilson.co.uk>
+Content-Type: multipart/mixed; boundary="===============1789718298=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Feb 24, 2020 at 04:47:15PM +0800, Zhao, Yan Y wrote:
-> vfio_dma_rw will read/write a range of user space memory pointed to by
-> IOVA into/from a kernel buffer without enforcing pinning the user space
-> memory.
-> 
-> TODO: mark the IOVAs to user space memory dirty if they are written in
-> vfio_dma_rw().
-> 
-> Cc: Kevin Tian <kevin.tian@intel.com>
-> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+
+--===============1789718298==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="BjavXC7V3ilNTWHC"
+Content-Disposition: inline
+
+
+--BjavXC7V3ilNTWHC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+
+As no regression found for this series, I'll merge them.
+
+Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+On 2020.03.04 11:23:05 +0800, Zhenyu Wang wrote:
+> From: Chris Wilson <chris@chris-wilson.co.uk>
+>=20
+> Remove extra chatty message for debugfs scan_nonprivbb which is used
+> to enable scan for non privileged batch on specific engine. Just write
+> target i915 engine mask instead.
+>=20
+> Cc: Ding Zhuocheng <zhuocheng.ding@intel.com>
+> Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
+> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 > ---
->  drivers/vfio/vfio.c             | 49 +++++++++++++++++++++
->  drivers/vfio/vfio_iommu_type1.c | 77 +++++++++++++++++++++++++++++++++
->  include/linux/vfio.h            |  5 +++
->  3 files changed, 131 insertions(+)
-> 
-> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> index 914bdf4b9d73..902867627cbf 100644
-> --- a/drivers/vfio/vfio.c
-> +++ b/drivers/vfio/vfio.c
-> @@ -1998,6 +1998,55 @@ int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn, int npage)
+>  drivers/gpu/drm/i915/gvt/debugfs.c | 36 +-----------------------------
+>  1 file changed, 1 insertion(+), 35 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gv=
+t/debugfs.c
+> index 285f6011a537..874ee1de6b49 100644
+> --- a/drivers/gpu/drm/i915/gvt/debugfs.c
+> +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
+> @@ -128,6 +128,7 @@ static int
+>  vgpu_scan_nonprivbb_get(void *data, u64 *val)
+>  {
+>  	struct intel_vgpu *vgpu =3D (struct intel_vgpu *)data;
+> +
+>  	*val =3D vgpu->scan_nonprivbb;
+>  	return 0;
 >  }
->  EXPORT_SYMBOL(vfio_unpin_pages);
->  
-> +
-> +/*
-> + * This interface allows the CPUs to perform some sort of virtual DMA on
-> + * behalf of the device.
-> + *
-> + * CPUs read/write a range of IOVAs pointing to user space memory into/from
-> + * a kernel buffer.
-> + *
-> + * As the read/write of user space memory is conducted via the CPUs and is
-> + * not a real device DMA, it is not necessary to pin the user space memory.
-> + *
-> + * The caller needs to call vfio_group_get_external_user() or
-> + * vfio_group_get_external_user_from_dev() prior to calling this interface,
-> + * so as to prevent the VFIO group from disposal in the middle of the call.
-> + * But it can keep the reference to the VFIO group for several calls into
-> + * this interface.
-> + * After finishing using of the VFIO group, the caller needs to release the
-> + * VFIO group by calling vfio_group_put_external_user().
-> + *
-> + * @group [in]: vfio group of a device
-> + * @iova [in] : base IOVA of a user space buffer
-> + * @data [in] : pointer to kernel buffer
-> + * @len [in]  : kernel buffer length
-> + * @write     : indicate read or write
-> + * Return error code on failure or 0 on success.
-> + */
-> +int vfio_dma_rw(struct vfio_group *group, dma_addr_t iova,
-> +		void *data, size_t len, bool write)
-hi Alex
-May I rename this interface to vfio_dma_rw_from_group() that takes
-VFIO group as arg and add another interface vfio_dma_rw(struct device *dev...) ?
-That might be easier for a driver to use the second one if it does not care about
-performance much.
-
-Thanks
-Yan
-
-> +{
-> +	struct vfio_container *container;
-> +	struct vfio_iommu_driver *driver;
-> +	int ret = 0;
-> +
-> +	if (!group || !data || len <= 0)
-> +		return -EINVAL;
-> +
-> +	container = group->container;
-> +	driver = container->iommu_driver;
-> +
-> +	if (likely(driver && driver->ops->dma_rw))
-> +		ret = driver->ops->dma_rw(container->iommu_data,
-> +					  iova, data, len, write);
-> +	else
-> +		ret = -ENOTTY;
-> +
-> +	return ret;
-> +}
-> +EXPORT_SYMBOL(vfio_dma_rw);
-> +
->  static int vfio_register_iommu_notifier(struct vfio_group *group,
->  					unsigned long *events,
->  					struct notifier_block *nb)
-> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-> index 2ada8e6cdb88..74e1c425943c 100644
-> --- a/drivers/vfio/vfio_iommu_type1.c
-> +++ b/drivers/vfio/vfio_iommu_type1.c
-> @@ -27,6 +27,7 @@
->  #include <linux/iommu.h>
->  #include <linux/module.h>
->  #include <linux/mm.h>
-> +#include <linux/mmu_context.h>
->  #include <linux/rbtree.h>
->  #include <linux/sched/signal.h>
->  #include <linux/sched/mm.h>
-> @@ -2326,6 +2327,81 @@ static int vfio_iommu_type1_unregister_notifier(void *iommu_data,
->  	return blocking_notifier_chain_unregister(&iommu->notifier, nb);
+> @@ -142,42 +143,7 @@ static int
+>  vgpu_scan_nonprivbb_set(void *data, u64 val)
+>  {
+>  	struct intel_vgpu *vgpu =3D (struct intel_vgpu *)data;
+> -	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
+> -	enum intel_engine_id id;
+> -	char buf[128], *s;
+> -	int len;
+> -
+> -	val &=3D (1 << I915_NUM_ENGINES) - 1;
+> -
+> -	if (vgpu->scan_nonprivbb =3D=3D val)
+> -		return 0;
+> -
+> -	if (!val)
+> -		goto done;
+> -
+> -	len =3D sprintf(buf,
+> -		"gvt: vgpu %d turns on non-privileged batch buffers scanning on Engine=
+s:",
+> -		vgpu->id);
+> -
+> -	s =3D buf + len;
+> -
+> -	for (id =3D 0; id < I915_NUM_ENGINES; id++) {
+> -		struct intel_engine_cs *engine;
+> -
+> -		engine =3D dev_priv->engine[id];
+> -		if (engine && (val & (1 << id))) {
+> -			len =3D snprintf(s, 4, "%d, ", engine->id);
+> -			s +=3D len;
+> -		} else
+> -			val &=3D  ~(1 << id);
+> -	}
+> -
+> -	if (val)
+> -		sprintf(s, "low performance expected.");
+> -
+> -	pr_warn("%s\n", buf);
+> =20
+> -done:
+>  	vgpu->scan_nonprivbb =3D val;
+>  	return 0;
 >  }
->  
-> +static size_t vfio_iommu_type1_dma_rw_chunk(struct vfio_iommu *iommu,
-> +					    dma_addr_t iova, void *data,
-> +					    size_t count, bool write)
-> +{
-> +	struct mm_struct *mm;
-> +	unsigned long vaddr;
-> +	struct vfio_dma *dma;
-> +	bool kthread = current->mm == NULL;
-> +	size_t done = 0;
-> +	size_t offset;
-> +
-> +	dma = vfio_find_dma(iommu, iova, 1);
-> +	if (!dma)
-> +		return 0;
-> +
-> +	if ((write && !(dma->prot & IOMMU_WRITE)) ||
-> +			!(dma->prot & IOMMU_READ))
-> +		return 0;
-> +
-> +	mm = get_task_mm(dma->task);
-> +
-> +	if (!mm)
-> +		return 0;
-> +
-> +	if (kthread)
-> +		use_mm(mm);
-> +	else if (current->mm != mm)
-> +		goto out;
-> +
-> +	offset = iova - dma->iova;
-> +
-> +	if (count > dma->size - offset)
-> +		count = dma->size - offset;
-> +
-> +	vaddr = dma->vaddr + offset;
-> +
-> +	if (write)
-> +		done = __copy_to_user((void __user *)vaddr,
-> +				       data, count) ? 0 : count;
-> +	else
-> +		done = __copy_from_user(data, (void __user *)vaddr,
-> +					count) ? 0 : count;
-> +
-> +	if (kthread)
-> +		unuse_mm(mm);
-> +out:
-> +	mmput(mm);
-> +	return done;
-> +}
-> +
-> +static int vfio_iommu_type1_dma_rw(void *iommu_data, dma_addr_t iova,
-> +				   void *data, size_t count, bool write)
-> +{
-> +	struct vfio_iommu *iommu = iommu_data;
-> +	int ret = 0;
-> +	size_t done = 0;
-> +
-> +	mutex_lock(&iommu->lock);
-> +	while (count > 0) {
-> +		done = vfio_iommu_type1_dma_rw_chunk(iommu, iova, data,
-> +						     count, write);
-> +		if (!done) {
-> +			ret = -EFAULT;
-> +			break;
-> +		}
-> +
-> +		count -= done;
-> +		data += done;
-> +		iova += done;
-> +	}
-> +
-> +	mutex_unlock(&iommu->lock);
-> +	return ret;
-> +}
-> +
->  static const struct vfio_iommu_driver_ops vfio_iommu_driver_ops_type1 = {
->  	.name			= "vfio-iommu-type1",
->  	.owner			= THIS_MODULE,
-> @@ -2338,6 +2414,7 @@ static const struct vfio_iommu_driver_ops vfio_iommu_driver_ops_type1 = {
->  	.unpin_pages		= vfio_iommu_type1_unpin_pages,
->  	.register_notifier	= vfio_iommu_type1_register_notifier,
->  	.unregister_notifier	= vfio_iommu_type1_unregister_notifier,
-> +	.dma_rw			= vfio_iommu_type1_dma_rw,
->  };
->  
->  static int __init vfio_iommu_type1_init(void)
-> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-> index 2e1fa0c7396f..fea0cb1e61d2 100644
-> --- a/include/linux/vfio.h
-> +++ b/include/linux/vfio.h
-> @@ -82,6 +82,8 @@ struct vfio_iommu_driver_ops {
->  					     struct notifier_block *nb);
->  	int		(*unregister_notifier)(void *iommu_data,
->  					       struct notifier_block *nb);
-> +	int		(*dma_rw)(void *iommu_data, dma_addr_t iova,
-> +				  void *data, size_t count, bool write);
->  };
->  
->  extern int vfio_register_iommu_driver(const struct vfio_iommu_driver_ops *ops);
-> @@ -109,6 +111,9 @@ extern int vfio_pin_pages(struct device *dev, unsigned long *user_pfn,
->  extern int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn,
->  			    int npage);
->  
-> +extern int vfio_dma_rw(struct vfio_group *group, dma_addr_t iova, void *data,
-> +		       size_t len, bool write);
-> +
->  /* each type has independent events */
->  enum vfio_notify_type {
->  	VFIO_IOMMU_NOTIFY = 0,
-> -- 
-> 2.17.1
-> 
+> --=20
+> 2.25.1
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--BjavXC7V3ilNTWHC
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXmGqoAAKCRCxBBozTXgY
+J+a6AJ9oVthXD3025dv4iV+PlBJidZfhkACfaj+ROo5Z2UqKQSmjzqRMoB2OGaQ=
+=IE4N
+-----END PGP SIGNATURE-----
+
+--BjavXC7V3ilNTWHC--
+
+--===============1789718298==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1789718298==--
