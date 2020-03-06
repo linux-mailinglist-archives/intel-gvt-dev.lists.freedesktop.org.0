@@ -1,38 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B46D017B411
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Mar 2020 02:55:16 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43E5617B975
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Mar 2020 10:41:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5E9E46EC4F;
-	Fri,  6 Mar 2020 01:55:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BCBBC6E84B;
+	Fri,  6 Mar 2020 09:41:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2C3FD6EC4F
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1B01F6ECAA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Mar 2020 01:55:14 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Fri,  6 Mar 2020 09:41:46 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2020 17:55:13 -0800
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Mar 2020 01:41:45 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,520,1574150400"; 
- d="asc'?scan'208";a="275356221"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga002.fm.intel.com with ESMTP; 05 Mar 2020 17:55:11 -0800
-Date: Fri, 6 Mar 2020 09:42:56 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH 1/3] drm/i915/gvt: cleanup debugfs scan_nonprivbb
-Message-ID: <20200306014256.GQ28483@zhen-hp.sh.intel.com>
-References: <20200304032307.2983-1-zhenyuw@linux.intel.com>
-MIME-Version: 1.0
-In-Reply-To: <20200304032307.2983-1-zhenyuw@linux.intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+X-IronPort-AV: E=Sophos;i="5.70,521,1574150400"; d="scan'208";a="387776094"
+Received: from joy-desktop.sh.intel.com ([10.239.13.12])
+ by orsmga004.jf.intel.com with ESMTP; 06 Mar 2020 01:41:43 -0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] vfio/migration: fix dirty pages lost bug for ram beyond 3G
+Date: Fri,  6 Mar 2020 17:41:29 +0800
+Message-Id: <1583487689-9813-1-git-send-email-yan.y.zhao@intel.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,135 +40,139 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Ding Zhuocheng <zhuocheng.ding@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Chris Wilson <chris@chris-wilson.co.uk>
-Content-Type: multipart/mixed; boundary="===============1789718298=="
+Cc: Kevin Tian <kevin.tian@intel.com>, Yan Zhao <yan.y.zhao@intel.com>,
+ alex.williamson@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ kwankhede@nvidia.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+the start address passing to
+cpu_physical_memory_set_dirty_range() and
+cpu_physical_memory_set_dirty_lebitmap() is the address within the
+ram block plus ram block offset.
 
---===============1789718298==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="BjavXC7V3ilNTWHC"
-Content-Disposition: inline
+it's safe to set this start address to gpa if total memory is less than
+3G, as ram block offset for pc.ram is 0. But if memory size is beyond
+3G, gpa is not equal to the offset in its ram block.
 
+e.g.
+for gpa 0x100000000, its offset is actually 0xc0000000.
+and for gpa 0x42f500000, its offset should be 0x3EF500000.
 
---BjavXC7V3ilNTWHC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This fix is based on Kirti's VFIO live migration patch set v8.
+https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05542.html
+(for PATCH v8 11/13
+https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05553.html
+and PATCH v8 12/13
+https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05554.html
+}
 
+The idea behind it should also be applied to other VFIO live migraiton
+patch series below:
+https://lists.gnu.org/archive/html/qemu-devel/2019-11/msg01763.html
+(Kirti v9)
+https://lists.gnu.org/archive/html/qemu-devel/2019-02/msg04912.html
+(Yan)
+https://lists.gnu.org/archive/html/qemu-devel/2018-04/msg01138.html
+(Yulei RFC v4)
+https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg05568.html
+(Yulei RFC)
 
-As no regression found for this series, I'll merge them.
+Cc: Kevin Tian <kevin.tian@intel.com>
+Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+---
+ hw/vfio/common.c              | 5 ++++-
+ hw/vfio/migration.c           | 8 +++++---
+ include/hw/vfio/vfio-common.h | 3 ++-
+ 3 files changed, 11 insertions(+), 5 deletions(-)
 
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
-On 2020.03.04 11:23:05 +0800, Zhenyu Wang wrote:
-> From: Chris Wilson <chris@chris-wilson.co.uk>
->=20
-> Remove extra chatty message for debugfs scan_nonprivbb which is used
-> to enable scan for non privileged batch on specific engine. Just write
-> target i915 engine mask instead.
->=20
-> Cc: Ding Zhuocheng <zhuocheng.ding@intel.com>
-> Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
-> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/debugfs.c | 36 +-----------------------------
->  1 file changed, 1 insertion(+), 35 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gv=
-t/debugfs.c
-> index 285f6011a537..874ee1de6b49 100644
-> --- a/drivers/gpu/drm/i915/gvt/debugfs.c
-> +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
-> @@ -128,6 +128,7 @@ static int
->  vgpu_scan_nonprivbb_get(void *data, u64 *val)
->  {
->  	struct intel_vgpu *vgpu =3D (struct intel_vgpu *)data;
-> +
->  	*val =3D vgpu->scan_nonprivbb;
->  	return 0;
->  }
-> @@ -142,42 +143,7 @@ static int
->  vgpu_scan_nonprivbb_set(void *data, u64 val)
->  {
->  	struct intel_vgpu *vgpu =3D (struct intel_vgpu *)data;
-> -	struct drm_i915_private *dev_priv =3D vgpu->gvt->dev_priv;
-> -	enum intel_engine_id id;
-> -	char buf[128], *s;
-> -	int len;
-> -
-> -	val &=3D (1 << I915_NUM_ENGINES) - 1;
-> -
-> -	if (vgpu->scan_nonprivbb =3D=3D val)
-> -		return 0;
-> -
-> -	if (!val)
-> -		goto done;
-> -
-> -	len =3D sprintf(buf,
-> -		"gvt: vgpu %d turns on non-privileged batch buffers scanning on Engine=
-s:",
-> -		vgpu->id);
-> -
-> -	s =3D buf + len;
-> -
-> -	for (id =3D 0; id < I915_NUM_ENGINES; id++) {
-> -		struct intel_engine_cs *engine;
-> -
-> -		engine =3D dev_priv->engine[id];
-> -		if (engine && (val & (1 << id))) {
-> -			len =3D snprintf(s, 4, "%d, ", engine->id);
-> -			s +=3D len;
-> -		} else
-> -			val &=3D  ~(1 << id);
-> -	}
-> -
-> -	if (val)
-> -		sprintf(s, "low performance expected.");
-> -
-> -	pr_warn("%s\n", buf);
-> =20
-> -done:
->  	vgpu->scan_nonprivbb =3D val;
->  	return 0;
->  }
-> --=20
-> 2.25.1
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---BjavXC7V3ilNTWHC
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXmGqoAAKCRCxBBozTXgY
-J+a6AJ9oVthXD3025dv4iV+PlBJidZfhkACfaj+ROo5Z2UqKQSmjzqRMoB2OGaQ=
-=IE4N
------END PGP SIGNATURE-----
-
---BjavXC7V3ilNTWHC--
-
---===============1789718298==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 6f36b02..ba1a8ef 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -799,6 +799,7 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
+         MemoryRegionSection *section)
+ {
+     uint64_t start_addr, size, pfn_count;
++    uint64_t block_start;
+     VFIOGroup *group;
+     VFIODevice *vbasedev;
+ 
+@@ -819,11 +820,13 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
+     start_addr = TARGET_PAGE_ALIGN(section->offset_within_address_space);
+     size = int128_get64(section->size);
+     pfn_count = size >> TARGET_PAGE_BITS;
++    block_start = TARGET_PAGE_ALIGN(section->offset_within_region +
++                             memory_region_get_ram_addr(section->mr));
+ 
+     QLIST_FOREACH(group, &vfio_group_list, next) {
+         QLIST_FOREACH(vbasedev, &group->device_list, next) {
+             vfio_get_dirty_page_list(vbasedev, start_addr >> TARGET_PAGE_BITS,
+-                                     pfn_count, TARGET_PAGE_SIZE);
++                                     pfn_count, TARGET_PAGE_SIZE, block_start);
+         }
+     }
+ }
+diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+index 640bea1..a19b957 100644
+--- a/hw/vfio/migration.c
++++ b/hw/vfio/migration.c
+@@ -279,7 +279,8 @@ static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
+ void vfio_get_dirty_page_list(VFIODevice *vbasedev,
+                               uint64_t start_pfn,
+                               uint64_t pfn_count,
+-                              uint64_t page_size)
++                              uint64_t page_size,
++                              uint64_t block_start)
+ {
+     VFIOMigration *migration = vbasedev->migration;
+     VFIORegion *region = &migration->region;
+@@ -293,6 +294,7 @@ void vfio_get_dirty_page_list(VFIODevice *vbasedev,
+     while (total_pfns > 0) {
+         uint64_t bitmap_size, data_offset = 0;
+         uint64_t start = start_pfn + count;
++        uint64_t block_start_seg = block_start + count * page_size;
+         void *buf = NULL;
+         bool buffer_mmaped = false;
+ 
+@@ -341,7 +343,7 @@ void vfio_get_dirty_page_list(VFIODevice *vbasedev,
+             break;
+         } else if (copied_pfns == VFIO_DEVICE_DIRTY_PFNS_ALL) {
+             /* Mark all pages dirty for this range */
+-            cpu_physical_memory_set_dirty_range(start * page_size,
++            cpu_physical_memory_set_dirty_range(block_start_seg,
+                                                 total_pfns * page_size,
+                                                 DIRTY_MEMORY_MIGRATION);
+             break;
+@@ -382,7 +384,7 @@ void vfio_get_dirty_page_list(VFIODevice *vbasedev,
+         }
+ 
+         cpu_physical_memory_set_dirty_lebitmap((unsigned long *)buf,
+-                                               start * page_size,
++                                               block_start_seg,
+                                                copied_pfns);
+         count      += copied_pfns;
+         total_pfns -= copied_pfns;
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+index 41ff5eb..6d868fa 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -220,6 +220,7 @@ int vfio_spapr_remove_window(VFIOContainer *container,
+ int vfio_migration_probe(VFIODevice *vbasedev, Error **errp);
+ void vfio_migration_finalize(VFIODevice *vbasedev);
+ void vfio_get_dirty_page_list(VFIODevice *vbasedev, uint64_t start_pfn,
+-                               uint64_t pfn_count, uint64_t page_size);
++                               uint64_t pfn_count, uint64_t page_size,
++                               uint64_t block_start);
+ 
+ #endif /* HW_VFIO_VFIO_COMMON_H */
+-- 
+2.7.4
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1789718298==--
