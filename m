@@ -1,36 +1,28 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83A4117D7EC
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Mar 2020 02:47:24 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E095C17E7BA
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Mar 2020 20:01:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2F41689F38;
-	Mon,  9 Mar 2020 01:47:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 977CA6E524;
+	Mon,  9 Mar 2020 19:01:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D3EA289F38
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Mar 2020 01:47:21 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2020 18:47:21 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,530,1574150400"; d="scan'208";a="235519581"
-Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
- by orsmga008.jf.intel.com with ESMTP; 08 Mar 2020 18:47:20 -0700
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH v2 2/2] drm/i915/gvt: check ggtt entry modification status for
- guest ctxs
-Date: Sun,  8 Mar 2020 21:37:35 -0400
-Message-Id: <20200309013735.25722-1-yan.y.zhao@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200309013652.25676-1-yan.y.zhao@intel.com>
-References: <20200309013652.25676-1-yan.y.zhao@intel.com>
+Received: from ichememember.org (unknown [208.67.21.44])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3D33A6E524;
+ Mon,  9 Mar 2020 19:01:53 +0000 (UTC)
+Received: from User ([42.115.18.135]) by ichememember.org with
+ MailEnable ESMTPA; Sun, 8 Mar 2020 21:57:17 -0700
+From: "Shwe Aung"<elewis@ichememember.org>
+Subject: Opportunity Discovered,
+Date: Mon, 9 Mar 2020 11:57:26 +0700
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <CDF60BA2FF8246C7BA2DB39394BD3641.MAI@ichememember.org>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,121 +35,24 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, zhenyuw@linux.intel.com
-MIME-Version: 1.0
+Reply-To: shwe.4ung@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-for guest context, if its ggtt entry is modified after last context
-shadowing, it is deemed as not the same context as last shadowed one.
+Dear Friend,
 
-v2: rebased to 5.6.0-rc4+
+My name is Mr Shwe Aung, l am working with a Bank here in Myanmar as a manager. I discovered a dormant
+account with a big sum of fund $9,600,0000 USD, that belongs to a late customer that bears the same last name with yours.
 
-Suggested-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
----
- drivers/gpu/drm/i915/gvt/gtt.c       | 17 +++++++++++++++++
- drivers/gpu/drm/i915/gvt/gvt.h       |  3 ++-
- drivers/gpu/drm/i915/gvt/scheduler.c | 14 ++++++++++++--
- 3 files changed, 31 insertions(+), 3 deletions(-)
+I want to use my position to present you as the legitimate next of kin and beneficiary of this funds
+which will be transferred to you as the next of kin to the deceased.
+We shall talk more on sharing percentage, for more details email me immediately,
+i Looking forward to hear from you.
 
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index 2a4b23f8aa74..b1b6a51c006a 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -2341,12 +2341,29 @@ int intel_vgpu_emulate_ggtt_mmio_write(struct intel_vgpu *vgpu,
- {
- 	const struct intel_gvt_device_info *info = &vgpu->gvt->device_info;
- 	int ret;
-+	struct intel_vgpu_submission *s = &vgpu->submission;
-+	struct intel_engine_cs *engine;
-+	int i;
- 
- 	if (bytes != 4 && bytes != 8)
- 		return -EINVAL;
- 
- 	off -= info->gtt_start_offset;
- 	ret = emulate_ggtt_mmio_write(vgpu, off, p_data, bytes);
-+
-+	/* if ggtt of last submitted context is written,
-+	 * that context is probably got unpinned.
-+	 * Set last shadowed ctx to invalid.
-+	 */
-+	for_each_engine(engine, vgpu->gvt->gt->i915, i) {
-+		if (!s->last_ctx[i].valid)
-+			continue;
-+
-+		if (atomic_read(&s->last_ctx[i].lrca) ==
-+				off >> info->gtt_entry_size_shift) {
-+			s->last_ctx[i].valid = false;
-+		}
-+	}
- 	return ret;
- }
- 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index e2d7ffd84457..b342d7be741f 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -164,7 +164,8 @@ struct intel_vgpu_submission {
- 	int virtual_submission_interface;
- 	bool active;
- 	struct {
--		u32 lrca;
-+		atomic_t lrca;
-+		bool valid;
- 		u64 ring_context_gpa;
- 	} last_ctx[I915_NUM_ENGINES];
- };
-diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
-index a66050a3d65a..7e0d4183b07b 100644
---- a/drivers/gpu/drm/i915/gvt/scheduler.c
-+++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-@@ -138,6 +138,7 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
- 	int i;
- 	bool skip = false;
- 	int ring_id = workload->engine->id;
-+	bool valid;
- 
- 	page = i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
- 	shadow_ring_context = kmap(page);
-@@ -179,13 +180,20 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
- 			workload->ctx_desc.context_id,
- 			workload->ring_context_gpa);
- 
--	if ((s->last_ctx[ring_id].lrca ==
-+	/* only need to ensure this context is not pinned/unpinned during the
-+	 * period from last submission to this this submission.
-+	 * Upon reaching this function, the currently submitted context is not
-+	 * supposed to get unpinned. If a misbehaving guest driver ever does
-+	 * this, it would corrupt itself.
-+	 */
-+	valid = s->last_ctx[ring_id].valid;
-+	if (valid && (atomic_read(&s->last_ctx[ring_id].lrca) ==
- 				workload->ctx_desc.lrca) &&
- 			(s->last_ctx[ring_id].ring_context_gpa ==
- 				workload->ring_context_gpa))
- 		skip = true;
- 
--	s->last_ctx[ring_id].lrca = workload->ctx_desc.lrca;
-+	atomic_set(&s->last_ctx[ring_id].lrca, workload->ctx_desc.lrca);
- 	s->last_ctx[ring_id].ring_context_gpa = workload->ring_context_gpa;
- 
- 	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val) || skip)
-@@ -214,6 +222,8 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
- 		kunmap(page);
- 		i++;
- 	}
-+	if (!valid)
-+		s->last_ctx[ring_id].valid = true;
- 	return 0;
- }
- 
--- 
-2.17.1
-
+Best Regard,
+Mr Shwe.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
