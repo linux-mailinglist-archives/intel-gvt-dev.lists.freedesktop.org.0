@@ -1,43 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DCD217D7A9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Mar 2020 02:10:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62FD617D7EA
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Mar 2020 02:46:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 69C0B6E0C8;
-	Mon,  9 Mar 2020 01:10:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0E24389E59;
+	Mon,  9 Mar 2020 01:46:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 516C66E0C8
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5DD7689E59
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Mar 2020 01:10:25 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Mon,  9 Mar 2020 01:46:26 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2020 18:10:24 -0700
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2020 18:46:24 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,530,1574150400"; d="scan'208";a="414640640"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by orsmga005.jf.intel.com with ESMTP; 08 Mar 2020 18:10:22 -0700
-Date: Sun, 8 Mar 2020 21:00:56 -0400
+X-IronPort-AV: E=Sophos;i="5.70,530,1574150400"; d="scan'208";a="230769204"
+Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
+ by orsmga007.jf.intel.com with ESMTP; 08 Mar 2020 18:46:24 -0700
 From: Yan Zhao <yan.y.zhao@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v3 2/7] vfio: introduce vfio_dma_rw to read/write a range
- of IOVAs
-Message-ID: <20200309010055.GA18137@joy-OptiPlex-7040>
-References: <20200224084350.31574-1-yan.y.zhao@intel.com>
- <20200224084715.31753-1-yan.y.zhao@intel.com>
- <20200306012148.GB1530@joy-OptiPlex-7040>
- <20200306092746.088a01a3@x1.home>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200306092746.088a01a3@x1.home>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH v2 1/2] drm/i915/gvt: optimization of context shadowing
+Date: Sun,  8 Mar 2020 21:36:52 -0400
+Message-Id: <20200309013652.25676-1-yan.y.zhao@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,90 +40,104 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Cc: Yan Zhao <yan.y.zhao@intel.com>, zhenyuw@linux.intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, Mar 07, 2020 at 12:27:46AM +0800, Alex Williamson wrote:
-> On Thu, 5 Mar 2020 20:21:48 -0500
-> Yan Zhao <yan.y.zhao@intel.com> wrote:
-> 
-> > On Mon, Feb 24, 2020 at 04:47:15PM +0800, Zhao, Yan Y wrote:
-> > > vfio_dma_rw will read/write a range of user space memory pointed to by
-> > > IOVA into/from a kernel buffer without enforcing pinning the user space
-> > > memory.
-> > > 
-> > > TODO: mark the IOVAs to user space memory dirty if they are written in
-> > > vfio_dma_rw().
-> > > 
-> > > Cc: Kevin Tian <kevin.tian@intel.com>
-> > > Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
-> > > ---
-> > >  drivers/vfio/vfio.c             | 49 +++++++++++++++++++++
-> > >  drivers/vfio/vfio_iommu_type1.c | 77 +++++++++++++++++++++++++++++++++
-> > >  include/linux/vfio.h            |  5 +++
-> > >  3 files changed, 131 insertions(+)
-> > > 
-> > > diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> > > index 914bdf4b9d73..902867627cbf 100644
-> > > --- a/drivers/vfio/vfio.c
-> > > +++ b/drivers/vfio/vfio.c
-> > > @@ -1998,6 +1998,55 @@ int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn, int npage)
-> > >  }
-> > >  EXPORT_SYMBOL(vfio_unpin_pages);
-> > >  
-> > > +
-> > > +/*
-> > > + * This interface allows the CPUs to perform some sort of virtual DMA on
-> > > + * behalf of the device.
-> > > + *
-> > > + * CPUs read/write a range of IOVAs pointing to user space memory into/from
-> > > + * a kernel buffer.
-> > > + *
-> > > + * As the read/write of user space memory is conducted via the CPUs and is
-> > > + * not a real device DMA, it is not necessary to pin the user space memory.
-> > > + *
-> > > + * The caller needs to call vfio_group_get_external_user() or
-> > > + * vfio_group_get_external_user_from_dev() prior to calling this interface,
-> > > + * so as to prevent the VFIO group from disposal in the middle of the call.
-> > > + * But it can keep the reference to the VFIO group for several calls into
-> > > + * this interface.
-> > > + * After finishing using of the VFIO group, the caller needs to release the
-> > > + * VFIO group by calling vfio_group_put_external_user().
-> > > + *
-> > > + * @group [in]: vfio group of a device
-> > > + * @iova [in] : base IOVA of a user space buffer
-> > > + * @data [in] : pointer to kernel buffer
-> > > + * @len [in]  : kernel buffer length
-> > > + * @write     : indicate read or write
-> > > + * Return error code on failure or 0 on success.
-> > > + */
-> > > +int vfio_dma_rw(struct vfio_group *group, dma_addr_t iova,
-> > > +		void *data, size_t len, bool write)  
-> > hi Alex
-> > May I rename this interface to vfio_dma_rw_from_group() that takes
-> > VFIO group as arg and add another interface vfio_dma_rw(struct device *dev...) ?
-> > That might be easier for a driver to use the second one if it does not care about
-> > performance much.
-> 
-> Perhaps vfio_group_dma_rw() and vfio_dev_dma_rw()?  I'd be reluctant to
-> add the latter, if a caller doesn't care about performance then they
-> won't mind making a couple calls to get and release the group reference.
-> Thanks,
->
-yes, it makes sense. Then I withdraw this request :)
+if the newly submitted guest context is the same as last shadowed one,
+no need to copy them from guest again.
 
-Thanks
-Yan
+Currently using lrca + ring_context_gpa to identify whether two guest
+contexts are the same.
+
+The reason of why context id is not included is that it's recently
+changed by i915 that it just increase the value indiscriminately if i915
+perf is not on.
+If i915 perf is on, I checked that the value is aligned with lrca.
+so it's safe to omit context_id.
+
+It also workes with old guest kernel like 4.20.
+
+v2: rebased to 5.6.0-rc4+
+Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/gvt.h       |  4 ++++
+ drivers/gpu/drm/i915/gvt/scheduler.c | 25 ++++++++++++++++++++-----
+ 2 files changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
+index 58c2c7932e3f..e2d7ffd84457 100644
+--- a/drivers/gpu/drm/i915/gvt/gvt.h
++++ b/drivers/gpu/drm/i915/gvt/gvt.h
+@@ -163,6 +163,10 @@ struct intel_vgpu_submission {
+ 	const struct intel_vgpu_submission_ops *ops;
+ 	int virtual_submission_interface;
+ 	bool active;
++	struct {
++		u32 lrca;
++		u64 ring_context_gpa;
++	} last_ctx[I915_NUM_ENGINES];
+ };
+ 
+ struct intel_vgpu {
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
+index 1c95bf8cbed0..a66050a3d65a 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.c
++++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+@@ -134,7 +134,10 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
+ 	struct page *page;
+ 	void *dst;
+ 	unsigned long context_gpa, context_page_num;
++	struct intel_vgpu_submission *s = &vgpu->submission;
+ 	int i;
++	bool skip = false;
++	int ring_id = workload->engine->id;
+ 
+ 	page = i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
+ 	shadow_ring_context = kmap(page);
+@@ -171,12 +174,22 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
+ 	sr_oa_regs(workload, (u32 *)shadow_ring_context, false);
+ 	kunmap(page);
+ 
+-	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val))
+-		return 0;
++	gvt_dbg_sched("ring %s workload lrca %x, ctx_id %x, ctx gpa %llx",
++			workload->engine->name, workload->ctx_desc.lrca,
++			workload->ctx_desc.context_id,
++			workload->ring_context_gpa);
+ 
+-	gvt_dbg_sched("ring %s workload lrca %x",
+-		      workload->engine->name,
+-		      workload->ctx_desc.lrca);
++	if ((s->last_ctx[ring_id].lrca ==
++				workload->ctx_desc.lrca) &&
++			(s->last_ctx[ring_id].ring_context_gpa ==
++				workload->ring_context_gpa))
++		skip = true;
++
++	s->last_ctx[ring_id].lrca = workload->ctx_desc.lrca;
++	s->last_ctx[ring_id].ring_context_gpa = workload->ring_context_gpa;
++
++	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val) || skip)
++		return 0;
+ 
+ 	context_page_num = workload->engine->context_size;
+ 	context_page_num = context_page_num >> PAGE_SHIFT;
+@@ -1260,6 +1273,8 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
+ 	atomic_set(&s->running_workload_num, 0);
+ 	bitmap_zero(s->tlb_handle_pending, I915_NUM_ENGINES);
+ 
++	memset(s->last_ctx, 0, sizeof(s->last_ctx));
++
+ 	i915_vm_put(&ppgtt->vm);
+ 	return 0;
+ 
+-- 
+2.17.1
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
