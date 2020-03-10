@@ -2,29 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B161E180011
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Mar 2020 15:25:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B4552180BDE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Mar 2020 23:50:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5AC866E2FF;
-	Tue, 10 Mar 2020 14:25:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BE8296E8E5;
+	Tue, 10 Mar 2020 22:50:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1751 seconds by postgrey-1.36 at gabe;
- Tue, 10 Mar 2020 14:25:56 UTC
-Received: from tpi.ac.ru (mail.tpi.ac.ru [176.56.14.200])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5E9176E2FF
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Mar 2020 14:25:56 +0000 (UTC)
-Received: by tpi.ac.ru (Postfix, from userid 33)
- id 71F1E1932A6; Tue, 10 Mar 2020 18:43:55 +0500 (+05)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: =?UTF-8?B?44GK5pSv5omV44GE5pa55rOV44Gu5oOF5aCx44KS5pu05paw44GX44Gm44GP44Gg44GV44GE?=
-X-PHP-Originating-Script: 33:alexus.php
-From: =?UTF-8?B?YW1hem9uLmNvLmpw?= <info@tpi.ac.ru>
-MIME-Version: 1.0;
-Content-type: multipart/mixed; boundary="--8QXAMhOOcR"
-Message-Id: <20200310134456.71F1E1932A6@tpi.ac.ru>
-Date: Tue, 10 Mar 2020 18:43:55 +0500 (+05)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5AEB26E8E3;
+ Tue, 10 Mar 2020 22:50:15 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2020 15:50:14 -0700
+X-IronPort-AV: E=Sophos;i="5.70,538,1574150400"; d="scan'208";a="415360835"
+Received: from rdvivi-losangeles.jf.intel.com (HELO intel.com)
+ ([10.165.21.202])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2020 15:50:14 -0700
+Date: Tue, 10 Mar 2020 15:50:51 -0700
+From: Rodrigo Vivi <rodrigo.vivi@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [PULL] gvt-next
+Message-ID: <20200310225051.GC3187880@intel.com>
+References: <20200310081928.GG28483@zhen-hp.sh.intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200310081928.GG28483@zhen-hp.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,88 +44,96 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Jani Nikula <jani.nikula@intel.com>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
+ Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-----8QXAMhOOcR
-Content-type: text/html; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+On Tue, Mar 10, 2020 at 04:19:28PM +0800, Zhenyu Wang wrote:
+> 
+> Hi,
+> 
+> Here's more gvt change for -next. Mostly rebase and fix Chris's
+> cleanup on intel engine and dev_priv usage. And also one fix for CFL
+> after VFIO edid enabled in last gvt-next pull.
 
-<table class="marginFix" width="100%" cellspacing="0" cellpadding="0" border="0">
-  <tbody><tr>
-    <td class="mobMargin" style="font-size:0px;" bgcolor="#f2f2f2"> <br></td>
-    <td class="mobContent" width="660" bgcolor="#ffffff" align="center">
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
-          <tbody><tr><td width="600" valign="top" align="center">
-              <table width="100%" cellspacing="0" cellpadding="0" border="0">
-              <tbody><tr class="no_mobile_phone">
-                <td style="padding-top:10px;" bgcolor="#f2f2f2"><br></td>
-              </tr>
-              <tr>
-                <td style="padding-top:10px;" bgcolor="#f2f2f2"><br></td>
-              </tr>
-              <tr>
-                <td valign="top" bgcolor="#ffffff" align="center">
-                    <table style="margin-bottom:10px;" width="100%" contenteditable="false" cellspacing="0" cellpadding="0" border="0">
-                        <tbody><tr valign="bottom">    
-                            <td width="20" valign="top" align="center"> <br></td>
-                            <td height="100" align="left">
-                             <br><p></p>
-                            </td>   
-                            <td width="20" valign="top" align="center"> <br></td>
-                        </tr>
-                    </tbody></table>
-                    <table style="padding-bottom:10px; padding-top:10px;" width="100%" contenteditable="false" cellspacing="0" cellpadding="0" border="0">
-                        <tbody><tr valign="bottom">    
-                            <td width="20" valign="top" align="center"> <br></td>
-                            <td>   
-                            	<span class="text_lightblue_header" style="font-family:Calibri, Trebuchet, Arial, sans serif; font-size:30px; line-height:44px; color:#000000; -webkit-font-smoothing: antialiased;">
-                         あなたのアカウントは一時的にロックされています。
-                                </span>                                
-                            </td>
-                            <td width="20" valign="top" align="center"> <br></td>
-                        </tr>
-                    </tbody></table>
-                    <table style="padding-bottom:10px; padding-top:10px;margin-bottom: 20px;" width="100%" contenteditable="false" cellspacing="0" cellpadding="0" border="0">
-                        <tbody><tr valign="bottom">    
-                            <td width="20" valign="top" align="center"> <br></td>
-                            <td style="font-family:Calibri, Trebuchet, Arial, sans serif; font-size:15px; line-height:22px; color:#333333;" class="ppsans" valign="top">
-                              お客様各位,
-                              <p></p><span style="display: inline;">アカウントの有効期限が切れており、24時間以内に停止されます。
-                              問題を解決するために情報を更新してください。</span><p>ありがとうございました.</p>
-                                <table class="mobile_button" contenteditable="false" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="button_style" id="button_text" style="font-family:Calibri, Trebuchet, Arial,sans-serif; font-weight:300; font-stretch:normal; text-align:center; color:#fff; font-size:15px;background:#ff9900; border-radius:0px !important; -webkit-border-radius: 0px !important; -moz-border-radius: 0px !important; -o-border-radius: 0px !important; -ms-border-radius: 0px !important; line-height: 1.45em; padding: 7px 15px 8px; font-size: 1em;padding-bottom: 7px; margin: 0 auto 16px;" valign="middle" align="center"><span class="aloha-editable"><b><a type="Link" target="_BLANK" linkid="68932556a999b5ced7260a600dc8fb31" style="text-decoration:none;color:#000000;" href="https://jpapna-ndezzou-fik-lkol.live/hajet/dajal/">アカウントを更新する</a></b></span></td></tr></tbody></table>
+pulled to dinq,
 
-                                <br><p>敬具,<br>Amazon.co.jp</p>
-                                <br>
-                                <span style="font-weight:bold; color:#444;">
-                                </span>
-                                <span>
-                                </span>
-                            </td>
-                            <td width="20" valign="top" align="center"> <br></td>
-                        </tr>
-                    </tbody></table>
-                </td>
-              </tr>
-            </tbody></table></td>
-       </tr></tbody></table>
+Thanks,
+Rodrigo.
 
-    </td>
-    <td class="mobMargin" style="font-size:0px;" bgcolor="#f2f2f2"> <br></td>
-  </tr>
-</tbody></table>
-----8QXAMhOOcR
+> 
+> thanks
+> --
+> The following changes since commit a8bb49b64c4f4284fb36169bdd9fc6efd62eb26a:
+> 
+>   drm/i915/gvt: Fix drm_WARN issue where vgpu ptr is unavailable (2020-02-25 16:13:04 +0800)
+> 
+> are available in the Git repository at:
+> 
+>   https://github.com/intel/gvt-linux tags/gvt-next-2020-03-10
+> 
+> for you to fetch changes up to a61ac1e75105a077ec1efd6923ae3c619f862304:
+> 
+>   drm/i915/gvt: Wean gvt off using dev_priv (2020-03-06 10:08:10 +0800)
+> 
+> ----------------------------------------------------------------
+> gvt-next-2020-03-10
+> 
+> - Fix CFL dmabuf display after vfio edid enabling (Tina)
+> - Clean up scan non-priv batch debugfs entry (Chris)
+> - Use intel engines initialized in gvt, cleanup previous ring id (Chris)
+> - Use intel_gt instead (Chris)
+> 
+> ----------------------------------------------------------------
+> Chris Wilson (3):
+>       drm/i915/gvt: cleanup debugfs scan_nonprivbb
+>       drm/i915/gvt: Wean gvt off dev_priv->engine[]
+>       drm/i915/gvt: Wean gvt off using dev_priv
+> 
+> Tina Zhang (1):
+>       drm/i915/gvt: Fix dma-buf display blur issue on CFL
+> 
+>  drivers/gpu/drm/i915/gvt/aperture_gm.c  |  84 ++++++-----
+>  drivers/gpu/drm/i915/gvt/cfg_space.c    |   8 +-
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c   | 204 ++++++++++++--------------
+>  drivers/gpu/drm/i915/gvt/debugfs.c      |  45 +-----
+>  drivers/gpu/drm/i915/gvt/display.c      |  21 +--
+>  drivers/gpu/drm/i915/gvt/dmabuf.c       |   4 +-
+>  drivers/gpu/drm/i915/gvt/edid.c         |  16 +-
+>  drivers/gpu/drm/i915/gvt/execlist.c     | 103 +++++++------
+>  drivers/gpu/drm/i915/gvt/execlist.h     |   5 +-
+>  drivers/gpu/drm/i915/gvt/fb_decoder.c   |   6 +-
+>  drivers/gpu/drm/i915/gvt/firmware.c     |  16 +-
+>  drivers/gpu/drm/i915/gvt/gtt.c          |  50 +++----
+>  drivers/gpu/drm/i915/gvt/gvt.c          |  38 ++---
+>  drivers/gpu/drm/i915/gvt/gvt.h          |  25 ++--
+>  drivers/gpu/drm/i915/gvt/handlers.c     | 193 ++++++++++++-------------
+>  drivers/gpu/drm/i915/gvt/interrupt.c    |  14 +-
+>  drivers/gpu/drm/i915/gvt/kvmgt.c        |  10 +-
+>  drivers/gpu/drm/i915/gvt/mmio.c         |   6 +-
+>  drivers/gpu/drm/i915/gvt/mmio.h         |   4 +-
+>  drivers/gpu/drm/i915/gvt/mmio_context.c | 127 ++++++++--------
+>  drivers/gpu/drm/i915/gvt/mmio_context.h |   5 +-
+>  drivers/gpu/drm/i915/gvt/sched_policy.c |  25 ++--
+>  drivers/gpu/drm/i915/gvt/scheduler.c    | 249 +++++++++++++++-----------------
+>  drivers/gpu/drm/i915/gvt/scheduler.h    |   9 +-
+>  drivers/gpu/drm/i915/gvt/vgpu.c         |  12 +-
+>  25 files changed, 601 insertions(+), 678 deletions(-)
+> 
+> -- 
+> Open Source Technology Center, Intel ltd.
+> 
+> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
-
-----8QXAMhOOcR
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
-----8QXAMhOOcR--
