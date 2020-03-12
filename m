@@ -2,50 +2,50 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37BA2180FAA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Mar 2020 06:16:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 12AC6182F18
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Mar 2020 12:26:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DFFD26E907;
-	Wed, 11 Mar 2020 05:16:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AACC66E184;
+	Thu, 12 Mar 2020 11:26:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from smtprelay.hostedemail.com (smtprelay0230.hostedemail.com
- [216.40.44.230])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E42016E907
+Received: from sonic306-19.consmr.mail.gq1.yahoo.com
+ (sonic306-19.consmr.mail.gq1.yahoo.com [98.137.68.82])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D56C46E184
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Mar 2020 05:16:48 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave04.hostedemail.com (Postfix) with ESMTP id D003D1802E2BA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Mar 2020 05:07:40 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id E122A837F24F;
- Wed, 11 Mar 2020 05:07:39 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 50, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:541:800:960:967:973:982:988:989:1260:1311:1314:1345:1359:1437:1515:1534:1540:1568:1711:1714:1730:1747:1777:1792:2393:2525:2560:2563:2682:2685:2859:2902:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3865:3866:3867:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4321:5007:6261:9025:10004:10848:11026:11473:11657:11658:11914:12043:12296:12297:12438:12555:12679:12895:12986:13069:13255:13311:13357:13894:14096:14181:14384:14394:14721:21080:21433:21627:21811:21939:21990:30054:30055,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: mark80_258ebdd83b35f
-X-Filterd-Recvd-Size: 2037
-Received: from joe-laptop.perches.com (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf16.hostedemail.com (Postfix) with ESMTPA;
- Wed, 11 Mar 2020 05:07:37 +0000 (UTC)
-From: Joe Perches <joe@perches.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>,
-	Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH -next 026/491] INTEL GVT-g DRIVERS (Intel GPU Virtualization):
- Use fallthrough; 
-Date: Tue, 10 Mar 2020 21:51:40 -0700
-Message-Id: <c80b7545125fb7e9fd40c6d4c55d720899fc8250.1583896349.git.joe@perches.com>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <cover.1583896344.git.joe@perches.com>
-References: <cover.1583896344.git.joe@perches.com>
+ Thu, 12 Mar 2020 11:26:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1584012406; bh=8xpm+cacAfAnFCbwSdgMceaBJxowNWaFZvEVU/zxgKw=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=r7CrvTxrWCpW+8mUowmjnu2ivLbvyFeHbpdEBOoECYx+QuOGuOW9F0oNuONX1sy80knVPaI+ZQtgdSZE8UfJ5IqBfyUL/hvUouXF7bAnIyXIPrJzJLsbQPMYBPS3yTueCl3ntKczYkyL7zfWf2iQK+CZ0gf6QRH/iTUO1qDNVL7sacigiGXCUwNpC7eU4JGxVZitgxsKIk/bwEl3E65qrsITECO1SycGui3bFat/tpI6ybpK/6ErR890Z9oivenwnFbCuta4QDnhYDFxaWchpb0vog9PBmK8exCFXmh5uHgwUBMVbkXyB4hSyMhUEmBRdfDzbJbivP7UxfxHzhxG2g==
+X-YMail-OSG: 2vcs4iYVM1m4PI7QsUmNo61OAZOBT56h0CF1qkNKcsrWmocrhB5V4n.NyzA9rCL
+ gEyVfZ9eioEPUmlNkPEEQTqABlu8PI2Xfb5G9emlZnAds5F2qso2N3MeBUcxK88fYG_m_P8KEZL5
+ pfuJNu5ikdhX752zvtHCM5lrUsKsqYovhMiIa.V9i6OI1FHFxKmAZEj7RLzLlvvEmABoRgtmwh1Z
+ FhOdxG.7BLEMVJaca3Rq98jVpYCNSxfjJmDPu7gfgRmzDQ15fKa6YY6_qlN.E2ovN2HmwkAUPv7k
+ 7M5OfrzBt3mNZ5VkaM6Ql3rWG8cUO2f.qwRrkrpWwvU8jURanHeVv6uhyJHi7JA80wOG8sCjUtu9
+ Dn6nxXFAvKZoYxSl2Z5iPjtz8xvh9sj0YLufo7Xu1.eHCi_dhiBJyUstfb_uh102xITk883iU2Bc
+ 5LMYm65NzJI3XZmgxM72woRA_9d.yPITMsv0kB8.amLQbqzMLQbCZv0u0S8TMO.PRXDWaa3UzpJA
+ StJ5BhxhaiowudRKbPFtozPRDL5HB_ft8n1zOSE54R8CD4aQMPhdL9Dja059KQ4nxJM9rsqhJOFu
+ ndc2IdIqqQU9oSvd4N7RnyQKY7oKG5I1WSgb8kFWqiQERr2nIMVjxdGm5lmXBFTyw9SKacsMCZyV
+ rOtlAhbldGBf4dfXTxE4tYXwCak6MRw9o4JK4CLUs86UpgOJPRsmZoCTfZD4x0UCHbY07CMpWRVX
+ F7g3hE3nPE..wg8Z4HksdDCEBuHtIUvnFytHXKB1_j3IXVhJ.4dbCXVTM8uB0DKxmXflf2fZnW_u
+ 06moDaFNElOigqwzohrZTwvytrmz3H2qATOO4Woyq2SNbKKrnCRc4g6xuNYmUBceZwoO8RZXleN2
+ mQLuiET4Bz0E.PGskiKKfFCv0pefQBmWPDJW1mlbEudd6FBO5rh2JZ_yo1Tssexg0BTgvNpzdFeu
+ xwHZ9BKwYZ0IrvWtrznEJoZHQAfZAUu7sae9o2_xCLIHJ65_lb35mHm.8ApUZzs_EEqT52dDLYM4
+ dm64F8tJnlzHKKTC.LHK2CkzrqZ21bNwgmBH.B3pzPFsZd2e29QxelGzuXulHwZLXoOyNf0YYBrM
+ qIRehJWPGYu5v5FdJ801et5x081LjKiBpYL8kugzwAqxdIKNLsHEjWElNyLLqA7rKUdY80fqFef_
+ qEBNFS0gU_5Q.TJjJXxpZ_e5kWvbkvQGFORkVz.fnHTOx32GImeqDlKpvRSzynN.zQ55CpnPWdWx
+ t4pL5wshXqVY8tmcdESHnwkZY2_WOzin8AWpjCEgxfFAAfef90urlg2d16UvbtDVtaARS
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic306.consmr.mail.gq1.yahoo.com with HTTP; Thu, 12 Mar 2020 11:26:46 +0000
+Date: Thu, 12 Mar 2020 11:26:42 +0000 (UTC)
+From: Ttiti Roseline <aomrisa@yahoo.com>
+Message-ID: <751881961.4373713.1584012402919@mail.yahoo.com>
+Subject: My Dear
 MIME-Version: 1.0
+References: <751881961.4373713.1584012402919.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.15342 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
+ x64; rv:73.0) Gecko/20100101 Firefox/73.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,42 +58,41 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org
+Reply-To: cheriftiti268@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Convert the various uses of fallthrough comments to fallthrough;
+ My Dear
 
-Done via script
-Link: https://lore.kernel.org/lkml/b56602fcf79f849e733e7b521bb0e17895d390fa.1582230379.git.joe.com/
+I am Miss cherif Titi,20 years old and the only daughter of my late parents Dr.Richard Tit. My father was a highly reputable real estate developer who operated in the capital city of Ivory coast during his days
 
-Signed-off-by: Joe Perches <joe@perches.com>
----
- drivers/gpu/drm/i915/gvt/handlers.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+It is sad to say that he passed away mysteriously in UK during one of his business trips abroad year 12th. JUNE 12, 2014. Though his sudden death, But God knows the truth! My mother died when I was just 4 years old,and since then my father took me so special Before his death on JUNE 12, 2014 he called his secretary who accompanied him to the hospital and told him that he has the sum of Nine million,five hundred thousand United State Dollars.(USD$9.500,000) left in bank
 
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 1793f69..0e792f9 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -1225,7 +1225,7 @@ static int handle_g2v_notification(struct intel_vgpu *vgpu, int notification)
- 	switch (notification) {
- 	case VGT_G2V_PPGTT_L3_PAGE_TABLE_CREATE:
- 		root_entry_type = GTT_TYPE_PPGTT_ROOT_L3_ENTRY;
--		/* fall through */
-+		fallthrough;
- 	case VGT_G2V_PPGTT_L4_PAGE_TABLE_CREATE:
- 		mm = intel_vgpu_get_ppgtt_mm(vgpu, root_entry_type, pdps);
- 		return PTR_ERR_OR_ZERO(mm);
--- 
-2.24.0
+He further told him that he deposited the money in my name, and finally issued a written instruction to his lawyer whom he said is in possession of all the necessary legal documents to this fund
 
+I am just 20 years old and a university undergraduate and really don't know what to do. Now I want an account overseas where I can transfer this funds. This is because I have suffered a lot of set backs as a result of incessant political crisis here in Ivory coast. The death of my father actually brought sorrow to my life
+
+Dear, I am in a sincere desire of your humble assistance in this regards,Your suggestions and ideas will be highly regarded.
+
+
+Now permit me to ask these few questions:
+
+1. Can you honestly help me as your daughter
+
+2. Can I completely trust you
+
+3. What percentage of the total amount in question will be good for you after the money is in your account
+
+Please contact me with my private email cheriftiti268@yahoo.com
+
+
+Please,Consider this and get back to me as soon as possible.
+
+
+My sincere regards,
+Mrs.cherif TITI
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
