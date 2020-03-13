@@ -1,36 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23B29183F96
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Mar 2020 04:22:07 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 02E0A184395
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Mar 2020 10:20:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D2B5589FBC;
-	Fri, 13 Mar 2020 03:22:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6F4CA6E287;
+	Fri, 13 Mar 2020 09:20:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 13EEB89FBC
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0275A6E287
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Mar 2020 03:22:05 +0000 (UTC)
+ Fri, 13 Mar 2020 09:20:47 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Mar 2020 20:22:04 -0700
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2020 02:20:47 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,546,1574150400"; d="scan'208";a="278066137"
+X-IronPort-AV: E=Sophos;i="5.70,548,1574150400"; d="scan'208";a="232364223"
 Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
- by fmsmga002.fm.intel.com with ESMTP; 12 Mar 2020 20:22:02 -0700
+ by orsmga007.jf.intel.com with ESMTP; 13 Mar 2020 02:20:46 -0700
 From: Yan Zhao <yan.y.zhao@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org, kvm@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v4 7/7] drm/i915/gvt: rw more pages a time for shadow context
-Date: Thu, 12 Mar 2020 23:12:33 -0400
-Message-Id: <20200313031233.8094-1-yan.y.zhao@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH v3 1/2] drm/i915/gvt: optimization of context shadowing
+Date: Fri, 13 Mar 2020 05:11:04 -0400
+Message-Id: <20200313091104.32323-1-yan.y.zhao@intel.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200313030548.7705-1-yan.y.zhao@intel.com>
-References: <20200313030548.7705-1-yan.y.zhao@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,238 +40,106 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kevin.tian@intel.com, Yan Zhao <yan.y.zhao@intel.com>, peterx@redhat.com,
- alex.williamson@redhat.com, zhenyuw@linux.intel.com, pbonzini@redhat.com
+Cc: Yan Zhao <yan.y.zhao@intel.com>, zhenyuw@linux.intel.com
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-1. as shadow context is pinned in intel_vgpu_setup_submission() and
-unpinned in intel_vgpu_clean_submission(), its base virtual address of
-is safely obtained from lrc_reg_state. no need to call kmap()/kunmap()
-repeatedly.
+Software is not expected to populate engine context except when using
+restore inhibit bit or golden state to initialize it for the first time.
 
-2. IOVA(GPA)s of context pages are checked in this patch and if they are
-consecutive, read/write them together in one
-intel_gvt_hypervisor_read_gpa() / intel_gvt_hypervisor_write_gpa().
+Therefore, if a newly submitted guest context is the same as the last
+shadowed one, no need to populate its engine context from guest again.
 
-after the two changes in this patch,
-average cycles for populate_shadow_context() and update_guest_context()
-are reduced by ~10000-20000 cycles, depending on the average number of
-consecutive pages in each read/write.
+Currently using lrca + ring_context_gpa to identify whether two guest
+contexts are the same.
 
-(1) comparison of cycles of
-populate_shadow_context() + update_guest_context() when executing
-different benchmarks
- -------------------------------------------------------------
-|       cycles      | glmark2     | lightsmark  | openarena   |
-|-------------------------------------------------------------|
-| before this patch | 65968       | 97852       | 61373       |
-|  after this patch | 56017 (85%) | 73862 (75%) | 47463 (77%) |
- -------------------------------------------------------------
+The reason of why context id is not included as an identifier is that
+i915 recently changed the code and context id is only unique for a
+context when OA is enabled. And when OA is on, context id is generated
+based on lrca. Therefore, in that case, if two contexts are of the same
+lrca, they have identical context ids as well.
 
-(2) average count of pages read/written a time in
-populate_shadow_context() and update_guest_context()
-for each benchmark
+This patch also works with old guest kernel like 4.20.
 
- -----------------------------------------------------------
-|     page cnt      | glmark2     | lightsmark  | openarena |
-|-----------------------------------------------------------|
-| before this patch |    1        |      1      |    1      |
-|  after this patch |    5.25     |     19.99   |   20      |
- ------------------------------------------------------------
-
-(3) comparison of benchmarks scores
- ---------------------------------------------------------------------
-|      score        | glmark2       | lightsmark     | openarena      |
-|---------------------------------------------------------------------|
-| before this patch | 1244          | 222.18         | 114.4          |
-|  after this patch | 1248 (100.3%) | 225.8 (101.6%) | 115.0 (100.9%) |
- ---------------------------------------------------------------------
-
+v3: updated commit message to describe engine context and context id
+clearly (Kevin Tian)
+v2: rebased to 5.6.0-rc4+
 Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/scheduler.c | 95 ++++++++++++++++++++--------
- 1 file changed, 67 insertions(+), 28 deletions(-)
+ drivers/gpu/drm/i915/gvt/gvt.h       |  4 ++++
+ drivers/gpu/drm/i915/gvt/scheduler.c | 25 ++++++++++++++++++++-----
+ 2 files changed, 24 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
+index 58c2c7932e3f..e2d7ffd84457 100644
+--- a/drivers/gpu/drm/i915/gvt/gvt.h
++++ b/drivers/gpu/drm/i915/gvt/gvt.h
+@@ -163,6 +163,10 @@ struct intel_vgpu_submission {
+ 	const struct intel_vgpu_submission_ops *ops;
+ 	int virtual_submission_interface;
+ 	bool active;
++	struct {
++		u32 lrca;
++		u64 ring_context_gpa;
++	} last_ctx[I915_NUM_ENGINES];
+ };
+ 
+ struct intel_vgpu {
 diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
-index 1c95bf8cbed0..852d924f6abc 100644
+index 1c95bf8cbed0..a66050a3d65a 100644
 --- a/drivers/gpu/drm/i915/gvt/scheduler.c
 +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-@@ -128,16 +128,21 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
- {
- 	struct intel_vgpu *vgpu = workload->vgpu;
- 	struct intel_gvt *gvt = vgpu->gvt;
--	struct drm_i915_gem_object *ctx_obj =
--		workload->req->context->state->obj;
-+	struct intel_context *ctx = workload->req->context;
- 	struct execlist_ring_context *shadow_ring_context;
--	struct page *page;
+@@ -134,7 +134,10 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
+ 	struct page *page;
  	void *dst;
-+	void *context_base;
  	unsigned long context_gpa, context_page_num;
-+	unsigned long gpa_base; /* first gpa of consecutive GPAs */
-+	unsigned long gpa_size; /* size of consecutive GPAs */
++	struct intel_vgpu_submission *s = &vgpu->submission;
  	int i;
++	bool skip = false;
++	int ring_id = workload->engine->id;
  
--	page = i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
--	shadow_ring_context = kmap(page);
-+	GEM_BUG_ON(!intel_context_is_pinned(ctx));
-+
-+	context_base = (void *) ctx->lrc_reg_state -
-+				(LRC_STATE_PN << I915_GTT_PAGE_SHIFT);
-+
-+	shadow_ring_context = (void *) ctx->lrc_reg_state;
- 
- 	sr_oa_regs(workload, (u32 *)shadow_ring_context, true);
- #define COPY_REG(name) \
-@@ -169,7 +174,6 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
- 			I915_GTT_PAGE_SIZE - sizeof(*shadow_ring_context));
- 
+ 	page = i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
+ 	shadow_ring_context = kmap(page);
+@@ -171,12 +174,22 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
  	sr_oa_regs(workload, (u32 *)shadow_ring_context, false);
--	kunmap(page);
+ 	kunmap(page);
  
- 	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val))
- 		return 0;
-@@ -184,8 +188,12 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
- 	if (IS_BROADWELL(gvt->gt->i915) && workload->engine->id == RCS0)
- 		context_page_num = 19;
+-	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val))
+-		return 0;
++	gvt_dbg_sched("ring %s workload lrca %x, ctx_id %x, ctx gpa %llx",
++			workload->engine->name, workload->ctx_desc.lrca,
++			workload->ctx_desc.context_id,
++			workload->ring_context_gpa);
  
--	i = 2;
--	while (i < context_page_num) {
+-	gvt_dbg_sched("ring %s workload lrca %x",
+-		      workload->engine->name,
+-		      workload->ctx_desc.lrca);
++	if ((s->last_ctx[ring_id].lrca ==
++				workload->ctx_desc.lrca) &&
++			(s->last_ctx[ring_id].ring_context_gpa ==
++				workload->ring_context_gpa))
++		skip = true;
 +
-+	/* find consecutive GPAs from gma until the first inconsecutive GPA.
-+	 * read from the continuous GPAs into dst virtual address
-+	 */
-+	gpa_size = 0;
-+	for (i = 2; i < context_page_num; i++) {
- 		context_gpa = intel_vgpu_gma_to_gpa(vgpu->gtt.ggtt_mm,
- 				(u32)((workload->ctx_desc.lrca + i) <<
- 				I915_GTT_PAGE_SHIFT));
-@@ -194,12 +202,24 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
- 			return -EFAULT;
- 		}
++	s->last_ctx[ring_id].lrca = workload->ctx_desc.lrca;
++	s->last_ctx[ring_id].ring_context_gpa = workload->ring_context_gpa;
++
++	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val) || skip)
++		return 0;
  
--		page = i915_gem_object_get_page(ctx_obj, i);
--		dst = kmap(page);
--		intel_gvt_hypervisor_read_gpa(vgpu, context_gpa, dst,
--				I915_GTT_PAGE_SIZE);
--		kunmap(page);
--		i++;
-+		if (gpa_size == 0) {
-+			gpa_base = context_gpa;
-+			dst = context_base + (i << I915_GTT_PAGE_SHIFT);
-+		} else if (context_gpa != gpa_base + gpa_size)
-+			goto read;
+ 	context_page_num = workload->engine->context_size;
+ 	context_page_num = context_page_num >> PAGE_SHIFT;
+@@ -1260,6 +1273,8 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
+ 	atomic_set(&s->running_workload_num, 0);
+ 	bitmap_zero(s->tlb_handle_pending, I915_NUM_ENGINES);
+ 
++	memset(s->last_ctx, 0, sizeof(s->last_ctx));
 +
-+		gpa_size += I915_GTT_PAGE_SIZE;
-+
-+		if (i == context_page_num - 1)
-+			goto read;
-+
-+		continue;
-+
-+read:
-+		intel_gvt_hypervisor_read_gpa(vgpu, gpa_base, dst, gpa_size);
-+		gpa_base = context_gpa;
-+		gpa_size = I915_GTT_PAGE_SIZE;
-+		dst = context_base + (i << I915_GTT_PAGE_SHIFT);
- 	}
+ 	i915_vm_put(&ppgtt->vm);
  	return 0;
- }
-@@ -784,19 +804,23 @@ static void update_guest_context(struct intel_vgpu_workload *workload)
- {
- 	struct i915_request *rq = workload->req;
- 	struct intel_vgpu *vgpu = workload->vgpu;
--	struct drm_i915_gem_object *ctx_obj = rq->context->state->obj;
-+	struct intel_context *ctx = workload->req->context;
- 	struct execlist_ring_context *shadow_ring_context;
--	struct page *page;
--	void *src;
- 	unsigned long context_gpa, context_page_num;
-+	unsigned long gpa_base; /* first gpa of consecutive GPAs */
-+	unsigned long gpa_size; /* size of consecutive GPAs*/
- 	int i;
- 	u32 ring_base;
- 	u32 head, tail;
- 	u16 wrap_count;
-+	void *src;
-+	void *context_base;
  
- 	gvt_dbg_sched("ring id %d workload lrca %x\n", rq->engine->id,
- 		      workload->ctx_desc.lrca);
- 
-+	GEM_BUG_ON(!intel_context_is_pinned(ctx));
-+
- 	head = workload->rb_head;
- 	tail = workload->rb_tail;
- 	wrap_count = workload->guest_rb_head >> RB_HEAD_WRAP_CNT_OFF;
-@@ -820,9 +844,14 @@ static void update_guest_context(struct intel_vgpu_workload *workload)
- 	if (IS_BROADWELL(rq->i915) && rq->engine->id == RCS0)
- 		context_page_num = 19;
- 
--	i = 2;
-+	context_base = (void *) ctx->lrc_reg_state -
-+			(LRC_STATE_PN << I915_GTT_PAGE_SHIFT);
- 
--	while (i < context_page_num) {
-+	/* find consecutive GPAs from gma until the first inconsecutive GPA.
-+	 * write to the consecutive GPAs from src virtual address
-+	 */
-+	gpa_size = 0;
-+	for (i = 2; i < context_page_num; i++) {
- 		context_gpa = intel_vgpu_gma_to_gpa(vgpu->gtt.ggtt_mm,
- 				(u32)((workload->ctx_desc.lrca + i) <<
- 					I915_GTT_PAGE_SHIFT));
-@@ -831,19 +860,30 @@ static void update_guest_context(struct intel_vgpu_workload *workload)
- 			return;
- 		}
- 
--		page = i915_gem_object_get_page(ctx_obj, i);
--		src = kmap(page);
--		intel_gvt_hypervisor_write_gpa(vgpu, context_gpa, src,
--				I915_GTT_PAGE_SIZE);
--		kunmap(page);
--		i++;
-+		if (gpa_size == 0) {
-+			gpa_base = context_gpa;
-+			src = context_base + (i << I915_GTT_PAGE_SHIFT);
-+		} else if (context_gpa != gpa_base + gpa_size)
-+			goto write;
-+
-+		gpa_size += I915_GTT_PAGE_SIZE;
-+
-+		if (i == context_page_num - 1)
-+			goto write;
-+
-+		continue;
-+
-+write:
-+		intel_gvt_hypervisor_write_gpa(vgpu, gpa_base, src, gpa_size);
-+		gpa_base = context_gpa;
-+		gpa_size = I915_GTT_PAGE_SIZE;
-+		src = context_base + (i << I915_GTT_PAGE_SHIFT);
- 	}
- 
- 	intel_gvt_hypervisor_write_gpa(vgpu, workload->ring_context_gpa +
- 		RING_CTX_OFF(ring_header.val), &workload->rb_tail, 4);
- 
--	page = i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
--	shadow_ring_context = kmap(page);
-+	shadow_ring_context = (void *) ctx->lrc_reg_state;
- 
- #define COPY_REG(name) \
- 	intel_gvt_hypervisor_write_gpa(vgpu, workload->ring_context_gpa + \
-@@ -861,7 +901,6 @@ static void update_guest_context(struct intel_vgpu_workload *workload)
- 			sizeof(*shadow_ring_context),
- 			I915_GTT_PAGE_SIZE - sizeof(*shadow_ring_context));
- 
--	kunmap(page);
- }
- 
- void intel_vgpu_clean_workloads(struct intel_vgpu *vgpu,
 -- 
 2.17.1
 
