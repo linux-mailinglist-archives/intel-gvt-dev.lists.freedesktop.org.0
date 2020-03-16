@@ -1,43 +1,109 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E98C81860AC
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Mar 2020 01:06:08 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D89341860B9
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Mar 2020 01:18:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8957589B38;
-	Mon, 16 Mar 2020 00:06:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8946389EAC;
+	Mon, 16 Mar 2020 00:17:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C5C7C89786
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CE4B389EAC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 16 Mar 2020 00:06:05 +0000 (UTC)
-IronPort-SDR: vJXQm92Y5vJ76A/kPofyStiP7V1vdOrWGscs6EpRIaubCFOxC28GNYZsMXejLXwZeROqsnfLwC
- QmwxlXidsSLg==
+ Mon, 16 Mar 2020 00:17:57 +0000 (UTC)
+IronPort-SDR: 7TOzoIBhVpKnsXpwGCcq4n1Qy0RqCcJGfk7tTxFXg/uRojYKnUJcdAFgXdhm/ppWU1kBy9ZuS+
+ b/oIZx2icBZQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Mar 2020 17:06:04 -0700
-IronPort-SDR: K011tSRQz9rFpJchs1l25EtCl6RLu7klBLFQCrFnLlMtL32vbRkwWon/pUs4Jmh8bxMm1ykU7h
- MqPyTcJd/2/Q==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Mar 2020 17:17:56 -0700
+IronPort-SDR: fJ5JEexqCrgT+uj4obj07Vt/lKYLvyfKAqt5k3sG8qG19PZQdEcBWFgqbNcLHGRd2lyT+l8yR9
+ 1Uz8MjHhkTkg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,558,1574150400"; d="scan'208";a="443119513"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by fmsmga005.fm.intel.com with ESMTP; 15 Mar 2020 17:06:02 -0700
-Date: Sun, 15 Mar 2020 19:56:33 -0400
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v4 0/7] use vfio_dma_rw to read/write IOVAs from CPU side
-Message-ID: <20200315235633.GB4641@joy-OptiPlex-7040>
-References: <20200313030548.7705-1-yan.y.zhao@intel.com>
- <20200313162958.5bfb5b82@x1.home>
+X-IronPort-AV: E=Sophos;i="5.70,558,1574150400"; d="scan'208";a="323339293"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by orsmga001.jf.intel.com with ESMTP; 15 Mar 2020 17:17:56 -0700
+Received: from fmsmsx119.amr.corp.intel.com (10.18.124.207) by
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Sun, 15 Mar 2020 17:17:56 -0700
+Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
+ FMSMSX119.amr.corp.intel.com (10.18.124.207) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Sun, 15 Mar 2020 17:17:49 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Sun, 15 Mar 2020 17:17:50 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ke+/6B/N0KWbUNPwltZPLTbs14JMEt8KubSFbE5Qrgrg36aeQ6uZ8QMFTOTpzQZGV3BNHUM9KY6Z8hrVdfWqlx/qToTF5zp9S56FCH5B7Ydg/yvd5KZynUFh+Ww2OInadTrR5yZPX1gjFF8Ts7wByfzJiC6BM8LifOy0U5pvQ+N8V8JO7mVXJSfzNw9Bwm5gJk/FsaWAGjKYJUxi5zuhFGyE8Jm4ygne+lQtu+XeiWS0FUZrs66KKMFMAT5rPglP/bbkWa37Nn2vkue1KlNISwcLQ9q+aCESR0lQzG3hvrCvLMoWtkM3fZkIBnxyiDSVVdAHzIV9Yt5xcn/1ixfAPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0f8KWpzzpA2mYE5WnwS1jqsuN9KYLEAsF7On4cuicNM=;
+ b=EtTEnCZpH0BoW0asn4qNu66iLvhZ6h6CHaHmE7CP/uVJraijiP4Uv5Hsr5kFDtGY0BhmQALQGORf1ghkpt4wjTlh6/KiWtp6RQxWmfndqq2soB9PcTqKF+359RPx0Devln/9dn1e8tVeipMZ6H7z6m4DWEldkAUiUn4kn3CHm/qKBU79tfkAiaFG91Hfo7ujQH/Q4yijkSd8pkiqf4PHFWLLCXM8j80tQqmL7WTW9n7x75Nx2jYUhydKyltO5E9mfQZwbjTnN6URAgDPadc60dS/yf+zKUo7IUJCLdQQT7CMk4FIAfwl5VVAthOVt5XNfqML1B3AEfDmHCgZzC/z2w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0f8KWpzzpA2mYE5WnwS1jqsuN9KYLEAsF7On4cuicNM=;
+ b=Ng5HHb+juaEdh7zS1eco4ScRI9HtPkDUx9gzt4EnewYFIV+JsxlSLPSCbH/1zMq+11Psh9LOYMtUrKCx2obYvZHisqlxdjLfAgZrorvYxzsuZy+RuMCLPdOQvqc0pB4mta8fN80mXMRVfteq4iJgN34RmT12Yy8pazCto/1JGM0=
+Received: from BN6PR11MB1666.namprd11.prod.outlook.com (2603:10b6:405:4::8) by
+ BN6PR11MB1427.namprd11.prod.outlook.com (2603:10b6:405:8::21) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2814.13; Mon, 16 Mar 2020 00:17:48 +0000
+Received: from BN6PR11MB1666.namprd11.prod.outlook.com
+ ([fe80::707b:809e:d058:f14f]) by BN6PR11MB1666.namprd11.prod.outlook.com
+ ([fe80::707b:809e:d058:f14f%8]) with mapi id 15.20.2814.021; Mon, 16 Mar 2020
+ 00:17:48 +0000
+From: "Zhang, Tina" <tina.zhang@intel.com>
+To: "Wang, Zhenyu Z" <zhenyu.z.wang@intel.com>
+Subject: RE: [PATCH] drm/i915/gvt: Add some regs to force-to-nonpriv whitelist
+Thread-Topic: [PATCH] drm/i915/gvt: Add some regs to force-to-nonpriv whitelist
+Thread-Index: AQHV8G28wgm3BbLNEk+DlrPkQjsmVqhKbqHQ
+Date: Mon, 16 Mar 2020 00:17:48 +0000
+Message-ID: <BN6PR11MB1666D99D7E822DDFFDF826D789F90@BN6PR11MB1666.namprd11.prod.outlook.com>
+References: <20200302083130.17831-1-tina.zhang@intel.com>
+In-Reply-To: <20200302083130.17831-1-tina.zhang@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.2.0.6
+dlp-product: dlpe-windows
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=tina.zhang@intel.com; 
+x-originating-ip: [192.55.52.208]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 118ce5ec-6afc-4abc-b940-08d7c93f7535
+x-ms-traffictypediagnostic: BN6PR11MB1427:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BN6PR11MB142787CAE642501A68962A5A89F90@BN6PR11MB1427.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-forefront-prvs: 03449D5DD1
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(396003)(366004)(376002)(39860400002)(136003)(346002)(199004)(8676002)(81156014)(86362001)(7696005)(54906003)(81166006)(6506007)(6636002)(186003)(26005)(55016002)(5660300002)(316002)(33656002)(66946007)(76116006)(2906002)(4326008)(8936002)(71200400001)(478600001)(6862004)(64756008)(66446008)(9686003)(52536014)(66476007)(66556008);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BN6PR11MB1427;
+ H:BN6PR11MB1666.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: JhvJOHkziFupYySPXEJS0ty6iyn53bolBHdVsGVkhPQ+BtBphmXcibY62YyG1oWF13gbQYfc+hpYY1O2615+jH3VggFV4+c0Dgk2/kDyDmzli9Oksw5Xb/9EV14XToQUZ9c6fefZjAF5eluv07a6Q/KNz5FCFQHQCaOaz06D96wjd8FvgOolrafRWuOuciPTth0wZCt2ED0OUS8uTW7w6CZabkeY4K9QqLN1OseJkKUS+MpBT2Hb3yhV2lnhGQJG6B/Uy1DfEkGMVaUS8g3901C7zNsmOzSoPmDF17vV5ZRdryVl2ubR6iE3v//Wof7fr6vnP7aOoAMx5XmarvPQdrZdtwDbXo7yTmPzzfM/xR58OcCC9qMZ9lZhb//L0XFob90o8S1TDkCAufzgNaVLAtQg1XZs9iSkqFI+gMgdDyFnjAGw7de6kzkKTpjU976I
+x-ms-exchange-antispam-messagedata: phHJADzq3dHgITZux46/TEiWHxwvqeMK3VencdKnva5Jruq2/lfmoUlg+ZoQ5f9cVXYKM+rhKegpBcmPPTIB0Ko+xz3a9NDcTNEthySE6bCmRIx3lTgr4+dC2faZjcZU+5Wgk/fMYDOq9a330h/m+Q==
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200313162958.5bfb5b82@x1.home>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 118ce5ec-6afc-4abc-b940-08d7c93f7535
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Mar 2020 00:17:48.0753 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: wnaWr2yPcWAhD6S1+4Mgrj5kS6qxtiKjeMrKmnLycmR8aMr9vu6GS1Jm8znvZBRzU1HQ3PJvVHtT8CXTLpmsdQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1427
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,164 +116,82 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>,
- "Neo Jia \(cjia@nvidia.com\)" <cjia@nvidia.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- Kirti Wankhede <kwankhede@nvidia.com>, "peterx@redhat.com" <peterx@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Cc: "intel-gvt-dev@lists.freedesktop.org"
+ <intel-gvt-dev@lists.freedesktop.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, Mar 14, 2020 at 06:29:58AM +0800, Alex Williamson wrote:
-> [Cc +NVIDIA]
-> 
-> On Thu, 12 Mar 2020 23:05:48 -0400
-> Yan Zhao <yan.y.zhao@intel.com> wrote:
-> 
-> > It is better for a device model to use IOVAs to read/write memory to
-> > perform some sort of virtual DMA on behalf of the device.
-> > 
-> > patch 1 exports VFIO group to external user so that it can hold the group
-> > reference until finishing using of it. It saves ~500 cycles that are spent
-> > on VFIO group looking up, referencing and dereferencing. (this data is
-> > measured with 1 VFIO user).
-> > 
-> > patch 2 introduces interface vfio_dma_rw().
-> > 
-> > patch 3 introduces interfaces vfio_group_pin_pages() and
-> > vfio_group_unpin_pages() to get rid of VFIO group looking-up in
-> > vfio_pin_pages() and vfio_unpin_pages().
-> > 
-> > patch 4-5 let kvmgt switch from calling kvm_read/write_guest() to calling
-> > vfio_dma_rw to rw IOVAs.
-> > 
-> > patch 6 let kvmgt switch to use lighter version of vfio_pin/unpin_pages(),
-> > i.e. vfio_group_pin/unpin_pages()
-> > 
-> > patch 7 enables kvmgt to read/write IOVAs of size larger than PAGE_SIZE.
-> 
-> This looks pretty good to me, hopefully Kirti and Neo can find some
-> advantage with this series as well.  Given that we're also trying to
-> get the migration interface and dirty page tracking integrated for
-> v5.7, would it make sense to merge the first 3 patches via my next
-> branch?  This is probably the easiest way to update the dirty tracking.
-> Thanks,
-> 
-sure. glad to hear that :)
+Hi,
 
-Thanks
-Yan
+We need this patch to solve the complains like this:
 
+[70811.201818] gvt: vgpu(1) Invalid FORCE_NONPRIV write 2341 at offset 24d8
+[70811.201825] gvt: vgpu(1) Invalid FORCE_NONPRIV write 2351 at offset 24dc
+[70811.201831] gvt: vgpu(1) Invalid FORCE_NONPRIV write 10000d82 at offset 24e0
+[70811.201837] gvt: vgpu(1) Invalid FORCE_NONPRIV write 10064844 at offset 24e4
+
+BR,
+Tina
+
+> -----Original Message-----
+> From: Zhang, Tina <tina.zhang@intel.com>
+> Sent: Monday, March 2, 2020 4:32 PM
+> Cc: Zhang, Tina <tina.zhang@intel.com>; intel-gvt-dev@lists.freedesktop.org;
+> zhenyuw@linux.intel.com
+> Subject: [PATCH] drm/i915/gvt: Add some regs to force-to-nonpriv whitelist
 > 
-> > Performance:
-> > 
-> > Comparison between vfio_dma_rw() and kvm_read/write_guest():
-> > 
-> > 1. avergage CPU cycles of each interface measured with 1 running VM:
-> >  --------------------------------------------------
-> > |  rw       |          avg cycles of               |
-> > |  size     | (vfio_dma_rw - kvm_read/write_guest) |
-> > |---------- ---------------------------------------|
-> > | <= 1 page |            +155 ~ +195               |        
-> > |--------------------------------------------------|
-> > | 5 pages   |                -530                  |
-> > |--------------------------------------------------|
-> > | 20 pages  |           -2005 ~ -2533              |
-> >  --------------------------------------------------
-> > 
-> > 2. average scores
-> > 
-> > base: base code before applying code in this series. use
-> > kvm_read/write_pages() to rw IOVAs
-> > 
-> > base + this series: use vfio_dma_rw() to read IOVAs and use
-> > vfio_group_pin/unpin_pages(), and kvmgt is able to rw several pages
-> > at a time.
-> > 
-> > Scores of benchmarks running in 1 VM each:
-> >  -----------------------------------------------------------------
-> > |                    | glmark2 | lightsmark | openarena | heavens |
-> > |-----------------------------------------------------------------|
-> > |       base         |  1248   |  219.70    |  114.9    |   560   |
-> > |-----------------------------------------------------------------|
-> > |base + this series  |  1248   |  225.8     |   115     |   559   |
-> >  -----------------------------------------------------------------
-> > 
-> > Sum of scores of two benchmark instances running in 2 VMs each:
-> >  -------------------------------------------------------
-> > |                    | glmark2 | lightsmark | openarena |
-> > |-------------------------------------------------------|
-> > |       base         |  812    |  211.46    |  115.3    |
-> > |-------------------------------------------------------|
-> > |base + this series  |  814    |  214.69    |  115.9    |
-> >  -------------------------------------------------------
-> > 
-> > 
-> > Changelogs:
-> > v3 --> v4:
-> > - rebased to 5.6.0-rc4+
-> > - adjust wrap position for vfio_group_get_external_user_from_dev() in
-> >   header file.(Alex)
-> > - updated function description of vfio_group_get_external_user_from_dev()
-> >   (Alex)
-> > - fixed Error path group reference leaking in
-> >   vfio_group_get_external_user_from_dev()  (Alex)
-> > - reurn 0 for success or errno in vfio_dma_rw_chunk(). (Alex)
-> > - renamed iova to user_iova in interface vfio_dam_rw().
-> > - renamed vfio_pin_pages_from_group() and vfio_unpin_pages_from_group() to
-> >   vfio_group_pin_pages() and vfio_group_unpin_pages()
-> > - renamed user_pfn to user_iova_pfn in vfio_group_pin_pages() and
-> >   vfio_group_unpin_pages()
-> > 
-> > v2 --> v3:
-> > - add vfio_group_get_external_user_from_dev() to improve performance (Alex)
-> > - add vfio_pin/unpin_pages_from_group() to avoid repeated looking up of
-> >   VFIO group in vfio_pin/unpin_pages() (Alex)
-> > - add a check for IOMMU_READ permission. (Alex)
-> > - rename vfio_iommu_type1_rw_dma_nopin() to
-> >   vfio_iommu_type1_dma_rw_chunk(). (Alex)
-> > - in kvmgt, change "write ? vfio_dma_rw(...,true) :
-> >   vfio_dma_rw(...,false)" to vfio_dma_rw(dev, gpa, buf, len, write)
-> >   (Alex and Paolo)
-> > - in kvmgt, instead of read/write context pages 1:1, combining the
-> >   reads/writes of continuous IOVAs to take advantage of vfio_dma_rw() for
-> >   faster crossing page boundary accesses.
-> > 
-> > v1 --> v2:
-> > - rename vfio_iova_rw to vfio_dma_rw, vfio iommu driver ops .iova_rw
-> > to .dma_rw. (Alex).
-> > - change iova and len from unsigned long to dma_addr_t and size_t,
-> > respectively. (Alex)
-> > - fix possible overflow in dma->vaddr + iova - dma->iova + offset (Alex)
-> > - split DMAs from on page boundary to on max available size to eliminate
-> >   redundant searching of vfio_dma and switching mm. (Alex)
-> > - add a check for IOMMU_WRITE permission.
-> > 
-> > 
-> > Yan Zhao (7):
-> >   vfio: allow external user to get vfio group from device
-> >   vfio: introduce vfio_dma_rw to read/write a range of IOVAs
-> >   vfio: avoid inefficient operations on VFIO group in
-> >     vfio_pin/unpin_pages
-> >   drm/i915/gvt: hold reference of VFIO group during opening of vgpu
-> >   drm/i915/gvt: subsitute kvm_read/write_guest with vfio_dma_rw
-> >   drm/i915/gvt: switch to user vfio_group_pin/upin_pages
-> >   drm/i915/gvt: rw more pages a time for shadow context
-> > 
-> >  drivers/gpu/drm/i915/gvt/kvmgt.c     |  46 ++++---
-> >  drivers/gpu/drm/i915/gvt/scheduler.c |  97 ++++++++++-----
-> >  drivers/vfio/vfio.c                  | 180 +++++++++++++++++++++++++++
-> >  drivers/vfio/vfio_iommu_type1.c      |  76 +++++++++++
-> >  include/linux/vfio.h                 |  13 ++
-> >  5 files changed, 360 insertions(+), 52 deletions(-)
-> > 
+> Those regs are added in order to slove the following complains:
 > 
+>  [70811.201818] gvt: vgpu(1) Invalid FORCE_NONPRIV write 2341 at offset
+> 24d8  [70811.201825] gvt: vgpu(1) Invalid FORCE_NONPRIV write 2351 at
+> offset 24dc  [70811.201831] gvt: vgpu(1) Invalid FORCE_NONPRIV write
+> 10000d82 at offset 24e0  [70811.201837] gvt: vgpu(1) Invalid
+> FORCE_NONPRIV write 10064844 at offset 24e4
+> 
+> So solve them by adding the required regs to the whitelist.
+> 
+> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/handlers.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c
+> b/drivers/gpu/drm/i915/gvt/handlers.c
+> index 1793f6991fa8..0946d5618d29 100644
+> --- a/drivers/gpu/drm/i915/gvt/handlers.c
+> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> @@ -460,11 +460,14 @@ static int pipeconf_mmio_write(struct intel_vgpu
+> *vgpu, unsigned int offset,
+>  	return 0;
+>  }
+> 
+> -/* ascendingly sorted */
+> +/* sorted in ascending order */
+>  static i915_reg_t force_nonpriv_white_list[] = {
+> +	_MMIO(0xd80),
+>  	GEN9_CS_DEBUG_MODE1, //_MMIO(0x20ec)
+>  	GEN9_CTX_PREEMPT_REG,//_MMIO(0x2248)
+> -	PS_INVOCATION_COUNT,//_MMIO(0x2348)
+> +	CL_PRIMITIVES_COUNT, //_MMIO(0x2340)
+> +	PS_INVOCATION_COUNT, //_MMIO(0x2348)
+> +	PS_DEPTH_COUNT, //_MMIO(0x2350)
+>  	GEN8_CS_CHICKEN1,//_MMIO(0x2580)
+>  	_MMIO(0x2690),
+>  	_MMIO(0x2694),
+> @@ -489,6 +492,7 @@ static i915_reg_t force_nonpriv_white_list[] = {
+>  	_MMIO(0xe18c),
+>  	_MMIO(0xe48c),
+>  	_MMIO(0xe5f4),
+> +	_MMIO(0x64844),
+>  };
+> 
+>  /* a simple bsearch */
+> --
+> 2.17.1
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
