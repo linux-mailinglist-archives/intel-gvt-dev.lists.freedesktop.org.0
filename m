@@ -1,42 +1,41 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02CEF189410
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2020 03:45:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7DFA189554
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2020 06:26:28 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7DE0489AA6;
-	Wed, 18 Mar 2020 02:45:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 82BD389B03;
+	Wed, 18 Mar 2020 05:26:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 284C189AA6
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DDA1589B03
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Mar 2020 02:45:34 +0000 (UTC)
-IronPort-SDR: zBACJvY9pK1q+56ZIYweGQbPl0v1Gf1zaefMYXV2dXxQbtRDMV8tmi3Hq8sswcliv+qpd9q8ki
- OG2FFvf/3fig==
-X-Amp-Result: SKIPPED(no attachment in message)
+ Wed, 18 Mar 2020 05:26:25 +0000 (UTC)
+IronPort-SDR: BGQX3ZxZ2sUNuy9vGf9uTmeba5oLGwzDba4qZ11W32/jxpFeAVEJ2I3scYCW8LE2zrKaLPLSWa
+ jBBky1sQSZnA==
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2020 19:45:33 -0700
-IronPort-SDR: FgCozQsBsGbLe/5+nfs7UE0/pOnxARRYYsHBG4tzvHJg8pWPBo9T3eh+MbK2xF02B9+hGF+zNB
- WUIM8VhuyJ5A==
+ 17 Mar 2020 22:26:25 -0700
+IronPort-SDR: zmFp6X7MLeZ6dWqegk58PP21vPtUO7amOyMbkdnGhb852zBqWoXgd3JtnLIZuv5nU4/LOroVZq
+ pu8z73c4zLBQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,565,1574150400"; d="scan'208";a="355563745"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 17 Mar 2020 19:45:31 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jEOi2-0008nG-VF; Wed, 18 Mar 2020 10:45:30 +0800
-Date: Wed, 18 Mar 2020 10:44:49 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 3982db9ec2ea8a1f508f12fbcc14fbcfe8f38dad
-Message-ID: <5e718b21.+/HdkYjZjxEIBB3B%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.70,566,1574150400"; 
+ d="asc'?scan'208";a="263274010"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by orsmga002.jf.intel.com with ESMTP; 17 Mar 2020 22:26:24 -0700
+Date: Wed, 18 Mar 2020 13:13:42 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: add support to command SWTESS_BASE_ADDRESS
+Message-ID: <20200318051342.GS8880@zhen-hp.sh.intel.com>
+References: <20200305055413.6833-1-yan.y.zhao@intel.com>
 MIME-Version: 1.0
+In-Reply-To: <20200305055413.6833-1-yan.y.zhao@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,191 +48,95 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: libo.zhu@intel.com, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============0186409355=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: 3982db9ec2ea8a1f508f12fbcc14fbcfe8f38dad  gvt-staging: 2020y-03m-17d-18h-28m-29s CST integration manifest
 
-elapsed time: 951m
+--===============0186409355==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="aIbcA3MSwnGacr4f"
+Content-Disposition: inline
 
-configs tested: 162
-configs skipped: 14
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--aIbcA3MSwnGacr4f
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                           efm32_defconfig
-arm                         at91_dt_defconfig
-arm                        shmobile_defconfig
-arm64                               defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                           sunxi_defconfig
-arm                        multi_v7_defconfig
-sparc                            allyesconfig
-arc                                 defconfig
-microblaze                    nommu_defconfig
-m68k                           sun3_defconfig
-riscv                          rv32_defconfig
-powerpc                             defconfig
-sh                          rsk7269_defconfig
-ia64                             allmodconfig
-s390                                defconfig
-mips                              allnoconfig
-ia64                             allyesconfig
-mips                             allyesconfig
-um                             i386_defconfig
-parisc                           allyesconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                             allyesconfig
-i386                                defconfig
-ia64                             alldefconfig
-ia64                              allnoconfig
-ia64                                defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                                defconfig
-alpha                               defconfig
-h8300                       h8s-sim_defconfig
-h8300                     edosk2674_defconfig
-m68k                       m5475evb_defconfig
-m68k                             allmodconfig
-h8300                    h8300h-sim_defconfig
-m68k                          multi_defconfig
-arc                              allyesconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-microblaze                      mmu_defconfig
-powerpc                           allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-mips                         64r6el_defconfig
-mips                           32r2_defconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                generic-64bit_defconfig
-parisc                generic-32bit_defconfig
-x86_64               randconfig-a001-20200317
-x86_64               randconfig-a002-20200317
-x86_64               randconfig-a003-20200317
-i386                 randconfig-a001-20200317
-i386                 randconfig-a002-20200317
-i386                 randconfig-a003-20200317
-alpha                randconfig-a001-20200317
-m68k                 randconfig-a001-20200317
-mips                 randconfig-a001-20200317
-nds32                randconfig-a001-20200317
-parisc               randconfig-a001-20200317
-h8300                randconfig-a001-20200317
-sparc64              randconfig-a001-20200317
-c6x                  randconfig-a001-20200317
-nios2                randconfig-a001-20200317
-microblaze           randconfig-a001-20200317
-csky                 randconfig-a001-20200317
-openrisc             randconfig-a001-20200317
-s390                 randconfig-a001-20200317
-sh                   randconfig-a001-20200317
-xtensa               randconfig-a001-20200317
-x86_64               randconfig-b001-20200317
-x86_64               randconfig-b002-20200317
-x86_64               randconfig-b003-20200317
-i386                 randconfig-b001-20200317
-i386                 randconfig-b002-20200317
-i386                 randconfig-b003-20200317
-x86_64               randconfig-c001-20200317
-x86_64               randconfig-c002-20200317
-x86_64               randconfig-c003-20200317
-i386                 randconfig-c001-20200317
-i386                 randconfig-c002-20200317
-i386                 randconfig-c003-20200317
-x86_64               randconfig-d001-20200317
-x86_64               randconfig-d002-20200317
-x86_64               randconfig-d003-20200317
-i386                 randconfig-d001-20200317
-i386                 randconfig-d002-20200317
-i386                 randconfig-d003-20200317
-x86_64               randconfig-e001-20200317
-x86_64               randconfig-e002-20200317
-x86_64               randconfig-e003-20200317
-i386                 randconfig-e001-20200317
-i386                 randconfig-e002-20200317
-i386                 randconfig-e003-20200317
-x86_64               randconfig-f001-20200317
-x86_64               randconfig-f002-20200317
-x86_64               randconfig-f003-20200317
-i386                 randconfig-f001-20200317
-i386                 randconfig-f002-20200317
-i386                 randconfig-f003-20200317
-x86_64               randconfig-g001-20200317
-x86_64               randconfig-g002-20200317
-x86_64               randconfig-g003-20200317
-i386                 randconfig-g001-20200317
-i386                 randconfig-g002-20200317
-i386                 randconfig-g003-20200317
-x86_64               randconfig-h001-20200317
-x86_64               randconfig-h002-20200317
-x86_64               randconfig-h003-20200317
-i386                 randconfig-h001-20200317
-i386                 randconfig-h002-20200317
-i386                 randconfig-h003-20200317
-arc                  randconfig-a001-20200317
-arm                  randconfig-a001-20200317
-arm64                randconfig-a001-20200317
-ia64                 randconfig-a001-20200317
-powerpc              randconfig-a001-20200317
-sparc                randconfig-a001-20200317
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-s390                       zfcpdump_defconfig
-s390                          debug_defconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                             alldefconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                           x86_64_defconfig
-um                                  defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
+On 2020.03.05 00:54:13 -0500, Yan Zhao wrote:
+> This cmd access is found on BDW.
+>=20
+> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+> ---
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.c
+> index 151fea215e5c..e046878bd4d3 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> @@ -164,6 +164,7 @@ struct decode_info {
+>  #define OP_STATE_BASE_ADDRESS                   OP_3D_MEDIA(0x0, 0x1, 0x=
+01)
+>  #define OP_STATE_SIP                            OP_3D_MEDIA(0x0, 0x1, 0x=
+02)
+>  #define OP_3D_MEDIA_0_1_4			OP_3D_MEDIA(0x0, 0x1, 0x04)
+> +#define OP_SWTESS_BASE_ADDRESS			OP_3D_MEDIA(0x0, 0x1, 0x03)
+> =20
+>  #define OP_3DSTATE_VF_STATISTICS_GM45           OP_3D_MEDIA(0x1, 0x0, 0x=
+0B)
+> =20
+> @@ -2468,6 +2469,9 @@ static const struct cmd_info cmd_info[] =3D {
+>  	{"OP_3D_MEDIA_0_1_4", OP_3D_MEDIA_0_1_4, F_LEN_VAR, R_RCS, D_ALL,
+>  		ADDR_FIX_1(1), 8, NULL},
+> =20
+> +	{"OP_SWTESS_BASE_ADDRESS", OP_SWTESS_BASE_ADDRESS,
+> +		F_LEN_VAR, R_RCS, D_ALL, ADDR_FIX_2(1, 2), 3, NULL},
+> +
+>  	{"3DSTATE_VS", OP_3DSTATE_VS, F_LEN_VAR, R_RCS, D_ALL, 0, 8, NULL},
+> =20
+>  	{"3DSTATE_SF", OP_3DSTATE_SF, F_LEN_VAR, R_RCS, D_ALL, 0, 8, NULL},
+> --=20
+> 2.17.1
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--aIbcA3MSwnGacr4f
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXnGuBgAKCRCxBBozTXgY
+J9yRAKCO7pbPNUTkuA1tTQunhDa2vMTy7wCeJHzxhxxsBSamUYzD9SWL9djKl+o=
+=GdIR
+-----END PGP SIGNATURE-----
+
+--aIbcA3MSwnGacr4f--
+
+--===============0186409355==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0186409355==--
