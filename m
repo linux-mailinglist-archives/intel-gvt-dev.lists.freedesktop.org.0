@@ -2,41 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B90D6189568
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2020 06:38:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C10CD1895D7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2020 07:31:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1F2FC6E864;
-	Wed, 18 Mar 2020 05:38:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 62311898CE;
+	Wed, 18 Mar 2020 06:31:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 374D06E864
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C1E20892CF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Mar 2020 05:38:55 +0000 (UTC)
-IronPort-SDR: 3q2AJ8DF7kO12DQOIrfg4CkwB6Fnt++msfeosBxynR/Ux5yUpX5m/Q4Yeu82lAxbuc+xHIqmQX
- RhwOg177JbrQ==
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Wed, 18 Mar 2020 06:31:10 +0000 (UTC)
+IronPort-SDR: eJcjOR4TAv7xdE4Lg8+1V5n+dOcKdl+9NjMIg98rkyegdA9KHrHFrgMoDuPTC5mpR8KWtvAN4S
+ IWx03an4tfvw==
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2020 22:38:54 -0700
-IronPort-SDR: hEfXEgmsyzJ8u9T2CazPcNQnmVpCs9QspGZPrkXS6f9YBhNskFkzUt3kNQlhrd9Buqa4N0WH+z
- ccqCIomHAG/w==
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Mar 2020 23:31:10 -0700
+IronPort-SDR: 1upcG2gGlCrprXFP9CO9t/RzRq/ZOO+SOb2W5zdpzsMgWWuJU5k0vvCjXjYJLW8vkEl33/0yuM
+ kggzCi7q9MJg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,566,1574150400"; 
- d="asc'?scan'208";a="391326531"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga004.jf.intel.com with ESMTP; 17 Mar 2020 22:38:53 -0700
-Date: Wed, 18 Mar 2020 13:26:11 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: do not check len & max_len for lri
-Message-ID: <20200318052611.GU8880@zhen-hp.sh.intel.com>
-References: <20200304095121.21609-1-yan.y.zhao@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <20200304095121.21609-1-yan.y.zhao@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+X-IronPort-AV: E=Sophos;i="5.70,566,1574150400"; d="scan'208";a="355604964"
+Received: from kechen-optiplex-9020.bj.intel.com ([10.238.158.100])
+ by fmsmga001.fm.intel.com with ESMTP; 17 Mar 2020 23:31:09 -0700
+From: Tina Zhang <tina.zhang@intel.com>
+To: 
+Subject: [PATCH] drm/i915/gvt: Check engine id before using it
+Date: Wed, 18 Mar 2020 14:26:35 +0800
+Message-Id: <20200318062635.21689-1-tina.zhang@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,101 +44,148 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1399038769=="
+Cc: intel-gvt-dev@lists.freedesktop.org, zhenyuw@linux.intel.com,
+ Tina Zhang <tina.zhang@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+The number of engines is I915_NUM_ENGINES. Since the array starts from
+zero, the last one's index in the array should be (I915_NUM_ENGINES - 1).
+Directly using engined->id as the index of the array, may lead to out of
+array's range issue.
 
---===============1399038769==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="hHiQ9nAwW5IGN2dL"
-Content-Disposition: inline
+Klocwork detected this issue and this patch solves it by checking
+engine->id before using it.
 
+Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/execlist.c  | 19 ++++++++++++++++---
+ drivers/gpu/drm/i915/gvt/handlers.c  |  7 ++++---
+ drivers/gpu/drm/i915/gvt/scheduler.c | 19 +++++++++++++++----
+ 3 files changed, 35 insertions(+), 10 deletions(-)
 
---hHiQ9nAwW5IGN2dL
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2020.03.04 04:51:21 -0500, Yan Zhao wrote:
-> lri ususally of variable len and far exceeding 127 dwords.
->=20
-> Fixes: 00a33be40634 (drm/i915/gvt: Add valid length check for MI variable
-> commands)
->=20
-> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
-
-Ack for this fix which seems true in practical, suppose our ring shadow alr=
-eady
-has sane range check.
-
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
-> ---
->  drivers/gpu/drm/i915/gvt/cmd_parser.c | 12 ------------
->  1 file changed, 12 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
-/gvt/cmd_parser.c
-> index 73a2891114a4..151fea215e5c 100644
-> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> @@ -965,18 +965,6 @@ static int cmd_handler_lri(struct parser_exec_state =
-*s)
->  	int i, ret =3D 0;
->  	int cmd_len =3D cmd_length(s);
->  	struct intel_gvt *gvt =3D s->vgpu->gvt;
-> -	u32 valid_len =3D CMD_LEN(1);
-> -
-> -	/*
-> -	 * Official intel docs are somewhat sloppy , check the definition of
-> -	 * MI_LOAD_REGISTER_IMM.
-> -	 */
-> -	#define MAX_VALID_LEN 127
-> -	if ((cmd_len < valid_len) || (cmd_len > MAX_VALID_LEN)) {
-> -		gvt_err("len is not valid:  len=3D%u  valid_len=3D%u\n",
-> -			cmd_len, valid_len);
-> -		return -EFAULT;
-> -	}
-> =20
->  	for (i =3D 1; i < cmd_len; i +=3D 2) {
->  		if (IS_BROADWELL(gvt->dev_priv) && s->ring_id !=3D RCS0) {
-> --=20
-> 2.17.1
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---hHiQ9nAwW5IGN2dL
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXnGw8wAKCRCxBBozTXgY
-J5gkAKCe+QLNmXO05qF5nc26ESKccF3dGgCcDbVBK2R74DlRr2KlbA+eOZRAyPo=
-=tq7U
------END PGP SIGNATURE-----
-
---hHiQ9nAwW5IGN2dL--
-
---===============1399038769==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/gpu/drm/i915/gvt/execlist.c b/drivers/gpu/drm/i915/gvt/execlist.c
+index dd25c3024370..37f8fcac7b05 100644
+--- a/drivers/gpu/drm/i915/gvt/execlist.c
++++ b/drivers/gpu/drm/i915/gvt/execlist.c
+@@ -437,6 +437,9 @@ static int submit_context(struct intel_vgpu *vgpu,
+ 	struct intel_vgpu_submission *s = &vgpu->submission;
+ 	struct intel_vgpu_workload *workload = NULL;
+ 
++	if (!engine || engine->id >= I915_NUM_ENGINES)
++		return -EINVAL;
++
+ 	workload = intel_vgpu_create_workload(vgpu, engine, desc);
+ 	if (IS_ERR(workload))
+ 		return PTR_ERR(workload);
+@@ -459,10 +462,15 @@ int intel_vgpu_submit_execlist(struct intel_vgpu *vgpu,
+ 			       const struct intel_engine_cs *engine)
+ {
+ 	struct intel_vgpu_submission *s = &vgpu->submission;
+-	struct intel_vgpu_execlist *execlist = &s->execlist[engine->id];
++	struct intel_vgpu_execlist *execlist;
+ 	struct execlist_ctx_descriptor_format *desc[2];
+ 	int i, ret;
+ 
++	if (!engine || engine->id >= I915_NUM_ENGINES)
++		return -EINVAL;
++
++	execlist = &s->execlist[engine->id];
++
+ 	desc[0] = get_desc_from_elsp_dwords(&execlist->elsp_dwords, 0);
+ 	desc[1] = get_desc_from_elsp_dwords(&execlist->elsp_dwords, 1);
+ 
+@@ -503,11 +511,16 @@ static void init_vgpu_execlist(struct intel_vgpu *vgpu,
+ 			       const struct intel_engine_cs *engine)
+ {
+ 	struct intel_vgpu_submission *s = &vgpu->submission;
+-	struct intel_vgpu_execlist *execlist = &s->execlist[engine->id];
++	struct intel_vgpu_execlist *execlist;
+ 	struct execlist_context_status_pointer_format ctx_status_ptr;
+ 	u32 ctx_status_ptr_reg;
+ 
+-	memset(execlist, 0, sizeof(*execlist));
++	if (!engine || engine->id >= I915_NUM_ENGINES)
++		return;
++
++	execlist = &s->execlist[engine->id];
++
++	memset(execlist, 0, sizeof(struct intel_vgpu_execlist));
+ 
+ 	execlist->vgpu = vgpu;
+ 	execlist->engine = engine;
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index 0182e2a5acff..f11908a28ce7 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -1690,7 +1690,8 @@ static int elsp_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
+ 	u32 data = *(u32 *)p_data;
+ 	int ret = 0;
+ 
+-	if (drm_WARN_ON(&i915->drm, !engine))
++	if (drm_WARN_ON(&i915->drm, !engine) ||
++		engine->id >= I915_NUM_ENGINES)
+ 		return -EINVAL;
+ 
+ 	execlist = &vgpu->submission.execlist[engine->id];
+@@ -1743,8 +1744,8 @@ static int ring_mode_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
+ 		enter_failsafe_mode(vgpu, GVT_FAILSAFE_UNSUPPORTED_GUEST);
+ 		return 0;
+ 	}
+-	if ((data & _MASKED_BIT_ENABLE(GFX_RUN_LIST_ENABLE))
+-			|| (data & _MASKED_BIT_DISABLE(GFX_RUN_LIST_ENABLE))) {
++	if (engine && ((data & _MASKED_BIT_ENABLE(GFX_RUN_LIST_ENABLE))
++		       || (data & _MASKED_BIT_DISABLE(GFX_RUN_LIST_ENABLE)))) {
+ 		enable_execlist = !!(data & GFX_RUN_LIST_ENABLE);
+ 
+ 		gvt_dbg_core("EXECLIST %s on ring %s\n",
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
+index 1c95bf8cbed0..8436984cd1f6 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.c
++++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+@@ -232,13 +232,21 @@ static int shadow_context_status_change(struct notifier_block *nb,
+ 		unsigned long action, void *data)
+ {
+ 	struct i915_request *rq = data;
+-	struct intel_gvt *gvt = container_of(nb, struct intel_gvt,
+-				shadow_ctx_notifier_block[rq->engine->id]);
+-	struct intel_gvt_workload_scheduler *scheduler = &gvt->scheduler;
+-	enum intel_engine_id ring_id = rq->engine->id;
++	struct intel_gvt *gvt;
++	struct intel_gvt_workload_scheduler *scheduler;
++	enum intel_engine_id ring_id;
+ 	struct intel_vgpu_workload *workload;
+ 	unsigned long flags;
+ 
++	if (!rq || !rq->engine || rq->engine->id >= I915_NUM_ENGINES)
++		return NOTIFY_OK;
++
++	ring_id = rq->engine->id;
++
++	gvt = container_of(nb, struct intel_gvt,
++				shadow_ctx_notifier_block[rq->engine->id]);
++	scheduler = &gvt->scheduler;
++
+ 	if (!is_gvt_request(rq)) {
+ 		spin_lock_irqsave(&scheduler->mmio_context_lock, flags);
+ 		if (action == INTEL_CONTEXT_SCHEDULE_IN &&
+@@ -1586,6 +1594,9 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,
+  */
+ void intel_vgpu_queue_workload(struct intel_vgpu_workload *workload)
+ {
++	if (workload->engine->id >= I915_NUM_ENGINES)
++		return;
++
+ 	list_add_tail(&workload->list,
+ 		      workload_q_head(workload->vgpu, workload->engine));
+ 	intel_gvt_kick_schedule(workload->vgpu->gvt);
+-- 
+2.17.1
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1399038769==--
