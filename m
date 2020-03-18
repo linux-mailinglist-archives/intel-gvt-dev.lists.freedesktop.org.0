@@ -1,36 +1,36 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C10CD1895D7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2020 07:31:12 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E17C189D75
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Mar 2020 14:58:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 62311898CE;
-	Wed, 18 Mar 2020 06:31:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D8CDE6E8B8;
+	Wed, 18 Mar 2020 13:57:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C1E20892CF
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 584266E8B8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Mar 2020 06:31:10 +0000 (UTC)
-IronPort-SDR: eJcjOR4TAv7xdE4Lg8+1V5n+dOcKdl+9NjMIg98rkyegdA9KHrHFrgMoDuPTC5mpR8KWtvAN4S
- IWx03an4tfvw==
+ Wed, 18 Mar 2020 13:57:59 +0000 (UTC)
+IronPort-SDR: TCi9UKGHu6Ibq3ej7rHlr8TZBvqsuNlJQsKUXRpEhGrIttNfaHQExpLJh6vwy72achm62frqXf
+ XIn5/Qldy7AA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2020 23:31:10 -0700
-IronPort-SDR: 1upcG2gGlCrprXFP9CO9t/RzRq/ZOO+SOb2W5zdpzsMgWWuJU5k0vvCjXjYJLW8vkEl33/0yuM
- kggzCi7q9MJg==
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2020 06:57:59 -0700
+IronPort-SDR: yT/w+97N8V/ySggv+ZkJGckeFArs1LjDVZndGWIZx2uzeXXn/gJUuAyOeWJfQA0Muh5rx7EVd/
+ JqHXCE6ZWxKQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,566,1574150400"; d="scan'208";a="355604964"
+X-IronPort-AV: E=Sophos;i="5.70,567,1574150400"; d="scan'208";a="291325670"
 Received: from kechen-optiplex-9020.bj.intel.com ([10.238.158.100])
- by fmsmga001.fm.intel.com with ESMTP; 17 Mar 2020 23:31:09 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 18 Mar 2020 06:57:56 -0700
 From: Tina Zhang <tina.zhang@intel.com>
 To: 
-Subject: [PATCH] drm/i915/gvt: Check engine id before using it
-Date: Wed, 18 Mar 2020 14:26:35 +0800
-Message-Id: <20200318062635.21689-1-tina.zhang@intel.com>
+Subject: [PATCH] drm/i915/gvt: Support guest sharing vm
+Date: Wed, 18 Mar 2020 21:53:22 +0800
+Message-Id: <20200318135322.13788-1-tina.zhang@intel.com>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -52,136 +52,233 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-The number of engines is I915_NUM_ENGINES. Since the array starts from
-zero, the last one's index in the array should be (I915_NUM_ENGINES - 1).
-Directly using engined->id as the index of the array, may lead to out of
-array's range issue.
+The vm in context image can be overridden by lri cmd with a shared vm
+pdps. In such case, the shared vm is used instead of the one in the
+context image. This feature is used by guest IGD driver to share vm
+between different contexts.
 
-Klocwork detected this issue and this patch solves it by checking
-engine->id before using it.
+This patch enables the feature support on vGPU.
 
 Signed-off-by: Tina Zhang <tina.zhang@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/execlist.c  | 19 ++++++++++++++++---
- drivers/gpu/drm/i915/gvt/handlers.c  |  7 ++++---
- drivers/gpu/drm/i915/gvt/scheduler.c | 19 +++++++++++++++----
- 3 files changed, 35 insertions(+), 10 deletions(-)
+ drivers/gpu/drm/i915/gvt/cmd_parser.c | 84 +++++++++++++++++++++++++++
+ drivers/gpu/drm/i915/gvt/execlist.c   |  2 +
+ drivers/gpu/drm/i915/gvt/handlers.c   |  2 +-
+ drivers/gpu/drm/i915/gvt/scheduler.c  | 26 +++++++++
+ drivers/gpu/drm/i915/gvt/scheduler.h  |  1 +
+ 5 files changed, 114 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+index 9e065ad0658f..4c702b604884 100644
+--- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
++++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+@@ -881,6 +881,86 @@ static int mocs_cmd_reg_handler(struct parser_exec_state *s,
+ 	return 0;
+ }
+ 
++#define IS_PDP_UDW_MMIO(offset, base, num)	\
++	((offset) == ((base) + 0x274 + (num) * 8))
++
++static int is_cmd_update_pdps(unsigned int offset,
++			      struct parser_exec_state *s)
++{
++	return IS_PDP_UDW_MMIO(offset, s->workload->engine->mmio_base, 0) ||
++		IS_PDP_UDW_MMIO(offset, s->workload->engine->mmio_base, 3);
++}
++static int cmd_pdp_mmio_update_handler(struct parser_exec_state *s,
++				       unsigned int offset, unsigned int index)
++{
++	struct intel_vgpu *vgpu = s->vgpu;
++	struct intel_vgpu_mm *shadow_mm = s->workload->shadow_mm;
++	struct intel_vgpu_mm *shared_shadow_mm = s->workload->shared_shadow_mm;
++	struct intel_vgpu_mm *mm;
++	u64 pdps[GEN8_3LVL_PDPES];
++
++	if (shadow_mm->ppgtt_mm.root_entry_type ==
++	    GTT_TYPE_PPGTT_ROOT_L4_ENTRY) {
++		pdps[0] = (u64)cmd_val(s, 2) << 32;
++		pdps[0] |= cmd_val(s, 4);
++
++		mm = intel_vgpu_find_ppgtt_mm(vgpu, pdps);
++		if (!mm) {
++			gvt_vgpu_err("failed to get the shadow vm\n");
++			return -EINVAL;
++		}
++
++		if (mm != shadow_mm) {
++			if (mm != shared_shadow_mm) {
++				if (shared_shadow_mm)
++					intel_vgpu_mm_put(shared_shadow_mm);
++				intel_vgpu_mm_get(mm);
++				s->workload->shared_shadow_mm = mm;
++			}
++			*cmd_ptr(s, 2) =
++				upper_32_bits(mm->ppgtt_mm.shadow_pdps[0]);
++			*cmd_ptr(s, 4) =
++				lower_32_bits(mm->ppgtt_mm.shadow_pdps[0]);
++		}
++	} else if (shadow_mm->ppgtt_mm.root_entry_type ==
++		   GTT_TYPE_PPGTT_ROOT_L3_ENTRY) {
++		int i, j;
++
++		for (i = GEN8_3LVL_PDPES, j = 2; i--; ) {
++			pdps[i] = (u64)cmd_val(s, j) << 32;
++			pdps[i] |= cmd_val(s, j+2);
++			j += 4;
++		}
++
++		mm = intel_vgpu_find_ppgtt_mm(vgpu, pdps);
++		if (!mm) {
++			gvt_vgpu_err("failed to get the shadow vm\n");
++			return -EINVAL;
++		}
++
++		if (mm != shadow_mm) {
++			if (mm != shared_shadow_mm) {
++				if (shared_shadow_mm)
++					intel_vgpu_mm_put(shared_shadow_mm);
++				intel_vgpu_mm_get(mm);
++				s->workload->shared_shadow_mm = mm;
++			}
++			for (i = GEN8_3LVL_PDPES, j = 2; i--; ) {
++				*cmd_ptr(s, j) =
++					upper_32_bits(
++						mm->ppgtt_mm.shadow_pdps[i]);
++				*cmd_ptr(s, j + 2) =
++					lower_32_bits(
++						mm->ppgtt_mm.shadow_pdps[i]);
++				j += 4;
++			}
++		}
++	} else {
++		gvt_vgpu_err("invalid shared shadow vm type\n");
++	}
++	return 0;
++}
++
+ static int cmd_reg_handler(struct parser_exec_state *s,
+ 	unsigned int offset, unsigned int index, char *cmd)
+ {
+@@ -919,6 +999,10 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+ 		patch_value(s, cmd_ptr(s, index), VGT_PVINFO_PAGE);
+ 	}
+ 
++	if (is_cmd_update_pdps(offset, s) &&
++	    cmd_pdp_mmio_update_handler(s, offset, index))
++		return -EINVAL;
++
+ 	/* TODO
+ 	 * In order to let workload with inhibit context to generate
+ 	 * correct image data into memory, vregs values will be loaded to
 diff --git a/drivers/gpu/drm/i915/gvt/execlist.c b/drivers/gpu/drm/i915/gvt/execlist.c
-index dd25c3024370..37f8fcac7b05 100644
+index dd25c3024370..7f7087258d8b 100644
 --- a/drivers/gpu/drm/i915/gvt/execlist.c
 +++ b/drivers/gpu/drm/i915/gvt/execlist.c
-@@ -437,6 +437,9 @@ static int submit_context(struct intel_vgpu *vgpu,
- 	struct intel_vgpu_submission *s = &vgpu->submission;
- 	struct intel_vgpu_workload *workload = NULL;
+@@ -424,6 +424,8 @@ static int complete_execlist_workload(struct intel_vgpu_workload *workload)
  
-+	if (!engine || engine->id >= I915_NUM_ENGINES)
-+		return -EINVAL;
-+
- 	workload = intel_vgpu_create_workload(vgpu, engine, desc);
- 	if (IS_ERR(workload))
- 		return PTR_ERR(workload);
-@@ -459,10 +462,15 @@ int intel_vgpu_submit_execlist(struct intel_vgpu *vgpu,
- 			       const struct intel_engine_cs *engine)
- {
- 	struct intel_vgpu_submission *s = &vgpu->submission;
--	struct intel_vgpu_execlist *execlist = &s->execlist[engine->id];
-+	struct intel_vgpu_execlist *execlist;
- 	struct execlist_ctx_descriptor_format *desc[2];
- 	int i, ret;
- 
-+	if (!engine || engine->id >= I915_NUM_ENGINES)
-+		return -EINVAL;
-+
-+	execlist = &s->execlist[engine->id];
-+
- 	desc[0] = get_desc_from_elsp_dwords(&execlist->elsp_dwords, 0);
- 	desc[1] = get_desc_from_elsp_dwords(&execlist->elsp_dwords, 1);
- 
-@@ -503,11 +511,16 @@ static void init_vgpu_execlist(struct intel_vgpu *vgpu,
- 			       const struct intel_engine_cs *engine)
- {
- 	struct intel_vgpu_submission *s = &vgpu->submission;
--	struct intel_vgpu_execlist *execlist = &s->execlist[engine->id];
-+	struct intel_vgpu_execlist *execlist;
- 	struct execlist_context_status_pointer_format ctx_status_ptr;
- 	u32 ctx_status_ptr_reg;
- 
--	memset(execlist, 0, sizeof(*execlist));
-+	if (!engine || engine->id >= I915_NUM_ENGINES)
-+		return;
-+
-+	execlist = &s->execlist[engine->id];
-+
-+	memset(execlist, 0, sizeof(struct intel_vgpu_execlist));
- 
- 	execlist->vgpu = vgpu;
- 	execlist->engine = engine;
+ 	ret = emulate_execlist_ctx_schedule_out(execlist, &workload->ctx_desc);
+ out:
++	if (workload->shared_shadow_mm)
++		intel_vgpu_unpin_mm(workload->shared_shadow_mm);
+ 	intel_vgpu_unpin_mm(workload->shadow_mm);
+ 	intel_vgpu_destroy_workload(workload);
+ 	return ret;
 diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 0182e2a5acff..f11908a28ce7 100644
+index 0182e2a5acff..23a3193a6654 100644
 --- a/drivers/gpu/drm/i915/gvt/handlers.c
 +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -1690,7 +1690,8 @@ static int elsp_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
- 	u32 data = *(u32 *)p_data;
- 	int ret = 0;
+@@ -2808,7 +2808,7 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
+ 	MMIO_D(GAMTARBMODE, D_BDW_PLUS);
  
--	if (drm_WARN_ON(&i915->drm, !engine))
-+	if (drm_WARN_ON(&i915->drm, !engine) ||
-+		engine->id >= I915_NUM_ENGINES)
- 		return -EINVAL;
+ #define RING_REG(base) _MMIO((base) + 0x270)
+-	MMIO_RING_F(RING_REG, 32, 0, 0, 0, D_BDW_PLUS, NULL, NULL);
++	MMIO_RING_F(RING_REG, 32, F_CMD_ACCESS, 0, 0, D_BDW_PLUS, NULL, NULL);
+ #undef RING_REG
  
- 	execlist = &vgpu->submission.execlist[engine->id];
-@@ -1743,8 +1744,8 @@ static int ring_mode_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
- 		enter_failsafe_mode(vgpu, GVT_FAILSAFE_UNSUPPORTED_GUEST);
- 		return 0;
- 	}
--	if ((data & _MASKED_BIT_ENABLE(GFX_RUN_LIST_ENABLE))
--			|| (data & _MASKED_BIT_DISABLE(GFX_RUN_LIST_ENABLE))) {
-+	if (engine && ((data & _MASKED_BIT_ENABLE(GFX_RUN_LIST_ENABLE))
-+		       || (data & _MASKED_BIT_DISABLE(GFX_RUN_LIST_ENABLE)))) {
- 		enable_execlist = !!(data & GFX_RUN_LIST_ENABLE);
- 
- 		gvt_dbg_core("EXECLIST %s on ring %s\n",
+ 	MMIO_RING_GM_RDR(RING_HWS_PGA, D_BDW_PLUS, NULL, hws_pga_write);
 diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
-index 1c95bf8cbed0..8436984cd1f6 100644
+index 1c95bf8cbed0..16a9af130d10 100644
 --- a/drivers/gpu/drm/i915/gvt/scheduler.c
 +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-@@ -232,13 +232,21 @@ static int shadow_context_status_change(struct notifier_block *nb,
- 		unsigned long action, void *data)
- {
- 	struct i915_request *rq = data;
--	struct intel_gvt *gvt = container_of(nb, struct intel_gvt,
--				shadow_ctx_notifier_block[rq->engine->id]);
--	struct intel_gvt_workload_scheduler *scheduler = &gvt->scheduler;
--	enum intel_engine_id ring_id = rq->engine->id;
-+	struct intel_gvt *gvt;
-+	struct intel_gvt_workload_scheduler *scheduler;
-+	enum intel_engine_id ring_id;
- 	struct intel_vgpu_workload *workload;
- 	unsigned long flags;
+@@ -612,6 +612,9 @@ static int prepare_workload(struct intel_vgpu_workload *workload)
+ 	struct intel_vgpu_submission *s = &vgpu->submission;
+ 	int ret = 0;
  
-+	if (!rq || !rq->engine || rq->engine->id >= I915_NUM_ENGINES)
-+		return NOTIFY_OK;
++	if (workload->shared_shadow_mm)
++		intel_vgpu_pin_mm(workload->shared_shadow_mm);
 +
-+	ring_id = rq->engine->id;
+ 	ret = intel_vgpu_pin_mm(workload->shadow_mm);
+ 	if (ret) {
+ 		gvt_vgpu_err("fail to vgpu pin mm\n");
+@@ -671,6 +674,8 @@ static int prepare_workload(struct intel_vgpu_workload *workload)
+ 	release_shadow_batch_buffer(workload);
+ err_unpin_mm:
+ 	intel_vgpu_unpin_mm(workload->shadow_mm);
++	if (workload->shared_shadow_mm)
++		intel_vgpu_unpin_mm(workload->shared_shadow_mm);
+ 	return ret;
+ }
+ 
+@@ -780,12 +785,27 @@ pick_next_workload(struct intel_gvt *gvt, struct intel_engine_cs *engine)
+ 	return workload;
+ }
+ 
++static void update_guest_pdps(struct intel_vgpu *vgpu,
++		u64 ring_context_gpa, u32 pdp[8])
++{
++	u64 gpa;
++	int i;
 +
-+	gvt = container_of(nb, struct intel_gvt,
-+				shadow_ctx_notifier_block[rq->engine->id]);
-+	scheduler = &gvt->scheduler;
++	gpa = ring_context_gpa + RING_CTX_OFF(pdps[0].val);
 +
- 	if (!is_gvt_request(rq)) {
- 		spin_lock_irqsave(&scheduler->mmio_context_lock, flags);
- 		if (action == INTEL_CONTEXT_SCHEDULE_IN &&
-@@ -1586,6 +1594,9 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,
-  */
- void intel_vgpu_queue_workload(struct intel_vgpu_workload *workload)
++	for (i = 0; i < 8; i++)
++		intel_gvt_hypervisor_write_gpa(vgpu,
++				gpa + i * 8, &pdp[7 - i], 4);
++}
++
++
+ static void update_guest_context(struct intel_vgpu_workload *workload)
  {
-+	if (workload->engine->id >= I915_NUM_ENGINES)
-+		return;
+ 	struct i915_request *rq = workload->req;
+ 	struct intel_vgpu *vgpu = workload->vgpu;
+ 	struct drm_i915_gem_object *ctx_obj = rq->context->state->obj;
+ 	struct execlist_ring_context *shadow_ring_context;
++	struct intel_vgpu_mm *shared_mm = workload->shared_shadow_mm;
+ 	struct page *page;
+ 	void *src;
+ 	unsigned long context_gpa, context_page_num;
+@@ -842,6 +862,10 @@ static void update_guest_context(struct intel_vgpu_workload *workload)
+ 	intel_gvt_hypervisor_write_gpa(vgpu, workload->ring_context_gpa +
+ 		RING_CTX_OFF(ring_header.val), &workload->rb_tail, 4);
+ 
++	if (shared_mm)
++		update_guest_pdps(vgpu, workload->ring_context_gpa,
++				  (void *)shared_mm->ppgtt_mm.guest_pdps);
 +
- 	list_add_tail(&workload->list,
- 		      workload_q_head(workload->vgpu, workload->engine));
- 	intel_gvt_kick_schedule(workload->vgpu->gvt);
+ 	page = i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
+ 	shadow_ring_context = kmap(page);
+ 
+@@ -1346,6 +1370,8 @@ void intel_vgpu_destroy_workload(struct intel_vgpu_workload *workload)
+ 	release_shadow_batch_buffer(workload);
+ 	release_shadow_wa_ctx(&workload->wa_ctx);
+ 
++	if (workload->shared_shadow_mm)
++		intel_vgpu_mm_put(workload->shared_shadow_mm);
+ 	if (workload->shadow_mm)
+ 		intel_vgpu_mm_put(workload->shadow_mm);
+ 
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.h b/drivers/gpu/drm/i915/gvt/scheduler.h
+index bf7fc0ca4cb1..6a7d5a7e1c0e 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.h
++++ b/drivers/gpu/drm/i915/gvt/scheduler.h
+@@ -87,6 +87,7 @@ struct intel_vgpu_workload {
+ 	int status;
+ 
+ 	struct intel_vgpu_mm *shadow_mm;
++	struct intel_vgpu_mm *shared_shadow_mm;
+ 
+ 	/* different submission model may need different handler */
+ 	int (*prepare)(struct intel_vgpu_workload *);
 -- 
 2.17.1
 
