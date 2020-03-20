@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B63B418CAAD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Mar 2020 10:49:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E730B18CBF9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Mar 2020 11:49:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6BA4C6EAFB;
-	Fri, 20 Mar 2020 09:49:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 992006EB02;
+	Fri, 20 Mar 2020 10:49:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BB3D56EAFB
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8A0FF6EB02
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Mar 2020 09:49:32 +0000 (UTC)
+ Fri, 20 Mar 2020 10:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
  MIME-Version:Content-Type:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
  List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=jy3OiIBXFra5OSUTY8XK09GOX0a3dqqOoAyqE1simYk=; b=O+tr3UzHLRSS3mnSmC7ML1rI0
- 7tj6nmt7H2sp/IHEJJYwu4z454jX/riAGQs533Ddzo0/3OSV+wGZ7kUun3lHtvPNVSEwKGGgXqPSR
- PJm0IccchwT9jbMCkeHZJHJ8T7L39iAqZjF9K58QSWBWx3NEb3ZOPQzs0PoOKYP2g17TF+4mcsxuj
- wdUrR8FguS8swzgDkEaYZ5C857iXsb0qfLzufgObNynHEeb4NYM5oLwawuJPEooPCaDJYsSyb0kyK
- n7kTw/1xhuoZMnM3zkkMleOI/ujU7SKWVDG05+wTPWDIoBUVjZu7ym3jMOGmxnpociD/AYxTaKnq3
- mA/FEmUpw==;
-Received: from sslproxy02.your-server.de ([78.47.166.47])
+ bh=eRPmha4ah9t2wcA33OLK6XhzTcJRMzN/1al8a4m0XMk=; b=jkoBZ/i+aESK73EcNVFx9wgvS
+ Rst7/LPW8xpR0IXdO0/OXZK6i+yu25QSdolLEpHs2S0eoRzj+XkPAzEX+CG3PcdmUYHk8FUxBw+0G
+ JeNI/c5kh+3RCqyXwbrAwTrQZ/o3rqNIOG5cgnrrBO7eHbNVSbXHF2gGH0OkALdFFqbASIs4Xqj+h
+ x0d7OQ8qDdnr2gu3sFUoBZrfXyhUDNzKB5oo64Lnw05S9dLpS5Bnj84CCYZrZ6knvxwKdkZ7/RaZr
+ aiKn+ePYnkHVM5Glnm3QR5kne/KXlWPeboAiMrsU/yqW782DryAzQ/7qPloK6mM8UCZNZimiYqMzE
+ KebxmQ2VQ==;
+Received: from sslproxy05.your-server.de ([78.46.172.2])
  by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
  (Exim 4.89_1)
  (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jFEHT-00068e-4f; Fri, 20 Mar 2020 10:49:31 +0100
+ id 1jFFDn-0000eU-4F; Fri, 20 Mar 2020 11:49:47 +0100
 Received: from [2001:16b8:572b:ce00:372e:184c:c2cf:7b1f] (helo=linux.fritz.box)
- by sslproxy02.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ by sslproxy05.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jFEHS-0006f0-U5; Fri, 20 Mar 2020 10:49:31 +0100
-Message-ID: <d1dfb5c753abf0aa9eb2b9a1b2c7ae01e967373e.camel@cyberus-technology.de>
-Subject: Multi-monitor support
+ id 1jFFDm-000UMW-Uk; Fri, 20 Mar 2020 11:49:47 +0100
+Message-ID: <460869e24c55da66c43e3cbdf77b4af5f9a0bbeb.camel@cyberus-technology.de>
+Subject: GVT State Save/Restore
 From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
 To: Intel GVT Dev <intel-gvt-dev@lists.freedesktop.org>
-Date: Fri, 20 Mar 2020 10:49:29 +0100
+Date: Fri, 20 Mar 2020 11:49:46 +0100
 Organization: Cyberus Technology GmbH
 User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
 MIME-Version: 1.0
@@ -64,9 +64,22 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 Hi everyone,
 
-We were wondering what would be required to enable monitor support with GVT.
-Does this only require plumbing for the guest to realize that there are multiple
-outputs or is there something more fundamental missing in the mediator?
+I'm researching what needs to be done to enable VMs with a GVT device to be
+saved to disk and restored. This is similar to live migration in the sense that
+state of the vGPU needs to be serialized and deserialized, but simpler, because
+no dirty page tracking is needed.
+
+I've seen work and discussions towards full live migration support:
+- https://www.spinics.net/lists/kvm/msg195198.html
+- https://lists.gnu.org/archive/html/qemu-devel/2017-07/msg09242.html
+- 
+https://events17.linuxfoundation.org/sites/events/files/slides/Live%20migration%20with%20mdev%20device%20-%202017_0.pdf
+
+It doesn't seem like any of the patches actually made it upstream. Are there
+some newer PoC patches to look at or did I miss some functionality in the
+mediator?
+
+Any info is appreciated!
 
 Thanks,
 Julian
