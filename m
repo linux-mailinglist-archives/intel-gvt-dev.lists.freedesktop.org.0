@@ -1,49 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E730B18CBF9
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Mar 2020 11:49:50 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D97C218CC45
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Mar 2020 12:08:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 992006EB02;
-	Fri, 20 Mar 2020 10:49:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8D5616EB0A;
+	Fri, 20 Mar 2020 11:08:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8A0FF6EB02
+Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com
+ [IPv6:2607:f8b0:4864:20::241])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C89A06EB05
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Mar 2020 10:49:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=eRPmha4ah9t2wcA33OLK6XhzTcJRMzN/1al8a4m0XMk=; b=jkoBZ/i+aESK73EcNVFx9wgvS
- Rst7/LPW8xpR0IXdO0/OXZK6i+yu25QSdolLEpHs2S0eoRzj+XkPAzEX+CG3PcdmUYHk8FUxBw+0G
- JeNI/c5kh+3RCqyXwbrAwTrQZ/o3rqNIOG5cgnrrBO7eHbNVSbXHF2gGH0OkALdFFqbASIs4Xqj+h
- x0d7OQ8qDdnr2gu3sFUoBZrfXyhUDNzKB5oo64Lnw05S9dLpS5Bnj84CCYZrZ6knvxwKdkZ7/RaZr
- aiKn+ePYnkHVM5Glnm3QR5kne/KXlWPeboAiMrsU/yqW782DryAzQ/7qPloK6mM8UCZNZimiYqMzE
- KebxmQ2VQ==;
-Received: from sslproxy05.your-server.de ([78.46.172.2])
- by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jFFDn-0000eU-4F; Fri, 20 Mar 2020 11:49:47 +0100
-Received: from [2001:16b8:572b:ce00:372e:184c:c2cf:7b1f] (helo=linux.fritz.box)
- by sslproxy05.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jFFDm-000UMW-Uk; Fri, 20 Mar 2020 11:49:47 +0100
-Message-ID: <460869e24c55da66c43e3cbdf77b4af5f9a0bbeb.camel@cyberus-technology.de>
-Subject: GVT State Save/Restore
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-To: Intel GVT Dev <intel-gvt-dev@lists.freedesktop.org>
-Date: Fri, 20 Mar 2020 11:49:46 +0100
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+ Fri, 20 Mar 2020 11:08:04 +0000 (UTC)
+Received: by mail-oi1-x241.google.com with SMTP id r7so6090510oij.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 20 Mar 2020 04:08:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=kuhba0bbR9oJup1oQ7P5tNPZ9FqBHXE57QqcfHgaIHo=;
+ b=Kcjom3NypmHAHg4TIaHIQKX+6I313w7RvpeCGZ9v5e734XU61FELEPoAjKyibMlq3U
+ jWlajOGMr1t1KFpyAKJLhVSnfCSfEFH2tSyB/LJies5Hyl4BNJ81KREC7aUOMWbGKrf+
+ aIYtIuM0u3j128nsL7FNUmRNFOiuvqBOPDA3yA5IQ6E2b/XHP1I0u/BtrRFBROog7RWM
+ b0slpaMKf9Znbt/hNLZ2T9kxEBtU5n1fdxlqJ7xvrOG9U74yh1odVILLRxESBKYbtFfu
+ HTz1r+WKbquFjujJHoPKvkr4swm8R0TMqGFW+LTuMvbLm3YefKrIaj5iXarDrPWBXBhJ
+ 0Q8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=kuhba0bbR9oJup1oQ7P5tNPZ9FqBHXE57QqcfHgaIHo=;
+ b=ssE5c9KD6kcrxGK3gDt/I31ibTc3VF75SCnWWrZiBdyQf0gRneK3fs05quNFMTASm5
+ 5qY3qqpnwfwn7ogOoqvcN6mK3DlqcKnzfkIbsBw6SYxNTUfKrXiKeUGNbjk7CxlP99ay
+ UryLGrXBzUhjL6nM2Tqi+Ns1MxipkqTF2HbshUAa/0cX4lMz5ffP6mLwuWb4jX9w4s7J
+ Y7WxQ1mxfdZjuCWYWd8f5mtF5SdyhtURKNsKldSM21vMtjld8hjg3ZE2BoAct3XHayj4
+ SmOecziz9gxzr+9gtzylvR6BVvha+Osa8oP8ClF/wPsu+xpcb3hfxQxNhrTm3tZKLDn3
+ dakA==
+X-Gm-Message-State: ANhLgQ0secc6EOgE4vX0/XlSbkA1JpvAtg5yvdKCmLRAQ2z+f1IGYW6c
+ LT+V8YewCYatUZtLK/rZ273vQlPnrBGVF1LPvpY=
+X-Google-Smtp-Source: ADFU+vuJaizirG5OKhHQW0R3dPXXl1mJZ5EXTaqVm2ogBmTcCci9MUwD6JvDVb6RZUKgG7Eb28UBFhIy0fZi4kDlDqw=
+X-Received: by 2002:aca:3255:: with SMTP id y82mr6102866oiy.44.1584702483981; 
+ Fri, 20 Mar 2020 04:08:03 -0700 (PDT)
 MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.2/25756/Thu Mar 19 14:11:06 2020)
+Received: by 2002:a4a:c897:0:0:0:0:0 with HTTP; Fri, 20 Mar 2020 04:08:03
+ -0700 (PDT)
+From: federa bureau of inteligence <federabureauofinteligence@gmail.com>
+Date: Fri, 20 Mar 2020 11:08:03 +0000
+Message-ID: <CAE9o6LB50YPWezLwrs9uSwCgfuFuUSrTfGz=QiaO9Pj23qjovw@mail.gmail.com>
+Subject: HAPPY SURVIVAL OF CORONAVIRUS
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,34 +61,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi everyone,
+Dear Sir,
 
-I'm researching what needs to be done to enable VMs with a GVT device to be
-saved to disk and restored. This is similar to live migration in the sense that
-state of the vGPU needs to be serialized and deserialized, but simpler, because
-no dirty page tracking is needed.
+HAPPY SURVIVAL OF CORONAVIRUS
 
-I've seen work and discussions towards full live migration support:
-- https://www.spinics.net/lists/kvm/msg195198.html
-- https://lists.gnu.org/archive/html/qemu-devel/2017-07/msg09242.html
-- 
-https://events17.linuxfoundation.org/sites/events/files/slides/Live%20migration%20with%20mdev%20device%20-%202017_0.pdf
+We are reaching for a very interesting business transaction which we
+feel will of great benefit.We the FBI unit in the western subregion of
+Africa have a fund which we confiscated and lodge it in a bank
 
-It doesn't seem like any of the patches actually made it upstream. Are there
-some newer PoC patches to look at or did I miss some functionality in the
-mediator?
+This fund is worth of $12.5 million dollars.We will need your
+assistance to recieve this fund into your account for investment in
+your country.
 
-Any info is appreciated!
+We will need your urgent response for details
 
-Thanks,
-Julian
-
+Inspector Greg Adams,
+For and on behalf of Cote D'Ivoire FBI
+Tel 00225 6716 6756
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
