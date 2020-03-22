@@ -1,54 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8AD9518EBE0
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 22 Mar 2020 20:12:26 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EBE818ECC2
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 22 Mar 2020 22:53:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3B45289B65;
-	Sun, 22 Mar 2020 19:12:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EF0EF89FE3;
+	Sun, 22 Mar 2020 21:53:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from kle.klezcar.com (kle.klezcar.com [162.241.139.106])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8C2CF89B65;
- Sun, 22 Mar 2020 19:12:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=klezcar.com
- ; s=default;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Date:
- Subject:From:Reply-To:Sender:Message-ID:To:Cc:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=HafKqGreONzdqSUQi1ECuK5ROaQB56y8QoKBpPhXXd0=; b=WGLs1bQyW1b4ZibyNoD0Ov4hJo
- Z5UrGP20MurM1gZ1hiLeQ2mTz2MykAM49qzxJpRuPabkC10jaNwVJT/Ii8NFQ9WS8tSusDBcRgPeH
- v7c3IPyyZtC4mnodWpvNsJj1E22L5Q8TXuXT2Hqy2MdO/OHl3xWURIpGcK5UjSFML0K8VmO3yvPkH
- 8NvLn03MNadVSsDzeXkDDoR9jMW0fP5cfqeBJ3ITivqZsnFXPLN4deSds/DAYsri26xNz/QH0C0hA
- CQQKi65AWNcRl98246k0QBYChoCS0MlBCliP/41keqKPmOOBUPiIKC/uCj9KNkz3MCccBonMOk2Jj
- ttE2zxWw==;
-Received: from [197.234.221.102] (port=51176 helo=User)
- by kle.klezcar.com with esmtpa (Exim 4.92)
- (envelope-from <info@gmail.com>)
- id 1jDe6e-0000wV-NQ; Mon, 16 Mar 2020 08:59:50 +0800
-From: "Mrs.Beal Paulette"<info@gmail.com>
-Subject: Re.Dear Beneficiary,
-Date: Mon, 16 Mar 2020 03:59:46 +0300
+Received: from mail.pergamino.gob.ar (mail.pergamino.gob.ar [200.70.38.77])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F329E89FE3;
+ Sun, 22 Mar 2020 21:53:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.pergamino.gob.ar (Postfix) with ESMTP id 1DA3825EC2AF;
+ Sun, 22 Mar 2020 10:34:38 -0300 (-03)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=pergamino.gob.ar;
+ h=x-mailer:content-transfer-encoding:content-type:content-type
+ :mime-version:date:date:subject:subject:from:from:reply-to; s=
+ default; t=1584884077; x=1586698478; bh=jpxGPKUS0wl4krJMjla2029X
+ O5HUy6akHDx0ZPTWJV4=; b=T7vZjohwhJsvr1nzpa2QEeerJrRW6HI+cOiH/8Ka
+ olpGs1xsX95TykPykWXbiEt0KOHx+dcLU25v00N0bwWqQIENxLEkpUMbS2UzedS8
+ xaqoPcav/5TGE5oGYSiUD0z0V8Es8h+rCMi0UoAGODOBiri8YH27Tvwk3SV9oNR/
+ tzU=
+X-Virus-Scanned: Debian amavisd-new at server.pergamino.gob.ar
+Received: from mail.pergamino.gob.ar ([127.0.0.1])
+ by localhost (server.pergamino.gob.ar [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id 7WfiH3d79MHP; Sun, 22 Mar 2020 10:34:37 -0300 (-03)
+Received: from User (ip83.ip-51-77-0.eu [51.77.0.83])
+ (Authenticated sender: simple@pergamino.gob.ar)
+ by mail.pergamino.gob.ar (Postfix) with ESMTPA id 289E625F7191;
+ Sun, 22 Mar 2020 10:34:18 -0300 (-03)
+From: "Google Corporation"<simple@pergamino.gob.ar>
+Subject: 2020 Google Ad Grants
+Date: Sun, 22 Mar 2020 06:34:29 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - kle.klezcar.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - gmail.com
-X-Get-Message-Sender-Via: kle.klezcar.com: authenticated_id:
- juzairi.atan@klezcar.com
-X-Authenticated-Sender: kle.klezcar.com: juzairi.atan@klezcar.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+Message-Id: <20200322133438.1DA3825EC2AF@mail.pergamino.gob.ar>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,13 +52,12 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: fbipayment50@citromail.hu
-Content-Type: multipart/mixed; boundary="===============0816837337=="
+Reply-To: reply@ggrantsaid.com
+Content-Type: multipart/mixed; boundary="===============1707289455=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200322191225.3B45289B65@gabe.freedesktop.org>
 
---===============0816837337==
+--===============1707289455==
 Content-Type: text/html;
 	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
@@ -77,93 +67,79 @@ Content-Transfer-Encoding: 7bit
 <BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
 <FONT size=2 color=#000000 face="Arial">
 <DIV>
-<FONT size=3>Federal Bureau of Investigation (FBI)</FONT></DIV>
+<FONT face="Trebuchet MS">Google Inc</FONT></DIV>
 <DIV>
-<FONT size=3>Anti-Terrorist and Monitory Crime Division.</FONT></DIV>
+<FONT face="Trebuchet MS">1600 Amphitheater Parkway</FONT></DIV>
 <DIV>
-<FONT size=3>Federal Bureau of Investigation.</FONT></DIV>
+<FONT face="Trebuchet MS">Mountain View, CA 94043</FONT></DIV>
 <DIV>
-<FONT size=3>J.Edgar.Hoover Building Washington Dc</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
+<DIV align=center>
+<FONT face="Trebuchet MS"><U>OFFICIAL GOOGLE AD GRANTS</U></FONT></DIV>
 <DIV>
-<FONT size=3>Customers Service Hours / Monday to Saturday</FONT></DIV>
+<FONT face="Trebuchet MS">Good day Sir / Madam,</FONT></DIV>
 <DIV>
-<FONT size=3>Office Hours Monday to Saturday:</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>Fax number: +13302303756</FONT></DIV>
+<FONT face="Trebuchet MS">Google Ad Grant is a foundation program that awards grants to non-profit organizations and individuals every year, Google Ad Grants is only available by Google in over 50 countries worldwide, each year we donate ONE HUNDRED MILLION UNITED STATE DOLLARS in Grants.</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>Dear Beneficiary,</FONT></DIV>
+<FONT face="Trebuchet MS">We wish to congratulate you as one of the lucky recipients in the ongoing GOOGLE AD GRANTS organized by GOOGLE AD GRANTS COMMITTEE with a grant worth $1,241,935.00 (One Million Two Hundred and Forty One Thousand Nine Hundred Thirty Five United State Dollars.</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>Series of meetings have been hold over the past 7 months with the secretary general of the United Nations Organization. This ended 3 days ago. It is obvious that you have not received your funds which is to the tune of $16.5million due to past corrupt Governmental Officials who almost held the fund to themselves for their selfish reason and some individuals who have taken advantage of your fund all in an attempt to swindle your fund which has led to so many losses from your end and unnecessary delay in the receipt of your fund.</FONT></DIV>
+<FONT face="Trebuchet MS">HOW YOU WHERE SELECTED FOR THE GRANT.</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">You were selected through our e-mail database saved from over 30 Million Active e-mails, which an online random selection was conducted.</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>The National Central Bureau of Interpol enhanced by the United Nations and Federal Bureau of Investigation have successfully passed a mandate to the current Prime Minister of Malaysia Excellency Dr. Mahathir Bin Mohamad to boost the exercise of clearing all foreign debts owed to you and other individuals and organizations who have been found not to have receive their Contract Sum, Lottery/Gambling, Inheritance and the likes. Now how would you like to receive your payment? Because we have two method of payment which is by Bank Cashier Cheque or by Atm Card?</FONT></DIV>
+<FONT face="Trebuchet MS">For processing of your Grants, you are required to send the following information to The Processing Officer Jeffery Dean.</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">Processing Officer/Google Senior Fellow</FONT></DIV>
 <DIV>
-<FONT size=3>ATM CARD: We will be issuing you a custom pin based ATM card which you will use to withdraw up to $5,000 per day from any ATM machine that has the Master Card Logo on it and the card have to be renewed in 4 years’ time which is 2025. Also with the ATM card you will be able to transfer your funds to your local bank account. The ATM card comes with a handbook or manual to enlighten you about how to use it. Even if you do not have a bank account Cashier Cheque will be deposited in your bank for it to be cleared within three working days. Your payment would be sent to you via any of your preferred option and would be mailed to you via FedEx. Because we have signed a contract with FedEx which should expire by the end of March 2020 you will only need to pay $280 instead of $420 saving you $140 so if you </FONT></DIV>
+<FONT face="Trebuchet MS">Jeffery Dean, Send Mail To: info@ggrantsaid.com</FONT></DIV>
 <DIV>
-<FONT size=3>Pay before the one week you save $140 note that any one asking you for some kind of money above the usual fee is definitely a fraudsters and you will have to stop communication with every other person if you have been in contact with any. Also remember that all you will ever have to spend is $280.00 nothing more! Nothing less! And we guarantee the receipt of your fund to be successfully delivered to you within the next 24hrs after the receipt of payment has been confirmed.</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">Grants Payment Release Form</FONT></DIV>
 <DIV>
-<FONT size=3>Note: Everything has been taken care of by the Government of Malaysia, The United Nation and also the FBI and including taxes, custom paper and clearance duty so all you will ever need to pay is $280.</FONT></DIV>
+<FONT face="Trebuchet MS">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your Full Name's and Address:</FONT></DIV>
 <DIV>
-<FONT size=3>DO NOT SEND MONEY TO ANYONE UNTIL YOU READ THIS: The actual fees for shipping your ATM card is $420 but because FedEx have temporarily discontinued the C.O.D which gives you the chance to pay when package is delivered for international shipping We had to sign contract with them for bulk shipping which makes the fees reduce from the actual fee of $420 to $280 nothing more and no hidden fees of any sort! To effect the release of your fund valued at $16.5million you are advised to contact our correspondent in Asia the delivery officer </FONT></DIV>
+<FONT face="Trebuchet MS">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your Nationality and country of residence:</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your Gender and Age (yy/mm/dd):</FONT></DIV>
 <DIV>
-<FONT size=3>Mr.Serene Neo </FONT></DIV>
+<FONT face="Trebuchet MS">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marital Status and Occupation:</FONT></DIV>
 <DIV>
-<FONT size=3>With the information below,</FONT></DIV>
+<FONT face="Trebuchet MS">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Private e-mail address:</FONT></DIV>
 <DIV>
-<FONT size=3>Email: fedexexpress2@citromail.hu</FONT></DIV>
+<FONT face="Trebuchet MS">6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mobile and Fax Number:</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; How do intend to use these Grant?</FONT></DIV>
 <DIV>
-<FONT size=3>You are advised to contact him with the information’s as stated below:</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>Your full Name..</FONT></DIV>
+<FONT face="Trebuchet MS">Note: Upon confirmation, your Grant will be transferred to you through our accredited affiliate Bank via the Bank to Bank Electronic Transfer to any bank of your choice that bears the same name as filled above.</FONT></DIV>
 <DIV>
-<FONT size=3>Your Address:..............</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>Home/Cell Phone:..............</FONT></DIV>
+<FONT face="Trebuchet MS">For security reasons, you are advised to keep these grants confidential as part of our precautionary measure to avoid double claims and its unwarranted abuse</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">&nbsp;</FONT></DIV>
 <DIV>
-<FONT size=3>Preferred Payment Method ( ATM / Cashier Cheque )</FONT></DIV>
+<FONT face="Trebuchet MS">Sincerely, </FONT></DIV>
 <DIV>
-<FONT size=3>Upon receipt of payment the delivery officer will ensure that your package is sent within 24 working hours. Because we are so sure of everything we are giving you a 100% money back guarantee if you do not receive payment/package within the next 24hrs after you have made the payment for shipping.</FONT></DIV>
+<FONT face="Trebuchet MS">Sundar Pichai</FONT></DIV>
 <DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3>Yours sincerely,</FONT></DIV>
-<DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3>Mrs.Beal Paulette</FONT></DIV>
-<DIV>
-<FONT size=3>FEDERAL BUREAU OF INVESTIGATION</FONT></DIV>
-<DIV>
-<FONT size=3>UNITED STATES DEPARTMENT OF JUSTICE</FONT></DIV>
-<DIV>
-<FONT size=3>WASHINGTON, D.C. 20535</FONT></DIV>
-<DIV>
-<FONT size=3>Fax number: +13302303756</FONT></DIV>
-<DIV>
-<FONT size=3>&nbsp;</FONT></DIV>
+<FONT face="Trebuchet MS">CEO Google Inc.</FONT></DIV>
 </FONT>
 </BODY></HTML>
 
---===============0816837337==
+--===============1707289455==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -174,4 +150,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0816837337==--
+--===============1707289455==--
