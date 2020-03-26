@@ -2,45 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4CF5193B05
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Mar 2020 09:34:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 067B9193C61
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Mar 2020 10:57:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 716F66E892;
-	Thu, 26 Mar 2020 08:34:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A78906E8A2;
+	Thu, 26 Mar 2020 09:57:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BDF136E892
+X-Greylist: delayed 3601 seconds by postgrey-1.36 at gabe;
+ Thu, 26 Mar 2020 09:57:19 UTC
+Received: from ms.455750938.xyz (ms.455750938.xyz [66.23.246.100])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6B8E26E8A2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 26 Mar 2020 08:34:44 +0000 (UTC)
-IronPort-SDR: To0w5tMGGVbYfhEEdY8mQeGhiit1DABH6FpiD50tFLiHqTN9V50Zo+ZuzAAKT9iguNJbIttRRf
- EkSrLC08A28Q==
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2020 01:34:44 -0700
-IronPort-SDR: DPTuwS6jOkC0/6aWao2I6nlJ6YDLEIcTKUni3yoaNL1UJWL0oQPZgYq0Ld+01G5dEW3sDRe3Cx
- BEsfzvi43Rbw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,307,1580803200"; 
- d="asc'?scan'208";a="247471444"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga003.jf.intel.com with ESMTP; 26 Mar 2020 01:34:42 -0700
-Date: Thu, 26 Mar 2020 16:21:42 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH v2 1/2]
- Documentation/driver-api/vfio-mediated-device.rst: update for aggregation
- support
-Message-ID: <20200326082142.GC8880@zhen-hp.sh.intel.com>
-References: <20200326054136.2543-1-zhenyuw@linux.intel.com>
- <20200326054136.2543-2-zhenyuw@linux.intel.com>
- <AADFC41AFE54684AB9EE6CBC0274A5D19D7EAB69@SHSMSX104.ccr.corp.intel.com>
+ Thu, 26 Mar 2020 09:57:19 +0000 (UTC)
+Received: by ms.455750938.xyz id hfhu8a0e97cv for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Mar 2020 04:57:24 -0400 (envelope-from
+ <bounce02-13508-9781028-2696-1676@bounce.455750938.xyz>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=455750938.xyz; 
+ h=Date:To:From:Reply-to:Subject:Message-ID:List-Unsubscribe:MIME-Version:
+ Content-Type; i=cam@455750938.xyz;
+ bh=nisgANvwsuL5y56BbzaWRVE/Hr5kQX/Tboep0abwIkg=;
+ b=mZQW1rrM3sGYtwXmFGh7INFEqqU7X6o+h+pNRyrExta5qgVmUPHCx+ynsjX8261uB1ZGUbbGTZ2P
+ CEskBg8UP2Y1kGUB5HALgRaYkEdvhCRdzA+TT/VHTJVMxHEigGqOoPsC62B0IT8mk0TRQ9xg3kKD
+ aIAPJgYKvFBlWjE1solec9EXRsEBsD4RkAFlZsZwqgGv29m0OLXEpZjsrsdi4K6JucL1gK9xOIPm
+ f/A8Q4qvtK4YNkKC6xCzZ4ICKbGLQbWjC8WaAtzI0rbQC4ugVHi0tXK+5gYEvhQtwmGYP32ohAU7
+ W9QZ49Ho04+ulN5+cowVJqAM0j+r8TBntdbldQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=455750938.xyz; 
+ h=Date:To:From:Reply-to:Subject:Message-ID:List-Unsubscribe:MIME-Version:
+ Content-Type; i=@bounce.455750938.xyz;
+ bh=nisgANvwsuL5y56BbzaWRVE/Hr5kQX/Tboep0abwIkg=;
+ b=ZRJ90JWhYH6WctuOf+92v0CGuA5WurWpD7bymK3O+A/ax6N0MHC1aX0PHTQLZkQEZGHVKX88eBhT
+ B80ei0gEvDwH/Y6H4o0PxuVr/m8gNRHwd8nKzh6dnsGhyOC8QrqPFDoCc28homiPKx4k8MJ1x2zb
+ fd7SGXzGi/F4Li4R0qkss+OEMoHCGtIFPg3jNyj7mZ4aslm8cmnkk1yAEDy4lkyZV9Zn+D8DXViD
+ nxeF8E4cHrlvnn3vM1VzE5hlpoyBod5Q2e0NHUAynAbCxPr430lvMt2An7E/tQdTCduBfzAwzB92
+ wbBmL3dtSQcDL5jehdJyGdKC32Sens/WNBpwiA==
+Date: Thu, 26 Mar 2020 16:53:52 +0800
+To: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+From: Ari | TrisVision <cam@455750938.xyz>
+Subject: Multi Function Smart Table Lamp Camera - Remote Tutoring Kids
+ Assignment
+Message-ID: <49dbf26330c414f229403a3619fa1fb4@lily.relaxu.work>
+X-Priority: 3
+X-Mailer: Mailer
+X-Complaints-To: abuse@hawne.com
+X-MessageID: NjZ8fHx8NDc5NDZ8fHx8aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmd8fHx8MTN8fHx8OHx8fHww
 MIME-Version: 1.0
-In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D19D7EAB69@SHSMSX104.ccr.corp.intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,139 +60,105 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: "Jiang, Dave" <dave.jiang@intel.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>
-Content-Type: multipart/mixed; boundary="===============0991983599=="
+Reply-To: Ari | TrisVision <smart@relaxu.work>
+Content-Type: multipart/mixed; boundary="===============0049678499=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0991983599==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="75efu8vkn6QcqU9C"
-Content-Disposition: inline
+--===============0049678499==
+Content-Type: multipart/alternative;
+	boundary="b1_49dbf26330c414f229403a3619fa1fb4"
 
 
---75efu8vkn6QcqU9C
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--b1_49dbf26330c414f229403a3619fa1fb4
+Content-Type: text/plain; charset = "utf-8"
 Content-Transfer-Encoding: quoted-printable
 
-On 2020.03.26 08:17:20 +0000, Tian, Kevin wrote:
-> > From: Zhenyu Wang <zhenyuw@linux.intel.com>
-> > Sent: Thursday, March 26, 2020 1:42 PM
-> >=20
-> > Update doc for mdev aggregation support. Describe mdev generic
-> > parameter directory under mdev device directory.
-> >=20
-> > Cc: Kevin Tian <kevin.tian@intel.com>
-> > Cc: "Jiang, Dave" <dave.jiang@intel.com>
-> > Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> > ---
-> >  .../driver-api/vfio-mediated-device.rst       | 19 +++++++++++++++++++
-> >  1 file changed, 19 insertions(+)
-> >=20
-> > diff --git a/Documentation/driver-api/vfio-mediated-device.rst
-> > b/Documentation/driver-api/vfio-mediated-device.rst
-> > index 25eb7d5b834b..29c29432a847 100644
-> > --- a/Documentation/driver-api/vfio-mediated-device.rst
-> > +++ b/Documentation/driver-api/vfio-mediated-device.rst
-> > @@ -269,6 +269,9 @@ Directories and Files Under the sysfs for Each mdev
-> > Device
-> >    |--- [$MDEV_UUID]
-> >           |--- remove
-> >           |--- mdev_type {link to its type}
-> > +         |--- mdev [optional]
-> > +	     |--- aggregated_instances [optional]
-> > +	     |--- max_aggregation [optional]
-> >           |--- vendor-specific-attributes [optional]
-> >=20
-> >  * remove (write only)
-> > @@ -281,6 +284,22 @@ Example::
-> >=20
-> >  	# echo 1 > /sys/bus/mdev/devices/$mdev_UUID/remove
-> >=20
-> > +* mdev directory (optional)
->=20
-> It sounds confusing to me when seeing a 'mdev' directory under a
-> mdev instance. How could one tell which attribute should put inside
-> or outside of 'mdev'?
->
+Hi,
 
-After mdev create you get uuid directory under normal device path, so
-=66rom that point a 'mdev' directory can just tell this is a mdev
-device. And it's proposed by Alex before.
+Good day.
 
-Currently only mdev core could create attribute e.g 'remove' under
-device dir, vendor specific attrs need to be in attrs group. So 'mdev'
-directory here tries to be optional generic interface.
+I am Ari Sun from Trisvision Technology Co., Ltd., manufacturer of smart ho=
+me security cameras.=20
 
-> > +
-> > +Vendor driver could create mdev directory to specify extra generic
-> > parameters
-> > +on mdev device by its type. Currently aggregation parameters are defin=
-ed.
-> > +Vendor driver should provide both items to support.
-> > +
-> > +1) aggregated_instances (read/write)
-> > +
-> > +Set target aggregated instances for device. Reading will show current
-> > +count of aggregated instances. Writing value larger than max_aggregati=
-on
-> > +would fail and return error.
->=20
-> Can one write a value multiple-times and at any time?=20
->
+We have below new camera:
 
-yeah, of coz multiple times, but normally won't succeed after open.
+Tutoring kids assginment remotely;
+Two way Audio;
+Eye protection table lamp, 3 level dimming light;
+Remote Home surveillance, 1080P;
+Built-in battery, working 6 hours after power-off;
+Working as power bank;
+Working as phone holder;
+Tuya Smart.
 
-> > +
-> > +2) max_aggregation (read only)
-> > +
-> > +Show maxium instances for aggregation.
-> > +
->=20
-> "show maximum-allowed instances which can be aggregated for this device".=
- is
-> this value static or dynamic? if dynamic then the user is expected to rea=
-d this
-> field before every write. worthy of some clarification here.
+Sample is available in March, only accept bulk order from April.
 
-yeah, user needs to read this before setting actual number, either static o=
-r dynamic
-depends on vendor resource type.
+To view video of this product: https://youtu.be/Gq0TrUK74ss
 
-Thanks
+We are a 2019 Forbes China AIoT TOP 100 Enterprises, security video surveil=
+lance manufacturer for more than 10 years.
 
->=20
-> >  Mediated device Hot plug
-> >  ------------------------
-> >=20
-> > --
-> > 2.25.1
->=20
+Our factory passed ISO9001-2015 and we strictly conform to it in manufactur=
+ing.
 
---=20
-Open Source Technology Center, Intel ltd.
+Best regards
 
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+Ari Sun
 
---75efu8vkn6QcqU9C
-Content-Type: application/pgp-signature; name="signature.asc"
+--b1_49dbf26330c414f229403a3619fa1fb4
+Content-Type: text/html; charset = "utf-8"
+Content-Transfer-Encoding: quoted-printable
 
------BEGIN PGP SIGNATURE-----
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Untitled document</title>
+</head>
+<body>
+<p>Hi,</p>
+<p>Good day.</p>
+<p>I am Ari Sun from Trisvision Technology Co., Ltd., manufacturer of smart=
+ home security cameras.&nbsp;</p>
+<p>We have below new camera:</p>
+<p><strong>Tutoring kids assginment remotely;</strong></p>
+<p><strong>Two way Audio; </strong></p>
+<p><strong>Eye protection table lamp, 3 level&nbsp;dimming light;</strong><=
+/p>
+<p><strong>Remote Home surveillance, 1080P;</strong></p>
+<p><strong>Built-in battery, working 6 hours after power-off;</strong></p>
+<p><strong>Working as power bank;</strong></p>
+<p><strong>Working as phone holder;</strong></p>
+<p><strong>Tuya Smart.</strong></p>
+<p><span style=3D"color: #2980b9;"><strong>Sample is available in March, on=
+ly accept bulk order from April.</strong></span></p>
+<p><img height=3D"400" width=3D"343" src=3D"https://live.staticflickr.com/6=
+5535/49699489063_eb41d18e8f_w.jpg" /></p>
+<p><span style=3D"color: #2980b9;"><strong><img height=3D"640" width=3D"386=
+" src=3D"https://live.staticflickr.com/65535/49699489703_e3d8944052_z.jpg" =
+/></strong></span></p>
+<p><span style=3D"color: #2980b9;"><b>To view video of this product: <a hre=
+f=3D"http://lily.relaxu.work/tl.php?p=3Dtm/ti/rs/11rm/s5/rs//https%3A%2F%2F=
+youtu.be%2FGq0TrUK74ss">https://youtu.be/Gq0TrUK74ss</a></b></span></p>
+<p>We are a 2019 Forbes China AIoT TOP 100 Enterprises, security video surv=
+eillance manufacturer for more than 10 years.</p>
+<p>Our factory passed ISO9001-2015 and we strictly conform to it in manufac=
+turing.</p>
+<p>Best regards</p>
+<p>Ari Sun</p>
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXnxmFgAKCRCxBBozTXgY
-J2ycAJ4kv0HYOAz20xgGuSJqbYUPAV47BgCghApMm0sy0DqMUh+1xTgD5neP3eE=
-=16cW
------END PGP SIGNATURE-----
+<br/><a href=3D"mailto:unsubscribe-02@?subject=3Dunsubscribe">unsubscribe</=
+a>
 
---75efu8vkn6QcqU9C--
+</body>
+</html>
 
---===============0991983599==
+
+--b1_49dbf26330c414f229403a3619fa1fb4--
+
+--===============0049678499==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -196,4 +169,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0991983599==--
+--===============0049678499==--
