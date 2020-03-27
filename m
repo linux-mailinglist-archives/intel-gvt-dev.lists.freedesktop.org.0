@@ -2,60 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14646194889
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Mar 2020 21:16:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E353C1950D8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Mar 2020 07:08:28 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B35796E2EC;
-	Thu, 26 Mar 2020 20:16:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5C9EF6E97F;
+	Fri, 27 Mar 2020 06:08:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 26 Mar 2020 20:16:32 UTC
-Received: from hqnvemgate24.nvidia.com (hqnvemgate24.nvidia.com
- [216.228.121.143])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A12F26E2EC
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 118E66E97F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 26 Mar 2020 20:16:32 +0000 (UTC)
-Received: from hqpgpgate102.nvidia.com (Not Verified[216.228.121.13]) by
- hqnvemgate24.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
- id <B5e7d0c170002>; Thu, 26 Mar 2020 13:09:59 -0700
-Received: from hqmail.nvidia.com ([172.20.161.6])
- by hqpgpgate102.nvidia.com (PGP Universal service);
- Thu, 26 Mar 2020 13:11:32 -0700
-X-PGP-Universal: processed;
- by hqpgpgate102.nvidia.com on Thu, 26 Mar 2020 13:11:32 -0700
-Received: from [10.40.103.35] (10.124.1.5) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Thu, 26 Mar
- 2020 20:11:28 +0000
-Subject: Re: [PATCH] vfio/migration: fix dirty pages lost bug for ram beyond 3G
-To: Alex Williamson <alex.williamson@redhat.com>, Yan Zhao
- <yan.y.zhao@intel.com>
-References: <1583487689-9813-1-git-send-email-yan.y.zhao@intel.com>
- <20200325121921.511d6e3b@w520.home>
-X-Nvconfidentiality: public
-From: Kirti Wankhede <kwankhede@nvidia.com>
-Message-ID: <ef61658f-bf21-4ade-ae0a-268c722fe5f5@nvidia.com>
-Date: Fri, 27 Mar 2020 01:41:22 +0530
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Fri, 27 Mar 2020 06:08:25 +0000 (UTC)
+IronPort-SDR: 4sLLqVD+pmrEcaKOwV7I4EcdKzwbG95X5RCu84FDE4Az+uaCluE8/ccEKZy6YjFFQDc7oqO6Qh
+ Er2I4rEwBgDg==
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2020 23:08:25 -0700
+IronPort-SDR: iamCm1pX//NGjKgZEJFWwJmNrGQRtbyfbGjgN1QqIcPzhDJi7N4MDA/4FrtGM2jJj3MfkccfJx
+ Jzagh5qx2C5g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,311,1580803200"; 
+ d="asc'?scan'208";a="251044039"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by orsmga006.jf.intel.com with ESMTP; 26 Mar 2020 23:08:24 -0700
+Date: Fri, 27 Mar 2020 13:55:22 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Zhang, Tina" <tina.zhang@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: Support guest sharing vm
+Message-ID: <20200327055522.GG8880@zhen-hp.sh.intel.com>
+References: <20200318135322.13788-1-tina.zhang@intel.com>
+ <20200320034855.GA8880@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20200325121921.511d6e3b@w520.home>
-X-Originating-IP: [10.124.1.5]
-X-ClientProxiedBy: HQMAIL105.nvidia.com (172.20.187.12) To
- HQMAIL107.nvidia.com (172.20.187.13)
-Content-Language: en-US
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
- t=1585253400; bh=TblJJ8M9VXqRXFhyymdsyeCST+EyN15WuSiVIFaPLQg=;
- h=X-PGP-Universal:Subject:To:CC:References:X-Nvconfidentiality:From:
- Message-ID:Date:User-Agent:MIME-Version:In-Reply-To:
- X-Originating-IP:X-ClientProxiedBy:Content-Type:Content-Language:
- Content-Transfer-Encoding;
- b=S01iUp81SYuX6SVirVLZLZQaSyZ5wW3kDYarskWQni40r2cp7ZTIU2Ji2tGaO3ZrT
- jiEVzMPZW/tYVfwCfplEqJqR7Rkkg4ZCWvJ/L6RLXqD0cjbRgBwfQHPCP+FEVJnHIV
- 7He8lGcI0dbSR5YWWyIKiNr0jQMrM18J3F5LUvp5en63ql13hN/IsIQqL82t1UmS8Y
- eeAY0CV4tzKS5huq8hBXnUNDNhJ6BzAkhNkyWreN0/37hHX/KXy5dyTxCXqSD7hzZW
- Ramnx2dE//WM2KMGLExpmocHJkcpl8/zKmHGWM1NtifH6Rc7IBlzG/x9vqzfhQEGGw
- 5n7nptm2LD40g==
+In-Reply-To: <20200320034855.GA8880@zhen-hp.sh.intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,158 +50,340 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Kevin Tian <kevin.tian@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- qemu-devel@nongnu.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============0878358195=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
-
-On 3/25/2020 11:49 PM, Alex Williamson wrote:
-> On Fri,  6 Mar 2020 17:41:29 +0800
-> Yan Zhao <yan.y.zhao@intel.com> wrote:
-> 
->> the start address passing to
->> cpu_physical_memory_set_dirty_range() and
->> cpu_physical_memory_set_dirty_lebitmap() is the address within the
->> ram block plus ram block offset.
->>
->> it's safe to set this start address to gpa if total memory is less than
->> 3G, as ram block offset for pc.ram is 0. But if memory size is beyond
->> 3G, gpa is not equal to the offset in its ram block.
->>
->> e.g.
->> for gpa 0x100000000, its offset is actually 0xc0000000.
->> and for gpa 0x42f500000, its offset should be 0x3EF500000.
->>
->> This fix is based on Kirti's VFIO live migration patch set v8.
->> https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05542.html
->> (for PATCH v8 11/13
->> https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05553.html
->> and PATCH v8 12/13
->> https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05554.html
->> }
->>
->> The idea behind it should also be applied to other VFIO live migraiton
->> patch series below:
->> https://lists.gnu.org/archive/html/qemu-devel/2019-11/msg01763.html
->> (Kirti v9)
->> https://lists.gnu.org/archive/html/qemu-devel/2019-02/msg04912.html
->> (Yan)
->> https://lists.gnu.org/archive/html/qemu-devel/2018-04/msg01138.html
->> (Yulei RFC v4)
->> https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg05568.html
->> (Yulei RFC)
->>
->> Cc: Kevin Tian <kevin.tian@intel.com>
->> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
->> ---
->>   hw/vfio/common.c              | 5 ++++-
->>   hw/vfio/migration.c           | 8 +++++---
->>   include/hw/vfio/vfio-common.h | 3 ++-
->>   3 files changed, 11 insertions(+), 5 deletions(-)
-> 
-> Thanks for this, Yan.
-> 
-> Kirti, I never saw an acknowledgment of this, can you confirm you've
-> incorporated this into your latest?  I do see we're making use of
-> memory_region_get_ram_addr() now.  Thanks,
-> 
-
-We do saw this in our testing and I already had it in QEMU patches 
-during my testing.
-
-Thanks,
-Kirti
+--===============0878358195==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="AQDb5/OyJPRJL1y9"
+Content-Disposition: inline
 
 
-> Alex
-> 
->   
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index 6f36b02..ba1a8ef 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -799,6 +799,7 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
->>           MemoryRegionSection *section)
->>   {
->>       uint64_t start_addr, size, pfn_count;
->> +    uint64_t block_start;
->>       VFIOGroup *group;
->>       VFIODevice *vbasedev;
->>   
->> @@ -819,11 +820,13 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
->>       start_addr = TARGET_PAGE_ALIGN(section->offset_within_address_space);
->>       size = int128_get64(section->size);
->>       pfn_count = size >> TARGET_PAGE_BITS;
->> +    block_start = TARGET_PAGE_ALIGN(section->offset_within_region +
->> +                             memory_region_get_ram_addr(section->mr));
->>   
->>       QLIST_FOREACH(group, &vfio_group_list, next) {
->>           QLIST_FOREACH(vbasedev, &group->device_list, next) {
->>               vfio_get_dirty_page_list(vbasedev, start_addr >> TARGET_PAGE_BITS,
->> -                                     pfn_count, TARGET_PAGE_SIZE);
->> +                                     pfn_count, TARGET_PAGE_SIZE, block_start);
->>           }
->>       }
->>   }
->> diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
->> index 640bea1..a19b957 100644
->> --- a/hw/vfio/migration.c
->> +++ b/hw/vfio/migration.c
->> @@ -279,7 +279,8 @@ static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
->>   void vfio_get_dirty_page_list(VFIODevice *vbasedev,
->>                                 uint64_t start_pfn,
->>                                 uint64_t pfn_count,
->> -                              uint64_t page_size)
->> +                              uint64_t page_size,
->> +                              uint64_t block_start)
->>   {
->>       VFIOMigration *migration = vbasedev->migration;
->>       VFIORegion *region = &migration->region;
->> @@ -293,6 +294,7 @@ void vfio_get_dirty_page_list(VFIODevice *vbasedev,
->>       while (total_pfns > 0) {
->>           uint64_t bitmap_size, data_offset = 0;
->>           uint64_t start = start_pfn + count;
->> +        uint64_t block_start_seg = block_start + count * page_size;
->>           void *buf = NULL;
->>           bool buffer_mmaped = false;
->>   
->> @@ -341,7 +343,7 @@ void vfio_get_dirty_page_list(VFIODevice *vbasedev,
->>               break;
->>           } else if (copied_pfns == VFIO_DEVICE_DIRTY_PFNS_ALL) {
->>               /* Mark all pages dirty for this range */
->> -            cpu_physical_memory_set_dirty_range(start * page_size,
->> +            cpu_physical_memory_set_dirty_range(block_start_seg,
->>                                                   total_pfns * page_size,
->>                                                   DIRTY_MEMORY_MIGRATION);
->>               break;
->> @@ -382,7 +384,7 @@ void vfio_get_dirty_page_list(VFIODevice *vbasedev,
->>           }
->>   
->>           cpu_physical_memory_set_dirty_lebitmap((unsigned long *)buf,
->> -                                               start * page_size,
->> +                                               block_start_seg,
->>                                                  copied_pfns);
->>           count      += copied_pfns;
->>           total_pfns -= copied_pfns;
->> diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
->> index 41ff5eb..6d868fa 100644
->> --- a/include/hw/vfio/vfio-common.h
->> +++ b/include/hw/vfio/vfio-common.h
->> @@ -220,6 +220,7 @@ int vfio_spapr_remove_window(VFIOContainer *container,
->>   int vfio_migration_probe(VFIODevice *vbasedev, Error **errp);
->>   void vfio_migration_finalize(VFIODevice *vbasedev);
->>   void vfio_get_dirty_page_list(VFIODevice *vbasedev, uint64_t start_pfn,
->> -                               uint64_t pfn_count, uint64_t page_size);
->> +                               uint64_t pfn_count, uint64_t page_size,
->> +                               uint64_t block_start);
->>   
->>   #endif /* HW_VFIO_VFIO_COMMON_H */
-> 
+--AQDb5/OyJPRJL1y9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2020.03.20 11:48:55 +0800, Zhenyu Wang wrote:
+> On 2020.03.18 21:53:22 +0800, Tina Zhang wrote:
+> > The vm in context image can be overridden by lri cmd with a shared vm
+> > pdps. In such case, the shared vm is used instead of the one in the
+> > context image. This feature is used by guest IGD driver to share vm
+> > between different contexts.
+> >=20
+> > This patch enables the feature support on vGPU.
+> >=20
+> > Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> > ---
+> >  drivers/gpu/drm/i915/gvt/cmd_parser.c | 84 +++++++++++++++++++++++++++
+> >  drivers/gpu/drm/i915/gvt/execlist.c   |  2 +
+> >  drivers/gpu/drm/i915/gvt/handlers.c   |  2 +-
+> >  drivers/gpu/drm/i915/gvt/scheduler.c  | 26 +++++++++
+> >  drivers/gpu/drm/i915/gvt/scheduler.h  |  1 +
+> >  5 files changed, 114 insertions(+), 1 deletion(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i9=
+15/gvt/cmd_parser.c
+> > index 9e065ad0658f..4c702b604884 100644
+> > --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> > +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> > @@ -881,6 +881,86 @@ static int mocs_cmd_reg_handler(struct parser_exec=
+_state *s,
+> >  	return 0;
+> >  }
+> > =20
+> > +#define IS_PDP_UDW_MMIO(offset, base, num)	\
+> > +	((offset) =3D=3D ((base) + 0x274 + (num) * 8))
+> > +
+> > +static int is_cmd_update_pdps(unsigned int offset,
+> > +			      struct parser_exec_state *s)
+> > +{
+> > +	return IS_PDP_UDW_MMIO(offset, s->workload->engine->mmio_base, 0) ||
+> > +		IS_PDP_UDW_MMIO(offset, s->workload->engine->mmio_base, 3);
+> > +}
+> > +static int cmd_pdp_mmio_update_handler(struct parser_exec_state *s,
+> > +				       unsigned int offset, unsigned int index)
+> > +{
+> > +	struct intel_vgpu *vgpu =3D s->vgpu;
+> > +	struct intel_vgpu_mm *shadow_mm =3D s->workload->shadow_mm;
+> > +	struct intel_vgpu_mm *shared_shadow_mm =3D s->workload->shared_shadow=
+_mm;
+> > +	struct intel_vgpu_mm *mm;
+> > +	u64 pdps[GEN8_3LVL_PDPES];
+> > +
+> > +	if (shadow_mm->ppgtt_mm.root_entry_type =3D=3D
+> > +	    GTT_TYPE_PPGTT_ROOT_L4_ENTRY) {
+> > +		pdps[0] =3D (u64)cmd_val(s, 2) << 32;
+> > +		pdps[0] |=3D cmd_val(s, 4);
+> > +
+> > +		mm =3D intel_vgpu_find_ppgtt_mm(vgpu, pdps);
+> > +		if (!mm) {
+> > +			gvt_vgpu_err("failed to get the shadow vm\n");
+> > +			return -EINVAL;
+> > +		}
+> > +
+> > +		if (mm !=3D shadow_mm) {
+> > +			if (mm !=3D shared_shadow_mm) {
+> > +				if (shared_shadow_mm)
+> > +					intel_vgpu_mm_put(shared_shadow_mm);
+> > +				intel_vgpu_mm_get(mm);
+> > +				s->workload->shared_shadow_mm =3D mm;
+> > +			}
+
+While I look deeper on this, realize there could be case that in one
+ring buffer, multiple ppgtt update exists, e.g for different batch
+buffers. We shouldn't limit it for one ppgtt update just for current
+test case.
+
+> > +			*cmd_ptr(s, 2) =3D
+> > +				upper_32_bits(mm->ppgtt_mm.shadow_pdps[0]);
+> > +			*cmd_ptr(s, 4) =3D
+> > +				lower_32_bits(mm->ppgtt_mm.shadow_pdps[0]);
+> > +		}
+> > +	} else if (shadow_mm->ppgtt_mm.root_entry_type =3D=3D
+> > +		   GTT_TYPE_PPGTT_ROOT_L3_ENTRY) {
+> > +		int i, j;
+> > +
+> > +		for (i =3D GEN8_3LVL_PDPES, j =3D 2; i--; ) {
+> > +			pdps[i] =3D (u64)cmd_val(s, j) << 32;
+> > +			pdps[i] |=3D cmd_val(s, j+2);
+> > +			j +=3D 4;
+> > +		}
+> > +
+> > +		mm =3D intel_vgpu_find_ppgtt_mm(vgpu, pdps);
+> > +		if (!mm) {
+> > +			gvt_vgpu_err("failed to get the shadow vm\n");
+> > +			return -EINVAL;
+> > +		}
+> > +
+> > +		if (mm !=3D shadow_mm) {
+> > +			if (mm !=3D shared_shadow_mm) {
+> > +				if (shared_shadow_mm)
+> > +					intel_vgpu_mm_put(shared_shadow_mm);
+> > +				intel_vgpu_mm_get(mm);
+> > +				s->workload->shared_shadow_mm =3D mm;
+> > +			}
+> > +			for (i =3D GEN8_3LVL_PDPES, j =3D 2; i--; ) {
+> > +				*cmd_ptr(s, j) =3D
+> > +					upper_32_bits(
+> > +						mm->ppgtt_mm.shadow_pdps[i]);
+> > +				*cmd_ptr(s, j + 2) =3D
+> > +					lower_32_bits(
+> > +						mm->ppgtt_mm.shadow_pdps[i]);
+> > +				j +=3D 4;
+> > +			}
+> > +		}
+> > +	} else {
+> > +		gvt_vgpu_err("invalid shared shadow vm type\n");
+>=20
+> We need sanity check for new ppgtt table, not just with same type as
+> old mm, might check further that new mm should match guest context
+> descriptor setting for 3-level or 4-level mapping. If they don't
+> match, then should bail off guest.
+>=20
+> And I think maybe we can just put workload shadow_mm setup after cmd
+> parsing, so if in this load PML/PDP case, we can already get target
+> shadow_mm from cmd paser instead of from context desc. Then you don't
+> need this shared_shadow_mm hack, and also we can handle guest ctx
+> update after execution without change, that code should be simpler.
+>
+
+Looks delay original shadow_mm initialization isn't important here,
+we need to track all ppgtt update with shadow override and handling
+references fine would be enough.
+
+>=20
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> >  static int cmd_reg_handler(struct parser_exec_state *s,
+> >  	unsigned int offset, unsigned int index, char *cmd)
+> >  {
+> > @@ -919,6 +999,10 @@ static int cmd_reg_handler(struct parser_exec_stat=
+e *s,
+> >  		patch_value(s, cmd_ptr(s, index), VGT_PVINFO_PAGE);
+> >  	}
+> > =20
+> > +	if (is_cmd_update_pdps(offset, s) &&
+> > +	    cmd_pdp_mmio_update_handler(s, offset, index))
+> > +		return -EINVAL;
+> > +
+> >  	/* TODO
+> >  	 * In order to let workload with inhibit context to generate
+> >  	 * correct image data into memory, vregs values will be loaded to
+> > diff --git a/drivers/gpu/drm/i915/gvt/execlist.c b/drivers/gpu/drm/i915=
+/gvt/execlist.c
+> > index dd25c3024370..7f7087258d8b 100644
+> > --- a/drivers/gpu/drm/i915/gvt/execlist.c
+> > +++ b/drivers/gpu/drm/i915/gvt/execlist.c
+> > @@ -424,6 +424,8 @@ static int complete_execlist_workload(struct intel_=
+vgpu_workload *workload)
+> > =20
+> >  	ret =3D emulate_execlist_ctx_schedule_out(execlist, &workload->ctx_de=
+sc);
+> >  out:
+> > +	if (workload->shared_shadow_mm)
+> > +		intel_vgpu_unpin_mm(workload->shared_shadow_mm);
+> >  	intel_vgpu_unpin_mm(workload->shadow_mm);
+> >  	intel_vgpu_destroy_workload(workload);
+> >  	return ret;
+> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915=
+/gvt/handlers.c
+> > index 0182e2a5acff..23a3193a6654 100644
+> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
+> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> > @@ -2808,7 +2808,7 @@ static int init_bdw_mmio_info(struct intel_gvt *g=
+vt)
+> >  	MMIO_D(GAMTARBMODE, D_BDW_PLUS);
+> > =20
+> >  #define RING_REG(base) _MMIO((base) + 0x270)
+> > -	MMIO_RING_F(RING_REG, 32, 0, 0, 0, D_BDW_PLUS, NULL, NULL);
+> > +	MMIO_RING_F(RING_REG, 32, F_CMD_ACCESS, 0, 0, D_BDW_PLUS, NULL, NULL);
+> >  #undef RING_REG
+> > =20
+> >  	MMIO_RING_GM_RDR(RING_HWS_PGA, D_BDW_PLUS, NULL, hws_pga_write);
+> > diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i91=
+5/gvt/scheduler.c
+> > index 1c95bf8cbed0..16a9af130d10 100644
+> > --- a/drivers/gpu/drm/i915/gvt/scheduler.c
+> > +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+> > @@ -612,6 +612,9 @@ static int prepare_workload(struct intel_vgpu_workl=
+oad *workload)
+> >  	struct intel_vgpu_submission *s =3D &vgpu->submission;
+> >  	int ret =3D 0;
+> > =20
+> > +	if (workload->shared_shadow_mm)
+> > +		intel_vgpu_pin_mm(workload->shared_shadow_mm);
+> > +
+> >  	ret =3D intel_vgpu_pin_mm(workload->shadow_mm);
+> >  	if (ret) {
+> >  		gvt_vgpu_err("fail to vgpu pin mm\n");
+> > @@ -671,6 +674,8 @@ static int prepare_workload(struct intel_vgpu_workl=
+oad *workload)
+> >  	release_shadow_batch_buffer(workload);
+> >  err_unpin_mm:
+> >  	intel_vgpu_unpin_mm(workload->shadow_mm);
+> > +	if (workload->shared_shadow_mm)
+> > +		intel_vgpu_unpin_mm(workload->shared_shadow_mm);
+> >  	return ret;
+> >  }
+> > =20
+> > @@ -780,12 +785,27 @@ pick_next_workload(struct intel_gvt *gvt, struct =
+intel_engine_cs *engine)
+> >  	return workload;
+> >  }
+> > =20
+> > +static void update_guest_pdps(struct intel_vgpu *vgpu,
+> > +		u64 ring_context_gpa, u32 pdp[8])
+> > +{
+> > +	u64 gpa;
+> > +	int i;
+> > +
+> > +	gpa =3D ring_context_gpa + RING_CTX_OFF(pdps[0].val);
+> > +
+> > +	for (i =3D 0; i < 8; i++)
+> > +		intel_gvt_hypervisor_write_gpa(vgpu,
+> > +				gpa + i * 8, &pdp[7 - i], 4);
+> > +}
+> > +
+> > +
+> >  static void update_guest_context(struct intel_vgpu_workload *workload)
+> >  {
+> >  	struct i915_request *rq =3D workload->req;
+> >  	struct intel_vgpu *vgpu =3D workload->vgpu;
+> >  	struct drm_i915_gem_object *ctx_obj =3D rq->context->state->obj;
+> >  	struct execlist_ring_context *shadow_ring_context;
+> > +	struct intel_vgpu_mm *shared_mm =3D workload->shared_shadow_mm;
+> >  	struct page *page;
+> >  	void *src;
+> >  	unsigned long context_gpa, context_page_num;
+> > @@ -842,6 +862,10 @@ static void update_guest_context(struct intel_vgpu=
+_workload *workload)
+> >  	intel_gvt_hypervisor_write_gpa(vgpu, workload->ring_context_gpa +
+> >  		RING_CTX_OFF(ring_header.val), &workload->rb_tail, 4);
+> > =20
+> > +	if (shared_mm)
+> > +		update_guest_pdps(vgpu, workload->ring_context_gpa,
+> > +				  (void *)shared_mm->ppgtt_mm.guest_pdps);
+> > +
+> >  	page =3D i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
+> >  	shadow_ring_context =3D kmap(page);
+> > =20
+> > @@ -1346,6 +1370,8 @@ void intel_vgpu_destroy_workload(struct intel_vgp=
+u_workload *workload)
+> >  	release_shadow_batch_buffer(workload);
+> >  	release_shadow_wa_ctx(&workload->wa_ctx);
+> > =20
+> > +	if (workload->shared_shadow_mm)
+> > +		intel_vgpu_mm_put(workload->shared_shadow_mm);
+> >  	if (workload->shadow_mm)
+> >  		intel_vgpu_mm_put(workload->shadow_mm);
+> > =20
+> > diff --git a/drivers/gpu/drm/i915/gvt/scheduler.h b/drivers/gpu/drm/i91=
+5/gvt/scheduler.h
+> > index bf7fc0ca4cb1..6a7d5a7e1c0e 100644
+> > --- a/drivers/gpu/drm/i915/gvt/scheduler.h
+> > +++ b/drivers/gpu/drm/i915/gvt/scheduler.h
+> > @@ -87,6 +87,7 @@ struct intel_vgpu_workload {
+> >  	int status;
+> > =20
+> >  	struct intel_vgpu_mm *shadow_mm;
+> > +	struct intel_vgpu_mm *shared_shadow_mm;
+> > =20
+> >  	/* different submission model may need different handler */
+> >  	int (*prepare)(struct intel_vgpu_workload *);
+> > --=20
+> > 2.17.1
+> >=20
+> > _______________________________________________
+> > intel-gvt-dev mailing list
+> > intel-gvt-dev@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+>=20
+> --=20
+> Open Source Technology Center, Intel ltd.
+>=20
+> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+
+
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--AQDb5/OyJPRJL1y9
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXn2VSgAKCRCxBBozTXgY
+Jyv1AJ9MXvYP4jqyIoDe7suKQMbNpo9y0QCdHrFKTA+6tcE3ka8gz8PfNF1533E=
+=BsGS
+-----END PGP SIGNATURE-----
+
+--AQDb5/OyJPRJL1y9--
+
+--===============0878358195==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0878358195==--
