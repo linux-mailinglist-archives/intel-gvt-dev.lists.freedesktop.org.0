@@ -1,43 +1,65 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E353C1950D8
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Mar 2020 07:08:28 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 661CF1950F2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Mar 2020 07:16:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C9EF6E97F;
-	Fri, 27 Mar 2020 06:08:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1D0046E987;
+	Fri, 27 Mar 2020 06:16:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 118E66E97F
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0C10A6E987
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 27 Mar 2020 06:08:25 +0000 (UTC)
-IronPort-SDR: 4sLLqVD+pmrEcaKOwV7I4EcdKzwbG95X5RCu84FDE4Az+uaCluE8/ccEKZy6YjFFQDc7oqO6Qh
- Er2I4rEwBgDg==
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ Fri, 27 Mar 2020 06:16:17 +0000 (UTC)
+IronPort-SDR: KklZvP1qzh8QSVfrSf/oBKhnr+IWacVjHu+bJbuW8IJofpCh1mNDYd3sIxmYMHNusW49mPXW83
+ 9vQlqrnAu6jQ==
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2020 23:08:25 -0700
-IronPort-SDR: iamCm1pX//NGjKgZEJFWwJmNrGQRtbyfbGjgN1QqIcPzhDJi7N4MDA/4FrtGM2jJj3MfkccfJx
- Jzagh5qx2C5g==
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2020 23:16:16 -0700
+IronPort-SDR: 3nwpznhnlEM7qHTva6alpAIqwcGSldGqiN3saz2y03gn/UTfq4tNddTFqtEvkYjdFzJ2ePZde6
+ C8+kDZOGvyiA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,311,1580803200"; 
- d="asc'?scan'208";a="251044039"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga006.jf.intel.com with ESMTP; 26 Mar 2020 23:08:24 -0700
-Date: Fri, 27 Mar 2020 13:55:22 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Zhang, Tina" <tina.zhang@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: Support guest sharing vm
-Message-ID: <20200327055522.GG8880@zhen-hp.sh.intel.com>
-References: <20200318135322.13788-1-tina.zhang@intel.com>
- <20200320034855.GA8880@zhen-hp.sh.intel.com>
+X-IronPort-AV: E=Sophos;i="5.72,311,1580803200"; d="scan'208";a="420988226"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by orsmga005.jf.intel.com with ESMTP; 26 Mar 2020 23:16:16 -0700
+Received: from fmsmsx162.amr.corp.intel.com (10.18.125.71) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 26 Mar 2020 23:16:15 -0700
+Received: from shsmsx103.ccr.corp.intel.com (10.239.4.69) by
+ fmsmsx162.amr.corp.intel.com (10.18.125.71) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 26 Mar 2020 23:16:15 -0700
+Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.206]) by
+ SHSMSX103.ccr.corp.intel.com ([169.254.4.137]) with mapi id 14.03.0439.000;
+ Fri, 27 Mar 2020 14:16:11 +0800
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: RE: [PATCH v2 1/2]
+ Documentation/driver-api/vfio-mediated-device.rst: update for aggregation
+ support
+Thread-Topic: [PATCH v2 1/2]
+ Documentation/driver-api/vfio-mediated-device.rst: update for aggregation
+ support
+Thread-Index: AQHWAzE7mTmt3EWoYkGUa0oLcK4XDahahH9g//9+KgCAAfNFoA==
+Date: Fri, 27 Mar 2020 06:16:11 +0000
+Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D19D7ECF0E@SHSMSX104.ccr.corp.intel.com>
+References: <20200326054136.2543-1-zhenyuw@linux.intel.com>
+ <20200326054136.2543-2-zhenyuw@linux.intel.com>
+ <AADFC41AFE54684AB9EE6CBC0274A5D19D7EAB69@SHSMSX104.ccr.corp.intel.com>
+ <20200326082142.GC8880@zhen-hp.sh.intel.com>
+In-Reply-To: <20200326082142.GC8880@zhen-hp.sh.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
 MIME-Version: 1.0
-In-Reply-To: <20200320034855.GA8880@zhen-hp.sh.intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,340 +72,85 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0878358195=="
+Cc: "intel-gvt-dev@lists.freedesktop.org"
+ <intel-gvt-dev@lists.freedesktop.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "Jiang,
+ Dave" <dave.jiang@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============0878358195==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="AQDb5/OyJPRJL1y9"
-Content-Disposition: inline
-
-
---AQDb5/OyJPRJL1y9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2020.03.20 11:48:55 +0800, Zhenyu Wang wrote:
-> On 2020.03.18 21:53:22 +0800, Tina Zhang wrote:
-> > The vm in context image can be overridden by lri cmd with a shared vm
-> > pdps. In such case, the shared vm is used instead of the one in the
-> > context image. This feature is used by guest IGD driver to share vm
-> > between different contexts.
-> >=20
-> > This patch enables the feature support on vGPU.
-> >=20
-> > Signed-off-by: Tina Zhang <tina.zhang@intel.com>
-> > ---
-> >  drivers/gpu/drm/i915/gvt/cmd_parser.c | 84 +++++++++++++++++++++++++++
-> >  drivers/gpu/drm/i915/gvt/execlist.c   |  2 +
-> >  drivers/gpu/drm/i915/gvt/handlers.c   |  2 +-
-> >  drivers/gpu/drm/i915/gvt/scheduler.c  | 26 +++++++++
-> >  drivers/gpu/drm/i915/gvt/scheduler.h  |  1 +
-> >  5 files changed, 114 insertions(+), 1 deletion(-)
-> >=20
-> > diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i9=
-15/gvt/cmd_parser.c
-> > index 9e065ad0658f..4c702b604884 100644
-> > --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> > +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> > @@ -881,6 +881,86 @@ static int mocs_cmd_reg_handler(struct parser_exec=
-_state *s,
-> >  	return 0;
-> >  }
-> > =20
-> > +#define IS_PDP_UDW_MMIO(offset, base, num)	\
-> > +	((offset) =3D=3D ((base) + 0x274 + (num) * 8))
-> > +
-> > +static int is_cmd_update_pdps(unsigned int offset,
-> > +			      struct parser_exec_state *s)
-> > +{
-> > +	return IS_PDP_UDW_MMIO(offset, s->workload->engine->mmio_base, 0) ||
-> > +		IS_PDP_UDW_MMIO(offset, s->workload->engine->mmio_base, 3);
-> > +}
-> > +static int cmd_pdp_mmio_update_handler(struct parser_exec_state *s,
-> > +				       unsigned int offset, unsigned int index)
-> > +{
-> > +	struct intel_vgpu *vgpu =3D s->vgpu;
-> > +	struct intel_vgpu_mm *shadow_mm =3D s->workload->shadow_mm;
-> > +	struct intel_vgpu_mm *shared_shadow_mm =3D s->workload->shared_shadow=
-_mm;
-> > +	struct intel_vgpu_mm *mm;
-> > +	u64 pdps[GEN8_3LVL_PDPES];
-> > +
-> > +	if (shadow_mm->ppgtt_mm.root_entry_type =3D=3D
-> > +	    GTT_TYPE_PPGTT_ROOT_L4_ENTRY) {
-> > +		pdps[0] =3D (u64)cmd_val(s, 2) << 32;
-> > +		pdps[0] |=3D cmd_val(s, 4);
-> > +
-> > +		mm =3D intel_vgpu_find_ppgtt_mm(vgpu, pdps);
-> > +		if (!mm) {
-> > +			gvt_vgpu_err("failed to get the shadow vm\n");
-> > +			return -EINVAL;
-> > +		}
-> > +
-> > +		if (mm !=3D shadow_mm) {
-> > +			if (mm !=3D shared_shadow_mm) {
-> > +				if (shared_shadow_mm)
-> > +					intel_vgpu_mm_put(shared_shadow_mm);
-> > +				intel_vgpu_mm_get(mm);
-> > +				s->workload->shared_shadow_mm =3D mm;
-> > +			}
-
-While I look deeper on this, realize there could be case that in one
-ring buffer, multiple ppgtt update exists, e.g for different batch
-buffers. We shouldn't limit it for one ppgtt update just for current
-test case.
-
-> > +			*cmd_ptr(s, 2) =3D
-> > +				upper_32_bits(mm->ppgtt_mm.shadow_pdps[0]);
-> > +			*cmd_ptr(s, 4) =3D
-> > +				lower_32_bits(mm->ppgtt_mm.shadow_pdps[0]);
-> > +		}
-> > +	} else if (shadow_mm->ppgtt_mm.root_entry_type =3D=3D
-> > +		   GTT_TYPE_PPGTT_ROOT_L3_ENTRY) {
-> > +		int i, j;
-> > +
-> > +		for (i =3D GEN8_3LVL_PDPES, j =3D 2; i--; ) {
-> > +			pdps[i] =3D (u64)cmd_val(s, j) << 32;
-> > +			pdps[i] |=3D cmd_val(s, j+2);
-> > +			j +=3D 4;
-> > +		}
-> > +
-> > +		mm =3D intel_vgpu_find_ppgtt_mm(vgpu, pdps);
-> > +		if (!mm) {
-> > +			gvt_vgpu_err("failed to get the shadow vm\n");
-> > +			return -EINVAL;
-> > +		}
-> > +
-> > +		if (mm !=3D shadow_mm) {
-> > +			if (mm !=3D shared_shadow_mm) {
-> > +				if (shared_shadow_mm)
-> > +					intel_vgpu_mm_put(shared_shadow_mm);
-> > +				intel_vgpu_mm_get(mm);
-> > +				s->workload->shared_shadow_mm =3D mm;
-> > +			}
-> > +			for (i =3D GEN8_3LVL_PDPES, j =3D 2; i--; ) {
-> > +				*cmd_ptr(s, j) =3D
-> > +					upper_32_bits(
-> > +						mm->ppgtt_mm.shadow_pdps[i]);
-> > +				*cmd_ptr(s, j + 2) =3D
-> > +					lower_32_bits(
-> > +						mm->ppgtt_mm.shadow_pdps[i]);
-> > +				j +=3D 4;
-> > +			}
-> > +		}
-> > +	} else {
-> > +		gvt_vgpu_err("invalid shared shadow vm type\n");
->=20
-> We need sanity check for new ppgtt table, not just with same type as
-> old mm, might check further that new mm should match guest context
-> descriptor setting for 3-level or 4-level mapping. If they don't
-> match, then should bail off guest.
->=20
-> And I think maybe we can just put workload shadow_mm setup after cmd
-> parsing, so if in this load PML/PDP case, we can already get target
-> shadow_mm from cmd paser instead of from context desc. Then you don't
-> need this shared_shadow_mm hack, and also we can handle guest ctx
-> update after execution without change, that code should be simpler.
->
-
-Looks delay original shadow_mm initialization isn't important here,
-we need to track all ppgtt update with shadow override and handling
-references fine would be enough.
-
->=20
-> > +	}
-> > +	return 0;
-> > +}
-> > +
-> >  static int cmd_reg_handler(struct parser_exec_state *s,
-> >  	unsigned int offset, unsigned int index, char *cmd)
-> >  {
-> > @@ -919,6 +999,10 @@ static int cmd_reg_handler(struct parser_exec_stat=
-e *s,
-> >  		patch_value(s, cmd_ptr(s, index), VGT_PVINFO_PAGE);
-> >  	}
-> > =20
-> > +	if (is_cmd_update_pdps(offset, s) &&
-> > +	    cmd_pdp_mmio_update_handler(s, offset, index))
-> > +		return -EINVAL;
-> > +
-> >  	/* TODO
-> >  	 * In order to let workload with inhibit context to generate
-> >  	 * correct image data into memory, vregs values will be loaded to
-> > diff --git a/drivers/gpu/drm/i915/gvt/execlist.c b/drivers/gpu/drm/i915=
-/gvt/execlist.c
-> > index dd25c3024370..7f7087258d8b 100644
-> > --- a/drivers/gpu/drm/i915/gvt/execlist.c
-> > +++ b/drivers/gpu/drm/i915/gvt/execlist.c
-> > @@ -424,6 +424,8 @@ static int complete_execlist_workload(struct intel_=
-vgpu_workload *workload)
-> > =20
-> >  	ret =3D emulate_execlist_ctx_schedule_out(execlist, &workload->ctx_de=
-sc);
-> >  out:
-> > +	if (workload->shared_shadow_mm)
-> > +		intel_vgpu_unpin_mm(workload->shared_shadow_mm);
-> >  	intel_vgpu_unpin_mm(workload->shadow_mm);
-> >  	intel_vgpu_destroy_workload(workload);
-> >  	return ret;
-> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915=
-/gvt/handlers.c
-> > index 0182e2a5acff..23a3193a6654 100644
-> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> > @@ -2808,7 +2808,7 @@ static int init_bdw_mmio_info(struct intel_gvt *g=
-vt)
-> >  	MMIO_D(GAMTARBMODE, D_BDW_PLUS);
-> > =20
-> >  #define RING_REG(base) _MMIO((base) + 0x270)
-> > -	MMIO_RING_F(RING_REG, 32, 0, 0, 0, D_BDW_PLUS, NULL, NULL);
-> > +	MMIO_RING_F(RING_REG, 32, F_CMD_ACCESS, 0, 0, D_BDW_PLUS, NULL, NULL);
-> >  #undef RING_REG
-> > =20
-> >  	MMIO_RING_GM_RDR(RING_HWS_PGA, D_BDW_PLUS, NULL, hws_pga_write);
-> > diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i91=
-5/gvt/scheduler.c
-> > index 1c95bf8cbed0..16a9af130d10 100644
-> > --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> > +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> > @@ -612,6 +612,9 @@ static int prepare_workload(struct intel_vgpu_workl=
-oad *workload)
-> >  	struct intel_vgpu_submission *s =3D &vgpu->submission;
-> >  	int ret =3D 0;
-> > =20
-> > +	if (workload->shared_shadow_mm)
-> > +		intel_vgpu_pin_mm(workload->shared_shadow_mm);
-> > +
-> >  	ret =3D intel_vgpu_pin_mm(workload->shadow_mm);
-> >  	if (ret) {
-> >  		gvt_vgpu_err("fail to vgpu pin mm\n");
-> > @@ -671,6 +674,8 @@ static int prepare_workload(struct intel_vgpu_workl=
-oad *workload)
-> >  	release_shadow_batch_buffer(workload);
-> >  err_unpin_mm:
-> >  	intel_vgpu_unpin_mm(workload->shadow_mm);
-> > +	if (workload->shared_shadow_mm)
-> > +		intel_vgpu_unpin_mm(workload->shared_shadow_mm);
-> >  	return ret;
-> >  }
-> > =20
-> > @@ -780,12 +785,27 @@ pick_next_workload(struct intel_gvt *gvt, struct =
-intel_engine_cs *engine)
-> >  	return workload;
-> >  }
-> > =20
-> > +static void update_guest_pdps(struct intel_vgpu *vgpu,
-> > +		u64 ring_context_gpa, u32 pdp[8])
-> > +{
-> > +	u64 gpa;
-> > +	int i;
-> > +
-> > +	gpa =3D ring_context_gpa + RING_CTX_OFF(pdps[0].val);
-> > +
-> > +	for (i =3D 0; i < 8; i++)
-> > +		intel_gvt_hypervisor_write_gpa(vgpu,
-> > +				gpa + i * 8, &pdp[7 - i], 4);
-> > +}
-> > +
-> > +
-> >  static void update_guest_context(struct intel_vgpu_workload *workload)
-> >  {
-> >  	struct i915_request *rq =3D workload->req;
-> >  	struct intel_vgpu *vgpu =3D workload->vgpu;
-> >  	struct drm_i915_gem_object *ctx_obj =3D rq->context->state->obj;
-> >  	struct execlist_ring_context *shadow_ring_context;
-> > +	struct intel_vgpu_mm *shared_mm =3D workload->shared_shadow_mm;
-> >  	struct page *page;
-> >  	void *src;
-> >  	unsigned long context_gpa, context_page_num;
-> > @@ -842,6 +862,10 @@ static void update_guest_context(struct intel_vgpu=
-_workload *workload)
-> >  	intel_gvt_hypervisor_write_gpa(vgpu, workload->ring_context_gpa +
-> >  		RING_CTX_OFF(ring_header.val), &workload->rb_tail, 4);
-> > =20
-> > +	if (shared_mm)
-> > +		update_guest_pdps(vgpu, workload->ring_context_gpa,
-> > +				  (void *)shared_mm->ppgtt_mm.guest_pdps);
-> > +
-> >  	page =3D i915_gem_object_get_page(ctx_obj, LRC_STATE_PN);
-> >  	shadow_ring_context =3D kmap(page);
-> > =20
-> > @@ -1346,6 +1370,8 @@ void intel_vgpu_destroy_workload(struct intel_vgp=
-u_workload *workload)
-> >  	release_shadow_batch_buffer(workload);
-> >  	release_shadow_wa_ctx(&workload->wa_ctx);
-> > =20
-> > +	if (workload->shared_shadow_mm)
-> > +		intel_vgpu_mm_put(workload->shared_shadow_mm);
-> >  	if (workload->shadow_mm)
-> >  		intel_vgpu_mm_put(workload->shadow_mm);
-> > =20
-> > diff --git a/drivers/gpu/drm/i915/gvt/scheduler.h b/drivers/gpu/drm/i91=
-5/gvt/scheduler.h
-> > index bf7fc0ca4cb1..6a7d5a7e1c0e 100644
-> > --- a/drivers/gpu/drm/i915/gvt/scheduler.h
-> > +++ b/drivers/gpu/drm/i915/gvt/scheduler.h
-> > @@ -87,6 +87,7 @@ struct intel_vgpu_workload {
-> >  	int status;
-> > =20
-> >  	struct intel_vgpu_mm *shadow_mm;
-> > +	struct intel_vgpu_mm *shared_shadow_mm;
-> > =20
-> >  	/* different submission model may need different handler */
-> >  	int (*prepare)(struct intel_vgpu_workload *);
-> > --=20
-> > 2.17.1
-> >=20
-> > _______________________________________________
-> > intel-gvt-dev mailing list
-> > intel-gvt-dev@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
->=20
-> --=20
-> Open Source Technology Center, Intel ltd.
->=20
-> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
-
-
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---AQDb5/OyJPRJL1y9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXn2VSgAKCRCxBBozTXgY
-Jyv1AJ9MXvYP4jqyIoDe7suKQMbNpo9y0QCdHrFKTA+6tcE3ka8gz8PfNF1533E=
-=BsGS
------END PGP SIGNATURE-----
-
---AQDb5/OyJPRJL1y9--
-
---===============0878358195==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0878358195==--
+PiBGcm9tOiBaaGVueXUgV2FuZw0KPiBTZW50OiBUaHVyc2RheSwgTWFyY2ggMjYsIDIwMjAgNDoy
+MiBQTQ0KPiANCj4gT24gMjAyMC4wMy4yNiAwODoxNzoyMCArMDAwMCwgVGlhbiwgS2V2aW4gd3Jv
+dGU6DQo+ID4gPiBGcm9tOiBaaGVueXUgV2FuZyA8emhlbnl1d0BsaW51eC5pbnRlbC5jb20+DQo+
+ID4gPiBTZW50OiBUaHVyc2RheSwgTWFyY2ggMjYsIDIwMjAgMTo0MiBQTQ0KPiA+ID4NCj4gPiA+
+IFVwZGF0ZSBkb2MgZm9yIG1kZXYgYWdncmVnYXRpb24gc3VwcG9ydC4gRGVzY3JpYmUgbWRldiBn
+ZW5lcmljDQo+ID4gPiBwYXJhbWV0ZXIgZGlyZWN0b3J5IHVuZGVyIG1kZXYgZGV2aWNlIGRpcmVj
+dG9yeS4NCj4gPiA+DQo+ID4gPiBDYzogS2V2aW4gVGlhbiA8a2V2aW4udGlhbkBpbnRlbC5jb20+
+DQo+ID4gPiBDYzogIkppYW5nLCBEYXZlIiA8ZGF2ZS5qaWFuZ0BpbnRlbC5jb20+DQo+ID4gPiBT
+aWduZWQtb2ZmLWJ5OiBaaGVueXUgV2FuZyA8emhlbnl1d0BsaW51eC5pbnRlbC5jb20+DQo+ID4g
+PiAtLS0NCj4gPiA+ICAuLi4vZHJpdmVyLWFwaS92ZmlvLW1lZGlhdGVkLWRldmljZS5yc3QgICAg
+ICAgfCAxOSArKysrKysrKysrKysrKysrKysrDQo+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDE5IGlu
+c2VydGlvbnMoKykNCj4gPiA+DQo+ID4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2
+ZXItYXBpL3ZmaW8tbWVkaWF0ZWQtZGV2aWNlLnJzdA0KPiA+ID4gYi9Eb2N1bWVudGF0aW9uL2Ry
+aXZlci1hcGkvdmZpby1tZWRpYXRlZC1kZXZpY2UucnN0DQo+ID4gPiBpbmRleCAyNWViN2Q1Yjgz
+NGIuLjI5YzI5NDMyYTg0NyAxMDA2NDQNCj4gPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZHJpdmVy
+LWFwaS92ZmlvLW1lZGlhdGVkLWRldmljZS5yc3QNCj4gPiA+ICsrKyBiL0RvY3VtZW50YXRpb24v
+ZHJpdmVyLWFwaS92ZmlvLW1lZGlhdGVkLWRldmljZS5yc3QNCj4gPiA+IEBAIC0yNjksNiArMjY5
+LDkgQEAgRGlyZWN0b3JpZXMgYW5kIEZpbGVzIFVuZGVyIHRoZSBzeXNmcyBmb3IgRWFjaA0KPiBt
+ZGV2DQo+ID4gPiBEZXZpY2UNCj4gPiA+ICAgIHwtLS0gWyRNREVWX1VVSURdDQo+ID4gPiAgICAg
+ICAgICAgfC0tLSByZW1vdmUNCj4gPiA+ICAgICAgICAgICB8LS0tIG1kZXZfdHlwZSB7bGluayB0
+byBpdHMgdHlwZX0NCj4gPiA+ICsgICAgICAgICB8LS0tIG1kZXYgW29wdGlvbmFsXQ0KPiA+ID4g
+KwkgICAgIHwtLS0gYWdncmVnYXRlZF9pbnN0YW5jZXMgW29wdGlvbmFsXQ0KPiA+ID4gKwkgICAg
+IHwtLS0gbWF4X2FnZ3JlZ2F0aW9uIFtvcHRpb25hbF0NCj4gPiA+ICAgICAgICAgICB8LS0tIHZl
+bmRvci1zcGVjaWZpYy1hdHRyaWJ1dGVzIFtvcHRpb25hbF0NCj4gPiA+DQo+ID4gPiAgKiByZW1v
+dmUgKHdyaXRlIG9ubHkpDQo+ID4gPiBAQCAtMjgxLDYgKzI4NCwyMiBAQCBFeGFtcGxlOjoNCj4g
+PiA+DQo+ID4gPiAgCSMgZWNobyAxID4gL3N5cy9idXMvbWRldi9kZXZpY2VzLyRtZGV2X1VVSUQv
+cmVtb3ZlDQo+ID4gPg0KPiA+ID4gKyogbWRldiBkaXJlY3RvcnkgKG9wdGlvbmFsKQ0KPiA+DQo+
+ID4gSXQgc291bmRzIGNvbmZ1c2luZyB0byBtZSB3aGVuIHNlZWluZyBhICdtZGV2JyBkaXJlY3Rv
+cnkgdW5kZXIgYQ0KPiA+IG1kZXYgaW5zdGFuY2UuIEhvdyBjb3VsZCBvbmUgdGVsbCB3aGljaCBh
+dHRyaWJ1dGUgc2hvdWxkIHB1dCBpbnNpZGUNCj4gPiBvciBvdXRzaWRlIG9mICdtZGV2Jz8NCj4g
+Pg0KPiANCj4gQWZ0ZXIgbWRldiBjcmVhdGUgeW91IGdldCB1dWlkIGRpcmVjdG9yeSB1bmRlciBu
+b3JtYWwgZGV2aWNlIHBhdGgsIHNvDQo+IGZyb20gdGhhdCBwb2ludCBhICdtZGV2JyBkaXJlY3Rv
+cnkgY2FuIGp1c3QgdGVsbCB0aGlzIGlzIGEgbWRldg0KPiBkZXZpY2UuIEFuZCBpdCdzIHByb3Bv
+c2VkIGJ5IEFsZXggYmVmb3JlLg0KDQpJIGRpZG4ndCBxdWl0ZSBnZXQuIElzbid0ICRNREVWX1VV
+SUQgcGx1cyBtZGV2X3R5cGUgYWxyZWFkeSB0ZWxsIHRoaXMgaXMNCmEgbWRldiBkZXZpY2U/IElm
+IGl0IGlzIGluc3VmZmljaWVudCwgdGhlbiB3ZSdyZSBicm9rZW4gYWxyZWFkeSBzaW5jZSB0aGVy
+ZQ0KaXMgbm8gc3VjaCAnbWRldicgc3ViLWRpcmVjdG9yeSBiZWZvcmUuDQoNCkFsZXg/DQoNCj4g
+DQo+IEN1cnJlbnRseSBvbmx5IG1kZXYgY29yZSBjb3VsZCBjcmVhdGUgYXR0cmlidXRlIGUuZyAn
+cmVtb3ZlJyB1bmRlcg0KPiBkZXZpY2UgZGlyLCB2ZW5kb3Igc3BlY2lmaWMgYXR0cnMgbmVlZCB0
+byBiZSBpbiBhdHRycyBncm91cC4gU28gJ21kZXYnDQo+IGRpcmVjdG9yeSBoZXJlIHRyaWVzIHRv
+IGJlIG9wdGlvbmFsIGdlbmVyaWMgaW50ZXJmYWNlLg0KDQpJJ20gYSBiaXQgY29uZnVzZWQuIFRo
+ZW4gd2h5IGNhbm5vdCB0aGUgbmV3IG5vZGVzIGV4cG9zZWQgdGhyb3VnaA0KdmVuZG9yIHNwZWNp
+ZmljIGF0dHJpYnV0ZXM/IEkgbWF5IG92ZXJsb29rIHByZXZpb3VzIGRpc2N1c3Npb24gd2h5IHVz
+aW5nDQphdHRycyBncm91cCBkb2Vzbid0IHdvcmsgaGVyZS4g8J+Yig0KDQo+IA0KPiA+ID4gKw0K
+PiA+ID4gK1ZlbmRvciBkcml2ZXIgY291bGQgY3JlYXRlIG1kZXYgZGlyZWN0b3J5IHRvIHNwZWNp
+ZnkgZXh0cmEgZ2VuZXJpYw0KPiA+ID4gcGFyYW1ldGVycw0KPiA+ID4gK29uIG1kZXYgZGV2aWNl
+IGJ5IGl0cyB0eXBlLiBDdXJyZW50bHkgYWdncmVnYXRpb24gcGFyYW1ldGVycyBhcmUNCj4gZGVm
+aW5lZC4NCj4gPiA+ICtWZW5kb3IgZHJpdmVyIHNob3VsZCBwcm92aWRlIGJvdGggaXRlbXMgdG8g
+c3VwcG9ydC4NCj4gPiA+ICsNCj4gPiA+ICsxKSBhZ2dyZWdhdGVkX2luc3RhbmNlcyAocmVhZC93
+cml0ZSkNCj4gPiA+ICsNCj4gPiA+ICtTZXQgdGFyZ2V0IGFnZ3JlZ2F0ZWQgaW5zdGFuY2VzIGZv
+ciBkZXZpY2UuIFJlYWRpbmcgd2lsbCBzaG93IGN1cnJlbnQNCj4gPiA+ICtjb3VudCBvZiBhZ2dy
+ZWdhdGVkIGluc3RhbmNlcy4gV3JpdGluZyB2YWx1ZSBsYXJnZXIgdGhhbg0KPiBtYXhfYWdncmVn
+YXRpb24NCj4gPiA+ICt3b3VsZCBmYWlsIGFuZCByZXR1cm4gZXJyb3IuDQo+ID4NCj4gPiBDYW4g
+b25lIHdyaXRlIGEgdmFsdWUgbXVsdGlwbGUtdGltZXMgYW5kIGF0IGFueSB0aW1lPw0KPiA+DQo+
+IA0KPiB5ZWFoLCBvZiBjb3ogbXVsdGlwbGUgdGltZXMsIGJ1dCBub3JtYWxseSB3b24ndCBzdWNj
+ZWVkIGFmdGVyIG9wZW4uDQo+IA0KPiA+ID4gKw0KPiA+ID4gKzIpIG1heF9hZ2dyZWdhdGlvbiAo
+cmVhZCBvbmx5KQ0KPiA+ID4gKw0KPiA+ID4gK1Nob3cgbWF4aXVtIGluc3RhbmNlcyBmb3IgYWdn
+cmVnYXRpb24uDQo+ID4gPiArDQo+ID4NCj4gPiAic2hvdyBtYXhpbXVtLWFsbG93ZWQgaW5zdGFu
+Y2VzIHdoaWNoIGNhbiBiZSBhZ2dyZWdhdGVkIGZvciB0aGlzDQo+IGRldmljZSIuIGlzDQo+ID4g
+dGhpcyB2YWx1ZSBzdGF0aWMgb3IgZHluYW1pYz8gaWYgZHluYW1pYyB0aGVuIHRoZSB1c2VyIGlz
+IGV4cGVjdGVkIHRvIHJlYWQNCj4gdGhpcw0KPiA+IGZpZWxkIGJlZm9yZSBldmVyeSB3cml0ZS4g
+d29ydGh5IG9mIHNvbWUgY2xhcmlmaWNhdGlvbiBoZXJlLg0KPiANCj4geWVhaCwgdXNlciBuZWVk
+cyB0byByZWFkIHRoaXMgYmVmb3JlIHNldHRpbmcgYWN0dWFsIG51bWJlciwgZWl0aGVyIHN0YXRp
+YyBvcg0KPiBkeW5hbWljDQo+IGRlcGVuZHMgb24gdmVuZG9yIHJlc291cmNlIHR5cGUuDQoNClRo
+ZW4gYWRkaW5nIGFib3ZlIGluZm9ybWF0aW9uIG1pZ2h0IG1ha2UgdGhlIGRlc2NyaXB0aW9uIGNs
+ZWFyZXIuDQoNClRoYW5rcw0KS2V2aW4NCg0KPiANCj4gVGhhbmtzDQo+IA0KPiA+DQo+ID4gPiAg
+TWVkaWF0ZWQgZGV2aWNlIEhvdCBwbHVnDQo+ID4gPiAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+DQo+ID4gPg0KPiA+ID4gLS0NCj4gPiA+IDIuMjUuMQ0KPiA+DQo+IA0KPiAtLQ0KPiBPcGVuIFNv
+dXJjZSBUZWNobm9sb2d5IENlbnRlciwgSW50ZWwgbHRkLg0KPiANCj4gJGdwZyAtLWtleXNlcnZl
+ciB3d3drZXlzLnBncC5uZXQgLS1yZWN2LWtleXMgNEQ3ODE4MjcNCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0
+CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
