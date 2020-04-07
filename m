@@ -1,56 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0CA31A05FC
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Apr 2020 06:55:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 819131A0930
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Apr 2020 10:16:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2FED66E10D;
-	Tue,  7 Apr 2020 04:55:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3544289DFD;
+	Tue,  7 Apr 2020 08:16:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-x742.google.com (mail-qk1-x742.google.com
- [IPv6:2607:f8b0:4864:20::742])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EE9B26E10D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Apr 2020 04:55:55 +0000 (UTC)
-Received: by mail-qk1-x742.google.com with SMTP id u4so424433qkj.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 06 Apr 2020 21:55:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=e6gbi5p/0FT0tOxJMiRDpTabUTTVG8Z8lL8dztyqrW0=;
- b=DpSSViBArDOBJ210MyoJCBSf1+TjiPkHuLXkLtpeM4i2IisCWcukz1nYPuqTPpe31c
- Y0MxYuxMoN/qfibiopST+6oq8YxPJf4nVBzvpc8Nj3dsZDswHky12WH0pOY1gtJDuEyb
- Kz9JI+fzVpPiUxS5o9WToGumUVOR7LF+aoCavRWjbhUDtG3AXzpZH5bfEMzUCI/beWuF
- R2+cPX1uoCDPnNWv9tlJyzgjPEbb1a/RMLE0qHSXT50/vFJMhMdrpQ2b9uA96HEZD9rg
- 4ZJzxzRYGp0aETp/2cs34blPms/WHO4Wyr427H4jxvNo8xwuIvgF5yv5Xn+Y1/N4QrL3
- m7Rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=e6gbi5p/0FT0tOxJMiRDpTabUTTVG8Z8lL8dztyqrW0=;
- b=QWSgarhyunUMcpjhYapkhPdhFRw5XWVGFADrc5OZZl7TazUZylM0+6c2KdvaVml9Qv
- ZgRcMIZk8sX1sGPY1J0LBywmljsSQNaM43RGbiUVXjmIaCLVd2ms7woBK2i1AQGxd5zT
- EG014urzPo1L1Pu30g/+4vV+4AkxBglOc7eWIGbIZ7zQPtLcaLVKI4cbPq3PLJPr1Y9f
- 0ZN+/O0h+4/L8q+krE47j63V88AjS96c20ja5/nchP/w1sW9o2ypTG8eVs1z+eIQqgk8
- 9pQzaBen/99nwKmLKELFtZDIKJ+XXvNlB3PgTAPqI7ljHZzlLitkqvkAoFMxi3wkM5fA
- aKfw==
-X-Gm-Message-State: AGi0PuZJ4ANiQyR0FshC9QWTjvu0i4Qm8uxucffbH3yrRqwGDKph3Ebv
- fMeFDYsalX9RSqiOH/UMi43L36BkcFWWJ0CMoho=
-X-Google-Smtp-Source: APiQypL8YOeG+hybBCQ9sslqiutYbI81vrmc03msbRPXdQ0gYcVlnXK/aL8Lq+QBY4PvBhUiwbo0HaNCYO4oJ2MuRZc=
-X-Received: by 2002:a37:4117:: with SMTP id o23mr426585qka.295.1586235354813; 
- Mon, 06 Apr 2020 21:55:54 -0700 (PDT)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 83EA389DDD;
+ Tue,  7 Apr 2020 08:16:26 +0000 (UTC)
+IronPort-SDR: wNyD7TPcTkyvuUbk29LSmORS277ZcJpK7M1DeQSRdMcN5Q3NLXZrPbIJ2a53kVYLugS9z7g9o7
+ MmG17tmViatg==
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Apr 2020 01:16:25 -0700
+IronPort-SDR: uUUxSvUMF/9a2u3/lJr2RVovgTv1prut62xYebCkkFuLe+l+8EkobO3jYqgWQpCdkriCFBA7Mh
+ 91js4XZJLi9A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,353,1580803200"; 
+ d="asc'?scan'208";a="286157430"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga002.fm.intel.com with ESMTP; 07 Apr 2020 01:16:22 -0700
+Date: Tue, 7 Apr 2020 16:02:56 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Subject: Re: [Intel-gfx] [PULL] gvt-next-fixes
+Message-ID: <20200407080256.GU16629@zhen-hp.sh.intel.com>
+References: <20200331070025.GB16629@zhen-hp.sh.intel.com>
+ <20200331162644.GA3779315@intel.com>
+ <20200403030507.GQ16629@zhen-hp.sh.intel.com>
+ <20200403175033.GA3997092@intel.com>
 MIME-Version: 1.0
-Received: by 2002:aed:25e5:0:0:0:0:0 with HTTP;
- Mon, 6 Apr 2020 21:55:54 -0700 (PDT)
-From: Consultants Office <consultantsadvisor11@gmail.com>
-Date: Tue, 7 Apr 2020 04:55:54 +0000
-Message-ID: <CAKdvf-r4_xBLYU4DPErMCdE4c4CJyKL=QkfYFZvZcruwyr27fQ@mail.gmail.com>
-Subject: whether this is your correct email address or not
-To: undisclosed-recipients:;
+In-Reply-To: <20200403175033.GA3997092@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,29 +51,87 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: "Zhao, Yan Y" <yan.y.zhao@intel.com>, Jani Nikula <jani.nikula@intel.com>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>, "Yuan,
+ Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>, "Vetter,
+ Daniel" <daniel.vetter@intel.com>, Dave Airlie <airlied@gmail.com>
+Content-Type: multipart/mixed; boundary="===============1171992530=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-RGVhciBTaXIKClRoaXMgZW1haWwgaXMgaGVyZWJ5IHRvIHNlcnZlIGFzIGFuIGludml0YXRpb24g
-Zm9yIHlvdXIga2luZApwYXJ0aWNpcGF0aW9uIGluIHRoaXMgcHJvZml0IG9yaWVudGVkIGJ1c2lu
-ZXNzIHRyYW5zYWN0aW9uIGFzCmRlc2NyaWJlZCBoZXJlaW4uIE5ldmVydGhlbGVzcywgSSBhbSBh
-IEZpbmFuY2lhbCBDb25zdWx0YW50cy9BZHZpc29yCmJhc2VkIGluIHRoZSBSZXB1YmxpYyBvZiBC
-dXJraW5hIEZhc28gLgoKTXkgY2xpZW50IGlzIGEgSGlnaCBQcm9maWxlIHRvcCBHb3Zlcm5tZW50
-IE9mZmljaWFsIHRoYXQgaGFzIGJlZW4gaW4KdGhlIHNlcnZpY2Ugb2YgR292ZXJubWVudCBvZiBS
-ZXB1YmxpYyBvZiBCdXJraW5hIEZhc28gZm9yIDM1IHllYXJzCnRpbGwgZGF0ZS4gTXkgY2xpZW50
-IGhhdmUgbWFuZGF0ZWQgbWUgdG8gc2VlayBmb3IgYSBGb3JlaWduZXIgd2l0aApwcm9mZXNzaW9u
-YWwgc2tpbGxzIGFuZCB3ZWFsdGggb2YgZXhwZXJpZW5jZSBpbiB0aGUgYXJlYXMgb2YgQnVzaW5l
-c3MsCkludmVzdG1lbnRzIGFuZCBGdW5kIE1hbmFnZW1lbnQgd2hvIGNhbiBoYXZlIGhpcyBwZXJz
-b25hbCBhY3F1aXJlZApmdW5kcyB0aGF0IHJ1bnMgaW50byBodW5kcmVkcyBvZiBtaWxsaW9uIG9m
-IGRvbGxhcnMgaW52ZXN0ZWQgYW5kCm1hbmFnZWQgd2l0aG91dCBteSBjbGllbnTigJlzIG5hbWUg
-YXBwZWFyaW5nIGFzIHRoZSBJbnZlc3Rvci4gVGhlcmVmb3JlCmlmIHRoaXMgb2ZmZXIgZmFsbHMg
-d2l0aGluIHlvdXIgYXJlYXMgb2Ygc3BlY2lhbGl6YXRpb24sIHlvdSBhcmUKaGVyZWJ5IGFkdmlz
-ZWQgdG8gcmVzcG9uZCB3aXRoIHlvdXIgVGVsZXBob25lIE51bWJlciBhbmQgeW91ciBQZXJzb25h
-bApQcm9maWxlIHNvIHdlIGNhbiBkaXNjdXNzIGZ1cnRoZXIuCgoKV2FpdGluZyBGb3IgWW91ciBS
-ZXBseSwKCkFjY2VwdCB0aGUgYXNzdXJhbmNlcyBvZiBteSBoaWdoZXN0IHJlZ2FyZHMuIFJlcGx5
-IG1lIEhlcmUgLCBtcnNkZXdpQGdteC5jb20KCk1ycyBNYXJpYW0gU2FuZHJhIERld2kKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBt
-YWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2Cg==
+
+--===============1171992530==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="TMgB3/Ch1aWgZB1L"
+Content-Disposition: inline
+
+
+--TMgB3/Ch1aWgZB1L
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2020.04.03 10:50:33 -0700, Rodrigo Vivi wrote:
+>=20
+> +Dave and Daniel,
+>=20
+> >=20
+> > I forgot to mention one thing for 5.7. We've fixed to change guest mem =
+r/w
+> > from KVM to use new VFIO dma r/w instead in this series: https://patchw=
+ork.freedesktop.org/series/72038/
+> >=20
+> > As this depends on VFIO tree and looks VFIO pull for 5.7 is not settled=
+ down
+> > yet, we'd need to backmerge and send pull against vfio merge for 5.7.
+>=20
+> I'm not sure if I'm following on which backmerge you are willing
+> us to do here. And for me it looks like late for 5.7 already.
+>=20
+> Maybe you mean we ack all of this to go through vfio flow
+> then once that is settled drm backmerge and then drm-intel backmerge
+> and you backmerge...
+>=20
+> Is that what you want?
+>=20
+
+My purpose is to get GVT side fixes of guest memory r/w through new
+vfio dma r/w interface in 5.7. As vfio 5.7-rc1 pull has already been
+merged in linus master, looks just want drm-intel backmerge now then
+could send gvt side fixes. Ok for you?
+
+Sorry for late reply, I was out for a short vacation.
+
+Thanks
+
+--=20
+Open Source Technology Center, Intel ltd.
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--TMgB3/Ch1aWgZB1L
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXowzsAAKCRCxBBozTXgY
+J/XEAKCCWcl8X/Hylh80WjrMGUvTrWz/uQCfYrSZ/7PHbMx4iz9xmy4v7WRb9YI=
+=mcl9
+-----END PGP SIGNATURE-----
+
+--TMgB3/Ch1aWgZB1L--
+
+--===============1171992530==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1171992530==--
