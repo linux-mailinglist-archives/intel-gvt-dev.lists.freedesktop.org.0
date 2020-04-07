@@ -2,51 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E9351A04C3
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Apr 2020 04:15:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A443D1A052F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Apr 2020 05:18:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 914F76E514;
-	Tue,  7 Apr 2020 02:15:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 20A776E106;
+	Tue,  7 Apr 2020 03:18:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd44.google.com (mail-io1-xd44.google.com
- [IPv6:2607:f8b0:4864:20::d44])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7DE576E514
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Apr 2020 02:15:48 +0000 (UTC)
-Received: by mail-io1-xd44.google.com with SMTP id u2so1744417iop.10
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 06 Apr 2020 19:15:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=/hpWzCRDRshFvIs1UfbgAPnVntwLkfWN0MuQ3rOUt40=;
- b=rXQYtEgNkuA2I9d4RvbCvmB8JA6PGEGXUBaRXueDtoQJa1IgiNDVXg12iExW4cxUnZ
- d6aHoq5Ixk9gYKS3y0o5hCuoZF41QdK8bCcYowrTzR0Z+F74jS5G9PHPsA8OxRZGK20M
- yYwSbDncTK/GJvHv6HK578M5UEsfNPznbpBSPuwy2EPzeF5gVfUHBFntPcyuyYY42Yl5
- /IScFc6O3D2gnIZK9M2TnpqaZeSgKnxNyzeR3zyyA8316K62KlXulmBOFiwfXth8QRLa
- V2xxH4bxa+BDijyRMDmePrl1GjeAZKTM9C0hYp+k+0P1YZFoouUq9Clw9B6DxZ6WzE75
- K1Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=/hpWzCRDRshFvIs1UfbgAPnVntwLkfWN0MuQ3rOUt40=;
- b=W5R8sdH3G7ugjgRMpczy9iXH0RFXWJn3tzwIyNux7GtUhsdzJIEEZaMCoN9/4V44xo
- kystIOdaZRTeHBaYk+NDSsNaAXu4x6ME/q8HhZDs3cZ+YpCcQtCJPzS1+SKWXJ1PovYz
- +NRDwbA30790ZooL/m+ELWPWiaSUX/7XQeC9S6JJQI3twVKfgwy14nK3hRlJIJs/P5B8
- mkzP5IQ+nmW8FX0ndf4AFLrxoqFZIPSE8B03lEkcyhnADTRLtTdazIH/NLV+0S44MmUP
- P2cnRxdwIzn0iaWTi0VTfFjJA7D0WY/vkZ3qCNThw7l8Ov3FXSzxIFEuUOJBg47h4mGA
- /RSQ==
-X-Gm-Message-State: AGi0PuYydQM7Bvgr12oiy/nRvwAE11h6ZUU/AymvEfF66/Sruq4YT0tR
- 3R0NGc8eYMbwTmF5XxBKI1gMPvyouY4zPm+rZtA=
-X-Google-Smtp-Source: APiQypKc3QQbWs41YtHQSX14jSYJDFwSxEJrzha0s8Io0opAHQ3PZ3HGtsl21MtEY5b7V7oI2ubapeMARyvS/tJx1Eg=
-X-Received: by 2002:a05:6602:1649:: with SMTP id y9mr61259iow.40.1586225747337; 
- Mon, 06 Apr 2020 19:15:47 -0700 (PDT)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E173C6E101;
+ Tue,  7 Apr 2020 03:18:26 +0000 (UTC)
+IronPort-SDR: bu8mygwZuwuLESVDNmToX8go+QQOhw6/ETfjTMDLXVVAs0LvCxkMXHeT6FCEV85dV0EJ0NmTfZ
+ bXCg9bOwDbWQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Apr 2020 20:18:26 -0700
+IronPort-SDR: 2xR9uCM5BCNi15KKmsOhl436RFPRAMt47uVHr0POCE9sbZmZYVeBcv4l84JGJCChQ2Yo+l3GPc
+ XmGUNL+cWKeg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,353,1580803200"; d="scan'208";a="451069613"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by fmsmga005.fm.intel.com with ESMTP; 06 Apr 2020 20:18:21 -0700
+Date: Mon, 6 Apr 2020 23:08:46 -0400
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH 2/6] i915/gvt/kvm: a NULL ->mm does not mean a thread is
+ a kthread
+Message-ID: <20200407030845.GA10586@joy-OptiPlex-7040>
+References: <20200404094101.672954-1-hch@lst.de>
+ <20200404094101.672954-3-hch@lst.de>
 MIME-Version: 1.0
-From: "Mrs. Anna H. Bruun" <mrs.annahbruun10@gmail.com>
-Date: Tue, 7 Apr 2020 04:15:36 +0200
-Message-ID: <CAASvo7-ytxFap7stn_s0+KztP6NtA8X10taRYn7GfqPy2EAR8g@mail.gmail.com>
-Subject: May The Peace of the Lord be with You
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <20200404094101.672954-3-hch@lst.de>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,113 +50,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1942565265=="
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: Jens Axboe <axboe@kernel.dk>, Felipe Balbi <balbi@kernel.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Felix Kuehling <Felix.Kuehling@amd.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-mm@kvack.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org, linux-fsdevel@vger.kernel.org,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>, io-uring@vger.kernel.org,
+ Zhi Wang <zhi.a.wang@intel.com>, Al Viro <viro@zeniv.linux.org.uk>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1942565265==
-Content-Type: multipart/alternative; boundary="00000000000034293e05a2a9f6bd"
+On Sat, Apr 04, 2020 at 11:40:57AM +0200, Christoph Hellwig wrote:
+> Use the proper API instead.
+> 
+> Fixes: f440c8a572d7 ("drm/i915/gvt/kvmgt: read/write GPA via KVM API")
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> index 074c4efb58eb..5848400620b4 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -2037,7 +2037,7 @@ static int kvmgt_rw_gpa(unsigned long handle, unsigned long gpa,
+>  	struct kvmgt_guest_info *info;
+>  	struct kvm *kvm;
+>  	int idx, ret;
+> -	bool kthread = current->mm == NULL;
+> +	bool kthread = (current->flags & PF_KTHREAD);
+>  
+>  	if (!handle_valid(handle))
+>  		return -ESRCH;
+> -- 
+> 2.25.1
+>
+hi
+we were removing this code. see
+https://lore.kernel.org/kvm/20200313031109.7989-1-yan.y.zhao@intel.com/
 
---00000000000034293e05a2a9f6bd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The implementation of vfio_dma_rw() has been in vfio next tree.
+https://github.com/awilliam/linux-vfio/commit/8d46c0cca5f4dc0538173d62cd36b1119b5105bc
 
-May The Peace of the Lord be with You
+in vfio_dma_rw(),  we still use
+bool kthread = current->mm == NULL.
+because if current->mm != NULL and current->flags & PF_KTHREAD, instead
+of calling use_mm(), we first check if (current->mm == mm) and allow copy_to_user() if it's true.
 
-My Name is Mrs. Anna H. Bruun,  from Norway. I know that this message will
-be a surprise to you. Firstly, I am married to Mr. Patrick Bruun, A gold
-merchant who owns a small gold Mine in Burkina Faso; He died of
-Cardiovascular Disease in mid-March 2011. During his life time he deposited
-the sum of =E2=82=AC 8.5 Million Euro) Eight million, Five hundred thousand=
- Euros
-in a bank in Ouagadougou the capital city of Burkina Faso in West Africa.
-The deposited money was from the sale of the shares, death benefits payment
-and entitlements of my deceased husband by his company.
-
-I am sending this message to you praying that it will reach you in good
-health, since I am not in good health condition in which I sleep every
-night without knowing if I may be alive to see the next day. I am suffering
-from long time cancer and presently i am partially suffering from a stroke
-illness which has become almost impossible for me to move around. I am
-married to my late husband for over 4 years before he died and is
-unfortunately that we don't have a child, my doctor confided in me that i
-have less chance to live. Having known my health condition, I decided to
-contact you to claim the fund since I don't have any relation I grew up
-from the orphanage home.
-
-I have decided to donate what I have to you for the support of  helping
-Motherless babies/Less privileged/Widows' because I am dying and diagnosed
-of cancer for about 2 years ago. I have been touched by God Almighty to
-donate from what I have inherited from my late husband to you for good work
-of God Almighty. I have asked Almighty God to forgive me and believe he
-has, because He is a Merciful God I will be going in for an operation
-surgery soon
-
-This is the reason i need your services to stand as my next of kin or an
-executor to claim the funds for charity purposes. If this money remains
-unclaimed after my death, the bank executives or the government will take
-the money as unclaimed fund and maybe use it for selfish and worthless
-ventures, I need a very honest person who can claim this money and use it
-for Charity works, for orphanages, widows and also build schools for less
-privilege that will be named after my late husband and my name; I need your
-urgent answer to know if you will be able to execute this project, and I
-will give you more information on how the fund will be transferred to your
-bank account.
-
+Do you think it's all right?
 
 Thanks
-Mrs. Anna H.
+Yan
 
---00000000000034293e05a2a9f6bd
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">May The Peace of the Lord be with You<br><br>My Name is Mr=
-s. Anna H. Bruun, =C2=A0from Norway. I know that this message will be a sur=
-prise to you. Firstly, I am married to Mr. Patrick Bruun, A gold merchant w=
-ho owns a small gold Mine in Burkina Faso; He died of Cardiovascular Diseas=
-e in mid-March 2011. During his life time he deposited the sum of =E2=82=AC=
- 8.5 Million Euro) Eight million, Five hundred thousand Euros in a bank in =
-Ouagadougou the capital city of Burkina Faso in West Africa. The deposited =
-money was from the sale of the shares, death benefits payment and entitleme=
-nts of my deceased husband by his company.<br><br>I am sending this message=
- to you praying that it will reach you in good health, since I am not in go=
-od health condition in which I sleep every night without knowing if I may b=
-e alive to see the next day. I am suffering from long time cancer and prese=
-ntly i am partially suffering from a stroke illness which has become almost=
- impossible for me to move around. I am married to my late husband for over=
- 4 years before he died and is unfortunately that we don&#39;t have a child=
-, my doctor confided in me that i have less chance to live. Having known my=
- health condition, I decided to contact you to claim the fund since I don&#=
-39;t have any relation I grew up from the orphanage home.<br><br>I have dec=
-ided to donate what I have to you for the support of =C2=A0helping Motherle=
-ss babies/Less privileged/Widows&#39; because I am dying and diagnosed of c=
-ancer for about 2 years ago. I have been touched by God Almighty to donate =
-from what I have inherited from my late husband to you for good work of God=
- Almighty. I have asked Almighty God to forgive me and believe he has, beca=
-use He is a Merciful God I will be going in for an operation surgery soon<b=
-r><br>This is the reason i need your services to stand as my next of kin or=
- an executor to claim the funds for charity purposes. If this money remains=
- unclaimed after my death, the bank executives or the government will take =
-the money as unclaimed fund and maybe use it for selfish and worthless vent=
-ures, I need a very honest person who can claim this money and use it for C=
-harity works, for orphanages, widows and also build schools for less privil=
-ege that will be named after my late husband and my name; I need your urgen=
-t answer to know if you will be able to execute this project, and I will gi=
-ve you more information on how the fund will be transferred to your bank ac=
-count.<br><br><br>Thanks<br>Mrs. Anna H.</div>
 
---00000000000034293e05a2a9f6bd--
-
---===============1942565265==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1942565265==--
