@@ -2,41 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD3CA1A264A
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Apr 2020 17:50:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E920F1A36D3
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Apr 2020 17:20:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1C1896EA83;
-	Wed,  8 Apr 2020 15:50:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 88FCB6EBDC;
+	Thu,  9 Apr 2020 15:20:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A5A716E14F
+X-Greylist: delayed 494 seconds by postgrey-1.36 at gabe;
+ Thu, 09 Apr 2020 15:20:04 UTC
+Received: from condef-03.nifty.com (condef-03.nifty.com [202.248.20.68])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 064656EBDC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Apr 2020 15:50:34 +0000 (UTC)
-IronPort-SDR: RS7IONsFJRvxgBY1MH+xhc6VgwS0+58LsMpUQVk30ON1FN0Bfq8bXftbp41bE5mtrKRLAMo0kM
- kjh4PHu79kGw==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2020 08:50:33 -0700
-IronPort-SDR: IkFJvgOga3vEU/TpZ053ykgtMTOHKsJwyc1Zcw9gwOUmVvCcslKsoqWXbPzAAMkiFvSN5SWc1n
- ReihtiurMnVQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,359,1580803200"; d="scan'208";a="297270119"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 08 Apr 2020 08:50:31 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jMCyE-000Cb3-DG; Wed, 08 Apr 2020 23:50:30 +0800
-Date: Wed, 08 Apr 2020 23:50:20 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 6909791702ed5877588705cde2c120c83aa52c10
-Message-ID: <5e8df2bc.T7l0v2lQ+qRWlQXt%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
+ Thu,  9 Apr 2020 15:20:03 +0000 (UTC)
+Received: from conuserg-07.nifty.com ([10.126.8.70])by condef-03.nifty.com
+ with ESMTP id 039F7TL6009353
+ for <intel-gvt-dev@lists.freedesktop.org>; Fri, 10 Apr 2020 00:07:29 +0900
+Received: from grover.flets-west.jp (softbank126125134031.bbtec.net
+ [126.125.134.31]) (authenticated)
+ by conuserg-07.nifty.com with ESMTP id 039F6Zj5025357;
+ Fri, 10 Apr 2020 00:06:35 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-07.nifty.com 039F6Zj5025357
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1586444796;
+ bh=MUvhE7+ejNToesPB6VeHbyGzSUZRlpfGDiwXF83CYes=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Kf3cMpbBc7OAc9Kj4TUDvcl/BH0s2qTuTc8GtX1PMo37ZfxzNtV0xNnNoo0YHsO8A
+ ToUncwvbr8EajVFIR+00idM6Yqv1lpUL4PjyCUz8DYcNUyqmmnBPeJRryfpkCfNY1a
+ DIXACKztrm35yW7/5yhRAz74W5fx4evOAI1hMx6bJaiWxT3l6SOrG+zZKSy8asezMa
+ 9DAGyKq+Y43YpV5Qa+HU2TXQylFErvINQtXg78b8v0GG0+g1bF/x+5r039CfTHokXD
+ ohok4xDS9drR3H/wmuoXh7noiGZMs7A9U3Rnn4dpGvGkplfjjo57Cr5fraxMKms4zU
+ djioWoz6BTdrA==
+X-Nifty-SrcIP: [126.125.134.31]
+From: Masahiro Yamada <masahiroy@kernel.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gfx@lists.freedesktop.org
+Subject: [PATCH 1/2] drm/i915: remove unneeded ccflags-y from gvt/Makefile
+Date: Fri, 10 Apr 2020 00:06:26 +0900
+Message-Id: <20200409150627.29205-1-masahiroy@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,161 +54,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: David Airlie <airlied@linux.ie>, Masahiro Yamada <masahiroy@kernel.org>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: 6909791702ed5877588705cde2c120c83aa52c10  gvt-staging: 2020y-04m-08d-09h-03m-49s CST integration manifest
+When CONFIG_DRM_I915_GVT=y, the same include path is added twice.
 
-elapsed time: 860m
+drivers/gpu/drm/i915/Makefile specifies:
 
-configs tested: 133
-configs skipped: 0
+  subdir-ccflags-y += -I$(srctree)/$(src)
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+drivers/gpu/drm/i915/gvt/Makefile adds the second '-I $(srctree)/$(src)',
+which is redundant.
 
-arm64                            allyesconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm                              allmodconfig
-arm64                             allnoconfig
-arm                               allnoconfig
-arm                        shmobile_defconfig
-arm64                               defconfig
-arm                           sunxi_defconfig
-arm                        multi_v7_defconfig
-arm                           efm32_defconfig
-arm                         at91_dt_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                             alldefconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                             alldefconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-m68k                       m5475evb_defconfig
-m68k                           sun3_defconfig
-m68k                          multi_defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                generic-64bit_defconfig
-parisc                generic-32bit_defconfig
-parisc                           allyesconfig
-x86_64               randconfig-a003-20200408
-i386                 randconfig-a002-20200408
-x86_64               randconfig-a001-20200408
-x86_64               randconfig-a002-20200408
-i386                 randconfig-a003-20200408
-i386                 randconfig-a001-20200408
-nds32                randconfig-a001-20200408
-m68k                 randconfig-a001-20200408
-alpha                randconfig-a001-20200408
-parisc               randconfig-a001-20200408
-riscv                randconfig-a001-20200408
-sparc64              randconfig-a001-20200408
-h8300                randconfig-a001-20200408
-nios2                randconfig-a001-20200408
-c6x                  randconfig-a001-20200408
-s390                 randconfig-a001-20200408
-xtensa               randconfig-a001-20200408
-csky                 randconfig-a001-20200408
-openrisc             randconfig-a001-20200408
-sh                   randconfig-a001-20200408
-i386                 randconfig-b003-20200408
-x86_64               randconfig-b002-20200408
-x86_64               randconfig-b003-20200408
-i386                 randconfig-b001-20200408
-x86_64               randconfig-b001-20200408
-i386                 randconfig-b002-20200408
-x86_64               randconfig-c002-20200408
-i386                 randconfig-c001-20200408
-i386                 randconfig-c003-20200408
-x86_64               randconfig-c003-20200408
-i386                 randconfig-c002-20200408
-x86_64               randconfig-c001-20200408
-x86_64               randconfig-e002-20200408
-i386                 randconfig-e003-20200408
-i386                 randconfig-e001-20200408
-x86_64               randconfig-e001-20200408
-x86_64               randconfig-e003-20200408
-i386                 randconfig-e002-20200408
-i386                 randconfig-f001-20200408
-i386                 randconfig-f003-20200408
-x86_64               randconfig-f003-20200408
-x86_64               randconfig-f001-20200408
-i386                 randconfig-f002-20200408
-x86_64               randconfig-g003-20200408
-i386                 randconfig-g003-20200408
-x86_64               randconfig-g002-20200408
-i386                 randconfig-g002-20200408
-i386                 randconfig-g001-20200408
-sparc                randconfig-a001-20200408
-arm64                randconfig-a001-20200408
-ia64                 randconfig-a001-20200408
-arc                  randconfig-a001-20200408
-arm                  randconfig-a001-20200408
-powerpc              randconfig-a001-20200408
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-s390                       zfcpdump_defconfig
-s390                          debug_defconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                             alldefconfig
-s390                                defconfig
-sh                          rsk7269_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
+The include path '-I $(srctree)/$(src)/$(GVT_DIR)/' is added to allow
+include/trace/define_trace.h to find the gvt/trace.h
 
+By setting the correct relative path to TRACE_INCLUDE_PATH, this -I
+is also unneeded.
+
+Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+
+ drivers/gpu/drm/i915/gvt/Makefile | 1 -
+ drivers/gpu/drm/i915/gvt/trace.h  | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt/Makefile
+index ea8324abc784..4d70f4689479 100644
+--- a/drivers/gpu/drm/i915/gvt/Makefile
++++ b/drivers/gpu/drm/i915/gvt/Makefile
+@@ -5,5 +5,4 @@ GVT_SOURCE := gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o firmware.o \
+ 	execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o debugfs.o \
+ 	fb_decoder.o dmabuf.o page_track.o
+ 
+-ccflags-y				+= -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
+ i915-y					+= $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
+diff --git a/drivers/gpu/drm/i915/gvt/trace.h b/drivers/gpu/drm/i915/gvt/trace.h
+index 6d787750d279..d63b7eef6179 100644
+--- a/drivers/gpu/drm/i915/gvt/trace.h
++++ b/drivers/gpu/drm/i915/gvt/trace.h
+@@ -377,7 +377,7 @@ TRACE_EVENT(render_mmio,
+ 
+ /* This part must be out of protection */
+ #undef TRACE_INCLUDE_PATH
+-#define TRACE_INCLUDE_PATH .
++#define TRACE_INCLUDE_PATH ../../drivers/gpu/drm/i915/gvt
+ #undef TRACE_INCLUDE_FILE
+ #define TRACE_INCLUDE_FILE trace
+ #include <trace/define_trace.h>
+-- 
+2.17.1
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
