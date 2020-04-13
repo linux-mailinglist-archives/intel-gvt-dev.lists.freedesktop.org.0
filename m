@@ -2,42 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 750D81A4253
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Apr 2020 07:54:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A3E061A62C9
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Apr 2020 08:02:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0FCAF6EC64;
-	Fri, 10 Apr 2020 05:54:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 480866E188;
+	Mon, 13 Apr 2020 06:02:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 040956EC63;
- Fri, 10 Apr 2020 05:54:45 +0000 (UTC)
-IronPort-SDR: 8H9+uRgCCsJHo7mOCEL4BPmTcXeWMeopOr/iTUtks0EiXtAFhePmRLhgo9N280CxA/zywnaf7Y
- fXIi5xlXa0Yw==
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C5EF86E188
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 13 Apr 2020 06:01:59 +0000 (UTC)
+IronPort-SDR: c0mb1jinXxWyznEtpYrYUg60SSyvffwbbzIupgGyhyBwMDD8ohTRNfHA6fExtc2vk4F3xbYS3f
+ XWqrbcXgUHew==
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2020 22:54:44 -0700
-IronPort-SDR: neQ7V9BrtVs+lpG9al2irFFnbVHHjZ/ITmulTc10fSr/Ts1diyctt1UOZJ8ozUdvILKsu1W89J
- v9yq1WSKecDw==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Apr 2020 23:01:59 -0700
+IronPort-SDR: O5wdGuyQlc7bo5KmVytTBytv4gIaY33RmF0q8WDMiPNVI4GCYyrC5X6Yd4Ae+HQAXSFb7BKflg
+ 896Qwv3gpldQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,364,1580803200"; 
- d="asc'?scan'208";a="255386528"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga006.jf.intel.com with ESMTP; 09 Apr 2020 22:54:41 -0700
-Date: Fri, 10 Apr 2020 13:41:08 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Subject: Re: [PATCH 2/2] drm/i915: remove gvt/Makefile
-Message-ID: <20200410054108.GK11247@zhen-hp.sh.intel.com>
-References: <20200409150627.29205-1-masahiroy@kernel.org>
- <20200409150627.29205-2-masahiroy@kernel.org>
- <87h7xsgw3r.fsf@intel.com>
+X-IronPort-AV: E=Sophos;i="5.72,377,1580803200"; d="scan'208";a="453054045"
+Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
+ by fmsmga005.fm.intel.com with ESMTP; 12 Apr 2020 23:01:52 -0700
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH v5 0/4] introduction of migration_version attribute for VFIO
+ live migration
+Date: Mon, 13 Apr 2020 01:52:01 -0400
+Message-Id: <20200413055201.27053-1-yan.y.zhao@intel.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <87h7xsgw3r.fsf@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,149 +46,103 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: David Airlie <airlied@linux.ie>, Masahiro Yamada <masahiroy@kernel.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============0954071227=="
+Cc: cjia@nvidia.com, kvm@vger.kernel.org, linux-doc@vger.kernel.org,
+ libvir-list@redhat.com, Zhengxiao.zx@alibaba-inc.com,
+ shuangtai.tst@alibaba-inc.com, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, corbet@lwn.net, yi.l.liu@intel.com, eskultet@redhat.com,
+ ziye.yang@intel.com, mlevitsk@redhat.com, pasic@linux.ibm.com, aik@ozlabs.ru,
+ felipe@nutanix.com, Ken.Xue@amd.com, kevin.tian@intel.com,
+ Yan Zhao <yan.y.zhao@intel.com>, xin.zeng@intel.com, dgilbert@redhat.com,
+ zhenyuw@linux.intel.com, dinechin@redhat.com, alex.williamson@redhat.com,
+ changpeng.liu@intel.com, berrange@redhat.com, cohuck@redhat.com,
+ linux-kernel@vger.kernel.org, zhi.a.wang@intel.com,
+ jonathan.davies@nutanix.com, shaopeng.he@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+This patchset introduces a migration_version attribute under sysfs of VFIO
+Mediated devices.
 
---===============0954071227==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="KIzF6Cje4W/osXrF"
-Content-Disposition: inline
+This migration_version attribute is used to check migration compatibility
+between two mdev devices.
+
+Currently, it has two locations:
+(1) under mdev_type node,
+    which can be used even before device creation, but only for mdev
+    devices of the same mdev type.
+(2) under mdev device node,
+    which can only be used after the mdev devices are created, but the src
+    and target mdev devices are not necessarily be of the same mdev type
+(The second location is newly added in v5, in order to keep consistent
+with the migration_version node for migratable pass-though devices)
+
+Patch 1 defines migration_version attribute for the first location in
+Documentation/vfio-mediated-device.txt
+
+Patch 2 uses GVT as an example for patch 1 to show how to expose
+migration_version attribute and check migration compatibility in vendor
+driver.
+
+Patch 3 defines migration_version attribute for the second location in
+Documentation/vfio-mediated-device.txt
+
+Patch 4 uses GVT as an example for patch 3 to show how to expose
+migration_version attribute and check migration compatibility in vendor
+driver.
+
+(The previous "Reviewed-by" and "Acked-by" for patch 1 and patch 2 are
+kept in v5, as there are only small changes to commit messages of the two
+patches.)
+
+v5:
+added patch 2 and 4 for mdev device part of migration_version attribute.
+
+v4:
+1. fixed indentation/spell errors, reworded several error messages
+2. added a missing memory free for error handling in patch 2
+
+v3:
+1. renamed version to migration_version
+2. let errno to be freely defined by vendor driver
+3. let checking mdev_type be prerequisite of migration compatibility check
+4. reworded most part of patch 1
+5. print detailed error log in patch 2 and generate migration_version
+string at init time
+
+v2:
+1. renamed patched 1
+2. made definition of device version string completely private to vendor
+driver
+3. reverted changes to sample mdev drivers
+4. described intent and usage of version attribute more clearly.
 
 
---KIzF6Cje4W/osXrF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Yan Zhao (4):
+  vfio/mdev: add migration_version attribute for mdev (under mdev_type
+    node)
+  drm/i915/gvt: export migration_version to mdev sysfs (under mdev_type
+    node)
+  vfio/mdev: add migration_version attribute for mdev (under mdev device
+    node)
+  drm/i915/gvt: export migration_version to mdev sysfs (under mdev
+    device node)
 
-On 2020.04.10 00:58:16 +0300, Jani Nikula wrote:
-> On Fri, 10 Apr 2020, Masahiro Yamada <masahiroy@kernel.org> wrote:
-> > Including subdirectory Makefile from the driver main Makefile does not
-> > buy us much because this is not real isolation.
->=20
-> The isolation it does buy us is that gvt/ subdirectory is developed and
-> maintained on a separate mailing list and separate git repo. I think at
-> some point there were plans to make it an actual module too.
->=20
-> So while you could quip about Conway's law here, I think it might be
-> better to keep this as it is.
->=20
-> Zhenyu, Zhi, what do you think?
+ .../driver-api/vfio-mediated-device.rst       | 183 ++++++++++++++++++
+ drivers/gpu/drm/i915/gvt/Makefile             |   2 +-
+ drivers/gpu/drm/i915/gvt/gvt.c                |  39 ++++
+ drivers/gpu/drm/i915/gvt/gvt.h                |   7 +
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |  55 ++++++
+ drivers/gpu/drm/i915/gvt/migration_version.c  | 170 ++++++++++++++++
+ drivers/gpu/drm/i915/gvt/vgpu.c               |  13 +-
+ 7 files changed, 466 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/gpu/drm/i915/gvt/migration_version.c
 
-Yeah, I have the same feeling, maybe we can add some comment in gvt Makefile
-to state that point.
-
-Thanks
-
-> >
-> > Having a single Makefile at the top of the module is clearer, and
-> > it is what this driver almost does.
-> >
-> > Move all gvt objects to the i915 main Makefile.
-> >
-> > Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
-> > ---
-> >
-> >  drivers/gpu/drm/i915/Makefile     | 28 ++++++++++++++++++++++++----
-> >  drivers/gpu/drm/i915/gvt/Makefile |  8 --------
-> >  2 files changed, 24 insertions(+), 12 deletions(-)
-> >  delete mode 100644 drivers/gpu/drm/i915/gvt/Makefile
-> >
-> > diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makef=
-ile
-> > index 6cd1f6253814..74e965882a98 100644
-> > --- a/drivers/gpu/drm/i915/Makefile
-> > +++ b/drivers/gpu/drm/i915/Makefile
-> > @@ -275,10 +275,30 @@ i915-$(CONFIG_DRM_I915_SELFTEST) +=3D \
-> >  # virtual gpu code
-> >  i915-y +=3D i915_vgpu.o
-> > =20
-> > -ifeq ($(CONFIG_DRM_I915_GVT),y)
-> > -i915-y +=3D intel_gvt.o
-> > -include $(src)/gvt/Makefile
-> > -endif
-> > +i915-$(CONFIG_DRM_I915_GVT) +=3D \
-> > +	intel_gvt.o \
-> > +	gvt/gvt.o \
-> > +	gvt/aperture_gm.o \
-> > +	gvt/handlers.o \
-> > +	gvt/vgpu.o \
-> > +	gvt/trace_points.o \
-> > +	gvt/firmware.o \
-> > +	gvt/interrupt.o \
-> > +	gvt/gtt.o \
-> > +	gvt/cfg_space.o \
-> > +	gvt/opregion.o \
-> > +	gvt/mmio.o \
-> > +	gvt/display.o \
-> > +	gvt/edid.o \
-> > +	gvt/execlist.o \
-> > +	gvt/scheduler.o \
-> > +	gvt/sched_policy.o \
-> > +	gvt/mmio_context.o \
-> > +	gvt/cmd_parser.o \
-> > +	gvt/debugfs.o \
-> > +	gvt/fb_decoder.o \
-> > +	gvt/dmabuf.o \
-> > +	gvt/page_track.o
-> > =20
-> >  obj-$(CONFIG_DRM_I915) +=3D i915.o
-> >  obj-$(CONFIG_DRM_I915_GVT_KVMGT) +=3D gvt/kvmgt.o
-> > diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/g=
-vt/Makefile
-> > deleted file mode 100644
-> > index 4d70f4689479..000000000000
-> > --- a/drivers/gpu/drm/i915/gvt/Makefile
-> > +++ /dev/null
-> > @@ -1,8 +0,0 @@
-> > -# SPDX-License-Identifier: GPL-2.0
-> > -GVT_DIR :=3D gvt
-> > -GVT_SOURCE :=3D gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o f=
-irmware.o \
-> > -	interrupt.o gtt.o cfg_space.o opregion.o mmio.o display.o edid.o \
-> > -	execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o deb=
-ugfs.o \
-> > -	fb_decoder.o dmabuf.o page_track.o
-> > -
-> > -i915-y					+=3D $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
->=20
-> --=20
-> Jani Nikula, Intel Open Source Graphics Center
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---KIzF6Cje4W/osXrF
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXpAG9AAKCRCxBBozTXgY
-J5rLAJ45nWTbStFQsqc5yvlIr+XX8Ig8YACdFQ67J8jqCGmeYx/Y196ZAH2skGM=
-=Zhzu
------END PGP SIGNATURE-----
-
---KIzF6Cje4W/osXrF--
-
---===============0954071227==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+2.17.1
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0954071227==--
