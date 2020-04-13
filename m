@@ -2,37 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3E061A62C9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Apr 2020 08:02:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06B851A62D2
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Apr 2020 08:03:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 480866E188;
-	Mon, 13 Apr 2020 06:02:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A51996E18E;
+	Mon, 13 Apr 2020 06:03:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C5EF86E188
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 42FB16E18E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Apr 2020 06:01:59 +0000 (UTC)
-IronPort-SDR: c0mb1jinXxWyznEtpYrYUg60SSyvffwbbzIupgGyhyBwMDD8ohTRNfHA6fExtc2vk4F3xbYS3f
- XWqrbcXgUHew==
+ Mon, 13 Apr 2020 06:03:55 +0000 (UTC)
+IronPort-SDR: Qphi9DnokvPOFjIW9AJvWhhA1xy5bDWH5heXA9WKEsX8MBZpk5L2FMKl9FvbdQ6QTdRUUopEfP
+ W+0+mHJhmBUw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Apr 2020 23:01:59 -0700
-IronPort-SDR: O5wdGuyQlc7bo5KmVytTBytv4gIaY33RmF0q8WDMiPNVI4GCYyrC5X6Yd4Ae+HQAXSFb7BKflg
- 896Qwv3gpldQ==
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Apr 2020 23:03:54 -0700
+IronPort-SDR: z+0HOU69jei098SSeSutY5Rei2Llm3kZRcVPTTqJjFp4sXn0qI63LlAxr5XpUfVmCleoF6dxxX
+ Quj74UvirE2g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,377,1580803200"; d="scan'208";a="453054045"
+X-IronPort-AV: E=Sophos;i="5.72,377,1580803200"; d="scan'208";a="245065624"
 Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
- by fmsmga005.fm.intel.com with ESMTP; 12 Apr 2020 23:01:52 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 12 Apr 2020 23:03:48 -0700
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH v5 0/4] introduction of migration_version attribute for VFIO
- live migration
-Date: Mon, 13 Apr 2020 01:52:01 -0400
-Message-Id: <20200413055201.27053-1-yan.y.zhao@intel.com>
+Subject: [PATCH v5 1/4] vfio/mdev: add migration_version attribute for mdev
+ (under mdev_type node)
+Date: Mon, 13 Apr 2020 01:54:03 -0400
+Message-Id: <20200413055403.27203-1-yan.y.zhao@intel.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200413055201.27053-1-yan.y.zhao@intel.com>
+References: <20200413055201.27053-1-yan.y.zhao@intel.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -57,92 +59,179 @@ Cc: cjia@nvidia.com, kvm@vger.kernel.org, linux-doc@vger.kernel.org,
  changpeng.liu@intel.com, berrange@redhat.com, cohuck@redhat.com,
  linux-kernel@vger.kernel.org, zhi.a.wang@intel.com,
  jonathan.davies@nutanix.com, shaopeng.he@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This patchset introduces a migration_version attribute under sysfs of VFIO
-Mediated devices.
-
-This migration_version attribute is used to check migration compatibility
-between two mdev devices.
-
-Currently, it has two locations:
-(1) under mdev_type node,
-    which can be used even before device creation, but only for mdev
-    devices of the same mdev type.
-(2) under mdev device node,
-    which can only be used after the mdev devices are created, but the src
-    and target mdev devices are not necessarily be of the same mdev type
-(The second location is newly added in v5, in order to keep consistent
-with the migration_version node for migratable pass-though devices)
-
-Patch 1 defines migration_version attribute for the first location in
-Documentation/vfio-mediated-device.txt
-
-Patch 2 uses GVT as an example for patch 1 to show how to expose
-migration_version attribute and check migration compatibility in vendor
-driver.
-
-Patch 3 defines migration_version attribute for the second location in
-Documentation/vfio-mediated-device.txt
-
-Patch 4 uses GVT as an example for patch 3 to show how to expose
-migration_version attribute and check migration compatibility in vendor
-driver.
-
-(The previous "Reviewed-by" and "Acked-by" for patch 1 and patch 2 are
-kept in v5, as there are only small changes to commit messages of the two
-patches.)
-
-v5:
-added patch 2 and 4 for mdev device part of migration_version attribute.
-
-v4:
-1. fixed indentation/spell errors, reworded several error messages
-2. added a missing memory free for error handling in patch 2
-
-v3:
-1. renamed version to migration_version
-2. let errno to be freely defined by vendor driver
-3. let checking mdev_type be prerequisite of migration compatibility check
-4. reworded most part of patch 1
-5. print detailed error log in patch 2 and generate migration_version
-string at init time
-
-v2:
-1. renamed patched 1
-2. made definition of device version string completely private to vendor
-driver
-3. reverted changes to sample mdev drivers
-4. described intent and usage of version attribute more clearly.
-
-
-Yan Zhao (4):
-  vfio/mdev: add migration_version attribute for mdev (under mdev_type
-    node)
-  drm/i915/gvt: export migration_version to mdev sysfs (under mdev_type
-    node)
-  vfio/mdev: add migration_version attribute for mdev (under mdev device
-    node)
-  drm/i915/gvt: export migration_version to mdev sysfs (under mdev
-    device node)
-
- .../driver-api/vfio-mediated-device.rst       | 183 ++++++++++++++++++
- drivers/gpu/drm/i915/gvt/Makefile             |   2 +-
- drivers/gpu/drm/i915/gvt/gvt.c                |  39 ++++
- drivers/gpu/drm/i915/gvt/gvt.h                |   7 +
- drivers/gpu/drm/i915/gvt/kvmgt.c              |  55 ++++++
- drivers/gpu/drm/i915/gvt/migration_version.c  | 170 ++++++++++++++++
- drivers/gpu/drm/i915/gvt/vgpu.c               |  13 +-
- 7 files changed, 466 insertions(+), 3 deletions(-)
- create mode 100644 drivers/gpu/drm/i915/gvt/migration_version.c
-
--- 
-2.17.1
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+bWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlIGlzIHVzZWQgdG8gY2hlY2sgbWlncmF0aW9uIGNv
+bXBhdGliaWxpdHkKYmV0d2VlbiB0d28gbWRldiBkZXZpY2VzIG9mIHRoZSBzYW1lIG1kZXYgdHlw
+ZS4KVGhlIGtleSBpcyB0aGF0IGl0J3MgcncgYW5kIGl0cyBkYXRhIGlzIG9wYXF1ZSB0byB1c2Vy
+c3BhY2UuCgpVc2Vyc3BhY2UgcmVhZHMgbWlncmF0aW9uX3ZlcnNpb24gb2YgbWRldiBkZXZpY2Ug
+YXQgc291cmNlIHNpZGUgYW5kCndyaXRlcyB0aGUgdmFsdWUgdG8gbWlncmF0aW9uX3ZlcnNpb24g
+YXR0cmlidXRlIG9mIG1kZXYgZGV2aWNlIGF0IHRhcmdldApzaWRlLiBJdCBqdWRnZXMgbWlncmF0
+aW9uIGNvbXBhdGliaWxpdHkgYWNjb3JkaW5nIHRvIHdoZXRoZXIgdGhlIHJlYWQKYW5kIHdyaXRl
+IG9wZXJhdGlvbnMgc3VjY2VlZCBvciBmYWlsLgoKQ3VycmVudGx5LCBpdCBpcyBhYmxlIHRvIHJl
+YWQvd3JpdGUgbWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlIHVuZGVyIHR3bwpwbGFjZXM6Cgoo
+MSkgdW5kZXIgbWRldl90eXBlIG5vZGUKdXNlcnNwYWNlIGlzIGFibGUgdG8ga25vdyB3aGV0aGVy
+IHR3byBtZGV2IGRldmljZXMgYXJlIGNvbXBhdGlibGUgYmVmb3JlCmEgbWRldiBkZXZpY2UgaXMg
+Y3JlYXRlZC4KCnVzZXJzcGFjZSBhbHNvIG5lZWRzIHRvIGNoZWNrIHdoZXRoZXIgdGhlIHR3byBt
+ZGV2IGRldmljZXMgYXJlIG9mIHRoZSBzYW1lCm1kZXYgdHlwZSBiZWZvcmUgY2hlY2tpbmcgdGhl
+IG1pZ3JhdGlvbl92ZXJzaW9uIGF0dHJpYnV0ZS4gSXQgYWxzbyBuZWVkcwp0byBjaGVjayBkZXZp
+Y2UgY3JlYXRpb24gcGFyYW1ldGVycyBpZiBhZ2dyZWdhdGlvbiBpcyBzdXBwb3J0ZWQgaW4gZnV0
+dXJlLgoKKDIpIHVuZGVyIG1kZXYgZGV2aWNlIG5vZGUKdXNlcnNwYWNlIGlzIGFibGUgdG8ga25v
+dyB3aGV0aGVyIHR3byBtZGV2IGRldmljZXMgYXJlIGNvbXBhdGlibGUgYWZ0ZXIKdGhleSBhcmUg
+YWxsIGNyZWF0ZWQuIEJ1dCBpdCBkb2VzIG5vdCBuZWVkIHRvIGNoZWNrIG1kZXYgdHlwZSBhbmQg
+ZGV2aWNlCmNyZWF0aW9uIHBhcmFtZXRlciBmb3IgYWdncmVnYXRpb24gYXMgZGV2aWNlIHZlbmRv
+ciBkcml2ZXIgd291bGQgaGF2ZQppbmNvcnBvcmF0ZWQgdGhvc2UgaW5mb3JtYXRpb24gaW50byB0
+aGUgbWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlLgoKICAgICAgICAgICAgIF9fICAgIHVzZXJz
+cGFjZQogICAgICAgICAgICAgIC9cICAgICAgICAgICAgICBcCiAgICAgICAgICAgICAvICAgICAg
+ICAgICAgICAgICBcd3JpdGUKICAgICAgICAgICAgLyByZWFkICAgICAgICAgICAgICBcCiAgIF9f
+X19fX19fL19fX19fX19fX18gICAgICAgX19fXHwvX19fX19fX19fX19fXwogIHwgbWlncmF0aW9u
+X3ZlcnNpb24gfCAgICAgfCBtaWdyYXRpb25fdmVyc2lvbiB8LS0+Y2hlY2sgbWlncmF0aW9uCiAg
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0gICBjb21wYXRp
+YmlsaXR5CiAgICBtZGV2IGRldmljZSBBICAgICAgICAgICAgICAgbWRldiBkZXZpY2UgQgoKVGhp
+cyBwYXRjaCBpcyBmb3IgbWRldiBkb2N1bWVudGF0aW9uIGFib3V0IHRoZSBmaXJzdCBwbGFjZSAo
+dW5kZXIKbWRldl90eXBlIG5vZGUpCgpDYzogQWxleCBXaWxsaWFtc29uIDxhbGV4LndpbGxpYW1z
+b25AcmVkaGF0LmNvbT4KQ2M6IEVyaWsgU2t1bHRldHkgPGVza3VsdGV0QHJlZGhhdC5jb20+CkNj
+OiAiRHIuIERhdmlkIEFsYW4gR2lsYmVydCIgPGRnaWxiZXJ0QHJlZGhhdC5jb20+CkNjOiBDb3Ju
+ZWxpYSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT4KQ2M6ICJUaWFuLCBLZXZpbiIgPGtldmluLnRp
+YW5AaW50ZWwuY29tPgpDYzogWmhlbnl1IFdhbmcgPHpoZW55dXdAbGludXguaW50ZWwuY29tPgpD
+YzogIldhbmcsIFpoaSBBIiA8emhpLmEud2FuZ0BpbnRlbC5jb20+CkNjOiBOZW8gSmlhIDxjamlh
+QG52aWRpYS5jb20+CkNjOiBLaXJ0aSBXYW5raGVkZSA8a3dhbmtoZWRlQG52aWRpYS5jb20+CkNj
+OiBEYW5pZWwgUC4gQmVycmFuZ8OpIDxiZXJyYW5nZUByZWRoYXQuY29tPgpDYzogQ2hyaXN0b3Bo
+ZSBkZSBEaW5lY2hpbiA8ZGluZWNoaW5AcmVkaGF0LmNvbT4KClJldmlld2VkLWJ5OiBDb3JuZWxp
+YSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT4KU2lnbmVkLW9mZi1ieTogWWFuIFpoYW8gPHlhbi55
+LnpoYW9AaW50ZWwuY29tPgoKLS0tCnY1Ogp1cGRhdGVkIGNvbW1pdCBtZXNzYWdlIGEgbGl0dGxl
+IHRvIGluZGljYXRlIHRoaXMgcGF0Y2ggaXMgZm9yCm1pZ3JhdGlvbl92ZXJzaW9uIGF0dHJpYnV0
+ZSB1bmRlciBtZGV2X3R5cGUgbm9kZQoKdjQ6CmZpeGVkIGEgdHlwby4gKENvcm5lbGlhIEh1Y2sp
+Cgp2MzoKMS4gcmVuYW1lZCB2ZXJzaW9uIHRvIG1pZ3JhdGlvbl92ZXJzaW9uCihDaHJpc3RvcGhl
+IGRlIERpbmVjaGluLCBDb3JuZWxpYSBIdWNrLCBBbGV4IFdpbGxpYW1zb24pCjIuIGxldCBlcnJu
+byB0byBiZSBmcmVlbHkgZGVmaW5lZCBieSB2ZW5kb3IgZHJpdmVyCihBbGV4IFdpbGxpYW1zb24s
+IEVyaWsgU2t1bHRldHksIENvcm5lbGlhIEh1Y2ssIERyLiBEYXZpZCBBbGFuIEdpbGJlcnQpCjMu
+IGxldCBjaGVja2luZyBtZGV2X3R5cGUgYmUgcHJlcmVxdWlzaXRlIG9mIG1pZ3JhdGlvbiBjb21w
+YXRpYmlsaXR5CmNoZWNrLiAoQWxleCBXaWxsaWFtc29uKQo0LiByZXdvcmRlZCBleGFtcGxlIHVz
+YWdlIHNlY3Rpb24uCihtb3N0IG9mIHRoaXMgc2VjdGlvbiBjYW1lIGZyb20gQWxleCBXaWxsaWFt
+c29uKQo1LiByZXdvcmRlZCBhdHRyaWJ1dGUgaW50ZW50aW9uIHNlY3Rpb24gKENvcm5lbGlhIEh1
+Y2spCgp2MjoKMS4gYWRkZWQgZGV0YWlsZWQgaW50ZW50IGFuZCB1c2FnZQoyLiBtYWRlIGRlZmlu
+aXRpb24gb2YgdmVyc2lvbiBzdHJpbmcgY29tcGxldGVseSBwcml2YXRlIHRvIHZlbmRvciBkcml2
+ZXIKICAgKEFsZXggV2lsbGlhbXNvbikKMy4gYWJhbmRvbmVkIGNoYW5nZXMgdG8gc2FtcGxlIG1k
+ZXYgZHJpdmVycyAoQWxleCBXaWxsaWFtc29uKQo0LiBtYW5kYXRvcnkgLS0+IG9wdGlvbmFsIChD
+b3JuZWxpYSBIdWNrKQo1LiBhZGRlZCBkZXNjcmlwdGlvbiBmb3IgZXJybm8gKENvcm5lbGlhIEh1
+Y2spCi0tLQogLi4uL2RyaXZlci1hcGkvdmZpby1tZWRpYXRlZC1kZXZpY2UucnN0ICAgICAgIHwg
+MTEzICsrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDExMyBpbnNlcnRpb25zKCsp
+CgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL3ZmaW8tbWVkaWF0ZWQtZGV2
+aWNlLnJzdCBiL0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS92ZmlvLW1lZGlhdGVkLWRldmljZS5y
+c3QKaW5kZXggMjVlYjdkNWI4MzRiLi4yZDFmM2MwZjNjOGYgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50
+YXRpb24vZHJpdmVyLWFwaS92ZmlvLW1lZGlhdGVkLWRldmljZS5yc3QKKysrIGIvRG9jdW1lbnRh
+dGlvbi9kcml2ZXItYXBpL3ZmaW8tbWVkaWF0ZWQtZGV2aWNlLnJzdApAQCAtMjAyLDYgKzIwMiw3
+IEBAIERpcmVjdG9yaWVzIGFuZCBmaWxlcyB1bmRlciB0aGUgc3lzZnMgZm9yIEVhY2ggUGh5c2lj
+YWwgRGV2aWNlCiAgIHwgICAgIHwgICB8LS0tIGF2YWlsYWJsZV9pbnN0YW5jZXMKICAgfCAgICAg
+fCAgIHwtLS0gZGV2aWNlX2FwaQogICB8ICAgICB8ICAgfC0tLSBkZXNjcmlwdGlvbgorICB8ICAg
+ICB8ICAgfC0tLSBtaWdyYXRpb25fdmVyc2lvbgogICB8ICAgICB8ICAgfC0tLSBbZGV2aWNlc10K
+ICAgfCAgICAgfC0tLSBbPHR5cGUtaWQ+XQogICB8ICAgICB8ICAgfC0tLSBjcmVhdGUKQEAgLTIw
+OSw2ICsyMTAsNyBAQCBEaXJlY3RvcmllcyBhbmQgZmlsZXMgdW5kZXIgdGhlIHN5c2ZzIGZvciBF
+YWNoIFBoeXNpY2FsIERldmljZQogICB8ICAgICB8ICAgfC0tLSBhdmFpbGFibGVfaW5zdGFuY2Vz
+CiAgIHwgICAgIHwgICB8LS0tIGRldmljZV9hcGkKICAgfCAgICAgfCAgIHwtLS0gZGVzY3JpcHRp
+b24KKyAgfCAgICAgfCAgIHwtLS0gbWlncmF0aW9uX3ZlcnNpb24KICAgfCAgICAgfCAgIHwtLS0g
+W2RldmljZXNdCiAgIHwgICAgIHwtLS0gWzx0eXBlLWlkPl0KICAgfCAgICAgICAgICB8LS0tIGNy
+ZWF0ZQpAQCAtMjE2LDYgKzIxOCw3IEBAIERpcmVjdG9yaWVzIGFuZCBmaWxlcyB1bmRlciB0aGUg
+c3lzZnMgZm9yIEVhY2ggUGh5c2ljYWwgRGV2aWNlCiAgIHwgICAgICAgICAgfC0tLSBhdmFpbGFi
+bGVfaW5zdGFuY2VzCiAgIHwgICAgICAgICAgfC0tLSBkZXZpY2VfYXBpCiAgIHwgICAgICAgICAg
+fC0tLSBkZXNjcmlwdGlvbgorICB8ICAgICAgICAgIHwtLS0gbWlncmF0aW9uX3ZlcnNpb24KICAg
+fCAgICAgICAgICB8LS0tIFtkZXZpY2VzXQogCiAqIFttZGV2X3N1cHBvcnRlZF90eXBlc10KQEAg
+LTI0Niw2ICsyNDksMTE2IEBAIERpcmVjdG9yaWVzIGFuZCBmaWxlcyB1bmRlciB0aGUgc3lzZnMg
+Zm9yIEVhY2ggUGh5c2ljYWwgRGV2aWNlCiAgIFRoaXMgYXR0cmlidXRlIHNob3VsZCBzaG93IHRo
+ZSBudW1iZXIgb2YgZGV2aWNlcyBvZiB0eXBlIDx0eXBlLWlkPiB0aGF0IGNhbiBiZQogICBjcmVh
+dGVkLgogCisqIG1pZ3JhdGlvbl92ZXJzaW9uCisKKyAgVGhpcyBhdHRyaWJ1dGUgaXMgcncsIGFu
+ZCBpcyBvcHRpb25hbC4KKyAgSXQgaXMgdXNlZCB0byBjaGVjayBtaWdyYXRpb24gY29tcGF0aWJp
+bGl0eSBiZXR3ZWVuIHR3byBtZGV2IGRldmljZXMgb2YgdGhlCisgIHNhbWUgbWRldiB0eXBlLiBB
+YnNlbmNlIG9mIHRoaXMgYXR0cmlidXRlIG1lYW5zIHRoZSBkZXZpY2Ugb2YgdHlwZSA8dHlwZS1p
+ZD4KKyAgZG9lcyBub3Qgc3VwcG9ydCBtaWdyYXRpb24uCisgIFRoaXMgYXR0cmlidXRlIHByb3Zp
+ZGVzIGEgd2F5IHRvIGNoZWNrIG1pZ3JhdGlvbiBjb21wYXRpYmlsaXR5IGJldHdlZW4gdHdvCisg
+IG1kZXYgZGV2aWNlcyBmcm9tIHVzZXJzcGFjZSBldmVuIGJlZm9yZSBkZXZpY2UgY3JlYXRpb24u
+IFRoZSBpbnRlbmRlZCB1c2FnZSBpcworICBmb3IgdXNlcnNwYWNlIHRvIHJlYWQgdGhlIG1pZ3Jh
+dGlvbl92ZXJzaW9uIGF0dHJpYnV0ZSBmcm9tIG9uZSBtZGV2IGRldmljZSBhbmQKKyAgdGhlbiB3
+cml0aW5nIHRoYXQgdmFsdWUgdG8gdGhlIG1pZ3JhdGlvbl92ZXJzaW9uIGF0dHJpYnV0ZSBvZiB0
+aGUgb3RoZXIgbWRldgorICBkZXZpY2UuIFRoZSBzZWNvbmQgbWRldiBkZXZpY2UgaW5kaWNhdGVz
+IGNvbXBhdGliaWxpdHkgdmlhIHRoZSByZXR1cm4gY29kZSBvZgorICB0aGUgd3JpdGUgb3BlcmF0
+aW9uLiBUaGlzIG1ha2VzIGNvbXBhdGliaWxpdHkgYmV0d2VlbiBtZGV2IGRldmljZXMgY29tcGxl
+dGVseQorICB2ZW5kb3ItZGVmaW5lZCBhbmQgb3BhcXVlIHRvIHVzZXJzcGFjZS4gVXNlcnNwYWNl
+IHNob3VsZCBkbyBub3RoaW5nIG1vcmUKKyAgdGhhbiB2ZXJpZnkgdGhlIG1kZXYgdHlwZXMgbWF0
+Y2ggYW5kIHRoZW4gdXNlIHRoZSBtaWdyYXRpb25fdmVyc2lvbiBhdHRyaWJ1dGUKKyAgdG8gY29u
+ZmlybSBzb3VyY2UgdG8gdGFyZ2V0IGNvbXBhdGliaWxpdHkuCisKKyAgUmVhZGluZy9Xcml0aW5n
+IEF0dHJpYnV0ZSBEYXRhOgorICByZWFkKDIpIHdpbGwgZmFpbCBpZiBkZXZpY2Ugb2YgdHlwZSA8
+dHlwZS1pZD4gZG9lcyBub3Qgc3VwcG9ydCBtaWdyYXRpb24gYW5kCisgICAgICAgICAgb3RoZXJ3
+aXNlIHN1Y2NlZWQgYW5kIHJldHVybiBtaWdyYXRpb25fdmVyc2lvbiBzdHJpbmcgb2YgdGhlIGRl
+dmljZSBvZgorICAgICAgICAgIHR5cGUgPHR5cGUtaWQ+LgorCisgICAgICAgICAgVGhpcyBtaWdy
+YXRpb25fdmVyc2lvbiBzdHJpbmcgaXMgdmVuZG9yIGRlZmluZWQgYW5kIG9wYXF1ZSB0byB0aGUK
+KyAgICAgICAgICB1c2Vyc3BhY2UuIFZlbmRvciBpcyBmcmVlIHRvIGluY2x1ZGUgd2hhdGV2ZXIg
+dGhleSBmZWVsIGlzIHJlbGV2YW50LgorICAgICAgICAgIGUuZy4gPHBjaWlkIG9mIHBhcmVudCBk
+ZXZpY2U+LTxzb2Z0d2FyZSB2ZXJzaW9uPi4KKworICAgICAgICAgIFJlc3RyaWN0aW9ucyBvbiB0
+aGlzIG1pZ3JhdGlvbl92ZXJzaW9uIHN0cmluZzoKKyAgICAgICAgICAgIDEuIEl0IHNob3VsZCBv
+bmx5IGNvbnRhaW4gYXNjaWkgY2hhcmFjdGVycworICAgICAgICAgICAgMi4gTUFYIExlbmd0aCBp
+cyBQQVRIX01BWCAoNDA5NikKKworICB3cml0ZSgyKSBleHBlY3RzIG1pZ3JhdGlvbl92ZXJzaW9u
+IHN0cmluZyBvZiBzb3VyY2UgbWRldiBkZXZpY2UsIGFuZCB3aWxsCisgICAgICAgICAgc3VjY2Vl
+ZCBpZiBpdCBpcyBkZXRlcm1pbmVkIHRvIGJlIGNvbXBhdGlibGUgYW5kIG90aGVyd2lzZSBmYWls
+IHdpdGgKKyAgICAgICAgICB2ZW5kb3Igc3BlY2lmaWMgZXJybm8uCisKKyAgRXJybm86CisgIC1B
+biBlcnJubyBvbiByZWFkKDIpIGluZGljYXRlcyB0aGUgZGV2aWNlIG9mIHR5cGUgPHR5cGUtaWQ+
+IGRvZXMgbm90IHN1cHBvcnQKKyAgbWlncmF0aW9uOworICAtQW4gZXJybm8gb24gd3JpdGUoMikg
+aW5kaWNhdGVzIHRoZSBkZXZpY2VzIGFyZSBpbmNvbXBhdGlibGUgb3IgdGhlIHRhcmdldAorICBk
+b2Vzbid0IHN1cHBvcnQgbWlncmF0aW9uLgorICBWZW5kb3IgZHJpdmVyIGlzIGZyZWUgdG8gZGVm
+aW5lIHNwZWNpZmljIGVycm5vIGFuZCBpcyBzdWdnZXN0ZWQgdG8KKyAgcHJpbnQgZGV0YWlsZWQg
+ZXJyb3IgaW4gc3lzbG9nIGZvciBkaWFnbm9zZSBwdXJwb3NlLgorCisgIFVzZXJzcGFjZSBzaG91
+bGQgdHJlYXQgQU5ZIG9mIGJlbG93IGNvbmRpdGlvbnMgYXMgdHdvIG1kZXYgZGV2aWNlcyBub3QK
+KyAgY29tcGF0aWJsZToKKyAgKDApIFRoZSBtZGV2IGRldmljZXMgYXJlIG5vdCBvZiB0aGUgc2Ft
+ZSB0eXBlCisgICgxKSBhbnkgb25lIG9mIHRoZSB0d28gbWRldiBkZXZpY2VzIGRvZXMgbm90IGhh
+dmUgYSBtaWdyYXRpb25fdmVyc2lvbgorICBhdHRyaWJ1dGUKKyAgKDIpIGVycm9yIHdoZW4gcmVh
+ZGluZyBmcm9tIG1pZ3JhdGlvbl92ZXJzaW9uIGF0dHJpYnV0ZSBvZiBvbmUgbWRldiBkZXZpY2UK
+KyAgKDMpIGVycm9yIHdoZW4gd3JpdGluZyBtaWdyYXRpb25fdmVyc2lvbiBzdHJpbmcgb2Ygb25l
+IG1kZXYgZGV2aWNlIHRvCisgIG1pZ3JhdGlvbl92ZXJzaW9uIGF0dHJpYnV0ZSBvZiB0aGUgb3Ro
+ZXIgbWRldiBkZXZpY2UKKworICBVc2Vyc3BhY2Ugc2hvdWxkIHJlZ2FyZCB0d28gbWRldiBkZXZp
+Y2VzIGNvbXBhdGlibGUgd2hlbiBBTEwgb2YgYmVsb3cKKyAgY29uZGl0aW9ucyBhcmUgbWV0Ogor
+ICAoMCkgVGhlIG1kZXYgZGV2aWNlcyBhcmUgb2YgdGhlIHNhbWUgdHlwZQorICAoMSkgc3VjY2Vz
+cyB3aGVuIHJlYWRpbmcgZnJvbSBtaWdyYXRpb25fdmVyc2lvbiBhdHRyaWJ1dGUgb2Ygb25lIG1k
+ZXYgZGV2aWNlLgorICAoMikgc3VjY2VzcyB3aGVuIHdyaXRpbmcgbWlncmF0aW9uX3ZlcnNpb24g
+c3RyaW5nIG9mIG9uZSBtZGV2IGRldmljZSB0bworICBtaWdyYXRpb25fdmVyc2lvbiBhdHRyaWJ1
+dGUgb2YgdGhlIG90aGVyIG1kZXYgZGV2aWNlLgorCisgIEV4YW1wbGUgVXNhZ2U6CisgICgxKSBD
+b21wYXJlIG1kZXYgdHlwZXM6CisKKyAgVGhlIG1kZXYgdHlwZSBvZiBhbiBpbnN0YW50aWF0ZWQg
+ZGV2aWNlIGNhbiBiZSByZWFkIGZyb20gdGhlIG1kZXZfdHlwZSBsaW5rCisgIHdpdGhpbiB0aGUg
+ZGV2aWNlIGluc3RhbmNlIGluIHN5c2ZzLCBmb3IgZXhhbXBsZToKKworICAjIGJhc2VuYW1lICQo
+cmVhZGxpbmsgLWYgL3N5cy9idXMvbWRldi9kZXZpY2VzLyRNREVWX1VVSUQvbWRldl90eXBlLykK
+KworICBUaGUgbWRldiB0eXBlcyBhdmFpbGFibGUgb24gYSBnaXZlbiBob3N0IHN5c3RlbSBjYW4g
+YWxzbyBiZSBmb3VuZCB0aHJvdWdoCisgIC9zeXMvY2xhc3MvbWRldl9idXMsIGZvciBleGFtcGxl
+OgorCisgICMgbHMgL3N5cy9jbGFzcy9tZGV2X2J1cy8qL21kZXZfc3VwcG9ydGVkX3R5cGVzLwor
+CisgIE1pZ3JhdGlvbiBpcyBvbmx5IHBvc3NpYmxlIGJldHdlZW4gZGV2aWNlcyBvZiB0aGUgc2Ft
+ZSBtZGV2IHR5cGUuCisKKyAgKDIpIFJldHJpZXZlIHRoZSBtZGV2IHNvdXJjZSBtaWdyYXRpb25f
+dmVyc2lvbjoKKworICBUaGUgbWlncmF0aW9uX3ZlcnNpb24gaW5mb3JtYXRpb24gY2FuIGVpdGhl
+ciBiZSByZWFkIGZyb20gdGhlIG1kZXZfdHlwZSBsaW5rCisgIG9uIGFuIGluc3RhbnRpYXRlZCBk
+ZXZpY2U6CisKKyAgIyBjYXQgL3N5cy9idXMvbWRldi9kZXZpY2VzLyRVVUlEMS9tZGV2X3R5cGUv
+bWlncmF0aW9uX3ZlcnNpb24KKworICBPciBpdCBjYW4gYmUgcmVhZCBmcm9tIHRoZSBtZGV2IHR5
+cGUgZGVmaW5pdGlvbiwgZm9yIGV4YW1wbGU6CisKKyAgIyBjYXQgL3N5cy9jbGFzcy9tZGV2X2J1
+cy8qL21kZXZfc3VwcG9ydGVkX3R5cGVzLyRNREVWX1RZUEUvbWlncmF0aW9uX3ZlcnNpb24KKwor
+ICBJZiByZWFkaW5nIHRoZSBzb3VyY2UgbWlncmF0aW9uX3ZlcnNpb24gZ2VuZXJhdGVzIGFuIGVy
+cm9yLCBtaWdyYXRpb24gaXMgbm90CisgIHBvc3NpYmxlLgorICBOQiwgdGhlcmUgbWlnaHQgYmUg
+c2V2ZXJhbCBwYXJlbnQgZGV2aWNlcyBmb3IgYSBnaXZlbiBtZGV2IHR5cGUgb24gYSBob3N0Cisg
+IHN5c3RlbSwgZWFjaCBtYXkgc3VwcG9ydCBvciBleHBvc2UgZGlmZmVyZW50IG1pZ3JhdGlvbl92
+ZXJzaW9ucy4KKyAgTWF0Y2hpbmcgdGhlIHNwZWNpZmljIG1kZXYgdHlwZSB0byBhIHBhcmVudCBt
+YXkgYmVjb21lIGltcG9ydGFudCBpbiBzdWNoCisgIGNvbmZpZ3VyYXRpb25zLgorCisgICgzKSBU
+ZXN0IHNvdXJjZSBtaWdyYXRpb25fdmVyc2lvbiBhdCB0YXJnZXQ6CisKKyAgR2l2ZW4gYSBtaWdy
+YXRpb25fdmVyc2lvbiBhcyBvdXRsaW5lZCBhYm92ZSwgaXRzIGNvbXBhdGliaWxpdHkgdG8gYW4K
+KyAgaW5zdGFudGlhdGVkIGRldmljZSBvZiB0aGUgc2FtZSBtZGV2IHR5cGUgY2FuIGJlIHRlc3Rl
+ZCBhczoKKyAgIyBlY2hvICRWRVJTSU9OID4gL3N5cy9idXMvbWRldi9kZXZpY2VzLyRVVUlEMi9t
+ZGV2X3R5cGUvbWlncmF0aW9uX3ZlcnNpb24KKworICBJZiB0aGlzIHdyaXRlIGZhaWxzLCB0aGUg
+c291cmNlIGFuZCB0YXJnZXQgbWlncmF0aW9uIHZlcnNpb25zIGFyZSBub3QKKyAgY29tcGF0aWJs
+ZSBvciB0aGUgdGFyZ2V0IGRvZXMgbm90IHN1cHBvcnQgbWlncmF0aW9uLgorCisgIENvbXBhdGli
+aWxpdHkgY2FuIGFsc28gYmUgdGVzdGVkIHByaW9yIHRvIHRhcmdldCBkZXZpY2UgY3JlYXRpb24g
+dXNpbmcgdGhlCisgIG1kZXYgdHlwZSBkZWZpbml0aW9uIGZvciBhIHBhcmVudCBkZXZpY2Ugd2l0
+aCBhIHByZXZpb3VzbHkgZm91bmQgbWF0Y2hpbmcgbWRldgorICB0eXBlLCBmb3IgZXhhbXBsZToK
+KworICAjIGVjaG8gJFZFUlNJT04gPiBcCisgIC9zeXMvY2xhc3MvbWRldl9idXMvJFBBUkVOVC9t
+ZGV2X3N1cHBvcnRlZF90eXBlcy8kTURFVl9UWVBFL21pZ3JhdGlvbl92ZXJzaW9uCisKKyAgQWdh
+aW4sIGFuIGVycm9yIHdyaXRpbmcgdGhlIG1pZ3JhdGlvbl92ZXJzaW9uIGluZGljYXRlcyB0aGF0
+IGFuIGluc3RhbmNlIG9mCisgIHRoaXMgbWRldiB0eXBlIHdvdWxkIG5vdCBzdXBwb3J0IGEgbWln
+cmF0aW9uIGZyb20gdGhlIHByb3ZpZGVkIG1pZ3JhdGlvbgorICB2ZXJzaW9uLgorCiAqIFtkZXZp
+Y2VdCiAKICAgVGhpcyBkaXJlY3RvcnkgY29udGFpbnMgbGlua3MgdG8gdGhlIGRldmljZXMgb2Yg
+dHlwZSA8dHlwZS1pZD4gdGhhdCBoYXZlIGJlZW4KLS0gCjIuMTcuMQoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxp
+c3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2Cg==
