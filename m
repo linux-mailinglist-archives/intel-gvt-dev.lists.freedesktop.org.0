@@ -2,40 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 105421A62DB
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Apr 2020 08:04:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09A741A62E0
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Apr 2020 08:05:24 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BB2DB6E18E;
-	Mon, 13 Apr 2020 06:04:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B5A5F6E18E;
+	Mon, 13 Apr 2020 06:05:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 03A496E18E
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B86A76E18E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Apr 2020 06:04:49 +0000 (UTC)
-IronPort-SDR: qj/S7v4QR251ceEYDJ09x4uWmaC0FcwYNTI9/V3K4s00QkTZsueggydXwf5t15yFx+U7PojCia
- WODT682SThBQ==
+ Mon, 13 Apr 2020 06:05:18 +0000 (UTC)
+IronPort-SDR: nKAciOGcA7tNrh0Lqh/0QohIzgzeWTPlP0qF0R/QZqBoft4Zq2ORCzIRc7U5efgz3Ir1hd49H1
+ xf6Vw0DKFFEg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Apr 2020 23:04:49 -0700
-IronPort-SDR: MbFwKnGaaMwEyGnfsS5ROLnyX35cXTl0aIVx4vYCD8SaZ6Q+Nm5+ioJ8P7BmoI3lVcpfUdSGfE
- s40BgPxp5wWw==
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Apr 2020 23:05:17 -0700
+IronPort-SDR: roeKVt03RrchyMNuA8CrXSyOrbiZ5X+JKJ9kqReJE3JUUjKofhNcZ7rvaWNpS8f5VdpZlMviVm
+ 2Are1mH2PCgw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,377,1580803200"; d="scan'208";a="245065840"
+X-IronPort-AV: E=Sophos;i="5.72,377,1580803200"; d="scan'208";a="245065924"
 Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
- by fmsmga008.fm.intel.com with ESMTP; 12 Apr 2020 23:04:43 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 12 Apr 2020 23:05:10 -0700
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH v5 3/4] vfio/mdev: add migration_version attribute for mdev
+Subject: [PATCH v5 4/4] drm/i915/gvt: export migration_version to mdev sysfs
  (under mdev device node)
-Date: Mon, 13 Apr 2020 01:55:04 -0400
-Message-Id: <20200413055504.27311-1-yan.y.zhao@intel.com>
+Date: Mon, 13 Apr 2020 01:55:32 -0400
+Message-Id: <20200413055532.27363-1-yan.y.zhao@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200413055201.27053-1-yan.y.zhao@intel.com>
 References: <20200413055201.27053-1-yan.y.zhao@intel.com>
-MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,120 +58,155 @@ Cc: cjia@nvidia.com, kvm@vger.kernel.org, linux-doc@vger.kernel.org,
  changpeng.liu@intel.com, berrange@redhat.com, cohuck@redhat.com,
  linux-kernel@vger.kernel.org, zhi.a.wang@intel.com,
  jonathan.davies@nutanix.com, shaopeng.he@intel.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-bWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlIGlzIHVzZWQgdG8gY2hlY2sgbWlncmF0aW9uIGNv
-bXBhdGliaWxpdHkKYmV0d2VlbiB0d28gbWRldiBkZXZpY2VzIG9mIHRoZSBzYW1lIG1kZXYgdHlw
-ZS4KVGhlIGtleSBpcyB0aGF0IGl0J3MgcncgYW5kIGl0cyBkYXRhIGlzIG9wYXF1ZSB0byB1c2Vy
-c3BhY2UuCgpVc2Vyc3BhY2UgcmVhZHMgbWlncmF0aW9uX3ZlcnNpb24gb2YgbWRldiBkZXZpY2Ug
-YXQgc291cmNlIHNpZGUgYW5kCndyaXRlcyB0aGUgdmFsdWUgdG8gbWlncmF0aW9uX3ZlcnNpb24g
-YXR0cmlidXRlIG9mIG1kZXYgZGV2aWNlIGF0IHRhcmdldApzaWRlLiBJdCBqdWRnZXMgbWlncmF0
-aW9uIGNvbXBhdGliaWxpdHkgYWNjb3JkaW5nIHRvIHdoZXRoZXIgdGhlIHJlYWQKYW5kIHdyaXRl
-IG9wZXJhdGlvbnMgc3VjY2VlZCBvciBmYWlsLgoKQ3VycmVudGx5LCBpdCBpcyBhYmxlIHRvIHJl
-YWQvd3JpdGUgbWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlIHVuZGVyIHR3bwpwbGFjZXM6Cgoo
-MSkgdW5kZXIgbWRldl90eXBlIG5vZGUKdXNlcnNwYWNlIGlzIGFibGUgdG8ga25vdyB3aGV0aGVy
-IHR3byBtZGV2IGRldmljZXMgYXJlIGNvbXBhdGlibGUgYmVmb3JlCmEgbWRldiBkZXZpY2UgaXMg
-Y3JlYXRlZC4KCnVzZXJzcGFjZSBhbHNvIG5lZWRzIHRvIGNoZWNrIHdoZXRoZXIgdGhlIHR3byBt
-ZGV2IGRldmljZXMgYXJlIG9mIHRoZSBzYW1lCm1kZXYgdHlwZSBiZWZvcmUgY2hlY2tpbmcgdGhl
-IG1pZ3JhdGlvbl92ZXJzaW9uIGF0dHJpYnV0ZS4gSXQgYWxzbyBuZWVkcwp0byBjaGVjayBkZXZp
-Y2UgY3JlYXRpb24gcGFyYW1ldGVycyBpZiBhZ2dyZWdhdGlvbiBpcyBzdXBwb3J0ZWQgaW4gZnV0
-dXJlLgoKKDIpIHVuZGVyIG1kZXYgZGV2aWNlIG5vZGUKdXNlcnNwYWNlIGlzIGFibGUgdG8ga25v
-dyB3aGV0aGVyIHR3byBtZGV2IGRldmljZXMgYXJlIGNvbXBhdGlibGUgYWZ0ZXIKdGhleSBhcmUg
-YWxsIGNyZWF0ZWQuIEJ1dCBpdCBkb2VzIG5vdCBuZWVkIHRvIGNoZWNrIG1kZXYgdHlwZSBhbmQg
-ZGV2aWNlCmNyZWF0aW9uIHBhcmFtZXRlciBmb3IgYWdncmVnYXRpb24gYXMgZGV2aWNlIHZlbmRv
-ciBkcml2ZXIgd291bGQgaGF2ZQppbmNvcnBvcmF0ZWQgdGhvc2UgaW5mb3JtYXRpb24gaW50byB0
-aGUgbWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlLgoKICAgICAgICAgICAgIF9fICAgIHVzZXJz
-cGFjZQogICAgICAgICAgICAgIC9cICAgICAgICAgICAgICBcCiAgICAgICAgICAgICAvICAgICAg
-ICAgICAgICAgICBcd3JpdGUKICAgICAgICAgICAgLyByZWFkICAgICAgICAgICAgICBcCiAgIF9f
-X19fX19fL19fX19fX19fX18gICAgICAgX19fXHwvX19fX19fX19fX19fXwogIHwgbWlncmF0aW9u
-X3ZlcnNpb24gfCAgICAgfCBtaWdyYXRpb25fdmVyc2lvbiB8LS0+Y2hlY2sgbWlncmF0aW9uCiAg
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0gICBjb21wYXRp
-YmlsaXR5CiAgICBtZGV2IGRldmljZSBBICAgICAgICAgICAgICAgbWRldiBkZXZpY2UgQgoKVGhp
-cyBwYXRjaCBpcyBmb3IgbWRldiBkb2N1bWVudGF0aW9uIGFib3V0IHRoZSBzZWNvbmQgcGxhY2Ug
-KHVuZGVyCm1kZXYgZGV2aWNlIG5vZGUpCgpDYzogQWxleCBXaWxsaWFtc29uIDxhbGV4LndpbGxp
-YW1zb25AcmVkaGF0LmNvbT4KQ2M6IEVyaWsgU2t1bHRldHkgPGVza3VsdGV0QHJlZGhhdC5jb20+
-CkNjOiAiRHIuIERhdmlkIEFsYW4gR2lsYmVydCIgPGRnaWxiZXJ0QHJlZGhhdC5jb20+CkNjOiBD
-b3JuZWxpYSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT4KQ2M6ICJUaWFuLCBLZXZpbiIgPGtldmlu
-LnRpYW5AaW50ZWwuY29tPgpDYzogWmhlbnl1IFdhbmcgPHpoZW55dXdAbGludXguaW50ZWwuY29t
-PgpDYzogIldhbmcsIFpoaSBBIiA8emhpLmEud2FuZ0BpbnRlbC5jb20+CkNjOiBOZW8gSmlhIDxj
-amlhQG52aWRpYS5jb20+CkNjOiBLaXJ0aSBXYW5raGVkZSA8a3dhbmtoZWRlQG52aWRpYS5jb20+
-CkNjOiBEYW5pZWwgUC4gQmVycmFuZ8OpIDxiZXJyYW5nZUByZWRoYXQuY29tPgpDYzogQ2hyaXN0
-b3BoZSBkZSBEaW5lY2hpbiA8ZGluZWNoaW5AcmVkaGF0LmNvbT4KClNpZ25lZC1vZmYtYnk6IFlh
-biBaaGFvIDx5YW4ueS56aGFvQGludGVsLmNvbT4KLS0tCiAuLi4vZHJpdmVyLWFwaS92ZmlvLW1l
-ZGlhdGVkLWRldmljZS5yc3QgICAgICAgfCA3MCArKysrKysrKysrKysrKysrKysrCiAxIGZpbGUg
-Y2hhbmdlZCwgNzAgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZHJp
-dmVyLWFwaS92ZmlvLW1lZGlhdGVkLWRldmljZS5yc3QgYi9Eb2N1bWVudGF0aW9uL2RyaXZlci1h
-cGkvdmZpby1tZWRpYXRlZC1kZXZpY2UucnN0CmluZGV4IDJkMWYzYzBmM2M4Zi4uZWZiYWRmZDUx
-YjdlIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvdmZpby1tZWRpYXRlZC1k
-ZXZpY2UucnN0CisrKyBiL0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS92ZmlvLW1lZGlhdGVkLWRl
-dmljZS5yc3QKQEAgLTM4Myw2ICszODMsNyBAQCBEaXJlY3RvcmllcyBhbmQgRmlsZXMgVW5kZXIg
-dGhlIHN5c2ZzIGZvciBFYWNoIG1kZXYgRGV2aWNlCiAgICAgICAgICB8LS0tIHJlbW92ZQogICAg
-ICAgICAgfC0tLSBtZGV2X3R5cGUge2xpbmsgdG8gaXRzIHR5cGV9CiAgICAgICAgICB8LS0tIHZl
-bmRvci1zcGVjaWZpYy1hdHRyaWJ1dGVzIFtvcHRpb25hbF0KKyAgICAgICAgIHwtLS0gbWlncmF0
-aW9uX3ZlcmlvbiBbb3B0aW9uYWxdCiAKICogcmVtb3ZlICh3cml0ZSBvbmx5KQogCkBAIC0zOTQs
-NiArMzk1LDc1IEBAIEV4YW1wbGU6OgogCiAJIyBlY2hvIDEgPiAvc3lzL2J1cy9tZGV2L2Rldmlj
-ZXMvJG1kZXZfVVVJRC9yZW1vdmUKIAorKiBtaWdyYXRpb25fdmVyc2lvbiAocncsIG9wdGlvbmFs
-KQorICBJdCBpcyB1c2VkIHRvIGNoZWNrIG1pZ3JhdGlvbiBjb21wYXRpYmlsaXR5IGJldHdlZW4g
-dHdvIG1kZXYgZGV2aWNlcy4KKyAgQWJzZW5jZSBvZiB0aGlzIGF0dHJpYnV0ZSBtZWFucyB0aGUg
-bWRldiBkZXZpY2UgZG9lcyBub3Qgc3VwcG9ydCBtaWdyYXRpb24uCisKKyAgVGhpcyBhdHRyaWJ1
-dGUgcHJvdmlkZXMgYSB3YXkgdG8gY2hlY2sgbWlncmF0aW9uIGNvbXBhdGliaWxpdHkgYmV0d2Vl
-biB0d28KKyAgbWRldiBkZXZpY2VzIGZyb20gdXNlcnNwYWNlIGFmdGVyIGRldmljZSBjcmVhdGVk
-LiBUaGUgaW50ZW5kZWQgdXNhZ2UgaXMKKyAgZm9yIHVzZXJzcGFjZSB0byByZWFkIHRoZSBtaWdy
-YXRpb25fdmVyc2lvbiBhdHRyaWJ1dGUgZnJvbSBvbmUgbWRldiBkZXZpY2UgYW5kCisgIHRoZW4g
-d3JpdGluZyB0aGF0IHZhbHVlIHRvIHRoZSBtaWdyYXRpb25fdmVyc2lvbiBhdHRyaWJ1dGUgb2Yg
-dGhlIG90aGVyIG1kZXYKKyAgZGV2aWNlLiBUaGUgc2Vjb25kIG1kZXYgZGV2aWNlIGluZGljYXRl
-cyBjb21wYXRpYmlsaXR5IHZpYSB0aGUgcmV0dXJuIGNvZGUgb2YKKyAgdGhlIHdyaXRlIG9wZXJh
-dGlvbi4gVGhpcyBtYWtlcyBjb21wYXRpYmlsaXR5IGJldHdlZW4gbWRldiBkZXZpY2VzIGNvbXBs
-ZXRlbHkKKyAgdmVuZG9yLWRlZmluZWQgYW5kIG9wYXF1ZSB0byB1c2Vyc3BhY2UuIFVzZXJzcGFj
-ZSBzaG91bGQgZG8gbm90aGluZyBtb3JlCisgIHRoYW4gdXNlIHRoZSBtaWdyYXRpb25fdmVyc2lv
-biBhdHRyaWJ1dGUgdG8gY29uZmlybSBzb3VyY2UgdG8gdGFyZ2V0CisgIGNvbXBhdGliaWxpdHku
-CisKKyAgUmVhZGluZy9Xcml0aW5nIEF0dHJpYnV0ZSBEYXRhOgorICByZWFkKDIpIHdpbGwgZmFp
-bCBpZiBhIG1kZXYgZGV2aWNlIGRvZXMgbm90IHN1cHBvcnQgbWlncmF0aW9uIGFuZCBvdGhlcndp
-c2UKKyAgICAgICAgc3VjY2VlZCBhbmQgcmV0dXJuIG1pZ3JhdGlvbl92ZXJzaW9uIHN0cmluZyBv
-ZiB0aGUgbWRldiBkZXZpY2UuCisKKyAgICAgICAgVGhpcyBtaWdyYXRpb25fdmVyc2lvbiBzdHJp
-bmcgaXMgdmVuZG9yIGRlZmluZWQgYW5kIG9wYXF1ZSB0byB0aGUKKyAgICAgICAgdXNlcnNwYWNl
-LiBWZW5kb3IgaXMgZnJlZSB0byBpbmNsdWRlIHdoYXRldmVyIHRoZXkgZmVlbCBpcyByZWxldmFu
-dC4KKyAgICAgICAgZS5nLiA8cGNpaWQgb2YgcGFyZW50IGRldmljZT4tPHNvZnR3YXJlIHZlcnNp
-b24+LgorCisgICAgICAgIFJlc3RyaWN0aW9ucyBvbiB0aGlzIG1pZ3JhdGlvbl92ZXJzaW9uIHN0
-cmluZzoKKyAgICAgICAgICAgIDEuIEl0IHNob3VsZCBvbmx5IGNvbnRhaW4gYXNjaWkgY2hhcmFj
-dGVycworICAgICAgICAgICAgMi4gTUFYIExlbmd0aCBpcyBQQVRIX01BWCAoNDA5NikKKworICB3
-cml0ZSgyKSBleHBlY3RzIG1pZ3JhdGlvbl92ZXJzaW9uIHN0cmluZyBvZiBzb3VyY2UgbWRldiBk
-ZXZpY2UsIGFuZCB3aWxsCisgICAgICAgICBzdWNjZWVkIGlmIGl0IGlzIGRldGVybWluZWQgdG8g
-YmUgY29tcGF0aWJsZSBhbmQgb3RoZXJ3aXNlIGZhaWwgd2l0aAorICAgICAgICAgdmVuZG9yIHNw
-ZWNpZmljIGVycm5vLgorCisgIEVycm5vOgorICAtQW4gZXJybm8gb24gcmVhZCgyKSBpbmRpY2F0
-ZXMgdGhlIG1kZXYgZGV2aWNlZG9lcyBub3Qgc3VwcG9ydCBtaWdyYXRpb247CisgIC1BbiBlcnJu
-byBvbiB3cml0ZSgyKSBpbmRpY2F0ZXMgdGhlIG1kZXYgZGV2aWNlcyBhcmUgaW5jb21wYXRpYmxl
-IG9yIHRoZQorICAgdGFyZ2V0IGRvZXNuJ3Qgc3VwcG9ydCBtaWdyYXRpb24uCisgIFZlbmRvciBk
-cml2ZXIgaXMgZnJlZSB0byBkZWZpbmUgc3BlY2lmaWMgZXJybm8gYW5kIGlzIHN1Z2dlc3RlZCB0
-bworICBwcmludCBkZXRhaWxlZCBlcnJvciBpbiBzeXNsb2cgZm9yIGRpYWdub3NlIHB1cnBvc2Uu
-CisKKyAgVXNlcnNwYWNlIHNob3VsZCB0cmVhdCBBTlkgb2YgYmVsb3cgY29uZGl0aW9ucyBhcyB0
-d28gbWRldiBkZXZpY2VzIG5vdAorICBjb21wYXRpYmxlOgorICAoMSkgYW55IG9uZSBvZiB0aGUg
-dHdvIG1kZXYgZGV2aWNlcyBkb2VzIG5vdCBoYXZlIGEgbWlncmF0aW9uX3ZlcnNpb24KKyAgYXR0
-cmlidXRlCisgICgyKSBlcnJvciB3aGVuIHJlYWRpbmcgZnJvbSBtaWdyYXRpb25fdmVyc2lvbiBh
-dHRyaWJ1dGUgb2Ygb25lIG1kZXYgZGV2aWNlCisgICgzKSBlcnJvciB3aGVuIHdyaXRpbmcgbWln
-cmF0aW9uX3ZlcnNpb24gc3RyaW5nIG9mIG9uZSBtZGV2IGRldmljZSB0bworICBtaWdyYXRpb25f
-dmVyc2lvbiBhdHRyaWJ1dGUgb2YgdGhlIG90aGVyIG1kZXYgZGV2aWNlCisKKyAgVXNlcnNwYWNl
-IHNob3VsZCByZWdhcmQgdHdvIG1kZXYgZGV2aWNlcyBjb21wYXRpYmxlIHdoZW4gQUxMIG9mIGJl
-bG93CisgIGNvbmRpdGlvbnMgYXJlIG1ldDoKKyAgKDEpIHN1Y2Nlc3Mgd2hlbiByZWFkaW5nIGZy
-b20gbWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlIG9mIG9uZSBtZGV2IGRldmljZS4KKyAgKDIp
-IHN1Y2Nlc3Mgd2hlbiB3cml0aW5nIG1pZ3JhdGlvbl92ZXJzaW9uIHN0cmluZyBvZiBvbmUgbWRl
-diBkZXZpY2UgdG8KKyAgbWlncmF0aW9uX3ZlcnNpb24gYXR0cmlidXRlIG9mIHRoZSBvdGhlciBt
-ZGV2IGRldmljZS4KKworICBFeGFtcGxlIFVzYWdlOgorICAoMSkgUmV0cmlldmUgdGhlIG1kZXYg
-c291cmNlIG1pZ3JhdGlvbl92ZXJzaW9uOgorCisgICMgY2F0IC9zeXMvYnVzL21kZXYvZGV2aWNl
-cy8kbWRldl9VVUlEMS9taWdyYXRpb25fdmVyc2lvbgorCisgIElmIHJlYWRpbmcgdGhlIHNvdXJj
-ZSBtaWdyYXRpb25fdmVyc2lvbiBnZW5lcmF0ZXMgYW4gZXJyb3IsIG1pZ3JhdGlvbiBpcyBub3QK
-KyAgcG9zc2libGUuCisKKyAgKDIpIFRlc3Qgc291cmNlIG1pZ3JhdGlvbl92ZXJzaW9uIGF0IHRh
-cmdldDoKKworICBHaXZlbiBhIG1pZ3JhdGlvbl92ZXJzaW9uIGFzIG91dGxpbmVkIGFib3ZlLCBp
-dHMgY29tcGF0aWJpbGl0eSB0byBhbgorICBpbnN0YW50aWF0ZWQgZGV2aWNlIG9mIHRoZSBzYW1l
-IG1kZXYgdHlwZSBjYW4gYmUgdGVzdGVkIGFzOgorICAjIGVjaG8gJFZFUlNJT04gPiAvc3lzL2J1
-cy9tZGV2L2RldmljZXMvJG1kZXZfVVVJRDIvbWlncmF0aW9uX3ZlcnNpb24KKworICBJZiB0aGlz
-IHdyaXRlIGZhaWxzLCB0aGUgc291cmNlIGFuZCB0YXJnZXQgbWlncmF0aW9uIHZlcnNpb25zIGFy
-ZSBub3QKKyAgY29tcGF0aWJsZSBvciB0aGUgdGFyZ2V0IGRvZXMgbm90IHN1cHBvcnQgbWlncmF0
-aW9uLgorCisKIE1lZGlhdGVkIGRldmljZSBIb3QgcGx1ZwogLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tCiAKLS0gCjIuMTcuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9pbnRlbC1ndnQtZGV2Cg==
+mdev device par of migration_version attribute for Intel vGPU is rw.
+It is located at
+/sys/bus/pci/devices/0000\:00\:02.0/$mdev_UUID/migration_version,
+or /sys/bus/mdev/devices/$mdev_UUID/migration_version
+
+It's used to check migration compatibility for two vGPUs.
+migration_version string is defined by vendor driver and opaque to
+userspace.
+
+For Intel vGPU of gen8 and gen9, the format of migration_version string
+is:
+  <vendor id>-<device id>-<vgpu type>-<software version>.
+
+For future software versions, e.g. when vGPUs have aggregations, it may
+also include aggregation count into migration_version string of a vGPU.
+
+For future platforms, the format of migration_version string is to be
+expanded to include more meta data to identify Intel vGPUs for live
+migration compatibility check
+
+For old platforms, and for GVT not supporting vGPU live migration
+feature, -ENODEV is returned on read(2)/write(2) of migration_version
+attribute.
+For vGPUs running old GVT who do not expose migration_version
+attribute, live migration is regarded as not supported for those vGPUs.
+
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Cc: Erik Skultety <eskultet@redhat.com>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Cornelia Huck <cohuck@redhat.com>
+Cc: "Tian, Kevin" <kevin.tian@intel.com>
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: "Wang, Zhi A" <zhi.a.wang@intel.com>
+c: Neo Jia <cjia@nvidia.com>
+Cc: Kirti Wankhede <kwankhede@nvidia.com>
+
+Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/gvt.h   |  2 ++
+ drivers/gpu/drm/i915/gvt/kvmgt.c | 55 ++++++++++++++++++++++++++++++++
+ 2 files changed, 57 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
+index b26e42596565..664efc83f82e 100644
+--- a/drivers/gpu/drm/i915/gvt/gvt.h
++++ b/drivers/gpu/drm/i915/gvt/gvt.h
+@@ -205,6 +205,8 @@ struct intel_vgpu {
+ 	struct idr object_idr;
+ 
+ 	u32 scan_nonprivbb;
++
++	char *migration_version;
+ };
+ 
+ static inline void *intel_vgpu_vdev(struct intel_vgpu *vgpu)
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 2f2d4c40f966..4903599cb0ef 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -728,8 +728,13 @@ static int intel_vgpu_create(struct kobject *kobj, struct mdev_device *mdev)
+ 	kvmgt_vdev(vgpu)->mdev = mdev;
+ 	mdev_set_drvdata(mdev, vgpu);
+ 
++	vgpu->migration_version =
++		intel_gvt_get_vfio_migration_version(gvt, type->name);
++
+ 	gvt_dbg_core("intel_vgpu_create succeeded for mdev: %s\n",
+ 		     dev_name(mdev_dev(mdev)));
++
++
+ 	ret = 0;
+ 
+ out:
+@@ -744,6 +749,7 @@ static int intel_vgpu_remove(struct mdev_device *mdev)
+ 		return -EBUSY;
+ 
+ 	intel_gvt_ops->vgpu_destroy(vgpu);
++	kfree(vgpu->migration_version);
+ 	return 0;
+ }
+ 
+@@ -1964,8 +1970,57 @@ static const struct attribute_group intel_vgpu_group = {
+ 	.attrs = intel_vgpu_attrs,
+ };
+ 
++static ssize_t migration_version_show(struct device *dev,
++				      struct device_attribute *attr, char *buf)
++{
++	struct mdev_device *mdev = mdev_from_dev(dev);
++	struct intel_vgpu *vgpu = mdev_get_drvdata(mdev);
++
++	if (!vgpu->migration_version) {
++		gvt_vgpu_err("Migration not supported on this vgpu. Please search previous detailed log\n");
++		return -ENODEV;
++	}
++
++	return snprintf(buf, strlen(vgpu->migration_version) + 2,
++			"%s\n", vgpu->migration_version);
++
++}
++
++static ssize_t migration_version_store(struct device *dev,
++				       struct device_attribute *attr,
++				       const char *buf, size_t count)
++{
++	struct mdev_device *mdev = mdev_from_dev(dev);
++	struct intel_vgpu *vgpu = mdev_get_drvdata(mdev);
++	struct intel_gvt *gvt = vgpu->gvt;
++	int ret = 0;
++
++	if (!vgpu->migration_version) {
++		gvt_vgpu_err("Migration not supported on this vgpu. Please search previous detailed log\n");
++		return -ENODEV;
++	}
++
++	ret = intel_gvt_check_vfio_migration_version(gvt,
++			vgpu->migration_version, buf);
++	return (ret < 0 ? ret : count);
++}
++
++static DEVICE_ATTR_RW(migration_version);
++
++static struct attribute *intel_vgpu_migration_attrs[] = {
++	&dev_attr_migration_version.attr,
++	NULL,
++};
++/* this group has no name, so will be displayed
++ * immediately under sysfs node of the mdev device
++ */
++static const struct attribute_group intel_vgpu_group_empty_name = {
++	.attrs = intel_vgpu_migration_attrs,
++};
++
+ static const struct attribute_group *intel_vgpu_groups[] = {
+ 	&intel_vgpu_group,
++	&intel_vgpu_group_empty_name,
+ 	NULL,
+ };
+ 
+-- 
+2.17.1
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
