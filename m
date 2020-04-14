@@ -2,41 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93A5A1A85B8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Apr 2020 18:51:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 158201A8793
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Apr 2020 19:34:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 43CDC6E4F9;
-	Tue, 14 Apr 2020 16:51:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AF0526E14D;
+	Tue, 14 Apr 2020 17:33:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 53F3B6E4F9
+X-Greylist: delayed 626 seconds by postgrey-1.36 at gabe;
+ Tue, 14 Apr 2020 17:33:57 UTC
+Received: from st43p00im-zteg10071901.me.com (st43p00im-zteg10071901.me.com
+ [17.58.63.169])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BE6846E14D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Apr 2020 16:51:01 +0000 (UTC)
-IronPort-SDR: ZckVvQZEW+gkSVs/8KsRbfaYwBIHduTGlKk2VFVKUL3rRjMEotqwFtM8BO4s+KmCxKfRysc7Pb
- +8u06P12hMYw==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2020 09:51:00 -0700
-IronPort-SDR: SGvTUUdu8GGCCI/TieJYggSiOgQ3h+nij/3HMbIwPBeWe8Et0DFLYMj2Xbsu9bOYZ9Sg+HTXTA
- kHlY9ZaCu5tA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,383,1580803200"; d="scan'208";a="256572104"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 14 Apr 2020 09:50:59 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jOOm2-0004Ij-6v; Wed, 15 Apr 2020 00:50:58 +0800
-Date: Wed, 15 Apr 2020 00:50:02 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-next] BUILD SUCCESS
- 07f2fee91937283fddebd4b2f666da024738e84c
-Message-ID: <5e95e9ba.u+eRT3MK/0bYQWpI%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Tue, 14 Apr 2020 17:33:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
+ s=1a1hai; t=1586885010;
+ bh=pgpdDvxlCOC0C5cM+qe54NNIvdbiKkbQaKwd7a+P3as=;
+ h=From:Subject:Date:Message-id:Content-Type;
+ b=DAejVkqkopnNqwOzW/g4qqIrxW34gW4BciQc1LFhOgE3Hj/mVcvdgQq13PPfKi06t
+ uHfgo0mGwwBwJTmsMn7/EKFvjdJ5GISKd/VgbaPq972TC00wDhItoX/F6j/T/qN8cQ
+ u617+vxd4zriaCC+DxFJCr3KGXeBk1SLbXqVUWTjYNcIkerREolSGa4M4yXuWUrn3O
+ wBXG0DrGgmvrPMTjwNlxLCjhg/HkIkrDig8kbALUKeJ9wCwCCTG/9oTPjLdr+aRTlJ
+ ReUBRPoxsDT74FRZMsEFOBIPt/7RmlhvlPGw+s/4N5muwzk3HMy7tMDwZUvld5cyx+
+ NvXbl5sLQFb9A==
+Received: from st43p00im-zteg10071901.me.com (st43p00im-asmtpout.me.com
+ [10.76.193.7])
+ by st43p00im-zteg10071901.me.com (Postfix) with ESMTPS id 207DCD819E8;
+ Tue, 14 Apr 2020 17:23:30 +0000 (UTC)
+Received: from localhost (st13p29im-ztdg17341701.me.com [17.163.195.178])
+ by st43p00im-zteg10071901.me.com (Postfix) with ESMTP id DDC4AD819FB;
+ Tue, 14 Apr 2020 17:23:29 +0000 (UTC)
+From: Bertrand Gabriiel <bertrandgabriel121@icloud.com>
+Subject: RE:
+Date: Tue, 14 Apr 2020 17:22:47 -0000
+X-Mailer: iCloud MailClient2005Project76
+ MailServer2006B801.10000-Famine2006-0-d0984de47dd0
+Message-id: <8e29dd32-1e43-442c-881e-154849109c90@me.com>
 MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-14_08:2020-04-14,
+ 2020-04-14 signatures=0
+X-Proofpoint-Spam-Details: rule=probablespam policy=default score=58
+ suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=58 clxscore=1011 mlxscore=58
+ mlxlogscore=-12 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-2002250000 definitions=main-2004140131
+X-Suspected-Spam: true
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,182 +61,238 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0625002240=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-next
-branch HEAD: 07f2fee91937283fddebd4b2f666da024738e84c  i915/gvt: remove unused xen bits
 
-elapsed time: 481m
+--===============0625002240==
+Content-Type: multipart/alternative; boundary=Apple-Webmail-42--14d99e3f-2d0e-4397-b4f7-c313adb03563
 
-configs tested: 153
-configs skipped: 0
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--Apple-Webmail-42--14d99e3f-2d0e-4397-b4f7-c313adb03563
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+    charset=utf-8;
+    format=flowed
 
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-sparc                            allyesconfig
-sh                                allnoconfig
-xtensa                       common_defconfig
-ia64                             allyesconfig
-h8300                       h8s-sim_defconfig
-powerpc                       ppc64_defconfig
-riscv                               defconfig
-ia64                                defconfig
-powerpc                             defconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                             allyesconfig
-i386                              debian-10.3
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                          iss_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-parisc                generic-32bit_defconfig
-parisc                generic-64bit_defconfig
-x86_64               randconfig-a001-20200414
-x86_64               randconfig-a002-20200414
-x86_64               randconfig-a003-20200414
-i386                 randconfig-a001-20200414
-i386                 randconfig-a002-20200414
-i386                 randconfig-a003-20200414
-alpha                randconfig-a001-20200414
-m68k                 randconfig-a001-20200414
-nds32                randconfig-a001-20200414
-parisc               randconfig-a001-20200414
-riscv                randconfig-a001-20200414
-c6x                  randconfig-a001-20200414
-h8300                randconfig-a001-20200414
-microblaze           randconfig-a001-20200414
-nios2                randconfig-a001-20200414
-sparc64              randconfig-a001-20200414
-csky                 randconfig-a001-20200414
-openrisc             randconfig-a001-20200414
-s390                 randconfig-a001-20200414
-sh                   randconfig-a001-20200414
-xtensa               randconfig-a001-20200414
-x86_64               randconfig-b001-20200414
-x86_64               randconfig-b002-20200414
-x86_64               randconfig-b003-20200414
-i386                 randconfig-b001-20200414
-i386                 randconfig-b002-20200414
-i386                 randconfig-b003-20200414
-x86_64               randconfig-c001-20200414
-x86_64               randconfig-c002-20200414
-x86_64               randconfig-c003-20200414
-i386                 randconfig-c001-20200414
-i386                 randconfig-c002-20200414
-i386                 randconfig-c003-20200414
-x86_64               randconfig-f001-20200414
-x86_64               randconfig-f002-20200414
-x86_64               randconfig-f003-20200414
-i386                 randconfig-f001-20200414
-i386                 randconfig-f002-20200414
-i386                 randconfig-f003-20200414
-x86_64               randconfig-g001-20200414
-x86_64               randconfig-g002-20200414
-x86_64               randconfig-g003-20200414
-i386                 randconfig-g001-20200414
-i386                 randconfig-g002-20200414
-i386                 randconfig-g003-20200414
-x86_64               randconfig-h001-20200414
-x86_64               randconfig-h002-20200414
-x86_64               randconfig-h003-20200414
-i386                 randconfig-h001-20200414
-i386                 randconfig-h002-20200414
-i386                 randconfig-h003-20200414
-arc                  randconfig-a001-20200414
-arm                  randconfig-a001-20200414
-arm64                randconfig-a001-20200414
-ia64                 randconfig-a001-20200414
-powerpc              randconfig-a001-20200414
-sparc                randconfig-a001-20200414
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-sh                               allmodconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
+Dear Friend,=0A=0AI sent you a mail earlier but not sure if you received i=
+t, kindly=C2=A0=0Acheck your email and get back to me for I have a very ur=
+gent=C2=A0=0Ainformation to pass to you.=0A=0ABest regards,=0ABertrand Gab=
+riel
+--Apple-Webmail-42--14d99e3f-2d0e-4397-b4f7-c313adb03563
+Content-Type: multipart/related;
+    type="text/html";
+    boundary=Apple-Webmail-86--14d99e3f-2d0e-4397-b4f7-c313adb03563
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+
+--Apple-Webmail-86--14d99e3f-2d0e-4397-b4f7-c313adb03563
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+    charset=utf-8;
+
+<html><body><div><span data-mce-style=3D"color: #000000; font-family: SFNSText, 'Helve=
+tica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-style: nor=
+mal; font-variant-ligatures: normal; font-variant-caps: normal; font-weigh=
+t: 300; letter-spacing: normal; orphans: 2; text-align: start; text-indent=
+: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing:=
+ 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-deco=
+ration-style: initial; text-decoration-color: initial; display: inline !im=
+portant; float: none;" style=3D"color: rgb(0, 0, 0); font-family: SFNSText=
+, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15p=
+x; font-style: normal; font-variant-ligatures: normal; font-variant-caps: =
+normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align: =
+start; text-indent: 0px; text-transform: none; white-space: normal; widows=
+: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-st=
+yle: initial; text-decoration-color: initial; background-color: rgb(255, 2=
+55, 255); float: none; display: inline !important;">Dear Friend,</span><br=
+ data-mce-style=3D"color: #000000; font-family: SFNSText, 'Helvetica Neue'=
+, Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-=
+variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; le=
+tter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; tex=
+t-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -web=
+kit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-sty=
+le: initial; text-decoration-color: initial;" style=3D"color: rgb(0, 0, 0)=
+; font-family: SFNSText, &quot;Helvetica Neue&quot;, Helvetica, Arial, san=
+s-serif; font-size: 15px; font-style: normal; font-variant-ligatures: norm=
+al; font-variant-caps: normal; font-weight: 300; letter-spacing: normal; o=
+rphans: 2; text-align: start; text-indent: 0px; text-transform: none; whit=
+e-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: =
+0px; text-decoration-style: initial; text-decoration-color: initial; backg=
+round-color: rgb(255, 255, 255);"><br data-mce-style=3D"color: #000000; fo=
+nt-family: SFNSText, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-=
+size: 15px; font-style: normal; font-variant-ligatures: normal; font-varia=
+nt-caps: normal; font-weight: 300; letter-spacing: normal; orphans: 2; tex=
+t-align: start; text-indent: 0px; text-transform: none; white-space: norma=
+l; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; backgroun=
+d-color: #ffffff; text-decoration-style: initial; text-decoration-color: i=
+nitial;" style=3D"color: rgb(0, 0, 0); font-family: SFNSText, &quot;Helvet=
+ica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px; font-style:=
+ normal; font-variant-ligatures: normal; font-variant-caps: normal; font-w=
+eight: 300; letter-spacing: normal; orphans: 2; text-align: start; text-in=
+dent: 0px; text-transform: none; white-space: normal; widows: 2; word-spac=
+ing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; =
+text-decoration-color: initial; background-color: rgb(255, 255, 255);"><sp=
+an data-mce-style=3D"color: #000000; font-family: SFNSText, 'Helvetica Neu=
+e', Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; fon=
+t-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; t=
+ext-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -w=
+ebkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-s=
+tyle: initial; text-decoration-color: initial; display: inline !important;=
+ float: none;" style=3D"color: rgb(0, 0, 0); font-family: SFNSText, &quot;=
+Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px; font-=
+style: normal; font-variant-ligatures: normal; font-variant-caps: normal; =
+font-weight: 300; letter-spacing: normal; orphans: 2; text-align: start; t=
+ext-indent: 0px; text-transform: none; white-space: normal; widows: 2; wor=
+d-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: ini=
+tial; text-decoration-color: initial; background-color: rgb(255, 255, 255)=
+; float: none; display: inline !important;">I sent you a mail earlier but =
+not sure if you received it, kindly<span>&nbsp;</span></span><br data-mce-=
+style=3D"color: #000000; font-family: SFNSText, 'Helvetica Neue', Helvetic=
+a, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-li=
+gatures: normal; font-variant-caps: normal; font-weight: 300; letter-spaci=
+ng: normal; orphans: 2; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-s=
+troke-width: 0px; background-color: #ffffff; text-decoration-style: initia=
+l; text-decoration-color: initial;" style=3D"color: rgb(0, 0, 0); font-fam=
+ily: SFNSText, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; f=
+ont-size: 15px; font-style: normal; font-variant-ligatures: normal; font-v=
+ariant-caps: normal; font-weight: 300; letter-spacing: normal; orphans: 2;=
+ text-align: start; text-indent: 0px; text-transform: none; white-space: n=
+ormal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-=
+decoration-style: initial; text-decoration-color: initial; background-colo=
+r: rgb(255, 255, 255);"><span data-mce-style=3D"color: #000000; font-famil=
+y: SFNSText, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15=
+px; font-style: normal; font-variant-ligatures: normal; font-variant-caps:=
+ normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align:=
+ start; text-indent: 0px; text-transform: none; white-space: normal; widow=
+s: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color:=
+ #ffffff; text-decoration-style: initial; text-decoration-color: initial; =
+display: inline !important; float: none;" style=3D"color: rgb(0, 0, 0); fo=
+nt-family: SFNSText, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-se=
+rif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; =
+font-variant-caps: normal; font-weight: 300; letter-spacing: normal; orpha=
+ns: 2; text-align: start; text-indent: 0px; text-transform: none; white-sp=
+ace: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;=
+ text-decoration-style: initial; text-decoration-color: initial; backgroun=
+d-color: rgb(255, 255, 255); float: none; display: inline !important;">che=
+ck your email and get back to me for I have a very urgent<span>&nbsp;</spa=
+n></span><br data-mce-style=3D"color: #000000; font-family: SFNSText, 'Hel=
+vetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-style: n=
+ormal; font-variant-ligatures: normal; font-variant-caps: normal; font-wei=
+ght: 300; letter-spacing: normal; orphans: 2; text-align: start; text-inde=
+nt: 0px; text-transform: none; white-space: normal; widows: 2; word-spacin=
+g: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-de=
+coration-style: initial; text-decoration-color: initial;" style=3D"color: =
+rgb(0, 0, 0); font-family: SFNSText, &quot;Helvetica Neue&quot;, Helvetica=
+, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-lig=
+atures: normal; font-variant-caps: normal; font-weight: 300; letter-spacin=
+g: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform=
+: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-st=
+roke-width: 0px; text-decoration-style: initial; text-decoration-color: in=
+itial; background-color: rgb(255, 255, 255);"><span data-mce-style=3D"colo=
+r: #000000; font-family: SFNSText, 'Helvetica Neue', Helvetica, Arial, san=
+s-serif; font-size: 15px; font-style: normal; font-variant-ligatures: norm=
+al; font-variant-caps: normal; font-weight: 300; letter-spacing: normal; o=
+rphans: 2; text-align: start; text-indent: 0px; text-transform: none; whit=
+e-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: =
+0px; background-color: #ffffff; text-decoration-style: initial; text-decor=
+ation-color: initial; display: inline !important; float: none;" style=3D"c=
+olor: rgb(0, 0, 0); font-family: SFNSText, &quot;Helvetica Neue&quot;, Hel=
+vetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-varia=
+nt-ligatures: normal; font-variant-caps: normal; font-weight: 300; letter-=
+spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-tra=
+nsform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-t=
+ext-stroke-width: 0px; text-decoration-style: initial; text-decoration-col=
+or: initial; background-color: rgb(255, 255, 255); float: none; display: i=
+nline !important;">information to pass to you.</span><br data-mce-style=3D=
+"color: #000000; font-family: SFNSText, 'Helvetica Neue', Helvetica, Arial=
+, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures:=
+ normal; font-variant-caps: normal; font-weight: 300; letter-spacing: norm=
+al; orphans: 2; text-align: start; text-indent: 0px; text-transform: none;=
+ white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-wi=
+dth: 0px; background-color: #ffffff; text-decoration-style: initial; text-=
+decoration-color: initial;" style=3D"color: rgb(0, 0, 0); font-family: SFN=
+SText, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size=
+: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-c=
+aps: normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-al=
+ign: start; text-indent: 0px; text-transform: none; white-space: normal; w=
+idows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decorati=
+on-style: initial; text-decoration-color: initial; background-color: rgb(2=
+55, 255, 255);"><br data-mce-style=3D"color: #000000; font-family: SFNSTex=
+t, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-s=
+tyle: normal; font-variant-ligatures: normal; font-variant-caps: normal; f=
+ont-weight: 300; letter-spacing: normal; orphans: 2; text-align: start; te=
+xt-indent: 0px; text-transform: none; white-space: normal; widows: 2; word=
+-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; =
+text-decoration-style: initial; text-decoration-color: initial;" style=3D"=
+color: rgb(0, 0, 0); font-family: SFNSText, &quot;Helvetica Neue&quot;, He=
+lvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; font-weight: 300; letter=
+-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-tr=
+ansform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-=
+text-stroke-width: 0px; text-decoration-style: initial; text-decoration-co=
+lor: initial; background-color: rgb(255, 255, 255);"><span data-mce-style=3D=
+"color: #000000; font-family: SFNSText, 'Helvetica Neue', Helvetica, Arial=
+, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures:=
+ normal; font-variant-caps: normal; font-weight: 300; letter-spacing: norm=
+al; orphans: 2; text-align: start; text-indent: 0px; text-transform: none;=
+ white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-wi=
+dth: 0px; background-color: #ffffff; text-decoration-style: initial; text-=
+decoration-color: initial; display: inline !important; float: none;" style=
+=3D"color: rgb(0, 0, 0); font-family: SFNSText, &quot;Helvetica Neue&quot;=
+, Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-=
+variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; le=
+tter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; tex=
+t-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -web=
+kit-text-stroke-width: 0px; text-decoration-style: initial; text-decoratio=
+n-color: initial; background-color: rgb(255, 255, 255); float: none; displ=
+ay: inline !important;">Best regards,</span><br data-mce-style=3D"color: #=
+000000; font-family: SFNSText, 'Helvetica Neue', Helvetica, Arial, sans-se=
+rif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; =
+font-variant-caps: normal; font-weight: 300; letter-spacing: normal; orpha=
+ns: 2; text-align: start; text-indent: 0px; text-transform: none; white-sp=
+ace: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;=
+ background-color: #ffffff; text-decoration-style: initial; text-decoratio=
+n-color: initial;" style=3D"color: rgb(0, 0, 0); font-family: SFNSText, &q=
+uot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px; f=
+ont-style: normal; font-variant-ligatures: normal; font-variant-caps: norm=
+al; font-weight: 300; letter-spacing: normal; orphans: 2; text-align: star=
+t; text-indent: 0px; text-transform: none; white-space: normal; widows: 2;=
+ word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style:=
+ initial; text-decoration-color: initial; background-color: rgb(255, 255, =
+255);"><span data-mce-style=3D"color: #000000; font-family: SFNSText, 'Hel=
+vetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-style: n=
+ormal; font-variant-ligatures: normal; font-variant-caps: normal; font-wei=
+ght: 300; letter-spacing: normal; orphans: 2; text-align: start; text-inde=
+nt: 0px; text-transform: none; white-space: normal; widows: 2; word-spacin=
+g: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-de=
+coration-style: initial; text-decoration-color: initial; display: inline !=
+important; float: none;" style=3D"color: rgb(0, 0, 0); font-family: SFNSTe=
+xt, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 1=
+5px; font-style: normal; font-variant-ligatures: normal; font-variant-caps=
+: normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align=
+: start; text-indent: 0px; text-transform: none; white-space: normal; wido=
+ws: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-=
+style: initial; text-decoration-color: initial; background-color: rgb(255,=
+ 255, 255); float: none; display: inline !important;">Bertrand Gabriel</sp=
+an></div></body></html>
+--Apple-Webmail-86--14d99e3f-2d0e-4397-b4f7-c313adb03563--
+
+--Apple-Webmail-42--14d99e3f-2d0e-4397-b4f7-c313adb03563--
+
+
+--===============0625002240==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0625002240==--
+
