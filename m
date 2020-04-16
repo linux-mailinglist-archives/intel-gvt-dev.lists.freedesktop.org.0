@@ -1,43 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EB891AB74E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Apr 2020 07:32:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 240621AB791
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Apr 2020 07:58:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 038736E2A5;
-	Thu, 16 Apr 2020 05:32:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C39F86E2B6;
+	Thu, 16 Apr 2020 05:58:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [IPv6:2607:7c80:54:e::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 278846E22D;
- Thu, 16 Apr 2020 05:32:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=067wQeP/XsQZz7g9kDshfnJ5VToeesdhipVsn0gNrtY=; b=YibKIVswQ5pUBnsRMM6VfjsvQ8
- g4PkIfoEwbBcSGD1mLF+cQGk90fOYWm0fTmHuUNjn6GTpQXyIWjV4KoR08kg9crGiaO89xCJvC/0j
- tyOiapEMb0oHb8sAiYMe6l55EZ2juDaT/0ZiN7o50JEV4RaKsxdjS1w5hhsuNy4H3Ua1KZ+QsQ76i
- h9udkToejdlmgZPNEn3mYobJY6O79O2dzot1xmq7C1Asm8KAZ9OyZGJMK2joYCbz7VGjYLzEzOGc1
- jqkNWWfMFa/3SegvAOVFQRy65e82bVNzbrubo/KsI2n28M9QW1nzS6EMiyZ0NApYCYFDbesPY5sci
- iWGGTEsg==;
-Received: from [2001:4bb8:184:4aa1:c70:4a89:bc61:2] (helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOx8C-0003dn-CA; Thu, 16 Apr 2020 05:32:08 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: Linus Torvalds <torvalds@linux-foundation.org>,
- Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH 3/3] kernel: set USER_DS in kthread_use_mm
-Date: Thu, 16 Apr 2020 07:31:58 +0200
-Message-Id: <20200416053158.586887-4-hch@lst.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200416053158.586887-1-hch@lst.de>
-References: <20200416053158.586887-1-hch@lst.de>
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8C95D6E2B6
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 16 Apr 2020 05:58:29 +0000 (UTC)
+IronPort-SDR: fJqMnNk5/rTAXAZ0b6YdGIc0YUe4TWGphI5kknHXiAn9QRYCm+uUmhSbDLa/v69OpbNQzmlv/f
+ uqRzOQoAB4lQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2020 22:58:29 -0700
+IronPort-SDR: QY5L9RKlTE46MUK/RWk7Ogz6cN0HnSlRvEbWKV1QLyaLhX6GwUl+8Uh3X6Ky8FjsE2TNW3U1xw
+ 13WAOOSPd7Mw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,388,1580803200"; d="scan'208";a="271965281"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by orsmga002.jf.intel.com with ESMTP; 15 Apr 2020 22:58:28 -0700
+Received: from shsmsx104.ccr.corp.intel.com (10.239.4.70) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 15 Apr 2020 22:58:28 -0700
+Received: from shsmsx102.ccr.corp.intel.com ([169.254.2.138]) by
+ SHSMSX104.ccr.corp.intel.com ([169.254.5.225]) with mapi id 14.03.0439.000;
+ Thu, 16 Apr 2020 13:58:26 +0800
+From: "Zhao, Yan Y" <yan.y.zhao@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: RE: [PATCH v4 0/3] drm/i915/gvt: optimizaton on shadow context
+ population
+Thread-Topic: [PATCH v4 0/3] drm/i915/gvt: optimizaton on shadow context
+ population
+Thread-Index: AQHWEvxyRFSujJLmRkCIwB5ENtiQpqh6quSAgACW82A=
+Date: Thu, 16 Apr 2020 05:58:25 +0000
+Message-ID: <F22B14EC3CFBB843AD3E03B6B78F2C6A4C4D35CB@shsmsx102.ccr.corp.intel.com>
+References: <20200415075355.23308-1-yan.y.zhao@intel.com>
+ <20200416045711.GT11247@zhen-hp.sh.intel.com>
+In-Reply-To: <20200416045711.GT11247@zhen-hp.sh.intel.com>
+Accept-Language: en-US, zh-CN
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
 MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,174 +65,40 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Felipe Balbi <balbi@kernel.org>,
- amd-gfx@lists.freedesktop.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Felix Kuehling <Felix.Kuehling@amd.com>, linux-usb@vger.kernel.org,
- io-uring@vger.kernel.org, linux-kernel@vger.kernel.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- virtualization@lists.linux-foundation.org, linux-mm@kvack.org,
- linux-fsdevel@vger.kernel.org, Al Viro <viro@zeniv.linux.org.uk>,
- intel-gfx@lists.freedesktop.org, Alex Deucher <alexander.deucher@amd.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Wang <jasowang@redhat.com>,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Some architectures like arm64 and s390 require USER_DS to be set for
-kernel threads to access user address space, which is the whole purpose
-of kthread_use_mm, but other like x86 don't.  That has lead to a huge
-mess where some callers are fixed up once they are tested on said
-architectures, while others linger around and yet other like io_uring
-try to do "clever" optimizations for what usually is just a trivial
-asignment to a member in the thread_struct for most architectures.
-
-Make kthread_use_mm set USER_DS, and kthread_unuse_mm restore to the
-previous value instead.
-
-Signed-off-by: Christoph Hellwig <hch@lst.de>
-Acked-by: Michael S. Tsirkin <mst@redhat.com> [vhost]
----
- drivers/usb/gadget/function/f_fs.c | 4 ----
- drivers/vhost/vhost.c              | 3 ---
- fs/io-wq.c                         | 8 ++------
- fs/io_uring.c                      | 4 ----
- kernel/kthread.c                   | 6 ++++++
- 5 files changed, 8 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
-index d9e48bd7c692..a1198f4c527c 100644
---- a/drivers/usb/gadget/function/f_fs.c
-+++ b/drivers/usb/gadget/function/f_fs.c
-@@ -824,13 +824,9 @@ static void ffs_user_copy_worker(struct work_struct *work)
- 	bool kiocb_has_eventfd = io_data->kiocb->ki_flags & IOCB_EVENTFD;
- 
- 	if (io_data->read && ret > 0) {
--		mm_segment_t oldfs = get_fs();
--
--		set_fs(USER_DS);
- 		kthread_use_mm(io_data->mm);
- 		ret = ffs_copy_to_iter(io_data->buf, ret, &io_data->data);
- 		kthread_unuse_mm(io_data->mm);
--		set_fs(oldfs);
- 	}
- 
- 	io_data->kiocb->ki_complete(io_data->kiocb, ret, ret);
-diff --git a/drivers/vhost/vhost.c b/drivers/vhost/vhost.c
-index 17d598e74780..b2abfbdf3cb2 100644
---- a/drivers/vhost/vhost.c
-+++ b/drivers/vhost/vhost.c
-@@ -329,9 +329,7 @@ static int vhost_worker(void *data)
- 	struct vhost_dev *dev = data;
- 	struct vhost_work *work, *work_next;
- 	struct llist_node *node;
--	mm_segment_t oldfs = get_fs();
- 
--	set_fs(USER_DS);
- 	kthread_use_mm(dev->mm);
- 
- 	for (;;) {
-@@ -361,7 +359,6 @@ static int vhost_worker(void *data)
- 		}
- 	}
- 	kthread_unuse_mm(dev->mm);
--	set_fs(oldfs);
- 	return 0;
- }
- 
-diff --git a/fs/io-wq.c b/fs/io-wq.c
-index 748621f7391e..a5e90ac39e4d 100644
---- a/fs/io-wq.c
-+++ b/fs/io-wq.c
-@@ -169,7 +169,6 @@ static bool __io_worker_unuse(struct io_wqe *wqe, struct io_worker *worker)
- 			dropped_lock = true;
- 		}
- 		__set_current_state(TASK_RUNNING);
--		set_fs(KERNEL_DS);
- 		kthread_unuse_mm(worker->mm);
- 		mmput(worker->mm);
- 		worker->mm = NULL;
-@@ -421,14 +420,11 @@ static void io_wq_switch_mm(struct io_worker *worker, struct io_wq_work *work)
- 		mmput(worker->mm);
- 		worker->mm = NULL;
- 	}
--	if (!work->mm) {
--		set_fs(KERNEL_DS);
-+	if (!work->mm)
- 		return;
--	}
-+
- 	if (mmget_not_zero(work->mm)) {
- 		kthread_use_mm(work->mm);
--		if (!worker->mm)
--			set_fs(USER_DS);
- 		worker->mm = work->mm;
- 		/* hang on to this mm */
- 		work->mm = NULL;
-diff --git a/fs/io_uring.c b/fs/io_uring.c
-index 8a8148512da7..40f90b98a18a 100644
---- a/fs/io_uring.c
-+++ b/fs/io_uring.c
-@@ -5908,15 +5908,12 @@ static int io_sq_thread(void *data)
- 	struct io_ring_ctx *ctx = data;
- 	struct mm_struct *cur_mm = NULL;
- 	const struct cred *old_cred;
--	mm_segment_t old_fs;
- 	DEFINE_WAIT(wait);
- 	unsigned long timeout;
- 	int ret = 0;
- 
- 	complete(&ctx->completions[1]);
- 
--	old_fs = get_fs();
--	set_fs(USER_DS);
- 	old_cred = override_creds(ctx->creds);
- 
- 	timeout = jiffies + ctx->sq_thread_idle;
-@@ -6023,7 +6020,6 @@ static int io_sq_thread(void *data)
- 	if (current->task_works)
- 		task_work_run();
- 
--	set_fs(old_fs);
- 	if (cur_mm) {
- 		kthread_unuse_mm(cur_mm);
- 		mmput(cur_mm);
-diff --git a/kernel/kthread.c b/kernel/kthread.c
-index 8ed4b4fbec7c..86357cd38eb2 100644
---- a/kernel/kthread.c
-+++ b/kernel/kthread.c
-@@ -52,6 +52,7 @@ struct kthread {
- 	unsigned long flags;
- 	unsigned int cpu;
- 	void *data;
-+	mm_segment_t oldfs;
- 	struct completion parked;
- 	struct completion exited;
- #ifdef CONFIG_BLK_CGROUP
-@@ -1235,6 +1236,9 @@ void kthread_use_mm(struct mm_struct *mm)
- 
- 	if (active_mm != mm)
- 		mmdrop(active_mm);
-+
-+	to_kthread(tsk)->oldfs = get_fs();
-+	set_fs(USER_DS);
- }
- EXPORT_SYMBOL_GPL(kthread_use_mm);
- 
-@@ -1249,6 +1253,8 @@ void kthread_unuse_mm(struct mm_struct *mm)
- 	WARN_ON_ONCE(!(tsk->flags & PF_KTHREAD));
- 	WARN_ON_ONCE(!tsk->mm);
- 
-+	set_fs(to_kthread(tsk)->oldfs);
-+
- 	task_lock(tsk);
- 	sync_mm_rss(mm);
- 	tsk->mm = NULL;
--- 
-2.25.1
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBpbnRlbC1ndnQtZGV2IDxpbnRl
+bC1ndnQtZGV2LWJvdW5jZXNAbGlzdHMuZnJlZWRlc2t0b3Aub3JnPiBPbiBCZWhhbGYNCj4gT2Yg
+Wmhlbnl1IFdhbmcNCj4gU2VudDogVGh1cnNkYXksIEFwcmlsIDE2LCAyMDIwIDEyOjU3IFBNDQo+
+IFRvOiBaaGFvLCBZYW4gWSA8eWFuLnkuemhhb0BpbnRlbC5jb20+DQo+IENjOiBpbnRlbC1ndnQt
+ZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZw0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY0IDAvM10g
+ZHJtL2k5MTUvZ3Z0OiBvcHRpbWl6YXRvbiBvbiBzaGFkb3cgY29udGV4dA0KPiBwb3B1bGF0aW9u
+DQo+IA0KPiBPbiAyMDIwLjA0LjE1IDAzOjUzOjU1IC0wNDAwLCBZYW4gWmhhbyB3cm90ZToNCj4g
+PiBUaGlzIHBhdGNoc2V0IHNraXBzIHBvcHVsYXRpb24gb2Ygc2hhZG93IGNvbnRleHRzIGlmIHRo
+ZWlyDQo+ID4gY29ycmVzcG9uZGluZyBndWVzdCBjb250ZXh0cyBhcmUga25vd24gbm90IGNoYW5n
+ZWQuDQo+ID4NCj4gPiBwYXRjaCAxIGltcGxlbWVudHMgdGhlIHNraXBwaW5nIGxvZ2ljLCB0aG91
+Z2ggaW50ZW50aW9uYWxseSBkaXNhYmxlZA0KPiA+IHRoZSBza2lwLg0KPiA+IHBhdGNoIDIgY2hl
+Y2tzIGdndHQgZW50cnkgdG8gdmVyaWZ5IGd1ZXN0IGNvbnRleHRzIGFyZSBub3QgY2hhbmdlZC4N
+Cj4gPiBwYXRjaCAzIHR1cm5zIG9uIHRoZSBza2lwcGluZyBsb2dpYw0KPiA+DQo+ID4gWWFuIFpo
+YW8gKDMpOg0KPiA+ICAgZHJtL2k5MTUvZ3Z0OiBza2lwIHBvcHVsYXRlIHNoYWRvdyBjb250ZXh0
+IGlmIGd1ZXN0IGNvbnRleHQgbm90DQo+ID4gICAgIGNoYW5nZWQNCj4gPiAgIGRybS9pOTE1L2d2
+dDogY2hlY2sgZ2d0dCBlbnRyeSBtb2RpZmljYXRpb24gc3RhdHVzIGZvciBndWVzdCBjdHhzDQo+
+ID4gICBkcm0vaTkxNS9ndnQ6IHR1cm4gb24gc2hhZG93IGNvbnRleHQgc2tpcHBpbmcNCj4gPg0K
+PiA+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3R0LmMgICAgICAgfCAxNyArKysrKysrKysr
+KysrKw0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3Z0LmggICAgICAgfCAgNSArKysr
+DQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYyB8IDM1DQo+ID4gKysr
+KysrKysrKysrKysrKysrKysrKysrLS0tLQ0KPiA+ICAzIGZpbGVzIGNoYW5nZWQsIDUyIGluc2Vy
+dGlvbnMoKyksIDUgZGVsZXRpb25zKC0pDQo+ID4NCj4gDQo+IFRoZSBwYXRjaCBvcmRlciBsb29r
+cyBzdHJhbmdlIHRvIG1lLi4uIGVpdGhlciBvcmRlciBpdCBhcyAxKSBuZXcgdHJhY2sgc3RydWN0
+OyAyKQ0KPiBnZ3R0IHVwZGF0ZSB0cmFjazsgMykgYWN0dWFsIG9wdGltaXphdGlvbiBvciBqdXN0
+IGluIG9uZSBwYXRjaC4NCj4gDQoNCk9rLiBJIHByZWZlciBvbmUgc2luZ2xlIHBhdGNoIPCfmIoN
+Cg0KDQo+IC0tDQo+IE9wZW4gU291cmNlIFRlY2hub2xvZ3kgQ2VudGVyLCBJbnRlbCBsdGQuDQo+
+IA0KPiAkZ3BnIC0ta2V5c2VydmVyIHd3d2tleXMucGdwLm5ldCAtLXJlY3Yta2V5cyA0RDc4MTgy
+Nw0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwt
+Z3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQt
+ZGV2Cg==
