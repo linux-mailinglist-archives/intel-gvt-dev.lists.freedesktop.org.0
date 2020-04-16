@@ -1,41 +1,41 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD5331AB728
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Apr 2020 07:16:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5195F1AB751
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Apr 2020 07:32:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 693796E22D;
-	Thu, 16 Apr 2020 05:16:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7AB576EAC7;
+	Thu, 16 Apr 2020 05:32:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CC6DE6E22D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Apr 2020 05:16:54 +0000 (UTC)
-IronPort-SDR: KI8pmkuDiBDZ+dhhdxdVFR3GvYeAWiDyZkS7jAdNnfnQifmsiRw0SoV60Wu99oAbrqD/V0y+pr
- ysyCwP/D2H4Q==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2020 22:16:54 -0700
-IronPort-SDR: R3Bc07Yro7IexVnXKrthVhwaYGJHKYnZWAl3oHKXFJmD2GkgMhAt0/iG9v1NOxkC7ZR7nuFhIQ
- Zq1dLupByoqw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,388,1580803200"; d="scan'208";a="288771417"
-Received: from shao2-debian.sh.intel.com (HELO localhost) ([10.239.13.3])
- by fmsmga002.fm.intel.com with ESMTP; 15 Apr 2020 22:16:52 -0700
-Date: Thu, 16 Apr 2020 13:16:27 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Tina Zhang <tina.zhang@intel.com>
-Subject: [RFC PATCH intel-gvt-linux] drm/i915/gvt: intel_vgpu_set_irqs() can
- be static
-Message-ID: <20200416051626.GB3064@shao2-debian>
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:e::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6E7236E297;
+ Thu, 16 Apr 2020 05:32:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=caaBFvJdfOo1IN5qevwlJmwf935Igyt+4EcpOBF44yE=; b=XUW+Db+sJFJbLBoT8O5Wa0upCM
+ /aJd+zWh0noLirqF3SVMiXpymnjLe2pbURetrVTa/cBAFmv0kU/9CkjyOkMUX6ItRycFtWBPd8WNB
+ y43uek6dwdJWBJZQWlqcKldVjOchgwPo55LyImUsSYL2T5MY2hP5YyyRLFJE16gH9x3dlp2saYoiG
+ 8hz2Bv7hq6CvtCqux1v32NoCaZZytQny8Tq3TY5gDJecVHXo4f5h6Dy9XuhU4MCEP7fPUMAEOcBdA
+ vbvIfpCbshY9cVHo5xPgTl2uM6SAwiLbSF948nCXBCVfurje9wpH4LMz5EbRV2hW7mspgF17vb1C1
+ srKZ6lNg==;
+Received: from [2001:4bb8:184:4aa1:c70:4a89:bc61:2] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jOx84-0003cw-Kn; Thu, 16 Apr 2020 05:32:01 +0000
+From: Christoph Hellwig <hch@lst.de>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Andrew Morton <akpm@linux-foundation.org>
+Subject: improve use_mm / unuse_mm v2
+Date: Thu, 16 Apr 2020 07:31:55 +0200
+Message-Id: <20200416053158.586887-1-hch@lst.de>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200416051354.GA3064@shao2-debian>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,32 +48,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
- kbuild-all@lists.01.org, zhenyu.z.wang@intel.com
+Cc: Jens Axboe <axboe@kernel.dk>, Felipe Balbi <balbi@kernel.org>,
+ amd-gfx@lists.freedesktop.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Felix Kuehling <Felix.Kuehling@amd.com>, linux-usb@vger.kernel.org,
+ io-uring@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ virtualization@lists.linux-foundation.org, linux-mm@kvack.org,
+ linux-fsdevel@vger.kernel.org, Al Viro <viro@zeniv.linux.org.uk>,
+ intel-gfx@lists.freedesktop.org, Alex Deucher <alexander.deucher@amd.com>,
+ intel-gvt-dev@lists.freedesktop.org, Jason Wang <jasowang@redhat.com>,
+ Zhi Wang <zhi.a.wang@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Fixes: 8dae6a8b97ea ("drm/i915/gvt: Notify user space with the dmabuf flip event")
-Signed-off-by: kbuild test robot <lkp@intel.com>
----
- kvmgt.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi all,
 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 4ccc39e82d3fe..e2a0caac7844f 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1331,7 +1331,7 @@ static int intel_vgpu_set_display_event_trigger(struct intel_vgpu *vgpu,
- 	return 0;
- }
- 
--int intel_vgpu_set_irqs(struct intel_vgpu *vgpu, u32 flags,
-+static int intel_vgpu_set_irqs(struct intel_vgpu *vgpu, u32 flags,
- 		unsigned int index, unsigned int start, unsigned int count,
- 		void *data)
- {
+this series improves the use_mm / unuse_mm interface by better
+documenting the assumptions, and my taking the set_fs manipulations
+spread over the callers into the core API.
+
+Changes since v1:
+ - drop a few patches
+ - fix a comment typo
+ - cover the newly merged use_mm/unuse_mm caller in vfio
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
