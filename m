@@ -2,39 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D33171AB725
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Apr 2020 07:14:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BD5331AB728
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Apr 2020 07:16:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6D13C6E22D;
-	Thu, 16 Apr 2020 05:14:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 693796E22D;
+	Thu, 16 Apr 2020 05:16:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6EC776E22D
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CC6DE6E22D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Apr 2020 05:14:22 +0000 (UTC)
-IronPort-SDR: qfgAngVrzJct/bqNVZHrMzS8OYyVvH9/CvMAi+dpBkL7S7UJ2vkbkx7Pn5sJR1DB9IvM1OXfdm
- zYOB/5LJ+/4w==
+ Thu, 16 Apr 2020 05:16:54 +0000 (UTC)
+IronPort-SDR: KI8pmkuDiBDZ+dhhdxdVFR3GvYeAWiDyZkS7jAdNnfnQifmsiRw0SoV60Wu99oAbrqD/V0y+pr
+ ysyCwP/D2H4Q==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2020 22:14:21 -0700
-IronPort-SDR: uthvrfiD6mOujZWgZGJ2m5aviaCxF0Lf9yQfHpQmn2r/6IZfsxUqmiNOsq8Yfy1DSnCzjeCrms
- MWLbZ7R2kMqA==
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2020 22:16:54 -0700
+IronPort-SDR: R3Bc07Yro7IexVnXKrthVhwaYGJHKYnZWAl3oHKXFJmD2GkgMhAt0/iG9v1NOxkC7ZR7nuFhIQ
+ Zq1dLupByoqw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,388,1580803200"; d="scan'208";a="400548362"
+X-IronPort-AV: E=Sophos;i="5.72,388,1580803200"; d="scan'208";a="288771417"
 Received: from shao2-debian.sh.intel.com (HELO localhost) ([10.239.13.3])
- by orsmga004.jf.intel.com with ESMTP; 15 Apr 2020 22:14:20 -0700
-Date: Thu, 16 Apr 2020 13:13:54 +0800
+ by fmsmga002.fm.intel.com with ESMTP; 15 Apr 2020 22:16:52 -0700
+Date: Thu, 16 Apr 2020 13:16:27 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Tina Zhang <tina.zhang@intel.com>
-Subject: [intel-gvt-linux:topic/drm-ui-direct-flip 3/5]
- drivers/gpu/drm/i915/gvt/kvmgt.c:1334:5: sparse: sparse: symbol
- 'intel_vgpu_set_irqs' was not declared. Should it be static?
-Message-ID: <20200416051354.GA3064@shao2-debian>
+Subject: [RFC PATCH intel-gvt-linux] drm/i915/gvt: intel_vgpu_set_irqs() can
+ be static
+Message-ID: <20200416051626.GB3064@shao2-debian>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <20200416051354.GA3064@shao2-debian>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -55,31 +55,25 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree:   https://github.com/intel/gvt-linux.git topic/drm-ui-direct-flip
-head:   57a9a9830597774ecd5e16a8f3415d03825c015e
-commit: 8dae6a8b97ea850a2da677e947947873e3539f80 [3/5] drm/i915/gvt: Notify user space with the dmabuf flip event
-reproduce:
-        # apt-get install sparse
-        # sparse version: v0.6.1-191-gc51a0382-dirty
-        git checkout 8dae6a8b97ea850a2da677e947947873e3539f80
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
-:::::: branch date: 17 hours ago
-:::::: commit date: 20 hours ago
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kbuild test robot <lkp@intel.com>
-
-
-sparse warnings: (new ones prefixed by >>)
-
->> drivers/gpu/drm/i915/gvt/kvmgt.c:1334:5: sparse: sparse: symbol 'intel_vgpu_set_irqs' was not declared. Should it be static?
-
-Please review and possibly fold the followup patch.
-
+Fixes: 8dae6a8b97ea ("drm/i915/gvt: Notify user space with the dmabuf flip event")
+Signed-off-by: kbuild test robot <lkp@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ kvmgt.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 4ccc39e82d3fe..e2a0caac7844f 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -1331,7 +1331,7 @@ static int intel_vgpu_set_display_event_trigger(struct intel_vgpu *vgpu,
+ 	return 0;
+ }
+ 
+-int intel_vgpu_set_irqs(struct intel_vgpu *vgpu, u32 flags,
++static int intel_vgpu_set_irqs(struct intel_vgpu *vgpu, u32 flags,
+ 		unsigned int index, unsigned int start, unsigned int count,
+ 		void *data)
+ {
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
