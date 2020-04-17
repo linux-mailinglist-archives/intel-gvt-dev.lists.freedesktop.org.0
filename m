@@ -1,50 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63DD71AD9C7
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Apr 2020 11:25:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5AA711AD9E6
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Apr 2020 11:29:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 164086E3E1;
-	Fri, 17 Apr 2020 09:25:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 016946E3E1;
+	Fri, 17 Apr 2020 09:29:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3567A6E3E1
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CFC636E3E3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Apr 2020 09:25:12 +0000 (UTC)
-IronPort-SDR: jGQuKAN2BjFDKn4oj5hYBKTQO5j24V8w8foq+eR5v88btpH77fY1lgUtq85+fzrN7p9cS9YyV2
- W4Nb158FalQg==
+ Fri, 17 Apr 2020 09:29:40 +0000 (UTC)
+IronPort-SDR: 6is2EKGpRWg5QHEBUz0pflFdjph8jKBvzst455/i98lUirVhcxi3Nv7aq/6R1mrBQYhHpcHSTw
+ XwCuMvqnHzRg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Apr 2020 02:25:11 -0700
-IronPort-SDR: +OevMyHn3PdC/E76MmwUD9IFMWU5dCfOp+P9TYfzrmzLqqqXONzDGiFw1ry3uStCfeQsdyRZvc
- k9Z9Qy01kfUg==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Apr 2020 02:29:40 -0700
+IronPort-SDR: uhED/gokMRIbI1AUFRh8sTwzEYTo3hDvcMMTAfYAFlSUyliUh5z/TM9qnryNrSitx5Rlpv3qnd
+ wOT5d/BeQqMg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,394,1580803200"; d="scan'208";a="244664548"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by fmsmga007.fm.intel.com with ESMTP; 17 Apr 2020 02:25:11 -0700
-Received: from shsmsx153.ccr.corp.intel.com (10.239.6.53) by
- FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 17 Apr 2020 02:25:10 -0700
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.225]) by
- SHSMSX153.ccr.corp.intel.com ([169.254.12.89]) with mapi id 14.03.0439.000;
- Fri, 17 Apr 2020 17:25:08 +0800
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+X-IronPort-AV: E=Sophos;i="5.72,394,1580803200"; d="scan'208";a="242955993"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by orsmga007.jf.intel.com with ESMTP; 17 Apr 2020 02:29:40 -0700
+Received: from FMSMSX110.amr.corp.intel.com (10.18.116.10) by
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 17 Apr 2020 02:29:39 -0700
+Received: from shsmsx151.ccr.corp.intel.com (10.239.6.50) by
+ fmsmsx110.amr.corp.intel.com (10.18.116.10) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 17 Apr 2020 02:29:38 -0700
+Received: from shsmsx102.ccr.corp.intel.com ([169.254.2.138]) by
+ SHSMSX151.ccr.corp.intel.com ([169.254.3.22]) with mapi id 14.03.0439.000;
+ Fri, 17 Apr 2020 17:29:36 +0800
+From: "Zhao, Yan Y" <yan.y.zhao@intel.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Subject: RE: [PATCH v6] drm/i915/gvt: skip populate shadow context if guest
  context not changed
 Thread-Topic: [PATCH v6] drm/i915/gvt: skip populate shadow context if guest
  context not changed
-Thread-Index: AQHWFIUTo6HGVUAfuEac2WUv+ouU8ah9CheQ
-Date: Fri, 17 Apr 2020 09:25:08 +0000
-Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D19D824B1D@SHSMSX104.ccr.corp.intel.com>
+Thread-Index: AQHWFIUT+Yz6YVTHFk2ly7YNrlwyk6h8hQUAgACHG2A=
+Date: Fri, 17 Apr 2020 09:29:35 +0000
+Message-ID: <F22B14EC3CFBB843AD3E03B6B78F2C6A4C4D6F5D@shsmsx102.ccr.corp.intel.com>
 References: <20200417064448.10807-1-yan.y.zhao@intel.com>
-In-Reply-To: <20200417064448.10807-1-yan.y.zhao@intel.com>
-Accept-Language: en-US
+ <AADFC41AFE54684AB9EE6CBC0274A5D19D824B1D@SHSMSX104.ccr.corp.intel.com>
+In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D19D824B1D@SHSMSX104.ccr.corp.intel.com>
+Accept-Language: en-US, zh-CN
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
@@ -66,198 +70,144 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Zhao, Yan Y <yan.y.zhao@intel.com>
-> Sent: Friday, April 17, 2020 2:45 PM
-> 
-> Software is not expected to populate engine context except when using
-> restore inhibit bit or golden state to initialize it for the first time.
-> 
-> Therefore, if a newly submitted guest context is the same as the last
-> shadowed one, no need to populate its engine context from guest again.
-> 
-> Currently using lrca + ring_context_gpa to identify whether two guest
-> contexts are the same.
-> 
-> The reason of why context id is not included as an identifier is that
-> i915 recently changed the code and context id is only unique for a
-> context when OA is enabled. And when OA is on, context id is generated
-> based on lrca. Therefore, in that case, if two contexts are of the same
-> lrca, they have identical context ids as well.
-> (This patch also works with old guest kernel like 4.20.)
-> 
-> for guest context, if its ggtt entry is modified after last context
-> shadowing, it is also deemed as not the same context as last shadowed one.
-> 
-> v6:
-> -change type of lrca of last ctx to be u32. as currently it's all
-> protected by vgpu lock (Kevin Tian)
-> -reset valid of last ctx to false once it needs to be repopulated before
-> population completes successfully (Kevin Tian)
-> 
-> v5:
-> -merge all 3 patches into one patch  (Zhenyu Wang)
-> 
-> v4:
-> - split the series into 3 patches.
-> - don't turn on optimization until last patch in this series (Kevin Tian)
-> - define lrca to be atomic in this patch rather than update its type in
-> the second patch (Kevin Tian)
-> 
-> v3: updated commit message to describe engine context and context id
-> clearly (Kevin Tian)
-> v2: rebased to 5.6.0-rc4+Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
-> 
-> Cc: Kevin Tian <kevin.tian@intel.com>
-> Suggested-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/gtt.c       | 15 ++++++++++++
->  drivers/gpu/drm/i915/gvt/gvt.h       |  5 ++++
->  drivers/gpu/drm/i915/gvt/scheduler.c | 36 ++++++++++++++++++++++++----
->  3 files changed, 51 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-> index 2a4b23f8aa74..d2b0d85b39bc 100644
-> --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> @@ -2341,12 +2341,27 @@ int intel_vgpu_emulate_ggtt_mmio_write(struct
-> intel_vgpu *vgpu,
->  {
->  	const struct intel_gvt_device_info *info = &vgpu->gvt->device_info;
->  	int ret;
-> +	struct intel_vgpu_submission *s = &vgpu->submission;
-> +	struct intel_engine_cs *engine;
-> +	int i;
-> 
->  	if (bytes != 4 && bytes != 8)
->  		return -EINVAL;
-> 
->  	off -= info->gtt_start_offset;
->  	ret = emulate_ggtt_mmio_write(vgpu, off, p_data, bytes);
-> +
-> +	/* if ggtt of last submitted context is written,
-> +	 * that context is probably got unpinned.
-> +	 * Set last shadowed ctx to invalid.
-> +	 */
-> +	for_each_engine(engine, vgpu->gvt->gt, i) {
-> +		if (!s->last_ctx[i].valid)
-> +			continue;
-> +
-> +		if (s->last_ctx[i].lrca == (off >> info->gtt_entry_size_shift))
-> +			s->last_ctx[i].valid = false;
-> +	}
->  	return ret;
->  }
-> 
-> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-> index 58c2c7932e3f..a4a6db6b7f90 100644
-> --- a/drivers/gpu/drm/i915/gvt/gvt.h
-> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
-> @@ -163,6 +163,11 @@ struct intel_vgpu_submission {
->  	const struct intel_vgpu_submission_ops *ops;
->  	int virtual_submission_interface;
->  	bool active;
-> +	struct {
-> +		u32 lrca;
-> +		bool valid;
-> +		u64 ring_context_gpa;
-> +	} last_ctx[I915_NUM_ENGINES];
->  };
-> 
->  struct intel_vgpu {
-> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c
-> b/drivers/gpu/drm/i915/gvt/scheduler.c
-> index f939ec3be39e..d13204658b57 100644
-> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> @@ -135,7 +135,11 @@ static int populate_shadow_context(struct
-> intel_vgpu_workload *workload)
->  	unsigned long context_gpa, context_page_num;
->  	unsigned long gpa_base; /* first gpa of consecutive GPAs */
->  	unsigned long gpa_size; /* size of consecutive GPAs */
-> +	struct intel_vgpu_submission *s = &vgpu->submission;
->  	int i;
-> +	bool skip = false;
-> +	int ring_id = workload->engine->id;
-> +	bool valid;
-> 
->  	GEM_BUG_ON(!intel_context_is_pinned(ctx));
-> 
-> @@ -175,13 +179,31 @@ static int populate_shadow_context(struct
-> intel_vgpu_workload *workload)
-> 
->  	sr_oa_regs(workload, (u32 *)shadow_ring_context, false);
-> 
-> -	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val))
-> -		return 0;
-> +	gvt_dbg_sched("ring %s workload lrca %x, ctx_id %x, ctx gpa %llx",
-> +			workload->engine->name, workload->ctx_desc.lrca,
-> +			workload->ctx_desc.context_id,
-> +			workload->ring_context_gpa);
-> 
-> -	gvt_dbg_sched("ring %s workload lrca %x",
-> -		      workload->engine->name,
-> -		      workload->ctx_desc.lrca);
-> +	/* only need to ensure this context is not pinned/unpinned during
-> the
-> +	 * period from last submission to this this submission.
-> +	 * Upon reaching this function, the currently submitted context is not
-> +	 * supposed to get unpinned. If a misbehaving guest driver ever does
-> +	 * this, it would corrupt itself.
-> +	 */
-> +	valid = s->last_ctx[ring_id].valid;
-> +	if (valid && (s->last_ctx[ring_id].lrca ==
-> +				workload->ctx_desc.lrca) &&
-> +			(s->last_ctx[ring_id].ring_context_gpa ==
-> +				workload->ring_context_gpa))
-> +		skip = true;
-> 
-> +	s->last_ctx[ring_id].lrca = workload->ctx_desc.lrca;
-> +	s->last_ctx[ring_id].ring_context_gpa = workload->ring_context_gpa;
-> +
-> +	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val) || skip)
-> +		return 0;
-> +
-> +	s->last_ctx[ring_id].valid = false;
->  	context_page_num = workload->engine->context_size;
->  	context_page_num = context_page_num >> PAGE_SHIFT;
-> 
-> @@ -220,6 +242,8 @@ static int populate_shadow_context(struct
-> intel_vgpu_workload *workload)
->  		gpa_size = I915_GTT_PAGE_SIZE;
->  		dst = context_base + (i << I915_GTT_PAGE_SHIFT);
->  	}
-> +	if (!valid)
-> +		s->last_ctx[ring_id].valid = true;
-
-since you always clear s->last_ctx[ring_id].valid now, then here you should
-always set it to true. 
-
-with this fixed:
-	Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-
->  	return 0;
->  }
-> 
-> @@ -1297,6 +1321,8 @@ int intel_vgpu_setup_submission(struct intel_vgpu
-> *vgpu)
->  	atomic_set(&s->running_workload_num, 0);
->  	bitmap_zero(s->tlb_handle_pending, I915_NUM_ENGINES);
-> 
-> +	memset(s->last_ctx, 0, sizeof(s->last_ctx));
-> +
->  	i915_vm_put(&ppgtt->vm);
->  	return 0;
-> 
-> --
-> 2.17.1
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogVGlhbiwgS2V2aW4gPGtl
+dmluLnRpYW5AaW50ZWwuY29tPg0KPiBTZW50OiBGcmlkYXksIEFwcmlsIDE3LCAyMDIwIDU6MjUg
+UE0NCj4gVG86IFpoYW8sIFlhbiBZIDx5YW4ueS56aGFvQGludGVsLmNvbT47IGludGVsLWd2dC1k
+ZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnDQo+IENjOiB6aGVueXV3QGxpbnV4LmludGVsLmNvbQ0K
+PiBTdWJqZWN0OiBSRTogW1BBVENIIHY2XSBkcm0vaTkxNS9ndnQ6IHNraXAgcG9wdWxhdGUgc2hh
+ZG93IGNvbnRleHQgaWYgZ3Vlc3QNCj4gY29udGV4dCBub3QgY2hhbmdlZA0KPiANCj4gPiBGcm9t
+OiBaaGFvLCBZYW4gWSA8eWFuLnkuemhhb0BpbnRlbC5jb20+DQo+ID4gU2VudDogRnJpZGF5LCBB
+cHJpbCAxNywgMjAyMCAyOjQ1IFBNDQo+ID4NCj4gPiBTb2Z0d2FyZSBpcyBub3QgZXhwZWN0ZWQg
+dG8gcG9wdWxhdGUgZW5naW5lIGNvbnRleHQgZXhjZXB0IHdoZW4gdXNpbmcNCj4gPiByZXN0b3Jl
+IGluaGliaXQgYml0IG9yIGdvbGRlbiBzdGF0ZSB0byBpbml0aWFsaXplIGl0IGZvciB0aGUgZmly
+c3QgdGltZS4NCj4gPg0KPiA+IFRoZXJlZm9yZSwgaWYgYSBuZXdseSBzdWJtaXR0ZWQgZ3Vlc3Qg
+Y29udGV4dCBpcyB0aGUgc2FtZSBhcyB0aGUgbGFzdA0KPiA+IHNoYWRvd2VkIG9uZSwgbm8gbmVl
+ZCB0byBwb3B1bGF0ZSBpdHMgZW5naW5lIGNvbnRleHQgZnJvbSBndWVzdCBhZ2Fpbi4NCj4gPg0K
+PiA+IEN1cnJlbnRseSB1c2luZyBscmNhICsgcmluZ19jb250ZXh0X2dwYSB0byBpZGVudGlmeSB3
+aGV0aGVyIHR3byBndWVzdA0KPiA+IGNvbnRleHRzIGFyZSB0aGUgc2FtZS4NCj4gPg0KPiA+IFRo
+ZSByZWFzb24gb2Ygd2h5IGNvbnRleHQgaWQgaXMgbm90IGluY2x1ZGVkIGFzIGFuIGlkZW50aWZp
+ZXIgaXMgdGhhdA0KPiA+IGk5MTUgcmVjZW50bHkgY2hhbmdlZCB0aGUgY29kZSBhbmQgY29udGV4
+dCBpZCBpcyBvbmx5IHVuaXF1ZSBmb3IgYQ0KPiA+IGNvbnRleHQgd2hlbiBPQSBpcyBlbmFibGVk
+LiBBbmQgd2hlbiBPQSBpcyBvbiwgY29udGV4dCBpZCBpcyBnZW5lcmF0ZWQNCj4gPiBiYXNlZCBv
+biBscmNhLiBUaGVyZWZvcmUsIGluIHRoYXQgY2FzZSwgaWYgdHdvIGNvbnRleHRzIGFyZSBvZiB0
+aGUNCj4gPiBzYW1lIGxyY2EsIHRoZXkgaGF2ZSBpZGVudGljYWwgY29udGV4dCBpZHMgYXMgd2Vs
+bC4NCj4gPiAoVGhpcyBwYXRjaCBhbHNvIHdvcmtzIHdpdGggb2xkIGd1ZXN0IGtlcm5lbCBsaWtl
+IDQuMjAuKQ0KPiA+DQo+ID4gZm9yIGd1ZXN0IGNvbnRleHQsIGlmIGl0cyBnZ3R0IGVudHJ5IGlz
+IG1vZGlmaWVkIGFmdGVyIGxhc3QgY29udGV4dA0KPiA+IHNoYWRvd2luZywgaXQgaXMgYWxzbyBk
+ZWVtZWQgYXMgbm90IHRoZSBzYW1lIGNvbnRleHQgYXMgbGFzdCBzaGFkb3dlZCBvbmUuDQo+ID4N
+Cj4gPiB2NjoNCj4gPiAtY2hhbmdlIHR5cGUgb2YgbHJjYSBvZiBsYXN0IGN0eCB0byBiZSB1MzIu
+IGFzIGN1cnJlbnRseSBpdCdzIGFsbA0KPiA+IHByb3RlY3RlZCBieSB2Z3B1IGxvY2sgKEtldmlu
+IFRpYW4pIC1yZXNldCB2YWxpZCBvZiBsYXN0IGN0eCB0byBmYWxzZQ0KPiA+IG9uY2UgaXQgbmVl
+ZHMgdG8gYmUgcmVwb3B1bGF0ZWQgYmVmb3JlIHBvcHVsYXRpb24gY29tcGxldGVzDQo+ID4gc3Vj
+Y2Vzc2Z1bGx5IChLZXZpbiBUaWFuKQ0KPiA+DQo+ID4gdjU6DQo+ID4gLW1lcmdlIGFsbCAzIHBh
+dGNoZXMgaW50byBvbmUgcGF0Y2ggIChaaGVueXUgV2FuZykNCj4gPg0KPiA+IHY0Og0KPiA+IC0g
+c3BsaXQgdGhlIHNlcmllcyBpbnRvIDMgcGF0Y2hlcy4NCj4gPiAtIGRvbid0IHR1cm4gb24gb3B0
+aW1pemF0aW9uIHVudGlsIGxhc3QgcGF0Y2ggaW4gdGhpcyBzZXJpZXMgKEtldmluDQo+ID4gVGlh
+bikNCj4gPiAtIGRlZmluZSBscmNhIHRvIGJlIGF0b21pYyBpbiB0aGlzIHBhdGNoIHJhdGhlciB0
+aGFuIHVwZGF0ZSBpdHMgdHlwZQ0KPiA+IGluIHRoZSBzZWNvbmQgcGF0Y2ggKEtldmluIFRpYW4p
+DQo+ID4NCj4gPiB2MzogdXBkYXRlZCBjb21taXQgbWVzc2FnZSB0byBkZXNjcmliZSBlbmdpbmUg
+Y29udGV4dCBhbmQgY29udGV4dCBpZA0KPiA+IGNsZWFybHkgKEtldmluIFRpYW4pDQo+ID4gdjI6
+IHJlYmFzZWQgdG8gNS42LjAtcmM0K1NpZ25lZC1vZmYtYnk6IFlhbiBaaGFvDQo+ID4gPHlhbi55
+LnpoYW9AaW50ZWwuY29tPg0KPiA+DQo+ID4gQ2M6IEtldmluIFRpYW4gPGtldmluLnRpYW5AaW50
+ZWwuY29tPg0KPiA+IFN1Z2dlc3RlZC1ieTogWmhlbnl1IFdhbmcgPHpoZW55dXdAbGludXguaW50
+ZWwuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFlhbiBaaGFvIDx5YW4ueS56aGFvQGludGVsLmNv
+bT4NCj4gPiAtLS0NCj4gPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0dC5jICAgICAgIHwg
+MTUgKysrKysrKysrKysrDQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQuaCAgICAg
+ICB8ICA1ICsrKysNCj4gPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5jIHwg
+MzYNCj4gPiArKysrKysrKysrKysrKysrKysrKysrKystLS0tDQo+ID4gIDMgZmlsZXMgY2hhbmdl
+ZCwgNTEgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkNCj4gPg0KPiA+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3R0LmMNCj4gPiBiL2RyaXZlcnMvZ3B1L2RybS9p
+OTE1L2d2dC9ndHQuYyBpbmRleCAyYTRiMjNmOGFhNzQuLmQyYjBkODViMzliYw0KPiA+IDEwMDY0
+NA0KPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYw0KPiA+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYw0KPiA+IEBAIC0yMzQxLDEyICsyMzQxLDI3IEBA
+IGludA0KPiBpbnRlbF92Z3B1X2VtdWxhdGVfZ2d0dF9tbWlvX3dyaXRlKHN0cnVjdA0KPiA+IGlu
+dGVsX3ZncHUgKnZncHUsDQo+ID4gIHsNCj4gPiAgCWNvbnN0IHN0cnVjdCBpbnRlbF9ndnRfZGV2
+aWNlX2luZm8gKmluZm8gPSAmdmdwdS0+Z3Z0LT5kZXZpY2VfaW5mbzsNCj4gPiAgCWludCByZXQ7
+DQo+ID4gKwlzdHJ1Y3QgaW50ZWxfdmdwdV9zdWJtaXNzaW9uICpzID0gJnZncHUtPnN1Ym1pc3Np
+b247DQo+ID4gKwlzdHJ1Y3QgaW50ZWxfZW5naW5lX2NzICplbmdpbmU7DQo+ID4gKwlpbnQgaTsN
+Cj4gPg0KPiA+ICAJaWYgKGJ5dGVzICE9IDQgJiYgYnl0ZXMgIT0gOCkNCj4gPiAgCQlyZXR1cm4g
+LUVJTlZBTDsNCj4gPg0KPiA+ICAJb2ZmIC09IGluZm8tPmd0dF9zdGFydF9vZmZzZXQ7DQo+ID4g
+IAlyZXQgPSBlbXVsYXRlX2dndHRfbW1pb193cml0ZSh2Z3B1LCBvZmYsIHBfZGF0YSwgYnl0ZXMp
+Ow0KPiA+ICsNCj4gPiArCS8qIGlmIGdndHQgb2YgbGFzdCBzdWJtaXR0ZWQgY29udGV4dCBpcyB3
+cml0dGVuLA0KPiA+ICsJICogdGhhdCBjb250ZXh0IGlzIHByb2JhYmx5IGdvdCB1bnBpbm5lZC4N
+Cj4gPiArCSAqIFNldCBsYXN0IHNoYWRvd2VkIGN0eCB0byBpbnZhbGlkLg0KPiA+ICsJICovDQo+
+ID4gKwlmb3JfZWFjaF9lbmdpbmUoZW5naW5lLCB2Z3B1LT5ndnQtPmd0LCBpKSB7DQo+ID4gKwkJ
+aWYgKCFzLT5sYXN0X2N0eFtpXS52YWxpZCkNCj4gPiArCQkJY29udGludWU7DQo+ID4gKw0KPiA+
+ICsJCWlmIChzLT5sYXN0X2N0eFtpXS5scmNhID09IChvZmYgPj4gaW5mby0+Z3R0X2VudHJ5X3Np
+emVfc2hpZnQpKQ0KPiA+ICsJCQlzLT5sYXN0X2N0eFtpXS52YWxpZCA9IGZhbHNlOw0KPiA+ICsJ
+fQ0KPiA+ICAJcmV0dXJuIHJldDsNCj4gPiAgfQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9pOTE1L2d2dC9ndnQuaA0KPiA+IGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0
+L2d2dC5oIGluZGV4IDU4YzJjNzkzMmUzZi4uYTRhNmRiNmI3ZjkwDQo+ID4gMTAwNjQ0DQo+ID4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d2dC5oDQo+ID4gKysrIGIvZHJpdmVycy9n
+cHUvZHJtL2k5MTUvZ3Z0L2d2dC5oDQo+ID4gQEAgLTE2Myw2ICsxNjMsMTEgQEAgc3RydWN0IGlu
+dGVsX3ZncHVfc3VibWlzc2lvbiB7DQo+ID4gIAljb25zdCBzdHJ1Y3QgaW50ZWxfdmdwdV9zdWJt
+aXNzaW9uX29wcyAqb3BzOw0KPiA+ICAJaW50IHZpcnR1YWxfc3VibWlzc2lvbl9pbnRlcmZhY2U7
+DQo+ID4gIAlib29sIGFjdGl2ZTsNCj4gPiArCXN0cnVjdCB7DQo+ID4gKwkJdTMyIGxyY2E7DQo+
+ID4gKwkJYm9vbCB2YWxpZDsNCj4gPiArCQl1NjQgcmluZ19jb250ZXh0X2dwYTsNCj4gPiArCX0g
+bGFzdF9jdHhbSTkxNV9OVU1fRU5HSU5FU107DQo+ID4gIH07DQo+ID4NCj4gPiAgc3RydWN0IGlu
+dGVsX3ZncHUgew0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvc2No
+ZWR1bGVyLmMNCj4gPiBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYw0KPiA+
+IGluZGV4IGY5MzllYzNiZTM5ZS4uZDEzMjA0NjU4YjU3IDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYw0KPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9pOTE1L2d2dC9zY2hlZHVsZXIuYw0KPiA+IEBAIC0xMzUsNyArMTM1LDExIEBAIHN0YXRpYyBp
+bnQgcG9wdWxhdGVfc2hhZG93X2NvbnRleHQoc3RydWN0DQo+ID4gaW50ZWxfdmdwdV93b3JrbG9h
+ZCAqd29ya2xvYWQpDQo+ID4gIAl1bnNpZ25lZCBsb25nIGNvbnRleHRfZ3BhLCBjb250ZXh0X3Bh
+Z2VfbnVtOw0KPiA+ICAJdW5zaWduZWQgbG9uZyBncGFfYmFzZTsgLyogZmlyc3QgZ3BhIG9mIGNv
+bnNlY3V0aXZlIEdQQXMgKi8NCj4gPiAgCXVuc2lnbmVkIGxvbmcgZ3BhX3NpemU7IC8qIHNpemUg
+b2YgY29uc2VjdXRpdmUgR1BBcyAqLw0KPiA+ICsJc3RydWN0IGludGVsX3ZncHVfc3VibWlzc2lv
+biAqcyA9ICZ2Z3B1LT5zdWJtaXNzaW9uOw0KPiA+ICAJaW50IGk7DQo+ID4gKwlib29sIHNraXAg
+PSBmYWxzZTsNCj4gPiArCWludCByaW5nX2lkID0gd29ya2xvYWQtPmVuZ2luZS0+aWQ7DQo+ID4g
+Kwlib29sIHZhbGlkOw0KPiA+DQo+ID4gIAlHRU1fQlVHX09OKCFpbnRlbF9jb250ZXh0X2lzX3Bp
+bm5lZChjdHgpKTsNCj4gPg0KPiA+IEBAIC0xNzUsMTMgKzE3OSwzMSBAQCBzdGF0aWMgaW50IHBv
+cHVsYXRlX3NoYWRvd19jb250ZXh0KHN0cnVjdA0KPiA+IGludGVsX3ZncHVfd29ya2xvYWQgKndv
+cmtsb2FkKQ0KPiA+DQo+ID4gIAlzcl9vYV9yZWdzKHdvcmtsb2FkLCAodTMyICopc2hhZG93X3Jp
+bmdfY29udGV4dCwgZmFsc2UpOw0KPiA+DQo+ID4gLQlpZiAoSVNfUkVTVE9SRV9JTkhJQklUKHNo
+YWRvd19yaW5nX2NvbnRleHQtPmN0eF9jdHJsLnZhbCkpDQo+ID4gLQkJcmV0dXJuIDA7DQo+ID4g
+KwlndnRfZGJnX3NjaGVkKCJyaW5nICVzIHdvcmtsb2FkIGxyY2EgJXgsIGN0eF9pZCAleCwgY3R4
+IGdwYSAlbGx4IiwNCj4gPiArCQkJd29ya2xvYWQtPmVuZ2luZS0+bmFtZSwgd29ya2xvYWQtPmN0
+eF9kZXNjLmxyY2EsDQo+ID4gKwkJCXdvcmtsb2FkLT5jdHhfZGVzYy5jb250ZXh0X2lkLA0KPiA+
+ICsJCQl3b3JrbG9hZC0+cmluZ19jb250ZXh0X2dwYSk7DQo+ID4NCj4gPiAtCWd2dF9kYmdfc2No
+ZWQoInJpbmcgJXMgd29ya2xvYWQgbHJjYSAleCIsDQo+ID4gLQkJICAgICAgd29ya2xvYWQtPmVu
+Z2luZS0+bmFtZSwNCj4gPiAtCQkgICAgICB3b3JrbG9hZC0+Y3R4X2Rlc2MubHJjYSk7DQo+ID4g
+KwkvKiBvbmx5IG5lZWQgdG8gZW5zdXJlIHRoaXMgY29udGV4dCBpcyBub3QgcGlubmVkL3VucGlu
+bmVkIGR1cmluZw0KPiA+IHRoZQ0KPiA+ICsJICogcGVyaW9kIGZyb20gbGFzdCBzdWJtaXNzaW9u
+IHRvIHRoaXMgdGhpcyBzdWJtaXNzaW9uLg0KPiA+ICsJICogVXBvbiByZWFjaGluZyB0aGlzIGZ1
+bmN0aW9uLCB0aGUgY3VycmVudGx5IHN1Ym1pdHRlZCBjb250ZXh0IGlzIG5vdA0KPiA+ICsJICog
+c3VwcG9zZWQgdG8gZ2V0IHVucGlubmVkLiBJZiBhIG1pc2JlaGF2aW5nIGd1ZXN0IGRyaXZlciBl
+dmVyIGRvZXMNCj4gPiArCSAqIHRoaXMsIGl0IHdvdWxkIGNvcnJ1cHQgaXRzZWxmLg0KPiA+ICsJ
+ICovDQo+ID4gKwl2YWxpZCA9IHMtPmxhc3RfY3R4W3JpbmdfaWRdLnZhbGlkOw0KPiA+ICsJaWYg
+KHZhbGlkICYmIChzLT5sYXN0X2N0eFtyaW5nX2lkXS5scmNhID09DQo+ID4gKwkJCQl3b3JrbG9h
+ZC0+Y3R4X2Rlc2MubHJjYSkgJiYNCj4gPiArCQkJKHMtPmxhc3RfY3R4W3JpbmdfaWRdLnJpbmdf
+Y29udGV4dF9ncGEgPT0NCj4gPiArCQkJCXdvcmtsb2FkLT5yaW5nX2NvbnRleHRfZ3BhKSkNCj4g
+PiArCQlza2lwID0gdHJ1ZTsNCj4gPg0KPiA+ICsJcy0+bGFzdF9jdHhbcmluZ19pZF0ubHJjYSA9
+IHdvcmtsb2FkLT5jdHhfZGVzYy5scmNhOw0KPiA+ICsJcy0+bGFzdF9jdHhbcmluZ19pZF0ucmlu
+Z19jb250ZXh0X2dwYSA9IHdvcmtsb2FkLT5yaW5nX2NvbnRleHRfZ3BhOw0KPiA+ICsNCj4gPiAr
+CWlmIChJU19SRVNUT1JFX0lOSElCSVQoc2hhZG93X3JpbmdfY29udGV4dC0+Y3R4X2N0cmwudmFs
+KSB8fCBza2lwKQ0KPiA+ICsJCXJldHVybiAwOw0KPiA+ICsNCj4gPiArCXMtPmxhc3RfY3R4W3Jp
+bmdfaWRdLnZhbGlkID0gZmFsc2U7DQo+ID4gIAljb250ZXh0X3BhZ2VfbnVtID0gd29ya2xvYWQt
+PmVuZ2luZS0+Y29udGV4dF9zaXplOw0KPiA+ICAJY29udGV4dF9wYWdlX251bSA9IGNvbnRleHRf
+cGFnZV9udW0gPj4gUEFHRV9TSElGVDsNCj4gPg0KPiA+IEBAIC0yMjAsNiArMjQyLDggQEAgc3Rh
+dGljIGludCBwb3B1bGF0ZV9zaGFkb3dfY29udGV4dChzdHJ1Y3QNCj4gPiBpbnRlbF92Z3B1X3dv
+cmtsb2FkICp3b3JrbG9hZCkNCj4gPiAgCQlncGFfc2l6ZSA9IEk5MTVfR1RUX1BBR0VfU0laRTsN
+Cj4gPiAgCQlkc3QgPSBjb250ZXh0X2Jhc2UgKyAoaSA8PCBJOTE1X0dUVF9QQUdFX1NISUZUKTsN
+Cj4gPiAgCX0NCj4gPiArCWlmICghdmFsaWQpDQo+ID4gKwkJcy0+bGFzdF9jdHhbcmluZ19pZF0u
+dmFsaWQgPSB0cnVlOw0KPiANCj4gc2luY2UgeW91IGFsd2F5cyBjbGVhciBzLT5sYXN0X2N0eFty
+aW5nX2lkXS52YWxpZCBub3csIHRoZW4gaGVyZSB5b3Ugc2hvdWxkDQo+IGFsd2F5cyBzZXQgaXQg
+dG8gdHJ1ZS4NCj4gDQo+IHdpdGggdGhpcyBmaXhlZDoNCj4gCVJldmlld2VkLWJ5OiBLZXZpbiBU
+aWFuIDxrZXZpbi50aWFuQGludGVsLmNvbT4NCj4gDQpKdXN0IGZvdW5kIHRoZSBzYW1lIGVycm9y
+IGFuZCB1cGRhdGVkIG9uZS4NClRoYW5rcyDwn5iKDQoNCj4gPiAgCXJldHVybiAwOw0KPiA+ICB9
+DQo+ID4NCj4gPiBAQCAtMTI5Nyw2ICsxMzIxLDggQEAgaW50IGludGVsX3ZncHVfc2V0dXBfc3Vi
+bWlzc2lvbihzdHJ1Y3QNCj4gPiBpbnRlbF92Z3B1DQo+ID4gKnZncHUpDQo+ID4gIAlhdG9taWNf
+c2V0KCZzLT5ydW5uaW5nX3dvcmtsb2FkX251bSwgMCk7DQo+ID4gIAliaXRtYXBfemVybyhzLT50
+bGJfaGFuZGxlX3BlbmRpbmcsIEk5MTVfTlVNX0VOR0lORVMpOw0KPiA+DQo+ID4gKwltZW1zZXQo
+cy0+bGFzdF9jdHgsIDAsIHNpemVvZihzLT5sYXN0X2N0eCkpOw0KPiA+ICsNCj4gPiAgCWk5MTVf
+dm1fcHV0KCZwcGd0dC0+dm0pOw0KPiA+ICAJcmV0dXJuIDA7DQo+ID4NCj4gPiAtLQ0KPiA+IDIu
+MTcuMQ0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpp
+bnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LWd2dC1kZXYK
