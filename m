@@ -1,53 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDB801AD8D9
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Apr 2020 10:45:24 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8523E1AD9B7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Apr 2020 11:23:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A077E6E107;
-	Fri, 17 Apr 2020 08:45:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 33AB46E3DB;
+	Fri, 17 Apr 2020 09:23:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B55476E106
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ADAAA6E3DB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Apr 2020 08:45:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587113120;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jlSmzPpbvnqZnwcalXuvPkUwVQHZbnaF9jJhRsTm+Sg=;
- b=N+6/AedWxsnIiuuOxT7vN3os6szv+C3+cbG5doJaAvso43vv5IVf5cYSLKBqizWBQrRtnf
- sbkSxMS7Izt8k6uFQWX5AGXBM6+SRHAR96XM9envO7l3hBmCdkFoQoGt4VnjBrh0H//FLy
- qXIwVt+62E9KDJMYJpOwwUuBViYx15Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-290-UJZeq6-DPWex82UXcQVOOA-1; Fri, 17 Apr 2020 04:45:13 -0400
-X-MC-Unique: UJZeq6-DPWex82UXcQVOOA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 615DC85EE6B;
- Fri, 17 Apr 2020 08:45:10 +0000 (UTC)
-Received: from gondolin (ovpn-112-200.ams2.redhat.com [10.36.112.200])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 303765C296;
- Fri, 17 Apr 2020 08:44:53 +0000 (UTC)
-Date: Fri, 17 Apr 2020 10:44:50 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH v5 0/4] introduction of migration_version attribute for
- VFIO live migration
-Message-ID: <20200417104450.2d2f2fa9.cohuck@redhat.com>
-In-Reply-To: <20200413055201.27053-1-yan.y.zhao@intel.com>
-References: <20200413055201.27053-1-yan.y.zhao@intel.com>
-Organization: Red Hat GmbH
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+ Fri, 17 Apr 2020 09:23:18 +0000 (UTC)
+IronPort-SDR: 3fEy1xFBIXfiUvD006T9rajRJMNnOUqaIZV+DuPfgv0c62UDjEwXuovdHKyHS9Ges5ucymuL5e
+ 0Kk+E1P/gFPQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Apr 2020 02:23:17 -0700
+IronPort-SDR: dX5PZyMtWxmwlQ+JnvBL2yNGmMDmrSAVEBLiICaBO4BmYN+Y8XYWsdqlcxNcQ69/MtADpW3iVr
+ zdjg+BNWuBNA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,394,1580803200"; d="scan'208";a="278319668"
+Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
+ by fmsmga004.fm.intel.com with ESMTP; 17 Apr 2020 02:23:16 -0700
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org,
+	zhenyuw@linux.intel.com
+Subject: [PATCH v7] drm/i915/gvt: skip populate shadow context if guest
+ context not changed
+Date: Fri, 17 Apr 2020 05:13:34 -0400
+Message-Id: <20200417091334.32628-1-yan.y.zhao@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,119 +46,183 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: cjia@nvidia.com, kvm@vger.kernel.org, linux-doc@vger.kernel.org,
- libvir-list@redhat.com, Zhengxiao.zx@alibaba-inc.com,
- shuangtai.tst@alibaba-inc.com, qemu-devel@nongnu.org, kwankhede@nvidia.com,
- eauger@redhat.com, yi.l.liu@intel.com, eskultet@redhat.com,
- ziye.yang@intel.com, mlevitsk@redhat.com, pasic@linux.ibm.com, aik@ozlabs.ru,
- felipe@nutanix.com, Ken.Xue@amd.com, kevin.tian@intel.com, xin.zeng@intel.com,
- dgilbert@redhat.com, zhenyuw@linux.intel.com, dinechin@redhat.com,
- alex.williamson@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- changpeng.liu@intel.com, berrange@redhat.com, corbet@lwn.net,
- linux-kernel@vger.kernel.org, zhi.a.wang@intel.com,
- jonathan.davies@nutanix.com, shaopeng.he@intel.com
+Cc: Kevin Tian <kevin.tian@intel.com>, Yan Zhao <yan.y.zhao@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 13 Apr 2020 01:52:01 -0400
-Yan Zhao <yan.y.zhao@intel.com> wrote:
+Software is not expected to populate engine context except when using
+restore inhibit bit or golden state to initialize it for the first time.
 
-> This patchset introduces a migration_version attribute under sysfs of VFIO
-> Mediated devices.
-> 
-> This migration_version attribute is used to check migration compatibility
-> between two mdev devices.
-> 
-> Currently, it has two locations:
-> (1) under mdev_type node,
->     which can be used even before device creation, but only for mdev
->     devices of the same mdev type.
-> (2) under mdev device node,
->     which can only be used after the mdev devices are created, but the src
->     and target mdev devices are not necessarily be of the same mdev type
-> (The second location is newly added in v5, in order to keep consistent
-> with the migration_version node for migratable pass-though devices)
+Therefore, if a newly submitted guest context is the same as the last
+shadowed one, no need to populate its engine context from guest again.
 
-What is the relationship between those two attributes?
+Currently using lrca + ring_context_gpa to identify whether two guest
+contexts are the same.
 
-Is existence (and compatibility) of (1) a pre-req for possible
-existence (and compatibility) of (2)?
+The reason of why context id is not included as an identifier is that
+i915 recently changed the code and context id is only unique for a
+context when OA is enabled. And when OA is on, context id is generated
+based on lrca. Therefore, in that case, if two contexts are of the same
+lrca, they have identical context ids as well.
+(This patch also works with old guest kernel like 4.20.)
 
-Does userspace need to check (1) or can it completely rely on (2), if
-it so chooses?
+for guest context, if its ggtt entry is modified after last context
+shadowing, it is also deemed as not the same context as last shadowed one.
 
-If devices with a different mdev type are indeed compatible, it seems
-userspace can only find out after the devices have actually been
-created, as (1) does not apply?
+v7:
+-removed local variable "valid". use the one in s->last_ctx diretly
 
-One of my worries is that the existence of an attribute with the same
-name in two similar locations might lead to confusion. But maybe it
-isn't a problem.
+v6:
+-change type of lrca of last ctx to be u32. as currently it's all
+protected by vgpu lock (Kevin Tian)
+-reset valid of last ctx to false once it needs to be repopulated before
+population completes successfully (Kevin Tian)
 
-> 
-> Patch 1 defines migration_version attribute for the first location in
-> Documentation/vfio-mediated-device.txt
-> 
-> Patch 2 uses GVT as an example for patch 1 to show how to expose
-> migration_version attribute and check migration compatibility in vendor
-> driver.
-> 
-> Patch 3 defines migration_version attribute for the second location in
-> Documentation/vfio-mediated-device.txt
-> 
-> Patch 4 uses GVT as an example for patch 3 to show how to expose
-> migration_version attribute and check migration compatibility in vendor
-> driver.
-> 
-> (The previous "Reviewed-by" and "Acked-by" for patch 1 and patch 2 are
-> kept in v5, as there are only small changes to commit messages of the two
-> patches.)
-> 
-> v5:
-> added patch 2 and 4 for mdev device part of migration_version attribute.
-> 
-> v4:
-> 1. fixed indentation/spell errors, reworded several error messages
-> 2. added a missing memory free for error handling in patch 2
-> 
-> v3:
-> 1. renamed version to migration_version
-> 2. let errno to be freely defined by vendor driver
-> 3. let checking mdev_type be prerequisite of migration compatibility check
-> 4. reworded most part of patch 1
-> 5. print detailed error log in patch 2 and generate migration_version
-> string at init time
-> 
-> v2:
-> 1. renamed patched 1
-> 2. made definition of device version string completely private to vendor
-> driver
-> 3. reverted changes to sample mdev drivers
-> 4. described intent and usage of version attribute more clearly.
-> 
-> 
-> Yan Zhao (4):
->   vfio/mdev: add migration_version attribute for mdev (under mdev_type
->     node)
->   drm/i915/gvt: export migration_version to mdev sysfs (under mdev_type
->     node)
->   vfio/mdev: add migration_version attribute for mdev (under mdev device
->     node)
->   drm/i915/gvt: export migration_version to mdev sysfs (under mdev
->     device node)
-> 
->  .../driver-api/vfio-mediated-device.rst       | 183 ++++++++++++++++++
->  drivers/gpu/drm/i915/gvt/Makefile             |   2 +-
->  drivers/gpu/drm/i915/gvt/gvt.c                |  39 ++++
->  drivers/gpu/drm/i915/gvt/gvt.h                |   7 +
->  drivers/gpu/drm/i915/gvt/kvmgt.c              |  55 ++++++
->  drivers/gpu/drm/i915/gvt/migration_version.c  | 170 ++++++++++++++++
->  drivers/gpu/drm/i915/gvt/vgpu.c               |  13 +-
->  7 files changed, 466 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/gpu/drm/i915/gvt/migration_version.c
-> 
+v5:
+-merge all 3 patches into one patch  (Zhenyu Wang)
+
+v4:
+- split the series into 3 patches.
+- don't turn on optimization until last patch in this series (Kevin Tian)
+- define lrca to be atomic in this patch rather than update its type in
+the second patch (Kevin Tian)
+
+v3: updated commit message to describe engine context and context id
+clearly (Kevin Tian)
+v2: rebased to 5.6.0-rc4+Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Kevin Tian <kevin.tian@intel.com>
+Suggested-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/gtt.c       | 15 ++++++++++++
+ drivers/gpu/drm/i915/gvt/gvt.h       |  5 ++++
+ drivers/gpu/drm/i915/gvt/scheduler.c | 34 ++++++++++++++++++++++++----
+ 3 files changed, 49 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index 2a4b23f8aa74..d2b0d85b39bc 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -2341,12 +2341,27 @@ int intel_vgpu_emulate_ggtt_mmio_write(struct intel_vgpu *vgpu,
+ {
+ 	const struct intel_gvt_device_info *info = &vgpu->gvt->device_info;
+ 	int ret;
++	struct intel_vgpu_submission *s = &vgpu->submission;
++	struct intel_engine_cs *engine;
++	int i;
+ 
+ 	if (bytes != 4 && bytes != 8)
+ 		return -EINVAL;
+ 
+ 	off -= info->gtt_start_offset;
+ 	ret = emulate_ggtt_mmio_write(vgpu, off, p_data, bytes);
++
++	/* if ggtt of last submitted context is written,
++	 * that context is probably got unpinned.
++	 * Set last shadowed ctx to invalid.
++	 */
++	for_each_engine(engine, vgpu->gvt->gt, i) {
++		if (!s->last_ctx[i].valid)
++			continue;
++
++		if (s->last_ctx[i].lrca == (off >> info->gtt_entry_size_shift))
++			s->last_ctx[i].valid = false;
++	}
+ 	return ret;
+ }
+ 
+diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
+index 58c2c7932e3f..a4a6db6b7f90 100644
+--- a/drivers/gpu/drm/i915/gvt/gvt.h
++++ b/drivers/gpu/drm/i915/gvt/gvt.h
+@@ -163,6 +163,11 @@ struct intel_vgpu_submission {
+ 	const struct intel_vgpu_submission_ops *ops;
+ 	int virtual_submission_interface;
+ 	bool active;
++	struct {
++		u32 lrca;
++		bool valid;
++		u64 ring_context_gpa;
++	} last_ctx[I915_NUM_ENGINES];
+ };
+ 
+ struct intel_vgpu {
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
+index f939ec3be39e..93326f0109a6 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.c
++++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+@@ -135,7 +135,10 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
+ 	unsigned long context_gpa, context_page_num;
+ 	unsigned long gpa_base; /* first gpa of consecutive GPAs */
+ 	unsigned long gpa_size; /* size of consecutive GPAs */
++	struct intel_vgpu_submission *s = &vgpu->submission;
+ 	int i;
++	bool skip = false;
++	int ring_id = workload->engine->id;
+ 
+ 	GEM_BUG_ON(!intel_context_is_pinned(ctx));
+ 
+@@ -175,13 +178,31 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
+ 
+ 	sr_oa_regs(workload, (u32 *)shadow_ring_context, false);
+ 
+-	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val))
+-		return 0;
++	gvt_dbg_sched("ring %s workload lrca %x, ctx_id %x, ctx gpa %llx",
++			workload->engine->name, workload->ctx_desc.lrca,
++			workload->ctx_desc.context_id,
++			workload->ring_context_gpa);
+ 
+-	gvt_dbg_sched("ring %s workload lrca %x",
+-		      workload->engine->name,
+-		      workload->ctx_desc.lrca);
++	/* only need to ensure this context is not pinned/unpinned during the
++	 * period from last submission to this this submission.
++	 * Upon reaching this function, the currently submitted context is not
++	 * supposed to get unpinned. If a misbehaving guest driver ever does
++	 * this, it would corrupt itself.
++	 */
++	if (s->last_ctx[ring_id].valid &&
++			(s->last_ctx[ring_id].lrca ==
++				workload->ctx_desc.lrca) &&
++			(s->last_ctx[ring_id].ring_context_gpa ==
++				workload->ring_context_gpa))
++		skip = true;
+ 
++	s->last_ctx[ring_id].lrca = workload->ctx_desc.lrca;
++	s->last_ctx[ring_id].ring_context_gpa = workload->ring_context_gpa;
++
++	if (IS_RESTORE_INHIBIT(shadow_ring_context->ctx_ctrl.val) || skip)
++		return 0;
++
++	s->last_ctx[ring_id].valid = false;
+ 	context_page_num = workload->engine->context_size;
+ 	context_page_num = context_page_num >> PAGE_SHIFT;
+ 
+@@ -220,6 +241,7 @@ static int populate_shadow_context(struct intel_vgpu_workload *workload)
+ 		gpa_size = I915_GTT_PAGE_SIZE;
+ 		dst = context_base + (i << I915_GTT_PAGE_SHIFT);
+ 	}
++	s->last_ctx[ring_id].valid = true;
+ 	return 0;
+ }
+ 
+@@ -1297,6 +1319,8 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
+ 	atomic_set(&s->running_workload_num, 0);
+ 	bitmap_zero(s->tlb_handle_pending, I915_NUM_ENGINES);
+ 
++	memset(s->last_ctx, 0, sizeof(s->last_ctx));
++
+ 	i915_vm_put(&ppgtt->vm);
+ 	return 0;
+ 
+-- 
+2.17.1
 
 _______________________________________________
 intel-gvt-dev mailing list
