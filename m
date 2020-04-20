@@ -2,45 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 652161AFF8F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Apr 2020 03:34:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 267301B064F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Apr 2020 12:10:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1A5A16E125;
-	Mon, 20 Apr 2020 01:34:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D03FF6E4D2;
+	Mon, 20 Apr 2020 10:10:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 277C46E125
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CB4C46E4DD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Apr 2020 01:34:45 +0000 (UTC)
-IronPort-SDR: qMhTbiHX4f5PpTRICFbU6t0BJSwzQxincmX0PRZI/wRWL6xHW0NnhJWMNzR6NyEyUa8skXxNwQ
- 0MupU157Xrlw==
+ Mon, 20 Apr 2020 10:10:28 +0000 (UTC)
+IronPort-SDR: Ix0auaNwGeJK/QXhmj060Xz3uDBN5xbAAWz/9ZlnpsOd0wuK3KWetXw9ev5w9daEmnH540wt5M
+ tYT2ok5iCosw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Apr 2020 18:34:44 -0700
-IronPort-SDR: mm9uYTLuqw3ULYhWUSIwaiLjiK6ca7daOboSjHKj+5Z0IuEY/WGDFtohzFWgugijJkXpwe1AdE
- F3ggOZbj3jVQ==
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Apr 2020 03:10:28 -0700
+IronPort-SDR: 8WAaZpywu3L+B+KSXd2hJpANZ3JddoQLp0E4l/zsG20uLBG322gdt5maIPHzvZ95SsCSoqHybF
+ Fg2+bA6JNPHA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,405,1580803200"; d="scan'208";a="428940295"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by orsmga005.jf.intel.com with ESMTP; 19 Apr 2020 18:34:37 -0700
-Date: Sun, 19 Apr 2020 21:24:57 -0400
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH v5 0/4] introduction of migration_version attribute for
- VFIO live migration
-Message-ID: <20200420012457.GE16688@joy-OptiPlex-7040>
-References: <20200413055201.27053-1-yan.y.zhao@intel.com>
- <20200417104450.2d2f2fa9.cohuck@redhat.com>
- <20200417095202.GD16688@joy-OptiPlex-7040>
- <20200417132457.45d91fe3.cohuck@redhat.com>
+X-IronPort-AV: E=Sophos;i="5.72,406,1580803200"; d="scan'208";a="364957687"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga001.fm.intel.com with ESMTP; 20 Apr 2020 03:10:26 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jQTNh-000BlR-Mg; Mon, 20 Apr 2020 18:10:25 +0800
+Date: Mon, 20 Apr 2020 18:09:24 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt-linux:gvt-next] BUILD SUCCESS
+ fb55c735522352704c35d899d0b253453cf0e799
+Message-ID: <5e9d74d4.wVWGA03bJZ6ZkpEC%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200417132457.45d91fe3.cohuck@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,143 +49,103 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: "cjia@nvidia.com" <cjia@nvidia.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- "libvir-list@redhat.com" <libvir-list@redhat.com>,
- "Zhengxiao.zx@alibaba-inc.com" <Zhengxiao.zx@alibaba-inc.com>,
- "shuangtai.tst@alibaba-inc.com" <shuangtai.tst@alibaba-inc.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "eauger@redhat.com" <eauger@redhat.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- "eskultet@redhat.com" <eskultet@redhat.com>, "Yang,
- Ziye" <ziye.yang@intel.com>, "mlevitsk@redhat.com" <mlevitsk@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "aik@ozlabs.ru" <aik@ozlabs.ru>,
- "felipe@nutanix.com" <felipe@nutanix.com>, "Ken.Xue@amd.com" <Ken.Xue@amd.com>,
- "Tian, Kevin" <kevin.tian@intel.com>, "Zeng, Xin" <xin.zeng@intel.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "dinechin@redhat.com" <dinechin@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Liu, Changpeng" <changpeng.liu@intel.com>,
- "berrange@redhat.com" <berrange@redhat.com>, "corbet@lwn.net" <corbet@lwn.net>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>,
- "jonathan.davies@nutanix.com" <jonathan.davies@nutanix.com>, "He,
- Shaopeng" <shaopeng.he@intel.com>
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Apr 17, 2020 at 07:24:57PM +0800, Cornelia Huck wrote:
-> On Fri, 17 Apr 2020 05:52:02 -0400
-> Yan Zhao <yan.y.zhao@intel.com> wrote:
-> 
-> > On Fri, Apr 17, 2020 at 04:44:50PM +0800, Cornelia Huck wrote:
-> > > On Mon, 13 Apr 2020 01:52:01 -0400
-> > > Yan Zhao <yan.y.zhao@intel.com> wrote:
-> > >   
-> > > > This patchset introduces a migration_version attribute under sysfs of VFIO
-> > > > Mediated devices.
-> > > > 
-> > > > This migration_version attribute is used to check migration compatibility
-> > > > between two mdev devices.
-> > > > 
-> > > > Currently, it has two locations:
-> > > > (1) under mdev_type node,
-> > > >     which can be used even before device creation, but only for mdev
-> > > >     devices of the same mdev type.
-> > > > (2) under mdev device node,
-> > > >     which can only be used after the mdev devices are created, but the src
-> > > >     and target mdev devices are not necessarily be of the same mdev type
-> > > > (The second location is newly added in v5, in order to keep consistent
-> > > > with the migration_version node for migratable pass-though devices)  
-> > > 
-> > > What is the relationship between those two attributes?
-> > >   
-> > (1) is for mdev devices specifically, and (2) is provided to keep the same
-> > sysfs interface as with non-mdev cases. so (2) is for both mdev devices and
-> > non-mdev devices.
-> > 
-> > in future, if we enable vfio-pci vendor ops, (i.e. a non-mdev device
-> > is binding to vfio-pci, but is able to register migration region and do
-> > migration transactions from a vendor provided affiliate driver),
-> > the vendor driver would export (2) directly, under device node.
-> > It is not able to provide (1) as there're no mdev devices involved.
-> 
-> Ok, creating an alternate attribute for non-mdev devices makes sense.
-> However, wouldn't that rather be a case (3)? The change here only
-> refers to mdev devices.
->
-as you pointed below, (3) and (2) serve the same purpose. 
-and I think a possible usage is to migrate between a non-mdev device and
-an mdev device. so I think it's better for them both to use (2) rather
-than creating (3).
-> > 
-> > > Is existence (and compatibility) of (1) a pre-req for possible
-> > > existence (and compatibility) of (2)?
-> > >  
-> > no. (2) does not reply on (1).
-> 
-> Hm. Non-existence of (1) seems to imply "this type does not support
-> migration". If an mdev created for such a type suddenly does support
-> migration, it feels a bit odd.
-> 
-yes. but I think if the condition happens, it should be reported a bug
-to vendor driver.
-should I add a line in the doc like "vendor driver should ensure that the
-migration compatibility from migration_version under mdev_type should be
-consistent with that from migration_version under device node" ?
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-next
+branch HEAD: fb55c735522352704c35d899d0b253453cf0e799  drm/i915/gvt: skip populate shadow context if guest context not changed
 
-> (It obviously cannot be a prereq for what I called (3) above.)
-> 
-> > 
-> > > Does userspace need to check (1) or can it completely rely on (2), if
-> > > it so chooses?
-> > >  
-> > I think it can completely reply on (2) if compatibility check before
-> > mdev creation is not required.
-> > 
-> > > If devices with a different mdev type are indeed compatible, it seems
-> > > userspace can only find out after the devices have actually been
-> > > created, as (1) does not apply?  
-> > yes, I think so. 
-> 
-> How useful would it be for userspace to even look at (1) in that case?
-> It only knows if things have a chance of working if it actually goes
-> ahead and creates devices.
->
-hmm, is it useful for userspace to test the migration_version under mdev
-type before it knows what mdev device to generate ?
-like when the userspace wants to migrate an mdev device in src vm,
-but it has not created target vm and the target mdev device.
+elapsed time: 527m
 
-> > 
-> > > One of my worries is that the existence of an attribute with the same
-> > > name in two similar locations might lead to confusion. But maybe it
-> > > isn't a problem.
-> > >  
-> > Yes, I have the same feeling. but as (2) is for sysfs interface
-> > consistency, to make it transparent to userspace tools like libvirt,
-> > I guess the same name is necessary?
-> 
-> What do we actually need here, I wonder? (1) and (2) seem to serve
-> slightly different purposes, while (2) and what I called (3) have the
-> same purpose. Is it important to userspace that (1) and (2) have the
-> same name?
-so change (1) to migration_type_version and (2) to
-migration_instance_version?
-But as they are under different locations, could that location imply
-enough information?
+configs tested: 75
+configs skipped: 0
 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Thanks
-Yan
+arm64                            allyesconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm                              allmodconfig
+arm64                             allnoconfig
+arm                               allnoconfig
+sparc                            allyesconfig
+sparc64                           allnoconfig
+mips                             allmodconfig
+powerpc                             defconfig
+s390                             alldefconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                             alldefconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                          tiger_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                        generic_defconfig
+ia64                         bigsur_defconfig
+ia64                             allyesconfig
+ia64                             alldefconfig
+nios2                         3c120_defconfig
+nios2                         10m50_defconfig
+c6x                        evmc6678_defconfig
+xtensa                          iss_defconfig
+c6x                              allyesconfig
+xtensa                       common_defconfig
+openrisc                 simple_smp_defconfig
+openrisc                    or1ksim_defconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+mips                            ar7_defconfig
+mips                             allyesconfig
+mips                         64r6el_defconfig
+mips                              allnoconfig
+mips                           32r2_defconfig
+parisc                            allnoconfig
+parisc                generic-64bit_defconfig
+parisc                generic-32bit_defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+x86_64               randconfig-a001-20200420
+i386                 randconfig-a003-20200420
+x86_64               randconfig-a003-20200420
+i386                 randconfig-a002-20200420
+i386                 randconfig-a001-20200420
+x86_64               randconfig-a002-20200420
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+s390                       zfcpdump_defconfig
+s390                          debug_defconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sh                          rsk7269_defconfig
+sh                               allmodconfig
+sh                            titan_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
+x86_64                                   rhel
 
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
