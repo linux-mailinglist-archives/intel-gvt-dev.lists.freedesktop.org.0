@@ -1,67 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC9F71ADFBB
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Apr 2020 16:25:46 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 652161AFF8F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Apr 2020 03:34:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 78EFC6EC21;
-	Fri, 17 Apr 2020 14:25:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1A5A16E125;
+	Mon, 20 Apr 2020 01:34:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com
- [IPv6:2607:f8b0:4864:20::430])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 97FD16EC24
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 277C46E125
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Apr 2020 14:25:43 +0000 (UTC)
-Received: by mail-pf1-x430.google.com with SMTP id y25so1133838pfn.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Apr 2020 07:25:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel-dk.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=L6cWP5WK6ujku9y43wjaNC6S0VeElTh4yenPv8t29Ak=;
- b=gKw5eoYUIpd77RsZ9EA4/OBI5it3b4QtTk5w0WNiaVsQlhU0AvTC99Kwb6pyQrnZwb
- 8mkxqNjg6VEOZTZqnkLOebZlO/n/v5mMNjfkBB1cGO3Fx7O3pVDrmTfYyuyYufQ9ccR3
- RtPWKLjDzCOGMUWt9saeSwmpszseuFa+iiXqlLA7QMz5NdgXvU//k288EsKe0YfAzi6u
- dvmxk+qgp7K7fE2PnVT7fvqSgeWduMN7B1pblLGgZqKs3H1NpzAxQ5FN/ffFSwvnE0Dr
- z0qCKxdTOrenMDSXdIXvCN19QGBDvsZe/1e/6pTgbuMcknn8YL4CeODkrzae32Dl8ywr
- FA6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=L6cWP5WK6ujku9y43wjaNC6S0VeElTh4yenPv8t29Ak=;
- b=rbmiY4clMWI6kJDZBPNkI6CKa4AsSGDXuZfLmptIxOXQJfBA9Tq3L7ODiznktRjPK1
- H3mdDpwA4HyN8XPBgBKU6j7O0zgOYdZv0/4+l+H53MPfGNs2VtTPmJhdGieTklQy1r6y
- s0+cc/EuMsCF1BEPPXUElNIz4cARM1qpJJOT8MdStEdo3fgC7q3XPanqo1BI6lAJJQ5f
- ME6hB5NXx4uihPU/Kj6AIRoHkmJweKQVLB0Zs9MH0uuYXQbK4+zymDuJnybcxz+Bku12
- 4CLMEh6HJs9amQzIa4QQ2v1rDbU4K43g07zv8NsIc3H/G3ZVy4aGqWq/Qc0SEhsf3zYr
- 4Iug==
-X-Gm-Message-State: AGi0Pua5Op1xlVPoTZSVrAlHiaU/vKA/IGRHDaznn/eH1ZLb1EsvtxIF
- QzE+qJ9OA3sd6cB7HnU1ExshFA==
-X-Google-Smtp-Source: APiQypLk3UKQ7IlVU68RBsk4YcfumTB0+HNr5I6KmasWP50lwGXPB60OmHhJAmy9VXUBKXWGkLn5iw==
-X-Received: by 2002:a63:1662:: with SMTP id 34mr3312317pgw.117.1587133542614; 
- Fri, 17 Apr 2020 07:25:42 -0700 (PDT)
-Received: from [192.168.1.188] ([66.219.217.145])
- by smtp.gmail.com with ESMTPSA id r18sm579944pfg.120.2020.04.17.07.25.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Apr 2020 07:25:41 -0700 (PDT)
-Subject: Re: improve use_mm / unuse_mm v2
-To: Christoph Hellwig <hch@lst.de>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Andrew Morton <akpm@linux-foundation.org>
-References: <20200416053158.586887-1-hch@lst.de>
-From: Jens Axboe <axboe@kernel.dk>
-Message-ID: <8d314bc3-ea59-684d-2d34-20b152a36f4f@kernel.dk>
-Date: Fri, 17 Apr 2020 08:25:38 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ Mon, 20 Apr 2020 01:34:45 +0000 (UTC)
+IronPort-SDR: qMhTbiHX4f5PpTRICFbU6t0BJSwzQxincmX0PRZI/wRWL6xHW0NnhJWMNzR6NyEyUa8skXxNwQ
+ 0MupU157Xrlw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Apr 2020 18:34:44 -0700
+IronPort-SDR: mm9uYTLuqw3ULYhWUSIwaiLjiK6ca7daOboSjHKj+5Z0IuEY/WGDFtohzFWgugijJkXpwe1AdE
+ F3ggOZbj3jVQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,405,1580803200"; d="scan'208";a="428940295"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by orsmga005.jf.intel.com with ESMTP; 19 Apr 2020 18:34:37 -0700
+Date: Sun, 19 Apr 2020 21:24:57 -0400
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Cornelia Huck <cohuck@redhat.com>
+Subject: Re: [PATCH v5 0/4] introduction of migration_version attribute for
+ VFIO live migration
+Message-ID: <20200420012457.GE16688@joy-OptiPlex-7040>
+References: <20200413055201.27053-1-yan.y.zhao@intel.com>
+ <20200417104450.2d2f2fa9.cohuck@redhat.com>
+ <20200417095202.GD16688@joy-OptiPlex-7040>
+ <20200417132457.45d91fe3.cohuck@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200416053158.586887-1-hch@lst.de>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200417132457.45d91fe3.cohuck@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,37 +53,142 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Felipe Balbi <balbi@kernel.org>, amd-gfx@lists.freedesktop.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Felix Kuehling <Felix.Kuehling@amd.com>,
- linux-usb@vger.kernel.org, io-uring@vger.kernel.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- virtualization@lists.linux-foundation.org, linux-mm@kvack.org,
- linux-fsdevel@vger.kernel.org, Al Viro <viro@zeniv.linux.org.uk>,
- intel-gfx@lists.freedesktop.org, Alex Deucher <alexander.deucher@amd.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Wang <jasowang@redhat.com>,
- Zhi Wang <zhi.a.wang@intel.com>
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: "cjia@nvidia.com" <cjia@nvidia.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "libvir-list@redhat.com" <libvir-list@redhat.com>,
+ "Zhengxiao.zx@alibaba-inc.com" <Zhengxiao.zx@alibaba-inc.com>,
+ "shuangtai.tst@alibaba-inc.com" <shuangtai.tst@alibaba-inc.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
+ "eauger@redhat.com" <eauger@redhat.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
+ "eskultet@redhat.com" <eskultet@redhat.com>, "Yang,
+ Ziye" <ziye.yang@intel.com>, "mlevitsk@redhat.com" <mlevitsk@redhat.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "aik@ozlabs.ru" <aik@ozlabs.ru>,
+ "felipe@nutanix.com" <felipe@nutanix.com>, "Ken.Xue@amd.com" <Ken.Xue@amd.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zeng, Xin" <xin.zeng@intel.com>,
+ "dgilbert@redhat.com" <dgilbert@redhat.com>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "dinechin@redhat.com" <dinechin@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Liu, Changpeng" <changpeng.liu@intel.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "corbet@lwn.net" <corbet@lwn.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>,
+ "jonathan.davies@nutanix.com" <jonathan.davies@nutanix.com>, "He,
+ Shaopeng" <shaopeng.he@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 4/15/20 11:31 PM, Christoph Hellwig wrote:
-> Hi all,
+On Fri, Apr 17, 2020 at 07:24:57PM +0800, Cornelia Huck wrote:
+> On Fri, 17 Apr 2020 05:52:02 -0400
+> Yan Zhao <yan.y.zhao@intel.com> wrote:
 > 
-> this series improves the use_mm / unuse_mm interface by better
-> documenting the assumptions, and my taking the set_fs manipulations
-> spread over the callers into the core API.
+> > On Fri, Apr 17, 2020 at 04:44:50PM +0800, Cornelia Huck wrote:
+> > > On Mon, 13 Apr 2020 01:52:01 -0400
+> > > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> > >   
+> > > > This patchset introduces a migration_version attribute under sysfs of VFIO
+> > > > Mediated devices.
+> > > > 
+> > > > This migration_version attribute is used to check migration compatibility
+> > > > between two mdev devices.
+> > > > 
+> > > > Currently, it has two locations:
+> > > > (1) under mdev_type node,
+> > > >     which can be used even before device creation, but only for mdev
+> > > >     devices of the same mdev type.
+> > > > (2) under mdev device node,
+> > > >     which can only be used after the mdev devices are created, but the src
+> > > >     and target mdev devices are not necessarily be of the same mdev type
+> > > > (The second location is newly added in v5, in order to keep consistent
+> > > > with the migration_version node for migratable pass-though devices)  
+> > > 
+> > > What is the relationship between those two attributes?
+> > >   
+> > (1) is for mdev devices specifically, and (2) is provided to keep the same
+> > sysfs interface as with non-mdev cases. so (2) is for both mdev devices and
+> > non-mdev devices.
+> > 
+> > in future, if we enable vfio-pci vendor ops, (i.e. a non-mdev device
+> > is binding to vfio-pci, but is able to register migration region and do
+> > migration transactions from a vendor provided affiliate driver),
+> > the vendor driver would export (2) directly, under device node.
+> > It is not able to provide (1) as there're no mdev devices involved.
 > 
-> Changes since v1:
->  - drop a few patches
->  - fix a comment typo
->  - cover the newly merged use_mm/unuse_mm caller in vfio
+> Ok, creating an alternate attribute for non-mdev devices makes sense.
+> However, wouldn't that rather be a case (3)? The change here only
+> refers to mdev devices.
+>
+as you pointed below, (3) and (2) serve the same purpose. 
+and I think a possible usage is to migrate between a non-mdev device and
+an mdev device. so I think it's better for them both to use (2) rather
+than creating (3).
+> > 
+> > > Is existence (and compatibility) of (1) a pre-req for possible
+> > > existence (and compatibility) of (2)?
+> > >  
+> > no. (2) does not reply on (1).
+> 
+> Hm. Non-existence of (1) seems to imply "this type does not support
+> migration". If an mdev created for such a type suddenly does support
+> migration, it feels a bit odd.
+> 
+yes. but I think if the condition happens, it should be reported a bug
+to vendor driver.
+should I add a line in the doc like "vendor driver should ensure that the
+migration compatibility from migration_version under mdev_type should be
+consistent with that from migration_version under device node" ?
 
-You can add my reviewed-by/tested-by to the patches, passes the
-io_uring regression tests.
+> (It obviously cannot be a prereq for what I called (3) above.)
+> 
+> > 
+> > > Does userspace need to check (1) or can it completely rely on (2), if
+> > > it so chooses?
+> > >  
+> > I think it can completely reply on (2) if compatibility check before
+> > mdev creation is not required.
+> > 
+> > > If devices with a different mdev type are indeed compatible, it seems
+> > > userspace can only find out after the devices have actually been
+> > > created, as (1) does not apply?  
+> > yes, I think so. 
+> 
+> How useful would it be for userspace to even look at (1) in that case?
+> It only knows if things have a chance of working if it actually goes
+> ahead and creates devices.
+>
+hmm, is it useful for userspace to test the migration_version under mdev
+type before it knows what mdev device to generate ?
+like when the userspace wants to migrate an mdev device in src vm,
+but it has not created target vm and the target mdev device.
 
--- 
-Jens Axboe
+> > 
+> > > One of my worries is that the existence of an attribute with the same
+> > > name in two similar locations might lead to confusion. But maybe it
+> > > isn't a problem.
+> > >  
+> > Yes, I have the same feeling. but as (2) is for sysfs interface
+> > consistency, to make it transparent to userspace tools like libvirt,
+> > I guess the same name is necessary?
+> 
+> What do we actually need here, I wonder? (1) and (2) seem to serve
+> slightly different purposes, while (2) and what I called (3) have the
+> same purpose. Is it important to userspace that (1) and (2) have the
+> same name?
+so change (1) to migration_type_version and (2) to
+migration_instance_version?
+But as they are under different locations, could that location imply
+enough information?
+
+
+Thanks
+Yan
+
 
 _______________________________________________
 intel-gvt-dev mailing list
