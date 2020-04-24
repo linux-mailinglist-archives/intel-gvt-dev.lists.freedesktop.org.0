@@ -2,49 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE1EB1B3945
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Apr 2020 09:46:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DBF791B6A87
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Apr 2020 02:55:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 531556E3B2;
-	Wed, 22 Apr 2020 07:46:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 451A56E063;
+	Fri, 24 Apr 2020 00:55:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B59F36E3B2
+Received: from mail-ot1-x336.google.com (mail-ot1-x336.google.com
+ [IPv6:2607:f8b0:4864:20::336])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 42BB56E063
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Apr 2020 07:46:17 +0000 (UTC)
-IronPort-SDR: pzRFR0iScWBPEH9dNhghiZl+/53f3iu1qvaG4IqOL5OXwYyJR97jO0vM6ygsJGqIJuvWehxr9e
- /PqwL41mKgKg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2020 00:46:17 -0700
-IronPort-SDR: IiqeFspJ0CdB38qBX6Cd2a66HZX2GAU621wxqs2QmfifCRoH56m9KszWZEuthNv39GbncIKt4K
- Qz6f47zS8OYQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,412,1580803200"; d="scan'208";a="279929982"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by fmsmga004.fm.intel.com with ESMTP; 22 Apr 2020 00:46:09 -0700
-Date: Wed, 22 Apr 2020 03:36:28 -0400
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH v5 0/4] introduction of migration_version attribute for
- VFIO live migration
-Message-ID: <20200422073628.GA12879@joy-OptiPlex-7040>
-References: <20200413055201.27053-1-yan.y.zhao@intel.com>
- <20200417104450.2d2f2fa9.cohuck@redhat.com>
- <20200417095202.GD16688@joy-OptiPlex-7040>
- <20200417132457.45d91fe3.cohuck@redhat.com>
- <20200420012457.GE16688@joy-OptiPlex-7040>
- <20200420165600.4951ae82@w520.home>
- <20200421023718.GA12111@joy-OptiPlex-7040>
- <AADFC41AFE54684AB9EE6CBC0274A5D19D86DF06@SHSMSX104.ccr.corp.intel.com>
+ Fri, 24 Apr 2020 00:55:45 +0000 (UTC)
+Received: by mail-ot1-x336.google.com with SMTP id c3so9594713otp.8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Apr 2020 17:55:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=ottABPJ4xMPBoPOCkArUOIjeXh6PNi5YbFTllP5GZgM=;
+ b=qEhxPUZvt8pkI0jQCe/bKTdck0W1JPAtrjc0uBLm7eVe7nlhbw3fMspF4KfsQMOY4u
+ 3X2r5LuO3qquaed4ZM68Y98w/nIgHE1KXRu8bVzIvA7SqkUrCzpnm0b+O2a/WCoxPeXc
+ HgrYpvwTjh9F4pMvY7i0N/Op+oShABWqmPl30EULKX2Mb3qtzxZCuIc0lUJVdHvudfsS
+ 43rTAvKzzQm++DnaFJo4a2eLevbqBQ5Zvlt6IvLzxGjiPA7lvgqDGMX1v00vHiMFlo+s
+ RqjxjJxQ9MN5mTlSfAGUZDaL55J811F2L1Jk8v3gGADeg4KhoZXFjRnbRI0gMS/QBVlz
+ utjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=ottABPJ4xMPBoPOCkArUOIjeXh6PNi5YbFTllP5GZgM=;
+ b=NtCHdRupZafRwzfP2v15i4zjByhb+Uzj5EjpS9uVzTW519URKCBdKHzfu2WG3ERsrU
+ iRtk7xnJMCnAZa5/nunvQdl8jPfhWIbTyT6shHAXEKzxuOj5B1IOwvPHKaBhzcD+Z0Yk
+ kS4nlHkpQDML+R1qfSm8SPcuHzvlR5g8RNt1C19w2DANBFG2hi3v9Z1oQm6WoOrPxW3z
+ Gy9G9ivlOAzT1jT+DRo8D9HGlOIuQgAG5Z+s0NLIdKclil/qF/YCf4lM9gXJEwhUV0el
+ EOzqTHjU50IM9b+/ZfNOlsAWM+Cw1Pfo/8O/W3CRg4nl2XPs4r7avryyFsnPAOlu/7tL
+ MiZg==
+X-Gm-Message-State: AGi0PuYKNMN/PgDsP7Qg0fVnjLDPIDFNt3Kx+kuj9Ccic8SZ3g8vTiXl
+ ZQWtMtvyWGbaVej6s/GXEoo/NbHHk16NeMng6mM=
+X-Google-Smtp-Source: APiQypJk61QmN3cRO52RjTd8EU5dV2VV7x5TaSTFL7tecLM/5zOiKyjWCNzObTv/KIK0bdR6ezWZnTMFR3nJuwsaBAE=
+X-Received: by 2002:a9d:19af:: with SMTP id k44mr5644190otk.80.1587689744480; 
+ Thu, 23 Apr 2020 17:55:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D19D86DF06@SHSMSX104.ccr.corp.intel.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+From: "Rev.fr. Kassy Joseph" <ronnygriesbachg@gmail.com>
+Date: Fri, 24 Apr 2020 00:55:31 +0000
+Message-ID: <CAKbCq-OhGnXtMDvn-fF3r=vxY3c39dEp9q4mt1QLZLU20rVi1Q@mail.gmail.com>
+Subject: Awaiting
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,276 +60,92 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: Cornelia Huck <cohuck@redhat.com>, "cjia@nvidia.com" <cjia@nvidia.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- "libvir-list@redhat.com" <libvir-list@redhat.com>,
- "Zhengxiao.zx@alibaba-inc.com" <Zhengxiao.zx@alibaba-inc.com>,
- "shuangtai.tst@alibaba-inc.com" <shuangtai.tst@alibaba-inc.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "eauger@redhat.com" <eauger@redhat.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- "corbet@lwn.net" <corbet@lwn.net>, "Yang, Ziye" <ziye.yang@intel.com>,
- "mlevitsk@redhat.com" <mlevitsk@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "aik@ozlabs.ru" <aik@ozlabs.ru>,
- "felipe@nutanix.com" <felipe@nutanix.com>, "Ken.Xue@amd.com" <Ken.Xue@amd.com>,
- "Zeng, Xin" <xin.zeng@intel.com>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "jonathan.davies@nutanix.com" <jonathan.davies@nutanix.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Liu, Changpeng" <changpeng.liu@intel.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "eskultet@redhat.com" <eskultet@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, "dinechin@redhat.com" <dinechin@redhat.com>,
- "He, Shaopeng" <shaopeng.he@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: revrendfather@outlook.com
+Content-Type: multipart/mixed; boundary="===============1324353714=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Apr 21, 2020 at 08:08:49PM +0800, Tian, Kevin wrote:
-> > From: Yan Zhao
-> > Sent: Tuesday, April 21, 2020 10:37 AM
-> > 
-> > On Tue, Apr 21, 2020 at 06:56:00AM +0800, Alex Williamson wrote:
-> > > On Sun, 19 Apr 2020 21:24:57 -0400
-> > > Yan Zhao <yan.y.zhao@intel.com> wrote:
-> > >
-> > > > On Fri, Apr 17, 2020 at 07:24:57PM +0800, Cornelia Huck wrote:
-> > > > > On Fri, 17 Apr 2020 05:52:02 -0400
-> > > > > Yan Zhao <yan.y.zhao@intel.com> wrote:
-> > > > >
-> > > > > > On Fri, Apr 17, 2020 at 04:44:50PM +0800, Cornelia Huck wrote:
-> > > > > > > On Mon, 13 Apr 2020 01:52:01 -0400
-> > > > > > > Yan Zhao <yan.y.zhao@intel.com> wrote:
-> > > > > > >
-> > > > > > > > This patchset introduces a migration_version attribute under sysfs
-> > of VFIO
-> > > > > > > > Mediated devices.
-> > > > > > > >
-> > > > > > > > This migration_version attribute is used to check migration
-> > compatibility
-> > > > > > > > between two mdev devices.
-> > > > > > > >
-> > > > > > > > Currently, it has two locations:
-> > > > > > > > (1) under mdev_type node,
-> > > > > > > >     which can be used even before device creation, but only for
-> > mdev
-> > > > > > > >     devices of the same mdev type.
-> > > > > > > > (2) under mdev device node,
-> > > > > > > >     which can only be used after the mdev devices are created, but
-> > the src
-> > > > > > > >     and target mdev devices are not necessarily be of the same
-> > mdev type
-> > > > > > > > (The second location is newly added in v5, in order to keep
-> > consistent
-> > > > > > > > with the migration_version node for migratable pass-though
-> > devices)
-> > > > > > >
-> > > > > > > What is the relationship between those two attributes?
-> > > > > > >
-> > > > > > (1) is for mdev devices specifically, and (2) is provided to keep the
-> > same
-> > > > > > sysfs interface as with non-mdev cases. so (2) is for both mdev
-> > devices and
-> > > > > > non-mdev devices.
-> > > > > >
-> > > > > > in future, if we enable vfio-pci vendor ops, (i.e. a non-mdev device
-> > > > > > is binding to vfio-pci, but is able to register migration region and do
-> > > > > > migration transactions from a vendor provided affiliate driver),
-> > > > > > the vendor driver would export (2) directly, under device node.
-> > > > > > It is not able to provide (1) as there're no mdev devices involved.
-> > > > >
-> > > > > Ok, creating an alternate attribute for non-mdev devices makes sense.
-> > > > > However, wouldn't that rather be a case (3)? The change here only
-> > > > > refers to mdev devices.
-> > > > >
-> > > > as you pointed below, (3) and (2) serve the same purpose.
-> > > > and I think a possible usage is to migrate between a non-mdev device and
-> > > > an mdev device. so I think it's better for them both to use (2) rather
-> > > > than creating (3).
-> > >
-> > > An mdev type is meant to define a software compatible interface, so in
-> > > the case of mdev->mdev migration, doesn't migrating to a different type
-> > > fail the most basic of compatibility tests that we expect userspace to
-> > > perform?  IOW, if two mdev types are migration compatible, it seems a
-> > > prerequisite to that is that they provide the same software interface,
-> > > which means they should be the same mdev type.
-> > >
-> > > In the hybrid cases of mdev->phys or phys->mdev, how does a
-> > management
-> > > tool begin to even guess what might be compatible?  Are we expecting
-> > > libvirt to probe ever device with this attribute in the system?  Is
-> > > there going to be a new class hierarchy created to enumerate all
-> > > possible migrate-able devices?
-> > >
-> > yes, management tool needs to guess and test migration compatible
-> > between two devices. But I think it's not the problem only for
-> > mdev->phys or phys->mdev. even for mdev->mdev, management tool needs
-> > to
-> > first assume that the two mdevs have the same type of parent devices
-> > (e.g.their pciids are equal). otherwise, it's still enumerating
-> > possibilities.
-> > 
-> > on the other hand, for two mdevs,
-> > mdev1 from pdev1, its mdev_type is 1/2 of pdev1;
-> > mdev2 from pdev2, its mdev_type is 1/4 of pdev2;
-> > if pdev2 is exactly 2 times of pdev1, why not allow migration between
-> > mdev1 <-> mdev2.
-> 
-> How could the manage tool figure out that 1/2 of pdev1 is equivalent 
-> to 1/4 of pdev2? If we really want to allow such thing happen, the best
-> choice is to report the same mdev type on both pdev1 and pdev2.
-I think that's exactly the value of this migration_version interface.
-the management tool can take advantage of this interface to know if two
-devices are migration compatible, no matter they are mdevs, non-mdevs,
-or mix.
+--===============1324353714==
+Content-Type: multipart/alternative; boundary="0000000000003bc97905a3fed3de"
 
-as I know, (please correct me if not right), current libvirt still
-requires manually generating mdev devices, and it just duplicates src vm
-configuration to the target vm.
-for libvirt, currently it's always phys->phys and mdev->mdev (and of the
-same mdev type).
-But it does not justify that hybrid cases should not be allowed. otherwise,
-why do we need to introduce this migration_version interface and leave
-the judgement of migration compatibility to vendor driver? why not simply
-set the criteria to something like "pciids of parent devices are equal,
-and mdev types are equal" ?
+--0000000000003bc97905a3fed3de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+Querido amado,
 
-> btw mdev<->phys just brings trouble to upper stack as Alex pointed out. 
-could you help me understand why it will bring trouble to upper stack?
+Soy el reverendo padre Kassy Joseph, nac=C3=AD en Brooklyn, Nueva York, 194=
+5,
+Fui ordenado en el sacerdocio cat=C3=B3lico.
 
-I think it just needs to read src migration_version under src dev node,
-and test it in target migration version under target dev node. 
+Por favor t=C3=B3mese su tiempo para leer este mensaje, aunque nunca nos he=
+mos
+visto antes, esto no es spam, Es un mensaje real enviado a ti. Tambi=C3=A9n=
+ s=C3=A9
+que se sorprender=C3=A1 del nivel de confianza que estoy dispuesto a deposi=
+tar
+en una persona que nunca he visto ni con quien he hablado.
 
-after all, through this interface we just help the upper layer
-knowing available options through reading and testing, and they decide
-to use it or not.
+He sido sacerdote cat=C3=B3lico por m=C3=A1s de 45 a=C3=B1os. Me operaron d=
+e coraz=C3=B3n el
+20-11-2019 y los m=C3=A9dicos me acaban de informar que no puedo vivir m=C3=
+=A1s; Tuve
+una hemorragia grave despu=C3=A9s de la operaci=C3=B3n.
 
-> Can we simplify the requirement by allowing only mdev<->mdev and 
-> phys<->phys migration? If an customer does want to migrate between a 
-> mdev and phys, he could wrap physical device into a wrapped mdev 
-> instance (with the same type as the source mdev) instead of using vendor 
-> ops. Doing so does add some burden but if mdev<->phys is not dominant 
-> usage then such tradeoff might be worthywhile...
->
-If the interfaces for phys<->phys and mdev<->mdev are consistent, it makes no
-difference to phys<->mdev, right?
-I think the vendor string for a mdev device is something like:
-"Parent PCIID + mdev type + software version", and
-that for a phys device is something like:
-"PCIID + software version".
-as long as we don't migrate between devices from different vendors, it's
-easy for vendor driver to tell if a phys device is migration compatible
-to a mdev device according it supports it or not.
+Decid=C3=AD quererle todo el dinero que deposit=C3=A9 en mi cuenta bancaria=
+ la suma
+total de $8,970,000.00 (Ocho millones novecientos setenta mil D=C3=93LARES
+ESTADOS UNIDOS). Quiero que utilices esta cantidad para hacer del mundo un
+lugar mejor para los pobres y menos privilegiados, ayudar a los necesitados
+y tambi=C3=A9n ayudar a los miembros de tu familia.
 
+Tom=C3=A9 esta decisi=C3=B3n porque me criaron en un orfanato, as=C3=AD que=
+ no tengo
+familiares y actualmente estoy hospitalizado,donde estoy en tratamiento.
 
-Thanks
-Yan
-> 
-> > 
-> > 
-> > > I agree that there was a gap in the previous proposal for non-mdev
-> > > devices, but I think this bring a lot of questions that we need to
-> > > puzzle through and libvirt will need to re-evaluate how they might
-> > > decide to pick a migration target device.  For example, I'm sure
-> > > libvirt would reject any policy decisions regarding picking a physical
-> > > device versus an mdev device.  Had we previously left it that only a
-> > > layer above libvirt would select a target device and libvirt only tests
-> > > compatibility to that target device?
-> > I'm not sure if there's a layer above libvirt would select a target
-> > device. but if there is such a layer (even it's human), we need to
-> > provide an interface for them to know whether their decision is suitable
-> > for migration. The migration_version interface provides a potential to
-> > allow mdev->phys migration, even libvirt may currently reject it.
-> > 
-> > 
-> > > We also need to consider that this expands the namespace.  If we no
-> > > longer require matching types as the first level of comparison, then
-> > > vendor migration strings can theoretically collide.  How do we
-> > > coordinate that can't happen?  Thanks,
-> > yes, it's indeed a problem.
-> > could only allowing migration beteen devices from the same vendor be a
-> > good
-> > prerequisite?
-> > 
-> > Thanks
-> > Yan
-> > >
-> > > > > > > Is existence (and compatibility) of (1) a pre-req for possible
-> > > > > > > existence (and compatibility) of (2)?
-> > > > > > >
-> > > > > > no. (2) does not reply on (1).
-> > > > >
-> > > > > Hm. Non-existence of (1) seems to imply "this type does not support
-> > > > > migration". If an mdev created for such a type suddenly does support
-> > > > > migration, it feels a bit odd.
-> > > > >
-> > > > yes. but I think if the condition happens, it should be reported a bug
-> > > > to vendor driver.
-> > > > should I add a line in the doc like "vendor driver should ensure that the
-> > > > migration compatibility from migration_version under mdev_type should
-> > be
-> > > > consistent with that from migration_version under device node" ?
-> > > >
-> > > > > (It obviously cannot be a prereq for what I called (3) above.)
-> > > > >
-> > > > > >
-> > > > > > > Does userspace need to check (1) or can it completely rely on (2), if
-> > > > > > > it so chooses?
-> > > > > > >
-> > > > > > I think it can completely reply on (2) if compatibility check before
-> > > > > > mdev creation is not required.
-> > > > > >
-> > > > > > > If devices with a different mdev type are indeed compatible, it
-> > seems
-> > > > > > > userspace can only find out after the devices have actually been
-> > > > > > > created, as (1) does not apply?
-> > > > > > yes, I think so.
-> > > > >
-> > > > > How useful would it be for userspace to even look at (1) in that case?
-> > > > > It only knows if things have a chance of working if it actually goes
-> > > > > ahead and creates devices.
-> > > > >
-> > > > hmm, is it useful for userspace to test the migration_version under mdev
-> > > > type before it knows what mdev device to generate ?
-> > > > like when the userspace wants to migrate an mdev device in src vm,
-> > > > but it has not created target vm and the target mdev device.
-> > > >
-> > > > > >
-> > > > > > > One of my worries is that the existence of an attribute with the
-> > same
-> > > > > > > name in two similar locations might lead to confusion. But maybe it
-> > > > > > > isn't a problem.
-> > > > > > >
-> > > > > > Yes, I have the same feeling. but as (2) is for sysfs interface
-> > > > > > consistency, to make it transparent to userspace tools like libvirt,
-> > > > > > I guess the same name is necessary?
-> > > > >
-> > > > > What do we actually need here, I wonder? (1) and (2) seem to serve
-> > > > > slightly different purposes, while (2) and what I called (3) have the
-> > > > > same purpose. Is it important to userspace that (1) and (2) have the
-> > > > > same name?
-> > > > so change (1) to migration_type_version and (2) to
-> > > > migration_instance_version?
-> > > > But as they are under different locations, could that location imply
-> > > > enough information?
-> > > >
-> > > >
-> > > > Thanks
-> > > > Yan
-> > > >
-> > > >
-> > >
-> > _______________________________________________
-> > intel-gvt-dev mailing list
-> > intel-gvt-dev@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+Por eso he decidido contactarme con usted para que pueda hacer un buen uso
+del dinero que le har=C3=A9 a usted.
+
+(NOTE. ENGLISH LANGUAGE IS ACCEPTABLE FOR CONVERSATION)
+
+Saludos.
+
+--0000000000003bc97905a3fed3de
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Querido amado,<br><br>Soy el reverendo padre Kassy Joseph,=
+ nac=C3=AD en Brooklyn, Nueva York, 1945, Fui ordenado en el sacerdocio cat=
+=C3=B3lico.<br><br>Por favor t=C3=B3mese su tiempo para leer este mensaje, =
+aunque nunca nos hemos visto antes, esto no es spam, Es un mensaje real env=
+iado a ti. Tambi=C3=A9n s=C3=A9 que se sorprender=C3=A1 del nivel de confia=
+nza que estoy dispuesto a depositar en una persona que nunca he visto ni co=
+n quien he hablado.<br><br>He sido sacerdote cat=C3=B3lico por m=C3=A1s de =
+45 a=C3=B1os. Me operaron de coraz=C3=B3n el 20-11-2019 y los m=C3=A9dicos =
+me acaban de informar que no puedo vivir m=C3=A1s; Tuve una hemorragia grav=
+e despu=C3=A9s de la operaci=C3=B3n.<br><br>Decid=C3=AD quererle todo el di=
+nero que deposit=C3=A9 en mi cuenta bancaria la suma total de $8,970,000.00=
+ (Ocho millones novecientos setenta mil D=C3=93LARES ESTADOS UNIDOS). Quier=
+o que utilices esta cantidad para hacer del mundo un lugar mejor para los p=
+obres y menos privilegiados, ayudar a los necesitados y tambi=C3=A9n ayudar=
+ a los miembros de tu familia. <br><br>Tom=C3=A9 esta decisi=C3=B3n porque =
+me criaron en un orfanato, as=C3=AD que no tengo familiares y actualmente e=
+stoy hospitalizado,donde estoy en tratamiento.<br><br>Por eso he decidido c=
+ontactarme con usted para que pueda hacer un buen uso del dinero que le har=
+=C3=A9 a usted.<br><br>(NOTE. ENGLISH LANGUAGE IS ACCEPTABLE FOR CONVERSATI=
+ON)<br><br>Saludos.<br></div>
+
+--0000000000003bc97905a3fed3de--
+
+--===============1324353714==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1324353714==--
