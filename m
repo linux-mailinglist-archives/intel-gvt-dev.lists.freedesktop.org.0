@@ -1,40 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54FA51C27FC
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 May 2020 21:17:03 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 165D31C291C
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 May 2020 02:01:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D0FC86E088;
-	Sat,  2 May 2020 19:17:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AAD176E129;
+	Sun,  3 May 2020 00:01:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 16891 seconds by postgrey-1.36 at gabe;
- Sat, 02 May 2020 19:17:00 UTC
-Received: from vps.duracellbetray.org (slot0.duracellbetray.org [45.95.169.78])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 605776E088;
- Sat,  2 May 2020 19:17:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=duracellbetray.org; s=mail; h=Content-Transfer-Encoding:Content-Type:
- Message-ID:Reply-To:Subject:To:From:Date:MIME-Version:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=WG9IZ2tCpCjzoteI7CzthaG2jRUEMJ6Skzo6TpgFeOI=; b=bbcgookZ8DR+Uhd5s43ltYDVun
- T5NLYUwpq2er7XTAsyqBeVKuP9CwktAdE3nNtzIjhmty52QbtfkHncgpvZP4n9Vnq7WoFkD8YkGbB
- MC6t5Gz/jS3ZtZ/qHX6O0HT5XFz96UgEPssIWo+zWKlTco/LtrHDBWBQ376Nal1L6bP0=;
-Received: from [127.0.0.1] (helo=localhost)
- by vps.duracellbetray.org with esmtp (Exim 4.92.3)
- (envelope-from <info@duracellbetray.org>)
- id 1jUtBA-0004Nl-Cw; Sat, 02 May 2020 10:31:44 -0400
+X-Greylist: delayed 1376 seconds by postgrey-1.36 at gabe;
+ Sun, 03 May 2020 00:01:37 UTC
+Received: from oogw0206.ocn.ad.jp (oogw0206.ocn.ad.jp [153.153.62.7])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2A30A6E129;
+ Sun,  3 May 2020 00:01:37 +0000 (UTC)
+Received: from cmn-spm-mts-002c1.ocn.ad.jp (cmn-spm-mts-002c1.ocn.ad.jp
+ [153.153.67.133])
+ by oogw0206.ocn.ad.jp (Postfix) with ESMTP id BDDC7B806DD;
+ Sun,  3 May 2020 08:38:40 +0900 (JST)
+Received: from mgw-vc-mts-005c1.ocn.ad.jp ([153.138.238.156])
+ by cmn-spm-mts-002c1.ocn.ad.jp with ESMTP
+ id V1bLjCstJijnIV1iSjqdot; Sun, 03 May 2020 08:38:40 +0900
+X-BIZ-RELAY: yes
+Received: from sgs-vcgw110.ocn.ad.jp ([153.149.236.73])
+ by mgw-vc-mts-005c1.ocn.ad.jp with ESMTP
+ id V1iSjAhl3MNjmV1iSj8Pe3; Sun, 03 May 2020 08:38:40 +0900
+Received: from c157664e.mwprem.net (c157664e.mwprem.net [60.43.151.183])
+ by sgs-vcgw110.ocn.ad.jp (Postfix) with SMTP id B0FA082027B;
+ Sun,  3 May 2020 08:38:38 +0900 (JST)
+From: "Reem al-Hashimi"<family@matsudo-shakyo.com>
+Subject: Re: Thanks For Understanding
+Date: Sat, 2 May 2020 23:38:38 -0000
 MIME-Version: 1.0
-Date: Sat, 02 May 2020 07:31:44 -0700
-From: "Mr. Okrapah Adjei" <info@duracellbetray.org>
-To: undisclosed-recipients:;
-Subject: Product inquiry
-User-Agent: Roundcube Webmail/1.4.3
-Message-ID: <28a7995402e45f802da4ab7f8df356d6@duracellbetray.org>
-X-Sender: info@duracellbetray.org
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200502233836.E8492E1313@c157664e.mwprem.net>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,25 +49,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: okrapahadjei233@gmail.com
+Reply-To: reemhashimi2020@daum.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Sir,
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds assist Corona virus Symptoms and Causes.
 
-We got your company information through an exhaustive search.
+Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
-Our scope is basically to search for foreign companies to bid for 
-contract supply on commission basis.
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
 
-We are interested in buying your products in a larger quantity if only 
-you can supply and open for business.
-
-Best Regard,
-Mr. Okrapah Adjei
-CEO
+If you can handle the fund in a good investment. reply on this email only: reemalhashimi@daum.net
+Regards,
+Ms. Reem
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
