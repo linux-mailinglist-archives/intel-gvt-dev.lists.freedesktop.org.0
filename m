@@ -2,57 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A07BD1C2AFC
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 May 2020 11:45:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D73821C2D28
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 May 2020 17:01:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 49B4A6E153;
-	Sun,  3 May 2020 09:45:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8A2856E255;
+	Sun,  3 May 2020 15:00:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 420 seconds by postgrey-1.36 at gabe;
- Sun, 03 May 2020 09:45:02 UTC
-Received: from lin1.datadns.net (lin1.datadns.net [163.172.229.9])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 64CEF6E14C;
- Sun,  3 May 2020 09:45:02 +0000 (UTC)
-Received: from localhost (unknown [127.0.0.1])
- by lin1.datadns.net (Postfix) with ESMTP id 7B72147399E4;
- Sun,  3 May 2020 09:37:59 +0000 (UTC)
-Authentication-Results: lin1.datadns.net;
- spf=pass (sender IP is 127.0.0.1) smtp.mailfrom=bekiryilmaz@gencsanahsap.com
- smtp.helo=localhost
-Received-SPF: pass (lin1.datadns.net: localhost is always allowed.)
- client-ip=127.0.0.1; envelope-from=bekiryilmaz@gencsanahsap.com;
- helo=localhost; 
-X-Spam-Flag: NO
-X-Spam-Score: -0.999
-X-Spam-Level: 
-X-Spam-Status: No, score=-0.999 tagged_above=-9999 required=7
- tests=[ALL_TRUSTED=-1, HTML_MESSAGE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001] autolearn=unavailable autolearn_force=no
-Received: from lin1.datadns.net ([127.0.0.1])
- by localhost (lin1.datadns.net [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u9EYe8LhCimA; Sun,  3 May 2020 12:37:58 +0300 (+03)
-Received: from webmail.gencsanahsap.com (localhost [IPv6:::1])
- by lin1.datadns.net (Postfix) with ESMTPSA id 0D8F147399C4;
- Sun,  3 May 2020 12:37:27 +0300 (+03)
-Received-SPF: pass (lin1.datadns.net: connection is authenticated)
+Received: from mail-io1-xd43.google.com (mail-io1-xd43.google.com
+ [IPv6:2607:f8b0:4864:20::d43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DC8CC6E258
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun,  3 May 2020 15:00:58 +0000 (UTC)
+Received: by mail-io1-xd43.google.com with SMTP id z2so9682948iol.11
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 03 May 2020 08:00:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=NbnYQBMbCFH2fiBch/yBDq0jiarN16SZNVZ+05GPUNc=;
+ b=QHm2tfSZduQrvJgwf4AB03T7wyxey+N5IJPUpip1hCZRloePlpbYhE7YcFb8xmfJNC
+ /NL2tMBDTU3SNiCl2wH5eGNLj9309I5UKP2wWFkg/SOnjyyS+D4JRdOyAGD9ld2HX2xF
+ Fw+2cxlH4+RjRBk7qWTROVgnggsfntJJLJFzwxmOG5xEWMOAXuDcZVSJH1xVPkBml55j
+ 8SmUz30ltiFLsQqNHeR/ivpuagwwy5wtSPf6cUpueV98UnpbTnDxJfnmvZ9xhBT+DUxk
+ 8TguffSQHBdKu+GSfKOoa6jiIA+oM6oTGIM57I2+3VHppF5yvhEmSWvZ/2kXIcUYSToh
+ 9lWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=NbnYQBMbCFH2fiBch/yBDq0jiarN16SZNVZ+05GPUNc=;
+ b=QvZEFjLnj2YhGydIqSAUXNzLBbngEn8AFcSoJ+hIa4XI5ygi9MBMqOAuhz9LaIF5q3
+ 4hJkKLeyZ3YvlcYG/PJq7K4Bie3OEvFErjLYPqFlD6eV7ByaORPl6gGpN0AwuDFwuvIn
+ q/OPv8Xa2fZ0VEOUw1ODJ9MQqnRZ2+X8KPLk5+X5F70jqQWalwfWvQeJedQTOxfldIIM
+ FJDbW8XxAeqrtnlGZ1XDruShBqjv7Hxki+LI6SrWSsfO+Ub8WKVKxdRCI+/owmj+jQ1M
+ vMxD8bDcSVEelxxdqheubHjDt34VSqFFFmgWI9jhvh5eBUB/XezXGlcOKzQo5+L0S6bV
+ C09g==
+X-Gm-Message-State: AGi0PuaI9oHu5kHU1x2Uzv42wRcx2WNWVzvwmqWmptnoWlrYUoS0trkn
+ 2qmTbPgBEw2a7oNdmOf3io6kzY2huaez5zeKNv/TXgQEtP1HkdiP5d4=
+X-Google-Smtp-Source: APiQypJ5fo2aaORxL5i8tu7+Gtc+DrJxhsiX+GMlzh2XoQLPBEHlyvfMOO8DKvpgtSB3nc50OIGo6QfIv51AM/0YTa8=
+X-Received: by 2002:a6b:5507:: with SMTP id j7mr11403692iob.90.1588518058170; 
+ Sun, 03 May 2020 08:00:58 -0700 (PDT)
 MIME-Version: 1.0
-Date: Sun, 03 May 2020 10:37:27 +0100
-From: "Nael M. Al Homoud" <bekiryilmaz@gencsanahsap.com>
+From: Amelia Ibrahim <ameliaibrahim520@gmail.com>
+Date: Sun, 3 May 2020 16:00:47 +0100
+Message-ID: <CAGtvjUh-AJ844ZwOa=tUunhQu_YqsGZ5=Kj846JFRgbqkqgs_g@mail.gmail.com>
+Subject: Hello
 To: undisclosed-recipients:;
-Subject: Investment Proposal
-Mail-Reply-To: sales1@wdnplastics.com
-In-Reply-To: <42ff8ca8d00b81bcdac0749518104449@gencsanahsap.com>
-References: <d0ab1d2a7a40a038009de0dc43f92931@simabresin.com>
- <2e0d5529dcee4b74df782485306e30e3@artexsaigon.com.vn>
- <a277f3adbe5c640f9cf7572a4e079404@artexsaigon.com.vn>
- <4075068bf4779266188dc7ad89016252@artexsaigon.com.vn>
- <688f98176d695b3faed8339db1431c7d@huzurgida.com.tr>
- <42153c6d7dc567784a0ade618064a86a@artexsaigon.com.vn>
- <42ff8ca8d00b81bcdac0749518104449@gencsanahsap.com>
-Message-ID: <8b15bd74bdb7051524b0d5b12443847c@gencsanahsap.com>
-X-Sender: bekiryilmaz@gencsanahsap.com
-User-Agent: Roundcube Webmail/1.3.8
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,55 +59,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: sales1@wdnplastics.com
-Content-Type: multipart/mixed; boundary="===============2081783619=="
+Content-Type: multipart/mixed; boundary="===============2037386307=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============2081783619==
-Content-Type: multipart/alternative;
- boundary="=_626e920ebb093e4b08293c3d1570f089"
+--===============2037386307==
+Content-Type: multipart/alternative; boundary="000000000000939fc605a4bfae08"
 
---=_626e920ebb093e4b08293c3d1570f089
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset=US-ASCII
+--000000000000939fc605a4bfae08
+Content-Type: text/plain; charset="UTF-8"
 
-Good day,
+Hello, I will like to talk with you
 
-My associate from China wants to discuss a business investment deal with
-you. I awaiting your response to enable us discuss about this business
-investment
+--000000000000939fc605a4bfae08
+Content-Type: text/html; charset="UTF-8"
 
-Nael M. Al Homoud
-Executive Director & High Investment Committee Member@
-The Arab Investment Co
-www.taic.com [1]
+<div dir="ltr">Hello, I will like to talk with you<br></div>
 
-  
+--000000000000939fc605a4bfae08--
 
-Links:
-------
-[1] http://www.taic.com
---=_626e920ebb093e4b08293c3d1570f089
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html; charset=UTF-8
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3DUTF-8" /></head><body style=3D'font-size: 10pt; font-family: Verdana,Gen=
-eva,sans-serif'>
-<p>Good day,<br /><br />My associate from China wants to discuss a business=
- investment deal with you. I awaiting your response to enable us discuss ab=
-out this business investment<br /><br /><br />Nael M. Al Homoud<br />Execut=
-ive Director &amp; High Investment Committee Member@<br />The Arab Investme=
-nt Co<br /><a href=3D"http://www.taic.com" target=3D"_blank" rel=3D"noopene=
-r noreferrer">www.taic.com</a></p>
-<div>&nbsp;</div>
-
-</body></html>
-
---=_626e920ebb093e4b08293c3d1570f089--
-
---===============2081783619==
+--===============2037386307==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -124,4 +89,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============2081783619==--
+--===============2037386307==--
