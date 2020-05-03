@@ -1,42 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 165D31C291C
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 May 2020 02:01:40 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A07BD1C2AFC
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 May 2020 11:45:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AAD176E129;
-	Sun,  3 May 2020 00:01:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 49B4A6E153;
+	Sun,  3 May 2020 09:45:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1376 seconds by postgrey-1.36 at gabe;
- Sun, 03 May 2020 00:01:37 UTC
-Received: from oogw0206.ocn.ad.jp (oogw0206.ocn.ad.jp [153.153.62.7])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2A30A6E129;
- Sun,  3 May 2020 00:01:37 +0000 (UTC)
-Received: from cmn-spm-mts-002c1.ocn.ad.jp (cmn-spm-mts-002c1.ocn.ad.jp
- [153.153.67.133])
- by oogw0206.ocn.ad.jp (Postfix) with ESMTP id BDDC7B806DD;
- Sun,  3 May 2020 08:38:40 +0900 (JST)
-Received: from mgw-vc-mts-005c1.ocn.ad.jp ([153.138.238.156])
- by cmn-spm-mts-002c1.ocn.ad.jp with ESMTP
- id V1bLjCstJijnIV1iSjqdot; Sun, 03 May 2020 08:38:40 +0900
-X-BIZ-RELAY: yes
-Received: from sgs-vcgw110.ocn.ad.jp ([153.149.236.73])
- by mgw-vc-mts-005c1.ocn.ad.jp with ESMTP
- id V1iSjAhl3MNjmV1iSj8Pe3; Sun, 03 May 2020 08:38:40 +0900
-Received: from c157664e.mwprem.net (c157664e.mwprem.net [60.43.151.183])
- by sgs-vcgw110.ocn.ad.jp (Postfix) with SMTP id B0FA082027B;
- Sun,  3 May 2020 08:38:38 +0900 (JST)
-From: "Reem al-Hashimi"<family@matsudo-shakyo.com>
-Subject: Re: Thanks For Understanding
-Date: Sat, 2 May 2020 23:38:38 -0000
+X-Greylist: delayed 420 seconds by postgrey-1.36 at gabe;
+ Sun, 03 May 2020 09:45:02 UTC
+Received: from lin1.datadns.net (lin1.datadns.net [163.172.229.9])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 64CEF6E14C;
+ Sun,  3 May 2020 09:45:02 +0000 (UTC)
+Received: from localhost (unknown [127.0.0.1])
+ by lin1.datadns.net (Postfix) with ESMTP id 7B72147399E4;
+ Sun,  3 May 2020 09:37:59 +0000 (UTC)
+Authentication-Results: lin1.datadns.net;
+ spf=pass (sender IP is 127.0.0.1) smtp.mailfrom=bekiryilmaz@gencsanahsap.com
+ smtp.helo=localhost
+Received-SPF: pass (lin1.datadns.net: localhost is always allowed.)
+ client-ip=127.0.0.1; envelope-from=bekiryilmaz@gencsanahsap.com;
+ helo=localhost; 
+X-Spam-Flag: NO
+X-Spam-Score: -0.999
+X-Spam-Level: 
+X-Spam-Status: No, score=-0.999 tagged_above=-9999 required=7
+ tests=[ALL_TRUSTED=-1, HTML_MESSAGE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001] autolearn=unavailable autolearn_force=no
+Received: from lin1.datadns.net ([127.0.0.1])
+ by localhost (lin1.datadns.net [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id u9EYe8LhCimA; Sun,  3 May 2020 12:37:58 +0300 (+03)
+Received: from webmail.gencsanahsap.com (localhost [IPv6:::1])
+ by lin1.datadns.net (Postfix) with ESMTPSA id 0D8F147399C4;
+ Sun,  3 May 2020 12:37:27 +0300 (+03)
+Received-SPF: pass (lin1.datadns.net: connection is authenticated)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20200502233836.E8492E1313@c157664e.mwprem.net>
+Date: Sun, 03 May 2020 10:37:27 +0100
+From: "Nael M. Al Homoud" <bekiryilmaz@gencsanahsap.com>
+To: undisclosed-recipients:;
+Subject: Investment Proposal
+Mail-Reply-To: sales1@wdnplastics.com
+In-Reply-To: <42ff8ca8d00b81bcdac0749518104449@gencsanahsap.com>
+References: <d0ab1d2a7a40a038009de0dc43f92931@simabresin.com>
+ <2e0d5529dcee4b74df782485306e30e3@artexsaigon.com.vn>
+ <a277f3adbe5c640f9cf7572a4e079404@artexsaigon.com.vn>
+ <4075068bf4779266188dc7ad89016252@artexsaigon.com.vn>
+ <688f98176d695b3faed8339db1431c7d@huzurgida.com.tr>
+ <42153c6d7dc567784a0ade618064a86a@artexsaigon.com.vn>
+ <42ff8ca8d00b81bcdac0749518104449@gencsanahsap.com>
+Message-ID: <8b15bd74bdb7051524b0d5b12443847c@gencsanahsap.com>
+X-Sender: bekiryilmaz@gencsanahsap.com
+User-Agent: Roundcube Webmail/1.3.8
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,22 +65,63 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: reemhashimi2020@daum.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: sales1@wdnplastics.com
+Content-Type: multipart/mixed; boundary="===============2081783619=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds assist Corona virus Symptoms and Causes.
+--===============2081783619==
+Content-Type: multipart/alternative;
+ boundary="=_626e920ebb093e4b08293c3d1570f089"
 
-Am a single Arab women and serving as a minister, there is a limit to my personal income and investment level and  For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+--=_626e920ebb093e4b08293c3d1570f089
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+Good day,
 
-If you can handle the fund in a good investment. reply on this email only: reemalhashimi@daum.net
-Regards,
-Ms. Reem
+My associate from China wants to discuss a business investment deal with
+you. I awaiting your response to enable us discuss about this business
+investment
+
+Nael M. Al Homoud
+Executive Director & High Investment Committee Member@
+The Arab Investment Co
+www.taic.com [1]
+
+  
+
+Links:
+------
+[1] http://www.taic.com
+--=_626e920ebb093e4b08293c3d1570f089
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8" /></head><body style=3D'font-size: 10pt; font-family: Verdana,Gen=
+eva,sans-serif'>
+<p>Good day,<br /><br />My associate from China wants to discuss a business=
+ investment deal with you. I awaiting your response to enable us discuss ab=
+out this business investment<br /><br /><br />Nael M. Al Homoud<br />Execut=
+ive Director &amp; High Investment Committee Member@<br />The Arab Investme=
+nt Co<br /><a href=3D"http://www.taic.com" target=3D"_blank" rel=3D"noopene=
+r noreferrer">www.taic.com</a></p>
+<div>&nbsp;</div>
+
+</body></html>
+
+--=_626e920ebb093e4b08293c3d1570f089--
+
+--===============2081783619==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============2081783619==--
