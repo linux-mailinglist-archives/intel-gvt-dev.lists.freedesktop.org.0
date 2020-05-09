@@ -1,57 +1,41 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A438A1CBDF3
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 May 2020 07:52:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AEC41CC10C
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 May 2020 13:39:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4D0C86E2DD;
-	Sat,  9 May 2020 05:52:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E3F5F6E32C;
+	Sat,  9 May 2020 11:39:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ADE126E2DD
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 27A276E32C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  9 May 2020 05:52:49 +0000 (UTC)
-IronPort-SDR: She31qQcBemIGo/SDaZh9vYT4PqVc2OYWBss4D0KFZ94aDh26k0YBzrSoTpIN2riD31jLW4NIk
- xwdg0UQKMWuQ==
+ Sat,  9 May 2020 11:39:23 +0000 (UTC)
+IronPort-SDR: iuHGREGBUCTmRFx9Wyy2JQkg/2SHjlRzDUzmUVsKOjM7seV0lXnw6WIeqUgiQX/3G6djVRG+n2
+ DRMEBRZtE/tg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 May 2020 22:52:49 -0700
-IronPort-SDR: QkcKsocizdCzein9EglMAlhB8WNaemJxujYRo/oJRRGIYJEYuU9bpMV2RlaRmojcQVXWJ7XynN
- NEoPr1gJN9Ew==
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 May 2020 04:39:22 -0700
+IronPort-SDR: 8QX4TM34XbgHcbVrhjJl9j2rPNbF0EtGhnWf4zURQBNSDwsdkuho7Q57m/kS/+dS63haq21S0K
+ MAQ7Z+pfA3nQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,370,1583222400"; d="scan'208";a="250657810"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by fmsmga007.fm.intel.com with ESMTP; 08 May 2020 22:52:48 -0700
-Received: from shsmsx108.ccr.corp.intel.com (10.239.4.97) by
- FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 8 May 2020 22:52:48 -0700
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.210]) by
- SHSMSX108.ccr.corp.intel.com ([169.254.8.95]) with mapi id 14.03.0439.000;
- Sat, 9 May 2020 13:52:44 +0800
-From: "Zhang, Xiong Y" <xiong.y.zhang@intel.com>
+X-IronPort-AV: E=Sophos;i="5.73,371,1583222400"; d="scan'208";a="250706707"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 09 May 2020 04:39:21 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jXNpA-000225-BJ; Sat, 09 May 2020 19:39:20 +0800
+Date: Sat, 09 May 2020 19:38:35 +0800
+From: kbuild test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: RE: [PATCH] drm/i915/gvt: Fix kernel oops for 3-level ppgtt guest
-Thread-Topic: [PATCH] drm/i915/gvt: Fix kernel oops for 3-level ppgtt guest
-Thread-Index: AQHWI40QN1fxKiNhjkOqerANxdQWF6id+YkQ//+W8QCAAQCWAIAAs1Ug
-Date: Sat, 9 May 2020 05:52:43 +0000
-Message-ID: <8082FF9BCB2B054996454E47167FF4EC2798D6F5@SHSMSX104.ccr.corp.intel.com>
-References: <20200506095918.124913-1-zhenyuw@linux.intel.com>
- <8082FF9BCB2B054996454E47167FF4EC2798C4AE@SHSMSX104.ccr.corp.intel.com>
- <20200508115018.GE18545@zhen-hp.sh.intel.com>
- <20200509030840.GK18545@zhen-hp.sh.intel.com>
-In-Reply-To: <20200509030840.GK18545@zhen-hp.sh.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.239.127.40]
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ 040ec9ade447386879798b241ba612f4698c8381
+Message-ID: <5eb6963b.pc0mMlIqQuP2AEES%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -65,104 +49,114 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "Zhang, Xiong Y" <xiong.y.zhang@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> On 2020.05.08 19:50:18 +0800, Zhenyu Wang wrote:
-> > On 2020.05.08 11:13:38 +0000, Zhang, Xiong Y wrote:
-> > > > -----Original Message-----
-> > > > From: intel-gvt-dev <intel-gvt-dev-bounces@lists.freedesktop.org>
-> > > > On Behalf Of Zhenyu Wang
-> > > > Sent: Wednesday, May 6, 2020 5:59 PM
-> > > > To: intel-gvt-dev@lists.freedesktop.org
-> > > > Subject: [PATCH] drm/i915/gvt: Fix kernel oops for 3-level ppgtt
-> > > > guest
-> > > >
-> > > > As i915 won't allocate extra PDP for current default PML4 table,
-> > > > so for 3-level ppgtt guest, we would hit kernel pointer access failure on
-> extra PDP pointers.
-> > > > So this trys to bypass that now.
-> > > > It won't impact real shadow PPGTT setup, so guest context still works.
-> > > >
-> > > > This is verified on 4.15 guest kernel with i915.enable_ppgtt=1 to
-> > > > force on old aliasing ppgtt behavior.
-> > > >
-> > > > Fixes: 4f15665ccbba ("drm/i915: Add ppgtt to GVT GEM context")
-> > > > Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> > > > ---
-> > > >  drivers/gpu/drm/i915/gvt/scheduler.c | 6 +++++-
-> > > >  1 file changed, 5 insertions(+), 1 deletion(-)
-> > > >
-> > > > diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c
-> > > > b/drivers/gpu/drm/i915/gvt/scheduler.c
-> > > > index 9c3558489d17..6ab1d95c1fae 100644
-> > > > --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> > > > +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> > > > @@ -420,7 +420,11 @@ static void
-> > > > set_context_ppgtt_from_shadow(struct
-> > > > intel_vgpu_workload *workload,
-> > > >  		for (i = 0; i < GVT_RING_CTX_NR_PDPS; i++) {
-> > > >  			struct i915_page_directory * const pd =
-> > > >  				i915_pd_entry(ppgtt->pd, i);
-> > > > -
-> > > > +			/* skip now as current i915 ppgtt alloc won't allocate
-> > > > +			   top level pdp for non 4-level table, won't impact
-> > > > +			   shadow ppgtt. */
-> > > > +			if (!pd)
-> > > > +				break;
-> > > [Zhang, Xiong Y]  does it  exist in older kernel only ?  current staging code
-> allocate 4 pdp for non 4-level table.
-> >
-> > But in all current case we'll only allocate for pml4 as it checks hw info.
-> >
-> > > I915_context_ppgtt_root_restore()  have the same issue, it should be
-> modified also.
-> >
-> > yeah, missed that although not shown in my test..
-> >
-> 
-> Double checked that ppgtt_root_save/restore is not relevant here, which is
-> only for shadow ctx that always align with i915 setup e.g in pml4.
-> But in this case for 3-level guest, we tried to directly set pdp ptr which is not
-> allocated in host pml4 setup. So have to skip that and update shadow ctx
-> state for 3-level pdp still works ok.
-[Zhang, Xiong Y] OK.
-Reviewed-by: Xiong Zhang <xiong.y.zhang@intel.com>
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
+branch HEAD: 040ec9ade447386879798b241ba612f4698c8381  gvt-staging: 2020y-05m-09d-10h-25m-17s CST integration manifest
 
-thanks
-> 
-> > > >  			px_dma(pd) = mm->ppgtt_mm.shadow_pdps[i];
-> > > >  		}
-> > > >  	}
-> > > > --
-> > > > 2.26.2
-> > > >
-> > > > _______________________________________________
-> > > > intel-gvt-dev mailing list
-> > > > intel-gvt-dev@lists.freedesktop.org
-> > > > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-> >
-> > --
-> > Open Source Technology Center, Intel ltd.
-> >
-> > $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-> 
-> 
-> 
-> > _______________________________________________
-> > intel-gvt-dev mailing list
-> > intel-gvt-dev@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-> 
-> 
-> --
-> Open Source Technology Center, Intel ltd.
-> 
-> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+elapsed time: 547m
+
+configs tested: 86
+configs skipped: 1
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+m68k                                defconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                             allyesconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+microblaze                       allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a005-20200509
+i386                 randconfig-a004-20200509
+i386                 randconfig-a003-20200509
+i386                 randconfig-a002-20200509
+i386                 randconfig-a001-20200509
+i386                 randconfig-a006-20200509
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
