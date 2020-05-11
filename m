@@ -2,39 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 469C31CE156
+	by mail.lfdr.de (Postfix) with ESMTPS id 948BD1CE157
 	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 May 2020 19:13:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EC49B6E50C;
-	Mon, 11 May 2020 17:13:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 01DB06E50D;
+	Mon, 11 May 2020 17:13:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5E74A6E520
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6B1C96E51A
  for <intel-gvt-dev@lists.freedesktop.org>;
  Mon, 11 May 2020 17:13:36 +0000 (UTC)
-IronPort-SDR: gHm548V0YlodLLRMbPwMsTiDSDKAuxsRsfHh8vsxGHv40UmGdl8Fr0LzLvH/79pWRGbKFX/C+q
- grFMoW/2uJTA==
+IronPort-SDR: M+d+2NDzqIPYt7AsCy/nnFHqiKzHGTujnh2jkBQ/xGd5upxsBpdwKnQnbLp1KorlAxFyu9mlDO
+ zTMWAKx78iDw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  11 May 2020 10:13:35 -0700
-IronPort-SDR: oeaOQDifEAnn+V6YUBFsiGKkyg7LsrZEVGmJo5CRpPk8vp6dWtpL/AgMz9XFAiYdHw4WY/FiY1
- qQlnhIuSj+QQ==
+IronPort-SDR: 8gdT4T85qnpBONQqC/HTGAszchU8cdmwmpMB7BXEgZmGR/rtsJJ2ORjxEeTLtS6g+ucSF70xy6
+ 17hyTZMmrgXA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,380,1583222400"; d="scan'208";a="436767535"
+X-IronPort-AV: E=Sophos;i="5.73,380,1583222400"; d="scan'208";a="463456696"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 11 May 2020 10:13:33 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 11 May 2020 10:13:33 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jYBzh-00060q-8Y; Tue, 12 May 2020 01:13:33 +0800
-Date: Tue, 12 May 2020 01:12:40 +0800
+ id 1jYBzh-00061A-9Z; Tue, 12 May 2020 01:13:33 +0800
+Date: Tue, 12 May 2020 01:12:42 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 7ce7923eee0d42dc0b9712cb8624761118b85a2c
-Message-ID: <5eb98788.HajoM4LNScfZZSpB%lkp@intel.com>
+Subject: [intel-gvt-linux:gvt-fixes] BUILD SUCCESS
+ 72a7a9925e2beea09b109dffb3384c9bf920d9da
+Message-ID: <5eb9878a.YFmeSdEEE1X+oT0E%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -56,8 +56,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: 7ce7923eee0d42dc0b9712cb8624761118b85a2c  gvt-staging: 2020y-05m-11d-17h-08m-40s CST integration manifest
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-fixes
+branch HEAD: 72a7a9925e2beea09b109dffb3384c9bf920d9da  drm/i915/gvt: Fix kernel oops for 3-level ppgtt guest
 
 elapsed time: 481m
 
@@ -76,12 +76,15 @@ arm64                               defconfig
 arm64                            allmodconfig
 arm64                             allnoconfig
 sparc                            allyesconfig
+m68k                             allyesconfig
 alpha                               defconfig
+c6x                               allnoconfig
 nios2                            allyesconfig
+parisc                           allyesconfig
 i386                              allnoconfig
-i386                             allyesconfig
 i386                                defconfig
 i386                              debian-10.3
+i386                             allyesconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                              allnoconfig
@@ -90,11 +93,9 @@ m68k                             allmodconfig
 m68k                              allnoconfig
 m68k                           sun3_defconfig
 m68k                                defconfig
-m68k                             allyesconfig
 nios2                               defconfig
 openrisc                            defconfig
 c6x                              allyesconfig
-c6x                               allnoconfig
 openrisc                         allyesconfig
 nds32                               defconfig
 nds32                             allnoconfig
@@ -115,7 +116,6 @@ mips                              allnoconfig
 mips                             allmodconfig
 parisc                            allnoconfig
 parisc                              defconfig
-parisc                           allyesconfig
 parisc                           allmodconfig
 powerpc                             defconfig
 powerpc                          allyesconfig
