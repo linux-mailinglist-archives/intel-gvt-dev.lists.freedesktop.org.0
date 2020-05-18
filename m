@@ -2,31 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC1D71D7668
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2020 13:14:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EDD01D7C45
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2020 17:03:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8E6966E14C;
-	Mon, 18 May 2020 11:14:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D3A9F6E422;
+	Mon, 18 May 2020 15:03:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 411 seconds by postgrey-1.36 at gabe;
- Mon, 18 May 2020 11:14:12 UTC
-Received: from vps.dvp24.com (unknown [IPv6:2a02:348:36:5b8c::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D3DB56E0CF;
- Mon, 18 May 2020 11:14:12 +0000 (UTC)
-Received: from localhost ([127.0.0.1] helo=dvp24.com)
- by vps.dvp24.com with esmtpa (Exim 4.77)
- (envelope-from <abhay@dvp24.com>)
- id 1jadbp-00075q-Um; Mon, 18 May 2020 13:07:01 +0200
-MIME-Version: 1.0
-Date: Mon, 18 May 2020 12:07:01 +0100
-From: pedro hills <abhay@dvp24.com>
-To: undisclosed-recipients:;
-Subject: (DONATION) $2 Million Has Been Donated
-Mail-Reply-To: <pedrohills@outlook.es>
-Message-ID: <05dcd7eede2413c6836b9e806db199b0@dvp24.com>
-X-Sender: abhay@dvp24.com
-User-Agent: Roundcube Webmail/0.7.1
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com
+ [IPv6:2607:f8b0:4864:20::642])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 06F4B6E422;
+ Mon, 18 May 2020 15:03:51 +0000 (UTC)
+Received: by mail-pl1-x642.google.com with SMTP id g11so4347684plp.1;
+ Mon, 18 May 2020 08:03:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=WgmxNih5o7lZXHfbWl9I3AtHRbIULLMSDkl7rFCTknE=;
+ b=s37biS52LBSY4wjTk2uU75fo73grJe1Bprmn0WzYTdY+9jDKJUKnntDV2RhFYAu/Sw
+ IYtmt4gYUF7Wc2sC3ZWKv8Qjq7ij33/F0YhqVmq2J24OAEZ3GnVJ/PNVvwCUzyvGSnQE
+ 6h4tj2fhO7alMmc/2bNlGXAyKFeUmFtYmltJOhp3qJ/yfcQUKXASbXIYGGzwCwGPqTva
+ 7DemjyYkUBCQJwHxoy7eVVIGcG9Xbi4aA0tUc+raEElr8dprKQLZ092YUuAXWckSMf+h
+ r82jJexcn2WUIz4Q7f63qmWoeU8VMFzVgrG+QmJCLRpI4J42vjz6jzmFmDLDbkOrINZd
+ DiXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=WgmxNih5o7lZXHfbWl9I3AtHRbIULLMSDkl7rFCTknE=;
+ b=Yq/I7mz+B0sP+pKMLykQhuS7o2FdyXXbDrLSACZSV9+Is9X03r7QnZkZeF3TJQgm74
+ Ra04H1wAHV70BqU/YoolBm5ItPru+PDZFltUPzVRRH0b7aE192m70DEN3K/92CM0ZZs5
+ Soxlhff3fmtR3WpnZfwXiIpPE6REiGs5kGIDHulnN3pQ/QHg56QkH9Yv4uJLORJsnKrZ
+ qrR1j05UfhACv5f9OjQvAcNXxkKnidQr6wC90vFWKG0eb1T+yDSYa+y91wq3hIf2z2Bg
+ 5aEZLP8YnCHSb4LaZuhzo9GcmkBbUEAUge0zZor7iWr/9kMfrOI0mSYnya//4V6qz6zW
+ F4zQ==
+X-Gm-Message-State: AOAM531Acog5SbdmjhkVN5Stdj1Gh7/mJaj4DcHg5jUIyPMEyGDB2V4E
+ 2JVIX421651iB7mgG9qEJYk=
+X-Google-Smtp-Source: ABdhPJy1il1HPxFZ4CMIw6qSCNCAYzwkanG2+QXgzJ9xj6UUukyerk2v7SMZyIwnlULbjAtJNpz1Vg==
+X-Received: by 2002:a17:902:7682:: with SMTP id
+ m2mr10535509pll.281.1589814230632; 
+ Mon, 18 May 2020 08:03:50 -0700 (PDT)
+Received: from localhost.localdomain ([2409:4072:418:e389:dd54:a815:71b4:fdc])
+ by smtp.gmail.com with ESMTPSA id
+ 7sm6329586pfc.203.2020.05.18.08.03.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2020 08:03:49 -0700 (PDT)
+From: Aishwarya Ramakrishnan <aishwaryarj100@gmail.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/i915/gvt: Use ARRAY_SIZE for vgpu_types
+Date: Mon, 18 May 2020 20:33:36 +0530
+Message-Id: <20200518150336.15265-1-aishwaryarj100@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,21 +69,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: pedrohills@outlook.es
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: aishwaryarj100@gmail.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-CgotLSAKJDIgTWlsbGlvbiBIYXMgQmVlbiBEb25hdGVkIFRvIFlvdSxCeSBQRURSTyB0aGlzIGlz
-IFJlYWwgRm9yIE1vcmUgSW5mbwogIENvbnRhY3QgUEVEUk8gaW1tZWRpYXRlbHkgZm9yIHlvdXIg
-Y2xhbWUgVGhpcyBFbWFpbDoKICBwZWRyb2hpbGxzQG91dGxvb2suZXMKCiAgQ29udGFjdCBwaG9u
-ZSBudW1iZXIgKzM0NjMyMjMyODk3CiAgU2VuZCBZb3VyIFJlc3BvbnNlIFRvOiBwZWRyb2hpbGxz
-QG91dGxvb2suZXMKCiAgMiBNaWxsaW9uZW4gVVMtRG9sbGFyIHd1cmRlbiBhbiBTaWUgZ2VzcGVu
-ZGV0LiBWb24gUEVEUk8gaXN0IGRpZXMgZsO8cgp3ZWl0ZXJlIEluZm9ybWF0aW9uZW4gcmVhbAog
-IFdlbmRlbiBTaWUgc2ljaCB1bWdlaGVuZCBhbiBQRURSTy4gRGllc2UgRS1NYWlsOgogIHBlZHJv
-aGlsbHNAb3V0bG9vay5lcwoKICBLb250YWt0dGVsZWZvbm51bW1lciArMzQ2MzIyMzI4OTcKICBT
-ZW5kZW4gU2llIElocmUgQW50d29ydCBhbjogcGVkcm9oaWxsc0BvdXRsb29rLmVzCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFp
-bGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
+Prefer ARRAY_SIZE instead of using sizeof
+
+Fixes coccicheck warning: Use ARRAY_SIZE
+
+Signed-off-by: Aishwarya Ramakrishnan <aishwaryarj100@gmail.com>
+---
+ drivers/gpu/drm/i915/gvt/vgpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index 1d5ff88078bd..7d361623ff67 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -124,7 +124,7 @@ int intel_gvt_init_vgpu_types(struct intel_gvt *gvt)
+ 	 */
+ 	low_avail = gvt_aperture_sz(gvt) - HOST_LOW_GM_SIZE;
+ 	high_avail = gvt_hidden_sz(gvt) - HOST_HIGH_GM_SIZE;
+-	num_types = sizeof(vgpu_types) / sizeof(vgpu_types[0]);
++	num_types = ARRAY_SIZE(vgpu_types);
+ 
+ 	gvt->types = kcalloc(num_types, sizeof(struct intel_vgpu_type),
+ 			     GFP_KERNEL);
+-- 
+2.17.1
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
