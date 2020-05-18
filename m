@@ -2,36 +2,35 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D4471D7119
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2020 08:34:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 22FC51D714C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 May 2020 08:52:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 561016E130;
-	Mon, 18 May 2020 06:34:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C8E5F6E1EE;
+	Mon, 18 May 2020 06:52:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D1BED6E130
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5B1736E1EE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 May 2020 06:34:21 +0000 (UTC)
-IronPort-SDR: OrQHT+qG70/WsWZh9GE6Whr8FVpFfryTFgklQa2V71Op7s/ghseoZywKfLhNfsC7Bxl6GE9vsT
- wPewIASeY1Ag==
+ Mon, 18 May 2020 06:52:31 +0000 (UTC)
+IronPort-SDR: iliXz6dQiQBJrVz7c05xF3y1z6xwXGbINKwWsR39yJfgTyXO976WQjlWBLhJg1lA+9ibXLjUam
+ saqUS+FjRWyQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 May 2020 23:34:21 -0700
-IronPort-SDR: 95uaNEEYSm9OpO3h5p/SB7NjCwWoBR25yzuv2Mt65icUZqbkfzI06ay6vhfoHYo2NoRAa44cVw
- o/YohmUQ4doQ==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 May 2020 23:52:30 -0700
+IronPort-SDR: wptS+nocqs42AdMOeRUAi+bAOWbDU1Dlx7UVeFhiPnFEi01aTb2YubM/kQ7DdXWI074rtJSfFi
+ rX2CRVx+SRgQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,406,1583222400"; d="scan'208";a="252795589"
+X-IronPort-AV: E=Sophos;i="5.73,406,1583222400"; d="scan'208";a="465470675"
 Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.118])
- by orsmga007.jf.intel.com with ESMTP; 17 May 2020 23:34:20 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 17 May 2020 23:52:29 -0700
 From: Colin Xu <colin.xu@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic
- context
-Date: Mon, 18 May 2020 14:34:17 +0800
-Message-Id: <20200518063417.168429-1-colin.xu@intel.com>
+Subject: [PATCH 0/2] Refactor to per-vGPU accurate vblank emulator
+Date: Mon, 18 May 2020 14:52:25 +0800
+Message-Id: <20200518065227.178251-1-colin.xu@intel.com>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -52,290 +51,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-GFP_KERNEL flag specifies a normal kernel allocation in which executing
-in process context without any locks and can sleep.
-mmio_diff takes sometime to finish all the diff compare and it has
-locks, continue using GFP_KERNEL will output below trace if LOCKDEP
-enabled.
+The patch set includes two patches:
+Patch 1/2: Get accurate vGPU virtual display refresh rate from vreg
+Patch 2/2: Use per-vGPU vblank emulator at dynamic & accurate refresh rate.
 
-Use GFP_ATOMIC instead.
+The patch set resovles below issues:
+- 16ms matches the refresh rate at 62.5Hz (instead of 60Hz) which isn't
+  belong to standard timing. This leads to some frame drop or glitch issue
+  during video playback. Since SW expect at least 16.667ms peroid for 60Hz
+  or may need higher resolution, however vblank emulator only works at 16.
+- Doesn't respect the fact that with current virtual EDID timing set,
+  not all resolutions are enabled at 60Hz. For example, current virtual
+  EDID actually supports refresh rate like 56Hz, 59.97Hz, 60Hz, 75Hz, etc.
+- Current vblank emulator use single hrtimer for all vGPUs. Regardsless
+  how guest changing the resolution, all vsync interupts are injected at
+  16ms interval.
 
-=====================================================
-WARNING: SOFTIRQ-safe -> SOFTIRQ-unsafe lock order detected
-5.7.0-rc2 #400 Not tainted
------------------------------------------------------
-is trying to acquire:
-ffffffffb47bea20 (fs_reclaim){+.+.}-{0:0}, at: fs_reclaim_acquire.part.0+0x0/0x30
+With the patch set, the actual refresh rate from guest can now always
+match guest OS resolution settings.
+To run quick test, launch a web browser and goto URL: www.displayhz.com
 
-               and this task is already holding:
-ffff88845b85cc90 (&gvt->scheduler.mmio_context_lock){+.-.}-{2:2}, at: vgpu_mmio_diff_show+0xcf/0x2e0
-which would create a new lock dependency:
- (&gvt->scheduler.mmio_context_lock){+.-.}-{2:2} -> (fs_reclaim){+.+.}-{0:0}
+Colin Xu (2):
+  drm/i915/gvt: Get accurate vGPU virtual display refresh rate from vreg
+  drm/i915/gvt: Refactor GVT vblank emulator for vGPU virtual display
 
-               but this new dependency connects a SOFTIRQ-irq-safe lock:
- (&gvt->scheduler.mmio_context_lock){+.-.}-{2:2}
+ drivers/gpu/drm/i915/gvt/display.c   | 113 ++++++++++++++++-----------
+ drivers/gpu/drm/i915/gvt/display.h   |  13 ++-
+ drivers/gpu/drm/i915/gvt/gvt.c       |  21 ++++-
+ drivers/gpu/drm/i915/gvt/gvt.h       |  13 ++-
+ drivers/gpu/drm/i915/gvt/handlers.c  | 113 +++++++++++++++++++++++++--
+ drivers/gpu/drm/i915/gvt/interrupt.c |  31 ++------
+ drivers/gpu/drm/i915/gvt/interrupt.h |   6 --
+ drivers/gpu/drm/i915/gvt/vgpu.c      |   2 -
+ 8 files changed, 217 insertions(+), 95 deletions(-)
 
-               ... which became SOFTIRQ-irq-safe at:
-  lock_acquire+0x175/0x4e0
-  _raw_spin_lock_irqsave+0x2b/0x40
-  shadow_context_status_change+0xfe/0x2f0
-  notifier_call_chain+0x6a/0xa0
-  __atomic_notifier_call_chain+0x5f/0xf0
-  execlists_schedule_out+0x42a/0x820
-  process_csb+0xe7/0x3e0
-  execlists_submission_tasklet+0x5c/0x1d0
-  tasklet_action_common.isra.0+0xeb/0x260
-  __do_softirq+0x11d/0x56f
-  irq_exit+0xf6/0x100
-  do_IRQ+0x7f/0x160
-  ret_from_intr+0x0/0x2a
-  cpuidle_enter_state+0xcd/0x5b0
-  cpuidle_enter+0x37/0x60
-  do_idle+0x337/0x3f0
-  cpu_startup_entry+0x14/0x20
-  start_kernel+0x58b/0x5c5
-  secondary_startup_64+0xa4/0xb0
-
-               to a SOFTIRQ-irq-unsafe lock:
- (fs_reclaim){+.+.}-{0:0}
-
-               ... which became SOFTIRQ-irq-unsafe at:
-...
-  lock_acquire+0x175/0x4e0
-  fs_reclaim_acquire.part.0+0x20/0x30
-  kmem_cache_alloc_node_trace+0x2e/0x290
-  alloc_worker+0x2b/0xb0
-  init_rescuer.part.0+0x17/0xe0
-  workqueue_init+0x293/0x3bb
-  kernel_init_freeable+0x149/0x325
-  kernel_init+0x8/0x116
-  ret_from_fork+0x3a/0x50
-
-               other info that might help us debug this:
-
- Possible interrupt unsafe locking scenario:
-
-       CPU0                    CPU1
-       ----                    ----
-  lock(fs_reclaim);
-                               local_irq_disable();
-                               lock(&gvt->scheduler.mmio_context_lock);
-                               lock(fs_reclaim);
-  <Interrupt>
-    lock(&gvt->scheduler.mmio_context_lock);
-
-                *** DEADLOCK ***
-
-3 locks held by cat/1439:
- #0: ffff888444a23698 (&p->lock){+.+.}-{3:3}, at: seq_read+0x49/0x680
- #1: ffff88845b858068 (&gvt->lock){+.+.}-{3:3}, at: vgpu_mmio_diff_show+0xc7/0x2e0
- #2: ffff88845b85cc90 (&gvt->scheduler.mmio_context_lock){+.-.}-{2:2}, at: vgpu_mmio_diff_show+0xcf/0x2e0
-
-               the dependencies between SOFTIRQ-irq-safe lock and the holding lock:
--> (&gvt->scheduler.mmio_context_lock){+.-.}-{2:2} ops: 31 {
-   HARDIRQ-ON-W at:
-                    lock_acquire+0x175/0x4e0
-                    _raw_spin_lock_bh+0x2f/0x40
-                    vgpu_mmio_diff_show+0xcf/0x2e0
-                    seq_read+0x242/0x680
-                    full_proxy_read+0x95/0xc0
-                    vfs_read+0xc2/0x1b0
-                    ksys_read+0xc4/0x160
-                    do_syscall_64+0x63/0x290
-                    entry_SYSCALL_64_after_hwframe+0x49/0xb3
-   IN-SOFTIRQ-W at:
-                    lock_acquire+0x175/0x4e0
-                    _raw_spin_lock_irqsave+0x2b/0x40
-                    shadow_context_status_change+0xfe/0x2f0
-                    notifier_call_chain+0x6a/0xa0
-                    __atomic_notifier_call_chain+0x5f/0xf0
-                    execlists_schedule_out+0x42a/0x820
-                    process_csb+0xe7/0x3e0
-                    execlists_submission_tasklet+0x5c/0x1d0
-                    tasklet_action_common.isra.0+0xeb/0x260
-                    __do_softirq+0x11d/0x56f
-                    irq_exit+0xf6/0x100
-                    do_IRQ+0x7f/0x160
-                    ret_from_intr+0x0/0x2a
-                    cpuidle_enter_state+0xcd/0x5b0
-                    cpuidle_enter+0x37/0x60
-                    do_idle+0x337/0x3f0
-                    cpu_startup_entry+0x14/0x20
-                    start_kernel+0x58b/0x5c5
-                    secondary_startup_64+0xa4/0xb0
-   INITIAL USE at:
-                   lock_acquire+0x175/0x4e0
-                   _raw_spin_lock_irqsave+0x2b/0x40
-                   shadow_context_status_change+0xfe/0x2f0
-                   notifier_call_chain+0x6a/0xa0
-                   __atomic_notifier_call_chain+0x5f/0xf0
-                   execlists_schedule_in+0x2c8/0x690
-                   __execlists_submission_tasklet+0x1303/0x1930
-                   execlists_submit_request+0x1e7/0x230
-                   submit_notify+0x105/0x2a4
-                   __i915_sw_fence_complete+0xaa/0x380
-                   __engine_park+0x313/0x5a0
-                   ____intel_wakeref_put_last+0x3e/0x90
-                   intel_gt_resume+0x41e/0x440
-                   intel_gt_init+0x283/0xbc0
-                   i915_gem_init+0x197/0x240
-                   i915_driver_probe+0xc2d/0x12e0
-                   i915_pci_probe+0xa2/0x1e0
-                   local_pci_probe+0x6f/0xb0
-                   pci_device_probe+0x171/0x230
-                   really_probe+0x17a/0x380
-                   driver_probe_device+0x70/0xf0
-                   device_driver_attach+0x82/0x90
-                   __driver_attach+0x60/0x100
-                   bus_for_each_dev+0xe4/0x140
-                   bus_add_driver+0x257/0x2a0
-                   driver_register+0xd3/0x150
-                   i915_init+0x6d/0x80
-                   do_one_initcall+0xb8/0x3a0
-                   kernel_init_freeable+0x2b4/0x325
-                   kernel_init+0x8/0x116
-                   ret_from_fork+0x3a/0x50
- }
-__key.77812+0x0/0x40
- ... acquired at:
-   lock_acquire+0x175/0x4e0
-   fs_reclaim_acquire.part.0+0x20/0x30
-   kmem_cache_alloc_trace+0x2e/0x260
-   mmio_diff_handler+0xc0/0x150
-   intel_gvt_for_each_tracked_mmio+0x7b/0x140
-   vgpu_mmio_diff_show+0x111/0x2e0
-   seq_read+0x242/0x680
-   full_proxy_read+0x95/0xc0
-   vfs_read+0xc2/0x1b0
-   ksys_read+0xc4/0x160
-   do_syscall_64+0x63/0x290
-   entry_SYSCALL_64_after_hwframe+0x49/0xb3
-
-               the dependencies between the lock to be acquired
- and SOFTIRQ-irq-unsafe lock:
--> (fs_reclaim){+.+.}-{0:0} ops: 1999031 {
-   HARDIRQ-ON-W at:
-                    lock_acquire+0x175/0x4e0
-                    fs_reclaim_acquire.part.0+0x20/0x30
-                    kmem_cache_alloc_node_trace+0x2e/0x290
-                    alloc_worker+0x2b/0xb0
-                    init_rescuer.part.0+0x17/0xe0
-                    workqueue_init+0x293/0x3bb
-                    kernel_init_freeable+0x149/0x325
-                    kernel_init+0x8/0x116
-                    ret_from_fork+0x3a/0x50
-   SOFTIRQ-ON-W at:
-                    lock_acquire+0x175/0x4e0
-                    fs_reclaim_acquire.part.0+0x20/0x30
-                    kmem_cache_alloc_node_trace+0x2e/0x290
-                    alloc_worker+0x2b/0xb0
-                    init_rescuer.part.0+0x17/0xe0
-                    workqueue_init+0x293/0x3bb
-                    kernel_init_freeable+0x149/0x325
-                    kernel_init+0x8/0x116
-                    ret_from_fork+0x3a/0x50
-   INITIAL USE at:
-                   lock_acquire+0x175/0x4e0
-                   fs_reclaim_acquire.part.0+0x20/0x30
-                   kmem_cache_alloc_node_trace+0x2e/0x290
-                   alloc_worker+0x2b/0xb0
-                   init_rescuer.part.0+0x17/0xe0
-                   workqueue_init+0x293/0x3bb
-                   kernel_init_freeable+0x149/0x325
-                   kernel_init+0x8/0x116
-                   ret_from_fork+0x3a/0x50
- }
-__fs_reclaim_map+0x0/0x60
- ... acquired at:
-   lock_acquire+0x175/0x4e0
-   fs_reclaim_acquire.part.0+0x20/0x30
-   kmem_cache_alloc_trace+0x2e/0x260
-   mmio_diff_handler+0xc0/0x150
-   intel_gvt_for_each_tracked_mmio+0x7b/0x140
-   vgpu_mmio_diff_show+0x111/0x2e0
-   seq_read+0x242/0x680
-   full_proxy_read+0x95/0xc0
-   vfs_read+0xc2/0x1b0
-   ksys_read+0xc4/0x160
-   do_syscall_64+0x63/0x290
-   entry_SYSCALL_64_after_hwframe+0x49/0xb3
-
-               stack backtrace:
-CPU: 5 PID: 1439 Comm: cat Not tainted 5.7.0-rc2 #400
-Hardware name: Intel(R) Client Systems NUC8i7BEH/NUC8BEB, BIOS BECFL357.86A.0056.2018.1128.1717 11/28/2018
-Call Trace:
- dump_stack+0x97/0xe0
- check_irq_usage.cold+0x428/0x434
- ? check_usage_forwards+0x2c0/0x2c0
- ? class_equal+0x11/0x20
- ? __bfs+0xd2/0x2d0
- ? in_any_class_list+0xa0/0xa0
- ? check_path+0x22/0x40
- ? check_noncircular+0x150/0x2b0
- ? print_circular_bug.isra.0+0x1b0/0x1b0
- ? mark_lock+0x13d/0xc50
- ? __lock_acquire+0x1e32/0x39b0
- __lock_acquire+0x1e32/0x39b0
- ? timerqueue_add+0xc1/0x130
- ? register_lock_class+0xa60/0xa60
- ? mark_lock+0x13d/0xc50
- lock_acquire+0x175/0x4e0
- ? __zone_pcp_update+0x80/0x80
- ? check_flags.part.0+0x210/0x210
- ? mark_held_locks+0x65/0x90
- ? _raw_spin_unlock_irqrestore+0x32/0x40
- ? lockdep_hardirqs_on+0x190/0x290
- ? fwtable_read32+0x163/0x480
- ? mmio_diff_handler+0xc0/0x150
- fs_reclaim_acquire.part.0+0x20/0x30
- ? __zone_pcp_update+0x80/0x80
- kmem_cache_alloc_trace+0x2e/0x260
- mmio_diff_handler+0xc0/0x150
- ? vgpu_mmio_diff_open+0x30/0x30
- intel_gvt_for_each_tracked_mmio+0x7b/0x140
- vgpu_mmio_diff_show+0x111/0x2e0
- ? mmio_diff_handler+0x150/0x150
- ? rcu_read_lock_sched_held+0xa0/0xb0
- ? rcu_read_lock_bh_held+0xc0/0xc0
- ? kasan_unpoison_shadow+0x33/0x40
- ? __kasan_kmalloc.constprop.0+0xc2/0xd0
- seq_read+0x242/0x680
- ? debugfs_locked_down.isra.0+0x70/0x70
- full_proxy_read+0x95/0xc0
- vfs_read+0xc2/0x1b0
- ksys_read+0xc4/0x160
- ? kernel_write+0xb0/0xb0
- ? mark_held_locks+0x24/0x90
- do_syscall_64+0x63/0x290
- entry_SYSCALL_64_after_hwframe+0x49/0xb3
-RIP: 0033:0x7ffbe3e6efb2
-Code: c0 e9 c2 fe ff ff 50 48 8d 3d ca cb 0a 00 e8 f5 19 02 00 0f 1f 44 00 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 0f 05 <48> 3d 00 f0 ff ff 77 56 c3 0f 1f 44 00 00 48 83 ec 28 48 89 54 24
-RSP: 002b:00007ffd021c08a8 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
-RAX: ffffffffffffffda RBX: 0000000000020000 RCX: 00007ffbe3e6efb2
-RDX: 0000000000020000 RSI: 00007ffbe34cd000 RDI: 0000000000000003
-RBP: 00007ffbe34cd000 R08: 00007ffbe34cc010 R09: 0000000000000000
-R10: 0000000000000022 R11: 0000000000000246 R12: 0000562b6f0a11f0
-R13: 0000000000000003 R14: 0000000000020000 R15: 0000000000020000
-------------[ cut here ]------------
-
-Signed-off-by: Colin Xu <colin.xu@intel.com>
----
- drivers/gpu/drm/i915/gvt/debugfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
-index ec47d4114554..62e6a14ad58e 100644
---- a/drivers/gpu/drm/i915/gvt/debugfs.c
-+++ b/drivers/gpu/drm/i915/gvt/debugfs.c
-@@ -66,7 +66,7 @@ static inline int mmio_diff_handler(struct intel_gvt *gvt,
- 	vreg = vgpu_vreg(param->vgpu, offset);
- 
- 	if (preg != vreg) {
--		node = kmalloc(sizeof(*node), GFP_KERNEL);
-+		node = kmalloc(sizeof(*node), GFP_ATOMIC);
- 		if (!node)
- 			return -ENOMEM;
- 
 -- 
 2.26.2
 
