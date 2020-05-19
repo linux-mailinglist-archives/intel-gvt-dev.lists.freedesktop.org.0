@@ -1,40 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B9FF1DA278
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 May 2020 22:22:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE77D1DA308
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 May 2020 22:44:36 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E2A8E6E398;
-	Tue, 19 May 2020 20:22:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7F451896FA;
+	Tue, 19 May 2020 20:44:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0F8DD6E398
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1C861896FA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 May 2020 20:22:16 +0000 (UTC)
-IronPort-SDR: eHAXIx/DC1Zhj1+q/zGdjRzbbKE86q8tlo3NkkR82MW99nDxFAltCx4BTb/sy3/kSOAHcgvoqc
- h7krtOQwvAZA==
+ Tue, 19 May 2020 20:44:34 +0000 (UTC)
+IronPort-SDR: FjLuQnseqRlFSM63okrMMJBjY6ayzsbkRaiakHUM1LyEJRL5/ZNm9FWoK8IACihNPZTHSfiIg1
+ ntAdcIbl0SjQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2020 13:22:16 -0700
-IronPort-SDR: Xiq3OqgENyCwjFLPNFyVswa/ce76D9ok8hPddHMORkL2zazyWuJoeiZ0yydl/P5Fml7Sl7Frtq
- bgqB1Zvk1+5Q==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2020 13:44:33 -0700
+IronPort-SDR: OrpHf8VVE9je/jiy9QA6WZnxm1YtHwT/lv0+cJpRkjMTt/yUT0xTf3Q85+/GacBKcKBHI8BjdV
+ ewjVEVZ7fU0w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,410,1583222400"; d="scan'208";a="343255781"
+X-IronPort-AV: E=Sophos;i="5.73,410,1583222400"; d="scan'208";a="466119271"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 19 May 2020 13:22:14 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 19 May 2020 13:44:31 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jb8kf-000Gae-Nt; Wed, 20 May 2020 04:22:13 +0800
-Date: Wed, 20 May 2020 04:21:32 +0800
+ id 1jb96F-000CHH-6Z; Wed, 20 May 2020 04:44:31 +0800
+Date: Wed, 20 May 2020 04:43:39 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
- cb7ee52284a244fd14caec73df0d49e02891aac4
-Message-ID: <5ec43fcc.AHYJUKd4bvupIJwk%lkp@intel.com>
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ 1a21ec685788244e851b5b9240cb860529dcc758
+Message-ID: <5ec444fb.ogqnOKqzJY2w3U02%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -56,13 +56,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-next-fixes
-branch HEAD: cb7ee52284a244fd14caec73df0d49e02891aac4  drm/i915/gvt: Use ARRAY_SIZE for vgpu_types
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
+branch HEAD: 1a21ec685788244e851b5b9240cb860529dcc758  gvt-staging: 2020y-05m-19d-17h-20m-10s CST integration manifest
 
-elapsed time: 638m
+elapsed time: 661m
 
-configs tested: 113
-configs skipped: 4
+configs tested: 101
+configs skipped: 2
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
@@ -76,47 +76,37 @@ arm                              allyesconfig
 arm                              allmodconfig
 arm                               allnoconfig
 sparc                            allyesconfig
+mips                             allyesconfig
 m68k                             allyesconfig
-powerpc                  mpc866_ads_defconfig
-ia64                                defconfig
-h8300                    h8300h-sim_defconfig
-arm                           sunxi_defconfig
+arm                        magician_defconfig
+m68k                              allnoconfig
+openrisc                         allyesconfig
+m68k                                defconfig
 powerpc                      chrp32_defconfig
 sh                          polaris_defconfig
 powerpc                       ppc64_defconfig
-openrisc                         allyesconfig
-sh                         microdev_defconfig
-arm                          exynos_defconfig
-riscv                             allnoconfig
-sh                           se7750_defconfig
-arc                              alldefconfig
-mips                            gpr_defconfig
-sh                  sh7785lcr_32bit_defconfig
+powerpc                  mpc866_ads_defconfig
+m68k                       m5475evb_defconfig
+riscv                            allyesconfig
+microblaze                      mmu_defconfig
+arm                        trizeps4_defconfig
+sh                           se7751_defconfig
+arm                       netwinder_defconfig
+mips                          ath25_defconfig
 nds32                            alldefconfig
 m68k                          hp300_defconfig
 sh                        sh7785lcr_defconfig
 m68k                          multi_defconfig
-powerpc                      tqm8xx_defconfig
-arm                        shmobile_defconfig
-arm                           stm32_defconfig
-powerpc                       holly_defconfig
-mips                         tb0226_defconfig
 i386                              allnoconfig
 i386                                defconfig
 i386                              debian-10.3
 i386                             allyesconfig
 ia64                             allmodconfig
+ia64                                defconfig
 ia64                              allnoconfig
 ia64                             allyesconfig
 m68k                             allmodconfig
-m68k                              allnoconfig
 m68k                           sun3_defconfig
-m68k                                defconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
 nds32                               defconfig
 nds32                             allnoconfig
 csky                             allyesconfig
@@ -132,9 +122,13 @@ arc                              allyesconfig
 sh                               allmodconfig
 sh                                allnoconfig
 microblaze                        allnoconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
 mips                              allnoconfig
 mips                             allmodconfig
-mips                             allyesconfig
 parisc                            allnoconfig
 parisc                              defconfig
 parisc                           allyesconfig
@@ -144,19 +138,13 @@ powerpc                          allyesconfig
 powerpc                          rhel-kconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
-i386                 randconfig-a006-20200519
 i386                 randconfig-a005-20200519
+i386                 randconfig-a006-20200519
 i386                 randconfig-a001-20200519
 i386                 randconfig-a003-20200519
 i386                 randconfig-a004-20200519
 i386                 randconfig-a002-20200519
-x86_64               randconfig-a003-20200519
-x86_64               randconfig-a005-20200519
-x86_64               randconfig-a004-20200519
-x86_64               randconfig-a006-20200519
-x86_64               randconfig-a002-20200519
-x86_64               randconfig-a001-20200519
-riscv                            allyesconfig
+riscv                             allnoconfig
 riscv                               defconfig
 riscv                            allmodconfig
 s390                             allyesconfig
@@ -169,10 +157,10 @@ sparc64                             defconfig
 sparc64                           allnoconfig
 sparc64                          allyesconfig
 sparc64                          allmodconfig
-um                               allmodconfig
 um                                allnoconfig
 um                               allyesconfig
 um                                  defconfig
+um                               allmodconfig
 x86_64                                   rhel
 x86_64                               rhel-7.6
 x86_64                    rhel-7.6-kselftests
