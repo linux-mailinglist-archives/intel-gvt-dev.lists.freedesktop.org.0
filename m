@@ -1,51 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85AF21DCBA4
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 May 2020 13:08:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 092181DFC24
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 May 2020 02:44:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 324526E1BA;
-	Thu, 21 May 2020 11:08:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AA83689DD8;
+	Sun, 24 May 2020 00:44:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sonic310-13.consmr.mail.bf2.yahoo.com
- (sonic310-13.consmr.mail.bf2.yahoo.com [74.6.135.123])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 163B26E1BA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 May 2020 11:08:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1590059303; bh=OWGwHJ9x9PJf7dlxBBeRBfUZJODNYne2+kl8BjeMq+M=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=m0zIaU2VZMsl+p4FXE6iKAFmDRKlYIBJgaYQ2lv00n3io6KSCLYw0ryTQzU4onyOV2p/GfwOvfKxswpZr7csG60f6qMjRc52GytOoxo++v9rlkzjaaLrSX4c1BNBn9e4S+Ebw2OlGG5cxQeCULvZN9+ChCxh6LnTHgACs206OviMb9cIb4kJa0Wq8SkGCOSDQjMLSeaQ3wuyg3rpSIMKcaVOsm1wZeDYz/8WFVPIsoiB7jTpcw8X6hYYOAiF6iWhW4Doj4UBJ7Rzms5/oadCX4Wz+O0jpsvbWQPl7KUpuG40ModuI1cyyWx1/Ukh6evdhsooXuTKEFAzzzlPzB+gxQ==
-X-YMail-OSG: MBr3LlEVM1k1tR8_3BQfpSInyXSKGjkA71oYIsDZ3NM.y8MM1tpoqhOwCXrHEbl
- cVUiYz2B_UkzCpgX_gK3E3iYzxSgpkc1OeymEW4mpQqls4kpbGe6F_7o3yJmmIjT9.sPnsoWd0J_
- hiEf4MIYhwJ_F7b_i6jYfmGLpiW7QZ6lLm.6uIGWR1avQwpA1Z97gTgEDW0oSk58kvVVY5JgDOqC
- OLUMKTPeGAZqMmnSpTcLVMG3S7X9_HFpUGa_3WBdcdjcBI8Z8sXSBpoDFfRkRUT3mLgYa556kz2R
- oT2tRk_tgfBRsmvYqj.eOTWCE8KiavfKGI4NzOpH4TYiKzg_wf3OYuKe8m3bPPjO1QMObolmBWNu
- e_SxolVjTRRxpXBX66bCuJfrNPocw_GkfOdPCLthE..KdSTpJ.8VcWU7WIPHhmbCbVLx4yIH24Dc
- kBPt1BtNymh6lZnC81xSKEmBXIIZlE9X6h9k2ThPKN9.KtXpSo8M7nswZ7DD02SoZxHyWWBJNG8x
- Q0IqeP2OH9FUEDrZ9fg07CsckGrJdZYpTyNk.eYplhgHQvspoHE31FYbYTevY09W46UriUKhhcXS
- vtz_MgpOhh6SWekpIRalNb4dA3lANAHUmHMsb4iNKVsSoDiWXMWQK1neMyWkPHZPZXJ3NVlGnlJG
- vuoZIyNxFIW4X2qEL5eT.Ws3CwW1aFW2Ogvk8Mkg9AaUIXO200mYgXOFhugZ_RiT28N6vmQoSpUv
- 3oo1mmpeCDZ_jRsXcoFBJkG8Yog7z8rnUuxNsRv14Xlrcwwedtpp2e2zR8h7tRZaszP3ZEu4OGyE
- tUbVhEUPo5Ciqa0.gZ7bys1T67fW7fCNyKuEa9oeJAOBgSSBiIe_lPIyvui8lANXDPoHE5YiWK_V
- 2VHiUU7mgrv0VKgD95xlDkfrG3h_tNuem7Ybx5fSdqY6.ZUVRMJiHmfDBkkKAc.v2zjLdY4GXIQ7
- VBM_WRDIiW1qLsrrZkqI5uTU.pVWTa411SEaol86ViZdD8awGRdnSaCv0qcQj.dHqpg7FYJlrsYP
- VIlN_rvRtWIlRXyKf9WvSlEcd2QcIt9T.dwh4G5xTTWegf5bn3a9btTkfktBFVgBTsGU4RTxW8sO
- Fu28RdedqqNzrxMqRuHfNnttVCkTEoebsl9rECpxUe1ACACFUc4loUQe7YeuCledESlfBNmMYbJQ
- 7so7wGOATUr06dfyBgfiZKaGC_rIvdTOLuB7BgWxxIStJnov3VCY59cKLlZ.j.P7ulmrF3oWSv34
- qfr33gZkkeShQyrERy6WuIIN6DP7LJ.rg6xcuMb9xgznrozu_IvO8JMPs2BiVHmTNLvOSJg--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic310.consmr.mail.bf2.yahoo.com with HTTP; Thu, 21 May 2020 11:08:23 +0000
-Date: Thu, 21 May 2020 11:08:18 +0000 (UTC)
-From: "Mrs. Flora Diomande" <flora-diomande@outlook.fr>
-Message-ID: <386318794.1800149.1590059298371@mail.yahoo.com>
-Subject: Greetings dearest in the lord,
+Received: from web01.dewaalautogroep.nl (web01.dewaalautogroep.nl
+ [37.97.207.44])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D1AF389DD8;
+ Sun, 24 May 2020 00:44:21 +0000 (UTC)
+Received: from User (249.red-81-34-85.dynamicip.rima-tde.net [81.34.85.249])
+ by web01.dewaalautogroep.nl (Postfix) with ESMTPA id 025D9254AC14;
+ Fri, 22 May 2020 05:01:56 +0200 (CEST)
+From: "Raymond"<chienkraymond@gmail.com>
+Subject: good day
+Date: Fri, 22 May 2020 04:01:57 +0100
 MIME-Version: 1.0
-References: <386318794.1800149.1590059298371.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.15960 YMailNodin Mozilla/5.0 (Windows NT 6.1)
- AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,53 +36,20 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: d_iomandeflora@yahoo.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: infocarfer@aim.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200524004423.AA83689DD8@gabe.freedesktop.org>
 
-R3JlZXRpbmdzIGRlYXJlc3QgaW4gdGhlIGxvcmQsCgpJIGdyZWV0IHlvdSB3aXRoIHRoZSBuYW1l
-IG9mIG91ciBMb3JkIEplc3VzIENocmlzdDsgaXQgaXMgdHJ1ZSB0aGF0IHRoaXMgbGV0dGVyIG1h
-eSBjb21lIHRvIHlvdSBhcyBhIHN1cnByaXNlLiBOZXZlcnRoZWxlc3MsIEkgaHVtYmx5IGFzayB5
-b3UgdG8gZ2l2ZSBtZSB5b3VyIGF0dGVudGlvbiBhbmQgaGVhciBtZSB3ZWxsLiBNeSBuYW1lIGlz
-IE1ycy4gRmxvcmEgRGlvbWFuZGUgZnJvbSBVbml0ZWQgU3RhdGVzIG9mIEFtZXJpY2EuIEkgYW0g
-NTggeWVhcnMgb2xkIGFuZCBJIGFtIG1hcnJpZWQgdG8gTXIuIEJha2F5b2tvIERpb21hbmRlIHdo
-byBvbmNlIHdvcmtlZCB3aXRoIG91ciBFbWJhc3N5IGluIEdlcm1hbnkgaW4gdGhlIHllYXIgMjAw
-MiBhbmQgaGUgYWxzbyB3b3JrZWQgaW4gYW4gZW1iYXNzeSBpbiBDb3RlIGQnSXZvaXJlIGZvciBh
-IHBlcmlvZCBvZiAxNiB5ZWFycyBiZWZvcmUgaGUgZGllZC4KCldlIHdlcmUgbWFycmllZCBmb3Ig
-MzAgeWVhcnMgd2l0aG91dCBhIGNoaWxkIGJlZm9yZSBoZSBkaWVkIGFmdGVyIGEgYnJpZWYgaWxs
-bmVzcy4gU2luY2UgaGlzIGRlYXRoIEkgZGVjaWRlZCBub3QgdG8gcmVtYXJyeSBkdWUgdG8gbXkg
-cmVsaWdpb3VzIGJlbGllZi4gV2hlbiBteSBsYXRlIGh1c2JhbmQgd2FzIGFsaXZlIGhlIGRlcG9z
-aXRlZCB0aGUgc3VtIG9mIFVTRCQ0LjUgTWlsbGlvbiAoRm91ciBNaWxsaW9uLCBGaXZlIEh1bmRy
-ZWQgVGhvdXNhbmQgVW5pdGVkIFN0YXRlIGRvbGxhcnMpIHdpdGggYSBCYW5rIGluIENvdGUgZCdJ
-dm9pcmUuIFByZXNlbnRseSB0aGlzIG1vbmV5IGlzIHN0aWxsIGluIHRoZSBjdXN0b2R5IG9mIHRo
-ZSBCYW5rLiBSZWNlbnRseSwgbXkgRG9jdG9yIHRvbGQgbWUgdGhhdCBJIHdvdWxkIG5vdCBsYXN0
-IGZvciB0aGUgbmV4dCBGb3VyIG1vbnRocyBkdWUgdG8gbXkgY2FuY2VyIGlsbG5lc3MuCgpIYXZp
-bmcga25vd24gbXkgY29uZGl0aW9uIEkgZGVjaWRlZCB0byBkb25hdGUgdGhpcyBtb25leSB0byBj
-aHVyY2hlcywgb3JnYW5pemF0aW9uIG9yIGdvb2QgcGVyc29uIHRoYXQgd2lsbCB1dGlsaXplIHRo
-aXMgbW9uZXkgdGhlIHdheSBJIGFtIGdvaW5nIHRvIGluc3RydWN0IGhlcmVpbi4KCkkgd2FudCB5
-b3UgdG8gdXNlIHRoaXMgbW9uZXkgZm9yIGNodXJjaGVzLCBDaGFyaXR5IG9yZ2FuaXphdGlvbiwg
-b3JwaGFuYWdlcywgd2lkb3dzIGFuZCBvdGhlciBwZW9wbGUgdGhhdCBhcmUgaW4gbmVlZC4gbCB0
-b29rIHRoaXMgZGVjaXNpb24gYmVjYXVzZSBJIGRvbid0IGhhdmUgYW55IGNoaWxkIHRoYXQgd2ls
-bCBpbmhlcml0IHRoaXMgbW9uZXkuIE1vcmVvdmVyLCBteSBodXNiYW5kIHJlbGF0aXZlcyBhcmUg
-bm90IGNsb3NlIHRvIG1lIHNpbmNlIEkgZGV2ZWxvcCBhIENhbmNlciBwcm9ibGVtIGFuZCBpdCBo
-YWQgYmVlbiB0aGVpciB3aXNoIHRvIHNlZSBtZSBkZWFkIGluIG9yZGVyIHRvIGluaGVyaXQgaGlz
-IHdlYWx0aCBzaW5jZSB3ZSBoYXZlIG5vIENoaWxkLiBUaGVzZSBwZW9wbGUgYXJlIG5vdCB3b3J0
-aHkgb2YgdGhpcyBpbmhlcml0YW5jZS4gVGhpcyBpcyB3aHkgSSBhbSB0YWtpbmcgdGhpcyBkZWNp
-c2lvbiB0byBjb250YWN0IHlvdSBhbmQgZG9uYXRlIHRoaXMgZnVuZCB0byB5b3UgaW4gb3JkZXIg
-Zm9yIHlvdSB0byB1c2UgaXQgZm9yIHRoZSBjaGFyaXR5IHdvcmtzLgoKQXMgc29vbiBhcyBJIHJl
-Y2VpdmUgeW91ciByZXBseSBJIHdpbGwgZ2l2ZSB5b3UgdGhlIGNvbnRhY3Qgb2YgdGhlIEJhbmsg
-aW4gQ290ZSBkJ0l2b2lyZSB3aGVyZSB0aGlzIG1vbmV5IGlzIGRlcG9zaXRlZCBieSBteSBodXNi
-YW5kIGJlZm9yZSBoaXMgc3VkZGVuIGRlYXRoLCBhbHNvIEkgd2lsbCBpbnN0cnVjdCBvdXIgZmFt
-aWx5IGxhd3llciBpbiBDb3RlIGTigJlJdm9pcmUgdG8gaXNzdWUgYSBsZXR0ZXIgb2YgYXV0aG9y
-aXphdGlvbiB0byB0aGUgYmFuayB0aGF0IHdpbGwgcHJvdmUgeW91IHRoZSBwcmVzZW50IGJlbmVm
-aWNpYXJ5IG9mIHRoaXMgbW9uZXkuIEkgYWxzbyB3YW50IHlvdSB0byBhbHdheXMgcHV0IG1lIGlu
-IHlvdXIgZGFpbHkgcHJheWVyLgoKQW55IGRlbGF5IGluIHlvdXIgcmVwbHkgbWF5IGdpdmUgbWUg
-cm9vbSB0byBsb29rIGZvciBhbm90aGVyIGdvb2QgcGVyc29uIGZvciB0aGlzIHNhbWUgcHVycG9z
-ZS4gUGxlYXNlIGFzc3VyZSBtZSB0aGF0IHlvdSB3aWxsIGFjdCBhY2NvcmRpbmdseSBhcyBJIHN0
-YXRlZCBoZXJlaW4uCgpUaGFua3MgYW5kIFJlbWFpbiBibGVzc2VkLgoKWW91cnMgc2lzdGVyIGlu
-IHRoZSBMb3JkLAoKTXJzLiBGbG9yYSBEaW9tYW5kZSwKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwt
-Z3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1ndnQtZGV2Cg==
+I am Vice Chairman of Hang Seng Bank, I have Important Matter to Discuss with you concerning my late client, Died without a NEXT OF KIN. Send me your private email for full details information. email me at (infocarfer@aim.com)
+
+Mail:infocarfer@aim.com
+
+Regards
+Dr.Raymond Chien Kuo Fung
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
