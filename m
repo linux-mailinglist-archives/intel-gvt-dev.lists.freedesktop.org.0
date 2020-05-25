@@ -1,54 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFE961E1237
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 25 May 2020 17:59:12 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF3451E1265
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 25 May 2020 18:12:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C89C89852;
-	Mon, 25 May 2020 15:59:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7057989F63;
+	Mon, 25 May 2020 16:12:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1587 seconds by postgrey-1.36 at gabe;
- Mon, 25 May 2020 15:59:10 UTC
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 557B089852
+Received: from sonic313-13.consmr.mail.bf2.yahoo.com
+ (sonic313-13.consmr.mail.bf2.yahoo.com [74.6.133.123])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0B04889F6B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 25 May 2020 15:59:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:Date:To:From:Subject:Message-ID:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=XR6JAV1pG5lsmy5WPsxCzRxb89nwFlXmt1eNI0Frjvw=; b=am2m7r077VXSWKHWeW1E5M7Hd
- POQL1gTBn09BwcNjAYk4PSAbN4+3Aj40YZbnS1+cDUnnH1zTSfEpoQnSVUTwPN79xkQwIFynnAV9z
- VPKRUIfw5X84AqGzf3eZhgXMcHzUqjCWS/doDPulryUyNoNlPtL4TJuvuJCS+SY75O5R0lAyP/3mb
- TcQcN2LbT7JAXEJk6cbQUBSdVf220c+C1FemB5m2jQlhKbyjFT3gE5hGLw1NorKz15Xbxvl7lJq82
- cZdm60zAstVfKDPxGeU11/5udbSeX3kViktjDcBMopFwmKhxEwt3aTQckzHhRKp6iHolt718Rpmxg
- PHQFRWorQ==;
-Received: from sslproxy02.your-server.de ([78.47.166.47])
- by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jdF5m-0007i3-62
- for intel-gvt-dev@lists.freedesktop.org; Mon, 25 May 2020 17:32:42 +0200
-Received: from [2001:16b8:57d3:9c00:5b00:b66:2fc9:5430] (helo=linux.fritz.box)
- by sslproxy02.your-server.de with esmtpsa
- (TLSv1.3:TLS_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jdF5l-0006AS-Vv
- for intel-gvt-dev@lists.freedesktop.org; Mon, 25 May 2020 17:32:42 +0200
-Message-ID: <98f001ecef5644f945e36585ac04ba31093e6a2e.camel@cyberus-technology.de>
-Subject: Semantics of dma_{map,pin,unmap}_guest_page
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-To: intel-gvt-dev@lists.freedesktop.org
-Date: Mon, 25 May 2020 17:32:39 +0200
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.36.2 (3.36.2-1.fc32) 
+ Mon, 25 May 2020 16:12:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1590423119; bh=6Y7ZU9BahXi5DMHj+CdhAlt4QTrKMDKzjUJl1O/dew8=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=aqRYxRHmHT/4bR9L7l3cuObzGIvgJiQkx9gkYSeusddlAr2KbtTd4yNFhQP2uym+kYc3k61lYYKP+wGgpeGVjycV5vHslHKr/5m92NSqFCEPNC2ltN156/ildm+/ZouX+jP8qjBegObHNAZh5nZv0286aRWwlJHOJGSLhgq16zwfh7U1m0Jo1F6BudGX8i/DG289r9b+uVWjvg74e9RN5HHGBu2hToQACTvgyiiKFjWQj/pZ4DS5jmHomZxXkqaLixJgSHIP+dKl0PvzX/NOox6XcPAsuugqCch4Nl4HfAlKi//g2i61b/NE6RIxmq8/oZzp0nCJw+KgTUWYZ/DH8w==
+X-YMail-OSG: YfD4NmsVM1mwRxlOWqC.fX3ebUB6Eo1D65sQH_MM6k7SAwhnOvzA1084Z9LW7ik
+ CcRj_bN9ffGW0vUT7zKlWEQXJZptVNcl0xeT5HUM99W.ya_Pkjqqiw69XqSX0svPKIFMK0hSR0ST
+ F31asBtsiPsGzGOEUqfQjW_26EzmQQEvpDHSBv7e9KfhSdxQ8oqTAabJo0JwTBVNOZLlZWNzPFKC
+ H9GrWivpFGMvfJZdEi.S7hOjiDYbnTRlQpTWmpl0K9sbYUMYuuYfPuWcMOhDM3f25vpF7qbdPRhl
+ aMK_hcb6zso4d8inT.BvcFFgzs2O4q5VmfcpoQne2EfdOdllmzkkW4714XqMAcEZAPNiIPEtdVhB
+ rnBxJFDLgNAL65kvNqZapocwMyEDw7rC1CeyWbst6fW6ybupu3Fl4oyjhmCLDreniY6yGee81_gW
+ VS_u7UeG82gXnaCb3D8ZAb4PBnfeWhwE2XRfzsM.zLh1GX6IdR_kPHHL7qiW81AKgNMeUx4AYYCi
+ ZA.ZTcBSwhwlY6DYe_Ec_9KD0Dst45S3KUIz9bm9L9.OzsolLbZ_ZlZ0GXtWjZuBkKlY_tnnCpOb
+ IzGieAovcMAqbJY3yB77ORJOaPl7J6gi1nWB0K9mCLX6BIii7JROGgl7OzZcUGGZOpGsHxJTMG5G
+ oRkWU4Sc1C2Jlasx0H9_IrNMdGVctd.YWE5jZkmrPcbtfundk2K84ReYgQyHKKxyCKU0MSGDI7WK
+ jECxXWOmpRg4xWzqbvn2TryRbtL.pGEbgZjp6017dnHmX2Q_uhOrnGMb4rLPz6kSGwrqTHrOyk9y
+ CxIsKqUWD9jthtkBDzg8EgduvoZvjZoanCzWG5xeKAkODAVqr79XY3sOPzs5xt1BU9ffMuwgbSLn
+ Z._9Q7L6qL5r9GI2H_EpvJEWmQSLJBGljityh7jt71eeZRqCGheKozXBy2yngykl_rBJwH87SB6s
+ okTMKunkHiWSnHqND96aHPDW04V8ogRSknuMAsJRUSUgJOomnfUgeQiSkET.9ulK_CVfN.p8nkKk
+ IGIoE4fWbMh_VRAck4T7NNyBEhu25qiJl1qAERxWmoLDCA71Fl9cHqlVW9ETSuFOG8JWBvQLmNLP
+ hhypB23DHZKWXdx58jzamsRFvZ30Y3NqmPvkE.iMm3o68FqmyzVKs2GKfmfsCpZZDLG0D8sPM6Pr
+ hPg6pWd.Qm_gkGFxVSFusQUYn5X3ubPoR83LDB5U8JlQzjVkckwUjpHNlXWgXYbHSMMv60ntGokJ
+ 31UUE_m0rLrcOGVgUd2AsfhX3ed2o2kr0LTR2FAarQc.DUJKWcUmK6mabF4eUd6u40B6ZyTykrkK
+ xb7xsGqKRBdqf4C7M8VDZpBq.8upm6cjX4c4hkghdtbS1
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic313.consmr.mail.bf2.yahoo.com with HTTP; Mon, 25 May 2020 16:11:59 +0000
+Date: Mon, 25 May 2020 16:11:55 +0000 (UTC)
+From: Caroline Edward <carolineedward984@yahoo.com>
+Message-ID: <1284781589.2974018.1590423115879@mail.yahoo.com>
+Subject: Good day,
 MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.2/25823/Mon May 25 14:23:53 2020)
+References: <1284781589.2974018.1590423115879.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.15960 YMailNodin Mozilla/5.0 (Windows NT 6.1)
+ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,40 +59,54 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: mrs.carolineedward@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello,
-
-as you know we are writing a hypervisor backend for i915/gvt. We were wondering
-about the semantics of dma_map_guest_page, dma_pin_guest_page, and
-dma_unmap_guest_page from intel_gvt_ops.
-
-My current understanding is this: Map creates a new DMA mapping with a reference
-count of 1. Pin increases the reference count by one. Unmap decreases the
-reference count by 1 and if it reaches zero, removes the DMA mapping. Pretty
-straight forward.
-
-I would also expect that after I call `intel_gvt_ops->vgpu_destroy`, all DMA
-mappings are released by the mediator with the appropriate number of unmap
-calls. This doesn't seem to be the case, as I see many DMA mappings that are
-still alive after the vGPU is destroyed.
-
-At this point, I'm a bit unsure what to do with these mappings, because they
-might still be in use. So the options are to either free them (and risk memory
-corruption) or keep them around leak memory.
-
-Do I have a flaw in my assumptions or is it expected behavior to clean up some
-mappings that still have a reference count >0 after the vGPU is destroyed?
-
-Thanks,
-Julian
-
-
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+R29vZCBkYXksCgpBbSBDYXJvbGluZSBFZHdhcmQsIGEgc3RhZmYgU2VyZ2VhbnQgaW4gdGhlIFVT
+IEFybXkgcHJlc2VudGx5IHNlcnZpbmcgaW4gU3lyaWEgYXMgYSBjb21iYXQgaW5zdHJ1Y3Rvciwg
+SSBzaW5jZXJlbHkgYXBvbG9naXplIGZvciBpbnRydWRpbmcgaW50byB5b3VyIHByaXZhY3ksIHRo
+aXMgbWlnaHQgY29tZSBhcyBhIHN1cnByaXNlIHRvIHlvdSwgYnV0IG5vdGhpbmcgaXMgbW9yZSBk
+aXN0cmVzc2luZyB0byBtZSBhdCB0aGlzIHRpbWUgYXMgaSBmaW5kIG15c2VsZiBmb3JjZWQgYnkg
+ZXZlbnRzIGJleW9uZCBteSBjb250cm9sLCBpIGhhdmUgc3VtbW9uZWQgY291cmFnZSB0byBjb250
+YWN0IHlvdS4gQW0gNDUgeWVhcnMgb2xkIGxhZHksIGFtIGEgd2lkb3cgYW5kIEkgaGFkIGEgc29u
+IHdobyBpcyBub3cgMTYgeWVhcnMgb2YgYWdlLgoKU29tZSBtb25leSBpbiB2YXJpb3VzIGN1cnJl
+bmNpZXMgd2hlcmUgZGlzY292ZXJlZCBpbiBiYXJyZWxzIGF0IGEgZmFybSBob3VzZSBpbiB0aGUg
+bWlkZGxlIEVhc3QgZHVyaW5nIGEgcmVzY3VlIG9wZXJhdGlvbiBpbiBJcmFxIFdhcixhbmQgaXQg
+d2FzIGFncmVlZCBieSBTdGFmZiBTZXJnZWFudCBLZW5uZXRoIEJ1ZmYgYW5kIG15c2VsZiB0aGF0
+IHNvbWUgcGFydCBvZiB0aGVzZSBtb25leSBiZSBzaGFyZWQgYmV0d2VlbiBib3RoIG9mIHVzLCBJ
+IHdhcyBnaXZlbiBhIHRvdGFsIG9mICgkNSBNaWxsaW9uIFVTIERvbGxhcnMpIGFzIG15IG93biBz
+aGFyZSAsIEkga2VwdCB0aGlzIG1vbmV5IGluIGEgY29uc2lnbm1lbnQgZm9yIGEgbG9uZyB3aGls
+ZSB3aXRoIGEgc2VjdXJpdHkgQ29tcGFueSB3aGljaCBpIGRlY2xhcmVkIGFuZCBkZXBvc2l0IGFz
+IG15IHBlcnNvbmFsIGVmZmVjdHMgYW5kIGl0IGhhcyBiZWVuIHNlY3VyZWQgYW5kIHByb3RlY3Rl
+ZCBmb3IgeWVhcnMgbm93IHdpdGggdGhlIGRpcGxvbWF0aWMgRGVsaXZlcnkgU2VydmljZS4KCk5v
+dywgdGhlIFdBUiBpbiBJcmFxIGlzIG92ZXIsIGFuZCBhbGwgcG9zc2libGUgcHJvYmxlbXMgdGhh
+dCBjb3VsZCBoYXZlIGVtYW5hdGVkIGZyb20gdGhlIHNoYXJlZCBtb25leSBoYXMgYmVlbiB0b3Rh
+bGx5IGNsZWFuZWQgdXAgYW5kIGFsbCBmaWxlIGNsb3NlZCwgYWxsIHdoYXQgd2FzIGRpc2NvdmVy
+ZWQgaW4gdGhlIE1pZGRsZSBFYXN0IGlzIG5vIG1vcmUgZGlzY3Vzc2VkLCBhbSBub3cgcmVhZHkg
+dG8gcmV0aXJlIGZyb20gYWN0aXZlIHNlcnZpY2VzLCBidXQsIGkgbmVlZCBhIHRydXN0d29ydGh5
+IHBlcnNvbiB0aGF0IGNhbiBoZWxwIG1lIHRha2UgcG9zc2Vzc2lvbiBvZiB0aGlzIGZ1bmRzIGFu
+ZCBrZWVwIGl0IHNhZmUgd2hpbGUgaSB3b3JrIG9uIG15IHJlbGllZiBsZXR0ZXJzIHRvIGpvaW4g
+eW91IHNvIHRoYXQgd2UgY291bGQgZGlzY3VzcyBwb3NzaWJsZSBidXNpbmVzcyBwYXJ0bmVyc2hp
+cCB0b2dldGhlciB3aXRoIHRoZSBtb25leS4KCkJ1dCBJIHRlbGwgeW91IHdoYXQhIE5vIGNvbXBl
+bnNhdGlvbiBjYW4gbWFrZSB1cCBmb3IgdGhlIHJpc2sgd2UgYXJlIHRha2VuIHdpdGggb3VyIGxp
+dmVzLllvdSBjYW4gY29uZmlybSB0aGUgZ2VudWluZW5lc3Mgb2YgdGhlIGZpbmRpbmdzIGJ5IGNs
+aWNraW5nIG9uIHRoaXMgd2ViIHNpdGU6ICAgaHR0cDovL25ld3MuYmJjLmNvLnVrLzIvaGkvbWlk
+ZGxlX2Vhc3QvMjk4ODQ1NS5zdG0KCknigJltIHNlZWtpbmcgeW91ciBraW5kIGFzc2lzdGFuY2Ug
+dG8gbW92ZSB0aGUgc3VtIG9mIFVTJDUgTWlsbGlvbiBEb2xsYXJzIHRvIHlvdSBhcyBmYXIgYXMg
+SSBjYW4gYmUgYXNzdXJlZCB0aGF0IHRoZSBtb25leSB3aWxsIGJlIHNhZmUgaW4geW91ciBjYXJl
+IHVudGlsIEkgIGNvbXBsZXRlIG15IHNlcnZpY2UgaGVyZSBpbiAoU1lSSUEpIGJlZm9yZSB0aGUg
+ZW5kIG9mIHRoZSBtb250aC4gVGhlIG1vc3QgaW1wb3J0YW50IHRoaW5nIGlzOyDigJxDYW4gSSBU
+cnVzdCB5b3XigJ0/LEFzIGFuIG9mZmljZXJzIG9uIEFDVElWRSBEVVRZIGFtIG5vdCBhbGxvd2Vk
+IGFjY2VzcyB0byBtb25leSwgdGhlcmVmb3JlLCBpIGhhdmUgZGVjbGFyZWQgdGhlIGNvbnRlbnQg
+b2YgdGhlIGNvbnNpZ25tZW50IGFzIHBlcnNvbmFsIGVmZmVjdCB0aGF0IGkgd291bGQgbGlrZSB0
+byBiZSBkZWxpdmVyZWQgdG8gYSBmcmllbmQuIFlvdSB3aWxsIGJlIHJld2FyZGVkIHdpdGggMzAl
+IG9mIHRoaXMgZnVuZHMgZm9yIHlvdXIgaGVscCwgYWxsIHRoYXQgaSByZXF1aXJlZCBpcyB5b3Vy
+IHRydXN0IGJldHdlZW4gdXMgdGlsbCB0aGUgbW9uZXkgZ2V0IHRvIHlvdS4KClNpbmNlcmVseSwK
+U2d0LiBDYXJvbGluZSBFZHdhcmQuCkVtYWlsOiBtcnMuY2Fyb2xpbmVlZHdhcmRAZ21haWwuY29t
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2
+dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRl
+dgo=
