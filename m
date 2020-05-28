@@ -1,47 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42ED81E551A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 May 2020 06:28:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E4641E5D55
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 May 2020 12:45:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D84BB6E09F;
-	Thu, 28 May 2020 04:28:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C899E6E169;
+	Thu, 28 May 2020 10:45:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AB7456E09F
+Received: from sonic302-48.consmr.mail.ne1.yahoo.com
+ (sonic302-48.consmr.mail.ne1.yahoo.com [66.163.186.174])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2668F6E169
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 28 May 2020 04:28:32 +0000 (UTC)
-IronPort-SDR: XAs5E/Iz63iFhXzmoZ9J34gxgJ3NyEcpWRNHZVwDssZxP/VQbhLdIpdTSJwGAibz7/slxRPfJi
- aSCEDJR+7twA==
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 May 2020 21:28:31 -0700
-IronPort-SDR: lessUttt9A4owsKe9sHfadLAWhJ4Qlz468JkbrIG/qbV5QOnVJSoFLU++vPBoXwD9h0/bQuo6k
- r8ZmKbby9QPw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,443,1583222400"; 
- d="asc'?scan'208";a="345780313"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga001.jf.intel.com with ESMTP; 27 May 2020 21:28:30 -0700
-Date: Thu, 28 May 2020 12:13:11 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: Semantics of dma_{map,pin,unmap}_guest_page
-Message-ID: <20200528041311.GH23961@zhen-hp.sh.intel.com>
-References: <98f001ecef5644f945e36585ac04ba31093e6a2e.camel@cyberus-technology.de>
- <20200526060229.GA19560@joy-OptiPlex-7040>
- <3fef2ebc2506dd2bd71f5411033c2cfb1b1a00bd.camel@cyberus-technology.de>
- <20200526081244.GB19560@joy-OptiPlex-7040>
- <3bdc659d41ad00d7ab1bf981dd97c2bb34163d0f.camel@cyberus-technology.de>
- <20200526083747.GC19560@joy-OptiPlex-7040>
+ Thu, 28 May 2020 10:45:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1590662719; bh=4O3o0uauLsEuPy5Ff2pUbyJDyVnk3a5yz2aOkP0JSJA=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=iiFuUtQnMKmpNbxE6Ra/Vf9g7EvT2qVYcViwiytz1plFmLy4k2j9sdQQPqNqPg4ijE1IjuQi6c5j7oqZPrP/8vIjXndgy1xb/RoPHw2cq/R3cZd1qbJcCd/rMmbEK2P3yc9k5R1wJMYbPmGyW4IspOsncy811b39X5PFqlCtkDxLV6E1p/ScwE+VRyYIarz8KCFBvUMN7XzvuO1+cnbJdaxNQ9wCneanv738ij9go0hzDoxgVvO7K3qJtmiKX6CWJ3eaLfzgw1hc3GE1RkrQjYyHGPgMmfMstFC+FsCyMD9dc/6FgWMQoBTIpf6+7U5tmQG5Geq2rOd6OnEz8MK6Tw==
+X-YMail-OSG: JD.TDxAVM1nH1EKYfVIA8bXjg14u09awHnRNIy49ITmOCUsRz34oCwZKDFe.cKb
+ zigcQwhDUSzI20bE.JHx_.MDKErZnwv7Fet38jAz7hpNCjSOKr6fevwqQF3USNX0KBPyRBN2n1km
+ xHfNOx7w8HV2Ha3mWSb7gGifEYNSPI5Vb9j53reMelusRj3ej6YXm2mjdNSLrRliTir2lcb58R5t
+ MIVpiAEW3bELdY85rxRzGXN4JnO7gbB_WUulIrKZNVJIYtflwdGGmhhKyhLfgjmzxqOqJun4dJiH
+ dlmxeZC24d1W3tBqPzAboPjd9T9XwpBq.kSGT2dRZzjOfqtHaaLGKalSQfwiHnHMekuMn9kFYBlK
+ NMrwm9KU8hnPJEneuzr_XCq.2Xw12Zftfz8NCKqDkLTO1HZEY_J9T3LQqkpEjbHeyxTXn.KDiDXI
+ 5.crxIaaiBtTT6JwfSwwBPZF6057DGVBUQ381IbspI_0xIZXHuRifAjqI2W_fGSavtOQ912B4Q.z
+ 3e2NY4cAulL2RdQgZc4MA6RgYEu8amHYoqX3aUW_hNMfCVfUIvBa1E3drMVAWQ4Li9qOy9wGhYA6
+ 1Kx0W7UajVzJgpYamtneC8dNgpHAy_D7xMpWNL7kiM50iKz0uxvEzcwyl1ocIbXpZqfjDA1qt4Zf
+ 67_m7TFTLLZZ6I2NNF63V2fn8usM_6JYoblmy47KmgFruMmEwgphS15xQ56N8Grdm6KxmW17ttFj
+ aQP3Jt4AjFZKd9pR.MY4M0QL9inVfXc1mjbWaj8TbqA6wic8a41SLQd_yH0m92TlfcDjfv41VjXD
+ K1A8qB6rt4T6YmzqlU8C9g423NP1LZzPijPFS6bMC7Qg2N1YlIFQyVyUxxoxcNjiwxiH2MsC2O_5
+ cdX1opuNvHnlem1Wf9lSkDaw8XCEw.phghyzszMEHDDKCvarOBiW83BPGVq4OzFRMD693zXkKuIr
+ jHZFiEkquKAC3p_nLYOTX8FDypjqx1nuFTgzofQjyJCg2Zz0vzSSNS6i0szMTQWWwBsncABw5164
+ NRrs4y9EvizY6cClcyYeoCmUJi7MsiZQ4lQxIMkCW1rIg48bsm3NjcN9X1uO2HkMefhv88qYl3XD
+ QxXDmsnxG4v1XMjIxVVVxlvJBMhg7VTTp5LiuKh8qmzvOmbeYMQhBrz7m.LrlVSXdjczYGUWQ_pf
+ MPkI_9VXoUVm6U14ohOCyqDWpTEeenPqZ4TfiaLX99tsQSbaB1L1UqdC2hWmo6xc.WaEAw4iyK_Y
+ tOFPI1tZKO5xf808iU.h5eO.ZAA60LtYjB6NHEMMH2OfsG1.psH4IuBjgSTJKuwsa3XDpAMYygj4
+ vZp5oFSf1XTAAtdsS597opa7DZyjbv5.sE.fiCG_zmd7F
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic302.consmr.mail.ne1.yahoo.com with HTTP; Thu, 28 May 2020 10:45:19 +0000
+Date: Thu, 28 May 2020 10:43:18 +0000 (UTC)
+From: Aileen Billanes <aileenbill03@yahoo.com>
+Message-ID: <2133411364.957960.1590662598869@mail.yahoo.com>
+Subject: From Mrs.Aileen Billanes
 MIME-Version: 1.0
-In-Reply-To: <20200526083747.GC19560@joy-OptiPlex-7040>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+References: <2133411364.957960.1590662598869.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.15959 YMailNodin Mozilla/5.0 (Windows NT 6.1;
+ ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61
+ Safari/537.36
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,111 +60,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Julian Stecklina <julian.stecklina@cyberus-technology.de>,
- intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1845336470=="
+Reply-To: billanesaleen93@yahoo.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+Dearest One,
 
---===============1845336470==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="AjmyJqqohANyBN/e"
-Content-Disposition: inline
+Compliment of the Season,Pardon me for Contacting You Through this media. But please I am in Desperate Need of your assistance: My Name is Mrs.AILEEN BILLANES the wife of Mr.Eleaza Billanes Mayor of Rizal in Yatagan Province. Who Was recently in the Philippine Killed by Gunmen on JUNE 12TH 2018. Well Threat During the late husband on my life , He gave me the total sum of U.S.($8.5USD Eight Million Five Hundred Thousand Us Dollars) this money is deposited with a firm in ABROAD in a metallic box .
 
+Then deposit it in a security and finance company abroad just in case anything ever Happen to him . I did deposit the total sum as He gave it to me under a secret arrangement as a family valuable. This Means That the security company does Not Know the content of this metallic box.Since the death of my late husband , the Philippine state government has blocked me and my late husband accounts Through the help of my late husband family. Also my late husband brothers succeeded in Collecting Have All Our properties from me That is under my control and They Are Still looking for more.Therefore I am Contacting you to help me secure the sum Which I Explain to you above , for the future of my kids.
 
---AjmyJqqohANyBN/e
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Since my late husband family made it impossible for me to move out of my late husband in Philippine house Please do tell me if I can trust you as Who Will Not sit on this money When You Claim it. I am willing to Give you 20% of the total sum in box After That You Have successfully secured it. Reasons for safety so That I can come over to meet you there in your country for you to help me invest the money in a good business i will like to hear from you so that i will Immediately know if i can trust you with all my heart and if you are capable so that i Can send you my pictures and my international passport and all the documents so That You Will Better Understand and I will wait your message on my
 
-On 2020.05.26 04:37:47 -0400, Yan Zhao wrote:
-> On Tue, May 26, 2020 at 10:30:36AM +0200, Julian Stecklina wrote:
-> > On Tue, 2020-05-26 at 04:12 -0400, Yan Zhao wrote:
-> > > On Tue, May 26, 2020 at 10:11:12AM +0200, Julian Stecklina wrote:
-> > > > On Tue, 2020-05-26 at 02:02 -0400, Yan Zhao wrote:
-> > > > > as the Unmap calls are triggered from guest page table modificati=
-on, its
-> > > > > count does not necessarily match to that of Map calls.
-> > > > > But unpon vGPU is destroyed, gvt_cache_destroy() would be called =
-by
-> > > > > kvmgt_guest_exit() and would remove all DMA mappings which might =
-be still
-> > > > > alive regardless of its ref count.
-> > > >=20
-> > > > If page tables stay pinned across a call to vgpu_destroy, that woul=
-d explain
-> > > > what I'm seeing. This is then also harmless. I was worried that we
-> > > > accumulate
-> > > > these pins over time.
-> > > >=20
-> > > > That being said, I've opened an issue in our internal bug tracker t=
-o re-
-> > > > visit
-> > > > this issue and confirm the theories.
-> > > >=20
-> > > guest page tables are not necessarily cleared before vgpu_destroy,
-> > > especially when guest is killed or crashed.
-> > > so Unmap count is always less than Map count. I don't think it's a bu=
-g,
-> > > and it's safe to clear all dma mappings generated for guest and unpin=
- all
-> > > previously pinned guest pages as now guest is destroyed. isn't it?
-> >=20
-> > It's fine. It was just a bit surprising to me.
-> >=20
-> > As I said before, it would be easier to spot bugs if vgpu_destroy would=
- clean
-> > DMA mappings up that it knows about, but it's mostly cosmetic.
-> >
-> yes, if vgpu could maintain a list of its pinned pages and unpin them in
-> vgpu_destroy, it's fine.
-> But hypervisor adapter layer still needs to maintain a list in order to c=
-atch up
-> the missed ones to make itself complete.
-> so putting DMA mappings cleanup in hypervisor adapter layer makes our
-> life easier now:)
->=20
-
-yeah, we take big hammer now. That pin_guest_page interface is still not cl=
-ean
-to me along with our display dmabuf handling which is that for, should doub=
-le
-check on proper life cycle handling.
-
-btw, Julian, for hypervisor adapter interface you proposed before, is
-there any update on that? I think we'll also look into ACRN hypervisor
-support, so better can align.
-
-Thanks
-
---=20
-Open Source Technology Center, Intel ltd.
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---AjmyJqqohANyBN/e
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXs86VwAKCRCxBBozTXgY
-J+g8AKCU/qujtl/3HNE66kEMz+svqQcw6ACfXP5gtxuJvAie1UAKUTg7e1XHqtk=
-=lGYk
------END PGP SIGNATURE-----
-
---AjmyJqqohANyBN/e--
-
---===============1845336470==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Best Regards
+Mrs.Aileen Billanes
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1845336470==--
