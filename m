@@ -2,51 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69D381E9B03
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Jun 2020 02:34:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F4B01E9BEE
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Jun 2020 05:04:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 12C0F89E9E;
-	Mon,  1 Jun 2020 00:34:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E041789E7B;
+	Mon,  1 Jun 2020 03:04:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com
- [IPv6:2607:f8b0:4864:20::341])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 71A4689E9E
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 977B989E7B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  1 Jun 2020 00:34:36 +0000 (UTC)
-Received: by mail-ot1-x341.google.com with SMTP id m2so4691689otr.12
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 31 May 2020 17:34:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=QPyFeV2cDELhd9dc6jn+njAi3ogL1W0LM6bYSp1zceI=;
- b=S52nluh+FGf6LHuvJmdCSkPi43jDSKv2PoJGprXUaixbtsLIRV/M0T+g+1pTxLRjw2
- Lig4dGelbP2Z62Lc5uHNo9wqxdHrx75m+U4rMyEAQ48GVZ5DmqOlWrr9uTmjt/sYKD8m
- ISvmHMyIcvVCEV77R6g7sooabktDUboIYIsKZ5YSGtIPimmIBxwp/Q3ydikSoS39HZH+
- PQ2HuZKIjcnEdFEDz0Mw98enCQCEXBRMLEtZDAlycQRKxdF0JAWhy7SHLRYFsspJJB6z
- ISTKAfnXHkuHZEX+Pc8e4mFWVdeeyaS8M+Rv7JazwtV92DRpPVrQWiYFv59BVkjZ/gqg
- DT+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=QPyFeV2cDELhd9dc6jn+njAi3ogL1W0LM6bYSp1zceI=;
- b=lVpcTqM/RpIWVfmlDnSEJabuAorE8+WiQLuzb3GmMyFQ3yxqZTitbAOy3wCz077ti0
- loDbUZUg5LZLQB4iy9V0srycEG1UxhfG7JeRREH3Ldrb5WoO8sEl25vLhgW3fvOxA0F6
- BjG7fJ57D/pAvAJrHnSM7avQ7Dl5H3LNFLBBOBU037FjSxZBE0zOuichJsUNQClOY+nl
- XuhZurNC7RS0Dgml5xpCeLcQ1FqbbW7jjlPrwJhtBJFDeIn8Pr93aUkaX0ErS07OiIIz
- Ga2tztJ1ht430UBj7MSPv6uH7pBlrPitRXTE7BlqbIq3P1u451QZKo2dSSEbVMF61a2R
- 8xFg==
-X-Gm-Message-State: AOAM531DXFtjtrzkWgZ2LPE3H0wGrklG4fTXoF3l+qPy1yeCwIlIVWrM
- Vcs9CY0Cg93c7sBsEEVjBnA0x1Fvth6HLJ+evVI=
-X-Google-Smtp-Source: ABdhPJx6ras+mERKK1mekY4SUJ1kpeBKURXhapDK3fdNINgXVcWpME9KTFwk3UZsF2tDhUb8yeSZHu7gCOfl2PO3Cy4=
-X-Received: by 2002:a9d:32b4:: with SMTP id u49mr14949509otb.304.1590971675594; 
- Sun, 31 May 2020 17:34:35 -0700 (PDT)
+ Mon,  1 Jun 2020 03:04:42 +0000 (UTC)
+IronPort-SDR: fMLDMgEFU4+Ht6sl9TnyDGYmKQvW0JLqnZ9I1qaY0XkL5o9Wq57G4xrEg379uhB7aMDwFkkvRU
+ ofNcvUcMC2hw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 May 2020 20:04:40 -0700
+IronPort-SDR: m0RLgDQk2GAVB3juNDHFlJDkDTwan+8wJMRYj9B3Ea8lZzpYWCaZZAUgM9eUtWMvGG8Cwd+CLZ
+ eJltEOU0KXmQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,459,1583222400"; d="scan'208";a="311827466"
+Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.113])
+ by FMSMGA003.fm.intel.com with ESMTP; 31 May 2020 20:04:39 -0700
+From: Colin Xu <colin.xu@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH V3] drm/gvt/i915: Fix two CFL MMIO handling caused by
+ regression.
+Date: Mon,  1 Jun 2020 11:04:37 +0800
+Message-Id: <20200601030437.12916-1-colin.xu@intel.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-From: Marvella Kodji <marvellapatrick1@gmail.com>
-Date: Mon, 1 Jun 2020 01:34:05 +0100
-Message-ID: <CAF0CuhBr_a7+a5kZMGcJALC+o2mbQ6uUse7rgfn3_-Nrefj4xw@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,34 +46,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1632724626=="
+Cc: colin.xu@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1632724626==
-Content-Type: multipart/alternative; boundary="00000000000092540f05a6faf50d"
+Fixes: 43226e6fe798 (drm/i915/gvt: replaced register address with name)
 
---00000000000092540f05a6faf50d
-Content-Type: text/plain; charset="UTF-8"
+D_CFL was incorrectly removed for:
+GAMT_CHKN_BIT_REG
+GEN9_CTX_PREEMPT_REG
 
-How are you doing
+V2: Update commit message.
+V3: Rebase and split Fixes and mis-handled MMIO.
 
---00000000000092540f05a6faf50d
-Content-Type: text/html; charset="UTF-8"
+Signed-off-by: Colin Xu <colin.xu@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/handlers.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-<div dir="ltr"><br clear="all"><div><div dir="ltr" class="gmail_signature" data-smartmail="gmail_signature"><div dir="ltr"><span>How are you doing</span></div></div></div></div>
-
---00000000000092540f05a6faf50d--
-
---===============1632724626==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index 3e88e3b5c43a..d2839cc036c1 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -3131,8 +3131,8 @@ static int init_skl_mmio_info(struct intel_gvt *gvt)
+ 	MMIO_DFH(GEN9_WM_CHICKEN3, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS,
+ 		 NULL, NULL);
+ 
+-	MMIO_D(GAMT_CHKN_BIT_REG, D_KBL);
+-	MMIO_D(GEN9_CTX_PREEMPT_REG, D_KBL | D_SKL);
++	MMIO_D(GAMT_CHKN_BIT_REG, D_KBL | D_CFL);
++	MMIO_D(GEN9_CTX_PREEMPT_REG, D_SKL_PLUS);
+ 
+ 	return 0;
+ }
+-- 
+2.26.2
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1632724626==--
