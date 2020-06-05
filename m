@@ -1,53 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D7651EF62A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Jun 2020 13:08:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C06241EF96E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Jun 2020 15:38:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F26086E435;
-	Fri,  5 Jun 2020 11:08:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D27276E8E9;
+	Fri,  5 Jun 2020 13:38:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 998516E435;
- Fri,  5 Jun 2020 11:08:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=3NH0uxciW9wNmCNchpq6bM+XDejEEyxzy2dajdLeTWo=; b=RLBZLCNnSMgKapiRRH0snatQ9
- 7hWvpFAqDlDO/6hY0S3n1zww8LPaufZjRi69WpU2U9fD/aYUcP1xk7PJe3v9/kcZ0W1PTQddayhmW
- L3B1rg7BEWjG38nnXKuA5UsVYwKI7DfJkkjkZWWRTSHvYMSMUJnSoxk4tGKj1uKugSaQbHmx8XLpR
- dzCjXFVT/n3uG5vBmyIowx3tBTerdgF9VGapd8LQmu6oMmTAFo5j9kFC8p8IeBvLrzSQsR3mm5B66
- nH5FwNMz8ulminYxmJM5+11f1wd81YnpUU0e4F8m7DDBmVu42FQfAwTb4ow24fKn6yGLGqGFro6+c
- 3/0FVlvuA==;
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jhADB-0004sx-PN; Fri, 05 Jun 2020 13:08:33 +0200
-Received: from [2001:16b8:57f2:b00:9e42:55f5:e968:2436] (helo=linux.fritz.box)
- by sslproxy01.your-server.de with esmtpsa
- (TLSv1.3:TLS_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1jhADB-0006U5-H8; Fri, 05 Jun 2020 13:08:33 +0200
-Message-ID: <15677f9958dfe4dfdbb3dda978c84a64427fa00f.camel@cyberus-technology.de>
-Subject: Re: [PATCH] drm/i915/gvt: print actionable error message when gm
- runs out
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A0F076E8E9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri,  5 Jun 2020 13:38:45 +0000 (UTC)
+IronPort-SDR: FdFP2N/qrtB0W28dnlNFyGaA39G0v/xzScFT81naAIII6u2HZ9z/gAoOY4Y6Z5gNJs7PCt169H
+ RktlRIbaIfMQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jun 2020 06:38:44 -0700
+IronPort-SDR: c+XNBg+eiriGSGCPPwFa9wM2dkK8T/FwSnRB6cIKnZyIR1ZJE4nvt4CvlGeZCJ2IjT6tbgZCP/
+ 1vSowiQeSoPA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,476,1583222400"; d="scan'208";a="348439904"
+Received: from lkp-server02.sh.intel.com (HELO 85fa322b0eb2) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 05 Jun 2020 06:38:42 -0700
+Received: from kbuild by 85fa322b0eb2 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jhCYU-0000FD-0r; Fri, 05 Jun 2020 13:38:42 +0000
+Date: Fri, 05 Jun 2020 21:37:54 +0800
+From: kernel test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Date: Fri, 05 Jun 2020 13:08:32 +0200
-In-Reply-To: <20200605045430.GS5687@zhen-hp.sh.intel.com>
-References: <20200603123321.263895-1-julian.stecklina@cyberus-technology.de>
- <20200605045430.GS5687@zhen-hp.sh.intel.com>
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.36.2 (3.36.2-1.fc32) 
+Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
+ b1fc96ef69af3af9d5ee70485728ce42a6defd80
+Message-ID: <5eda4ab2.YuoL+p92arTz2v0Q%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.3/25833/Thu Jun  4 14:45:29 2020)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,41 +49,120 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>,
- intel-gvt-dev@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 2020-06-05 at 12:54 +0800, Zhenyu Wang wrote:
-> On 2020.06.03 14:33:21 +0200, Julian Stecklina wrote:
-> > +		gvt_err("vgpu%d: failed to allocate %s gm space from host\n",
-> > +			vgpu->id, high_gm ? "high" : "low");
-> > +		gvt_err("vgpu%d: destroying vGPUs, decreasing vGPU memory size
-> > or increasing GPU aperture size may resolve this\n",
-> > +			vgpu->id);
-> 
-> Currently we can't decrease vGPU mem size as defined by mdev type,
-> so actually you may try different vGPU type.
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-next-fixes
+branch HEAD: b1fc96ef69af3af9d5ee70485728ce42a6defd80  drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic context
 
-Yes, that's what I meant.
+elapsed time: 483m
 
->  And aperture size is
-> also handled for supported vGPU mdev types, so assume user should
-> already be awared of that too. I just don't want us to be too chatty. :)
+configs tested: 92
+configs skipped: 3
 
-Our users typically hit this particular error message when they haven't
-configured the GPU aperture size in the system BIOS correctly. Many laptops we
-see have the aperture set to 256MB and this is simply not enough.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-I don't cling to the specific wording of the error message, but any hint in the
-error message that this is not an obscure, internal error or bug, but something
-that the user can actually fix, would be helpful.
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+xtensa                         virt_defconfig
+sh                          rsk7269_defconfig
+arm                        multi_v5_defconfig
+arc                     nsimosci_hs_defconfig
+m68k                         apollo_defconfig
+csky                                defconfig
+arm                        magician_defconfig
+arm                        spear3xx_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+i386                 randconfig-a014-20200605
+i386                 randconfig-a015-20200605
+i386                 randconfig-a011-20200605
+i386                 randconfig-a016-20200605
+i386                 randconfig-a012-20200605
+i386                 randconfig-a013-20200605
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                allnoconfig
+um                                  defconfig
+um                               allmodconfig
+um                               allyesconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
 
-Julian
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
