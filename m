@@ -2,42 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D94551F2376
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Jun 2020 01:15:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9825C1F27AE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Jun 2020 01:48:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 67C356E9B2;
-	Mon,  8 Jun 2020 23:15:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4240489F6F;
+	Mon,  8 Jun 2020 23:48:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D3F626E9AE;
- Mon,  8 Jun 2020 23:15:26 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DCC312068D;
- Mon,  8 Jun 2020 23:15:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591658126;
- bh=zDJc7RsUzm7UigBtyyVjcH3t6Z0lzN8dVVi27bY+PYc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fMTZ4QB9C2cPbyYmKU69vEIx40/lewoP6rihk/wV7GhOQIvTFl073Gwd53RjOXRF1
- IkR/pyqiNd59Fwe/8cjmoEdDEGefnkdVhwAbeEOWG9Pqg4EYtzdmlD/Uvbr/SIUuqT
- 6L9dv5CcWNRQ/TM1HIqoTVl4yGK1kM/fvO4ApoZI=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.6 162/606] drm/i915/gvt: Init DPLL/DDI vreg for
- virtual display instead of inheritance.
-Date: Mon,  8 Jun 2020 19:04:47 -0400
-Message-Id: <20200608231211.3363633-162-sashal@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200608231211.3363633-1-sashal@kernel.org>
-References: <20200608231211.3363633-1-sashal@kernel.org>
+X-Greylist: delayed 77999 seconds by postgrey-1.36 at gabe;
+ Mon, 08 Jun 2020 23:48:39 UTC
+Received: from skidrow.idv.tw (114-33-141-168.HINET-IP.hinet.net
+ [114.33.141.168])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 91A6489F6F;
+ Mon,  8 Jun 2020 23:48:39 +0000 (UTC)
+Received: from User (unknown [197.234.221.12])
+ by skidrow.idv.tw (Postfix) with ESMTPA id 0241048821B8;
+ Mon,  8 Jun 2020 02:27:04 +0800 (CST)
+From: "Mrs.Beal Paulette"<admin@skidrow.idv.tw>
+Subject: Re.important Message.
+Date: Sun, 7 Jun 2020 21:27:44 +0300
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Synology-Spam-Status: score=6.179, required 5, T_FILL_THIS_FORM_SHORT 0,
+ R_BAD_CTE_7BIT 1, MISSING_MID 0.497, MONEY_BACK 1.232, __MONEY_FORM_SHORT 0,
+ __FILL_THIS_FORM_SHORT 0, NO_RECEIVED -0.001, RCVD_HELO_USER 1,
+ MONEY_FORM_SHORT 1.229, __XFER_MONEY 0, MISSING_HEADERS 1.021,
+ MIME_HTML_ONLY 0.2, LOTS_OF_MONEY 0.001, HAS_X_PRIO_THREE 0, TAGGED_RCPT 0
+X-Synology-Spam-Flag: yes
+X-Synology-Virus-Status: no
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,118 +45,119 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Colin Xu <colin.xu@intel.com>,
- intel-gvt-dev@lists.freedesktop.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: fbipayment50@citromail.hu
+Content-Type: multipart/mixed; boundary="===============1581837149=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200608234841.4240489F6F@gabe.freedesktop.org>
 
-From: Colin Xu <colin.xu@intel.com>
+--===============1581837149==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
-commit f965b68188ab59a40a421ced1b05a2fea638465c upstream.
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+<FONT size=3>Federal Bureau of Investigation (FBI)</FONT></DIV>
+<DIV>
+<FONT size=3>Anti-Terrorist and Monitory Crime Division.</FONT></DIV>
+<DIV>
+<FONT size=3>Federal Bureau of Investigation.</FONT></DIV>
+<DIV>
+<FONT size=3>J.Edgar.Hoover Building Washington Dc</FONT></DIV>
+<DIV>
+<FONT size=3>Customers Service Hours / Monday to Saturday</FONT></DIV>
+<DIV>
+<FONT size=3>Office Hours Monday to Saturday:</FONT></DIV>
+<DIV>
+<FONT size=3>Fax number: +13302303756</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Dear Beneficiary,</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Series of meetings have been hold over the past 7 months with the secretary general of the United Nations Organization. This ended 3 days ago. It is obvious that you have not received your funds which is to the tune of $16.5million due to past corrupt Governmental Officials who almost held the fund to themselves for their selfish reason and some individuals who have taken advantage of your fund all in an attempt to swindle your fund which has led to so many losses from your end and unnecessary delay in the receipt of your fund.</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>The National Central Bureau of Interpol enhanced by the United Nations and Federal Bureau of Investigation have successfully passed a mandate to the current Prime Minister of Malaysia Excellency Dr. Mahathir Bin Mohamad to boost the exercise of clearing all foreign debts owed to you and other individuals and organizations who have been found not to have receive their Contract Sum, Lottery/Gambling, Inheritance and the likes. Now how would you like to receive your payment? Because we have two method of payment which is by Bank Cashier Cheque or by Atm Card?</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>ATM CARD: We will be issuing you a custom pin based ATM card which you will use to withdraw up to $5,000 per day from any ATM machine that has the Master Card Logo on it and the card have to be renewed in 4 years’ time which is 2025. Also with the ATM card you will be able to transfer your funds to your local bank account. The ATM card comes with a handbook or manual to enlighten you about how to use it. Even if you do not have a bank account Cashier Cheque will be deposited in your bank for it to be cleared within three working days. Your payment would be sent to you via any of your preferred option and would be mailed to you via FedEx. Because we have signed a contract with FedEx which should expire by the end of June 2020 you will only need to pay $280 instead of $420 saving you $140 so if you </FONT></DIV>
+<DIV>
+<FONT size=3>Pay before the one week you save $140 note that any one asking you for some kind of money above the usual fee is definitely a fraudsters and you will have to stop communication with every other person if you have been in contact with any. Also remember that all you will ever have to spend is $280.00 nothing more! Nothing less! And we guarantee the receipt of your fund to be successfully delivered to you within the next 24hrs after the receipt of payment has been confirmed.</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Note: Everything has been taken care of by the Government of Malaysia, The United Nation and also the FBI and including taxes, custom paper and clearance duty so all you will ever need to pay is $280.</FONT></DIV>
+<DIV>
+<FONT size=3>DO NOT SEND MONEY TO ANYONE UNTIL YOU READ THIS: The actual fees for shipping your ATM card is $420 but because FedEx have temporarily discontinued the C.O.D which gives you the chance to pay when package is delivered for international shipping We had to sign contract with them for bulk shipping which makes the fees reduce from the actual fee of $420 to $280 nothing more and no hidden fees of any sort! To effect the release of your fund valued at $16.5million you are advised to contact our correspondent in Asia the delivery officer </FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Mr.Serene Neo </FONT></DIV>
+<DIV>
+<FONT size=3>With the information below,</FONT></DIV>
+<DIV>
+<FONT size=3>Email: fedexexpress2@citromail.hu</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>You are advised to contact him with the information’s as stated below:</FONT></DIV>
+<DIV>
+<FONT size=3>Your full Name..</FONT></DIV>
+<DIV>
+<FONT size=3>Your Address:..............</FONT></DIV>
+<DIV>
+<FONT size=3>Home/Cell Phone:..............</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Preferred Payment Method ( ATM / Cashier Cheque )</FONT></DIV>
+<DIV>
+<FONT size=3>Upon receipt of payment the delivery officer will ensure that your package is sent within 24 working hours. Because we are so sure of everything we are giving you a 100% money back guarantee if you do not receive payment/package within the next 24hrs after you have made the payment for shipping.</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Yours sincerely,</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Mrs.Beal Paulette</FONT></DIV>
+<DIV>
+<FONT size=3>FEDERAL BUREAU OF INVESTIGATION</FONT></DIV>
+<DIV>
+<FONT size=3>UNITED STATES DEPARTMENT OF JUSTICE</FONT></DIV>
+<DIV>
+<FONT size=3>WASHINGTON, D.C. 20535</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+</FONT>
+</BODY></HTML>
 
-Init value of some display vregs rea inherited from host pregs. When
-host display in different status, i.e. all monitors unpluged, different
-display configurations, etc., GVT virtual display setup don't consistent
-thus may lead to guest driver consider display goes malfunctional.
-
-The added init vreg values are based on PRMs and fixed by calcuation
-from current configuration (only PIPE_A) and the virtual EDID.
-
-Fixes: 04d348ae3f0a ("drm/i915/gvt: vGPU display virtualization")
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-Signed-off-by: Colin Xu <colin.xu@intel.com>
-Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-Link: http://patchwork.freedesktop.org/patch/msgid/20200508060506.216250-1-colin.xu@intel.com
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- drivers/gpu/drm/i915/gvt/display.c | 49 +++++++++++++++++++++++++++---
- 1 file changed, 44 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
-index a62bdf9be682..59aa5e64acb0 100644
---- a/drivers/gpu/drm/i915/gvt/display.c
-+++ b/drivers/gpu/drm/i915/gvt/display.c
-@@ -207,14 +207,41 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
- 				SKL_FUSE_PG_DIST_STATUS(SKL_PG0) |
- 				SKL_FUSE_PG_DIST_STATUS(SKL_PG1) |
- 				SKL_FUSE_PG_DIST_STATUS(SKL_PG2);
--		vgpu_vreg_t(vgpu, LCPLL1_CTL) |=
--				LCPLL_PLL_ENABLE |
--				LCPLL_PLL_LOCK;
--		vgpu_vreg_t(vgpu, LCPLL2_CTL) |= LCPLL_PLL_ENABLE;
--
-+		/*
-+		 * Only 1 PIPE enabled in current vGPU display and PIPE_A is
-+		 *  tied to TRANSCODER_A in HW, so it's safe to assume PIPE_A,
-+		 *   TRANSCODER_A can be enabled. PORT_x depends on the input of
-+		 *   setup_virtual_dp_monitor, we can bind DPLL0 to any PORT_x
-+		 *   so we fixed to DPLL0 here.
-+		 * Setup DPLL0: DP link clk 1620 MHz, non SSC, DP Mode
-+		 */
-+		vgpu_vreg_t(vgpu, DPLL_CTRL1) =
-+			DPLL_CTRL1_OVERRIDE(DPLL_ID_SKL_DPLL0);
-+		vgpu_vreg_t(vgpu, DPLL_CTRL1) |=
-+			DPLL_CTRL1_LINK_RATE(DPLL_CTRL1_LINK_RATE_1620, DPLL_ID_SKL_DPLL0);
-+		vgpu_vreg_t(vgpu, LCPLL1_CTL) =
-+			LCPLL_PLL_ENABLE | LCPLL_PLL_LOCK;
-+		vgpu_vreg_t(vgpu, DPLL_STATUS) = DPLL_LOCK(DPLL_ID_SKL_DPLL0);
-+		/*
-+		 * Golden M/N are calculated based on:
-+		 *   24 bpp, 4 lanes, 154000 pixel clk (from virtual EDID),
-+		 *   DP link clk 1620 MHz and non-constant_n.
-+		 * TODO: calculate DP link symbol clk and stream clk m/n.
-+		 */
-+		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) = 63 << TU_SIZE_SHIFT;
-+		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) |= 0x5b425e;
-+		vgpu_vreg_t(vgpu, PIPE_DATA_N1(TRANSCODER_A)) = 0x800000;
-+		vgpu_vreg_t(vgpu, PIPE_LINK_M1(TRANSCODER_A)) = 0x3cd6e;
-+		vgpu_vreg_t(vgpu, PIPE_LINK_N1(TRANSCODER_A)) = 0x80000;
- 	}
- 
- 	if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) &=
-+			~DPLL_CTRL2_DDI_CLK_OFF(PORT_B);
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) |=
-+			DPLL_CTRL2_DDI_CLK_SEL(DPLL_ID_SKL_DPLL0, PORT_B);
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) |=
-+			DPLL_CTRL2_DDI_SEL_OVERRIDE(PORT_B);
- 		vgpu_vreg_t(vgpu, SFUSE_STRAP) |= SFUSE_STRAP_DDIB_DETECTED;
- 		vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) &=
- 			~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
-@@ -235,6 +262,12 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
- 	}
- 
- 	if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) &=
-+			~DPLL_CTRL2_DDI_CLK_OFF(PORT_C);
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) |=
-+			DPLL_CTRL2_DDI_CLK_SEL(DPLL_ID_SKL_DPLL0, PORT_C);
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) |=
-+			DPLL_CTRL2_DDI_SEL_OVERRIDE(PORT_C);
- 		vgpu_vreg_t(vgpu, SDEISR) |= SDE_PORTC_HOTPLUG_CPT;
- 		vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) &=
- 			~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
-@@ -255,6 +288,12 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
- 	}
- 
- 	if (intel_vgpu_has_monitor_on_port(vgpu, PORT_D)) {
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) &=
-+			~DPLL_CTRL2_DDI_CLK_OFF(PORT_D);
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) |=
-+			DPLL_CTRL2_DDI_CLK_SEL(DPLL_ID_SKL_DPLL0, PORT_D);
-+		vgpu_vreg_t(vgpu, DPLL_CTRL2) |=
-+			DPLL_CTRL2_DDI_SEL_OVERRIDE(PORT_D);
- 		vgpu_vreg_t(vgpu, SDEISR) |= SDE_PORTD_HOTPLUG_CPT;
- 		vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) &=
- 			~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
--- 
-2.25.1
+--===============1581837149==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1581837149==--
