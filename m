@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 842671EFCDF
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Jun 2020 17:44:36 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 496A51F08E6
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 Jun 2020 23:54:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 39E046E940;
-	Fri,  5 Jun 2020 15:44:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E61986E043;
+	Sat,  6 Jun 2020 21:53:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 05D656E940
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  5 Jun 2020 15:44:33 +0000 (UTC)
-IronPort-SDR: X3qetjfhld10wJzicJBFAAKLT2UHDhgT5Vko2FPAiEik/WkMBlpAyIqYtKGZYsHzsB+n1pzz3M
- 8VagG+9h7iyQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2020 08:44:33 -0700
-IronPort-SDR: cGdH99ALU3hmAwWOiCiMutdOJK6T1cvac34MH5F51ywxnR83p1dbBXfIaDXjsDAcjAUCrWr9i0
- UVD6DfZJ29HA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,476,1583222400"; d="scan'208";a="417312131"
-Received: from lkp-server02.sh.intel.com (HELO 85fa322b0eb2) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 05 Jun 2020 08:44:31 -0700
-Received: from kbuild by 85fa322b0eb2 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jhEWE-0000Hm-WE; Fri, 05 Jun 2020 15:44:31 +0000
-Date: Fri, 05 Jun 2020 23:44:11 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- fbe538934e16716e7f3e578571db38ff4a64b6df
-Message-ID: <5eda684b.kxtL4hoFGnyXy0eg%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-Greylist: delayed 9029 seconds by postgrey-1.36 at gabe;
+ Sat, 06 Jun 2020 21:53:58 UTC
+Received: from vps.peerlesselectronicssupplies.com (unknown [66.84.11.7])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BBF8D6E043;
+ Sat,  6 Jun 2020 21:53:58 +0000 (UTC)
+Received: from [::1] (port=56550 helo=User)
+ by vps.peerlesselectronicssupplies.com with smtp (Exim 4.92)
+ (envelope-from <magagulasamuelm1@gmail.com>)
+ id 1jhePd-0001Oh-8p; Sat, 06 Jun 2020 15:23:25 -0400
+From: "Samuel Magagula"<magagulasamuelm1@gmail.com>
+Subject: Business Deal of US$50 Million
+Date: Sat, 6 Jun 2020 18:53:02 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - vps.peerlesselectronicssupplies.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - gmail.com
+X-Get-Message-Sender-Via: vps.peerlesselectronicssupplies.com: acl_c_authenticated_local_user:
+ root
+X-Authenticated-Sender: vps.peerlesselectronicssupplies.com: root
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,114 +50,30 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Reply-To: magagulasamuelm@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200606215359.E61986E043@gabe.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: fbe538934e16716e7f3e578571db38ff4a64b6df  gvt-staging: 2020y-06m-05d-13h-40m-01s CST integration manifest
+Dear Sir/Madam.
+I am Mr. Magagula Samuel a citizen of South African Director of Contract Awarding Committee of ANGLO GOLD ASHANTI LIMITED I know that this letter will be a surprise since you do not know me in person; I got your contact from business guide.
+It is my pleasure to inform you of a transaction involving the sum of Fifty Million United States Dollars ($50, Million) to a foreign account for safe keeping pending my arrival and my colleagues for the sharing of the fund in your country.
+This money originated from an over-invoiced contract executed for the co-operation some years ago. On completion and inspection of the contract, the payment voucher was approved and the money involved made available for the payment to the contractors. We are high profile officials therefore we are not liable to come for the claim of this money. We are looking for a competent and honest company or individual abroad like yours whose particulars will be tendered by us here in South Africa as one of the Sub-contractors that executed the contract for the collection of this money. 
+Upon due consideration, although we have not met before as to know the extent of your honesty and ours, I personally want to believe that you will not sit on our money once finally transfer into your account. It is on this note that I considered it proper to write you asking for your consent, permission and support to transfer this money into your account. You should not fear any risk because we have concluded arrangements to safeguard you in this transaction but at the same time we would not like you to publicize this transaction for our own safety. Therefore it requires a high level of secrecy, and confidence.
+We will discuss the sharing modalities if we get any response from you and the requirement we need to execute this transaction:  I shall expect an immediate reply from you if you are willing and capable to handle this deal, meanwhile send us the followings:
+Your Full Names:
+Occupation:
+Address:
+Mobile Number:
+Please note that all correspondence should be strictly through Phone number and Email address magagulasamuelm@gmail.com.
+Note we have made all arrangement with the one of the directors with South Africa Reserve bank on how to transfer this money to your account as soon as we receive your response it  will not take more than thirty banking working days for the transaction to be conclude and it is 100% risk free.
+Thank you and God bless.
+ Regards,
+Mr. Magagula Samuel
+E-mail: magagulasamuelm@gmail.com                            Phone: +27  785 711024
 
-elapsed time: 576m
-
-configs tested: 86
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-xtensa                         virt_defconfig
-sh                          rsk7269_defconfig
-arm                        multi_v5_defconfig
-arc                     nsimosci_hs_defconfig
-m68k                         apollo_defconfig
-csky                                defconfig
-arm                        magician_defconfig
-arm                        spear3xx_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-xtensa                              defconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                                  defconfig
-um                               allyesconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
