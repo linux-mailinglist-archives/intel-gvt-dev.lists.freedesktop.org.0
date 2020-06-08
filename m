@@ -2,30 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 650DC1F1012
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  7 Jun 2020 23:53:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8932C1F1B48
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Jun 2020 16:48:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1308C6E1F4;
-	Sun,  7 Jun 2020 21:53:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 33A8789DE3;
+	Mon,  8 Jun 2020 14:48:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 20457 seconds by postgrey-1.36 at gabe;
- Sun, 07 Jun 2020 21:53:55 UTC
-Received: from MGM-FML-1.ooc-orpic.com (mail.ooc-orpic.com [5.37.60.131])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 30B6D6E1F4;
- Sun,  7 Jun 2020 21:53:54 +0000 (UTC)
-Received: from User ([156.96.56.47])
- by MGM-FML-1.ooc-orpic.com  with SMTP id 057GBFLn018053-057GBFLp018053;
- Sun, 7 Jun 2020 20:11:17 +0400
-Message-Id: <202006071611.057GBFLn018053-057GBFLp018053@MGM-FML-1.ooc-orpic.com>
-From: "Dr. Donald Moore"<admin@sapsf.com>
-Subject: CONFIDENTIAL NOTICE !!!     
-Date: Sun, 7 Jun 2020 09:11:14 -0700
+X-Greylist: delayed 724 seconds by postgrey-1.36 at gabe;
+ Mon, 08 Jun 2020 14:48:07 UTC
+Received: from interkad.alt.ru (interkad.alt.ru [80.247.111.66])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4135789DE3;
+ Mon,  8 Jun 2020 14:48:07 +0000 (UTC)
+Received: from User ([41.215.171.163] RDNS failed) by interkad.alt.ru with
+ Microsoft SMTPSVC(6.0.3790.3959); Mon, 8 Jun 2020 21:35:59 +0700
+From: "Martins"<clffmartns@gmail.com>
+Subject: Re: Attn: Honourable Beneficiary.
+Date: Mon, 8 Jun 2020 07:35:59 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <INTER-FWUjACRSRRseC0000047a@interkad.alt.ru>
+X-OriginalArrivalTime: 08 Jun 2020 14:36:00.0385 (UTC)
+ FILETIME=[21218710:01D63DA2]
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,68 +39,34 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: akuabatajoshua96@gmail.com
+Reply-To: cliffmartinsen@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear friend,
+Attn: Honourable Beneficiary.
+Dear Sir/Madam,
+We have received a directive from delegate assigned  by  the United Nations (U.N)  in conjunction with The  International Monetary Fund (I.M.F) From Regional Payment Office to pay 302 scam victims  which your name was shortlisted amongst this number the sum of Nine Million Eight Hundred and Fifty Hundred Thousand United States Dollars only($9,850,000.00) to your designated account. We are an independent financial consultancy firm. We are also one of the financial consultants with the Bank of New York Mellon London UK, We have been directed by the above mentioned name under Special ARRANGEMENT to the release and transfer the above mentioned funds to your nominated account. Hence, your payment file has been dispatched to our office here in London to enable us process and facilitate the release and transfer of your funds to your designated account. All arrangements for the release and transfer of the funds are being made presently.
 
-How are you today? Hope all is well with you and your family? I hope This
-mail meets you in a perfect condition.
+You are therefore required to re-confirm your nominated bank account details once again as stated in the order below.
 
-I am using this opportunity to thank you for your great effort to our
-unfinished transfer of fund into your account due to one reason or the
-other best known to you.
- 
-But I want to inform you that I have successfully transferred the Cheque
-out of the company to someone else who was capable of assisting me in
-this great venture.
+Bank Name:..........................................................................
+Bank Address:....................................................................... 
+A/C N0:.................................................................................
+Routing Number:.....................................................................
+SWIFT CODE:.........................................................................
+Account Name:........................................................................
+Beneficiary Address: ................................................................
 
-Due to your effort, sincerity, courage and trust worthiness you showed at
-the course of the transaction I want to compensate you and show my
-gratitude to you with the sum of 20,000.000.00(Twenty Million United States
-Of American Dollars) in respect to your lottery winnings Compensation.
+Please confirm your bank account details as stated above. This will enable us to conclude with the processing of your funds in your favour soonest. We can assure you that we shall do our best to ensure that this fund is released to you as soon as possible. We also want you to send copies of your international passport identification or your driver's license for our records and perusal. This way, we can confirm that we are dealing with the rightful beneficiary of this fund. We shall ensure that this fund is processed for transfer soonest once we are in receipt of all the information we have requested from you soonest.
 
-I have authorized the finance house in the Ghana where I deposited my money
-to issue you international certified bank draft cashable at your bank.
+Your urgent response is required soonest.
 
-My dear friend I will like you to contact the finance house for the
-collection of this international certified bank draft. The name and
-contact address of the Person with your Cheque is as follows.
-
-COMPENSATION OFFICER
-CONTACT AGENT
-BARRISTER. JOSHUA AKUABATA
-PHONE NUM: +233573629956
-EMAIL: akuabatajoshua86@gmail.com
-
-Contact him with the following information
-
-1. Full Name:
-2. Residential Address:
-3. Phone Number:
-4. Fax Number:
-5. Occupation:
-6. Sex:
-7. Age:
-8. Nationality:
-9. Country:
-
-At the moment, I am very busy here because of the investment projects
-which I and my new partner are having at hand.
-
-Finally, remember that I have forwarded instruction to the finance house
-on your behalf to send the bank draft to you as soon as you contact them
-without delay. Please I will like you to accept this token with good
-faith as this is from the bottom of my heart.
-
-Thanks and God bless you and your family. Hope to hear from you soon.
-
-Best Regards,
-Dr. Donald Moore
-Controller General
+Thank you for the understanding.
+Kind Regards,
+Brian K. Russell
+(Payment Administrator)
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
