@@ -1,43 +1,25 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C8451F8D2B
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Jun 2020 06:45:14 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 496731F918A
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Jun 2020 10:32:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1BC3F89EB8;
-	Mon, 15 Jun 2020 04:45:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 001D689C0D;
+	Mon, 15 Jun 2020 08:32:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 394 seconds by postgrey-1.36 at gabe;
- Mon, 15 Jun 2020 04:45:11 UTC
-Received: from m17617.mail.qiye.163.com (m17617.mail.qiye.163.com
- [59.111.176.17])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8729C89C99
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 15 Jun 2020 04:45:11 +0000 (UTC)
-Received: from njvxl5505.vivo.xyz (unknown [157.0.31.125])
- by m17617.mail.qiye.163.com (Hmail) with ESMTPA id 6042726148C;
- Mon, 15 Jun 2020 12:38:30 +0800 (CST)
-From: Bernard Zhao <bernard@vivo.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] drm/i915: remove unnecessary conversion to bool
-Date: Mon, 15 Jun 2020 12:38:22 +0800
-Message-Id: <20200615043822.14206-1-bernard@vivo.com>
-X-Mailer: git-send-email 2.17.1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
- oVCBIfWUFZGB1KT0JOGUJMSEsZVkpOQklKQk5CSktNSEpVEwETFhoSFyQUDg9ZV1kWGg8SFR0UWU
- FZT0tIVUpKS0hKTFVKS0tZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODY6FRw*IjgwQggtHAotEEwd
- TBcaCyNVSlVKTkJJSkJOQkpKS0lIVTMWGhIXVRkeCRUaCR87DRINFFUYFBZFWVdZEgtZQVlKTkxV
- S1VISlVKSU5ZV1kIAVlBSUlDTTcG
-X-HM-Tid: 0a72b6458bb99375kuws6042726148c
+Received: from sindhbankltd.com (unknown [175.107.198.38])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A0D4089C0D;
+ Mon, 15 Jun 2020 08:32:41 +0000 (UTC)
+Received: from [156.96.61.123] (unknown [156.96.61.123])
+ by sindhbankltd.com (Postfix) with ESMTPSA id 3DFDD2676A606;
+ Sat, 13 Jun 2020 20:10:55 +0500 (PKT)
+MIME-Version: 1.0
+Subject: 
+To: Recipients <hrd@sindhbankltd.com>
+From: hrd@sindhbankltd.com
+Date: Sat, 13 Jun 2020 01:10:46 -0700
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,39 +32,57 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: opensource.kernel@vivo.com, Bernard Zhao <bernard@vivo.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: zionitld1@gmail.com
+Content-Type: multipart/mixed; boundary="===============0173802788=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200615083243.001D689C0D@gabe.freedesktop.org>
 
-In function perform_bb_shadow, bb->ppgtt is bool, so maybe there
-is no need to convert the bool condition to bool. This change
-is to make the code a bit readable.
+You will not see this in a MIME-aware mail reader.
+--===============0173802788==
+Content-Type: multipart/alternative; boundary="===============1937907637=="
 
-Signed-off-by: Bernard Zhao <bernard@vivo.com>
----
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+You will not see this in a MIME-aware mail reader.
+--===============1937907637==
+Content-Type: text/plain; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-index 8b87f130f7f1..221eaebfe513 100644
---- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-+++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-@@ -1880,7 +1880,7 @@ static int perform_bb_shadow(struct parser_exec_state *s)
- 	if (!bb)
- 		return -ENOMEM;
- 
--	bb->ppgtt = (s->buf_addr_type == GTT_BUFFER) ? false : true;
-+	bb->ppgtt = (s->buf_addr_type != GTT_BUFFER);
- 
- 	/* the start_offset stores the batch buffer's start gma's
- 	 * offset relative to page boundary. so for non-privileged batch
--- 
-2.17.1
+Hallo, wir von der Zion Finance Group bieten Kunden derzeit Kredite zu eine=
+m niedrigen Zinssatz von 3% an. Dies ist eine Gelegenheit, die Sie nicht ve=
+rpassen sollten. Wir haben ein paar Fragen zu stellen; Bist du verschuldet?=
+ M=F6chten Sie Ihre Schulden abbezahlen? M=F6chten Sie finanziell ausgestat=
+tet sein? Wenn ja, beantragen Sie noch heute ein Darlehen bei Jemes Loan Fi=
+rms. Interessierte Kunden werden gebeten, sich f=FCr weitere Informationen =
+an zionitld1@gmail.com zu wenden. Wir m=F6chten Ihnen mit einem Darlehen he=
+lfen. Gr=FC=DFe, Herr Bernard.
+--===============1937907637==
+Content-Type: text/html; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Diso-8859-1"/></head><BODY>Hallo, wir von der Zion Finance Group bieten K=
+unden derzeit Kredite zu einem niedrigen Zinssatz von 3% an. Dies ist eine =
+Gelegenheit, die Sie nicht verpassen sollten. Wir haben ein paar Fragen zu =
+stellen; Bist du verschuldet? M=F6chten Sie Ihre Schulden abbezahlen? M=F6c=
+hten Sie finanziell ausgestattet sein? Wenn ja, beantragen Sie noch heute e=
+in Darlehen bei Jemes Loan Firms. Interessierte Kunden werden gebeten, sich=
+ f=FCr weitere Informationen an zionitld1@gmail.com zu wenden. Wir m=F6chte=
+n Ihnen mit einem Darlehen helfen. Gr=FC=DFe, Herr Bernard.</BODY></HTML>
+--===============1937907637==--
+
+--===============0173802788==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0173802788==--
