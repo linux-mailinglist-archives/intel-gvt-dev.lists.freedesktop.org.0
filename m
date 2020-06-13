@@ -1,42 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38DFB1F72D7
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 Jun 2020 06:24:42 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A1771F83FA
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 Jun 2020 17:41:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B57616E11D;
-	Fri, 12 Jun 2020 04:24:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CA0356E43C;
+	Sat, 13 Jun 2020 15:41:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E9D176E11D
+Received: from sonic308-18.consmr.mail.ir2.yahoo.com
+ (sonic308-18.consmr.mail.ir2.yahoo.com [77.238.178.146])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A84A56E43C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 12 Jun 2020 04:24:38 +0000 (UTC)
-IronPort-SDR: k+dVDxm6n4StoFEWMvBKbtP5CxgmoxpOaDiYJekIf5dot66WGZecsdUC8Y9dYxX0hFJ67LV/4I
- dmL7j+PGXwRg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jun 2020 21:24:38 -0700
-IronPort-SDR: LhEgMsLARGFHRqz6mHoC/eO9M3U4XC5ia50hTHMH3yVoV41/jmShR9FLpt6dT61hczNllO6Uz4
- cONxmSKQFkkw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,501,1583222400"; d="scan'208";a="315030698"
-Received: from lkp-server01.sh.intel.com (HELO b6eec31c25be) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 11 Jun 2020 21:24:36 -0700
-Received: from kbuild by b6eec31c25be with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jjbF6-0000UJ-4G; Fri, 12 Jun 2020 04:24:36 +0000
-Date: Fri, 12 Jun 2020 12:24:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 15375e2ecca3ac8e1ad655ce7ec24f7dfd72e505
-Message-ID: <5ee3036c.9g0Z7Qc/leyagc0H%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Sat, 13 Jun 2020 15:41:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1592062887; bh=EdQ6J0sRRv3XBxt3j7IlulUVvRg4uKdicik//r5GkY8=;
+ h=Date:From:To:Subject:References:From:Subject;
+ b=h5YjncCAY47nflZp+ux0t1Z7oYkYc/seTfJe0L+40ePhhyYjh+2D/zmtsQvEgUJFSab+AHpAsqVur5e+QnN9OS+0SZInOsWdP1r8ye9uxGfQbYvgTzS8hdeeDRVjWGI8hroCaLV7R0VdLZlrwq42EJrrrzKmYk4j1u3rg3dbPf0p1asOXuCC8n1GfGi2KpLmzJzkvzfeN2UJywiC5/pZ7oALPeeWsV8kz0tTsG8AVKf+QjsL3tpaCdeAzZ8vXG1f8QQDFweWc0fw9NDLpPfssGk4c7Ti0nU2OVrVkmBAe2Sdaiz8Cm0XynpA5bi1Lg/TsMosna/yH3awA0SkcJUNrQ==
+X-YMail-OSG: 229BmzUVM1lUFmDHSj0GBixFDnlzQfK.c7I8FkiRfnhfLsBXx.BtIWWYcby.3Z0
+ LM.M8auJxWVqkJuKagYBc7WA7EbJmLDiWUve413pt3Li2qrHjKhMuf1RdsYOLZB5SUVaKTfhkUX_
+ 8TqWtNK2V406JK9o2JyKwiL9uPHqHdjKe7GUoPd.jK3ZJKKv72WWralY2ISKQlcupDgDLbdCRHzH
+ EEc.OcB0yhRkw2ZWUz41UeBqotuM7Y1vof16gTP3NREEO74y1WQq682e0ose_tt.A0iBofrrAy_V
+ emX5WCy84188_6pvOQsI7I7n4AflH9ua9YpuW3xhlNl6u_P2We38OSUdxPQqLXEjCTv65tE31N4a
+ eTJ8yzgRFQvGUXP6PGalKnF2Mt0lYBKLByMSsOBahS2V0rBFWhr4ZCZa.gq0VdEQuAaHmy.LYNQo
+ ZF59PxyGf0lsfSoTMVxjuM.IdrGzPxsBAYgBZ_BMMFCNyPyDUBBu_bZVb3Ur04CRuQApHdWo_lOO
+ k6nH2Rv3iVd8xAb2l4BMQJSRsYzfa0fnyNxwqHNk9cMYQ653bZU7gSKBYBbDRSlijWX9UvMAgfV.
+ vHEHfk1NvKfk3Bdhk9KIOLji3y7W7Z3clJgqk2Zui66j6WzGt1yKwAmaVBcG20OyBtEc0lJ265Pn
+ uwJYekoFgSa7r7sB36qbJ_63YayHRdj864Ql99Vr5gYD71s6vZDU7ntP9wo8uD7WAhKLQt6xGVGj
+ oYoxvFybooh1Xc1uby.GTViJIBM09pErGRgOo95ZYDEd2xjHgGP.ufj7sRWo7Y89__XbBa2N31Ow
+ ql_PRr1kKITDGTH4OAawIjm1pmoaCqP2hM5c2rFfRrsjthLOlbWRuWKb.1ZYIxnduzM8_tOlsREW
+ GU.iojZZweEahTmc6YkAP77fgInCJx7DQcExy43Oyaiac02qyKfA7eRq7_9K.b4a0IgYrTqdMa8S
+ VDBrBpxnpaneeyYkkesY2FuDJ.qZTKusgeHeMdjt8jfB2VJNUcs_8Ydq5nBR5opOrJ2nGy0O2RDC
+ sdCknPQw_hZQSbJgjFyEgrKq8d5EPHN0MBQrBhJbLKXvRvC1lK3iVw8SjlLfN0anOmWdO4wIaKdp
+ Szp5_4MRI_o.UewFWXMiKg.y9qSFNhvtPGD91paMJ3lgybolJKGJYG0ZiDf366lOXBkPiUu30Fe5
+ 3ctqoEvUpEEHzp6M79_gWcgXnDfCOEsPbfcLi1jneDTuV4bzApWr6zXoi5OUSJK3pmQdzDeA_FlB
+ cwG9pT.prpQaEEZXoHgWMamWdKOMmOWi858grnhVq9tI2G3hIY6ZIVV5dC6U-
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic308.consmr.mail.ir2.yahoo.com with HTTP; Sat, 13 Jun 2020 15:41:27 +0000
+Date: Sat, 13 Jun 2020 15:41:22 +0000 (UTC)
+From: Rose Gomo <rose_gomoo101@yahoo.com>
+To: rose_gomoo101@yahoo.com
+Message-ID: <438389059.456207.1592062882893@mail.yahoo.com>
+Subject: Dear Good Friend.
 MIME-Version: 1.0
+References: <438389059.456207.1592062882893.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16119 YMailNodin Mozilla/4.0 (compatible; MSIE 8.0;
+ Windows NT 6.1; Trident/4.0; GTB7.5; SLCC2; .NET CLR 2.0.50727;
+ .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,130 +60,19 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: 15375e2ecca3ac8e1ad655ce7ec24f7dfd72e505  gvt-staging: 2020y-06m-11d-11h-37m-34s CST integration manifest
-
-elapsed time: 1474m
-
-configs tested: 101
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-mips                        workpad_defconfig
-arm                         nhk8815_defconfig
-mips                     loongson1b_defconfig
-arm                       imx_v6_v7_defconfig
-m68k                             allyesconfig
-sh                     magicpanelr2_defconfig
-m68k                        mvme16x_defconfig
-riscv                            alldefconfig
-powerpc                      ppc64e_defconfig
-mips                            gpr_defconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-i386                              allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a006-20200611
-i386                 randconfig-a002-20200611
-i386                 randconfig-a001-20200611
-i386                 randconfig-a004-20200611
-i386                 randconfig-a005-20200611
-i386                 randconfig-a003-20200611
-i386                 randconfig-a015-20200611
-i386                 randconfig-a011-20200611
-i386                 randconfig-a014-20200611
-i386                 randconfig-a013-20200611
-i386                 randconfig-a016-20200611
-i386                 randconfig-a012-20200611
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                                  defconfig
-um                               allyesconfig
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+RGVhciBHb29kIEZyaWVuZC4KClBsZWFzZSBjYW4geW91IGhlbHAgbWUgdG8gcmVjZWl2ZSB0aGUg
+ZnVuZCBJIGluaGVyaXRlZCBmcm9tIG15IGZhdGhlciB0byB5b3VyIGFjY291bnQgaW4geW91ciBj
+b3VudHJ5IGZvciBidXNpbmVzcyBpbnZlc3RtZW50PyBSaWdodCBub3cgdGhlIGZ1bmQgaXMgaW4g
+dGhlIGJhbmsgaGVyZSB3aGVyZSBteSBmYXRoZXIgZGVwb3NpdGVkIGl0IGJlZm9yZSBoZSBkaWVk
+IGFuZCB0aGUgYW1vdW50IGlzIOKCrDIuNW1pbGxpb24gRXVyb3MgKFR3byBNaWxsaW9uIEZpdmUg
+SHVuZHJlZCBUaG91c2FuZCBFdXJvcykKClBsZWFzZSBpZiB5b3UgYXJlIGludGVyZXN0ZWQgeW91
+IGNhbiBjb250YWN0IG1lIGFzIHNvb24gYXMgcG9zc2libGUgZm9yIG1vcmUgZGV0YWlscy4KCkJl
+c3QgcmVnYXJkcwpSb3NlIEdvbW8uCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
