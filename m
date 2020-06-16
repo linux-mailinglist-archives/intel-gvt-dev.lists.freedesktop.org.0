@@ -1,25 +1,48 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE3DB1F94D6
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Jun 2020 12:45:06 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 324061FB27B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 16 Jun 2020 15:50:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 62887893E8;
-	Mon, 15 Jun 2020 10:45:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DE38B6E8BC;
+	Tue, 16 Jun 2020 13:50:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sindhbankltd.com (unknown [175.107.198.38])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A4F90893E8;
- Mon, 15 Jun 2020 10:45:02 +0000 (UTC)
-Received: from [156.96.61.123] (unknown [156.96.61.123])
- by sindhbankltd.com (Postfix) with ESMTPSA id CD96A26623F79;
- Sat, 13 Jun 2020 21:40:43 +0500 (PKT)
+X-Greylist: delayed 373 seconds by postgrey-1.36 at gabe;
+ Tue, 16 Jun 2020 13:50:17 UTC
+Received: from eu-smtp-1.mimecast.com (eu-smtp-delivery-1.mimecast.com
+ [91.220.42.227])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2F66D6E8C4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 16 Jun 2020 13:50:16 +0000 (UTC)
+Received: from OWAHOSTNAME (57.67.213.96 [57.67.213.96]) (Using TLS) by
+ relay.mimecast.com with ESMTP id uk-mta-17-X4lziBpCMfiIxYrZzQ6TXw-20; Tue,
+ 16 Jun 2020 14:43:56 +0100
+X-MC-Unique: X4lziBpCMfiIxYrZzQ6TXw-20
+Received: from ONEGDAMX009.ONE.OFC.LOC (172.18.40.127) by
+ ONEGDAMX004.ONE.OFC.LOC (172.18.42.149) with Microsoft SMTP Server (TLS) id
+ 14.3.487.0; Tue, 16 Jun 2020 15:42:25 +0200
+Received: from ONEGDAMX008.ONE.OFC.LOC (172.18.40.3) by
+ ONEGDAMX009.ONE.OFC.LOC (172.18.40.127) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Jun 2020 15:42:24 +0200
+Received: from User (92.111.87.130) by ONEGDAMX008.ONE.OFC.LOC (172.18.40.3)
+ with Microsoft SMTP Server id 15.0.1497.2 via Frontend Transport; Tue, 16 Jun
+ 2020 15:42:19 +0200
+From: HSBC London Office <info@dialog-ca.com>
+Subject: Urgent Alert From Bank About Your Funds???
+Date: Tue, 16 Jun 2020 06:42:24 -0700
 MIME-Version: 1.0
-Subject: 
-To: Recipients <hrd@sindhbankltd.com>
-From: hrd@sindhbankltd.com
-Date: Sat, 13 Jun 2020 02:40:32 -0700
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <692f0b19e7a14950bb1bfff2dfca4c9a@ONEGDAMX008.ONE.OFC.LOC>
+To: Undisclosed recipients:;
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUK126A6 smtp.mailfrom=info@dialog-ca.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: dialog-ca.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -32,57 +55,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: zionitld1@gmail.com
-Content-Type: multipart/mixed; boundary="===============1777653050=="
+Reply-To: henrybanko1970@yahoo.co.jp
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200615104505.62887893E8@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============1777653050==
-Content-Type: multipart/alternative; boundary="===============2035300296=="
+HSBC BANK PLC LONDON.(REGISTERED NO.1026167). 
+ADDRESS:8 CANADA SQUARE, CANARY WHARF, LONDON E14 5HQ, UK..
 
-You will not see this in a MIME-aware mail reader.
---===============2035300296==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+Attn: Beneficiary,
 
-Hallo, wir von der Zion Finance Group bieten Kunden derzeit Kredite zu eine=
-m niedrigen Zinssatz von 3% an. Dies ist eine Gelegenheit, die Sie nicht ve=
-rpassen sollten. Wir haben ein paar Fragen zu stellen; Bist du verschuldet?=
- M=F6chten Sie Ihre Schulden abbezahlen? M=F6chten Sie finanziell ausgestat=
-tet sein? Wenn ja, beantragen Sie noch heute ein Darlehen bei Jemes Loan Fi=
-rms. Interessierte Kunden werden gebeten, sich f=FCr weitere Informationen =
-an zionitld1@gmail.com zu wenden. Wir m=F6chten Ihnen mit einem Darlehen he=
-lfen. Gr=FC=DFe, Herr Bernard.
---===============2035300296==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+We write to inform you that Series of meetings have been held over the past 2 weeks with the Secretary General of United Nations,U.S Department of State and Africa Union Organization this ended last week.
 
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Diso-8859-1"/></head><BODY>Hallo, wir von der Zion Finance Group bieten K=
-unden derzeit Kredite zu einem niedrigen Zinssatz von 3% an. Dies ist eine =
-Gelegenheit, die Sie nicht verpassen sollten. Wir haben ein paar Fragen zu =
-stellen; Bist du verschuldet? M=F6chten Sie Ihre Schulden abbezahlen? M=F6c=
-hten Sie finanziell ausgestattet sein? Wenn ja, beantragen Sie noch heute e=
-in Darlehen bei Jemes Loan Firms. Interessierte Kunden werden gebeten, sich=
- f=FCr weitere Informationen an zionitld1@gmail.com zu wenden. Wir m=F6chte=
-n Ihnen mit einem Darlehen helfen. Gr=FC=DFe, Herr Bernard.</BODY></HTML>
---===============2035300296==--
+During the meeting, this organization discovered that you have not received your funds due to past corrupt Government Officials who almost held the funds to themselves for their selfish reason and some individuals who have taken advantage of your fund all in an attempt to defraud you, which has led to unnecessary delay in releasing the funds to you.
 
---===============1777653050==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+The United Nations/ U.S. Department of State and Africa Union Organization have successfully passed a payment mandate to our bank, to clear all over due Contract funds, Lottery winnings and Inheritance funds owed to you and other individuals/organizations who have been found not to have receive their long overdue payment.
+
+A woman by name (MRS: CINDY MAY A CITIZEN OF USA) came to our office with an application stating that you gave her the power of attorney to be the beneficiary of your Outstanding funds. She made us to believe that you are dead and that she is your next of kin. We decided to send you email through this address hoping to find out if you are dead or alive and also to find out if you at any time gave this woman the power of attorney to represent you. We are almost ready to release part payment of $21.5M USD of your outstanding funds to her but we decided to contact you before we can take any action because of the sensitivity of the transaction and the amount of money that is involved:
+
+For immediate release of your funds to you legally as the legal recipient if you did not authorize Cindy May, you are required to send YOUR FULL NAME, CURRENT ADDRESS, CELL PHONE AND FAX NUMBER for onward proceeding on how you are going to receive the said funds legally .You have 48hrs from now to do that.
+
+Yours Sincerely,
+
+Mr. James Emmett
+HSBC Chief Executive Officer .
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1777653050==--
