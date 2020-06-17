@@ -1,40 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5B1F1FD281
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jun 2020 18:44:55 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7157E1FD311
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jun 2020 19:03:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 77A5C6E93A;
-	Wed, 17 Jun 2020 16:44:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4AABD899C4;
+	Wed, 17 Jun 2020 17:03:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3B4FB6E93A
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0529B8966B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 17 Jun 2020 16:44:53 +0000 (UTC)
-IronPort-SDR: wG9h6HtPVkpu4MVscEtOh87PAZSTZhh1w98YtT6Kf4rJnLQqXBBV92tbCQl1VImVr2hPtm/uM0
- 3u9Lgck7aPaA==
+ Wed, 17 Jun 2020 17:02:59 +0000 (UTC)
+IronPort-SDR: JvV+eoHndsuPqBr6v+gQjWO6jNQZtnmhire7x2R4P0ExCxNL+HxyIw61f/9CJxuBHjwvQ5xzdw
+ 2iKTkAMLeecw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jun 2020 09:44:52 -0700
-IronPort-SDR: ehDQ3oKJaKsI0jdsEMkHzeM/egh+fNwbX+yNuYAGsgvwZ6bFgLOEJyzLrgbYzdrfdhS+lsP7CM
- Z3qrRtzxGYDw==
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2020 10:02:59 -0700
+IronPort-SDR: SxzFJB/0sPGVk37ke/6U3625mbPQbzAIO3hSOozugWGTzWsN+VPcUCsb8Llcg4uBplfcp8+Mag
+ GN7e6kZperWg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,523,1583222400"; d="scan'208";a="450313391"
+X-IronPort-AV: E=Sophos;i="5.73,523,1583222400"; d="scan'208";a="383258238"
 Received: from lkp-server02.sh.intel.com (HELO cd649bb48ab3) ([10.239.97.151])
- by orsmga005.jf.intel.com with ESMTP; 17 Jun 2020 09:44:51 -0700
+ by fmsmga001.fm.intel.com with ESMTP; 17 Jun 2020 10:02:57 -0700
 Received: from kbuild by cd649bb48ab3 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1jlbBC-00002O-Bb; Wed, 17 Jun 2020 16:44:50 +0000
-Date: Thu, 18 Jun 2020 00:44:21 +0800
+ id 1jlbSi-00002j-PZ; Wed, 17 Jun 2020 17:02:56 +0000
+Date: Thu, 18 Jun 2020 01:02:44 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-fixes] BUILD SUCCESS
- a291e4fba259a56a6a274c1989997acb6f0bb03a
-Message-ID: <5eea4865.2+t3PQgYBWUgcLCt%lkp@intel.com>
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ f569e5faad24a976e501b6c87f821a6fcf4e8e56
+Message-ID: <5eea4cb4.d/zblZNObjGVVKvD%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -56,34 +56,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-fixes
-branch HEAD: a291e4fba259a56a6a274c1989997acb6f0bb03a  drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic context
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
+branch HEAD: f569e5faad24a976e501b6c87f821a6fcf4e8e56  gvt-staging: 2020y-06m-17d-12h-55m-30s CST integration manifest
 
-elapsed time: 720m
+elapsed time: 723m
 
-configs tested: 95
-configs skipped: 2
+configs tested: 97
+configs skipped: 1
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
 arm64                            allyesconfig
 arm64                               defconfig
 arm64                            allmodconfig
 arm64                             allnoconfig
-sh                                  defconfig
-xtensa                    xip_kc705_defconfig
-powerpc                      mgcoge_defconfig
-c6x                        evmc6678_defconfig
-arc                           tb10x_defconfig
-m68k                          hp300_defconfig
-powerpc                    mvme5100_defconfig
-sh                          r7785rp_defconfig
-arm                        magician_defconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+s390                          debug_defconfig
+arm                             mxs_defconfig
+sh                     sh7710voipgw_defconfig
+sh                           se7721_defconfig
+mips                      maltaaprp_defconfig
+mips                   sb1250_swarm_defconfig
+arm                       omap2plus_defconfig
+m68k                        mvme16x_defconfig
+sh                        edosk7760_defconfig
+powerpc                      pmac32_defconfig
+parisc                           allmodconfig
+arm                         nhk8815_defconfig
 i386                             allyesconfig
 i386                                defconfig
 i386                              debian-10.3
@@ -97,12 +100,6 @@ m68k                              allnoconfig
 m68k                           sun3_defconfig
 m68k                                defconfig
 m68k                             allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
 nds32                               defconfig
 nds32                             allnoconfig
 csky                             allyesconfig
@@ -118,13 +115,18 @@ arc                              allyesconfig
 sh                               allmodconfig
 sh                                allnoconfig
 microblaze                        allnoconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
 mips                             allyesconfig
 mips                              allnoconfig
 mips                             allmodconfig
+parisc                            allnoconfig
 parisc                              defconfig
 parisc                           allyesconfig
-parisc                           allmodconfig
-parisc                            allnoconfig
 powerpc                             defconfig
 powerpc                          allyesconfig
 powerpc                          rhel-kconfig
@@ -144,24 +146,24 @@ s390                             allyesconfig
 s390                              allnoconfig
 s390                             allmodconfig
 s390                                defconfig
-sparc64                             defconfig
 sparc                            allyesconfig
 sparc                               defconfig
+sparc64                             defconfig
 sparc64                           allnoconfig
 sparc64                          allyesconfig
 sparc64                          allmodconfig
-um                                allnoconfig
-um                                  defconfig
 um                               allmodconfig
+um                                allnoconfig
 um                               allyesconfig
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
+um                                  defconfig
 x86_64                                   rhel
 x86_64                         rhel-7.2-clear
 x86_64                                    lkp
 x86_64                              fedora-25
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
