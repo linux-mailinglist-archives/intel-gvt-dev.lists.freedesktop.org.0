@@ -1,44 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 281CC1FF241
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Jun 2020 14:48:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C97051FF37F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Jun 2020 15:45:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CBFDE6E235;
-	Thu, 18 Jun 2020 12:48:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7F8B46E42D;
+	Thu, 18 Jun 2020 13:45:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D48776E179;
- Thu, 18 Jun 2020 12:48:24 +0000 (UTC)
-IronPort-SDR: PObmwXk5XiVjTuK8khNBXbcQ7Rwfpbq1358mzibDVpPHyKf6q/4GRZ/0jy8BGsHuAFdjZjnSd3
- 53bNOEN0JGbg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9655"; a="122778980"
-X-IronPort-AV: E=Sophos;i="5.73,526,1583222400"; d="scan'208";a="122778980"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2020 05:48:06 -0700
-IronPort-SDR: uFYRRDg2RJVJ0Lfmg53T9WvEJ427RaEsx88OOFXJ7GsNXp4x3OrX2HRRzLfFWvf7FZW4TUA6Zq
- ZUVC9wHuQj8Q==
-X-IronPort-AV: E=Sophos;i="5.73,526,1583222400"; d="scan'208";a="421487050"
-Received: from jlahtine-desk.ger.corp.intel.com (HELO localhost)
- ([10.252.14.253])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2020 05:48:03 -0700
+Received: from sonic304-22.consmr.mail.ir2.yahoo.com
+ (sonic304-22.consmr.mail.ir2.yahoo.com [77.238.179.147])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6498F6E42D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 18 Jun 2020 13:45:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1592487921; bh=fH/bCqhO+/rdrFrxud7WLZNywhlisn3LiimgndMH2Zo=;
+ h=Date:From:To:Subject:References:From:Subject;
+ b=Hq5XkaRq6PMnIuf2ALOLycybX695E0BUM9BvxrT7+wPOl7Vquvf/L0gnv9n/7N32kRplrFXAaSwnbyAVB7LOGwVPvH31Ja93zyt9HsAk47EPBj/Z9ZSs7DoRNjD1H4s/ERKeTv6En5Dz6UzF87kBTfDvmSlB4Ia/wH3EDN2iDdx0vGGIvDphoYjnDUjaLPXMt1QLpUfi0cz6LJK0Z2yK5rDg3mP4Xo36i6uGvKyEpMyF7OllJ6/Alzs2WOc35voJg5E9Xb/YYbJmxWoz/2gLS5VDnG1+EsOqbQ1TDcu82eS2F977KK+1A2cCkU3ejlW+g9K4P3CQEKEo3Ba3s46rHg==
+X-YMail-OSG: 75RrrRQVM1n_XwfHJbjBdYZAP_UxMVWa2387uuSEvlTngKV0amaTI8SM6Zs.S70
+ s1K8.41V9pHVlkcu6sT8XWPQn6dF5XwOMYmAQaSoZDcxZwGN.mi4F9VTqz0hjXsNlSZjEIpTVt_Y
+ K.qYc09J.oFTT5ZlILLyv6AN2B8Y9zd6fS_HKMfm6TMMTYWgsf.y9ZVAI159P3gvUZK0.iVZrmyn
+ nIIcT7Am6Rca6cu0TSrM.T3DCqhTPsvt.X_P4AMQKYENTnKOTmD98E3Gag734_p4fyhL1G4je_dX
+ IhqjZ5sfuOunLR5N9iQZN2qwG_yeogTKzeaWPcQTEZK_sVPenh4MP6MN_pBQN5yF5rcH3HCw9ImY
+ EtCY3BjTzkor0pvnzwDynhJkNIE.DOdfI04tkfR_9Mim0D2LzmGhvw_fQwHjTIKhBxYtNSJ1rH.c
+ Z91fkg.1BqBhkBxBENqATIz2oVilY5MLeh5Aa.RRPWAmNIc94lG5D3_QtqDtQnJIbKqHLIVHWd71
+ zW8.BIRVxDV2Ci5yWDskcAfIcXothPXCQ_M6hBe10uGC5wi0fcUu5jLX4BbqXWjzNlSRuCdXueZY
+ 8.dl_.rRh3SlDA_q1oEF7N.qbU1KsZIm9Yeq_iaLsOPzaOZZO_fvar4do8v0d_PQ_K0SNkLZV21c
+ 5Jr._Ut31wustWQyvwHjkQqSxkITgv2MOjiDc4PbasFBjjpqAnVgVdARUf1OxJH_SmLUvjZfqR9v
+ lqLnPYGDnomiDv.eWhyH3pLOrFVIkTS0Wl0czBOiiezlT0IpXIjd3vYgG1ve0X61OpifsEWicVEd
+ b0IHjrDEIkQXiz3Q.LnFCJN_6wGWUfF.VNfkuaVpil0cuBdJc4qYGYDjplLXdIrdZB9Ny0ryMvmg
+ iTZCG8QAqmZbqZpJkLVRV7F.hATYoKJb8nl0CkTi2Ga8FywsxanMzo3CQ5JfWi0BiORBaqBpLTru
+ uO.x5p2odq.D8YwDz54Q7mBqGQTB4lgxhVxFgECpmsbqcLb3aoygo35Xzxbl6bpsIBkywLOpfS_H
+ SWsJoTWUUJp1BCF8VBPLFiDcxOxNMpmWnsbivQOG8ut9pdsPIeDBKIt_DTOCnyutGZPfbCkP_7uP
+ anPSvIH.PARv4KQ3vDcc.FVTRwaVioHv0wdLbmLtm7rpRP_lLNj_N.U2y13MH.BJoHKfGY7zo9cL
+ p5dnHrKH4Z.HuNGHLcWiGVd5LxBhGK7W2fW2f6HHC4wnqHKhyL.iw6aV33U4vr84pI.sCCowp.sH
+ k0IYGGvrEOodGadAkroQkBRwnXSpe03dw3UDs1b4b_HXlizyqHvJ3UL6gsdygWUafFw882LxE4YF
+ 9nR2LZ2TGsKPb0VOGL6DG
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic304.consmr.mail.ir2.yahoo.com with HTTP; Thu, 18 Jun 2020 13:45:21 +0000
+Date: Thu, 18 Jun 2020 13:45:20 +0000 (UTC)
+From: Daniel Patrick <daniel.patrick101@yahoo.com>
+To: daniel.patrick101@yahoo.com
+Message-ID: <746197392.549258.1592487920328@mail.yahoo.com>
+Subject: Good News Dear Good Friend,
 MIME-Version: 1.0
-In-Reply-To: <20200617043418.GQ5687@zhen-hp.sh.intel.com>
-References: <20200617043418.GQ5687@zhen-hp.sh.intel.com>
-Subject: Re: [PULL] gvt-fixes
-From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Date: Thu, 18 Jun 2020 15:48:01 +0300
-Message-ID: <159248448107.8757.1901135788098329902@jlahtine-desk.ger.corp.intel.com>
-User-Agent: alot/0.8.1
+References: <746197392.549258.1592487920328.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16138 YMailNodin Mozilla/4.0 (compatible; MSIE 8.0;
+ Windows NT 6.1; Trident/4.0; GTB7.5; SLCC2; .NET CLR 2.0.50727;
+ .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,62 +61,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Quoting Zhenyu Wang (2020-06-17 07:34:18)
-> 
-> Hi,
-> 
-> This contains misc fixes for gvt. Two MMIO handler fixes on SKL/CFL,
-> one mask register bit checking fix exposed in suspend/resume path and
-> one lockdep error fix for debugfs entry access.
+Good News Dear Good Friend,
 
-Could not pull this one due to the extra hassle with CI this week.
+I am happy to inform you about my success in getting those funds transferred under the co-operation of a new partner from Germany.
 
-Jani, can you please pull this next week.
+Presently I'm in Germany for investment projects with my own share of the total sum. Meanwhile, I didn't forget your past efforts and attempts to assist me in transferring those funds despite that it failed us some how, now contact my Lawyer through his contact details here below THOUGH he is in Africa Ivory Coast.
 
-Regards, Joonas
+Name: Barrister Ego Amaka
+Tel: +225 55 66 29 45
+Email:  barristeregoamaka@yahoo.fr
 
-> Thanks.
-> --
-> The following changes since commit 8e68c6340d5833077b3753eabedab40755571383:
-> 
->   drm/i915/display: Fix the encoder type check (2020-06-16 11:34:24 +0300)
-> 
-> are available in the Git repository at:
-> 
->   https://github.com/intel/gvt-linux tags/gvt-fixes-2020-06-17
-> 
-> for you to fetch changes up to a291e4fba259a56a6a274c1989997acb6f0bb03a:
-> 
->   drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic context (2020-06-17 12:36:19 +0800)
-> 
-> ----------------------------------------------------------------
-> gvt-fixes-2020-06-17
-> 
-> - Two missed MMIO handler fixes for SKL/CFL (Colin)
-> - Fix mask register bits check (Colin)
-> - Fix one lockdep error for debugfs entry access (Colin)
-> 
-> ----------------------------------------------------------------
-> Colin Xu (4):
->       drm/i915/gvt: Add one missing MMIO handler for D_SKL_PLUS
->       drm/i915/gvt: Fix two CFL MMIO handling caused by regression.
->       drm/i915/gvt: Fix incorrect check of enabled bits in mask registers
->       drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic context
-> 
->  drivers/gpu/drm/i915/gvt/debugfs.c      |  2 +-
->  drivers/gpu/drm/i915/gvt/handlers.c     | 24 +++++++++++++-----------
->  drivers/gpu/drm/i915/gvt/mmio_context.h |  6 +++---
->  drivers/gpu/drm/i915/gvt/reg.h          |  5 +++++
->  4 files changed, 22 insertions(+), 15 deletions(-)
+He is in Abidjan Ivory Coast, his name is Barr. Ego Amaka, ask him to send you the Cheque of $150,000.00 USD (One Hundred and Fifty Thousand United State Dollars) which i kept for your compensation for all your past efforts and attempts to assist me in this matter. I appreciated your efforts to help me at that time very much.
+
+Feel free and get in touch with him and please do let me know immediately you receive the Cheque so that we can share the joy together after all the suffering at that time. at the moment, I'm very busy here because of the investment projects which I and my new partner are having at hand now.
+
+I have forwarded instruction to my Lawyer on your behalf to receive the cheque, so feel free to get in touch with him, he will send it to you without any delay.
+
+For your information, I gaved the Lawyer $100 USD incase of any expences during the Cheque delivery to you in your country please take note.
+
+Remain Blessed
+Daniel Patrick.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
