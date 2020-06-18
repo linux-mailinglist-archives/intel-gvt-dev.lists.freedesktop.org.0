@@ -2,29 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 724A81FD62D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 Jun 2020 22:41:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 281CC1FF241
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Jun 2020 14:48:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 297FA6E1B3;
-	Wed, 17 Jun 2020 20:41:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CBFDE6E235;
+	Thu, 18 Jun 2020 12:48:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from interkad.alt.ru (interkad.alt.ru [80.247.111.66])
- by gabe.freedesktop.org (Postfix) with ESMTP id DCC086E1B6;
- Wed, 17 Jun 2020 20:41:18 +0000 (UTC)
-Received: from User ([41.215.173.15] RDNS failed) by interkad.alt.ru with
- Microsoft SMTPSVC(6.0.3790.3959); Thu, 18 Jun 2020 03:41:06 +0700
-From: "Martins"<clffmartns@gmail.com>
-Subject: Re: UNCLAIMED Consignments/Boxes Deposited
-Date: Wed, 17 Jun 2020 13:41:18 -0700
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D48776E179;
+ Thu, 18 Jun 2020 12:48:24 +0000 (UTC)
+IronPort-SDR: PObmwXk5XiVjTuK8khNBXbcQ7Rwfpbq1358mzibDVpPHyKf6q/4GRZ/0jy8BGsHuAFdjZjnSd3
+ 53bNOEN0JGbg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9655"; a="122778980"
+X-IronPort-AV: E=Sophos;i="5.73,526,1583222400"; d="scan'208";a="122778980"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2020 05:48:06 -0700
+IronPort-SDR: uFYRRDg2RJVJ0Lfmg53T9WvEJ427RaEsx88OOFXJ7GsNXp4x3OrX2HRRzLfFWvf7FZW4TUA6Zq
+ ZUVC9wHuQj8Q==
+X-IronPort-AV: E=Sophos;i="5.73,526,1583222400"; d="scan'208";a="421487050"
+Received: from jlahtine-desk.ger.corp.intel.com (HELO localhost)
+ ([10.252.14.253])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2020 05:48:03 -0700
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <INTER-FWPvR8rTB9Bma0000ab7e@interkad.alt.ru>
-X-OriginalArrivalTime: 17 Jun 2020 20:41:08.0135 (UTC)
- FILETIME=[A0E2A370:01D644E7]
+In-Reply-To: <20200617043418.GQ5687@zhen-hp.sh.intel.com>
+References: <20200617043418.GQ5687@zhen-hp.sh.intel.com>
+Subject: Re: [PULL] gvt-fixes
+From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ Jani Nikula <jani.nikula@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Date: Thu, 18 Jun 2020 15:48:01 +0300
+Message-ID: <159248448107.8757.1901135788098329902@jlahtine-desk.ger.corp.intel.com>
+User-Agent: alot/0.8.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,25 +51,62 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: cliffmartinsen@gmail.com
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello a Request For Partnership.
-I am particularly happy dealing with a person of your caliber who knows what international business is all about. This business is purely base on trust and it's 100% risk free business and I understand your willingness to assist me in actualizing this deal. As I told you in my first email, all I need from you is a confirmation that you can handle this deal in question, and then all the details will be given to you as we progress. My name is Mr.Martins Clifford, a Vault Manager with a Private Security Firm in Ghana. Having worked with this security company for the past 18 Years with dedication and having nothing to write home about. Hence I have to package this deal for our betterment.
+Quoting Zhenyu Wang (2020-06-17 07:34:18)
+> 
+> Hi,
+> 
+> This contains misc fixes for gvt. Two MMIO handler fixes on SKL/CFL,
+> one mask register bit checking fix exposed in suspend/resume path and
+> one lockdep error fix for debugfs entry access.
 
-There is this UNCLAIMED Consignments/Boxes Deposited in our Company's Vault for the past 15 years ago, and nobody has ever shown up for the claims and collection till date. Having made inquiry and investigation why these Consignments/Boxes has not been claimed by their depositors/Owners,only discovered they are late/dead for the past 10 year ago, no forwarding contact Addresses of these late depositors/Owners and every effort to locate any of their surviving relatives or close family members proof abortive.
+Could not pull this one due to the extra hassle with CI this week.
 
-Just few Months ago, the Management and board of directors of our company met and resolved to dispose All Unclaimed Consignments/Boxes that has exceeded the period of 9-10 years without their depositors coming for claims and collection be dislodged from the Vault and disposed, So as to create space to accommodate incoming Deposit. Actually, Many Consignments where dislodged from the Vault for disposal but being the Vault Manager, I decided to checkmate and to know the true contents of these boxes/consignments. After scanning these few Consignments electronically, I discovered their contents to be fiscal cash running into Millions of United States of American Dollars in $100 dollars bills/notes.
+Jani, can you please pull this next week.
 
-It may interest you to note that none of the staff or management of our company know anything relating to this development till date, I contacted you believing that you could be of a great assistance and help me to legally secure and claim these Trunk Boxes from our company for collection and further delivery to your country. While I shall join you in your country immediately after the collection and delivery is madeto your country where I shall meet you for the Disbursement/Sharing of the proceeds of the Consignments/ Boxes  50% / 50% with you.
+Regards, Joonas
 
-Should you need to see the copies of the deposit Documents covering these Boxes issued to the late depositor by the management of our company, I will not hesitate to present them to your perusal and study. Kindly forward your full contact Address, direct Telephone, cell phone and fax numbers known to me. I can guarantee you that if only you give me a chance and corporate with me within the next fourteen (14) working days from today the consignment will be released and delivered to your doorstep in your country. I know how to handle this and immediately after the completion of this transaction I will personally destroy and delete every information leading to the completion of this transaction this is to assure you that I will not leave any traces.
-Best Regards.
-Martins Clifford.
-(Vault Manager).
+> Thanks.
+> --
+> The following changes since commit 8e68c6340d5833077b3753eabedab40755571383:
+> 
+>   drm/i915/display: Fix the encoder type check (2020-06-16 11:34:24 +0300)
+> 
+> are available in the Git repository at:
+> 
+>   https://github.com/intel/gvt-linux tags/gvt-fixes-2020-06-17
+> 
+> for you to fetch changes up to a291e4fba259a56a6a274c1989997acb6f0bb03a:
+> 
+>   drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic context (2020-06-17 12:36:19 +0800)
+> 
+> ----------------------------------------------------------------
+> gvt-fixes-2020-06-17
+> 
+> - Two missed MMIO handler fixes for SKL/CFL (Colin)
+> - Fix mask register bits check (Colin)
+> - Fix one lockdep error for debugfs entry access (Colin)
+> 
+> ----------------------------------------------------------------
+> Colin Xu (4):
+>       drm/i915/gvt: Add one missing MMIO handler for D_SKL_PLUS
+>       drm/i915/gvt: Fix two CFL MMIO handling caused by regression.
+>       drm/i915/gvt: Fix incorrect check of enabled bits in mask registers
+>       drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic context
+> 
+>  drivers/gpu/drm/i915/gvt/debugfs.c      |  2 +-
+>  drivers/gpu/drm/i915/gvt/handlers.c     | 24 +++++++++++++-----------
+>  drivers/gpu/drm/i915/gvt/mmio_context.h |  6 +++---
+>  drivers/gpu/drm/i915/gvt/reg.h          |  5 +++++
+>  4 files changed, 22 insertions(+), 15 deletions(-)
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
