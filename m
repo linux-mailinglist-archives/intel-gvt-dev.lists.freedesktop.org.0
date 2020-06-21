@@ -2,59 +2,64 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8264E201E21
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 20 Jun 2020 00:41:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D3BA2029D3
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 21 Jun 2020 11:31:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 056706ECC5;
-	Fri, 19 Jun 2020 22:41:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E3C9C8926C;
+	Sun, 21 Jun 2020 09:31:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [207.211.31.81])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C18B76ECC5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 19 Jun 2020 22:41:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592606464;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UMsOgxP9lGGOhQCGlKHx/69wCyoXIvsdOFNr+Mexqs0=;
- b=HCTC6C+0eLRT7w3E7L3PbwmtbPDv1REM8uAmQVfPfexpiKJh6M1UuSYBiDVsZhF28C5/Vl
- nadOghy1USjlrAkZ4xgXT2VhXo2MOMMBAGacx0UB7/S+zCfsltVQvEAdBPjZ7Y3yn2msbN
- GeDr6dgZ4Dzn2xc7rRZqLW+SyWzcT64=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-371-FATCeYgYPKi-9wPQ7Ay1mA-1; Fri, 19 Jun 2020 18:41:01 -0400
-X-MC-Unique: FATCeYgYPKi-9wPQ7Ay1mA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A86B0107ACCA;
- Fri, 19 Jun 2020 22:40:57 +0000 (UTC)
-Received: from w520.home (ovpn-112-195.phx2.redhat.com [10.3.112.195])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C625A1001E91;
- Fri, 19 Jun 2020 22:40:46 +0000 (UTC)
-Date: Fri, 19 Jun 2020 16:40:46 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH v5 0/4] introduction of migration_version attribute for
- VFIO live migration
-Message-ID: <20200619164046.2bdc2f67@w520.home>
-In-Reply-To: <20200610003731.GA13961@joy-OptiPlex-7040>
-References: <20200429094844.GE2834@work-vm>
- <20200430003949.GN12879@joy-OptiPlex-7040>
- <20200602165527.34137955@x1.home>
- <20200603031948.GB12300@joy-OptiPlex-7040>
- <20200602215528.7a1008f0@x1.home>
- <20200603052443.GC12300@joy-OptiPlex-7040>
- <20200603102628.017e2896@x1.home> <20200605102224.GB2936@work-vm>
- <20200605083149.1809e783@x1.home> <20200605143950.GG2897@work-vm>
- <20200610003731.GA13961@joy-OptiPlex-7040>
+X-Greylist: delayed 3563 seconds by postgrey-1.36 at gabe;
+ Sun, 21 Jun 2020 09:31:04 UTC
+Received: from verdi.esiea-ouest.fr (verdi.esiea-ouest.fr [86.64.78.41])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3417B8926C;
+ Sun, 21 Jun 2020 09:31:04 +0000 (UTC)
+Received: from SATIE.adm-l.esiea-ouest.fr (SATIE.adm-l.esiea-ouest.fr
+ [192.168.16.141])
+ by verdi.esiea-ouest.fr (Postfix) with ESMTPS id 2C946148666;
+ Sun, 21 Jun 2020 09:41:50 +0200 (CEST)
+Received: from ALKAN.adm-l.esiea-ouest.fr (192.168.16.140) by
+ SATIE.adm-l.esiea-ouest.fr (192.168.16.141) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1847.3; Sun, 21 Jun 2020 09:41:49 +0200
+Received: from ALKAN.adm-l.esiea-ouest.fr ([fe80::61fe:582d:d088:b30e]) by
+ ALKAN.adm-l.esiea-ouest.fr ([fe80::61fe:582d:d088:b30e%9]) with mapi id
+ 15.01.1847.009; Sun, 21 Jun 2020 09:41:49 +0200
+From: DAVIDSON Elisabeth <elizabeth.davidson@esiea.fr>
+To: DAVIDSON Elisabeth <elizabeth.davidson@esiea.fr>
+Subject: Gute Nachrichten
+Thread-Topic: Gute Nachrichten
+Thread-Index: AdZHkibqqp+vLXXPSdGQTzvsEXIl2Q==
+Date: Sun, 21 Jun 2020 07:41:49 +0000
+Message-ID: <c47d848f94f6430690dac4555e003a2f@esiea.fr>
+Accept-Language: fr-FR, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [192.168.12.71]
+x-kse-serverinfo: SATIE.adm-l.esiea-ouest.fr, 9
+x-kse-attachmentfiltering-interceptor-info: protection disabled
+x-kse-antivirus-interceptor-info: scan successful
+x-kse-antivirus-info: Clean, bases: 21/06/2020 04:33:00
+x-kse-bulkmessagesfiltering-scan-result: protection disabled
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-KSE-AntiSpam-Outbound-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 5.9.11, Database issued on: 06/21/2020 06:57:27
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 0
+X-KSE-AntiSpam-Info: Lua profiles 155539 [Jun 21 2020]
+X-KSE-AntiSpam-Info: LuaCore: 360 360 6d6d5eb8e585742223bb565e792533f0b9589396
+X-KSE-AntiSpam-Info: Version: 5.9.11.0
+X-KSE-AntiSpam-Info: Envelope from: elizabeth.davidson@esiea.fr
+X-KSE-AntiSpam-Info: {Tracking_content_type, alternative}
+X-KSE-AntiSpam-Info: Auth:dkim=none
+X-KSE-AntiSpam-Info: Rate: 0
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 06/21/2020 07:00:00
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,97 +72,88 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Cornelia Huck <cohuck@redhat.com>, "cjia@nvidia.com" <cjia@nvidia.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- "libvir-list@redhat.com" <libvir-list@redhat.com>,
- "Zhengxiao.zx@alibaba-inc.com" <Zhengxiao.zx@alibaba-inc.com>,
- "shuangtai.tst@alibaba-inc.com" <shuangtai.tst@alibaba-inc.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "kwankhede@nvidia.com" <kwankhede@nvidia.com>,
- "eauger@redhat.com" <eauger@redhat.com>, "Liu, Yi
- L" <yi.l.liu@intel.com>, "corbet@lwn.net" <corbet@lwn.net>, "Yang,
- Ziye" <ziye.yang@intel.com>, "mlevitsk@redhat.com" <mlevitsk@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "aik@ozlabs.ru" <aik@ozlabs.ru>,
- "felipe@nutanix.com" <felipe@nutanix.com>, "Ken.Xue@amd.com" <Ken.Xue@amd.com>,
- "Tian, Kevin" <kevin.tian@intel.com>, "Zeng, Xin" <xin.zeng@intel.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "jonathan.davies@nutanix.com" <jonathan.davies@nutanix.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Liu, Changpeng" <changpeng.liu@intel.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "eskultet@redhat.com" <eskultet@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, "dinechin@redhat.com" <dinechin@redhat.com>,
- "He, Shaopeng" <shaopeng.he@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0265046847=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 9 Jun 2020 20:37:31 -0400
-Yan Zhao <yan.y.zhao@intel.com> wrote:
+--===============0265046847==
+Content-Language: en-US
+Content-Type: multipart/alternative;
+	boundary="_000_c47d848f94f6430690dac4555e003a2fesieafr_"
 
-> On Fri, Jun 05, 2020 at 03:39:50PM +0100, Dr. David Alan Gilbert wrote:
-> > > > > I tried to simplify the problem a bit, but we keep going backwards.  If
-> > > > > the requirement is that potentially any source device can migrate to any
-> > > > > target device and we cannot provide any means other than writing an
-> > > > > opaque source string into a version attribute on the target and
-> > > > > evaluating the result to determine compatibility, then we're requiring
-> > > > > userspace to do an exhaustive search to find a potential match.  That
-> > > > > sucks.     
-> > > >  
-> hi Alex and Dave,
-> do you think it's good for us to put aside physical devices and mdev aggregation
-> for the moment, and use Alex's original idea that
-> 
-> +  Userspace should regard two mdev devices compatible when ALL of below
-> +  conditions are met:
-> +  (0) The mdev devices are of the same type
-> +  (1) success when reading from migration_version attribute of one mdev device.
-> +  (2) success when writing migration_version string of one mdev device to
-> +  migration_version attribute of the other mdev device.
+--_000_c47d848f94f6430690dac4555e003a2fesieafr_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-I think Pandora's box is already opened, if we can't articulate how
-this solution would evolve to support features that we know are coming,
-why should we proceed with this approach?  We've already seen interest
-in breaking rule (0) in this thread, so we can't focus the solution on
-mdev devices.
+Ihre E-Mail wurde per E-Mail (   kcgorgorg@gmail.com   ) f=FCr den Anspruch=
+ ausgew=E4hlt.
 
-Maybe the best we can do is to compare one instance of a device to
-another instance of a device, without any capability to predict
-compatibility prior to creating devices, in the case on mdev.  The
-string would need to include not only the device and vendor driver
-compatibility, but also anything that has modified the state of the
-device, such as creation time or post-creation time configuration.  The
-user is left on their own for creating a compatible device, or
-filtering devices to determine which might be, or which might generate,
-compatible devices.  It's not much of a solution, I wonder if anyone
-would even use it.
 
-> and what about adding another sysfs attribute for vendors to put
-> recommended migration compatible device type. e.g.
-> #cat /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_8/migration_compatible_devices
-> parent id: 8086 591d
-> mdev_type: i915-GVTg_V5_8
-> 
-> vendors are free to define the format and conent of this migration_compatible_devices
-> and it's even not to be a full list.
-> 
-> before libvirt or user to do live migration, they have to read and test
-> migration_version attributes of src/target devices to check migration compatibility.
+--_000_c47d848f94f6430690dac4555e003a2fesieafr_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-AFAICT, free-form, vendor defined attributes are useless to libvirt.
-Vendors could already put this information in the description attribute
-and have it ignored by userspace tools due to the lack of defined
-format.  It's also not clear what value this provides when it's
-necessarily incomplete, a driver written today cannot know what future
-drivers might be compatible with its migration data.  Thanks,
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.EmailStyle18
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Ihre E-Mail wurde per E-Mail (&nbsp;&nbsp; kcgorgorg=
+@gmail.com&nbsp;&nbsp; ) f=FCr den Anspruch ausgew=E4hlt.<o:p></o:p></p>
+</div>
+</body>
+</html>
 
-Alex
+--_000_c47d848f94f6430690dac4555e003a2fesieafr_--
+
+--===============0265046847==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0265046847==--
