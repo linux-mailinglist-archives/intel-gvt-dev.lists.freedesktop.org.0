@@ -1,65 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D3BA2029D3
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 21 Jun 2020 11:31:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A20A202E5F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Jun 2020 04:29:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E3C9C8926C;
-	Sun, 21 Jun 2020 09:31:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EE9236E20F;
+	Mon, 22 Jun 2020 02:29:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3563 seconds by postgrey-1.36 at gabe;
- Sun, 21 Jun 2020 09:31:04 UTC
-Received: from verdi.esiea-ouest.fr (verdi.esiea-ouest.fr [86.64.78.41])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3417B8926C;
- Sun, 21 Jun 2020 09:31:04 +0000 (UTC)
-Received: from SATIE.adm-l.esiea-ouest.fr (SATIE.adm-l.esiea-ouest.fr
- [192.168.16.141])
- by verdi.esiea-ouest.fr (Postfix) with ESMTPS id 2C946148666;
- Sun, 21 Jun 2020 09:41:50 +0200 (CEST)
-Received: from ALKAN.adm-l.esiea-ouest.fr (192.168.16.140) by
- SATIE.adm-l.esiea-ouest.fr (192.168.16.141) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1847.3; Sun, 21 Jun 2020 09:41:49 +0200
-Received: from ALKAN.adm-l.esiea-ouest.fr ([fe80::61fe:582d:d088:b30e]) by
- ALKAN.adm-l.esiea-ouest.fr ([fe80::61fe:582d:d088:b30e%9]) with mapi id
- 15.01.1847.009; Sun, 21 Jun 2020 09:41:49 +0200
-From: DAVIDSON Elisabeth <elizabeth.davidson@esiea.fr>
-To: DAVIDSON Elisabeth <elizabeth.davidson@esiea.fr>
-Subject: Gute Nachrichten
-Thread-Topic: Gute Nachrichten
-Thread-Index: AdZHkibqqp+vLXXPSdGQTzvsEXIl2Q==
-Date: Sun, 21 Jun 2020 07:41:49 +0000
-Message-ID: <c47d848f94f6430690dac4555e003a2f@esiea.fr>
-Accept-Language: fr-FR, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.168.12.71]
-x-kse-serverinfo: SATIE.adm-l.esiea-ouest.fr, 9
-x-kse-attachmentfiltering-interceptor-info: protection disabled
-x-kse-antivirus-interceptor-info: scan successful
-x-kse-antivirus-info: Clean, bases: 21/06/2020 04:33:00
-x-kse-bulkmessagesfiltering-scan-result: protection disabled
+X-Greylist: delayed 10712 seconds by postgrey-1.36 at gabe;
+ Mon, 22 Jun 2020 02:29:36 UTC
+Received: from srvtsysmail01.saraiva.corp (srvwnv-postfix-01.saraiva.com.br
+ [170.231.12.206])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 645296E20F;
+ Mon, 22 Jun 2020 02:29:36 +0000 (UTC)
+Received: from User (unknown [156.96.56.47])
+ by srvtsysmail01.saraiva.corp (Postfix) with SMTP id 35212C1C893B;
+ Sun, 21 Jun 2020 19:03:33 -0300 (-03)
+From: "Dr. Donald Moore"<admin@xd-pi.de>
+Subject: =?utf-8?Q?=5BSpam=5D?=
+ CONFIDENTIAL NOTICE !!!    
+Date: Sun, 21 Jun 2020 15:06:58 -0700
 MIME-Version: 1.0
-X-KSE-AntiSpam-Outbound-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 5.9.11, Database issued on: 06/21/2020 06:57:27
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 0
-X-KSE-AntiSpam-Info: Lua profiles 155539 [Jun 21 2020]
-X-KSE-AntiSpam-Info: LuaCore: 360 360 6d6d5eb8e585742223bb565e792533f0b9589396
-X-KSE-AntiSpam-Info: Version: 5.9.11.0
-X-KSE-AntiSpam-Info: Envelope from: elizabeth.davidson@esiea.fr
-X-KSE-AntiSpam-Info: {Tracking_content_type, alternative}
-X-KSE-AntiSpam-Info: Auth:dkim=none
-X-KSE-AntiSpam-Info: Rate: 0
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 06/21/2020 07:00:00
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-SpamInfo: FortiGuard-AntiSpam ip, connection black ip 156.96.56.47
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,80 +40,83 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0265046847=="
+Reply-To: akuabatajoshua96@gmail.com
+Content-Type: multipart/mixed; boundary="===============0244053459=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200622022936.EE9236E20F@gabe.freedesktop.org>
 
---===============0265046847==
-Content-Language: en-US
-Content-Type: multipart/alternative;
-	boundary="_000_c47d848f94f6430690dac4555e003a2fesieafr_"
+--===============0244053459==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
---_000_c47d848f94f6430690dac4555e003a2fesieafr_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+<DIV><a style="color: blue; background-color: ffffdd"
+href="http://www.nospammer.net/SpamSubmission/SubmitSpam?id=I3QCeH0KWlxIU3df
+eUlwTA__&sig=e340MOodyjNoIzFtaiVlcHl4NCx2MTNw9EMJQw__">
+If this email is not spam, click here to submit the signatures to 
+FortiGuard - AntiSpam Service.
+</a></DIV>
 
-Ihre E-Mail wurde per E-Mail (   kcgorgorg@gmail.com   ) f=FCr den Anspruch=
- ausgew=E4hlt.
+<PRE>  
+Dear friend,
 
+How are you today? Hope all is well with you and your family? I hope This
+mail meets you in a perfect condition.
 
---_000_c47d848f94f6430690dac4555e003a2fesieafr_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+I am using this opportunity to thank you for your great effort to our
+unfinished transfer of fund into your account due to one reason or the
+other best known to you.
 
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-span.EmailStyle18
-	{mso-style-type:personal-compose;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-size:10.0pt;
-	font-family:"Calibri",sans-serif;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal">Ihre E-Mail wurde per E-Mail (&nbsp;&nbsp; kcgorgorg=
-@gmail.com&nbsp;&nbsp; ) f=FCr den Anspruch ausgew=E4hlt.<o:p></o:p></p>
-</div>
-</body>
-</html>
+But I want to inform you that I have successfully transferred the Cheque
+out of the company to someone else who was capable of assisting me in
+this great venture.
 
---_000_c47d848f94f6430690dac4555e003a2fesieafr_--
+Due to your effort, sincerity, courage and trust worthiness you showed at
+the course of the transaction I want to compensate you and show my
+gratitude to you with the sum of 20,000.000.00(Twenty Million United States
+Of American Dollars) in respect to your lottery winnings Compensation.
 
---===============0265046847==
+I have authorized the finance house in the Ghana where I deposited my money
+to issue you international certified bank draft cashable at your bank.
+
+My dear friend I will like you to contact the finance house for the
+collection of this international certified bank draft. The name and
+contact address of the Person with your Cheque is as follows.
+
+COMPENSATION OFFICER
+CONTACT AGENT
+BARRISTER. JOSHUA AKUABATA
+PHONE NUM: +233573629956
+EMAIL: akuabatajoshua86@gmail.com
+
+Contact him with the following information
+
+1. Full Name:
+2. Residential Address:
+3. Phone Number:
+4. Fax Number:
+5. Occupation:
+6. Sex:
+7. Age:
+8. Nationality:
+9. Country:
+
+At the moment, I am very busy here because of the investment projects
+which I and my new partner are having at hand.
+
+Finally, remember that I have forwarded instruction to the finance house
+on your behalf to send the bank draft to you as soon as you contact them
+without delay. Please I will like you to accept this token with good
+faith as this is from the bottom of my heart.
+
+Thanks and God bless you and your family. Hope to hear from you soon.
+
+Best Regards,
+Dr. Donald Moore
+Controller General
+
+--===============0244053459==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -156,4 +127,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0265046847==--
+--===============0244053459==--
