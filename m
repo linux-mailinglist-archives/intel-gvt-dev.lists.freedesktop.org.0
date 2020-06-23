@@ -1,30 +1,28 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EB55206A13
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 24 Jun 2020 04:23:03 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A0F3209BE5
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 25 Jun 2020 11:27:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D7EBE6EAAC;
-	Wed, 24 Jun 2020 02:23:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 151DA6E0ED;
+	Thu, 25 Jun 2020 09:27:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from smtp.smtpout.orange.fr (smtp13.smtpout.orange.fr
- [80.12.242.135])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DCE1089B83
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 24 Jun 2020 02:23:00 +0000 (UTC)
-Received: from DESKTOP-Q5JCF6G ([90.3.146.230]) by mwinf5d71 with ME
- id uqJX220054yUvma03qNxe7; Wed, 24 Jun 2020 04:22:59 +0200
-X-ME-Helo: DESKTOP-Q5JCF6G
-X-ME-Date: Wed, 24 Jun 2020 04:22:59 +0200
-X-ME-IP: 90.3.146.230
-From: "Ms Karen Ngui" <karen@pei.com>
-Subject: To ~~~ intel-gvt-dev@lists.freedesktop.org
-To: <intel-gvt-dev@lists.freedesktop.org>
+Received: from nc-ad.net (160.16.84.11.v6.sakura.ne.jp
+ [IPv6:2001:e42:102:1518:160:16:84:11])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C3B2F6E0ED;
+ Thu, 25 Jun 2020 09:26:58 +0000 (UTC)
+Received: from [165.231.148.143] (unknown [165.231.148.143])
+ (Authenticated sender: support)
+ by nc-ad.net (Postfix) with ESMTPA id 5A5E91FC46B;
+ Wed, 24 Jun 2020 07:56:21 +0900 (JST)
 MIME-Version: 1.0
-Date: Tue, 23 Jun 2020 19:22:58 -0700
-Message-Id: <235720200622198749EDA892$588493436C@DESKTOPQJCFG>
+Content-Description: Mail message body
+Subject: Project Financing / Loan 1
+To: Recipients <mj1754829@gmail.com>
+From: "Mr. Mark Johnson" <mj1754829@gmail.com>
+Date: Tue, 23 Jun 2020 15:56:09 -0700
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,62 +35,24 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: invoicekngui054@gmail.com
-Content-Type: multipart/mixed; boundary="===============2038877405=="
+Reply-To: markjohnsonltd567@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200625092700.151DA6E0ED@gabe.freedesktop.org>
 
-This is a multi-part message in MIME format
+Hello,
 
---===============2038877405==
-Content-Type: multipart/alternative; boundary="D712aoV3QpKmaCsvfYI=_ZXgktejymc9FD"
+I am the investment officer of an investment company who are ready to fund projects in the form of debt finance. The company grant loan to both corporate and private entities at a low interest rate of 3% ROI per annual. The terms are very flexible and interesting.
 
-This is a multi-part message in MIME format
+Kindly revert back if you have projects that needs funding for further discussion and negotiation with any of the companies that will be interested to fund your project.
 
---D712aoV3QpKmaCsvfYI=_ZXgktejymc9FD
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Regards,
 
-
-Kindly confirm if you got my business collaboration In-mail sent to yo=
-u via LinkedIn.
-
-Thanks. Mrs. Ngui
-
---D712aoV3QpKmaCsvfYI=_ZXgktejymc9FD
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-
-<html><head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-=
-8859-1">
-  <META name=3DGenerator content=3D10.90> <META name=3Dviewport conten=
-t=3D"width=3Ddevice-width, initial-scale=3D1"> <META name=3Dformat-det=
-ection content=3Dtelephone=3Dno><title>To ~~~ intel-gvt-dev@lists.free=
-desktop.org</title>
- </head>
- <body style=3D"BACKGROUND-COLOR: #ffffff" bgColor=3D#ffffff> <P align=
-=3Dcenter><FONT size=3D3 face=3DArial><STRONG><FONT size=3D3 face=3DAr=
-ial><STRONG>Kindly check through email,&nbsp; I sent you a proposal vi=
-a LinkedIn on the 20th of last month...did you get the message?</STRON=
-G></FONT></P></STRONG></FONT> <P align=3Dleft><FONT size=3D3 face=3DAr=
-ial></FONT>&nbsp;</P></body>
- </html>
-
---D712aoV3QpKmaCsvfYI=_ZXgktejymc9FD--
-
-
---===============2038877405==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Mark Johnson
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============2038877405==--
-
