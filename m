@@ -2,25 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CAF020A644
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 25 Jun 2020 21:59:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DF47D20BE01
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 27 Jun 2020 05:45:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E67EC6E34B;
-	Thu, 25 Jun 2020 19:59:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 25EBB6E211;
+	Sat, 27 Jun 2020 03:45:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.mofald.gov.np (unknown [202.45.144.156])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2AE8A6E34B;
- Thu, 25 Jun 2020 19:59:22 +0000 (UTC)
+Received: from nc-ad.net (160.16.84.11.v6.sakura.ne.jp
+ [IPv6:2001:e42:102:1518:160:16:84:11])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 709686E211;
+ Sat, 27 Jun 2020 03:45:44 +0000 (UTC)
 Received: from [165.231.148.143] (unknown [165.231.148.143])
- by mail.mofald.gov.np (Postfix) with ESMTPA id 7D1781185218;
- Wed, 24 Jun 2020 16:57:06 +0545 (NPT)
+ (Authenticated sender: support)
+ by nc-ad.net (Postfix) with ESMTPA id 554144CCCB8;
+ Fri, 26 Jun 2020 20:02:32 +0900 (JST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Project Financing / Loan 1,,.
+Subject: Project Financing / Loan. 11,.
 To: Recipients <mj1754829@gmail.com>
 From: "Mr. Mark Johnson" <mj1754829@gmail.com>
-Date: Wed, 24 Jun 2020 03:08:03 -0700
+Date: Fri, 26 Jun 2020 04:01:51 -0700
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -33,23 +35,22 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: markjohnsonltd567@gmail.com
+Reply-To: mjo77184@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200625195923.E67EC6E34B@gabe.freedesktop.org>
+Message-Id: <20200627034545.25EBB6E211@gabe.freedesktop.org>
 
 Hello,
 
-I am the investment officer of an investment company who are ready to fund projects in the form of debt finance. The company grant loan to both corporate and private entities at a low interest rate of 3% ROI per annual. The terms are very flexible and interesting.
+ I am the investment officer of an investment company who are ready to fund projects in the form of debt finance. The company grant loan to both corporate and private entities at a low interest rate of 3% ROI per annual. The terms are very flexible and interesting.
 
-Kindly revert back if you have projects that needs funding for further discussion and negotiation with any of the companies that will be interested to fund your project.
+ Kindly revert back if you have projects that needs funding for further discussion and negotiation with any of the companies that will be interested to fund your project.
 
-Regards,
+ Regards,
 
-Mark Johnson
-
+ Mark Johnson
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
