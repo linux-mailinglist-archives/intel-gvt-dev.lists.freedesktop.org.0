@@ -2,33 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A35032118A9
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Jul 2020 03:36:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 763C821211E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Jul 2020 12:25:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 10D6E6EA45;
-	Thu,  2 Jul 2020 01:36:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1D1226E038;
+	Thu,  2 Jul 2020 10:25:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 5461 seconds by postgrey-1.36 at gabe;
- Thu, 02 Jul 2020 01:36:01 UTC
-Received: from server.altonwebs.com (unknown [164.138.21.248])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 800F26EA45
+Received: from sonic302-2.consmr.mail.bf2.yahoo.com
+ (sonic302-2.consmr.mail.bf2.yahoo.com [74.6.135.41])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 13AD06E038
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Jul 2020 01:36:01 +0000 (UTC)
-Received: from 2340.ir (unknown [46.249.32.77])
- by server.altonwebs.com (Postfix) with ESMTPA id E0DD11842CC
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Jul 2020 00:50:19 +0430 (+0430)
-Authentication-Results: server.altonwebs.com;
- spf=pass (sender IP is 46.249.32.77) smtp.mailfrom=support@2340.ir
- smtp.helo=2340.ir
-Received-SPF: pass (server.altonwebs.com: connection is authenticated)
-From: support@2340.ir
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: OFFIZIELLE GEWINNBENACHRITIGUNG  NT60K
-Date: 1 Jul 2020 10:19:38 +0330
-Message-ID: <20200701101938.C6D2B98D91DBC063@2340.ir>
+ Thu,  2 Jul 2020 10:25:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1593685549; bh=ssuR219tc4zbcHmcubTL/XfCxjR+e0fxoJYqe5eUFts=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=g0xQT/l0AoC+gHM2vavHbkEAtW5hybIb9/SNk0Icy7S6iNKZGCvB+x4PgWVwZbSEBj87f4vmKNinA2O8YaGb+Z/8BT3dBXE9KxZHhiemvEVAbMQ5BWZ4KEvRW1f/c8jqoypjL1if4T5nqWMtL+H+DEjhjztXfvcTSluUPooHpvxSDUBFD1LjZlbP/8BOTQ9iSpFy8NeD3OFnG+3P3z8Iyxi8/2IthUTc7t+o07a8q7U4gQZbWKlTvSEBDyHZrHF8+oaPZP+NZB9FUibCPHK/dyEnjfMvJS8rqlmfaRo+eEcCJ/WlB3+ecMN0XBFPW9COVqWe1/cNLkC+4QNGuOGQ3Q==
+X-YMail-OSG: Rkjq3XcVM1kVci0dair1.hf2HQ8ih2cQQ203.mMKGnJHoP.R8CgkzY3UOvJhsb5
+ BGK6UsIc_w2ADP80LkZSzB29xTUaR0zphW5QWSgSf6ShfKfjqXpn_XbC4RxXYTWTDEGWV8oR9HHA
+ M2kxjRzE6174cTkCE0RfmVYP9uk8nwQr1NCqlIcwjsd7_dLd1iZkfLF5KNaOinJ.6oNuQDsyz1N9
+ LiHn8E6jcZnw.iXivJnHUv8nMi456jS.GXocij5rX4oNrxOLd1Ib_Nmr_KC7CGRSIEr4Ri663uOz
+ Eh3ZBL7qwr6aiud2wKP4T8jxeScKULKf_VEzCF8YH_iNn9JmTtmFS7PoG3zlkJCiORBNE_x.LyUW
+ bxR6TecPkd0oIDqSZe6JOS44fDR1p20aeTCYic2ogW0twh5dwGVDTsDRnmhFciUdkHEfzDaUpAH8
+ zgS.0hHC7BRspUmKtygcTZNHhU03jv_u9HhZRpa8ds2vyH8tl52a9Zel5dKDr4MBYV0j6tPe5w4O
+ d9jyN7G129R.Xne4PRaZVJOCBVQYcBQWbxBiDn_Og24n0HJG2aBzbmxKZpakTcumrOC.DhAlfQW8
+ p3ikOPBeE_4FY04ggKZDDyBIMumj8j3GbwRqav_phMiUa4vOYdLL9pn5OU8HvRhFoMdtVI3a337p
+ oJrYh.AaBX082bZ71BxGA62j0VSHlmIYpAeH5jTPBz7Syr8foqoX8SqgGbh6NKfsrHihfi.t42Zz
+ vPBQ0U6ZxgX_pLsMa4lvHmCXNaVL0Is2Rm4ipUhPCVQ0J32kEC3Sz52jT2dLcVhMa9yw9A7udSNJ
+ Yb9NS_XitBgH6o59sxSKc1e01FZHaObqagSXGiq5p3bujjBJ29NYKSBBFKmInTV3nW_XLSQMu6ol
+ znSLgwqUhNH4Ti0o.sEub2ofGxmGlohmNtUgL5tStlWT13axksoX4Ss2fiZbQTtHYgSJLaEA64ur
+ YwCUia7M7StssDSYiwq2Mn5Pxn39RHzaqDuvBSYEFtvbbKTKuOwC8IWBi6V0uJbY5aE4LaXgxwrq
+ 385TjL65ANHcFr9Q4gXrgoIxHRTqRgZC5usLtTottGliYomyMx.k_fQbaY9PNBRAjcQ3YzdY3Ref
+ _L1kSlSxsgAE5HbZHwcmKroOpBlRr1Sq73WY4G09dbHaXTclxRZRP2lOVctJNR9lgkcihHB8UqBD
+ P2C3upvGwN3eLjABEnLEeWgqBcU7LzBO2DZLftNCSI3hmqFu9bwO6GM1OzXK.gGQp4cNqjFW79ao
+ ANDy7GLnuru_8QKbsgZE5DGswnUpmN1GNGrTlYeg7Oaj.auLDeZbQPvmQHMb9J6KDlDIESveqZ7k
+ -
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic302.consmr.mail.bf2.yahoo.com with HTTP; Thu, 2 Jul 2020 10:25:49 +0000
+Date: Thu, 2 Jul 2020 10:25:47 +0000 (UTC)
+From: Marilis Mannik <mariliis.manniik@gmail.com>
+Message-ID: <261303205.147601.1593685547154@mail.yahoo.com>
+Subject: Urgent From Hospital
 MIME-Version: 1.0
+References: <261303205.147601.1593685547154.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16197 YMailNodin Mozilla/5.0 (Windows NT 6.1; Win64;
+ x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116
+ Safari/537.36
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,62 +60,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: anthoniogomez41@gmail.com
+Reply-To: manniik.mariliis@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-OFFIZIELLE GEWINNBENACHRITIGUNG
- 
-OFFIZIELLE GEWINNBENACHRITIGUNG INTERNATIONALE LOTTO/EUROMILLION 
-PROGRAMME MADRID OFFICE OFFIZIELLE MITTEILUNG VON SITZ DES 
-PRASIDENTEN INTERNATIONALE PROMOTION-GEWINNZUTEILUNG REFERENZ 
-NUMMER:EKAL 020/ESP OFFIZIELLE GEWINNBENACHRITIGUNG Wir sind 
-erfreut ihnen mitteilen zu konnen, das die gewinnliste 
-INTERNATIONALE LOTTO/BONO LOTTO PROGRAMM am 15 JUNE 2020 
-erschienen ist, vorbei Co-organisiert World Tourism 
-Organization/Spanish Ministerio de Tourismo . Dir offizielle 
-liste der gewinner erschien am 25 JUNE 2020. Ihr e-mail wurde auf 
-dem los mit dir nummer: 000442002 und mit der seriennummer: 2113-
-09 registried. Die glucksnummer: 12-16-25-41-46, haben in der 
-zweitens kategorie gewonnen. Sie sind damit gewinner von: 
-1,470.000 .00 (EINE MILLION VIERHUNDRET UND SIEBZIG TAUSEND 
-EURO.) Die summe ergibt sich einer gewinnausschuttung von. 
-25,257,690,00 (FUNF UND ZWANZIG MILLIONEN, ZWEI HUNDERT SIEBEN 
-UND FUNFZIG TAUSEND,SECHS HUNDERT UND NEUNZIG EURO). Die summe 
-wurde durch 27 gewinnern aus der glieichen kategorie geteilt. 
-HERZLICHEN GLUCKWUNSCH!!! Dir gewinn ist bei einer 
-sicherheitsfirma hinterlegt und in ihren namen versichert. um 
-keine komplikationen bei der abwicklung der zahlung zu 
-verursachen bitten wir sie diese offizielle mitteilung, diskret 
-zu behandelnes ist ein teil unseres sicherheitsprotokolls und 
-garantiet ihnen einen reibunglosen Ablauf.Alle gewinner werden 
-per computer aus 65.000.00 namen und e-mails aus ganz Europa, 
-Asien,Australien und Amerika als teil unserer Internationalen 
-promotion programms ausgewahlt, Welches wir einmal im jahr 
-veranstalten. CASER SICHERHEIT FIRMA UNTERNEHMEN S.L SPANIEN 
-AUSLAND ANSPRECH PARTNER: DR.PEDRO LUKAS TEL: +34 631136686 E-
-mail: pedrolukas@gmx.es Bitte beachten Sie bis zu einem Monat, um 
-Ihren Anspruch noch Ihre Fonds zuruck an Ministerio de Economia y 
-Hacienda gesendet werden nachrichtenlosen. Bitte denken sie auch 
-daran das 5% ihres gewinnes an die sicherheitsfirma CASER SEGUROS 
-S.L geht. Dir 5% sind erst nach erhalt des gewinnes fallig da der 
-gewinn in ihren namen versichert ist. BITTE AUSFUILLEN DEIN DATAS 
-AUS UNTEN. 1. 
-NAME:________________________________________________ 2. NACH 
-NAMEN____________________________PLZ____________ 3. 
-ADRESSE______________________________________________ 4. 
-NATIONALITAT:_____________________BERUF______________ 5. 
-GEBURTSDATUM:________________________________________ 6. 
-STAT:________________________________________________ 7. 
-TELEFON:_____________________________________________ 8. 
-MOBIL:_______________________________________________ 9. 
-FAX:_________________________________________________ 
-10.GESCHLECHT:_______________EMAIL ADRESSE______________ Die oben 
-genannten Anforderungen sind erforderlich. Gluckwunsche noch 
-einmal. Herzlichs HERR ANTONIO JUAN GOMEZ
 
+
+Hello My Beloved
+this is Ms Marilis Mannik from Estonia writing from the hospital here in Ivory Coast;Dear I want you to know that I'm dying here in this hospital right now which i don't know if i will see some few days to come.
+
+My Beloved, i was informed by my doctor that i got poisoned and it affected my liver and i can only live for some days. The reason why i contacted you today is because i know that my step mother wanted to kill me and take my inheritance from my late Father. I have a little adopted child named Andrew C. Mannik that i adopted in this Country when my late Father was alive and $3.5 million Dollars i inherited from my late father. My step mother and her children they are after Andrew right now because they found out that Andrew was aware of the poison, and because i handed the documents of the fund over to him the day my step Mother poisoned my food, for that reason they do not want Andrew to expose them, so they are doing everything possible to kill him.
+
+My Beloved, please i want you to help him out of this country with the money, he is the only one taking good care of me here in this hospital right now and even this email you are reading now he is the one helping me out. I want you to get back to me so that he will give you the documents of the fund and he will direct you to a well known lawyer that i have appointed, the lawyer will assist you to change the documents of the fund to your name to enable the bank transfer the money to you..
+
+This is the favor i need when you have gotten the fund:
+
+(1) Keep 30% of the money for Andrew until he finish his studies to become a man as he has been there for me as my lovely Son and i promised to support him in life to become a medical Doctor because he always desire for it with the scholarship he had won so far. I want you to take him along with you to your country and establish him as your son.
+
+(2) Give 20% of the money to handicap people and charity organization. The remaining 50% should be yours for your help to Andrew.
+
+Note; This should be a code between you and my son Andrew in this transaction "Hospital" any mail from him, the Lawyer he will direct you to, without this code "Hospital" is not from the Andrew, the Lawyer or myself as i don't know what will happen to me in the next few hours.
+
+Finally, write me back so that Andrew will send you his pictures to be sure of whom you are dealing with. Andrew is 14years now, therefore guide him. And if i don't hear from you i will look for another person or any organization.
+
+May Almighty God bless you and use you to accomplish my wish. Pray for me always.
+Ms Marilis Mannik
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
