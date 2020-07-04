@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9FF64213C94
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Jul 2020 17:32:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 942642147C7
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Jul 2020 19:44:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4FEFB6E179;
-	Fri,  3 Jul 2020 15:32:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 12C2F6EB16;
+	Sat,  4 Jul 2020 17:44:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 888 seconds by postgrey-1.36 at gabe;
- Fri, 03 Jul 2020 15:32:11 UTC
-Received: from mail.areco.gob.ar (mail.areco.gob.ar [186.33.235.83])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D5AF26E179;
- Fri,  3 Jul 2020 15:32:11 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.areco.gob.ar (Postfix) with ESMTP id 551FF64E58;
- Fri,  3 Jul 2020 12:10:35 -0300 (-03)
-Received: from mail.areco.gob.ar ([127.0.0.1])
- by localhost (mail.areco.gob.ar [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id Gkgx--vnG8oW; Fri,  3 Jul 2020 12:10:34 -0300 (-03)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.areco.gob.ar (Postfix) with ESMTP id 2A75F65020;
- Fri,  3 Jul 2020 12:10:29 -0300 (-03)
-X-Virus-Scanned: amavisd-new at areco.gob.ar
-Received: from mail.areco.gob.ar ([127.0.0.1])
- by localhost (mail.areco.gob.ar [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id q6zYNIgGQmqB; Fri,  3 Jul 2020 12:10:28 -0300 (-03)
-Received: from mail.areco.gob.ar (mail.areco.gob.ar [192.168.1.17])
- by mail.areco.gob.ar (Postfix) with ESMTP id 65AED64D82;
- Fri,  3 Jul 2020 12:10:10 -0300 (-03)
-Date: Fri, 3 Jul 2020 12:10:09 -0300 (ART)
-From: Bill Lawrence <mbidone@areco.gob.ar>
-Message-ID: <848436208.91864.1593789009815.JavaMail.zimbra@areco.gob.ar>
-Subject: SPENDE
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 25AD76EB16
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat,  4 Jul 2020 17:44:38 +0000 (UTC)
+IronPort-SDR: duATY5H9bm5IE17S6c9+AnKPGTkIuaqz9dzdLnwus9jg1uQLN6K0GLJafchdrYeNypXxUhpD6s
+ wbkipoy/EguQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9672"; a="165330306"
+X-IronPort-AV: E=Sophos;i="5.75,312,1589266800"; d="scan'208";a="165330306"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jul 2020 10:44:37 -0700
+IronPort-SDR: l6uLLBE6G8MkWBER29w97ELUbBCtgUiSo3Jy/SzLlOj3gz/m5f3BPxOobEVTnIWw/PH7t6a/5d
+ pObfNn9j9eUQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,312,1589266800"; d="scan'208";a="322766837"
+Received: from lkp-server01.sh.intel.com (HELO 6dc8ab148a5d) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 04 Jul 2020 10:44:35 -0700
+Received: from kbuild by 6dc8ab148a5d with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jrmDF-0000jz-TN; Sat, 04 Jul 2020 17:44:29 +0000
+Date: Sun, 05 Jul 2020 01:43:42 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ 516d221bca73253564c1237dc9b459c61fa42e87
+Message-ID: <5f00bfce.ZRWfcy1ddcfWNSwC%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Originating-IP: [192.168.1.17]
-X-Mailer: Zimbra 8.8.7_GA_1964 (ZimbraWebClient - GC83 (Win)/8.8.7_GA_1964)
-Thread-Index: h9g11o1Dd509HpfksjZV5xKd3zgKpA==
-Thread-Topic: SPENDE
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,81 +51,146 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Bill Lawrence <Bill.lawrence01@yahoo.com>
-Content-Type: multipart/mixed; boundary="===============1015499407=="
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1015499407==
-Content-Type: multipart/alternative; 
-	boundary="=_65eeb066-240d-4e06-b1b0-f8c7d870d2fd"
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
+branch HEAD: 516d221bca73253564c1237dc9b459c61fa42e87  gvt-staging: 2020y-07m-02d-14h-30m-29s CST integration manifest
 
---=_65eeb066-240d-4e06-b1b0-f8c7d870d2fd
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+elapsed time: 3545m
 
+configs tested: 117
+configs skipped: 6
 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Hallo=20
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                       aspeed_g4_defconfig
+m68k                       m5249evb_defconfig
+arm                            mmp2_defconfig
+sh                            shmin_defconfig
+powerpc                      pmac32_defconfig
+parisc                           allmodconfig
+arm                          pxa3xx_defconfig
+arm                       imx_v6_v7_defconfig
+powerpc                      ppc6xx_defconfig
+mips                          ath25_defconfig
+ia64                             allyesconfig
+sh                               j2_defconfig
+sh                             espt_defconfig
+x86_64                           alldefconfig
+arm                          exynos_defconfig
+arc                     nsimosci_hs_defconfig
+arc                          axs103_defconfig
+arm                           efm32_defconfig
+sh                               alldefconfig
+powerpc                    mvme5100_defconfig
+mips                          rb532_defconfig
+xtensa                          iss_defconfig
+h8300                               defconfig
+powerpc                  mpc885_ads_defconfig
+arm                   milbeaut_m10v_defconfig
+sh                        dreamcast_defconfig
+openrisc                    or1ksim_defconfig
+mips                  maltasmvp_eva_defconfig
+ia64                        generic_defconfig
+s390                              allnoconfig
+microblaze                    nommu_defconfig
+parisc                generic-64bit_defconfig
+mips                        jmr3927_defconfig
+mips                 decstation_r4k_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a002-20200701
+i386                 randconfig-a001-20200701
+i386                 randconfig-a006-20200701
+i386                 randconfig-a005-20200701
+i386                 randconfig-a004-20200701
+i386                 randconfig-a003-20200701
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                                  defconfig
+um                               allyesconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
 
-Bin Bill Lawrence, ich habe am 16. Dezember 2019 die Powerball-Lotterie in =
-H=C3=B6he von 150 Millionen US-Dollar gewonnen und mich freiwillig entschlo=
-ssen, den Betrag von 20 Millionen US-Dollar f=C3=BCr wohlt=C3=A4tige Zwecke=
- zu spenden. Ich versuche, Menschen aus verschiedenen Quellen und Modi zuf=
-=C3=A4llig zu erreichen, um Leben aus verschiedenen Quellen zu ber=C3=BChre=
-n Winkel, daher erhalten Sie hier eine Nachricht.=20
-
-Ihre E-Mail wurde als einer der gl=C3=BCcklichen Empf=C3=A4nger aufgef=C3=
-=BChrt, die 1.000.000 US-Dollar erhalten haben. Diese Spende wird an Sie au=
-sgegeben, damit Sie Ihre pers=C3=B6nlichen Probleme st=C3=A4rken und uns vo=
-r allem gro=C3=9Fz=C3=BCgig dabei helfen k=C3=B6nnen, die H=C3=A4nde der we=
-niger privilegierten Waisen und Wohlt=C3=A4tigkeitsorganisationen zu erweit=
-ern Ihre Lokalit=C3=A4t=20
-
-Verifizieren=20
-https://www.powerball.com/winner-story/150-million-powerball-ticket-claimed=
-=20
-
-Wenden Sie sich per E-Mail an mich, um zu erfahren, wie Sie die Spende erha=
-lten: Bill.lawrence01@yahoo.com=20
-
-Vielen Dank=20
-Bill Lawrence=20
-Bill.lawrence01@yahoo.com=20
-
---=_65eeb066-240d-4e06-b1b0-f8c7d870d2fd
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html><body><div style=3D"font-family: arial, helvetica, sans-serif; font-s=
-ize: 12pt; color: #000000"><div><br></div><div><br></div><div data-marker=
-=3D"__SIG_PRE__">Hallo<br><br>Bin Bill Lawrence, ich habe am 16. Dezember 2=
-019 die Powerball-Lotterie in H=C3=B6he von 150 Millionen US-Dollar gewonne=
-n und mich freiwillig entschlossen, den Betrag von 20 Millionen US-Dollar f=
-=C3=BCr wohlt=C3=A4tige Zwecke zu spenden. Ich versuche, Menschen aus versc=
-hiedenen Quellen und Modi zuf=C3=A4llig zu erreichen, um Leben aus verschie=
-denen Quellen zu ber=C3=BChren Winkel, daher erhalten Sie hier eine Nachric=
-ht.<br><br>Ihre E-Mail wurde als einer der gl=C3=BCcklichen Empf=C3=A4nger =
-aufgef=C3=BChrt, die 1.000.000 US-Dollar erhalten haben. Diese Spende wird =
-an Sie ausgegeben, damit Sie Ihre pers=C3=B6nlichen Probleme st=C3=A4rken u=
-nd uns vor allem gro=C3=9Fz=C3=BCgig dabei helfen k=C3=B6nnen, die H=C3=A4n=
-de der weniger privilegierten Waisen und Wohlt=C3=A4tigkeitsorganisationen =
-zu erweitern Ihre Lokalit=C3=A4t<br><br>Verifizieren<br>https://www.powerba=
-ll.com/winner-story/150-million-powerball-ticket-claimed<br><br>Wenden Sie =
-sich per E-Mail an mich, um zu erfahren, wie Sie die Spende erhalten: Bill.=
-lawrence01@yahoo.com<br><br>Vielen Dank<br>Bill Lawrence<br>Bill.lawrence01=
-@yahoo.com</div></div></body></html>
---=_65eeb066-240d-4e06-b1b0-f8c7d870d2fd--
-
---===============1015499407==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1015499407==--
