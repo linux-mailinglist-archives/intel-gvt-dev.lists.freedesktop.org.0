@@ -1,39 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FEFA21998A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Jul 2020 09:12:02 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A67F21998B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Jul 2020 09:12:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EAD396E9E5;
-	Thu,  9 Jul 2020 07:12:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 483546E9E5;
+	Thu,  9 Jul 2020 07:12:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E3A526E9E5
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 371706E9E5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Jul 2020 07:11:59 +0000 (UTC)
-IronPort-SDR: 2jUhu1PCFQeUpabCaU/8Yz88he1JJm7d4NZLR6bJXtZc8L7xe+6m94qCw1Kgy+MBPT6t/bFxWD
- +0yREvW2bm0g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9676"; a="212863953"
-X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="212863953"
+ Thu,  9 Jul 2020 07:12:18 +0000 (UTC)
+IronPort-SDR: Q5gTxjoT6q9ZMQuJgHUF8fjb/uyC1G6/z4EoZFshWjpu2+CTWObPrYKsdwms/wYiYG4/rNZG8p
+ 7WuRYVY0GFbQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9676"; a="147944152"
+X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="147944152"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jul 2020 00:11:59 -0700
-IronPort-SDR: LXDxLNrY2uOGDuTnjhHJ/bjD7YBbTZYg8kOeKB8mOJnBAyqwtzWoJUSsyY6MOW3VPASTIosfd1
- vNFu6gCmTPPQ==
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jul 2020 00:12:17 -0700
+IronPort-SDR: AhRvEx/bOS8w1qANe1TACOspJ6cmvAXaO6y13MU5STJ0LS2itMU+O2ojYt2LTcPiAg3mVJSyuM
+ tQdQNn33dIgw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="358355348"
+X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="358355521"
 Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.21])
- by orsmga001.jf.intel.com with ESMTP; 09 Jul 2020 00:11:58 -0700
+ by orsmga001.jf.intel.com with ESMTP; 09 Jul 2020 00:12:16 -0700
 From: Colin Xu <colin.xu@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH v2 2/3] drm/i915/gvt: Do not reset pv_notified when vGPU
- transit from D3->D0
-Date: Thu,  9 Jul 2020 15:09:57 +0800
-Message-Id: <20200709071002.247960-3-colin.xu@intel.com>
+Subject: [PATCH v2 3/3] drm/i915/gvt: Remove intel_vgpu_reset_gtt() since no
+ one use it.
+Date: Thu,  9 Jul 2020 15:09:58 +0800
+Message-Id: <20200709071002.247960-4-colin.xu@intel.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200709071002.247960-1-colin.xu@intel.com>
 References: <20200709071002.247960-1-colin.xu@intel.com>
@@ -56,48 +56,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Unlike full initialization like normal boot, guest driver won't
-pv_notified GVT when vGPU transit from D3->D0. If pv_notified is reset,
-later vGPU operations will trigger enter into failsafe mode.
-
-Considering the fact that vGPU will at least notify GVT pv_notified once
-before D3/D0 transition, it's safe to skip reset pv_notified in D3->D0.
-
-To test this feature, make sure S3 is enabled in QEMU parameters:
-i440fx: PIIX4_PM.disable_s3=0
-q35: ICH9-LPC.disable_s3=0
-Also need enable sleep option in guest OS if it's disabled.
+Previuos patch split ggtt reset and ppgtt invalidate/destroy logic.
+intel_vgpu_reset_gtt() is useless now so remove it.
 
 v2:
 - Revise commit message to more accurate description. (Kevin)
 - Split patch by logic. (Zhenyu)
 
-Signed-off-by: Hang Yuan <hang.yuan@linux.intel.com>
 Signed-off-by: Colin Xu <colin.xu@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/vgpu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/i915/gvt/gtt.c | 18 ------------------
+ drivers/gpu/drm/i915/gvt/gtt.h |  1 -
+ 2 files changed, 19 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-index fb12448fe353..8fa9b31a2484 100644
---- a/drivers/gpu/drm/i915/gvt/vgpu.c
-+++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-@@ -579,13 +579,14 @@ void intel_gvt_reset_vgpu_locked(struct intel_vgpu *vgpu, bool dmlr,
- 			intel_vgpu_reset_cfg_space(vgpu);
- 			/* only reset the failsafe mode when dmlr reset */
- 			vgpu->failsafe = false;
--			vgpu->pv_notified = false;
- 			/*
- 			 * PCI_D0 is set before dmlr, so reset d3_entered here
- 			 * after done using.
- 			 */
- 			if(vgpu->d3_entered)
- 				vgpu->d3_entered = false;
-+			else
-+				vgpu->pv_notified = false;
- 		}
- 	}
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index a3a4305eda01..04bf018ecc34 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -2834,21 +2834,3 @@ void intel_vgpu_reset_ggtt(struct intel_vgpu *vgpu, bool invalidate_old)
  
+ 	ggtt_invalidate(gvt->gt);
+ }
+-
+-/**
+- * intel_vgpu_reset_gtt - reset the all GTT related status
+- * @vgpu: a vGPU
+- *
+- * This function is called from vfio core to reset reset all
+- * GTT related status, including GGTT, PPGTT, scratch page.
+- *
+- */
+-void intel_vgpu_reset_gtt(struct intel_vgpu *vgpu)
+-{
+-	/* Shadow pages are only created when there is no page
+-	 * table tracking data, so remove page tracking data after
+-	 * removing the shadow pages.
+-	 */
+-	intel_vgpu_destroy_all_ppgtt_mm(vgpu);
+-	intel_vgpu_reset_ggtt(vgpu, true);
+-}
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.h b/drivers/gpu/drm/i915/gvt/gtt.h
+index 52d0d88abd86..b76a262dd9bc 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.h
++++ b/drivers/gpu/drm/i915/gvt/gtt.h
+@@ -212,7 +212,6 @@ void intel_vgpu_reset_ggtt(struct intel_vgpu *vgpu, bool invalidate_old);
+ void intel_vgpu_invalidate_ppgtt(struct intel_vgpu *vgpu);
+ 
+ int intel_gvt_init_gtt(struct intel_gvt *gvt);
+-void intel_vgpu_reset_gtt(struct intel_vgpu *vgpu);
+ void intel_gvt_clean_gtt(struct intel_gvt *gvt);
+ 
+ struct intel_vgpu_mm *intel_gvt_find_ppgtt_mm(struct intel_vgpu *vgpu,
 -- 
 2.27.0
 
