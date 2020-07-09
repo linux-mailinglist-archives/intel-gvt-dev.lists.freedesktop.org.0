@@ -2,113 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F590219659
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Jul 2020 04:53:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB1C8219982
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Jul 2020 09:11:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C892689304;
-	Thu,  9 Jul 2020 02:53:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5B2006E9F3;
+	Thu,  9 Jul 2020 07:11:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5E88088FDA
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B05506E9E5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Jul 2020 02:53:08 +0000 (UTC)
-IronPort-SDR: CDq17OQCWjs0SbAKCL5lqtBRsHRkKEGWy1lL7d3Ad+5HtPL86OpH+gvZsDbeTRAGh7FoUEvszW
- sI1aBl03Nvog==
-X-IronPort-AV: E=McAfee;i="6000,8403,9676"; a="146022054"
-X-IronPort-AV: E=Sophos;i="5.75,330,1589266800"; d="scan'208";a="146022054"
+ Thu,  9 Jul 2020 07:11:07 +0000 (UTC)
+IronPort-SDR: SJxRS612tb5HljOlVa66DuUE0nAordztiFJNEOHX2xpgbvYyYJTKM/dljjqmU55XjwptjUR3f2
+ w2S1GoFr+Aqw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9676"; a="166045748"
+X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="166045748"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2020 19:53:07 -0700
-IronPort-SDR: gzZb+MULQfP+oC0oX9xK2pU2/2NpBH5mU2jpK8m4U4G+uZYliRR41PSDl5qbmsQr5IBbR8eiv4
- UCGbcIt4mDmA==
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jul 2020 00:11:07 -0700
+IronPort-SDR: buWU9fhjeOuE1oG6SAcTMnVRJx9ObwkycPA947TEdpNmlTszBydFlPdy/ak997wwr9yNxkNY1a
+ 4cOXptrg0GxA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,330,1589266800"; d="scan'208";a="358292758"
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by orsmga001.jf.intel.com with ESMTP; 08 Jul 2020 19:53:07 -0700
-Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
- ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 8 Jul 2020 19:53:07 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.171)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 8 Jul 2020 19:53:07 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HWLMz1d21Vq+QaqRA8qtmjzDp77Wg2xGDzqx+ijgH8dBJYQJ0pxy5QEY7MKa+cfPJhFUThzmIP1eTAAkCgd3crBLXeutEqR+zC5sPuQjursaT6RguTTCsZUec7W+E2/RdXS7/+zzlHy03DvRNjLkl8e77MS2IjH1B7Vz9S2J9KaNxdVe+N9PgDV46vt6t5ROCI83fBkiopkc1HXK51GzVyAgM0xR+f0XlDlAjfMkEpR5zkLJ+b8RqDMuSlNKtkpVRAcG+FxshFGQUNf7CcHWLs7IMvMvKHi9mbSb4/Ls6hgFRfyX3mfcceJFczhl9K3WM325J2jAbaK2oE53JZKriA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vovaR95VfklXkBAQrt0sd5pFvJt2GpTSdXRvIrgyKos=;
- b=TLkiJODM32xb8ojozaES4+YwJqYEsGJLrd/XGu6GW9r1faEpfdN5JYClrLHL5cyQJz0uU4EX0wN89qC+DKVv6e4lV7gZEHbExn3E7U2il3yDiRxFgZwNKOgDEWlUH1EmFPwVD+AK7aCgi/Oo3ExH3VviWhVjzAf2XmaoVWzVac42YdQhGdMFVUNgMUYnNbBHh4puPNG5wGNyHyazE7mPrgVx3J7cz2FFfYhlgWJI/3Z3KKlZYItp+TclcqNDUr/PaBmyKyOkJ7xFXvIqFKvLXWvHlPnx3edAIZUA2i0YJvN2mCAj8B0/rr8xHrXG0Y6XkQGo3/1NqxBw7tu+BxKoGw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vovaR95VfklXkBAQrt0sd5pFvJt2GpTSdXRvIrgyKos=;
- b=wkryGZ4FQd0dbG+pn+eCvO0lnpBdg0O2TkSp80mjKEnUvlOChILwMS1PL13pOvPXuOHHd3qwMOaZgpCs1HUPwMN/kw5uFRbzdVNwt1JurXB7gl+/9RVkjk9tse8ciTAWpB1lFblk/TP4+BRucfO8VvrfI1KK1M3KYegXNNGm0pc=
-Received: from MWHPR11MB1645.namprd11.prod.outlook.com (2603:10b6:301:b::12)
- by MW3PR11MB4523.namprd11.prod.outlook.com (2603:10b6:303:5b::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3153.22; Thu, 9 Jul
- 2020 02:53:05 +0000
-Received: from MWHPR11MB1645.namprd11.prod.outlook.com
- ([fe80::9864:e0cb:af36:6feb]) by MWHPR11MB1645.namprd11.prod.outlook.com
- ([fe80::9864:e0cb:af36:6feb%5]) with mapi id 15.20.3174.022; Thu, 9 Jul 2020
- 02:53:05 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: RE: [PATCH v3 0/2] VFIO mdev aggregated resources handling
-Thread-Topic: [PATCH v3 0/2] VFIO mdev aggregated resources handling
-Thread-Index: AQHWDWq7bB5+TEBrpEWwuv/xNBM+XKj9T7IAgAAdgwCAAEhYIIAA4D8AgAB97VA=
-Date: Thu, 9 Jul 2020 02:53:05 +0000
-Message-ID: <MWHPR11MB1645C5033CB813EBD72CE4FD8C640@MWHPR11MB1645.namprd11.prod.outlook.com>
-References: <20200326054136.2543-1-zhenyuw@linux.intel.com>
- <20200408055824.2378-1-zhenyuw@linux.intel.com>
- <MWHPR11MB1645CC388BF45FD2E6309C3C8C660@MWHPR11MB1645.namprd11.prod.outlook.com>
- <20200707190634.4d9055fe@x1.home>
- <MWHPR11MB16454BF5C1BF4D5D22F0B2B38C670@MWHPR11MB1645.namprd11.prod.outlook.com>
- <20200708124806.058e33d9@x1.home>
-In-Reply-To: <20200708124806.058e33d9@x1.home>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.2.0.6
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [192.198.147.196]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 2ca3cd5b-83ca-46a0-f923-08d823b33454
-x-ms-traffictypediagnostic: MW3PR11MB4523:
-x-microsoft-antispam-prvs: <MW3PR11MB45237EE58F6BF7B4486F94838C640@MW3PR11MB4523.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 04599F3534
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: QoWQupW0c5KuqIPSvR1JFnXV5ASv+EjwHqg7dv45kMupZtCTVZBI7a4vszw2rpoV7rnSzB683F5tYsRTbs4FD3sB4+H76Soprj7gBq/CurcxXFogltn7g166Xd/oEGqCxMK5OUBBuQeRFm+y0gW1A6l4R2hZVg7ZfoYMqExn+Umv4HR6Fc8yCZPn1m5IAYMA+C+pR4zN5bRmWLLlNY5zgQXjRkTvZrvPjGoYQc2VDUVAj97qG+PXeY5lpyOcFSI/UaUwaRF28rGidX7RxXI7gvR5brdnqS/xiauxuAU/9rPXyTZjY9KQ5C2VA/ij1g+EbLH33jU3qz7u1GXxogQm4A==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR11MB1645.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(396003)(39860400002)(136003)(376002)(346002)(366004)(66476007)(6506007)(8676002)(52536014)(76116006)(7696005)(55016002)(9686003)(2906002)(6916009)(64756008)(71200400001)(66446008)(186003)(66556008)(66946007)(26005)(86362001)(83380400001)(478600001)(4326008)(8936002)(316002)(54906003)(5660300002)(33656002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: II91g3UkVaoTr/rUNcBimXhYwv3zziFR3IZFFjZmrEJ5tu0Gws/kHg92bVFdYRTCuTMy5aRHuWh3yKD0HvJw0U5Nm4YqfpMBacJ1AeJcLUKE5bAxZfZkl89d2hsIqMvkkkjAxxjwfy6wff1jvbg/WipvhL4UTN7cSO3282wQ08hMOoOithr4NBE4Kqg/cGgEfoj6u2bBXY82+mZF1V+wqZZxqp7qtIqz2Xy+GpiA+I5kW4bgl0x8TYsZsAhi9ZO/EFMP+abycJts92p/a8y6mSuM2eim1jz78wmrbit+cIhW+AKZZmVvCwX1MFmyxtTQTItnvwuiCXNi+zj3r1vzjwWX2eS3MqQDSf2qDvJ0mLDTT3U4YTpj+eSeM/SGoSyCfzbvsOQYB72iKZJFDMidGAlV+csiEHGnYaO/FbF2eU/QFVU8JPyOnW8d2qS466SmAvVRC3UgLXkQ0nfOLq7uHQHETZXqnPigEq5QdGzOkagXStYbfjXyblNeizRLlQFT
-x-ms-exchange-transport-forked: True
+X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="358354964"
+Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.21])
+ by orsmga001.jf.intel.com with ESMTP; 09 Jul 2020 00:11:05 -0700
+From: Colin Xu <colin.xu@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH v2 0/3] Fix ppgtt_mm destroy and pv_notified reset logic
+ during vGPU D3->D0
+Date: Thu,  9 Jul 2020 15:09:55 +0800
+Message-Id: <20200709071002.247960-1-colin.xu@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR11MB1645.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2ca3cd5b-83ca-46a0-f923-08d823b33454
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jul 2020 02:53:05.5078 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 29COO4KPWZiWXmINSy8eaJSB4EQ15cxkow2mjuAla52jZJGv2VxMj5Zv23o3mzOizNy1IcbGJYR1dFm0n3MODg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4523
-X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,149 +48,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: kevin.tian@intel.com, colin.xu@intel.com, zhenyuw@linux.intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Alex Williamson <alex.williamson@redhat.com>
-> Sent: Thursday, July 9, 2020 2:48 AM
-> 
-> On Wed, 8 Jul 2020 06:31:00 +0000
-> "Tian, Kevin" <kevin.tian@intel.com> wrote:
-> 
-> > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > Sent: Wednesday, July 8, 2020 9:07 AM
-> > >
-> > > On Tue, 7 Jul 2020 23:28:39 +0000
-> > > "Tian, Kevin" <kevin.tian@intel.com> wrote:
-> > >
-> > > > Hi, Alex,
-> > > >
-> > > > Gentle ping... Please let us know whether this version looks good.
-> > >
-> > > I figured this is entangled with the versioning scheme.  There are
-> > > unanswered questions about how something that assumes a device of a
-> > > given type is software compatible to another device of the same type
-> > > handles aggregation and how the type class would indicate compatibility
-> > > with an aggregated instance.  Thanks,
-> > >
-> >
-> > Yes, this open is an interesting topic. I didn't closely follow the versioning
-> > scheme discussion. Below is some preliminary thought in my mind:
-> >
-> > --
-> > First, let's consider migrating an aggregated instance:
-> >
-> > A conservative policy is to check whether the compatible type is supported
-> > on target device and whether available instances under that type can
-> afford
-> > the ask of the aggregated instance. Compatibility check in this scheme is
-> > separated from aggregation check, then no change is required to the
-> current
-> > versioning interface.
-> 
-> How many features, across how many attributes is an administrative tool
-> supposed to check for compatibility?  ie. if we add an 'aggregation'
-> feature now and 'translucency' feature next year, with new sysfs
-> attributes and creation options, won't that break this scheme?  I'm not
-> willing to assume aggregation is the sole new feature we will ever add,
-> therefore we don't get to make it a special case without a plan for how
-> the next special case will be integrated.
+The patch set fix issues when vGPU transit D3->D0:
+Do not invalidate & destroy ppgtt_mm in dmlr when D3->D0.
+Do not reset pv_notified in dmlr when D3->D0.
 
-Got you. I thought aggregation is special since it is purely about linear
-resource adjustment w/o changing the feature set of the instance, thus
-reasonable to get special handling in management stack which needs
-to understand this attribute anyway. But I agree that it's difficult to 
-predict the future and other special cases...
+v2:
+- Revise commit message to more accurate description. (Kevin)
+- Split patch by logic. (Zhenyu)
 
-> 
-> We also can't even seem to agree that type is a necessary requirement
-> for compatibility.  Your discussion below of a type-A, which is
-> equivalent to a type-B w/ aggregation set to some value is an example
-> of this.  We might also have physical devices with extensions to
-> support migration.  These could possibly be compatible with full mdev
-> devices.  We have no idea how an administrative tool would discover
-> this other than an exhaustive search across every possible target.
-> That's ugly but feasible when considering a single target host, but
-> completely untenable when considering a datacenter.
+Colin Xu (3):
+  drm/i915/gvt: Do not destroy ppgtt_mm during vGPU D3->D0.
+  drm/i915/gvt: Do not reset pv_notified when vGPU transit from D3->D0
+  drm/i915/gvt: Remove intel_vgpu_reset_gtt() since no one use it.
 
-If exhaustive search can be done just one-off to build the compatibility
-database for all assignable devices on each node, then it might be
-still tenable in datacenter?
+ drivers/gpu/drm/i915/gvt/cfg_space.c | 24 ++++++++++++++++++++++++
+ drivers/gpu/drm/i915/gvt/gtt.c       | 20 +-------------------
+ drivers/gpu/drm/i915/gvt/gtt.h       |  3 ++-
+ drivers/gpu/drm/i915/gvt/gvt.h       |  3 +++
+ drivers/gpu/drm/i915/gvt/vgpu.c      | 20 +++++++++++++++++---
+ 5 files changed, 47 insertions(+), 23 deletions(-)
 
-> 
-> 
-> > Then there comes a case where the target device doesn't handle
-> aggregation
-> > but support a different type which however provides compatible
-> capabilities
-> > and same resource size as the aggregated instance expects. I guess this is
-> > one puzzle how to check compatibility between such types. One possible
-> > extension is to introduce a non_aggregated_list  to indicate compatible
-> > non-aggregated types for each aggregated instance. Then mgmt.. stack
-> > just loop the compatible list if the conservative policy fails.  I didn't think
-> > carefully about what format is reasonable here. But if we agree that an
-> > separate interface is required to support such usage, then this may come
-> > later after the basic migration_version interface is completed.
-> 
-> ...and then a non_translucency_list and then a non_brilliance_list and
-> then a non_whatever_list... no.  Additionally it's been shown difficult
-> to predict the future, if a new device is developed to be compatible
-> with an existing device it would require updates to the existing device
-> to learn about that compatibility.
+-- 
+2.27.0
 
-I suppose a compatibility list like this doesn't require the existing device
-to update. It should be new device's compatibility to claim compatibility
-to the types carried in existing list. 
-
-> 
-> > --
-> >
-> > Another scenario is about migrating a non-aggregated instance to a device
-> > handling aggregation. Then there is an open whether an aggregated type
-> > can be used to back the non-aggregated instance in case of no available
-> > instance under the original type claimed by non-aggregated instance.
-> > This won't happen in KVMGT, because all vGPU types share the same
-> > resource pool. Allocating instance under one type also decrement available
-> > instances under other types. So if we fail to find available instance under
-> > type-A (with 4x resource of type-B), then we will also fail to create an
-> >  aggregated instance (aggregate=4) under type-B. therefore, we just
-> > need stick to basic type compatibility check for non-aggregated instance.
-> > And I feel this assumption can be applied to other devices handling
-> > aggregation. It doesn't make sense for two types to claim compatibility
-> > (only with resource size difference) when their resources are allocated
-> > from different pools (which usually implies different capability or QOS/
-> > SLA difference). With this assumption, we don't need provide another
-> > interface to indicate compatible aggregated types for non-aggregated
-> > interface.
-> > --
-> >
-> > I may definitely overlook something here, but if above analysis sounds
-> > reasonable, then this series could be decoupled from the versioning
-> > scheme discussion based on conservative policy for now. :)
-> 
-> The only potential I see for decoupling the discussions would be to do
-> aggregation via a vendor attribute.  Those already provide a mechanism
-> to manipulate a device after creation and something that we'll already
-> need to solve in determining migration compatibility.  So in that
-> sense, it seems like it at least doesn't make the problem worse.
-> Thanks,
-> 
-
-This makes some sense, since anyway 'aggregation' still changes how the
-instance looks like. But let me understand clearly. Are you proposing 
-actually moving 'aggregation' to be a vendor attribute (i.e. removing
-the 'mdev' sub-directy in this patch), or more about a policy of treating
-it as a vendor attribute? If the former, is there any problem of having
-Libvirt manage this attribute given that it becomes vendor specific now?
-
-Thanks
-Kevin
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
