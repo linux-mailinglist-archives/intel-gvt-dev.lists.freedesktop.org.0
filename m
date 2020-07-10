@@ -2,46 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77F3E21B323
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Jul 2020 12:24:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46BE421B902
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Jul 2020 17:00:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1DCCE6EBCE;
-	Fri, 10 Jul 2020 10:24:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E4DB16EC6E;
+	Fri, 10 Jul 2020 15:00:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9FCC26EBD1
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [207.211.31.81])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 79FB16EC6E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Jul 2020 10:24:50 +0000 (UTC)
+ Fri, 10 Jul 2020 15:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594376689;
+ s=mimecast20190719; t=1594393212;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/jl6+HMRKpOJTlFeCvv6IASPfppFTrTQ1QXFa2/AwKk=;
- b=icO/oAo1vWEjZS7TKhbR/ke1jPQsA1JemzAROwTxJYSQyUOtg44OOKkvJ2qYEdmDRBUOkp
- aseUIwaqmDarN0uqIUKSPllumiQG+1SCVG8iAawZ7mCBN5WbiykT7ctCljl2CA3NDr/cWK
- 1NufMWpbZ53LQ5Ujlb0RN4E6Yen/Np8=
+ bh=YJfhn9B1bYFnC3Y/JSBqdnMPJGOHPhcn5xhBwk9IA0E=;
+ b=RebzwylgkI/XXLWvR0ZdL/R4uFM28QqRyu2mI7vmdDz9uZp/03OKRXNu/MRSF4QEQSX6J8
+ dRzNEiGGIZc+6Bo209deDv3ou+y79qpawN+dGn7EScFJ0FNtzbnE2QBIi0lYlvodfnnmwh
+ Z7QM8w6UEyDUCA5filvC0m+u5xrQ8Kg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-426-waQozKvjPEqcSscxjIqVVQ-1; Fri, 10 Jul 2020 06:24:44 -0400
-X-MC-Unique: waQozKvjPEqcSscxjIqVVQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-463-3LDdNsVvPVGZh6lOL4gMYg-1; Fri, 10 Jul 2020 11:00:07 -0400
+X-MC-Unique: 3LDdNsVvPVGZh6lOL4gMYg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C472107ACCA;
- Fri, 10 Jul 2020 10:24:43 +0000 (UTC)
-Received: from gondolin (ovpn-112-227.ams2.redhat.com [10.36.112.227])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1F6DD6FEDF;
- Fri, 10 Jul 2020 10:24:38 +0000 (UTC)
-Date: Fri, 10 Jul 2020 12:24:36 +0200
-From: Cornelia Huck <cohuck@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 899F9800597;
+ Fri, 10 Jul 2020 15:00:06 +0000 (UTC)
+Received: from x1.home (ovpn-112-71.phx2.redhat.com [10.3.112.71])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 100AF74F59;
+ Fri, 10 Jul 2020 15:00:05 +0000 (UTC)
+Date: Fri, 10 Jul 2020 09:00:03 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
 To: Yan Zhao <yan.y.zhao@intel.com>
 Subject: Re: [PATCH v3 0/2] VFIO mdev aggregated resources handling
-Message-ID: <20200710122436.56a05216.cohuck@redhat.com>
+Message-ID: <20200710090003.32dd24cb@x1.home>
 In-Reply-To: <20200710015849.GA29271@joy-OptiPlex-7040>
 References: <20200326054136.2543-1-zhenyuw@linux.intel.com>
  <20200408055824.2378-1-zhenyuw@linux.intel.com>
@@ -53,9 +53,9 @@ References: <20200326054136.2543-1-zhenyuw@linux.intel.com>
  <20200709072334.GA26155@joy-OptiPlex-7040>
  <20200709142226.5194a4f4@x1.home>
  <20200710015849.GA29271@joy-OptiPlex-7040>
-Organization: Red Hat GmbH
+Organization: Red Hat
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,10 +68,9 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: <kvm@vger.kernel.org>, Zhenyu Wang <zhenyuw@linux.intel.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	"intel-gvt-dev@lists.freedesktop.org\"          <intel-gvt-dev@lists.freedesktop.org>, "@freedesktop.org,
-	kvm@vger.kernel.org, "Tian,  Kevin" <kevin.tian@intel.com>
+Cc: "Tian, Kevin" <kevin.tian@intel.com>, "intel-gvt-dev@lists.freedesktop.org"
+ <intel-gvt-dev@lists.freedesktop.org>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
@@ -140,28 +139,42 @@ Yan Zhao <yan.y.zhao@intel.com> wrote:
 > two device with different PCI IDs are incompatible initially, but later
 > because of software upgrade, they are compatible again.
 
-One thing that is bothering me here is the amount of information that
-is supposed to be available to whomever is checking the compatibility.
+You're rehashing all the reasons we decided to make the string opaque.
+Your examples include driver version information, but different driver
+versions don't necessarily imply incompatibility.  Therefore the only
+means that a consumer of the version string really has for determining
+compatibility is to push that version string back into the driver and
+ask whether it it's compatible.  The absolute only test that a
+management tool could do on its own would be a simple strcmp(), but
+clearly that can't support different driver versions or parent device
+IDs, or any other field of the proposed version string.  These examples
+are also extremely PCI biased, we need a solution that supports any
+type of device.
 
-This seems to differ a lot between different classes of devices. The
-examples you cited assume that a lot of information is available that
-can be exposed somewhere. Now, when I look at vfio-ccw, there's hardly
-any information available at the subchannel level. We do not know if we
-migrate a disk to another matching disk (or the same one), or whether
-we're trying to migrate a disk to a tape device. Any management
-application trying to migrate vfio-ccw devices has to trust information
-provided by the admin, and we only know that something's wrong if the
-guest gets confused about the device.
+> > through to every other device across the datacenter to determine which
+> > are comparable.  It would need to respond to not only devices being
+> > added and removed, but bound and unbound from drivers, and entire nodes
+> > being added and removed.  That seems like a lot of overhead, in  
+> those responses are also required if the management stack wants to
+> compare on its own, right?
 
-So, I'm wondering if we're not overengineering here. Management
-applications would have to support a wide range of information that is
-available or not, and would still have to trust the admin for some
-cases. It seems hard to fit all of that under the same umbrella.
+I think there needs to be an efficient mechanism to ask, given this
+source device, does a target system have a compatible device, or
+resources and capacity to create one.  The proposals we're discussing
+fail that efficiency qualification in my mind.
+ 
+> > addition to the effect of essentially fuzzing the version interface
+> > across all vendors and types.  We need a better solution or we need
+> > someone from openstack and ovirt to agree that this is more viable than
+> > I suspect. Thanks  
+> before we have a better solution, do you think it's good to ask people
+> from openstack and ovirt first? what if the problem is not as complicated
+> as we thought?
 
-We also cannot rely on the vendor driver to exhaustively determine
-compatibility, as it may not have that information available, either.
-We could still try to migrate to an incompatible device because we
-simply do not know about that beforehand.
+That's exactly what I just suggested here and in the other fork of this
+thread.  Thanks,
+
+Alex
 
 _______________________________________________
 intel-gvt-dev mailing list
