@@ -1,52 +1,61 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DFA421B149
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Jul 2020 10:28:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77F3E21B323
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Jul 2020 12:24:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA09E6EB94;
-	Fri, 10 Jul 2020 08:28:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1DCCE6EBCE;
+	Fri, 10 Jul 2020 10:24:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1059 seconds by postgrey-1.36 at gabe;
- Fri, 10 Jul 2020 08:28:18 UTC
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 403606EB94
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [205.139.110.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9FCC26EBD1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Jul 2020 08:28:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Type:MIME-Version:Date:
- Message-ID:Cc:Subject:From:To:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=qATY1I9x+x5+St6YplnwJo9rTLLPPZD3uTSZTGyU8/U=; b=NV3Ny9H/Cjo2h6/xsLwsmWM3A
- T3l4GaITJEioJHBv9AAQjsSbVaj4hS8iLebTsBJKOalNMIllkUYCG8hX3il7SLH6WcrnHNPOUAIuh
- JnFjq5ZrRtSz9QRtBEVLog/GsRVmkCisGwR4nvYd6WQFrvEk6AAq+7lHB7ZpO2GlkDIvKi8xE8eTu
- hkWnhsdzZgz4w2+0gEgQ7Okps5sscNu+c4SC2w9EcKGghUgMkLV05kxCjNnFUcTR4BZ0NMtDMWPPJ
- SwF81ucGvTOERtJBHXhq7QuOv39MhDS4iJNUIFtfBplvBDXq+MTbNZD4a70VtUfBfVgajBjEeAHj6
- yp41Z54Fg==;
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by www413.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1)
- (envelope-from <stefan.hertrampf@cyberus-technology.de>)
- id 1jto7B-0003ec-Ju; Fri, 10 Jul 2020 10:10:37 +0200
-Received: from [84.19.193.194] (helo=[192.168.178.25])
- by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <stefan.hertrampf@cyberus-technology.de>)
- id 1jto7B-000PlD-Dl; Fri, 10 Jul 2020 10:10:37 +0200
-To: intel-gvt-dev@lists.freedesktop.org
-From: Stefan Hertrampf <stefan.hertrampf@cyberus-technology.de>
-Subject: Set custom EDID
-Message-ID: <83a23f57-ee8b-6b39-3d99-ecb5ae36df8a@cyberus-technology.de>
-Date: Fri, 10 Jul 2020 10:10:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ Fri, 10 Jul 2020 10:24:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594376689;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/jl6+HMRKpOJTlFeCvv6IASPfppFTrTQ1QXFa2/AwKk=;
+ b=icO/oAo1vWEjZS7TKhbR/ke1jPQsA1JemzAROwTxJYSQyUOtg44OOKkvJ2qYEdmDRBUOkp
+ aseUIwaqmDarN0uqIUKSPllumiQG+1SCVG8iAawZ7mCBN5WbiykT7ctCljl2CA3NDr/cWK
+ 1NufMWpbZ53LQ5Ujlb0RN4E6Yen/Np8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-426-waQozKvjPEqcSscxjIqVVQ-1; Fri, 10 Jul 2020 06:24:44 -0400
+X-MC-Unique: waQozKvjPEqcSscxjIqVVQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C472107ACCA;
+ Fri, 10 Jul 2020 10:24:43 +0000 (UTC)
+Received: from gondolin (ovpn-112-227.ams2.redhat.com [10.36.112.227])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1F6DD6FEDF;
+ Fri, 10 Jul 2020 10:24:38 +0000 (UTC)
+Date: Fri, 10 Jul 2020 12:24:36 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH v3 0/2] VFIO mdev aggregated resources handling
+Message-ID: <20200710122436.56a05216.cohuck@redhat.com>
+In-Reply-To: <20200710015849.GA29271@joy-OptiPlex-7040>
+References: <20200326054136.2543-1-zhenyuw@linux.intel.com>
+ <20200408055824.2378-1-zhenyuw@linux.intel.com>
+ <MWHPR11MB1645CC388BF45FD2E6309C3C8C660@MWHPR11MB1645.namprd11.prod.outlook.com>
+ <20200707190634.4d9055fe@x1.home>
+ <MWHPR11MB16454BF5C1BF4D5D22F0B2B38C670@MWHPR11MB1645.namprd11.prod.outlook.com>
+ <20200708124806.058e33d9@x1.home>
+ <MWHPR11MB1645C5033CB813EBD72CE4FD8C640@MWHPR11MB1645.namprd11.prod.outlook.com>
+ <20200709072334.GA26155@joy-OptiPlex-7040>
+ <20200709142226.5194a4f4@x1.home>
+ <20200710015849.GA29271@joy-OptiPlex-7040>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Language: en-US
-X-Authenticated-Sender: stefan.hertrampf@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.3/25868/Thu Jul  9 15:58:00 2020)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,129 +68,102 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Julian Stecklina <julian.stecklina@cyberus-technology.de>,
- Thomas Prescher <thomas.prescher@cyberus-technology.de>
-Content-Type: multipart/mixed; boundary="===============1764224617=="
+Cc: <kvm@vger.kernel.org>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	"intel-gvt-dev@lists.freedesktop.org\"          <intel-gvt-dev@lists.freedesktop.org>, "@freedesktop.org,
+	kvm@vger.kernel.org, "Tian,  Kevin" <kevin.tian@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format.
---===============1764224617==
-Content-Type: multipart/alternative;
- boundary="------------5B306BA5E2848C17DCEE5C0B"
-Content-Language: en-US
+On Fri, 10 Jul 2020 09:58:49 +0800
+Yan Zhao <yan.y.zhao@intel.com> wrote:
 
-This is a multi-part message in MIME format.
---------------5B306BA5E2848C17DCEE5C0B
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+> On Thu, Jul 09, 2020 at 02:22:26PM -0600, Alex Williamson wrote:
+> > On Thu, 9 Jul 2020 15:23:34 +0800
+> > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> >   
+> > > On Thu, Jul 09, 2020 at 02:53:05AM +0000, Tian, Kevin wrote:
+> > > 
+> > > <...>  
+> > > > > We also can't even seem to agree that type is a necessary requirement
+> > > > > for compatibility.  Your discussion below of a type-A, which is
+> > > > > equivalent to a type-B w/ aggregation set to some value is an example
+> > > > > of this.  We might also have physical devices with extensions to
+> > > > > support migration.  These could possibly be compatible with full mdev
+> > > > > devices.  We have no idea how an administrative tool would discover
+> > > > > this other than an exhaustive search across every possible target.
+> > > > > That's ugly but feasible when considering a single target host, but
+> > > > > completely untenable when considering a datacenter.    
+> > > > 
+> > > > If exhaustive search can be done just one-off to build the compatibility
+> > > > database for all assignable devices on each node, then it might be
+> > > > still tenable in datacenter?    
+> > > yes, Alex, do you think below behavior to build compatibility database is
+> > > acceptable?
+> > > 
+> > > management stack could do the exhaustive search in one shot to build the
+> > > compatibility database for all devices in every node. Meanwhile, it caches
+> > > migration version strings for all tested devices.
+> > > when there's a newly created/attached device, management stack could write
+> > > every cached strings to migration version attribute of the newly
+> > > created/attached device in order to update the migration compatibility
+> > > database. Then it caches the migration version string of the newly
+> > > created/attached device as well.
+> > > once a device attribute is modified, e.g. after changing its aggregation
+> > > count or updating its parent driver, update its cached migration version
+> > > string and update the compatibility database by testing against migration
+> > > version attribute of this device.  
+> > 
+> > This is exactly the scenario that I think is untenable.  You're asking
+> > a management application to keep a live database of the opaque version
+> > string of every device type and likely every instance of a device,
+> > which it's not allowed to compare on its own, it can only pipe them  
+> if management stack is allowed to compare on its own, then the migration
+> version strings have to be standardized.
+> 
+> But it's a little hard to do it.
+> e.g. 
+> for GVT, string format can be
+> "parent device PCI ID" + "version of gvt driver" + "mdev type" +
+> "aggregator count".
+> 
+> for an NVMe VF connecting to a remote storage. it is
+> "PCI ID" + "driver version" + "configured remote storage URL"
+> 
+> for a QAT VF, it's
+> "PCI ID" + "driver version" + "supported encryption set".
+> 
+> The management stack also needs to understand how to compare those
+> strings, which is also hard. e.g.
+> two device with different PCI IDs are incompatible initially, but later
+> because of software upgrade, they are compatible again.
 
-Hello,
+One thing that is bothering me here is the amount of information that
+is supposed to be available to whomever is checking the compatibility.
 
-we are developing a custom hypervisor backend for GVT which (from the
-mediators perspective) behaves like XEN.
+This seems to differ a lot between different classes of devices. The
+examples you cited assume that a lot of information is available that
+can be exposed somewhere. Now, when I look at vfio-ccw, there's hardly
+any information available at the subchannel level. We do not know if we
+migrate a disk to another matching disk (or the same one), or whether
+we're trying to migrate a disk to a tape device. Any management
+application trying to migrate vfio-ccw devices has to trust information
+provided by the admin, and we only know that something's wrong if the
+guest gets confused about the device.
 
-Currently, we are working with the Linux Kernel v5.4.41 and we are
-trying to pass a custom EDID to a given vGPU.
+So, I'm wondering if we're not overengineering here. Management
+applications would have to support a wide range of information that is
+available or not, and would still have to trust the admin for some
+cases. It seems hard to fit all of that under the same umbrella.
 
-The code flow roughly looks like this:
-
-|vgpu =3D intel_gvt_ops->vgpu_create();|
-
-|port =3D intel_vgpu_port(vgpu, port);||
-|
-
-|edid_data =3D intel_vgpu_edid_block(port);|
-
-|memcpy(edid_data, custom_edid, EDID_SIZE);|
-
-We are wondering how the |set_edid| callback of the |intel_gvt_mpt| is
-meant to be used to receive the correct port where the virtual display
-is attached. In v5.4.41 it seems, the default port is PORT_B and the
-mediator only calls |set_edid| on certain platforms where it is a
-different port. Is this correct?
-
-Is there any other method to receive the correct port?
-
-It seems that in v5.4.41 the mediator misses to call |set_edid| if the
-platform |IS_COFFEELAKE|, which leads to a crash because we then assume
-the default PORT_B where no memory is allocated for the EDID data.
-
-Also in some later commits [1] the behavior is changed and the
-|set_edid| callback is always called passing PORT_D. Does that mean that
-the virtual display is always attached at PORT_D on newer versions of GVT=
-?
-
-Greetings,
-
-Stefan
-
-
-[1]
-https://github.com/torvalds/linux/commit/0178f4ce3c3be4d9784c88ed512816eb=
-653a717b
-
-
---------------5B306BA5E2848C17DCEE5C0B
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  </head>
-  <body>
-    <p>Hello,</p>
-    <p>we are developing a custom hypervisor backend for GVT which (from
-      the mediators perspective) behaves like XEN.</p>
-    <p>Currently, we are working with the Linux Kernel v5.4.41 and we
-      are trying to pass a custom EDID to a given vGPU.</p>
-    <p>The code flow roughly looks like this:</p>
-    <code>vgpu = intel_gvt_ops-&gt;vgpu_create();</code>
-    <p><code>port = intel_vgpu_port(vgpu, port);</code><code><br>
-      </code></p>
-    <p><code>edid_data = intel_vgpu_edid_block(port);</code></p>
-    <p><code>memcpy(edid_data, custom_edid, EDID_SIZE);</code><br>
-    </p>
-    <p>We are wondering how the <code>set_edid</code> callback of the <code>intel_gvt_mpt</code>
-      is meant to be used to receive the correct port where the virtual
-      display is attached. In v5.4.41 it seems, the default port is
-      PORT_B and the mediator only calls <code>set_edid</code> on
-      certain platforms where it is a different port. Is this correct?</p>
-    <p>Is there any other method to receive the correct port?</p>
-    <p>It seems that in v5.4.41 the mediator misses to call <code>set_edid</code>
-      if the platform <span class="blob-code-inner blob-code-marker"
-        data-code-marker="-"><span class="pl-c1"><code>IS_COFFEELAKE</code>,
-          which leads to a crash because we then assume the default
-          PORT_B where no memory is allocated for the EDID data.<br>
-        </span></span></p>
-    <p>Also in some later commits [1] the behavior is changed and the <code>set_edid</code>
-      callback is always called passing PORT_D. Does that mean that the
-      virtual display is always attached at PORT_D on newer versions of
-      GVT?<br>
-    </p>
-    <p>Greetings,</p>
-    <p>Stefan</p>
-    <p><br>
-    </p>
-    <p>[1]
-<a class="moz-txt-link-freetext" href="https://github.com/torvalds/linux/commit/0178f4ce3c3be4d9784c88ed512816eb653a717b">https://github.com/torvalds/linux/commit/0178f4ce3c3be4d9784c88ed512816eb653a717b</a><br>
-    </p>
-  </body>
-</html>
-
---------------5B306BA5E2848C17DCEE5C0B--
-
---===============1764224617==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+We also cannot rely on the vendor driver to exhaustively determine
+compatibility, as it may not have that information available, either.
+We could still try to migrate to an incompatible device because we
+simply do not know about that beforehand.
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1764224617==--
