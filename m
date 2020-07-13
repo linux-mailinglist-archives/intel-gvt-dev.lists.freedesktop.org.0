@@ -1,53 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C26621CCBF
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Jul 2020 03:10:12 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 344EA21D15B
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Jul 2020 10:08:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 02BBA6E03E;
-	Mon, 13 Jul 2020 01:10:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DA329891A0;
+	Mon, 13 Jul 2020 08:08:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0818A6E03E
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 79C55890C5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Jul 2020 01:10:09 +0000 (UTC)
-IronPort-SDR: fQM1DIP5JotBkUS8SvD8udKCjRbzYbnTs7PRddY/0J3DjTTgr+kszD8wr6N6ZKCwG/aNjggBrp
- dUCTabLEIIqA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9680"; a="146580127"
-X-IronPort-AV: E=Sophos;i="5.75,345,1589266800"; d="scan'208";a="146580127"
-X-Amp-Result: SKIPPED(no attachment in message)
+ Mon, 13 Jul 2020 08:08:03 +0000 (UTC)
+IronPort-SDR: rvl6clhU4hE7Z0ph61mVreaUq0u3rmvV3lN5GOIfWvgYtFIJtQHjE8OpkgmR+NYpb+2TJyvnCd
+ GuBNGXauqmNA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9680"; a="166684869"
+X-IronPort-AV: E=Sophos;i="5.75,346,1589266800"; 
+ d="asc'?scan'208";a="166684869"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jul 2020 18:10:08 -0700
-IronPort-SDR: W/Se3255SBiAVnL35p6Dwk9EsIEr+3CtD7PfFvKN9Hy8+QdatUXewLWLXb9oV28zUpLWFeh+uE
- y0YkXJgf5qmQ==
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jul 2020 01:08:03 -0700
+IronPort-SDR: QEDMEncZWZP7NSz0Bi/KlDUMuMFBFBwYjPTeGmKWzzcaRwIY8x46IMc9kHFa7QtTd3kbeDFQ25
+ LrhGZTg450Mw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,345,1589266800"; d="scan'208";a="299036193"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by orsmga002.jf.intel.com with ESMTP; 12 Jul 2020 18:10:06 -0700
-Date: Mon, 13 Jul 2020 08:59:14 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v3 0/2] VFIO mdev aggregated resources handling
-Message-ID: <20200713005914.GA5955@joy-OptiPlex-7040>
-References: <20200408055824.2378-1-zhenyuw@linux.intel.com>
- <MWHPR11MB1645CC388BF45FD2E6309C3C8C660@MWHPR11MB1645.namprd11.prod.outlook.com>
- <20200707190634.4d9055fe@x1.home>
- <MWHPR11MB16454BF5C1BF4D5D22F0B2B38C670@MWHPR11MB1645.namprd11.prod.outlook.com>
- <20200708124806.058e33d9@x1.home>
- <MWHPR11MB1645C5033CB813EBD72CE4FD8C640@MWHPR11MB1645.namprd11.prod.outlook.com>
- <20200709112810.6085b7f6@x1.home>
- <MWHPR11MB1645D3E53C055461AB5E8E3C8C650@MWHPR11MB1645.namprd11.prod.outlook.com>
- <20200710062958.GB29271@joy-OptiPlex-7040>
- <20200710091217.7a62b4cc@x1.home>
+X-IronPort-AV: E=Sophos;i="5.75,346,1589266800"; 
+ d="asc'?scan'208";a="317301587"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga002.fm.intel.com with ESMTP; 13 Jul 2020 01:08:01 -0700
+Date: Mon, 13 Jul 2020 15:50:59 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Stefan Hertrampf <stefan.hertrampf@cyberus-technology.de>
+Subject: Re: Set custom EDID
+Message-ID: <20200713075059.GI27035@zhen-hp.sh.intel.com>
+References: <83a23f57-ee8b-6b39-3d99-ecb5ae36df8a@cyberus-technology.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200710091217.7a62b4cc@x1.home>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <83a23f57-ee8b-6b39-3d99-ecb5ae36df8a@cyberus-technology.de>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,108 +52,100 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>, "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Julian Stecklina <julian.stecklina@cyberus-technology.de>,
+ Thomas Prescher <thomas.prescher@cyberus-technology.de>,
+ intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============1969273851=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jul 10, 2020 at 09:12:17AM -0600, Alex Williamson wrote:
-> On Fri, 10 Jul 2020 14:29:59 +0800
-> Yan Zhao <yan.y.zhao@intel.com> wrote:
-> =
 
-> > On Fri, Jul 10, 2020 at 02:09:06AM +0000, Tian, Kevin wrote:
-> > <...>
-> > > > > > We also can't even seem to agree that type is a necessary requi=
-rement
-> > > > > > for compatibility.  Your discussion below of a type-A, which is
-> > > > > > equivalent to a type-B w/ aggregation set to some value is an e=
-xample
-> > > > > > of this.  We might also have physical devices with extensions to
-> > > > > > support migration.  These could possibly be compatible with ful=
-l mdev
-> > > > > > devices.  We have no idea how an administrative tool would disc=
-over
-> > > > > > this other than an exhaustive search across every possible targ=
-et.
-> > > > > > That's ugly but feasible when considering a single target host,=
- but
-> > > > > > completely untenable when considering a datacenter.  =
+--===============1969273851==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="x38akuY2VS0PywU3"
+Content-Disposition: inline
 
-> > > > >
-> > > > > If exhaustive search can be done just one-off to build the compat=
-ibility
-> > > > > database for all assignable devices on each node, then it might be
-> > > > > still tenable in datacenter?  =
 
-> > > > =
+--x38akuY2VS0PywU3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> > > > =
+On 2020.07.10 10:10:36 +0200, Stefan Hertrampf wrote:
+> Hello,
+>=20
+> we are developing a custom hypervisor backend for GVT which (from the med=
+iators
+> perspective) behaves like XEN.
+>=20
+> Currently, we are working with the Linux Kernel v5.4.41 and we are trying=
+ to
+> pass a custom EDID to a given vGPU.
+>=20
+> The code flow roughly looks like this:
+>=20
+> vgpu =3D intel_gvt_ops->vgpu_create();
+>=20
+> port =3D intel_vgpu_port(vgpu, port);
+>=20
+> edid_data =3D intel_vgpu_edid_block(port);
+>=20
+> memcpy(edid_data, custom_edid, EDID_SIZE);
+>=20
+> We are wondering how the set_edid callback of the intel_gvt_mpt is meant =
+to be
+> used to receive the correct port where the virtual display is attached. In
+> v5.4.41 it seems, the default port is PORT_B and the mediator only calls
+> set_edid on certain platforms where it is a different port. Is this corre=
+ct?
+>=20
+> Is there any other method to receive the correct port?
+>=20
+> It seems that in v5.4.41 the mediator misses to call set_edid if the plat=
+form=20
+> IS_COFFEELAKE, which leads to a crash because we then assume the default =
+PORT_B
+> where no memory is allocated for the EDID data.
+>
 
-> > > > I'm not sure what "one-off" means relative to this discussion.  Is =
-this
-> > > > trying to argue that if it's a disturbingly heavyweight operation, =
-but
-> > > > a management tool only needs to do it once, it's ok?  We should rea=
-lly  =
+oh, I wasn't awared that actually caused crash but just thought it's a feat=
+ure
+enabling patch. If you like to backport, I'm fine with it.
 
-> > > =
+> Also in some later commits [1] the behavior is changed and the set_edid
+> callback is always called passing PORT_D. Does that mean that the virtual
+> display is always attached at PORT_D on newer versions of GVT?
+>=20
 
-> > > yes
-> > >   =
+Yes.
 
-> > > > be including openstack and ovirt folks in any discussion about what
-> > > > might be acceptable across a datacenter.  I can sometimes get away =
-with
-> > > > representing what might be feasible for libvirt, but this is the so=
-rt
-> > > > of knowledge and policy decision that would occur above libvirt.  =
+--=20
+Open Source Technology Center, Intel ltd.
 
-> > > =
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
-> > > Agree. and since this is more about general migration compatibility,
-> > > let's start new thread and involve openstack/ovirt guys. Yan, can you
-> > > initiate this?
-> > >  =
+--x38akuY2VS0PywU3
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> > sure.
-> > hi Alex,
-> > I'm not sure if below mailling lists are enough and accurate,
-> > do you know what extra people and lists I need to involve in?
-> > =
+-----BEGIN PGP SIGNATURE-----
 
-> > devel@ovirt.org, openstack-discuss@lists.openstack.org,
-> > libvir-list@redhat.com
-> =
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXwwSYwAKCRCxBBozTXgY
+JwUgAJwKW5x8Pv4RfKZ79Xbm0WCfLeqs2ACggjDcgHK6gTGyVJtWl8xY57k4iuk=
+=q8CW
+-----END PGP SIGNATURE-----
 
-> You could also include
-> =
+--x38akuY2VS0PywU3--
 
-> Daniel P. Berrang=E9 <berrange@redhat.com>
-> Sean Mooney <smooney@redhat.com>
-> =
+--===============1969273851==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
->  =
-
-> > BTW, I found a page about live migration of SRIOV devices in openstack.
-> > https://specs.openstack.org/openstack/nova-specs/specs/stein/approved/l=
-ibvirt-neutron-sriov-livemigration.html
-> =
-
-> Sean, above, is involved with that specification.  AFAIK the only
-> current live migration of SR-IOV devices involve failover and hotplug
-> trickery.  Thanks,
-> =
-
-got it!
-
-Thanks
-Yan
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1969273851==--
