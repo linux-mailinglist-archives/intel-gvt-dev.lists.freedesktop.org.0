@@ -1,48 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F13592206F4
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jul 2020 10:23:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7344822074B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jul 2020 10:31:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B1E106EA54;
-	Wed, 15 Jul 2020 08:23:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DDEA06EA57;
+	Wed, 15 Jul 2020 08:31:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1E3506EA54
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0D0A66EA57
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Jul 2020 08:23:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594801413;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=H1N3KvEZTGjGVeuRJgwl++MJgD0/MJqWd13En7/X0GI=;
- b=Co3IAL0QBtj3kiWyAhmkqkoTsEsefWNsro0s7UaT2qWQVn6vhUQDu+vHxKMLJIlmYxeeoe
- 1gUESi5dF3WlUOhzKQIo1amO6Et7po3XE5k6S+AI+9qPhVVCXbEcSzYXqjFK0fIPFzi3PP
- TUDsCXd840YvXI18Gv6LLA0tESWp0Lo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-393-1LaqrPl6Pga-cYMArC2aQg-1; Wed, 15 Jul 2020 04:23:26 -0400
-X-MC-Unique: 1LaqrPl6Pga-cYMArC2aQg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6874C8014D4;
- Wed, 15 Jul 2020 08:23:24 +0000 (UTC)
-Received: from work-vm (ovpn-114-223.ams2.redhat.com [10.36.114.223])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 65E9D60BF4;
- Wed, 15 Jul 2020 08:23:11 +0000 (UTC)
-Date: Wed, 15 Jul 2020 09:23:09 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+ Wed, 15 Jul 2020 08:31:39 +0000 (UTC)
+IronPort-SDR: 1Du6rRyJ1q8cwMm4SfFOOQSLdkCgfU4OrjvQ9GGywIY1WyFQ/oZEB7FA+koplsmYlQKjHdBxDh
+ bg8P5W3Hdaug==
+X-IronPort-AV: E=McAfee;i="6000,8403,9682"; a="136562472"
+X-IronPort-AV: E=Sophos;i="5.75,354,1589266800"; d="scan'208";a="136562472"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2020 01:31:39 -0700
+IronPort-SDR: bgT689SWz4DVmaCoWobdGz1Fq5oX1a0HMiDAJ1JTPfrmW4mtQCCp3ovwFJbuHPhGLpJlDsvMvG
+ 7V2lf1OwjaXA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,354,1589266800"; d="scan'208";a="308178009"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by fmsmga004.fm.intel.com with ESMTP; 15 Jul 2020 01:31:34 -0700
+Date: Wed, 15 Jul 2020 16:20:41 +0800
+From: Yan Zhao <yan.y.zhao@intel.com>
 To: Alex Williamson <alex.williamson@redhat.com>
 Subject: Re: device compatibility interface for live migration with assigned
  devices
-Message-ID: <20200715082309.GC2864@work-vm>
+Message-ID: <20200715082040.GA13136@joy-OptiPlex-7040>
 References: <20200713232957.GD5955@joy-OptiPlex-7040>
  <20200714102129.GD25187@redhat.com>
  <20200714101616.5d3a9e75@x1.home> <20200714171946.GL2728@work-vm>
@@ -50,8 +42,7 @@ References: <20200713232957.GD5955@joy-OptiPlex-7040>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20200714145948.17b95eb3@x1.home>
-User-Agent: Mutt/1.14.5 (2020-06-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,12 +55,14 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
 Cc: kvm@vger.kernel.org, libvir-list@redhat.com, qemu-devel@nongnu.org,
  kwankhede@nvidia.com, eauger@redhat.com, xin-ran.wang@intel.com,
  corbet@lwn.net, openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, Yan Zhao <yan.y.zhao@intel.com>, eskultet@redhat.com,
- jian-feng.ding@intel.com, zhenyuw@linux.intel.com, hejie.xu@intel.com,
- bao.yumeng@zte.com.cn, smooney@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ kevin.tian@intel.com, eskultet@redhat.com, jian-feng.ding@intel.com,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, zhenyuw@linux.intel.com,
+ hejie.xu@intel.com, bao.yumeng@zte.com.cn, smooney@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org,
  Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
  cohuck@redhat.com, dinechin@redhat.com, devel@ovirt.org
 Content-Type: text/plain; charset="iso-8859-1"
@@ -77,7 +70,7 @@ Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-* Alex Williamson (alex.williamson@redhat.com) wrote:
+On Tue, Jul 14, 2020 at 02:59:48PM -0600, Alex Williamson wrote:
 > On Tue, 14 Jul 2020 18:19:46 +0100
 > "Dr. David Alan Gilbert" <dgilbert@redhat.com> wrote:
 > =
@@ -243,20 +236,51 @@ on,
 > they'd want to put a build timestamp, random uuid, or source sha1 into
 > such a field to make absolutely certain compatibility is only determined
 > between identical builds?  Thanks,
+>
+Yes, I agree kernel could expose such sysfs interface to educate
+openstack how to filter out devices. But I still think the proposed
+migration_version (or rename to migration_compatibility) interface is
+still required for libvirt to do double check.
 
-No, I'd mostly anticipated matching on the vendor and device and maybe a
-version number for the bit the user specifies; I had assumed all that
-'vendor cruft' was still mostly opaque; having said that, if it did
-become a list of attributes like that (some of which were vendor
-specific) that would make sense to me.
+In the following scenario: =
 
-Dave
+1. openstack chooses the target device by reading sysfs interface (of json
+format) of the source device. And Openstack are now pretty sure the two
+devices are migration compatible.
+2. openstack asks libvirt to create the target VM with the target device
+and start live migration.
+3. libvirt now receives the request. so it now has two choices:
+(1) create the target VM & target device and start live migration directly
+(2) double check if the target device is compatible with the source
+device before doing the remaining tasks.
 
-> =
+Because the factors to determine whether two devices are live migration
+compatible are complicated and may be dynamically changing, (e.g. driver
+upgrade or configuration changes), and also because libvirt should not
+totally rely on the input from openstack, I think the cost for libvirt is
+relatively lower if it chooses to go (2) than (1). At least it has no
+need to cancel migration and destroy the VM if it knows it earlier.
 
-> Alex
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+So, it means the kernel may need to expose two parallel interfaces:
+(1) with json format, enumerating all possible fields and comparing
+methods, so as to indicate openstack how to find a matching target device
+(2) an opaque driver defined string, requiring write and test in target,
+which is used by libvirt to make sure device compatibility, rather than
+rely on the input accurateness from openstack or rely on kernel driver
+implementing the compatibility detection immediately after migration
+start.
+
+Does it make sense?
+
+Thanks
+Yan
+
+
+
+
+
+
+
 
 _______________________________________________
 intel-gvt-dev mailing list
