@@ -2,75 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48CB9225CC1
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Jul 2020 12:39:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 87300227454
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Jul 2020 03:02:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 05B2689D89;
-	Mon, 20 Jul 2020 10:39:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0AC8589BA9;
+	Tue, 21 Jul 2020 01:02:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [207.211.31.81])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 41DB889D89
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AFBF389BA9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Jul 2020 10:39:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595241559;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sklRsRTSQU9Hiyxm0q5Mr8YUheq3vmnY8+P0vWizCkA=;
- b=PJxtnPzP+EJeqYgbG1bjbrUCEhMGz7aO7YdOzclfSJxXm6QAahEuYpuffcyH0KnTuPZ5CK
- zvmsbF/CLSBxo+mh+irdk6EhegTO9qvMP/0g3zr62GAoCDYekK59N2nnbSpYrgO1BQfJAz
- 38YPu6Kk+P76Gl6Uh3Izdb858kw3s0A=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-225-uEjmrOxxNfCEgYKkc17xyA-1; Mon, 20 Jul 2020 06:39:17 -0400
-X-MC-Unique: uEjmrOxxNfCEgYKkc17xyA-1
-Received: by mail-wm1-f69.google.com with SMTP id b13so14113701wme.9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Jul 2020 03:39:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=sklRsRTSQU9Hiyxm0q5Mr8YUheq3vmnY8+P0vWizCkA=;
- b=ZVEXoowKzu4GVOFgc0j7mmifRwDEmn4TxPirrHADXdTAbqDhfPfEyx7nJWlizjJnM2
- Xl3dFhIjARknD77EWfmgsq1rTz5b7N4Kdn9StcmQ86NF9eKMW6/HIlgzHu3qS/vaVoZW
- v6k7dGdKr73km8S5c3Q+z1sKTk0+oI5BQM1IQvlRofXB5fOfsLCZR9rWuHXNkz8Sjm+G
- PUyUY6alqsevy2ixVc3y6EzJPfVcqFtw0324JEhQNmw6A/WUY+K7kCDl2NXuPN1fQhL9
- TR8bmGJZpl+l+bR92tovcJz15rHzafOh/ZGpIs3xL//wo3kqo2xlI4j4mvbpSE0XXXkT
- KN+A==
-X-Gm-Message-State: AOAM530ZKCOrYHzJABWFV7ay9TXyeMHRnij5NxGr7FWOhvc9sZRVcP6O
- 6PGUYfCD9BxLoNUtUAT75joOI05QmXID6JbiBNO86Am/4Z0vFb1MbKJlp4kBlmD0ExK83vGcTZt
- riMJwHgCqBAkKfSjGgnmbRvXoGPE2d+foNA==
-X-Received: by 2002:adf:a11d:: with SMTP id o29mr3508128wro.421.1595241556144; 
- Mon, 20 Jul 2020 03:39:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwl8UsImJLC98sdzsBmUeXUpIS1hPMSxtTVUgonzL8XKvJioH4iWMe8CewSGE+efnYGdkopJQ==
-X-Received: by 2002:adf:a11d:: with SMTP id o29mr3508112wro.421.1595241555829; 
- Mon, 20 Jul 2020 03:39:15 -0700 (PDT)
-Received: from pop-os ([51.37.88.107])
- by smtp.gmail.com with ESMTPSA id t13sm8425187wru.65.2020.07.20.03.39.14
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 20 Jul 2020 03:39:15 -0700 (PDT)
-Message-ID: <60d5c1609aaef72f2877aaacff04dc7187e4b3a5.camel@redhat.com>
+ Tue, 21 Jul 2020 01:02:14 +0000 (UTC)
+IronPort-SDR: VsCeaSEw9j+a+gw4ohRhEyg0e9paJtkiX9USPVK85FvCmH+l4vmr1YXyJ9+3ggG4pjpH7gGeOI
+ 7iuuufroD/1w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9688"; a="130116859"
+X-IronPort-AV: E=Sophos;i="5.75,375,1589266800"; d="scan'208";a="130116859"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jul 2020 18:02:14 -0700
+IronPort-SDR: Hi0Ier/KvzEzjHeSvJlfOUyWhGaXqFZ3+zz2qvL2a3c30d2ssVeCpeyzIyinF7dy1V9Y1U8uZ8
+ CpOPxy1z/ErA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,375,1589266800"; d="scan'208";a="283698887"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by orsmga003.jf.intel.com with ESMTP; 20 Jul 2020 18:02:08 -0700
+Date: Tue, 21 Jul 2020 08:51:13 +0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
 Subject: Re: device compatibility interface for live migration with assigned
  devices
-From: Sean Mooney <smooney@redhat.com>
-To: Jason Wang <jasowang@redhat.com>, Alex Williamson
- <alex.williamson@redhat.com>, Yan Zhao <yan.y.zhao@intel.com>
-Date: Mon, 20 Jul 2020 11:39:14 +0100
-In-Reply-To: <95c13c9b-daab-469b-f244-a0f741f1b41d@redhat.com>
+Message-ID: <20200721005113.GA10502@joy-OptiPlex-7040>
 References: <20200713232957.GD5955@joy-OptiPlex-7040>
  <9bfa8700-91f5-ebb4-3977-6321f0487a63@redhat.com>
  <20200716083230.GA25316@joy-OptiPlex-7040>
  <20200717101258.65555978@x1.home>
- <95c13c9b-daab-469b-f244-a0f741f1b41d@redhat.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2
-Mime-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200717101258.65555978@x1.home>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,79 +55,138 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: shaohe.feng@intel.com, corbet@lwn.net, kevin.tian@intel.com,
- cohuck@redhat.com, berrange@redhat.com, kvm@vger.kernel.org, devel@ovirt.org,
- libvir-list@redhat.com, eskultet@redhat.com, jian-feng.ding@intel.com,
- qemu-devel@nongnu.org, zhenyuw@linux.intel.com, dgilbert@redhat.com,
- bao.yumeng@zte.com.cn, kwankhede@nvidia.com,
- openstack-discuss@lists.openstack.org, xin-ran.wang@intel.com,
- dinechin@redhat.com, hejie.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- eauger@redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+ openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
+ kevin.tian@intel.com, eskultet@redhat.com, jian-feng.ding@intel.com,
+ dgilbert@redhat.com, zhenyuw@linux.intel.com, hejie.xu@intel.com,
+ bao.yumeng@zte.com.cn, smooney@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ berrange@redhat.com, cohuck@redhat.com, dinechin@redhat.com, devel@ovirt.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gTW9uLCAyMDIwLTA3LTIwIGF0IDExOjQxICswODAwLCBKYXNvbiBXYW5nIHdyb3RlOgo+IE9u
-IDIwMjAvNy8xOCDkuIrljYgxMjoxMiwgQWxleCBXaWxsaWFtc29uIHdyb3RlOgo+ID4gT24gVGh1
-LCAxNiBKdWwgMjAyMCAxNjozMjozMCArMDgwMAo+ID4gWWFuIFpoYW8gPHlhbi55LnpoYW9AaW50
-ZWwuY29tPiB3cm90ZToKPiA+IAo+ID4gPiBPbiBUaHUsIEp1bCAxNiwgMjAyMCBhdCAxMjoxNjoy
-NlBNICswODAwLCBKYXNvbiBXYW5nIHdyb3RlOgo+ID4gPiA+IE9uIDIwMjAvNy8xNCDkuIrljYg3
-OjI5LCBZYW4gWmhhbyB3cm90ZToKPiA+ID4gPiA+IGhpIGZvbGtzLAo+ID4gPiA+ID4gd2UgYXJl
-IGRlZmluaW5nIGEgZGV2aWNlIG1pZ3JhdGlvbiBjb21wYXRpYmlsaXR5IGludGVyZmFjZSB0aGF0
-IGhlbHBzIHVwcGVyCj4gPiA+ID4gPiBsYXllciBzdGFjayBsaWtlIG9wZW5zdGFjay9vdmlydC9s
-aWJ2aXJ0IHRvIGNoZWNrIGlmIHR3byBkZXZpY2VzIGFyZQo+ID4gPiA+ID4gbGl2ZSBtaWdyYXRp
-b24gY29tcGF0aWJsZS4KPiA+ID4gPiA+IFRoZSAiZGV2aWNlcyIgaGVyZSBjb3VsZCBiZSBNREVW
-cywgcGh5c2ljYWwgZGV2aWNlcywgb3IgaHlicmlkIG9mIHRoZSB0d28uCj4gPiA+ID4gPiBlLmcu
-IHdlIGNvdWxkIHVzZSBpdCB0byBjaGVjayB3aGV0aGVyCj4gPiA+ID4gPiAtIGEgc3JjIE1ERVYg
-Y2FuIG1pZ3JhdGUgdG8gYSB0YXJnZXQgTURFViwKPiA+ID4gPiA+IC0gYSBzcmMgVkYgaW4gU1JJ
-T1YgY2FuIG1pZ3JhdGUgdG8gYSB0YXJnZXQgVkYgaW4gU1JJT1YsCj4gPiA+ID4gPiAtIGEgc3Jj
-IE1ERVYgY2FuIG1pZ3JhdGlvbiB0byBhIHRhcmdldCBWRiBpbiBTUklPVi4KPiA+ID4gPiA+ICAg
-ICAoZS5nLiBTSU9WL1NSSU9WIGJhY2t3YXJkIGNvbXBhdGliaWxpdHkgY2FzZSkKPiA+ID4gPiA+
-IAo+ID4gPiA+ID4gVGhlIHVwcGVyIGxheWVyIHN0YWNrIGNvdWxkIHVzZSB0aGlzIGludGVyZmFj
-ZSBhcyB0aGUgbGFzdCBzdGVwIHRvIGNoZWNrCj4gPiA+ID4gPiBpZiBvbmUgZGV2aWNlIGlzIGFi
-bGUgdG8gbWlncmF0ZSB0byBhbm90aGVyIGRldmljZSBiZWZvcmUgdHJpZ2dlcmluZyBhIHJlYWwK
-PiA+ID4gPiA+IGxpdmUgbWlncmF0aW9uIHByb2NlZHVyZS4KPiA+ID4gPiA+IHdlIGFyZSBub3Qg
-c3VyZSBpZiB0aGlzIGludGVyZmFjZSBpcyBvZiB2YWx1ZSBvciBoZWxwIHRvIHlvdS4gcGxlYXNl
-IGRvbid0Cj4gPiA+ID4gPiBoZXNpdGF0ZSB0byBkcm9wIHlvdXIgdmFsdWFibGUgY29tbWVudHMu
-Cj4gPiA+ID4gPiAKPiA+ID4gPiA+IAo+ID4gPiA+ID4gKDEpIGludGVyZmFjZSBkZWZpbml0aW9u
-Cj4gPiA+ID4gPiBUaGUgaW50ZXJmYWNlIGlzIGRlZmluZWQgaW4gYmVsb3cgd2F5Ogo+ID4gPiA+
-ID4gCj4gPiA+ID4gPiAgICAgICAgICAgICAgICBfXyAgICB1c2Vyc3BhY2UKPiA+ID4gPiA+ICAg
-ICAgICAgICAgICAgICAvXCAgICAgICAgICAgICAgXAo+ID4gPiA+ID4gICAgICAgICAgICAgICAg
-LyAgICAgICAgICAgICAgICAgXHdyaXRlCj4gPiA+ID4gPiAgICAgICAgICAgICAgIC8gcmVhZCAg
-ICAgICAgICAgICAgXAo+ID4gPiA+ID4gICAgICBfX19fX19fXy9fX19fX19fX19fICAgICAgIF9f
-X1x8L19fX19fX19fX19fX18KPiA+ID4gPiA+ICAgICB8IG1pZ3JhdGlvbl92ZXJzaW9uIHwgICAg
-IHwgbWlncmF0aW9uX3ZlcnNpb24gfC0tPmNoZWNrIG1pZ3JhdGlvbgo+ID4gPiA+ID4gICAgIC0t
-LS0tLS0tLS0tLS0tLS0tLS0tLSAgICAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tICAgY29tcGF0aWJp
-bGl0eQo+ID4gPiA+ID4gICAgICAgIGRldmljZSBBICAgICAgICAgICAgICAgICAgICBkZXZpY2Ug
-Qgo+ID4gPiA+ID4gCj4gPiA+ID4gPiAKPiA+ID4gPiA+IGEgZGV2aWNlIGF0dHJpYnV0ZSBuYW1l
-ZCBtaWdyYXRpb25fdmVyc2lvbiBpcyBkZWZpbmVkIHVuZGVyIGVhY2ggZGV2aWNlJ3MKPiA+ID4g
-PiA+IHN5c2ZzIG5vZGUuIGUuZy4gKC9zeXMvYnVzL3BjaS9kZXZpY2VzLzAwMDBcOjAwXDowMi4w
-LyRtZGV2X1VVSUQvbWlncmF0aW9uX3ZlcnNpb24pLgo+ID4gPiA+IAo+ID4gPiA+IEFyZSB5b3Ug
-YXdhcmUgb2YgdGhlIGRldmxpbmsgYmFzZWQgZGV2aWNlIG1hbmFnZW1lbnQgaW50ZXJmYWNlIHRo
-YXQgaXMKPiA+ID4gPiBwcm9wb3NlZCB1cHN0cmVhbT8gSSB0aGluayBpdCBoYXMgbWFueSBhZHZh
-bnRhZ2VzIG92ZXIgc3lzZnMsIGRvIHlvdQo+ID4gPiA+IGNvbnNpZGVyIHRvIHN3aXRjaCB0byB0
-aGF0Pwo+ID4gCj4gPiBBZHZhbnRhZ2VzLCBzdWNoIGFzPwo+IAo+IAo+IE15IHVuZGVyc3RhbmRp
-bmcgZm9yIGRldmxpbmsobmV0bGluaykgb3ZlciBzeXNmcyAoc29tZSBhcmUgbWVudGlvbmVkIGF0
-IAo+IHRoZSB0aW1lIG9mIHZEUEEgc3lzZnMgbWdtdCBBUEkgZGlzY3Vzc2lvbikgYXJlOgppIHRv
-dWdodCBuZXRsaW5rIHdhcyB1c2VkIG1vcmUgYSBhcyBhIGNvbmZpZ3VyYXRpb24gcHJvdG9jb2Fs
-IHRvIHF1cnJ5IGFuZCBjb25maXJlIG5pYyBhbmQgaSBndWVzcwpvdGhlciBkZXZpY2VzIGluIGl0
-cyBkZXZsaW5rIGZvcm0gcmVxdWlyZWludCBhIHRvb2wgdG8gYmUgd2l0dGVuIHRoYXQgY2FuIHNw
-ZWFrIHRoZSBwcm90b2NhbCB0byBpbnRlcmFjdCB3aXRoLgp0aGUgcHJpbWFyeSBhZHZhbnRhdGUg
-b2Ygc3lzZnMgaXMgdGhhdCBldmVyeXRoaW5nIGlzIGp1c3QgYSBmaWxlLiB0aGVyZSBhcmUgbm8g
-YWRkdGlvbmFsIGRlcGxlZW5jZWlzCm5lZWRlZCBhbmQgdW5saWtlIG5ldGxpbmsgdGhlcmUgYXJl
-IG5vdCBpbnRlcm9wZXJhdGJsaXR5IGlzc3VlcyBpbiBhIGNvYW5pdG5lcmlzZWQgZW52LiBpZiB5
-b3UgYXJlIHVzaW5nIGRpZmZyZW5ldAp2ZXJzaW9uIG9mIGxpYmMgYW5kIGdjYyBpbiB0aGUgY29u
-dGFpZW5yIHZzIHRoZSBob3N0IG15IHVuZGVyc3RhbmRpbmcgaXMgdG9vbHMgbGlrZSBldGh0b29s
-IGZyb20gdWJ1bnR1IGRlcGxveWVkCmluIGEgY29udGFpbmVyIG9uIGEgY2VudG9zIGhvc3QgY2Fu
-IGhhdmUgaXNzdWUgY29tbXVuaWNhdGluZyB3aXRoIHRoZSBob3N0IGtlcm5lbC4gaWYgaXRzIGpz
-dXQgYSBmaWxlIHVubGVzcwp0aGUgZm9ybWF0IHRoZSBkYXRhIGlzIHJldHVybmluIGluIGNoYWdu
-ZXMgb3IgdGhlIGxheW91dCBvZiBzeXNmcyBjaGFuZ2VzIGl0cyBjb21wYXRpYWJsZSByZWdhcmRs
-ZXNzIG9mIHdoYXQgeW91CnVzZSB0byByZWFkIGl0Lgo+IAo+IC0gZXhpc3RpbmcgdXNlcnMgKE5J
-QywgY3J5cHRvLCBTQ1NJLCBpYiksIG1hdHVyZSBhbmQgc3RhYmxlCj4gLSBtdWNoIGJldHRlciBl
-cnJvciByZXBvcnRpbmcgKGV4dF9hY2sgb3RoZXIgdGhhbiBzdHJpbmcgb3IgZXJybm8pCj4gLSBu
-YW1lc3BhY2UgYXdhcmUKPiAtIGRvIG5vdCBjb3VwbGUgd2l0aCBrb2JqZWN0Cj4gCj4gVGhhbmtz
-Cj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRl
-bC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2
-dC1kZXYK
+On Fri, Jul 17, 2020 at 10:12:58AM -0600, Alex Williamson wrote:
+<...>
+> > yes, in another reply, Alex proposed to use an interface in json format.
+> > I guess we can define something like
+> > 
+> > { "self" :
+> >   [
+> >     { "pciid" : "8086591d",
+> >       "driver" : "i915",
+> >       "gvt-version" : "v1",
+> >       "mdev_type"   : "i915-GVTg_V5_2",
+> >       "aggregator"  : "1",
+> >       "pv-mode"     : "none",
+> >     }
+> >   ],
+> >   "compatible" :
+> >   [
+> >     { "pciid" : "8086591d",
+> >       "driver" : "i915",
+> >       "gvt-version" : "v1",
+> >       "mdev_type"   : "i915-GVTg_V5_2",
+> >       "aggregator"  : "1"
+> >       "pv-mode"     : "none",
+> >     },
+> >     { "pciid" : "8086591d",
+> >       "driver" : "i915",
+> >       "gvt-version" : "v1",
+> >       "mdev_type"   : "i915-GVTg_V5_4",
+> >       "aggregator"  : "2"
+> >       "pv-mode"     : "none",
+> >     },
+> >     { "pciid" : "8086591d",
+> >       "driver" : "i915",
+> >       "gvt-version" : "v2",
+> >       "mdev_type"   : "i915-GVTg_V5_4",
+> >       "aggregator"  : "2"
+> >       "pv-mode"     : "none, ppgtt, context",
+> >     }
+> >     ...
+> >   ]
+> > }
+> > 
+> > But as those fields are mostly vendor specific, the userspace can
+> > only do simple string comparing, I guess the list would be very long as
+> > it needs to enumerate all possible targets.
+> 
+> 
+> This ignores so much of what I tried to achieve in my example :(
+> 
+sorry, I just was eager to show and confirm the way to list all compatible
+combination of mdev_type and mdev attributes.
+
+> 
+> > also, in some fileds like "gvt-version", is there a simple way to express
+> > things like v2+?
+> 
+> 
+> That's not a reasonable thing to express anyway, how can you be certain
+> that v3 won't break compatibility with v2?  Sean proposed a versioning
+> scheme that accounts for this, using an x.y.z version expressing the
+> major, minor, and bugfix versions, where there is no compatibility
+> across major versions, minor versions have forward compatibility (ex. 1
+> -> 2 is ok, 2 -> 1 is not) and bugfix version number indicates some
+> degree of internal improvement that is not visible to the user in terms
+> of features or compatibility, but provides a basis for preferring
+> equally compatible candidates.
+>
+right. if self version is v1, it can't know its compatible version is
+v2. it can only be done in reverse. i.e.
+when self version is v2, it can list its compatible version is v1 and
+v2.
+and maybe later when self version is v3, there's no v1 in its compatible
+list.
+
+In this way, do you think we still need the complex x.y.z versioning scheme?
+
+>  
+> > If the userspace can read this interface both in src and target and
+> > check whether both src and target are in corresponding compatible list, I
+> > think it will work for us.
+> > 
+> > But still, kernel should not rely on userspace's choice, the opaque
+> > compatibility string is still required in kernel. No matter whether
+> > it would be exposed to userspace as an compatibility checking interface,
+> > vendor driver would keep this part of code and embed the string into the
+> > migration stream. so exposing it as an interface to be used by libvirt to
+> > do a safety check before a real live migration is only about enabling
+> > the kernel part of check to happen ahead.
+> 
+> As you indicate, the vendor driver is responsible for checking version
+> information embedded within the migration stream.  Therefore a
+> migration should fail early if the devices are incompatible.  Is it
+but as I know, currently in VFIO migration protocol, we have no way to
+get vendor specific compatibility checking string in migration setup stage
+(i.e. .save_setup stage) before the device is set to _SAVING state.
+In this way, for devices who does not save device data in precopy stage,
+the migration compatibility checking is as late as in stop-and-copy
+stage, which is too late.
+do you think we need to add the getting/checking of vendor specific
+compatibility string early in save_setup stage?
+
+> really libvirt's place to second guess what it has been directed to do?
+if libvirt uses the scheme of reading compatibility string at source and
+writing for checking at the target, it can not be called "a second guess".
+It's not a guess, but a confirmation.
+
+> Why would we even proceed to design a user parse-able version interface
+> if we still have a dependency on an opaque interface?  Thanks,
+one reason is that libvirt can't trust the parsing result from
+openstack.
+Another reason is that libvirt can use this opaque interface easier than
+another parsing by itself, in the fact that it would not introduce more
+burden to kernel who would write this part of code anyway, no matter
+libvirt uses it or not.
+ 
+Thanks
+Yan
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
