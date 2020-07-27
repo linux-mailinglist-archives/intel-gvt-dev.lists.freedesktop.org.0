@@ -2,26 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4349C22D61A
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Jul 2020 10:32:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 784E322E6AA
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Jul 2020 09:35:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CF9776E091;
-	Sat, 25 Jul 2020 08:32:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0D46889CCE;
+	Mon, 27 Jul 2020 07:35:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from nc-ad.net (160.16.84.11.v6.sakura.ne.jp
- [IPv6:2001:e42:102:1518:160:16:84:11])
- by gabe.freedesktop.org (Postfix) with ESMTP id 650976E091;
- Sat, 25 Jul 2020 08:32:51 +0000 (UTC)
-Received: from servidor.phd.local (unknown [179.228.196.235])
- (Authenticated sender: support)
- by nc-ad.net (Postfix) with ESMTPA id F217C1E14B8;
- Sat, 25 Jul 2020 16:53:49 +0900 (JST)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9214489CCE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 27 Jul 2020 07:35:45 +0000 (UTC)
+IronPort-SDR: K9NhK4Utg8O8I28vhooWTiazSDXqjR2e0R028i8nkaeHa+bk9+j8VACnOCuHmVDYiidYZljdeo
+ KZWdVaop5eOQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9694"; a="139003233"
+X-IronPort-AV: E=Sophos;i="5.75,401,1589266800"; d="scan'208";a="139003233"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jul 2020 00:35:44 -0700
+IronPort-SDR: 0ffjI+i+TsbheWV9B1ekyPjpDXDKX5V9QqFeMTIOUgqFnBjB7356oNacj5t1wADBNDmVTD6CU1
+ TSX+YyW3cBSQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,401,1589266800"; d="scan'208";a="364039470"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by orsmga001.jf.intel.com with ESMTP; 27 Jul 2020 00:35:38 -0700
+Date: Mon, 27 Jul 2020 15:24:40 +0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: device compatibility interface for live migration with assigned
+ devices
+Message-ID: <20200727072440.GA28676@joy-OptiPlex-7040>
+References: <20200713232957.GD5955@joy-OptiPlex-7040>
+ <9bfa8700-91f5-ebb4-3977-6321f0487a63@redhat.com>
+ <20200716083230.GA25316@joy-OptiPlex-7040>
+ <20200717101258.65555978@x1.home>
+ <20200721005113.GA10502@joy-OptiPlex-7040>
 MIME-Version: 1.0
-Subject: Financial capability to finance any investment 0
-To: Recipients <paulvinus12@gmail.com>
-From: "PAUL Vinus " <paulvinus12@gmail.com>
-Date: Sat, 25 Jul 2020 05:05:53 -0300
+Content-Disposition: inline
+In-Reply-To: <20200721005113.GA10502@joy-OptiPlex-7040>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,65 +56,46 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: paul.vinus@mail.ee
-Content-Type: multipart/mixed; boundary="===============0432107041=="
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+ openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
+ kevin.tian@intel.com, eskultet@redhat.com, jian-feng.ding@intel.com,
+ dgilbert@redhat.com, zhenyuw@linux.intel.com, hejie.xu@intel.com,
+ bao.yumeng@zte.com.cn, smooney@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ berrange@redhat.com, cohuck@redhat.com, dinechin@redhat.com, devel@ovirt.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200725083251.CF9776E091@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============0432107041==
-Content-Type: multipart/alternative; boundary="===============1999972540=="
+> > As you indicate, the vendor driver is responsible for checking version
+> > information embedded within the migration stream.  Therefore a
+> > migration should fail early if the devices are incompatible.  Is it
+> but as I know, currently in VFIO migration protocol, we have no way to
+> get vendor specific compatibility checking string in migration setup stage
+> (i.e. .save_setup stage) before the device is set to _SAVING state.
+> In this way, for devices who does not save device data in precopy stage,
+> the migration compatibility checking is as late as in stop-and-copy
+> stage, which is too late.
+> do you think we need to add the getting/checking of vendor specific
+> compatibility string early in save_setup stage?
+>
+hi Alex,
+after an offline discussion with Kevin, I realized that it may not be a
+problem if migration compatibility check in vendor driver occurs late in
+stop-and-copy phase for some devices, because if we report device
+compatibility attributes clearly in an interface, the chances for
+libvirt/openstack to make a wrong decision is little.
+so, do you think we are now arriving at an agreement that we'll give up
+the read-and-test scheme and start to defining one interface (perhaps in
+json format), from which libvirt/openstack is able to parse and find out
+compatibility list of a source mdev/physical device?
 
-You will not see this in a MIME-aware mail reader.
---===============1999972540==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-Greetings, How are you today? Our Group have the financial capability to fi=
-nance any investment portfolio as far as is genuine, all we need is a capab=
-le business partner that possesses investment strategies for profitable bus=
-iness information for good turn over within 10-30years. Our Partners are wi=
-lling to invest 10million =97 5billon USD. We can provide proof of funds on=
- demand, after certification of your documents/details. Please write me bac=
-k if you can work with me on this project. Thank You, Best Regards PAUL Vin=
-us
---===============1999972540==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Dutf-8"/></head>Greetings,
-
-How are you today?
-
-Our Group have the financial capability to finance any investment portfolio=
- as far as is genuine, all we need is a capable business partner that posse=
-sses investment strategies for profitable business information for good tur=
-n over within 10-30years.
-Our Partners are willing to invest 10million =E2=80=94 5billon USD. We can =
-provide proof of funds on demand, after certification of your documents/det=
-ails. Please write me back if you can work with me on this project.
-
-Thank You,
-
-Best Regards
-PAUL Vinus</html>
---===============1999972540==--
-
---===============0432107041==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Thanks
+Yan
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0432107041==--
