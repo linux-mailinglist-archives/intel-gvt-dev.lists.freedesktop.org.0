@@ -1,47 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0781323004F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Jul 2020 05:36:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D8E5231AFA
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jul 2020 10:16:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AEB0C6E14B;
-	Tue, 28 Jul 2020 03:36:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 988FB6E480;
+	Wed, 29 Jul 2020 08:16:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4BDEF6E148;
- Tue, 28 Jul 2020 03:36:27 +0000 (UTC)
-IronPort-SDR: PnoQjObb059p8JGN2IpBePWJvLGjaIXEfI4Chrux9kwvrXBqGu3Fhm/LEZtqK0ISDr1LjVHTfC
- i80e/TpdzlKg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9695"; a="139179187"
-X-IronPort-AV: E=Sophos;i="5.75,404,1589266800"; 
- d="asc'?scan'208";a="139179187"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 54C0F6E480
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 29 Jul 2020 08:16:09 +0000 (UTC)
+IronPort-SDR: keJfOjVQ6wj9kpFl48Tpmi+OQnea3p0+ba4jKV7SOVbrWdNwAEYBDW3bwBrVWmJYUMmnB4swvI
+ 7Fn55/l+BkSQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9696"; a="131445120"
+X-IronPort-AV: E=Sophos;i="5.75,409,1589266800"; d="scan'208";a="131445120"
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jul 2020 20:36:26 -0700
-IronPort-SDR: T8Rx9frCqAgVlb+AF3OvQwsvylacxNWAHHrKCBNX/P5mDndXb7NVi/H9iLEf8EazK5nESqCdxD
- y8AhfhQCXacg==
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jul 2020 01:16:08 -0700
+IronPort-SDR: 1dL7eESQy3S4CzfY0WiUsDLDiOlAS45EurNMq3Y+lv4o7dmE0K2wEsCoqwcOeE19T0vO6BzkO6
+ fFnV9lZCim5Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,404,1589266800"; 
- d="asc'?scan'208";a="312456099"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 27 Jul 2020 20:36:23 -0700
-Date: Tue, 28 Jul 2020 11:18:46 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
-Subject: Re: [PULL] gvt-next
-Message-ID: <20200728031846.GW27035@zhen-hp.sh.intel.com>
-References: <20200720080541.GT27035@zhen-hp.sh.intel.com>
- <159532948169.9008.15612685518487144837@jlahtine-desk.ger.corp.intel.com>
- <20200722004217.GA27035@zhen-hp.sh.intel.com>
- <215475D8-668C-48F7-B2D0-8D82E9836CE5@intel.com>
+X-IronPort-AV: E=Sophos;i="5.75,409,1589266800"; d="scan'208";a="434613735"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by orsmga004.jf.intel.com with ESMTP; 29 Jul 2020 01:16:02 -0700
+Date: Wed, 29 Jul 2020 16:05:03 +0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: device compatibility interface for live migration with assigned
+ devices
+Message-ID: <20200729080503.GB28676@joy-OptiPlex-7040>
+References: <20200713232957.GD5955@joy-OptiPlex-7040>
+ <9bfa8700-91f5-ebb4-3977-6321f0487a63@redhat.com>
+ <20200716083230.GA25316@joy-OptiPlex-7040>
+ <20200717101258.65555978@x1.home>
+ <20200721005113.GA10502@joy-OptiPlex-7040>
+ <20200727072440.GA28676@joy-OptiPlex-7040>
+ <20200727162321.7097070e@x1.home>
 MIME-Version: 1.0
-In-Reply-To: <215475D8-668C-48F7-B2D0-8D82E9836CE5@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Disposition: inline
+In-Reply-To: <20200727162321.7097070e@x1.home>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,88 +58,194 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: "Nikula, Jani" <jani.nikula@intel.com>,
- intel-gfx <intel-gfx@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============0209456017=="
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+ openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
+ kevin.tian@intel.com, eskultet@redhat.com, jian-feng.ding@intel.com,
+ dgilbert@redhat.com, zhenyuw@linux.intel.com, hejie.xu@intel.com,
+ bao.yumeng@zte.com.cn, smooney@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ berrange@redhat.com, cohuck@redhat.com, dinechin@redhat.com, devel@ovirt.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Mon, Jul 27, 2020 at 04:23:21PM -0600, Alex Williamson wrote:
+> On Mon, 27 Jul 2020 15:24:40 +0800
+> Yan Zhao <yan.y.zhao@intel.com> wrote:
+> 
+> > > > As you indicate, the vendor driver is responsible for checking version
+> > > > information embedded within the migration stream.  Therefore a
+> > > > migration should fail early if the devices are incompatible.  Is it  
+> > > but as I know, currently in VFIO migration protocol, we have no way to
+> > > get vendor specific compatibility checking string in migration setup stage
+> > > (i.e. .save_setup stage) before the device is set to _SAVING state.
+> > > In this way, for devices who does not save device data in precopy stage,
+> > > the migration compatibility checking is as late as in stop-and-copy
+> > > stage, which is too late.
+> > > do you think we need to add the getting/checking of vendor specific
+> > > compatibility string early in save_setup stage?
+> > >  
+> > hi Alex,
+> > after an offline discussion with Kevin, I realized that it may not be a
+> > problem if migration compatibility check in vendor driver occurs late in
+> > stop-and-copy phase for some devices, because if we report device
+> > compatibility attributes clearly in an interface, the chances for
+> > libvirt/openstack to make a wrong decision is little.
+> 
+> I think it would be wise for a vendor driver to implement a pre-copy
+> phase, even if only to send version information and verify it at the
+> target.  Deciding you have no device state to send during pre-copy does
+> not mean your vendor driver needs to opt-out of the pre-copy phase
+> entirely.  Please also note that pre-copy is at the user's discretion,
+> we've defined that we can enter stop-and-copy at any point, including
+> without a pre-copy phase, so I would recommend that vendor drivers
+> validate compatibility at the start of both the pre-copy and the
+> stop-and-copy phases.
+>
+ok. got it!
 
---===============0209456017==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="tzjrJU3+iJ6c5SNx"
-Content-Disposition: inline
+> > so, do you think we are now arriving at an agreement that we'll give up
+> > the read-and-test scheme and start to defining one interface (perhaps in
+> > json format), from which libvirt/openstack is able to parse and find out
+> > compatibility list of a source mdev/physical device?
+> 
+> Based on the feedback we've received, the previously proposed interface
+> is not viable.  I think there's agreement that the user needs to be
+> able to parse and interpret the version information.  Using json seems
+> viable, but I don't know if it's the best option.  Is there any
+> precedent of markup strings returned via sysfs we could follow?
+I found some examples of using formatted string under /sys, mostly under
+tracing. maybe we can do a similar implementation.
+
+#cat /sys/kernel/debug/tracing/events/kvm/kvm_mmio/format
+
+name: kvm_mmio
+ID: 32
+format:
+        field:unsigned short common_type;       offset:0;       size:2; signed:0;
+        field:unsigned char common_flags;       offset:2;       size:1; signed:0;
+        field:unsigned char common_preempt_count;       offset:3;       size:1; signed:0;
+        field:int common_pid;   offset:4;       size:4; signed:1;
+
+        field:u32 type; offset:8;       size:4; signed:0;
+        field:u32 len;  offset:12;      size:4; signed:0;
+        field:u64 gpa;  offset:16;      size:8; signed:0;
+        field:u64 val;  offset:24;      size:8; signed:0;
+
+print fmt: "mmio %s len %u gpa 0x%llx val 0x%llx", __print_symbolic(REC->type, { 0, "unsatisfied-read" }, { 1, "read" }, { 2, "write" }), REC->len, REC->gpa, REC->val
 
 
---tzjrJU3+iJ6c5SNx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+#cat /sys/devices/pci0000:00/0000:00:02.0/uevent
+DRIVER=vfio-pci
+PCI_CLASS=30000
+PCI_ID=8086:591D
+PCI_SUBSYS_ID=8086:2212
+PCI_SLOT_NAME=0000:00:02.0
+MODALIAS=pci:v00008086d0000591Dsv00008086sd00002212bc03sc00i00
 
-On 2020.07.27 16:39:58 +0000, Vivi, Rodrigo wrote:
->=20
->=20
-> > On Jul 21, 2020, at 5:42 PM, Zhenyu Wang <zhenyuw@linux.intel.com> wrot=
-e:
-> >=20
-> > On 2020.07.21 14:04:41 +0300, Joonas Lahtinen wrote:
-> >> Quoting Zhenyu Wang (2020-07-20 11:05:41)
-> >>>=20
-> >>> Hi,
-> >>>=20
-> >>> Sorry that this might be a bit late as last week our QA people were
-> >>> busy on something else..So this is gvt changes queued for 5.9 which is
-> >>> to improve guest suspend/resume with proper PCI PM state tracking for
-> >>> resource handling, e.g ppgtt. Hopefully this could still be in queue
-> >>> for 5.9.
-> >>=20
-> >> Is this a regression fix to a problem introduced by previous
-> >> gvt-next PR targeting 5.9?
-> >>=20
-> >> Or is it an incremental improvement over 5.8?
-> >>=20
-> >=20
-> > Second case. This is incremental improvement. Guest suspend/resume
-> > did work somehow before but has bad performance and possible failure
-> > with some guest versions.
->=20
-> I'm afraid Jani already sent the last pull request towards 5.9.
-> So if there are fixes inside this pull request this should move to the -n=
-ext-fixes
->=20
-> and the remaining improvements to another 5.10 pull request
->=20
+> 
+> Your idea of having both a "self" object and an array of "compatible"
+> objects is perhaps something we can build on, but we must not assume
+> PCI devices at the root level of the object.  Providing both the
+> mdev-type and the driver is a bit redundant, since the former includes
+> the latter.  We can't have vendor specific versioning schemes though,
+> ie. gvt-version. We need to agree on a common scheme and decide which
+> fields the version is relative to, ex. just the mdev type?
+what about making all comparing fields vendor specific?
+userspace like openstack only needs to parse and compare if target
+device is within source compatible list without understanding the meaning
+of each field.
 
-Got it. I'll split out those fixes for another pull.
+> I had also proposed fields that provide information to create a
+> compatible type, for example to create a type_x2 device from a type_x1
+> mdev type, they need to know to apply an aggregation attribute.  If we
+> need to explicitly list every aggregation value and the resulting type,
+> I think we run aground of what aggregation was trying to avoid anyway,
+> so we might need to pick a language that defines variable substitution
+> or some kind of tagging.  For example if we could define ${aggr} as an
+> integer within a specified range, then we might be able to define a type
+> relative to that value (type_x${aggr}) which requires an aggregation
+> attribute using the same value.  I dunno, just spit balling.  Thanks,
+what about a migration_compatible attribute under device node like
+below?
+
+#cat /sys/bus/pci/devices/0000\:00\:02.0/UUID1/migration_compatible
+SELF:
+	device_type=pci
+	device_id=8086591d
+	mdev_type=i915-GVTg_V5_2
+	aggregator=1
+	pv_mode="none+ppgtt+context"
+	interface_version=3
+COMPATIBLE:
+	device_type=pci
+	device_id=8086591d
+	mdev_type=i915-GVTg_V5_{val1:int:1,2,4,8}
+	aggregator={val1}/2
+	pv_mode={val2:string:"none+ppgtt","none+context","none+ppgtt+context"} 
+	interface_version={val3:int:2,3}
+COMPATIBLE:
+	device_type=pci
+	device_id=8086591d
+	mdev_type=i915-GVTg_V5_{val1:int:1,2,4,8}
+	aggregator={val1}/2
+	pv_mode=""  #"" meaning empty, could be absent in a compatible device
+	interface_version=1
+
+
+#cat /sys/bus/pci/devices/0000\:00\:02.0/UUID2/migration_compatible
+SELF:
+	device_type=pci
+	device_id=8086591d
+	mdev_type=i915-GVTg_V5_4
+	aggregator=2
+	interface_version=1
+COMPATIBLE: 
+	device_type=pci
+	device_id=8086591d
+	mdev_type=i915-GVTg_V5_{val1:int:1,2,4,8}
+	aggregator={val1}/2
+	interface_version=1
+
+
+Notes:
+- A COMPATIBLE object is a line starting with COMPATIBLE.
+  It specifies a list of compatible devices that are allowed to migrate
+  in.
+  The reason to allow multiple COMPATIBLE objects is that when it
+  is hard to express a complex compatible logic in one COMPATIBLE
+  object, a simple enumeration is still a fallback.
+  in the above example, device UUID2 is in the compatible list of
+  device UUID1, but device UUID1 is not in the compatible list of device
+  UUID2, so device UUID2 is able to migrate to device UUID1, but device
+  UUID1 is not able to migrate to device UUID2.
+
+- fields under each object are of "and" relationship to each other,  meaning
+  all fields of SELF object of a target device must be equal to corresponding
+  fields of a COMPATIBLE object of source device, otherwise it is regarded as not
+  compatible.
+
+- each field, however, is able to specify multiple allowed values, using
+  variables as explained below.
+
+- variables are represented with {}, the first appearance of one variable
+  specifies its type and allowed list. e.g.
+  {val1:int:1,2,4,8} represents var1 whose type is integer and allowed
+  values are 1, 2, 4, 8.
+
+- vendors are able to specify which fields are within the comparing list
+  and which fields are not. e.g. for physical VF migration, it may not
+  choose mdev_type as a comparing field, and maybe use driver name instead.
+ 
 
 Thanks
+Yan
 
---tzjrJU3+iJ6c5SNx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCXx+ZFgAKCRCxBBozTXgY
-J8hnAKCNlEMEiK3JtlshbwUaHWdbGQrvoQCdEzYBBc6mTjhBlkF904e7uTK9Los=
-=ULNX
------END PGP SIGNATURE-----
-
---tzjrJU3+iJ6c5SNx--
-
---===============0209456017==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0209456017==--
