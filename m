@@ -1,42 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0556A232538
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jul 2020 21:18:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3E802326B2
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jul 2020 23:18:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B238D6E7D0;
-	Wed, 29 Jul 2020 19:18:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 495196E2E5;
+	Wed, 29 Jul 2020 21:18:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 770146E7D0
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 673A36E2E5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Jul 2020 19:18:17 +0000 (UTC)
-IronPort-SDR: 5gPZlQ1ejKHWcW7VbPQsg7pblkCavHxkKtNsmtTW3hXa1UUWNmKpx6JcrMUS9UvpcmW9Nyvyew
- F+Nm9gefEYoQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9697"; a="236349303"
-X-IronPort-AV: E=Sophos;i="5.75,411,1589266800"; d="scan'208";a="236349303"
+ Wed, 29 Jul 2020 21:18:52 +0000 (UTC)
+IronPort-SDR: jfEEYIm5ipxebnWV/++3h3EeL8SolTDBPGXY4CU2dp8VKz2zI/NidVcvYPZZfGaQtKL6QyPjHF
+ +6h9QlhFl07w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9697"; a="131057310"
+X-IronPort-AV: E=Sophos;i="5.75,411,1589266800"; d="scan'208";a="131057310"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jul 2020 12:18:16 -0700
-IronPort-SDR: yMc1dpWcQFprgdbk2JTVyKjLsHXgDC4Pobj7jLJgt7ontvXUuooID5cEGdQIBg5ejJD/lSsdBq
- ufZ8gPplRBzw==
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jul 2020 14:18:51 -0700
+IronPort-SDR: bbEomjQ71LSjHMLWPeJ6jqp/ibr75TvZuquzFF0XIIZUNX7sgczb07FwmbgwpBuQxiW8nP57tT
+ gOb6aJV9PG7Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,411,1589266800"; d="scan'208";a="304322924"
+X-IronPort-AV: E=Sophos;i="5.75,411,1589266800"; d="scan'208";a="328771178"
 Received: from lkp-server02.sh.intel.com (HELO 1bde1f275adc) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 29 Jul 2020 12:18:14 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 29 Jul 2020 14:18:49 -0700
 Received: from kbuild by 1bde1f275adc with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1k0raf-0000Bb-Gu; Wed, 29 Jul 2020 19:18:13 +0000
-Date: Thu, 30 Jul 2020 03:17:23 +0800
+ id 1k0tTM-0000Dc-IV; Wed, 29 Jul 2020 21:18:48 +0000
+Date: Thu, 30 Jul 2020 05:18:35 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- f19509acd44fa76710e4113ba8d80296346fbc20
-Message-ID: <5f21cb43.R1hgtWZksFHKY0BA%lkp@intel.com>
+Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
+ 9e7c0efadb86ddb58965561bbca638d44792d78f
+Message-ID: <5f21e7ab.xxpaLFzMZqYF4ieg%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -58,13 +58,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: f19509acd44fa76710e4113ba8d80296346fbc20  gvt-staging: 2020y-07m-29d-14h-22m-44s CST integration manifest
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-next-fixes
+branch HEAD: 9e7c0efadb86ddb58965561bbca638d44792d78f  drm/i915/gvt: Do not reset pv_notified when vGPU transit from D3->D0
 
-elapsed time: 764m
+elapsed time: 896m
 
-configs tested: 51
-configs skipped: 2
+configs tested: 57
+configs skipped: 4
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
@@ -74,19 +74,21 @@ arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-arm                          prima2_defconfig
-arm                      footbridge_defconfig
-mips                        nlm_xlr_defconfig
+arm                            qcom_defconfig
+powerpc                      ep88xc_defconfig
+mips                  decstation_64_defconfig
+xtensa                           alldefconfig
+mips                          ath79_defconfig
+mips                         db1xxx_defconfig
+m68k                          amiga_defconfig
+arc                        nsim_700_defconfig
+mips                        vocore2_defconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                                defconfig
 m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
 nds32                               defconfig
 nios2                            allyesconfig
 csky                                defconfig
@@ -104,6 +106,10 @@ i386                             allyesconfig
 sparc                            allyesconfig
 sparc                               defconfig
 i386                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
 mips                             allyesconfig
 mips                             allmodconfig
 powerpc                             defconfig
