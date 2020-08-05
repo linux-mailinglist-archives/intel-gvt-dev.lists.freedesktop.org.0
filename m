@@ -2,82 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB45423CA4E
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Aug 2020 13:35:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A01E323CECF
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Aug 2020 21:06:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 876146E542;
-	Wed,  5 Aug 2020 11:35:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 45A8389FDE;
+	Wed,  5 Aug 2020 19:06:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 258526E53E
+X-Greylist: delayed 905 seconds by postgrey-1.36 at gabe;
+ Wed, 05 Aug 2020 19:06:16 UTC
+Received: from mail17.eventbrite.com (mail17.eventbrite.com [104.130.82.106])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 68A8289FDE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Aug 2020 11:35:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596627311;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Wqh5Y54yRa5Ell3CvSDQvlBORfp1wfSW4h6prGelA0o=;
- b=i9dNOj1uVogjN5ZvtnKdaEi6TAhpOFPgkhIZLz8/HSV1P8hIhc3GAoHtYbAKZdKpNuGwWA
- c0Fx1d2AXXjZfkJ8ypukCXwvgU/A7JB9K8k00rrXDwcxDCCqdcdgxw20wHh6gb3GOinz+o
- GDLxl0tZnxjKGc6kKxdDwbva6ikxZ80=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-423-WQMEfhf2NC6geGPiwutGwg-1; Wed, 05 Aug 2020 07:35:07 -0400
-X-MC-Unique: WQMEfhf2NC6geGPiwutGwg-1
-Received: by mail-wm1-f69.google.com with SMTP id u144so2608504wmu.3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 05 Aug 2020 04:35:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Wqh5Y54yRa5Ell3CvSDQvlBORfp1wfSW4h6prGelA0o=;
- b=a9B5Vyuxrkwv/Qs6FEh/STK80USQki4wdZ4N+zTWLJ+oVPHyhF6hU3ZAf5Y64VI2Ht
- 0mwPTN6MpBcn/u1gfcoDow/hNfgfR60sjxXLN0KOUOW+0eCXj+8gj1p2VPsi9ygnDAFq
- 9Yp8cyvYcqCTppVtrk5xCuwcGdXbAQS3R4arenJ/vm8kzSIZ4i04fHHPmK+X86g/olaK
- 7MiFcTZc0eNQ9AKJS6uKK+PvZk447OejG4fpzunonkdL3+waM2LSogdQjIBL8JHpfyZt
- +1cnvtjm1Axsev5eXNZAO0BdDX9iKUY5n7rGA6YQg1ChwB/sx/xPh89c5elbjEcRCIQP
- w4LQ==
-X-Gm-Message-State: AOAM5322dzcjr0YZv0870JLiF5qlUDtSnJYlHOWBM3zA8U0PJkeUmPWl
- neTbS6HnTbwBS1EDutJqu+lemTMsDRTon5m+FF0EHeqy1PPAIIgwJQ4SN2HUN5rLJ9/YIMIPD00
- /zqrOtjazFB4UaB+bIJx7hl6W4FlHFEpN+Q==
-X-Received: by 2002:a5d:43c4:: with SMTP id v4mr2526788wrr.426.1596627305788; 
- Wed, 05 Aug 2020 04:35:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxd8zrk3XL+M6scUs1DwtTce02e+SdUEmfrzO5R28SDB+n92FqioZgmMQUV+2TAz9P9uHNeYQ==
-X-Received: by 2002:a5d:43c4:: with SMTP id v4mr2526736wrr.426.1596627305447; 
- Wed, 05 Aug 2020 04:35:05 -0700 (PDT)
-Received: from pop-os ([2001:470:1f1d:1ea:4fde:6f63:1f5a:12b1])
- by smtp.gmail.com with ESMTPSA id z15sm2389331wrn.89.2020.08.05.04.35.03
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 05 Aug 2020 04:35:04 -0700 (PDT)
-Message-ID: <4cf2824c803c96496e846c5b06767db305e9fb5a.camel@redhat.com>
-Subject: Re: device compatibility interface for live migration with assigned
- devices
-From: Sean Mooney <smooney@redhat.com>
-To: Jiri Pirko <jiri@mellanox.com>, Yan Zhao <yan.y.zhao@intel.com>
-Date: Wed, 05 Aug 2020 12:35:01 +0100
-In-Reply-To: <20200805105319.GF2177@nanopsycho>
-References: <20200727072440.GA28676@joy-OptiPlex-7040>
- <20200727162321.7097070e@x1.home>
- <20200729080503.GB28676@joy-OptiPlex-7040>
- <20200804183503.39f56516.cohuck@redhat.com>
- <c178a0d3-269d-1620-22b1-9010f602d8ff@redhat.com>
- <20200805021654.GB30485@joy-OptiPlex-7040>
- <2624b12f-3788-7e2b-2cb7-93534960bcb7@redhat.com>
- <20200805075647.GB2177@nanopsycho>
- <eb1d01c2-fbad-36b6-10cf-9e03483a736b@redhat.com>
- <20200805093338.GC30485@joy-OptiPlex-7040>
- <20200805105319.GF2177@nanopsycho>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2
-Mime-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=smooney@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Wed,  5 Aug 2020 19:06:16 +0000 (UTC)
+Received: from prod-core-mta1.aws-us-east-1.evbops.com ([50.19.117.164])
+ by mail17.eventbrite.com (-); Wed, 05 Aug 2020 13:51:11 -0500
+X-VirtualServer: mail17, mail17.eventbrite.com, 172.18.102.106
+X-MailingID: 00000::00000::00000::00000::missive_service:386236568949:261676:44026766:06325635aa43593a::1508606_0_0
+X-SMHeaderMap: mid="X-MailingID"
+X-Destination-ID: intel-gvt-dev@lists.freedesktop.org
+X-SMFBL: aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc=
+X-VirtualServerGroup: mail17
+DKIM-Signature: v=1; a=rsa-sha256; c=simple; d=eventbrite.com;
+ s=eb9; i=@eventbrite.com; h=Content-Type:MIME-Version:Subject:
+ From:To:Reply-To:Date:Message-ID:x-campaignid:X-Eventbrite:
+ X-EventbriteMailer:List-Unsubscribe:X-MSYS-API; bh=A1Y9lzS/PfF8y
+ +ooMTKByRetLoiC3phugl9tNwsevhE=; b=Bd/lJxZWToDhnjoxTv7Qs2WRzrL6a
+ b+40PclnqyYhilmgFY+dmrynyV+WaA3aUaPwFE8zclyiS67eQr9NDYYFmOvow+yR
+ NamaWfsi4oAVgLF+JU/FEnAZNo20xdFmXEJMTytJP6EC1oEhm5zynXISqXvZ3RLS
+ NlTWm9530x+kMQ=
+Received: from prod-soa-svccpu78.aws-us-east-1.evbops.com
+ (prod-soa-svccpu78.aws-us-east-1.evbops.com [172.21.220.43])
+ by prod-core-mta1.aws-us-east-1.evbops.com (Postfix) with ESMTPSA id
+ D22F6177303 for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  5 Aug 2020 11:51:10 -0700 (PDT)
+Received: from 73ecda517774 (unknown [172.17.0.20])
+ by prod-soa-svccpu78.aws-us-east-1.evbops.com (Postfix) with ESMTP id
+ 35CE71C2264 for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  5 Aug 2020 11:51:05 -0700 (PDT)
+MIME-Version: 1.0
+Subject: You're invited to Projects Monitoring and Evaluation Training
+From: =?utf-8?q?CHIL_Institute?= <noreply@eventbrite.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Date: Wed, 05 Aug 2020 18:51:05 -0000
+Message-ID: <159665346519.129.11297812270181898898@73ecda517774>
+x-campaignid: consumer-lifecycle:campaign:invite
+X-Eventbrite: missive_service:386236568949:261676:44026766:06325635aa43593a
+X-EventbriteMailer: missive_service
+X-MSYS-API: {"metadata": {"email_class": "campaign", "item_id": 261676,
+ "organization_id": 386236568949, "service": "missive",
+ "campaign_type": "invite"}, "options": {"click_tracking": true,
+ "transactional": false, "open_tracking": true, "ip_pool": "campaign"},
+ "campaign_id": "consumer-lifecycle:campaign:invite"}
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,195 +66,575 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Cornelia Huck <cohuck@redhat.com>, kvm@vger.kernel.org,
- libvir-list@redhat.com, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, kwankhede@nvidia.com, eauger@redhat.com,
- xin-ran.wang@intel.com, eskultet@redhat.com,
- openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
- jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
- hejie.xu@intel.com, bao.yumeng@zte.com.cn,
- Alex Williamson <alex.williamson@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, berrange@redhat.com, corbet@lwn.net,
- dinechin@redhat.com, devel@ovirt.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: education@cimlimited.com
+Content-Type: multipart/mixed; boundary="===============2102164428=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gV2VkLCAyMDIwLTA4LTA1IGF0IDEyOjUzICswMjAwLCBKaXJpIFBpcmtvIHdyb3RlOgo+IFdl
-ZCwgQXVnIDA1LCAyMDIwIGF0IDExOjMzOjM4QU0gQ0VTVCwgeWFuLnkuemhhb0BpbnRlbC5jb20g
-d3JvdGU6Cj4gPiBPbiBXZWQsIEF1ZyAwNSwgMjAyMCBhdCAwNDowMjo0OFBNICswODAwLCBKYXNv
-biBXYW5nIHdyb3RlOgo+ID4gPiAKPiA+ID4gT24gMjAyMC84LzUg5LiL5Y2IMzo1NiwgSmlyaSBQ
-aXJrbyB3cm90ZToKPiA+ID4gPiBXZWQsIEF1ZyAwNSwgMjAyMCBhdCAwNDo0MTo1NEFNIENFU1Qs
-IGphc293YW5nQHJlZGhhdC5jb20gd3JvdGU6Cj4gPiA+ID4gPiBPbiAyMDIwLzgvNSDkuIrljYgx
-MDoxNiwgWWFuIFpoYW8gd3JvdGU6Cj4gPiA+ID4gPiA+IE9uIFdlZCwgQXVnIDA1LCAyMDIwIGF0
-IDEwOjIyOjE1QU0gKzA4MDAsIEphc29uIFdhbmcgd3JvdGU6Cj4gPiA+ID4gPiA+ID4gT24gMjAy
-MC84LzUg5LiK5Y2IMTI6MzUsIENvcm5lbGlhIEh1Y2sgd3JvdGU6Cj4gPiA+ID4gPiA+ID4gPiBb
-c29ycnkgYWJvdXQgbm90IGNoaW1pbmcgaW4gZWFybGllcl0KPiA+ID4gPiA+ID4gPiA+IAo+ID4g
-PiA+ID4gPiA+ID4gT24gV2VkLCAyOSBKdWwgMjAyMCAxNjowNTowMyArMDgwMAo+ID4gPiA+ID4g
-PiA+ID4gWWFuIFpoYW8gPHlhbi55LnpoYW9AaW50ZWwuY29tPiB3cm90ZToKPiA+ID4gPiA+ID4g
-PiA+IAo+ID4gPiA+ID4gPiA+ID4gPiBPbiBNb24sIEp1bCAyNywgMjAyMCBhdCAwNDoyMzoyMVBN
-IC0wNjAwLCBBbGV4IFdpbGxpYW1zb24gd3JvdGU6Cj4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+
-ID4gPiA+ICguLi4pCj4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gPiBCYXNlZCBv
-biB0aGUgZmVlZGJhY2sgd2UndmUgcmVjZWl2ZWQsIHRoZSBwcmV2aW91c2x5IHByb3Bvc2VkIGlu
-dGVyZmFjZQo+ID4gPiA+ID4gPiA+ID4gPiA+IGlzIG5vdCB2aWFibGUuICBJIHRoaW5rIHRoZXJl
-J3MgYWdyZWVtZW50IHRoYXQgdGhlIHVzZXIgbmVlZHMgdG8gYmUKPiA+ID4gPiA+ID4gPiA+ID4g
-PiBhYmxlIHRvIHBhcnNlIGFuZCBpbnRlcnByZXQgdGhlIHZlcnNpb24gaW5mb3JtYXRpb24uICBV
-c2luZyBqc29uIHNlZW1zCj4gPiA+ID4gPiA+ID4gPiA+ID4gdmlhYmxlLCBidXQgSSBkb24ndCBr
-bm93IGlmIGl0J3MgdGhlIGJlc3Qgb3B0aW9uLiAgSXMgdGhlcmUgYW55Cj4gPiA+ID4gPiA+ID4g
-PiA+ID4gcHJlY2VkZW50IG9mIG1hcmt1cCBzdHJpbmdzIHJldHVybmVkIHZpYSBzeXNmcyB3ZSBj
-b3VsZCBmb2xsb3c/Cj4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+IEkgZG9uJ3QgdGhp
-bmsgZW5jb2RpbmcgY29tcGxleCBpbmZvcm1hdGlvbiBpbiBhIHN5c2ZzIGZpbGUgaXMgYSB2aWFi
-bGUKPiA+ID4gPiA+ID4gPiA+IGFwcHJvYWNoLiBRdW90aW5nIERvY3VtZW50YXRpb24vZmlsZXN5
-c3RlbXMvc3lzZnMucnN0Ogo+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiAiQXR0cmli
-dXRlcyBzaG91bGQgYmUgQVNDSUkgdGV4dCBmaWxlcywgcHJlZmVyYWJseSB3aXRoIG9ubHkgb25l
-IHZhbHVlCj4gPiA+ID4gPiA+ID4gPiBwZXIgZmlsZS4gSXQgaXMgbm90ZWQgdGhhdCBpdCBtYXkg
-bm90IGJlIGVmZmljaWVudCB0byBjb250YWluIG9ubHkgb25lCj4gPiA+ID4gPiA+ID4gPiB2YWx1
-ZSBwZXIgZmlsZSwgc28gaXQgaXMgc29jaWFsbHkgYWNjZXB0YWJsZSB0byBleHByZXNzIGFuIGFy
-cmF5IG9mCj4gPiA+ID4gPiA+ID4gPiB2YWx1ZXMgb2YgdGhlIHNhbWUgdHlwZS4KPiA+ID4gPiA+
-ID4gPiA+IE1peGluZyB0eXBlcywgZXhwcmVzc2luZyBtdWx0aXBsZSBsaW5lcyBvZiBkYXRhLCBh
-bmQgZG9pbmcgZmFuY3kKPiA+ID4gPiA+ID4gPiA+IGZvcm1hdHRpbmcgb2YgZGF0YSBpcyBoZWF2
-aWx5IGZyb3duZWQgdXBvbi4iCj4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+IEV2ZW4g
-dGhvdWdoIHRoaXMgaXMgYW4gb2xkZXIgZmlsZSwgSSB0aGluayB0aGVzZSByZXN0cmljdGlvbnMg
-c3RpbGwKPiA+ID4gPiA+ID4gPiA+IGFwcGx5Lgo+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+
-ICsxLCB0aGF0J3MgYW5vdGhlciByZWFzb24gd2h5IGRldmxpbmsobmV0bGluaykgaXMgYmV0dGVy
-Lgo+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gaGkgSmFzb24sCj4gPiA+
-ID4gPiA+IGRvIHlvdSBoYXZlIGFueSBtYXRlcmlhbHMgb3Igc2FtcGxlIGNvZGUgYWJvdXQgZGV2
-bGluaywgc28gd2UgY2FuIGhhdmUgYSBnb29kCj4gPiA+ID4gPiA+IHN0dWR5IG9mIGl0Pwo+ID4g
-PiA+ID4gPiBJIGZvdW5kIHNvbWUga2VybmVsIGRvY3MgYWJvdXQgaXQgYnV0IG15IHByZWxpbWlu
-YXJ5IHN0dWR5IGRpZG4ndCBzaG93IG1lIHRoZQo+ID4gPiA+ID4gPiBhZHZhbnRhZ2Ugb2YgZGV2
-bGluay4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gQ0MgSmlyaSBhbmQgUGFyYXYgZm9yIGEgYmV0dGVy
-IGFuc3dlciBmb3IgdGhpcy4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gTXkgdW5kZXJzdGFuZGluZyBp
-cyB0aGF0IHRoZSBmb2xsb3dpbmcgYWR2YW50YWdlcyBhcmUgb2J2aW91cyAoYXMgSSByZXBsaWVk
-Cj4gPiA+ID4gPiBpbiBhbm90aGVyIHRocmVhZCk6Cj4gPiA+ID4gPiAKPiA+ID4gPiA+IC0gZXhp
-c3RpbmcgdXNlcnMgKE5JQywgY3J5cHRvLCBTQ1NJLCBpYiksIG1hdHVyZSBhbmQgc3RhYmxlCj4g
-PiA+ID4gPiAtIG11Y2ggYmV0dGVyIGVycm9yIHJlcG9ydGluZyAoZXh0X2FjayBvdGhlciB0aGFu
-IHN0cmluZyBvciBlcnJubykKPiA+ID4gPiA+IC0gbmFtZXNwYWNlIGF3YXJlCj4gPiA+ID4gPiAt
-IGRvIG5vdCBjb3VwbGUgd2l0aCBrb2JqZWN0Cj4gPiA+ID4gCj4gPiA+ID4gSmFzb24sIHdoYXQg
-aXMgeW91ciB1c2UgY2FzZT8KPiA+ID4gCj4gPiA+IAo+ID4gPiBJIHRoaW5rIHRoZSB1c2UgY2Fz
-ZSBpcyB0byByZXBvcnQgZGV2aWNlIGNvbXBhdGliaWxpdHkgZm9yIGxpdmUgbWlncmF0aW9uLgo+
-ID4gPiBZYW4gcHJvcG9zZWQgYSBzaW1wbGUgc3lzZnMgYmFzZWQgbWlncmF0aW9uIHZlcnNpb24g
-Zmlyc3QsIGJ1dCBpdCBsb29rcyBub3QKPiA+ID4gc3VmZmljaWVudCBhbmQgc29tZXRoaW5nIGJh
-c2VkIG9uIEpTT04gaXMgZGlzY3Vzc2VkLgo+ID4gPiAKPiA+ID4gWWFuLCBjYW4geW91IGhlbHAg
-dG8gc3VtbWFyaXplIHRoZSBkaXNjdXNzaW9uIHNvIGZhciBmb3IgSmlyaSBhcyBhCj4gPiA+IHJl
-ZmVyZW5jZT8KPiA+ID4gCj4gPiAKPiA+IHllcy4KPiA+IHdlIGFyZSBjdXJyZW50bHkgZGVmaW5p
-bmcgYW4gZGV2aWNlIGxpdmUgbWlncmF0aW9uIGNvbXBhdGliaWxpdHkKPiA+IGludGVyZmFjZSBp
-biBvcmRlciB0byBsZXQgdXNlciBzcGFjZSBsaWtlIG9wZW5zdGFjayBhbmQgbGlidmlydCBrbm93
-cwo+ID4gd2hpY2ggdHdvIGRldmljZXMgYXJlIGxpdmUgbWlncmF0aW9uIGNvbXBhdGlibGUuCj4g
-PiBjdXJyZW50bHkgdGhlIGRldmljZXMgaW5jbHVkZSBtZGV2IChhIGtlcm5lbCBlbXVsYXRlZCB2
-aXJ0dWFsIGRldmljZSkKPiA+IGFuZCBwaHlzaWNhbCBkZXZpY2VzIChlLmcuICBhIFZGIG9mIGEg
-UENJIFNSSU9WIGRldmljZSkuCj4gPiAKPiA+IHRoZSBhdHRyaWJ1dGVzIHdlIHdhbnQgdXNlciBz
-cGFjZSB0byBjb21wYXJlIGluY2x1ZGluZwo+ID4gY29tbW9uIGF0dHJpYnVlczoKPiA+ICAgIGRl
-dmljZV9hcGk6IHZmaW8tcGNpLCB2ZmlvLWNjdy4uLgo+ID4gICAgbWRldl90eXBlOiBtZGV2IHR5
-cGUgb2YgbWRldiBvciBzaW1pbGFyIHNpZ25hdHVyZSBmb3IgcGh5c2ljYWwgZGV2aWNlCj4gPiAg
-ICAgICAgICAgICAgIEl0IHNwZWNpZmllcyBhIGRldmljZSdzIGhhcmR3YXJlIGNhcGFiaWxpdHku
-IGUuZy4KPiA+IAkgICAgICAgaTkxNS1HVlRnX1Y1XzQgbWVhbnMgaXQncyBvZiAxLzQgb2YgYSBn
-ZW45IEludGVsIGdyYXBoaWNzCj4gPiAJICAgICAgIGRldmljZS4KYnkgdGhlIHdheSB0aGlzIG5h
-bWVpbmcgc2NlYW0gd29ya3MgdGhlIG9waXNpdGUgb2YgaG93IGl0IHdvdWxkIGhhdmUgZXhwZWN0
-ZWQKaSB3b3VkbCBoYXZlIGV4cGVjdGVkIHRvIGk5MTUtR1ZUZ19WNSB0byBiZSB0aGUgc2FtZSBh
-cyBpOTE1LUdWVGdfVjVfMSBhbmQgCmk5MTUtR1ZUZ19WNV80IHRvIHVzZSA0IHRpbWVzIHRoZSBh
-bW91bnQgb2YgcmVzb3VjZSBhcyBpOTE1LUdWVGdfVjVfMSBub3QgMSBxdWFydGVyLgoKaSB3b3Vs
-ZCBtdWNoIHJhdGhlciBzZWUgaTkxNS1HVlRnX1Y1XzQgZXhwcmVzcyBhcyBhZ2dyZWF0YW9yOmk5
-MTUtR1ZUZ19WNT00CmUuZy4gdGhhdCBpdCBpcyA0IG9mIHRoZSBiYXNpYyBpOTE1LUdWVGdfVjUg
-dHlwZQp0aGUgaW52ZXJ0aW9uIG9mIHRoZSByZWxhdGlvbnNoaXAgbWFrZXMgdGhpcyBtdWNoIGhh
-cmRlciB0byByZXNvbmFib3V0IElNTy4KCmlmIGk5MTUtR1ZUZ19WNV84IGFuZCBpOTE1LUdWVGdf
-VjVfNCBhcmUgYm90aCBhY3R1bGx5IGNsYWltaW5nIHRoZSBzYW1lIHJlc291Y2UKYW5kIGJvdGgg
-Y2FuIGJlIHVzZWQgYXQgdGhlIHNhbWUgdGltZSB3aXRoIHlvdXIgc3VnZ2VzdGVkIG5hbWVpbmcg
-c2NlbWVtIGkgaGF2ZSBoYXZlCnRvIGZpbmUgdGhlIG1kZXZ0eXBlIHdpdGggdGhlIGxhcmdlc3Qg
-dmFsdWUgYW5kIHN0b3JlIHRoYXQgdGhlbiBkbyBtYXRoIGJ5IGRldmlkaWduIGl0IGJ5IHRoZSBz
-dWZmaXgKb2YgdGhlIHJlcXVlc3RlZCB0eXBlIGV2ZXJ5IHRpbWUgaSB3YW50IHRvIGNsYWltIHRo
-ZSByZXNvdWNlIGluIG91ciBwbGFjZW1lbnQgaW52ZW50b2llcy4KCmlmIHdlIHJlcHJlc2VudCBp
-dCB0aGUgd2F5IGkgc3VnZ2VzdCB3ZSBkb250CmlmIGl0IGk5MTUtR1ZUZ19WNV84IGkga25vdyBp
-dHMgdXNpbmcgOCBvZiBpOTE1LUdWVGdfVjUKaXQgbWFrZXMgaXQgc2lnbmlmaWNhbnRseSBzaW1w
-bGVyLgoKPiA+ICAgIHNvZnR3YXJlX3ZlcnNpb246IGRldmljZSBkcml2ZXIncyB2ZXJzaW9uLgo+
-ID4gICAgICAgICAgICAgICBpbiA8bWFqb3I+LjxtaW5vcj5bLmJ1Z2ZpeF0gc2NoZW1lLCB3aGVy
-ZSB0aGVyZSBpcyBubwo+ID4gCSAgICAgICBjb21wYXRpYmlsaXR5IGFjcm9zcyBtYWpvciB2ZXJz
-aW9ucywgbWlub3IgdmVyc2lvbnMgaGF2ZQo+ID4gCSAgICAgICBmb3J3YXJkIGNvbXBhdGliaWxp
-dHkgKGV4LiAxLT4gMiBpcyBvaywgMiAtPiAxIGlzIG5vdCkgYW5kCj4gPiAJICAgICAgIGJ1Z2Zp
-eCB2ZXJzaW9uIG51bWJlciBpbmRpY2F0ZXMgc29tZSBkZWdyZWUgb2YgaW50ZXJuYWwKPiA+IAkg
-ICAgICAgaW1wcm92ZW1lbnQgdGhhdCBpcyBub3QgdmlzaWJsZSB0byB0aGUgdXNlciBpbiB0ZXJt
-cyBvZgo+ID4gCSAgICAgICBmZWF0dXJlcyBvciBjb21wYXRpYmlsaXR5LAo+ID4gCj4gPiB2ZW5k
-b3Igc3BlY2lmaWMgYXR0cmlidXRlczogZWFjaCB2ZW5kb3IgbWF5IGRlZmluZSBkaWZmZXJlbnQg
-YXR0cmlidXRlcwo+ID4gICBkZXZpY2UgaWQgOiBkZXZpY2UgaWQgb2YgYSBwaHlzaWNhbCBkZXZp
-Y2VzIG9yIG1kZXYncyBwYXJlbnQgcGNpIGRldmljZS4KPiA+ICAgICAgICAgICAgICAgaXQgY291
-bGQgYmUgZXF1YWwgdG8gcGNpIGlkIGZvciBwY2kgZGV2aWNlcwo+ID4gICBhZ2dyZWdhdG9yOiB1
-c2VkIHRvZ2V0aGVyIHdpdGggbWRldl90eXBlLiBlLmcuIGFnZ3JlZ2F0b3I9MiB0b2dldGhlcgo+
-ID4gICAgICAgICAgICAgICB3aXRoIGk5MTUtR1ZUZ19WNV80IG1lYW5zIDIqMS80PTEvMiBvZiBh
-IGdlbjkgSW50ZWwKPiA+IAkgICAgICAgZ3JhcGhpY3MgZGV2aWNlLgo+ID4gICByZW1vdGVfdXJs
-OiBmb3IgYSBsb2NhbCBOVk1lIFZGLCBpdCBtYXkgYmUgY29uZmlndXJlZCB3aXRoIGEgcmVtb3Rl
-Cj4gPiAgICAgICAgICAgICAgIHVybCBvZiBhIHJlbW90ZSBzdG9yYWdlIGFuZCBhbGwgZGF0YSBp
-cyBzdG9yZWQgaW4gdGhlCj4gPiAJICAgICAgIHJlbW90ZSBzaWRlIHNwZWNpZmllZCBieSB0aGUg
-cmVtb3RlIHVybC4KPiA+ICAgLi4uCmp1c3QgYSBtaW5vciBub3QgdGhhdCBpIGZpbmQgXiBtdWNo
-IG1vcmUgc2ltbXBsZSB0byB1bmRlcnN0YW5kIHRoZW4KdGhlIGN1cnJlbnQgcHJvcG9zYWwgd2l0
-aCBzZWxmIGFuZCBjb21wYXRpYWJsZS4KaWYgaSBoYXZlIHdlbGwgZGVmaWVuZCBhdHRpYnV0ZSB0
-aGF0IGkgY2FuIHBhcnNlIGFuZCB1bmRlcnN0YW5kIHRoYXQgYWxsb3cKbWUgdG8gY2FsdWxhdGUg
-dGhlIHdoYXQgaXMgYW5kIGlzIG5vdCBjb21wYXRpYmxlIHRoYXQgaXMgbGlrZWx5IGdvaW5nIHRv
-Cm1vcmUgdXNlZnVsIGFzIHlvdSB3b250IGhhdmUgdG8ga2VlcCBtYWludGlhbmluZyBhIGxpc3Qg
-b2Ygb3RoZXIgY29tcGF0aWJsZQpkZXZpY2VzIGV2ZXJ5IHRpbWUgYSBuZXcgc2t1IGlzIHJlbGVh
-c2VkLgoKaW4gYW55Y2FzZSB0aGFuayBmb3IgYWN0dWxseSBzaGFyZWluZyBeIGFzIGl0IG1ha2Ug
-aXQgc2ltcGxlciB0byByZXNvbiBhYm91dCB3aGF0CnlvdSBoYXZlIHByZXZpb3VzbHkgcHJvcG9z
-ZWQuCj4gPiAKPiA+IENvbXBhcmluZyB0aG9zZSBhdHRyaWJ1dGVzIGJ5IHVzZXIgc3BhY2UgYWxv
-bmUgaXMgbm90IGFuIGVhc3kgam9iLCBhcyBpdAo+ID4gY2FuJ3Qgc2ltcGx5IGFzc3VtZSBhbiBl
-cXVhbCByZWxhdGlvbnNoaXAgYmV0d2VlbiBzb3VyY2UgYXR0cmlidXRlcyBhbmQKPiA+IHRhcmdl
-dCBhdHRyaWJ1dGVzLiBlLmcuCj4gPiBmb3IgYSBzb3VyY2UgZGV2aWNlIG9mIG1kZXZfdHlwZT1p
-OTE1LUdWVGdfVjVfNCxhZ2dyZWdhdG9yPTIsICgxLzIgb2YKPiA+IGdlbjkpLCBpdCBhY3R1YWxs
-eSBjb3VsZCBmaW5kIGEgY29tcGF0aWJsZSBkZXZpY2Ugb2YKPiA+IG1kZXZfdHlwZT1pOTE1LUdW
-VGdfVjVfOCxhZ2dyZWdhdG9yPTQgKGFsc28gMS8yIG9mIGdlbjkpLAo+ID4gaWYgbWRldl90eXBl
-IG9mIGk5MTUtR1ZUZ19WNV80IGlzIG5vdCBhdmFpbGFibGUgaW4gdGhlIHRhcmdldCBtYWNoaW5l
-Lgo+ID4gCj4gPiBTbywgaW4gb3VyIGN1cnJlbnQgcHJvcG9zYWwsIHdlIHdhbnQgdG8gY3JlYXRl
-IHR3byBzeXNmcyBhdHRyaWJ1dGVzCj4gPiB1bmRlciBhIGRldmljZSBzeXNmcyBub2RlLgo+ID4g
-L3N5cy88cGF0aCB0byBkZXZpY2U+L21pZ3JhdGlvbi9zZWxmCj4gPiAvc3lzLzxwYXRoIHRvIGRl
-dmljZT4vbWlncmF0aW9uL2NvbXBhdGlibGUKPiA+IAo+ID4gI2NhdCAvc3lzLzxwYXRoIHRvIGRl
-dmljZT4vbWlncmF0aW9uL3NlbGYKPiA+IGRldmljZV90eXBlPXZmaW9fcGNpCj4gPiBtZGV2X3R5
-cGU9aTkxNS1HVlRnX1Y1XzQKPiA+IGRldmljZV9pZD04MDg2NTkxZAo+ID4gYWdncmVnYXRvcj0y
-Cj4gPiBzb2Z0d2FyZV92ZXJzaW9uPTEuMC4wCj4gPiAKPiA+ICNjYXQgL3N5cy88cGF0aCB0byBk
-ZXZpY2U+L21pZ3JhdGlvbi9jb21wYXRpYmxlCj4gPiBkZXZpY2VfdHlwZT12ZmlvX3BjaQo+ID4g
-bWRldl90eXBlPWk5MTUtR1ZUZ19WNV97dmFsMTppbnQ6Miw0LDh9Cj4gPiBkZXZpY2VfaWQ9ODA4
-NjU5MWQKPiA+IGFnZ3JlZ2F0b3I9e3ZhbDF9LzIKPiA+IHNvZnR3YXJlX3ZlcnNpb249MS4wLjAK
-PiA+IAo+ID4gVGhlIC9zeXMvPHBhdGggdG8gZGV2aWNlPi9taWdyYXRpb24vc2VsZiBzcGVjaWZp
-ZXMgc2VsZiBhdHRyaWJ1dGVzIG9mCj4gPiBhIGRldmljZS4KPiA+IFRoZSAvc3lzLzxwYXRoIHRv
-IGRldmljZT4vbWlncmF0aW9uL2NvbXBhdGlibGUgc3BlY2lmaWVzIHRoZSBsaXN0IG9mCj4gPiBj
-b21wYXRpYmxlIGRldmljZXMgb2YgYSBkZXZpY2UuIGFzIGluIHRoZSBleGFtcGxlLCBjb21wYXRp
-YmxlIGRldmljZXMKPiA+IGNvdWxkIGhhdmUKPiA+IAlkZXZpY2VfdHlwZSA9PSB2ZmlvX3BjaSAm
-Jgo+ID4gCWRldmljZV9pZCA9PSA4MDg2NTkxZCAgICYmCj4gPiAJc29mdHdhcmVfdmVyc2lvbiA9
-PSAxLjAuMCAmJgo+ID4gICAgICAgICgKPiA+IAkobWRldl90eXBlIG9mIGk5MTUtR1ZUZ19WNV8y
-ICYmIGFnZ3JlZ2F0b3I9PTEpIHx8Cj4gPiAJKG1kZXZfdHlwZSBvZiBpOTE1LUdWVGdfVjVfNCAm
-JiBhZ2dyZWdhdG9yPT0yKSB8fAo+ID4gCShtZGV2X3R5cGUgb2YgaTkxNS1HVlRnX1Y1XzggJiYg
-YWdncmVnYXRvcj00KQo+ID4gCSkKPiA+IAo+ID4gYnkgY29tcGFyaW5nIHdoZXRoZXIgYSB0YXJn
-ZXQgZGV2aWNlIGlzIGluIGNvbXBhdGlibGUgbGlzdCBvZiBzb3VyY2UKPiA+IGRldmljZSwgdGhl
-IHVzZXIgc3BhY2UgY2FuIGtub3cgd2hldGhlciBhIHR3byBkZXZpY2VzIGFyZSBsaXZlIG1pZ3Jh
-dGlvbgo+ID4gY29tcGF0aWJsZS4KPiA+IAo+ID4gQWRkaXRpb25hbCBub3RlczoKPiA+IDEpc29m
-dHdhcmVfdmVyc2lvbiBpbiB0aGUgY29tcGF0aWJsZSBsaXN0IG1heSBub3QgYmUgbmVjZXNzYXJ5
-IGFzIGl0Cj4gPiBhbHJlYWR5IGhhcyBhIG1ham9yLm1pbm9yLmJ1Z2ZpeCBzY2hlbWUuCj4gPiAy
-KWZvciB2ZW5kb3IgYXR0cmlidXRlIGxpa2UgcmVtb3RlX3VybCwgaXQgbWF5IG5vdCBiZSBzdGF0
-aWNhbGx5Cj4gPiBhc3NpZ25lZCBhbmQgY291bGQgYmUgY2hhbmdlZCB3aXRoIGEgZGV2aWNlIGlu
-dGVyZmFjZS4KPiA+IAo+ID4gU28sIGFzIENvcm5lbGlhIHBvaW50ZWQgdGhhdCBpdCdzIG5vdCBn
-b29kIHRvIHVzZSBjb21wbGV4IGZvcm1hdCBpbgo+ID4gYSBzeXNmcyBhdHRyaWJ1dGUsIHdlJ2Qg
-bGlrZSB0byBrbm93IHdoZXRoZXIgdGhlcmUncmUgb3RoZXIgZ29vZCB3YXlzIHRvCj4gPiBvdXIg
-dXNlIGNhc2UsIGUuZy4gc3BsaXR0aW5nIGEgc2luZ2xlIGF0dHJpYnV0ZSB0byBtdWx0aXBsZSBz
-aW1wbGUgc3lzZnMKPiA+IGF0dHJpYnV0ZXMgYXMgd2hhdCBDb3JuZWxpYSBzdWdnZXN0ZWQgb3Ig
-ZGV2bGluayB0aGF0IEphc29uIGhhcyBzdHJvbmdseQo+ID4gcmVjb21tZW5kZWQuCj4gCj4gSGkg
-WWFuLgo+IAo+IFRoYW5rcyBmb3IgdGhlIGV4cGxhbmF0aW9uLCBJJ20gc3RpbGwgZnV6enkgYWJv
-dXQgdGhlIGRldGFpbHMuCj4gQW55d2F5LCBJIHN1Z2dlc3QgeW91IHRvIGNoZWNrICJkZXZsaW5r
-IGRldiBpbmZvIiBjb21tYW5kIHdlIGhhdmUKPiBpbXBsZW1lbnRlZCBmb3IgbXVsdGlwbGUgZHJp
-dmVycy4KCmlzIGRldmxpbmsgZXhwb3NlZCBhcyBhIGZpbGVzeXRlbSB3ZSBjYW4gcmVhZCB3aXRo
-IGp1c3Qgb3Blbj8Kb3BlbnN0YWNrIHdpbGwgbGlrZWx5IHRyeSB0byBsZXZlcmFnZSBsaWJ2aXJ0
-IHRvIGdldCB0aGlzIGluZm8gYnV0IHdoZW4gd2UKY2FudCBpdHMgbXVjaCBzaW1wbGVyIHRvIHJl
-YWQgc3lzZnMgdGhlbiBpdCBpcyB0byB0YWtlIGEgYSBkZXBlbmVuY3kgb24gYSBjb21tYW5kbGlu
-ZQp0b28gYW5kIGhhdmUgdG8gZm9yayBzaGVsbCB0byBleGVjdXRlIGl0IGFuZCBwYXJzZSB0aGUg
-Y2xpIG91dHB1dC4KcHlyb3V0ZTIgd2hpY2ggd2UgdXNlIGluIHNvbWUgb3BlbnN0YWNrIHBvamVj
-dCBoYXMgYmFzaWMgcHl0aG9uIGJpbmRpbmcgZm9yIGRldmxpbmsgYnV0IGltIG5vdApzdXJlIGhv
-dyBjb21wbGV0ZSBpdCBpcyBhcyBpIHRoaW5rIGl0cyByZWxpdGl2bHkgbmV3IGFkZHRpb24uIGlm
-IHdlIG5lZWQgdG8gdGFrZSBhIGRlcGVuZGN5CndlIHdpbGwgYnV0IHRoYXQgd291bGQgYmUgYSBk
-cmF3YmFjayBmbyBkZXZsaW5rIG5vdCB0aGF0IHRoYXQgaXMgYSBsYXJnZSBvbmUganVzdCBzb21l
-dGhpbmcKdG8ga2VlcCBpbiBtaW5kLgoKPiAgWW91IGNhbiB0cnkgbmV0ZGV2c2ltIHRvIHRlc3Qg
-dGhpcy4KPiBJIHRoaW5rIHRoYXQgdGhlIGluZm8geW91IG5lZWQgdG8gZXhwb3NlIG1pZ2h0IGJl
-IHB1dCB0aGVyZS4KPiAKPiBEZXZsaW5rIGNyZWF0ZXMgaW5zdGFuY2UgcGVyLWRldmljZS4gU3Bl
-Y2lmaWMgZGV2aWNlIGRyaXZlciBjYWxscyBpbnRvCj4gZGV2bGluayBjb3JlIHRvIGNyZWF0ZSB0
-aGUgaW5zdGFuY2UuICBXaGF0IGRldmljZSBkbyB5b3UgaGF2ZT8gV2hhdAo+IGRyaXZlciBpcyBp
-dCBoYW5kbGVkIGJ5Pwo+IAo+IAo+ID4gCj4gPiBUaGFua3MKPiA+IFlhbgo+ID4gCj4gPiAKPiA+
-IAo+IAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-aW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRl
-bC1ndnQtZGV2Cg==
+--===============2102164428==
+Content-Type: multipart/alternative;
+ boundary="===============2502755929035411843=="
+
+--===============2502755929035411843==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Projects Monitoring and EvaluationDubai31 Aug - 04 Sept, 2020
+
+
+
+Featured Events:
+
+Projects Monitoring and Evaluation | Grand Millennium Dubai | 2020-08-31T05:00:00Z
+https://www.eventbrite.com
+
+
+
+
+
+
+Unsubscribe: https://www.eventbrite.ca/organizations/missive/activity/unsubscribe/?p=ABIdvVvGMmQ0OMhw3B46tui7NNC-mXA2kcNY5Xl-8NlFg6kA-hg_zYv9HKLce4mgcoZPg3A4vFgXkhpi8syLdvkfEaCCrcLKuP117gQJU0iBeyLIYhGhK5tUHrX44z4D4LWMh9Z0uQqhOwnD3fmJnIXK6v1wHfszP9GbDHmkfJo-pW6pj1EqNDwCOnjC5kdM06tEOJelwlZ79p7Nvb3tYzFdfvNhVe0-vzq3Y39iVzbum9V07hyqI5MRzbyMEvs-DW-pMmLhLLYGflXZdnJyzS0TdIUiaukx8Q&amp;co=44026766&amp;c=261676
+
+
+--===============2502755929035411843==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3.=
+org/1999/xhtml"><head><title>VARS: subject (REPLACE W SUBJECT)</title> <!--=
+[if !mso]><!-- --><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge=
+"> <!--<![endif]--><meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3DUTF-8"><meta name=3D"viewport" content=3D"width=3Ddevice-width, i=
+nitial-scale=3D1"><style type=3D"text/css">/*<![CDATA[*/#outlook a{padding:=
+0}.ReadMsgBody{width:100%}.ExternalClass{width:100%}.ExternalClass, .Extern=
+alClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .Ex=
+ternalClass div{line-height:100%}body,table,td,p,a,li,blockquote{-webkit-te=
+xt-size-adjust:100%;-ms-text-size-adjust:100%}table,td{mso-table-lspace:0pt=
+;mso-table-rspace:0pt}img{-ms-interpolation-mode:bicubic}body{margin:0;padd=
+ing:0}img{border:0;height:auto;line-height:100%;outline:none;text-decoratio=
+n:none}table,td{border-collapse:collapse !important}body,#bodyTable,#bodyCe=
+ll{height:100% !important;margin:0;padding:0;width:100% !important}p{displa=
+y:block}body,#bodyTable,#bodyCell{font-family:'Neue Plak',-apple-system,Bli=
+nkMacSystemFont,Roboto,'Helvetica Neue',Helvetica,Tahoma,Arial,sans-serif}#=
+templateContainer{width:90%}#bodyCell{padding:56px 0}#templateContainer{bor=
+der-radius:2px;background-color:#000000}#templateBody{background-color:#000=
+000;border-radius:2px}#templateBodyContent{padding:0}#bodyContent{padding:0=
+}.bodyContent{color:#F8F7FA;font-size:15px;line-height:1.4}.bodyContent a:l=
+ink, .bodyContent a:visited, .bodyContent a .yshortcuts{color:#F8F7FA;font-=
+weight:normal;text-decoration:none}.bodyContent img{display:inline;max-widt=
+h:560px}.img-hide-download-icon img+div{display:none}#body-message a, #body=
+-message a:visited, #body-message a:enabled{color:#F8F7FA!important}#body-m=
+essage ol, #body-message ul{list-style-position:inside}#organizer_address a=
+, #organizer_address a:visited, #organizer_address a:enabled{text-decoratio=
+n:none !important;color:#F8F7FA!important}h1{font-size:35px;letter-spacing:=
+0.36px;line-height:47px;text-align:center}.events--default-row{display:flex=
+}@media only screen and (max-width: 600px){body,table,td,p,a,li,blockquote{=
+-webkit-text-size-adjust:none !important}body{width:100% !important;min-wid=
+th:100% !important}#bodyCell{padding:0 !important}#templateBodyContent{padd=
+ing:0 !important}#templateContainer{max-width:600px !important;width:100% !=
+important}h1{font-size:24px !important;line-height:100% !important}h2{font-=
+size:20px !important;line-height:100% !important}h3{font-size:18px !importa=
+nt;line-height:100% !important}h4{font-size:16px !important;line-height:100=
+% !important}.bodyContent{font-size:18px !important;line-height:125% !impor=
+tant}.event--default-wrapper{width:560px}.events--default-column{display:fl=
+ex;width:100%}.events--default-row{display:block}.featured-events-mobile{te=
+xt-align:left !important;margin:0 !important}.rsvp-button-featured{display:=
+table-cell;text-align:end;float:right}.event-name-featured{display:table-ce=
+ll;padding-right:0.5em}}@media only screen and (min-width: 601px){.body{pad=
+ding:20px 0}#bodyContent{background-color:#000000}.event--default-wrapper{m=
+ax-width:50%}.events--default-column{max-width:260px}.events--default-colum=
+n.event--left{margin-right:20px}.events--default-column.event--right{margin=
+-left:20px}.featured-events-mobile{text-align:left !important;margin:0 !imp=
+ortant}.rsvp-button-featured{display:table-cell;float:right}.event-name-fea=
+tured{display:table-cell;padding-right:0.5em}}@media only screen and (min-w=
+idth:481px){.mj-column-per-100{width:100% !important}.mj-column-per-33{widt=
+h:33% !important}.mj-column-per-62{width:62% !important}.mj-column-per-30{w=
+idth:30% !important}.mj-column-px-30{width:30px !important}.mj-column-per-4=
+3{width:43% !important}.mj-column-per-57{width:57% !important;margin-top:0 =
+!important}.featured-events-mobile{text-align:left !important;margin:0 !imp=
+ortant}.name-button-featured{width:100%;display:inline-table}.event-name-fe=
+atured{float:left;width:70%;padding-right:0.5em}}@media all and (min-width:=
+0px) and (max-width:480px){.mj-image-px-164{width:auto !important;height:au=
+to !important}.featured-events-mobile{text-align:center !important;margin:0=
+ auto !important}.featured-events-image{padding:0 !important;width:100% !im=
+portant}.name-button-featured{display:inline-block;text-align:start}.rsvp-b=
+utton-featured{margin-bottom:12px;margin-top:12px;display:block;float:left}=
+}/*]]>*/</style> <!--[if mso]><style type=3D"text/css">@media only screen a=
+nd (max-width:480px){@-ms-viewport{width:320px}@viewport{width:320px}}</sty=
+le><![endif]--> <!--[if gte mso 9]><xml> <o:OfficeDocumentSettings> <o:Allo=
+wPNG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </=
+xml><![endif]--><!--[if lte mso 11]><style type=3D"text/css">.outlook-group=
+-fix{width:100% !important}</style><![endif]--></head><body leftmargin=3D"0=
+" marginwidth=3D"0" topmargin=3D"0" marginheight=3D"0" offset=3D"0" style=
+=3D"background-color: #FFFFFF;"><div style=3D"display: none; max-height: 0p=
+x; overflow: hidden;"> Projects Monitoring and EvaluationDubai31 Aug - 04 S=
+ept, 2020</div><div style=3D"display: none; max-height: 0px; overflow: hidd=
+en;"> &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;</div><center><table align=3D"center" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" height=3D"100%" width=3D"100%" id=3D"bodyTabl=
+e" style=3D"font-family:'Neue Plak',-apple-system,BlinkMacSystemFont,Roboto=
+,'Helvetica Neue',Helvetica,Tahoma,Arial,sans-serif;"><tr><td align=3D"cent=
+er" valign=3D"top" id=3D"bodyCell"><table border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" id=3D"templateContainer" style=3D"background-color:#000000;=
+max-width:800px;"> <tr><td align=3D"center" valign=3D"top"><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" id=3D"templateBody">=
+<tr><td valign=3D"top" class=3D"bodyContent" id=3D"bodyContent"><div class=
+=3D"body" style=3D"background-color:#000000;" id=3D"templateBodyContent"><!=
+-- [if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" style=3D"width:600px;" width=3D"600"><tr><td style=3D"line-h=
+eight:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div sty=
+le=3D"background:#000000;background-color:#000000;display:block; margin:0px=
+ auto; max-width:600px;"><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"background:#000000;=
+background-color:#000000;width:100%;"><tbody><tr><td style=3D"direction:ltr=
+;font-size:0px;padding:36px 18px;text-align:center;vertical-align:top;"> <!=
+-- [if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0"> <![endif]--> <!-- [if mso | IE]><tr><td class=3D"body-=
+message-outlook" width=3D"600px"><table align=3D"center" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" class=3D"body-message-outlook" style=3D"widt=
+h:600px;" width=3D"600px"><tr><td style=3D"line-height:0px;font-size:0px;ms=
+o-line-height-rule:exactly;"><![endif]--><div class=3D"body-message" style=
+=3D"margin:0px auto;max-width:600px;"><table align=3D"center" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"margin: =
+0; width: 100%;" width=3D"100%"><tbody style=3D"margin: 0;"><tr style=3D"ma=
+rgin: 0;"><td style=3D"margin: 0; direction: ltr; font-size: 0px; padding: =
+0; text-align: center; vertical-align: top;" align=3D"center" valign=3D"top=
+"> <!-- [if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td style=3D"vertical-align:top;width:560px;">=
+<![endif]--><div class=3D"mj-column-per-100 outlook-group-fix" style=3D"mar=
+gin: 0; font-size: 13px; text-align: left; direction: ltr; display: inline-=
+block; vertical-align: top; width: 100%;"><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=3D"marg=
+in: 0;"><tbody style=3D"margin: 0;"><tr style=3D"margin: 0;"><td style=3D"m=
+argin: 0; vertical-align: top; padding: 0;" valign=3D"top"><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%=
+" style=3D"margin: 0;"><tr style=3D"margin: 0;"><td class=3D"body-message-t=
+ext" style=3D"margin: 0; font-size: 0px; padding: 0x; word-break: break-wor=
+d;"><div id=3D"body-message" style=3D"margin: 0; font-size: 15px; line-heig=
+ht: 1.4; color: #F8F7FA;"><p><div style=3D"text-align:center"><h1>Projects =
+Monitoring and Evaluation</h1><h1>Dubai</h1><h1>31 Aug - 04 Sept, 2020</h1>=
+</div></p></div></td></tr></table></td></tr></tbody></table></div> <!-- [if=
+ mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div> <=
+!-- [if mso | IE]></td></tr></table></td></tr><![endif]--> <!-- [if mso | I=
+E]><tr><td class=3D"component-outlook spacer-outlook" width=3D"600px"><tabl=
+e align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"component-outlook spacer-outlook" style=3D"width:560px;" width=3D"560">=
+<tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly=
+;"><![endif]--><div class=3D"component spacer" style=3D"Margin: 0px auto; m=
+ax-width: 560px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td =
+style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;vertical-a=
+lign:top;"> <!-- [if mso | IE]><table role=3D"presentation" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0"><tr><td style=3D"vertical-align:top;width=
+:560px;"><![endif]--><div class=3D"mj-column-per-100 outlook-group-fix" sty=
+le=3D"font-size:13px;text-align:left;direction:ltr;display:inline-block;ver=
+tical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vert=
+ical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" width=3D"100%"><tr><td style=3D"font-size:0px=
+;padding:0;word-break:break-word;"> <!-- [if mso | IE]><table role=3D"prese=
+ntation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td height=3D=
+"40" style=3D"vertical-align:top;height:40px;"><![endif]--><div style=3D"he=
+ight:40px;"> &nbsp;</div> <!-- [if mso | IE]></td></tr></table><![endif]-->=
+</td></tr></table></td></tr></tbody></table></div> <!-- [if mso | IE]></td>=
+</tr></table><![endif]--></td></tr></tbody></table></div> <!-- [if mso | IE=
+]></td></tr></table></td></tr><![endif]--> <div class=3D"events--featured" =
+style=3D"margin: 0 auto;max-width: 560px;"> <div style=3D"margin-bottom: 40=
+px;"><div class=3D"event--featured" style=3D"background: #39364F;;max-width=
+: 560px;width:100%;box-shadow: 0 16px 64px -16px rgba(46,55,77,0.1); border=
+: solid 1px #4B4D63;;"> <a href=3D"https://www.eventbrite.com/organizations=
+/missive/activity/redirect/?p=3DABIdvVtmnsUj-s5BeQY-a136GWWsFaB9YCbpVpsT42q=
+qx1ePR8dXG_Pm1MphKtu6PJ4od07zuNFQgxZRI0i0eZ1EPkzAgHtRMpZSvRcjhSRw3k5S7Z8FB6=
+RtykoJPqYZOJrh1khaCNlC8Qf1WQsg3FHfLJL9j9gnxHQtAlRmtzXBQvvqfKJwWo-zMl8JPIwvR=
+gYtzkQ3fxVIIdSw-oLa77atkJ9po11xtbobaVIlNntUOmcgpOYfL_zJ0eVDxY8rPbqAH-3npLWe=
+L_-76prkpMNvh-uSJgrtrlUhZssuiy3t_3knY5N3z-jAuDi4R9m0CmgzptQVx6uTiyckc8MuKNi=
+4lkG4vrreMFBmLjm4ul6hgCCSY54OcRnHlS0S394Z8oiEBn6Q07XvTOyHhvbZHpu0brDaXY7c_7=
+0SYgTQn7D83dTKXM_sPlDGIA_-I-p_r5_UE9ESizqltULonJ-baCndngfF--oes_TMuVJ3oAGOa=
+LatZcSJTpv3JMXj9Y9hNhCSXpPfz8FujLl0uQJuPY3U5fA8Ddf_i6qXHQMWT00cF_CmJZ13riEJ=
+vSZzhk1HccOd6A-wR60j&amp;co=3D44026766&amp;c=3D261676&amp;t=3De&amp;eid=3D1=
+14174539120" style=3D"text-decoration:none;" target=3D"_blank" rel=3D"noref=
+errer noopener"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" wid=
+th=3D"100%" style=3D"height:200px;"><tr><td bgcolor=3D"#F8F8F8" width=3D"10=
+0%" valign=3D"top"> <img src=3D"https://img.evbuc.com/https%3A%2F%2Fcdn.evb=
+uc.com%2Fimages%2F106564904%2F386236568949%2F1%2Foriginal.20200720-174506?w=
+=3D512&amp;auto=3Dformat%2Ccompress&amp;q=3D75&amp;sharp=3D10&amp;rect=3D0%=
+2C492%2C2048%2C1024&amp;s=3D6bb56abe866893a25da05c5184889408" alt=3D"Event =
+Logo" width=3D"100%" style=3D"max-width: 100%;height: auto;" /> <!--[if gte=
+ mso 9]> <v:rect xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"true" st=
+roke=3D"false" style=3D"mso-width-percent:1000;"> <v:fill type=3D"tile" src=
+=3D"https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F106564904%=
+2F386236568949%2F1%2Foriginal.20200720-174506?w=3D512&amp;auto=3Dformat%2Cc=
+ompress&amp;q=3D75&amp;sharp=3D10&amp;rect=3D0%2C492%2C2048%2C1024&amp;s=3D=
+6bb56abe866893a25da05c5184889408" color=3D"#F8F8F8" /> <v:textbox style=3D"=
+mso-fit-shape-to-text:true" inset=3D"0,0,0,0"> <![endif]--><div></div> <!--=
+[if gte mso 9]> </v:textbox> </v:rect> <![endif]--></td></tr></table> </a><=
+div class=3D"event-body" style=3D"padding:24px 16px;text-align:left; overfl=
+ow:hidden"> <div class=3D"event-start-date" style=3D"font-size:.875rem;line=
+-height:1.25rem;margin-bottom:4px;font-weight:600;word-break:break-word;col=
+or:#F6682F;">Monday, August 31, 2020 9:00 a.m.</div> <div class=3D"name-but=
+ton-featured"><h2 class=3D"event-name event-name-featured" style=3D"font-si=
+ze:17px;line-height:24px;margin:0;color:#DBDAE3;">Projects Monitoring and E=
+valuation</h2><div class=3D"rsvp-button-featured" style=3D"font-size:0px;wh=
+ite-space:nowrap;"><div border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"margin:0 auto;border-collapse:separate;"><div =
+bgcolor=3D"#DBDAE3" role=3D"presentation" style=3D"border:none;color:#00000=
+0;cursor:auto;padding:10px 0px;" valign=3D"middle"> <a href=3D"https://www.=
+eventbrite.com/organizations/missive/activity/redirect/?p=3DABIdvVt3niJd1Ta=
+4nQTMph8FpbWqc-Kxkkq6Zc2LoxUHVw0xwSknByo7nnkLGP9MPeXFLwoEcfO0XoP2dICeQHoUCK=
+0JO0TMzlHMsgvZ9oF8_ZF3c05gk3nJBGyq3HesaJO56RDQjqhh9icnP01NSOvxL_DHrPn8sLJLG=
+OO6Trq1Sr6pEJyiUbuuA3iOFqvywTXfUhaQzpn3WNEZNXsmKZaVg8DIri-JRMi2nglFAsw5Ly7b=
+Tsv_znxRWbbCS0JvovHoqH1R1qqgU4DTvPBzN1nIYrpL0jZNppHjurZsZ1cs9rWlnzjdpC7QWKJ=
+MEli57Mz1p305VFjA8ZMn2iD5JPcCK3S-LTuqWUCxPhX35V_xygabRRSfJvXAwaJ5jDuoJS3__S=
+B-3P5NHVlIw0yvcFXqgNNlGxKBjT6ZkRIyIHRrA7ZR5bAmX3YmcuHI2DDu2WdazX_lU8IcqC4Wh=
+NtJic1sLMlwy3VN0eHYRMhDHQoYUtLB3l7k9l5kuv81x5e-erdPdEmMZ_ZeK9igYP4a0udHtPEC=
+P-dl6rhFDtpU8d3eR29WNzgI7ZE&amp;co=3D44026766&amp;c=3D261676&amp;t=3De&amp;=
+eid=3D114174539120#tickets" style=3D"background:#DBDAE3;color:#000000;font-=
+family:'Benton Sans',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neu=
+e',Helvetica,Tahoma,Arial,sans-serif;font-size:17px;font-weight:600;line-he=
+ight:120%;Margin:0;text-decoration:none;text-transform:none;padding:12px;bo=
+rder-radius:4px;" target=3D"_blank" rel=3D"noreferrer noopener">  Get Ticke=
+ts  </a></div></div></div></div> <div class=3D"event-venue-name" style=3D"f=
+ont-size:.875rem;margin-top:4px;line-height:1.25rem;color:#6f7287;font-weig=
+ht:400;">Grand Millennium Dubai</div> </div></div></div> </div>  <!-- [if m=
+so | IE]><tr><td class=3D"component-outlook spacer-outlook" width=3D"600px"=
+><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"component-outlook spacer-outlook" style=3D"width:560px;" width=3D"5=
+60"><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exa=
+ctly;"><![endif]--><div class=3D"component spacer" style=3D"Margin: 0px aut=
+o; max-width: 560px;"><table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr>=
+<td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;vertic=
+al-align:top;"> <!-- [if mso | IE]><table role=3D"presentation" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0"><tr><td style=3D"vertical-align:top;w=
+idth:560px;"><![endif]--><div class=3D"mj-column-per-100 outlook-group-fix"=
+ style=3D"font-size:13px;text-align:left;direction:ltr;display:inline-block=
+;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"=
+vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" role=3D"presentation" width=3D"100%"><tr><td style=3D"font-size=
+:0px;padding:0;word-break:break-word;"> <!-- [if mso | IE]><table role=3D"p=
+resentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td heigh=
+t=3D"20" style=3D"vertical-align:top;height:20px;"><![endif]--><div style=
+=3D"height:20px;"> &nbsp;</div> <!-- [if mso | IE]></td></tr></table><![end=
+if]--></td></tr></table></td></tr></tbody></table></div> <!-- [if mso | IE]=
+></td></tr></table><![endif]--></td></tr></tbody></table></div> <!-- [if ms=
+o | IE]></td></tr></table></td></tr><![endif]--> <!-- [if mso | IE]><tr><td=
+ class=3D"component-outlook button-outlook" width=3D"600px"><table align=3D=
+"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"componen=
+t-outlook button-outlook" style=3D"width:560px;" width=3D"560"><tr><td styl=
+e=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]=
+--><div class=3D"component button" style=3D"Margin: 0px auto; max-width: 56=
+0px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"dir=
+ection:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top;"> =
+<!-- [if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0"><tr><td style=3D"vertical-align:top;width:560px;"><![=
+endif]--><div class=3D"mj-column-per-100 outlook-group-fix" style=3D"font-s=
+ize:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:=
+top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertical-align:t=
+op;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" width=3D"100%"><tr><td align=3D"center" vertical-align=3D=
+"middle" style=3D"font-size:0px;padding:0;word-break:break-word;"><table al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"border-collapse:separate;line-height:100%;"><tr><td ali=
+gn=3D"center" bgcolor=3D"#DDDDDD" role=3D"presentation" style=3D"border:non=
+e;border-left:4px solid #F6682F;border-radius:0;color:#FFFFFF;cursor:auto;p=
+adding:10px 25px;" valign=3D"middle"> <a href=3D"https://chilinstitute.com/=
+wp/venues-2/" style=3D"background:#DDDDDD;color:#000000;font-size:16px;font=
+-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transfor=
+m:none;" target=3D"_blank" rel=3D"noreferrer noopener"> Discover More Event=
+s </a></td></tr></table></td></tr></table></td></tr></tbody></table></div> =
+<!-- [if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table>=
+</div> <!-- [if mso | IE]></td></tr></table></td></tr><![endif]--> <!-- [if=
+ mso | IE]><tr><td class=3D"component-outlook spacer-outlook" width=3D"600p=
+x"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ class=3D"component-outlook spacer-outlook" style=3D"width:560px;" width=3D=
+"560"><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;"><![endif]--><div class=3D"component spacer" style=3D"Margin: 0px a=
+uto; max-width: 560px;"><table align=3D"center" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><t=
+r><td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;vert=
+ical-align:top;"> <!-- [if mso | IE]><table role=3D"presentation" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td style=3D"vertical-align:top=
+;width:560px;"><![endif]--><div class=3D"mj-column-per-100 outlook-group-fi=
+x" style=3D"font-size:13px;text-align:left;direction:ltr;display:inline-blo=
+ck;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=
+=3D"vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation" width=3D"100%"><tr><td style=3D"font-=
+size:0px;padding:0;word-break:break-word;"> <!-- [if mso | IE]><table role=
+=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td =
+height=3D"40" style=3D"vertical-align:top;height:40px;"><![endif]--><div st=
+yle=3D"height:40px;"> &nbsp;</div> <!-- [if mso | IE]></td></tr></table><![=
+endif]--></td></tr></table></td></tr></tbody></table></div> <!-- [if mso | =
+IE]></td></tr></table><![endif]--></td></tr></tbody></table></div> <!-- [if=
+ mso | IE]></td></tr></table></td></tr><![endif]--><!-- [if mso | IE]></tab=
+le><![endif]--></td></tr></tbody></table></div> <!-- [if mso | IE]></td></t=
+r></table><![endif]--></div></td></tr></table><!-- - - - - - - - - -->
+<!-- BEGIN FOOTER // -->
+<!-- - - - - - - - - -->
+<!-- - - - - - - - - -->
+
+<div class=3D"footer" style=3D"margin: 0px auto; width: 100%;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+   =20
+    <tr>
+        <td align=3D"center" class=3D"row_section" style=3D"padding-top: 18=
+px;margin-left: auto;margin-right: auto; background-color: #39364F;">
+            <img src=3D"https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2=
+Fimages%2F106566054%2F386236568949%2F1%2Foriginal.20200720-175716?w=3D1200&=
+amp;auto=3Dformat%2Ccompress&amp;q=3D75&amp;sharp=3D10&amp;s=3D084ae938a5e5=
+236a9d3136f787417388" width=3D"68" />
+        </td>
+    </tr>
+   =20
+   =20
+    <!-- SOCIAL LINKS AND SEPARATOR -->
+    <tr>
+    <td class=3D"row_section" style=3D"padding: 0;margin-left: auto;margin-=
+right: auto; background-color: #39364F;">
+        <table style=3D"padding: 0;border:0;border-collapse:collapse;border=
+-spacing:0;padding:18px 0;color:#A9A8B3!important;width:100%;min-width:100%=
+;max-width:100%;" class=3D"footer-content bottom-section" cellspacing=3D"0"=
+ cellpadding=3D"0" bgcolor=3D"#39364F" width=3D"100%">
+            <tr class=3D"footer__info align-center">
+            <td class=3D"grid__col" style=3D"padding: 0;font-family:Benton =
+Sans,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahom=
+a,Arial,sans-serif;text-align:center;font-size:12px;font-weight:200;line-he=
+ight:18px;padding: 0px 32px;" align=3D"center">
+                <!--[if (mso)|(ie)]>
+                <table align=3D"center" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" width=3D"150" height=3D"40" style=3D"width:150px; height:40px=
+;">
+                    <tr>
+                <![endif]-->
+               =20
+                <!--[if (mso)|(ie)]>
+                        <td width=3D"40">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"40" height=3D"40" align=3D"left">
+                                <tr>
+                                    <td style=3D"padding:16px 6px; border:0=
+px; width:40px; height:40px;">
+                <![endif]-->
+                <div class=3D"social-logo-container column-left" style=3D"p=
+adding:0;display:inline-block;height:auto;margin:0;" height=3D"auto">
+                    <a href=3D"https://www.eventbrite.com/organizations/mis=
+sive/activity/redirect/?p=3DABIdvVu8wtzS69ccwg81n-iUWZhyx_3iNooaucNUHsedJRQ=
+PMcBz5GY6JDuIWoxPyGndjDqSezPGQdQ7lq0sxN9htsyH0ghyUYEFuyP_vUCo5nrTKAd0W3xQqI=
+HOuMfIiq4689qm0ch55WsEDXMu99DdJbcCAnWTCk2QBD38jU60kGmsvOZ9-cxvQoAun7-XodUO3=
+YcAYNr063NOKVzsNdRJOYcV0sSBADAOMOCehrfUM82Kc6aCZkAo7Bl-erWr4Lnn7V8GdzTCovda=
+IPOsa2sRA3arFKS35kdkywt5lhRRzrHe-r0MdBK6SpCAmeyrEi5sVgVxfO-ArPrz86FUxr2PbtC=
+_ROmjxcoK_353sGu6P7MzRBIhdi4&amp;co=3D44026766&amp;c=3D261676&amp;t=3Ds&amp=
+;eid=3D">
+
+                       =20
+                        <img src=3D"https://cdn.evbstatic.com/s3-build/perm=
+_001/e8f31d/django/images/emails_2018_rebrand/TW-icon@2x.png" class=3D"foot=
+er-social-logo__image" style=3D"height:24px;padding:16px 3px 0;width:24px;"=
+ height=3D"24" width=3D"24" alt=3D"Twitter" title=3D"Twitter" border=3D"0">
+                       =20
+
+                    </a>
+                </div>
+                <!--[if (mso)|(ie)]>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                <![endif]-->
+               =20
+               =20
+                <!--[if (mso)|(ie)]>
+                        <td width=3D"40">
+                            <table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"40" height=3D"40" align=3D"center">
+                                <tr>
+                                    <td style=3D"text-align:center; padding=
+:16px 6px; border:0px; width:40px; height:40px;">
+                <![endif]-->
+                <div class=3D"social-logo-container column-center" style=3D=
+"padding:0;display:inline-block;height:auto;margin:0;" height=3D"auto">
+                    <a href=3D"https://www.eventbrite.com/organizations/mis=
+sive/activity/redirect/?p=3DABIdvVvbD2AEFRO013qRttB2Esdyi2814lV5IptAXCnebTj=
+UJUpI_9fwPbUdccFLn7eO8gx-9PtwuMfbsF5HvUMQmFRDLXesWCFU6ClVc8xjOG4T0NpyTUKLuh=
+RqqG3F22JV9XiG8bUs7mfJKUHQVSZ6VauJBPVZrl9H5jtYzkD3ksbOHe1MewwQO2V3AUZptbbtM=
+-paIHstdjTaHzWxJsJAKyRWXOXgN384ptm0E52R5ti_go4lt3W6_uIwvE_fe9rZTfQJpOZ0RM9h=
+xVPiQDuCI9s8FpPiQVi_EJE10T_jERqap4lmr3vkGvuaUgvfVMfZFPCf450VAqEDYFBQt4gdV5j=
+FoJhkWZh4OGkp8zUbxqH6tNJRjaQ&amp;co=3D44026766&amp;c=3D261676&amp;t=3Ds&amp=
+;eid=3D" target=3D"_blank" aria-label=3D"Eventbrite Facebook">
+                       =20
+                        <img src=3D"https://cdn.evbstatic.com/s3-build/perm=
+_001/b9d350/django/images/emails_2018_rebrand/FB-icon@2x.png" class=3D"foot=
+er-social-logo__image" style=3D"height:24px;padding:16px 3px 0;width:24px;"=
+ height=3D"24" width=3D"24" alt=3D"Facebook" title=3D"Facebook" border=3D"0=
+">
+                       =20
+
+                    </a>
+                </div>
+                <!--[if (mso)|(ie)]>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                <![endif]-->
+               =20
+               =20
+                <!--[if (mso)|(ie)]>
+                    </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+
+    <tr>
+        <td class=3D"row_section" style=3D"padding: 0;margin-left: auto;mar=
+gin-right: auto; background-color: #39364F;">
+        <table style=3D"padding: 0;background-color: #39364F;border:0;borde=
+r-collapse:collapse;border-spacing:0;padding:0;color:#A9A8B3!important;widt=
+h:100%;min-width:100%;max-width:100%;" class=3D"footer-content bottom-secti=
+on" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#282C35" width=3D"100%">
+            <!--[if (mso)|(ie)]>
+            <tr>
+                <td width=3D"100%">
+                    <table align=3D"center" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0" width=3D"70%" style=3D"width:70%;">
+                        <tr>
+                            <td height=3D"1" width=3D"70%" style=3D"line-he=
+ight:1px;width:70%; font-size:1px;" bgcolor=3D"#dedede>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <![endif]-->
+        </table>
+        </td>
+    </tr>
+    <!--// END SOCIAL LINKS AND SEPARATOR-->
+   =20
+
+    <!-- COMPANY METADATA -->
+    <tr>
+        <td class=3D"row_section" style=3D"padding: 0;margin-left: auto;mar=
+gin-right: auto;">
+            <table style=3D"padding: 0;background-color: #39364F;border:0;b=
+order-collapse:collapse;border-spacing:0;padding:0;width:100%;color:#A9A8B3=
+!important;" class=3D"footer-content bottom-section" cellspacing=3D"0" cell=
+padding=3D"0" width=3D"100%" bgcolor=3D"#282C35">
+            <tr class=3D"footer__info align-center">
+                <td class=3D"grid__col" style=3D"padding: 0;font-family:Ben=
+ton Sans,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,T=
+ahoma,Arial,sans-serif;text-align: center;font-size: 12px;font-weight: 200;=
+line-height: 18px;padding: 12px 32px 8px;" align=3D"center">
+                <!--[if (mso)|(ie)]>
+                <table align=3D"center" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" width=3D"100%" style=3D"text-align:center; width:100%;">
+                <![endif]-->
+               =20
+                <!--[if (mso)|(ie)]>
+                    <tr>
+                        <td style=3D"text-align:center; padding:16px 6px; b=
+order:0px;font-size: 12px;line-height: 18px;font-weight: 200;">
+                <![endif]-->
+                <div class=3D"footer-row__text" style=3D"font-family:Benton=
+ Sans,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Taho=
+ma,Arial,sans-serif;padding:0;padding-bottom: 8px; font-size: 11px">
+                    <span>CIM</span>
+                </div>
+                <!--[if (mso)|(ie)]>
+                        </td>
+                    </tr>
+                <![endif]-->
+               =20
+               =20
+                <!--[if (mso)|(ie)]>
+                    <tr>
+                        <td style=3D"text-align:center; padding-bottom:6px;=
+ border: 0px;font-size: 12px;line-height: 18px;font-weight: 200;">
+                <![endif]-->
+                <div class=3D"footer-row__text" style=3D"font-family:Benton=
+ Sans,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Taho=
+ma,Arial,sans-serif;padding:0;padding-bottom: 8px;">
+                    Kintu Rd, Kampala, UG
+                </div>
+                <!--[if (mso)|(ie)]>
+                        </td>
+                    </tr>
+                <![endif]-->
+               =20
+                <!--[if (mso)|(ie)]>
+                    <tr>
+                        <td style=3D"text-align:center; padding-bottom:6px;=
+ border:0px;font-size: 12px;line-height:18px;font-weight: 200;">
+                <![endif]-->
+                <div class=3D"footer-row__text" style=3D"font-family:Benton=
+ Sans,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Taho=
+ma,Arial,sans-serif;font-size:11px;padding:0;padding-bottom: 18px;">
+                    <span><a class=3D"footer-unsubscribe-link" href=3D"http=
+s://www.eventbrite.ca/organizations/missive/activity/unsubscribe/?p=3DABIdv=
+VvGMmQ0OMhw3B46tui7NNC-mXA2kcNY5Xl-8NlFg6kA-hg_zYv9HKLce4mgcoZPg3A4vFgXkhpi=
+8syLdvkfEaCCrcLKuP117gQJU0iBeyLIYhGhK5tUHrX44z4D4LWMh9Z0uQqhOwnD3fmJnIXK6v1=
+wHfszP9GbDHmkfJo-pW6pj1EqNDwCOnjC5kdM06tEOJelwlZ79p7Nvb3tYzFdfvNhVe0-vzq3Y3=
+9iVzbum9V07hyqI5MRzbyMEvs-DW-pMmLhLLYGflXZdnJyzS0TdIUiaukx8Q&amp;co=3D44026=
+766&amp;c=3D261676" style=3D"color: #A9A8B3;text-decoration:none !important=
+;" target=3D"_blank" rel=3D"noreferrer noopener">Unsubscribe</a></span>
+                    &nbsp;|&nbsp;
+                    <span><a class=3D"footer-privacy-link" href=3D"https://=
+www.eventbrite.ca/privacypolicy?locale=3Den_CA" style=3D"color: #A9A8B3;tex=
+t-decoration:none !important;" target=3D"_blank" rel=3D"noreferrer noopener=
+">Privacy Policy</a></span>
+                </div>
+                <!--[if (mso)|(ie)]>
+                        </td>
+                    </tr>
+                </table>
+                <![endif]-->
+                </td>
+            </tr>
+        </table>
+        </td>
+    </tr>
+</table>
+</div>
+<!-- - - - - - - - - -->
+<!-- - - - - - - - - -->
+<!-- // END FOOTER -->
+<!-- - - - - - - - - -->
+<!-- - - - - - - - - -->
+</td></tr><tr><td align=3D"center" valign=3D"top" style=3D"width:100%; padd=
+ing:0px; margin:0px;"> <img src=3D"https://www.eventbrite.com/organizations=
+/missive/activity/pixel.gif?p=3DABIdvVtK2qW87rUsKwhKaVzlOJ6Fb3WXP0oX1hRhsqk=
+kcXoZUcTCV-lH973irnCOgS-LJEpxgmEhaAHUV3y0GHcDRLrWH97Lq6Wr8bGOYH70jPf_OeUmHD=
+1poUFzA7Rw9IE46UfXmMYnOgsnm7h_ecex4Mwn0yiJ-FXhj79mpQ5gHUDiF299ZPs&amp;co=3D=
+44026766&amp;c=3D261676" alt=3D"" width=3D"1" height=3D"1" border=3D"0" sty=
+le=3D"border: 0;"></td></tr> </table> <script type=3D"text/plain">darkTheme=
+Support=3Dtrue backgroundImageSupport=3Dtrue headerImageLinkSupport=3Dtrue<=
+/script> </td></tr></table></center></body></html>
+
+--===============2502755929035411843==--
+
+
+--===============2102164428==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============2102164428==--
+
