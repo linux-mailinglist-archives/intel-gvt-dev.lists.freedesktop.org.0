@@ -2,61 +2,98 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F23B423C968
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Aug 2020 11:44:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C27E23CA08
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Aug 2020 12:53:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 649316E0AB;
-	Wed,  5 Aug 2020 09:44:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C279F89337;
+	Wed,  5 Aug 2020 10:53:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [207.211.31.81])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3625189FDE
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur05on2062.outbound.protection.outlook.com [40.107.21.62])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 898E389337
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Aug 2020 09:44:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596620683;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zb5KxUrGvImBssm2BT3ZVy2Vf0v+WxPnapjazE+JgIo=;
- b=gqQ6Zr5OKLOlUPhGF7kN8LNHo3AesXBx3HGxw7Fff6CkmbI859vqz/eHe+wtjaQp42EJpP
- 5VonZ4eH0TL6w1r2PKkI0rHPSsGfyuKa7zpAK40dHQD+MuP9X0KxxmF9TdAuw1sW1OI7C+
- 0246ZMZAqp24ZgcJ/mR3q+SSQdgdsng=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-159-nZZ3dcD_N1SEgD8P21T3kw-1; Wed, 05 Aug 2020 05:44:41 -0400
-X-MC-Unique: nZZ3dcD_N1SEgD8P21T3kw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48726101C8A0;
- Wed,  5 Aug 2020 09:44:39 +0000 (UTC)
-Received: from work-vm (ovpn-114-87.ams2.redhat.com [10.36.114.87])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BDBE760BF3;
- Wed,  5 Aug 2020 09:44:25 +0000 (UTC)
-Date: Wed, 5 Aug 2020 10:44:23 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+ Wed,  5 Aug 2020 10:53:26 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dRfVRAGKIsp2yA4si5D90REUtbs+VBRf7/dpn/Yk8ol1jiovuoVyfieAY+AXGJaGr5BebFaUsuOZdHn8rIcpGffoEhePocCgOEGQV19HIsQqCsS3nBZErNJhveAFNpWHz88eav81HwYcz1p5gkiDURuTQSTf7H5e3mQH6FZ4T47Mo800BfLOnyHs0z95CXkfBCTxYNdpAbLkKC9fxB0e+xesiSfZbUZc4x20Yz8qp8LvBG5GFuuDc763VsAHzah2OQWvzJeF6MZ3q09z3FfZRIoVgTzGRME0IezDjINiXM1h2neabSR3xzB34n0i014gf32Sb0XYMETgAkUWnZUiqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rfkT8do/kbOgLCMtyVg3es7mghFtXsbz5vTkRN91GpI=;
+ b=RPHDP4FIBrI0XLKaoBcNYw06j8qC6L/5p0cj423wczrp5RdVqknHYBO+GgFR2OVPiX8g9MOkqpAP2WcidXp+jT8LgnwpGbjPACw9Mt+DPBTgJ8yKa0yujGyZxUkI9ROTCzL1VgfwJyZ8jvUNyb9rFW9XJn8CiP/OujY7XEHm/ENMcGhx6qlpRRESiTaIxoc1i1XH88bO7h7XtXv4DK8lOpgSnai6233CXs6gBXT8d7oMovT4TGlupPhw8rGyOed9kptJjRvYsVLXVLNZpzdnL6UZNBdNEaFSh1RFk9NjNAEBqDXTJwrM3oGCaJpX/KrW/raMLd45yuQFeskRZYcqxw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
+ dkim=pass header.d=mellanox.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rfkT8do/kbOgLCMtyVg3es7mghFtXsbz5vTkRN91GpI=;
+ b=JkcIvkKaO1+Q0IwmKB3khjL5K7CbGGdL45yNVgIi7LToaUuml9CaT4yADanrT4eoE5dk1JyBFyktNhh0SeNDZkhz6w5tFR6IZYt+QaJWsaw1sK80do8E2oSnNdAj5J2b4+UDE/IFg1jq8I0OIPB6Y2hKpwAMANWCmgOVB4o9ZeY=
+Authentication-Results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=mellanox.com;
+Received: from DBBPR05MB6364.eurprd05.prod.outlook.com (2603:10a6:10:cc::22)
+ by DB6PR05MB3175.eurprd05.prod.outlook.com (2603:10a6:6:1a::25) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3239.21; Wed, 5 Aug
+ 2020 10:53:23 +0000
+Received: from DBBPR05MB6364.eurprd05.prod.outlook.com
+ ([fe80::6510:4e88:1d64:18ae]) by DBBPR05MB6364.eurprd05.prod.outlook.com
+ ([fe80::6510:4e88:1d64:18ae%6]) with mapi id 15.20.3239.022; Wed, 5 Aug 2020
+ 10:53:23 +0000
+Date: Wed, 5 Aug 2020 12:53:19 +0200
+From: Jiri Pirko <jiri@mellanox.com>
 To: Yan Zhao <yan.y.zhao@intel.com>
 Subject: Re: device compatibility interface for live migration with assigned
  devices
-Message-ID: <20200805094423.GB3004@work-vm>
-References: <20200717101258.65555978@x1.home>
- <20200721005113.GA10502@joy-OptiPlex-7040>
- <20200727072440.GA28676@joy-OptiPlex-7040>
+Message-ID: <20200805105319.GF2177@nanopsycho>
+References: <20200727072440.GA28676@joy-OptiPlex-7040>
  <20200727162321.7097070e@x1.home>
  <20200729080503.GB28676@joy-OptiPlex-7040>
- <e8a973ea0bb2bc3eb15649fb1c44599ae3509e84.camel@redhat.com>
- <20200729131255.68730f68@x1.home>
- <20200730034104.GB32327@joy-OptiPlex-7040>
- <20200730112930.6f4c5762@x1.home>
- <20200804083708.GA30485@joy-OptiPlex-7040>
-MIME-Version: 1.0
+ <20200804183503.39f56516.cohuck@redhat.com>
+ <c178a0d3-269d-1620-22b1-9010f602d8ff@redhat.com>
+ <20200805021654.GB30485@joy-OptiPlex-7040>
+ <2624b12f-3788-7e2b-2cb7-93534960bcb7@redhat.com>
+ <20200805075647.GB2177@nanopsycho>
+ <eb1d01c2-fbad-36b6-10cf-9e03483a736b@redhat.com>
+ <20200805093338.GC30485@joy-OptiPlex-7040>
 Content-Disposition: inline
-In-Reply-To: <20200804083708.GA30485@joy-OptiPlex-7040>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20200805093338.GC30485@joy-OptiPlex-7040>
+X-ClientProxiedBy: FR2P281CA0004.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a::14) To DBBPR05MB6364.eurprd05.prod.outlook.com
+ (2603:10a6:10:cc::22)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from nanopsycho (85.163.43.78) by
+ FR2P281CA0004.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:a::14) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3261.12 via Frontend Transport; Wed, 5 Aug 2020 10:53:21 +0000
+X-Originating-IP: [85.163.43.78]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: 8b41274d-ec81-4dc9-5688-08d8392dc5d4
+X-MS-TrafficTypeDiagnostic: DB6PR05MB3175:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <DB6PR05MB31753C6A751E091733E805E8BD4B0@DB6PR05MB3175.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: PEzo+jy7cQh7gPwTjkb4PfOzl538yMIcb0Zio+6j/Nyt9ajYiVsoxHk9waJjARBSI+AIujFHXiSbb7DYhrxN0pfjB2oopn1JVRRcwzP6Tu3kHG0FjnE2ir30tOrHbJ8ysCAekV1YxnQa65cHc90yikrlKr6B4ALC3n2J//Xz74EkzH3VyeLUk9QanzsopiG13Ey9U0iF22mZ/hznMJEkeXI2t9ukcKtPhCag9m0XUAzjTRcSObOlQ1b7DXCm5Bm22neU4uCYXU17Zw6XRgPa5y6nOrqv/tI+2bIQcvoJGbEpR25r1mCi42j23Jq+h7G3+CL7/nI6WEKnMp5AfSYgbQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR05MB6364.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(366004)(396003)(39860400002)(136003)(376002)(346002)(52116002)(1076003)(6496006)(33656002)(83380400001)(186003)(6916009)(33716001)(4326008)(7416002)(16526019)(8676002)(66946007)(107886003)(66556008)(9686003)(316002)(55016002)(956004)(54906003)(9576002)(26005)(66476007)(2906002)(5660300002)(86362001)(478600001)(8936002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: V96vhdqQ4MTMABcXDnfQo40/+OYfUg+WQU0PgNQR/Gxc8R12jRL0w+rePsvH4xKK1nZKJrV5Q+jZz7o/r49W5Ur8aY852FWxv55co5nsYIYq8686GgH9SeXWuZ4nG803LXg1XSHC7Ae+4KwX2AGwrBBzFLpSYlmhxpc86bdxdDvv58K+vpME3Efcky6qc5bcYEAn0mTE1dG7LmtWcCcvhuqEed9X/dow6FEaV77O8hF7f1lyNwHc3VH1BkEguHe6KYoRQry6mSRSZO1/4HzLcZfVVqFYq/G7++/k7/8QpkzGxTU6/SP2be662LsVntIKInmymhOLIEMp7kW8eT5lTz3G/0OyclkB9ORYEHyslZOLS7eFy1qf03t1S2eJZoS2CiTSCRDAwl+cpJUsAezR4yXE/2rVLJ5HQMec+GyJjRfyHYUzeqruYbIzehEzv8w9KBLdH2e1oyVJgQnGGQhMsAU5hRUzGhK+TfHyoD8EudnOMbd/prFzWfLE5O/5UUUQ+nC01PlPhmWfYiIi/sNTvxOQeeGbpnCOFxrJ6xakQfVfkZZSoHbrIRGeVAXb1a3m5ehMaFVyO0PCLUb05zupcD1YaJRuJGJSLpcThK/61G4WYRnFpkcGPNxGvRiV6m2LDkuQQnuHHJfonurq7Z+ywQ==
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8b41274d-ec81-4dc9-5688-08d8392dc5d4
+X-MS-Exchange-CrossTenant-AuthSource: DBBPR05MB6364.eurprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2020 10:53:23.0582 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Dl/e0IjnfkRKlFA97H04T2InDckrrLp2n3JtIKYirwpkWT2VPFeaLJ3LsKM4dz7eXj26G5npCJjMuH9CTYVbNA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR05MB3175
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,180 +106,148 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
- Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
- eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+Cc: Cornelia Huck <cohuck@redhat.com>, kvm@vger.kernel.org,
+ libvir-list@redhat.com, Jason Wang <jasowang@redhat.com>,
+ qemu-devel@nongnu.org, kwankhede@nvidia.com, eauger@redhat.com,
+ xin-ran.wang@intel.com, eskultet@redhat.com,
  openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, eskultet@redhat.com, jian-feng.ding@intel.com,
- zhenyuw@linux.intel.com, hejie.xu@intel.com, bao.yumeng@zte.com.cn,
- Alex Williamson <alex.williamson@redhat.com>, Sean Mooney <smooney@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, berrange@redhat.com, cohuck@redhat.com,
+ kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
+ jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
+ hejie.xu@intel.com, bao.yumeng@zte.com.cn,
+ Alex Williamson <alex.williamson@redhat.com>, smooney@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org, berrange@redhat.com, corbet@lwn.net,
  dinechin@redhat.com, devel@ovirt.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-* Yan Zhao (yan.y.zhao@intel.com) wrote:
-> > > yes, include a device_api field is better.
-> > > for mdev, "device_type=vfio-mdev", is it right?
-> > 
-> > No, vfio-mdev is not a device API, it's the driver that attaches to the
-> > mdev bus device to expose it through vfio.  The device_api exposes the
-> > actual interface of the vfio device, it's also vfio-pci for typical
-> > mdev devices found on x86, but may be vfio-ccw, vfio-ap, etc...  See
-> > VFIO_DEVICE_API_PCI_STRING and friends.
-> > 
-> ok. got it.
-> 
-> > > > > > 	device_id=8086591d  
-> > > > 
-> > > > Is device_id interpreted relative to device_type?  How does this
-> > > > relate to mdev_type?  If we have an mdev_type, doesn't that fully
-> > > > defined the software API?
-> > > >   
-> > > it's parent pci id for mdev actually.
-> >
-> > If we need to specify the parent PCI ID then something is fundamentally
-> > wrong with the mdev_type.  The mdev_type should define a unique,
-> > software compatible interface, regardless of the parent device IDs.  If
-> > a i915-GVTg_V5_2 means different things based on the parent device IDs,
-> > then then different mdev_types should be reported for those parent
-> > devices.
-> >
-> hmm, then do we allow vendor specific fields?
-> or is it a must that a vendor specific field should have corresponding
-> vendor attribute?
-> 
-> another thing is that the definition of mdev_type in GVT only corresponds
-> to vGPU computing ability currently,
-> e.g. i915-GVTg_V5_2, is 1/2 of a gen9 IGD, i915-GVTg_V4_2 is 1/2 of a
-> gen8 IGD.
-> It is too coarse-grained to live migration compatibility.
-
-Can you explain why that's too coarse?
-
-Is this because it's too specific (i.e. that a i915-GVTg_V4_2 could be
-migrated to a newer device?), or that it's too specific on the exact
-sizings (i.e. that there may be multiple different sizes of a gen9)?
-
-Dave
-
-> Do you think we need to update GVT's definition of mdev_type?
-> And is there any guide in mdev_type definition?
-> 
-> > > > > > 	mdev_type=i915-GVTg_V5_2  
-> > > > 
-> > > > And how are non-mdev devices represented?
-> > > >   
-> > > non-mdev can opt to not include this field, or as you said below, a
-> > > vendor signature. 
-> > > 
-> > > > > > 	aggregator=1
-> > > > > > 	pv_mode="none+ppgtt+context"  
-> > > > 
-> > > > These are meaningless vendor specific matches afaict.
-> > > >   
-> > > yes, pv_mode and aggregator are vendor specific fields.
-> > > but they are important to decide whether two devices are compatible.
-> > > pv_mode means whether a vGPU supports guest paravirtualized api.
-> > > "none+ppgtt+context" means guest can not use pv, or use ppgtt mode pv or
-> > > use context mode pv.
-> > > 
-> > > > > > 	interface_version=3  
-> > > > 
-> > > > Not much granularity here, I prefer Sean's previous
-> > > > <major>.<minor>[.bugfix] scheme.
-> > > >   
-> > > yes, <major>.<minor>[.bugfix] scheme may be better, but I'm not sure if
-> > > it works for a complicated scenario.
-> > > e.g for pv_mode,
-> > > (1) initially,  pv_mode is not supported, so it's pv_mode=none, it's 0.0.0,
-> > > (2) then, pv_mode=ppgtt is supported, pv_mode="none+ppgtt", it's 0.1.0,
-> > > indicating pv_mode=none can migrate to pv_mode="none+ppgtt", but not vice versa.
-> > > (3) later, pv_mode=context is also supported,
-> > > pv_mode="none+ppgtt+context", so it's 0.2.0.
-> > > 
-> > > But if later, pv_mode=ppgtt is removed. pv_mode="none+context", how to
-> > > name its version? "none+ppgtt" (0.1.0) is not compatible to
-> > > "none+context", but "none+ppgtt+context" (0.2.0) is compatible to
-> > > "none+context".
-> > 
-> > If pv_mode=ppgtt is removed, then the compatible versions would be
-> > 0.0.0 or 1.0.0, ie. the major version would be incremented due to
-> > feature removal.
-> >  
-> > > Maintain such scheme is painful to vendor driver.
-> > 
-> > Migration compatibility is painful, there's no way around that.  I
-> > think the version scheme is an attempt to push some of that low level
-> > burden on the vendor driver, otherwise the management tools need to
-> > work on an ever growing matrix of vendor specific features which is
-> > going to become unwieldy and is largely meaningless outside of the
-> > vendor driver.  Instead, the vendor driver can make strategic decisions
-> > about where to continue to maintain a support burden and make explicit
-> > decisions to maintain or break compatibility.  The version scheme is a
-> > simplification and abstraction of vendor driver features in order to
-> > create a small, logical compatibility matrix.  Compromises necessarily
-> > need to be made for that to occur.
-> >
-> ok. got it.
-> 
-> > > > > > COMPATIBLE:
-> > > > > > 	device_type=pci
-> > > > > > 	device_id=8086591d
-> > > > > > 	mdev_type=i915-GVTg_V5_{val1:int:1,2,4,8}    
-> > > > > this mixed notation will be hard to parse so i would avoid that.  
-> > > > 
-> > > > Some background, Intel has been proposing aggregation as a solution to
-> > > > how we scale mdev devices when hardware exposes large numbers of
-> > > > assignable objects that can be composed in essentially arbitrary ways.
-> > > > So for instance, if we have a workqueue (wq), we might have an mdev
-> > > > type for 1wq, 2wq, 3wq,... Nwq.  It's not really practical to expose a
-> > > > discrete mdev type for each of those, so they want to define a base
-> > > > type which is composable to other types via this aggregation.  This is
-> > > > what this substitution and tagging is attempting to accomplish.  So
-> > > > imagine this set of values for cases where it's not practical to unroll
-> > > > the values for N discrete types.
-> > > >   
-> > > > > > 	aggregator={val1}/2  
-> > > > 
-> > > > So the {val1} above would be substituted here, though an aggregation
-> > > > factor of 1/2 is a head scratcher...
-> > > >   
-> > > > > > 	pv_mode={val2:string:"none+ppgtt","none+context","none+ppgtt+context"}  
-> > > > 
-> > > > I'm lost on this one though.  I think maybe it's indicating that it's
-> > > > compatible with any of these, so do we need to list it?  Couldn't this
-> > > > be handled by Sean's version proposal where the minor version
-> > > > represents feature compatibility?  
-> > > yes, it's indicating that it's compatible with any of these.
-> > > Sean's version proposal may also work, but it would be painful for
-> > > vendor driver to maintain the versions when multiple similar features
-> > > are involved.
-> > 
-> > This is something vendor drivers need to consider when adding and
-> > removing features.
-> > 
-> > > > > > 	interface_version={val3:int:2,3}  
-> > > > 
-> > > > What does this turn into in a few years, 2,7,12,23,75,96,...
-> > > >   
-> > > is a range better?
-> > 
-> > I was really trying to point out that sparseness becomes an issue if
-> > the vendor driver is largely disconnected from how their feature
-> > addition and deprecation affects migration support.  Thanks,
-> >
-> ok. we'll use the x.y.z scheme then.
-> 
-> Thanks
-> Yan
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+V2VkLCBBdWcgMDUsIDIwMjAgYXQgMTE6MzM6MzhBTSBDRVNULCB5YW4ueS56aGFvQGludGVsLmNv
+bSB3cm90ZToKPk9uIFdlZCwgQXVnIDA1LCAyMDIwIGF0IDA0OjAyOjQ4UE0gKzA4MDAsIEphc29u
+IFdhbmcgd3JvdGU6Cj4+IAo+PiBPbiAyMDIwLzgvNSDkuIvljYgzOjU2LCBKaXJpIFBpcmtvIHdy
+b3RlOgo+PiA+IFdlZCwgQXVnIDA1LCAyMDIwIGF0IDA0OjQxOjU0QU0gQ0VTVCwgamFzb3dhbmdA
+cmVkaGF0LmNvbSB3cm90ZToKPj4gPiA+IE9uIDIwMjAvOC81IOS4iuWNiDEwOjE2LCBZYW4gWmhh
+byB3cm90ZToKPj4gPiA+ID4gT24gV2VkLCBBdWcgMDUsIDIwMjAgYXQgMTA6MjI6MTVBTSArMDgw
+MCwgSmFzb24gV2FuZyB3cm90ZToKPj4gPiA+ID4gPiBPbiAyMDIwLzgvNSDkuIrljYgxMjozNSwg
+Q29ybmVsaWEgSHVjayB3cm90ZToKPj4gPiA+ID4gPiA+IFtzb3JyeSBhYm91dCBub3QgY2hpbWlu
+ZyBpbiBlYXJsaWVyXQo+PiA+ID4gPiA+ID4gCj4+ID4gPiA+ID4gPiBPbiBXZWQsIDI5IEp1bCAy
+MDIwIDE2OjA1OjAzICswODAwCj4+ID4gPiA+ID4gPiBZYW4gWmhhbyA8eWFuLnkuemhhb0BpbnRl
+bC5jb20+IHdyb3RlOgo+PiA+ID4gPiA+ID4gCj4+ID4gPiA+ID4gPiA+IE9uIE1vbiwgSnVsIDI3
+LCAyMDIwIGF0IDA0OjIzOjIxUE0gLTA2MDAsIEFsZXggV2lsbGlhbXNvbiB3cm90ZToKPj4gPiA+
+ID4gPiA+ICguLi4pCj4+ID4gPiA+ID4gPiAKPj4gPiA+ID4gPiA+ID4gPiBCYXNlZCBvbiB0aGUg
+ZmVlZGJhY2sgd2UndmUgcmVjZWl2ZWQsIHRoZSBwcmV2aW91c2x5IHByb3Bvc2VkIGludGVyZmFj
+ZQo+PiA+ID4gPiA+ID4gPiA+IGlzIG5vdCB2aWFibGUuICBJIHRoaW5rIHRoZXJlJ3MgYWdyZWVt
+ZW50IHRoYXQgdGhlIHVzZXIgbmVlZHMgdG8gYmUKPj4gPiA+ID4gPiA+ID4gPiBhYmxlIHRvIHBh
+cnNlIGFuZCBpbnRlcnByZXQgdGhlIHZlcnNpb24gaW5mb3JtYXRpb24uICBVc2luZyBqc29uIHNl
+ZW1zCj4+ID4gPiA+ID4gPiA+ID4gdmlhYmxlLCBidXQgSSBkb24ndCBrbm93IGlmIGl0J3MgdGhl
+IGJlc3Qgb3B0aW9uLiAgSXMgdGhlcmUgYW55Cj4+ID4gPiA+ID4gPiA+ID4gcHJlY2VkZW50IG9m
+IG1hcmt1cCBzdHJpbmdzIHJldHVybmVkIHZpYSBzeXNmcyB3ZSBjb3VsZCBmb2xsb3c/Cj4+ID4g
+PiA+ID4gPiBJIGRvbid0IHRoaW5rIGVuY29kaW5nIGNvbXBsZXggaW5mb3JtYXRpb24gaW4gYSBz
+eXNmcyBmaWxlIGlzIGEgdmlhYmxlCj4+ID4gPiA+ID4gPiBhcHByb2FjaC4gUXVvdGluZyBEb2N1
+bWVudGF0aW9uL2ZpbGVzeXN0ZW1zL3N5c2ZzLnJzdDoKPj4gPiA+ID4gPiA+IAo+PiA+ID4gPiA+
+ID4gIkF0dHJpYnV0ZXMgc2hvdWxkIGJlIEFTQ0lJIHRleHQgZmlsZXMsIHByZWZlcmFibHkgd2l0
+aCBvbmx5IG9uZSB2YWx1ZQo+PiA+ID4gPiA+ID4gcGVyIGZpbGUuIEl0IGlzIG5vdGVkIHRoYXQg
+aXQgbWF5IG5vdCBiZSBlZmZpY2llbnQgdG8gY29udGFpbiBvbmx5IG9uZQo+PiA+ID4gPiA+ID4g
+dmFsdWUgcGVyIGZpbGUsIHNvIGl0IGlzIHNvY2lhbGx5IGFjY2VwdGFibGUgdG8gZXhwcmVzcyBh
+biBhcnJheSBvZgo+PiA+ID4gPiA+ID4gdmFsdWVzIG9mIHRoZSBzYW1lIHR5cGUuCj4+ID4gPiA+
+ID4gPiBNaXhpbmcgdHlwZXMsIGV4cHJlc3NpbmcgbXVsdGlwbGUgbGluZXMgb2YgZGF0YSwgYW5k
+IGRvaW5nIGZhbmN5Cj4+ID4gPiA+ID4gPiBmb3JtYXR0aW5nIG9mIGRhdGEgaXMgaGVhdmlseSBm
+cm93bmVkIHVwb24uIgo+PiA+ID4gPiA+ID4gCj4+ID4gPiA+ID4gPiBFdmVuIHRob3VnaCB0aGlz
+IGlzIGFuIG9sZGVyIGZpbGUsIEkgdGhpbmsgdGhlc2UgcmVzdHJpY3Rpb25zIHN0aWxsCj4+ID4g
+PiA+ID4gPiBhcHBseS4KPj4gPiA+ID4gPiArMSwgdGhhdCdzIGFub3RoZXIgcmVhc29uIHdoeSBk
+ZXZsaW5rKG5ldGxpbmspIGlzIGJldHRlci4KPj4gPiA+ID4gPiAKPj4gPiA+ID4gaGkgSmFzb24s
+Cj4+ID4gPiA+IGRvIHlvdSBoYXZlIGFueSBtYXRlcmlhbHMgb3Igc2FtcGxlIGNvZGUgYWJvdXQg
+ZGV2bGluaywgc28gd2UgY2FuIGhhdmUgYSBnb29kCj4+ID4gPiA+IHN0dWR5IG9mIGl0Pwo+PiA+
+ID4gPiBJIGZvdW5kIHNvbWUga2VybmVsIGRvY3MgYWJvdXQgaXQgYnV0IG15IHByZWxpbWluYXJ5
+IHN0dWR5IGRpZG4ndCBzaG93IG1lIHRoZQo+PiA+ID4gPiBhZHZhbnRhZ2Ugb2YgZGV2bGluay4K
+Pj4gPiA+IAo+PiA+ID4gQ0MgSmlyaSBhbmQgUGFyYXYgZm9yIGEgYmV0dGVyIGFuc3dlciBmb3Ig
+dGhpcy4KPj4gPiA+IAo+PiA+ID4gTXkgdW5kZXJzdGFuZGluZyBpcyB0aGF0IHRoZSBmb2xsb3dp
+bmcgYWR2YW50YWdlcyBhcmUgb2J2aW91cyAoYXMgSSByZXBsaWVkCj4+ID4gPiBpbiBhbm90aGVy
+IHRocmVhZCk6Cj4+ID4gPiAKPj4gPiA+IC0gZXhpc3RpbmcgdXNlcnMgKE5JQywgY3J5cHRvLCBT
+Q1NJLCBpYiksIG1hdHVyZSBhbmQgc3RhYmxlCj4+ID4gPiAtIG11Y2ggYmV0dGVyIGVycm9yIHJl
+cG9ydGluZyAoZXh0X2FjayBvdGhlciB0aGFuIHN0cmluZyBvciBlcnJubykKPj4gPiA+IC0gbmFt
+ZXNwYWNlIGF3YXJlCj4+ID4gPiAtIGRvIG5vdCBjb3VwbGUgd2l0aCBrb2JqZWN0Cj4+ID4gSmFz
+b24sIHdoYXQgaXMgeW91ciB1c2UgY2FzZT8KPj4gCj4+IAo+PiBJIHRoaW5rIHRoZSB1c2UgY2Fz
+ZSBpcyB0byByZXBvcnQgZGV2aWNlIGNvbXBhdGliaWxpdHkgZm9yIGxpdmUgbWlncmF0aW9uLgo+
+PiBZYW4gcHJvcG9zZWQgYSBzaW1wbGUgc3lzZnMgYmFzZWQgbWlncmF0aW9uIHZlcnNpb24gZmly
+c3QsIGJ1dCBpdCBsb29rcyBub3QKPj4gc3VmZmljaWVudCBhbmQgc29tZXRoaW5nIGJhc2VkIG9u
+IEpTT04gaXMgZGlzY3Vzc2VkLgo+PiAKPj4gWWFuLCBjYW4geW91IGhlbHAgdG8gc3VtbWFyaXpl
+IHRoZSBkaXNjdXNzaW9uIHNvIGZhciBmb3IgSmlyaSBhcyBhCj4+IHJlZmVyZW5jZT8KPj4gCj55
+ZXMuCj53ZSBhcmUgY3VycmVudGx5IGRlZmluaW5nIGFuIGRldmljZSBsaXZlIG1pZ3JhdGlvbiBj
+b21wYXRpYmlsaXR5Cj5pbnRlcmZhY2UgaW4gb3JkZXIgdG8gbGV0IHVzZXIgc3BhY2UgbGlrZSBv
+cGVuc3RhY2sgYW5kIGxpYnZpcnQga25vd3MKPndoaWNoIHR3byBkZXZpY2VzIGFyZSBsaXZlIG1p
+Z3JhdGlvbiBjb21wYXRpYmxlLgo+Y3VycmVudGx5IHRoZSBkZXZpY2VzIGluY2x1ZGUgbWRldiAo
+YSBrZXJuZWwgZW11bGF0ZWQgdmlydHVhbCBkZXZpY2UpCj5hbmQgcGh5c2ljYWwgZGV2aWNlcyAo
+ZS5nLiAgYSBWRiBvZiBhIFBDSSBTUklPViBkZXZpY2UpLgo+Cj50aGUgYXR0cmlidXRlcyB3ZSB3
+YW50IHVzZXIgc3BhY2UgdG8gY29tcGFyZSBpbmNsdWRpbmcKPmNvbW1vbiBhdHRyaWJ1ZXM6Cj4g
+ICAgZGV2aWNlX2FwaTogdmZpby1wY2ksIHZmaW8tY2N3Li4uCj4gICAgbWRldl90eXBlOiBtZGV2
+IHR5cGUgb2YgbWRldiBvciBzaW1pbGFyIHNpZ25hdHVyZSBmb3IgcGh5c2ljYWwgZGV2aWNlCj4g
+ICAgICAgICAgICAgICBJdCBzcGVjaWZpZXMgYSBkZXZpY2UncyBoYXJkd2FyZSBjYXBhYmlsaXR5
+LiBlLmcuCj4JICAgICAgIGk5MTUtR1ZUZ19WNV80IG1lYW5zIGl0J3Mgb2YgMS80IG9mIGEgZ2Vu
+OSBJbnRlbCBncmFwaGljcwo+CSAgICAgICBkZXZpY2UuCj4gICAgc29mdHdhcmVfdmVyc2lvbjog
+ZGV2aWNlIGRyaXZlcidzIHZlcnNpb24uCj4gICAgICAgICAgICAgICBpbiA8bWFqb3I+LjxtaW5v
+cj5bLmJ1Z2ZpeF0gc2NoZW1lLCB3aGVyZSB0aGVyZSBpcyBubwo+CSAgICAgICBjb21wYXRpYmls
+aXR5IGFjcm9zcyBtYWpvciB2ZXJzaW9ucywgbWlub3IgdmVyc2lvbnMgaGF2ZQo+CSAgICAgICBm
+b3J3YXJkIGNvbXBhdGliaWxpdHkgKGV4LiAxLT4gMiBpcyBvaywgMiAtPiAxIGlzIG5vdCkgYW5k
+Cj4JICAgICAgIGJ1Z2ZpeCB2ZXJzaW9uIG51bWJlciBpbmRpY2F0ZXMgc29tZSBkZWdyZWUgb2Yg
+aW50ZXJuYWwKPgkgICAgICAgaW1wcm92ZW1lbnQgdGhhdCBpcyBub3QgdmlzaWJsZSB0byB0aGUg
+dXNlciBpbiB0ZXJtcyBvZgo+CSAgICAgICBmZWF0dXJlcyBvciBjb21wYXRpYmlsaXR5LAo+Cj52
+ZW5kb3Igc3BlY2lmaWMgYXR0cmlidXRlczogZWFjaCB2ZW5kb3IgbWF5IGRlZmluZSBkaWZmZXJl
+bnQgYXR0cmlidXRlcwo+ICAgZGV2aWNlIGlkIDogZGV2aWNlIGlkIG9mIGEgcGh5c2ljYWwgZGV2
+aWNlcyBvciBtZGV2J3MgcGFyZW50IHBjaSBkZXZpY2UuCj4gICAgICAgICAgICAgICBpdCBjb3Vs
+ZCBiZSBlcXVhbCB0byBwY2kgaWQgZm9yIHBjaSBkZXZpY2VzCj4gICBhZ2dyZWdhdG9yOiB1c2Vk
+IHRvZ2V0aGVyIHdpdGggbWRldl90eXBlLiBlLmcuIGFnZ3JlZ2F0b3I9MiB0b2dldGhlcgo+ICAg
+ICAgICAgICAgICAgd2l0aCBpOTE1LUdWVGdfVjVfNCBtZWFucyAyKjEvND0xLzIgb2YgYSBnZW45
+IEludGVsCj4JICAgICAgIGdyYXBoaWNzIGRldmljZS4KPiAgIHJlbW90ZV91cmw6IGZvciBhIGxv
+Y2FsIE5WTWUgVkYsIGl0IG1heSBiZSBjb25maWd1cmVkIHdpdGggYSByZW1vdGUKPiAgICAgICAg
+ICAgICAgIHVybCBvZiBhIHJlbW90ZSBzdG9yYWdlIGFuZCBhbGwgZGF0YSBpcyBzdG9yZWQgaW4g
+dGhlCj4JICAgICAgIHJlbW90ZSBzaWRlIHNwZWNpZmllZCBieSB0aGUgcmVtb3RlIHVybC4KPiAg
+IC4uLgo+Cj5Db21wYXJpbmcgdGhvc2UgYXR0cmlidXRlcyBieSB1c2VyIHNwYWNlIGFsb25lIGlz
+IG5vdCBhbiBlYXN5IGpvYiwgYXMgaXQKPmNhbid0IHNpbXBseSBhc3N1bWUgYW4gZXF1YWwgcmVs
+YXRpb25zaGlwIGJldHdlZW4gc291cmNlIGF0dHJpYnV0ZXMgYW5kCj50YXJnZXQgYXR0cmlidXRl
+cy4gZS5nLgo+Zm9yIGEgc291cmNlIGRldmljZSBvZiBtZGV2X3R5cGU9aTkxNS1HVlRnX1Y1XzQs
+YWdncmVnYXRvcj0yLCAoMS8yIG9mCj5nZW45KSwgaXQgYWN0dWFsbHkgY291bGQgZmluZCBhIGNv
+bXBhdGlibGUgZGV2aWNlIG9mCj5tZGV2X3R5cGU9aTkxNS1HVlRnX1Y1XzgsYWdncmVnYXRvcj00
+IChhbHNvIDEvMiBvZiBnZW45KSwKPmlmIG1kZXZfdHlwZSBvZiBpOTE1LUdWVGdfVjVfNCBpcyBu
+b3QgYXZhaWxhYmxlIGluIHRoZSB0YXJnZXQgbWFjaGluZS4KPgo+U28sIGluIG91ciBjdXJyZW50
+IHByb3Bvc2FsLCB3ZSB3YW50IHRvIGNyZWF0ZSB0d28gc3lzZnMgYXR0cmlidXRlcwo+dW5kZXIg
+YSBkZXZpY2Ugc3lzZnMgbm9kZS4KPi9zeXMvPHBhdGggdG8gZGV2aWNlPi9taWdyYXRpb24vc2Vs
+Zgo+L3N5cy88cGF0aCB0byBkZXZpY2U+L21pZ3JhdGlvbi9jb21wYXRpYmxlCj4KPiNjYXQgL3N5
+cy88cGF0aCB0byBkZXZpY2U+L21pZ3JhdGlvbi9zZWxmCj5kZXZpY2VfdHlwZT12ZmlvX3BjaQo+
+bWRldl90eXBlPWk5MTUtR1ZUZ19WNV80Cj5kZXZpY2VfaWQ9ODA4NjU5MWQKPmFnZ3JlZ2F0b3I9
+Mgo+c29mdHdhcmVfdmVyc2lvbj0xLjAuMAo+Cj4jY2F0IC9zeXMvPHBhdGggdG8gZGV2aWNlPi9t
+aWdyYXRpb24vY29tcGF0aWJsZQo+ZGV2aWNlX3R5cGU9dmZpb19wY2kKPm1kZXZfdHlwZT1pOTE1
+LUdWVGdfVjVfe3ZhbDE6aW50OjIsNCw4fQo+ZGV2aWNlX2lkPTgwODY1OTFkCj5hZ2dyZWdhdG9y
+PXt2YWwxfS8yCj5zb2Z0d2FyZV92ZXJzaW9uPTEuMC4wCj4KPlRoZSAvc3lzLzxwYXRoIHRvIGRl
+dmljZT4vbWlncmF0aW9uL3NlbGYgc3BlY2lmaWVzIHNlbGYgYXR0cmlidXRlcyBvZgo+YSBkZXZp
+Y2UuCj5UaGUgL3N5cy88cGF0aCB0byBkZXZpY2U+L21pZ3JhdGlvbi9jb21wYXRpYmxlIHNwZWNp
+ZmllcyB0aGUgbGlzdCBvZgo+Y29tcGF0aWJsZSBkZXZpY2VzIG9mIGEgZGV2aWNlLiBhcyBpbiB0
+aGUgZXhhbXBsZSwgY29tcGF0aWJsZSBkZXZpY2VzCj5jb3VsZCBoYXZlCj4JZGV2aWNlX3R5cGUg
+PT0gdmZpb19wY2kgJiYKPglkZXZpY2VfaWQgPT0gODA4NjU5MWQgICAmJgo+CXNvZnR3YXJlX3Zl
+cnNpb24gPT0gMS4wLjAgJiYKPiAgICAgICAgKAo+CShtZGV2X3R5cGUgb2YgaTkxNS1HVlRnX1Y1
+XzIgJiYgYWdncmVnYXRvcj09MSkgfHwKPgkobWRldl90eXBlIG9mIGk5MTUtR1ZUZ19WNV80ICYm
+IGFnZ3JlZ2F0b3I9PTIpIHx8Cj4JKG1kZXZfdHlwZSBvZiBpOTE1LUdWVGdfVjVfOCAmJiBhZ2dy
+ZWdhdG9yPTQpCj4JKQo+Cj5ieSBjb21wYXJpbmcgd2hldGhlciBhIHRhcmdldCBkZXZpY2UgaXMg
+aW4gY29tcGF0aWJsZSBsaXN0IG9mIHNvdXJjZQo+ZGV2aWNlLCB0aGUgdXNlciBzcGFjZSBjYW4g
+a25vdyB3aGV0aGVyIGEgdHdvIGRldmljZXMgYXJlIGxpdmUgbWlncmF0aW9uCj5jb21wYXRpYmxl
+Lgo+Cj5BZGRpdGlvbmFsIG5vdGVzOgo+MSlzb2Z0d2FyZV92ZXJzaW9uIGluIHRoZSBjb21wYXRp
+YmxlIGxpc3QgbWF5IG5vdCBiZSBuZWNlc3NhcnkgYXMgaXQKPmFscmVhZHkgaGFzIGEgbWFqb3Iu
+bWlub3IuYnVnZml4IHNjaGVtZS4KPjIpZm9yIHZlbmRvciBhdHRyaWJ1dGUgbGlrZSByZW1vdGVf
+dXJsLCBpdCBtYXkgbm90IGJlIHN0YXRpY2FsbHkKPmFzc2lnbmVkIGFuZCBjb3VsZCBiZSBjaGFu
+Z2VkIHdpdGggYSBkZXZpY2UgaW50ZXJmYWNlLgo+Cj5TbywgYXMgQ29ybmVsaWEgcG9pbnRlZCB0
+aGF0IGl0J3Mgbm90IGdvb2QgdG8gdXNlIGNvbXBsZXggZm9ybWF0IGluCj5hIHN5c2ZzIGF0dHJp
+YnV0ZSwgd2UnZCBsaWtlIHRvIGtub3cgd2hldGhlciB0aGVyZSdyZSBvdGhlciBnb29kIHdheXMg
+dG8KPm91ciB1c2UgY2FzZSwgZS5nLiBzcGxpdHRpbmcgYSBzaW5nbGUgYXR0cmlidXRlIHRvIG11
+bHRpcGxlIHNpbXBsZSBzeXNmcwo+YXR0cmlidXRlcyBhcyB3aGF0IENvcm5lbGlhIHN1Z2dlc3Rl
+ZCBvciBkZXZsaW5rIHRoYXQgSmFzb24gaGFzIHN0cm9uZ2x5Cj5yZWNvbW1lbmRlZC4KCkhpIFlh
+bi4KClRoYW5rcyBmb3IgdGhlIGV4cGxhbmF0aW9uLCBJJ20gc3RpbGwgZnV6enkgYWJvdXQgdGhl
+IGRldGFpbHMuCkFueXdheSwgSSBzdWdnZXN0IHlvdSB0byBjaGVjayAiZGV2bGluayBkZXYgaW5m
+byIgY29tbWFuZCB3ZSBoYXZlCmltcGxlbWVudGVkIGZvciBtdWx0aXBsZSBkcml2ZXJzLiBZb3Ug
+Y2FuIHRyeSBuZXRkZXZzaW0gdG8gdGVzdCB0aGlzLgpJIHRoaW5rIHRoYXQgdGhlIGluZm8geW91
+IG5lZWQgdG8gZXhwb3NlIG1pZ2h0IGJlIHB1dCB0aGVyZS4KCkRldmxpbmsgY3JlYXRlcyBpbnN0
+YW5jZSBwZXItZGV2aWNlLiBTcGVjaWZpYyBkZXZpY2UgZHJpdmVyIGNhbGxzIGludG8KZGV2bGlu
+ayBjb3JlIHRvIGNyZWF0ZSB0aGUgaW5zdGFuY2UuICBXaGF0IGRldmljZSBkbyB5b3UgaGF2ZT8g
+V2hhdApkcml2ZXIgaXMgaXQgaGFuZGxlZCBieT8KCgo+Cj5UaGFua3MKPllhbgo+Cj4KPgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2
+IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
