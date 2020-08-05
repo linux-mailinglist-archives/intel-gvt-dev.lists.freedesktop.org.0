@@ -1,54 +1,62 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8995A23C969
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Aug 2020 11:44:49 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id F23B423C968
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Aug 2020 11:44:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1FE2A89FDE;
-	Wed,  5 Aug 2020 09:44:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 649316E0AB;
+	Wed,  5 Aug 2020 09:44:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3C4BB89FDE
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3625189FDE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Aug 2020 09:44:46 +0000 (UTC)
-IronPort-SDR: gHOvC/B4Gl7A2R1SuT5UQ9adZUmn8jacELLXOmCt4HsqBH74j1tVUzDTr+KxtSHHj/wDFvb7ZS
- F5eIolIQlE2A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9703"; a="216867488"
-X-IronPort-AV: E=Sophos;i="5.75,436,1589266800"; d="scan'208";a="216867488"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Aug 2020 02:44:45 -0700
-IronPort-SDR: 7Rw+vlspXpYML9a63JeRkfX1j4VXbBA2Z/iOaMJP+a5uvKx+EoK1iNGHobBPgV7qCukX+dxwb7
- aq0Z2D68P5yw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,436,1589266800"; d="scan'208";a="492766035"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by fmsmga006.fm.intel.com with ESMTP; 05 Aug 2020 02:44:40 -0700
-Date: Wed, 5 Aug 2020 17:33:38 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Jason Wang <jasowang@redhat.com>
+ Wed,  5 Aug 2020 09:44:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1596620683;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zb5KxUrGvImBssm2BT3ZVy2Vf0v+WxPnapjazE+JgIo=;
+ b=gqQ6Zr5OKLOlUPhGF7kN8LNHo3AesXBx3HGxw7Fff6CkmbI859vqz/eHe+wtjaQp42EJpP
+ 5VonZ4eH0TL6w1r2PKkI0rHPSsGfyuKa7zpAK40dHQD+MuP9X0KxxmF9TdAuw1sW1OI7C+
+ 0246ZMZAqp24ZgcJ/mR3q+SSQdgdsng=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-159-nZZ3dcD_N1SEgD8P21T3kw-1; Wed, 05 Aug 2020 05:44:41 -0400
+X-MC-Unique: nZZ3dcD_N1SEgD8P21T3kw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48726101C8A0;
+ Wed,  5 Aug 2020 09:44:39 +0000 (UTC)
+Received: from work-vm (ovpn-114-87.ams2.redhat.com [10.36.114.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BDBE760BF3;
+ Wed,  5 Aug 2020 09:44:25 +0000 (UTC)
+Date: Wed, 5 Aug 2020 10:44:23 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
 Subject: Re: device compatibility interface for live migration with assigned
  devices
-Message-ID: <20200805093338.GC30485@joy-OptiPlex-7040>
-References: <20200721005113.GA10502@joy-OptiPlex-7040>
+Message-ID: <20200805094423.GB3004@work-vm>
+References: <20200717101258.65555978@x1.home>
+ <20200721005113.GA10502@joy-OptiPlex-7040>
  <20200727072440.GA28676@joy-OptiPlex-7040>
  <20200727162321.7097070e@x1.home>
  <20200729080503.GB28676@joy-OptiPlex-7040>
- <20200804183503.39f56516.cohuck@redhat.com>
- <c178a0d3-269d-1620-22b1-9010f602d8ff@redhat.com>
- <20200805021654.GB30485@joy-OptiPlex-7040>
- <2624b12f-3788-7e2b-2cb7-93534960bcb7@redhat.com>
- <20200805075647.GB2177@nanopsycho>
- <eb1d01c2-fbad-36b6-10cf-9e03483a736b@redhat.com>
+ <e8a973ea0bb2bc3eb15649fb1c44599ae3509e84.camel@redhat.com>
+ <20200729131255.68730f68@x1.home>
+ <20200730034104.GB32327@joy-OptiPlex-7040>
+ <20200730112930.6f4c5762@x1.home>
+ <20200804083708.GA30485@joy-OptiPlex-7040>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <eb1d01c2-fbad-36b6-10cf-9e03483a736b@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200804083708.GA30485@joy-OptiPlex-7040>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,137 +69,180 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: Cornelia Huck <cohuck@redhat.com>, kvm@vger.kernel.org,
- libvir-list@redhat.com, qemu-devel@nongnu.org, kwankhede@nvidia.com,
- eauger@redhat.com, xin-ran.wang@intel.com, eskultet@redhat.com,
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
  openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
- jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
- hejie.xu@intel.com, bao.yumeng@zte.com.cn,
- Alex Williamson <alex.williamson@redhat.com>, smooney@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, berrange@redhat.com, corbet@lwn.net,
- Jiri Pirko <jiri@mellanox.com>, dinechin@redhat.com, devel@ovirt.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ kevin.tian@intel.com, eskultet@redhat.com, jian-feng.ding@intel.com,
+ zhenyuw@linux.intel.com, hejie.xu@intel.com, bao.yumeng@zte.com.cn,
+ Alex Williamson <alex.williamson@redhat.com>, Sean Mooney <smooney@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, berrange@redhat.com, cohuck@redhat.com,
+ dinechin@redhat.com, devel@ovirt.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gV2VkLCBBdWcgMDUsIDIwMjAgYXQgMDQ6MDI6NDhQTSArMDgwMCwgSmFzb24gV2FuZyB3cm90
-ZToKPiAKPiBPbiAyMDIwLzgvNSDkuIvljYgzOjU2LCBKaXJpIFBpcmtvIHdyb3RlOgo+ID4gV2Vk
-LCBBdWcgMDUsIDIwMjAgYXQgMDQ6NDE6NTRBTSBDRVNULCBqYXNvd2FuZ0ByZWRoYXQuY29tIHdy
-b3RlOgo+ID4gPiBPbiAyMDIwLzgvNSDkuIrljYgxMDoxNiwgWWFuIFpoYW8gd3JvdGU6Cj4gPiA+
-ID4gT24gV2VkLCBBdWcgMDUsIDIwMjAgYXQgMTA6MjI6MTVBTSArMDgwMCwgSmFzb24gV2FuZyB3
-cm90ZToKPiA+ID4gPiA+IE9uIDIwMjAvOC81IOS4iuWNiDEyOjM1LCBDb3JuZWxpYSBIdWNrIHdy
-b3RlOgo+ID4gPiA+ID4gPiBbc29ycnkgYWJvdXQgbm90IGNoaW1pbmcgaW4gZWFybGllcl0KPiA+
-ID4gPiA+ID4gCj4gPiA+ID4gPiA+IE9uIFdlZCwgMjkgSnVsIDIwMjAgMTY6MDU6MDMgKzA4MDAK
-PiA+ID4gPiA+ID4gWWFuIFpoYW8gPHlhbi55LnpoYW9AaW50ZWwuY29tPiB3cm90ZToKPiA+ID4g
-PiA+ID4gCj4gPiA+ID4gPiA+ID4gT24gTW9uLCBKdWwgMjcsIDIwMjAgYXQgMDQ6MjM6MjFQTSAt
-MDYwMCwgQWxleCBXaWxsaWFtc29uIHdyb3RlOgo+ID4gPiA+ID4gPiAoLi4uKQo+ID4gPiA+ID4g
-PiAKPiA+ID4gPiA+ID4gPiA+IEJhc2VkIG9uIHRoZSBmZWVkYmFjayB3ZSd2ZSByZWNlaXZlZCwg
-dGhlIHByZXZpb3VzbHkgcHJvcG9zZWQgaW50ZXJmYWNlCj4gPiA+ID4gPiA+ID4gPiBpcyBub3Qg
-dmlhYmxlLiAgSSB0aGluayB0aGVyZSdzIGFncmVlbWVudCB0aGF0IHRoZSB1c2VyIG5lZWRzIHRv
-IGJlCj4gPiA+ID4gPiA+ID4gPiBhYmxlIHRvIHBhcnNlIGFuZCBpbnRlcnByZXQgdGhlIHZlcnNp
-b24gaW5mb3JtYXRpb24uICBVc2luZyBqc29uIHNlZW1zCj4gPiA+ID4gPiA+ID4gPiB2aWFibGUs
-IGJ1dCBJIGRvbid0IGtub3cgaWYgaXQncyB0aGUgYmVzdCBvcHRpb24uICBJcyB0aGVyZSBhbnkK
-PiA+ID4gPiA+ID4gPiA+IHByZWNlZGVudCBvZiBtYXJrdXAgc3RyaW5ncyByZXR1cm5lZCB2aWEg
-c3lzZnMgd2UgY291bGQgZm9sbG93Pwo+ID4gPiA+ID4gPiBJIGRvbid0IHRoaW5rIGVuY29kaW5n
-IGNvbXBsZXggaW5mb3JtYXRpb24gaW4gYSBzeXNmcyBmaWxlIGlzIGEgdmlhYmxlCj4gPiA+ID4g
-PiA+IGFwcHJvYWNoLiBRdW90aW5nIERvY3VtZW50YXRpb24vZmlsZXN5c3RlbXMvc3lzZnMucnN0
-Ogo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gIkF0dHJpYnV0ZXMgc2hvdWxkIGJlIEFTQ0lJIHRl
-eHQgZmlsZXMsIHByZWZlcmFibHkgd2l0aCBvbmx5IG9uZSB2YWx1ZQo+ID4gPiA+ID4gPiBwZXIg
-ZmlsZS4gSXQgaXMgbm90ZWQgdGhhdCBpdCBtYXkgbm90IGJlIGVmZmljaWVudCB0byBjb250YWlu
-IG9ubHkgb25lCj4gPiA+ID4gPiA+IHZhbHVlIHBlciBmaWxlLCBzbyBpdCBpcyBzb2NpYWxseSBh
-Y2NlcHRhYmxlIHRvIGV4cHJlc3MgYW4gYXJyYXkgb2YKPiA+ID4gPiA+ID4gdmFsdWVzIG9mIHRo
-ZSBzYW1lIHR5cGUuCj4gPiA+ID4gPiA+IE1peGluZyB0eXBlcywgZXhwcmVzc2luZyBtdWx0aXBs
-ZSBsaW5lcyBvZiBkYXRhLCBhbmQgZG9pbmcgZmFuY3kKPiA+ID4gPiA+ID4gZm9ybWF0dGluZyBv
-ZiBkYXRhIGlzIGhlYXZpbHkgZnJvd25lZCB1cG9uLiIKPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+
-IEV2ZW4gdGhvdWdoIHRoaXMgaXMgYW4gb2xkZXIgZmlsZSwgSSB0aGluayB0aGVzZSByZXN0cmlj
-dGlvbnMgc3RpbGwKPiA+ID4gPiA+ID4gYXBwbHkuCj4gPiA+ID4gPiArMSwgdGhhdCdzIGFub3Ro
-ZXIgcmVhc29uIHdoeSBkZXZsaW5rKG5ldGxpbmspIGlzIGJldHRlci4KPiA+ID4gPiA+IAo+ID4g
-PiA+IGhpIEphc29uLAo+ID4gPiA+IGRvIHlvdSBoYXZlIGFueSBtYXRlcmlhbHMgb3Igc2FtcGxl
-IGNvZGUgYWJvdXQgZGV2bGluaywgc28gd2UgY2FuIGhhdmUgYSBnb29kCj4gPiA+ID4gc3R1ZHkg
-b2YgaXQ/Cj4gPiA+ID4gSSBmb3VuZCBzb21lIGtlcm5lbCBkb2NzIGFib3V0IGl0IGJ1dCBteSBw
-cmVsaW1pbmFyeSBzdHVkeSBkaWRuJ3Qgc2hvdyBtZSB0aGUKPiA+ID4gPiBhZHZhbnRhZ2Ugb2Yg
-ZGV2bGluay4KPiA+ID4gCj4gPiA+IENDIEppcmkgYW5kIFBhcmF2IGZvciBhIGJldHRlciBhbnN3
-ZXIgZm9yIHRoaXMuCj4gPiA+IAo+ID4gPiBNeSB1bmRlcnN0YW5kaW5nIGlzIHRoYXQgdGhlIGZv
-bGxvd2luZyBhZHZhbnRhZ2VzIGFyZSBvYnZpb3VzIChhcyBJIHJlcGxpZWQKPiA+ID4gaW4gYW5v
-dGhlciB0aHJlYWQpOgo+ID4gPiAKPiA+ID4gLSBleGlzdGluZyB1c2VycyAoTklDLCBjcnlwdG8s
-IFNDU0ksIGliKSwgbWF0dXJlIGFuZCBzdGFibGUKPiA+ID4gLSBtdWNoIGJldHRlciBlcnJvciBy
-ZXBvcnRpbmcgKGV4dF9hY2sgb3RoZXIgdGhhbiBzdHJpbmcgb3IgZXJybm8pCj4gPiA+IC0gbmFt
-ZXNwYWNlIGF3YXJlCj4gPiA+IC0gZG8gbm90IGNvdXBsZSB3aXRoIGtvYmplY3QKPiA+IEphc29u
-LCB3aGF0IGlzIHlvdXIgdXNlIGNhc2U/Cj4gCj4gCj4gSSB0aGluayB0aGUgdXNlIGNhc2UgaXMg
-dG8gcmVwb3J0IGRldmljZSBjb21wYXRpYmlsaXR5IGZvciBsaXZlIG1pZ3JhdGlvbi4KPiBZYW4g
-cHJvcG9zZWQgYSBzaW1wbGUgc3lzZnMgYmFzZWQgbWlncmF0aW9uIHZlcnNpb24gZmlyc3QsIGJ1
-dCBpdCBsb29rcyBub3QKPiBzdWZmaWNpZW50IGFuZCBzb21ldGhpbmcgYmFzZWQgb24gSlNPTiBp
-cyBkaXNjdXNzZWQuCj4gCj4gWWFuLCBjYW4geW91IGhlbHAgdG8gc3VtbWFyaXplIHRoZSBkaXNj
-dXNzaW9uIHNvIGZhciBmb3IgSmlyaSBhcyBhCj4gcmVmZXJlbmNlPwo+IAp5ZXMuCndlIGFyZSBj
-dXJyZW50bHkgZGVmaW5pbmcgYW4gZGV2aWNlIGxpdmUgbWlncmF0aW9uIGNvbXBhdGliaWxpdHkK
-aW50ZXJmYWNlIGluIG9yZGVyIHRvIGxldCB1c2VyIHNwYWNlIGxpa2Ugb3BlbnN0YWNrIGFuZCBs
-aWJ2aXJ0IGtub3dzCndoaWNoIHR3byBkZXZpY2VzIGFyZSBsaXZlIG1pZ3JhdGlvbiBjb21wYXRp
-YmxlLgpjdXJyZW50bHkgdGhlIGRldmljZXMgaW5jbHVkZSBtZGV2IChhIGtlcm5lbCBlbXVsYXRl
-ZCB2aXJ0dWFsIGRldmljZSkKYW5kIHBoeXNpY2FsIGRldmljZXMgKGUuZy4gIGEgVkYgb2YgYSBQ
-Q0kgU1JJT1YgZGV2aWNlKS4KCnRoZSBhdHRyaWJ1dGVzIHdlIHdhbnQgdXNlciBzcGFjZSB0byBj
-b21wYXJlIGluY2x1ZGluZwpjb21tb24gYXR0cmlidWVzOgogICAgZGV2aWNlX2FwaTogdmZpby1w
-Y2ksIHZmaW8tY2N3Li4uCiAgICBtZGV2X3R5cGU6IG1kZXYgdHlwZSBvZiBtZGV2IG9yIHNpbWls
-YXIgc2lnbmF0dXJlIGZvciBwaHlzaWNhbCBkZXZpY2UKICAgICAgICAgICAgICAgSXQgc3BlY2lm
-aWVzIGEgZGV2aWNlJ3MgaGFyZHdhcmUgY2FwYWJpbGl0eS4gZS5nLgoJICAgICAgIGk5MTUtR1ZU
-Z19WNV80IG1lYW5zIGl0J3Mgb2YgMS80IG9mIGEgZ2VuOSBJbnRlbCBncmFwaGljcwoJICAgICAg
-IGRldmljZS4KICAgIHNvZnR3YXJlX3ZlcnNpb246IGRldmljZSBkcml2ZXIncyB2ZXJzaW9uLgog
-ICAgICAgICAgICAgICBpbiA8bWFqb3I+LjxtaW5vcj5bLmJ1Z2ZpeF0gc2NoZW1lLCB3aGVyZSB0
-aGVyZSBpcyBubwoJICAgICAgIGNvbXBhdGliaWxpdHkgYWNyb3NzIG1ham9yIHZlcnNpb25zLCBt
-aW5vciB2ZXJzaW9ucyBoYXZlCgkgICAgICAgZm9yd2FyZCBjb21wYXRpYmlsaXR5IChleC4gMS0+
-IDIgaXMgb2ssIDIgLT4gMSBpcyBub3QpIGFuZAoJICAgICAgIGJ1Z2ZpeCB2ZXJzaW9uIG51bWJl
-ciBpbmRpY2F0ZXMgc29tZSBkZWdyZWUgb2YgaW50ZXJuYWwKCSAgICAgICBpbXByb3ZlbWVudCB0
-aGF0IGlzIG5vdCB2aXNpYmxlIHRvIHRoZSB1c2VyIGluIHRlcm1zIG9mCgkgICAgICAgZmVhdHVy
-ZXMgb3IgY29tcGF0aWJpbGl0eSwKCnZlbmRvciBzcGVjaWZpYyBhdHRyaWJ1dGVzOiBlYWNoIHZl
-bmRvciBtYXkgZGVmaW5lIGRpZmZlcmVudCBhdHRyaWJ1dGVzCiAgIGRldmljZSBpZCA6IGRldmlj
-ZSBpZCBvZiBhIHBoeXNpY2FsIGRldmljZXMgb3IgbWRldidzIHBhcmVudCBwY2kgZGV2aWNlLgog
-ICAgICAgICAgICAgICBpdCBjb3VsZCBiZSBlcXVhbCB0byBwY2kgaWQgZm9yIHBjaSBkZXZpY2Vz
-CiAgIGFnZ3JlZ2F0b3I6IHVzZWQgdG9nZXRoZXIgd2l0aCBtZGV2X3R5cGUuIGUuZy4gYWdncmVn
-YXRvcj0yIHRvZ2V0aGVyCiAgICAgICAgICAgICAgIHdpdGggaTkxNS1HVlRnX1Y1XzQgbWVhbnMg
-MioxLzQ9MS8yIG9mIGEgZ2VuOSBJbnRlbAoJICAgICAgIGdyYXBoaWNzIGRldmljZS4KICAgcmVt
-b3RlX3VybDogZm9yIGEgbG9jYWwgTlZNZSBWRiwgaXQgbWF5IGJlIGNvbmZpZ3VyZWQgd2l0aCBh
-IHJlbW90ZQogICAgICAgICAgICAgICB1cmwgb2YgYSByZW1vdGUgc3RvcmFnZSBhbmQgYWxsIGRh
-dGEgaXMgc3RvcmVkIGluIHRoZQoJICAgICAgIHJlbW90ZSBzaWRlIHNwZWNpZmllZCBieSB0aGUg
-cmVtb3RlIHVybC4KICAgLi4uCgpDb21wYXJpbmcgdGhvc2UgYXR0cmlidXRlcyBieSB1c2VyIHNw
-YWNlIGFsb25lIGlzIG5vdCBhbiBlYXN5IGpvYiwgYXMgaXQKY2FuJ3Qgc2ltcGx5IGFzc3VtZSBh
-biBlcXVhbCByZWxhdGlvbnNoaXAgYmV0d2VlbiBzb3VyY2UgYXR0cmlidXRlcyBhbmQKdGFyZ2V0
-IGF0dHJpYnV0ZXMuIGUuZy4KZm9yIGEgc291cmNlIGRldmljZSBvZiBtZGV2X3R5cGU9aTkxNS1H
-VlRnX1Y1XzQsYWdncmVnYXRvcj0yLCAoMS8yIG9mCmdlbjkpLCBpdCBhY3R1YWxseSBjb3VsZCBm
-aW5kIGEgY29tcGF0aWJsZSBkZXZpY2Ugb2YKbWRldl90eXBlPWk5MTUtR1ZUZ19WNV84LGFnZ3Jl
-Z2F0b3I9NCAoYWxzbyAxLzIgb2YgZ2VuOSksCmlmIG1kZXZfdHlwZSBvZiBpOTE1LUdWVGdfVjVf
-NCBpcyBub3QgYXZhaWxhYmxlIGluIHRoZSB0YXJnZXQgbWFjaGluZS4KClNvLCBpbiBvdXIgY3Vy
-cmVudCBwcm9wb3NhbCwgd2Ugd2FudCB0byBjcmVhdGUgdHdvIHN5c2ZzIGF0dHJpYnV0ZXMKdW5k
-ZXIgYSBkZXZpY2Ugc3lzZnMgbm9kZS4KL3N5cy88cGF0aCB0byBkZXZpY2U+L21pZ3JhdGlvbi9z
-ZWxmCi9zeXMvPHBhdGggdG8gZGV2aWNlPi9taWdyYXRpb24vY29tcGF0aWJsZQoKI2NhdCAvc3lz
-LzxwYXRoIHRvIGRldmljZT4vbWlncmF0aW9uL3NlbGYKZGV2aWNlX3R5cGU9dmZpb19wY2kKbWRl
-dl90eXBlPWk5MTUtR1ZUZ19WNV80CmRldmljZV9pZD04MDg2NTkxZAphZ2dyZWdhdG9yPTIKc29m
-dHdhcmVfdmVyc2lvbj0xLjAuMAoKI2NhdCAvc3lzLzxwYXRoIHRvIGRldmljZT4vbWlncmF0aW9u
-L2NvbXBhdGlibGUKZGV2aWNlX3R5cGU9dmZpb19wY2kKbWRldl90eXBlPWk5MTUtR1ZUZ19WNV97
-dmFsMTppbnQ6Miw0LDh9CmRldmljZV9pZD04MDg2NTkxZAphZ2dyZWdhdG9yPXt2YWwxfS8yCnNv
-ZnR3YXJlX3ZlcnNpb249MS4wLjAKClRoZSAvc3lzLzxwYXRoIHRvIGRldmljZT4vbWlncmF0aW9u
-L3NlbGYgc3BlY2lmaWVzIHNlbGYgYXR0cmlidXRlcyBvZgphIGRldmljZS4KVGhlIC9zeXMvPHBh
-dGggdG8gZGV2aWNlPi9taWdyYXRpb24vY29tcGF0aWJsZSBzcGVjaWZpZXMgdGhlIGxpc3Qgb2YK
-Y29tcGF0aWJsZSBkZXZpY2VzIG9mIGEgZGV2aWNlLiBhcyBpbiB0aGUgZXhhbXBsZSwgY29tcGF0
-aWJsZSBkZXZpY2VzCmNvdWxkIGhhdmUKCWRldmljZV90eXBlID09IHZmaW9fcGNpICYmCglkZXZp
-Y2VfaWQgPT0gODA4NjU5MWQgICAmJgoJc29mdHdhcmVfdmVyc2lvbiA9PSAxLjAuMCAmJgogICAg
-ICAgICgKCShtZGV2X3R5cGUgb2YgaTkxNS1HVlRnX1Y1XzIgJiYgYWdncmVnYXRvcj09MSkgfHwK
-CShtZGV2X3R5cGUgb2YgaTkxNS1HVlRnX1Y1XzQgJiYgYWdncmVnYXRvcj09MikgfHwKCShtZGV2
-X3R5cGUgb2YgaTkxNS1HVlRnX1Y1XzggJiYgYWdncmVnYXRvcj00KQoJKQoKYnkgY29tcGFyaW5n
-IHdoZXRoZXIgYSB0YXJnZXQgZGV2aWNlIGlzIGluIGNvbXBhdGlibGUgbGlzdCBvZiBzb3VyY2UK
-ZGV2aWNlLCB0aGUgdXNlciBzcGFjZSBjYW4ga25vdyB3aGV0aGVyIGEgdHdvIGRldmljZXMgYXJl
-IGxpdmUgbWlncmF0aW9uCmNvbXBhdGlibGUuCgpBZGRpdGlvbmFsIG5vdGVzOgoxKXNvZnR3YXJl
-X3ZlcnNpb24gaW4gdGhlIGNvbXBhdGlibGUgbGlzdCBtYXkgbm90IGJlIG5lY2Vzc2FyeSBhcyBp
-dAphbHJlYWR5IGhhcyBhIG1ham9yLm1pbm9yLmJ1Z2ZpeCBzY2hlbWUuCjIpZm9yIHZlbmRvciBh
-dHRyaWJ1dGUgbGlrZSByZW1vdGVfdXJsLCBpdCBtYXkgbm90IGJlIHN0YXRpY2FsbHkKYXNzaWdu
-ZWQgYW5kIGNvdWxkIGJlIGNoYW5nZWQgd2l0aCBhIGRldmljZSBpbnRlcmZhY2UuCgpTbywgYXMg
-Q29ybmVsaWEgcG9pbnRlZCB0aGF0IGl0J3Mgbm90IGdvb2QgdG8gdXNlIGNvbXBsZXggZm9ybWF0
-IGluCmEgc3lzZnMgYXR0cmlidXRlLCB3ZSdkIGxpa2UgdG8ga25vdyB3aGV0aGVyIHRoZXJlJ3Jl
-IG90aGVyIGdvb2Qgd2F5cyB0bwpvdXIgdXNlIGNhc2UsIGUuZy4gc3BsaXR0aW5nIGEgc2luZ2xl
-IGF0dHJpYnV0ZSB0byBtdWx0aXBsZSBzaW1wbGUgc3lzZnMKYXR0cmlidXRlcyBhcyB3aGF0IENv
-cm5lbGlhIHN1Z2dlc3RlZCBvciBkZXZsaW5rIHRoYXQgSmFzb24gaGFzIHN0cm9uZ2x5CnJlY29t
-bWVuZGVkLgoKVGhhbmtzCllhbgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+* Yan Zhao (yan.y.zhao@intel.com) wrote:
+> > > yes, include a device_api field is better.
+> > > for mdev, "device_type=vfio-mdev", is it right?
+> > 
+> > No, vfio-mdev is not a device API, it's the driver that attaches to the
+> > mdev bus device to expose it through vfio.  The device_api exposes the
+> > actual interface of the vfio device, it's also vfio-pci for typical
+> > mdev devices found on x86, but may be vfio-ccw, vfio-ap, etc...  See
+> > VFIO_DEVICE_API_PCI_STRING and friends.
+> > 
+> ok. got it.
+> 
+> > > > > > 	device_id=8086591d  
+> > > > 
+> > > > Is device_id interpreted relative to device_type?  How does this
+> > > > relate to mdev_type?  If we have an mdev_type, doesn't that fully
+> > > > defined the software API?
+> > > >   
+> > > it's parent pci id for mdev actually.
+> >
+> > If we need to specify the parent PCI ID then something is fundamentally
+> > wrong with the mdev_type.  The mdev_type should define a unique,
+> > software compatible interface, regardless of the parent device IDs.  If
+> > a i915-GVTg_V5_2 means different things based on the parent device IDs,
+> > then then different mdev_types should be reported for those parent
+> > devices.
+> >
+> hmm, then do we allow vendor specific fields?
+> or is it a must that a vendor specific field should have corresponding
+> vendor attribute?
+> 
+> another thing is that the definition of mdev_type in GVT only corresponds
+> to vGPU computing ability currently,
+> e.g. i915-GVTg_V5_2, is 1/2 of a gen9 IGD, i915-GVTg_V4_2 is 1/2 of a
+> gen8 IGD.
+> It is too coarse-grained to live migration compatibility.
+
+Can you explain why that's too coarse?
+
+Is this because it's too specific (i.e. that a i915-GVTg_V4_2 could be
+migrated to a newer device?), or that it's too specific on the exact
+sizings (i.e. that there may be multiple different sizes of a gen9)?
+
+Dave
+
+> Do you think we need to update GVT's definition of mdev_type?
+> And is there any guide in mdev_type definition?
+> 
+> > > > > > 	mdev_type=i915-GVTg_V5_2  
+> > > > 
+> > > > And how are non-mdev devices represented?
+> > > >   
+> > > non-mdev can opt to not include this field, or as you said below, a
+> > > vendor signature. 
+> > > 
+> > > > > > 	aggregator=1
+> > > > > > 	pv_mode="none+ppgtt+context"  
+> > > > 
+> > > > These are meaningless vendor specific matches afaict.
+> > > >   
+> > > yes, pv_mode and aggregator are vendor specific fields.
+> > > but they are important to decide whether two devices are compatible.
+> > > pv_mode means whether a vGPU supports guest paravirtualized api.
+> > > "none+ppgtt+context" means guest can not use pv, or use ppgtt mode pv or
+> > > use context mode pv.
+> > > 
+> > > > > > 	interface_version=3  
+> > > > 
+> > > > Not much granularity here, I prefer Sean's previous
+> > > > <major>.<minor>[.bugfix] scheme.
+> > > >   
+> > > yes, <major>.<minor>[.bugfix] scheme may be better, but I'm not sure if
+> > > it works for a complicated scenario.
+> > > e.g for pv_mode,
+> > > (1) initially,  pv_mode is not supported, so it's pv_mode=none, it's 0.0.0,
+> > > (2) then, pv_mode=ppgtt is supported, pv_mode="none+ppgtt", it's 0.1.0,
+> > > indicating pv_mode=none can migrate to pv_mode="none+ppgtt", but not vice versa.
+> > > (3) later, pv_mode=context is also supported,
+> > > pv_mode="none+ppgtt+context", so it's 0.2.0.
+> > > 
+> > > But if later, pv_mode=ppgtt is removed. pv_mode="none+context", how to
+> > > name its version? "none+ppgtt" (0.1.0) is not compatible to
+> > > "none+context", but "none+ppgtt+context" (0.2.0) is compatible to
+> > > "none+context".
+> > 
+> > If pv_mode=ppgtt is removed, then the compatible versions would be
+> > 0.0.0 or 1.0.0, ie. the major version would be incremented due to
+> > feature removal.
+> >  
+> > > Maintain such scheme is painful to vendor driver.
+> > 
+> > Migration compatibility is painful, there's no way around that.  I
+> > think the version scheme is an attempt to push some of that low level
+> > burden on the vendor driver, otherwise the management tools need to
+> > work on an ever growing matrix of vendor specific features which is
+> > going to become unwieldy and is largely meaningless outside of the
+> > vendor driver.  Instead, the vendor driver can make strategic decisions
+> > about where to continue to maintain a support burden and make explicit
+> > decisions to maintain or break compatibility.  The version scheme is a
+> > simplification and abstraction of vendor driver features in order to
+> > create a small, logical compatibility matrix.  Compromises necessarily
+> > need to be made for that to occur.
+> >
+> ok. got it.
+> 
+> > > > > > COMPATIBLE:
+> > > > > > 	device_type=pci
+> > > > > > 	device_id=8086591d
+> > > > > > 	mdev_type=i915-GVTg_V5_{val1:int:1,2,4,8}    
+> > > > > this mixed notation will be hard to parse so i would avoid that.  
+> > > > 
+> > > > Some background, Intel has been proposing aggregation as a solution to
+> > > > how we scale mdev devices when hardware exposes large numbers of
+> > > > assignable objects that can be composed in essentially arbitrary ways.
+> > > > So for instance, if we have a workqueue (wq), we might have an mdev
+> > > > type for 1wq, 2wq, 3wq,... Nwq.  It's not really practical to expose a
+> > > > discrete mdev type for each of those, so they want to define a base
+> > > > type which is composable to other types via this aggregation.  This is
+> > > > what this substitution and tagging is attempting to accomplish.  So
+> > > > imagine this set of values for cases where it's not practical to unroll
+> > > > the values for N discrete types.
+> > > >   
+> > > > > > 	aggregator={val1}/2  
+> > > > 
+> > > > So the {val1} above would be substituted here, though an aggregation
+> > > > factor of 1/2 is a head scratcher...
+> > > >   
+> > > > > > 	pv_mode={val2:string:"none+ppgtt","none+context","none+ppgtt+context"}  
+> > > > 
+> > > > I'm lost on this one though.  I think maybe it's indicating that it's
+> > > > compatible with any of these, so do we need to list it?  Couldn't this
+> > > > be handled by Sean's version proposal where the minor version
+> > > > represents feature compatibility?  
+> > > yes, it's indicating that it's compatible with any of these.
+> > > Sean's version proposal may also work, but it would be painful for
+> > > vendor driver to maintain the versions when multiple similar features
+> > > are involved.
+> > 
+> > This is something vendor drivers need to consider when adding and
+> > removing features.
+> > 
+> > > > > > 	interface_version={val3:int:2,3}  
+> > > > 
+> > > > What does this turn into in a few years, 2,7,12,23,75,96,...
+> > > >   
+> > > is a range better?
+> > 
+> > I was really trying to point out that sparseness becomes an issue if
+> > the vendor driver is largely disconnected from how their feature
+> > addition and deprecation affects migration support.  Thanks,
+> >
+> ok. we'll use the x.y.z scheme then.
+> 
+> Thanks
+> Yan
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
