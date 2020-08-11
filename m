@@ -1,39 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88D312416FB
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Aug 2020 09:13:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id F164A241741
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Aug 2020 09:37:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 544D36E29D;
-	Tue, 11 Aug 2020 07:13:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9A4E16E14D;
+	Tue, 11 Aug 2020 07:37:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 31B7B6E29D
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C473B6E14D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 11 Aug 2020 07:13:07 +0000 (UTC)
-IronPort-SDR: wLwPmNBFZbaefC04s54uoKug58I+jDLyxyO7Vo2grg59/a7tQy6O1AouWB/OuHFoxdy84ASjux
- GvyO/Vb6813g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9709"; a="238513814"
-X-IronPort-AV: E=Sophos;i="5.75,460,1589266800"; d="scan'208";a="238513814"
+ Tue, 11 Aug 2020 07:37:42 +0000 (UTC)
+IronPort-SDR: brYxs8apYCxagVtIqUbDtbA7HchrhYaaJMee5kT8iylJ4YY0jj4HpNH35U5Jq+JjvrI2J/TXOK
+ W2JFsaLu6sgw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9709"; a="141297449"
+X-IronPort-AV: E=Sophos;i="5.75,460,1589266800"; d="scan'208";a="141297449"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2020 00:13:06 -0700
-IronPort-SDR: Wb894ld7+mGkwYL6u0LFv6XNSO9fygGHq7tzRmgz94Mr+wpzG2QhLoTtMrILPgDmMmc7AyJ4yY
- MW6EB0Q/jCCA==
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2020 00:37:41 -0700
+IronPort-SDR: hMof4UHotP4LeEsbVl2Z13QfbSwT+dJco6yUMUK/pHKEshd1MgaSb37zIG7LSpl55tos+ickhj
+ Qbv91kKW0Qew==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,460,1589266800"; d="scan'208";a="324682525"
+X-IronPort-AV: E=Sophos;i="5.75,460,1589266800"; d="scan'208";a="324687249"
 Received: from joy-optiplex-7040.sh.intel.com ([10.239.13.16])
- by orsmga008.jf.intel.com with ESMTP; 11 Aug 2020 00:13:03 -0700
+ by orsmga008.jf.intel.com with ESMTP; 11 Aug 2020 00:37:40 -0700
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org,
 	zhenyuw@linux.intel.com
-Subject: [PATCH 2/4] drm/i915/gvt: remove flag F_CMD_ACCESSED
-Date: Tue, 11 Aug 2020 14:37:44 +0800
-Message-Id: <20200811063744.3272-1-yan.y.zhao@intel.com>
+Subject: [PATCH 3/4] drm/i915/gvt: add/modify interfaces for flag F_CMD_ACCESS
+Date: Tue, 11 Aug 2020 15:02:33 +0800
+Message-Id: <20200811070233.3387-1-yan.y.zhao@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200811055140.29123-1-yan.y.zhao@intel.com>
 References: <20200811055140.29123-1-yan.y.zhao@intel.com>
@@ -56,58 +56,70 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-flag F_CMD_ACCESSED is not used. just remove it.
+flag F_CMD_ACCESS represents whether an MMIO is able to be accessed by
+GPU commands.
+In this patch,
+1. add interface to set this flag
+2. rename intel_gvt_mmio_is_cmd_access() to
+intel_gvt_mmio_is_cmd_accessible() and update its description message.
 
 Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/cmd_parser.c |  2 --
- drivers/gpu/drm/i915/gvt/gvt.h        | 14 --------------
- 2 files changed, 16 deletions(-)
+ drivers/gpu/drm/i915/gvt/cmd_parser.c |  2 +-
+ drivers/gpu/drm/i915/gvt/gvt.h        | 19 +++++++++++++++++--
+ 2 files changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-index 018509eeb0fe..0292e3c1deb4 100644
+index 0292e3c1deb4..affd05d2c201 100644
 --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
 +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-@@ -992,8 +992,6 @@ static int cmd_reg_handler(struct parser_exec_state *s,
- 		}
+@@ -936,7 +936,7 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+ 		return -EFAULT;
  	}
  
--	/* TODO: Update the global mask if this MMIO is a masked-MMIO */
--	intel_gvt_mmio_set_cmd_accessed(gvt, offset);
- 	return 0;
- }
- 
+-	if (!intel_gvt_mmio_is_cmd_access(gvt, offset)) {
++	if (!intel_gvt_mmio_is_cmd_accessible(gvt, offset)) {
+ 		gvt_vgpu_err("%s access to non-render register (%x)\n",
+ 				cmd, offset);
+ 		return -EBADRQC;
 diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 899945b91cc6..8fbe65471c01 100644
+index 8fbe65471c01..d7279cd654ca 100644
 --- a/drivers/gpu/drm/i915/gvt/gvt.h
 +++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -253,8 +253,6 @@ struct intel_gvt_mmio {
- /* This reg has been accessed by a VM */
- #define F_ACCESSED	(1 << 4)
- /* This reg has been accessed through GPU commands */
--#define F_CMD_ACCESSED	(1 << 5)
--/* This reg could be accessed by unaligned address */
- #define F_UNALIGN	(1 << 6)
- /* This reg is in GVT's mmio save-restor list and in hardware
-  * logical context image
-@@ -619,18 +617,6 @@ static inline bool intel_gvt_mmio_is_unalign(
- 	return gvt->mmio.mmio_attribute[offset >> 2] & F_UNALIGN;
+@@ -594,17 +594,32 @@ static inline void intel_gvt_mmio_set_accessed(
  }
  
--/**
-- * intel_gvt_mmio_set_cmd_accessed - mark a MMIO has been accessed by command
-- * @gvt: a GVT device
-- * @offset: register offset
-- *
-- */
--static inline void intel_gvt_mmio_set_cmd_accessed(
--			struct intel_gvt *gvt, unsigned int offset)
--{
--	gvt->mmio.mmio_attribute[offset >> 2] |= F_CMD_ACCESSED;
--}
--
  /**
-  * intel_gvt_mmio_has_mode_mask - if a MMIO has a mode mask
+- * intel_gvt_mmio_is_cmd_accessed - mark a MMIO could be accessed by command
++ * intel_gvt_mmio_is_cmd_accessible - if a MMIO could be accessed by command
+  * @gvt: a GVT device
+  * @offset: register offset
+  *
++ * Returns:
++ * True if an MMIO is able to be accessed by GPU commands
+  */
+-static inline bool intel_gvt_mmio_is_cmd_access(
++static inline bool intel_gvt_mmio_is_cmd_accessible(
+ 			struct intel_gvt *gvt, unsigned int offset)
+ {
+ 	return gvt->mmio.mmio_attribute[offset >> 2] & F_CMD_ACCESS;
+ }
+ 
++/**
++ * intel_gvt_mmio_set_cmd_accessible -
++ *				mark a MMIO could be accessible by command
++ * @gvt: a GVT device
++ * @offset: register offset
++ *
++ */
++static inline void intel_gvt_mmio_set_cmd_accessible(
++			struct intel_gvt *gvt, unsigned int offset)
++{
++	gvt->mmio.mmio_attribute[offset >> 2] |= F_CMD_ACCESS;
++}
++
+ /**
+  * intel_gvt_mmio_is_unalign - mark a MMIO could be accessed unaligned
   * @gvt: a GVT device
 -- 
 2.17.1
