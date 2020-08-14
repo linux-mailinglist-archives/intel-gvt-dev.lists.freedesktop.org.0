@@ -1,83 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A8F72449C2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Aug 2020 14:30:17 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B2B3244FDB
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Aug 2020 00:32:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C54546EB39;
-	Fri, 14 Aug 2020 12:30:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9B69D6E09C;
+	Fri, 14 Aug 2020 22:32:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [205.139.110.61])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7E41B6EB33
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Aug 2020 12:30:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597408213;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1es+FhXf2z4s1o6I95UCtDQxtUvu4w172t+j0+i0n8o=;
- b=NehCnaM1oow7qkSyzqbfPiikqwRKMkP2G47Tr1ytSu64nAhbZKvbixAytWPDWoGCk1ml6W
- 5jrjXpPVig832HDCogNLDDtkNiU8EXKF7zkJCqbffXAeDCNGBKzRgy1BWBwQK8lRNeZ4Jy
- 0SUkdwR4hjjJQ+8qVwWcngieQLubAkA=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-512-rAI4TnfAMEStT63fS8yOJw-1; Fri, 14 Aug 2020 08:30:05 -0400
-X-MC-Unique: rAI4TnfAMEStT63fS8yOJw-1
-Received: by mail-wm1-f71.google.com with SMTP id p23so3133667wmc.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Aug 2020 05:30:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=1es+FhXf2z4s1o6I95UCtDQxtUvu4w172t+j0+i0n8o=;
- b=tQZAdAVkjF2ZwYO6gKWIfSvk5a1qvV/X3Yuc2qHF046WWxFhcFnxhBFfA4psPB9sri
- rk5+m2UtjwEfmXpdPaFIyljltTwqiiFsEKMQioqu+CNie9dhPTY8Gzf48Jd9t0lGrW95
- v4avUayp9JVIwsjUycYGpn0+w2e0oSQsNiC+Zmc1c5c4hwDSBwlKEli7gz6zOf6G+PEN
- +3ECfvJOm52m4jjC507eyxMQrAkVqqQgp851DePgGduIha1fq863VP1Jw2RaQ2t5XA3m
- CoxEcGya6Bmrzk5ndxApuqyLz7AvGa2vUhf3rDe6UKSIDqLrOop8SVoceta/FNmCZj8c
- Ka/A==
-X-Gm-Message-State: AOAM531YTq/th06EKnrd1JP9VRmNgVqAF7njm7oEYQtc1BPSolDIzE31
- Osnl749xwC3+BveJXC9tgdAcKb+DM4NlT7DSSQHXFVczj/ul82MBKc1y5INlEEgMe++6mOj0MVJ
- NUzNPW3Zkntfcf2ONqlFPBb3kw4xp++5/pQ==
-X-Received: by 2002:a1c:9909:: with SMTP id b9mr2354774wme.98.1597408204295;
- Fri, 14 Aug 2020 05:30:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgh08eJQ+zuIOVbZA25ftPbBneCLgohlliBAPXoRqIxCkWEgig17fG/vnPhy7CGR0+dWUICw==
-X-Received: by 2002:a1c:9909:: with SMTP id b9mr2354734wme.98.1597408203987;
- Fri, 14 Aug 2020 05:30:03 -0700 (PDT)
-Received: from pop-os ([2001:470:1f1d:1ea:4fde:6f63:1f5a:12b1])
- by smtp.gmail.com with ESMTPSA id v8sm14694061wmb.24.2020.08.14.05.30.01
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 14 Aug 2020 05:30:03 -0700 (PDT)
-Message-ID: <a4f4a3cf76b87346a4cc4c39c116f575eaab9bac.camel@redhat.com>
-Subject: Re: device compatibility interface for live migration with assigned
- devices
-From: Sean Mooney <smooney@redhat.com>
-To: Yan Zhao <yan.y.zhao@intel.com>, Jason Wang <jasowang@redhat.com>
-Date: Fri, 14 Aug 2020 13:30:00 +0100
-In-Reply-To: <20200814051601.GD15344@joy-OptiPlex-7040>
-References: <20200804183503.39f56516.cohuck@redhat.com>
- <c178a0d3-269d-1620-22b1-9010f602d8ff@redhat.com>
- <20200805021654.GB30485@joy-OptiPlex-7040>
- <2624b12f-3788-7e2b-2cb7-93534960bcb7@redhat.com>
- <20200805075647.GB2177@nanopsycho>
- <eb1d01c2-fbad-36b6-10cf-9e03483a736b@redhat.com>
- <20200805093338.GC30485@joy-OptiPlex-7040>
- <20200805105319.GF2177@nanopsycho>
- <20200810074631.GA29059@joy-OptiPlex-7040>
- <e6e75807-0614-bd75-aeb6-64d643e029d3@redhat.com>
- <20200814051601.GD15344@joy-OptiPlex-7040>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2
-Mime-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=smooney@redhat.com
-X-Mimecast-Spam-Score: 0.502
-X-Mimecast-Originator: redhat.com
+X-Greylist: delayed 10418 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Aug 2020 22:32:52 UTC
+Received: from server1.synopsysusa.com (unknown [171.22.137.28])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1A7D56E09C;
+ Fri, 14 Aug 2020 22:32:52 +0000 (UTC)
+Received: from User (localhost [IPv6:::1])
+ by server1.synopsysusa.com (Postfix) with SMTP id 6B7731F665;
+ Fri, 14 Aug 2020 01:11:11 -0400 (EDT)
+From: "Tony Harris"<lendingtreefinancial@hotmail.com>
+Subject: Business Loan and Project funding is ready for you
+Date: Fri, 14 Aug 2020 10:47:53 -0700
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20200814051111.6B7731F665@server1.synopsysusa.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,118 +38,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Cornelia Huck <cohuck@redhat.com>, kvm@vger.kernel.org,
- libvir-list@redhat.com, qemu-devel@nongnu.org, kwankhede@nvidia.com,
- eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
- openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
- jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
- hejie.xu@intel.com, bao.yumeng@zte.com.cn,
- Alex Williamson <alex.williamson@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, berrange@redhat.com, eskultet@redhat.com,
- Jiri Pirko <jiri@mellanox.com>, dinechin@redhat.com, devel@ovirt.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: finance@lendingtreefinancials.co.uk
+Content-Type: multipart/mixed; boundary="===============1743363532=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gRnJpLCAyMDIwLTA4LTE0IGF0IDEzOjE2ICswODAwLCBZYW4gWmhhbyB3cm90ZToKPiBPbiBU
-aHUsIEF1ZyAxMywgMjAyMCBhdCAxMjoyNDo1MFBNICswODAwLCBKYXNvbiBXYW5nIHdyb3RlOgo+
-ID4gCj4gPiBPbiAyMDIwLzgvMTAg5LiL5Y2IMzo0NiwgWWFuIFpoYW8gd3JvdGU6Cj4gPiA+ID4g
-ZHJpdmVyIGlzIGl0IGhhbmRsZWQgYnk/Cj4gPiA+IAo+ID4gPiBJdCBsb29rcyB0aGF0IHRoZSBk
-ZXZsaW5rIGlzIGZvciBuZXR3b3JrIGRldmljZSBzcGVjaWZpYywgYW5kIGluCj4gPiA+IGRldmxp
-bmsuaCwgaXQgc2F5cwo+ID4gPiBpbmNsdWRlL3VhcGkvbGludXgvZGV2bGluay5oIC0gTmV0d29y
-ayBwaHlzaWNhbCBkZXZpY2UgTmV0bGluawo+ID4gPiBpbnRlcmZhY2UsCj4gPiAKPiA+IAo+ID4g
-QWN0dWFsbHkgbm90LCBJIHRoaW5rIHRoZXJlIHVzZWQgdG8gaGF2ZSBzb21lIGRpc2N1c3Npb24g
-bGFzdCB5ZWFyIGFuZCB0aGUKPiA+IGNvbmNsdXNpb24gaXMgdG8gcmVtb3ZlIHRoaXMgY29tbWVu
-dC4KPiA+IAo+ID4gSXQgc3VwcG9ydHMgSUIgYW5kIHByb2JhYmx5IHZEUEEgaW4gdGhlIGZ1dHVy
-ZS4KPiA+IAo+IAo+IGhtbS4uLiBzb3JyeSwgSSBkaWRuJ3QgZmluZCB0aGUgcmVmZXJyZWQgZGlz
-Y3Vzc2lvbi4gb25seSBiZWxvdyBkaXNjdXNzaW9uCj4gcmVnYXJkaW5nIHRvIHdoeSB0byBhZGQg
-ZGV2bGluay4KPiAKPiBodHRwczovL3d3dy5tYWlsLWFyY2hpdmUuY29tL25ldGRldkB2Z2VyLmtl
-cm5lbC5vcmcvbXNnOTU4MDEuaHRtbAo+IAk+VGhpcyBkb2Vzbid0IHNlZW0gdG8gYmUgdG9vIG11
-Y2ggcmVsYXRlZCB0byBuZXR3b3JraW5nPyBXaHkgY2FuJ3Qgc29tZXRoaW5nCj4gCT5saWtlIHRo
-aXMgYmUgaW4gc3lzZnM/Cj4gCQo+IAlJdCBpcyByZWxhdGVkIHRvIG5ldHdvcmtpbmcgcXVpdGUg
-Yml0LiBUaGVyZSBoYXMgYmVlbiBjb3VwbGUgb2YKPiAJaXRlcmF0aW9uIG9mIHRoaXMsIGluY2x1
-ZGluZyBzeXNmcyBhbmQgY29uZmlnZnMgaW1wbGVtZW50YXRpb25zLiBUaGVyZQo+IAloYXMgYmVl
-biBhIGNvbnNlbnN1cyByZWFjaGVkIHRoYXQgdGhpcyBzaG91bGQgYmUgZG9uZSBieSBuZXRsaW5r
-LiBJCj4gCWJlbGlldmUgbmV0bGluayBpcyByZWFsbHkgdGhlIGJlc3QgZm9yIHRoaXMgcHVycG9z
-ZS4gU3lzZnMgaXMgbm90IGEgZ29vZAo+IAlpZGVhCj4gCj4gaHR0cHM6Ly93d3cubWFpbC1hcmNo
-aXZlLmNvbS9uZXRkZXZAdmdlci5rZXJuZWwub3JnL21zZzk2MTAyLmh0bWwKPiAJPnRoZXJlIGlz
-IGFscmVhZHkgYSB3YXkgdG8gY2hhbmdlIGV0aC9pYiB2aWEKPiAJPmVjaG8gJ2V0aCcgPiAvc3lz
-L2J1cy9wY2kvZHJpdmVycy9tbHg0X2NvcmUvMDAwMDowMjowMC4wL21seDRfcG9ydDEKPiAJPgo+
-IAk+c291bmRzIGxpa2UgdGhpcyBpcyBhbm90aGVyIHdheSB0byBhY2hpZXZlIHRoZSBzYW1lPwo+
-IAkKPiAJSXQgaXMuIEhvd2V2ZXIgdGhlIGN1cnJlbnQgd2F5IGlzIGRyaXZlci1zcGVjaWZpYywg
-bm90IGNvcnJlY3QuCj4gCUZvciBtbHg1LCB3ZSBuZWVkIHRoZSBzYW1lLCBpdCBjYW5ub3QgYmUg
-ZG9uZSBpbiB0aGlzIHdheS4gRG8gZGV2bGluayBpcwo+IAl0aGUgY29ycmVjdCB3YXkgdG8gZ28u
-CmltIG5vdCBzdXJlIGkgYWdyZWUgd2l0aCB0aGF0LgpzdGFuZGFyZGlzaW5nIGEgZmlsZXN5c3Rl
-bSBiYXNlZCBhcGkgdGhhdCBpcyB1c2VkIGFjcm9zcyBhbGwgdmVuZG9ycyBpcyBhbHNvIGEgdmFs
-aWQKb3B0aW9uLiAgdGhhdCBzYWlkIGlmIGRldmxpbmsgaXMgdGhlIHJpZ2h0IGNob2ljZSBmb3Jt
-IGEga2VyZW5sIHBlcnNwZWN0aXZlIGJ5IGFsbAptZWFucyB1c2UgaXQgYnV0IGkgaGF2ZSBub3Qg
-aGVhcmQgYSBjb252aW5jaW5nIGFyZ3VtZW50IGZvciB3aHkgaXQgYWN0dWFsbHkgYmV0dGVyLgp3
-aXRoIHR0aGF0IHNhaWQgd2UgaGF2ZSBiZWVuIHVpbmcgdG9vbHMgbGlrZSBldGh0b29sIHRvIG1h
-bmFnZSBhc3BlY3Qgb2YgbmljcyBmb3IgZGVjYWRlcwpzbyBpdHMgbm90IHRoYXQgc3RyYW5nZSBh
-biBpZGVhIHRvIHVzZSBhIHRvb2wgYW5kIGJpbmFyeSBwcm90b2NvYWwgcmF0aGVyIHRoZW4gYSB0
-ZXh0CmJhc2VkIGludGVyZmFjZSBmb3IgdGhpcyBidXQgdGhlcmUgYXJlIGFkdmFudGFnZXMgdG8g
-Ym90aCBhcHByb2NoZXMuCj4gCj4gaHR0cHM6Ly9sd24ubmV0L0FydGljbGVzLzY3NDg2Ny8KPiAJ
-VGhlcmUgYSBpcyBuZWVkIGZvciBzb21lIHVzZXJzcGFjZSBBUEkgdGhhdCB3b3VsZCBhbGxvdyB0
-byBleHBvc2UgdGhpbmdzCj4gCXRoYXQgYXJlIG5vdCBkaXJlY3RseSByZWxhdGVkIHRvIGFueSBk
-ZXZpY2UgY2xhc3MgbGlrZSBuZXRfZGV2aWNlIG9mCj4gCWliX2RldmljZSwgYnV0IHJhdGhlciBj
-aGlwLXdpZGUvc3dpdGNoLUFTSUMtd2lkZSBzdHVmZi4KPiAKPiAJVXNlIGNhc2VzOgo+IAkxKSBn
-ZXQvc2V0IG9mIHBvcnQgdHlwZSAoRXRoZXJuZXQvSW5maW5pQmFuZCkKPiAJMikgbW9uaXRvcmlu
-ZyBvZiBoYXJkd2FyZSBtZXNzYWdlcyB0byBhbmQgZnJvbSBjaGlwCj4gCTMpIHNldHRpbmcgdXAg
-cG9ydCBzcGxpdHRlcnMgLSBzcGxpdCBwb3J0IGludG8gbXVsdGlwbGUgb25lcyBhbmQgc3F1YXNo
-IGFnYWluLAo+IAkgICBlbmFibGVzIHVzYWdlIG9mIHNwbGl0dGVyIGNhYmxlCj4gCTQpIHNldHRp
-bmcgdXAgc2hhcmVkIGJ1ZmZlcnMgLSBzaGFyZWQgYW1vbmcgbXVsdGlwbGUgcG9ydHMgd2l0aGlu
-IG9uZSBjaGlwCj4gCj4gCj4gCj4gd2UgYWN0dWFsbHkgY2FuIGFsc28gcmV0cmlldmUgdGhlIHNh
-bWUgaW5mb3JtYXRpb24gdGhyb3VnaCBzeXNmcywgLmUuZwo+IAo+ID4gLSBbcGF0aCB0byBkZXZp
-Y2VdCj4gCj4gICB8LS0tIG1pZ3JhdGlvbgo+ICAgfCAgICAgfC0tLSBzZWxmCj4gICB8ICAgICB8
-ICAgfC0tLWRldmljZV9hcGkKPiAgIHwJfCAgIHwtLS1tZGV2X3R5cGUKPiAgIHwJfCAgIHwtLS1z
-b2Z0d2FyZV92ZXJzaW9uCj4gICB8CXwgICB8LS0tZGV2aWNlX2lkCj4gICB8CXwgICB8LS0tYWdn
-cmVnYXRvcgo+ICAgfCAgICAgfC0tLSBjb21wYXRpYmxlCj4gICB8ICAgICB8ICAgfC0tLWRldmlj
-ZV9hcGkKPiAgIHwJfCAgIHwtLS1tZGV2X3R5cGUKPiAgIHwJfCAgIHwtLS1zb2Z0d2FyZV92ZXJz
-aW9uCj4gICB8CXwgICB8LS0tZGV2aWNlX2lkCj4gICB8CXwgICB8LS0tYWdncmVnYXRvcgo+IAo+
-IAo+IAo+ID4gCj4gPiA+ICAgSSBmZWVsIGxpa2UgaXQncyBub3QgdmVyeSBhcHByb3ByaWF0ZSBm
-b3IgYSBHUFUgZHJpdmVyIHRvIHVzZQo+ID4gPiB0aGlzIGludGVyZmFjZS4gSXMgdGhhdCByaWdo
-dD8KPiA+IAo+ID4gCj4gPiBJIHRoaW5rIG5vdCB0aG91Z2ggbW9zdCBvZiB0aGUgdXNlcnMgYXJl
-IHN3aXRjaCBvciBldGhlcm5ldCBkZXZpY2VzLiBJdAo+ID4gZG9lc24ndCBwcmV2ZW50IHlvdSBm
-cm9tIGludmVudGluZyBuZXcgYWJzdHJhY3Rpb25zLgo+IAo+IHNvIG5lZWQgdG8gcGF0Y2ggZGV2
-bGluayBjb3JlIGFuZCB0aGUgdXNlcnNwYWNlIGRldmxpbmsgdG9vbD8KPiBlLmcuIGRldmxpbmsg
-bWlncmF0aW9uCmFuZCBkZXZsaW5rIHB5dGhvbiBsaWJzIGlmIG9wZW5zdGFjayB3YXMgdG8gdXNl
-IGl0IGRpcmVjdGx5Lgp3ZSBkbyBoYXZlIGNhZXMgd2hlcmUgd2UganVzdCBmcm9rIGEgcHJvY2Vz
-cyBhbmQgZXhlY2F1dGUgYSBjb21hbm5kIGluIGEgc2hlbGwKd2l0aCBvciB3aXRob3V0IGVsZXZh
-dGVkIHByaXZsYWRnZSBidXQgd2UgcmVhbGx5IGRvbnQgbGlrZSBkb2luZyB0aGF0IGR1ZSB0byAK
-dGhlIHBlcmZvcm1hY25lIGltcGFjYXQgYW5kIHNlY3VyaXR5IGltcGxjaWF0aW9ucyBzbyB3aGVy
-ZSB3ZSBjYW4gdXNlIHB5dGhvbiBiaW5kaWduCm92ZXIgYyBhcGlzIHdlIGRvLiBweXJvdXRlMiBp
-cyB0aGUgb25seSBweXRob24gbGliIGkga25vdyBvZmYgb2YgdGhlIHRvcCBvZiBteSBoZWFkCnRo
-YXQgc3VwcG9ydCBkZXZsaW5rIHNvIHdlIHdvdWxkIG5lZWQgdG8gZW5oYWNuZSBpdCB0byBzdXBw
-b3J0IHRoaXMgbmV3IGRldmxpbmsgYXBpLgp0aGVyZSBtYXkgYmUgb3RoZXJzcyBpIGhhdmUgbm90
-IHJlYWxseSBsb29rZWQgaW4gdGhlIHBhc3Qgc2luY2Ugd2UgZG9udCBuZWVkIHRvIHVzZQpkZXZs
-aW5rIGF0IGFsbCB0b2RheS4KPiAKPiA+IE5vdGUgdGhhdCBkZXZsaW5rIGlzIGJhc2VkIG9uIG5l
-dGxpbmssIG5ldGxpbmsgaGFzIGJlZW4gd2lkZWx5IHVzZWQgYnkKPiA+IHZhcmlvdXMgc3Vic3lz
-dGVtcyBvdGhlciB0aGFuIG5ldHdvcmtpbmcuCj4gCj4gdGhlIGFkdmFudGFnZSBvZiBuZXRsaW5r
-IEkgc2VlIGlzIHRoYXQgaXQgY2FuIG1vbml0b3IgZGV2aWNlIHN0YXR1cyBhbmQKPiBub3RpZnkg
-dXBwZXIgbGF5ZXIgdGhhdCBtaWdyYXRpb24gZGF0YWJhc2UgbmVlZHMgdG8gZ2V0IHVwZGF0ZWQu
-Cj4gQnV0IG5vdCBzdXJlIHdoZXRoZXIgb3BlbnN0YWNrIHdvdWxkIGxpa2UgdG8gdXNlIHRoaXMg
-Y2FwYWJpbGl0eS4KPiBBcyBTZWFuIHNhaWQsIGl0J3MgaGVhdnkgZm9yIG9wZW5zdGFjay4gaXQn
-cyBoZWF2eSBmb3IgdmVuZG9yIGRyaXZlcgo+IGFzIHdlbGwgOikKPiAKPiBBbmQgZGV2bGluayBt
-b25pdG9yIG5vdyBsaXN0ZW5zIHRoZSBub3RpZmljYXRpb24gYW5kIGR1bXBzIHRoZSBzdGF0ZQo+
-IGNoYW5nZXMuIElmIHdlIHdhbnQgdG8gdXNlIGl0LCBuZWVkIHRvIGxldCBpdCBmb3J3YXJkIHRo
-ZSBub3RpZmljYXRpb24KPiBhbmQgZHVtcGVkIGluZm8gdG8gb3BlbnN0YWNrLCByaWdodD8KaSBk
-b250IHRoaW5rIHdlIHdvdWxkIHVzZSBkaXJlY3QgZGV2bGluayBtb25pdG9yaW5nIGluIG5vdmEg
-ZXZlbiBpZiBpdCB3YXMgYXZhaWFibGUuCndlIGNvdWxkIGJ1dCB3ZSBhbHJlYWR5IHBvbGwgbGli
-dmlydCBhbmQgdGhlIHN5c3RlbSBmb3Igb3RoZXIgcmVzb3VjZSBwZXJpb2RpY2x5Lgp3ZSBsaWtl
-bHkgd291bGRsIGp1c3QgYWRkIG1vbml0b3JpdiB2aWEgZGV2bGluayB0byB0aGF0IHBlcmlvZGlj
-IHRhc2suCndlIGNlcnRlbmx5IHdvdWxkIG5vdCB1c2UgaXQgdG8gZGV0ZWN0IGEgbWlncmF0aW9u
-IG9yIGEgbmVlZCB0byB1cGRhdGUgYSBtaWdyYXRpb24gZGF0YWJhc2Uobm90IHN1cmUgd2hhdCB0
-aGF0IGlzKQoKaW4gcmVhbGl0eSBpZiB3ZSBjYW4gY29uc3VtZSB0aGlzIGluZm8gaW5kaXJlY3Rs
-eSB2aWEgYSBsaWJ2aXJ0IGFwaSB0aGF0IHdpbGwKYmUgdGhlIGFwcGNvaCB3ZSB3aWxsIHRha2Ug
-YXQgbGVhc3QgZm9yIHRoZSBsaWJ2aXJ0IGRyaXZlciBpbiBub3ZhLiBmb3IgY3lib3JnCnRoZXkg
-bWF5IHRha2UgYSBkaWZmZXJlbnQgYXBwb2NoLiB3ZSBhbHJlYWR5IHVzZSBweXJvdXRlMiBpbiAy
-IHByb2plY3RzLCBvcy12aWYgYW5kCm5ldXRyb24gYW5kIGl0IGRvZXMgaGF2ZSBkZXZsaW5rIHN1
-cHBvcnQgc28gdGhlIGJ1cmRlbiBvZiB1c2luZyBkZXZsaW5rIGlzIG5vdCB0aGF0CmhpZ2ggZm9y
-IG9wZW5zdGFjayBidXQgaXRzIGEgbGVzcyBmcmluZWFkbHkgaW50ZXJmYWNlIGZvciBjb25maWd1
-cmF0aW9uIHRvb2xzIGxpa2UKYW5zaWFibGUgdnMgYSBmaWxlc3lzdGVtIGJhc2VkIGFwcHJvY2gu
-Cj4gCj4gVGhhbmtzCj4gWWFuCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+--===============1743363532==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Hello Sir/Ma</title>
+</head>
+
+<body>
+
+<p><span style="font-size: 13pt">Hello Sir/Ma,<br>
+<br>
+We are inviting all interested project owners and investors to our <br>
+project financing program.&nbsp; Are you sourcing for working capital,<br> project 
+financing, expansion
+etc, we are here to provide your financial<br> needs.<br>
+<br>
+We offer quality Services as we are working with some of the most<br>
+experienced people in the AAA Rated financial industries. Non-Recourse<br>Loan, 
+Trade Finance, Credit enhancement, Expansion, Constructions,<br> BG Leased
+Monetization, Property Investment, Government funding<br> and diverse 
+funding is our business.<br><br>
+LendingTree Financials Ltd: we feel it is paramount to invest,<br>
+as well as support the development and expansion of viable businesses<br>
+if genuine solid income and employment generating projects are there.<br>
+<br>
+We wish to re-invest through project funding in investment loan/Equity<br>
+to third party investors, project owners on a 2% interest rate per annum<br>
+on long/short term investment projects that can generate up to 10% ROI<br>
+within the period.<br>
+<br>
+Kindly get back to us if our offer is welcomed by you and your organization.<br>
+<br>
+<br>
+Kind regards,</span><br>
+<br>
+<span style="font-size: 13pt">Tony Harris<br>
+<b>Manager<br>
+LendingTree Financials Ltd<br>
+Email:</b> <font color="#0000FF">tony.harris@lendingtreefinancials.co.uk</font></span><font color="#0000FF"></font><br>
+<br>
+&nbsp;</p>
+
+</body>
+
+</html>
+
+--===============1743363532==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1743363532==--
