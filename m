@@ -1,30 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 036332464C5
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Aug 2020 12:49:04 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C821C24659D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Aug 2020 13:43:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 989026E075;
-	Mon, 17 Aug 2020 10:49:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8D05D6E1F5;
+	Mon, 17 Aug 2020 11:43:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 147983 seconds by postgrey-1.36 at gabe;
- Mon, 17 Aug 2020 10:49:01 UTC
-Received: from mail.adaptinc.org (mail.adaptinc.org [66.231.40.205])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 33DBB6E075;
- Mon, 17 Aug 2020 10:49:01 +0000 (UTC)
-Received: from User (192.168.1.3) by remote.adaptinc.org (192.168.1.4) with
- Microsoft SMTP Server id 14.3.266.1; Sat, 15 Aug 2020 13:37:55 -0400
-From: "Mr. Paul M Donofrio" <ernst.kiechle@t-online.de>
-Subject: Re: URGENT E-MAIL NOTIFICATION.
-Date: Sat, 15 Aug 2020 19:37:55 +0200
+X-Greylist: delayed 902 seconds by postgrey-1.36 at gabe;
+ Mon, 17 Aug 2020 11:43:26 UTC
+Received: from smtp.columbiacountyga.gov (smtp.columbiacountyga.gov
+ [162.216.25.215])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E31566E1F5;
+ Mon, 17 Aug 2020 11:43:26 +0000 (UTC)
+From: Peter Alexandra <dbolte@columbiacountyga.gov>
+Subject: OPPORTUNITY...
+Date: Mon, 17 Aug 2020 04:27:39 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <148cb360-b15d-4a7c-b082-8cd2101bc65b@FS2.adapt.local>
+Message-ID: <61dd5f43aded499e84199b1e974b4c0d@CGC0207.columbia.gov>
 To: Undisclosed recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -38,41 +37,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: paulmdonofrio8@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: peteralexandra20202@gmail.com
+Content-Type: multipart/mixed; boundary="===============0773634986=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Bank of America New York Head Office of (Paying Bank)
-From The Desk of: Paul M, Donofrio..
-Bank of America.
-Branch Offices New York
-1680 Broadway, New York. NY 10019, USA.
-Vice Chairman on Investment
-Banking Director, Credit Control Dept.
-Lobby: Mon-Thu 9-4, Fri 9-6, Sat 9-1, Sun Closed
+--===============0773634986==
+Content-Type: text/html; charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
-We officially notify that our bank received a payment credit instruction for fund telegraphic, transfer through our bank to your bank account,
-which has been officially approved by the management of (WBS) to credit the sum of 18.5 MILLION, into your bank account.
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+&nbsp;</DIV>
+<DIV>
+Dear Sir/Madam</DIV>
+<DIV>
+ </DIV>
+<DIV>
+I am Mr. Peter Alexandra, a representative of&nbsp; Exxon Mobil in London (http://www.exxonmobil.com) As a senior&nbsp; representative of Exxon that handle contract related matters, I over invoiced a contract which is not known by anybody and, I need your full cooperation and partnership to re-profile this contract funds amounting to US$12.2M to your name as a Contractor that executed this contract in Asia few years ago. At the completion of this transaction, the sharing rates shall be 60% for me, 40% for you.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+Best Regards,</DIV>
+<DIV>
+Mr. Peter Alexandra</DIV>
+<DIV>
+&nbsp;</DIV>
+</FONT>
+</BODY></HTML>
 
-I hereby acquaint you with the procedure for the release and transfer of this approved payment fund to you.
+--===============0773634986==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-You are required to furnish to us the under mentioned statutory requisites to enable my office commence actions.
-
-Full name:
-Address:
-Telephone:
-Mobile:
-Age:
-Occupation:
-
-This is a golden opportunity for you to receive your fund. Thanks for your anticipated co-operation.
-Your immediate response is highly needed to enable us commence for the transfer.
-
-Yours faithfully,
-Mr. Paul m, Donofrio
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0773634986==--
