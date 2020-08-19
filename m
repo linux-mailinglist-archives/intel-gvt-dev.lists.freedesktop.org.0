@@ -2,38 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C8FE249220
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Aug 2020 03:08:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCEA1249225
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Aug 2020 03:09:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BA1EC6E194;
-	Wed, 19 Aug 2020 01:08:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 854D16E194;
+	Wed, 19 Aug 2020 01:09:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 40AF56E194
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 38B306E194
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Aug 2020 01:08:07 +0000 (UTC)
-IronPort-SDR: A+4QzLEUi0tb+iMnKMtzZp8Id4bucBaEJBtBCZi/EmJVQNU1CXmQO2Blavne3n4NrQWbNOnGhd
- pWJGu0eBOMJA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="152649624"
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="152649624"
+ Wed, 19 Aug 2020 01:09:04 +0000 (UTC)
+IronPort-SDR: zpfrc8cPuegX3QKgJlPZA0t2oEEkTT/kzaJxApcLd0hBZRm4UfNtHY5QrsLObxzax6hoQ+eceW
+ uKEyLFNtQp9g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="152444811"
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="152444811"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Aug 2020 18:08:06 -0700
-IronPort-SDR: R6mT6HWCls0EZOG9sc6LSnSlj/jnzj7FF1bZ279tIJ0PnTHTp0ED5yPNBd+weyZ3Aa7CWN1zVo
- q1e3WiLK+APw==
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2020 18:09:03 -0700
+IronPort-SDR: R+4UiJi1xxTbQU+cVCgXxuGsptVqGi2AlTJZsGZcczatKVRmgS25S/pthrzgCLAUNvzydxLTXD
+ HGQ4Z+dsEeCA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="441425212"
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="334525001"
 Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.21])
- by orsmga004.jf.intel.com with ESMTP; 18 Aug 2020 18:08:05 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 18 Aug 2020 18:09:03 -0700
 From: Colin Xu <colin.xu@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: Add F_CMD_ACCESS for some GEN9 SKU WA MMIO
- access
-Date: Wed, 19 Aug 2020 09:08:01 +0800
-Message-Id: <20200819010801.53411-1-colin.xu@intel.com>
+Subject: [PATCH] drm/i915/gvt: Init vreg GUC_STATUS to GS_MIA_IN_RESET
+Date: Wed, 19 Aug 2020 09:09:00 +0800
+Message-Id: <20200819010900.54598-1-colin.xu@intel.com>
 X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -54,40 +53,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Without F_CMD_ACCESS, guest LRI cmd will fail due to "access to
-non-render register" when init below WAs:
-WaDisableDynamicCreditSharing: GAMT_CHKN_BIT_REG
-WaCompressedResourceSamplerPbeMediaNewHashMode: MMCD_MISC_CTRL
-
-So add F_CMD_ACCESS to the two MMIO.
+Although GVT doesnt' support guest GuC, MIA core is still expected
+to be GS_MIA_IN_RESET after uc HW reset.
 
 Signed-off-by: Colin Xu <colin.xu@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/handlers.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/gvt/mmio.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index d55cb43c9bd4..840572add2d4 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -2922,7 +2922,7 @@ static int init_skl_mmio_info(struct intel_gvt *gvt)
- 	MMIO_D(GEN9_MEDIA_PG_IDLE_HYSTERESIS, D_SKL_PLUS);
- 	MMIO_D(GEN9_RENDER_PG_IDLE_HYSTERESIS, D_SKL_PLUS);
- 	MMIO_DFH(GEN9_GAMT_ECO_REG_RW_IA, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL);
--	MMIO_DH(MMCD_MISC_CTRL, D_SKL_PLUS, NULL, NULL);
-+	MMIO_DFH(MMCD_MISC_CTRL, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL);
- 	MMIO_DH(CHICKEN_PAR1_1, D_SKL_PLUS, NULL, NULL);
- 	MMIO_D(DC_STATE_EN, D_SKL_PLUS);
- 	MMIO_D(DC_STATE_DEBUG, D_SKL_PLUS);
-@@ -3138,7 +3138,7 @@ static int init_skl_mmio_info(struct intel_gvt *gvt)
- 	MMIO_DFH(GEN9_WM_CHICKEN3, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS,
- 		 NULL, NULL);
+diff --git a/drivers/gpu/drm/i915/gvt/mmio.c b/drivers/gpu/drm/i915/gvt/mmio.c
+index 291993615af9..b6811f6a230d 100644
+--- a/drivers/gpu/drm/i915/gvt/mmio.c
++++ b/drivers/gpu/drm/i915/gvt/mmio.c
+@@ -251,6 +251,9 @@ void intel_vgpu_reset_mmio(struct intel_vgpu *vgpu, bool dmlr)
+ 		/* set the bit 0:2(Core C-State ) to C0 */
+ 		vgpu_vreg_t(vgpu, GEN6_GT_CORE_STATUS) = 0;
  
--	MMIO_D(GAMT_CHKN_BIT_REG, D_KBL | D_CFL);
-+	MMIO_DFH(GAMT_CHKN_BIT_REG, D_KBL | D_CFL, F_CMD_ACCESS, NULL, NULL);
- 	MMIO_D(GEN9_CTX_PREEMPT_REG, D_SKL_PLUS);
- 
- 	return 0;
++		/* uc reset hw expect GS_MIA_IN_RESET */
++		vgpu_vreg_t(vgpu, GUC_STATUS) |= GS_MIA_IN_RESET;
++
+ 		if (IS_BROXTON(vgpu->gvt->gt->i915)) {
+ 			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) &=
+ 				    ~(BIT(0) | BIT(1));
 -- 
 2.28.0
 
