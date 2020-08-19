@@ -2,110 +2,107 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED279249462
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Aug 2020 07:27:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1178E2494BE
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Aug 2020 07:58:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A038189F43;
-	Wed, 19 Aug 2020 05:27:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A3B6F89A5E;
+	Wed, 19 Aug 2020 05:58:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from hqnvemgate26.nvidia.com (hqnvemgate26.nvidia.com
- [216.228.121.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3C47489F41
+Received: from hqnvemgate24.nvidia.com (hqnvemgate24.nvidia.com
+ [216.228.121.143])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5987089A5E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Aug 2020 05:27:08 +0000 (UTC)
+ Wed, 19 Aug 2020 05:58:18 +0000 (UTC)
 Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
- hqnvemgate26.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
- id <B5f3cb81d0000>; Tue, 18 Aug 2020 22:26:53 -0700
+ hqnvemgate24.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5f3cbf080000>; Tue, 18 Aug 2020 22:56:24 -0700
 Received: from hqmail.nvidia.com ([172.20.161.6])
  by hqpgpgate101.nvidia.com (PGP Universal service);
- Tue, 18 Aug 2020 22:27:07 -0700
+ Tue, 18 Aug 2020 22:58:17 -0700
 X-PGP-Universal: processed;
- by hqpgpgate101.nvidia.com on Tue, 18 Aug 2020 22:27:07 -0700
-Received: from HQMAIL101.nvidia.com (172.20.187.10) by HQMAIL105.nvidia.com
- (172.20.187.12) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 19 Aug
- 2020 05:27:03 +0000
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.176)
- by HQMAIL101.nvidia.com (172.20.187.10) with Microsoft SMTP Server (TLS) id
- 15.0.1473.3 via Frontend Transport; Wed, 19 Aug 2020 05:27:03 +0000
+ by hqpgpgate101.nvidia.com on Tue, 18 Aug 2020 22:58:17 -0700
+Received: from HQMAIL107.nvidia.com (172.20.187.13) by HQMAIL101.nvidia.com
+ (172.20.187.10) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 19 Aug
+ 2020 05:58:14 +0000
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.47) by
+ HQMAIL107.nvidia.com (172.20.187.13) with Microsoft SMTP Server
+ (TLS) id
+ 15.0.1473.3 via Frontend Transport; Wed, 19 Aug 2020 05:58:14 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MU+JdrIEWlR5fKV7MP8aucNuH1mBWIJSfoCGSQ11jQ4bKz1+1BaPo1yh96VDsVQegby6OMZJ7DWdIC8ppi+0ZU8jdxMATghblb4wt8Mp0e4pLV/Gm15QGiKMsVhfrshYIrgB8KnxYKoaXWqRZso3DBO8l+BOr6o5bxXXYWRBlAwtgPKSf0/PzPacH+s7UdymfOip11YRU1wrDW7mUUg6+g1gImHr1c93KnCEbGyK3a5BVXOD/aQTdTI78G5LzRJn+VbaenFXnfoxiuSLXZYt3N77RzyRGp+rfI3tj7c/is0qk5sxnHtuKCgQjk23rg24TFHqkgYEhh9YKHtLsjXe4Q==
+ b=BPbNBhTb8hgIntR1iCwROwo5IAHugrCoJA0p+wevy65A9EPmS3kA2VnMSSOkqSAiAQ935azmEmvmocDXWSq5zBxJNOQdXAZq44852GJczhk0f2Z8SjYdOmO07s1nqdWX4snnW+pySdzNATTiDUq9yUKMqkGugs+WnXMJix86VOyHJLHvL0BpdbWlRBk9xdXNDEL4LtBQM1dqf5aKAayCy00eahb74aWKtgnSbzZOv5o+XvRD+MYPsxuIubHEkXkj0XxMvhZN6T+kdTMWN2aMPMRS3HIYdw1lH8KwMR+O0qmjtskfnmGV/RlZDrS935Q8xod6OWPLl1mIXuraaOGxWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7JGlPk/Cggpo62zoK0DFn7WKAfO3iwyIzFlmIZ8VdFQ=;
- b=F6UbLOI5nuU8kKLBdSsz9DLA90UNVE7QnTHGzKV4tSCT/MLJq0MEFy+L+0HPGv1ufCO1Mm0cndzm9+WXeytiP55IsXr6OHTWFG+TcOdsTAerc4MjGoxO4aqL/s3ooQLwty1VXRCwvrGpY5AfwCucnjH24by9DypJyAfJrRxNHuYREcOGVWAuAULAisEkuq/o/wpPoeUf4FAHj7EqElAAdWojXL/zrbiFf9Dym5P11WFjKgZkibQ8as4Ju2pRNOupjwddB8bavbWLlCWiFCOXFV/9Mb8nTA52Uzr1t2QmKYCyfIWMRNbgMS2qX5ApvBxDv26ytv164hEOILIGZL+/Iw==
+ bh=RKNbvPY5UTRmNqLSg37Qx/lnP0zYIH96oV43+RyziTw=;
+ b=aQyt3s2IqiQ15re63mh4ZQeCsRR4Ya3J2jrLozrj2bT3PJERRxPv/88T1nCLyXPUcAClQdVCv6okqFqiS6uG5BqrLhR+/IoD6wKpvdTggo97baTZvgbrJeWKO3Siii5vh24jLhTVZrD/WMKMdzuNew/gNozbQ8rG4r8oiIDi2H08/EoRnX/Uh3vSHKMRJo/h7T2OwiM+bgw3cOmZ1Yj9l+7lkcrfuVclLmkevxl2fsmpHUf/ybVzgLU1iCuGlS6eHsWefeKInevijGv5cAtq15UxfM4P5KZ186dIvMyV0BIp7Q+6z07cbrTSGrAkWRrJ2+Cl7rGyJGtBBY+xA4wEbA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 Received: from BY5PR12MB4322.namprd12.prod.outlook.com (2603:10b6:a03:20a::20)
- by BYAPR12MB3559.namprd12.prod.outlook.com (2603:10b6:a03:d9::29)
+ by BYAPR12MB3173.namprd12.prod.outlook.com (2603:10b6:a03:13d::26)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3261.18; Wed, 19 Aug
- 2020 05:26:58 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.15; Wed, 19 Aug
+ 2020 05:58:12 +0000
 Received: from BY5PR12MB4322.namprd12.prod.outlook.com
  ([fe80::b5f0:8a21:df98:7707]) by BY5PR12MB4322.namprd12.prod.outlook.com
  ([fe80::b5f0:8a21:df98:7707%8]) with mapi id 15.20.3283.028; Wed, 19 Aug 2020
- 05:26:58 +0000
+ 05:58:12 +0000
 From: Parav Pandit <parav@nvidia.com>
-To: Jason Wang <jasowang@redhat.com>, =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?=
- <berrange@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
 Subject: RE: device compatibility interface for live migration with assigned
  devices
 Thread-Topic: device compatibility interface for live migration with assigned
  devices
-Thread-Index: AQHWaxahY2KLNHS+kEetIX0F/1UfDqkw/oyAgAR+pQCAAaChgIAGKisAgABceICAAAHJgIAAAlhQgAEm94CAAChrMA==
-Date: Wed, 19 Aug 2020 05:26:58 +0000
-Message-ID: <BY5PR12MB4322CD6B3C697B6F1807ECBFDC5D0@BY5PR12MB4322.namprd12.prod.outlook.com>
-References: <20200805021654.GB30485@joy-OptiPlex-7040>
- <2624b12f-3788-7e2b-2cb7-93534960bcb7@redhat.com>
- <20200805075647.GB2177@nanopsycho>
- <eb1d01c2-fbad-36b6-10cf-9e03483a736b@redhat.com>
- <20200805093338.GC30485@joy-OptiPlex-7040> <20200805105319.GF2177@nanopsycho>
+Thread-Index: AQHWaxahY2KLNHS+kEetIX0F/1UfDqkw/oyAgAR+pQCAAaChgIAGKisAgABceICAAAHJgIAABBYAgAAFswCAAAB4cIABK4aAgAAk5bA=
+Date: Wed, 19 Aug 2020 05:58:12 +0000
+Message-ID: <BY5PR12MB43226CABD003285D0C77E2B7DC5D0@BY5PR12MB4322.namprd12.prod.outlook.com>
+References: <20200805105319.GF2177@nanopsycho>
  <20200810074631.GA29059@joy-OptiPlex-7040>
  <e6e75807-0614-bd75-aeb6-64d643e029d3@redhat.com>
  <20200814051601.GD15344@joy-OptiPlex-7040>
  <a51209fe-a8c6-941f-ff54-7be06d73bc44@redhat.com>
  <20200818085527.GB20215@redhat.com>
  <3a073222-dcfe-c02d-198b-29f6a507b2e1@redhat.com>
- <BY5PR12MB43222059335C96F7B050CFDCDC5C0@BY5PR12MB4322.namprd12.prod.outlook.com>
- <934c8d2a-a34e-6c68-0e53-5de2a8f49d19@redhat.com>
-In-Reply-To: <934c8d2a-a34e-6c68-0e53-5de2a8f49d19@redhat.com>
+ <20200818091628.GC20215@redhat.com>
+ <20200818113652.5d81a392.cohuck@redhat.com>
+ <BY5PR12MB4322C9D1A66C4657776A1383DC5C0@BY5PR12MB4322.namprd12.prod.outlook.com>
+ <20200819033035.GA21172@joy-OptiPlex-7040>
+In-Reply-To: <20200819033035.GA21172@joy-OptiPlex-7040>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-authentication-results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=nvidia.com;
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=nvidia.com;
 x-originating-ip: [49.207.209.10]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7bebd922-5edd-4385-c364-08d844007eaf
-x-ms-traffictypediagnostic: BYAPR12MB3559:
+x-ms-office365-filtering-correlation-id: abc7b22a-c60a-4d66-5fef-08d84404db8c
+x-ms-traffictypediagnostic: BYAPR12MB3173:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR12MB355933DD67C25ED54CD45D6DDC5D0@BYAPR12MB3559.namprd12.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-microsoft-antispam-prvs: <BYAPR12MB31735CD331FB59B7BA563B53DC5D0@BYAPR12MB3173.namprd12.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 9Crwnx/icE3ZogKQ/ahp3ySoCJVutDpPRS9BHruvKr1FbLz8tDxUJgUc+csbDewH4utqs37x0G7Bfx7wKhDiQlRwOSwniCJBmEoQyoX0sGRsZLbTyjC0ke/mcsSmGWupTR8eSvC9A9sMiLFxlHs9Hgl4SKqPTN6Q6WETo2WHpK5sI8o2fMxf5FLvXyBIda9CeAvsC7EDdFBVuJbbFoWjgmURmJ7R9vmNHqi5vVakNUalUEvOIZUR9KWzJ/ZtcrGNG6C8xaT46EXdGyuaBGPasnmRAuzqvZq8RD5ye7BJkgzyw3dBcLSXqf8IJUFAyIDJr2BALEaXvDzwjeuRjKep0g==
+x-microsoft-antispam-message-info: ipMMGUNlRy8Gd6zlEIq4BZNYIjtrphZNk7Prs2D2VFxRMCN+XhLK5uKSL/GGxe5kG87aUj1DLp1RZyyZ2iDuyFsNUxAyPopYn+4WUat5ubUejEdqLAhflpwEItTgHA7o2zu1YiSvtzE+swDYNqyHdV/U5Dqi2jKczYKx7rilQm78M7+sz163CxBm1HhZv5mEDGsKEICWZ1jHqQdrKWoZU0yVY7gITaQUWWTnngInU47y/EWfRbfWzmOVHa/Tfzrp0Fp5oR/Paq4Jcl6a8SbJtokInDScy0CN0yiVOEDXPbCTE+d0hsIgFqNt8yN8z+kc8WFWiBs8eP1HmSGNwymWPTiWGfBLB57gNOsC+3voBGDmY/ysMafNzt4r1VFAu/fpB3LC562SM3I4xP+5vwk6hA==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BY5PR12MB4322.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(366004)(136003)(396003)(39860400002)(346002)(376002)(9686003)(83380400001)(55016002)(5660300002)(7416002)(54906003)(4326008)(52536014)(33656002)(478600001)(8936002)(8676002)(7696005)(110136005)(2906002)(64756008)(66946007)(86362001)(55236004)(66476007)(66446008)(76116006)(26005)(66556008)(316002)(71200400001)(6506007)(186003);
+ SFS:(4636009)(376002)(396003)(39860400002)(136003)(366004)(346002)(71200400001)(26005)(86362001)(186003)(2906002)(52536014)(5660300002)(7416002)(55016002)(83080400001)(9686003)(83380400001)(6506007)(316002)(66946007)(8936002)(66476007)(8676002)(66446008)(7696005)(4326008)(55236004)(64756008)(54906003)(76116006)(66556008)(33656002)(478600001)(45080400002)(6916009);
  DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: s6vKVmRvo2x98BMQID0vDq93el1q11m7G3JdWyGG/GpJ261AKrPp2sTEQNJf0oklWnwOl9vcUyjzIRTpE4h1An1+UzRyi4SYneBODyAfDMdxG77Xap1bfRkIm4wvm4opALIi1zWh4k9aBXmrt930RuF2ClI5v8Dwm3ectLd+zZf6nR244HZ6kPIs1x0x6gfawcj/ubAuX/yLGG0l9FaarBIUsQz5RtGLiaIYp3phJpIjlYZsvWY6U23Wq6iMVGJXGkDVKaMBkueGgUBJHe4JeskihELEdvUP5EVrsJE1ID6Ub63Wq9A8jS7aC+kcW/ytCSW2KFscapSl6YfDbXbfMLHWMV7EavD9XL/6gFOvAoe+j4G/DuGbFSk4XLBISK8G5C4M6FeBiUT0bzbgkPNh012Q1l/5yDnGbIEDbFkDwHJmjiMn2OhuINNHxAkhPKipSnaXsYKeHXH7yvExjm2qq/qEyVoGtC5ToWL4u+5A+w//9qpkopV0C2t6px+vCh0F3oBVVVFiR5cBwGU4ZuDnoXq3AJHrkXcU6LiHKjLQgYyfDpP0x2cCWJhRodPTFVJNdUiy1ZPZ52za3Npq1X+LdQrAwIkC4xATIDMAhs0CZywpypsLWOMu3ReWZ0lKLDrvv4W24ZKSa3ANcyHxzA9V0Q==
+x-ms-exchange-antispam-messagedata: ZoIwBRcwnz21vMSH/t8qrKvcSoVkA4q7GRgQ90iGG2KcMB5YqTHfBUwVPKeboc8q3MH2vXp/zDz3gRwP4HY2WOQOHh6iJK15Fm7wFkTJExv9B9lFYkset8njPfTq1ZT6cPRFQMU8P1z1d8sc06iFXkQScPH2VvJU01r5YjNQo3VRvQ7bZc+/ttC9qAkQc2+1y/CMfRRX2mfuzpq+qc/Rlgg085H/7Q4Qkb/ZAZf6/Mh7Ea8Vx+yZuZO+vvfaNseGL/PwRxGnquSzUKvk7SYIVzBHMOVIuYWQJmu3iRPxUn3sNP1qdWi/AVhRrj7lCrhdbKXGjGOO7lU26YDPvEGbvqL+69wNQCNcjDHpgW1R+Z2Xm0wFayxWlywt2u9nUUZ/JHD0BPXx0ql+aDHnVLaxOPaMt44cqlQMA2bBBW3SLqlnAPEqOXSl/UEoRYiVOwu11wf9hax/k+9imUzCx7zJuo1DE5M09MdHn0DY9fUlOwVc/bWcH3PyuSYu4RJgi61wjScj4JBsAZ0g+bWmy8BjcclzfxZPh93bd/RcGzgwyQyyUJyuvhjieEAhk2WwBny0HuKAc2L8rcMJZbm4HK9w2v1cAEWB1QVY8r9gQHAikfbUCJwMujhYGnaQy8nMWA+u7wUqhuC/cXqsl68SS1LPVQ==
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB4322.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7bebd922-5edd-4385-c364-08d844007eaf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Aug 2020 05:26:58.6324 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: abc7b22a-c60a-4d66-5fef-08d84404db8c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Aug 2020 05:58:12.4105 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: vGe1BUDMiXY+XMW+FEromnhjsQcVkm7uJUBmV0wdwS5rbkoH0bqTv6OVL1yYnb0Pcq/oadavHdPZlHtae0EGyw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR12MB3559
+X-MS-Exchange-CrossTenant-userprincipalname: 9Lv1/GFll5rzY/oS4NgVX9vlKUZH+8Pv9RGXLqhyvASr5gbqpw+Mt3uy1hVs4E32FQd1qc2f7S4aSdccgu6eFQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR12MB3173
 X-OriginatorOrg: Nvidia.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
- t=1597814813; bh=7JGlPk/Cggpo62zoK0DFn7WKAfO3iwyIzFlmIZ8VdFQ=;
+ t=1597816584; bh=RKNbvPY5UTRmNqLSg37Qx/lnP0zYIH96oV43+RyziTw=;
  h=X-PGP-Universal:ARC-Seal:ARC-Message-Signature:
  ARC-Authentication-Results:From:To:CC:Subject:Thread-Topic:
  Thread-Index:Date:Message-ID:References:In-Reply-To:
@@ -126,12 +123,12 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
  X-MS-Exchange-CrossTenant-id:X-MS-Exchange-CrossTenant-mailboxtype:
  X-MS-Exchange-CrossTenant-userprincipalname:
  X-MS-Exchange-Transport-CrossTenantHeadersStamped:X-OriginatorOrg;
- b=fRkMFitmb1SlJIlZ3te+Bo4vBK25ievykoOlxA/oEgtpWxlfC5RE/7h8CahFfEn0r
- Kj5oG1CthEtk4AgKEbvLXIw6R7EpmTh4fGhOqoqguFKqsbVwniGgdPuZhl1Yt8+vC0
- tPo931QzMP1oiGZi607tLtwoaGpk52NwExEbiEny+7Y5Vg/dJXNad9b2W+FTo4EYYj
- kr5Z4zAkOPdrwtetpcPxbPmW9fm+wufZoEuY4e6Iqcm9vvzSlacp6iIyV3h8Hx22X6
- ytknr+Dp09eH3ms5ghZQXUiS9hzakhIUvkjoPU8dpQkFAxf0FDElPKmVT5FQCNjgp9
- yS6vfN+SWLdTQ==
+ b=ZY6QwkrsYewBR0+glqRbeXrurpOapIpn1J7OQprclBHYAVbI+nUFD8DCQg5FT/TX+
+ eC11GxAjKAaaE4zymO7M9sUq3klmShXgQ7tZqMWaOZmNLhn2Hwqd/+NRgrozAT+JaQ
+ dJyuHfYpiM5v6JXW5DnVdwQMTIUYby1Xjm8GNU6zuzSCdFfOfZKnnXU3pf6nbvXFZS
+ DAERpHhJoHX/qoyQKzv5mqtCcOlMs6zWSqlRLTEF4JAvS70PRFKjE4UuCter2/usmz
+ EldEbLOS0nny52oJUgKlCrim2PwNcycnaicF/4NpxtFXjTAgy+GBWpNh1ktA7vz+BP
+ 2E21jFQZrLU1w==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,13 +143,14 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "libvir-list@redhat.com" <libvir-list@redhat.com>,
+ Jason Wang <jasowang@redhat.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  Kirti Wankhede <kwankhede@nvidia.com>, "eauger@redhat.com" <eauger@redhat.com>,
  "xin-ran.wang@intel.com" <xin-ran.wang@intel.com>,
  "corbet@lwn.net" <corbet@lwn.net>, "openstack-discuss@lists.openstack.org"
  <openstack-discuss@lists.openstack.org>,
  "shaohe.feng@intel.com" <shaohe.feng@intel.com>,
- "kevin.tian@intel.com" <kevin.tian@intel.com>, Yan Zhao <yan.y.zhao@intel.com>,
+ "kevin.tian@intel.com" <kevin.tian@intel.com>,
  Parav Pandit <parav@mellanox.com>,
  "jian-feng.ding@intel.com" <jian-feng.ding@intel.com>,
  "dgilbert@redhat.com" <dgilbert@redhat.com>,
@@ -163,118 +161,123 @@ Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "eskultet@redhat.com" <eskultet@redhat.com>,
  "smooney@redhat.com" <smooney@redhat.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>,
  Cornelia Huck <cohuck@redhat.com>, Jiri Pirko <jiri@mellanox.com>,
  "dinechin@redhat.com" <dinechin@redhat.com>,
  "devel@ovirt.org" <devel@ovirt.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-DQoNCj4gRnJvbTogSmFzb24gV2FuZyA8amFzb3dhbmdAcmVkaGF0LmNvbT4NCj4gU2VudDogV2Vk
-bmVzZGF5LCBBdWd1c3QgMTksIDIwMjAgODoxNiBBTQ0KDQoNCj4gT24gMjAyMC84LzE4IOS4i+WN
-iDU6MzIsIFBhcmF2IFBhbmRpdCB3cm90ZToNCj4gPiBIaSBKYXNvbiwNCj4gPg0KPiA+IEZyb206
-IEphc29uIFdhbmcgPGphc293YW5nQHJlZGhhdC5jb20+DQo+ID4gU2VudDogVHVlc2RheSwgQXVn
-dXN0IDE4LCAyMDIwIDI6MzIgUE0NCj4gPg0KPiA+DQo+ID4gT24gMjAyMC84LzE4IOS4i+WNiDQ6
-NTUsIERhbmllbCBQLiBCZXJyYW5nw6kgd3JvdGU6DQo+ID4gT24gVHVlLCBBdWcgMTgsIDIwMjAg
-YXQgMTE6MjQ6MzBBTSArMDgwMCwgSmFzb24gV2FuZyB3cm90ZToNCj4gPiBPbiAyMDIwLzgvMTQg
-5LiL5Y2IMToxNiwgWWFuIFpoYW8gd3JvdGU6DQo+ID4gT24gVGh1LCBBdWcgMTMsIDIwMjAgYXQg
-MTI6MjQ6NTBQTSArMDgwMCwgSmFzb24gV2FuZyB3cm90ZToNCj4gPiBPbiAyMDIwLzgvMTAg5LiL
-5Y2IMzo0NiwgWWFuIFpoYW8gd3JvdGU6DQo+ID4gZHJpdmVyIGlzIGl0IGhhbmRsZWQgYnk/DQo+
-ID4gSXQgbG9va3MgdGhhdCB0aGUgZGV2bGluayBpcyBmb3IgbmV0d29yayBkZXZpY2Ugc3BlY2lm
-aWMsIGFuZCBpbg0KPiA+IGRldmxpbmsuaCwgaXQgc2F5cyBpbmNsdWRlL3VhcGkvbGludXgvZGV2
-bGluay5oIC0gTmV0d29yayBwaHlzaWNhbA0KPiA+IGRldmljZSBOZXRsaW5rIGludGVyZmFjZSwg
-QWN0dWFsbHkgbm90LCBJIHRoaW5rIHRoZXJlIHVzZWQgdG8gaGF2ZQ0KPiA+IHNvbWUgZGlzY3Vz
-c2lvbiBsYXN0IHllYXIgYW5kIHRoZSBjb25jbHVzaW9uIGlzIHRvIHJlbW92ZSB0aGlzDQo+ID4g
-Y29tbWVudC4NCj4gPg0KPiA+IFsuLi5dDQo+ID4NCj4gPj4gWWVzLCBidXQgaXQgY291bGQgYmUg
-aGFyZC4gRS5nIHZEUEEgd2lsbCBjaG9zZSB0byB1c2UgZGV2bGluayAodGhlcmUncyBhIGxvbmcN
-Cj4gZGViYXRlIG9uIHN5c2ZzIHZzIGRldmxpbmspLiBTbyBpZiB3ZSBnbyB3aXRoIHN5c2ZzLCBh
-dCBsZWFzdCB0d28gQVBJcyBuZWVkcyB0byBiZQ0KPiBzdXBwb3J0ZWQgLi4uDQo+ID4gV2UgaGFk
-IGludGVybmFsIGRpc2N1c3Npb24gYW5kIHByb3Bvc2FsIG9uIHRoaXMgdG9waWMuDQo+ID4gSSB3
-YW50ZWQgRWxpIENvaGVuIHRvIGJlIGJhY2sgZnJvbSB2YWNhdGlvbiBvbiBXZWQgOC8xOSwgYnV0
-IHNpbmNlIHRoaXMgaXMNCj4gYWN0aXZlIGRpc2N1c3Npb24gcmlnaHQgbm93LCBJIHdpbGwgc2hh
-cmUgdGhlIHRob3VnaHRzIGFueXdheS4NCj4gPg0KPiA+IEhlcmUgYXJlIHRoZSBpbml0aWFsIHJv
-dW5kIG9mIHRob3VnaHRzIGFuZCBwcm9wb3NhbC4NCj4gPg0KPiA+IFVzZXIgcmVxdWlyZW1lbnRz
-Og0KPiA+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiA+IDEuIFVzZXIgbWlnaHQgd2Fu
-dCB0byBjcmVhdGUgb25lIG9yIG1vcmUgdmRwYSBkZXZpY2VzIHBlciBQQ0kgUEYvVkYvU0YuDQo+
-ID4gMi4gVXNlciBtaWdodCB3YW50IHRvIGNyZWF0ZSBvbmUgb3IgbW9yZSB2ZHBhIGRldmljZXMg
-b2YgdHlwZSBuZXQvYmxrIG9yDQo+IG90aGVyIHR5cGUuDQo+ID4gMy4gVXNlciBuZWVkcyB0byBs
-b29rIGFuZCBkdW1wIGF0IHRoZSBoZWFsdGggb2YgdGhlIHF1ZXVlcyBmb3IgZGVidWcgcHVycG9z
-ZS4NCj4gPiA0LiBEdXJpbmcgdmRwYSBuZXQgZGV2aWNlIGNyZWF0aW9uIHRpbWUsIHVzZXIgbWF5
-IGhhdmUgdG8gcHJvdmlkZSBhIE1BQw0KPiBhZGRyZXNzIGFuZC9vciBWTEFOLg0KPiA+IDUuIFVz
-ZXIgc2hvdWxkIGJlIGFibGUgdG8gc2V0L3F1ZXJ5IHNvbWUgb2YgdGhlIGF0dHJpYnV0ZXMgZm9y
-DQo+ID4gZGVidWcvY29tcGF0aWJpbGl0eSBjaGVjayA2LiBXaGVuIHVzZXIgd2FudHMgdG8gY3Jl
-YXRlIHZkcGEgZGV2aWNlLCBpdCBuZWVkcw0KPiB0byBrbm93IHdoaWNoIGRldmljZSBzdXBwb3J0
-cyBjcmVhdGlvbi4NCj4gPiA3LiBVc2VyIHNob3VsZCBiZSBhYmxlIHRvIHNlZSB0aGUgcXVldWUg
-c3RhdGlzdGljcyBvZiBkb29yYmVsbHMsIHdxZXMNCj4gPiBldGMgcmVnYXJkbGVzcyBvZiBjbGFz
-cyB0eXBlDQo+IA0KPiANCj4gTm90ZSB0aGF0IHdxZXMgaXMgcHJvYmFibHkgbm90IHNvbWV0aGlu
-ZyBjb21tb24gaW4gYWxsIG9mIHRoZSB2ZW5kb3JzLg0KWWVzLiBJIHZpcnRxIGRlc2NyaXB0b3Jz
-IHN0YXRzIGlzIGJldHRlciB0byBtb25pdG9yIHRoZSB2aXJ0cXVldWVzLg0KDQo+IA0KPiANCj4g
-Pg0KPiA+IFRvIGFkZHJlc3MgYWJvdmUgcmVxdWlyZW1lbnRzLCB0aGVyZSBpcyBhIG5lZWQgb2Yg
-dmVuZG9yIGFnbm9zdGljIHRvb2wsIHNvDQo+IHRoYXQgdXNlciBjYW4gY3JlYXRlL2NvbmZpZy9k
-ZWxldGUgdmRwYSBkZXZpY2UocykgcmVnYXJkbGVzcyBvZiB0aGUgdmVuZG9yLg0KPiA+DQo+ID4g
-SGVuY2UsDQo+ID4gV2Ugc2hvdWxkIGhhdmUgYSB0b29sIHRoYXQgbGV0cyB1c2VyIGRvIGl0Lg0K
-PiA+DQo+ID4gRXhhbXBsZXM6DQo+ID4gLS0tLS0tLS0tLS0tLQ0KPiA+IChhKSBMaXN0IHBhcmVu
-dCBkZXZpY2VzIHdoaWNoIHN1cHBvcnRzIGNyZWF0aW5nIHZkcGEgZGV2aWNlcy4NCj4gPiBJdCBh
-bHNvIHNob3dzIHdoaWNoIGNsYXNzIHR5cGVzIHN1cHBvcnRlZCBieSB0aGlzIHBhcmVudCBkZXZp
-Y2UuDQo+ID4gSW4gYmVsb3cgY29tbWFuZCB0d28gcGFyZW50IGRldmljZXMgc3VwcG9ydCB2ZHBh
-IGRldmljZSBjcmVhdGlvbi4NCj4gPiBGaXJzdCBpcyBQQ0kgVkYgd2hvc2UgYmRmIGlzIDAzLjAw
-OjUuDQo+ID4gU2Vjb25kIGlzIFBDSSBTRiB3aG9zZSBuYW1lIGlzIG1seDVfc2YuMQ0KPiA+DQo+
-ID4gJCB2ZHBhIGxpc3QgcGQNCj4gDQo+IA0KPiBXaGF0IGRpZCAicGQiIG1lYW4/DQo+IA0KUGFy
-ZW50IGRldmljZSB3aGljaCBzdXBwb3J0IGNyZWF0aW9uIG9mIG9uZSBvciBtb3JlIHZkcGEgZGV2
-aWNlcy4NCkluIGEgc3lzdGVtIHRoZXJlIGNhbiBiZSBtdWx0aXBsZSBwYXJlbnQgZGV2aWNlcyB3
-aGljaCBtYXkgYmUgc3VwcG9ydCB2ZHBhIGNyZWF0aW9uLg0KVXNlciBzaG91bGQgYmUgYWJsZSB0
-byBrbm93IHdoaWNoIGRldmljZXMgc3VwcG9ydCBpdCwgYW5kIHdoZW4gdXNlciBjcmVhdGVzIGEg
-dmRwYSBkZXZpY2UsIGl0IHRlbGxzIHdoaWNoIHBhcmVudCBkZXZpY2UgdG8gdXNlIGZvciBjcmVh
-dGlvbiBhcyBkb25lIGluIGJlbG93IHZkcGEgZGV2IGFkZCBleGFtcGxlLg0KPiANCj4gPiBwY2kv
-MDAwMDowMy4wMDo1DQo+ID4gICAgY2xhc3Nfc3VwcG9ydHMNCj4gPiAgICAgIG5ldCB2ZHBhDQo+
-ID4gdmlydGJ1cy9tbHg1X3NmLjENCj4gDQo+IA0KPiBTbyBjcmVhdGluZyBtbHg1X3NmLjEgaXMg
-dGhlIGNoYXJnZSBvZiBkZXZsaW5rPw0KPiANClllcy4NCkJ1dCBoZXJlIHZkcGEgdG9vbCBpcyB3
-b3JraW5nIGF0IHRoZSBwYXJlbnQgZGV2aWNlIGlkZW50aWZpZXIge2J1cytuYW1lfSBpbnN0ZWFk
-IG9mIGRldmxpbmsgaWRlbnRpZmllci4NCg0KDQo+IA0KPiA+ICAgIGNsYXNzX3N1cHBvcnRzDQo+
-ID4gICAgICBuZXQNCj4gPg0KPiA+IChiKSBOb3cgYWRkIGEgdmRwYSBkZXZpY2UgYW5kIHNob3cg
-dGhlIGRldmljZS4NCj4gPiAkIHZkcGEgZGV2IGFkZCBwY2kvMDAwMDowMy4wMDo1IHR5cGUgbmV0
-DQo+IA0KPiANCj4gU28gaWYgeW91IHdhbnQgdG8gY3JlYXRlIGRldmljZXMgdHlwZXMgb3RoZXIg
-dGhhbiB2ZHBhIG9uDQo+IHBjaS8wMDAwOjAzLjAwOjUgaXQgbmVlZHMgc29tZSBzeW5jaHJvbml6
-YXRpb24gd2l0aCBkZXZsaW5rPw0KUGxlYXNlIHJlZmVyIHRvIEZBUS0xLCAgYSBuZXcgdG9vbCBp
-cyBub3QgbGlua2VkIHRvIGRldmxpbmsgYmVjYXVzZSB2ZHBhIHdpbGwgZXZvbHZlIHdpdGggdGlt
-ZSBhbmQgZGV2bGluayB3aWxsIGZhbGwgc2hvcnQuDQpTbyBubywgaXQgZG9lc24ndCBuZWVkIGFu
-eSBzeW5jaHJvbml6YXRpb24gd2l0aCBkZXZsaW5rLg0KQXMgbG9uZyBhcyBwYXJlbnQgZGV2aWNl
-IGV4aXN0LCB1c2VyIGNhbiBjcmVhdGUgaXQuDQpBbGwgc3luY2hyb25pemF0aW9uIHdpbGwgYmUg
-d2l0aGluIGRyaXZlcnMvdmRwYS92ZHBhLmMNClRoaXMgdXNlciBpbnRlcmZhY2UgaXMgZXhwb3Nl
-ZCB2aWEgbmV3IG5ldGxpbmsgZmFtaWx5IGJ5IGRvaW5nIGdlbmxfcmVnaXN0ZXJfZmFtaWx5KCkg
-d2l0aCBuZXcgbmFtZSAidmRwYSIgaW4gZHJpdmVycy92ZHBhL3ZkcGEuYy4NCg0KPiANCj4gDQo+
-ID4gJCB2ZHBhIGRldiBzaG93DQo+ID4gdmRwYTBAcGNpLzAwMDA6MDMuMDA6NSB0eXBlIG5ldCBz
-dGF0ZSBpbmFjdGl2ZSBtYXhxdWV1ZXMgOCBjdXJxdWV1ZXMgNA0KPiA+DQo+ID4gKGMpIHZkcGEg
-ZGV2IHNob3cgZmVhdHVyZXMgdmRwYTANCj4gPiBpb21tdSBwbGF0Zm9ybQ0KPiA+IHZlcnNpb24g
-MQ0KPiA+DQo+ID4gKGQpIGR1bXAgdmRwYSBzdGF0aXN0aWNzDQo+ID4gJCB2ZHBhIGRldiBzdGF0
-cyBzaG93IHZkcGEwDQo+ID4ga2lja2Rvb3JiZWxscyAxMA0KPiA+IHdxZXMgMTAwDQo+ID4NCj4g
-PiAoZSkgTm93IGRlbGV0ZSBhIHZkcGEgZGV2aWNlIHByZXZpb3VzbHkgY3JlYXRlZC4NCj4gPiAk
-IHZkcGEgZGV2IGRlbCB2ZHBhMA0KPiA+DQo+ID4gRGVzaWduIG92ZXJ2aWV3Og0KPiA+IC0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tDQo+ID4gMS4gQWJvdmUgZXhhbXBsZSB0b29sIHJ1bnMgb3ZlciBu
-ZXRsaW5rIHNvY2tldCBpbnRlcmZhY2UuDQo+ID4gMi4gVGhpcyBlbmFibGVzIHVzZXJzIHRvIHJl
-dHVybiBtZWFuaW5nZnVsIGVycm9yIHN0cmluZ3MgaW4gYWRkaXRpb24gdG8gY29kZSBzbw0KPiB0
-aGF0IHVzZXIgY2FuIGJlIG1vcmUgaW5mb3JtZWQuDQo+ID4gT2Z0ZW4gdGhpcyBpcyBtaXNzaW5n
-IGluIGlvY3RsKCkvY29uZmlnZnMvc3lzZnMgaW50ZXJmYWNlcy4NCj4gPiAzLiBUaGlzIHRvb2wg
-b3ZlciBuZXRsaW5rIGVuYWJsZXMgc3lzY2FsbGVyIHRlc3RzIHRvIGJlIG1vcmUgdXNhYmxlIGxp
-a2Ugb3RoZXINCj4gc3Vic3lzdGVtcyB0byBrZWVwIGtlcm5lbCByb2J1c3QNCj4gPiA0LiBUaGlz
-IHByb3ZpZGVzIHZlbmRvciBhZ25vc3RpYyB2aWV3IG9mIGFsbCB2ZHBhIGNhcGFibGUgcGFyZW50
-IGFuZCB2ZHBhDQo+IGRldmljZXMuDQo+ID4NCj4gPiA1LiBFYWNoIGRyaXZlciB3aGljaCBzdXBw
-b3J0cyB2ZHBhIGRldmljZSBjcmVhdGlvbiwgcmVnaXN0ZXJzIHRoZSBwYXJlbnQgZGV2aWNlDQo+
-IGFsb25nIHdpdGggc3VwcG9ydGVkIGNsYXNzZXMuDQo+ID4NCj4gPiBGQVFzOg0KPiA+IC0tLS0t
-LS0tDQo+ID4gMS4gV2h5IG5vdCB1c2luZyBkZXZsaW5rPw0KPiA+IEFuczogQmVjYXVzZSBhcyB2
-ZHBhIGVjaG8gc3lzdGVtIGdyb3dzLCBkZXZsaW5rIHdpbGwgZmFsbCBzaG9ydCBvZiBleHRlbmRp
-bmcNCj4gdmRwYSBzcGVjaWZpYyBwYXJhbXMsIGF0dHJpYnV0ZXMsIHN0YXRzLg0KPiANCj4gDQo+
-IFRoaXMgc2hvdWxkIGJlIGZpbmUgYnV0IGl0J3Mgc3RpbGwgbm90IGNsZWFyIHRvIG1lIHRoZSBk
-aWZmZXJlbmNlDQo+IGJldHdlZW4gYSB2ZHBhIG5ldGxpbmsgYW5kIGEgdmRwYSBvYmplY3QgaW4g
-ZGV2bGluay4NCj4NClRoZSBkaWZmZXJlbmNlIGlzIGEgdmRwYSBzcGVjaWZpYyB0b29sIHdvcmsg
-YXQgdGhlIHBhcmVudCBkZXZpY2UgbGV2ZWwuDQpJdCBpcyBsaWtlbHkgbW9yZSBhcHByb3ByaWF0
-ZSB0byBiZWNhdXNlIGl0IGNhbiBzZWxmLWNvbnRhaW4gZXZlcnl0aGluZyBuZWVkZWQgdG8gY3Jl
-YXRlL2RlbGV0ZSBkZXZpY2VzLCB2aWV3L3NldCBmZWF0dXJlcywgc3RhdHMuDQpUcnlpbmcgdG8g
-cHV0IHRoYXQgaW4gZGV2bGluayB3aWxsIGZhbGwgc2hvcnQgYXMgZGV2bGluayBkb2VzbuKAmXQg
-aGF2ZSB2ZHBhIGRlZmluaXRpb25zLg0KVHlwaWNhbGx5IHdoZW4gYSBjbGFzcy9kZXZpY2Ugc3Vi
-c3lzdGVtIGdyb3dzLCBpdHMgb3duIHRvb2wgaXMgd2lzZXIgbGlrZSBpcHJvdXRlMi9pcCwgaXBy
-b3V0ZTIvdGMsIGlwcm91dGUyL3JkbWEuDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+
+
+> From: Yan Zhao <yan.y.zhao@intel.com>
+> Sent: Wednesday, August 19, 2020 9:01 AM
+
+> On Tue, Aug 18, 2020 at 09:39:24AM +0000, Parav Pandit wrote:
+
+> > Please refer to my previous email which has more example and details.
+> hi Parav,
+> the example is based on a new vdpa tool running over netlink, not based on
+> devlink, right?
+Right.
+
+> For vfio migration compatibility, we have to deal with both mdev and physical
+> pci devices, I don't think it's a good idea to write a new tool for it, given we are
+> able to retrieve the same info from sysfs and there's already an mdevctl from
+mdev attribute should be visible in the mdev's sysfs tree.
+I do not propose to write a new mdev tool over netlink. I am sorry if I implied that with my suggestion of vdpa tool.
+
+If underlying device is vdpa, mdev might be able to understand vdpa device and query from it and populate in mdev sysfs tree.
+
+The vdpa tool I propose is usable even without mdevs.
+vdpa tool's role is to create one or more vdpa devices and place on the "vdpa" bus which is the lowest layer here.
+Additionally this tool let user query virtqueue stats, db stats.
+When a user creates vdpa net device, user may need to configure features of the vdpa device such as VIRTIO_NET_F_MAC, default VIRTIO_NET_F_MTU.
+These are vdpa level features, attributes. Mdev is layer above it.
+
+> Alex
+> (https://nam03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.
+> com%2Fmdevctl%2Fmdevctl&amp;data=02%7C01%7Cparav%40nvidia.com%7C
+> 0c2691d430304f5ea11308d843f2d84e%7C43083d15727340c1b7db39efd9ccc17
+> a%7C0%7C0%7C637334057571911357&amp;sdata=KxH7PwxmKyy9JODut8BWr
+> LQyOBylW00%2Fyzc4rEvjUvA%3D&amp;reserved=0).
+>
+Sorry for above link mangling. Our mail server is still transitioning due to company acquisition.
+
+I am less familiar on below points to comment.
+
+> hi All,
+> could we decide that sysfs is the interface that every VFIO vendor driver needs
+> to provide in order to support vfio live migration, otherwise the userspace
+> management tool would not list the device into the compatible list?
+> 
+> if that's true, let's move to the standardizing of the sysfs interface.
+> (1) content
+> common part: (must)
+>    - software_version: (in major.minor.bugfix scheme)
+>    - device_api: vfio-pci or vfio-ccw ...
+>    - type: mdev type for mdev device or
+>            a signature for physical device which is a counterpart for
+> 	   mdev type.
+> 
+> device api specific part: (must)
+>   - pci id: pci id of mdev parent device or pci id of physical pci
+>     device (device_api is vfio-pci)
+>   - subchannel_type (device_api is vfio-ccw)
+> 
+> vendor driver specific part: (optional)
+>   - aggregator
+>   - chpid_type
+>   - remote_url
+> 
+> NOTE: vendors are free to add attributes in this part with a restriction that this
+> attribute is able to be configured with the same name in sysfs too. e.g.
+> for aggregator, there must be a sysfs attribute in device node
+> /sys/devices/pci0000:00/0000:00:02.0/882cc4da-dede-11e7-9180-
+> 078a62063ab1/intel_vgpu/aggregator,
+> so that the userspace tool is able to configure the target device according to
+> source device's aggregator attribute.
+> 
+> 
+> (2) where and structure
+> proposal 1:
+> |- [path to device]
+>   |--- migration
+>   |     |--- self
+>   |     |    |-software_version
+>   |     |    |-device_api
+>   |     |    |-type
+>   |     |    |-[pci_id or subchannel_type]
+>   |     |    |-<aggregator or chpid_type>
+>   |     |--- compatible
+>   |     |    |-software_version
+>   |     |    |-device_api
+>   |     |    |-type
+>   |     |    |-[pci_id or subchannel_type]
+>   |     |    |-<aggregator or chpid_type>
+> multiple compatible is allowed.
+> attributes should be ASCII text files, preferably with only one value per file.
+> 
+> 
+> proposal 2: use bin_attribute.
+> |- [path to device]
+>   |--- migration
+>   |     |--- self
+>   |     |--- compatible
+> 
+> so we can continue use multiline format. e.g.
+> cat compatible
+>   software_version=0.1.0
+>   device_api=vfio_pci
+>   type=i915-GVTg_V5_{val1:int:1,2,4,8}
+>   pci_id=80865963
+>   aggregator={val1}/2
+> 
+> Thanks
+> Yan
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
