@@ -2,40 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39DEC24AD49
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Aug 2020 05:27:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 071C324AD32
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Aug 2020 05:14:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E60A86E892;
-	Thu, 20 Aug 2020 03:27:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 679566E891;
+	Thu, 20 Aug 2020 03:14:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9CC346E892
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CFCCF6E891
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Aug 2020 03:27:35 +0000 (UTC)
-IronPort-SDR: vNqe9lvWTf6elTuT2Wx9Z1d3NmarCOk3Kw49mhvZkkv2EwOAC748hA5fl/1N5eFVGLfl0Z3htJ
- z7qzq1pf13zA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9718"; a="216764975"
-X-IronPort-AV: E=Sophos;i="5.76,332,1592895600"; d="scan'208";a="216764975"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2020 20:27:34 -0700
-IronPort-SDR: UqP0IOWieCFyHRnd1vZQD2aXoRbEIKc+/gr6oUyySSR3mhwyApXJ6ijvH5c/4s3hX8nJNnHCRQ
- 2wmgSpyXPOOQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,332,1592895600"; d="scan'208";a="327281681"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by orsmga008.jf.intel.com with ESMTP; 19 Aug 2020 20:27:28 -0700
-Date: Thu, 20 Aug 2020 11:09:51 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
+ Thu, 20 Aug 2020 03:14:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597893241;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1uL6oaieNOxO0lNuxORuGUFqqOmdlfIgO2Muo0Z8fB0=;
+ b=Be0wtKOa18ByTcojhcNs+lKtLjWcF13LD0mPh2blKsq1+WmSoyIsh8IeS8sWyH6+JbMbUq
+ 4ZFKluQNfy8OtCiAOXlYs86PQKVoO/V2pCR7/3h64tbyMDqog6KOz8Hg1YtqY4Q4cY2N2x
+ KzxiFgEAn7VA5UtLcP8iMK+bxlrQNxU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-487-AueevQPFNxOMCGZ_BIsASA-1; Wed, 19 Aug 2020 23:13:58 -0400
+X-MC-Unique: AueevQPFNxOMCGZ_BIsASA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0140802B47;
+ Thu, 20 Aug 2020 03:13:54 +0000 (UTC)
+Received: from x1.home (ovpn-112-71.phx2.redhat.com [10.3.112.71])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 75CD27A40D;
+ Thu, 20 Aug 2020 03:13:46 +0000 (UTC)
+Date: Wed, 19 Aug 2020 21:13:45 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
 Subject: Re: device compatibility interface for live migration with assigned
  devices
-Message-ID: <20200820030951.GA24121@joy-OptiPlex-7040>
-References: <a51209fe-a8c6-941f-ff54-7be06d73bc44@redhat.com>
+Message-ID: <20200819211345.0d9daf03@x1.home>
+In-Reply-To: <20200820001810.GD21172@joy-OptiPlex-7040>
+References: <e6e75807-0614-bd75-aeb6-64d643e029d3@redhat.com>
+ <20200814051601.GD15344@joy-OptiPlex-7040>
+ <a51209fe-a8c6-941f-ff54-7be06d73bc44@redhat.com>
  <20200818085527.GB20215@redhat.com>
  <3a073222-dcfe-c02d-198b-29f6a507b2e1@redhat.com>
  <20200818091628.GC20215@redhat.com>
@@ -44,11 +55,9 @@ References: <a51209fe-a8c6-941f-ff54-7be06d73bc44@redhat.com>
  <20200819033035.GA21172@joy-OptiPlex-7040>
  <20200819115021.004427a3@x1.home>
  <20200820001810.GD21172@joy-OptiPlex-7040>
- <20200819211345.0d9daf03@x1.home>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200819211345.0d9daf03@x1.home>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,7 +70,6 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
 Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "libvir-list@redhat.com" <libvir-list@redhat.com>,
  Jason Wang <jasowang@redhat.com>,
@@ -81,7 +89,7 @@ Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  Jiri Pirko <jiri@mellanox.com>, "eskultet@redhat.com" <eskultet@redhat.com>,
  Parav Pandit <parav@nvidia.com>, "smooney@redhat.com" <smooney@redhat.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
  Cornelia Huck <cohuck@redhat.com>, "dinechin@redhat.com" <dinechin@redhat.com>,
  "devel@ovirt.org" <devel@ovirt.org>
 Content-Type: text/plain; charset="us-ascii"
@@ -89,89 +97,133 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Aug 19, 2020 at 09:13:45PM -0600, Alex Williamson wrote:
-> On Thu, 20 Aug 2020 08:18:10 +0800
-> Yan Zhao <yan.y.zhao@intel.com> wrote:
-> 
-> > On Wed, Aug 19, 2020 at 11:50:21AM -0600, Alex Williamson wrote:
-> > <...>
-> > > > > > > What I care about is that we have a *standard* userspace API for
-> > > > > > > performing device compatibility checking / state migration, for use by
-> > > > > > > QEMU/libvirt/ OpenStack, such that we can write code without countless
-> > > > > > > vendor specific code paths.
-> > > > > > >
-> > > > > > > If there is vendor specific stuff on the side, that's fine as we can
-> > > > > > > ignore that, but the core functionality for device compat / migration
-> > > > > > > needs to be standardized.    
-> > > > > > 
-> > > > > > To summarize:
-> > > > > > - choose one of sysfs or devlink
-> > > > > > - have a common interface, with a standardized way to add
-> > > > > >   vendor-specific attributes
-> > > > > > ?    
+On Thu, 20 Aug 2020 08:18:10 +0800
+Yan Zhao <yan.y.zhao@intel.com> wrote:
+
+> On Wed, Aug 19, 2020 at 11:50:21AM -0600, Alex Williamson wrote:
+> <...>
+> > > > > > What I care about is that we have a *standard* userspace API for
+> > > > > > performing device compatibility checking / state migration, for use by
+> > > > > > QEMU/libvirt/ OpenStack, such that we can write code without countless
+> > > > > > vendor specific code paths.
+> > > > > >
+> > > > > > If there is vendor specific stuff on the side, that's fine as we can
+> > > > > > ignore that, but the core functionality for device compat / migration
+> > > > > > needs to be standardized.    
 > > > > > 
-> > > > > Please refer to my previous email which has more example and details.    
-> > > > hi Parav,
-> > > > the example is based on a new vdpa tool running over netlink, not based
-> > > > on devlink, right?
-> > > > For vfio migration compatibility, we have to deal with both mdev and physical
-> > > > pci devices, I don't think it's a good idea to write a new tool for it, given
-> > > > we are able to retrieve the same info from sysfs and there's already an
-> > > > mdevctl from Alex (https://github.com/mdevctl/mdevctl).
+> > > > > To summarize:
+> > > > > - choose one of sysfs or devlink
+> > > > > - have a common interface, with a standardized way to add
+> > > > >   vendor-specific attributes
+> > > > > ?    
 > > > > 
-> > > > hi All,
-> > > > could we decide that sysfs is the interface that every VFIO vendor driver
-> > > > needs to provide in order to support vfio live migration, otherwise the
-> > > > userspace management tool would not list the device into the compatible
-> > > > list?
-> > > > 
-> > > > if that's true, let's move to the standardizing of the sysfs interface.
-> > > > (1) content
-> > > > common part: (must)
-> > > >    - software_version: (in major.minor.bugfix scheme)
-> > > >    - device_api: vfio-pci or vfio-ccw ...
-> > > >    - type: mdev type for mdev device or
-> > > >            a signature for physical device which is a counterpart for
-> > > > 	   mdev type.
-> > > > 
-> > > > device api specific part: (must)
-> > > >   - pci id: pci id of mdev parent device or pci id of physical pci
-> > > >     device (device_api is vfio-pci)  
+> > > > Please refer to my previous email which has more example and details.    
+> > > hi Parav,
+> > > the example is based on a new vdpa tool running over netlink, not based
+> > > on devlink, right?
+> > > For vfio migration compatibility, we have to deal with both mdev and physical
+> > > pci devices, I don't think it's a good idea to write a new tool for it, given
+> > > we are able to retrieve the same info from sysfs and there's already an
+> > > mdevctl from Alex (https://github.com/mdevctl/mdevctl).
 > > > 
-> > > As noted previously, the parent PCI ID should not matter for an mdev
-> > > device, if a vendor has a dependency on matching the parent device PCI
-> > > ID, that's a vendor specific restriction.  An mdev device can also
-> > > expose a vfio-pci device API without the parent device being PCI.  For
-> > > a physical PCI device, shouldn't the PCI ID be encompassed in the
-> > > signature?  Thanks,
+> > > hi All,
+> > > could we decide that sysfs is the interface that every VFIO vendor driver
+> > > needs to provide in order to support vfio live migration, otherwise the
+> > > userspace management tool would not list the device into the compatible
+> > > list?
+> > > 
+> > > if that's true, let's move to the standardizing of the sysfs interface.
+> > > (1) content
+> > > common part: (must)
+> > >    - software_version: (in major.minor.bugfix scheme)
+> > >    - device_api: vfio-pci or vfio-ccw ...
+> > >    - type: mdev type for mdev device or
+> > >            a signature for physical device which is a counterpart for
+> > > 	   mdev type.
+> > > 
+> > > device api specific part: (must)
+> > >   - pci id: pci id of mdev parent device or pci id of physical pci
+> > >     device (device_api is vfio-pci)  
+> > 
+> > As noted previously, the parent PCI ID should not matter for an mdev
+> > device, if a vendor has a dependency on matching the parent device PCI
+> > ID, that's a vendor specific restriction.  An mdev device can also
+> > expose a vfio-pci device API without the parent device being PCI.  For
+> > a physical PCI device, shouldn't the PCI ID be encompassed in the
+> > signature?  Thanks,
+> >   
+> you are right. I need to put the PCI ID as a vendor specific field.
+> I didn't do that because I wanted all fields in vendor specific to be
+> configurable by management tools, so they can configure the target device
+> according to the value of a vendor specific field even they don't know
+> the meaning of the field.
+> But maybe they can just ignore the field when they can't find a matching
+> writable field to configure the target.
+
+
+If fields can be ignored, what's the point of reporting them?  Seems
+it's no longer a requirement.  Thanks,
+
+Alex
+
+
+> > >   - subchannel_type (device_api is vfio-ccw) 
+> > >  
+> > > vendor driver specific part: (optional)
+> > >   - aggregator
+> > >   - chpid_type
+> > >   - remote_url
+> > > 
+> > > NOTE: vendors are free to add attributes in this part with a
+> > > restriction that this attribute is able to be configured with the same
+> > > name in sysfs too. e.g.
+> > > for aggregator, there must be a sysfs attribute in device node
+> > > /sys/devices/pci0000:00/0000:00:02.0/882cc4da-dede-11e7-9180-078a62063ab1/intel_vgpu/aggregator,
+> > > so that the userspace tool is able to configure the target device
+> > > according to source device's aggregator attribute.
+> > > 
+> > > 
+> > > (2) where and structure
+> > > proposal 1:
+> > > |- [path to device]
+> > >   |--- migration
+> > >   |     |--- self
+> > >   |     |    |-software_version
+> > >   |     |    |-device_api
+> > >   |     |    |-type
+> > >   |     |    |-[pci_id or subchannel_type]
+> > >   |     |    |-<aggregator or chpid_type>
+> > >   |     |--- compatible
+> > >   |     |    |-software_version
+> > >   |     |    |-device_api
+> > >   |     |    |-type
+> > >   |     |    |-[pci_id or subchannel_type]
+> > >   |     |    |-<aggregator or chpid_type>
+> > > multiple compatible is allowed.
+> > > attributes should be ASCII text files, preferably with only one value
+> > > per file.
+> > > 
+> > > 
+> > > proposal 2: use bin_attribute.
+> > > |- [path to device]
+> > >   |--- migration
+> > >   |     |--- self
+> > >   |     |--- compatible
+> > > 
+> > > so we can continue use multiline format. e.g.
+> > > cat compatible
+> > >   software_version=0.1.0
+> > >   device_api=vfio_pci
+> > >   type=i915-GVTg_V5_{val1:int:1,2,4,8}
+> > >   pci_id=80865963
+> > >   aggregator={val1}/2
+> > > 
+> > > Thanks
+> > > Yan
 > > >   
-> > you are right. I need to put the PCI ID as a vendor specific field.
-> > I didn't do that because I wanted all fields in vendor specific to be
-> > configurable by management tools, so they can configure the target device
-> > according to the value of a vendor specific field even they don't know
-> > the meaning of the field.
-> > But maybe they can just ignore the field when they can't find a matching
-> > writable field to configure the target.
+> >   
 > 
-> 
-> If fields can be ignored, what's the point of reporting them?  Seems
-> it's no longer a requirement.  Thanks,
-> 
-sorry about the confusion. I mean this condition:
-about to migrate, openstack searches if there are existing matching
-MDEVs,
-if yes, i.e. all common/vendor specific fields match, then just create
-a VM with the matching target MDEV. (in this condition, the PCI ID field
-is not ignored);
-if not, openstack tries to create one MDEV according to mdev_type, and
-configures MDEV according to the vendor specific attributes.
-as PCI ID is not a configurable field, it just ignore the field.
 
-Thanks
-Yan
-
- 
- 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
