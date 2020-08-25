@@ -1,31 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95E202510BD
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Aug 2020 06:34:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 928E725132B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Aug 2020 09:28:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D313A6E844;
-	Tue, 25 Aug 2020 04:34:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3EF316E880;
+	Tue, 25 Aug 2020 07:28:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 920 seconds by postgrey-1.36 at gabe;
- Tue, 25 Aug 2020 04:34:09 UTC
-Received: from ms1.salgadosfritos.com (unknown [IPv6:2a01:4f8:c17:4c3f::1])
- by gabe.freedesktop.org (Postfix) with ESMTP id D1DC16E844
+Received: from sonic309-15.consmr.mail.bf2.yahoo.com
+ (sonic309-15.consmr.mail.bf2.yahoo.com [74.6.129.125])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C61406E881
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 25 Aug 2020 04:34:09 +0000 (UTC)
-Received: by ms1.salgadosfritos.com (Postfix, from userid 0)
- id 48DBF54B19; Tue, 25 Aug 2020 05:18:51 +0200 (CEST)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Fwd: Urgente - Proceso de trabajo Extrajudicial Nâ–’   (378184)
-X-Mailer: Microsoft Office Outlook, Build 17.551210
-From: Ministerio del Trabajo<serviciotributario@contacto.es>
+ Tue, 25 Aug 2020 07:28:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1598340529; bh=Hx2q6/wky65uES3PZmzO6PcrQE/ji4ygndkQ4MNzRq8=;
+ h=Date:From:Reply-To:Subject:References:From:Subject;
+ b=W5vRISjHZryU0Px9pCam6Jjtn9755eiK/07O1LNIBIZKuX54PHQpBe+vGQfbtpxUwXQMe4a8PMTfemjmA37f224l3zq8CIZ/Ee5LitZ3EfWiI3dOY/h2O+6EfxwnO4OLiQ9v3TX2faQkuNsMMVMbVOPSIHE9QPFe4nnycEOUkhSdQfdrBFhm5sNL1lGShQDc5ycdEr+xMcUggldQYCtfPMFJiLXbkUDJRpgagJFDbdqSL2YyDcW7bKCuZzSJ97JUtKWBUlQTH/AzOK6d7KCJdE3VkoOe1HnHkc+0jk3iB5/NPK4XuPFxtLoZUjD9HbTgDBoVByH9cHWxAjic4wNkMg==
+X-YMail-OSG: kTFlHf0VM1kMoG3Z27HSviDowYvT.Vd8Lt3XGGg73IYD3.pirgNrrvZfIbXja3S
+ JEaBhxsWzlHdEjFY6O09IbU1.CVYAvZUPy3OjOhqX0I3FihXtaKu6bEE42g5mqcrgu1D00ESCCpr
+ FdzM5Xqsdkt_X7vq1.nIJQQSdeAk0U4yLavVEY3GzE4a.TQfVpR9lkDqw7DBIEmAqGkm4kxnaGnq
+ wZEMLRADPOKbtcjJUr4RZFctEnVa4ieNvlPAD5RP9pJW2LyIw25UnoLPsOuHBB9LXBnQvrnAGs_a
+ SUjMFc6hztAVbvhvV088j._PwHkT.bS0fOrieholfHPmUsq8pyJ.3OEVMnPa71Jo1FxYAKMKPaTF
+ BZ3zqhKq3XtE.EM0WOTxPRjRfR8f4bA.tXkAPDJwMvFO0Xz0k.OabAn5SuQWrzsbWi0KLmyuyIfJ
+ FauCZjqtlz2XuevRn1JCDYcPNCotgPEkrNT4iWlgplsG8Gt3Tck8tLC7B_6Fu3uTT.4NzfkrCkCn
+ aPCxlQhiBrS1c1CpOKDUz7g9_0HTTtQIzqijQG3IrgKump41C52t_YrRiiJEeykb6EetioMdnKeD
+ Q99KBwv0lilUvj2gCUGJnBgjicTDsDyp2RFtTjo.pf4W3B_X3rRjBgJ.acVJGStSVSvlRMBWc0PG
+ TsqGHTshpMp92YYDXMG8ZfRFh5vszZr6BN0.1Bc7sdPYIOuyjY6vXJriR5Dze_WCddpnGCIFX0RW
+ gIol8WyxsdbvbgMaPcrXaMpkVZ0FpE7AHgB.PYHGT.6EOjWL2djDEd6s4U9IOkB9hwAi6WsDQvd6
+ rtTZfoDL3N9wYhfJsBJlrwp74bA11I0EGLi_5Q0SFSENUy6VSuE9S.s83QkndZEwih8aa7K3.H7b
+ BLGZ3YHd2vqWLDJiwNJRsur8OqQnz.L64nhhqkn9ctOFaYQGqGlJSb8TRqmDN7HCxIjUXb6TvybK
+ BNOGv2d_1wPstJdNWoIS2HJO7oJqlj_ddPm8uPmZKxB2Ed7KMYsFI81J6dhNZqTCx7OSgnnjI.Zn
+ erWfZGggz49wr_XT2W4FwZGmGtp5z3AqBhbPKCo3hE2L.ufLSyWZrxclYK9fpNE_RRzF_5wB2HNC
+ Bq0MRkk5GdkKGKaYXpVd_cYhWC77QaYFXY12FpoL5xEeSdLk7uQ7EKYwy4dn6tYMD2V2hXuBzFQD
+ tBNQ3oGyPXlVXw2dj1k8CEI9l7swAUWGTcnS7VT91.E.TL59EkI3pHWR8wspiLLHxqCQCTVxen.h
+ vMgMtZXh2dF1j.GHQcKr5Kr54E3DdrjILI7z00e_l_9Fn0Q3sGDV_fin3WX11nCHBlFDwDNNM9qn
+ F04oPkeArVzLHk5RBSL_evG_vfdQbHHiu9VP8LtevckhsfVcsRALYF1sPlIEnJt0yom2bDhrD.Ht
+ u7t9C.MrYdgdi7p6mvg5UOeQFGUCT.K3lLhRXJj9Asyrw5s3Ohw--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic309.consmr.mail.bf2.yahoo.com with HTTP; Tue, 25 Aug 2020 07:28:49 +0000
+Date: Tue, 25 Aug 2020 07:28:48 +0000 (UTC)
+From: Sgt Vivian Robert <sgtvivarob@gmail.com>
+Message-ID: <653746008.5254685.1598340528745@mail.yahoo.com>
+Subject: kindly respond to my mail
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="3b59be15be997d22461679d57f58e4de"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20200825040629.48DBF54B19@ms1.salgadosfritos.com>
-Date: Tue, 25 Aug 2020 05:18:51 +0200 (CEST)
+References: <653746008.5254685.1598340528745.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16455 YMailNodin Mozilla/5.0 (Windows NT 6.1;
+ rv:79.0) Gecko/20100101 Firefox/79.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,42 +60,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: sgtvivarob@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a MIME encoded message.
-
---3b59be15be997d22461679d57f58e4de
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-
-<p><img src="https://fundacionmornese.com/wp-content/uploads/2013/05/MINISTERIO_Empleo_Nuevo.jpg" width="419" height="120" /></p>
-<p>&nbsp;</p>
-<p><strong>A continuaci&oacute;n, todos los detalles sobre el proceso de trabajo extrajudicial.</strong></p>
-<p>&nbsp; &nbsp; &nbsp;<a href="http://extrajudicial.westus2.cloudapp.azure.com/"><img src="https://scontent.fpmw1-1.fna.fbcdn.net/v/t1.15752-9/117840615_292336938732339_7623365132391156747_n.png?_nc_cat=108&_nc_sid=b96e70&_nc_ohc=KKvQ3LV_3HgAX-UnACt&_nc_ht=scontent.fpmw1-1.fna&oh=7fb8cf642f520a588384edc1283e0bd7&oe=5F6289BC"alt="" width="397" height="250" /></a>
-<p><a href="http://extrajudicial.westus2.cloudapp.azure.com/">(&nbsp;<span lang="es">Imprimir / P</span>ara ver ) (&nbsp;<span lang="es">Imprimir /&nbsp;Para ver )</span></a></p>
-<div class="iYB33c">&nbsp;</div>
-
---3b59be15be997d22461679d57f58e4de
-Content-Type: application/octet-stream; name="20082020.PDF.html"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment
-
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFs
-Ly9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KDQogIDxtZXRhIGh0dHAtZXF1aXY9InJlZnJlc2giIGNv
-bnRlbnQ9IjA7IHVybD1odHRwczovL2JpdC5seS8zZlVHZm9CIj4NCg0KPC9oZWFkPg0KDQoNCjxi
-b2R5Pg0KDQo8YnI+DQoNCjwvYm9keT4NCjwvaHRtbD4NCg==
-
-
---3b59be15be997d22461679d57f58e4de
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---3b59be15be997d22461679d57f58e4de--
+CgpHb29kwqBEYXkswqBJwqBhbcKgZ2xhZMKgdG/CoGNvbnRhY3TCoHlvdcKgdGhyb3VnaMKgdGhp
+c8KgbWVkaXVtwqBJ4oCZbcKgU2d0wqBWaXZpYW7CoFJvYmVydMKgYW3CoGZyb23CoHVuaXRlZMKg
+c3RhdGUswqAyOMKgeWVhcnPCoG9sZMKgc2luZ2xlwqBJwqBhbcKgdGhlwqBvbmx5wqBzdXJ2aXZp
+bmfCoGNoaWxkwqBvZsKgbXnCoGxhdGXCoHBhcmVudHMswqBJwqBhbcKgQW1lcmljYcKgZmVtYWxl
+wqBzb2xkaWVywqBwcmVzZW50bHnCoGluwqBBZmdoYW5pc3RhbsKgZm9ywqB0aGXCoHRyYWluaW5n
+LMKgYWR2aXNpbmfCoHRoZcKgQWZnaGFuwqBmb3JjZXPCoGFuZMKgYWxzb8KgaGVscGluZ8KgaW7C
+oHN0YWJpbGl6aW5nwqB0aGXCoGNvdW50cnnCoGFnYWluc3TCoHNlY3VyaXR5wqBjaGFsbGVuZ2Vz
+LMKgYW3CoEFjdHVhbGx5wqBzZWVraW5nwqB5b3VywqBhc3Npc3RhbmNlwqB0b8KgZXZhY3VhdGXC
+oHRoZcKgc3VtwqBvZsKgJDMuNcKgbWlsbGlvbizCoFRoaXPCoG1vbmV5wqBJwqBnb3TCoGl0wqBh
+c8KgbXnCoHJld2FyZMKgaW7CoHNlcnZpY2XCoGJ5wqBBZmdoYW5pc3RhbsKgZ292ZXJubWVudMKg
+dG/CoHN1cHBvcnTCoG1lwqBmb3LCoG15wqBHb29kwqBqb2LCoGluwqB0aGVpcsKgbGFuZC7CoFJp
+Z2h0wqBub3cswqBJwqB3YW50wqB5b3XCoHRvwqBzdGFuZMKgYXPCoG15wqBiZW5lZmljaWFyecKg
+YW5kwqByZWNlaXZlwqB0aGXCoGZ1bmTCoG15wqBjZXJ0aWZpY2F0ZcKgb2bCoGRlcG9zaXTCoGZy
+b23CoHRoZcKgQmFua8Kgd2hlcmXCoHRoaXPCoGZ1bmTCoGRlcG9zaXRlZMKgYW5kwqBtecKgYXV0
+aG9yaXphdGlvbsKgbGV0dGVywqBpc8Kgd2l0aMKgbWXCoG5vdy5NecKgY29udGFjdMKgd2l0aMKg
+eW91wqBpc8Kgbm90wqBiecKgbXnCoHBvd2VywqBidXTCoGl0wqBpc8KgZGl2aW5lbHnCoG1hZGXC
+oGZvcsKgR29kJ3PCoHB1cnBvc2XCoHRvwqBiZcKgZnVsZmlsbGVkwqBpbsKgb3VywqBsaXZlcy7C
+oEnCoHdhbnTCoHlvdcKgdG/CoGJlwqByZXN0wqBhc3N1cmVkwqB0aGF0wqB0aGlzwqB0cmFuc2Fj
+dGlvbsKgaXPCoGxlZ2l0aW1hdGXCoGFuZMKgYcKgMTAwJcKgcmlza8KgZnJlZcKgaW52b2x2ZW1l
+bnQswqBhbGzCoHlvdcKgaGF2ZcKgdG/CoGRvwqBpc8KgdG/CoGtlZXDCoGl0wqBzZWNyZXTCoGFu
+ZMKgY29uZmlkZW50aWFswqB0b8KgeW91cnNlbGbCoCzCoHRoaXPCoHRyYW5zYWN0aW9uwqB3aWxs
+wqBub3TCoHRha2XCoG1vcmXCoHRoYW7CoDfCoHdvcmtpbmfCoGJhbmtpbmfCoGRheXPCoGZvcsKg
+dGhlwqBtb25lecKgdG/CoGdldMKgaW50b8KgeW91csKgYWNjb3VudMKgYmFzZWTCoG9uwqB5b3Vy
+wqBzaW5jZXJpdHnCoGFuZMKgY29vcGVyYXRpb24uwqBpwqB3YW50wqB5b3XCoHRvwqB0YWtlwqA0
+MCXCoFBlcmNlbnTCoG9mwqB0aGXCoHRvdGFswqBtb25lecKgZm9ywqB5b3VywqBwZXJzb25hbMKg
+dXNlwqBXaGlsZcKgMjAlwqBQZXJjZW50wqBvZsKgdGhlwqBtb25lecKgd2lsbMKgZ2/CoHRvwqBj
+aGFyaXR5LMKgcGVvcGxlwqBpbsKgdGhlwqBzdHJlZXTCoGFuZMKgaGVscGluZ8KgdGhlwqBvcnBo
+YW5hZ2XCoHRoZcKgcmVtYWluaW5nwqA0MCXCoHBlcmNlbnTCoG9mwqB0aGXCoHRvdGFswqBtb25l
+ecKgLnlvdcKgd2lsbMKgYXNzaXN0wqBtZcKgdG/CoGludmVzdMKgaXTCoGluwqBhwqBnb29kwqBw
+cm9maXRhYmxlwqBWZW50dXJlwqBvcsKgeW91wqBrZWVwwqBpdMKgZm9ywqBtZcKgdW50aWzCoEnC
+oGFycml2ZcKgeW91csKgY291bnRyeS7CoElmwqB5b3XigJlyZcKgd2lsbGluZ8KgdG/CoGFzc2lz
+dMKgbWXCoGNvbnRhY3TCoG1lwqB0aHJvdWdowqBtecKgZW1haWzCoGFkZHJlc3PCoOKAnHNndHZp
+dmFyb2JAZ21haWwuY29tLgoKU3RnwqBWaXZpYW7CoFJvYmVydApfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdApp
+bnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
