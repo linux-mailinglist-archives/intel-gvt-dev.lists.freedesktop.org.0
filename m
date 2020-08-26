@@ -1,54 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10FC525278D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Aug 2020 08:42:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ABBD25288A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Aug 2020 09:43:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CF82A6E9F1;
-	Wed, 26 Aug 2020 06:42:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AA3346EA2E;
+	Wed, 26 Aug 2020 07:43:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 39ACD6E9F1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 26 Aug 2020 06:42:17 +0000 (UTC)
-IronPort-SDR: EbNfD/j6D4rxMvGoiet/GJVhzm+ySepVj1OAgo5g6XjV8aIXSKGnIY0RgpzUvI9TLnIjmqzO1I
- 2ZOPNWQF+LdA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9724"; a="217791740"
-X-IronPort-AV: E=Sophos;i="5.76,354,1592895600"; d="scan'208";a="217791740"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Aug 2020 23:42:15 -0700
-IronPort-SDR: 9HZ8FwCzB5Y9XCTO3PAbkdbuTxhtxX9FV8y59Qjh/8B7YakVeZGCd6Si8JfUYycA34ckU0HKFR
- TRIWjEQXU1Ww==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,354,1592895600"; d="scan'208";a="329122213"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by orsmga008.jf.intel.com with ESMTP; 25 Aug 2020 23:42:09 -0700
-Date: Wed, 26 Aug 2020 14:41:17 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: device compatibility interface for live migration with assigned
- devices
-Message-ID: <20200826064117.GA22243@joy-OptiPlex-7040>
-References: <20200814051601.GD15344@joy-OptiPlex-7040>
- <a51209fe-a8c6-941f-ff54-7be06d73bc44@redhat.com>
- <20200818085527.GB20215@redhat.com>
- <3a073222-dcfe-c02d-198b-29f6a507b2e1@redhat.com>
- <20200818091628.GC20215@redhat.com>
- <20200818113652.5d81a392.cohuck@redhat.com>
- <20200820003922.GE21172@joy-OptiPlex-7040>
- <20200819212234.223667b3@x1.home>
- <20200820031621.GA24997@joy-OptiPlex-7040>
- <20200825163925.1c19b0f0.cohuck@redhat.com>
+Received: from dfpcmefspt.underdc.com.br (dfpcmefspt.underdc.com.br
+ [189.113.3.106])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 146DF6EA2E;
+ Wed, 26 Aug 2020 07:43:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ariam.com.br; s=default; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Date:Subject:From:Reply-To:Sender:Message-ID:To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=a4vHSKlOJk1d7KYexAU0K3vusRwMaPDlnnNMFzI63zc=; b=WjGvUxqAg0hiB7LR1Ggy+WLTU9
+ 77VDAlIYKRCev9BH9R8rGplGh++7AtKroteKVdeGWNzzw10bi8750RF+a7K94qS6fYrV0NJz/SVn7
+ OP+KrhZDK5ijcTeWpBoS8082EftgFafHihhV4DEeky+fZcEiV93Et4o+nnQ1jDklHoSM=;
+Received: from [156.96.56.129] (port=59318 helo=User)
+ by dfpcmefspt.underdc.com.br with esmtpa (Exim 4.93)
+ (envelope-from <ariam@ariam.com.br>)
+ id 1kAprJ-0006p8-RU; Wed, 26 Aug 2020 04:28:38 -0300
+From: "COCA COLA."<ariam@ariam.com.br>
+Subject: COCA-COLA  LOTTERY ORGANIZATION.
+Date: Wed, 26 Aug 2020 00:28:31 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200825163925.1c19b0f0.cohuck@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - dfpcmefspt.underdc.com.br
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - ariam.com.br
+X-Get-Message-Sender-Via: dfpcmefspt.underdc.com.br: authenticated_id:
+ ariam@ariam.com.br
+X-Authenticated-Sender: dfpcmefspt.underdc.com.br: ariam@ariam.com.br
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,111 +58,32 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
- Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
- eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
- openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
- jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
- hejie.xu@intel.com, bao.yumeng@zte.com.cn,
- Alex Williamson <alex.williamson@redhat.com>, smooney@redhat.com,
- intel-gvt-dev@lists.freedesktop.org,
- Daniel =?iso-8859-1?Q?P=2EBerrang=E9?= <berrange@redhat.com>,
- eskultet@redhat.com, Jiri Pirko <jiri@mellanox.com>, dinechin@redhat.com,
- devel@ovirt.org
+Reply-To: contactad004@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200826074332.AA3346EA2E@gabe.freedesktop.org>
 
-On Tue, Aug 25, 2020 at 04:39:25PM +0200, Cornelia Huck wrote:
-<...>
-> > do you think the bin_attribute I proposed yesterday good?
-> > Then we can have a single compatible with a variable in the mdev_type and
-> > aggregator.
-> > 
-> >    mdev_type=i915-GVTg_V5_{val1:int:2,4,8}
-> >    aggregator={val1}/2
-> 
-> I'm not really a fan of binary attributes other than in cases where we
-> have some kind of binary format to begin with.
-> 
-> IIUC, we basically have:
-> - different partitioning (expressed in the mdev_type)
-> - different number of partitions (expressed via the aggregator)
-> - devices being compatible if the partitioning:aggregator ratio is the
->   same
-> 
-> (The multiple mdev_type variants seem to come from avoiding extra
-> creation parameters, IIRC?)
-> 
-> Would it be enough to export
-> base_type=i915-GVTg_V5
-> aggregation_ratio=<integer>
-> 
-> to express the various combinations that are compatible without the
-> need for multiple sets of attributes?
+COCA-COLA LOTTERY ORGANIZATION
+TICKET FREE/ONLINE E-MAIL ADDRESS WINNINGS DEPARTMENT.
 
-yes. I agree we need to decouple the mdev type name and aggregator for
-compatibility detection purpose.
+Greetings Winner,
 
-please allow me to put some words to describe the history and
-motivation of introducing aggregator.
+If you are the correct owner of this email address? If yes then be glad this day as the result of the Coca-Cola lotto online e-mail address free-ticket winning draws of January 2020 ,held in United States of America has just been released and we are glad to announce to you that your email address won you the sweepstakes in the first category and you are entitled to claim the sum of One Million Two Hundred And Fifty Thousand United States Dollars(US$1,250,000.00). Your email address was entered for the online draw on this ticket No: 546-373-66773 and won on this Lucky No: (14)-(8)-(5)-(19)-(28)-(12)-(30).
 
-initially, we have fixed mdev_type
-i915-GVTg_V5_1,
-i915-GVTg_V5_2,
-i915-GVTg_V5_4,
-i915-GVTg_V5_8,
-the digital after i915-GVTg_V5 representing the max number of instances
-allowed to be created for this type. They also identify how many
-resources are to be allocated for each type.
+On how to receive your won prize of US$1.250,000.00M. (One Million Two Hundred And Fifty Thousand United States Dollars Only) to enable Mr.James Curtise ascertain you as the rightful winner and receiver of the US$1.250,000.00M.Make sure you include the below listed information in your contact email to him.
 
-They are so far so good for current intel vgpus, i.e., cutting the
-physical GPU into several virtual pieces and sharing them among several
-VMs in pure mediation way.
-fixed types are provided in advance as we thought it can meet needs from
-most users and users can know the hardware capability they acquired
-from the type name. the bigger in number, the smaller piece of physical
-hardware.
+Your complete official names, country of origin and country of residence/work, contact telephone and mobile numbers, amount won,lucky numbers, date of draw. OPTIONAL: - [Sex, age, occupation and job title].
 
-Then, when it comes to scalable IOV in near future, one physical hardware
-is able to be cut into a large number of units in hardware layer
-The single unit to be assigned into guest can be very small while one to
-several units are grouped into an mdev.
-
-The fixed type scheme is then cumbersome. 
-Therefore, a new attribute aggregator is introduced to specify the number
-of resources to be assigned based on the base resource specified in type
-name. e.g.
-if type name is dsa-1dwq, and aggregator is 30, then the assignable
-resources to guest is 30 wqs in a single created mdev.
-if type name is dsa-2dwq, and aggregator is 15, then the assignable
-resources to guest is also 30wqs in a single created mdev.
-(in this example, the rule to define type name is different to the case
-in GVT. here 1 wq means wq number is 1. yes, they are current reality.
-:) )
+Just in case you are thinking of how you won without entering then know again that this very draw of the Coca-Cola Lottery Organization in which you have emerged as a winner was a free ticket online email address draws were thousands of email addresses was collected from almost all world wide websites and used for the online draws/sweepstakes and during winners selection your email address came out among the first ten which won you the lottery in the first winnings category and entitles you to claim the US$1,250,000.00 dollars.
 
 
-previously, we want to regard the two mdevs created with dsa-1dwq x 30 and
-dsa-2dwq x 15 as compatible, because the two mdevs consist equal resources.
-
-But, as it's a burden to upper layer, we agree that if this condition
-happens, we still treat the two as incompatible.
-
-To fix it, either the driver should expose dsa-1dwq only, or the target
-dsa-2dwq needs to be destroyed and reallocated via dsa-1dwq x 30.
-
-Does it make sense?
-
-Thanks
-Yan
-
-
-
-
-
+Yours Faithfully,
+Mr.James Curtise
+COCA-COLA  LOTTERY ORGANIZATION.
+Online Winning Notification Department.
+Tel: +1-403-671-3656
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
