@@ -1,56 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5EAB257821
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 31 Aug 2020 13:20:26 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2283E257872
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 31 Aug 2020 13:30:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8A4B86E101;
-	Mon, 31 Aug 2020 11:20:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BA64E6E119;
+	Mon, 31 Aug 2020 11:30:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x142.google.com (mail-il1-x142.google.com
- [IPv6:2607:f8b0:4864:20::142])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3EC0B6E101
+Received: from sonic310-13.consmr.mail.bf2.yahoo.com
+ (sonic310-13.consmr.mail.bf2.yahoo.com [74.6.135.123])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C07FF6E11B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 31 Aug 2020 11:20:24 +0000 (UTC)
-Received: by mail-il1-x142.google.com with SMTP id p13so685712ils.3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 31 Aug 2020 04:20:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=LEisga0HEyOHXoukHr3NTMNjOTRAldNjVdgW/U4Qb/M=;
- b=JoaAVe0oizYAEXWuMo0ctKn3JM8ALMyemuswuwXIvcn1iN8BXWNdqJAgEGd/CTukdI
- 7lLngR+VFS4076SqmnQbApyCR3g7KtJY5uT8j1msYmT16ZI2TbQf33tpec3/VmkoQeGP
- 2nvYoGOIdPv7Iunv+0+su7LKOzPIb+yS+h3DKEbF/vpEcZMoUlZT71ONkXezqLCyS10/
- 6H2bsqtMDdDR4AHGgv4rT/tR2jAUA8e6akE19qRLQbhbkVIYxkkTH7OEt6meahDfxOGU
- CefJ6qfRVOFOHugugQbWCH519JECiWJsprrFbqdKW3+OahuHK+cY8R0exQvQ0JuXQmu4
- KG9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=LEisga0HEyOHXoukHr3NTMNjOTRAldNjVdgW/U4Qb/M=;
- b=HSwKW8vGtra8p7AfGlYCO9zerygowfS6Ipft1gtAOFB7hD2x1Vp+iYfQuXo5U/AKZ1
- qLgqkQ6p0/6EnoCEOn5iFhVPMw8bVvkxDPIdwlSmZHikwiQuzdQII2TXcyXXImjzZZxR
- CIQ1M/CAaskM7CICzm2la0+jcMJ5Yq5HbHzN7auwMGdEey7n+f2VPzR5TW9pI7yVFZYz
- MrQ7hmXcw/eOBgppPzPycEGzEUDa0A/CTPDTPQ3DBRH5qlToL7KbM2h2rQQUzw5vXjsv
- +DkaGiHRGfHM4wgvumc9xKvBAtAnMixXRo7nfx5sCfvitdCVkaKpdaGafMbbuWZOT8r9
- iEjA==
-X-Gm-Message-State: AOAM530rbEcyd01ahF1bn+43u3gswS+kq4k0WeusAVHn2QWYYGgVxZHq
- cEg3aK6GC7MHIHGPlmfK4h2Q/plfQHso+0XzzHg=
-X-Google-Smtp-Source: ABdhPJxuGUExCfnctBK7zYrQT/7RiL0nX6Q+4xtagDrdS/Jfhmo1vAA3k4jfXWRVYL7JFNHHYnvuSHUoTrVvZIc52po=
-X-Received: by 2002:a92:8b4c:: with SMTP id i73mr929844ild.84.1598872823395;
- Mon, 31 Aug 2020 04:20:23 -0700 (PDT)
+ Mon, 31 Aug 2020 11:30:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1598873399; bh=yhSBrV3PWyvGAZGHLSqPerN0izlfo8IOk1it1pB+lkU=;
+ h=Date:From:Subject:References:From:Subject;
+ b=DsfwCMl7NhKHgqFsddz6diNfRSoEFTot53cp4ZcPNsDWkywy8w4F0zP+FlFt1f5jsNSzVuiEQLbmGKCRW51HGn9rea0ozkLyDZKtK/EM2pL2tO3WfQJlpKISdLBygsS1+Eo9myPH6m9oGXPgz5/Hpm7peTvxiVE8vlGJMkBnSbPKGvHYU1L4xcYAeV3VhNYD8sn5TyhoCr6kwdkJHJVWAFmOREhsWHophuKZin3Nq8+mb9MIKHMg72SvgaNssxtlE8c7dLBlSumgOqac6e2BXfBPhvc1VTCv3a4NhtyxBbeDY3w19DqOjygPReVThGUsAjF5xoXlpXj63YO7Kap9kg==
+X-YMail-OSG: ntmcluoVM1mYCLjvuXUuvwmtpNx1G8p_LYw.W49z5KV_s95Ydx31P6J6eQ6KMCQ
+ 2llMDgnr4XwXfdBoha3moy_.vKTcWaQFijPAOZOmb9NB6rEHCn3IQMCEweKjPr1o69aWgRm6MX_L
+ 41z8cBWP8gNtijas2d3G9RtILjRrlaPlEcMVe5g5Ew4_taZypC1aES.HCupIzMOXpR9b2Tcj9qAy
+ 88WeCPBUFwhukfrLsdWBJD82wSLqGaXq2Mak6x7sqOveJqDdpL7ifzdTGhVSI5VFBtPWtlx.Yy1a
+ uIQqiZeYdpMphJ9Qg5qPhp_h9paoHo0DrwxGrY2Dsx4xaRSs2ErAYyJ2qDTJ4pGS_AWy5mbP0EQ1
+ De_JGW9NQk9vNkkbFw2GVZbeZpNYaIRW8IQWLfnqJt5LUD_p7k0yWUIijD8NWU2dO1V.V2Ym.fx1
+ r9bnrouJbYUvaC8_A1udC_iZFLrNdavbdn1DoQDyqbb_ko0P7wRThNxl6nXciSL.8k4j9SvfFxPi
+ nwusyiztIE5ETtuD5fzFJdWX._VAvAb9fHIjrY755fAHKnZ9mV8M3A3vJmhDlatlNKvbQYjJHp0d
+ 3gXIPnK87aTqKeSBrB8Xkd07k7_oamJxFWAQcX2L5BfqUnlIoMTL8ayEODT.kn7cmHH.Vtrtmq8D
+ W3zTciNUES6KugGYohZWwKIQ2eqx0tViVHnxGTuXqP4AOXhrSWJsf3jEF8iyAyqQNPwq0Xoms.us
+ kNy8OCQXpcBS6ziZJ4v8Jmvf8FfEAm2JDlTO2LnHWHgF6A_Fa22foK5deGhi5rCu3PQL235hlB61
+ CFyEi0qorU8HnRokFGRg9yLTBEoesK_nFGlKUcWl_Fe2o7aA8hvva23vbegz.v6tfc1ylAZqTLIk
+ YBjG.L36LU3bCXX31sG9CWfjDRzd5qn9S3UDcFsxckBkrmM3zRrxd8uN473UM.Wrq_qN839DNbG_
+ VPj2HmCC9X4hqez2la5DorYyH8RiZlFbfI2vm4knltTAYgIw.nmoCab.XP9c4gKIMGm0hJK96AdJ
+ fRh_pG3l7ydNqjJTKGY1RH9atU3w3k2iCQCS4GP6_0.HaiyYSBVfAYdv6bCARzaYbQD9DBxl47Dj
+ qtZhqLzMoVnCFlErssXsUhuxXftrzjTQEAbECrDTLn73R98UXsP4g1dTOmfmui..u4jYop_4k2Xq
+ k4qa4ZCVUaNHxiZf_mbILIrSYHOxcHDEHlpoYdz1Uo7J2MEolmPJWmX_KV5C957fOxvSE1SY6nke
+ 3nu0KH4rKSzS.KlnetZwaCfKFezawFulTbEt2xyTEYhHhYwiFiuBuqcGYJ3gzhjb_Kl5dvsOWnxl
+ Gt.76QjOVY9mqqfZgCw.5TmSUPPmEDTeMLFGQVytnS_K3vZgnO2b53QuF.5CG0d_66PjVGLOUw7s
+ 2N1mdlPbkkqRIT3pRT7L8AAIcvZ3q.RCX5zAYfVg5L0xDQ6pNMrUg
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic310.consmr.mail.bf2.yahoo.com with HTTP; Mon, 31 Aug 2020 11:29:59 +0000
+Date: Mon, 31 Aug 2020 11:29:57 +0000 (UTC)
+From: "aishiag85@gmail.com" <aishiag85@gmail.com>
+Message-ID: <2116461576.572166.1598873397135@mail.yahoo.com>
+Subject: hello dear please kindly reply my email is very urgent
 MIME-Version: 1.0
-Received: by 2002:a4f:b316:0:0:0:0:0 with HTTP; Mon, 31 Aug 2020 04:20:22
- -0700 (PDT)
-From: "Miss.Aisha Gaddafi" <knneystanley@gmail.com>
-Date: Mon, 31 Aug 2020 04:20:22 -0700
-Message-ID: <CANPoRsDiTejAikmueAL-sc2-FRmf1UuSO8KDuV1efRV4tPsr6g@mail.gmail.com>
-Subject: URGENT BUSINESS PROPOSAL
-To: undisclosed-recipients:;
+References: <2116461576.572166.1598873397135.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16565 YMailNorrin Mozilla/5.0 (Windows NT 10.0; Win64;
+ x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135
+ Safari/537.36
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,38 +61,73 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: aishsgaddafi00@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1798234429=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-LS0gCkRlYXJlc3QgT25lLAoKSSBhbSBNaXNzIEFpc2hhIEdhZGRhZmksIG9uZSBvZiB0aGUgZGF1
-Z2h0ZXJzIG9mIHRoZSBlbWJhdHRsZWQKcHJlc2lkZW50IG9mIExpYnlhLCBJIGFtIGN1cnJlbnRs
-eSByZXNpZGluZyBpbiBvbmUgb2YgdGhlIEFmcmljYW4KQ291bnRyaWVzLCB1bmZvcnR1bmF0ZWx5
-IGFzIGEgcmVmdWdlZS4gQXQgdGhlIG1lYW50aW1lLCBteSBmYW1pbHkgaXMKdGhlIHRhcmdldCBv
-ZiBXZXN0ZXJuIG5hdGlvbnMgbGVkIGJ5IE5hdG8gd2hvIHdhbnRzIHRvIGRlc3Ryb3kgbXkKZmF0
-aGVyIGF0IGFsbCBjb3N0cy4gT3VyIGludmVzdG1lbnRzIGFuZCBiYW5rIGFjY291bnRzIGluIHNl
-dmVyYWwKY291bnRyaWVzIGFyZSB0aGVpciB0YXJnZXRzIHRvIGZyZWV6ZS4KCkkgaGF2ZSBiZWVu
-IGNvbW1pc3Npb25lZCB0byBjb250YWN0IGFuIGludGVyZXN0ZWQgZm9yZWlnbgppbnZlc3Rvci9w
-YXJ0bmVyIHdobyB3aWxsIGJlIGFibGUgdG8gdGFrZQphYnNvbHV0ZSBjb250cm9sIG9mIHBhcnQg
-b2YgdGhlIHZhc3QgY2FzaCBhdmFpbGFibGUgdG8gcHJpdmF0ZSBhY2NvdW50CndpdGggbXkgbGF0
-ZSBicm90aGVyIHdobyB3YXMga2lsbGVkIGJ5IE5BVE8gYWlyIHN0cmlrZSwgZm9yIGEgcG9zc2li
-bGUKaW52ZXN0bWVudCBpbiB5b3VyIGNvdW50cnkuCgpJZiB0aGlzIHRyYW5zYWN0aW9uIGludGVy
-ZXN0IHlvdSwgeW91IGRvbuKAmXQgaGF2ZSB0byBkaXNjbG9zZSBpdCB0byBhbnkKYm9keSBiZWNh
-dXNlIG9mIHdoYXQgaXMgZ29pbmcgd2l0aCBteSBlbnRpcmUgZmFtaWx5LCBpZiB0aGUgdW5pdGVk
-Cm5hdGlvbiBoYXBwZW5zIHRvIGtub3cgdGhpcyBhY2NvdW50LCB0aGV5IHdpbGwgZnJlZXppbmcg
-aXQgYXMgdGhleQpmcmVlemUgb3RoZXJzIHNvIGtlZXAgdGhpcyB0cmFuc2FjdGlvbiBmb3IgeW91
-cnNlbGYgb25seSB1bnRpbCB3ZQpmaW5hbGl6ZSBpdC4KSSB3YW50IHRvIHRyYW5zZmVyIHRoaXMg
-bW9uZXkgaW50byB5b3VyIGFjY291bnQgaW1tZWRpYXRlbHkgZm9yIG9ud2FyZAppbnZlc3RtZW50
-IGluIHlvdXIgY291bnRyeSBiZWNhdXNlIEkgZG9u4oCZdCB3YW50IHRoZSB1bml0ZWQgbmF0aW9u
-IHRvCmtub3cgYWJvdXQgdGhpcyBhY2NvdW50LgoKVGhlcmVmb3JlIGlmIHlvdSBhcmUgY2FwYWJs
-ZSBvZiBydW5uaW5nIGFuIGVzdGFibGlzaG1lbnQgYW5kIGNhbgptYWludGFpbiB0aGUgaGlnaCBs
-ZXZlbCBvZiBzZWNyZWN5IHJlcXVpcmVkIGluIHRoaXMgcHJvamVjdCwga2luZGx5CnJlc3BvbmQg
-d2l0aCB0aGUgZm9sbG93aW5nIGluZm9ybWF0aW9uIGZvciBkZXRhaWxzIG9mIHRoZQpwcm9qZWN0
-LlBsZWFzZQoKMS4gWW91ciBmdWxsIG5hbWVzIGFuZCBhZGRyZXNzCjIuIFlvdXIgcHJpdmF0ZSB0
-ZWxlcGhvbmUgYW5kIGZheCBudW1iZXJzCjMuIFlvdXIgcHJpdmF0ZSBlbWFpbCBhZGRyZXNzCjQu
-IEFnZSBhbmQgcHJvZmVzc2lvbgoKQmVzdCBSZWdhcmQKTWlzcy5BaXNoYSBHYWRkYWZpCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYg
-bWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
+--===============1798234429==
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_572165_1676303155.1598873397134"
+
+------=_Part_572165_1676303155.1598873397134
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Dear I Need An Investment Partner
+Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh
+Dear Friend,
+I came across your e-mail contact prior a private search while in need of y=
+our assistance. I am Aisha Al-Qaddafi, the only biological Daughter of Form=
+er President of Libya Col. Muammar Al-Qaddafi. Am a single Mother and a Wid=
+ow with three Children.
+I have investment funds worth Twenty Seven Million Five Hundred Thousand Un=
+ited State Dollar ($27.500.000.00 ) and i need a trusted investment Manager=
+/Partner because of my current refugee status, however, I am interested in =
+you for investment project assistance in your country, may be from there, w=
+e can build business relationship in the nearest future.
+I am willing to negotiate investment/business profit sharing ratio with you=
+ base on the future investment earning profits.=C2=A0If you are willing to =
+handle this project on my behalf kindly reply urgent to enable me provide y=
+ou more information about the investment funds.
+
+Your Urgent Reply Will Be AppreciatedBest RegardsMrs Aisha Al-Qaddafi
+
+
+------=_Part_572165_1676303155.1598873397134
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head></head><body><div class=3D"yahoo-style-wrap" style=3D"font-fami=
+ly:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;"><div dir=
+=3D"ltr" data-setdir=3D"false"><div><div>Dear I Need An Investment Partner<=
+/div><div><br></div><div>Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh</div=
+><div><br></div><div>Dear Friend,</div><div><br></div><div>I came across yo=
+ur e-mail contact prior a private search while in need of your assistance. =
+I am Aisha Al-Qaddafi, the only biological Daughter of Former President of =
+Libya Col. Muammar Al-Qaddafi. Am a single Mother and a Widow with three Ch=
+ildren.</div><div><br></div><div>I have investment funds worth Twenty Seven=
+ Million Five Hundred Thousand United State Dollar ($27.500.000.00 ) and i =
+need a trusted investment Manager/Partner because of my current refugee sta=
+tus, however, I am interested in you for investment project assistance in y=
+our country, may be from there, we can build business relationship in the n=
+earest future.</div><div><br></div><div>I am willing to negotiate investmen=
+t/business profit sharing ratio with you base on the future investment earn=
+ing profits.&nbsp;</div><div>If you are willing to handle this project on m=
+y behalf kindly reply urgent to enable me provide you more information abou=
+t the investment funds.</div><div><br></div><div><br></div><div>Your Urgent=
+ Reply Will Be Appreciated</div><div>Best Regards</div><div>Mrs Aisha Al-Qa=
+ddafi</div><div><br></div></div><br></div></div></body></html>
+------=_Part_572165_1676303155.1598873397134--
+
+--===============1798234429==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1798234429==--
