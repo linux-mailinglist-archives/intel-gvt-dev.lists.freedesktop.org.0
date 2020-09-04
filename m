@@ -1,38 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E3A625F143
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Sep 2020 02:55:54 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6395E25F145
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Sep 2020 02:55:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1CB848911B;
-	Mon,  7 Sep 2020 00:55:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1BCFD89F2D;
+	Mon,  7 Sep 2020 00:55:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A14166E0D9;
- Mon,  7 Sep 2020 00:55:50 +0000 (UTC)
-IronPort-SDR: lwIUDKdEsd8mLcaQVAru2WpGosuH/huhQU7CO8Lgxhs5x0Ia5+3Hq2ZcSqdRbf8x/nBj/BDrSi
- uT9zdphqVUVQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9736"; a="157950648"
-X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="157950648"
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5509189E5F;
+ Mon,  7 Sep 2020 00:55:54 +0000 (UTC)
+IronPort-SDR: MpPhLKekJSWFZtCWg8cOxt5B5S/1InkYzOE7KYtb0cEFekHyXDahhY5C3BKs4vPbdV9z2Jgs7f
+ vtu7Wjmef06w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9736"; a="157950653"
+X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="157950653"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Sep 2020 17:55:50 -0700
-IronPort-SDR: Hpju70l4EwiJ20n9CRcGMcGJBwO0nU2mZDS+srXDgBRZ0BAzeNmv3pFICT+2DSwzLBdx+WkCQC
- zCjFVJgKlBiw==
+ 06 Sep 2020 17:55:54 -0700
+IronPort-SDR: m4YMUTnBN6zDJTptwViMEpN9P0MH2Mr2gSi1uDgQmjnJp92WnaIZIPBV1MRubQMnunY8D4HS73
+ RZcoFBTTM1Ow==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="479443970"
+X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="479443989"
 Received: from xzhan34-mobl2.bj.intel.com ([10.238.154.74])
- by orsmga005.jf.intel.com with ESMTP; 06 Sep 2020 17:55:47 -0700
+ by orsmga005.jf.intel.com with ESMTP; 06 Sep 2020 17:55:51 -0700
 From: Xiaolin Zhang <xiaolin.zhang@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org,
 	intel-gfx@lists.freedesktop.org
-Subject: [PATCH v1 08/12] drm/i915/gvt: GVTg handle guest shared_page setup
-Date: Sat,  5 Sep 2020 00:21:41 +0800
-Message-Id: <1599236505-9086-9-git-send-email-xiaolin.zhang@intel.com>
+Subject: [PATCH v1 09/12] drm/i915/gvt: GVTg support vgpu pv CTB protocol
+Date: Sat,  5 Sep 2020 00:21:42 +0800
+Message-Id: <1599236505-9086-10-git-send-email-xiaolin.zhang@intel.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1599236505-9086-1-git-send-email-xiaolin.zhang@intel.com>
 References: <1599236505-9086-1-git-send-email-xiaolin.zhang@intel.com>
@@ -57,163 +57,165 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-GVTg implemented guest shared_page register operation and read and write
-shared_page functionality based on hypervisor read and write functionality.
-
-the shared_page_gpa was passed from guest driver through PVINFO
-shared_page_gpa register.
+host side to implement vgpu PV CTB protocol. based on the protocol,
+CTB read functionality is implemented to handle pv command from guest.
 
 Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/gvt.h      |  9 ++++++--
- drivers/gpu/drm/i915/gvt/handlers.c | 20 +++++++++++++++++
- drivers/gpu/drm/i915/gvt/vgpu.c     | 43 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 70 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/gvt/handlers.c | 119 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 118 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 31d8a2bcc..d635313 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -214,6 +214,8 @@ struct intel_vgpu {
- 
- 	u32 scan_nonprivbb;
- 	u32 pv_caps;
-+	u64 shared_page_gpa;
-+	bool shared_page_enabled;
- };
- 
- static inline void *intel_vgpu_vdev(struct intel_vgpu *vgpu)
-@@ -536,7 +538,7 @@ static inline u64 intel_vgpu_get_bar_gpa(struct intel_vgpu *vgpu, int bar)
- static inline bool intel_vgpu_enabled_pv_cap(struct intel_vgpu *vgpu,
- 		enum pv_caps cap)
- {
--	return (vgpu->pv_caps & cap);
-+	return vgpu->shared_page_enabled && (vgpu->pv_caps & cap);
- }
- 
- void intel_vgpu_clean_opregion(struct intel_vgpu *vgpu);
-@@ -692,7 +694,10 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgpu);
- void intel_gvt_debugfs_remove_vgpu(struct intel_vgpu *vgpu);
- void intel_gvt_debugfs_init(struct intel_gvt *gvt);
- void intel_gvt_debugfs_clean(struct intel_gvt *gvt);
--
-+int intel_gvt_read_shared_page(struct intel_vgpu *vgpu,
-+		unsigned int offset, void *buf, unsigned long len);
-+int intel_gvt_write_shared_page(struct intel_vgpu *vgpu,
-+		unsigned int offset, void *buf, unsigned long len);
- 
- #include "trace.h"
- #include "mpt.h"
 diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index bfea065..295e43a 100644
+index 295e43a..b9c9f62 100644
 --- a/drivers/gpu/drm/i915/gvt/handlers.c
 +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -1204,6 +1204,8 @@ static int pvinfo_mmio_read(struct intel_vgpu *vgpu, unsigned int offset,
- 	case 0x78010:	/* vgt_caps */
- 	case 0x7881c:
- 	case _vgtif_reg(pv_caps):
-+	case _vgtif_reg(shared_page_gpa):
-+	case _vgtif_reg(shared_page_gpa) + 4:
- 		break;
- 	default:
- 		invalid_read = true;
-@@ -1221,6 +1223,9 @@ static int handle_g2v_notification(struct intel_vgpu *vgpu, int notification)
+@@ -1218,6 +1218,119 @@ static int pvinfo_mmio_read(struct intel_vgpu *vgpu, unsigned int offset,
+ 	return 0;
+ }
+ 
++static inline unsigned int ct_header_get_len(u32 header)
++{
++	return (header >> PV_CT_MSG_LEN_SHIFT) & PV_CT_MSG_LEN_MASK;
++}
++
++static inline unsigned int ct_header_get_action(u32 header)
++{
++	return (header >> PV_CT_MSG_ACTION_SHIFT) & PV_CT_MSG_ACTION_MASK;
++}
++
++static int fetch_pv_command_buffer(struct intel_vgpu *vgpu,
++		struct vgpu_pv_ct_buffer_desc *desc,
++		u32 *fence, u32 *action, u32 *data)
++{
++	u32 head, tail, len, size, off;
++	u32 cmd_head;
++	u32 avail;
++	u32 ret;
++
++	/* fetch command descriptor */
++	off = PV_DESC_OFF;
++	ret = intel_gvt_read_shared_page(vgpu, off, desc, sizeof(*desc));
++	if (ret)
++		return ret;
++
++	GEM_BUG_ON(desc->size % 4);
++	GEM_BUG_ON(desc->head % 4);
++	GEM_BUG_ON(desc->tail % 4);
++	GEM_BUG_ON(tail >= size);
++	GEM_BUG_ON(head >= size);
++
++	/* tail == head condition indicates empty */
++	head = desc->head/4;
++	tail = desc->tail/4;
++	size = desc->size/4;
++
++	if (unlikely((tail - head) == 0))
++		return -ENODATA;
++
++	/* fetch command head */
++	off = desc->addr + head * 4;
++	ret = intel_gvt_read_shared_page(vgpu, off, &cmd_head, 4);
++	head = (head + 1) % size;
++	if (ret)
++		goto err;
++
++	len = ct_header_get_len(cmd_head) - 1;
++	*action = ct_header_get_action(cmd_head);
++
++	/* fetch command fence */
++	off = desc->addr + head * 4;
++	ret = intel_gvt_read_shared_page(vgpu, off, fence, 4);
++	head = (head + 1) % size;
++	if (ret)
++		goto err;
++
++	/* no command data */
++	if (len == 0)
++		goto err;
++
++	/* fetch command data */
++	avail = size - head;
++	if (len <= avail) {
++		off =  desc->addr + head * 4;
++		ret = intel_gvt_read_shared_page(vgpu, off, data, len * 4);
++		head = (head + len) % size;
++	} else {
++		/* swap case */
++		off =  desc->addr + head * 4;
++		ret = intel_gvt_read_shared_page(vgpu, off, data, avail * 4);
++		head = (head + avail) % size;
++		if (ret)
++			goto err;
++
++		off = desc->addr;
++		ret = intel_gvt_read_shared_page(vgpu, off, &data[avail],
++				(len - avail) * 4);
++		head = (head + len - avail) % size;
++	}
++
++err:
++	desc->head = head * 4;
++	return ret;
++}
++
++static int pv_command_buffer_read(struct intel_vgpu *vgpu,
++		u32 *cmd, u32 *data)
++{
++	struct vgpu_pv_ct_buffer_desc desc;
++	u32 fence, off = PV_DESC_OFF;
++	int ret;
++
++	ret = fetch_pv_command_buffer(vgpu, &desc, &fence, cmd, data);
++
++	/* write command descriptor back */
++	desc.fence = fence;
++	desc.status = ret;
++
++	ret = intel_gvt_write_shared_page(vgpu, off, &desc, sizeof(desc));
++	return ret;
++
++}
++
++static int handle_pv_commands(struct intel_vgpu *vgpu)
++{
++	u32 cmd;
++	u32 data[32];
++	int ret;
++
++	ret = pv_command_buffer_read(vgpu, &cmd, data);
++	return ret;
++}
++
+ static int handle_g2v_notification(struct intel_vgpu *vgpu, int notification)
+ {
  	enum intel_gvt_gtt_type root_entry_type = GTT_TYPE_PPGTT_ROOT_L4_ENTRY;
- 	struct intel_vgpu_mm *mm;
- 	u64 *pdps;
-+	unsigned long gpa, gfn;
-+	u16 ver_major = PV_MAJOR;
-+	u16 ver_minor = PV_MINOR;
+@@ -1226,6 +1339,7 @@ static int handle_g2v_notification(struct intel_vgpu *vgpu, int notification)
+ 	unsigned long gpa, gfn;
+ 	u16 ver_major = PV_MAJOR;
+ 	u16 ver_minor = PV_MINOR;
++	int ret = 0;
  
  	pdps = (u64 *)&vgpu_vreg64_t(vgpu, vgtif_reg(pdp[0]));
  
-@@ -1234,6 +1239,19 @@ static int handle_g2v_notification(struct intel_vgpu *vgpu, int notification)
- 	case VGT_G2V_PPGTT_L3_PAGE_TABLE_DESTROY:
- 	case VGT_G2V_PPGTT_L4_PAGE_TABLE_DESTROY:
- 		return intel_vgpu_put_ppgtt_mm(vgpu, pdps);
-+	case VGT_G2V_SHARED_PAGE_REGISTER:
-+		gpa = vgpu_vreg64_t(vgpu, vgtif_reg(shared_page_gpa));
-+		gfn = gpa >> PAGE_SHIFT;
-+		if (!intel_gvt_hypervisor_is_valid_gfn(vgpu, gfn)) {
-+			vgpu_vreg_t(vgpu, vgtif_reg(pv_caps)) = 0;
-+			return 0;
-+		}
-+		vgpu->shared_page_gpa = gpa;
-+		vgpu->shared_page_enabled = true;
-+
-+		intel_gvt_write_shared_page(vgpu, 0, &ver_major, 2);
-+		intel_gvt_write_shared_page(vgpu, 2, &ver_minor, 2);
+@@ -1252,6 +1366,9 @@ static int handle_g2v_notification(struct intel_vgpu *vgpu, int notification)
+ 		intel_gvt_write_shared_page(vgpu, 0, &ver_major, 2);
+ 		intel_gvt_write_shared_page(vgpu, 2, &ver_minor, 2);
+ 		break;
++	case VGT_G2V_PV_SEND_TRIGGER:
++		ret = handle_pv_commands(vgpu);
 +		break;
  	case VGT_G2V_EXECLIST_CONTEXT_CREATE:
  	case VGT_G2V_EXECLIST_CONTEXT_DESTROY:
  	case 1:	/* Remove this in guest driver. */
-@@ -1290,6 +1308,8 @@ static int pvinfo_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
- 	case _vgtif_reg(pdp[3].hi):
- 	case _vgtif_reg(execlist_context_descriptor_lo):
- 	case _vgtif_reg(execlist_context_descriptor_hi):
-+	case _vgtif_reg(shared_page_gpa):
-+	case _vgtif_reg(shared_page_gpa) + 4:
- 		break;
- 	case _vgtif_reg(rsv5[0])..._vgtif_reg(rsv5[3]):
- 		invalid_write = true;
-diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-index 4867426..e9bc683 100644
---- a/drivers/gpu/drm/i915/gvt/vgpu.c
-+++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-@@ -64,6 +64,8 @@ void populate_pvinfo_page(struct intel_vgpu *vgpu)
- 	vgpu_vreg_t(vgpu, vgtif_reg(cursor_x_hot)) = UINT_MAX;
- 	vgpu_vreg_t(vgpu, vgtif_reg(cursor_y_hot)) = UINT_MAX;
- 
-+	vgpu_vreg64_t(vgpu, vgtif_reg(shared_page_gpa)) = 0;
-+
- 	gvt_dbg_core("Populate PVINFO PAGE for vGPU %d\n", vgpu->id);
- 	gvt_dbg_core("aperture base [GMADR] 0x%llx size 0x%llx\n",
- 		vgpu_aperture_gmadr_base(vgpu), vgpu_aperture_sz(vgpu));
-@@ -609,3 +611,44 @@ void intel_gvt_reset_vgpu(struct intel_vgpu *vgpu)
- 	intel_gvt_reset_vgpu_locked(vgpu, true, 0);
- 	mutex_unlock(&vgpu->vgpu_lock);
+@@ -1259,7 +1376,7 @@ static int handle_g2v_notification(struct intel_vgpu *vgpu, int notification)
+ 	default:
+ 		gvt_vgpu_err("Invalid PV notification %d\n", notification);
+ 	}
+-	return 0;
++	return ret;
  }
-+
-+/**
-+ * intel_gvt_read_shared_page - read content from shared page
-+ */
-+int intel_gvt_read_shared_page(struct intel_vgpu *vgpu,
-+		unsigned int offset, void *buf, unsigned long len)
-+{
-+	int ret = -EINVAL;
-+	unsigned long gpa;
-+
-+	if (offset >= PAGE_SIZE)
-+		goto err;
-+
-+	gpa = vgpu->shared_page_gpa + offset;
-+	ret = intel_gvt_hypervisor_read_gpa(vgpu, gpa, buf, len);
-+	if (!ret)
-+		return ret;
-+err:
-+	gvt_vgpu_err("read shared page (offset %x) failed", offset);
-+	memset(buf, 0, len);
-+	return ret;
-+}
-+
-+int intel_gvt_write_shared_page(struct intel_vgpu *vgpu,
-+		unsigned int offset, void *buf, unsigned long len)
-+{
-+	int ret = -EINVAL;
-+	unsigned long gpa;
-+
-+	if (offset >= PAGE_SIZE)
-+		goto err;
-+
-+	gpa = vgpu->shared_page_gpa + offset;
-+	ret = intel_gvt_hypervisor_write_gpa(vgpu, gpa, buf, len);
-+	if (!ret)
-+		return ret;
-+err:
-+	gvt_vgpu_err("write shared page (offset %x) failed", offset);
-+	memset(buf, 0, len);
-+	return ret;
-+}
+ 
+ static int send_display_ready_uevent(struct intel_vgpu *vgpu, int ready)
 -- 
 2.7.4
 
