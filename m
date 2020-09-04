@@ -1,38 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 078FE25F135
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Sep 2020 02:55:14 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id F12B325F137
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Sep 2020 02:55:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A8A816E08E;
-	Mon,  7 Sep 2020 00:55:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AD72D6E03F;
+	Mon,  7 Sep 2020 00:55:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 986866E08E;
- Mon,  7 Sep 2020 00:55:09 +0000 (UTC)
-IronPort-SDR: Ed/rBEYe1M4Q2IS58ZCtVhrcw+shHVr7gHmB5Qxjdcs6v3BWr5jGcOgH6tE/76+BVVBqunbWXj
- zs4USl9w+/bA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9736"; a="157950509"
-X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="157950509"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4F0D76E03F;
+ Mon,  7 Sep 2020 00:55:19 +0000 (UTC)
+IronPort-SDR: ueFzpu0SiMwYGWCgWj8yemWOSCrdWksbNcs0o5r9HMVZqMsq1cbVY2mxLEuduCQ4sCLhZ7dQTm
+ o1V3QR/Sczlg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9736"; a="242753877"
+X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="242753877"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Sep 2020 17:55:09 -0700
-IronPort-SDR: /kHUr8XWuiQmPmhEJIpCy1OVlhLL+s1kzjMMgC1Q6b5uM7S75r54Pm8FafOgH65jIwNAWfErE9
- 6eXIpyfDD7OQ==
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Sep 2020 17:55:17 -0700
+IronPort-SDR: /kjy4i2ztvBVg0N345u6n0Zsa8JUJx1Bwrr8ttmfl6AAH79d/sdXW/nKmQyloonCS0SGdjAkNl
+ MxLuOglmqYFw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="479443748"
+X-IronPort-AV: E=Sophos;i="5.76,400,1592895600"; d="scan'208";a="479443816"
 Received: from xzhan34-mobl2.bj.intel.com ([10.238.154.74])
- by orsmga005.jf.intel.com with ESMTP; 06 Sep 2020 17:55:06 -0700
+ by orsmga005.jf.intel.com with ESMTP; 06 Sep 2020 17:55:15 -0700
 From: Xiaolin Zhang <xiaolin.zhang@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org,
 	intel-gfx@lists.freedesktop.org
-Subject: [PATCH v1 01/12] drm/i915: introduced vgpu pv capability
-Date: Sat,  5 Sep 2020 00:21:34 +0800
-Message-Id: <1599236505-9086-2-git-send-email-xiaolin.zhang@intel.com>
+Subject: [PATCH v1 02/12] drm/i915: vgpu shared memory setup for pv support
+Date: Sat,  5 Sep 2020 00:21:35 +0800
+Message-Id: <1599236505-9086-3-git-send-email-xiaolin.zhang@intel.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1599236505-9086-1-git-send-email-xiaolin.zhang@intel.com>
 References: <1599236505-9086-1-git-send-email-xiaolin.zhang@intel.com>
@@ -57,192 +57,230 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-to enable vgpu pv feature, pv capability is introduced for guest by
-new pv_caps member in struct i915_virtual_gpu and for host GVT by
-new pv_caps register in struct vgt_if.
+To support vgpu pv features, a common shared memory is setup used for
+communication and data exchange between guest and host GVTg to reduce
+data access overhead and trap cost.
 
-both of them are used to control different pv feature support in each
-domain and the final pv caps runtime negotiated between guest and host.
+guest i915 will allocate this common memory (1 page size) and then pass
+it's physical address to host GVTg through PVINFO register so that host
+GVTg can access this shared guest page meory without trap cost with
+hyperviser's facility.
 
-it also adds VGT_CAPS_PV capability BIT useb by guest to query host GVTg
-whether support any PV feature or not.
+guest i915 will send VGT_G2V_SHARED_PAGE_SETUP notification to host GVTg
+once shared memory setup succcessfully finished.
+
+the layout of the shared_page also defined as well, the first part is the
+PV vervsion information used for compabilty support.
 
 Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
 ---
- drivers/gpu/drm/i915/i915_debugfs.c |  3 ++
- drivers/gpu/drm/i915/i915_drv.h     |  1 +
- drivers/gpu/drm/i915/i915_pvinfo.h  |  5 ++-
- drivers/gpu/drm/i915/i915_vgpu.c    | 63 ++++++++++++++++++++++++++++++++++++-
- drivers/gpu/drm/i915/i915_vgpu.h    | 10 ++++++
- 5 files changed, 80 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/i915_drv.c    |  2 +
+ drivers/gpu/drm/i915/i915_drv.h    |  4 +-
+ drivers/gpu/drm/i915/i915_pvinfo.h |  5 +-
+ drivers/gpu/drm/i915/i915_vgpu.c   | 94 ++++++++++++++++++++++++++++++++++++++
+ drivers/gpu/drm/i915/i915_vgpu.h   | 14 ++++++
+ 5 files changed, 117 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/i915_debugfs.c b/drivers/gpu/drm/i915/i915_debugfs.c
-index 7842199..fd1e0fc 100644
---- a/drivers/gpu/drm/i915/i915_debugfs.c
-+++ b/drivers/gpu/drm/i915/i915_debugfs.c
-@@ -48,6 +48,7 @@
- #include "i915_trace.h"
- #include "intel_pm.h"
- #include "intel_sideband.h"
-+#include "i915_vgpu.h"
+diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
+index 00292a8..5fbb4ab 100644
+--- a/drivers/gpu/drm/i915/i915_drv.c
++++ b/drivers/gpu/drm/i915/i915_drv.c
+@@ -1071,6 +1071,8 @@ static void i915_driver_release(struct drm_device *dev)
  
- static inline struct drm_i915_private *node_to_i915(struct drm_info_node *node)
- {
-@@ -60,6 +61,8 @@ static int i915_capabilities(struct seq_file *m, void *data)
- 	struct drm_printer p = drm_seq_file_printer(m);
+ 	disable_rpm_wakeref_asserts(rpm);
  
- 	seq_printf(m, "pch: %d\n", INTEL_PCH_TYPE(i915));
-+	if (intel_vgpu_active(i915))
-+		seq_printf(m, "vgpu pv_caps: 0x%x\n", i915->vgpu.pv_caps);
++	intel_vgpu_destroy(dev_priv);
++
+ 	i915_gem_driver_release(dev_priv);
  
- 	intel_device_info_print_static(INTEL_INFO(i915), &p);
- 	intel_device_info_print_runtime(RUNTIME_INFO(i915), &p);
+ 	intel_memory_regions_driver_release(dev_priv);
 diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_drv.h
-index a455752..16d1b51 100644
+index 16d1b51..3cde2c5f 100644
 --- a/drivers/gpu/drm/i915/i915_drv.h
 +++ b/drivers/gpu/drm/i915/i915_drv.h
-@@ -808,6 +808,7 @@ struct i915_virtual_gpu {
- 	struct mutex lock; /* serialises sending of g2v_notify command pkts */
+@@ -809,7 +809,9 @@ struct i915_virtual_gpu {
  	bool active;
  	u32 caps;
-+	u32 pv_caps;
- };
+ 	u32 pv_caps;
+-};
++
++	struct i915_virtual_gpu_pv *pv;
++} __packed;
  
  struct intel_cdclk_config {
+ 	unsigned int cdclk, vco, ref, bypass;
 diff --git a/drivers/gpu/drm/i915/i915_pvinfo.h b/drivers/gpu/drm/i915/i915_pvinfo.h
-index 683e97a..8b0dc25 100644
+index 8b0dc25..1d44876 100644
 --- a/drivers/gpu/drm/i915/i915_pvinfo.h
 +++ b/drivers/gpu/drm/i915/i915_pvinfo.h
-@@ -57,6 +57,7 @@ enum vgt_g2v_type {
- #define VGT_CAPS_FULL_PPGTT		BIT(2)
- #define VGT_CAPS_HWSP_EMULATION		BIT(3)
- #define VGT_CAPS_HUGE_GTT		BIT(4)
-+#define VGT_CAPS_PV			BIT(5)
+@@ -48,6 +48,7 @@ enum vgt_g2v_type {
+ 	VGT_G2V_PPGTT_L4_PAGE_TABLE_DESTROY,
+ 	VGT_G2V_EXECLIST_CONTEXT_CREATE,
+ 	VGT_G2V_EXECLIST_CONTEXT_DESTROY,
++	VGT_G2V_SHARED_PAGE_REGISTER,
+ 	VGT_G2V_MAX,
+ };
  
- struct vgt_if {
- 	u64 magic;		/* VGT_MAGIC */
-@@ -109,7 +110,9 @@ struct vgt_if {
- 	u32 execlist_context_descriptor_lo;
- 	u32 execlist_context_descriptor_hi;
+@@ -112,7 +113,9 @@ struct vgt_if {
  
--	u32  rsv7[0x200 - 24];    /* pad to one page */
-+	u32 pv_caps;
+ 	u32 pv_caps;
+ 
+-	u32  rsv7[0x200 - 25];    /* pad to one page */
++	u64 shared_page_gpa;
 +
-+	u32  rsv7[0x200 - 25];    /* pad to one page */
++	u32  rsv7[0x200 - 27];    /* pad to one page */
  } __packed;
  
  #define vgtif_offset(x) (offsetof(struct vgt_if, x))
 diff --git a/drivers/gpu/drm/i915/i915_vgpu.c b/drivers/gpu/drm/i915/i915_vgpu.c
-index 70fca72..10960125 100644
+index 10960125..8b2b451 100644
 --- a/drivers/gpu/drm/i915/i915_vgpu.c
 +++ b/drivers/gpu/drm/i915/i915_vgpu.c
-@@ -98,7 +98,13 @@ void intel_vgpu_detect(struct drm_i915_private *dev_priv)
- 
- 	dev_priv->vgpu.active = true;
- 	mutex_init(&dev_priv->vgpu.lock);
--	drm_info(&dev_priv->drm, "Virtual GPU for Intel GVT-g detected.\n");
-+
-+	if (!intel_vgpu_detect_pv_caps(dev_priv, shared_area)) {
-+		DRM_INFO("Virtual GPU for Intel GVT-g detected.\n");
-+		goto out;
-+	}
-+
-+	DRM_INFO("Virtual GPU for Intel GVT-g detected with PV Optimized.\n");
- 
- out:
+@@ -110,6 +110,17 @@ void intel_vgpu_detect(struct drm_i915_private *dev_priv)
  	pci_iounmap(pdev, shared_area);
-@@ -134,6 +140,18 @@ bool intel_vgpu_has_huge_gtt(struct drm_i915_private *dev_priv)
- 	return dev_priv->vgpu.caps & VGT_CAPS_HUGE_GTT;
  }
  
-+static bool intel_vgpu_check_pv_cap(struct drm_i915_private *dev_priv,
-+		enum pv_caps cap)
++void intel_vgpu_destroy(struct drm_i915_private *i915)
 +{
-+	return (dev_priv->vgpu.active && (dev_priv->vgpu.caps & VGT_CAPS_PV)
-+			&& (dev_priv->vgpu.pv_caps & cap));
-+}
++	struct i915_virtual_gpu_pv *pv = i915->vgpu.pv;
 +
-+static bool intel_vgpu_has_pv_caps(struct drm_i915_private *dev_priv)
-+{
-+	return dev_priv->vgpu.caps & VGT_CAPS_PV;
-+}
-+
- struct _balloon_info_ {
- 	/*
- 	 * There are up to 2 regions per mappable/unmappable graphic
-@@ -336,3 +354,46 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
- 	drm_err(&dev_priv->drm, "VGT balloon fail\n");
- 	return ret;
- }
-+
-+/*
-+ * i915 vgpu PV support for Linux
-+ */
-+
-+/*
-+ * Config vgpu PV ops for different PV capabilities
-+ */
-+void intel_vgpu_config_pv_caps(struct drm_i915_private *i915,
-+		enum pv_caps cap, void *data)
-+{
-+
-+	if (!intel_vgpu_check_pv_cap(i915, cap))
++	if (!intel_vgpu_active(i915) || !pv)
 +		return;
++
++	__free_page(virt_to_page(pv->shared_page));
++	kfree(pv);
 +}
 +
-+/**
-+ * intel_vgpu_detect_pv_caps - detect virtual GPU PV capabilities
-+ * @dev_priv: i915 device private
-+ *
-+ * This function is called at the initialization stage, to detect VGPU
-+ * PV capabilities
+ void intel_vgpu_register(struct drm_i915_private *i915)
+ {
+ 	/*
+@@ -360,6 +371,83 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
+  */
+ 
+ /*
++ * shared_page setup for VGPU PV features
 + */
-+bool intel_vgpu_detect_pv_caps(struct drm_i915_private *i915,
++static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
 +		void __iomem *shared_area)
 +{
-+	u32 gvt_pvcaps;
-+	u32 pvcaps = 0;
++	void __iomem *addr;
++	struct i915_virtual_gpu_pv *pv;
++	struct gvt_shared_page *base;
++	u64 gpa;
++	u16 ver_maj, ver_min;
++	int ret = 0;
 +
-+	if (!intel_vgpu_has_pv_caps(i915))
-+		return false;
++	/* We allocate 1 page shared between guest and GVT for data exchange.
++	 *       _______________________________
++	 *      |version                        |
++	 *      |_______________________________PAGE/8
++	 *      |                               |
++	 *      |_______________________________PAGE/4
++	 *      |                               |
++	 *      |                               |
++	 *      |                               |
++	 *      |_______________________________PAGE/2
++	 *      |                               |
++	 *      |                               |
++	 *      |                               |
++	 *      |                               |
++	 *      |                               |
++	 *      |                               |
++	 *      |                               |
++	 *      |_______________________________|
++	 *
++	 * 0 offset: PV version area
++	 */
 +
-+	/* PV capability negotiation between PV guest and GVT */
-+	gvt_pvcaps = readl(shared_area + vgtif_offset(pv_caps));
-+	pvcaps = i915->vgpu.pv_caps & gvt_pvcaps;
-+	i915->vgpu.pv_caps = pvcaps;
-+	writel(pvcaps, shared_area + vgtif_offset(pv_caps));
++	base =  (struct gvt_shared_page *)get_zeroed_page(GFP_KERNEL);
++	if (!base) {
++		dev_info(i915->drm.dev, "out of memory for shared memory\n");
++		return -ENOMEM;
++	}
 +
-+	if (!pvcaps)
-+		return false;
++	/* pass guest memory pa address to GVT and then read back to verify */
++	gpa = __pa(base);
++	addr = shared_area + vgtif_offset(shared_page_gpa);
++	writeq(gpa, addr);
++	if (gpa != readq(addr)) {
++		dev_info(i915->drm.dev, "passed shared_page_gpa failed\n");
++		ret = -EIO;
++		goto err;
++	}
 +
-+	return true;
++	addr = shared_area + vgtif_offset(g2v_notify);
++	writel(VGT_G2V_SHARED_PAGE_REGISTER, addr);
++
++	ver_maj = base->ver_major;
++	ver_min = base->ver_minor;
++	if (ver_maj != PV_MAJOR || ver_min != PV_MINOR) {
++		dev_info(i915->drm.dev, "VGPU PV version incompatible\n");
++		ret = -EIO;
++		goto err;
++	}
++
++	pv = kzalloc(sizeof(struct i915_virtual_gpu_pv), GFP_KERNEL);
++	if (!pv) {
++		ret = -ENOMEM;
++		goto err;
++	}
++
++	DRM_INFO("vgpu PV ver major %d and minor %d\n", ver_maj, ver_min);
++	i915->vgpu.pv = pv;
++	pv->shared_page = base;
++	return ret;
++err:
++	__free_page(virt_to_page(base));
++	return ret;
 +}
++
++/*
+  * Config vgpu PV ops for different PV capabilities
+  */
+ void intel_vgpu_config_pv_caps(struct drm_i915_private *i915,
+@@ -395,5 +483,11 @@ bool intel_vgpu_detect_pv_caps(struct drm_i915_private *i915,
+ 	if (!pvcaps)
+ 		return false;
+ 
++	if (intel_vgpu_setup_shared_page(i915, shared_area)) {
++		i915->vgpu.pv_caps = 0;
++		writel(0, shared_area + vgtif_offset(pv_caps));
++		return false;
++	}
++
+ 	return true;
+ }
 diff --git a/drivers/gpu/drm/i915/i915_vgpu.h b/drivers/gpu/drm/i915/i915_vgpu.h
-index ffbb77d..1b10175 100644
+index 1b10175..aeef20f 100644
 --- a/drivers/gpu/drm/i915/i915_vgpu.h
 +++ b/drivers/gpu/drm/i915/i915_vgpu.h
-@@ -29,6 +29,11 @@
+@@ -29,12 +29,26 @@
  struct drm_i915_private;
  struct i915_ggtt;
  
-+/* define different PV capabilities */
-+enum pv_caps {
-+	PV_NONE = 0,
++#define PV_MAJOR        0
++#define PV_MINOR        1
++
+ /* define different PV capabilities */
+ enum pv_caps {
+ 	PV_NONE = 0,
+ };
+ 
++/* A common shared page(4KB) between GVTg and vgpu allocated by guest */
++struct gvt_shared_page {
++	u16 ver_major;
++	u16 ver_minor;
++};
++
++struct i915_virtual_gpu_pv {
++	struct gvt_shared_page *shared_page;
 +};
 +
  void intel_vgpu_detect(struct drm_i915_private *i915);
++void intel_vgpu_destroy(struct drm_i915_private *i915);
  bool intel_vgpu_active(struct drm_i915_private *i915);
  void intel_vgpu_register(struct drm_i915_private *i915);
-@@ -39,4 +44,9 @@ bool intel_vgpu_has_huge_gtt(struct drm_i915_private *i915);
- int intel_vgt_balloon(struct i915_ggtt *ggtt);
- void intel_vgt_deballoon(struct i915_ggtt *ggtt);
- 
-+/* i915 vgpu pv related functions */
-+bool intel_vgpu_detect_pv_caps(struct drm_i915_private *i915,
-+		void __iomem *shared_area);
-+void intel_vgpu_config_pv_caps(struct drm_i915_private *i915,
-+		enum pv_caps cap, void *data);
- #endif /* _I915_VGPU_H_ */
+ bool intel_vgpu_has_full_ppgtt(struct drm_i915_private *i915);
 -- 
 2.7.4
 
