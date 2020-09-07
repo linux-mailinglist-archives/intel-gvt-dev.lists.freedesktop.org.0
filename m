@@ -2,42 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CCD2260236
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Sep 2020 19:20:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B6DC2260557
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Sep 2020 22:02:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 20CC56E511;
-	Mon,  7 Sep 2020 17:20:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3C54D6E546;
+	Mon,  7 Sep 2020 20:02:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 643A36E511
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  7 Sep 2020 17:20:35 +0000 (UTC)
-IronPort-SDR: +Iv6GcDCs5TuoX4+FQFbBWp9UIpogHH2HPw0bEaUvzzYecXBjHUSyl26VgmWkKImi3tKD+QNDh
- eBk5Z2EZH04w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9737"; a="159002953"
-X-IronPort-AV: E=Sophos;i="5.76,402,1592895600"; d="scan'208";a="159002953"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BB4256E4D0;
+ Mon,  7 Sep 2020 20:02:07 +0000 (UTC)
+IronPort-SDR: XoSUi6XZmgJZs83ijNpiIk8TBOLZ/dvKDcbQK4cbKC0Uw6WSsIrDG/EOrPxIQEeZAvfeLbonRR
+ YdtXs4RAYWPw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9737"; a="242853609"
+X-IronPort-AV: E=Sophos;i="5.76,403,1592895600"; d="scan'208";a="242853609"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Sep 2020 10:20:34 -0700
-IronPort-SDR: 09ja2kZMrAtR/tAX6mX6IU4KqidrpS4AOp2V3JW0IDRpIIdjzHPjXHSNrzrwpiPUXyz0rjnq6K
- qvauLyha9iJw==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Sep 2020 13:02:06 -0700
+IronPort-SDR: 8gk++lwj0IICjXsSa8g0KvKUMtQvqLyfLfh4R2ROXSfSIWWWTTYEwJO7AZDEpCN56gOQ5nMGS8
+ NnkYuyEl/dgQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,402,1592895600"; d="scan'208";a="479704258"
-Received: from lkp-server02.sh.intel.com (HELO a98deea729ba) ([10.239.97.151])
- by orsmga005.jf.intel.com with ESMTP; 07 Sep 2020 10:20:33 -0700
-Received: from kbuild by a98deea729ba with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kFKoi-0000AW-Fl; Mon, 07 Sep 2020 17:20:32 +0000
-Date: Tue, 08 Sep 2020 01:20:19 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 7354809dd184b58caefc3ea0aab68ff9e56ef3e9
-Message-ID: <5f566bd3.4R7aQeH7AnXF7oVL%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.76,403,1592895600"; d="scan'208";a="504805395"
+Received: from zhiwang1-mobl5.ger.corp.intel.com ([10.252.3.9])
+ by fmsmga005.fm.intel.com with ESMTP; 07 Sep 2020 13:02:05 -0700
+From: Zhi Wang <zhi.a.wang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org,
+	intel-gfx@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: Introduce per object locking in GVT scheduler.
+Date: Mon,  7 Sep 2020 23:02:03 +0300
+Message-Id: <20200907200203.535-1-zhi.a.wang@intel.com>
+X-Mailer: git-send-email 2.26.2.windows.1
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -51,129 +47,184 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: 7354809dd184b58caefc3ea0aab68ff9e56ef3e9  gvt-staging: 2020y-09m-07d-13h-06m-35s CST integration manifest
+To support ww locking and per-object implemented in i915, GVT scheduler needs
+to be refined. Most of the changes are located in shadow batch buffer, shadow
+wa context in GVT-g, where use quite a lot of i915 gem object APIs.
 
-elapsed time: 720m
-
-configs tested: 98
-configs skipped: 4
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                          pcm027_defconfig
-powerpc                      ppc40x_defconfig
-mips                        nlm_xlp_defconfig
-sh                           se7780_defconfig
-powerpc                           allnoconfig
-mips                      pic32mzda_defconfig
-sh                         apsh4a3a_defconfig
-arc                 nsimosci_hs_smp_defconfig
-s390                             alldefconfig
-sh                          landisk_defconfig
-powerpc                         wii_defconfig
-h8300                    h8300h-sim_defconfig
-xtensa                              defconfig
-h8300                               defconfig
-arm                        neponset_defconfig
-arm                         socfpga_defconfig
-openrisc                            defconfig
-sh                           se7343_defconfig
-arm                          pxa168_defconfig
-sh                         ecovec24_defconfig
-mips                           ip27_defconfig
-powerpc                      pasemi_defconfig
-mips                          ath79_defconfig
-arm                            zeus_defconfig
-powerpc                     powernv_defconfig
-sh                        edosk7760_defconfig
-m68k                            mac_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                                defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-x86_64               randconfig-a006-20200907
-x86_64               randconfig-a004-20200907
-x86_64               randconfig-a003-20200907
-x86_64               randconfig-a005-20200907
-x86_64               randconfig-a001-20200907
-x86_64               randconfig-a002-20200907
-i386                 randconfig-a004-20200907
-i386                 randconfig-a005-20200907
-i386                 randconfig-a006-20200907
-i386                 randconfig-a002-20200907
-i386                 randconfig-a003-20200907
-i386                 randconfig-a001-20200907
-i386                 randconfig-a016-20200907
-i386                 randconfig-a015-20200907
-i386                 randconfig-a011-20200907
-i386                 randconfig-a013-20200907
-i386                 randconfig-a014-20200907
-i386                 randconfig-a012-20200907
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-x86_64                           allyesconfig
-
-clang tested configs:
-x86_64               randconfig-a013-20200907
-x86_64               randconfig-a011-20200907
-x86_64               randconfig-a016-20200907
-x86_64               randconfig-a012-20200907
-x86_64               randconfig-a015-20200907
-x86_64               randconfig-a014-20200907
-
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/gpu/drm/i915/gvt/scheduler.c | 68 ++++++++++++++++++++++++++++++------
+ 1 file changed, 57 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
+index 1570eb8..fe7ee10 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.c
++++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+@@ -396,7 +396,9 @@ static void release_shadow_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
+ 	if (!wa_ctx->indirect_ctx.obj)
+ 		return;
+ 
++	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, NULL);
+ 	i915_gem_object_unpin_map(wa_ctx->indirect_ctx.obj);
++	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
+ 	i915_gem_object_put(wa_ctx->indirect_ctx.obj);
+ 
+ 	wa_ctx->indirect_ctx.obj = NULL;
+@@ -504,6 +506,7 @@ static int prepare_shadow_batch_buffer(struct intel_vgpu_workload *workload)
+ 	struct intel_gvt *gvt = workload->vgpu->gvt;
+ 	const int gmadr_bytes = gvt->device_info.gmadr_bytes_in_cmd;
+ 	struct intel_vgpu_shadow_bb *bb;
++	struct i915_gem_ww_ctx ww;
+ 	int ret;
+ 
+ 	list_for_each_entry(bb, &workload->shadow_bb, list) {
+@@ -528,10 +531,19 @@ static int prepare_shadow_batch_buffer(struct intel_vgpu_workload *workload)
+ 		 * directly
+ 		 */
+ 		if (!bb->ppgtt) {
+-			bb->vma = i915_gem_object_ggtt_pin(bb->obj,
+-							   NULL, 0, 0, 0);
++			i915_gem_ww_ctx_init(&ww, false);
++retry:
++			i915_gem_object_lock(bb->obj, &ww);
++
++			bb->vma = i915_gem_object_ggtt_pin_ww(bb->obj, &ww,
++							      NULL, 0, 0, 0);
+ 			if (IS_ERR(bb->vma)) {
+ 				ret = PTR_ERR(bb->vma);
++				if (ret == -EDEADLK) {
++					ret = i915_gem_ww_ctx_backoff(&ww);
++					if (!ret)
++						goto retry;
++				}
+ 				goto err;
+ 			}
+ 
+@@ -545,13 +557,18 @@ static int prepare_shadow_batch_buffer(struct intel_vgpu_workload *workload)
+ 						      0);
+ 			if (ret)
+ 				goto err;
++
++			/* No one is going to touch shadow bb from now on. */
++			i915_gem_object_flush_map(bb->obj);
++
++			i915_gem_object_unlock(bb->obj);
++			i915_gem_ww_ctx_fini(&ww);
+ 		}
+ 
+-		/* No one is going to touch shadow bb from now on. */
+-		i915_gem_object_flush_map(bb->obj);
+ 	}
+ 	return 0;
+ err:
++	i915_gem_ww_ctx_fini(&ww);
+ 	release_shadow_batch_buffer(workload);
+ 	return ret;
+ }
+@@ -578,14 +595,30 @@ static int prepare_shadow_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
+ 	unsigned char *per_ctx_va =
+ 		(unsigned char *)wa_ctx->indirect_ctx.shadow_va +
+ 		wa_ctx->indirect_ctx.size;
++	struct i915_gem_ww_ctx ww;
++	int ret;
+ 
+ 	if (wa_ctx->indirect_ctx.size == 0)
+ 		return 0;
+ 
+-	vma = i915_gem_object_ggtt_pin(wa_ctx->indirect_ctx.obj, NULL,
+-				       0, CACHELINE_BYTES, 0);
+-	if (IS_ERR(vma))
+-		return PTR_ERR(vma);
++	i915_gem_ww_ctx_init(&ww, false);
++retry:
++	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, &ww);
++
++	vma = i915_gem_object_ggtt_pin_ww(wa_ctx->indirect_ctx.obj, &ww, NULL,
++					  0, CACHELINE_BYTES, 0);
++	if (IS_ERR(vma)) {
++		ret = PTR_ERR(vma);
++		if (ret == -EDEADLK) {
++			ret = i915_gem_ww_ctx_backoff(&ww);
++			if (!ret)
++				goto retry;
++		}
++		return ret;
++	}
++
++	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
++	i915_gem_ww_ctx_fini(&ww);
+ 
+ 	/* FIXME: we are not tracking our pinned VMA leaving it
+ 	 * up to the core to fix up the stray pin_count upon
+@@ -619,12 +652,14 @@ static void release_shadow_batch_buffer(struct intel_vgpu_workload *workload)
+ 
+ 	list_for_each_entry_safe(bb, pos, &workload->shadow_bb, list) {
+ 		if (bb->obj) {
++			i915_gem_object_lock(bb->obj, NULL);
+ 			if (bb->va && !IS_ERR(bb->va))
+ 				i915_gem_object_unpin_map(bb->obj);
+ 
+ 			if (bb->vma && !IS_ERR(bb->vma))
+ 				i915_vma_unpin(bb->vma);
+ 
++			i915_gem_object_unlock(bb->obj);
+ 			i915_gem_object_put(bb->obj);
+ 		}
+ 		list_del(&bb->list);
+@@ -1337,6 +1372,7 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
+ 	struct intel_vgpu_submission *s = &vgpu->submission;
+ 	struct intel_engine_cs *engine;
+ 	struct i915_ppgtt *ppgtt;
++	struct i915_gem_ww_ctx ww;
+ 	enum intel_engine_id i;
+ 	int ret;
+ 
+@@ -1368,11 +1404,20 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
+ 
+ 			ce->ring = __intel_context_ring_size(ring_size);
+ 		}
++		i915_gem_ww_ctx_init(&ww, false);
++retry:
++		ret = intel_context_pin_ww(ce, &ww);
++		if (ret) {
++			if (ret == -EDEADLK) {
++				ret = i915_gem_ww_ctx_backoff(&ww);
++				if (!ret)
++					goto retry;
++			}
++			goto out_shadow_ctx;
++		}
+ 
+-		ret = intel_context_pin(ce);
+ 		intel_context_put(ce);
+-		if (ret)
+-			goto out_shadow_ctx;
++		i915_gem_ww_ctx_fini(&ww);
+ 
+ 		s->shadow[i] = ce;
+ 	}
+@@ -1400,6 +1445,7 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
+ 	return 0;
+ 
+ out_shadow_ctx:
++	i915_gem_ww_ctx_fini(&ww);
+ 	i915_context_ppgtt_root_restore(s, ppgtt);
+ 	for_each_engine(engine, vgpu->gvt->gt, i) {
+ 		if (IS_ERR(s->shadow[i]))
+-- 
+2.7.4
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
