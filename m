@@ -2,60 +2,62 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BBCE260FE9
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Sep 2020 12:32:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4147F2612D7
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Sep 2020 16:41:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C41E36E1BC;
-	Tue,  8 Sep 2020 10:32:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EA98B6E849;
+	Tue,  8 Sep 2020 14:41:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x541.google.com (mail-ed1-x541.google.com
- [IPv6:2a00:1450:4864:20::541])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A99BA6E570
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D98086E849
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Sep 2020 10:32:41 +0000 (UTC)
-Received: by mail-ed1-x541.google.com with SMTP id a12so15415284eds.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 08 Sep 2020 03:32:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sior-be.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MmrpT2iDfcYtx9VDEEtRqqNAR2mycMe15/tVKCQ8MG8=;
- b=YprpFTHDhaFJkK9f7pzFydwp9te82djacbA8HsrEjou8mk/fBmT1bvs+JV2SJeabVS
- tJUfWRGJIb9jdBS1fdy8gYELiWbTNweOBSy0jE+Xwch3YplVvSsVrHAmW3t59+0uVLp8
- 7kIdyod3dn/JF1NTJAellP5qa7EpRyNbAll8NAI6vPYX7Da/yM7sNS+4kJT+jS1OWs7a
- c0tYZrgODcyLtPZeGFrlumXWiOazks2s8p7cEOfRdq1UXLlzrcX5fqapCxstZjK8LctE
- pMX7jwwl175NCouTZJ7U4ZGsCvHwEkv6rgZA33DY8vvrFAaV7rLkBH6Z+XXkxuENlnVj
- T8ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MmrpT2iDfcYtx9VDEEtRqqNAR2mycMe15/tVKCQ8MG8=;
- b=cDFiDWJv8aMaFfk7XJztw/xQZRsKQ/cSdLu7oEREtxqsO9btFk0HpNq15uZOJvv0Om
- SvBMAXU7N31C8Z8hCmK6scZWJTl4mXBRqSUuO9oMlRQqp9VO95+3Db9vMsoEzNJS9EKU
- HDq0tsxoBwTi0A6uGvQL2gAUVuqbhcoswG6xDOAkVIvK6G1PgmH1WqnjAalwE9nUqhjl
- Wwqux8Y8GApSxp1LFz7mjWJtMfNY5qICoIkexB86pXrNIUfbbowPXLjh16LuEhLlGKUQ
- X1gFkTJyxFcgfvW5YTHUMmIVnwjTZgX30ydOxJCn2f50SFUSn97tuV0NTkQ6Nh90QaEt
- hJ/w==
-X-Gm-Message-State: AOAM532xkTWQHUs1B6tFSemVIthucNDPMS+CheB5rstdPitVbQ1LcNOB
- YG6j0HbvhYLUcSiIZPmwMeKQLg==
-X-Google-Smtp-Source: ABdhPJy1342pFfoFTIRUwWKdwb/ygHnwZo9GAVPV1Q2EnNid3WdNBcuTVxSomezSuPgbneDfModeZQ==
-X-Received: by 2002:a50:aa94:: with SMTP id q20mr25548359edc.119.1599561160112; 
- Tue, 08 Sep 2020 03:32:40 -0700 (PDT)
-Received: from aws.localdomain ([94.107.139.190])
- by smtp.gmail.com with ESMTPSA id j10sm17302091ejf.116.2020.09.08.03.32.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 03:32:39 -0700 (PDT)
-From: Alejandro Sior <aho@sior.be>
-To: 
-Subject: [PATCH] Fixed NULL pointer dereference in handle_edid functions for
- GPUs that do not support EDID
-Date: Tue,  8 Sep 2020 12:32:25 +0200
-Message-Id: <20200908103226.27616-1-aho@sior.be>
-X-Mailer: git-send-email 2.28.0
+ Tue,  8 Sep 2020 14:41:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599576106;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qgdTHd8NGowSZwDg6eCJYPhbgoyY002d0TclHThacBE=;
+ b=JFqDt0YKfR9EF87fiJX+Siw6eGZZ3DF2y/p3Adjwj4PrLu1Inq++Qs4rqF6rTzr0y9/xvr
+ VjvuCsVL8Lx3US9IDvPBfNCyFdlbjJxY5+pWdw64FwCtG2OVql3vksjfonAtXhCBacURvJ
+ +6OfdJwuVA6sgElGZOB8gex+NGG6heI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-39-cdmyatQrMKiTRJWLAAMpJg-1; Tue, 08 Sep 2020 10:41:43 -0400
+X-MC-Unique: cdmyatQrMKiTRJWLAAMpJg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A5EFB800050;
+ Tue,  8 Sep 2020 14:41:40 +0000 (UTC)
+Received: from gondolin (ovpn-112-243.ams2.redhat.com [10.36.112.243])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CBF813A40;
+ Tue,  8 Sep 2020 14:41:32 +0000 (UTC)
+Date: Tue, 8 Sep 2020 16:41:30 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: device compatibility interface for live migration with assigned
+ devices
+Message-ID: <20200908164130.2fe0d106.cohuck@redhat.com>
+In-Reply-To: <20200831044344.GB13784@joy-OptiPlex-7040>
+References: <3a073222-dcfe-c02d-198b-29f6a507b2e1@redhat.com>
+ <20200818091628.GC20215@redhat.com>
+ <20200818113652.5d81a392.cohuck@redhat.com>
+ <20200820003922.GE21172@joy-OptiPlex-7040>
+ <20200819212234.223667b3@x1.home>
+ <20200820031621.GA24997@joy-OptiPlex-7040>
+ <20200825163925.1c19b0f0.cohuck@redhat.com>
+ <20200826064117.GA22243@joy-OptiPlex-7040>
+ <20200828154741.30cfc1a3.cohuck@redhat.com>
+ <8f5345be73ebf4f8f7f51d6cdc9c2a0d8e0aa45e.camel@redhat.com>
+ <20200831044344.GB13784@joy-OptiPlex-7040>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,65 +70,70 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
- intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Alejandro Sior <aho@sior.be>,
- Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+ openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
+ kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
+ jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
+ hejie.xu@intel.com, bao.yumeng@zte.com.cn,
+ Alex Williamson <alex.williamson@redhat.com>, Sean Mooney <smooney@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org,
+ Daniel =?UTF-8?B?UC5CZXJyYW5nw6k=?= <berrange@redhat.com>, eskultet@redhat.com,
+ Jiri Pirko <jiri@mellanox.com>, dinechin@redhat.com, devel@ovirt.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-In the function intel_vgpu_reg_rw_edid of gvt/kvmgt.c, pos can get equal to NULL for GPUs that do not
-properly support EDID. In those cases, when pos gets passed to the handle_edid functions, it
-gets added a short offset then it's dereferenced in memcpy's, leading to a kernel
-oops: null pointer dereference.
+On Mon, 31 Aug 2020 12:43:44 +0800
+Yan Zhao <yan.y.zhao@intel.com> wrote:
 
-More concretely, that kernel oops renders Broadwell GPUs users
-completely unable to set up virtual machines with virtual GPU passthrough (virtual machines
-hang indefinitely when trying to make use of the virtual GPU), and make
-them have huge problems when trying to remove the virtual GPUs once the
-kernel oops has happened (writing 1 in the vGPU remove file just makes
-the operation hang undefinitely, again, and the kernel is unable to shutdown
-since the vGPU removing hangs indefinitely). More information on the
-issues that this causes are described in details in this github issue post: https://github.com/intel/gvt-linux/issues/170#issuecomment-685806160
+> On Fri, Aug 28, 2020 at 03:04:12PM +0100, Sean Mooney wrote:
+> > On Fri, 2020-08-28 at 15:47 +0200, Cornelia Huck wrote:  
+> > > On Wed, 26 Aug 2020 14:41:17 +0800
+> > > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> > >   
+> > > > previously, we want to regard the two mdevs created with dsa-1dwq x 30 and
+> > > > dsa-2dwq x 15 as compatible, because the two mdevs consist equal resources.
+> > > > 
+> > > > But, as it's a burden to upper layer, we agree that if this condition
+> > > > happens, we still treat the two as incompatible.
+> > > > 
+> > > > To fix it, either the driver should expose dsa-1dwq only, or the target
+> > > > dsa-2dwq needs to be destroyed and reallocated via dsa-1dwq x 30.  
+> > > 
+> > > AFAIU, these are mdev types, aren't they? So, basically, any management
+> > > software needs to take care to use the matching mdev type on the target
+> > > system for device creation?  
+> > 
+> > or just do the simple thing of use the same mdev type on the source and dest.
+> > matching mdevtypes is not nessiarly trivial. we could do that but we woudl have
+> > to do that in python rather then sql so it would be slower to do at least today.
+> > 
+> > we dont currently have the ablity to say the resouce provider must have 1 of these
+> > set of traits. just that we must have a specific trait. this is a feature we have
+> > disucssed a couple of times and delayed untill we really really need it but its not out
+> > of the question that we could add it for this usecase. i suspect however we would do exact
+> > match first and explore this later after the inital mdev migration works.  
+> 
+> Yes, I think it's good.
+> 
+> still, I'd like to put it more explicitly to make ensure it's not missed:
+> the reason we want to specify compatible_type as a trait and check
+> whether target compatible_type is the superset of source
+> compatible_type is for the consideration of backward compatibility.
+> e.g.
+> an old generation device may have a mdev type xxx-v4-yyy, while a newer
+> generation  device may be of mdev type xxx-v5-yyy.
+> with the compatible_type traits, the old generation device is still
+> able to be regarded as compatible to newer generation device even their
+> mdev types are not equal.
 
-This patch solves this problem by checking is pos is equal to NULL, and
-if it is, it sets ret to a nagative value, making the module simply indicate that the access to EDID region has failed, without any fatal repercussion.
-
-When this patch is applied, Broadwell GPU users do not suffer from that
-kernel oops anymore, and thus do not encounter any of
-the described problems and get able to set up virtual machines
-with GPU passthrough without problems.
-Users of GPUs with proper EDID support, are of course, still able to
-benefit from the EDID features.
-
-Signed-off-by: Alejandro W. Sior <aho@sior.be>
-
----
- drivers/gpu/drm/i915/gvt/kvmgt.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index ad8a9df49f29..49163363ba4a 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -557,7 +557,9 @@ static size_t intel_vgpu_reg_rw_edid(struct intel_vgpu *vgpu, char *buf,
- 		(struct vfio_edid_region *)kvmgt_vdev(vgpu)->region[i].data;
- 	loff_t pos = *ppos & VFIO_PCI_OFFSET_MASK;
- 
--	if (pos < region->vfio_edid_regs.edid_offset) {
-+	if (pos == NULL) {
-+		ret = -EINVAL;
-+	} else if (pos < region->vfio_edid_regs.edid_offset) {
- 		ret = handle_edid_regs(vgpu, region, buf, count, pos, iswrite);
- 	} else {
- 		pos -= EDID_BLOB_OFFSET;
--- 
-2.28.0
+If you want to support migration from v4 to v5, can't the (presumably
+newer) driver that supports v5 simply register the v4 type as well, so
+that the mdev can be created as v4? (Just like QEMU versioned machine
+types work.)
 
 _______________________________________________
 intel-gvt-dev mailing list
