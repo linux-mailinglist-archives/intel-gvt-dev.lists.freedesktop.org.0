@@ -1,63 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F38126193E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Sep 2020 20:11:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D0D1262261
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Sep 2020 00:05:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 246D26E886;
-	Tue,  8 Sep 2020 18:11:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 078ED6E8C4;
+	Tue,  8 Sep 2020 22:05:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ej1-x642.google.com (mail-ej1-x642.google.com
- [IPv6:2a00:1450:4864:20::642])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B8DFD6E891
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 60BC26E083
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Sep 2020 18:11:38 +0000 (UTC)
-Received: by mail-ej1-x642.google.com with SMTP id e23so23906712eja.3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 08 Sep 2020 11:11:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sior-be.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=2jeAKbPcMYL3zKYHWUAD80qBl6LQnPeUqzL2ybjhdJg=;
- b=GRWuV3D+NPs+O8PhfljngvbH+/zdl1IG8s+i5wlKJNll0vYKQc3oEZmRBq2GPksBfB
- KZqDXGLyapYUntSwXu7zK1WBhKrrjsmYheZ21l9UPvc2kysM5F4IbTnkh/il6rSNqwoL
- EdCab1UyiUXvyGG2hYYrI867vxh2q3cIXvimK6XSZJgxiaFUvNOV4Mln6uGZ2yinOj01
- OpRJg968cPDL9fxOL2uFJCforjAmLjmTrsy4/frYWGR4IaBF8bCZ7fGBT6ABNkJ4qWa/
- 8rXZp3U0TvvLv7/t94dXEBoHvAfxre9JV3R14nppWYwCg8WRqahVi/+t1FDgtIafF0Al
- PATg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=2jeAKbPcMYL3zKYHWUAD80qBl6LQnPeUqzL2ybjhdJg=;
- b=Lo0DS6CCufNDG42AGo4AXq4aMkMAlztMIKAAUOPA9clffVBa7QxwB+1VSlXhNZHv6e
- IPmIZ6gqwxOy1/CyIeTTRmQBKlbMDGtmTOWsXoBlPORkZ75BTKobd4kzmsw/+x4TpYkb
- 1ZSZxb3Y9gl1VGtfNu4EWwBCSYWw9M7i4bo0wn/7h1xWvUtwb9VH5Co3RDyM9JLV1+bF
- WsdQDKlZdhp1AcoxADUXZGBD6sRZkrE8hB2Jz3H1DRItyVwu8dDbbEJts3GpOTEwauzT
- mButPHtDMPwr/VdOIdRd31WGkwywe8CYO5bsq9iotcpmia58yG2tZromjwbEGQiBYotA
- zhWw==
-X-Gm-Message-State: AOAM532ZOxRwQX6KIv5p4+BLnuooyoV2/rzbKapmLki05afq/X7ZSljR
- avgXsab1uXduLjOAwEqE8S3OHWobJ9Avef86Luc=
-X-Google-Smtp-Source: ABdhPJzXcxEi0aj0yBJLuuB4LmRVp2OUfbxb1m0J1V/0WroShEQJp8UGXqXJyJVSx6nGyPsh9AglWA==
-X-Received: by 2002:a17:906:3552:: with SMTP id
- s18mr26864500eja.23.1599588697308; 
- Tue, 08 Sep 2020 11:11:37 -0700 (PDT)
-Received: from aws.localdomain ([94.107.139.190])
- by smtp.gmail.com with ESMTPSA id g20sm16127ejx.12.2020.09.08.11.11.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 11:11:36 -0700 (PDT)
-From: Alejandro Sior <aho@sior.be>
-To: 
-Subject: [Intel-gfx][PATCH v2] drm/i915/gvt: Prevent NULL pointer dereference
- in intel_vgpu_reg_rw_edid()
-Date: Tue,  8 Sep 2020 20:11:21 +0200
-Message-Id: <20200908181122.9100-1-aho@sior.be>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <743818af-fa38-e31a-1780-84a6a7e72e25@web.de>
-References: <743818af-fa38-e31a-1780-84a6a7e72e25@web.de>
+ Tue,  8 Sep 2020 22:05:25 +0000 (UTC)
+IronPort-SDR: qO7DC6Tol91iOYe56LlqKz60Y/PvGPlJTZdaAq0inqsxeUQeyqDx/UGhYI850JrQJPZEV/umu/
+ yYDLtIWRqSXA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="159200646"
+X-IronPort-AV: E=Sophos;i="5.76,407,1592895600"; d="scan'208";a="159200646"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2020 15:05:25 -0700
+IronPort-SDR: n6mZp0Jm1K3Tf0q3mZhCZZUXRrzDSGJmpBhW5roIepezjGr5Tq+VLhLlvmU6nvpZjDWUyRhhsf
+ e1HY5FdXnT5w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,407,1592895600"; d="scan'208";a="504523168"
+Received: from lkp-server01.sh.intel.com (HELO fc0154cbc871) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 08 Sep 2020 15:05:23 -0700
+Received: from kbuild by fc0154cbc871 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kFlju-0000FD-Li; Tue, 08 Sep 2020 22:05:22 +0000
+Date: Wed, 09 Sep 2020 06:04:55 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt-linux:gvt-next] BUILD SUCCESS
+ 737860cd93df8006cfdab5cffba6815acfeb38f3
+Message-ID: <5f580007.QsP6XonGJMhyqP2x%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -71,69 +51,162 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
- intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Alejandro Sior <aho@sior.be>,
- Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-In the function intel_vgpu_reg_rw_edid of kvmgt.c, pos can be equal
-to NULL for GPUs that do not properly support EDID. In those cases, when
-pos gets passed to the handle_edid functions, it gets added a short offset
-then it's dereferenced in memcpy's, leading to NULL pointer
-dereference kernel oops.
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-next
+branch HEAD: 737860cd93df8006cfdab5cffba6815acfeb38f3  drm/i915/gvt: Init vreg GUC_STATUS to GS_MIA_IN_RESET
 
-More concretely, that kernel oops renders some Broadwell GPUs users
-unable to set up virtual machines with virtual GPU passthrough (virtual
-machines hang indefinitely when trying to make use of the virtual GPU),
-and make them unable to remove the virtual GPUs once the kernel oops has
-happened (it hangs indefinitely, and notably too when the kernel tries to
-shutdown). The issues that this causes and steps to reproduce are
-discussed in more details in this github issue post:
-https://github.com/intel/gvt-linux/issues/170#issuecomment-685806160
+elapsed time: 723m
 
-Check if pos is equal to NULL, and if it is, set ret to a negative
-value, making the module simply indicate that the access to EDID region
-has failed, without any fatal repercussion.
+configs tested: 131
+configs skipped: 8
 
-Signed-off-by: Alejandro Sior <aho@sior.be>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+h8300                       h8s-sim_defconfig
+powerpc                      pasemi_defconfig
+sh                   secureedge5410_defconfig
+sh                        sh7757lcr_defconfig
+microblaze                    nommu_defconfig
+mips                           ip27_defconfig
+arm                   milbeaut_m10v_defconfig
+arc                              alldefconfig
+m68k                        m5272c3_defconfig
+mips                 decstation_r4k_defconfig
+mips                malta_qemu_32r6_defconfig
+powerpc                     ep8248e_defconfig
+xtensa                              defconfig
+arm                          pxa910_defconfig
+arm                        spear3xx_defconfig
+c6x                        evmc6457_defconfig
+sh                   sh7724_generic_defconfig
+mips                          ath79_defconfig
+openrisc                    or1ksim_defconfig
+sh                          lboxre2_defconfig
+powerpc                      ppc64e_defconfig
+mips                       capcella_defconfig
+arm                         assabet_defconfig
+riscv                          rv32_defconfig
+arm                         nhk8815_defconfig
+arm                      pxa255-idp_defconfig
+arm                  colibri_pxa270_defconfig
+mips                     cu1000-neo_defconfig
+powerpc                      ppc6xx_defconfig
+arm                         cm_x300_defconfig
+arm                         lpc32xx_defconfig
+riscv                             allnoconfig
+sh                            hp6xx_defconfig
+mips                             allyesconfig
+sh                          sdk7786_defconfig
+arm                             ezx_defconfig
+mips                       lemote2f_defconfig
+arc                              allyesconfig
+arm                        spear6xx_defconfig
+powerpc                    gamecube_defconfig
+s390                       zfcpdump_defconfig
+arm                       mainstone_defconfig
+sh                            shmin_defconfig
+mips                           ci20_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20200907
+x86_64               randconfig-a004-20200907
+x86_64               randconfig-a003-20200907
+x86_64               randconfig-a005-20200907
+x86_64               randconfig-a001-20200907
+x86_64               randconfig-a002-20200907
+i386                 randconfig-a004-20200908
+i386                 randconfig-a005-20200908
+i386                 randconfig-a006-20200908
+i386                 randconfig-a002-20200908
+i386                 randconfig-a001-20200908
+i386                 randconfig-a003-20200908
+i386                 randconfig-a004-20200907
+i386                 randconfig-a005-20200907
+i386                 randconfig-a006-20200907
+i386                 randconfig-a002-20200907
+i386                 randconfig-a003-20200907
+i386                 randconfig-a001-20200907
+x86_64               randconfig-a013-20200908
+x86_64               randconfig-a016-20200908
+x86_64               randconfig-a011-20200908
+x86_64               randconfig-a012-20200908
+x86_64               randconfig-a015-20200908
+x86_64               randconfig-a014-20200908
+i386                 randconfig-a016-20200907
+i386                 randconfig-a015-20200907
+i386                 randconfig-a011-20200907
+i386                 randconfig-a013-20200907
+i386                 randconfig-a014-20200907
+i386                 randconfig-a012-20200907
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a004-20200908
+x86_64               randconfig-a006-20200908
+x86_64               randconfig-a003-20200908
+x86_64               randconfig-a001-20200908
+x86_64               randconfig-a005-20200908
+x86_64               randconfig-a002-20200908
+x86_64               randconfig-a013-20200907
+x86_64               randconfig-a011-20200907
+x86_64               randconfig-a016-20200907
+x86_64               randconfig-a012-20200907
+x86_64               randconfig-a015-20200907
+x86_64               randconfig-a014-20200907
 
 ---
-Changes in v2:
-- removed middle name of author to comply with git name
-- rephrased the patch description with imperative phrasing
-- removed useless paragraph
-- made a paragraph more concise
-- fixed typos
-- made individual lines shorter than 75 chars
-
- drivers/gpu/drm/i915/gvt/kvmgt.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index ad8a9df49f29..49163363ba4a 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -557,7 +557,9 @@ static size_t intel_vgpu_reg_rw_edid(struct intel_vgpu *vgpu, char *buf,
- 		(struct vfio_edid_region *)kvmgt_vdev(vgpu)->region[i].data;
- 	loff_t pos = *ppos & VFIO_PCI_OFFSET_MASK;
- 
--	if (pos < region->vfio_edid_regs.edid_offset) {
-+	if (pos == NULL) {
-+		ret = -EINVAL;
-+	} else if (pos < region->vfio_edid_regs.edid_offset) {
- 		ret = handle_edid_regs(vgpu, region, buf, count, pos, iswrite);
- 	} else {
- 		pos -= EDID_BLOB_OFFSET;
--- 
-2.28.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
