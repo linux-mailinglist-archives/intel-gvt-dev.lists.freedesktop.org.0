@@ -1,46 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F05B262529
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Sep 2020 04:26:22 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 26B28262507
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Sep 2020 04:14:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 527A96E90C;
-	Wed,  9 Sep 2020 02:26:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E0C5E6E906;
+	Wed,  9 Sep 2020 02:14:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4508D6E90B;
- Wed,  9 Sep 2020 02:26:18 +0000 (UTC)
-IronPort-SDR: 06gUYsPB0mtWVR7G+U3VllcfbSFFkYupLU4DyTAkhSDK0sHO3yeV4ZoicUW8Vd18xHq9j/kcg5
- y32vIQPnvOVQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="137774318"
-X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; 
- d="asc'?scan'208";a="137774318"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 01F286E906
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  9 Sep 2020 02:14:15 +0000 (UTC)
+IronPort-SDR: AlEvRu6bBU1YVsyU85yGadol2qoeiwLKlGov4ccnd3U8FFo5E/EbQBCi4MdrWEb4Q5HvfEF0SN
+ b6BxFmMHangA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="159222402"
+X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; d="scan'208";a="159222402"
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2020 19:26:16 -0700
-IronPort-SDR: fjXekW4zPAo0eK/gD6yeRGrt/z1wodFkOGiqmRR1t948MS97pO/NCLanqbRlG1syjTmgLbDgPw
- BX3YqHTMXntw==
-X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; 
- d="asc'?scan'208";a="449028307"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2020 19:26:13 -0700
-Date: Wed, 9 Sep 2020 10:06:58 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Colin Xu <Colin.Xu@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: Introduce per object locking in GVT
- scheduler.
-Message-ID: <20200909020658.GF28614@zhen-hp.sh.intel.com>
-References: <20200907200203.535-1-zhi.a.wang@intel.com>
- <8e0f7bf0-ce43-7a29-6766-24836e60326f@intel.com>
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2020 19:14:15 -0700
+IronPort-SDR: oo/ud125TYByVRHHJ5qg2GWa+ZHCBXGAPNIQz7XvqtmJUH6vWTuCkGOrmYvKqirKrVeZj+g829
+ JFl8hWPU2hyg==
+X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; d="scan'208";a="480286722"
+Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
+ ([10.239.13.16])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2020 19:14:09 -0700
+Date: Wed, 9 Sep 2020 10:13:09 +0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Cornelia Huck <cohuck@redhat.com>
+Subject: Re: device compatibility interface for live migration with assigned
+ devices
+Message-ID: <20200909021308.GA1277@joy-OptiPlex-7040>
+References: <20200818113652.5d81a392.cohuck@redhat.com>
+ <20200820003922.GE21172@joy-OptiPlex-7040>
+ <20200819212234.223667b3@x1.home>
+ <20200820031621.GA24997@joy-OptiPlex-7040>
+ <20200825163925.1c19b0f0.cohuck@redhat.com>
+ <20200826064117.GA22243@joy-OptiPlex-7040>
+ <20200828154741.30cfc1a3.cohuck@redhat.com>
+ <8f5345be73ebf4f8f7f51d6cdc9c2a0d8e0aa45e.camel@redhat.com>
+ <20200831044344.GB13784@joy-OptiPlex-7040>
+ <20200908164130.2fe0d106.cohuck@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <8e0f7bf0-ce43-7a29-6766-24836e60326f@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Disposition: inline
+In-Reply-To: <20200908164130.2fe0d106.cohuck@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,255 +61,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============1308529464=="
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+ openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
+ kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
+ jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
+ hejie.xu@intel.com, bao.yumeng@zte.com.cn,
+ Alex Williamson <alex.williamson@redhat.com>, Sean Mooney <smooney@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org,
+ Daniel =?iso-8859-1?Q?P=2EBerrang=E9?= <berrange@redhat.com>,
+ eskultet@redhat.com, Jiri Pirko <jiri@mellanox.com>, dinechin@redhat.com,
+ devel@ovirt.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+> > still, I'd like to put it more explicitly to make ensure it's not missed:
+> > the reason we want to specify compatible_type as a trait and check
+> > whether target compatible_type is the superset of source
+> > compatible_type is for the consideration of backward compatibility.
+> > e.g.
+> > an old generation device may have a mdev type xxx-v4-yyy, while a newer
+> > generation  device may be of mdev type xxx-v5-yyy.
+> > with the compatible_type traits, the old generation device is still
+> > able to be regarded as compatible to newer generation device even their
+> > mdev types are not equal.
+> 
+> If you want to support migration from v4 to v5, can't the (presumably
+> newer) driver that supports v5 simply register the v4 type as well, so
+> that the mdev can be created as v4? (Just like QEMU versioned machine
+> types work.)
+yes, it should work in some conditions.
+but it may not be that good in some cases when v5 and v4 in the name string
+of mdev type identify hardware generation (e.g. v4 for gen8, and v5 for
+gen9)
 
---===============1308529464==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="yEPQxsgoJgBvi8ip"
-Content-Disposition: inline
+e.g.
+(1). when src mdev type is v4 and target mdev type is v5 as
+software does not support it initially, and v4 and v5 identify hardware
+differences.
+then after software upgrade, v5 is now compatible to v4, should the
+software now downgrade mdev type from v5 to v4?
+not sure if moving hardware generation info into a separate attribute
+from mdev type name is better. e.g. remove v4, v5 in mdev type, while use
+compatible_pci_ids to identify compatibility.
 
-
---yEPQxsgoJgBvi8ip
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2020.09.09 09:43:21 +0800, Colin Xu wrote:
-> I tested this patch on the suspend/resume case with vGPU created (no need
-> really activate), can still observer the system freeze issue as mentioned=
- in
-> another patch I sent. So I suppose we still need decouple context pin/unp=
-in
-> with submission setup/clean, but move to workload create/destroy?
->
-
-yeah, I observed that conflict too. How about merging Zhi's ww lock fix fir=
-st
-then next for left suspend/resume fixes? And better if you could pack all f=
-ixes
-in one series.
+(2) name string of mdev type is composed by "driver_name + type_name".
+in some devices, e.g. qat, different generations of devices are binding to
+drivers of different names, e.g. "qat-v4", "qat-v5".
+then though type_name is equal, mdev type is not equal. e.g.
+"qat-v4-type1", "qat-v5-type1".
 
 Thanks
-
-> After made similar changes based on this one, plus the suspend/resume
-> support patch, below tests can pass:
->=20
-> - Create vGPU then suspend/resume.
->=20
-> - Run VM w/ vGPU then suspend/resume.
->=20
-> https://lists.freedesktop.org/archives/intel-gvt-dev/2020-September/00706=
-1.html
->=20
-> On 2020-09-08 04:02, Zhi Wang wrote:
-> > To support ww locking and per-object implemented in i915, GVT scheduler=
- needs
-> > to be refined. Most of the changes are located in shadow batch buffer, =
-shadow
-> > wa context in GVT-g, where use quite a lot of i915 gem object APIs.
-> >=20
-> > Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> > Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-> > Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> > Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
-> > ---
-> >   drivers/gpu/drm/i915/gvt/scheduler.c | 68 +++++++++++++++++++++++++++=
-+++------
-> >   1 file changed, 57 insertions(+), 11 deletions(-)
-> >=20
-> > diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i91=
-5/gvt/scheduler.c
-> > index 1570eb8..fe7ee10 100644
-> > --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> > +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> > @@ -396,7 +396,9 @@ static void release_shadow_wa_ctx(struct intel_shad=
-ow_wa_ctx *wa_ctx)
-> >   	if (!wa_ctx->indirect_ctx.obj)
-> >   		return;
-> > +	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, NULL);
-> >   	i915_gem_object_unpin_map(wa_ctx->indirect_ctx.obj);
-> > +	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
-> >   	i915_gem_object_put(wa_ctx->indirect_ctx.obj);
-> >   	wa_ctx->indirect_ctx.obj =3D NULL;
-> > @@ -504,6 +506,7 @@ static int prepare_shadow_batch_buffer(struct intel=
-_vgpu_workload *workload)
-> >   	struct intel_gvt *gvt =3D workload->vgpu->gvt;
-> >   	const int gmadr_bytes =3D gvt->device_info.gmadr_bytes_in_cmd;
-> >   	struct intel_vgpu_shadow_bb *bb;
-> > +	struct i915_gem_ww_ctx ww;
-> >   	int ret;
-> >   	list_for_each_entry(bb, &workload->shadow_bb, list) {
-> > @@ -528,10 +531,19 @@ static int prepare_shadow_batch_buffer(struct int=
-el_vgpu_workload *workload)
-> >   		 * directly
-> >   		 */
-> >   		if (!bb->ppgtt) {
-> > -			bb->vma =3D i915_gem_object_ggtt_pin(bb->obj,
-> > -							   NULL, 0, 0, 0);
-> > +			i915_gem_ww_ctx_init(&ww, false);
-> > +retry:
-> > +			i915_gem_object_lock(bb->obj, &ww);
-> > +
-> > +			bb->vma =3D i915_gem_object_ggtt_pin_ww(bb->obj, &ww,
-> > +							      NULL, 0, 0, 0);
-> >   			if (IS_ERR(bb->vma)) {
-> >   				ret =3D PTR_ERR(bb->vma);
-> > +				if (ret =3D=3D -EDEADLK) {
-> > +					ret =3D i915_gem_ww_ctx_backoff(&ww);
-> > +					if (!ret)
-> > +						goto retry;
-> > +				}
-> >   				goto err;
-> >   			}
-> > @@ -545,13 +557,18 @@ static int prepare_shadow_batch_buffer(struct int=
-el_vgpu_workload *workload)
-> >   						      0);
-> >   			if (ret)
-> >   				goto err;
-> > +
-> > +			/* No one is going to touch shadow bb from now on. */
-> > +			i915_gem_object_flush_map(bb->obj);
-> > +
-> > +			i915_gem_object_unlock(bb->obj);
-> > +			i915_gem_ww_ctx_fini(&ww);
-> >   		}
-> > -		/* No one is going to touch shadow bb from now on. */
-> > -		i915_gem_object_flush_map(bb->obj);
-> >   	}
-> >   	return 0;
-> >   err:
-> > +	i915_gem_ww_ctx_fini(&ww);
-> >   	release_shadow_batch_buffer(workload);
-> >   	return ret;
-> >   }
-> > @@ -578,14 +595,30 @@ static int prepare_shadow_wa_ctx(struct intel_sha=
-dow_wa_ctx *wa_ctx)
-> >   	unsigned char *per_ctx_va =3D
-> >   		(unsigned char *)wa_ctx->indirect_ctx.shadow_va +
-> >   		wa_ctx->indirect_ctx.size;
-> > +	struct i915_gem_ww_ctx ww;
-> > +	int ret;
-> >   	if (wa_ctx->indirect_ctx.size =3D=3D 0)
-> >   		return 0;
-> > -	vma =3D i915_gem_object_ggtt_pin(wa_ctx->indirect_ctx.obj, NULL,
-> > -				       0, CACHELINE_BYTES, 0);
-> > -	if (IS_ERR(vma))
-> > -		return PTR_ERR(vma);
-> > +	i915_gem_ww_ctx_init(&ww, false);
-> > +retry:
-> > +	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, &ww);
-> > +
-> > +	vma =3D i915_gem_object_ggtt_pin_ww(wa_ctx->indirect_ctx.obj, &ww, NU=
-LL,
-> > +					  0, CACHELINE_BYTES, 0);
-> > +	if (IS_ERR(vma)) {
-> > +		ret =3D PTR_ERR(vma);
-> > +		if (ret =3D=3D -EDEADLK) {
-> > +			ret =3D i915_gem_ww_ctx_backoff(&ww);
-> > +			if (!ret)
-> > +				goto retry;
-> > +		}
-> > +		return ret;
-> > +	}
-> > +
-> > +	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
-> > +	i915_gem_ww_ctx_fini(&ww);
-> >   	/* FIXME: we are not tracking our pinned VMA leaving it
-> >   	 * up to the core to fix up the stray pin_count upon
-> > @@ -619,12 +652,14 @@ static void release_shadow_batch_buffer(struct in=
-tel_vgpu_workload *workload)
-> >   	list_for_each_entry_safe(bb, pos, &workload->shadow_bb, list) {
-> >   		if (bb->obj) {
-> > +			i915_gem_object_lock(bb->obj, NULL);
-> >   			if (bb->va && !IS_ERR(bb->va))
-> >   				i915_gem_object_unpin_map(bb->obj);
-> >   			if (bb->vma && !IS_ERR(bb->vma))
-> >   				i915_vma_unpin(bb->vma);
-> > +			i915_gem_object_unlock(bb->obj);
-> >   			i915_gem_object_put(bb->obj);
-> >   		}
-> >   		list_del(&bb->list);
-> > @@ -1337,6 +1372,7 @@ int intel_vgpu_setup_submission(struct intel_vgpu=
- *vgpu)
-> >   	struct intel_vgpu_submission *s =3D &vgpu->submission;
-> >   	struct intel_engine_cs *engine;
-> >   	struct i915_ppgtt *ppgtt;
-> > +	struct i915_gem_ww_ctx ww;
-> >   	enum intel_engine_id i;
-> >   	int ret;
-> > @@ -1368,11 +1404,20 @@ int intel_vgpu_setup_submission(struct intel_vg=
-pu *vgpu)
-> >   			ce->ring =3D __intel_context_ring_size(ring_size);
-> >   		}
-> Cut here
-> > +		i915_gem_ww_ctx_init(&ww, false);
-> > +retry:
-> > +		ret =3D intel_context_pin_ww(ce, &ww);
-> > +		if (ret) {
-> > +			if (ret =3D=3D -EDEADLK) {
-> > +				ret =3D i915_gem_ww_ctx_backoff(&ww);
-> > +				if (!ret)
-> > +					goto retry;
-> > +			}
-> > +			goto out_shadow_ctx;
-> > +		}
-> I move the piece to create_workload. Similar to the change I made in my
-> patch sent.
-> > -		ret =3D intel_context_pin(ce);
-> >   		intel_context_put(ce);
-> > -		if (ret)
-> > -			goto out_shadow_ctx;
-> > +		i915_gem_ww_ctx_fini(&ww);
-> >   		s->shadow[i] =3D ce;
-> >   	}
-> > @@ -1400,6 +1445,7 @@ int intel_vgpu_setup_submission(struct intel_vgpu=
- *vgpu)
-> >   	return 0;
-> >   out_shadow_ctx:
-> > +	i915_gem_ww_ctx_fini(&ww);
-> >   	i915_context_ppgtt_root_restore(s, ppgtt);
-> >   	for_each_engine(engine, vgpu->gvt->gt, i) {
-> >   		if (IS_ERR(s->shadow[i]))
->=20
-> --=20
-> Best Regards,
-> Colin Xu
->=20
-
---=20
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---yEPQxsgoJgBvi8ip
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX1g4wgAKCRCxBBozTXgY
-J6BEAKCdhVkWD1Pei3Ml7U+IqpjzpR1PWwCfVNcMcYF7K6j6H/vHwYN21LB1uf4=
-=TiB/
------END PGP SIGNATURE-----
-
---yEPQxsgoJgBvi8ip--
-
---===============1308529464==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Yan
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1308529464==--
