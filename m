@@ -2,53 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26B28262507
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Sep 2020 04:14:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DFDEA26255D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Sep 2020 04:51:11 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E0C5E6E906;
-	Wed,  9 Sep 2020 02:14:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A31F489F63;
+	Wed,  9 Sep 2020 02:51:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 01F286E906
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 288BB89F63
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  9 Sep 2020 02:14:15 +0000 (UTC)
-IronPort-SDR: AlEvRu6bBU1YVsyU85yGadol2qoeiwLKlGov4ccnd3U8FFo5E/EbQBCi4MdrWEb4Q5HvfEF0SN
- b6BxFmMHangA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="159222402"
-X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; d="scan'208";a="159222402"
+ Wed,  9 Sep 2020 02:51:08 +0000 (UTC)
+IronPort-SDR: tqVI2wGx4QQF4B6UNH9wPc464jOiIkOhVMJS8+u7bzA8StVKpX6H1gb506nTJ7OJb8dRRiD4B7
+ S8Y3I+C5+i7Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="138304734"
+X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; d="scan'208";a="138304734"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2020 19:14:15 -0700
-IronPort-SDR: oo/ud125TYByVRHHJ5qg2GWa+ZHCBXGAPNIQz7XvqtmJUH6vWTuCkGOrmYvKqirKrVeZj+g829
- JFl8hWPU2hyg==
-X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; d="scan'208";a="480286722"
-Received: from joy-optiplex-7040.sh.intel.com (HELO joy-OptiPlex-7040)
- ([10.239.13.16])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2020 19:14:09 -0700
-Date: Wed, 9 Sep 2020 10:13:09 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: device compatibility interface for live migration with assigned
- devices
-Message-ID: <20200909021308.GA1277@joy-OptiPlex-7040>
-References: <20200818113652.5d81a392.cohuck@redhat.com>
- <20200820003922.GE21172@joy-OptiPlex-7040>
- <20200819212234.223667b3@x1.home>
- <20200820031621.GA24997@joy-OptiPlex-7040>
- <20200825163925.1c19b0f0.cohuck@redhat.com>
- <20200826064117.GA22243@joy-OptiPlex-7040>
- <20200828154741.30cfc1a3.cohuck@redhat.com>
- <8f5345be73ebf4f8f7f51d6cdc9c2a0d8e0aa45e.camel@redhat.com>
- <20200831044344.GB13784@joy-OptiPlex-7040>
- <20200908164130.2fe0d106.cohuck@redhat.com>
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2020 19:51:07 -0700
+IronPort-SDR: GWn8EOx/xaBZxQSb82q9P6qnVinycBxQZhUWXZiXHOtqVMMaN/DeMH6y0/eEkNmIoRtjqUxx6n
+ aJ7ACpcMRrBA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; d="scan'208";a="449034688"
+Received: from unknown (HELO [10.239.160.21]) ([10.239.160.21])
+ by orsmga004.jf.intel.com with ESMTP; 08 Sep 2020 19:51:05 -0700
+Subject: Re: [PATCH] drm/i915/gvt: Skip writing 0 to HWSP during D3 resume
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+References: <20200819010953.55350-1-colin.xu@intel.com>
+ <20200908091518.GE1426@zhen-hp.sh.intel.com>
+ <7c369be0-d2bb-692b-e207-fd042fd11380@intel.com>
+ <20200909020420.GE28614@zhen-hp.sh.intel.com>
+From: Colin Xu <Colin.Xu@intel.com>
+Message-ID: <da21010d-c366-b69b-1045-8ab840e646e5@intel.com>
+Date: Wed, 9 Sep 2020 10:51:04 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200908164130.2fe0d106.cohuck@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200909020420.GE28614@zhen-hp.sh.intel.com>
+Content-Language: en-US
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,62 +54,146 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
- Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
- eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
- openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
- jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
- hejie.xu@intel.com, bao.yumeng@zte.com.cn,
- Alex Williamson <alex.williamson@redhat.com>, Sean Mooney <smooney@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org,
- Daniel =?iso-8859-1?Q?P=2EBerrang=E9?= <berrange@redhat.com>,
- eskultet@redhat.com, Jiri Pirko <jiri@mellanox.com>, dinechin@redhat.com,
- devel@ovirt.org
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: Colin.Xu@intel.com
+Cc: intel-gvt-dev@lists.freedesktop.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> > still, I'd like to put it more explicitly to make ensure it's not missed:
-> > the reason we want to specify compatible_type as a trait and check
-> > whether target compatible_type is the superset of source
-> > compatible_type is for the consideration of backward compatibility.
-> > e.g.
-> > an old generation device may have a mdev type xxx-v4-yyy, while a newer
-> > generation  device may be of mdev type xxx-v5-yyy.
-> > with the compatible_type traits, the old generation device is still
-> > able to be regarded as compatible to newer generation device even their
-> > mdev types are not equal.
-> 
-> If you want to support migration from v4 to v5, can't the (presumably
-> newer) driver that supports v5 simply register the v4 type as well, so
-> that the mdev can be created as v4? (Just like QEMU versioned machine
-> types work.)
-yes, it should work in some conditions.
-but it may not be that good in some cases when v5 and v4 in the name string
-of mdev type identify hardware generation (e.g. v4 for gen8, and v5 for
-gen9)
 
-e.g.
-(1). when src mdev type is v4 and target mdev type is v5 as
-software does not support it initially, and v4 and v5 identify hardware
-differences.
-then after software upgrade, v5 is now compatible to v4, should the
-software now downgrade mdev type from v5 to v4?
-not sure if moving hardware generation info into a separate attribute
-from mdev type name is better. e.g. remove v4, v5 in mdev type, while use
-compatible_pci_ids to identify compatibility.
-
-(2) name string of mdev type is composed by "driver_name + type_name".
-in some devices, e.g. qat, different generations of devices are binding to
-drivers of different names, e.g. "qat-v4", "qat-v5".
-then though type_name is equal, mdev type is not equal. e.g.
-"qat-v4-type1", "qat-v5-type1".
-
-Thanks
-Yan
+On 2020-09-09 10:04, Zhenyu Wang wrote:
+> On 2020.09.09 08:37:53 +0800, Colin Xu wrote:
+>> On 2020-09-08 17:15, Zhenyu Wang wrote:
+>>> On 2020.08.19 09:09:53 +0800, Colin Xu wrote:
+>>>> Guest driver may reset HWSP to 0 as init value during D3->D0:
+>>>> The full sequence is:
+>>>> - Boot ->D0
+>>>> - Update HWSP
+>>>> - D0->D3
+>>>> - ...In D3 state...
+>>>> - D3->D0
+>>>> - DMLR reset.
+>>>> - Set engine HWSP to 0.
+>>>> - Set engine ring mode to 0.
+>>>> - Set engine HWSP to correct value.
+>>>> - Set engine ring mode to correct value.
+>>>> Ring mode is masked register so set 0 won't take effect.
+>>>> However HWPS addr 0 is considered as invalid GGTT address which will
+>>>> report error like:
+>>>> gvt: vgpu 1: write invalid HWSP address, reg:0x2080, value:0x0
+>>>>
+>>> So looks this is to handle that wrong error message but function is
+>>> still same, right?
+>> Yes that's right. Current logic can guarantee that only correct HWSP write
+>> from guest are accepted by GVT. Invalid HWSP address will be dropped and
+>> won't be submitted to HW. During resume, correct HWSP will be updated
+>> eventually updated. If pv_notified is set, the intermediate HWSP zero-out
+>> can be ignored until hit next reset.
+> Might just move that error into debug message instead of putting
+> effort on tracking guest state without much gain..
+Sometimes such invalid HWSP addr write msg may still be helpful. If put 
+them into gvt_dbg_mmio without considering different case, may miss the 
+information. So this change put real error into gvt_vgpu_err, but put 
+expected zero out to gvt_dbg_mmio.
+>
+>>>> During vGPU in D3, per-engine HWSP gpa remains valid so we can skip
+>>>> update HWSP in this case.
+>>>> Check both pv_notified and previous engine HWSP gpa, if pv already
+>>>> notified and previous HWSP gpa is valid, we skip this HWSP init and
+>>>> let later HWSP write update the correct value. We also need zero out
+>>>> per-engine HWSP gpa on engine reset to make sure hws_pga is valid.
+>>>>
+>>>> Signed-off-by: Colin Xu <colin.xu@intel.com>
+>>>> ---
+>>>>    drivers/gpu/drm/i915/gvt/handlers.c | 30 ++++++++++++++++++++---------
+>>>>    drivers/gpu/drm/i915/gvt/vgpu.c     |  7 +++++++
+>>>>    2 files changed, 28 insertions(+), 9 deletions(-)
+>>>>
+>>>> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+>>>> index 840572add2d4..72860aaf1656 100644
+>>>> --- a/drivers/gpu/drm/i915/gvt/handlers.c
+>>>> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+>>>> @@ -1489,12 +1489,6 @@ static int hws_pga_write(struct intel_vgpu *vgpu, unsigned int offset,
+>>>>    	const struct intel_engine_cs *engine =
+>>>>    		intel_gvt_render_mmio_to_engine(vgpu->gvt, offset);
+>>>> -	if (!intel_gvt_ggtt_validate_range(vgpu, value, I915_GTT_PAGE_SIZE)) {
+>>>> -		gvt_vgpu_err("write invalid HWSP address, reg:0x%x, value:0x%x\n",
+>>>> -			      offset, value);
+>>>> -		return -EINVAL;
+>>>> -	}
+>>>> -
+>>>>    	/*
+>>>>    	 * Need to emulate all the HWSP register write to ensure host can
+>>>>    	 * update the VM CSB status correctly. Here listed registers can
+>>>> @@ -1505,9 +1499,27 @@ static int hws_pga_write(struct intel_vgpu *vgpu, unsigned int offset,
+>>>>    			     offset);
+>>>>    		return -EINVAL;
+>>>>    	}
+>>>> -	vgpu->hws_pga[engine->id] = value;
+>>>> -	gvt_dbg_mmio("VM(%d) write: 0x%x to HWSP: 0x%x\n",
+>>>> -		     vgpu->id, value, offset);
+>>>> +
+>>>> +	if (!intel_gvt_ggtt_validate_range(vgpu, value, I915_GTT_PAGE_SIZE)) {
+>>>> +		u32 old = vgpu->hws_pga[engine->id];
+>>>> +
+>>>> +		/* Skip zero out RING_HWS_PGA during D3 resume */
+>>>> +		if (vgpu->pv_notified && value == 0 &&
+>>>> +		    intel_gvt_ggtt_validate_range(vgpu, old,
+>>>> +						  I915_GTT_PAGE_SIZE)) {
+>>>> +			gvt_dbg_mmio("Skip zero out HWSP address, reg:0x%x, "
+>>>> +				     "value:0x%x\n", offset, value);
+>>>> +
+>>>> +		} else {
+>>>> +			gvt_vgpu_err("write invalid HWSP address, reg:0x%x, "
+>>>> +				     "value:0x%x\n", offset, value);
+>>>> +			return -EINVAL;
+>>>> +		}
+>>>> +	} else {
+>>>> +		vgpu->hws_pga[engine->id] = value;
+>>>> +		gvt_dbg_mmio("VM(%d) write: 0x%x to HWSP: 0x%x\n",
+>>>> +			     vgpu->id, value, offset);
+>>>> +	}
+>>>>    	return intel_vgpu_default_mmio_write(vgpu, offset, &value, bytes);
+>>>>    }
+>>>> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+>>>> index 8fa9b31a2484..e0e073045d83 100644
+>>>> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+>>>> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+>>>> @@ -558,6 +558,9 @@ void intel_gvt_reset_vgpu_locked(struct intel_vgpu *vgpu, bool dmlr,
+>>>>    	intel_vgpu_reset_submission(vgpu, resetting_eng);
+>>>>    	/* full GPU reset or device model level reset */
+>>>>    	if (engine_mask == ALL_ENGINES || dmlr) {
+>>>> +		struct intel_engine_cs *engine;
+>>>> +		intel_engine_mask_t tmp;
+>>>> +
+>>>>    		intel_vgpu_select_submission_ops(vgpu, ALL_ENGINES, 0);
+>>>>    		if (engine_mask == ALL_ENGINES)
+>>>>    			intel_vgpu_invalidate_ppgtt(vgpu);
+>>>> @@ -588,6 +591,10 @@ void intel_gvt_reset_vgpu_locked(struct intel_vgpu *vgpu, bool dmlr,
+>>>>    			else
+>>>>    				vgpu->pv_notified = false;
+>>>>    		}
+>>>> +
+>>>> +		for_each_engine_masked(engine, gvt->gt, engine_mask, tmp) {
+>>>> +			vgpu->hws_pga[engine->id] = 0;
+>>>> +		}
+>>>>    	}
+>>>>    	vgpu->resetting_eng = 0;
+>>>> -- 
+>>>> 2.28.0
+>>>>
+>>>> _______________________________________________
+>>>> intel-gvt-dev mailing list
+>>>> intel-gvt-dev@lists.freedesktop.org
+>>>> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+>> -- 
+>> Best Regards,
+>> Colin Xu
+>>
+-- 
+Best Regards,
+Colin Xu
 
 _______________________________________________
 intel-gvt-dev mailing list
