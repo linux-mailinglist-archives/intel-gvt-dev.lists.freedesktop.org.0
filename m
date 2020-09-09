@@ -2,44 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E3AA262498
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Sep 2020 03:43:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3F8B262526
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Sep 2020 04:23:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D94226E219;
-	Wed,  9 Sep 2020 01:43:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 856476E90B;
+	Wed,  9 Sep 2020 02:23:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E87D86E219;
- Wed,  9 Sep 2020 01:43:24 +0000 (UTC)
-IronPort-SDR: i3nmrrIZJtEv+wl1A2/XEtK4Hvtp25rIlOmv868deqz7TLak4L0wj73bmpDizpIDVu6fW/jOGd
- SjrNEK6bKaag==
-X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="155655153"
-X-IronPort-AV: E=Sophos;i="5.76,407,1592895600"; d="scan'208";a="155655153"
-X-Amp-Result: SKIPPED(no attachment in message)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1AEE76E90B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  9 Sep 2020 02:23:38 +0000 (UTC)
+IronPort-SDR: EnoZEJUYIz0MUd2vB+rWv3VJ/Z0gikcHYf+5aMOjoPuq8julBYCqmg9+eUvEkFSNctVdq3xMxv
+ E9QMNsOFmUvQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="176317217"
+X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; 
+ d="asc'?scan'208";a="176317217"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2020 18:43:24 -0700
-IronPort-SDR: awZmCO6BbbMYkfsRIPximHiJvEXfMCiamD14YzdWietpc0FmBLdPuUnuQVbG3QVJvib4TCnDEj
- 8GgO/4wt9o6g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,407,1592895600"; d="scan'208";a="505281890"
-Received: from unknown (HELO [10.239.160.21]) ([10.239.160.21])
- by fmsmga005.fm.intel.com with ESMTP; 08 Sep 2020 18:43:22 -0700
-Subject: Re: [PATCH] drm/i915/gvt: Introduce per object locking in GVT
- scheduler.
-To: Zhi Wang <zhi.a.wang@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-References: <20200907200203.535-1-zhi.a.wang@intel.com>
-From: Colin Xu <Colin.Xu@intel.com>
-Message-ID: <8e0f7bf0-ce43-7a29-6766-24836e60326f@intel.com>
-Date: Wed, 9 Sep 2020 09:43:21 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2020 19:23:37 -0700
+IronPort-SDR: RtGqyip9ao3ZfdET9RTwdPdSAq5e9kT0bm1Fs4DpUV+vAapI6XZSo1WXJHq7cex7TuuW/PrFW7
+ n3zIv70+9G/w==
+X-IronPort-AV: E=Sophos;i="5.76,408,1592895600"; 
+ d="asc'?scan'208";a="480288285"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2020 19:23:35 -0700
+Date: Wed, 9 Sep 2020 10:04:20 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Colin Xu <Colin.Xu@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: Skip writing 0 to HWSP during D3 resume
+Message-ID: <20200909020420.GE28614@zhen-hp.sh.intel.com>
+References: <20200819010953.55350-1-colin.xu@intel.com>
+ <20200908091518.GE1426@zhen-hp.sh.intel.com>
+ <7c369be0-d2bb-692b-e207-fd042fd11380@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20200907200203.535-1-zhi.a.wang@intel.com>
-Content-Language: en-US
+In-Reply-To: <7c369be0-d2bb-692b-e207-fd042fd11380@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,207 +54,187 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Colin.Xu@intel.com
-Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, Zhenyu Wang <zhenyuw@linux.intel.com>
+Content-Type: multipart/mixed; boundary="===============0063369291=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-I tested this patch on the suspend/resume case with vGPU created (no 
-need really activate), can still observer the system freeze issue as 
-mentioned in another patch I sent. So I suppose we still need decouple 
-context pin/unpin with submission setup/clean, but move to workload 
-create/destroy?
 
-After made similar changes based on this one, plus the suspend/resume 
-support patch, below tests can pass:
+--===============0063369291==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="dDRMvlgZJXvWKvBx"
+Content-Disposition: inline
 
-- Create vGPU then suspend/resume.
 
-- Run VM w/ vGPU then suspend/resume.
+--dDRMvlgZJXvWKvBx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-https://lists.freedesktop.org/archives/intel-gvt-dev/2020-September/007061.html
+On 2020.09.09 08:37:53 +0800, Colin Xu wrote:
+>=20
+> On 2020-09-08 17:15, Zhenyu Wang wrote:
+> > On 2020.08.19 09:09:53 +0800, Colin Xu wrote:
+> > > Guest driver may reset HWSP to 0 as init value during D3->D0:
+> > > The full sequence is:
+> > > - Boot ->D0
+> > > - Update HWSP
+> > > - D0->D3
+> > > - ...In D3 state...
+> > > - D3->D0
+> > > - DMLR reset.
+> > > - Set engine HWSP to 0.
+> > > - Set engine ring mode to 0.
+> > > - Set engine HWSP to correct value.
+> > > - Set engine ring mode to correct value.
+> > > Ring mode is masked register so set 0 won't take effect.
+> > > However HWPS addr 0 is considered as invalid GGTT address which will
+> > > report error like:
+> > > gvt: vgpu 1: write invalid HWSP address, reg:0x2080, value:0x0
+> > >=20
+> > So looks this is to handle that wrong error message but function is
+> > still same, right?
+> Yes that's right. Current logic can guarantee that only correct HWSP write
+> from guest are accepted by GVT. Invalid HWSP address will be dropped and
+> won't be submitted to HW. During resume, correct HWSP will be updated
+> eventually updated. If pv_notified is set, the intermediate HWSP zero-out
+> can be ignored until hit next reset.
 
-On 2020-09-08 04:02, Zhi Wang wrote:
-> To support ww locking and per-object implemented in i915, GVT scheduler needs
-> to be refined. Most of the changes are located in shadow batch buffer, shadow
-> wa context in GVT-g, where use quite a lot of i915 gem object APIs.
->
-> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
-> ---
->   drivers/gpu/drm/i915/gvt/scheduler.c | 68 ++++++++++++++++++++++++++++++------
->   1 file changed, 57 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
-> index 1570eb8..fe7ee10 100644
-> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> @@ -396,7 +396,9 @@ static void release_shadow_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
->   	if (!wa_ctx->indirect_ctx.obj)
->   		return;
->   
-> +	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, NULL);
->   	i915_gem_object_unpin_map(wa_ctx->indirect_ctx.obj);
-> +	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
->   	i915_gem_object_put(wa_ctx->indirect_ctx.obj);
->   
->   	wa_ctx->indirect_ctx.obj = NULL;
-> @@ -504,6 +506,7 @@ static int prepare_shadow_batch_buffer(struct intel_vgpu_workload *workload)
->   	struct intel_gvt *gvt = workload->vgpu->gvt;
->   	const int gmadr_bytes = gvt->device_info.gmadr_bytes_in_cmd;
->   	struct intel_vgpu_shadow_bb *bb;
-> +	struct i915_gem_ww_ctx ww;
->   	int ret;
->   
->   	list_for_each_entry(bb, &workload->shadow_bb, list) {
-> @@ -528,10 +531,19 @@ static int prepare_shadow_batch_buffer(struct intel_vgpu_workload *workload)
->   		 * directly
->   		 */
->   		if (!bb->ppgtt) {
-> -			bb->vma = i915_gem_object_ggtt_pin(bb->obj,
-> -							   NULL, 0, 0, 0);
-> +			i915_gem_ww_ctx_init(&ww, false);
-> +retry:
-> +			i915_gem_object_lock(bb->obj, &ww);
-> +
-> +			bb->vma = i915_gem_object_ggtt_pin_ww(bb->obj, &ww,
-> +							      NULL, 0, 0, 0);
->   			if (IS_ERR(bb->vma)) {
->   				ret = PTR_ERR(bb->vma);
-> +				if (ret == -EDEADLK) {
-> +					ret = i915_gem_ww_ctx_backoff(&ww);
-> +					if (!ret)
-> +						goto retry;
-> +				}
->   				goto err;
->   			}
->   
-> @@ -545,13 +557,18 @@ static int prepare_shadow_batch_buffer(struct intel_vgpu_workload *workload)
->   						      0);
->   			if (ret)
->   				goto err;
-> +
-> +			/* No one is going to touch shadow bb from now on. */
-> +			i915_gem_object_flush_map(bb->obj);
-> +
-> +			i915_gem_object_unlock(bb->obj);
-> +			i915_gem_ww_ctx_fini(&ww);
->   		}
->   
-> -		/* No one is going to touch shadow bb from now on. */
-> -		i915_gem_object_flush_map(bb->obj);
->   	}
->   	return 0;
->   err:
-> +	i915_gem_ww_ctx_fini(&ww);
->   	release_shadow_batch_buffer(workload);
->   	return ret;
->   }
-> @@ -578,14 +595,30 @@ static int prepare_shadow_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
->   	unsigned char *per_ctx_va =
->   		(unsigned char *)wa_ctx->indirect_ctx.shadow_va +
->   		wa_ctx->indirect_ctx.size;
-> +	struct i915_gem_ww_ctx ww;
-> +	int ret;
->   
->   	if (wa_ctx->indirect_ctx.size == 0)
->   		return 0;
->   
-> -	vma = i915_gem_object_ggtt_pin(wa_ctx->indirect_ctx.obj, NULL,
-> -				       0, CACHELINE_BYTES, 0);
-> -	if (IS_ERR(vma))
-> -		return PTR_ERR(vma);
-> +	i915_gem_ww_ctx_init(&ww, false);
-> +retry:
-> +	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, &ww);
-> +
-> +	vma = i915_gem_object_ggtt_pin_ww(wa_ctx->indirect_ctx.obj, &ww, NULL,
-> +					  0, CACHELINE_BYTES, 0);
-> +	if (IS_ERR(vma)) {
-> +		ret = PTR_ERR(vma);
-> +		if (ret == -EDEADLK) {
-> +			ret = i915_gem_ww_ctx_backoff(&ww);
-> +			if (!ret)
-> +				goto retry;
-> +		}
-> +		return ret;
-> +	}
-> +
-> +	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
-> +	i915_gem_ww_ctx_fini(&ww);
->   
->   	/* FIXME: we are not tracking our pinned VMA leaving it
->   	 * up to the core to fix up the stray pin_count upon
-> @@ -619,12 +652,14 @@ static void release_shadow_batch_buffer(struct intel_vgpu_workload *workload)
->   
->   	list_for_each_entry_safe(bb, pos, &workload->shadow_bb, list) {
->   		if (bb->obj) {
-> +			i915_gem_object_lock(bb->obj, NULL);
->   			if (bb->va && !IS_ERR(bb->va))
->   				i915_gem_object_unpin_map(bb->obj);
->   
->   			if (bb->vma && !IS_ERR(bb->vma))
->   				i915_vma_unpin(bb->vma);
->   
-> +			i915_gem_object_unlock(bb->obj);
->   			i915_gem_object_put(bb->obj);
->   		}
->   		list_del(&bb->list);
-> @@ -1337,6 +1372,7 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
->   	struct intel_vgpu_submission *s = &vgpu->submission;
->   	struct intel_engine_cs *engine;
->   	struct i915_ppgtt *ppgtt;
-> +	struct i915_gem_ww_ctx ww;
->   	enum intel_engine_id i;
->   	int ret;
->   
-> @@ -1368,11 +1404,20 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
->   
->   			ce->ring = __intel_context_ring_size(ring_size);
->   		}
-Cut here
-> +		i915_gem_ww_ctx_init(&ww, false);
-> +retry:
-> +		ret = intel_context_pin_ww(ce, &ww);
-> +		if (ret) {
-> +			if (ret == -EDEADLK) {
-> +				ret = i915_gem_ww_ctx_backoff(&ww);
-> +				if (!ret)
-> +					goto retry;
-> +			}
-> +			goto out_shadow_ctx;
-> +		}
-I move the piece to create_workload. Similar to the change I made in my 
-patch sent.
->   
-> -		ret = intel_context_pin(ce);
->   		intel_context_put(ce);
-> -		if (ret)
-> -			goto out_shadow_ctx;
-> +		i915_gem_ww_ctx_fini(&ww);
->   
->   		s->shadow[i] = ce;
->   	}
-> @@ -1400,6 +1445,7 @@ int intel_vgpu_setup_submission(struct intel_vgpu *vgpu)
->   	return 0;
->   
->   out_shadow_ctx:
-> +	i915_gem_ww_ctx_fini(&ww);
->   	i915_context_ppgtt_root_restore(s, ppgtt);
->   	for_each_engine(engine, vgpu->gvt->gt, i) {
->   		if (IS_ERR(s->shadow[i]))
+Might just move that error into debug message instead of putting
+effort on tracking guest state without much gain..
 
--- 
-Best Regards,
-Colin Xu
+> >=20
+> > > During vGPU in D3, per-engine HWSP gpa remains valid so we can skip
+> > > update HWSP in this case.
+> > > Check both pv_notified and previous engine HWSP gpa, if pv already
+> > > notified and previous HWSP gpa is valid, we skip this HWSP init and
+> > > let later HWSP write update the correct value. We also need zero out
+> > > per-engine HWSP gpa on engine reset to make sure hws_pga is valid.
+> > >=20
+> > > Signed-off-by: Colin Xu <colin.xu@intel.com>
+> > > ---
+> > >   drivers/gpu/drm/i915/gvt/handlers.c | 30 ++++++++++++++++++++------=
+---
+> > >   drivers/gpu/drm/i915/gvt/vgpu.c     |  7 +++++++
+> > >   2 files changed, 28 insertions(+), 9 deletions(-)
+> > >=20
+> > > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i9=
+15/gvt/handlers.c
+> > > index 840572add2d4..72860aaf1656 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/handlers.c
+> > > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> > > @@ -1489,12 +1489,6 @@ static int hws_pga_write(struct intel_vgpu *vg=
+pu, unsigned int offset,
+> > >   	const struct intel_engine_cs *engine =3D
+> > >   		intel_gvt_render_mmio_to_engine(vgpu->gvt, offset);
+> > > -	if (!intel_gvt_ggtt_validate_range(vgpu, value, I915_GTT_PAGE_SIZE)=
+) {
+> > > -		gvt_vgpu_err("write invalid HWSP address, reg:0x%x, value:0x%x\n",
+> > > -			      offset, value);
+> > > -		return -EINVAL;
+> > > -	}
+> > > -
+> > >   	/*
+> > >   	 * Need to emulate all the HWSP register write to ensure host can
+> > >   	 * update the VM CSB status correctly. Here listed registers can
+> > > @@ -1505,9 +1499,27 @@ static int hws_pga_write(struct intel_vgpu *vg=
+pu, unsigned int offset,
+> > >   			     offset);
+> > >   		return -EINVAL;
+> > >   	}
+> > > -	vgpu->hws_pga[engine->id] =3D value;
+> > > -	gvt_dbg_mmio("VM(%d) write: 0x%x to HWSP: 0x%x\n",
+> > > -		     vgpu->id, value, offset);
+> > > +
+> > > +	if (!intel_gvt_ggtt_validate_range(vgpu, value, I915_GTT_PAGE_SIZE)=
+) {
+> > > +		u32 old =3D vgpu->hws_pga[engine->id];
+> > > +
+> > > +		/* Skip zero out RING_HWS_PGA during D3 resume */
+> > > +		if (vgpu->pv_notified && value =3D=3D 0 &&
+> > > +		    intel_gvt_ggtt_validate_range(vgpu, old,
+> > > +						  I915_GTT_PAGE_SIZE)) {
+> > > +			gvt_dbg_mmio("Skip zero out HWSP address, reg:0x%x, "
+> > > +				     "value:0x%x\n", offset, value);
+> > > +
+> > > +		} else {
+> > > +			gvt_vgpu_err("write invalid HWSP address, reg:0x%x, "
+> > > +				     "value:0x%x\n", offset, value);
+> > > +			return -EINVAL;
+> > > +		}
+> > > +	} else {
+> > > +		vgpu->hws_pga[engine->id] =3D value;
+> > > +		gvt_dbg_mmio("VM(%d) write: 0x%x to HWSP: 0x%x\n",
+> > > +			     vgpu->id, value, offset);
+> > > +	}
+> > >   	return intel_vgpu_default_mmio_write(vgpu, offset, &value, bytes);
+> > >   }
+> > > diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/g=
+vt/vgpu.c
+> > > index 8fa9b31a2484..e0e073045d83 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+> > > +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+> > > @@ -558,6 +558,9 @@ void intel_gvt_reset_vgpu_locked(struct intel_vgp=
+u *vgpu, bool dmlr,
+> > >   	intel_vgpu_reset_submission(vgpu, resetting_eng);
+> > >   	/* full GPU reset or device model level reset */
+> > >   	if (engine_mask =3D=3D ALL_ENGINES || dmlr) {
+> > > +		struct intel_engine_cs *engine;
+> > > +		intel_engine_mask_t tmp;
+> > > +
+> > >   		intel_vgpu_select_submission_ops(vgpu, ALL_ENGINES, 0);
+> > >   		if (engine_mask =3D=3D ALL_ENGINES)
+> > >   			intel_vgpu_invalidate_ppgtt(vgpu);
+> > > @@ -588,6 +591,10 @@ void intel_gvt_reset_vgpu_locked(struct intel_vg=
+pu *vgpu, bool dmlr,
+> > >   			else
+> > >   				vgpu->pv_notified =3D false;
+> > >   		}
+> > > +
+> > > +		for_each_engine_masked(engine, gvt->gt, engine_mask, tmp) {
+> > > +			vgpu->hws_pga[engine->id] =3D 0;
+> > > +		}
+> > >   	}
+> > >   	vgpu->resetting_eng =3D 0;
+> > > --=20
+> > > 2.28.0
+> > >=20
+> > > _______________________________________________
+> > > intel-gvt-dev mailing list
+> > > intel-gvt-dev@lists.freedesktop.org
+> > > https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+>=20
+> --=20
+> Best Regards,
+> Colin Xu
+>=20
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--dDRMvlgZJXvWKvBx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX1g4JAAKCRCxBBozTXgY
+J5jiAJsELOdtUAY93Vfcby7jfhPip+JygwCfV6Byzx+ph0VB37P+b+C1IbevE4A=
+=zInH
+-----END PGP SIGNATURE-----
+
+--dDRMvlgZJXvWKvBx--
+
+--===============0063369291==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0063369291==--
