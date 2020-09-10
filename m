@@ -1,53 +1,63 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BED752641A7
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 11:26:24 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D2EF264629
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 14:38:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6AF5289EB4;
-	Thu, 10 Sep 2020 09:26:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DB6DA6E096;
+	Thu, 10 Sep 2020 12:38:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sonic305-1.consmr.mail.bf2.yahoo.com
- (sonic305-1.consmr.mail.bf2.yahoo.com [74.6.133.40])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B71CB89EB7
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BC4466E096
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 10 Sep 2020 09:26:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1599729981; bh=GIslt9wQR8F4NESZCVXXpFf3iW5Q5Osnbck8IUhCqf4=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=lNwDYQhJrfiW+UDfAFWEZx4E30sH4xp903eNLrMBRFvlkYG5dPPp8A3k10iV9ZJVKiNKJm37ItTio2b96buAXhkj5Rh8hp6p0GC8wTu9/Qj8L4HdCouA05IbHe0DZ3GmaTmRyfsrLfNAMMCGmEF7QK4Pr6YwCl1jZeTxWsC5qRMsC7K8J7DQEnN+iiOq0RZnh84T6heG0wRjf0cBSG7jLawjtHREmnhMA4OGa3vTFlaYJ3ptrNhj6g+5YIJLRC7WLwsLqPoxo+MF+oWhKmY+F89XRWk6UqqfRH127DGKF/VYtl6lNgoUNtoWLUasodKMRv7W+IT411cvVVWTGQ/cmw==
-X-YMail-OSG: 2bMfL7EVM1nXmbA_MLSDNnowWx8OkAno9Y0PgyyifDj_Yrp5tGYlf5hDBvKfVbQ
- DPciXCK5F7LgO4MLplB5hm1uAU0wJ2IpwwNIBYTc_zBs2SQVS8EW6O00jlPZVJCpiF8Wo1T_7GBv
- xZa3maVgiP2aIq10bE3j6HXe9KSrG8dkFSNDHM341eGJhGXRyt5M.raUgSVsH3kHDVX4gQq_tKEY
- kErAFxUzyA5TzNeeRdLBKpP9iP64BWk8.HNfZv1yWN_qdwrLCZzplnwe7q.G.IX1aY7MHvP8akF1
- 9OPsFRd0V2ZhVS8GiutGYUS7Va2zYvkn8ZV8gOUc5EyCn8RKVU_R4qR8Ml2f2Al3b9LY3T1sw6eT
- cFAkXgYpJYFquvmdVsj3s8PmFgpLXWUIkHABTaMETMCpoT8_8PywTu6Ergcj45DJfdBk4APFG.X7
- xzv3cAJ_HswiujciKu0m.6rEnVn0NeSwINZobHtzyqeY1tZxk2Zj4TfaoLhfou6bs9rsln1bu_ip
- Iq6R8SoYAEA4rNNpKi1GsZetUnChlBYGcBNZShriDG36nFPimxSZrsIQFJfwRl_aH0T4cRKjtOVw
- hE_ylMJFgpwdYFCALRok6GI3IqdqZmLf.xbPVAbaSz2Kub8.47CILUg_zrqb815nEMs3NPh97qSs
- X0sqihi_A6Tv1lp8kNIrYsATtu.tvCh5Rx.Ev6P3jzDXi9kU_qCmzWMs.59yZ8C1gji_p5noQSlT
- fOIE6QwTBz3RhaZP6q47HhZkFcS.A5d5xXn0qiHLJw.D4lCalGW_NTD1R0sRt_iaRK2ZEnEtusr.
- SDpudKJLhbXJRXoJ9VwCHTJ5Nybcy04CxXZHvklLEGnzgXqYE5ME3siS7gekWw5j0h7HWpywrX3f
- Rdq2K5qVuaroGpppJnsMmzJD3AwE7ozYst9ZFSFbMGwYx50Uho3XEnf8UFuQwSKGw07O_mgYJF02
- GRe99U6pVvJA_VSEVcQ.Yt.raqiLBTKj_b.efgmuEGiTOwH9520eVklC4ompjEfikpdExgW294TS
- mbv1tlNvVcdB01UG59iRMvNOCEdQQZU0gCri67.d0a7xgOuZAyjkHso1PIlK4mBkGWyVbAv9AxCn
- C8gXEaF3tS9AcEVPiUV7D0idIQTPPUY_OUEQfJNva_fPT9E_vTPr1xpPH6xHNeTChXveKKhnVAx5
- 7JyYiOJdPxCh2yyHoOTKWG6gZ9umNkp9uloDeOjVd0upC5jQ.zEKOgh_eycHhxklaHChzohs2fpV
- 8bTKaLOtaJkomh3WLkl0I6OT3sdM8qYaFn.z_E7kD0CcC2hJqo6CTX8HFjhGgJHlA1iqoz6n8Tgv
- 0mdPGcJVjWPOKkMfOb4j.C8d1NxR4NInrw_nXxFBeo7wmNxQ_FKu9olGjEAhz5R0beS33kmlf_ZZ
- dZn_dEUIK.25oUqdNRKHNuxzfZd5FrohvoKaTa7MN2tWDJLsgwiqsqKI-
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic305.consmr.mail.bf2.yahoo.com with HTTP; Thu, 10 Sep 2020 09:26:21 +0000
-Date: Thu, 10 Sep 2020 09:26:20 +0000 (UTC)
-From: Franca Rose <rosefranca198@yahoo.com>
-Message-ID: <359207387.588439.1599729980664@mail.yahoo.com>
-Subject: Hi,
+ Thu, 10 Sep 2020 12:38:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599741523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HWqy6p1smteYWCZ5IYH5/YWc3EdcTl5osmfODBroec8=;
+ b=KhbUijnTKHaq63Eg86mmuMNIpq3NeTX/giMXa34Nl7mbgWdgToEm3QAYGnvdD4XVT6C5HW
+ hjTSmzB/P37oImGAVOmO6zstW7bX+k7FMCSbl1LV4axNUc/bz3QNt9jUx08/iOj6SQ2PKg
+ qJDswBqW2FaYTfGGT4j+63axm+bWLVY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-443-Gtquf9efMqCTD7-Wz-qIpA-1; Thu, 10 Sep 2020 08:38:38 -0400
+X-MC-Unique: Gtquf9efMqCTD7-Wz-qIpA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E8B87640A6;
+ Thu, 10 Sep 2020 12:38:29 +0000 (UTC)
+Received: from gondolin (ovpn-112-89.ams2.redhat.com [10.36.112.89])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 27A9983562;
+ Thu, 10 Sep 2020 12:38:24 +0000 (UTC)
+Date: Thu, 10 Sep 2020 14:38:22 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: device compatibility interface for live migration with assigned
+ devices
+Message-ID: <20200910143822.2071eca4.cohuck@redhat.com>
+In-Reply-To: <20200909021308.GA1277@joy-OptiPlex-7040>
+References: <20200818113652.5d81a392.cohuck@redhat.com>
+ <20200820003922.GE21172@joy-OptiPlex-7040>
+ <20200819212234.223667b3@x1.home>
+ <20200820031621.GA24997@joy-OptiPlex-7040>
+ <20200825163925.1c19b0f0.cohuck@redhat.com>
+ <20200826064117.GA22243@joy-OptiPlex-7040>
+ <20200828154741.30cfc1a3.cohuck@redhat.com>
+ <8f5345be73ebf4f8f7f51d6cdc9c2a0d8e0aa45e.camel@redhat.com>
+ <20200831044344.GB13784@joy-OptiPlex-7040>
+ <20200908164130.2fe0d106.cohuck@redhat.com>
+ <20200909021308.GA1277@joy-OptiPlex-7040>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-References: <359207387.588439.1599729980664.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16583 YMailNodin Mozilla/5.0 (Windows NT 6.1)
- AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,20 +70,74 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: rosefranca32@yahoo.com
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+ openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
+ kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
+ jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
+ hejie.xu@intel.com, bao.yumeng@zte.com.cn,
+ Alex Williamson <alex.williamson@redhat.com>, Sean Mooney <smooney@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org,
+ Daniel =?UTF-8?B?UC5CZXJyYW5nw6k=?= <berrange@redhat.com>, eskultet@redhat.com,
+ Jiri Pirko <jiri@mellanox.com>, dinechin@redhat.com, devel@ovirt.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Wed, 9 Sep 2020 10:13:09 +0800
+Yan Zhao <yan.y.zhao@intel.com> wrote:
 
+> > > still, I'd like to put it more explicitly to make ensure it's not missed:
+> > > the reason we want to specify compatible_type as a trait and check
+> > > whether target compatible_type is the superset of source
+> > > compatible_type is for the consideration of backward compatibility.
+> > > e.g.
+> > > an old generation device may have a mdev type xxx-v4-yyy, while a newer
+> > > generation  device may be of mdev type xxx-v5-yyy.
+> > > with the compatible_type traits, the old generation device is still
+> > > able to be regarded as compatible to newer generation device even their
+> > > mdev types are not equal.  
+> > 
+> > If you want to support migration from v4 to v5, can't the (presumably
+> > newer) driver that supports v5 simply register the v4 type as well, so
+> > that the mdev can be created as v4? (Just like QEMU versioned machine
+> > types work.)  
+> yes, it should work in some conditions.
+> but it may not be that good in some cases when v5 and v4 in the name string
+> of mdev type identify hardware generation (e.g. v4 for gen8, and v5 for
+> gen9)
+> 
+> e.g.
+> (1). when src mdev type is v4 and target mdev type is v5 as
+> software does not support it initially, and v4 and v5 identify hardware
+> differences.
 
-Hi,
+My first hunch here is: Don't introduce types that may be compatible
+later. Either make them compatible, or make them distinct by design,
+and possibly add a different, compatible type later.
 
-i am trying to reach you hope this message get to
-you.from franca
+> then after software upgrade, v5 is now compatible to v4, should the
+> software now downgrade mdev type from v5 to v4?
+> not sure if moving hardware generation info into a separate attribute
+> from mdev type name is better. e.g. remove v4, v5 in mdev type, while use
+> compatible_pci_ids to identify compatibility.
 
-thanks,
+If the generations are compatible, don't mention it in the mdev type.
+If they aren't, use distinct types, so that management software doesn't
+have to guess. At least that would be my naive approach here.
+
+> 
+> (2) name string of mdev type is composed by "driver_name + type_name".
+> in some devices, e.g. qat, different generations of devices are binding to
+> drivers of different names, e.g. "qat-v4", "qat-v5".
+> then though type_name is equal, mdev type is not equal. e.g.
+> "qat-v4-type1", "qat-v5-type1".
+
+I guess that shows a shortcoming of that "driver_name + type_name"
+approach? Or maybe I'm just confused.
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
