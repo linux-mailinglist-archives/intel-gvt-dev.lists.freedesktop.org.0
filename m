@@ -2,52 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CC2A263BB6
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 06:05:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 71CCC263CD5
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 07:56:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7EE6E897F3;
-	Thu, 10 Sep 2020 04:05:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 23F926E039;
+	Thu, 10 Sep 2020 05:56:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-x744.google.com (mail-qk1-x744.google.com
- [IPv6:2607:f8b0:4864:20::744])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D546A89FAD
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 10 Sep 2020 04:05:30 +0000 (UTC)
-Received: by mail-qk1-x744.google.com with SMTP id q5so4773349qkc.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 09 Sep 2020 21:05:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=OElLJZk8btajbvpuSG/8L4wCzWXpdvQQnLBCfzHgw/M=;
- b=CVY70xjSyMd4msM9WxAQCOxI3lCD+9zMNBx6Pavu6tBDiM2IbER6SqXPyPpb21MwIQ
- Dn/ipBac7uQFGHlVrJ7cgr2SmaMR0hET6GQaUk1RKqEokRmhVS+mzgG2dBKeSQ5Pu67H
- NOA3/x0E7wLCmzALIYuC/1f4s37SjWNABPnCDFhik6ca8o4kR+WaTzY67BayreRyxpz7
- QUVQI26ZeNLUlaNGF0C9kFQxNWB/2UsDBqmiBiFhQGqXfhYn9S/08lIOB3RVZKAEeaFQ
- UZmbiHT4SGX0ypzJXK7glWRQ1fMmGSvoKdAsuB320DnwQb7BV0KxzVphzk1xIu4oaVHK
- ZuEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=OElLJZk8btajbvpuSG/8L4wCzWXpdvQQnLBCfzHgw/M=;
- b=Z6MVD1nHb72KuddKCRfy/TftIFI9IxKmRn/A7oMxcaWxxW2BwVn4zz//W6y6MMg3Vc
- qGH5uW7XfTM/W9uG4/TP/N12hxLiuE/ic53T0qNIbIerBpadX7rf0/tnUxsaKZ08e+Tj
- 3gZ50dR/WGXUPdPPa6olr/ng+4Xh2v4ColJgZGSYG3gXqEmK7yBUKfsGwaXeEMDVNwQ3
- 9rcxnfdlDpuI4fXDa9ROAXJGxFxcBtGeOrqh7sIyaI1kojFsgIYSdmnDQJgSH/ce9nma
- QJyCAFANzMrSgZlRPcQUWnViR1H4077EyfWModNVhPv5jOjVTI11Od6SJLTp1Fy7M5wz
- xw4w==
-X-Gm-Message-State: AOAM5329LRj9B9BHGi4xWLWS57KH4m0bvukKzRp67Q4o+4nZ3XPQBZPj
- m++FU/SW5cDV2D6Oraa/Ci+jrkinIrAerU3YzXI=
-X-Google-Smtp-Source: ABdhPJxukMszx9H7ATM6LF1cD+zALg0VXeJy0Dp4culAM1OQw9xRnNGs1Nf7FxIMyQ59B8CGaocssy27GxiVyt9FkC0=
-X-Received: by 2002:a37:6481:: with SMTP id y123mr6155785qkb.464.1599710730060; 
- Wed, 09 Sep 2020 21:05:30 -0700 (PDT)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1596D6E039;
+ Thu, 10 Sep 2020 05:56:42 +0000 (UTC)
+IronPort-SDR: gDbrDk+9QPMcR9cWjw+MH5/4mMSx9JoQe9JyAi5USDP4fdOrkjC58hhs7OJ2424NvMMGea6byQ
+ p/eQVp6yW/5g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="176535669"
+X-IronPort-AV: E=Sophos;i="5.76,411,1592895600"; 
+ d="asc'?scan'208";a="176535669"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2020 22:56:41 -0700
+IronPort-SDR: 03MH4+b0cOOxl22PF6bsiSufpU0uc05f5y/1DDdHDgIaoMFzv8+aaduDqskyJ82jluUitBkFyy
+ oeV3f0sA2jQg==
+X-IronPort-AV: E=Sophos;i="5.76,411,1592895600"; 
+ d="asc'?scan'208";a="505718959"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2020 22:56:39 -0700
+Date: Thu, 10 Sep 2020 13:37:20 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Jani Nikula <jani.nikula@intel.com>
+Subject: [PULL] gvt-next
+Message-ID: <20200910053720.GK28614@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-From: Fatima Rajab <fatimarajaba766@gmail.com>
-Date: Thu, 10 Sep 2020 05:05:18 +0100
-Message-ID: <CAGqfsL8iF2wd7io-UjeUUD5eH52LSTh=dCWZ-qVTUO-N9FTZEA@mail.gmail.com>
-Subject: HI
-To: undisclosed-recipients:;
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,30 +51,96 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: fatimarajaba766@gmail.com
-Content-Type: multipart/mixed; boundary="===============0141848262=="
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============2113923944=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0141848262==
-Content-Type: multipart/alternative; boundary="000000000000cf08b805aeedad37"
 
---000000000000cf08b805aeedad37
-Content-Type: text/plain; charset="UTF-8"
+--===============2113923944==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Km1U/tdNT/EmXiR1"
+Content-Disposition: inline
 
-HI
-Nice to meet you
-My name is Miss Fatima
-can we talk please
 
---000000000000cf08b805aeedad37
-Content-Type: text/html; charset="UTF-8"
+--Km1U/tdNT/EmXiR1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-<div dir="ltr">HI<br>Nice to meet you<br>My name is Miss Fatima<br>can we talk please<br></div>
 
---000000000000cf08b805aeedad37--
+Hi,
 
---===============0141848262==
+As we split pull request for 5.10 this time, here's gvt-next pull
+for 5.10. For gvt ww lock fix, Zhi would send another pull based
+on gem-next.
+
+This includes current command access flag cleanup for
+handlers which would be used for next refined cmd scan. And also
+two more recent fixes on workaround cmd access and MIA reset state.
+
+Thanks
+--
+The following changes since commit ced026e959bec5046afa310d6474e147b6294da2:
+
+  drm/i915: Update DRIVER_DATE to 20200824 (2020-08-24 14:26:38 -0400)
+
+are available in the Git repository at:
+
+  https://github.com/intel/gvt-linux tags/gvt-next-2020-09-10
+
+for you to fetch changes up to df398e33b8fd3ac28b3c7166de555e38d26e7391:
+
+  drm/i915/gvt: Init vreg GUC_STATUS to GS_MIA_IN_RESET (2020-09-10 13:49:0=
+5 +0800)
+
+----------------------------------------------------------------
+gvt-next-2020-09-10
+
+- Cleanup command access flag (Yan)
+- New workaround cmd access fix (Colin)
+- MIA reset state fix (Colin)
+
+----------------------------------------------------------------
+Colin Xu (2):
+      drm/i915/gvt: Add F_CMD_ACCESS for some GEN9 SKU WA MMIO access
+      drm/i915/gvt: Init vreg GUC_STATUS to GS_MIA_IN_RESET
+
+Yan Zhao (4):
+      drm/i915/gvt: rename F_IN_CTX flag to F_SR_IN_CTX
+      drm/i915/gvt: remove flag F_CMD_ACCESSED
+      drm/i915/gvt: add/modify interfaces for flag F_CMD_ACCESS
+      drm/i915/gvt: remove F_CMD_ACCESS flag for some registers
+
+ drivers/gpu/drm/i915/gvt/cmd_parser.c   |  6 ++---
+ drivers/gpu/drm/i915/gvt/gvt.h          | 44 +++++++++++++++++++----------=
+----
+ drivers/gpu/drm/i915/gvt/handlers.c     | 32 +++++++++++++-----------
+ drivers/gpu/drm/i915/gvt/mmio.c         |  3 +++
+ drivers/gpu/drm/i915/gvt/mmio_context.c |  2 +-
+ 5 files changed, 49 insertions(+), 38 deletions(-)
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--Km1U/tdNT/EmXiR1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX1m7kAAKCRCxBBozTXgY
+J16JAJ4+PoifD67jpATufUGiRJbwj7xihgCfZmWDfhoki+sWocO46Js65vGiC4U=
+=aKHu
+-----END PGP SIGNATURE-----
+
+--Km1U/tdNT/EmXiR1--
+
+--===============2113923944==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -94,4 +151,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0141848262==--
+--===============2113923944==--
