@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1E862646AB
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 15:16:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B96002646C6
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 15:20:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9EB6A6E922;
-	Thu, 10 Sep 2020 13:16:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6A83D6E922;
+	Thu, 10 Sep 2020 13:20:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C1E6E6E91B;
- Thu, 10 Sep 2020 13:16:10 +0000 (UTC)
-IronPort-SDR: kd68ac4eiUJcejxKIM4rI5rQX8yM5Y/X2oMtev9CO7n4jrhi4afKIxKyZek/Hg+fNZxxSv/VCq
- 6KaI6nVExi1w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="222726430"
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="222726430"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 692E16E922;
+ Thu, 10 Sep 2020 13:20:25 +0000 (UTC)
+IronPort-SDR: uzemQjCrT2llopDT5XPQBeIvTCVhQ7Rk0tvm4x1zQx7SNb00w/P3FCkz03wO6kMiZhlYiyguKt
+ u+lz8DBMUn5Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="158565440"
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="158565440"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 06:16:10 -0700
-IronPort-SDR: SL6l7UjGAnHiVTMz3IbNAX7TZFs/uwa1cHGIElo3ph6BoRDTD0ZeLeDGjewsWrfZLxMZOOhGBD
- 67KncOTTbcMw==
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="505833014"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 06:20:24 -0700
+IronPort-SDR: mcWpcfWqCs7rxD1k7oPVmtcplqd/YzzYP7eO3kWzKW5Fn8rIbJLBDFQGq3dBcmN8eXwp1td6NF
+ JC6zQLx0M8yw==
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="480886575"
 Received: from nfhickey-mobl.ger.corp.intel.com (HELO localhost)
  ([10.251.81.64])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 06:16:07 -0700
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 06:20:22 -0700
 From: Jani Nikula <jani.nikula@linux.intel.com>
 To: Xiaolin Zhang <xiaolin.zhang@intel.com>,
  intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
-Subject: Re: [Intel-gfx] [PATCH v1 02/12] drm/i915: vgpu shared memory setup
- for pv support
-In-Reply-To: <1599236505-9086-3-git-send-email-xiaolin.zhang@intel.com>
+Subject: Re: [Intel-gfx] [PATCH v1 03/12] drm/i915: vgpu pv command buffer
+ transport protocol
+In-Reply-To: <1599236505-9086-4-git-send-email-xiaolin.zhang@intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 References: <1599236505-9086-1-git-send-email-xiaolin.zhang@intel.com>
- <1599236505-9086-3-git-send-email-xiaolin.zhang@intel.com>
-Date: Thu, 10 Sep 2020 16:16:09 +0300
-Message-ID: <87o8md22na.fsf@intel.com>
+ <1599236505-9086-4-git-send-email-xiaolin.zhang@intel.com>
+Date: Thu, 10 Sep 2020 16:20:24 +0300
+Message-ID: <87lfhh22g7.fsf@intel.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -59,243 +59,357 @@ Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 On Sat, 05 Sep 2020, Xiaolin Zhang <xiaolin.zhang@intel.com> wrote:
-> To support vgpu pv features, a common shared memory is setup used for
-> communication and data exchange between guest and host GVTg to reduce
-> data access overhead and trap cost.
+> based on the common shared memory, vgpu pv command transport buffer (CTB)
+> protocol is implemented which is a simple pv command buffer ring with pv
+> command descriptor used to perform guest-2-gvt single direction commucation
+> between guest and host GVTg.
 >
-> guest i915 will allocate this common memory (1 page size) and then pass
-> it's physical address to host GVTg through PVINFO register so that host
-> GVTg can access this shared guest page meory without trap cost with
-> hyperviser's facility.
->
-> guest i915 will send VGT_G2V_SHARED_PAGE_SETUP notification to host GVTg
-> once shared memory setup succcessfully finished.
->
-> the layout of the shared_page also defined as well, the first part is the
-> PV vervsion information used for compabilty support.
+> with this CTB, guest can send PV command with PV data to host to perform PV
+> commands in host side.
 >
 > Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
 > ---
->  drivers/gpu/drm/i915/i915_drv.c    |  2 +
->  drivers/gpu/drm/i915/i915_drv.h    |  4 +-
->  drivers/gpu/drm/i915/i915_pvinfo.h |  5 +-
->  drivers/gpu/drm/i915/i915_vgpu.c   | 94 ++++++++++++++++++++++++++++++++++++++
->  drivers/gpu/drm/i915/i915_vgpu.h   | 14 ++++++
->  5 files changed, 117 insertions(+), 2 deletions(-)
+>  drivers/gpu/drm/i915/i915_pvinfo.h |   1 +
+>  drivers/gpu/drm/i915/i915_vgpu.c   | 195 ++++++++++++++++++++++++++++++++++++-
+>  drivers/gpu/drm/i915/i915_vgpu.h   |  53 ++++++++++
+>  3 files changed, 247 insertions(+), 2 deletions(-)
 >
-> diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
-> index 00292a8..5fbb4ab 100644
-> --- a/drivers/gpu/drm/i915/i915_drv.c
-> +++ b/drivers/gpu/drm/i915/i915_drv.c
-> @@ -1071,6 +1071,8 @@ static void i915_driver_release(struct drm_device *dev)
->  
->  	disable_rpm_wakeref_asserts(rpm);
->  
-> +	intel_vgpu_destroy(dev_priv);
-> +
->  	i915_gem_driver_release(dev_priv);
->  
->  	intel_memory_regions_driver_release(dev_priv);
-> diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_drv.h
-> index 16d1b51..3cde2c5f 100644
-> --- a/drivers/gpu/drm/i915/i915_drv.h
-> +++ b/drivers/gpu/drm/i915/i915_drv.h
-> @@ -809,7 +809,9 @@ struct i915_virtual_gpu {
->  	bool active;
->  	u32 caps;
->  	u32 pv_caps;
-> -};
-> +
-> +	struct i915_virtual_gpu_pv *pv;
-> +} __packed;
-
-I'm unsure why this struct should be packed.
-
->  
->  struct intel_cdclk_config {
->  	unsigned int cdclk, vco, ref, bypass;
 > diff --git a/drivers/gpu/drm/i915/i915_pvinfo.h b/drivers/gpu/drm/i915/i915_pvinfo.h
-> index 8b0dc25..1d44876 100644
+> index 1d44876..ded93c5 100644
 > --- a/drivers/gpu/drm/i915/i915_pvinfo.h
 > +++ b/drivers/gpu/drm/i915/i915_pvinfo.h
-> @@ -48,6 +48,7 @@ enum vgt_g2v_type {
->  	VGT_G2V_PPGTT_L4_PAGE_TABLE_DESTROY,
+> @@ -49,6 +49,7 @@ enum vgt_g2v_type {
 >  	VGT_G2V_EXECLIST_CONTEXT_CREATE,
 >  	VGT_G2V_EXECLIST_CONTEXT_DESTROY,
-> +	VGT_G2V_SHARED_PAGE_REGISTER,
+>  	VGT_G2V_SHARED_PAGE_REGISTER,
+> +	VGT_G2V_PV_SEND_TRIGGER,
 >  	VGT_G2V_MAX,
 >  };
 >  
-> @@ -112,7 +113,9 @@ struct vgt_if {
->  
->  	u32 pv_caps;
->  
-> -	u32  rsv7[0x200 - 25];    /* pad to one page */
-> +	u64 shared_page_gpa;
-> +
-> +	u32  rsv7[0x200 - 27];    /* pad to one page */
->  } __packed;
->  
->  #define vgtif_offset(x) (offsetof(struct vgt_if, x))
 > diff --git a/drivers/gpu/drm/i915/i915_vgpu.c b/drivers/gpu/drm/i915/i915_vgpu.c
-> index 10960125..8b2b451 100644
+> index 8b2b451..e856eff 100644
 > --- a/drivers/gpu/drm/i915/i915_vgpu.c
 > +++ b/drivers/gpu/drm/i915/i915_vgpu.c
-> @@ -110,6 +110,17 @@ void intel_vgpu_detect(struct drm_i915_private *dev_priv)
->  	pci_iounmap(pdev, shared_area);
->  }
->  
-> +void intel_vgpu_destroy(struct drm_i915_private *i915)
-> +{
-> +	struct i915_virtual_gpu_pv *pv = i915->vgpu.pv;
-> +
-> +	if (!intel_vgpu_active(i915) || !pv)
-> +		return;
-> +
-> +	__free_page(virt_to_page(pv->shared_page));
-> +	kfree(pv);
-> +}
-> +
->  void intel_vgpu_register(struct drm_i915_private *i915)
->  {
->  	/*
-> @@ -360,6 +371,83 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
+> @@ -370,6 +370,183 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
+>   * i915 vgpu PV support for Linux
 >   */
 >  
->  /*
-> + * shared_page setup for VGPU PV features
+> +/**
+> + * wait_for_desc_update - Wait for the command buffer descriptor update.
+> + * @desc:	buffer descriptor
+> + * @fence:	response fence
+> + * @status:	placeholder for status
+> + *
+> + * GVTg will update command buffer descriptor with new fence and status
+> + * after processing the command identified by the fence. Wait for
+> + * specified fence and then read from the descriptor status of the
+> + * command.
+> + *
+> + * Return:
+> + * *	0 response received (status is valid)
+> + * *	-ETIMEDOUT no response within hardcoded timeout
 > + */
-> +static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
-> +		void __iomem *shared_area)
+> +static int wait_for_desc_update(struct vgpu_pv_ct_buffer_desc *desc,
+> +		u32 fence, u32 *status)
 > +{
-> +	void __iomem *addr;
-> +	struct i915_virtual_gpu_pv *pv;
-> +	struct gvt_shared_page *base;
-> +	u64 gpa;
-> +	u16 ver_maj, ver_min;
-> +	int ret = 0;
+> +	int err;
 > +
-> +	/* We allocate 1 page shared between guest and GVT for data exchange.
-> +	 *       _______________________________
-> +	 *      |version                        |
-> +	 *      |_______________________________PAGE/8
-> +	 *      |                               |
-> +	 *      |_______________________________PAGE/4
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |_______________________________PAGE/2
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |                               |
-> +	 *      |_______________________________|
-> +	 *
-> +	 * 0 offset: PV version area
+> +#define done (READ_ONCE(desc->fence) == fence)
+> +	err = wait_for_us(done, 5);
+> +	if (err)
+> +		err = wait_for(done, 10);
+> +#undef done
+> +
+> +	if (unlikely(err)) {
+> +		DRM_ERROR("CT: fence %u failed; reported fence=%u\n",
+> +				fence, desc->fence);
+
+drm_err() please.
+
+> +	}
+> +
+> +	*status = desc->status;
+
+Please have a blank line before the return. Recommended throughout the
+series.
+
+> +	return err;
+> +}
+> +
+> +/**
+> + * CTB Guest to GVT request
+> + *
+> + * Format of the CTB Guest to GVT request message is as follows::
+> + *
+> + *      +------------+---------+---------+---------+---------+
+> + *      |   msg[0]   |   [1]   |   [2]   |   ...   |  [n-1]  |
+> + *      +------------+---------+---------+---------+---------+
+> + *      |   MESSAGE  |       MESSAGE PAYLOAD                 |
+> + *      +   HEADER   +---------+---------+---------+---------+
+> + *      |            |    0    |    1    |   ...   |    n    |
+> + *      +============+=========+=========+=========+=========+
+> + *      |  len >= 1  |  FENCE  |     request specific data   |
+> + *      +------+-----+---------+---------+---------+---------+
+> + *
+> + *                   ^-----------------len-------------------^
+> + */
+> +static int pv_command_buffer_write(struct i915_virtual_gpu_pv *pv,
+> +		const u32 *action, u32 len /* in dwords */, u32 fence)
+> +{
+> +	struct vgpu_pv_ct_buffer_desc *desc = pv->ctb.desc;
+> +	u32 head = desc->head / 4;	/* in dwords */
+> +	u32 tail = desc->tail / 4;	/* in dwords */
+> +	u32 size = desc->size / 4;	/* in dwords */
+> +	u32 used;			/* in dwords */
+> +	u32 header;
+> +	u32 *cmds = pv->ctb.cmds;
+> +	unsigned int i;
+> +
+> +	GEM_BUG_ON(desc->size % 4);
+> +	GEM_BUG_ON(desc->head % 4);
+> +	GEM_BUG_ON(desc->tail % 4);
+> +	GEM_BUG_ON(tail >= size);
+> +
+> +	 /* tail == head condition indicates empty */
+> +	if (tail < head)
+> +		used = (size - head) + tail;
+> +	else
+> +		used = tail - head;
+> +
+> +	/* make sure there is a space including extra dw for the fence */
+> +	if (unlikely(used + len + 1 >= size))
+> +		return -ENOSPC;
+> +
+> +	/*
+> +	 * Write the message. The format is the following:
+> +	 * DW0: header (including action code)
+> +	 * DW1: fence
+> +	 * DW2+: action data
 > +	 */
+> +	header = (len << PV_CT_MSG_LEN_SHIFT) |
+> +		 (PV_CT_MSG_WRITE_FENCE_TO_DESC) |
+> +		 (action[0] << PV_CT_MSG_ACTION_SHIFT);
 > +
-> +	base =  (struct gvt_shared_page *)get_zeroed_page(GFP_KERNEL);
-> +	if (!base) {
-> +		dev_info(i915->drm.dev, "out of memory for shared memory\n");
-> +		return -ENOMEM;
+> +	cmds[tail] = header;
+> +	tail = (tail + 1) % size;
+> +
+> +	cmds[tail] = fence;
+> +	tail = (tail + 1) % size;
+> +
+> +	for (i = 1; i < len; i++) {
+> +		cmds[tail] = action[i];
+> +		tail = (tail + 1) % size;
 > +	}
 > +
-> +	/* pass guest memory pa address to GVT and then read back to verify */
-> +	gpa = __pa(base);
-> +	addr = shared_area + vgtif_offset(shared_page_gpa);
-> +	writeq(gpa, addr);
-> +	if (gpa != readq(addr)) {
-> +		dev_info(i915->drm.dev, "passed shared_page_gpa failed\n");
-> +		ret = -EIO;
-> +		goto err;
+> +	/* now update desc tail (back in bytes) */
+> +	desc->tail = tail * 4;
+> +	GEM_BUG_ON(desc->tail > desc->size);
+> +
+> +	return 0;
+> +}
+> +
+> +static u32 pv_get_next_fence(struct i915_virtual_gpu_pv *pv)
+> +{
+> +	/* For now it's trivial */
+> +	return ++pv->next_fence;
+> +}
+> +
+> +static int pv_send(struct drm_i915_private *i915,
+> +		const u32 *action, u32 len, u32 *status)
+> +{
+> +	struct i915_virtual_gpu *vgpu = &i915->vgpu;
+> +	struct i915_virtual_gpu_pv *pv = vgpu->pv;
+> +
+> +	struct vgpu_pv_ct_buffer_desc *desc = pv->ctb.desc;
+> +
+> +	u32 fence;
+> +	int err;
+> +
+> +	GEM_BUG_ON(!len);
+> +	GEM_BUG_ON(len & ~PV_CT_MSG_LEN_MASK);
+> +
+> +	fence = pv_get_next_fence(pv);
+> +	err = pv_command_buffer_write(pv, action, len, fence);
+> +	if (unlikely(err))
+> +		goto unlink;
+> +
+> +	i915->vgpu.pv->notify(i915);
+> +
+> +	err = wait_for_desc_update(desc, fence, status);
+> +	if (unlikely(err))
+> +		goto unlink;
+> +
+> +	if ((*status)) {
+> +		err = -EIO;
+> +		goto unlink;
 > +	}
 > +
-> +	addr = shared_area + vgtif_offset(g2v_notify);
-> +	writel(VGT_G2V_SHARED_PAGE_REGISTER, addr);
+> +	err = (*status);
+> +unlink:
+> +	return err;
+> +}
 > +
-> +	ver_maj = base->ver_major;
-> +	ver_min = base->ver_minor;
-> +	if (ver_maj != PV_MAJOR || ver_min != PV_MINOR) {
-> +		dev_info(i915->drm.dev, "VGPU PV version incompatible\n");
-> +		ret = -EIO;
-> +		goto err;
-> +	}
+> +static int intel_vgpu_pv_send_command_buffer(struct drm_i915_private *i915,
+> +		u32 *action, u32 len)
+> +{
+> +	struct i915_virtual_gpu *vgpu = &i915->vgpu;
+> +	unsigned long flags;
 > +
-> +	pv = kzalloc(sizeof(struct i915_virtual_gpu_pv), GFP_KERNEL);
-> +	if (!pv) {
-> +		ret = -ENOMEM;
-> +		goto err;
-> +	}
+> +	u32 status = ~0; /* undefined */
+> +	int ret;
 > +
-> +	DRM_INFO("vgpu PV ver major %d and minor %d\n", ver_maj, ver_min);
+> +	spin_lock_irqsave(&vgpu->pv->lock, flags);
+> +
+> +	ret = pv_send(i915, action, len, &status);
+> +	if (unlikely(ret < 0)) {
+> +		DRM_ERROR("PV: send action %#X failed; err=%d status=%#X\n",
+> +			  action[0], ret, status);
+> +	} else if (unlikely(ret)) {
+> +		DRM_ERROR("PV: send action %#x returned %d (%#x)\n",
+> +				action[0], ret, ret);
 
-Please use drm_info(), and please polish the message for info
-level. This looks like debug to me.
+drm_err() please.
 
-> +	i915->vgpu.pv = pv;
-> +	pv->shared_page = base;
-> +	return ret;
-> +err:
-> +	__free_page(virt_to_page(base));
+> +	}
+> +
+> +	spin_unlock_irqrestore(&vgpu->pv->lock, flags);
 > +	return ret;
 > +}
 > +
-> +/*
->   * Config vgpu PV ops for different PV capabilities
->   */
->  void intel_vgpu_config_pv_caps(struct drm_i915_private *i915,
-> @@ -395,5 +483,11 @@ bool intel_vgpu_detect_pv_caps(struct drm_i915_private *i915,
->  	if (!pvcaps)
->  		return false;
->  
-> +	if (intel_vgpu_setup_shared_page(i915, shared_area)) {
-> +		i915->vgpu.pv_caps = 0;
-> +		writel(0, shared_area + vgtif_offset(pv_caps));
-> +		return false;
-> +	}
+> +static void intel_vgpu_pv_notify_mmio(struct drm_i915_private *dev_priv)
+> +{
+> +	I915_WRITE(vgtif_reg(g2v_notify), VGT_G2V_PV_SEND_TRIGGER);
+
+Please do not add any more I915_WRITE() uses. intel_uncore_write() please.
+
+> +}
 > +
->  	return true;
->  }
+>  /*
+>   * shared_page setup for VGPU PV features
+>   */
+> @@ -385,7 +562,7 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
+>  
+>  	/* We allocate 1 page shared between guest and GVT for data exchange.
+>  	 *       _______________________________
+> -	 *      |version                        |
+> +	 *      |version|PV_DESCs(SEND)         |
+>  	 *      |_______________________________PAGE/8
+>  	 *      |                               |
+>  	 *      |_______________________________PAGE/4
+> @@ -393,7 +570,7 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
+>  	 *      |                               |
+>  	 *      |                               |
+>  	 *      |_______________________________PAGE/2
+> -	 *      |                               |
+> +	 *      |PV_CMDs(SEND)                  |
+>  	 *      |                               |
+>  	 *      |                               |
+>  	 *      |                               |
+> @@ -403,6 +580,8 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
+>  	 *      |_______________________________|
+>  	 *
+>  	 * 0 offset: PV version area
+> +	 * PAGE/4 offset: PV command buffer command descriptor area
+> +	 * PAGE/2 offset: PV command buffer command data area
+>  	 */
+>  
+>  	base =  (struct gvt_shared_page *)get_zeroed_page(GFP_KERNEL);
+> @@ -441,6 +620,18 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
+>  	DRM_INFO("vgpu PV ver major %d and minor %d\n", ver_maj, ver_min);
+>  	i915->vgpu.pv = pv;
+>  	pv->shared_page = base;
+> +
+> +	/* setup PV command buffer ptr */
+> +	pv->ctb.cmds = (void *)base + PV_CMD_OFF;
+> +	pv->ctb.desc = (void *)base + PV_DESC_OFF;
+> +	pv->ctb.desc->size = PAGE_SIZE/2;
+> +	pv->ctb.desc->addr = PV_CMD_OFF;
+> +
+> +	/* setup PV command buffer callback */
+> +	pv->send = intel_vgpu_pv_send_command_buffer;
+> +	pv->notify = intel_vgpu_pv_notify_mmio;
+> +	spin_lock_init(&pv->lock);
+> +
+>  	return ret;
+>  err:
+>  	__free_page(virt_to_page(base));
 > diff --git a/drivers/gpu/drm/i915/i915_vgpu.h b/drivers/gpu/drm/i915/i915_vgpu.h
-> index 1b10175..aeef20f 100644
+> index aeef20f..f2826f9 100644
 > --- a/drivers/gpu/drm/i915/i915_vgpu.h
 > +++ b/drivers/gpu/drm/i915/i915_vgpu.h
-> @@ -29,12 +29,26 @@
->  struct drm_i915_private;
->  struct i915_ggtt;
+> @@ -31,6 +31,8 @@ struct i915_ggtt;
 >  
-> +#define PV_MAJOR        0
-> +#define PV_MINOR        1
-> +
+>  #define PV_MAJOR        0
+>  #define PV_MINOR        1
+> +#define PV_DESC_OFF     (PAGE_SIZE/256)
+> +#define PV_CMD_OFF      (PAGE_SIZE/2)
+>  
 >  /* define different PV capabilities */
 >  enum pv_caps {
->  	PV_NONE = 0,
+> @@ -43,8 +45,59 @@ struct gvt_shared_page {
+>  	u16 ver_minor;
 >  };
 >  
-> +/* A common shared page(4KB) between GVTg and vgpu allocated by guest */
-> +struct gvt_shared_page {
-
-Prefix with intel_?
-
-> +	u16 ver_major;
-> +	u16 ver_minor;
+> +/*
+> + * Definition of the command transport message header (DW0)
+> + *
+> + * bit[0..4]	message len (in dwords)
+> + * bit[5..7]	reserved
+> + * bit[8..8]	write fence to desc
+> + * bit[9..15]	reserved
+> + * bit[16..31]	action code
+> + */
+> +#define PV_CT_MSG_LEN_SHIFT             0
+> +#define PV_CT_MSG_LEN_MASK              0x1F
+> +#define PV_CT_MSG_WRITE_FENCE_TO_DESC   (1 << 8)
+> +#define PV_CT_MSG_ACTION_SHIFT          16
+> +#define PV_CT_MSG_ACTION_MASK           0xFFFF
+> +
+> +/* PV command transport buffer descriptor */
+> +struct vgpu_pv_ct_buffer_desc {
+> +	u32 addr;		/* gpa address */
+> +	u32 size;		/* size in bytes */
+> +	u32 head;		/* offset updated by GVT */
+> +	u32 tail;		/* offset updated by owner */
+> +
+> +	u32 fence;		/* fence updated by GVT */
+> +	u32 status;		/* status updated by GVT */
+> +} __packed;
+> +
+> +/** PV single command transport buffer.
+> + *
+> + * A single command transport buffer consists of two parts, the header
+> + * record (command transport buffer descriptor) and the actual buffer which
+> + * holds the commands.
+> + *
+> + * @desc: pointer to the buffer descriptor
+> + * @cmds: pointer to the commands buffer
+> + */
+> +struct vgpu_pv_ct_buffer {
+> +	struct vgpu_pv_ct_buffer_desc *desc;
+> +	u32 *cmds;
 > +};
 > +
-> +struct i915_virtual_gpu_pv {
 
-Why i915_virtual_gpu instead of intel_vgpu like everywhere else?
+Again, another name prefix that is not in line with the rest of the file
+or driver.
 
-> +	struct gvt_shared_page *shared_page;
-> +};
+>  struct i915_virtual_gpu_pv {
+>  	struct gvt_shared_page *shared_page;
 > +
+> +	/* PV command buffer support */
+> +	struct vgpu_pv_ct_buffer ctb;
+> +	u32 next_fence;
+> +
+> +	/* To serialize the vgpu PV send actions */
+> +	spinlock_t lock;
+> +
+> +	/* VGPU's PV specific send function */
+> +	int (*send)(struct drm_i915_private *dev_priv, u32 *data, u32 len);
+> +	void (*notify)(struct drm_i915_private *dev_priv);
+>  };
+>  
 >  void intel_vgpu_detect(struct drm_i915_private *i915);
-> +void intel_vgpu_destroy(struct drm_i915_private *i915);
->  bool intel_vgpu_active(struct drm_i915_private *i915);
->  void intel_vgpu_register(struct drm_i915_private *i915);
->  bool intel_vgpu_has_full_ppgtt(struct drm_i915_private *i915);
 
 -- 
 Jani Nikula, Intel Open Source Graphics Center
