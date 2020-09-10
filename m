@@ -1,45 +1,64 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B96002646C6
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 15:20:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55960264C26
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 20:03:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6A83D6E922;
-	Thu, 10 Sep 2020 13:20:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1176E6E071;
+	Thu, 10 Sep 2020 18:03:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 692E16E922;
- Thu, 10 Sep 2020 13:20:25 +0000 (UTC)
-IronPort-SDR: uzemQjCrT2llopDT5XPQBeIvTCVhQ7Rk0tvm4x1zQx7SNb00w/P3FCkz03wO6kMiZhlYiyguKt
- u+lz8DBMUn5Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="158565440"
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="158565440"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 06:20:24 -0700
-IronPort-SDR: mcWpcfWqCs7rxD1k7oPVmtcplqd/YzzYP7eO3kWzKW5Fn8rIbJLBDFQGq3dBcmN8eXwp1td6NF
- JC6zQLx0M8yw==
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="480886575"
-Received: from nfhickey-mobl.ger.corp.intel.com (HELO localhost)
- ([10.251.81.64])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 06:20:22 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Xiaolin Zhang <xiaolin.zhang@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
-Subject: Re: [Intel-gfx] [PATCH v1 03/12] drm/i915: vgpu pv command buffer
- transport protocol
-In-Reply-To: <1599236505-9086-4-git-send-email-xiaolin.zhang@intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <1599236505-9086-1-git-send-email-xiaolin.zhang@intel.com>
- <1599236505-9086-4-git-send-email-xiaolin.zhang@intel.com>
-Date: Thu, 10 Sep 2020 16:20:24 +0300
-Message-ID: <87lfhh22g7.fsf@intel.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EF2906E071
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 10 Sep 2020 18:03:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599760979;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GyLY1qBSSLZ2NwdnD/asgsR1UoCWd7zqQIA95zJd7so=;
+ b=SX8KvQCvaF1QmKH9vFTyeCTDTMbO2HIB2EuXSqVWLYglFVKgpI/mpopKCdmDJ9BNDbELqg
+ lDuCSG/Ox192k7MPPbaBLCS+9vKcCCgwS4B4lLvHGiDpM5BAA6Ap5BUhpl05CE7eFYvVpt
+ 8EPAIXwVgyNduvMjyKvLIEcgLIigJoI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-315-9fbs-v3AOQqeBVWK8T0KiQ-1; Thu, 10 Sep 2020 14:02:56 -0400
+X-MC-Unique: 9fbs-v3AOQqeBVWK8T0KiQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D74410930DB;
+ Thu, 10 Sep 2020 18:02:52 +0000 (UTC)
+Received: from w520.home (ovpn-112-71.phx2.redhat.com [10.3.112.71])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 097C981C40;
+ Thu, 10 Sep 2020 18:02:44 +0000 (UTC)
+Date: Thu, 10 Sep 2020 12:02:44 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Sean Mooney <smooney@redhat.com>
+Subject: Re: device compatibility interface for live migration with assigned
+ devices
+Message-ID: <20200910120244.71e7b630@w520.home>
+In-Reply-To: <7cebcb6c8d1a1452b43e8358ee6ee18a150a0238.camel@redhat.com>
+References: <20200818113652.5d81a392.cohuck@redhat.com>
+ <20200820003922.GE21172@joy-OptiPlex-7040>
+ <20200819212234.223667b3@x1.home>
+ <20200820031621.GA24997@joy-OptiPlex-7040>
+ <20200825163925.1c19b0f0.cohuck@redhat.com>
+ <20200826064117.GA22243@joy-OptiPlex-7040>
+ <20200828154741.30cfc1a3.cohuck@redhat.com>
+ <8f5345be73ebf4f8f7f51d6cdc9c2a0d8e0aa45e.camel@redhat.com>
+ <20200831044344.GB13784@joy-OptiPlex-7040>
+ <20200908164130.2fe0d106.cohuck@redhat.com>
+ <20200909021308.GA1277@joy-OptiPlex-7040>
+ <20200910143822.2071eca4.cohuck@redhat.com>
+ <7cebcb6c8d1a1452b43e8358ee6ee18a150a0238.camel@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,367 +71,98 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: zhiyuan.lv@intel.com, chris@chris-wilson.co.uk
+Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
+ eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
+ openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
+ kevin.tian@intel.com, Yan Zhao <yan.y.zhao@intel.com>,
+ Parav Pandit <parav@mellanox.com>, jian-feng.ding@intel.com,
+ dgilbert@redhat.com, zhenyuw@linux.intel.com, hejie.xu@intel.com,
+ bao.yumeng@zte.com.cn, Jiri Pirko <jiri@mellanox.com>, eskultet@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org,
+ Daniel =?UTF-8?B?UC5CZXJyYW5nw6k=?= <berrange@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, dinechin@redhat.com, devel@ovirt.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, 05 Sep 2020, Xiaolin Zhang <xiaolin.zhang@intel.com> wrote:
-> based on the common shared memory, vgpu pv command transport buffer (CTB)
-> protocol is implemented which is a simple pv command buffer ring with pv
-> command descriptor used to perform guest-2-gvt single direction commucation
-> between guest and host GVTg.
->
-> with this CTB, guest can send PV command with PV data to host to perform PV
-> commands in host side.
->
-> Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
-> ---
->  drivers/gpu/drm/i915/i915_pvinfo.h |   1 +
->  drivers/gpu/drm/i915/i915_vgpu.c   | 195 ++++++++++++++++++++++++++++++++++++-
->  drivers/gpu/drm/i915/i915_vgpu.h   |  53 ++++++++++
->  3 files changed, 247 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/i915_pvinfo.h b/drivers/gpu/drm/i915/i915_pvinfo.h
-> index 1d44876..ded93c5 100644
-> --- a/drivers/gpu/drm/i915/i915_pvinfo.h
-> +++ b/drivers/gpu/drm/i915/i915_pvinfo.h
-> @@ -49,6 +49,7 @@ enum vgt_g2v_type {
->  	VGT_G2V_EXECLIST_CONTEXT_CREATE,
->  	VGT_G2V_EXECLIST_CONTEXT_DESTROY,
->  	VGT_G2V_SHARED_PAGE_REGISTER,
-> +	VGT_G2V_PV_SEND_TRIGGER,
->  	VGT_G2V_MAX,
->  };
->  
-> diff --git a/drivers/gpu/drm/i915/i915_vgpu.c b/drivers/gpu/drm/i915/i915_vgpu.c
-> index 8b2b451..e856eff 100644
-> --- a/drivers/gpu/drm/i915/i915_vgpu.c
-> +++ b/drivers/gpu/drm/i915/i915_vgpu.c
-> @@ -370,6 +370,183 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
->   * i915 vgpu PV support for Linux
->   */
->  
-> +/**
-> + * wait_for_desc_update - Wait for the command buffer descriptor update.
-> + * @desc:	buffer descriptor
-> + * @fence:	response fence
-> + * @status:	placeholder for status
-> + *
-> + * GVTg will update command buffer descriptor with new fence and status
-> + * after processing the command identified by the fence. Wait for
-> + * specified fence and then read from the descriptor status of the
-> + * command.
-> + *
-> + * Return:
-> + * *	0 response received (status is valid)
-> + * *	-ETIMEDOUT no response within hardcoded timeout
-> + */
-> +static int wait_for_desc_update(struct vgpu_pv_ct_buffer_desc *desc,
-> +		u32 fence, u32 *status)
-> +{
-> +	int err;
-> +
-> +#define done (READ_ONCE(desc->fence) == fence)
-> +	err = wait_for_us(done, 5);
-> +	if (err)
-> +		err = wait_for(done, 10);
-> +#undef done
-> +
-> +	if (unlikely(err)) {
-> +		DRM_ERROR("CT: fence %u failed; reported fence=%u\n",
-> +				fence, desc->fence);
+On Thu, 10 Sep 2020 13:50:11 +0100
+Sean Mooney <smooney@redhat.com> wrote:
 
-drm_err() please.
+> On Thu, 2020-09-10 at 14:38 +0200, Cornelia Huck wrote:
+> > On Wed, 9 Sep 2020 10:13:09 +0800
+> > Yan Zhao <yan.y.zhao@intel.com> wrote:
+> >   
+> > > > > still, I'd like to put it more explicitly to make ensure it's not missed:
+> > > > > the reason we want to specify compatible_type as a trait and check
+> > > > > whether target compatible_type is the superset of source
+> > > > > compatible_type is for the consideration of backward compatibility.
+> > > > > e.g.
+> > > > > an old generation device may have a mdev type xxx-v4-yyy, while a newer
+> > > > > generation  device may be of mdev type xxx-v5-yyy.
+> > > > > with the compatible_type traits, the old generation device is still
+> > > > > able to be regarded as compatible to newer generation device even their
+> > > > > mdev types are not equal.    
+> > > > 
+> > > > If you want to support migration from v4 to v5, can't the (presumably
+> > > > newer) driver that supports v5 simply register the v4 type as well, so
+> > > > that the mdev can be created as v4? (Just like QEMU versioned machine
+> > > > types work.)    
+> > > 
+> > > yes, it should work in some conditions.
+> > > but it may not be that good in some cases when v5 and v4 in the name string
+> > > of mdev type identify hardware generation (e.g. v4 for gen8, and v5 for
+> > > gen9)
+> > > 
+> > > e.g.
+> > > (1). when src mdev type is v4 and target mdev type is v5 as
+> > > software does not support it initially, and v4 and v5 identify hardware
+> > > differences.  
+> > 
+> > My first hunch here is: Don't introduce types that may be compatible
+> > later. Either make them compatible, or make them distinct by design,
+> > and possibly add a different, compatible type later.
+> >   
+> > > then after software upgrade, v5 is now compatible to v4, should the
+> > > software now downgrade mdev type from v5 to v4?
+> > > not sure if moving hardware generation info into a separate attribute
+> > > from mdev type name is better. e.g. remove v4, v5 in mdev type, while use
+> > > compatible_pci_ids to identify compatibility.  
+> > 
+> > If the generations are compatible, don't mention it in the mdev type.
+> > If they aren't, use distinct types, so that management software doesn't
+> > have to guess. At least that would be my naive approach here.  
+> yep that is what i would prefer to see too.
+> >   
+> > > 
+> > > (2) name string of mdev type is composed by "driver_name + type_name".
+> > > in some devices, e.g. qat, different generations of devices are binding to
+> > > drivers of different names, e.g. "qat-v4", "qat-v5".
+> > > then though type_name is equal, mdev type is not equal. e.g.
+> > > "qat-v4-type1", "qat-v5-type1".  
+> > 
+> > I guess that shows a shortcoming of that "driver_name + type_name"
+> > approach? Or maybe I'm just confused.  
+> yes i really dont like haveing the version in the mdev-type name 
+> i would stongly perfger just qat-type-1 wehere qat is just there as a way of namespacing.
+> although symmetric-cryto, asymmetric-cryto and compression woudl be a better name then type-1, type-2, type-3 if
+> that is what they would end up mapping too. e.g. qat-compression or qat-aes is a much better name then type-1
+> higher layers of software are unlikely to parse the mdev names but as a human looking at them its much eaiser to
+> understand if the names are meaningful. the qat prefix i think is important however to make sure that your mdev-types
+> dont colide with other vendeors mdev types. so i woudl encurage all vendors to prefix there mdev types with etiher the
+> device name or the vendor.
 
-> +	}
-> +
-> +	*status = desc->status;
++1 to all this, the mdev type is meant to indicate a software
+compatible interface, if different hardware versions can be software
+compatible, then don't make the job of finding a compatible device
+harder.  The full type is a combination of the vendor driver name plus
+the vendor provided type name specifically in order to provide a type
+namespace per vendor driver.  That's done at the mdev core level.
+Thanks,
 
-Please have a blank line before the return. Recommended throughout the
-series.
+Alex
 
-> +	return err;
-> +}
-> +
-> +/**
-> + * CTB Guest to GVT request
-> + *
-> + * Format of the CTB Guest to GVT request message is as follows::
-> + *
-> + *      +------------+---------+---------+---------+---------+
-> + *      |   msg[0]   |   [1]   |   [2]   |   ...   |  [n-1]  |
-> + *      +------------+---------+---------+---------+---------+
-> + *      |   MESSAGE  |       MESSAGE PAYLOAD                 |
-> + *      +   HEADER   +---------+---------+---------+---------+
-> + *      |            |    0    |    1    |   ...   |    n    |
-> + *      +============+=========+=========+=========+=========+
-> + *      |  len >= 1  |  FENCE  |     request specific data   |
-> + *      +------+-----+---------+---------+---------+---------+
-> + *
-> + *                   ^-----------------len-------------------^
-> + */
-> +static int pv_command_buffer_write(struct i915_virtual_gpu_pv *pv,
-> +		const u32 *action, u32 len /* in dwords */, u32 fence)
-> +{
-> +	struct vgpu_pv_ct_buffer_desc *desc = pv->ctb.desc;
-> +	u32 head = desc->head / 4;	/* in dwords */
-> +	u32 tail = desc->tail / 4;	/* in dwords */
-> +	u32 size = desc->size / 4;	/* in dwords */
-> +	u32 used;			/* in dwords */
-> +	u32 header;
-> +	u32 *cmds = pv->ctb.cmds;
-> +	unsigned int i;
-> +
-> +	GEM_BUG_ON(desc->size % 4);
-> +	GEM_BUG_ON(desc->head % 4);
-> +	GEM_BUG_ON(desc->tail % 4);
-> +	GEM_BUG_ON(tail >= size);
-> +
-> +	 /* tail == head condition indicates empty */
-> +	if (tail < head)
-> +		used = (size - head) + tail;
-> +	else
-> +		used = tail - head;
-> +
-> +	/* make sure there is a space including extra dw for the fence */
-> +	if (unlikely(used + len + 1 >= size))
-> +		return -ENOSPC;
-> +
-> +	/*
-> +	 * Write the message. The format is the following:
-> +	 * DW0: header (including action code)
-> +	 * DW1: fence
-> +	 * DW2+: action data
-> +	 */
-> +	header = (len << PV_CT_MSG_LEN_SHIFT) |
-> +		 (PV_CT_MSG_WRITE_FENCE_TO_DESC) |
-> +		 (action[0] << PV_CT_MSG_ACTION_SHIFT);
-> +
-> +	cmds[tail] = header;
-> +	tail = (tail + 1) % size;
-> +
-> +	cmds[tail] = fence;
-> +	tail = (tail + 1) % size;
-> +
-> +	for (i = 1; i < len; i++) {
-> +		cmds[tail] = action[i];
-> +		tail = (tail + 1) % size;
-> +	}
-> +
-> +	/* now update desc tail (back in bytes) */
-> +	desc->tail = tail * 4;
-> +	GEM_BUG_ON(desc->tail > desc->size);
-> +
-> +	return 0;
-> +}
-> +
-> +static u32 pv_get_next_fence(struct i915_virtual_gpu_pv *pv)
-> +{
-> +	/* For now it's trivial */
-> +	return ++pv->next_fence;
-> +}
-> +
-> +static int pv_send(struct drm_i915_private *i915,
-> +		const u32 *action, u32 len, u32 *status)
-> +{
-> +	struct i915_virtual_gpu *vgpu = &i915->vgpu;
-> +	struct i915_virtual_gpu_pv *pv = vgpu->pv;
-> +
-> +	struct vgpu_pv_ct_buffer_desc *desc = pv->ctb.desc;
-> +
-> +	u32 fence;
-> +	int err;
-> +
-> +	GEM_BUG_ON(!len);
-> +	GEM_BUG_ON(len & ~PV_CT_MSG_LEN_MASK);
-> +
-> +	fence = pv_get_next_fence(pv);
-> +	err = pv_command_buffer_write(pv, action, len, fence);
-> +	if (unlikely(err))
-> +		goto unlink;
-> +
-> +	i915->vgpu.pv->notify(i915);
-> +
-> +	err = wait_for_desc_update(desc, fence, status);
-> +	if (unlikely(err))
-> +		goto unlink;
-> +
-> +	if ((*status)) {
-> +		err = -EIO;
-> +		goto unlink;
-> +	}
-> +
-> +	err = (*status);
-> +unlink:
-> +	return err;
-> +}
-> +
-> +static int intel_vgpu_pv_send_command_buffer(struct drm_i915_private *i915,
-> +		u32 *action, u32 len)
-> +{
-> +	struct i915_virtual_gpu *vgpu = &i915->vgpu;
-> +	unsigned long flags;
-> +
-> +	u32 status = ~0; /* undefined */
-> +	int ret;
-> +
-> +	spin_lock_irqsave(&vgpu->pv->lock, flags);
-> +
-> +	ret = pv_send(i915, action, len, &status);
-> +	if (unlikely(ret < 0)) {
-> +		DRM_ERROR("PV: send action %#X failed; err=%d status=%#X\n",
-> +			  action[0], ret, status);
-> +	} else if (unlikely(ret)) {
-> +		DRM_ERROR("PV: send action %#x returned %d (%#x)\n",
-> +				action[0], ret, ret);
-
-drm_err() please.
-
-> +	}
-> +
-> +	spin_unlock_irqrestore(&vgpu->pv->lock, flags);
-> +	return ret;
-> +}
-> +
-> +static void intel_vgpu_pv_notify_mmio(struct drm_i915_private *dev_priv)
-> +{
-> +	I915_WRITE(vgtif_reg(g2v_notify), VGT_G2V_PV_SEND_TRIGGER);
-
-Please do not add any more I915_WRITE() uses. intel_uncore_write() please.
-
-> +}
-> +
->  /*
->   * shared_page setup for VGPU PV features
->   */
-> @@ -385,7 +562,7 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
->  
->  	/* We allocate 1 page shared between guest and GVT for data exchange.
->  	 *       _______________________________
-> -	 *      |version                        |
-> +	 *      |version|PV_DESCs(SEND)         |
->  	 *      |_______________________________PAGE/8
->  	 *      |                               |
->  	 *      |_______________________________PAGE/4
-> @@ -393,7 +570,7 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
->  	 *      |                               |
->  	 *      |                               |
->  	 *      |_______________________________PAGE/2
-> -	 *      |                               |
-> +	 *      |PV_CMDs(SEND)                  |
->  	 *      |                               |
->  	 *      |                               |
->  	 *      |                               |
-> @@ -403,6 +580,8 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
->  	 *      |_______________________________|
->  	 *
->  	 * 0 offset: PV version area
-> +	 * PAGE/4 offset: PV command buffer command descriptor area
-> +	 * PAGE/2 offset: PV command buffer command data area
->  	 */
->  
->  	base =  (struct gvt_shared_page *)get_zeroed_page(GFP_KERNEL);
-> @@ -441,6 +620,18 @@ static int intel_vgpu_setup_shared_page(struct drm_i915_private *i915,
->  	DRM_INFO("vgpu PV ver major %d and minor %d\n", ver_maj, ver_min);
->  	i915->vgpu.pv = pv;
->  	pv->shared_page = base;
-> +
-> +	/* setup PV command buffer ptr */
-> +	pv->ctb.cmds = (void *)base + PV_CMD_OFF;
-> +	pv->ctb.desc = (void *)base + PV_DESC_OFF;
-> +	pv->ctb.desc->size = PAGE_SIZE/2;
-> +	pv->ctb.desc->addr = PV_CMD_OFF;
-> +
-> +	/* setup PV command buffer callback */
-> +	pv->send = intel_vgpu_pv_send_command_buffer;
-> +	pv->notify = intel_vgpu_pv_notify_mmio;
-> +	spin_lock_init(&pv->lock);
-> +
->  	return ret;
->  err:
->  	__free_page(virt_to_page(base));
-> diff --git a/drivers/gpu/drm/i915/i915_vgpu.h b/drivers/gpu/drm/i915/i915_vgpu.h
-> index aeef20f..f2826f9 100644
-> --- a/drivers/gpu/drm/i915/i915_vgpu.h
-> +++ b/drivers/gpu/drm/i915/i915_vgpu.h
-> @@ -31,6 +31,8 @@ struct i915_ggtt;
->  
->  #define PV_MAJOR        0
->  #define PV_MINOR        1
-> +#define PV_DESC_OFF     (PAGE_SIZE/256)
-> +#define PV_CMD_OFF      (PAGE_SIZE/2)
->  
->  /* define different PV capabilities */
->  enum pv_caps {
-> @@ -43,8 +45,59 @@ struct gvt_shared_page {
->  	u16 ver_minor;
->  };
->  
-> +/*
-> + * Definition of the command transport message header (DW0)
-> + *
-> + * bit[0..4]	message len (in dwords)
-> + * bit[5..7]	reserved
-> + * bit[8..8]	write fence to desc
-> + * bit[9..15]	reserved
-> + * bit[16..31]	action code
-> + */
-> +#define PV_CT_MSG_LEN_SHIFT             0
-> +#define PV_CT_MSG_LEN_MASK              0x1F
-> +#define PV_CT_MSG_WRITE_FENCE_TO_DESC   (1 << 8)
-> +#define PV_CT_MSG_ACTION_SHIFT          16
-> +#define PV_CT_MSG_ACTION_MASK           0xFFFF
-> +
-> +/* PV command transport buffer descriptor */
-> +struct vgpu_pv_ct_buffer_desc {
-> +	u32 addr;		/* gpa address */
-> +	u32 size;		/* size in bytes */
-> +	u32 head;		/* offset updated by GVT */
-> +	u32 tail;		/* offset updated by owner */
-> +
-> +	u32 fence;		/* fence updated by GVT */
-> +	u32 status;		/* status updated by GVT */
-> +} __packed;
-> +
-> +/** PV single command transport buffer.
-> + *
-> + * A single command transport buffer consists of two parts, the header
-> + * record (command transport buffer descriptor) and the actual buffer which
-> + * holds the commands.
-> + *
-> + * @desc: pointer to the buffer descriptor
-> + * @cmds: pointer to the commands buffer
-> + */
-> +struct vgpu_pv_ct_buffer {
-> +	struct vgpu_pv_ct_buffer_desc *desc;
-> +	u32 *cmds;
-> +};
-> +
-
-Again, another name prefix that is not in line with the rest of the file
-or driver.
-
->  struct i915_virtual_gpu_pv {
->  	struct gvt_shared_page *shared_page;
-> +
-> +	/* PV command buffer support */
-> +	struct vgpu_pv_ct_buffer ctb;
-> +	u32 next_fence;
-> +
-> +	/* To serialize the vgpu PV send actions */
-> +	spinlock_t lock;
-> +
-> +	/* VGPU's PV specific send function */
-> +	int (*send)(struct drm_i915_private *dev_priv, u32 *data, u32 len);
-> +	void (*notify)(struct drm_i915_private *dev_priv);
->  };
->  
->  void intel_vgpu_detect(struct drm_i915_private *i915);
-
--- 
-Jani Nikula, Intel Open Source Graphics Center
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
