@@ -1,33 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 288E0264695
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 15:10:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F259264698
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Sep 2020 15:10:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CEFCC6E08A;
-	Thu, 10 Sep 2020 13:10:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2A6B36E0D3;
+	Thu, 10 Sep 2020 13:10:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B6BCE6E08A;
- Thu, 10 Sep 2020 13:10:17 +0000 (UTC)
-IronPort-SDR: hanW1CtQatQdUNj4RRJX/cbswzEBjCsAKll5TS3Hu2NGQDRR4ArN43Ai3v4OSkCbYmUS5y34ly
- yVuDgCtPAxig==
-X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="176586661"
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="176586661"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2086E6E08A;
+ Thu, 10 Sep 2020 13:10:49 +0000 (UTC)
+IronPort-SDR: hkBFzbqCoNirkEuVoASRgTiOxnpcWo1j1v1vupv+9p/8Oc45py9faF7hw5TEAu2MGFs/x2qViF
+ Q0yyRUcXBCEQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="146229937"
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="146229937"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 06:10:17 -0700
-IronPort-SDR: 1vBZa6ylDFaP11hWAHZNXbNq1R/D6YrZRh3pu4MLauJugws4R8YPl2be5gXBMRhQr4qb3v631W
- /kFZ4ktUIDmA==
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="505831779"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 06:10:47 -0700
+IronPort-SDR: 7TlBFmcbqMgFeSZTZkLeip2+APWWlgwoQp2u/yIQdLcmJD4UtX03CE1Nnx6jposTCN9vQd6xTh
+ ZBCzv43M4N9g==
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="329327730"
 Received: from nfhickey-mobl.ger.corp.intel.com (HELO localhost)
  ([10.251.81.64])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 06:10:14 -0700
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 06:10:45 -0700
 From: Jani Nikula <jani.nikula@linux.intel.com>
 To: Xiaolin Zhang <xiaolin.zhang@intel.com>,
  intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
@@ -37,8 +37,8 @@ In-Reply-To: <1599236505-9086-2-git-send-email-xiaolin.zhang@intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 References: <1599236505-9086-1-git-send-email-xiaolin.zhang@intel.com>
  <1599236505-9086-2-git-send-email-xiaolin.zhang@intel.com>
-Date: Thu, 10 Sep 2020 16:10:15 +0300
-Message-ID: <87tuw522x4.fsf@intel.com>
+Date: Thu, 10 Sep 2020 16:10:47 +0300
+Message-ID: <87r1r922w8.fsf@intel.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -87,6 +87,9 @@ On Sat, 05 Sep 2020, Xiaolin Zhang <xiaolin.zhang@intel.com> wrote:
 >  #include "intel_pm.h"
 >  #include "intel_sideband.h"
 > +#include "i915_vgpu.h"
+
+Please keep includes sorted.
+
 >  
 >  static inline struct drm_i915_private *node_to_i915(struct drm_info_node *node)
 >  {
@@ -96,10 +99,6 @@ On Sat, 05 Sep 2020, Xiaolin Zhang <xiaolin.zhang@intel.com> wrote:
 >  	seq_printf(m, "pch: %d\n", INTEL_PCH_TYPE(i915));
 > +	if (intel_vgpu_active(i915))
 > +		seq_printf(m, "vgpu pv_caps: 0x%x\n", i915->vgpu.pv_caps);
-
-I think the placement here over-emphasizes the importance of the
-caps. Maybe you also want to print something if vgpu isn't active?
-
 >  
 >  	intel_device_info_print_static(INTEL_INFO(i915), &p);
 >  	intel_device_info_print_runtime(RUNTIME_INFO(i915), &p);
@@ -151,16 +150,9 @@ caps. Maybe you also want to print something if vgpu isn't active?
 > +	if (!intel_vgpu_detect_pv_caps(dev_priv, shared_area)) {
 > +		DRM_INFO("Virtual GPU for Intel GVT-g detected.\n");
 > +		goto out;
-
-Seems clearer without the goto. It's not like one is an error path,
-right?
-
 > +	}
 > +
 > +	DRM_INFO("Virtual GPU for Intel GVT-g detected with PV Optimized.\n");
-
-Please retain use of drm_info().
-
 >  
 >  out:
 >  	pci_iounmap(pdev, shared_area);
@@ -170,10 +162,6 @@ Please retain use of drm_info().
 >  
 > +static bool intel_vgpu_check_pv_cap(struct drm_i915_private *dev_priv,
 > +		enum pv_caps cap)
-
-The indentation is off here, and all over the place, as reported by
-checkpatch. Please address them everywhere.
-
 > +{
 > +	return (dev_priv->vgpu.active && (dev_priv->vgpu.caps & VGT_CAPS_PV)
 > +			&& (dev_priv->vgpu.pv_caps & cap));
@@ -210,10 +198,6 @@ checkpatch. Please address them everywhere.
 > +/**
 > + * intel_vgpu_detect_pv_caps - detect virtual GPU PV capabilities
 > + * @dev_priv: i915 device private
-
-If you use kernel-doc, please write proper kernel-doc comments. Again,
-please see the report sent to you by our CI.
-
 > + *
 > + * This function is called at the initialization stage, to detect VGPU
 > + * PV capabilities
@@ -247,14 +231,7 @@ please see the report sent to you by our CI.
 >  struct i915_ggtt;
 >  
 > +/* define different PV capabilities */
-
-The comment adds nothing.
-
 > +enum pv_caps {
-
-Please prefix the type name and the enumerations with intel_ or
-something.
-
 > +	PV_NONE = 0,
 > +};
 > +
