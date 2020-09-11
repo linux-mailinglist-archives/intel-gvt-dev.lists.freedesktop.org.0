@@ -1,62 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFC18266511
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Sep 2020 18:52:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA2722676A4
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 12 Sep 2020 01:56:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 969F26EAB4;
-	Fri, 11 Sep 2020 16:52:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 375CE6E0A1;
+	Fri, 11 Sep 2020 23:56:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1CEDA6EAB4
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 11 Sep 2020 16:52:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599843132;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KdqJbrxL/AwxVkgJA8HBG/XJzgdBc1MfdvhlV2cP3Dw=;
- b=iwAAPXF7+U9EpNA7qvgKQkcXzPveCLin26wqUQCg/BPiX1zsHAlN8mjJ74rHRlE/OpxYwI
- kqb6CNi/7GbTgaLQ+6zFyMkOv1KBrP66+MiRcs25frfW2m/TzwTfryH1fAuRwOr+gJ4PWP
- 3GNiXHbM1/EI1qlI5f4sl774DC/GcZM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-394-lwu8TFuRNAqRRRXD3Uldyg-1; Fri, 11 Sep 2020 12:52:09 -0400
-X-MC-Unique: lwu8TFuRNAqRRRXD3Uldyg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B7B881074643;
- Fri, 11 Sep 2020 16:52:06 +0000 (UTC)
-Received: from w520.home (ovpn-112-71.phx2.redhat.com [10.3.112.71])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1151F1A8AC;
- Fri, 11 Sep 2020 16:51:57 +0000 (UTC)
-Date: Fri, 11 Sep 2020 10:51:55 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: device compatibility interface for live migration with assigned
- devices
-Message-ID: <20200911105155.184e32a0@w520.home>
-In-Reply-To: <20200911005559.GA3932@joy-OptiPlex-7040>
-References: <20200825163925.1c19b0f0.cohuck@redhat.com>
- <20200826064117.GA22243@joy-OptiPlex-7040>
- <20200828154741.30cfc1a3.cohuck@redhat.com>
- <8f5345be73ebf4f8f7f51d6cdc9c2a0d8e0aa45e.camel@redhat.com>
- <20200831044344.GB13784@joy-OptiPlex-7040>
- <20200908164130.2fe0d106.cohuck@redhat.com>
- <20200909021308.GA1277@joy-OptiPlex-7040>
- <20200910143822.2071eca4.cohuck@redhat.com>
- <7cebcb6c8d1a1452b43e8358ee6ee18a150a0238.camel@redhat.com>
- <20200910120244.71e7b630@w520.home>
- <20200911005559.GA3932@joy-OptiPlex-7040>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 334776E040;
+ Fri, 11 Sep 2020 23:56:11 +0000 (UTC)
+IronPort-SDR: +xUNlcgWJI5ny4zGoa57Jmxoofcpe6KeiQEI+n2YFa1gl6hNiYPxMVKRjN/MY4e1LUFNMvVFUE
+ tc1p6mPU19xQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9741"; a="146608709"
+X-IronPort-AV: E=Sophos;i="5.76,418,1592895600"; d="scan'208";a="146608709"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2020 16:56:06 -0700
+IronPort-SDR: W85jOg1COy4RXznRCHwbHh/ZXhkhWw57vXYDOozA3yhBVFevZhBpmz/7gb0BN++USGlDOmZyml
+ yPNZDK2Mm5vA==
+X-IronPort-AV: E=Sophos;i="5.76,418,1592895600"; d="scan'208";a="450147801"
+Received: from rdvivi-losangeles.jf.intel.com (HELO intel.com)
+ ([10.165.21.201])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2020 16:56:03 -0700
+Date: Fri, 11 Sep 2020 19:58:25 -0400
+From: Rodrigo Vivi <rodrigo.vivi@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [PULL] gvt-next
+Message-ID: <20200911235825.GA259925@intel.com>
+References: <20200910053720.GK28614@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Content-Disposition: inline
+In-Reply-To: <20200910053720.GK28614@zhen-hp.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,134 +49,79 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, libvir-list@redhat.com,
- Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, kwankhede@nvidia.com,
- eauger@redhat.com, xin-ran.wang@intel.com, corbet@lwn.net,
- openstack-discuss@lists.openstack.org, shaohe.feng@intel.com,
- kevin.tian@intel.com, Parav Pandit <parav@mellanox.com>,
- jian-feng.ding@intel.com, dgilbert@redhat.com, zhenyuw@linux.intel.com,
- hejie.xu@intel.com, bao.yumeng@zte.com.cn, Jiri Pirko <jiri@mellanox.com>,
- eskultet@redhat.com, Sean Mooney <smooney@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org,
- Daniel =?UTF-8?B?UC5CZXJyYW5nw6k=?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, dinechin@redhat.com, devel@ovirt.org
+Cc: Jani Nikula <jani.nikula@intel.com>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
+ Zhi Wang <zhi.a.wang@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 11 Sep 2020 08:56:00 +0800
-Yan Zhao <yan.y.zhao@intel.com> wrote:
-
-> On Thu, Sep 10, 2020 at 12:02:44PM -0600, Alex Williamson wrote:
-> > On Thu, 10 Sep 2020 13:50:11 +0100
-> > Sean Mooney <smooney@redhat.com> wrote:
-> >   
-> > > On Thu, 2020-09-10 at 14:38 +0200, Cornelia Huck wrote:  
-> > > > On Wed, 9 Sep 2020 10:13:09 +0800
-> > > > Yan Zhao <yan.y.zhao@intel.com> wrote:
-> > > >     
-> > > > > > > still, I'd like to put it more explicitly to make ensure it's not missed:
-> > > > > > > the reason we want to specify compatible_type as a trait and check
-> > > > > > > whether target compatible_type is the superset of source
-> > > > > > > compatible_type is for the consideration of backward compatibility.
-> > > > > > > e.g.
-> > > > > > > an old generation device may have a mdev type xxx-v4-yyy, while a newer
-> > > > > > > generation  device may be of mdev type xxx-v5-yyy.
-> > > > > > > with the compatible_type traits, the old generation device is still
-> > > > > > > able to be regarded as compatible to newer generation device even their
-> > > > > > > mdev types are not equal.      
-> > > > > > 
-> > > > > > If you want to support migration from v4 to v5, can't the (presumably
-> > > > > > newer) driver that supports v5 simply register the v4 type as well, so
-> > > > > > that the mdev can be created as v4? (Just like QEMU versioned machine
-> > > > > > types work.)      
-> > > > > 
-> > > > > yes, it should work in some conditions.
-> > > > > but it may not be that good in some cases when v5 and v4 in the name string
-> > > > > of mdev type identify hardware generation (e.g. v4 for gen8, and v5 for
-> > > > > gen9)
-> > > > > 
-> > > > > e.g.
-> > > > > (1). when src mdev type is v4 and target mdev type is v5 as
-> > > > > software does not support it initially, and v4 and v5 identify hardware
-> > > > > differences.    
-> > > > 
-> > > > My first hunch here is: Don't introduce types that may be compatible
-> > > > later. Either make them compatible, or make them distinct by design,
-> > > > and possibly add a different, compatible type later.
-> > > >     
-> > > > > then after software upgrade, v5 is now compatible to v4, should the
-> > > > > software now downgrade mdev type from v5 to v4?
-> > > > > not sure if moving hardware generation info into a separate attribute
-> > > > > from mdev type name is better. e.g. remove v4, v5 in mdev type, while use
-> > > > > compatible_pci_ids to identify compatibility.    
-> > > > 
-> > > > If the generations are compatible, don't mention it in the mdev type.
-> > > > If they aren't, use distinct types, so that management software doesn't
-> > > > have to guess. At least that would be my naive approach here.    
-> > > yep that is what i would prefer to see too.  
-> > > >     
-> > > > > 
-> > > > > (2) name string of mdev type is composed by "driver_name + type_name".
-> > > > > in some devices, e.g. qat, different generations of devices are binding to
-> > > > > drivers of different names, e.g. "qat-v4", "qat-v5".
-> > > > > then though type_name is equal, mdev type is not equal. e.g.
-> > > > > "qat-v4-type1", "qat-v5-type1".    
-> > > > 
-> > > > I guess that shows a shortcoming of that "driver_name + type_name"
-> > > > approach? Or maybe I'm just confused.    
-> > > yes i really dont like haveing the version in the mdev-type name 
-> > > i would stongly perfger just qat-type-1 wehere qat is just there as a way of namespacing.
-> > > although symmetric-cryto, asymmetric-cryto and compression woudl be a better name then type-1, type-2, type-3 if
-> > > that is what they would end up mapping too. e.g. qat-compression or qat-aes is a much better name then type-1
-> > > higher layers of software are unlikely to parse the mdev names but as a human looking at them its much eaiser to
-> > > understand if the names are meaningful. the qat prefix i think is important however to make sure that your mdev-types
-> > > dont colide with other vendeors mdev types. so i woudl encurage all vendors to prefix there mdev types with etiher the
-> > > device name or the vendor.  
-> > 
-> > +1 to all this, the mdev type is meant to indicate a software
-> > compatible interface, if different hardware versions can be software
-> > compatible, then don't make the job of finding a compatible device
-> > harder.  The full type is a combination of the vendor driver name plus
-> > the vendor provided type name specifically in order to provide a type
-> > namespace per vendor driver.  That's done at the mdev core level.
-> > Thanks,  
+On Thu, Sep 10, 2020 at 01:37:20PM +0800, Zhenyu Wang wrote:
 > 
-> hi Alex,
-> got it. so do you suggest that vendors use consistent driver name over
-> generations of devices?
-> for qat, they create different modules for each generation. This
-> practice is not good if they want to support migration between devices
-> of different generations, right?
+> Hi,
 > 
-> and can I understand that we don't want support of migration between
-> different mdev types even in future ?
+> As we split pull request for 5.10 this time, here's gvt-next pull
+> for 5.10. For gvt ww lock fix, Zhi would send another pull based
+> on gem-next.
+> 
+> This includes current command access flag cleanup for
+> handlers which would be used for next refined cmd scan. And also
+> two more recent fixes on workaround cmd access and MIA reset state.
+> 
+> Thanks
+> --
+> The following changes since commit ced026e959bec5046afa310d6474e147b6294da2:
+> 
+>   drm/i915: Update DRIVER_DATE to 20200824 (2020-08-24 14:26:38 -0400)
+> 
+> are available in the Git repository at:
+> 
+>   https://github.com/intel/gvt-linux tags/gvt-next-2020-09-10
 
-You need to balance your requirements here.  If you're creating
-different drivers per generation, that suggests different device APIs,
-which is a legitimate use case for different mdev types.  However if
-you're expecting migration compatibility, that must be seamless to the
-guest, therefore the device API must be identical.  That suggests that
-migration between different types doesn't make much sense.  If a new
-generation device wants to expose a new mdev type with new features or
-device API, yet also support migration with an older mdev type, why
-wouldn't it simply expose both the old and the new type?  It seems much
-more supportable to simply instantiate an instance of the older type
-than to create an instance of the new type, which by the contents of
-the migration stream is configured to behave as the older type.  The
-latter sounds very difficult to test.
+This is a malformed pull request line which dim doesn't recognize.
+Could you please regenerate it?
 
-A challenge when we think about migration between different types,
-particularly across different vendor drivers, is that the migration
-stream is opaque, it's device and vendor specific.  Therefore it's not
-only difficult for userspace to understand the compatibility matrix, but
-also to actually support it in software, maintaining version and bug
-compatibility across different drivers.  It's clearly much, much easier
-when the same code base (and thus the same mdev type) is producing and
-consuming the migration data.  Thanks,
+$ cat /tmp/gvt-next/cur/1599868544.259925_1.rdvivi-losangeles\:2\,S | dim apply-pull drm-intel-next-queued
+dim: no pull request found
 
-Alex
+> 
+> for you to fetch changes up to df398e33b8fd3ac28b3c7166de555e38d26e7391:
+> 
+>   drm/i915/gvt: Init vreg GUC_STATUS to GS_MIA_IN_RESET (2020-09-10 13:49:05 +0800)
+> 
+> ----------------------------------------------------------------
+> gvt-next-2020-09-10
+> 
+> - Cleanup command access flag (Yan)
+> - New workaround cmd access fix (Colin)
+> - MIA reset state fix (Colin)
+> 
+> ----------------------------------------------------------------
+> Colin Xu (2):
+>       drm/i915/gvt: Add F_CMD_ACCESS for some GEN9 SKU WA MMIO access
+>       drm/i915/gvt: Init vreg GUC_STATUS to GS_MIA_IN_RESET
+> 
+> Yan Zhao (4):
+>       drm/i915/gvt: rename F_IN_CTX flag to F_SR_IN_CTX
+>       drm/i915/gvt: remove flag F_CMD_ACCESSED
+>       drm/i915/gvt: add/modify interfaces for flag F_CMD_ACCESS
+>       drm/i915/gvt: remove F_CMD_ACCESS flag for some registers
+> 
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c   |  6 ++---
+>  drivers/gpu/drm/i915/gvt/gvt.h          | 44 +++++++++++++++++++--------------
+>  drivers/gpu/drm/i915/gvt/handlers.c     | 32 +++++++++++++-----------
+>  drivers/gpu/drm/i915/gvt/mmio.c         |  3 +++
+>  drivers/gpu/drm/i915/gvt/mmio_context.c |  2 +-
+>  5 files changed, 49 insertions(+), 38 deletions(-)
+> 
+> -- 
+> 
+> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
 
 _______________________________________________
 intel-gvt-dev mailing list
