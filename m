@@ -1,52 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0966E2657A1
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Sep 2020 05:41:37 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3621A2658FE
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Sep 2020 07:58:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9F4D36E287;
-	Fri, 11 Sep 2020 03:41:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 398446E2E5;
+	Fri, 11 Sep 2020 05:58:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 32E1E6E287
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 11 Sep 2020 03:41:34 +0000 (UTC)
-IronPort-SDR: nB1ygOD4a3UTdNp5doFAdEeD2rClCj78mNUHaTX6lDjGTmKLHGVgLu1u+uVaH93Dz4fh4GXNWq
- GdcPEjZ2Lz0w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9740"; a="156085496"
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="156085496"
-X-Amp-Result: SKIPPED(no attachment in message)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 915FC6E2D6;
+ Fri, 11 Sep 2020 05:58:47 +0000 (UTC)
+IronPort-SDR: nb9B+JAGwxyIdnwwq/hhG8ojwn95SwX9rHpiP8UgVe5rodBlShByllQbAy5eUKKOHDS+DXrcls
+ fWhCRvVDjBKg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9740"; a="222899430"
+X-IronPort-AV: E=Sophos;i="5.76,414,1592895600"; 
+ d="asc'?scan'208";a="222899430"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 20:41:33 -0700
-IronPort-SDR: GUwm926iYz+WX+7VV6329qmO/aKV0EYKf0De8949hixYCDzS7zhMqbiZ8w2a+AKW2Wp04mxrMx
- sMBOkoCzAWiw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="506064043"
-Received: from unknown (HELO [10.239.160.21]) ([10.239.160.21])
- by fmsmga005.fm.intel.com with ESMTP; 10 Sep 2020 20:41:32 -0700
-Subject: Re: [PATCH] drm/i915/gvt: Skip writing 0 to HWSP during D3 resume
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-References: <20200819010953.55350-1-colin.xu@intel.com>
- <20200908091518.GE1426@zhen-hp.sh.intel.com>
- <7c369be0-d2bb-692b-e207-fd042fd11380@intel.com>
- <20200909020420.GE28614@zhen-hp.sh.intel.com>
- <da21010d-c366-b69b-1045-8ab840e646e5@intel.com>
- <20200909024133.GG28614@zhen-hp.sh.intel.com>
- <64ac9381-714d-0c1d-dcf9-a06037cdfded@intel.com>
- <1a743924-b9e8-7835-6902-3f5e07f73bb1@intel.com>
- <20200911024435.GP28614@zhen-hp.sh.intel.com>
-From: Colin Xu <Colin.Xu@intel.com>
-Message-ID: <a38dd706-3b03-057a-a5a9-5125b0a0c3a8@intel.com>
-Date: Fri, 11 Sep 2020 11:41:31 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 22:58:45 -0700
+IronPort-SDR: Q402+VGaRmxhMWdHJGWqdRbUQWDkz5A9hlInK3bqLW8woPO4FQwk83QfYMDeXNGHJThOG9nxAI
+ 6UtL7nLTc5LA==
+X-IronPort-AV: E=Sophos;i="5.76,414,1592895600"; 
+ d="asc'?scan'208";a="329643229"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 22:58:42 -0700
+Date: Fri, 11 Sep 2020 13:39:23 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Alejandro Sior <aho@sior.be>
+Subject: Re: [Intel-gfx][PATCH v2] drm/i915/gvt: Prevent NULL pointer
+ dereference in intel_vgpu_reg_rw_edid()
+Message-ID: <20200911053923.GS28614@zhen-hp.sh.intel.com>
+References: <743818af-fa38-e31a-1780-84a6a7e72e25@web.de>
+ <20200908181122.9100-1-aho@sior.be>
 MIME-Version: 1.0
-In-Reply-To: <20200911024435.GP28614@zhen-hp.sh.intel.com>
-Content-Language: en-US
+In-Reply-To: <20200908181122.9100-1-aho@sior.be>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,250 +53,161 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Colin.Xu@intel.com
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============1081360891=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 2020-09-11 10:44, Zhenyu Wang wrote:
-> On 2020.09.11 10:26:21 +0800, Colin Xu wrote:
->> Maybe we still need this change or a similar one. The HWSP zero out fail=
-ure
->> will result in to mmio write fail and guest then enters failsafe mode. F=
-rom
->> guest perspective, it will fail to resume and enter reset cycle.
->>
->>
->>>>> Trigger system_wakeup in qemu monitor
->> [=A0 753.165063] gvt: vgpu 2: write invalid HWSP address, reg:0x2080,
->> value:0x0
->> [=A0 753.165065] gvt: vgpu 2: fail to emulate MMIO write 00002080 len 4
->> [=A0 753.165206] gvt: vgpu 2: write invalid HWSP address, reg:0x12080,
->> value:0x0
->> [=A0 753.165207] gvt: vgpu 2: fail to emulate MMIO write 00012080 len 4
->> [=A0 753.165247] gvt: vgpu 2: write invalid HWSP address, reg:0x22080,
->> value:0x0
->> [=A0 753.165248] gvt: vgpu 2: fail to emulate MMIO write 00022080 len 4
->> [=A0 753.165295] gvt: vgpu 2: write invalid HWSP address, reg:0x1a080,
->> value:0x0
->> [=A0 753.165297] gvt: vgpu 2: fail to emulate MMIO write 0001a080 len 4
->> [=A0 753.165645] Detected your guest driver doesn't support GVT-g.
->> [=A0 753.165646] Now vgpu 2 will enter failsafe mode.
->>
-> Maybe we just take that 0 address as special case and not return
-> failure, as it's a valid setting from device driver point of view.
-It makes sense. I'll cook a patch to allow 0 addr, and also move the err =
 
-msg to dbg.
->
->> On 2020-09-09 11:05, Colin Xu wrote:
->>> On 2020-09-09 10:41, Zhenyu Wang wrote:
->>>> On 2020.09.09 10:51:04 +0800, Colin Xu wrote:
->>>>> On 2020-09-09 10:04, Zhenyu Wang wrote:
->>>>>> On 2020.09.09 08:37:53 +0800, Colin Xu wrote:
->>>>>>> On 2020-09-08 17:15, Zhenyu Wang wrote:
->>>>>>>> On 2020.08.19 09:09:53 +0800, Colin Xu wrote:
->>>>>>>>> Guest driver may reset HWSP to 0 as init value during D3->D0:
->>>>>>>>> The full sequence is:
->>>>>>>>> - Boot ->D0
->>>>>>>>> - Update HWSP
->>>>>>>>> - D0->D3
->>>>>>>>> - ...In D3 state...
->>>>>>>>> - D3->D0
->>>>>>>>> - DMLR reset.
->>>>>>>>> - Set engine HWSP to 0.
->>>>>>>>> - Set engine ring mode to 0.
->>>>>>>>> - Set engine HWSP to correct value.
->>>>>>>>> - Set engine ring mode to correct value.
->>>>>>>>> Ring mode is masked register so set 0 won't take effect.
->>>>>>>>> However HWPS addr 0 is considered as invalid
->>>>>>>>> GGTT address which will
->>>>>>>>> report error like:
->>>>>>>>> gvt: vgpu 1: write invalid HWSP address, reg:0x2080, value:0x0
->>>>>>>>>
->>>>>>>> So looks this is to handle that wrong error message but function is
->>>>>>>> still same, right?
->>>>>>> Yes that's right. Current logic can guarantee that only
->>>>>>> correct HWSP write
->>>>>>> from guest are accepted by GVT. Invalid HWSP address
->>>>>>> will be dropped and
->>>>>>> won't be submitted to HW. During resume, correct HWSP will be updat=
-ed
->>>>>>> eventually updated. If pv_notified is set, the
->>>>>>> intermediate HWSP zero-out
->>>>>>> can be ignored until hit next reset.
->>>>>> Might just move that error into debug message instead of putting
->>>>>> effort on tracking guest state without much gain..
->>>>> Sometimes such invalid HWSP addr write msg may still be helpful.
->>>>> If put them
->>>>> into gvt_dbg_mmio without considering different case, may miss the
->>>>> information. So this change put real error into gvt_vgpu_err, but put
->>>>> expected zero out to gvt_dbg_mmio.
->>>> Could you elaborate what would be helpful? The current error message
->>>> doesn't really help end user I think, but only for developer, so it
->>>> makes more sense to turn into debug.
->>> For developer or user consideration, yes distinguish the msg is useless
->>> for end user. Developer can tell the state and find out the HWSP addr is
->>> really valid or just zero-out during resuming.
->>>
->>> If so I think we can move this msg to gvt_dbg in next cleanup.
->>>
->>>>>>>>> During vGPU in D3, per-engine HWSP gpa remains valid so we can sk=
-ip
->>>>>>>>> update HWSP in this case.
->>>>>>>>> Check both pv_notified and previous engine HWSP gpa, if pv already
->>>>>>>>> notified and previous HWSP gpa is valid, we skip this HWSP init a=
-nd
->>>>>>>>> let later HWSP write update the correct value.
->>>>>>>>> We also need zero out
->>>>>>>>> per-engine HWSP gpa on engine reset to make sure hws_pga is valid.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Colin Xu <colin.xu@intel.com>
->>>>>>>>> ---
->>>>>>>>>  =A0=A0=A0 drivers/gpu/drm/i915/gvt/handlers.c | 30
->>>>>>>>> ++++++++++++++++++++---------
->>>>>>>>>  =A0=A0=A0 drivers/gpu/drm/i915/gvt/vgpu.c=A0=A0=A0=A0 |=A0 7 +++=
-++++
->>>>>>>>>  =A0=A0=A0 2 files changed, 28 insertions(+), 9 deletions(-)
->>>>>>>>>
->>>>>>>>> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c
->>>>>>>>> b/drivers/gpu/drm/i915/gvt/handlers.c
->>>>>>>>> index 840572add2d4..72860aaf1656 100644
->>>>>>>>> --- a/drivers/gpu/drm/i915/gvt/handlers.c
->>>>>>>>> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
->>>>>>>>> @@ -1489,12 +1489,6 @@ static int
->>>>>>>>> hws_pga_write(struct intel_vgpu *vgpu, unsigned
->>>>>>>>> int offset,
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 const struct intel_engine_cs *engine =3D
->>>>>>>>> intel_gvt_render_mmio_to_engine(vgpu->gvt, offset);
->>>>>>>>> -=A0=A0=A0 if (!intel_gvt_ggtt_validate_range(vgpu,
->>>>>>>>> value, I915_GTT_PAGE_SIZE)) {
->>>>>>>>> -=A0=A0=A0=A0=A0=A0=A0 gvt_vgpu_err("write invalid HWSP
->>>>>>>>> address, reg:0x%x, value:0x%x\n",
->>>>>>>>> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 offset, valu=
-e);
->>>>>>>>> -=A0=A0=A0=A0=A0=A0=A0 return -EINVAL;
->>>>>>>>> -=A0=A0=A0 }
->>>>>>>>> -
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 /*
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0 * Need to emulate all the HWSP register
->>>>>>>>> write to ensure host can
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0 * update the VM CSB status correctly.
->>>>>>>>> Here listed registers can
->>>>>>>>> @@ -1505,9 +1499,27 @@ static int
->>>>>>>>> hws_pga_write(struct intel_vgpu *vgpu, unsigned
->>>>>>>>> int offset,
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 off=
-set);
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return -EINVAL;
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 }
->>>>>>>>> -=A0=A0=A0 vgpu->hws_pga[engine->id] =3D value;
->>>>>>>>> -=A0=A0=A0 gvt_dbg_mmio("VM(%d) write: 0x%x to HWSP: 0x%x\n",
->>>>>>>>> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 vgpu->id, value, offset);
->>>>>>>>> +
->>>>>>>>> +=A0=A0=A0 if (!intel_gvt_ggtt_validate_range(vgpu,
->>>>>>>>> value, I915_GTT_PAGE_SIZE)) {
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 u32 old =3D vgpu->hws_pga[engine->id];
->>>>>>>>> +
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 /* Skip zero out RING_HWS_PGA during D3 re=
-sume */
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 if (vgpu->pv_notified && value =3D=3D 0 &&
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 intel_gvt_ggtt_validate_range(=
-vgpu, old,
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0 I915_GTT_PAGE_SIZE)) {
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 gvt_dbg_mmio("Skip zero out HW=
-SP address, reg:0x%x, "
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 "va=
-lue:0x%x\n", offset, value);
->>>>>>>>> +
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 } else {
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 gvt_vgpu_err("write invalid HW=
-SP address, reg:0x%x, "
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 "va=
-lue:0x%x\n", offset, value);
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return -EINVAL;
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 }
->>>>>>>>> +=A0=A0=A0 } else {
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 vgpu->hws_pga[engine->id] =3D value;
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 gvt_dbg_mmio("VM(%d) write: 0x%x to HWSP: =
-0x%x\n",
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 vgpu->id, value=
-, offset);
->>>>>>>>> +=A0=A0=A0 }
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 return
->>>>>>>>> intel_vgpu_default_mmio_write(vgpu, offset,
->>>>>>>>> &value, bytes);
->>>>>>>>>  =A0=A0=A0 }
->>>>>>>>> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c
->>>>>>>>> b/drivers/gpu/drm/i915/gvt/vgpu.c
->>>>>>>>> index 8fa9b31a2484..e0e073045d83 100644
->>>>>>>>> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
->>>>>>>>> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
->>>>>>>>> @@ -558,6 +558,9 @@ void
->>>>>>>>> intel_gvt_reset_vgpu_locked(struct intel_vgpu
->>>>>>>>> *vgpu, bool dmlr,
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 intel_vgpu_reset_submission(vgpu, resettin=
-g_eng);
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 /* full GPU reset or device model level re=
-set */
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 if (engine_mask =3D=3D ALL_ENGINES || dmlr=
-) {
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 struct intel_engine_cs *engine;
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 intel_engine_mask_t tmp;
->>>>>>>>> +
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 intel_vgpu_select_submission_o=
-ps(vgpu, ALL_ENGINES, 0);
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (engine_mask =3D=3D ALL_ENG=
-INES)
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 intel_vgpu_invalid=
-ate_ppgtt(vgpu);
->>>>>>>>> @@ -588,6 +591,10 @@ void
->>>>>>>>> intel_gvt_reset_vgpu_locked(struct intel_vgpu
->>>>>>>>> *vgpu, bool dmlr,
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 else
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 vgpu->=
-pv_notified =3D false;
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 }
->>>>>>>>> +
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 for_each_engine_masked(engine, gvt->gt,
->>>>>>>>> engine_mask, tmp) {
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 vgpu->hws_pga[engine->id] =3D =
-0;
->>>>>>>>> +=A0=A0=A0=A0=A0=A0=A0 }
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 }
->>>>>>>>>  =A0=A0=A0=A0=A0=A0=A0 vgpu->resetting_eng =3D 0;
->>>>>>>>> -- =
+--===============1081360891==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="8S1fMsFYqgBC+BN/"
+Content-Disposition: inline
 
->>>>>>>>> 2.28.0
->>>>>>>>>
->>>>>>>>> _______________________________________________
->>>>>>>>> intel-gvt-dev mailing list
->>>>>>>>> intel-gvt-dev@lists.freedesktop.org
->>>>>>>>> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
->>>>>>> -- =
 
->>>>>>> Best Regards,
->>>>>>> Colin Xu
->>>>>>>
->>>>> -- =
+--8S1fMsFYqgBC+BN/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
->>>>> Best Regards,
->>>>> Colin Xu
->>>>>
->> -- =
+On 2020.09.08 20:11:21 +0200, Alejandro Sior wrote:
+> In the function intel_vgpu_reg_rw_edid of kvmgt.c, pos can be equal
+> to NULL for GPUs that do not properly support EDID. In those cases, when
+> pos gets passed to the handle_edid functions, it gets added a short offset
+> then it's dereferenced in memcpy's, leading to NULL pointer
+> dereference kernel oops.
+>=20
+> More concretely, that kernel oops renders some Broadwell GPUs users
+> unable to set up virtual machines with virtual GPU passthrough (virtual
+> machines hang indefinitely when trying to make use of the virtual GPU),
+> and make them unable to remove the virtual GPUs once the kernel oops has
+> happened (it hangs indefinitely, and notably too when the kernel tries to
+> shutdown). The issues that this causes and steps to reproduce are
+> discussed in more details in this github issue post:
+> https://github.com/intel/gvt-linux/issues/170#issuecomment-685806160
+>=20
+> Check if pos is equal to NULL, and if it is, set ret to a negative
+> value, making the module simply indicate that the access to EDID region
+> has failed, without any fatal repercussion.
+>=20
+> Signed-off-by: Alejandro Sior <aho@sior.be>
+>=20
+> ---
+> Changes in v2:
+> - removed middle name of author to comply with git name
+> - rephrased the patch description with imperative phrasing
+> - removed useless paragraph
+> - made a paragraph more concise
+> - fixed typos
+> - made individual lines shorter than 75 chars
+>=20
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
+kvmgt.c
+> index ad8a9df49f29..49163363ba4a 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -557,7 +557,9 @@ static size_t intel_vgpu_reg_rw_edid(struct intel_vgp=
+u *vgpu, char *buf,
+>  		(struct vfio_edid_region *)kvmgt_vdev(vgpu)->region[i].data;
+>  	loff_t pos =3D *ppos & VFIO_PCI_OFFSET_MASK;
+> =20
+> -	if (pos < region->vfio_edid_regs.edid_offset) {
+> +	if (pos =3D=3D NULL) {
+> +		ret =3D -EINVAL;
+> +	} else if (pos < region->vfio_edid_regs.edid_offset) {
+>  		ret =3D handle_edid_regs(vgpu, region, buf, count, pos, iswrite);
+>  	} else {
+>  		pos -=3D EDID_BLOB_OFFSET;
 
->> Best Regards,
->> Colin Xu
->>
--- =
+Thanks for reporting this! Sorry that we failed to do sanity validation on =
+older
+platform when enabling vfio edid function for all platform.
 
-Best Regards,
-Colin Xu
+Could you try below one to see if it fixes your problem? Instead of refusing
+possible read of edid, this fixes port number for BDW.
+
+=46rom d5d9304b6bfdc31356fd2feb1ddbbf28073fe3d4 Mon Sep 17 00:00:00 2001
+=46rom: Zhenyu Wang <zhenyuw@linux.intel.com>
+Date: Fri, 11 Sep 2020 13:50:20 +0800
+Subject: [PATCH] drm/i915/gvt: Fix port number for BDW on EDID region setup
+
+Current BDW virtual display port is initialized as PORT_B, so need
+to use same port for VFIO EDID region, otherwise invalid EDID blob
+pointer is assigned.
+
+Fixes: 0178f4ce3c3b ("drm/i915/gvt: Enable vfio edid for all GVT supported =
+platform")
+Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+---
+ drivers/gpu/drm/i915/gvt/vgpu.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgp=
+u.c
+index 8fa9b31a2484..f6d7e33c7099 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -368,6 +368,7 @@ void intel_gvt_destroy_idle_vgpu(struct intel_vgpu *vgp=
+u)
+ static struct intel_vgpu *__intel_gvt_create_vgpu(struct intel_gvt *gvt,
+ 		struct intel_vgpu_creation_params *param)
+ {
++	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
+ 	struct intel_vgpu *vgpu;
+ 	int ret;
+=20
+@@ -436,7 +437,10 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(stru=
+ct intel_gvt *gvt,
+ 	if (ret)
+ 		goto out_clean_sched_policy;
+=20
+-	ret =3D intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
++	if (IS_BROADWELL(dev_priv))
++		ret =3D intel_gvt_hypervisor_set_edid(vgpu, PORT_B);
++	else
++		ret =3D intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
+ 	if (ret)
+ 		goto out_clean_sched_policy;
+=20
+--=20
+2.28.0
+
+
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--8S1fMsFYqgBC+BN/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX1sNiwAKCRCxBBozTXgY
+J178AKCLWKo7RfqGXpQi9NqnMJIxrpwgcwCeIrbxnT+NeVSpEFsJHEnHt7VcFaQ=
+=j8Om
+-----END PGP SIGNATURE-----
+
+--8S1fMsFYqgBC+BN/--
+
+--===============1081360891==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1081360891==--
