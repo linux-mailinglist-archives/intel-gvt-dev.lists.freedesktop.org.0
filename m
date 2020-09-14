@@ -1,40 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AA302682D3
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 14 Sep 2020 05:02:11 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A046268467
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 14 Sep 2020 08:09:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1D12989F5F;
-	Mon, 14 Sep 2020 03:02:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1E41F6E0CC;
+	Mon, 14 Sep 2020 06:09:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A9DD589C9D
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 78F9A6E0CC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 14 Sep 2020 03:02:08 +0000 (UTC)
-IronPort-SDR: SppF3Uu7QbioUweeY9CB3UacIuj1zLbCQrnKOwUMa94QMhg3tr09d3UQuMPKC5neqyxsCqUpju
- jJa92l4udSTQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9743"; a="156414433"
-X-IronPort-AV: E=Sophos;i="5.76,424,1592895600"; d="scan'208";a="156414433"
-X-Amp-Result: SKIPPED(no attachment in message)
+ Mon, 14 Sep 2020 06:09:18 +0000 (UTC)
+IronPort-SDR: x9ypMjy2q+aS7/T6iIRsjdWn1XO808bB6akEv9ZGz8gYlU/ninpUWJZIbY7McgsPEIsWwnSBuC
+ Datn9JP4GkrA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9743"; a="243860171"
+X-IronPort-AV: E=Sophos;i="5.76,425,1592895600"; 
+ d="asc'?scan'208";a="243860171"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Sep 2020 20:02:08 -0700
-IronPort-SDR: MoSOihpu0C999rr63Ia5A2JEN7y1vMSsX7DkMDiOzQBID/1Yqvec1/bn8cRV1p5pRlS/G02fgW
- F2kvkXoZaBjg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,424,1592895600"; d="scan'208";a="306014050"
-Received: from debian-skl.sh.intel.com ([10.239.160.44])
- by orsmga006.jf.intel.com with ESMTP; 13 Sep 2020 20:02:07 -0700
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Sep 2020 23:09:17 -0700
+IronPort-SDR: SqGJb2cPEeQZp9pZNR+kQObwwFaCq6OTKpA6Bnw5uSxYkkmYyIbT2uhdDLSKfaCTTlyolZGJbU
+ rU/REC4rFhFg==
+X-IronPort-AV: E=Sophos;i="5.76,425,1592895600"; 
+ d="asc'?scan'208";a="482212684"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Sep 2020 23:09:15 -0700
+Date: Mon, 14 Sep 2020 13:49:49 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: Fix port number for BDW on EDID region setup
-Date: Mon, 14 Sep 2020 11:03:02 +0800
-Message-Id: <20200914030302.2775505-1-zhenyuw@linux.intel.com>
-X-Mailer: git-send-email 2.28.0
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: correct a false comment of flag F_UNALIGN
+Message-ID: <20200914054949.GZ28614@zhen-hp.sh.intel.com>
+References: <20200910035405.20273-1-yan.y.zhao@intel.com>
 MIME-Version: 1.0
+In-Reply-To: <20200910035405.20273-1-yan.y.zhao@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,54 +52,77 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Alejandro Sior <aho@sior.be>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============1661012658=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Current BDW virtual display port is initialized as PORT_B, so need
-to use same port for VFIO EDID region, otherwise invalid EDID blob
-pointer is assigned which caused kernel null pointer reference. We
-might evaluate actual display hotplug for BDW to make this function
-work as expected, anyway this is always required to be fixed first.
 
-Reported-by: Alejandro Sior <aho@sior.be>
-Cc: Alejandro Sior <aho@sior.be>
-Fixes: 0178f4ce3c3b ("drm/i915/gvt: Enable vfio edid for all GVT supported platform")
-Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
----
- drivers/gpu/drm/i915/gvt/vgpu.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+--===============1661012658==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="poJSiGMzRSvrLGLs"
+Content-Disposition: inline
 
-diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-index 8fa9b31a2484..f6d7e33c7099 100644
---- a/drivers/gpu/drm/i915/gvt/vgpu.c
-+++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-@@ -368,6 +368,7 @@ void intel_gvt_destroy_idle_vgpu(struct intel_vgpu *vgpu)
- static struct intel_vgpu *__intel_gvt_create_vgpu(struct intel_gvt *gvt,
- 		struct intel_vgpu_creation_params *param)
- {
-+	struct drm_i915_private *dev_priv = gvt->gt->i915;
- 	struct intel_vgpu *vgpu;
- 	int ret;
- 
-@@ -436,7 +437,10 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(struct intel_gvt *gvt,
- 	if (ret)
- 		goto out_clean_sched_policy;
- 
--	ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
-+	if (IS_BROADWELL(dev_priv))
-+		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_B);
-+	else
-+		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
- 	if (ret)
- 		goto out_clean_sched_policy;
- 
--- 
-2.28.0
+
+--poJSiGMzRSvrLGLs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2020.09.10 11:54:05 +0800, Yan Zhao wrote:
+> Correct falsely removed comment of flag F_UNALIGN.
+>=20
+> Fixes:85e5eaf20458 ("drm/i915/gvt: remove flag F_CMD_ACCESSED")
+>=20
+> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gvt.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
+> index 9831361f181e..a81cf0f01e78 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> @@ -255,7 +255,7 @@ struct intel_gvt_mmio {
+>  #define F_CMD_ACCESS	(1 << 3)
+>  /* This reg has been accessed by a VM */
+>  #define F_ACCESSED	(1 << 4)
+> -/* This reg has been accessed through GPU commands */
+> +/* This reg could be accessed by unaligned address */
+>  #define F_UNALIGN	(1 << 6)
+>  /* This reg is in GVT's mmio save-restor list and in hardware
+>   * logical context image
+> --=20
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--poJSiGMzRSvrLGLs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX18EfQAKCRCxBBozTXgY
+J8OJAJ9/34GXkbzEethPm+Luhhs5bDT8lQCbB7bklAtJV9V7nkQ1k6UNY9EL7SE=
+=T4Sr
+-----END PGP SIGNATURE-----
+
+--poJSiGMzRSvrLGLs--
+
+--===============1661012658==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1661012658==--
