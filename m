@@ -1,25 +1,23 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5233D270DDF
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 19 Sep 2020 14:26:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78EE32711F0
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 20 Sep 2020 05:49:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1025A6E408;
-	Sat, 19 Sep 2020 12:26:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 937746E094;
+	Sun, 20 Sep 2020 03:49:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 639 seconds by postgrey-1.36 at gabe;
- Sat, 19 Sep 2020 12:26:25 UTC
 Received: from gate.iftg.ru (gate.iftg.ru [194.226.9.251])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2183C6E408;
- Sat, 19 Sep 2020 12:26:25 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTP id CB17D6E094;
+ Sun, 20 Sep 2020 03:49:34 +0000 (UTC)
 Received: from User (unknown [103.99.1.140])
- by gate.iftg.ru (Postfix) with ESMTPA id 2BE8340FDB5A;
- Sat, 19 Sep 2020 15:11:21 +0300 (MSK)
+ by gate.iftg.ru (Postfix) with ESMTPA id 4106844FF61B;
+ Sun, 20 Sep 2020 03:51:55 +0300 (MSK)
 From: "Nicholas Toms"<ddiaz@ugm.edu>
 Subject: Low-Cost Loans for SMEs & Investment Funding.
-Date: Sat, 19 Sep 2020 05:11:37 -0700
+Date: Sat, 19 Sep 2020 17:52:14 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
@@ -58,7 +56,7 @@ X-Spam-Report: *  0.8 BAYES_50 BODY: Bayes spam probability is 40 to 60%
 X-Spam-Level: *********************************
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on gate.iftg.ru
 X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
- (gate.iftg.ru [0.0.0.0]); Sat, 19 Sep 2020 15:11:50 +0300 (MSK)
+ (gate.iftg.ru [0.0.0.0]); Sun, 20 Sep 2020 03:52:15 +0300 (MSK)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,7 +74,7 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200919122626.1025A6E408@gabe.freedesktop.org>
+Message-Id: <20200920034937.937746E094@gabe.freedesktop.org>
 
 Dear sir/ma
  
