@@ -2,43 +2,25 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BB5C27476E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Sep 2020 19:27:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7801B274874
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Sep 2020 20:44:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 856D66E8CD;
-	Tue, 22 Sep 2020 17:27:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1A06D6E084;
+	Tue, 22 Sep 2020 18:44:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2A25C6E8CF;
- Tue, 22 Sep 2020 17:27:29 +0000 (UTC)
-IronPort-SDR: 52PBwtrd00UhtlQLZ83rOnUx/4YUjavZ9st6vesjHUplbYB0RZ0i2OwYXFV1+Y+5idSUxLpVDs
- xilcpI4Epntg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9752"; a="140145439"
-X-IronPort-AV: E=Sophos;i="5.77,291,1596524400"; d="scan'208";a="140145439"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Sep 2020 10:27:28 -0700
-IronPort-SDR: 3ctCw1yfVA/UVgQhgBWb97q0m4tz74T7YXwzal6jt9uInMKsVJ5CMrAZZ06VTiYnoRg2cWpIeA
- FqGHtCtZgzwg==
-X-IronPort-AV: E=Sophos;i="5.77,291,1596524400"; d="scan'208";a="454570497"
-Received: from kgriffi1-mobl.ger.corp.intel.com (HELO localhost)
- ([10.251.84.202])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Sep 2020 10:27:25 -0700
-From: Jani Nikula <jani.nikula@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Vivi\,
- Rodrigo" <rodrigo.vivi@intel.com>
-Subject: Re: [PULL] gvt-fixes
-In-Reply-To: <20200917064208.GF11592@zhen-hp.sh.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20200917064208.GF11592@zhen-hp.sh.intel.com>
-Date: Tue, 22 Sep 2020 20:27:37 +0300
-Message-ID: <87o8lxraba.fsf@intel.com>
+X-Greylist: delayed 657 seconds by postgrey-1.36 at gabe;
+ Tue, 22 Sep 2020 18:44:48 UTC
+Received: from 4bubu.xyz (4bubu.xyz [106.75.239.83])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 37F766E2D5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 22 Sep 2020 18:44:47 +0000 (UTC)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: =?utf-8?q?COVID-19_RELIF_FUNDS_OF__=C2=A35=2C950_million?=
+To: Recipients <andresmatthews9@gmail.com>
+From: "Mrs. Lisa Robinson" <andresmatthews9@gmail.com>
+Date: Tue, 22 Sep 2020 20:32:32 +0200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,55 +33,25 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv, 
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: paragonloansinc@yandex.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20200922184450.1A06D6E084@gabe.freedesktop.org>
 
-On Thu, 17 Sep 2020, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
-> Hi,
->
-> Here's one left GVT fix against 5.9 is for kernel oops with VFIO edid
-> on BDW.
+Congratulations, we the Connolly family would like to offer you a donation =
+of  =A35,950 million as part of our small contribution to support the victi=
+ms of the COVID-19 pandemic in your region. We are the proud winners of the=
+ =A3 114,969,775 UK Jack Port Lottery in January. From the amount won, we f=
+ounded a foundation to help the less previledge and help people sustain the=
+ir business.
 
-Pulled, thanks.
+Below you will find a link to our press review of our winning were we pledg=
+e to support charity.
+https://www.bbc.com/news/uk-northern-ireland-46756469
 
-BR,
-Jani.
-
->
-> Thanks
-> --
-> The following changes since commit a291e4fba259a56a6a274c1989997acb6f0bb03a:
->
->   drm/i915/gvt: Use GFP_ATOMIC instead of GFP_KERNEL in atomic context (2020-06-17 12:36:19 +0800)
->
-> are available in the Git repository at:
->
->   https://github.com/intel/gvt-linux tags/gvt-fixes-2020-09-17
->
-> for you to fetch changes up to 28284943ac94014767ecc2f7b3c5747c4a5617a0:
->
->   drm/i915/gvt: Fix port number for BDW on EDID region setup (2020-09-14 16:44:39 +0800)
->
-> ----------------------------------------------------------------
-> gvt-fixes-2020-09-17
->
-> - Fix kernel oops for VFIO edid on BDW (Zhenyu)
->
-> ----------------------------------------------------------------
-> Zhenyu Wang (1):
->       drm/i915/gvt: Fix port number for BDW on EDID region setup
->
->  drivers/gpu/drm/i915/gvt/vgpu.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-
--- 
-Jani Nikula, Intel Open Source Graphics Center
+Contact us for further details at: connollyfamilytrust@yahoo.com
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
