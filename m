@@ -1,27 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEA51279A1C
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 26 Sep 2020 16:28:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F4C3279BCE
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 26 Sep 2020 20:15:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 65CDE6E220;
-	Sat, 26 Sep 2020 14:28:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 632A66E053;
+	Sat, 26 Sep 2020 18:15:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.fansx.cn (unknown [182.254.214.88])
- by gabe.freedesktop.org (Postfix) with ESMTP id DC8586E21E;
- Sat, 26 Sep 2020 14:28:28 +0000 (UTC)
-Received: from User (unknown [185.191.231.247])
- by mail.fansx.cn (Postfix) with SMTP id 6994311430;
- Sat, 26 Sep 2020 17:21:34 +0800 (CST)
-From: "erenich ekaterina"<verenichekaterinae@gmail.com>
-Subject: Dear Beloved 2
-Date: Sat, 26 Sep 2020 02:21:44 -0700
+X-Greylist: delayed 649 seconds by postgrey-1.36 at gabe;
+ Sat, 26 Sep 2020 18:14:59 UTC
+Received: from 4pipi.xyz (4pipi.xyz [106.75.240.186])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3FD9A6E053
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 26 Sep 2020 18:14:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4pipi.xyz;
+ h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=nami@4pipi.xyz; bh=UyyOhEuDwIZNb7v7AzBvydP5LV4=;
+ b=SlnlI1o3i8feEhIpa1BAGnHFQOasm69x6/txuehoBebNJx2iVAVA4IvYYM93gn71Vnov7xxhFAkL
+ Krjw5Cs+ddEntzrNd6yPc7rQ/SFVrdOzUUUjN8+7E98QIXvJCOHekMTSvTna7ozC/TzyS0buuGSY
+ hoonkyqvgnFnJSIW5Ms=
+From: "Patrick Cisse"<nami@4pipi.xyz>
+Subject: TRANSACTION
+Date: Sat, 26 Sep 2020 18:04:06 -0000
 MIME-Version: 1.0
-X-Priority: 3
 X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -35,47 +39,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: verenichekaterina40@yahoo.com
+Reply-To: patrick27cisse@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200926142830.65CDE6E220@gabe.freedesktop.org>
+Message-Id: <20200926181501.632A66E053@gabe.freedesktop.org>
 
 
+Dear Sir,
+ 
+May I humbly solicit your confidence Over This Transaction,   I decided to contact you after going to your profile , as I wish to repose my confidence on your discreteness and ability in transaction of this Nature. Let me start by introducing self properly to you, my Name is Mr. Patrick G. Cisse , I am the Regional Bank Manager of BOA CI , I came to know about you in my Private Search for a Reliable and Reputable foreigner to handle this Confidential Transaction.
 
-Dear Beloved
+On the course of 2015/2016 Year Report, we discovered an excess profit of Seventeen Million One Hundred Thousand Us Dollars , [ $ 17,100,000.00 ] ; We have Since placed this fund on SUSPENSE ACCOUNT without any Beneficiary.
 
-Life is gradually passing away from me as a result of my present medical
-condition and my personal doctor confided in me yesterday that I have only
-but few more weeks to live.
+As an officer of the bank,  I can't be directly Connected to this Fund for Security Reasons, that is why I am contacting you for us to work together as Partners to Receive the said Fund into your Account for INVESTMENT in your Country.
 
-In view of this setback, I want to donate my estate for humanitarian
-assistance, since this has always been the plan of my late husband and
-besides I have no child.
-
-In an effort to compliment the good work of God almighty and the wish of my
-late Husband I donate the sum of $2,800,000.00 (Two Million Eight Hundred
-Thousand United States Dollars) to you.
-
-On your acknowledgment of this mail and informing me of your nationality and
-current place of resident, my Bank will facilitate due processes for
-transfer of this legacy to you.
-
-May God bless you as you use this money judiciously for the work of charity.
-
-Sincere regards,
-
-Mrs.verenich ekaterina
+The percentage Ratio is thus: 40% for you , 60 % for me and my colleagues .
 
 
+Note: There is Practically No Risks Involved in this Transaction ,  it is 100% Risk Free and Shall Be Legally Bounded, All You Need to do is to Stand as the BENEFICIARY to the Deposit for a Proper Wire to Your Account .If you Find this Proposal Suitable For you, get back For Full Details and Procedures .
 
 
+Best regards,
 
-	
-
-
-
+Mr. Patrick Cisse
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
