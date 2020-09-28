@@ -1,32 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F4C3279BCE
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 26 Sep 2020 20:15:02 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4301127B08E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 28 Sep 2020 17:12:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 632A66E053;
-	Sat, 26 Sep 2020 18:15:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DFB5089DA2;
+	Mon, 28 Sep 2020 15:11:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 649 seconds by postgrey-1.36 at gabe;
- Sat, 26 Sep 2020 18:14:59 UTC
-Received: from 4pipi.xyz (4pipi.xyz [106.75.240.186])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3FD9A6E053
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 26 Sep 2020 18:14:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4pipi.xyz;
- h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=nami@4pipi.xyz; bh=UyyOhEuDwIZNb7v7AzBvydP5LV4=;
- b=SlnlI1o3i8feEhIpa1BAGnHFQOasm69x6/txuehoBebNJx2iVAVA4IvYYM93gn71Vnov7xxhFAkL
- Krjw5Cs+ddEntzrNd6yPc7rQ/SFVrdOzUUUjN8+7E98QIXvJCOHekMTSvTna7ozC/TzyS0buuGSY
- hoonkyqvgnFnJSIW5Ms=
-From: "Patrick Cisse"<nami@4pipi.xyz>
-Subject: TRANSACTION
-Date: Sat, 26 Sep 2020 18:04:06 -0000
+X-Greylist: delayed 14340 seconds by postgrey-1.36 at gabe;
+ Mon, 28 Sep 2020 15:11:57 UTC
+Received: from mx2.actserv.ke (unknown [197.232.22.183])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9150589DA2;
+ Mon, 28 Sep 2020 15:11:54 +0000 (UTC)
+Received: from localhost (mx2.actserv.ke [127.0.0.1])
+ by mx2.actserv.ke (Postfix) with ESMTP id C98C53F409B;
+ Mon, 28 Sep 2020 12:21:52 +0300 (EAT)
+Received: from mx2.actserv.ke ([127.0.0.1])
+ by localhost (mx2.actserv.ke [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id vxxbLpGb8nJu; Mon, 28 Sep 2020 12:21:52 +0300 (EAT)
+Received: from localhost (mx2.actserv.ke [127.0.0.1])
+ by mx2.actserv.ke (Postfix) with ESMTP id 4DC243F2E73;
+ Mon, 28 Sep 2020 12:19:17 +0300 (EAT)
+X-Virus-Scanned: amavisd-new at actserv.ke
+Received: from mx2.actserv.ke ([127.0.0.1])
+ by localhost (mx2.actserv.ke [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id roUkSXjhBBpT; Mon, 28 Sep 2020 12:19:17 +0300 (EAT)
+Received: from [192.168.1.2] (gw1.actserv.local [192.168.1.252])
+ by mx2.actserv.ke (Postfix) with ESMTPS id DD5713F221E;
+ Mon, 28 Sep 2020 12:17:19 +0300 (EAT)
 MIME-Version: 1.0
-X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Content-Description: Mail message body
+Subject: Paul McCann
+To: Recipients <dewiariani1981@ub.ac.id>
+From: dewiariani1981@ub.ac.id
+Date: Mon, 28 Sep 2020 10:17:12 +0100
+Message-Id: <20200928091719.DD5713F221E@mx2.actserv.ke>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,31 +49,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: patrick27cisse@gmail.com
+Reply-To: cfolimited1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20200926181501.632A66E053@gabe.freedesktop.org>
 
+Good Day
 
-Dear Sir,
- 
-May I humbly solicit your confidence Over This Transaction,   I decided to contact you after going to your profile , as I wish to repose my confidence on your discreteness and ability in transaction of this Nature. Let me start by introducing self properly to you, my Name is Mr. Patrick G. Cisse , I am the Regional Bank Manager of BOA CI , I came to know about you in my Private Search for a Reliable and Reputable foreigner to handle this Confidential Transaction.
+We are a registered Private Loan Investment Company in the United Kingdom, we also registered with the Turkish 
 
-On the course of 2015/2016 Year Report, we discovered an excess profit of Seventeen Million One Hundred Thousand Us Dollars , [ $ 17,100,000.00 ] ; We have Since placed this fund on SUSPENSE ACCOUNT without any Beneficiary.
+British Chamber of Commerce and Industry (TBCCI) we have operations in Europe and Asia.
 
-As an officer of the bank,  I can't be directly Connected to this Fund for Security Reasons, that is why I am contacting you for us to work together as Partners to Receive the said Fund into your Account for INVESTMENT in your Country.
+We are seeking for beneficiaries who source for fund to expand/relocating their business interest abroad. We are 
 
-The percentage Ratio is thus: 40% for you , 60 % for me and my colleagues .
+ready to fund projects outside Turkey and United Kingdom in the form of Soft Loan. We grant loans to both corporate 
 
+and private entities at a low interest rate of 2% R.O.I per annul.
 
-Note: There is Practically No Risks Involved in this Transaction ,  it is 100% Risk Free and Shall Be Legally Bounded, All You Need to do is to Stand as the BENEFICIARY to the Deposit for a Proper Wire to Your Account .If you Find this Proposal Suitable For you, get back For Full Details and Procedures .
+We like to grant loan in the following sectors: oil/Gas, banking, real estate, stock speculation and mining, 
 
+transportation, health sector and tobacco, Communication Services, Agriculture Forestry & Fishing, thus any sector. 
 
-Best regards,
+The terms are very flexible and interesting.
 
-Mr. Patrick Cisse
+Please contact us for more details;
+
+Kind regards,
+
+Paul McCann
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
