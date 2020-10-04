@@ -2,27 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 767B6282BD7
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  4 Oct 2020 18:42:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7AAB4282C76
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  4 Oct 2020 20:19:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 259D189E98;
-	Sun,  4 Oct 2020 16:42:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D730489C80;
+	Sun,  4 Oct 2020 18:19:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 2044 seconds by postgrey-1.36 at gabe;
- Sun, 04 Oct 2020 16:42:05 UTC
-Received: from machikanoya.net (machikanoya.net [160.16.145.230])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DFC1B89E43;
- Sun,  4 Oct 2020 16:42:05 +0000 (UTC)
-Received: from [100.64.1.74] (unknown [190.15.125.50])
- by machikanoya.net (Postfix) with ESMTPA id BF353C211F3;
- Mon,  5 Oct 2020 01:04:52 +0900 (JST)
+X-Greylist: delayed 604 seconds by postgrey-1.36 at gabe;
+ Sun, 04 Oct 2020 18:19:04 UTC
+Received: from slot0.coinbaze.xyz (vm1437720.3ssd.had.wf [45.12.215.229])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C6F5F89C80
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun,  4 Oct 2020 18:19:04 +0000 (UTC)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Low Rate Loan./
+Subject: Low Rate Loan.1
 To: Recipients <financialcapability6@gmail.com>
 From: "Mr. Hashim Bin" <financialcapability6@gmail.com>
-Date: Sun, 04 Oct 2020 13:04:45 -0300
+Date: Sun, 04 Oct 2020 14:38:57 -0300
+Message-ID: <0.0.1.4AB.1D69A753EBAF81C.0@slot0.coinbaze.xyz>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,7 +39,6 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20201004164208.259D189E98@gabe.freedesktop.org>
 
 Hello Dear,
 
