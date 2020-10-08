@@ -1,53 +1,27 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8360B286433
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Oct 2020 18:31:46 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 157552873E4
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  8 Oct 2020 14:16:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 304638932B;
-	Wed,  7 Oct 2020 16:31:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C27076E3E3;
+	Thu,  8 Oct 2020 12:16:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sonic305-2.consmr.mail.bf2.yahoo.com
- (sonic305-2.consmr.mail.bf2.yahoo.com [74.6.133.41])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E79AD8932B
+Received: from relay.polden.info (polden.info [78.140.15.80])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5BFAA6E3D8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  7 Oct 2020 16:31:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1602088303; bh=PxMwWzXvs+dqOoH0/FHvFmQpYH2JguaCUHYAVLLmaiw=;
- h=Date:From:Reply-To:Subject:References:From:Subject;
- b=C2CTlAID32TrDiNTm+YcHSLAFg/4t9GbTNa0kKfJTQm3Eqc4GZj4FRVd6AtgIqDyQlWnXLB/Tji+CtW3+JpgvuI4b0RxVSrQ2uNMfi2rJ+vqfPFDaGMDAJY2SsSDQywkDCbhyo0g5Iq6sAM4ECGrs0jYYxtQ27Wb9hFqF7OBUPktpU82nnVFivjD1asjpsbYPwn3/F9M9EpVPbVvKuF9rF7lIrm48IraoFMEHm4EXL9qariqrbsloze0FNnUDkA+E1nz/X2CycEWPj2dNyBrY9cKkRnhRCaf5r4Q45zysQYRj5Rvn3RoV30zvGocXhCRQC372N+uCInKWnTov7yxhg==
-X-YMail-OSG: lpGfp38VM1k9L7ZGPf.gkDDSY63m2JYZzKShr8D9XAOXCYJmUBBkWPGQF8z8n6A
- GgN.O45iNGMmt7dwGMQ3np.eV.phhHadtX0k9IJSeG0DHXqgCx5WE5SRFIc2gDj_NuMWT5Kdh2I4
- dm9lE_Ug5oEbCvMTFc7LjcdYdbBxrYWEeOeQ_68Dmrn97UXJ8wySgaaY0wihTXQQuUCwidFsS3vt
- _NpSbZg3kBIUybAlodIusBgKbDqaD4ZKD_6m5rQ6NaCqXY.RndUiE81cCqNcrHJqYWIB8dJ2zpia
- YmjhkAiJ5gsNwjs27j_RaL9lHbMmTfows07JepdlKigKlc71bG7aDGdgUQ9CITJlkvchc7GL7KZG
- RozUQlzjodLZoH1WbRQft5E97Jw1.KNXEyq3W1z3MqLWqrXl2cHXhEci_wyeANKXvNlEN7KVFp8I
- fCk0QcE4JHQP1gBVWycMUrtT1wej9Cr8QRKQN0WkrWK.n.UoY5ePg8FNXrICSlWixZqzBcWkHfpv
- ezguTRJ75dXqRMff_NJ0eEBqYL61TwRE5mMQhnIZrWCfJkdAIw.SQSjklddjdEMMmXlZEc0L9nPZ
- HY004Bgku7YWY4jhhIKDcLpHw1Z7VmAErSY0gdlUt0Wblg4gSgZGkxcaKZLgdtGL1jDPiEBfZNQl
- qS2.KCKCw_HP30cb28.zdRPSy2CAm8J7pY31paSYjJRcVYkT3uQykWazrKdaZL_DXzLvqa.cGokB
- egq7uzh6jXPCInpDcVTUiDwcUx8F1sTBDLu951OBLps_mcHYXu8F.baS8NuZwpibAkfjk.FPx_zS
- .MkaDqZFZnfuikCED6xAbEcc7St4WAAOU3g7fv_x0eOTmat__3We7v2hX7KQ5tOvZ9FT.2U9Fukk
- bJfBdfnknxf0bgVRavBWojfHtoI_km_qsLRI0uyGevFa8ZvAQWzemnnvRexwSIgYXQ.GCVDtSqlL
- LlvWczVn2_8QN2ISAmYXjvbQiBJfRKWe_zsu1FWwe72d1MGjcAADC9qDMKZrL.ulyQVEwPZJ_aUV
- 5KQlWHHLBUtmxCKm.DZS.KKq4_FFFgbCKb4EIFycDK4vd9fe_F8Jdj_bI7o1lNVpJvrWDldMQFmq
- hobhusHZxeIneZzvwCZwf3lpsaDqxdHXliGnpL4BiKXb23AjmRqNGa2qDdzd_52vrBJv7BANQqeB
- PCa5.nzKXeVLh6uUu8u02pQnvLC8XfdojH0f9rzzTkYVKNcd7zzldDL4f._INAaDGkYTJOZJ_GHo
- 4aO3X3nNFI69Ir9X837d3mbo10ZPJgat6Mgpfnp1_BVzmCpys_nqhVZiLz9N93mt889M8j2RJvUo
- xZF0r0W1Yx1dT_8QGB7I2k8msP7MZUqSUNjArs3Xr7_SAm3q0hNqGA8cmZryasvNQf_ttLvbYwCO
- m0TXHg_OmKIAoeU_8KYdc6LQAOnrWxg5gYjcK9WaFnims
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic305.consmr.mail.bf2.yahoo.com with HTTP; Wed, 7 Oct 2020 16:31:43 +0000
-Date: Wed, 7 Oct 2020 16:31:35 +0000 (UTC)
-From: Marilyn Robert <fredodinga22@gmail.com>
-Message-ID: <888166675.146654.1602088295264@mail.yahoo.com>
-Subject: =?UTF-8?B?0J3QsNGY0LzQuNC70LAg0LrQsNGYINCz0L7RgdC/0L7QtNCw0YDQvtGC?=
+ Thu,  8 Oct 2020 12:16:05 +0000 (UTC)
+Received: by relay.polden.info (Postfix, from userid 33)
+ id 2EFDD3ED0DF; Thu,  8 Oct 2020 17:56:40 +0600 (NOVT)
+Date: Thu, 8 Oct 2020 14:56:40 +0300
+To: intel-gvt-dev@lists.freedesktop.org
+From: =?utf-8?Q?Mrs=20Kimberly=20Cloud?= <mrskimberlycloud606@gmail.com>
+Subject: =?utf-8?Q?RE=3a=20Greetings=20in=20the=20name=20of=20our=20lord=20Jesus=20Christ?=
+Message-ID: <63121e09e0a9bf9b0097c161a6ff9688@vacancy.polden.info>
+X-Priority: 3
 MIME-Version: 1.0
-References: <888166675.146654.1602088295264.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.16795 YMailNodin Mozilla/5.0 (Windows NT 6.1)
- AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,41 +34,113 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marilyobert@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1410318340=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-DQoNCtCd0LDRmNC80LjQu9CwINC60LDRmCDQs9C+0YHQv9C+0LTQsNGA0L7Rgg0KDQrQiNCw0YEg
-0YHRg9C8IDY4LdCz0L7QtNC40YjQvdCwINC20LXQvdCwLCDQutC+0ZjQsCDRgdGC0YDQsNC00LAg
-0L7QtCDQv9GA0L7QtNC+0LvQttC10L0g0LrQsNGA0YbQuNC90L7QvCDQvdCwINC00L7RmNC60LAs
-INC+0LQg0YHQuNGC0LUg0LzQtdC00LjRhtC40L3RgdC60Lgg0LjQvdC00LjQutCw0YbQuNC4LCDQ
-vNC+0ZjQsNGC0LAg0YHQvtGB0YLQvtGY0LHQsCDQvdCw0LLQuNGB0YLQuNC90LAg0YHQtSDQstC7
-0L7RiNC4INC4INC+0YfQuNCz0LvQtdC00L3QviDQtSDQtNC10LrQsCDQvNC+0LbQtdCx0Lgg0L3Q
-tdC80LAg0LTQsCDQttC40LLQtdCw0Lwg0L/QvtCy0LXRnNC1INC+0LQg0YjQtdGB0YIg0LzQtdGB
-0LXRhtC4INC60LDQutC+INGA0LXQt9GD0LvRgtCw0YIg0L3QsCDQsdGA0LfQuNC+0YIg0YDQsNGB
-0YIg0Lgg0LHQvtC70LrQsNGC0LAg0YjRgtC+INGB0LUg0ZjQsNCy0YPQstCwINC60LDRmCDQvdC1
-0LAuINCc0L7RmNC+0YIg0YHQvtC/0YDRg9CzINC/0L7Rh9C40L3QsCDQvdC10LrQvtC70LrRgyDQ
-s9C+0LTQuNC90Lgg0L3QsNC90LDQt9Cw0LQg0Lgg0L3QsNGI0LjRgtC1INC00L7Qu9Cz0Lgg0LPQ
-vtC00LjQvdC4INCx0YDQsNC6INC90LUg0LHQtdCwINCx0LvQsNCz0L7RgdC70L7QstC10L3QuCDR
-gdC+INC90LjRgtGDINC10LTQvdC+INC00LXRgtC1LCDQv9C+INC90LXQs9C+0LLQsNGC0LAg0YHQ
-vNGA0YIg0LPQviDQvdCw0YHQu9C10LTQuNCyINGG0LXQu9C+0YLQviDQvdC10LPQvtCy0L4g0LHQ
-vtCz0LDRgtGB0YLQstC+Lg0KDQrQlNC+0LDRk9Cw0Lwg0LrQsNGYINCy0LDRgSDQvtGC0LrQsNC6
-0L4g0YHQtSDQv9C+0LzQvtC70LjQsiDQt9CwINGC0L7QsCwg0L/QvtC00LPQvtGC0LLQtdC9INGB
-0YPQvCDQtNCwINC00L7QvdC40YDQsNC8INGB0YPQvNCwINC+0LQgMiwgMzAwLCAwMDAg0LXQstGA
-0LAg0LfQsCDQv9C+0LzQvtGIINC90LAg0YHQuNGA0L7QvNCw0YjQvdC40YLQtSwg0YHQuNGA0L7Q
-vNCw0YjQvdC40YLQtSDQuCDQv9C+0LzQsNC70LrRgyDQv9GA0LjQstC40LvQtdCz0LjRgNCw0L3Q
-uNGC0LUg0LzQtdGT0YMg0LLQsNGI0LjRgtC1INGB0L7QsdGA0LDQvdC40ZjQsCAvINC+0L/RiNGC
-0LXRgdGC0LLQvi4g0JfQsNCx0LXQu9C10LbQtdGC0LUg0LTQtdC60LAg0L7QstC+0Zgg0YTQvtC9
-0LQg0LUg0LTQtdC/0L7QvdC40YDQsNC9INCy0L4g0LHQsNC90LrQsCDQutCw0LTQtSDRiNGC0L4g
-0YDQsNCx0L7RgtC10YjQtSDQvNC+0ZjQvtGCINGB0L7Qv9GA0YPQsy4gQXBwcmVjaWF0ZdC1INGG
-0LXQvdCw0Lwg0LDQutC+INC+0LHRgNC90LXRgtC1INCy0L3QuNC80LDQvdC40LUg0L3QsCDQvNC+
-0LXRgtC+INCx0LDRgNCw0ZrQtSDQt9CwINC/0YDQvtC/0LDQs9C40YDQsNGa0LUg0L3QsCDQvNCw
-0YHQsNC20LDRgtCwINC90LAg0LrRgNCw0LvRgdGC0LLQvtGC0L4sINGc0LUg0LLQuCDQtNCw0LTQ
-sNC8INC/0L7QstC10ZzQtSDQtNC10YLQsNC70Lgg0LfQsCDRgtC+0LAg0LrQsNC60L4g0LTQsCDQ
-v9C+0YHRgtCw0L/QuNGC0LUuDQoNCtCR0LvQsNCz0L7QtNCw0YDQsNC8DQrQky3Rk9CwINCc0LXR
-gNC40LvQuNC9INCg0L7QsdC10YDRggpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+--===============1410318340==
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Greetings to you.<br>
+<br>
+<br>
+<br>
+Please do not view my plea as a contrived plot.My trusted family attorney who would have executed my WILL & TESTAMENT on my behalf died<br>
+early this year after a brief illness.I therefore prayed fervently and by the special grace of GOD,i was led to you.I am Mrs Kimberly Cloud,from<br>
+United Kingdom,I am 62 years old. I am suffering from cancer of the lungs and it has affected part of my brain cells due to<br>
+complications.My condition is deteriorating and according to my doctors i may not be alive in the next couple of months,unless there<br>
+is a divine intervention.<br>
+<br>
+<br>
+<br>
+I was orphaned as a child and got married to late Engineer.Steve Louis for twenty years without having an offspring.My late husband had<br>
+chronic cardiovascular condition and died of cardiac arrest few years ago.Steve and I lived in Nigeria for over 18 years,where my husband a<br>
+petrochemical engineer by profession worked and rose through the ranks and became an executive director in a multinational oil servicing and<br>
+exploration conglomerate, before his untimely death.He also established huge private investments that i supervised before his<br>
+death and which forms the major source of our fortune.<br>
+<br>
+<br>
+<br>
+Consequent upon the shocking demise of my priceless husband, i opted as a rule, not to re-marry. When medical reports revealed that my<br>
+cancer ailment have become terminal & more so because i do not have a direct next of kin to bequeath all that STEVE & I labored for,i sold<br>
+off all our choice assets,landed properties and other valuable family treasures and deposited the proceeds amounting to USD$10,000,000.00<br>
+(TEN MILLION DOLLARS ONLY) with Uba Bank plc. The management of the bank has written me as the sole beneficiary of the fund because of the unserviceable status of the fund over the years and suggested to me in a 2 paragraph statement to issue a letter of authorization to someone who can manage the fund on my behalf because of my terminal illness and also threatened that the fund could be confiscated upon my failure to adhere to their rules and regulations s clearly spelt out in their code of conduct.<br>
+<br>
+<br>
+<br>
+I am on admission at the intensive care unit of a London hospital,located at Fulham road in west London United Kingdom. It is<br>
+the leading cancer treatment hospital in the world.I am currently undergoing treatment there for late-stage terminal cancer of the<br>
+lungs. I am computer literate, I rarely talk but has my personal laptop with me and has the permission of my physicians to use it,hence<br>
+I am writing from my sick bed in the (ICU).It is my last WISH that 85% of this fund is invested substantially in any charitable organization<br>
+of your choice and administered as you may deem fit,especially to the orphanage homes.You are at liberty to also donate part of the funds to<br>
+churches and mosques and to those struck by natural disaster.I have earmarked 5% of the total fund to run cost of administration of WILL &<br>
+TESTAMENT and also on logistics and other sundry arrangements that you may require.<br>
+<br>
+<br>
+<br>
+I crave your indulgence as a God fearing individual that equally has high moral pedestal and who is also an uncommon humanitarian that<br>
+cares so much about the plight of the less-privileged as much as i do, to take it upon yourself and use this fund for the above mentioned<br>
+purposes. This is a painstaking decision i have taken in other to help humanity in my little capacity as a people driven entrepreneur and a<br>
+very God fearing woman before i bow to God's sovereignty.<br>
+<br>
+<br>
+<br>
+Note that as soon as I receive your reply and personal information as listed below, I shall avail you with the official contact information<br>
+of the Uba Bank plc officials,to enable you contact the Bank without delays.I will also issue you with an official letter of authorization,so that my bankers will recognize your status as the new beneficiary of my ESTATE, FUND, WILL & TESTAMENT. Interestingly 10% of the total sum is set aside as your compensation for accepting to play this significant role for me and i hope you will appreciate my kind<br>
+gesture.<br>
+<br>
+<br>
+<br>
+Let me remind you that the fund has an open beneficiary mandate and as such,it is whom i personally authorize or appoint to act on my behalf<br>
+that the bank will ultimately recognize and release the funds to and by this memo,the onus has fallen on you to assume this selfless and<br>
+noble responsibility that will catalyze change by exploring and promoting the development of new interventions that will benefit the<br>
+poorest of the poor when the fund is transferred into your bank<br>
+account.<br>
+<br>
+<br>
+<br>
+Please assure me that you will not treat this offer with levity but<br>
+will consciously yield my bequest continued existence.<br>
+<br>
+Kindly send the information in this order:<br>
+<br>
+(1) Your full names :============================= ======<br>
+<br>
+(2) personal or official contact address:======================<br>
+<br>
+(3) Home or Office phone#:============Cellphone#: ==========Fax#:=======<br>
+<br>
+(4) Your Age:===============<br>
+<br>
+(5)Occupation:================ ===========<br>
+<br>
+(6)Sex/Marital status:======================= =<br>
+<br>
+<br>
+<br>
+I Await your kind response while hoping you will appreciate my<br>
+helpless predicament.<br>
+<br>
+Reply me through my private email address:<br>
+<br>
+May God bless your golden heart and soul.<br>
+<br>
+Sincerely Yours,<br>
+<br>
+<br>
+<br>
+Mrs Kimberly Cloud
+
+--===============1410318340==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1410318340==--
