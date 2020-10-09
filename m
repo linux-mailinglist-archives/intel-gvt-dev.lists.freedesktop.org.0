@@ -1,38 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C403288620
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Oct 2020 11:42:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63174288622
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Oct 2020 11:42:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5A2146EC95;
-	Fri,  9 Oct 2020 09:42:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1CF926EC99;
+	Fri,  9 Oct 2020 09:42:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B74FA6EC95;
- Fri,  9 Oct 2020 09:42:07 +0000 (UTC)
-IronPort-SDR: 8pazNktCwHv0VmQX6VFcM7hvNIN1gccZKY+X2+YiH8EmjGlXLElvU7R6XFdciazoe4zl6rerKi
- zGs6LxdEo+VQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9768"; a="165525979"
-X-IronPort-AV: E=Sophos;i="5.77,354,1596524400"; d="scan'208";a="165525979"
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A5C1C6EC99;
+ Fri,  9 Oct 2020 09:42:10 +0000 (UTC)
+IronPort-SDR: m4lLJYWlKr7J/j5ve1usSdycaggY4O5IxYLjUIINnJSDTyeJwmW/dz2P/1OHsf4zWjx9YedIk5
+ jXPwPZqfap1w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9768"; a="165525990"
+X-IronPort-AV: E=Sophos;i="5.77,354,1596524400"; d="scan'208";a="165525990"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 02:42:07 -0700
-IronPort-SDR: K0AARgMgY02LRKOVaXGIB59zrhkv8bgeUz3Q6L3u4IxAOtTB+TzNVnpu3jhmqw+jNjQ7hl2j3Z
- FfAXLiSZdfQQ==
+ 09 Oct 2020 02:42:10 -0700
+IronPort-SDR: P/o0qvVH1XESVmrNYj40y6SfeNAqY73yqYCYzdVvwR0frKlFY7xnLu2tM6kOQGnJAZj3PRxD1w
+ sqiGKZ0a486w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,354,1596524400"; d="scan'208";a="316982711"
+X-IronPort-AV: E=Sophos;i="5.77,354,1596524400"; d="scan'208";a="316982725"
 Received: from unknown (HELO xzhan34-mobl2.bj.intel.com) ([10.238.154.62])
- by orsmga006.jf.intel.com with ESMTP; 09 Oct 2020 02:42:04 -0700
+ by orsmga006.jf.intel.com with ESMTP; 09 Oct 2020 02:42:07 -0700
 From: Xiaolin Zhang <xiaolin.zhang@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org,
 	intel-gfx@lists.freedesktop.org
-Subject: [PATCH v2 03/12] drm/i915: vgpu pv command buffer transport protocol
-Date: Fri,  9 Oct 2020 08:04:34 +0800
-Message-Id: <1602201883-27829-4-git-send-email-xiaolin.zhang@intel.com>
+Subject: [PATCH v2 04/12] drm/i915: vgpu ppgtt page table pv support
+Date: Fri,  9 Oct 2020 08:04:35 +0800
+Message-Id: <1602201883-27829-5-git-send-email-xiaolin.zhang@intel.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1602201883-27829-1-git-send-email-xiaolin.zhang@intel.com>
 References: <1602201883-27829-1-git-send-email-xiaolin.zhang@intel.com>
@@ -58,351 +58,199 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-based on the common shared memory, vgpu pv command transport buffer (CTB)
-protocol is implemented which is a simple pv command buffer ring with pv
-command descriptor used to perform guest-2-gvt single direction commucation
-between guest and host GVTg.
+to improve efficiency and reduce the complexsity of vgpu ppgtt support,
+vgpu ppgtt page table operations are implemented in pv fashion and
+implemented pv version of bind/unbind for ppgtt vma ops.
 
-with this CTB, guest can send PV command with PV data to host to perform PV
-commands in host side.
+The pv version of ppgtt vma ops use the CTB protocol to communicate
+pv ppgtt command along with data struct pv_vma from guest to GVT
+and then GVT will implement command handler of PV_CMD_BIND_PPGTT and
+PV_CMD_UBIND_PPGTT to support vgpu PPGTT feature.
 
-v2: addressed dim checkpatch issues and Jani Nikula's comment.
+new PV_PPGTT pv_cap is used to control this level of pv support in
+both guest and host side.
 
 Signed-off-by: Xiaolin Zhang <xiaolin.zhang@intel.com>
 ---
- drivers/gpu/drm/i915/i915_pvinfo.h |   1 +
- drivers/gpu/drm/i915/i915_vgpu.c   | 202 ++++++++++++++++++++++++++++++++++++-
- drivers/gpu/drm/i915/i915_vgpu.h   |  53 ++++++++++
- 3 files changed, 254 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/gt/gen8_ppgtt.c |  4 +-
+ drivers/gpu/drm/i915/i915_vgpu.c     | 96 ++++++++++++++++++++++++++++++++++++
+ drivers/gpu/drm/i915/i915_vgpu.h     | 17 +++++++
+ 3 files changed, 116 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/i915/i915_pvinfo.h b/drivers/gpu/drm/i915/i915_pvinfo.h
-index 1d44876..ded93c5 100644
---- a/drivers/gpu/drm/i915/i915_pvinfo.h
-+++ b/drivers/gpu/drm/i915/i915_pvinfo.h
-@@ -49,6 +49,7 @@ enum vgt_g2v_type {
- 	VGT_G2V_EXECLIST_CONTEXT_CREATE,
- 	VGT_G2V_EXECLIST_CONTEXT_DESTROY,
- 	VGT_G2V_SHARED_PAGE_REGISTER,
-+	VGT_G2V_PV_SEND_TRIGGER,
- 	VGT_G2V_MAX,
- };
+diff --git a/drivers/gpu/drm/i915/gt/gen8_ppgtt.c b/drivers/gpu/drm/i915/gt/gen8_ppgtt.c
+index b236aa0..d5c6007 100644
+--- a/drivers/gpu/drm/i915/gt/gen8_ppgtt.c
++++ b/drivers/gpu/drm/i915/gt/gen8_ppgtt.c
+@@ -732,8 +732,10 @@ struct i915_ppgtt *gen8_ppgtt_create(struct intel_gt *gt)
+ 
+ 	ppgtt->vm.pte_encode = gen8_pte_encode;
+ 
+-	if (intel_vgpu_active(gt->i915))
++	if (intel_vgpu_active(gt->i915)) {
++		intel_vgpu_pv_config_caps(gt->i915, PV_PPGTT, ppgtt);
+ 		gen8_ppgtt_notify_vgt(ppgtt, true);
++	}
+ 
+ 	ppgtt->vm.cleanup = gen8_ppgtt_cleanup;
  
 diff --git a/drivers/gpu/drm/i915/i915_vgpu.c b/drivers/gpu/drm/i915/i915_vgpu.c
-index 146877f..c833823 100644
+index c833823..81be1db5 100644
 --- a/drivers/gpu/drm/i915/i915_vgpu.c
 +++ b/drivers/gpu/drm/i915/i915_vgpu.c
-@@ -373,6 +373,189 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
+@@ -99,6 +99,9 @@ void intel_vgpu_detect(struct drm_i915_private *dev_priv)
+ 	dev_priv->vgpu.active = true;
+ 	mutex_init(&dev_priv->vgpu.lock);
+ 
++	/* guest driver PV capability */
++	dev_priv->vgpu.pv_caps = PV_PPGTT;
++
+ 	if (intel_vgpu_pv_detect_caps(dev_priv, shared_area)) {
+ 		drm_info(&dev_priv->drm,
+ 			 "Virtual GPU for Intel GVT-g detected with PV Capabilities.\n");
+@@ -373,6 +376,91 @@ int intel_vgt_balloon(struct i915_ggtt *ggtt)
   * i915 vgpu PV support for Linux
   */
  
-+/**
-+ * intel_vgpu_pv_wait_desc_update - Wait the command buffer descriptor update.
-+ * @desc:	buffer descriptor
-+ * @fence:	response fence
-+ * @status:	placeholder for status
-+ *
-+ * GVTg will update command buffer descriptor with new fence and status
-+ * after processing the command identified by the fence. Wait for
-+ * specified fence and then read from the descriptor status of the
-+ * command.
-+ *
-+ * Return:
-+ * *	0 response received (status is valid)
-+ * *	-ETIMEDOUT no response within hardcoded timeout
-+ */
-+static int
-+intel_vgpu_pv_wait_desc_update(struct drm_i915_private *i915,
-+			       struct intel_vgpu_pv_ct_buf_desc *desc,
-+			       u32 fence, u32 *status)
++static int intel_vgpu_pv_vma_action(struct i915_address_space *vm,
++				    struct i915_vma *vma, u32 action,
++				    u64 flags, u64 pte_flag)
 +{
-+	int err;
-+
-+#define done (READ_ONCE(desc->fence) == fence)
-+	err = wait_for_us(done, 5);
-+	if (err)
-+		err = wait_for(done, 10);
-+#undef done
-+
-+	if (unlikely(err)) {
-+		drm_err(&i915->drm, "CT: fence %u failed; reported fence=%u\n",
-+			fence, desc->fence);
-+	}
-+
-+	*status = desc->status;
-+
-+	return err;
-+}
-+
-+/*
-+ * CTB Guest to GVT request
-+ *
-+ * Format of the CTB Guest to GVT request message is as follows::
-+ *
-+ *      +------------+---------+---------+---------+---------+
-+ *      |   msg[0]   |   [1]   |   [2]   |   ...   |  [n-1]  |
-+ *      +------------+---------+---------+---------+---------+
-+ *      |   MESSAGE  |       MESSAGE PAYLOAD                 |
-+ *      +   HEADER   +---------+---------+---------+---------+
-+ *      |            |    0    |    1    |   ...   |    n    |
-+ *      +============+=========+=========+=========+=========+
-+ *      |  len >= 1  |  FENCE  |     request specific data   |
-+ *      +------+-----+---------+---------+---------+---------+
-+ *
-+ *                   ^-----------------len-------------------^
-+ */
-+static int intel_vgpu_pv_cmd_buf_write(struct intel_vgpu_pv *pv,
-+				       const u32 *action,
-+				       u32 len /* in dwords */, u32 fence)
-+{
-+	struct intel_vgpu_pv_ct_buf_desc *desc = pv->ctb.desc;
-+	u32 head = desc->head / 4;	/* in dwords */
-+	u32 tail = desc->tail / 4;	/* in dwords */
-+	u32 size = desc->size / 4;	/* in dwords */
-+	u32 used;			/* in dwords */
-+	u32 header;
-+	u32 *cmds = pv->ctb.cmds;
-+	unsigned int i;
-+
-+	GEM_BUG_ON(desc->size % 4);
-+	GEM_BUG_ON(desc->head % 4);
-+	GEM_BUG_ON(desc->tail % 4);
-+	GEM_BUG_ON(tail >= size);
-+
-+	 /* tail == head condition indicates empty */
-+	if (tail < head)
-+		used = (size - head) + tail;
-+	else
-+		used = tail - head;
-+
-+	/* make sure there is a space including extra dw for the fence */
-+	if (unlikely(used + len + 1 >= size))
-+		return -ENOSPC;
-+
-+	/*
-+	 * Write the message. The format is the following:
-+	 * DW0: header (including action code)
-+	 * DW1: fence
-+	 * DW2+: action data
-+	 */
-+	header = (len << PV_CT_MSG_LEN_SHIFT) |
-+		 (PV_CT_MSG_WRITE_FENCE_TO_DESC) |
-+		 (action[0] << PV_CT_MSG_ACTION_SHIFT);
-+
-+	cmds[tail] = header;
-+	tail = (tail + 1) % size;
-+
-+	cmds[tail] = fence;
-+	tail = (tail + 1) % size;
-+
-+	for (i = 1; i < len; i++) {
-+		cmds[tail] = action[i];
-+		tail = (tail + 1) % size;
-+	}
-+
-+	/* now update desc tail (back in bytes) */
-+	desc->tail = tail * 4;
-+	GEM_BUG_ON(desc->tail > desc->size);
-+
-+	return 0;
-+}
-+
-+static u32 intel_vgpu_pv_get_next_fence(struct intel_vgpu_pv *pv)
-+{
-+	/* For now it's trivial */
-+	return ++pv->next_fence;
-+}
-+
-+static int intel_vgpu_pv_send(struct drm_i915_private *i915,
-+			      const u32 *action, u32 len, u32 *status)
-+{
-+	struct i915_virtual_gpu *vgpu = &i915->vgpu;
-+	struct intel_vgpu_pv *pv = vgpu->pv;
-+
-+	struct intel_vgpu_pv_ct_buf_desc *desc = pv->ctb.desc;
-+
-+	u32 fence;
-+	int err;
-+
-+	GEM_BUG_ON(!len);
-+	GEM_BUG_ON(len & ~PV_CT_MSG_LEN_MASK);
-+
-+	fence = intel_vgpu_pv_get_next_fence(pv);
-+	err = intel_vgpu_pv_cmd_buf_write(pv, action, len, fence);
-+	if (unlikely(err))
-+		goto unlink;
-+
-+	i915->vgpu.pv->notify(i915);
-+
-+	err = intel_vgpu_pv_wait_desc_update(i915, desc, fence, status);
-+	if (unlikely(err))
-+		goto unlink;
-+
-+	if ((*status)) {
-+		err = -EIO;
-+		goto unlink;
-+	}
-+
-+	err = (*status);
-+
-+unlink:
-+	return err;
-+}
-+
-+static int intel_vgpu_pv_send_cmd_buf(struct drm_i915_private *i915,
-+				      u32 *action, u32 len)
-+{
-+	struct i915_virtual_gpu *vgpu = &i915->vgpu;
-+	unsigned long flags;
-+
-+	u32 status = ~0; /* undefined */
++	struct drm_i915_private *i915 = vma->vm->i915;
++	struct sgt_iter sgt_iter;
++	dma_addr_t addr;
++	struct intel_vgpu_pv_vma pvvma;
++	u32 num_pages;
++	u64 *gpas;
++	int i = 0;
++	u32 data[32];
 +	int ret;
++	u32 size = sizeof(pvvma) / 4;
 +
-+	spin_lock_irqsave(&vgpu->pv->lock, flags);
++	if (1 + size > ARRAY_SIZE(data))
++		return -EIO;
 +
-+	ret = intel_vgpu_pv_send(i915, action, len, &status);
-+	if (unlikely(ret < 0)) {
-+		drm_err(&i915->drm, "PV: send action %#X failed; err=%d status=%#X\n",
-+			action[0], ret, status);
-+	} else if (unlikely(ret)) {
-+		drm_err(&i915->drm, "PV: send action %#x returned %d (%#x)\n",
-+			action[0], ret, ret);
++	memset(&pvvma, 0, sizeof(pvvma));
++	num_pages = vma->node.size >> PAGE_SHIFT;
++	pvvma.size = num_pages;
++	pvvma.start = vma->node.start;
++	pvvma.flags = flags;
++
++	if (action == PV_CMD_BIND_PPGTT || action == PV_CMD_UNBIND_PPGTT)
++		pvvma.pml4 = px_dma(i915_vm_to_ppgtt(vm)->pd);
++
++	if (num_pages == 1) {
++		pvvma.dma_addrs = vma->pages->sgl->dma_address | pte_flag;
++		goto out;
 +	}
 +
-+	spin_unlock_irqrestore(&vgpu->pv->lock, flags);
++	gpas = kmalloc_array(num_pages, sizeof(u64), GFP_KERNEL);
++	if (!gpas)
++		return -ENOMEM;
++
++	pvvma.dma_addrs = virt_to_phys((void *)gpas);
++	for_each_sgt_daddr(addr, sgt_iter, vma->pages)
++		gpas[i++] = addr | pte_flag;
++
++	/* Fill the allocated but "unused" space beyond the end of the buffer */
++	while (i < num_pages)
++		gpas[i++] = vm->scratch[0]->encode;
++out:
++	data[0] = action;
++	memcpy(&data[1], &pvvma, sizeof(pvvma));
++	ret = i915->vgpu.pv->send(i915, data, 1 + size);
++
++	if (num_pages > 1)
++		kfree(gpas);
++
 +	return ret;
 +}
 +
-+static void intel_vgpu_pv_notify_mmio(struct drm_i915_private *dev_priv)
++static void intel_vgpu_pv_ppgtt_bind(struct i915_address_space *vm,
++				     struct i915_vm_pt_stash *stash,
++				     struct i915_vma *vma,
++				     enum i915_cache_level cache_level,
++				     u32 flags)
 +{
-+	intel_uncore_write(&dev_priv->uncore,
-+			   vgtif_reg(g2v_notify), VGT_G2V_PV_SEND_TRIGGER);
++	u32 pte_flags;
++	u64 pte_encode;
++
++	if (!test_bit(I915_VMA_ALLOC_BIT, __i915_vma_flags(vma))) {
++		set_bit(I915_VMA_ALLOC_BIT, __i915_vma_flags(vma));
++		flags |= BIT(I915_VMA_ALLOC_BIT);
++	}
++
++	/* Applicable to VLV, and gen8+ */
++	pte_flags = 0;
++	if (i915_gem_object_is_readonly(vma->obj))
++		pte_flags |= PTE_READ_ONLY;
++
++	pte_encode = vma->vm->pte_encode(0, cache_level, pte_flags);
++
++	intel_vgpu_pv_vma_action(vm, vma, PV_CMD_BIND_PPGTT, flags, pte_encode);
 +}
 +
++static void intel_vgpu_pv_ppgtt_unbind(struct i915_address_space *vm,
++				       struct i915_vma *vma)
++{
++	if (test_and_clear_bit(I915_VMA_ALLOC_BIT, __i915_vma_flags(vma)))
++		intel_vgpu_pv_vma_action(vm, vma, PV_CMD_UNBIND_PPGTT, 0, 0);
++}
++
+ /**
+  * intel_vgpu_pv_wait_desc_update - Wait the command buffer descriptor update.
+  * @desc:	buffer descriptor
+@@ -655,8 +743,16 @@ static int intel_vgpu_pv_setup_shared_page(struct drm_i915_private *i915,
+ void intel_vgpu_pv_config_caps(struct drm_i915_private *i915,
+ 			       enum intel_vgpu_pv_caps cap, void *data)
+ {
++	struct i915_ppgtt *ppgtt;
++
+ 	if (!intel_vgpu_pv_check_cap(i915, cap))
+ 		return;
++
++	if (cap == PV_PPGTT) {
++		ppgtt = (struct i915_ppgtt *)data;
++		ppgtt->vm.vma_ops.bind_vma    = intel_vgpu_pv_ppgtt_bind;
++		ppgtt->vm.vma_ops.unbind_vma  = intel_vgpu_pv_ppgtt_unbind;
++	}
+ }
+ 
  /*
-  * shared_page setup for VGPU PV features
-  */
-@@ -388,7 +571,7 @@ static int intel_vgpu_pv_setup_shared_page(struct drm_i915_private *i915,
- 
- 	/* We allocate 1 page shared between guest and GVT for data exchange.
- 	 *       _______________________________
--	 *      |version                        |
-+	 *      |version|PV_DESCs(SEND)         |
- 	 *      |_______________________________PAGE/8
- 	 *      |                               |
- 	 *      |_______________________________PAGE/4
-@@ -396,7 +579,7 @@ static int intel_vgpu_pv_setup_shared_page(struct drm_i915_private *i915,
- 	 *      |                               |
- 	 *      |                               |
- 	 *      |_______________________________PAGE/2
--	 *      |                               |
-+	 *      |PV_CMDs(SEND)                  |
- 	 *      |                               |
- 	 *      |                               |
- 	 *      |                               |
-@@ -406,6 +589,8 @@ static int intel_vgpu_pv_setup_shared_page(struct drm_i915_private *i915,
- 	 *      |_______________________________|
- 	 *
- 	 * 0 offset: PV version area
-+	 * PAGE/256 offset: PV command buffer command descriptor area
-+	 * PAGE/2 offset: PV command buffer command data area
- 	 */
- 
- 	base = (struct intel_vgpu_pv_shared_page *)get_zeroed_page(GFP_KERNEL);
-@@ -443,8 +628,21 @@ static int intel_vgpu_pv_setup_shared_page(struct drm_i915_private *i915,
- 
- 	drm_dbg(&i915->drm,
- 		"vgpu PV version major %d and minor %d\n", ver_maj, ver_min);
-+
- 	i915->vgpu.pv = pv;
- 	pv->mem = base;
-+
-+	/* setup PV command buffer ptr */
-+	pv->ctb.cmds = (void *)base + PV_CMD_OFF;
-+	pv->ctb.desc = (void *)base + PV_DESC_OFF;
-+	pv->ctb.desc->size = PAGE_SIZE / 2;
-+	pv->ctb.desc->addr = PV_CMD_OFF;
-+
-+	/* setup PV command buffer callback */
-+	pv->send = intel_vgpu_pv_send_cmd_buf;
-+	pv->notify = intel_vgpu_pv_notify_mmio;
-+	spin_lock_init(&pv->lock);
-+
- 	return ret;
- err:
- 	__free_page(virt_to_page(base));
 diff --git a/drivers/gpu/drm/i915/i915_vgpu.h b/drivers/gpu/drm/i915/i915_vgpu.h
-index ab8d25b..18f2dd0 100644
+index 18f2dd0..49fc174 100644
 --- a/drivers/gpu/drm/i915/i915_vgpu.h
 +++ b/drivers/gpu/drm/i915/i915_vgpu.h
-@@ -31,6 +31,8 @@ struct i915_ggtt;
- 
- #define PV_MAJOR        0
- #define PV_MINOR        1
-+#define PV_DESC_OFF     (PAGE_SIZE / 256)
-+#define PV_CMD_OFF      (PAGE_SIZE / 2)
- 
+@@ -37,6 +37,14 @@ struct i915_ggtt;
  /* intel vGPU PV capabilities */
  enum intel_vgpu_pv_caps {
-@@ -43,8 +45,59 @@ struct intel_vgpu_pv_shared_page {
+ 	PV_NONE = 0,
++	PV_PPGTT = BIT(0),
++};
++
++/* vgpu PV commands */
++enum intel_vgpu_pv_cmd {
++	PV_CMD_DEFAULT = 0x0,
++	PV_CMD_BIND_PPGTT,
++	PV_CMD_UNBIND_PPGTT,
+ };
+ 
+ /* A shared memory(4KB) between GVTg and vgpu allocated by guest */
+@@ -45,6 +53,15 @@ struct intel_vgpu_pv_shared_page {
  	u16 ver_minor;
  };
  
-+/*
-+ * Definition of the command transport message header (DW0)
-+ *
-+ * bit[0..4]	message len (in dwords)
-+ * bit[5..7]	reserved
-+ * bit[8..8]	write fence to desc
-+ * bit[9..15]	reserved
-+ * bit[16..31]	action code
-+ */
-+#define PV_CT_MSG_LEN_SHIFT             0
-+#define PV_CT_MSG_LEN_MASK              0x1F
-+#define PV_CT_MSG_WRITE_FENCE_TO_DESC   BIT(8)
-+#define PV_CT_MSG_ACTION_SHIFT          16
-+#define PV_CT_MSG_ACTION_MASK           0xFFFF
-+
-+/* PV command transport buffer descriptor */
-+struct intel_vgpu_pv_ct_buf_desc {
-+	u32 addr;		/* gpa address */
-+	u32 size;		/* size in bytes */
-+	u32 head;		/* offset updated by GVT */
-+	u32 tail;		/* offset updated by owner */
-+
-+	u32 fence;		/* fence updated by GVT */
-+	u32 status;		/* status updated by GVT */
++/* PV virtual memory address for GGTT/PPGTT */
++struct intel_vgpu_pv_vma {
++	u32 size; /* num of pages */
++	u32 flags; /* bind or unbind flags */
++	u64 start; /* start of virtual address */
++	u64 dma_addrs; /* BO's dma address list */
++	u64 pml4; /* ppgtt handler */
 +};
 +
-+/** PV single command transport buffer.
-+ *
-+ * A single command transport buffer consists of two parts, the header
-+ * record (command transport buffer descriptor) and the actual buffer which
-+ * holds the commands.
-+ *
-+ * @desc: pointer to the buffer descriptor
-+ * @cmds: pointer to the commands buffer
-+ */
-+struct intel_vgpu_pv_ct_buf {
-+	struct intel_vgpu_pv_ct_buf_desc *desc;
-+	u32 *cmds;
-+};
-+
- struct intel_vgpu_pv {
- 	struct intel_vgpu_pv_shared_page *mem;
-+
-+	/* PV command buffer support */
-+	struct intel_vgpu_pv_ct_buf ctb;
-+	u32 next_fence;
-+
-+	/* To serialize the vgpu PV send actions */
-+	spinlock_t lock;
-+
-+	/* VGPU's PV specific send function */
-+	int (*send)(struct drm_i915_private *dev_priv, u32 *data, u32 len);
-+	void (*notify)(struct drm_i915_private *dev_priv);
- };
- 
- void intel_vgpu_detect(struct drm_i915_private *i915);
+ /*
+  * Definition of the command transport message header (DW0)
+  *
 -- 
 2.7.4
 
