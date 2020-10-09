@@ -1,60 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4CE4287A37
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  8 Oct 2020 18:41:59 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB16728861A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Oct 2020 11:41:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F47D6EA96;
-	Thu,  8 Oct 2020 16:41:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5252E6EC92;
+	Fri,  9 Oct 2020 09:41:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E1B5C6EA96
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  8 Oct 2020 16:41:57 +0000 (UTC)
-IronPort-SDR: IRff2sD1b1YsqIFqcTNx+wI2dN/W+dLQqZRRmJ8roe27oCQP1Kmvr3z5ZPRX/f+t9MxlBLG1Z0
- 4gFPTHnLE5UQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9768"; a="164578990"
-X-IronPort-AV: E=Sophos;i="5.77,351,1596524400"; d="scan'208";a="164578990"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B04496EC92;
+ Fri,  9 Oct 2020 09:41:49 +0000 (UTC)
+IronPort-SDR: rXq7Lbh9HG8UhuF6Cp6Nq2G/zCOTgkdYhYop2XRu+4ESJBT1olmin/vinRpjsvhUS09Kbz+YvR
+ RfQ2QaEBoc7A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9768"; a="152384164"
+X-IronPort-AV: E=Sophos;i="5.77,354,1596524400"; d="scan'208";a="152384164"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Oct 2020 09:41:57 -0700
-IronPort-SDR: NeYegRi+HzEQPXAzHAYaTlCXcbF+HjYZJoPdrDyjCZ9QTsTqeK2mn2h06INtU/db2yZX0wlOkc
- 0E7khtd45ZCA==
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 02:41:48 -0700
+IronPort-SDR: tZwaRP5XQyNyNkRCG1TY7nDR3yyV5QWvVZngrMf+++0IyrLfzACDLjhafyR3Fm52LoHL1ou/R2
+ WWuMmeDPkTuA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,351,1596524400"; d="scan'208";a="519406643"
-Received: from irsmsx605.ger.corp.intel.com ([163.33.146.138])
- by fmsmga005.fm.intel.com with ESMTP; 08 Oct 2020 09:41:56 -0700
-Received: from irsmsx606.ger.corp.intel.com (163.33.146.139) by
- IRSMSX605.ger.corp.intel.com (163.33.146.138) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 8 Oct 2020 17:41:55 +0100
-Received: from irsmsx606.ger.corp.intel.com ([163.33.146.139]) by
- IRSMSX606.ger.corp.intel.com ([163.33.146.139]) with mapi id 15.01.1713.004;
- Thu, 8 Oct 2020 17:41:55 +0100
-From: "Wang, Zhi A" <zhi.a.wang@intel.com>
-To: Julian Stecklina <julian.stecklina@cyberus-technology.de>, Intel GVT Dev
- <intel-gvt-dev@lists.freedesktop.org>
-Subject: RE: GVT Scheduler
-Thread-Topic: GVT Scheduler
-Thread-Index: AQHWlmD7vRQ0WUIfx0qW6wyUpKsGnqmA/C6AgAz24HA=
-Date: Thu, 8 Oct 2020 16:41:55 +0000
-Message-ID: <e2d543701d3442f78aae7bc10b54487d@intel.com>
-References: <81492552a35a8e0556841873c17834f4d182bcad.camel@cyberus-technology.de>
- <8ffc19621b9873c4a280b1556a8f381c55b0affb.camel@cyberus-technology.de>
-In-Reply-To: <8ffc19621b9873c4a280b1556a8f381c55b0affb.camel@cyberus-technology.de>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-x-originating-ip: [163.33.253.164]
-MIME-Version: 1.0
+X-IronPort-AV: E=Sophos;i="5.77,354,1596524400"; d="scan'208";a="316982600"
+Received: from unknown (HELO xzhan34-mobl2.bj.intel.com) ([10.238.154.62])
+ by orsmga006.jf.intel.com with ESMTP; 09 Oct 2020 02:41:46 -0700
+From: Xiaolin Zhang <xiaolin.zhang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org,
+	intel-gfx@lists.freedesktop.org
+Subject: [PATCH v2 00/12] enhanced i915 vgpu with PV feature support
+Date: Fri,  9 Oct 2020 08:04:31 +0800
+Message-Id: <1602201883-27829-1-git-send-email-xiaolin.zhang@intel.com>
+X-Mailer: git-send-email 2.7.4
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,113 +46,101 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>
+Cc: jani.nikula@linux.intel.com, kevin.tian@intel.com,
+ Xiaolin Zhang <xiaolin.zhang@intel.com>, joonas.lahtinen@linux.intel.com,
+ zhenyuw@linux.intel.com, chris@chris-wilson.co.uk, zhiyuan.lv@intel.com,
+ zhi.a.wang@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Julian:
+This is new i915 VGPU PV design based on the last year proposal [1].
 
-Thanks for your message. 
+This is a new series of patch set and discontiued the old series of
+patch set due to this new design.
 
-Every workload is addressed with a GPU context. The workload in i915 is submitted by the HW interfaces called execlist. When the workload is finished, the HW will notice the i915 by an interrupt and switch out the context. Then i915 will process the CSB (context status block) and call the shadow_context_status_change through the notifier in the interrupt handler (or tasklet).
+To improve vgpu performance, it could implement some PV optimizations
+in different gpu resource domain to reduce the data access overhead
+or complexity modeling.
 
-I915 also put a breadcrumb after the workload inside the context to figure out if a workload is finished or not.
+In this patch set, PPGTT and GGTT are identifed as PV optimization from
+VGPU memory resource point of view and workloa submisison is identifed
+as PV optimization from VGPU compute resource point of view. so 3 PV
+features (PV PPGTT, PV GGTT and PV submisison) are designed and implemented
+to support VGPU model better. 
 
-Now let's see the timeline:
+To provide the mechanism for PV feature development and implementation,
+A simple PV framework is implemented and consisted of 3 sub items:
+a. PV capability: it indicateds what kind of PV capability provided by both
+guest system and host GVTg subsystem.
+b. PV shared memory: this memory is allocated in guest and shared between
+guest and host for data exchange, PV command & PV data communication.
+c. PV command transport protocol: on top of PV shared memory, it defines
+the communication protocol & channel between guest and host to circulate
+PV command and PV command data. 
 
-- GVT-g submits a workload to i915.
-- i915 append the breadcrumb to the workload
-- i915 submits the workload to HW.
-- GVT-g called i915_wait_request to wait for the GPU execution passed the breadcrumb. (But the context might not be switched out at this time)
-- GVT-g waits for the context to be switched out by the shadow_context_status_change. (Because GVT-g need to copy the content in the shadow context back to the guest context. The shadow context must be idle at this time.)
-- No one is going to touch the shadow context anymore and GVT-g call complete_current_workload. 
+for PV PPGTT, to improve efficiency and reduce the complexity of ppgtt
+support, vgpu ppgtt page table operations are implemented in pv fashion
+with pv version of bind/unbind for ppgtt vma ops. The pv version of 
+ppgtt vma ops use the CTB protocol to communicate pv ppgtt command along 
+with data struct pv_vma from guest to GVT and then GVT implement command
+handler of PV_CMD_BIND_PPGTT and PV_CMD_UBIND_PPGTT to achieve GVA->HPA
+address translation.
 
-The race between shadow_context_status_change and complete_current_workload should be addressed in our design. So this problem might be caused by i915 change, e.g. the timing of call shadow_context_status_change is changed. But we will double confirm in GVT-g as well.
+for PV GGTT, it is similar with PV PPGGT instead to use PV_CMD_BIND_GGTT
+and PV_CMD_UNBIND_GGTT pv command. 
 
-The patch you mentioned is for a corner case in GPU reset. But this shouldn't happen in a normal submission flow unless someone breaks the flow above.
+for PV workload submisison, a pv version of workload submission backend
+implemented with engine submission data in the shared memory and meanwhile
+eliminating execlists csb process and context switch interrupt in
+submisision routine to improve efficiency and reduce complexity.
 
-Thanks,
-Zhi.
+Based on the experiment, small workloads such as glmark2 and Antutu 3D 
+benchmark can get benefit for these PV featuers at least 10% performance
+gain. for large workload such as media and 3D, it get some benefit,
+but not much. 
 
------Original Message-----
-From: intel-gvt-dev <intel-gvt-dev-bounces@lists.freedesktop.org> On Behalf Of Julian Stecklina
-Sent: Wednesday, September 30, 2020 2:29 PM
-To: Intel GVT Dev <intel-gvt-dev@lists.freedesktop.org>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>
-Subject: Re: GVT Scheduler
+[1]: https://patchwork.kernel.org/cover/11148059/
 
-Hello,
+v2: addressed v1 comment from Jani Nikula and dim checkpatch issues.
 
-we've just found this discussion from 2017 that looks directly related:
-https://lists.freedesktop.org/archives/intel-gvt-dev/2017-February/000063.html
+Xiaolin Zhang (12):
+  drm/i915: introduced vgpu pv capability
+  drm/i915: vgpu shared memory setup for pv support
+  drm/i915: vgpu pv command buffer transport protocol
+  drm/i915: vgpu ppgtt page table pv support
+  drm/i915: vgpu ggtt page table pv support
+  drm/i915: vgpu workload submisison pv support
+  drm/i915/gvt: GVTg expose pv_caps PVINFO register
+  drm/i915/gvt: GVTg handle guest shared_page setup
+  drm/i915/gvt: GVTg support vgpu pv CTB protocol
+  drm/i915/gvt: GVTg support ppgtt pv operations
+  drm/i915/gvt: GVTg support ggtt pv operations
+  drm/i915/gvt: GVTg support pv workload submssion
 
-Especially, the race between complete_current_workload and shadow_context_status_change looks problematic and reading the current code I cannot convince myself that it's race free.
+ drivers/gpu/drm/i915/Makefile              |   2 +-
+ drivers/gpu/drm/i915/gt/gen8_ppgtt.c       |   4 +-
+ drivers/gpu/drm/i915/gt/intel_lrc.c        |   2 +
+ drivers/gpu/drm/i915/gvt/gtt.c             | 258 ++++++++++++++
+ drivers/gpu/drm/i915/gvt/gtt.h             |   4 +
+ drivers/gpu/drm/i915/gvt/gvt.h             |  19 +-
+ drivers/gpu/drm/i915/gvt/handlers.c        | 274 ++++++++++++++-
+ drivers/gpu/drm/i915/gvt/vgpu.c            |  49 +++
+ drivers/gpu/drm/i915/i915_drv.c            |   2 +
+ drivers/gpu/drm/i915/i915_drv.h            |   3 +
+ drivers/gpu/drm/i915/i915_gem.c            |   4 +-
+ drivers/gpu/drm/i915/i915_pvinfo.h         |   9 +-
+ drivers/gpu/drm/i915/i915_vgpu.c           | 543 ++++++++++++++++++++++++++++-
+ drivers/gpu/drm/i915/i915_vgpu.h           | 125 +++++++
+ drivers/gpu/drm/i915/intel_pv_submission.c | 325 +++++++++++++++++
+ 15 files changed, 1616 insertions(+), 7 deletions(-)
+ create mode 100644 drivers/gpu/drm/i915/intel_pv_submission.c
 
-In our testing we have seen page faults in shadow_context_status_change in the final wake_up(&workload->shadow_ctx_status_wq); call that are hard to explain without a race like that. The backtraces always look like the one below.
+-- 
+2.7.4
 
-We are currently testing with v5.4.68, but I don't see anything relevant being changed in newer versions.
-
-Any pointers are appreciated.
-
-[ 2594.865440] BUG: unable to handle page fault for address: 00000000000263e0 [ 2594.865448] RIP: 0010:[<ffffffff814b3fcb>]
-queued_spin_lock_slowpath+0x17b/0x1c0
-[...]
-[ 2594.865484] Call Trace:
-[ 2594.865487]  <IRQ>
-[ 2594.865490] _raw_spin_lock_irqsave (kernel/locking/spinlock.c:159) [ 2594.865494] __wake_up_common_lock (kernel/sched/wait.c:123) [ 2594.865499] shadow_context_status_change
-(drivers/gpu/drm/i915/gvt/scheduler.c:286)
-[ 2594.865501] notifier_call_chain (kernel/notifier.c:104) [ 2594.865504] atomic_notifier_call_chain (kernel/notifier.c:203) [ 2594.865507] process_csb (drivers/gpu/drm/i915/gt/intel_lrc.c:610
-drivers/gpu/drm/i915/gt/intel_lrc.c:640
-drivers/gpu/drm/i915/gt/intel_lrc.c:1590)
-[ 2594.865510] execlists_submission_tasklet
-(drivers/gpu/drm/i915/gt/intel_lrc.c:1637)
-[ 2594.865514] tasklet_action_common (./arch/x86/include/asm/bitops.h:75
-./include/asm-generic/bitops-instrumented.h:57 ./include/linux/interrupt.h:624
-kernel/softirq.c:523)
-[ 2594.865517] __do_softirq (./arch/x86/include/asm/jump_label.h:25
-./include/linux/jump_label.h:200 ./include/trace/events/irq.h:142
-kernel/softirq.c:293)
-[ 2594.865520] irq_exit (kernel/softirq.c:373 kernel/softirq.c:413) [ 2594.865523] do_IRQ (arch/x86/kernel/irq.c:267) [ 2594.865526] common_interrupt (arch/x86/entry/entry_64.S:890)
-
-Julian
-
-On Tue, 2020-09-29 at 15:03 +0200, Julian Stecklina wrote:
-> Hello everyone!
-> 
-> I'm currently trying to understand the GVT scheduler (gvt/scheduler.c) better.
-> I'm specifically trying to understand how the 
-> shadow_context_status_change() callback is synchronized with other 
-> code that modifies the current_workload array. I would be very 
-> grateful, if someone has a couple of minutes to shed some light here. 
-> :)
-> 
-> Can shadow_context_status_change[1] run concurrently with other code 
-> that modifies scheduler->current_workload[ring_id]? I see other 
-> functions holding
-> gvt->sched_lock, but the callback does not.
-> 
-> If sched_lock is not required in the callback, what currently prevents 
-> concurrent exection, e.g. with workload_thread()?
-> 
-> Thanks!
-> Julian
-> 
-> [1]
-> https://elixir.bootlin.com/linux/v5.9-rc7/source/drivers/gpu/drm/i915/
-> gvt/scheduler.c#L268
-> 
-> 
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
