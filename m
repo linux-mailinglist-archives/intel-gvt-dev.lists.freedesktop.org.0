@@ -2,37 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FF6028AD5D
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Oct 2020 06:52:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F87028AD5E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Oct 2020 06:52:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 346626E41D;
-	Mon, 12 Oct 2020 04:52:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D199A6E41D;
+	Mon, 12 Oct 2020 04:52:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 325076E41D
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DAF576E41D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 12 Oct 2020 04:52:04 +0000 (UTC)
-IronPort-SDR: JBgVFVzULEaLQhinALWlg9gHFKuTUD7dP1qJoluc+ZarTD2HQ4b+Ksjq7ls10/y4r3PGxumZVf
- ek/46jvK5CiQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9771"; a="250383934"
-X-IronPort-AV: E=Sophos;i="5.77,365,1596524400"; d="scan'208";a="250383934"
+ Mon, 12 Oct 2020 04:52:34 +0000 (UTC)
+IronPort-SDR: Z+kpJXz8/RHAgMocXjThV0kZ3bpCFAVWHlWLG6rWcOKVmVoLR4SIS7eA9Qb0/QRM1zhXSXNdtn
+ TxKV9+IhGYLA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9771"; a="250383954"
+X-IronPort-AV: E=Sophos;i="5.77,365,1596524400"; d="scan'208";a="250383954"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2020 21:52:02 -0700
-IronPort-SDR: x82gEK34dC95UziT4ndtWJN6AwHPnMkp3l4qzzlUShkUj1bG+fBVbfLsnsvQt/gP9k6Rt5dMtY
- kHxSNO3ui2Dw==
+ 11 Oct 2020 21:52:34 -0700
+IronPort-SDR: j0rOufZlH2hPBFaV/L6FpLxhk4AkeZ6B0iqzPzar6q1EvICYwZb9CrMGj0Qd8FiyFugM9Fw4m7
+ dWr5ys5bBlpA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,365,1596524400"; d="scan'208";a="313323366"
+X-IronPort-AV: E=Sophos;i="5.77,365,1596524400"; d="scan'208";a="529806896"
 Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.21])
- by orsmga003.jf.intel.com with ESMTP; 11 Oct 2020 21:52:01 -0700
+ by orsmga005.jf.intel.com with ESMTP; 11 Oct 2020 21:52:33 -0700
 From: Colin Xu <colin.xu@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: Fix virtual display setup for BXT/APL
-Date: Mon, 12 Oct 2020 12:51:59 +0800
-Message-Id: <20201012045159.226106-1-colin.xu@intel.com>
+Subject: [PATCH] drm/i915/gvt: Set SNOOP for PAT3 on BXT/APL to workaround GPU
+ BB hang
+Date: Mon, 12 Oct 2020 12:52:31 +0800
+Message-Id: <20201012045231.226748-1-colin.xu@intel.com>
 X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -53,244 +54,78 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Program display related vregs to proper value at initialization, setup
-virtual monitor and hotplug.
+If guest fills non-priv bb on ApolloLake/Broxton as Mesa i965 does in:
+717e7539124d (i965: Use a WC map and memcpy for the batch instead of pw-)
+Due to the missing flush of bb filled by VM vCPU, host GPU hangs on
+executing these MI_BATCH_BUFFER.
+
+Temporarily workaround this by setting SNOOP bit for PAT3 used by PPGTT
+PML4 PTE: PAT(0) PCD(1) PWT(1).
+
+The performance is still expected to be low, will need further improvement.
 
 Signed-off-by: Colin Xu <colin.xu@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/display.c | 183 ++++++++++++++++++++++++++++-
- drivers/gpu/drm/i915/gvt/mmio.c    |   5 +
- 2 files changed, 185 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/i915/gvt/handlers.c | 32 ++++++++++++++++++++++++++++-
+ 1 file changed, 31 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
-index 7ba16ddfe75f..f69e23b6218d 100644
---- a/drivers/gpu/drm/i915/gvt/display.c
-+++ b/drivers/gpu/drm/i915/gvt/display.c
-@@ -173,21 +173,162 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
- 	int pipe;
- 
- 	if (IS_BROXTON(dev_priv)) {
--		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &= ~(BXT_DE_PORT_HP_DDIA |
--			BXT_DE_PORT_HP_DDIB |
--			BXT_DE_PORT_HP_DDIC);
-+		enum transcoder trans;
-+		enum port port;
-+
-+		/* Clear PIPE, DDI, PHY, HPD before setting new */
-+		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-+			~(BXT_DE_PORT_HP_DDIA |
-+			  BXT_DE_PORT_HP_DDIB |
-+			  BXT_DE_PORT_HP_DDIC);
-+
-+		for_each_pipe(dev_priv, pipe) {
-+			vgpu_vreg_t(vgpu, PIPECONF(pipe)) &=
-+				~(PIPECONF_ENABLE | I965_PIPECONF_ACTIVE);
-+			vgpu_vreg_t(vgpu, DSPCNTR(pipe)) &= ~DISPLAY_PLANE_ENABLE;
-+			vgpu_vreg_t(vgpu, SPRCTL(pipe)) &= ~SPRITE_ENABLE;
-+			vgpu_vreg_t(vgpu, CURCNTR(pipe)) &= ~MCURSOR_MODE;
-+			vgpu_vreg_t(vgpu, CURCNTR(pipe)) |= MCURSOR_MODE_DISABLE;
-+		}
-+
-+		for (trans = TRANSCODER_A; trans <= TRANSCODER_EDP; trans++) {
-+			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(trans)) &=
-+				~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
-+				  TRANS_DDI_PORT_MASK | TRANS_DDI_FUNC_ENABLE);
-+		}
-+		vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) &=
-+			~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
-+			  TRANS_DDI_PORT_MASK);
-+
-+		for (port = PORT_A; port <= PORT_C; port++) {
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(port)) &=
-+				~BXT_PHY_LANE_ENABLED;
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(port)) |=
-+				(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-+				 BXT_PHY_LANE_POWERDOWN_ACK);
-+
-+			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(port)) &=
-+				~(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-+				  PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-+				  PORT_PLL_ENABLE);
-+
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) &=
-+				~(DDI_INIT_DISPLAY_DETECTED |
-+				  DDI_BUF_CTL_ENABLE);
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) |= DDI_BUF_IS_IDLE;
-+		}
-+
-+		vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) &= ~(BIT(0) | BIT(1));
-+		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) &=
-+			~PHY_POWER_GOOD;
-+		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY1)) &=
-+			~PHY_POWER_GOOD;
-+		vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) &= ~BIT(30);
-+		vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY1)) &= ~BIT(30);
-+
-+		vgpu_vreg_t(vgpu, SFUSE_STRAP) &= ~SFUSE_STRAP_DDIB_DETECTED;
-+		vgpu_vreg_t(vgpu, SFUSE_STRAP) &= ~SFUSE_STRAP_DDIC_DETECTED;
-+
-+		/*
-+		 * Only 1 PIPE enabled in current vGPU display and PIPE_A is
-+		 *  tied to TRANSCODER_A in HW, so it's safe to assume PIPE_A,
-+		 *   TRANSCODER_A can be enabled. PORT_x depends on the input of
-+		 *   setup_virtual_dp_monitor.
-+		 */
-+		vgpu_vreg_t(vgpu, PIPECONF(PIPE_A)) |= PIPECONF_ENABLE;
-+		vgpu_vreg_t(vgpu, PIPECONF(PIPE_A)) |= I965_PIPECONF_ACTIVE;
- 
-+		/*
-+		 * Golden M/N are calculated based on:
-+		 *   24 bpp, 4 lanes, 154000 pixel clk (from virtual EDID),
-+		 *   DP link clk 1620 MHz and non-constant_n.
-+		 * TODO: calculate DP link symbol clk and stream clk m/n.
-+		 */
-+		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) = 63 << TU_SIZE_SHIFT;
-+		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) |= 0x5b425e;
-+		vgpu_vreg_t(vgpu, PIPE_DATA_N1(TRANSCODER_A)) = 0x800000;
-+		vgpu_vreg_t(vgpu, PIPE_LINK_M1(TRANSCODER_A)) = 0x3cd6e;
-+		vgpu_vreg_t(vgpu, PIPE_LINK_N1(TRANSCODER_A)) = 0x80000;
-+
-+		/* Enable per-DDI/PORT vreg */
- 		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-+			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(1);
-+			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY1)) |=
-+				PHY_POWER_GOOD;
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY1)) |=
-+				BIT(30);
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_A)) |=
-+				BXT_PHY_LANE_ENABLED;
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_A)) &=
-+				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-+				  BXT_PHY_LANE_POWERDOWN_ACK);
-+			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_A)) |=
-+				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-+				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-+				 PORT_PLL_ENABLE);
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_A)) |=
-+				(DDI_BUF_CTL_ENABLE | DDI_INIT_DISPLAY_DETECTED);
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_A)) &=
-+				~DDI_BUF_IS_IDLE;
-+			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_EDP)) |=
-+				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
-+				 TRANS_DDI_FUNC_ENABLE);
- 			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
- 				BXT_DE_PORT_HP_DDIA;
- 		}
- 
- 		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-+			vgpu_vreg_t(vgpu, SFUSE_STRAP) |= SFUSE_STRAP_DDIB_DETECTED;
-+			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(0);
-+			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) |=
-+				PHY_POWER_GOOD;
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) |=
-+				BIT(30);
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_B)) |=
-+				BXT_PHY_LANE_ENABLED;
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_B)) &=
-+				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-+				  BXT_PHY_LANE_POWERDOWN_ACK);
-+			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_B)) |=
-+				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-+				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-+				 PORT_PLL_ENABLE);
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_B)) |=
-+				DDI_BUF_CTL_ENABLE;
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_B)) &=
-+				~DDI_BUF_IS_IDLE;
-+			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) |=
-+				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
-+				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
-+				 TRANS_DDI_FUNC_ENABLE);
- 			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
- 				BXT_DE_PORT_HP_DDIB;
- 		}
- 
- 		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-+			vgpu_vreg_t(vgpu, SFUSE_STRAP) |= SFUSE_STRAP_DDIC_DETECTED;
-+			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(0);
-+			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) |=
-+				PHY_POWER_GOOD;
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) |=
-+				BIT(30);
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) |=
-+				BXT_PHY_LANE_ENABLED;
-+			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) &=
-+				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-+				  BXT_PHY_LANE_POWERDOWN_ACK);
-+			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_C)) |=
-+				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-+				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-+				 PORT_PLL_ENABLE);
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_C)) |=
-+				DDI_BUF_CTL_ENABLE;
-+			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_C)) &=
-+				~DDI_BUF_IS_IDLE;
-+			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) |=
-+				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
-+				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
-+				 TRANS_DDI_FUNC_ENABLE);
- 			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
- 				BXT_DE_PORT_HP_DDIC;
- 		}
-@@ -519,6 +660,42 @@ void intel_vgpu_emulate_hotplug(struct intel_vgpu *vgpu, bool connected)
- 		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
- 				PORTD_HOTPLUG_STATUS_MASK;
- 		intel_vgpu_trigger_virtual_event(vgpu, DP_D_HOTPLUG);
-+	} else if (IS_BROXTON(i915)) {
-+		if (connected) {
-+			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-+				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
-+					BXT_DE_PORT_HP_DDIA;
-+			}
-+			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-+				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
-+					SFUSE_STRAP_DDIB_DETECTED;
-+				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
-+					BXT_DE_PORT_HP_DDIB;
-+			}
-+			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-+				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
-+					SFUSE_STRAP_DDIC_DETECTED;
-+				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
-+					BXT_DE_PORT_HP_DDIC;
-+			}
-+		} else {
-+			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-+				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-+					~BXT_DE_PORT_HP_DDIA;
-+			}
-+			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-+				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
-+					~SFUSE_STRAP_DDIB_DETECTED;
-+				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-+					~BXT_DE_PORT_HP_DDIB;
-+			}
-+			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-+				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
-+					~SFUSE_STRAP_DDIC_DETECTED;
-+				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-+					~BXT_DE_PORT_HP_DDIC;
-+			}
-+		}
- 	}
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index 9891501da064..75cb0394c661 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -1651,6 +1651,34 @@ static int edp_psr_imr_iir_write(struct intel_vgpu *vgpu,
+ 	return 0;
  }
  
-diff --git a/drivers/gpu/drm/i915/gvt/mmio.c b/drivers/gpu/drm/i915/gvt/mmio.c
-index b6811f6a230d..24210b1eaec5 100644
---- a/drivers/gpu/drm/i915/gvt/mmio.c
-+++ b/drivers/gpu/drm/i915/gvt/mmio.c
-@@ -280,6 +280,11 @@ void intel_vgpu_reset_mmio(struct intel_vgpu *vgpu, bool dmlr)
- 			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) |=
- 				    BXT_PHY_CMNLANE_POWERDOWN_ACK |
- 				    BXT_PHY_LANE_POWERDOWN_ACK;
-+			vgpu_vreg_t(vgpu, SKL_FUSE_STATUS) |=
-+				SKL_FUSE_DOWNLOAD_STATUS |
-+				SKL_FUSE_PG_DIST_STATUS(SKL_PG0) |
-+				SKL_FUSE_PG_DIST_STATUS(SKL_PG1) |
-+				SKL_FUSE_PG_DIST_STATUS(SKL_PG2);
- 		}
- 	} else {
- #define GVT_GEN8_MMIO_RESET_OFFSET		(0x44200)
++/**
++ * FixMe:
++ * If guest fills non-priv batch buffer on ApolloLake/Broxton as Mesa i965 did:
++ * 717e7539124d (i965: Use a WC map and memcpy for the batch instead of pwrite.)
++ * Due to the missing flush of bb filled by VM vCPU, host GPU hangs on executing
++ * these MI_BATCH_BUFFER.
++ * Temporarily workaround this by setting SNOOP bit for PAT3 used by PPGTT
++ * PML4 PTE: PAT(0) PCD(1) PWT(1).
++ * The performance is still expected to be low, will need further improvement.
++ */
++static int bxt_ppat_low_write(struct intel_vgpu *vgpu, unsigned int offset,
++			      void *p_data, unsigned int bytes)
++{
++	u64 pat =
++		GEN8_PPAT(0, CHV_PPAT_SNOOP) |
++		GEN8_PPAT(1, 0) |
++		GEN8_PPAT(2, 0) |
++		GEN8_PPAT(3, CHV_PPAT_SNOOP) |
++		GEN8_PPAT(4, CHV_PPAT_SNOOP) |
++		GEN8_PPAT(5, CHV_PPAT_SNOOP) |
++		GEN8_PPAT(6, CHV_PPAT_SNOOP) |
++		GEN8_PPAT(7, CHV_PPAT_SNOOP);
++
++	vgpu_vreg(vgpu, offset) = lower_32_bits(pat);
++
++	return 0;
++}
++
+ static int guc_status_read(struct intel_vgpu *vgpu,
+ 			   unsigned int offset, void *p_data,
+ 			   unsigned int bytes)
+@@ -2813,7 +2841,7 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
+ 
+ 	MMIO_DH(GEN6_PCODE_MAILBOX, D_BDW_PLUS, NULL, mailbox_write);
+ 
+-	MMIO_D(GEN8_PRIVATE_PAT_LO, D_BDW_PLUS);
++	MMIO_D(GEN8_PRIVATE_PAT_LO, D_BDW_PLUS & ~D_BXT);
+ 	MMIO_D(GEN8_PRIVATE_PAT_HI, D_BDW_PLUS);
+ 
+ 	MMIO_D(GAMTARBMODE, D_BDW_PLUS);
+@@ -3323,6 +3351,8 @@ static int init_bxt_mmio_info(struct intel_gvt *gvt)
+ 
+ 	MMIO_DFH(GEN9_CTX_PREEMPT_REG, D_BXT, F_CMD_ACCESS, NULL, NULL);
+ 
++	MMIO_DH(GEN8_PRIVATE_PAT_LO, D_BXT, NULL, bxt_ppat_low_write);
++
+ 	return 0;
+ }
+ 
 -- 
 2.28.0
 
