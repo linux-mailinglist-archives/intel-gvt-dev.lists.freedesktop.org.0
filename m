@@ -2,44 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CA602923A8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Oct 2020 10:33:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E13A82924BD
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Oct 2020 11:39:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 12FF96E8EF;
-	Mon, 19 Oct 2020 08:33:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9201A6E8DF;
+	Mon, 19 Oct 2020 09:39:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 65A856E8EF
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Oct 2020 08:33:40 +0000 (UTC)
-IronPort-SDR: m6VD488Jy1NcBiQufdUI/y4n7DwGvxmTOOSfJotVj6gN6OZcwyvPTi4sIoqaFCiDGfMM+4+mlr
- rtvZaZwad13w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9778"; a="167065642"
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 63E886E8DF;
+ Mon, 19 Oct 2020 09:39:56 +0000 (UTC)
+IronPort-SDR: ZPTpCuL7wippWyqR8pHkwAqC2RdNAxohwGBZQ0+HXLCT4tZySGRXPmp4zJRPoYJPsMNIKStYGd
+ BiF1CidLLFuA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9778"; a="167073074"
 X-IronPort-AV: E=Sophos;i="5.77,394,1596524400"; 
- d="asc'?scan'208";a="167065642"
+ d="asc'?scan'208";a="167073074"
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Oct 2020 01:33:38 -0700
-IronPort-SDR: zzl+vrHhrL103tXLrdRb11Cc6uXGiFIF2MOBbsKAhNLlKAsUUhqcno8Idu+CZgnEl+gQcsi+WA
- SAYG7v8LBNrA==
+ 19 Oct 2020 02:39:55 -0700
+IronPort-SDR: 7mzmnKM9OxVJ95ACLB9bWRMpBzrUnTMR1ifp4GnadhDA4TYYNYFWxK+SCPnZmu5xmsd5xw2R47
+ YIK0E2roO1fg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.77,394,1596524400"; 
- d="asc'?scan'208";a="347358907"
+ d="asc'?scan'208";a="347373974"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 19 Oct 2020 01:33:37 -0700
-Date: Mon, 19 Oct 2020 16:12:52 +0800
+ by fmsmga004.fm.intel.com with ESMTP; 19 Oct 2020 02:39:54 -0700
+Date: Mon, 19 Oct 2020 17:19:09 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Colin Xu <colin.xu@intel.com>
-Subject: Re: [PATCH v2] drm/i915/gvt: Only pin/unpin intel_context along with
- workload
-Message-ID: <20201019081252.GP27141@zhen-hp.sh.intel.com>
-References: <20201016054059.238371-1-colin.xu@intel.com>
+To: Stefan Fritsch <sf@sfritsch.de>
+Subject: Re: [Intel-gfx] drm/i915: Detecting Vt-d when running as guest os
+Message-ID: <20201019091909.GQ27141@zhen-hp.sh.intel.com>
+References: <alpine.DEB.2.21.2010161716270.29164@manul.sfritsch.de>
 MIME-Version: 1.0
-In-Reply-To: <20201016054059.238371-1-colin.xu@intel.com>
+In-Reply-To: <alpine.DEB.2.21.2010161716270.29164@manul.sfritsch.de>
 User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -54,137 +52,71 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1221033874=="
+Cc: Xiong Zhang <xiong.y.zhang@intel.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: multipart/mixed; boundary="===============1341317811=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============1221033874==
+--===============1341317811==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Y5wfsVCgeKAcINk2"
+	protocol="application/pgp-signature"; boundary="XFI+TFG+M3u0jUjZ"
 Content-Disposition: inline
 
 
---Y5wfsVCgeKAcINk2
+--XFI+TFG+M3u0jUjZ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2020.10.16 13:40:59 +0800, Colin Xu wrote:
-> One issue exposed after below commit with which the system will freeze
-> at suspend after vGPU is created (no need to activate the vGPU).
-> commit e6ba76480299 ("drm/i915: Remove i915->kernel_context")
+On 2020.10.16 17:19:19 +0200, Stefan Fritsch wrote:
+> Hi,
 >=20
-> Old implementation pin the intel_context at setup_submission and
-> unpin it at clean_submission. So after some vGPU is created, the
-> intel_context is always pinned there although no workload using it.
-> It will then block i915 enter suspend state.
+> if Linux is running as a guest and the host is doing igd-pass-thorugh wit=
+h=20
+> VT-d enabled, the i915 driver does not work all that great. The most=20
+> obvious problem is that there are dozens of 'Fault errors on pipe A'=20
+> errrors logged per second, but depending on the hardware there can be=20
+> other issues, too. I will send a patch to rate-limit that message in a=20
+> separate mail.
 >=20
-> There is no need to pin it all the time. Pin/unpin it around workload
-> lifecycle is more reasonable. After GVT enabled suspend/resume, the
-> pinned intel_context will also get unpined when userspace put VM process
-> into suspend state since all workloads are retired, then it's safe to
-> unpin all intel_context for workloads created. So move the pin/unpin to
-> create_workload and destroy_workload, while still keep the
-> create/destroy in old place.
+> The i915 has various quirks for VT-d and these should be enabled even if=
+=20
+> Linux is running as a guest and does itself have iommu enabled. I have=20
+> checked that making intel_vtd_active() form i915_drv.h return true makes=
+=20
+> the error messages go away.  How could Linux detect this situation? Maybe=
+=20
+> simply check the Hypervisor cpuid bit? Or would you prefer a module=20
+> parameter, or a combination of both? Or is there another way to detect=20
+> that VT-d is enabled for the igd device?
 >=20
-> V2:
-> Rebase.
->=20
-> Fixes: e6ba76480299 (drm/i915: Remove i915->kernel_context)
-> Signed-off-by: Colin Xu <colin.xu@intel.com>
-> ---
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
->  drivers/gpu/drm/i915/gvt/scheduler.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
-gvt/scheduler.c
-> index 1570eb8aa978..aed2ef6466a2 100644
-> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
-> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
-> @@ -1277,7 +1277,7 @@ void intel_vgpu_clean_submission(struct intel_vgpu =
-*vgpu)
-> =20
->  	i915_context_ppgtt_root_restore(s, i915_vm_to_ppgtt(s->shadow[0]->vm));
->  	for_each_engine(engine, vgpu->gvt->gt, id)
-> -		intel_context_unpin(s->shadow[id]);
-> +		intel_context_put(s->shadow[id]);
-> =20
->  	kmem_cache_destroy(s->workloads);
->  }
-> @@ -1369,11 +1369,6 @@ int intel_vgpu_setup_submission(struct intel_vgpu =
-*vgpu)
->  			ce->ring =3D __intel_context_ring_size(ring_size);
->  		}
-> =20
-> -		ret =3D intel_context_pin(ce);
-> -		intel_context_put(ce);
-> -		if (ret)
-> -			goto out_shadow_ctx;
-> -
->  		s->shadow[i] =3D ce;
->  	}
-> =20
-> @@ -1405,7 +1400,6 @@ int intel_vgpu_setup_submission(struct intel_vgpu *=
-vgpu)
->  		if (IS_ERR(s->shadow[i]))
->  			break;
-> =20
-> -		intel_context_unpin(s->shadow[i]);
->  		intel_context_put(s->shadow[i]);
->  	}
->  	i915_vm_put(&ppgtt->vm);
-> @@ -1479,6 +1473,7 @@ void intel_vgpu_destroy_workload(struct intel_vgpu_=
-workload *workload)
->  {
->  	struct intel_vgpu_submission *s =3D &workload->vgpu->submission;
-> =20
-> +	intel_context_unpin(s->shadow[workload->engine->id]);
->  	release_shadow_batch_buffer(workload);
->  	release_shadow_wa_ctx(&workload->wa_ctx);
-> =20
-> @@ -1724,6 +1719,12 @@ intel_vgpu_create_workload(struct intel_vgpu *vgpu,
->  		return ERR_PTR(ret);
->  	}
-> =20
-> +	ret =3D intel_context_pin(s->shadow[engine->id]);
-> +	if (ret) {
-> +		intel_vgpu_destroy_workload(workload);
-> +		return ERR_PTR(ret);
-> +	}
-> +
->  	return workload;
->  }
-> =20
-> --=20
-> 2.28.0
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+I think that's right, although I haven't tried to force intel_vtd_active()
+for guest, but I did see those fault errors on some machine. You can use
+hypervisor cpuid bit, and need to seperate case for GVT which is detected by
+intel_vgpu_active(), but I'm not sure if this should be taken in nested cas=
+e,
+suppose those quirks should still work?
 
 --=20
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---Y5wfsVCgeKAcINk2
+--XFI+TFG+M3u0jUjZ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX41KgwAKCRCxBBozTXgY
-J1fPAJ4qn/1gdK/4jvZdT0sLpdMZIOwl+QCgh22iJ5y8UA8OR48K+62g/Fckgb0=
-=FvDJ
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX41aDQAKCRCxBBozTXgY
+J2abAJ9FBRfy/XCAuzyBXvZ7qYdAtg5qXACgiCm75OZX0nqudHKex0UjrVbsUlw=
+=vIUZ
 -----END PGP SIGNATURE-----
 
---Y5wfsVCgeKAcINk2--
+--XFI+TFG+M3u0jUjZ--
 
---===============1221033874==
+--===============1341317811==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -195,4 +127,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1221033874==--
+--===============1341317811==--
