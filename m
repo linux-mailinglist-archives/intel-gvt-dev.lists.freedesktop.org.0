@@ -1,29 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B0BF29A5F3
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 08:58:00 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C33329ADFF
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 14:53:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 131D16EB0D;
-	Tue, 27 Oct 2020 07:57:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2C9856EB7D;
+	Tue, 27 Oct 2020 13:53:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mercury.liquor-maruyama.com (pc3.maruyama-unet.ocn.ne.jp
- [122.1.122.3])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7D84B6EB0D;
- Tue, 27 Oct 2020 07:57:58 +0000 (UTC)
-Received: from User (unknown [192.168.10.1])
- by mercury.liquor-maruyama.com (Postfix) with SMTP id DB3AC673CD6D;
- Tue, 27 Oct 2020 16:01:11 +0900 (JST)
-From: "erenich ekaterina"<verenichekaterinaekaterina457@gmail.com>
-Subject: Dear Beloved
-Date: Tue, 27 Oct 2020 00:01:19 -0700
+Received: from srv01.znettelecom.net (unknown [187.0.30.10])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1D43D6EB7D;
+ Tue, 27 Oct 2020 13:53:54 +0000 (UTC)
+Received: from [103.99.1.172] (helo=User)
+ by srv01.znettelecom.net with esmtpa (Exim 4.92.2)
+ (envelope-from <nina@vizenhosting.com>)
+ id 1kXPPI-0001aD-AR; Tue, 27 Oct 2020 11:53:01 -0200
+From: "Nicholas Toms"<nina@vizenhosting.com>
+Subject: Low-Cost Loans for SMEs & Investment Funding.
+Date: Tue, 27 Oct 2020 06:52:58 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <E1kXPPI-0001aD-AR@srv01.znettelecom.net>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -36,28 +37,22 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: verenichekaterina40@yahoo.com
+Reply-To: tomsnicholas@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20201027075759.131D16EB0D@gabe.freedesktop.org>
 
-Dear Beloved
+Dear 
 
-Life is gradually passing away from me as a result of my present medical condition and my personal doctor confided in me yesterday that I have only but few more weeks to live.
+My name is Nicholas Toms, an investment portfolio manager with ACLL . We offer the right loan Investment funding with low 
+interest to finance your business or project ranging from US$1M to US$2BIllion.
 
-In view of this setback, I want to donate my estate for humanitarian assistance, since this has always been the plan of my late husband and besides I have no child.
+Kindly contact me for more details as I am open to questions.
 
-In an effort to compliment the good work of God almighty and the wish of my late Husband I donate the sum of $2,800,000.00 (Two Million Eight Hundred Thousand United States Dollars) to you.
 
-On your acknowledgment of this mail and informing me of your nationality and current place of resident, my Bank will facilitate due processes for transfer of this legacy to you.
-
-May God bless you as you use this money judiciously for the work of charity.
-
-Sincere regards,
-
-Mrs.verenich ekaterina
+Sincerely,
+Nicholas Toms
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
