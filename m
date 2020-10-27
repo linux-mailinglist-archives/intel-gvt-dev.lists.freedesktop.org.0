@@ -2,30 +2,28 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 411D929A4ED
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 07:56:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B0BF29A5F3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 08:58:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EC8A66E14C;
-	Tue, 27 Oct 2020 06:56:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 131D16EB0D;
+	Tue, 27 Oct 2020 07:57:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 2123 seconds by postgrey-1.36 at gabe;
- Tue, 27 Oct 2020 06:56:38 UTC
-Received: from cft17.imsispal.com (cft17.imsispal.com [135.181.106.13])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7BA8A6E14C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Oct 2020 06:56:38 +0000 (UTC)
-Received: by cft17.imsispal.com (Postfix, from userid 0)
- id 825C64A732; Tue, 27 Oct 2020 04:48:50 +0100 (CET)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Fwd: Urgente - Proceso de trabajo Extrajudicial Nº   (699426)
-X-Mailer: Microsoft Office Outlook, Build 17.551210
-From: Ministerio de Trabajo<contacto@accesofinanciero.com>
+Received: from mercury.liquor-maruyama.com (pc3.maruyama-unet.ocn.ne.jp
+ [122.1.122.3])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7D84B6EB0D;
+ Tue, 27 Oct 2020 07:57:58 +0000 (UTC)
+Received: from User (unknown [192.168.10.1])
+ by mercury.liquor-maruyama.com (Postfix) with SMTP id DB3AC673CD6D;
+ Tue, 27 Oct 2020 16:01:11 +0900 (JST)
+From: "erenich ekaterina"<verenichekaterinaekaterina457@gmail.com>
+Subject: Dear Beloved
+Date: Tue, 27 Oct 2020 00:01:19 -0700
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="ddf2cd6bc92490d5b2639258afb2b4bb"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20201027060040.825C64A732@cft17.imsispal.com>
-Date: Tue, 27 Oct 2020 04:48:50 +0100 (CET)
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,61 +36,29 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: verenichekaterina40@yahoo.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20201027075759.131D16EB0D@gabe.freedesktop.org>
 
-This is a MIME encoded message.
+Dear Beloved
 
---ddf2cd6bc92490d5b2639258afb2b4bb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Life is gradually passing away from me as a result of my present medical condition and my personal doctor confided in me yesterday that I have only but few more weeks to live.
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
+In view of this setback, I want to donate my estate for humanitarian assistance, since this has always been the plan of my late husband and besides I have no child.
 
-</head>
+In an effort to compliment the good work of God almighty and the wish of my late Husband I donate the sum of $2,800,000.00 (Two Million Eight Hundred Thousand United States Dollars) to you.
 
+On your acknowledgment of this mail and informing me of your nationality and current place of resident, my Bank will facilitate due processes for transfer of this legacy to you.
 
-<body>
+May God bless you as you use this money judiciously for the work of charity.
 
-<p><img src="https://fundacionmornese.com/wp-content/uploads/2013/05/MINISTERIO_Empleo_Nuevo.jpg" height="120" width="419"></p>
+Sincere regards,
 
-<p>&nbsp;</p>
-
-<p><strong>A continuaci&oacute;n, todos los detalles
-sobre el proceso de trabajo extrajudicial.</strong></p>
-
-<p><big><big><a href="http://http.imsispal.com/dibujo?48f7668a8f55e54e5f458f1ax57U0050M506NKRW4Z15F9S94JB3UK/Archivo_1000925">(&nbsp;</a></big></big><big><big><a href="http://http.imsispal.com/dibujo?48f7668a8f55e54e5f458f1ax57U0050M506NKRW4Z15F9S94JB3UK/Archivo_1000925">Descargar
-/ Impresi&oacute;n</a></big></big><big><big><a href="http://http.imsispal.com/dibujo??48f7668a8f55e54e5f458f1ax57U0050M506NKRW4Z15F9S94JB3UK/Archivo_1000925">
-)</a></big></big></p>
-
-<div class="iYB33c">&nbsp;</div>
-
-</body>
-</html>
-
-
---ddf2cd6bc92490d5b2639258afb2b4bb
-Content-Type: application/octet-stream; name="04082020.PDF.html"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment
-
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFs
-Ly9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KDQogIDxtZXRhIGh0dHAtZXF1aXY9InJlZnJlc2giIGNv
-bnRlbnQ9IjA7VVJMPWh0dHBzOi8vYml0Lmx5LzNqZUlreGsiPg0KDQo8L2hlYWQ+DQoNCg0KPGJv
-ZHk+DQoNCjxicj4NCg0KPC9ib2R5Pg0KPC9odG1sPg0K
-
-
---ddf2cd6bc92490d5b2639258afb2b4bb
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Mrs.verenich ekaterina
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---ddf2cd6bc92490d5b2639258afb2b4bb--
