@@ -1,44 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C3DD29A363
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 04:38:49 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E78B29A3B0
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Oct 2020 05:53:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B092A6EAC1;
-	Tue, 27 Oct 2020 03:38:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 378E56EACB;
+	Tue, 27 Oct 2020 04:52:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E7F926EAC0;
- Tue, 27 Oct 2020 03:38:45 +0000 (UTC)
-IronPort-SDR: kzcPYB4aFwiRVkfmVt3//cMlhFZ+9doQl7EiX4vuCNNVK6hrXVRLIXBFUJnu4y3PsiJ+YvWBd5
- MdCqMUuOr0HQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9786"; a="229658689"
-X-IronPort-AV: E=Sophos;i="5.77,422,1596524400"; 
- d="asc'?scan'208";a="229658689"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E72766E2DC;
+ Tue, 27 Oct 2020 04:52:57 +0000 (UTC)
+IronPort-SDR: vIhtATg6+m27WXsnpKwJ/qqZDb/uK8Oq9cmDJaWWIRyYx74Udah0uIAtP4K27hlFyD9HJwvTu7
+ cXHkMQ1anuLQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9786"; a="147310796"
+X-IronPort-AV: E=Sophos;i="5.77,422,1596524400"; d="scan'208";a="147310796"
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2020 20:38:45 -0700
-IronPort-SDR: rYD4q+/uRuUXv5zFXvVKuiTb7Fa9yBDAXG5PSLUWxFsjiSbwpdjhY010vMf/+lOn3VUHKLTDil
- Yq3S4MkizPpQ==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Oct 2020 21:52:56 -0700
+IronPort-SDR: ZCgTeJdM5KITVfeFoGt3QGQvjY9WvqykVAbMkSbYMhZiWdhw3gczGUkiFA3Mz1WdzQRytHT13c
+ 5fSlaS5pQqlw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,422,1596524400"; 
- d="asc'?scan'208";a="350127270"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga008.jf.intel.com with ESMTP; 26 Oct 2020 20:38:43 -0700
-Date: Tue, 27 Oct 2020 11:17:40 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20201027031740.GA27141@zhen-hp.sh.intel.com>
+X-IronPort-AV: E=Sophos;i="5.77,422,1596524400"; d="scan'208";a="394342929"
+Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.21])
+ by orsmga001.jf.intel.com with ESMTP; 26 Oct 2020 21:52:54 -0700
+From: Colin Xu <colin.xu@intel.com>
+To: zhenyuw@linux.intel.com
+Subject: [PATCH v7 0/2] Enable GVT suspend/resume
+Date: Tue, 27 Oct 2020 12:52:49 +0800
+Message-Id: <20201027045249.158412-1-colin.xu@intel.com>
+X-Mailer: git-send-email 2.29.1
 MIME-Version: 1.0
-User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,96 +46,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============0985265116=="
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ colin.xu@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+This patchset enables GVT suspend/resume so that GVT enabled VM can
+continue running after host resuming from suspend state.
 
---===============0985265116==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ri7MIv52hxsKkbzo"
-Content-Disposition: inline
+V2:
+- Change kzalloc/kfree to vzalloc/vfree since the space allocated
+from kmalloc may not enough for all saved GGTT entries.
+- Keep gvt suspend/resume wrapper in intel_gvt.h/intel_gvt.c and
+move the actual implementation to gvt.h/gvt.c. (zhenyu)
+- Check gvt config on and active with intel_gvt_active(). (zhenyu)
 
+V3: (zhenyu)
+- Incorrect copy length. Should be num entries * entry size.
+- Use memcpy_toio()/memcpy_fromio() instead of memcpy for iomem.
+- Add F_PM_SAVE flags to indicate which MMIOs to save/restore for PM.
 
---ri7MIv52hxsKkbzo
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+V4:
+Rebase.
 
+V5:
+Fail intel_gvt_pm_suspend if fail to save ggtt.
 
-Hi,
+V6:
+Save host entry to per-vGPU gtt.ggtt_mm on each host_entry update so
+that no need to read from HW and save during suspend.
 
-Here's first gvt fixes for 5.10 which includes more vGPU
-suspend/resume fix in HWSP reset handling, and also fix for host i915
-suspend regression when vGPU is created (not need to be active), and
-one workaround for APL guest hang issue.
+V7:
+Restore GGTT entry based on present bit.
+Split fence restore and mmio restore in different functions.
 
-Thanks
---
-The following changes since commit 16cce04cdb200ba905d1241b425ac48da5a9ace5:
+Colin Xu (2):
+  drm/i915/gvt: Save/restore HW status to support GVT suspend/resume
+  drm/i915/gvt: Add GVT resume routine to i915
 
-  drm/i915/selftests: Push the fake iommu device from the stack to data (20=
-20-09-23 10:15:46 +0300)
+ drivers/gpu/drm/i915/gvt/gtt.c      | 64 +++++++++++++++++++++++++++++
+ drivers/gpu/drm/i915/gvt/gtt.h      |  4 ++
+ drivers/gpu/drm/i915/gvt/gvt.c      |  9 ++++
+ drivers/gpu/drm/i915/gvt/gvt.h      |  3 ++
+ drivers/gpu/drm/i915/gvt/handlers.c | 44 ++++++++++++++++++--
+ drivers/gpu/drm/i915/gvt/mmio.h     |  4 ++
+ drivers/gpu/drm/i915/i915_drv.c     |  2 +
+ drivers/gpu/drm/i915/intel_gvt.c    | 15 +++++++
+ drivers/gpu/drm/i915/intel_gvt.h    |  5 +++
+ 9 files changed, 147 insertions(+), 3 deletions(-)
 
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux tags/gvt-fixes-2020-10-27
-
-for you to fetch changes up to 401ccfa87856656b874c737522ea92721394a348:
-
-  drm/i915/gvt: Only pin/unpin intel_context along with workload (2020-10-1=
-9 16:54:28 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2020-10-27
-
-- Fix HWSP reset handling during vGPU suspend/resume (Colin)
-- Apply flush workaround on APL now for possible guest hang (Colin)
-- Fix vGPU context pin/unpin also for host suspend regression with
-  vGPU created (Colin)
-
-----------------------------------------------------------------
-Colin Xu (3):
-      drm/i915/gvt: Allow zero out HWSP addr on hws_pga_write
-      drm/i915/gvt: Set SNOOP for PAT3 on BXT/APL to workaround GPU BB hang
-      drm/i915/gvt: Only pin/unpin intel_context along with workload
-
- drivers/gpu/drm/i915/gvt/handlers.c  | 35 ++++++++++++++++++++++++++++++++=
-+--
- drivers/gpu/drm/i915/gvt/scheduler.c | 15 ++++++++-------
- 2 files changed, 41 insertions(+), 9 deletions(-)
-
-
---=20
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---ri7MIv52hxsKkbzo
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX5eRVAAKCRCxBBozTXgY
-JwBpAJ9w/PhFwAJCfEEnYz4/3zmGBHGpKwCfWW+ILCCfAYFQiNYp5YAD3iToAk8=
-=+trd
------END PGP SIGNATURE-----
-
---ri7MIv52hxsKkbzo--
-
---===============0985265116==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+2.29.1
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0985265116==--
