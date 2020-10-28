@@ -1,56 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6496B29CF0D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Oct 2020 09:40:23 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3583B29CFA6
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Oct 2020 12:19:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 21BD66E4BA;
-	Wed, 28 Oct 2020 08:40:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D578B6EC67;
+	Wed, 28 Oct 2020 11:19:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E8E1A6E4AE
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Oct 2020 08:40:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
- bh=m6OayGkQUTRYuLmdMwsAeu471FbDicCP4nI1S4NfV8w=; b=MfWiZNEF+XKsmtcVtxeEmqOxqT
- wr7TWMXrcQxygBubvCFQtrXHLeTWgRxIlAEBpsEudIuos+rythVv4RIWJ1X+Oa520i0DckReb+GLR
- WTYcOKat82vKwyg406i4n32VTrSdEKZcaFH7ILUCi1bzy1HwxAgml6ltn2lCLC6bp2g9L5YGoNyj8
- 3sC56sXaKjUeIOjRAFiPTNm/IM6457eSUNNf/h/Zy4cXFQFWTuGA/9ipvx5D8RBQ3fAETc9zKW42l
- IGMFMNzNZE6dpbDMha9PF8zGaCCwKUFkvnctvTnDYACzIE7/Q5Be7O6E9fYOGAG/rhKK66r8IoV1z
- bNI7KI1A==;
-Received: from sslproxy03.your-server.de ([88.198.220.132])
- by www413.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92.3)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1kXh0D-000718-2f; Wed, 28 Oct 2020 09:40:17 +0100
-Received: from [5.12.18.230] (helo=localhost.localdomain)
- by sslproxy03.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1kXh0C-000CeB-Ri; Wed, 28 Oct 2020 09:40:16 +0100
-Message-ID: <9286d367b5f95b4b819f5f41b7654e5a79e40328.camel@cyberus-technology.de>
-Subject: Re: GVT Scheduler
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-To: "Wang, Zhi A" <zhi.a.wang@intel.com>, Intel GVT Dev
- <intel-gvt-dev@lists.freedesktop.org>, Stefan Hertrampf
- <stefan.hertrampf@cyberus-technology.de>
-Date: Wed, 28 Oct 2020 10:40:15 +0200
-In-Reply-To: <5a74d2abdd034a61a336944148b9d40c@intel.com>
-References: <81492552a35a8e0556841873c17834f4d182bcad.camel@cyberus-technology.de>
- <8ffc19621b9873c4a280b1556a8f381c55b0affb.camel@cyberus-technology.de>
- <e2d543701d3442f78aae7bc10b54487d@intel.com>
- <f0e716100ad598bba1de032346994226550a8b10.camel@cyberus-technology.de>
- <5a74d2abdd034a61a336944148b9d40c@intel.com>
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.36.5 (3.36.5-1.fc32) 
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1C5BD6E4FE;
+ Wed, 28 Oct 2020 11:18:50 +0000 (UTC)
+IronPort-SDR: uI3tlewNgphi5B1hf8FTXEMaWbnJGHVgxP/f2yF4JEDoRKCZhBJ3LCCwq1XhVC/50ozBP7C9YT
+ 1bKFFLYgyn4g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9787"; a="232423283"
+X-IronPort-AV: E=Sophos;i="5.77,426,1596524400"; 
+ d="scan'208,217";a="232423283"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Oct 2020 04:18:49 -0700
+IronPort-SDR: NWJjm8rflGAKvSqCR/AytOskHVJGktQfmnO0sTqpl4BYYb9wduRxYHmrnJG2K0kAU8FGRIYKPu
+ sgChWzJzLdfA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,426,1596524400"; 
+ d="scan'208,217";a="318560558"
+Received: from irsmsx602.ger.corp.intel.com ([163.33.146.8])
+ by orsmga003.jf.intel.com with ESMTP; 28 Oct 2020 04:18:48 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ irsmsx602.ger.corp.intel.com (163.33.146.8) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 28 Oct 2020 11:18:47 +0000
+Received: from fmsmsx610.amr.corp.intel.com ([10.18.126.90]) by
+ fmsmsx610.amr.corp.intel.com ([10.18.126.90]) with mapi id 15.01.1713.004;
+ Wed, 28 Oct 2020 04:18:45 -0700
+From: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [Intel-gfx] [PULL] gvt-fixes
+Thread-Topic: [Intel-gfx] [PULL] gvt-fixes
+Thread-Index: AQHWrBKsP6vgaCbhMUe7vqjiY+MZE6msYcGAgADzpYA=
+Date: Wed, 28 Oct 2020 11:18:45 +0000
+Message-ID: <C9292B4F-9A82-46AF-BFAB-D372D202F314@intel.com>
+References: <20201027031740.GA27141@zhen-hp.sh.intel.com>
+ <20201027204643.GE3771340@intel.com>
+In-Reply-To: <20201027204643.GE3771340@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Apple Mail (2.3608.120.23.2.4)
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.4/25970/Tue Oct 27 13:18:55 2020)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,112 +65,346 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Nikula, Jani" <jani.nikula@intel.com>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv, 
+ Zhiyuan" <zhiyuan.lv@intel.com>, "Yuan, Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============0754569269=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+--===============0754569269==
+Content-Language: en-US
+Content-Type: multipart/alternative;
+	boundary="_000_C9292B4F9A8246AFBFABD372D202F314intelcom_"
+
+--_000_C9292B4F9A8246AFBFABD372D202F314intelcom_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+On Oct 27, 2020, at 1:46 PM, Rodrigo Vivi <rodrigo.vivi@intel.com<mailto:ro=
+drigo.vivi@intel.com>> wrote:
+
+On Tue, Oct 27, 2020 at 11:17:40AM +0800, Zhenyu Wang wrote:
+
 Hi,
 
-On Mon, 2020-10-19 at 06:11 +0000, Wang, Zhi A wrote:
-> According to the discussion last time, I reviewed all the code paths of
-> execlist context schedule-in and schedule-out in your code repo.
+Here's first gvt fixes for 5.10 which includes more vGPU
+suspend/resume fix in HWSP reset handling, and also fix for host i915
+suspend regression when vGPU is created (not need to be active), and
+one workaround for APL guest hang issue.
 
-Thank you! Sorry for getting back so late, but a lot of us are currently on
-vacation. I'm also adding Stefan to the thread, because I'm not available next
-week and it would be good if we keep this rolling. :)
+pulled to drm-intel-fixes
 
-Our current workaround [1] results in hung tasks unfortunately, so it would be
-really helpful to get to the rootcause of this issue to avoid having to put
-bandaids over it.
+I'm actually pulling it off. I had bypassed dim, considering this was an ol=
+d issue with our email decoder,
+but it happens that
 
->  According to our assumption, there might be extra execlist schedule-out
-> status notification. Is it possible that you can open the tracepoint in
-> execlist_context_schedule_in and execlist_context_schedule_out in intel_lrc.c?
+$ git show 401ccfa87856 | grep Fixes
+Fixes: e6ba76480299 (drm/i915: Remove i915->kernel_context)
 
-We'll try turning trace_i915_request_in / trace_i915_request_out into printks
-and see whether this helps in debugging. Alternatively, is there a way to get
-trace events out of a crashed kernel?
+And this is what it should have:
 
-Btw, would it make sense to count the schedule_in and schedule_out events for
-each requests and dump a stacktrace when we see an unpaired schedule_out?
+$ dim fixes e6ba76480299 | grep Fixes
+Fixes: e6ba76480299 ("drm/i915: Remove i915->kernel_context")
 
-> so that we can check if there are unpair schedule_in and schedule_out events.
-> Also, better move the trace_i915_request_in to __execlists_schedule_in as
-> there is a seqlock like sync try_cmpxchg around.
+Sorry for the trouble.
+Let's fix this in place so we don't propagate bad tag that might break othe=
+r scripts on the way
 
-Will do!
+Sorry,
+Rodrigo.
 
-Thanks,
-Julian
+thanks
 
-[1] 
-https://github.com/blitz/linux/commit/50a1cfd0695f7c141d16377c087a3642faee9b99
 
-> -----Original Message-----
-> From: intel-gvt-dev <intel-gvt-dev-bounces@lists.freedesktop.org> On Behalf Of
-> Julian Stecklina
-> Sent: Friday, October 9, 2020 12:26 PM
-> To: Wang, Zhi A <zhi.a.wang@intel.com>; Intel GVT Dev <
-> intel-gvt-dev@lists.freedesktop.org>
-> Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>
-> Subject: Re: GVT Scheduler
-> 
-> Hi Zhi,
-> 
-> your explanation is really helpful. Thank you! See my comments below.
-> 
-> On Thu, 2020-10-08 at 16:41 +0000, Wang, Zhi A wrote:
-> > Now let's see the timeline:
-> > 
-> > - GVT-g submits a workload to i915.
-> > - i915 append the breadcrumb to the workload
-> > - i915 submits the workload to HW.
-> > - GVT-g called i915_wait_request to wait for the GPU execution passed 
-> > the breadcrumb. (But the context might not be switched out at this 
-> > time)
-> > - GVT-g waits for the context to be switched out by the 
-> > shadow_context_status_change. (Because GVT-g need to copy the content 
-> > in the shadow context back to the guest context. The shadow context 
-> > must be idle at this time.)
-> > - No one is going to touch the shadow context anymore and GVT-g call 
-> > complete_current_workload.
-> > 
-> > The race between shadow_context_status_change and 
-> > complete_current_workload should be addressed in our design. So this 
-> > problem might be caused by i915 change, e.g. the timing of call 
-> > shadow_context_status_change is changed. But we will double confirm in GVT-g 
-> > as well.
-> 
-> We definitely see shadow_context_status_change being called for a workload
-> that has already passed beyond wait_event(workload->shadow_ctx_status_wq,
-> ...); in complete_current_workload.
-> 
-> > The patch you mentioned is for a corner case in GPU reset. But this 
-> > shouldn't happen in a normal submission flow unless someone breaks the flow
-> > above.
-> 
-> The problem for us is that we can only reproduce this issue in a hardened
-> Linux build after many hours. So it's not exactly the most friendly issue to
-> debug. :)
-> 
-> We are currently using a workaround that serializes the actual completion of
-> the workload against handling schedule out in shadow_context_status_change:
-> https://github.com/blitz/linux/commit/50a1cfd0695f7c141d16377c087a3642faee9b99
-> 
-> This is not pretty, but so far this has prevented the issue from popping up
-> again.
-> 
-> Thanks,
-> Julian
-> 
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+Thanks
+--
+The following changes since commit 16cce04cdb200ba905d1241b425ac48da5a9ace5=
+:
+
+ drm/i915/selftests: Push the fake iommu device from the stack to data (202=
+0-09-23 10:15:46 +0300)
+
+are available in the Git repository at:
+
+ https://github.com/intel/gvt-linux tags/gvt-fixes-2020-10-27
+
+for you to fetch changes up to 401ccfa87856656b874c737522ea92721394a348:
+
+ drm/i915/gvt: Only pin/unpin intel_context along with workload (2020-10-19=
+ 16:54:28 +0800)
+
+----------------------------------------------------------------
+gvt-fixes-2020-10-27
+
+- Fix HWSP reset handling during vGPU suspend/resume (Colin)
+- Apply flush workaround on APL now for possible guest hang (Colin)
+- Fix vGPU context pin/unpin also for host suspend regression with
+ vGPU created (Colin)
+
+----------------------------------------------------------------
+Colin Xu (3):
+     drm/i915/gvt: Allow zero out HWSP addr on hws_pga_write
+     drm/i915/gvt: Set SNOOP for PAT3 on BXT/APL to workaround GPU BB hang
+     drm/i915/gvt: Only pin/unpin intel_context along with workload
+
+drivers/gpu/drm/i915/gvt/handlers.c  | 35 +++++++++++++++++++++++++++++++++=
+--
+drivers/gpu/drm/i915/gvt/scheduler.c | 15 ++++++++-------
+2 files changed, 41 insertions(+), 9 deletions(-)
+
+
+--
+
+$gpg --keyserver wwwkeys.pgp.net<http://wwwkeys.pgp.net> --recv-keys 4D7818=
+27
+
+
+_______________________________________________
+Intel-gfx mailing list
+Intel-gfx@lists.freedesktop.org<mailto:Intel-gfx@lists.freedesktop.org>
+https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+
+
+--_000_C9292B4F9A8246AFBFABD372D202F314intelcom_
+Content-Type: text/html; charset="us-ascii"
+Content-ID: <F60C8D5E5E452C46888CB32D04CA331E@intel.com>
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+</head>
+<body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space; line-break:=
+ after-white-space;" class=3D"">
+<br class=3D"">
+<div><br class=3D"">
+<blockquote type=3D"cite" class=3D"">
+<div class=3D"">On Oct 27, 2020, at 1:46 PM, Rodrigo Vivi &lt;<a href=3D"ma=
+ilto:rodrigo.vivi@intel.com" class=3D"">rodrigo.vivi@intel.com</a>&gt; wrot=
+e:</div>
+<br class=3D"Apple-interchange-newline">
+<div class=3D""><span style=3D"caret-color: rgb(0, 0, 0); font-family: Helv=
+etica; font-size: 12px; font-style: normal; font-variant-caps: normal; font=
+-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0p=
+x; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-te=
+xt-stroke-width: 0px; text-decoration: none; float: none; display: inline !=
+important;" class=3D"">On
+ Tue, Oct 27, 2020 at 11:17:40AM &#43;0800, Zhenyu Wang wrote:</span><br st=
+yle=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; =
+font-style: normal; font-variant-caps: normal; font-weight: normal; letter-=
+spacing: normal; text-align: start; text-indent: 0px; text-transform: none;=
+ white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; te=
+xt-decoration: none;" class=3D"">
+<blockquote type=3D"cite" style=3D"font-family: Helvetica; font-size: 12px;=
+ font-style: normal; font-variant-caps: normal; font-weight: normal; letter=
+-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-=
+transform: none; white-space: normal; widows: auto; word-spacing: 0px; -web=
+kit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration=
+: none;" class=3D"">
+<br class=3D"">
+Hi,<br class=3D"">
+<br class=3D"">
+Here's first gvt fixes for 5.10 which includes more vGPU<br class=3D"">
+suspend/resume fix in HWSP reset handling, and also fix for host i915<br cl=
+ass=3D"">
+suspend regression when vGPU is created (not need to be active), and<br cla=
+ss=3D"">
+one workaround for APL guest hang issue.<br class=3D"">
+</blockquote>
+<br style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: normal; l=
+etter-spacing: normal; text-align: start; text-indent: 0px; text-transform:=
+ none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0=
+px; text-decoration: none;" class=3D"">
+<span style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size=
+: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal;=
+ letter-spacing: normal; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width:=
+ 0px; text-decoration: none; float: none; display: inline !important;" clas=
+s=3D"">pulled
+ to drm-intel-fixes</span><br style=3D"caret-color: rgb(0, 0, 0); font-fami=
+ly: Helvetica; font-size: 12px; font-style: normal; font-variant-caps: norm=
+al; font-weight: normal; letter-spacing: normal; text-align: start; text-in=
+dent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -w=
+ebkit-text-stroke-width: 0px; text-decoration: none;" class=3D"">
+</div>
+</blockquote>
+<div><br class=3D"">
+</div>
+<div>I'm actually pulling it off. I had bypassed dim, considering this was =
+an old issue with our email decoder,</div>
+<div>but it happens that&nbsp;</div>
+<div><br class=3D"">
+</div>
+<div>$ git show 401ccfa87856 | grep Fixes</div>
+<div>Fixes: e6ba76480299 (drm/i915: Remove i915-&gt;kernel_context)</div>
+<div><br class=3D"">
+</div>
+<div>And this is what it should have:</div>
+<div><br class=3D"">
+</div>
+<div>$ dim fixes e6ba76480299 | grep Fixes</div>
+<div>Fixes: e6ba76480299 (&quot;drm/i915: Remove i915-&gt;kernel_context&qu=
+ot;)</div>
+<div><br class=3D"">
+</div>
+<div>Sorry for the trouble.</div>
+<div>Let's fix this in place so we don't propagate bad tag that might break=
+ other scripts on the way</div>
+<div><br class=3D"">
+</div>
+<div>Sorry,</div>
+<div>Rodrigo.</div>
+<br class=3D"">
+<blockquote type=3D"cite" class=3D"">
+<div class=3D""><span style=3D"caret-color: rgb(0, 0, 0); font-family: Helv=
+etica; font-size: 12px; font-style: normal; font-variant-caps: normal; font=
+-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0p=
+x; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-te=
+xt-stroke-width: 0px; text-decoration: none; float: none; display: inline !=
+important;" class=3D"">thanks</span><br style=3D"caret-color: rgb(0, 0, 0);=
+ font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-=
+caps: normal; font-weight: normal; letter-spacing: normal; text-align: star=
+t; text-indent: 0px; text-transform: none; white-space: normal; word-spacin=
+g: 0px; -webkit-text-stroke-width: 0px; text-decoration: none;" class=3D"">
+<br style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: normal; l=
+etter-spacing: normal; text-align: start; text-indent: 0px; text-transform:=
+ none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0=
+px; text-decoration: none;" class=3D"">
+<blockquote type=3D"cite" style=3D"font-family: Helvetica; font-size: 12px;=
+ font-style: normal; font-variant-caps: normal; font-weight: normal; letter=
+-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-=
+transform: none; white-space: normal; widows: auto; word-spacing: 0px; -web=
+kit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration=
+: none;" class=3D"">
+<br class=3D"">
+Thanks<br class=3D"">
+--<br class=3D"">
+The following changes since commit 16cce04cdb200ba905d1241b425ac48da5a9ace5=
+:<br class=3D"">
+<br class=3D"">
+&nbsp;drm/i915/selftests: Push the fake iommu device from the stack to data=
+ (2020-09-23 10:15:46 &#43;0300)<br class=3D"">
+<br class=3D"">
+are available in the Git repository at:<br class=3D"">
+<br class=3D"">
+&nbsp;<a href=3D"https://github.com/intel/gvt-linux" class=3D"">https://git=
+hub.com/intel/gvt-linux</a> tags/gvt-fixes-2020-10-27<br class=3D"">
+<br class=3D"">
+for you to fetch changes up to 401ccfa87856656b874c737522ea92721394a348:<br=
+ class=3D"">
+<br class=3D"">
+&nbsp;drm/i915/gvt: Only pin/unpin intel_context along with workload (2020-=
+10-19 16:54:28 &#43;0800)<br class=3D"">
+<br class=3D"">
+----------------------------------------------------------------<br class=
+=3D"">
+gvt-fixes-2020-10-27<br class=3D"">
+<br class=3D"">
+- Fix HWSP reset handling during vGPU suspend/resume (Colin)<br class=3D"">
+- Apply flush workaround on APL now for possible guest hang (Colin)<br clas=
+s=3D"">
+- Fix vGPU context pin/unpin also for host suspend regression with<br class=
+=3D"">
+&nbsp;vGPU created (Colin)<br class=3D"">
+<br class=3D"">
+----------------------------------------------------------------<br class=
+=3D"">
+Colin Xu (3):<br class=3D"">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drm/i915/gvt: Allow zero out HWSP addr on hws=
+_pga_write<br class=3D"">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drm/i915/gvt: Set SNOOP for PAT3 on BXT/APL t=
+o workaround GPU BB hang<br class=3D"">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drm/i915/gvt: Only pin/unpin intel_context al=
+ong with workload<br class=3D"">
+<br class=3D"">
+drivers/gpu/drm/i915/gvt/handlers.c &nbsp;| 35 &#43;&#43;&#43;&#43;&#43;&#4=
+3;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#4=
+3;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;--<br class=
+=3D"">
+drivers/gpu/drm/i915/gvt/scheduler.c | 15 &#43;&#43;&#43;&#43;&#43;&#43;&#4=
+3;&#43;-------<br class=3D"">
+2 files changed, 41 insertions(&#43;), 9 deletions(-)<br class=3D"">
+<br class=3D"">
+<br class=3D"">
+--<span class=3D"Apple-converted-space">&nbsp;</span><br class=3D"">
+<br class=3D"">
+$gpg --keyserver <a href=3D"http://wwwkeys.pgp.net" class=3D"">wwwkeys.pgp.=
+net</a> --recv-keys 4D781827<br class=3D"">
+</blockquote>
+<br style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: normal; l=
+etter-spacing: normal; text-align: start; text-indent: 0px; text-transform:=
+ none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0=
+px; text-decoration: none;" class=3D"">
+<br style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: normal; l=
+etter-spacing: normal; text-align: start; text-indent: 0px; text-transform:=
+ none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0=
+px; text-decoration: none;" class=3D"">
+<span style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size=
+: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal;=
+ letter-spacing: normal; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width:=
+ 0px; text-decoration: none; float: none; display: inline !important;" clas=
+s=3D"">_______________________________________________</span><br style=3D"c=
+aret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-sty=
+le: normal; font-variant-caps: normal; font-weight: normal; letter-spacing:=
+ normal; text-align: start; text-indent: 0px; text-transform: none; white-s=
+pace: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decor=
+ation: none;" class=3D"">
+<span style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size=
+: 12px; font-style: normal; font-variant-caps: normal; font-weight: normal;=
+ letter-spacing: normal; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width:=
+ 0px; text-decoration: none; float: none; display: inline !important;" clas=
+s=3D"">Intel-gfx
+ mailing list</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: He=
+lvetica; font-size: 12px; font-style: normal; font-variant-caps: normal; fo=
+nt-weight: normal; letter-spacing: normal; text-align: start; text-indent: =
+0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-=
+text-stroke-width: 0px; text-decoration: none;" class=3D"">
+<a href=3D"mailto:Intel-gfx@lists.freedesktop.org" style=3D"font-family: He=
+lvetica; font-size: 12px; font-style: normal; font-variant-caps: normal; fo=
+nt-weight: normal; letter-spacing: normal; orphans: auto; text-align: start=
+; text-indent: 0px; text-transform: none; white-space: normal; widows: auto=
+; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-wi=
+dth: 0px;" class=3D"">Intel-gfx@lists.freedesktop.org</a><br style=3D"caret=
+-color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: normal; letter-spacing: nor=
+mal; text-align: start; text-indent: 0px; text-transform: none; white-space=
+: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoratio=
+n: none;" class=3D"">
+<a href=3D"https://lists.freedesktop.org/mailman/listinfo/intel-gfx" style=
+=3D"font-family: Helvetica; font-size: 12px; font-style: normal; font-varia=
+nt-caps: normal; font-weight: normal; letter-spacing: normal; orphans: auto=
+; text-align: start; text-indent: 0px; text-transform: none; white-space: n=
+ormal; widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; -we=
+bkit-text-stroke-width: 0px;" class=3D"">https://lists.freedesktop.org/mail=
+man/listinfo/intel-gfx</a></div>
+</blockquote>
+</div>
+<br class=3D"">
+</body>
+</html>
+
+--_000_C9292B4F9A8246AFBFABD372D202F314intelcom_--
+
+--===============0754569269==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0754569269==--
