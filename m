@@ -1,57 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B514929D0D0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Oct 2020 16:46:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B3E2429F212
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Oct 2020 17:48:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 777BE6E483;
-	Wed, 28 Oct 2020 15:46:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 596FB6E8E2;
+	Thu, 29 Oct 2020 16:48:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 938956E4A2
+Received: from mail-qk1-x746.google.com (mail-qk1-x746.google.com
+ [IPv6:2607:f8b0:4864:20::746])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B589C6E8E3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Oct 2020 15:46:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
- bh=GvEudwaPfTvtsmVbyvDnBGdcTHzSocaYi7DR5lOvJqg=; b=apZ9e4QyW/YDzsL00NJkOd453i
- ytlGNzpMTcdjGka2oK072EoY4ylVcL+TCSJfAqFChNJ6cr9cNlxjzs+7qe8cxzQraMKKeRKiHKSQl
- Fg55zEFsg9V0mqQY8gPVO1/IXlTzivwEyIgaDYtz8rZb5v9nmfgRsMKCiIJ6OuO7NuO6USChmD3Og
- OlINdnghG1A/wexJPF35/6zCMLiz7a0j4PqB09mIrV31SR7bi3sz3tPygbqUCGOniyrrkKp9U44vY
- /JvYwfPimvK7sgSqYuxIG+5q1JpHvbr7u5LooHCG66FHbRrX2O4nZaf32JPUYlgdTJjZjZOg//6DO
- Snqt9hag==;
-Received: from sslproxy06.your-server.de ([78.46.172.3])
- by www413.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92.3)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1kXneY-0000oY-Hh; Wed, 28 Oct 2020 16:46:22 +0100
-Received: from [5.12.18.230] (helo=localhost.localdomain)
- by sslproxy06.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1kXneY-000RRV-B7; Wed, 28 Oct 2020 16:46:22 +0100
-Message-ID: <1de9f44bf6c7766a2afc089395984192995be2ec.camel@cyberus-technology.de>
-Subject: Re: GVT Scheduler
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
-To: "Wang, Zhi A" <zhi.a.wang@intel.com>, Intel GVT Dev
- <intel-gvt-dev@lists.freedesktop.org>, Stefan Hertrampf
- <stefan.hertrampf@cyberus-technology.de>
-Date: Wed, 28 Oct 2020 17:46:21 +0200
-In-Reply-To: <9286d367b5f95b4b819f5f41b7654e5a79e40328.camel@cyberus-technology.de>
-References: <81492552a35a8e0556841873c17834f4d182bcad.camel@cyberus-technology.de>
- <8ffc19621b9873c4a280b1556a8f381c55b0affb.camel@cyberus-technology.de>
- <e2d543701d3442f78aae7bc10b54487d@intel.com>
- <f0e716100ad598bba1de032346994226550a8b10.camel@cyberus-technology.de>
- <5a74d2abdd034a61a336944148b9d40c@intel.com>
- <9286d367b5f95b4b819f5f41b7654e5a79e40328.camel@cyberus-technology.de>
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.36.5 (3.36.5-1.fc32) 
+ Thu, 29 Oct 2020 16:48:19 +0000 (UTC)
+Received: by mail-qk1-x746.google.com with SMTP id r129so871831qkd.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 29 Oct 2020 09:48:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:message-id:date:subject:from:to;
+ bh=YXgm8L8nxr5WFBrJK44lm++yH1yFUorde/nbOLGT5b8=;
+ b=kEz8BNEJ2w/MjGV2x/pLghO1MOV/F2TCQYtSb9RGC/8c9Of1Q+bNP2a4yM7HoFve7v
+ 9NnG5JxKlxHQ8yjt3jcdUBbdgfEQuaHU8k6hXCr/cl2uHvJb3qC8hPvGbJ/nX7gsokVp
+ LwWzOZeqetmA2MeWbJZQUJ9aaYfanisyUFpAr9jnVEr+H5vsTDsnkGoY2DqT/SQ2zcTU
+ aB2CcAbFbPW8frL2scPSIwHgQXPM8aGca6twjW5IlW7Miw1Pp3kM9Go30GozFp6fFiHA
+ Vi229HAs4XAHnw8ImY/eFjoQgNrQCO3tLU/RDITXlM5TvpkK/Zjy5C9xFK9Ay6M5LIof
+ AXhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:message-id:date:subject
+ :from:to;
+ bh=YXgm8L8nxr5WFBrJK44lm++yH1yFUorde/nbOLGT5b8=;
+ b=r2L2l5SW/rHijLEM7qdUWWH3gUNtDiMX7s5GuHX2WC9ozk6Qhngmo9J5iasggDiSRt
+ t2BBLiTiMAlqxoze32k4YHrvjEI9sIDEydTDyZI/r3BK0jmkHIjrFK7bNdFAV6hQy1P4
+ 20Mjgx7GcUrAM18b7qG4EjH8c6/JPS9djowRwO5edswJRgkC/jfzHPGzZcCsvuZHJy8y
+ fGAO9k/6DXrg9O5TUtLvvawlnCYaVSJO5F2cUXQzHN/X+hEf5QAITUDFmElhZK1OzD1F
+ Yg5tk3cuYsi+znJerlEt8p0YyadJisNCuY7CPAzTmVe1jwt2NeQPgdwIUlj8FlJ0P9Wa
+ 06nQ==
+X-Gm-Message-State: AOAM532rQoG60XfRBUHF8DwNuGc9ozO9EYcePK5MyuYJLOeUwiPt/1lt
+ Q3/ydPu+Du+NCs4xmo6jZFSWAzEV7kBwNe8Jz4S6
 MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.4/25971/Wed Oct 28 13:23:57 2020)
+X-Received: by 2002:a05:620a:12b9:: with SMTP id
+ x25mt4708486qki.475.1603990098830; 
+ Thu, 29 Oct 2020 09:48:18 -0700 (PDT)
+X-No-Auto-Attachment: 1
+Message-ID: <00000000000010711605b2d20cc2@google.com>
+Date: Thu, 29 Oct 2020 16:48:19 +0000
+Subject: Could you help me in this transaction?
+From: fabienne.tagro2017@gmail.com
+To: intel-gvt-dev@lists.freedesktop.org
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,101 +61,119 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: fabienne.tagro2017@gmail.com
+Content-Type: multipart/mixed; boundary="===============1896097408=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi!
+--===============1896097408==
+Content-Type: multipart/alternative; boundary="0000000000001379a605b2d20c85"
 
-On Wed, 2020-10-28 at 10:40 +0200, Julian Stecklina wrote:
-> >   According to our assumption, there might be extra execlist schedule-out
-> > status notification. Is it possible that you can open the tracepoint in
-> > execlist_context_schedule_in and execlist_context_schedule_out in
-> > intel_lrc.c?
-> 
-> 
-> We'll try turning trace_i915_request_in / trace_i915_request_out into printks
-> and see whether this helps in debugging. Alternatively, is there a way to get
-> trace events out of a crashed kernel?
-> 
-> Btw, would it make sense to count the schedule_in and schedule_out events for
-> each requests and dump a stacktrace when we see an unpaired schedule_out?
+--0000000000001379a605b2d20c85
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
 
-So we tried this out with a tiny patch that checks for matched schedule in/out
-events:
+I've invited you to fill out the following form:
+Untitled form
 
-https://github.com/blitz/linux/commit/441663fab60df4a4692d5cc031dcfdeffe243008
+To fill it out, visit:
+https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4YywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=0&amp;c=0&amp;w=1&amp;flr=0&amp;usp=mail_form_link
 
-It would be good if you can check whether this is a useful invariant to warn on.
-:)
+Hello Dear,
 
-On one system, we see this triggering right after boot with no VMs running at
-all (see below). I haven't seen this with our production VM workload yet, but
-that usually takes hours to manifest. So we might have something there tomorrow.
+I am very sorry that my letter may come as a surprise to you since we have  
+never met each other before. I am Miss Nidal Aoussa. I am the only daughter  
+of Cheikh Ag Aoussa, the President of (HCUA) in Mali who was assasinated on  
+the octobre 2016.
 
-[   10.370703] ------------[ cut here ]------------
-[   10.370734] mismatched schedule in/out operations
-[   10.370807] WARNING: CPU: 1 PID: 0 at drivers/gpu/drm/i915/gt/intel_lrc.c:612
-process_csb+0x762/0x7a0 [i915]
-[   10.370842]  fb_sys_fops e1000e igb i2c_i801 drm dca ahci i2c_algo_bit
-libahci wmi video pinctrl_cannonlake pinctrl_intel
-[   10.370849] CPU: 1 PID: 0 Comm: swapper/1 Not tainted 5.4.61 #1
-[   10.370849] Hardware name: Gigabyte Technology Co., Ltd. Q370M D3H GSM
-PLUS/Q370M D3H GSM PLUS, BIOS F14 06/05/2019
-[   10.370902] RIP: 0010:process_csb+0x762/0x7a0 [i915]
-[   10.370904] Code: 88 aa 15 00 00 0f 85 0f fd ff ff 48 c7 c7 10 e3 70 c0 4c 89
-55 b0 48 89 4d b8 48 89 55 c0 c6 05 68 aa 15 00 01 e8 99 b7 2a eb <0f> 0b 4c 8b
-55 b0 48 8b 4d b8 48 8b 55 c0 e9 dd fc ff ff 4c 89 55
-[   10.370905] RSP: 0018:ffffb1204014ce60 EFLAGS: 00010286
-[   10.370906] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
-[   10.370907] RDX: 0000000000000025 RSI: ffffffffad387405 RDI: 0000000000000246
-[   10.370907] RBP: ffffb1204014cec0 R08: ffffffffad3873e0 R09: 0000000000000025
-[   10.370907] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000006
-[   10.370908] R13: ffff8ed12dcfe040 R14: 0000000000000001 R15: ffff8ed12f6fe000
-[   10.370909] FS:  0000000000000000(0000) GS:ffff8ed130440000(0000)
-knlGS:0000000000000000
-[   10.370909] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   10.370910] CR2: 000055da74158008 CR3: 000000017b40a004 CR4: 00000000003606e0
-[   10.370910] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[   10.370910] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[   10.370911] Call Trace:
-[   10.370912]  <IRQ>
-[   10.370928]  execlists_submission_tasklet+0x19/0x70 [i915]
-[   10.370948]  tasklet_action_common.isra.0+0x60/0x110
-[   10.370949]  tasklet_hi_action+0x1f/0x30
-[   10.370952]  __do_softirq+0xe1/0x2d6
-[   10.370955]  ? update_ts_time_stats+0x58/0x80
-[   10.370956]  irq_exit+0xae/0xb0
-[   10.370957]  scheduler_ipi+0xe4/0x130
-[   10.370958]  smp_reschedule_interrupt+0x39/0xe0
-[   10.370959]  reschedule_interrupt+0xf/0x20
-[   10.370960]  </IRQ>
-[   10.370964] RIP: 0010:cpuidle_enter_state+0xc5/0x450
-[   10.370965] Code: ff e8 0f 78 82 ff 80 7d c7 00 74 17 9c 58 0f 1f 44 00 00 f6
-c4 02 0f 85 65 03 00 00 31 ff e8 62 dc 88 ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f
-88 8f 02 00 00 49 63 cd 4c 8b 7d d0 4c 2b 7d c8 48 8d
-[   10.370966] RSP: 0018:ffffb120400efe38 EFLAGS: 00000246 ORIG_RAX:
-ffffffffffffff02
-[   10.370966] RAX: ffff8ed13046a880 RBX: ffffffffacf58e80 RCX: 000000000000001f
-[   10.370967] RDX: 0000000000000000 RSI: 000000002aaaab99 RDI: 0000000000000000
-[   10.370967] RBP: ffffb120400efe78 R08: 000000026a23c65e R09: 000000028d99190d
-[   10.370967] R10: ffff8ed130469580 R11: ffff8ed130469560 R12: ffff8ed130475928
-[   10.370968] R13: 0000000000000008 R14: 0000000000000008 R15: ffff8ed130475928
-[   10.370970]  ? cpuidle_enter_state+0xa1/0x450
-[   10.370971]  cpuidle_enter+0x2e/0x40
-[   10.370988]  call_cpuidle+0x23/0x40
-[   10.370989]  do_idle+0x1dd/0x270
-[   10.370990]  cpu_startup_entry+0x20/0x30
-[   10.370992]  start_secondary+0x167/0x1c0
-[   10.370994]  secondary_startup_64+0xa4/0xb0
-[   10.370995] ---[ end trace 85cd1056f39ffa8d ]---
+https://www.jeuneafrique.com/365432/politique/mali-sait-on-mort-de-cheikh-ag-aoussa/
+https://fr.wikipedia.org/wiki/Cheikh_Ag_Aoussa
 
-Julian
+I have a business transaction which i solicit your help. It is all about a  
+fund to be transferred in your country for urgent investment on important  
+projects. I want you to guide me and invest this money in your country.  
+This fund amount to Eleven Millions Five Hundred Thousand United States  
+dollars which i inherited from my late dad.. If you are capable of handling  
+or participate in this transaction, kindly respond quickly through my  
+private emails to enable me give you more details about this fund and how  
+this project shall be carried out. I will accord you 20% of the total fund  
+for your kind assistance. Respond through this my private emails addresses  
+below.
 
+Miss Nidal Aoussa
+Email: ( nidal.kong1998@gmail.com )
+
+Google Forms: Create and analyze surveys.
+
+--0000000000001379a605b2d20c85
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body style=3D"font-family: Roboto,Helvetica,Arial,sans-serif; margin=
+: 0; padding: 0; height: 100%; width: 100%;"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"background-color:rgb(103,58,183);" width=
+=3D"100%" role=3D"presentation"><tbody><tr height=3D"64px"><td style=3D"pad=
+ding: 0 24px;"><img alt=3D"Google Forms" height=3D"26px" style=3D"display: =
+inline-block; margin: 0; vertical-align: middle;" width=3D"143px" src=3D"ht=
+tps://www.gstatic.com/docs/forms/google_forms_logo_lockup_white_2x.png"></t=
+d></tr></tbody></table><div style=3D"padding: 24px; background-color:rgb(23=
+7,231,246)"><div align=3D"center" style=3D"background-color: #fff; border-b=
+ottom: 1px solid #e0e0e0;margin: 0 auto; max-width: 624px; min-width: 154px=
+;padding: 0 24px;"><table align=3D"center" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"background-color: #fff;" width=3D"100%" role=3D"presentation">=
+<tbody><tr height=3D"24px"><td></td></tr><tr><td><span style=3D"display: ta=
+ble-cell; vertical-align: top; font-size: 13px; line-height: 18px; color: #=
+424242;" dir=3D"auto">Hello Dear,<br><br>I am very sorry that my letter may=
+ come as a surprise to you since we have never met each other before. I am =
+Miss Nidal Aoussa. I am the only daughter of Cheikh Ag Aoussa, the Presiden=
+t of (HCUA) in Mali who was assasinated on the octobre 2016.<br><br>https:/=
+/www.jeuneafrique.com/365432/politique/mali-sait-on-mort-de-cheikh-ag-aouss=
+a/<br>https://fr.wikipedia.org/wiki/Cheikh_Ag_Aoussa<br><br>I have a busine=
+ss transaction which i solicit your help. It is all about a fund to be tran=
+sferred in your country for urgent investment on important projects. I want=
+ you to guide me and invest this money in your country. This fund amount to=
+ Eleven Millions Five Hundred Thousand United States dollars which i inheri=
+ted from my late dad.. If you are capable of handling or participate in thi=
+s transaction, kindly respond quickly through my private emails to enable m=
+e give you more details about this fund and how this project shall be carri=
+ed out. I will accord you 20% of the total fund for your kind assistance. R=
+espond through this my private emails addresses below.<br><br>Miss Nidal Ao=
+ussa<br>Email: ( nidal.kong1998@gmail.com )</span></td></tr><tr height=3D"2=
+0px"><td></tr><tr style=3D"font-size: 20px; line-height: 24px;"><td dir=3D"=
+auto"><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4Yyw=
+gnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;fl=
+r=3D0&amp;usp=3Dmail_form_link" style=3D"color: rgb(103,58,183); text-decor=
+ation: none; vertical-align: middle; font-weight: 500">Untitled form</a><di=
+v itemprop=3D"action" itemscope itemtype=3D"http://schema.org/ViewAction"><=
+meta itemprop=3D"url" content=3D"https://docs.google.com/forms/d/e/1FAIpQLS=
+e1wBhXSQ5Skw4YywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&=
+amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail_goto_form"><meta itemprop=3D"name" con=
+tent=3D"Fill out form"></div></td></tr><tr height=3D"24px"></tr><tr><td><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tbody>=
+<tr><td><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4Y=
+ywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;=
+flr=3D0&amp;usp=3Dmail_form_link" style=3D"border-radius: 3px; box-sizing: =
+border-box; display: inline-block; font-size: 13px; font-weight: 700; heigh=
+t: 40px; line-height: 40px; padding: 0 24px; text-align: center; text-decor=
+ation: none; text-transform: uppercase; vertical-align: middle; color: #fff=
+; background-color: rgb(103,58,183);" target=3D"_blank" rel=3D"noopener">Fi=
+ll out form</a></td></tr></tbody></table></td></tr><tr height=3D"24px"></tr=
+></tbody></table></div><table align=3D"center" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"max-width: 672px; min-width: 154px;" width=3D"100%" role=
+=3D"presentation"><tbody><tr height=3D"24px"><td></td></tr><tr><td><a href=
+=3D"https://docs.google.com/forms?usp=3Dmail_form_link" style=3D"color: #42=
+4242; font-size: 13px;">Create your own Google Form</a></td></tr></tbody></=
+table></div></body></html>
+--0000000000001379a605b2d20c85--
+
+--===============1896097408==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1896097408==--
