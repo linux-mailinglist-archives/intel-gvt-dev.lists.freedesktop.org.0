@@ -2,53 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3E2429F212
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Oct 2020 17:48:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 929C229FC34
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Oct 2020 04:30:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 596FB6E8E2;
-	Thu, 29 Oct 2020 16:48:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 225226E94A;
+	Fri, 30 Oct 2020 03:30:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-x746.google.com (mail-qk1-x746.google.com
- [IPv6:2607:f8b0:4864:20::746])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B589C6E8E3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Oct 2020 16:48:19 +0000 (UTC)
-Received: by mail-qk1-x746.google.com with SMTP id r129so871831qkd.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Oct 2020 09:48:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:message-id:date:subject:from:to;
- bh=YXgm8L8nxr5WFBrJK44lm++yH1yFUorde/nbOLGT5b8=;
- b=kEz8BNEJ2w/MjGV2x/pLghO1MOV/F2TCQYtSb9RGC/8c9Of1Q+bNP2a4yM7HoFve7v
- 9NnG5JxKlxHQ8yjt3jcdUBbdgfEQuaHU8k6hXCr/cl2uHvJb3qC8hPvGbJ/nX7gsokVp
- LwWzOZeqetmA2MeWbJZQUJ9aaYfanisyUFpAr9jnVEr+H5vsTDsnkGoY2DqT/SQ2zcTU
- aB2CcAbFbPW8frL2scPSIwHgQXPM8aGca6twjW5IlW7Miw1Pp3kM9Go30GozFp6fFiHA
- Vi229HAs4XAHnw8ImY/eFjoQgNrQCO3tLU/RDITXlM5TvpkK/Zjy5C9xFK9Ay6M5LIof
- AXhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:message-id:date:subject
- :from:to;
- bh=YXgm8L8nxr5WFBrJK44lm++yH1yFUorde/nbOLGT5b8=;
- b=r2L2l5SW/rHijLEM7qdUWWH3gUNtDiMX7s5GuHX2WC9ozk6Qhngmo9J5iasggDiSRt
- t2BBLiTiMAlqxoze32k4YHrvjEI9sIDEydTDyZI/r3BK0jmkHIjrFK7bNdFAV6hQy1P4
- 20Mjgx7GcUrAM18b7qG4EjH8c6/JPS9djowRwO5edswJRgkC/jfzHPGzZcCsvuZHJy8y
- fGAO9k/6DXrg9O5TUtLvvawlnCYaVSJO5F2cUXQzHN/X+hEf5QAITUDFmElhZK1OzD1F
- Yg5tk3cuYsi+znJerlEt8p0YyadJisNCuY7CPAzTmVe1jwt2NeQPgdwIUlj8FlJ0P9Wa
- 06nQ==
-X-Gm-Message-State: AOAM532rQoG60XfRBUHF8DwNuGc9ozO9EYcePK5MyuYJLOeUwiPt/1lt
- Q3/ydPu+Du+NCs4xmo6jZFSWAzEV7kBwNe8Jz4S6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 84B9B6E949;
+ Fri, 30 Oct 2020 03:30:48 +0000 (UTC)
+IronPort-SDR: Hn4IjgkUX9444u0code81TRRNAWAaqgFhXtfZ3YmCTbBsWhYFV0B4FGN4Ho2kV27A1/kCTmy2y
+ ZPoB7CSuqDvQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9789"; a="253261534"
+X-IronPort-AV: E=Sophos;i="5.77,432,1596524400"; 
+ d="asc'?scan'208";a="253261534"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Oct 2020 20:30:48 -0700
+IronPort-SDR: 4rS64l96f+aPKZZIFlMnklkj51UIJVMOpRBSL3mZB05JruRryhPGQwU3oLFtrmkeWN5P0N3lYb
+ glCkZCLvivkw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,432,1596524400"; 
+ d="asc'?scan'208";a="525766315"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga006.fm.intel.com with ESMTP; 29 Oct 2020 20:30:46 -0700
+Date: Fri, 30 Oct 2020 11:09:35 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
+Subject: Re: [Intel-gfx] [PULL] gvt-fixes
+Message-ID: <20201030030935.GX27141@zhen-hp.sh.intel.com>
+References: <20201027031740.GA27141@zhen-hp.sh.intel.com>
+ <20201027204643.GE3771340@intel.com>
+ <C9292B4F-9A82-46AF-BFAB-D372D202F314@intel.com>
 MIME-Version: 1.0
-X-Received: by 2002:a05:620a:12b9:: with SMTP id
- x25mt4708486qki.475.1603990098830; 
- Thu, 29 Oct 2020 09:48:18 -0700 (PDT)
-X-No-Auto-Attachment: 1
-Message-ID: <00000000000010711605b2d20cc2@google.com>
-Date: Thu, 29 Oct 2020 16:48:19 +0000
-Subject: Could you help me in this transaction?
-From: fabienne.tagro2017@gmail.com
-To: intel-gvt-dev@lists.freedesktop.org
+In-Reply-To: <C9292B4F-9A82-46AF-BFAB-D372D202F314@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,111 +53,148 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: fabienne.tagro2017@gmail.com
-Content-Type: multipart/mixed; boundary="===============1896097408=="
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: "Nikula, Jani" <jani.nikula@intel.com>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, "Yuan, Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============0488998476=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1896097408==
-Content-Type: multipart/alternative; boundary="0000000000001379a605b2d20c85"
 
---0000000000001379a605b2d20c85
-Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+--===============0488998476==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="OUFKJBnicyeI7VqU"
+Content-Disposition: inline
 
-I've invited you to fill out the following form:
-Untitled form
 
-To fill it out, visit:
-https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4YywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=0&amp;c=0&amp;w=1&amp;flr=0&amp;usp=mail_form_link
-
-Hello Dear,
-
-I am very sorry that my letter may come as a surprise to you since we have  
-never met each other before. I am Miss Nidal Aoussa. I am the only daughter  
-of Cheikh Ag Aoussa, the President of (HCUA) in Mali who was assasinated on  
-the octobre 2016.
-
-https://www.jeuneafrique.com/365432/politique/mali-sait-on-mort-de-cheikh-ag-aoussa/
-https://fr.wikipedia.org/wiki/Cheikh_Ag_Aoussa
-
-I have a business transaction which i solicit your help. It is all about a  
-fund to be transferred in your country for urgent investment on important  
-projects. I want you to guide me and invest this money in your country.  
-This fund amount to Eleven Millions Five Hundred Thousand United States  
-dollars which i inherited from my late dad.. If you are capable of handling  
-or participate in this transaction, kindly respond quickly through my  
-private emails to enable me give you more details about this fund and how  
-this project shall be carried out. I will accord you 20% of the total fund  
-for your kind assistance. Respond through this my private emails addresses  
-below.
-
-Miss Nidal Aoussa
-Email: ( nidal.kong1998@gmail.com )
-
-Google Forms: Create and analyze surveys.
-
---0000000000001379a605b2d20c85
-Content-Type: text/html; charset="UTF-8"
+--OUFKJBnicyeI7VqU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-<html><body style=3D"font-family: Roboto,Helvetica,Arial,sans-serif; margin=
-: 0; padding: 0; height: 100%; width: 100%;"><table border=3D"0" cellpaddin=
-g=3D"0" cellspacing=3D"0" style=3D"background-color:rgb(103,58,183);" width=
-=3D"100%" role=3D"presentation"><tbody><tr height=3D"64px"><td style=3D"pad=
-ding: 0 24px;"><img alt=3D"Google Forms" height=3D"26px" style=3D"display: =
-inline-block; margin: 0; vertical-align: middle;" width=3D"143px" src=3D"ht=
-tps://www.gstatic.com/docs/forms/google_forms_logo_lockup_white_2x.png"></t=
-d></tr></tbody></table><div style=3D"padding: 24px; background-color:rgb(23=
-7,231,246)"><div align=3D"center" style=3D"background-color: #fff; border-b=
-ottom: 1px solid #e0e0e0;margin: 0 auto; max-width: 624px; min-width: 154px=
-;padding: 0 24px;"><table align=3D"center" cellpadding=3D"0" cellspacing=3D=
-"0" style=3D"background-color: #fff;" width=3D"100%" role=3D"presentation">=
-<tbody><tr height=3D"24px"><td></td></tr><tr><td><span style=3D"display: ta=
-ble-cell; vertical-align: top; font-size: 13px; line-height: 18px; color: #=
-424242;" dir=3D"auto">Hello Dear,<br><br>I am very sorry that my letter may=
- come as a surprise to you since we have never met each other before. I am =
-Miss Nidal Aoussa. I am the only daughter of Cheikh Ag Aoussa, the Presiden=
-t of (HCUA) in Mali who was assasinated on the octobre 2016.<br><br>https:/=
-/www.jeuneafrique.com/365432/politique/mali-sait-on-mort-de-cheikh-ag-aouss=
-a/<br>https://fr.wikipedia.org/wiki/Cheikh_Ag_Aoussa<br><br>I have a busine=
-ss transaction which i solicit your help. It is all about a fund to be tran=
-sferred in your country for urgent investment on important projects. I want=
- you to guide me and invest this money in your country. This fund amount to=
- Eleven Millions Five Hundred Thousand United States dollars which i inheri=
-ted from my late dad.. If you are capable of handling or participate in thi=
-s transaction, kindly respond quickly through my private emails to enable m=
-e give you more details about this fund and how this project shall be carri=
-ed out. I will accord you 20% of the total fund for your kind assistance. R=
-espond through this my private emails addresses below.<br><br>Miss Nidal Ao=
-ussa<br>Email: ( nidal.kong1998@gmail.com )</span></td></tr><tr height=3D"2=
-0px"><td></tr><tr style=3D"font-size: 20px; line-height: 24px;"><td dir=3D"=
-auto"><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4Yyw=
-gnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;fl=
-r=3D0&amp;usp=3Dmail_form_link" style=3D"color: rgb(103,58,183); text-decor=
-ation: none; vertical-align: middle; font-weight: 500">Untitled form</a><di=
-v itemprop=3D"action" itemscope itemtype=3D"http://schema.org/ViewAction"><=
-meta itemprop=3D"url" content=3D"https://docs.google.com/forms/d/e/1FAIpQLS=
-e1wBhXSQ5Skw4YywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&=
-amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail_goto_form"><meta itemprop=3D"name" con=
-tent=3D"Fill out form"></div></td></tr><tr height=3D"24px"></tr><tr><td><ta=
-ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tbody>=
-<tr><td><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4Y=
-ywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;=
-flr=3D0&amp;usp=3Dmail_form_link" style=3D"border-radius: 3px; box-sizing: =
-border-box; display: inline-block; font-size: 13px; font-weight: 700; heigh=
-t: 40px; line-height: 40px; padding: 0 24px; text-align: center; text-decor=
-ation: none; text-transform: uppercase; vertical-align: middle; color: #fff=
-; background-color: rgb(103,58,183);" target=3D"_blank" rel=3D"noopener">Fi=
-ll out form</a></td></tr></tbody></table></td></tr><tr height=3D"24px"></tr=
-></tbody></table></div><table align=3D"center" cellpadding=3D"0" cellspacin=
-g=3D"0" style=3D"max-width: 672px; min-width: 154px;" width=3D"100%" role=
-=3D"presentation"><tbody><tr height=3D"24px"><td></td></tr><tr><td><a href=
-=3D"https://docs.google.com/forms?usp=3Dmail_form_link" style=3D"color: #42=
-4242; font-size: 13px;">Create your own Google Form</a></td></tr></tbody></=
-table></div></body></html>
---0000000000001379a605b2d20c85--
+On 2020.10.28 11:18:45 +0000, Vivi, Rodrigo wrote:
+>=20
+>=20
+>     On Oct 27, 2020, at 1:46 PM, Rodrigo Vivi <rodrigo.vivi@intel.com> wr=
+ote:
+>=20
+>     On Tue, Oct 27, 2020 at 11:17:40AM +0800, Zhenyu Wang wrote:
+>=20
+>=20
+>         Hi,
+>=20
+>         Here's first gvt fixes for 5.10 which includes more vGPU
+>         suspend/resume fix in HWSP reset handling, and also fix for host =
+i915
+>         suspend regression when vGPU is created (not need to be active), =
+and
+>         one workaround for APL guest hang issue.
+>=20
+>=20
+>     pulled to drm-intel-fixes
+>=20
+>=20
+> I'm actually pulling it off. I had bypassed dim, considering this was an =
+old
+> issue with our email decoder,
+> but it happens that=20
+>=20
+> $ git show 401ccfa87856 | grep Fixes
+> Fixes: e6ba76480299 (drm/i915: Remove i915->kernel_context)
+>=20
+> And this is what it should have:
+>=20
+> $ dim fixes e6ba76480299 | grep Fixes
+> Fixes: e6ba76480299 ("drm/i915: Remove i915->kernel_context")
+>=20
+> Sorry for the trouble.
+> Let's fix this in place so we don't propagate bad tag that might break ot=
+her
+> scripts on the way
+>
 
---===============1896097408==
+Oops, sorry I missed this one. I'll refresh.
+
+Thanks
+
+>=20
+>=20
+>=20
+>         Thanks
+>         --
+>         The following changes since commit
+>         16cce04cdb200ba905d1241b425ac48da5a9ace5:
+>=20
+>          drm/i915/selftests: Push the fake iommu device from the stack to=
+ data
+>         (2020-09-23 10:15:46 +0300)
+>=20
+>         are available in the Git repository at:
+>=20
+>          https://github.com/intel/gvt-linux tags/gvt-fixes-2020-10-27
+>=20
+>         for you to fetch changes up to
+>         401ccfa87856656b874c737522ea92721394a348:
+>=20
+>          drm/i915/gvt: Only pin/unpin intel_context along with workload
+>         (2020-10-19 16:54:28 +0800)
+>=20
+>         ----------------------------------------------------------------
+>         gvt-fixes-2020-10-27
+>=20
+>         - Fix HWSP reset handling during vGPU suspend/resume (Colin)
+>         - Apply flush workaround on APL now for possible guest hang (Coli=
+n)
+>         - Fix vGPU context pin/unpin also for host suspend regression with
+>          vGPU created (Colin)
+>=20
+>         ----------------------------------------------------------------
+>         Colin Xu (3):
+>              drm/i915/gvt: Allow zero out HWSP addr on hws_pga_write
+>              drm/i915/gvt: Set SNOOP for PAT3 on BXT/APL to workaround GP=
+U BB
+>         hang
+>              drm/i915/gvt: Only pin/unpin intel_context along with worklo=
+ad
+>=20
+>         drivers/gpu/drm/i915/gvt/handlers.c  | 35
+>         +++++++++++++++++++++++++++++++++--
+>         drivers/gpu/drm/i915/gvt/scheduler.c | 15 ++++++++-------
+>         2 files changed, 41 insertions(+), 9 deletions(-)
+>=20
+>=20
+>         --=20
+>=20
+>         $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+>=20
+>=20
+>=20
+>     _______________________________________________
+>     Intel-gfx mailing list
+>     Intel-gfx@lists.freedesktop.org
+>     https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+>=20
+>=20
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--OUFKJBnicyeI7VqU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX5uD7gAKCRCxBBozTXgY
+J+XVAKCOuDEq0+5jllB0v7BW56KmNgi1xACdF58jkOrRErcnzLx1L5/04FQ7uTs=
+=VttD
+-----END PGP SIGNATURE-----
+
+--OUFKJBnicyeI7VqU--
+
+--===============0488998476==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -176,4 +205,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1896097408==--
+--===============0488998476==--
