@@ -1,46 +1,64 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 929C229FC34
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Oct 2020 04:30:51 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D3EB29FC2C
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Oct 2020 04:29:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 225226E94A;
-	Fri, 30 Oct 2020 03:30:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0F6A9897FB;
+	Fri, 30 Oct 2020 03:29:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 84B9B6E949;
- Fri, 30 Oct 2020 03:30:48 +0000 (UTC)
-IronPort-SDR: Hn4IjgkUX9444u0code81TRRNAWAaqgFhXtfZ3YmCTbBsWhYFV0B4FGN4Ho2kV27A1/kCTmy2y
- ZPoB7CSuqDvQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9789"; a="253261534"
-X-IronPort-AV: E=Sophos;i="5.77,432,1596524400"; 
- d="asc'?scan'208";a="253261534"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Oct 2020 20:30:48 -0700
-IronPort-SDR: 4rS64l96f+aPKZZIFlMnklkj51UIJVMOpRBSL3mZB05JruRryhPGQwU3oLFtrmkeWN5P0N3lYb
- glCkZCLvivkw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,432,1596524400"; 
- d="asc'?scan'208";a="525766315"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga006.fm.intel.com with ESMTP; 29 Oct 2020 20:30:46 -0700
-Date: Fri, 30 Oct 2020 11:09:35 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
-Subject: Re: [Intel-gfx] [PULL] gvt-fixes
-Message-ID: <20201030030935.GX27141@zhen-hp.sh.intel.com>
-References: <20201027031740.GA27141@zhen-hp.sh.intel.com>
- <20201027204643.GE3771340@intel.com>
- <C9292B4F-9A82-46AF-BFAB-D372D202F314@intel.com>
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com
+ [IPv6:2607:f8b0:4864:20::542])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E1D83897FB;
+ Fri, 30 Oct 2020 03:29:52 +0000 (UTC)
+Received: by mail-pg1-x542.google.com with SMTP id z24so4049442pgk.3;
+ Thu, 29 Oct 2020 20:29:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=kNFigGmlnT8RRi6z0sCPMt5Zg63u/lv6a6WCx8xI9/k=;
+ b=mq0/8Qy7Ve6u00MU6iGI3ZON19U0Xh/nF42bdR7N8KoIOexf6e9uuP1lJ7aPL9gxUF
+ /6hU8zFSrMi6wE7MgmKYzth/P3AAHrFx3hiCLQqn74BJsqXoEznfDAxOU5bUjLpHiriW
+ +xvNTLfTgQB/aH1BCeDHWPLsRnuRkZqcguv6AiS45T+8S70dPK3t9d1Z5D89aEvbA36h
+ SSN0kZRpx6bb/PIB4Mg9d0IvpLH3k8tMjtCqBHy9vjRtvysTEcMkFXvrsqVhBh/S1tVI
+ a9I2R3URX8Eno+U2bihtbF7TL09mAfmAwplYxtkDUuWuhZ8HRtLZLiCIVNjSul1ss+1T
+ towA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=kNFigGmlnT8RRi6z0sCPMt5Zg63u/lv6a6WCx8xI9/k=;
+ b=bH9RVvtRdTLI0/bTH8F8FjaOUDQSflQWomkphsvtXxv+SQlIkNsmy7iLu3VtKeGhMu
+ 5itmlPJsTvZPVzVJMqvmRgZH9/U4OgvDfySLiq/ah3t74SgngZ6akCGpHTEgAjcVYSvD
+ tlSNPxWJFeaFdHyqCOnfOPFikidiKBZWnVh4FKT19WPW6P2AK2XQmKBGaxW9rdZA/jVP
+ twf4JxnZ8xPJriaQXwQ8MVB1s6N8NQLDF18LDfF1gz0l4rdk32oS5VeH3LElcXPFoVmz
+ Ulz8SwTqRJCgobQBC2nC5cpAinXRrdBFvswPsCFGb2AeqwkDcrurDgSTOjZ5Tgf3SSO/
+ wnLw==
+X-Gm-Message-State: AOAM532++Q4Hw0s46W1R39jyrnU/JZFXoPiYF7Nkr+08Kjv6ednU0Rwv
+ ZjDkFUMRSuA2xJ6RvsBjOm8=
+X-Google-Smtp-Source: ABdhPJwIVMjw39qjT1TY0hYU+IjXwoIA0G3zsE2DQwL6bJLjQU34JC8Hiwe282UUBVpaiq3XeYJhvQ==
+X-Received: by 2002:a63:c053:: with SMTP id z19mr393466pgi.418.1604028592566; 
+ Thu, 29 Oct 2020 20:29:52 -0700 (PDT)
+Received: from my--box ([103.98.79.70])
+ by smtp.gmail.com with ESMTPSA id b16sm220933pju.16.2020.10.29.20.29.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Oct 2020 20:29:52 -0700 (PDT)
+Date: Fri, 30 Oct 2020 08:59:45 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/i915/gvt: use DEFINE_DEBUGFS_ATTRIBUTE with
+ debugfs_create_file_unsafe()
+Message-ID: <20201030032945.GA274850@my--box>
 MIME-Version: 1.0
-In-Reply-To: <C9292B4F-9A82-46AF-BFAB-D372D202F314@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Disposition: inline
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,156 +71,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: "Nikula, Jani" <jani.nikula@intel.com>,
- intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, "Yuan, Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============0488998476=="
+Cc: melissa.srw@gmail.com, daniel.vetter@ffwll.ch, mh12gx2825@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
+function in place of the debugfs_create_file() function will make the
+file operation struct "reset" aware of the file's lifetime. Additional
+details here: https://lists.archive.carbon60.com/linux/kernel/2369498
 
---===============0488998476==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="OUFKJBnicyeI7VqU"
-Content-Disposition: inline
+Issue reported by Coccinelle script:
+scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
 
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+Please Note: This is a Outreachy project task patch.
 
---OUFKJBnicyeI7VqU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+ drivers/gpu/drm/i915/gvt/debugfs.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-On 2020.10.28 11:18:45 +0000, Vivi, Rodrigo wrote:
->=20
->=20
->     On Oct 27, 2020, at 1:46 PM, Rodrigo Vivi <rodrigo.vivi@intel.com> wr=
-ote:
->=20
->     On Tue, Oct 27, 2020 at 11:17:40AM +0800, Zhenyu Wang wrote:
->=20
->=20
->         Hi,
->=20
->         Here's first gvt fixes for 5.10 which includes more vGPU
->         suspend/resume fix in HWSP reset handling, and also fix for host =
-i915
->         suspend regression when vGPU is created (not need to be active), =
-and
->         one workaround for APL guest hang issue.
->=20
->=20
->     pulled to drm-intel-fixes
->=20
->=20
-> I'm actually pulling it off. I had bypassed dim, considering this was an =
-old
-> issue with our email decoder,
-> but it happens that=20
->=20
-> $ git show 401ccfa87856 | grep Fixes
-> Fixes: e6ba76480299 (drm/i915: Remove i915->kernel_context)
->=20
-> And this is what it should have:
->=20
-> $ dim fixes e6ba76480299 | grep Fixes
-> Fixes: e6ba76480299 ("drm/i915: Remove i915->kernel_context")
->=20
-> Sorry for the trouble.
-> Let's fix this in place so we don't propagate bad tag that might break ot=
-her
-> scripts on the way
->
-
-Oops, sorry I missed this one. I'll refresh.
-
-Thanks
-
->=20
->=20
->=20
->         Thanks
->         --
->         The following changes since commit
->         16cce04cdb200ba905d1241b425ac48da5a9ace5:
->=20
->          drm/i915/selftests: Push the fake iommu device from the stack to=
- data
->         (2020-09-23 10:15:46 +0300)
->=20
->         are available in the Git repository at:
->=20
->          https://github.com/intel/gvt-linux tags/gvt-fixes-2020-10-27
->=20
->         for you to fetch changes up to
->         401ccfa87856656b874c737522ea92721394a348:
->=20
->          drm/i915/gvt: Only pin/unpin intel_context along with workload
->         (2020-10-19 16:54:28 +0800)
->=20
->         ----------------------------------------------------------------
->         gvt-fixes-2020-10-27
->=20
->         - Fix HWSP reset handling during vGPU suspend/resume (Colin)
->         - Apply flush workaround on APL now for possible guest hang (Coli=
-n)
->         - Fix vGPU context pin/unpin also for host suspend regression with
->          vGPU created (Colin)
->=20
->         ----------------------------------------------------------------
->         Colin Xu (3):
->              drm/i915/gvt: Allow zero out HWSP addr on hws_pga_write
->              drm/i915/gvt: Set SNOOP for PAT3 on BXT/APL to workaround GP=
-U BB
->         hang
->              drm/i915/gvt: Only pin/unpin intel_context along with worklo=
-ad
->=20
->         drivers/gpu/drm/i915/gvt/handlers.c  | 35
->         +++++++++++++++++++++++++++++++++--
->         drivers/gpu/drm/i915/gvt/scheduler.c | 15 ++++++++-------
->         2 files changed, 41 insertions(+), 9 deletions(-)
->=20
->=20
->         --=20
->=20
->         $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
->=20
->=20
->=20
->     _______________________________________________
->     Intel-gfx mailing list
->     Intel-gfx@lists.freedesktop.org
->     https://lists.freedesktop.org/mailman/listinfo/intel-gfx
->=20
->=20
-
---=20
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---OUFKJBnicyeI7VqU
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX5uD7gAKCRCxBBozTXgY
-J+XVAKCOuDEq0+5jllB0v7BW56KmNgi1xACdF58jkOrRErcnzLx1L5/04FQ7uTs=
-=VttD
------END PGP SIGNATURE-----
-
---OUFKJBnicyeI7VqU--
-
---===============0488998476==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
+index 62e6a14ad58e..18adfa2d5f5b 100644
+--- a/drivers/gpu/drm/i915/gvt/debugfs.c
++++ b/drivers/gpu/drm/i915/gvt/debugfs.c
+@@ -147,9 +147,8 @@ vgpu_scan_nonprivbb_set(void *data, u64 val)
+ 	return 0;
+ }
+ 
+-DEFINE_SIMPLE_ATTRIBUTE(vgpu_scan_nonprivbb_fops,
+-			vgpu_scan_nonprivbb_get, vgpu_scan_nonprivbb_set,
+-			"0x%llx\n");
++DEFINE_DEBUGFS_ATTRIBUTE(vgpu_scan_nonprivbb_fops, vgpu_scan_nonprivbb_get,
++			 vgpu_scan_nonprivbb_set, "0x%llx\n");
+ 
+ /**
+  * intel_gvt_debugfs_add_vgpu - register debugfs entries for a vGPU
+@@ -165,8 +164,8 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgpu)
+ 	debugfs_create_bool("active", 0444, vgpu->debugfs, &vgpu->active);
+ 	debugfs_create_file("mmio_diff", 0444, vgpu->debugfs, vgpu,
+ 			    &vgpu_mmio_diff_fops);
+-	debugfs_create_file("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
+-			    &vgpu_scan_nonprivbb_fops);
++	debugfs_create_file_unsafe("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
++				   &vgpu_scan_nonprivbb_fops);
+ }
+ 
+ /**
+-- 
+2.25.1
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0488998476==--
