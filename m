@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F316D2A6C4B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Nov 2020 19:00:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 775062A8E02
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Nov 2020 05:02:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B2E456E175;
-	Wed,  4 Nov 2020 18:00:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 32BFF6EDFB;
+	Fri,  6 Nov 2020 04:02:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 316D96E175
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 69EED6EDFB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  4 Nov 2020 18:00:06 +0000 (UTC)
-IronPort-SDR: TvMqrOrSAczpUcV8m1PFzvspRgEFhHbIRrze8zR30aFBU4tEzIcduVfn/jDks/UmZRUZc6JoTE
- bNloMInkkFZA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9795"; a="148541767"
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="148541767"
+ Fri,  6 Nov 2020 04:02:54 +0000 (UTC)
+IronPort-SDR: WypWD8Tbvqq9JGstxIdpGVjZ71SbFfk4eDaowwrKmjK5rj/iEDZRGK02E9jkYAE8bsAARM3y3U
+ i3a2i18adCpA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9796"; a="233665567"
+X-IronPort-AV: E=Sophos;i="5.77,455,1596524400"; d="scan'208";a="233665567"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2020 10:00:02 -0800
-IronPort-SDR: bG9gzvw/THopK3izsxUtci54+jW3BVtHlSEs33/jkVsDfSSBadvodkZ8XnQAgBUmfMoWSe72qq
- w0YqmBMoFO6A==
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Nov 2020 20:02:53 -0800
+IronPort-SDR: 70STT5+J840x1ZqtMkhiy3yJM5EJlaixfWAFZxa/1IaIe4zBp4o2qjyi5LH763nfQ0Wj092Uul
+ /x1khArAwbsg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="363510637"
-Received: from lkp-server02.sh.intel.com (HELO e61783667810) ([10.239.97.151])
- by FMSMGA003.fm.intel.com with ESMTP; 04 Nov 2020 10:00:01 -0800
-Received: from kbuild by e61783667810 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kaN4i-00012Y-EM; Wed, 04 Nov 2020 18:00:00 +0000
-Date: Thu, 05 Nov 2020 01:59:22 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 133f49180d4b06bd94e23ee3974f65f5c6501090
-Message-ID: <5fa2ebfa.kUsiuogVyrya9J3m%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.77,455,1596524400"; d="scan'208";a="354559218"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga004.fm.intel.com with ESMTP; 05 Nov 2020 20:02:52 -0800
+Date: Fri, 6 Nov 2020 11:41:27 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Colin Xu <colin.xu@intel.com>
+Subject: Re: [PATCH V4] drm/i915/gvt: Fix virtual display setup for BXT/APL
+Message-ID: <20201106034127.GT27141@zhen-hp.sh.intel.com>
+References: <20201104064147.398351-1-colin.xu@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201104064147.398351-1-colin.xu@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,164 +50,304 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
-branch HEAD: 133f49180d4b06bd94e23ee3974f65f5c6501090  gvt-staging: 2020y-11m-04d-13h-27m-40s CST integration manifest
+On 2020.11.04 14:41:47 +0800, Colin Xu wrote:
+> Program display related vregs to proper value at initialization, setup
+> virtual monitor and hotplug.
+> 
+> vGPU virtual display vregs inherit the value from pregs. The virtual DP
+> monitor is always setup on PORT_B for BXT/APL. However the host may
+> connect monitor on other PORT or without any monitor connected. Without
+> properly setup PIPE/DDI/PLL related vregs, guest driver may not setup
+> the virutal display as expected, and the guest desktop may not be
+> created.
+> Since only one virtual display is supported, enable PIPE_A only. And
+> enable transcoder/DDI/PLL based on which port is setup for BXT/APL.
+> 
+> V2:
+> Revise commit message.
+> 
+> V3:
+> set_edid should on PORT_B for BXT.
+> Inject hpd event for BXT.
+> 
+> V4:
+> Temporarily disable vfio edid on BXT/APL until issue fixed.
+>
 
-elapsed time: 722m
+Hi, could you split this? So one for current PORT setup issue, another is
+to disable edid now until we fixed it.
 
-configs tested: 133
-configs skipped: 2
+> Signed-off-by: Colin Xu <colin.xu@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/display.c | 186 ++++++++++++++++++++++++++++-
+>  drivers/gpu/drm/i915/gvt/mmio.c    |   5 +
+>  drivers/gpu/drm/i915/gvt/vgpu.c    |   3 +-
+>  3 files changed, 190 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
+> index 7ba16ddfe75f..e15b69bed189 100644
+> --- a/drivers/gpu/drm/i915/gvt/display.c
+> +++ b/drivers/gpu/drm/i915/gvt/display.c
+> @@ -173,21 +173,162 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+>  	int pipe;
+>  
+>  	if (IS_BROXTON(dev_priv)) {
+> -		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &= ~(BXT_DE_PORT_HP_DDIA |
+> -			BXT_DE_PORT_HP_DDIB |
+> -			BXT_DE_PORT_HP_DDIC);
+> +		enum transcoder trans;
+> +		enum port port;
+> +
+> +		/* Clear PIPE, DDI, PHY, HPD before setting new */
+> +		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
+> +			~(BXT_DE_PORT_HP_DDIA |
+> +			  BXT_DE_PORT_HP_DDIB |
+> +			  BXT_DE_PORT_HP_DDIC);
+> +
+> +		for_each_pipe(dev_priv, pipe) {
+> +			vgpu_vreg_t(vgpu, PIPECONF(pipe)) &=
+> +				~(PIPECONF_ENABLE | I965_PIPECONF_ACTIVE);
+> +			vgpu_vreg_t(vgpu, DSPCNTR(pipe)) &= ~DISPLAY_PLANE_ENABLE;
+> +			vgpu_vreg_t(vgpu, SPRCTL(pipe)) &= ~SPRITE_ENABLE;
+> +			vgpu_vreg_t(vgpu, CURCNTR(pipe)) &= ~MCURSOR_MODE;
+> +			vgpu_vreg_t(vgpu, CURCNTR(pipe)) |= MCURSOR_MODE_DISABLE;
+> +		}
+> +
+> +		for (trans = TRANSCODER_A; trans <= TRANSCODER_EDP; trans++) {
+> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(trans)) &=
+> +				~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
+> +				  TRANS_DDI_PORT_MASK | TRANS_DDI_FUNC_ENABLE);
+> +		}
+> +		vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) &=
+> +			~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
+> +			  TRANS_DDI_PORT_MASK);
+> +
+> +		for (port = PORT_A; port <= PORT_C; port++) {
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(port)) &=
+> +				~BXT_PHY_LANE_ENABLED;
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(port)) |=
+> +				(BXT_PHY_CMNLANE_POWERDOWN_ACK |
+> +				 BXT_PHY_LANE_POWERDOWN_ACK);
+> +
+> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(port)) &=
+> +				~(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
+> +				  PORT_PLL_REF_SEL | PORT_PLL_LOCK |
+> +				  PORT_PLL_ENABLE);
+> +
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) &=
+> +				~(DDI_INIT_DISPLAY_DETECTED |
+> +				  DDI_BUF_CTL_ENABLE);
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) |= DDI_BUF_IS_IDLE;
+> +		}
+> +
+> +		vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) &= ~(BIT(0) | BIT(1));
+> +		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) &=
+> +			~PHY_POWER_GOOD;
+> +		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY1)) &=
+> +			~PHY_POWER_GOOD;
+> +		vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) &= ~BIT(30);
+> +		vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY1)) &= ~BIT(30);
+> +
+> +		vgpu_vreg_t(vgpu, SFUSE_STRAP) &= ~SFUSE_STRAP_DDIB_DETECTED;
+> +		vgpu_vreg_t(vgpu, SFUSE_STRAP) &= ~SFUSE_STRAP_DDIC_DETECTED;
+> +
+> +		/*
+> +		 * Only 1 PIPE enabled in current vGPU display and PIPE_A is
+> +		 *  tied to TRANSCODER_A in HW, so it's safe to assume PIPE_A,
+> +		 *   TRANSCODER_A can be enabled. PORT_x depends on the input of
+> +		 *   setup_virtual_dp_monitor.
+> +		 */
+> +		vgpu_vreg_t(vgpu, PIPECONF(PIPE_A)) |= PIPECONF_ENABLE;
+> +		vgpu_vreg_t(vgpu, PIPECONF(PIPE_A)) |= I965_PIPECONF_ACTIVE;
+> +
+> +		/*
+> +		 * Golden M/N are calculated based on:
+> +		 *   24 bpp, 4 lanes, 154000 pixel clk (from virtual EDID),
+> +		 *   DP link clk 1620 MHz and non-constant_n.
+> +		 * TODO: calculate DP link symbol clk and stream clk m/n.
+> +		 */
+> +		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) = 63 << TU_SIZE_SHIFT;
+> +		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) |= 0x5b425e;
+> +		vgpu_vreg_t(vgpu, PIPE_DATA_N1(TRANSCODER_A)) = 0x800000;
+> +		vgpu_vreg_t(vgpu, PIPE_LINK_M1(TRANSCODER_A)) = 0x3cd6e;
+> +		vgpu_vreg_t(vgpu, PIPE_LINK_N1(TRANSCODER_A)) = 0x80000;
+>  
+> +		/* Enable per-DDI/PORT vreg */
+>  		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
+> +			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(1);
+> +			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY1)) |=
+> +				PHY_POWER_GOOD;
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY1)) |=
+> +				BIT(30);
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_A)) |=
+> +				BXT_PHY_LANE_ENABLED;
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_A)) &=
+> +				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
+> +				  BXT_PHY_LANE_POWERDOWN_ACK);
+> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_A)) |=
+> +				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
+> +				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
+> +				 PORT_PLL_ENABLE);
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_A)) |=
+> +				(DDI_BUF_CTL_ENABLE | DDI_INIT_DISPLAY_DETECTED);
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_A)) &=
+> +				~DDI_BUF_IS_IDLE;
+> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_EDP)) |=
+> +				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
+> +				 TRANS_DDI_FUNC_ENABLE);
+>  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+>  				BXT_DE_PORT_HP_DDIA;
+>  		}
+>  
+>  		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
+> +			vgpu_vreg_t(vgpu, SFUSE_STRAP) |= SFUSE_STRAP_DDIB_DETECTED;
+> +			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(0);
+> +			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) |=
+> +				PHY_POWER_GOOD;
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) |=
+> +				BIT(30);
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_B)) |=
+> +				BXT_PHY_LANE_ENABLED;
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_B)) &=
+> +				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
+> +				  BXT_PHY_LANE_POWERDOWN_ACK);
+> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_B)) |=
+> +				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
+> +				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
+> +				 PORT_PLL_ENABLE);
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_B)) |=
+> +				DDI_BUF_CTL_ENABLE;
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_B)) &=
+> +				~DDI_BUF_IS_IDLE;
+> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) |=
+> +				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
+> +				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
+> +				 TRANS_DDI_FUNC_ENABLE);
+>  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+>  				BXT_DE_PORT_HP_DDIB;
+>  		}
+>  
+>  		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
+> +			vgpu_vreg_t(vgpu, SFUSE_STRAP) |= SFUSE_STRAP_DDIC_DETECTED;
+> +			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(0);
+> +			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) |=
+> +				PHY_POWER_GOOD;
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) |=
+> +				BIT(30);
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) |=
+> +				BXT_PHY_LANE_ENABLED;
+> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) &=
+> +				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
+> +				  BXT_PHY_LANE_POWERDOWN_ACK);
+> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_C)) |=
+> +				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
+> +				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
+> +				 PORT_PLL_ENABLE);
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_C)) |=
+> +				DDI_BUF_CTL_ENABLE;
+> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_C)) &=
+> +				~DDI_BUF_IS_IDLE;
+> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) |=
+> +				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
+> +				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
+> +				 TRANS_DDI_FUNC_ENABLE);
+>  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+>  				BXT_DE_PORT_HP_DDIC;
+>  		}
+> @@ -519,6 +660,45 @@ void intel_vgpu_emulate_hotplug(struct intel_vgpu *vgpu, bool connected)
+>  		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
+>  				PORTD_HOTPLUG_STATUS_MASK;
+>  		intel_vgpu_trigger_virtual_event(vgpu, DP_D_HOTPLUG);
+> +	} else if (IS_BROXTON(i915)) {
+> +		if (connected) {
+> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
+> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+> +					BXT_DE_PORT_HP_DDIA;
+> +			}
+> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
+> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
+> +					SFUSE_STRAP_DDIB_DETECTED;
+> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+> +					BXT_DE_PORT_HP_DDIB;
+> +			}
+> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
+> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
+> +					SFUSE_STRAP_DDIC_DETECTED;
+> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+> +					BXT_DE_PORT_HP_DDIC;
+> +			}
+> +		} else {
+> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
+> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
+> +					~BXT_DE_PORT_HP_DDIA;
+> +			}
+> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
+> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
+> +					~SFUSE_STRAP_DDIB_DETECTED;
+> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
+> +					~BXT_DE_PORT_HP_DDIB;
+> +			}
+> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
+> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
+> +					~SFUSE_STRAP_DDIC_DETECTED;
+> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
+> +					~BXT_DE_PORT_HP_DDIC;
+> +			}
+> +		}
+> +		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
+> +			PORTB_HOTPLUG_STATUS_MASK;
+> +		intel_vgpu_trigger_virtual_event(vgpu, DP_B_HOTPLUG);
+>  	}
+>  }
+>  
+> diff --git a/drivers/gpu/drm/i915/gvt/mmio.c b/drivers/gpu/drm/i915/gvt/mmio.c
+> index b6811f6a230d..24210b1eaec5 100644
+> --- a/drivers/gpu/drm/i915/gvt/mmio.c
+> +++ b/drivers/gpu/drm/i915/gvt/mmio.c
+> @@ -280,6 +280,11 @@ void intel_vgpu_reset_mmio(struct intel_vgpu *vgpu, bool dmlr)
+>  			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) |=
+>  				    BXT_PHY_CMNLANE_POWERDOWN_ACK |
+>  				    BXT_PHY_LANE_POWERDOWN_ACK;
+> +			vgpu_vreg_t(vgpu, SKL_FUSE_STATUS) |=
+> +				SKL_FUSE_DOWNLOAD_STATUS |
+> +				SKL_FUSE_PG_DIST_STATUS(SKL_PG0) |
+> +				SKL_FUSE_PG_DIST_STATUS(SKL_PG1) |
+> +				SKL_FUSE_PG_DIST_STATUS(SKL_PG2);
+>  		}
+>  	} else {
+>  #define GVT_GEN8_MMIO_RESET_OFFSET		(0x44200)
+> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+> index f6d7e33c7099..399582aeeefb 100644
+> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+> @@ -439,7 +439,8 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(struct intel_gvt *gvt,
+>  
+>  	if (IS_BROADWELL(dev_priv))
+>  		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_B);
+> -	else
+> +	/* FixMe: Re-enable APL/BXT once vfio_edid enabled */
+> +	else if (!IS_BROXTON(dev_priv))
+>  		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
+>  	if (ret)
+>  		goto out_clean_sched_policy;
+> -- 
+> 2.29.2
+> 
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+-- 
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                           se7206_defconfig
-m68k                       bvme6000_defconfig
-m68k                           sun3_defconfig
-h8300                               defconfig
-sh                           se7705_defconfig
-mips                           ip28_defconfig
-m68k                       m5208evb_defconfig
-sh                           se7712_defconfig
-arm                        multi_v7_defconfig
-powerpc                   motionpro_defconfig
-powerpc                    amigaone_defconfig
-sh                           se7724_defconfig
-arm                            mmp2_defconfig
-mips                      pistachio_defconfig
-ia64                            zx1_defconfig
-mips                        vocore2_defconfig
-mips                           ip22_defconfig
-s390                       zfcpdump_defconfig
-powerpc                 mpc834x_itx_defconfig
-ia64                                defconfig
-m68k                       m5249evb_defconfig
-arm                          pxa910_defconfig
-mips                      malta_kvm_defconfig
-sh                ecovec24-romimage_defconfig
-arm                          pcm027_defconfig
-arm                        mvebu_v5_defconfig
-sh                           se7722_defconfig
-riscv                            allyesconfig
-powerpc                      katmai_defconfig
-sh                            hp6xx_defconfig
-microblaze                      mmu_defconfig
-mips                           xway_defconfig
-c6x                         dsk6455_defconfig
-arm                          lpd270_defconfig
-powerpc                        icon_defconfig
-powerpc                      tqm8xx_defconfig
-mips                     cu1000-neo_defconfig
-arm                          exynos_defconfig
-mips                          ath79_defconfig
-powerpc                    sam440ep_defconfig
-sh                          landisk_defconfig
-m68k                          amiga_defconfig
-powerpc                 canyonlands_defconfig
-mips                malta_qemu_32r6_defconfig
-powerpc                     tqm8555_defconfig
-arm                          ep93xx_defconfig
-arm                        spear3xx_defconfig
-mips                  maltasmvp_eva_defconfig
-powerpc                         wii_defconfig
-powerpc                       eiger_defconfig
-arm                              alldefconfig
-arm                            zeus_defconfig
-powerpc                     rainier_defconfig
-arm                       cns3420vb_defconfig
-powerpc                        fsp2_defconfig
-ia64                             alldefconfig
-mips                      maltaaprp_defconfig
-arm                     am200epdkit_defconfig
-xtensa                          iss_defconfig
-arm                           viper_defconfig
-arm                           sunxi_defconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20201104
-i386                 randconfig-a006-20201104
-i386                 randconfig-a005-20201104
-i386                 randconfig-a001-20201104
-i386                 randconfig-a002-20201104
-i386                 randconfig-a003-20201104
-x86_64               randconfig-a012-20201104
-x86_64               randconfig-a015-20201104
-x86_64               randconfig-a013-20201104
-x86_64               randconfig-a011-20201104
-x86_64               randconfig-a014-20201104
-x86_64               randconfig-a016-20201104
-i386                 randconfig-a015-20201104
-i386                 randconfig-a013-20201104
-i386                 randconfig-a014-20201104
-i386                 randconfig-a016-20201104
-i386                 randconfig-a011-20201104
-i386                 randconfig-a012-20201104
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a004-20201104
-x86_64               randconfig-a003-20201104
-x86_64               randconfig-a005-20201104
-x86_64               randconfig-a002-20201104
-x86_64               randconfig-a006-20201104
-x86_64               randconfig-a001-20201104
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
