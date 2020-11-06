@@ -2,42 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 775062A8E02
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Nov 2020 05:02:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 513B82A967E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Nov 2020 13:54:24 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 32BFF6EDFB;
-	Fri,  6 Nov 2020 04:02:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B054D893CB;
+	Fri,  6 Nov 2020 12:54:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 69EED6EDFB
+Received: from mail-lf1-x141.google.com (mail-lf1-x141.google.com
+ [IPv6:2a00:1450:4864:20::141])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D4D8D6EA87
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Nov 2020 04:02:54 +0000 (UTC)
-IronPort-SDR: WypWD8Tbvqq9JGstxIdpGVjZ71SbFfk4eDaowwrKmjK5rj/iEDZRGK02E9jkYAE8bsAARM3y3U
- i3a2i18adCpA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9796"; a="233665567"
-X-IronPort-AV: E=Sophos;i="5.77,455,1596524400"; d="scan'208";a="233665567"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2020 20:02:53 -0800
-IronPort-SDR: 70STT5+J840x1ZqtMkhiy3yJM5EJlaixfWAFZxa/1IaIe4zBp4o2qjyi5LH763nfQ0Wj092Uul
- /x1khArAwbsg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,455,1596524400"; d="scan'208";a="354559218"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 05 Nov 2020 20:02:52 -0800
-Date: Fri, 6 Nov 2020 11:41:27 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Colin Xu <colin.xu@intel.com>
-Subject: Re: [PATCH V4] drm/i915/gvt: Fix virtual display setup for BXT/APL
-Message-ID: <20201106034127.GT27141@zhen-hp.sh.intel.com>
-References: <20201104064147.398351-1-colin.xu@intel.com>
+ Fri,  6 Nov 2020 12:54:20 +0000 (UTC)
+Received: by mail-lf1-x141.google.com with SMTP id i6so1794287lfd.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 06 Nov 2020 04:54:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=8XO8tzvbqoZ7+jg77OKMfliL+EcEdm++9c8W6K82eVQ=;
+ b=u/FCXTM3qw5ymlokLmHFlbp73BlEQkhnbvBftTNW6B7sk4zzjZzNcLBC48CsCdnt7t
+ NDfk3L6QqmS5LdTfA9/lsqUBkAL8eRaI9/GMIbG8An4dq7DMKWONmVQnkKojxxXY2Prc
+ jD93nfCK7BOO7FI3+VH+2++NX1WYICuskqXd47aZ+cErvsG9YgSgZ/Lz2ed6iY58Y/zW
+ 6dP2bICaYjDUSulfQYIG75/PhQMBMKy2LKuYGvsBXo6+8QJLnThiRpLkGqoSN10bfyT6
+ FPZRWeK1iYCvT+Ev1qmDWJsATw9zCS8iIl7gjLaFmxFcuQxJOXlE4JWfYfzDG4p8Ol+q
+ ihKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=8XO8tzvbqoZ7+jg77OKMfliL+EcEdm++9c8W6K82eVQ=;
+ b=My5uOV601vH3/6Fm7mthgLg0rkdCrJbm2XoNC0NFauOqmMhO9bgKtMeecMi3QSjC/Y
+ NqBw0kgH7mEwqLXiZ96QUS2ynOo92e3dxpdI5NUeMUSCoTXTa1TPj8Nf3EcZfkR+4xtJ
+ PSv1Tq8nQnhwh6LuKilJz3c9EouZD7xYpHfUpSjhMYr343WMeKYTQH8ec5dByyfChUQU
+ nHOKrqN2uleWRnwhN8o4pnXI7mBg60mUQSFF81vDQZ2yH3g7+R1hbZvNEcQ8odvJP9H4
+ xVZcYbPoJA1L11vcb2WwxkUx9E59Z5vJBUScMO+/op4c/EEv3XYpEz9DIU7lHP48SPhI
+ noog==
+X-Gm-Message-State: AOAM530g+RrMlONtLSjFnJCwLjiSNspPAA0iYhT5fq4zyPj+ZtCVByQ5
+ zZRwt8cW0IBDQGp1xP0hNSAmlLojFs6EIFKQb9U=
+X-Google-Smtp-Source: ABdhPJyWAQpHHqAluVkMmZbdp/wLRB4wqAZBcWXdWcwGd/9eUNGryewFNH7NTRiwRhzzt+XAACGeH2OXT7sJ/AIOvFM=
+X-Received: by 2002:ac2:443c:: with SMTP id w28mr770726lfl.405.1604667259297; 
+ Fri, 06 Nov 2020 04:54:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201104064147.398351-1-colin.xu@intel.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+From: Daniel SACKEY <ddsckey@gmail.com>
+Date: Fri, 6 Nov 2020 20:54:09 +0800
+Message-ID: <CAME6GFB=ZVwN=VrWF9uKzjgAyqw-7D=b5ncCsK59dbqhtGK80g@mail.gmail.com>
+Subject: re
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,305 +60,184 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: ddsckey@gmail.com
+Content-Type: multipart/mixed; boundary="===============1234155765=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 2020.11.04 14:41:47 +0800, Colin Xu wrote:
-> Program display related vregs to proper value at initialization, setup
-> virtual monitor and hotplug.
-> 
-> vGPU virtual display vregs inherit the value from pregs. The virtual DP
-> monitor is always setup on PORT_B for BXT/APL. However the host may
-> connect monitor on other PORT or without any monitor connected. Without
-> properly setup PIPE/DDI/PLL related vregs, guest driver may not setup
-> the virutal display as expected, and the guest desktop may not be
-> created.
-> Since only one virtual display is supported, enable PIPE_A only. And
-> enable transcoder/DDI/PLL based on which port is setup for BXT/APL.
-> 
-> V2:
-> Revise commit message.
-> 
-> V3:
-> set_edid should on PORT_B for BXT.
-> Inject hpd event for BXT.
-> 
-> V4:
-> Temporarily disable vfio edid on BXT/APL until issue fixed.
->
+--===============1234155765==
+Content-Type: multipart/alternative; boundary="000000000000f9243205b36fb541"
 
-Hi, could you split this? So one for current PORT setup issue, another is
-to disable edid now until we fixed it.
+--000000000000f9243205b36fb541
+Content-Type: text/plain; charset="UTF-8"
 
-> Signed-off-by: Colin Xu <colin.xu@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/display.c | 186 ++++++++++++++++++++++++++++-
->  drivers/gpu/drm/i915/gvt/mmio.c    |   5 +
->  drivers/gpu/drm/i915/gvt/vgpu.c    |   3 +-
->  3 files changed, 190 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
-> index 7ba16ddfe75f..e15b69bed189 100644
-> --- a/drivers/gpu/drm/i915/gvt/display.c
-> +++ b/drivers/gpu/drm/i915/gvt/display.c
-> @@ -173,21 +173,162 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
->  	int pipe;
->  
->  	if (IS_BROXTON(dev_priv)) {
-> -		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &= ~(BXT_DE_PORT_HP_DDIA |
-> -			BXT_DE_PORT_HP_DDIB |
-> -			BXT_DE_PORT_HP_DDIC);
-> +		enum transcoder trans;
-> +		enum port port;
-> +
-> +		/* Clear PIPE, DDI, PHY, HPD before setting new */
-> +		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-> +			~(BXT_DE_PORT_HP_DDIA |
-> +			  BXT_DE_PORT_HP_DDIB |
-> +			  BXT_DE_PORT_HP_DDIC);
-> +
-> +		for_each_pipe(dev_priv, pipe) {
-> +			vgpu_vreg_t(vgpu, PIPECONF(pipe)) &=
-> +				~(PIPECONF_ENABLE | I965_PIPECONF_ACTIVE);
-> +			vgpu_vreg_t(vgpu, DSPCNTR(pipe)) &= ~DISPLAY_PLANE_ENABLE;
-> +			vgpu_vreg_t(vgpu, SPRCTL(pipe)) &= ~SPRITE_ENABLE;
-> +			vgpu_vreg_t(vgpu, CURCNTR(pipe)) &= ~MCURSOR_MODE;
-> +			vgpu_vreg_t(vgpu, CURCNTR(pipe)) |= MCURSOR_MODE_DISABLE;
-> +		}
-> +
-> +		for (trans = TRANSCODER_A; trans <= TRANSCODER_EDP; trans++) {
-> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(trans)) &=
-> +				~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
-> +				  TRANS_DDI_PORT_MASK | TRANS_DDI_FUNC_ENABLE);
-> +		}
-> +		vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) &=
-> +			~(TRANS_DDI_BPC_MASK | TRANS_DDI_MODE_SELECT_MASK |
-> +			  TRANS_DDI_PORT_MASK);
-> +
-> +		for (port = PORT_A; port <= PORT_C; port++) {
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(port)) &=
-> +				~BXT_PHY_LANE_ENABLED;
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(port)) |=
-> +				(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-> +				 BXT_PHY_LANE_POWERDOWN_ACK);
-> +
-> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(port)) &=
-> +				~(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-> +				  PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-> +				  PORT_PLL_ENABLE);
-> +
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) &=
-> +				~(DDI_INIT_DISPLAY_DETECTED |
-> +				  DDI_BUF_CTL_ENABLE);
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) |= DDI_BUF_IS_IDLE;
-> +		}
-> +
-> +		vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) &= ~(BIT(0) | BIT(1));
-> +		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) &=
-> +			~PHY_POWER_GOOD;
-> +		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY1)) &=
-> +			~PHY_POWER_GOOD;
-> +		vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) &= ~BIT(30);
-> +		vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY1)) &= ~BIT(30);
-> +
-> +		vgpu_vreg_t(vgpu, SFUSE_STRAP) &= ~SFUSE_STRAP_DDIB_DETECTED;
-> +		vgpu_vreg_t(vgpu, SFUSE_STRAP) &= ~SFUSE_STRAP_DDIC_DETECTED;
-> +
-> +		/*
-> +		 * Only 1 PIPE enabled in current vGPU display and PIPE_A is
-> +		 *  tied to TRANSCODER_A in HW, so it's safe to assume PIPE_A,
-> +		 *   TRANSCODER_A can be enabled. PORT_x depends on the input of
-> +		 *   setup_virtual_dp_monitor.
-> +		 */
-> +		vgpu_vreg_t(vgpu, PIPECONF(PIPE_A)) |= PIPECONF_ENABLE;
-> +		vgpu_vreg_t(vgpu, PIPECONF(PIPE_A)) |= I965_PIPECONF_ACTIVE;
-> +
-> +		/*
-> +		 * Golden M/N are calculated based on:
-> +		 *   24 bpp, 4 lanes, 154000 pixel clk (from virtual EDID),
-> +		 *   DP link clk 1620 MHz and non-constant_n.
-> +		 * TODO: calculate DP link symbol clk and stream clk m/n.
-> +		 */
-> +		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) = 63 << TU_SIZE_SHIFT;
-> +		vgpu_vreg_t(vgpu, PIPE_DATA_M1(TRANSCODER_A)) |= 0x5b425e;
-> +		vgpu_vreg_t(vgpu, PIPE_DATA_N1(TRANSCODER_A)) = 0x800000;
-> +		vgpu_vreg_t(vgpu, PIPE_LINK_M1(TRANSCODER_A)) = 0x3cd6e;
-> +		vgpu_vreg_t(vgpu, PIPE_LINK_N1(TRANSCODER_A)) = 0x80000;
->  
-> +		/* Enable per-DDI/PORT vreg */
->  		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-> +			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(1);
-> +			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY1)) |=
-> +				PHY_POWER_GOOD;
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY1)) |=
-> +				BIT(30);
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_A)) |=
-> +				BXT_PHY_LANE_ENABLED;
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_A)) &=
-> +				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-> +				  BXT_PHY_LANE_POWERDOWN_ACK);
-> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_A)) |=
-> +				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-> +				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-> +				 PORT_PLL_ENABLE);
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_A)) |=
-> +				(DDI_BUF_CTL_ENABLE | DDI_INIT_DISPLAY_DETECTED);
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_A)) &=
-> +				~DDI_BUF_IS_IDLE;
-> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_EDP)) |=
-> +				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
-> +				 TRANS_DDI_FUNC_ENABLE);
->  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
->  				BXT_DE_PORT_HP_DDIA;
->  		}
->  
->  		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-> +			vgpu_vreg_t(vgpu, SFUSE_STRAP) |= SFUSE_STRAP_DDIB_DETECTED;
-> +			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(0);
-> +			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) |=
-> +				PHY_POWER_GOOD;
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) |=
-> +				BIT(30);
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_B)) |=
-> +				BXT_PHY_LANE_ENABLED;
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_B)) &=
-> +				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-> +				  BXT_PHY_LANE_POWERDOWN_ACK);
-> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_B)) |=
-> +				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-> +				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-> +				 PORT_PLL_ENABLE);
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_B)) |=
-> +				DDI_BUF_CTL_ENABLE;
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_B)) &=
-> +				~DDI_BUF_IS_IDLE;
-> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) |=
-> +				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
-> +				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
-> +				 TRANS_DDI_FUNC_ENABLE);
->  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
->  				BXT_DE_PORT_HP_DDIB;
->  		}
->  
->  		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-> +			vgpu_vreg_t(vgpu, SFUSE_STRAP) |= SFUSE_STRAP_DDIC_DETECTED;
-> +			vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) |= BIT(0);
-> +			vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) |=
-> +				PHY_POWER_GOOD;
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL_FAMILY(DPIO_PHY0)) |=
-> +				BIT(30);
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) |=
-> +				BXT_PHY_LANE_ENABLED;
-> +			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) &=
-> +				~(BXT_PHY_CMNLANE_POWERDOWN_ACK |
-> +				  BXT_PHY_LANE_POWERDOWN_ACK);
-> +			vgpu_vreg_t(vgpu, BXT_PORT_PLL_ENABLE(PORT_C)) |=
-> +				(PORT_PLL_POWER_STATE | PORT_PLL_POWER_ENABLE |
-> +				 PORT_PLL_REF_SEL | PORT_PLL_LOCK |
-> +				 PORT_PLL_ENABLE);
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_C)) |=
-> +				DDI_BUF_CTL_ENABLE;
-> +			vgpu_vreg_t(vgpu, DDI_BUF_CTL(PORT_C)) &=
-> +				~DDI_BUF_IS_IDLE;
-> +			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) |=
-> +				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
-> +				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
-> +				 TRANS_DDI_FUNC_ENABLE);
->  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
->  				BXT_DE_PORT_HP_DDIC;
->  		}
-> @@ -519,6 +660,45 @@ void intel_vgpu_emulate_hotplug(struct intel_vgpu *vgpu, bool connected)
->  		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
->  				PORTD_HOTPLUG_STATUS_MASK;
->  		intel_vgpu_trigger_virtual_event(vgpu, DP_D_HOTPLUG);
-> +	} else if (IS_BROXTON(i915)) {
-> +		if (connected) {
-> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
-> +					BXT_DE_PORT_HP_DDIA;
-> +			}
-> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
-> +					SFUSE_STRAP_DDIB_DETECTED;
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
-> +					BXT_DE_PORT_HP_DDIB;
-> +			}
-> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
-> +					SFUSE_STRAP_DDIC_DETECTED;
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
-> +					BXT_DE_PORT_HP_DDIC;
-> +			}
-> +		} else {
-> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-> +					~BXT_DE_PORT_HP_DDIA;
-> +			}
-> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
-> +					~SFUSE_STRAP_DDIB_DETECTED;
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-> +					~BXT_DE_PORT_HP_DDIB;
-> +			}
-> +			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
-> +					~SFUSE_STRAP_DDIC_DETECTED;
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
-> +					~BXT_DE_PORT_HP_DDIC;
-> +			}
-> +		}
-> +		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
-> +			PORTB_HOTPLUG_STATUS_MASK;
-> +		intel_vgpu_trigger_virtual_event(vgpu, DP_B_HOTPLUG);
->  	}
->  }
->  
-> diff --git a/drivers/gpu/drm/i915/gvt/mmio.c b/drivers/gpu/drm/i915/gvt/mmio.c
-> index b6811f6a230d..24210b1eaec5 100644
-> --- a/drivers/gpu/drm/i915/gvt/mmio.c
-> +++ b/drivers/gpu/drm/i915/gvt/mmio.c
-> @@ -280,6 +280,11 @@ void intel_vgpu_reset_mmio(struct intel_vgpu *vgpu, bool dmlr)
->  			vgpu_vreg_t(vgpu, BXT_PHY_CTL(PORT_C)) |=
->  				    BXT_PHY_CMNLANE_POWERDOWN_ACK |
->  				    BXT_PHY_LANE_POWERDOWN_ACK;
-> +			vgpu_vreg_t(vgpu, SKL_FUSE_STATUS) |=
-> +				SKL_FUSE_DOWNLOAD_STATUS |
-> +				SKL_FUSE_PG_DIST_STATUS(SKL_PG0) |
-> +				SKL_FUSE_PG_DIST_STATUS(SKL_PG1) |
-> +				SKL_FUSE_PG_DIST_STATUS(SKL_PG2);
->  		}
->  	} else {
->  #define GVT_GEN8_MMIO_RESET_OFFSET		(0x44200)
-> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-> index f6d7e33c7099..399582aeeefb 100644
-> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
-> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-> @@ -439,7 +439,8 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(struct intel_gvt *gvt,
->  
->  	if (IS_BROADWELL(dev_priv))
->  		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_B);
-> -	else
-> +	/* FixMe: Re-enable APL/BXT once vfio_edid enabled */
-> +	else if (!IS_BROXTON(dev_priv))
->  		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
->  	if (ret)
->  		goto out_clean_sched_policy;
-> -- 
-> 2.29.2
-> 
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+ Good morning and how are you,
 
--- 
+This message might meet you in utmost surprise. However, it is my urgent
+need for a foreign partner that made me contact you for this transaction. I
+am Mr Daniel Sackey, Managing Director of Ecobank over here in Accra,
+Ghana.  On 15th July 2009 one of my bank customers died along with his
+entire family in a plane crash in Northern Iran, but before his death, he
+made a fixed deposit of $12,500,000.00 with our bank unfortunately, the
+deceased did not attach to the fund any next of kin. Since there is no next
+of kin to the fund, I want to put your  information into our bank database
+as the legal next of kin to the fund and the money would be legally
+transferred to you.  I want you to help me receive the fund in your country
+or any country of your choice because I cannot do this deal alone except
+with a foreign partner. This business is legal, and we shall follow all the
+legal banking procedures for the money to be transferred to you legally.
 
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+We shall share the money equally; 50/50 percent each after it has been
+transferred to you. If you agree to my business deal, more details relating
+to the fund transfer and vital legal documents concerning this deal will be
+forwarded to you for more clarifications as soon as I receive your reply.
+Please treat this transaction very confidential.
+
+Sincerely
+Mr. Daniel Sackey
+
+--000000000000f9243205b36fb541
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">
+<div class=3D"gmail-_3U2q6dcdZCrTrR_42Nxby gmail-JWNdg1hee9_Rz6bIGvG1c gmai=
+l-allowTextSelection"><div><div class=3D"gmail-rps_400b"><div><div dir=3D"l=
+tr"><div class=3D"gmail-x_gmail-_3U2q6dcdZCrTrR_42Nxby gmail-x_gmail-JWNdg1=
+hee9_Rz6bIGvG1c gmail-x_gmail-allowTextSelection"><div><div class=3D"gmail-=
+x_gmail-rps_400b"><div><div dir=3D"ltr"><div class=3D"gmail-x_gmail-x_gmail=
+-_3U2q6dcdZCrTrR_42Nxby gmail-x_gmail-x_gmail-JWNdg1hee9_Rz6bIGvG1c gmail-x=
+_gmail-x_gmail-allowTextSelection"><div><div class=3D"gmail-x_gmail-x_gmail=
+-rps_274"><div><div dir=3D"ltr"><div class=3D"gmail-x_gmail-x_gmail-x_gmail=
+-_2zOpJb7ZbCN0X1DoeFyiYw gmail-x_gmail-x_gmail-x_gmail-JWNdg1hee9_Rz6bIGvG1=
+c gmail-x_gmail-x_gmail-x_gmail-allowTextSelection"><div><div class=3D"gmai=
+l-x_gmail-x_gmail-x_gmail-rps_274"><div><div dir=3D"ltr"><div class=3D"gmai=
+l-x_gmail-x_gmail-x_gmail-x_gmail-_3U2q6dcdZCrTrR_42Nxby gmail-x_gmail-x_gm=
+ail-x_gmail-x_gmail-JWNdg1hee9_Rz6bIGvG1c gmail-x_gmail-x_gmail-x_gmail-x_g=
+mail-allowTextSelection"><div><div class=3D"gmail-x_gmail-x_gmail-x_gmail-x=
+_gmail-rps_274"><div><div dir=3D"ltr"><div class=3D"gmail-x_gmail-x_gmail-x=
+_gmail-x_gmail-x_gmail-_2zOpJb7ZbCN0X1DoeFyiYw gmail-x_gmail-x_gmail-x_gmai=
+l-x_gmail-x_gmail-JWNdg1hee9_Rz6bIGvG1c gmail-x_gmail-x_gmail-x_gmail-x_gma=
+il-x_gmail-allowTextSelection"><div><div class=3D"gmail-x_gmail-x_gmail-x_g=
+mail-x_gmail-x_gmail-rps_274"><div><div dir=3D"ltr"><div class=3D"gmail-x_g=
+mail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-_2zOpJb7ZbCN0X1DoeFyiYw gmail-=
+x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-JWNdg1hee9_Rz6bIGvG1c gmail=
+-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-allowTextSelection"><div><=
+div class=3D"gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-rps_274"=
+><div><div dir=3D"ltr"><div class=3D"gmail-x_gmail-x_gmail-x_gmail-x_gmail-=
+x_gmail-x_gmail-x_gmail-_3U2q6dcdZCrTrR_42Nxby gmail-x_gmail-x_gmail-x_gmai=
+l-x_gmail-x_gmail-x_gmail-x_gmail-JWNdg1hee9_Rz6bIGvG1c gmail-x_gmail-x_gma=
+il-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-allowTextSelection"><div><div cl=
+ass=3D"gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-rps_e4=
+6d"><div><div dir=3D"ltr"><div class=3D"gmail-x_gmail-x_gmail-x_gmail-x_gma=
+il-x_gmail-x_gmail-x_gmail-x_gmail-_3U2q6dcdZCrTrR_42Nxby gmail-x_gmail-x_g=
+mail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-JWNdg1hee9_Rz6bIGvG1c =
+gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_gmail-allow=
+TextSelection"><div><div class=3D"gmail-x_gmail-x_gmail-x_gmail-x_gmail-x_g=
+mail-x_gmail-x_gmail-x_gmail-rps_e46d"><div><div dir=3D"ltr"><div><div><div=
+><div><div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div>=
+<div><div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><=
+div><div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><d=
+iv><div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><di=
+v><div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div=
+><div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div>=
+<div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div><=
+div dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div><d=
+iv dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div><di=
+v dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div><div=
+ dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div><div =
+dir=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div dir=3D"ltr"><div dir=
+=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div><div dir=
+=3D"ltr"><div><div><div><div><div dir=3D"ltr"><div><div><div><div><div dir=
+=3D"ltr"><div style=3D"margin:0px;padding:0px;border:0px none;font-style:no=
+rmal;font-weight:400;font-stretch:inherit;font-size:15px;line-height:inheri=
+t;vertical-align:baseline;color:rgb(32,31,30);letter-spacing:normal;text-al=
+ign:start;text-indent:0px;text-transform:none;white-space:normal;word-spaci=
+ng:0px;background-color:rgb(255,255,255)">Good morning and how are you,</di=
+v><div style=3D"margin:0px;padding:0px;border:0px none;font-style:normal;fo=
+nt-weight:400;font-stretch:inherit;font-size:15px;line-height:inherit;verti=
+cal-align:baseline;color:rgb(32,31,30);letter-spacing:normal;text-align:sta=
+rt;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;=
+background-color:rgb(255,255,255)"><br></div><div style=3D"margin:0px;paddi=
+ng:0px;border:0px none;font-style:normal;font-weight:400;font-stretch:inher=
+it;font-size:15px;line-height:inherit;vertical-align:baseline;color:rgb(32,=
+31,30);letter-spacing:normal;text-align:start;text-indent:0px;text-transfor=
+m:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,255=
+)">This
+ message might meet you in utmost surprise. However, it is my urgent=20
+need for a foreign partner that made me contact you for this=20
+transaction. I am Mr Daniel Sackey, Managing Director of Ecobank over=20
+here in Accra, Ghana.=C2=A0 On 15th July 2009 one of my bank customers died=
+=20
+along with his entire family in a plane crash in Northern Iran, but=20
+before his death, he made a fixed deposit of $12,500,000.00 with our=20
+bank unfortunately, the deceased did not attach to the fund any next of=20
+kin. Since there is no next of kin to the fund, I want to put your=C2=A0=20
+information into our bank database as the legal next of kin to the fund=20
+and the money would be legally transferred to you.=C2=A0 I want you to help=
+=20
+me receive the fund in your country or any country of your choice=20
+because I cannot do this deal alone except with a foreign partner. This=20
+business is legal, and we shall follow all the legal banking procedures=20
+for the money to be transferred to you legally.</div><div style=3D"margin:0=
+px;padding:0px;border:0px none;font-style:normal;font-weight:400;font-stret=
+ch:inherit;font-size:15px;line-height:inherit;vertical-align:baseline;color=
+:rgb(32,31,30);letter-spacing:normal;text-align:start;text-indent:0px;text-=
+transform:none;white-space:normal;word-spacing:0px;background-color:rgb(255=
+,255,255)"><br></div><div style=3D"margin:0px;padding:0px;border:0px none;f=
+ont-style:normal;font-weight:400;font-stretch:inherit;font-size:15px;line-h=
+eight:inherit;vertical-align:baseline;color:rgb(32,31,30);letter-spacing:no=
+rmal;text-align:start;text-indent:0px;text-transform:none;white-space:norma=
+l;word-spacing:0px;background-color:rgb(255,255,255)">We
+ shall share the money equally; 50/50 percent each after it has been=20
+transferred to you. If you agree to my business deal, more details=20
+relating to the fund transfer and vital legal documents concerning this=20
+deal will be forwarded to you for more clarifications as soon as I=20
+receive your reply. Please treat this transaction very confidential.=C2=A0=
+=C2=A0</div><div style=3D"margin:0px;padding:0px;border:0px none;font-style=
+:normal;font-weight:400;font-stretch:inherit;font-size:15px;line-height:inh=
+erit;vertical-align:baseline;color:rgb(32,31,30);letter-spacing:normal;text=
+-align:start;text-indent:0px;text-transform:none;white-space:normal;word-sp=
+acing:0px;background-color:rgb(255,255,255)"><br></div><div style=3D"margin=
+:0px;padding:0px;border:0px none;font-style:normal;font-weight:400;font-str=
+etch:inherit;font-size:15px;line-height:inherit;vertical-align:baseline;col=
+or:rgb(32,31,30);letter-spacing:normal;text-align:start;text-indent:0px;tex=
+t-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(2=
+55,255,255)">Sincerely</div><div style=3D"margin:0px;padding:0px;border:0px=
+ none;font-style:normal;font-weight:400;font-stretch:inherit;font-size:15px=
+;line-height:inherit;vertical-align:baseline;color:rgb(32,31,30);letter-spa=
+cing:normal;text-align:start;text-indent:0px;text-transform:none;white-spac=
+e:normal;word-spacing:0px;background-color:rgb(255,255,255)">Mr. Daniel Sac=
+key</div></div></div></div></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div></div></div>=
+</div>
+
+</div>
+
+--000000000000f9243205b36fb541--
+
+--===============1234155765==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1234155765==--
