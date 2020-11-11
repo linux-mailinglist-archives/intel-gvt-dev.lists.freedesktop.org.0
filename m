@@ -1,44 +1,50 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27F872AE668
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Nov 2020 03:29:16 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97DF02AF09F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Nov 2020 13:28:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B1DA789BE8;
-	Wed, 11 Nov 2020 02:29:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5A7A389FDE;
+	Wed, 11 Nov 2020 12:28:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BDDC289BE8;
- Wed, 11 Nov 2020 02:29:13 +0000 (UTC)
-IronPort-SDR: dPPwmPiC6kRaXllHx+EfOXZpgXpQohiCYLhnl0RHBi+FYxO0j2UkLf2BkEW7CjCp8Cq8S4A+bi
- 61gVe9vL26Cg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="188059601"
-X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; 
- d="asc'?scan'208";a="188059601"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 18:29:11 -0800
-IronPort-SDR: 5X9dokFnhpEvAFBUB2K5/8AZV96m5qV4k5OKyjc2wLc4dd3Z3lIL1Lg2SzwpqMV5ZFmVXPMvMZ
- /3tQpWRC4wKg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; 
- d="asc'?scan'208";a="356431843"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 10 Nov 2020 18:29:09 -0800
-Date: Wed, 11 Nov 2020 10:14:54 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Subject: Re: [PATCH] drm/i915/gvt: replace idr_init() by idr_init_base()
-Message-ID: <20201111021454.GP1239@zhen-hp.sh.intel.com>
-References: <20201104121532.GA48202@localhost>
+X-Greylist: delayed 4496 seconds by postgrey-1.36 at gabe;
+ Wed, 11 Nov 2020 12:28:30 UTC
+Received: from mail.ptkbs.co.id (mail.ptkbs.co.id [115.85.80.96])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 682B189B57;
+ Wed, 11 Nov 2020 12:28:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.ptkbs.co.id (Postfix) with ESMTP id 4369D589F9D;
+ Wed, 11 Nov 2020 17:17:56 +0700 (WIB)
+Received: from mail.ptkbs.co.id ([127.0.0.1])
+ by localhost (mail.ptkbs.co.id [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id jWq52wnSKsdT; Wed, 11 Nov 2020 17:17:56 +0700 (WIB)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.ptkbs.co.id (Postfix) with ESMTP id 0618458BF21;
+ Wed, 11 Nov 2020 17:17:20 +0700 (WIB)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.ptkbs.co.id 0618458BF21
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ptkbs.co.id;
+ s=dkimptkbs; t=1605089840;
+ bh=UlqX0AekaU4n422w2c5IYr0zUMCi2/GiifK5Czle6gg=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=dUrEF5uGJ9kSAIl93xcu6Vus+En0nwRF+XxVNyMm1Tuprm7yuJEeOeYnQMoQKcVB+
+ dc13SXAOrRO2UbKB12y3WdkV0C2Kc2OrOeewpxvRUT4+Oc3P5NXRM297FP+Ii2psVu
+ THNvJ8mcqVoU7a4rbX6QpABOfplat7CaL0s+6NKU=
+X-Virus-Scanned: amavisd-new at mail.ptkbs.co.id
+Received: from mail.ptkbs.co.id ([127.0.0.1])
+ by localhost (mail.ptkbs.co.id [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id ZxE2QG1_UJ0y; Wed, 11 Nov 2020 17:17:19 +0700 (WIB)
+Received: from [192.168.100.12] (unknown [36.37.140.70])
+ by mail.ptkbs.co.id (Postfix) with ESMTPSA id 3D009589F7B;
+ Wed, 11 Nov 2020 17:16:33 +0700 (WIB)
 MIME-Version: 1.0
-In-Reply-To: <20201104121532.GA48202@localhost>
-User-Agent: Mutt/1.10.0 (2018-05-17)
+Content-Description: Mail message body
+Subject: Business interest
+To: Recipients <azhar@ptkbs.co.id>
+From: Kong Kea <azhar@ptkbs.co.id>
+Date: Wed, 11 Nov 2020 17:16:29 +0700
+Message-Id: <20201111101633.3D009589F7B@mail.ptkbs.co.id>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,103 +57,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============0529614536=="
+Reply-To: mr.kongkea@yandex.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+Hello,
 
---===============0529614536==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="EdRE1UL8d3mMOE6m"
-Content-Disposition: inline
+My name is Mr. Kong Kea, an accountant in our branch office here. A deceased client of mine, business man and also own a gold Mining Company/sales, who bears the same name as yours, died along with his family many years ago without a WILL or next of kin.
 
+He had a fixed deposit valued at the sum huge of money left behind before he met his end. I contacted you so that I can present you as my late client next of kin, so that the money can be transferred to your account, and we will share the funds equally, 50/50% to both parties.
 
---EdRE1UL8d3mMOE6m
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2020.11.04 17:45:32 +0530, Deepak R Varma wrote:
-> idr_init() uses base 0 which is an invalid identifier. The new function
-> idr_init_base allows IDR to set the ID lookup from base 1. This avoids
-> all lookups that otherwise starts from 0 since 0 is always unused.
->=20
-> References: commit 6ce711f27500 ("idr: Make 1-based IDRs more efficient")
->=20
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> ---
->  drivers/gpu/drm/i915/gvt/gvt.c  | 2 +-
->  drivers/gpu/drm/i915/gvt/vgpu.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gv=
-t.c
-> index c7c561237883..45b492edbb19 100644
-> --- a/drivers/gpu/drm/i915/gvt/gvt.c
-> +++ b/drivers/gpu/drm/i915/gvt/gvt.c
-> @@ -312,7 +312,7 @@ int intel_gvt_init_device(struct drm_i915_private *i9=
-15)
-> =20
->  	gvt_dbg_core("init gvt device\n");
-> =20
-> -	idr_init(&gvt->vgpu_idr);
-> +	idr_init_base(&gvt->vgpu_idr, 1);
->  	spin_lock_init(&gvt->scheduler.mmio_context_lock);
->  	mutex_init(&gvt->lock);
->  	mutex_init(&gvt->sched_lock);
-> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/v=
-gpu.c
-> index f6d7e33c7099..1c8e63f84134 100644
-> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
-> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-> @@ -393,7 +393,7 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(str=
-uct intel_gvt *gvt,
->  	mutex_init(&vgpu->dmabuf_lock);
->  	INIT_LIST_HEAD(&vgpu->dmabuf_obj_list_head);
->  	INIT_RADIX_TREE(&vgpu->page_track_tree, GFP_KERNEL);
-> -	idr_init(&vgpu->object_idr);
-> +	idr_init_base(&vgpu->object_idr, 1);
->  	intel_vgpu_init_cfg_space(vgpu, param->primary);
->  	vgpu->d3_entered =3D false;
-> =20
-> --=20
-
-Looks good to me. Thanks!
-
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
---=20
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---EdRE1UL8d3mMOE6m
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX6tJHgAKCRCxBBozTXgY
-Jyv8AJ0ZLKM2ez02e517XOPfJGtsLxANrwCeITSsq29wK0WjSZLfMr4lr6t1kwA=
-=0VA9
------END PGP SIGNATURE-----
-
---EdRE1UL8d3mMOE6m--
-
---===============0529614536==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Regards,
+Mr. Kong
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0529614536==--
