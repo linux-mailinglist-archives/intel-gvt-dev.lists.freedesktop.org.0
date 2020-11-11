@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62F892ADF19
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Nov 2020 20:09:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27F872AE668
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Nov 2020 03:29:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 06C1D89622;
-	Tue, 10 Nov 2020 19:09:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B1DA789BE8;
+	Wed, 11 Nov 2020 02:29:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3D92689622
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Nov 2020 19:09:19 +0000 (UTC)
-IronPort-SDR: s4TpCPGLF38V55HsWC8iDMXq4Wcvh8GP+Gd9Blo1VMlzR4jNu3/r4KYBFSCvljqttdU13/C0B3
- JZhEtSvilUmw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="234199708"
-X-IronPort-AV: E=Sophos;i="5.77,467,1596524400"; d="scan'208";a="234199708"
-X-Amp-Result: SKIPPED(no attachment in message)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BDDC289BE8;
+ Wed, 11 Nov 2020 02:29:13 +0000 (UTC)
+IronPort-SDR: dPPwmPiC6kRaXllHx+EfOXZpgXpQohiCYLhnl0RHBi+FYxO0j2UkLf2BkEW7CjCp8Cq8S4A+bi
+ 61gVe9vL26Cg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="188059601"
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; 
+ d="asc'?scan'208";a="188059601"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 11:09:18 -0800
-IronPort-SDR: 5nu4P4XrbUNmJlNSRPNoQa1ls9hjjvYaAy22Kqhz1tkdy/Ft9wSHR5seKWG3PY0KFdK9trVE06
- ldJDbM11YbbA==
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2020 18:29:11 -0800
+IronPort-SDR: 5X9dokFnhpEvAFBUB2K5/8AZV96m5qV4k5OKyjc2wLc4dd3Z3lIL1Lg2SzwpqMV5ZFmVXPMvMZ
+ /3tQpWRC4wKg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,467,1596524400"; d="scan'208";a="356274955"
-Received: from lkp-server02.sh.intel.com (HELO c6c5fbb3488a) ([10.239.97.151])
- by fmsmga004.fm.intel.com with ESMTP; 10 Nov 2020 11:09:16 -0800
-Received: from kbuild by c6c5fbb3488a with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kcZ11-0000Px-R0; Tue, 10 Nov 2020 19:09:15 +0000
-Date: Wed, 11 Nov 2020 03:08:29 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-fixes] BUILD SUCCESS
- 642403e3599e80370f71ba7a8a8c8fa82e5f6706
-Message-ID: <5faae52d.Hb5ZWFqS9fiw/dgH%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; 
+ d="asc'?scan'208";a="356431843"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga004.fm.intel.com with ESMTP; 10 Nov 2020 18:29:09 -0800
+Date: Wed, 11 Nov 2020 10:14:54 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Deepak R Varma <mh12gx2825@gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: replace idr_init() by idr_init_base()
+Message-ID: <20201111021454.GP1239@zhen-hp.sh.intel.com>
+References: <20201104121532.GA48202@localhost>
 MIME-Version: 1.0
+In-Reply-To: <20201104121532.GA48202@localhost>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,146 +51,103 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============0529614536=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-fixes
-branch HEAD: 642403e3599e80370f71ba7a8a8c8fa82e5f6706  drm/i915/gvt: Temporarily disable vfio_edid for BXT/APL
 
-elapsed time: 725m
+--===============0529614536==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="EdRE1UL8d3mMOE6m"
+Content-Disposition: inline
 
-configs tested: 114
-configs skipped: 2
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--EdRE1UL8d3mMOE6m
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                         cm_x300_defconfig
-powerpc                        fsp2_defconfig
-arm                         lpc32xx_defconfig
-arm                            mps2_defconfig
-sh                        sh7757lcr_defconfig
-c6x                        evmc6474_defconfig
-powerpc                   motionpro_defconfig
-sh                           se7750_defconfig
-arm                          moxart_defconfig
-powerpc                          g5_defconfig
-mips                           ip22_defconfig
-arm                      jornada720_defconfig
-powerpc                       maple_defconfig
-sh                               alldefconfig
-sh                ecovec24-romimage_defconfig
-m68k                         amcore_defconfig
-powerpc                      katmai_defconfig
-sh                   sh7770_generic_defconfig
-mips                         tb0287_defconfig
-arc                          axs101_defconfig
-arm                         at91_dt_defconfig
-arm                           u8500_defconfig
-arm                       omap2plus_defconfig
-arm                           corgi_defconfig
-mips                     loongson1b_defconfig
-arm                   milbeaut_m10v_defconfig
-mips                           ip32_defconfig
-sh                      rts7751r2d1_defconfig
-powerpc                     ep8248e_defconfig
-powerpc                     asp8347_defconfig
-mips                        nlm_xlr_defconfig
-arm                        multi_v5_defconfig
-powerpc                     stx_gp3_defconfig
-sh                          r7785rp_defconfig
-m68k                       bvme6000_defconfig
-arm                       spear13xx_defconfig
-sh                          urquell_defconfig
-powerpc                     sequoia_defconfig
-powerpc                     tqm8548_defconfig
-sh                            hp6xx_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a003-20201110
-x86_64               randconfig-a005-20201110
-x86_64               randconfig-a004-20201110
-x86_64               randconfig-a002-20201110
-x86_64               randconfig-a006-20201110
-x86_64               randconfig-a001-20201110
-i386                 randconfig-a006-20201110
-i386                 randconfig-a005-20201110
-i386                 randconfig-a002-20201110
-i386                 randconfig-a001-20201110
-i386                 randconfig-a003-20201110
-i386                 randconfig-a004-20201110
-i386                 randconfig-a012-20201110
-i386                 randconfig-a014-20201110
-i386                 randconfig-a016-20201110
-i386                 randconfig-a011-20201110
-i386                 randconfig-a015-20201110
-i386                 randconfig-a013-20201110
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+On 2020.11.04 17:45:32 +0530, Deepak R Varma wrote:
+> idr_init() uses base 0 which is an invalid identifier. The new function
+> idr_init_base allows IDR to set the ID lookup from base 1. This avoids
+> all lookups that otherwise starts from 0 since 0 is always unused.
+>=20
+> References: commit 6ce711f27500 ("idr: Make 1-based IDRs more efficient")
+>=20
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gvt.c  | 2 +-
+>  drivers/gpu/drm/i915/gvt/vgpu.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gv=
+t.c
+> index c7c561237883..45b492edbb19 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.c
+> @@ -312,7 +312,7 @@ int intel_gvt_init_device(struct drm_i915_private *i9=
+15)
+> =20
+>  	gvt_dbg_core("init gvt device\n");
+> =20
+> -	idr_init(&gvt->vgpu_idr);
+> +	idr_init_base(&gvt->vgpu_idr, 1);
+>  	spin_lock_init(&gvt->scheduler.mmio_context_lock);
+>  	mutex_init(&gvt->lock);
+>  	mutex_init(&gvt->sched_lock);
+> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/v=
+gpu.c
+> index f6d7e33c7099..1c8e63f84134 100644
+> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+> @@ -393,7 +393,7 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(str=
+uct intel_gvt *gvt,
+>  	mutex_init(&vgpu->dmabuf_lock);
+>  	INIT_LIST_HEAD(&vgpu->dmabuf_obj_list_head);
+>  	INIT_RADIX_TREE(&vgpu->page_track_tree, GFP_KERNEL);
+> -	idr_init(&vgpu->object_idr);
+> +	idr_init_base(&vgpu->object_idr, 1);
+>  	intel_vgpu_init_cfg_space(vgpu, param->primary);
+>  	vgpu->d3_entered =3D false;
+> =20
+> --=20
 
-clang tested configs:
-x86_64               randconfig-a015-20201110
-x86_64               randconfig-a011-20201110
-x86_64               randconfig-a014-20201110
-x86_64               randconfig-a013-20201110
-x86_64               randconfig-a016-20201110
-x86_64               randconfig-a012-20201110
+Looks good to me. Thanks!
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--EdRE1UL8d3mMOE6m
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX6tJHgAKCRCxBBozTXgY
+Jyv8AJ0ZLKM2ez02e517XOPfJGtsLxANrwCeITSsq29wK0WjSZLfMr4lr6t1kwA=
+=0VA9
+-----END PGP SIGNATURE-----
+
+--EdRE1UL8d3mMOE6m--
+
+--===============0529614536==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0529614536==--
