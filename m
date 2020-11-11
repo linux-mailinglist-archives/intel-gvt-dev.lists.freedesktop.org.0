@@ -1,59 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58D792AF3D4
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Nov 2020 15:40:19 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 371A02AF40B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Nov 2020 15:49:21 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0F5A26E056;
-	Wed, 11 Nov 2020 14:40:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BE6C46E056;
+	Wed, 11 Nov 2020 14:49:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from www413.your-server.de (www413.your-server.de [88.198.28.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 443456E056
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 29FEC6E056
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Nov 2020 14:40:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cyberus-technology.de; s=default1911; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
- bh=9BC4mcyZprdl/h0tMcX9LjxJx1iOardvBYHCErImstE=; b=S0P2aOOlW3nkOIt/JOT1s4w6gA
- dMR6waNzkc0iKyWV7dVbBofikJofivRAgS/g7La59Eja35r3jFI4fm/WSY9mBJ8iRx5ke4s/KdDGl
- 7X11PxGVFyGuCqVV8YFyEbI0OODXDbMJtmjO2gPNqjf+PLGpkt8QTGtW/3UoTzn+g/Rnkzn4XEFlk
- 7AkSC5zAkfzyGibIdTFQb4Hf+C6/j8nuEgMOMXVCQwvknHBpSMNhsC53UdeDbKGPdf3e3RXkWAT9E
- qqMxqiWHkn9qJy3wHHuH9wS/TwlpLTkn2LZR5k2CD7vZsTZ+45OAV+OJh0vBtuF7eoFoc2wE0+1e7
- o76Pbx6w==;
-Received: from sslproxy05.your-server.de ([78.46.172.2])
- by www413.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92.3)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1kcrID-0006bn-9G; Wed, 11 Nov 2020 15:40:13 +0100
-Received: from [2001:16b8:508b:7300:db84:91f:33f9:5d39] (helo=linux.fritz.box)
- by sslproxy05.your-server.de with esmtpsa
- (TLSv1.3:TLS_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <julian.stecklina@cyberus-technology.de>)
- id 1kcrIC-000TPf-W5; Wed, 11 Nov 2020 15:40:13 +0100
-Message-ID: <1139c2e657c26b1664baffad619ba4d004e670ce.camel@cyberus-technology.de>
-Subject: Re: GVT Scheduler
-From: Julian Stecklina <julian.stecklina@cyberus-technology.de>
+ Wed, 11 Nov 2020 14:49:19 +0000 (UTC)
+IronPort-SDR: R00kJBy8ydSgRq9htKCAVAgDUTMCva/f+qSJm/Vh9LNnepDhSoD7VX+/OfNpolx6xydjbmuNIo
+ Cq4yWLp70K9Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="169370931"
+X-IronPort-AV: E=Sophos;i="5.77,469,1596524400"; d="scan'208";a="169370931"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2020 06:49:18 -0800
+IronPort-SDR: 3HxNzLB9C9jpTH7QeyVK3KKHs4HzWxnJ8GTD/Yhyru6vP6I9itSNV9Agqey9woHBBIL2AnIiNR
+ 4++coAk1FmAA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,469,1596524400"; d="scan'208";a="541828434"
+Received: from lkp-server02.sh.intel.com (HELO 5b2c7e53fe46) ([10.239.97.151])
+ by orsmga005.jf.intel.com with ESMTP; 11 Nov 2020 06:49:17 -0800
+Received: from kbuild by 5b2c7e53fe46 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kcrQy-0000Iq-Cd; Wed, 11 Nov 2020 14:49:16 +0000
+Date: Wed, 11 Nov 2020 22:48:57 +0800
+From: kernel test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Date: Wed, 11 Nov 2020 15:40:11 +0100
-In-Reply-To: <06ccf18ee1ea548a0d8fbe33d3f2890c885a8ea7.camel@cyberus-technology.de>
-References: <81492552a35a8e0556841873c17834f4d182bcad.camel@cyberus-technology.de>
- <8ffc19621b9873c4a280b1556a8f381c55b0affb.camel@cyberus-technology.de>
- <e2d543701d3442f78aae7bc10b54487d@intel.com>
- <f0e716100ad598bba1de032346994226550a8b10.camel@cyberus-technology.de>
- <5a74d2abdd034a61a336944148b9d40c@intel.com>
- <9286d367b5f95b4b819f5f41b7654e5a79e40328.camel@cyberus-technology.de>
- <1de9f44bf6c7766a2afc089395984192995be2ec.camel@cyberus-technology.de>
- <20201103033336.GA27141@zhen-hp.sh.intel.com>
- <06ccf18ee1ea548a0d8fbe33d3f2890c885a8ea7.camel@cyberus-technology.de>
-Organization: Cyberus Technology GmbH
-User-Agent: Evolution 3.36.5 (3.36.5-1.fc32) 
+Subject: [intel-gvt-linux:gvt-next] BUILD SUCCESS
+ 64e65f443a43c35967242fd13b494c251bc5d7ee
+Message-ID: <5fabf9d9.MwE34o5Qm0qn4/Qv%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Authenticated-Sender: julian.stecklina@cyberus-technology.de
-X-Virus-Scanned: Clear (ClamAV 0.102.4/25984/Tue Nov 10 14:18:29 2020)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,86 +51,140 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Prescher <thomas.prescher@cyberus-technology.de>,
- Stefan Hertrampf <stefan.hertrampf@cyberus-technology.de>,
- Intel GVT Dev <intel-gvt-dev@lists.freedesktop.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, Chris Wilson <chris@chris-wilson.co.uk>
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 2020-11-09 at 15:47 +0100, Julian Stecklina wrote:
-> On Tue, 2020-11-03 at 11:33 +0800, Zhenyu Wang wrote:
-> > Hmm, looks one i915 change removed check of actual request preempted for
-> > status...
-> > I'm not sure if that's relevant, but maybe you could try like:
-> > 
-> > diff --git a/drivers/gpu/drm/i915/gt/intel_lrc.c
-> > b/drivers/gpu/drm/i915/gt/intel_lrc.c
-> > index d0be98b67138..f1a16d4b6e6a 100644
-> > --- a/drivers/gpu/drm/i915/gt/intel_lrc.c
-> > +++ b/drivers/gpu/drm/i915/gt/intel_lrc.c
-> > @@ -1439,7 +1439,9 @@ __execlists_schedule_out(struct i915_request *rq,
-> >  
-> >         intel_context_update_runtime(ce);
-> >         intel_engine_context_out(engine);
-> > -       execlists_context_status_change(rq, INTEL_CONTEXT_SCHEDULE_OUT);
-> > +       execlists_context_status_change(rq, i915_request_completed(rq) ?
-> > +                                       INTEL_CONTEXT_SCHEDULE_OUT:
-> > +                                       INTEL_CONTEXT_SCHEDULE_PREEMPTED);
-> >         if (engine->fw_domain && !atomic_dec_return(&engine->fw_active))
-> >                 intel_uncore_forcewake_put(engine->uncore, engine-
-> > >fw_domain);
-> >         intel_gt_pm_put_async(engine->gt);
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-next
+branch HEAD: 64e65f443a43c35967242fd13b494c251bc5d7ee  drm/i915/gvt: replace idr_init() by idr_init_base()
 
-I've tried this change without our workarounds and this resulted in a crash
-running Unigine Heaven in Windows after ~2.5h. So I guess there is something
-else going on.
+elapsed time: 725m
 
-<4>[ 8074.678118] CPU: 3 PID: 0 Comm: swapper/3 Tainted:
-P           O      5.4.68+ #1
-<4>[ 8074.678120] Hardware name: LENOVO 20N2S00600/20N2S00600, BIOS N2IET83W
-(1.61 ) 01/19/2020
-<4>[ 8074.678124] RIP: 0010:[<ffffffff814b3fcb>]
-queued_spin_lock_slowpath+0x17b/0x1c0
-<4>[ 8074.678126] Code: f3 90 48 8b 32 48 85 f6 74 f6 eb a0 c1 ee 12 83 e0 03 83
-ee 01 48 c1 e0 04 48 63 f6 48 05 c0 63 02 00 48 03 04 f5 c0 7f 23 82 <48> 89 10
-8b 42 08 85 c0 75 09 f3 90 8b 42 08 85 c0 74 f7 48 8b 32
-<4>[ 8074.678128] RSP: 0000:ffffc900001a0db8 EFLAGS: 00010002
-<4>[ 8074.678131] RAX: 00000000000263e0 RBX: ffff888572753e50 RCX:
-0000000000100000
-<4>[ 8074.678137] RDX: ffff8886828e63c0 RSI: 0000000000003fbe RDI:
-ffff888572753e50
-<4>[ 8074.678139] RBP: 0000000000000296 R08: 0000000000000000 R09:
-0000000000000001
-<4>[ 8074.678141] R10: ffff888631f19400 R11: 0000000000000000 R12:
-ffff888673888000
-<4>[ 8074.678143] R13: 0000000000000000 R14: 0000000000000000 R15:
-0000000000000003
-<4>[ 8074.678146] FS:  0000000000000000(0000) GS:ffff8886828c0000(0000)
-knlGS:0000000000000000
-<4>[ 8074.678148] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-<4>[ 8074.678150] CR2: 00000000000263e0 CR3: 000000002c204004 CR4:
-00000000003606f0 shadow CR4: 00000000003606f0
-<4>[ 8074.678152] Call Trace:
-<4>[ 8074.678155]  <IRQ>
-<4>[ 8074.678160]  [<ffffffff8208f547>] _raw_spin_lock_irqsave+0x37/0x40
-<4>[ 8074.678165]  [<ffffffff814ad151>] __wake_up_common_lock+0x51/0xa0
-<4>[ 8074.678170]  [<ffffffff81a51cc3>] shadow_context_status_change+0x143/0x1b0
-<4>[ 8074.678173]  [<ffffffff8148e1a6>] notifier_call_chain+0x56/0x90
-<4>[ 8074.678176]  [<ffffffff8148e216>] atomic_notifier_call_chain+0x16/0x20
-<4>[ 8074.678193]  [<ffffffff81967f93>] process_csb+0x463/0x6d0
-<4>[ 8074.678197]  [<ffffffff81968213>] execlists_submission_tasklet+0x13/0x70
-<4>[ 8074.678202]  [<ffffffff814720d7>] tasklet_action_common+0x77/0x130
-<4>[ 8074.678206]  [<ffffffff81400116>] __do_softirq+0x116/0x326
-<4>[ 8074.678210]  [<ffffffff81472637>] irq_exit+0x97/0xb0
-<4>[ 8074.678213]  [<ffffffff812019b6>] do_IRQ+0x56/0x100
-<4>[ 8074.678217]  [<ffffffff81200a8f>] common_interrupt+0xf/0xf
-<4>[ 8074.678219]  </IRQ>
+configs tested: 109
+configs skipped: 2
 
-Julian
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+powerpc64                           defconfig
+powerpc                 mpc836x_mds_defconfig
+powerpc                 mpc85xx_cds_defconfig
+c6x                                 defconfig
+arm                          prima2_defconfig
+arm                       aspeed_g5_defconfig
+arm                        cerfcube_defconfig
+arm                          badge4_defconfig
+arm                         at91_dt_defconfig
+mips                  decstation_64_defconfig
+um                            kunit_defconfig
+sh                          landisk_defconfig
+mips                           rs90_defconfig
+powerpc                       eiger_defconfig
+arm                          tango4_defconfig
+mips                          ath25_defconfig
+powerpc                   bluestone_defconfig
+sh                         ap325rxa_defconfig
+s390                             allyesconfig
+powerpc                      bamboo_defconfig
+sh                            shmin_defconfig
+powerpc                     tqm8540_defconfig
+arm                            lart_defconfig
+arm                        oxnas_v6_defconfig
+mips                           ip22_defconfig
+arc                        nsimosci_defconfig
+arm                         ebsa110_defconfig
+powerpc                     redwood_defconfig
+openrisc                            defconfig
+mips                     loongson1c_defconfig
+arm                      footbridge_defconfig
+m68k                            q40_defconfig
+arc                      axs103_smp_defconfig
+parisc                              defconfig
+x86_64                           alldefconfig
+arm                   milbeaut_m10v_defconfig
+arm                         nhk8815_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                             allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a006-20201111
+i386                 randconfig-a005-20201111
+i386                 randconfig-a002-20201111
+i386                 randconfig-a001-20201111
+i386                 randconfig-a003-20201111
+i386                 randconfig-a004-20201111
+x86_64               randconfig-a015-20201111
+x86_64               randconfig-a011-20201111
+x86_64               randconfig-a014-20201111
+x86_64               randconfig-a013-20201111
+x86_64               randconfig-a016-20201111
+x86_64               randconfig-a012-20201111
+i386                 randconfig-a012-20201111
+i386                 randconfig-a014-20201111
+i386                 randconfig-a016-20201111
+i386                 randconfig-a011-20201111
+i386                 randconfig-a015-20201111
+i386                 randconfig-a013-20201111
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a003-20201111
+x86_64               randconfig-a005-20201111
+x86_64               randconfig-a004-20201111
+x86_64               randconfig-a002-20201111
+x86_64               randconfig-a006-20201111
+x86_64               randconfig-a001-20201111
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
