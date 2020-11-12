@@ -2,27 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77F8C2AFD91
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Nov 2020 04:41:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BDF562AFFE3
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Nov 2020 07:53:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0E4E46E0E1;
-	Thu, 12 Nov 2020 03:41:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E96E6E134;
+	Thu, 12 Nov 2020 06:53:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.vitalaxia.com (unknown [195.110.34.91])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9D8CB6E0E1;
- Thu, 12 Nov 2020 03:41:48 +0000 (UTC)
-Received: from User ([103.99.1.170]) by vitalaxia.com with MailEnable ESMTP;
- Mon, 9 Nov 2020 12:38:59 +0100
-From: "euro-millions"<m.meissonnet@uni-vers.net>
-Subject: You're a winner!
-Date: Mon, 9 Nov 2020 03:38:58 -0800
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9EB446E134
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 12 Nov 2020 06:53:26 +0000 (UTC)
+IronPort-SDR: tdw39OXMnDgVZpWDKS5QVXcJgWaAU92NhDiueNTg+caab4tLI17CCSY5Uo+99fcUeJLJCcnERW
+ vPehmYU/ybXQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9802"; a="170375243"
+X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; 
+ d="asc'?scan'208";a="170375243"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2020 22:53:25 -0800
+IronPort-SDR: VW8kCk28Weuv18RLzKj+BaZqRmJpsN6o3Fr+BGYmJJEZJ3I2A7L2yG2rXbdTh2ADTxcehVjqmd
+ IYro3RTGspQA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; 
+ d="asc'?scan'208";a="360877622"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga002.fm.intel.com with ESMTP; 11 Nov 2020 22:53:22 -0800
+Date: Thu, 12 Nov 2020 14:39:04 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Tina Zhang <tina.zhang@intel.com>
+Subject: Re: [PATCH] i915/gvt: Set ENHANCED_FRAME_CAP bit
+Message-ID: <20201112063904.GB1239@zhen-hp.sh.intel.com>
+References: <20200921065807.247847-1-tina.zhang@intel.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <168C1A54F64B42B789230EE6F9F81DE2.MAI@vitalaxia.com>
+In-Reply-To: <20200921065807.247847-1-tina.zhang@intel.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -35,31 +52,91 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: wkennth@zohomail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============0955153637=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Q09OR1JBVFVMQVRJT04hISEKCldpdGggcmVmZXJlbmNlIHRvIHRoZSAxLDM1MHRoIEV1cm9NaWxs
-aW9ucyBkcmF3IHdoaWNoIHRvb2sgcGxhY2Ugb24gRnJpZGF5IDI4dGggQXVndXN0IDIwMjAgYXQg
-MjE6MDAgQ0VTVCAoMjA6MDAgQlNUKSBhbmQgdGhlIHdpbm5pbmcgbnVtYmVycyBkcmF3biB3ZXJl
-OgoKTHVja3kgbnVtYmVycyA3LTEyLTE2LTE3LTMxIFN0YXIgTnVtYmVyIDctOQpNaWxsaW9uYWly
-ZSBNYWtlcjogTU5IRjUyODc2CnNlcmlhbCBudW1iZXIgTVpOUzQ3MDM4ClByaXplIGNyZWRpdGVk
-IHRvIGZpbGUgRVVSTy84NjE2OS8yMDIwCgpBbiBvZmZpY2lhbCBsZXR0ZXIgd2FzIHNlbnQgdG8g
-eW91ciBhZGRyZXNzLiBZb3VyIGVtYWlsIGFkZHJlc3MgaGFzIGJlZW4gYXdhcmRlZCB0aGUgc3Vt
-IG9mIKMyLDgwNCw2MTEuMTAgR0IgcG91bmRzLiBLaW5kbHksIGNvbmZpcm0gcmVjZWlwdCBvZiB0
-aGlzIG5vdGlmaWNhdGlvbiBieSBjb250YWN0aW5nIHlvdXIgY2xhaW1zIG9mZmljZXIgTXIuIEtl
-bm5pdGggV2lsbGlhbSBmb3IgbW9yZSBkZXRhaWxzLgoKdmlzaXQgdGhlIGxpbmsgaHR0cHM6Ly93
-d3cuZXVyby1taWxsaW9ucy5jb20vcmVzdWx0cy8yOC0wOC0yMDIwIHRvIHZpZXcgeW91ciB3aW5u
-aW5nIGRldGFpbHMgYXMgcHVibGlzaGVkIG9uIHRoZSBFdXJvLU1pbGxpb25zIHNpdGUuCgpFdXJv
-LU1pbGxpb25zIHByaXplcyBtdXN0IGJlIGNsYWltZWQgd2l0aGluIDE4MCBkYXlzIG9mIHRoZSBk
-cmF3IGRhdGUuIFRoaXMgaXMgYSBjb25maWRlbnRpYWwgbWFpbCBzZW50IHRvIE9OTFkgd2lubmVy
-cyBvZiB0aGlzIGRyYXdzLgoKSWYgeW91IGhhdmUgYW55IHF1ZXN0aW9ucywgcGxlYXNlIGNvbnRh
-Y3Qgb3VyIGN1c3RvbWVyIHN1cHBvcnQuCgoKS2luZCByZWdhcmRzLApQZXRlciBKb25lcwpDdXN0
-b21lciBTdXBwb3J0CkVVUk8tTUlMTElPTlMKQ3VzdG9tZXIgU2VydmljZQpVSyBSZWdpb25hbCBP
-ZmZpY2UKQWNvcm5zIE9ha3dvb2QgUGFyayBCdXNpbmVzcyBDZW50ZXIKRm91bnRhaW5zIFJvYWQg
-QmlzaG9wIFRob3JudG9uLCBIYXJyb2dhdGUKSEczIDNCRiwgVUsuCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlz
-dAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+
+--===============0955153637==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="OOq1TgGhe8eTwFBO"
+Content-Disposition: inline
+
+
+--OOq1TgGhe8eTwFBO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2020.09.21 02:58:07 -0400, Tina Zhang wrote:
+> Specification says the bit7 of the DPCD MAX_LANE_COUNT (offset 0x02) must
+> be set to 1 when comes to the displayport version 1.2. This patch respects
+> the definition.
+>=20
+> W/o this patch, guest i915 driver can only set the resolution to 1024*768,
+> and complains about the unsuccessful link training:
+>=20
+> [    5.692193] i915 0000:00:02.0: [drm] *ERROR* index 0, lane_count 1 Lin=
+k Training Unsuccessful
+
+>=20
+> Signed-off-by: Tina Zhang <tina.zhang@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/display.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gv=
+t/display.c
+> index 7ba16ddfe75f..d7898e87791f 100644
+> --- a/drivers/gpu/drm/i915/gvt/display.c
+> +++ b/drivers/gpu/drm/i915/gvt/display.c
+> @@ -164,7 +164,7 @@ static unsigned char virtual_dp_monitor_edid[GVT_EDID=
+_NUM][EDID_SIZE] =3D {
+> =20
+>  /* let the virtual display supports DP1.2 */
+>  static u8 dpcd_fix_data[DPCD_HEADER_SIZE] =3D {
+> -	0x12, 0x014, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+> +	0x12, 0x014, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+>  };
+> =20
+>  static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+> --
+
+OK, looks this follows spec for DPCD 1.2 requirement. Btw, pls write proper=
+ component as
+drm/i915/gvt in title next time.
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+Thanks!
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--OOq1TgGhe8eTwFBO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX6zYiAAKCRCxBBozTXgY
+J75vAJ9tWCwIzapWXJw2L5ksIUN3gWFyzACff9h9Om27ddR9XrQwnyBnyQ1IHyk=
+=37cj
+-----END PGP SIGNATURE-----
+
+--OOq1TgGhe8eTwFBO--
+
+--===============0955153637==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0955153637==--
