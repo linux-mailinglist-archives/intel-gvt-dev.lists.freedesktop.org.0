@@ -1,30 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98AE02B2D43
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Nov 2020 14:01:49 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D1D052B301F
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Nov 2020 20:26:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 410066E915;
-	Sat, 14 Nov 2020 13:01:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 91AB36E94E;
+	Sat, 14 Nov 2020 19:26:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3631 seconds by postgrey-1.36 at gabe;
- Sat, 14 Nov 2020 13:01:46 UTC
-Received: from musiciansfriend.com (unknown [162.252.58.189])
- by gabe.freedesktop.org (Postfix) with ESMTP id A57E86E915
+Received: from 4lulu.xyz (4lulu.xyz [106.75.216.118])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 234276E94E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 14 Nov 2020 13:01:46 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: KN95 Mouth Masks
-Message-ID: <d35ab44666812321228fbf4f7d392658@cookinglight.com>
-Date: Sat, 14 Nov 2020 13:01:09 +0100
-From: "Roland Webber" <dushanio@mail.jp>
+ Sat, 14 Nov 2020 19:26:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4lulu.xyz;
+ h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=nami@4lulu.xyz; bh=7njGTOK2gfFwEpJmCQeeAfycPDw=;
+ b=ApFBd9VOEdWxIFtKEKj9te5E/Vau6mp4cxo8yuAb2Ec6v9/deU7w5yDJnM2bNrKmmhIVuUDecazc
+ uYg9qi/eN1BRgk5OKdLGi6x62Pg1CnOjvU0wSJw/WEHf6qpjgczLpsE8/rMyrsP4F7zeKM/teygo
+ 5VBwxvYf9eutLUJgd6A=
+From: "Ms. Marylyne Vantelli"<nami@4lulu.xyz>
+Subject: PROJECT/INVESTMENT FUNDING:
+Date: Sun, 15 Nov 2020 03:26:00 +0800
 MIME-Version: 1.0
-X-Mailer-LID: 3,4,5
-X-Mailer-RecptId: 2158488
-X-Mailer-SID: 6
-X-Mailer-Sent-By: 1
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,65 +37,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: civenoyality@aliyun.com
-Content-Type: multipart/mixed; boundary="===============0181742159=="
+Reply-To: marylynevantelli20@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20201114192605.91AB36E94E@gabe.freedesktop.org>
 
---===============0181742159==
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Dear Sir/Ma,
 
-<html>
-<head>
-</head>
-<body>
-KN95 Face Masks Dust Respirator in stock now<br /><br />Price details:<br
-/>20 pcs - 70.00 ( 3.50 per piece)<br />40 pcs -&nbsp; 128.00 (3.20 per
-piece)<br />100 pcs - 250.00 (2.50 per piece)<br />in u s d<br /><br />You
-can order it today, just send us your shipping address.<br /><br /><img
-src="https://ae01.alicdn.com/kf/Hb110b4f6e4804d3582e04901a665c6d3C.png"
-width="450" height="450" /><img
-src="https://ae01.alicdn.com/kf/H4ae26153bec3403cb9e8befadba6fee4V.jpg"
-width="450" height="450" />
-<div><span><img
-src="https://ae01.alicdn.com/kf/Hea4f10b8fcbc4007b43957e9a3045659a.jpg"
-width="450" height="450" /><img
-src="https://ae01.alicdn.com/kf/H79750189567c4870b84f97e1d33c0ad6w.jpg"
-width="450" height="450" /><br /><br />Material：Non-woven Fabric, KN95
-Solvent Spray, Thermal Insulation Cotton</span></div>
-<div><span
-data-spm-anchor-id="a2g0o.detail.1000023.i7.5479518fdu4iP1">Weight：6g /
-Mask</span></div>
-<div
-data-spm-anchor-id="a2g0o.detail.1000023.i5.5479518fdu4iP1"><span>Color：White</span></div>
-<div data-spm-anchor-id="a2g0o.detail.1000023.i3.5479518fdu4iP1"><span>Size
-：10.5&times;14.5cm</span></div>
-<div data-spm-anchor-id="a2g0o.detail.1000023.i4.5479518fdu4iP1"><span
-data-spm-anchor-id="a2g0o.detail.1000023.i1.5479518fdu4iP1">Quantity：10
-Masks / Pack<br /><br /></span></div>
-<div><span>* Preserves heat and is waterproof</span></div>
-<div><span>* Soft texture and comfortable wear</span></div>
-<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
-data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1">* PM 2.5
-filtration with an efficiency rate up to 95%</span></div>
-<br />You can order it today, just send us your shipping address.<br /><br
-/><br />Thanks,<br />Roland Webber
-<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
-data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1"></span></div>
-</body>
-</html>
+How are you doing. Kindly permit me to share this information with you. It is quiet impressive.
+Our company is expanding its global presence by investing in projectsoutside Gulf region/ Europe/ Asia in the form of debt finance. I strongly believe you have a project or projects that require funding. We are here to partner with you to achieve your goal.
 
 
---===============0181742159==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+1. Minimum Funding Amount: 1 Million USD
+
+2. Maximum Funding Amount: 100 Billion USD
+
+3. Placement Opens to: Entrepreneurs, Corporations and Investors
+
+4. Funding Type:Debt Funding(100%)
+
+5. ROI(Return on Investment): 4%
+
+6. Duration of Loan: Up to 10 years - Renewable tenure
+
+7. We finance 100% of the total project cost
+
+8. We finance both ongoing and fresh projects.
+
+
+
+Details of our activities will be shared with you as soon as you get back to me.
+
+
+
+Best regards,
+
+
+
+Broker: Ms. Marylyne
+
+Email: marylynevantelli20@gmail.com
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0181742159==--
