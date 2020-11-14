@@ -1,31 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D5562B2C71
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Nov 2020 10:34:11 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98AE02B2D43
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Nov 2020 14:01:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CB0356E8F0;
-	Sat, 14 Nov 2020 09:34:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 410066E915;
+	Sat, 14 Nov 2020 13:01:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 54035 seconds by postgrey-1.36 at gabe;
- Sat, 14 Nov 2020 09:34:08 UTC
-Received: from victor.editcreate.co.uk (victor.editcreate.co.uk
- [178.62.32.103])
- by gabe.freedesktop.org (Postfix) with ESMTP id 570E56E8F0;
- Sat, 14 Nov 2020 09:34:08 +0000 (UTC)
-Received: from User (unknown [178.62.23.243])
- by victor.editcreate.co.uk (Postfix) with SMTP id 78C214834F;
- Fri, 13 Nov 2020 08:43:58 +0000 (GMT)
-From: "Home of Mega Millions and Powerball"<info@kshamadevigroup.com>
-Subject: Home of Mega Millions and Powerball
-Date: Fri, 13 Nov 2020 01:17:33 -0800
+X-Greylist: delayed 3631 seconds by postgrey-1.36 at gabe;
+ Sat, 14 Nov 2020 13:01:46 UTC
+Received: from musiciansfriend.com (unknown [162.252.58.189])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A57E86E915
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 14 Nov 2020 13:01:46 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: KN95 Mouth Masks
+Message-ID: <d35ab44666812321228fbf4f7d392658@cookinglight.com>
+Date: Sat, 14 Nov 2020 13:01:09 +0100
+From: "Roland Webber" <dushanio@mail.jp>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 5.50.4522.1200
-X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4522.1200
+X-Mailer-LID: 3,4,5
+X-Mailer-RecptId: 2158488
+X-Mailer-SID: 6
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,37 +37,65 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: imcoffice@mail2swiss.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: civenoyality@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0181742159=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20201114093409.CB0356E8F0@gabe.freedesktop.org>
 
-Dear Email Owner,
+--===============0181742159==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+<html>
+<head>
+</head>
+<body>
+KN95 Face Masks Dust Respirator in stock now<br /><br />Price details:<br
+/>20 pcs - 70.00 ( 3.50 per piece)<br />40 pcs -&nbsp; 128.00 (3.20 per
+piece)<br />100 pcs - 250.00 (2.50 per piece)<br />in u s d<br /><br />You
+can order it today, just send us your shipping address.<br /><br /><img
+src="https://ae01.alicdn.com/kf/Hb110b4f6e4804d3582e04901a665c6d3C.png"
+width="450" height="450" /><img
+src="https://ae01.alicdn.com/kf/H4ae26153bec3403cb9e8befadba6fee4V.jpg"
+width="450" height="450" />
+<div><span><img
+src="https://ae01.alicdn.com/kf/Hea4f10b8fcbc4007b43957e9a3045659a.jpg"
+width="450" height="450" /><img
+src="https://ae01.alicdn.com/kf/H79750189567c4870b84f97e1d33c0ad6w.jpg"
+width="450" height="450" /><br /><br />Material：Non-woven Fabric, KN95
+Solvent Spray, Thermal Insulation Cotton</span></div>
+<div><span
+data-spm-anchor-id="a2g0o.detail.1000023.i7.5479518fdu4iP1">Weight：6g /
+Mask</span></div>
+<div
+data-spm-anchor-id="a2g0o.detail.1000023.i5.5479518fdu4iP1"><span>Color：White</span></div>
+<div data-spm-anchor-id="a2g0o.detail.1000023.i3.5479518fdu4iP1"><span>Size
+：10.5&times;14.5cm</span></div>
+<div data-spm-anchor-id="a2g0o.detail.1000023.i4.5479518fdu4iP1"><span
+data-spm-anchor-id="a2g0o.detail.1000023.i1.5479518fdu4iP1">Quantity：10
+Masks / Pack<br /><br /></span></div>
+<div><span>* Preserves heat and is waterproof</span></div>
+<div><span>* Soft texture and comfortable wear</span></div>
+<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
+data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1">* PM 2.5
+filtration with an efficiency rate up to 95%</span></div>
+<br />You can order it today, just send us your shipping address.<br /><br
+/><br />Thanks,<br />Roland Webber
+<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
+data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1"></span></div>
+</body>
+</html>
 
 
-Congratulation!
-                                                         Ref: Mega-Powerball- 23-45-53-58-62 + 13/23/TPA.
-  This Electronic E-mail notification is to remind you again that your email address has won you the sum of nine hundred and fifty thousand dollars ($950.000.00) from the ($165.000.000.00) Online MEGA MILLIONS POWERBALL LOTTERY. Email addresses were randomly  collected from various region and domins and your email won the lucky number 23-45-53-58-62 + 13 in the Mega Million Powerball Lottery.
+--===============0181742159==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-    In other to access the winning amount kindly contact our fudiciary agent for your online Payment Identification Number (Pin) that will enable you transfer your payment to your prefer bank account with your reference number: Ref: Mega-Powerball- 23-45-53-58-62 + 13/23/TPA. Please quote your reference when contacting our Payment Agents.
-
-
-Blutter Bros.
-E-mail: contact@itpm-safi.ac.ma
-
-
-
-Congratulations.
-
-
-USA-UK
-Home of Mega Millions and Powerball, 
-the USA's biggest multi-state lottery games.
- 
-WQYOUZKJYWLLLVTTBOUFNBLRPYMMDCCZGKITNG
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0181742159==--
