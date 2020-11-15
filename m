@@ -1,28 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F6E62B351A
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Nov 2020 14:55:11 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A2572B3D6D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Nov 2020 08:02:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F31BE6E9A8;
-	Sun, 15 Nov 2020 13:55:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 14E5489CA1;
+	Mon, 16 Nov 2020 07:02:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from davesmusicgear.com (unknown [162.252.58.188])
- by gabe.freedesktop.org (Postfix) with ESMTP id 01C3F6E9A8
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Nov 2020 13:55:07 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Masks
-Message-ID: <2c0a87d2940b76bfda50370e2abe72fb@cookinglight.com>
-Date: Sun, 15 Nov 2020 13:47:29 +0100
-From: "Roland Webber" <temeyalelnof@mail.jp>
+Received: from mail.univergaming.com (mail.univergaming.com [178.62.3.99])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 275A589CA1;
+ Mon, 16 Nov 2020 07:02:40 +0000 (UTC)
+Received: from User (unknown [178.62.23.243])
+ by mail.univergaming.com (Postfix) with SMTP id 4A81EB852F1;
+ Sun, 15 Nov 2020 17:37:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.univergaming.com 4A81EB852F1
+From: "Home of Mega Millions and Powerball"<info@kshamadevigroup.com>
+Subject: Home of Mega Millions and Powerball
+Date: Sun, 15 Nov 2020 09:37:46 -0800
 MIME-Version: 1.0
-X-Mailer-LID: 3,4
-X-Mailer-RecptId: 2158488
-X-Mailer-SID: 8
-X-Mailer-Sent-By: 1
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4522.1200
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4522.1200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -35,54 +36,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: civenoyality@aliyun.com
-Content-Type: multipart/mixed; boundary="===============0736814301=="
+Reply-To: imcoffice@mail2swiss.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20201116070241.14E5489CA1@gabe.freedesktop.org>
 
---===============0736814301==
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-
-<html>
-<head>
-</head>
-<body>
-<br /><br /><img
-src="https://ae01.alicdn.com/kf/Hb110b4f6e4804d3582e04901a665c6d3C.png"
-width="450" height="450" /><img
-src="https://ae01.alicdn.com/kf/H4ae26153bec3403cb9e8befadba6fee4V.jpg"
-width="450" height="450" />
-<div><span><img
-src="https://ae01.alicdn.com/kf/Hea4f10b8fcbc4007b43957e9a3045659a.jpg"
-width="450" height="450" /><img
-src="https://ae01.alicdn.com/kf/H79750189567c4870b84f97e1d33c0ad6w.jpg"
-width="450" height="450" /><br /></span></div>
-<div data-spm-anchor-id="a2g0o.detail.1000023.i4.5479518fdu4iP1"><span
-data-spm-anchor-id="a2g0o.detail.1000023.i1.5479518fdu4iP1"><br
-/></span></div>
-<div><span>* Preserves heat and is waterproof</span></div>
-<div><span>* Soft texture and comfortable wear</span></div>
-<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
-data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1">* PM 2.5
-filtration with an efficiency rate up to 95%</span></div>
-<br />You can order it today, just send us your shipping address.<br /><br
-/><br />Thanks,<br />Roland
-<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
-data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1"></span></div>
-</body>
-</html>
+Dear Email Owner,
 
 
---===============0736814301==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Congratulation!
+                                                         Ref: Mega-Powerball- 23-45-53-58-62 + 13/23/TPA.
+  This Electronic E-mail notification is to remind you again that your email address has won you the sum of nine hundred and fifty thousand dollars ($950.000.00) from the ($165.000.000.00) Online MEGA MILLIONS POWERBALL LOTTERY. Email addresses were randomly  collected from various region and domins and your email won the lucky number 23-45-53-58-62 + 13 in the Mega Million Powerball Lottery.
 
+    In other to access the winning amount kindly contact our fudiciary agent for your online Payment Identification Number (Pin) that will enable you transfer your payment to your prefer bank account with your reference number: Ref: Mega-Powerball- 23-45-53-58-62 + 13/23/TPA. Please quote your reference when contacting our Payment Agents.
+
+
+Blutter Bros.
+E-mail: contact@itpm-safi.ac.ma
+
+
+
+Congratulations.
+
+
+USA-UK
+Home of Mega Millions and Powerball, 
+the USA's biggest multi-state lottery games.
+ 
+DTRDIIXVWKPNNVQQDDHQNINVSCDMQJOGLJNFFX
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0736814301==--
