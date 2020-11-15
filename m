@@ -2,29 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1D052B301F
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Nov 2020 20:26:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F6E62B351A
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Nov 2020 14:55:11 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 91AB36E94E;
-	Sat, 14 Nov 2020 19:26:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F31BE6E9A8;
+	Sun, 15 Nov 2020 13:55:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from 4lulu.xyz (4lulu.xyz [106.75.216.118])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 234276E94E
+Received: from davesmusicgear.com (unknown [162.252.58.188])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 01C3F6E9A8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 14 Nov 2020 19:26:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4lulu.xyz;
- h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=nami@4lulu.xyz; bh=7njGTOK2gfFwEpJmCQeeAfycPDw=;
- b=ApFBd9VOEdWxIFtKEKj9te5E/Vau6mp4cxo8yuAb2Ec6v9/deU7w5yDJnM2bNrKmmhIVuUDecazc
- uYg9qi/eN1BRgk5OKdLGi6x62Pg1CnOjvU0wSJw/WEHf6qpjgczLpsE8/rMyrsP4F7zeKM/teygo
- 5VBwxvYf9eutLUJgd6A=
-From: "Ms. Marylyne Vantelli"<nami@4lulu.xyz>
-Subject: PROJECT/INVESTMENT FUNDING:
-Date: Sun, 15 Nov 2020 03:26:00 +0800
+ Sun, 15 Nov 2020 13:55:07 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Masks
+Message-ID: <2c0a87d2940b76bfda50370e2abe72fb@cookinglight.com>
+Date: Sun, 15 Nov 2020 13:47:29 +0100
+From: "Roland Webber" <temeyalelnof@mail.jp>
 MIME-Version: 1.0
-X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailer-LID: 3,4
+X-Mailer-RecptId: 2158488
+X-Mailer-SID: 8
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,51 +35,54 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marylynevantelli20@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: civenoyality@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0736814301=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20201114192605.91AB36E94E@gabe.freedesktop.org>
 
-Dear Sir/Ma,
+--===============0736814301==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-How are you doing. Kindly permit me to share this information with you. It is quiet impressive.
-Our company is expanding its global presence by investing in projectsoutside Gulf region/ Europe/ Asia in the form of debt finance. I strongly believe you have a project or projects that require funding. We are here to partner with you to achieve your goal.
+<html>
+<head>
+</head>
+<body>
+<br /><br /><img
+src="https://ae01.alicdn.com/kf/Hb110b4f6e4804d3582e04901a665c6d3C.png"
+width="450" height="450" /><img
+src="https://ae01.alicdn.com/kf/H4ae26153bec3403cb9e8befadba6fee4V.jpg"
+width="450" height="450" />
+<div><span><img
+src="https://ae01.alicdn.com/kf/Hea4f10b8fcbc4007b43957e9a3045659a.jpg"
+width="450" height="450" /><img
+src="https://ae01.alicdn.com/kf/H79750189567c4870b84f97e1d33c0ad6w.jpg"
+width="450" height="450" /><br /></span></div>
+<div data-spm-anchor-id="a2g0o.detail.1000023.i4.5479518fdu4iP1"><span
+data-spm-anchor-id="a2g0o.detail.1000023.i1.5479518fdu4iP1"><br
+/></span></div>
+<div><span>* Preserves heat and is waterproof</span></div>
+<div><span>* Soft texture and comfortable wear</span></div>
+<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
+data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1">* PM 2.5
+filtration with an efficiency rate up to 95%</span></div>
+<br />You can order it today, just send us your shipping address.<br /><br
+/><br />Thanks,<br />Roland
+<div data-spm-anchor-id="a2g0o.detail.1000023.i9.5479518fdu4iP1"><span
+data-spm-anchor-id="a2g0o.detail.1000023.i8.5479518fdu4iP1"></span></div>
+</body>
+</html>
 
 
-
-1. Minimum Funding Amount: 1 Million USD
-
-2. Maximum Funding Amount: 100 Billion USD
-
-3. Placement Opens to: Entrepreneurs, Corporations and Investors
-
-4. Funding Type:Debt Funding(100%)
-
-5. ROI(Return on Investment): 4%
-
-6. Duration of Loan: Up to 10 years - Renewable tenure
-
-7. We finance 100% of the total project cost
-
-8. We finance both ongoing and fresh projects.
-
-
-
-Details of our activities will be shared with you as soon as you get back to me.
-
-
-
-Best regards,
-
-
-
-Broker: Ms. Marylyne
-
-Email: marylynevantelli20@gmail.com
+--===============0736814301==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0736814301==--
