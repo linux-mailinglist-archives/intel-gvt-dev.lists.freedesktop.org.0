@@ -1,27 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBE642B4EB7
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Nov 2020 19:00:49 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 221FC2B54D9
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Nov 2020 00:18:23 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 89CF76E094;
-	Mon, 16 Nov 2020 18:00:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DA9E66E0AB;
+	Mon, 16 Nov 2020 23:18:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3633 seconds by postgrey-1.36 at gabe;
- Mon, 16 Nov 2020 18:00:47 UTC
-Received: from deerrivercraftsman.com (unknown [63.251.152.11])
- by gabe.freedesktop.org (Postfix) with ESMTP id 510916E094
+X-Greylist: delayed 604 seconds by postgrey-1.36 at gabe;
+ Mon, 16 Nov 2020 23:18:19 UTC
+Received: from 4sasa.xyz (4sasa.xyz [113.31.105.249])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7FB0A6E0AB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 16 Nov 2020 18:00:47 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: travel backpack in stock
-Message-ID: <fdbf04576a827db95e0bcc0c4ae22b74@bauer.com>
-Date: Mon, 16 Nov 2020 06:33:16 +0100
-From: "Tony Young" <bemeayalenozu@netzero.net>
+ Mon, 16 Nov 2020 23:18:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4sasa.xyz;
+ h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=nami@4sasa.xyz; bh=QMgP5NZ4EDgOylatqQO9W5ukCpI=;
+ b=AW3Pd0vK/peyOP4GOnpr2P5EBp9iYrf46PIRId250OcHPpwfU2gmNYOIPShKra+GfARe24o4U4sB
+ sFGCUQApMuJVvMtxmyDYAfdCU6BQ7d7FNUpqxWi+vtFpusWK8AHwbWvNohL6NUcOHGB0VWaVGIML
+ xBCArytX9m7MUwDp45o=
+From: "Ms. Melvida Bullock"<nami@4sasa.xyz>
+Subject: Greetings Dear Beloved:
+Date: Tue, 17 Nov 2020 07:08:08 +0800
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,57 +39,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: hosamten@aliyun.com
-Content-Type: multipart/mixed; boundary="===============1336233949=="
+Reply-To: melvbullockzone123@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20201116231821.DA9E66E0AB@gabe.freedesktop.org>
 
---===============1336233949==
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-
-<html>
-<head>
-</head>
-<body>
-Hi,<br /><br />How are you?<br /><span>Just want to check with you whether
-you got our email from last week?&nbsp;</span><br /><br /><span>We have got
-one new travel backpack in our stock, ready to&nbsp;ship to worldwide
-customers.</span><br /><span><br />Some features:<br />Large capacity<br
-/>Aanti-thief<br />USB Charging<br />17.3 inch<br />Waterproof<br
-/></span>Oxford material<br /><br />Price for different quantity:<br />1-20
-units&nbsp; &nbsp;79.99 per piece<br />20-50 units 76.99 per piece<br
-/>50-100 units 72.99 per piece<br /><span data-bm="49"><span
-data-bm="49"><br />You can start to order it today, just reply our email
-and send your shipping address, we arrange the shipping for you.<br /><br
-/><img src="https://ae01.alicdn.com/kf/HTB1EHl2XsTxK1Rjy0Fgq6yovpXab.jpg"
-width="400" height="404" /><img
-src="https://ae01.alicdn.com/kf/HTB1zZX1XyYrK1Rjy0Fdq6ACvVXaF.jpg"
-width="400" height="422" /><br /><img
-src="https://ae01.alicdn.com/kf/HTB1JhKCbcfrK1RkSmLyq6xGApXaT.jpg"
-width="400" height="432" /><img
-src="https://ae01.alicdn.com/kf/HTB1O9QaimzqK1RjSZFHq6z3CpXaU.jpg"
-width="400" height="460" /><br /></span></span><img
-src="https://ae01.alicdn.com/kf/HTB1TUp1XzDuK1Rjy1zjq6zraFXan.jpg"
-width="400" height="405" /><img
-src="https://ae01.alicdn.com/kf/HTB1KUqNXua5K1Rjt_a0q6zGdVXah.jpg"
-width="400" height="243" /><br /><span data-bm="49"><br />You can start to
-order it today, just reply our email and send your shipping address, we
-arrange the shipping for you.<br /><br />Thanks,<br />Tony Young<br
-/></span>
-</body>
-</html>
-
-
---===============1336233949==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1336233949==--
+RGVhciBCZWxvdmVkLAoKTGlmZSBpcyBncmFkdWFsbHkgcGFzc2luZyBhd2F5IGZyb20gbWUgYXMg
+YSByZXN1bHQgb2YgbXkgcHJlc2VudCBtZWRpY2FsIGNvbmRpdGlvbiBhbmQgbXkgcGVyc29uYWwg
+ZG9jdG9yIGNvbmZpZGVkIGluIG1lIHllc3RlcmRheSB0aGF0IEkgaGF2ZSBvbmx5IGJ1dCBmZXcg
+bW9yZSB3ZWVrcyB0byBsaXZlLiBJbiB2aWV3IG9mIHRoaXMgc2V0YmFjaywgSSB3YW50IHRvIGRv
+bmF0ZSBteSBlc3RhdGUgZm9yIGh1bWFuaXRhcmlhbiBhc3Npc3RhbmNlLCBzaW5jZSB0aGlzIGhh
+cyBhbHdheXMgYmVlbiB0aGUgcGxhbiBvZiBteSBsYXRlIGh1c2JhbmQgYW5kIGJlc2lkZXMgSSBo
+YXZlIG5vIGNoaWxkLgpJbiBhbiBlZmZvcnQgdG8gY29tcGxpbWVudCB0aGUgZ29vZCB3b3JrIG9m
+IG91ciBjcmVhdG9yIGZvciBodW1hbml0eSBhbmQgdGhlIHdpc2ggb2YgbXkgbGF0ZSBIdXNiYW5k
+IEkgZG9uYXRlIHRoZSBzdW0gb2YggDEwLDAwMCwwMDAuMDAgRXVybyAoVGVuIE1pbGxpb24gRVVS
+KSB0byB5b3UuIE9uIHlvdXIgYWNrbm93bGVkZ21lbnQgb2YgdGhpcyBtYWlsIGFuZCBpbmZvcm1p
+bmcgbWUgb2YgeW91ciBuYXRpb25hbGl0eSBhbmQgY3VycmVudCBwbGFjZSBvZiByZXNpZGVudCwg
+bXkgQmFuayB3aWxsIGZhY2lsaXRhdGUgZHVlIHByb2Nlc3NlcyBmb3IgdHJhbnNmZXIgb2YgdGhp
+cyBsZWdhY3kgdG8geW91LiBNYXkgR29kIGJsZXNzIHlvdSBhcyB5b3UgdXNlIHRoaXMgbW9uZXkg
+anVkaWNpb3VzbHkgZm9yIHRoZSB3b3JrIG9mIGNoYXJpdHkuCgpTaW5jZXJlIHJlZ2FyZHMsCgpN
+cy4gTWVsdmlkYSBCdWxsb2NrCkVtYWlsOqBtZWx2YnVsbG9ja3pvbmUxMjNAZ21haWwuY29tCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQt
+ZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
