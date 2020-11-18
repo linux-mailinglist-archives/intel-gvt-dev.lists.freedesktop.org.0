@@ -2,41 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49CBD2B5716
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Nov 2020 03:54:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25AC12B7465
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Nov 2020 03:53:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0309C6EA91;
-	Tue, 17 Nov 2020 02:54:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DDB456E235;
+	Wed, 18 Nov 2020 02:53:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5B7A46E0DC;
- Tue, 17 Nov 2020 02:54:00 +0000 (UTC)
-IronPort-SDR: sMdJkm68jHMtGV64N9CGoZWGrYSWzma3vBdnsva6mqZBHYsltK/A5dpxdT6yqNFCQe5n5U/U+J
- I24uEG4KVVMA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9807"; a="188904463"
-X-IronPort-AV: E=Sophos;i="5.77,484,1596524400"; 
- d="asc'?scan'208";a="188904463"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 04CD76E235
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 18 Nov 2020 02:53:46 +0000 (UTC)
+IronPort-SDR: v9Ke0Z8Oma0RTIbjdq9wLNWrKafgfGBd06ZhQFQbJHTyAMEI965Ol0QsVW+R72nz8y22exGrs9
+ dAOFbovr/8Cg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9808"; a="167545136"
+X-IronPort-AV: E=Sophos;i="5.77,486,1596524400"; d="scan'208";a="167545136"
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2020 18:53:50 -0800
-IronPort-SDR: juYwcmBhWqBjBcHAiQ0+BmF6pTQgfGBt45xQtNVjpl3jtibp0M/szGE/RtoovN1V/nYWBpQ325
- UXHA10xMCGuw==
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Nov 2020 18:53:46 -0800
+IronPort-SDR: mHVKAFnWuQjiE/MeVLfckMkxxxtdWH14/J3pdWnk0oKZ4Gg9guWazcxt4XatnLjo8tn2ZRvuaN
+ lvsQP2aFA/rA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,484,1596524400"; 
- d="asc'?scan'208";a="358709560"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 16 Nov 2020 18:53:47 -0800
-Date: Tue, 17 Nov 2020 10:39:18 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Jani Nikula <jani.nikula@intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20201117023918.GB23899@zhen-hp.sh.intel.com>
+X-IronPort-AV: E=Sophos;i="5.77,486,1596524400"; d="scan'208";a="359147256"
+Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.22])
+ by fmsmga004.fm.intel.com with ESMTP; 17 Nov 2020 18:53:45 -0800
+From: Colin Xu <colin.xu@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: Fix vfio_edid issue for BXT/APL
+Date: Wed, 18 Nov 2020 10:53:26 +0800
+Message-Id: <20201118025326.198338-1-colin.xu@intel.com>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -50,98 +47,183 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============1245437541=="
+Cc: colin.xu@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+BXT/APL has different isr/irr/hpd regs compared with other GEN9. If not
+setting these regs bits correctly according to the emulated monitor
+(currently a DP on PORT_B), although gvt still triggers a virtual HPD
+event, the guest driver won't detect a valid HPD pulse thus no full
+display detection will be executed to read the updated EDID.
 
---===============1245437541==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="5I6of5zJg18YgZEa"
-Content-Disposition: inline
+With this patch, the vfio_edid is enabled again on BXT/APL, which is
+previously disabled by:
+'642403e3599e (drm/i915/gvt: Temporarily disable vfio_edid for BXT/APL)'
 
+Signed-off-by: Colin Xu <colin.xu@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/display.c | 81 +++++++++++++++++++++---------
+ drivers/gpu/drm/i915/gvt/vgpu.c    |  5 +-
+ 2 files changed, 59 insertions(+), 27 deletions(-)
 
---5I6of5zJg18YgZEa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-
-Hi,
-
-Here's more gvt fixes for 5.10. It temporarily disables VFIO edid
-feature on BXT/APL until its virtual display is really fixed to make
-it work properly. And fixes for DPCD 1.2 and error return in taking
-module reference.
-
-Thanks
---
-The following changes since commit 92010a97098c4c9fd777408cc98064d26b32695b:
-
-  drm/i915/gvt: Fix mmio handler break on BXT/APL. (2020-10-30 11:50:06 +08=
-00)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux tags/gvt-fixes-2020-11-17
-
-for you to fetch changes up to 4ec2b69da5e1544dbadb30cddb49c8df60209b0c:
-
-  drm/i915/gvt: return error when failing to take the module reference (202=
-0-11-13 12:16:52 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2020-11-17
-
-- Temporarily disable VFIO edid on BXT/APL (Colin)
-- Fix emulated DPCD for version 1.2 (Tina)
-- Fix error return when failing to take module reference (Xiongfeng)
-
-----------------------------------------------------------------
-Colin Xu (1):
-      drm/i915/gvt: Temporarily disable vfio_edid for BXT/APL
-
-Tina Zhang (1):
-      drm/i915/gvt: Set ENHANCED_FRAME_CAP bit
-
-Xiongfeng Wang (1):
-      drm/i915/gvt: return error when failing to take the module reference
-
- drivers/gpu/drm/i915/gvt/display.c | 2 +-
- drivers/gpu/drm/i915/gvt/kvmgt.c   | 4 +++-
- drivers/gpu/drm/i915/gvt/vgpu.c    | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
-
---=20
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---5I6of5zJg18YgZEa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX7M3zwAKCRCxBBozTXgY
-JytHAJ0btP8+P3WCnh73lciq4cEXns+7EACeKb2XoYw/LhPiRNUVq7PxKK2To2Y=
-=SHWC
------END PGP SIGNATURE-----
-
---5I6of5zJg18YgZEa--
-
---===============1245437541==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
+index a15f87539657..62a5b0dd2003 100644
+--- a/drivers/gpu/drm/i915/gvt/display.c
++++ b/drivers/gpu/drm/i915/gvt/display.c
+@@ -217,6 +217,15 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+ 				  DDI_BUF_CTL_ENABLE);
+ 			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) |= DDI_BUF_IS_IDLE;
+ 		}
++		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=
++			~(PORTA_HOTPLUG_ENABLE | PORTA_HOTPLUG_STATUS_MASK);
++		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=
++			~(PORTB_HOTPLUG_ENABLE | PORTB_HOTPLUG_STATUS_MASK);
++		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=
++			~(PORTC_HOTPLUG_ENABLE | PORTC_HOTPLUG_STATUS_MASK);
++		/* No hpd_invert set in vgpu vbt, need to clear invert mask */
++		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &= ~BXT_DDI_HPD_INVERT_MASK;
++		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &= ~BXT_DE_PORT_HOTPLUG_MASK;
+ 
+ 		vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) &= ~(BIT(0) | BIT(1));
+ 		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) &=
+@@ -273,6 +282,8 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+ 			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_EDP)) |=
+ 				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
+ 				 TRANS_DDI_FUNC_ENABLE);
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
++				PORTA_HOTPLUG_ENABLE;
+ 			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+ 				GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
+ 		}
+@@ -301,6 +312,8 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+ 				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
+ 				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
+ 				 TRANS_DDI_FUNC_ENABLE);
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
++				PORTB_HOTPLUG_ENABLE;
+ 			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+ 				GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
+ 		}
+@@ -329,6 +342,8 @@ static void emulate_monitor_status_change(struct intel_vgpu *vgpu)
+ 				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
+ 				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
+ 				 TRANS_DDI_FUNC_ENABLE);
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
++				PORTC_HOTPLUG_ENABLE;
+ 			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+ 				GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
+ 		}
+@@ -661,44 +676,62 @@ void intel_vgpu_emulate_hotplug(struct intel_vgpu *vgpu, bool connected)
+ 				PORTD_HOTPLUG_STATUS_MASK;
+ 		intel_vgpu_trigger_virtual_event(vgpu, DP_D_HOTPLUG);
+ 	} else if (IS_BROXTON(i915)) {
+-		if (connected) {
+-			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
++		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
++			if (connected) {
+ 				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+ 					GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
++			} else {
++				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
++					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
+ 			}
+-			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
+-				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
+-					SFUSE_STRAP_DDIB_DETECTED;
++			vgpu_vreg_t(vgpu, GEN8_DE_PORT_IIR) |=
++				GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=
++				~PORTA_HOTPLUG_STATUS_MASK;
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
++				PORTA_HOTPLUG_LONG_DETECT;
++			intel_vgpu_trigger_virtual_event(vgpu, DP_A_HOTPLUG);
++		}
++		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
++			if (connected) {
+ 				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+ 					GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
+-			}
+-			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
+ 				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
+-					SFUSE_STRAP_DDIC_DETECTED;
+-				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
+-					GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
+-			}
+-		} else {
+-			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
++					SFUSE_STRAP_DDIB_DETECTED;
++			} else {
+ 				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
+-					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
+-			}
+-			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
++					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
+ 				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
+ 					~SFUSE_STRAP_DDIB_DETECTED;
+-				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
+-					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
+ 			}
+-			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
+-				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
+-					~SFUSE_STRAP_DDIC_DETECTED;
++			vgpu_vreg_t(vgpu, GEN8_DE_PORT_IIR) |=
++				GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=
++				~PORTB_HOTPLUG_STATUS_MASK;
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
++				PORTB_HOTPLUG_LONG_DETECT;
++			intel_vgpu_trigger_virtual_event(vgpu, DP_B_HOTPLUG);
++		}
++		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
++			if (connected) {
++				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=
++					GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
++				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=
++					SFUSE_STRAP_DDIC_DETECTED;
++			} else {
+ 				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=
+ 					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
++				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=
++					~SFUSE_STRAP_DDIC_DETECTED;
+ 			}
++			vgpu_vreg_t(vgpu, GEN8_DE_PORT_IIR) |=
++				GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=
++				~PORTC_HOTPLUG_STATUS_MASK;
++			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
++				PORTC_HOTPLUG_LONG_DETECT;
++			intel_vgpu_trigger_virtual_event(vgpu, DP_C_HOTPLUG);
+ 		}
+-		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=
+-			PORTB_HOTPLUG_STATUS_MASK;
+-		intel_vgpu_trigger_virtual_event(vgpu, DP_B_HOTPLUG);
+ 	}
+ }
+ 
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index e49944fde333..cbe5931906e0 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -437,10 +437,9 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(struct intel_gvt *gvt,
+ 	if (ret)
+ 		goto out_clean_sched_policy;
+ 
+-	if (IS_BROADWELL(dev_priv))
++	if (IS_BROADWELL(dev_priv) || IS_BROXTON(dev_priv))
+ 		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_B);
+-	/* FixMe: Re-enable APL/BXT once vfio_edid enabled */
+-	else if (!IS_BROXTON(dev_priv))
++	else
+ 		ret = intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
+ 	if (ret)
+ 		goto out_clean_sched_policy;
+-- 
+2.29.2
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1245437541==--
