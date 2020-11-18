@@ -1,30 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C52B82B8473
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Nov 2020 20:11:39 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7CB02B8890
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Nov 2020 00:44:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 30C426E436;
-	Wed, 18 Nov 2020 19:11:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 86D5789F6B;
+	Wed, 18 Nov 2020 23:44:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from 4sasa.xyz (4sasa.xyz [113.31.105.249])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BC7796E436
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Nov 2020 19:11:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=4sasa.xyz;
- h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=nami@4sasa.xyz; bh=546x3gnseMlDMSg2rfH6E17ZJbQ=;
- b=cecPvk7J2x9IVLm5Bjj6HGwb4VruPj0yRdPMRwX4QR2CfYqYhtffj4m1SXQznNZQ0dSVkU3/YN2A
- x1Kt1fBJs87TyRsQ2LHZUdi3XmiI3SsJWzzIZgEoX0YHDMtDLVNq6s6j0H2BiziYoEsmU6gzehMU
- kNGlMwwbkUvQbxAt9YM=
-From: "Ms. Marylyne Vantelli"<nami@4sasa.xyz>
-Subject: GREETINGS:
-Date: Thu, 19 Nov 2020 03:11:32 +0800
+X-Greylist: delayed 3447 seconds by postgrey-1.36 at gabe;
+ Wed, 18 Nov 2020 23:44:11 UTC
+Received: from status.iphost.net (status.iphost.net [178.62.50.86])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 00BB789F6B;
+ Wed, 18 Nov 2020 23:44:11 +0000 (UTC)
+Received: from User (unknown [178.62.40.158])
+ by status.iphost.net (Postfix) with SMTP id B98E251786B;
+ Wed, 18 Nov 2020 22:19:27 +0000 (UTC)
+From: "YOUR WITHHELD PACKAGE FOR DELIVERY" <www.cloudwaysapps.com@freedesktop.org>
+Subject: San Diego International Airport
+Date: Wed, 18 Nov 2020 14:19:31 -0800
 MIME-Version: 1.0
+X-Priority: 3
 X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailer: Microsoft Outlook Express 5.50.4522.1200
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4522.1200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,28 +37,67 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: maryvantelli@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: contact@itpm-safi.ac.ma
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20201118191138.30C426E436@gabe.freedesktop.org>
+Message-Id: <20201118234413.86D5789F6B@gabe.freedesktop.org>
 
-RGVhciBCZWxvdmVkLAoKTGlmZSBpcyBncmFkdWFsbHkgcGFzc2luZyBhd2F5IGZyb20gbWUgYXMg
-YSByZXN1bHQgb2YgbXkgcHJlc2VudCBtZWRpY2FsIGNvbmRpdGlvbiBhbmQgbXkgcGVyc29uYWwg
-ZG9jdG9yIGNvbmZpZGVkIGluIG1lIHllc3RlcmRheSB0aGF0IEkgaGF2ZSBvbmx5IGJ1dCBmZXcg
-bW9yZSB3ZWVrcyB0byBsaXZlLiBJbiB2aWV3IG9mIHRoaXMgc2V0YmFjaywgSSB3YW50IHRvIGRv
-bmF0ZSBteSBlc3RhdGUgZm9yIGh1bWFuaXRhcmlhbiBhc3Npc3RhbmNlLCBzaW5jZSB0aGlzIGhh
-cyBhbHdheXMgYmVlbiB0aGUgcGxhbiBvZiBteSBsYXRlIGh1c2JhbmQgYW5kIGJlc2lkZXMgSSBo
-YXZlIG5vIGNoaWxkLgpJbiBhbiBlZmZvcnQgdG8gY29tcGxpbWVudCB0aGUgZ29vZCB3b3JrIG9m
-IG91ciBjcmVhdG9yIGZvciBodW1hbml0eSBhbmQgdGhlIHdpc2ggb2YgbXkgbGF0ZSBIdXNiYW5k
-IEkgZG9uYXRlIHRoZSBzdW0gb2YggDEwLDAwMCwwMDAuMDAgRXVybyAoVGVuIE1pbGxpb24gRVVS
-KSB0byB5b3UuIE9uIHlvdXIgYWNrbm93bGVkZ21lbnQgb2YgdGhpcyBtYWlsIGFuZCBpbmZvcm1p
-bmcgbWUgb2YgeW91ciBuYXRpb25hbGl0eSBhbmQgY3VycmVudCBwbGFjZSBvZiByZXNpZGVudCwg
-bXkgQmFuayB3aWxsIGZhY2lsaXRhdGUgZHVlIHByb2Nlc3NlcyBmb3IgdHJhbnNmZXIgb2YgdGhp
-cyBsZWdhY3kgdG8geW91LiBNYXkgR29kIGJsZXNzIHlvdSBhcyB5b3UgdXNlIHRoaXMgbW9uZXkg
-anVkaWNpb3VzbHkgZm9yIHRoZSB3b3JrIG9mIGNoYXJpdHkuCgpTaW5jZXJlIHJlZ2FyZHMsCgpN
-cy4gTWFyeSB2YW50ZWxsaQpFbWFpbDptYXJ5dmFudGVsbGlAZ21haWwuY29tCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGlu
-ZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
+Good day,
+                                             
+       I am Edward Kenneth Head Officer-in-Charge, Administrative Service 
+Inspection Unit United Nations Inspection Agency in  San Diego 
+International Airport 3225N Harbor Dr, San Diego CA92101, United States 
+California. During our investigation, I discovered an abandoned shipment 
+through a Diplomat from United Kingdom which was transferred from JF 
+Kennedy Airport to our facility here in California, and when scanned it 
+revealed an undisclosed sum of money in 2 Metal Trunk Boxes weighing 
+approximately 130kg.
+
+
+      The consignment was abandoned because the Content was not properly 
+declared by the consignee as money rather it was declared as personal 
+effect/classified document to either avoid diversion by the Shipping Agent 
+or confiscation by the relevant authorities. The diplomat's inability to 
+pay for Non Inspection fees among other things are the reason why the 
+consignment is delayed and abandoned.
+
+
+      By my assessment, each of the boxes contains $4M  which is total of 
+$8Million USD. They are  still left in the airport storage facility till 
+today. The Consignments like I said are two  metal trunk boxes weighing 
+about 65kg each (Internal dimension:  W61 x H156 x D73 (cm) effective 
+capacity: 680 L) Approximately. The details of the consignment including 
+your name and email on the official document from United Nations' office in 
+London where the shipment was tagged as personal effects/classified 
+document is still available with us. As it stands now, you have to 
+reconfirm your full name, Phone Number, full address so I  can cross-check 
+and see if it corresponds with the one on the official documents. It is now 
+left to you to decide if you still need the consignment or allow us 
+repatriate it back to UK
+(place of origin) as we were instructed.
+
+     As I did say again, the shipper abandoned it and ran away most 
+importantly because he gave a false declaration, he could not pay for the 
+yellow tag, he could not secure a valid non inspection document(s), etc. I 
+am ready to assist you in any way I can for you to get back this packages 
+provided you will also give me something  out of it (financial 
+gratification). You can either come in person, or you engage the services 
+of a secure shipping/delivery Company/agent that will provide the  
+necessary security that is required to deliver the package to your doorstep 
+or the  destination of your choice. I need all the guarantee that I can get 
+from  you before I can get involved in this project.
+
+
+Best Regards,
+
+Edward kenneth
+Head Officer-in-Charge
+Administrative Service Inspection Unit.
+ 
+SUDLBFZRKCFGIHTTNDIZNTJZGIXQZJHDKMRKRN
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
