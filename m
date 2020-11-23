@@ -1,44 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49A392C024C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 Nov 2020 10:32:49 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0609A2C1690
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 Nov 2020 21:35:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AF3AF89D3E;
-	Mon, 23 Nov 2020 09:32:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B0FC66E0AA;
+	Mon, 23 Nov 2020 20:35:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C5D4189D3E;
- Mon, 23 Nov 2020 09:32:46 +0000 (UTC)
-IronPort-SDR: +6QaPRAOht35QjDgi7iRWRJYjWAna8DNfIzw2j4U6vt90+hBDO9lHF1X3s8hTT/7wK+Xbp8uTz
- yiN+FnmJr5VA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9813"; a="171827621"
-X-IronPort-AV: E=Sophos;i="5.78,363,1599548400"; d="scan'208";a="171827621"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2020 01:32:45 -0800
-IronPort-SDR: +9n+qp9jD/+JHBLVv+W7mVZVg0ISm/vzI5DEaaPmr21i+eRrM+uPBaSAlUCRKEP6LkPwnUKQkd
- AKxiRlVfIhLA==
-X-IronPort-AV: E=Sophos;i="5.78,363,1599548400"; d="scan'208";a="536037699"
-Received: from dmiles-mobl1.ger.corp.intel.com (HELO localhost)
- ([10.252.6.162])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2020 01:32:41 -0800
+X-Greylist: delayed 2231 seconds by postgrey-1.36 at gabe;
+ Mon, 23 Nov 2020 20:35:11 UTC
+Received: from mail.enterpolicka.cz (mail.enterpolicka.cz [188.134.214.244])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2051A6E0AA;
+ Mon, 23 Nov 2020 20:35:10 +0000 (UTC)
+Received: from User ([81.92.200.132])
+ by mail.enterpolicka.cz (13.0.0 build 1 RHEL7 x64) with ASMTP id
+ 202011232056552747; Mon, 23 Nov 2020 20:56:55 +0100
+From: "Mrs.Beal Paulette"<info@garoabarlounge.com>
+Subject: Re.important Message.
+Date: Mon, 23 Nov 2020 21:56:56 +0200
 MIME-Version: 1.0
-In-Reply-To: <20201123090517.GC16939@zhen-hp.sh.intel.com>
-References: <20201123090517.GC16939@zhen-hp.sh.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PULL] gvt-next
-From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Message-ID: <160612395828.4926.14269845290017694082@jlahtine-mobl.ger.corp.intel.com>
-User-Agent: alot/0.8.1
-Date: Mon, 23 Nov 2020 11:32:38 +0200
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-CTCH: RefID="str=0001.0A090214.5FBBCC44.002F,ss=3,sh,re=0.000,recu=0.000,reip=0.000,cl=3,cld=1,fgs=16";
+ Spam="Bulk"; VOD="Unknown"
+Message-ID: <2c1f546775e0bc1d9a657ff92d3ea486@garoabarlounge.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,99 +40,118 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: fbipayment600@citromail.hu
+Content-Type: multipart/mixed; boundary="===============0020083874=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Quoting Zhenyu Wang (2020-11-23 11:05:17)
-> 
-> Hi,
-> 
-> Here's gvt next pull for v5.11. Mostly it's for host suspend/resume
-> fix with vGPU active and with some other enhancement as details below.
-> Note that this includes some minor i915 driver change to add gvt hook
-> in suspend/resume function which has been sent and reviewed on
-> intel-gfx list.
-> 
-> I just generated against drm-intel-next-queued-2020-11-03 which this
-> tree bases on now. Let me know if there's any issue in merge.
+--===============0020083874==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
-Sometimes GVT changes are paired with changes related the i915 side
-to adjust the running virtual clients. The changes are more often
-related to GT side, but there's also been display related changes.
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+<FONT size=3>Federal Bureau of Investigation (FBI)</FONT></DIV>
+<DIV>
+<FONT size=3>Anti-Terrorist and Monitory Crime Division.</FONT></DIV>
+<DIV>
+<FONT size=3>Federal Bureau of Investigation.</FONT></DIV>
+<DIV>
+<FONT size=3>J.Edgar.Hoover Building Washington Dc</FONT></DIV>
+<DIV>
+<FONT size=3>Customers Service Hours / Monday to Saturday</FONT></DIV>
+<DIV>
+<FONT size=3>Office Hours Monday to Saturday:</FONT></DIV>
+<DIV>
+<FONT size=3>Fax number: +13302303756</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Dear Beneficiary,</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Series of meetings have been hold over the past 7 months with the secretary general of the United Nations Organization. This ended 3 days ago. It is obvious that you have not received your funds which is to the tune of $16.5million due to past corrupt Governmental Officials who almost held the fund to themselves for their selfish reason and some individuals who have taken advantage of your fund all in an attempt to swindle your fund which has led to so many losses from your end and unnecessary delay in the receipt of your fund.</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>The National Central Bureau of Interpol enhanced by the United Nations and Federal Bureau of Investigation have successfully passed a mandate to the current Prime Minister of Malaysia Excellency Dr. Mahathir Bin Mohamad to boost the exercise of clearing all foreign debts owed to you and other individuals and organizations who have been found not to have receive their Contract Sum, Lottery/Gambling, Inheritance and the likes. Now how would you like to receive your payment? Because we have two method of payment which is by Bank Cashier Cheque or by Atm Card?</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>ATM CARD: We will be issuing you a custom pin based ATM card which you will use to withdraw up to $5,000 per day from any ATM machine that has the Master Card Logo on it and the card have to be renewed in 4 years’ time which is 2025. Also with the ATM card you will be able to transfer your funds to your local bank account. The ATM card comes with a handbook or manual to enlighten you about how to use it. Even if you do not have a bank account Cashier Cheque will be deposited in your bank for it to be cleared within three working days. Your payment would be sent to you via any of your preferred option and would be mailed to you via FedEx. Because we have signed a contract with FedEx which should expire by the end of November 2020 you will only need to pay $280 instead of $420 saving you $140 so if you </FONT></DIV>
+<DIV>
+<FONT size=3>Pay before the one week you save $140 note that any one asking you for some kind of money above the usual fee is definitely a fraudsters and you will have to stop communication with every other person if you have been in contact with any. Also remember that all you will ever have to spend is $280.00 nothing more! Nothing less! And we guarantee the receipt of your fund to be successfully delivered to you within the next 24hrs after the receipt of payment has been confirmed.</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Note: Everything has been taken care of by the Government of Malaysia, The United Nation and also the FBI and including taxes, custom paper and clearance duty so all you will ever need to pay is $280.</FONT></DIV>
+<DIV>
+<FONT size=3>DO NOT SEND MONEY TO ANYONE UNTIL YOU READ THIS: The actual fees for shipping your ATM card is $420 but because FedEx have temporarily discontinued the C.O.D which gives you the chance to pay when package is delivered for international shipping We had to sign contract with them for bulk shipping which makes the fees reduce from the actual fee of $420 to $280 nothing more and no hidden fees of any sort! To effect the release of your fund valued at $16.5million you are advised to contact our correspondent in Asia the delivery officer </FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Mr.Serene Neo </FONT></DIV>
+<DIV>
+<FONT size=3>With the information below,</FONT></DIV>
+<DIV>
+<FONT size=3>Email: fedexexpress2@citromail.hu</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>You are advised to contact him with the information’s as stated below:</FONT></DIV>
+<DIV>
+<FONT size=3>Your full Name..</FONT></DIV>
+<DIV>
+<FONT size=3>Your Address:..............</FONT></DIV>
+<DIV>
+<FONT size=3>Home/Cell Phone:..............</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Preferred Payment Method ( ATM / Cashier Cheque )</FONT></DIV>
+<DIV>
+<FONT size=3>Upon receipt of payment the delivery officer will ensure that your package is sent within 24 working hours. Because we are so sure of everything we are giving you a 100% money back guarantee if you do not receive payment/package within the next 24hrs after you have made the payment for shipping.</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Yours sincerely,</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>Mrs.Beal Paulette</FONT></DIV>
+<DIV>
+<FONT size=3>FEDERAL BUREAU OF INVESTIGATION</FONT></DIV>
+<DIV>
+<FONT size=3>UNITED STATES DEPARTMENT OF JUSTICE</FONT></DIV>
+<DIV>
+<FONT size=3>WASHINGTON, D.C. 20535</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3>&nbsp;</FONT></DIV>
+</FONT>
+</BODY></HTML>
 
-Going forward, would we want to continue to apply gvt-next to
-drm-intel-next (-queued is planned to be deprecated) or
-should we use drm-intel-gt-next?
+--===============0020083874==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Or should we always strictly apply the GVT changes to drm-intel-next,
-and then any related i915 changes to drm-intel-next or drm-intel-gt-next
-depending on which one they are related to?
-
-Regards, Joonas
-
-> Thanks
-> --
-> The following changes since commit 139caf7ca2866cd0a45814ff938cb0c33920a266:
-> 
->   drm/i915: Update DRIVER_DATE to 20201103 (2020-11-03 14:21:25 +0200)
-> 
-> are available in the Git repository at:
-> 
->   https://github.com/intel/gvt-linux tags/gvt-next-2020-11-23
-> 
-> for you to fetch changes up to 9a3a238b3de97b4210c6de66aa88b2d7021ac086:
-> 
->   drm/i915/gvt: treat intel_gvt_mpt as const in gvt code (2020-11-23 17:14:20 +0800)
-> 
-> ----------------------------------------------------------------
-> gvt-next-2020-11-23
-> 
-> - Fix host suspend/resume with vGPU (Colin)
-> - optimize idr init (Varma)
-> - Change intel_gvt_mpt as const (Julian)
-> - One comment error fix (Yan)
-> 
-> ----------------------------------------------------------------
-> Colin Xu (3):
->       drm/i915/gvt: Save/restore HW status to support GVT suspend/resume
->       drm/i915: Add GVT resume routine to i915
->       drm/i915/gvt: Fix virtual display setup for BXT/APL
-> 
-> Deepak R Varma (1):
->       drm/i915/gvt: replace idr_init() by idr_init_base()
-> 
-> Julian Stecklina (1):
->       drm/i915/gvt: treat intel_gvt_mpt as const in gvt code
-> 
-> Yan Zhao (1):
->       drm/i915/gvt: correct a false comment of flag F_UNALIGN
-> 
->  drivers/gpu/drm/i915/gvt/display.c  | 179 ++++++++++++++++++++++++++++++++++++
->  drivers/gpu/drm/i915/gvt/gtt.c      |  64 +++++++++++++
->  drivers/gpu/drm/i915/gvt/gtt.h      |   4 +
->  drivers/gpu/drm/i915/gvt/gvt.c      |  13 ++-
->  drivers/gpu/drm/i915/gvt/gvt.h      |   7 +-
->  drivers/gpu/drm/i915/gvt/handlers.c |  44 ++++++++-
->  drivers/gpu/drm/i915/gvt/kvmgt.c    |   2 +-
->  drivers/gpu/drm/i915/gvt/mmio.c     |   5 +
->  drivers/gpu/drm/i915/gvt/mmio.h     |   4 +
->  drivers/gpu/drm/i915/gvt/mpt.h      |   2 +-
->  drivers/gpu/drm/i915/gvt/vgpu.c     |   2 +-
->  drivers/gpu/drm/i915/i915_drv.c     |   2 +
->  drivers/gpu/drm/i915/intel_gvt.c    |  15 +++
->  drivers/gpu/drm/i915/intel_gvt.h    |   5 +
->  14 files changed, 338 insertions(+), 10 deletions(-)
-> 
-> -- 
-> 
-> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0020083874==--
