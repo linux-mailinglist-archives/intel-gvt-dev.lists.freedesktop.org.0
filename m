@@ -2,43 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5A9B2C2203
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Nov 2020 10:48:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 75C3C2C2456
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Nov 2020 12:38:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 89E5E6E21D;
-	Tue, 24 Nov 2020 09:48:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 993B56E30F;
+	Tue, 24 Nov 2020 11:38:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 236A76E21D;
- Tue, 24 Nov 2020 09:48:17 +0000 (UTC)
-IronPort-SDR: uKyqg3+x/dbGocX2fL3cqnecFB1zVMEuF2+BO6hiaUO1xv+ZmOt1rLLNfbjhCOIZafQbTW1UKN
- JrqGBgp4O/eA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9814"; a="151178002"
-X-IronPort-AV: E=Sophos;i="5.78,365,1599548400"; d="scan'208";a="151178002"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Nov 2020 01:48:16 -0800
-IronPort-SDR: yFrX4gYOYsrFJIxcgYmCxd1hGaS6BDrMv+GtW05SfNhec3A2y+/hARhWGfJ3D9oEYV9/DcCwgq
- /3Nf6d8nRWGw==
-X-IronPort-AV: E=Sophos;i="5.78,365,1599548400"; d="scan'208";a="536410970"
-Received: from dohanlon-mobl1.ger.corp.intel.com (HELO localhost)
- ([10.252.20.97])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Nov 2020 01:48:13 -0800
-From: Jani Nikula <jani.nikula@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Subject: Re: [PULL] gvt-next
-In-Reply-To: <20201124031359.GE16939@zhen-hp.sh.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20201123090517.GC16939@zhen-hp.sh.intel.com>
- <160612395828.4926.14269845290017694082@jlahtine-mobl.ger.corp.intel.com>
- <20201124031359.GE16939@zhen-hp.sh.intel.com>
-Date: Tue, 24 Nov 2020 11:48:11 +0200
-Message-ID: <87k0ubm6g4.fsf@intel.com>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 635AB6E20B;
+ Tue, 24 Nov 2020 11:38:28 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 00416AC2D;
+ Tue, 24 Nov 2020 11:38:26 +0000 (UTC)
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: airlied@linux.ie,
+	daniel@ffwll.ch
+Subject: [PATCH 00/15] drm: Move struct drm_device.pdev to legacy
+Date: Tue, 24 Nov 2020 12:38:09 +0100
+Message-Id: <20201124113824.19994-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -52,127 +36,190 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, "Yuan, Hang" <hang.yuan@intel.com>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: nouveau@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ amd-gfx@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ spice-devel@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 24 Nov 2020, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
-> On 2020.11.23 11:32:38 +0200, Joonas Lahtinen wrote:
->> Quoting Zhenyu Wang (2020-11-23 11:05:17)
->> > 
->> > Hi,
->> > 
->> > Here's gvt next pull for v5.11. Mostly it's for host suspend/resume
->> > fix with vGPU active and with some other enhancement as details below.
->> > Note that this includes some minor i915 driver change to add gvt hook
->> > in suspend/resume function which has been sent and reviewed on
->> > intel-gfx list.
->> > 
->> > I just generated against drm-intel-next-queued-2020-11-03 which this
->> > tree bases on now. Let me know if there's any issue in merge.
->> 
->> Sometimes GVT changes are paired with changes related the i915 side
->> to adjust the running virtual clients. The changes are more often
->> related to GT side, but there's also been display related changes.
->> 
->> Going forward, would we want to continue to apply gvt-next to
->> drm-intel-next (-queued is planned to be deprecated) or
->> should we use drm-intel-gt-next?
->>
->
-> Is there any clear criteria on patches for -next or -gt-next now?
-> Something might be only gvt specific, e.g we'll have some enhancement patches
-> for guest context parse, this might be considered as 'gt' part? I'm not sure.
-> But yes, I hope we just stick with one, currently thinking drm-intel-next.
->
->> Or should we always strictly apply the GVT changes to drm-intel-next,
->> and then any related i915 changes to drm-intel-next or drm-intel-gt-next
->> depending on which one they are related to?
->>
->
-> How about basically we just apply to drm-intel-next, but there might be gvt
-> specific pull required for -gt-next e.g ww-lock fixes? I think we can do that way
-> now to see if there'll be any real issue popup.
+The pdev field in struct drm_device points to a PCI device structure and
+goes back to UMS-only days when all DRM drivers where for PCI devices.
+Meanwhile we also support USB, SPI and platform devices. Each of those
+uses the generic device stored in struct drm_device.dev.
 
-Pulled to drm-intel-next-queued now.
+To reduce duplications and remove the special case of PCI, this patchset
+converts all modesetting drivers from pdev to dev and makes pdev a field
+for legacy UMS drivers.
 
-Thanks,
-Jani.
+For PCI devices, the pointer in struct drm_device.dev can be upcasted to
+struct pci_device; or tested for PCI with dev_is_pci(). In several places
+the code can use the dev field directly.
 
+After converting all drivers and the DRM core, the pdev fields becomes
+only relevant for legacy drivers. In a later patchset, we may want to
+convert these as well and remove pdev entirely.
 
->
-> Thanks
->
->> 
->> > Thanks
->> > --
->> > The following changes since commit 139caf7ca2866cd0a45814ff938cb0c33920a266:
->> > 
->> >   drm/i915: Update DRIVER_DATE to 20201103 (2020-11-03 14:21:25 +0200)
->> > 
->> > are available in the Git repository at:
->> > 
->> >   https://github.com/intel/gvt-linux tags/gvt-next-2020-11-23
->> > 
->> > for you to fetch changes up to 9a3a238b3de97b4210c6de66aa88b2d7021ac086:
->> > 
->> >   drm/i915/gvt: treat intel_gvt_mpt as const in gvt code (2020-11-23 17:14:20 +0800)
->> > 
->> > ----------------------------------------------------------------
->> > gvt-next-2020-11-23
->> > 
->> > - Fix host suspend/resume with vGPU (Colin)
->> > - optimize idr init (Varma)
->> > - Change intel_gvt_mpt as const (Julian)
->> > - One comment error fix (Yan)
->> > 
->> > ----------------------------------------------------------------
->> > Colin Xu (3):
->> >       drm/i915/gvt: Save/restore HW status to support GVT suspend/resume
->> >       drm/i915: Add GVT resume routine to i915
->> >       drm/i915/gvt: Fix virtual display setup for BXT/APL
->> > 
->> > Deepak R Varma (1):
->> >       drm/i915/gvt: replace idr_init() by idr_init_base()
->> > 
->> > Julian Stecklina (1):
->> >       drm/i915/gvt: treat intel_gvt_mpt as const in gvt code
->> > 
->> > Yan Zhao (1):
->> >       drm/i915/gvt: correct a false comment of flag F_UNALIGN
->> > 
->> >  drivers/gpu/drm/i915/gvt/display.c  | 179 ++++++++++++++++++++++++++++++++++++
->> >  drivers/gpu/drm/i915/gvt/gtt.c      |  64 +++++++++++++
->> >  drivers/gpu/drm/i915/gvt/gtt.h      |   4 +
->> >  drivers/gpu/drm/i915/gvt/gvt.c      |  13 ++-
->> >  drivers/gpu/drm/i915/gvt/gvt.h      |   7 +-
->> >  drivers/gpu/drm/i915/gvt/handlers.c |  44 ++++++++-
->> >  drivers/gpu/drm/i915/gvt/kvmgt.c    |   2 +-
->> >  drivers/gpu/drm/i915/gvt/mmio.c     |   5 +
->> >  drivers/gpu/drm/i915/gvt/mmio.h     |   4 +
->> >  drivers/gpu/drm/i915/gvt/mpt.h      |   2 +-
->> >  drivers/gpu/drm/i915/gvt/vgpu.c     |   2 +-
->> >  drivers/gpu/drm/i915/i915_drv.c     |   2 +
->> >  drivers/gpu/drm/i915/intel_gvt.c    |  15 +++
->> >  drivers/gpu/drm/i915/intel_gvt.h    |   5 +
->> >  14 files changed, 338 insertions(+), 10 deletions(-)
->> > 
->> > -- 
->> > 
->> > $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
->> _______________________________________________
->> intel-gvt-dev mailing list
->> intel-gvt-dev@lists.freedesktop.org
->> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+The patchset touches many files, but the individual changes are mostly
+trivial. I suggest to merge each driver's patch through the respective
+tree and later the rest through drm-misc-next.
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
+Thomas Zimmermann (15):
+  drm/amdgpu: Remove references to struct drm_device.pdev
+  drm/ast: Remove references to struct drm_device.pdev
+  drm/bochs: Remove references to struct drm_device.pdev
+  drm/cirrus: Remove references to struct drm_device.pdev
+  drm/gma500: Remove references to struct drm_device.pdev
+  drm/hibmc: Remove references to struct drm_device.pdev
+  drm/i915: Remove references to struct drm_device.pdev
+  drm/mgag200: Remove references to struct drm_device.pdev
+  drm/nouveau: Remove references to struct drm_device.pdev
+  drm/qxl: Remove references to struct drm_device.pdev
+  drm/radeon: Remove references to struct drm_device.pdev
+  drm/vboxvideo: Remove references to struct drm_device.pdev
+  drm/virtgpu: Remove references to struct drm_device.pdev
+  drm/vmwgfx: Remove references to struct drm_device.pdev
+  drm: Upcast struct drm_device.dev to struct pci_device; replace pdev
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c    | 23 +++--
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c   |  3 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  1 -
+ drivers/gpu/drm/amd/amdgpu/amdgpu_fb.c        |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c       | 10 +--
+ drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c       |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c       | 10 +--
+ drivers/gpu/drm/ast/ast_drv.c                 |  4 +-
+ drivers/gpu/drm/ast/ast_main.c                | 25 +++---
+ drivers/gpu/drm/ast/ast_mm.c                  | 17 ++--
+ drivers/gpu/drm/ast/ast_mode.c                |  5 +-
+ drivers/gpu/drm/ast/ast_post.c                |  8 +-
+ drivers/gpu/drm/bochs/bochs_drv.c             |  1 -
+ drivers/gpu/drm/bochs/bochs_hw.c              |  4 +-
+ drivers/gpu/drm/drm_agpsupport.c              |  9 +-
+ drivers/gpu/drm/drm_bufs.c                    |  4 +-
+ drivers/gpu/drm/drm_edid.c                    |  7 +-
+ drivers/gpu/drm/drm_irq.c                     | 12 +--
+ drivers/gpu/drm/drm_pci.c                     | 26 +++---
+ drivers/gpu/drm/drm_vm.c                      |  2 +-
+ drivers/gpu/drm/gma500/cdv_device.c           | 30 ++++---
+ drivers/gpu/drm/gma500/cdv_intel_crt.c        |  3 +-
+ drivers/gpu/drm/gma500/cdv_intel_lvds.c       |  4 +-
+ drivers/gpu/drm/gma500/framebuffer.c          |  9 +-
+ drivers/gpu/drm/gma500/gma_device.c           |  3 +-
+ drivers/gpu/drm/gma500/gma_display.c          |  4 +-
+ drivers/gpu/drm/gma500/gtt.c                  | 20 +++--
+ drivers/gpu/drm/gma500/intel_bios.c           |  6 +-
+ drivers/gpu/drm/gma500/intel_gmbus.c          |  4 +-
+ drivers/gpu/drm/gma500/intel_i2c.c            |  2 +-
+ drivers/gpu/drm/gma500/mdfld_device.c         |  4 +-
+ drivers/gpu/drm/gma500/mdfld_dsi_dpi.c        |  8 +-
+ drivers/gpu/drm/gma500/mid_bios.c             |  9 +-
+ drivers/gpu/drm/gma500/oaktrail_device.c      |  5 +-
+ drivers/gpu/drm/gma500/oaktrail_lvds.c        |  2 +-
+ drivers/gpu/drm/gma500/oaktrail_lvds_i2c.c    |  2 +-
+ drivers/gpu/drm/gma500/opregion.c             |  3 +-
+ drivers/gpu/drm/gma500/power.c                | 13 +--
+ drivers/gpu/drm/gma500/psb_drv.c              | 16 ++--
+ drivers/gpu/drm/gma500/psb_drv.h              |  8 +-
+ drivers/gpu/drm/gma500/psb_intel_lvds.c       |  6 +-
+ drivers/gpu/drm/gma500/psb_intel_sdvo.c       |  2 +-
+ drivers/gpu/drm/gma500/tc35876x-dsi-lvds.c    | 36 ++++----
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   | 10 +--
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |  2 +-
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_ttm.c   |  4 +-
+ drivers/gpu/drm/i915/display/intel_bios.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_cdclk.c    | 14 +--
+ drivers/gpu/drm/i915/display/intel_csr.c      |  2 +-
+ drivers/gpu/drm/i915/display/intel_dsi_vbt.c  |  2 +-
+ drivers/gpu/drm/i915/display/intel_fbdev.c    |  2 +-
+ drivers/gpu/drm/i915/display/intel_gmbus.c    |  2 +-
+ .../gpu/drm/i915/display/intel_lpe_audio.c    |  5 +-
+ drivers/gpu/drm/i915/display/intel_opregion.c |  6 +-
+ drivers/gpu/drm/i915/display/intel_overlay.c  |  2 +-
+ drivers/gpu/drm/i915/display/intel_panel.c    |  4 +-
+ drivers/gpu/drm/i915/display/intel_quirks.c   |  2 +-
+ drivers/gpu/drm/i915/display/intel_sdvo.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_vga.c      |  8 +-
+ drivers/gpu/drm/i915/gem/i915_gem_phys.c      |  6 +-
+ drivers/gpu/drm/i915/gem/i915_gem_shmem.c     |  2 +-
+ drivers/gpu/drm/i915/gt/intel_engine_cs.c     |  2 +-
+ drivers/gpu/drm/i915/gt/intel_ggtt.c          | 10 +--
+ drivers/gpu/drm/i915/gt/intel_ppgtt.c         |  2 +-
+ drivers/gpu/drm/i915/gt/intel_rc6.c           |  4 +-
+ drivers/gpu/drm/i915/gt/intel_reset.c         |  6 +-
+ drivers/gpu/drm/i915/gvt/cfg_space.c          |  5 +-
+ drivers/gpu/drm/i915/gvt/firmware.c           | 10 +--
+ drivers/gpu/drm/i915/gvt/gtt.c                | 12 +--
+ drivers/gpu/drm/i915/gvt/gvt.c                |  6 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |  4 +-
+ drivers/gpu/drm/i915/i915_debugfs.c           |  2 +-
+ drivers/gpu/drm/i915/i915_drv.c               | 20 ++---
+ drivers/gpu/drm/i915/i915_drv.h               |  2 +-
+ drivers/gpu/drm/i915/i915_gem_gtt.c           |  4 +-
+ drivers/gpu/drm/i915/i915_getparam.c          |  5 +-
+ drivers/gpu/drm/i915/i915_gpu_error.c         |  2 +-
+ drivers/gpu/drm/i915/i915_irq.c               |  6 +-
+ drivers/gpu/drm/i915/i915_pmu.c               |  5 +-
+ drivers/gpu/drm/i915/i915_suspend.c           |  4 +-
+ drivers/gpu/drm/i915/i915_switcheroo.c        |  4 +-
+ drivers/gpu/drm/i915/i915_vgpu.c              |  2 +-
+ drivers/gpu/drm/i915/intel_device_info.c      |  2 +-
+ drivers/gpu/drm/i915/intel_region_lmem.c      |  8 +-
+ drivers/gpu/drm/i915/intel_runtime_pm.c       |  2 +-
+ drivers/gpu/drm/i915/intel_uncore.c           |  4 +-
+ .../gpu/drm/i915/selftests/mock_gem_device.c  |  1 -
+ drivers/gpu/drm/i915/selftests/mock_gtt.c     |  2 +-
+ drivers/gpu/drm/mgag200/mgag200_drv.c         | 20 +++--
+ drivers/gpu/drm/mgag200/mgag200_i2c.c         |  2 +-
+ drivers/gpu/drm/mgag200/mgag200_mm.c          | 10 ++-
+ drivers/gpu/drm/nouveau/dispnv04/arb.c        | 12 +--
+ drivers/gpu/drm/nouveau/dispnv04/disp.h       | 14 +--
+ drivers/gpu/drm/nouveau/dispnv04/hw.c         | 10 ++-
+ drivers/gpu/drm/nouveau/nouveau_abi16.c       |  7 +-
+ drivers/gpu/drm/nouveau/nouveau_acpi.c        |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_bios.c        | 11 ++-
+ drivers/gpu/drm/nouveau/nouveau_connector.c   | 10 ++-
+ drivers/gpu/drm/nouveau/nouveau_drm.c         |  5 +-
+ drivers/gpu/drm/nouveau/nouveau_fbcon.c       |  6 +-
+ drivers/gpu/drm/nouveau/nouveau_vga.c         | 20 +++--
+ drivers/gpu/drm/qxl/qxl_drv.c                 |  2 +-
+ drivers/gpu/drm/qxl/qxl_ioctl.c               |  3 +-
+ drivers/gpu/drm/qxl/qxl_irq.c                 |  3 +-
+ drivers/gpu/drm/qxl/qxl_kms.c                 |  1 -
+ drivers/gpu/drm/radeon/atombios_encoders.c    |  6 +-
+ drivers/gpu/drm/radeon/r100.c                 | 27 +++---
+ drivers/gpu/drm/radeon/radeon.h               | 32 +++----
+ drivers/gpu/drm/radeon/radeon_atombios.c      | 89 ++++++++++---------
+ drivers/gpu/drm/radeon/radeon_bios.c          |  6 +-
+ drivers/gpu/drm/radeon/radeon_combios.c       | 55 ++++++------
+ drivers/gpu/drm/radeon/radeon_cs.c            |  3 +-
+ drivers/gpu/drm/radeon/radeon_device.c        | 17 ++--
+ drivers/gpu/drm/radeon/radeon_display.c       |  2 +-
+ drivers/gpu/drm/radeon/radeon_drv.c           |  3 +-
+ drivers/gpu/drm/radeon/radeon_fb.c            |  2 +-
+ drivers/gpu/drm/radeon/radeon_gem.c           |  6 +-
+ drivers/gpu/drm/radeon/radeon_i2c.c           |  2 +-
+ drivers/gpu/drm/radeon/radeon_irq_kms.c       |  2 +-
+ drivers/gpu/drm/radeon/radeon_kms.c           | 20 ++---
+ .../gpu/drm/radeon/radeon_legacy_encoders.c   |  6 +-
+ drivers/gpu/drm/radeon/rs780_dpm.c            |  7 +-
+ drivers/gpu/drm/tiny/cirrus.c                 |  1 -
+ drivers/gpu/drm/vboxvideo/vbox_drv.c          | 11 +--
+ drivers/gpu/drm/vboxvideo/vbox_irq.c          |  4 +-
+ drivers/gpu/drm/vboxvideo/vbox_main.c         |  8 +-
+ drivers/gpu/drm/vboxvideo/vbox_ttm.c          |  7 +-
+ drivers/gpu/drm/virtio/virtgpu_drv.c          |  1 -
+ drivers/gpu/drm/vmwgfx/vmwgfx_cmdbuf.c        |  8 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_drv.c           | 27 +++---
+ drivers/gpu/drm/vmwgfx/vmwgfx_fb.c            |  2 +-
+ include/drm/drm_device.h                      | 12 ++-
+ 132 files changed, 584 insertions(+), 507 deletions(-)
+
+--
+2.29.2
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
