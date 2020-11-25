@@ -2,35 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21E8B2C3387
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Nov 2020 22:49:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3658E2C35BA
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Nov 2020 01:49:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 953E289FCA;
-	Tue, 24 Nov 2020 21:49:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C711889CA4;
+	Wed, 25 Nov 2020 00:49:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from asavdk3.altibox.net (asavdk3.altibox.net [109.247.116.14])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1DD7F89ECB;
- Tue, 24 Nov 2020 21:49:45 +0000 (UTC)
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk3.altibox.net (Postfix) with ESMTPS id C44342001F;
- Tue, 24 Nov 2020 22:49:42 +0100 (CET)
-Date: Tue, 24 Nov 2020 22:49:41 +0100
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH 00/15] drm: Move struct drm_device.pdev to legacy
-Message-ID: <20201124214941.GD93095@ravnborg.org>
-References: <20201124113824.19994-1-tzimmermann@suse.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201124113824.19994-1-tzimmermann@suse.de>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=VbvZwmh9 c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=kj9zAlcOel0A:10 a=7gkXJVJtAAAA:8 a=4J4RqmOIUAWq8pQtltYA:9
- a=CjuIK1q_8ugA:10 a=E9Po1WZjFZOl8hwRPBS3:22
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ABCA989CA4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 25 Nov 2020 00:49:02 +0000 (UTC)
+IronPort-SDR: G4hsNQ8cOfFdhL0scjUM6V0vOAHvQeU5I3oMVvJogC0KBlPm1fk6gxMnUhmQmiNTyaZYaMX5gO
+ +G2nKKfsdkhg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9815"; a="151300308"
+X-IronPort-AV: E=Sophos;i="5.78,367,1599548400"; d="scan'208";a="151300308"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Nov 2020 16:49:02 -0800
+IronPort-SDR: HYYeoh7oaHiKuDLSy767TXwcOL4d/5DabkRa2ueRXw4+Ppe3gYCkWgyZqZ49wf3t+go0R78M24
+ tjQKiYVn7l3Q==
+X-IronPort-AV: E=Sophos;i="5.78,367,1599548400"; d="scan'208";a="547062350"
+Received: from yzhao56-desk.sh.intel.com ([10.239.13.16])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Nov 2020 16:49:01 -0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH 00/10] cmd scanning optimization
+Date: Wed, 25 Nov 2020 08:36:26 +0800
+Message-Id: <20201125003626.17806-1-yan.y.zhao@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,70 +46,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: airlied@linux.ie, nouveau@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, amd-gfx@lists.freedesktop.org,
- daniel@ffwll.ch, spice-devel@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org
+Cc: Yan Zhao <yan.y.zhao@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Thomas.
+hi
+This is a series that optimization current command scanning logic.
 
-Nice clean-up series - quite an effort to move one member to deprecated!
+Patch 1 scans a init context to parse hardware context and set
+mmio cmd accessible flag accordingly.
 
-I have read through most of the patches. I left a few notes in my
-replies but nothing buggy. Just nitpicks.
+Patch 2 scans workload context pages.
 
+Patches 3-5 add extra commands scan policy for "srm", "lrm", "lrr".
+            "pipe-ctrl" is a TODO to be completed in future.
 
-On Tue, Nov 24, 2020 at 12:38:09PM +0100, Thomas Zimmermann wrote:
-> The pdev field in struct drm_device points to a PCI device structure and
-> goes back to UMS-only days when all DRM drivers where for PCI devices.
-> Meanwhile we also support USB, SPI and platform devices. Each of those
-> uses the generic device stored in struct drm_device.dev.
-> 
-> To reduce duplications and remove the special case of PCI, this patchset
-> converts all modesetting drivers from pdev to dev and makes pdev a field
-> for legacy UMS drivers.
-> 
-> For PCI devices, the pointer in struct drm_device.dev can be upcasted to
-> struct pci_device; or tested for PCI with dev_is_pci(). In several places
-> the code can use the dev field directly.
-> 
-> After converting all drivers and the DRM core, the pdev fields becomes
-> only relevant for legacy drivers. In a later patchset, we may want to
-> convert these as well and remove pdev entirely.
-> 
-> The patchset touches many files, but the individual changes are mostly
-> trivial. I suggest to merge each driver's patch through the respective
-> tree and later the rest through drm-misc-next.
-> 
-> Thomas Zimmermann (15):
->   drm/amdgpu: Remove references to struct drm_device.pdev
->   drm/ast: Remove references to struct drm_device.pdev
->   drm/bochs: Remove references to struct drm_device.pdev
->   drm/cirrus: Remove references to struct drm_device.pdev
->   drm/gma500: Remove references to struct drm_device.pdev
->   drm/hibmc: Remove references to struct drm_device.pdev
->   drm/mgag200: Remove references to struct drm_device.pdev
->   drm/qxl: Remove references to struct drm_device.pdev
->   drm/vboxvideo: Remove references to struct drm_device.pdev
->   drm/virtgpu: Remove references to struct drm_device.pdev
->   drm/vmwgfx: Remove references to struct drm_device.pdev
->   drm: Upcast struct drm_device.dev to struct pci_device; replace pdev
-All above are:
-Acked-by: Sam Ravnborg <sam@ravnborg.org>
+patch 6 exports a find_mmio_info interface to be used in patch 9 and patch 10
 
->   drm/nouveau: Remove references to struct drm_device.pdev
-I lost my confidence in my reading of this code.
+Patches 7-9 introduce a new mmio flag F_CMD_WRITE_PATCH and init this
+            flag in static handlers array and dynamically during parsing
+            init ctx.
 
->   drm/i915: Remove references to struct drm_device.pdev
->   drm/radeon: Remove references to struct drm_device.pdev
-I did not look at these at all. I hope someone else find time to do so.
+Patch 10 unifies lri command handler with MMIO handler
 
-	Sam
+Yan Zhao (10):
+  drm/i915/gvt: parse init context to update cmd accessible reg
+    whitelist
+  drm/i915/gvt: scan VM ctx pages
+  drm/i915/gvt: filter cmds "srm" and "lrm" in cmd_handler
+  drm/i915/gvt: filter cmds "lrr-src" and "lrr-dst" in cmd_handler
+  drm/i915/gvt: filter cmd "pipe-ctrl" in cmd_handler
+  drm/i915/gvt: export find_mmio_info
+  drm/i915/gvt: introduce a new flag F_CMD_WRITE_PATCH
+  drm/i915/gvt: statically set F_CMD_WRITE_PATCH flag
+  drm/i915/gvt: update F_CMD_WRITE_PATCH flag when parsing init ctx
+  drm/i915/gvt: unify lri cmd handler and mmio handlers
+
+ drivers/gpu/drm/i915/gvt/cmd_parser.c | 346 ++++++++++++++++++++------
+ drivers/gpu/drm/i915/gvt/cmd_parser.h |   4 +
+ drivers/gpu/drm/i915/gvt/gvt.h        |  36 ++-
+ drivers/gpu/drm/i915/gvt/handlers.c   |  13 +-
+ drivers/gpu/drm/i915/gvt/mmio.h       |   3 +
+ drivers/gpu/drm/i915/gvt/reg.h        |   2 +
+ drivers/gpu/drm/i915/gvt/scheduler.c  |  22 +-
+ drivers/gpu/drm/i915/gvt/vgpu.c       |   4 +-
+ 8 files changed, 348 insertions(+), 82 deletions(-)
+
+-- 
+2.17.1
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
