@@ -2,37 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FB362C35C8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Nov 2020 01:53:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 42F832C35C9
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Nov 2020 01:53:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EC8B66E7D7;
-	Wed, 25 Nov 2020 00:53:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 088BB6E7D9;
+	Wed, 25 Nov 2020 00:53:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3756C6E7D7
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6408D6E7D9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Nov 2020 00:53:35 +0000 (UTC)
-IronPort-SDR: e/ccawSPoNjiKXfDorj+532pHuClsO5LpH/bWk1NVhgF+zxOOnlJ9+v/EwRWXB5IjcYzsu/0zh
- wzc73KQJ3lBA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9815"; a="159085426"
-X-IronPort-AV: E=Sophos;i="5.78,367,1599548400"; d="scan'208";a="159085426"
+ Wed, 25 Nov 2020 00:53:48 +0000 (UTC)
+IronPort-SDR: Px9AZzNxAt5iN3ouYbdsEig7/rnc2TwtVdqiFOq0TJ34R3lINPEKeoX/xEQloJcmQihevXHBsf
+ GPFL3+6L2vYg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9815"; a="171262543"
+X-IronPort-AV: E=Sophos;i="5.78,367,1599548400"; d="scan'208";a="171262543"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Nov 2020 16:53:34 -0800
-IronPort-SDR: 1IBfx4yDR+enRu6sT9TY2A3L4RaIsUifCG/NRpC/gNvwjyvbUFf1GEgwB8GTQJ5csQLhkonuui
- fxnqwDTC1xYg==
-X-IronPort-AV: E=Sophos;i="5.78,367,1599548400"; d="scan'208";a="312773095"
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Nov 2020 16:53:48 -0800
+IronPort-SDR: F7JCgQBW6haM3V1y1yiKm3shflnuIS9++mTyfM9PcA800tjBfBE/O1mjghPlqEaNQkS7E30ARQ
+ PbMVf+49GC9g==
+X-IronPort-AV: E=Sophos;i="5.78,367,1599548400"; d="scan'208";a="312773148"
 Received: from yzhao56-desk.sh.intel.com ([10.239.13.16])
  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Nov 2020 16:53:33 -0800
+ 24 Nov 2020 16:53:46 -0800
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH 07/10] drm/i915/gvt: introduce a new flag F_CMD_WRITE_PATCH
-Date: Wed, 25 Nov 2020 08:41:00 +0800
-Message-Id: <20201125004100.18231-1-yan.y.zhao@intel.com>
+Subject: [PATCH 08/10] drm/i915/gvt: statically set F_CMD_WRITE_PATCH flag
+Date: Wed, 25 Nov 2020 08:41:14 +0800
+Message-Id: <20201125004114.18281-1-yan.y.zhao@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201125003626.17806-1-yan.y.zhao@intel.com>
 References: <20201125003626.17806-1-yan.y.zhao@intel.com>
@@ -55,68 +55,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-F_CMD_WRITE_PATCH means command write to this register needs to be patched
+statically set F_CMD_WRITE_PATCH flag for RING MODE registers and
+force_nonpriv rgisters
 
 Cc: Kevin Tian <kevin.tian@intel.com>
 Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/gvt.h | 32 +++++++++++++++++++++++++++++++-
- 1 file changed, 31 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/i915/gvt/handlers.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index c470e185bc00..27878a18e6b4 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -255,6 +255,8 @@ struct intel_gvt_mmio {
- #define F_CMD_ACCESS	(1 << 3)
- /* This reg has been accessed by a VM */
- #define F_ACCESSED	(1 << 4)
-+/* Value of command write of this reg needs to be patched */
-+#define F_CMD_WRITE_PATCH	(1 << 5)
- /* This reg could be accessed by unaligned address */
- #define F_UNALIGN	(1 << 6)
- /* This reg is in GVT's mmio save-restor list and in hardware
-@@ -685,11 +687,39 @@ static inline void intel_gvt_mmio_set_sr_in_ctx(
- }
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index e373b5fc5ae9..fbc76216765e 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -1965,7 +1965,8 @@ static int init_generic_mmio_info(struct intel_gvt *gvt)
  
- void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgpu);
-+/**
-+ * intel_gvt_mmio_set_cmd_fix_write -
-+ *				mark an MMIO if its cmd write needs to be
-+ *				patched
-+ * @gvt: a GVT device
-+ * @offset: register offset
-+ *
-+ */
-+static inline void intel_gvt_mmio_set_cmd_fix_write(
-+			struct intel_gvt *gvt, unsigned int offset)
-+{
-+	gvt->mmio.mmio_attribute[offset >> 2] |= F_CMD_WRITE_PATCH;
-+}
-+
-+/**
-+ * intel_gvt_mmio_is_cmd_fix_write - check if an mmio's cmd access needs to
-+ * be patched
-+ * @gvt: a GVT device
-+ * @offset: register offset
-+ *
-+ * Returns:
-+ * True if GPU commmand write to an MMIO should be patched
-+ */
-+static inline bool intel_gvt_mmio_is_cmd_fix_write(
-+			struct intel_gvt *gvt, unsigned int offset)
-+{
-+	return gvt->mmio.mmio_attribute[offset >> 2] & F_CMD_WRITE_PATCH;
-+}
-+
- void intel_gvt_debugfs_remove_vgpu(struct intel_vgpu *vgpu);
- void intel_gvt_debugfs_init(struct intel_gvt *gvt);
- void intel_gvt_debugfs_clean(struct intel_gvt *gvt);
+ 	/* RING MODE */
+ #define RING_REG(base) _MMIO((base) + 0x29c)
+-	MMIO_RING_DFH(RING_REG, D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL,
++	MMIO_RING_DFH(RING_REG, D_ALL,
++		F_MODE_MASK | F_CMD_ACCESS | F_CMD_WRITE_PATCH, NULL,
+ 		ring_mode_mmio_write);
+ #undef RING_REG
  
--
- #include "trace.h"
- #include "mpt.h"
+@@ -2885,8 +2886,8 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
+ 	MMIO_DFH(_MMIO(0xb10c), D_BDW, F_CMD_ACCESS, NULL, NULL);
+ 	MMIO_D(_MMIO(0xb110), D_BDW);
  
+-	MMIO_F(_MMIO(0x24d0), 48, F_CMD_ACCESS, 0, 0, D_BDW_PLUS,
+-		NULL, force_nonpriv_write);
++	MMIO_F(_MMIO(0x24d0), 48, F_CMD_ACCESS | F_CMD_WRITE_PATCH, 0, 0,
++		D_BDW_PLUS, NULL, force_nonpriv_write);
+ 
+ 	MMIO_D(_MMIO(0x44484), D_BDW_PLUS);
+ 	MMIO_D(_MMIO(0x4448c), D_BDW_PLUS);
 -- 
 2.17.1
 
