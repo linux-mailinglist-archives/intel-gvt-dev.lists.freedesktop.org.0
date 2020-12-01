@@ -1,116 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46C9F2C9FFC
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Dec 2020 11:41:02 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16EE12CA659
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Dec 2020 15:55:26 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7981E6E504;
-	Tue,  1 Dec 2020 10:41:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CC5876E573;
+	Tue,  1 Dec 2020 14:55:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2056.outbound.protection.outlook.com [40.107.220.56])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 616F389D40;
- Tue,  1 Dec 2020 10:40:59 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jeNaDrUANnZPOqJeUM6I0u+jNc6Zri7zOAfjA/W4Yeiw+gNmppQ5M+S6C+7jhALdgK/MPOMQDY/IlQZ/M1YNCUIDA07vQLEZYbIVJBz7G+WDx/JfHhINuhfr0bjD2UjuFyYdH/4aMyp4Znjriqh3FPeBCON9D3riwmXxTjqEqgb/7VjwoDLj+RtHyPl/Fl2fViGg7U3scEU/+tApTQ9xXr1oO6T30rBWioZ9EZa71WCdPbhLD7UiIjto08dx3DtBwb9QuEMLgW+JGT+Vdjq1Vv9QEq8rCmVDsONm7UuJDaoTDXZ7lCgY2soU5kV0x6U2WwrQiCdiYkjfloFU70GzIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UHsRdPxRBjysxtTWx7jFJq8hJpxJMDx1LK5hSESNTIE=;
- b=TSuyCtA8Frtvd8TYRpDQuGqR8khBvFopy4NtODDRyxfqvDaM68uFfIfMqGzZ/Ui92UPO/cX03MmPkMFilE5hxc28ZbktUG87biWEs1G1jSFU8pfuGf+JutqRrhc7bO/yIW3nFxjqWFkcZ7s5c7zNLLuf5iDP8CuqIpvoE3bhlm+TJDzRn22pTpUGxAkZD0EES90WtMFVnOhDg3Mjv6E0uE0C4wUZ/CmsNIJLrw3pQCU9fg8dp6ZtcEnNhNdWjng/7TycJKzYu1Dho+qfOqGVDPa8OkI2hBEpTSGT5oAk5fenk4hF1hK41MZ6AQvvdcsBFNn4jQFpCF/sml1RXTfzVw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amdcloud.onmicrosoft.com; s=selector2-amdcloud-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UHsRdPxRBjysxtTWx7jFJq8hJpxJMDx1LK5hSESNTIE=;
- b=jPz42VoJizZb/Fu9pyA1WSSgSiVWcVgJLQjNeBNVLq6zQa5ORAbPOLsxTRUa4CnEu12LEyzqB92zmfvKqqgavaLYdLaqKygNSyFx2XYHlWR1+QKzpHXHNJ3z4ny0+DOXFel4dDPyNCt3DSzf3HWLyqmlFXsY3Lc9Y60dTXapkF8=
-Authentication-Results: ravnborg.org; dkim=none (message not signed)
- header.d=none;ravnborg.org; dmarc=none action=none header.from=amd.com;
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com (2603:10b6:208:159::19)
- by BL0PR12MB4932.namprd12.prod.outlook.com (2603:10b6:208:1c2::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3611.20; Tue, 1 Dec
- 2020 10:40:58 +0000
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::1ccc:8a9a:45d3:dd31]) by MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::1ccc:8a9a:45d3:dd31%7]) with mapi id 15.20.3611.025; Tue, 1 Dec 2020
- 10:40:58 +0000
-Subject: Re: [PATCH v2 01/20] drm/amdgpu: Fix trailing whitespaces
-To: Thomas Zimmermann <tzimmermann@suse.de>, airlied@linux.ie, daniel@ffwll.ch
-References: <20201201103542.2182-1-tzimmermann@suse.de>
- <20201201103542.2182-2-tzimmermann@suse.de>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
-Date: Tue, 1 Dec 2020 11:40:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-In-Reply-To: <20201201103542.2182-2-tzimmermann@suse.de>
-Content-Language: en-US
-X-Originating-IP: [2a02:908:1252:fb60:be8a:bd56:1f94:86e7]
-X-ClientProxiedBy: AM4PR0701CA0031.eurprd07.prod.outlook.com
- (2603:10a6:200:42::41) To MN2PR12MB3775.namprd12.prod.outlook.com
- (2603:10b6:208:159::19)
+Received: from mail-oo1-xc45.google.com (mail-oo1-xc45.google.com
+ [IPv6:2607:f8b0:4864:20::c45])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 433886E575
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  1 Dec 2020 14:55:23 +0000 (UTC)
+Received: by mail-oo1-xc45.google.com with SMTP id y27so1055322ood.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 01 Dec 2020 06:55:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:message-id:date:subject:from:to;
+ bh=Ji0pM3dt4SZmQE+xRk7pBFToPv6H1F8G2bxVBoU3dlU=;
+ b=NJAUwxj3E2SGVTK0GhL5UwBUm7q+nubQaXK3ZlqSU4IGKVgFXqDoCd9dgCGEgnOPaI
+ dLTR4Lpvar3cT4CoEdxL2ALg5mYBdDgB29yUar/0UPnQbzazNBUp1mkDqZIaJwjSzPNq
+ KiYBQWWZlNuW6uX/+LsCED46+ETrjkvFk12lMKxG84eYRXfN8tO96w338bIch3BrnbX/
+ FIJgUerlWgTGkDxxDSK49KVhXdl3jJrihEeFlxlQCZcfnHLF6RJbYFAhbirwgy9ddIRJ
+ nQs0zbyfflYy1uuTLBgjePEjX6OcJpaTs/XUVl8i1jy63jy8zaMPj1kuAvbDyPvZDz5s
+ eyvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:message-id:date:subject
+ :from:to;
+ bh=Ji0pM3dt4SZmQE+xRk7pBFToPv6H1F8G2bxVBoU3dlU=;
+ b=Nwksx1VNEbLoTNB4yS91ItnN2ezBvg1Dtl/hi5o7xM5dM9mhFpvUmnEv+JtI82aITO
+ +7Vr7cKCNBZtSHo6w02ALkg8BLy5Mq3LJjpO7tYAQNKcMEy71f16IWRISdo/+2AyCGPQ
+ 0AHTE9vdGHn/I3n0kwhvHOb7CrgRA03Hf41MnAnu5lDH/NdlzN5sgmhxvckU4+f8eRk4
+ YYfI9jFXg0pl3fBVYcgAiCb8B2xTRhi/d1Oz2wY6VFJwucfDH9dAU7OCy1eG8mCzrZLp
+ trfJKsNzHomEtY+4gsaquh5O94JMIl4TOrRS6kghcGjuTqT7SeiTKzeROcdiqKZM95+r
+ hqqQ==
+X-Gm-Message-State: AOAM530v91uhFrY+MplK7RjU1F6gTTnkCjbYGydNjFBmxmceshHcYXwc
+ 2UURL8IfsXy8OVUYKn5apZO/DCXAjEvT3fd4RNyu
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [IPv6:2a02:908:1252:fb60:be8a:bd56:1f94:86e7]
- (2a02:908:1252:fb60:be8a:bd56:1f94:86e7) by
- AM4PR0701CA0031.eurprd07.prod.outlook.com (2603:10a6:200:42::41) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3632.6 via Frontend
- Transport; Tue, 1 Dec 2020 10:40:56 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 8ae82f56-5917-40bd-7cfe-08d895e59699
-X-MS-TrafficTypeDiagnostic: BL0PR12MB4932:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BL0PR12MB4932600BC6B1FDE0F331A2FE83F40@BL0PR12MB4932.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3044;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 2r2D8feyOVloDbbEuIIMw6Duam8wzPp49XhX7P3NFpB6Z3QrtMeS/zylp/eKOLLA62x5TD5JiqjpwLjU+vZE22/1HBH7tvYT8Pz5him+8ZuPX5z7lny2Jm8oPGgd2GHStwAUElUUllXSqG89z1itq2cFq/MCVRgJ+XkALckUWpDWB4gZ6ps+tASlPtV2/G2RqQ7Wy1LS+1X8UfIHI9lfoWPW024g2g238nmgPDll1aBJf0/cWkqJHji5BfI69ZlxiV2CYj/nwc32wxGkXiz80L2Z3cMkB3Z1lPkwCL6yowC+VSAi+3Y8t/wMrtvfUrodObG4WstUEZiA7jJUEyMoBFvyDc4Ey3c3NZs0+nFJQl0lW5t2OgkCN4EGmLtiH02g
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB3775.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(346002)(376002)(136003)(366004)(396003)(66574015)(2906002)(316002)(8936002)(54906003)(52116002)(66556008)(2616005)(66946007)(8676002)(4326008)(36756003)(186003)(83380400001)(6486002)(16526019)(7416002)(31696002)(86362001)(31686004)(5660300002)(478600001)(66476007)(6666004)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: =?utf-8?B?dW1lOXZDRFVVa3ozaGdyUjZ3dGtGV1JYMXVyZkJFemRMdnpqZEN3UlU2aEto?=
- =?utf-8?B?bE5SeEYrem5WNEMyVzdVN0lLd2hNdjl4cVoyZHhUZUFHT1JwV3Rmc00veGhR?=
- =?utf-8?B?YWVjd0dzZUFkR2ttdkhuMG0vNHV3WVptRzVnUUdrd1owQ3l2bEVwZENVOWox?=
- =?utf-8?B?SkJzcXk5U1k0WVB3cDNoQjRZRCtVSit6ZEhvUnF6TUduWitIWTF5VlZpQ2hX?=
- =?utf-8?B?dVlvOUdZODBhRy9CTEkzSXVzeW1Wb0lYN0dOa0Z3ZTJKV29TeUpyU0Mram5i?=
- =?utf-8?B?TGtJY3A1MERMSWl6QzRlZVhPRUc3eGo2M0NNeFBPcFN0T2hKQUtxNG10QWo5?=
- =?utf-8?B?c0kvSHdoOHE4clQxSHVvSmZEWFlSWTFDVEtrWHR3d3FWcGhiQVE0aEpzUDlj?=
- =?utf-8?B?M25xa0ZhZjZJRU1VZVB5TVg0QXhRRit5ZjVRVHk0aFpxQmdvRWU3MHh6YmZO?=
- =?utf-8?B?ZW9zYUhwWTdBT1lpSnJ5VU0xZk5iWVBiZk1hQk5xUERQMS91VTR2SVdsZmxC?=
- =?utf-8?B?S1lhUUVLdGVjV2RQdk5CL05tYkdFT01ldHYycTBBQTJpSGxzNE9WQzRoeVhw?=
- =?utf-8?B?aVRxdG5jYWt6cVVzRVNhc0V2R01HazNnbjdnTEJjNm45Y0RONjdlUDJaTk5I?=
- =?utf-8?B?cEM2ZzdCNGNTK3dEVjhwYVBTMGVNejg5Z09qTHI3R2tTcGpLNDFXaWtyR3g4?=
- =?utf-8?B?ZFl2VWp1V1NXWUFseXRXcW9TQUdMRUlxR090aTlTUTJEbHV5ZHVnbnVoaEJr?=
- =?utf-8?B?eUZpZThWNmtIbk95Q0ZNbHFmcVlBZFY4R3dWSmFwNDVTaFFxbXFJL0lpT0Rk?=
- =?utf-8?B?cksycEhCMGVHSHJ2dkJaVEI5NmIrMU1HOTdMdEhuaXhCdC9scTMySGx1bVNv?=
- =?utf-8?B?RitVK2dCeTBTWjduWVhxcUhTc2hTRUFQMWwvdmVPNzQ1NHdnZ2RSV0JmdGVU?=
- =?utf-8?B?RG8ydGc2NXRzM3BXY3JFdzZsMVpaUXBvaDl4UHc4T2szK2xWNHlyV0pWZyty?=
- =?utf-8?B?RmN3Vm1PcXM2Qks0MUIyaGJtcTljcEs2OE9lMUlacVJXQTRrNk9zVGdTWk9r?=
- =?utf-8?B?Z2VpUGpVSjdKakpGcGtnQlJ4dVZ3MEZpbFNkaGZWc0c2anRZRkNFc3B0ZXpk?=
- =?utf-8?B?UDkzekJvb3prWGNubVRRSE1vQ1ZoMzJBMkNOaWtKYVFWWEVSTXE0bXlFRUtX?=
- =?utf-8?B?WHNVSFNzSFoxcTN0N1dHTjkxKzZtV2c1RDNoZzV1NTAzdnRwbGJ1Uy92ekd2?=
- =?utf-8?B?MjRjaGxCRFRmVktpMnFtdnNEMzAzMFF6RWYvTjJYNTZvSmpiVFFES1JkQVd5?=
- =?utf-8?B?NFdhSlJjSzJnWEc0MjFxRm5QcDRISnhxU0tYYk8ydkwzWklnWEVPWGF1R0tU?=
- =?utf-8?B?MmdDamlmajJJSWp5dElvbDd0V1Mzc2wrZGhMNktIL1p6NHM5TEI1eGtQZGdu?=
- =?utf-8?Q?N6Do7Ue5?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8ae82f56-5917-40bd-7cfe-08d895e59699
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3775.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Dec 2020 10:40:58.2414 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 0Fc34EPELlxXSULHLuYDCWSamT4D9bmBwxwHq5XoJrdOBkH7qMi2uPgiM9xogCK+
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR12MB4932
+X-Received: by 2002:a05:6808:206:: with SMTP id
+ l6mt2146425oie.119.1606834522078; 
+ Tue, 01 Dec 2020 06:55:22 -0800 (PST)
+X-No-Auto-Attachment: 1
+Message-ID: <000000000000e6d7fa05b5685019@google.com>
+Date: Tue, 01 Dec 2020 14:55:22 +0000
+Subject: DEAR FRIEND,
+From: jesstaley211@gmail.com
+To: intel-gvt-dev@lists.freedesktop.org
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,45 +61,112 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Sam Ravnborg <sam@ravnborg.org>, nouveau@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, amd-gfx@lists.freedesktop.org,
- Alex Deucher <alexander.deucher@amd.com>, spice-devel@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: jesstaley211@gmail.com
+Content-Type: multipart/mixed; boundary="===============2001845723=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-UmV2aWV3ZWQtYnk6IENocmlzdGlhbiBLw7ZuaWcgPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4g
-b24gcGF0Y2ggIzEgYW5kICMxNS4KCkFja2VkLWJ5OiBDaHJpc3RpYW4gS8O2bmlnIDxjaHJpc3Rp
-YW4ua29lbmlnQGFtZC5jb20+IG9uIHBhdGNoICMyIGFuZCAjMTYuCgpSZWdhcmRzLApDaHJpc3Rp
-YW4uCgpBbSAwMS4xMi4yMCB1bSAxMTozNSBzY2hyaWViIFRob21hcyBaaW1tZXJtYW5uOgo+IEFk
-aGVyZSB0byBrZXJuZWwgY29kaW5nIHN0eWxlLgo+Cj4gU2lnbmVkLW9mZi1ieTogVGhvbWFzIFpp
-bW1lcm1hbm4gPHR6aW1tZXJtYW5uQHN1c2UuZGU+Cj4gQWNrZWQtYnk6IEFsZXggRGV1Y2hlciA8
-YWxleGFuZGVyLmRldWNoZXJAYW1kLmNvbT4KPiBBY2tlZC1ieTogU2FtIFJhdm5ib3JnIDxzYW1A
-cmF2bmJvcmcub3JnPgo+IENjOiBBbGV4IERldWNoZXIgPGFsZXhhbmRlci5kZXVjaGVyQGFtZC5j
-b20+Cj4gQ2M6IENocmlzdGlhbiBLw7ZuaWcgPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4KPiAt
-LS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9kZXZpY2UuYyB8IDYgKysr
-LS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9kZXZpY2Uu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9kZXZpY2UuYwo+IGluZGV4IDVm
-MzA0NDI1Yzk0OC4uZGEyM2MwZjIxMzExIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9h
-bWQvYW1kZ3B1L2FtZGdwdV9kZXZpY2UuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1k
-Z3B1L2FtZGdwdV9kZXZpY2UuYwo+IEBAIC00OTIyLDggKzQ5MjIsOCBAQCBwY2lfZXJzX3Jlc3Vs
-dF90IGFtZGdwdV9wY2lfZXJyb3JfZGV0ZWN0ZWQoc3RydWN0IHBjaV9kZXYgKnBkZXYsIHBjaV9j
-aGFubmVsX3N0YQo+ICAgCWNhc2UgcGNpX2NoYW5uZWxfaW9fbm9ybWFsOgo+ICAgCQlyZXR1cm4g
-UENJX0VSU19SRVNVTFRfQ0FOX1JFQ09WRVI7Cj4gICAJLyogRmF0YWwgZXJyb3IsIHByZXBhcmUg
-Zm9yIHNsb3QgcmVzZXQgKi8KPiAtCWNhc2UgcGNpX2NoYW5uZWxfaW9fZnJvemVuOgkJCj4gLQkJ
-LyoJCQo+ICsJY2FzZSBwY2lfY2hhbm5lbF9pb19mcm96ZW46Cj4gKwkJLyoKPiAgIAkJICogQ2Fu
-Y2VsIGFuZCB3YWl0IGZvciBhbGwgVERScyBpbiBwcm9ncmVzcyBpZiBmYWlsaW5nIHRvCj4gICAJ
-CSAqIHNldCAgYWRldi0+aW5fZ3B1X3Jlc2V0IGluIGFtZGdwdV9kZXZpY2VfbG9ja19hZGV2Cj4g
-ICAJCSAqCj4gQEAgLTUwMTQsNyArNTAxNCw3IEBAIHBjaV9lcnNfcmVzdWx0X3QgYW1kZ3B1X3Bj
-aV9zbG90X3Jlc2V0KHN0cnVjdCBwY2lfZGV2ICpwZGV2KQo+ICAgCQlnb3RvIG91dDsKPiAgIAl9
-Cj4gICAKPiAtCWFkZXYtPmluX3BjaV9lcnJfcmVjb3ZlcnkgPSB0cnVlOwkKPiArCWFkZXYtPmlu
-X3BjaV9lcnJfcmVjb3ZlcnkgPSB0cnVlOwo+ICAgCXIgPSBhbWRncHVfZGV2aWNlX3ByZV9hc2lj
-X3Jlc2V0KGFkZXYsIE5VTEwsICZuZWVkX2Z1bGxfcmVzZXQpOwo+ICAgCWFkZXYtPmluX3BjaV9l
-cnJfcmVjb3ZlcnkgPSBmYWxzZTsKPiAgIAlpZiAocikKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVs
-LWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
+--===============2001845723==
+Content-Type: multipart/alternative; boundary="000000000000effd0005b568504a"
+
+--000000000000effd0005b568504a
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+
+I've invited you to fill in the following form:
+Untitled form
+
+To fill it in, visit:
+https://docs.google.com/forms/d/e/1FAIpQLSfi2v_QwY_KtQFRSv66gKQXWIyn7sbvAx1_r8wjAat6yYUKUw/viewform?vc=0&amp;c=0&amp;w=1&amp;flr=0&amp;usp=mail_form_link
+
+Dear,
+
+I am Engr Uduak Walter Onnoghen, the son of the recently suspended Chief  
+Justice of Nigeria. I write to make a plea to you as one of my father`s  
+friends, who works with the Ministry of Finance under foreign Contractors  
+payment Reconciliation Department , advised.
+
+To be precise, my father`s case is still under investigation as such, there  
+are some hidden funds which i want to keep in safer hands so that this  
+Government will not get hold of it.
+
+This is a secret. Even my father`s friends do not know i am communicating  
+with you over this.
+
+Please, if you are interested in helping me out by receiving the Fund,  
+reply me (engrudukwalteronnoghen@yahoo.com ) for more details.
+
+Thanks
+
+Engr U.W Onnoghen.
+engrudukwalteronnoghen@yahoo.com
+
+Google Forms: Create and analyse surveys.
+
+--000000000000effd0005b568504a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body style=3D"font-family: Roboto,Helvetica,Arial,sans-serif; margin=
+: 0; padding: 0; height: 100%; width: 100%;"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"background-color:rgb(103,58,183);" width=
+=3D"100%" role=3D"presentation"><tbody><tr height=3D"64px"><td style=3D"pad=
+ding: 0 24px;"><img alt=3D"Google Forms" height=3D"26px" style=3D"display: =
+inline-block; margin: 0; vertical-align: middle;" width=3D"143px" src=3D"ht=
+tps://www.gstatic.com/docs/forms/google_forms_logo_lockup_white_2x.png"></t=
+d></tr></tbody></table><div style=3D"padding: 24px; background-color:rgb(23=
+7,231,246)"><div align=3D"center" style=3D"background-color: #fff; border-b=
+ottom: 1px solid #e0e0e0;margin: 0 auto; max-width: 624px; min-width: 154px=
+;padding: 0 24px;"><table align=3D"center" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"background-color: #fff;" width=3D"100%" role=3D"presentation">=
+<tbody><tr height=3D"24px"><td></td></tr><tr><td><span style=3D"display: ta=
+ble-cell; vertical-align: top; font-size: 13px; line-height: 18px; color: #=
+424242;" dir=3D"auto">Dear,<br><br>I am Engr Uduak Walter Onnoghen, the son=
+ of the recently suspended Chief Justice of Nigeria. I write to make a plea=
+ to you as one of my father`s friends, who works with the Ministry of Finan=
+ce under foreign Contractors payment Reconciliation Department , advised.<b=
+r><br>To be precise, my father`s case is still under investigation as such,=
+ there are some hidden funds which i want to keep in safer hands so that th=
+is Government will not get hold of it.<br><br>This is a secret. Even my fat=
+her`s friends do not know i am communicating with you over this.<br><br>Ple=
+ase, if you are interested in helping me out by receiving the Fund, reply m=
+e (engrudukwalteronnoghen@yahoo.com ) for more details.<br><br>Thanks<br><b=
+r>Engr U.W Onnoghen.<br>engrudukwalteronnoghen@yahoo.com</span></td></tr><t=
+r height=3D"20px"><td></tr><tr style=3D"font-size: 20px; line-height: 24px;=
+"><td dir=3D"auto"><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSfi2=
+v_QwY_KtQFRSv66gKQXWIyn7sbvAx1_r8wjAat6yYUKUw/viewform?vc=3D0&amp;c=3D0&amp=
+;w=3D1&amp;flr=3D0&amp;usp=3Dmail_form_link" style=3D"color: rgb(103,58,183=
+); text-decoration: none; vertical-align: middle; font-weight: 500">Untitle=
+d form</a><div itemprop=3D"action" itemscope itemtype=3D"http://schema.org/=
+ViewAction"><meta itemprop=3D"url" content=3D"https://docs.google.com/forms=
+/d/e/1FAIpQLSfi2v_QwY_KtQFRSv66gKQXWIyn7sbvAx1_r8wjAat6yYUKUw/viewform?vc=
+=3D0&amp;c=3D0&amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail_goto_form"><meta itempr=
+op=3D"name" content=3D"Fill out form"></div></td></tr><tr height=3D"24px"><=
+/tr><tr><td><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%"><tbody><tr><td><a href=3D"https://docs.google.com/forms/d/e/1FAIp=
+QLSfi2v_QwY_KtQFRSv66gKQXWIyn7sbvAx1_r8wjAat6yYUKUw/viewform?vc=3D0&amp;c=
+=3D0&amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail_form_link" style=3D"border-radius=
+: 3px; box-sizing: border-box; display: inline-block; font-size: 13px; font=
+-weight: 700; height: 40px; line-height: 40px; padding: 0 24px; text-align:=
+ center; text-decoration: none; text-transform: uppercase; vertical-align: =
+middle; color: #fff; background-color: rgb(103,58,183);" target=3D"_blank" =
+rel=3D"noopener">Fill out form</a></td></tr></tbody></table></td></tr><tr h=
+eight=3D"24px"></tr></tbody></table></div><table align=3D"center" cellpaddi=
+ng=3D"0" cellspacing=3D"0" style=3D"max-width: 672px; min-width: 154px;" wi=
+dth=3D"100%" role=3D"presentation"><tbody><tr height=3D"24px"><td></td></tr=
+><tr><td><a href=3D"https://docs.google.com/forms?usp=3Dmail_form_link" sty=
+le=3D"color: #424242; font-size: 13px;">Create your own Google Form</a></td=
+></tr></tbody></table></div></body></html>
+--000000000000effd0005b568504a--
+
+--===============2001845723==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============2001845723==--
