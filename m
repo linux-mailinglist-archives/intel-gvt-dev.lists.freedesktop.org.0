@@ -2,43 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1617B2C972C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Dec 2020 06:50:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06FAC2C975D
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Dec 2020 07:01:10 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CBD2B6E4AD;
-	Tue,  1 Dec 2020 05:50:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B58676E483;
+	Tue,  1 Dec 2020 06:01:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F0C4E6E4AD
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DB5816E483
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  1 Dec 2020 05:50:40 +0000 (UTC)
-IronPort-SDR: JR9bDw8y+tB/XG9w8N2IV0iHDtCiik4x5ThwedOOP79qGhtEfoFac0UlL5q26of+P/JSHmVHIs
- WXgiSSb546jw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9821"; a="172869126"
+ Tue,  1 Dec 2020 06:01:07 +0000 (UTC)
+IronPort-SDR: hOhCgAwXOs+V+C0kPxGmL0wD2cwXCz/JxOjHZ+Nx1X1zgMHLjkMhR38Fo1kOfAPr4aSt3hBplf
+ Y6JwsjO/U5tg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9821"; a="169270148"
 X-IronPort-AV: E=Sophos;i="5.78,383,1599548400"; 
- d="asc'?scan'208";a="172869126"
+ d="asc'?scan'208";a="169270148"
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Nov 2020 21:50:40 -0800
-IronPort-SDR: zqh48PWT/Nxt9xVyq3Pvn8YBH3kWWztI+6qR9YqSe/ebOkZ+wJheYzMBQspUEZKUuguZzYuNSd
- WMNSh5HOJURw==
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Nov 2020 22:01:06 -0800
+IronPort-SDR: 8Zu9Z5O5E0LF6gwNlrZBIIlIDfj0gAPnZ7CiFhl3Fo12osr6F9qTleZ4jxKKIR1ck1wjtm/TQx
+ UH/AXozU3ARw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.78,383,1599548400"; 
- d="asc'?scan'208";a="364559652"
+ d="asc'?scan'208";a="364563099"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 30 Nov 2020 21:50:38 -0800
-Date: Tue, 1 Dec 2020 13:35:37 +0800
+ by fmsmga004.fm.intel.com with ESMTP; 30 Nov 2020 22:01:05 -0800
+Date: Tue, 1 Dec 2020 13:46:04 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Colin Xu <colin.xu@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: Fix vfio_edid issue for BXT/APL
-Message-ID: <20201201053537.GP16939@zhen-hp.sh.intel.com>
-References: <20201118025326.198338-1-colin.xu@intel.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH 01/10] drm/i915/gvt: parse init context to update cmd
+ accessible reg whitelist
+Message-ID: <20201201054604.GQ16939@zhen-hp.sh.intel.com>
+References: <20201125003626.17806-1-yan.y.zhao@intel.com>
+ <20201125003741.17857-1-yan.y.zhao@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20201118025326.198338-1-colin.xu@intel.com>
+In-Reply-To: <20201125003741.17857-1-yan.y.zhao@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,206 +54,350 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0509541056=="
+Cc: Kevin Tian <kevin.tian@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Wang Zhi <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============1081723666=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0509541056==
+--===============1081723666==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="dMyqICaxQaaUjrCL"
+	protocol="application/pgp-signature"; boundary="nEsDIrWrg+hrB7l1"
 Content-Disposition: inline
 
 
---dMyqICaxQaaUjrCL
+--nEsDIrWrg+hrB7l1
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2020.11.18 10:53:26 +0800, Colin Xu wrote:
-> BXT/APL has different isr/irr/hpd regs compared with other GEN9. If not
-> setting these regs bits correctly according to the emulated monitor
-> (currently a DP on PORT_B), although gvt still triggers a virtual HPD
-> event, the guest driver won't detect a valid HPD pulse thus no full
-> display detection will be executed to read the updated EDID.
+On 2020.11.25 08:37:41 +0800, Yan Zhao wrote:
+> Logical Context is actually a big batch buffer consisting of multiple
+> LRI commands + saved registers. It comprises Ring Context (the first
+> 0x50 dwords) and Engine Context. The registers defined in Engine Context
+> are command accessible, and safe to execute in VM Context.
+> However, not all of them are currently tracked in existing register
+> whitelist. Here we kick hardware to generate a dummy Engine Context and
+> then scan the dummy Engine context to update whitelist dynamically. Based
+> on updated list, later patches will audit future VM Engine Contexts to
+> disallow undesired LRIs (if out of what hardware generates).
 >=20
-> With this patch, the vfio_edid is enabled again on BXT/APL, which is
-> previously disabled by:
-> '642403e3599e (drm/i915/gvt: Temporarily disable vfio_edid for BXT/APL)'
-
-So needs a Fixes tag. Otherwise looks fine to me. Thanks!
-
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
->=20
-> Signed-off-by: Colin Xu <colin.xu@intel.com>
+> Cc: Kevin Tian <kevin.tian@intel.com>
+> Signed-off-by: Wang Zhi <zhi.a.wang@intel.com>
+> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
 > ---
->  drivers/gpu/drm/i915/gvt/display.c | 81 +++++++++++++++++++++---------
->  drivers/gpu/drm/i915/gvt/vgpu.c    |  5 +-
->  2 files changed, 59 insertions(+), 27 deletions(-)
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c | 153 +++++++++++++++++++++++++-
+>  drivers/gpu/drm/i915/gvt/cmd_parser.h |   2 +
+>  drivers/gpu/drm/i915/gvt/gvt.h        |   4 +
+>  drivers/gpu/drm/i915/gvt/vgpu.c       |   4 +-
+>  4 files changed, 159 insertions(+), 4 deletions(-)
 >=20
-> diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gv=
-t/display.c
-> index a15f87539657..62a5b0dd2003 100644
-> --- a/drivers/gpu/drm/i915/gvt/display.c
-> +++ b/drivers/gpu/drm/i915/gvt/display.c
-> @@ -217,6 +217,15 @@ static void emulate_monitor_status_change(struct int=
-el_vgpu *vgpu)
->  				  DDI_BUF_CTL_ENABLE);
->  			vgpu_vreg_t(vgpu, DDI_BUF_CTL(port)) |=3D DDI_BUF_IS_IDLE;
->  		}
-> +		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=3D
-> +			~(PORTA_HOTPLUG_ENABLE | PORTA_HOTPLUG_STATUS_MASK);
-> +		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=3D
-> +			~(PORTB_HOTPLUG_ENABLE | PORTB_HOTPLUG_STATUS_MASK);
-> +		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=3D
-> +			~(PORTC_HOTPLUG_ENABLE | PORTC_HOTPLUG_STATUS_MASK);
-> +		/* No hpd_invert set in vgpu vbt, need to clear invert mask */
-> +		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=3D ~BXT_DDI_HPD_INVERT_MASK;
-> +		vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=3D ~BXT_DE_PORT_HOTPLUG_MASK;
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.c
+> index 16b582cb97ed..b1e508471c40 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> @@ -38,10 +38,15 @@
 > =20
->  		vgpu_vreg_t(vgpu, BXT_P_CR_GT_DISP_PWRON) &=3D ~(BIT(0) | BIT(1));
->  		vgpu_vreg_t(vgpu, BXT_PORT_CL1CM_DW0(DPIO_PHY0)) &=3D
-> @@ -273,6 +282,8 @@ static void emulate_monitor_status_change(struct inte=
-l_vgpu *vgpu)
->  			vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_EDP)) |=3D
->  				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
->  				 TRANS_DDI_FUNC_ENABLE);
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=3D
-> +				PORTA_HOTPLUG_ENABLE;
->  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=3D
->  				GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
->  		}
-> @@ -301,6 +312,8 @@ static void emulate_monitor_status_change(struct inte=
-l_vgpu *vgpu)
->  				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
->  				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
->  				 TRANS_DDI_FUNC_ENABLE);
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=3D
-> +				PORTB_HOTPLUG_ENABLE;
->  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=3D
->  				GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
->  		}
-> @@ -329,6 +342,8 @@ static void emulate_monitor_status_change(struct inte=
-l_vgpu *vgpu)
->  				(TRANS_DDI_BPC_8 | TRANS_DDI_MODE_SELECT_DP_SST |
->  				 (PORT_B << TRANS_DDI_PORT_SHIFT) |
->  				 TRANS_DDI_FUNC_ENABLE);
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=3D
-> +				PORTC_HOTPLUG_ENABLE;
->  			vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=3D
->  				GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
->  		}
-> @@ -661,44 +676,62 @@ void intel_vgpu_emulate_hotplug(struct intel_vgpu *=
-vgpu, bool connected)
->  				PORTD_HOTPLUG_STATUS_MASK;
->  		intel_vgpu_trigger_virtual_event(vgpu, DP_D_HOTPLUG);
->  	} else if (IS_BROXTON(i915)) {
-> -		if (connected) {
-> -			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-> +		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-> +			if (connected) {
->  				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=3D
->  					GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
-> +			} else {
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=3D
-> +					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
->  			}
-> -			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-> -				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=3D
-> -					SFUSE_STRAP_DDIB_DETECTED;
-> +			vgpu_vreg_t(vgpu, GEN8_DE_PORT_IIR) |=3D
-> +				GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=3D
-> +				~PORTA_HOTPLUG_STATUS_MASK;
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=3D
-> +				PORTA_HOTPLUG_LONG_DETECT;
-> +			intel_vgpu_trigger_virtual_event(vgpu, DP_A_HOTPLUG);
-> +		}
-> +		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-> +			if (connected) {
->  				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=3D
->  					GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
-> -			}
-> -			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
->  				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=3D
-> -					SFUSE_STRAP_DDIC_DETECTED;
-> -				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=3D
-> -					GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
-> -			}
-> -		} else {
-> -			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_A)) {
-> +					SFUSE_STRAP_DDIB_DETECTED;
-> +			} else {
->  				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=3D
-> -					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_A);
-> -			}
-> -			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_B)) {
-> +					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
->  				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=3D
->  					~SFUSE_STRAP_DDIB_DETECTED;
-> -				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=3D
-> -					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
->  			}
-> -			if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-> -				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=3D
-> -					~SFUSE_STRAP_DDIC_DETECTED;
-> +			vgpu_vreg_t(vgpu, GEN8_DE_PORT_IIR) |=3D
-> +				GEN8_DE_PORT_HOTPLUG(HPD_PORT_B);
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=3D
-> +				~PORTB_HOTPLUG_STATUS_MASK;
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=3D
-> +				PORTB_HOTPLUG_LONG_DETECT;
-> +			intel_vgpu_trigger_virtual_event(vgpu, DP_B_HOTPLUG);
-> +		}
-> +		if (intel_vgpu_has_monitor_on_port(vgpu, PORT_C)) {
-> +			if (connected) {
-> +				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) |=3D
-> +					GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
-> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) |=3D
-> +					SFUSE_STRAP_DDIC_DETECTED;
-> +			} else {
->  				vgpu_vreg_t(vgpu, GEN8_DE_PORT_ISR) &=3D
->  					~GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
-> +				vgpu_vreg_t(vgpu, SFUSE_STRAP) &=3D
-> +					~SFUSE_STRAP_DDIC_DETECTED;
->  			}
-> +			vgpu_vreg_t(vgpu, GEN8_DE_PORT_IIR) |=3D
-> +				GEN8_DE_PORT_HOTPLUG(HPD_PORT_C);
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) &=3D
-> +				~PORTC_HOTPLUG_STATUS_MASK;
-> +			vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=3D
-> +				PORTC_HOTPLUG_LONG_DETECT;
-> +			intel_vgpu_trigger_virtual_event(vgpu, DP_C_HOTPLUG);
->  		}
-> -		vgpu_vreg_t(vgpu, PCH_PORT_HOTPLUG) |=3D
-> -			PORTB_HOTPLUG_STATUS_MASK;
-> -		intel_vgpu_trigger_virtual_event(vgpu, DP_B_HOTPLUG);
->  	}
+>  #include "i915_drv.h"
+>  #include "gt/intel_ring.h"
+> +#include "gt/intel_gt_requests.h"
+>  #include "gvt.h"
+>  #include "i915_pvinfo.h"
+>  #include "trace.h"
+> =20
+> +#include "gem/i915_gem_context.h"
+> +#include "gem/i915_gem_pm.h"
+> +#include "gt/intel_context.h"
+> +
+>  #define INVALID_OP    (~0U)
+> =20
+>  #define OP_LEN_MI           9
+> @@ -454,6 +459,7 @@ enum {
+>  	RING_BUFFER_INSTRUCTION,
+>  	BATCH_BUFFER_INSTRUCTION,
+>  	BATCH_BUFFER_2ND_LEVEL,
+> +	RING_BUFFER_CTX,
+>  };
+> =20
+>  enum {
+> @@ -495,6 +501,7 @@ struct parser_exec_state {
+>  	 */
+>  	int saved_buf_addr_type;
+>  	bool is_ctx_wa;
+> +	bool is_init_ctx;
+> =20
+>  	const struct cmd_info *info;
+> =20
+> @@ -708,6 +715,11 @@ static inline u32 cmd_val(struct parser_exec_state *=
+s, int index)
+>  	return *cmd_ptr(s, index);
 >  }
 > =20
+> +static inline bool is_init_ctx(struct parser_exec_state *s)
+> +{
+> +	return (s->buf_type =3D=3D RING_BUFFER_CTX && s->is_init_ctx);
+> +}
+> +
+>  static void parser_exec_state_dump(struct parser_exec_state *s)
+>  {
+>  	int cnt =3D 0;
+> @@ -721,7 +733,8 @@ static void parser_exec_state_dump(struct parser_exec=
+_state *s)
+> =20
+>  	gvt_dbg_cmd("  %s %s ip_gma(%08lx) ",
+>  			s->buf_type =3D=3D RING_BUFFER_INSTRUCTION ?
+> -			"RING_BUFFER" : "BATCH_BUFFER",
+> +			"RING_BUFFER" : ((s->buf_type =3D=3D RING_BUFFER_CTX) ?
+> +				"CTX_BUFFER" : "BATCH_BUFFER"),
+>  			s->buf_addr_type =3D=3D GTT_BUFFER ?
+>  			"GTT" : "PPGTT", s->ip_gma);
+> =20
+> @@ -756,7 +769,8 @@ static inline void update_ip_va(struct parser_exec_st=
+ate *s)
+>  	if (WARN_ON(s->ring_head =3D=3D s->ring_tail))
+>  		return;
+> =20
+> -	if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION) {
+> +	if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION ||
+> +			s->buf_type =3D=3D RING_BUFFER_CTX) {
+>  		unsigned long ring_top =3D s->ring_start + s->ring_size;
+> =20
+>  		if (s->ring_head > s->ring_tail) {
+> @@ -936,6 +950,11 @@ static int cmd_reg_handler(struct parser_exec_state =
+*s,
+>  		return -EFAULT;
+>  	}
+> =20
+> +	if (is_init_ctx(s)) {
+> +		intel_gvt_mmio_set_cmd_accessible(gvt, offset);
+> +		return 0;
+> +	}
+> +
+>  	if (!intel_gvt_mmio_is_cmd_accessible(gvt, offset)) {
+>  		gvt_vgpu_err("%s access to non-render register (%x)\n",
+>  				cmd, offset);
+> @@ -1215,6 +1234,8 @@ static int cmd_handler_mi_batch_buffer_end(struct p=
+arser_exec_state *s)
+>  		s->buf_type =3D BATCH_BUFFER_INSTRUCTION;
+>  		ret =3D ip_gma_set(s, s->ret_ip_gma_bb);
+>  		s->buf_addr_type =3D s->saved_buf_addr_type;
+> +	} else if (s->buf_type =3D=3D RING_BUFFER_CTX) {
+> +		ret =3D ip_gma_set(s, s->ring_tail);
+>  	} else {
+>  		s->buf_type =3D RING_BUFFER_INSTRUCTION;
+>  		s->buf_addr_type =3D GTT_BUFFER;
+> @@ -2763,7 +2784,8 @@ static int command_scan(struct parser_exec_state *s,
+>  	gma_bottom =3D rb_start +  rb_len;
+> =20
+>  	while (s->ip_gma !=3D gma_tail) {
+> -		if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION) {
+> +		if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION ||
+> +				s->buf_type =3D=3D RING_BUFFER_CTX) {
+>  			if (!(s->ip_gma >=3D rb_start) ||
+>  				!(s->ip_gma < gma_bottom)) {
+>  				gvt_vgpu_err("ip_gma %lx out of ring scope."
+> @@ -3056,6 +3078,131 @@ int intel_gvt_scan_and_shadow_wa_ctx(struct intel=
+_shadow_wa_ctx *wa_ctx)
+>  	return 0;
+>  }
+> =20
+> +/* generate dummy contexts by sending empty requests to HW, and let
+> + * the HW to fill Engine Contexts. This dummy contexts are used for
+> + * initialization purpose (update reg whitelist), so referred to as
+> + * init context here
+> + */
+> +void intel_gvt_update_reg_whitelist(struct intel_vgpu *vgpu)
+> +{
+> +	struct intel_gvt *gvt =3D vgpu->gvt;
+> +	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
+> +	struct intel_engine_cs *engine;
+> +	enum intel_engine_id id;
+> +	struct drm_i915_gem_object *ctx_obj[I915_NUM_ENGINES] =3D {};
+> +	const unsigned long start =3D LRC_STATE_PN * PAGE_SIZE;
+> +	struct i915_request *rq;
+> +	struct intel_vgpu_submission *s =3D &vgpu->submission;
+> +	struct i915_request *requests[I915_NUM_ENGINES] =3D {};
+> +	bool is_ctx_pinned[I915_NUM_ENGINES] =3D {};
+> +	int ret;
+> +
+> +	if (gvt->is_reg_whitelist_updated)
+> +		return;
+> +
+> +	for_each_engine(engine, &dev_priv->gt, id) {
+> +		ret =3D intel_context_pin(s->shadow[id]);
+> +		if (ret) {
+> +			gvt_vgpu_err("fail to pin shadow ctx\n");
+> +			goto out;
+> +		}
+> +		is_ctx_pinned[id] =3D true;
+> +	}
+> +
+> +	for_each_engine(engine, &dev_priv->gt, id) {
+> +		rq =3D i915_request_create(s->shadow[id]);
+> +		if (IS_ERR(rq)) {
+> +			gvt_vgpu_err("fail to alloc default request\n");
+> +			ret =3D -EIO;
+> +			goto out;
+> +		}
+> +		requests[id] =3D i915_request_get(rq);
+> +		i915_request_add(rq);
+> +	}
+
+Why split this in different iteration?
+
+> +
+> +	if (intel_gt_wait_for_idle(&dev_priv->gt,
+> +				I915_GEM_IDLE_TIMEOUT) =3D=3D -ETIME) {
+> +		ret =3D -EIO;
+> +		goto out;
+> +	}
+> +
+> +	for_each_engine(engine, &dev_priv->gt, id) {
+> +		struct i915_request *rq;
+> +
+> +		rq =3D requests[id];
+> +		GEM_BUG_ON(!i915_request_completed(rq));
+> +		GEM_BUG_ON(!intel_context_is_pinned(rq->context));
+> +		ctx_obj[id] =3D rq->context->state->obj;
+> +	}
+> +
+
+and these two iterations?
+
+> +	/* scan init ctx to update cmd accessible list */
+> +	for_each_engine(engine, &dev_priv->gt, id) {
+> +		int size =3D engine->context_size - PAGE_SIZE;
+> +		void *vaddr;
+> +		struct parser_exec_state s;
+> +		struct drm_i915_gem_object *obj;
+> +
+> +		if (!ctx_obj[id]) {
+> +			ret =3D -EIO;
+> +			goto out;
+> +		}
+> +
+> +		obj =3D ctx_obj[id];
+> +
+> +		i915_gem_object_set_cache_coherency(obj,
+> +						    I915_CACHE_LLC);
+> +
+> +		vaddr =3D i915_gem_object_pin_map(obj, I915_MAP_WB);
+> +		if (IS_ERR(vaddr)) {
+> +			gvt_err("failed to pin init ctx obj, ring=3D%d, err=3D%lx\n",
+> +				id, PTR_ERR(vaddr));
+> +			goto out;
+> +		}
+> +
+> +		s.buf_type =3D RING_BUFFER_CTX;
+> +		s.buf_addr_type =3D GTT_BUFFER;
+> +		s.vgpu =3D vgpu;
+> +		s.engine =3D engine;
+> +		s.ring_start =3D 0;
+> +		s.ring_size =3D size;
+> +		s.ring_head =3D 0;
+> +		s.ring_tail =3D size;
+> +		s.rb_va =3D vaddr + start;
+> +		s.workload =3D NULL;
+> +		s.is_ctx_wa =3D false;
+> +		s.is_init_ctx =3D true;
+> +
+> +		/* skipping the first RING_CTX_SIZE(0x50) dwords */
+> +		ret =3D ip_gma_set(&s, RING_CTX_SIZE);
+> +		if (ret) {
+> +			i915_gem_object_unpin_map(obj);
+> +			goto out;
+> +		}
+> +
+> +		ret =3D command_scan(&s, 0, size, 0, size);
+> +		if (ret)
+> +			gvt_err("Scan init ctx error\n");
+> +
+> +		i915_gem_object_unpin_map(obj);
+> +	}
+> +
+> +out:
+> +	if (!ret)
+> +		gvt->is_reg_whitelist_updated =3D true;
+> +
+> +	for (id =3D 0; id < ARRAY_SIZE(requests); id++) {
+> +		if (!requests[id])
+> +			continue;
+> +		i915_request_put(requests[id]);
+> +	}
+> +
+> +	for_each_engine(engine, &dev_priv->gt, id) {
+> +		if (!is_ctx_pinned[id])
+> +			continue;
+> +		intel_context_unpin(s->shadow[id]);
+> +	}
+> +}
+> +
+>  static int init_cmd_table(struct intel_gvt *gvt)
+>  {
+>  	unsigned int gen_type =3D intel_gvt_get_device_type(gvt);
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.h b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.h
+> index ab25d151932a..09ca2b8a63c8 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.h
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.h
+> @@ -50,4 +50,6 @@ int intel_gvt_scan_and_shadow_ringbuffer(struct intel_v=
+gpu_workload *workload);
+> =20
+>  int intel_gvt_scan_and_shadow_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx);
+> =20
+> +void intel_gvt_update_reg_whitelist(struct intel_vgpu *vgpu);
+> +
+>  #endif
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
+> index a81cf0f01e78..c470e185bc00 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> @@ -327,6 +327,7 @@ struct intel_gvt {
+>  		u32 *mocs_mmio_offset_list;
+>  		u32 mocs_mmio_offset_list_cnt;
+>  	} engine_mmio_list;
+> +	bool is_reg_whitelist_updated;
+> =20
+>  	struct dentry *debugfs_root;
+>  };
+> @@ -410,6 +411,9 @@ int intel_gvt_load_firmware(struct intel_gvt *gvt);
+>  #define vgpu_fence_base(vgpu) (vgpu->fence.base)
+>  #define vgpu_fence_sz(vgpu) (vgpu->fence.size)
+> =20
+> +/* ring context size i.e. the first 0x50 dwords*/
+> +#define RING_CTX_SIZE 320
+> +
+>  struct intel_vgpu_creation_params {
+>  	__u64 handle;
+>  	__u64 low_gm_sz;  /* in MB */
 > diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/v=
 gpu.c
-> index e49944fde333..cbe5931906e0 100644
+> index f6d7e33c7099..7fc4a3e9a560 100644
 > --- a/drivers/gpu/drm/i915/gvt/vgpu.c
 > +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-> @@ -437,10 +437,9 @@ static struct intel_vgpu *__intel_gvt_create_vgpu(st=
-ruct intel_gvt *gvt,
->  	if (ret)
->  		goto out_clean_sched_policy;
+> @@ -499,9 +499,11 @@ struct intel_vgpu *intel_gvt_create_vgpu(struct inte=
+l_gvt *gvt,
 > =20
-> -	if (IS_BROADWELL(dev_priv))
-> +	if (IS_BROADWELL(dev_priv) || IS_BROXTON(dev_priv))
->  		ret =3D intel_gvt_hypervisor_set_edid(vgpu, PORT_B);
-> -	/* FixMe: Re-enable APL/BXT once vfio_edid enabled */
-> -	else if (!IS_BROXTON(dev_priv))
-> +	else
->  		ret =3D intel_gvt_hypervisor_set_edid(vgpu, PORT_D);
->  	if (ret)
->  		goto out_clean_sched_policy;
+>  	mutex_lock(&gvt->lock);
+>  	vgpu =3D __intel_gvt_create_vgpu(gvt, &param);
+> -	if (!IS_ERR(vgpu))
+> +	if (!IS_ERR(vgpu)) {
+>  		/* calculate left instance change for types */
+>  		intel_gvt_update_vgpu_types(gvt);
+> +		intel_gvt_update_reg_whitelist(vgpu);
+
+Do we need to generate for vgpu create everytime? Suppose on same HW,
+init ctx should be same right?=20
+
+> +	}
+>  	mutex_unlock(&gvt->lock);
+> =20
+>  	return vgpu;
 > --=20
-> 2.29.2
+> 2.17.1
 >=20
 > _______________________________________________
 > intel-gvt-dev mailing list
@@ -262,19 +408,19 @@ ruct intel_gvt *gvt,
 
 $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---dMyqICaxQaaUjrCL
+--nEsDIrWrg+hrB7l1
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX8XWKQAKCRCxBBozTXgY
-J1KEAKCaUxDcAAZyTZAqG6cGTnKPgp+eYQCdG1ijb4AC+v4X2ek/yVynPKm+33M=
-=5yhq
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX8XYlwAKCRCxBBozTXgY
+J8pPAJ9gDMLlWSg+7Gj1Cvw0CFPAJR4WoQCfQh/4NWMvRA1Lvvm4IznOJmDk3CU=
+=l7of
 -----END PGP SIGNATURE-----
 
---dMyqICaxQaaUjrCL--
+--nEsDIrWrg+hrB7l1--
 
---===============0509541056==
+--===============1081723666==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -285,4 +431,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0509541056==--
+--===============1081723666==--
