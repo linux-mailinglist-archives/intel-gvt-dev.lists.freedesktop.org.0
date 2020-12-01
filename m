@@ -1,45 +1,34 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BEAE2C98B4
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Dec 2020 08:55:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D8AEA2C9E54
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Dec 2020 10:50:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9C3EB6E4B1;
-	Tue,  1 Dec 2020 07:55:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7623C6E4D2;
+	Tue,  1 Dec 2020 09:50:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4B11389D57
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  1 Dec 2020 07:55:32 +0000 (UTC)
-IronPort-SDR: 12Tb/XNhE1ovhCYZz3ouEFp8Ki2VvQNr0E3X5Rb/WcSTtJ7nmcXipmubJK3hIT30p5QCcdHg3z
- W8IxkYDlfu/Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9821"; a="169283631"
-X-IronPort-AV: E=Sophos;i="5.78,383,1599548400"; 
- d="asc'?scan'208";a="169283631"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Nov 2020 23:55:31 -0800
-IronPort-SDR: pxsb0CH2/umkS2RQR5tst96AWGAXjTgk69JYJ4v4WVtuOqmbP8mu8nMZ2+bCb5pt0LacOWjYa/
- /pe8FMsoPWQw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,383,1599548400"; 
- d="asc'?scan'208";a="372809116"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by FMSMGA003.fm.intel.com with ESMTP; 30 Nov 2020 23:55:30 -0800
-Date: Tue, 1 Dec 2020 15:40:29 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH 05/10] drm/i915/gvt: filter cmd "pipe-ctrl" in cmd_handler
-Message-ID: <20201201074029.GT16939@zhen-hp.sh.intel.com>
-References: <20201125003626.17806-1-yan.y.zhao@intel.com>
- <20201125003943.18081-1-yan.y.zhao@intel.com>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0AE586E4BA;
+ Tue,  1 Dec 2020 09:50:23 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 8C5F8AC65;
+ Tue,  1 Dec 2020 09:50:21 +0000 (UTC)
+To: Sam Ravnborg <sam@ravnborg.org>
+References: <20201124113824.19994-1-tzimmermann@suse.de>
+ <20201124113824.19994-10-tzimmermann@suse.de>
+ <20201124214208.GB93095@ravnborg.org>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH 09/15] drm/nouveau: Remove references to struct
+ drm_device.pdev
+Message-ID: <77dcf689-d22c-5ae8-8c46-10ce7a546a63@suse.de>
+Date: Tue, 1 Dec 2020 10:50:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <20201125003943.18081-1-yan.y.zhao@intel.com>
+In-Reply-To: <20201124214208.GB93095@ravnborg.org>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,87 +41,257 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Kevin Tian <kevin.tian@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Colin Xu <colin.xu@intel.com>
-Content-Type: multipart/mixed; boundary="===============0174248331=="
+Cc: airlied@linux.ie, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, amd-gfx@lists.freedesktop.org,
+ daniel@ffwll.ch, spice-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Ben Skeggs <bskeggs@redhat.com>
+Content-Type: multipart/mixed; boundary="===============0553548088=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0553548088==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="4bE8wtoD18K52eefsY2TD0VT1msAv6pGQ"
 
---===============0174248331==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="eWbcAUUbgrfSEG1c"
-Content-Disposition: inline
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--4bE8wtoD18K52eefsY2TD0VT1msAv6pGQ
+Content-Type: multipart/mixed; boundary="h9BtDHO1BkSllNSHbFLWYUa8dv8v2U8Rv";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: airlied@linux.ie, daniel@ffwll.ch, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, amd-gfx@lists.freedesktop.org,
+ spice-devel@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Ben Skeggs <bskeggs@redhat.com>
+Message-ID: <77dcf689-d22c-5ae8-8c46-10ce7a546a63@suse.de>
+Subject: Re: [PATCH 09/15] drm/nouveau: Remove references to struct
+ drm_device.pdev
+References: <20201124113824.19994-1-tzimmermann@suse.de>
+ <20201124113824.19994-10-tzimmermann@suse.de>
+ <20201124214208.GB93095@ravnborg.org>
+In-Reply-To: <20201124214208.GB93095@ravnborg.org>
 
-
---eWbcAUUbgrfSEG1c
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--h9BtDHO1BkSllNSHbFLWYUa8dv8v2U8Rv
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On 2020.11.25 08:39:43 +0800, Yan Zhao wrote:
-> "pipe-ctrl" is still a TODO. allow it here.
->=20
-> Cc: Colin Xu <colin.xu@intel.com>
-> Cc: Kevin Tian <kevin.tian@intel.com>
-> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/cmd_parser.c | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
-/gvt/cmd_parser.c
-> index f898c8b2064d..e9013b9f3344 100644
-> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> @@ -997,6 +997,11 @@ static int cmd_reg_handler(struct parser_exec_state =
-*s,
->  		return -EPERM;
->  	}
-> =20
-> +	if (!strncmp(cmd, "pipe_ctrl", 9)) {
-> +		//TODO
+Hi Sam
 
-Let's write more on what should be for TODO and use proper comment
-style /* ... */. So for pipe_ctrl, only thing to care in this case is
-LRI post operation, which is just like another LRI cmd, so should be
-applied with same check as in the last patch of this series.
-
-It'll be ideal if we can add this before merging the series, hopefully
-not much for extra effort.
-
-> +		return 0;
-> +	}
-> +
->  	if (is_cmd_update_pdps(offset, s) &&
->  	    cmd_pdp_mmio_update_handler(s, offset, index))
->  		return -EINVAL;
-> --=20
-> 2.17.1
+Am 24.11.20 um 22:42 schrieb Sam Ravnborg:
+> Hi Thomas.
 >=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+> On Tue, Nov 24, 2020 at 12:38:18PM +0100, Thomas Zimmermann wrote:
+>> Using struct drm_device.pdev is deprecated. Convert nouveau to struct
+>> drm_device.dev. No functional changes.
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> Cc: Ben Skeggs <bskeggs@redhat.com>
+>=20
+> Suggestion to an alternative implmentation below.
+>=20
+>> ---
+>>   drivers/gpu/drm/nouveau/dispnv04/arb.c      | 12 +++++++-----
+>>   drivers/gpu/drm/nouveau/dispnv04/disp.h     | 14 ++++++++------
+>>   drivers/gpu/drm/nouveau/dispnv04/hw.c       | 10 ++++++----
+>>   drivers/gpu/drm/nouveau/nouveau_abi16.c     |  7 ++++---
+>>   drivers/gpu/drm/nouveau/nouveau_acpi.c      |  2 +-
+>>   drivers/gpu/drm/nouveau/nouveau_bios.c      | 11 ++++++++---
+>>   drivers/gpu/drm/nouveau/nouveau_connector.c | 10 ++++++----
+>>   drivers/gpu/drm/nouveau/nouveau_drm.c       |  5 ++---
+>>   drivers/gpu/drm/nouveau/nouveau_fbcon.c     |  6 ++++--
+>>   drivers/gpu/drm/nouveau/nouveau_vga.c       | 20 ++++++++++++-------=
+-
+>>   10 files changed, 58 insertions(+), 39 deletions(-)
+>>
+>=20
+>> diff --git a/drivers/gpu/drm/nouveau/nouveau_bios.c b/drivers/gpu/drm/=
+nouveau/nouveau_bios.c
+>> index d204ea8a5618..7cc683b8dc7a 100644
+>> --- a/drivers/gpu/drm/nouveau/nouveau_bios.c
+>> +++ b/drivers/gpu/drm/nouveau/nouveau_bios.c
+>> @@ -110,6 +110,9 @@ static int call_lvds_manufacturer_script(struct dr=
+m_device *dev, struct dcb_outp
+>>   	struct nvbios *bios =3D &drm->vbios;
+>>   	uint8_t sub =3D bios->data[bios->fp.xlated_entry + script] + (bios-=
+>fp.link_c_increment && dcbent->or & DCB_OUTPUT_C ? 1 : 0);
+>>   	uint16_t scriptofs =3D ROM16(bios->data[bios->init_script_tbls_ptr =
++ sub * 2]);
+>> +#ifdef __powerpc__
+>> +	struct pci_dev *pdev =3D to_pci_dev(dev->dev);
+>> +#endif
+> Or
+> 	int device =3D 0;
+>>  =20
+>>   	if (!bios->fp.xlated_entry || !sub || !scriptofs)
+>>   		return -EINVAL;
+>> @@ -123,8 +126,8 @@ static int call_lvds_manufacturer_script(struct dr=
+m_device *dev, struct dcb_outp
+>>   #ifdef __powerpc__
+>>   	/* Powerbook specific quirks */
+> 	device =3D to_pci_dev(dev->dev)->device;
+> 	if (script =3D=3D LVDS_RESET && (device =3D=3D 0x0179 || device =3D=3D=
+ 0x0189 || device =3D=3D 0x0329))
+
+I see the point, but I'm trying to not change the existing=20
+implementation too much.
+
+>=20
+>>   	if (script =3D=3D LVDS_RESET &&
+>> -	    (dev->pdev->device =3D=3D 0x0179 || dev->pdev->device =3D=3D 0x0=
+189 ||
+>> -	     dev->pdev->device =3D=3D 0x0329))
+>> +	    (pdev->device =3D=3D 0x0179 || pdev->device =3D=3D 0x0189 ||
+>> +	     pdev->device =3D=3D 0x0329))
+>>   		nv_write_tmds(dev, dcbent->or, 0, 0x02, 0x72);
+>>   #endif
+>>  =20
+>=20
+>=20
+>> diff --git a/drivers/gpu/drm/nouveau/nouveau_fbcon.c b/drivers/gpu/drm=
+/nouveau/nouveau_fbcon.c
+>> index 24ec5339efb4..4fc0fa696461 100644
+>> --- a/drivers/gpu/drm/nouveau/nouveau_fbcon.c
+>> +++ b/drivers/gpu/drm/nouveau/nouveau_fbcon.c
+>> @@ -396,7 +396,9 @@ nouveau_fbcon_create(struct drm_fb_helper *helper,=
+
+>>   	NV_INFO(drm, "allocated %dx%d fb: 0x%llx, bo %p\n",
+>>   		fb->width, fb->height, nvbo->offset, nvbo);
+>>  =20
+>> -	vga_switcheroo_client_fb_set(dev->pdev, info);
+>> +	if (dev_is_pci(dev->dev))
+>> +		vga_switcheroo_client_fb_set(to_pci_dev(dev->dev), info);
+>> +
+> I cannot see why dev_is_pci() is needed here.
+> So I am obviously missing something :-(
+
+vga_switcheroo_client_fb_set() expects a PCI device. It's a bit of a=20
+stretch, but at least it is possible to pass NULL for non-PCI devices.=20
+Passing the upcasted dev->dev is just garbage.
+
+As the VGA switcheroo is only relevant for PCI devices, I added the=20
+branching to make this work reliably.
+
+Best regards
+Thomas
+
+>=20
+>>   	return 0;
+>>  =20
+>>   out_unlock:
+>> @@ -548,7 +550,7 @@ nouveau_fbcon_init(struct drm_device *dev)
+>>   	int ret;
+>>  =20
+>>   	if (!dev->mode_config.num_crtc ||
+>> -	    (dev->pdev->class >> 8) !=3D PCI_CLASS_DISPLAY_VGA)
+>> +	    (to_pci_dev(dev->dev)->class >> 8) !=3D PCI_CLASS_DISPLAY_VGA)
+>>   		return 0;
+>>  =20
+>>   	fbcon =3D kzalloc(sizeof(struct nouveau_fbdev), GFP_KERNEL);
+>> diff --git a/drivers/gpu/drm/nouveau/nouveau_vga.c b/drivers/gpu/drm/n=
+ouveau/nouveau_vga.c
+>> index c85dd8afa3c3..7c4b374b3eca 100644
+>> --- a/drivers/gpu/drm/nouveau/nouveau_vga.c
+>> +++ b/drivers/gpu/drm/nouveau/nouveau_vga.c
+>> @@ -87,18 +87,20 @@ nouveau_vga_init(struct nouveau_drm *drm)
+>>   {
+>>   	struct drm_device *dev =3D drm->dev;
+>>   	bool runtime =3D nouveau_pmops_runtime();
+>> +	struct pci_dev *pdev;
+>>  =20
+>>   	/* only relevant for PCI devices */
+>> -	if (!dev->pdev)
+>> +	if (!dev_is_pci(dev->dev))
+>>   		return;
+>> +	pdev =3D to_pci_dev(dev->dev);
+>>  =20
+>> -	vga_client_register(dev->pdev, dev, NULL, nouveau_vga_set_decode);
+>> +	vga_client_register(pdev, dev, NULL, nouveau_vga_set_decode);
+>>  =20
+>>   	/* don't register Thunderbolt eGPU with vga_switcheroo */
+>> -	if (pci_is_thunderbolt_attached(dev->pdev))
+>> +	if (pci_is_thunderbolt_attached(pdev))
+>>   		return;
+>>  =20
+>> -	vga_switcheroo_register_client(dev->pdev, &nouveau_switcheroo_ops, r=
+untime);
+>> +	vga_switcheroo_register_client(pdev, &nouveau_switcheroo_ops, runtim=
+e);
+>>  =20
+>>   	if (runtime && nouveau_is_v1_dsm() && !nouveau_is_optimus())
+>>   		vga_switcheroo_init_domain_pm_ops(drm->dev->dev, &drm->vga_pm_doma=
+in);
+>> @@ -109,17 +111,19 @@ nouveau_vga_fini(struct nouveau_drm *drm)
+>>   {
+>>   	struct drm_device *dev =3D drm->dev;
+>>   	bool runtime =3D nouveau_pmops_runtime();
+>> +	struct pci_dev *pdev;
+>>  =20
+>>   	/* only relevant for PCI devices */
+>> -	if (!dev->pdev)
+>> +	if (!dev_is_pci(dev->dev))
+>>   		return;
+>> +	pdev =3D to_pci_dev(dev->dev);
+>>  =20
+>> -	vga_client_register(dev->pdev, NULL, NULL, NULL);
+>> +	vga_client_register(pdev, NULL, NULL, NULL);
+>>  =20
+>> -	if (pci_is_thunderbolt_attached(dev->pdev))
+>> +	if (pci_is_thunderbolt_attached(pdev))
+>>   		return;
+>>  =20
+>> -	vga_switcheroo_unregister_client(dev->pdev);
+>> +	vga_switcheroo_unregister_client(pdev);
+>>   	if (runtime && nouveau_is_v1_dsm() && !nouveau_is_optimus())
+>>   		vga_switcheroo_fini_domain_pm_ops(drm->dev->dev);
+>>   }
+>> --=20
+>> 2.29.2
+>>
+>> _______________________________________________
+>> dri-devel mailing list
+>> dri-devel@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
 --=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
 
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---eWbcAUUbgrfSEG1c
-Content-Type: application/pgp-signature; name="signature.asc"
+--h9BtDHO1BkSllNSHbFLWYUa8dv8v2U8Rv--
+
+--4bE8wtoD18K52eefsY2TD0VT1msAv6pGQ
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX8XzaAAKCRCxBBozTXgY
-J6zEAJ4+qrSIzw5nndGaOQH/9j1VORymHwCaA4fccStVG/qcrLp8AQ9Ij2/ODTM=
-=LL8h
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAl/GEdsFAwAAAAAACgkQlh/E3EQov+Df
+kRAAvj2+LkBCXz/2aIbjZjTpvfqk5RKkEA3ePFiR6UttUmznYEPIJkPmdsqr2JNUU5YI85JJRvM7
+7/QvWO4KXVqYbbPAzFhdHqySRrSnWpV89jseDccMSnjcHEKc1cNj386s3YDWeJ3/pmAuysLnOU30
+bTdrdkKpYL4CvHWI6RQyGG/5D65TteLwDT6ZAXThOVthuraz2XvGwt2pOhVSiwX1mNfibm2lQ0G6
+7b7sv+5l5sKaq5uETZi4iW++TmdotLrd40VioW/dttTfBwtfiIFHZm2jcO8Kb0+WkpZ4JKEDPZT2
+nfxMeK2euCeehZYCWFz4xlDg3SiBAbTTB2uhasE7McPPA25P3MoR4d8Ivf237PbA1EVSGNuTshKU
+zc4S9Rnw6zyqD9lc5rlofsyDUrESgMGQlbneHb52dUwFxIcgfdvg3nitUSBGw9deFIRDd6Rjrbu+
++ns4Z223cVq+TEmRNSERvAxVwCDlSN2x7Q0U4P0MIBd/4cPKsmwOvjZlWlGMfpTKlfkhWyMVV0aZ
+mK6WZxRrV827KprLxdT9vSGLlPNEbYYOz1dqRsaRgtSk+XhplfGJwPBnsbPiUVt7NlOGmltFHFl8
+8+vR4ygf4RBTIO4Y23B8ba2NwuvqxMEo9asKO0hZ1IqPbQQYYRZnkqXtZtKMlIo7TUb41I8gNFHR
+Yc4=
+=91fY
 -----END PGP SIGNATURE-----
 
---eWbcAUUbgrfSEG1c--
+--4bE8wtoD18K52eefsY2TD0VT1msAv6pGQ--
 
---===============0174248331==
+--===============0553548088==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -143,4 +302,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0174248331==--
+--===============0553548088==--
