@@ -1,105 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FFB92C8F8D
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Nov 2020 21:59:58 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 688882C96C4
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Dec 2020 06:11:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 10CBC89DDD;
-	Mon, 30 Nov 2020 20:59:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2E3086E423;
+	Tue,  1 Dec 2020 05:11:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam12on2062.outbound.protection.outlook.com [40.107.237.62])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5B31689CF2;
- Mon, 30 Nov 2020 20:59:54 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mbEACLEvQMLiGLZzy4V+7A3TcecZ8i7cBU/sriWaTVFfdeALnSq0N0YSbwygMWQI1cSbKU7Jtm/9sjC+MAEW/QxojggYNytdJgzKqprP0v9ggxp6iVtqR4ddpidKHUQmzbW3HYfFT1CU8Tli8NGq9P5X7X+kcY7II+Mf1kiNB/my11Ib9ABm3kgEb4+g0280pWW9AemCB1yDVMMX5ShiqbYof0wHoA8nwOlCbGne27hc2jjL83HvXFpLdaNoyGX/HevMbjXbFS3igpNO+QRpnlGZYZ4QiBZPcm44fFNS/AwNVV7SthupY9FK3hR98TS5vyAEkMsCNXKqKm+Q1iEGSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sU8qXTDuZDWl8ptwgkY0Wk8RC9Ca0AQO3aOswrUCdGo=;
- b=LmYdxr/Cff0BQNRrgLfbab1lnPoQn9MM+1u2syujdjDvJ5fAkecWHbgUgLPiCcafteqTmMpyJp/6rDM9r0Z+qMcmXxmiUnLeOnGxyvG33VQbbvbwxxxqce3SF2OzBPaLusuTEqxW9VbLRe/Cze2IjX7pVn3xn2ZuRLX7bzsuXO/hje1DHCcDy/0HY+xIph83Rcsen+IUEa7qPmp8dTnOQYCi3YlgeM9LxIfwVEKllOlknWXImsQQUTZOOp/xu2mPaduFW8qBVM7i4+TKbPkLH88YO4scuaIKYfUQyrzMdzAuTXLykiuv6f6kpFWaorrDzvkvqCP7ADM2qu/aEjcAMg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vmware.com; dmarc=pass action=none header.from=vmware.com;
- dkim=pass header.d=vmware.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vmware.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sU8qXTDuZDWl8ptwgkY0Wk8RC9Ca0AQO3aOswrUCdGo=;
- b=vDizNmFwWwGnFYj3K/RfUogG1E19b1vb7+r/6k9CVOrKPM4o1UlOUJ3K0B7VEPuyHSyt7s/zz4MXCVdW/ogyIotVW6cEPHA8kKmzZt6NviXTMnvGxhNq5915xSHS9exgTkkoFkzQRYHpBLMErzADN5jVnVKVAc+fhMpbYGYYmqo=
-Received: from BL0PR05MB5186.namprd05.prod.outlook.com (2603:10b6:208:8f::18)
- by BL0PR05MB5588.namprd05.prod.outlook.com (2603:10b6:208:6e::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3632.6; Mon, 30 Nov
- 2020 20:59:52 +0000
-Received: from BL0PR05MB5186.namprd05.prod.outlook.com
- ([fe80::59ed:18ca:252d:72f6]) by BL0PR05MB5186.namprd05.prod.outlook.com
- ([fe80::59ed:18ca:252d:72f6%7]) with mapi id 15.20.3632.016; Mon, 30 Nov 2020
- 20:59:52 +0000
-From: Zack Rusin <zackr@vmware.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH 14/15] drm/vmwgfx: Remove references to struct
- drm_device.pdev
-Thread-Topic: [PATCH 14/15] drm/vmwgfx: Remove references to struct
- drm_device.pdev
-Thread-Index: AQHWwlaG5WlZT6CPxU6T7GsrbIaTjanhMtCA
-Date: Mon, 30 Nov 2020 20:59:52 +0000
-Message-ID: <31E75B1A-AAC0-49E3-985E-2DF5B59CD883@vmware.com>
-References: <20201124113824.19994-1-tzimmermann@suse.de>
- <20201124113824.19994-15-tzimmermann@suse.de>
-In-Reply-To: <20201124113824.19994-15-tzimmermann@suse.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Apple Mail (2.3608.120.23.2.4)
-authentication-results: suse.de; dkim=none (message not signed)
- header.d=none;suse.de; dmarc=none action=none header.from=vmware.com;
-x-originating-ip: [71.175.59.246]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1f0214c3-2da1-4d3b-3b52-08d89572e1e8
-x-ms-traffictypediagnostic: BL0PR05MB5588:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BL0PR05MB5588E4B29C9638548FE9B5D9CEF50@BL0PR05MB5588.namprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:849;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iN0W7nqmJ+GRtCOPNL2IJ1GerLvIBkK+KUyM8yaOY7Ecj0rfJTt8WpPKVuEXgVZyJyIyxMxD8joOgrYmYSp3w3+ngJ7a9KXXi3tCmXQuHk03llmnkVG68Bvw/Qr4IYcqxr3cMSbJ7BfPrHlImI8/7RPYAUveQ70CNwSVnRS/vB60JToUo+pPybHt5wYi7g7OpFoZDBabiL3TQOKdjSIbMiEKZtxA5UeYUX5Npd9xbDIuFlX1bw91Y+AtCCcdSJj1ghbKT3q3GYrcJNx8ewQJm5K9HTJmKzSh6OZlRtLqY4IX4GSlXrJ+DyNk61s9Rvmt/Ik0kBCEhEmgpT36Eip4QA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR05MB5186.namprd05.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(346002)(376002)(136003)(39860400002)(396003)(8676002)(8936002)(6512007)(5660300002)(2906002)(6486002)(2616005)(36756003)(4744005)(66446008)(316002)(54906003)(66556008)(76116006)(64756008)(71200400001)(66476007)(26005)(33656002)(66946007)(186003)(478600001)(7416002)(86362001)(4326008)(6506007)(6916009)(53546011);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?PYtjGb518O0ip1gT/S8MkSKTcfym9HafySjrLzNtj/K9p29AtHi22Nz9bLgs?=
- =?us-ascii?Q?Xs2tNeuqgD0+AZbNAfkhGKpCvcLYG/h3Yuu16YOAy+/0bHMQyUI+D7Owa1Cz?=
- =?us-ascii?Q?DN+wygOXlXWzo/srHCn7P8YBPVscfuhkF2UkLsVXGFnQnfJyJeoHQGEUzWIf?=
- =?us-ascii?Q?+aLOlAaL7+9eoXnjMKE6AYzD1B5+3x5z8Ar413CU1RxpoGbXyHxaJ6KPIo92?=
- =?us-ascii?Q?RY2hok4hC1HkyTK9W0O1+Eee+8GwC3po3xi8t5qv5brwQJP44gEthr3Nr/an?=
- =?us-ascii?Q?nB4j1tjpPHTMdBuVvxPfoEWscQ8rd/3Zs5slbJbvpLF/cZCHfQWWZvpboYm6?=
- =?us-ascii?Q?HGCLNymIy+xrTHdfQ1fugkxP3Ylg2LF0bvo7pXCyD4Ak3GRbfS6ece4N0sNC?=
- =?us-ascii?Q?mqBVuWqQsLM7B9BWjKzJ97s/+h94ZUw3+0F+8d6hZYP70fVjiCGxCYntRTSH?=
- =?us-ascii?Q?9dMu8UrmcVGmzd9jZVOAU1K2Q5QJrC2a8c6NUPstyrhY7KPal+3DeKWuk33J?=
- =?us-ascii?Q?j1nIj+TGjgIzwSeiym25zWAPtkUfYtTesb3yXkhG/LiO2X1THcS6OVQ0BsXO?=
- =?us-ascii?Q?AUSGci/LQELrlURpnXOKsP4QomhItf3UoUqiYoXcEbRtL2J8ksEpRptm3Ptg?=
- =?us-ascii?Q?zA4xcgZB22emHi0YiDy+0KKHF83FpIZp42Dd0TEmxINRehIov+EWWLrLvBvB?=
- =?us-ascii?Q?ryjBRbRIZ3sLUF8tLc1C11D+JBMkFlcx65hrvwyUXPidMLD+u8IZoDntwLGh?=
- =?us-ascii?Q?Jd3GAt7ml5msPPHCu2Knoq+Kn44Ij34vjpIQylyUC+7ISL7Oz6EiHA21oGv0?=
- =?us-ascii?Q?cI8mHctWACpva3XBaWptAIcZtstO7r/tW7Hj8l9pEn/g1Et83OtFMLaxLX/p?=
- =?us-ascii?Q?wQVucnUd4pc1X/ADjMCpT1gzKmnbuE71ueWjTUNWRa/WYgHEe3ogxTUtR+FZ?=
- =?us-ascii?Q?d6KkxBtaG4W9edqAUHojYKYTjPyI8MEoOOWfqDhXJd0ChFqAxclLAqu4/TTo?=
- =?us-ascii?Q?swvr?=
-Content-ID: <DA00B6650FD7A948A321344693A5973A@namprd05.prod.outlook.com>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6160C6E423
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  1 Dec 2020 05:11:31 +0000 (UTC)
+IronPort-SDR: CxVNcxh/4QqnAPN2oZ57v4wqJZ4PDHEvONyzeogvAP6HYuFEzZhC1YStz5BWMZHddU5+H/aizC
+ f9ilaHs0vPXA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9821"; a="236892633"
+X-IronPort-AV: E=Sophos;i="5.78,383,1599548400"; 
+ d="asc'?scan'208";a="236892633"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Nov 2020 21:11:30 -0800
+IronPort-SDR: QTAEjZtsW2df7Hb6Fw4YHesly0EKJ8xA97wv6tvT9MbTBrloHn9jh8Ced+ahNIUQXkgVRAsmjY
+ 0mH+ealIss0w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,383,1599548400"; 
+ d="asc'?scan'208";a="364549679"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga004.fm.intel.com with ESMTP; 30 Nov 2020 21:11:29 -0800
+Date: Tue, 1 Dec 2020 12:56:28 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Colin Xu <colin.xu@intel.com>
+Subject: Re: [PATCH 1/2] drm/i915/gvt: Get accurate vGPU virtual display
+ refresh rate from vreg
+Message-ID: <20201201045628.GN16939@zhen-hp.sh.intel.com>
+References: <20201109080011.813032-1-colin.xu@intel.com>
 MIME-Version: 1.0
-X-OriginatorOrg: vmware.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR05MB5186.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1f0214c3-2da1-4d3b-3b52-08d89572e1e8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Nov 2020 20:59:52.0089 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: feIN9tRtxBM3IDeKho3X1g0E3JzY61Bh/tu1Qw5z1F1LYdR1Qb/YLWYFjDQuAm1vV1hcvbFSS83OXdj88UXK9Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR05MB5588
+In-Reply-To: <20201109080011.813032-1-colin.xu@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,41 +52,274 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "airlied@linux.ie" <airlied@linux.ie>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Roland Scheidegger <sroland@vmware.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "spice-devel@lists.freedesktop.org" <spice-devel@lists.freedesktop.org>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============1032209987=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
+--===============1032209987==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="bGR76rFJjkSxVeRa"
+Content-Disposition: inline
 
-> On Nov 24, 2020, at 06:38, Thomas Zimmermann <tzimmermann@suse.de> wrote:
-> 
-> Using struct drm_device.pdev is deprecated. Convert vmwgfx to struct
-> drm_device.dev. No functional changes.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Roland Scheidegger <sroland@vmware.com>
+
+--bGR76rFJjkSxVeRa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2020.11.09 16:00:11 +0800, Colin Xu wrote:
+> Guest OS builds up its timing mode list based on the virtual EDID as
+> simulated by GVT. However since there are several timings supported in
+> the virtual EDID, and each timing can also support several modes
+> (resolution and refresh rate), current emulated vblank peroid (16ms)
+> may not always be correct and could lead to miss-sync behavior in guest.
+>=20
+> Guest driver will setup new resolution and program vregs accordingly and
+> it should always follows GEN PRM. Based on the simulated display regs by
+> GVT, it's safe to decode the actual refresh rate using by guest from
+> vreg only.
+
+yeah, that's right.
+
+>=20
+> Current implementation only enables PIPE_A and PIPE_A is always tied to
+> TRANSCODER_A in HW. GVT may simulate DP monitor on PORT_B or PORT_D
+> based on the caller. So we can find out which DPLL is used by PROT_x
+
+PORT_X
+
+> which connected to TRANSCODER_A and calculate the DP bit rate from the
+> DPLL frequency. Then DP stream clock (pixel clock) can be calculated
+> from DP link M/N and DP bit rate. Finally, get the refresh rate from
+> pixel clock, H total and V total.
+>=20
+> Refer to PRM for GEN display and VESA timing standard for more details.
+>=20
+> Signed-off-by: Colin Xu <colin.xu@intel.com>
 > ---
-> drivers/gpu/drm/vmwgfx/vmwgfx_cmdbuf.c |  8 ++++----
-> drivers/gpu/drm/vmwgfx/vmwgfx_drv.c    | 27 +++++++++++++-------------
-> drivers/gpu/drm/vmwgfx/vmwgfx_fb.c     |  2 +-
 
-Reviewed-by: Zack Rusin <zackr@vmware.com>
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-z
+>  drivers/gpu/drm/i915/gvt/display.c  |   2 +
+>  drivers/gpu/drm/i915/gvt/display.h  |   2 +
+>  drivers/gpu/drm/i915/gvt/gvt.h      |   1 +
+>  drivers/gpu/drm/i915/gvt/handlers.c | 107 +++++++++++++++++++++++++++-
+>  4 files changed, 110 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gv=
+t/display.c
+> index 5b5c71a0b4af..bc208355662a 100644
+> --- a/drivers/gpu/drm/i915/gvt/display.c
+> +++ b/drivers/gpu/drm/i915/gvt/display.c
+> @@ -389,6 +389,8 @@ static int setup_virtual_dp_monitor(struct intel_vgpu=
+ *vgpu, int port_num,
+>  	port->dpcd->data[DPCD_SINK_COUNT] =3D 0x1;
+>  	port->type =3D type;
+>  	port->id =3D resolution;
+> +	port->vrefresh_k =3D 60 * MSEC_PER_SEC;
+> +	vgpu->display.port_num =3D port_num;
+> =20
+>  	emulate_monitor_status_change(vgpu);
+> =20
+> diff --git a/drivers/gpu/drm/i915/gvt/display.h b/drivers/gpu/drm/i915/gv=
+t/display.h
+> index b59b34046e1e..17e83bf5826c 100644
+> --- a/drivers/gpu/drm/i915/gvt/display.h
+> +++ b/drivers/gpu/drm/i915/gvt/display.h
+> @@ -164,6 +164,8 @@ struct intel_vgpu_port {
+>  	struct intel_vgpu_dpcd_data *dpcd;
+>  	int type;
+>  	enum intel_vgpu_edid id;
+> +	/* x1000 to get accurate 59.94, 24.976, 29.94, etc. in timing std. */
+> +	u32 vrefresh_k;
+>  };
+> =20
+>  static inline char *vgpu_edid_str(enum intel_vgpu_edid id)
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
+> index a81cf0f01e78..2b75b3b3ea12 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> @@ -129,6 +129,7 @@ struct intel_vgpu_display {
+>  	struct intel_vgpu_i2c_edid i2c_edid;
+>  	struct intel_vgpu_port ports[I915_MAX_PORTS];
+>  	struct intel_vgpu_sbi sbi;
+> +	enum port port_num;
+>  };
+> =20
+>  struct vgpu_sched_ctl {
+> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/g=
+vt/handlers.c
+> index ce93079cf933..ec88a6329329 100644
+> --- a/drivers/gpu/drm/i915/gvt/handlers.c
+> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> @@ -443,6 +443,107 @@ static int dpy_reg_mmio_read(struct intel_vgpu *vgp=
+u, unsigned int offset,
+>  	return 0;
+>  }
+> =20
+> +/*
+> +* Only PIPE_A is enabled in current vGPU display and PIPE_A is tied to
+> +*   TRANSCODER_A in HW. DDI/PORT could be PORT_x depends on
+> +*   setup_virtual_dp_monitor().
+> +* emulate_monitor_status_change() set up DPLL0 for PORT_x as the initial=
+ enabled
+> +*   DPLL. Later guest driver may setup a different DPLLx when setting mo=
+de.
+> +* So the correct sequence to find DP stream clock is:
+> +*   Check TRANS_DDI_FUNC_CTL on TRANSCODER_A to get PORT_x.
+> +*   Check DPLL_CTRL2 at PORT_x to find out the selected ON DPLLx.
+> +*   Check DPLLx to get PLL frequency and DP bitrate.
+> +*     DP bitrate =3D DPLL output frequency * 2.
+> +* Then Refresh rate can be calcuated by:
+> +*   Pixel clock =3D h_total * v_total * refresh_rate
+> +*   stream clock =3D Pixel clock
+> +*   Link M/N =3D strm_clk / ls_clk
+> +*/
+> +static void vgpu_update_refresh_rate(struct intel_vgpu *vgpu)
+> +{
+> +	struct drm_i915_private *dev_priv =3D vgpu->gvt->gt->i915;
+> +	enum port port;
+> +	enum intel_dpll_id dpll_id =3D DPLL_ID_SKL_DPLL0;
+> +	u32 dp_br, link_m, link_n, htotal, vtotal, vrefresh_k;
+> +	u64 pixel_clk;
+> +
+> +	/* Find DDI/PORT assigned to TRANSCODER_A, expect B or D */
+> +	port =3D (vgpu_vreg_t(vgpu, TRANS_DDI_FUNC_CTL(TRANSCODER_A)) &
+> +		TRANS_DDI_PORT_MASK) >> TRANS_DDI_PORT_SHIFT;
+> +	if (port !=3D PORT_B && port !=3D PORT_D) {
+> +		gvt_dbg_dpy("vgpu-%d unsupported PORT_%c\n",
+> +			    vgpu->id, port_name(port));
+> +		return;
+> +	}
+> +
+> +	/* Find the enabled DPLL for the DDI/PORT */
+> +	if (!(vgpu_vreg_t(vgpu, DPLL_CTRL2) & DPLL_CTRL2_DDI_CLK_OFF(port)) &&
+> +	    (vgpu_vreg_t(vgpu, DPLL_CTRL2) & DPLL_CTRL2_DDI_SEL_OVERRIDE(port))=
+) {
+> +		dpll_id +=3D (vgpu_vreg_t(vgpu, DPLL_CTRL2) &
+> +			DPLL_CTRL2_DDI_CLK_SEL_MASK(port)) >>
+> +			DPLL_CTRL2_DDI_CLK_SEL_SHIFT(port);
+> +	} else {
+> +		gvt_dbg_dpy("vgpu-%d DPLL for PORT_%c isn't turned on\n",
+> +			    vgpu->id, port_name(port));
+> +		return;
+> +	}
+> +
+> +	/* Find PLL output frequency from correct DPLL, and get bir rate */
+> +	switch ((vgpu_vreg_t(vgpu, DPLL_CTRL1) &
+> +		DPLL_CTRL1_LINK_RATE_MASK(dpll_id)) >>
+> +		DPLL_CTRL1_LINK_RATE_SHIFT(dpll_id)) {
+> +		case DPLL_CTRL1_LINK_RATE_810:
+> +			dp_br =3D 81000 * 2;
+> +			break;
+> +		case DPLL_CTRL1_LINK_RATE_1080:
+> +			dp_br =3D 108000 *2;
+> +			break;
+> +		case DPLL_CTRL1_LINK_RATE_1350:
+> +			dp_br =3D 135000 * 2;
+> +			break;
+> +		case DPLL_CTRL1_LINK_RATE_1620:
+> +			dp_br =3D 162000 * 2;
+> +			break;
+> +		case DPLL_CTRL1_LINK_RATE_2160:
+> +			dp_br =3D 216000 * 2;
+> +			break;
+> +		case DPLL_CTRL1_LINK_RATE_2700:
+> +			dp_br =3D 270000 * 2;
+> +			break;
+> +		default:
+> +			dp_br =3D 0;
+> +			gvt_dbg_dpy("vgpu-%d fail to get DPLL-%d freq\n",
+> +				    vgpu->id, dpll_id);
+> +			return;
+> +	}
+> +
+> +	/* Get DP link symbol clock M/N */
+> +	link_m =3D vgpu_vreg_t(vgpu, PIPE_LINK_M1(TRANSCODER_A));
+> +	link_n =3D vgpu_vreg_t(vgpu, PIPE_LINK_N1(TRANSCODER_A));
+> +
+> +	/* Get H/V total from transcoder timing */
+> +	htotal =3D (vgpu_vreg_t(vgpu, HTOTAL(TRANSCODER_A)) >> TRANS_HTOTAL_SHI=
+FT) + 1;
+> +	vtotal =3D (vgpu_vreg_t(vgpu, VTOTAL(TRANSCODER_A)) >> TRANS_VTOTAL_SHI=
+FT) + 1;
+> +
+> +	if (link_n && htotal && vtotal) {
+> +		u32 *old =3D &(intel_vgpu_port(vgpu, vgpu->display.port_num)->vrefresh=
+_k);
+> +
+> +		/* Calcuate pixel clock by (ls_clk * M / N) */
+> +		pixel_clk =3D div_u64(mul_u32_u32(link_m, dp_br), link_n);
+> +		pixel_clk *=3D MSEC_PER_SEC;
+> +
+> +		/* Calcuate refresh rate by (pixel_clk / (h_total * v_total)) */
+> +		vrefresh_k =3D DIV64_U64_ROUND_CLOSEST(pixel_clk,
+> +			div64_u64(mul_u32_u32(htotal, vtotal), MSEC_PER_SEC));
+> +
+> +		if (*old !=3D vrefresh_k)
+> +			*old =3D vrefresh_k;
+> +
+> +		gvt_dbg_dpy("vgpu-%d PIPE_%c refresh rate updated to %d\n",
+> +			    vgpu->id, pipe_name(PIPE_A), vrefresh_k);
+> +	}
+> +}
+> +
+>  static int pipeconf_mmio_write(struct intel_vgpu *vgpu, unsigned int off=
+set,
+>  		void *p_data, unsigned int bytes)
+>  {
+> @@ -451,9 +552,11 @@ static int pipeconf_mmio_write(struct intel_vgpu *vg=
+pu, unsigned int offset,
+>  	write_vreg(vgpu, offset, p_data, bytes);
+>  	data =3D vgpu_vreg(vgpu, offset);
+> =20
+> -	if (data & PIPECONF_ENABLE)
+> +	if (data & PIPECONF_ENABLE) {
+>  		vgpu_vreg(vgpu, offset) |=3D I965_PIPECONF_ACTIVE;
+> -	else
+> +		vgpu_update_refresh_rate(vgpu);
+> +
+> +	} else
+>  		vgpu_vreg(vgpu, offset) &=3D ~I965_PIPECONF_ACTIVE;
+>  	/* vgpu_lock already hold by emulate mmio r/w */
+>  	mutex_unlock(&vgpu->vgpu_lock);
+> --=20
+> 2.29.2
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--=20
+
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+
+--bGR76rFJjkSxVeRa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX8XM9wAKCRCxBBozTXgY
+Jw4VAJ0XKcOcajQ1ponAzFOqTFEHODNMZgCeL9Y6+P/1DUJ2iku4CEjVNDbL+Js=
+=0VRT
+-----END PGP SIGNATURE-----
+
+--bGR76rFJjkSxVeRa--
+
+--===============1032209987==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1032209987==--
