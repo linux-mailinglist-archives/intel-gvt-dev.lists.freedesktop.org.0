@@ -1,55 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C0BB2CB674
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 09:12:38 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 626B12CB67B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 09:12:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 177726EA0A;
-	Wed,  2 Dec 2020 08:12:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 054B36EA0A;
+	Wed,  2 Dec 2020 08:12:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A00CB6EA0B
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B429C6EA0A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  2 Dec 2020 08:12:35 +0000 (UTC)
+ Wed,  2 Dec 2020 08:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606896754;
+ s=mimecast20190719; t=1606896772;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=H0FfFn+Ish8OF5tVu3W/ZC0N4Vo8H/vl/5w3ii7Oo/0=;
- b=DuhejzYtRZs28BCD4MftQze8/3k2DbgO6t8nutmbwWm9ZSDsnBUvfhU9h+Gp31DDKC5Ci7
- 0zkhHtBAgGOGKjv8BHfl/BIZw2Is0SB0p/OH60imnjuut1mHiioXXxd5DaPr2zzV2omu6i
- WEBRLSRL8OGrgVDxXLAD1UXXB6uaWaI=
+ bh=PPa4eUNrDtusnWBBRSdfXCYmER2XfZC0rVkhJlM/Fyk=;
+ b=e8J1alxjcAr5Bum5LZXZjnMSBgB7rJYNDHqkRi4h4a65UUV0KbXgLcTOnsrU35ILQAo9d2
+ geMs0sYUWUGbw5zIxCzWHBCoIuswb5Fj+I+9TXkDXqKxs0CGCEi44kkAnEep8XpLj226k6
+ qTEkfCPzh5Y5XtiZDTSE7Bf4nZTASCw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-184-4B4xtEiBPJ6lRcXmFX0iIQ-1; Wed, 02 Dec 2020 03:11:50 -0500
-X-MC-Unique: 4B4xtEiBPJ6lRcXmFX0iIQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-41-cczOLAa6OV6vGT9Iwek0EA-1; Wed, 02 Dec 2020 03:12:11 -0500
+X-MC-Unique: cczOLAa6OV6vGT9Iwek0EA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C68ED1006C91;
- Wed,  2 Dec 2020 08:11:48 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 298F31006C81;
+ Wed,  2 Dec 2020 08:12:09 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-94.ams2.redhat.com
  [10.36.112.94])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 78CF710023AE;
- Wed,  2 Dec 2020 08:11:48 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DAD0D6085A;
+ Wed,  2 Dec 2020 08:12:08 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 6CEF416E31; Wed,  2 Dec 2020 09:11:47 +0100 (CET)
-Date: Wed, 2 Dec 2020 09:11:47 +0100
+ id DA41716E31; Wed,  2 Dec 2020 09:12:07 +0100 (CET)
+Date: Wed, 2 Dec 2020 09:12:07 +0100
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v2 14/20] drm/qxl: Remove references to struct
+Subject: Re: [PATCH v2 18/20] drm/virtgpu: Remove references to struct
  drm_device.pdev
-Message-ID: <20201202081147.fhcba7qz4drffaud@sirius.home.kraxel.org>
+Message-ID: <20201202081207.zfq5kdgj2lv44qu2@sirius.home.kraxel.org>
 References: <20201201103542.2182-1-tzimmermann@suse.de>
- <20201201103542.2182-15-tzimmermann@suse.de>
+ <20201201103542.2182-19-tzimmermann@suse.de>
 MIME-Version: 1.0
-In-Reply-To: <20201201103542.2182-15-tzimmermann@suse.de>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20201201103542.2182-19-tzimmermann@suse.de>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -77,8 +77,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Dec 01, 2020 at 11:35:36AM +0100, Thomas Zimmermann wrote:
-> Using struct drm_device.pdev is deprecated. Convert qxl to struct
+On Tue, Dec 01, 2020 at 11:35:40AM +0100, Thomas Zimmermann wrote:
+> Using struct drm_device.pdev is deprecated. Convert virtgpu to struct
 > drm_device.dev. No functional changes.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
