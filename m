@@ -1,37 +1,113 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A67F62CBF98
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 15:28:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1145A2CC0FC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 16:37:08 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 180716EA47;
-	Wed,  2 Dec 2020 14:28:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 259546EA5F;
+	Wed,  2 Dec 2020 15:37:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E4B826EA36;
- Wed,  2 Dec 2020 14:28:30 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 7AB7BAD5C;
- Wed,  2 Dec 2020 14:28:29 +0000 (UTC)
-Subject: Re: [PATCH v2 01/20] drm/amdgpu: Fix trailing whitespaces
-To: Alex Deucher <alexdeucher@gmail.com>
-References: <20201201103542.2182-1-tzimmermann@suse.de>
- <20201201103542.2182-2-tzimmermann@suse.de>
- <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
- <63150504-fda0-48fd-9ecd-fb19ea0ae9d7@suse.de>
- <997ad04d-2acb-1dfb-0733-78f79a45b453@amd.com>
- <99ce8db3-a53f-7432-6e05-428c414174a2@suse.de>
- <CADnq5_O6X_kbdT8ZTzL1P35wgauVNc77voWf97LogDJXia5VTg@mail.gmail.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <6d286f72-6669-9027-97d9-7981beb0240b@suse.de>
-Date: Wed, 2 Dec 2020 15:28:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com
+ (mail-eopbgr770087.outbound.protection.outlook.com [40.107.77.87])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 14E686EA55;
+ Wed,  2 Dec 2020 15:37:03 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=huNvjHwrCtksz+aEfh3e2VsJo7o3eCQheejXtCTDXm14yPt8897+SemsNcnAis9IIZ/EmL5OcdXwtmU5aaoKactC5jFq03zctW7uBbUUD2Cu7fq8s+TR/kh81boQZzVeyttiwsqfRkp4vl72bctqVDqZgF1BlXLZeYW1weJcoZxu/Orb9ARaFkK4FEjopqzI1srFCnMYnJERDw5MGX+1o81aDNRYoPfV0oBmyxgrElucl0FuVcADYW7NewB+j73igwh2WiZdbZUsFdzzrY8GTOFid8PAuuJq83BOM34GAeDEhAH1veAjabzXHYPGS3zopzeArXZT0BX37obPbRoy6A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oJq696j4BYP+BlyoYyjJOTH7x2Ot+IxjX+IKYGdEtFg=;
+ b=PeT88Ne4DrrE2G1yu/zhvdvusUeTskKU9IIqkSnV0wnGJDqfT1A1jfFmsNg96gzizdXmF5Zb7Y6mFSWdQq0I+Lav+SDA5qHFV5dvnEWuZ87IiJmK5PXiqsyryzn+OF+xO6bYyxJz1xvWSskS78O/8DFdXLwQQOxhI2qlSjW6SbTF63kWDThjl85BBg0uG+IilgRzMnqxU7VdN+2hcjTsSUh8hqN/IRfrxXox+rpRqX5YtgQad8815sOoxIR50kjvnwgGZ5O7lyXC0GOBXaNwllsY5WhV1DzqXA1hYT2VlV4kYLVveCiGSJdWGDkAKGt3dxhXDtqV79YL+CwPgq3ZKg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vmware.com; dmarc=pass action=none header.from=vmware.com;
+ dkim=pass header.d=vmware.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vmware.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oJq696j4BYP+BlyoYyjJOTH7x2Ot+IxjX+IKYGdEtFg=;
+ b=bO96a5FGYeHF9YkWCQiUeu6A+8IeR0atHxrMlLFYf170CdzS/JNaqwyqpNFFLxJQJ+OZ4VYQyiqGW/K9iZTedRdB3Pp7Y4NqSe9AazSyWLbXR8M5AMVs4wnEYxRse6gDMd7HOLSLO+4dNyz2FJJ8Rgy81m+YFI+B6MjZt2uakrw=
+Received: from BL0PR05MB5186.namprd05.prod.outlook.com (2603:10b6:208:8f::18)
+ by MN2PR05MB6975.namprd05.prod.outlook.com (2603:10b6:208:18d::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3632.9; Wed, 2 Dec
+ 2020 15:37:01 +0000
+Received: from BL0PR05MB5186.namprd05.prod.outlook.com
+ ([fe80::59ed:18ca:252d:72f6]) by BL0PR05MB5186.namprd05.prod.outlook.com
+ ([fe80::59ed:18ca:252d:72f6%7]) with mapi id 15.20.3654.005; Wed, 2 Dec 2020
+ 15:37:00 +0000
+From: Zack Rusin <zackr@vmware.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH 14/15] drm/vmwgfx: Remove references to struct
+ drm_device.pdev
+Thread-Topic: [PATCH 14/15] drm/vmwgfx: Remove references to struct
+ drm_device.pdev
+Thread-Index: AQHWwlaG5WlZT6CPxU6T7GsrbIaTjanhMtCAgAJLGYCAAGvzgIAAE2oA
+Date: Wed, 2 Dec 2020 15:37:00 +0000
+Message-ID: <FBC4840D-C1A8-4492-9E2E-D31E00B8D61A@vmware.com>
+References: <20201124113824.19994-1-tzimmermann@suse.de>
+ <20201124113824.19994-15-tzimmermann@suse.de>
+ <31E75B1A-AAC0-49E3-985E-2DF5B59CD883@vmware.com>
+ <e8102216-edd0-bec3-79af-3925e9668e95@suse.de>
+ <d43d06e6-d13c-ef9b-b372-8d30d9494417@suse.de>
+In-Reply-To: <d43d06e6-d13c-ef9b-b372-8d30d9494417@suse.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Apple Mail (2.3608.120.23.2.4)
+authentication-results: suse.de; dkim=none (message not signed)
+ header.d=none;suse.de; dmarc=none action=none header.from=vmware.com;
+x-originating-ip: [71.175.59.246]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3780aa26-fa89-4224-6689-08d896d81c85
+x-ms-traffictypediagnostic: MN2PR05MB6975:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MN2PR05MB6975C675C3B17C917C7CC5D5CEF30@MN2PR05MB6975.namprd05.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: fzyH1Yk6Aoe86Te7X1J5YfyUi3xSTQCBn22Js1TpomGa8U64JHe7blPHoe+dsx4PB1D7TNdHclNNSLdAi9lHTT4gRq7+8bNolFr1em2uWEwNqO9NTdtUodJNvh8lSYeVrToraSx+gyUlK6lUh5IVonHrzD1Rts8gP2i2bItp5Nmi6rX4M3fkY6yflsA55NF0R3GgPOHj0LL5JkkYISOJ9wFrHbWjSPODPK58m1+U/IixXbvW8R4a/ybsrJBC5UVNIkaqmZPnfjJTOSEyITIjHMPcQ2ljFvyMFsS4QGY41/ZfsuQGzr6IsTDe6Wcx9jaAG4hGFAFTphxLcu3DgC+3R+UpNsg1Tqy423f4EC8HD1iwTKCBKctjdnkaz8r+6u+k
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR05MB5186.namprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(376002)(39860400002)(366004)(396003)(346002)(33656002)(36756003)(4326008)(186003)(71200400001)(54906003)(2616005)(26005)(316002)(478600001)(66476007)(6506007)(53546011)(5660300002)(2906002)(6916009)(6512007)(8676002)(66556008)(7416002)(66446008)(66946007)(64756008)(86362001)(76116006)(6486002)(4744005)(8936002)(45980500001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: =?utf-8?B?S2tlSy90NlNWcnlRbEk0RmNnN1pKemhpcmJnTEhPMlNORGsvdmYzY2tUMFNv?=
+ =?utf-8?B?QXd3NklqTXV1b0NESFFnUDhpVisvOG9ld2xlOEZrV3N3WFhRbTRVdk1vTkVq?=
+ =?utf-8?B?TlQvSHFmVGNnWmhiUG8xdVhxekJJbTU2UDdLall0OXlLbFZZTklrQk1mVldE?=
+ =?utf-8?B?aFI2Q1M3Tng3ZTNCMEd3VEV2S29FK2szUkxaalhLNlUrQ1VyVzJib3licDQx?=
+ =?utf-8?B?aTByTUE3d09qeHpxSnFobUZ6K1VzSldPTy9teERIc3h1RHhJR1czNlJGYnN0?=
+ =?utf-8?B?QTVhTms1ZnBHYTkvb0xiSWxEMnp6b1VTb0kxNDBjVU9sNlZuRndQOHBaakcx?=
+ =?utf-8?B?SVowVWdzMGFpRFB5ZTA3dWtrTkFTQkliQ2ZVL2crOURmZm9tUkhUMGF1WGdp?=
+ =?utf-8?B?eXpocWM2eUFaeXB2T1lRaXNiTkxNZ0dmTzNpWnpaZVRJdUxpMWZmS1VlcERn?=
+ =?utf-8?B?bHgwRSszQW92ZCtHZHZYYWkxR0RNQU5UUlNUUzJpV0VZNGtnMHRtL0xxNWZj?=
+ =?utf-8?B?bktYc1dzSk1ybnhDaTFMdjZKV2p1MU11b3FiZDQwbGVaRWRpTjZmTHgva1lU?=
+ =?utf-8?B?ZUJQTTY2b3ZFekFmcnFxWnFWSHpBam1YOHRxTXhaeE8zT05oV2NjQnJ5U2ZS?=
+ =?utf-8?B?NHNTZy9GLzc4RUlVbEpXSElQRzRzM1JlWWt2SU9hMDlTUGNMTzh5U3VRd0Qz?=
+ =?utf-8?B?NWZvMEgvQ1JKMXU2NTFhUFZ6VExXREFkc1AyZ2c4eWpBSmFRQWdPbFc1S3RS?=
+ =?utf-8?B?dzRGOFJzVTg1RncwU0thQjNHSDRjeUVmUHhqMXRSMS85aGRFdnB5d25iOUgy?=
+ =?utf-8?B?c0tEeWVFMUpkdTRxVng4d3FQSU1TQytYNU5VR0JHR2NTcUJ6ZGtFN3h5Sk5o?=
+ =?utf-8?B?Rk00cytycUlNd2w1b3NpYXo0WUt0dzdlSTAyZ0p1N2kzSXhjOE5yR1crcVFN?=
+ =?utf-8?B?NHVDSFJJMFhUL1NYMW05bkEzUENFcDNMSzJqS1NQdkQwSmx2eG8yTzV6KzQz?=
+ =?utf-8?B?bFlqR00xcW84OGJiSFUrMHRNdXFZOWlZY3VUOXRsYURCV2ZaZFhCeHRtN0cx?=
+ =?utf-8?B?N2xpWUhJbTNuUXhQRnlpVklSN0pINmZyVFFJTll6b0VXSFM5OEZaTzI3d2FU?=
+ =?utf-8?B?K3Ayc0lLdDVJbFQ3TzNkeWs5OGN4V0JjaStNTEUzcUl6bkdXV0JCeVo4VjNG?=
+ =?utf-8?B?OXNtTHdyQzhTMFFKczZZM1IvRDRnUEJObGFaa3cvUnJqUEJtY2NFalhoU0NE?=
+ =?utf-8?B?UkU1QVVQTldBYnowYVFmMDlUZTNyQjlFdEMzSEVIb3JDeVNJNTFOWFgzMkZj?=
+ =?utf-8?Q?Rn71P+bW8ZhdOgtqYBwKJfdY7I07SEqZVX?=
+Content-ID: <AA28D6F9E38CC942957B0E99C0C72BC1@namprd05.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <CADnq5_O6X_kbdT8ZTzL1P35wgauVNc77voWf97LogDJXia5VTg@mail.gmail.com>
+X-OriginatorOrg: vmware.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR05MB5186.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3780aa26-fa89-4224-6689-08d896d81c85
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Dec 2020 15:37:00.7402 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0g8aqEzAxautH6RFCc7NJPU+wmy2ffQYT+PXX0DA1f+4zciOqPN/uaFqGoJZW0r+uxFOyOt3A9XxPUFoFDipcQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR05MB6975
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,223 +120,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Sam Ravnborg <sam@ravnborg.org>, Dave Airlie <airlied@linux.ie>,
- nouveau <nouveau@lists.freedesktop.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Maling list - DRI developers <dri-devel@lists.freedesktop.org>,
- "open list:VIRTIO CORE, NET..." <virtualization@lists.linux-foundation.org>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- Alex Deucher <alexander.deucher@amd.com>, spice-devel@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Content-Type: multipart/mixed; boundary="===============2030890583=="
+Cc: "airlied@linux.ie" <airlied@linux.ie>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Roland Scheidegger <sroland@vmware.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "virtualization@lists.linux-foundation.org"
+ <virtualization@lists.linux-foundation.org>,
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "spice-devel@lists.freedesktop.org" <spice-devel@lists.freedesktop.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============2030890583==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="Aq5Kez8sVYZULyX1T5cE6UtGwvFf9vfV4"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---Aq5Kez8sVYZULyX1T5cE6UtGwvFf9vfV4
-Content-Type: multipart/mixed; boundary="N5NuQEt6cq0WEmbiR0tq2SB6BzRSX2VB2";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Alex Deucher <alexdeucher@gmail.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, Dave Airlie <airlied@linux.ie>,
- nouveau <nouveau@lists.freedesktop.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Maling list - DRI developers <dri-devel@lists.freedesktop.org>,
- "open list:VIRTIO CORE, NET..." <virtualization@lists.linux-foundation.org>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- Alex Deucher <alexander.deucher@amd.com>, spice-devel@lists.freedesktop.org,
- Sam Ravnborg <sam@ravnborg.org>, =?UTF-8?Q?Christian_K=c3=b6nig?=
- <christian.koenig@amd.com>
-Message-ID: <6d286f72-6669-9027-97d9-7981beb0240b@suse.de>
-Subject: Re: [PATCH v2 01/20] drm/amdgpu: Fix trailing whitespaces
-References: <20201201103542.2182-1-tzimmermann@suse.de>
- <20201201103542.2182-2-tzimmermann@suse.de>
- <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
- <63150504-fda0-48fd-9ecd-fb19ea0ae9d7@suse.de>
- <997ad04d-2acb-1dfb-0733-78f79a45b453@amd.com>
- <99ce8db3-a53f-7432-6e05-428c414174a2@suse.de>
- <CADnq5_O6X_kbdT8ZTzL1P35wgauVNc77voWf97LogDJXia5VTg@mail.gmail.com>
-In-Reply-To: <CADnq5_O6X_kbdT8ZTzL1P35wgauVNc77voWf97LogDJXia5VTg@mail.gmail.com>
-
---N5NuQEt6cq0WEmbiR0tq2SB6BzRSX2VB2
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi
-
-Am 02.12.20 um 15:02 schrieb Alex Deucher:
-> On Wed, Dec 2, 2020 at 3:53 AM Thomas Zimmermann <tzimmermann@suse.de> =
-wrote:
->>
->> Hi
->>
->> Am 02.12.20 um 09:43 schrieb Christian K=C3=B6nig:
->>> Am 02.12.20 um 08:59 schrieb Thomas Zimmermann:
->>>> Hi
->>>>
->>>> Am 01.12.20 um 11:40 schrieb Christian K=C3=B6nig:
->>>>> Reviewed-by: Christian K=C3=B6nig <christian.koenig@amd.com> on pat=
-ch #1
->>>>> and #15.
->>>>>
->>>>> Acked-by: Christian K=C3=B6nig <christian.koenig@amd.com> on patch =
-#2 and
->>>>> #16.
->>>>
->>>> Could you add these patches to the AMD tree?
->>>
->>> Alex is usually the one who picks such stuff up.
->>>
->>> But when people send out patch sets which mix changes from different
->>> drivers it is more common to push them through drm-misc-next.
->>
->> I'm OK with drm-misc-next. I just don't want to add too many merge
->> conflicts in your side.
->=20
-> Yeah, it doesn't matter to me.  I assumed you wanted to land this
-> whole series so you could move forward with further cleanups.  If we
-> merge via different trees, you'll have to wait for all of this to come
-> together again in drm-next.
-
-OK, sure. I'll merge it through drm-misc-next.
-
-Best regards
-Thomas
-
->=20
-> Alex
->=20
->=20
->>
->> Best regards
->> Thomas
->>
->>>
->>> Regards,
->>> Christian.
->>>
->>>>
->>>> Best regards
->>>> Thomas
->>>>
->>>>>
->>>>> Regards,
->>>>> Christian.
->>>>>
->>>>> Am 01.12.20 um 11:35 schrieb Thomas Zimmermann:
->>>>>> Adhere to kernel coding style.
->>>>>>
->>>>>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->>>>>> Acked-by: Alex Deucher <alexander.deucher@amd.com>
->>>>>> Acked-by: Sam Ravnborg <sam@ravnborg.org>
->>>>>> Cc: Alex Deucher <alexander.deucher@amd.com>
->>>>>> Cc: Christian K=C3=B6nig <christian.koenig@amd.com>
->>>>>> ---
->>>>>>    drivers/gpu/drm/amd/amdgpu/amdgpu_device.c | 6 +++---
->>>>>>    1 file changed, 3 insertions(+), 3 deletions(-)
->>>>>>
->>>>>> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
->>>>>> b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
->>>>>> index 5f304425c948..da23c0f21311 100644
->>>>>> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
->>>>>> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
->>>>>> @@ -4922,8 +4922,8 @@ pci_ers_result_t
->>>>>> amdgpu_pci_error_detected(struct pci_dev *pdev, pci_channel_sta
->>>>>>        case pci_channel_io_normal:
->>>>>>            return PCI_ERS_RESULT_CAN_RECOVER;
->>>>>>        /* Fatal error, prepare for slot reset */
->>>>>> -    case pci_channel_io_frozen:
->>>>>> -        /*
->>>>>> +    case pci_channel_io_frozen:
->>>>>> +        /*
->>>>>>             * Cancel and wait for all TDRs in progress if failing =
-to
->>>>>>             * set  adev->in_gpu_reset in amdgpu_device_lock_adev
->>>>>>             *
->>>>>> @@ -5014,7 +5014,7 @@ pci_ers_result_t amdgpu_pci_slot_reset(struc=
-t
->>>>>> pci_dev *pdev)
->>>>>>            goto out;
->>>>>>        }
->>>>>> -    adev->in_pci_err_recovery =3D true;
->>>>>> +    adev->in_pci_err_recovery =3D true;
->>>>>>        r =3D amdgpu_device_pre_asic_reset(adev, NULL, &need_full_r=
-eset);
->>>>>>        adev->in_pci_err_recovery =3D false;
->>>>>>        if (r)
->>>>>
->>>>
->>>
->>
->> --
->> Thomas Zimmermann
->> Graphics Driver Developer
->> SUSE Software Solutions Germany GmbH
->> Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
->> (HRB 36809, AG N=C3=BCrnberg)
->> Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
->>
->> _______________________________________________
->> amd-gfx mailing list
->> amd-gfx@lists.freedesktop.org
->> https://lists.freedesktop.org/mailman/listinfo/amd-gfx
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---N5NuQEt6cq0WEmbiR0tq2SB6BzRSX2VB2--
-
---Aq5Kez8sVYZULyX1T5cE6UtGwvFf9vfV4
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAl/HpIwFAwAAAAAACgkQlh/E3EQov+BX
-KRAAzqi3AuVErjo8TUvkFebgXZwduknMi4OZYhXPOGMf3G5ZaGkceS+n/hKTP0JWrogg/H4AYJE1
-J7sDOoy2QwN0wM/jQ8r5FdMUzPTin0IYduvnUQpNNqH0BP8yZB5l0zR0Ay3pCBWpAFWQp4cupgkI
-Qf8xetRC9DDKcpP+jcfCsOtlU9CA2ZomJZHwn23RU+ynlKqN71lEKfuyCUB3kvIsmy1e9aJU0s2B
-rRWOcdUk8OjmZha5+FhUDUptuV3+220mX84CbYxrBmZH8PMfSsgmhtJjEjoPb+QiLbyTkOjc5C71
-EDDUiuRbDrK9QiVu/y1Kz9Vb2/TciJC31W9SE06z307Ok2nqxPbf4QckYFVyeVmDV9o/JbtkX3Dh
-6PuwxA4/1FnvAqnOQZc54EmGUleNhBOSnmVzQ38IFpOZBatVJcgQKKY+Lc3h2dXOflhBP3oydzke
-+zKWrcSfMfiChoH+51Rtyk7Zxb+nA0Y9mK9mEaYzXhyJyGvewC8NykTRruafNpPum/1eZF26CB4u
-wB6+G3k91DYzXMyuBBLONMgZwdzAFRb8MO1i80A79JhLWfl2Nke48Fuw58pQc/HLj0et4fn8MqBX
-qdu1ud8GM9uNMPSY1VNoRdhCKWy17OQRYbrg9SBzzBEZSRdhDjVz1EKc1Jxp9E9QMdflLId4HY5o
-HHQ=
-=6LTS
------END PGP SIGNATURE-----
-
---Aq5Kez8sVYZULyX1T5cE6UtGwvFf9vfV4--
-
---===============2030890583==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============2030890583==--
+DQoNCj4gT24gRGVjIDIsIDIwMjAsIGF0IDA5OjI3LCBUaG9tYXMgWmltbWVybWFubiA8dHppbW1l
+cm1hbm5Ac3VzZS5kZT4gd3JvdGU6DQo+IA0KPiBIaQ0KPiANCj4gQW0gMDIuMTIuMjAgdW0gMDk6
+MDEgc2NocmllYiBUaG9tYXMgWmltbWVybWFubjoNCj4+IEhpDQo+PiBBbSAzMC4xMS4yMCB1bSAy
+MTo1OSBzY2hyaWViIFphY2sgUnVzaW46DQo+Pj4gDQo+Pj4gDQo+Pj4+IE9uIE5vdiAyNCwgMjAy
+MCwgYXQgMDY6MzgsIFRob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPiB3cm90
+ZToNCj4+Pj4gDQo+Pj4+IFVzaW5nIHN0cnVjdCBkcm1fZGV2aWNlLnBkZXYgaXMgZGVwcmVjYXRl
+ZC4gQ29udmVydCB2bXdnZnggdG8gc3RydWN0DQo+Pj4+IGRybV9kZXZpY2UuZGV2LiBObyBmdW5j
+dGlvbmFsIGNoYW5nZXMuDQo+Pj4+IA0KPj4+PiBTaWduZWQtb2ZmLWJ5OiBUaG9tYXMgWmltbWVy
+bWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4NCj4+Pj4gQ2M6IFJvbGFuZCBTY2hlaWRlZ2dlciA8
+c3JvbGFuZEB2bXdhcmUuY29tPg0KPj4+PiAtLS0NCj4+Pj4gZHJpdmVycy9ncHUvZHJtL3Ztd2dm
+eC92bXdnZnhfY21kYnVmLmMgfCAgOCArKysrLS0tLQ0KPj4+PiBkcml2ZXJzL2dwdS9kcm0vdm13
+Z2Z4L3Ztd2dmeF9kcnYuYyAgICB8IDI3ICsrKysrKysrKysrKystLS0tLS0tLS0tLS0tDQo+Pj4+
+IGRyaXZlcnMvZ3B1L2RybS92bXdnZngvdm13Z2Z4X2ZiLmMgICAgIHwgIDIgKy0NCj4+PiANCj4+
+PiBSZXZpZXdlZC1ieTogWmFjayBSdXNpbiA8emFja3JAdm13YXJlLmNvbT4NCj4+IENvdWxkIHlv
+dSBhZGQgdGhpcyBwYXRjaCB0byB0aGUgdm13Z2Z4IHRyZWU/DQo+IA0KPiBBTUQgZGV2cyBpbmRp
+Y2F0ZWQgdGhhdCB0aGV5J2QgcHJlZmVyIHRvIG1lcmdlIHRoZSBwYXRjaHNldCB0cm91Z2ggZHJt
+LW1pc2MtbmV4dC4gSWYgeW91J3JlIE9LIHdpdGggdGhhdCwgSSdkIG1lcmdlIHRoZSB2bXdnZngg
+cGF0Y2ggdGhyb3VnaCBkcm0tbWlzYy1uZXh0IGFzIHdlbGwuDQoNClNvdW5kcyBnb29kLiBJ4oCZ
+bGwgbWFrZSBzdXJlIHRvIHJlYmFzZSBvdXIgbGF0ZXN0IHBhdGNoIHNldCBvbiB0b3Agb2YgaXQg
+d2hlbiBpdOKAmXMgaW4uIFRoYW5rcyENCg0KegpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQt
+ZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
