@@ -2,45 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6E5F2CB2E4
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 03:44:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FDB22CB608
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 09:00:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 217406E834;
-	Wed,  2 Dec 2020 02:44:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 629BE6EA04;
+	Wed,  2 Dec 2020 08:00:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EC3E76E834;
- Wed,  2 Dec 2020 02:44:25 +0000 (UTC)
-IronPort-SDR: Olw6T92FtGkyHpH1kkDVGMP3Lyu5r9orZUBRBUe0vMLoeT1kxTmXnCIMpOaOSawRS2wRwm5taK
- UWbE2LZAzBaQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9822"; a="191155021"
-X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; 
- d="asc'?scan'208";a="191155021"
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2020 18:44:19 -0800
-IronPort-SDR: TQH7dVt/1vRmdWseIWv+JOn2h4iyHFRFiCwcKDd/IsR0j+867lr1I/trgzp5MhBHFqPos0jp6O
- 0PyFJvmYMDgw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; 
- d="asc'?scan'208";a="365087639"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 01 Dec 2020 18:44:16 -0800
-Date: Wed, 2 Dec 2020 10:29:13 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jani Nikula <jani.nikula@intel.com>
-Subject: Re: [PATCH v3 09/10] drm/i915/gvt: replace I915_WRITE with
- intel_uncore_write
-Message-ID: <20201202022913.GU16939@zhen-hp.sh.intel.com>
-References: <20201130111601.2817-1-jani.nikula@intel.com>
- <20201130111601.2817-9-jani.nikula@intel.com>
- <87o8jdcxi4.fsf@intel.com>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0A7D16E955;
+ Wed,  2 Dec 2020 08:00:02 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id C10E2ABD2;
+ Wed,  2 Dec 2020 07:59:59 +0000 (UTC)
+Subject: Re: [PATCH v2 01/20] drm/amdgpu: Fix trailing whitespaces
+To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ airlied@linux.ie, daniel@ffwll.ch
+References: <20201201103542.2182-1-tzimmermann@suse.de>
+ <20201201103542.2182-2-tzimmermann@suse.de>
+ <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <63150504-fda0-48fd-9ecd-fb19ea0ae9d7@suse.de>
+Date: Wed, 2 Dec 2020 08:59:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <87o8jdcxi4.fsf@intel.com>
+In-Reply-To: <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,97 +41,144 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Hang Yuan <hang.yuan@linux.intel.com>, intel-gfx@lists.freedesktop.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, chris@chris-wilson.co.uk,
- Colin Xu <colin.xu@intel.com>, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============1449095824=="
+Cc: Sam Ravnborg <sam@ravnborg.org>, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, amd-gfx@lists.freedesktop.org,
+ Alex Deucher <alexander.deucher@amd.com>, spice-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/mixed; boundary="===============1459562417=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============1459562417==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="4eKph0FuFqNq79Rl3FZHdrapCHdf6uN3w"
 
---===============1449095824==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Nj4mAaUCx+wbOcQD"
-Content-Disposition: inline
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--4eKph0FuFqNq79Rl3FZHdrapCHdf6uN3w
+Content-Type: multipart/mixed; boundary="3gcSrvRCjPgEBFOFDx6W1hdXoLEHQV45f";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ airlied@linux.ie, daniel@ffwll.ch
+Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ spice-devel@lists.freedesktop.org, Alex Deucher <alexander.deucher@amd.com>,
+ Sam Ravnborg <sam@ravnborg.org>
+Message-ID: <63150504-fda0-48fd-9ecd-fb19ea0ae9d7@suse.de>
+Subject: Re: [PATCH v2 01/20] drm/amdgpu: Fix trailing whitespaces
+References: <20201201103542.2182-1-tzimmermann@suse.de>
+ <20201201103542.2182-2-tzimmermann@suse.de>
+ <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
+In-Reply-To: <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
 
-
---Nj4mAaUCx+wbOcQD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--3gcSrvRCjPgEBFOFDx6W1hdXoLEHQV45f
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On 2020.12.01 18:16:35 +0200, Jani Nikula wrote:
-> On Mon, 30 Nov 2020, Jani Nikula <jani.nikula@intel.com> wrote:
-> > Let's avoid adding new I915_WRITE uses while we try to get rid of them.
-> >
-> > Fixes: 5f60b12edcd0 ("drm/i915/gvt: Save/restore HW status to support G=
-VT suspend/resume")
-> > Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> > Cc: Hang Yuan <hang.yuan@linux.intel.com>
-> > Cc: Colin Xu <colin.xu@intel.com>
-> > Cc: Zhi Wang <zhi.a.wang@intel.com>
-> > Cc: intel-gvt-dev@lists.freedesktop.org
-> > Signed-off-by: Jani Nikula <jani.nikula@intel.com>
->=20
-> Pushed up to, but *excluding* this patch to dinq. Thanks for the
-> reviews.
->=20
-> Zhenyu, Zhi, may I have your review/ack for merging this one directly
-> via dinq to not add a dependency on the gvt tree?
->
+Hi
 
-Yep, that's fine to me.
+Am 01.12.20 um 11:40 schrieb Christian K=C3=B6nig:
+> Reviewed-by: Christian K=C3=B6nig <christian.koenig@amd.com> on patch #=
+1 and=20
+> #15.
+>=20
+> Acked-by: Christian K=C3=B6nig <christian.koenig@amd.com> on patch #2 a=
+nd #16.
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+Could you add these patches to the AMD tree?
+
+Best regards
+Thomas
 
 >=20
-> BR,
-> Jani.
+> Regards,
+> Christian.
 >=20
+> Am 01.12.20 um 11:35 schrieb Thomas Zimmermann:
+>> Adhere to kernel coding style.
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> Acked-by: Alex Deucher <alexander.deucher@amd.com>
+>> Acked-by: Sam Ravnborg <sam@ravnborg.org>
+>> Cc: Alex Deucher <alexander.deucher@amd.com>
+>> Cc: Christian K=C3=B6nig <christian.koenig@amd.com>
+>> ---
+>> =C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_device.c | 6 +++---
+>> =C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c=20
+>> b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+>> index 5f304425c948..da23c0f21311 100644
+>> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+>> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+>> @@ -4922,8 +4922,8 @@ pci_ers_result_t=20
+>> amdgpu_pci_error_detected(struct pci_dev *pdev, pci_channel_sta
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case pci_channel_io_normal:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return PCI_ERS_=
+RESULT_CAN_RECOVER;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Fatal error, prepare for slot reset =
+*/
+>> -=C2=A0=C2=A0=C2=A0 case pci_channel_io_frozen:
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
+>> +=C2=A0=C2=A0=C2=A0 case pci_channel_io_frozen:
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * Cancel =
+and wait for all TDRs in progress if failing to
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * set=C2=A0=
+ adev->in_gpu_reset in amdgpu_device_lock_adev
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 *
+>> @@ -5014,7 +5014,7 @@ pci_ers_result_t amdgpu_pci_slot_reset(struct=20
+>> pci_dev *pdev)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 goto out;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -=C2=A0=C2=A0=C2=A0 adev->in_pci_err_recovery =3D true;
+>> +=C2=A0=C2=A0=C2=A0 adev->in_pci_err_recovery =3D true;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 r =3D amdgpu_device_pre_asic_reset(adev=
+, NULL, &need_full_reset);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 adev->in_pci_err_recovery =3D false;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (r)
 >=20
-> > ---
-> >  drivers/gpu/drm/i915/gvt/handlers.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915=
-/gvt/handlers.c
-> > index 6f0706e885cb..eba626ba640f 100644
-> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> > @@ -3693,7 +3693,7 @@ static inline int mmio_pm_restore_handler(struct =
-intel_gvt *gvt,
-> >  	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
-> > =20
-> >  	if (gvt->mmio.mmio_attribute[offset >> 2] & F_PM_SAVE)
-> > -		I915_WRITE(_MMIO(offset), vgpu_vreg(vgpu, offset));
-> > +		intel_uncore_write(&dev_priv->uncore, _MMIO(offset), vgpu_vreg(vgpu,=
- offset));
-> > =20
-> >  	return 0;
-> >  }
->=20
-> --=20
-> Jani Nikula, Intel Open Source Graphics Center
 
 --=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
 
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
---Nj4mAaUCx+wbOcQD
-Content-Type: application/pgp-signature; name="signature.asc"
+--3gcSrvRCjPgEBFOFDx6W1hdXoLEHQV45f--
+
+--4eKph0FuFqNq79Rl3FZHdrapCHdf6uN3w
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX8b79QAKCRCxBBozTXgY
-J33VAJ0UNARmS+XjaH5Z4xhUnboer80hMgCeKrw1YadKM2Rm98t2FD/rNwfUFi8=
-=eyxA
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAl/HSX4FAwAAAAAACgkQlh/E3EQov+Cn
+iw//fMsnlOc+PqrXSFAe13Z7qjnUrEob83wRbIiWj/feKrpixLOuIGOprm2tQfMp2FPfMTiYrWeO
+MEVLR7xWsfiqPaupauttA82gBtVO8yYZ5Yabi82zNqX77osAm/w17zF39c+p11W9duhZnV8brHhv
+RKTnwzP1pD13Q5mpBf6WLOHOe8QUsQBz51DTZEsPl2CKYjXMv+GXX9Gr+mtG1tW0VkpgnzlsDe+Y
+yY327EqhjgE8T1I4Qx4qaPllqRX6BBxe2KRj7RYW8OL/GEYCJqbEhDn+iEeHdr1gZ9DA0eeGXWa1
+TxtTtBF3OK27o1UnO5KKhoW4LN2d6YePlDrEtf/AWji0OokAs+kv/F3xVUJBuXL+OQhR8CQ92Nzv
+/lWarpsKvjmmd8SXBAsJNsFz53JkbQVDzrZ5qEYEgGXPBP8TWjV7E8nRx+ntndUlVy9KiH/AkJ96
+EVtmhNvNp439cNraXizLMDjwFnUiHed6zZi0AcdM8T/dxBWRzeelF0WwWdV3VEdw6BBYZJyoLEz3
+qY6SoqOWzuBYutJ+4uqLUzj9xtIdxlbszyvu+p1zN9GQ4Vb/2Sfq7wi+7Sku2qiwO/iWasSzzQJG
+BMQsZ0uKrn1/7/JqYA+p8rOH3Bpv8RcMZUcfpnqKhBG1iU4bzFQGrkwpLssRf24v6eEjnwiIRLH4
+7TE=
+=8bgC
 -----END PGP SIGNATURE-----
 
---Nj4mAaUCx+wbOcQD--
+--4eKph0FuFqNq79Rl3FZHdrapCHdf6uN3w--
 
---===============1449095824==
+--===============1459562417==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -154,4 +189,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1449095824==--
+--===============1459562417==--
