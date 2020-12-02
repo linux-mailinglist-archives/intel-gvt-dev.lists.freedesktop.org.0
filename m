@@ -2,58 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5F482CBEE8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 15:02:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 832402CBF8F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Dec 2020 15:27:36 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 66C866EA37;
-	Wed,  2 Dec 2020 14:02:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 463986EA36;
+	Wed,  2 Dec 2020 14:27:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com
- [IPv6:2607:f8b0:4864:20::341])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1C3506EA62;
- Wed,  2 Dec 2020 14:02:37 +0000 (UTC)
-Received: by mail-ot1-x341.google.com with SMTP id z23so1657938oti.13;
- Wed, 02 Dec 2020 06:02:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Du9mUxhlChBd+j85dYiOC01Q9CKt5cxvpq990GnuOJ0=;
- b=osvkDGjaqUALayNI+u49rXRdNI4M+tosotcu7S+3zHVv5g0UbphvBon68VXC93UiiZ
- KGsVx7aPAForq5oi6fHvD20KG9OFuDYTsSpwQjTXC1ffMYIWSLskZ+mmsQc7uI5x+RYI
- KzKcyzvXkFz2jjHFDtIgoKe4uLpI89RhCAHiw4NlvB7ihVn8wk57/2Ord/6Y/BpK2FIB
- xqutuy2Y4V87qowDaqo+nLFcHJLaLA1GgjOk0gf0n9VDYYIifBNUHlNAzW07wI2C9AH/
- rCN7RAG+ARFP+qkULGub7XGoTOE0D5bNBi0wup+wBNcIV71/u2HOUoElFxj5IUQVW6bt
- hLiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Du9mUxhlChBd+j85dYiOC01Q9CKt5cxvpq990GnuOJ0=;
- b=k92RSDi6PTlNcoNMzJz9rkpk6uO0zyy9t6w6btX5ey0DGeW6RGXfz1zWVtGmAiEY0t
- FRZHool4Z/YnbrrZ9E6VrdIyF7jWX55VT5HgxXpcQS9KXD2erLWFxL295qQMxt8+ob1A
- RbQIiWlwKIqGaMD2Yd92q9wugdlId2XbyfxiPiTgFbSgUQ0TM0VYDMbJKQKJvqUrk893
- 6BgFlZlgWBY+D4DpcPDcXgOAzVYgDu6BzQTNpPq0ekKfmiAVWPolvogH2nLY7EpG0lsb
- nTBvMjeL6CTbOYJBKhvY3aXf2hiBgk+Lf8cfHDsJjCREC38smGCsYfpe9ESgyd2s13D7
- td8A==
-X-Gm-Message-State: AOAM530hD6yUjwK1v6SvRKobnfw86tAZaGMiKSp0h7BN6Ioy/fKV+ehm
- Dwb8SsAOLMvtF+0Znl6PLgjI+ON15KaWqIG/P6Y=
-X-Google-Smtp-Source: ABdhPJzEPQzMuezMrMuw6jbG62qFedqX54kkLTNCA7wvQoUe7e4z+jShqkktl7/V99qgrMa8BCa59jS1N/EH2AemVes=
-X-Received: by 2002:a9d:5388:: with SMTP id w8mr1856624otg.311.1606917756331; 
- Wed, 02 Dec 2020 06:02:36 -0800 (PST)
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5FAF46EA36;
+ Wed,  2 Dec 2020 14:27:34 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id ED0E8AE95;
+ Wed,  2 Dec 2020 14:27:32 +0000 (UTC)
+Subject: Re: [PATCH 14/15] drm/vmwgfx: Remove references to struct
+ drm_device.pdev
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Zack Rusin <zackr@vmware.com>
+References: <20201124113824.19994-1-tzimmermann@suse.de>
+ <20201124113824.19994-15-tzimmermann@suse.de>
+ <31E75B1A-AAC0-49E3-985E-2DF5B59CD883@vmware.com>
+ <e8102216-edd0-bec3-79af-3925e9668e95@suse.de>
+Message-ID: <d43d06e6-d13c-ef9b-b372-8d30d9494417@suse.de>
+Date: Wed, 2 Dec 2020 15:27:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-References: <20201201103542.2182-1-tzimmermann@suse.de>
- <20201201103542.2182-2-tzimmermann@suse.de>
- <d79aa7c0-9b0b-4f1b-c4e5-54f53a8d2931@amd.com>
- <63150504-fda0-48fd-9ecd-fb19ea0ae9d7@suse.de>
- <997ad04d-2acb-1dfb-0733-78f79a45b453@amd.com>
- <99ce8db3-a53f-7432-6e05-428c414174a2@suse.de>
-In-Reply-To: <99ce8db3-a53f-7432-6e05-428c414174a2@suse.de>
-From: Alex Deucher <alexdeucher@gmail.com>
-Date: Wed, 2 Dec 2020 09:02:25 -0500
-Message-ID: <CADnq5_O6X_kbdT8ZTzL1P35wgauVNc77voWf97LogDJXia5VTg@mail.gmail.com>
-Subject: Re: [PATCH v2 01/20] drm/amdgpu: Fix trailing whitespaces
-To: Thomas Zimmermann <tzimmermann@suse.de>
+In-Reply-To: <e8102216-edd0-bec3-79af-3925e9668e95@suse.de>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,78 +42,150 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org, Dave Airlie <airlied@linux.ie>,
- nouveau <nouveau@lists.freedesktop.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Maling list - DRI developers <dri-devel@lists.freedesktop.org>,
- "open list:VIRTIO CORE, NET..." <virtualization@lists.linux-foundation.org>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>, Daniel Vetter <daniel@ffwll.ch>,
- Alex Deucher <alexander.deucher@amd.com>, spice-devel@lists.freedesktop.org,
- Sam Ravnborg <sam@ravnborg.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "airlied@linux.ie" <airlied@linux.ie>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Roland Scheidegger <sroland@vmware.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "virtualization@lists.linux-foundation.org"
+ <virtualization@lists.linux-foundation.org>,
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "spice-devel@lists.freedesktop.org" <spice-devel@lists.freedesktop.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: multipart/mixed; boundary="===============0765530265=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gV2VkLCBEZWMgMiwgMjAyMCBhdCAzOjUzIEFNIFRob21hcyBaaW1tZXJtYW5uIDx0emltbWVy
-bWFubkBzdXNlLmRlPiB3cm90ZToKPgo+IEhpCj4KPiBBbSAwMi4xMi4yMCB1bSAwOTo0MyBzY2hy
-aWViIENocmlzdGlhbiBLw7ZuaWc6Cj4gPiBBbSAwMi4xMi4yMCB1bSAwODo1OSBzY2hyaWViIFRo
-b21hcyBaaW1tZXJtYW5uOgo+ID4+IEhpCj4gPj4KPiA+PiBBbSAwMS4xMi4yMCB1bSAxMTo0MCBz
-Y2hyaWViIENocmlzdGlhbiBLw7ZuaWc6Cj4gPj4+IFJldmlld2VkLWJ5OiBDaHJpc3RpYW4gS8O2
-bmlnIDxjaHJpc3RpYW4ua29lbmlnQGFtZC5jb20+IG9uIHBhdGNoICMxCj4gPj4+IGFuZCAjMTUu
-Cj4gPj4+Cj4gPj4+IEFja2VkLWJ5OiBDaHJpc3RpYW4gS8O2bmlnIDxjaHJpc3RpYW4ua29lbmln
-QGFtZC5jb20+IG9uIHBhdGNoICMyIGFuZAo+ID4+PiAjMTYuCj4gPj4KPiA+PiBDb3VsZCB5b3Ug
-YWRkIHRoZXNlIHBhdGNoZXMgdG8gdGhlIEFNRCB0cmVlPwo+ID4KPiA+IEFsZXggaXMgdXN1YWxs
-eSB0aGUgb25lIHdobyBwaWNrcyBzdWNoIHN0dWZmIHVwLgo+ID4KPiA+IEJ1dCB3aGVuIHBlb3Bs
-ZSBzZW5kIG91dCBwYXRjaCBzZXRzIHdoaWNoIG1peCBjaGFuZ2VzIGZyb20gZGlmZmVyZW50Cj4g
-PiBkcml2ZXJzIGl0IGlzIG1vcmUgY29tbW9uIHRvIHB1c2ggdGhlbSB0aHJvdWdoIGRybS1taXNj
-LW5leHQuCj4KPiBJJ20gT0sgd2l0aCBkcm0tbWlzYy1uZXh0LiBJIGp1c3QgZG9uJ3Qgd2FudCB0
-byBhZGQgdG9vIG1hbnkgbWVyZ2UKPiBjb25mbGljdHMgaW4geW91ciBzaWRlLgoKWWVhaCwgaXQg
-ZG9lc24ndCBtYXR0ZXIgdG8gbWUuICBJIGFzc3VtZWQgeW91IHdhbnRlZCB0byBsYW5kIHRoaXMK
-d2hvbGUgc2VyaWVzIHNvIHlvdSBjb3VsZCBtb3ZlIGZvcndhcmQgd2l0aCBmdXJ0aGVyIGNsZWFu
-dXBzLiAgSWYgd2UKbWVyZ2UgdmlhIGRpZmZlcmVudCB0cmVlcywgeW91J2xsIGhhdmUgdG8gd2Fp
-dCBmb3IgYWxsIG9mIHRoaXMgdG8gY29tZQp0b2dldGhlciBhZ2FpbiBpbiBkcm0tbmV4dC4KCkFs
-ZXgKCgo+Cj4gQmVzdCByZWdhcmRzCj4gVGhvbWFzCj4KPiA+Cj4gPiBSZWdhcmRzLAo+ID4gQ2hy
-aXN0aWFuLgo+ID4KPiA+Pgo+ID4+IEJlc3QgcmVnYXJkcwo+ID4+IFRob21hcwo+ID4+Cj4gPj4+
-Cj4gPj4+IFJlZ2FyZHMsCj4gPj4+IENocmlzdGlhbi4KPiA+Pj4KPiA+Pj4gQW0gMDEuMTIuMjAg
-dW0gMTE6MzUgc2NocmllYiBUaG9tYXMgWmltbWVybWFubjoKPiA+Pj4+IEFkaGVyZSB0byBrZXJu
-ZWwgY29kaW5nIHN0eWxlLgo+ID4+Pj4KPiA+Pj4+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBaaW1t
-ZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPgo+ID4+Pj4gQWNrZWQtYnk6IEFsZXggRGV1Y2hl
-ciA8YWxleGFuZGVyLmRldWNoZXJAYW1kLmNvbT4KPiA+Pj4+IEFja2VkLWJ5OiBTYW0gUmF2bmJv
-cmcgPHNhbUByYXZuYm9yZy5vcmc+Cj4gPj4+PiBDYzogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIu
-ZGV1Y2hlckBhbWQuY29tPgo+ID4+Pj4gQ2M6IENocmlzdGlhbiBLw7ZuaWcgPGNocmlzdGlhbi5r
-b2VuaWdAYW1kLmNvbT4KPiA+Pj4+IC0tLQo+ID4+Pj4gICBkcml2ZXJzL2dwdS9kcm0vYW1kL2Ft
-ZGdwdS9hbWRncHVfZGV2aWNlLmMgfCA2ICsrKy0tLQo+ID4+Pj4gICAxIGZpbGUgY2hhbmdlZCwg
-MyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+ID4+Pj4KPiA+Pj4+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZGV2aWNlLmMKPiA+Pj4+IGIvZHJp
-dmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2RldmljZS5jCj4gPj4+PiBpbmRleCA1ZjMw
-NDQyNWM5NDguLmRhMjNjMGYyMTMxMSAxMDA2NDQKPiA+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9hbWQvYW1kZ3B1L2FtZGdwdV9kZXZpY2UuYwo+ID4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
-L2FtZC9hbWRncHUvYW1kZ3B1X2RldmljZS5jCj4gPj4+PiBAQCAtNDkyMiw4ICs0OTIyLDggQEAg
-cGNpX2Vyc19yZXN1bHRfdAo+ID4+Pj4gYW1kZ3B1X3BjaV9lcnJvcl9kZXRlY3RlZChzdHJ1Y3Qg
-cGNpX2RldiAqcGRldiwgcGNpX2NoYW5uZWxfc3RhCj4gPj4+PiAgICAgICBjYXNlIHBjaV9jaGFu
-bmVsX2lvX25vcm1hbDoKPiA+Pj4+ICAgICAgICAgICByZXR1cm4gUENJX0VSU19SRVNVTFRfQ0FO
-X1JFQ09WRVI7Cj4gPj4+PiAgICAgICAvKiBGYXRhbCBlcnJvciwgcHJlcGFyZSBmb3Igc2xvdCBy
-ZXNldCAqLwo+ID4+Pj4gLSAgICBjYXNlIHBjaV9jaGFubmVsX2lvX2Zyb3plbjoKPiA+Pj4+IC0g
-ICAgICAgIC8qCj4gPj4+PiArICAgIGNhc2UgcGNpX2NoYW5uZWxfaW9fZnJvemVuOgo+ID4+Pj4g
-KyAgICAgICAgLyoKPiA+Pj4+ICAgICAgICAgICAgKiBDYW5jZWwgYW5kIHdhaXQgZm9yIGFsbCBU
-RFJzIGluIHByb2dyZXNzIGlmIGZhaWxpbmcgdG8KPiA+Pj4+ICAgICAgICAgICAgKiBzZXQgIGFk
-ZXYtPmluX2dwdV9yZXNldCBpbiBhbWRncHVfZGV2aWNlX2xvY2tfYWRldgo+ID4+Pj4gICAgICAg
-ICAgICAqCj4gPj4+PiBAQCAtNTAxNCw3ICs1MDE0LDcgQEAgcGNpX2Vyc19yZXN1bHRfdCBhbWRn
-cHVfcGNpX3Nsb3RfcmVzZXQoc3RydWN0Cj4gPj4+PiBwY2lfZGV2ICpwZGV2KQo+ID4+Pj4gICAg
-ICAgICAgIGdvdG8gb3V0Owo+ID4+Pj4gICAgICAgfQo+ID4+Pj4gLSAgICBhZGV2LT5pbl9wY2lf
-ZXJyX3JlY292ZXJ5ID0gdHJ1ZTsKPiA+Pj4+ICsgICAgYWRldi0+aW5fcGNpX2Vycl9yZWNvdmVy
-eSA9IHRydWU7Cj4gPj4+PiAgICAgICByID0gYW1kZ3B1X2RldmljZV9wcmVfYXNpY19yZXNldChh
-ZGV2LCBOVUxMLCAmbmVlZF9mdWxsX3Jlc2V0KTsKPiA+Pj4+ICAgICAgIGFkZXYtPmluX3BjaV9l
-cnJfcmVjb3ZlcnkgPSBmYWxzZTsKPiA+Pj4+ICAgICAgIGlmIChyKQo+ID4+Pgo+ID4+Cj4gPgo+
-Cj4gLS0KPiBUaG9tYXMgWmltbWVybWFubgo+IEdyYXBoaWNzIERyaXZlciBEZXZlbG9wZXIKPiBT
-VVNFIFNvZnR3YXJlIFNvbHV0aW9ucyBHZXJtYW55IEdtYkgKPiBNYXhmZWxkc3RyLiA1LCA5MDQw
-OSBOw7xybmJlcmcsIEdlcm1hbnkKPiAoSFJCIDM2ODA5LCBBRyBOw7xybmJlcmcpCj4gR2VzY2jD
-pGZ0c2bDvGhyZXI6IEZlbGl4IEltZW5kw7ZyZmZlcgo+Cj4gX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBhbWQtZ2Z4IG1haWxpbmcgbGlzdAo+IGFtZC1n
-ZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9hbWQtZ2Z4Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0765530265==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="2mzi1IasmC0ppc6PTo32ynRnk8CZmEtUv"
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--2mzi1IasmC0ppc6PTo32ynRnk8CZmEtUv
+Content-Type: multipart/mixed; boundary="1nqLIFRzQMDN5weBvDjLDQObFbZZxljKZ";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Zack Rusin <zackr@vmware.com>
+Cc: "airlied@linux.ie" <airlied@linux.ie>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Roland Scheidegger <sroland@vmware.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "virtualization@lists.linux-foundation.org"
+ <virtualization@lists.linux-foundation.org>,
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "spice-devel@lists.freedesktop.org" <spice-devel@lists.freedesktop.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <d43d06e6-d13c-ef9b-b372-8d30d9494417@suse.de>
+Subject: Re: [PATCH 14/15] drm/vmwgfx: Remove references to struct
+ drm_device.pdev
+References: <20201124113824.19994-1-tzimmermann@suse.de>
+ <20201124113824.19994-15-tzimmermann@suse.de>
+ <31E75B1A-AAC0-49E3-985E-2DF5B59CD883@vmware.com>
+ <e8102216-edd0-bec3-79af-3925e9668e95@suse.de>
+In-Reply-To: <e8102216-edd0-bec3-79af-3925e9668e95@suse.de>
+
+--1nqLIFRzQMDN5weBvDjLDQObFbZZxljKZ
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi
+
+Am 02.12.20 um 09:01 schrieb Thomas Zimmermann:
+> Hi
+>=20
+> Am 30.11.20 um 21:59 schrieb Zack Rusin:
+>>
+>>
+>>> On Nov 24, 2020, at 06:38, Thomas Zimmermann <tzimmermann@suse.de>=20
+>>> wrote:
+>>>
+>>> Using struct drm_device.pdev is deprecated. Convert vmwgfx to struct
+>>> drm_device.dev. No functional changes.
+>>>
+>>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>>> Cc: Roland Scheidegger <sroland@vmware.com>
+>>> ---
+>>> drivers/gpu/drm/vmwgfx/vmwgfx_cmdbuf.c |=C2=A0 8 ++++----
+>>> drivers/gpu/drm/vmwgfx/vmwgfx_drv.c=C2=A0=C2=A0=C2=A0 | 27 ++++++++++=
++++-------------
+>>> drivers/gpu/drm/vmwgfx/vmwgfx_fb.c=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 2 =
++-
+>>
+>> Reviewed-by: Zack Rusin <zackr@vmware.com>
+>=20
+> Could you add this patch to the vmwgfx tree?
+
+AMD devs indicated that they'd prefer to merge the patchset trough=20
+drm-misc-next. If you're OK with that, I'd merge the vmwgfx patch=20
+through drm-misc-next as well.
+
+Best regards
+Thomas
+
+>=20
+> Best regards
+> Thomas
+>=20
+>>
+>> z
+>>
+>=20
+>=20
+> _______________________________________________
+> Nouveau mailing list
+> Nouveau@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/nouveau
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--1nqLIFRzQMDN5weBvDjLDQObFbZZxljKZ--
+
+--2mzi1IasmC0ppc6PTo32ynRnk8CZmEtUv
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAl/HpFMFAwAAAAAACgkQlh/E3EQov+B4
+2Q//WvRxXdOpYaAHFHlUcv0PD//e6GyYAy+TR7YnOjNqUq7iPFHgHZn3cxeXLRJzUlAzdPCyou96
+5amBeoX8d+On6kwQu+bBbaMR0v3ToPe51gpVQul1vfJZGsvm3dzQp+cToxDeBVSbC6mZRdE5yoK1
+FuTUwTP+0oMErWaFGczNk/j6cZq5Rvh81AVy+TTVm8c5ubNXzYmy+vKNypwsuYSITXbPbsGSKoE7
+4vKsj1ib4nzuakriu0LEonUawcQY9H0qFKePjwbDSebMEdfEAzGNZ/LDXHUpMW5/ASiQfnf42ZIn
+EtxMMndKZzer3j28YuinIexjW4rE2eQrP11jpkRZ3m/lmuiaO9gxHRFRnVGcQRg4TcG4zMxdMC10
+EYT79Socs5hrNDIgliPpFDIDFtozrFxCOZFZJFLvnsZ0cgpfkKWWOqzKP0Dai2jeaXO60T/Ovn9v
+DGlZnGkD9AcZL06SpoWrtDLlrj+AfJ71d1B+FYlIAZTJCaEFUc3R/J9T52J2qXlzZo3/AmLXNVPC
+YLJvu2/58IJB2FQdAgvtfGls8Qyd7xCXg5fLAh4Y2erd6Ofozi20lI5Dm4wD2WsmpkcL0Lmxmb09
+aEq+V8kEAPhbXcBPNvXLwl9gZYrBt156CYqsGI43raRiWRcQKbk8HLOuQMIBOHWsrYcx/VO4Wxfi
+waA=
+=8LYe
+-----END PGP SIGNATURE-----
+
+--2mzi1IasmC0ppc6PTo32ynRnk8CZmEtUv--
+
+--===============0765530265==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0765530265==--
