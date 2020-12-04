@@ -1,43 +1,60 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12C9A2CE5A2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  4 Dec 2020 03:22:36 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A2022CE6B6
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  4 Dec 2020 04:53:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C8BEC6E0FE;
-	Fri,  4 Dec 2020 02:22:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 59C7E6E12C;
+	Fri,  4 Dec 2020 03:53:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0780A6E0FE
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  4 Dec 2020 02:22:33 +0000 (UTC)
-IronPort-SDR: xVeufzryLrNSqjrjbrHodAL4UbeZQcY1tFe7iuCLo2tFIiIvMa1i4MoAh/YjKptDUOAM72tZ5u
- in4E3SAyr9yw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9824"; a="152565535"
-X-IronPort-AV: E=Sophos;i="5.78,391,1599548400"; d="scan'208";a="152565535"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Dec 2020 18:22:33 -0800
-IronPort-SDR: 0CPcXNIVskPItLYEwYVCiGQpXgdobz1LykiBFhK/SDmK6ycnxYxSd+5S8ofqGfE2zEkTFxPhyp
- gmuCNaGWm/lQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,391,1599548400"; d="scan'208";a="331059981"
-Received: from lkp-server01.sh.intel.com (HELO 14e4acb3e84f) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 03 Dec 2020 18:22:31 -0800
-Received: from kbuild by 14e4acb3e84f with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kl0ju-00000V-E5; Fri, 04 Dec 2020 02:22:30 +0000
-Date: Fri, 04 Dec 2020 10:22:11 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
- 0a8cad54792ebce476f6780d7fd1832d9d4b9217
-Message-ID: <5fc99d53.Tqkr4Dp+SYFCxoeA%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-il1-x144.google.com (mail-il1-x144.google.com
+ [IPv6:2607:f8b0:4864:20::144])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D63BC6E12C;
+ Fri,  4 Dec 2020 03:53:36 +0000 (UTC)
+Received: by mail-il1-x144.google.com with SMTP id k8so4022073ilr.4;
+ Thu, 03 Dec 2020 19:53:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ULTmDl5ODAp5+pGiMlfRgGgqG7bhEVtrrqJo/V0Wv5o=;
+ b=IqWzw/7LhLKatX2EcMZ7gPXa4FX987fJvD2fIX7S33kmZPPX9/QQhdFXd18ExVQsKP
+ sW/pxBbVFcILY5G+8C0Hd7JrF91UtzuNPSkxy9+moOonfKdGEv38ehQddV13jPK8qZhS
+ 5lgBjYtrCsgneZH6Ityt0+U1RYuwDszWp9fQnAf5y1EYCsqnlcy3PHp6yiKYVItjFZc1
+ z1/aSSLurV/FbaOfmjYkWwRXL6Mg0jbQ/ow+kszM5s5wHf8YGqfOt8ACPLi+LzM/USzM
+ f/rrzkzNiPg2zE2ul+Jwmp2Cfb7HbEMQCOV+sQcBxl9WYyd8o1Y3Ng1IRztDmYk/EqS1
+ Ahfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ULTmDl5ODAp5+pGiMlfRgGgqG7bhEVtrrqJo/V0Wv5o=;
+ b=Lj6NJX2nOP/FyD9birLqMNET9TYtgc3HLOYir7jkxbeV/c5hDbAEKnXO9uFWAROaTC
+ 54TVuVnTUQY1DvT7mbjdpNBlfW6e/lfPat+rWD5BaN2wyagXYxxkeC7Jt/F8Im6jR75B
+ /gC2jOr2QEtc+yA1Ba9rMPcC5oYJGhxpiz+ALVMSFbIctNwzj513Y5UeEwvP5B9WskZk
+ d+5abbpjqnCDxqL42mwNt/Vf8DTW3UNuuCA0MMsl5YtvMh7Apxf4nxeU6HAjm/otHSfX
+ r1c2fsLxbKg4MdtRN7G2AtUzrJGGoBOoPM8ALxnMTz7TvHyTGaRWkxLXf0jSa0KnCfwX
+ JuRw==
+X-Gm-Message-State: AOAM533gX7O8jh5JMPjB/ZN27g0SYx0y/N7NS7+FHd0AXrHQB8B2w1gy
+ Hg6xbeyMR6xZgYiMKhN83XOg/q6dKdFPPg==
+X-Google-Smtp-Source: ABdhPJw/GpPxKvmdLgpe0UZqYix1EOwTWX/EGSHFiJY3r/MukaIIZNjhO1ojAeLgFHMsed0OsIErJA==
+X-Received: by 2002:a92:58cb:: with SMTP id z72mr3406498ilf.104.1607054015671; 
+ Thu, 03 Dec 2020 19:53:35 -0800 (PST)
+Received: from frodo.mearth (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
+ by smtp.googlemail.com with ESMTPSA id o12sm671361ilj.55.2020.12.03.19.53.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Dec 2020 19:53:35 -0800 (PST)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org
+Subject: [RFC PATCH 2/2] i915: POC use dynamic_debug_exec_queries to control
+ pr_debugs in gvt
+Date: Thu,  3 Dec 2020 20:53:18 -0700
+Message-Id: <20201204035318.332419-3-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20201204035318.332419-1-jim.cromie@gmail.com>
+References: <20201204035318.332419-1-jim.cromie@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -51,147 +68,125 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: Jim Cromie <jim.cromie@gmail.com>, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, David Airlie <airlied@linux.ie>,
+ jbaron@akamai.com, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-next-fixes
-branch HEAD: 0a8cad54792ebce476f6780d7fd1832d9d4b9217  drm/i915/gvt: avoid useless use of inline
+The gvt component of this driver has ~120 pr_debugs, in 9 "classes".
+Following model of drm.debug, add a parameter to map bits to these
+classes.
 
-elapsed time: 1249m
+In Makefile, add DYNAMIC_DEBUG_MODULE.  This converts gvt's pr_debugs,
+even if the rest of drm is not using CONFIG_DRM_USE_DYNAMIC_DEBUG.
 
-configs tested: 116
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                     tqm8541_defconfig
-nios2                         3c120_defconfig
-powerpc                     pseries_defconfig
-sparc                       sparc64_defconfig
-mips                           ip22_defconfig
-m68k                          multi_defconfig
-sh                          r7780mp_defconfig
-sh                           se7712_defconfig
-riscv                               defconfig
-m68k                             alldefconfig
-arm                         socfpga_defconfig
-mips                     loongson1b_defconfig
-sh                ecovec24-romimage_defconfig
-m68k                       m5275evb_defconfig
-sh                                  defconfig
-sh                          r7785rp_defconfig
-powerpc                      arches_defconfig
-arm                            xcep_defconfig
-arm                            hisi_defconfig
-arm                             ezx_defconfig
-powerpc                 mpc836x_rdk_defconfig
-sh                           se7724_defconfig
-mips                      loongson3_defconfig
-microblaze                          defconfig
-powerpc                  mpc866_ads_defconfig
-nios2                         10m50_defconfig
-mips                          ath25_defconfig
-powerpc                     stx_gp3_defconfig
-xtensa                  cadence_csp_defconfig
-powerpc                       maple_defconfig
-parisc                           alldefconfig
-um                             i386_defconfig
-powerpc                       ppc64_defconfig
-ia64                         bigsur_defconfig
-powerpc                     tqm8560_defconfig
-powerpc                          allyesconfig
-powerpc                    socrates_defconfig
-mips                           rs90_defconfig
-arm                        magician_defconfig
-m68k                                defconfig
-powerpc                           allnoconfig
-sh                           se7722_defconfig
-arm                         mv78xx0_defconfig
-sh                        dreamcast_defconfig
-m68k                        m5272c3_defconfig
-openrisc                 simple_smp_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allmodconfig
-i386                 randconfig-a004-20201203
-i386                 randconfig-a005-20201203
-i386                 randconfig-a001-20201203
-i386                 randconfig-a002-20201203
-i386                 randconfig-a006-20201203
-i386                 randconfig-a003-20201203
-x86_64               randconfig-a016-20201203
-x86_64               randconfig-a012-20201203
-x86_64               randconfig-a014-20201203
-x86_64               randconfig-a013-20201203
-x86_64               randconfig-a015-20201203
-x86_64               randconfig-a011-20201203
-i386                 randconfig-a014-20201203
-i386                 randconfig-a013-20201203
-i386                 randconfig-a011-20201203
-i386                 randconfig-a015-20201203
-i386                 randconfig-a012-20201203
-i386                 randconfig-a016-20201203
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a006-20201203
-x86_64               randconfig-a004-20201203
-x86_64               randconfig-a001-20201203
-x86_64               randconfig-a002-20201203
-x86_64               randconfig-a005-20201203
-x86_64               randconfig-a003-20201203
-
+Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/gpu/drm/i915/gvt/Makefile  |  1 +
+ drivers/gpu/drm/i915/i915_params.c | 74 ++++++++++++++++++++++++++++++
+ 2 files changed, 75 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt/Makefile
+index ea8324abc784..e38a1eb618bd 100644
+--- a/drivers/gpu/drm/i915/gvt/Makefile
++++ b/drivers/gpu/drm/i915/gvt/Makefile
+@@ -6,4 +6,5 @@ GVT_SOURCE := gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o firmware.o \
+ 	fb_decoder.o dmabuf.o page_track.o
+ 
+ ccflags-y				+= -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
++ccflags-y				+= -DDYNAMIC_DEBUG_MODULE
+ i915-y					+= $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
+diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
+index 7f139ea4a90b..ecc825558e00 100644
+--- a/drivers/gpu/drm/i915/i915_params.c
++++ b/drivers/gpu/drm/i915/i915_params.c
+@@ -260,3 +260,77 @@ void i915_params_free(struct i915_params *params)
+ 	I915_PARAMS_FOR_EACH(FREE);
+ #undef FREE
+ }
++
++/* POC for callback -> dynamic_debug_exec_queries */
++unsigned long __gvt_debug;
++EXPORT_SYMBOL(__gvt_debug);
++
++static char *format_prefix_classes[] = {
++	"gvt: cmd: ",
++	"gvt: core: ",
++	"gvt: dpy: ",
++	"gvt: el: ",
++	"gvt: irq: ",
++	"gvt: mm: ",
++	"gvt: mmio: ",
++	"gvt: render: ",
++	"gvt: sched: "
++};
++#define NUM_CLASSES	ARRAY_SIZE(format_prefix_classes)
++#define OUR_QUERY_SIZE	128 /* we need about 20 */
++
++#include <linux/module.h>
++
++static int param_set_dyndbg(const char *instr, const struct kernel_param *kp)
++{
++	unsigned int val;
++	unsigned long changes, result;
++	int rc, chgct = 0, totct = 0, bitpos;
++	char query[OUR_QUERY_SIZE];
++
++	rc = kstrtouint(instr, 0, &val);
++	if (rc) {
++		pr_err("set_dyndbg: failed\n");
++		return -EINVAL;
++	}
++	result = val;
++	pr_info("set_dyndbg: result:0x%lx from %s\n", result, instr);
++
++	changes = result ^ __gvt_debug;
++
++	for_each_set_bit(bitpos, &changes, NUM_CLASSES) {
++
++		sprintf(query, "format '^%s' %cp", format_prefix_classes[bitpos],
++			test_bit(bitpos, &result) ? '+' : '-');
++
++		chgct = dynamic_debug_exec_queries(query, "i915");
++
++		pr_info("%d changes on: %s\n", chgct, query);
++		totct += chgct;
++	}
++	pr_info("total changes: %d\n", totct);
++	__gvt_debug = result;
++	return 0;
++}
++static int param_get_dyndbg(char *buffer, const struct kernel_param *kp)
++{
++	return scnprintf(buffer, PAGE_SIZE, "%u\n",
++			 *((unsigned int *)kp->arg));
++}
++static const struct kernel_param_ops param_ops_dyndbg = {
++	.set = param_set_dyndbg,
++	.get = param_get_dyndbg,
++};
++
++MODULE_PARM_DESC(debug_gvt, " gvt debug categories:"
++		 "\n\t0x1\t gvt: cmd:"
++		 "\n\t0x2\t gvt: core:"
++		 "\n\t0x4\t gvt: dpy:"
++		 "\n\t0x8\t gvt: el:"
++		 "\n\t0x10\t gvt: irq:"
++		 "\n\t0x20\t gvt: mm:"
++		 "\n\t0x40\t gvt: mmio:"
++		 "\n\t0x80\t gvt: render:"
++		 "\n\t0x100\t gvt: sched:" "\n");
++
++module_param_cb(debug_gvt, &param_ops_dyndbg, &__gvt_debug, 0644);
+-- 
+2.28.0
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
