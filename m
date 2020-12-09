@@ -2,42 +2,25 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2AA42D5600
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Dec 2020 10:03:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DDB7B2D58D9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Dec 2020 12:03:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E79C46EA2F;
-	Thu, 10 Dec 2020 09:03:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 981926EA7B;
+	Thu, 10 Dec 2020 11:03:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0F1DD6EA2F;
- Thu, 10 Dec 2020 09:03:53 +0000 (UTC)
-IronPort-SDR: dUdb2ubIIA4HfhurXR1SrK8Pu74AVhsPB2b/GUJtqEJfRn33cqg1rtrBSfU7ASnJ1bIE7ffJvz
- 6OoclCjENUTw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9830"; a="235816546"
-X-IronPort-AV: E=Sophos;i="5.78,408,1599548400"; d="scan'208";a="235816546"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2020 01:03:52 -0800
-IronPort-SDR: sKBmhPXor5VBChELwDnmhnBI4BpGCr4GPGsjmr82dRxVjk03bslrp8o5EIzhxfyY4uaRyHsR/Q
- 9GlLgQOMoX8Q==
-X-IronPort-AV: E=Sophos;i="5.78,408,1599548400"; d="scan'208";a="364539850"
-Received: from yechielg-mobl1.ger.corp.intel.com (HELO localhost)
- ([10.249.81.29])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2020 01:03:40 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>, airlied@linux.ie, daniel@ffwll.ch
-Subject: Re: [PATCH v2 09/20] drm/i915: Remove references to struct
- drm_device.pdev
-In-Reply-To: <7c9b3127-0e79-fd22-0bba-b3e8430d876a@suse.de>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20201201103542.2182-1-tzimmermann@suse.de>
- <20201201103542.2182-10-tzimmermann@suse.de>
- <7c9b3127-0e79-fd22-0bba-b3e8430d876a@suse.de>
-Date: Thu, 10 Dec 2020 11:03:35 +0200
-Message-ID: <875z5a9gns.fsf@intel.com>
+Received: from pmail.com (unknown [118.70.165.84])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A92AA6EA7B;
+ Thu, 10 Dec 2020 11:03:49 +0000 (UTC)
+Received: from [154.127.53.41] (unknown [154.127.53.41])
+ by pmail.com (Postfix) with ESMTP id CEF37EA64DC;
+ Wed,  9 Dec 2020 22:36:53 +0700 (+07)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: 'INVESTMENT
+To: Recipients <wr5108104@gmail.com>
+From: wr5108104@gmail.com
+Date: Wed, 09 Dec 2020 07:36:46 -0800
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,27 +33,30 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: nouveau@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- amd-gfx@lists.freedesktop.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- spice-devel@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org
+Reply-To: richardwilliam7070@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20201210110350.981926EA7B@gabe.freedesktop.org>
 
-On Tue, 08 Dec 2020, Thomas Zimmermann <tzimmermann@suse.de> wrote:
-> ping for a review of the i915 patches
+Dear Sir/Madam
 
-What did you have in mind regarding merging the series? Should we just
-pick the patches up?
+I work as an agent to some Investors. Do you need a business loan or
+funds for a business idea or want to expand but need huge funding? We
+are expanding our investment presence by granting debt loan to fund
+viable and lucrative projects. 
 
-BR,
-Jani.
+If you have any project that needs funding, kindly revert to me with your business plan and if we find your business to be worthy of investment, you will be promptly contacted and both parties will meet face to face and have a round-table meeting together.
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
+Good documentation will be carried out between you and the Investor
+before putting down his funds.
+
+Regards
+
+Williams Richard.
+
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
