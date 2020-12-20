@@ -2,52 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CEBE2DADC6
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 15 Dec 2020 14:11:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B1882DF72D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 21 Dec 2020 01:05:26 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5BE5A89FE3;
-	Tue, 15 Dec 2020 13:11:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6EA716E425;
+	Mon, 21 Dec 2020 00:05:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qv1-xf48.google.com (mail-qv1-xf48.google.com
- [IPv6:2607:f8b0:4864:20::f48])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 416E46E02B
+X-Greylist: delayed 324 seconds by postgrey-1.36 at gabe;
+ Mon, 21 Dec 2020 00:05:23 UTC
+Received: from mail.devilmail.me (mail.devilmail.me [23.92.30.210])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7443D6E41A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 15 Dec 2020 13:11:36 +0000 (UTC)
-Received: by mail-qv1-xf48.google.com with SMTP id j24so14230343qvg.8
+ Mon, 21 Dec 2020 00:05:23 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.devilmail.me (Postfix) with ESMTP id 9DB221999F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 15 Dec 2020 05:11:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:message-id:date:subject:from:to;
- bh=tHl2buBD1lxeY2qUikEYYqjiDo/a7kEHT6oBU003/iU=;
- b=A/ASHhbE4c0feM15QFAjo/QkBUIHQL4qKeGCjMxLzqqpZIIXxUtPoN0PlLWbnw1JL3
- oLwcJ7wpHcxhYzpzwt+gs6hsjqC228yT+kxfI6oEYls0Z7TDAfpq7mMRJaV2+nB3tbV/
- vRWaJwoNDbvTCCewwrSa7X0uP3Uwf/u/PC74pAXq0RPxdiFjPVheBDotPZIGyyGXzgeH
- 08zdh6KXae8EKpgDXlPC65yLNdqf2fD6tlk1g07L8o+DlRQmbwwzKuwu1/Wa8e4bFimw
- JxxQYDTnjBoqf6NatT9as/F/j0YGkgfVP7FWuOpCR5txN/sR3PPqXmJebgtKkEW3pm1v
- 442g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:message-id:date:subject
- :from:to;
- bh=tHl2buBD1lxeY2qUikEYYqjiDo/a7kEHT6oBU003/iU=;
- b=MvFtGjZRoJU62fLj+zqNHixHDrBDGqk583/RvvU+v49kXgsRELDFGC1USqE5tIZToH
- o/JF5q3yWkeuiM2LvfiDnCEa2D1eDgp4q0dRWJkFSGEO39whOulR6En4kN8ry1kdoMQo
- EGjGPNu+EPZRwDzkqvyP1GAW3E4mSrb3ep/g6IZhxzHYTqoW+JSIAxuidTEY+pgFo0bo
- OCV7yMfo/VgLsA7btkih9Gtk2YYSiKSdRfjF/1D1AYoI5Nm1Ok7AzSVVrzXOrbRAXGFq
- pZkOOaxTeV7F/xGD8rCqPAF0CYNJ5mLzBwlQYUYEYqf8ZjYDdbtJkEPn+JUUYKSuTV4r
- fFOQ==
-X-Gm-Message-State: AOAM533SG/nhgi8S2kIx8IqHeZsnolv72Z6fAtacuYzSQD2XAR1ofvno
- P+dU3JWrJrc3B2PdoidLAtLildCbhbJQwmGpoEpp
+ Mon, 21 Dec 2020 10:59:58 +1100 (AEDT)
+Authentication-Results: mail.devilmail.me (amavisd-new);
+ dkim=pass (1024-bit key) reason="pass (just generated, assumed good)"
+ header.d=devilmail.me
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=devilmail.me; h=
+ reply-to:date:date:from:from:to:subject:subject
+ :content-description:content-transfer-encoding:mime-version
+ :content-type:content-type; s=dkim; t=1608508797; x=1609372798;
+ bh=qnZ4e9IKPCQJ3jm8gl4Quz16VOH4Ytky8sRPlldFGrM=; b=TWgO13Y7+Ufb
+ GatTu6yAZz/7oq1Vn/qY9Kj5ak1xPohbpxRKX0ZMTfx36uhwQSkR+CB+ynpsz8Pg
+ 3eCx2PeqYu3GqsZRdgTQECf7S6q/js0+MFSi8wlR/lmmKj3A5D7gUTehoD+N+32/
+ yZZyI0jrgXJG4tcwgQURDTLCtmsaf5k=
+X-Virus-Scanned: Debian amavisd-new at mail.devilmail.me
+X-Spam-Flag: NO
+X-Spam-Score: 5.673
+X-Spam-Level: *****
+X-Spam-Status: No, score=5.673 tagged_above=2 required=6.31
+ tests=[ADVANCE_FEE_5_NEW_FRM_MNY=0.001, ALL_TRUSTED=-1, BAYES_50=0.8,
+ FILL_THIS_FORM=0.001, FILL_THIS_FORM_LOAN=2.88, HK_SCAM=0.001,
+ LOTS_OF_MONEY=0.001, MILLION_USD=0.497, MISSING_MID=0.497,
+ MONEY_FORM=0.001, MONEY_FRAUD_8=0.001, MONEY_NOHTML=1.983,
+ T_MONEY_PERCENT=0.01] autolearn=no autolearn_force=no
+Received: from mail.devilmail.me ([127.0.0.1])
+ by localhost (mail.devilmail.me [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hgxawKdguXXr for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 21 Dec 2020 10:59:57 +1100 (AEDT)
+Received: from jmapnzin.host-stage-dns.com (unknown [188.165.89.95])
+ by mail.devilmail.me (Postfix) with ESMTPSA id 945E711E82;
+ Mon, 21 Dec 2020 09:13:30 +1100 (AEDT)
 MIME-Version: 1.0
-X-Received: by 2002:ad4:4e09:: with SMTP id dl9mt37491536qvb.44.1608037894111; 
- Tue, 15 Dec 2020 05:11:34 -0800 (PST)
-X-No-Auto-Attachment: 1
-Message-ID: <00000000000076df7105b6807f46@google.com>
-Date: Tue, 15 Dec 2020 13:11:35 +0000
-Subject: HOW ARE YOU?
-From: dendab119@gmail.com
-To: intel-gvt-dev@lists.freedesktop.org
+Content-Description: Mail message body
+Subject: Re: Ember Proposal
+To: Recipients <postmaster@devilmail.me>
+From: postmaster@devilmail.me
+Date: Mon, 21 Dec 2020 06:13:27 +0800
+Message-Id: <20201220235958.9DB221999F@mail.devilmail.me>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,95 +66,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: dendab119@gmail.com
-Content-Type: multipart/mixed; boundary="===============1506178579=="
+Reply-To: lizawong@infohsbc.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1506178579==
-Content-Type: multipart/alternative; boundary="0000000000008bc20105b6807fef"
 
---0000000000008bc20105b6807fef
-Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
-Content-Transfer-Encoding: base64
+I am writing to find out if you have received my previous email regarding a business proposal. please get back to me as this is the second time i am writing you.If no read below again
 
-SmUgdm91cyBhaSBpbnZpdMOpIMOgIHJlbXBsaXIgbGUgZm9ybXVsYWlyZSBzdWl2YW50wqA6DQpG
-b3JtdWxhaXJlIHNhbnMgdGl0cmUNCg0KUG91ciByZW1wbGlyIGNlIGZvcm11bGFpcmUsIGNvbnN1
-bHRlesKgOg0KaHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZm9ybXMvZC9lLzFGQUlwUUxTZC1pZjBS
-d2JqUUQ2M0xhV1hEYjZGc1ZpRHFpeXNvZXIyOHAwNzZiSnNaOS11REFnL3ZpZXdmb3JtP3ZjPTAm
-YW1wO2M9MCZhbXA7dz0xJmFtcDtmbHI9MCZhbXA7dXNwPW1haWxfZm9ybV9saW5rDQoNCkhlbGxv
-IE15IERlYXIsDQoNCkkgaG9wZSB0aGlzIGxldHRlciBmaW5kcyB5b3Ugd2VsbC4NCg0KTXkgbmFt
-ZSBpcyBFa291w6kgRGpybyBHTE9LUE9SLiBBbnl3YXksIEkgYW0gaW4gcG9zaXRpb24gb2YgZWxp
-Z2libGUgRlVORCB0byAgDQp0cmFuc2ZlciBmb3IgSW52ZXN0bWVudCBQdXJwb3NlIGFzIGEgc291
-cmNlIG9mIEZ1bmRpbmcgUHJvamVjdHMuIEFuZCB1cG9uICANCnlvdXIgYWNrbm93bGVkZ21lbnQg
-b2YgcmVjZWl2aW5nIHRoaXMgTWVzc2FnZSBJIHdpbGwgcHJvdmlkZSB5b3UgZnVydGhlciAgDQpp
-bmZvcm1hdGlvbiBpbiBGdWxsIERldGFpbHMuDQoNClBsZWFzZSByZXBseSB0bzogZWRnbG9rcG9y
-QGFvbC5jb20NCg0KSSBhd2FpdCB5b3VyIENvbmZpcm1hdGlvbiBSZXNwb25zZS4NCg0KQmVzdCBS
-ZWdhcmRzLA0KTXIuIEVrb3XDqSBEanJvIEdMT0tQT1IuDQoNCg0KDQoNCg0KR29vZ2xlwqBGb3Jt
-cyB2b3VzIHBlcm1ldCBkZSBjcsOpZXIgZGVzIGVucXXDqnRlcyBldCBkJ2VuIGFuYWx5c2VyIGxl
-cyAgDQpyw6lzdWx0YXRzLg0K
---0000000000008bc20105b6807fef
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I am Ms. Liza Wong the Head of Accounting Audit Department of HSBC BANK (HSBC)in  Malaysia.
+In my department in the Bank where i work, I discovered a sum of $85.5 Million USD.
+ In an account that belongs to one of our foreign deceased customers, a billionaire Business Mogul Late Mr.Moises Saba Masri, a Jew from Mexico who was a victim of a helicopter crash since 2010 which resulted in his death and his family members.
 
-<html><body style=3D"font-family: Roboto,Helvetica,Arial,sans-serif; margin=
-: 0; padding: 0; height: 100%; width: 100%;"><table border=3D"0" cellpaddin=
-g=3D"0" cellspacing=3D"0" style=3D"background-color:rgb(103,58,183);" width=
-=3D"100%" role=3D"presentation"><tbody><tr height=3D"64px"><td style=3D"pad=
-ding: 0 24px;"><img alt=3D"Google=C2=A0Forms" height=3D"26px" style=3D"disp=
-lay: inline-block; margin: 0; vertical-align: middle;" width=3D"143px" src=
-=3D"https://www.gstatic.com/docs/forms/google_forms_logo_lockup_white_2x.pn=
-g"></td></tr></tbody></table><div style=3D"padding: 24px; background-color:=
-rgb(237,231,246)"><div align=3D"center" style=3D"background-color: #fff; bo=
-rder-bottom: 1px solid #e0e0e0;margin: 0 auto; max-width: 624px; min-width:=
- 154px;padding: 0 24px;"><table align=3D"center" cellpadding=3D"0" cellspac=
-ing=3D"0" style=3D"background-color: #fff;" width=3D"100%" role=3D"presenta=
-tion"><tbody><tr height=3D"24px"><td></td></tr><tr><td><span style=3D"displ=
-ay: table-cell; vertical-align: top; font-size: 13px; line-height: 18px; co=
-lor: #424242;" dir=3D"auto">Hello My Dear,<br><br>I hope this letter finds =
-you well.<br><br>My name is Ekou=C3=A9 Djro GLOKPOR. Anyway, I am in positi=
-on of eligible FUND to transfer for Investment Purpose as a source of Fundi=
-ng Projects. And upon your acknowledgment of receiving this Message I will =
-provide you further information in Full Details.<br><br>Please reply to: ed=
-glokpor@aol.com<br><br>I await your Confirmation Response.<br><br>Best Rega=
-rds,<br>Mr. Ekou=C3=A9 Djro GLOKPOR.<br><br><br><br></span></td></tr><tr he=
-ight=3D"20px"><td></tr><tr style=3D"font-size: 20px; line-height: 24px;"><t=
-d dir=3D"auto"><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSd-if0Rw=
-bjQD63LaWXDb6FsViDqiysoer28p076bJsZ9-uDAg/viewform?vc=3D0&amp;c=3D0&amp;w=
-=3D1&amp;flr=3D0&amp;usp=3Dmail_form_link" style=3D"color: rgb(103,58,183);=
- text-decoration: none; vertical-align: middle; font-weight: 500">Formulair=
-e sans titre</a><div itemprop=3D"action" itemscope itemtype=3D"http://schem=
-a.org/ViewAction"><meta itemprop=3D"url" content=3D"https://docs.google.com=
-/forms/d/e/1FAIpQLSd-if0RwbjQD63LaWXDb6FsViDqiysoer28p076bJsZ9-uDAg/viewfor=
-m?vc=3D0&amp;c=3D0&amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail_goto_form"><meta it=
-emprop=3D"name" content=3D"Remplir le formulaire"></div></td></tr><tr heigh=
-t=3D"24px"></tr><tr><td><table border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" width=3D"100%"><tbody><tr><td><a href=3D"https://docs.google.com/for=
-ms/d/e/1FAIpQLSd-if0RwbjQD63LaWXDb6FsViDqiysoer28p076bJsZ9-uDAg/viewform?vc=
-=3D0&amp;c=3D0&amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail_form_link" style=3D"bor=
-der-radius: 3px; box-sizing: border-box; display: inline-block; font-size: =
-13px; font-weight: 700; height: 40px; line-height: 40px; padding: 0 24px; t=
-ext-align: center; text-decoration: none; text-transform: uppercase; vertic=
-al-align: middle; color: #fff; background-color: rgb(103,58,183);" target=
-=3D"_blank" rel=3D"noopener">Remplir le formulaire</a></td></tr></tbody></t=
-able></td></tr><tr height=3D"24px"></tr></tbody></table></div><table align=
-=3D"center" cellpadding=3D"0" cellspacing=3D"0" style=3D"max-width: 672px; =
-min-width: 154px;" width=3D"100%" role=3D"presentation"><tbody><tr height=
-=3D"24px"><td></td></tr><tr><td><a href=3D"https://docs.google.com/forms?us=
-p=3Dmail_form_link" style=3D"color: #424242; font-size: 13px;">Cr=C3=A9er v=
-otre propre formulaire Google</a></td></tr></tbody></table></div></body></h=
-tml>
---0000000000008bc20105b6807fef--
+You can see more information about Saba Masri Mr.Moises unfortunate end accident on the website-link below.
 
---===============1506178579==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+http://www.ynetnews.com/articles/0,7340,L-3832556,00.html
 
+A Mexican business tycoon was killed along with at least two members of his family in a helicopter crash on the outskirts of Mexico City on Sunday night, in an emergency .
+
+Now our bank has been waiting for any of the relatives to come forth for the  claim but nobody has done that SINCE 2010. I personally have been unsuccessful in locating the relatives,Which the Board of Directors are planning to share these funds among them-self.
+I have a good heart to use this funds to help the poor and street children who also  have a motherless home. I want to build my orphanage home, which is a setting NGO for the disability people that can not afford to eat 3 square meals a day. I don't know about you.
+I do seek your consent as my foreign business partner in this transaction to present you as the next of kin/Beneficiary to the deceased, so that the funds of this accoun valued at $85.5 Million USD can be paid to your local bank account in your country. Also know that the transaction is 100% free risk, because I have all the legal documents with me to make this transaction possible, and the funds we will share are 50/50.
+
+Please Provide me the following few information about you, as we have a few days to run it through to achieve our goal.
+
+1, Your Full names:.............................
+2, Your age:..........................
+3, Your private phone number:...............
+4, Your current country and residential address:........
+5, Your Occupation:.....................
+
+Please on your message and indicate your interest,
+i will furnish you with more information on this business transaction once I get your response back asap.
+
+Best Regard
+Ms. Liza Wong
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1506178579==--
