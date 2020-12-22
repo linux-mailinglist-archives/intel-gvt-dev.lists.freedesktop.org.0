@@ -2,58 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B1882DF72D
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 21 Dec 2020 01:05:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 90DCB2E05CC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Dec 2020 06:39:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6EA716E425;
-	Mon, 21 Dec 2020 00:05:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 505976E0D2;
+	Tue, 22 Dec 2020 05:39:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 324 seconds by postgrey-1.36 at gabe;
- Mon, 21 Dec 2020 00:05:23 UTC
-Received: from mail.devilmail.me (mail.devilmail.me [23.92.30.210])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7443D6E41A
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 67FCE6E0D2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 21 Dec 2020 00:05:23 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.devilmail.me (Postfix) with ESMTP id 9DB221999F
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 21 Dec 2020 10:59:58 +1100 (AEDT)
-Authentication-Results: mail.devilmail.me (amavisd-new);
- dkim=pass (1024-bit key) reason="pass (just generated, assumed good)"
- header.d=devilmail.me
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=devilmail.me; h=
- reply-to:date:date:from:from:to:subject:subject
- :content-description:content-transfer-encoding:mime-version
- :content-type:content-type; s=dkim; t=1608508797; x=1609372798;
- bh=qnZ4e9IKPCQJ3jm8gl4Quz16VOH4Ytky8sRPlldFGrM=; b=TWgO13Y7+Ufb
- GatTu6yAZz/7oq1Vn/qY9Kj5ak1xPohbpxRKX0ZMTfx36uhwQSkR+CB+ynpsz8Pg
- 3eCx2PeqYu3GqsZRdgTQECf7S6q/js0+MFSi8wlR/lmmKj3A5D7gUTehoD+N+32/
- yZZyI0jrgXJG4tcwgQURDTLCtmsaf5k=
-X-Virus-Scanned: Debian amavisd-new at mail.devilmail.me
-X-Spam-Flag: NO
-X-Spam-Score: 5.673
-X-Spam-Level: *****
-X-Spam-Status: No, score=5.673 tagged_above=2 required=6.31
- tests=[ADVANCE_FEE_5_NEW_FRM_MNY=0.001, ALL_TRUSTED=-1, BAYES_50=0.8,
- FILL_THIS_FORM=0.001, FILL_THIS_FORM_LOAN=2.88, HK_SCAM=0.001,
- LOTS_OF_MONEY=0.001, MILLION_USD=0.497, MISSING_MID=0.497,
- MONEY_FORM=0.001, MONEY_FRAUD_8=0.001, MONEY_NOHTML=1.983,
- T_MONEY_PERCENT=0.01] autolearn=no autolearn_force=no
-Received: from mail.devilmail.me ([127.0.0.1])
- by localhost (mail.devilmail.me [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hgxawKdguXXr for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 21 Dec 2020 10:59:57 +1100 (AEDT)
-Received: from jmapnzin.host-stage-dns.com (unknown [188.165.89.95])
- by mail.devilmail.me (Postfix) with ESMTPSA id 945E711E82;
- Mon, 21 Dec 2020 09:13:30 +1100 (AEDT)
+ Tue, 22 Dec 2020 05:39:12 +0000 (UTC)
+IronPort-SDR: 3kXQCkTeBtaYOfLiF4PVcAlzX4ghKe2hKzo5waMV2y8+dL4RiW2uZqH9S/aY4qDuFWvi3VDwtZ
+ SOSe94OU4jQA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9842"; a="260554922"
+X-IronPort-AV: E=Sophos;i="5.78,438,1599548400"; 
+ d="asc'?scan'208";a="260554922"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2020 21:39:11 -0800
+IronPort-SDR: Vu6k/UmmHA5awSXWTk5A68hmguRZeKbgMp7sZgp9SAmPZyBEia+9mnmjYTtExwBIt6sVjFcHpt
+ bLnno3PwdfHg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,438,1599548400"; 
+ d="asc'?scan'208";a="389791540"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga004.fm.intel.com with ESMTP; 21 Dec 2020 21:39:10 -0800
+Date: Tue, 22 Dec 2020 13:23:22 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH v3 01/11] drm/i915/gvt: parse init context to update cmd
+ accessible reg whitelist
+Message-ID: <20201222052322.GZ16939@zhen-hp.sh.intel.com>
+References: <20201209043949.2454-1-yan.y.zhao@intel.com>
+ <20201209044029.2525-1-yan.y.zhao@intel.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Re: Ember Proposal
-To: Recipients <postmaster@devilmail.me>
-From: postmaster@devilmail.me
-Date: Mon, 21 Dec 2020 06:13:27 +0800
-Message-Id: <20201220235958.9DB221999F@mail.devilmail.me>
+In-Reply-To: <20201209044029.2525-1-yan.y.zhao@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,43 +50,366 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: lizawong@infohsbc.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Kevin Tian <kevin.tian@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Wang Zhi <zhi.a.wang@intel.com>, zhenyuw@linux.intel.com
+Content-Type: multipart/mixed; boundary="===============0234848120=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
-I am writing to find out if you have received my previous email regarding a business proposal. please get back to me as this is the second time i am writing you.If no read below again
+--===============0234848120==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="yZxAaITavNk3ADw/"
+Content-Disposition: inline
 
-I am Ms. Liza Wong the Head of Accounting Audit Department of HSBC BANK (HSBC)in  Malaysia.
-In my department in the Bank where i work, I discovered a sum of $85.5 Million USD.
- In an account that belongs to one of our foreign deceased customers, a billionaire Business Mogul Late Mr.Moises Saba Masri, a Jew from Mexico who was a victim of a helicopter crash since 2010 which resulted in his death and his family members.
 
-You can see more information about Saba Masri Mr.Moises unfortunate end accident on the website-link below.
+--yZxAaITavNk3ADw/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-http://www.ynetnews.com/articles/0,7340,L-3832556,00.html
+On 2020.12.09 12:40:29 +0800, Yan Zhao wrote:
+> Logical Context is actually a big batch buffer consisting of multiple
+> LRI commands + saved registers. It comprises Ring Context (the first
+> 0x50 dwords) and Engine Context. The registers defined in Engine Context
+> are command accessible, and safe to execute in VM Context.
+> However, not all of them are currently tracked in existing register
+> whitelist. Here we kick hardware to generate a dummy Engine Context and
+> then scan the dummy Engine context to update whitelist dynamically. Based
+> on updated list, later patches will audit future VM Engine Contexts to
+> disallow undesired LRIs (if out of what hardware generates).
+>=20
+> Cc: Kevin Tian <kevin.tian@intel.com>
+> Signed-off-by: Wang Zhi <zhi.a.wang@intel.com>
+> Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c | 143 +++++++++++++++++++++++++-
+>  drivers/gpu/drm/i915/gvt/cmd_parser.h |   2 +
+>  drivers/gpu/drm/i915/gvt/gvt.h        |   4 +
+>  drivers/gpu/drm/i915/gvt/vgpu.c       |   4 +-
+>  4 files changed, 149 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.c
+> index 16b582cb97ed..9d2fdaca92bd 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> @@ -38,10 +38,15 @@
+> =20
+>  #include "i915_drv.h"
+>  #include "gt/intel_ring.h"
+> +#include "gt/intel_gt_requests.h"
+>  #include "gvt.h"
+>  #include "i915_pvinfo.h"
+>  #include "trace.h"
+> =20
+> +#include "gem/i915_gem_context.h"
+> +#include "gem/i915_gem_pm.h"
+> +#include "gt/intel_context.h"
+> +
+>  #define INVALID_OP    (~0U)
+> =20
+>  #define OP_LEN_MI           9
+> @@ -454,6 +459,7 @@ enum {
+>  	RING_BUFFER_INSTRUCTION,
+>  	BATCH_BUFFER_INSTRUCTION,
+>  	BATCH_BUFFER_2ND_LEVEL,
+> +	RING_BUFFER_CTX,
+>  };
+> =20
+>  enum {
+> @@ -495,6 +501,7 @@ struct parser_exec_state {
+>  	 */
+>  	int saved_buf_addr_type;
+>  	bool is_ctx_wa;
+> +	bool is_init_ctx;
+> =20
+>  	const struct cmd_info *info;
+> =20
+> @@ -708,6 +715,11 @@ static inline u32 cmd_val(struct parser_exec_state *=
+s, int index)
+>  	return *cmd_ptr(s, index);
+>  }
+> =20
+> +static inline bool is_init_ctx(struct parser_exec_state *s)
+> +{
+> +	return (s->buf_type =3D=3D RING_BUFFER_CTX && s->is_init_ctx);
+> +}
+> +
+>  static void parser_exec_state_dump(struct parser_exec_state *s)
+>  {
+>  	int cnt =3D 0;
+> @@ -721,7 +733,8 @@ static void parser_exec_state_dump(struct parser_exec=
+_state *s)
+> =20
+>  	gvt_dbg_cmd("  %s %s ip_gma(%08lx) ",
+>  			s->buf_type =3D=3D RING_BUFFER_INSTRUCTION ?
+> -			"RING_BUFFER" : "BATCH_BUFFER",
+> +			"RING_BUFFER" : ((s->buf_type =3D=3D RING_BUFFER_CTX) ?
+> +				"CTX_BUFFER" : "BATCH_BUFFER"),
+>  			s->buf_addr_type =3D=3D GTT_BUFFER ?
+>  			"GTT" : "PPGTT", s->ip_gma);
+> =20
+> @@ -756,7 +769,8 @@ static inline void update_ip_va(struct parser_exec_st=
+ate *s)
+>  	if (WARN_ON(s->ring_head =3D=3D s->ring_tail))
+>  		return;
+> =20
+> -	if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION) {
+> +	if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION ||
+> +			s->buf_type =3D=3D RING_BUFFER_CTX) {
+>  		unsigned long ring_top =3D s->ring_start + s->ring_size;
+> =20
+>  		if (s->ring_head > s->ring_tail) {
+> @@ -936,6 +950,11 @@ static int cmd_reg_handler(struct parser_exec_state =
+*s,
+>  		return -EFAULT;
+>  	}
+> =20
+> +	if (is_init_ctx(s)) {
+> +		intel_gvt_mmio_set_cmd_accessible(gvt, offset);
+> +		return 0;
+> +	}
+> +
+>  	if (!intel_gvt_mmio_is_cmd_accessible(gvt, offset)) {
+>  		gvt_vgpu_err("%s access to non-render register (%x)\n",
+>  				cmd, offset);
+> @@ -1215,6 +1234,8 @@ static int cmd_handler_mi_batch_buffer_end(struct p=
+arser_exec_state *s)
+>  		s->buf_type =3D BATCH_BUFFER_INSTRUCTION;
+>  		ret =3D ip_gma_set(s, s->ret_ip_gma_bb);
+>  		s->buf_addr_type =3D s->saved_buf_addr_type;
+> +	} else if (s->buf_type =3D=3D RING_BUFFER_CTX) {
+> +		ret =3D ip_gma_set(s, s->ring_tail);
+>  	} else {
+>  		s->buf_type =3D RING_BUFFER_INSTRUCTION;
+>  		s->buf_addr_type =3D GTT_BUFFER;
+> @@ -2763,7 +2784,8 @@ static int command_scan(struct parser_exec_state *s,
+>  	gma_bottom =3D rb_start +  rb_len;
+> =20
+>  	while (s->ip_gma !=3D gma_tail) {
+> -		if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION) {
+> +		if (s->buf_type =3D=3D RING_BUFFER_INSTRUCTION ||
+> +				s->buf_type =3D=3D RING_BUFFER_CTX) {
+>  			if (!(s->ip_gma >=3D rb_start) ||
+>  				!(s->ip_gma < gma_bottom)) {
+>  				gvt_vgpu_err("ip_gma %lx out of ring scope."
+> @@ -3056,6 +3078,121 @@ int intel_gvt_scan_and_shadow_wa_ctx(struct intel=
+_shadow_wa_ctx *wa_ctx)
+>  	return 0;
+>  }
+> =20
+> +/* generate dummy contexts by sending empty requests to HW, and let
+> + * the HW to fill Engine Contexts. This dummy contexts are used for
+> + * initialization purpose (update reg whitelist), so referred to as
+> + * init context here
+> + */
+> +void intel_gvt_update_reg_whitelist(struct intel_vgpu *vgpu)
+> +{
+> +	struct intel_gvt *gvt =3D vgpu->gvt;
+> +	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
+> +	struct intel_engine_cs *engine;
+> +	enum intel_engine_id id;
+> +	const unsigned long start =3D LRC_STATE_PN * PAGE_SIZE;
+> +	struct i915_request *rq;
+> +	struct intel_vgpu_submission *s =3D &vgpu->submission;
+> +	struct i915_request *requests[I915_NUM_ENGINES] =3D {};
+> +	bool is_ctx_pinned[I915_NUM_ENGINES] =3D {};
+> +	int ret;
+> +
+> +	if (gvt->is_reg_whitelist_updated)
+> +		return;
+> +
+> +	for_each_engine(engine, &dev_priv->gt, id) {
+> +		ret =3D intel_context_pin(s->shadow[id]);
+> +		if (ret) {
+> +			gvt_vgpu_err("fail to pin shadow ctx\n");
+> +			goto out;
+> +		}
+> +		is_ctx_pinned[id] =3D true;
+> +
+> +		rq =3D i915_request_create(s->shadow[id]);
+> +		if (IS_ERR(rq)) {
+> +			gvt_vgpu_err("fail to alloc default request\n");
+> +			ret =3D -EIO;
+> +			goto out;
+> +		}
+> +		requests[id] =3D i915_request_get(rq);
+> +		i915_request_add(rq);
+> +	}
+> +
+> +	if (intel_gt_wait_for_idle(&dev_priv->gt,
+> +				I915_GEM_IDLE_TIMEOUT) =3D=3D -ETIME) {
+> +		ret =3D -EIO;
+> +		goto out;
+> +	}
+> +
+> +	/* scan init ctx to update cmd accessible list */
+> +	for_each_engine(engine, &dev_priv->gt, id) {
+> +		int size =3D engine->context_size - PAGE_SIZE;
+> +		void *vaddr;
+> +		struct parser_exec_state s;
+> +		struct drm_i915_gem_object *obj;
+> +		struct i915_request *rq;
+> +
+> +		rq =3D requests[id];
+> +		GEM_BUG_ON(!i915_request_completed(rq));
+> +		GEM_BUG_ON(!intel_context_is_pinned(rq->context));
+> +		obj =3D rq->context->state->obj;
+> +
+> +		if (!obj) {
+> +			ret =3D -EIO;
+> +			goto out;
+> +		}
+> +
+> +		i915_gem_object_set_cache_coherency(obj,
+> +						    I915_CACHE_LLC);
+> +
+> +		vaddr =3D i915_gem_object_pin_map(obj, I915_MAP_WB);
+> +		if (IS_ERR(vaddr)) {
+> +			gvt_err("failed to pin init ctx obj, ring=3D%d, err=3D%lx\n",
+> +				id, PTR_ERR(vaddr));
+> +			goto out;
+> +		}
+> +
+> +		s.buf_type =3D RING_BUFFER_CTX;
+> +		s.buf_addr_type =3D GTT_BUFFER;
+> +		s.vgpu =3D vgpu;
+> +		s.engine =3D engine;
+> +		s.ring_start =3D 0;
+> +		s.ring_size =3D size;
+> +		s.ring_head =3D 0;
+> +		s.ring_tail =3D size;
+> +		s.rb_va =3D vaddr + start;
+> +		s.workload =3D NULL;
+> +		s.is_ctx_wa =3D false;
+> +		s.is_init_ctx =3D true;
+> +
+> +		/* skipping the first RING_CTX_SIZE(0x50) dwords */
+> +		ret =3D ip_gma_set(&s, RING_CTX_SIZE);
+> +		if (ret) {
+> +			i915_gem_object_unpin_map(obj);
+> +			goto out;
+> +		}
+> +
+> +		ret =3D command_scan(&s, 0, size, 0, size);
+> +		if (ret)
+> +			gvt_err("Scan init ctx error\n");
+> +
+> +		i915_gem_object_unpin_map(obj);
+> +	}
+> +
+> +out:
+> +	if (!ret)
+> +		gvt->is_reg_whitelist_updated =3D true;
+> +
+> +	for (id =3D 0; id < I915_NUM_ENGINES ; id++) {
+> +		if (!requests[id])
+> +			continue;
+> +		i915_request_put(requests[id]);
+> +
+> +		if (!is_ctx_pinned[id])
+> +			continue;
+> +		intel_context_unpin(s->shadow[id]);
 
-A Mexican business tycoon was killed along with at least two members of his family in a helicopter crash on the outskirts of Mexico City on Sunday night, in an emergency .
+In error path, these two steps looks inconsistent which could skip ctx unpi=
+n...
 
-Now our bank has been waiting for any of the relatives to come forth for the  claim but nobody has done that SINCE 2010. I personally have been unsuccessful in locating the relatives,Which the Board of Directors are planning to share these funds among them-self.
-I have a good heart to use this funds to help the poor and street children who also  have a motherless home. I want to build my orphanage home, which is a setting NGO for the disability people that can not afford to eat 3 square meals a day. I don't know about you.
-I do seek your consent as my foreign business partner in this transaction to present you as the next of kin/Beneficiary to the deceased, so that the funds of this accoun valued at $85.5 Million USD can be paid to your local bank account in your country. Also know that the transaction is 100% free risk, because I have all the legal documents with me to make this transaction possible, and the funds we will share are 50/50.
+> +	}
+> +}
+> +
+>  static int init_cmd_table(struct intel_gvt *gvt)
+>  {
+>  	unsigned int gen_type =3D intel_gvt_get_device_type(gvt);
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.h b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.h
+> index ab25d151932a..09ca2b8a63c8 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.h
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.h
+> @@ -50,4 +50,6 @@ int intel_gvt_scan_and_shadow_ringbuffer(struct intel_v=
+gpu_workload *workload);
+> =20
+>  int intel_gvt_scan_and_shadow_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx);
+> =20
+> +void intel_gvt_update_reg_whitelist(struct intel_vgpu *vgpu);
+> +
+>  #endif
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
+> index cf3578e3f4dd..fad412d19f9c 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> @@ -329,6 +329,7 @@ struct intel_gvt {
+>  		u32 *mocs_mmio_offset_list;
+>  		u32 mocs_mmio_offset_list_cnt;
+>  	} engine_mmio_list;
+> +	bool is_reg_whitelist_updated;
+> =20
+>  	struct dentry *debugfs_root;
+>  };
+> @@ -412,6 +413,9 @@ int intel_gvt_load_firmware(struct intel_gvt *gvt);
+>  #define vgpu_fence_base(vgpu) (vgpu->fence.base)
+>  #define vgpu_fence_sz(vgpu) (vgpu->fence.size)
+> =20
+> +/* ring context size i.e. the first 0x50 dwords*/
+> +#define RING_CTX_SIZE 320
+> +
+>  struct intel_vgpu_creation_params {
+>  	__u64 handle;
+>  	__u64 low_gm_sz;  /* in MB */
+> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/v=
+gpu.c
+> index e49944fde333..5a7226339cf4 100644
+> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+> @@ -500,9 +500,11 @@ struct intel_vgpu *intel_gvt_create_vgpu(struct inte=
+l_gvt *gvt,
+> =20
+>  	mutex_lock(&gvt->lock);
+>  	vgpu =3D __intel_gvt_create_vgpu(gvt, &param);
+> -	if (!IS_ERR(vgpu))
+> +	if (!IS_ERR(vgpu)) {
+>  		/* calculate left instance change for types */
+>  		intel_gvt_update_vgpu_types(gvt);
+> +		intel_gvt_update_reg_whitelist(vgpu);
+> +	}
+>  	mutex_unlock(&gvt->lock);
+> =20
+>  	return vgpu;
+> --=20
+> 2.17.1
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
-Please Provide me the following few information about you, as we have a few days to run it through to achieve our goal.
+--=20
 
-1, Your Full names:.............................
-2, Your age:..........................
-3, Your private phone number:...............
-4, Your current country and residential address:........
-5, Your Occupation:.....................
+$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
 
-Please on your message and indicate your interest,
-i will furnish you with more information on this business transaction once I get your response back asap.
+--yZxAaITavNk3ADw/
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Best Regard
-Ms. Liza Wong
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX+GCygAKCRCxBBozTXgY
+J+l1AJ9bGlqV7NY3ohDHnwV9w3I8iS2/lgCfaMHLPo8HxuoCHUUnZuVxYmObNik=
+=m1mc
+-----END PGP SIGNATURE-----
+
+--yZxAaITavNk3ADw/--
+
+--===============0234848120==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0234848120==--
