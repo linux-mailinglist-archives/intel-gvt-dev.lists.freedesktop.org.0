@@ -1,38 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A61E82E11EC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 23 Dec 2020 03:19:22 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A54C92E11ED
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 23 Dec 2020 03:19:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 63CE66E8B4;
-	Wed, 23 Dec 2020 02:19:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4ED496E8B6;
+	Wed, 23 Dec 2020 02:19:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D6F676E8B4
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DD2AF6E8B6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 23 Dec 2020 02:19:19 +0000 (UTC)
-IronPort-SDR: fBhOW4VocHAe/q0E+On/Fx+9nHIT0Ek8Q+i0YADMSQMG580vpzgsJYA4l6FrQxzv/Pl7bl+bZB
- /OIw5uW+TFZQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="163672468"
-X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="163672468"
+ Wed, 23 Dec 2020 02:19:29 +0000 (UTC)
+IronPort-SDR: vDxlPBhnvN5clP3siA4UiosdtqJgIrsM0XlD2pTQzJoVJqi9CKEuVCjU0czpOMKjONfhQuBmnI
+ 99nROMypPSdA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="172439767"
+X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="172439767"
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2020 18:19:19 -0800
-IronPort-SDR: 1B1gQxJHAJxHScLzq1x4cPOVJSGVIvhdFfhNHHq2rQYqHNWq/4yDbAeY0rj5fk3d908CgBxQ6t
- tArWsHR9985w==
-X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="564909202"
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2020 18:19:29 -0800
+IronPort-SDR: CbcJVl/2t1p27v0qP6DKL7meTRFhmXjqXN+v+EsbALHtJ7Grwj2tupGc5udnAieSNeyBS+d0YC
+ Ype0MeqKqs5w==
+X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="564909221"
 Received: from yzhao56-desk.sh.intel.com ([10.239.13.16])
  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2020 18:19:17 -0800
+ 22 Dec 2020 18:19:28 -0800
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org,
 	zhenyuw@linux.intel.com
-Subject: [PATCH v4 04/11] drm/i915/gvt: filter cmds "lrr-src" and "lrr-dst" in
- cmd_handler
-Date: Wed, 23 Dec 2020 10:06:34 +0800
-Message-Id: <20201223020634.10887-1-yan.y.zhao@intel.com>
+Subject: [PATCH v4 05/11] drm/i915/gvt: filter cmd "pipe-ctrl" in cmd_handler
+Date: Wed, 23 Dec 2020 10:06:45 +0800
+Message-Id: <20201223020645.10935-1-yan.y.zhao@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201223020324.10672-1-yan.y.zhao@intel.com>
 References: <20201223020324.10672-1-yan.y.zhao@intel.com>
@@ -56,28 +55,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-do not allow "lrr-src" and "lrr-dst"
+"pipe-ctrl" is still a TODO. allow it here.
 
 Cc: Colin Xu <colin.xu@intel.com>
 Cc: Kevin Tian <kevin.tian@intel.com>
-
 Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/gpu/drm/i915/gvt/cmd_parser.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-index d008da48f998..89d4d5ddb07e 100644
+index 89d4d5ddb07e..4aef34304a98 100644
 --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
 +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-@@ -991,6 +991,12 @@ static int cmd_reg_handler(struct parser_exec_state *s,
- 			return 0;
+@@ -997,6 +997,11 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+ 		return -EPERM;
  	}
  
-+	if (!strncmp(cmd, "lrr-src", 7) ||
-+			!strncmp(cmd, "lrr-dst", 7)) {
-+		gvt_vgpu_err("not allowed cmd %s\n", cmd);
-+		return -EPERM;
++	if (!strncmp(cmd, "pipe_ctrl", 9)) {
++		/* TODO: add LRI POST logic here */
++		return 0;
 +	}
 +
  	if (is_cmd_update_pdps(offset, s) &&
