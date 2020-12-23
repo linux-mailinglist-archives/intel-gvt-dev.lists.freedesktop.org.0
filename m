@@ -2,37 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB9052E17EF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 23 Dec 2020 04:59:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 165E62E17F1
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 23 Dec 2020 04:59:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 66C256E8C2;
-	Wed, 23 Dec 2020 03:59:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CC5A46E8C4;
+	Wed, 23 Dec 2020 03:59:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A8F836E8C2
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 61E9F6E8C4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 23 Dec 2020 03:59:07 +0000 (UTC)
-IronPort-SDR: RZxB8JrLVlPRcZWLulBceoKjXyxTw8nb4+J48sPSv+SBgPVluSPAp1w2C6x0NlzixIfcrdjGjR
- wZl0Kbo7KtEQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="240042760"
-X-IronPort-AV: E=Sophos;i="5.78,441,1599548400"; d="scan'208";a="240042760"
+ Wed, 23 Dec 2020 03:59:16 +0000 (UTC)
+IronPort-SDR: 4UWeB0Mygk6DiP7NF6VaUGdU1lQDsqYX5ToplY8qU8xRJtUuXRaMGxH7BdpgkyR7AYxRlrpHy/
+ vTkbjxkJ1jOg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="155746976"
+X-IronPort-AV: E=Sophos;i="5.78,441,1599548400"; d="scan'208";a="155746976"
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2020 19:59:07 -0800
-IronPort-SDR: KFg3WbwD6ZVrzmTPYKHWoHo2u/+Oyq6jEHnb2SNRqmhqu0fV+FCUlmBkyprcfe6Jd1BzTWGOuE
- lfY7dpA+H3/A==
-X-IronPort-AV: E=Sophos;i="5.78,441,1599548400"; d="scan'208";a="564930139"
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2020 19:59:16 -0800
+IronPort-SDR: rFgh/ewGDsCNFdgjPHFdhcza/Gqdzo02TyXPCE922bcSMiNmDx/eQf4+CUG3XO6q4bUyEW/q87
+ oh2s1oJtkWpw==
+X-IronPort-AV: E=Sophos;i="5.78,441,1599548400"; d="scan'208";a="564930175"
 Received: from yzhao56-desk.sh.intel.com ([10.239.13.16])
  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2020 19:59:05 -0800
+ 22 Dec 2020 19:59:14 -0800
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org,
 	zhenyuw@linux.intel.com
-Subject: [PATCH v5 10/11] drm/i915/gvt: update F_CMD_WRITE_PATCH flag when
- parsing init ctx
-Date: Wed, 23 Dec 2020 11:46:23 +0800
-Message-Id: <20201223034623.17368-1-yan.y.zhao@intel.com>
+Subject: [PATCH v5 11/11] drm/i915/gvt: unify lri cmd handler and mmio handlers
+Date: Wed, 23 Dec 2020 11:46:32 +0800
+Message-Id: <20201223034632.17416-1-yan.y.zhao@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201223034353.16882-1-yan.y.zhao@intel.com>
 References: <20201223034353.16882-1-yan.y.zhao@intel.com>
@@ -55,32 +54,198 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-if a vreg has write handler, set its flag F_CMD_WRITE_PATCH on when
-parsing init ctx.
+for common ctxs and commands in workload, call mmio handlers for value
+checking and command patching for registers with command fix write flag
+set.
+
+after calling mmio handlers, resotre old vreg values so as to keep vreg
+unchanged after command scanning.
+
+Note:
+for regs in below catigories,
+a. in ctx and save-restore list, and is inhibit ctx
+b. in mocs
+after cmd scanning, do not restore old vreg values, but update vreg as
+what has been implemented before this patch.
 
 Cc: Kevin Tian <kevin.tian@intel.com>
 Signed-off-by: Yan Zhao <yan.y.zhao@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/i915/gvt/cmd_parser.c | 130 +++++++++++---------------
+ 1 file changed, 55 insertions(+), 75 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-index 83fa4f17c943..97f1c3e270e6 100644
+index 97f1c3e270e6..7fb91de06557 100644
 --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
 +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-@@ -953,7 +953,12 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+@@ -836,68 +836,12 @@ static inline int cmd_length(struct parser_exec_state *s)
+ 	*addr = val; \
+ } while (0)
+ 
+-static bool is_shadowed_mmio(unsigned int offset)
+-{
+-	bool ret = false;
+-
+-	if ((offset == 0x2168) || /*BB current head register UDW */
+-	    (offset == 0x2140) || /*BB current header register */
+-	    (offset == 0x211c) || /*second BB header register UDW */
+-	    (offset == 0x2114)) { /*second BB header register UDW */
+-		ret = true;
+-	}
+-	return ret;
+-}
+-
+-static inline bool is_force_nonpriv_mmio(unsigned int offset)
+-{
+-	return (offset >= 0x24d0 && offset < 0x2500);
+-}
+-
+-static int force_nonpriv_reg_handler(struct parser_exec_state *s,
+-		unsigned int offset, unsigned int index, char *cmd)
+-{
+-	struct intel_gvt *gvt = s->vgpu->gvt;
+-	unsigned int data;
+-	u32 ring_base;
+-	u32 nopid;
+-
+-	if (!strcmp(cmd, "lri"))
+-		data = cmd_val(s, index + 1);
+-	else {
+-		gvt_err("Unexpected forcenonpriv 0x%x write from cmd %s\n",
+-			offset, cmd);
+-		return -EINVAL;
+-	}
+-
+-	ring_base = s->engine->mmio_base;
+-	nopid = i915_mmio_reg_offset(RING_NOPID(ring_base));
+-
+-	if (!intel_gvt_in_force_nonpriv_whitelist(gvt, data) &&
+-			data != nopid) {
+-		gvt_err("Unexpected forcenonpriv 0x%x LRI write, value=0x%x\n",
+-			offset, data);
+-		patch_value(s, cmd_ptr(s, index), nopid);
+-		return 0;
+-	}
+-	return 0;
+-}
+-
+ static inline bool is_mocs_mmio(unsigned int offset)
+ {
+ 	return ((offset >= 0xc800) && (offset <= 0xcff8)) ||
+ 		((offset >= 0xb020) && (offset <= 0xb0a0));
+ }
+ 
+-static int mocs_cmd_reg_handler(struct parser_exec_state *s,
+-				unsigned int offset, unsigned int index)
+-{
+-	if (!is_mocs_mmio(offset))
+-		return -EINVAL;
+-	vgpu_vreg(s->vgpu, offset) = cmd_val(s, index + 1);
+-	return 0;
+-}
+-
+ static int is_cmd_update_pdps(unsigned int offset,
+ 			      struct parser_exec_state *s)
+ {
+@@ -945,6 +889,7 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+ 	struct intel_vgpu *vgpu = s->vgpu;
+ 	struct intel_gvt *gvt = vgpu->gvt;
+ 	u32 ctx_sr_ctl;
++	u32 *vreg, vreg_old;
+ 
+ 	if (offset + 4 > gvt->device_info.mmio_size) {
+ 		gvt_vgpu_err("%s access to (%x) outside of MMIO range\n",
+@@ -968,25 +913,6 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+ 		return -EBADRQC;
  	}
  
- 	if (is_init_ctx(s)) {
-+		struct intel_gvt_mmio_info *mmio_info;
-+
- 		intel_gvt_mmio_set_cmd_accessible(gvt, offset);
-+		mmio_info = intel_gvt_find_mmio_info(gvt, offset);
-+		if (mmio_info && mmio_info->write)
-+			intel_gvt_mmio_set_cmd_write_patch(gvt, offset);
+-	if (is_shadowed_mmio(offset)) {
+-		gvt_vgpu_err("found access of shadowed MMIO %x\n", offset);
+-		return 0;
+-	}
+-
+-	if (is_mocs_mmio(offset) &&
+-	    mocs_cmd_reg_handler(s, offset, index))
+-		return -EINVAL;
+-
+-	if (is_force_nonpriv_mmio(offset) &&
+-		force_nonpriv_reg_handler(s, offset, index, cmd))
+-		return -EPERM;
+-
+-	if (offset == i915_mmio_reg_offset(DERRMR) ||
+-		offset == i915_mmio_reg_offset(FORCEWAKE_MT)) {
+-		/* Writing to HW VGT_PVINFO_PAGE offset will be discarded */
+-		patch_value(s, cmd_ptr(s, index), VGT_PVINFO_PAGE);
+-	}
+-
+ 	if (!strncmp(cmd, "srm", 3) ||
+ 			!strncmp(cmd, "lrm", 3)) {
+ 		if (offset != i915_mmio_reg_offset(GEN8_L3SQCREG4) &&
+@@ -1009,10 +935,64 @@ static int cmd_reg_handler(struct parser_exec_state *s,
  		return 0;
  	}
  
++	if (strncmp(cmd, "lri", 3))
++		return -EPERM;
++
++	/* below are all lri handlers */
++	vreg = &vgpu_vreg(s->vgpu, offset);
++	if (!intel_gvt_mmio_is_cmd_accessible(gvt, offset)) {
++		gvt_vgpu_err("%s access to non-render register (%x)\n",
++				cmd, offset);
++		return -EBADRQC;
++	}
++
+ 	if (is_cmd_update_pdps(offset, s) &&
+ 	    cmd_pdp_mmio_update_handler(s, offset, index))
+ 		return -EINVAL;
+ 
++	if (offset == i915_mmio_reg_offset(DERRMR) ||
++		offset == i915_mmio_reg_offset(FORCEWAKE_MT)) {
++		/* Writing to HW VGT_PVINFO_PAGE offset will be discarded */
++		patch_value(s, cmd_ptr(s, index), VGT_PVINFO_PAGE);
++	}
++
++	if (is_mocs_mmio(offset))
++		*vreg = cmd_val(s, index + 1);
++
++	vreg_old = *vreg;
++
++	if (intel_gvt_mmio_is_cmd_write_patch(gvt, offset)) {
++		u32 cmdval_new, cmdval;
++		struct intel_gvt_mmio_info *mmio_info;
++
++		cmdval = cmd_val(s, index + 1);
++
++		mmio_info = intel_gvt_find_mmio_info(gvt, offset);
++		if (!mmio_info) {
++			cmdval_new = cmdval;
++		} else {
++			u64 ro_mask = mmio_info->ro_mask;
++			int ret;
++
++			if (likely(!ro_mask))
++				ret = mmio_info->write(s->vgpu, offset,
++						&cmdval, 4);
++			else {
++				gvt_vgpu_err("try to write RO reg %x\n",
++						offset);
++				ret = -EBADRQC;
++			}
++			if (ret)
++				return ret;
++			cmdval_new = *vreg;
++		}
++		if (cmdval_new != cmdval)
++			patch_value(s, cmd_ptr(s, index+1), cmdval_new);
++	}
++
++	/* only patch cmd. restore vreg value if changed in mmio write handler*/
++	*vreg = vreg_old;
++
+ 	/* TODO
+ 	 * In order to let workload with inhibit context to generate
+ 	 * correct image data into memory, vregs values will be loaded to
 -- 
 2.17.1
 
