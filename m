@@ -2,39 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47BD22E2BD9
+	by mail.lfdr.de (Postfix) with ESMTPS id 05CE42E2BD8
 	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Dec 2020 16:38:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6132989873;
+	by gabe.freedesktop.org (Postfix) with ESMTP id 56A2C89872;
 	Fri, 25 Dec 2020 15:38:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EB63289872
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 762C889872
  for <intel-gvt-dev@lists.freedesktop.org>;
  Fri, 25 Dec 2020 15:38:53 +0000 (UTC)
-IronPort-SDR: u3V1DqdYA72khCrpcYL/ba534P1CZBvjZsns+JA3AxksKIY+BMYrT4EgltNhz50WfaJeruLCZ3
- vlIhOp2ylM0A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9845"; a="240308747"
-X-IronPort-AV: E=Sophos;i="5.78,448,1599548400"; d="scan'208";a="240308747"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Dec 2020 07:38:52 -0800
-IronPort-SDR: DfTim1ZdCLTRP7XQQOGH2VVjZcoNsyzFZZ+CuXoecphqi4B8gam1ivpIewmzMMfBpc5qe+lNx7
- PvZlR2Yp7oYQ==
+IronPort-SDR: /q4vxL7j3vwN4ZgQwXH0xFVQbVHK4MtLp72dcqxkkMiM2RU8xEcqtHaO8Zi2zxlhZk6TC89Mrz
+ pQGcgwheYPYA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9845"; a="173649617"
+X-IronPort-AV: E=Sophos;i="5.78,448,1599548400"; d="scan'208";a="173649617"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Dec 2020 07:38:53 -0800
+IronPort-SDR: zJ0kWGeo2kxlAafnNBoWfFzV/+Sk8coNOnL3AmDt+9BLgjVZpDwFCMNZal3QjRwXmgA0t84byT
+ qgW8kywaUAgQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,448,1599548400"; d="scan'208";a="399242182"
+X-IronPort-AV: E=Sophos;i="5.78,448,1599548400"; d="scan'208";a="357785453"
 Received: from lkp-server02.sh.intel.com (HELO 4242b19f17ef) ([10.239.97.151])
- by FMSMGA003.fm.intel.com with ESMTP; 25 Dec 2020 07:38:51 -0800
+ by orsmga002.jf.intel.com with ESMTP; 25 Dec 2020 07:38:51 -0800
 Received: from kbuild by 4242b19f17ef with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1kspB4-0001bz-MS; Fri, 25 Dec 2020 15:38:50 +0000
-Date: Fri, 25 Dec 2020 23:38:11 +0800
+ id 1kspB4-0001bw-IH; Fri, 25 Dec 2020 15:38:50 +0000
+Date: Fri, 25 Dec 2020 23:38:15 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-gt-next] BUILD SUCCESS
- 02dd2b12a685944c4d52c569d05f636372a7b6c7
-Message-ID: <5fe60763.l/ip2UokGimyMc3c%lkp@intel.com>
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ f3e6199da3c4ea1c57ff52da94569204a927d1f4
+Message-ID: <5fe60767.wfwyYkFy8tFR/wU8%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -56,45 +56,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git  gvt-gt-next
-branch HEAD: 02dd2b12a685944c4d52c569d05f636372a7b6c7  drm/i915/gvt: unify lri cmd handler and mmio handlers
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-staging
+branch HEAD: f3e6199da3c4ea1c57ff52da94569204a927d1f4  gvt-staging: 2020y-12m-25d-11h-23m-23s CST integration manifest
 
 elapsed time: 722m
 
-configs tested: 92
+configs tested: 63
 configs skipped: 2
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
 gcc tested configs:
+arm                                 defconfig
 arm64                            allyesconfig
 arm64                               defconfig
-arm                                 defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-arm                         shannon_defconfig
-sh                             sh03_defconfig
-mips                        qi_lb60_defconfig
-ia64                            zx1_defconfig
-m68k                        stmark2_defconfig
+powerpc                     powernv_defconfig
+arm                       imx_v6_v7_defconfig
+riscv                    nommu_virt_defconfig
+sh                             shx3_defconfig
 xtensa                generic_kc705_defconfig
 mips                         tb0219_defconfig
 mips                         db1xxx_defconfig
 mips                          rm200_defconfig
 arm                            mmp2_defconfig
-mips                        workpad_defconfig
-sh                           se7206_defconfig
-um                             i386_defconfig
-mips                          malta_defconfig
-arm                           spitz_defconfig
-powerpc                 mpc85xx_cds_defconfig
-sh                           se7705_defconfig
-powerpc                       ppc64_defconfig
-m68k                       bvme6000_defconfig
-x86_64                              defconfig
-arm                            dove_defconfig
-xtensa                           alldefconfig
+powerpc                  mpc885_ads_defconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
@@ -128,40 +116,21 @@ mips                             allmodconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
-x86_64               randconfig-a001-20201225
-x86_64               randconfig-a006-20201225
-x86_64               randconfig-a004-20201225
-x86_64               randconfig-a002-20201225
-x86_64               randconfig-a003-20201225
-x86_64               randconfig-a005-20201225
-i386                 randconfig-a002-20201225
-i386                 randconfig-a005-20201225
-i386                 randconfig-a006-20201225
-i386                 randconfig-a004-20201225
-i386                 randconfig-a003-20201225
-i386                 randconfig-a001-20201225
 i386                 randconfig-a011-20201225
+x86_64               randconfig-a001-20201225
 riscv                    nommu_k210_defconfig
 riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
 riscv                               defconfig
 riscv                          rv32_defconfig
 riscv                            allmodconfig
 x86_64                                   rhel
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
 x86_64                           allyesconfig
 x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
 x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a015-20201225
-x86_64               randconfig-a014-20201225
-x86_64               randconfig-a016-20201225
-x86_64               randconfig-a012-20201225
-x86_64               randconfig-a013-20201225
-x86_64               randconfig-a011-20201225
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
