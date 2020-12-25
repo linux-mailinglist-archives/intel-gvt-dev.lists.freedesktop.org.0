@@ -2,38 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE1F72E297D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Dec 2020 03:36:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47BD22E2BD9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Dec 2020 16:38:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2818489BAC;
-	Fri, 25 Dec 2020 02:36:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6132989873;
+	Fri, 25 Dec 2020 15:38:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9BF7F89BAC;
- Fri, 25 Dec 2020 02:36:06 +0000 (UTC)
-IronPort-SDR: y6H4r06DJ9FDh1M5LVHBMoh4JRorD8rJt1kMbU0FkyWXsS2N7d7Cxc6JqO0T23nTj1q8Noi9yl
- Fo74oeVlE++A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9845"; a="155398829"
-X-IronPort-AV: E=Sophos;i="5.78,446,1599548400"; 
- d="asc'?scan'208";a="155398829"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EB63289872
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 25 Dec 2020 15:38:53 +0000 (UTC)
+IronPort-SDR: u3V1DqdYA72khCrpcYL/ba534P1CZBvjZsns+JA3AxksKIY+BMYrT4EgltNhz50WfaJeruLCZ3
+ vlIhOp2ylM0A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9845"; a="240308747"
+X-IronPort-AV: E=Sophos;i="5.78,448,1599548400"; d="scan'208";a="240308747"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Dec 2020 18:36:06 -0800
-IronPort-SDR: tucc61tEHFQmJSbQhu8JXOadOwoHBaf9bG2MyBUbP8E+J7H9FidSOYi+nzVvKO+ZVTwTFERrRo
- XFb0Jxd8RqQw==
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Dec 2020 07:38:52 -0800
+IronPort-SDR: DfTim1ZdCLTRP7XQQOGH2VVjZcoNsyzFZZ+CuXoecphqi4B8gam1ivpIewmzMMfBpc5qe+lNx7
+ PvZlR2Yp7oYQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,446,1599548400"; 
- d="asc'?scan'208";a="399014257"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by FMSMGA003.fm.intel.com with ESMTP; 24 Dec 2020 18:36:04 -0800
-Date: Fri, 25 Dec 2020 10:20:09 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jani Nikula <jani.nikula@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
-Subject: [PULL] gvt-next-fixes
-Message-ID: <20201225022009.GF16939@zhen-hp.sh.intel.com>
+X-IronPort-AV: E=Sophos;i="5.78,448,1599548400"; d="scan'208";a="399242182"
+Received: from lkp-server02.sh.intel.com (HELO 4242b19f17ef) ([10.239.97.151])
+ by FMSMGA003.fm.intel.com with ESMTP; 25 Dec 2020 07:38:51 -0800
+Received: from kbuild by 4242b19f17ef with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kspB4-0001bz-MS; Fri, 25 Dec 2020 15:38:50 +0000
+Date: Fri, 25 Dec 2020 23:38:11 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt-linux:gvt-gt-next] BUILD SUCCESS
+ 02dd2b12a685944c4d52c569d05f636372a7b6c7
+Message-ID: <5fe60763.l/ip2UokGimyMc3c%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -47,103 +49,124 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============1518299535=="
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+tree/branch: https://github.com/intel/gvt-linux.git  gvt-gt-next
+branch HEAD: 02dd2b12a685944c4d52c569d05f636372a7b6c7  drm/i915/gvt: unify lri cmd handler and mmio handlers
 
---===============1518299535==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="aSM3KCOUSI0G0tph"
-Content-Disposition: inline
+elapsed time: 722m
 
+configs tested: 92
+configs skipped: 2
 
---aSM3KCOUSI0G0tph
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+gcc tested configs:
+arm64                            allyesconfig
+arm64                               defconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                         shannon_defconfig
+sh                             sh03_defconfig
+mips                        qi_lb60_defconfig
+ia64                            zx1_defconfig
+m68k                        stmark2_defconfig
+xtensa                generic_kc705_defconfig
+mips                         tb0219_defconfig
+mips                         db1xxx_defconfig
+mips                          rm200_defconfig
+arm                            mmp2_defconfig
+mips                        workpad_defconfig
+sh                           se7206_defconfig
+um                             i386_defconfig
+mips                          malta_defconfig
+arm                           spitz_defconfig
+powerpc                 mpc85xx_cds_defconfig
+sh                           se7705_defconfig
+powerpc                       ppc64_defconfig
+m68k                       bvme6000_defconfig
+x86_64                              defconfig
+arm                            dove_defconfig
+xtensa                           alldefconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a001-20201225
+x86_64               randconfig-a006-20201225
+x86_64               randconfig-a004-20201225
+x86_64               randconfig-a002-20201225
+x86_64               randconfig-a003-20201225
+x86_64               randconfig-a005-20201225
+i386                 randconfig-a002-20201225
+i386                 randconfig-a005-20201225
+i386                 randconfig-a006-20201225
+i386                 randconfig-a004-20201225
+i386                 randconfig-a003-20201225
+i386                 randconfig-a001-20201225
+i386                 randconfig-a011-20201225
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                                  kexec
 
-Hi,
+clang tested configs:
+x86_64               randconfig-a015-20201225
+x86_64               randconfig-a014-20201225
+x86_64               randconfig-a016-20201225
+x86_64               randconfig-a012-20201225
+x86_64               randconfig-a013-20201225
+x86_64               randconfig-a011-20201225
 
-Here's queued fixes from Jani for one useless inline and fix
-CONFIG_DRM_I915_WERROR for gvt headers.
-
-Thanks and Merry Christmas!
---
-The following changes since commit 9a3a238b3de97b4210c6de66aa88b2d7021ac086:
-
-  drm/i915/gvt: treat intel_gvt_mpt as const in gvt code (2020-11-23 17:14:=
-20 +0800)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux tags/gvt-next-fixes-2020-12-25
-
-for you to fetch changes up to e056f669dbf76b8752b6cb0b8edd2f75cbdcabb1:
-
-  drm/i915/gvt: make mpt.h self-contained (2020-12-22 11:41:35 +0800)
-
-----------------------------------------------------------------
-gvt-next-fixes-2020-12-25
-
-- Avoid one useless inline (Jani)
-- make gvt header self-contained, fix CONFIG_DRM_I915_WERROR (Jani)
-
-----------------------------------------------------------------
-Jani Nikula (9):
-      drm/i915/gvt: avoid useless use of inline
-      drm/i915/gvt: make execlist.h self-contained
-      drm/i915/gvt: make fb_decoder.h self-contained
-      drm/i915/gvt: make gtt.h self-contained
-      drm/i915/gvt: make interrupt.h self-contained
-      drm/i915/gvt: make mmio_context.h self-contained
-      drm/i915/gvt: make gvt.h self-contained
-      drm/i915/gvt: make scheduler.h self-contained
-      drm/i915/gvt: make mpt.h self-contained
-
- drivers/gpu/drm/i915/Makefile           | 10 +---------
- drivers/gpu/drm/i915/gvt/execlist.h     |  3 ---
- drivers/gpu/drm/i915/gvt/fb_decoder.h   |  6 ++++--
- drivers/gpu/drm/i915/gvt/gtt.h          | 11 ++++++++++-
- drivers/gpu/drm/i915/gvt/gvt.h          |  4 ++++
- drivers/gpu/drm/i915/gvt/handlers.c     |  3 +--
- drivers/gpu/drm/i915/gvt/interrupt.h    |  5 ++++-
- drivers/gpu/drm/i915/gvt/mmio_context.h | 11 +++++++++++
- drivers/gpu/drm/i915/gvt/mpt.h          |  2 ++
- drivers/gpu/drm/i915/gvt/scheduler.h    |  5 +++++
- 10 files changed, 42 insertions(+), 18 deletions(-)
-
---=20
-
-$gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
-
---aSM3KCOUSI0G0tph
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCX+VMVAAKCRCxBBozTXgY
-J1miAJ9OI18JK+wfkkoP+JmRZGGn08wJOwCgmq+Yakn4dTyjnyEo55NIfUoYeE8=
-=xG2a
------END PGP SIGNATURE-----
-
---aSM3KCOUSI0G0tph--
-
---===============1518299535==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1518299535==--
