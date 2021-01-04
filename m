@@ -2,24 +2,24 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E81922EB2B8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Jan 2021 19:41:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B1A102EB370
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Jan 2021 20:21:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3AE6189FA9;
-	Tue,  5 Jan 2021 18:41:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 67741893EB;
+	Tue,  5 Jan 2021 19:21:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3628 seconds by postgrey-1.36 at gabe;
- Tue, 05 Jan 2021 18:41:42 UTC
-Received: from uguisustore.com (unknown [185.53.168.18])
- by gabe.freedesktop.org (Postfix) with ESMTP id 37B2A6E07D
+X-Greylist: delayed 3929 seconds by postgrey-1.36 at gabe;
+ Tue, 05 Jan 2021 19:21:46 UTC
+Received: from mirankaleigh.com (unknown [31.7.62.103])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DF0FD89453
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  5 Jan 2021 18:41:42 +0000 (UTC)
+ Tue,  5 Jan 2021 19:21:46 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: 5 layers respirator
-Message-ID: <81443a221678c662dd26324903955144@petzlover.com>
-Date: Tue, 05 Jan 2021 04:59:14 +0100
-From: "Tony" <zyemedyalenordk@acmeplastics.com>
+Subject: Remote control distance 1000m
+Message-ID: <0695c5d6c0256710a22c27c455dee889@performancebike.com>
+Date: Mon, 04 Jan 2021 06:19:40 +0100
+From: "Kevin Henson" <zyemseyalenop@circlepackaging.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -34,12 +34,12 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: tonylesgamon@hotmail.com
-Content-Type: multipart/mixed; boundary="===============1554975988=="
+Reply-To: redichewordo@hotmail.com
+Content-Type: multipart/mixed; boundary="===============1822677542=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1554975988==
+--===============1822677542==
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 
@@ -47,41 +47,46 @@ Content-Transfer-Encoding: 8bit
 <head>
 </head>
 <body>
-<p>Hi,<br /><br />I hope this email finds you well.<br /><br />I am
-contacting you to let you know that&nbsp; we have FFP2 masks in stock
-KN95.<br /><br />Masks details:<br />Material:Non-woven Fabric, Solvent
-Spray, Thermal Insulation Cotton<br />Weight:6g / Mask<br />Color:White<br
-/>Size :10.5&times;15.5cm<br />* Preserves heat and is waterproof<br />*
-Soft texture and comfortable wear</p>
-<p><span>Prices for different volumes:</span><br /><span>50 units: 175.00
-(3.50 each)</span><br /><span>100 units 320.00 (3.20 each)</span><br
-/><span>200 units 560.50 (2.80 each)</span><br /><span>u s d<br /><br />If
-you would like make an order, we need to know your shipping address, and
-prepare the shipment for you.</span></p>
+<p>Hi,<br /><br />How are you? <br />I'm sending you an email today to let
+you know that&nbsp;we've got a new smart RC drone in our warehouse, ready
+to send to our worldwide customers.&nbsp;</p>
+<p>Some key features of this drone:<br /><br />Stable two-axis mechanical
+universal joint<br />6k 110&deg; wide-angle adjustable camera.<br
+/>Battery: 11.1V 2350mAh <br />Flight time: 25-30 minutes<br />Remote
+control distance: 1000m<br />Picture: 5700*4275<br />Video: 3840 * 1080<br
+/>Quadrilateral size:<br />Product folding size (CM): 17*11.5*6.7CM<br
+/>Product development size (CM): 26*26*6.7CM<br />-Follow me function: The
+aircraft will control the mobile phone and follow the direction of the
+operator.<br />-With automatic return function. The aircraft will return to
+the take-off point according to the GPS trajectory.</p>
+<p><br />Prices for different volumes:<br />1-10 units: 289.50 per unit<br
+/>10-100 units 279.50 per unit<br />&gt;=100 units 269.50 per unit<br />u s
+d<br /><br />Will you like to order it? Just respond to our email with your
+shipping address and we will ready the shipment.&nbsp;</p>
+<p></p>
 <p><img
-src="https://ae01.alicdn.com/kf/Ha5eaa71f67b84db5a03a50f2ba03c409d.jpg"
-alt="" width="450" height="450" /><img
-src="https://ae01.alicdn.com/kf/H8528bb70169a4755b15d6cb7f3c46d891.jpg"
-alt="" width="450" height="450" /></p>
+src="https://ae01.alicdn.com/kf/H365a6df1e3764c2fa36eb6591ae158e5J.jpg"
+width="450" height="681" /><img
+src="https://ae01.alicdn.com/kf/Hb28e58bc36d341efa3066db5e0728854x.jpg"
+width="450" height="617" /></p>
 <p><img
-src="https://ae01.alicdn.com/kf/He94cceaf9b684d37904316174378255bG.jpg"
-alt="" width="450" height="450" /><img
-src="https://ae01.alicdn.com/kf/Hc6d9abb02d2c40608fe68aa52452a0a3o.jpg"
-alt="" width="450" height="450" /></p>
+src="https://ae01.alicdn.com/kf/H730eb27672bc4b539fbeff43ec10e61eV.jpg"
+width="450" height="681" /><img
+src="https://ae01.alicdn.com/kf/H91c3c134a60542e384b9d35e5f214387D.jpg"
+width="450" height="651" /></p>
 <p><img
-src="https://ae01.alicdn.com/kf/H504aaa51469e422b8068f02cf3d0a64ef.jpg"
-alt="" width="450" height="450" /><img
-src="https://ae01.alicdn.com/kf/H7585a960f3cb4821921300943b0b2bc7O.jpg"
-alt="" width="450" height="450" /></p>
-<p><br />If you would like make an order, we need to know your shipping
-address, and prepare the shipment for you.<br /><br />Thanks,<br
-/>Tony&nbsp;Rogers</p>
-<p>&nbsp;</p>
+src="https://ae01.alicdn.com/kf/Hba4456237c79450fb21ddafb4995d031d.jpg"
+width="450" height="539" /><img
+src="https://ae01.alicdn.com/kf/H78e7b24ff44647a3984f842ca2796ce5E.jpg"
+width="450" height="946" /></p>
+<p>&nbsp;<br />Will you like to order it? Just respond to our email with
+your shipping address and we will ready the shipment.&nbsp;<br /><br
+/>Thanks,<br />Kevin Henson</p>
 </body>
 </html>
 
 
---===============1554975988==
+--===============1822677542==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -92,4 +97,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1554975988==--
+--===============1822677542==--
