@@ -2,26 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1A102EB370
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Jan 2021 20:21:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AF3612EB461
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Jan 2021 21:44:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 67741893EB;
-	Tue,  5 Jan 2021 19:21:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 67DBF89FC3;
+	Tue,  5 Jan 2021 20:44:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3929 seconds by postgrey-1.36 at gabe;
- Tue, 05 Jan 2021 19:21:46 UTC
-Received: from mirankaleigh.com (unknown [31.7.62.103])
- by gabe.freedesktop.org (Postfix) with ESMTP id DF0FD89453
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  5 Jan 2021 19:21:46 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Remote control distance 1000m
-Message-ID: <0695c5d6c0256710a22c27c455dee889@performancebike.com>
-Date: Mon, 04 Jan 2021 06:19:40 +0100
-From: "Kevin Henson" <zyemseyalenop@circlepackaging.com>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ED2A06E081;
+ Tue,  5 Jan 2021 20:44:51 +0000 (UTC)
+IronPort-SDR: SiM1rH1tsAOJaTXsnnAI950Q7RTd26q2djeaC2UWuyLZM64AJQIptul5y95FhVC29mSh9HHC88
+ 4xZvMVbea6jw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9855"; a="173667581"
+X-IronPort-AV: E=Sophos;i="5.78,478,1599548400"; d="scan'208";a="173667581"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jan 2021 12:44:51 -0800
+IronPort-SDR: JZzkKUH1fNh9Ef6GA59pKIT833d2+vMvtkX5mnFznpHF43c4Lb8Gk+zBkfPkfmF84pwBkB3dvR
+ Nf9N9Iy6IiHA==
+X-IronPort-AV: E=Sophos;i="5.78,478,1599548400"; d="scan'208";a="350525620"
+Received: from pmhm-mobl.amr.corp.intel.com (HELO intel.com) ([10.212.79.90])
+ by fmsmga008-auth.fm.intel.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Jan 2021 12:44:50 -0800
+Date: Tue, 5 Jan 2021 15:44:48 -0500
+From: Rodrigo Vivi <rodrigo.vivi@intel.com>
+To: Jani Nikula <jani.nikula@intel.com>
+Subject: Re: [Intel-gfx] [PULL] gvt-next-fixes
+Message-ID: <20210105204448.GA250697@intel.com>
+References: <20201225022009.GF16939@zhen-hp.sh.intel.com>
+ <20210105075424.GV16939@zhen-hp.sh.intel.com>
+ <87ft3f2315.fsf@intel.com>
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
+Content-Disposition: inline
+In-Reply-To: <87ft3f2315.fsf@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,67 +48,103 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: redichewordo@hotmail.com
-Content-Type: multipart/mixed; boundary="===============1822677542=="
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, "Yuan, Hang" <hang.yuan@intel.com>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1822677542==
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+On Tue, Jan 05, 2021 at 10:36:54AM +0200, Jani Nikula wrote:
+> On Tue, 05 Jan 2021, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
+> > Ping...
+> 
+> I suppose this should be merged to drm-intel-next (or drm-intel-gt-next,
+> or both). It was too late for next-fixes, and it's really not the kind
+> of fixes we need to queue to v5.11-rc's.
+> 
+> Rodrigo?
 
-<html>
-<head>
-</head>
-<body>
-<p>Hi,<br /><br />How are you? <br />I'm sending you an email today to let
-you know that&nbsp;we've got a new smart RC drone in our warehouse, ready
-to send to our worldwide customers.&nbsp;</p>
-<p>Some key features of this drone:<br /><br />Stable two-axis mechanical
-universal joint<br />6k 110&deg; wide-angle adjustable camera.<br
-/>Battery: 11.1V 2350mAh <br />Flight time: 25-30 minutes<br />Remote
-control distance: 1000m<br />Picture: 5700*4275<br />Video: 3840 * 1080<br
-/>Quadrilateral size:<br />Product folding size (CM): 17*11.5*6.7CM<br
-/>Product development size (CM): 26*26*6.7CM<br />-Follow me function: The
-aircraft will control the mobile phone and follow the direction of the
-operator.<br />-With automatic return function. The aircraft will return to
-the take-off point according to the GPS trajectory.</p>
-<p><br />Prices for different volumes:<br />1-10 units: 289.50 per unit<br
-/>10-100 units 279.50 per unit<br />&gt;=100 units 269.50 per unit<br />u s
-d<br /><br />Will you like to order it? Just respond to our email with your
-shipping address and we will ready the shipment.&nbsp;</p>
-<p></p>
-<p><img
-src="https://ae01.alicdn.com/kf/H365a6df1e3764c2fa36eb6591ae158e5J.jpg"
-width="450" height="681" /><img
-src="https://ae01.alicdn.com/kf/Hb28e58bc36d341efa3066db5e0728854x.jpg"
-width="450" height="617" /></p>
-<p><img
-src="https://ae01.alicdn.com/kf/H730eb27672bc4b539fbeff43ec10e61eV.jpg"
-width="450" height="681" /><img
-src="https://ae01.alicdn.com/kf/H91c3c134a60542e384b9d35e5f214387D.jpg"
-width="450" height="651" /></p>
-<p><img
-src="https://ae01.alicdn.com/kf/Hba4456237c79450fb21ddafb4995d031d.jpg"
-width="450" height="539" /><img
-src="https://ae01.alicdn.com/kf/H78e7b24ff44647a3984f842ca2796ce5E.jpg"
-width="450" height="946" /></p>
-<p>&nbsp;<br />Will you like to order it? Just respond to our email with
-your shipping address and we will ready the shipment.&nbsp;<br /><br
-/>Thanks,<br />Kevin Henson</p>
-</body>
-</html>
+I believe drm-intel-next should be enough for this...
 
+Pulled.
 
---===============1822677542==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Rodrigo.
 
+> 
+> BR,
+> Jani.
+> 
+> >
+> > On 2020.12.25 10:20:09 +0800, Zhenyu Wang wrote:
+> >> 
+> >> Hi,
+> >> 
+> >> Here's queued fixes from Jani for one useless inline and fix
+> >> CONFIG_DRM_I915_WERROR for gvt headers.
+> >> 
+> >> Thanks and Merry Christmas!
+> >> --
+> >> The following changes since commit 9a3a238b3de97b4210c6de66aa88b2d7021ac086:
+> >> 
+> >>   drm/i915/gvt: treat intel_gvt_mpt as const in gvt code (2020-11-23 17:14:20 +0800)
+> >> 
+> >> are available in the Git repository at:
+> >> 
+> >>   https://github.com/intel/gvt-linux tags/gvt-next-fixes-2020-12-25
+> >> 
+> >> for you to fetch changes up to e056f669dbf76b8752b6cb0b8edd2f75cbdcabb1:
+> >> 
+> >>   drm/i915/gvt: make mpt.h self-contained (2020-12-22 11:41:35 +0800)
+> >> 
+> >> ----------------------------------------------------------------
+> >> gvt-next-fixes-2020-12-25
+> >> 
+> >> - Avoid one useless inline (Jani)
+> >> - make gvt header self-contained, fix CONFIG_DRM_I915_WERROR (Jani)
+> >> 
+> >> ----------------------------------------------------------------
+> >> Jani Nikula (9):
+> >>       drm/i915/gvt: avoid useless use of inline
+> >>       drm/i915/gvt: make execlist.h self-contained
+> >>       drm/i915/gvt: make fb_decoder.h self-contained
+> >>       drm/i915/gvt: make gtt.h self-contained
+> >>       drm/i915/gvt: make interrupt.h self-contained
+> >>       drm/i915/gvt: make mmio_context.h self-contained
+> >>       drm/i915/gvt: make gvt.h self-contained
+> >>       drm/i915/gvt: make scheduler.h self-contained
+> >>       drm/i915/gvt: make mpt.h self-contained
+> >> 
+> >>  drivers/gpu/drm/i915/Makefile           | 10 +---------
+> >>  drivers/gpu/drm/i915/gvt/execlist.h     |  3 ---
+> >>  drivers/gpu/drm/i915/gvt/fb_decoder.h   |  6 ++++--
+> >>  drivers/gpu/drm/i915/gvt/gtt.h          | 11 ++++++++++-
+> >>  drivers/gpu/drm/i915/gvt/gvt.h          |  4 ++++
+> >>  drivers/gpu/drm/i915/gvt/handlers.c     |  3 +--
+> >>  drivers/gpu/drm/i915/gvt/interrupt.h    |  5 ++++-
+> >>  drivers/gpu/drm/i915/gvt/mmio_context.h | 11 +++++++++++
+> >>  drivers/gpu/drm/i915/gvt/mpt.h          |  2 ++
+> >>  drivers/gpu/drm/i915/gvt/scheduler.h    |  5 +++++
+> >>  10 files changed, 42 insertions(+), 18 deletions(-)
+> >> 
+> >> -- 
+> >> 
+> >> $gpg --keyserver wwwkeys.pgp.net --recv-keys 4D781827
+> >
+> >
+> >
+> >> _______________________________________________
+> >> Intel-gfx mailing list
+> >> Intel-gfx@lists.freedesktop.org
+> >> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+> 
+> -- 
+> Jani Nikula, Intel Open Source Graphics Center
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1822677542==--
