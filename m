@@ -2,52 +2,28 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1555E2EC331
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Jan 2021 19:23:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0CFD2ECB75
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Jan 2021 09:08:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B223C89C3B;
-	Wed,  6 Jan 2021 18:23:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D7C416E422;
+	Thu,  7 Jan 2021 08:07:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb44.google.com (mail-yb1-xb44.google.com
- [IPv6:2607:f8b0:4864:20::b44])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 604A089C96
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  6 Jan 2021 18:23:25 +0000 (UTC)
-Received: by mail-yb1-xb44.google.com with SMTP id o144so3706453ybc.0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 06 Jan 2021 10:23:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=Ykpl0gMt+x6iXoWQhyz8GRwhIe54s6Lu22K+4Y4Douo=;
- b=LYfG0EV9ybl2w/cB9YD6xGCDC0jINj/mf6JpKRheWSt50huvVIUawnY8P7Ydfhmf0V
- A8Vtd4S6hsU2px2KofYMqvIq1FQVqstHULWGdtzQet+5bo7DZrQrKvUAvl/MXznLmsS3
- yfdKiVjO4kgJ5CYatEiw2U3+qqMFLy+R8va/CdWdDwaG3CTauLMdZ6pNUA1qLccVJW6U
- hehxLjVAfITuoSkRH2jkFzNnI1ThITsZ+kiFoTfYCt4jsUt7w35H44s3igf3uJEXYkg8
- //hxWj+3c53mpr6HlZZn4O9zQwojR7h2L+8OLYZqhrAwH6L6Ep4jeH6QPQIIvSQypUqQ
- wJdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=Ykpl0gMt+x6iXoWQhyz8GRwhIe54s6Lu22K+4Y4Douo=;
- b=WZWmRHNz+Go/PxEPTOG01H37H9lLjzteMQEQKljFV102X+hKlaFf2dUb+TxSF+BMO3
- Bz/7oebe22tFZJ3a98Ti5YNux+UToIxLtMoOoKsEx/jaQ1EtyTyw51shGa0VB8k50W/Q
- FkMM02fhYplhe23ZYMN/9XMfKSNAAWb3sYtmoPte6+H45+/m8s0lrPLWEep7N37BNJVk
- W9GTM48cMBFEy6AFmlFn17l8xufLEAAxAwG4C6/uCZmOoOQZwTnr67f+2GRnfmKNQtxg
- TI6OClOypOBmCoAr4P52Mo4lrcnAnJWgdPJOXYHo+nZH6DtS/g5devBHlFgeZdRUFgd1
- Y9Sw==
-X-Gm-Message-State: AOAM533PELGqTe6llobiRnb5Dqp54aLkh8fiLQvkBDdNtJpNLE46Wk3b
- tLw6+5cNKztzVG8hb1W+U87oH+PTuTiZtMCVuRI=
-X-Google-Smtp-Source: ABdhPJy+fmygJuB1LNK6ZF05ZTR72jhERsThXHSycDvocIgInxaiszPtWgB0xzlWy/27a6zKcyuN5ftMzwE0xWN7jmQ=
-X-Received: by 2002:a25:2301:: with SMTP id j1mr8422001ybj.151.1609957404659; 
- Wed, 06 Jan 2021 10:23:24 -0800 (PST)
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EAFFE89CA8;
+ Thu,  7 Jan 2021 08:07:57 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id CFBD9AE55;
+ Thu,  7 Jan 2021 08:07:54 +0000 (UTC)
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: airlied@linux.ie, daniel@ffwll.ch, jani.nikula@linux.intel.com,
+ joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com
+Subject: [PATCH v3 0/8] drm: Move struct drm_device.pdev to legacy
+Date: Thu,  7 Jan 2021 09:07:40 +0100
+Message-Id: <20210107080748.4768-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-From: Elisabeth Peter <ruelskiirr@gmail.com>
-Date: Wed, 6 Jan 2021 19:23:10 +0100
-Message-ID: <CAFSJe31C14wBd7GQ8KY2Z+G-bRooFTcY7mJ4t7uxOiXrDNFU6g@mail.gmail.com>
-Subject: Hello dear friend
-To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,87 +36,130 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mrselisabethpeter07@gmail.com
-Content-Type: multipart/mixed; boundary="===============0580432145=="
+Cc: nouveau@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ Thomas Zimmermann <tzimmermann@suse.de>, intel-gvt-dev@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0580432145==
-Content-Type: multipart/alternative; boundary="00000000000035581805b83f6b74"
+I merged many of the patches that were ready in v2 into drm-misc-next. In
+v3 remain only patches that need an r-b/a-b (i915/gt/gvt) or required
+a change from v2.
 
---00000000000035581805b83f6b74
-Content-Type: text/plain; charset="UTF-8"
+The pdev field in struct drm_device points to a PCI device structure and
+goes back to UMS-only days when all DRM drivers were for PCI devices.
+Meanwhile we also support USB, SPI and platform devices. Each of those
+uses the generic device stored in struct drm_device.dev.
 
-Hello dear friend
+To reduce duplication and remove the special case of PCI, this patchset
+converts all modesetting drivers from pdev to dev and makes pdev a field
+for legacy UMS drivers.
 
-Calvary Greetings in the name of the LORD Almighty and Our LORD the giver
-of every good thing. Good day and compliments of the seasons, i know this
-letter will definitely come to you as a huge surprise, but I implore you to
-take the time to go through it carefully as the decision you make will go
-off a long way to determine my future and continued existence.
+For PCI devices, the pointer in struct drm_device.dev can be upcasted to
+struct pci_device; or tested for PCI with dev_is_pci(). In several places
+the code can use the dev field directly.
 
-I am Mrs Elisabeth Peter aging widow of 51 years old suffering from long
-time illness.I have some funds I inherited from my late husband, the sum of
-($17.9Million Dollars) and I needed a very honest and God fearing  who can
-withdraw this money then use the funds for Charity works. I WISH TO GIVE
-THIS FUNDS TO YOU FOR CHARITY WORKS. I found your email address from the
-internet after honest prayers  to the LORD to bring me a helper and i
-decided to contact you if you may be willing and interested to handle these
-trust funds in good faith before anything happens to me.
+After converting all drivers and the DRM core, the pdev fields becomes
+only relevant for legacy drivers. In a later patchset, we may want to
+convert these as well and remove pdev entirely.
 
-I will appreciate your utmost confidentiality and trust in this matter to
-accomplish my heart desire, as I don't want anything that will jeopardize
-my last wish. I want you to take 25 percent of the total money for your
-personal use while 75% of the money will go to charity.
+v3:
+	* fix one pdev reference in nouveau (Jeremy)
+	* rebases
+v2:
+	* move whitespace fixes into separate patches (Alex, Sam)
+	* move i915 gt/ and gvt/ changes into separate patches (Joonas)
 
-Any delay in your reply may give me room to look for another good person
-for this same purpose. Please assure me that you will act accordingly as I
-stated herein. I don't need any telephone communication in this regard
-because of my ill-health.
 
-kindly respond quickly for further details.
+Thomas Zimmermann (8):
+  drm/amdgpu: Fix trailing whitespaces
+  drm/amdgpu: Remove references to struct drm_device.pdev
+  drm/hibmc: Remove references to struct drm_device.pdev
+  drm/i915: Remove references to struct drm_device.pdev
+  drm/i915/gt: Remove references to struct drm_device.pdev
+  drm/i915/gvt: Remove references to struct drm_device.pdev
+  drm/nouveau: Remove references to struct drm_device.pdev
+  drm: Upcast struct drm_device.dev to struct pci_device; replace pdev
 
-Regards,
-Mrs Elisabeth Peter
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c    | 23 ++++---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c   |  1 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  1 -
+ drivers/gpu/drm/amd/amdgpu/amdgpu_fb.c        |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c       | 10 +--
+ drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c       |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c       | 10 +--
+ drivers/gpu/drm/drm_agpsupport.c              |  9 ++-
+ drivers/gpu/drm/drm_bufs.c                    |  4 +-
+ drivers/gpu/drm/drm_edid.c                    |  7 ++-
+ drivers/gpu/drm/drm_irq.c                     | 12 ++--
+ drivers/gpu/drm/drm_pci.c                     | 26 ++++----
+ drivers/gpu/drm/drm_vm.c                      |  2 +-
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   | 13 ++--
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |  2 +-
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_ttm.c   | 61 +++++++++++++++++++
+ drivers/gpu/drm/i915/display/intel_bios.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_cdclk.c    | 14 ++---
+ drivers/gpu/drm/i915/display/intel_csr.c      |  2 +-
+ drivers/gpu/drm/i915/display/intel_dsi_vbt.c  |  2 +-
+ drivers/gpu/drm/i915/display/intel_fbdev.c    |  2 +-
+ drivers/gpu/drm/i915/display/intel_gmbus.c    |  2 +-
+ .../gpu/drm/i915/display/intel_lpe_audio.c    |  5 +-
+ drivers/gpu/drm/i915/display/intel_opregion.c |  6 +-
+ drivers/gpu/drm/i915/display/intel_overlay.c  |  2 +-
+ drivers/gpu/drm/i915/display/intel_panel.c    |  4 +-
+ drivers/gpu/drm/i915/display/intel_quirks.c   |  2 +-
+ drivers/gpu/drm/i915/display/intel_sdvo.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_vga.c      |  8 +--
+ drivers/gpu/drm/i915/gem/i915_gem_phys.c      |  6 +-
+ drivers/gpu/drm/i915/gem/i915_gem_shmem.c     |  2 +-
+ drivers/gpu/drm/i915/gt/intel_engine_cs.c     |  2 +-
+ drivers/gpu/drm/i915/gt/intel_ggtt.c          | 10 +--
+ drivers/gpu/drm/i915/gt/intel_ppgtt.c         |  2 +-
+ drivers/gpu/drm/i915/gt/intel_rc6.c           |  4 +-
+ drivers/gpu/drm/i915/gt/intel_reset.c         |  6 +-
+ drivers/gpu/drm/i915/gvt/cfg_space.c          |  5 +-
+ drivers/gpu/drm/i915/gvt/firmware.c           | 10 +--
+ drivers/gpu/drm/i915/gvt/gtt.c                | 12 ++--
+ drivers/gpu/drm/i915/gvt/gvt.c                |  6 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |  4 +-
+ drivers/gpu/drm/i915/i915_debugfs.c           |  2 +-
+ drivers/gpu/drm/i915/i915_drv.c               | 20 +++---
+ drivers/gpu/drm/i915/i915_drv.h               |  2 +-
+ drivers/gpu/drm/i915/i915_gem_gtt.c           |  5 +-
+ drivers/gpu/drm/i915/i915_getparam.c          |  5 +-
+ drivers/gpu/drm/i915/i915_gpu_error.c         |  2 +-
+ drivers/gpu/drm/i915/i915_irq.c               |  6 +-
+ drivers/gpu/drm/i915/i915_pmu.c               |  2 +-
+ drivers/gpu/drm/i915/i915_suspend.c           |  4 +-
+ drivers/gpu/drm/i915/i915_switcheroo.c        |  4 +-
+ drivers/gpu/drm/i915/i915_vgpu.c              |  2 +-
+ drivers/gpu/drm/i915/intel_device_info.c      |  2 +-
+ drivers/gpu/drm/i915/intel_region_lmem.c      |  8 +--
+ drivers/gpu/drm/i915/intel_runtime_pm.c       |  2 +-
+ drivers/gpu/drm/i915/intel_uncore.c           |  4 +-
+ .../gpu/drm/i915/selftests/mock_gem_device.c  |  1 -
+ drivers/gpu/drm/i915/selftests/mock_gtt.c     |  2 +-
+ drivers/gpu/drm/nouveau/dispnv04/arb.c        | 12 ++--
+ drivers/gpu/drm/nouveau/dispnv04/dfp.c        |  5 +-
+ drivers/gpu/drm/nouveau/dispnv04/disp.h       | 14 +++--
+ drivers/gpu/drm/nouveau/dispnv04/hw.c         | 10 +--
+ drivers/gpu/drm/nouveau/nouveau_abi16.c       |  7 ++-
+ drivers/gpu/drm/nouveau/nouveau_acpi.c        |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_bios.c        | 11 +++-
+ drivers/gpu/drm/nouveau/nouveau_connector.c   | 10 +--
+ drivers/gpu/drm/nouveau/nouveau_drm.c         |  5 +-
+ drivers/gpu/drm/nouveau/nouveau_fbcon.c       |  6 +-
+ drivers/gpu/drm/nouveau/nouveau_vga.c         | 20 +++---
+ include/drm/drm_device.h                      | 12 +++-
+ 70 files changed, 296 insertions(+), 198 deletions(-)
+ create mode 100644 drivers/gpu/drm/hisilicon/hibmc/hibmc_ttm.c
 
---00000000000035581805b83f6b74
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello dear friend<br><br>Calvary Greetings in the name of =
-the LORD Almighty and Our LORD the giver of every good thing. Good day and =
-compliments of the seasons, i know this letter will definitely come to you =
-as a huge surprise, but I implore you to take the time to go through it car=
-efully as the decision you make will go off a long way to determine my futu=
-re and continued existence.<br><br>I am Mrs Elisabeth Peter aging widow of =
-51 years old suffering from long time illness.I have some funds I inherited=
- from my late husband, the sum of ($17.9Million Dollars) and I needed a ver=
-y honest and God fearing =C2=A0who can withdraw this money then use the fun=
-ds for Charity works. I WISH TO GIVE THIS FUNDS TO YOU FOR CHARITY WORKS. I=
- found your email address from the internet after honest prayers =C2=A0to t=
-he LORD to bring me a helper and i decided to contact you if you may be wil=
-ling and interested to handle these trust funds in good faith before anythi=
-ng happens to me.<br><br>I will appreciate your utmost confidentiality and =
-trust in this matter to accomplish my heart desire, as I don&#39;t want any=
-thing that will jeopardize my last wish. I want you to take 25 percent of t=
-he total money for your personal use while 75% of the money will go to char=
-ity.<br><br>Any delay in your reply may give me room to look for another go=
-od person for this same purpose. Please assure me that you will act accordi=
-ngly as I stated herein. I don&#39;t need any telephone communication in th=
-is regard because of my ill-health.<br><br>kindly respond quickly for furth=
-er details.<br><br>Regards,<br>Mrs Elisabeth Peter<br></div>
-
---00000000000035581805b83f6b74--
-
---===============0580432145==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+--
+2.29.2
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0580432145==--
