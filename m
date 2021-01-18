@@ -1,40 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0D0F2F9918
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jan 2021 06:24:32 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 970FE2F994F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jan 2021 06:34:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1386B89C49;
-	Mon, 18 Jan 2021 05:24:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F114889EF7;
+	Mon, 18 Jan 2021 05:34:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D740389C49;
- Mon, 18 Jan 2021 05:24:29 +0000 (UTC)
-IronPort-SDR: 7pge3aXO3JCTm8uL+hCIqfRtsJ/CgWZNhEyZww5tf/TWpogTpyf2p365WKZY0hjK0TfpRf+KSm
- J6zZUy21x2NQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9867"; a="158533924"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A7FD889EF7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 18 Jan 2021 05:34:48 +0000 (UTC)
+IronPort-SDR: PdW2mCOokXhk8//QzHzypEbuUiNZaL602RhCj6eO2vlb0fLuOYJaOwk9d4DbBu8xIpcjssOcQR
+ YlSqlaTHPnzg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9867"; a="242831593"
 X-IronPort-AV: E=Sophos;i="5.79,355,1602572400"; 
- d="asc'?scan'208";a="158533924"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2021 21:24:29 -0800
-IronPort-SDR: lWBV5ZgGxUT9/rc+2wQ5doQsWTrdx/gqx9gs0v15oAjFId8ZtJz4Y6chgS9C5GvKginfSeQe11
- WAZSEYEJm07Q==
+ d="asc'?scan'208";a="242831593"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2021 21:34:47 -0800
+IronPort-SDR: wbM0RbZRjKe8+fuIc98Xafb/g3YFdGNiNu8XFUY2bzig3IEbfrJgJu1eOO4LoXFSxKlywr4wZ/
+ WJNkGzOmwG2A==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.79,355,1602572400"; 
- d="asc'?scan'208";a="406115866"
+ d="asc'?scan'208";a="399011508"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by FMSMGA003.fm.intel.com with ESMTP; 17 Jan 2021 21:24:27 -0800
-Date: Mon, 18 Jan 2021 13:07:39 +0800
+ by fmsmga004.fm.intel.com with ESMTP; 17 Jan 2021 21:34:45 -0800
+Date: Mon, 18 Jan 2021 13:17:57 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>
-Subject: [PULL] gvt-gt-next
-Message-ID: <20210118050739.GY15982@zhen-hp.sh.intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: Introduce per object locking in GVT
+ scheduler.
+Message-ID: <20210118051757.GZ15982@zhen-hp.sh.intel.com>
+References: <1610314985-26065-1-git-send-email-zhi.wang.linux@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <1610314985-26065-1-git-send-email-zhi.wang.linux@gmail.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,89 +50,192 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============0822025287=="
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============1349699967=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0822025287==
+--===============1349699967==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="UPT3ojh+0CqEDtpF"
+	protocol="application/pgp-signature"; boundary="TybLhxa8M7aNoW+V"
 Content-Disposition: inline
 
 
---UPT3ojh+0CqEDtpF
+--TybLhxa8M7aNoW+V
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On 2021.01.10 23:43:05 +0200, Zhi Wang wrote:
+> To support ww locking and per-object implemented in i915, GVT scheduler n=
+eeds
+> to be refined. Most of the changes are located in shadow batch buffer, sh=
+adow
+> wa context in GVT-g, where use quite a lot of i915 gem object APIs.
+>=20
+> v2:
+>=20
+> - Adjust the usage of ww lock on context pin/unpin. (maarten)
+> - Rebase the patch on the newest staging branch.
+>=20
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+> ---
 
-Hi,
+Looks fine to me.
 
-This is GVT next for 5.12 against drm-intel-gt-next which is mostly
-for cmd parser enhancement which adds extra check on register load
-depending on initial context and handles vGPU register state
-accordingly.
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-Thanks.
---
-The following changes since commit fe7bcfaeb2b775f257348dc7b935f8e80eef3e7d:
+>  drivers/gpu/drm/i915/gvt/scheduler.c | 49 +++++++++++++++++++++++++++++-=
+------
+>  1 file changed, 40 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
+gvt/scheduler.c
+> index 43f31c2..4dfa418 100644
+> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
+> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+> @@ -412,7 +412,9 @@ static void release_shadow_wa_ctx(struct intel_shadow=
+_wa_ctx *wa_ctx)
+>  	if (!wa_ctx->indirect_ctx.obj)
+>  		return;
+> =20
+> +	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, NULL);
+>  	i915_gem_object_unpin_map(wa_ctx->indirect_ctx.obj);
+> +	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
+>  	i915_gem_object_put(wa_ctx->indirect_ctx.obj);
+> =20
+>  	wa_ctx->indirect_ctx.obj =3D NULL;
+> @@ -520,6 +522,7 @@ static int prepare_shadow_batch_buffer(struct intel_v=
+gpu_workload *workload)
+>  	struct intel_gvt *gvt =3D workload->vgpu->gvt;
+>  	const int gmadr_bytes =3D gvt->device_info.gmadr_bytes_in_cmd;
+>  	struct intel_vgpu_shadow_bb *bb;
+> +	struct i915_gem_ww_ctx ww;
+>  	int ret;
+> =20
+>  	list_for_each_entry(bb, &workload->shadow_bb, list) {
+> @@ -544,10 +547,19 @@ static int prepare_shadow_batch_buffer(struct intel=
+_vgpu_workload *workload)
+>  		 * directly
+>  		 */
+>  		if (!bb->ppgtt) {
+> -			bb->vma =3D i915_gem_object_ggtt_pin(bb->obj,
+> -							   NULL, 0, 0, 0);
+> +			i915_gem_ww_ctx_init(&ww, false);
+> +retry:
+> +			i915_gem_object_lock(bb->obj, &ww);
+> +
+> +			bb->vma =3D i915_gem_object_ggtt_pin_ww(bb->obj, &ww,
+> +							      NULL, 0, 0, 0);
+>  			if (IS_ERR(bb->vma)) {
+>  				ret =3D PTR_ERR(bb->vma);
+> +				if (ret =3D=3D -EDEADLK) {
+> +					ret =3D i915_gem_ww_ctx_backoff(&ww);
+> +					if (!ret)
+> +						goto retry;
+> +				}
+>  				goto err;
+>  			}
+> =20
+> @@ -561,13 +573,15 @@ static int prepare_shadow_batch_buffer(struct intel=
+_vgpu_workload *workload)
+>  						      0);
+>  			if (ret)
+>  				goto err;
+> -		}
+> =20
+> -		/* No one is going to touch shadow bb from now on. */
+> -		i915_gem_object_flush_map(bb->obj);
+> +			/* No one is going to touch shadow bb from now on. */
+> +			i915_gem_object_flush_map(bb->obj);
+> +			i915_gem_object_unlock(bb->obj);
+> +		}
+>  	}
+>  	return 0;
+>  err:
+> +	i915_gem_ww_ctx_fini(&ww);
+>  	release_shadow_batch_buffer(workload);
+>  	return ret;
+>  }
+> @@ -594,14 +608,29 @@ static int prepare_shadow_wa_ctx(struct intel_shado=
+w_wa_ctx *wa_ctx)
+>  	unsigned char *per_ctx_va =3D
+>  		(unsigned char *)wa_ctx->indirect_ctx.shadow_va +
+>  		wa_ctx->indirect_ctx.size;
+> +	struct i915_gem_ww_ctx ww;
+> +	int ret;
+> =20
+>  	if (wa_ctx->indirect_ctx.size =3D=3D 0)
+>  		return 0;
+> =20
+> -	vma =3D i915_gem_object_ggtt_pin(wa_ctx->indirect_ctx.obj, NULL,
+> -				       0, CACHELINE_BYTES, 0);
+> -	if (IS_ERR(vma))
+> -		return PTR_ERR(vma);
+> +	i915_gem_ww_ctx_init(&ww, false);
+> +retry:
+> +	i915_gem_object_lock(wa_ctx->indirect_ctx.obj, &ww);
+> +
+> +	vma =3D i915_gem_object_ggtt_pin_ww(wa_ctx->indirect_ctx.obj, &ww, NULL,
+> +					  0, CACHELINE_BYTES, 0);
+> +	if (IS_ERR(vma)) {
+> +		ret =3D PTR_ERR(vma);
+> +		if (ret =3D=3D -EDEADLK) {
+> +			ret =3D i915_gem_ww_ctx_backoff(&ww);
+> +			if (!ret)
+> +				goto retry;
+> +		}
+> +		return ret;
+> +	}
+> +
+> +	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
+> =20
+>  	/* FIXME: we are not tracking our pinned VMA leaving it
+>  	 * up to the core to fix up the stray pin_count upon
+> @@ -635,12 +664,14 @@ static void release_shadow_batch_buffer(struct inte=
+l_vgpu_workload *workload)
+> =20
+>  	list_for_each_entry_safe(bb, pos, &workload->shadow_bb, list) {
+>  		if (bb->obj) {
+> +			i915_gem_object_lock(bb->obj, NULL);
+>  			if (bb->va && !IS_ERR(bb->va))
+>  				i915_gem_object_unpin_map(bb->obj);
+> =20
+>  			if (bb->vma && !IS_ERR(bb->vma))
+>  				i915_vma_unpin(bb->vma);
+> =20
+> +			i915_gem_object_unlock(bb->obj);
+>  			i915_gem_object_put(bb->obj);
+>  		}
+>  		list_del(&bb->list);
+> --=20
+> 2.7.4
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
-  drm/i915/gt: Refactor heartbeat request construction and submission (2020-12-24 18:07:26 +0000)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux tags/gvt-gt-next-2021-01-18
-
-for you to fetch changes up to 02dd2b12a685944c4d52c569d05f636372a7b6c7:
-
-  drm/i915/gvt: unify lri cmd handler and mmio handlers (2020-12-25 11:16:32 +0800)
-
-----------------------------------------------------------------
-gvt-gt-next-2021-01-18
-
-- GVT cmd parser enhancement against guest context (Yan)
-
-----------------------------------------------------------------
-Yan Zhao (11):
-      drm/i915/gvt: parse init context to update cmd accessible reg whitelist
-      drm/i915/gvt: scan VM ctx pages
-      drm/i915/gvt: filter cmds "srm" and "lrm" in cmd_handler
-      drm/i915/gvt: filter cmds "lrr-src" and "lrr-dst" in cmd_handler
-      drm/i915/gvt: filter cmd "pipe-ctrl" in cmd_handler
-      drm/i915/gvt: export find_mmio_info
-      drm/i915/gvt: make width of mmio_attribute bigger
-      drm/i915/gvt: introduce a new flag F_CMD_WRITE_PATCH
-      drm/i915/gvt: statically set F_CMD_WRITE_PATCH flag
-      drm/i915/gvt: update F_CMD_WRITE_PATCH flag when parsing init ctx
-      drm/i915/gvt: unify lri cmd handler and mmio handlers
-
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 335 +++++++++++++++++++++++++++-------
- drivers/gpu/drm/i915/gvt/cmd_parser.h |   4 +
- drivers/gpu/drm/i915/gvt/gvt.h        |  37 +++-
- drivers/gpu/drm/i915/gvt/handlers.c   |  15 +-
- drivers/gpu/drm/i915/gvt/mmio.h       |   3 +
- drivers/gpu/drm/i915/gvt/reg.h        |   2 +
- drivers/gpu/drm/i915/gvt/scheduler.c  |  22 ++-
- drivers/gpu/drm/i915/gvt/vgpu.c       |   4 +-
- 8 files changed, 339 insertions(+), 83 deletions(-)
-
---UPT3ojh+0CqEDtpF
+--TybLhxa8M7aNoW+V
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYAUXlgAKCRCxBBozTXgY
-J0YSAJ4/8ej1m5fQcbNlEveP4mZ/AHvdQgCdEflyY9dwAuDGdP1lcBXNikNTXNc=
-=KneK
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYAUaAAAKCRCxBBozTXgY
+JxiKAKCdKsr8jwlqfi80O/Kp5YiMHXcCFQCfVNWOuF9Ha/5on7AGznyMHkKoJg4=
+=S2g1
 -----END PGP SIGNATURE-----
 
---UPT3ojh+0CqEDtpF--
+--TybLhxa8M7aNoW+V--
 
---===============0822025287==
+--===============1349699967==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -141,4 +246,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0822025287==--
+--===============1349699967==--
