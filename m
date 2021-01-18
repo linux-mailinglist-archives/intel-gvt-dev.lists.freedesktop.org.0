@@ -1,96 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAC0A2F9C02
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jan 2021 10:49:15 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D5932FA0F3
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jan 2021 14:14:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E08A26E183;
-	Mon, 18 Jan 2021 09:49:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0D1F189994;
+	Mon, 18 Jan 2021 13:14:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com
- [IPv6:2a00:1450:4864:20::42b])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8D0F06E183
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Jan 2021 09:49:12 +0000 (UTC)
-Received: by mail-wr1-x42b.google.com with SMTP id w5so15762575wrm.11
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Jan 2021 01:49:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=sSYFbfM9Da4W4yprSISGK+rzbCaBhrTeqyICcu8isSI=;
- b=MEID5dXH0nAohh2t20OSBRbwIults+Y/clL8d5Zoywl8pG1vX9oAoUrqgWkbct+D5T
- sBmb4oJykFGr6XGscyQLi/YCSPNQFigACWi29fujWnFtHb44075JIbDRffBALOeLKQUI
- 7JI+AfFtlTN/8lxLCWUr6MNTTny2Zg53dmImk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :in-reply-to;
- bh=sSYFbfM9Da4W4yprSISGK+rzbCaBhrTeqyICcu8isSI=;
- b=eBVHlA1WyZjz2plyk+PMuIWIf2VS+ncMBUekOEODzYZ89aEH2pM5o5KLvTZNRTmsoa
- 7tiT/yU0cT8FAO7vYcLrJLFWqxh50a6hpv7US6crxX+n3JV0X+ZGMTZOdGBfQrMRnRim
- doNz1eotBzV1I9pE7KQbz7f0zOcmk2u78MyoIpuAVw7kw46+CAwYBO66MAoBscVLv9+l
- rmwSTBhN3YQyDC4sfIdjGyhwJBfEWJPBeQlQFMGLn4PI9P6BglrHiDmSTGUP9JCyz7yA
- 3CCQkJ6HjqUpbMTffUs0o3DKg4Aeej9hfOwOKC0gI7lxyi8k6xE6fA2Dus/5BoVprIDv
- 7Kyw==
-X-Gm-Message-State: AOAM533lymWhM5RVW4ysbCUy7+k1RRlh75MzTr+4e+ZAUOsGabCsGPy+
- e3uoRmOPdJgy49Mi220aJv17sg==
-X-Google-Smtp-Source: ABdhPJyNkHEjNj8L2i9pban7G0FrBR6GRuJU2SUW/Pv5bihvSUPM5fAgGbUHMl7RRn6n+jn+EXOFoQ==
-X-Received: by 2002:adf:e990:: with SMTP id h16mr25656063wrm.307.1610963351184; 
- Mon, 18 Jan 2021 01:49:11 -0800 (PST)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id k131sm12400386wmb.37.2021.01.18.01.49.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Jan 2021 01:49:10 -0800 (PST)
-Date: Mon, 18 Jan 2021 10:49:07 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Zack Rusin <zackr@vmware.com>
-Subject: Re: [PATCH 00/29] [Set 15] Finally rid W=1 warnings from GPU!
-Message-ID: <YAVZk3XKNf9W7guC@phenom.ffwll.local>
-Mail-Followup-To: Zack Rusin <zackr@vmware.com>,
- Lee Jones <lee.jones@linaro.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Ben Skeggs <bskeggs@redhat.com>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Eddie Dong <eddie.dong@intel.com>, Eric Anholt <eric@anholt.net>,
- Faith <faith@valinux.com>, Gareth Hughes <gareth@valinux.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Jackie Li <yaodong.li@intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Jan Safrata <jan.nikitenko@gmail.com>,
- Jesse Barnes <jesse.barnes@intel.com>, jim liu <jim.liu@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Keith Packard <keithp@keithp.com>,
- Kevin Tian <kevin.tian@intel.com>,
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Min He <min.he@intel.com>,
- Niu Bing <bing.niu@intel.com>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Pei Zhang <pei.zhang@intel.com>, Ping Gao <ping.a.gao@intel.com>,
- Rob Clark <rob.clark@linaro.org>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Roland Scheidegger <sroland@vmware.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Tina Zhang <tina.zhang@intel.com>,
- Linux-graphics-maintainer <Linux-graphics-maintainer@vmware.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Zhiyuan Lv <zhiyuan.lv@intel.com>
-References: <20210115181601.3432599-1-lee.jones@linaro.org>
- <F914D9B9-6DD4-4383-9F7C-8D09FBFE96CE@vmware.com>
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B3BF689994;
+ Mon, 18 Jan 2021 13:14:31 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id F063BB96A;
+ Mon, 18 Jan 2021 13:14:28 +0000 (UTC)
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: airlied@linux.ie, daniel@ffwll.ch, jani.nikula@linux.intel.com,
+ joonas.lahtinen@linux.intel.com, sroland@vmware.com, zackr@vmware.com
+Subject: [PATCH v4 0/6] drm: Move struct drm_device.pdev to legacy
+Date: Mon, 18 Jan 2021 14:14:14 +0100
+Message-Id: <20210118131420.15874-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <F914D9B9-6DD4-4383-9F7C-8D09FBFE96CE@vmware.com>
-X-Operating-System: Linux phenom 5.7.0-1-amd64 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,62 +36,113 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jackie Li <yaodong.li@intel.com>, David Airlie <airlied@linux.ie>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Eric Anholt <eric@anholt.net>, Jesse Barnes <jesse.barnes@intel.com>,
- Tina Zhang <tina.zhang@intel.com>, Jan Safrata <jan.nikitenko@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, Sumit Semwal <sumit.semwal@linaro.org>,
- Gareth Hughes <gareth@valinux.com>, Pei Zhang <pei.zhang@intel.com>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Rob Clark <rob.clark@linaro.org>, Min He <min.he@intel.com>,
- Linux-graphics-maintainer <Linux-graphics-maintainer@vmware.com>,
- Ben Skeggs <bskeggs@redhat.com>, Dave Airlie <airlied@redhat.com>,
- Niu Bing <bing.niu@intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- Kevin Tian <kevin.tian@intel.com>, jim liu <jim.liu@intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Roland Scheidegger <sroland@vmware.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
- Maxime Ripard <mripard@kernel.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Keith Packard <keithp@keithp.com>, Eddie Dong <eddie.dong@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Faith <faith@valinux.com>, Daniel Vetter <daniel@ffwll.ch>,
- Ping Gao <ping.a.gao@intel.com>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- Zhiyuan Lv <zhiyuan.lv@intel.com>
+Cc: linux-graphics-maintainer@vmware.com, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ dri-devel@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jan 15, 2021 at 06:27:15PM +0000, Zack Rusin wrote:
-> 
-> > On Jan 15, 2021, at 13:15, Lee Jones <lee.jones@linaro.org> wrote:
-> > 
-> > This set is part of a larger effort attempting to clean-up W=1
-> > kernel builds, which are currently overwhelmingly riddled with
-> > niggly little warnings.
-> > 
-> > Last set!  All clean after this for; Arm, Arm64, PPC, MIPS and x86.
-> 
-> Thanks! For all the vmwgfx bits:
-> Reviewed-by: Zack Rusin <zackr@vmware.com>
+I merged more patches into drm-misc-next. I'm mostly sending out v4 of
+this patchset to split the final patch into the core changes and the
+patch for moving pdev behind CONFIG_DRM_LEGACY. The former are required
+to fix a reported bug. [1] There's also a fix to vmwgfx.
 
-Can you pls push them to drm-misc-next? I'm planning to go pull in all the
-other patches later today that belong into drm-misc-next, but some patch
-monkey help would be really great :-)
+The pdev field in struct drm_device points to a PCI device structure and
+goes back to UMS-only days when all DRM drivers were for PCI devices.
+Meanwhile we also support USB, SPI and platform devices. Each of those
+uses the generic device stored in struct drm_device.dev.
 
-Thanks, Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+To reduce duplication and remove the special case of PCI, this patchset
+converts all modesetting drivers from pdev to dev and makes pdev a field
+for legacy UMS drivers.
+
+For PCI devices, the pointer in struct drm_device.dev can be upcasted to
+struct pci_device; or tested for PCI with dev_is_pci(). In several places
+the code can use the dev field directly.
+
+After converting all drivers and the DRM core, the pdev fields becomes
+only relevant for legacy drivers. In a later patchset, we may want to
+convert these as well and remove pdev entirely.
+
+v4:
+	* merged several patches
+	* moved core changes into separate patch
+	* vmwgfx build fix
+v3:
+	* merged several patches
+	* fix one pdev reference in nouveau (Jeremy)
+	* rebases
+v2:
+	* move whitespace fixes into separate patches (Alex, Sam)
+	* move i915 gt/ and gvt/ changes into separate patches (Joonas)
+
+[1] https://lore.kernel.org/dri-devel/7851c78c-8c57-3c84-cd49-a72703095a5d@suse.de/
+
+Thomas Zimmermann (6):
+  drm: Upcast struct drm_device.dev to struct pci_device; replace pdev
+  drm/i915: Remove references to struct drm_device.pdev
+  drm/i915/gt: Remove references to struct drm_device.pdev
+  drm/i915/gvt: Remove references to struct drm_device.pdev
+  drm/vmwgfx: Remove reference to struct drm_device.pdev
+  drm: Move struct drm_device.pdev to legacy section
+
+ drivers/gpu/drm/drm_agpsupport.c              |  9 ++++---
+ drivers/gpu/drm/drm_bufs.c                    |  4 +--
+ drivers/gpu/drm/drm_edid.c                    |  7 ++++-
+ drivers/gpu/drm/drm_irq.c                     | 12 +++++----
+ drivers/gpu/drm/drm_pci.c                     | 26 +++++++++++--------
+ drivers/gpu/drm/drm_vm.c                      |  2 +-
+ drivers/gpu/drm/i915/display/intel_bios.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_cdclk.c    | 14 +++++-----
+ drivers/gpu/drm/i915/display/intel_csr.c      |  2 +-
+ drivers/gpu/drm/i915/display/intel_dsi_vbt.c  |  2 +-
+ drivers/gpu/drm/i915/display/intel_fbdev.c    |  2 +-
+ drivers/gpu/drm/i915/display/intel_gmbus.c    |  2 +-
+ .../gpu/drm/i915/display/intel_lpe_audio.c    |  5 ++--
+ drivers/gpu/drm/i915/display/intel_opregion.c |  6 ++---
+ drivers/gpu/drm/i915/display/intel_overlay.c  |  2 +-
+ drivers/gpu/drm/i915/display/intel_panel.c    |  4 +--
+ drivers/gpu/drm/i915/display/intel_quirks.c   |  2 +-
+ drivers/gpu/drm/i915/display/intel_sdvo.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_vga.c      |  8 +++---
+ drivers/gpu/drm/i915/gem/i915_gem_phys.c      |  6 ++---
+ drivers/gpu/drm/i915/gem/i915_gem_shmem.c     |  2 +-
+ drivers/gpu/drm/i915/gt/intel_engine_cs.c     |  2 +-
+ drivers/gpu/drm/i915/gt/intel_ggtt.c          | 10 +++----
+ drivers/gpu/drm/i915/gt/intel_ppgtt.c         |  2 +-
+ drivers/gpu/drm/i915/gt/intel_rc6.c           |  4 +--
+ drivers/gpu/drm/i915/gt/intel_region_lmem.c   |  8 +++---
+ drivers/gpu/drm/i915/gt/intel_reset.c         |  6 ++---
+ drivers/gpu/drm/i915/gvt/cfg_space.c          |  5 ++--
+ drivers/gpu/drm/i915/gvt/firmware.c           | 10 +++----
+ drivers/gpu/drm/i915/gvt/gtt.c                | 12 ++++-----
+ drivers/gpu/drm/i915/gvt/gvt.c                |  6 ++---
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |  4 +--
+ drivers/gpu/drm/i915/i915_debugfs.c           |  2 +-
+ drivers/gpu/drm/i915/i915_drv.c               | 20 +++++++-------
+ drivers/gpu/drm/i915/i915_drv.h               |  2 +-
+ drivers/gpu/drm/i915/i915_gem_gtt.c           |  5 ++--
+ drivers/gpu/drm/i915/i915_getparam.c          |  5 ++--
+ drivers/gpu/drm/i915/i915_gpu_error.c         |  2 +-
+ drivers/gpu/drm/i915/i915_irq.c               |  6 ++---
+ drivers/gpu/drm/i915/i915_pmu.c               |  2 +-
+ drivers/gpu/drm/i915/i915_suspend.c           |  4 +--
+ drivers/gpu/drm/i915/i915_switcheroo.c        |  4 +--
+ drivers/gpu/drm/i915/i915_vgpu.c              |  2 +-
+ drivers/gpu/drm/i915/intel_device_info.c      |  2 +-
+ drivers/gpu/drm/i915/intel_runtime_pm.c       |  2 +-
+ drivers/gpu/drm/i915/intel_uncore.c           |  4 +--
+ .../gpu/drm/i915/selftests/mock_gem_device.c  |  1 -
+ drivers/gpu/drm/i915/selftests/mock_gtt.c     |  2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_drv.c           |  1 -
+ include/drm/drm_device.h                      |  6 ++---
+ 50 files changed, 137 insertions(+), 125 deletions(-)
+
+--
+2.29.2
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
