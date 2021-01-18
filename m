@@ -2,102 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02A842F8452
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 Jan 2021 19:27:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C0D0F2F9918
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jan 2021 06:24:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA6AF6E120;
-	Fri, 15 Jan 2021 18:27:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1386B89C49;
+	Mon, 18 Jan 2021 05:24:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2044.outbound.protection.outlook.com [40.107.93.44])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CC3456E120;
- Fri, 15 Jan 2021 18:27:32 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MYFGB29jpH/J1Yyv1sjHNKDkNRyrRGI0i5aH40EOI508C0MJG2HFhNS33lF8wR/WKmhGawKipl/nirqpz+FtCq9heZ2BqOh5Yg4w8jjAzxMWvW+l3fVSlPrWAZu5CNXEdJIS5hm86+nSAfGPy7eIYOGcou4u4bgNAU+ArXS47THA2U/mEFEbpJUXcWgC+pDkd4bRVQvN2Tm+5FK85Q1AFtBo9AoCX2oSI8a4DH02Q6GlsQEsoEUPETXJiPYBspodtFaW/K40OJA0TsH+aiekD8rl6Bw8UxSVd4jsOuYe3agRKJlg1g2+9u84glxDzaXAFz4ADvXch5FuMYXzKgNrbw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ldIcf+ZP5ZWB8a73lQYKgI5n6OWztdvNjYmsovlIOCs=;
- b=Y5MCJwozgC185mZwLbwMGPrOHyOiHPwuyXxPRqD6wqPD2ZeeG1xGSpRBc2XFZe9ixVRFsqLEbgrKnPrU2zeRXHLOUB2ZCzVAcjW+snmz1cMpvjIovkI/9Wx2OGeqUKWt5ia6CCJdIomPoH5f/x1W0SxjebvDFJdLgYx/FlA295iihPWwRXzQwd8+Yd6BVnzkV66P/1e6HyPmZxyHgMHHbmseCo8H67LP1FlvZHZsS/29SptxNT9cBe8hQ4qJR7atQ77hWZus+ImbDe+xMqX3GDl4hRwwZvJyvh+AsyRw49Q2CZugnh1Yu0V8HUJbzuiVlH9loNRfQOEa9AVcpeLScw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vmware.com; dmarc=pass action=none header.from=vmware.com;
- dkim=pass header.d=vmware.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vmware.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ldIcf+ZP5ZWB8a73lQYKgI5n6OWztdvNjYmsovlIOCs=;
- b=fuWa+iKk1VaFFocwO2TeBsevsHac2IT+DIDYDjlD/KGWNzqKOaZo+ADsoVXNE/dPX7K+V6KJiM4tk9Ze8yq3ifM4PP9HUBd1Fxg5Ol1KW3D8duhtHcyiD+AWQQJqGuBVZlFqX5tEYZwj7jfmC0YcZ5LLemzfEKlOnsduIB+7Cw4=
-Received: from BL0PR05MB5186.namprd05.prod.outlook.com (2603:10b6:208:8f::18)
- by BL0PR05MB4963.namprd05.prod.outlook.com (2603:10b6:208:81::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3763.2; Fri, 15 Jan
- 2021 18:27:15 +0000
-Received: from BL0PR05MB5186.namprd05.prod.outlook.com
- ([fe80::59ed:18ca:252d:72f6]) by BL0PR05MB5186.namprd05.prod.outlook.com
- ([fe80::59ed:18ca:252d:72f6%7]) with mapi id 15.20.3763.010; Fri, 15 Jan 2021
- 18:27:15 +0000
-From: Zack Rusin <zackr@vmware.com>
-To: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH 00/29] [Set 15] Finally rid W=1 warnings from GPU!
-Thread-Topic: [PATCH 00/29] [Set 15] Finally rid W=1 warnings from GPU!
-Thread-Index: AQHW62p+Afh7eg9MAECAFEwSMWQpd6opAUIA
-Date: Fri, 15 Jan 2021 18:27:15 +0000
-Message-ID: <F914D9B9-6DD4-4383-9F7C-8D09FBFE96CE@vmware.com>
-References: <20210115181601.3432599-1-lee.jones@linaro.org>
-In-Reply-To: <20210115181601.3432599-1-lee.jones@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Apple Mail (2.3654.40.0.2.32)
-authentication-results: linaro.org; dkim=none (message not signed)
- header.d=none;linaro.org; dmarc=none action=none header.from=vmware.com;
-x-originating-ip: [71.175.59.246]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0c64d446-ae5f-40eb-e5b5-08d8b9832f27
-x-ms-traffictypediagnostic: BL0PR05MB4963:
-x-ld-processed: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BL0PR05MB49632CC95DC53ABA4F998F59CEA70@BL0PR05MB4963.namprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 55YQD4eKIG0BrVqfHEYsvlpT9AXPF4NQE5qmAs3RRe9Ejpm+oapZltMiNUHGxnN+ZhDy44ldF7uqE6wCxpV5KO/SO5cZaeyRPXTnGrNB/ll0Q6yEOJPkhIVxFjCJG4ZXceF+Nxj/s2L+Ixk/Z3gcOzG2sRISaOdl4k82XJliVUyEDg62yMIxpvUtnZ4o3tgWS8undD9vjrAXeKH9xSKJ61I+jUK3Wzqvll2cu4gOHLwRz54kn/c8kH0b0kek0s/lxZXq6wH0USNmWJfjCcly5qKbmzoPVzPSlnaXUCfLOq5aQThZ8n0L0LNgAIgaS0Dpo/v9/2ukrY9nlvPEL0t6+NMNXUurrNAkgqGBMVD0qjBc/wzdrgZOQKGmjcjBagxdoCokKodr5VpsKcxf6cbqGM6tNPToY759oiZm3fJOnw+gBB5B6Oi6JgLSc4pAVGiw
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR05MB5186.namprd05.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(366004)(396003)(346002)(376002)(136003)(2906002)(33656002)(36756003)(83380400001)(76116006)(478600001)(7416002)(6486002)(6916009)(8676002)(6512007)(8936002)(64756008)(2616005)(66446008)(71200400001)(4744005)(6506007)(4326008)(66946007)(186003)(54906003)(26005)(86362001)(53546011)(66556008)(66476007)(5660300002)(316002)(7406005)(45980500001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: =?iso-8859-1?Q?zgyRXVh9UgWytDDFI4h3+SdRgEHw+d9OLuLLMHpjvKlr22XbD6tBg4P0VJ?=
- =?iso-8859-1?Q?MBkRg8mjRg8Fct7L/vBi8Vp3Gr5TKKaDAMMsi36wtW9XtQKlF+HH7y0KP2?=
- =?iso-8859-1?Q?9qyTkyLqdEVVvjiTv7S/W240RBKTbFrOMFtSHebz8b2+Elq38cFLR+lmAo?=
- =?iso-8859-1?Q?tjMnnBmWRvpuD7eP4tEU68waYBouWsJuhue3mgUIYOwLvX0wlWxnDpluBZ?=
- =?iso-8859-1?Q?yVjcUY7ZLP4WTfsKgs+ciELcST10DoZgCrwcohwL9CCGEDtMzAg9AL0eVW?=
- =?iso-8859-1?Q?dYc/bI2HstPQwRfei/WUvNlQmQXEOYsZkQ97sRxdelOQ3Kzx9Vj69csO3w?=
- =?iso-8859-1?Q?yOcNV13s7Yxtzw8w80q4lw7opde2+JEszf2bzt2B0veWH/jIad87+WjK6r?=
- =?iso-8859-1?Q?gN1ZyEwz5+KAuHBmFJyRIRr29qvFlagPVjwEjuUwwBQcnPgXNx7dDSkh5y?=
- =?iso-8859-1?Q?UoL0QixA5gkwtM/40BQIU7n/zXhYHIu5laGIkTzYboLuQysU8G5gMffTeT?=
- =?iso-8859-1?Q?5XWg8lqro4VUandVJ/nSqvdqZronfrPhHu3cAQibWpib51RrY0dgVQ3Fq+?=
- =?iso-8859-1?Q?r1sv4m/PNniyNKX1AFro862zN0uzFFqkYhK2W1ZjqWB4mEC/zhsltNQlAJ?=
- =?iso-8859-1?Q?TIxBU+sJvgqHUZ2d+DpQozh6ArARnjRpB/JD2eqhixYXBKKEGeXAsygSVn?=
- =?iso-8859-1?Q?J4jWTCwbMq+/QElOSWowhnnOyv9QBWDS6vkKqo+I98NFV3XtrFK/RNRJL0?=
- =?iso-8859-1?Q?ne5Ubfp6JAfigqZvlzdDQ+Garza+GvG2C7XdqCt6fAln9QLJF7hM6UNq01?=
- =?iso-8859-1?Q?1LUUGaEovr/uyZOhTG6MAti5NBaRVQMg9OVP9WvqUqFZx4tnIsPKziCPr3?=
- =?iso-8859-1?Q?njFPxnCOT75zBVdbf4nUMeOB9WfJU9F+h4mGkwVx6zP0RDnP7JgXZpYxD7?=
- =?iso-8859-1?Q?LSE0ywTmovs3VsNJ181r0kuj9aqCxwQFE7L0ZZwSmIeozxXhZtAHMJMcbn?=
- =?iso-8859-1?Q?Y38RiCXBqt5WAjhxCVwtKh1cFHOfiyBkUjJDKZ?=
-Content-ID: <F862015D1103DE4C962AE3C7312A0F78@namprd05.prod.outlook.com>
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D740389C49;
+ Mon, 18 Jan 2021 05:24:29 +0000 (UTC)
+IronPort-SDR: 7pge3aXO3JCTm8uL+hCIqfRtsJ/CgWZNhEyZww5tf/TWpogTpyf2p365WKZY0hjK0TfpRf+KSm
+ J6zZUy21x2NQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9867"; a="158533924"
+X-IronPort-AV: E=Sophos;i="5.79,355,1602572400"; 
+ d="asc'?scan'208";a="158533924"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2021 21:24:29 -0800
+IronPort-SDR: lWBV5ZgGxUT9/rc+2wQ5doQsWTrdx/gqx9gs0v15oAjFId8ZtJz4Y6chgS9C5GvKginfSeQe11
+ WAZSEYEJm07Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,355,1602572400"; 
+ d="asc'?scan'208";a="406115866"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by FMSMGA003.fm.intel.com with ESMTP; 17 Jan 2021 21:24:27 -0800
+Date: Mon, 18 Jan 2021 13:07:39 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ Jani Nikula <jani.nikula@intel.com>
+Subject: [PULL] gvt-gt-next
+Message-ID: <20210118050739.GY15982@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-X-OriginatorOrg: vmware.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR05MB5186.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0c64d446-ae5f-40eb-e5b5-08d8b9832f27
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jan 2021 18:27:15.4804 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: kATfeq4PX77bcOBXMKLtAaRo0gl/y7g0xq21YvKoHjoROW5bBGxAIsAbAmZMfRP4WxSqU8XC68n+pfq+ESm6Xw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR05MB4963
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,54 +47,98 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jackie Li <yaodong.li@intel.com>, David Airlie <airlied@linux.ie>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Eric Anholt <eric@anholt.net>, Jesse Barnes <jesse.barnes@intel.com>,
- Tina Zhang <tina.zhang@intel.com>, Jan Safrata <jan.nikitenko@gmail.com>,
- Sumit Semwal <sumit.semwal@linaro.org>, Gareth Hughes <gareth@valinux.com>,
- Pei Zhang <pei.zhang@intel.com>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Rob Clark <rob.clark@linaro.org>, Min He <min.he@intel.com>,
- Linux-graphics-maintainer <Linux-graphics-maintainer@vmware.com>,
- Ben Skeggs <bskeggs@redhat.com>, Dave Airlie <airlied@redhat.com>,
- Niu Bing <bing.niu@intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- Kevin Tian <kevin.tian@intel.com>, jim liu <jim.liu@intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Roland Scheidegger <sroland@vmware.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
- Maxime Ripard <mripard@kernel.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Keith Packard <keithp@keithp.com>, Eddie Dong <eddie.dong@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Faith <faith@valinux.com>, Daniel Vetter <daniel@ffwll.ch>,
- Ping Gao <ping.a.gao@intel.com>,
- =?iso-8859-1?Q?Christian_K=F6nig?= <christian.koenig@amd.com>,
- Zhiyuan Lv <zhiyuan.lv@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============0822025287=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
-> On Jan 15, 2021, at 13:15, Lee Jones <lee.jones@linaro.org> wrote:
-> 
-> This set is part of a larger effort attempting to clean-up W=1
-> kernel builds, which are currently overwhelmingly riddled with
-> niggly little warnings.
-> 
-> Last set!  All clean after this for; Arm, Arm64, PPC, MIPS and x86.
+--===============0822025287==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="UPT3ojh+0CqEDtpF"
+Content-Disposition: inline
 
-Thanks! For all the vmwgfx bits:
-Reviewed-by: Zack Rusin <zackr@vmware.com>
 
-z
+--UPT3ojh+0CqEDtpF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Hi,
+
+This is GVT next for 5.12 against drm-intel-gt-next which is mostly
+for cmd parser enhancement which adds extra check on register load
+depending on initial context and handles vGPU register state
+accordingly.
+
+Thanks.
+--
+The following changes since commit fe7bcfaeb2b775f257348dc7b935f8e80eef3e7d:
+
+  drm/i915/gt: Refactor heartbeat request construction and submission (2020-12-24 18:07:26 +0000)
+
+are available in the Git repository at:
+
+  https://github.com/intel/gvt-linux tags/gvt-gt-next-2021-01-18
+
+for you to fetch changes up to 02dd2b12a685944c4d52c569d05f636372a7b6c7:
+
+  drm/i915/gvt: unify lri cmd handler and mmio handlers (2020-12-25 11:16:32 +0800)
+
+----------------------------------------------------------------
+gvt-gt-next-2021-01-18
+
+- GVT cmd parser enhancement against guest context (Yan)
+
+----------------------------------------------------------------
+Yan Zhao (11):
+      drm/i915/gvt: parse init context to update cmd accessible reg whitelist
+      drm/i915/gvt: scan VM ctx pages
+      drm/i915/gvt: filter cmds "srm" and "lrm" in cmd_handler
+      drm/i915/gvt: filter cmds "lrr-src" and "lrr-dst" in cmd_handler
+      drm/i915/gvt: filter cmd "pipe-ctrl" in cmd_handler
+      drm/i915/gvt: export find_mmio_info
+      drm/i915/gvt: make width of mmio_attribute bigger
+      drm/i915/gvt: introduce a new flag F_CMD_WRITE_PATCH
+      drm/i915/gvt: statically set F_CMD_WRITE_PATCH flag
+      drm/i915/gvt: update F_CMD_WRITE_PATCH flag when parsing init ctx
+      drm/i915/gvt: unify lri cmd handler and mmio handlers
+
+ drivers/gpu/drm/i915/gvt/cmd_parser.c | 335 +++++++++++++++++++++++++++-------
+ drivers/gpu/drm/i915/gvt/cmd_parser.h |   4 +
+ drivers/gpu/drm/i915/gvt/gvt.h        |  37 +++-
+ drivers/gpu/drm/i915/gvt/handlers.c   |  15 +-
+ drivers/gpu/drm/i915/gvt/mmio.h       |   3 +
+ drivers/gpu/drm/i915/gvt/reg.h        |   2 +
+ drivers/gpu/drm/i915/gvt/scheduler.c  |  22 ++-
+ drivers/gpu/drm/i915/gvt/vgpu.c       |   4 +-
+ 8 files changed, 339 insertions(+), 83 deletions(-)
+
+--UPT3ojh+0CqEDtpF
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYAUXlgAKCRCxBBozTXgY
+J0YSAJ4/8ej1m5fQcbNlEveP4mZ/AHvdQgCdEflyY9dwAuDGdP1lcBXNikNTXNc=
+=KneK
+-----END PGP SIGNATURE-----
+
+--UPT3ojh+0CqEDtpF--
+
+--===============0822025287==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0822025287==--
