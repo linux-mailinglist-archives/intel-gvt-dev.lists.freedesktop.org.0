@@ -2,31 +2,105 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4CA82FB9CC
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Jan 2021 15:51:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 457142FBFE7
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Jan 2021 20:27:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 002D36E879;
-	Tue, 19 Jan 2021 14:51:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A1AF86E047;
+	Tue, 19 Jan 2021 19:27:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 707C96E3A0;
- Tue, 19 Jan 2021 14:51:25 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id CC5FCAB7F;
- Tue, 19 Jan 2021 14:51:23 +0000 (UTC)
-Subject: Re: [PATCH v4 0/6] drm: Move struct drm_device.pdev to legacy
-To: airlied@linux.ie, daniel@ffwll.ch, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, sroland@vmware.com, zackr@vmware.com
-References: <20210118131420.15874-1-tzimmermann@suse.de>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <7051ae0f-b86f-344a-e768-71ccadc3cf55@suse.de>
-Date: Tue, 19 Jan 2021 15:51:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2045.outbound.protection.outlook.com [40.107.223.45])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EAA376E047;
+ Tue, 19 Jan 2021 19:27:30 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TCBcsMMLyDSyXYYk1WTLMky1KSaE9GbN9S6/KnPJ+vMnnQEQ4kxSgZK9m//ju7gbZO0C5izOIDHFN6ENPEIko0hfT9XpYGynShOcLhGfqIdj+0s4xkirzq0m2wIGlVwkbKRUUY1cedMXJ2MuaXq9wh6t8QxzujU7ctvve7iFwUHJccrNgRWMtTLEGm97xznTQz+1bFYTQhhtmol7mXbUMg7ufvsJC/l1U2NAe5wnark5wdoFQh7LB/rsN9vzEJnL/lU2oOFnfej/sh78bgc01ZeTDg0LBo/ZOH3DF+Qm1eXfqGFXdwqThxragPkvIHZO69EANRtGGeaS8/gHP4SBew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tDnrtRR9j27LvMFwPIOT5Za1n2bgcmBcOE5FS0gLY2s=;
+ b=TtTZqCZFuM8WS5B8hhKnU5dOovhLocoUVWPOH388ZSKwpD+FGihvVhhAyBInAvFtROq5PTnptbWlxW8VnoDVrgSfjY9HSuWuI0jH0EsNSsycwedC+Efrzf4ee0KI1U3mQulA8faZ4NfzDlgqg0JBkW+677IgwB7+4U8bOxwD4xJb6HFBONpOnl9QTvVoG7NKiEXDzEl9GCHNUHqGyIkbpZ9rArqTibDf3x1Bza30QV8QUwOU3zaq9FVphcu+V48eK/aHdhQqCHKCfjrbxlL48FTnzpyTbhJV8cI+WkLX/fsUkgVJfj9GJWlo1pt5ugCBareFfobLEIZowFQlszRo8g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vmware.com; dmarc=pass action=none header.from=vmware.com;
+ dkim=pass header.d=vmware.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vmware.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tDnrtRR9j27LvMFwPIOT5Za1n2bgcmBcOE5FS0gLY2s=;
+ b=ZAl4+sQt0zar5jn5EA6g8by/J7FrZipIPisqFG9p5mZjm+7mX7PLPcskxeFoTGf3uEUFyg8GkZ0lUNF6D/YDiKiiSS0vdCq11OarVIAvbMk1TF5QL2TrlIOMXMWDrRrl1eog0aTvAo0xpl090GHHsK1YsG3swgb1aS6e1yHvZE0=
+Received: from (2603:10b6:208:8f::18) by
+ BLAPR05MB7378.namprd05.prod.outlook.com (2603:10b6:208:298::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.5; Tue, 19 Jan
+ 2021 19:27:20 +0000
+Received: from BL0PR05MB5186.namprd05.prod.outlook.com
+ ([fe80::856b:10f9:d35c:cde1]) by BL0PR05MB5186.namprd05.prod.outlook.com
+ ([fe80::856b:10f9:d35c:cde1%4]) with mapi id 15.20.3784.010; Tue, 19 Jan 2021
+ 19:27:20 +0000
+From: Zack Rusin <zackr@vmware.com>
+To: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH 00/29] [Set 15] Finally rid W=1 warnings from GPU!
+Thread-Topic: [PATCH 00/29] [Set 15] Finally rid W=1 warnings from GPU!
+Thread-Index: AQHW62p+Afh7eg9MAECAFEwSMWQpd6opAUIAgAR7cYCAAARggIAAJLMAgAD9y4CAALfKAA==
+Date: Tue, 19 Jan 2021 19:27:20 +0000
+Message-ID: <8DE96253-47A3-4A16-9331-62F547A2CC44@vmware.com>
+References: <20210115181601.3432599-1-lee.jones@linaro.org>
+ <F914D9B9-6DD4-4383-9F7C-8D09FBFE96CE@vmware.com>
+ <YAWhDRkSOHbJ+2Le@phenom.ffwll.local> <20210118150945.GE4903@dell>
+ <YAXDgmWMR9s4OgxN@phenom.ffwll.local> <20210119082927.GJ4903@dell>
+In-Reply-To: <20210119082927.GJ4903@dell>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Apple Mail (2.3654.40.0.2.32)
+authentication-results: linaro.org; dkim=none (message not signed)
+ header.d=none;linaro.org; dmarc=none action=none header.from=vmware.com;
+x-originating-ip: [71.175.59.246]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: e9ced637-eb95-498c-2bd3-08d8bcb03d9a
+x-ms-traffictypediagnostic: BLAPR05MB7378:
+x-ld-processed: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BLAPR05MB73788F177B49E0955637FB78CEA39@BLAPR05MB7378.namprd05.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: bRYJYhpc5DJU0PAvR/CYJc/A3Z44dZLyfiEWEwnq6/NSU9EBSZ+woGgB57CEs0LDKtR92/e5MHo+jIo9YnUlFwvl2w13m2tV05Y79mfOMHfvSSm/sCWr1M88edkwzmGXai8+byUsDfDgnkvFCgBXMB5ednJOzolf9cVI268x5GXR54A6oB9rO+mNoZfrDbMe9Hu8ewIagCoPyuZa4l1FigoMBYtkIkWI1Ap2Hyd6ngXy/4eSqZf0XXZTccpNtWdNFjA7uxDWTL9xe6XOysbQ/RnSy4/V8h9DC0a/LLCZ7L0JUKqCKS7FXzGCrIWtTeejZWl89FjiQWDpJM2mcYCiEJ7T+xECObkUxFKgyaNVvQ7gNKn04Js9SKUuG5iOe4Ba0kYBJMT/ez7nkjqCA0vvtsTPni5iwG8GMQfBArdTNQ1tC3rqGPr6v5/PtH5pGC+r
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR05MB5186.namprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(376002)(39860400002)(366004)(396003)(346002)(83380400001)(76116006)(36756003)(2906002)(186003)(8936002)(4326008)(33656002)(316002)(54906003)(66476007)(64756008)(5660300002)(86362001)(66556008)(66446008)(53546011)(71200400001)(6916009)(6486002)(6512007)(66946007)(7416002)(478600001)(7406005)(8676002)(2616005)(26005)(6506007)(45980500001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: =?iso-8859-1?Q?TCu+QFTEdaiUDOfB2J449+fIzZVCLxcC1gW7TEWnnI96nC+wAK8CBvfSrn?=
+ =?iso-8859-1?Q?YghDRMZDhqpaTnMyzBaFahz4R8ecjYJlIB1wrYu+5Una6qdeD+aaJpeq2O?=
+ =?iso-8859-1?Q?T4NKbb7pvVYkfcITQlXStEdtl3TcA1dIFzbCfIyECs/bXQmDwDDlbWrhcP?=
+ =?iso-8859-1?Q?RM49Zz/8pCv2EJM2lJRveOf0dM+3k5eVOa79X+9QBMTFp8cR3unQdFKcg3?=
+ =?iso-8859-1?Q?SiZ2OOi9iBTSjayrIrfq5EVgtZPwQWoNQPExcnFA58qqq9gVq0QW66gH5G?=
+ =?iso-8859-1?Q?QYC5KKTknKcY1ZpdKRrAlvpv4vycllYqHxrOCGh6pXP2OSM8Y0lpIZgCV/?=
+ =?iso-8859-1?Q?n3bpdoeo5WCLR2lA2ZBbsKL5yXhK4N7dkUAzMNfL+vas4jqgvSCGcp53Xh?=
+ =?iso-8859-1?Q?8RWc7ROTC8C6Xp9tVcD4Bs6NhC6GsYwM+bOPSlS2pYIM/wAy9cIBYF6RaG?=
+ =?iso-8859-1?Q?6BSuEM1FZopsbiov2UDwDm+lwc6xkwhvj2pXbZjQZ6uGOzOlCwmPWDmEt/?=
+ =?iso-8859-1?Q?QIomay5ENR5VbaSmswwUUvZ28/1ZXqppCj5Npf0reEn4XoXADF0BvhchC9?=
+ =?iso-8859-1?Q?9qd2LQdnC9qeyete3tkKd7qLkAO71Xhnt2rJPo4M8iREwRdqYCSfRmCXw3?=
+ =?iso-8859-1?Q?GiVbiOWieH3ySMGrVLGBeDGnYeoxjygHWa2h+ZmqEW/wOdp2+8cQjqJDhK?=
+ =?iso-8859-1?Q?hEVb0BBWBZtUZrcN0XMKhsLFfwXV/DzGenUzdYPuwp3gV3ZRx1ZQGaowyW?=
+ =?iso-8859-1?Q?J7NZxq03OAmyo0xlDnm7wxMg8y3MqO4/3J8u4zt7CPmQ0vO7nbxNzZhyCN?=
+ =?iso-8859-1?Q?Kodkp07tLOmxjLOKurE+IUQPn1msAp6usoesmErCxKm5BW04FklrA7jinQ?=
+ =?iso-8859-1?Q?4/PQnhQGYzpvQUeiWz/bMLFVKlR99FC/yGP0Cb++tPOPbAPsyLunqYDCUt?=
+ =?iso-8859-1?Q?kJ5de+Vx3U6aPiUmbrsp4RumlgEwZ8tDFehpdIKVKkNR+jEA8O6aa8n6Pv?=
+ =?iso-8859-1?Q?bpWZ/hS/nwG07/7S/prnXXCjvfBPf1emVnQOWc?=
+Content-ID: <F0912769F7D8344F9F5AB490350D9FA0@namprd05.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <20210118131420.15874-1-tzimmermann@suse.de>
+X-OriginatorOrg: vmware.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR05MB5186.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e9ced637-eb95-498c-2bd3-08d8bcb03d9a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Jan 2021 19:27:20.5425 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Cd3qOwYBlOAK2YzeeoHw+69w0XoGXNBx38ABzKkrIGqdoa4rnHnJzE8OioYLYnvlv40+D6zj8M77tyZTLftYVQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLAPR05MB7378
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,197 +113,81 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- linux-graphics-maintainer@vmware.com, dri-devel@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============1079958036=="
+Cc: Jackie Li <yaodong.li@intel.com>, David Airlie <airlied@linux.ie>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Eric Anholt <eric@anholt.net>, Jesse Barnes <jesse.barnes@intel.com>,
+ Tina Zhang <tina.zhang@intel.com>, Jan Safrata <jan.nikitenko@gmail.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Gareth Hughes <gareth@valinux.com>,
+ Pei Zhang <pei.zhang@intel.com>,
+ Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
+ Rob Clark <rob.clark@linaro.org>, Min He <min.he@intel.com>,
+ Linux-graphics-maintainer <Linux-graphics-maintainer@vmware.com>,
+ Ben Skeggs <bskeggs@redhat.com>, Dave Airlie <airlied@redhat.com>,
+ Niu Bing <bing.niu@intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ Kevin Tian <kevin.tian@intel.com>, jim liu <jim.liu@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Roland Scheidegger <sroland@vmware.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
+ Maxime Ripard <mripard@kernel.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ Keith Packard <keithp@keithp.com>, Eddie Dong <eddie.dong@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Faith <faith@valinux.com>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Ping Gao <ping.a.gao@intel.com>,
+ =?iso-8859-1?Q?Christian_K=F6nig?= <christian.koenig@amd.com>,
+ Zhiyuan Lv <zhiyuan.lv@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============1079958036==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="kxpotDhPRhv4Y861TKwIwPpQee7lgLLdE"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---kxpotDhPRhv4Y861TKwIwPpQee7lgLLdE
-Content-Type: multipart/mixed; boundary="H9Rm5CapTkeGqzs1YHZWgXV5awAdc7ijX";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: airlied@linux.ie, daniel@ffwll.ch, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, sroland@vmware.com, zackr@vmware.com
-Cc: linux-graphics-maintainer@vmware.com, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, dri-devel@lists.freedesktop.org
-Message-ID: <7051ae0f-b86f-344a-e768-71ccadc3cf55@suse.de>
-Subject: Re: [PATCH v4 0/6] drm: Move struct drm_device.pdev to legacy
-References: <20210118131420.15874-1-tzimmermann@suse.de>
-In-Reply-To: <20210118131420.15874-1-tzimmermann@suse.de>
-
---H9Rm5CapTkeGqzs1YHZWgXV5awAdc7ijX
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-FYI patches 1 and 5 are now in drm-misc-next.
-
-Am 18.01.21 um 14:14 schrieb Thomas Zimmermann:
-> I merged more patches into drm-misc-next. I'm mostly sending out v4 of
-> this patchset to split the final patch into the core changes and the
-> patch for moving pdev behind CONFIG_DRM_LEGACY. The former are required=
-
-> to fix a reported bug. [1] There's also a fix to vmwgfx.
->=20
-> The pdev field in struct drm_device points to a PCI device structure an=
-d
-> goes back to UMS-only days when all DRM drivers were for PCI devices.
-> Meanwhile we also support USB, SPI and platform devices. Each of those
-> uses the generic device stored in struct drm_device.dev.
->=20
-> To reduce duplication and remove the special case of PCI, this patchset=
-
-> converts all modesetting drivers from pdev to dev and makes pdev a fiel=
-d
-> for legacy UMS drivers.
->=20
-> For PCI devices, the pointer in struct drm_device.dev can be upcasted t=
-o
-> struct pci_device; or tested for PCI with dev_is_pci(). In several plac=
-es
-> the code can use the dev field directly.
->=20
-> After converting all drivers and the DRM core, the pdev fields becomes
-> only relevant for legacy drivers. In a later patchset, we may want to
-> convert these as well and remove pdev entirely.
->=20
-> v4:
-> 	* merged several patches
-> 	* moved core changes into separate patch
-> 	* vmwgfx build fix
-> v3:
-> 	* merged several patches
-> 	* fix one pdev reference in nouveau (Jeremy)
-> 	* rebases
-> v2:
-> 	* move whitespace fixes into separate patches (Alex, Sam)
-> 	* move i915 gt/ and gvt/ changes into separate patches (Joonas)
->=20
-> [1] https://lore.kernel.org/dri-devel/7851c78c-8c57-3c84-cd49-a72703095=
-a5d@suse.de/
->=20
-> Thomas Zimmermann (6):
->    drm: Upcast struct drm_device.dev to struct pci_device; replace pdev=
-
->    drm/i915: Remove references to struct drm_device.pdev
->    drm/i915/gt: Remove references to struct drm_device.pdev
->    drm/i915/gvt: Remove references to struct drm_device.pdev
->    drm/vmwgfx: Remove reference to struct drm_device.pdev
->    drm: Move struct drm_device.pdev to legacy section
->=20
->   drivers/gpu/drm/drm_agpsupport.c              |  9 ++++---
->   drivers/gpu/drm/drm_bufs.c                    |  4 +--
->   drivers/gpu/drm/drm_edid.c                    |  7 ++++-
->   drivers/gpu/drm/drm_irq.c                     | 12 +++++----
->   drivers/gpu/drm/drm_pci.c                     | 26 +++++++++++-------=
--
->   drivers/gpu/drm/drm_vm.c                      |  2 +-
->   drivers/gpu/drm/i915/display/intel_bios.c     |  2 +-
->   drivers/gpu/drm/i915/display/intel_cdclk.c    | 14 +++++-----
->   drivers/gpu/drm/i915/display/intel_csr.c      |  2 +-
->   drivers/gpu/drm/i915/display/intel_dsi_vbt.c  |  2 +-
->   drivers/gpu/drm/i915/display/intel_fbdev.c    |  2 +-
->   drivers/gpu/drm/i915/display/intel_gmbus.c    |  2 +-
->   .../gpu/drm/i915/display/intel_lpe_audio.c    |  5 ++--
->   drivers/gpu/drm/i915/display/intel_opregion.c |  6 ++---
->   drivers/gpu/drm/i915/display/intel_overlay.c  |  2 +-
->   drivers/gpu/drm/i915/display/intel_panel.c    |  4 +--
->   drivers/gpu/drm/i915/display/intel_quirks.c   |  2 +-
->   drivers/gpu/drm/i915/display/intel_sdvo.c     |  2 +-
->   drivers/gpu/drm/i915/display/intel_vga.c      |  8 +++---
->   drivers/gpu/drm/i915/gem/i915_gem_phys.c      |  6 ++---
->   drivers/gpu/drm/i915/gem/i915_gem_shmem.c     |  2 +-
->   drivers/gpu/drm/i915/gt/intel_engine_cs.c     |  2 +-
->   drivers/gpu/drm/i915/gt/intel_ggtt.c          | 10 +++----
->   drivers/gpu/drm/i915/gt/intel_ppgtt.c         |  2 +-
->   drivers/gpu/drm/i915/gt/intel_rc6.c           |  4 +--
->   drivers/gpu/drm/i915/gt/intel_region_lmem.c   |  8 +++---
->   drivers/gpu/drm/i915/gt/intel_reset.c         |  6 ++---
->   drivers/gpu/drm/i915/gvt/cfg_space.c          |  5 ++--
->   drivers/gpu/drm/i915/gvt/firmware.c           | 10 +++----
->   drivers/gpu/drm/i915/gvt/gtt.c                | 12 ++++-----
->   drivers/gpu/drm/i915/gvt/gvt.c                |  6 ++---
->   drivers/gpu/drm/i915/gvt/kvmgt.c              |  4 +--
->   drivers/gpu/drm/i915/i915_debugfs.c           |  2 +-
->   drivers/gpu/drm/i915/i915_drv.c               | 20 +++++++-------
->   drivers/gpu/drm/i915/i915_drv.h               |  2 +-
->   drivers/gpu/drm/i915/i915_gem_gtt.c           |  5 ++--
->   drivers/gpu/drm/i915/i915_getparam.c          |  5 ++--
->   drivers/gpu/drm/i915/i915_gpu_error.c         |  2 +-
->   drivers/gpu/drm/i915/i915_irq.c               |  6 ++---
->   drivers/gpu/drm/i915/i915_pmu.c               |  2 +-
->   drivers/gpu/drm/i915/i915_suspend.c           |  4 +--
->   drivers/gpu/drm/i915/i915_switcheroo.c        |  4 +--
->   drivers/gpu/drm/i915/i915_vgpu.c              |  2 +-
->   drivers/gpu/drm/i915/intel_device_info.c      |  2 +-
->   drivers/gpu/drm/i915/intel_runtime_pm.c       |  2 +-
->   drivers/gpu/drm/i915/intel_uncore.c           |  4 +--
->   .../gpu/drm/i915/selftests/mock_gem_device.c  |  1 -
->   drivers/gpu/drm/i915/selftests/mock_gtt.c     |  2 +-
->   drivers/gpu/drm/vmwgfx/vmwgfx_drv.c           |  1 -
->   include/drm/drm_device.h                      |  6 ++---
->   50 files changed, 137 insertions(+), 125 deletions(-)
->=20
-> --
-> 2.29.2
->=20
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
 
 
---H9Rm5CapTkeGqzs1YHZWgXV5awAdc7ijX--
+> On Jan 19, 2021, at 03:29, Lee Jones <lee.jones@linaro.org> wrote:
+> 
+> On Mon, 18 Jan 2021, Daniel Vetter wrote:
+> 
+>> On Mon, Jan 18, 2021 at 03:09:45PM +0000, Lee Jones wrote:
+>>> On Mon, 18 Jan 2021, Daniel Vetter wrote:
+>>> 
+>>>> On Fri, Jan 15, 2021 at 06:27:15PM +0000, Zack Rusin wrote:
+>>>>> 
+>>>>>> On Jan 15, 2021, at 13:15, Lee Jones <lee.jones@linaro.org> wrote:
+>>>>>> 
+>>>>>> This set is part of a larger effort attempting to clean-up W=1
+>>>>>> kernel builds, which are currently overwhelmingly riddled with
+>>>>>> niggly little warnings.
+>>>>>> 
+>>>>>> Last set!  All clean after this for; Arm, Arm64, PPC, MIPS and x86.
+>>>>> 
+>>>>> Thanks! For all the vmwgfx bits:
+>>>>> Reviewed-by: Zack Rusin <zackr@vmware.com>
+>>>> 
+>>>> Ok I merged everything except vmwgfx (that's for Zack) and i915/nouveau
+>>>> (those generally go through other trees, pls holler if they're stuck).
+>>> 
+>>> Thanks Daniel, you're a superstar!
+>>> 
+>>> So Zack will take the vmwgfx parts?  Despite providing a R-b?
+>> 
+>> I only merge stuff that's defacto abandoned already. Everything else I try
+>> to offload to whomever actually cares :-)
+> 
+> Understood.  Thanks for the explanation.
+> 
+> Hopefully Zack actually cares. :D
 
---kxpotDhPRhv4Y861TKwIwPpQee7lgLLdE
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
+hah, I do. I just pushed all of the changes to drm-misc-next. Let me know if I missed anything. Thanks!
 
------BEGIN PGP SIGNATURE-----
+z
 
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmAG8eoFAwAAAAAACgkQlh/E3EQov+BQ
-oA//ZVy4jjHqk8jvqXmmtUH0MFcUKHRhHrswS5Z17dT71/Pg+BU1NT3TNC4YrSUc7U9J1+V/P326
-MEIDTMXV/0Ftc72rueY0pF9ZgZbPtBPmrsPEbpqssPUyELQarKmlkkfTglnIuVArFvS7lnb02/81
-l2iCrZA01w0M+zw1emYjw6rKahvb8r4v/m+VmXAFOQe7T/SkDkqAzlqRTZ8V5oQN7l6DFamJdbgW
-keIVdF0b0PJBJZoWxyLJIzPTwejgcWImyEv0cv86tXnt6eUUtSbQg7Cv5T13d3bylDIzjcBEt9x4
-j/XaLOoaJg+xuMtwgqJb7gnqceoBcJOdlMIDW2SbNoRfoK05ZCytmpzxQIVvsx/AfnDTZV+4hlrG
-yBcyE7wt9kNZjo6ca1QKpv1tuT4ZIvBmVZgPwIFLH2YN2tIfxl+vrxIKNvl3uIp1mj2zcyueJL84
-4myFK+9hdG2Ws9ZWgkOBW0u4db0rUPH95XmeGtbjJdCB3gmZljQa4rwxlmMiCYVEausKnalzctd3
-SitCFQnkEZAdI0WXsZkjbJnpb7/f5540/PNtcLAsGVIIrQPOsVK4n/rx7Im4cn/KfAXgigUynG93
-sGqeiBA2wM8M3PHZkVyHA+KYJ56QVJ8L5QHOdDfTha4Q+GPACmKP7uFntfRkLBiNKGg+xSM5moJj
-sW8=
-=hkIc
------END PGP SIGNATURE-----
-
---kxpotDhPRhv4Y861TKwIwPpQee7lgLLdE--
-
---===============1079958036==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1079958036==--
