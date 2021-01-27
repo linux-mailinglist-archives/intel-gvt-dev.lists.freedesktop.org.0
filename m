@@ -2,30 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F0AD30771F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Jan 2021 14:31:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BED3E307A0D
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Jan 2021 16:51:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5B4686E971;
-	Thu, 28 Jan 2021 13:31:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 633C06E1C0;
+	Thu, 28 Jan 2021 15:51:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 67B2E6E966;
- Thu, 28 Jan 2021 13:31:34 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id F0233B120;
- Thu, 28 Jan 2021 13:31:32 +0000 (UTC)
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: airlied@linux.ie, daniel@ffwll.ch, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, chris@chris-wilson.co.uk
-Subject: [PATCH v6 5/5] drm: Move struct drm_device.pdev to legacy section
-Date: Thu, 28 Jan 2021 14:31:27 +0100
-Message-Id: <20210128133127.2311-6-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210128133127.2311-1-tzimmermann@suse.de>
-References: <20210128133127.2311-1-tzimmermann@suse.de>
+Received: from pmail.com (unknown [118.70.165.84])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A04376E1C0;
+ Thu, 28 Jan 2021 15:51:55 +0000 (UTC)
+Received: from User (unknown [154.127.53.41])
+ by pmail.com (Postfix) with SMTP id B99CADE3CEE;
+ Thu, 28 Jan 2021 05:18:34 +0700 (+07)
+From: "erenich ekaterina"<verenichekaterina4545@gmail.com>
+Subject: Dear Beloved
+Date: Wed, 27 Jan 2021 14:18:45 -0800
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,55 +35,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Sam Ravnborg <sam@ravnborg.org>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
- dri-devel@lists.freedesktop.org
+Reply-To: verenichekaterina81@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210128155156.633C06E1C0@gabe.freedesktop.org>
 
-Struct drm_device.pdev is being moved to legacy status as only legacy
-DRM drivers use it. A possible follow-up patchset could remove pdev
-entirely.
+Dear Beloved
 
-v4:
-	* rebased
+Life is gradually passing away from me as a result of my present medical condition and my personal doctor confided in me yesterday that I have only but few more weeks to live.
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Chris Wilson <chris@chris-wilson.co.uk>
-Acked-by: Sam Ravnborg <sam@ravnborg.org>
----
- include/drm/drm_device.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+In view of this setback, I want to donate my estate for humanitarian assistance, since this has always been the plan of my late husband and besides I have no child.
 
-diff --git a/include/drm/drm_device.h b/include/drm/drm_device.h
-index d647223e8390..c5a195676e8f 100644
---- a/include/drm/drm_device.h
-+++ b/include/drm/drm_device.h
-@@ -279,9 +279,6 @@ struct drm_device {
- 	/** @agp: AGP data */
- 	struct drm_agp_head *agp;
- 
--	/** @pdev: PCI device structure */
--	struct pci_dev *pdev;
--
- 	/** @num_crtcs: Number of CRTCs on this device */
- 	unsigned int num_crtcs;
- 
-@@ -324,6 +321,9 @@ struct drm_device {
- 	/* List of devices per driver for stealth attach cleanup */
- 	struct list_head legacy_dev_list;
- 
-+	/* PCI device structure */
-+	struct pci_dev *pdev;
-+
- #ifdef __alpha__
- 	/** @hose: PCI hose, only used on ALPHA platforms. */
- 	struct pci_controller *hose;
--- 
-2.30.0
+In an effort to compliment the good work of God almighty and the wish of my late Husband I donate the sum of $2,800,000.00 (Two Million Eight Hundred Thousand United States Dollars) to you.
 
+On your acknowledgment of this mail and informing me of your nationality and current place of resident, my Bank will facilitate due processes for transfer of this legacy to you.
+
+May God bless you as you use this money judiciously for the work of charity.
+
+Sincere regards,
+
+Mrs.verenich ekaterina
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
