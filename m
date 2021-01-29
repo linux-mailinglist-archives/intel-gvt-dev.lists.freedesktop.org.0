@@ -1,27 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E7923083D2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Jan 2021 03:25:00 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D46B309047
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Jan 2021 23:51:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B12AB6E372;
-	Fri, 29 Jan 2021 02:24:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5517C6EC49;
+	Fri, 29 Jan 2021 22:51:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 8850 seconds by postgrey-1.36 at gabe;
- Fri, 29 Jan 2021 02:24:57 UTC
-Received: from smtp.list.bbb.org (smtp.list.bbb.org [216.52.119.101])
- by gabe.freedesktop.org (Postfix) with ESMTP id 84C906E372;
- Fri, 29 Jan 2021 02:24:57 +0000 (UTC)
-Received: from [192.168.101.187] (unknown [216.52.119.98])
- by smtp.list.bbb.org (Postfix) with ESMTP id 2470138E8407;
- Thu, 28 Jan 2021 18:03:40 -0500 (EST)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 33C9C6EC49
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 29 Jan 2021 22:51:30 +0000 (UTC)
+IronPort-SDR: dDSs9ko9iG/0iheh1WJ6JKZDtl30RmyKIV2xKZZFVP9GJOKrRCV090sKzQHQfnbYEGeDZzPlct
+ TaCi8OBzpAFQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="244580126"
+X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="244580126"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jan 2021 14:51:29 -0800
+IronPort-SDR: KcmV7sPRxjiUUHtrgmWCGLsMpyprtH0Um85jkzqzteWc5yyu4g7d3F5GvuIww38ZbOEvxgvsRj
+ amugbDvLppXQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="354817798"
+Received: from lkp-server02.sh.intel.com (HELO 625d3a354f04) ([10.239.97.151])
+ by orsmga003.jf.intel.com with ESMTP; 29 Jan 2021 14:51:26 -0800
+Received: from kbuild by 625d3a354f04 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1l5cbu-00047b-Uu; Fri, 29 Jan 2021 22:51:26 +0000
+Date: Sat, 30 Jan 2021 06:50:34 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ 635f961a1719928edce2995b049e184ff4892ee3
+Message-ID: <6014913a.Ls8Hdmjyw1R6bd0x%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: BUSINESS PROPOSITION.
-To: Recipients <ralphnick113@gmail.com>
-From: ralphnick113@gmail.com
-Date: Fri, 29 Jan 2021 01:03:38 +0200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,92 +49,128 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1397993792=="
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210129022458.B12AB6E372@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============1397993792==
-Content-Type: multipart/alternative; boundary="===============1913889092=="
+tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
+branch HEAD: 635f961a1719928edce2995b049e184ff4892ee3  gvt-staging: 2021y-01m-29d-17h-40m-55s CST integration manifest
 
-You will not see this in a MIME-aware mail reader.
---===============1913889092==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+elapsed time: 720m
 
-Good Day,
-I work as the Accountant and Auditor Manager in a bank here in South Africa=
-; I have a very confidential business proposition for you.
-There is an unclaimed huge funds in our bank that belongs to a foreign cust=
-omer whom died with his entire family of the covid-19 pandemic.
-I am seeking for your good collaboration to transfer the funds to you as th=
-e immediate relative for our both benefit, and also to help they needy duri=
-ng these trying times. =
+configs tested: 96
+configs skipped: 2
 
-Kindly get back to me once you have read this mail and if you=2019re intere=
-sted, so I shall send to you more relevant details.
-Please send your reply to my private Email addresses: ralphnicholas@aexea.c=
-o.uk
-Yours Sincerely.
-Mr.Ralph Nicholas.
-  =
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-  =
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+sh                          rsk7269_defconfig
+powerpc                 mpc832x_rdb_defconfig
+arm                        magician_defconfig
+sh                           se7343_defconfig
+powerpc                        icon_defconfig
+arm                       imx_v4_v5_defconfig
+h8300                     edosk2674_defconfig
+powerpc                      ep88xc_defconfig
+m68k                          amiga_defconfig
+m68k                          sun3x_defconfig
+powerpc                 mpc836x_rdk_defconfig
+sh                           se7206_defconfig
+sh                             sh03_defconfig
+arm                        vexpress_defconfig
+powerpc                 mpc836x_mds_defconfig
+powerpc                     powernv_defconfig
+m68k                       m5475evb_defconfig
+arm                          ixp4xx_defconfig
+arm                          collie_defconfig
+openrisc                    or1ksim_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20210129
+x86_64               randconfig-a003-20210129
+x86_64               randconfig-a001-20210129
+x86_64               randconfig-a005-20210129
+x86_64               randconfig-a006-20210129
+x86_64               randconfig-a004-20210129
+i386                 randconfig-a001-20210129
+i386                 randconfig-a002-20210129
+i386                 randconfig-a004-20210129
+i386                 randconfig-a005-20210129
+i386                 randconfig-a003-20210129
+i386                 randconfig-a006-20210129
+i386                 randconfig-a013-20210129
+i386                 randconfig-a011-20210129
+i386                 randconfig-a012-20210129
+i386                 randconfig-a016-20210129
+i386                 randconfig-a014-20210129
+i386                 randconfig-a015-20210129
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-  =
+clang tested configs:
+x86_64               randconfig-a012-20210129
+x86_64               randconfig-a015-20210129
+x86_64               randconfig-a016-20210129
+x86_64               randconfig-a011-20210129
+x86_64               randconfig-a013-20210129
+x86_64               randconfig-a014-20210129
 
-  =
-
-  =
-
-  =
-
-  =
-
- =
-
-=20
-
---===============1913889092==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Dutf-8"/></head><BODY><P>Good Day,<BR>I work as the Accountant and Audito=
-r Manager in a bank here in South Africa; I have a very confidential busine=
-ss proposition for you.<BR>There is an unclaimed huge funds in our bank tha=
-t belongs to a foreign customer whom died with his entire family of the cov=
-id-19 pandemic.<BR>I am seeking for your good collaboration to transfer the=
- funds to you as the immediate relative for our both benefit, and also to h=
-elp they needy during these trying times. <BR>Kindly get back to me once yo=
-u have read this mail and if you=E2=80=99re interested, so I shall send to =
-you more relevant details.<BR>Please send your reply to my private Email ad=
-dresses: <A href=3D"mailto:ralphnicholas@aexea.co.uk">ralphnicholas@aexea.c=
-o.uk</A><BR>Yours Sincerely.<BR>Mr.Ralph Nicholas.</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P><BR>&nbsp;</P></BODY></HTML>
---===============1913889092==--
-
---===============1397993792==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1397993792==--
