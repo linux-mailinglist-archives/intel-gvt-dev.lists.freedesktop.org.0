@@ -2,36 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5546B31233B
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  7 Feb 2021 10:38:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BEC8312769
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  7 Feb 2021 21:30:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E5DE36E429;
-	Sun,  7 Feb 2021 09:38:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EBCFB6E817;
+	Sun,  7 Feb 2021 20:30:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from smtp-18.idc2.mandic.com.br (smtp-18d.idc2.mandic.com.br
- [177.70.124.135])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0D8196E429;
- Sun,  7 Feb 2021 09:38:03 +0000 (UTC)
-Received: by smtp-18.smtp.mandic.prv (Postfix, from userid 491)
- id 8D85860650BC; Sun,  7 Feb 2021 06:37:57 -0300 (-03)
-Received: from smtp-18.idc2.mandic.com.br (ifsmtp2 [192.168.1.38])
- by smtp-18.smtp.mandic.prv (Postfix) with ESMTPS id C384860641E7;
- Sun,  7 Feb 2021 06:37:51 -0300 (-03)
-Received: from User (unknown [52.235.38.23])
- by smtp-18.smtp.mandic.prv (Postfix) with ESMTPA id 1B7E44624145;
- Sun,  7 Feb 2021 06:35:17 -0300 (-03)
-From: "Ms. Reem"<stefy@macrometrica.com.br>
-Subject: Re:reply
-Date: Sun, 7 Feb 2021 09:37:49 -0000
+Received: from optinix.in (unknown [20.39.40.203])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4269E6E817;
+ Sun,  7 Feb 2021 20:30:44 +0000 (UTC)
+dkim-signature: v=1; a=rsa-sha256; d=digitalsol.in; s=dkim;
+ c=relaxed/relaxed; q=dns/txt;
+ h=From:Reply-To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=wK2neTcOXNiSQ+RBxrnFed+mRrGUU/ndLGEgvo8IMCc=;
+ b=MyxXilcfNJcaaLFFGLCR7WcyZV7F0MffTH8RefQ7hZ1fcNlnWh8FkICl+FiE3pKbpiLkxiCTOgm+eLCbypsfjmLYtiAv9SUhDofMIlykuUrc68QYE4SciKgDBtD0To4YsFpaw8ngiSEroBDR37cn8FIt/awf0tC8z4BUWyqZ7RrZUzcdJ4KvsCJP6xGCCU4lB6EPcLfxtq4bUBhrfAgZZdMVD1mWu0D6i6wJ8zowbWhfkZVEbrVea0g35x
+ T/sPk16r2pm2bhwRKcrWwSjQCf+7Ama2RruQIZFOn3qBYttbWpWaK1BKGbGeW8lc06+AharRRPjHzYtHzMj0kkZ97mXQ==
+Received: from User (Unknown [52.231.31.5]) by optinix.in with ESMTP
+ ; Fri, 29 Jan 2021 20:17:23 +0000
+Message-ID: <32475105-74B8-4A82-A692-36013D3F2C1C@optinix.in>
+From: "Ms. Reem"<support@digitalsol.in>
+Subject: Re:read
+Date: Fri, 29 Jan 2021 20:17:21 -0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Mandic-Auth: DYB6x5JcyVot9snxiAasWC73cfc93V+pC3vUrorm87+eXbqAUeEHL0ZNPgpM50IYQeUbiYx0PkMIK2oavHcOOA==
-X-Mandic-Sender: stefy@macrometrica.com.br
-Message-Id: <20210207093751.C384860641E7@smtp-18.smtp.mandic.prv>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,6 +72,7 @@ ms.reem@yandex.com
 
 Regards,
 Ms. Reem.
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
