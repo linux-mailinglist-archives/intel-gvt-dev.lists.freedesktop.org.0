@@ -1,41 +1,25 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9EB49309046
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Jan 2021 23:51:31 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D579430929B
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 30 Jan 2021 09:56:10 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4771E6EC4A;
-	Fri, 29 Jan 2021 22:51:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 11F396EC90;
+	Sat, 30 Jan 2021 08:56:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BA2196EC49
+X-Greylist: delayed 40169 seconds by postgrey-1.36 at gabe;
+ Sat, 30 Jan 2021 08:56:07 UTC
+Received: from hobbyiobby.com (unknown [185.222.57.189])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5B69B6EC90
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Jan 2021 22:51:29 +0000 (UTC)
-IronPort-SDR: nF169QYkU85l3QugwFfNP/XHnhGKqtIbIw7JZspv9H/u+JHN64PcFhI0P9y7iY5OIent0GNfzW
- aTXvSXigOaOQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="265325649"
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="265325649"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 14:51:29 -0800
-IronPort-SDR: oaNDfLOCp6qAAmQXQF9QeGJTOR6PCQJjiwU3SDtwcG5MNyH1B67LY9JgNvggjGEMRRILN0r6M2
- qR/0V/r1ySRw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="404676995"
-Received: from lkp-server02.sh.intel.com (HELO 625d3a354f04) ([10.239.97.151])
- by fmsmga004.fm.intel.com with ESMTP; 29 Jan 2021 14:51:27 -0800
-Received: from kbuild by 625d3a354f04 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1l5cbu-00047e-Vf; Fri, 29 Jan 2021 22:51:26 +0000
-Date: Sat, 30 Jan 2021 06:50:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
- f0cabe0baf85031a75334063ba09371d9ad1241a
-Message-ID: <6014913d.aXzXlx2WJggf4xi6%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Sat, 30 Jan 2021 08:56:07 +0000 (UTC)
+From: Rev Azra Mehmet Ates<server@hobbyiobby.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: remain blessed
+Date: 30 Jan 2021 00:56:05 -0800
+Message-ID: <20210130005605.D4F299EE8F5352A7@hobbyiobby.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -49,164 +33,89 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: atetes2020@gmail.com
+Content-Type: multipart/mixed; boundary="===============1140016997=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-next-fixes
-branch HEAD: f0cabe0baf85031a75334063ba09371d9ad1241a  drm/i915/gvt: Purge dev_priv->gt
 
-elapsed time: 720m
+--===============1140016997==
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0012_B986A321.AEAEA2CE"
 
-configs tested: 132
-configs skipped: 2
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+------=_NextPart_000_0012_B986A321.AEAEA2CE
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                         socfpga_defconfig
-m68k                           sun3_defconfig
-ia64                      gensparse_defconfig
-powerpc                           allnoconfig
-mips                           gcw0_defconfig
-mips                         tb0219_defconfig
-s390                             allyesconfig
-arm                       netwinder_defconfig
-mips                          ath25_defconfig
-ia64                            zx1_defconfig
-powerpc                      chrp32_defconfig
-mips                     loongson1c_defconfig
-sh                   secureedge5410_defconfig
-powerpc                     sbc8548_defconfig
-arm                   milbeaut_m10v_defconfig
-ia64                             allmodconfig
-powerpc                    adder875_defconfig
-mips                           mtx1_defconfig
-powerpc                      cm5200_defconfig
-mips                       capcella_defconfig
-mips                malta_kvm_guest_defconfig
-mips                      fuloong2e_defconfig
-mips                         bigsur_defconfig
-m68k                        mvme16x_defconfig
-arm                         s5pv210_defconfig
-powerpc                      pmac32_defconfig
-powerpc                      ep88xc_defconfig
-powerpc64                        alldefconfig
-powerpc                 mpc85xx_cds_defconfig
-powerpc                      bamboo_defconfig
-sparc                       sparc64_defconfig
-c6x                        evmc6472_defconfig
-arm                      integrator_defconfig
-sh                   rts7751r2dplus_defconfig
-sh                           se7780_defconfig
-mips                        workpad_defconfig
-sh                        sh7763rdp_defconfig
-arm                        realview_defconfig
-sparc64                          alldefconfig
-arm                         orion5x_defconfig
-powerpc                          allyesconfig
-powerpc               mpc834x_itxgp_defconfig
-arc                         haps_hs_defconfig
-powerpc                     ep8248e_defconfig
-mips                         mpc30x_defconfig
-mips                         db1xxx_defconfig
-arm                          ep93xx_defconfig
-powerpc                 canyonlands_defconfig
-c6x                        evmc6474_defconfig
-sh                          polaris_defconfig
-sh                ecovec24-romimage_defconfig
-mips                      bmips_stb_defconfig
-xtensa                    smp_lx200_defconfig
-mips                          malta_defconfig
-mips                         tb0226_defconfig
-powerpc                     powernv_defconfig
-m68k                       m5475evb_defconfig
-arm                          ixp4xx_defconfig
-arm                          collie_defconfig
-openrisc                    or1ksim_defconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allmodconfig
-i386                 randconfig-a001-20210129
-i386                 randconfig-a002-20210129
-i386                 randconfig-a004-20210129
-i386                 randconfig-a005-20210129
-i386                 randconfig-a003-20210129
-i386                 randconfig-a006-20210129
-i386                 randconfig-a013-20210129
-i386                 randconfig-a011-20210129
-i386                 randconfig-a012-20210129
-i386                 randconfig-a016-20210129
-i386                 randconfig-a014-20210129
-i386                 randconfig-a015-20210129
-x86_64               randconfig-a002-20210129
-x86_64               randconfig-a003-20210129
-x86_64               randconfig-a001-20210129
-x86_64               randconfig-a005-20210129
-x86_64               randconfig-a006-20210129
-x86_64               randconfig-a004-20210129
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+Dear, intel-gvt-dev
+------=_NextPart_000_0012_B986A321.AEAEA2CE
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-clang tested configs:
-x86_64               randconfig-a012-20210129
-x86_64               randconfig-a015-20210129
-x86_64               randconfig-a016-20210129
-x86_64               randconfig-a011-20210129
-x86_64               randconfig-a013-20210129
-x86_64               randconfig-a014-20210129
+<html><head>
+<meta name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.18639">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body>
+<p>My beloved good day,</p><p>&nbsp;</p><p>Do not be dismayed on how i reac=
+hed you because i got your email today in the course of my search for a sin=
+cere individual </p><p>who will handle my fund, i decided to reach you beca=
+use i know good people still exists and i have prayed to get one who </p><p=
+>will accomplish my heart desires,but before i continue, i will like to int=
+roduce myself.<br>&nbsp;</p><p>
+My name is Rev. Azra Mehmet Ates from Istanbul in Turkey, I am a dying woma=
+n who had decided to donate what I have to a </p><p>reliable individual who=
+ will act as I will instruct here. I am 68 years old and was diagnosed for =
+cancer about 2 years </p><p>ago.I have been touched by God to donate from w=
+hat I have inherited from my late father and my career to you for the good =
+</p><p>
+work of God, rather than allow my uncle to use my fathers hard earned funds=
+ ungodly, I really like the poor to be helped.<br><br></p><p>I will be unde=
+rgoing an operation in London and my doctors informed me that i may not sur=
+vive it due to my excessive </p><p>health deterioration. I want to donate m=
+y money to you worth $10,250,000,00usd, it is deposited in a secured bank i=
+n </p><p>TURKEY, to you for the good work of the lord, the orphanage, the n=
+eedy and to help the motherless.<br>&nbsp;</p><p>
+My personal physician told me that I may not live for more than two months =
+and I am so scared about it. I have no child of </p><p>mine since my spirit=
+ual obligation does not permit me to marry. But through this wonderful Bibl=
+e verses, Psalms 119:116 </p><p>&#8230;.Uphold me according unto thy word, =
+that I may live, and let me not be ashamed of my hope. Psalms 138: 7 Though=
+ I walk in </p><p>
+the midst of trouble, thou will revive me. Psalms 41:1 Blessed is he that c=
+onsidered the poor, the Lord will deliver him </p><p>in time of trouble. Tw=
+o of my favorite verses: Philippians 2:27: For indeed he was sick nigh unto=
+ death, but God had mercy </p><p>on him &amp; that on him only, but on me a=
+lso, less I should have sorrow upon sorrow.( I always say this in my mind).=
+</p><p>&nbsp;</p><p>
+Presently, I have informed my Lawyer and Doctor about my decision in WILLIN=
+G this fund to a reliable individual, you are </p><p>to get back to me imme=
+diately if you are interested in carrying out this task, so that I will ins=
+truct you on how to get </p><p>in contact with my lawyer and my account off=
+icer.</p><p>&nbsp;</p><p>Lastly, I know I have never meet you, but in other=
+ to fulfill this which borders me most, i prayed and chose you and my </p><=
+p>
+mind tells me to inform you about this, and I hope you act sincerely, pleas=
+e get back to me immediately via my private </p><p>email address (<a href=
+=3D"mailto:atetes2020@gmail.com">atetes2020@gmail.com</a>) with the followi=
+ng information.</p><p>&nbsp;</p><p>&nbsp;</p><p>YOUR NAME:</p><p>YOUR E-MAI=
+L ADDRESS:</p><p>YOUR COUNTRY:</p><p>YOUR HOME ADDRESS:</p><p>YOUR PHONE NO=
+:</p><p>OCCUPATION:</p><p>AGE:&nbsp;</p><p><br>GOD BLESS YOU,</p><p>REV. AZ=
+RA MEHMET.</p></body></html>
+------=_NextPart_000_0012_B986A321.AEAEA2CE--
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+--===============1140016997==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1140016997==--
