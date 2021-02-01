@@ -2,33 +2,23 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C11EA30A417
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Feb 2021 10:11:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D6FB30A426
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Feb 2021 10:14:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 719E56E516;
-	Mon,  1 Feb 2021 09:11:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4B39B6E536;
+	Mon,  1 Feb 2021 09:14:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 324 seconds by postgrey-1.36 at gabe;
- Mon, 01 Feb 2021 09:11:40 UTC
-Received: from mail2.cesis.lv (mail2.cesis.lv [62.63.146.10])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CB8256E50C
+Received: from hobbyiobby.com (unknown [185.222.57.189])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D05026E524
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  1 Feb 2021 09:11:40 +0000 (UTC)
-Received: from Amata.cesis.lv (10.18.0.11) by Raunis.cesis.lv (10.18.0.9) with
- Microsoft SMTP Server (TLS) id 14.3.487.0;
- Mon, 1 Feb 2021 11:08:29 +0200
-Received: from skolas.cesis.lv (216.250.250.193) by Amata.cesis.lv
- (10.18.0.11) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 1 Feb 2021
- 11:08:26 +0200
-From: "Mrs. Brianna Kathleen White" <priekuluvsk@skolas.cesis.lv>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Hi dear
-Date: Mon, 1 Feb 2021 01:06:12 -0800
-Message-ID: <20210201010612.3DF428F5D9EEC355@skolas.cesis.lv>
+ Mon,  1 Feb 2021 09:14:34 +0000 (UTC)
+From: Rev Azra Mehmet Ates<server@hobbyiobby.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: remain blessed
+Date: 1 Feb 2021 01:14:34 -0800
+Message-ID: <20210201011434.BB968D17148F2C7D@hobbyiobby.com>
 MIME-Version: 1.0
-X-Originating-IP: [216.250.250.193]
-X-ClientProxiedBy: Amata.cesis.lv (10.18.0.11) To Amata.cesis.lv (10.18.0.11)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,32 +31,81 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: briannakathleenw@yahoo.com
-Content-Type: multipart/mixed; boundary="===============0410225623=="
+Reply-To: atetes2020@gmail.com
+Content-Type: multipart/mixed; boundary="===============0134788073=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0410225623==
-Content-Type: text/html; charset="iso-8859-1"
+
+--===============0134788073==
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0012_75321C26.B7AA94FC"
+
+
+------=_NextPart_000_0012_75321C26.B7AA94FC
+Content-Type: text/plain;
+	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+Dear, intel-gvt-dev
+------=_NextPart_000_0012_75321C26.B7AA94FC
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<P>Attention: intel-gvt-dev &nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
-&nbsp;<BR>Hope all is well with you</P>
-<P>This email is about a trust sum entitlement owed to you because of your =
-<STRONG>Family Name</STRONG>. If you do not understand what this is about, =
-you may respond back for support and assistance in this matter.</P>
-<P>I look forward to hearing with you soon.</P>
-<P>Yours Sincerely,<BR><BR>Mrs. Brianna Kathleen White<BR>Certified Auditor=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>Email Address:&nbsp; <A href=3D"mailto:b=
-white@financier.com">bwhite@financier.com</A></P></BODY></HTML>
+<html><head>
+<meta name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.18639">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body>
+<p>My beloved good day,</p><p>&nbsp;</p><p>Do not be dismayed on how i reac=
+hed you because i got your email today in the course of my search for a sin=
+cere individual </p><p>who will handle my fund, i decided to reach you beca=
+use i know good people still exists and i have prayed to get one who </p><p=
+>will accomplish my heart desires,but before i continue, i will like to int=
+roduce myself.<br>&nbsp;</p><p>
+My name is Rev. Azra Mehmet Ates from Istanbul in Turkey, I am a dying woma=
+n who had decided to donate what I have to a </p><p>reliable individual who=
+ will act as I will instruct here. I am 68 years old and was diagnosed for =
+cancer about 2 years </p><p>ago.I have been touched by God to donate from w=
+hat I have inherited from my late father and my career to you for the good =
+</p><p>
+work of God, rather than allow my uncle to use my fathers hard earned funds=
+ ungodly, I really like the poor to be helped.<br><br></p><p>I will be unde=
+rgoing an operation in London and my doctors informed me that i may not sur=
+vive it due to my excessive </p><p>health deterioration. I want to donate m=
+y money to you worth $10,250,000,00usd, it is deposited in a secured bank i=
+n </p><p>TURKEY, to you for the good work of the lord, the orphanage, the n=
+eedy and to help the motherless.<br>&nbsp;</p><p>
+My personal physician told me that I may not live for more than two months =
+and I am so scared about it. I have no child of </p><p>mine since my spirit=
+ual obligation does not permit me to marry. But through this wonderful Bibl=
+e verses, Psalms 119:116 </p><p>&#8230;.Uphold me according unto thy word, =
+that I may live, and let me not be ashamed of my hope. Psalms 138: 7 Though=
+ I walk in </p><p>
+the midst of trouble, thou will revive me. Psalms 41:1 Blessed is he that c=
+onsidered the poor, the Lord will deliver him </p><p>in time of trouble. Tw=
+o of my favorite verses: Philippians 2:27: For indeed he was sick nigh unto=
+ death, but God had mercy </p><p>on him &amp; that on him only, but on me a=
+lso, less I should have sorrow upon sorrow.( I always say this in my mind).=
+</p><p>&nbsp;</p><p>
+Presently, I have informed my Lawyer and Doctor about my decision in WILLIN=
+G this fund to a reliable individual, you are </p><p>to get back to me imme=
+diately if you are interested in carrying out this task, so that I will ins=
+truct you on how to get </p><p>in contact with my lawyer and my account off=
+icer.</p><p>&nbsp;</p><p>Lastly, I know I have never meet you, but in other=
+ to fulfill this which borders me most, i prayed and chose you and my </p><=
+p>
+mind tells me to inform you about this, and I hope you act sincerely, pleas=
+e get back to me immediately via my private </p><p>email address (<a href=
+=3D"mailto:atetes2020@gmail.com">atetes2020@gmail.com</a>) with the followi=
+ng information.</p><p>&nbsp;</p><p>&nbsp;</p><p>YOUR NAME:</p><p>YOUR E-MAI=
+L ADDRESS:</p><p>YOUR COUNTRY:</p><p>YOUR HOME ADDRESS:</p><p>YOUR PHONE NO=
+:</p><p>OCCUPATION:</p><p>AGE:&nbsp;</p><p><br>GOD BLESS YOU,</p><p>REV. AZ=
+RA MEHMET.</p></body></html>
+------=_NextPart_000_0012_75321C26.B7AA94FC--
 
---===============0410225623==
+--===============0134788073==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -77,4 +116,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0410225623==--
+--===============0134788073==--
