@@ -1,23 +1,23 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D6FB30A426
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Feb 2021 10:14:38 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8476C30BA03
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  2 Feb 2021 09:35:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4B39B6E536;
-	Mon,  1 Feb 2021 09:14:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 331406E912;
+	Tue,  2 Feb 2021 08:35:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from hobbyiobby.com (unknown [185.222.57.189])
- by gabe.freedesktop.org (Postfix) with ESMTP id D05026E524
+ by gabe.freedesktop.org (Postfix) with ESMTP id D904B6E8FA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  1 Feb 2021 09:14:34 +0000 (UTC)
+ Tue,  2 Feb 2021 08:35:33 +0000 (UTC)
 From: Rev Azra Mehmet Ates<server@hobbyiobby.com>
 To: intel-gvt-dev@lists.freedesktop.org
 Subject: remain blessed
-Date: 1 Feb 2021 01:14:34 -0800
-Message-ID: <20210201011434.BB968D17148F2C7D@hobbyiobby.com>
+Date: 2 Feb 2021 00:35:33 -0800
+Message-ID: <20210202003533.E2DC8CAA83CBD947@hobbyiobby.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -32,23 +32,23 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: atetes2020@gmail.com
-Content-Type: multipart/mixed; boundary="===============0134788073=="
+Content-Type: multipart/mixed; boundary="===============1118692780=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0134788073==
+--===============1118692780==
 Content-Type: multipart/alternative;
-	boundary="----=_NextPart_000_0012_75321C26.B7AA94FC"
+	boundary="----=_NextPart_000_0012_5A3CCFE1.CD5D00A3"
 
 
-------=_NextPart_000_0012_75321C26.B7AA94FC
+------=_NextPart_000_0012_5A3CCFE1.CD5D00A3
 Content-Type: text/plain;
 	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 
 Dear, intel-gvt-dev
-------=_NextPart_000_0012_75321C26.B7AA94FC
+------=_NextPart_000_0012_5A3CCFE1.CD5D00A3
 Content-Type: text/html;
 	charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
@@ -103,9 +103,9 @@ ng information.</p><p>&nbsp;</p><p>&nbsp;</p><p>YOUR NAME:</p><p>YOUR E-MAI=
 L ADDRESS:</p><p>YOUR COUNTRY:</p><p>YOUR HOME ADDRESS:</p><p>YOUR PHONE NO=
 :</p><p>OCCUPATION:</p><p>AGE:&nbsp;</p><p><br>GOD BLESS YOU,</p><p>REV. AZ=
 RA MEHMET.</p></body></html>
-------=_NextPart_000_0012_75321C26.B7AA94FC--
+------=_NextPart_000_0012_5A3CCFE1.CD5D00A3--
 
---===============0134788073==
+--===============1118692780==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -116,4 +116,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0134788073==--
+--===============1118692780==--
