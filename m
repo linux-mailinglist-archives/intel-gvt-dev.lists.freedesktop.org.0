@@ -1,23 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8476C30BA03
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  2 Feb 2021 09:35:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBAA030BE4B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  2 Feb 2021 13:37:10 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 331406E912;
-	Tue,  2 Feb 2021 08:35:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 767A089F4F;
+	Tue,  2 Feb 2021 12:37:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from hobbyiobby.com (unknown [185.222.57.189])
- by gabe.freedesktop.org (Postfix) with ESMTP id D904B6E8FA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  2 Feb 2021 08:35:33 +0000 (UTC)
-From: Rev Azra Mehmet Ates<server@hobbyiobby.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: remain blessed
-Date: 2 Feb 2021 00:35:33 -0800
-Message-ID: <20210202003533.E2DC8CAA83CBD947@hobbyiobby.com>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2024089F4F;
+ Tue,  2 Feb 2021 12:37:08 +0000 (UTC)
+IronPort-SDR: dV0fEynxUnZZdzyfZ83/MABuw8Co/QaidJ+4rV6OgBFXu4YKXZtOmKXG/6aKj3pwoPvj2l2uN9
+ Iwf6UmRNgK1w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9882"; a="160012131"
+X-IronPort-AV: E=Sophos;i="5.79,394,1602572400"; d="scan'208";a="160012131"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Feb 2021 04:37:07 -0800
+IronPort-SDR: QYguasDyknSNSY5elR1d2kUlIiF3lTdIcUJbTfR4SS9WmC21O7rzScNX5P4Og2dW/6QX5djSBP
+ VrckRmplKk9Q==
+X-IronPort-AV: E=Sophos;i="5.79,394,1602572400"; d="scan'208";a="370637971"
+Received: from amishuti-mobl.ccr.corp.intel.com (HELO localhost)
+ ([10.249.46.139])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Feb 2021 04:37:03 -0800
+From: Jani Nikula <jani.nikula@intel.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gfx@lists.freedesktop.org,
+ dim-tools@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org
+Subject: [PULL] topic/drm-device-pdev
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Date: Tue, 02 Feb 2021 14:37:00 +0200
+Message-ID: <87y2g6fxxv.fsf@intel.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -31,89 +50,101 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: atetes2020@gmail.com
-Content-Type: multipart/mixed; boundary="===============1118692780=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============1118692780==
-Content-Type: multipart/alternative;
-	boundary="----=_NextPart_000_0012_5A3CCFE1.CD5D00A3"
+Hi Joonas -
+
+This is Thomas's drm_device.pdev removal for i915, the first three
+patches from [1]. Let's merge to both drm-intel-next and
+drm-intel-gt-next.
+
+Zhenyu & Zhi, FYI, this touches gvt too, and it was getting a bit too
+complicated to handle all the components separately. Hopefully you won't
+have too many conflicts when backmerging.
 
 
-------=_NextPart_000_0012_5A3CCFE1.CD5D00A3
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+topic/drm-device-pdev-2021-02-02:
+Driver Changes:
+- drm/i915: Remove references to struct drm_device.pdev
 
-Dear, intel-gvt-dev
-------=_NextPart_000_0012_5A3CCFE1.CD5D00A3
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+BR,
+Jani.
 
-<html><head>
-<meta name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.18639">
-<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
-</head>
-<body>
-<p>My beloved good day,</p><p>&nbsp;</p><p>Do not be dismayed on how i reac=
-hed you because i got your email today in the course of my search for a sin=
-cere individual </p><p>who will handle my fund, i decided to reach you beca=
-use i know good people still exists and i have prayed to get one who </p><p=
->will accomplish my heart desires,but before i continue, i will like to int=
-roduce myself.<br>&nbsp;</p><p>
-My name is Rev. Azra Mehmet Ates from Istanbul in Turkey, I am a dying woma=
-n who had decided to donate what I have to a </p><p>reliable individual who=
- will act as I will instruct here. I am 68 years old and was diagnosed for =
-cancer about 2 years </p><p>ago.I have been touched by God to donate from w=
-hat I have inherited from my late father and my career to you for the good =
-</p><p>
-work of God, rather than allow my uncle to use my fathers hard earned funds=
- ungodly, I really like the poor to be helped.<br><br></p><p>I will be unde=
-rgoing an operation in London and my doctors informed me that i may not sur=
-vive it due to my excessive </p><p>health deterioration. I want to donate m=
-y money to you worth $10,250,000,00usd, it is deposited in a secured bank i=
-n </p><p>TURKEY, to you for the good work of the lord, the orphanage, the n=
-eedy and to help the motherless.<br>&nbsp;</p><p>
-My personal physician told me that I may not live for more than two months =
-and I am so scared about it. I have no child of </p><p>mine since my spirit=
-ual obligation does not permit me to marry. But through this wonderful Bibl=
-e verses, Psalms 119:116 </p><p>&#8230;.Uphold me according unto thy word, =
-that I may live, and let me not be ashamed of my hope. Psalms 138: 7 Though=
- I walk in </p><p>
-the midst of trouble, thou will revive me. Psalms 41:1 Blessed is he that c=
-onsidered the poor, the Lord will deliver him </p><p>in time of trouble. Tw=
-o of my favorite verses: Philippians 2:27: For indeed he was sick nigh unto=
- death, but God had mercy </p><p>on him &amp; that on him only, but on me a=
-lso, less I should have sorrow upon sorrow.( I always say this in my mind).=
-</p><p>&nbsp;</p><p>
-Presently, I have informed my Lawyer and Doctor about my decision in WILLIN=
-G this fund to a reliable individual, you are </p><p>to get back to me imme=
-diately if you are interested in carrying out this task, so that I will ins=
-truct you on how to get </p><p>in contact with my lawyer and my account off=
-icer.</p><p>&nbsp;</p><p>Lastly, I know I have never meet you, but in other=
- to fulfill this which borders me most, i prayed and chose you and my </p><=
-p>
-mind tells me to inform you about this, and I hope you act sincerely, pleas=
-e get back to me immediately via my private </p><p>email address (<a href=
-=3D"mailto:atetes2020@gmail.com">atetes2020@gmail.com</a>) with the followi=
-ng information.</p><p>&nbsp;</p><p>&nbsp;</p><p>YOUR NAME:</p><p>YOUR E-MAI=
-L ADDRESS:</p><p>YOUR COUNTRY:</p><p>YOUR HOME ADDRESS:</p><p>YOUR PHONE NO=
-:</p><p>OCCUPATION:</p><p>AGE:&nbsp;</p><p><br>GOD BLESS YOU,</p><p>REV. AZ=
-RA MEHMET.</p></body></html>
-------=_NextPart_000_0012_5A3CCFE1.CD5D00A3--
+[1] http://lore.kernel.org/r/20210128133127.2311-1-tzimmermann@suse.de
 
---===============1118692780==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
+The following changes since commit 4043277ad18fc7cb9a79d0d043063fb5f42a6f06:
+
+  drm/i915/adl_s: Add GT and CTX WAs for ADL-S (2021-02-01 07:59:11 -0800)
+
+are available in the Git repository at:
+
+  git://anongit.freedesktop.org/drm/drm-intel tags/topic/drm-device-pdev-2021-02-02
+
+for you to fetch changes up to 9ff06c38530099b197b6389193e8cc34ab60288f:
+
+  drm/i915/gvt: Remove references to struct drm_device.pdev (2021-02-02 13:58:45 +0200)
+
+----------------------------------------------------------------
+Driver Changes:
+- drm/i915: Remove references to struct drm_device.pdev
+
+----------------------------------------------------------------
+Thomas Zimmermann (3):
+      drm/i915: Remove references to struct drm_device.pdev
+      drm/i915/gt: Remove references to struct drm_device.pdev
+      drm/i915/gvt: Remove references to struct drm_device.pdev
+
+ drivers/gpu/drm/i915/display/intel_bios.c      |  2 +-
+ drivers/gpu/drm/i915/display/intel_cdclk.c     | 14 +++++++-------
+ drivers/gpu/drm/i915/display/intel_csr.c       |  2 +-
+ drivers/gpu/drm/i915/display/intel_dsi_vbt.c   |  2 +-
+ drivers/gpu/drm/i915/display/intel_fbdev.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_gmbus.c     |  2 +-
+ drivers/gpu/drm/i915/display/intel_lpe_audio.c |  5 +++--
+ drivers/gpu/drm/i915/display/intel_opregion.c  |  6 +++---
+ drivers/gpu/drm/i915/display/intel_overlay.c   |  2 +-
+ drivers/gpu/drm/i915/display/intel_panel.c     |  4 ++--
+ drivers/gpu/drm/i915/display/intel_quirks.c    |  2 +-
+ drivers/gpu/drm/i915/display/intel_sdvo.c      |  2 +-
+ drivers/gpu/drm/i915/display/intel_vga.c       |  8 ++++----
+ drivers/gpu/drm/i915/gem/i915_gem_phys.c       |  6 +++---
+ drivers/gpu/drm/i915/gem/i915_gem_shmem.c      |  2 +-
+ drivers/gpu/drm/i915/gt/intel_engine_cs.c      |  2 +-
+ drivers/gpu/drm/i915/gt/intel_ggtt.c           | 10 +++++-----
+ drivers/gpu/drm/i915/gt/intel_ppgtt.c          |  2 +-
+ drivers/gpu/drm/i915/gt/intel_rc6.c            |  4 ++--
+ drivers/gpu/drm/i915/gt/intel_region_lmem.c    |  8 ++++----
+ drivers/gpu/drm/i915/gt/intel_reset.c          |  6 +++---
+ drivers/gpu/drm/i915/gvt/cfg_space.c           |  5 +++--
+ drivers/gpu/drm/i915/gvt/firmware.c            | 10 +++++-----
+ drivers/gpu/drm/i915/gvt/gtt.c                 | 12 ++++++------
+ drivers/gpu/drm/i915/gvt/gvt.c                 |  6 +++---
+ drivers/gpu/drm/i915/gvt/kvmgt.c               |  4 ++--
+ drivers/gpu/drm/i915/i915_debugfs.c            |  2 +-
+ drivers/gpu/drm/i915/i915_drv.c                | 19 +++++++++----------
+ drivers/gpu/drm/i915/i915_drv.h                |  2 +-
+ drivers/gpu/drm/i915/i915_gem_gtt.c            |  5 ++---
+ drivers/gpu/drm/i915/i915_getparam.c           |  5 +++--
+ drivers/gpu/drm/i915/i915_gpu_error.c          |  2 +-
+ drivers/gpu/drm/i915/i915_irq.c                |  6 +++---
+ drivers/gpu/drm/i915/i915_pmu.c                |  2 +-
+ drivers/gpu/drm/i915/i915_suspend.c            |  4 ++--
+ drivers/gpu/drm/i915/i915_switcheroo.c         |  4 ++--
+ drivers/gpu/drm/i915/i915_vgpu.c               |  2 +-
+ drivers/gpu/drm/i915/intel_device_info.c       |  2 +-
+ drivers/gpu/drm/i915/intel_runtime_pm.c        |  2 +-
+ drivers/gpu/drm/i915/intel_uncore.c            |  4 ++--
+ drivers/gpu/drm/i915/selftests/mock_gtt.c      |  2 +-
+ 41 files changed, 97 insertions(+), 96 deletions(-)
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1118692780==--
