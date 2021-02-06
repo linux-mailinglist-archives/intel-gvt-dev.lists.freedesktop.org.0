@@ -2,41 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA94A311280
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Feb 2021 21:30:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C277311DBC
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 Feb 2021 15:38:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 88ABE6F4CB;
-	Fri,  5 Feb 2021 20:30:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ECEA16E44C;
+	Sat,  6 Feb 2021 14:38:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 104F66F4CB
+Received: from mail-ot1-x32f.google.com (mail-ot1-x32f.google.com
+ [IPv6:2607:f8b0:4864:20::32f])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 64E3B6E44D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  5 Feb 2021 20:30:38 +0000 (UTC)
-IronPort-SDR: Ew4rAlv4AC7ihu0l1wQuDXTPN4YJjlf5GQ0ZgzgoFdNY9bcuW2VpjzLZEwNXL7TaH5MM/7w2YE
- WiLc3HapV0zQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9886"; a="200497676"
-X-IronPort-AV: E=Sophos;i="5.81,156,1610438400"; d="scan'208";a="200497676"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Feb 2021 12:30:37 -0800
-IronPort-SDR: Lzb4eA3ufhld+sPZGkktITf0AoUD2syqzFOeH5kqOj0KWpCCNlTPMU8d8hRE6wddPDTiUVyny7
- k+1E9r4pXzZg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,156,1610438400"; d="scan'208";a="434591224"
-Received: from lkp-server02.sh.intel.com (HELO 8b832f01bb9c) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 05 Feb 2021 12:30:33 -0800
-Received: from kbuild by 8b832f01bb9c with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1l87kO-0001yD-TH; Fri, 05 Feb 2021 20:30:32 +0000
-Date: Sat, 06 Feb 2021 04:30:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-gt-next] BUILD SUCCESS
- e156285b120feaac6207e6bd3fa31d9ae8ffd80d
-Message-ID: <601daad5.cb2dAm0OL9lMWSbk%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Sat,  6 Feb 2021 14:38:07 +0000 (UTC)
+Received: by mail-ot1-x32f.google.com with SMTP id r21so1357842otk.13
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 06 Feb 2021 06:38:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=sY4fgq/DSyThalwU7QX+pWYKs/8sGH7ZznMUn5qQ1EY=;
+ b=MdFBVQFx/9PYai76Ah5G9A8Q+CdwDyBl+huV/V99nXOydFVnHiV8jCm4ZMcxTyh9P5
+ xF0bnW/+6txDPRZR2QVOZH+i3c0nQSjIqGUx9CiLUuG1GT3lXtwcF4mI6OhWpIBHBAfD
+ ro0Aj4MMUvmqtgrxr9nrcyxlnfRuXJQ24ZAy2A7yaL2Md2V1g7W3wWHrsLQdp6wZ3t/3
+ v2AUyStFfsvsyZnIm7u93OyBxgyKTM8rrTOqUqii67sbdRaWmqukXOPc/zOpFs2gEvk8
+ dBIwDEhmeBP6ncWpTAY6VhV2YJzZOFPVzJHfPYD3V0vgrnkF0bi1blqOmdQBOYrWn4Mt
+ 68FQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=sY4fgq/DSyThalwU7QX+pWYKs/8sGH7ZznMUn5qQ1EY=;
+ b=ZNWN4xj1YDqcPiEmRKZKK9imymFS2Z+kT8BBJ40ECA7dgSm8g+v0JbgNK/LReNbkJQ
+ P4ezpdd3fvD73Ru6L0wGp++CXP4XyFjTwFIcOj9ATkka4tcayJTCGfkndK1Np/JWvudk
+ dqyP/i2RZzdxsJgx6WfWfc48SoIrrrLXZRleil4gzUMK0nWZiWMNoSqWXnTAw8GizHMT
+ HDh/2HOcpqmiHgg3gZOxvOa7t3vofmb5EGzFcaY2VVS/+rPf2nK6JNRF2FT4li2KHzTL
+ 4/Yj5Xord1L3CgrLlqFt0fZFg0Vd3TMIUM33IbJ8lYz9mzgIgQ8va5aZ72pev2Oo8f+u
+ I+tg==
+X-Gm-Message-State: AOAM530MdVVjY2uzUWMOBAhp5SkbJj6igTA1jnjrFTzywZ87O3R/ICYj
+ KzpxyEaOTI8vE4MxnqGe74Euh6YtX23Q0x/OlIc=
+X-Google-Smtp-Source: ABdhPJzABsfAmNAgHhtpUDMUPXgKGOR6fa6uFo34NWbnxNJAfqETL3veLKetNzf0mYoh4S7hSG/eRayHhEdWN6uFcQI=
+X-Received: by 2002:a9d:69cf:: with SMTP id v15mr7279137oto.122.1612622286744; 
+ Sat, 06 Feb 2021 06:38:06 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:a9d:3e4c:0:0:0:0:0 with HTTP;
+ Sat, 6 Feb 2021 06:38:06 -0800 (PST)
+From: Barrister Daven Bango <stephennbada@gmail.com>
+Date: Sat, 6 Feb 2021 15:38:06 +0100
+Message-ID: <CAO_fDi-KyCay0L6vu6VJnBLRLeSsAN8ozL8SZB7ScnMnBD4STw@mail.gmail.com>
+Subject: 
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,128 +63,18 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: lawyer.nba@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-gt-next
-branch HEAD: e156285b120feaac6207e6bd3fa31d9ae8ffd80d  drm/i915/gvt: Purge dev_priv->gt
-
-elapsed time: 723m
-
-configs tested: 96
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                         axm55xx_defconfig
-powerpc                      pcm030_defconfig
-m68k                       m5475evb_defconfig
-parisc                generic-32bit_defconfig
-mips                       bmips_be_defconfig
-nios2                            alldefconfig
-c6x                                 defconfig
-openrisc                            defconfig
-m68k                         amcore_defconfig
-powerpc                   motionpro_defconfig
-arm                        mvebu_v7_defconfig
-arm                        vexpress_defconfig
-powerpc                      pmac32_defconfig
-m68k                          hp300_defconfig
-sh                          kfr2r09_defconfig
-powerpc                 linkstation_defconfig
-mips                        maltaup_defconfig
-powerpc                     sequoia_defconfig
-arm                           sunxi_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a001-20210205
-i386                 randconfig-a005-20210205
-i386                 randconfig-a003-20210205
-i386                 randconfig-a006-20210205
-i386                 randconfig-a002-20210205
-i386                 randconfig-a004-20210205
-i386                 randconfig-a013-20210205
-i386                 randconfig-a016-20210205
-i386                 randconfig-a014-20210205
-i386                 randconfig-a012-20210205
-i386                 randconfig-a015-20210205
-i386                 randconfig-a011-20210205
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a006-20210204
-x86_64               randconfig-a001-20210204
-x86_64               randconfig-a005-20210204
-x86_64               randconfig-a002-20210204
-x86_64               randconfig-a004-20210204
-x86_64               randconfig-a003-20210204
-x86_64               randconfig-a013-20210205
-x86_64               randconfig-a014-20210205
-x86_64               randconfig-a015-20210205
-x86_64               randconfig-a011-20210205
-x86_64               randconfig-a016-20210205
-x86_64               randconfig-a012-20210205
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+LS0gCktvcmlzbmlrIGZvbmRhIMSNZXN0aXRhbmphLCBWYcWhYSBzcmVkc3R2YSB6YSBuYWtuYWR1
+IG9kIDg1MC4wMDAsMDAKYW1lcmnEjWtpaCBkb2xhcmEgb2RvYnJpbGEgamUgTWXEkXVuYXJvZG5h
+IG1vbmV0YXJuYSBvcmdhbml6YWNpamEgKE1NRikKdSBzdXJhZG5qaSBzIChGQkkpIG5ha29uIG1u
+b2dvIGlzdHJhZ2EuIMSMZWthbW8gZGEgc2Ugb2JyYXRpbW8gemEKZG9kYXRuZSBpbmZvcm1hY2lq
+ZQoKQWR2b2thdDogRGF2ZW4gQmFuZ28KVGVsZWZvbjogKzIyODkxNjY3Mjc2CihVUkVEIE1NRi1h
+IExPTUUgVE9HTykKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KaW50ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
+bnRlbC1ndnQtZGV2Cg==
