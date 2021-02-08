@@ -2,33 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BEC8312769
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  7 Feb 2021 21:30:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 110C6312D90
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Feb 2021 10:43:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EBCFB6E817;
-	Sun,  7 Feb 2021 20:30:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B3DF36E848;
+	Mon,  8 Feb 2021 09:43:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from optinix.in (unknown [20.39.40.203])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4269E6E817;
- Sun,  7 Feb 2021 20:30:44 +0000 (UTC)
-dkim-signature: v=1; a=rsa-sha256; d=digitalsol.in; s=dkim;
- c=relaxed/relaxed; q=dns/txt;
- h=From:Reply-To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=wK2neTcOXNiSQ+RBxrnFed+mRrGUU/ndLGEgvo8IMCc=;
- b=MyxXilcfNJcaaLFFGLCR7WcyZV7F0MffTH8RefQ7hZ1fcNlnWh8FkICl+FiE3pKbpiLkxiCTOgm+eLCbypsfjmLYtiAv9SUhDofMIlykuUrc68QYE4SciKgDBtD0To4YsFpaw8ngiSEroBDR37cn8FIt/awf0tC8z4BUWyqZ7RrZUzcdJ4KvsCJP6xGCCU4lB6EPcLfxtq4bUBhrfAgZZdMVD1mWu0D6i6wJ8zowbWhfkZVEbrVea0g35x
- T/sPk16r2pm2bhwRKcrWwSjQCf+7Ama2RruQIZFOn3qBYttbWpWaK1BKGbGeW8lc06+AharRRPjHzYtHzMj0kkZ97mXQ==
-Received: from User (Unknown [52.231.31.5]) by optinix.in with ESMTP
- ; Fri, 29 Jan 2021 20:17:23 +0000
-Message-ID: <32475105-74B8-4A82-A692-36013D3F2C1C@optinix.in>
-From: "Ms. Reem"<support@digitalsol.in>
-Subject: Re:read
-Date: Fri, 29 Jan 2021 20:17:21 -0000
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E499D6E848
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  8 Feb 2021 09:43:30 +0000 (UTC)
+Received: by mail-wm1-x334.google.com with SMTP id o24so4920092wmh.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 08 Feb 2021 01:43:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=z7Z/JdX0RhrlgqchmamXWMY47TIIKUp5Zm0+e0J1lMs=;
+ b=goUMH2Ow8mjARl38TG0Tn+verPtbjRwbvEFd/rxLxt74C0PguZ7D2+xFBIWCRVYfIQ
+ pGuU47x5z28xfXGEGoRdReSDP7wf+gF07XOKShiJfWXhzVdNnfYUbZYN18T3ppugPR9M
+ xQYQ/miH+RuqEEbO5Ga1rXKwP3UL+gP5nOW9+YQHtPIPC/QKESfw3/H9wITN09FZR5Km
+ bjlZbbSGaapcmJ43hYe72fRPIO4sXFZrzcUvYgeDXw6H4LFDK45Uf1e3Tuxqb061PUaW
+ mOeX4v995bKXxy6htP93J4g+8KgwX2zdJtYphsebSV12p+axI8DnFrgR7aVbtwZ8enMA
+ Wbqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=z7Z/JdX0RhrlgqchmamXWMY47TIIKUp5Zm0+e0J1lMs=;
+ b=Gbh7A4icDo2zqVKHytlRW4rGBlkkXvaAecEMbhCTvrgGeTbFQ0ThwpVCK3KYeaGfFP
+ P6wQNnebu0lIG6vlagkbKKHgBaOj/uF1g3g5iiKypv5madpEcLxnTckDBJd6cpPshzPU
+ xW/DcG7PjKqSX18K22t+cOyqyRdwqD1j45FulFyQ+gEgNHXFeBnG7dgDvC8sV6fmXTgm
+ qdGeeBscP+V4mlCvC+p21HMMuEEoj6vZlFHJ9MJ8kr2zt9m6zKV/lwcFGxnarXOAKN0L
+ QM0HS5EfsZtgBQ0FsKsMirkN6Z39RnMKb/m0gqDa38YV9/J719GrduOhl1Xxue4287I3
+ uKBw==
+X-Gm-Message-State: AOAM531ZMrodA5G4KNzTfDLn6x67St9ifMN/P7Mihm7Q314Fd9bSlLEZ
+ LY1LSGGGTtqFOGakS7MLCkjhKLKX6jHi+rTvTtw=
+X-Google-Smtp-Source: ABdhPJz/TBOBoKGT8PUFTamRh1Ih+9lPLKoXcEc7eRgqSY+x86U92bKojlFE6ay/TXeyx7MoSXff78N1X0PB134Rye4=
+X-Received: by 2002:a05:600c:4656:: with SMTP id
+ n22mr11337831wmo.130.1612777409634; 
+ Mon, 08 Feb 2021 01:43:29 -0800 (PST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Received: by 2002:a1c:2c82:0:0:0:0:0 with HTTP;
+ Mon, 8 Feb 2021 01:43:29 -0800 (PST)
+From: "Mr. Richard Thomas" <rictthhomas@gmail.com>
+Date: Mon, 8 Feb 2021 01:43:29 -0800
+Message-ID: <CAHG73zx7a9qeXeX-dFg2c9H_4hcrtQCnVc7-rcy_HbaXRiLAwg@mail.gmail.com>
+Subject: Re Thanks.
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,38 +63,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ms.reem@yandex.com
+Reply-To: infowebb@citromail.hu
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello,
+Dear Friend,
+I will be pleased if you can allow me to invest $104M Dollars in
+Estate Management,in your company or any area you best that will be
+of good profit to both of us
 
-My name is Ms. Reem Ebrahim Al-Hashimi, I am the "Minister of state
-and Petroleum" also "Minister of State for International Cooperation"
-in UAE. I write to you on behalf of my other "three (3) colleagues"
-who has approved me to solicit for your "partnership in claiming of
-{us$47=Million}" from a Financial Home in Cambodia on their behalf and
-for our "Mutual Benefits".
+Please do well to respond including your information for more details.
 
-The Fund {us$47=Million} is our share from the (over-invoiced) Oil/Gas
-deal with Cambodian/Vietnam Government within 2013/2014, however, we
-don't want our government to know about the fund. If this proposal
-interests you, let me know, by sending me an email and I will send to
-you detailed information on how this business would be successfully
-transacted. Be informed that nobody knows about the secret of this
-fund except us, and we know how to carry out the entire transaction.
-So I am compelled to ask, that you will stand on our behalf and
-receive this fund into any account that is solely controlled by you.
-
-We will compensate you with 15% of the total amount involved as
-gratification for being our partner in this transaction. Reply to:
-ms.reem@yandex.com
-
-Regards,
-Ms. Reem.
-
+Thanks.
+Mr.Richard Thomas
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
