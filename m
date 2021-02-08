@@ -1,56 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 110C6312D90
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Feb 2021 10:43:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93F97313032
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Feb 2021 12:11:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B3DF36E848;
-	Mon,  8 Feb 2021 09:43:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3C6896E88A;
+	Mon,  8 Feb 2021 11:11:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
- [IPv6:2a00:1450:4864:20::334])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E499D6E848
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Feb 2021 09:43:30 +0000 (UTC)
-Received: by mail-wm1-x334.google.com with SMTP id o24so4920092wmh.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 08 Feb 2021 01:43:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=z7Z/JdX0RhrlgqchmamXWMY47TIIKUp5Zm0+e0J1lMs=;
- b=goUMH2Ow8mjARl38TG0Tn+verPtbjRwbvEFd/rxLxt74C0PguZ7D2+xFBIWCRVYfIQ
- pGuU47x5z28xfXGEGoRdReSDP7wf+gF07XOKShiJfWXhzVdNnfYUbZYN18T3ppugPR9M
- xQYQ/miH+RuqEEbO5Ga1rXKwP3UL+gP5nOW9+YQHtPIPC/QKESfw3/H9wITN09FZR5Km
- bjlZbbSGaapcmJ43hYe72fRPIO4sXFZrzcUvYgeDXw6H4LFDK45Uf1e3Tuxqb061PUaW
- mOeX4v995bKXxy6htP93J4g+8KgwX2zdJtYphsebSV12p+axI8DnFrgR7aVbtwZ8enMA
- Wbqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=z7Z/JdX0RhrlgqchmamXWMY47TIIKUp5Zm0+e0J1lMs=;
- b=Gbh7A4icDo2zqVKHytlRW4rGBlkkXvaAecEMbhCTvrgGeTbFQ0ThwpVCK3KYeaGfFP
- P6wQNnebu0lIG6vlagkbKKHgBaOj/uF1g3g5iiKypv5madpEcLxnTckDBJd6cpPshzPU
- xW/DcG7PjKqSX18K22t+cOyqyRdwqD1j45FulFyQ+gEgNHXFeBnG7dgDvC8sV6fmXTgm
- qdGeeBscP+V4mlCvC+p21HMMuEEoj6vZlFHJ9MJ8kr2zt9m6zKV/lwcFGxnarXOAKN0L
- QM0HS5EfsZtgBQ0FsKsMirkN6Z39RnMKb/m0gqDa38YV9/J719GrduOhl1Xxue4287I3
- uKBw==
-X-Gm-Message-State: AOAM531ZMrodA5G4KNzTfDLn6x67St9ifMN/P7Mihm7Q314Fd9bSlLEZ
- LY1LSGGGTtqFOGakS7MLCkjhKLKX6jHi+rTvTtw=
-X-Google-Smtp-Source: ABdhPJz/TBOBoKGT8PUFTamRh1Ih+9lPLKoXcEc7eRgqSY+x86U92bKojlFE6ay/TXeyx7MoSXff78N1X0PB134Rye4=
-X-Received: by 2002:a05:600c:4656:: with SMTP id
- n22mr11337831wmo.130.1612777409634; 
- Mon, 08 Feb 2021 01:43:29 -0800 (PST)
-MIME-Version: 1.0
-Received: by 2002:a1c:2c82:0:0:0:0:0 with HTTP;
- Mon, 8 Feb 2021 01:43:29 -0800 (PST)
-From: "Mr. Richard Thomas" <rictthhomas@gmail.com>
-Date: Mon, 8 Feb 2021 01:43:29 -0800
-Message-ID: <CAHG73zx7a9qeXeX-dFg2c9H_4hcrtQCnVc7-rcy_HbaXRiLAwg@mail.gmail.com>
-Subject: Re Thanks.
-To: undisclosed-recipients:;
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9B54F6E88A;
+ Mon,  8 Feb 2021 11:11:01 +0000 (UTC)
+IronPort-SDR: 2Ty2/A586oDDu+Gmb5RU41K4qdMkv7yTSI2ricRTD+MOZQ2suYFih21a0TCJnnGNbJyaMOoJg0
+ baTYq9UIdfXg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9888"; a="179134980"
+X-IronPort-AV: E=Sophos;i="5.81,161,1610438400"; d="scan'208";a="179134980"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Feb 2021 03:11:00 -0800
+IronPort-SDR: tQPxxlIxpgU2syF+t+y9/8vgr96RxgVSdqB1ryYM3UPrbvR2D4MYql2e8nyZDkEvcykN4FKdS0
+ hOIBPdZZ0vHg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,161,1610438400"; d="scan'208";a="395345985"
+Received: from zhangyu-optiplex-7040.bj.intel.com ([10.238.154.148])
+ by orsmga008.jf.intel.com with ESMTP; 08 Feb 2021 03:10:56 -0800
+From: Yu Zhang <yu.c.zhang@linux.intel.com>
+To: zhenyuw@linux.intel.com,
+	zhi.a.wang@intel.com
+Subject: [PATCH] drm/i915/gvt/kvmgt: Fix the build failure in kvmgt.
+Date: Tue,  9 Feb 2021 02:52:10 +0800
+Message-Id: <20210208185210.6002-1-yu.c.zhang@linux.intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,21 +44,90 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: infowebb@citromail.hu
+Cc: kvm@vger.kernel.org, airlied@linux.ie, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
+ jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, daniel@ffwll.ch,
+ rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Friend,
-I will be pleased if you can allow me to invest $104M Dollars in
-Estate Management,in your company or any area you best that will be
-of good profit to both of us
+Previously, commit 531810caa9f4 ("KVM: x86/mmu: Use
+an rwlock for the x86 MMU") replaced KVM's mmu_lock
+with type rwlock_t. This will cause a build failure
+in kvmgt, which uses the same lock when trying to add/
+remove some GFNs to/from the page tracker. Fix it with
+write_lock/unlocks in kvmgt.
 
-Please do well to respond including your information for more details.
+Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
+Signed-off-by: Yu Zhang <yu.c.zhang@linux.intel.com>
+---
+ drivers/gpu/drm/i915/gvt/kvmgt.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Thanks.
-Mr.Richard Thomas
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 60f1a386dd06..b4348256ae95 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -1703,7 +1703,7 @@ static int kvmgt_page_track_add(unsigned long handle, u64 gfn)
+ 		return -EINVAL;
+ 	}
+ 
+-	spin_lock(&kvm->mmu_lock);
++	write_lock(&kvm->mmu_lock);
+ 
+ 	if (kvmgt_gfn_is_write_protected(info, gfn))
+ 		goto out;
+@@ -1712,7 +1712,7 @@ static int kvmgt_page_track_add(unsigned long handle, u64 gfn)
+ 	kvmgt_protect_table_add(info, gfn);
+ 
+ out:
+-	spin_unlock(&kvm->mmu_lock);
++	write_unlock(&kvm->mmu_lock);
+ 	srcu_read_unlock(&kvm->srcu, idx);
+ 	return 0;
+ }
+@@ -1737,7 +1737,7 @@ static int kvmgt_page_track_remove(unsigned long handle, u64 gfn)
+ 		return -EINVAL;
+ 	}
+ 
+-	spin_lock(&kvm->mmu_lock);
++	write_lock(&kvm->mmu_lock);
+ 
+ 	if (!kvmgt_gfn_is_write_protected(info, gfn))
+ 		goto out;
+@@ -1746,7 +1746,7 @@ static int kvmgt_page_track_remove(unsigned long handle, u64 gfn)
+ 	kvmgt_protect_table_del(info, gfn);
+ 
+ out:
+-	spin_unlock(&kvm->mmu_lock);
++	write_unlock(&kvm->mmu_lock);
+ 	srcu_read_unlock(&kvm->srcu, idx);
+ 	return 0;
+ }
+@@ -1772,7 +1772,7 @@ static void kvmgt_page_track_flush_slot(struct kvm *kvm,
+ 	struct kvmgt_guest_info *info = container_of(node,
+ 					struct kvmgt_guest_info, track_node);
+ 
+-	spin_lock(&kvm->mmu_lock);
++	write_lock(&kvm->mmu_lock);
+ 	for (i = 0; i < slot->npages; i++) {
+ 		gfn = slot->base_gfn + i;
+ 		if (kvmgt_gfn_is_write_protected(info, gfn)) {
+@@ -1781,7 +1781,7 @@ static void kvmgt_page_track_flush_slot(struct kvm *kvm,
+ 			kvmgt_protect_table_del(info, gfn);
+ 		}
+ 	}
+-	spin_unlock(&kvm->mmu_lock);
++	write_unlock(&kvm->mmu_lock);
+ }
+ 
+ static bool __kvmgt_vgpu_exist(struct intel_vgpu *vgpu, struct kvm *kvm)
+-- 
+2.17.1
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
