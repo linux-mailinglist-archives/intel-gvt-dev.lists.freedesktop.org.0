@@ -1,37 +1,50 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93F97313032
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Feb 2021 12:11:04 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 503193130F5
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Feb 2021 12:34:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3C6896E88A;
-	Mon,  8 Feb 2021 11:11:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 86ED06E8A0;
+	Mon,  8 Feb 2021 11:34:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9B54F6E88A;
- Mon,  8 Feb 2021 11:11:01 +0000 (UTC)
-IronPort-SDR: 2Ty2/A586oDDu+Gmb5RU41K4qdMkv7yTSI2ricRTD+MOZQ2suYFih21a0TCJnnGNbJyaMOoJg0
- baTYq9UIdfXg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9888"; a="179134980"
-X-IronPort-AV: E=Sophos;i="5.81,161,1610438400"; d="scan'208";a="179134980"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Feb 2021 03:11:00 -0800
-IronPort-SDR: tQPxxlIxpgU2syF+t+y9/8vgr96RxgVSdqB1ryYM3UPrbvR2D4MYql2e8nyZDkEvcykN4FKdS0
- hOIBPdZZ0vHg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,161,1610438400"; d="scan'208";a="395345985"
-Received: from zhangyu-optiplex-7040.bj.intel.com ([10.238.154.148])
- by orsmga008.jf.intel.com with ESMTP; 08 Feb 2021 03:10:56 -0800
-From: Yu Zhang <yu.c.zhang@linux.intel.com>
-To: zhenyuw@linux.intel.com,
-	zhi.a.wang@intel.com
-Subject: [PATCH] drm/i915/gvt/kvmgt: Fix the build failure in kvmgt.
-Date: Tue,  9 Feb 2021 02:52:10 +0800
-Message-Id: <20210208185210.6002-1-yu.c.zhang@linux.intel.com>
-X-Mailer: git-send-email 2.17.1
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9E4B36E89E
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  8 Feb 2021 11:34:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612784083;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=bJzjfpKQDXUTrhd/jJ7jwPu/B+J6oLNodRb+ffVR+9o=;
+ b=GaPRBh+LmNI4+cEXi2hoSZs9g+A8lmxArx/weNJK5Fp4wrYa0CmKBIrZMpKPIjBWsFpE1W
+ XNiLCdEtIdvVd/vUQKQFf5PKLxaiWO1T3bC4QGE/zXN0wY1u8kkxgXVWM/7pqMh3aIyhpJ
+ /EJ9IGvqv/2NTgaIMCW7u7Csa45n5gs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-213-5S6thMDWOIORihOXxYxBhg-1; Mon, 08 Feb 2021 06:34:40 -0500
+X-MC-Unique: 5S6thMDWOIORihOXxYxBhg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B54551005501;
+ Mon,  8 Feb 2021 11:34:38 +0000 (UTC)
+Received: from virtlab701.virt.lab.eng.bos.redhat.com
+ (virtlab701.virt.lab.eng.bos.redhat.com [10.19.152.228])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1E0A619C71;
+ Mon,  8 Feb 2021 11:34:38 +0000 (UTC)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: linux-kernel@vger.kernel.org,
+	intel-gvt-dev@lists.freedesktop.org
+Subject: [FYI PATCH] i915: kvmgt: the KVM mmu_lock is now an rwlock
+Date: Mon,  8 Feb 2021 06:34:37 -0500
+Message-Id: <20210208113437.94661-1-pbonzini@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,25 +57,20 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, airlied@linux.ie, intel-gfx@lists.freedesktop.org,
- joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
- jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, daniel@ffwll.ch,
- rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org
-MIME-Version: 1.0
+Cc: intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Previously, commit 531810caa9f4 ("KVM: x86/mmu: Use
-an rwlock for the x86 MMU") replaced KVM's mmu_lock
-with type rwlock_t. This will cause a build failure
-in kvmgt, which uses the same lock when trying to add/
-remove some GFNs to/from the page tracker. Fix it with
-write_lock/unlocks in kvmgt.
+Adjust the KVMGT page tracking callbacks.
 
-Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
-Signed-off-by: Yu Zhang <yu.c.zhang@linux.intel.com>
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Zhi Wang <zhi.a.wang@intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
  drivers/gpu/drm/i915/gvt/kvmgt.c | 12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
@@ -126,7 +134,7 @@ index 60f1a386dd06..b4348256ae95 100644
  
  static bool __kvmgt_vgpu_exist(struct intel_vgpu *vgpu, struct kvm *kvm)
 -- 
-2.17.1
+2.26.2
 
 _______________________________________________
 intel-gvt-dev mailing list
