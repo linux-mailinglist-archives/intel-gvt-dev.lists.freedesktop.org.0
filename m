@@ -2,30 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEC8A31A6A8
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 Feb 2021 22:18:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57AAA31A9D2
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 Feb 2021 05:00:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A4C046E7FE;
-	Fri, 12 Feb 2021 21:18:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6FC206E237;
+	Sat, 13 Feb 2021 04:00:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1194 seconds by postgrey-1.36 at gabe;
- Fri, 12 Feb 2021 21:18:50 UTC
-Received: from prestigeattorneys.org (unknown [79.139.58.187])
- by gabe.freedesktop.org (Postfix) with ESMTP id DA17C6E7FE;
- Fri, 12 Feb 2021 21:18:50 +0000 (UTC)
-Received: from User (localhost [IPv6:::1])
- by prestigeattorneys.org (Postfix) with SMTP id 289FE99FC;
- Fri, 12 Feb 2021 21:49:06 +0100 (CET)
-From: "Anthony R Chavis"<ap@worldhealthorga.org>
-Subject: Please take a look here
-Date: Fri, 12 Feb 2021 20:49:06 -0000
+X-Greylist: delayed 28822 seconds by postgrey-1.36 at gabe;
+ Sat, 13 Feb 2021 04:00:50 UTC
+Received: from mail.azuresoft.ae (mail.azuresoft.ae [95.217.199.122])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3BF7A6E18E;
+ Sat, 13 Feb 2021 04:00:50 +0000 (UTC)
+Received: from User (unknown [103.99.1.174])
+ by mail.azuresoft.ae (Postfix) with ESMTPA id D486C1A86B29;
+ Wed, 10 Feb 2021 12:30:57 +0100 (CET)
+From: "Euro-Millions Lottery"<result@euro-millions.com>
+Subject: Congratulation: You're a winner!
+Date: Wed, 10 Feb 2021 03:31:05 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210212204906.289FE99FC@prestigeattorneys.org>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,114 +37,73 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ap@worldhealthorgan.org
-Content-Type: multipart/mixed; boundary="===============1015691130=="
+Reply-To: wkennth@zohomail.com
+Content-Type: multipart/mixed; boundary="===============0416052399=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210213040052.6FC206E237@gabe.freedesktop.org>
 
---===============1015691130==
+--===============0416052399==
 Content-Type: text/html;
 	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
 
-<html>
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+CONGRATULATION!!! </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+With reference to the 1,377th EuroMillions draw which took place on Tuesday 1st December 2020 at 21:00 CEST (20:00 BST) and the winning numbers drawn were: </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+Lucky numbers 14-20-29-47-49 Star Number 4-12 Millionaire Maker: MNHF52876 serial number ZWWD49193 Prize credited to file EURO/86169/2021 </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+An official letter was sent to your address. Your email address has been awarded the sum of 2,713,908.40 GB pounds. Kindly, confirm receipt of this notification by contacting your claims officer Mr. Kennith William for more details. </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+visit the link https://www.euro-millions.com/results/01-12-2020 to view your winning details as published on the Euro-Millions site. </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+Euro-Millions prizes must be claimed within 180 days of the draw date. This is a confidential mail sent to ONLY winners of this draws. </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+If you have any questions, please contact our customer support. </DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+Kind regards, </DIV>
+<DIV>
+Peter Jones </DIV>
+<DIV>
+Customer Support </DIV>
+<DIV>
+EURO-MILLIONS </DIV>
+<DIV>
+Customer Service </DIV>
+<DIV>
+UK Regional Office </DIV>
+<DIV>
+Acorns Oakwood Park Business Center </DIV>
+<DIV>
+Fountains Road Bishop Thornton, Harrogate </DIV>
+<DIV>
+HG3 3BF, UK. </DIV>
+</FONT>
+</BODY></HTML>
 
-<head>
-<meta http-equiv="Content-Language" content="en-us">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Dear</title>
-</head>
-
-<body>
-
-<p><font face="Arial">Dear Sir/Ma,<br>
-<br>
-<br>
-$150 MILLION USD FROM WORLD HEALTH ORGANIZATION DIVERTED AND READY TO BE 
-CLAIMED.<br>
-<br>
-Greetings to you and happy new year 2021. Please take few minutes of your time 
-to read this.<br>
-<br>
-My name is Mr. Anthony Ray Chavis from North Carolina USA, I Currently work with 
-the<br>
-World Health Organization (W.H.O) United Kingdom office and have been with them 
-for<br>
-many years moving from one country to another which has made me one of the top 
-people<br>
-in the organization.<br>
-<br>
-You are aware of the recent outbreak of Corona Virus Pandemic which started from 
-Wuhan<br>
-in China and escalated all over the world which lead to shutdown of many 
-countries by<br>
-the Government. I am happy that as at today many Government have started 
-reopening their<br>
-Country for work and businesses.<br>
-<br>
-Since the start of the Covid-19 pandemic, Billions of Dollars came in to World 
-Health<br>
-Organization as donated by individuals, Companies and Countries for the purpose 
-of<br>
-curbing and containing the deadly corona virus.<br>
-<br>
-<br>
-I happen to head one of the department in charge of this funds and since last 
-year I have<br>
-carefully and perfectly cut out the amount of One Hundred and Fifty Million 
-United States<br>
-Dollars. ($150,000,000. USD). This amount has been deleted from our Database and 
-included<br>
-in the office file as part of the fund moved out to be disbursed to some 
-Countries as<br>
-Palliatives.<br>
-<br>
-I have masterfully planned this out in a way that no traces will be found now 
-and forever.<br>
-What I did is to divert the $150,000,000.USD to a safe place pending when I have 
-a good<br>
-partner to claim the fund. Due to the fact that we are always being monitor 
-along with our<br>
-family members this is why I started searching on the for someone who will be 
-capable to<br>
-stand in the place to receive the fund as a representative to his/her country.<br>
-I will like to work with someone like you because you have a good profile.&nbsp;<br>
-<br>
-This is real, legitimate and will not put you and I in any problem. I will guide 
-you properly<br>
-till you have received the fund, but you must make sure no one knows about this 
-deal between<br>
-you and I. After receiving the fund we shall share the fund equally between us.<br>
-<br>
-I will tell you more about this immediately I receive your response with your 
-details,<br>
-kindly reconfirm to me your full details as follows:<br>
-FULL NAMES....&nbsp;<br>
-ADDRESS....&nbsp;<br>
-DATE OF BIRTH....<br>
-GENDER....<br>
-MARITAL STATUS....<br>
-PHONE NUMBERS....<br>
-OCCUPATION....<br>
-ALTERNATIVE EMAIL ADDRESS....<br>
-ATTACH COPY OF YOUR ID.<br>
-<br>
-This is a good opportunity that only comes once in a lifetime therefore we must 
-make good use<br>
-of it in this new year.<br>
-<br>
-<br>
-Kind regards,<br>
-<font size="4">
-<br>
-Anthony Ray Chavis<br>accounts.payable@worldhealthorgan.org</font><br>
-&nbsp;</font></p>
-
-</body>
-
-</html>
-
---===============1015691130==
+--===============0416052399==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -156,4 +114,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1015691130==--
+--===============0416052399==--
