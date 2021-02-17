@@ -1,31 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 109B5320677
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 20 Feb 2021 18:47:05 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B75563207C9
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 21 Feb 2021 01:15:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1583C89A57;
-	Sat, 20 Feb 2021 17:47:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 668926E8DF;
+	Sun, 21 Feb 2021 00:15:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1179 seconds by postgrey-1.36 at gabe;
- Sat, 20 Feb 2021 17:47:00 UTC
-Received: from awardtraining.dedicated.co.za (awardtraining.dedicated.co.za
- [41.76.214.221])
- by gabe.freedesktop.org (Postfix) with ESMTP id A3E686E1D2;
- Sat, 20 Feb 2021 17:46:59 +0000 (UTC)
-Received: from [192.168.101.187] ([102.39.111.112]) by
- awardtraining.dedicated.co.za with Microsoft SMTPSVC(8.5.9600.16384); 
- Sat, 20 Feb 2021 18:01:31 +0200
+Received: from mail.shezartech.in (mail.shezartech.in [139.59.75.255])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 474746E8DF
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 21 Feb 2021 00:15:46 +0000 (UTC)
+Received: from [103.99.1.174] (unknown [103.99.1.174])
+ (Authenticated sender: bitdefender@shezartech.in)
+ by mail.shezartech.in (Postfix) with ESMTPA id 3F6DF3D8346
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 17 Feb 2021 20:13:25 +0530 (IST)
 MIME-Version: 1.0
-Subject: BUSINESS PROPOSITION.
-To: Recipients <ralphnick113@gmail.com>
-From: ralphnick113@gmail.com
-Date: Sat, 20 Feb 2021 18:01:30 +0200
-Message-ID: <AWARDTRAININGMozgYL0002c640@awardtraining.dedicated.co.za>
-X-OriginalArrivalTime: 20 Feb 2021 16:01:31.0365 (UTC)
- FILETIME=[A798B150:01D707A1]
+Content-Description: Mail message body
+Subject: Congratulation: You're a winner!
+To: intel-gvt-dev@lists.freedesktop.org
+From: "Euro Millions" <acc@namakaran-alu.com>
+Date: Wed, 17 Feb 2021 06:43:23 -0800
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,90 +36,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1166290534=="
+Reply-To: ste68ven@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210221001547.668926E8DF@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============1166290534==
-Content-Type: multipart/alternative; boundary="===============0192952731=="
-
-You will not see this in a MIME-aware mail reader.
---===============0192952731==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-Good Day,
-I work as the Accountant and Auditor Manager in a bank here in South Africa=
-; I have a very confidential business proposition for you.
-There is an unclaimed huge funds in our bank that belongs to a foreign cust=
-omer whom died with his entire family of the covid-19 pandemic.
-I am seeking for your good collaboration to transfer the funds to you as th=
-e immediate relative for our both benefit, and also to help they needy duri=
-ng these trying times. =
-
-Kindly get back to me once you have read this mail and if you=2019re intere=
-sted, so I shall send to you more relevant details.
-Please send your reply to my private Email address ralphnicholas@aexea.co.uk
-Yours Sincerely.
-Mr.Ralph Nicholas.
-  =
-
-  =
-
-  =
-
-  =
-
-  =
-
-  =
-
-  =
-
- =
-
-=20
-
---===============0192952731==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Dutf-8"/></head><BODY><P>Good Day,<BR>I work as the Accountant and Audito=
-r Manager in a bank here in South Africa; I have a very confidential busine=
-ss proposition for you.<BR>There is an unclaimed huge funds in our bank tha=
-t belongs to a foreign customer whom died with his entire family of the cov=
-id-19 pandemic.<BR>I am seeking for your good collaboration to transfer the=
- funds to you as the immediate relative for our both benefit, and also to h=
-elp they needy during these trying times. <BR>Kindly get back to me once yo=
-u have read this mail and if you=E2=80=99re interested, so I shall send to =
-you more relevant details.<BR>Please send your reply to my private Email ad=
-dress <A href=3D"mailto:ralphnicholas@aexea.co.uk">ralphnicholas@aexea.co.u=
-k</A><BR>Yours Sincerely.<BR>Mr.Ralph Nicholas.</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<P><BR>&nbsp;</P></BODY></HTML>
---===============0192952731==--
-
---===============1166290534==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+CONGRATULATION!!!
+ 
+With reference to the 1,377th EuroMillions draw which took place on Tuesday 1st December 2020 at 21:00 CEST (20:00 BST) and the winning numbers drawn were:
+ 
+Lucky numbers 14-20-29-47-49 Star Number 4-12 Millionaire Maker: MNHF52876 serial number ZWWD49193 Prize credited to file EURO/86169/2021
+ 
+An official letter was sent to your address. Your email address has been awarded the sum of 2,713,908.40 GB pounds. Kindly, confirm receipt of this notification by contacting your claims officer Mr. Kennith William for more details.
+ 
+visit the link https://www.euro-millions.com/results/01-12-2020 to view your winning details as published on the Euro-Millions site.
+ 
+Euro-Millions prizes must be claimed within 180 days of the draw date. This is a confidential mail sent to ONLY winners of this draws.
+ 
+If you have any questions, please contact our customer support.
+ 
+ 
+Kind regards,
+Peter Jones
+Customer Support
+EURO-MILLIONS
+Customer Service
+UK Regional Office
+Acorns Oakwood Park Business Center
+Fountains Road Bishop Thornton, Harrogate
+HG3 3BF, UK.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1166290534==--
