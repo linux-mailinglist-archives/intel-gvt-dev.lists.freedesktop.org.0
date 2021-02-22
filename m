@@ -1,46 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A9DF321A28
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Feb 2021 15:22:46 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 406E0321E61
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Feb 2021 18:44:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 702196E52E;
-	Mon, 22 Feb 2021 14:22:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DBA9189C16;
+	Mon, 22 Feb 2021 17:44:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from merlin.infradead.org (merlin.infradead.org
- [IPv6:2001:8b0:10b:1231::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5ADE66E529;
- Mon, 22 Feb 2021 14:22:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:References:To:From:Subject:Sender:
- Reply-To:Cc:Content-ID:Content-Description;
- bh=TppepVjfjYfA1KV/1a+QHIAEUCkDzLHUeJRfYlrhokI=; b=aFJmQ5pgUHPTeObvKHT1ibTGsq
- ppKCVAaI66FqXLbTblbEn5ifz3NJ88899ExTVhnBtvLdSbYZDvnhobolhy7swhvI+0KDhBpmjncON
- 4jhl86qNoWcj78VsSgQuDlTb1sXQDpEKdWfHas1AvjlbGc7rwQXa2tpw1Au95WcpbN7RX3VfnyGIc
- qMXfyu5/ar7C+/EgL4ut6z9sP4BPpZyohApz9hu6BVdzoK3DXTO3D9Hh8Z77HkchAu//PIbxRWPoA
- ClMQabo8veyfJQTi+sEbbflU8S0xWZuBxPPft0WwpjVxa2JS0E/Au/m4QjKcoToIpu2S2IpjM59wT
- AqfIEEsg==;
-Received: from [2601:1c0:6280:3f0::d05b]
- by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEC6j-00069h-9f; Mon, 22 Feb 2021 14:22:41 +0000
-Subject: Re: [PATCH] drivers: gnu: drm: i915: gvt: Fixed couple of spellings
- in the file gtt.c
-From: Randy Dunlap <rdunlap@infradead.org>
-To: Bhaskar Chowdhury <unixbhaskar@gmail.com>, jani.nikula@linux.intel.com,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-References: <20210222081838.30328-1-unixbhaskar@gmail.com>
- <c4d15313-78a6-a7c8-97c9-8291600f6264@infradead.org>
-Message-ID: <0a95e99c-57c0-cede-f9c7-9d76711596fd@infradead.org>
-Date: Mon, 22 Feb 2021 06:22:37 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com
+ [IPv6:2607:f8b0:4864:20::543])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C697789C16
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 22 Feb 2021 17:44:00 +0000 (UTC)
+Received: by mail-pg1-x543.google.com with SMTP id o63so10665063pgo.6
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 22 Feb 2021 09:44:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=n3eH8fc7c63400pMFay9v4NYcLZ+o0vJKsl88V8S4Zg=;
+ b=aglALeAAhz6+vixTqjcUNV+LJehCoJklT3jrrHxtx93m+WIjvcwizS6ml/bYUCsOGQ
+ krgR0G34URsDQlrU83BFqF/QoZ4lwtgzyVc9sAHXj0hRfj2jY18/XU3hYD8GBB45db2a
+ uyN/+vHbVDPjYjJFvWO/xhQh1Do3YUWoe29RzXpJu2Mtd5ZHDukRJlC1DBCdYYlGHzH/
+ Xx/h+ejACtesxAWPuhVI8kLnNWuwN4Ou1OiHJs6l/oxJCxHXlizNUc0iBd/yx0lWFOpU
+ c682tx3cmOIttNuNLHQG24ly7F358MENbX1HgGeqGNTI/NeAsdO8jaJMsKkruwy5Yhld
+ wawA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=n3eH8fc7c63400pMFay9v4NYcLZ+o0vJKsl88V8S4Zg=;
+ b=pt0+yz804L3/onGlAESGJ22MRpcOqQA/0Zy/Le1XAxqGRVwWCsAXOL7EV0ND/iGC/W
+ SSV5+MPYqb9N84kNezLhYQmBcWJuSFxV0Vdc1bJMDugSle9CgMThjFC750pZkSaBfS0p
+ H9G5/MoHYTOBoLBTF+saSzjYzQQMV2+UwnDmelnphXApxnmrMJ4Lotqw/qIablDPB5jK
+ 0t7u5FPQ2kd4/2F4TKUG1uha11CEenED41bCHRgeER0FbonF7HMH3r//xqybf2TBL4i8
+ 11mEsb3u5MxfpwioK1l5TXbNpRouw8GuwBYw8DexYR2n72mf8UViZyPy+Wr0thv0/Dql
+ qD1Q==
+X-Gm-Message-State: AOAM530TVvqR5d4vXf3GxHct1QkEsqliI39u9dcq39bSCD4pLMR145C2
+ VhCYAcxGxXhjyNSHFpsQA6Iatn5nTLrIZfsdyuk=
+X-Google-Smtp-Source: ABdhPJwfj9WeWKL//tETY4fvna2xU93wmit77SXfWOzDMHDBjnsbvggEVC8NpHPVzNvaAGM5/AYB8enCrm6PLhg6JzI=
+X-Received: by 2002:a62:1b93:0:b029:1cb:4985:623b with SMTP id
+ b141-20020a621b930000b02901cb4985623bmr15207620pfb.59.1614015840303; Mon, 22
+ Feb 2021 09:44:00 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <c4d15313-78a6-a7c8-97c9-8291600f6264@infradead.org>
-Content-Language: en-US
+Received: by 2002:a05:6a10:678b:0:0:0:0 with HTTP; Mon, 22 Feb 2021 09:43:59
+ -0800 (PST)
+From: Mark Jackson <chrisuche005@gmail.com>
+Date: Mon, 22 Feb 2021 09:43:59 -0800
+Message-ID: <CAOBPeDmr-UUF8icp_61-Ad4tBPAjrVSCbsBUjAdyZRkU557PTg@mail.gmail.com>
+Subject: Your ATM CARD For Compensation
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,46 +67,44 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 2/22/21 6:21 AM, Randy Dunlap wrote:
-> On 2/22/21 12:18 AM, Bhaskar Chowdhury wrote:
->>
->> s/negtive/negative/
->> s/possilbe/possible/
->>
->> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-> 
-> Acked-by: Randy Dunlap <rdunlap@infradead.org>
+My Dear Friend
 
-except the Subject has a typo in it.
-s/gnu/gpu/
+This letter is to acknowledge the substantial contributions of time and
+energy you have made in trying to assist to claim the fund through
+your account, despite that it failed us because of your inability to
+continue financing the transaction.
 
->> ---
->>  drivers/gpu/drm/i915/gvt/gtt.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
->> index 897c007ea96a..dc5834bf4de2 100644
->> --- a/drivers/gpu/drm/i915/gvt/gtt.c
->> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
->> @@ -1159,8 +1159,8 @@ static inline void ppgtt_generate_shadow_entry(struct intel_gvt_gtt_entry *se,
->>   * @vgpu: target vgpu
->>   * @entry: target pfn's gtt entry
->>   *
->> - * Return 1 if 2MB huge gtt shadowing is possilbe, 0 if miscondition,
->> - * negtive if found err.
->> + * Return 1 if 2MB huge gtt shadowing is possible, 0 if miscondition,
->> + * negative if found err.
->>   */
->>  static int is_2MB_gtt_possible(struct intel_vgpu *vgpu,
->>  	struct intel_gvt_gtt_entry *entry)
->> --
-> 
-> 
+Besides I'm happy to inform you that I have succeeded in transferring
+the fund out of my home Country with the help of a new partner from
+Tuvalu.
 
+I am now in Tuvalu for investment and Tuvalu is composed of 9 coral
+atolls along a 360 mile chain in Polynesia. They gained independence
+in 1978 the former Ellice Islands.
 
--- 
-~Randy
-Reported-by: Randy Dunlap <rdunlap@infradead.org>
+Therefore in appreciation of your earlier assistance, I have decided to
+compensate you with the sum of $850.000.00 USD which I raised in ATM
+CARD on your favour.
+
+This fund I have given to you has been deposited with a bank which has
+already opened an account and issued to you ATM CARD worth
+US$850.000.00 (Eight Hundred and Fifty Thousand United States Dollars)
+The ATM CARD is withdrawable from any ATM Machine in the world.
+
+So feel free and contact my Personal assistance (PA) in Benin
+Republic, his name is Mr.Stephen Pena
+
+Address: Carre 1299, Ste Rita City
+Cotonou,Benin Republic
+
+Email: ( spenaneoris@gmail.com )
+
+and instruct him to send the ATM CARD to you.
+
+Please do let me know immediately you receive it.
+
+Regards,
+Mr.Mark Jackson
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
