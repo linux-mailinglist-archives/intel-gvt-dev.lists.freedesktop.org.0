@@ -2,39 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73235320DDD
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 21 Feb 2021 22:20:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 00E20321006
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Feb 2021 05:39:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 95F856E42A;
-	Sun, 21 Feb 2021 21:20:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 89C926E217;
+	Mon, 22 Feb 2021 04:39:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 13953 seconds by postgrey-1.36 at gabe;
- Sun, 21 Feb 2021 21:20:54 UTC
-Received: from mailborder-in.ptp.co.id (unknown [103.244.245.21])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E0FE26E42A;
- Sun, 21 Feb 2021 21:20:54 +0000 (UTC)
-X-Mailborder-Mailborder-Watermark: 1614518114.34399@TDzqtlfJeqryKvnzmnuxvw
-Subject: Nice to meet you,
-X-Mailborder-Mailborder-From: test@crtvg.es
-X-Mailborder-Mailborder-SpamScore: 2.30
-X-Mailborder-Mailborder-SpamCheck: not spam, SpamAssassin (cached,
- score=2.299, required 4.5, ALL_TRUSTED -1.00, BAYES_50 0.80,
- FILL_THIS_FORM 0.00, FILL_THIS_FORM_LONG 2.00, MISSING_MID 0.50,
- URIBL_BLOCKED 0.00)
-X-Mailborder-Mailborder-IP-Protocol: IPv4
-X-Mailborder-Mailborder: Found to be clean
-X-Mailborder-Mailborder-ID: 7B70642464.A80A3
-X-Mailborder-Mailborder-Information: Please contact your admin for more
- information
-Received: from [45.153.203.200] (unknown [10.202.253.215])
- by mailborder-in.ptp.co.id (Postfix) with ESMTP id 7B70642464;
- Sun, 21 Feb 2021 19:23:10 +0700 (WIB)
+X-Greylist: delayed 1226 seconds by postgrey-1.36 at gabe;
+ Mon, 22 Feb 2021 04:39:34 UTC
+Received: from smartermail.nexxite.nl (smartermail.nexxite.nl [37.97.163.9])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 705E26E217;
+ Mon, 22 Feb 2021 04:39:34 +0000 (UTC)
+Received: from [45.153.203.200] (UnknownHost [45.153.203.200]) by
+ smartermail.nexxite.nl with SMTP; Mon, 22 Feb 2021 01:48:59 +0100
 MIME-Version: 1.0
 Content-Description: Mail message body
-To: Recipients <test@crtvg.es>
-From: "Eng Philip Moore" <test@crtvg.es>
-Date: Sun, 21 Feb 2021 04:17:05 -0800
+Subject: Nice to meet you 
+To: Recipients <f.royen@rmabv.nl>
+From: "Eng Philip Moore" <f.royen@rmabv.nl>
+Date: Sun, 21 Feb 2021 16:49:19 -0800
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +39,7 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210221212055.95F856E42A@gabe.freedesktop.org>
+Message-Id: <20210222043936.89C926E217@gabe.freedesktop.org>
 
 Attn
 
@@ -67,6 +54,7 @@ Get back to me with your full names,mobile phone numbers,address and occupation 
 I await your reply.
 Eng Philip Moore
 Email:info22377@gmail.com
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
