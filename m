@@ -2,25 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F70B322783
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Feb 2021 10:10:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B6735322C97
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Feb 2021 15:42:35 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6943D6E81F;
-	Tue, 23 Feb 2021 09:10:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4C32689B42;
+	Tue, 23 Feb 2021 14:42:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from koeln.de (unknown [161.35.214.207])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3259E6E4D2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 23 Feb 2021 09:10:17 +0000 (UTC)
-Date: Tue, 23 Feb 2021 09:07:21 +0000
-To: intel-gvt-dev@lists.freedesktop.org
-From: =?utf-8?Q?Advanzia=20bank?= <meins@koeln.de>
-Subject: =?utf-8?Q?Die=20Sicherheit=20bei=20der=20Verwendung=20Ihrer=20Kreditkarte=20ist=20uns=20sehr=20wichtig=2e?=
-Message-ID: <efcc72815fc2bb13ef39c227a863e2ea@161.35.214.207>
-X-Priority: 3
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 65EEC89B42;
+ Tue, 23 Feb 2021 14:42:33 +0000 (UTC)
+IronPort-SDR: Te9toicNnHhLpHYXg+3J9RNNm6PVMvB/+dKSeBX+admG5kIeKtMBmcjDnR3Vok67DYQfvpqlhR
+ dyT6PnBdtm/w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9903"; a="269775767"
+X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="269775767"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2021 06:42:32 -0800
+IronPort-SDR: B30A7rHbUxONgX/CuKvH2rvKOvtMU0X8CTKW1exCv0pYE+nYnnV+BRQsDuZhnVar5WMcgNNX6t
+ 1yBQLNuY0JKQ==
+X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="366609033"
+Received: from mmgoodso-mobl3.amr.corp.intel.com (HELO intel.com)
+ ([10.212.211.76])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2021 06:42:31 -0800
+Date: Tue, 23 Feb 2021 09:42:30 -0500
+From: Rodrigo Vivi <rodrigo.vivi@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [Intel-gfx] [PULL] gvt-next-fixes
+Message-ID: <YDUUVt0chYrFyUQQ@intel.com>
+References: <20210222083402.GD1551@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-X-mailer: Cabestan DMS
+Content-Disposition: inline
+In-Reply-To: <20210222083402.GD1551@zhen-hp.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -33,133 +47,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1920626822=="
+Cc: Jani Nikula <jani.nikula@intel.com>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1920626822==
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+On Mon, Feb 22, 2021 at 04:34:02PM +0800, Zhenyu Wang wrote:
+> 
+> Hi,
+> 
+> Looks last gvt pull missed -gt-next window before CNY holiday.
+> So here're left three changes for fixing ww locking, cmd parser
+> fix for i915 state use and one left cleanup fix.
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-  <meta content="text/html; charset=ISO-8859-1"
- http-equiv="content-type">
-  <title></title>
-</head>
-<body>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"><strong><img
- style="width: 218px; height: 117px;" alt="Advanzia"
- src="https://journal.unifa.ac.id/files/Ad.png"></strong></p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Sehr
-geehrte Kundin/Sehr geehrter Kunde,</p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Die
-Sicherheit bei der Verwendung Ihrer Kreditkarte ist uns sehr wichtig.<br
- style="">
-Um Sie vor missbr&auml;uchlicher Verwendung Ihrer Kartendaten zu
-sch&uuml;tzen, setzen wir ein umfangreiches Pr&uuml;fsystem ein.<br
- style="">
-Leider vermuten wir bei einem Ihrer letzten Kartenums&auml;tze
-einen missbr&auml;uchlichen Einsatz Ihrer Kartendaten.<br
- style="">
-Wir haben deshalb Ihre Karte vorsorglich gesperrt, um eventuelle
-Sch&auml;den zu vermeiden.</p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Jetzt
-sind wir auf Ihre Mithilfe angewiesen Um die Karte zu aktivieren:</p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">I
-.Klicken Sie auf den folgenden Link.<br style="">
-II. Beantworten Sie den Fragebogen.</p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"><a
- href="http://casamorada.com.br/tests/?code=1234#">meine.karte-Login</a></p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Bei
-Fragen sind wir gern f&uuml;r Sie da.</p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Mit
-freundlichen Gr&uuml;&szlig;en</p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Eugen
-Sharkich<br style="">
-Kundenservice</p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Geb&uuml;hrenfrei
-Kundenbetreuung</p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"></p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">Freundliche
-Gr&uuml;&szlig;e,<br style="">
-Kundendienst &ndash; Advanzia Bank</p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"></p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"></p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"></p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"></p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"></p>
-<p
- style="border: 0px none ; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"><span
- style="font-family: 'Proxima Nova',Calibri,Helvetica,sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(247, 247, 247); text-decoration: underline; color: rgb(204, 255, 255);"><span
- style="text-decoration: underline;"><a
- href="https://waves.digitalocean.com/n/AP0H0yDT00st1mv00S0o0YN"
- style="cursor: default ! important; text-decoration: underline; color: rgb(204, 255, 255);"
- target="_blank" rel="noreferrer nofollow noopener">Refer&nbsp;a&nbsp;Friend</a><br>
-</span></span><span
- style="font-family: 'Proxima Nova',Calibri,Helvetica,sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(247, 247, 247); color: rgb(204, 255, 255);"><span
- style="font-family: 'Proxima Nova',Calibri,Helvetica,sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(247, 247, 247); display: inline ! important; float: none;">Trouble
-seeing this email?&nbsp;</span></span><span
- style="font-family: 'Proxima Nova',Calibri,Helvetica,sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(247, 247, 247); text-decoration: underline; color: rgb(96, 96, 96);"><span
- style="color: rgb(96, 96, 96); text-decoration: underline;"><a
- href="https://anchor.digitalocean.com/index.php/email/emailWebview?mkt_tok=eyJpIjoiT0RBNVlUQXpOekUzWW1KayIsInQiOiJNdlpKRHJCVitvSjlOcWZmRkVtY2cxODYvTWdPMHF6aFNMT0pVRjY4ckpwOFl3NDZCT3cyeVE0K0doOENOMFNvSEdMQUk1dkRnOFBsMm8zK3k1dDhHRkRtOWNTOTdyYi8wWkE3Z1NJbDNDQ211V3pmRlUxWG9LNzE1K0tnald1VyJ9&amp;md_id=2382&amp;aliId=jUFUecLJIwAMyyEdjIX6V9iM%2BVWwEvfCzNUFcZicradKqy0FBZWpTw%3D%3D"
- target="_blank"
- style="text-decoration: underline; color: rgb(204, 255, 255);"
- rel="noreferrer nofollow noopener">View it as a web page.</a><br>
-</span></span>
-</p>
-<table align="center" border="0" cellpadding="0"
- cellspacing="0" width="100%">
-  <tbody>
-    <tr>
-      <td style="font-size: 1px; line-height: 1px;"
- height="10">&nbsp;</td>
-    </tr>
-    <tr>
-      <td style="font-size: 1px; line-height: 1px;" width="41">&nbsp;</td>
-    </tr>
-    <tr>
-      <td style="font-size: 1px; line-height: 1px;" width="25">&nbsp;</td>
-      <td
- style="font-family: 'Proxima Nova',Calibri,Helvetica,sans-serif; font-size: 12px; font-weight: normal; text-align: center; line-height: 150%; color: rgb(204, 255, 255);">
-      <div><em>Copyright &copy; DigitalOcean<br>
-Floor 10, 101 Avenue of the Americas, New York, NY, 10013<br>
-All rights reserved.</em>
-      </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</body>
-</html>
+no problem at all. I believe we still have time.
+pulled now.
 
---===============1920626822==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Happy New Year!
+
+> 
+> Thanks!
+> --
+> The following changes since commit 81ce8f04aa96f7f6cae05770f68b5d15be91f5a2:
+> 
+>   drm/i915/gt: Correct surface base address for renderclear (2021-02-17 06:19:04 -0500)
+> 
+> are available in the Git repository at:
+> 
+>   https://github.com/intel/gvt-linux tags/gvt-next-fixes-2021-02-22
+> 
+> for you to fetch changes up to 67f1120381df022a7016f4acc8d4880da9a66c03:
+> 
+>   drm/i915/gvt: Introduce per object locking in GVT scheduler. (2021-02-22 16:42:14 +0800)
+> 
+> ----------------------------------------------------------------
+> gvt-next-fixes-2021-02-22
+> 
+> - Fix to use i915 default state for cmd parser on all engines (Chris)
+> - Purge dev_priv->gt (Chris)
+> - Fix gvt object ww locking (Zhi)
+> 
+> ----------------------------------------------------------------
+> Chris Wilson (2):
+>       drm/i915/gvt: Parse default state to update reg whitelist
+>       drm/i915/gvt: Purge dev_priv->gt
+> 
+> Zhi Wang (1):
+>       drm/i915/gvt: Introduce per object locking in GVT scheduler.
+> 
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c | 93 ++++++++---------------------------
+>  drivers/gpu/drm/i915/gvt/execlist.c   |  8 ++-
+>  drivers/gpu/drm/i915/gvt/scheduler.c  | 52 +++++++++++++++-----
+>  3 files changed, 64 insertions(+), 89 deletions(-)
+
+
+
+> _______________________________________________
+> Intel-gfx mailing list
+> Intel-gfx@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1920626822==--
