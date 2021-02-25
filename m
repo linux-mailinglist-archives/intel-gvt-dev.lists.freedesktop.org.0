@@ -1,27 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7CA9324F8D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 25 Feb 2021 12:56:21 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 20FA7324C33
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 25 Feb 2021 09:45:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 690B66E151;
-	Thu, 25 Feb 2021 11:56:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 827556E0D9;
+	Thu, 25 Feb 2021 08:45:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3684 seconds by postgrey-1.36 at gabe;
- Thu, 25 Feb 2021 11:56:17 UTC
-Received: from minimeis.com (unknown [188.72.187.214])
- by gabe.freedesktop.org (Postfix) with ESMTP id EF3276E150
+Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com
+ [IPv6:2607:f8b0:4864:20::241])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DBB496E0CA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 25 Feb 2021 11:56:17 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: 2KM flight range
-Message-ID: <1630ccdb648a06fdfdb225375aeb4229@bettycrocker.com>
-Date: Thu, 25 Feb 2021 05:22:58 +0100
-From: "Jeremy Parker" <bermedyalenop@miklor.com>
+ Thu, 25 Feb 2021 08:45:12 +0000 (UTC)
+Received: by mail-oi1-x241.google.com with SMTP id l64so5355212oig.9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 25 Feb 2021 00:45:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=Pm7Vx8pzAFGXGLsftXDe2UIweOKX4sRQuqFSPegKbug=;
+ b=SIUulibgSNhtlZN5JW7cIqV9IVlXpSo0pxe1OgJCNTqbmYlZhxsSoD9KkTLiKadRRS
+ 0+N+uf57BufufTbLoBUOWvhwNFww2UwvMbqIV0HM1e5V1KCaXOLooH741fdP93iKYHyN
+ 73Bv4WLV7Cm9JLl2+QSTSEqpQOhTarWqxFEWQifVJRMxOB359GRDIWxRITEGtXuNHbpv
+ lusMPiTi3iMiUe/qZNbusxHtTw4qZKh6VErhmUAe2x15U/T4B/0N7smKYWCLlJEJa2yV
+ O29HdGeiPiV8wxEk5+J/4dpJPzpvGqDM0oGPRqqgjb+e7E4WU+YjHwJ1TiXf8bD/XFlS
+ G6HA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=Pm7Vx8pzAFGXGLsftXDe2UIweOKX4sRQuqFSPegKbug=;
+ b=oDxPVCmlk2Vofadb7ZBJ97gOwwxTn2RLxg/fWGo5zbHVtAHgdGjDOr7u08UU4u2Cj9
+ zS3D0OByOQWvSrEIBKpDSJYflVBjNh8+z9L0KoDalaNDEH8KiMUH8z2YkmWtRFVx5Eik
+ 00nmNWsU7ZXnWqAj2it2Zm6qM1XrshxXcCXzCJiKgZgPnnZ6HWYBzFUV7/7p7NNuGvHv
+ KhZHAr9czjneiFO0Dq1X69DCp9Sv3/8BHUnPF3KvKhxRMn0Va9jdIn+sTFXOb5yB23iz
+ OcHIu0fwaS6/4jw4c3+3ly2vHdFhtDhoE/7B0SbYC4Ntr4UUuFhqVk60LZklb+QRQN6e
+ RMag==
+X-Gm-Message-State: AOAM532w6iajKLAPdyybJqOXFY/eoqwp5BWNt4DVYqZrnOwBJYweXxuv
+ RiD1uZ393lwJgHC1d20LzEnx4DRw3FVnPRWLKcI=
+X-Google-Smtp-Source: ABdhPJynIBZXa65YaeeqGFntvnsGndlPkjv/sqNGwY1kfiPCVymb72szJ4DGq9Q9b7TMMs8OgHlIoFzgUSUPZlfz7aM=
+X-Received: by 2002:a54:410f:: with SMTP id l15mr1205601oic.149.1614242711959; 
+ Thu, 25 Feb 2021 00:45:11 -0800 (PST)
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
+From: Justice Thomson <tomsonjustice9@gmail.com>
+Date: Thu, 25 Feb 2021 00:44:56 -0800
+Message-ID: <CAFh_anwDTmdzFEcJJGBOCGSC7o9whhe_FFRU4HBnsJU=CBh+3A@mail.gmail.com>
+Subject: Hi
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,54 +59,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: bertucisnary@aliyun.com
-Content-Type: multipart/mixed; boundary="===============0312624150=="
+Content-Type: multipart/mixed; boundary="===============1284791619=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0312624150==
+--===============1284791619==
+Content-Type: multipart/alternative; boundary="0000000000006d7b2805bc252b78"
+
+--0000000000006d7b2805bc252b78
+Content-Type: text/plain; charset="UTF-8"
+
+Hello,
+
+I have a good news for you.Please contact me for more details. Sorry if
+you received this letter in your spam, Due to recent connection error
+here in my country.
+
+Looking forward for your immediate response to me through my private e-
+mail id: (Justicethomson1@gmail.com)
+
+Best Regards,
+
+Regards,
+Mr Justice Thomson
+
+--0000000000006d7b2805bc252b78
 Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 
-<html>
-<head>
-</head>
-<body>
-<span style="display: block; text-align: left;">Hi,<br /><br /><span>I
-wanted to follow up from last week. <br />I have been trying to contact you
-regarding our drone product.<br /></span>We have this smart drone ready to
-send to our customers.</span><span style="display: block; text-align:
-left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="text-align:
-left;"><br />Features:<br />2KM flight range;<br />28 minutes of flight
-time.<br />Double GPS positioning<br />Level-7 wind resistance<br
-/>Failsafe Return to Home<br />Follow me, Orbit and Waypoint)<br />Auxiliar
-bottom LED light<br />Dual-camera system (6K frontal and 1080P belly)<br
-/><br />Prices:</span></span><span style="display: block; text-align:
-left;"><span style="text-align: left;">289.00 each (1-20 units)<br />279.00
-each (20-50 units)<br />269.00 each (50-100 units)<br /><br />You can start
-ordering it today, just send your shipping address and reply to our email.
-For you, we'll organize the shipment.&nbsp;<br /><br /><img
-src="https://des.gbtcdn.com/storage/store/6568849533892280320/16002/723b114e0e7c.jpg"
-width="450" height="617" /><img
-src="https://des.gbtcdn.com/storage/store/6568849533892280320/16002/3f5f18efa90b.jpg"
-width="450" height="681" /><br /><img
-src="https://des.gbtcdn.com/storage/store/6568849533892280320/16002/e1dca4457907.jpg"
-width="450" height="946" /><img
-src="https://des.gbtcdn.com/storage/store/6568849533892280320/16002/47ef88ad2e92.jpg"
-width="450" height="673" /><br /><img
-src="https://des.gbtcdn.com/storage/store/6568849533892280320/16002/73527c13cda4.jpg"
-width="450" height="837" /><img
-src="https://des.gbtcdn.com/storage/store/6568849533892280320/16002/6b9250ce5edb.jpg"
-width="450" height="679" /><br /><br /><br />You can start ordering it
-today, just send your shipping address and reply to our email. For you,
-we'll organize the shipment.&nbsp;<br /><br />Thanks,<br />Jeremy
-Parker</span></span></span></span>
-</body>
-</html>
+<div dir=3D"ltr">Hello,<br><br>I have a good news for you.Please contact me=
+ for more details. Sorry if<br>you received this letter in your spam, Due t=
+o recent connection error<br>here in my country.<br><br>Looking forward for=
+ your immediate response to me through my private e-<br>mail id: (<a href=
+=3D"mailto:Justicethomson1@gmail.com">Justicethomson1@gmail.com</a>)<br><br=
+>Best Regards,<br><br>Regards,<br>Mr Justice Thomson<br><br><br><br><br><br=
+><br></div>
 
+--0000000000006d7b2805bc252b78--
 
---===============0312624150==
+--===============1284791619==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -92,4 +108,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0312624150==--
+--===============1284791619==--
