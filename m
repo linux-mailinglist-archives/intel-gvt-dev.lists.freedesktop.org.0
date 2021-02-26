@@ -2,31 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EFB0325D53
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 06:54:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B2FA3262DE
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 13:45:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F04536E8EC;
-	Fri, 26 Feb 2021 05:54:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 365916EDD0;
+	Fri, 26 Feb 2021 12:45:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 5845 seconds by postgrey-1.36 at gabe;
- Fri, 26 Feb 2021 05:54:35 UTC
-Received: from f12.nskorea.com (f12.nskorea.com [222.231.10.12])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 17D876E8EC
+X-Greylist: delayed 3674 seconds by postgrey-1.36 at gabe;
+ Fri, 26 Feb 2021 12:45:27 UTC
+Received: from minterdial.com (unknown [188.72.187.218])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4D8836EDD0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 26 Feb 2021 05:54:33 +0000 (UTC)
-Received: from User ([153.35.192.98]) (authenticated bits=0)
- by f12.nskorea.com (8.13.8/8.13.8) with ESMTP id 11Q4GiIY027240;
- Fri, 26 Feb 2021 13:16:48 +0900
-Message-Id: <202102260416.11Q4GiIY027240@f12.nskorea.com>
-From: "Charles Colocino"<elin@konaco.kr>
-Subject: Re: Vital Information
-Date: Thu, 25 Feb 2021 20:26:48 -0800
+ Fri, 26 Feb 2021 12:45:27 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: ultra short throw
+Message-ID: <b60c52376a34d93e8f9379ad0a4e9111@erco.com>
+Date: Fri, 26 Feb 2021 10:22:59 +0100
+From: "Jerry" <gbimeayteniki@minifigpriceguide.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,32 +34,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: colcharlesj1@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: hunsherlgfus@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0328348483=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello my friend,
+--===============0328348483==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-I have very vital information to give to you, but first I must have your trust before I reveal it to you because it may cost me my job, so I need somebody that I can trust for me to be able to reveal the secret to you.
+<html>
+<head>
+</head>
+<body>
+<p>Ultra short throw projector in our stock now.<br /><br />Hello,&nbsp;<br
+/><br />I hope you have a nice day.&nbsp;I am delighted to tell you that we
+have got one ultra short throw projector in our stock now.<br /><br />Throw
+ratio is 0.39:1 and screen ratio: 16:9/4:3.&nbsp;<br />Place projector
+1.6ft away from the wall and you'll enjoy a beautiful 60"(diagonal)
+display.<br />Move the projector 3.12ft away from the wall and this screen
+size increases to huge 120".<br />So whether it&rsquo;s placed on the
+floor, mounted on the ceiling or used for rear projection, you can be sure
+that you&rsquo;ll always see the big picture.<br /><br /><span>Prices for
+different quantity, including shipping.</span><br /><span>1-20 pieces
+899.90 per unit</span><br /><span>21-100 pieces&nbsp; 859.90 per
+unit</span><br /><span>100 + pieces please contact to negotiate<br /><br
+/>If you would like to order it. Just respond to our email with your
+delivery address, we will ready the shipment.&nbsp;</span><br /><br
+/>Details please check below:</p>
+<span style="display: block; text-align: left;">Native resolution is
+1280*800 Support 1920*1080. <br />Native 1280*800 resolution for lifelike
+pictures<br />Native resolution is 1280*720P Support 1920*1080<br />Native
+1280*800 resolution for lifelike pictures<br />15600mAh large capacity
+battery for long use<br />Android 4.4 system for fluent running<br />WiFi
+for quick network accession</span>
+<p>&nbsp;<img
+src="https://8190425.s21i.faiusr.com/2/ABUIABACGAAgiInX1QUoi4a17gYwzAg4zAg!600x600.jpg"
+width="452" height="452" /><img
+src="https://8190425.s21i.faiusr.com/2/ABUIABACGAAglovX1QUo7JGmigUwzAg4zAg.jpg"
+width="452" height="452" /><br /><img
+src="https://imgaz.staticbg.com/images/oaupload/ser1/banggood/images/71/EE/6e2e88d2-420d-4368-ac41-a04df76fb03a.jpg.webp"
+width="452" height="1267" /><img
+src="https://imgaz.staticbg.com/images/oaupload/ser1/banggood/images/3F/1D/e5e50299-4864-4f08-8eff-f792fd5b3bae.jpg.webp"
+width="452" height="875" /><br /><br />If you would like to order it. Just
+respond to our email with your delivery address, we will ready the
+shipment.&nbsp;<br /><br />Thanks and regards,<br />Jerry Williams</p>
+</body>
+</html>
 
-I am Charles J.Colocino JR, head of luggage/baggage storage facilities (Operations, Maintenance, and Transportation) here at the Harrisburg International Airport, Pennsylvania USA. During my recent withheld package routine check at the Airport Storage Vault, I discovered an abandoned shipment from a Diplomat from London and when scanned it revealed an undisclosed sum of money in a Metal Trunk Box weighing approximately 110kg. The consignment was abandoned because the Contents of the consignment was not properly declared by the consignee as "MONEY" rather it was declared as personal effect to avoid interrogation and also the inability of the diplomat to pay for the United States Non Inspection Charges which is $3,700USD. On my assumption the consignment is still left in our Storage House here at the Harrisburg International Airport Pennsylvania till date.
 
-The details of the consignment including your name, your email address and the official documents from the United Nations office in Geneva are tagged on the Trunk box. However, to enable me confirm if you are the actual recipient of this consignment as the assistant director of the Inspection Unit, I will advise you provide your current Phone Number and Full Address, to enable me cross check if it corresponds with the address on the official documents including the name of nearest Airport around your city. Please note that this consignment is supposed to have been returned to the United States Treasury Department as unclaimed delivery due to the delays in concluding the clearance processes so as a result of this, I will not be able to receive your details on my official email account. So in order to enable me to cross check your details, I will advise you to send the required details to my private email address for quick processing and response.
+--===============0328348483==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Once I confirm you as the actual recipient of the trunk box, I can get everything concluded within 48 hours upon your acceptance and proceed to your address for delivery. Lastly, be informed that the reason I have taken it upon myself to contact you personally about this abandoned consignment is because I want us to transact this business and share the money 70% for you and 30% for me since the consignment has not yet been returned to the United States Treasury Department after being abandoned by the diplomat so immediately the confirmation is made, I will go ahead and pay for the United States Non Inspection Fee of $3,700 dollars and arrange for the box to be delivered to your doorstep Or I can bring it by myself to avoid any more trouble but you have to assure me of my 30% share.
-
-I wait to hear from you urgently if you are still alive and I will appreciate it if we can keep this deal confidential. Please get back to me via my private Email: (charlescolocino36@gmail.com) for further directives.
-
-Thanks.
-
-Charles J.Colocino JR
-Interim Assistance General Manager,
-(Operations,Maintenance,Transportation)
-Harrisburg International Airport Pennsylvania
-One Terminal Drive, Middletown.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0328348483==--
