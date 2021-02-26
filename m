@@ -2,24 +2,24 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D3723262E1
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 13:46:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 062EC3266B9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 19:10:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A99526EDDB;
-	Fri, 26 Feb 2021 12:46:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E63A6E17A;
+	Fri, 26 Feb 2021 18:10:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3709 seconds by postgrey-1.36 at gabe;
- Fri, 26 Feb 2021 12:46:55 UTC
-Received: from minterdial.com (unknown [188.72.187.218])
- by gabe.freedesktop.org (Postfix) with ESMTP id 55DAD6EDD0
+X-Greylist: delayed 10809 seconds by postgrey-1.36 at gabe;
+ Fri, 26 Feb 2021 18:10:29 UTC
+Received: from mmawarfare.com (unknown [173.254.228.69])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DAA646E0B9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 26 Feb 2021 12:46:55 +0000 (UTC)
+ Fri, 26 Feb 2021 18:10:29 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: ultra short throw
-Message-ID: <a28f4f9af5d77f7a91ae67f8c6e328f5@erco.com>
-Date: Fri, 26 Feb 2021 11:24:12 +0100
-From: "Jerry" <dsemedyteniki@minifigpriceguide.com>
+Subject: 4K camera drone
+Message-ID: <1092c534807ca23cd56a74f3983d1358@dronesgator.com>
+Date: Fri, 26 Feb 2021 15:45:29 +0100
+From: "Jan Wilson" <hsamseysonmoi@mistinger.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -34,64 +34,29 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: hunsherlgfus@aliyun.com
-Content-Type: multipart/mixed; boundary="===============1631979215=="
+Reply-To: jindongshper@aliyun.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1631979215==
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-
-<html>
-<head>
-</head>
-<body>
-<p>Ultra short throw projector in our stock now.<br /><br />Hello,&nbsp;<br
-/><br />I hope you have a nice day.&nbsp;I am delighted to tell you that we
-have got one ultra short throw projector in our stock now.<br /><br />Throw
-ratio is 0.39:1 and screen ratio: 16:9/4:3.&nbsp;<br />Place projector
-1.6ft away from the wall and you'll enjoy a beautiful 60"(diagonal)
-display.<br />Move the projector 3.12ft away from the wall and this screen
-size increases to huge 120".<br />So whether it&rsquo;s placed on the
-floor, mounted on the ceiling or used for rear projection, you can be sure
-that you&rsquo;ll always see the big picture.<br /><br /><span>Prices for
-different quantity, including shipping.</span><br /><span>1-20 pieces
-899.90 per unit</span><br /><span>21-100 pieces&nbsp; 859.90 per
-unit</span><br /><span>100 + pieces please contact to negotiate<br /><br
-/>If you would like to order it. Just respond to our email with your
-delivery address, we will ready the shipment.&nbsp;</span><br /><br
-/>Details please check below:</p>
-<span style="display: block; text-align: left;">Native resolution is
-1280*800 Support 1920*1080. <br />Native 1280*800 resolution for lifelike
-pictures<br />Native resolution is 1280*720P Support 1920*1080<br />Native
-1280*800 resolution for lifelike pictures<br />15600mAh large capacity
-battery for long use<br />Android 4.4 system for fluent running<br />WiFi
-for quick network accession</span>
-<p>&nbsp;<img
-src="https://8190425.s21i.faiusr.com/2/ABUIABACGAAgiInX1QUoi4a17gYwzAg4zAg!600x600.jpg"
-width="452" height="452" /><img
-src="https://8190425.s21i.faiusr.com/2/ABUIABACGAAglovX1QUo7JGmigUwzAg4zAg.jpg"
-width="452" height="452" /><br /><img
-src="https://imgaz.staticbg.com/images/oaupload/ser1/banggood/images/71/EE/6e2e88d2-420d-4368-ac41-a04df76fb03a.jpg.webp"
-width="452" height="1267" /><img
-src="https://imgaz.staticbg.com/images/oaupload/ser1/banggood/images/3F/1D/e5e50299-4864-4f08-8eff-f792fd5b3bae.jpg.webp"
-width="452" height="875" /><br /><br />If you would like to order it. Just
-respond to our email with your delivery address, we will ready the
-shipment.&nbsp;<br /><br />Thanks and regards,<br />Jerry Williams</p>
-</body>
-</html>
-
-
---===============1631979215==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1631979215==--
+SGksCgpIb3BlIGFsbCBpcyB3ZWxsLgpJIGFtIHJlYWNoaW5nIHlvdSBhYm91dCBvdXIgZHJvbmUg
+cHJvZHVjdCBJIGhhZCBzZW50IGFib3V0IGEgd2VlayBhZ28uCgpJbiBvdXIgc3RvY2sgd2UgaGF2
+ZSB0aGlzIHNtYXJ0IGRyb25lIHJpZ2h0IG5vdywgcmVhZHkgdG8gc2hpcC4KCkZyZXF1ZW5jeTog
+NUcKRlBWIGltYWdlIHRyYW5zbWlzc2lvbjogNUcgV2lGaSwgMTAwMG0KU3RhYmxlIHR3by1heGlz
+IG1lY2hhbmljYWwgdW5pdmVyc2FsIGpvaW50CjRLIDExMMKwIHdpZGUtYW5nbGUgYWRqdXN0YWJs
+ZSBjYW1lcmEuIEVTQyBjYW1lcmEKQ2hhbm5lbDogNkNICkJhdHRlcnk6IDExLjFWIDIzNTBtQWgg
+bGl0aGl1bSBpb24gYmF0dGVyeSAoaW5jbHVkZWQpClRyYW5zbWl0dGVyIGJhdHRlcnk6IEFBKjMK
+RmxpZ2h0IHRpbWU6IDMwIG1pbnV0ZXMKUmVtb3RlIGNvbnRyb2wgZGlzdGFuY2U6IGFib3V0IDEw
+MDBtCkNvbG91cjogQmxhY2sKRmllbGQgb2YgdmlldzogMTEwwrAgd2lkZSBhbmdsZQo0SyBwaXhl
+bHM6ClBpY3R1cmU6IDU3MDAqNDI3NQpWaWRlbzogMzg0MCAqIDEwODAKUXVhZHJpbGF0ZXJhbCBz
+aXplOgpQcm9kdWN0IGZvbGRpbmcgc2l6ZSAoQ00pOiAxNyoxMS41KjYuN0NNClByb2R1Y3QgZGV2
+ZWxvcG1lbnQgc2l6ZSAoQ00pOiAyNioyNio2LjdDTQoKUHJpY2VzOiAoc2hpcHBpbmcgaW5jbHVk
+ZWQpCjI4OS41MCBlYWNoICgxLTIwIHVuaXRzKQoyNzkuNTAgZWFjaCAoMjEtNTAgdW5pdHMpCjI2
+OS41MCBlYWNoICg1MS0xMDAgdW5pdHMpCmluIHUgcyBkCgpJZiB5b3Ugd2FudCB0byBvcmRlciBp
+dCB0b2RheSwgcmVwbHkgb3VyIGVtYWlsIHdpdGggeW91ciBzaGlwcGluZyBhZGRyZXNzCmRldGFp
+bHMsIHdlIHdpbGwgbWFrZSB0aGUgc2hpcG1lbnQgZm9yIHlvdS4KV2UgZG8gd29ybGR3aWRlIHNo
+aXBwaW5nLCAxMC0xNSBkYXlzLgoKVGhhbmtzIGFuZCBSZWdhcmRzLApKYW4gV2lsc29uCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2
+IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
