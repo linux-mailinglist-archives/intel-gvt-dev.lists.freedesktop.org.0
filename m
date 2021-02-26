@@ -1,25 +1,25 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B2FA3262DE
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 13:45:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D3723262E1
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 13:46:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 365916EDD0;
-	Fri, 26 Feb 2021 12:45:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A99526EDDB;
+	Fri, 26 Feb 2021 12:46:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3674 seconds by postgrey-1.36 at gabe;
- Fri, 26 Feb 2021 12:45:27 UTC
+X-Greylist: delayed 3709 seconds by postgrey-1.36 at gabe;
+ Fri, 26 Feb 2021 12:46:55 UTC
 Received: from minterdial.com (unknown [188.72.187.218])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4D8836EDD0
+ by gabe.freedesktop.org (Postfix) with ESMTP id 55DAD6EDD0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 26 Feb 2021 12:45:27 +0000 (UTC)
+ Fri, 26 Feb 2021 12:46:55 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
 Subject: ultra short throw
-Message-ID: <b60c52376a34d93e8f9379ad0a4e9111@erco.com>
-Date: Fri, 26 Feb 2021 10:22:59 +0100
-From: "Jerry" <gbimeayteniki@minifigpriceguide.com>
+Message-ID: <a28f4f9af5d77f7a91ae67f8c6e328f5@erco.com>
+Date: Fri, 26 Feb 2021 11:24:12 +0100
+From: "Jerry" <dsemedyteniki@minifigpriceguide.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -35,11 +35,11 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: hunsherlgfus@aliyun.com
-Content-Type: multipart/mixed; boundary="===============0328348483=="
+Content-Type: multipart/mixed; boundary="===============1631979215=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0328348483==
+--===============1631979215==
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 
@@ -83,7 +83,7 @@ shipment.&nbsp;<br /><br />Thanks and regards,<br />Jerry Williams</p>
 </html>
 
 
---===============0328348483==
+--===============1631979215==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -94,4 +94,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0328348483==--
+--===============1631979215==--
