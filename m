@@ -2,38 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B46CB325CAC
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 05:46:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EFB0325D53
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Feb 2021 06:54:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5189F6E8E4;
-	Fri, 26 Feb 2021 04:46:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F04536E8EC;
+	Fri, 26 Feb 2021 05:54:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 198CF6E8E4
+X-Greylist: delayed 5845 seconds by postgrey-1.36 at gabe;
+ Fri, 26 Feb 2021 05:54:35 UTC
+Received: from f12.nskorea.com (f12.nskorea.com [222.231.10.12])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 17D876E8EC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 26 Feb 2021 04:46:35 +0000 (UTC)
-IronPort-SDR: G7B0BEX3mErrJmBTPpBtbKj2JSVuRTQa+kpoIS+/5ha+5HoWDe6QQhCwJtBAoFlgRSxPcjlk0B
- OabcEOxUs/jA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9906"; a="249829871"
-X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="249829871"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2021 20:46:34 -0800
-IronPort-SDR: mBZ5Ff76Iv7aRrCzZUqDM2c34//+wIDRI+Jhqr+2jPP5XMqg+0DlcU/+RPaLKO6PRf4X9xK5xk
- owsXMw5SqoRQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="393339011"
-Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.51])
- by fmsmga008.fm.intel.com with ESMTP; 25 Feb 2021 20:46:32 -0800
-From: Colin Xu <colin.xu@intel.com>
-To: zhenyuw@linux.intel.com
-Subject: [PATCH v2 2/2] drm/i915/gvt: Refactor GVT vblank emulator for vGPU
- virtual display
-Date: Fri, 26 Feb 2021 12:46:30 +0800
-Message-Id: <20210226044630.284269-1-colin.xu@intel.com>
-X-Mailer: git-send-email 2.30.1
+ Fri, 26 Feb 2021 05:54:33 +0000 (UTC)
+Received: from User ([153.35.192.98]) (authenticated bits=0)
+ by f12.nskorea.com (8.13.8/8.13.8) with ESMTP id 11Q4GiIY027240;
+ Fri, 26 Feb 2021 13:16:48 +0900
+Message-Id: <202102260416.11Q4GiIY027240@f12.nskorea.com>
+From: "Charles Colocino"<elin@konaco.kr>
+Subject: Re: Vital Information
+Date: Thu, 25 Feb 2021 20:26:48 -0800
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,492 +39,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org, colin.xu@intel.com
+Reply-To: colcharlesj1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Current vblank emulator uses single hrtimer at 16ms period for all vGPUs,
-which introduces three major issues:
+Hello my friend,
 
-- 16ms matches the refresh rate at 62.5Hz (instead of 60Hz) which
-  doesn't follow standard timing. This leads to some frame drop or glitch
-  issue during video playback. SW expects a vsync interval of 16.667ms or
-  higher precision for an accurate 60Hz refresh rate. However current
-  vblank emulator only works at 16ms.
+I have very vital information to give to you, but first I must have your trust before I reveal it to you because it may cost me my job, so I need somebody that I can trust for me to be able to reveal the secret to you.
 
-- Doesn't respect the fact that with current virtual EDID timing set,
-  not all resolutions are running at 60Hz. For example, current virtual
-  EDID also supports refresh rate at 56Hz, 59.97Hz, 60Hz, 75Hz, etc.
+I am Charles J.Colocino JR, head of luggage/baggage storage facilities (Operations, Maintenance, and Transportation) here at the Harrisburg International Airport, Pennsylvania USA. During my recent withheld package routine check at the Airport Storage Vault, I discovered an abandoned shipment from a Diplomat from London and when scanned it revealed an undisclosed sum of money in a Metal Trunk Box weighing approximately 110kg. The consignment was abandoned because the Contents of the consignment was not properly declared by the consignee as "MONEY" rather it was declared as personal effect to avoid interrogation and also the inability of the diplomat to pay for the United States Non Inspection Charges which is $3,700USD. On my assumption the consignment is still left in our Storage House here at the Harrisburg International Airport Pennsylvania till date.
 
-- Current vblank emulator use single hrtimer for all vGPUs. Regardsless
-  the possibility that different guests could run in different
-  resolutions, all vsync interrupts are injected at 16ms interval with
-  same hrtimer.
+The details of the consignment including your name, your email address and the official documents from the United Nations office in Geneva are tagged on the Trunk box. However, to enable me confirm if you are the actual recipient of this consignment as the assistant director of the Inspection Unit, I will advise you provide your current Phone Number and Full Address, to enable me cross check if it corresponds with the address on the official documents including the name of nearest Airport around your city. Please note that this consignment is supposed to have been returned to the United States Treasury Department as unclaimed delivery due to the delays in concluding the clearance processes so as a result of this, I will not be able to receive your details on my official email account. So in order to enable me to cross check your details, I will advise you to send the required details to my private email address for quick processing and response.
 
-Based on previous patch which decode guest expected refresh rate from
-vreg, the vblank emulator refactor patch makes following changes:
-- Change the vblank emulator hrtimer from gvt global to per-vGPU.
-  By doing this, each vGPU display can operates at different refresh
-  rates. Currently only one dislay is supported for each vGPU so per-vGPU
-  hrtimer is enough. If multiple displays are supported per-vGPU in
-  future, we can expand to per-PIPE further.
-- Change the fixed hrtimer period from 16ms to dynamic based on vreg.
-  GVT is expected to emulate the HW as close as possible. So reflacting
-  the accurate vsync interrupt interval is more correct than fixed 16ms.
-- Change the vblank timer period and start the timer on PIPECONF change.
-  The initial period is updated to 16666667 based on 60Hz refresh rate.
-  According to PRM, PIPECONF controls the timing generator of the
-  connected display on this pipe, so it's safe to stop hrtimer on
-  PIPECONF disabling, and re-start hrtimer at new period on enabling.
+Once I confirm you as the actual recipient of the trunk box, I can get everything concluded within 48 hours upon your acceptance and proceed to your address for delivery. Lastly, be informed that the reason I have taken it upon myself to contact you personally about this abandoned consignment is because I want us to transact this business and share the money 70% for you and 30% for me since the consignment has not yet been returned to the United States Treasury Department after being abandoned by the diplomat so immediately the confirmation is made, I will go ahead and pay for the United States Non Inspection Fee of $3,700 dollars and arrange for the box to be delivered to your doorstep Or I can bring it by myself to avoid any more trouble but you have to assure me of my 30% share.
 
-Other changes including:
-- Move vblank_timer_fn from irq.c into display.c.
-- Clean per-vGPU vblank timer at clean_display instead of clean_irq.
+I wait to hear from you urgently if you are still alive and I will appreciate it if we can keep this deal confidential. Please get back to me via my private Email: (charlescolocino36@gmail.com) for further directives.
 
-To run quick test, launch a web browser and goto URL: www.displayhz.com
+Thanks.
 
-The actual refresh rate from guest can now always match guest settings.
-
-V2:
-Rebase to 5.11.
-Remove unused intel_gvt_clean_irq().
-Simplify enable logic in update_vblank_emulation(). (zhenyu)
-Loop all vGPU by idr when check all vblank timer. (zhenyu)
-
-Signed-off-by: Colin Xu <colin.xu@intel.com>
----
- drivers/gpu/drm/i915/gvt/display.c   | 105 +++++++++++++++------------
- drivers/gpu/drm/i915/gvt/display.h   |  11 ++-
- drivers/gpu/drm/i915/gvt/gvt.c       |  25 +++++--
- drivers/gpu/drm/i915/gvt/gvt.h       |  12 ++-
- drivers/gpu/drm/i915/gvt/handlers.c  |   7 +-
- drivers/gpu/drm/i915/gvt/interrupt.c |  37 ----------
- drivers/gpu/drm/i915/gvt/interrupt.h |   7 --
- drivers/gpu/drm/i915/gvt/vgpu.c      |   2 -
- 8 files changed, 94 insertions(+), 112 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/display.c b/drivers/gpu/drm/i915/gvt/display.c
-index 1cae92e3752c..034c060f89d4 100644
---- a/drivers/gpu/drm/i915/gvt/display.c
-+++ b/drivers/gpu/drm/i915/gvt/display.c
-@@ -516,11 +516,27 @@ static void clean_virtual_dp_monitor(struct intel_vgpu *vgpu, int port_num)
- 	port->dpcd = NULL;
- }
- 
-+static enum hrtimer_restart vblank_timer_fn(struct hrtimer *data)
-+{
-+	struct intel_vgpu_vblank_timer *vblank_timer;
-+	struct intel_vgpu *vgpu;
-+
-+	vblank_timer = container_of(data, struct intel_vgpu_vblank_timer, timer);
-+	vgpu = container_of(vblank_timer, struct intel_vgpu, vblank_timer);
-+
-+	/* Set vblank emulation request per-vGPU bit */
-+	intel_gvt_request_service(vgpu->gvt,
-+				  INTEL_GVT_REQUEST_EMULATE_VBLANK + vgpu->id);
-+	hrtimer_add_expires_ns(&vblank_timer->timer, vblank_timer->period);
-+	return HRTIMER_RESTART;
-+}
-+
- static int setup_virtual_dp_monitor(struct intel_vgpu *vgpu, int port_num,
- 				    int type, unsigned int resolution)
- {
- 	struct drm_i915_private *i915 = vgpu->gvt->gt->i915;
- 	struct intel_vgpu_port *port = intel_vgpu_port(vgpu, port_num);
-+	struct intel_vgpu_vblank_timer *vblank_timer = &vgpu->vblank_timer;
- 
- 	if (drm_WARN_ON(&i915->drm, resolution >= GVT_EDID_NUM))
- 		return -EINVAL;
-@@ -547,47 +563,56 @@ static int setup_virtual_dp_monitor(struct intel_vgpu *vgpu, int port_num,
- 	port->vrefresh_k = GVT_DEFAULT_REFRESH_RATE * MSEC_PER_SEC;
- 	vgpu->display.port_num = port_num;
- 
-+	/* Init hrtimer based on default refresh rate */
-+	hrtimer_init(&vblank_timer->timer, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
-+	vblank_timer->timer.function = vblank_timer_fn;
-+	vblank_timer->vrefresh_k = port->vrefresh_k;
-+	vblank_timer->period = DIV64_U64_ROUND_CLOSEST(NSEC_PER_SEC * MSEC_PER_SEC, vblank_timer->vrefresh_k);
-+
- 	emulate_monitor_status_change(vgpu);
- 
- 	return 0;
- }
- 
- /**
-- * intel_gvt_check_vblank_emulation - check if vblank emulation timer should
-- * be turned on/off when a virtual pipe is enabled/disabled.
-- * @gvt: a GVT device
-+ * vgpu_update_vblank_emulation - Update per-vGPU vblank_timer
-+ * @vgpu: vGPU operated
-+ * @turnon: Turn ON/OFF vblank_timer
-  *
-- * This function is used to turn on/off vblank timer according to currently
-- * enabled/disabled virtual pipes.
-+ * This function is used to turn on/off or update the per-vGPU vblank_timer
-+ * when PIPECONF is enabled or disabled. vblank_timer period is also updated
-+ * if guest changed the refresh rate.
-  *
-  */
--void intel_gvt_check_vblank_emulation(struct intel_gvt *gvt)
-+void vgpu_update_vblank_emulation(struct intel_vgpu *vgpu, bool turnon)
- {
--	struct intel_gvt_irq *irq = &gvt->irq;
--	struct intel_vgpu *vgpu;
--	int pipe, id;
--	int found = false;
--
--	mutex_lock(&gvt->lock);
--	for_each_active_vgpu(gvt, vgpu, id) {
--		for (pipe = 0; pipe < I915_MAX_PIPES; pipe++) {
--			if (pipe_is_enabled(vgpu, pipe)) {
--				found = true;
--				break;
--			}
-+	struct intel_vgpu_vblank_timer *vblank_timer = &vgpu->vblank_timer;
-+	struct intel_vgpu_port *port =
-+		intel_vgpu_port(vgpu, vgpu->display.port_num);
-+
-+	if (turnon) {
-+		/*
-+		 * Skip the re-enable if already active and vrefresh unchanged.
-+		 * Otherwise, stop timer if already active and restart with new
-+		 *   period.
-+		 */
-+		if (vblank_timer->vrefresh_k != port->vrefresh_k ||
-+		    !hrtimer_active(&vblank_timer->timer)) {
-+			/* Stop timer before start with new period if active */
-+			if (hrtimer_active(&vblank_timer->timer))
-+				hrtimer_cancel(&vblank_timer->timer);
-+
-+			/* Make sure new refresh rate updated to timer period */
-+			vblank_timer->vrefresh_k = port->vrefresh_k;
-+			vblank_timer->period = DIV64_U64_ROUND_CLOSEST(NSEC_PER_SEC * MSEC_PER_SEC, vblank_timer->vrefresh_k);
-+			hrtimer_start(&vblank_timer->timer,
-+				      ktime_add_ns(ktime_get(), vblank_timer->period),
-+				      HRTIMER_MODE_ABS);
- 		}
--		if (found)
--			break;
-+	} else {
-+		/* Caller request to stop vblank */
-+		hrtimer_cancel(&vblank_timer->timer);
- 	}
--
--	/* all the pipes are disabled */
--	if (!found)
--		hrtimer_cancel(&irq->vblank_timer.timer);
--	else
--		hrtimer_start(&irq->vblank_timer.timer,
--			ktime_add_ns(ktime_get(), irq->vblank_timer.period),
--			HRTIMER_MODE_ABS);
--	mutex_unlock(&gvt->lock);
- }
- 
- static void emulate_vblank_on_pipe(struct intel_vgpu *vgpu, int pipe)
-@@ -619,7 +644,7 @@ static void emulate_vblank_on_pipe(struct intel_vgpu *vgpu, int pipe)
- 	}
- }
- 
--static void emulate_vblank(struct intel_vgpu *vgpu)
-+void intel_vgpu_emulate_vblank(struct intel_vgpu *vgpu)
- {
- 	int pipe;
- 
-@@ -629,24 +654,6 @@ static void emulate_vblank(struct intel_vgpu *vgpu)
- 	mutex_unlock(&vgpu->vgpu_lock);
- }
- 
--/**
-- * intel_gvt_emulate_vblank - trigger vblank events for vGPUs on GVT device
-- * @gvt: a GVT device
-- *
-- * This function is used to trigger vblank interrupts for vGPUs on GVT device
-- *
-- */
--void intel_gvt_emulate_vblank(struct intel_gvt *gvt)
--{
--	struct intel_vgpu *vgpu;
--	int id;
--
--	mutex_lock(&gvt->lock);
--	for_each_active_vgpu(gvt, vgpu, id)
--		emulate_vblank(vgpu);
--	mutex_unlock(&gvt->lock);
--}
--
- /**
-  * intel_vgpu_emulate_hotplug - trigger hotplug event for vGPU
-  * @vgpu: a vGPU
-@@ -755,6 +762,8 @@ void intel_vgpu_clean_display(struct intel_vgpu *vgpu)
- 		clean_virtual_dp_monitor(vgpu, PORT_D);
- 	else
- 		clean_virtual_dp_monitor(vgpu, PORT_B);
-+
-+	vgpu_update_vblank_emulation(vgpu, false);
- }
- 
- /**
-diff --git a/drivers/gpu/drm/i915/gvt/display.h b/drivers/gpu/drm/i915/gvt/display.h
-index 2481a2ae1f68..f5616f99ef2f 100644
---- a/drivers/gpu/drm/i915/gvt/display.h
-+++ b/drivers/gpu/drm/i915/gvt/display.h
-@@ -36,6 +36,7 @@
- #define _GVT_DISPLAY_H_
- 
- #include <linux/types.h>
-+#include <linux/hrtimer.h>
- 
- struct intel_gvt;
- struct intel_vgpu;
-@@ -169,6 +170,12 @@ struct intel_vgpu_port {
- 	u32 vrefresh_k;
- };
- 
-+struct intel_vgpu_vblank_timer {
-+	struct hrtimer timer;
-+	u32 vrefresh_k;
-+	u64 period;
-+};
-+
- static inline char *vgpu_edid_str(enum intel_vgpu_edid id)
- {
- 	switch (id) {
-@@ -205,8 +212,8 @@ static inline unsigned int vgpu_edid_yres(enum intel_vgpu_edid id)
- 	}
- }
- 
--void intel_gvt_emulate_vblank(struct intel_gvt *gvt);
--void intel_gvt_check_vblank_emulation(struct intel_gvt *gvt);
-+void intel_vgpu_emulate_vblank(struct intel_vgpu *vgpu);
-+void vgpu_update_vblank_emulation(struct intel_vgpu *vgpu, bool turnon);
- 
- int intel_vgpu_init_display(struct intel_vgpu *vgpu, u64 resolution);
- void intel_vgpu_reset_display(struct intel_vgpu *vgpu);
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gvt.c
-index aa7fc0dd1db5..2ecb8534930b 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.c
-+++ b/drivers/gpu/drm/i915/gvt/gvt.c
-@@ -203,6 +203,22 @@ static void init_device_info(struct intel_gvt *gvt)
- 	info->msi_cap_offset = pdev->msi_cap;
- }
- 
-+static void intel_gvt_test_and_emulate_vblank(struct intel_gvt *gvt)
-+{
-+	struct intel_vgpu *vgpu;
-+	int id;
-+
-+	mutex_lock(&gvt->lock);
-+	idr_for_each_entry((&(gvt)->vgpu_idr), (vgpu), (id)) {
-+		if (test_and_clear_bit(INTEL_GVT_REQUEST_EMULATE_VBLANK + id,
-+				       (void *)&gvt->service_request)) {
-+			if (vgpu->active)
-+				intel_vgpu_emulate_vblank(vgpu);
-+		}
-+	}
-+	mutex_unlock(&gvt->lock);
-+}
-+
- static int gvt_service_thread(void *data)
- {
- 	struct intel_gvt *gvt = (struct intel_gvt *)data;
-@@ -220,9 +236,7 @@ static int gvt_service_thread(void *data)
- 		if (WARN_ONCE(ret, "service thread is waken up by signal.\n"))
- 			continue;
- 
--		if (test_and_clear_bit(INTEL_GVT_REQUEST_EMULATE_VBLANK,
--					(void *)&gvt->service_request))
--			intel_gvt_emulate_vblank(gvt);
-+		intel_gvt_test_and_emulate_vblank(gvt);
- 
- 		if (test_bit(INTEL_GVT_REQUEST_SCHED,
- 				(void *)&gvt->service_request) ||
-@@ -278,7 +292,6 @@ void intel_gvt_clean_device(struct drm_i915_private *i915)
- 	intel_gvt_clean_sched_policy(gvt);
- 	intel_gvt_clean_workload_scheduler(gvt);
- 	intel_gvt_clean_gtt(gvt);
--	intel_gvt_clean_irq(gvt);
- 	intel_gvt_free_firmware(gvt);
- 	intel_gvt_clean_mmio_info(gvt);
- 	idr_destroy(&gvt->vgpu_idr);
-@@ -337,7 +350,7 @@ int intel_gvt_init_device(struct drm_i915_private *i915)
- 
- 	ret = intel_gvt_init_gtt(gvt);
- 	if (ret)
--		goto out_clean_irq;
-+		goto out_free_firmware;
- 
- 	ret = intel_gvt_init_workload_scheduler(gvt);
- 	if (ret)
-@@ -392,8 +405,6 @@ int intel_gvt_init_device(struct drm_i915_private *i915)
- 	intel_gvt_clean_workload_scheduler(gvt);
- out_clean_gtt:
- 	intel_gvt_clean_gtt(gvt);
--out_clean_irq:
--	intel_gvt_clean_irq(gvt);
- out_free_firmware:
- 	intel_gvt_free_firmware(gvt);
- out_clean_mmio_info:
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index da8bda7f7bd2..8dc8170ba00f 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -215,6 +215,7 @@ struct intel_vgpu {
- 	struct list_head dmabuf_obj_list_head;
- 	struct mutex dmabuf_lock;
- 	struct idr object_idr;
-+	struct intel_vgpu_vblank_timer vblank_timer;
- 
- 	u32 scan_nonprivbb;
- };
-@@ -347,13 +348,16 @@ static inline struct intel_gvt *to_gvt(struct drm_i915_private *i915)
- }
- 
- enum {
--	INTEL_GVT_REQUEST_EMULATE_VBLANK = 0,
--
- 	/* Scheduling trigger by timer */
--	INTEL_GVT_REQUEST_SCHED = 1,
-+	INTEL_GVT_REQUEST_SCHED = 0,
- 
- 	/* Scheduling trigger by event */
--	INTEL_GVT_REQUEST_EVENT_SCHED = 2,
-+	INTEL_GVT_REQUEST_EVENT_SCHED = 1,
-+
-+	/* per-vGPU vblank emulation request */
-+	INTEL_GVT_REQUEST_EMULATE_VBLANK = 2,
-+	INTEL_GVT_REQUEST_EMULATE_VBLANK_MAX = INTEL_GVT_REQUEST_EMULATE_VBLANK
-+		+ GVT_MAX_VGPU,
- };
- 
- static inline void intel_gvt_request_service(struct intel_gvt *gvt,
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 321480209b89..477badfcb258 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -703,14 +703,11 @@ static int pipeconf_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
- 	if (data & PIPECONF_ENABLE) {
- 		vgpu_vreg(vgpu, offset) |= I965_PIPECONF_ACTIVE;
- 		vgpu_update_refresh_rate(vgpu);
--
-+		vgpu_update_vblank_emulation(vgpu, true);
- 	} else {
- 		vgpu_vreg(vgpu, offset) &= ~I965_PIPECONF_ACTIVE;
-+		vgpu_update_vblank_emulation(vgpu, false);
- 	}
--	/* vgpu_lock already hold by emulate mmio r/w */
--	mutex_unlock(&vgpu->vgpu_lock);
--	intel_gvt_check_vblank_emulation(vgpu->gvt);
--	mutex_lock(&vgpu->vgpu_lock);
- 	return 0;
- }
- 
-diff --git a/drivers/gpu/drm/i915/gvt/interrupt.c b/drivers/gpu/drm/i915/gvt/interrupt.c
-index 7498878e6289..497d28ce47df 100644
---- a/drivers/gpu/drm/i915/gvt/interrupt.c
-+++ b/drivers/gpu/drm/i915/gvt/interrupt.c
-@@ -647,38 +647,6 @@ static void init_events(
- 	}
- }
- 
--static enum hrtimer_restart vblank_timer_fn(struct hrtimer *data)
--{
--	struct intel_gvt_vblank_timer *vblank_timer;
--	struct intel_gvt_irq *irq;
--	struct intel_gvt *gvt;
--
--	vblank_timer = container_of(data, struct intel_gvt_vblank_timer, timer);
--	irq = container_of(vblank_timer, struct intel_gvt_irq, vblank_timer);
--	gvt = container_of(irq, struct intel_gvt, irq);
--
--	intel_gvt_request_service(gvt, INTEL_GVT_REQUEST_EMULATE_VBLANK);
--	hrtimer_add_expires_ns(&vblank_timer->timer, vblank_timer->period);
--	return HRTIMER_RESTART;
--}
--
--/**
-- * intel_gvt_clean_irq - clean up GVT-g IRQ emulation subsystem
-- * @gvt: a GVT device
-- *
-- * This function is called at driver unloading stage, to clean up GVT-g IRQ
-- * emulation subsystem.
-- *
-- */
--void intel_gvt_clean_irq(struct intel_gvt *gvt)
--{
--	struct intel_gvt_irq *irq = &gvt->irq;
--
--	hrtimer_cancel(&irq->vblank_timer.timer);
--}
--
--#define VBLANK_TIMER_PERIOD 16000000
--
- /**
-  * intel_gvt_init_irq - initialize GVT-g IRQ emulation subsystem
-  * @gvt: a GVT device
-@@ -692,7 +660,6 @@ void intel_gvt_clean_irq(struct intel_gvt *gvt)
- int intel_gvt_init_irq(struct intel_gvt *gvt)
- {
- 	struct intel_gvt_irq *irq = &gvt->irq;
--	struct intel_gvt_vblank_timer *vblank_timer = &irq->vblank_timer;
- 
- 	gvt_dbg_core("init irq framework\n");
- 
-@@ -707,9 +674,5 @@ int intel_gvt_init_irq(struct intel_gvt *gvt)
- 
- 	init_irq_map(irq);
- 
--	hrtimer_init(&vblank_timer->timer, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
--	vblank_timer->timer.function = vblank_timer_fn;
--	vblank_timer->period = VBLANK_TIMER_PERIOD;
--
- 	return 0;
- }
-diff --git a/drivers/gpu/drm/i915/gvt/interrupt.h b/drivers/gpu/drm/i915/gvt/interrupt.h
-index 287cd142629e..6c47d3e33161 100644
---- a/drivers/gpu/drm/i915/gvt/interrupt.h
-+++ b/drivers/gpu/drm/i915/gvt/interrupt.h
-@@ -201,11 +201,6 @@ struct intel_gvt_irq_map {
- 	u32 down_irq_bitmask;
- };
- 
--struct intel_gvt_vblank_timer {
--	struct hrtimer timer;
--	u64 period;
--};
--
- /* structure containing device specific IRQ state */
- struct intel_gvt_irq {
- 	struct intel_gvt_irq_ops *ops;
-@@ -214,11 +209,9 @@ struct intel_gvt_irq {
- 	struct intel_gvt_event_info events[INTEL_GVT_EVENT_MAX];
- 	DECLARE_BITMAP(pending_events, INTEL_GVT_EVENT_MAX);
- 	struct intel_gvt_irq_map *irq_map;
--	struct intel_gvt_vblank_timer vblank_timer;
- };
- 
- int intel_gvt_init_irq(struct intel_gvt *gvt);
--void intel_gvt_clean_irq(struct intel_gvt *gvt);
- 
- void intel_vgpu_trigger_virtual_event(struct intel_vgpu *vgpu,
- 	enum intel_gvt_event_type event);
-diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-index 6a16d0ca7cda..9039787f123a 100644
---- a/drivers/gpu/drm/i915/gvt/vgpu.c
-+++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-@@ -300,8 +300,6 @@ void intel_gvt_destroy_vgpu(struct intel_vgpu *vgpu)
- 	mutex_unlock(&vgpu->vgpu_lock);
- 
- 	mutex_lock(&gvt->lock);
--	if (idr_is_empty(&gvt->vgpu_idr))
--		intel_gvt_clean_irq(gvt);
- 	intel_gvt_update_vgpu_types(gvt);
- 	mutex_unlock(&gvt->lock);
- 
--- 
-2.30.1
-
+Charles J.Colocino JR
+Interim Assistance General Manager,
+(Operations,Maintenance,Transportation)
+Harrisburg International Airport Pennsylvania
+One Terminal Drive, Middletown.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
