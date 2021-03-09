@@ -1,53 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B89F331773
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Mar 2021 20:39:49 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3602A3329FD
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Mar 2021 16:16:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EB38F6E0EC;
-	Mon,  8 Mar 2021 19:39:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E3C2C6E907;
+	Tue,  9 Mar 2021 15:16:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd31.google.com (mail-io1-xd31.google.com
- [IPv6:2607:f8b0:4864:20::d31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4048E6E118
+Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com
+ [IPv6:2607:f8b0:4864:20::e42])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0F1EF6E907
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Mar 2021 19:39:46 +0000 (UTC)
-Received: by mail-io1-xd31.google.com with SMTP id n14so11283356iog.3
+ Tue,  9 Mar 2021 15:16:31 +0000 (UTC)
+Received: by mail-vs1-xe42.google.com with SMTP id v123so6956001vsv.9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 08 Mar 2021 11:39:46 -0800 (PST)
+ Tue, 09 Mar 2021 07:16:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=0ehhh6prWi3uMWVEM7r1fA0412ejZXIVurTBunqSicQ=;
- b=p/boefNtfBfKeShcGFs4tW6fbSLDebq9uNO7HRKNWX5q5oBh8LC1bvg4kU/m2/Re/Q
- 9BqDFvTlDL57LF5Vgux+BrHXEvFVfjihnYjvp04pIHHxiHKDwVsvUIHIDj8hC6+p7v2q
- GXSF2qwJfFK6OfFzv9gFDxYK6kWPyJAHQannHHkdZCwhaCJAmRZDo7vVOfdSp4sla/ON
- wDud/dDHXIOhPytvxQvBy84Xb7wPDIx49Mg4QA5FKBZ9fOMsNcn6+jwXRkdVBe07pPe/
- vVGPGUTInl4CVdpdT7IJDTmFidKAXs654Xw6HrbRMzwM759hrRIyOKanm9rO0eYQ/GI4
- tUwA==
+ bh=7Vrbe4gpVhb7cfcmpNanXi5E+OCzidx3VGMrGNR2bC4=;
+ b=iG+PEPmaHlHo7BIDTdfef5r88OuWpQOqhEH2qmezQYHakeueSZdtECnOxaNFPKT9CB
+ aLLijSjwuQVorDAEHnskHKoazheLbTgoFOH2IO0bywpBdkqxbvNhSp+AuzzkPltfZjkD
+ FjTTrNk9SO33wfLNvS9nByjMp72fepAXXy19dOfqtAsx4HxmPonpcVTJXrYVQmJxHxXa
+ AzJWFsWLVvJfVScuD99VDxmPz5IFH+JeT+BdI/5UjB5u3ljOPGeno4uGqlf/Z8N2nRtY
+ ROlA+uMiGucX8LIxOcsYJNKNu/TkjgiHO1C+jXYPHopFB15mBvJWDTUfIUXFYNAfd4q+
+ 86Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
- bh=0ehhh6prWi3uMWVEM7r1fA0412ejZXIVurTBunqSicQ=;
- b=oj7R2DWuoKYwpW3OrIZ6zZFvhkLk3HYcpGn0hjOikS3mmqp40soQ4RBkLvYrmGyuO8
- 7/ID5BYDz9tQuNjHabRO/OFgVFCZs3ErQEKgjKuqj12CnZP4cDaWa0V+ta9Wgtrhovh5
- lS6bjP6dMvxTGy1WvOAGcXf2iE6OHR6rp6sdbVrsDMFPbLEegK0vxlpx03w3EC/p9KYi
- fvqxIa8OuYinEXKPiJoHuTQiV+qTPlcIwGCDIc5vyj5Qm7+4EspfjmB4DGztL33pE2DD
- f3VF9QctzmkLUmo4m3ZHjW8TXFqz6T8EVaogwNKP1A2REVlkyTeinX14/N1QOioeJ9Fw
- sDyA==
-X-Gm-Message-State: AOAM5317vIG6vSbvBbiyjjfoAjUmyJeiJj4zKfKb0fMQAa+kkbayeElx
- ylUJHUDaniA0uxsKd+1sLYl5bKkPBfEc7suJLOE=
-X-Google-Smtp-Source: ABdhPJwl5DwDblM01qzYTunHtgorwJFJIaVmekKJCzt1zaN28khoP4m134aUCExkR+/gqxRUU0sM+uxWsToYo5oSsgI=
-X-Received: by 2002:a05:6638:210d:: with SMTP id
- n13mr25595292jaj.74.1615232384100; 
- Mon, 08 Mar 2021 11:39:44 -0800 (PST)
+ bh=7Vrbe4gpVhb7cfcmpNanXi5E+OCzidx3VGMrGNR2bC4=;
+ b=phICJStiM3FQ3929kH98xctd6HqfrasKW59Zg6mSvJ9rATpDE3IZLe3zSLY+If4OR1
+ cfCzahzkTuHGqrSAhJywYT+AVqj2aHgBXxdycBq6z0BXjo/Aa/NDWyk45wddbEuhm4VC
+ k9keN/R8+ikcCqlEKuQL4eWaVrc/xZb0/wrjjqBJ/0Rd3xaTjVyyAyzOBshQYzBdJ1bN
+ zhTVTRdEsmXBGKerxkCnLalhqQDPLTXSS5RbqLQaDR0HcJA6Z3ZhGGuaO5QwpEKUOQos
+ sLRQ7B00VOk2APiEAGgDKODewHtJEJgZ06eQZjQVEYIfbOPdXjC4AL8+MWw2MNI3KHhB
+ E0TA==
+X-Gm-Message-State: AOAM530Irdbr8LSi8ckNs5iPHa1VTARIwTXUQZNWtCktNbiGc4QGl0jh
+ AswLby76igFaHLadb9wPzIy5ELJe50bLlArtKR8=
+X-Google-Smtp-Source: ABdhPJy9BBpeWXWCzuTiulojyYdgac59jMaZMyVdwFl3oYPmplUKQv1r1LrJzyZzXExNPs2KOA/1mgAnINQBECvVh48=
+X-Received: by 2002:a67:2686:: with SMTP id m128mr15206115vsm.31.1615302990249; 
+ Tue, 09 Mar 2021 07:16:30 -0800 (PST)
 MIME-Version: 1.0
-From: "J. Kirinec" <angelikag101@gmail.com>
-Date: Mon, 8 Mar 2021 20:39:32 +0100
-Message-ID: <CACGSbJe6y05mEfPM-x_=jteBWkRjay3j5xJKf4+hf=sm4P2ggA@mail.gmail.com>
-Subject: hi there!
+Received: by 2002:ab0:2e8f:0:0:0:0:0 with HTTP;
+ Tue, 9 Mar 2021 07:16:29 -0800 (PST)
+From: "Mrs.E.Glenn" <mrganuserge654@gmail.com>
+Date: Tue, 9 Mar 2021 07:16:29 -0800
+Message-ID: <CAH16wSN04Q1+cGtUxisTrHBY3uKhmkpr-ckyqweDCj+psxNsgA@mail.gmail.com>
+Subject: From Mrs.E.Glenn
 To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -61,56 +62,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jkirinec101@gmail.com
-Content-Type: multipart/mixed; boundary="===============2037018704=="
+Reply-To: ezbtg22@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============2037018704==
-Content-Type: multipart/alternative; boundary="0000000000007beb8e05bd0b98b0"
+-- 
+Dear Beloved,
 
---0000000000007beb8e05bd0b98b0
-Content-Type: text/plain; charset="UTF-8"
+I am Mrs Elizabet Glenn from Israel. I am a missionary but right now
+in a hospital bed in Israel. I am 59 years and childless; my husband
+is dead. I was diagnosed with terminal cancer. And my doctor just
+predicted that I have but very limited time to live due to damages in
+my system and as a result of that I decided to dispose my 10.5 million
+US dollars to a God-fearing one for the continuation of charitable
+work. This is why I located you.
 
-  Hello there,  How are you today? fine i hope. It's nice to meet you, and
-I hope you do not mind me being connected with you in such a way. in actual
-fact i was looking for my old friend who reside in your country and that
-was when I came across your profile and I decided to write you. My name is
-J. Kirinec, USA marine officer. I am in charge of medic. I will like to
-hear from you if it so please with you, i believe it's curiosity that
-brings me to you in a time like this.  It will be my wish to establish a
-very strong relationship with you because I felt the both of us want the
-same thing. Once again I must say that I am sorry if the connection with
-you contradicts your moral ethics. I look forward to hearing from you.
-Regards, J. Kirinec
+My guess about you may not be accurate because I came across your
+contact at the humanitarian calendar event of the year but I believe
+in God who divinely directed me to you for this solemn proposal of
+charitable work.
 
---0000000000007beb8e05bd0b98b0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Therefore I wholeheartedly wish to bequeath my fortune to you as a
+God-fearing person for the continuation of charitable work anywhere
+around the world.
 
-<div dir=3D"ltr">=C2=A0 Hello there, =C2=A0How are you today? fine i hope. =
-It&#39;s nice to meet you, and I hope you do not mind me being connected wi=
-th you in such a way. in actual fact i was looking for my old friend who re=
-side in your country and that was when I came across your profile and I dec=
-ided to write you. My name is J. Kirinec, USA marine officer. I am in charg=
-e of medic. I will like to hear from you if it so please with you, i believ=
-e it&#39;s curiosity that brings me to you in a time like this.=C2=A0 It wi=
-ll be my wish to establish a very strong relationship with you because I fe=
-lt the both of us want the same thing. Once again I must say that I am sorr=
-y if the connection with you contradicts your moral ethics. I look forward =
-to hearing from you. Regards, J. Kirinec=C2=A0=C2=A0<br></div>
+I shall be going in for a surgery operations soonest and desire this
+money to be transferred to you as I do not wish to leave this money in
+the bank because bankers might misuse it for their own interest after
+my death.
 
---0000000000007beb8e05bd0b98b0--
+As soon as I receive your quick reply assuring me that you will
+utilize the money as I instructed you for the benefit of the less
+privilege, I shall give you more details and also instruct my bank to
+release the money to you for the charity project. I hope you receive
+this mail in good health.
 
---===============2037018704==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Please contact me on this E-mail (ezbtg22@gmail.com) because I don t
+know what will be my situation in next minute,
 
+I am waiting for your reply.
+
+Yours sincerely,
+Mrs Elizabet Glenn.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============2037018704==--
