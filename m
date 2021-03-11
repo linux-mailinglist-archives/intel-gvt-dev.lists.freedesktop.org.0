@@ -1,55 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3602A3329FD
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Mar 2021 16:16:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C393C337B43
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 11 Mar 2021 18:44:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E3C2C6E907;
-	Tue,  9 Mar 2021 15:16:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5EC106E2C8;
+	Thu, 11 Mar 2021 17:44:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com
- [IPv6:2607:f8b0:4864:20::e42])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0F1EF6E907
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  9 Mar 2021 15:16:31 +0000 (UTC)
-Received: by mail-vs1-xe42.google.com with SMTP id v123so6956001vsv.9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 09 Mar 2021 07:16:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=7Vrbe4gpVhb7cfcmpNanXi5E+OCzidx3VGMrGNR2bC4=;
- b=iG+PEPmaHlHo7BIDTdfef5r88OuWpQOqhEH2qmezQYHakeueSZdtECnOxaNFPKT9CB
- aLLijSjwuQVorDAEHnskHKoazheLbTgoFOH2IO0bywpBdkqxbvNhSp+AuzzkPltfZjkD
- FjTTrNk9SO33wfLNvS9nByjMp72fepAXXy19dOfqtAsx4HxmPonpcVTJXrYVQmJxHxXa
- AzJWFsWLVvJfVScuD99VDxmPz5IFH+JeT+BdI/5UjB5u3ljOPGeno4uGqlf/Z8N2nRtY
- ROlA+uMiGucX8LIxOcsYJNKNu/TkjgiHO1C+jXYPHopFB15mBvJWDTUfIUXFYNAfd4q+
- 86Og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=7Vrbe4gpVhb7cfcmpNanXi5E+OCzidx3VGMrGNR2bC4=;
- b=phICJStiM3FQ3929kH98xctd6HqfrasKW59Zg6mSvJ9rATpDE3IZLe3zSLY+If4OR1
- cfCzahzkTuHGqrSAhJywYT+AVqj2aHgBXxdycBq6z0BXjo/Aa/NDWyk45wddbEuhm4VC
- k9keN/R8+ikcCqlEKuQL4eWaVrc/xZb0/wrjjqBJ/0Rd3xaTjVyyAyzOBshQYzBdJ1bN
- zhTVTRdEsmXBGKerxkCnLalhqQDPLTXSS5RbqLQaDR0HcJA6Z3ZhGGuaO5QwpEKUOQos
- sLRQ7B00VOk2APiEAGgDKODewHtJEJgZ06eQZjQVEYIfbOPdXjC4AL8+MWw2MNI3KHhB
- E0TA==
-X-Gm-Message-State: AOAM530Irdbr8LSi8ckNs5iPHa1VTARIwTXUQZNWtCktNbiGc4QGl0jh
- AswLby76igFaHLadb9wPzIy5ELJe50bLlArtKR8=
-X-Google-Smtp-Source: ABdhPJy9BBpeWXWCzuTiulojyYdgac59jMaZMyVdwFl3oYPmplUKQv1r1LrJzyZzXExNPs2KOA/1mgAnINQBECvVh48=
-X-Received: by 2002:a67:2686:: with SMTP id m128mr15206115vsm.31.1615302990249; 
- Tue, 09 Mar 2021 07:16:30 -0800 (PST)
+X-Greylist: delayed 41809 seconds by postgrey-1.36 at gabe;
+ Thu, 11 Mar 2021 17:44:28 UTC
+Received: from synopsysusa.com (unknown [66.84.11.59])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 619226E2C8;
+ Thu, 11 Mar 2021 17:44:28 +0000 (UTC)
+Received: from [::1] (port=39554 helo=User)
+ by synopsysusa.com with smtp (Exim 4.87)
+ (envelope-from <naomirobert0411@outlook.com>)
+ id 1lKETv-00015U-7I; Thu, 11 Mar 2021 01:07:35 -0500
+From: "Mrs. Naomi Robert"<naomirobert0411@outlook.com>
+Subject: Please: Give hope to hopeless
+Date: Wed, 10 Mar 2021 22:07:44 -0800
 MIME-Version: 1.0
-Received: by 2002:ab0:2e8f:0:0:0:0:0 with HTTP;
- Tue, 9 Mar 2021 07:16:29 -0800 (PST)
-From: "Mrs.E.Glenn" <mrganuserge654@gmail.com>
-Date: Tue, 9 Mar 2021 07:16:29 -0800
-Message-ID: <CAH16wSN04Q1+cGtUxisTrHBY3uKhmkpr-ckyqweDCj+psxNsgA@mail.gmail.com>
-Subject: From Mrs.E.Glenn
-To: undisclosed-recipients:;
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - synopsysusa.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - outlook.com
+X-Get-Message-Sender-Via: synopsysusa.com: acl_c_authenticated_local_user: root
+X-Authenticated-Sender: synopsysusa.com: root
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,51 +49,112 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ezbtg22@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: naomirobert411@hotmail.com
+Content-Type: multipart/mixed; boundary="===============0290202088=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210311174429.5EC106E2C8@gabe.freedesktop.org>
 
--- 
-Dear Beloved,
+--===============0290202088==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
-I am Mrs Elizabet Glenn from Israel. I am a missionary but right now
-in a hospital bed in Israel. I am 59 years and childless; my husband
-is dead. I was diagnosed with terminal cancer. And my doctor just
-predicted that I have but very limited time to live due to damages in
-my system and as a result of that I decided to dispose my 10.5 million
-US dollars to a God-fearing one for the continuation of charitable
-work. This is why I located you.
+<html>
 
-My guess about you may not be accurate because I came across your
-contact at the humanitarian calendar event of the year but I believe
-in God who divinely directed me to you for this solemn proposal of
-charitable work.
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Attn</title>
+</head>
 
-Therefore I wholeheartedly wish to bequeath my fortune to you as a
-God-fearing person for the continuation of charitable work anywhere
-around the world.
+<body>
 
-I shall be going in for a surgery operations soonest and desire this
-money to be transferred to you as I do not wish to leave this money in
-the bank because bankers might misuse it for their own interest after
-my death.
+<p><font face="Arial">Attn: Dear friend,<br>
+<br>
+<br>
+My quest to locate a responsible friend and partner to bring my dreams to a 
+reality,<br>
+hence I took this bold step to contact you through this medium and I would not 
+like<br>
+you to take an offense that I am bothering you since you do not know me neither 
+have<br>
+we met before.<br>
+<br>
+I am Mrs. Naomi Robert from Jordan; I am married to Dr. Alan Robert who worked 
+with<br>
+the Jordan embassy in Canada for nine years,before he died in the year 2015. We 
+were<br>
+both married for seventeen years without a child. He died after a brief illness 
+that<br>
+lasted for only four days. Before his death we were both involved in charity 
+services.<br>
+Since his death I decided not to re-marry or get a child outside my matrimonial 
+home<br>
+which is against my principle.<br>
+<br>
+When my late husband was alive he deposited the sum of $13.5 Million (Thirteen 
+Million<br>
+Five Hundred Thousand US Dollars). This money is still invested in one of the 
+Bank in<br>
+Canada. Recently, my Doctor told me that I would not last for the next three 
+months due<br>
+to my cancer problem. Though what disturbs me most is my stroke sickness. Having 
+known<br>
+my condition of health I have decided to donate this fund to Charity, Orphanage 
+or an<br>
+individual that will utilize this money the way I am going to instruct here.<br>
+I want an individual that will use these money to fund Charity, Orphanages and 
+Widows<br>
+and also ensure that these set of people are well maintained.<br>
+<br>
+I took this decision because I don't have any child that will inherit this money 
+and my<br>
+husband's relatives are well off and I don't want my husband's hard earned money 
+to be<br>
+misused by them. As I do not want a situation whereby this money will be used in 
+an<br>
+ungodly manner, hence the reasons for taking this bold decision. I am not afraid 
+of<br>
+death because I lived a fulfilled life.<br>
+<br>
+As it is right now, I don't need any telephone communication in this regard 
+because of<br>
+my health and also due to the presence of my husband's relatives around me 
+always.<br>
+I don't want them to know about this development; as soon as I receive your 
+reply I<br>
+shall give you the contact of my husband's account officer.<br>
+<br>
+I will also issue you a letter of authority that will prove you as the 
+original-beneficiary<br>
+of this said fund. I want you to see to the needs of the less privileged. My 
+happiness is<br>
+that I lived a fulfilled life and I don’t have any regrets in life. Please note 
+that any<br>
+delay in your reply will give me room in sourcing for another individual as I 
+stated herein.<br>
+<br>
+Do get back to me via this my private email address: <b>naomirobert411@yahoo.com</b>.<br>
+Kindly notify your interest to help me assist charity; hoping to hear from you 
+soonest <br>
+<br>
+Best regards,<br>
+<br>
+Mrs. Naomi Robert</font></p>
 
-As soon as I receive your quick reply assuring me that you will
-utilize the money as I instructed you for the benefit of the less
-privilege, I shall give you more details and also instruct my bank to
-release the money to you for the charity project. I hope you receive
-this mail in good health.
+</body>
 
-Please contact me on this E-mail (ezbtg22@gmail.com) because I don t
-know what will be my situation in next minute,
+</html>
 
-I am waiting for your reply.
+--===============0290202088==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Yours sincerely,
-Mrs Elizabet Glenn.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0290202088==--
