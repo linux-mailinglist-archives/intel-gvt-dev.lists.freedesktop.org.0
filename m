@@ -2,38 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C393C337B43
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 11 Mar 2021 18:44:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5AD8F338492
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 Mar 2021 05:13:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5EC106E2C8;
-	Thu, 11 Mar 2021 17:44:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 001636F3AD;
+	Fri, 12 Mar 2021 04:13:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 41809 seconds by postgrey-1.36 at gabe;
- Thu, 11 Mar 2021 17:44:28 UTC
-Received: from synopsysusa.com (unknown [66.84.11.59])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 619226E2C8;
- Thu, 11 Mar 2021 17:44:28 +0000 (UTC)
-Received: from [::1] (port=39554 helo=User)
- by synopsysusa.com with smtp (Exim 4.87)
- (envelope-from <naomirobert0411@outlook.com>)
- id 1lKETv-00015U-7I; Thu, 11 Mar 2021 01:07:35 -0500
-From: "Mrs. Naomi Robert"<naomirobert0411@outlook.com>
-Subject: Please: Give hope to hopeless
-Date: Wed, 10 Mar 2021 22:07:44 -0800
+X-Greylist: delayed 2995 seconds by postgrey-1.36 at gabe;
+ Fri, 12 Mar 2021 04:13:36 UTC
+Received: from alfonsus.uajy.ac.id (alfonsus.uajy.ac.id [202.14.92.90])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 40C316F3AD;
+ Fri, 12 Mar 2021 04:13:36 +0000 (UTC)
+Received: from [::1] (port=42026 helo=alfonsus.uajy.ac.id)
+ by alfonsus.uajy.ac.id with esmtpa (Exim 4.93)
+ (envelope-from <king@pemilra.fti.uajy.ac.id>)
+ id 1lKXqD-0005ik-PU; Fri, 12 Mar 2021 09:47:53 +0700
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Date: Fri, 12 Mar 2021 09:47:52 +0700
+From: IMF <king@pemilra.fti.uajy.ac.id>
+To: undisclosed-recipients:;
+Subject: Re: VERIFICATION AND APPROVAL OF YOUR PAYMENT FILE
+User-Agent: Roundcube Webmail/1.4.10
+Message-ID: <69e754c42a47ba598d7693d43a157cdf@pemilra.fti.uajy.ac.id>
+X-Sender: king@pemilra.fti.uajy.ac.id
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
-X-AntiAbuse: Primary Hostname - synopsysusa.com
+X-AntiAbuse: Primary Hostname - alfonsus.uajy.ac.id
 X-AntiAbuse: Original Domain - lists.freedesktop.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - outlook.com
-X-Get-Message-Sender-Via: synopsysusa.com: acl_c_authenticated_local_user: root
-X-Authenticated-Sender: synopsysusa.com: root
+X-AntiAbuse: Sender Address Domain - pemilra.fti.uajy.ac.id
+X-Get-Message-Sender-Via: alfonsus.uajy.ac.id: authenticated_id:
+ king@pemilra.fti.uajy.ac.id
+X-Authenticated-Sender: alfonsus.uajy.ac.id: king@pemilra.fti.uajy.ac.id
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
@@ -49,112 +50,79 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: naomirobert411@hotmail.com
-Content-Type: multipart/mixed; boundary="===============0290202088=="
+Reply-To: andrew.t@imfofficial.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210311174429.5EC106E2C8@gabe.freedesktop.org>
 
---===============0290202088==
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
 
-<html>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Attn</title>
-</head>
+INTERNATIONAL FUNDS TRANSFER / AUDIT UNIT UNITED NATION (WORLD BANK 
+ASSISTED PROGRAMME) DIRECTORATE OF INTERNATIONAL PAYMENT AND TRANSFERS.
+Ref: WB/NF/UN/XX027.
 
-<body>
+ATTN: BENEFICIARY:
 
-<p><font face="Arial">Attn: Dear friend,<br>
-<br>
-<br>
-My quest to locate a responsible friend and partner to bring my dreams to a 
-reality,<br>
-hence I took this bold step to contact you through this medium and I would not 
-like<br>
-you to take an offense that I am bothering you since you do not know me neither 
-have<br>
-we met before.<br>
-<br>
-I am Mrs. Naomi Robert from Jordan; I am married to Dr. Alan Robert who worked 
-with<br>
-the Jordan embassy in Canada for nine years,before he died in the year 2015. We 
-were<br>
-both married for seventeen years without a child. He died after a brief illness 
-that<br>
-lasted for only four days. Before his death we were both involved in charity 
-services.<br>
-Since his death I decided not to re-marry or get a child outside my matrimonial 
-home<br>
-which is against my principle.<br>
-<br>
-When my late husband was alive he deposited the sum of $13.5 Million (Thirteen 
-Million<br>
-Five Hundred Thousand US Dollars). This money is still invested in one of the 
-Bank in<br>
-Canada. Recently, my Doctor told me that I would not last for the next three 
-months due<br>
-to my cancer problem. Though what disturbs me most is my stroke sickness. Having 
-known<br>
-my condition of health I have decided to donate this fund to Charity, Orphanage 
-or an<br>
-individual that will utilize this money the way I am going to instruct here.<br>
-I want an individual that will use these money to fund Charity, Orphanages and 
-Widows<br>
-and also ensure that these set of people are well maintained.<br>
-<br>
-I took this decision because I don't have any child that will inherit this money 
-and my<br>
-husband's relatives are well off and I don't want my husband's hard earned money 
-to be<br>
-misused by them. As I do not want a situation whereby this money will be used in 
-an<br>
-ungodly manner, hence the reasons for taking this bold decision. I am not afraid 
-of<br>
-death because I lived a fulfilled life.<br>
-<br>
-As it is right now, I don't need any telephone communication in this regard 
-because of<br>
-my health and also due to the presence of my husband's relatives around me 
-always.<br>
-I don't want them to know about this development; as soon as I receive your 
-reply I<br>
-shall give you the contact of my husband's account officer.<br>
-<br>
-I will also issue you a letter of authority that will prove you as the 
-original-beneficiary<br>
-of this said fund. I want you to see to the needs of the less privileged. My 
-happiness is<br>
-that I lived a fulfilled life and I don’t have any regrets in life. Please note 
-that any<br>
-delay in your reply will give me room in sourcing for another individual as I 
-stated herein.<br>
-<br>
-Do get back to me via this my private email address: <b>naomirobert411@yahoo.com</b>.<br>
-Kindly notify your interest to help me assist charity; hoping to hear from you 
-soonest <br>
-<br>
-Best regards,<br>
-<br>
-Mrs. Naomi Robert</font></p>
 
-</body>
+This is to inform you that the regional verification office has received 
+your message concerning the approved list of the United Nation Records 
+of Outstanding Funds which your NAME/PARTICULARS WAS DISCOVERED AS NEXT 
+ON THE APPROVED LIST., I have been assigned to direct you on the 
+transfer of US$12,500,000.00 (TWELVE MILLION FIVE HUNDRED THOUSAND 
+DOLLARS)into your Bank account. Note:  YOU ARE THEREFORE STRONGLY ADVISE 
+TO STOP FURTHER COMMUNICATION WITH ANY OTHER BANK OR INSTITUTION 
+REGARDING THIS MATTER, FOR THE OVERALL SAFETY OF YOU AND YOUR FUND, you 
+are hereby required to fill up the below application form for payment to 
+enable the paying bank make the transfer into your bank account 
+immediately.
 
-</html>
+PERSONAL INFORMATION'S
 
---===============0290202088==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+First Name:
 
+Last Name:
+
+Gender:
+
+Age:
+
+Marital Status:
+
+Contact Address:
+
+Nationality:
+
+Occupation:
+
+Mobile phone No:
+
+
+Have a nice day, Looking forward to your E-mail.
+
+
+United nation Approval No;UN5685P,
+White HouseApproved No:WH44CV,
+Reference No.-35460021,
+Allocation No: 674632
+Password No: 339331 ,
+Pin Code No: 55674
+Certificate of Merit Payment No : 103 ,
+Released Code No: 0763;
+
+NOTE: PLEASE BASE ON THE PRESURE WE ARE HAVING IN MAKING SURE ALL 
+BENEFICIARY RECEIVED THERE PAYMENT, WE WILL ADVICE YOU URGENTLY COMPLY 
+WITH THE ABOVE INSTRUCTION TO AVOID THE CANCELLATION OF YOUR FUND. AS 
+[1]A MATTER OF URGENCY I WILL ADVICE YOU HAVE ALL THE ABOVE INSTRUCTION 
+FOLLOWED AND AS URGENT AS POSIBLE TO AVOID CANCELLATION AND USING YOUR 
+FUND TO PAY OTHER WHO HAS COMPLIED
+
+BEST REGARD.
+ANDREW TWEEDIE
+
+DIRECTOR
+INTERNATIONAL MONETARY FUND.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0290202088==--
