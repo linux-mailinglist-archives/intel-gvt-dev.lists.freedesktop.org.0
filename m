@@ -1,27 +1,48 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08F0033C403
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Mar 2021 18:21:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6CA833C85C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Mar 2021 22:18:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5D03989F31;
-	Mon, 15 Mar 2021 17:21:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 886966E1D6;
+	Mon, 15 Mar 2021 21:18:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 4165 seconds by postgrey-1.36 at gabe;
- Mon, 15 Mar 2021 17:21:30 UTC
-Received: from mytinytraveller.com (unknown [188.72.187.22])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4731E89F31
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 15 Mar 2021 17:21:30 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: wifi mini tank
-Message-ID: <96023909a62a36b3c9876110bc6932d4@massageking.com>
-Date: Mon, 15 Mar 2021 16:51:07 +0100
-From: "Jeremy" <rwtmseyfuhalk@movin925.com>
+Received: from ironportDMZ.econet.co.zw (smtp.econet.co.zw [77.246.51.158])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7264B6E1D5;
+ Mon, 15 Mar 2021 21:18:50 +0000 (UTC)
+IronPort-SDR: uSAntDdP3iW8XzpWMCioUpglhvUM0oWZ9Tg0leqhTAzvlD/RuVLqv33wEK3fHUv/gUaq0MmY7Z
+ zn3U2cw31ljRKwy5ZeIXrAMcRz6/Hm7ufllawhfKjwLPFG1UfHFDY4KhqAGDlLnrREEaZYN+Wp
+ AUm3erLfFtVGfYUToMR5MZwznzZWRLuMjkMaNX5jvnArujaEyKS52Es1jXEYnIOJ26qO7xnSQU
+ SLxYN8pHaQaFZNEfaN3yFXasLq5Bt+Ii3WF+f7Mccg6DfyBnXDeKhIMkElGDG5AeS9IomHrmPB
+ VbM=
+IronPort-HdrOrdr: A9a23:K3l8Ea/LBBQLHgQdbhZuk+B/I+orLtY04lQ7vn1ZYxpTb8Ceio
+ SSjO0WvCWUtB89elEF3eqBNq6JXG/G+fdOiuMsFJqrQQWOghrKEKhM9o3nqgeMJwTb1spwkZ
+ htaLJ/DtqYNzZHpOL3+hOxHdpl4PTvysyVrNzTxXtsUg1mApsIhztRMQqCDk1sSE18CZA4DZ
+ qR4dcCmDKkeXlSVMS9DHVtZZmkm/TwiJnkbRQabiRJ1CCyi1qTiILSIly83hAdXz5uxvMJ9G
+ DeiWXCl8eemsD+7x/a1WPfz5MTuNaJ8KolOOW8zu0ULTfhhyauILlsX6SGtC04ydvfjWoCoZ
+ 3ooxAjM8lS7DffdWTdm2qI5zXd
+X-IronPort-AV: E=Sophos;i="5.81,251,1610402400"; d="scan'208,217";a="5623802"
+Received: from unknown (HELO wvale-mb-svr-06.econetzw.local)
+ ([192.168.101.174])
+ by ironportLAN.econet.co.zw with ESMTP; 15 Mar 2021 20:50:16 +0200
+Received: from WVALE-CAS-SVR-9.econetzw.local (192.168.101.184) by
+ wvale-mb-svr-06.econetzw.local (192.168.101.174) with Microsoft SMTP Server
+ (TLS) id 15.0.1497.2; Mon, 15 Mar 2021 20:44:51 +0200
+Received: from User (42.112.21.207) by WVALE-CAS-SVR-9.econetzw.local
+ (10.10.11.230) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 15 Mar 2021 20:48:00 +0200
+From: "Mrs. Ilana S. Shneor." <ecosure@econet.co.zw>
+Subject: Disappointed we couldn't connect yet-3/15/2021	   
+Date: Mon, 15 Mar 2021 19:48:46 -0700
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <e29a05067ef442d4b2b393a4e15530f3@WVALE-CAS-SVR-9.econetzw.local>
+To: Undisclosed recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,59 +55,181 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ampmaluramper@aliyun.com
-Content-Type: multipart/mixed; boundary="===============1920351661=="
+Reply-To: ilanasshneor@daum.net
+Content-Type: multipart/mixed; boundary="===============2106577128=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1920351661==
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+--===============2106577128==
+Content-Type: text/html; charset="Windows-1251"
+Content-Transfer-Encoding: quoted-printable
 
 <html>
 <head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dwindows-1=
+251">
+<title></title>
 </head>
-<body>
-<span style="display: block; text-align: left;"><span style="display:
-block; text-align: left;">Hi,<br /><br />Hope this email finds you well.<br
-/>We are reaching you today to tell you that we have got a wifi mini tank
-in our warehouse.<span><span><br /><br /></span></span></span></span><span
-style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"></span></span><span style="display: block; text-align:
-left;"><span style="display: block; text-align:
-left;">Features:</span></span><span style="display: block; text-align:
-left;">300,000 pixel camera is loaded in the front end of the tank, which
-can transmit the real-time video to iOS device. <br />iPhone/iPad/iPod
-touch can be used not only for watching the real-time video but also
-preserving the picture. <br /><br />There is MIC on the front end of the
-tank, which can transmit the sound of surrounding area to the iOS device.
-<br />iOS device can record the running route, the tank can move
-automatically as per the route preset beforehand.<br /><br /></span><span
-style="display: block; text-align: left;">Pricing details: u s d<br />1-10
-units 189.00 each<br />11-50 units 179.00 each<br />51 -100 units 159.00
-each<br /><br />If you would like to order this wifi tank, please reply to
-this email and send your address of shipping, we will arrange the shipment
-soon for you.<br /><br /><img
-src="https://ae01.alicdn.com/kf/HTB1NxYqaiHrK1Rjy0Flq6AsaFXaZ.jpg?width=1000&amp;height=1609&amp;hash=2609"
-width="457" height="735" /><img
-src="https://ae01.alicdn.com/kf/HTB1fn6qajvuK1Rjy0Faq6x2aVXak.jpg?width=1000&amp;height=1538&amp;hash=2538"
-width="457" height="703" /></span><img
-src="https://ae01.alicdn.com/kf/HTB1EIvnacfrK1RkSmLyq6xGApXaN.jpg?width=1000&amp;height=2118&amp;hash=3118"
-width="457" height="968" />&nbsp;<img
-src="https://ae01.alicdn.com/kf/HTB1TOvoajzuK1Rjy0Fpq6yEpFXa5.jpg?width=1000&amp;height=2056&amp;hash=3056"
-width="457" height="940" /><br /><br /><img
-src="https://ae01.alicdn.com/kf/HTB1d1vsah2rK1RkSnhJq6ykdpXaE.jpg?width=1000&amp;height=1618&amp;hash=2618"
-width="457" height="739" /><img
-src="https://ae01.alicdn.com/kf/HTB1pvjsadzvK1RkSnfoq6zMwVXal.jpg?width=983&amp;height=1920&amp;hash=2903"
-width="457" height="893" /><br /><br /><br /><span style="display: block;
-text-align: left;">If you would like to order this wifi tank, please reply
-to this email and send your address of shipping, we will arrange the
-shipment soon for you.<br /><br />Thanks,<br />Jeremy Parker</span>
+<body bgcolor=3D"#FFFFFF" leftmargin=3D"5" topmargin=3D"5" rightmargin=3D"5=
+" bottommargin=3D"5">
+<font size=3D"2" color=3D"#000000" face=3D"Arial">
+<div>Hi Dear,</div>
+<div>&nbsp;</div>
+<div>My apology as I am contacting you through email; It is because it serv=
+es as the fastest and more convenient way to get to you, my name is Mrs. Il=
+ana Solomon Shneor , a widow from Israeli born in Austria, I have a Proposi=
+tion involving fund transaction
+ uncompleted by my Late Husband who dead as the result of the Coronavirus d=
+isease (COVID-19) we planned to invest in the Dubai 2020 Expo before his de=
+ath, Due to my illness I solicit for a foreign assistance to complete the t=
+ransaction. I will compensate you
+ for the assistance to handle the transaction to move the Fund's in your co=
+untry for investment and Partnership with you.</div>
+<div>&nbsp;</div>
+<div>I will appreciate your reply for more details about me and the transac=
+tion on how we can proceed to move the fund to you by the Bank reply to me =
+as soon as possible, we are in serious situations about COVID-19 stay safe =
+thank you.</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+<div>Sincerely,</div>
+<div>Mrs.Ilana Solomon Shneor.</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+</font>
+<p style=3D"font-size: 9px;font-weight: bold; color: #0F1419; mso-line-heig=
+ht-rule: exactly; line-height: 160%;">
+This mail was sent through Econet Wireless, a Global telecoms leader. </p>
+<p style=3D"font-size: 9px;font-weight: bold; color: #0F1419; mso-line-heig=
+ht-rule: exactly; line-height: 160%;">
+DISCLAIMER </p>
+<p style=3D"font-size: 9px;font-weight: none; color: #0F1419; mso-line-heig=
+ht-rule: exactly; line-height: 160%;">
+The information in this message is confidential and is legally privileged. =
+It is intended solely for the addressee. Access to this message by anyone e=
+lse is unauthorized. If received in error please accept our apologies and n=
+otify the sender immediately. You
+ must also delete the original message from your machine. If you are not th=
+e intended recipient, any use, disclosure, copying, distribution or action =
+taken in reliance of it, is prohibited and may be unlawful. The information=
+, attachments, opinions or advice
+ contained in this email are not the views or opinions of Econet Wireless, =
+its subsidiaries or affiliates. Econet Wireless therefore accepts no liabil=
+ity for claims, losses, or damages arising from the inaccuracy, incorrectne=
+ss, or lack of integrity of such
+ information.</p>
+<style>=0A=
+        table,=0A=
+        td,=0A=
+        tr,=0A=
+        img,=0A=
+        p {=0A=
+            padding: 0px;=0A=
+            margin: 0px;=0A=
+        }=0A=
+=0A=
+        td {=0A=
+            /*            vertical-align: top !important;*/=0A=
+        }=0A=
+=0A=
+    </style>
+<table style=3D" background-color: #1768bb;border-spacing:0px !important;ma=
+x-width: 900px; width:900px; max-width: 900px; width:900px;font-size: 12px;=
+ font-weight: normal;font-style: normal; font-family: Arial, 'Arial Unicode=
+ MS', Helvetica, Sans-Serif;">
+<tbody>
+<tr>
+<td rowspan=3D"5" style=3D" width:580px; height:305px;padding:0px;"><img wi=
+dth=3D"578" style=3D"width:578px; height:305px" src=3D"https://mail.econet.=
+co.zw/OWA/auth/current/themes/resources/Agile/AgileBanner.png">
+</td>
+<td style=3D"padding-right: 5px;  padding-bottom: 0px; padding-left: 10px;h=
+eight:82px  " colspan=3D"2">
+<span style=3D"color: #2C318C; font-size: 21px; line-height: 1.2; ">&nbsp; =
+<br>
+<span style=3D"font-weight: 600; color: #fff; ">WORK ISN'T A PLACE</span> <=
+br>
+<span style=3D"font-weight: 300; color: #fff; ">IT'S WHAT WE DO</span> </sp=
+an>
+<hr style=3D"color: #fff;background-color: #fff">
+<span style=3D"color: #fff; font-size:17px ; line-height: 1.1; "><br>
+<span style=3D"font-weight: 600; color: #fff; ">EcoSure</span> <br>
+<span style=3D"font-weight: 300; color: #fff; "></span><br>
+</span><br>
+&nbsp; </td>
+</tr>
+<tr>
+<td width=3D"20" style=3D" padding-top: 0px; padding-right: 5px; padding-bo=
+ttom: 0px; padding-left: 10px; " width=3D"20px">
+<img src=3D"https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agi=
+le/telephone.png" style=3D"width:20px" alt=3D"">
+</td>
+<td width=3D"403" style=3D" height:25px; vertical-align:middle !important;p=
+adding-top: 0px; padding-right: 5px; padding-bottom: 0px; padding-left: 10p=
+x;" width=3D"403px">
+<p style=3D"font-weight: none; color: #0F1419;"><span style=3D"font-weight:=
+ 300; color: #fff; "></span></p>
+</td>
+</tr>
+<tr>
+<td width=3D"20" style=3D" padding-top: 0px; padding-right: 5px; padding-bo=
+ttom: 0px; padding-left: 10px; " width=3D"20px">
+<img src=3D"https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agi=
+le/email.png" style=3D"width:20px" alt=3D"">
+</td>
+<td width=3D"403" style=3D" height:25px; vertical-align:middle !important;p=
+adding-top: 0px; padding-right: 5px; padding-bottom: 0px; padding-left: 10p=
+x;" width=3D"403px">
+<p style=3D"font-weight: none; color: #0F1419;"><a href=3D"mailto:ecosure@e=
+conet.co.zw"><span style=3D"font-weight: 300; color: #fff; ">ecosure@econet=
+.co.zw</span></a>
+</p>
+</td>
+</tr>
+<tr>
+<td width=3D"20" style=3D" padding-top: 0px; padding-right: 5px; padding-bo=
+ttom: 0px; padding-left: 10px; " width=3D"20px">
+<img src=3D"https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agi=
+le/location.png" style=3D"width:20px" alt=3D"">
+</td>
+<td width=3D"403" style=3D" height:25px; vertical-align:middle !important;p=
+adding-top: 0px; padding-right: 5px; padding-bottom: 0px; padding-left: 10p=
+x;" width=3D"403px">
+<p style=3D"font-weight: none; color: #0F1419;"><span style=3D"font-weight:=
+ 300; color: #fff; "></span></p>
+</td>
+</tr>
+<tr>
+<td width=3D"20" style=3D" padding-top: 0px; padding-right: 5px; padding-bo=
+ttom: 0px; padding-left: 10px; " width=3D"20px">
+<img src=3D"https://mail.econet.co.zw/OWA/auth/current/themes/resources/Agi=
+le/website.png" style=3D"width:20px" alt=3D"">
+</td>
+<td width=3D"403" style=3D" height:25px; vertical-align:middle !important;p=
+adding-top: 0px; padding-right: 5px; padding-bottom: 0px; padding-left: 10p=
+x;" width=3D"403px">
+<p style=3D"font-weight: none; color: #0F1419;"><a target=3D"_blank" href=
+=3D"https://www.econet.co.zw"><span style=3D"font-weight: 300; color: #fff;=
+ ">www.econet.co.zw</span></a>
+</p>
+</td>
+</tr>
+<tr style=3D"background-color: #2e2b7f;">
+<td colspan=3D"3" style=3D"text-align: right;padding:5px 0"><img src=3D"htt=
+ps://mail.econet.co.zw/OWA/auth/current/themes/resources/Agile/inspired.jpg=
+" alt=3D"">
+</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>
 
-
---===============1920351661==
+--===============2106577128==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -97,4 +240,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1920351661==--
+--===============2106577128==--
