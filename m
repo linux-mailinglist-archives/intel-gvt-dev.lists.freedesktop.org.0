@@ -1,28 +1,25 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9796342A2A
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 20 Mar 2021 04:10:51 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82254342A29
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 20 Mar 2021 04:07:10 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1F0296EB2B;
-	Sat, 20 Mar 2021 03:10:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2E1C76EB2E;
+	Sat, 20 Mar 2021 03:07:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from service.link.co.jp (service.link.co.jp [210.140.191.25])
- by gabe.freedesktop.org (Postfix) with ESMTP id EEC216EB2B;
- Sat, 20 Mar 2021 03:10:48 +0000 (UTC)
-Received: from User (unknown [103.99.1.170])
- by service.link.co.jp (Postfix) with ESMTPA id 40B204A12499;
- Fri, 19 Mar 2021 22:33:44 +0900 (JST)
-From: "Euro-Millions Lottery"<result@euro-millions.com>
-Subject: Congratulation: You're a winner!
-Date: Fri, 19 Mar 2021 06:33:42 -0700
+Received: from mommypoppins.com (unknown [188.72.187.20])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 243686EB2B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 20 Mar 2021 03:07:06 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: for window cleaning
+Message-ID: <00e03a0765e355ba4111f62ea001db96@bcleanwindows.com>
+Date: Fri, 19 Mar 2021 15:05:26 +0100
+From: "Jerry" <ghtmeyfvkieto@mudlarktheater.org>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -35,79 +32,57 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: oa6443845@gmail.com
-Content-Type: multipart/mixed; boundary="===============1853604495=="
+Reply-To: kogernonterte@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0829046331=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210320031050.1F0296EB2B@gabe.freedesktop.org>
 
---===============1853604495==
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
+--===============0829046331==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-CONGRATULATION!!!</DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-With reference to the 1,402nd EuroMillions draw took place on Friday 26th February 2021 at 21:00 CET (20:00 GMT) and the winning numbers drawn were:</DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-Lucky numbers 6.12.22.29.33 Star Number 6-11 Millionaire Maker: XDPK20778 serial number XDPK72159 Prize credited to file EURO/20778/2021.</DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-An official letter was sent to your address. Your email address has been awarded the sum of £10,228,864.30 GB pounds. Kindly, confirm receipt of this notification by contacting your claims officer Mr. Kennith William for more details.</DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-visit the link https://www.euro-millions.com/results/26-02-2021 to view your winning details as published on the Euro-Millions site.</DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
-Euro-Millions prizes must be claimed within 180 days of the draw date. This is a confidential mail sent to ONLY winners of this draws. If you have any questions, please contact our customer support.</DIV>
-<DIV>
- </DIV>
-<DIV>
-&nbsp;</DIV>
-<DIV>
- </DIV>
-<DIV>
-Kind regards,</DIV>
-<DIV>
-Peter Jones</DIV>
-<DIV>
-Customer Support</DIV>
-<DIV>
-EURO-MILLIONS</DIV>
-<DIV>
-UK Regional Office</DIV>
-<DIV>
-Acorns Oakwood Park Business Center</DIV>
-<DIV>
-Fountains Road Bishop Thornton, Harrogate</DIV>
-<DIV>
-HG3 3BF, UK.</DIV>
-</FONT>
-</BODY></HTML>
+<html>
+<head>
+</head>
+<body>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;">Dear Customer,<br /><br />Hope this email finds
+you well.<br />We are emailing you today to let you know that we have got a
+window cleaning robot in our stock, ready to for shipping.<br /><span>Wait
+20 seconds after starting up until the blue light flashing is offï¼ŒThen it
+starts for working.&nbsp;<br /><span>Binding the safety rope when using,
+just prevent&nbsp; falling from high altitude. Please s<span>pray some
+water on the edge of the mop.</span></span><br /></span><span><span><br
+/></span></span></span></span><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"></span></span></span><span
+style="display: block; text-align: left;">Packing list:<br />1 rebot<br />1
+power cord + adapter,<br />1 remote control<br />1 battery pair<br />2
+pairs of cleaning rings (4)<br />1 extension of 4 meters<br />1 safety
+rope<br />10 cleaning cloths<br />1 manual (or English manual)<br
+/></span><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><br /></span></span><span
+style="display: block; text-align: left;">Pricing details for different
+quantity:<br />1-10 units 289.90 each<br />11-50 units 279.90 each<br />51
+-100 units 259.90 each<br />u s d<br /><br />If you would like order this
+window clean robot, just reply to our email with your address of shipping,
+we will get the shipment ready for you.<br /><br /><img
+src="https://ae01.alicdn.com/kf/HTB1XfcKaYr1gK0jSZFDq6z9yVXaU.jpg"
+width="450" height="450" /><img
+src="https://ae01.alicdn.com/kf/HTB1B6MJa2b2gK0jSZK9q6yEgFXag.jpg"
+width="450" height="450" /></span><img
+src="https://ae01.alicdn.com/kf/HTB1ZS3Ka7T2gK0jSZPcq6AKkpXag.jpg"
+width="450" height="450" />&nbsp;<img
+src="https://ae01.alicdn.com/kf/HTB1mKcGaWL7gK0jSZFBq6xZZpXaV.jpg"
+width="450" height="536" /><br /><br /><br /><span style="display: block;
+text-align: left;">If you would like order this window clean robot, just
+reply to our email with your address of shipping, we will get the shipment
+ready for you.<br /><br />Thanks,<br />Jerry Thompson</span>
+</body>
+</html>
 
---===============1853604495==
+
+--===============0829046331==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -118,4 +93,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1853604495==--
+--===============0829046331==--
