@@ -1,113 +1,123 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E57FE34596A
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Mar 2021 09:15:25 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 633433466DF
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Mar 2021 18:55:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8B6FB89FDB;
-	Tue, 23 Mar 2021 08:15:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E64566EC72;
+	Tue, 23 Mar 2021 17:55:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sonic304-47.consmr.mail.ne1.yahoo.com
- (sonic304-47.consmr.mail.ne1.yahoo.com [66.163.191.173])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BE28689FDB
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 23 Mar 2021 08:15:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1616487322; bh=JDwVg1YeWij1bzVg6CXUMNyKMzRE7Mu8E1jiUyK+aHk=;
- h=Date:From:Reply-To:Subject:References:From:Subject:Reply-To;
- b=ooFsTY5EAprfI82yApn3M5Cy7+nvwDbr6ZzcdYNocsY95lQtMEdtHYHZteYG9RX1K7VJrnWB89YfcP6qJBEugkUSIA9DnDmybeWmhMYvWYp/03pmmlV49yCBgKxuzHyEa5EcrRz5LO9RpdBvl1VQz27Oct7fNi10ANyeDVDuhN0wgGn7uyb8YDe1BVB3//UXmWnjcMvqH/1I04DUM8QVjFxE1NYhKHxdfeAa38jOkvUbLlZn3Ay68bm/A5kzBIzxsIfYoLbGog5+9h3P6wY/Xl7Sk3YQtYwNgXI76ryIYb8ab4deRSKiMWspkRO1gDxmU4hsLPfLaJpDVE8YnLasoQ==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1616487322; bh=8Rv8tX77XvAEK09jmLfL3xiDgD3+wdjELNL+2BtwGSS=;
- h=X-Sonic-MF:Date:From:Subject:From:Subject;
- b=nGPkG3GC3b7q4SY0VZzPZd/3AqXsiEDxTd+1r97NmTi4IIzeSfv1TBrzllLQ6TJ2ywVwlXbeBxQ4gnqwPuHAOzrTFOcEgSIWJAIx1simP6US36U250E2VSEnzRpIK7y+9Cva15b3w2S0VuAEALaTUFlSAvJyJ6R9TZXvZKVXLqsJ9rb8ZInybOvZtfUvMAXWq8y1tWOXUlokyUsgWGHpz829Y3Lpg2TUoo9OJwVxbcmtfLbQWhw12Ar/SkjyMUXUJW7BZB1HWbS29+NAUIHbYQ4KXs3gLM1sfGX2njGdqhfCreYBuwWaBXD2cyUCIl+pBckNwiD3rZUdmXmYde1P3Q==
-X-YMail-OSG: sxsFGrUVM1mxZZRlF3rYil6KvWxXSxb8R6SpbF_2SWw9Cx.BJmLAQYYNES23WSV
- .FQPZ31f29Q5fx0RaOK32YD31h0LPZonlGp5ynlkhlDaDZ1IqTmEZFDvFybdPlkVj38lKxiyvYDY
- S34TJXlCLWPAXgA6x0oEkg9FpNsV9Uj.GuuE2YES1Dkm67X3KCzQCzpbM3Uj3wY9E8ISQlv8evDq
- tb2sPLVn1Jc26PwMKvQfZ2pw7UdmegKzDn5rHO7u_4DzV0jD2z2V9plcGDolW0j93JcnEMRMGpT7
- DBJ9MTiyaIegfwHZcua_O0jXPpFkMDJi54g6zbvvmKvNeLFE2P0TQ90Ol.uSZFbOSXhrViJFIblp
- FLXTpsvRxJNSth2YiAbgaVjai4ES3m_wShqOLWZ103NH4LBEzumqXSb_qbp3uWnBeIqeob_GWLMw
- UX5XWQVRsnasEklRAiIdupxMKOOaZKAc.acb2v36Q6yjKDCmUWtXlZ6B.uW4hfWjYVGMnq2dJwur
- M_Jtuus8pdnUFCa6PkRQi__U0mr9_tzwr6KMislfWP5ihqSYSHTNFczCh.QFMyYmH8FgZs5eJYhk
- yBD7c.YdO0rq1YUy53ROaAWKLGThCwsWFwAV.0V8LPKEBqAgzzYWSHSQYL0_OT5v_djLw2gxDSe0
- 80SHPFrpgZUIjMzhqslX9TfdAV4CabIF2CFMZr_xdZoezNnFcO6kV0a4LjwyJDk2B4zkoaDPBYz6
- rQO68tarfiaHs6DexH4LBZNElN5Y6SJoHQ_cqz4.6D6elOexsabyiiSiegHHGoypLcrbujwqm91t
- hadTNw5BQ5X63zuOZ2YMrFlFddNPY1L.HUt4uI2ejjzfpvvYONaeZpeXY4XPY.tWASTSR1NT_PfR
- nH1jnWIEr8yxcNzGWTqozBoKsn8SuJM69SPjKBGaV28oZ_8zBnOAKeEvI5o001oqYnTEnAAUIdgE
- 6qcje.qdaMCNAqxFBsJL0UXN.iGTP8IyJb9zrcilEMG_LChqydLjqqktFv0mi_7Xvd2lXXfu_fBm
- mZPl2QkNw0xhHzh3CPf1P1p3oPgcrzTBCh6xfmM2nUt0vXy4Rz7zaSFs3ibBkM98gWKJDzLGhn__
- 0dY6GLVJ5ASWZKkWLOFq0DzDw8auZnLAZaijlinT4j_NafnK3F4VyOh5I.sZG67Xm2mFfLm7EGQh
- DZesVMRHEkPshEvlydfzgG_aQcHsDPmqrL07DMANxZJ4CfkWr4SGYfx0OKJksyC2L3tDCoVn3WUr
- oTJHMnACOWqcXjf5t5PZwY4lb4zcT7o6jPAu9rbtvaP5.KAa6Cv_gACTY5D02dJfe2Otysg7srjr
- jlw95vNMgriM14bQU4UdhjCkw56H1XYDo8s3ru_Wxp9mskXkqU.BFu2mqSffH.1LY31fe4ndxday
- FkQfOP4DWStgYL1bAX2Fuq7CPxdWCz8LVE45YJOeOwafl7M2lA_JH1e0CxfhjYRTwlFhawD6isNi
- taczpyOn9vgTqFjHFSF0FEcNqRLXAC3kwfaqN6.fILjlXfnpTe_SEqXXJk5QU_.cIJIaz3VZtE.C
- rew2fUkq7drvffb2Rc.oha2VsDC_0_bwLoR7b9Xl9eRkg68N9Z_SbjhNXMbgrEAN1Gext8xl_mIG
- 9pktYczsWeL8QGd0P9BlWi.wz.jlBPXj1IM3DxsgPmL1xvp8XU6Yb9XgHFJPgE0XY1TkPoDfjKcA
- x1.yOFXjvrzX_rtbJXt_PMaJIc_PNhiYdOHrEgHeQpv7MbhaWuVHc8lQhHfubJ_TyYhGxbi9FbHe
- .0OIz_JebbcIfQKtaxHE5Wq9yaYy4ldByzeYG9JPh0RPfefNeAQv_4H2Z2p.Sh_fbXFLrqb4DjfD
- 9JiiIh8nLCFEazMHui7wECoasKGNl4iAZVJEA.zz61Jr6rrWFn3D6EowSZCIefeOVvuYJSd_vW42
- .nT1Vzeo02CDPUOmpjGlWVAjCv1BauNYitzPjESLcHWCapZVwGm1HcVpbmt8G841DJ4CXGk41KWz
- ThAtVxOP6PkoF3gNLTsZ080VbaS6v5t59g3pmnR8u_kkkkpR0PJoQPOsP1sZZeYDI2QN7NwblZ.N
- p53Cdys6.UxoXqFZrLl1mo04S.xneThX2otkNhK19uy2SiIwEHw3yAJaV5iPwBWHyT3doH1Tor3n
- kP4CaP7V0jA3CiVjwYlYiY5js2QoqRUBCgWt9hxEFWV1.HR1KDJDGRFuMQ3NsrFKmu0vCYi1U8Oi
- 85wk33uPWa.VAi8beJDvY8EPdzL8tyzyAZcOYVU2bkx7vKTXgVF94UmHhGPRgvU8jLZt6dxHJNsK
- UCSnlEf0IvO.MfWmmKxtTurUy24ndF5QpF_yNVl5o8qFCFSk9yd3zmD7HUZouEimPfnJ5UC.3qw7
- N4dnPjxq3.McIFANiSQbfnWwyb.ZTVCv.tq_R2y5mbW88CnHXboIujf7mKUGybst0rvBIgWocKRR
- wWMCm6qWe8nBcMHgMVVDSU6_7wyALzG1g7UAMGWz9PhCV4BeiexDFB3EyUp92KE2jMawKH2huiVh
- aOa.JaM5tVC7mKUHMmjMf8R6DTbN17nFyKjDp0IiFc0yUblSt58Oid4K8mXPHkEtYUDTYnPF6xhS
- dDglVeO.Ixsk_n5mS6VGhPj8bwTr6g61k5Q06R0Wnn3m92XvyyGCiFDzbSZOZupOSQA4apRBYigE
- dROws_BKMAkYdsWOetaC7SvaXyFz_cchDiQaEwsgkQTOcxj9H117lYmgxqhWQFtoxSeVPzSQj792
- 6vmZevz6fM4Rjsmg69ZDA9eWczyr4BqEtKRE5cYtJlwPhopDEemVaWar_dDSsEIX1gr7u61_BnTd
- qo9vAznA3a.JM7d74Kuuz7EJoIScNBzhRsNrVZsSb3qbCP2GlV6ekcEl7IqOXQW4Cl9M7.ZYIwR0
- FKItukd5AO4aio87DGIezbPAtYAP11HP_esqftu5F0gad_R7qFgfx4hlAJnggLgId.YB.LAjOAUa
- scNEd6fdmfWHC2bYO5Mn.wHA64oLKuI63QgyAP3mjFKIEolARoEUtHdjc_tXr9I5ehy5.TOi5A36
- S9eu3Vjwkzo2m43a.Gls7eiW3Dyie.TJlteovL8u6tpVghbsloX3CXMVM4ShpFWKRZflkJa5_qBI
- j0Ca2X1naIm6si3AAjdxirABb9d5rsSPxLLpRIaU9MV9huuRiD5if1bM7fnFq9UdJ4v2.H8Xlyiw
- zBvbvq6rSiPvC7xY3FKVaSinueHd_6.QN8PE2i1bmqYCDTvbXLgP9t3lzp8.uB7G1FSmI.ebl32_
- LRY2xXhiUiSNSJoFjrSuuDNjiSuUiwksXzwZH9IBywQ8Ip9C6.IOaKd988m0jIorPXsDn6ps2b_X
- 22W6_IMxlDCCtVMXwrg_Mc0xdj90peexveHJLHDcDzanLzQBGPNEOmm0t9B_.1bF2k5mpr3y6FHs
- Mu4wQnd6ZylB56yitz7A.KujWcP2tVHFJVvQfiL2oUTfePt6ztSj0Z_cIO.nRaWIxnLnZg5PUTS8
- FwdbcgP5CaQ.43W5FSyxSNtmIOGwZAAYWxPSuluS4Udo2Kw3Uj0Y96iqMMe07sRlnvsyVhvAOoG9
- uSaMhAAN44wnDQ3jpn1oDc1ZdQ2xD9sN4A_3ewHjWmCJPYgGPatSXp174KbOVrOvGYjXPh7qa35O
- OGnip8LwPVBm6_0k8.jvQFpPg8JqEX_z_kmI4if8vxJxf45Gz.bi7nIGeorBaEkreB.7znn7ZQYz
- JFaQDq0TQTKW6Oe5sdSvYbwMFq3d7Xj7TFfI9rn_.UA9uO_FM9L465ub3WA16rxAO6aSgpW44Axr
- TM8YJjOKxVlUzRG0o2zarp6l6__SgW8XIBNEyS2aQtnpBan6P52zJmMTG9dPHyEaQqV.2MjNbDFL
- Hvfb_kLHXQnwqlMkizhytTq36menVpJ9KSWOc90vWulf_fC4hkcAUQ_RM0rAHiPVHh8y9pBZSYYo
- 9zqIE1o8Njn0yz7PYtq87AHgh4Usvm9uLio3Eynk2axcVzJwkoPFdNre_EqWROaiDnd.BiVQM03_
- pkT2WfEh26ZCbrgqIYOPIxTpmYgCg3H2INn7U8lhY6MPfzi3Dd32U34MYxSHouk0Nl4r2vFfpwOB
- yuykwhmcl.kPPhLPlvNYSj7.OQbIHB090s0vJo4GFjyz_lfqbL.5i4LiMYT2RchasR1gmrI57GUK
- 2S_1_wTYyMRn8Cg3JpLb7qaNvXJS6Rl86DsGDrVMN_m2n_xDDhNhqBfI5YeVF.wgFZPa7ALRu8Ou
- qXE9GSbjnhEJX7eD.9bJNA6VbcWm4BgOsW3TqP8LFkpSk5OSsbrg1F_8Pyn64uRkK4xSSs7IBYtp
- anFWY17o7wgOxDQgmFJ0Kr.BccQ2AGANjBT1yu1KJWaSEZ4bzzbwu3_qVWqHg6O7EcD7A57w4JRP
- 8e7YXTLMjNj2RxrF3rWoQ0PyIal9_6pZ1yPbx6wAcI.PBA7n1FdAl1yqpYr.yP2w9sxhN2.QI30L
- CreHqIvPL0w8OHiBJ.vkRtOWHgEbeHlYL4zy7YmVj4vKJMnC_j5i5_cD781vD3HELMXACaPaiM1P
- Au_aM_qiVkrYYw2uYNLbR3HJx0WwBAcsk2VRDsQZyBAU1zokIxJJRN8BKAEi9v0AVQHrS4KNYmS_
- ovbx8.i1bZfXMglcupYaL7fbNInAEPPjb05Xvgfs3w_dUOQ2k6eS37YfsJyg7vil6hJG3MHWNzVC
- Q2erNPOVPvrz.YnQS_Ds7A8hVawUpnzCxVtspRkMfZMVdZZKra8sHJnZG_G.ZZS7VoBXINS81A1r
- d7MCK1qJ51uQjFYYihXCjBvip90IFFk9fM2ouIeZC3Ynqkdgktd3llbX38xlNBj2f52EyGdKEvsJ
- Clzhr31vn2LPWh9..x97_1I8GcdMxZoF2gwIrNIeyp7brLRaDXGmj.26YCkJ7VsBNsrIQSJI0bbG
- vsZxi2XZZmswlZz1Ou82EfrJW_OWXwRQJa.jh4jNqKw.LxoD_fSUGOQXgOQMoSslvUPdZJsgpprC
- HXIc1Q3HiXgFlwMc2eRhFAqq6lUKD480sTrpqr3KtsiAeCF4lQ3vVFiYtlxNccxg6xA5wR4laJwj
- GuvofE5B0ubv4R_PUV7kY8bOIkRuCeVAx7xqeSvtGOD8Ot4gGhzz2rp3BiXADsHPuRAsbxLmW35k
- 0L4t.vA3yAZUlIG3mYEydRLE.Aactu9LcAtSftlfe8s5SOXp8VQSOFRtdrV7tG4g4jpqJyDVF8_E
- kTYisKvre_qokNCO_l3U.1GYLRskmt1fP8yYC52d_SjgLDzsDJJ1MA4X9wVhs_KnhUac1hyVyxrc
- coiPIm6aH9yLMbLdEBRcYfVGWv6Iq5etG4tU3H4XpsX8wdVkVQ4UY4a9cu.UiWuobw2GtmBzcPBq
- N.8FltOnrkOxuaEzgTAeHO1.MmRBwQfWBeEVsS4ixXjBzrAnwsOC4uyI6Fa9AhMCyn8YMg_bGkVf
- Ht.3QQXos5cP7ClZqBdhVw1RfhNsdRbD2eGHgAtXh
-X-Sonic-MF: <mariamsterbenc@yahoo.com>
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic304.consmr.mail.ne1.yahoo.com with HTTP; Tue, 23 Mar 2021 08:15:22 +0000
-Date: Tue, 23 Mar 2021 08:13:20 +0000 (UTC)
-From: Peter Florian <mariamsterbenc@yahoo.com>
-Message-ID: <1555803346.4172832.1616487200900@mail.yahoo.com>
-Subject: Hello,
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2044.outbound.protection.outlook.com [40.107.237.44])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D59F16EC64;
+ Tue, 23 Mar 2021 17:55:45 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Gd9YSYbi24A8ZJ77mfUT+K2WxEEKXA2xOEcCdIppqUHaZhKvXsYFZ1Qj7LMc8wPmuKUtctYrWXePoMMVtk2O6TcIMGc7mfsA/lRyxl9/uFjNwUepWddqCn4QyovHK/E2BvZXlosnRiRmMehJdCbAW25fdrOpu/RB6aOuD+0STHQJ1ZSs+xeR2ByGtn27Szcmefx7JE/KAczFE8ErQZoFjv9tfY8foZR6I80RWT2lCgx5lzyEhemT2I+GEAhW62dzK3poQjMzucR/M+FJBEpFnDCddJd6sorYtcdtmM6YDqW/zwkED+YTRvWnSDS81nyk0Q4XggnrTSRgA7o00V3Igw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2cB46sAu2SciDQDzTmKXSxgAAyCiQmySsGT1aw/yhJo=;
+ b=bhC1Gcn9HakhvHSYqPOwKWJK3BZOlsQ9W9L6ICK3HriuP43NCeY/lm6tvo8PXPseZfETKz4SgicoiVmsf2s0Qtmn+a4RRWycSpNE7kf7BVo5q3Zc0dfdh6z4dUbr606wunnEoYW4SecNlgaGsjbiDBo5K/RzogjInC9syilmMCcaGVt4wBODQsYj3/nlvtG0jSM1mdUjAcWgxKlozRAF5lD3QEHJHrQ5Z6U3qSZd6EeW5980aML4yVTQAbWhCKTvOIMsufjzeogTbYiVtFoyOceU2ZApluppnqK8QQmshwn+/jxhO3E8eUck/KnfIvoquFmG1y3exnvDkOUtdCBi7g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2cB46sAu2SciDQDzTmKXSxgAAyCiQmySsGT1aw/yhJo=;
+ b=YRnHheeU+Zm/So/cOl/qJMoHkYB/QGBhNNSmS4DGGNSn1/M6z5RS9YMwzEEW+CHwHJzgD1uEd4XFDiPuF6P00JsWYwxvZ4RNC50gmeWkocr4bFzXPEKZTxbepdDCJm6XRpwPqMZsdtVjOXzzVbD8bMh6VET7WFcbyLLBxju9dXgZjwUU5yPDqNUTI9laKOCwqNBPI3JWnyyn5T3ZLce1ZWmSs/7kPy/yPR/51/EAoEdmgzYOS/uERBkTUyibI4TO3eTMfZeHr608TyPerm4jYALTiXyrhgSRN5GRsfGWolIj4wQDgDgsi9P0JbCP5OZblSk9XlkTSD4OgJlf+Upyrw==
+Authentication-Results: linux.ie; dkim=none (message not signed)
+ header.d=none;linux.ie; dmarc=none action=none header.from=nvidia.com;
+Received: from DM6PR12MB3834.namprd12.prod.outlook.com (2603:10b6:5:14a::12)
+ by DM6PR12MB4943.namprd12.prod.outlook.com (2603:10b6:5:1bc::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3955.18; Tue, 23 Mar
+ 2021 17:55:44 +0000
+Received: from DM6PR12MB3834.namprd12.prod.outlook.com
+ ([fe80::1c62:7fa3:617b:ab87]) by DM6PR12MB3834.namprd12.prod.outlook.com
+ ([fe80::1c62:7fa3:617b:ab87%6]) with mapi id 15.20.3955.027; Tue, 23 Mar 2021
+ 17:55:44 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+ Eric Farman <farman@linux.ibm.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Pierre Morel <pmorel@linux.ibm.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Subject: [PATCH 00/18] Make vfio_mdev type safe
+Date: Tue, 23 Mar 2021 14:55:17 -0300
+Message-Id: <0-v1-7dedf20b2b75+4f785-vfio2_jgg@nvidia.com>
+X-Originating-IP: [206.223.160.26]
+X-ClientProxiedBy: BL0PR0102CA0030.prod.exchangelabs.com
+ (2603:10b6:207:18::43) To DM6PR12MB3834.namprd12.prod.outlook.com
+ (2603:10b6:5:14a::12)
 MIME-Version: 1.0
-References: <1555803346.4172832.1616487200900.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.17936 YMailNodin Mozilla/5.0 (Windows NT 10.0; Win64;
- x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90
- Safari/537.36
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mlx.ziepe.ca (206.223.160.26) by
+ BL0PR0102CA0030.prod.exchangelabs.com (2603:10b6:207:18::43) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3955.18 via Frontend Transport; Tue, 23 Mar 2021 17:55:41 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from
+ <jgg@nvidia.com>)	id 1lOlFf-001cgN-4b; Tue, 23 Mar 2021 14:55:35 -0300
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c95c21d7-1be6-4a9b-d7dc-08d8ee24dfc5
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4943:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <DM6PR12MB494349D76CDE94E9A4C36164C2649@DM6PR12MB4943.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 95OIdF3tDilJGswE5bYcVx4FnZGlswa+LJA+7F8vKcmP0uc8WrIaZd8mWfw21F8M4cjIT8gmsBzPMuw92tUB8WoHJ1GGF0OToGjc8CvZBzcn8Bk66Y4lhVx9otrlnUVrGi1B1iCENACIB8FS715B/EcIvGwzfhXEUOTsEYYdjnhvkGzzfmT7Tv35Wb1PWlG9R26n/CeQ5KudMiwPsEadaX08+CCtQDO6NseVxQl1SxD4l3saiDlth0Gf4hh3PoNzIo58pr+H7zSp2+CRpbbmXVg18Otx1kQpyokUbXgEb2CR4r404WaGWqIaeMNSNPCiJKgrPtJIAs/7JeLS9ntxi6fhOBWxQ4IQZa2wpUKXV6/wlij7L33UPjft6eoBoWVIYXGhuhNhcd5I4RUSXWtzgLlLm5/k4L7tWF7dXY7ZXh/4OAArDZd+8ufN0jyk7HkJVqjhmMbTk+FLou2Twrxt0KmMR7MWP437wxktr57VYxzmzEzd6uehxgjhVIAAWXLhOaqrQ8d0TO3naCLoNqD9ugqZQk9uMami7FAEx2MaffkLE0PudWq7yJZh0ib7BwSeRMkPCYawVq1eKAi92ImCjfVf9PjetJldoyerOLVM0sjarkeiQeME3wg0saECio7u1DFWYUmsCY0yL5Xa7GjvNvUE5SjNBnGN9PMJ+j0I5Ex03jSaS8vB9CixvK1j8a6q1EMBVnAd++Yw0ugpDO8N35J3AZt+edYNsHw5/Dbu8HEn6UZwgtqMsN+As8L4GXgYasJKjNVL3eKceHrGhiONnw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR12MB3834.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(396003)(39860400002)(136003)(376002)(366004)(346002)(66476007)(186003)(107886003)(6666004)(8936002)(110136005)(36756003)(426003)(86362001)(54906003)(83380400001)(2616005)(38100700001)(921005)(7406005)(7416002)(66946007)(5660300002)(478600001)(9746002)(66556008)(8676002)(4326008)(2906002)(26005)(316002)(966005)(9786002)(4216001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?Barf92TEnVhxUlFj8VkY0tehCEbocCtWIFasMdTagPC7fvi402RbcB4sYMLr?=
+ =?us-ascii?Q?R3+b8DtagKJl29/bMI21ribFTLoN1s2ecg3kDWgt2i0EQT0nuwgBFMx7559S?=
+ =?us-ascii?Q?+ghMISTOgsNuXXgQzUDFlGyq4zYHAfbweyOKoxmpTdtKAGCRsq6rmxuZCqcc?=
+ =?us-ascii?Q?5wgmfPcfbRpmMc8NylZEuh1szk6a9p3Lu+fOUFuPES11rQMJEMZLdM3AL09q?=
+ =?us-ascii?Q?ePUeqvrrT5lu8+3jpEWn8A3NLaAyGeEGcORKHbnhkDaqRMDZZH4QbHX38G6a?=
+ =?us-ascii?Q?E+FL/djDUzf622shvv5KZqxPaisckmN1p+CSo4o0OHUwPK9UPcWRub/ZYMDc?=
+ =?us-ascii?Q?5XiKYFMhy7SER+Spmc2avc+U7yUR644OoyWoi1Pz3xk32GXda9S32QHNwZPz?=
+ =?us-ascii?Q?xDLoGvdTTeD9dXQ/fc2tJk2I0+hDg6iEVQTkuxdAiWBX8oBOB6lXJAXyKtFy?=
+ =?us-ascii?Q?kVUg1ltWCNaqp+3hG2fd8oHTfOegdpAw3PV6WIrB2Tv0jXePlJCEzJETlTqn?=
+ =?us-ascii?Q?QE/7r+496M+0LVFVu+LC9v9qEBJUPMNWCAV6+iuBe3okSEaNgx9FcCPt92DX?=
+ =?us-ascii?Q?TIMBxT57ORkvGMucFpqFosl3xjT35o/R7uDWyO5cGsxnZkYQSa0DvEMa4NvO?=
+ =?us-ascii?Q?xz7jz45/7nCw8dapJpAkLFnnJ1BZsxOKzHfjO5uyXj1+8Z8e41Qmow2Y2bK8?=
+ =?us-ascii?Q?56ketiGmbUwdIRH767p3jm1+qr/CCiRYrBnjMXzOlWbWLzscxNDHfIwb8dAO?=
+ =?us-ascii?Q?MKlSp7j+Ao0K/UtAqVsUL1PuodYN4GHGh9xKBAu2J2pTdAWBOM9E+yaUBDkb?=
+ =?us-ascii?Q?SDkpRWdFUJ5Coy8ho53AZClIYuLHm7XrD0hx3ria3QM01KYxyPsTETAXrF6c?=
+ =?us-ascii?Q?WMg2HLRIPqn2sd0SK1hFECgZ6RAk/yZJNQp55AQUUzIaeP1zDZmOWyyMY2cG?=
+ =?us-ascii?Q?ZoTw499iCpuhfhCLSHhmeAl8FWxOnWK/hB+2Zu1ba41oRfZfOnQC637YWVyU?=
+ =?us-ascii?Q?9Jp1ZityVXX7lRVXuCKvfHXlA18/woeAQmdd0oUCQQMh301NAkAkRuIdDi9w?=
+ =?us-ascii?Q?JHakswqDKXzjQrytUygItZqg7SuKqwCILIf6AVVt2C50hni80+F26tb8TigW?=
+ =?us-ascii?Q?+3SDjPn3ZjV8xosvoJXfCi4sW0A21UvQIYpE1wpXgVjDDrq+mR9VvX2tIlrP?=
+ =?us-ascii?Q?2Xkq4yy1qVMTIsMa5fcVH6BvCp3ecbEB+bKFfRi02Ca46AF7QksuaqHiGpt4?=
+ =?us-ascii?Q?iCUsaML8wifuXuA/CcJ93ORYhVk7NlU0TpqQ5448iaIwISZGe/Ois+OwxXd8?=
+ =?us-ascii?Q?m6au5WkdUragXfrGPZjR+0Yi?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c95c21d7-1be6-4a9b-d7dc-08d8ee24dfc5
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR12MB3834.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Mar 2021 17:55:41.5272 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: BipZJ1FNj4iKcf3aXT3x7UX9hZKdcNuxcW3+zKsbXYAtWbwyZReWnwwQhaFdLl/M
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4943
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,23 +130,102 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: peterflorian019@gmail.com
+Cc: Max Gurtovoy <mgurtovoy@nvidia.com>, Jike Song <jike.song@intel.com>,
+ Neo Jia <cjia@nvidia.com>, "Raj, Ashok" <ashok.raj@intel.com>,
+ Christoph Hellwig <hch@lst.de>, Gerd Hoffmann <kraxel@redhat.com>,
+ Dong Jia Shi <bjsdjshi@linux.vnet.ibm.com>,
+ Leon Romanovsky <leonro@nvidia.com>, Dan Williams <dan.j.williams@intel.com>,
+ Tarun Gupta <targupta@nvidia.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+Prologue
+========
 
+This is series #2 in part of a larger work that arose from the minor
+remark that the mdev_parent_ops indirection shim is useless and
+complicates things.
 
-Hello,
+It follows the "Embed struct vfio_device in all sub-structures" already
+sent, and must be applied on top of it.
 
+A preview of the future series's is here:
+  https://github.com/jgunthorpe/linux/pull/3/commits
 
-My name is Mrs. Peter Florian and I am a British Citizen. My husband died recently on Coronavirus and I am presently in hospital suffering Cancer Disease. My husband has a deposit of 15.200.000 GBP in a prime Bank here in London. Before my husband was taken to Isolation center where he died, he told me to use the funds to establish animal care clinics. We have special love for animals. Due to my present health condition, I will not be able to handle this project. Therefore, I want to donate the 15.200.000.00 GBP to you so that you will set up an animal care Foundation in your country. A clinic where animals will be treated in your country for free. I see in television that people donates funds to orphanage homes and don't care about animals. I and my husband wants to make a difference in the world to let people understand that animals are important to nature. Please let me know your interest so that I will ask my lawyer to prepare a contract Agreement on your name. Please don't forge
- t that my health condition is bad, therefore I want you to reply this message as soon as possible so you will receive the funds before anything happens to me. I am waiting to hear from you.
+========
+This series:
 
+vfio_mdev has a number of different objects: mdev_parent, mdev_type and
+mdev_device.
 
-Thank you,
-Mrs. Peter Florian
+Unfortunately the types of these have been erased in various places
+throughout the API, and this makes it very hard to understand this code or
+maintain it by the time it reaches all of the drivers.
+
+This series puts in all the types and aligns some of the design with the
+driver core standard for a driver core bus driver:
+
+ - Replace 'struct device *' with 'struct mdev_device *
+ - Replace 'struct device *' with 'struct mdev_type *' and
+   mtype_get_parent_dev()
+ - Replace 'struct kobject *' with 'struct mdev_type *'
+
+Now that types are clear it is easy to spot a few places that have
+duplicated information.
+
+More significantly we can now understand how to directly fix the
+obfuscated 'kobj->name' matching by realizing the the kobj is a mdev_type,
+which is linked to the supported_types_list provided by the driver, and
+thus the core code can directly return the array indexes all the drivers
+actually want.
+
+Jason
+
+Jason Gunthorpe (18):
+  vfio/mdev: Fix missing static's on MDEV_TYPE_ATTR's
+  vfio/mdev: Add missing typesafety around mdev_device
+  vfio/mdev: Simplify driver registration
+  vfio/mdev: Use struct mdev_type in struct mdev_device
+  vfio/mdev: Do not allow a mdev_type to have a NULL parent pointer
+  vfio/mdev: Expose mdev_get/put_parent to mdev_private.h
+  vfio/mdev: Add missing reference counting to mdev_type
+  vfio/mdev: Reorganize mdev_device_create()
+  vfio/mdev: Add missing error handling to dev_set_name()
+  vfio/mdev: Remove duplicate storage of parent in mdev_device
+  vfio/mdev: Add mdev/mtype_get_type_group_id()
+  vfio/mtty: Use mdev_get_type_group_id()
+  vfio/mdpy: Use mdev_get_type_group_id()
+  vfio/mbochs: Use mdev_get_type_group_id()
+  vfio/gvt: Make DRM_I915_GVT depend on VFIO_MDEV
+  vfio/gvt: Use mdev_get_type_group_id()
+  vfio/mdev: Remove kobj from mdev_parent_ops->create()
+  vfio/mdev: Correct the function signatures for the
+    mdev_type_attributes
+
+ .../driver-api/vfio-mediated-device.rst       |   9 +-
+ drivers/gpu/drm/i915/Kconfig                  |   1 +
+ drivers/gpu/drm/i915/gvt/gvt.c                |  41 ++---
+ drivers/gpu/drm/i915/gvt/gvt.h                |   4 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |   7 +-
+ drivers/s390/cio/vfio_ccw_ops.c               |  17 +-
+ drivers/s390/crypto/vfio_ap_ops.c             |  14 +-
+ drivers/vfio/mdev/mdev_core.c                 | 160 ++++++------------
+ drivers/vfio/mdev/mdev_driver.c               |  19 +--
+ drivers/vfio/mdev/mdev_private.h              |  40 ++---
+ drivers/vfio/mdev/mdev_sysfs.c                |  59 ++++---
+ drivers/vfio/mdev/vfio_mdev.c                 |  29 ++--
+ drivers/vfio/vfio_iommu_type1.c               |  25 +--
+ include/linux/mdev.h                          |  80 ++++++---
+ samples/vfio-mdev/mbochs.c                    |  55 +++---
+ samples/vfio-mdev/mdpy.c                      |  56 +++---
+ samples/vfio-mdev/mtty.c                      |  66 ++------
+ 17 files changed, 306 insertions(+), 376 deletions(-)
+
+-- 
+2.31.0
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
