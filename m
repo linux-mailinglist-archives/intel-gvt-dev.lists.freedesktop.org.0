@@ -1,26 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17E2334BE4E
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 28 Mar 2021 20:44:17 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id CEC9434B48E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 27 Mar 2021 06:50:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 822756E15C;
-	Sun, 28 Mar 2021 18:44:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 15D4B6F4F8;
+	Sat, 27 Mar 2021 05:50:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from hirtenstrasse.berlin (hirtenstrasse.berlin [81.169.201.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E6F556E15C;
- Sun, 28 Mar 2021 18:44:12 +0000 (UTC)
-Received: from [45.85.90.162] (slot0.goamiony.com [45.85.90.162])
- by hirtenstrasse.berlin with ESMTP ; Sat, 27 Mar 2021 06:29:00 +0100
-Message-ID: <B0625B87-7CF2-4E65-B925-9F96BA5CFAB9@hirtenstrasse.berlin>
+X-Greylist: delayed 345 seconds by postgrey-1.36 at gabe;
+ Sat, 27 Mar 2021 05:50:34 UTC
+Received: from Ex1.addustour.com.jo (unknown [80.90.174.178])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5A4D66E303;
+ Sat, 27 Mar 2021 05:50:34 +0000 (UTC)
+Received: from [45.85.90.162] (45.85.90.162) by Ex1.addustour.com.jo
+ (172.20.0.112) with Microsoft SMTP Server id 14.3.123.3; Sat, 27 Mar 2021
+ 08:29:09 +0300
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Nice to meet you 
-To: Recipients <info@hirtenstrasse.berlin>
-From: "Alexander Downer" <info@hirtenstrasse.berlin>
-Date: Fri, 26 Mar 2021 22:28:54 -0700
+Subject: Nice to meet you  
+To: Recipients <test@addustour.com.jo>
+From: Alexander Downer <test@addustour.com.jo>
+Date: Fri, 26 Mar 2021 22:44:33 -0700
+Message-ID: <e3b5b8c8-c1ef-4a64-a609-9781739a609c@Ex1.addustour.com.jo>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,13 +42,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Good day.
+Good day,
+How are you today , I contacted you before Regarding business Investment please get back to me let me know if you received the message I sent to you previously for more Detail
+Reply me back on this email:
 
-My Name is Alexander Downer , I'am a Private  Financial Consultant, I have a client who  has an interest in investing in your country into a joint venture he has funds available meant for investment.The client main interest is in the area of the following: Motor company, Civil Construction, Real Estate Developments,Hospitality, Power/Energy supply,Agriculture,Healthy Sector, Oil and Gas,Happy to inform you that we are going to meet One on One during the process of this discussion.
-
-Regards,
-Mr.Alexander Downer
-
+Best Regards,
+Mr. Alexander Downer
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
