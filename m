@@ -1,25 +1,23 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B497351518
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Apr 2021 15:23:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E62C351710
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Apr 2021 19:01:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CC6F46ECAF;
-	Thu,  1 Apr 2021 13:23:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BE7DA6ECFA;
+	Thu,  1 Apr 2021 17:01:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 4468 seconds by postgrey-1.36 at gabe;
- Thu, 01 Apr 2021 13:23:28 UTC
-Received: from gramvio.com (unknown [81.17.30.209])
- by gabe.freedesktop.org (Postfix) with ESMTP id C43B66ECAF
+Received: from goodsstores.com (unknown [81.17.30.209])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D22AC6ECFA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  1 Apr 2021 13:23:28 +0000 (UTC)
+ Thu,  1 Apr 2021 17:01:03 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: quick follow up
-Message-ID: <55b65b86fe90e6acacfaf6e6cfa20af4@hibbett.com>
-Date: Thu, 01 Apr 2021 08:34:53 +0200
-From: "Terry Rogers" <ukeayjputq@gritnglory.com>
+Subject: second reminder
+Message-ID: <b12893bc4562a593efb4c58c23ebf755@victorage.com>
+Date: Thu, 01 Apr 2021 14:04:12 +0200
+From: "Jerry Henson" <theseyjbrz@greatdanecare.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -34,12 +32,12 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: liymekgankowe@aliyun.com
-Content-Type: multipart/mixed; boundary="===============0823161350=="
+Reply-To: bosscaojankes@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0349908651=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0823161350==
+--===============0349908651==
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 
@@ -56,67 +54,70 @@ style="text-align: left;"><span style="text-align: left;"><span
 style="text-align: left;"></span></span></span><span style="text-align:
 left;"><span style="text-align: left;">Hi,<br /><br
 /></span></span></span></span></span></span></span></span></span><span
-style="display: block; text-align: left;">How are you?<br />Just want to
-check with you whether you got our email from yesterday? </span><span
+style="display: block; text-align: left;">How are you doing today?<br
+/>Just want to check with you if you received our email from last week?
+</span><span style="display: block; text-align: left;"><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="text-align:
-left;"><span style="text-align: left;">Are you interested in the following
-drone?<br /><br
+style="text-align: left;"><span style="text-align: left;">Are you
+interested in the following office chairs?<br /><br
 /></span></span></span></span></span></span></span></span></span><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="text-align:
-left;"><span style="text-align: left;">Main Features:<br
-/></span></span>Quadrotor battery: 2000mAh lipo (including)<br
-/></span></span></span></span></span></span></span><span style="display:
-block; text-align: left;"><span style="display: block; text-align:
+style="display: block; text-align: left;"><span style="display: block;
+text-align:
+left;">Specification:</span></span></span></span></span></span></span></span><span
+style="display: block; text-align: left;">Color: Black&amp;Red,
+Black&amp;Blue, Black&amp;Gold, Black&amp;White<br />Material:
+PVC（polyvinyl chloride）Leather + Elastic Fabric + Steel<br />Max. Load
+Bearing: 150kg<br />Whole Size: 25.19''x47.24''<br />Sitting
+Size:14.56''x18.11''<br /><br />Feature:<br />90&deg;~150&deg; lying
+design, can be lying down like a bed.<br />Retractable footrest, make you
+more relexed during the break.<br />Quality leather cushion, comfortable
+sitting, scratch resistant.<br />5 claw universal wheel, large bearing and
+much mute.<br />360&deg; freely rotatable.<br />Height adjustable, to fit
+different people's height.</span><span style="display: block; text-align:
 left;"><span style="display: block; text-align: left;"><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
-style="text-align: left;"><span style="text-align:
-left;"></span></span></span></span></span></span></span></span><span
 style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;">25mins
-long battery life<br />2km remote control<br />GPS anti-lost system (auto
-return)<br /><span>Waypoint flight mode, just draw a route on the screen,
-and use the helicopter as a given path.</span><br /><br
-/></span></span></span><span style="display: block; text-align:
-left;">Package Included:<br />1 x Quadcopter<br />1 x remote control<br />1
-x 3.7V lithium battery<br />1 x USB charging cable<br />1 x screwdriver<br
-/>1 x user manual<br />2 x spare blades</span><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;"><br
-/></span></span><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;">Cost details:<br />189.90 each (
-1-10 units)<br />179.90 each (11-50 units)<br />159.90 each (51-100
-units)<br /><br /></span></span><span style="display: block; text-align:
-left;">We need to know your mailing address if you want to place an order
-and prepare the shipment for you.&nbsp;<br /><br />Product details please
-check below:<br /><br /><img
-src="https://des.gbtcdn.com/uploads/pdm-desc-pic/Electronic/image/2021/03/18/1616056844800103.jpg"
-width="500" height="3008" /><img
-src="https://des.gbtcdn.com/uploads/pdm-desc-pic/Electronic/image/2021/03/18/1616056926989353.jpg"
-width="550" height="2996" /><br /></span><span style="display: block;
-text-align: left;"><span style="text-align: left;"><br /><br /><img
-src="https://des.gbtcdn.com/uploads/pdm-desc-pic/Electronic/image/2021/03/18/1616056974834969.jpg"
-width="500" height="3041" /><img
-src="https://des.gbtcdn.com/uploads/pdm-desc-pic/Electronic/image/2021/03/18/1616056669208213.jpg"
-width="500" height="1967" /><br /></span></span><span style="display:
+text-align: left;"><br
+/></span></span></span></span></span></span></span><span style="display:
 block; text-align: left;"><span style="display: block; text-align:
-left;"><span style="display: block; text-align: left;"><br /><br />We need
-to know your mailing address if you want to place an order and prepare the
-shipment for you.&nbsp;<br /><br />Thanks,<br />Terry&nbsp;Rogers<br
-/></span></span></span><span style="display: block; text-align:
-left;"><span style="display: block; text-align: left;"></span></span>
+left;">Costs for different quantity: shipment included<br />195.00 each (1
+unit)<br />185.00 each (2-5 units)<br />175.00 each (6-10 units)<br /><br
+/></span></span><span style="display: block; text-align: left;">Send your
+address for delivery if you would like to place an order today, we will
+prepare the shipment for you quickly.<br /><br /><img
+src="https://ae04.alicdn.com/kf/H67d823f919e4441eb579398701952a9aK.jpeg"
+width="450" height="450" /><img
+src="https://ae04.alicdn.com/kf/Haacca64a7ba8401e937d94df2a70b042w.jpg"
+width="450" height="450" /><br /><img
+src="https://ae04.alicdn.com/kf/Hd5f4cea4ee58499696712df66acaf0aeN.jpg"
+width="450" height="450" /><img
+src="https://ae04.alicdn.com/kf/H2d0d7874f7f34c0192a545b4c5961934j.jpg"
+width="450" height="450" /><br /></span><span style="display: block;
+text-align: left;"><span style="text-align: left;"><br /><br /><img
+src="https://ae04.alicdn.com/kf/Hb437cb286e49498f95063c51d6373e78X.jpeg"
+width="450" height="450" /><img
+src="https://ae04.alicdn.com/kf/H1270ef141f2d41f585c23a0047abaf5c6.jpeg"
+width="450" height="450" /><br /></span></span><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><br /><br />Send your address for
+delivery if you would like to place an order today, we will prepare the
+shipment for you quickly.<br /><br />Thanks,<br
+/>Jerry&nbsp;Henson</span></span></span><span style="display: block;
+text-align: left;"><span style="display: block; text-align:
+left;"></span></span>
 </body>
 </html>
 
 
---===============0823161350==
+--===============0349908651==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -127,4 +128,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0823161350==--
+--===============0349908651==--
