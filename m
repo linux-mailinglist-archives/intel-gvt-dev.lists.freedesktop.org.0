@@ -1,25 +1,25 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39A31352A2F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  2 Apr 2021 13:21:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7302C352ED9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  2 Apr 2021 20:00:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E7DAE6EE5B;
-	Fri,  2 Apr 2021 11:21:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1EF846EEB0;
+	Fri,  2 Apr 2021 18:00:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3623 seconds by postgrey-1.36 at gabe;
- Fri, 02 Apr 2021 11:21:54 UTC
-Received: from getzcope.com (unknown [81.17.30.215])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2A76B6EE5B
+X-Greylist: delayed 3621 seconds by postgrey-1.36 at gabe;
+ Fri, 02 Apr 2021 18:00:22 UTC
+Received: from greentoestucson.com (jamioo.englios.com [188.72.187.83])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C3AB36EEA6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  2 Apr 2021 11:21:54 +0000 (UTC)
+ Fri,  2 Apr 2021 18:00:22 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: quick reminder
-Message-ID: <fd9860b8ac2ede2a9806712513a7f87f@neatorobotics.com>
-Date: Fri, 02 Apr 2021 09:17:50 +0200
-From: "Jason Patel" <ukeyfjpukt@goodeleisure.com>
+Subject: for this week
+Message-ID: <cbc23df2b8734be9e9686c4b6ff0e158@grammascutters.com>
+Date: Fri, 02 Apr 2021 14:32:46 +0200
+From: "Jonathan Noel" <ukzkjpueh@gomedici.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -34,12 +34,12 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: loscaosmissge@aliyun.com
-Content-Type: multipart/mixed; boundary="===============1701341494=="
+Reply-To: yehendillbur@hotmail.com
+Content-Type: multipart/mixed; boundary="===============0875778337=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1701341494==
+--===============0875778337==
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 
@@ -58,66 +58,57 @@ left;"><span style="text-align: left;">Hi,<br /><br
 /></span></span></span></span></span></span></span></span></span><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"></span></span>
-<div>How&nbsp;is&nbsp;everything&nbsp;going?<br />Simply need to check with
-you whether you got our email from a week ago?</div>
+<div>How are you doing today?<br />I am contacting you to let you know that
+our new rc drone just arrived in our stock, ready for shipping.</div>
 <span style="display: block; text-align: left;"><span style="display:
 block; text-align: left;"><span style="display: block; text-align:
 left;"><span style="display: block; text-align: left;"><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="text-align:
-left;"><span style="text-align: left;">Let me know if you are interested to
-order our new arrived mini&nbsp;Wifi camera.<br /><br />USB mini camera
-Wifi IP Camera full HD 1080P P2P with SD card cloud storage.<br /> Smart
-surveillance AI human detection V380 APP.<br
-/></span></span></span></span></span></span></span></span></span></span><span
-style="display: block; text-align: left;">Description :<br />Product: U21
-Surveillance camera<br />Power supply : Portable power bank/USB power
-socket<br />Dimensions : 6.3x1x0.6 In<br />Weight : 23.8g</span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="text-align: left;"><span style="text-align:
+left;"><br /><span>The high capacity (2s 2500mAh) battery allows up to 30
+minutes of flight time.&nbsp;</span></span></span><br
+/></span></span></span></span></span></span></span></span></span><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
 style="display: block; text-align: left;"><span style="display: block;
 text-align: left;"><span style="display: block; text-align: left;"><span
 style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"><span style="display: block; text-align:
-left;"><span></span></span></span></span></span></span></span></span></span></span><span
-style="display: block; text-align: left;">Al Humanoid Recognition<br />Al
-Humanoid Recognition is based on neural networks which can accurately
-recognize<br />Compared with motion detection which is alarm is base on the
-change of motions<br />Greatly reduce false alarm made by the wind, plants
-or animal movement.<br /><br /></span><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;">Costs
-details: shipping included<br />89.00 each (1-2 unit)<br />79.00 each (3-5
-units)<br />69.00 each (6-10 units)<br />u&nbsp; &nbsp;s&nbsp; &nbsp;d<br
-/><br /></span></span><span style="display: block; text-align: left;">Reply
-to our email if you would like to order this camera and send your address
-for delivery, we will get the shipment ready for you quickly.<br /><br
-/><img
-src="https://ae04.alicdn.com/kf/H48ed76abe1c243bd8bc1bd1dfb5e26cbr.jpg"
-width="455" height="453" /><img
-src="https://ae01.alicdn.com/kf/Hd877417ae16e4fad9dae3d4ee3c0d74fu.jpg"
-width="455" height="455" /><br /><img
-src="https://ae01.alicdn.com/kf/H3edb7fc902e44f488a6c749f1960853at.jpg"
-width="455" height="455" /><img
-src="https://ae04.alicdn.com/kf/Hecd2b695cdc9447197078e2240bf0160s.jpg"
-width="455" height="455" /><br /></span><span style="display: block;
+text-align: left;"><span style="text-align: left;"><span style="text-align:
+left;"><span>Brushless motors, multiple flight modes, and a dual-camera
+system. <br />In addition to the frontal 6K camera, it has a 1080P camera
+which serves as an optical flow positioning sensor.<br /><span>Thanks to
+the fail-safe return to home function, in case of remote controller signal
+loss or low flight battery voltage, the drone will return autonomously to
+the take-off point.<br /></span><br
+/></span></span></span></span></span></span></span></span></span></span></span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;">Costs for different volume:<br />229.00 each (1-10
+pieces)<br />209.00 each (11-50 pieces)<br />199.00 each (51-100 pieces)<br
+/><br /></span></span><span style="display: block; text-align:
+left;">Please send us your address for shipment if you like to order our
+drone&nbsp;, we will ready the package for you soon.<br /><br /><img
+src="https://sc04.alicdn.com/kf/H6713317b62754d78b8d9dbe23ac55d2by/245819777/H6713317b62754d78b8d9dbe23ac55d2by.jpg"
+width="500" height="1953" /><img
+src="https://sc04.alicdn.com/kf/H6909ab22e7eb49fcb227cebdae67923dq/245819777/H6909ab22e7eb49fcb227cebdae67923dq.jpg"
+width="500" height="1892" /><br /></span><span style="display: block;
 text-align: left;"><span style="text-align: left;"><br /><br /><img
-src="https://ae01.alicdn.com/kf/H9c3c239fbb9d4dc8b41dc5cda642eb95l.jpg"
-width="455" height="455" /><img
-src="https://ae01.alicdn.com/kf/Ha1ec37ba7e614e1dabe21867a5b3199bo.jpg"
-width="455" height="455" /><br /></span></span><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><br /><br />Reply to our email if
-you would like to order this camera and send your address for delivery, we
-will get the shipment ready for you quickly.<br /><br />Thanks,<br
-/>Jason&nbsp;Patel</span></span></span><span style="display: block;
-text-align: left;"><span style="display: block; text-align:
-left;"></span></span>
+src="https://sc04.alicdn.com/kf/H103996d75626458a90dc73204eea8391y/245819777/H103996d75626458a90dc73204eea8391y.jpg"
+width="500" height="2288" /><img
+src="https://sc04.alicdn.com/kf/Hcc1847b529f6468e838dd654f8f7dd45S/245819777/Hcc1847b529f6468e838dd654f8f7dd45S.jpg"
+width="500" height="2193" /><br /></span></span><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><br />Please send us
+your address for shipment if you like to order our drone&nbsp;, we will
+ready the package for you soon.<br /><br />Thanks,<br />Jay
+Noel</span></span></span><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"></span></span>
 </body>
 </html>
 
 
---===============1701341494==
+--===============0875778337==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -128,4 +119,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1701341494==--
+--===============0875778337==--
