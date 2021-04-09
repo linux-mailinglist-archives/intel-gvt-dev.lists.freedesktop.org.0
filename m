@@ -2,32 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6238C357A97
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  8 Apr 2021 05:00:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E83135A397
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Apr 2021 18:41:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2425C6E118;
-	Thu,  8 Apr 2021 03:00:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 20D976EC3E;
+	Fri,  9 Apr 2021 16:41:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 602 seconds by postgrey-1.36 at gabe;
- Thu, 08 Apr 2021 02:59:58 UTC
-Received: from cp.srvcom.live (cp.srvcom.live [185.180.199.19])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DC9EE6E9EB
+X-Greylist: delayed 10465 seconds by postgrey-1.36 at gabe;
+ Fri, 09 Apr 2021 16:41:06 UTC
+Received: from giantscreencinema.com (unknown [81.17.30.222])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 22B266EC3E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  8 Apr 2021 02:59:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dkim; d=angani.co;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=test@angani.co;
- bh=K6V4wa+Zwhh1ReGewO4CBupJk46H4k6m+izkj0hgwZw=;
- b=4MePs+f/rdZzSWoUTTeTUVP+Be3YSRzNZ0cG3GV28WltGHnXYU5rUQWEBlA3zZdfp17IYyFGzBnA
- UuBvIAc0plx9hNMckOKKtg+3+/oidTM8dbgRk3OUrIvPtlqKdLOd9vexCR0Texgm4ehPAWsGZd6m
- 99R+B8dS+JVgNbFBP1Q=
-From: "lists.freedesktop.org" <test@angani.co>
+ Fri,  9 Apr 2021 16:41:06 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Your E-mail Request For intel-gvt-dev@lists.freedesktop.org
-Date: 08 Apr 2021 04:49:52 +0200
-Message-ID: <20210408044952.2786A71705B346DD@angani.co>
+Subject: Re: quick following up
+Message-ID: <aa74fca46aa3d74607eb37f486fd2c5a@bottompaintstore.com>
+Date: Fri, 09 Apr 2021 12:22:18 +0200
+From: "Harrison Hopkins" <hvemeyftiyufy@girlversusdough.com>
 MIME-Version: 1.0
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,87 +34,92 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0871211007=="
+Reply-To: lanhoesonlis@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0929678801=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0871211007==
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+--===============0929678801==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-<HTML><HEAD><TITLE>New Page 1</TITLE>
-<META content=3D"text/html; charset=3Dwindows-1252" http-equiv=3DContent-Ty=
-pe>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.19355"></HEAD>
+<html>
+<head>
+</head>
 <body>
-<DIV style=3D"FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Verdana, Genev=
-a, sans-serif, serif, EmojiFont; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baselin=
-e; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFO=
-RM: none; FONT-WEIGHT: 400; COLOR: rgb(32,31,30); PADDING-BOTTOM: 0px; FONT=
--STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 30px 0px 0px; =
-BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RI=
-GHT: 0px; BACKGROUND-COLOR: rgb(255,255,255);=20
-TEXT-INDENT: 0px; -webkit-font-smoothing: antialiased; font-variant-ligatur=
-es: normal; font-variant-caps: normal; font-variant-numeric: inherit; font-=
-variant-east-asian: inherit; font-stretch: inherit; -webkit-text-stroke-wid=
-th: 0px; text-decoration-thickness: initial; text-decoration-style: initial=
-; text-decoration-color: initial">
-<P style=3D"-webkit-font-smoothing: antialiased" align=3Dcenter>To, intel-g=
-vt-dev@lists.freedesktop.org</P>
-<P style=3D"-webkit-font-smoothing: antialiased" align=3Dcenter>Your incomi=
-ng messages are now queued up and pending delivery,<BR style=3D"-webkit-fon=
-t-smoothing: antialiased">because your address has not been validated by Gs=
-uite and Office365 servers.</P>
-<P style=3D"-webkit-font-smoothing: antialiased" align=3Dcenter>You are req=
-uired to validate your address intel-gvt-dev@lists.freedesktop.org to resto=
-re normal inbox delivery.<BR style=3D"-webkit-font-smoothing: antialiased">=
-&nbsp;</P>
-<P style=3D"-webkit-font-smoothing: antialiased" align=3Dcenter><FONT color=
-=3D#0000ff><STRONG>____________________________________________________</ST=
-RONG></FONT></P>
-<table id=3D"table2" height=3D"60" width=3D"39%" align=3D"center" bgcolor=
-=3D"#045fb4">
-<TBODY>
-<TR>
-<td>
-<DIV align=3Dcenter><A style=3D"TEXT-DECORATION: none" href=3D"https://stor=
-age.cloud.google.com/montplommom-90887bt/arinindex.html#intel-gvt-dev@lists=
-=2Efreedesktop.org" target=3D_blank><FONT color=3D#ffffff size=3D+2 face=3D=
-calibri>Validate intel-gvt-dev@lists.freedesktop.org Now </FONT></A></DIV><=
-/TD></TR></TBODY></TABLE>
-<P style=3D"-webkit-font-smoothing: antialiased" align=3Dcenter>&nbsp;&nbsp=
-;Please note:<BR><BR>Login with your eMail intel-gvt-dev@lists.freedesktop.=
-org Password <BR>to validate, be sure to do so in a Secure Manner.<BR><BR>O=
-nce validated your Email Delivery system would be working<BR>in Less Than 2=
- Hours.<BR><BR>Sincerely,<BR>lists.freedesktop.org ISP Gateway.</P>
-<P style=3D"-webkit-font-smoothing: antialiased" align=3Dcenter><BR style=
-=3D"-webkit-font-smoothing: antialiased">__________________________________=
-____________________________________</P></DIV>
-<DIV style=3D"FONT-SIZE: 11px; BORDER-TOP: 0px; FONT-FAMILY: Verdana, Genev=
-a, sans-serif, serif, EmojiFont; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baselin=
-e; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFO=
-RM: none; FONT-WEIGHT: 400; COLOR: rgb(131,130,130); PADDING-BOTTOM: 0px; F=
-ONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px 0px 0p=
-x; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HE=
-IGHT: 2; PADDING-RIGHT: 0px; BACKGROUND-COLOR:=20
-rgb(255,255,255); TEXT-INDENT: 0px; -webkit-font-smoothing: antialiased; fo=
-nt-variant-ligatures: normal; font-variant-caps: normal; font-variant-numer=
-ic: inherit; font-variant-east-asian: inherit; font-stretch: inherit; -webk=
-it-text-stroke-width: 0px; text-decoration-thickness: initial; text-decorat=
-ion-style: initial; text-decoration-color: initial">
-<P align=3Dcenter><EM style=3D"-webkit-font-smoothing: antialiased">This is=
- a mandatory service communication for intel-gvt-dev@lists.freedesktop.org.=
-</EM>
- &nbsp;| If you no longer wish to receive this email&nbsp;<A style=3D"BORDE=
-R-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px=
-; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BO=
-RDER-LEFT: 0px; PADDING-RIGHT: 0px; -webkit-font-smoothing: antialiased" hr=
-ef=3D"mailto:unsubscribe@lists.freedesktop.org" rel=3D"noreferrer noopener"=
- target=3D_blank data-auth=3D"NotApplicable">Unsubscribe</A></P></DIV></BOD=
-Y></HTML>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="text-align: left;"><span style="text-align: left;"><span
+style="text-align: left;"></span></span></span><span style="text-align:
+left;"><span style="text-align: left;">Hi,<br /><br
+/></span></span></span></span></span></span></span></span></span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"></span></span>
+<div>Hope this email finds you well.<br />I am reaching out to tell you
+that we have the following drone available in our stock now.<br /><br
+/></div>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="text-align: left;"><span style="text-align:
+left;"></span></span></span></span></span></span></span></span></span></span></span></span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;">Basic Information:<br /><span>Stabilize two-axis
+mechanical gimbal</span><br /><span>Battery: 11.4V 2850mAh Li-ion battery
+(included)</span><br /><span>Transmitter battery: rechargeable lithium
+battery</span><br /><span>Flight time: 28 minutes</span><br /><span>Remote
+control distance: about 2000m </span><br /><span>Giftbox or portable bag
+for 8811 Pro Drone</span><br /><br /><span>Feature:</span><br
+/><span>-Level-7 wind resistance </span><br /><span>-Two-axis stabilization
+mechanical Pan-Tilt with a pitch angle of 110 degrees.</span><br
+/><span>-With foldable arms, it is compact and easy to carry.</span><br
+/><span>-8811 Pro Drone is equipped with 5G wifi fpv distance can reach
+2000m.</span><br /><span>-5G WiFi 6K HD camera can provide a variety of
+high-definition images and videos.</span><br /><span>-Follow me: The plane
+will control the phone fixedly and follow the direction of movement of the
+operator.</span><br /><span>-With altitude hold mode function, it can
+provide stable flight.</span><br /><span>-Waypoint flight mode, just draw a
+route on the screen and use the helicopter as a given path.</span><br
+/><span>-With auto return function. When the aircraft loses the controller
+signal, the aircraft will return to the takeoff point according</span><br
+/><span>to the GPS trajectory.<br /></span><br /></span></span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;">Costs details:&nbsp; u&nbsp; s&nbsp; d&nbsp;<br />289.50
+each (1-5 units)<br />279.50 each (6-20 units)<br />269.50 each (21-50
+units)<br /><br /></span></span><span style="display: block; text-align:
+left;">Order it? Just send us the shipping address, we will handle the
+shipment for you.<br /><br /><img
+src="https://sc02.alicdn.com/kf/H661ac0d7c648437fb1aedfb033d1d0bdi/238876377/H661ac0d7c648437fb1aedfb033d1d0bdi.jpg"
+width="500" height="757" /><img
+src="https://sc02.alicdn.com/kf/H08d47ad8422f4dc3ac5d5a94ee1593aaC/238876377/H08d47ad8422f4dc3ac5d5a94ee1593aaC.jpg"
+width="550" height="754" /><br /></span><span style="display: block;
+text-align: left;"><span style="text-align: left;"><br /><br /><img
+src="https://sc01.alicdn.com/kf/H34b346b4119347429503bfc3354a5b6fR/238876377/H34b346b4119347429503bfc3354a5b6fR.jpg"
+width="500" height="756" /><img
+src="https://sc01.alicdn.com/kf/H19cee63c7abf4e278570da3960fea98fU/238876377/H19cee63c7abf4e278570da3960fea98fU.jpg"
+width="500" height="594" /><br /><img
+src="https://sc01.alicdn.com/kf/H71e4636989af470985ab63c0110e429cj/238876377/H71e4636989af470985ab63c0110e429cj.jpg"
+width="500" height="846" /><img
+src="https://sc02.alicdn.com/kf/H24226e2cd9d642c482cf0ff9a9d67419r/238876377/H24226e2cd9d642c482cf0ff9a9d67419r.jpg"
+width="500" height="955" /><br /></span></span><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><br />Order it? Just send us the
+shipping address, we will handle the shipment for you.<br /><br
+/>Thanks,<br />Harrison Hopkins</span></span></span><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"></span></span>
+</body>
+</html>
 
---===============0871211007==
+
+--===============0929678801==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -131,4 +130,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0871211007==--
+--===============0929678801==--
