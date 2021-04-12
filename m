@@ -1,42 +1,48 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95D6E35CAA9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Apr 2021 18:03:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C0B235CC8A
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Apr 2021 18:32:24 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4170189AA6;
-	Mon, 12 Apr 2021 16:03:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3956989BA5;
+	Mon, 12 Apr 2021 16:32:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 255AD89A5C
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 04F4689BD2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 12 Apr 2021 16:03:33 +0000 (UTC)
-IronPort-SDR: /a4vA1tTqUX9mrxPRt9GAFwJlH+svLcj0Fw/lnlb4nnECfePIVnAXESjWaPUknA5AbviDApuXR
- 10au1eLuKDUg==
-X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="193787404"
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="193787404"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Apr 2021 09:03:32 -0700
-IronPort-SDR: B4kiUpFPiUfrCbwCGjiuRsJh64qRwatIs50+MMG61Ia86H8oymovg1nw2yfgVvLUpMQ74LHAF2
- 8M3qSdhvb1yQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="398425129"
-Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 12 Apr 2021 09:03:30 -0700
-Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lVz29-0000Yv-AT; Mon, 12 Apr 2021 16:03:29 +0000
-Date: Tue, 13 Apr 2021 00:03:24 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 3d0e011a31c60a6ef2070025fe53f3b3bafac60b
-Message-ID: <60746f4c.524vrW/OCPwt6xZd%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Mon, 12 Apr 2021 16:32:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1618245141;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=KLSeyjnN+Nc0bGTYt65N2Vzxd1h3fZ8Uio7k1E2dBH0=;
+ b=hpVCzwXxsbwjvaKILYEQ8foI3GouSOMJwar4LNwkZ2Nm2i3IepJbCra5l95TXcdzoJ4jaO
+ EfL+BDvc1W6dpllaBHRaYecH246bHHq+rs8id7dETjqahBbCyMJtLOVY22zgHrFqmGh9/S
+ vISCUfK32QIU8+F3l/oubwdfEC4Ffk0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-141-rzmZgZcxOXKp6oDTt5Yv7Q-1; Mon, 12 Apr 2021 12:32:17 -0400
+X-MC-Unique: rzmZgZcxOXKp6oDTt5Yv7Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D972F6D241;
+ Mon, 12 Apr 2021 16:32:15 +0000 (UTC)
+Received: from omen (ovpn-117-254.rdu2.redhat.com [10.10.117.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 13A0010023AB;
+ Mon, 12 Apr 2021 16:32:14 +0000 (UTC)
+Date: Mon, 12 Apr 2021 10:32:14 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: zhenyuw@linux.intel.com, zhi.a.wang@intel.com
+Subject: Regression: gvt: vgpu 1: MI_LOAD_REGISTER_MEM handler error
+Message-ID: <20210412103214.337d521a@omen>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,131 +55,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 3d0e011a31c60a6ef2070025fe53f3b3bafac60b  gvt-staging: 2021y-04m-12d-11h-06m-37s CST integration manifest
 
-elapsed time: 722m
+Running a Windows guest on a i915-GVTg_V4_2 from an HD 5500 IGD on
+v5.12-rc6 results in host logs:
 
-configs tested: 100
-configs skipped: 2
+gvt: vgpu 1: lrm access to register (20c0)
+gvt: vgpu 1: MI_LOAD_REGISTER_MEM handler error
+gvt: vgpu 1: cmd parser error
+0x0 
+0x29 
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+gvt: vgpu 1: scan wa ctx error
+gvt: vgpu 1: failed to submit desc 0
+gvt: vgpu 1: fail submit workload on ring rcs0
+gvt: vgpu 1: fail to emulate MMIO write 00002230 len 4
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                             allyesconfig
-nds32                            alldefconfig
-powerpc                 mpc834x_itx_defconfig
-arc                                 defconfig
-sh                         apsh4a3a_defconfig
-arm                   milbeaut_m10v_defconfig
-arm                         nhk8815_defconfig
-arc                      axs103_smp_defconfig
-mips                         db1xxx_defconfig
-m68k                       m5249evb_defconfig
-arm                         s3c2410_defconfig
-mips                      loongson3_defconfig
-sh                   rts7751r2dplus_defconfig
-sh                          rsk7264_defconfig
-arc                    vdk_hs38_smp_defconfig
-mips                         mpc30x_defconfig
-mips                           ip28_defconfig
-powerpc                 linkstation_defconfig
-m68k                        m5307c3_defconfig
-powerpc               mpc834x_itxgp_defconfig
-arm                            mmp2_defconfig
-arm                       cns3420vb_defconfig
-arm                            dove_defconfig
-mips                            e55_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a003-20210412
-i386                 randconfig-a001-20210412
-i386                 randconfig-a006-20210412
-i386                 randconfig-a005-20210412
-i386                 randconfig-a004-20210412
-i386                 randconfig-a002-20210412
-x86_64               randconfig-a014-20210412
-x86_64               randconfig-a015-20210412
-x86_64               randconfig-a011-20210412
-x86_64               randconfig-a013-20210412
-x86_64               randconfig-a012-20210412
-x86_64               randconfig-a016-20210412
-i386                 randconfig-a015-20210412
-i386                 randconfig-a014-20210412
-i386                 randconfig-a013-20210412
-i386                 randconfig-a012-20210412
-i386                 randconfig-a016-20210412
-i386                 randconfig-a011-20210412
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+The guest goes into a boot loop triggering this error before reaching
+the desktop and rebooting.  Guest using Intel driver 20.19.15.5171
+dated 11/4/2020 (from driver file 15.40.5171).
 
-clang tested configs:
-x86_64               randconfig-a003-20210412
-x86_64               randconfig-a002-20210412
-x86_64               randconfig-a001-20210412
-x86_64               randconfig-a005-20210412
-x86_64               randconfig-a006-20210412
-x86_64               randconfig-a004-20210412
+This VM works well with the same guest and userspace software stack on
+Fedora's kernel 5.11.11-200.fc33.x86_64.  Thanks,
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Alex
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
