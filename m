@@ -1,72 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E503B35ECD1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Apr 2021 08:01:58 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 47A5B35F012
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Apr 2021 10:50:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9449B6E43B;
-	Wed, 14 Apr 2021 06:01:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E40006E486;
+	Wed, 14 Apr 2021 08:50:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8A6F86E43B;
- Wed, 14 Apr 2021 06:01:56 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13E601U7001576;
- Wed, 14 Apr 2021 06:01:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=gW4oiXh+iAqx96/tBx5seQYpdGC6Z5uSNUhdjgtyYSM=;
- b=Jn92ijpHWRkP/Tmh+YhG0dOsHiibrowU65xcSOVlwtBiJUQv68t8Oa/RN8IlZPhQCBV3
- 21dcs2J0wpAHyBU3irU/KSapQVBjPOeuApfbvSAop5y58a42f2TydFjw9/+s4d4hi3LQ
- Xg9VbZAGHpmobhsyYv2OT9QBJ+VtgbppFvnuX9FZblh66VXHCsomO2ypKkPO6DF9b/ki
- Wnn43TlyX5LeeH8GkmWsjxs/kumlB0IDeuQcmf2okkmc0qt/a547NPQDzqm9xVFN4kdn
- qYuGIhcqJL4nJbTwL/1VnC5Sf6/FTndBTwzR/i8aUiClRlQJYbwX+VTovhqU4HDeV93+ HQ== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 37u3erh6a7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 14 Apr 2021 06:01:51 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13E5xg9b079213;
- Wed, 14 Apr 2021 06:01:49 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 37unx0u380-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 14 Apr 2021 06:01:49 +0000
-Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 13E61jZV023364;
- Wed, 14 Apr 2021 06:01:46 GMT
-Received: from mwanda (/10.175.166.128)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 14 Apr 2021 06:01:45 +0000
-Date: Wed, 14 Apr 2021 09:01:38 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [PATCH] drm/i915/gvt: Fix error code in intel_gvt_init_device()
-Message-ID: <YHaFQtk/DIVYK1u5@mwanda>
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B30A76E486;
+ Wed, 14 Apr 2021 08:50:14 +0000 (UTC)
+IronPort-SDR: 4wTJPmpcClYmHWpWEJkuGcZbq5CCqMmfl+9oENI1cPrMJwVpUfYCAC964IPwQMVlDBChj7KV67
+ bniP2ib/Kb9g==
+X-IronPort-AV: E=McAfee;i="6200,9189,9953"; a="174704390"
+X-IronPort-AV: E=Sophos;i="5.82,221,1613462400"; 
+ d="asc'?scan'208";a="174704390"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Apr 2021 01:50:14 -0700
+IronPort-SDR: PhnCozf8UEFW4UKr5HkHWVFHrUZnwzlL5liJMxVYioxCDwDp1Ia1ghsUam5JRrwtgLBrVYSj2v
+ Dzotrex2mzTg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,221,1613462400"; 
+ d="asc'?scan'208";a="450722624"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by FMSMGA003.fm.intel.com with ESMTP; 14 Apr 2021 01:50:11 -0700
+Date: Wed, 14 Apr 2021 16:32:21 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+Subject: Re: [PATCH] drm/i915/gvt: remove useless function
+Message-ID: <20210414083221.GN1551@zhen-hp.sh.intel.com>
+References: <1618294728-78952-1-git-send-email-jiapeng.chong@linux.alibaba.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9953
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- suspectscore=0
- mlxscore=0 malwarescore=0 adultscore=0 bulkscore=0 spamscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104140042
-X-Proofpoint-ORIG-GUID: KDXb3uz4OhTYrQt0XDC12lC0qEL9fdcp
-X-Proofpoint-GUID: KDXb3uz4OhTYrQt0XDC12lC0qEL9fdcp
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9953
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 clxscore=1011
- adultscore=0 mlxlogscore=999 bulkscore=0 malwarescore=0 spamscore=0
- impostorscore=0 suspectscore=0 mlxscore=0 phishscore=0 lowpriorityscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
- definitions=main-2104140042
+In-Reply-To: <1618294728-78952-1-git-send-email-jiapeng.chong@linux.alibaba.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,74 +47,86 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: fred gao <fred.gao@intel.com>, David Airlie <airlied@linux.ie>,
- intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- kernel-janitors@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: airlied@linux.ie, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, jani.nikula@linux.intel.com, daniel@ffwll.ch,
+ rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com
+Content-Type: multipart/mixed; boundary="===============2066642064=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-The intel_gvt_init_vgpu_type_groups() function is only called from
-intel_gvt_init_device().  If it fails then the intel_gvt_init_device()
-prints the error code and propagates it back again.  That's a bug
-because false is zero/success.  The fix is to modify it to return zero
-or negative error codes and make everything consistent.
 
-Fixes: c5d71cb31723 ("drm/i915/gvt: Move vGPU type related code into gvt file")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/gpu/drm/i915/gvt/gvt.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+--===============2066642064==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ctZH5Gqgrl5HoVnD"
+Content-Disposition: inline
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gvt.c
-index 2ecb8534930b..1deb253ffe80 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.c
-+++ b/drivers/gpu/drm/i915/gvt/gvt.c
-@@ -126,7 +126,7 @@ static bool intel_get_gvt_attrs(struct attribute_group ***intel_vgpu_type_groups
- 	return true;
- }
- 
--static bool intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt)
-+static int intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt)
- {
- 	int i, j;
- 	struct intel_vgpu_type *type;
-@@ -144,7 +144,7 @@ static bool intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt)
- 		gvt_vgpu_type_groups[i] = group;
- 	}
- 
--	return true;
-+	return 0;
- 
- unwind:
- 	for (j = 0; j < i; j++) {
-@@ -152,7 +152,7 @@ static bool intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt)
- 		kfree(group);
- 	}
- 
--	return false;
-+	return -ENOMEM;
- }
- 
- static void intel_gvt_cleanup_vgpu_type_groups(struct intel_gvt *gvt)
-@@ -373,7 +373,7 @@ int intel_gvt_init_device(struct drm_i915_private *i915)
- 		goto out_clean_thread;
- 
- 	ret = intel_gvt_init_vgpu_type_groups(gvt);
--	if (ret == false) {
-+	if (ret) {
- 		gvt_err("failed to init vgpu type groups: %d\n", ret);
- 		goto out_clean_types;
- 	}
--- 
-2.30.2
+
+--ctZH5Gqgrl5HoVnD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2021.04.13 14:18:48 +0800, Jiapeng Chong wrote:
+> Fix the following clang warning:
+>=20
+> drivers/gpu/drm/i915/gvt/gtt.c:590:20: warning: unused function
+> 'ppgtt_set_guest_root_entry' [-Wunused-function].
+>=20
+> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+> Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c | 6 ------
+>  1 file changed, 6 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index 897c007..a01ff44 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -587,12 +587,6 @@ static void _ppgtt_set_root_entry(struct intel_vgpu_=
+mm *mm,
+>  			   entry, index, false, 0, mm->vgpu);
+>  }
+> =20
+> -static inline void ppgtt_set_guest_root_entry(struct intel_vgpu_mm *mm,
+> -		struct intel_gvt_gtt_entry *entry, unsigned long index)
+> -{
+> -	_ppgtt_set_root_entry(mm, entry, index, true);
+> -}
+> -
+>  static inline void ppgtt_set_shadow_root_entry(struct intel_vgpu_mm *mm,
+>  		struct intel_gvt_gtt_entry *entry, unsigned long index)
+>  {
+> --=20
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+Thanks for covering me on this! Queue this up.
+
+--ctZH5Gqgrl5HoVnD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYHaokAAKCRCxBBozTXgY
+J332AJ4salQYvYttCagxF7P2YWnt4+5OtACfSsWoYZp+DqERU/BbGvS+EbPHckI=
+=oqD8
+-----END PGP SIGNATURE-----
+
+--ctZH5Gqgrl5HoVnD--
+
+--===============2066642064==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============2066642064==--
