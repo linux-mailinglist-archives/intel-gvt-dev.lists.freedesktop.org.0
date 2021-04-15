@@ -1,30 +1,41 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3D6435FDB6
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Apr 2021 00:21:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 51C8635FF5B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Apr 2021 03:24:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 742636E96F;
-	Wed, 14 Apr 2021 22:21:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2FBF36E9E2;
+	Thu, 15 Apr 2021 01:24:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 763 seconds by postgrey-1.36 at gabe;
- Wed, 14 Apr 2021 22:21:08 UTC
-Received: from learningtorque.com (v150-95-174-219.a0d5.g.tyo1.static.cnode.io
- [150.95.174.219])
- by gabe.freedesktop.org (Postfix) with SMTP id 129D86E978
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 53E886E9D8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Apr 2021 22:21:07 +0000 (UTC)
-Received: (qmail 15881 invoked from network); 15 Apr 2021 07:06:55 +0900
-Received: from unknown (HELO ?100.120.171.208?) (info@156.146.38.140)
- by v150-95-174-219.a0d5.g.tyo1.static.cnode.io with SMTP;
- 15 Apr 2021 07:06:55 +0900
+ Thu, 15 Apr 2021 01:24:46 +0000 (UTC)
+IronPort-SDR: QR77KqUkkEfMBtMKpQX2aSAC8QUL7elk53AQm2cIWZ2KtElLro3yUH+RF1OFX2K+0Bhbph1Jbd
+ Cf0Mk5gaK+ag==
+X-IronPort-AV: E=McAfee;i="6200,9189,9954"; a="174268203"
+X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; d="scan'208";a="174268203"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Apr 2021 18:24:45 -0700
+IronPort-SDR: TxnicHQOd+kPI+s4yQ1CNdFrc+jrklN7YEqFIsXwGXdPYrWK0qKXAHGJU5fkCeD1GbZIsb0vt4
+ n7mWZRiNuXOg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; d="scan'208";a="389581652"
+Received: from unknown (HELO coxu-arch-shz) ([10.239.160.30])
+ by fmsmga007.fm.intel.com with ESMTP; 14 Apr 2021 18:24:43 -0700
+Date: Thu, 15 Apr 2021 09:24:43 +0800 (CST)
+From: Colin Xu <colin.xu@intel.com>
+X-X-Sender: coxu_arch@coxu-arch-shz
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [PATCH 1/2] drm/i915/gvt: Fix BDW command parser regression
+In-Reply-To: <20210414084813.3763353-1-zhenyuw@linux.intel.com>
+Message-ID: <alpine.LNX.2.22.419.2104150922140.5599@coxu-arch-shz>
+References: <20210414084813.3763353-1-zhenyuw@linux.intel.com>
+User-Agent: Alpine 2.22 (LNX 419 2020-04-12)
 MIME-Version: 1.0
-Subject: IMPORTANT NOTIFICATION..
-To: Recipients <Barr.wilson0000@protonmail.com>
-From: "Barr. Wilson" <Barr.wilson0000@protonmail.com>
-Date: Wed, 14 Apr 2021 15:06:43 -0700
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,78 +48,78 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: tonyandremsf204@gmail.com
-Content-Type: multipart/mixed; boundary="===============1421565251=="
+Cc: Yan Zhao <yan.y.zhao@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, stable@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210414222109.742636E96F@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============1421565251==
-Content-Type: multipart/alternative; boundary="===============2068381839=="
+On Wed, 14 Apr 2021, Zhenyu Wang wrote:
 
-You will not see this in a MIME-aware mail reader.
---===============2068381839==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+> On BDW new Windows driver has brought extra registers to handle for
+> LRM/LRR command in WA ctx. Add allowed registers in cmd parser for BDW.
+>
+> Cc: Alex Williamson <alex.williamson@redhat.com>
+> Cc: Yan Zhao <yan.y.zhao@intel.com>
+> Cc: stable@vger.kernel.org
+> Fixes: 73a37a43d1b0 ("drm/i915/gvt: filter cmds "lrr-src" and "lrr-dst" in cmd_handler")
+> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> ---
+> drivers/gpu/drm/i915/gvt/cmd_parser.c | 19 +++++++++++++------
+> 1 file changed, 13 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> index fef1e857cefc..01c1d1b36acd 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> @@ -916,19 +916,26 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+>
+> 	if (!strncmp(cmd, "srm", 3) ||
+> 			!strncmp(cmd, "lrm", 3)) {
+> -		if (offset != i915_mmio_reg_offset(GEN8_L3SQCREG4) &&
+> -				offset != 0x21f0) {
+> +		if (offset == i915_mmio_reg_offset(GEN8_L3SQCREG4) ||
+> +		    offset == 0x21f0 ||
+> +		    (IS_BROADWELL(gvt->gt->i915) &&
+> +		     offset == i915_mmio_reg_offset(INSTPM)))
+> +			return 0;
+> +		else {
+> 			gvt_vgpu_err("%s access to register (%x)\n",
+> 					cmd, offset);
+> 			return -EPERM;
+> -		} else
+> -			return 0;
+> +		}
+> 	}
+>
+> 	if (!strncmp(cmd, "lrr-src", 7) ||
+> 			!strncmp(cmd, "lrr-dst", 7)) {
+> -		gvt_vgpu_err("not allowed cmd %s\n", cmd);
+> -		return -EPERM;
+> +		if (IS_BROADWELL(gvt->gt->i915) && offset == 0x215c)
+> +			return 0;
+> +		else {
+> +			gvt_vgpu_err("not allowed cmd %s reg (%x)\n", cmd, offset);
+> +			return -EPERM;
+> +		}
+> 	}
+>
+> 	if (!strncmp(cmd, "pipe_ctrl", 9)) {
+> -- 
+> 2.31.0
+>
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+>
 
-    Hello My Good Friend,        I am glad to let you know I have moved tho=
-se funds out with a new helper late last year, I appreciate your efforts to=
- help me though we couldn't realize it together, I kept $850,000.00USD bank=
- draft to compensate you for your effort and for a good start this New Year=
-. Contact my secretary Mr Tony W. Andre on his Email: tonyandremsf204@gmail=
-.com and provide him your full address, Mobile no and country. Let me know =
-when you get it for us to share the joy.     I remain your friend,   Barr. =
-Tom Wilson =20
---===============2068381839==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+Reviewed-by: Colin Xu <colin.xu@intel.com>
 
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Diso-8859-1"/></head><BODY><DIV class=3Daju>
-<DIV class=3DaCi>
-<DIV aria-hidden=3Dtrue class=3D"ajn ajo ms mp" data-name=3D"TEST" data-hov=
-ercard-id=3D"admin@anteair.in" jid=3D"admin@anteair.in"></DIV></DIV></DIV>
-<DIV class=3Dgs>
-<DIV class=3D"gE iv gt"><FONT color=3D#000000 size=3D2 face=3DArial><FONT s=
-ize=3D3 face=3DCalibri>Hello My Good Friend,</FONT></DIV></DIV>
-<DIV>
-<DIV id=3D:2jf class=3D"ii gt">
-<DIV id=3D:2jg class=3D"a3s aiL ">
-<DIV bgcolor=3D"#FFFFFF">
-<DIV><FONT size=3D3 face=3DCalibri></FONT></DIV>
-<DIV><FONT size=3D3 face=3DCalibri></FONT>&nbsp;</DIV>
-<DIV><FONT size=3D3 face=3DCalibri>I am glad to let you know I have moved t=
-hose funds out with a new helper late last year, I appreciate your efforts =
-to help me though we couldn't realize it together, I kept $850,000.00USD ba=
-nk draft to compensate you for your effort and for a good start this New Ye=
-ar.</FONT></DIV>
-<DIV><FONT size=3D3 face=3DCalibri>Contact my secretary Mr Tony W. Andre on=
- his Email: </FONT><FONT color=3D#0000ff size=3D3 face=3DCalibri><A>tonyand=
-remsf204@gmail.com</A></FONT><FONT size=3D3 face=3DCalibri> and provide him=
- your full address, Mobile no and country. Let me know when you get it for =
-us to share the joy.</FONT></DIV>
-<DIV><FONT size=3D3 face=3DCalibri></FONT>&nbsp;</DIV>
-<DIV><FONT size=3D3 face=3DCalibri></FONT>&nbsp;</DIV>
-<DIV><FONT size=3D3 face=3DCalibri>I remain your friend,</FONT></DIV>
-<DIV><FONT size=3D3 face=3DCalibri></FONT>&nbsp;</DIV>
-<DIV><FONT size=3D3 face=3DCalibri>Barr. Tom Wilson</FONT></DIV>
-<DIV>&nbsp;</DIV></FONT></DIV></DIV></DIV></DIV></BODY></HTML>
---===============2068381839==--
-
---===============1421565251==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Thanks for the timely fix for BDW!
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1421565251==--
