@@ -2,41 +2,28 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41D9935FF8B
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Apr 2021 03:29:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 688CE35FFB3
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Apr 2021 03:43:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D53556E0C6;
-	Thu, 15 Apr 2021 01:29:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 185A289DA3;
+	Thu, 15 Apr 2021 01:43:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A048A6E0C6
+X-Greylist: delayed 446 seconds by postgrey-1.36 at gabe;
+ Thu, 15 Apr 2021 01:43:24 UTC
+Received: from bricomp.com.sg (bricomp.com.sg [203.175.171.150])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7E71089DA3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Apr 2021 01:29:23 +0000 (UTC)
-IronPort-SDR: yvtAd7cQ/4d52bJGP9JI5EtAsapFBV9ANtAIqMS/NEhlOexaRMnngUkIx0GblNazRHEblZ7zhF
- JlZ0T7EvDnGA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9954"; a="280086023"
-X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; d="scan'208";a="280086023"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2021 18:29:23 -0700
-IronPort-SDR: tKdc+guPGosIVOrVM3m/dFWoCRkqmFTIE6GtZUXUmC7jkujPQr0T/Xh3Ah7cbt42rJZh5lVQjk
- KfhdRkINRTHw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; d="scan'208";a="399394464"
-Received: from unknown (HELO coxu-arch-shz) ([10.239.160.30])
- by orsmga002.jf.intel.com with ESMTP; 14 Apr 2021 18:29:21 -0700
-Date: Thu, 15 Apr 2021 09:29:20 +0800 (CST)
-From: Colin Xu <colin.xu@intel.com>
-X-X-Sender: coxu_arch@coxu-arch-shz
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH 2/2] drm/i915/gvt: Remove duplicated register accessible
- check
-In-Reply-To: <20210414084813.3763353-2-zhenyuw@linux.intel.com>
-Message-ID: <alpine.LNX.2.22.419.2104150929020.5599@coxu-arch-shz>
-References: <20210414084813.3763353-1-zhenyuw@linux.intel.com>
- <20210414084813.3763353-2-zhenyuw@linux.intel.com>
-User-Agent: Alpine 2.22 (LNX 419 2020-04-12)
+ Thu, 15 Apr 2021 01:43:24 +0000 (UTC)
+Received: from bricomp.com.sg (unknown [218.146.86.246])
+ by bricomp.com.sg (Postfix) with ESMTPA id 966B62726EE6
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 15 Apr 2021 09:33:41 +0800 (SGT)
+From: "Md  -  ." <mailer-daemon@bricomp.com.sg>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: 11: qA-Partnership | 3.4m
+Date: 15 Apr 2021 03:34:17 +0200
+Message-ID: <20210415033415.FAC3302A7B4EF133@bricomp.com.sg>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -50,51 +37,53 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, intel-gvt-dev@lists.freedesktop.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: smtpfox-j48lu@stplcapbraila.ro
+Content-Type: multipart/mixed; boundary="===============0888018636=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 14 Apr 2021, Zhenyu Wang wrote:
+--===============0888018636==
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-> Looks this duplication was missed in code rebase. Remove extra check.
->
-> Cc: Yan Zhao <yan.y.zhao@intel.com>
-> Fixes: 02dd2b12a685 ("drm/i915/gvt: unify lri cmd handler and mmio handlers")
-> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> ---
-> drivers/gpu/drm/i915/gvt/cmd_parser.c | 5 -----
-> 1 file changed, 5 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> index 01c1d1b36acd..ca9c9e27a43d 100644
-> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> @@ -948,11 +948,6 @@ static int cmd_reg_handler(struct parser_exec_state *s,
->
-> 	/* below are all lri handlers */
-> 	vreg = &vgpu_vreg(s->vgpu, offset);
-> -	if (!intel_gvt_mmio_is_cmd_accessible(gvt, offset)) {
-> -		gvt_vgpu_err("%s access to non-render register (%x)\n",
-> -				cmd, offset);
-> -		return -EBADRQC;
-> -	}
->
-> 	if (is_cmd_update_pdps(offset, s) &&
-> 	    cmd_pdp_mmio_update_handler(s, offset, index))
-> -- 
-> 2.31.0
->
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
->
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<DIV>Greetings.</DIV>
+<DIV><BR></DIV>
+<DIV>I am looking to work with you to engage in a profit oriented Investmen=
+t ventures in your country and perhaps with your assistance, we could get g=
+ood Return on Investment (ROI).</DIV>
+<DIV><BR></DIV>
+<DIV>I have the directive of Sheikh Mubarak AL-Thani to source for a partne=
+r abroad who can accommodate 200M USD for Investment. The sum&nbsp;was deri=
+ved from a Supply Contract executed by&nbsp;a foreign company with Qatar Pe=
+troleum Company in Doha - Qatar.</DIV>
+<DIV><BR></DIV>
+<DIV>We shall&nbsp;execute the transaction under a legitimate arrangement w=
+ithout breaking the law&nbsp;to ensure funds are transferred to you as the =
+lawful beneficiary.</DIV>
+<DIV><BR></DIV>
+<DIV>More details will follow upon your reply.</DIV>
+<DIV><BR></DIV>
+<DIV>Regards,</DIV>
+<DIV><BR></DIV>
+<DIV>Mohammed.</DIV>
+<DIV><BR></DIV>
+<DIV>--</DIV>
+<DIV>This message has been scanned for viruses and dangerous content by Mai=
+lScanner, and is believed to be clean.</DIV></BODY></HTML>
 
-Reviewed-by: Colin Xu <colin.xu@intel.com>
+--===============0888018636==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0888018636==--
