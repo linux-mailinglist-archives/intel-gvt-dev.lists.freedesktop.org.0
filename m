@@ -1,41 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F52836173A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Apr 2021 03:49:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77A89361B52
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Apr 2021 10:34:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F2F376EB22;
-	Fri, 16 Apr 2021 01:49:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2298D6E077;
+	Fri, 16 Apr 2021 08:34:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 870726EB20
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 449956E077
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Apr 2021 01:49:16 +0000 (UTC)
-IronPort-SDR: 61KoKkeRPDFTJFFoBAXykXr4LFa7SP3UNI+xloLtgW1hZkOb05evIXz46RF+8e+kRdj+MSyYdM
- nPSwS/crLYxA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9955"; a="256290505"
-X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="256290505"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2021 18:49:15 -0700
-IronPort-SDR: 8qNf+6srL4i7NeoV5U+RDEb0y3cuogonkOZOTBasp9J116uQy3wcY/g+zG17jQ0DixRl+TrXGf
- UHATfFHCC+AQ==
+ Fri, 16 Apr 2021 08:34:04 +0000 (UTC)
+IronPort-SDR: 7yq4KCNAbt91e6OEt6P3BKNII9aTFgIx1CyOskyYRVy90GCdwPEriFagtvGOD+6fVsEY/nZK+2
+ vjmD8U/chVlA==
+X-IronPort-AV: E=McAfee;i="6200,9189,9955"; a="280327589"
+X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="280327589"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Apr 2021 01:34:03 -0700
+IronPort-SDR: fSCvB1qOa0v+wTpVokqc5acxgfOHUGGpnjEjApeopvOhW69B7yIe+IHaaUYIOwwQ4fFgLIOWWd
+ 7Hhc4w9cr6ag==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="444364365"
-Received: from lkp-server02.sh.intel.com (HELO fa9c8fcc3464) ([10.239.97.151])
- by fmsmga004.fm.intel.com with ESMTP; 15 Apr 2021 18:49:13 -0700
-Received: from kbuild by fa9c8fcc3464 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lXDbc-0001CO-AW; Fri, 16 Apr 2021 01:49:12 +0000
-Date: Fri, 16 Apr 2021 09:49:07 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
- 01f98ffd51adf08bc2e4074afa0b9a4d2932e0c5
-Message-ID: <6078ed13.qIKFyYn7G57OdJEq%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="425514471"
+Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.26])
+ by orsmga008.jf.intel.com with ESMTP; 16 Apr 2021 01:34:02 -0700
+From: Colin Xu <colin.xu@intel.com>
+To: zhenyuw@linux.intel.com,
+	intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: Prevent divided by zero when calculating
+ refresh rate
+Date: Fri, 16 Apr 2021 16:33:55 +0800
+Message-Id: <20210416083355.159305-1-colin.xu@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -49,210 +47,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: colin.xu@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-next-fixes
-branch HEAD: 01f98ffd51adf08bc2e4074afa0b9a4d2932e0c5  drm/i915/gvt: Remove duplicated register accessible check
+To get refresh rate as vblank timer period and keep the precision, the
+calculation of rate is multiplied by 1000. However old logic was using:
+rate = pixel clock / (h * v / 1000). When the h/v total is invalid, like
+all 0, h * v / 1000 will be rounded to 0, which leads to a divided by 0
+fault.
 
-elapsed time: 723m
+0 H/V are already checked above. Instead of divide after divide, refine
+the calculation to divide after multiply: "pixel clock * 1000 / (h * v)"
+Guest driver should guarantee the correctness of the timing regs' value.
 
-configs tested: 179
-configs skipped: 2
+Fixes: 6a4500c7b83f ("drm/i915/gvt: Get accurate vGPU virtual display
+refresh rate from vreg")
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-i386                             allyesconfig
-riscv                            allyesconfig
-arm                       aspeed_g4_defconfig
-xtensa                         virt_defconfig
-arm                          gemini_defconfig
-h8300                            alldefconfig
-riscv                    nommu_k210_defconfig
-um                               allmodconfig
-powerpc                     tqm5200_defconfig
-ia64                        generic_defconfig
-csky                                defconfig
-mips                          rb532_defconfig
-m68k                             alldefconfig
-arc                         haps_hs_defconfig
-powerpc                      ppc64e_defconfig
-powerpc                 mpc834x_mds_defconfig
-powerpc                      makalu_defconfig
-arm                    vt8500_v6_v7_defconfig
-powerpc                     mpc5200_defconfig
-sh                         apsh4a3a_defconfig
-powerpc                     taishan_defconfig
-s390                             alldefconfig
-arm                          pxa168_defconfig
-sh                          rsk7269_defconfig
-arm                        realview_defconfig
-mips                      maltaaprp_defconfig
-h8300                     edosk2674_defconfig
-powerpc                    klondike_defconfig
-mips                     cu1000-neo_defconfig
-powerpc                 mpc832x_mds_defconfig
-sparc64                          alldefconfig
-um                                allnoconfig
-sh                          polaris_defconfig
-m68k                        m5307c3_defconfig
-ia64                            zx1_defconfig
-sh                           se7619_defconfig
-arm                       spear13xx_defconfig
-powerpc                 mpc832x_rdb_defconfig
-powerpc                       ebony_defconfig
-arm                           sama5_defconfig
-mips                            ar7_defconfig
-m68k                        m5272c3_defconfig
-powerpc                     tqm8560_defconfig
-nios2                            allyesconfig
-sh                ecovec24-romimage_defconfig
-arm                          simpad_defconfig
-powerpc                      ppc44x_defconfig
-powerpc                 mpc836x_rdk_defconfig
-powerpc                     tqm8555_defconfig
-arm                          iop32x_defconfig
-sh                           sh2007_defconfig
-powerpc                     stx_gp3_defconfig
-riscv                          rv32_defconfig
-sh                          rsk7203_defconfig
-arm                        vexpress_defconfig
-sh                  sh7785lcr_32bit_defconfig
-arm                            mps2_defconfig
-arm                        trizeps4_defconfig
-sh                           se7705_defconfig
-mips                        maltaup_defconfig
-ia64                         bigsur_defconfig
-um                               alldefconfig
-arm                        clps711x_defconfig
-riscv                            alldefconfig
-arm                       cns3420vb_defconfig
-mips                       bmips_be_defconfig
-riscv                             allnoconfig
-arm                       mainstone_defconfig
-sh                          sdk7786_defconfig
-arm                        neponset_defconfig
-arm                      integrator_defconfig
-arm                        multi_v7_defconfig
-arm                         cm_x300_defconfig
-arm                          pxa910_defconfig
-arm                           sunxi_defconfig
-powerpc                 mpc8272_ads_defconfig
-sh                            titan_defconfig
-arm                        magician_defconfig
-powerpc                     skiroot_defconfig
-sh                        sh7757lcr_defconfig
-nios2                         3c120_defconfig
-arm                          moxart_defconfig
-powerpc                        fsp2_defconfig
-m68k                       m5275evb_defconfig
-arm                         palmz72_defconfig
-powerpc                    sam440ep_defconfig
-mips                           ip32_defconfig
-mips                  decstation_64_defconfig
-powerpc                        cell_defconfig
-sh                     sh7710voipgw_defconfig
-arm                      tct_hammer_defconfig
-sh                        apsh4ad0a_defconfig
-arm                        mvebu_v7_defconfig
-alpha                               defconfig
-arm                           h3600_defconfig
-powerpc64                           defconfig
-sh                        edosk7760_defconfig
-arc                           tb10x_defconfig
-powerpc               mpc834x_itxgp_defconfig
-mips                        nlm_xlr_defconfig
-arm                  colibri_pxa270_defconfig
-arm                      jornada720_defconfig
-mips                            e55_defconfig
-ia64                             alldefconfig
-powerpc                     kilauea_defconfig
-m68k                          multi_defconfig
-mips                        workpad_defconfig
-arm                         s3c6400_defconfig
-i386                             alldefconfig
-powerpc                    mvme5100_defconfig
-sh                             shx3_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a003-20210415
-x86_64               randconfig-a002-20210415
-x86_64               randconfig-a005-20210415
-x86_64               randconfig-a001-20210415
-x86_64               randconfig-a006-20210415
-x86_64               randconfig-a004-20210415
-i386                 randconfig-a003-20210415
-i386                 randconfig-a006-20210415
-i386                 randconfig-a001-20210415
-i386                 randconfig-a005-20210415
-i386                 randconfig-a004-20210415
-i386                 randconfig-a002-20210415
-i386                 randconfig-a015-20210415
-i386                 randconfig-a014-20210415
-i386                 randconfig-a013-20210415
-i386                 randconfig-a012-20210415
-i386                 randconfig-a016-20210415
-i386                 randconfig-a011-20210415
-riscv                    nommu_virt_defconfig
-riscv                               defconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a014-20210415
-x86_64               randconfig-a015-20210415
-x86_64               randconfig-a011-20210415
-x86_64               randconfig-a013-20210415
-x86_64               randconfig-a012-20210415
-x86_64               randconfig-a016-20210415
-
+Reported-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+Signed-off-by: Colin Xu <colin.xu@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/gpu/drm/i915/gvt/handlers.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index 477badfcb258..dda320749c65 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -669,8 +669,8 @@ static void vgpu_update_refresh_rate(struct intel_vgpu *vgpu)
+ 	link_n = vgpu_vreg_t(vgpu, PIPE_LINK_N1(TRANSCODER_A));
+ 
+ 	/* Get H/V total from transcoder timing */
+-	htotal = (vgpu_vreg_t(vgpu, HTOTAL(TRANSCODER_A)) >> TRANS_HTOTAL_SHIFT) + 1;
+-	vtotal = (vgpu_vreg_t(vgpu, VTOTAL(TRANSCODER_A)) >> TRANS_VTOTAL_SHIFT) + 1;
++	htotal = (vgpu_vreg_t(vgpu, HTOTAL(TRANSCODER_A)) >> TRANS_HTOTAL_SHIFT);
++	vtotal = (vgpu_vreg_t(vgpu, VTOTAL(TRANSCODER_A)) >> TRANS_VTOTAL_SHIFT);
+ 
+ 	if (dp_br && link_n && htotal && vtotal) {
+ 		u64 pixel_clk = 0;
+@@ -682,7 +682,7 @@ static void vgpu_update_refresh_rate(struct intel_vgpu *vgpu)
+ 		pixel_clk *= MSEC_PER_SEC;
+ 
+ 		/* Calcuate refresh rate by (pixel_clk / (h_total * v_total)) */
+-		new_rate = DIV64_U64_ROUND_CLOSEST(pixel_clk, div64_u64(mul_u32_u32(htotal, vtotal), MSEC_PER_SEC));
++		new_rate = DIV64_U64_ROUND_CLOSEST(mul_u64_u32_shr(pixel_clk, MSEC_PER_SEC, 0), mul_u32_u32(htotal + 1, vtotal + 1));
+ 
+ 		if (*old_rate != new_rate)
+ 			*old_rate = new_rate;
+-- 
+2.31.1
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
