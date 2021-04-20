@@ -2,30 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99D8D36399A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Apr 2021 05:08:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DCF6A36507C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Apr 2021 04:51:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5AFF189B69;
-	Mon, 19 Apr 2021 03:08:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7B35A6E0C6;
+	Tue, 20 Apr 2021 02:51:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 602 seconds by postgrey-1.36 at gabe;
- Mon, 19 Apr 2021 03:08:17 UTC
-Received: from info.micko.top (unknown [106.75.191.81])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5036589B69
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Apr 2021 03:08:17 +0000 (UTC)
-Received: from SC-201807261017 (218.73.136.45) by info.micko.top id
- hfjq220e97cr for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Apr 2021 10:58:13 +0800 (envelope-from <mk7@info.micko.top>)
-From: "Katherine" <Katherine@btrcv.com>
-Subject: Pneumatic valve and Manual valve
-To: intel-gvt-dev@lists.freedesktop.org
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C353E6E0A5;
+ Tue, 20 Apr 2021 02:51:18 +0000 (UTC)
+IronPort-SDR: Xk7VV9szf2dF9btDT45aGbNKRqShDgeU0XKq5EKkoc68PU3dUL8qKTbwrGwsGuqN4YWnykP7BP
+ SzPXvORaNamA==
+X-IronPort-AV: E=McAfee;i="6200,9189,9959"; a="195546111"
+X-IronPort-AV: E=Sophos;i="5.82,235,1613462400"; 
+ d="asc'?scan'208";a="195546111"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Apr 2021 19:51:17 -0700
+IronPort-SDR: YPFiwrall01jqbm4EvKVWRURKfYw+wsTHY1hTmqBrk+Vb+koB8mYWrXM0mnS+pmnXfpOZXZA7i
+ qgaIrFw/JWbQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,235,1613462400"; 
+ d="asc'?scan'208";a="385167209"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by orsmga006.jf.intel.com with ESMTP; 19 Apr 2021 19:51:15 -0700
+Date: Tue, 20 Apr 2021 10:33:12 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Jani Nikula <jani.nikula@intel.com>
+Subject: [PULL] gvt-fixes
+Message-ID: <20210420023312.GL1551@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-Date: Mon, 19 Apr 2021 10:58:37 +0800
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,61 +47,73 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Katherine@btrcv.com
-Content-Type: multipart/mixed; boundary="===============1216056571=="
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
+ Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
+ Hang" <hang.yuan@intel.com>
+Content-Type: multipart/mixed; boundary="===============0261143125=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210419030819.5AFF189B69@gabe.freedesktop.org>
 
---===============1216056571==
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: base64
+
+--===============0261143125==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="E75mJrUy8lRi9cGN"
 Content-Disposition: inline
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgbmFtZT1HRU5FUkFUT1IgY29udGVudD0iTVNIVE1M
-IDExLjAwLjk2MDAuMTY0MjgiPjwvSEVBRD4NCjxCT0RZPg0KPERJViBzdHlsZT0iV0hJVEUtU1BB
-Q0U6IG5vcm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBub25lOyBDT0xP
-UjogcmdiKDAsMCwwKTsgRk9OVDogMTRweC8yMXB4IOW+rui9r+mbhem7kTsgV0lET1dTOiAxOyBM
-RVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUp
-OyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHgiPg0KPERJ
-Vj5EZWFyIHNpcu+8mjwvRElWPg0KPERJVj4mbmJzcDsgJm5ic3A7PFNQQU4gc3R5bGU9IlRFWFQt
-QUxJR046IGp1c3RpZnk7IExJTkUtSEVJR0hUOiAxLjU7IEJBQ0tHUk9VTkQtQ09MT1I6IHRyYW5z
-cGFyZW50Ij4mbmJzcDs8L1NQQU4+PFNQQU4gc3R5bGU9IlRFWFQtQUxJR046IGp1c3RpZnk7IExJ
-TkUtSEVJR0hUOiAxLjU7IEJBQ0tHUk9VTkQtQ09MT1I6IHRyYW5zcGFyZW50Ij4mbmJzcDtXZSBh
-cmUgdGhlIG1hbnVmYWN0dXJlcnMgb2Y8U1RST05HPiBwbmV1bWF0aWMgY29udHJvbCB2YWx2ZTwv
-U1RST05HPi5PdXIgZmFjdG9yeSBpcyBhbHJlYWR5IHNwZWNpYWxpemVkPC9TUEFOPjxGT05UIHN0
-eWxlPSJURVhULUFMSUdOOiBqdXN0aWZ5OyBMSU5FLUhFSUdIVDogMS41OyBCQUNLR1JPVU5ELUNP
-TE9SOiB0cmFuc3BhcmVudCIgZmFjZT0iQXJpYWwsIE1pY3Jvc29mdCBZYUhlaSwgXFw1RkFF6L2v
-6ZuF6buRLCBcXDVCOELkvZMsIE1hbGd1biBHb3RoaWMsIE1laXJ5bywgc2Fucy1zZXJpZiI+PFNQ
-QU4gc3R5bGU9IkxJTkUtSEVJR0hUOiAyNnB4OyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjQ3LDI0
-OCwyNTApIj48Rk9OVCBjb2xvcj0jMzMzMzMzPiZuYnNwOzwvRk9OVD5pbiBwbmV1bWF0aWMgdmFs
-dmUgZm9yIHR3ZW50eSB5ZWFycy48L1NQQU4+PC9GT05UPjwvRElWPg0KPERJViBzdHlsZT0iVEVY
-VC1BTElHTjoganVzdGlmeSI+PEZPTlQgZmFjZT0iQXJpYWwsIE1pY3Jvc29mdCBZYUhlaSwgXFw1
-RkFF6L2v6ZuF6buRLCBcXDVCOELkvZMsIE1hbGd1biBHb3RoaWMsIE1laXJ5bywgc2Fucy1zZXJp
-ZiI+PFNQQU4gc3R5bGU9IkxJTkUtSEVJR0hUOiAyNnB4OyBCQUNLR1JPVU5ELUNPTE9SOiByZ2Io
-MjQ3LDI0OCwyNTApIj4mbmJzcDsgJm5ic3A7ICZuYnNwO1dlIGFyZSBjb25maWRlbnQgdGhhdCB5
-b3UgY2FuIGdldCB0aGUgYmVzdCBxdWFsaXR5IHByb2R1Y3RzIGF0IHNhbWUgcHJpY2UuPC9TUEFO
-PjwvRk9OVD48L0RJVj4NCjxESVYgc3R5bGU9IlRFWFQtQUxJR046IGp1c3RpZnkiPjxGT05UIGZh
-Y2U9IkFyaWFsLCBNaWNyb3NvZnQgWWFIZWksIFxcNUZBRei9r+mbhem7kSwgXFw1QjhC5L2TLCBN
-YWxndW4gR290aGljLCBNZWlyeW8sIHNhbnMtc2VyaWYiPjxTUEFOIHN0eWxlPSJMSU5FLUhFSUdI
-VDogMjZweDsgQkFDS0dST1VORC1DT0xPUjogcmdiKDI0NywyNDgsMjUwKSI+Jm5ic3A7ICZuYnNw
-OyAmbmJzcDtJZiAmbmJzcDt5b3UgaGF2ZSBhbnkgaW50ZXJlc3QgaW4gdXMsd2VsY29tZSB0byBj
-b250cmNhdCBtZSxJIHdpbGwgc2VuZCB5b3UgYSBjYXRhbG9ndWUgb2Ygb3VyIGNvbXBhbnkncyBw
-cm9kdWN0cy48L1NQQU4+PC9GT05UPjwvRElWPg0KPERJViBzdHlsZT0iVEVYVC1BTElHTjoganVz
-dGlmeSI+PEZPTlQgZmFjZT0iQXJpYWwsIE1pY3Jvc29mdCBZYUhlaSwgXFw1RkFF6L2v6ZuF6buR
-LCBcXDVCOELkvZMsIE1hbGd1biBHb3RoaWMsIE1laXJ5bywgc2Fucy1zZXJpZiI+PFNQQU4gc3R5
-bGU9IkxJTkUtSEVJR0hUOiAyNnB4OyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjQ3LDI0OCwyNTAp
-Ij4mbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsgPEZPTlQgc3R5bGU9IkJBQ0tHUk9VTkQtQ09MT1I6
-ICNmZmZmZmYiIGZhY2U95b6u6L2v6ZuF6buRPk91ciB3ZWJzaXRlOnd3dy5idHJjdi5jb208L0ZP
-TlQ+PC9TUEFOPjwvRk9OVD48L0RJVj4NCjxESVYgc3R5bGU9IlRFWFQtQUxJR046IGp1c3RpZnki
-PjxGT05UIGZhY2U9IkFyaWFsLCBNaWNyb3NvZnQgWWFIZWksIFxcNUZBRei9r+mbhem7kSwgXFw1
-QjhC5L2TLCBNYWxndW4gR290aGljLCBNZWlyeW8sIHNhbnMtc2VyaWYiPjxTUEFOIHN0eWxlPSJM
-SU5FLUhFSUdIVDogMjZweDsgQkFDS0dST1VORC1DT0xPUjogcmdiKDI0NywyNDgsMjUwKSI+Jm5i
-c3A7ICZuYnNwOyAmbmJzcDtUaGFua3MgYW5kIHJlZ2FyZHM8L1NQQU4+PC9GT05UPjwvRElWPjwv
-RElWPjxCUiBjbGFzcz1BcHBsZS1pbnRlcmNoYW5nZS1uZXdsaW5lPjwvQk9EWT48L0hUTUw+DQo=
 
---===============1216056571==
+--E75mJrUy8lRi9cGN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Hi,
+
+Here's one BDW regression fix for cmd parser rework in 5.12 on recent
+Windows guest driver update. Sorry to be a bit late, hopefully can
+still catch up.
+
+Thanks!
+---
+The following changes since commit b6a37a93c9ac3900987c79b726d0bb3699d8db4e:
+
+  drm/i915: Fix invalid access to ACPI _DSM objects (2021-04-07 19:07:44 -0400)
+
+are available in the Git repository at:
+
+  https://github.com/intel/gvt-linux tags/gvt-fixes-2021-04-20
+
+for you to fetch changes up to 6b5b2a5bcfe9a250da19bac4ef7cabdc81d154ec:
+
+  drm/i915/gvt: Fix BDW command parser regression (2021-04-16 13:41:41 +0800)
+
+----------------------------------------------------------------
+gvt-fixes-2021-04-20
+
+- Fix cmd parser regression on BDW (Zhenyu)
+
+----------------------------------------------------------------
+Zhenyu Wang (1):
+      drm/i915/gvt: Fix BDW command parser regression
+
+ drivers/gpu/drm/i915/gvt/cmd_parser.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
+
+
+--E75mJrUy8lRi9cGN
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYH49YwAKCRCxBBozTXgY
+JyLvAKCN8YNnY+37AxKefFWs1kNu6noOOwCeJfq1nqoU6G/ygBB+lDkZXZzWwOE=
+=nvgk
+-----END PGP SIGNATURE-----
+
+--E75mJrUy8lRi9cGN--
+
+--===============0261143125==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -103,4 +124,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1216056571==--
+--===============0261143125==--
