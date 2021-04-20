@@ -2,39 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCF6A36507C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Apr 2021 04:51:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAA733650FB
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Apr 2021 05:36:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7B35A6E0C6;
-	Tue, 20 Apr 2021 02:51:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3688689DEC;
+	Tue, 20 Apr 2021 03:36:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C353E6E0A5;
- Tue, 20 Apr 2021 02:51:18 +0000 (UTC)
-IronPort-SDR: Xk7VV9szf2dF9btDT45aGbNKRqShDgeU0XKq5EKkoc68PU3dUL8qKTbwrGwsGuqN4YWnykP7BP
- SzPXvORaNamA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9959"; a="195546111"
-X-IronPort-AV: E=Sophos;i="5.82,235,1613462400"; 
- d="asc'?scan'208";a="195546111"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Apr 2021 19:51:17 -0700
-IronPort-SDR: YPFiwrall01jqbm4EvKVWRURKfYw+wsTHY1hTmqBrk+Vb+koB8mYWrXM0mnS+pmnXfpOZXZA7i
- qgaIrFw/JWbQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,235,1613462400"; 
- d="asc'?scan'208";a="385167209"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by orsmga006.jf.intel.com with ESMTP; 19 Apr 2021 19:51:15 -0700
-Date: Tue, 20 Apr 2021 10:33:12 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Jani Nikula <jani.nikula@intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20210420023312.GL1551@zhen-hp.sh.intel.com>
+X-Greylist: delayed 2818 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Apr 2021 03:36:37 UTC
+Received: from drff.club (unknown [129.211.182.50])
+ by gabe.freedesktop.org (Postfix) with SMTP id A59AA89DEA
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 20 Apr 2021 03:36:37 +0000 (UTC)
+Received: from User ([129.205.112.45])
+ (envelope-sender <pierrebauer3@outlook.com>)
+ by 10.206.0.11 with ESMTP
+ for <inkari@cc.hut.fi>; Tue, 20 Apr 2021 10:48:36 +0800
+From: "Pierre Bauer"<pierrebauer3@outlook.com>
+Subject: My Dear Friend .
+Date: Tue, 20 Apr 2021 03:49:53 -0000
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Antivirus: Avast (VPS 210419-8, 04/19/2021), Outbound message
+X-Antivirus-Status: Clean
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,81 +41,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============0261143125=="
+Reply-To: pierrebauersgreuk@outlook.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210420033639.3688689DEC@gabe.freedesktop.org>
 
+My Dear Friend,
 
---===============0261143125==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="E75mJrUy8lRi9cGN"
-Content-Disposition: inline
+It is my humble pleasure to solicit your strictest confidence in this transaction. My name is: Pierre Bauer, the financial director of Siemens Gamesa Renewable Energy UK. I am the officer in-charge of offshore remittances to contractors / beneficiaries. We are seeking your assistance to transfer the sum of Forty Seven Million, Eight Hundred Thousand British Pound (GBP 47,800,000.00) to your account for private Investment.
 
+This amount accrued from an Over-invoiced Contract amount for the Construction of an Oil Refinery Sub- station from 2016 to 2019 to expatriate Companies.
 
---E75mJrUy8lRi9cGN
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+The contract was originally valued for One Hundred Million British Pound GBP100, 000,000.00) but we over-invoiced the figure to read GBP 147,800,000.00. Therefore, we have perfected plans to quickly TRANSFER the extra GBP 47,800,000.00 to your Bank Account.
 
+This contract has been completely executed and the original Contractors have been paid all their Contract Bills less this GBP 47,800,000.00 through our partner Banks in UK, United States and Europe.
 
-Hi,
+We shall forward your personal details to the Legal Department of the Bank for the Payment process of the balance GBP 47.8 Million.
 
-Here's one BDW regression fix for cmd parser rework in 5.12 on recent
-Windows guest driver update. Sorry to be a bit late, hopefully can
-still catch up.
+Be rest assured that all modalities are set for smooth execution of this viable transaction.
 
-Thanks!
----
-The following changes since commit b6a37a93c9ac3900987c79b726d0bb3699d8db4e:
+Reply to this E-mail: pierrebauersre@outlook.com
 
-  drm/i915: Fix invalid access to ACPI _DSM objects (2021-04-07 19:07:44 -0400)
+I look forward to your respond to proceed.
 
-are available in the Git repository at:
+Regards,
+Pierre Bauer
 
-  https://github.com/intel/gvt-linux tags/gvt-fixes-2021-04-20
-
-for you to fetch changes up to 6b5b2a5bcfe9a250da19bac4ef7cabdc81d154ec:
-
-  drm/i915/gvt: Fix BDW command parser regression (2021-04-16 13:41:41 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2021-04-20
-
-- Fix cmd parser regression on BDW (Zhenyu)
-
-----------------------------------------------------------------
-Zhenyu Wang (1):
-      drm/i915/gvt: Fix BDW command parser regression
-
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 19 +++++++++++++------
- 1 file changed, 13 insertions(+), 6 deletions(-)
-
-
---E75mJrUy8lRi9cGN
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYH49YwAKCRCxBBozTXgY
-JyLvAKCN8YNnY+37AxKefFWs1kNu6noOOwCeJfq1nqoU6G/ygBB+lDkZXZzWwOE=
-=nvgk
------END PGP SIGNATURE-----
-
---E75mJrUy8lRi9cGN--
-
---===============0261143125==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+This email has been checked for viruses by Avast antivirus software.
+https://www.avast.com/antivirus
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0261143125==--
