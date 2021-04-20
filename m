@@ -2,31 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E23E365CC2
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Apr 2021 18:00:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5101A366318
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Apr 2021 02:28:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B35D6E842;
-	Tue, 20 Apr 2021 16:00:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F0B956E924;
+	Wed, 21 Apr 2021 00:28:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 44833 seconds by postgrey-1.36 at gabe;
- Tue, 20 Apr 2021 16:00:06 UTC
-Received: from mail.localhost (unknown [103.129.15.152])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6685D6E842;
- Tue, 20 Apr 2021 16:00:06 +0000 (UTC)
-Received: from User ([129.205.112.45]) by localhost with
- MailEnable ESMTPA; Tue, 20 Apr 2021 07:58:07 +0700
-From: "Pierre Bauer"<pierrebauer3@outlook.com>
-Subject: My Dear Friend -!-
-Date: Tue, 20 Apr 2021 01:59:25 -0000
+X-Greylist: delayed 7901 seconds by postgrey-1.36 at gabe;
+ Wed, 21 Apr 2021 00:28:31 UTC
+Received: from mail.aamcn.com.cn (unknown [47.102.134.75])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 87DFB6E924
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 21 Apr 2021 00:28:31 +0000 (UTC)
+Received: from User (unknown [202.38.180.78])
+ by mail.aamcn.com.cn (Postfix) with SMTP id B8BC81C749C;
+ Wed, 21 Apr 2021 05:23:59 +0800 (CST)
+From: "Fred Grenville"<test@organizacionitalcambio.com>
+Subject: Pls Confirm!
+Date: Tue, 20 Apr 2021 14:24:23 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Antivirus: Avast (VPS 210419-8, 04/19/2021), Outbound message
-X-Antivirus-Status: Clean
-Message-ID: <B6FAC1D7F7484F0EAB0B29AA25398347.MAI@localhost>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,37 +38,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: pierrebauersgreuk@outlook.com
+Reply-To: benobi236@yahoo.com.co
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210421002831.F0B956E924@gabe.freedesktop.org>
 
-My Dear Friend,
+Good day
 
-It is my humble pleasure to solicit your strictest confidence in this transaction. My name is: Pierre Bauer, the financial director of Siemens Gamesa Renewable Energy UK. I am the officer in-charge of offshore remittances to contractors / beneficiaries. We are seeking your assistance to transfer the sum of Forty Seven Million, Eight Hundred Thousand British Pound (GBP 47,800,000.00) to your account for private Investment.
+How are you today, did you receive the email I sent you three days ago? For important discussion on ( Investment ) If not please reply me back so that I will resend it again.
 
-This amount accrued from an Over-invoiced Contract amount for the Construction of an Oil Refinery Sub- station from 2016 to 2019 to expatriate Companies.
+Please confirm if you did ( posteazy62@gmail.com ).
 
-The contract was originally valued for One Hundred Million British Pound GBP100, 000,000.00) but we over-invoiced the figure to read GBP 147,800,000.00. Therefore, we have perfected plans to quickly TRANSFER the extra GBP 47,800,000.00 to your Bank Account.
-
-This contract has been completely executed and the original Contractors have been paid all their Contract Bills less this GBP 47,800,000.00 through our partner Banks in UK, United States and Europe.
-
-We shall forward your personal details to the Legal Department of the Bank for the Payment process of the balance GBP 47.8 Million.
-
-Be rest assured that all modalities are set for smooth execution of this viable transaction.
-
-Reply to this E-mail: pierrebauersre@outlook.com
-
-I look forward to your respond to proceed.
-
-Regards,
-Pierre Bauer
-
--- 
-This email has been checked for viruses by Avast antivirus software.
-https://www.avast.com/antivirus
-
+Best Regards,
+Mr. Fred Grenville
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
