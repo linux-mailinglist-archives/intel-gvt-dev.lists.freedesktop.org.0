@@ -2,33 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0FC2367922
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Apr 2021 07:15:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 76D333682BD
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Apr 2021 16:52:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 168BB6EA27;
-	Thu, 22 Apr 2021 05:15:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 207CA6EAA6;
+	Thu, 22 Apr 2021 14:51:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 601 seconds by postgrey-1.36 at gabe;
- Thu, 22 Apr 2021 05:15:47 UTC
-Received: from server1.domain.com (unknown [23.91.97.141])
- by gabe.freedesktop.org (Postfix) with ESMTP id E076D6EA27
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Apr 2021 05:15:47 +0000 (UTC)
-Received: by server1.domain.com id hg43880e97ca for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Apr 2021 13:05:45 +0800 (envelope-from
- <bounce-1268-3041480-1268-248@uoov.top>)
-Date: Thu, 22 Apr 2021 13:05:44 +0800
-To: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-From: bella <campbelljing@aliyun.com>
-Subject: Re: RMT Precision CNC Machining services.
-Message-ID: <cc79c11fed3aff10ee5de8a804ac2394@10.7.25.119>
-X-Priority: 3
-X-Mailer: Email Sending System
-X-Complaints-To: admin@qq.com
-X-MessageID: Nnx8fHwxNDkwOXx8fHxpbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZ3x8fHw2fHx8fDF8fHx8MA%3D%3D
-X-Report-Abuse: <http://23.91.97.141/oem/report_abuse.php?mid=Nnx8fHwxNDkwOXx8fHxpbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZ3x8fHw2fHx8fDF8fHx8MA%3D%3D>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0C8E66EAA6;
+ Thu, 22 Apr 2021 14:51:57 +0000 (UTC)
+IronPort-SDR: EA6cjr8F8Bp+Rn4zY8tLKXuLjXGMxJaAyi7KOUy2eNyjKAosFcKOxRDx2KA0DpkrM/o0n6KFnt
+ s8z6V0blmh5A==
+X-IronPort-AV: E=McAfee;i="6200,9189,9962"; a="192711328"
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="192711328"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2021 07:51:56 -0700
+IronPort-SDR: 7ThSNZxN7/DzyQgxwuyvs2UwLBv5+Npjjt4tBmB3pqEMo2OeDtsP032DXqUh7QyXbL0WJvprKc
+ ZQSHgHTKjOrQ==
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="427976473"
+Received: from rlocatel-mobl1.ger.corp.intel.com (HELO localhost)
+ ([10.252.36.200])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2021 07:51:50 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>, Arnd Bergmann <arnd@kernel.org>
+Subject: Re: [PATCH] vfio/gvt: fix DRM_I915_GVT dependency on VFIO_MDEV
+In-Reply-To: <20210422135810.GG2047089@ziepe.ca>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20210422133547.1861063-1-arnd@kernel.org>
+ <20210422135810.GG2047089@ziepe.ca>
+Date: Thu, 22 Apr 2021 17:51:47 +0300
+Message-ID: <87sg3i74os.fsf@intel.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -42,22 +48,62 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: bella <campbelljing@aliyun.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Kevin Tian <kevin.tian@intel.com>, Cornelia Huck <cohuck@redhat.com>,
+ Arnd Bergmann <arnd@arndb.de>, David Airlie <airlied@linux.ie>,
+ intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Andrew Morton <akpm@linux-foundation.org>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-RGVhciBTaXLvvIwKCldlIGNhbiBoZWxwIHlvdSB3aXRoIHBsYXN0aWMgLyBtZXRhbCBwYXJ0cyBx
-dWljayBydW4gcHJvZHVjdGlvbi4KWW91IGNhbiByZWx5IG9uIHVzIFJNVCBmb3IgR29vZCBDYXBh
-Y2l0eSwgQ29zdCBlZmZlY3RpdmUsIEZhc3QgZGVsaXZlcnksIFF1YWxpdHkgSW5zdXJhbmNlLgpX
-ZSBoYXZlIGJlZW4gd29ya2VkIGZvciBjb21wYW5pZXMgaW4gRXVyb3BlIGFuZCBOb3J0aCBBbWVy
-aWNhIG9mIEFlcm9zcGFjZSwgTWVkaWNhbCwgQXV0b21vYmlsZSwgZWxlY3Ryb25pYy4gIAoKU3Ry
-ZW5ndGggaW4gUk1UOgoxLglBZHZhbmNlZCAzRCBQcmludGluZywgQ05DIG1pbGxpbmcgYW5kIHR1
-cm5pbmcgZGV2aWNlcy4KMi4JRWxpdGUgYW5kIGV4cGVyaWVuY2VkIG1hY2hpbmlzdC4KMy4JUXVp
-Y2sgcmVzcG9uc2Ugc2VydmljZXMuCjQuCVN0cmljdCBxdWFsaXR5IGNvbnRyb2wgYW5kIGluc3Bl
-Y3Rpb24uCiAKV2UgbG9vayBmb3J3YXJkIGEgY2xvc2Uta25pdCBjb29wZXJhdGlvbiB3aXRoIHlv
-dS4KClNpbmNlcmVseSwKQmVsbGEgQ2hhbgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1haWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+
+Cc: gvt list & maintainers
+
+On Thu, 22 Apr 2021, Jason Gunthorpe <jgg@ziepe.ca> wrote:
+> On Thu, Apr 22, 2021 at 03:35:33PM +0200, Arnd Bergmann wrote:
+>> From: Arnd Bergmann <arnd@arndb.de>
+>> 
+>> The Kconfig dependency is incomplete since DRM_I915_GVT is a 'bool'
+>> symbol that depends on the 'tristate' VFIO_MDEV. This allows a
+>> configuration with VFIO_MDEV=m, DRM_I915_GVT=y and DRM_I915=y that
+>> causes a link failure:
+>> 
+>> x86_64-linux-ld: drivers/gpu/drm/i915/gvt/gvt.o: in function `available_instances_show':
+>> gvt.c:(.text+0x67a): undefined reference to `mtype_get_parent_dev'
+>> x86_64-linux-ld: gvt.c:(.text+0x6a5): undefined reference to `mtype_get_type_group_id'
+>> x86_64-linux-ld: drivers/gpu/drm/i915/gvt/gvt.o: in function `description_show':
+>> gvt.c:(.text+0x76e): undefined reference to `mtype_get_parent_dev'
+>> x86_64-linux-ld: gvt.c:(.text+0x799): undefined reference to `mtype_get_type_group_id'
+>> 
+>> Clarify the dependency by specifically disallowing the broken
+>> configuration. If VFIO_MDEV is built-in, it will work, but if
+>> VFIO_MDEV=m, the i915 driver cannot be built-in here.
+>> 
+>> Fixes: 07e543f4f9d1 ("vfio/gvt: Make DRM_I915_GVT depend on VFIO_MDEV")
+>> Fixes: 9169cff168ff ("vfio/mdev: Correct the function signatures for the mdev_type_attributes")
+>> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+>> ---
+>>  drivers/gpu/drm/i915/Kconfig | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> Oh kconfig stuff like this makes my head hurt, thanks for finding it
+>
+> I also can't see an alternative to this ugly thing, besides having the
+> i915 guys properly modularize this code someday
+>
+> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+>
+> Jason
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
