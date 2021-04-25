@@ -2,39 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B5F136A901
+	by mail.lfdr.de (Postfix) with ESMTPS id B19F136A902
 	for <lists+intel-gvt-dev@lfdr.de>; Sun, 25 Apr 2021 21:26:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8E9A189DC2;
+	by gabe.freedesktop.org (Postfix) with ESMTP id D8DE16E514;
 	Sun, 25 Apr 2021 19:26:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5A42989DC2
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 613C46E514
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 25 Apr 2021 19:26:45 +0000 (UTC)
-IronPort-SDR: C9sJn+hFfdaLsKQ4ohp6/sQ0n00prkiOuO3CPWpaFtmBojovIU0WfrLuFcwT90hb/zPN4m9uBg
- fgmKh9Zf9oQQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9965"; a="195805311"
-X-IronPort-AV: E=Sophos;i="5.82,250,1613462400"; d="scan'208";a="195805311"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ Sun, 25 Apr 2021 19:26:44 +0000 (UTC)
+IronPort-SDR: EOiCYCNiSOv3YYQjvWMsvP6lY81VvGHKUnotH1e5x3bqVfo/+cGfcMNooN2mYAyJ89N3DaOv38
+ n5S5/ViH4GCQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9965"; a="175735285"
+X-IronPort-AV: E=Sophos;i="5.82,250,1613462400"; d="scan'208";a="175735285"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Apr 2021 12:26:43 -0700
-IronPort-SDR: NilNPMclQ1YfuxcP+6B1i2bTAJkzhHsJ2tGrll8UF4T4SIVhutP89B05JYg7H1S/ig+VmL+mF2
- QxvrsgO14axg==
+IronPort-SDR: 4Lm2SQJ31wo7OaL1TqNnqwSVvXLCMRBNWpDVBhseE/YXCysfPbDFEv76tn0+DwXfFQ/dn+V9PW
+ 1+XvO++nH5WA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,250,1613462400"; d="scan'208";a="402686571"
+X-IronPort-AV: E=Sophos;i="5.82,250,1613462400"; d="scan'208";a="603982322"
 Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 25 Apr 2021 12:26:41 -0700
+ by orsmga005.jf.intel.com with ESMTP; 25 Apr 2021 12:26:41 -0700
 Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lakOu-0005g4-GP; Sun, 25 Apr 2021 19:26:40 +0000
-Date: Mon, 26 Apr 2021 03:25:49 +0800
+ id 1lakOu-0005g9-MZ; Sun, 25 Apr 2021 19:26:40 +0000
+Date: Mon, 26 Apr 2021 03:25:51 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 1f4f060f8832498d66c24f07b051ba8b47f5f436
-Message-ID: <6085c23d.8kuSEQugNDFdXuAZ%lkp@intel.com>
+Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
+ b2e057cbb05f941d736884b4d933662879645e32
+Message-ID: <6085c23f.+YnfZwjF8qAcZ2Nf%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -56,8 +56,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 1f4f060f8832498d66c24f07b051ba8b47f5f436  gvt-staging: 2021y-04m-25d-13h-59m-32s CST integration manifest
+tree/branch: https://github.com/intel/gvt-linux.git gvt-next-fixes
+branch HEAD: b2e057cbb05f941d736884b4d933662879645e32  drm/i915/gvt: Prevent divided by zero when calculating refresh rate
 
 elapsed time: 726m
 
@@ -76,11 +76,12 @@ arm                              allmodconfig
 x86_64                           allyesconfig
 i386                             allyesconfig
 riscv                            allyesconfig
-arm                     davinci_all_defconfig
-sh                           se7722_defconfig
-powerpc                     sequoia_defconfig
-mips                        bcm47xx_defconfig
-xtensa                           alldefconfig
+arm                         cm_x300_defconfig
+powerpc                          g5_defconfig
+s390                             allmodconfig
+powerpc                         wii_defconfig
+arm                        neponset_defconfig
+powerpc                     stx_gp3_defconfig
 arm                        clps711x_defconfig
 arm                         assabet_defconfig
 arc                        nsimosci_defconfig
@@ -115,7 +116,6 @@ arc                                 defconfig
 sh                               allmodconfig
 parisc                              defconfig
 s390                             allyesconfig
-s390                             allmodconfig
 parisc                           allyesconfig
 s390                                defconfig
 sparc                            allyesconfig
