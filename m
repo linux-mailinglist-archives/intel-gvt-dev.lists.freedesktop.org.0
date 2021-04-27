@@ -2,41 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B77636BD9D
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Apr 2021 05:03:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E8BA36BF03
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Apr 2021 07:50:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C709A6E8E1;
-	Tue, 27 Apr 2021 03:03:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 987CF6E8F8;
+	Tue, 27 Apr 2021 05:50:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 888056E8E1;
- Tue, 27 Apr 2021 03:03:27 +0000 (UTC)
-IronPort-SDR: Q4KDA/POy3Cz7uv4j2tPiK+9Spkzs01Ctet2ZIa9RdIIsiXXN7ADvn6h7942Zrj/VgAMyoKBOy
- YkXZ5isTufCg==
-X-IronPort-AV: E=McAfee;i="6200,9189,9966"; a="217142902"
-X-IronPort-AV: E=Sophos;i="5.82,252,1613462400"; 
- d="asc'?scan'208";a="217142902"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Apr 2021 20:03:27 -0700
-IronPort-SDR: CQ5ieFRbxplKSLTDOnlfQzNGIv+CG1WcG5/OBJF5kf2Rkf5qzcJ2rSJVDQqsrmJ1d2jOWF/CQS
- 0gdUmZ7npklw==
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8AD386E8F8;
+ Tue, 27 Apr 2021 05:50:01 +0000 (UTC)
+IronPort-SDR: A89Df+yZUD1b4YSiDWODWRHGFV0AU10cZ4rd2kBU56x/b5kmq1lXAWRQ0WOaSwRTtGWGvznWEh
+ CqspLG1Znbhw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9966"; a="175936140"
+X-IronPort-AV: E=Sophos;i="5.82,254,1613462400"; 
+ d="asc'?scan'208";a="175936140"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Apr 2021 22:50:01 -0700
+IronPort-SDR: ihXkyHJiSR8f4LOJoCndr5hUGZuTzRwRDlTYkIsHfvK8lscD0thWohtZZJnBMzI8NPCoUH+zYn
+ QT6YCh8F0FWg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,252,1613462400"; 
- d="asc'?scan'208";a="447464673"
+X-IronPort-AV: E=Sophos;i="5.82,254,1613462400"; 
+ d="asc'?scan'208";a="454518755"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga004.fm.intel.com with ESMTP; 26 Apr 2021 20:03:25 -0700
-Date: Tue, 27 Apr 2021 10:45:06 +0800
+ by FMSMGA003.fm.intel.com with ESMTP; 26 Apr 2021 22:49:58 -0700
+Date: Tue, 27 Apr 2021 13:31:39 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
 To: Jason Gunthorpe <jgg@ziepe.ca>
-Subject: Re: [PATCH 1/2] drm/i915/gvt: Move mdev attribute groups into kvmgt
- module
-Message-ID: <20210427024506.GL1551@zhen-hp.sh.intel.com>
+Subject: Re: [PATCH 2/2] Revert "vfio/gvt: Make DRM_I915_GVT depend on
+ VFIO_MDEV"
+Message-ID: <20210427053139.GO1551@zhen-hp.sh.intel.com>
 References: <20210426094143.4031527-1-zhenyuw@linux.intel.com>
- <20210426133924.GK2047089@ziepe.ca>
+ <20210426094143.4031527-2-zhenyuw@linux.intel.com>
+ <20210426105555.3cad2599@redhat.com>
+ <20210426174017.GL2047089@ziepe.ca>
 MIME-Version: 1.0
-In-Reply-To: <20210426133924.GK2047089@ziepe.ca>
+In-Reply-To: <20210426174017.GL2047089@ziepe.ca>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,82 +52,89 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Arnd Bergmann <arnd@kernel.org>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org,
- Alex Williamson <alex.williamson@redhat.com>
-Content-Type: multipart/mixed; boundary="===============1286533429=="
+Cc: Arnd Bergmann <arnd@kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
+Content-Type: multipart/mixed; boundary="===============1994126943=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============1286533429==
+--===============1994126943==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="p1zSJVlfBL7BTggM"
+	protocol="application/pgp-signature"; boundary="KjcUHqqCp23GY06r"
 Content-Disposition: inline
 
 
---p1zSJVlfBL7BTggM
+--KjcUHqqCp23GY06r
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2021.04.26 10:39:24 -0300, Jason Gunthorpe wrote:
-> On Mon, Apr 26, 2021 at 05:41:42PM +0800, Zhenyu Wang wrote:
-> > @@ -1667,19 +1773,26 @@ static struct mdev_parent_ops intel_vgpu_ops =
-=3D {
-> > =20
-> >  static int kvmgt_host_init(struct device *dev, void *gvt, const void *=
-ops)
-> >  {
-> > -	struct attribute_group **kvm_vgpu_type_groups;
-> > +	int ret;
-> > +
-> > +	ret =3D intel_gvt_init_vgpu_type_groups((struct intel_gvt *)gvt);
-> > +	if (ret)
-> > +		return ret;
-> > =20
-> >  	intel_gvt_ops =3D ops;
-> > -	if (!intel_gvt_ops->get_gvt_attrs(&kvm_vgpu_type_groups))
-> > -		return -EFAULT;
-> > -	intel_vgpu_ops.supported_type_groups =3D kvm_vgpu_type_groups;
-> > +	intel_vgpu_ops.supported_type_groups =3D gvt_vgpu_type_groups;
+On 2021.04.26 14:40:17 -0300, Jason Gunthorpe wrote:
+> On Mon, Apr 26, 2021 at 10:55:55AM -0600, Alex Williamson wrote:
+> > On Mon, 26 Apr 2021 17:41:43 +0800
+> > Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
+> >=20
+> > > This reverts commit 07e543f4f9d116d6b4240644191dee6388ef4a85.
+> >=20
+> > 07e543f4f9d1 ("vfio/gvt: Make DRM_I915_GVT depend on VFIO_MDEV")
+> >=20
+> > > With all mdev handing moved to kvmgt module, only kvmgt should depend
+> > > on VFIO_MDEV. So revert this one.
+> > >=20
+> > > Cc: Arnd Bergmann <arnd@kernel.org>
+> > > Cc: Jason Gunthorpe <jgg@ziepe.ca>
+> > > Cc: Alex Williamson <alex.williamson@redhat.com>
+> > > Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > >  drivers/gpu/drm/i915/Kconfig | 1 -
+> > >  1 file changed, 1 deletion(-)
+> > >=20
+> > > diff --git a/drivers/gpu/drm/i915/Kconfig b/drivers/gpu/drm/i915/Kcon=
+fig
+> > > index 8f15bfb5faac..93f4d059fc89 100644
+> > > +++ b/drivers/gpu/drm/i915/Kconfig
+> > > @@ -102,7 +102,6 @@ config DRM_I915_GVT
+> > >  	bool "Enable Intel GVT-g graphics virtualization host support"
+> > >  	depends on DRM_I915
+> > >  	depends on 64BIT
+> > > -	depends on VFIO_MDEV
+> > >  	default n
+> > >  	help
+> > >  	  Choose this option if you want to enable Intel GVT-g graphics
+> >=20
+> > I take it that this retracts your ack from
+> > https://lore.kernel.org/dri-devel/20210425032356.GH1551@zhen-hp.sh.inte=
+l.com/
+> > I'll drop it from consideration for pushing through my tree unless
+> > indicated otherwise.  Thanks,
 >=20
-> This patch is an improvement, but this fictional dynamic behavior is
-> still wrong. The supported_type_groups directly flows from the
-> vgpu_types array in vgpu.c and it should not be split up like this
+> In any event you'll need either Arnd's patch or this patch in your
+> tree to avoid randconfig problems.
 >=20
-> The code copies the rodata vgpu_types into dynamic memory gvt->types
-> then copies that dynamic memory into a dynamic gvt_vgpu_type_groups,
-> which makes very little sense at all.
-
-vgpu_types is static for we want fixed vgpu mdev type, but actual supported
-types depend on HW resources e.g aperture mem, fence, etc, that's dynamic f=
-or
-gvt->types, so gvt_vgpu_type_groups is dynamic from gvt->types.
-
->=20
-> vgpu_types should be moved to kvmgt and everything should be static,
-> like every other mdev driver. Copy the 'type' information from the
-> gpu_types static when the mdev is created.
+> At this point I would take Arnd's and leave this to go next merge
+> window.
 >=20
 
-I don't think that's necessary, as it's not static for gvt at all.
-The logic to handle type resource change can still be in vgpu.c
+I'm ok with that, so won't block your vfio pull for merge window.
+I'll send gvt fixes pull in next RC.
 
+Thanks
 
---p1zSJVlfBL7BTggM
+--KjcUHqqCp23GY06r
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYId6rQAKCRCxBBozTXgY
-J3/oAKCLU5oUCRkt03y8cjON92fbcSKKOACfR1jUU3WYmaNEX054Zjp8jKNtXTI=
-=YeC2
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYIehtgAKCRCxBBozTXgY
+J2w3AJ4gyrDrZFIEk7uVuXg7LP2UkZfjxQCeND41lQBr2dk3T0H1qSRERauJTMU=
+=004h
 -----END PGP SIGNATURE-----
 
---p1zSJVlfBL7BTggM--
+--KjcUHqqCp23GY06r--
 
---===============1286533429==
+--===============1994126943==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -136,4 +145,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1286533429==--
+--===============1994126943==--
