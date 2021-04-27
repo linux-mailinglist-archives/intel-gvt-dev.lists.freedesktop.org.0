@@ -1,44 +1,94 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E8BA36BF03
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Apr 2021 07:50:04 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2FE836C07C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Apr 2021 10:02:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 987CF6E8F8;
-	Tue, 27 Apr 2021 05:50:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 30E776E913;
+	Tue, 27 Apr 2021 08:02:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8AD386E8F8;
- Tue, 27 Apr 2021 05:50:01 +0000 (UTC)
-IronPort-SDR: A89Df+yZUD1b4YSiDWODWRHGFV0AU10cZ4rd2kBU56x/b5kmq1lXAWRQ0WOaSwRTtGWGvznWEh
- CqspLG1Znbhw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9966"; a="175936140"
-X-IronPort-AV: E=Sophos;i="5.82,254,1613462400"; 
- d="asc'?scan'208";a="175936140"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Apr 2021 22:50:01 -0700
-IronPort-SDR: ihXkyHJiSR8f4LOJoCndr5hUGZuTzRwRDlTYkIsHfvK8lscD0thWohtZZJnBMzI8NPCoUH+zYn
- QT6YCh8F0FWg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,254,1613462400"; 
- d="asc'?scan'208";a="454518755"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by FMSMGA003.fm.intel.com with ESMTP; 26 Apr 2021 22:49:58 -0700
-Date: Tue, 27 Apr 2021 13:31:39 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jason Gunthorpe <jgg@ziepe.ca>
-Subject: Re: [PATCH 2/2] Revert "vfio/gvt: Make DRM_I915_GVT depend on
- VFIO_MDEV"
-Message-ID: <20210427053139.GO1551@zhen-hp.sh.intel.com>
-References: <20210426094143.4031527-1-zhenyuw@linux.intel.com>
- <20210426094143.4031527-2-zhenyuw@linux.intel.com>
- <20210426105555.3cad2599@redhat.com>
- <20210426174017.GL2047089@ziepe.ca>
+X-Greylist: delayed 1688 seconds by postgrey-1.36 at gabe;
+ Tue, 27 Apr 2021 08:02:16 UTC
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 25A086E90D;
+ Tue, 27 Apr 2021 08:02:16 +0000 (UTC)
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13R7XHHA076633; Tue, 27 Apr 2021 03:34:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=dbwUouL94Tn6aMK5okMNidltYNKsURrD9rSSG24y+N8=;
+ b=JlBYcGRZinkJQ1yL6heRHD3pud7q+grVvAnrNoVMNLWaK2KZOTrg7ISOe0e2zyBTewO2
+ 1Yq5+jH8spWiL4RGCY0ebeZKRkhbBBTXz4nJSrs+4HDL2ehS3Alpkd7dHPaV452wSF18
+ 4U191PPSIXGQuzZVE+ZQxTjDszgR1OSTHt9VdxybVLkWGnA34Ah1KytfPWIoKiGwbB5n
+ gWjLyztpo8shuUBK+uxW2ZC2Qm5AhLBHuUpwHG47IoVT2LTt8DtersFVqNovqz0g00Kj
+ TmnvSAAw+bGvEpM9NlyCwZdiiwvruwrXZ+jdNQkYd8uWLFU4McOxdbjRtbCDD8/NeVMR Gg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 386cf2txe0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 27 Apr 2021 03:34:05 -0400
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13R7XlU4078010;
+ Tue, 27 Apr 2021 03:34:05 -0400
+Received: from ppma02fra.de.ibm.com (47.49.7a9f.ip4.static.sl-reverse.com
+ [159.122.73.71])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 386cf2txc2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 27 Apr 2021 03:34:05 -0400
+Received: from pps.filterd (ppma02fra.de.ibm.com [127.0.0.1])
+ by ppma02fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13R7Rane009579;
+ Tue, 27 Apr 2021 07:34:02 GMT
+Received: from b06avi18626390.portsmouth.uk.ibm.com
+ (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
+ by ppma02fra.de.ibm.com with ESMTP id 384ay88nbr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 27 Apr 2021 07:34:02 +0000
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+ [9.149.105.58])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 13R7XYL128049826
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 27 Apr 2021 07:33:34 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B0CDF4C046;
+ Tue, 27 Apr 2021 07:33:58 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AA4A24C040;
+ Tue, 27 Apr 2021 07:33:56 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.171.69.120])
+ by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Tue, 27 Apr 2021 07:33:56 +0000 (GMT)
+Subject: Re: [PATCH 00/12] Remove vfio_mdev.c, mdev_parent_ops and more
+To: Jason Gunthorpe <jgg@nvidia.com>
+References: <0-v1-d88406ed308e+418-vfio3_jgg@nvidia.com>
+ <5def83bb-599c-27fa-9daa-efa27b5ac1d4@de.ibm.com>
+ <20210426174250.GW1370958@nvidia.com>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Message-ID: <2ca13efa-3876-9496-edbf-4b12b93d721c@de.ibm.com>
+Date: Tue, 27 Apr 2021 09:33:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.9.1
+In-Reply-To: <20210426174250.GW1370958@nvidia.com>
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: u76BFO76MsdtScWYP9TmTAIjYZRDCeQ_
+X-Proofpoint-ORIG-GUID: E3SdCeQ-8MC1eEvgYB2mhBcR57fsEB6B
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-In-Reply-To: <20210426174017.GL2047089@ziepe.ca>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
+ definitions=2021-04-27_02:2021-04-27,
+ 2021-04-27 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0
+ mlxlogscore=999 bulkscore=0 spamscore=0 mlxscore=0 adultscore=0
+ phishscore=0 lowpriorityscore=0 priorityscore=1501 clxscore=1015
+ malwarescore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2104060000 definitions=main-2104270055
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,98 +101,59 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Arnd Bergmann <arnd@kernel.org>,
+Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
+ David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Kirti Wankhede <kwankhede@nvidia.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>, Leon Romanovsky <leonro@nvidia.com>,
+ Christoph Hellwig <hch@lst.de>, linux-s390@vger.kernel.org, "Raj,
+ Ashok" <ashok.raj@intel.com>, Jonathan Corbet <corbet@lwn.net>,
+ Halil Pasic <pasic@linux.ibm.com>, Tarun Gupta <targupta@nvidia.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Max Gurtovoy <mgurtovoy@nvidia.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
  Alex Williamson <alex.williamson@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-Content-Type: multipart/mixed; boundary="===============1994126943=="
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Dan Williams <dan.j.williams@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Pierre Morel <pmorel@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Daniel Vetter <daniel@ffwll.ch>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============1994126943==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="KjcUHqqCp23GY06r"
-Content-Disposition: inline
 
+On 26.04.21 19:42, Jason Gunthorpe wrote:
+> On Mon, Apr 26, 2021 at 06:43:14PM +0200, Christian Borntraeger wrote:
+>> On 24.04.21 01:02, Jason Gunthorpe wrote:
+>>> Prologue
+>>> ========
+>>>
+>>> This is series #3 in part of a larger work that arose from the minor
+>>> remark that the mdev_parent_ops indirection shim is useless and
+>>> complicates things.
+>>>
+>>> It applies on top of Alex's current tree and requires the prior two
+>>> series.
+>>
+>> Do you have a tree somewhere?
+> 
+> [..]
+>>> A preview of the future series's is here:
+>>>     https://github.com/jgunthorpe/linux/pull/3/commits
+> 
+> Has everything, you'll want to go to:
+>    cover-letter: Remove vfio_mdev.c, mdev_parent_ops and more
+> 
+> As there are additional WIPs in that tree.
 
---KjcUHqqCp23GY06r
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2021.04.26 14:40:17 -0300, Jason Gunthorpe wrote:
-> On Mon, Apr 26, 2021 at 10:55:55AM -0600, Alex Williamson wrote:
-> > On Mon, 26 Apr 2021 17:41:43 +0800
-> > Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
-> >=20
-> > > This reverts commit 07e543f4f9d116d6b4240644191dee6388ef4a85.
-> >=20
-> > 07e543f4f9d1 ("vfio/gvt: Make DRM_I915_GVT depend on VFIO_MDEV")
-> >=20
-> > > With all mdev handing moved to kvmgt module, only kvmgt should depend
-> > > on VFIO_MDEV. So revert this one.
-> > >=20
-> > > Cc: Arnd Bergmann <arnd@kernel.org>
-> > > Cc: Jason Gunthorpe <jgg@ziepe.ca>
-> > > Cc: Alex Williamson <alex.williamson@redhat.com>
-> > > Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> > >  drivers/gpu/drm/i915/Kconfig | 1 -
-> > >  1 file changed, 1 deletion(-)
-> > >=20
-> > > diff --git a/drivers/gpu/drm/i915/Kconfig b/drivers/gpu/drm/i915/Kcon=
-fig
-> > > index 8f15bfb5faac..93f4d059fc89 100644
-> > > +++ b/drivers/gpu/drm/i915/Kconfig
-> > > @@ -102,7 +102,6 @@ config DRM_I915_GVT
-> > >  	bool "Enable Intel GVT-g graphics virtualization host support"
-> > >  	depends on DRM_I915
-> > >  	depends on 64BIT
-> > > -	depends on VFIO_MDEV
-> > >  	default n
-> > >  	help
-> > >  	  Choose this option if you want to enable Intel GVT-g graphics
-> >=20
-> > I take it that this retracts your ack from
-> > https://lore.kernel.org/dri-devel/20210425032356.GH1551@zhen-hp.sh.inte=
-l.com/
-> > I'll drop it from consideration for pushing through my tree unless
-> > indicated otherwise.  Thanks,
->=20
-> In any event you'll need either Arnd's patch or this patch in your
-> tree to avoid randconfig problems.
->=20
-> At this point I would take Arnd's and leave this to go next merge
-> window.
->=20
-
-I'm ok with that, so won't block your vfio pull for merge window.
-I'll send gvt fixes pull in next RC.
-
-Thanks
-
---KjcUHqqCp23GY06r
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYIehtgAKCRCxBBozTXgY
-J2w3AJ4gyrDrZFIEk7uVuXg7LP2UkZfjxQCeND41lQBr2dk3T0H1qSRERauJTMU=
-=004h
------END PGP SIGNATURE-----
-
---KjcUHqqCp23GY06r--
-
---===============1994126943==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+I gave this a quick spin on s390x vfio-ap and it seems to work ok.
+This is really just a quick test, but no obvious problem.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1994126943==--
