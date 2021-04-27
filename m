@@ -1,94 +1,68 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2FE836C07C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Apr 2021 10:02:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D48D136C5DB
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Apr 2021 14:12:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 30E776E913;
-	Tue, 27 Apr 2021 08:02:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7C5E86E94F;
+	Tue, 27 Apr 2021 12:12:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1688 seconds by postgrey-1.36 at gabe;
- Tue, 27 Apr 2021 08:02:16 UTC
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 25A086E90D;
- Tue, 27 Apr 2021 08:02:16 +0000 (UTC)
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13R7XHHA076633; Tue, 27 Apr 2021 03:34:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=dbwUouL94Tn6aMK5okMNidltYNKsURrD9rSSG24y+N8=;
- b=JlBYcGRZinkJQ1yL6heRHD3pud7q+grVvAnrNoVMNLWaK2KZOTrg7ISOe0e2zyBTewO2
- 1Yq5+jH8spWiL4RGCY0ebeZKRkhbBBTXz4nJSrs+4HDL2ehS3Alpkd7dHPaV452wSF18
- 4U191PPSIXGQuzZVE+ZQxTjDszgR1OSTHt9VdxybVLkWGnA34Ah1KytfPWIoKiGwbB5n
- gWjLyztpo8shuUBK+uxW2ZC2Qm5AhLBHuUpwHG47IoVT2LTt8DtersFVqNovqz0g00Kj
- TmnvSAAw+bGvEpM9NlyCwZdiiwvruwrXZ+jdNQkYd8uWLFU4McOxdbjRtbCDD8/NeVMR Gg== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 386cf2txe0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 27 Apr 2021 03:34:05 -0400
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 13R7XlU4078010;
- Tue, 27 Apr 2021 03:34:05 -0400
-Received: from ppma02fra.de.ibm.com (47.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.71])
- by mx0a-001b2d01.pphosted.com with ESMTP id 386cf2txc2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 27 Apr 2021 03:34:05 -0400
-Received: from pps.filterd (ppma02fra.de.ibm.com [127.0.0.1])
- by ppma02fra.de.ibm.com (8.16.0.43/8.16.0.43) with SMTP id 13R7Rane009579;
- Tue, 27 Apr 2021 07:34:02 GMT
-Received: from b06avi18626390.portsmouth.uk.ibm.com
- (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
- by ppma02fra.de.ibm.com with ESMTP id 384ay88nbr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 27 Apr 2021 07:34:02 +0000
-Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
- [9.149.105.58])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 13R7XYL128049826
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 27 Apr 2021 07:33:34 GMT
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B0CDF4C046;
- Tue, 27 Apr 2021 07:33:58 +0000 (GMT)
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id AA4A24C040;
- Tue, 27 Apr 2021 07:33:56 +0000 (GMT)
-Received: from oc7455500831.ibm.com (unknown [9.171.69.120])
- by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Tue, 27 Apr 2021 07:33:56 +0000 (GMT)
-Subject: Re: [PATCH 00/12] Remove vfio_mdev.c, mdev_parent_ops and more
-To: Jason Gunthorpe <jgg@nvidia.com>
-References: <0-v1-d88406ed308e+418-vfio3_jgg@nvidia.com>
- <5def83bb-599c-27fa-9daa-efa27b5ac1d4@de.ibm.com>
- <20210426174250.GW1370958@nvidia.com>
-From: Christian Borntraeger <borntraeger@de.ibm.com>
-Message-ID: <2ca13efa-3876-9496-edbf-4b12b93d721c@de.ibm.com>
-Date: Tue, 27 Apr 2021 09:33:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.9.1
-In-Reply-To: <20210426174250.GW1370958@nvidia.com>
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: u76BFO76MsdtScWYP9TmTAIjYZRDCeQ_
-X-Proofpoint-ORIG-GUID: E3SdCeQ-8MC1eEvgYB2mhBcR57fsEB6B
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+Received: from mail-qv1-xf2a.google.com (mail-qv1-xf2a.google.com
+ [IPv6:2607:f8b0:4864:20::f2a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6BA1F6E952
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 27 Apr 2021 12:12:37 +0000 (UTC)
+Received: by mail-qv1-xf2a.google.com with SMTP id ef17so23159351qvb.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 27 Apr 2021 05:12:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=41k4dMp2hdNODxhFmA9x5RtkMYLKn0cWlpbJA4yJMuc=;
+ b=WQ9bo+k8pcaQAcp8boCJwTqy6h/zpbGR8UzUgZz8OBg36ABj9LwN8dzupSMa42G06e
+ 6fzsFFZLKYtouuLE1OTSl0lNyikQnS0STRWzuaVLweGpfIAIa5IQZir+XuGqUe/Dt3YH
+ N0DRlsjutokQeyBIQrwmLdNHaLF2x3QWhBVT0qyevkfhpgiVNZjKTP2wHpU4C4voghWp
+ 5XxCdoyOmswlWOV+avls2ZUBjW6zlUsnh9GjvVuXciPVqADJpglH+qiOVAkg4dc35yUo
+ +jgyty5OaUbcGG9ObUaXLy3jkzO+GJHtrSV6fcZmCdUCsfL0T6W/b5IT2qEycgNAKD7p
+ xcwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=41k4dMp2hdNODxhFmA9x5RtkMYLKn0cWlpbJA4yJMuc=;
+ b=a2btJe906yYeMpVsYZlMILg22t+oO8pe933S0QpxvN5sOo+9gVgadGeuUhqgnwRyDK
+ oljnT/vzVlCRBzp19RnMgBK0NJAOC5UMtoXAz8dELHTGxEBj3rGEar+7T0Bq6kKlMIPM
+ sF4+6sMl4RFDP0mxvI/KydGFFp0Dwwa/B220KXlwzEmn90kqEuhoqkxh3I6DpVWaBjqO
+ eMFa9cfB1YWKxA6j67WJxd+ewcGZmIPQURlE2lSK4m76a1+S1A9LUQm5cDlbh1Vhhg2x
+ z0qjfK+WFs53fwSx4WUYOvDYjFJUnVi7l07ypKLyoxt/GZm7v/cfb06i70E8KNZ1NAej
+ SiRg==
+X-Gm-Message-State: AOAM533P2dSOhyW078lWMUq/QlNk5AmZdzo0SUrm0F4U4BSehgrfMZI9
+ CM7yXbgkoopG4VcOmHndBQVnPw==
+X-Google-Smtp-Source: ABdhPJzF14eqoJb49YKYwQVITQG9zd2YPk5SL9BzDEpUEDTPTdq35DpcGt5hf6skksZsgk6gQkMIFQ==
+X-Received: by 2002:a0c:8bda:: with SMTP id a26mr23016684qvc.1.1619525556460; 
+ Tue, 27 Apr 2021 05:12:36 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-47-55-113-94.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [47.55.113.94])
+ by smtp.gmail.com with ESMTPSA id a3sm13264204qto.2.2021.04.27.05.12.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Apr 2021 05:12:36 -0700 (PDT)
+Received: from jgg by mlx with local (Exim 4.94) (envelope-from <jgg@ziepe.ca>)
+ id 1lbMZv-00DVlr-Ar; Tue, 27 Apr 2021 09:12:35 -0300
+Date: Tue, 27 Apr 2021 09:12:35 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [PATCH 1/2] drm/i915/gvt: Move mdev attribute groups into kvmgt
+ module
+Message-ID: <20210427121235.GM2047089@ziepe.ca>
+References: <20210426094143.4031527-1-zhenyuw@linux.intel.com>
+ <20210426133924.GK2047089@ziepe.ca>
+ <20210427024506.GL1551@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.761
- definitions=2021-04-27_02:2021-04-27,
- 2021-04-27 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0
- mlxlogscore=999 bulkscore=0 spamscore=0 mlxscore=0 adultscore=0
- phishscore=0 lowpriorityscore=0 priorityscore=1501 clxscore=1015
- malwarescore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2104060000 definitions=main-2104270055
+Content-Disposition: inline
+In-Reply-To: <20210427024506.GL1551@zhen-hp.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,58 +75,50 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Kirti Wankhede <kwankhede@nvidia.com>,
- Vineeth Vijayan <vneethv@linux.ibm.com>, Leon Romanovsky <leonro@nvidia.com>,
- Christoph Hellwig <hch@lst.de>, linux-s390@vger.kernel.org, "Raj,
- Ashok" <ashok.raj@intel.com>, Jonathan Corbet <corbet@lwn.net>,
- Halil Pasic <pasic@linux.ibm.com>, Tarun Gupta <targupta@nvidia.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Max Gurtovoy <mgurtovoy@nvidia.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Dan Williams <dan.j.williams@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Tony Krowiak <akrowiak@linux.ibm.com>, Pierre Morel <pmorel@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Daniel Vetter <daniel@ffwll.ch>
+Cc: Arnd Bergmann <arnd@kernel.org>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org,
+ Alex Williamson <alex.williamson@redhat.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
-
-On 26.04.21 19:42, Jason Gunthorpe wrote:
-> On Mon, Apr 26, 2021 at 06:43:14PM +0200, Christian Borntraeger wrote:
->> On 24.04.21 01:02, Jason Gunthorpe wrote:
->>> Prologue
->>> ========
->>>
->>> This is series #3 in part of a larger work that arose from the minor
->>> remark that the mdev_parent_ops indirection shim is useless and
->>> complicates things.
->>>
->>> It applies on top of Alex's current tree and requires the prior two
->>> series.
->>
->> Do you have a tree somewhere?
+On Tue, Apr 27, 2021 at 10:45:06AM +0800, Zhenyu Wang wrote:
+> On 2021.04.26 10:39:24 -0300, Jason Gunthorpe wrote:
+> > On Mon, Apr 26, 2021 at 05:41:42PM +0800, Zhenyu Wang wrote:
+> > > @@ -1667,19 +1773,26 @@ static struct mdev_parent_ops intel_vgpu_ops = {
+> > >  
+> > >  static int kvmgt_host_init(struct device *dev, void *gvt, const void *ops)
+> > >  {
+> > > -	struct attribute_group **kvm_vgpu_type_groups;
+> > > +	int ret;
+> > > +
+> > > +	ret = intel_gvt_init_vgpu_type_groups((struct intel_gvt *)gvt);
+> > > +	if (ret)
+> > > +		return ret;
+> > >  
+> > >  	intel_gvt_ops = ops;
+> > > -	if (!intel_gvt_ops->get_gvt_attrs(&kvm_vgpu_type_groups))
+> > > -		return -EFAULT;
+> > > -	intel_vgpu_ops.supported_type_groups = kvm_vgpu_type_groups;
+> > > +	intel_vgpu_ops.supported_type_groups = gvt_vgpu_type_groups;
+> > 
+> > This patch is an improvement, but this fictional dynamic behavior is
+> > still wrong. The supported_type_groups directly flows from the
+> > vgpu_types array in vgpu.c and it should not be split up like this
+> > 
+> > The code copies the rodata vgpu_types into dynamic memory gvt->types
+> > then copies that dynamic memory into a dynamic gvt_vgpu_type_groups,
+> > which makes very little sense at all.
 > 
-> [..]
->>> A preview of the future series's is here:
->>>     https://github.com/jgunthorpe/linux/pull/3/commits
-> 
-> Has everything, you'll want to go to:
->    cover-letter: Remove vfio_mdev.c, mdev_parent_ops and more
-> 
-> As there are additional WIPs in that tree.
+> vgpu_types is static for we want fixed vgpu mdev type, but actual supported
+> types depend on HW resources e.g aperture mem, fence, etc, that's dynamic for
+> gvt->types, so gvt_vgpu_type_groups is dynamic from gvt->types.
 
-I gave this a quick spin on s390x vfio-ap and it seems to work ok.
-This is really just a quick test, but no obvious problem.
+Well, that's worse then, intel_vgpu_ops.supported_type_groups is a
+static global, it cannot depend on HW variable calculations.
+
+Jason
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
