@@ -1,56 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9681D36E269
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Apr 2021 02:14:51 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD62F36E36E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Apr 2021 04:58:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E195E6ECAC;
-	Thu, 29 Apr 2021 00:14:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3AC286EC64;
+	Thu, 29 Apr 2021 02:58:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com
- [IPv6:2607:f8b0:4864:20::1041])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E62726ECA6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Apr 2021 00:14:47 +0000 (UTC)
-Received: by mail-pj1-x1041.google.com with SMTP id md17so6278285pjb.0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Apr 2021 17:14:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=TvDH0Ufqq951p1SmGaor3zZZi0JBju1aRHwGT5Ex+6c=;
- b=EaMaCh6a0ZBZo8wAJIP7BjIw1/HHLcmewRXhSa1wQ4F4G5+NntgKtKTvs0aLcBabg+
- oK9E6FyikHYEzaKIF3H+v2BgUFUk41B2R3lNXHswJXJpIe5GyJC6EAo6G4d6a1iNzCbv
- O+4erK1G/wGRrlW4D8blXKYOi73dMezNBPwNm5f+uib+CqqSY9EbOEa+xfGLQK3fdUV1
- TAlohc/Q6A6EsNf3DXE7tS3jaT02qfKAkUrUpZMoAzNHNLgbnSK6P6OkEfm+zOyQ7ixy
- VNjWxuvazwlnBf5SUiI+kyrg6sMD6HhNcFL3IVQT7EyTquGg94w5FMVtO5kGC4OrCWC2
- P26Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=TvDH0Ufqq951p1SmGaor3zZZi0JBju1aRHwGT5Ex+6c=;
- b=amBnKrSov/eYPhGyRS8gqwETqYGJC4P4Q9bOXEvqqRtbuFqcqYE4t1tWlV8XJe/i2a
- VLGM+o+XnoxmcQunWWIO+/OXIEj6F8m0wdouJi/2+ur9/bwU8I7l7D2EWakXbJAmKPep
- w246VInW+gkMuexa2UPQA14cQs5wEGeSuvM0ceHusQUJtn0YgLauhLEeRP2URLXlZNjj
- OA5pfQrQfz0fdbpWFRxTsaPB+oJ5dayjN+zX+MV+tjeSSQkpB75h/v+o2XY7bQ6HwI8w
- yjjuUMwG+BQWdRgyKeytzQ72TS5zC82/9hYhnYKyHPHYLkHHQM4QVCDG1tafgycHIlQN
- hleA==
-X-Gm-Message-State: AOAM531C3N/j3gyf60JJ7DoOh8li0fn7CXjbZBLftf54RAaL2YtgsFdW
- L/K1GobFF0/EaNu5IkxkQIy93sqR/x5dBHrmm0w=
-X-Google-Smtp-Source: ABdhPJz/6JRSNlwMdVaj59SNw3G7dY+M9v7bSwXRdPLqE5HgPpKzq5lbVC56VzRTyhCQDP3K6IR+HXTqD1vCPkvvCHI=
-X-Received: by 2002:a17:90b:4a4e:: with SMTP id
- lb14mr6366690pjb.115.1619655287642; 
- Wed, 28 Apr 2021 17:14:47 -0700 (PDT)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B86176EC64;
+ Thu, 29 Apr 2021 02:58:54 +0000 (UTC)
+IronPort-SDR: 3sp3vKQQsS4f+gYAqUllRUYn6g3AeCv5Vx9rbrZFyL9vtb0zXmL+IcVY6R5txOAnXfNioAoGfL
+ m8IMDFiMcogQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9968"; a="184381227"
+X-IronPort-AV: E=Sophos;i="5.82,258,1613462400"; 
+ d="asc'?scan'208";a="184381227"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Apr 2021 19:58:53 -0700
+IronPort-SDR: r0EPBfyNq+p45xcVM17eTYnqRp0l4drlqSR+DHe5XQzw+sjyZODgbr6cpUsWc+5VWXPwhnd3A6
+ wHQUHJlhyBdw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,258,1613462400"; 
+ d="asc'?scan'208";a="448261295"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
+ by fmsmga004.fm.intel.com with ESMTP; 28 Apr 2021 19:58:51 -0700
+Date: Thu, 29 Apr 2021 10:40:27 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>
+Subject: Re: [PATCH 1/2] drm/i915/gvt: Move mdev attribute groups into kvmgt
+ module
+Message-ID: <20210429024027.GR1551@zhen-hp.sh.intel.com>
+References: <20210426094143.4031527-1-zhenyuw@linux.intel.com>
+ <20210426133924.GK2047089@ziepe.ca>
+ <20210427024506.GL1551@zhen-hp.sh.intel.com>
+ <20210427121235.GM2047089@ziepe.ca>
+ <20210428053243.GQ1551@zhen-hp.sh.intel.com>
+ <20210428172141.GW2047089@ziepe.ca>
 MIME-Version: 1.0
-Received: by 2002:a05:7300:6426:b029:19:764e:b00a with HTTP; Wed, 28 Apr 2021
- 17:14:47 -0700 (PDT)
-From: Mr Kingsley Obiora <maryclove123@gmail.com>
-Date: Thu, 29 Apr 2021 01:14:47 +0100
-Message-ID: <CAFBdPmeS7juwWtx8GpE-t4vAQssBJLcbDH2eYSHSEDuv1OT09A@mail.gmail.com>
-Subject: Hello From Dr Kingsley Obiora
-To: undisclosed-recipients:;
+In-Reply-To: <20210428172141.GW2047089@ziepe.ca>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,23 +53,110 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: bwalysam@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Arnd Bergmann <arnd@kernel.org>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org,
+ Alex Williamson <alex.williamson@redhat.com>
+Content-Type: multipart/mixed; boundary="===============0568811380=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Sir,
 
-After our meeting held today based on your funds, the management want
-to bring to your notice that we are making a special arrangement to
-bring your said fund by cash through diplomatic Immunity to your
-country home. Further details of this arrangement will be given to you
-once you acknowledged this idea.
+--===============0568811380==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="+RqgOR8y65RRYhVY"
+Content-Disposition: inline
 
-Waiting for your soonest response.
-Kingsley Obiora
+
+--+RqgOR8y65RRYhVY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2021.04.28 14:21:41 -0300, Jason Gunthorpe wrote:
+> On Wed, Apr 28, 2021 at 01:32:43PM +0800, Zhenyu Wang wrote:
+> > On 2021.04.27 09:12:35 -0300, Jason Gunthorpe wrote:
+> > > On Tue, Apr 27, 2021 at 10:45:06AM +0800, Zhenyu Wang wrote:
+> > > > On 2021.04.26 10:39:24 -0300, Jason Gunthorpe wrote:
+> > > > > On Mon, Apr 26, 2021 at 05:41:42PM +0800, Zhenyu Wang wrote:
+> > > > > > @@ -1667,19 +1773,26 @@ static struct mdev_parent_ops intel_vgp=
+u_ops =3D {
+> > > > > > =20
+> > > > > >  static int kvmgt_host_init(struct device *dev, void *gvt, cons=
+t void *ops)
+> > > > > >  {
+> > > > > > -	struct attribute_group **kvm_vgpu_type_groups;
+> > > > > > +	int ret;
+> > > > > > +
+> > > > > > +	ret =3D intel_gvt_init_vgpu_type_groups((struct intel_gvt *)g=
+vt);
+> > > > > > +	if (ret)
+> > > > > > +		return ret;
+> > > > > > =20
+> > > > > >  	intel_gvt_ops =3D ops;
+> > > > > > -	if (!intel_gvt_ops->get_gvt_attrs(&kvm_vgpu_type_groups))
+> > > > > > -		return -EFAULT;
+> > > > > > -	intel_vgpu_ops.supported_type_groups =3D kvm_vgpu_type_groups;
+> > > > > > +	intel_vgpu_ops.supported_type_groups =3D gvt_vgpu_type_groups;
+> > > > >=20
+> > > > > This patch is an improvement, but this fictional dynamic behavior=
+ is
+> > > > > still wrong. The supported_type_groups directly flows from the
+> > > > > vgpu_types array in vgpu.c and it should not be split up like this
+> > > > >=20
+> > > > > The code copies the rodata vgpu_types into dynamic memory gvt->ty=
+pes
+> > > > > then copies that dynamic memory into a dynamic gvt_vgpu_type_grou=
+ps,
+> > > > > which makes very little sense at all.
+> > > >=20
+> > > > vgpu_types is static for we want fixed vgpu mdev type, but actual s=
+upported
+> > > > types depend on HW resources e.g aperture mem, fence, etc, that's d=
+ynamic for
+> > > > gvt->types, so gvt_vgpu_type_groups is dynamic from gvt->types.
+> > >=20
+> > > Well, that's worse then, intel_vgpu_ops.supported_type_groups is a
+> > > static global, it cannot depend on HW variable calculations.
+> >=20
+> > sorry, maybe I didn't describe this properly, gvt_vgpu_type_groups is
+> > static global, but the actual supported types is determined from
+> > gvt->types and initialized before mdev device register.
+>=20
+> No, I got it, I saw the code too.
+>=20
+> Think about what happens if there are two GPUs in the system, you get
+> two gvt's and with different properties and you are trying to squeeze
+> that into a single static global - it doesn't work.=20
+>=20
+
+Well, that's not what this change trys to resolve and on gvt supported plat=
+form
+that's not an available hardware configuration for IGD. So I think this is =
+fine.
+
+
+--+RqgOR8y65RRYhVY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYIoclQAKCRCxBBozTXgY
+J8M3AJsHt9GkId1hjOgCuEVIzrJEOVnuvgCgl6EW2/4grHb4+OS5wqUxiqPAzUU=
+=B8Om
+-----END PGP SIGNATURE-----
+
+--+RqgOR8y65RRYhVY--
+
+--===============0568811380==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0568811380==--
