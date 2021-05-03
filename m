@@ -2,41 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C241A36F1FE
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Apr 2021 23:26:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E1E13717A7
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 May 2021 17:14:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5EEC46F4D3;
-	Thu, 29 Apr 2021 21:26:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A27B86E8B6;
+	Mon,  3 May 2021 15:14:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8FC386F4CF
+X-Greylist: delayed 8166 seconds by postgrey-1.36 at gabe;
+ Mon, 03 May 2021 15:14:10 UTC
+Received: from haydenquinn.com.au (unknown [31.7.62.119])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4227F6E8BA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Apr 2021 21:26:00 +0000 (UTC)
-IronPort-SDR: iee6XpIPfPRSWQcjFv8ieKX3E72c6lbfNfGHeI1meHdk0sIP8oD9c8gduU2UycUrWcdFME2+Cq
- bv1mVZAC1QSQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9969"; a="258404623"
-X-IronPort-AV: E=Sophos;i="5.82,260,1613462400"; d="scan'208";a="258404623"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2021 14:25:59 -0700
-IronPort-SDR: XBnPdMH6/rCBPBZksGiiR4ijx4NACDlz9STpnqHDPRn7OQWAdTeaE2Nck8gFpKoNmgwzQtFJrH
- cVrvVL6S9rtQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,260,1613462400"; d="scan'208";a="426174567"
-Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 29 Apr 2021 14:25:57 -0700
-Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lcEAW-0007oS-NR; Thu, 29 Apr 2021 21:25:56 +0000
-Date: Fri, 30 Apr 2021 05:25:22 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-next-fixes] BUILD SUCCESS
- d385c16173f28a18866abf54c764200c276dace0
-Message-ID: <608b2442.nu+8ZmDNlPtH2TPO%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Mon,  3 May 2021 15:14:10 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Re: the quick follow up
+Message-ID: <16e23cb499fb8d81f9c25ffec3398589@mynoisycar.com>
+Date: Mon, 03 May 2021 12:28:00 +0200
+From: "Rory Henderson" <wuimseykdmcdd@hablamosdegamers.com>
 MIME-Version: 1.0
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,176 +34,97 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: rongbindesigne@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0917500649=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-next-fixes
-branch HEAD: d385c16173f28a18866abf54c764200c276dace0  drm/i915/gvt: Prevent divided by zero when calculating refresh rate
+--===============0917500649==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-elapsed time: 721m
+<html>
+<head>
+</head>
+<body>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="text-align: left;"><span style="text-align: left;"><span
+style="text-align: left;"></span></span></span><span style="text-align:
+left;"><span style="text-align: left;">Hi,<br /><br
+/></span></span></span></span></span></span></span></span></span>
+<div><span style="display: block; text-align: left;">I hope all is well.<br
+/>This email is just to let you know that&nbsp;the&nbsp;following drone now
+is in our stock, ready to ship&nbsp;to customers&nbsp;worldwide.</span><br
+/><span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"></span></span><span style="display: block;
+text-align: left;">Drone specs and features：<br />Frequency: 5G<br />FPV
+Image transmission: 2km<br />6K wide-angle 120&deg; adjustable camera.<br
+/>Battery: 2850mAh Li-ion battery<br />Flight time: 28-30 minutes<br
+/>Remote control distance: 2km<br />Level-7 wind resistance <br />GPS
+positioning mode<br />Follow me function: The plane will follow the
+direction of movement.<br />Surroud flight: will make the plane fly in
+circles, providing a shooting angle.<br />Waypoint flight mode: draw a
+route on the screen and the drone fly follow the given path.<br />Auto
+return function. <br />With low power protection overcurrent protection.<br
+/><br /></span><span>Costs: u&nbsp; &nbsp;s&nbsp; &nbsp;d<br />1-5
+units&nbsp;295.50 each<br />6-10 units&nbsp;285.50 each<br />11-20 units
+275.50 each<br /><br />If you would like to place an order, we need to know
+your delivery address to get the package ready for you.&nbsp;<br
+/></span></div>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="text-align: left;"><span style="text-align:
+left;"></span></span></span></span></span></span></span></span></span></span></span></span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align:
+left;"><span></span></span></span></span><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><br
+/></span></span><span style="display: block; text-align: left;"><img
+src="https://ae01.alicdn.com/kf/Hc9d51d1d21744a969f87e41d4a3bec84d.jpg"
+width="500" height="757" /><img
+src="https://ae01.alicdn.com/kf/H6966efe8bce64adb88c45f7172d144a3j.jpg"
+width="500" height="685" /><br /></span><span style="display: block;
+text-align: left;"><span style="text-align: left;"><br /><br /><br /><img
+src="https://ae01.alicdn.com/kf/H59144da9eba34d43aae89c56101741a8c.jpg"
+width="500" height="756" /><img
+src="https://ae01.alicdn.com/kf/Hb9e04516047243f0954fab86b79e7100E.jpg"
+width="500" height="1051" /><br /><img
+src="https://ae01.alicdn.com/kf/H72234d22076d4d70b049628d927763191.jpg"
+width="500" height="657" /><img
+src="https://ae01.alicdn.com/kf/H0c25bf7e694a410f96d268c839e67cf1V.jpg"
+width="500" height="930" /><br /></span></span><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><br /><br /></span></span></span></span>
+<div>If you would like to place an order, we need to know your delivery
+address to get the package ready for you.&nbsp;</div>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><br />Thanks,<br />Rory&nbsp;Henderson</span></span></span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"></span></span>
+</body>
+</html>
 
-configs tested: 144
-configs skipped: 2
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--===============0917500649==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-i386                             allyesconfig
-powerpc                 mpc836x_rdk_defconfig
-powerpc                    sam440ep_defconfig
-arm                       aspeed_g5_defconfig
-arm                        multi_v5_defconfig
-xtensa                              defconfig
-mips                      maltasmvp_defconfig
-mips                           gcw0_defconfig
-powerpc                     pq2fads_defconfig
-sh                             espt_defconfig
-mips                            gpr_defconfig
-arm                         s3c2410_defconfig
-s390                          debug_defconfig
-arm                         assabet_defconfig
-m68k                        m5272c3_defconfig
-arm                        clps711x_defconfig
-openrisc                  or1klitex_defconfig
-sh                   sh7770_generic_defconfig
-powerpc                        warp_defconfig
-sh                         ecovec24_defconfig
-powerpc                     kilauea_defconfig
-powerpc                          g5_defconfig
-powerpc                      bamboo_defconfig
-m68k                        mvme147_defconfig
-powerpc                mpc7448_hpc2_defconfig
-arm                          moxart_defconfig
-arm                     eseries_pxa_defconfig
-mips                       capcella_defconfig
-mips                           ip27_defconfig
-powerpc                      arches_defconfig
-arm                       netwinder_defconfig
-sh                        apsh4ad0a_defconfig
-arm                             ezx_defconfig
-sh                           sh2007_defconfig
-sh                           se7343_defconfig
-mips                      loongson3_defconfig
-parisc                           allyesconfig
-powerpc                 mpc836x_mds_defconfig
-parisc                              defconfig
-powerpc                   lite5200b_defconfig
-powerpc                      ppc64e_defconfig
-mips                  cavium_octeon_defconfig
-sh                           se7750_defconfig
-powerpc                 mpc8560_ads_defconfig
-parisc                generic-64bit_defconfig
-x86_64                           alldefconfig
-s390                                defconfig
-arm                         axm55xx_defconfig
-arm                         s3c6400_defconfig
-arm                           h3600_defconfig
-sparc                            allyesconfig
-m68k                           sun3_defconfig
-powerpc                     tqm8541_defconfig
-riscv                            alldefconfig
-powerpc                      katmai_defconfig
-mips                        bcm47xx_defconfig
-powerpc                     ppa8548_defconfig
-arm                     davinci_all_defconfig
-xtensa                       common_defconfig
-powerpc                 mpc832x_rdb_defconfig
-powerpc                 linkstation_defconfig
-arm                        spear6xx_defconfig
-sh                          sdk7780_defconfig
-powerpc                      ppc40x_defconfig
-arm                        trizeps4_defconfig
-mips                         db1xxx_defconfig
-arm                             rpc_defconfig
-riscv                    nommu_virt_defconfig
-xtensa                  audio_kc705_defconfig
-xtensa                          iss_defconfig
-riscv                             allnoconfig
-sh                         apsh4a3a_defconfig
-h8300                            alldefconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-s390                             allyesconfig
-s390                             allmodconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a004-20210429
-x86_64               randconfig-a002-20210429
-x86_64               randconfig-a005-20210429
-x86_64               randconfig-a006-20210429
-x86_64               randconfig-a001-20210429
-x86_64               randconfig-a003-20210429
-i386                 randconfig-a005-20210429
-i386                 randconfig-a002-20210429
-i386                 randconfig-a001-20210429
-i386                 randconfig-a006-20210429
-i386                 randconfig-a003-20210429
-i386                 randconfig-a004-20210429
-i386                 randconfig-a012-20210429
-i386                 randconfig-a014-20210429
-i386                 randconfig-a013-20210429
-i386                 randconfig-a011-20210429
-i386                 randconfig-a015-20210429
-i386                 randconfig-a016-20210429
-riscv                    nommu_k210_defconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-x86_64                    rhel-8.3-kselftests
-
-clang tested configs:
-x86_64               randconfig-a015-20210429
-x86_64               randconfig-a016-20210429
-x86_64               randconfig-a011-20210429
-x86_64               randconfig-a014-20210429
-x86_64               randconfig-a013-20210429
-x86_64               randconfig-a012-20210429
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0917500649==--
