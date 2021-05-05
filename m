@@ -2,30 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3CF4373946
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 May 2021 13:25:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63C5E374351
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 May 2021 19:06:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 962EA6E125;
-	Wed,  5 May 2021 11:25:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1DE0E6EC25;
+	Wed,  5 May 2021 17:06:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 91459 seconds by postgrey-1.36 at gabe;
- Wed, 05 May 2021 11:25:00 UTC
-Received: from vds.joerimultimedia.nl (vds.joerimultimedia.nl [93.186.177.233])
- by gabe.freedesktop.org (Postfix) with ESMTP id 372496E125;
- Wed,  5 May 2021 11:24:59 +0000 (UTC)
-Received: from [154.118.27.90] (helo=User)
- by vds.joerimultimedia.nl with esmtpa (Exim 4.86)
- (envelope-from <admi@almus.uz>)
- id 1ldrqK-0007b5-IM; Tue, 04 May 2021 11:59:52 +0200
-From: "Mr Femi Brown"<admi@almus.uz>
-Subject: Your fund transfer..
-Date: Tue, 4 May 2021 10:59:23 +0100
+X-Greylist: delayed 5390 seconds by postgrey-1.36 at gabe;
+ Wed, 05 May 2021 17:06:29 UTC
+Received: from kanyakage.com (unknown [188.72.187.109])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C794B6EC25
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  5 May 2021 17:06:29 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: logo printing t-shirt
+Message-ID: <08415eafd81355725c052cd3901fd4b1@altitudeoutdoors.com>
+Date: Wed, 05 May 2021 16:01:11 +0200
+From: "Debbie Williams" <uteaopqukt@katherinepatricia.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,63 +34,48 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: fatih@leventsimsek.com.tr
-Content-Type: multipart/mixed; boundary="===============2077993920=="
+Reply-To: hamiltonshaung@aliyun.com
+Content-Type: multipart/mixed; boundary="===============1078396430=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210505112501.962EA6E125@gabe.freedesktop.org>
 
---===============2077993920==
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
+--===============1078396430==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-<B>This mail is been writing to you because we have come to understand that</B></DIV>
-<DIV>
-<B>you have lost a lot of money all because you want to receive your fund</B></DIV>
-<DIV>
-<B>well note that all that have been put to a stop as the federal government of</B></DIV>
-<DIV>
-<B>Nigeria has promised to assist you with the sum of $5million in other to</B></DIV>
-<DIV>
-<B>compensate you and all you have to do is fill the below information s.</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>1 full name</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>2 home phone and cell phone number</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>3 occupation</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>4 amount that was lost by you</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>Send this and get back at once.</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>Warm regards</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>Femi</B></DIV>
-</FONT>
-</BODY></HTML>
+<html>
+<head>
+</head>
+<body>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="text-align: left;"><span style="text-align: left;">Hi
+,</span></span></span></span></span></span></span></span></span>
+<div><span style="display: block; text-align: left;"><br />Did you receive
+my email from last week?<br />I would like to speak with the person in
+charge of your logo promotional products for your company? <br /><br />Our
+company creates amazing custom printed and embroidered T-shirts, hats,
+jackets and other cool brand-able items. <br />Looking for a great employee
+gift, team motivator or school spirit item? <br /><br />PRINTED T-SHIRTS
+with your logo<br />Starting at 4.99 per t-shirt shipping incuded.<br />50
+pcs 249.50<br />100 pcs 499.50<br />u&nbsp; s&nbsp; d<br /><br />We offer
+low minimum quantities&nbsp;<br />Please reply back and let me know the
+quantity of shirts you would like, the color, and if you know how many
+printed colors there will be?<br /><br />Thanks,<br />Debbie Williams<br
+/>Custom T-Shirts<br /></span><span><br /></span></div>
+<span style="display: block; text-align: left;"><img
+src="https://ae01.alicdn.com/kf/H7c0afb1b11b74fa0a8bf6a15e44112cdT.jpg"
+width="700" height="700" /><br /></span><span style="display: block;
+text-align: left;"><span style="display: block; text-align:
+left;"></span></span>
+</body>
+</html>
 
---===============2077993920==
+
+--===============1078396430==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -105,4 +86,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============2077993920==--
+--===============1078396430==--
