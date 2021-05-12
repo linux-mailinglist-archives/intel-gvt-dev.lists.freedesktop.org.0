@@ -2,70 +2,68 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D73F237B979
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 May 2021 11:42:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BC1EA37BCC8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 May 2021 14:47:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 645EE6EB83;
-	Wed, 12 May 2021 09:42:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6FEB06EB90;
+	Wed, 12 May 2021 12:47:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from wout5-smtp.messagingengine.com (wout5-smtp.messagingengine.com
- [64.147.123.21])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 540D26EB4C
+Received: from mail-qv1-xf2e.google.com (mail-qv1-xf2e.google.com
+ [IPv6:2607:f8b0:4864:20::f2e])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 357926EB97
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 May 2021 09:42:46 +0000 (UTC)
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id CE869131E;
- Wed, 12 May 2021 05:42:42 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Wed, 12 May 2021 05:42:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=J6tud28kU+o44k7J2+5qqEvqPes
- 2RVNGsgrOS6UVvsE=; b=pld1EO+mtW/gr8p0QlKVS7GrQGJckxO8ht/V69C09hM
- eGLWCI/GZ2TQpfsQG5RbVBtyQmAzaXrClIxDdaHVtpZ9Hn1pTZR8WqhoA1q+KKCc
- kwl4yHV5C6igo3n98RUQDtqKVZQHNpjIfu56xDZcfpxvS48OUpNk7BjRcwmVqY5p
- oO3129oS3sZPZwTIogApiwMmyqJ517WixlLeFnjLq3fIlFlDMr8a6wnNtKAw5G6i
- JP+FFqeFbJkXsRtdzud/Px2mAQ+5jB79prVVpufFVUOi/UgeqG6CQCi6xTzo0atW
- ZhWIEPKmEkkTTKOURlC0QrYyKMZgw4gE8JZ1vSf5AZQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=J6tud2
- 8kU+o44k7J2+5qqEvqPes2RVNGsgrOS6UVvsE=; b=N6Ft6IBIKs8uDI+s2uG+Ja
- bEh47kexy8w2835NdrBuw3Tq9cNg3HgkLbavrAmEhPxRkNlZb2xSII+iORqI5TDo
- A8LwPr0Ab7V70JMRKYv1Rnqw/i4/l+OupSOF5vbQ+CWRLDDFpWHPST4O/gwHXykf
- lqGlHQNdDUL/K2G82NzTi9kQ5AnK7uj5lzKjd0dyoXxaGstmm8WvzzRrPeuVcXnM
- w7pf6niVuBrNkeOhZVOCHcwpyWaN8LMhVpEPHP//ktti5aOHF7ZGCd5/edbQo2DR
- lD8ULPTV74I5nfBYHeAGVtIaIyQAtbrJYthYqKjXgZatK5MlJ7fyJomiwtd8ZkuA
- ==
-X-ME-Sender: <xms:EaObYPQZKWLHypNy1tpJ-W-HTtYjugFjtDurZbFaGUFopsCP4-wQSw>
- <xme:EaObYAxht4VeWkng3QHJ3Z_TvPNhjLAyTNx8v5Z00ASTv1Rtv_-8_rXR67iRicKZa
- 1WRi_RjDiDXRQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrvdehvddgudehucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefirhgvghcu
- mffjuceoghhrvghgsehkrhhorghhrdgtohhmqeenucggtffrrghtthgvrhhnpeevueehje
- fgfffgiedvudekvdektdelleelgefhleejieeugeegveeuuddukedvteenucfkphepkeef
- rdekiedrjeegrdeigeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
- hlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
-X-ME-Proxy: <xmx:EaObYE1ytYbvmm66_Zc_x7bh21x7QswyNSHUae5T9hZUg8N54setNA>
- <xmx:EaObYPBE0smYOjWsefpY3hk-jzq-5L06SSVDj8KgaNQX8MJLeN_Chg>
- <xmx:EaObYIi--sEOaF9uCBI9npXkwWKflTdqVnJB4DTfaJtTeAwo9x_enQ>
- <xmx:EqObYCajWQde9AoDTyOnTkQc-1bnMH-M1bcvAbFoeTA-p5e5-E0C1A>
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- by mail.messagingengine.com (Postfix) with ESMTPA;
- Wed, 12 May 2021 05:42:40 -0400 (EDT)
-Date: Wed, 12 May 2021 11:42:39 +0200
-From: Greg KH <greg@kroah.com>
-To: Colin Xu <colin.xu@intel.com>
-Subject: Re: [PATCH 0/2] drm/i915/gvt: Backport GVT BXT/APL fix to 5.10.y
-Message-ID: <YJujD8tUc9Csr6wo@kroah.com>
-References: <cover.1620702000.git.colin.xu@intel.com>
+ Wed, 12 May 2021 12:47:42 +0000 (UTC)
+Received: by mail-qv1-xf2e.google.com with SMTP id l12so1913385qvm.9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 12 May 2021 05:47:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=jAGy+JHdAmwNt8Bec89jnmlR78e6xLrPonC4ZI12jKE=;
+ b=P6dJCVfBboZLy6Qj65kvv5oi1/jgzznaW59dTu8qZkQdVicGScWORY97i82DBJhuNz
+ uRzkehcgqAqzWFUfH7mId/TnXW+I1Ff4vX2tA5aX1DN8RL/j97P8/7mTRVSXEWgImExJ
+ qCDN6DPAFxEA5I2A/RF8yxkTRMEx8L/zsyMnJPpyCgT8VywifbRXZkEL2Hg3Sa/9uYzK
+ vhVvJn8K/1WYh3LZ/wpJzl6u9NypXUzZiUnOpx/ht3kdu3aY2hH5wR+YWklN3m8edFqm
+ hI8NnuJD8BaR/RBZykuFXqSbUdA26rYZCNI1s4bCFnn0DMgApo0TGU9xel4kHNrHcBe7
+ dDUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=jAGy+JHdAmwNt8Bec89jnmlR78e6xLrPonC4ZI12jKE=;
+ b=ELbRonmpMVCi0NX0nrjb6ofsDdCsDTENyB5OOBzZySUKTVRQ/LCP2EVrbkmc23safs
+ ykMfaidp1/GjE0nK9Ze0LqeCgGvUtELpkUPUdx4xYrOYun6Ol3nvTkttzQPNN59TWosl
+ kwYZzsKKLvJFiD37KiYBJCt89UKhlR7//NYCpCGXtdsYI+o8aVs85jQHj3fPtn1yd/Dp
+ CKdYZac/oXEMyfKfIRFVE+Q461r13T5xgBRTymwvceTvypPbndp2HBDvcx4XlIrVzx7z
+ Whs+yKY4pOH40mqt/Rnws+yFAaF08WRLHM+38aiBpgWnRVktVP8iycaxkm+3/SfgCZn/
+ 0d5Q==
+X-Gm-Message-State: AOAM533ojVbmDmN/ErTk5bSA1eAMHiFHmM6+Vlbyk8oePNXbDvuNuDpe
+ 11b4dH6Eo9ZWy8cLirE/m2ay+w==
+X-Google-Smtp-Source: ABdhPJxeOvS68z8rvD2C8CZ/9X9K+hsI1yZ9ZF/EoBHpjQEDtoUYOcfm/uNANdnvRRCINv9TYaLAOw==
+X-Received: by 2002:a0c:ab12:: with SMTP id h18mr34499125qvb.33.1620823661290; 
+ Wed, 12 May 2021 05:47:41 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-47-55-113-94.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [47.55.113.94])
+ by smtp.gmail.com with ESMTPSA id j9sm18921372qtl.15.2021.05.12.05.47.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 May 2021 05:47:40 -0700 (PDT)
+Received: from jgg by mlx with local (Exim 4.94) (envelope-from <jgg@ziepe.ca>)
+ id 1lgoH5-005pYR-V2; Wed, 12 May 2021 09:47:39 -0300
+Date: Wed, 12 May 2021 09:47:39 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [PATCH 1/3] drm/i915/gvt: Move mdev attribute groups into kvmgt
+ module
+Message-ID: <20210512124739.GC1096940@ziepe.ca>
+References: <20210511083332.1740601-1-zhenyuw@linux.intel.com>
+ <20210511083332.1740601-2-zhenyuw@linux.intel.com>
+ <20210511155446.GB1096940@ziepe.ca>
+ <20210512023141.GN4589@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <cover.1620702000.git.colin.xu@intel.com>
+In-Reply-To: <20210512023141.GN4589@zhen-hp.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,37 +76,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gvt-dev@lists.freedesktop.org, zhenyuw@linux.intel.com,
- stable@vger.kernel.org
+Cc: Arnd Bergmann <arnd@kernel.org>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org,
+ Alex Williamson <alex.williamson@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, May 11, 2021 at 11:02:53AM +0800, Colin Xu wrote:
-> commit a5a8ef937cfa79167f4b2a5602092b8d14fd6b9a upstream
-> commit 4ceb06e7c336f4a8d3f3b6ac9a4fea2e9c97dc07 upstream
-> 
-> Upstream intel-gvt fixed some breaking and GPU hang issues on BXT/APL platform
-> but 5.10.y doesn't have so backport them. These patch have been rebased to
-> linux-5.10.y.
-> 
-> Colin Xu (2):
->   drm/i915/gvt: Fix virtual display setup for BXT/APL
->   drm/i915/gvt: Fix vfio_edid issue for BXT/APL
-> 
->  drivers/gpu/drm/i915/gvt/display.c | 212 +++++++++++++++++++++++++++++
->  drivers/gpu/drm/i915/gvt/mmio.c    |   5 +
->  drivers/gpu/drm/i915/gvt/vgpu.c    |   5 +-
->  3 files changed, 219 insertions(+), 3 deletions(-)
-> 
-> -- 
-> 2.31.1
-> 
+On Wed, May 12, 2021 at 10:31:41AM +0800, Zhenyu Wang wrote:
 
-All now queued up, thanks.
+> > This need to go into the vfio tree in some way, either directly
+> > through it, via rc or otherwise
+> 
+> As this is only for i915/gvt, once drm/i915 backmerge with linus master,
+> it should still go through normal i915/gvt merge path.
 
-greg k-h
+Don't do this, you will create conflicts with ongoing vfio work.
+
+Jason
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
