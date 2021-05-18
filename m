@@ -1,33 +1,35 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5947F387D2F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 May 2021 18:17:14 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C003C387D76
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 May 2021 18:28:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6FB626EC19;
-	Tue, 18 May 2021 16:17:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2AF146EC2A;
+	Tue, 18 May 2021 16:28:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 60A426EC19;
- Tue, 18 May 2021 16:17:11 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 927386100C;
- Tue, 18 May 2021 16:17:10 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 674E86EC0A;
+ Tue, 18 May 2021 16:28:55 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B0A8C61209;
+ Tue, 18 May 2021 16:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1621354631;
- bh=OUsEAuCJMnPfB6TDhzwq4OHHwYb6CzyGEBig+zjv1tE=;
- h=From:To:Cc:Subject:Date:From;
- b=SvPHCVzpjHNhIg1cCxFY8L+TQs/usJJLmXSrbf6L7y+eHCvxGH8k/KYlckxtELqKC
- vywkXvVCHAHQWOJOJ39CMiJGHTrQy0O5oN6+IyBOznk1TQyBPSj8z6j/0CcemLgWsH
- O3+ESNRlejAdqgAPwK9TYGl6SquQhAgfPxn824qA=
+ s=korg; t=1621355335;
+ bh=rJWHXoFNdp4vZFFlf2wVu8qVP3eJI+kKMs6FURJto7U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=mz+L9Thx5wJwjW+bdjc+0+hLc9PhxwiIkU2AA002cBpRvQIpQrQb+v9iS1NtOTLUY
+ 732B1nvnIfRU8KxT6X8flQ4MliIBvAh9ElTsc8ESS4fRB5tkGZ6JQ4SwgrHWSI8+64
+ i3F2b8FSzsZeuKfOHeRft9sWwghNWdb3NpqdvuAM=
+Date: Tue, 18 May 2021 18:28:53 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: dri-devel@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: remove local storage of debugfs file
-Date: Tue, 18 May 2021 18:17:05 +0200
-Message-Id: <20210518161705.3697143-1-gregkh@linuxfoundation.org>
-X-Mailer: git-send-email 2.31.1
+Subject: Re: [PATCH] drm/i915/gvt: remove local storage of debugfs file
+Message-ID: <YKPrRW+zBC8Wmjgz@kroah.com>
+References: <20210518161705.3697143-1-gregkh@linuxfoundation.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210518161705.3697143-1-gregkh@linuxfoundation.org>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,9 +42,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- intel-gfx@lists.freedesktop.org,
+Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Jani Nikula <jani.nikula@linux.intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
@@ -53,73 +53,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-There is no need to keep the dentry around for the debugfs kvmgt cache
-file, as we can just look it up when we want to remove it later on.
-Simplify the structure by removing the dentry and relying on debugfs
-to find the dentry to remove when we want to.
+On Tue, May 18, 2021 at 06:17:05PM +0200, Greg Kroah-Hartman wrote:
+> There is no need to keep the dentry around for the debugfs kvmgt cache
+> file, as we can just look it up when we want to remove it later on.
+> Simplify the structure by removing the dentry and relying on debugfs
+> to find the dentry to remove when we want to.
+> 
+> By doing this change, we remove the last in-kernel user that was storing
+> the result of debugfs_create_long(), so that api can be cleaned up.
+> 
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Cc: Zhi Wang <zhi.a.wang@intel.com>
+> Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: intel-gvt-dev@lists.freedesktop.org
+> Cc: intel-gfx@lists.freedesktop.org
+> Cc: dri-devel@lists.freedesktop.org
+> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> ---
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 11 +++++------
+>  1 file changed, 5 insertions(+), 6 deletions(-)
 
-By doing this change, we remove the last in-kernel user that was storing
-the result of debugfs_create_long(), so that api can be cleaned up.
+Note, I can take this through my debugfs tree if wanted, that way I can
+clean up the debugfs_create_long() api at the same time.  Otherwise it's
+fine, I can wait until next -rc1 for that to happen.
 
-Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.a.wang@intel.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Cc: David Airlie <airlied@linux.ie>
-Cc: Daniel Vetter <daniel@ffwll.ch>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Cc: intel-gfx@lists.freedesktop.org
-Cc: dri-devel@lists.freedesktop.org
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- drivers/gpu/drm/i915/gvt/kvmgt.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+thanks,
 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 65ff43cfc0f7..433c2a448f2d 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -88,6 +88,7 @@ struct kvmgt_pgfn {
- 	struct hlist_node hnode;
- };
- 
-+#define KVMGT_DEBUGFS_FILENAME "kvmgt_nr_cache_entries"
- struct kvmgt_guest_info {
- 	struct kvm *kvm;
- 	struct intel_vgpu *vgpu;
-@@ -95,7 +96,6 @@ struct kvmgt_guest_info {
- #define NR_BKT (1 << 18)
- 	struct hlist_head ptable[NR_BKT];
- #undef NR_BKT
--	struct dentry *debugfs_cache_entries;
- };
- 
- struct gvt_dma {
-@@ -1843,16 +1843,15 @@ static int kvmgt_guest_init(struct mdev_device *mdev)
- 	info->track_node.track_flush_slot = kvmgt_page_track_flush_slot;
- 	kvm_page_track_register_notifier(kvm, &info->track_node);
- 
--	info->debugfs_cache_entries = debugfs_create_ulong(
--						"kvmgt_nr_cache_entries",
--						0444, vgpu->debugfs,
--						&vdev->nr_cache_entries);
-+	debugfs_create_ulong(KVMGT_DEBUGFS_FILENAME, 0444, vgpu->debugfs,
-+			     &vdev->nr_cache_entries);
- 	return 0;
- }
- 
- static bool kvmgt_guest_exit(struct kvmgt_guest_info *info)
- {
--	debugfs_remove(info->debugfs_cache_entries);
-+	debugfs_remove(debugfs_lookup(KVMGT_DEBUGFS_FILENAME,
-+				      info->vgpu->debugfs));
- 
- 	kvm_page_track_unregister_notifier(info->kvm, &info->track_node);
- 	kvm_put_kvm(info->kvm);
--- 
-2.31.1
-
+greg k-h
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
