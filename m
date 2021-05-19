@@ -2,39 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4D9B388907
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 May 2021 10:08:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EF1D738894B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 May 2021 10:22:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 17C886ECD7;
-	Wed, 19 May 2021 08:08:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A3F016ECDE;
+	Wed, 19 May 2021 08:22:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 36EFD6ECD7;
- Wed, 19 May 2021 08:08:26 +0000 (UTC)
-IronPort-SDR: OstYQhgNYjXT3jSuKdPXo1hKkK5afucAMcC8an/QGCgGz7USwJGxp6Ng/W+FS/HyxuBhdWW0kG
- umtP17BYQ6fA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9988"; a="262148989"
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9F4606ECD8;
+ Wed, 19 May 2021 08:22:26 +0000 (UTC)
+IronPort-SDR: TPVMLRQEwvzj2XPogaM8xWyzxDqQZTg4TytimywkJLiEK9dM1lF9x9E2ZZYDA6E1RyQOpOoWkG
+ u767NNrtO1+w==
+X-IronPort-AV: E=McAfee;i="6200,9189,9988"; a="221986852"
 X-IronPort-AV: E=Sophos;i="5.82,312,1613462400"; 
- d="asc'?scan'208";a="262148989"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2021 01:08:25 -0700
-IronPort-SDR: 5MiHVO8p0jOQAwyemEMFRoCqlkIewJwEnPtYTyD7TY8w2u3UDo6mVSpcUgK7aN+uu5MAgDcYM8
- DHPQZyzR0KCQ==
+ d="asc'?scan'208";a="221986852"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2021 01:22:26 -0700
+IronPort-SDR: McSSJRRw48V349RDoD0llwjJNN8heIv8jAdblzFycRyptQXbfitydfMv2UyQiNqy3TKj+Gha/i
+ U6/MRc8oofKA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.82,312,1613462400"; 
- d="asc'?scan'208";a="627525913"
+ d="asc'?scan'208";a="466870361"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.147])
- by fmsmga006.fm.intel.com with ESMTP; 19 May 2021 01:08:23 -0700
-Date: Wed, 19 May 2021 15:49:12 +0800
+ by FMSMGA003.fm.intel.com with ESMTP; 19 May 2021 01:22:23 -0700
+Date: Wed, 19 May 2021 16:03:13 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jani Nikula <jani.nikula@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20210519074912.GG4589@zhen-hp.sh.intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] drm/i915/gvt: remove local storage of debugfs file
+Message-ID: <20210519080313.GH4589@zhen-hp.sh.intel.com>
+References: <20210518161705.3697143-1-gregkh@linuxfoundation.org>
+ <YKPrRW+zBC8Wmjgz@kroah.com>
 MIME-Version: 1.0
+In-Reply-To: <YKPrRW+zBC8Wmjgz@kroah.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,78 +49,75 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>, "Yuan,
- Hang" <hang.yuan@intel.com>
-Content-Type: multipart/mixed; boundary="===============0330436154=="
+Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============1615638634=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---===============0330436154==
+--===============1615638634==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="gJNQRAHI5jiYqw2y"
+	protocol="application/pgp-signature"; boundary="bgQAstJ9X1Eg13Dy"
 Content-Disposition: inline
 
 
---gJNQRAHI5jiYqw2y
+--bgQAstJ9X1Eg13Dy
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On 2021.05.18 18:28:53 +0200, Greg Kroah-Hartman wrote:
+> On Tue, May 18, 2021 at 06:17:05PM +0200, Greg Kroah-Hartman wrote:
+> > There is no need to keep the dentry around for the debugfs kvmgt cache
+> > file, as we can just look it up when we want to remove it later on.
+> > Simplify the structure by removing the dentry and relying on debugfs
+> > to find the dentry to remove when we want to.
+> >=20
+> > By doing this change, we remove the last in-kernel user that was storing
+> > the result of debugfs_create_long(), so that api can be cleaned up.
+> >=20
+> > Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > Cc: Zhi Wang <zhi.a.wang@intel.com>
+> > Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> > Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> > Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> > Cc: David Airlie <airlied@linux.ie>
+> > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > Cc: intel-gvt-dev@lists.freedesktop.org
+> > Cc: intel-gfx@lists.freedesktop.org
+> > Cc: dri-devel@lists.freedesktop.org
+> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > ---
+> >  drivers/gpu/drm/i915/gvt/kvmgt.c | 11 +++++------
+> >  1 file changed, 5 insertions(+), 6 deletions(-)
+>=20
+> Note, I can take this through my debugfs tree if wanted, that way I can
+> clean up the debugfs_create_long() api at the same time.  Otherwise it's
+> fine, I can wait until next -rc1 for that to happen.
+>=20
 
-Hi,
-
-This is to fix GVT config workaround introduced during -rc1 via
-vfio/mdev change, which exposed dependency issue explicitly that
-made current GVT config nasty. So this is to fix dependency issue
-and get back original config sanity.
+It's fine with me to go through debugfs tree. Just double check that recent
+kvmgt change would not cause conflict with this as well.
 
 Thanks
---
-The following changes since commit e4527420ed087f99c6aa2ac22c6d3458c7dc1a94:
 
-  drm/i915: Use correct downstream caps for check Src-Ctl mode for PCON (2021-05-12 20:53:08 +0300)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux tags/gvt-fixes-2021-05-19
-
-for you to fetch changes up to 145e06b58f8625becc61792a0554726314297a85:
-
-  drm/i915/gvt: Move mdev attribute groups into kvmgt module (2021-05-17 16:37:09 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2021-05-19
-
-- Fix workaround in -rc1 for GVT config (Zhenyu)
-
-----------------------------------------------------------------
-Zhenyu Wang (1):
-      drm/i915/gvt: Move mdev attribute groups into kvmgt module
-
- drivers/gpu/drm/i915/Kconfig         |   1 -
- drivers/gpu/drm/i915/gvt/gvt.c       | 124 +----------------------------------
- drivers/gpu/drm/i915/gvt/gvt.h       |   3 -
- drivers/gpu/drm/i915/gvt/hypercall.h |   2 +-
- drivers/gpu/drm/i915/gvt/kvmgt.c     | 122 +++++++++++++++++++++++++++++++---
- drivers/gpu/drm/i915/gvt/mpt.h       |   4 +-
- 6 files changed, 118 insertions(+), 138 deletions(-)
-
-
---gJNQRAHI5jiYqw2y
+--bgQAstJ9X1Eg13Dy
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYKTC8gAKCRCxBBozTXgY
-J432AJ0Wr1m2CJX/M/gQx2s4aKltr3OUOwCfUsNI2FSmHZka3sRu4cfD/na9cBE=
-=muTk
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYKTGOwAKCRCxBBozTXgY
+J86FAJwJhP+/qRBwSoAQBBedLuDT7lzYywCePdczPYwHElQrgjjszk/zeJ/Ql/4=
+=t9He
 -----END PGP SIGNATURE-----
 
---gJNQRAHI5jiYqw2y--
+--bgQAstJ9X1Eg13Dy--
 
---===============0330436154==
+--===============1615638634==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -130,4 +128,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0330436154==--
+--===============1615638634==--
