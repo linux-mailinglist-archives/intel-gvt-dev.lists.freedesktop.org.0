@@ -2,43 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FCF038D736
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 22 May 2021 21:19:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D8A838D83E
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 23 May 2021 04:21:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ADC7A6E0DD;
-	Sat, 22 May 2021 19:19:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 523F46E02E;
+	Sun, 23 May 2021 02:21:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 157A16E0B6;
- Sat, 22 May 2021 19:19:41 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1621711179; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type;
- bh=keihVSenLp7v0leI4nQBUxeT3Igrlvuen5b+ro8424E=;
- b=lSVb+AmfUJ9Uyo77QogFFToG0ADRBjkyd4qAk1B1Ls0tbzmfwt3vXqvPEmt+tw3eEgf6CF
- GKXkjSs205lCkaqAB+30pppbx95T9NOs/k59h2R17ARrLrqgh54DhKUMb8AzH0ufG6PWHw
- 3L8Wa6KRPnw2XsCtjylT3hKqCr3Qarc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1621711179;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type;
- bh=keihVSenLp7v0leI4nQBUxeT3Igrlvuen5b+ro8424E=;
- b=uMgloJ5zCx6hrIThGhsz0cOCNxVFzVkBl/r11ixEXApArph60Dq802+cytm1BaunIeHXFF
- HGJ6XRzzLOmMvTDA==
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id BC56AAB5F;
- Sat, 22 May 2021 19:19:39 +0000 (UTC)
-To: zhenyuw@linux.intel.com, zhi.a.wang@intel.com, jani.nikula@linux.intel.com,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: i915 gvt broke drm-tip; Fix ASAP
-Message-ID: <58f039e1-225f-4542-8355-1ae91a225206@suse.de>
-Date: Sat, 22 May 2021 21:19:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+Received: from mail-oi1-x230.google.com (mail-oi1-x230.google.com
+ [IPv6:2607:f8b0:4864:20::230])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C91176E02E;
+ Sun, 23 May 2021 02:21:28 +0000 (UTC)
+Received: by mail-oi1-x230.google.com with SMTP id h9so23762085oih.4;
+ Sat, 22 May 2021 19:21:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=U6LZ1nOhRwzoOY76+a1FbKsP/eyCYJFZ+vHMVLGv3BQ=;
+ b=MO3wfQN8QNjrYCGPOw6rn7zlKuW1zT444BXJ5yMVL9WZv/frfxMyeatWnFiLW71tr8
+ /a82McSqPki/nIdeNGhMbUpCGl1WoremUWG7dTKg6rD2XM1tLW9PWDkDfabc5jwDajuZ
+ tvrmsdBlD3n2oKx32ymz1kWcY4vwWcdRJhTvzvXp8BD3VdpWWqazrJFfzwa09/EKBDwZ
+ GjqIF3Ix6diZ1NAjkdaR8NpB/u4BwEOtb7IS3WRyS0fx0jAT8zvG2p/Z2hbGEgkM8CiQ
+ HpU8lPkJl1tjLfD/KpoJDMhmtJE9QIUqBWie3+T4YHTKgm+3H2zC61M1eYD5rhO9TJ1J
+ scNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=U6LZ1nOhRwzoOY76+a1FbKsP/eyCYJFZ+vHMVLGv3BQ=;
+ b=S1NmXCMPXVxjWr870589355x6KsxpehAHqRo66eruSdZVUiSvDtMm3K0AqsgRWqGZn
+ DbM4886MgyChiWNH+DWz+3O+v1E8uO9NFl1y8psW8c+ccelevY+koGPlQKbS/jw0z+fF
+ Y4VTy6TM9TkuIR/ubVEoLyJ7JJ3alWu4QkDW8za+pm3sFG1qH9mzScRQ0CPSiDnsSLOO
+ iwT7K+Tv6Ds/z2axJKYTn1+TiGzn+qNL2TIAb/0rG1zfcQdFYtlIPnUJa1P6xeBNKvrZ
+ oWX/QM9qHYHn4GQIPwh4fgVrgOWxKOnc2UlQ6kbuiKBIl6BNU949WQ//KjG6B5qgah99
+ j3Rg==
+X-Gm-Message-State: AOAM5308DzBfnFy9yDWgMUCXwy/Jmvchjlnil3OMh9x5c6kXy2qKJskc
+ ypgxVVJ/Qla1/sABIdtPJUg=
+X-Google-Smtp-Source: ABdhPJwaRu7doMHe/oCsHDDI5YU3j35+KQOMg97pQpgU82F6UZ7fuhO4/PAisIUok6qJGD8zEB+JUQ==
+X-Received: by 2002:aca:ab50:: with SMTP id u77mr6796354oie.153.1621736488189; 
+ Sat, 22 May 2021 19:21:28 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id e21sm1981779oii.23.2021.05.22.19.21.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 22 May 2021 19:21:27 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [PATCH] drm/i915/gem: Use list_entry to access list members
+Date: Sat, 22 May 2021 19:21:25 -0700
+Message-Id: <20210523022125.853214-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -52,248 +64,77 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: David Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org,
- "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>
-Content-Type: multipart/mixed; boundary="===============1425801699=="
+Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
+ intel-gvt-dev@lists.freedesktop.org, Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============1425801699==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="vktHgzuPprZbbfdW8mMu7QSWVidqVUTZa"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---vktHgzuPprZbbfdW8mMu7QSWVidqVUTZa
-Content-Type: multipart/mixed; boundary="NrZUYYHDXvB3uN1P0o9PcgFMBnzL0ylXc";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: zhenyuw@linux.intel.com, zhi.a.wang@intel.com,
- jani.nikula@linux.intel.com,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>
-Cc: "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>, intel-gfx@lists.freedesktop.org,
- dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter
- <daniel@ffwll.ch>, David Airlie <airlied@redhat.com>
-Message-ID: <58f039e1-225f-4542-8355-1ae91a225206@suse.de>
-Subject: i915 gvt broke drm-tip; Fix ASAP
-
---NrZUYYHDXvB3uN1P0o9PcgFMBnzL0ylXc
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-after creating drm-tip today as part of [1], building drm-tip is now=20
-broken with the error message shown below.
-
-Some register constants appear to be missing from the GVT code. Please=20
-fix ASAP.
-
-Best regards
-Thomas
-
-tzimmermann@linux-uq9g:~/Projekte/linux> LANG=3D make -j8 W=3D1 O=3Dbuild=
--x86_64/
-
-make[1]: Entering directory '/home/tzimmermann/Projekte/linux/build-x86_6=
-4'
-
-   GEN     Makefile
-
-   DESCEND  objtool
-
-   CALL    ../scripts/atomic/check-atomics.sh
-
-   CALL    ../scripts/checksyscalls.sh
-
-   CHK     include/generated/compile.h
-
-   CC [M]  drivers/gpu/drm/via/via_irq.o
-
-   CC [M]  drivers/gpu/drm/via/via_drv.o
-
-   CC [M]  drivers/gpu/drm/i915/gvt/handlers.o
-
-   CC [M]  drivers/gpu/drm/via/via_map.o
-
-   CC [M]  drivers/gpu/drm/vgem/vgem_drv.o
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c: In function 'init_skl_mmio_info=
-':
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3345:9: error: 'CSR_SSP_BASE'=20
-undeclared (first use in this function); did you mean 'MSR_FS_BASE'?
-
-  3345 |  MMIO_D(CSR_SSP_BASE, D_SKL_PLUS);
-
-       |         ^~~~~~~~~~~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:2120:48: note: in definition of =
-
-macro 'MMIO_F'
-
-  2120 |  ret =3D new_mmio_info(gvt, i915_mmio_reg_offset(reg), \
-
-       |                                                ^~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3345:2: note: in expansion of=20
-macro 'MMIO_D'
-
-  3345 |  MMIO_D(CSR_SSP_BASE, D_SKL_PLUS);
-
-       |  ^~~~~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3345:9: note: each undeclared=20
-identifier is reported only once for each function it appears in
-
-  3345 |  MMIO_D(CSR_SSP_BASE, D_SKL_PLUS);
-
-       |         ^~~~~~~~~~~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:2120:48: note: in definition of =
-
-macro 'MMIO_F'
-
-  2120 |  ret =3D new_mmio_info(gvt, i915_mmio_reg_offset(reg), \
-
-       |                                                ^~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3345:2: note: in expansion of=20
-macro 'MMIO_D'
-
-  3345 |  MMIO_D(CSR_SSP_BASE, D_SKL_PLUS);
-
-       |  ^~~~~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3346:9: error: 'CSR_HTP_SKL'=20
-undeclared (first use in this function); did you mean 'DMC_HTP_SKL'?
-
-  3346 |  MMIO_D(CSR_HTP_SKL, D_SKL_PLUS);
-
-       |         ^~~~~~~~~~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:2120:48: note: in definition of =
-
-macro 'MMIO_F'
-
-  2120 |  ret =3D new_mmio_info(gvt, i915_mmio_reg_offset(reg), \
-
-       |                                                ^~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3346:2: note: in expansion of=20
-macro 'MMIO_D'
-
-  3346 |  MMIO_D(CSR_HTP_SKL, D_SKL_PLUS);
-
-       |  ^~~~~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3347:9: error: 'CSR_LAST_WRITE' =
-
-undeclared (first use in this function); did you mean 'DMC_LAST_WRITE'?
-
-  3347 |  MMIO_D(CSR_LAST_WRITE, D_SKL_PLUS);
-
-       |         ^~~~~~~~~~~~~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:2120:48: note: in definition of =
-
-macro 'MMIO_F'
-
-  2120 |  ret =3D new_mmio_info(gvt, i915_mmio_reg_offset(reg), \
-
-       |                                                ^~~
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3347:2: note: in expansion of=20
-macro 'MMIO_D'
-
-  3347 |  MMIO_D(CSR_LAST_WRITE, D_SKL_PLUS);
-
-       |  ^~~~~~
-
-   CC [M]  drivers/gpu/drm/via/via_mm.o
-
-   CC [M]  drivers/gpu/drm/via/via_dma.o
-
-In file included from ../drivers/gpu/drm/i915/i915_drv.h:64,
-
-                  from ../drivers/gpu/drm/i915/gvt/handlers.c:39:
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c: At top level:
-
-=2E./drivers/gpu/drm/i915/gvt/handlers.c:3658:21: error:=20
-'CSR_MMIO_START_RANGE' undeclared here (not in a function); did you mean =
-
-'DMC_MMIO_START_RANGE'?
-
-  3658 |  {D_SKL_PLUS, _MMIO(CSR_MMIO_START_RANGE), 0x3000, NULL, NULL},
-
-       |                     ^~~~~~~~~~~~~~~~~~~~
-
-=2E./drivers/gpu/drm/i915/i915_reg.h:185:47: note: in definition of macro=20
-
-'_MMIO'
-
-   185 | #define _MMIO(r) ((const i915_reg_t){ .reg =3D (r) })
-
-       |                                               ^
-
-make[5]: *** [../scripts/Makefile.build:272:=20
-drivers/gpu/drm/i915/gvt/handlers.o] Error 1
-
-
-[1]=20
-https://cgit.freedesktop.org/drm/drm-misc/commit/?id=3D304ba5dca49a21e6f4=
-040494c669134787145118
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---NrZUYYHDXvB3uN1P0o9PcgFMBnzL0ylXc--
-
---vktHgzuPprZbbfdW8mMu7QSWVidqVUTZa
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmCpWUoFAwAAAAAACgkQlh/E3EQov+Cu
-7Q//bMsxVLlpBKuDu+yV7CNlJfYHb/sW2OIsuTH2cPYgmPwvL6SsaesKKQxJqcnisZnE30/pXEjY
-rUrhb8GoOl5v+yVoUEV5AWCe62+pjaoEQHhji6MRoWuBMObOwD3EDdLECxhGovB9P4STSenZNUZ3
-RJCfxsVr9j4AFHwDC5AQaLgC27cS6fEXNhpnfYNQVEmN74lHM2WaUSbJp7iKbtXStnHKZCC81nO/
-VT9Opy6hpSi6kxPN5eBYdGzjcHRQl1vmEyRLXRNywq+WtWtph13UGeuuGjnrlx+FFd4EiqYz6a7e
-d2oWGBRmvVtwHmJa7T/auyX08h37auyWdiSPr/BXjI1HlDuf0LgBsEyCdQw5uEd+7UBZOkcflVmL
-CSeA72sgOr1B7aZc/V8USyTJDzhlF6IEZmDI0Tw1zS3aAOuvRISXIC+sS+XrBhvdxfaGcseB95Dt
-LmKzbjcYdIyyxCCGpgmuK0MCJxjB8aaUZmQzwPnjqwWWGof+HT1V+51YJQDHfSKV79GFD0G2/mCB
-Wxp3Y+H8YouowPrRzs10cnnP2Uq4nax8yC43DA0aF+eK2Ae6qqvxB0kD59t8SdJMRhzD88FwIyuJ
-rs+t+iwbhTtGHnpC6IQ9KGlwo/Jb28RMyflS1PrI/qTkYcgAWCyhaOah5PwvBfVFCUmxxF6cIeMp
-C2k=
-=mtOy
------END PGP SIGNATURE-----
-
---vktHgzuPprZbbfdW8mMu7QSWVidqVUTZa--
-
---===============1425801699==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Use list_entry() instead of container_of() to access list members.
+Also drop unnecessary and misleading NULL checks on the result of
+list_entry().
+
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ drivers/gpu/drm/i915/gvt/dmabuf.c | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.c b/drivers/gpu/drm/i915/gvt/dmabuf.c
+index d4f883f35b95..4241af5074a9 100644
+--- a/drivers/gpu/drm/i915/gvt/dmabuf.c
++++ b/drivers/gpu/drm/i915/gvt/dmabuf.c
+@@ -148,7 +148,7 @@ static void dmabuf_gem_object_free(struct kref *kref)
+ 
+ 	if (vgpu && vgpu->active && !list_empty(&vgpu->dmabuf_obj_list_head)) {
+ 		list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
+-			dmabuf_obj = container_of(pos,
++			dmabuf_obj = list_entry(pos,
+ 					struct intel_vgpu_dmabuf_obj, list);
+ 			if (dmabuf_obj == obj) {
+ 				list_del(pos);
+@@ -357,10 +357,8 @@ pick_dmabuf_by_info(struct intel_vgpu *vgpu,
+ 	struct intel_vgpu_dmabuf_obj *ret = NULL;
+ 
+ 	list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
+-		dmabuf_obj = container_of(pos, struct intel_vgpu_dmabuf_obj,
+-						list);
+-		if ((dmabuf_obj == NULL) ||
+-		    (dmabuf_obj->info == NULL))
++		dmabuf_obj = list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
++		if (dmabuf_obj->info == NULL)
+ 			continue;
+ 
+ 		fb_info = (struct intel_vgpu_fb_info *)dmabuf_obj->info;
+@@ -387,11 +385,7 @@ pick_dmabuf_by_num(struct intel_vgpu *vgpu, u32 id)
+ 	struct intel_vgpu_dmabuf_obj *ret = NULL;
+ 
+ 	list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
+-		dmabuf_obj = container_of(pos, struct intel_vgpu_dmabuf_obj,
+-						list);
+-		if (!dmabuf_obj)
+-			continue;
+-
++		dmabuf_obj = list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
+ 		if (dmabuf_obj->dmabuf_id == id) {
+ 			ret = dmabuf_obj;
+ 			break;
+@@ -600,8 +594,7 @@ void intel_vgpu_dmabuf_cleanup(struct intel_vgpu *vgpu)
+ 
+ 	mutex_lock(&vgpu->dmabuf_lock);
+ 	list_for_each_safe(pos, n, &vgpu->dmabuf_obj_list_head) {
+-		dmabuf_obj = container_of(pos, struct intel_vgpu_dmabuf_obj,
+-						list);
++		dmabuf_obj = list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
+ 		dmabuf_obj->vgpu = NULL;
+ 
+ 		idr_remove(&vgpu->object_idr, dmabuf_obj->dmabuf_id);
+-- 
+2.25.1
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1425801699==--
