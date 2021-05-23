@@ -1,58 +1,57 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBC7338DC27
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 23 May 2021 19:23:23 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AA0E38DC91
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 23 May 2021 21:17:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 643BE6E532;
-	Sun, 23 May 2021 17:23:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E4F289C9C;
+	Sun, 23 May 2021 19:17:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-oi1-x235.google.com (mail-oi1-x235.google.com
- [IPv6:2607:f8b0:4864:20::235])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CD2986E52F;
- Sun, 23 May 2021 17:23:08 +0000 (UTC)
-Received: by mail-oi1-x235.google.com with SMTP id u11so24950195oiv.1;
- Sun, 23 May 2021 10:23:08 -0700 (PDT)
+Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com
+ [IPv6:2a00:1450:4864:20::531])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0675889C93;
+ Sun, 23 May 2021 19:17:49 +0000 (UTC)
+Received: by mail-ed1-x531.google.com with SMTP id h16so29347686edr.6;
+ Sun, 23 May 2021 12:17:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2FoVSFWcUZWXRm7AD51E3dANi05UrgXiAjik3mpf5no=;
- b=RMSTz6qKC8La6YP28LsKEFerKiMRPKEO36aLvbKYOKBoTx2ndWptJB/hb5lmiWiOn1
- P7eLVaFFNfbJ96Yn12cdngBg5O7L+KKD9SOM9hWFZL4mzEtE9KSM1Ff2EsBfu4rT9s3z
- DUBxRuOE30by1mVJGwW1wTlq2bD28Q8PakzOk2U/jjJRkzzHWq4+6YMxKNElVvb1sUcR
- F36hLz+pS7Hryd1Blv55Q/+V94hkfHNJiDlrP0IZzoBRpi+jNJwTNu7X2KJOQnaIfhFK
- x/2KYVE/esYY6BOI+vTxogfb/X2t6D2VKHId7hPBIePEhk8PXg7xDFZu8JghGwF0tbEj
- o9pQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AUsaJ1MPUZq2hTmtjAVAKhDL5Z3IOSNfaE4fSpX2PxU=;
+ b=e+GH9IQhVxEy6hn5UpIbb3/yRtVsaGagXQWKeaIp4C+RayuWJ2jJEVJLMjLLTnbkZ9
+ 9uKKZ4qiRTFItpb4HWQ/yoM5KGsB3HeFeGq9xlcaUAjTBllZNv36cDzimZRyV6n96zmj
+ QnBqDKY6KMYkql3xjfeNTzqpAOjgFJRjfzSkaNY+ZovgnRMtlOTLhJEX1mcwgQP45VfT
+ sSjpEpCHx+/a/oUjyN8L4dAirLwayFlKSoNSqZ0B3ZGtvK9IdUH07R3ES8fgvCIHILFJ
+ XMwluLMqLlP01MZiNDUa0VAWU2rNyYvwZFusfb54dgw8DFQJnuU0sb1gfbL8xDxmEfw/
+ H9ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=2FoVSFWcUZWXRm7AD51E3dANi05UrgXiAjik3mpf5no=;
- b=cOFPMydiMbVtzeBS31/vE1DIvI30az3Hm2DV/YjJswrhEvFGGI9DahB4a5fAXRD6wF
- A/ZITYRUcHf5/ClsIoqw4wgzpbqgv9rm/JFJRbk6E1OA1kssiEsLZlVopnCu/1k8Gp7p
- 6j2CufhWGymWoedlfLxggmp/jYzjOppo6uFaMqIlpHcZY6/s6EZaO1C1K9/LWGBm3uMz
- Box3ROpXHA0dZU/7NHw8t4jRbhBtuDLqi1jBdsr5vi1jHp/OB3Tp87b0IQSfp0ResROs
- ba/8ZGoVMAaPOJO1lux3OnoyWYAi5oo4wGDGKjAy9fSFGm4z85V25G4wAFcwKeMWnrSQ
- K55g==
-X-Gm-Message-State: AOAM532g+Ukvg09W1pZLbqIwyBp145zdve39+sp3U5x9jd5qhJyku0BC
- aWz8YtTz7WwNz6fy6+BfiZ4=
-X-Google-Smtp-Source: ABdhPJwY480IlovPkjrgDpcAhRCpN2rSslgx5zzbp8togNhSlzBUSV60ajsWIZCURBGgHgy33kopPA==
-X-Received: by 2002:a05:6808:98f:: with SMTP id
- a15mr8551245oic.29.1621790588083; 
- Sun, 23 May 2021 10:23:08 -0700 (PDT)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id v9sm2627421otn.44.2021.05.23.10.23.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 May 2021 10:23:07 -0700 (PDT)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [PATCH v2] drm/i915/gem: Use list_entry to access list members
-Date: Sun, 23 May 2021 10:23:04 -0700
-Message-Id: <20210523172304.3033229-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.25.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AUsaJ1MPUZq2hTmtjAVAKhDL5Z3IOSNfaE4fSpX2PxU=;
+ b=jr4ngzITNE/Mlh3x/mvBVNYzJlvXBY/gXfFu8mMe532qyQsszs/qoxKNXTzzjSJo18
+ EL81kiXSpC52BvecGhxpPq1xoOGKX/NpbwrBBmzj/JRhn+GGGGwuD/PIK2JOvcXD38SD
+ IAlRvXQ5U0tvz8DbShljpnTwMm0K6xBT9eh5IFlRHm1xQIygaRuA36LId8TerCokRQGa
+ Jb8wKKEEMdlZ9sda4q+J0p2Cic2EHI9IFrCiemg20C1vMI3tnGK8a+HNnIHS5NQS9VZ/
+ ghn+pYTuVeqZq9T0xxznra7KFofzIhgeBQFNDmOk25VSFDxmEeWzm4Llp3Zt/XYeuzj1
+ Fkjw==
+X-Gm-Message-State: AOAM532AJZsb+QcDNS7WT/NNgyHxtEBdPb70rbMWsluHI3HP4EslLb2R
+ D2efNGIBW6ht34DnGZ4lKGAw4h32r1JXLSJKYks=
+X-Google-Smtp-Source: ABdhPJyxT1dFBQ7OraCENc2Bbu3N8jp6h/9bZ0kPzGpsZMFsGH5prpu2XM/Jzk6fgBYhIVDUGVJP1Yf47dvoekHF4hU=
+X-Received: by 2002:a05:6402:1d39:: with SMTP id
+ dh25mr21986375edb.113.1621797467861; 
+ Sun, 23 May 2021 12:17:47 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210521174047.3861-1-anusha.srivatsa@intel.com>
+ <20210522064343.teeezbynuk4k7nm3@ldmartin-desk2>
+In-Reply-To: <20210522064343.teeezbynuk4k7nm3@ldmartin-desk2>
+From: Dave Airlie <airlied@gmail.com>
+Date: Mon, 24 May 2021 05:17:36 +1000
+Message-ID: <CAPM=9tyA-akmALJEZegkKLgDc+c7MOeb7v3mVA1xqoBoxUyRkg@mail.gmail.com>
+Subject: Re: [Intel-gfx] [PATCH] drm/i915/gvt: Add missing macro name changes
+To: Lucas De Marchi <lucas.demarchi@intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,81 +64,76 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
- intel-gvt-dev@lists.freedesktop.org, Guenter Roeck <linux@roeck-us.net>
+Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Anusha Srivatsa <anusha.srivatsa@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Use list_entry() instead of container_of() to access list members.
-Also drop unnecessary and misleading NULL checks on the result of
-list_entry().
+Can someone land this in drm-intel-next asap? it's breaking drm-tip development.
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
-v2: Checkpatch fixes:
-    - Fix alignment
-    - Replace comparison against NULL with !
+Dave.
 
- drivers/gpu/drm/i915/gvt/dmabuf.c | 18 +++++-------------
- 1 file changed, 5 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.c b/drivers/gpu/drm/i915/gvt/dmabuf.c
-index d4f883f35b95..e3f488681484 100644
---- a/drivers/gpu/drm/i915/gvt/dmabuf.c
-+++ b/drivers/gpu/drm/i915/gvt/dmabuf.c
-@@ -148,8 +148,7 @@ static void dmabuf_gem_object_free(struct kref *kref)
- 
- 	if (vgpu && vgpu->active && !list_empty(&vgpu->dmabuf_obj_list_head)) {
- 		list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
--			dmabuf_obj = container_of(pos,
--					struct intel_vgpu_dmabuf_obj, list);
-+			dmabuf_obj = list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
- 			if (dmabuf_obj == obj) {
- 				list_del(pos);
- 				intel_gvt_hypervisor_put_vfio_device(vgpu);
-@@ -357,10 +356,8 @@ pick_dmabuf_by_info(struct intel_vgpu *vgpu,
- 	struct intel_vgpu_dmabuf_obj *ret = NULL;
- 
- 	list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
--		dmabuf_obj = container_of(pos, struct intel_vgpu_dmabuf_obj,
--						list);
--		if ((dmabuf_obj == NULL) ||
--		    (dmabuf_obj->info == NULL))
-+		dmabuf_obj = list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
-+		if (!dmabuf_obj->info)
- 			continue;
- 
- 		fb_info = (struct intel_vgpu_fb_info *)dmabuf_obj->info;
-@@ -387,11 +384,7 @@ pick_dmabuf_by_num(struct intel_vgpu *vgpu, u32 id)
- 	struct intel_vgpu_dmabuf_obj *ret = NULL;
- 
- 	list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
--		dmabuf_obj = container_of(pos, struct intel_vgpu_dmabuf_obj,
--						list);
--		if (!dmabuf_obj)
--			continue;
--
-+		dmabuf_obj = list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
- 		if (dmabuf_obj->dmabuf_id == id) {
- 			ret = dmabuf_obj;
- 			break;
-@@ -600,8 +593,7 @@ void intel_vgpu_dmabuf_cleanup(struct intel_vgpu *vgpu)
- 
- 	mutex_lock(&vgpu->dmabuf_lock);
- 	list_for_each_safe(pos, n, &vgpu->dmabuf_obj_list_head) {
--		dmabuf_obj = container_of(pos, struct intel_vgpu_dmabuf_obj,
--						list);
-+		dmabuf_obj = list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
- 		dmabuf_obj->vgpu = NULL;
- 
- 		idr_remove(&vgpu->object_idr, dmabuf_obj->dmabuf_id);
--- 
-2.25.1
-
+On Sat, 22 May 2021 at 16:44, Lucas De Marchi <lucas.demarchi@intel.com> wrote:
+>
+> On Fri, May 21, 2021 at 10:40:47AM -0700, Anusha Srivatsa wrote:
+> >Propogate changes to macros name containing CSR_*
+> >to DMC_* from display side.
+> >
+> >Fixes: 0633cdcbaa77 ("drm/i915/dmc: Rename macro names containing csr")
+> >Cc: intel-gvt-dev@lists.freedesktop.org
+> >Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> >Cc: Lucas De Marchi <lucas.demarchi@intel.com>
+> >Signed-off-by: Anusha Srivatsa <anusha.srivatsa@intel.com>
+>
+>
+> Reviewed-by: Lucas De Marchi <lucas.demarchi@intel.com>
+>
+> Lucas De Marchi
+>
+> >---
+> > drivers/gpu/drm/i915/gvt/handlers.c | 8 ++++----
+> > 1 file changed, 4 insertions(+), 4 deletions(-)
+> >
+> >diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+> >index dda320749c65..33496397a74f 100644
+> >--- a/drivers/gpu/drm/i915/gvt/handlers.c
+> >+++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> >@@ -3342,9 +3342,9 @@ static int init_skl_mmio_info(struct intel_gvt *gvt)
+> >       MMIO_D(_MMIO(_PLANE_SURF_3_A), D_SKL_PLUS);
+> >       MMIO_D(_MMIO(_PLANE_SURF_3_B), D_SKL_PLUS);
+> >
+> >-      MMIO_D(CSR_SSP_BASE, D_SKL_PLUS);
+> >-      MMIO_D(CSR_HTP_SKL, D_SKL_PLUS);
+> >-      MMIO_D(CSR_LAST_WRITE, D_SKL_PLUS);
+> >+      MMIO_D(DMC_SSP_BASE, D_SKL_PLUS);
+> >+      MMIO_D(DMC_HTP_SKL, D_SKL_PLUS);
+> >+      MMIO_D(DMC_LAST_WRITE, D_SKL_PLUS);
+> >
+> >       MMIO_DFH(BDW_SCRATCH1, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL);
+> >
+> >@@ -3655,7 +3655,7 @@ void intel_gvt_clean_mmio_info(struct intel_gvt *gvt)
+> >  * otherwise, need to update cmd_reg_handler in cmd_parser.c
+> >  */
+> > static struct gvt_mmio_block mmio_blocks[] = {
+> >-      {D_SKL_PLUS, _MMIO(CSR_MMIO_START_RANGE), 0x3000, NULL, NULL},
+> >+      {D_SKL_PLUS, _MMIO(DMC_MMIO_START_RANGE), 0x3000, NULL, NULL},
+> >       {D_ALL, _MMIO(MCHBAR_MIRROR_BASE_SNB), 0x40000, NULL, NULL},
+> >       {D_ALL, _MMIO(VGT_PVINFO_PAGE), VGT_PVINFO_SIZE,
+> >               pvinfo_mmio_read, pvinfo_mmio_write},
+> >--
+> >2.25.0
+> >
+> >_______________________________________________
+> >Intel-gfx mailing list
+> >Intel-gfx@lists.freedesktop.org
+> >https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+> _______________________________________________
+> Intel-gfx mailing list
+> Intel-gfx@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
