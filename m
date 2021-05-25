@@ -2,37 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5084838FB63
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 May 2021 09:07:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A0BC39005B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 May 2021 13:53:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6BA316E0C2;
-	Tue, 25 May 2021 07:07:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C554F6EA05;
+	Tue, 25 May 2021 11:53:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 520 seconds by postgrey-1.36 at gabe;
- Tue, 25 May 2021 07:07:09 UTC
-Received: from smtp.fibertel.com.ar (avas-mx13.fibertel.com.ar [24.232.0.196])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F42236E0C2;
- Tue, 25 May 2021 07:07:09 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by avasmr03-slo1.int.fibertel.com.ar (Postfix) with ESMTP id 81040122C394;
- Tue, 25 May 2021 03:58:26 -0300 (-03)
-Received: from avasmr03-slo1.int.fibertel.com.ar ([127.0.0.1])
- by localhost (avasmr03-slo1.int.fibertel.com.ar [127.0.0.1]) (amavisd-new,
- port 10027)
- with LMTP id tEKcPCz5nOrp; Tue, 25 May 2021 03:58:25 -0300 (-03)
-Received: from User (unknown [129.205.160.92])
- by avasmr03-slo1.int.fibertel.com.ar (Postfix) with ESMTPA id A722E112586C;
- Tue, 25 May 2021 03:52:34 -0300 (-03)
-From: "Uncc"<compensationfund1@mail.ru>
-Subject: un
-Date: Tue, 25 May 2021 08:58:23 +0200
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ACD3189364;
+ Tue, 25 May 2021 11:53:31 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1621943610; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=0z5nxqVTKyOw1uO1RT1x+0CkKryqp8rTdMNuI8V8fis=;
+ b=2XnDjqTvZvJdBXuNuAGIS6hKQoQarF4LoYZm9nx1iX2IeFSddrxNibSYHyKDdz/Nb4Maa4
+ dIuzAJ0GfBM+eYIhTMKHQJsqKIBuUiQvBKffSMtunNSOcPlVPCIDPQ4fV2Z+VcOo4xtSSr
+ b51942qh+q2BdB1tVHJ+e6As687fGns=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1621943610;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=0z5nxqVTKyOw1uO1RT1x+0CkKryqp8rTdMNuI8V8fis=;
+ b=Y/qofScj9paG0FPHh25yKLkDg3lbt3ps8+yBh2V90OrXsdOqwnD7zg8W5EjcMBXL6JjEl7
+ AxibTBYzTJFINJDg==
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 148C3AF03;
+ Tue, 25 May 2021 11:53:30 +0000 (UTC)
+Subject: Re: i915 gvt broke drm-tip; Fix ASAP
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
+References: <58f039e1-225f-4542-8355-1ae91a225206@suse.de>
+ <20210524030901.GC27293@zhen-hp.sh.intel.com> <87k0nocv2f.fsf@intel.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <a13379b8-2827-4eb9-1395-18ed1b9756e8@suse.de>
+Date: Tue, 25 May 2021 13:53:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210525065826.81040122C394@avasmr03-slo1.int.fibertel.com.ar>
+In-Reply-To: <87k0nocv2f.fsf@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,46 +56,122 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: paulsesayofficer@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-gfx@lists.freedesktop.org,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ zhi.a.wang@intel.com
+Content-Type: multipart/mixed; boundary="===============0778403461=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-United Nations
-Compensation Commission United
-Nations Organization Uncc Secretariat
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0778403461==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD"
 
-REGISTERED CLAIM NR:56881M
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD
+Content-Type: multipart/mixed; boundary="3VwOj3tN0z6zzgWm65bDSH6UnIWOiG156";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx@lists.freedesktop.org,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ zhi.a.wang@intel.com
+Message-ID: <a13379b8-2827-4eb9-1395-18ed1b9756e8@suse.de>
+Subject: Re: i915 gvt broke drm-tip; Fix ASAP
+References: <58f039e1-225f-4542-8355-1ae91a225206@suse.de>
+ <20210524030901.GC27293@zhen-hp.sh.intel.com> <87k0nocv2f.fsf@intel.com>
+In-Reply-To: <87k0nocv2f.fsf@intel.com>
 
-PAYMENT OF US$1,900,000.OO (One Million, Nine Hundred Thousand United States Dollars)
+--3VwOj3tN0z6zzgWm65bDSH6UnIWOiG156
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Geneva Summit for Human Rights and Democracy 18 oct 2020 (UN Information Service) - The United Nations Compensation Commission has made available a total of $199,164,829.35 to 14 governments for distribution to 32,859 successful beneficiaries.
+Hi
 
-Payment is being made in respect of 139 claims in category "A" (claims of individuals for departure from Kuwait or Iraq), 31,880 claims in category "C" (claims individuals for damages up to $100,000), including 31,715 "Bedouin" claims, 785 claims in category "D" (claims of individuals, both victims of fraud and various cases of Local and international scams and for damages above $100,000), 41 claims in category "E" (claims of corporations, other private legal entities, and public sector enterprises) and 14 claims in category "F" (claims of governments and international organizations).
+Am 24.05.21 um 11:58 schrieb Jani Nikula:
+> On Mon, 24 May 2021, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
+>> On 2021.05.22 21:19:38 +0200, Thomas Zimmermann wrote:
+>>> Hi,
+>>>
+>>> after creating drm-tip today as part of [1], building drm-tip is now =
+broken
+>>> with the error message shown below.
+>>>
+>>> Some register constants appear to be missing from the GVT code. Pleas=
+e fix
+>>> ASAP.
+>>>
+>>
+>> Thanks, Thomas. Looks DMC rename missed gvt part. We need to ask CI to=20
+have
+>> at least build test with gvt.
+>=20
+> Indeed. This is fixed now with 273895109a04 ("drm/i915/gvt: Add missing=
 
-This payment is being made in accordance with the Governing council's decision 227, which extended the temporary payment mechanism set out by the Governing Council in its decision 197, under which up to $200 million from the Compensation Fund will be made available for the payment of claims every quarter. In the present round of payment, all newly approved claims, i.e., claims approved for payment at the fifty-sixth session, will receive $1.9 million or the principal amount of the award, if less. Additional funds will be disbursed to the claimants, whose claims were approved from the forty-eighth to the fifty-fifth sessions, also bringing the total payment to each of them up to a maximum of $1.9 million. In order to fully disburse the available funds, the claims will be paid up to $2 million, depending on the order in which they have been approved.
+> macro name changes").
 
-Based on our latest investigation, we have realized that the corruption in various arms of the government in many countries have made it impossible for the circulation of these funds to reach the less privileged and delegated NGOs, in our quest to curb this corruption we resulted to using individual beneficiaries and private companies, who are selected to be our beneficiary.
+Ok, it builds again. Thanks to both of you.
 
-Our private beneficiaries would receive the above funds and choose two local-based NGOs (less privileged homes) of their choice to donate 80% of the amount and keep 20% as compensation from the UN.
+Best regards
+Thomas
 
-A UN Debit MasterCard has been pre-approved with the amount of US$1,900,000.00 (One Million, Nine Hundred Thousand United States Dollars) and it would be fully activated and sent to your designated address via speed courier service if you accept to act as our private beneficiary.
+>=20
+> BR,
+> Jani.
+>=20
+>=20
 
-Upon full activation of the UN Debit MasterCard, you would be able to make ATM withdrawal and transfers of the funds.
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
 
-Please contact your appointed officer for your Debit Card.
 
+--3VwOj3tN0z6zzgWm65bDSH6UnIWOiG156--
 
-                                                                                                                      Officer: Mr. Paul Sesay
+--qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
 
-                                                                                                                       Tell: +27 81 382 0328 
+-----BEGIN PGP SIGNATURE-----
 
-                                                                                                                    Thank you and best regards
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmCs5TkFAwAAAAAACgkQlh/E3EQov+D3
+/w/9G5et1YwRspSJiSqKI6zm3aEKuSsv/ZN62nW530vWWxREbv70p5oNWB8A+EkUIiVrZWoYmEnG
+CxaRy2qBad7AzM+TcEs8aO+QENt8szFWSvrKqJTUO/LwCj7WjcT/fHo0xqnrBUp5fQeLULzYI42L
+ussUUif7oAmes9mfF6U5hfCRXuhkwkhBkkeUTGVu6g161KEu9iRCsSTSH+/17ssiSN8ZKogDKyKv
+DXBt+q3jqyul+QBG3/OMByKVOQYUgoX7Y7mgpf7d4zQ/GuKlhcFT/RmTTx5bYDjofCNHRjMOrtAa
+YTEiV67p2RRSr2IRUnal6VE4XRi9FDiJxWquAqk7NPaCI+Cu50Wan79Wt+hRK34jlSMN5/u9K61e
+qU/1RAdf+5DCTf2RpjWt5hXD3cHkHOZhCP3ZOq4OOiu9ss6BrgugcNKZ1GY9MzepFvILyOM/4E76
+C1J+lPq2WYkFO2kcjwcXm6u6LOU8ERi+rfJCHOmTA1NUkRwPten44dwWccwelbSzTkcyrdGaRXQg
+0AnWRdjB8zBzzb/GxsKEs+oplw9WP4nk+btQTnTdRYIrEVpqg67kLUWNkAgbxgIZdbPR0gCChVhb
+ime70rFNWuHJl4iqmanRkoE6T2ElbAR67o5sf5GliVW6Wjxf8Bew4CumfB2mXEcztRp8sMc5RTK2
+80Q=
+=Tssr
+-----END PGP SIGNATURE-----
 
-                                                                                        Paul Sesay (Financial Counselor)IMF Compliance Department.
-                                                                                                    United Nations Compensation Commission uncc
+--qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD--
+
+--===============0778403461==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0778403461==--
