@@ -2,48 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A0BC39005B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 May 2021 13:53:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 11623393AF0
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 May 2021 03:18:36 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C554F6EA05;
-	Tue, 25 May 2021 11:53:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C858D6F53D;
+	Fri, 28 May 2021 01:18:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ACD3189364;
- Tue, 25 May 2021 11:53:31 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1621943610; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0z5nxqVTKyOw1uO1RT1x+0CkKryqp8rTdMNuI8V8fis=;
- b=2XnDjqTvZvJdBXuNuAGIS6hKQoQarF4LoYZm9nx1iX2IeFSddrxNibSYHyKDdz/Nb4Maa4
- dIuzAJ0GfBM+eYIhTMKHQJsqKIBuUiQvBKffSMtunNSOcPlVPCIDPQ4fV2Z+VcOo4xtSSr
- b51942qh+q2BdB1tVHJ+e6As687fGns=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1621943610;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0z5nxqVTKyOw1uO1RT1x+0CkKryqp8rTdMNuI8V8fis=;
- b=Y/qofScj9paG0FPHh25yKLkDg3lbt3ps8+yBh2V90OrXsdOqwnD7zg8W5EjcMBXL6JjEl7
- AxibTBYzTJFINJDg==
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 148C3AF03;
- Tue, 25 May 2021 11:53:30 +0000 (UTC)
-Subject: Re: i915 gvt broke drm-tip; Fix ASAP
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-References: <58f039e1-225f-4542-8355-1ae91a225206@suse.de>
- <20210524030901.GC27293@zhen-hp.sh.intel.com> <87k0nocv2f.fsf@intel.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <a13379b8-2827-4eb9-1395-18ed1b9756e8@suse.de>
-Date: Tue, 25 May 2021 13:53:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+X-Greylist: delayed 49350 seconds by postgrey-1.36 at gabe;
+ Fri, 28 May 2021 01:18:33 UTC
+Received: from server.finestcontentwriting.com
+ (server.finestcontentwriting.com [69.16.230.249])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 72E496F53D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 28 May 2021 01:18:33 +0000 (UTC)
+Received: from daslco by server.finestcontentwriting.com with local (Exim
+ 4.94.2) (envelope-from <support@d-asl.co.uk>) id 1lmEJ0-0006aW-Sp
+ for intel-gvt-dev@lists.freedesktop.org; Thu, 27 May 2021 07:36:02 -0400
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: TRANSACTION
+X-PHP-Script: www.d-asl.co.uk/wp-zuprize.php for 185.183.106.107
+X-PHP-Originating-Script: 1137:wp-zuprize.php(1) : eval()'d code
+Date: Thu, 27 May 2021 11:36:02 +0000
+From: VINCENT VITALAS <support@d-asl.co.uk>
+Message-ID: <8428e146b5deb2ab51e9d443ddeea2a9@www.d-asl.co.uk>
 MIME-Version: 1.0
-In-Reply-To: <87k0nocv2f.fsf@intel.com>
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server.finestcontentwriting.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [1137 992] / [47 12]
+X-AntiAbuse: Sender Address Domain - d-asl.co.uk
+X-Get-Message-Sender-Via: server.finestcontentwriting.com: authenticated_id:
+ daslco/from_h
+X-Authenticated-Sender: server.finestcontentwriting.com: support@d-asl.co.uk
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,122 +51,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- zhi.a.wang@intel.com
-Content-Type: multipart/mixed; boundary="===============0778403461=="
+Reply-To: vincentvitalas77@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============0778403461==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD"
+Dear Sir,
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD
-Content-Type: multipart/mixed; boundary="3VwOj3tN0z6zzgWm65bDSH6UnIWOiG156";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx@lists.freedesktop.org,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- zhi.a.wang@intel.com
-Message-ID: <a13379b8-2827-4eb9-1395-18ed1b9756e8@suse.de>
-Subject: Re: i915 gvt broke drm-tip; Fix ASAP
-References: <58f039e1-225f-4542-8355-1ae91a225206@suse.de>
- <20210524030901.GC27293@zhen-hp.sh.intel.com> <87k0nocv2f.fsf@intel.com>
-In-Reply-To: <87k0nocv2f.fsf@intel.com>
+May I humbly solicit your confidence Over This Transaction,    My Name is Mr. Vincent Vitalas, I am the Regional Bank Manager of BOA CI , I came to know about you in my Private Search for a Reliable and Reputable foreigner to handle this Confidential Transaction.
 
---3VwOj3tN0z6zzgWm65bDSH6UnIWOiG156
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+On the course of 2015/2016 Year Report, we discovered an excess profit of Seventeen Million One Hundred Thousand Us Dollars , [ $ 17,100,000.00 ] ; We have Since placed this fund on SUSPENSE ACCOUNT without any Beneficiary.
 
-Hi
+As an officer of the bank,  I can't be directly Connected to this Fund for Security Reasons, that is why I am contacting you for us to work together as Partners to Receive the said Fund into your Account for INVESTMENT in your Country.
 
-Am 24.05.21 um 11:58 schrieb Jani Nikula:
-> On Mon, 24 May 2021, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
->> On 2021.05.22 21:19:38 +0200, Thomas Zimmermann wrote:
->>> Hi,
->>>
->>> after creating drm-tip today as part of [1], building drm-tip is now =
-broken
->>> with the error message shown below.
->>>
->>> Some register constants appear to be missing from the GVT code. Pleas=
-e fix
->>> ASAP.
->>>
->>
->> Thanks, Thomas. Looks DMC rename missed gvt part. We need to ask CI to=20
-have
->> at least build test with gvt.
->=20
-> Indeed. This is fixed now with 273895109a04 ("drm/i915/gvt: Add missing=
-
-> macro name changes").
-
-Ok, it builds again. Thanks to both of you.
-
-Best regards
-Thomas
-
->=20
-> BR,
-> Jani.
->=20
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+The percentage Ratio is thus: 40% for you , 60 % for me and my colleagues .
 
 
---3VwOj3tN0z6zzgWm65bDSH6UnIWOiG156--
+Note: There is Practically No Risks Involved in this Transaction ,  it is 100% Risk Free and Shall Be Legally Bounded, All You Need to do is to Stand as the BENEFICIARY to the Deposit for a Proper Wire to Your Account .If you Find this Proposal Suitable For you, get back For Full Details and Procedures .
 
---qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
 
------BEGIN PGP SIGNATURE-----
+Best regards,
 
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmCs5TkFAwAAAAAACgkQlh/E3EQov+D3
-/w/9G5et1YwRspSJiSqKI6zm3aEKuSsv/ZN62nW530vWWxREbv70p5oNWB8A+EkUIiVrZWoYmEnG
-CxaRy2qBad7AzM+TcEs8aO+QENt8szFWSvrKqJTUO/LwCj7WjcT/fHo0xqnrBUp5fQeLULzYI42L
-ussUUif7oAmes9mfF6U5hfCRXuhkwkhBkkeUTGVu6g161KEu9iRCsSTSH+/17ssiSN8ZKogDKyKv
-DXBt+q3jqyul+QBG3/OMByKVOQYUgoX7Y7mgpf7d4zQ/GuKlhcFT/RmTTx5bYDjofCNHRjMOrtAa
-YTEiV67p2RRSr2IRUnal6VE4XRi9FDiJxWquAqk7NPaCI+Cu50Wan79Wt+hRK34jlSMN5/u9K61e
-qU/1RAdf+5DCTf2RpjWt5hXD3cHkHOZhCP3ZOq4OOiu9ss6BrgugcNKZ1GY9MzepFvILyOM/4E76
-C1J+lPq2WYkFO2kcjwcXm6u6LOU8ERi+rfJCHOmTA1NUkRwPten44dwWccwelbSzTkcyrdGaRXQg
-0AnWRdjB8zBzzb/GxsKEs+oplw9WP4nk+btQTnTdRYIrEVpqg67kLUWNkAgbxgIZdbPR0gCChVhb
-ime70rFNWuHJl4iqmanRkoE6T2ElbAR67o5sf5GliVW6Wjxf8Bew4CumfB2mXEcztRp8sMc5RTK2
-80Q=
-=Tssr
------END PGP SIGNATURE-----
-
---qZm1DnloFXpLxDkOywZQpV2tnvBt2Y0eD--
-
---===============0778403461==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Mr. Vincent Vitalas
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0778403461==--
