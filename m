@@ -2,35 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4952639354F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 May 2021 20:17:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 05883393551
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 May 2021 20:17:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6713B6F492;
-	Thu, 27 May 2021 18:17:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8BCFC6F491;
+	Thu, 27 May 2021 18:17:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 565106E095;
- Thu, 27 May 2021 18:17:08 +0000 (UTC)
-IronPort-SDR: vgdJFrP80abDhXV17TvpLDBRu4XvFfmb+COB54TqRY79stgynQli3zQLC/Gn91rtl2IcAucaR3
- gueIoPfXEgdA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9997"; a="202808214"
-X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="202808214"
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 12FE56F491;
+ Thu, 27 May 2021 18:17:10 +0000 (UTC)
+IronPort-SDR: 3J60VJWNI/ZgMM621JmXZZrfnILhAJqlJ1gFL9gjG6XpzTA0m7cPlIsvH8zXdGwHC4PzUZdZAu
+ k5oLoztQe4yQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9997"; a="202808218"
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="202808218"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  27 May 2021 11:17:07 -0700
-IronPort-SDR: 7t6sIak0pDqc+KgjmFIrYDBe4F0DADhrkDZu88SgvEds+DPVVhuQA2ybCNUVNTonOOLiPQG/YD
- 8HhACOyv4Kqg==
-X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="415008566"
+IronPort-SDR: EDL2YuhefR6b8O9mClCiBAItbnnzGGtzO3tLX+lq35EU5R1Rx8W9zb2Y+mfAHE7cDZx6hXUcLj
+ HI9RWOW6WvDg==
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="415008578"
 Received: from lucas-s2600cw.jf.intel.com ([10.165.21.202])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  27 May 2021 11:17:07 -0700
 From: Lucas De Marchi <lucas.demarchi@intel.com>
 To: intel-gfx@lists.freedesktop.org
-Subject: [PATCH 0/7] Finish conversion to GRAPHICS_VER
-Date: Thu, 27 May 2021 11:16:53 -0700
-Message-Id: <20210527181700.1676790-1-lucas.demarchi@intel.com>
+Subject: [PATCH 4/7] drm/i915/gvt: replace IS_GEN and friends with
+ IS_GRAPHICS_VER
+Date: Thu, 27 May 2021 11:16:57 -0700
+Message-Id: <20210527181700.1676790-5-lucas.demarchi@intel.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210527181700.1676790-1-lucas.demarchi@intel.com>
+References: <20210527181700.1676790-1-lucas.demarchi@intel.com>
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -52,131 +55,297 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Latest version of previous series "drm/i915: Extend GEN renames to the
-rest of the driver" (https://patchwork.freedesktop.org/series/88825/)
-dropped one patch converting all the instances of IS_GEN() and
-INTEL_GEN() to GRAPHICS_VER() due to the patches changing the
-meaning of the macros IS_GRAPHICS_VER/GRAPHICS_VER and removal of
-IS_GRAPHICS_RANGE().
+This was done by the following semantic patch:
 
-I couldn't find a way to convince coccinelle to fix all places, so I
-just did it manually in separate commits the places that were not
-updated.
+	@@ expression dev_priv, E; @@
+	- INTEL_GEN(dev_priv) == E
+	+ IS_GRAPHICS_VER(dev_priv, E)
 
-Finish the conversion splitting the changes so it can go to the
-different branches (drm-intel-gt-next and drm-intel-next). I also split
-the gvt changes, but I think it would be easeir to take this directly on
-drm-intel-next.
+	@@ expression dev_priv; @@
+	- INTEL_GEN(dev_priv)
+	+ GRAPHICS_VER(dev_priv)
 
-Also, please do not apply this series as I have other series I'd like to
-rebase on top before landing it.
+	@@ expression dev_priv; expression E; @@
+	- IS_GEN(dev_priv, E)
+	+ IS_GRAPHICS_VER(dev_priv, E)
+
+	@@
+	expression dev_priv;
+	expression from, until;
+	@@
+	- IS_GEN_RANGE(dev_priv, from, until)
+	+ IS_GRAPHICS_RANGE(dev_priv, from, until)
+
+	@def@
+	expression E;
+	identifier id =~ "^gen$";
+	@@
+	- id = GRAPHICS_VER(E)
+	+ ver = GRAPHICS_VER(E)
+
+	@@
+	identifier def.id;
+	@@
+	- id
+	+ ver
+
+It also takes care of renaming the variable we assign to GRAPHICS_VER()
+so to use "ver" rather than "gen".
 
 Cc: intel-gvt-dev@lists.freedesktop.org
 Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+Signed-off-by: Lucas De Marchi <lucas.demarchi@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/cmd_parser.c   |  8 ++++----
+ drivers/gpu/drm/i915/gvt/dmabuf.c       |  2 +-
+ drivers/gpu/drm/i915/gvt/fb_decoder.c   | 10 +++++-----
+ drivers/gpu/drm/i915/gvt/gtt.c          |  4 ++--
+ drivers/gpu/drm/i915/gvt/handlers.c     |  6 +++---
+ drivers/gpu/drm/i915/gvt/interrupt.c    |  2 +-
+ drivers/gpu/drm/i915/gvt/mmio_context.c | 10 +++++-----
+ drivers/gpu/drm/i915/gvt/scheduler.c    |  4 ++--
+ drivers/gpu/drm/i915/gvt/vgpu.c         |  4 ++--
+ 9 files changed, 25 insertions(+), 25 deletions(-)
 
-Lucas De Marchi (7):
-  drm/i915/gt: replace IS_GEN and friends with IS_GRAPHICS_VER
-  drm/i915/gt: Add remaining conversions to GRAPHICS_VER
-  drm/i915/gem: replace IS_GEN and friends with IS_GRAPHICS_VER
-  drm/i915/gvt: replace IS_GEN and friends with IS_GRAPHICS_VER
-  drm/i915: replace IS_GEN and friends with IS_GRAPHICS_VER
-  drm/i915: Add remaining conversions to GRAPHICS_VER
-  drm/i915/display: replace IS_GEN() in commented code
-
- drivers/gpu/drm/i915/display/intel_tv.c       |  2 +-
- drivers/gpu/drm/i915/gem/i915_gem_context.c   |  6 +-
- .../gpu/drm/i915/gem/i915_gem_execbuffer.c    | 10 +--
- .../gpu/drm/i915/gem/i915_gem_object_blt.c    |  8 +-
- drivers/gpu/drm/i915/gem/i915_gem_stolen.c    | 16 ++--
- drivers/gpu/drm/i915/gem/i915_gem_tiling.c    | 12 +--
- .../i915/gem/selftests/i915_gem_client_blt.c  | 10 +--
- .../i915/gem/selftests/i915_gem_coherency.c   |  4 +-
- .../drm/i915/gem/selftests/i915_gem_context.c | 16 ++--
- .../drm/i915/gem/selftests/i915_gem_mman.c    | 14 ++--
- .../drm/i915/gem/selftests/igt_gem_utils.c    | 10 +--
- drivers/gpu/drm/i915/gt/debugfs_gt_pm.c       | 40 +++++-----
- drivers/gpu/drm/i915/gt/gen2_engine_cs.c      |  2 +-
- drivers/gpu/drm/i915/gt/gen8_engine_cs.c      |  2 +-
- drivers/gpu/drm/i915/gt/gen8_ppgtt.c          |  2 +-
- drivers/gpu/drm/i915/gt/intel_context_sseu.c  |  2 +-
- drivers/gpu/drm/i915/gt/intel_engine_cs.c     | 54 ++++++-------
- drivers/gpu/drm/i915/gt/intel_engine_types.h  |  4 +-
- .../drm/i915/gt/intel_execlists_submission.c  | 18 ++---
- drivers/gpu/drm/i915/gt/intel_ggtt.c          | 18 ++---
- drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c  | 34 ++++----
- drivers/gpu/drm/i915/gt/intel_gt.c            | 27 ++++---
- .../gpu/drm/i915/gt/intel_gt_clock_utils.c    | 12 +--
- drivers/gpu/drm/i915/gt/intel_gt_irq.c        |  6 +-
- drivers/gpu/drm/i915/gt/intel_gt_pm_irq.c     | 10 +--
- drivers/gpu/drm/i915/gt/intel_gtt.c           | 14 ++--
- drivers/gpu/drm/i915/gt/intel_llc.c           |  6 +-
- drivers/gpu/drm/i915/gt/intel_lrc.c           | 46 +++++------
- drivers/gpu/drm/i915/gt/intel_mocs.c          |  8 +-
- drivers/gpu/drm/i915/gt/intel_ppgtt.c         |  6 +-
- drivers/gpu/drm/i915/gt/intel_rc6.c           | 16 ++--
- drivers/gpu/drm/i915/gt/intel_renderstate.c   |  2 +-
- drivers/gpu/drm/i915/gt/intel_reset.c         | 12 +--
- .../gpu/drm/i915/gt/intel_ring_submission.c   | 64 +++++++--------
- drivers/gpu/drm/i915/gt/intel_rps.c           | 60 +++++++-------
- drivers/gpu/drm/i915/gt/intel_sseu.c          | 14 ++--
- drivers/gpu/drm/i915/gt/intel_sseu_debugfs.c  |  6 +-
- drivers/gpu/drm/i915/gt/intel_workarounds.c   | 66 +++++++--------
- drivers/gpu/drm/i915/gt/selftest_engine_cs.c  |  6 +-
- drivers/gpu/drm/i915/gt/selftest_engine_pm.c  |  2 +-
- drivers/gpu/drm/i915/gt/selftest_execlists.c  |  4 +-
- drivers/gpu/drm/i915/gt/selftest_gt_pm.c      |  8 +-
- drivers/gpu/drm/i915/gt/selftest_hangcheck.c  |  8 +-
- drivers/gpu/drm/i915/gt/selftest_llc.c        |  4 +-
- drivers/gpu/drm/i915/gt/selftest_lrc.c        |  8 +-
- drivers/gpu/drm/i915/gt/selftest_mocs.c       |  2 +-
- drivers/gpu/drm/i915/gt/selftest_rc6.c        |  4 +-
- .../drm/i915/gt/selftest_ring_submission.c    |  6 +-
- drivers/gpu/drm/i915/gt/selftest_rps.c        | 16 ++--
- drivers/gpu/drm/i915/gt/selftest_timeline.c   |  6 +-
- .../gpu/drm/i915/gt/selftest_workarounds.c    |  8 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc.c        |  4 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc_ads.c    |  2 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc_fw.c     |  2 +-
- .../gpu/drm/i915/gt/uc/intel_guc_submission.c | 10 +--
- drivers/gpu/drm/i915/gt/uc/intel_huc.c        |  2 +-
- drivers/gpu/drm/i915/gt/uc/intel_uc.c         |  4 +-
- drivers/gpu/drm/i915/gvt/cmd_parser.c         |  8 +-
- drivers/gpu/drm/i915/gvt/dmabuf.c             |  2 +-
- drivers/gpu/drm/i915/gvt/fb_decoder.c         | 10 +--
- drivers/gpu/drm/i915/gvt/gtt.c                |  4 +-
- drivers/gpu/drm/i915/gvt/handlers.c           |  6 +-
- drivers/gpu/drm/i915/gvt/interrupt.c          |  2 +-
- drivers/gpu/drm/i915/gvt/mmio_context.c       | 10 +--
- drivers/gpu/drm/i915/gvt/scheduler.c          |  4 +-
- drivers/gpu/drm/i915/gvt/vgpu.c               |  4 +-
- drivers/gpu/drm/i915/i915_cmd_parser.c        | 10 +--
- drivers/gpu/drm/i915/i915_debugfs.c           | 32 ++++----
- drivers/gpu/drm/i915/i915_drv.c               | 20 ++---
- drivers/gpu/drm/i915/i915_drv.h               | 35 ++++----
- drivers/gpu/drm/i915/i915_gem.c               |  4 +-
- drivers/gpu/drm/i915/i915_gpu_error.c         | 80 +++++++++----------
- drivers/gpu/drm/i915/i915_irq.c               | 34 ++++----
- drivers/gpu/drm/i915/i915_perf.c              | 44 +++++-----
- drivers/gpu/drm/i915/i915_pmu.c               |  8 +-
- drivers/gpu/drm/i915/i915_reg.h               | 26 +++---
- drivers/gpu/drm/i915/i915_request.c           |  4 +-
- drivers/gpu/drm/i915/i915_suspend.c           | 16 ++--
- drivers/gpu/drm/i915/i915_sysfs.c             |  2 +-
- drivers/gpu/drm/i915/i915_vgpu.c              |  2 +-
- drivers/gpu/drm/i915/intel_device_info.c      | 22 ++---
- drivers/gpu/drm/i915/intel_dram.c             | 14 ++--
- drivers/gpu/drm/i915/intel_pch.c              | 10 +--
- drivers/gpu/drm/i915/intel_pm.c               | 14 ++--
- drivers/gpu/drm/i915/intel_sideband.c         |  2 +-
- drivers/gpu/drm/i915/intel_uncore.c           | 26 +++---
- drivers/gpu/drm/i915/intel_wopcm.c            | 10 +--
- drivers/gpu/drm/i915/selftests/i915_gem_gtt.c |  4 +-
- drivers/gpu/drm/i915/selftests/i915_perf.c    |  6 +-
- drivers/gpu/drm/i915/selftests/i915_request.c |  8 +-
- drivers/gpu/drm/i915/selftests/igt_spinner.c  | 12 +--
- drivers/gpu/drm/i915/selftests/intel_uncore.c |  2 +-
- 92 files changed, 631 insertions(+), 631 deletions(-)
-
+diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+index ca9c9e27a43d..c4118b808268 100644
+--- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
++++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+@@ -1006,7 +1006,7 @@ static int cmd_reg_handler(struct parser_exec_state *s,
+ 	 * update reg values in it into vregs, so LRIs in workload with
+ 	 * inhibit context will restore with correct values
+ 	 */
+-	if (IS_GEN(s->engine->i915, 9) &&
++	if (GRAPHICS_VER(s->engine->i915) == 9 &&
+ 	    intel_gvt_mmio_is_sr_in_ctx(gvt, offset) &&
+ 	    !strncmp(cmd, "lri", 3)) {
+ 		intel_gvt_hypervisor_read_gpa(s->vgpu,
+@@ -1390,7 +1390,7 @@ static int gen8_check_mi_display_flip(struct parser_exec_state *s,
+ 	if (!info->async_flip)
+ 		return 0;
+ 
+-	if (INTEL_GEN(s->engine->i915) >= 9) {
++	if (GRAPHICS_VER(s->engine->i915) >= 9) {
+ 		stride = vgpu_vreg_t(s->vgpu, info->stride_reg) & GENMASK(9, 0);
+ 		tile = (vgpu_vreg_t(s->vgpu, info->ctrl_reg) &
+ 				GENMASK(12, 10)) >> 10;
+@@ -1418,7 +1418,7 @@ static int gen8_update_plane_mmio_from_mi_display_flip(
+ 
+ 	set_mask_bits(&vgpu_vreg_t(vgpu, info->surf_reg), GENMASK(31, 12),
+ 		      info->surf_val << 12);
+-	if (INTEL_GEN(dev_priv) >= 9) {
++	if (GRAPHICS_VER(dev_priv) >= 9) {
+ 		set_mask_bits(&vgpu_vreg_t(vgpu, info->stride_reg), GENMASK(9, 0),
+ 			      info->stride_val);
+ 		set_mask_bits(&vgpu_vreg_t(vgpu, info->ctrl_reg), GENMASK(12, 10),
+@@ -1446,7 +1446,7 @@ static int decode_mi_display_flip(struct parser_exec_state *s,
+ {
+ 	if (IS_BROADWELL(s->engine->i915))
+ 		return gen8_decode_mi_display_flip(s, info);
+-	if (INTEL_GEN(s->engine->i915) >= 9)
++	if (GRAPHICS_VER(s->engine->i915) >= 9)
+ 		return skl_decode_mi_display_flip(s, info);
+ 
+ 	return -ENODEV;
+diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.c b/drivers/gpu/drm/i915/gvt/dmabuf.c
+index d4f883f35b95..8e65cd8258b9 100644
+--- a/drivers/gpu/drm/i915/gvt/dmabuf.c
++++ b/drivers/gpu/drm/i915/gvt/dmabuf.c
+@@ -223,7 +223,7 @@ static struct drm_i915_gem_object *vgpu_create_gem(struct drm_device *dev,
+ 
+ 	obj->read_domains = I915_GEM_DOMAIN_GTT;
+ 	obj->write_domain = 0;
+-	if (INTEL_GEN(dev_priv) >= 9) {
++	if (GRAPHICS_VER(dev_priv) >= 9) {
+ 		unsigned int tiling_mode = 0;
+ 		unsigned int stride = 0;
+ 
+diff --git a/drivers/gpu/drm/i915/gvt/fb_decoder.c b/drivers/gpu/drm/i915/gvt/fb_decoder.c
+index 0889ad8291b0..11a8baba6822 100644
+--- a/drivers/gpu/drm/i915/gvt/fb_decoder.c
++++ b/drivers/gpu/drm/i915/gvt/fb_decoder.c
+@@ -151,7 +151,7 @@ static u32 intel_vgpu_get_stride(struct intel_vgpu *vgpu, int pipe,
+ 	u32 stride_reg = vgpu_vreg_t(vgpu, DSPSTRIDE(pipe)) & stride_mask;
+ 	u32 stride = stride_reg;
+ 
+-	if (INTEL_GEN(dev_priv) >= 9) {
++	if (GRAPHICS_VER(dev_priv) >= 9) {
+ 		switch (tiled) {
+ 		case PLANE_CTL_TILED_LINEAR:
+ 			stride = stride_reg * 64;
+@@ -215,7 +215,7 @@ int intel_vgpu_decode_primary_plane(struct intel_vgpu *vgpu,
+ 	if (!plane->enabled)
+ 		return -ENODEV;
+ 
+-	if (INTEL_GEN(dev_priv) >= 9) {
++	if (GRAPHICS_VER(dev_priv) >= 9) {
+ 		plane->tiled = val & PLANE_CTL_TILED_MASK;
+ 		fmt = skl_format_to_drm(
+ 			val & PLANE_CTL_FORMAT_MASK,
+@@ -256,9 +256,9 @@ int intel_vgpu_decode_primary_plane(struct intel_vgpu *vgpu,
+ 	}
+ 
+ 	plane->stride = intel_vgpu_get_stride(vgpu, pipe, plane->tiled,
+-		(INTEL_GEN(dev_priv) >= 9) ?
+-			(_PRI_PLANE_STRIDE_MASK >> 6) :
+-				_PRI_PLANE_STRIDE_MASK, plane->bpp);
++		(GRAPHICS_VER(dev_priv) >= 9) ?
++		(_PRI_PLANE_STRIDE_MASK >> 6) :
++		_PRI_PLANE_STRIDE_MASK, plane->bpp);
+ 
+ 	plane->width = (vgpu_vreg_t(vgpu, PIPESRC(pipe)) & _PIPE_H_SRCSZ_MASK) >>
+ 		_PIPE_H_SRCSZ_SHIFT;
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index 9478c132d7b6..cc2c05e18206 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -1055,12 +1055,12 @@ static bool vgpu_ips_enabled(struct intel_vgpu *vgpu)
+ {
+ 	struct drm_i915_private *dev_priv = vgpu->gvt->gt->i915;
+ 
+-	if (INTEL_GEN(dev_priv) == 9 || INTEL_GEN(dev_priv) == 10) {
++	if (GRAPHICS_VER(dev_priv) == 9 || GRAPHICS_VER(dev_priv) == 10) {
+ 		u32 ips = vgpu_vreg_t(vgpu, GEN8_GAMW_ECO_DEV_RW_IA) &
+ 			GAMW_ECO_ENABLE_64K_IPS_FIELD;
+ 
+ 		return ips == GAMW_ECO_ENABLE_64K_IPS_FIELD;
+-	} else if (INTEL_GEN(dev_priv) >= 11) {
++	} else if (GRAPHICS_VER(dev_priv) >= 11) {
+ 		/* 64K paging only controlled by IPS bit in PTE now. */
+ 		return true;
+ 	} else
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index 33496397a74f..98eb48c24c46 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -220,7 +220,7 @@ static int gamw_echo_dev_rw_ia_write(struct intel_vgpu *vgpu,
+ {
+ 	u32 ips = (*(u32 *)p_data) & GAMW_ECO_ENABLE_64K_IPS_FIELD;
+ 
+-	if (INTEL_GEN(vgpu->gvt->gt->i915) <= 10) {
++	if (GRAPHICS_VER(vgpu->gvt->gt->i915) <= 10) {
+ 		if (ips == GAMW_ECO_ENABLE_64K_IPS_FIELD)
+ 			gvt_dbg_core("vgpu%d: ips enabled\n", vgpu->id);
+ 		else if (!ips)
+@@ -286,7 +286,7 @@ static int mul_force_wake_write(struct intel_vgpu *vgpu,
+ 	old = vgpu_vreg(vgpu, offset);
+ 	new = CALC_MODE_MASK_REG(old, *(u32 *)p_data);
+ 
+-	if (INTEL_GEN(vgpu->gvt->gt->i915)  >=  9) {
++	if (GRAPHICS_VER(vgpu->gvt->gt->i915)  >=  9) {
+ 		switch (offset) {
+ 		case FORCEWAKE_RENDER_GEN9_REG:
+ 			ack_reg_offset = FORCEWAKE_ACK_RENDER_GEN9_REG;
+@@ -1174,7 +1174,7 @@ static int dp_aux_ch_ctl_mmio_write(struct intel_vgpu *vgpu,
+ 	write_vreg(vgpu, offset, p_data, bytes);
+ 	data = vgpu_vreg(vgpu, offset);
+ 
+-	if ((INTEL_GEN(vgpu->gvt->gt->i915) >= 9)
++	if ((GRAPHICS_VER(vgpu->gvt->gt->i915) >= 9)
+ 		&& offset != _REG_SKL_DP_AUX_CH_CTL(port_index)) {
+ 		/* SKL DPB/C/D aux ctl register changed */
+ 		return 0;
+diff --git a/drivers/gpu/drm/i915/gvt/interrupt.c b/drivers/gpu/drm/i915/gvt/interrupt.c
+index 497d28ce47df..614b951d919f 100644
+--- a/drivers/gpu/drm/i915/gvt/interrupt.c
++++ b/drivers/gpu/drm/i915/gvt/interrupt.c
+@@ -585,7 +585,7 @@ static void gen8_init_irq(
+ 
+ 		SET_BIT_INFO(irq, 4, PRIMARY_C_FLIP_DONE, INTEL_GVT_IRQ_INFO_DE_PIPE_C);
+ 		SET_BIT_INFO(irq, 5, SPRITE_C_FLIP_DONE, INTEL_GVT_IRQ_INFO_DE_PIPE_C);
+-	} else if (INTEL_GEN(gvt->gt->i915) >= 9) {
++	} else if (GRAPHICS_VER(gvt->gt->i915) >= 9) {
+ 		SET_BIT_INFO(irq, 25, AUX_CHANNEL_B, INTEL_GVT_IRQ_INFO_DE_PORT);
+ 		SET_BIT_INFO(irq, 26, AUX_CHANNEL_C, INTEL_GVT_IRQ_INFO_DE_PORT);
+ 		SET_BIT_INFO(irq, 27, AUX_CHANNEL_D, INTEL_GVT_IRQ_INFO_DE_PORT);
+diff --git a/drivers/gpu/drm/i915/gvt/mmio_context.c b/drivers/gpu/drm/i915/gvt/mmio_context.c
+index c9589e26af93..b8ac80765461 100644
+--- a/drivers/gpu/drm/i915/gvt/mmio_context.c
++++ b/drivers/gpu/drm/i915/gvt/mmio_context.c
+@@ -373,7 +373,7 @@ static void handle_tlb_pending_event(struct intel_vgpu *vgpu,
+ 	 */
+ 	fw = intel_uncore_forcewake_for_reg(uncore, reg,
+ 					    FW_REG_READ | FW_REG_WRITE);
+-	if (engine->id == RCS0 && INTEL_GEN(engine->i915) >= 9)
++	if (engine->id == RCS0 && GRAPHICS_VER(engine->i915) >= 9)
+ 		fw |= FORCEWAKE_RENDER;
+ 
+ 	intel_uncore_forcewake_get(uncore, fw);
+@@ -409,7 +409,7 @@ static void switch_mocs(struct intel_vgpu *pre, struct intel_vgpu *next,
+ 	if (drm_WARN_ON(&engine->i915->drm, engine->id >= ARRAY_SIZE(regs)))
+ 		return;
+ 
+-	if (engine->id == RCS0 && IS_GEN(engine->i915, 9))
++	if (engine->id == RCS0 && GRAPHICS_VER(engine->i915) == 9)
+ 		return;
+ 
+ 	if (!pre && !gen9_render_mocs.initialized)
+@@ -474,7 +474,7 @@ static void switch_mmio(struct intel_vgpu *pre,
+ 	struct engine_mmio *mmio;
+ 	u32 old_v, new_v;
+ 
+-	if (INTEL_GEN(engine->i915) >= 9)
++	if (GRAPHICS_VER(engine->i915) >= 9)
+ 		switch_mocs(pre, next, engine);
+ 
+ 	for (mmio = engine->i915->gvt->engine_mmio_list.mmio;
+@@ -486,7 +486,7 @@ static void switch_mmio(struct intel_vgpu *pre,
+ 		 * state image on gen9, it's initialized by lri command and
+ 		 * save or restore with context together.
+ 		 */
+-		if (IS_GEN(engine->i915, 9) && mmio->in_context)
++		if (GRAPHICS_VER(engine->i915) == 9 && mmio->in_context)
+ 			continue;
+ 
+ 		// save
+@@ -580,7 +580,7 @@ void intel_gvt_init_engine_mmio_context(struct intel_gvt *gvt)
+ {
+ 	struct engine_mmio *mmio;
+ 
+-	if (INTEL_GEN(gvt->gt->i915) >= 9) {
++	if (GRAPHICS_VER(gvt->gt->i915) >= 9) {
+ 		gvt->engine_mmio_list.mmio = gen9_engine_mmio_list;
+ 		gvt->engine_mmio_list.tlb_mmio_offset_list = gen8_tlb_mmio_offset_list;
+ 		gvt->engine_mmio_list.tlb_mmio_offset_list_cnt = ARRAY_SIZE(gen8_tlb_mmio_offset_list);
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
+index fc735692f21f..734c37c5e347 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.c
++++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+@@ -364,7 +364,7 @@ static int copy_workload_to_ring_buffer(struct intel_vgpu_workload *workload)
+ 	u32 *cs;
+ 	int err;
+ 
+-	if (IS_GEN(req->engine->i915, 9) && is_inhibit_context(req->context))
++	if (GRAPHICS_VER(req->engine->i915) == 9 && is_inhibit_context(req->context))
+ 		intel_vgpu_restore_inhibit_context(vgpu, req);
+ 
+ 	/*
+@@ -1148,7 +1148,7 @@ static void complete_current_workload(struct intel_gvt *gvt, int ring_id)
+ static int workload_thread(void *arg)
+ {
+ 	struct intel_engine_cs *engine = arg;
+-	const bool need_force_wake = INTEL_GEN(engine->i915) >= 9;
++	const bool need_force_wake = GRAPHICS_VER(engine->i915) >= 9;
+ 	struct intel_gvt *gvt = engine->i915->gvt;
+ 	struct intel_gvt_workload_scheduler *scheduler = &gvt->scheduler;
+ 	struct intel_vgpu_workload *workload = NULL;
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index 9039787f123a..fa6b92615799 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -149,10 +149,10 @@ int intel_gvt_init_vgpu_types(struct intel_gvt *gvt)
+ 		gvt->types[i].avail_instance = min(low_avail / vgpu_types[i].low_mm,
+ 						   high_avail / vgpu_types[i].high_mm);
+ 
+-		if (IS_GEN(gvt->gt->i915, 8))
++		if (GRAPHICS_VER(gvt->gt->i915) == 8)
+ 			sprintf(gvt->types[i].name, "GVTg_V4_%s",
+ 				vgpu_types[i].name);
+-		else if (IS_GEN(gvt->gt->i915, 9))
++		else if (GRAPHICS_VER(gvt->gt->i915) == 9)
+ 			sprintf(gvt->types[i].name, "GVTg_V5_%s",
+ 				vgpu_types[i].name);
+ 
 -- 
 2.31.1
 
