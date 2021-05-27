@@ -2,43 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11623393AF0
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 May 2021 03:18:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4952639354F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 May 2021 20:17:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C858D6F53D;
-	Fri, 28 May 2021 01:18:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6713B6F492;
+	Thu, 27 May 2021 18:17:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 49350 seconds by postgrey-1.36 at gabe;
- Fri, 28 May 2021 01:18:33 UTC
-Received: from server.finestcontentwriting.com
- (server.finestcontentwriting.com [69.16.230.249])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 72E496F53D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 May 2021 01:18:33 +0000 (UTC)
-Received: from daslco by server.finestcontentwriting.com with local (Exim
- 4.94.2) (envelope-from <support@d-asl.co.uk>) id 1lmEJ0-0006aW-Sp
- for intel-gvt-dev@lists.freedesktop.org; Thu, 27 May 2021 07:36:02 -0400
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: TRANSACTION
-X-PHP-Script: www.d-asl.co.uk/wp-zuprize.php for 185.183.106.107
-X-PHP-Originating-Script: 1137:wp-zuprize.php(1) : eval()'d code
-Date: Thu, 27 May 2021 11:36:02 +0000
-From: VINCENT VITALAS <support@d-asl.co.uk>
-Message-ID: <8428e146b5deb2ab51e9d443ddeea2a9@www.d-asl.co.uk>
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 565106E095;
+ Thu, 27 May 2021 18:17:08 +0000 (UTC)
+IronPort-SDR: vgdJFrP80abDhXV17TvpLDBRu4XvFfmb+COB54TqRY79stgynQli3zQLC/Gn91rtl2IcAucaR3
+ gueIoPfXEgdA==
+X-IronPort-AV: E=McAfee;i="6200,9189,9997"; a="202808214"
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="202808214"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2021 11:17:07 -0700
+IronPort-SDR: 7t6sIak0pDqc+KgjmFIrYDBe4F0DADhrkDZu88SgvEds+DPVVhuQA2ybCNUVNTonOOLiPQG/YD
+ 8HhACOyv4Kqg==
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="415008566"
+Received: from lucas-s2600cw.jf.intel.com ([10.165.21.202])
+ by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2021 11:17:07 -0700
+From: Lucas De Marchi <lucas.demarchi@intel.com>
+To: intel-gfx@lists.freedesktop.org
+Subject: [PATCH 0/7] Finish conversion to GRAPHICS_VER
+Date: Thu, 27 May 2021 11:16:53 -0700
+Message-Id: <20210527181700.1676790-1-lucas.demarchi@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server.finestcontentwriting.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [1137 992] / [47 12]
-X-AntiAbuse: Sender Address Domain - d-asl.co.uk
-X-Get-Message-Sender-Via: server.finestcontentwriting.com: authenticated_id:
- daslco/from_h
-X-Authenticated-Sender: server.finestcontentwriting.com: support@d-asl.co.uk
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,29 +44,141 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: vincentvitalas77@gmail.com
+Cc: intel-gvt-dev@lists.freedesktop.org, Matt Roper <matthew.d.roper@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Sir,
+Latest version of previous series "drm/i915: Extend GEN renames to the
+rest of the driver" (https://patchwork.freedesktop.org/series/88825/)
+dropped one patch converting all the instances of IS_GEN() and
+INTEL_GEN() to GRAPHICS_VER() due to the patches changing the
+meaning of the macros IS_GRAPHICS_VER/GRAPHICS_VER and removal of
+IS_GRAPHICS_RANGE().
 
-May I humbly solicit your confidence Over This Transaction,    My Name is Mr. Vincent Vitalas, I am the Regional Bank Manager of BOA CI , I came to know about you in my Private Search for a Reliable and Reputable foreigner to handle this Confidential Transaction.
+I couldn't find a way to convince coccinelle to fix all places, so I
+just did it manually in separate commits the places that were not
+updated.
 
-On the course of 2015/2016 Year Report, we discovered an excess profit of Seventeen Million One Hundred Thousand Us Dollars , [ $ 17,100,000.00 ] ; We have Since placed this fund on SUSPENSE ACCOUNT without any Beneficiary.
+Finish the conversion splitting the changes so it can go to the
+different branches (drm-intel-gt-next and drm-intel-next). I also split
+the gvt changes, but I think it would be easeir to take this directly on
+drm-intel-next.
 
-As an officer of the bank,  I can't be directly Connected to this Fund for Security Reasons, that is why I am contacting you for us to work together as Partners to Receive the said Fund into your Account for INVESTMENT in your Country.
+Also, please do not apply this series as I have other series I'd like to
+rebase on top before landing it.
 
-The percentage Ratio is thus: 40% for you , 60 % for me and my colleagues .
+Cc: intel-gvt-dev@lists.freedesktop.org
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
 
+Lucas De Marchi (7):
+  drm/i915/gt: replace IS_GEN and friends with IS_GRAPHICS_VER
+  drm/i915/gt: Add remaining conversions to GRAPHICS_VER
+  drm/i915/gem: replace IS_GEN and friends with IS_GRAPHICS_VER
+  drm/i915/gvt: replace IS_GEN and friends with IS_GRAPHICS_VER
+  drm/i915: replace IS_GEN and friends with IS_GRAPHICS_VER
+  drm/i915: Add remaining conversions to GRAPHICS_VER
+  drm/i915/display: replace IS_GEN() in commented code
 
-Note: There is Practically No Risks Involved in this Transaction ,  it is 100% Risk Free and Shall Be Legally Bounded, All You Need to do is to Stand as the BENEFICIARY to the Deposit for a Proper Wire to Your Account .If you Find this Proposal Suitable For you, get back For Full Details and Procedures .
+ drivers/gpu/drm/i915/display/intel_tv.c       |  2 +-
+ drivers/gpu/drm/i915/gem/i915_gem_context.c   |  6 +-
+ .../gpu/drm/i915/gem/i915_gem_execbuffer.c    | 10 +--
+ .../gpu/drm/i915/gem/i915_gem_object_blt.c    |  8 +-
+ drivers/gpu/drm/i915/gem/i915_gem_stolen.c    | 16 ++--
+ drivers/gpu/drm/i915/gem/i915_gem_tiling.c    | 12 +--
+ .../i915/gem/selftests/i915_gem_client_blt.c  | 10 +--
+ .../i915/gem/selftests/i915_gem_coherency.c   |  4 +-
+ .../drm/i915/gem/selftests/i915_gem_context.c | 16 ++--
+ .../drm/i915/gem/selftests/i915_gem_mman.c    | 14 ++--
+ .../drm/i915/gem/selftests/igt_gem_utils.c    | 10 +--
+ drivers/gpu/drm/i915/gt/debugfs_gt_pm.c       | 40 +++++-----
+ drivers/gpu/drm/i915/gt/gen2_engine_cs.c      |  2 +-
+ drivers/gpu/drm/i915/gt/gen8_engine_cs.c      |  2 +-
+ drivers/gpu/drm/i915/gt/gen8_ppgtt.c          |  2 +-
+ drivers/gpu/drm/i915/gt/intel_context_sseu.c  |  2 +-
+ drivers/gpu/drm/i915/gt/intel_engine_cs.c     | 54 ++++++-------
+ drivers/gpu/drm/i915/gt/intel_engine_types.h  |  4 +-
+ .../drm/i915/gt/intel_execlists_submission.c  | 18 ++---
+ drivers/gpu/drm/i915/gt/intel_ggtt.c          | 18 ++---
+ drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c  | 34 ++++----
+ drivers/gpu/drm/i915/gt/intel_gt.c            | 27 ++++---
+ .../gpu/drm/i915/gt/intel_gt_clock_utils.c    | 12 +--
+ drivers/gpu/drm/i915/gt/intel_gt_irq.c        |  6 +-
+ drivers/gpu/drm/i915/gt/intel_gt_pm_irq.c     | 10 +--
+ drivers/gpu/drm/i915/gt/intel_gtt.c           | 14 ++--
+ drivers/gpu/drm/i915/gt/intel_llc.c           |  6 +-
+ drivers/gpu/drm/i915/gt/intel_lrc.c           | 46 +++++------
+ drivers/gpu/drm/i915/gt/intel_mocs.c          |  8 +-
+ drivers/gpu/drm/i915/gt/intel_ppgtt.c         |  6 +-
+ drivers/gpu/drm/i915/gt/intel_rc6.c           | 16 ++--
+ drivers/gpu/drm/i915/gt/intel_renderstate.c   |  2 +-
+ drivers/gpu/drm/i915/gt/intel_reset.c         | 12 +--
+ .../gpu/drm/i915/gt/intel_ring_submission.c   | 64 +++++++--------
+ drivers/gpu/drm/i915/gt/intel_rps.c           | 60 +++++++-------
+ drivers/gpu/drm/i915/gt/intel_sseu.c          | 14 ++--
+ drivers/gpu/drm/i915/gt/intel_sseu_debugfs.c  |  6 +-
+ drivers/gpu/drm/i915/gt/intel_workarounds.c   | 66 +++++++--------
+ drivers/gpu/drm/i915/gt/selftest_engine_cs.c  |  6 +-
+ drivers/gpu/drm/i915/gt/selftest_engine_pm.c  |  2 +-
+ drivers/gpu/drm/i915/gt/selftest_execlists.c  |  4 +-
+ drivers/gpu/drm/i915/gt/selftest_gt_pm.c      |  8 +-
+ drivers/gpu/drm/i915/gt/selftest_hangcheck.c  |  8 +-
+ drivers/gpu/drm/i915/gt/selftest_llc.c        |  4 +-
+ drivers/gpu/drm/i915/gt/selftest_lrc.c        |  8 +-
+ drivers/gpu/drm/i915/gt/selftest_mocs.c       |  2 +-
+ drivers/gpu/drm/i915/gt/selftest_rc6.c        |  4 +-
+ .../drm/i915/gt/selftest_ring_submission.c    |  6 +-
+ drivers/gpu/drm/i915/gt/selftest_rps.c        | 16 ++--
+ drivers/gpu/drm/i915/gt/selftest_timeline.c   |  6 +-
+ .../gpu/drm/i915/gt/selftest_workarounds.c    |  8 +-
+ drivers/gpu/drm/i915/gt/uc/intel_guc.c        |  4 +-
+ drivers/gpu/drm/i915/gt/uc/intel_guc_ads.c    |  2 +-
+ drivers/gpu/drm/i915/gt/uc/intel_guc_fw.c     |  2 +-
+ .../gpu/drm/i915/gt/uc/intel_guc_submission.c | 10 +--
+ drivers/gpu/drm/i915/gt/uc/intel_huc.c        |  2 +-
+ drivers/gpu/drm/i915/gt/uc/intel_uc.c         |  4 +-
+ drivers/gpu/drm/i915/gvt/cmd_parser.c         |  8 +-
+ drivers/gpu/drm/i915/gvt/dmabuf.c             |  2 +-
+ drivers/gpu/drm/i915/gvt/fb_decoder.c         | 10 +--
+ drivers/gpu/drm/i915/gvt/gtt.c                |  4 +-
+ drivers/gpu/drm/i915/gvt/handlers.c           |  6 +-
+ drivers/gpu/drm/i915/gvt/interrupt.c          |  2 +-
+ drivers/gpu/drm/i915/gvt/mmio_context.c       | 10 +--
+ drivers/gpu/drm/i915/gvt/scheduler.c          |  4 +-
+ drivers/gpu/drm/i915/gvt/vgpu.c               |  4 +-
+ drivers/gpu/drm/i915/i915_cmd_parser.c        | 10 +--
+ drivers/gpu/drm/i915/i915_debugfs.c           | 32 ++++----
+ drivers/gpu/drm/i915/i915_drv.c               | 20 ++---
+ drivers/gpu/drm/i915/i915_drv.h               | 35 ++++----
+ drivers/gpu/drm/i915/i915_gem.c               |  4 +-
+ drivers/gpu/drm/i915/i915_gpu_error.c         | 80 +++++++++----------
+ drivers/gpu/drm/i915/i915_irq.c               | 34 ++++----
+ drivers/gpu/drm/i915/i915_perf.c              | 44 +++++-----
+ drivers/gpu/drm/i915/i915_pmu.c               |  8 +-
+ drivers/gpu/drm/i915/i915_reg.h               | 26 +++---
+ drivers/gpu/drm/i915/i915_request.c           |  4 +-
+ drivers/gpu/drm/i915/i915_suspend.c           | 16 ++--
+ drivers/gpu/drm/i915/i915_sysfs.c             |  2 +-
+ drivers/gpu/drm/i915/i915_vgpu.c              |  2 +-
+ drivers/gpu/drm/i915/intel_device_info.c      | 22 ++---
+ drivers/gpu/drm/i915/intel_dram.c             | 14 ++--
+ drivers/gpu/drm/i915/intel_pch.c              | 10 +--
+ drivers/gpu/drm/i915/intel_pm.c               | 14 ++--
+ drivers/gpu/drm/i915/intel_sideband.c         |  2 +-
+ drivers/gpu/drm/i915/intel_uncore.c           | 26 +++---
+ drivers/gpu/drm/i915/intel_wopcm.c            | 10 +--
+ drivers/gpu/drm/i915/selftests/i915_gem_gtt.c |  4 +-
+ drivers/gpu/drm/i915/selftests/i915_perf.c    |  6 +-
+ drivers/gpu/drm/i915/selftests/i915_request.c |  8 +-
+ drivers/gpu/drm/i915/selftests/igt_spinner.c  | 12 +--
+ drivers/gpu/drm/i915/selftests/intel_uncore.c |  2 +-
+ 92 files changed, 631 insertions(+), 631 deletions(-)
 
-
-Best regards,
-
-Mr. Vincent Vitalas
+-- 
+2.31.1
 
 _______________________________________________
 intel-gvt-dev mailing list
