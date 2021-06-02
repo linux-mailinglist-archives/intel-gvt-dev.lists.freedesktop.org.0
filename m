@@ -2,52 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F12AD3991EB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Jun 2021 19:47:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CFA2399269
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Jun 2021 20:19:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A822B6EE33;
-	Wed,  2 Jun 2021 17:47:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 410A76ED24;
+	Wed,  2 Jun 2021 18:19:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-oi1-x242.google.com (mail-oi1-x242.google.com
- [IPv6:2607:f8b0:4864:20::242])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4BD086EE33
+Received: from mail-io1-xd31.google.com (mail-io1-xd31.google.com
+ [IPv6:2607:f8b0:4864:20::d31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6D1696ED94
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  2 Jun 2021 17:47:40 +0000 (UTC)
-Received: by mail-oi1-x242.google.com with SMTP id h9so3467730oih.4
+ Wed,  2 Jun 2021 18:19:16 +0000 (UTC)
+Received: by mail-io1-xd31.google.com with SMTP id v9so3494405ion.11
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 02 Jun 2021 10:47:40 -0700 (PDT)
+ Wed, 02 Jun 2021 11:19:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=JZ1D4cNiQkaxv+2J/x+4mAOGjRVQgvayEJSvA4UHXbs=;
- b=hoUZRktg48cjEDaHURrOjFnnKQnpCfKIsg7MGtLxlvgwlrytsMZ53oOiS7+hqfy+Rn
- NZPzf51ne5THGW1rDzSzWvbcH+4UjBA9SjifuQP9dyY4xBxjjwZV7DPx36g7tXwOabmP
- CFi9azbKuEJe7LwTGke8zWzoWhrDOZVcvDOVzM7NrMHvnRiFBozj37Z5+LVhlY+i1oc8
- +9JtK4Q7zICIBK7JpjaQ5sWA9/UsClPtuZWnnKRaj3nBYfbuitWKQ/Qy3go+RKwCK44c
- VK5iEgnXXYirYkZWi07gopVFUacG5oqDArEZiVJHX7NQHRdebolaF0NIIQNx3bP4TAi1
- yUcg==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=3BK6A6ZUNSgTWS7GrqqH4NgquHL7zgz69DrVSsqp42U=;
+ b=QtbovYiCG21nOiA2JtL4/dBXy0arq6LA9fL1CNkM6fSYNGaOPylipZYx0xbHsFYMAU
+ MDNuji7OHU74YttrY+RCMEXy7BbCrJKX7/NNMHsvXzJF3H5/Ix6XMrpfGg6RyIJMpScg
+ duHhFGokPqcCwTgyKHWgKZDssILwUbnhtDi18j5qthkBlLFP1QF6EVUw2kTt1L3zOEXr
+ orarpx4YlGdW2k6qIAE73pTE0f+RHjZfzLpeTGjg3r6AArawsL141BXX7ILPSThslmvD
+ Qqj/JXofLwJT7+V+hKbaIpsCf4pa8wmYrGc7xERYbAdYz5CEveua1S/biS5HTPUa/19L
+ nZIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=JZ1D4cNiQkaxv+2J/x+4mAOGjRVQgvayEJSvA4UHXbs=;
- b=Nyo50e5GJ1eR+YpU3xIpubH0qcC1oIcr8thKqd6a6c8+yQKeQuygsstS5vcWQavUew
- Tgl+VDVpYzrtDYA8XMkghHB7czICiQ5wo9/l3BBh/np1ZRrD29F1autCzv1DilHtDV6Q
- PeF0XNv6DNXuu5q+OgUJsAdDKzRkiebr3vTdT7dqcGQeJoMm4CKhXaP8YUy2gZ4G/HwN
- +3USa8FeJG/4/XoAaLdjSQZzD0JBbLReliiDqZ3re/KOzmlWR/x2drhrD4rn9IOeiHCA
- 1bMI2M/0aPHyHsyFfJt/SL1NK3yynB+IKWhbbVTa0cysbkM9A2WjRBxLyBTWncMxxtm8
- 28Ww==
-X-Gm-Message-State: AOAM531UhIbUcEIxp8Rn8w8aGK1Y5KEeAdyxWdXeypCb/hDnDrudLehn
- v9lCMvu0NNbgoGRpxtvMD+W6v8dXxVwQcgrfXRw=
-X-Google-Smtp-Source: ABdhPJxXkA56DyLB5RAHFtQMSjhXyjM/ODhLUes20HKy9XPtX7MU+DkjI0Pa6mwklmAsOqL/CtXtJwHwhTVQDibNbAo=
-X-Received: by 2002:a05:6808:13d5:: with SMTP id
- d21mr22585503oiw.31.1622656059536; 
- Wed, 02 Jun 2021 10:47:39 -0700 (PDT)
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=3BK6A6ZUNSgTWS7GrqqH4NgquHL7zgz69DrVSsqp42U=;
+ b=JPHeNkVaFqlhQFtgg/qod2mezNektC9ukYkJrZ/phxJGshoED6xon0AwYunmTRtaoT
+ 1CE8M7IWl1BM0GKMbBpYjJrzEKp3D50xv9dHXQYoqqEgwlY2XvITufmMVy1aaoN8stny
+ SugwiT9QppTUCqL7Z4s24GF1W88N3d5oPwRsfvbHBVzTJFXDmsGBZ5ki/SVbJCU0PT52
+ 7VsrzsWQbNmaaKm15v84o8OOMiU7o2On/drrvqARJ68IN//NhxnXcQHvLWdjv7+LZTpv
+ M0JK85sk7w98TpqFRR0IY9KNnBAJUjpVRJoeaAPbeSTwrVWGfI32tmUWBIkWYfv5dqZt
+ Tx/A==
+X-Gm-Message-State: AOAM531vk2Rtd7VbKSAtQ5RM04bG4S4iwETLdOjZa6K32wwaO3zKcPJY
+ UrusM2v1zfZrLMu8vLTOXTHIantjONyj2zQ343I=
+X-Google-Smtp-Source: ABdhPJwvaCyVYXLMSfgKZnZxZD0DiU2pT9ARx3h2RBjUgQNCtFmeie5B7ljAvJnXga5iPZfog+I4QI5+KZcypdJH1K0=
+X-Received: by 2002:a05:6602:2f0f:: with SMTP id
+ q15mr26868790iow.75.1622657955899; 
+ Wed, 02 Jun 2021 11:19:15 -0700 (PDT)
 MIME-Version: 1.0
-From: Nelson Bile <nlsonbile@gmail.com>
-Date: Wed, 2 Jun 2021 17:47:32 +0000
-Message-ID: <CAO9HbhikSNACYdscZy-2z9cHu1P3vAShP+f-zCe6_zGdH7CDVQ@mail.gmail.com>
-Subject: Read & reply
+From: lalisa santiago <lalisasantiago1@gmail.com>
+Date: Wed, 2 Jun 2021 18:19:12 +0000
+Message-ID: <CAHUb6j4Z9z4vpE4wnntY-QfbV4HVczOp-dE0Y_ecpFENgJ9YwQ@mail.gmail.com>
+Subject: hi
 To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -61,42 +60,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: nlsonbile@gmail.com
-Content-Type: multipart/mixed; boundary="===============0595196865=="
+Content-Type: multipart/mixed; boundary="===============0259931180=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0595196865==
-Content-Type: multipart/alternative; boundary="000000000000057b0b05c3cc0ece"
+--===============0259931180==
+Content-Type: multipart/alternative; boundary="0000000000000db24705c3cc7fee"
 
---000000000000057b0b05c3cc0ece
+--0000000000000db24705c3cc7fee
 Content-Type: text/plain; charset="UTF-8"
 
-Greetings  my good friend,
+Hello, Can we be friends? If you don't mind
+Hi Dear ,
+My name is .lalisa and i am single
+Please reply me at
+lalisasantiago1@gmail.com
 
-I am Mr.Nelson Bile, Please confirm to me the receipt of this message.I
-have sent you this message many times but couldn't hear your
-response.Please get back to me very important for more details.
-
-Hon.Barrister Nelson Bile,Esq
-Bile & Advocate
-Office Address: 603,Rue De Ibis Bp.13364,Lome-Togo
-Lome Togo, West Africa,
-
---000000000000057b0b05c3cc0ece
+--0000000000000db24705c3cc7fee
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Greetings =C2=A0my good friend,<br><br>I am Mr.Nelson Bile=
-, Please confirm to me the receipt of this message.I have sent you this mes=
-sage many times but couldn&#39;t hear your response.Please get back to me v=
-ery important for more details.<br><br>Hon.Barrister Nelson Bile,Esq<br>Bil=
-e &amp; Advocate<br>Office Address: 603,Rue De Ibis Bp.13364,Lome-Togo<br>L=
-ome Togo, West Africa,=C2=A0=C2=A0<br></div>
+<div dir=3D"ltr"><br>Hello,=C2=A0Can=C2=A0we=C2=A0be=C2=A0friends?=C2=A0If=
+=C2=A0you=C2=A0don&#39;t=C2=A0mind<br>Hi=C2=A0Dear=C2=A0,<br>My=C2=A0name=
+=C2=A0is=C2=A0.lalisa=C2=A0and=C2=A0i=C2=A0am=C2=A0single<br>Please=C2=A0re=
+ply=C2=A0me=C2=A0at<br><a href=3D"mailto:lalisasantiago1@gmail.com">lalisas=
+antiago1@gmail.com</a><br></div>
 
---000000000000057b0b05c3cc0ece--
+--0000000000000db24705c3cc7fee--
 
---===============0595196865==
+--===============0259931180==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -107,4 +99,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0595196865==--
+--===============0259931180==--
