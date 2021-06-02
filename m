@@ -1,40 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECA3C396F58
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Jun 2021 10:47:50 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id F12AD3991EB
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Jun 2021 19:47:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6B0AA6E9A2;
-	Tue,  1 Jun 2021 08:47:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A822B6EE33;
+	Wed,  2 Jun 2021 17:47:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 23D536E99D;
- Tue,  1 Jun 2021 08:47:48 +0000 (UTC)
-IronPort-SDR: V85gff1rkUnPef0TCK3uyFKtzRNn3aV+ISFemMj6USxg4XzuzDlkxYg/7FtrcGKZWwJMsRfZL8
- 1E4fu+cgotiA==
-X-IronPort-AV: E=McAfee;i="6200,9189,10001"; a="203538200"
-X-IronPort-AV: E=Sophos;i="5.83,239,1616482800"; 
- d="asc'?scan'208";a="203538200"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2021 01:47:47 -0700
-IronPort-SDR: LxtEFyZT6oTvdwGLVd1a0Onta12b4d1TAxSK0eoTLxy8TUX2UjkylYbL6xaqoHIiknf/mJHAWA
- +y7Jka9r+yOA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,239,1616482800"; 
- d="asc'?scan'208";a="474169308"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
- by FMSMGA003.fm.intel.com with ESMTP; 01 Jun 2021 01:47:44 -0700
-Date: Tue, 1 Jun 2021 16:28:04 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v2] drm/i915/gem: Use list_entry to access list members
-Message-ID: <20210601082804.GS27293@zhen-hp.sh.intel.com>
-References: <20210523172304.3033229-1-linux@roeck-us.net>
+Received: from mail-oi1-x242.google.com (mail-oi1-x242.google.com
+ [IPv6:2607:f8b0:4864:20::242])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4BD086EE33
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  2 Jun 2021 17:47:40 +0000 (UTC)
+Received: by mail-oi1-x242.google.com with SMTP id h9so3467730oih.4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 02 Jun 2021 10:47:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=JZ1D4cNiQkaxv+2J/x+4mAOGjRVQgvayEJSvA4UHXbs=;
+ b=hoUZRktg48cjEDaHURrOjFnnKQnpCfKIsg7MGtLxlvgwlrytsMZ53oOiS7+hqfy+Rn
+ NZPzf51ne5THGW1rDzSzWvbcH+4UjBA9SjifuQP9dyY4xBxjjwZV7DPx36g7tXwOabmP
+ CFi9azbKuEJe7LwTGke8zWzoWhrDOZVcvDOVzM7NrMHvnRiFBozj37Z5+LVhlY+i1oc8
+ +9JtK4Q7zICIBK7JpjaQ5sWA9/UsClPtuZWnnKRaj3nBYfbuitWKQ/Qy3go+RKwCK44c
+ VK5iEgnXXYirYkZWi07gopVFUacG5oqDArEZiVJHX7NQHRdebolaF0NIIQNx3bP4TAi1
+ yUcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=JZ1D4cNiQkaxv+2J/x+4mAOGjRVQgvayEJSvA4UHXbs=;
+ b=Nyo50e5GJ1eR+YpU3xIpubH0qcC1oIcr8thKqd6a6c8+yQKeQuygsstS5vcWQavUew
+ Tgl+VDVpYzrtDYA8XMkghHB7czICiQ5wo9/l3BBh/np1ZRrD29F1autCzv1DilHtDV6Q
+ PeF0XNv6DNXuu5q+OgUJsAdDKzRkiebr3vTdT7dqcGQeJoMm4CKhXaP8YUy2gZ4G/HwN
+ +3USa8FeJG/4/XoAaLdjSQZzD0JBbLReliiDqZ3re/KOzmlWR/x2drhrD4rn9IOeiHCA
+ 1bMI2M/0aPHyHsyFfJt/SL1NK3yynB+IKWhbbVTa0cysbkM9A2WjRBxLyBTWncMxxtm8
+ 28Ww==
+X-Gm-Message-State: AOAM531UhIbUcEIxp8Rn8w8aGK1Y5KEeAdyxWdXeypCb/hDnDrudLehn
+ v9lCMvu0NNbgoGRpxtvMD+W6v8dXxVwQcgrfXRw=
+X-Google-Smtp-Source: ABdhPJxXkA56DyLB5RAHFtQMSjhXyjM/ODhLUes20HKy9XPtX7MU+DkjI0Pa6mwklmAsOqL/CtXtJwHwhTVQDibNbAo=
+X-Received: by 2002:a05:6808:13d5:: with SMTP id
+ d21mr22585503oiw.31.1622656059536; 
+ Wed, 02 Jun 2021 10:47:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210523172304.3033229-1-linux@roeck-us.net>
+From: Nelson Bile <nlsonbile@gmail.com>
+Date: Wed, 2 Jun 2021 17:47:32 +0000
+Message-ID: <CAO9HbhikSNACYdscZy-2z9cHu1P3vAShP+f-zCe6_zGdH7CDVQ@mail.gmail.com>
+Subject: Read & reply
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,112 +61,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/mixed; boundary="===============0221670860=="
+Reply-To: nlsonbile@gmail.com
+Content-Type: multipart/mixed; boundary="===============0595196865=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+--===============0595196865==
+Content-Type: multipart/alternative; boundary="000000000000057b0b05c3cc0ece"
 
---===============0221670860==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Bqc0IY4JZZt50bUr"
-Content-Disposition: inline
+--000000000000057b0b05c3cc0ece
+Content-Type: text/plain; charset="UTF-8"
 
+Greetings  my good friend,
 
---Bqc0IY4JZZt50bUr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I am Mr.Nelson Bile, Please confirm to me the receipt of this message.I
+have sent you this message many times but couldn't hear your
+response.Please get back to me very important for more details.
+
+Hon.Barrister Nelson Bile,Esq
+Bile & Advocate
+Office Address: 603,Rue De Ibis Bp.13364,Lome-Togo
+Lome Togo, West Africa,
+
+--000000000000057b0b05c3cc0ece
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On 2021.05.23 10:23:04 -0700, Guenter Roeck wrote:
-> Use list_entry() instead of container_of() to access list members.
-> Also drop unnecessary and misleading NULL checks on the result of
-> list_entry().
->=20
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> v2: Checkpatch fixes:
->     - Fix alignment
->     - Replace comparison against NULL with !
->=20
->  drivers/gpu/drm/i915/gvt/dmabuf.c | 18 +++++-------------
->  1 file changed, 5 insertions(+), 13 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.c b/drivers/gpu/drm/i915/gvt=
-/dmabuf.c
-> index d4f883f35b95..e3f488681484 100644
-> --- a/drivers/gpu/drm/i915/gvt/dmabuf.c
-> +++ b/drivers/gpu/drm/i915/gvt/dmabuf.c
-> @@ -148,8 +148,7 @@ static void dmabuf_gem_object_free(struct kref *kref)
-> =20
->  	if (vgpu && vgpu->active && !list_empty(&vgpu->dmabuf_obj_list_head)) {
->  		list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
-> -			dmabuf_obj =3D container_of(pos,
-> -					struct intel_vgpu_dmabuf_obj, list);
-> +			dmabuf_obj =3D list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
->  			if (dmabuf_obj =3D=3D obj) {
->  				list_del(pos);
->  				intel_gvt_hypervisor_put_vfio_device(vgpu);
-> @@ -357,10 +356,8 @@ pick_dmabuf_by_info(struct intel_vgpu *vgpu,
->  	struct intel_vgpu_dmabuf_obj *ret =3D NULL;
-> =20
->  	list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
-> -		dmabuf_obj =3D container_of(pos, struct intel_vgpu_dmabuf_obj,
-> -						list);
-> -		if ((dmabuf_obj =3D=3D NULL) ||
-> -		    (dmabuf_obj->info =3D=3D NULL))
-> +		dmabuf_obj =3D list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
-> +		if (!dmabuf_obj->info)
->  			continue;
-> =20
->  		fb_info =3D (struct intel_vgpu_fb_info *)dmabuf_obj->info;
-> @@ -387,11 +384,7 @@ pick_dmabuf_by_num(struct intel_vgpu *vgpu, u32 id)
->  	struct intel_vgpu_dmabuf_obj *ret =3D NULL;
-> =20
->  	list_for_each(pos, &vgpu->dmabuf_obj_list_head) {
-> -		dmabuf_obj =3D container_of(pos, struct intel_vgpu_dmabuf_obj,
-> -						list);
-> -		if (!dmabuf_obj)
-> -			continue;
-> -
-> +		dmabuf_obj =3D list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
->  		if (dmabuf_obj->dmabuf_id =3D=3D id) {
->  			ret =3D dmabuf_obj;
->  			break;
-> @@ -600,8 +593,7 @@ void intel_vgpu_dmabuf_cleanup(struct intel_vgpu *vgp=
-u)
-> =20
->  	mutex_lock(&vgpu->dmabuf_lock);
->  	list_for_each_safe(pos, n, &vgpu->dmabuf_obj_list_head) {
-> -		dmabuf_obj =3D container_of(pos, struct intel_vgpu_dmabuf_obj,
-> -						list);
-> +		dmabuf_obj =3D list_entry(pos, struct intel_vgpu_dmabuf_obj, list);
->  		dmabuf_obj->vgpu =3D NULL;
-> =20
->  		idr_remove(&vgpu->object_idr, dmabuf_obj->dmabuf_id);
-> --=20
+<div dir=3D"ltr">Greetings =C2=A0my good friend,<br><br>I am Mr.Nelson Bile=
+, Please confirm to me the receipt of this message.I have sent you this mes=
+sage many times but couldn&#39;t hear your response.Please get back to me v=
+ery important for more details.<br><br>Hon.Barrister Nelson Bile,Esq<br>Bil=
+e &amp; Advocate<br>Office Address: 603,Rue De Ibis Bp.13364,Lome-Togo<br>L=
+ome Togo, West Africa,=C2=A0=C2=A0<br></div>
 
-Sorry for late reply! Looks good to me.
+--000000000000057b0b05c3cc0ece--
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
---Bqc0IY4JZZt50bUr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYLXviAAKCRCxBBozTXgY
-JwG7AJ9Pr/tLAdoR3m14OG9PG9UnCCEW9gCcDSBRdzRBnLpNffd7NifoU6gF4+0=
-=aKMJ
------END PGP SIGNATURE-----
-
---Bqc0IY4JZZt50bUr--
-
---===============0221670860==
+--===============0595196865==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -163,4 +107,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0221670860==--
+--===============0595196865==--
