@@ -2,41 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9954239B4F0
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  4 Jun 2021 10:34:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 408BE39C0D7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  4 Jun 2021 21:56:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 31F5A6E43F;
-	Fri,  4 Jun 2021 08:34:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E5C496E098;
+	Fri,  4 Jun 2021 19:56:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 055F56E43F
+X-Greylist: delayed 16530 seconds by postgrey-1.36 at gabe;
+ Fri, 04 Jun 2021 19:56:11 UTC
+Received: from rhodesguide.com (unknown [172.245.92.239])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E51056E06D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  4 Jun 2021 08:34:33 +0000 (UTC)
-IronPort-SDR: wcmFjzU+MW18FBQtNXaNoe60FGYMsmH3q576rkp/Itf04KlMTa51AiXewUJLMNXpaTvf9bJksC
- Lsf9jC8cc8RA==
-X-IronPort-AV: E=McAfee;i="6200,9189,10004"; a="204062709"
-X-IronPort-AV: E=Sophos;i="5.83,247,1616482800"; d="scan'208";a="204062709"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2021 01:34:19 -0700
-IronPort-SDR: C1+MEjqBHDFL3qlZ/ZO+dqin+p7CCNJj9vwjnLJU1UPet3/I3EQGZtJV+fZ8kANCiMgadzvhe/
- 256wjrtFXQWg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,247,1616482800"; d="scan'208";a="448182569"
-Received: from lkp-server02.sh.intel.com (HELO 1ec8406c5392) ([10.239.97.151])
- by fmsmga008.fm.intel.com with ESMTP; 04 Jun 2021 01:34:16 -0700
-Received: from kbuild by 1ec8406c5392 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lp5HU-0006p6-Om; Fri, 04 Jun 2021 08:34:16 +0000
-Date: Fri, 04 Jun 2021 16:33:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 4c2fa23b037a33c617cf31ae314618bfca3e6cd4
-Message-ID: <60b9e54b.mW1sHL3T5E9LjNQS%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Fri,  4 Jun 2021 19:56:11 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: comfortable sitting
+Message-ID: <ab8860d64e4509380068709a05c3c2ad@captainsgear.com>
+Date: Fri, 04 Jun 2021 15:17:21 +0200
+From: "Lucas Mccarty" <tnimeayphionu@retropeepers.com>
 MIME-Version: 1.0
+X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,128 +34,96 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: tomashangkonl@aliyun.com
+Content-Type: multipart/mixed; boundary="===============0089415048=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 4c2fa23b037a33c617cf31ae314618bfca3e6cd4  gvt-staging: 2021y-06m-01d-16h-55m-14s CST integration manifest
+--===============0089415048==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-elapsed time: 4206m
+<html>
+<head>
+</head>
+<body>
+<span style="display: block; text-align: left;"><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align:
+left;"></span></span></span></span></span></span></span></span><span
+style="display: block; text-align: left;">Dear Sirs and Madames,<br /><br
+/>Here we have another special item, immediately available for
+delivery.</span><span style="display: block; text-align: left;">This chair
+leaves nothing to be desired in terms of comfort.<br /><br /></span><span
+style="display: block; text-align: left;"><span>5cm thicken headrest 5cm
+Increase backrest <br />Increase armrest + 8 screws fixation <br />12&deg;
+5cm thicken cushion. This ergonomic version has made many improvements,
+dispersing the pressure on the stress points, <br />allowing you to have
+comfortable elbow support, reducing the pressure on your knees then
+increasing blood circulation, and effectively <br />relieve tired feeling
+and pressure on your neck, waist, and hips during long time gaming or
+working.<br />Comfortable sitting even after several hours.<br /><br
+/>High-quality soft PU leather cover + low carbon elastic mesh fabric
+design. A carbon fiber texture line on each armrest, <br />increase the
+racing feeling. Unlike others, Huracan chairs are ALL-round high-density
+nanosponge filling, including the edge, <br />so that every inch of your
+body can be taken care of. Breathable, ventilated, comfortable.</span><br
+/></span><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><br
+/></span></span></span></span></span></span></span><span style="display:
+block; text-align: left;"><span style="display: block; text-align:
+left;">Costs details:<br />159.00 per chair if order 1 chair<br />149.00
+per chair if order 2 chairs<br />139.00 per chair if order 3-10 chairs<br
+/>Price plus shipping costs.<br />For more than 10 chairs, please contact
+for special price.<br /><br /></span></span><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;">To
+order, please just reply with your address.&nbsp; We will arrange the
+delivery for you.<br /></span></span><span style="display: block;
+text-align: left;">Please specify color when ordering:<br />5 leather
+colors available</span><span style="display: block; text-align: left;"><br
+/><img
+src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/5d9dd11e-8ad2-4018-a082-7db37eb77d95.__CR0,5,970,291_PT0_SX600_V1___.jpg"
+width="600" height="180" /><br /><br /></span><span style="display: block;
+text-align: left;"><span style="text-align: left;"><br /><img
+src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/210aa843-9cb0-4fa5-9226-c7e1e9d68892.__CR0,0,970,600_PT0_SX970_V1___.jpg"
+width="970" height="600" /><br /><img
+src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/dca377ac-ca1d-4b72-9aef-06b550004e89.__CR0,0,970,600_PT0_SX970_V1___.jpg"
+width="970" height="600" /><br /><br />To order, please just reply with
+your address.&nbsp; We will arrange the delivery for you.<br
+/></span></span><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><br
+/></span></span></span></span><span style="display: block; text-align:
+left;">With best regards,<br /><br />Lucas Mccarty<br
+/>Distribution</span><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"><span style="display: block; text-align:
+left;"></span></span></span></span><span style="display: block; text-align:
+left;">For further questions and requests please answer.<br />We are
+available to you by email 24/7/365.</span><span style="display: block;
+text-align: left;"><span style="display: block; text-align: left;"><span
+style="display: block; text-align: left;"><br /></span></span></span><span
+style="display: block; text-align: left;"><span style="display: block;
+text-align: left;"></span></span>
+</body>
+</html>
 
-configs tested: 96
-configs skipped: 2
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--===============0089415048==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                           se7705_defconfig
-m68k                       m5475evb_defconfig
-parisc                              defconfig
-arm                              alldefconfig
-powerpc                    sam440ep_defconfig
-mips                         tb0287_defconfig
-powerpc                      pasemi_defconfig
-sh                            hp6xx_defconfig
-arm                         orion5x_defconfig
-arm                  colibri_pxa300_defconfig
-m68k                          hp300_defconfig
-powerpc                     redwood_defconfig
-riscv                               defconfig
-mips                           ip27_defconfig
-xtensa                    xip_kc705_defconfig
-arm                       aspeed_g5_defconfig
-arm                        multi_v5_defconfig
-openrisc                 simple_smp_defconfig
-arm                      jornada720_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a003-20210601
-i386                 randconfig-a006-20210601
-i386                 randconfig-a004-20210601
-i386                 randconfig-a001-20210601
-i386                 randconfig-a002-20210601
-i386                 randconfig-a005-20210601
-x86_64               randconfig-a015-20210601
-x86_64               randconfig-a011-20210601
-x86_64               randconfig-a012-20210601
-x86_64               randconfig-a014-20210601
-x86_64               randconfig-a016-20210601
-x86_64               randconfig-a013-20210601
-i386                 randconfig-a015-20210601
-i386                 randconfig-a013-20210601
-i386                 randconfig-a011-20210601
-i386                 randconfig-a016-20210601
-i386                 randconfig-a014-20210601
-i386                 randconfig-a012-20210601
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                            kunit_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-b001-20210601
-x86_64               randconfig-a002-20210601
-x86_64               randconfig-a004-20210601
-x86_64               randconfig-a003-20210601
-x86_64               randconfig-a006-20210601
-x86_64               randconfig-a005-20210601
-x86_64               randconfig-a001-20210601
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0089415048==--
