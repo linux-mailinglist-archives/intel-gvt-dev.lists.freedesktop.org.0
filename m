@@ -2,26 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 408BE39C0D7
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  4 Jun 2021 21:56:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4537939CBAB
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  6 Jun 2021 01:12:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E5C496E098;
-	Fri,  4 Jun 2021 19:56:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D9F996E051;
+	Sat,  5 Jun 2021 23:12:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 16530 seconds by postgrey-1.36 at gabe;
- Fri, 04 Jun 2021 19:56:11 UTC
-Received: from rhodesguide.com (unknown [172.245.92.239])
- by gabe.freedesktop.org (Postfix) with ESMTP id E51056E06D
+X-Greylist: delayed 33066 seconds by postgrey-1.36 at gabe;
+ Sat, 05 Jun 2021 23:12:14 UTC
+Received: from aabd.top (unknown [146.56.202.200])
+ by gabe.freedesktop.org (Postfix) with SMTP id 071476E051
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  4 Jun 2021 19:56:11 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: comfortable sitting
-Message-ID: <ab8860d64e4509380068709a05c3c2ad@captainsgear.com>
-Date: Fri, 04 Jun 2021 15:17:21 +0200
-From: "Lucas Mccarty" <tnimeayphionu@retropeepers.com>
+ Sat,  5 Jun 2021 23:12:13 +0000 (UTC)
+Received: from User ([172.81.184.95])
+ (envelope-sender <test1@jcy-hardware.com>) by 10.206.0.2 with ESMTP
+ for <inshasi@emirates.net.ae>; Sat, 05 Jun 2021 21:17:36 +0800
+From: "BMW"<test1@jcy-hardware.com>
+Subject: Read Carefully
+Date: Sat, 5 Jun 2021 06:22:36 -0700
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,88 +38,135 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: tomashangkonl@aliyun.com
-Content-Type: multipart/mixed; boundary="===============0089415048=="
+Reply-To: bmwofficeline@gmail.com
+Content-Type: multipart/mixed; boundary="===============0594470683=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210605231215.D9F996E051@gabe.freedesktop.org>
 
---===============0089415048==
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+--===============0594470683==
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
 
-<html>
-<head>
-</head>
-<body>
-<span style="display: block; text-align: left;"><span style="display:
-block; text-align: left;"><span style="display: block; text-align:
-left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align:
-left;"></span></span></span></span></span></span></span></span><span
-style="display: block; text-align: left;">Dear Sirs and Madames,<br /><br
-/>Here we have another special item, immediately available for
-delivery.</span><span style="display: block; text-align: left;">This chair
-leaves nothing to be desired in terms of comfort.<br /><br /></span><span
-style="display: block; text-align: left;"><span>5cm thicken headrest 5cm
-Increase backrest <br />Increase armrest + 8 screws fixation <br />12&deg;
-5cm thicken cushion. This ergonomic version has made many improvements,
-dispersing the pressure on the stress points, <br />allowing you to have
-comfortable elbow support, reducing the pressure on your knees then
-increasing blood circulation, and effectively <br />relieve tired feeling
-and pressure on your neck, waist, and hips during long time gaming or
-working.<br />Comfortable sitting even after several hours.<br /><br
-/>High-quality soft PU leather cover + low carbon elastic mesh fabric
-design. A carbon fiber texture line on each armrest, <br />increase the
-racing feeling. Unlike others, Huracan chairs are ALL-round high-density
-nanosponge filling, including the edge, <br />so that every inch of your
-body can be taken care of. Breathable, ventilated, comfortable.</span><br
-/></span><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;"><br
-/></span></span></span></span></span></span></span><span style="display:
-block; text-align: left;"><span style="display: block; text-align:
-left;">Costs details:<br />159.00 per chair if order 1 chair<br />149.00
-per chair if order 2 chairs<br />139.00 per chair if order 3-10 chairs<br
-/>Price plus shipping costs.<br />For more than 10 chairs, please contact
-for special price.<br /><br /></span></span><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;">To
-order, please just reply with your address.&nbsp; We will arrange the
-delivery for you.<br /></span></span><span style="display: block;
-text-align: left;">Please specify color when ordering:<br />5 leather
-colors available</span><span style="display: block; text-align: left;"><br
-/><img
-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/5d9dd11e-8ad2-4018-a082-7db37eb77d95.__CR0,5,970,291_PT0_SX600_V1___.jpg"
-width="600" height="180" /><br /><br /></span><span style="display: block;
-text-align: left;"><span style="text-align: left;"><br /><img
-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/210aa843-9cb0-4fa5-9226-c7e1e9d68892.__CR0,0,970,600_PT0_SX970_V1___.jpg"
-width="970" height="600" /><br /><img
-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/dca377ac-ca1d-4b72-9aef-06b550004e89.__CR0,0,970,600_PT0_SX970_V1___.jpg"
-width="970" height="600" /><br /><br />To order, please just reply with
-your address.&nbsp; We will arrange the delivery for you.<br
-/></span></span><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;"><br
-/></span></span></span></span><span style="display: block; text-align:
-left;">With best regards,<br /><br />Lucas Mccarty<br
-/>Distribution</span><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"><span style="display: block; text-align:
-left;"></span></span></span></span><span style="display: block; text-align:
-left;">For further questions and requests please answer.<br />We are
-available to you by email 24/7/365.</span><span style="display: block;
-text-align: left;"><span style="display: block; text-align: left;"><span
-style="display: block; text-align: left;"><br /></span></span></span><span
-style="display: block; text-align: left;"><span style="display: block;
-text-align: left;"></span></span>
-</body>
-</html>
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+<FONT face="Times New Roman">BMW of North America, LLC</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">300 Chestnut Ridge Road.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Woodcliff Lake</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">NJ 07677-7731, USA.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">NOTE: If you received this message in your SPAM/BULK folder, that is because there are restrictions implemented by your Internet Service Provider, we urge that you treat it genuinely.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Dear Beneficiary</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">This is to inform you that you have been automatically selected by our random Computerized Email Selection System as a beneficiary of our ongoing promotional program winning you the prize of a brand new BMW 7 Series Car and a Check of $1.5 million.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Description of prize vehicle;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Model: BMW X7 xDrive40i All Wheel Drive SUV</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Body: SUV</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">HWY: 24 MPG †</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">City: 19 MPG †</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Exterior: Mineral White Metallic</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Interior: Cognac</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Engine: 3.0L Straight 6-Cyl Engine</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Trans: Automatic.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">The selection process, carried out by our Computerized Email Selection System for verifiably random results to follow through with the Promotional Marketing code which ensures that prizes are awarded following the laws of chance. The raffle draw random email selection process was initiated with a database of over 250,000 email addresses drawn from the internet, with your email selected as the number 7th winner.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">The BMW Promotional Marketing Lottery Program is authorized and supported by the International Chamber of Commerce(ICC), also Licensed by the International Association of Gaming Regulators (IAGR).</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Winners case file reference registration number is assigned to a specific fiduciary claims officer. For more information as regards certifying the claims process of your prize, kindly be advised to contact your assigned fiduciary officer with details seen below.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Name: Stefan Richmann</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Email: bmwofficeline@gmail.com</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Contact your assigned fiduciary officer by providing him with your Reg. pin code Number: 0011185003/25</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">To certify your claims, fill out the requested identifiable information:</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Name:</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Address :</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Nationality :</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">DOB :</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Phone :</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Drivers license number:</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Reg pin code Number: 0011185003/25</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Initiation of case file authorization process for clearance would only commence upon confirmation of the above requested identifiable information.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Congratulations! To You, from all our staffs.</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">&nbsp;</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Regards,</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">Bernhard Kuhnt</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">CEO and President</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">BMW of North America</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">BMW GROUP</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">United States of America</FONT></DIV>
+<DIV>
+<FONT face="Times New Roman">©2021</FONT></DIV>
+</FONT>
+</BODY></HTML>
 
-
---===============0089415048==
+--===============0594470683==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -126,4 +177,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0089415048==--
+--===============0594470683==--
