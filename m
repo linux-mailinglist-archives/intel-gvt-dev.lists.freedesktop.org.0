@@ -2,30 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4537939CBAB
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  6 Jun 2021 01:12:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F349F39D6C2
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Jun 2021 10:08:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D9F996E051;
-	Sat,  5 Jun 2021 23:12:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5CB1C6E878;
+	Mon,  7 Jun 2021 08:08:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 33066 seconds by postgrey-1.36 at gabe;
- Sat, 05 Jun 2021 23:12:14 UTC
-Received: from aabd.top (unknown [146.56.202.200])
- by gabe.freedesktop.org (Postfix) with SMTP id 071476E051
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  5 Jun 2021 23:12:13 +0000 (UTC)
-Received: from User ([172.81.184.95])
- (envelope-sender <test1@jcy-hardware.com>) by 10.206.0.2 with ESMTP
- for <inshasi@emirates.net.ae>; Sat, 05 Jun 2021 21:17:36 +0800
-From: "BMW"<test1@jcy-hardware.com>
-Subject: Read Carefully
-Date: Sat, 5 Jun 2021 06:22:36 -0700
+X-Greylist: delayed 95711 seconds by postgrey-1.36 at gabe;
+ Mon, 07 Jun 2021 08:08:04 UTC
+Received: from 142-4-29-172.ipower.com (142-4-29-172.unifiedlayer.com
+ [142.4.29.172])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 671C76E878;
+ Mon,  7 Jun 2021 08:08:04 +0000 (UTC)
+Received: from [127.0.0.1] (port=36566 helo=User)
+ by 142-4-29-172.ipower.com with smtp (Exim 4.93)
+ (envelope-from <jeff2white@hotmail.com>)
+ id 1lplNx-0006r1-7S; Sat, 05 Jun 2021 23:31:45 -0600
+From: "Mr. Jeff"<jeff2white@hotmail.com>
+Subject: Hello Sir/Ma: please your kind attention is needed
+Date: Sat, 5 Jun 2021 22:31:45 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - 142-4-29-172.ipower.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - hotmail.com
+X-Get-Message-Sender-Via: 142-4-29-172.ipower.com: acl_c_authenticated_local_user:
+ root
+X-Authenticated-Sender: 142-4-29-172.ipower.com: root
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,135 +51,56 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: bmwofficeline@gmail.com
-Content-Type: multipart/mixed; boundary="===============0594470683=="
+Reply-To: info@jeff2white.com
+Content-Type: multipart/mixed; boundary="===============1978692662=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210605231215.D9F996E051@gabe.freedesktop.org>
+Message-Id: <20210607080805.5CB1C6E878@gabe.freedesktop.org>
 
---===============0594470683==
+--===============1978692662==
 Content-Type: text/html;
 	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-<FONT face="Times New Roman">BMW of North America, LLC</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">300 Chestnut Ridge Road.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Woodcliff Lake</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">NJ 07677-7731, USA.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">NOTE: If you received this message in your SPAM/BULK folder, that is because there are restrictions implemented by your Internet Service Provider, we urge that you treat it genuinely.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Dear Beneficiary</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">This is to inform you that you have been automatically selected by our random Computerized Email Selection System as a beneficiary of our ongoing promotional program winning you the prize of a brand new BMW 7 Series Car and a Check of $1.5 million.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Description of prize vehicle;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Model: BMW X7 xDrive40i All Wheel Drive SUV</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Body: SUV</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">HWY: 24 MPG †</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">City: 19 MPG †</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Exterior: Mineral White Metallic</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Interior: Cognac</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Engine: 3.0L Straight 6-Cyl Engine</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Trans: Automatic.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">The selection process, carried out by our Computerized Email Selection System for verifiably random results to follow through with the Promotional Marketing code which ensures that prizes are awarded following the laws of chance. The raffle draw random email selection process was initiated with a database of over 250,000 email addresses drawn from the internet, with your email selected as the number 7th winner.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">The BMW Promotional Marketing Lottery Program is authorized and supported by the International Chamber of Commerce(ICC), also Licensed by the International Association of Gaming Regulators (IAGR).</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Winners case file reference registration number is assigned to a specific fiduciary claims officer. For more information as regards certifying the claims process of your prize, kindly be advised to contact your assigned fiduciary officer with details seen below.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Name: Stefan Richmann</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Email: bmwofficeline@gmail.com</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Contact your assigned fiduciary officer by providing him with your Reg. pin code Number: 0011185003/25</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">To certify your claims, fill out the requested identifiable information:</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Name:</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Address :</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Nationality :</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">DOB :</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Phone :</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Drivers license number:</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Reg pin code Number: 0011185003/25</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Initiation of case file authorization process for clearance would only commence upon confirmation of the above requested identifiable information.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Congratulations! To You, from all our staffs.</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">&nbsp;</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Regards,</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">Bernhard Kuhnt</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">CEO and President</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">BMW of North America</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">BMW GROUP</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">United States of America</FONT></DIV>
-<DIV>
-<FONT face="Times New Roman">©2021</FONT></DIV>
-</FONT>
-</BODY></HTML>
+<html>
 
---===============0594470683==
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Good day&nbsp; I am Mr</title>
+</head>
+
+<body>
+
+<p><span style="font-size: 13pt">Hello Sir/Madam<br>
+<br>
+I am Mr. Jeff the Chief accountant of a reputable Security Company<br>
+here in the United Kingdom. I have a floating Ten Million British Pounds<br>
+Sterlings (10,000,000,00) from one of our Client Ms. Karoline Aadland,<br>
+a Norway Citizen who died in May 2020 due to Covid-19 complications.<br>
+<br>
+I noticed from all her Documents that she did not include any next of Kin<br>
+to her fund deposits, I who are privy to this funds are soliciting for your<br>
+urgent assistance to get this funds moved out of the United Kingdom to<br>your 
+Country.<br>
+<br>
+Upon your acceptance, kindly forward your Address and Private phone<br>
+number to this my email: <a href="mailto:jeff.white@jeffnwhite.com">
+jeff.white@jeff2white.com</a>, I shall furnish you with<br>more details.<br>
+<br>
+Be rest assured that this Business is 100% risk free, I look forward to your<br>
+kind and urgent response as quickly as possible.<br>
+<br>
+Please, treat this my personal message to you as most confidential.<br>
+<br>
+Yours Faithfully,<br>
+<br>
+</span><b><span style="font-size: 13pt">Mr. Jeff</span></b></p>
+</body>
+
+</html>
+
+--===============1978692662==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -177,4 +111,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============0594470683==--
+--===============1978692662==--
