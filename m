@@ -1,31 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CD1B3ADB5F
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 19 Jun 2021 20:35:28 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A81ED3ADE8F
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 20 Jun 2021 15:32:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A408A6E04A;
-	Sat, 19 Jun 2021 18:35:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E483089EF7;
+	Sun, 20 Jun 2021 13:32:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 118524 seconds by postgrey-1.36 at gabe;
- Sat, 19 Jun 2021 18:35:25 UTC
-Received: from hr-us1478-1.reseller.mis.ovh.net (big-stores.agency
- [149.202.163.22])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 604CD6E04A;
- Sat, 19 Jun 2021 18:35:25 +0000 (UTC)
-Received: from DESKTOP-C9530EA.mshome.net
- (host86-187-164-70.range86-187.btcentralplus.com [86.187.164.70])
- by hr-us1478-1.reseller.mis.ovh.net (Postfix) with ESMTPSA id 2BDA2764B2;
- Thu, 17 Jun 2021 16:14:16 +0000 (UTC)
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com
+ [IPv6:2607:f8b0:4864:20::642])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 34EF189EF7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 20 Jun 2021 13:32:23 +0000 (UTC)
+Received: by mail-pl1-x642.google.com with SMTP id m17so3921794plx.7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 20 Jun 2021 06:32:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=D7l/Y2nU4ivOXB3kYNarWKNDy1SUWuawPt7q4q/Bhv4=;
+ b=uI1HWktzNInUfptyhQFOCbHHsuWvfBePpTiQHONWTknKmYIIUTT/ScT2sm1pOtQghT
+ w4l7bggcvaIzRVYhJEw54i/j5C7uIjPI+rfKYj9eLBMMnUvVanHWJD5X8UwiF2eAuA3/
+ e7PIhGGhjecJswE1As0nWUL/TgoPBhYR8WAQ7oBplZUX7d0Wepvtu1ONc4udpFogWhnD
+ wfj5M1ULsJD5vk1emm3Wq8VNf8cpaJUJ+x7F8A8GyxSaKLBaPRKzZKjV9q/K4ntDcKgg
+ Y77ITXRVMOooid3W4tLnX41RorPGOLZ8bjpANE36HhxEjObG5cj4VLtNebY4L3rZku0x
+ CmtA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=D7l/Y2nU4ivOXB3kYNarWKNDy1SUWuawPt7q4q/Bhv4=;
+ b=aLwYgrtA/AtCyhhIbVhIKj8cE1xxGezzVvlmsQf6+WaEeVjtsbQa+upMlp/AHplw1i
+ tciytzwjx1Abba0M/WMg0NSbUJjM9aGkN8LFyV6/eap6t0/fkcaT0soJ1pO2NMthvlEd
+ 6PhQMtzMBFkk8OejdH5A8zxFckvZxHeuuhtbpy1I49/rqMHunXRAyQ9mc8JCJkr5wVxD
+ 5/T1yAVb26yjsQD/+q5wU4tKAGEiAf07RaCsHif7Qq4hudkVYuTt1BIVUYeVCv2btB7t
+ d7mDOc2HwPqga5KJT7t2bY07TSkOqqlL81HsDNev4UF7/bZb5kOamcqmy5ddIoGUdAF7
+ j3ng==
+X-Gm-Message-State: AOAM53281o5w1uNkMHm/9ouYHQShxtFbXVrPtDHtrSOInZdALp92GZZ5
+ LNq7h/pp7elhdpisYqa/VG7X9xw9rnQL2qvL3+4=
+X-Google-Smtp-Source: ABdhPJyYTDfw4WVraS3KISSU5caoRyl92iwUfjQnfIf+bxuqEIclu8S5RViUF+VzGyie0yN6ygWa0XSQXBXCovJskeo=
+X-Received: by 2002:a17:90a:3c8d:: with SMTP id
+ g13mr14988365pjc.229.1624195942801; 
+ Sun, 20 Jun 2021 06:32:22 -0700 (PDT)
 MIME-Version: 1.0
-Subject: You Have New Pending Document
-To: Recipients <no_reply@mail.com>
-From: Microsoft Office 365 <no_reply@mail.com>
-Date: Thu, 17 Jun 2021 17:13:54 +0100
-X-Priority: 1 (High)
-Sensitivity: Private
+Received: by 2002:a17:90b:38c4:0:0:0:0 with HTTP; Sun, 20 Jun 2021 06:32:22
+ -0700 (PDT)
+From: Sarah Koffi <william.p15179@gmail.com>
+Date: Sun, 20 Jun 2021 15:32:22 +0200
+Message-ID: <CAGDeiXEqqpFdLqbGJcZw6bD1HkUarPFWxx6wXc9qQzJYnE16zA@mail.gmail.com>
+Subject: Greetings From Mrs. Sarah Koffi
+To: sarahkoffi389@yahoo.co.jp
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,166 +63,59 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1598574322=="
+Reply-To: sarahkoffi389@yahoo.co.jp
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210619183526.A408A6E04A@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============1598574322==
-Content-Type: multipart/alternative; boundary="===============1307981618=="
+Greetings From Mrs. Sarah Koffi
 
-You will not see this in a MIME-aware mail reader.
---===============1307981618==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+I'm contacting you based on your good profiles I read and for a good
+reasons, I am in search of a property to buy in your country as I
+intended to come over to your
+country for investment, Though I have not meet with you before but I
+believe that one has to risk confiding in someone to succeed sometimes
+in life.
 
-  =
+My name is Mrs. Sarah Koffi. My late husband deals on Crude Oil with
+Federal Government of Sudan and he has a personal Oil firm in Bentiu
+Oil zone town and Upper
+Nile city. What I have experience physically, I don't wish to
+experience it again in my life due to the recent civil Ethnic war
+cause by our President Mr. Salva Kiir
+and the rebel leader Mr Riek Machar, I have been Under United Nation
+refuge camp in chad to save my life and that of my little daughter.
 
-   	 =
+Though, I do not know how you will feel to my proposal, but the truth
+is that I sneaked into Chad our neighboring country where I am living
+now as a refugee.
+I escaped with my little daughter when the rebels bust into our house
+and killed my husband as one of the big oil dealers in the country,
+ever since then, I have being on the run.
 
+I left my country and move to Chad our neighboring country with the
+little ceasefire we had, due to the face to face peace meeting accord
+coordinated by the US Secretary of State, Mr John Kerry and United
+Nations in Ethiopia (Addis Ababa) between our President Mr Salva Kiir
+and the rebel leader Mr Riek Machar to stop this war.
 
-  =
+I want to solicit for your partnership with trust to invest the $8
+million dollars deposited by my late husband in Bank because my life
+is no longer safe in our country, since the rebels are looking for the
+families of all the oil business men in the country to kill, saying
+that they are they one that is milking the country dry.
 
-    You Have New Pending Document
- Our mail server has detected (1) documents pending delivery into your mail=
-box, due to errors in mail sysnc. Your approval is required to release pend=
-ing document.
- Please review them here and restore delivery of pending document.
-  =
+I will offer you 20% of the total fund for your help while I will
+partner with you for the investment in your country.
+If I get your reply.
 
-   	 	  =
+I will wait to hear from you so as to give you details.With love from
 
-   Invoice_QUOTE_QTE80047790
-   Ian Mason Chief Financial Officer =
+ i need you to contact me here sarahkoffi389@yahoo.co.jp
 
-
-
- =
-
- Thank you,
-The Microsoft Office Team
- =A9 Microsoft 365 Family subcription unlocks premiun features in the Micro=
-soft Family Safety app
-
-  =
-
-
-   =20
---===============1307981618==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<HTML><HEAD><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Diso-8859-1"/></HEAD>
-<BODY>
-<P>
-<TABLE style=3D"HEIGHT: 83px; WIDTH: 517px; BORDER-COLLAPSE: collapse" cell=
-Spacing=3D0 cellPadding=3D0 width=3D517 border=3D0>
-<TBODY>
-<TR>
-<TD style=3D"PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 20px" b=
-gColor=3D#eb3c00 width=3D"50%" align=3Dleft><A href=3D"http://click.email.o=
-ffice.com/?qs=3D2c9dd6253ad5f37695a99a592d5546e4b6d509fb0217d3d0eba0c533bc3=
-e0eb1f80155ed422b799d8e18f45a1934ab06" rel=3Dnoopener target=3D_blank><IMG =
-style=3D"BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM:=
- medium none; BORDER-LEFT: medium none; DISPLAY: block" border=3D0 alt=3D"O=
-ffice 365" src=3D"http://image.email.office.com/lib/fe9815707264017b71/m/1/=
-Office_RMB0.png" width=3D112></A></TD>
-<TD class=3Dox-9374726aaa-hide style=3D"PADDING-BOTTOM: 20px; PADDING-TOP: =
-20px; PADDING-RIGHT: 20px" bgColor=3D#eb3c00 width=3D"50%" align=3Dright><I=
-MG style=3D"BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTT=
-OM: medium none; BORDER-LEFT: medium none; DISPLAY: block" border=3D0 alt=
-=3DMicrosoft src=3D"http://image.email.office.com/lib/fe9815707264017b71/m/=
-1/Microsoft_RMB0.png" width=3D62></TD></TR></TBODY></TABLE></P>
-<P>
-<TABLE style=3D"HEIGHT: 186px; WIDTH: 494px; BORDER-COLLAPSE: collapse; MIN=
--WIDTH: 500px" cellSpacing=3D0 cellPadding=3D0 border=3D0>
-<TBODY>
-<TR>
-<TD style=3D"PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADD=
-ING-RIGHT: 0px" align=3Dcenter>
-<P><STRONG><FONT color=3D#ff0000>You Have New Pending Document</FONT></STRO=
-NG></P>
-<P>Our mail server has detected (1) documents pending delivery into your ma=
-ilbox, due to errors in mail sysnc. Your approval is required to release pe=
-nding document.</P>
-<P>Please review them here and restore delivery of pending document.</P>
-<P>
-<TABLE style=3D"HEIGHT: 59px; WIDTH: 314px; BORDER-COLLAPSE: collapse; MIN-=
-WIDTH: 500px" cellSpacing=3D0 cellPadding=3D0 border=3D0>
-<TBODY>
-<TR>
-<TD style=3D"OVERFLOW: hidden; BACKGROUND-IMAGE: url(https://cfl.dropboxsta=
-tic.com/static/images/emails/sharing/icons/docx.png); BACKGROUND-REPEAT: no=
--repeat; BACKGROUND-POSITION: center 50%; PADDING-BOTTOM: 0px; PADDING-TOP:=
- 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px" height=3D32 width=3D32 align=
-=3Dleft></TD>
-<TD style=3D"MAX-WIDTH: 10px; WIDTH: 10px; MIN-WIDTH: 10px; PADDING-BOTTOM:=
- 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px" width=3D10><=
-/TD>
-<TD style=3D"PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADD=
-ING-RIGHT: 0px">
-<TABLE style=3D"BORDER-COLLAPSE: collapse" cellSpacing=3D0 cellPadding=3D0 =
-border=3D0>
-<TBODY>
-<TR>
-<TD style=3D"OVERFLOW: hidden; MAX-WIDTH: 456px; WHITE-SPACE: nowrap; PADDI=
-NG-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; LINE-HEIGHT: 20px; PAD=
-DING-RIGHT: 0px" align=3Dleft><A style=3D"FONT-SIZE: 10.5pt; TEXT-DECORATIO=
-N: none; FONT-FAMILY: 'Atlas Grotesk', 'Open Sans',Arial,Verdana,proxima_no=
-va,'Lucida Grande','Segoe UI','Lucida Sans Unicode',Tahoma,'Sans Serif',san=
-s-serif; COLOR: #176ffe; LINE-HEIGHT: 20px" href=3D"#" rel=3Dnoopener targe=
-t=3D_blank>Invoice_QUOTE_QTE80047790</A></TD></TR>
-<TR>
-<TD style=3D"FONT-SIZE: 10.5pt; OVERFLOW: hidden; FONT-FAMILY: 'Atlas Grote=
-sk', 'Open Sans',Arial,Verdana,proxima_nova,'Lucida Grande','Segoe UI','Luc=
-ida Sans Unicode',Tahoma,'Sans Serif',sans-serif; WHITE-SPACE: nowrap; PADD=
-ING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; LINE-HEIGHT: 20px; PA=
-DDING-RIGHT: 0px" align=3Dleft>
-<P><SPAN style=3D"COLOR: #707781">Ian Mason <FONT color=3D#a5a9af>Chief Fin=
-ancial Officer</FONT></SPAN><SPAN style=3D"COLOR: #a5a9af; MARGIN: 0px 0px =
-0px 5px">&nbsp;</SPAN></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TAB=
-LE></P>
-<P><FONT size=3D2><A href=3D"https://vanzys.com/proffesionally/officeautoed=
-ited/EUWorkWild/HomeOffice/"><IMG class=3Dimage-placeholder src=3D"https://=
-i.imgur.com/ck1JpqF.png"></A></FONT><STRONG><FONT size=3D2></FONT></STRONG>=
-</P>
-<P><STRONG><FONT size=3D2>Thank you,<BR></FONT><FONT size=3D2>The Microsoft=
- Office Team</FONT></STRONG></P>
-<DIV style=3D"FONT-SIZE: 15px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT=
--TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(33,33,33); FONT-STYLE: norma=
-l; LETTER-SPACING: normal; TEXT-INDENT: 0px"><STRONG><FONT size=3D3><FONT s=
-ize=3D2>=A9 Microsoft 365 Family subcription unlocks premiun features in th=
-e Microsoft Family Safety app</FONT><BR class=3DApple-interchange-newline><=
-/FONT></DIV></STRONG></TD></TR>
-<TR>
-<TD style=3D"PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADD=
-ING-RIGHT: 0px" align=3Dcenter></TD></TR></TBODY></TABLE></P>
-<DIV style=3D"FONT-SIZE: 15px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT=
--TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(33,33,33); FONT-STYLE: norma=
-l; LETTER-SPACING: normal; TEXT-INDENT: 0px"><STRONG><FONT size=3D3>&nbsp;&=
-nbsp;&nbsp;</FONT></STRONG><STRONG></DIV></STRONG></BODY></HTML>
-
-
-
-
-
---===============1307981618==--
-
---===============1598574322==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Mrs. Sarah Koffi
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1598574322==--
