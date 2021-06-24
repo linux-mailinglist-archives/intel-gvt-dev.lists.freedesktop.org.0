@@ -2,62 +2,82 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B4AF3B2E09
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 13:42:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 541043B2E62
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 14:00:36 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D23446EB5B;
-	Thu, 24 Jun 2021 11:42:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 07ED26EB5C;
+	Thu, 24 Jun 2021 12:00:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pg1-x536.google.com (mail-pg1-x536.google.com
- [IPv6:2607:f8b0:4864:20::536])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B92996EABA;
- Thu, 24 Jun 2021 11:42:50 +0000 (UTC)
-Received: by mail-pg1-x536.google.com with SMTP id p9so4512364pgb.1;
- Thu, 24 Jun 2021 04:42:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:subject:to:cc:references:in-reply-to:mime-version
- :message-id:content-transfer-encoding;
- bh=UhPwCKz4xBakQQigMlpP/gU41+hzbpM8YRJNgrKv6O4=;
- b=t31VnJiTsxItJNeq7rCSt7OrhubYQjPInGwxS6i1vZcLD09YhtO7gbcC6yO0KhAuXD
- RMNK1+v4V64bLEWRl+uFQJxvO1OFOEUDB1cdjW7SCwjkzIAwx6kCwo+BFaUOwSBFxqwm
- KF14xx23G+PzVLnKBSxDToMDnayKV5w+2zzBDlSLDFjw04AEwsQJB5ALW2r4/++L3OKb
- Y99mu3t2yWWYdgnN6Jbc1YzGJEOeoaeDo24+jGjvAiXYbKelivBMh2/9F1XYtnHZ8Kb0
- gAIR7RWubhD3jnU73jhUW2+khX+sz10qzFL5QCRSUp9UUKI+z+pRuE/7R3jTuKwE1dBy
- waHQ==
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8A82D6EB62
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 24 Jun 2021 12:00:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1624536032;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=avGojGcO92NTULuhKarR1IMbTxAu/KipAq8BEw7I0Ko=;
+ b=NwH7B5NWjpeo7xHuBdxiGRVZh4xvFr+1lFCIJJITHPUdkX1qQF6HaOwh7QLG0Nd8FkYAvF
+ xESavrCoW3oJDHBQuPpw3tbG2YBsPxiC6jO70F5rBsHr1BY5umW0PjAB5zZ5EoQX6wnH1p
+ zktQA9JdpEloy+r80cSPmHzIxlXLtTM=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-1-ysg-anBMM0OD3Y00I7eZ1A-1; Thu, 24 Jun 2021 08:00:31 -0400
+X-MC-Unique: ysg-anBMM0OD3Y00I7eZ1A-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ j2-20020a5d61820000b029011a6a8149b5so2113486wru.14
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 24 Jun 2021 05:00:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:subject:to:cc:references:in-reply-to
- :mime-version:message-id:content-transfer-encoding;
- bh=UhPwCKz4xBakQQigMlpP/gU41+hzbpM8YRJNgrKv6O4=;
- b=FezKJUv5OxgZSEZxN8SzAQvfAGaw1Fu0SFGDIf5rxHqf2kSvwan6KzCGBkxM43qsCr
- L4PRh3yX7+EuOJBlQd5i80N+PRDaHFotvxTR+YjPYzhuVFQIGgvaQuOHJC7cd7/RmUE2
- aFSJvmqvE8dMYfYlVHosNvdAUmjD45u2F5Py+2r55UjuJlYbGaLoABXs9nsMUMJLx/xm
- MdTwbNdshPTWs1o0Zj91s3TEvl5eNINUVhcEtzIrBCqjY3b7OqknU6hby+NqRE4upu9r
- m1E2DuVUfNdIPqYEBGDafp4OqFJkcHrM4EyrVToK1K82Gbglt4UKGkIFOuxlxeiDVv5o
- ASUg==
-X-Gm-Message-State: AOAM533xVwZnITWsUMSiU9EUHoDzTzS2peClZRw8D0fWIVp/8grS2ipm
- oMIccmkS7U7YrkKrrCfNrTE=
-X-Google-Smtp-Source: ABdhPJyUktZmu2l7dyBNUjkdVcrHb1vguGlN8KJEIqyrGuksmppmmrU30UVZa2RBb657vluXrYRKpA==
-X-Received: by 2002:a63:2503:: with SMTP id l3mr4358509pgl.237.1624534970415; 
- Thu, 24 Jun 2021 04:42:50 -0700 (PDT)
-Received: from localhost (60-242-147-73.tpgi.com.au. [60.242.147.73])
- by smtp.gmail.com with ESMTPSA id z18sm2539194pfe.214.2021.06.24.04.42.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Jun 2021 04:42:50 -0700 (PDT)
-Date: Thu, 24 Jun 2021 21:42:44 +1000
-From: Nicholas Piggin <npiggin@gmail.com>
-Subject: Re: [PATCH 0/6] KVM: Remove uses of struct page from x86 and arm64 MMU
-To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, Huacai Chen
- <chenhuacai@kernel.org>, Marc Zyngier <maz@kernel.org>, Paul Mackerras
- <paulus@ozlabs.org>, Paolo Bonzini <pbonzini@redhat.com>, David Stevens
- <stevensd@chromium.org>, Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang
- <zhi.a.wang@intel.com>
+ h=x-gm-message-state:to:cc:references:from:subject:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=avGojGcO92NTULuhKarR1IMbTxAu/KipAq8BEw7I0Ko=;
+ b=LEMnuIe0gQL3Fy6RPgnXDjaW1Y8QUgIECGsIyvnMfqochLdGyqqOyNueiU2xe9kxh0
+ dKO+jvAlwUXVTz7n1HNIU65e4JbePt+lD0nUxd4IuR2CyGAzxTjgWYi6FyI7WQQxu1Nj
+ KKuL98/Qg9hhU6QjFg60tP129BVmAj2VyIWyjE7QyAJGQwKc19268/3u0OtxjILn1X2b
+ Jzn3tClEfM9C3XfrrLdFOFXYHTdPyu+8sioIMvyD3L/z+Rgn6thCcTc495T2VHgQsLYP
+ 3xJGwH1lqr01tKfwKY17IMcuSKpkh2k/hxJSpQej88kwqTJO9hC9tnVtRiAyJ74GZiN+
+ Jf1g==
+X-Gm-Message-State: AOAM530oGRgE5tDKnexs63x7RggtXU70saFp2LME/+YFD5Z8paAM9qNG
+ yFbMaensL+IukFduujB8PpXSh82bJm5puXYKdWcDNXZ+QO4/5AuB+3z/0c8bz/Ytku/3Ku6ukwy
+ CAT6iClo0GSvbPfIXJlJAMDYzcFpbQlkI5Q==
+X-Received: by 2002:a1c:f215:: with SMTP id s21mr3879315wmc.179.1624536030028; 
+ Thu, 24 Jun 2021 05:00:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXFCnAp+BCIAB50GwF3Py3d9h4g0enz3/eZSVNkNtDC1Z07h1ecnwnq+OHmfePVB6B9P4IuQ==
+X-Received: by 2002:a1c:f215:: with SMTP id s21mr3879281wmc.179.1624536029808; 
+ Thu, 24 Jun 2021 05:00:29 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id o2sm3074141wrp.53.2021.06.24.05.00.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Jun 2021 05:00:29 -0700 (PDT)
+To: Nicholas Piggin <npiggin@gmail.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Marc Zyngier <maz@kernel.org>,
+ Paul Mackerras <paulus@ozlabs.org>, David Stevens <stevensd@chromium.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
 References: <20210624035749.4054934-1-stevensd@google.com>
  <1624530624.8jff1f4u11.astroid@bobo.none>
-In-Reply-To: <1624530624.8jff1f4u11.astroid@bobo.none>
+ <1624534759.nj0ylor2eh.astroid@bobo.none>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 0/6] KVM: Remove uses of struct page from x86 and arm64 MMU
+Message-ID: <d06a8a55-bb9d-a6ef-21bb-0633b99a50d1@redhat.com>
+Date: Thu, 24 Jun 2021 14:00:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-Message-Id: <1624534759.nj0ylor2eh.astroid@bobo.none>
+In-Reply-To: <1624534759.nj0ylor2eh.astroid@bobo.none>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,98 +101,54 @@ Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
  Vitaly Kuznetsov <vkuznets@redhat.com>, linux-mips@vger.kernel.org,
  intel-gvt-dev@lists.freedesktop.org, Joerg Roedel <joro@8bytes.org>,
  linux-arm-kernel@lists.infradead.org, Jim Mattson <jmattson@google.com>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Excerpts from Nicholas Piggin's message of June 24, 2021 8:34 pm:
-> Excerpts from David Stevens's message of June 24, 2021 1:57 pm:
->> KVM supports mapping VM_IO and VM_PFNMAP memory into the guest by using
->> follow_pte in gfn_to_pfn. However, the resolved pfns may not have
->> assoicated struct pages, so they should not be passed to pfn_to_page.
->> This series removes such calls from the x86 and arm64 secondary MMU. To
->> do this, this series modifies gfn_to_pfn to return a struct page in
->> addition to a pfn, if the hva was resolved by gup. This allows the
->> caller to call put_page only when necessated by gup.
->> 
->> This series provides a helper function that unwraps the new return type
->> of gfn_to_pfn to provide behavior identical to the old behavior. As I
->> have no hardware to test powerpc/mips changes, the function is used
->> there for minimally invasive changes. Additionally, as gfn_to_page and
->> gfn_to_pfn_cache are not integrated with mmu notifier, they cannot be
->> easily changed over to only use pfns.
->> 
->> This addresses CVE-2021-22543 on x86 and arm64.
+On 24/06/21 13:42, Nicholas Piggin wrote:
+> +static int kvm_try_get_pfn(kvm_pfn_t pfn)
+> +{
+> +	if (kvm_is_reserved_pfn(pfn))
+> +		return 1;
+
+So !pfn_valid would always return true.  Yeah, this should work and is 
+certainly appealing!
+
+Paolo
+
+
+> +	return get_page_unless_zero(pfn_to_page(pfn));
+> +}
+> +
+>   static int hva_to_pfn_remapped(struct vm_area_struct *vma,
+>   			       unsigned long addr, bool *async,
+>   			       bool write_fault, bool *writable,
+> @@ -2104,13 +2111,21 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
+>   	 * Whoever called remap_pfn_range is also going to call e.g.
+>   	 * unmap_mapping_range before the underlying pages are freed,
+>   	 * causing a call to our MMU notifier.
+> +	 *
+> +	 * Certain IO or PFNMAP mappings can be backed with valid
+> +	 * struct pages, but be allocated without refcounting e.g.,
+> +	 * tail pages of non-compound higher order allocations, which
+> +	 * would then underflow the refcount when the caller does the
+> +	 * required put_page. Don't allow those pages here.
+>   	 */
+> -	kvm_get_pfn(pfn);
+> +	if (!kvm_try_get_pfn(pfn))
+> +		r = -EFAULT;
+>   
+>   out:
+>   	pte_unmap_unlock(ptep, ptl);
+>   	*p_pfn = pfn;
+> -	return 0;
+> +
+> +	return r;
+>   }
+>   
+>   /*
 > 
-> Does this fix the problem? (untested I don't have a POC setup at hand,
-> but at least in concept)
-
-This one actually compiles at least. Unfortunately I don't have much 
-time in the near future to test, and I only just found out about this
-CVE a few hours ago.
-
----
-
-
-It's possible to create a region which maps valid but non-refcounted
-pages (e.g., tail pages of non-compound higher order allocations). These
-host pages can then be returned by gfn_to_page, gfn_to_pfn, etc., family
-of APIs, which take a reference to the page, which takes it from 0 to 1.
-When the reference is dropped, this will free the page incorrectly.
-
-Fix this by only taking a reference on the page if it was non-zero,
-which indicates it is participating in normal refcounting (and can be
-released with put_page).
-
----
- virt/kvm/kvm_main.c | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
-
-diff --git a/virt/kvm/kvm_main.c b/virt/kvm/kvm_main.c
-index 6a6bc7af0e28..46fb042837d2 100644
---- a/virt/kvm/kvm_main.c
-+++ b/virt/kvm/kvm_main.c
-@@ -2055,6 +2055,13 @@ static bool vma_is_valid(struct vm_area_struct *vma, bool write_fault)
- 	return true;
- }
- 
-+static int kvm_try_get_pfn(kvm_pfn_t pfn)
-+{
-+	if (kvm_is_reserved_pfn(pfn))
-+		return 1;
-+	return get_page_unless_zero(pfn_to_page(pfn));
-+}
-+
- static int hva_to_pfn_remapped(struct vm_area_struct *vma,
- 			       unsigned long addr, bool *async,
- 			       bool write_fault, bool *writable,
-@@ -2104,13 +2111,21 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
- 	 * Whoever called remap_pfn_range is also going to call e.g.
- 	 * unmap_mapping_range before the underlying pages are freed,
- 	 * causing a call to our MMU notifier.
-+	 *
-+	 * Certain IO or PFNMAP mappings can be backed with valid
-+	 * struct pages, but be allocated without refcounting e.g.,
-+	 * tail pages of non-compound higher order allocations, which
-+	 * would then underflow the refcount when the caller does the
-+	 * required put_page. Don't allow those pages here.
- 	 */ 
--	kvm_get_pfn(pfn);
-+	if (!kvm_try_get_pfn(pfn))
-+		r = -EFAULT;
- 
- out:
- 	pte_unmap_unlock(ptep, ptl);
- 	*p_pfn = pfn;
--	return 0;
-+
-+	return r;
- }
- 
- /*
--- 
-2.23.0
 
 _______________________________________________
 intel-gvt-dev mailing list
