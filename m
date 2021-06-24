@@ -1,80 +1,76 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A4C03B2C30
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 12:14:03 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39B693B2C3F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 12:17:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 218A46EB4B;
-	Thu, 24 Jun 2021 10:14:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F1A176EB4B;
+	Thu, 24 Jun 2021 10:17:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 39A716EAA2
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 400A16EB4C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 24 Jun 2021 10:14:01 +0000 (UTC)
+ Thu, 24 Jun 2021 10:17:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624529640;
+ s=mimecast20190719; t=1624529857;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qgeFYkU0pR1Q1xO1W6kYeH0XfpPQ577wwQcLewdoy9I=;
- b=C4fJMYlyXOYFpPhsPy1vz2dgiKNtgYeXnf2Y6/fmC4MIieSXk2suAoRLv2d06iqAl6PY01
- 3Nz1og9YsiGkL3UJjq91DaNiVB2jGqB5uoOuS6mIom482jv7bm5fjAjBzrAWCmphS38SVN
- 2lIADXMQJUlWrTg6XHU3hw4qPYrlkfY=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-493-_wKE4nIRPcGgh3vI19v0AQ-1; Thu, 24 Jun 2021 06:13:56 -0400
-X-MC-Unique: _wKE4nIRPcGgh3vI19v0AQ-1
-Received: by mail-wr1-f72.google.com with SMTP id
- d8-20020adfef880000b029011a9391927aso1993687wro.22
+ bh=4frsi0H+HBjHeCdKISuXJMG773wuFNrwEMxUF4xqOQU=;
+ b=H1QmQf0HjgfEEO/YXFb07R4kp428RjM92oYJv9BIIfU1pd6duojaDyI7drSXXC1f8H2Ywn
+ AvXBDSZI/lrCj8j/ASh1qhpRLH3p3oHWD1DEynMOa3UyttSPWHJ+KipgM4k9oOjf43gYiE
+ MaEh2Ii3o4SFW6mTXKeDD9DV8UVUfwc=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-219-xe2xAbv_OmicQfYLs2wpFg-1; Thu, 24 Jun 2021 06:17:35 -0400
+X-MC-Unique: xe2xAbv_OmicQfYLs2wpFg-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ de48-20020a1709069bf0b029048ae3ebecabso1810353ejc.16
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 24 Jun 2021 03:13:56 -0700 (PDT)
+ Thu, 24 Jun 2021 03:17:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=qgeFYkU0pR1Q1xO1W6kYeH0XfpPQ577wwQcLewdoy9I=;
- b=AfsqsphedN+TJZ0x7UbQSqZ8nl7Pm1H7UwjFcQO8mHeMunHQ1kjqT/u4mq4RECBO1u
- fYAJI6NX55so2GvPE25lzgFevEAgrj5W/Ko2GVYHbbTR/s7pquY+miWStIeZxoLiySNC
- InNABeo3qEDsZPbwIsm8HoJMUxguRNR71XjFbsqQzXmCYQlRxNCLI/rsk1Ki8UNWuWf1
- BGAQOEcymyPNybLpk6EMFjeq6ufmPN/uWD6Z7LSL8a689mo3VzOPzV90MtBZVp1UJJYD
- z74Bgxi9aVSaPRO7+RP0GsCQ06loy089Xnwrs3UlmNudttDrNk3ShfVwJEuzTCFE6mz0
- oS1Q==
-X-Gm-Message-State: AOAM532ku45egP4agxVnOi0c7D0zVoX4iwLDikERk4q6ACaMIEBK7p4S
- mlgPRxR6/9H2Gfa5msaCppuCWKNk2pfb6SLG9Rmp2+jgP/LdZ0jIw75laFHA2eyFPayGwYxgOSs
- 8M4HiLuGQD9XQxDbGA95iAf9PVR5drDFtyQ==
-X-Received: by 2002:adf:e80c:: with SMTP id o12mr3526087wrm.425.1624529635770; 
- Thu, 24 Jun 2021 03:13:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwystGI+L9gOrbELlIiJWJblqcplIdniKN++kkqVaKxE8NfJktozv1x7SoGv2eSTMa2UzUKpw==
-X-Received: by 2002:adf:e80c:: with SMTP id o12mr3526053wrm.425.1624529635607; 
- Thu, 24 Jun 2021 03:13:55 -0700 (PDT)
+ bh=4frsi0H+HBjHeCdKISuXJMG773wuFNrwEMxUF4xqOQU=;
+ b=rZALKLjgOOk+TtFdVByueyE6VU3DCL2wH28+71Ar94LMVLb4aHappd9zCht8MjDnFs
+ UPp/Ve81fWQ9bqtU0vRY6RMoweNMABsuxGrnWVFptrD0icoBKBlX4stZj0hS0oXc5JyO
+ SI6fFbUDP+iVN+MWcUd3b50bSLhIWfF8S1S7PKEutaMUsY15krBsfs+174hyRvillYAZ
+ LQ38smo/pWxyOvgSFAdi6z3j6k3BbcRw+VHPEKxYnuslV70Ie3cm7A+TJz62kk4pRWU1
+ mRkY5ADz6IN2tbtq/sDnZN3h9sEV7ovTzFXHXsLrj1SZFlU55y30sMAOyUtkOd8HaNU7
+ zU+Q==
+X-Gm-Message-State: AOAM530S/l2Yrtkc64oS53iDqeVLX2XK6ZkaKT7yb5qLPHB5LTKh5wJM
+ 636rnaqHCJkKiMdncyTXdk503o3H9UmgnzqzjCR4qKJ27nxWlQlOg/VuJmhR8hdgkB4w0ifMWAy
+ YV7HnrvTX4W5hsCVQAL8qS/MUhgCYrS2SIw==
+X-Received: by 2002:a17:906:b254:: with SMTP id
+ ce20mr4621433ejb.480.1624529854732; 
+ Thu, 24 Jun 2021 03:17:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxC6TqcAfZORfwKXJXCm8bql8vynsp6j3JYon1fQgnkpoL4xlG5zu/uVtJRITtzGjbxU3KFw==
+X-Received: by 2002:a17:906:b254:: with SMTP id
+ ce20mr4621398ejb.480.1624529854552; 
+ Thu, 24 Jun 2021 03:17:34 -0700 (PDT)
 Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
  ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id q19sm8207562wmc.44.2021.06.24.03.13.53
+ by smtp.gmail.com with ESMTPSA id x21sm1600772edv.97.2021.06.24.03.17.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Jun 2021 03:13:55 -0700 (PDT)
-Subject: Re: [PATCH 2/6] KVM: mmu: also return page from gfn_to_pfn
-To: Nicholas Piggin <npiggin@gmail.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Huacai Chen <chenhuacai@kernel.org>, Marc Zyngier <maz@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, David Stevens <stevensd@chromium.org>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+ Thu, 24 Jun 2021 03:17:33 -0700 (PDT)
+Subject: Re: [PATCH 3/6] KVM: x86/mmu: avoid struct page in MMU
+To: Marc Zyngier <maz@kernel.org>, Nicholas Piggin <npiggin@gmail.com>
 References: <20210624035749.4054934-1-stevensd@google.com>
- <20210624035749.4054934-3-stevensd@google.com>
- <1624524331.zsin3qejl9.astroid@bobo.none>
- <201b68a7-10ea-d656-0c1e-5511b1f22674@redhat.com>
- <1624528342.s2ezcyp90x.astroid@bobo.none>
+ <20210624035749.4054934-4-stevensd@google.com>
+ <1624524744.2sr7o7ix86.astroid@bobo.none> <87mtrfinks.wl-maz@kernel.org>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <bbbd7334-5311-a7b4-5dec-8bc606f1d6c9@redhat.com>
-Date: Thu, 24 Jun 2021 12:13:52 +0200
+Message-ID: <0b7f9c30-eb12-35c5-191f-0e8e469e1b88@redhat.com>
+Date: Thu, 24 Jun 2021 12:17:31 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.1
 MIME-Version: 1.0
-In-Reply-To: <1624528342.s2ezcyp90x.astroid@bobo.none>
+In-Reply-To: <87mtrfinks.wl-maz@kernel.org>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -93,36 +89,59 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
- Suzuki K Poulose <suzuki.poulose@arm.com>,
- Alexandru Elisei <alexandru.elisei@arm.com>, intel-gfx@lists.freedesktop.org,
- linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, kvmarm@lists.cs.columbia.edu,
- Will Deacon <will@kernel.org>, James Morse <james.morse@arm.com>,
- kvm-ppc@vger.kernel.org, Sean Christopherson <seanjc@google.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, linux-mips@vger.kernel.org,
- intel-gvt-dev@lists.freedesktop.org, Joerg Roedel <joro@8bytes.org>,
- linux-arm-kernel@lists.infradead.org, Jim Mattson <jmattson@google.com>
+ dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org,
+ Paul Mackerras <paulus@ozlabs.org>, Will Deacon <will@kernel.org>,
+ kvmarm@lists.cs.columbia.edu, Alexandru Elisei <alexandru.elisei@arm.com>,
+ Joerg Roedel <joro@8bytes.org>, Huacai Chen <chenhuacai@kernel.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Suzuki K Poulose <suzuki.poulose@arm.com>,
+ intel-gfx@lists.freedesktop.org, kvm-ppc@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, Jim Mattson <jmattson@google.com>,
+ Sean Christopherson <seanjc@google.com>, linux-kernel@vger.kernel.org,
+ James Morse <james.morse@arm.com>, David Stevens <stevensd@chromium.org>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>, linuxppc-dev@lists.ozlabs.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 24/06/21 11:57, Nicholas Piggin wrote:
->> Needing kvm_pfn_page_unwrap is a sign that something might be buggy, so
->> it's a good idea to move the short name to the common case and the ugly
->> kvm_pfn_page_unwrap(gfn_to_pfn(...)) for the weird one.  In fact I'm not
->> sure there should be any kvm_pfn_page_unwrap in the end.
->
-> If all callers were updated that is one thing, but from the changelog
-> it sounds like that would not happen and there would be some gfn_to_pfn
-> users left over.
+On 24/06/21 12:06, Marc Zyngier wrote:
+> On Thu, 24 Jun 2021 09:58:00 +0100,
+> Nicholas Piggin <npiggin@gmail.com> wrote:
+>>
+>> Excerpts from David Stevens's message of June 24, 2021 1:57 pm:
+>>> From: David Stevens <stevensd@chromium.org>
+>>>   out_unlock:
+>>>   	if (is_tdp_mmu_root(vcpu->kvm, vcpu->arch.mmu->root_hpa))
+>>>   		read_unlock(&vcpu->kvm->mmu_lock);
+>>>   	else
+>>>   		write_unlock(&vcpu->kvm->mmu_lock);
+>>> -	kvm_release_pfn_clean(pfn);
+>>> +	if (pfnpg.page)
+>>> +		put_page(pfnpg.page);
+>>>   	return r;
+>>>   }
+>>
+>> How about
+>>
+>>    kvm_release_pfn_page_clean(pfnpg);
+> 
+> I'm not sure. I always found kvm_release_pfn_clean() ugly, because it
+> doesn't mark the page 'clean'. I find put_page() more correct.
+> 
+> Something like 'kvm_put_pfn_page()' would make more sense, but I'm so
+> bad at naming things that I could just as well call it 'bob()'.
 
-In this patches there are, so yeah the plan is to always change the 
-callers to the new way.
+The best way to go would be to get rid of kvm_release_pfn_clean() and 
+always go through a pfn_page.  Then we could or could not introduce 
+wrappers kvm_put_pfn_page{,_dirty}.
 
-> But yes in the end you would either need to make gfn_to_pfn never return
-> a page found via follow_pte, or change all callers to the new way. If
-> the plan is for the latter then I guess that's fine.
+I think for now it's best to limit the churn since these patches will go 
+in the stable releases too, and clean up the resulting API once we have 
+a clear idea of how all architectures are using kvm_pfn_page.
+
+Paolo
 
 _______________________________________________
 intel-gvt-dev mailing list
