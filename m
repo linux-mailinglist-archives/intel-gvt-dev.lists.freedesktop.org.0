@@ -1,66 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D4CD3B2BFE
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 11:58:05 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09A953B2C17
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 12:06:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0FF726EA6C;
-	Thu, 24 Jun 2021 09:58:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C46B86EA6C;
+	Thu, 24 Jun 2021 10:06:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com
- [IPv6:2607:f8b0:4864:20::435])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7203D6EA6C;
- Thu, 24 Jun 2021 09:58:03 +0000 (UTC)
-Received: by mail-pf1-x435.google.com with SMTP id s14so3443612pfg.0;
- Thu, 24 Jun 2021 02:58:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:subject:to:cc:references:in-reply-to:mime-version
- :message-id:content-transfer-encoding;
- bh=2/FXkDvvz78LZzi8vEuw9P0gxvIPqn8+9Qh994D56qo=;
- b=EhX2h/EGnTWqdqRQbpZlpJcgT0oJJ6o7Nef8q7EtPvI99smF5fr4TIG1Xp5CmTthMl
- XHQzIJWggbxJUXpq8OIPTnYOso57K6OBKZR9lvcFT5+8SBJA9849ahv3W1ndrCYtoccT
- yygIYTNJlnGOy5EhAkMecjcGkX/PpQmk6jKwKuAM0vg6/CjPiKQtp4B/woWoN5Oxyu7M
- ua8ZUETzbjTOqOpCOLZ+ZXZ4cbXcI88NdWfpPkU+Dnz/3z1CLTZvVnhoG0DpsDAi9bV1
- nK9pW2bxw2DMCvsnbAXlJB/lKwAPvP15NgJgI5cnQ6vQYvzhGuulMUnoZMx6s+4VaanO
- Eqdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:subject:to:cc:references:in-reply-to
- :mime-version:message-id:content-transfer-encoding;
- bh=2/FXkDvvz78LZzi8vEuw9P0gxvIPqn8+9Qh994D56qo=;
- b=NqtVuGKe9/9HL3gtQfc6MptGDoulqDT5jEjl0+qFxTMhrZSDmplCFu1ANMv9dyTEaG
- az6TT1F08JcB7zubBEpog5Zf6TDXpl9LzXP2rp0G6DFE4Z3Yqy/ERBFlVFxiRAkLycK0
- M0JcOjGV0CaYUq+on1ODgl8BYTSRPcd0b4PwJwaLE0D501MotbNeEp/d+Cjr+6AU983S
- eK+TYwYrD5xUVmkeNXVpamr042Cx/7KRvJhsnAcc0/Lqe4GVoiAyEeAoNJ54EsadM5dw
- TdHJcHmPMchCmp84L/277YnpdK12a9CtULkmaUyNqoRdHiUKPdp+zaqfUMpUm8diCqFo
- /6ug==
-X-Gm-Message-State: AOAM5331ouQjoUXx26FEttY8OtjTAR7X491ph+SgUNynG33TemHN9bXF
- EaU4ahZ5Yi5ISWEWBIWfVc0=
-X-Google-Smtp-Source: ABdhPJzzKwhLHCAEARj7N7XbHWSLsSDNrl/BU7M36fXftqZpKf9BHg/7Rmx6MuG9ZeVpPhgC2xWSpQ==
-X-Received: by 2002:a62:1857:0:b029:302:fb56:df52 with SMTP id
- 84-20020a6218570000b0290302fb56df52mr4317733pfy.3.1624528683047; 
- Thu, 24 Jun 2021 02:58:03 -0700 (PDT)
-Received: from localhost (60-242-147-73.tpgi.com.au. [60.242.147.73])
- by smtp.gmail.com with ESMTPSA id y20sm2759510pfb.207.2021.06.24.02.58.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Jun 2021 02:58:02 -0700 (PDT)
-Date: Thu, 24 Jun 2021 19:57:57 +1000
-From: Nicholas Piggin <npiggin@gmail.com>
-Subject: Re: [PATCH 2/6] KVM: mmu: also return page from gfn_to_pfn
-To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, Huacai Chen
- <chenhuacai@kernel.org>, Marc Zyngier <maz@kernel.org>, Paul Mackerras
- <paulus@ozlabs.org>, Paolo Bonzini <pbonzini@redhat.com>, David Stevens
- <stevensd@chromium.org>, Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang
- <zhi.a.wang@intel.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5906D6EA6C;
+ Thu, 24 Jun 2021 10:06:30 +0000 (UTC)
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2AC33613FB;
+ Thu, 24 Jun 2021 10:06:30 +0000 (UTC)
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1lwMFg-009ZEr-4I; Thu, 24 Jun 2021 11:06:28 +0100
+Date: Thu, 24 Jun 2021 11:06:27 +0100
+Message-ID: <87mtrfinks.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Nicholas Piggin <npiggin@gmail.com>
+Subject: Re: [PATCH 3/6] KVM: x86/mmu: avoid struct page in MMU
+In-Reply-To: <1624524744.2sr7o7ix86.astroid@bobo.none>
 References: <20210624035749.4054934-1-stevensd@google.com>
- <20210624035749.4054934-3-stevensd@google.com>
- <1624524331.zsin3qejl9.astroid@bobo.none>
- <201b68a7-10ea-d656-0c1e-5511b1f22674@redhat.com>
-In-Reply-To: <201b68a7-10ea-d656-0c1e-5511b1f22674@redhat.com>
-MIME-Version: 1.0
-Message-Id: <1624528342.s2ezcyp90x.astroid@bobo.none>
+ <20210624035749.4054934-4-stevensd@google.com>
+ <1624524744.2sr7o7ix86.astroid@bobo.none>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: npiggin@gmail.com, aleksandar.qemu.devel@gmail.com,
+ chenhuacai@kernel.org, paulus@ozlabs.org, pbonzini@redhat.com,
+ stevensd@chromium.org, zhenyuw@linux.intel.com, zhi.a.wang@intel.com,
+ alexandru.elisei@arm.com, dri-devel@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ james.morse@arm.com, jmattson@google.com, joro@8bytes.org,
+ kvmarm@lists.cs.columbia.edu, kvm-ppc@vger.kernel.org, kvm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, seanjc@google.com,
+ suzuki.poulose@arm.com, vkuznets@redhat.com, wanpengli@tencent.com,
+ will@kernel.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,45 +64,54 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
- Suzuki K Poulose <suzuki.poulose@arm.com>,
- Alexandru Elisei <alexandru.elisei@arm.com>, intel-gfx@lists.freedesktop.org,
- linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, kvmarm@lists.cs.columbia.edu,
- Will Deacon <will@kernel.org>, James Morse <james.morse@arm.com>,
- kvm-ppc@vger.kernel.org, Sean Christopherson <seanjc@google.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, linux-mips@vger.kernel.org,
- intel-gvt-dev@lists.freedesktop.org, Joerg Roedel <joro@8bytes.org>,
- linux-arm-kernel@lists.infradead.org, Jim Mattson <jmattson@google.com>
+ dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org,
+ Paul Mackerras <paulus@ozlabs.org>, Will Deacon <will@kernel.org>,
+ kvmarm@lists.cs.columbia.edu, Alexandru Elisei <alexandru.elisei@arm.com>,
+ Joerg Roedel <joro@8bytes.org>, Huacai Chen <chenhuacai@kernel.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Suzuki K Poulose <suzuki.poulose@arm.com>,
+ intel-gfx@lists.freedesktop.org, kvm-ppc@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, Jim Mattson <jmattson@google.com>,
+ Sean Christopherson <seanjc@google.com>, linux-kernel@vger.kernel.org,
+ James Morse <james.morse@arm.com>, David Stevens <stevensd@chromium.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Vitaly Kuznetsov <vkuznets@redhat.com>,
+ linuxppc-dev@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Excerpts from Paolo Bonzini's message of June 24, 2021 7:42 pm:
-> On 24/06/21 10:52, Nicholas Piggin wrote:
->>> For now, wrap all calls to gfn_to_pfn functions in the new helper
->>> function. Callers which don't need the page struct will be updated in
->>> follow-up patches.
->> Hmm. You mean callers that do need the page will be updated? Normally
->> if there will be leftover users that don't need the struct page then
->> you would go the other way and keep the old call the same, and add a new
->> one (gfn_to_pfn_page) just for those that need it.
+On Thu, 24 Jun 2021 09:58:00 +0100,
+Nicholas Piggin <npiggin@gmail.com> wrote:
 > 
-> Needing kvm_pfn_page_unwrap is a sign that something might be buggy, so 
-> it's a good idea to move the short name to the common case and the ugly 
-> kvm_pfn_page_unwrap(gfn_to_pfn(...)) for the weird one.  In fact I'm not 
-> sure there should be any kvm_pfn_page_unwrap in the end.
+> Excerpts from David Stevens's message of June 24, 2021 1:57 pm:
+> > From: David Stevens <stevensd@chromium.org>
+> >  out_unlock:
+> >  	if (is_tdp_mmu_root(vcpu->kvm, vcpu->arch.mmu->root_hpa))
+> >  		read_unlock(&vcpu->kvm->mmu_lock);
+> >  	else
+> >  		write_unlock(&vcpu->kvm->mmu_lock);
+> > -	kvm_release_pfn_clean(pfn);
+> > +	if (pfnpg.page)
+> > +		put_page(pfnpg.page);
+> >  	return r;
+> >  }
+> 
+> How about
+> 
+>   kvm_release_pfn_page_clean(pfnpg);
 
-If all callers were updated that is one thing, but from the changelog
-it sounds like that would not happen and there would be some gfn_to_pfn
-users left over.
+I'm not sure. I always found kvm_release_pfn_clean() ugly, because it
+doesn't mark the page 'clean'. I find put_page() more correct.
 
-But yes in the end you would either need to make gfn_to_pfn never return
-a page found via follow_pte, or change all callers to the new way. If 
-the plan is for the latter then I guess that's fine.
+Something like 'kvm_put_pfn_page()' would make more sense, but I'm so
+bad at naming things that I could just as well call it 'bob()'.
 
-Thanks,
-Nick
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
