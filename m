@@ -2,64 +2,64 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFEC63B2A92
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 10:43:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 10F6B3B2AC7
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Jun 2021 10:52:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0368A6EB23;
-	Thu, 24 Jun 2021 08:43:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AC4C96EB21;
+	Thu, 24 Jun 2021 08:52:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com
- [IPv6:2607:f8b0:4864:20::1035])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B59D96EB21;
- Thu, 24 Jun 2021 08:43:06 +0000 (UTC)
-Received: by mail-pj1-x1035.google.com with SMTP id
- p4-20020a17090a9304b029016f3020d867so3030334pjo.3; 
- Thu, 24 Jun 2021 01:43:06 -0700 (PDT)
+Received: from mail-pj1-x1036.google.com (mail-pj1-x1036.google.com
+ [IPv6:2607:f8b0:4864:20::1036])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F25FB6EB21;
+ Thu, 24 Jun 2021 08:52:12 +0000 (UTC)
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 13-20020a17090a08cdb029016eed209ca4so3057288pjn.1; 
+ Thu, 24 Jun 2021 01:52:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:subject:to:cc:references:in-reply-to:mime-version
  :message-id:content-transfer-encoding;
- bh=yhvFMq52QAZ9Grg2JNZMftQHgs3RA/23cRzSXZS17k0=;
- b=gAOPVlMk/C7twisLQPwKCNWWewikvdh3rxAsE3ZtniqnTTajI/NMXYxiFGdNgFsAb5
- HygkoSZIJ35Gv0csn5ROrHrh88J/UJu+eQftLB0ieYLqxUsTshCjLCXS6gCtoawRaivr
- 09ywa3Xbj5hpxhL9dwXklJBlZskMpYTiquDzecxyLb9cNgD5q6A07FqSvRwXDFm8rCjX
- BNwM+/+ntQwzLzmsj9QUq7rwCh6LY1EpIQpDwzEMVK8zxcfbTYEjGD1dfARZQBO2ATzQ
- bXhbvn6/C4gpLxmOLhsNYYF/nPrsfEvzkHwVbcZduLr1uAs8pjNAgfhm1dhPRaqpCZmK
- qi+A==
+ bh=9iS9TDXjHYeeO4p1tZR6e76NZxX4UTo0tHhJ02Bmyuc=;
+ b=mEGHBnjuh74WaoNyT1eKb/VOfvVFvX3kwUneJ5AncMO10vay7V/YPF/SG5j7p8iYH1
+ 7gxNCDvNzDqb55aG0xXgAC1RA62Wj+bbizWaJDKEr0nn3qnuj2jXLdTdeiyFZgIkzbU6
+ eUXYZQk6B3lHcCn/C7rK9Hfy2ewbGQ+QcUAXV5aikZlnmoVPOh+oFpMVHi12RR/PQruY
+ Y7ojicHYDpa1rl6bybFrRzQg1WLQ4vvo9pySUIlXsW7HorWi3IZfqYmc1PUso5nJwGuX
+ l372R3hUka0ng8Md0fedsRzdAZ1LxWh9MkI+AQUHTjtMJyFheflEYDzQL0UNZQwWosBs
+ cQQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:subject:to:cc:references:in-reply-to
  :mime-version:message-id:content-transfer-encoding;
- bh=yhvFMq52QAZ9Grg2JNZMftQHgs3RA/23cRzSXZS17k0=;
- b=UUrg5nqr9uV6NFnZFCwXzXYwsaFlJzMDZQ0j5Sj36q6AjMdhj3l7zgvzff6Pesl9uC
- F5JqKKa5gDMoRYiJDfKkWrCI8VOzToWi7BzhhxuMwngAvg0t2m1JUhnn+FgVdXqDV668
- duG9bbCWVClG1ANSP87Ek7VB9Tq+ouKmmkXYZj89DyEWNkwlJ+2lC6V01PJps07XP90F
- ssNvR0zXGQcFMO0xofRETGURd1SzrXyv4xBy0Y4ecZm7UOJKU8fvj1WgAMctszdllF6y
- /I0/VdbPxoDjFBXSO/bcu+lFxZA1MdRTgKKfZPFs7iEgYJY5uUabKHA6z3TW2MLhQNvS
- FvqQ==
-X-Gm-Message-State: AOAM531MegT2OD0R3EVagPhfT6sJYbbG21R/hhmVPqOunEReiktA2SgE
- RwoDTS4SNrN5eMESgr/xj5k=
-X-Google-Smtp-Source: ABdhPJxPYtDJj0lFNs0Ok5TeYJmivmtsbDnnr/kiA2/ldwDSYWrbmF8IsiSMPIQHeLM0imoUnt26JQ==
-X-Received: by 2002:a17:90b:793:: with SMTP id
- l19mr14007232pjz.111.1624524186360; 
- Thu, 24 Jun 2021 01:43:06 -0700 (PDT)
+ bh=9iS9TDXjHYeeO4p1tZR6e76NZxX4UTo0tHhJ02Bmyuc=;
+ b=NVQEAR6gS0yMvZEkOAfgIH7klCMhBXWGGfsfE7oy1Y0AK7Kshr6GJTpy6g/oPIUake
+ IFkpkb+a7o8QywAmYqGAj4Gu+406yaqSyCK9e8tur13EpspL7AjrrzP2IyMQqFEEyiTf
+ fBQPNjYVDyekVN0BDT9BeC6ghpLCDyeljaQzA3ghxqgSfxk7Zc2xLHCYDodiMoH7JIH7
+ q38mcGkaRW2ESIAqRqXPuPwdHu/yqFxPIu5dphN/lNCttAL7JkIqcv83RaxKDtdNyxaw
+ i3LeYHfBIo0agicw8w384jQERGZd+22CQ+SkIveaeZyrZwdNdak4WXVBDHCEyE6W2u9/
+ 9mNA==
+X-Gm-Message-State: AOAM533EfIxBRfpfeaMqm8cNuxPImlGZ9+8afOLKdVhMuh57M9FkkALJ
+ kAeBfQ0G5KyHE2bf7Si4tTHvbQ+70Os=
+X-Google-Smtp-Source: ABdhPJxZDp/SyGeLqZPtuw/I81jZ765tjN1eiDWxfb5Gw8s0EqtrDghio6LIVydktk8tQn/Q5HNfVQ==
+X-Received: by 2002:a17:90a:6fc1:: with SMTP id
+ e59mr4396347pjk.37.1624524732566; 
+ Thu, 24 Jun 2021 01:52:12 -0700 (PDT)
 Received: from localhost (60-242-147-73.tpgi.com.au. [60.242.147.73])
- by smtp.gmail.com with ESMTPSA id 23sm1841779pjw.28.2021.06.24.01.43.05
+ by smtp.gmail.com with ESMTPSA id c5sm2109274pfv.47.2021.06.24.01.52.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Jun 2021 01:43:06 -0700 (PDT)
-Date: Thu, 24 Jun 2021 18:43:00 +1000
+ Thu, 24 Jun 2021 01:52:12 -0700 (PDT)
+Date: Thu, 24 Jun 2021 18:52:06 +1000
 From: Nicholas Piggin <npiggin@gmail.com>
-Subject: Re: [PATCH 1/6] KVM: x86/mmu: release audited pfns
+Subject: Re: [PATCH 2/6] KVM: mmu: also return page from gfn_to_pfn
 To: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, Huacai Chen
  <chenhuacai@kernel.org>, Marc Zyngier <maz@kernel.org>, Paul Mackerras
  <paulus@ozlabs.org>, Paolo Bonzini <pbonzini@redhat.com>, David Stevens
  <stevensd@chromium.org>, Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang
  <zhi.a.wang@intel.com>
 References: <20210624035749.4054934-1-stevensd@google.com>
- <20210624035749.4054934-2-stevensd@google.com>
-In-Reply-To: <20210624035749.4054934-2-stevensd@google.com>
+ <20210624035749.4054934-3-stevensd@google.com>
+In-Reply-To: <20210624035749.4054934-3-stevensd@google.com>
 MIME-Version: 1.0
-Message-Id: <1624524156.04etgk7zmz.astroid@bobo.none>
+Message-Id: <1624524331.zsin3qejl9.astroid@bobo.none>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,35 +89,31 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 Excerpts from David Stevens's message of June 24, 2021 1:57 pm:
 > From: David Stevens <stevensd@chromium.org>
+> 
+> Return a struct kvm_pfn_page containing both a pfn and an optional
+> struct page from the gfn_to_pfn family of functions. This differentiates
+> the gup and follow_fault_pfn cases, which allows callers that only need
+> a pfn to avoid touching the page struct in the latter case. For callers
+> that need a struct page, introduce a helper function that unwraps a
+> struct kvm_pfn_page into a struct page. This helper makes the call to
+> kvm_get_pfn which had previously been in hva_to_pfn_remapped.
+> 
+> For now, wrap all calls to gfn_to_pfn functions in the new helper
+> function. Callers which don't need the page struct will be updated in
+> follow-up patches.
 
-Changelog? This looks like a bug, should it have a Fixes: tag?
+Hmm. You mean callers that do need the page will be updated? Normally 
+if there will be leftover users that don't need the struct page then
+you would go the other way and keep the old call the same, and add a new
+one (gfn_to_pfn_page) just for those that need it.
+
+Most kernel code I look at passes back multiple values by updating 
+pointers to struct or variables rather than returning a struct, I 
+suppose that's not really a big deal and a matter of taste.
 
 Thanks,
 Nick
 
-> 
-> Signed-off-by: David Stevens <stevensd@chromium.org>
-> ---
->  arch/x86/kvm/mmu/mmu_audit.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/x86/kvm/mmu/mmu_audit.c b/arch/x86/kvm/mmu/mmu_audit.c
-> index cedc17b2f60e..97ff184084b4 100644
-> --- a/arch/x86/kvm/mmu/mmu_audit.c
-> +++ b/arch/x86/kvm/mmu/mmu_audit.c
-> @@ -121,6 +121,8 @@ static void audit_mappings(struct kvm_vcpu *vcpu, u64 *sptep, int level)
->  		audit_printk(vcpu->kvm, "levels %d pfn %llx hpa %llx "
->  			     "ent %llxn", vcpu->arch.mmu->root_level, pfn,
->  			     hpa, *sptep);
-> +
-> +	kvm_release_pfn_clean(pfn);
->  }
->  
->  static void inspect_spte_has_rmap(struct kvm *kvm, u64 *sptep)
-> -- 
-> 2.32.0.93.g670b81a890-goog
-> 
-> 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
