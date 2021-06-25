@@ -1,63 +1,97 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA88D3B3D9C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Jun 2021 09:37:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01E1C3B3E1B
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Jun 2021 09:59:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5BBFE6ECE9;
-	Fri, 25 Jun 2021 07:37:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F7C36ECE0;
+	Fri, 25 Jun 2021 07:59:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x102e.google.com (mail-pj1-x102e.google.com
- [IPv6:2607:f8b0:4864:20::102e])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B56746ECE9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 25 Jun 2021 07:37:50 +0000 (UTC)
-Received: by mail-pj1-x102e.google.com with SMTP id bb20so4971791pjb.3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 25 Jun 2021 00:37:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=16WTMv4TM6XRqCXu1WqfhwXLGUuF1I5eSAZgF8nuzNU=;
- b=j1IBKqLi1jF1pVyyqujoaaEyDD956vhQFsW4IqQOy9pFHxew6pDCRuHqUYQPzXhgIV
- rZzKBOewFTMPizmmlwFMEzkUu3wwxGe2e89oLtXslKb8oDVXALVjACeulmB5NJhacKR6
- l2tBxaC35ppPnNjz4UkRwFuKRG263fy/OfW/I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=16WTMv4TM6XRqCXu1WqfhwXLGUuF1I5eSAZgF8nuzNU=;
- b=alxn5B+DZ3YWF6WhR6vY9b+TL9qxKmQYnVNIiQwGhWidxFVn7rO6Iq4bDOrSwK4CQS
- NVWqB4TL9CGENNzpBWqeP9UX0u5FJuCxEqClKh8wvrpSzmnVgOIWrtaBUXyDL8+OytNi
- 1tiUkbOLaZxuAkLdmyVs4mXtRXwwKwV8MRJj+SARakFjqSLiud1fXbOw27Amw+i00Msn
- ZBur6kPjlDeKeMoRmOwlMxSz9RnrJ/lWP+wmEtzynNchzQJLDu2pf+5w/+GWRs4yqU8S
- zIWvmHebYM5GHFSIq77+c0efdbRjRo/savPX2T5WaewUmMuhPVRHwswAQ2UkxjGCU9Xg
- i2Wg==
-X-Gm-Message-State: AOAM531vYqugT32d3D5y+eE0vbgfSCvaCN8dtjjvM4XYbfJWArCnyhXk
- /rUH7sqrqpqJ0rnZYEMP8GNkmw==
-X-Google-Smtp-Source: ABdhPJyNGzGIGPRke+4sy9vknoJlahbCbtDrQ1Pof1+x3qW6lrR+9qBg5laf4ZCLScq2FNWqiUDGlQ==
-X-Received: by 2002:a17:90b:b18:: with SMTP id
- bf24mr9795691pjb.220.1624606670432; 
- Fri, 25 Jun 2021 00:37:50 -0700 (PDT)
-Received: from localhost ([2401:fa00:8f:203:1492:9d4f:19fa:df61])
- by smtp.gmail.com with UTF8SMTPSA id j10sm4395324pjb.36.2021.06.25.00.37.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Jun 2021 00:37:50 -0700 (PDT)
-From: David Stevens <stevensd@chromium.org>
-X-Google-Original-From: David Stevens <stevensd@google.com>
-To: Marc Zyngier <maz@kernel.org>, Huacai Chen <chenhuacai@kernel.org>,
+X-Greylist: delayed 893 seconds by postgrey-1.36 at gabe;
+ Fri, 25 Jun 2021 07:59:43 UTC
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ADD076ECDA;
+ Fri, 25 Jun 2021 07:59:43 +0000 (UTC)
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15P7XgSr163083; Fri, 25 Jun 2021 03:58:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=dKTZ5LGvIvXYN5hrxescceB4a+549WmZAfPHPpWY4Mw=;
+ b=aWt4tRZtCOJ+mGxI9BelzcO6ojLT44Ap4RkL67WA0yRy5mvyPnuqGbe+PsHDDjroEZnK
+ FS+4fhDv0x9lSbkNQ20IeeRSmOX20wRyZcHQ60otM2zfSiJweJ3Z8Vf45GOaUWPzobb8
+ MejQbpDGQafNC4WT9B02wBAo9AqLsXQSkd3kwHpc2q95cCQ3DYomcOnUvl4WYqwEFnXX
+ NYXfv0TrMrf05Ba4xE1Em4vtML0qExLnMyxGpsyQy0dYdt+OQzr/RXLybgWT/YTrvmqL
+ ED/DcP4NIOtA5OjUKTQweH+acU1yfsolWy4TgAu7HFWO35IHHhU+QmU/Ed6/r0QvScw+ bg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 39d9h6bhph-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 25 Jun 2021 03:58:34 -0400
+Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 15P7Xs32163940;
+ Fri, 25 Jun 2021 03:58:34 -0400
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 39d9h6bhnp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 25 Jun 2021 03:58:33 -0400
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15P7rV4f015718;
+ Fri, 25 Jun 2021 07:58:31 GMT
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+ (d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+ by ppma03ams.nl.ibm.com with ESMTP id 399878awsw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 25 Jun 2021 07:58:31 +0000
+Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
+ [9.149.105.62])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 15P7wTYI22413732
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 25 Jun 2021 07:58:29 GMT
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 71C89AE057;
+ Fri, 25 Jun 2021 07:58:29 +0000 (GMT)
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DA31DAE04D;
+ Fri, 25 Jun 2021 07:58:27 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.171.31.44])
+ by d06av26.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Fri, 25 Jun 2021 07:58:27 +0000 (GMT)
+Subject: Re: [PATCH v2 1/5] KVM: do not allow mapping valid but non-refcounted
+ pages
+To: David Stevens <stevensd@chromium.org>, Marc Zyngier <maz@kernel.org>,
+ Huacai Chen <chenhuacai@kernel.org>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Paul Mackerras <paulus@ozlabs.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Nick Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 5/5] KVM: mmu: remove over-aggressive warnings
-Date: Fri, 25 Jun 2021 16:36:16 +0900
-Message-Id: <20210625073616.2184426-6-stevensd@google.com>
-X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
-In-Reply-To: <20210625073616.2184426-1-stevensd@google.com>
+ Paul Mackerras <paulus@ozlabs.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Nick Piggin <npiggin@gmail.com>
 References: <20210625073616.2184426-1-stevensd@google.com>
+ <20210625073616.2184426-2-stevensd@google.com>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Message-ID: <183b71c1-6bb0-8d05-e2ce-e452253259a8@de.ibm.com>
+Date: Fri, 25 Jun 2021 09:58:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <20210625073616.2184426-2-stevensd@google.com>
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: BdtyyjbTQMfPEY6MWTdYEs3ooRdifkK5
+X-Proofpoint-GUID: vG6ohtKq4JE7ZH-Uvo7-8RgtHyEscIYL
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
+ definitions=2021-06-25_02:2021-06-24,
+ 2021-06-25 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 spamscore=0
+ clxscore=1015 malwarescore=0 bulkscore=0 impostorscore=0
+ lowpriorityscore=0 mlxlogscore=999 suspectscore=0 priorityscore=1501
+ adultscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104190000 definitions=main-2106250043
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,67 +104,89 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org,
- Will Deacon <will@kernel.org>, kvmarm@lists.cs.columbia.edu,
- Alexandru Elisei <alexandru.elisei@arm.com>, Joerg Roedel <joro@8bytes.org>,
- Zhi Wang <zhi.a.wang@intel.com>, Suzuki K Poulose <suzuki.poulose@arm.com>,
- intel-gfx@lists.freedesktop.org, kvm-ppc@vger.kernel.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gvt-dev@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, Jim Mattson <jmattson@google.com>,
- Sean Christopherson <seanjc@google.com>, linux-kernel@vger.kernel.org,
- James Morse <james.morse@arm.com>, David Stevens <stevensd@chromium.org>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, linuxppc-dev@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: kvm-ppc@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
+ Will Deacon <will@kernel.org>, Suzuki K Poulose <suzuki.poulose@arm.com>,
+ Sean Christopherson <seanjc@google.com>, Joerg Roedel <joro@8bytes.org>,
+ linuxppc-dev@lists.ozlabs.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ linux-mips@vger.kernel.org, James Morse <james.morse@arm.com>,
+ linux-arm-kernel@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ Vitaly Kuznetsov <vkuznets@redhat.com>,
+ Alexandru Elisei <alexandru.elisei@arm.com>, kvmarm@lists.cs.columbia.edu,
+ Zhi Wang <zhi.a.wang@intel.com>, Jim Mattson <jmattson@google.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: David Stevens <stevensd@chromium.org>
 
-Remove two warnings that require ref counts for pages to be non-zero, as
-mapped pfns from follow_pfn may not have an initialized ref count.
 
-Signed-off-by: David Stevens <stevensd@chromium.org>
----
- arch/x86/kvm/mmu/mmu.c | 7 -------
- virt/kvm/kvm_main.c    | 2 +-
- 2 files changed, 1 insertion(+), 8 deletions(-)
+On 25.06.21 09:36, David Stevens wrote:
+> From: Nicholas Piggin <npiggin@gmail.com>
+> 
+> It's possible to create a region which maps valid but non-refcounted
+> pages (e.g., tail pages of non-compound higher order allocations). These
+> host pages can then be returned by gfn_to_page, gfn_to_pfn, etc., family
+> of APIs, which take a reference to the page, which takes it from 0 to 1.
+> When the reference is dropped, this will free the page incorrectly.
+> 
+> Fix this by only taking a reference on the page if it was non-zero,
+> which indicates it is participating in normal refcounting (and can be
+> released with put_page).
+> 
+> Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
 
-diff --git a/arch/x86/kvm/mmu/mmu.c b/arch/x86/kvm/mmu/mmu.c
-index dd5cb6e33591..0c47245594c6 100644
---- a/arch/x86/kvm/mmu/mmu.c
-+++ b/arch/x86/kvm/mmu/mmu.c
-@@ -607,13 +607,6 @@ static int mmu_spte_clear_track_bits(u64 *sptep)
- 
- 	pfn = spte_to_pfn(old_spte);
- 
--	/*
--	 * KVM does not hold the refcount of the page used by
--	 * kvm mmu, before reclaiming the page, we should
--	 * unmap it from mmu first.
--	 */
--	WARN_ON(!kvm_is_reserved_pfn(pfn) && !page_count(pfn_to_page(pfn)));
--
- 	if (is_accessed_spte(old_spte))
- 		kvm_set_pfn_accessed(pfn);
- 
-diff --git a/virt/kvm/kvm_main.c b/virt/kvm/kvm_main.c
-index 1de8702845ac..ce7126bab4b0 100644
---- a/virt/kvm/kvm_main.c
-+++ b/virt/kvm/kvm_main.c
-@@ -168,7 +168,7 @@ bool kvm_is_zone_device_pfn(kvm_pfn_t pfn)
- 	 * the device has been pinned, e.g. by get_user_pages().  WARN if the
- 	 * page_count() is zero to help detect bad usage of this helper.
- 	 */
--	if (!pfn_valid(pfn) || WARN_ON_ONCE(!page_count(pfn_to_page(pfn))))
-+	if (!pfn_valid(pfn) || !page_count(pfn_to_page(pfn)))
- 		return false;
- 
- 	return is_zone_device_page(pfn_to_page(pfn));
--- 
-2.32.0.93.g670b81a890-goog
+I guess this would be the small fix for stable? Do we want to add that cc?
 
+Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
+> ---
+>   virt/kvm/kvm_main.c | 19 +++++++++++++++++--
+>   1 file changed, 17 insertions(+), 2 deletions(-)
+> 
+> diff --git a/virt/kvm/kvm_main.c b/virt/kvm/kvm_main.c
+> index 3dcc2abbfc60..f7445c3bcd90 100644
+> --- a/virt/kvm/kvm_main.c
+> +++ b/virt/kvm/kvm_main.c
+> @@ -2175,6 +2175,13 @@ static bool vma_is_valid(struct vm_area_struct *vma, bool write_fault)
+>   	return true;
+>   }
+> 
+> +static int kvm_try_get_pfn(kvm_pfn_t pfn)
+> +{
+> +	if (kvm_is_reserved_pfn(pfn))
+> +		return 1;
+> +	return get_page_unless_zero(pfn_to_page(pfn));
+> +}
+> +
+>   static int hva_to_pfn_remapped(struct vm_area_struct *vma,
+>   			       unsigned long addr, bool *async,
+>   			       bool write_fault, bool *writable,
+> @@ -2224,13 +2231,21 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
+>   	 * Whoever called remap_pfn_range is also going to call e.g.
+>   	 * unmap_mapping_range before the underlying pages are freed,
+>   	 * causing a call to our MMU notifier.
+> +	 *
+> +	 * Certain IO or PFNMAP mappings can be backed with valid
+> +	 * struct pages, but be allocated without refcounting e.g.,
+> +	 * tail pages of non-compound higher order allocations, which
+> +	 * would then underflow the refcount when the caller does the
+> +	 * required put_page. Don't allow those pages here.
+>   	 */
+> -	kvm_get_pfn(pfn);
+> +	if (!kvm_try_get_pfn(pfn))
+> +		r = -EFAULT;
+> 
+>   out:
+>   	pte_unmap_unlock(ptep, ptl);
+>   	*p_pfn = pfn;
+> -	return 0;
+> +
+> +	return r;
+>   }
+> 
+>   /*
+> 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
