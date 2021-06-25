@@ -2,97 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 950653B3FC8
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Jun 2021 10:52:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88FAA3B437F
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Jun 2021 14:40:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 41A1A6ED0E;
-	Fri, 25 Jun 2021 08:52:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3B31A6EDAA;
+	Fri, 25 Jun 2021 12:40:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B57EE6ED0E;
- Fri, 25 Jun 2021 08:52:06 +0000 (UTC)
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 15P7YTqX061945; Fri, 25 Jun 2021 03:44:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=1RqvYvHqS+g8GAhL7EUAfBHKQHRxaUMGXuw/IwCXA00=;
- b=Nmb11u4f/JhMKk+ivMs7oA1Ku85DovZ4LdaLOgwfNrDLH0a/wz5mI0aLrLO3Altwv4N4
- LMTZyz/WDveZjxrU5tD5PPo68pDirAd4Gfrex52xiqR0TujC5LdTRYi0ri1ge/eDHmSN
- JQJ8rK/jOMjr3THp/ok9RkvIdn/4KtjecaWiJfeTOER6nglHE+EZicixc1c1BnhsB+1Y
- g5DWwvan20xvxygDIi3MEZQ7H/GwZDVcHzVEGz2iIjsiJgKnoZ7U+TUpyPDhD5O2Zekw
- xJiAEI7Z0lyxcZgGi3MCDrgB0acHr+cDdUAyjJoQ4I+2kOZz0Z9ex/2nv4xilwCqOw4H ZA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 39d8cn51sy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 25 Jun 2021 03:44:39 -0400
-Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 15P7YRo0061765;
- Fri, 25 Jun 2021 03:44:38 -0400
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.102])
- by mx0b-001b2d01.pphosted.com with ESMTP id 39d8cn51s5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 25 Jun 2021 03:44:38 -0400
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
- by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 15P7g5SF017198;
- Fri, 25 Jun 2021 07:44:36 GMT
-Received: from b06avi18878370.portsmouth.uk.ibm.com
- (b06avi18878370.portsmouth.uk.ibm.com [9.149.26.194])
- by ppma06ams.nl.ibm.com with ESMTP id 3997uhaw6x-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 25 Jun 2021 07:44:35 +0000
-Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
- [9.149.105.62])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id 15P7h6UA14352728
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 25 Jun 2021 07:43:06 GMT
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6193DAE056;
- Fri, 25 Jun 2021 07:44:33 +0000 (GMT)
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9D274AE051;
- Fri, 25 Jun 2021 07:44:31 +0000 (GMT)
-Received: from oc7455500831.ibm.com (unknown [9.171.31.44])
- by d06av26.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Fri, 25 Jun 2021 07:44:31 +0000 (GMT)
-Subject: Re: [PATCH 0/6] KVM: Remove uses of struct page from x86 and arm64 MMU
-To: Nicholas Piggin <npiggin@gmail.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Huacai Chen <chenhuacai@kernel.org>, Marc Zyngier <maz@kernel.org>,
- Paul Mackerras <paulus@ozlabs.org>, Paolo Bonzini <pbonzini@redhat.com>,
- David Stevens <stevensd@chromium.org>, Zhenyu Wang
- <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-References: <20210624035749.4054934-1-stevensd@google.com>
- <1624530624.8jff1f4u11.astroid@bobo.none>
- <1624534759.nj0ylor2eh.astroid@bobo.none>
- <0d3a699a-15eb-9f1b-0735-79d14736f38c@redhat.com>
- <1624539354.6zggpdrdbw.astroid@bobo.none>
-From: Christian Borntraeger <borntraeger@de.ibm.com>
-Message-ID: <19c4e392-fbab-ee2c-7039-c88d1ae5775d@de.ibm.com>
-Date: Fri, 25 Jun 2021 09:44:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+X-Greylist: delayed 648 seconds by postgrey-1.36 at gabe;
+ Fri, 25 Jun 2021 12:40:48 UTC
+Received: from 6nene.xyz (6nene.xyz [106.75.134.229])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F1C7C6EDAA
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 25 Jun 2021 12:40:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=6nene.xyz;
+ h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=nami@6nene.xyz; bh=ZsYRWGcYO6ULfNqwmwIjcZAz84g=;
+ b=iw5WkiYVXAJP4nVml2BStgxKw0gCDhEbQ9j4bGk+CchbLL+PUl2743PhkbwUe1n//7NEj0dEo8zi
+ Di4GTawh93HNbZ/2MpWAX3bb9R/qlC3GyIS6rXgNMnbjIweIUn3MP1uk2M/jbxtmVabsYXTMh7f0
+ EUXhrSR31L4ydEHtw8Y=
+From: "EAST WEST INVESTMENT PRIVATE BANK®"<nami@6nene.xyz>
+Subject: COMPANY {PRIVATE} PROJECT FUNDING:
+Date: Fri, 25 Jun 2021 05:26:19 -0700
 MIME-Version: 1.0
-In-Reply-To: <1624539354.6zggpdrdbw.astroid@bobo.none>
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: Xd2p2n2e6jxdPlNvwSbyIgmg3LPAQMfs
-X-Proofpoint-ORIG-GUID: 6q0X_bUItmYJaGkAxPmmRfj9zzu6NsL2
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-06-25_02:2021-06-24,
- 2021-06-25 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 suspectscore=0
- malwarescore=0 lowpriorityscore=0 adultscore=0 mlxlogscore=999
- impostorscore=0 bulkscore=0 priorityscore=1501 clxscore=1011 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104190000 definitions=main-2106250043
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,136 +39,34 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
- David Stevens <stevensd@google.com>,
- Alexandru Elisei <alexandru.elisei@arm.com>, intel-gfx@lists.freedesktop.org,
- linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, kvmarm@lists.cs.columbia.edu,
- Will Deacon <will@kernel.org>, Suzuki K Poulose <suzuki.poulose@arm.com>,
- James Morse <james.morse@arm.com>, kvm-ppc@vger.kernel.org,
- Sean Christopherson <seanjc@google.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>, linux-mips@vger.kernel.org,
- intel-gvt-dev@lists.freedesktop.org, Joerg Roedel <joro@8bytes.org>,
- linux-arm-kernel@lists.infradead.org, Jim Mattson <jmattson@google.com>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: marylyne.van11@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210625124051.3B31A6EDAA@gabe.freedesktop.org>
 
-
-
-On 24.06.21 14:57, Nicholas Piggin wrote:
-> Excerpts from Paolo Bonzini's message of June 24, 2021 10:41 pm:
->> On 24/06/21 13:42, Nicholas Piggin wrote:
->>> Excerpts from Nicholas Piggin's message of June 24, 2021 8:34 pm:
->>>> Excerpts from David Stevens's message of June 24, 2021 1:57 pm:
->>>>> KVM supports mapping VM_IO and VM_PFNMAP memory into the guest by using
->>>>> follow_pte in gfn_to_pfn. However, the resolved pfns may not have
->>>>> assoicated struct pages, so they should not be passed to pfn_to_page.
->>>>> This series removes such calls from the x86 and arm64 secondary MMU. To
->>>>> do this, this series modifies gfn_to_pfn to return a struct page in
->>>>> addition to a pfn, if the hva was resolved by gup. This allows the
->>>>> caller to call put_page only when necessated by gup.
->>>>>
->>>>> This series provides a helper function that unwraps the new return type
->>>>> of gfn_to_pfn to provide behavior identical to the old behavior. As I
->>>>> have no hardware to test powerpc/mips changes, the function is used
->>>>> there for minimally invasive changes. Additionally, as gfn_to_page and
->>>>> gfn_to_pfn_cache are not integrated with mmu notifier, they cannot be
->>>>> easily changed over to only use pfns.
->>>>>
->>>>> This addresses CVE-2021-22543 on x86 and arm64.
->>>>
->>>> Does this fix the problem? (untested I don't have a POC setup at hand,
->>>> but at least in concept)
->>>
->>> This one actually compiles at least. Unfortunately I don't have much
->>> time in the near future to test, and I only just found out about this
->>> CVE a few hours ago.
->>
->> And it also works (the reproducer gets an infinite stream of userspace
->> exits and especially does not crash).  We can still go for David's
->> solution later since MMU notifiers are able to deal with this pages, but
->> it's a very nice patch for stable kernels.
-> 
-> Oh nice, thanks for testing. How's this?
-> 
-> Thanks,
-> Nick
-> 
-> ---
-> 
-> KVM: Fix page ref underflow for regions with valid but non-refcounted pages
-> 
-> It's possible to create a region which maps valid but non-refcounted
-> pages (e.g., tail pages of non-compound higher order allocations). These
-> host pages can then be returned by gfn_to_page, gfn_to_pfn, etc., family
-> of APIs, which take a reference to the page, which takes it from 0 to 1.
-> When the reference is dropped, this will free the page incorrectly.
-> 
-> Fix this by only taking a reference on the page if it was non-zero,
-> which indicates it is participating in normal refcounting (and can be
-> released with put_page).
-> 
-> Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
-> ---
->   virt/kvm/kvm_main.c | 19 +++++++++++++++++--
->   1 file changed, 17 insertions(+), 2 deletions(-)
-> 
-> diff --git a/virt/kvm/kvm_main.c b/virt/kvm/kvm_main.c
-> index 6a6bc7af0e28..46fb042837d2 100644
-> --- a/virt/kvm/kvm_main.c
-> +++ b/virt/kvm/kvm_main.c
-> @@ -2055,6 +2055,13 @@ static bool vma_is_valid(struct vm_area_struct *vma, bool write_fault)
->   	return true;
->   }
->   
-> +static int kvm_try_get_pfn(kvm_pfn_t pfn)
-> +{
-> +	if (kvm_is_reserved_pfn(pfn))
-> +		return 1;
-> +	return get_page_unless_zero(pfn_to_page(pfn));
-> +}
-> +
->   static int hva_to_pfn_remapped(struct vm_area_struct *vma,
->   			       unsigned long addr, bool *async,
->   			       bool write_fault, bool *writable,
-> @@ -2104,13 +2111,21 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
->   	 * Whoever called remap_pfn_range is also going to call e.g.
->   	 * unmap_mapping_range before the underlying pages are freed,
->   	 * causing a call to our MMU notifier.
-> +	 *
-> +	 * Certain IO or PFNMAP mappings can be backed with valid
-> +	 * struct pages, but be allocated without refcounting e.g.,
-> +	 * tail pages of non-compound higher order allocations, which
-> +	 * would then underflow the refcount when the caller does the
-> +	 * required put_page. Don't allow those pages here.
->   	 */
-> -	kvm_get_pfn(pfn);
-> +	if (!kvm_try_get_pfn(pfn))
-> +		r = -EFAULT;
->   
-
-Right. That should also take care of s390 (pin_guest_page in vsie.c
-which calls gfn_to_page).
-FWIW, the current API is really hard to follow as it does not tell
-which functions take a reference and which dont.
-
-Anyway, this patch (with cc stable?)
-
-Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
-
->   out:
->   	pte_unmap_unlock(ptep, ptl);
->   	*p_pfn = pfn;
-> -	return 0;
-> +
-> +	return r;
->   }
->   
->   /*
-> 
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+RGVhciBTaXIvTWE7CgpIb3cgYXJlIHlvdSBkb2luZz8/IEtpbmRseSBwZXJtaXQgdXMgdG8gc2hh
+cmUgdGhpcyBpbmZvcm1hdGlvbiB3aXRoIHlvdS4KCkR1ZSB0byB0aGUgQ292aWQtMTkncyBlZmZl
+Y3Qgb24gdGhlIHdvcmxkIG1hcmtldCAmIGVjb25vbXkgaW4gMjAxOS8yMDIwLCBvdXIgQmFuayB7
+RWFzdC1XZXN0IEludmVzdG1lbnQgUHJpdmF0ZSBCYW5rrn0gYXMgYSBicmFuZCBpcyBleHBhbmRp
+bmcgaXRzIGdsb2JhbCBwcmVzZW5jZSB0aGlzIDIwMjEgYnkgaW52ZXN0aW5nIGluIHByb2plY3Rz
+IG91dHNpZGUgR3VsZiBSZWdpb24vIEV1cm9wZSAvIEFzaWEgL0F1c3RyYWxpYSBpbiB0aGUgZm9y
+bSBvZiBkZWJ0IGZpbmFuY2UuIFdlIHN0cm9uZ2x5IGJlbGlldmUgeW91IGhhdmUgYSBjb21wYW55
+IG9yIHByaXZhdGUgcHJvamVjdCB0aGF0IHJlcXVpcmVzIGZ1bmRpbmcuIFdlIGFyZSBoZXJlIHRv
+IHBhcnRuZXIgd2l0aCB5b3UgdG8gYWNoaWV2ZSB5b3VyIGdvYWwgZm9yIGEgMTB5ZWFycyBsb2Fu
+IGR1cmF0aW9uIHdpdGggbm8gY29sbGF0ZXJhbC4KCjEuIE1pbmltdW0gRnVuZGluZyBBbW91bnQ6
+ICQxIE1pbGxpb24gVVNECjIuIE1heGltdW0gRnVuZGluZyBBbW91bnQ6ICQxMDAgQmlsbGlvbiBV
+U0QKMy4gUGxhY2VtZW50IE9wZW5zIHRvOiBFbnRyZXByZW5ldXJzLCBDb3Jwb3JhdGlvbnMgYW5k
+IEludmVzdG9ycwo0LiBGdW5kaW5nIFR5cGU6RGVidCBGdW5kaW5nKDEwMCUpCjUuIFJPSShSZXR1
+cm4gb24gSW52ZXN0bWVudCk6IDQlCjYuIER1cmF0aW9uIG9mIExvYW46IFVwIHRvIDEwIHllYXJz
+IC0gUmVuZXdhYmxlIHRlbnVyZQo3LiBXZSBmaW5hbmNlIDEwMCUgb2YgdGhlIHRvdGFsIHByb2pl
+Y3QgY29zdAo4LiBXZSBmaW5hbmNlIGJvdGggb25nb2luZyBhbmQgZnJlc2ggcHJvamVjdHMuCgpE
+ZXRhaWxzIG9mIG91ciBhY3Rpdml0aWVzIHdpbGwgYmUgc2hhcmVkIHdpdGggeW91IGFzIHNvb24g
+YXMgeW91IGdldCBiYWNrIHRvIG91ciBIZWFkIE9mIE1hcmtldGluZyBEZXBhcnRtZW50ICcnTXJz
+IE1hcnlseW5lIFZhbnRlbGxpJydvbiAobWFyeWx5bmUudmFuMTFAZ21haWwuY29tKS4KClJlZ2Fy
+ZHMsCk1ycyBNYXJ5bHluZSBWYW50ZWxsaQpIRUFEIE9GIE1BUktFVElORyBERVBBUlRNRU5UCkVB
+U1QtV0VTVCBJTlZFU1RNRU5UIFBSSVZBVEUgQkFOS64KKEUtVyBCQU5LIEdST1VQKQpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1h
+aWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
+c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
