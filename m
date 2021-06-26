@@ -1,32 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88FAA3B437F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Jun 2021 14:40:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1601C3B4E75
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 26 Jun 2021 14:17:24 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3B31A6EDAA;
-	Fri, 25 Jun 2021 12:40:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 872346EE56;
+	Sat, 26 Jun 2021 12:17:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 648 seconds by postgrey-1.36 at gabe;
- Fri, 25 Jun 2021 12:40:48 UTC
 Received: from 6nene.xyz (6nene.xyz [106.75.134.229])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F1C7C6EDAA
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0ABB86EE56
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 25 Jun 2021 12:40:48 +0000 (UTC)
+ Sat, 26 Jun 2021 12:17:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=6nene.xyz;
- h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=nami@6nene.xyz; bh=ZsYRWGcYO6ULfNqwmwIjcZAz84g=;
- b=iw5WkiYVXAJP4nVml2BStgxKw0gCDhEbQ9j4bGk+CchbLL+PUl2743PhkbwUe1n//7NEj0dEo8zi
- Di4GTawh93HNbZ/2MpWAX3bb9R/qlC3GyIS6rXgNMnbjIweIUn3MP1uk2M/jbxtmVabsYXTMh7f0
- EUXhrSR31L4ydEHtw8Y=
-From: "EAST WEST INVESTMENT PRIVATE BANK®"<nami@6nene.xyz>
-Subject: COMPANY {PRIVATE} PROJECT FUNDING:
-Date: Fri, 25 Jun 2021 05:26:19 -0700
+ h=From:Subject:To:Content-Type:MIME-Version:Reply-To:Date; i=nami@6nene.xyz;
+ bh=ZU+Piz/oe3XRCv7HsoigOWCrH4w=;
+ b=FJuD1Kwp5dHbwFnkZwMeyfTMRliMigKVyBc/3lBMMt0d4l5H92mi86N/T+9DsxxxJke2Vh1xpIR6
+ yxCQYc8mxNG3tynB0kDqK3DyoA3eCY+Jg05u4W514LZsL17h0JaBfDWOXrJaziY9OjPf+5N4EMKB
+ B5cK1whknK/UvGGlLhM=
+From: "Ms Marylyne Vantelli" <nami@6nene.xyz>
+Subject: Greetings Dear Beloved
+To: intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
-X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Date: Sat, 26 Jun 2021 12:17:16 +0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,34 +36,184 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marylyne.van11@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: marylynevantelli248@gmail.com
+Content-Type: multipart/mixed; boundary="===============2013258798=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210625124051.3B31A6EDAA@gabe.freedesktop.org>
+Message-Id: <20210626121722.872346EE56@gabe.freedesktop.org>
 
-RGVhciBTaXIvTWE7CgpIb3cgYXJlIHlvdSBkb2luZz8/IEtpbmRseSBwZXJtaXQgdXMgdG8gc2hh
-cmUgdGhpcyBpbmZvcm1hdGlvbiB3aXRoIHlvdS4KCkR1ZSB0byB0aGUgQ292aWQtMTkncyBlZmZl
-Y3Qgb24gdGhlIHdvcmxkIG1hcmtldCAmIGVjb25vbXkgaW4gMjAxOS8yMDIwLCBvdXIgQmFuayB7
-RWFzdC1XZXN0IEludmVzdG1lbnQgUHJpdmF0ZSBCYW5rrn0gYXMgYSBicmFuZCBpcyBleHBhbmRp
-bmcgaXRzIGdsb2JhbCBwcmVzZW5jZSB0aGlzIDIwMjEgYnkgaW52ZXN0aW5nIGluIHByb2plY3Rz
-IG91dHNpZGUgR3VsZiBSZWdpb24vIEV1cm9wZSAvIEFzaWEgL0F1c3RyYWxpYSBpbiB0aGUgZm9y
-bSBvZiBkZWJ0IGZpbmFuY2UuIFdlIHN0cm9uZ2x5IGJlbGlldmUgeW91IGhhdmUgYSBjb21wYW55
-IG9yIHByaXZhdGUgcHJvamVjdCB0aGF0IHJlcXVpcmVzIGZ1bmRpbmcuIFdlIGFyZSBoZXJlIHRv
-IHBhcnRuZXIgd2l0aCB5b3UgdG8gYWNoaWV2ZSB5b3VyIGdvYWwgZm9yIGEgMTB5ZWFycyBsb2Fu
-IGR1cmF0aW9uIHdpdGggbm8gY29sbGF0ZXJhbC4KCjEuIE1pbmltdW0gRnVuZGluZyBBbW91bnQ6
-ICQxIE1pbGxpb24gVVNECjIuIE1heGltdW0gRnVuZGluZyBBbW91bnQ6ICQxMDAgQmlsbGlvbiBV
-U0QKMy4gUGxhY2VtZW50IE9wZW5zIHRvOiBFbnRyZXByZW5ldXJzLCBDb3Jwb3JhdGlvbnMgYW5k
-IEludmVzdG9ycwo0LiBGdW5kaW5nIFR5cGU6RGVidCBGdW5kaW5nKDEwMCUpCjUuIFJPSShSZXR1
-cm4gb24gSW52ZXN0bWVudCk6IDQlCjYuIER1cmF0aW9uIG9mIExvYW46IFVwIHRvIDEwIHllYXJz
-IC0gUmVuZXdhYmxlIHRlbnVyZQo3LiBXZSBmaW5hbmNlIDEwMCUgb2YgdGhlIHRvdGFsIHByb2pl
-Y3QgY29zdAo4LiBXZSBmaW5hbmNlIGJvdGggb25nb2luZyBhbmQgZnJlc2ggcHJvamVjdHMuCgpE
-ZXRhaWxzIG9mIG91ciBhY3Rpdml0aWVzIHdpbGwgYmUgc2hhcmVkIHdpdGggeW91IGFzIHNvb24g
-YXMgeW91IGdldCBiYWNrIHRvIG91ciBIZWFkIE9mIE1hcmtldGluZyBEZXBhcnRtZW50ICcnTXJz
-IE1hcnlseW5lIFZhbnRlbGxpJydvbiAobWFyeWx5bmUudmFuMTFAZ21haWwuY29tKS4KClJlZ2Fy
-ZHMsCk1ycyBNYXJ5bHluZSBWYW50ZWxsaQpIRUFEIE9GIE1BUktFVElORyBERVBBUlRNRU5UCkVB
-U1QtV0VTVCBJTlZFU1RNRU5UIFBSSVZBVEUgQkFOS64KKEUtVyBCQU5LIEdST1VQKQpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppbnRlbC1ndnQtZGV2IG1h
-aWxpbmcgbGlzdAppbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWd2dC1kZXYK
+This is a multi-part message in MIME format
+
+--===============2013258798==
+Content-Type: multipart/alternative; boundary="peEKoiCMU6FecJiBKa3SAy=_xxVAxDE3fD0"
+
+This is a multi-part message in MIME format
+
+--peEKoiCMU6FecJiBKa3SAy=_xxVAxDE3fD0
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+ - This mail is in HTML. Some elements may be ommited in plain text. -
+
+Dear Beloved
+Life is gradually passing away from me as a result of my present medic=
+al condition and my personal doctor confided in me yesterday that I ha=
+ve only but few more weeks to live.
+In view of this setback, I
+want to donate my estate for humanitarian assistance, since this has a=
+lways been the plan of my late husband and besides I have no child.
+In an effort to compliment the good work of ou
+r creator for humanity and the wish of my late Husband I donate the su=
+m of ?10,000,000.00 Euro (Ten Million EUR) to you.
+On your acknowledgment of this mail and informing me of your nationali=
+ty and current place of resident, my Bank will facilitate due processe=
+s for transfer of this legacy to you.
+May God bless you as you use this money judiciously for the work of ch=
+arity.
+Sincere regards,
+Ms. Melvida Bullock
+Email:
+melvbullockzone123@
+gmail.com
+
+--peEKoiCMU6FecJiBKa3SAy=_xxVAxDE3fD0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+
+<HTML><HEAD></HEAD>
+<BODY>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">Dear Beloved</B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); FONT-FAMILY: arial,sans-serif; BORDER-RIGHT-COLOR: rgb(0,0,0); =
+FONT-SIZE: x-small; BORDER-LEFT-COLOR: rgb(0,0,0)" class=3Dgmail_defau=
+lt></DIV><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR=
+: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-COLOR: rgb(0=
+,0,0)"><BR></B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">Life is gradually passing away from me as =
+a result of my present medical condition and my personal doctor confid=
+ed in me yesterday that I have only but few more weeks to live.</B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); FONT-FAMILY: arial,sans-serif; BORDER-RIGHT-COLOR: rgb(0,0,0); =
+FONT-SIZE: x-small; BORDER-LEFT-COLOR: rgb(0,0,0)" class=3Dgmail_defau=
+lt></DIV><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR=
+: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-COLOR: rgb(0=
+,0,0)"><BR></B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">In view of this setback, I&nbsp;<SPAN styl=
+e=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0,0,0); FO=
+NT-FAMILY: arial,sans-serif; BORDER-RIGHT-COLOR: rgb(0,0,0); FONT-SIZE=
+: x-small; BORDER-LEFT-COLOR: rgb(0,0,0)" class=3Dgmail_default></SPAN=
+>want to donate my estate for humanitarian assistance, since this has =
+always been the plan of my late husband and besides I have no child.</=
+B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); FONT-FAMILY: arial,sans-serif; BORDER-RIGHT-COLOR: rgb(0,0,0); =
+FONT-SIZE: x-small; BORDER-LEFT-COLOR: rgb(0,0,0)" class=3Dgmail_defau=
+lt></DIV><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR=
+: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-COLOR: rgb(0=
+,0,0)"><BR></B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">In an effort to compliment the good work o=
+f ou<SPAN style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: =
+rgb(0,0,0); FONT-FAMILY: arial,sans-serif; BORDER-RIGHT-COLOR: rgb(0,0=
+,0); FONT-SIZE: x-small; BORDER-LEFT-COLOR: rgb(0,0,0)" class=3Dgmail_=
+default></SPAN>r creator for humanity and the wish of my late Husband =
+I donate the sum of =8010,000,000.00 Euro (Ten Million EUR) to you.</B=
+></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)"><BR></B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">On your acknowledgment of this mail and in=
+forming me of your nationality and current place of resident, my Bank =
+will facilitate due processes for transfer of this legacy to you.</B><=
+/DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)"><BR></B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">May God bless you as you use this money ju=
+diciously for the work of charity.</B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)"><BR></B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">Sincere regards,</B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); FONT-FAMILY: arial,sans-serif; BORDER-RIGHT-COLOR: rgb(0,0,0); =
+FONT-SIZE: x-small; BORDER-LEFT-COLOR: rgb(0,0,0)" class=3Dgmail_defau=
+lt></DIV><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR=
+: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-COLOR: rgb(0=
+,0,0)"><BR></B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">Ms. Melvida Bullock</B></DIV>
+<DIV style=3D"BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0=
+,0,0); COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-=
+COLOR: rgb(0,0,0)" dir=3Dauto><B style=3D"BORDER-BOTTOM-COLOR: rgb(0,0=
+,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BOR=
+DER-LEFT-COLOR: rgb(0,0,0)">Email:&nbsp;<A style=3D"BORDER-BOTTOM-COLO=
+R: rgb(66,133,244); BORDER-TOP-COLOR: rgb(66,133,244); BORDER-RIGHT-CO=
+LOR: rgb(66,133,244); BORDER-LEFT-COLOR: rgb(66,133,244)" href=3D"mail=
+to:melvbullockzone123@gmail.com" target=3D_blank>melvbullockzone123@<W=
+BR>gmail.com</A></B></DIV></BODY></HTML>
+
+--peEKoiCMU6FecJiBKa3SAy=_xxVAxDE3fD0--
+
+
+--===============2013258798==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+intel-gvt-dev mailing list
+intel-gvt-dev@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============2013258798==--
+
