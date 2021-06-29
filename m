@@ -2,26 +2,26 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69EB93B6931
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 28 Jun 2021 21:35:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BD0823B6D3A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Jun 2021 06:01:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 192706E52C;
-	Mon, 28 Jun 2021 19:35:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D95336E5D1;
+	Tue, 29 Jun 2021 04:01:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from 6nene.xyz (6nene.xyz [106.75.134.229])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B75506E52C
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C4E076E5D1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 28 Jun 2021 19:35:01 +0000 (UTC)
+ Tue, 29 Jun 2021 04:01:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=6nene.xyz;
  h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=nami@6nene.xyz; bh=8H1fq0D9W2/pdeH6AFSf3l0a0DU=;
- b=RMIavpa8gb2ZxwB92Yb+YVJEdurYyThbKGCwYb9rFHLPYkdBsH6ERib6f42NTB5OaWWjqAO77QW5
- YqWDgDdk7t47XVnhuEEp+JOnS9uVaOpccswhJv5z7ULVgU3qqGg1ruqdu+mhfE6unNoA6w9f8d7J
- iOOTwLRfCfxVUmYtgxE=
-From: "Ms. Marylyne Vantelli"<nami@6nene.xyz>
-Subject: INVESTMENT FUNDING:
-Date: Mon, 28 Jun 2021 12:33:50 -0700
+ i=nami@6nene.xyz; bh=rUZ9bqCGr1PXL/2snDKOCIoFqAo=;
+ b=IaPOIqiq+uvbjcB7ju6oQxh/W9W5qDoObOL7cRswcPrCWmrlAqZcE9D3f9zBTKzc/5qGxPQkxkWQ
+ 2Tx6FEXtKHa/pQpppkF/IQl6N5kx9PvIn8PkeEWt9HxzEsDygneTqbvM+4vMhmbdVADK1FGsd6Pp
+ 6jZANiDFc6AkvdNorqQ=
+From: "Ms. Melvida Bullock"<nami@6nene.xyz>
+Subject: Greetings Dear Beloved:
+Date: Mon, 28 Jun 2021 21:00:57 -0700
 MIME-Version: 1.0
 X-MSMail-Priority: Normal
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
@@ -37,29 +37,29 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marylynevan2@gmail.com
+Reply-To: melvbullockzone123@gmail.com
 Content-Type: text/plain; charset="cp1251"
 Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210628193503.192706E52C@gabe.freedesktop.org>
+Message-Id: <20210629040101.D95336E5D1@gabe.freedesktop.org>
 
-RGVhciBTaXIvTWEsCgpIb3cgYXJlIHlvdSBkb2luZy4gS2luZGx5IHBlcm1pdCBtZSB0byBzaGFy
-ZSB0aGlzIGluZm9ybWF0aW9uIHdpdGggeW91LiBJdCBpcyBxdWlldCBpbXByZXNzaXZlLCBPdXIg
-Y29tcGFueSBpcyBleHBhbmRpbmcgaXRzIGdsb2JhbCBwcmVzZW5jZSBieSBpbnZlc3RpbmcgaW4g
-cHJvamVjdHMgb3V0c2lkZSBHdWxmIHJlZ2lvbi8gRXVyb3BlLyBBc2lhIGluIHRoZSBmb3JtIG9m
-IGRlYnQgZmluYW5jZS4gSSBzdHJvbmdseSBiZWxpZXZloHlvdSBoYXZlIGEgcHJvamVjdCBvciBw
-cm9qZWN0cyB0aGF0IHJlcXVpcmUgZnVuZGluZy4gV2UgYXJlIGhlcmUgdG+gcGFydG5lciB3aXRo
-IHlvdSB0byBhY2hpZXZlIHlvdXIgZ29hbC4KCjEuIE1pbmltdW0gRnVuZGluZyBBbW91bnQ6IDEg
-TWlsbGlvbiBVU0QKMi4gTWF4aW11bSBGdW5kaW5nIEFtb3VudDogMTAwIEJpbGxpb24gVVNECjMu
-IFBsYWNlbWVudCBPcGVucyB0bzogRW50cmVwcmVuZXVycywgQ29ycG9yYXRpb25zIGFuZCBJbnZl
-c3RvcnMKNC4gRnVuZGluZyBUeXBlOkRlYnQgRnVuZGluZygxMDAlKQo1LiBST0koUmV0dXJuIG9u
-IEludmVzdG1lbnQpOiA0JQo2LiBEdXJhdGlvbiBvZiBMb2FuOiBVcCB0byAxMCB5ZWFycyAtIFJl
-bmV3YWJsZSB0ZW51cmUKNy4gV2UgZmluYW5jZSAxMDAlIG9mIHRoZSB0b3RhbCBwcm9qZWN0IGNv
-c3QKOC4gV2UgZmluYW5jZSBib3RoIG9uZ29pbmcgYW5kIGZyZXNoIHByb2plY3RzLgoKRGV0YWls
-cyBvZiBvdXIgYWN0aXZpdGllcyB3aWxsIGJlIHNoYXJlZCB3aXRoIHlvdSBhcyBzb29uIGFzIHlv
-dSBnZXQgYmFjayB0byBtZS4KCkJlc3QgcmVnYXJkcywKCkJyb2tlcjogTXMuIE1hcnlseW5lCkVt
-YWlsOiBtYXJ5bHluZXZhbjJAZ21haWwuY29tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1kZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1k
-ZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
+cGxlYXNlIGtpbmRseSBhbGxvdyBtZSBzaGFyZSB0aGlzIGluZm9ybWF0aW9uIHdpdGggeW91LCAK
+CkRlYXIgQmVsb3ZlZAoKTGlmZSBpcyBncmFkdWFsbHkgcGFzc2luZyBhd2F5IGZyb20gbWUgYXMg
+YSByZXN1bHQgb2YgbXkgcHJlc2VudCBtZWRpY2FsIGNvbmRpdGlvbiBhbmQgbXkgcGVyc29uYWwg
+ZG9jdG9yIGNvbmZpZGVkIGluIG1lIHllc3RlcmRheSB0aGF0IEkgaGF2ZSBvbmx5IGJ1dCBmZXcg
+bW9yZSB3ZWVrcyB0byBsaXZlLgpJbiB2aWV3IG9mIHRoaXMgc2V0YmFjaywgSaB3YW50IHRvIGRv
+bmF0ZSBteSBlc3RhdGUgZm9yIGh1bWFuaXRhcmlhbiBhc3Npc3RhbmNlLCBzaW5jZSB0aGlzIGhh
+cyBhbHdheXMgYmVlbiB0aGUgcGxhbiBvZiBteSBsYXRlIGh1c2JhbmQgYW5kIGJlc2lkZXMgSSBo
+YXZlIG5vIGNoaWxkLgpJbiBhbiBlZmZvcnQgdG8gY29tcGxpbWVudCB0aGUgZ29vZCB3b3JrIG9m
+IG91ciBjcmVhdG9yIGZvciBodW1hbml0eSBhbmQgdGhlIHdpc2ggb2YgbXkgbGF0ZSBIdXNiYW5k
+IEkgZG9uYXRlIHRoZSBzdW0gb2YggDEwLDAwMCwwMDAuMDAgRXVybyAoVGVuIE1pbGxpb24gRVVS
+KSB0byB5b3UuCk9uIHlvdXIgYWNrbm93bGVkZ21lbnQgb2YgdGhpcyBtYWlsIGFuZCBpbmZvcm1p
+bmcgbWUgb2YgeW91ciBuYXRpb25hbGl0eSBhbmQgY3VycmVudCBwbGFjZSBvZiByZXNpZGVudCwg
+bXkgQmFuayB3aWxsIGZhY2lsaXRhdGUgZHVlIHByb2Nlc3NlcyBmb3IgdHJhbnNmZXIgb2YgdGhp
+cyBsZWdhY3kgdG8geW91LgpNYXkgR29kIGJsZXNzIHlvdSBhcyB5b3UgdXNlIHRoaXMgbW9uZXkg
+anVkaWNpb3VzbHkgZm9yIHRoZSB3b3JrIG9mIGNoYXJpdHkuClNpbmNlcmUgcmVnYXJkcywKCk1z
+LiBNZWx2aWRhIEJ1bGxvY2sKRW1haWw6oG1lbHZidWxsb2Nrem9uZTEyM0BnbWFpbC5jb20KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmludGVsLWd2dC1k
+ZXYgbWFpbGluZyBsaXN0CmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ3Z0LWRldgo=
