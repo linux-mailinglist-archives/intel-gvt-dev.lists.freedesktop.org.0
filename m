@@ -2,32 +2,25 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 767843B8C70
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Jul 2021 04:54:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED6D83B93EC
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Jul 2021 17:28:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2AA3C6E9A9;
-	Thu,  1 Jul 2021 02:54:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A44C06EB3E;
+	Thu,  1 Jul 2021 15:28:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 75D436E9A9
+X-Greylist: delayed 607 seconds by postgrey-1.36 at gabe;
+ Thu, 01 Jul 2021 15:28:35 UTC
+Received: from asm4.com (unknown [147.182.140.28])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B31816EB3E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  1 Jul 2021 02:54:29 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10031"; a="195752814"
-X-IronPort-AV: E=Sophos;i="5.83,313,1616482800"; d="scan'208";a="195752814"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jun 2021 19:54:28 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,313,1616482800"; d="scan'208";a="558506840"
-Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.30])
- by orsmga004.jf.intel.com with ESMTP; 30 Jun 2021 19:54:27 -0700
-From: Colin Xu <colin.xu@intel.com>
+ Thu,  1 Jul 2021 15:28:35 +0000 (UTC)
+Date: Thu, 1 Jul 2021 15:18:17 +0000
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] drm/i915/gvt: Clear d3_entered on elsp cmd submission.
-Date: Thu,  1 Jul 2021 10:54:23 +0800
-Message-Id: <20210701025423.312943-1-colin.xu@intel.com>
-X-Mailer: git-send-email 2.32.0
+From: =?utf-8?Q?Miles=20=26=20More?= <wcvx@desebg.com>
+Subject: =?utf-8?Q?Damit=20Sie=20weiterhin=20online=20bezahlen=20k=c3=b6nnen?=
+Message-ID: <a95036b8a7e344d840ab39babb23b3e3@147.182.140.28>
+X-Priority: 3
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -41,58 +34,121 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: colin.xu@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1504223262=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-d3_entered flag is used to mark for vgpu_reset a previous power
-transition from D3->D0, typically for VM resume from S3, so that gvt
-could skip PPGTT invalidation in current vgpu_reset during resuming.
+--===============1504223262==
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-In case S0ix exit, although there is D3->D0, guest driver continue to
-use vgpu as normal, with d3_entered set, until next shutdown/reboot or
-power transition.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<h5
+ style="margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><big
+ style="color: rgb(0, 0, 94);"><big><big><big><big><span
+ style="font-weight: bold;">Miles & More</span></big></big></big></big></big><br>
+</h5>
+<h5
+ style="margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><br>
+</h5>
+<h5
+ style="margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: Verdana; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><b
+ style="font-weight: bold; line-height: inherit;">Damit Sie
+weiterhin online bezahlen können</b></h5>
+<br
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
+<span
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">Aufgrund
+der EU-Richtlinie PSD2 müssen Sie Online-Zahlungen mit Ihrer
+Lufthansa Miles & More Credit Card immer häufiger
+freigeben. Aktivieren Sie dazu ab sofort eines unserer zwei
+Mastercard® Identity Check™ Verfahren:</span><br
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
+<br
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
+<span
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">1)
+Freigabe über die<span> </span></span><strong
+ style="font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-weight: bold; line-height: inherit; color: rgb(80, 80, 80);">Miles
+& More Credit Card-App</strong><br
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
+<span
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">2)
+Freigabe über<span> </span></span><strong
+ style="font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-weight: bold; line-height: inherit; color: rgb(80, 80, 80);">smsTAN<span> </span></strong><span
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">und</span><strong
+ style="font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-weight: bold; line-height: inherit; color: rgb(80, 80, 80);"><span> </span>Sicherheitsfrage</strong><br
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
+<br
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
+<span
+ style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">Aktivieren
+Sie jetzt das Verfahren Ihrer Wahl, um auch zukünftig online
+bezahlen zu können.<br>
+<br>
+</span><a class="button right"
+ href="https://milvx.norigbourd.net/"
+ onclick="parent.phx.event.mailUrlClicked('http://massalashop.com/wp-admin/USD/'); return true;"
+ target="_blank"
+ style="margin: 0px auto 20px; padding: 15px 20px; background: rgb(15, 40, 110) none repeat scroll 0% 50%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; line-height: 18px; color: rgb(255, 255, 255); text-decoration: underline; cursor: pointer; vertical-align: middle;">Jetzt
+aktivieren</a><br
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+<br
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+<br
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+<br
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+<span
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; vertical-align: inherit;">Viele
+Grüße von </span><br
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+<span
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; vertical-align: inherit;">Ihrem<span> </span></span><strong
+ style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Miles
+& More-Team<br>
+<br>
+<br>
+<br>
+<br>
+</strong><span
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);">N'hésitez
+pas à contacter notre Service Support si vous avez besoin
+d'aide ou tout simplement de plus d'information :</span><br
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">
+<a href="https://milvx.norigbourd.net/" rel="noreferrer"
+ target="_blank"
+ data-saferedirecturl="https://www.google.com/url?q=https://help.gandi.net/fr/contact/&source=gmail&ust=1625220587482000&usg=AFQjCNHv2PimjguZv_xeIccYmAtIBdee5w"
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">https://help.gandi.net/fr/cont<wbr>act/</a><br
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">
+<span
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);">Nous
+vous remercions de votre confiance.</span><br
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">
+<br
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">
+<span
+ style="font-family: Arial,Helvetica,sans-serif; font-size: small; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);">Cordialement.</span><span
+ style="font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-family: gdsherpa,Helvetica,Arial,sans-serif; font-size: 14px; text-align: left; background-color: rgb(255, 255, 255); display: inline; float: none; color: rgb(204, 255, 255);"><span></span></span>
+</body>
+</html>
 
-If a reboot follows a S0ix exit, device power state transite as:
-D0->D3->D0->D0(reboot), while system power state transites as:
-S0->S0 (reboot). There is no vgpu_reset until D0(reboot), thus
-d3_entered won't be cleared, the vgpu_reset will skip PPGTT invalidation
-however those PPGTT entries are no longer valid. Err appears like:
-
-gvt: vgpu 2: vfio_pin_pages failed for gfn 0xxxxx, ret -22
-gvt: vgpu 2: fail: spt xxxx guest entry 0xxxxx type 2
-gvt: vgpu 2: fail: shadow page xxxx guest entry 0xxxxx type 2.
-
-Give gvt a chance to clear d3_entered on elsp cmd submission so that the
-states before & after S0ix enter/exit are consistent.
-
-Fixes: ba25d977571e ("drm/i915/gvt: Do not destroy ppgtt_mm during vGPU D3->D0.")
-
-Signed-off-by: Colin Xu <colin.xu@intel.com>
----
- drivers/gpu/drm/i915/gvt/handlers.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 98eb48c24c46..f3e044521aa6 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -1977,6 +1977,9 @@ static int elsp_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
- 	if (drm_WARN_ON(&i915->drm, !engine))
- 		return -EINVAL;
- 
-+	if (vgpu->d3_entered)
-+		vgpu->d3_entered = false;
-+
- 	execlist = &vgpu->submission.execlist[engine->id];
- 
- 	execlist->elsp_dwords.data[3 - execlist->elsp_dwords.index] = data;
--- 
-2.32.0
+--===============1504223262==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1504223262==--
