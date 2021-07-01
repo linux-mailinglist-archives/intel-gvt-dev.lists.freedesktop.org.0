@@ -1,37 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 151943B8982
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 30 Jun 2021 22:08:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 767843B8C70
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Jul 2021 04:54:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 86BB76EA7E;
-	Wed, 30 Jun 2021 20:08:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2AA3C6E9A9;
+	Thu,  1 Jul 2021 02:54:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 976F96EA7E
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 75D436E9A9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 30 Jun 2021 20:08:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10031"; a="188107100"
-X-IronPort-AV: E=Sophos;i="5.83,312,1616482800"; d="scan'208";a="188107100"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jun 2021 13:08:06 -0700
+ Thu,  1 Jul 2021 02:54:29 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10031"; a="195752814"
+X-IronPort-AV: E=Sophos;i="5.83,313,1616482800"; d="scan'208";a="195752814"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Jun 2021 19:54:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,312,1616482800"; d="scan'208";a="408695012"
-Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 30 Jun 2021 13:08:04 -0700
-Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lygV9-0009zw-CU; Wed, 30 Jun 2021 20:08:03 +0000
-Date: Thu, 01 Jul 2021 04:07:31 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 3f07f79578cba9a23f1c0e542e2d7b75f560ea08
-Message-ID: <60dccf03.fJlEHWh2OL8OHnAn%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.83,313,1616482800"; d="scan'208";a="558506840"
+Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.30])
+ by orsmga004.jf.intel.com with ESMTP; 30 Jun 2021 19:54:27 -0700
+From: Colin Xu <colin.xu@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: Clear d3_entered on elsp cmd submission.
+Date: Thu,  1 Jul 2021 10:54:23 +0800
+Message-Id: <20210701025423.312943-1-colin.xu@intel.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -45,130 +41,57 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: colin.xu@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 3f07f79578cba9a23f1c0e542e2d7b75f560ea08  gvt-staging: 2021y-06m-30d-15h-52m-13s CST integration manifest
+d3_entered flag is used to mark for vgpu_reset a previous power
+transition from D3->D0, typically for VM resume from S3, so that gvt
+could skip PPGTT invalidation in current vgpu_reset during resuming.
 
-elapsed time: 729m
+In case S0ix exit, although there is D3->D0, guest driver continue to
+use vgpu as normal, with d3_entered set, until next shutdown/reboot or
+power transition.
 
-configs tested: 99
-configs skipped: 2
+If a reboot follows a S0ix exit, device power state transite as:
+D0->D3->D0->D0(reboot), while system power state transites as:
+S0->S0 (reboot). There is no vgpu_reset until D0(reboot), thus
+d3_entered won't be cleared, the vgpu_reset will skip PPGTT invalidation
+however those PPGTT entries are no longer valid. Err appears like:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+gvt: vgpu 2: vfio_pin_pages failed for gfn 0xxxxx, ret -22
+gvt: vgpu 2: fail: spt xxxx guest entry 0xxxxx type 2
+gvt: vgpu 2: fail: shadow page xxxx guest entry 0xxxxx type 2.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                           se7750_defconfig
-powerpc                          g5_defconfig
-arm                         s5pv210_defconfig
-arm                        oxnas_v6_defconfig
-mips                         tb0287_defconfig
-powerpc                     mpc83xx_defconfig
-xtensa                           alldefconfig
-powerpc                 mpc834x_mds_defconfig
-sh                        edosk7705_defconfig
-arm                           h3600_defconfig
-powerpc                    mvme5100_defconfig
-arm                        mvebu_v5_defconfig
-arm                             ezx_defconfig
-riscv                               defconfig
-sh                            hp6xx_defconfig
-mips                      pic32mzda_defconfig
-sh                   secureedge5410_defconfig
-arm                       netwinder_defconfig
-powerpc                      ppc6xx_defconfig
-powerpc                      katmai_defconfig
-mips                            gpr_defconfig
-arm                        clps711x_defconfig
-powerpc                 mpc832x_mds_defconfig
-parisc                generic-32bit_defconfig
-arc                              alldefconfig
-mips                      maltasmvp_defconfig
-arm                         nhk8815_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20210630
-i386                 randconfig-a001-20210630
-i386                 randconfig-a003-20210630
-i386                 randconfig-a002-20210630
-i386                 randconfig-a005-20210630
-i386                 randconfig-a006-20210630
-i386                 randconfig-a014-20210630
-i386                 randconfig-a011-20210630
-i386                 randconfig-a016-20210630
-i386                 randconfig-a012-20210630
-i386                 randconfig-a013-20210630
-i386                 randconfig-a015-20210630
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                            kunit_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+Give gvt a chance to clear d3_entered on elsp cmd submission so that the
+states before & after S0ix enter/exit are consistent.
 
-clang tested configs:
-x86_64               randconfig-b001-20210630
-x86_64               randconfig-a012-20210630
-x86_64               randconfig-a015-20210630
-x86_64               randconfig-a016-20210630
-x86_64               randconfig-a013-20210630
-x86_64               randconfig-a011-20210630
-x86_64               randconfig-a014-20210630
+Fixes: ba25d977571e ("drm/i915/gvt: Do not destroy ppgtt_mm during vGPU D3->D0.")
 
+Signed-off-by: Colin Xu <colin.xu@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/gpu/drm/i915/gvt/handlers.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index 98eb48c24c46..f3e044521aa6 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -1977,6 +1977,9 @@ static int elsp_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
+ 	if (drm_WARN_ON(&i915->drm, !engine))
+ 		return -EINVAL;
+ 
++	if (vgpu->d3_entered)
++		vgpu->d3_entered = false;
++
+ 	execlist = &vgpu->submission.execlist[engine->id];
+ 
+ 	execlist->elsp_dwords.data[3 - execlist->elsp_dwords.index] = data;
+-- 
+2.32.0
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
