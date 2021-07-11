@@ -2,36 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A79C63C1B07
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  8 Jul 2021 23:33:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 41C7F3C3AC8
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 11 Jul 2021 07:50:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6D1086E948;
-	Thu,  8 Jul 2021 21:33:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E433A6EB84;
+	Sun, 11 Jul 2021 05:50:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B060E6E94A
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  8 Jul 2021 21:33:54 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10039"; a="295239879"
-X-IronPort-AV: E=Sophos;i="5.84,225,1620716400"; d="scan'208";a="295239879"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2021 14:33:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,225,1620716400"; d="scan'208";a="461904671"
-Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 08 Jul 2021 14:33:49 -0700
-Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1m1beW-000EV4-GR; Thu, 08 Jul 2021 21:33:48 +0000
-Date: Fri, 09 Jul 2021 05:33:28 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt-linux:gvt-fixes] BUILD SUCCESS
- c90b4503ccf42d9d367e843c223df44aa550e82a
-Message-ID: <60e76f28.0ENrQ/EeA+na2wPM%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-io1-xd35.google.com (mail-io1-xd35.google.com
+ [IPv6:2607:f8b0:4864:20::d35])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A16626EB84;
+ Sun, 11 Jul 2021 05:50:12 +0000 (UTC)
+Received: by mail-io1-xd35.google.com with SMTP id l5so18015997iok.7;
+ Sat, 10 Jul 2021 22:50:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RCPL29qIKnKZKArq5zsuG+4bnxkVvxWb2dNm1WT6mf8=;
+ b=FtgJf8+lm9Jw2zuHcFq8yHyYE9Za+t1wpfVGe4pNR2hLepEyFXfbcy4nJTz2O55NOa
+ dmuoiB2rqb8nyl8EtjTo64ENTdtFYzzJAky2JuOy2aYMOSk0FedqxZYDtR2/GmPEUZhc
+ UPXarxCUa6yVyaJ6gyeiOEy6vbFz+4LbbuMB1YxPqQCTYW14S9NrlC1RiegTThPRtJ8Y
+ NSCaaUN0UawFs/fx4em62LxMiGzjjNZG8x82jWqJLOgcYBQiG+cMq/6xrE8FavIEmQZ0
+ 52yNoSHuYvjfMtL3yAmpyrs4GCbze6oRWYpU+gkIvz9536/7/V/OBRfRMXcJ0ujoiD8U
+ arUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RCPL29qIKnKZKArq5zsuG+4bnxkVvxWb2dNm1WT6mf8=;
+ b=NBDjYBVtJxkNcbD5hnqiU44gEQ3NJ39+k395IdC+ds34qP9B/THo1bReognHDI+VQy
+ F0LjMcJkkfOl+dOldaD59oBUyb+jHzMUhgdl/jdLOmu87oIRTgdGwICZarq2WPT8F1pI
+ Fy5nsTLb98bg6QbPQ8oUD35b4/henqAgYvY19s4V4Ml6bueeDInsB/GIByWb+EpuLcGE
+ AipQGJd2Olx/xctxdZdRPvYJNywHvrSPnV1iXKFhccnuj1K3gDgVe2W4Sm4RWsOsbFO8
+ HQcklIN5SpiUmfb/pR7wKsTm3d9DPUYkwzn15dGxv0YXWLIAZxc4pZKGGzeCIF2p4DHz
+ Yx1A==
+X-Gm-Message-State: AOAM530K61X92J4T8aVbjJU1+Ngoa8paSjlavKBL6DjC1o+90z7c+kS9
+ Xj2yei/j6+QJ49WGa4n/U3c=
+X-Google-Smtp-Source: ABdhPJy3x300qWkzveHT72BAIzXyFWEizGbKobKv9ZDxvJSQDWE4xAAJUsN56EWTboU9rLEPlKhH4A==
+X-Received: by 2002:a02:b006:: with SMTP id p6mr33668942jah.64.1625982612026; 
+ Sat, 10 Jul 2021 22:50:12 -0700 (PDT)
+Received: from frodo.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
+ by smtp.googlemail.com with ESMTPSA id x8sm5852400ilq.63.2021.07.10.22.50.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 10 Jul 2021 22:50:11 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Subject: [RFC PATCH v2 0/4] Allow using dyndbg to replace drm_debug_enabled
+Date: Sat, 10 Jul 2021 23:49:58 -0600
+Message-Id: <20210711055003.528167-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -45,247 +72,65 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-fixes
-branch HEAD: c90b4503ccf42d9d367e843c223df44aa550e82a  drm/i915/gvt: Clear d3_entered on elsp cmd submission.
+drm_debug_enabled() is called a lot to do unlikely bit-tests to
+control debug printing; this is a good job for dynamic-debug, IFF it
+is built with JUMP_LABEL.
+ 
+Enable the use of dynamic-debug to avoid drm_debug_enabled()
+overheads, opt in with CONFIG_DRM_USE_DYNAMIC_DEBUG=y.
 
-elapsed time: 728m
+I have this patchset running bare-metal on an i915 laptop & an amdgpu
+desktop (both as loadable modules).
 
-configs tested: 216
-configs skipped: 3
+I booted the amdgpu box with:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+BOOT_IMAGE=(hd2,gpt2)/vmlinuz-5.13.0-dd7-13692-g8def25788f56 \
+     root=UUID=mumble ro \
+     rootflags=subvol=root00 rhgb \
+     dynamic_debug.verbose=3 main.dyndbg=+p \
+     amdgpu.debug=1 amdgpu.test=1 \
+     "amdgpu.dyndbg=format ^[ +p"
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                      ep88xc_defconfig
-powerpc                     pq2fads_defconfig
-powerpc                    gamecube_defconfig
-powerpc                        cell_defconfig
-arm                           sunxi_defconfig
-mips                      malta_kvm_defconfig
-m68k                       bvme6000_defconfig
-arm                         palmz72_defconfig
-mips                          rb532_defconfig
-sh                           se7721_defconfig
-sh                 kfr2r09-romimage_defconfig
-ia64                            zx1_defconfig
-m68k                          multi_defconfig
-powerpc                    adder875_defconfig
-m68k                       m5208evb_defconfig
-mips                      pic32mzda_defconfig
-arm                       cns3420vb_defconfig
-powerpc                   microwatt_defconfig
-arm                          gemini_defconfig
-m68k                            q40_defconfig
-mips                            gpr_defconfig
-arm                          ixp4xx_defconfig
-mips                        vocore2_defconfig
-h8300                       h8s-sim_defconfig
-sparc64                          alldefconfig
-arm                     am200epdkit_defconfig
-xtensa                  audio_kc705_defconfig
-arm                            mps2_defconfig
-mips                         tb0219_defconfig
-powerpc                    amigaone_defconfig
-x86_64                           alldefconfig
-m68k                       m5275evb_defconfig
-arm                             ezx_defconfig
-arm                         at91_dt_defconfig
-arm                             rpc_defconfig
-sparc                       sparc32_defconfig
-arm                       multi_v4t_defconfig
-m68k                        stmark2_defconfig
-arm                          imote2_defconfig
-powerpc                      tqm8xx_defconfig
-arm                       imx_v4_v5_defconfig
-s390                          debug_defconfig
-csky                             alldefconfig
-powerpc                      ppc6xx_defconfig
-powerpc               mpc834x_itxgp_defconfig
-arm                      pxa255-idp_defconfig
-sh                            shmin_defconfig
-microblaze                      mmu_defconfig
-arm                          lpd270_defconfig
-sh                          kfr2r09_defconfig
-arc                      axs103_smp_defconfig
-sh                          sdk7786_defconfig
-um                             i386_defconfig
-riscv                          rv32_defconfig
-powerpc                     kilauea_defconfig
-powerpc                         ps3_defconfig
-powerpc                    sam440ep_defconfig
-arm                           corgi_defconfig
-powerpc                          allmodconfig
-arm                  colibri_pxa270_defconfig
-mips                         cobalt_defconfig
-mips                     loongson2k_defconfig
-sh                           se7724_defconfig
-arc                        nsim_700_defconfig
-arm                         vf610m4_defconfig
-s390                             allmodconfig
-sh                           se7206_defconfig
-arc                           tb10x_defconfig
-sh                   rts7751r2dplus_defconfig
-powerpc                     ppa8548_defconfig
-sh                          rsk7264_defconfig
-xtensa                    xip_kc705_defconfig
-powerpc                       ebony_defconfig
-mips                           mtx1_defconfig
-powerpc                      katmai_defconfig
-powerpc                     akebono_defconfig
-powerpc                   motionpro_defconfig
-sh                           se7750_defconfig
-powerpc                    mvme5100_defconfig
-sh                     magicpanelr2_defconfig
-mips                         rt305x_defconfig
-xtensa                generic_kc705_defconfig
-sh                           se7751_defconfig
-arm                       versatile_defconfig
-sh                         ecovec24_defconfig
-powerpc                 mpc8540_ads_defconfig
-powerpc                          g5_defconfig
-arm                           viper_defconfig
-powerpc                      ppc44x_defconfig
-arc                        nsimosci_defconfig
-sh                             shx3_defconfig
-powerpc                     ksi8560_defconfig
-riscv                            allmodconfig
-powerpc                           allnoconfig
-mips                  cavium_octeon_defconfig
-arm                     eseries_pxa_defconfig
-powerpc                      pasemi_defconfig
-arm                             mxs_defconfig
-sh                           se7712_defconfig
-sh                        edosk7705_defconfig
-sh                        sh7757lcr_defconfig
-sh                           se7705_defconfig
-powerpc                     ep8248e_defconfig
-powerpc                      ppc64e_defconfig
-powerpc                  storcenter_defconfig
-powerpc                     tqm8541_defconfig
-sh                           se7722_defconfig
-mips                           xway_defconfig
-sh                           sh2007_defconfig
-arm                       aspeed_g5_defconfig
-mips                       rbtx49xx_defconfig
-powerpc                     tqm8548_defconfig
-arm                           h3600_defconfig
-arm                           u8500_defconfig
-arm                        mvebu_v7_defconfig
-sh                            hp6xx_defconfig
-arm                         shannon_defconfig
-mips                       bmips_be_defconfig
-arm                        multi_v7_defconfig
-powerpc                     mpc512x_defconfig
-powerpc                 mpc834x_mds_defconfig
-powerpc                 xes_mpc85xx_defconfig
-mips                     cu1000-neo_defconfig
-powerpc                      acadia_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-x86_64               randconfig-a004-20210707
-x86_64               randconfig-a002-20210707
-x86_64               randconfig-a005-20210707
-x86_64               randconfig-a006-20210707
-x86_64               randconfig-a003-20210707
-x86_64               randconfig-a001-20210707
-i386                 randconfig-a006-20210708
-i386                 randconfig-a004-20210708
-i386                 randconfig-a001-20210708
-i386                 randconfig-a003-20210708
-i386                 randconfig-a005-20210708
-i386                 randconfig-a002-20210708
-i386                 randconfig-a004-20210707
-i386                 randconfig-a006-20210707
-i386                 randconfig-a001-20210707
-i386                 randconfig-a003-20210707
-i386                 randconfig-a005-20210707
-i386                 randconfig-a002-20210707
-i386                 randconfig-a015-20210707
-i386                 randconfig-a016-20210707
-i386                 randconfig-a012-20210707
-i386                 randconfig-a011-20210707
-i386                 randconfig-a014-20210707
-i386                 randconfig-a013-20210707
-i386                 randconfig-a015-20210708
-i386                 randconfig-a016-20210708
-i386                 randconfig-a011-20210708
-i386                 randconfig-a012-20210708
-i386                 randconfig-a013-20210708
-i386                 randconfig-a014-20210708
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                            kunit_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+That last line activates ~1700 callsites with a format like '[DML' etc
+at boot, causing ~76k prdbgs in 409 seconds, before I turned them off
+with:
 
-clang tested configs:
-x86_64               randconfig-b001-20210707
-x86_64               randconfig-b001-20210708
-x86_64               randconfig-a004-20210708
-x86_64               randconfig-a005-20210708
-x86_64               randconfig-a002-20210708
-x86_64               randconfig-a006-20210708
-x86_64               randconfig-a003-20210708
-x86_64               randconfig-a001-20210708
-x86_64               randconfig-a015-20210707
-x86_64               randconfig-a014-20210707
-x86_64               randconfig-a012-20210707
-x86_64               randconfig-a011-20210707
-x86_64               randconfig-a016-20210707
-x86_64               randconfig-a013-20210707
+  echo module amdgpu -p > /proc/dynamic_debug/control
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+[root@gandalf jimc]# journalctl -b-0 | grep -P '\[(DML|VBLANK|SURFACE|BIOS|BANDWIDTH)' | wc
+  68708  578503 5054437
+[root@gandalf jimc]# journalctl -b-0 | grep -P '\[(DML|VBLANK|SURFACE|BIOS|BANDWIDTH|\w+)' | wc
+  76298  661176 6028087
+
+IOW, things appear to hold up under some stress.
+
+this is on top of master @ v5.13-13688-gde5540965853
+
+v1 is here:
+https://lore.kernel.org/lkml/20201204035318.332419-1-jim.cromie@gmail.com/
+
+Jim Cromie (4):
+  drm_print.h: rewrap __DRM_DEFINE_DBG_RATELIMITED macro
+  drm: fixup comment spelling
+  drm: RFC add choice to use dynamic debug in drm-debug
+  i915: map gvt pr_debug categories to bits in parameters/debug_gvt
+
+ drivers/gpu/drm/Kconfig            |  13 ++++
+ drivers/gpu/drm/drm_print.c        |  75 +++++++++++++++++-
+ drivers/gpu/drm/i915/gvt/Makefile  |   4 +
+ drivers/gpu/drm/i915/i915_params.c |  76 ++++++++++++++++++
+ include/drm/drm_print.h            | 119 ++++++++++++++++++++---------
+ 5 files changed, 249 insertions(+), 38 deletions(-)
+
+-- 
+2.31.1
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
