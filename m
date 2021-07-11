@@ -2,68 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B1263C3ACD
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 11 Jul 2021 07:50:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B50F3C3DEE
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 11 Jul 2021 18:26:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 017946EB91;
-	Sun, 11 Jul 2021 05:50:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 090B989C9D;
+	Sun, 11 Jul 2021 16:26:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd2c.google.com (mail-io1-xd2c.google.com
- [IPv6:2607:f8b0:4864:20::d2c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6C1066EB8F;
- Sun, 11 Jul 2021 05:50:19 +0000 (UTC)
-Received: by mail-io1-xd2c.google.com with SMTP id 62so6142565iob.0;
- Sat, 10 Jul 2021 22:50:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=1JU6IkdQvvp5Go0AxPwnfi1zth99vpSVeAzYXXLnyDA=;
- b=jX+yyHpgVqTIhve6qLKx+vddez8pXVVp/zoXrJJ/ZSic9YPuiCLLFG2GJ/joO0L9Po
- GEgjbLkfs6WMeuA2PKTWTR3t/bALkAHtwMEfcPTAeKm3E4M6DfPNgqZv6bL30LxXkAKU
- aPRYDI0K0V9YmdKsd6VPaj25SZIPP5um2ZFwohJMhWPvmDrO8SzsNWR9ifqkUG50ksQ8
- AoYwZ3QbklETQ7Z35OCBQmd788+Ef4kbGouyCALrWsWfAwhwD++48AowJt8/w6mLz2ZG
- lQt+BsWbofwFiR839XGfyVMeiJtJLVz2ozyyEmqoBJgmgAL2IosB4LQUyBZvm1++txjL
- xZrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=1JU6IkdQvvp5Go0AxPwnfi1zth99vpSVeAzYXXLnyDA=;
- b=ZhhwsYg2v780e9K549gSY7yUzDgO2lkwUYsh4wxVDBDSKWvzjhGioEmPbJsvKGx+Ev
- cqzXthUw/efmxW4/O3FG0Vv5Hca9oMoIADIYahqZ4FXNfvHaMyeOzXpLqSP8Zugt6lmt
- 4POInYXugWb9C0icBs3GYhmS4RKTZjTKzLw2EIow68N636obOdeLZ9LXft/Evon4ra7P
- bFJ+CCQUpJ+nqnzc7ZQq1rVnbRGH/A77/Kr4Fzx2mL8WtwrAPy4Iq4tgelOS8qaQ0HQy
- 1BMe4BuobuBZ3hVhBiOCnAOD9a4XeZ1rGGdb5Xs2GTnU258T9ROWAkRtk4c75MEMBQEt
- 8+4g==
-X-Gm-Message-State: AOAM530ZxJbc+WckKGn74rMQO9AM6w99XyCl6ChDNiklbGqL7sWiOSx0
- +luH/X2vIS6gOJc5VjXFfsM=
-X-Google-Smtp-Source: ABdhPJzHBs42lAveyvzML9lmuADkqzvZAMbBGeS3sw2D9YMkkwV+8J1AY2NDXsE7ZLT7wJlTDJaARw==
-X-Received: by 2002:a05:6602:1c4:: with SMTP id
- w4mr34031289iot.44.1625982618817; 
- Sat, 10 Jul 2021 22:50:18 -0700 (PDT)
-Received: from frodo.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
- by smtp.googlemail.com with ESMTPSA id x8sm5852400ilq.63.2021.07.10.22.50.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Jul 2021 22:50:18 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
+X-Greylist: delayed 532 seconds by postgrey-1.36 at gabe;
+ Sun, 11 Jul 2021 16:26:19 UTC
+Received: from smtprelay.hostedemail.com (smtprelay0127.hostedemail.com
+ [216.40.44.127])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0B25589C9D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 11 Jul 2021 16:26:18 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave08.hostedemail.com (Postfix) with ESMTP id 57083180C3A9D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 11 Jul 2021 16:17:27 +0000 (UTC)
+Received: from omf02.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+ by smtprelay02.hostedemail.com (Postfix) with ESMTP id 2410B20311;
+ Sun, 11 Jul 2021 16:17:26 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
+ omf02.hostedemail.com (Postfix) with ESMTPA id 04E321D42F6; 
+ Sun, 11 Jul 2021 16:17:22 +0000 (UTC)
+Message-ID: <e9f8186b3b96ba909f156fd750ba0aaf3d60a5fa.camel@perches.com>
+Subject: Re: [RFC PATCH v2 1/4] drm_print.h: rewrap
+ __DRM_DEFINE_DBG_RATELIMITED macro
+From: Joe Perches <joe@perches.com>
+To: Jim Cromie <jim.cromie@gmail.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
  Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi
+ Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,  Rodrigo Vivi
+ <rodrigo.vivi@intel.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org,  intel-gvt-dev@lists.freedesktop.org,
  intel-gfx@lists.freedesktop.org
-Subject: [RFC PATCH v2 4/4] i915: map gvt pr_debug categories to bits in
- parameters/debug_gvt
-Date: Sat, 10 Jul 2021 23:50:02 -0600
-Message-Id: <20210711055003.528167-5-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210711055003.528167-1-jim.cromie@gmail.com>
+Date: Sun, 11 Jul 2021 09:17:21 -0700
+In-Reply-To: <20210711055003.528167-2-jim.cromie@gmail.com>
 References: <20210711055003.528167-1-jim.cromie@gmail.com>
+ <20210711055003.528167-2-jim.cromie@gmail.com>
+User-Agent: Evolution 3.40.0-1 
 MIME-Version: 1.0
+X-Rspamd-Server: rspamout05
+X-Rspamd-Queue-Id: 04E321D42F6
+X-Spam-Status: No, score=1.57
+X-Stat-Signature: 5sc5j7osyk4uzjqrwctk5jkkaxhwfr41
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX18KeCdceO2yu0931OqGiBOrYctRL24z4Ps=
+X-HE-Tag: 1626020242-383074
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,139 +65,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: jbaron@akamai.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-The gvt component of this driver has ~120 pr_debugs, in 9 "classes".
-Following the interface model of drm.debug, add a parameter to map
-bits to these classes.
+On Sat, 2021-07-10 at 23:49 -0600, Jim Cromie wrote:
+> whitespace only, to diff-minimize a later commit.
+> no functional changes
+[]
+> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
+[]
+> @@ -524,19 +524,24 @@ void __drm_err(const char *format, ...);
+> =A0#define DRM_DEBUG_DP(fmt, ...)						\
+> =A0	__drm_dbg(DRM_UT_DP, fmt, ## __VA_ARGS__)
+> =A0
+> =
 
-If CONFIG_DRM_USE_DYNAMIC_DEBUG=y (and CONFIG_DYNAMIC_DEBUG_CORE), add
--DDYNAMIC_DEBUG_MODULE into Makefile.  TBD: maybe add a separate
-CONFIG_I915_USE_DYNAMIC_DEBUG to more fully optionalize this.
+> -#define __DRM_DEFINE_DBG_RATELIMITED(category, drm, fmt, ...)					\
+> -({												\
+> -	static DEFINE_RATELIMIT_STATE(rs_, DEFAULT_RATELIMIT_INTERVAL, DEFAULT_=
+RATELIMIT_BURST);\
+> -	const struct drm_device *drm_ =3D (drm);							\
+> -												\
+> -	if (drm_debug_enabled(DRM_UT_ ## category) && __ratelimit(&rs_))			\
+> -		drm_dev_printk(drm_ ? drm_->dev : NULL, KERN_DEBUG, fmt, ## __VA_ARGS_=
+_);	\
+> +#define __DRM_DEFINE_DBG_RATELIMITED(category, drm, fmt, ...)		\
+> +({									\
+> +	static DEFINE_RATELIMIT_STATE(rs_,				\
+> +				      DEFAULT_RATELIMIT_INTERVAL,	\
+> +				      DEFAULT_RATELIMIT_BURST);		\
+> +	const struct drm_device *drm_ =3D (drm);				\
+> +									\
+> +	if (drm_debug_enabled(DRM_UT_ ## category)			\
+> +	    && __ratelimit(&rs_))					\
 
-In i915_params.c, add callback to map bits to queries.
+Though I don't really see the need for the change, the typical style
+has the logical continuation at the end of the test.
 
-TBD: the callback code should probably be moved to lib/dynamic_debug,
-and given a declarative interface, with implied bit-numbering,
-something like:
+	if (drm_debug_enabled(DRM_UT_ ## category) &&			\
+	    __ratelimit(&rs_))						\
 
-MOD_PARM_BITMAP_DESC(__gvt_debug,
-	"gvt: cmd: ",  "command processing"
-	"gvt: core: ", "core help",
-	"gvt: dpy: ",  "display help",
-	"gvt: el: ",   "help",
-	"gvt: irq: ",  "help",
-	"gvt: mm: ",   "help",
-	"gvt: mmio: ", "help",
-	"gvt: render: ", "help",
-	"gvt: sched: " "help");
----
- drivers/gpu/drm/i915/gvt/Makefile  |  4 ++
- drivers/gpu/drm/i915/i915_params.c | 76 ++++++++++++++++++++++++++++++
- 2 files changed, 80 insertions(+)
-
-diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt/Makefile
-index ea8324abc784..846ba73b8de6 100644
---- a/drivers/gpu/drm/i915/gvt/Makefile
-+++ b/drivers/gpu/drm/i915/gvt/Makefile
-@@ -7,3 +7,7 @@ GVT_SOURCE := gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o firmware.o \
- 
- ccflags-y				+= -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
- i915-y					+= $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
-+
-+#ifdef CONFIG_DRM_USE_DYNAMIC_DEBUG
-+ccflags-y	+= -DDYNAMIC_DEBUG_MODULE
-+#endif
-diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
-index e07f4cfea63a..e0d13aff5274 100644
---- a/drivers/gpu/drm/i915/i915_params.c
-+++ b/drivers/gpu/drm/i915/i915_params.c
-@@ -265,3 +265,79 @@ void i915_params_free(struct i915_params *params)
- 	I915_PARAMS_FOR_EACH(FREE);
- #undef FREE
- }
-+
-+/* POC for callback -> dynamic_debug_exec_queries */
-+unsigned long __gvt_debug;
-+EXPORT_SYMBOL(__gvt_debug);
-+
-+static char *format_prefix_classes[] = {
-+	"gvt: cmd: ",
-+	"gvt: core: ",
-+	"gvt: dpy: ",
-+	"gvt: el: ",
-+	"gvt: irq: ",
-+	"gvt: mm: ",
-+	"gvt: mmio: ",
-+	"gvt: render: ",
-+	"gvt: sched: "
-+};
-+#define NUM_CLASSES	ARRAY_SIZE(format_prefix_classes)
-+#define OUR_QUERY_SIZE	128 /* we need about 20 */
-+
-+#include <linux/module.h>
-+
-+static int param_set_dyndbg(const char *instr, const struct kernel_param *kp)
-+{
-+	unsigned int val;
-+	unsigned long changes, result;
-+	int rc, chgct = 0, totct = 0, bitpos;
-+	char query[OUR_QUERY_SIZE];
-+
-+	rc = kstrtouint(instr, 0, &val);
-+	if (rc) {
-+		pr_err("set_dyndbg: failed\n");
-+		return -EINVAL;
-+	}
-+	result = val;
-+	pr_info("set_dyndbg: result:0x%lx from %s\n", result, instr);
-+
-+	changes = result ^ __gvt_debug;
-+
-+	for_each_set_bit(bitpos, &changes, NUM_CLASSES) {
-+
-+		sprintf(query, "format '^%s' %cp", format_prefix_classes[bitpos],
-+			test_bit(bitpos, &result) ? '+' : '-');
-+
-+		chgct = dynamic_debug_exec_queries(query, "i915");
-+
-+		pr_info("%d changes on: %s\n", chgct, query);
-+		totct += chgct;
-+	}
-+	pr_info("total changes: %d\n", totct);
-+	__gvt_debug = result;
-+	return 0;
-+}
-+static int param_get_dyndbg(char *buffer, const struct kernel_param *kp)
-+{
-+	return scnprintf(buffer, PAGE_SIZE, "%u\n",
-+			 *((unsigned int *)kp->arg));
-+}
-+static const struct kernel_param_ops param_ops_dyndbg = {
-+	.set = param_set_dyndbg,
-+	.get = param_get_dyndbg,
-+};
-+
-+#define info_ln(hexi, prefix) "\n\t0x" __stringify(hexi) "\t" prefix
-+
-+MODULE_PARM_DESC(debug_gvt, " gvt debug categories:"
-+		 info_ln(1, "gvt: cmd:")
-+		 info_ln(2, "gvt: core:")
-+		 info_ln(4, "gvt: dpy:")
-+		 info_ln(8, "gvt: el:")
-+		 info_ln(10, "gvt: irq:")
-+		 info_ln(20, "gvt: mm:")
-+		 info_ln(40, "gvt: mmio:")
-+		 info_ln(80, "gvt: render:")
-+		 info_ln(100, "gvt: sched:"));
-+
-+module_param_cb(debug_gvt, &param_ops_dyndbg, &__gvt_debug, 0644);
--- 
-2.31.1
 
 _______________________________________________
 intel-gvt-dev mailing list
