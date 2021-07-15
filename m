@@ -2,75 +2,112 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBA313CAE4F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Jul 2021 23:01:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ECCDB3CAEF9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 00:11:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9E4E46E8BB;
-	Thu, 15 Jul 2021 21:01:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8B37D6E3AA;
+	Thu, 15 Jul 2021 22:11:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 862FF6E8BD
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Jul 2021 21:01:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626382861;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=w6cMvV3xGXdKHq4WzPyleEVhevpPRqkhvlCWSt+Y12E=;
- b=YT20wCF4qNwJLdVjsKKgwHaKfkvGGpbvIqgWM+zZdGjmf+Pi+zkvM5NJtbfpYaEPrPxyT1
- Tr526mErTKI7aRQipLZE8BCjqEbwpHuXUex86BVHHQTi23vjAw4EZCj4bkmVcAY7Jy17Wq
- f8R/xMAV08ZyOMn0lW8XQSWj0KSESuk=
-Received: from mail-oo1-f70.google.com (mail-oo1-f70.google.com
- [209.85.161.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-274-RKi9ZqQkOhOFD1XMf0yirQ-1; Thu, 15 Jul 2021 17:00:58 -0400
-X-MC-Unique: RKi9ZqQkOhOFD1XMf0yirQ-1
-Received: by mail-oo1-f70.google.com with SMTP id
- d12-20020a4aeb8c0000b029023bbaaddcbbso5302478ooj.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Jul 2021 14:00:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=w6cMvV3xGXdKHq4WzPyleEVhevpPRqkhvlCWSt+Y12E=;
- b=sjQt6zXZRXHWRzWSV9TuF3NEl7opceWS9sMJXOHLlalerZy9GHuG6Os+D0gw0/bXYj
- bBAK3MwAxbjmg8PMo7NOhOAYn6kJdpeCNJDbKB25k5MYQyUX3SahWzPWXdFg37QLiPxL
- 6aiiLK2Y36ANagczYqR4TxUI2Bm6r/uTXKobs8DyH3kVgWIfS8fWTAaST7C2Q3ODme1f
- W36mOTVTDNH57mIyepmyES9iWTODgRihAauvNls/p8lmc4/6F9EG1B/6MfUab9EveI6T
- u9INxnFbWpeWXCgx8q4sXnadnvvfP5iCFP5Z7/1Ilj5i2mCdzpwHixWvJDrSSQ1HHHzu
- ZbDA==
-X-Gm-Message-State: AOAM533tZ5dSlAOHFaQzllWG1bqvrkWuc+001fzgD8uIb/rhLQRFSQf0
- b7bpsa9TVr8x8VLnSGv+uSEfXMYk7qf8NThmi3BKEqZI6K1g5HE4Xx4LGw0N32cgI+qiraxvTAh
- b6l5PHALsKcs5sH0Qi3osmPA5MlsT/WFLKA==
-X-Received: by 2002:aca:2112:: with SMTP id 18mr9993635oiz.48.1626382857938;
- Thu, 15 Jul 2021 14:00:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhGopnxXSOUkiyj2IazWlzUmam8q3Wm1mG8M1diFnOhbK2stM6MvqH6+i/pmWQg4ZlT4QnEQ==
-X-Received: by 2002:aca:2112:: with SMTP id 18mr9993610oiz.48.1626382857721;
- Thu, 15 Jul 2021 14:00:57 -0700 (PDT)
-Received: from redhat.com ([198.99.80.109])
- by smtp.gmail.com with ESMTPSA id n9sm1367932otn.54.2021.07.15.14.00.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Jul 2021 14:00:57 -0700 (PDT)
-Date: Thu, 15 Jul 2021 15:00:55 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2040.outbound.protection.outlook.com [40.107.92.40])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C4E596E334;
+ Thu, 15 Jul 2021 22:11:54 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QjzovEptQ1Kx11El65RBKQnSULZKQaTU+7AqLOprQUmJWTvDywTUFlBmK5DiqRxapCiEbODcPyWyFYbtSP/Qrr6qK7kxwA/rZndtt77NAhfjeZDzJzGsbGF08p4VlT1jVmvBF8sL1krXw7s9kfzKF50WI5oqIoWEDTpKbVPkGiXskh6MZQPYsdqehNyFSNlopBUnXGILwK8yUwJkAvOIK3mPYMjeURl7BIz7+NPTmdeeIfrl+EYevKCi1A0MEDzVMDVWrjLR0lBwT9VTpTQ9hm0l5gLQ9MdJiN0bXej2iiKcOl3zP70mPbR25tWb5X5G/Xy5zATm/q3p4QweOxv0+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MRa6WL/7Sz7cBATAupIJCezZXUKpeypA3CUH9nnfBsc=;
+ b=PfL2BTG5TPp68wA3fC3mtu/MP5EWmKUb3Ff3PwacT+4bi5q7R41ciVo8cts1nf2wQPzHIZ2seUOcXug25sL2R+e+VN4NZO+NtA1UN5/ENS2R6ARo3aoqdrjaD8tTDEAsmTukMY/fB5BUqt0ZKEAlWfWfb+y/jxYQeA3hN0WfN1Xtp6HHCgypgiDw4NTGyyp2tnythycxGB6LTamqAeyUzvGyTEKx2PeND6uJv96yBXTvux9PEaHOdPo7bI0YRf28WZsGqFL72T3521oRlPxBrdTDNzZ7CtvAxM8hXJPMKrZKjZCou+MOumQM1UrYBOqrL6JPrMsXmT2mgOKFBR1Rsw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MRa6WL/7Sz7cBATAupIJCezZXUKpeypA3CUH9nnfBsc=;
+ b=tGhJuuE6Knh6p8e3erQs1W7OsAKpZl1mdcbeJr+MX39n8qItiZkvkoRYCnloIzGA14waWsacp8AXpRpa1PdrDQb5xdTh9qcpSD15aDLnZaifAh1aWYviwmPEZWSY99qB08senv7ZjelO7l5zH8mziRmFNQXzp8fJgvp2Uwxy17JOsBJWcyGh3wuU/HEtAQYY4jERkq9jfr7tivsiNz2OjbTa2e9lhajxbgU1adgOEcyDLZyyp82fUcpFR51j3XbIAmy0LX7xppHGIh4yapw5U/VtmrhpmifhRPDAdMOigC7yaXtDwhayblDlbmruHVSGdR/TOZ9j5wqCDp3YbzJQhg==
+Authentication-Results: redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=none action=none header.from=nvidia.com;
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com (2603:10b6:208:1cb::22)
+ by BL1PR12MB5078.namprd12.prod.outlook.com (2603:10b6:208:313::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.22; Thu, 15 Jul
+ 2021 22:11:51 +0000
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d017:af2f:7049:5482]) by BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d017:af2f:7049:5482%5]) with mapi id 15.20.4331.024; Thu, 15 Jul 2021
+ 22:11:51 +0000
+Date: Thu, 15 Jul 2021 19:11:49 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
 Subject: Re: [PATCH 09/13] vfio/pci: Reorganize VFIO_DEVICE_PCI_HOT_RESET to
  use the device set
-Message-ID: <20210715150055.474f535f.alex.williamson@redhat.com>
-In-Reply-To: <9-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
+Message-ID: <20210715221149.GJ543781@nvidia.com>
 References: <0-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
  <9-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
-Organization: Red Hat
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ <20210715150055.474f535f.alex.williamson@redhat.com>
+Content-Disposition: inline
+In-Reply-To: <20210715150055.474f535f.alex.williamson@redhat.com>
+X-ClientProxiedBy: YT1PR01CA0005.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01::18)
+ To BL0PR12MB5506.namprd12.prod.outlook.com
+ (2603:10b6:208:1cb::22)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mlx.ziepe.ca (206.223.160.26) by
+ YT1PR01CA0005.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01::18) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4331.21 via Frontend Transport; Thu, 15 Jul 2021 22:11:50 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from
+ <jgg@nvidia.com>)	id 1m49a9-002sbh-74; Thu, 15 Jul 2021 19:11:49 -0300
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 2ffc67c4-ba7b-4274-9d79-08d947dd8ba9
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5078:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BL1PR12MB507897DF81B77B1C1F91D789C2129@BL1PR12MB5078.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 0QQIHEyJEcDYD1VDKW8jMBeCzikFy01FFLn5sbD2PoSDxIN798ZU6Key7P+pPnwgiSDOFhRu9NJQngqUL7hCIkQZFEiOz0laRu2PgSebB7muJQdFnbbx2YoXRYQ8dB1ZQHqNDNDqbBDcAmOVPZYWUDVZpWWYE3UVgs1Tu1NP1aBis5MVeQfyQH5m68bGM/bAgpVJ38gKaxWHA6K1PZfzPdXAioUjjaffV8BIEs540BHyj2tXuLvoe5ulweeNxzc055nnlnmpKMwe9S8E/T2t32dXUjvHHrUboXUfmngEslGdC3L8VqHofZwHReZ31fN9VJFDor0e/jF/RJsJnD2Pn3LWK+1a0/ukaLHOSNHRD8bXT/o18K0eNyMXqC/v5mosN7Kw2A1QaWJHJxVnQACkdXMIdThZNGfVtnZY337bSRKIKXZ9HtNq1QfirM8+ICVm5o0ZxtA6RloVt3phXYSgSIYnwH6aU2EFHWz2HiKus8Y468xkxNdJIYlFBus4z+0IdZLiHeyPue3EPQeE+n/l0A4i1ohNDHFPAGGnddNlHwcoRLdWBDtC1kzSp8fylci5l6knFFDWS0r55doQCtKqwA2Ivv5OBE2lqlDW5pg2u/RRHmhXZ1krHIWVV/P+/FwHZZVtWvudQ8Hi6jItS/GdNnauqolQt705MJF+hUFefTdZfxRnBJkOopLpoZmvz0/5
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR12MB5506.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(396003)(39860400002)(346002)(366004)(136003)(86362001)(316002)(54906003)(6916009)(26005)(33656002)(426003)(2616005)(66476007)(2906002)(7416002)(7406005)(1076003)(66556008)(5660300002)(38100700002)(8676002)(4326008)(8936002)(9746002)(9786002)(186003)(83380400001)(36756003)(478600001)(107886003)(66946007)(27376004);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?VyfpNAPsL9Z1ZYGGu1s5XN6lsWuAZHOHZdIHseT0JRJB7MeSP66itwDLzfsr?=
+ =?us-ascii?Q?Pm1Lh+OewfF83bk2nxGUl5Q0/g9mAysf6iAVXl5s3zhAUObAL/f8zpgen2oj?=
+ =?us-ascii?Q?rHgBXzbbAIREtEqusIikEubn3CJ9CO01THUzJfk/4KLGgJjjGnk471Ay61Xw?=
+ =?us-ascii?Q?jSMgHaLZG2y6aobi3JQxGeAJqktF050A8nwXz4g1b1bMTnzaaIUAo3g1mF6a?=
+ =?us-ascii?Q?44R3QInZNYiArXPEWrQeYJxobKpUsH4PPpjLDaITzvvUURJwH7M1ukDa/JzJ?=
+ =?us-ascii?Q?JOvlkHsBwVMEPQY9OyibkDtZKYR4CzsGpTxw9v6/q8aXEiWO6PBhm8u6UTom?=
+ =?us-ascii?Q?NVBzSRRkTg+YWwsr3fUOoOJDPUvZ4AWrZkLmTNenZFkqRIntOXHDUkIPktDJ?=
+ =?us-ascii?Q?4NLfpFn40ETgsuYTLfQFg0Hm77c5PYHq8AYJTAnJTC0ItMq0SrT6ExOlV4sB?=
+ =?us-ascii?Q?J8RJ5SLCiUrx0ylIdruATsHnHnVskcbuah2fDbi9BJG+U1xDutErflqc9uXQ?=
+ =?us-ascii?Q?/U3E4+u3FKy3tzSPIg4bttNBxzMyOt24lJ008PttHb2gvmSp/uOjQPdOyZXL?=
+ =?us-ascii?Q?SKc5SQui/hNil66DDWVXI2+hk4VfI/PPp7SaGOAm72m/+ficMyztSu1DRzO+?=
+ =?us-ascii?Q?a8ncsgwvkSJhdlKbiBt7fWiV0CNbXsSrMwOMF1is4syotSw9DgAfbiw9nxnd?=
+ =?us-ascii?Q?x1Hakiz9qVrbJQbJov0mGrAQiEaeQpaGGcg4ZFM2930ebGXqNzPNN3Xggulq?=
+ =?us-ascii?Q?7Y3GfKx1wRDXH91trUa80yOHsg4/QrkSElhg/TJyhiilPzGuZZMwzWGqXLvR?=
+ =?us-ascii?Q?MMMYI45DibKjhgaIIZgmv0h6On6HWnkKdF43FIdVh1Myc0i+8JX6sOOs8Jh4?=
+ =?us-ascii?Q?gomU19SEcf8yBykrbt50fiK34a1Pz6kU0n/3yEGRoe4w79KUjWUfJfk5fC+Z?=
+ =?us-ascii?Q?ajZUbkhIDqzidvtUEab58CJsq/1Sh/3WKaCkjrEnnRlQCJbghgBY+YbpK8aK?=
+ =?us-ascii?Q?ZucS8/ySENap8di4jBDpNT0LjRVTG7qJMn9Ow711HpsGkb6kNjzDa1zGTgx3?=
+ =?us-ascii?Q?HNjxiB+KeT6gzrx1axvvhuwgRx6At92hvMYeWO/5w8cbbzIDNuFKu4mqad9H?=
+ =?us-ascii?Q?SuKfL408BoRo5BNBx6bD4zyTx/VFTNXnOA/YLbOiw7AokjNZvCeWPQtf014K?=
+ =?us-ascii?Q?AI8z+Rdif9cGEsoUPI/+gekBZWUCHQKNOytJAhdXN3HZkl6LDKpRhSuQMMzV?=
+ =?us-ascii?Q?tjSx8dlAglm9WlOLuSocycrymuwXewkZjSMj6yJXuwNmyD2KcDFX6dso9d7Q?=
+ =?us-ascii?Q?ma++UjY05SYI9qUWImpXPC6A?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ffc67c4-ba7b-4274-9d79-08d947dd8ba9
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB5506.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jul 2021 22:11:51.1326 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: cH4AuLJO/ysHm0qh5ICYmLCC9C0V3Ngyrpv61JsVO6E2ZE3NUMdG7xxBY5h5S0W4
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5078
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,117 +145,67 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 14 Jul 2021 21:20:38 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
-> +/*
-> + * We need to get memory_lock for each device, but devices can share mmap_lock,
-> + * therefore we need to zap and hold the vma_lock for each device, and only then
-> + * get each memory_lock.
-> + */
-> +static int vfio_hot_reset_device_set(struct vfio_pci_device *vdev,
-> +				     struct vfio_pci_group_info *groups)
-> +{
-> +	struct vfio_device_set *dev_set = vdev->vdev.dev_set;
-> +	struct vfio_pci_device *cur_mem =
-> +		list_first_entry(&dev_set->device_list, struct vfio_pci_device,
-> +				 vdev.dev_set_list);
+On Thu, Jul 15, 2021 at 03:00:55PM -0600, Alex Williamson wrote:
+> On Wed, 14 Jul 2021 21:20:38 -0300
+> Jason Gunthorpe <jgg@nvidia.com> wrote:
+> > +/*
+> > + * We need to get memory_lock for each device, but devices can share mmap_lock,
+> > + * therefore we need to zap and hold the vma_lock for each device, and only then
+> > + * get each memory_lock.
+> > + */
+> > +static int vfio_hot_reset_device_set(struct vfio_pci_device *vdev,
+> > +				     struct vfio_pci_group_info *groups)
+> > +{
+> > +	struct vfio_device_set *dev_set = vdev->vdev.dev_set;
+> > +	struct vfio_pci_device *cur_mem =
+> > +		list_first_entry(&dev_set->device_list, struct vfio_pci_device,
+> > +				 vdev.dev_set_list);
+> 
+> We shouldn't be looking at the list outside of the lock, if the first
+> entry got removed we'd break our unwind code.
+> 
+> > +	struct vfio_pci_device *cur_vma;
+> > +	struct vfio_pci_device *cur;
+> > +	bool is_mem = true;
+> > +	int ret;
+> >  
+> > -	if (pci_dev_driver(pdev) != &vfio_pci_driver) {
+> > -		vfio_device_put(device);
+> > -		return -EBUSY;
+> > +	mutex_lock(&dev_set->lock);
+>         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We shouldn't be looking at the list outside of the lock, if the first
-entry got removed we'd break our unwind code.
+Oh, righto, this is an oopsie!
 
-> +	struct vfio_pci_device *cur_vma;
-> +	struct vfio_pci_device *cur;
-> +	bool is_mem = true;
-> +	int ret;
->  
-> -	if (pci_dev_driver(pdev) != &vfio_pci_driver) {
-> -		vfio_device_put(device);
-> -		return -EBUSY;
-> +	mutex_lock(&dev_set->lock);
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> > +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list)
+> > +		up_write(&cur->memory_lock);
+> > +	mutex_unlock(&dev_set->lock);
+> > +
+> > +	return ret;
+> 
+> 
+> Isn't the above section actually redundant to below, ie. we could just
+> fall through after the pci_reset_bus()?  Thanks,
 
-> +
-> +	/* All devices in the group to be reset need VFIO devices */
-> +	if (vfio_pci_for_each_slot_or_bus(
-> +		    vdev->pdev, vfio_pci_check_all_devices_bound, dev_set,
-> +		    !pci_probe_reset_slot(vdev->pdev->slot))) {
-> +		ret = -EINVAL;
-> +		goto err_unlock;
->  	}
->  
-> -	vdev = container_of(device, struct vfio_pci_device, vdev);
-> +	list_for_each_entry(cur_vma, &dev_set->device_list, vdev.dev_set_list) {
-> +		/*
-> +		 * Test whether all the affected devices are contained by the
-> +		 * set of groups provided by the user.
-> +		 */
-> +		if (!vfio_dev_in_groups(cur_vma, groups)) {
-> +			ret = -EINVAL;
-> +			goto err_undo;
-> +		}
->  
-> -	/*
-> -	 * Locking multiple devices is prone to deadlock, runaway and
-> -	 * unwind if we hit contention.
-> -	 */
-> -	if (!vfio_pci_zap_and_vma_lock(vdev, true)) {
-> -		vfio_device_put(device);
-> -		return -EBUSY;
-> +		/*
-> +		 * Locking multiple devices is prone to deadlock, runaway and
-> +		 * unwind if we hit contention.
-> +		 */
-> +		if (!vfio_pci_zap_and_vma_lock(cur_vma, true)) {
-> +			ret = -EBUSY;
-> +			goto err_undo;
-> +		}
->  	}
->  
-> -	devs->devices[devs->cur_index++] = vdev;
-> -	return 0;
-> +	list_for_each_entry(cur_mem, &dev_set->device_list, vdev.dev_set_list) {
-> +		if (!down_write_trylock(&cur_mem->memory_lock)) {
-> +			ret = -EBUSY;
-> +			goto err_undo;
-> +		}
-> +		mutex_unlock(&cur_mem->vma_lock);
-> +	}
-> +
-> +	ret = pci_reset_bus(vdev->pdev);
-> +
+It could, but I thought it was less confusing this way due to how
+oddball the below is:
 
+> > +err_undo:
+> > +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list) {
+> > +		if (cur == cur_mem)
+> > +			is_mem = false;
+> > +		if (cur == cur_vma)
+> > +			break;
+> > +		if (is_mem)
+> > +			up_write(&cur->memory_lock);
+> > +		else
+> > +			mutex_unlock(&cur->vma_lock);
+> > +	}
 
-> +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list)
-> +		up_write(&cur->memory_lock);
-> +	mutex_unlock(&dev_set->lock);
-> +
-> +	return ret;
+But either works, do want it switch in v2?
 
-
-Isn't the above section actually redundant to below, ie. we could just
-fall through after the pci_reset_bus()?  Thanks,
-
-Alex
-
-> +
-> +err_undo:
-> +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list) {
-> +		if (cur == cur_mem)
-> +			is_mem = false;
-> +		if (cur == cur_vma)
-> +			break;
-> +		if (is_mem)
-> +			up_write(&cur->memory_lock);
-> +		else
-> +			mutex_unlock(&cur->vma_lock);
-> +	}
-> +err_unlock:
-> +	mutex_unlock(&dev_set->lock);
-> +	return ret;
->  }
->  
->  /*
-
+Thanks,
+Jason
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
