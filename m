@@ -2,76 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB30C3CAF1B
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 00:27:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 279193CB2FC
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 09:12:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4E84D6E452;
-	Thu, 15 Jul 2021 22:27:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 55B706E91C;
+	Fri, 16 Jul 2021 07:12:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 86E316E45C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Jul 2021 22:27:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626388073;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CLA8eO2Mn4hxr+cJbgc910e8VN/wkTHNL7BaNmCYSD0=;
- b=ib8AAkbqegMAfV2nzCnIINIB43tGbgvDTJc6mHYo2/SCkTaLaK5RuCOaLBlZBCRn6YoXNN
- GW88/Ra+WaDqybutYlO9uWRzSw84IPC89lP4zVcVr7rVq3GM+IeIUGuxOG+Llp/EsYeH7x
- dqjGNIeP7KZ2OHqv7WHbNZBAJDgIsvc=
-Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
- [209.85.167.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-565-nFAcHP5XPOiAZUSkK0AQWg-1; Thu, 15 Jul 2021 18:27:50 -0400
-X-MC-Unique: nFAcHP5XPOiAZUSkK0AQWg-1
-Received: by mail-oi1-f198.google.com with SMTP id
- t22-20020a0568081596b029023a41b03dc9so4878717oiw.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Jul 2021 15:27:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CLA8eO2Mn4hxr+cJbgc910e8VN/wkTHNL7BaNmCYSD0=;
- b=thFcJB1isB0JDZSRIqRlY4YTEVZ1oxWBnSqed7AkR6LXtu86cWL1afhPI2T/rCaXxi
- 9g3vCC/w2nd2JJW++ES8AiPFXsDJRdhhCyg03HEoZ7y0wc/WlFUWpkA6Ocp/eIVm0dux
- VdVOIOupPx6nAqZjTZoujkp/cyY1IbX3hr13YBQtQxSaGbUKNYMzLWJdnqceAhJF0CqT
- r7d0LgprxuiaZIGIVidnT9zETY42z15liz7QT/SIrRLQCT0g6fxMxK70qcX7dSGRKXs3
- ldEPsL2YsXtkT/M99aJvOShitnjsYjpAF5b1AhELOkLD9nNBDUP4HgSWmSpprXKiu7qA
- NIIg==
-X-Gm-Message-State: AOAM532RYTvcI8r7KstTSbpbN89EQllx+08qvXXSBA4We1FLp+jzuWFN
- dhBnISqLPLizM401mCYYmu9S+BgLRanFvQRTYORP5dZb+ILtf2lqs21uYKiiqWOzoV4VB1V3JBh
- xoW//3lwaR7xNfyz7aymO0AvBcYVIpqSMlA==
-X-Received: by 2002:a9d:5e15:: with SMTP id d21mr5845713oti.280.1626388069902; 
- Thu, 15 Jul 2021 15:27:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyp8ZblGgPS0JAdEwOCHdvHkA3HueEV2SZpBhta6Fuh8EOKxxl4birTsJK3gicGUmZGOxesYw==
-X-Received: by 2002:a9d:5e15:: with SMTP id d21mr5845703oti.280.1626388069722; 
- Thu, 15 Jul 2021 15:27:49 -0700 (PDT)
-Received: from redhat.com ([198.99.80.109])
- by smtp.gmail.com with ESMTPSA id v203sm1565993oib.37.2021.07.15.15.27.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Jul 2021 15:27:49 -0700 (PDT)
-Date: Thu, 15 Jul 2021 16:27:47 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 25E186E919;
+ Fri, 16 Jul 2021 07:12:31 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10046"; a="271800646"
+X-IronPort-AV: E=Sophos;i="5.84,244,1620716400"; 
+ d="asc'?scan'208";a="271800646"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2021 00:12:29 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,244,1620716400"; 
+ d="asc'?scan'208";a="495951551"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by FMSMGA003.fm.intel.com with ESMTP; 16 Jul 2021 00:12:21 -0700
+Date: Fri, 16 Jul 2021 14:50:57 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 09/13] vfio/pci: Reorganize VFIO_DEVICE_PCI_HOT_RESET to
- use the device set
-Message-ID: <20210715162747.4186b482.alex.williamson@redhat.com>
-In-Reply-To: <20210715221149.GJ543781@nvidia.com>
+Subject: Re: [PATCH 12/13] vfio/gvt: Fix open/close when multiple device FDs
+ are open
+Message-ID: <20210716065057.GA13928@zhen-hp.sh.intel.com>
 References: <0-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
- <9-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
- <20210715150055.474f535f.alex.williamson@redhat.com>
- <20210715221149.GJ543781@nvidia.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ <12-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <12-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,6 +45,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
  David Airlie <airlied@linux.ie>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
@@ -98,87 +60,106 @@ Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
  Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
  Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
  Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
  Harald Freudenberger <freude@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
  intel-gvt-dev@lists.freedesktop.org, "Raj, Ashok" <ashok.raj@intel.com>,
  Tony Krowiak <akrowiak@linux.ibm.com>, Yishai Hadas <yishaih@nvidia.com>,
  Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
  Daniel Vetter <daniel@ffwll.ch>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1051332065=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 15 Jul 2021 19:11:49 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> On Thu, Jul 15, 2021 at 03:00:55PM -0600, Alex Williamson wrote:
-> > On Wed, 14 Jul 2021 21:20:38 -0300
-> > Jason Gunthorpe <jgg@nvidia.com> wrote:  
-> > > +/*
-> > > + * We need to get memory_lock for each device, but devices can share mmap_lock,
-> > > + * therefore we need to zap and hold the vma_lock for each device, and only then
-> > > + * get each memory_lock.
-> > > + */
-> > > +static int vfio_hot_reset_device_set(struct vfio_pci_device *vdev,
-> > > +				     struct vfio_pci_group_info *groups)
-> > > +{
-> > > +	struct vfio_device_set *dev_set = vdev->vdev.dev_set;
-> > > +	struct vfio_pci_device *cur_mem =
-> > > +		list_first_entry(&dev_set->device_list, struct vfio_pci_device,
-> > > +				 vdev.dev_set_list);  
-> > 
-> > We shouldn't be looking at the list outside of the lock, if the first
-> > entry got removed we'd break our unwind code.
-> >   
-> > > +	struct vfio_pci_device *cur_vma;
-> > > +	struct vfio_pci_device *cur;
-> > > +	bool is_mem = true;
-> > > +	int ret;
-> > >  
-> > > -	if (pci_dev_driver(pdev) != &vfio_pci_driver) {
-> > > -		vfio_device_put(device);
-> > > -		return -EBUSY;
-> > > +	mutex_lock(&dev_set->lock);  
-> >         ^^^^^^^^^^^^^^^^^^^^^^^^^^^  
-> 
-> Oh, righto, this is an oopsie!
-> 
-> > > +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list)
-> > > +		up_write(&cur->memory_lock);
-> > > +	mutex_unlock(&dev_set->lock);
-> > > +
-> > > +	return ret;  
-> > 
-> > 
-> > Isn't the above section actually redundant to below, ie. we could just
-> > fall through after the pci_reset_bus()?  Thanks,  
-> 
-> It could, but I thought it was less confusing this way due to how
-> oddball the below is:
-> 
-> > > +err_undo:
-> > > +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list) {
-> > > +		if (cur == cur_mem)
-> > > +			is_mem = false;
-> > > +		if (cur == cur_vma)
-> > > +			break;
-> > > +		if (is_mem)
-> > > +			up_write(&cur->memory_lock);
-> > > +		else
-> > > +			mutex_unlock(&cur->vma_lock);
-> > > +	}  
-> 
-> But either works, do want it switch in v2?
+--===============1051332065==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="k+w/mQv8wyuph6w0"
+Content-Disposition: inline
 
-Yeah, I think the simpler version just adds to the confusion of what
-this oddball logic does.  It already handles all cases, up to and
-including success, so let's give it more exercise by always using it.
-Thanks,
 
-Alex
+--k+w/mQv8wyuph6w0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2021.07.14 21:20:41 -0300, Jason Gunthorpe wrote:
+> The user can open multiple device FDs if it likes, however the open
+> function calls vfio_register_notifier() on device global state. Calling
+> vfio_register_notifier() twice will trigger a WARN_ON from
+> notifier_chain_register() and the first close will wrongly delete the
+> notifier and more.
+>=20
+> Since these really want the new open/close_device() semantics just change
+> the function over.
+>=20
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
+kvmgt.c
+> index 1ac98f8aba31e6..7efa386449d104 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -885,7 +885,7 @@ static int intel_vgpu_group_notifier(struct notifier_=
+block *nb,
+>  	return NOTIFY_OK;
+>  }
+> =20
+> -static int intel_vgpu_open(struct mdev_device *mdev)
+> +static int intel_vgpu_open_device(struct mdev_device *mdev)
+>  {
+>  	struct intel_vgpu *vgpu =3D mdev_get_drvdata(mdev);
+>  	struct kvmgt_vdev *vdev =3D kvmgt_vdev(vgpu);
+> @@ -1004,7 +1004,7 @@ static void __intel_vgpu_release(struct intel_vgpu =
+*vgpu)
+>  	vgpu->handle =3D 0;
+>  }
+> =20
+> -static void intel_vgpu_release(struct mdev_device *mdev)
+> +static void intel_vgpu_close_device(struct mdev_device *mdev)
+>  {
+>  	struct intel_vgpu *vgpu =3D mdev_get_drvdata(mdev);
+> =20
+> @@ -1753,8 +1753,8 @@ static struct mdev_parent_ops intel_vgpu_ops =3D {
+>  	.create			=3D intel_vgpu_create,
+>  	.remove			=3D intel_vgpu_remove,
+> =20
+> -	.open			=3D intel_vgpu_open,
+> -	.release		=3D intel_vgpu_release,
+> +	.open_device		=3D intel_vgpu_open_device,
+> +	.close_device		=3D intel_vgpu_close_device,
+> =20
+>  	.read			=3D intel_vgpu_read,
+>  	.write			=3D intel_vgpu_write,
+
+Looks ok to me. Thanks!
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+--k+w/mQv8wyuph6w0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYPEsTAAKCRCxBBozTXgY
+Jx7CAJwL3rjxtO0hmyVLloknYXTNq4Pl4gCcC95wG37YNR4DYMf5Ns1jbuH5Nqk=
+=WTLJ
+-----END PGP SIGNATURE-----
+
+--k+w/mQv8wyuph6w0--
+
+--===============1051332065==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1051332065==--
