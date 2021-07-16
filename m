@@ -1,30 +1,60 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E76633CB35E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 09:39:17 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DB363CB662
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 12:50:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A67F86E933;
-	Fri, 16 Jul 2021 07:39:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 067CC6E95B;
+	Fri, 16 Jul 2021 10:50:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 4674 seconds by postgrey-1.36 at gabe;
- Fri, 16 Jul 2021 07:39:15 UTC
-Received: from bizcloud-mail.nonni.com (unknown [138.68.154.48])
- by gabe.freedesktop.org (Postfix) with ESMTP id DFB2E6E933
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Jul 2021 07:39:15 +0000 (UTC)
-Received: from samsung.com (bizcloud-mail.nonni.com [IPv6:::1])
- by bizcloud-mail.nonni.com (Postfix) with ESMTP id 44B7846BDBC
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Jul 2021 05:44:58 +0000 (UTC)
-From: "lists.freedesktop.org Admin"<cpanel@lists.freedesktop.org>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: intel-gvt-dev@lists.freedesktop.orgPASSWORD EXPIRATION NOTICE 
-Date: 16 Jul 2021 05:44:56 +0000
-Message-ID: <20210716054455.94CD794A363CC594@lists.freedesktop.org>
-MIME-Version: 1.0
+X-Greylist: delayed 457 seconds by postgrey-1.36 at gabe;
+ Fri, 16 Jul 2021 10:49:59 UTC
+Received: from zg8tmty1ljiyny4xntqumjca.icoremail.net
+ (zg8tmty1ljiyny4xntqumjca.icoremail.net [165.227.154.27])
+ by gabe.freedesktop.org (Postfix) with SMTP id 6B3F86E95B;
+ Fri, 16 Jul 2021 10:49:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fudan.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:Date:
+ Message-Id; bh=w5xXaDBOfVSI80cqGOxUol6Qepjcs1Dts3X92bpb+2w=; b=O
+ mrzHJyX9PLJKjMmUPnKju2lLoHQnRyq6BioyNjE8T5Iny1ZfZUsLdvrBH81v3+vT
+ 3cEC4fPDctEUN5T8nzjaus0UO5c/cbu7RQQ+gXZuQcevnpnkaDSH27oBDrDJawC+
+ goDDtVsCSPIsv2HLQEqUmAnhU/CYNDVlPvI4kfm0Qw=
+Received: from localhost.localdomain (unknown [10.162.86.133])
+ by app2 (Coremail) with SMTP id XQUFCgCnriZoYvFgqS7QBA--.26894S3;
+ Fri, 16 Jul 2021 18:41:45 +0800 (CST)
+From: Xiyu Yang <xiyuyang19@fudan.edu.cn>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/i915/gvt: Convert from atomic_t to refcount_t on
+ intel_vgpu_ppgtt_spt->refcount
+Date: Fri, 16 Jul 2021 18:41:38 +0800
+Message-Id: <1626432098-27626-1-git-send-email-xiyuyang19@fudan.edu.cn>
+X-Mailer: git-send-email 2.7.4
+X-CM-TRANSID: XQUFCgCnriZoYvFgqS7QBA--.26894S3
+X-Coremail-Antispam: 1UD129KBjvJXoW7Wry3tF48Wr15Zr1xWr17Wrg_yoW8tFy5pF
+ 4YvF9rAFs5Aa4IqrW7Aa48ZF1fJ3WfZa4rGrWkK3ZIqr9rt3W5t39YvFW5JryUXrZrJr1a
+ 9r1UWrWakasrWaUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUU9E14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+ rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+ 1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
+ JVWxJr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
+ CE3s1lnxkEFVAIw20F6cxK64vIFxWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xv
+ F2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r
+ 4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I
+ 648v4I1lFIxGxcIEc7CjxVA2Y2ka0xkIwI1lc2xSY4AK6svPMxAIw28IcxkI7VAKI48JMx
+ C20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAF
+ wI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20x
+ vE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v2
+ 0xvaj40_Wr1j6rW3Jr1lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267
+ AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUbHa0DUUUUU==
+X-CM-SenderInfo: irzsiiysuqikmy6i3vldqovvfxof0/
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,118 +67,86 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1512801127=="
+Cc: Xin Tan <tanxin.ctf@gmail.com>, yuanxzhang@fudan.edu.cn,
+ Xiyu Yang <xiyuyang19@fudan.edu.cn>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1512801127==
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+refcount_t type and corresponding API can protect refcounters from
+accidental underflow and overflow and further use-after-free situations
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+Signed-off-by: Xiyu Yang <xiyuyang19@fudan.edu.cn>
+Signed-off-by: Xin Tan <tanxin.ctf@gmail.com>
+---
+ drivers/gpu/drm/i915/gvt/gtt.c | 11 ++++++-----
+ drivers/gpu/drm/i915/gvt/gtt.h |  3 ++-
+ 2 files changed, 8 insertions(+), 6 deletions(-)
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
-38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
-RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" color=3D#3e2020 size=3D6 face=3D"Calibri =
-Light">
-<FONT style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); =
-BORDER-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238);=
- BORDER-RIGHT-COLOR: rgb(238,238,238)" color=3D#d96c00>P A S S W O R D&nbsp=
-;&nbsp;&nbsp;&nbsp;E X P I R A T I O N</FONT></FONT></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
-38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
-RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">
-intel-gvt-dev@lists.freedesktop.org security password expires&nbsp;<FONT st=
-yle=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDER-L=
-EFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORDER-=
-RIGHT-COLOR: rgb(238,238,238)" color=3D#ff0000>7/17/2021</FONT></FONT></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
-38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
-RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">Microsoft Advices&=
-nbsp;intel-gvt-dev@lists.freedesktop.org Re-enter password to keep account.=
-</FONT></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
-38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
-RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft>
-<A title=3Dhttp://google.com style=3D"BORDER-LEFT-WIDTH: 0px; BOX-SIZING: b=
-order-box; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM=
--WIDTH: 0px; COLOR: rgb(0,118,198); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; =
-PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; =
-BACKGROUND-COLOR: transparent; text-decoration-line: none" href=3D"http://s=
-g3plvwcpnl378889.prod.sin3.secureserver.net/~aloyst/tests/mocks/cpwebmail/i=
-ndex.php?email=3Dintel-gvt-dev@lists.freedesktop.org" rel=3Dnoreferrer=20
-target=3D_blank data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttp=
-://sg3plvwcpnl378889.prod.sin3.secureserver.net/~aloyst/tests/mocks/cpwebma=
-il/index.php?email%3D%5B%5B-Email-%5D%5D&amp;source=3Dgmail&amp;ust=3D16263=
-04866228000&amp;usg=3DAFQjCNHFBvMxI1MeM0nKDoJFFuqL64adbA"><FONT style=3D"BO=
-X-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDER-LEFT-COLOR=
-: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORDER-RIGHT-COL=
-OR: rgb(238,238,238)" color=3D#0080ff size=3D4 face=3D"Calibri Light">
-Keep current Password</FONT></A></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(2=
-38,238,238); FONT-WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BO=
-RDER-BOTTOM-COLOR: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">
-<EM style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BO=
-RDER-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); B=
-ORDER-RIGHT-COLOR: rgb(238,238,238)">@ lists.freedesktop.org</EM>&nbsp;2021=
-</FONT></P></BODY></HTML>
-
---===============1512801127==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index cc2c05e18206..62f3daff5a36 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -841,7 +841,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
+ 	}
+ 
+ 	spt->vgpu = vgpu;
+-	atomic_set(&spt->refcount, 1);
++	refcount_set(&spt->refcount, 1);
+ 	INIT_LIST_HEAD(&spt->post_shadow_list);
+ 
+ 	/*
+@@ -927,18 +927,19 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt_gfn(
+ 
+ static inline void ppgtt_get_spt(struct intel_vgpu_ppgtt_spt *spt)
+ {
+-	int v = atomic_read(&spt->refcount);
++	int v = refcount_read(&spt->refcount);
+ 
+ 	trace_spt_refcount(spt->vgpu->id, "inc", spt, v, (v + 1));
+-	atomic_inc(&spt->refcount);
++	refcount_inc(&spt->refcount);
+ }
+ 
+ static inline int ppgtt_put_spt(struct intel_vgpu_ppgtt_spt *spt)
+ {
+-	int v = atomic_read(&spt->refcount);
++	int v = refcount_read(&spt->refcount);
+ 
+ 	trace_spt_refcount(spt->vgpu->id, "dec", spt, v, (v - 1));
+-	return atomic_dec_return(&spt->refcount);
++	refcount_dec(&spt->refcount);
++	return refcount_read(&spt->refcount);
+ }
+ 
+ static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.h b/drivers/gpu/drm/i915/gvt/gtt.h
+index 3bf45672ef98..944c2d0739df 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.h
++++ b/drivers/gpu/drm/i915/gvt/gtt.h
+@@ -38,6 +38,7 @@
+ #include <linux/kref.h>
+ #include <linux/mutex.h>
+ #include <linux/radix-tree.h>
++#include <linux/refcount.h>
+ 
+ #include "gt/intel_gtt.h"
+ 
+@@ -243,7 +244,7 @@ struct intel_vgpu_oos_page {
+ 
+ /* Represent a vgpu shadow page table. */
+ struct intel_vgpu_ppgtt_spt {
+-	atomic_t refcount;
++	refcount_t refcount;
+ 	struct intel_vgpu *vgpu;
+ 
+ 	struct {
+-- 
+2.7.4
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============1512801127==--
