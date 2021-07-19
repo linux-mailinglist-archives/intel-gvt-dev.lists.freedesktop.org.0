@@ -2,69 +2,28 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7429A3CD71C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Jul 2021 16:47:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BEC2C3CEEFA
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Jul 2021 00:14:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1039F6E15D;
-	Mon, 19 Jul 2021 14:47:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 69C056E05F;
+	Mon, 19 Jul 2021 22:14:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 97E1D6E159
+Received: from mail.ahylz.com.cn (unknown [220.248.243.245])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 67CC56E05F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Jul 2021 14:47:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626706075;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=4+c2mimUJxS/GfqKAMPDQnAMd4K+lxrp07r5+X88g/E=;
- b=Z3SSmli95cx2LBNOJ0n+RALkbsBTxiv7I46dzaMpePaIytIUVmHBlvMJGZWecJkI/aI59V
- eempB/vU2ONvAldE8Hlp+l/jm/XHMcjQTHO4Ejm7/ookWVTMzTImFMa1rYquLhKAI2V2AB
- HOYRcMyhsrXnRLriZ82CZeaMuvitk58=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-587-i1pU7SFlN4-XnU6s5O2Fxg-1; Mon, 19 Jul 2021 10:47:52 -0400
-X-MC-Unique: i1pU7SFlN4-XnU6s5O2Fxg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4BA6BC73A1;
- Mon, 19 Jul 2021 14:47:48 +0000 (UTC)
-Received: from localhost (ovpn-112-158.ams2.redhat.com [10.36.112.158])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 727BE5D9DC;
- Mon, 19 Jul 2021 14:47:40 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
- Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
- <alex.williamson@redhat.com>, Christian Borntraeger
- <borntraeger@de.ibm.com>, Jonathan Corbet <corbet@lwn.net>, Daniel Vetter
- <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
- dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, Eric
- Farman <farman@linux.ibm.com>, Harald Freudenberger
- <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, Jani Nikula
- <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>, Joonas
- Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
- Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
- linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>, Peter
- Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Vineeth Vijayan
- <vneethv@linux.ibm.com>, Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang
- <zhi.a.wang@intel.com>
-Subject: Re: [PATCH 12/13] vfio/gvt: Fix open/close when multiple device FDs
- are open
-In-Reply-To: <12-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
-Organization: Red Hat GmbH
-References: <12-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
-User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
-Date: Mon, 19 Jul 2021 16:47:38 +0200
-Message-ID: <87lf629x85.fsf@redhat.com>
+ Mon, 19 Jul 2021 22:14:28 +0000 (UTC)
+Received: from User (unknown [83.137.2.193])
+ by mail.ahylz.com.cn (Postfix - by ahylz.com.cn) with ESMTPA id 699E21313E03; 
+ Tue, 20 Jul 2021 06:12:25 +0800 (HKT)
+From: "Jan Franssen"<myyang@ahylz.com.cn>
+Subject: GREETHINGS
+Date: Tue, 20 Jul 2021 00:13:18 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,33 +36,41 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas <yishaih@nvidia.com>,
- Leon Romanovsky <leonro@nvidia.com>, "Raj, Ashok" <ashok.raj@intel.com>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: janfranssen@counsellor.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210719221430.69C056E05F@gabe.freedesktop.org>
 
-On Wed, Jul 14 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
-
-> The user can open multiple device FDs if it likes, however the open
-> function calls vfio_register_notifier() on device global state. Calling
-> vfio_register_notifier() twice will trigger a WARN_ON from
-> notifier_chain_register() and the first close will wrongly delete the
-> notifier and more.
->
-> Since these really want the new open/close_device() semantics just change
-> the function over.
->
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/gpu/drm/i915/gvt/kvmgt.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-
-_______________________________________________
-intel-gvt-dev mailing list
-intel-gvt-dev@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+RGVhciBTaXIsCgpNeSBuYW1lIGlzIE1yLiBKYW4gRnJhbnNzZW4sIENoaWVmIEZpbmFuY2lhbCBP
+ZmZpY2VyLApBTUUgQ2FwaXRhbCBBc3NldCBNYW5hZ2VtZW50IExpbWl0ZWQgaGVyZSBpbiBMb25k
+b24sIFVuaXRlZCBLaW5nZG9tOyBJCmhhdmUgVVJHRU5UIGFuZCBkaXNjcmVldCBidXNpbmVzcyBw
+cm9wb3NhbCBmb3IgeW91IHRoYXQgc2hhbGwgYmVuZWZpdAp1cyBpbW1lbnNlbHkgc2hvdWxkIHlv
+dSBjaG9vc2UgdG8gcGFydGljaXBhdGUgb3IgcGFydG5lciB3aXRoIG1lLgoKQmVmb3JlIEkgcmV2
+ZWFsIGFueSBzZW5zaXRpdmUgaW5mb3JtYXRpb24gaXQgaXMgaW1wb3J0YW50IEkgc3RhdGUKY2F0
+ZWdvcmljYWxseSB0aGF0LCBhbGwgcHJpdmlsZWdlIGluZm9ybWF0aW9uIGNvbmNlcm5pbmcgbXkg
+cHJvcG9zYWwKYW5kIHRoaXMgYnVzaW5lc3MgdHJhbnNhY3Rpb24gaXMgdHJlYXRlZCB3aXRoIHV0
+bW9zdCBjb25maWRlbnRpYWxpdHkKZHVlIHRvIHRoZSBzb3VyY2Ugb2YgZnVuZHMuCgpUaGVzZSBm
+dW5kcyB3aGljaCBzdW1zIHVwIHRvIChHQlCjMTUuNSkgTWlsbGlvbiBCcml0aXNoIFBvdW5kcyBh
+cmUKY3VycmVudGx5IGluIG91ciBjbGllbnQgc2VncmVnYXRlZCBhY2NvdW50IGluIHJlbGF0aW9u
+IHRvIG9uZSBvZiBvdXIKcHJpdmF0ZSBjbGllbnRzIGxhdGUgKERlY2Vhc2VkKSB3aG8gcGFzc2Vk
+IGF3YXkgNSB5ZWFycyBhZ28uIEhlbmNlLCB0aGUKcmVhc29uIHdoeSBJIGhhdmUgY29udGFjdGVk
+IHlvdSBpcyBiZWNhdXNlIHlvdSBzaGFyZSB0aGUgc2FtZSBuYW1lCndpdGggdGhlIGRlY2Vhc2Vk
+IHdoaWNoIGlzIHZlcnkgaW1wb3J0YW50IGluIHNlY3VyaW5nIHRoZSBhYm92ZQptZW50aW9uZWQg
+ZnVuZHMuCgpUaGVzZSBmdW5kcyBhcmUgaGVsZCB3aXRoIG91ciBwcmltZSBicm9rZXJzIHdoaWNo
+IGlzIGFuIG9mZnNob3JlIGJhbmsKaGVyZSBpbiB0aGUgVUsuIFdpdGggeW91ciBwZXJtaXNzaW9u
+LCBJIHNoYWxsIGdpdmUgc3RlcCBieSBzdGVwCmV4cGxhbmF0aW9uIG9uIHdoeSBJIG5lZWQgeW91
+ciBhc3Npc3RhbmNlIGFuZCBhbHNvIHRoZSBzb3VyY2Ugb2YKZnVuZHMuIEZ1cnRoZXIgaW5mb3Jt
+YXRpb24gb24gaG93IHdlIHNoYWxsIHByb2NlZWQgbGVnYWxseSB0byBvYnRhaW4KVGhlc2UgZnVu
+ZHMgd2lsbCBiZSBwcm92aWRlZCBpbiBkdWUgY291cnNlIG9uY2UgSSBhc2NlcnRhaW4geW91cgpn
+ZW51aW5lIGludGVudGlvbnMgYW5kIHdpbGxpbmduZXNzIHRvIGFzc2lzdC4KClNob3VsZCB5b3Ug
+YmUgaW50ZXJlc3RlZCwgdGhlbiBJIHdvdWxkIGxpa2UgdG8gaGVhciBmcm9tIHlvdSBhcwpzb29u
+IGFzIHBvc3NpYmxlIHZpYSBteSBFbWFpbDpqYW5mcmFuc3NlbkBjb3Vuc2VsbG9yLmNvbSB0byBl
+bmFibGUgbWUKcHJvdmlkZSB5b3Ugd2l0aCBtb3JlIGRldGFpbHMgb24gaG93IHdlIGFyZSB0byBw
+cm9jZWVkLiBJIGFudGljaXBhdGUKYW5kIGxvb2sgZm9yd2FyZCB0byBhIHN1Y2Nlc3NmdWwgYnVz
+aW5lc3MgcmVsYXRpb25zaGlwIHdpdGggeW91LgoKWW91cnMgZmFpdGhmdWxseQpNci5KYW4gRnJh
+bnNzZW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW50
+ZWwtZ3Z0LWRldiBtYWlsaW5nIGxpc3QKaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1n
+dnQtZGV2Cg==
