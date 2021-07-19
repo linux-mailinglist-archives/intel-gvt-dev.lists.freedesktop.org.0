@@ -1,60 +1,69 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DB363CB662
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jul 2021 12:50:02 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 753263CD405
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Jul 2021 13:42:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 067CC6E95B;
-	Fri, 16 Jul 2021 10:50:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EE7746E10E;
+	Mon, 19 Jul 2021 11:42:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 457 seconds by postgrey-1.36 at gabe;
- Fri, 16 Jul 2021 10:49:59 UTC
-Received: from zg8tmty1ljiyny4xntqumjca.icoremail.net
- (zg8tmty1ljiyny4xntqumjca.icoremail.net [165.227.154.27])
- by gabe.freedesktop.org (Postfix) with SMTP id 6B3F86E95B;
- Fri, 16 Jul 2021 10:49:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fudan.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:Date:
- Message-Id; bh=w5xXaDBOfVSI80cqGOxUol6Qepjcs1Dts3X92bpb+2w=; b=O
- mrzHJyX9PLJKjMmUPnKju2lLoHQnRyq6BioyNjE8T5Iny1ZfZUsLdvrBH81v3+vT
- 3cEC4fPDctEUN5T8nzjaus0UO5c/cbu7RQQ+gXZuQcevnpnkaDSH27oBDrDJawC+
- goDDtVsCSPIsv2HLQEqUmAnhU/CYNDVlPvI4kfm0Qw=
-Received: from localhost.localdomain (unknown [10.162.86.133])
- by app2 (Coremail) with SMTP id XQUFCgCnriZoYvFgqS7QBA--.26894S3;
- Fri, 16 Jul 2021 18:41:45 +0800 (CST)
-From: Xiyu Yang <xiyuyang19@fudan.edu.cn>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] drm/i915/gvt: Convert from atomic_t to refcount_t on
- intel_vgpu_ppgtt_spt->refcount
-Date: Fri, 16 Jul 2021 18:41:38 +0800
-Message-Id: <1626432098-27626-1-git-send-email-xiyuyang19@fudan.edu.cn>
-X-Mailer: git-send-email 2.7.4
-X-CM-TRANSID: XQUFCgCnriZoYvFgqS7QBA--.26894S3
-X-Coremail-Antispam: 1UD129KBjvJXoW7Wry3tF48Wr15Zr1xWr17Wrg_yoW8tFy5pF
- 4YvF9rAFs5Aa4IqrW7Aa48ZF1fJ3WfZa4rGrWkK3ZIqr9rt3W5t39YvFW5JryUXrZrJr1a
- 9r1UWrWakasrWaUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUU9E14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
- JVWxJr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
- CE3s1lnxkEFVAIw20F6cxK64vIFxWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xv
- F2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r
- 4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I
- 648v4I1lFIxGxcIEc7CjxVA2Y2ka0xkIwI1lc2xSY4AK6svPMxAIw28IcxkI7VAKI48JMx
- C20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAF
- wI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20x
- vE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v2
- 0xvaj40_Wr1j6rW3Jr1lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267
- AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUbHa0DUUUUU==
-X-CM-SenderInfo: irzsiiysuqikmy6i3vldqovvfxof0/
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E4D326E10E
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 19 Jul 2021 11:42:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626694967;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=QFvbmLxaTL7ZR1JOPuD7J5PG0/Wd11FgMA0Fpfbp4YU=;
+ b=HAYwfsC0Y+00Ol+8lPEM6etNBnJlGnDTv5s3voXOvPTwyynuvmWiLCKRtSwYlVVbnEOmUq
+ 42lFcTwxgmxj2Fn0Ag3v9ZNIoEwD3YNEmOAa8YaVgZCqN711cJMJw1NSkuRV+i85wO7cIJ
+ mApLeIOq+w1Lb9QOCN0sjg7eYe1FIA0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-209-_ZipgJfiNrK0MGH1D7bbcA-1; Mon, 19 Jul 2021 07:42:44 -0400
+X-MC-Unique: _ZipgJfiNrK0MGH1D7bbcA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E555C1023F4F;
+ Mon, 19 Jul 2021 11:42:39 +0000 (UTC)
+Received: from localhost (ovpn-112-158.ams2.redhat.com [10.36.112.158])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2379719C79;
+ Mon, 19 Jul 2021 11:42:31 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
+ Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
+ <alex.williamson@redhat.com>, Christian Borntraeger
+ <borntraeger@de.ibm.com>, Jonathan Corbet <corbet@lwn.net>, Daniel Vetter
+ <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
+ dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, Eric
+ Farman <farman@linux.ibm.com>, Harald Freudenberger
+ <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
+ <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Jani Nikula
+ <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>, Joonas
+ Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
+ Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>, Peter
+ Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Vineeth Vijayan
+ <vneethv@linux.ibm.com>, Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang
+ <zhi.a.wang@intel.com>
+Subject: Re: [PATCH 01/13] vfio/samples: Remove module get/put
+In-Reply-To: <1-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
+Organization: Red Hat GmbH
+References: <1-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com>
+User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
+Date: Mon, 19 Jul 2021 13:42:29 +0200
+Message-ID: <875yx6bkd6.fsf@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,84 +76,29 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Xin Tan <tanxin.ctf@gmail.com>, yuanxzhang@fudan.edu.cn,
- Xiyu Yang <xiyuyang19@fudan.edu.cn>
-MIME-Version: 1.0
+Cc: Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas <yishaih@nvidia.com>,
+ Leon Romanovsky <leonro@nvidia.com>, "Raj, Ashok" <ashok.raj@intel.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-refcount_t type and corresponding API can protect refcounters from
-accidental underflow and overflow and further use-after-free situations
+On Wed, Jul 14 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-Signed-off-by: Xiyu Yang <xiyuyang19@fudan.edu.cn>
-Signed-off-by: Xin Tan <tanxin.ctf@gmail.com>
----
- drivers/gpu/drm/i915/gvt/gtt.c | 11 ++++++-----
- drivers/gpu/drm/i915/gvt/gtt.h |  3 ++-
- 2 files changed, 8 insertions(+), 6 deletions(-)
+> The patch to move the get/put to core and the patch to convert the samples
+> to use vfio_device crossed in a way that this was missed. When both
+> patches are together the samples do not need their own get/put.
+>
+> Fixes: 437e41368c01 ("vfio/mdpy: Convert to use vfio_register_group_dev()")
+> Fixes: 681c1615f891 ("vfio/mbochs: Convert to use vfio_register_group_dev()")
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  samples/vfio-mdev/mbochs.c | 4 ----
+>  samples/vfio-mdev/mdpy.c   | 4 ----
+>  2 files changed, 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index cc2c05e18206..62f3daff5a36 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -841,7 +841,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
- 	}
- 
- 	spt->vgpu = vgpu;
--	atomic_set(&spt->refcount, 1);
-+	refcount_set(&spt->refcount, 1);
- 	INIT_LIST_HEAD(&spt->post_shadow_list);
- 
- 	/*
-@@ -927,18 +927,19 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt_gfn(
- 
- static inline void ppgtt_get_spt(struct intel_vgpu_ppgtt_spt *spt)
- {
--	int v = atomic_read(&spt->refcount);
-+	int v = refcount_read(&spt->refcount);
- 
- 	trace_spt_refcount(spt->vgpu->id, "inc", spt, v, (v + 1));
--	atomic_inc(&spt->refcount);
-+	refcount_inc(&spt->refcount);
- }
- 
- static inline int ppgtt_put_spt(struct intel_vgpu_ppgtt_spt *spt)
- {
--	int v = atomic_read(&spt->refcount);
-+	int v = refcount_read(&spt->refcount);
- 
- 	trace_spt_refcount(spt->vgpu->id, "dec", spt, v, (v - 1));
--	return atomic_dec_return(&spt->refcount);
-+	refcount_dec(&spt->refcount);
-+	return refcount_read(&spt->refcount);
- }
- 
- static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.h b/drivers/gpu/drm/i915/gvt/gtt.h
-index 3bf45672ef98..944c2d0739df 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.h
-+++ b/drivers/gpu/drm/i915/gvt/gtt.h
-@@ -38,6 +38,7 @@
- #include <linux/kref.h>
- #include <linux/mutex.h>
- #include <linux/radix-tree.h>
-+#include <linux/refcount.h>
- 
- #include "gt/intel_gtt.h"
- 
-@@ -243,7 +244,7 @@ struct intel_vgpu_oos_page {
- 
- /* Represent a vgpu shadow page table. */
- struct intel_vgpu_ppgtt_spt {
--	atomic_t refcount;
-+	refcount_t refcount;
- 	struct intel_vgpu *vgpu;
- 
- 	struct {
--- 
-2.7.4
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
 _______________________________________________
 intel-gvt-dev mailing list
