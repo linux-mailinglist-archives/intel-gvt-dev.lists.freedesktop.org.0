@@ -2,76 +2,114 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56D6A3D042D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 00:01:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E1B173D04C5
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 00:50:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 73F506E56D;
-	Tue, 20 Jul 2021 22:01:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7154B6E400;
+	Tue, 20 Jul 2021 22:50:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CDA1F6E56D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Jul 2021 22:01:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626818494;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DGxLxC73Q30FLZh4kHloeV2LTAZ2CJRDqzZBDuBEMfM=;
- b=EMRoOrgBZRjNWI+44kHRDVeHc9uN3nxMbdOL/AL/jOMBeCMs4zLH8xpImFTOZ3MCZd83Zw
- NX38DcJlp38OIEwDC7jhz+1EjTbAbiQDRfExG5ZsvX/GhHN8xj3lNuHMsrIm/tfmWn0jWq
- FBBNtk6YjQdB5Nfhs92sn9/8YiC+Kmw=
-Received: from mail-oo1-f70.google.com (mail-oo1-f70.google.com
- [209.85.161.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-148-E-6J_oqDMcG6bFDOFd7zwA-1; Tue, 20 Jul 2021 18:01:32 -0400
-X-MC-Unique: E-6J_oqDMcG6bFDOFd7zwA-1
-Received: by mail-oo1-f70.google.com with SMTP id
- s11-20020a4ac10b0000b029024bc69d2a8aso220731oop.16
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Jul 2021 15:01:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=DGxLxC73Q30FLZh4kHloeV2LTAZ2CJRDqzZBDuBEMfM=;
- b=MWWmbA/uVaMHUykU6IKMXKLj1SSAnGr5tKSvQkrff9FKbbyGWgK1TX9E8VtxC1Sm07
- /Ts905iJKmhz9bZ9XXSJez8nr36sG2w0gj6chqgX+6NEH8fmbWMiivlKJ4hwim+calg5
- yj5U9ljDLfZZdUjRMM7hcntgMfaqI71NNfd1DhY71ihqIIB0fHLMjMOwmO6O3EcMtdse
- W1br20Ig0vhTPCbucKug3MeiaOmhZpvxOrGDLQAOnyKVmWlhPv/Arvtms+kpi9ybSlH4
- AMxIyW44HAjvQtTMWzMqcu622KwgJjuQMx+/PbXGhrTnBl4/zssk4kB/IePBn9G7aNCd
- w40w==
-X-Gm-Message-State: AOAM5318wbu053AbFWoQKcAsC9YxtNAgby8EKBcWc+i+KlCIjhcmX6cO
- IWocZStSB4LsIR3TmoDTFMB+/NjLCAYyE2/2c4rkSUFmALwej5peyeq/scwWd2gFn3wGcZIhEQS
- 2S5Unfr9lExEpQTGGzC/A0ibBVkrNda1/ig==
-X-Received: by 2002:a05:6808:aa3:: with SMTP id
- r3mr18166248oij.133.1626818491767; 
- Tue, 20 Jul 2021 15:01:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwuyDIfTXjm5YKo9TBgR+HrFk2cZEkVnlsdeNA/JOY8RcUjz3Wmb8/jGMHDDitpmXWLkurNEg==
-X-Received: by 2002:a05:6808:aa3:: with SMTP id
- r3mr18166225oij.133.1626818491525; 
- Tue, 20 Jul 2021 15:01:31 -0700 (PDT)
-Received: from redhat.com ([198.99.80.109])
- by smtp.gmail.com with ESMTPSA id q187sm259680oif.2.2021.07.20.15.01.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Jul 2021 15:01:30 -0700 (PDT)
-Date: Tue, 20 Jul 2021 16:01:27 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2065.outbound.protection.outlook.com [40.107.223.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3C5676E3A0;
+ Tue, 20 Jul 2021 22:49:58 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=c0xx9U4ljDSuzVXDf2FTdiFzD2n27NxvPtp2YWNMavkXnHnj7hvTfWP2AjD/Q2gzVGLJw8TlONYPjZpeF0w4VX19BuwTELl0kbZV2QKMbTrP8v6vP+131d13dMa01ohDrh7GMkPNP5aYi+sxOhlcD5NpztWpIl2fS7Oy8evgbQ2wiG0p2NlkoIAyEn2v4BbwidKGgZI/JpRb4AR6yM8yqIQb22G51vEoIcPXDBptdpz5RBRZB86+WEOviunJkdi7F402+dlwAa5fLgMuDK/eBe3Qb7hyxxYkqdQdrCd5iJcT3EK/OB6dhYmYTIB5jru2rTZHwPS1atcfew4ac/rVFg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cEzZa841vkeBoC2mxG/NMGrzpkXdRWDE4qhF5crkf3M=;
+ b=XAzQAR9ug/xqBMGerkJioTYojxTvtzDv6ENn1CEzmvDmKGtU2XjOrYYCDONmE54Bal3JEWqy0z/r8rj8Mi4EaOVUDxS1WW6Rwlw54V74M0a2HNpUzxGFWvtwi5RWgLdibKWMNcSv8ePO7ffa82HCwfh7NS/gEyujSQWbeu4U3dg95k9kkaPF9/qNysHbzY3n2crLNGL4p0O9VJpebaUCrP+Q2bLIGsKm+Pr0h4Am+lEElL2ef1k73Mknxnvf4/mmh0gjw9GVE7UvEy6Oxm6DbRWD9fdfCzYUO9axEElrnQBUNBIw5YuWtV4efzU1kTQ+M5yGpbg5l4HqHrAcBYMSwA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cEzZa841vkeBoC2mxG/NMGrzpkXdRWDE4qhF5crkf3M=;
+ b=PQF0uLxHdqWTKdmgDzVnbX0/VGjfFrkW//h6oMm8zT1SdEefOrEuPiukiM8kHxCHQ5xKCiRLr8KdAXBHOa78wTZ7nkap83xGfW96DQyrv8jCeSewe+jOTnM8VOKoZayNXLrhapzGCqN5qrWA6kgG6Uum3wA0HMadyRdQNOG8QtXSOAeaXROexODKJ1I4wY0lcZA9y1317Jo5X1zDzDyRGICZPsoIpwlSHgQH+7pAwjPuoXbD8j4skIKp7SWw1quWNFYJADoq4CWk5ZSqvBdu/vYqsLT+e2JCzwtOhgAGy3HJScYLpxTVA0X3vGutorwQ1y0DZiiGTKisN1DvKT9HPg==
+Authentication-Results: redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=none action=none header.from=nvidia.com;
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com (2603:10b6:208:1cb::22)
+ by BL1PR12MB5093.namprd12.prod.outlook.com (2603:10b6:208:309::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.24; Tue, 20 Jul
+ 2021 22:49:56 +0000
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d017:af2f:7049:5482]) by BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d017:af2f:7049:5482%5]) with mapi id 15.20.4331.034; Tue, 20 Jul 2021
+ 22:49:56 +0000
+Date: Tue, 20 Jul 2021 19:49:55 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
 Subject: Re: [PATCH v2 02/14] vfio/mbochs: Fix missing error unwind in
  mbochs_probe()
-Message-ID: <20210720160127.17bf3c19.alex.williamson@redhat.com>
-In-Reply-To: <2-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+Message-ID: <20210720224955.GD1117491@nvidia.com>
 References: <0-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
  <2-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+ <20210720160127.17bf3c19.alex.williamson@redhat.com>
+Content-Disposition: inline
+In-Reply-To: <20210720160127.17bf3c19.alex.williamson@redhat.com>
+X-ClientProxiedBy: BL1PR13CA0127.namprd13.prod.outlook.com
+ (2603:10b6:208:2bb::12) To BL0PR12MB5506.namprd12.prod.outlook.com
+ (2603:10b6:208:1cb::22)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mlx.ziepe.ca (142.162.113.129) by
+ BL1PR13CA0127.namprd13.prod.outlook.com (2603:10b6:208:2bb::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4352.14 via Frontend
+ Transport; Tue, 20 Jul 2021 22:49:56 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from
+ <jgg@nvidia.com>)	id 1m5yYl-005FvT-GW; Tue, 20 Jul 2021 19:49:55 -0300
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 7e149845-a2b7-42d8-af5d-08d94bd0b215
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5093:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BL1PR12MB5093002E4432772CED8815FAC2E29@BL1PR12MB5093.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: izSsyVeA01tMbZ9LxfYyca9ju7t7qPT/SkFHz/Sl0j0wKP5NBy8nDkxtafo8429B/Y0wNYvUICYKaTxHoQdA1NJcBby6XHhWMn8pGJ9rMylCPz6iykqD5nia71KHek2r0sPQwcdodrpQnm54LMoLR4Iqn4xW3NZEChuQNIJjoHctj2TQ9abMFzvAqxkarQQLrQdTtZ1f+AQ4yiSdpKkLdKS1Et/SzKX3TctYq+FIsbArOTLv8D42BZDcCFV4SM7Zg9o0XjTLvRa6WqRfcI1cnZw3LUYJ6iRrGpsiRBlF56vaDzxD5X6nTdBo7y7+i32YROH5DZKrIY/5V7W2r3viiTI9YQ4Q08iTtWMU43BVKpLa4dBYL9xqYuLMTM8qVJTv/pOKAr0J7UX4Gd0VhO16nv/IDsuccoyOP4/wPcuMDtCpNXDwDIQEmoz6hdK2Pkw8f9XB25Puj3kNocWO3zvnvYwFldMmvg5Wyt1Rg7WQe1aH8GKgGNUlQRuoim39JkOhMa6xFrXoGI59w1fcKzqr+aXHq4NlRQ0lDJZR2+X7WzoTJzLrx1ivQ0RnaiIHfwL5Fb4yguggRwmaIFe/V593BAVjKzszlGP/2+qjDzxxQaoXYm1VodLWt1yELsETM98M1YlWdSWQhyVKaONLisjf9g==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR12MB5506.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(396003)(136003)(39860400002)(376002)(366004)(346002)(7406005)(7416002)(38100700002)(5660300002)(36756003)(6916009)(26005)(83380400001)(2906002)(1076003)(33656002)(86362001)(9746002)(66476007)(66946007)(8936002)(186003)(8676002)(2616005)(426003)(54906003)(316002)(66556008)(478600001)(9786002)(4326008);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?6voRhEnl9cUve/9Gf1xKFyVnrrkcTJ4oDBhyDqSDt7lsc5PSA4jjkr7LpshN?=
+ =?us-ascii?Q?+wQVlZDIS9g4lVJyMDwGJefYZtKwZzmNVLfbfdchSoEpLWtDy+bbKznKBvNf?=
+ =?us-ascii?Q?E9FwIAz7m+WEvGJdxynxA1/z7N8G0RukAP3EkGZzBxMPJcIJWuFPacos2CVF?=
+ =?us-ascii?Q?qju3nzfAJvjKYQ/1a9aic8GlXjSOUZjKJIqL1VZnzx8oZ9bBwPIYxdd+rVPB?=
+ =?us-ascii?Q?on15VU0srb85L8z6NaV3K5mhfWWSiD4u1BCQyBqQH51vYA97ydYSYX9jWRjD?=
+ =?us-ascii?Q?hmWne5HKUNR8aTW4VHTjb2dZJd71LS8Ny428xlTQPRhirvpS3T3cRKqGc4oI?=
+ =?us-ascii?Q?YDH7a/dY0dqqprEYCVZ6A5z8NAJZy4Q8IG7nJA/JGV+Lar9ThwAjUTW1FFvh?=
+ =?us-ascii?Q?c92jhU0vzSBsdiUlDNYIs6yxe8icGAbuFupfqx/5B8QlR+pLMvGaoL8/gktm?=
+ =?us-ascii?Q?cY0AZqXInkOwo0CuVQdqA7L8KdBjBkzTHwr/wl5DqbFuFYbg4IBRHLMZxwmb?=
+ =?us-ascii?Q?OMfF/B+A+quWw23i3f7esRX3UAxHewCsv/svoaZhA9iwphv+cjxvkMPLFyna?=
+ =?us-ascii?Q?WKfrhwa/QUBbTe+86rnX+5SyPFmqNq92veAapAccPw275yS9sXg9vwjBZ1kn?=
+ =?us-ascii?Q?zLI0ZMxggWa8fcynWAv8W+U6otLDzyHD5cQ8scwaZ27u69awlz4LEenajPgn?=
+ =?us-ascii?Q?Ooi7BAfMcflsQyfBOnLOZtU4L20bQhY0CIcHkEWVPZj13TWC4dcX6f3qiv9j?=
+ =?us-ascii?Q?lWEUMLbbUwQGxR/CkuVyb9d5P3MuFgEHeaYjh7A/2kWkAWIEahvzSUx/9641?=
+ =?us-ascii?Q?kqsTqAQ35e8SQ3XzH88jWbkMPKmks2Cmd0zdFuknvZZhVpfMJUwUD8zWRmqq?=
+ =?us-ascii?Q?PJN75d/9nI25OIYPUuFy+uSg3EyfPqo0AXcoOqxIEccPCiBKoiB2AYYNnjwb?=
+ =?us-ascii?Q?njUlquTXm6pkBH+7h/UeU3wZCuJRZA+QdNLtALmEl9DAQQkc0DIQJ0t4RjYz?=
+ =?us-ascii?Q?pM5R2SgvB2rm7wrAIlBDr9tuK9J30AQ6TTcZSVEWQQV3E0GxS3IZStRXfXZX?=
+ =?us-ascii?Q?qI8MqMvFiIli2Wc4O7ddKLakfzDvlfxslMsoggTdEwX0mPU3l2cuvhrQrZ7W?=
+ =?us-ascii?Q?XhTv//1jG5jWlifFq/aHqN36tGi2wOHYONG+odN4J5H7fgLWatyG+F191ubE?=
+ =?us-ascii?Q?oj6RKX6F0YZYWHtTpluSv3ouuJ+x1pasNijJVr+PBuGI+eCuE8UTp1LSH8WQ?=
+ =?us-ascii?Q?gWOAMmQho8GCg6ALW8Jpkcw7CUlW/s5QPB5jLrBvmn4js6qAQ068jcbWC9ef?=
+ =?us-ascii?Q?ZZT4Na8XCekWBOlDVgKslBSs?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7e149845-a2b7-42d8-af5d-08d94bd0b215
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB5506.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2021 22:49:56.5529 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +ULIbNaI/rq0lQXSR/MjpYJwcaIUYXJVinwrAmjUEfjP9jIiIHwD3CNeQ2gr513w
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5093
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,141 +147,67 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 20 Jul 2021 14:42:48 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
+On Tue, Jul 20, 2021 at 04:01:27PM -0600, Alex Williamson wrote:
+> On Tue, 20 Jul 2021 14:42:48 -0300
+> Jason Gunthorpe <jgg@nvidia.com> wrote:
+> 
+> > Compared to mbochs_remove() two cases are missing from the
+> > vfio_register_group_dev() unwind. Add them in.
+> > 
+> > Fixes: 681c1615f891 ("vfio/mbochs: Convert to use vfio_register_group_dev()")
+> > Reported-by: Cornelia Huck <cohuck@redhat.com>
+> > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> >  samples/vfio-mdev/mbochs.c | 7 +++++--
+> >  1 file changed, 5 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
+> > index e81b875b4d87b4..501845b08c0974 100644
+> > +++ b/samples/vfio-mdev/mbochs.c
+> > @@ -553,11 +553,14 @@ static int mbochs_probe(struct mdev_device *mdev)
+> >  
+> >  	ret = vfio_register_group_dev(&mdev_state->vdev);
+> >  	if (ret)
+> > -		goto err_mem;
+> > +		goto err_bytes;
+> >  	dev_set_drvdata(&mdev->dev, mdev_state);
+> >  	return 0;
+> >  
+> > +err_bytes:
+> > +	mbochs_used_mbytes -= mdev_state->type->mbytes;
+> >  err_mem:
+> > +	kfree(mdev_state->pages);
+> >  	kfree(mdev_state->vconfig);
+> >  	kfree(mdev_state);
+> >  	return ret;
+> > @@ -567,8 +570,8 @@ static void mbochs_remove(struct mdev_device *mdev)
+> >  {
+> >  	struct mdev_state *mdev_state = dev_get_drvdata(&mdev->dev);
+> >  
+> > -	mbochs_used_mbytes -= mdev_state->type->mbytes;
+> >  	vfio_unregister_group_dev(&mdev_state->vdev);
+> > +	mbochs_used_mbytes -= mdev_state->type->mbytes;
+> >  	kfree(mdev_state->pages);
+> >  	kfree(mdev_state->vconfig);
+> >  	kfree(mdev_state);
+> 
+> Hmm, doesn't this suggest we need another atomic conversion?  (untested)
 
-> Compared to mbochs_remove() two cases are missing from the
-> vfio_register_group_dev() unwind. Add them in.
-> 
-> Fixes: 681c1615f891 ("vfio/mbochs: Convert to use vfio_register_group_dev()")
-> Reported-by: Cornelia Huck <cohuck@redhat.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  samples/vfio-mdev/mbochs.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-> index e81b875b4d87b4..501845b08c0974 100644
-> --- a/samples/vfio-mdev/mbochs.c
-> +++ b/samples/vfio-mdev/mbochs.c
-> @@ -553,11 +553,14 @@ static int mbochs_probe(struct mdev_device *mdev)
->  
->  	ret = vfio_register_group_dev(&mdev_state->vdev);
->  	if (ret)
-> -		goto err_mem;
-> +		goto err_bytes;
->  	dev_set_drvdata(&mdev->dev, mdev_state);
->  	return 0;
->  
-> +err_bytes:
-> +	mbochs_used_mbytes -= mdev_state->type->mbytes;
->  err_mem:
-> +	kfree(mdev_state->pages);
->  	kfree(mdev_state->vconfig);
->  	kfree(mdev_state);
->  	return ret;
-> @@ -567,8 +570,8 @@ static void mbochs_remove(struct mdev_device *mdev)
+Sure why not, I can add this as another patch
+
+> @@ -567,11 +573,11 @@ static void mbochs_remove(struct mdev_device *mdev)
 >  {
 >  	struct mdev_state *mdev_state = dev_get_drvdata(&mdev->dev);
 >  
 > -	mbochs_used_mbytes -= mdev_state->type->mbytes;
 >  	vfio_unregister_group_dev(&mdev_state->vdev);
-> +	mbochs_used_mbytes -= mdev_state->type->mbytes;
 >  	kfree(mdev_state->pages);
 >  	kfree(mdev_state->vconfig);
 >  	kfree(mdev_state);
+> +	atomic_add(mdev_state->type->mbytes, &mbochs_avail_mbytes);
 
-Hmm, doesn't this suggest we need another atomic conversion?  (untested)
+This should be up after the vfio_unregister_group_dev(), it is a use after free?
 
-diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-index e81b875b4d87..842819e29c6b 100644
---- a/samples/vfio-mdev/mbochs.c
-+++ b/samples/vfio-mdev/mbochs.c
-@@ -129,7 +129,7 @@ static dev_t		mbochs_devt;
- static struct class	*mbochs_class;
- static struct cdev	mbochs_cdev;
- static struct device	mbochs_dev;
--static int		mbochs_used_mbytes;
-+static atomic_t		mbochs_avail_mbytes;
- static const struct vfio_device_ops mbochs_dev_ops;
- 
- struct vfio_region_info_ext {
-@@ -511,14 +511,19 @@ static int mbochs_probe(struct mdev_device *mdev)
- 		&mbochs_types[mdev_get_type_group_id(mdev)];
- 	struct device *dev = mdev_dev(mdev);
- 	struct mdev_state *mdev_state;
-+	int avail_mbytes = atomic_read(&mbochs_avail_mbytes);
- 	int ret = -ENOMEM;
- 
--	if (type->mbytes + mbochs_used_mbytes > max_mbytes)
--		return -ENOMEM;
-+	do {
-+		if (avail_mbytes < type->mbytes)
-+			return ret;
-+	} while (!atomic_try_cmpxchg(&mbochs_avail_mbytes, &avail_mbytes,
-+				     avail_mbytes - type->mbytes));
- 
- 	mdev_state = kzalloc(sizeof(struct mdev_state), GFP_KERNEL);
- 	if (mdev_state == NULL)
--		return -ENOMEM;
-+		goto err_resv;
-+
- 	vfio_init_group_dev(&mdev_state->vdev, &mdev->dev, &mbochs_dev_ops);
- 
- 	mdev_state->vconfig = kzalloc(MBOCHS_CONFIG_SPACE_SIZE, GFP_KERNEL);
-@@ -549,8 +554,6 @@ static int mbochs_probe(struct mdev_device *mdev)
- 	mbochs_create_config_space(mdev_state);
- 	mbochs_reset(mdev_state);
- 
--	mbochs_used_mbytes += type->mbytes;
--
- 	ret = vfio_register_group_dev(&mdev_state->vdev);
- 	if (ret)
- 		goto err_mem;
-@@ -558,8 +561,11 @@ static int mbochs_probe(struct mdev_device *mdev)
- 	return 0;
- 
- err_mem:
-+	kfree(mdev_state->pages);
- 	kfree(mdev_state->vconfig);
- 	kfree(mdev_state);
-+err_resv:
-+	atomic_add(mdev_state->type->mbytes, &mbochs_avail_mbytes);
- 	return ret;
- }
- 
-@@ -567,11 +573,11 @@ static void mbochs_remove(struct mdev_device *mdev)
- {
- 	struct mdev_state *mdev_state = dev_get_drvdata(&mdev->dev);
- 
--	mbochs_used_mbytes -= mdev_state->type->mbytes;
- 	vfio_unregister_group_dev(&mdev_state->vdev);
- 	kfree(mdev_state->pages);
- 	kfree(mdev_state->vconfig);
- 	kfree(mdev_state);
-+	atomic_add(mdev_state->type->mbytes, &mbochs_avail_mbytes);
- }
- 
- static ssize_t mbochs_read(struct vfio_device *vdev, char __user *buf,
-@@ -1351,7 +1357,7 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- {
- 	const struct mbochs_type *type =
- 		&mbochs_types[mtype_get_type_group_id(mtype)];
--	int count = (max_mbytes - mbochs_used_mbytes) / type->mbytes;
-+	int count = atomic_read(&mbochs_avail_mbytes) / type->mbytes;
- 
- 	return sprintf(buf, "%d\n", count);
- }
-@@ -1460,6 +1466,8 @@ static int __init mbochs_dev_init(void)
- 	if (ret)
- 		goto err_class;
- 
-+	atomic_set(&mbochs_avail_mbytes, max_mbytes);
-+
- 	ret = mdev_register_device(&mbochs_dev, &mdev_fops);
- 	if (ret)
- 		goto err_device;
-
+Jason
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
