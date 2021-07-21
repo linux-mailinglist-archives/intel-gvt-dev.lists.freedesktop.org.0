@@ -1,39 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87B283D131E
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 18:00:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57C093D1325
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 18:01:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 484646E88A;
-	Wed, 21 Jul 2021 16:00:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 82AFD6E9A5;
+	Wed, 21 Jul 2021 16:00:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from casper.infradead.org (casper.infradead.org
  [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B409E6E88A;
- Wed, 21 Jul 2021 16:00:30 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4281E6E88A;
+ Wed, 21 Jul 2021 16:00:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=FVrfAm/KRKSg3YQfIwJjj+pEaPuyi76RU6z/5czUvK8=; b=RUIuH61qomzYlNqtbEMw3vJFaJ
- fKim0ZZlhTLoae/aQuO0LAGO+7Z2uCRy1Fp7Z5pGrIi9v/Si99TmiS/P/bsefWywNnV0SLM5Njb08
- pyLmrasFA9iriU4cq+q+BoSYL3Rgkqtk7o2yOfN43A6wBqrnFSZAKx+fy/1LDYOhS1Jvz5Fe0gmfL
- ckhbP6JOFWM9ll9OClPaW3eJZGkVJUGVbaSZpJtZC8pm4EmNhpfqGv0JJBMPojuoNknxTxfYEqK4u
- SOsLneoOHvM4y4hr2Y5hm7ckw7Cbbty8Hl8HLnZv6lTzRF2uHecX55Q7ZlFPRw6nXNWxF0nnKzojT
- miLPq6eA==;
+ bh=82dEs+QK8clDq3Pt2lMrAAeDCJqiHd3ZB8Jdeya5Gvc=; b=sRwZtN5JPOtgbYSaT+IxrmHdoA
+ 3G1b1SSk+OKQAm5SYA0QWnWIl6aSQImQamHngl4lXKRv4l+YS29GRqapmf5OzJ9kvzc1N+kBWUS0z
+ s58Mq8IP3DCfd+jPNcqGjUrY7A2ACC+p/TSDWi23SwQUcKsgYs2L9dQ6HuS1cU9Vqgr0h1Lew/Uoy
+ IDn2MinUJO/TJ1le955+OW1zlWYz9bzHhhr4IiU/eRM6fxxYJVjwBd+jVD+MrEacS9LleuXCnLQEr
+ XjZ+7HoUneOWQF4hr70YyKP82SDU1DxpYF0PS6eiQfZsAcmRZIaeM/6E4q/nXoO/f3YO5YtXurG5E
+ yk1hJwPA==;
 Received: from [2001:4bb8:193:7660:d6d5:72f4:23f7:1898] (helo=localhost)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6EdH-009Mbt-7p; Wed, 21 Jul 2021 15:59:46 +0000
+ id 1m6Edp-009MeG-Bh; Wed, 21 Jul 2021 16:00:25 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 16/21] drm/i915/gvt: devirtualize ->is_valid_gfn
-Date: Wed, 21 Jul 2021 17:53:50 +0200
-Message-Id: <20210721155355.173183-17-hch@lst.de>
+Subject: [PATCH 17/21] drm/i915/gvt: devirtualize ->gfn_to_mfn
+Date: Wed, 21 Jul 2021 17:53:51 +0200
+Message-Id: <20210721155355.173183-18-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210721155355.173183-1-hch@lst.de>
 References: <20210721155355.173183-1-hch@lst.de>
@@ -59,134 +59,112 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Just call the code directly and move towards the callers.
+Just open code it in the only caller.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/gpu/drm/i915/gvt/gtt.c       | 20 ++++++++++++++++++--
+ drivers/gpu/drm/i915/gvt/gtt.c       |  9 +++++----
  drivers/gpu/drm/i915/gvt/hypercall.h |  1 -
- drivers/gpu/drm/i915/gvt/kvmgt.c     | 17 -----------------
- drivers/gpu/drm/i915/gvt/mpt.h       | 17 -----------------
- 4 files changed, 18 insertions(+), 37 deletions(-)
+ drivers/gpu/drm/i915/gvt/kvmgt.c     | 16 ----------------
+ drivers/gpu/drm/i915/gvt/mpt.h       | 14 --------------
+ 4 files changed, 5 insertions(+), 35 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index 0a953ab7a38b..5783642d4d79 100644
+index 5783642d4d79..75782f59df8e 100644
 --- a/drivers/gpu/drm/i915/gvt/gtt.c
 +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -47,6 +47,22 @@
- static bool enable_out_of_sync = false;
- static int preallocated_oos_pages = 8192;
+@@ -1176,15 +1176,16 @@ static int is_2MB_gtt_possible(struct intel_vgpu *vgpu,
+ 	struct intel_gvt_gtt_entry *entry)
+ {
+ 	struct intel_gvt_gtt_pte_ops *ops = vgpu->gvt->gtt.pte_ops;
+-	unsigned long pfn;
++	kvm_pfn_t pfn;
  
-+static bool intel_gvt_is_valid_gfn(struct intel_vgpu *vgpu, unsigned long gfn)
-+{
-+	struct kvm *kvm = vgpu->kvm;
-+	int idx;
-+	bool ret;
-+
+ 	if (!HAS_PAGE_SIZES(vgpu->gvt->gt->i915, I915_GTT_PAGE_SIZE_2M))
+ 		return 0;
+ 
+-	pfn = intel_gvt_hypervisor_gfn_to_mfn(vgpu, ops->get_pfn(entry));
+-	if (pfn == INTEL_GVT_INVALID_ADDR)
 +	if (!vgpu->attached)
-+		return false;
-+
-+	idx = srcu_read_lock(&kvm->srcu);
-+	ret = kvm_is_visible_gfn(kvm, gfn);
-+	srcu_read_unlock(&kvm->srcu, idx);
-+
-+	return ret;
-+}
-+
- /*
-  * validate a gm address and related range size,
-  * translate it to host gm address
-@@ -1329,7 +1345,7 @@ static int ppgtt_populate_spt(struct intel_vgpu_ppgtt_spt *spt)
- 			ppgtt_set_shadow_entry(spt, &se, i);
- 		} else {
- 			gfn = ops->get_pfn(&ge);
--			if (!intel_gvt_hypervisor_is_valid_gfn(vgpu, gfn)) {
-+			if (!intel_gvt_is_valid_gfn(vgpu, gfn)) {
- 				ops->set_pfn(&se, gvt->gtt.scratch_mfn);
- 				ppgtt_set_shadow_entry(spt, &se, i);
- 				continue;
-@@ -2313,7 +2329,7 @@ static int emulate_ggtt_mmio_write(struct intel_vgpu *vgpu, unsigned int off,
- 		/* one PTE update may be issued in multiple writes and the
- 		 * first write may not construct a valid gfn
- 		 */
--		if (!intel_gvt_hypervisor_is_valid_gfn(vgpu, gfn)) {
-+		if (!intel_gvt_is_valid_gfn(vgpu, gfn)) {
- 			ops->set_pfn(&m, gvt->gtt.scratch_mfn);
- 			goto out;
- 		}
-diff --git a/drivers/gpu/drm/i915/gvt/hypercall.h b/drivers/gpu/drm/i915/gvt/hypercall.h
-index de63bd8dd05b..c1a9eeed0460 100644
---- a/drivers/gpu/drm/i915/gvt/hypercall.h
-+++ b/drivers/gpu/drm/i915/gvt/hypercall.h
-@@ -55,7 +55,6 @@ struct intel_gvt_mpt {
- 				dma_addr_t dma_addr);
- 
- 	int (*dma_pin_guest_page)(struct intel_vgpu *vgpu, dma_addr_t dma_addr);
--	bool (*is_valid_gfn)(struct intel_vgpu *vgpu, unsigned long gfn);
- };
- 
- #endif /* _GVT_HYPERCALL_H_ */
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 3a035802e4f0..2d3ef59e7227 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1961,22 +1961,6 @@ static void kvmgt_dma_unmap_guest_page(struct intel_vgpu *vgpu,
- 	mutex_unlock(&vgpu->cache_lock);
++		return -EINVAL;
++	pfn = gfn_to_pfn(vgpu->kvm, ops->get_pfn(entry));
++	if (is_error_noslot_pfn(pfn))
+ 		return -EINVAL;
+-
+ 	return PageTransHuge(pfn_to_page(pfn));
  }
  
--static bool kvmgt_is_valid_gfn(struct intel_vgpu *vgpu, unsigned long gfn)
+diff --git a/drivers/gpu/drm/i915/gvt/hypercall.h b/drivers/gpu/drm/i915/gvt/hypercall.h
+index c1a9eeed0460..dbde492cafc8 100644
+--- a/drivers/gpu/drm/i915/gvt/hypercall.h
++++ b/drivers/gpu/drm/i915/gvt/hypercall.h
+@@ -47,7 +47,6 @@ struct intel_gvt_mpt {
+ 	void (*host_exit)(struct device *dev, void *gvt);
+ 	int (*enable_page_track)(struct intel_vgpu *vgpu, u64 gfn);
+ 	int (*disable_page_track)(struct intel_vgpu *vgpu, u64 gfn);
+-	unsigned long (*gfn_to_mfn)(struct intel_vgpu *vgpu, unsigned long gfn);
+ 
+ 	int (*dma_map_guest_page)(struct intel_vgpu *vgpu, unsigned long gfn,
+ 				  unsigned long size, dma_addr_t *dma_addr);
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 2d3ef59e7227..226e3f3c41df 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -1855,21 +1855,6 @@ void intel_vgpu_detach_regions(struct intel_vgpu *vgpu)
+ 	vgpu->region = NULL;
+ }
+ 
+-static unsigned long kvmgt_gfn_to_pfn(struct intel_vgpu *vgpu,
+-		unsigned long gfn)
 -{
--	struct kvm *kvm = vgpu->kvm;
--	int idx;
--	bool ret;
+-	kvm_pfn_t pfn;
 -
 -	if (!vgpu->attached)
--		return false;
+-		return INTEL_GVT_INVALID_ADDR;
 -
--	idx = srcu_read_lock(&kvm->srcu);
--	ret = kvm_is_visible_gfn(kvm, gfn);
--	srcu_read_unlock(&kvm->srcu, idx);
+-	pfn = gfn_to_pfn(vgpu->kvm, gfn);
+-	if (is_error_noslot_pfn(pfn))
+-		return INTEL_GVT_INVALID_ADDR;
 -
--	return ret;
+-	return pfn;
 -}
 -
- static const struct intel_gvt_mpt kvmgt_mpt = {
- 	.host_init = kvmgt_host_init,
+ static int kvmgt_dma_map_guest_page(struct intel_vgpu *vgpu, unsigned long gfn,
+ 		unsigned long size, dma_addr_t *dma_addr)
+ {
+@@ -1966,7 +1951,6 @@ static const struct intel_gvt_mpt kvmgt_mpt = {
  	.host_exit = kvmgt_host_exit,
-@@ -1986,7 +1970,6 @@ static const struct intel_gvt_mpt kvmgt_mpt = {
+ 	.enable_page_track = kvmgt_page_track_add,
+ 	.disable_page_track = kvmgt_page_track_remove,
+-	.gfn_to_mfn = kvmgt_gfn_to_pfn,
  	.dma_map_guest_page = kvmgt_dma_map_guest_page,
  	.dma_unmap_guest_page = kvmgt_dma_unmap_guest_page,
  	.dma_pin_guest_page = kvmgt_dma_pin_guest_page,
--	.is_valid_gfn = kvmgt_is_valid_gfn,
- };
- 
- struct intel_gvt_host intel_gvt_host = {
 diff --git a/drivers/gpu/drm/i915/gvt/mpt.h b/drivers/gpu/drm/i915/gvt/mpt.h
-index 59369e8b3b69..1a796f2181ba 100644
+index 1a796f2181ba..2d4bb6eaa08e 100644
 --- a/drivers/gpu/drm/i915/gvt/mpt.h
 +++ b/drivers/gpu/drm/i915/gvt/mpt.h
-@@ -157,21 +157,4 @@ intel_gvt_hypervisor_dma_pin_guest_page(struct intel_vgpu *vgpu,
- 	return intel_gvt_host.mpt->dma_pin_guest_page(vgpu, dma_addr);
+@@ -99,20 +99,6 @@ static inline int intel_gvt_hypervisor_disable_page_track(
+ 	return intel_gvt_host.mpt->disable_page_track(vgpu, gfn);
  }
  
 -/**
-- * intel_gvt_hypervisor_is_valid_gfn - check if a visible gfn
+- * intel_gvt_hypervisor_gfn_to_mfn - translate a GFN to MFN
 - * @vgpu: a vGPU
-- * @gfn: guest PFN
+- * @gpfn: guest pfn
 - *
 - * Returns:
-- * true on valid gfn, false on not.
+- * MFN on success, INTEL_GVT_INVALID_ADDR if failed.
 - */
--static inline bool intel_gvt_hypervisor_is_valid_gfn(
+-static inline unsigned long intel_gvt_hypervisor_gfn_to_mfn(
 -		struct intel_vgpu *vgpu, unsigned long gfn)
 -{
--	if (!intel_gvt_host.mpt->is_valid_gfn)
--		return true;
--
--	return intel_gvt_host.mpt->is_valid_gfn(vgpu, gfn);
+-	return intel_gvt_host.mpt->gfn_to_mfn(vgpu, gfn);
 -}
 -
- #endif /* _GVT_MPT_H_ */
+ /**
+  * intel_gvt_hypervisor_dma_map_guest_page - setup dma map for guest page
+  * @vgpu: a vGPU
 -- 
 2.30.2
 
