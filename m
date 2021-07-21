@@ -1,37 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19F7D3D06AC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 04:21:51 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DEFD3D08C3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 08:21:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CC60A6E171;
-	Wed, 21 Jul 2021 02:21:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BF6CA6E8FD;
+	Wed, 21 Jul 2021 06:21:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E14C36E171;
- Wed, 21 Jul 2021 02:21:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10051"; a="208241621"
-X-IronPort-AV: E=Sophos;i="5.84,256,1620716400"; 
- d="asc'?scan'208";a="208241621"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jul 2021 19:21:48 -0700
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DA41B6E829;
+ Wed, 21 Jul 2021 06:21:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10051"; a="198651504"
+X-IronPort-AV: E=Sophos;i="5.84,257,1620716400"; d="scan'208";a="198651504"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jul 2021 23:21:26 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,256,1620716400"; 
- d="asc'?scan'208";a="495105095"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
- by fmsmga004.fm.intel.com with ESMTP; 20 Jul 2021 19:21:45 -0700
-Date: Wed, 21 Jul 2021 10:00:09 +0800
+X-IronPort-AV: E=Sophos;i="5.84,257,1620716400"; d="scan'208";a="511385248"
+Received: from debian-skl.sh.intel.com ([10.239.160.37])
+ by fmsmga002.fm.intel.com with ESMTP; 20 Jul 2021 23:21:25 -0700
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Xiyu Yang <xiyuyang19@fudan.edu.cn>
-Subject: Re: [PATCH] drm/i915/gvt: Convert from atomic_t to refcount_t on
- intel_vgpu_ppgtt_spt->refcount
-Message-ID: <20210721020009.GG13928@zhen-hp.sh.intel.com>
-References: <1626432098-27626-1-git-send-email-xiyuyang19@fudan.edu.cn>
+To: intel-gfx@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: Fix cached atomics setting for Windows VM
+Date: Wed, 21 Jul 2021 14:26:07 +0800
+Message-Id: <20210721062607.512307-1-zhenyuw@linux.intel.com>
+X-Mailer: git-send-email 2.32.0.rc2
 MIME-Version: 1.0
-In-Reply-To: <1626432098-27626-1-git-send-email-xiyuyang19@fudan.edu.cn>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,136 +40,59 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Xin Tan <tanxin.ctf@gmail.com>, yuanxzhang@fudan.edu.cn,
- David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: multipart/mixed; boundary="===============0576266495=="
+Cc: "Xu, Terrence" <terrence.xu@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ stable@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+We've seen recent regression with host and windows VM running
+simultaneously that cause gpu hang or even crash. Finally bisect to
+58586680ffad ("drm/i915: Disable atomics in L3 for gen9"), which seems
+cached atomics behavior difference caused regression issue.
 
---===============0576266495==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="DNUSDXU7R7AVVM8C"
-Content-Disposition: inline
+This trys to add new scratch register handler and add those in mmio
+save/restore list for context switch. No gpu hang produced with this one.
 
+Cc: stable@vger.kernel.org # 5.12+
+Cc: "Xu, Terrence" <terrence.xu@intel.com>
+Fixes: 58586680ffad ("drm/i915: Disable atomics in L3 for gen9")
+Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+---
+ drivers/gpu/drm/i915/gvt/handlers.c     | 1 +
+ drivers/gpu/drm/i915/gvt/mmio_context.c | 2 ++
+ 2 files changed, 3 insertions(+)
 
---DNUSDXU7R7AVVM8C
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2021.07.16 18:41:38 +0800, Xiyu Yang wrote:
-> refcount_t type and corresponding API can protect refcounters from
-> accidental underflow and overflow and further use-after-free situations
->
-
-Thanks for the patch. Is there any specific problem you run with current co=
-de?
-Any shadow ppgtt error?
-
-> Signed-off-by: Xiyu Yang <xiyuyang19@fudan.edu.cn>
-> Signed-off-by: Xin Tan <tanxin.ctf@gmail.com>
-> ---
->  drivers/gpu/drm/i915/gvt/gtt.c | 11 ++++++-----
->  drivers/gpu/drm/i915/gvt/gtt.h |  3 ++-
->  2 files changed, 8 insertions(+), 6 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
-t.c
-> index cc2c05e18206..62f3daff5a36 100644
-> --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> @@ -841,7 +841,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
->  	}
-> =20
->  	spt->vgpu =3D vgpu;
-> -	atomic_set(&spt->refcount, 1);
-> +	refcount_set(&spt->refcount, 1);
->  	INIT_LIST_HEAD(&spt->post_shadow_list);
-> =20
->  	/*
-> @@ -927,18 +927,19 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt=
-_gfn(
-> =20
->  static inline void ppgtt_get_spt(struct intel_vgpu_ppgtt_spt *spt)
->  {
-> -	int v =3D atomic_read(&spt->refcount);
-> +	int v =3D refcount_read(&spt->refcount);
-> =20
->  	trace_spt_refcount(spt->vgpu->id, "inc", spt, v, (v + 1));
-> -	atomic_inc(&spt->refcount);
-> +	refcount_inc(&spt->refcount);
->  }
-> =20
->  static inline int ppgtt_put_spt(struct intel_vgpu_ppgtt_spt *spt)
->  {
-> -	int v =3D atomic_read(&spt->refcount);
-> +	int v =3D refcount_read(&spt->refcount);
-> =20
->  	trace_spt_refcount(spt->vgpu->id, "dec", spt, v, (v - 1));
-> -	return atomic_dec_return(&spt->refcount);
-> +	refcount_dec(&spt->refcount);
-> +	return refcount_read(&spt->refcount);
->  }
-> =20
->  static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);
-> diff --git a/drivers/gpu/drm/i915/gvt/gtt.h b/drivers/gpu/drm/i915/gvt/gt=
-t.h
-> index 3bf45672ef98..944c2d0739df 100644
-> --- a/drivers/gpu/drm/i915/gvt/gtt.h
-> +++ b/drivers/gpu/drm/i915/gvt/gtt.h
-> @@ -38,6 +38,7 @@
->  #include <linux/kref.h>
->  #include <linux/mutex.h>
->  #include <linux/radix-tree.h>
-> +#include <linux/refcount.h>
-> =20
->  #include "gt/intel_gtt.h"
-> =20
-> @@ -243,7 +244,7 @@ struct intel_vgpu_oos_page {
-> =20
->  /* Represent a vgpu shadow page table. */
->  struct intel_vgpu_ppgtt_spt {
-> -	atomic_t refcount;
-> +	refcount_t refcount;
->  	struct intel_vgpu *vgpu;
-> =20
->  	struct {
-> --=20
-> 2.7.4
->=20
-> _______________________________________________
-> intel-gvt-dev mailing list
-> intel-gvt-dev@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---DNUSDXU7R7AVVM8C
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYPd/qQAKCRCxBBozTXgY
-J4MVAJ95yNAURQh6cNjOk/8THKqisqplMwCbBUeMC3+rNCFCjrGdgeMCTprr3WI=
-=isR6
------END PGP SIGNATURE-----
-
---DNUSDXU7R7AVVM8C--
-
---===============0576266495==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index 98eb48c24c46..345b4be5ebad 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -3134,6 +3134,7 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
+ 	MMIO_DFH(_MMIO(0xb100), D_BDW, F_CMD_ACCESS, NULL, NULL);
+ 	MMIO_DFH(_MMIO(0xb10c), D_BDW, F_CMD_ACCESS, NULL, NULL);
+ 	MMIO_D(_MMIO(0xb110), D_BDW);
++	MMIO_D(GEN9_SCRATCH_LNCF1, D_BDW_PLUS);
+ 
+ 	MMIO_F(_MMIO(0x24d0), 48, F_CMD_ACCESS | F_CMD_WRITE_PATCH, 0, 0,
+ 		D_BDW_PLUS, NULL, force_nonpriv_write);
+diff --git a/drivers/gpu/drm/i915/gvt/mmio_context.c b/drivers/gpu/drm/i915/gvt/mmio_context.c
+index b8ac80765461..f776c470914d 100644
+--- a/drivers/gpu/drm/i915/gvt/mmio_context.c
++++ b/drivers/gpu/drm/i915/gvt/mmio_context.c
+@@ -105,6 +105,8 @@ static struct engine_mmio gen9_engine_mmio_list[] __cacheline_aligned = {
+ 	{RCS0, COMMON_SLICE_CHICKEN2, 0xffff, true}, /* 0x7014 */
+ 	{RCS0, GEN9_CS_DEBUG_MODE1, 0xffff, false}, /* 0x20ec */
+ 	{RCS0, GEN8_L3SQCREG4, 0, false}, /* 0xb118 */
++	{RCS0, GEN9_SCRATCH1, 0, false}, /* 0xb11c */
++	{RCS0, GEN9_SCRATCH_LNCF1, 0, false}, /* 0xb008 */
+ 	{RCS0, GEN7_HALF_SLICE_CHICKEN1, 0xffff, true}, /* 0xe100 */
+ 	{RCS0, HALF_SLICE_CHICKEN2, 0xffff, true}, /* 0xe180 */
+ 	{RCS0, HALF_SLICE_CHICKEN3, 0xffff, true}, /* 0xe184 */
+-- 
+2.32.0.rc2
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0576266495==--
