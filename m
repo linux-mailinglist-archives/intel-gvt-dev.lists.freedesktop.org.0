@@ -1,69 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 582803D0DB2
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 13:33:48 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AEB13D0E20
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 13:52:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 01F3B6E419;
-	Wed, 21 Jul 2021 11:33:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BD3A16E8F4;
+	Wed, 21 Jul 2021 11:52:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 56B566E419
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Jul 2021 11:33:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626867224;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=00OcMiF0F2gS1ZNqukAXzYGpVfpA2IKDuUHwrSni+LI=;
- b=QlLvIsTAzVlCHnce7dFAPrTNmhByCL0HqjFkDqBaZnfO1GZC7Ejfvrm3zeBKkqbp5MiZWq
- qh6XlcpgS8w99If2LHMGuxBcOEhWcH4IA6JN867XQXarx64+dM1ZFgvZc7R42RXc03625q
- t8dMY9KsBkY66SOFsWxyN28veCQfIZM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-364-zkp5VfsMM6-lurNQyTFRCA-1; Wed, 21 Jul 2021 07:33:43 -0400
-X-MC-Unique: zkp5VfsMM6-lurNQyTFRCA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D34510086C4;
- Wed, 21 Jul 2021 11:33:39 +0000 (UTC)
-Received: from localhost (ovpn-112-135.ams2.redhat.com [10.36.112.135])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E28BB60854;
- Wed, 21 Jul 2021 11:33:30 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
- Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
- <alex.williamson@redhat.com>, Christian Borntraeger
- <borntraeger@de.ibm.com>, Jonathan Corbet <corbet@lwn.net>, Daniel Vetter
- <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
- dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, Eric
- Farman <farman@linux.ibm.com>, Harald Freudenberger
- <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, Jani Nikula
- <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>, Joonas
- Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
- Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
- linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>, Peter
- Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Vineeth Vijayan
- <vneethv@linux.ibm.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: Re: [PATCH v2 03/14] vfio: Introduce a vfio_uninit_group_dev() API
- call
-In-Reply-To: <3-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
-Organization: Red Hat GmbH
-References: <3-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
-User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
-Date: Wed, 21 Jul 2021 13:33:29 +0200
-Message-ID: <877dhj9a0m.fsf@redhat.com>
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DA3CF6E8F4;
+ Wed, 21 Jul 2021 11:52:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=Miekl0C0jt9QTUkhKolvQiEeelj16BDxerlUgw6Y5Ls=; b=mjaixGJM9DpTtil5lLRGoN7FCz
+ lhdJCK+WaS4BeCpDxDNsbhnIXOTALHJK9O5RP4I7SevCps2bVA+e5BDqZQbC4mzJSwk6k2VGnHStX
+ ivaW6CzdreSz/7QBh8QQLdbMNaPWpYLKQHrSuNPbmXyfHpjorpxtEKXlZ0y00C9dzlwLX+jol5aj+
+ rB5HI1i8WoTucXzTUdfvBxVQqm5870ECMStinCNLyRsA1NKx76dvEOBOyqfB0gwgAZbYkzGDf71fA
+ Ts+fV7cE5yQJwkN4C5cQObNLzGwoNgmEBWVt98P7t8lePaQv2i1Rydi87j62gX1OzMBxnD7U6ocaN
+ oHPGi/iw==;
+Received: from hch by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat
+ Linux)) id 1m6AlM-0099Pz-2X; Wed, 21 Jul 2021 11:51:48 +0000
+Date: Wed, 21 Jul 2021 12:51:44 +0100
+From: Christoph Hellwig <hch@infradead.org>
+To: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Subject: Re: [Intel-gfx] 5.14-rc2 warnings with kvmgvt
+Message-ID: <YPgKUFddtu6Vj6KO@infradead.org>
+References: <YPgAuSt6Ps7w4/AI@infradead.org>
+ <YPgD/8Y3/te/Hsu3@intel.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Disposition: inline
+In-Reply-To: <YPgD/8Y3/te/Hsu3@intel.com>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,42 +49,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas <yishaih@nvidia.com>,
- "Raj, Ashok" <ashok.raj@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Leon Romanovsky <leonro@nvidia.com>, Christoph Hellwig <hch@lst.de>
+Cc: Christoph Hellwig <hch@infradead.org>, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jul 20 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
+On Wed, Jul 21, 2021 at 07:24:47AM -0400, Rodrigo Vivi wrote:
+> On Wed, Jul 21, 2021 at 01:10:49PM +0200, Christoph Hellwig wrote:
+> > Hi all,
+> > 
+> > I'm trying to test some changes for the gvt code, but even with a baseline
+> > 5.14-rc2 host and guest the 915 driver does not seem overly happy:
+> 
+> Is this a regression over -rc1 or over 5.13?
+> Bisect possible?
 
-> From: Max Gurtovoy <mgurtovoy@nvidia.com>
->
-> This pairs with vfio_init_group_dev() and allows undoing any state that is
-> stored in the vfio_device unrelated to registration. Add appropriately
-> placed calls to all the drivers.
->
-> The following patch will use this to add pre-registration state for the
-> device set.
->
-> Signed-off-by: Max Gurtovoy <mgurtovoy@nvidia.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  Documentation/driver-api/vfio.rst            |  4 ++-
->  drivers/vfio/fsl-mc/vfio_fsl_mc.c            |  7 ++---
->  drivers/vfio/mdev/vfio_mdev.c                | 13 +++++++---
->  drivers/vfio/pci/vfio_pci.c                  |  6 +++--
->  drivers/vfio/platform/vfio_platform_common.c |  7 +++--
->  drivers/vfio/vfio.c                          |  5 ++++
->  include/linux/vfio.h                         |  1 +
->  samples/vfio-mdev/mbochs.c                   |  2 ++
->  samples/vfio-mdev/mdpy.c                     | 25 ++++++++++--------
->  samples/vfio-mdev/mtty.c                     | 27 ++++++++++++--------
->  10 files changed, 64 insertions(+), 33 deletions(-)
+Haven't tried anything earlier, but I'll try 5.13.
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+> 
+> Could you please file a bug to our gitlab issues tracker:
+> https://gitlab.freedesktop.org/drm/intel/-/wikis/How-to-file-i915-bugs
 
+That seems to require a login, so no.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
