@@ -1,39 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE85C3D12E1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 17:54:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 821633D12E3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 17:54:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 80DAD6E9B5;
-	Wed, 21 Jul 2021 15:54:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 247D56E9A5;
+	Wed, 21 Jul 2021 15:54:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from casper.infradead.org (casper.infradead.org
  [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CF6A06E9AB;
- Wed, 21 Jul 2021 15:54:29 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 05B8B6E97A;
+ Wed, 21 Jul 2021 15:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=vyOKqVf04VZNTbnMGjin9W8FP1xQqeT7kSDPOCdqRkU=; b=SAYuuRWAs/O0z1w2Y4ovtVp6CQ
- cC5ZIl8uhLAXJ0yDVbxVgakJ5a/93egaI+tH/rKSFwLne9hpKJCLiv0r8rOYoD7DVToDVbVqix2Fq
- DpWu1lYviHHAaah9dmhXuCPHlEBfodB2HFbAaqSto1+iunWk5CunwOFohzaVcJMUW4WuuJXCfqRPs
- LLv6t2aEVaf3QFwOrDG0NPjuNCRDntT3pjHnP6IVGUyFFmakety8/29tC5Rp4O1iyeDbtkh7o49Oh
- 3YRhS2+2JvNDI3MDFKKFPs4XOY9T6/s/EfyQUyjwvEEzXF6kFhMrThSqvzo9CagYLcsRFlAXoUunp
- 8hoHNOyQ==;
+ bh=qYr+fejkooLprB+HBW0to2z9UK9syRmjiuAzimmt6kU=; b=bYErOGEI/N3jxH1564k5eY61gh
+ BBrhHoZ1FhlWSJpHbtDmV+ScaJrKfeyZKAypMHq9VQZ1YRVxor9pUw8p6rb4keCVcP1TtJ/Pch+aU
+ sD+BfK721/oPV6b29NMlCjDER9LMdEhwRtDaH8uYBWhK9QMGoynZCNndSjxdWMCQnQ2XDT1NVoZ3d
+ /jC7FKMYasCDbio92YVKXwvp7ohz7z84qFzh9i84QijnZxYib8NbXHYbTcEruIvxorNMQLP8gZ3eH
+ VPLsfb5u+/JqTUHoChIuZpbrk7JFN8YMcIqmJ6he+fWyWP4ay4//uGhwWeNN8xGq8ivK4IMO2g38m
+ OVkNyNdQ==;
 Received: from [2001:4bb8:193:7660:d6d5:72f4:23f7:1898] (helo=localhost)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6EXt-009MDl-HV; Wed, 21 Jul 2021 15:54:09 +0000
+ id 1m6EY7-009MEM-JR; Wed, 21 Jul 2021 15:54:22 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 01/21] drm/i915/gvt: integrate into the main Makefile
-Date: Wed, 21 Jul 2021 17:53:35 +0200
-Message-Id: <20210721155355.173183-2-hch@lst.de>
+Subject: [PATCH 02/21] drm/i915/gvt: remove module refcounting in intel_gvt_{,
+ un}register_hypervisor
+Date: Wed, 21 Jul 2021 17:53:36 +0200
+Message-Id: <20210721155355.173183-3-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210721155355.173183-1-hch@lst.de>
 References: <20210721155355.173183-1-hch@lst.de>
@@ -59,84 +60,44 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Remove the separately included Makefile and just use the relative
-reference from the main i915 Makefile as for source files in other
-subdirectories.
+THIS_MODULE always is reference when a symbol called by it is used, so
+don't bother with the additional reference.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/gpu/drm/i915/Makefile     | 29 ++++++++++++++++++++++++-----
- drivers/gpu/drm/i915/gvt/Makefile |  9 ---------
- drivers/gpu/drm/i915/gvt/trace.h  |  2 +-
- 3 files changed, 25 insertions(+), 15 deletions(-)
- delete mode 100644 drivers/gpu/drm/i915/gvt/Makefile
+ drivers/gpu/drm/i915/gvt/gvt.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefile
-index 4f22cac1c49b..2153f67705b8 100644
---- a/drivers/gpu/drm/i915/Makefile
-+++ b/drivers/gpu/drm/i915/Makefile
-@@ -289,11 +289,30 @@ i915-$(CONFIG_DRM_I915_SELFTEST) += \
+diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gvt.c
+index cbac409f6c8a..6d7938aacca4 100644
+--- a/drivers/gpu/drm/i915/gvt/gvt.c
++++ b/drivers/gpu/drm/i915/gvt/gvt.c
+@@ -308,10 +308,6 @@ intel_gvt_register_hypervisor(const struct intel_gvt_mpt *m)
+ 	    m->type != INTEL_GVT_HYPERVISOR_XEN)
+ 		return -EINVAL;
  
- # virtual gpu code
- i915-y += i915_vgpu.o
+-	/* Get a reference for device model module */
+-	if (!try_module_get(THIS_MODULE))
+-		return -ENODEV;
 -
--ifeq ($(CONFIG_DRM_I915_GVT),y)
--i915-y += intel_gvt.o
--include $(src)/gvt/Makefile
--endif
-+i915-$(CONFIG_DRM_I915_GVT) += \
-+	intel_gvt.o \
-+	gvt/gvt.o \
-+	gvt/aperture_gm.o \
-+	gvt/handlers.o \
-+	gvt/vgpu.o \
-+	gvt/trace_points.o \
-+	gvt/firmware.o \
-+	gvt/interrupt.o \
-+	gvt/gtt.o \
-+	gvt/cfg_space.o \
-+	gvt/opregion.o \
-+	gvt/mmio.o \
-+	gvt/display.o \
-+	gvt/edid.o \
-+	gvt/execlist.o \
-+	gvt/scheduler.o \
-+	gvt/sched_policy.o \
-+	gvt/mmio_context.o \
-+	gvt/cmd_parser.o \
-+	gvt/debugfs.o \
-+	gvt/fb_decoder.o \
-+	gvt/dmabuf.o \
-+	gvt/page_track.o
- 
- obj-$(CONFIG_DRM_I915) += i915.o
- obj-$(CONFIG_DRM_I915_GVT_KVMGT) += gvt/kvmgt.o
-diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt/Makefile
-deleted file mode 100644
-index ea8324abc784..000000000000
---- a/drivers/gpu/drm/i915/gvt/Makefile
-+++ /dev/null
-@@ -1,9 +0,0 @@
--# SPDX-License-Identifier: GPL-2.0
--GVT_DIR := gvt
--GVT_SOURCE := gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o firmware.o \
--	interrupt.o gtt.o cfg_space.o opregion.o mmio.o display.o edid.o \
--	execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o debugfs.o \
--	fb_decoder.o dmabuf.o page_track.o
--
--ccflags-y				+= -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
--i915-y					+= $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
-diff --git a/drivers/gpu/drm/i915/gvt/trace.h b/drivers/gpu/drm/i915/gvt/trace.h
-index 6d787750d279..348f57f8301d 100644
---- a/drivers/gpu/drm/i915/gvt/trace.h
-+++ b/drivers/gpu/drm/i915/gvt/trace.h
-@@ -379,5 +379,5 @@ TRACE_EVENT(render_mmio,
- #undef TRACE_INCLUDE_PATH
- #define TRACE_INCLUDE_PATH .
- #undef TRACE_INCLUDE_FILE
--#define TRACE_INCLUDE_FILE trace
-+#define TRACE_INCLUDE_FILE gvt/trace
- #include <trace/define_trace.h>
+ 	intel_gvt_host.mpt = m;
+ 	intel_gvt_host.hypervisor_type = m->type;
+ 	gvt = (void *)kdev_to_i915(intel_gvt_host.dev)->gvt;
+@@ -321,7 +317,6 @@ intel_gvt_register_hypervisor(const struct intel_gvt_mpt *m)
+ 	if (ret < 0) {
+ 		gvt_err("Failed to init %s hypervisor module\n",
+ 			supported_hypervisors[intel_gvt_host.hypervisor_type]);
+-		module_put(THIS_MODULE);
+ 		return -ENODEV;
+ 	}
+ 	gvt_dbg_core("Running with hypervisor %s in host mode\n",
+@@ -335,6 +330,5 @@ intel_gvt_unregister_hypervisor(void)
+ {
+ 	void *gvt = (void *)kdev_to_i915(intel_gvt_host.dev)->gvt;
+ 	intel_gvt_hypervisor_host_exit(intel_gvt_host.dev, gvt);
+-	module_put(THIS_MODULE);
+ }
+ EXPORT_SYMBOL_GPL(intel_gvt_unregister_hypervisor);
 -- 
 2.30.2
 
