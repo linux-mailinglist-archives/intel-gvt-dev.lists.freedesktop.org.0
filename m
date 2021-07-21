@@ -1,58 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D0843D172D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 21:41:34 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FEE53D1840
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 22:41:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 00FD06E86C;
-	Wed, 21 Jul 2021 19:41:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 435F76E524;
+	Wed, 21 Jul 2021 20:41:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb35.google.com (mail-yb1-xb35.google.com
- [IPv6:2607:f8b0:4864:20::b35])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D1D506E86C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Jul 2021 19:41:31 +0000 (UTC)
-Received: by mail-yb1-xb35.google.com with SMTP id y38so1946922ybi.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Jul 2021 12:41:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jlekstrand-net.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=aE+5WwECBEzPAUwAaWfDdAD19hgeRUlb1b67ifBCq5o=;
- b=NHYeqjAvIR5LX96lTaPKxGXirYVHohK75u0STCtpH04+EhGdt5RBfH8jzsRvPlV7D0
- /YGsy0IYccphno9DdjcT0mO52fkPh+Z+n4iF6zfYXBJdC7kzLk2R/MufTGGJb59S8Uwv
- ZrQ5prbfZxJTqWGdbeQ54WrSKbtUc424c3vmHupcPvbs9+jMk91TizR1RESmW4P6h+xz
- kpWv6wz+xHU8UudN2lEvSA51KK28QvhEpJuKfxocw0M+4o6UD7MGlEmQyVyaSbrs7LWy
- RdkhpSPnCtXSjIT2wRXULKihbl74OMq4F8FDmUHHiZVyUDuycIjVQUs9Z2mCwC1XdGhS
- YEaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=aE+5WwECBEzPAUwAaWfDdAD19hgeRUlb1b67ifBCq5o=;
- b=IK/ZKfAq7Qje66qqg3VNAGZlvHafevTvGisW2sMmup4c27/layGO/cbBpfNGBlW18D
- 7r9GVewB3fOvUUmH3UE3gc4hsQpprgTFYCe5avckqO5kL/rAlWquO/J/lOSCkLmUR+ta
- 1rLsAKkhoLxgJgZXUs0v0XmjKdBSg60a1Ge3G3IQJYAeXMdLhzoB/ZOBftru7y4OGU2c
- gNJ6Qb/8ZdR0X19VGpaaDsz8qbn+KyM5N4ESGzdZdgkSz7y3WGc8bLAn/WQTJKbOoQe0
- kB3cuoCEPNhWL3MvvWr1G+Ar2s1EZ/g5/Pzn/ThoWEXi2eabo3ljGmVddK+e5gD+RLnr
- CEsw==
-X-Gm-Message-State: AOAM53394oUngbM9VU1XtE7ibFVgads2LoJTD0tmhvLQEM2sPfFE/0DK
- qCpZF8jFdfVzlZUyymoPsRbC1PUe/4ZiSPTwtYoFIg==
-X-Google-Smtp-Source: ABdhPJwv81VIOC4BcCR36exqFNCJG7bRgBnlMaYWgf2/RhJ0NJYg55BQ0FzNosliXCaFLiih8NKuFq7PxdVM6uvCJ44=
-X-Received: by 2002:a25:aa69:: with SMTP id s96mr48626057ybi.241.1626896490772; 
- Wed, 21 Jul 2021 12:41:30 -0700 (PDT)
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 780D36E840;
+ Wed, 21 Jul 2021 20:41:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=EJgGjA01GZw3Yk9ZuhCaXi6YbsFe3EryWSZjq277foA=; b=h3JWY57SwxRcR5pkUIK2zmYtJJ
+ 7a+Z5F+3nByq1Otuzd3mX2goCAHcU52bqd+/GFpbQx7M89j0+L07jP447bmO54RI1+v9md0mtp3DQ
+ yMmaAsofQIVKcsOTC2NqoNfke+7F4A1JwWe8vnkBHUScE4PcB0rGXtmEhSEo23HwX9QjjtedNiqTC
+ qhdkvMt+h+FE8iX5jejQNRZOW/l7yf/nFaLuoxF44xI+hQOafljSfNOsv8RVDn/fhhsnk5hgYWoUC
+ QfyiO/a5vDFO0oSX5iqE+NnezrrwagppGUuA6qywjrIHa6D1UyPqxlb9EysxUnuRNe1bYm+1wYoU6
+ hx5eJenA==;
+Received: from hch by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat
+ Linux)) id 1m6J0d-009aFJ-Us; Wed, 21 Jul 2021 20:40:09 +0000
+Date: Wed, 21 Jul 2021 21:40:03 +0100
+From: Christoph Hellwig <hch@infradead.org>
+To: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Subject: Re: [Intel-gfx] 5.14-rc2 warnings with kvmgvt
+Message-ID: <YPiGI9tzLzGZg47j@infradead.org>
+References: <YPgAuSt6Ps7w4/AI@infradead.org> <YPgD/8Y3/te/Hsu3@intel.com>
+ <YPhApJo1o6yBYUh2@infradead.org>
 MIME-Version: 1.0
-References: <20210721062607.512307-1-zhenyuw@linux.intel.com>
- <CAKMK7uGhcnfOPMUuWOZMErHWFqeixpPFURXFS2oVm2d-r32NZw@mail.gmail.com>
-In-Reply-To: <CAKMK7uGhcnfOPMUuWOZMErHWFqeixpPFURXFS2oVm2d-r32NZw@mail.gmail.com>
-From: Jason Ekstrand <jason@jlekstrand.net>
-Date: Wed, 21 Jul 2021 14:41:19 -0500
-Message-ID: <CAOFGe97Q=gVZcH2U94s87ftj-YeeeoEVwF8cuo4-jO8Y-ZR4NQ@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH] drm/i915/gvt: Fix cached atomics setting for
- Windows VM
-To: Daniel Vetter <daniel@ffwll.ch>
+Content-Disposition: inline
+In-Reply-To: <YPhApJo1o6yBYUh2@infradead.org>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,95 +49,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- stable <stable@vger.kernel.org>, "Xu, Terrence" <terrence.xu@intel.com>,
- "Bloomfield, Jon" <jon.bloomfield@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
+Cc: Christoph Hellwig <hch@infradead.org>, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jul 21, 2021 at 4:08 AM Daniel Vetter <daniel@ffwll.ch> wrote:
->
-> On Wed, Jul 21, 2021 at 8:21 AM Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
-> > We've seen recent regression with host and windows VM running
-> > simultaneously that cause gpu hang or even crash. Finally bisect to
-> > 58586680ffad ("drm/i915: Disable atomics in L3 for gen9"), which seems
-> > cached atomics behavior difference caused regression issue.
-> >
-> > This trys to add new scratch register handler and add those in mmio
-> > save/restore list for context switch. No gpu hang produced with this one.
-> >
-> > Cc: stable@vger.kernel.org # 5.12+
-> > Cc: "Xu, Terrence" <terrence.xu@intel.com>
-> > Fixes: 58586680ffad ("drm/i915: Disable atomics in L3 for gen9")
-> > Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
->
-> Adding Jon Bloomfield, since different settings between linux and
-> windows for something that can hard-hang the machine on gen9 sounds
-> ... not good.
+On Wed, Jul 21, 2021 at 04:43:44PM +0100, Christoph Hellwig wrote:
+> > > I'm trying to test some changes for the gvt code, but even with a baseline
+> > > 5.14-rc2 host and guest the 915 driver does not seem overly happy:
+> > 
+> > Is this a regression over -rc1 or over 5.13?
+> > Bisect possible?
+> 
+> This was introduced somewhere between 5.12 and 5.13, still bisecting.
+> Note that it only happens for "headless" setups.  Once a display is
+> added on the qemu command line it goes away.
 
-The difference there is legit and intentional.
+The culprit is:
 
-As far as what we do about it for GVT, if we can safely smash L3
-atomics off underneath Windows without causing problems for the VM, we
-should do that.  If not, we need to discuss this internally before
-proceeding.
+commit f4eb6d4906669b4285c4f49c87814d4ce63c35bb
+Author: Jani Nikula <jani.nikula@intel.com>
+Date:   Wed Mar 17 18:36:45 2021 +0200
 
---Jason
-
-> -Daniel
->
-> > ---
-> >  drivers/gpu/drm/i915/gvt/handlers.c     | 1 +
-> >  drivers/gpu/drm/i915/gvt/mmio_context.c | 2 ++
-> >  2 files changed, 3 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-> > index 98eb48c24c46..345b4be5ebad 100644
-> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> > @@ -3134,6 +3134,7 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
-> >         MMIO_DFH(_MMIO(0xb100), D_BDW, F_CMD_ACCESS, NULL, NULL);
-> >         MMIO_DFH(_MMIO(0xb10c), D_BDW, F_CMD_ACCESS, NULL, NULL);
-> >         MMIO_D(_MMIO(0xb110), D_BDW);
-> > +       MMIO_D(GEN9_SCRATCH_LNCF1, D_BDW_PLUS);
-> >
-> >         MMIO_F(_MMIO(0x24d0), 48, F_CMD_ACCESS | F_CMD_WRITE_PATCH, 0, 0,
-> >                 D_BDW_PLUS, NULL, force_nonpriv_write);
-> > diff --git a/drivers/gpu/drm/i915/gvt/mmio_context.c b/drivers/gpu/drm/i915/gvt/mmio_context.c
-> > index b8ac80765461..f776c470914d 100644
-> > --- a/drivers/gpu/drm/i915/gvt/mmio_context.c
-> > +++ b/drivers/gpu/drm/i915/gvt/mmio_context.c
-> > @@ -105,6 +105,8 @@ static struct engine_mmio gen9_engine_mmio_list[] __cacheline_aligned = {
-> >         {RCS0, COMMON_SLICE_CHICKEN2, 0xffff, true}, /* 0x7014 */
-> >         {RCS0, GEN9_CS_DEBUG_MODE1, 0xffff, false}, /* 0x20ec */
-> >         {RCS0, GEN8_L3SQCREG4, 0, false}, /* 0xb118 */
-> > +       {RCS0, GEN9_SCRATCH1, 0, false}, /* 0xb11c */
-> > +       {RCS0, GEN9_SCRATCH_LNCF1, 0, false}, /* 0xb008 */
-> >         {RCS0, GEN7_HALF_SLICE_CHICKEN1, 0xffff, true}, /* 0xe100 */
-> >         {RCS0, HALF_SLICE_CHICKEN2, 0xffff, true}, /* 0xe180 */
-> >         {RCS0, HALF_SLICE_CHICKEN3, 0xffff, true}, /* 0xe184 */
-> > --
-> > 2.32.0.rc2
-> >
-> > _______________________________________________
-> > Intel-gfx mailing list
-> > Intel-gfx@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/intel-gfx
->
->
->
-> --
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> http://blog.ffwll.ch
-> _______________________________________________
-> Intel-gfx mailing list
-> Intel-gfx@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+    drm/i915/bios: limit default outputs to ports A through F
+        
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
