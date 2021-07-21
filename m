@@ -1,39 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0748F3D1312
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 17:59:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A9F53D1316
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 17:59:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B39FA6E97A;
-	Wed, 21 Jul 2021 15:59:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E8B796E926;
+	Wed, 21 Jul 2021 15:59:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from casper.infradead.org (casper.infradead.org
  [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4A2456E931;
- Wed, 21 Jul 2021 15:59:16 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B647F6E926;
+ Wed, 21 Jul 2021 15:59:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=rhgYkSM2KrtiQ2UW6ZK8t+lwuqGluamH30ixmb/SaAE=; b=hh55SBeqe8TDP+RTwhU8vXYK6A
- GhdqDHiVJfSeNXrzHL8wlLiOIrrd4tjWswf8bZV545a0VISYpwRn7X2SMacOd0SCC9Mpox7+VMIpr
- G8tQCv0lkhfBLtB6R4eVn7Leg5g2l3mFuBeIfwUCQYgOPKHwBL/Zv8oNvF1UqqkiO1msdCgTxZT2d
- HCC6EEh2j/FZJjtviyIq3VQJ7rOUY8Tj6tknFWAiYMlar5q1zJdXYM7qaJ0S4Hvjo2zy17JhYtiwl
- h8osILShMoItis0CEAZz+C/x+8y9C5HKwhJCcjCo4TGp6srU1qut9/kIHTvrbh9u/c/E9ytfP6Yty
- yG35NSkg==;
+ bh=k0EPJdoVgWqIr3HursHUM68UvDJimI9KrqN/cwQVTNU=; b=aVuM5p/G+QfBQPNOOf2Uv5HLox
+ en6nYMSEyYS39BX7uS/pEAWUkP/ZpLPqVUInDUToaJsNGBKFyBJ7C6I4xl2D9qO1+WKERFV96RpwT
+ VRvLmgJcOchyoEeySol23+Sk6CYkz+5ulLg090UWXOffFufXF+yZhTMXAP2xOlZLABwgaSz9AwbP1
+ ZIVqywU98/hKeimkMrXPe75aZi0gArPmwadOb2KqsOKMUAGXo/Ad935nP31ZH52bKPAAdSNmW2LCr
+ 1pp9eFNvUouQ50arokTTQ3B14rq5zmpbNJMQty8hsdmOKhpZInZaEnxmi4SpRUCors7DO7o/GFGmP
+ ZkicX0xg==;
 Received: from [2001:4bb8:193:7660:d6d5:72f4:23f7:1898] (helo=localhost)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6EcI-009MYx-Cf; Wed, 21 Jul 2021 15:58:43 +0000
+ id 1m6Ecf-009MZe-5G; Wed, 21 Jul 2021 15:59:14 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 14/21] drm/i915/gvt: devirtualize ->detach_vgpu
-Date: Wed, 21 Jul 2021 17:53:48 +0200
-Message-Id: <20210721155355.173183-15-hch@lst.de>
+Subject: [PATCH 15/21] drm/i915/gvt: devirtualize ->inject_msi
+Date: Wed, 21 Jul 2021 17:53:49 +0200
+Message-Id: <20210721155355.173183-16-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210721155355.173183-1-hch@lst.de>
 References: <20210721155355.173183-1-hch@lst.de>
@@ -59,102 +59,170 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Just call the function directly.
+Just open code the MSI injection in a single place instead of going
+through the method table.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/gpu/drm/i915/gvt/gvt.h       |  1 +
  drivers/gpu/drm/i915/gvt/hypercall.h |  1 -
- drivers/gpu/drm/i915/gvt/kvmgt.c     |  3 +--
- drivers/gpu/drm/i915/gvt/mpt.h       | 16 ----------------
- drivers/gpu/drm/i915/gvt/vgpu.c      |  2 +-
- 5 files changed, 3 insertions(+), 20 deletions(-)
+ drivers/gpu/drm/i915/gvt/interrupt.c | 38 +++++++++++++++++++++++++++-
+ drivers/gpu/drm/i915/gvt/kvmgt.c     | 24 ------------------
+ drivers/gpu/drm/i915/gvt/mpt.h       | 37 ---------------------------
+ 4 files changed, 37 insertions(+), 63 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 1cb4b48d9a25..82cd00a5b904 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -580,6 +580,7 @@ void populate_pvinfo_page(struct intel_vgpu *vgpu);
- 
- int intel_gvt_scan_and_shadow_workload(struct intel_vgpu_workload *workload);
- void enter_failsafe_mode(struct intel_vgpu *vgpu, int reason);
-+void intel_vgpu_detach_regions(struct intel_vgpu *vgpu);
- 
- enum {
- 	GVT_FAILSAFE_UNSUPPORTED_GUEST,
 diff --git a/drivers/gpu/drm/i915/gvt/hypercall.h b/drivers/gpu/drm/i915/gvt/hypercall.h
-index 091249a924a8..08c622c4079b 100644
+index 08c622c4079b..de63bd8dd05b 100644
 --- a/drivers/gpu/drm/i915/gvt/hypercall.h
 +++ b/drivers/gpu/drm/i915/gvt/hypercall.h
 @@ -45,7 +45,6 @@ struct intel_vgpu;
  struct intel_gvt_mpt {
  	int (*host_init)(struct device *dev, void *gvt);
  	void (*host_exit)(struct device *dev, void *gvt);
--	void (*detach_vgpu)(struct intel_vgpu *vgpu);
- 	int (*inject_msi)(struct intel_vgpu *vgpu, u32 addr, u16 data);
+-	int (*inject_msi)(struct intel_vgpu *vgpu, u32 addr, u16 data);
  	int (*enable_page_track)(struct intel_vgpu *vgpu, u64 gfn);
  	int (*disable_page_track)(struct intel_vgpu *vgpu, u64 gfn);
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 572d51950abb..218c3deaf2b4 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1839,7 +1839,7 @@ static bool kvmgt_guest_exit(struct intel_vgpu *info)
- 	return true;
+ 	unsigned long (*gfn_to_mfn)(struct intel_vgpu *vgpu, unsigned long gfn);
+diff --git a/drivers/gpu/drm/i915/gvt/interrupt.c b/drivers/gpu/drm/i915/gvt/interrupt.c
+index 614b951d919f..f3c350a9a80f 100644
+--- a/drivers/gpu/drm/i915/gvt/interrupt.c
++++ b/drivers/gpu/drm/i915/gvt/interrupt.c
+@@ -396,9 +396,45 @@ static void init_irq_map(struct intel_gvt_irq *irq)
  }
  
--static void kvmgt_detach_vgpu(struct intel_vgpu *vgpu)
-+void intel_vgpu_detach_regions(struct intel_vgpu *vgpu)
+ /* =======================vEvent injection===================== */
++
++#define MSI_CAP_CONTROL(offset) (offset + 2)
++#define MSI_CAP_ADDRESS(offset) (offset + 4)
++#define MSI_CAP_DATA(offset) (offset + 8)
++#define MSI_CAP_EN 0x1
++
+ static int inject_virtual_interrupt(struct intel_vgpu *vgpu)
  {
- 	int i;
+-	return intel_gvt_hypervisor_inject_msi(vgpu);
++	unsigned long offset = vgpu->gvt->device_info.msi_cap_offset;
++	u16 control, data;
++	u32 addr;
++
++	control = *(u16 *)(vgpu_cfg_space(vgpu) + MSI_CAP_CONTROL(offset));
++	addr = *(u32 *)(vgpu_cfg_space(vgpu) + MSI_CAP_ADDRESS(offset));
++	data = *(u16 *)(vgpu_cfg_space(vgpu) + MSI_CAP_DATA(offset));
++
++	/* Do not generate MSI if MSIEN is disabled */
++	if (!(control & MSI_CAP_EN))
++		return 0;
++
++	if (WARN(control & GENMASK(15, 1), "only support one MSI format\n"))
++		return -EINVAL;
++
++	trace_inject_msi(vgpu->id, addr, data);
++
++	/*
++	 * When guest is powered off, msi_trigger is set to NULL, but vgpu's
++	 * config and mmio register isn't restored to default during guest
++	 * poweroff. If this vgpu is still used in next vm, this vgpu's pipe
++	 * may be enabled, then once this vgpu is active, it will get inject
++	 * vblank interrupt request. But msi_trigger is null until msi is
++	 * enabled by guest. so if msi_trigger is null, success is still
++	 * returned and don't inject interrupt into guest.
++	 */
++	if (!vgpu->attached)
++		return -ESRCH;
++	if (vgpu->msi_trigger && eventfd_signal(vgpu->msi_trigger, 1) != 1)
++		return -EFAULT;
++	return 0;
+ }
  
-@@ -2003,7 +2003,6 @@ static bool kvmgt_is_valid_gfn(struct intel_vgpu *vgpu, unsigned long gfn)
+ static void propagate_event(struct intel_gvt_irq *irq,
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 218c3deaf2b4..3a035802e4f0 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -1855,29 +1855,6 @@ void intel_vgpu_detach_regions(struct intel_vgpu *vgpu)
+ 	vgpu->region = NULL;
+ }
+ 
+-static int kvmgt_inject_msi(struct intel_vgpu *vgpu, u32 addr, u16 data)
+-{
+-	if (!vgpu->attached)
+-		return -ESRCH;
+-
+-	/*
+-	 * When guest is poweroff, msi_trigger is set to NULL, but vgpu's
+-	 * config and mmio register isn't restored to default during guest
+-	 * poweroff. If this vgpu is still used in next vm, this vgpu's pipe
+-	 * may be enabled, then once this vgpu is active, it will get inject
+-	 * vblank interrupt request. But msi_trigger is null until msi is
+-	 * enabled by guest. so if msi_trigger is null, success is still
+-	 * returned and don't inject interrupt into guest.
+-	 */
+-	if (vgpu->msi_trigger == NULL)
+-		return 0;
+-
+-	if (eventfd_signal(vgpu->msi_trigger, 1) == 1)
+-		return 0;
+-
+-	return -EFAULT;
+-}
+-
+ static unsigned long kvmgt_gfn_to_pfn(struct intel_vgpu *vgpu,
+ 		unsigned long gfn)
+ {
+@@ -2003,7 +1980,6 @@ static bool kvmgt_is_valid_gfn(struct intel_vgpu *vgpu, unsigned long gfn)
  static const struct intel_gvt_mpt kvmgt_mpt = {
  	.host_init = kvmgt_host_init,
  	.host_exit = kvmgt_host_exit,
--	.detach_vgpu = kvmgt_detach_vgpu,
- 	.inject_msi = kvmgt_inject_msi,
+-	.inject_msi = kvmgt_inject_msi,
  	.enable_page_track = kvmgt_page_track_add,
  	.disable_page_track = kvmgt_page_track_remove,
+ 	.gfn_to_mfn = kvmgt_gfn_to_pfn,
 diff --git a/drivers/gpu/drm/i915/gvt/mpt.h b/drivers/gpu/drm/i915/gvt/mpt.h
-index 9738aa3377b4..78efcf1e6946 100644
+index 78efcf1e6946..59369e8b3b69 100644
 --- a/drivers/gpu/drm/i915/gvt/mpt.h
 +++ b/drivers/gpu/drm/i915/gvt/mpt.h
-@@ -71,22 +71,6 @@ static inline void intel_gvt_hypervisor_host_exit(struct device *dev, void *gvt)
+@@ -71,43 +71,6 @@ static inline void intel_gvt_hypervisor_host_exit(struct device *dev, void *gvt)
  	intel_gvt_host.mpt->host_exit(dev, gvt);
  }
  
+-#define MSI_CAP_CONTROL(offset) (offset + 2)
+-#define MSI_CAP_ADDRESS(offset) (offset + 4)
+-#define MSI_CAP_DATA(offset) (offset + 8)
+-#define MSI_CAP_EN 0x1
+-
 -/**
-- * intel_gvt_hypervisor_detach_vgpu - call hypervisor to release vGPU
-- * related stuffs inside hypervisor.
+- * intel_gvt_hypervisor_inject_msi - inject a MSI interrupt into vGPU
 - *
 - * Returns:
 - * Zero on success, negative error code if failed.
 - */
--static inline void intel_gvt_hypervisor_detach_vgpu(struct intel_vgpu *vgpu)
+-static inline int intel_gvt_hypervisor_inject_msi(struct intel_vgpu *vgpu)
 -{
--	/* optional to provide */
--	if (!intel_gvt_host.mpt->detach_vgpu)
--		return;
+-	unsigned long offset = vgpu->gvt->device_info.msi_cap_offset;
+-	u16 control, data;
+-	u32 addr;
+-	int ret;
 -
--	intel_gvt_host.mpt->detach_vgpu(vgpu);
+-	control = *(u16 *)(vgpu_cfg_space(vgpu) + MSI_CAP_CONTROL(offset));
+-	addr = *(u32 *)(vgpu_cfg_space(vgpu) + MSI_CAP_ADDRESS(offset));
+-	data = *(u16 *)(vgpu_cfg_space(vgpu) + MSI_CAP_DATA(offset));
+-
+-	/* Do not generate MSI if MSIEN is disable */
+-	if (!(control & MSI_CAP_EN))
+-		return 0;
+-
+-	if (WARN(control & GENMASK(15, 1), "only support one MSI format\n"))
+-		return -EINVAL;
+-
+-	trace_inject_msi(vgpu->id, addr, data);
+-
+-	ret = intel_gvt_host.mpt->inject_msi(vgpu, addr, data);
+-	if (ret)
+-		return ret;
+-	return 0;
 -}
 -
- #define MSI_CAP_CONTROL(offset) (offset + 2)
- #define MSI_CAP_ADDRESS(offset) (offset + 4)
- #define MSI_CAP_DATA(offset) (offset + 8)
-diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-index 2fadd6fea5ac..7a7f768083d2 100644
---- a/drivers/gpu/drm/i915/gvt/vgpu.c
-+++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-@@ -293,7 +293,7 @@ void intel_gvt_destroy_vgpu(struct intel_vgpu *vgpu)
- 	intel_vgpu_clean_opregion(vgpu);
- 	intel_vgpu_reset_ggtt(vgpu, true);
- 	intel_vgpu_clean_gtt(vgpu);
--	intel_gvt_hypervisor_detach_vgpu(vgpu);
-+	intel_vgpu_detach_regions(vgpu);
- 	intel_vgpu_free_resource(vgpu);
- 	intel_vgpu_clean_mmio(vgpu);
- 	intel_vgpu_dmabuf_cleanup(vgpu);
+ /**
+  * intel_gvt_hypervisor_enable_page_track - track a guest page
+  * @vgpu: a vGPU
 -- 
 2.30.2
 
