@@ -1,56 +1,69 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 463433D0AF9
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 11:08:46 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35EB93D0B02
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 11:17:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B8C2D6E84E;
-	Wed, 21 Jul 2021 09:08:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D3EA56E8A6;
+	Wed, 21 Jul 2021 09:16:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ot1-x329.google.com (mail-ot1-x329.google.com
- [IPv6:2607:f8b0:4864:20::329])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3429E6E4A7
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CDF146E896
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Jul 2021 09:08:43 +0000 (UTC)
-Received: by mail-ot1-x329.google.com with SMTP id
- o17-20020a9d76510000b02903eabfc221a9so1496836otl.0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Jul 2021 02:08:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pH2kLqR9uHJFKct98CWhcdXrla7Ml6eaGMB+BZYRY7U=;
- b=Z3Wllqs4PdTF97Dg7997W2b/3u6fow8xhmkTpjhCfKS/p8Np0zg55vBIF1D3OxdXyX
- fh/kuYTkzp1p/w0g1H5CtZ3HI4E7TDwIc8SQtxrjatmdAMbwwsQGHvdcaZtJ02Qbpc5x
- 8UoRecjASxPGduKR/P/5pIvGVGKBtLPsZ4w+A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pH2kLqR9uHJFKct98CWhcdXrla7Ml6eaGMB+BZYRY7U=;
- b=PyqP2it5ouLd9fM5pmJjK8dYtKzm0RtsH6x1K/PFd8dvOXioG5SDORP5QIVn0LQQss
- YjC1ybvcajFqcY2RPOQOcKFuelPtNtYod/NAJKuCiiwFZhf1Jzxq4rUY02qY4XrChr4X
- twoqZFpJyeNKTLKDJjzD6+H70NnA+4OOXdtFKhia94NhpgyXuW2/QcCP/hLUiwWe034v
- 8wN+ngXc91/ubAFGsrHtTCgsLJ2lZipHAFzg3v/V9um6px4HyPOaeQT5KPB0K1LM3fbj
- +pfhOj8y9L/4ktKJSWU+i2OQXQmx9xVuLqkiq2ZwrV1+3GEsp2BHyySDTh0mjmrk3cNz
- mK8g==
-X-Gm-Message-State: AOAM5305LlmZljtnXYjsgEuBlmFCZqYPminwfYpzHRTnAoLAB5cifLI4
- gBwEoJe5JBCXSRuVrrpS4ysXuXra6BtlRHScdVbVeg==
-X-Google-Smtp-Source: ABdhPJzQxufEtC+6jvWjkRYiq2bSYeGblGEc/nv43C5l1YfyMztOvlwzZdz49YSlb3vcOplzMZ+FYTDdA+9I8t3fhiE=
-X-Received: by 2002:a05:6830:2802:: with SMTP id
- w2mr24216793otu.303.1626858521716; 
- Wed, 21 Jul 2021 02:08:41 -0700 (PDT)
+ Wed, 21 Jul 2021 09:16:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626859016;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=MJtKyFTywIFWH7233aawpmyXc1XqpQHAbqfePIQjf/o=;
+ b=KuNTiWpDbzPc7V4y+CJM5ZNTyoqGyhbbCtPAFKFkDkuVSjtzYlKgPtOdb06KOTBWxl/uPc
+ Slbb4EGm3QSdpiKThBbKf+G4U5s/rFlCuHIKI3878xUjoQgqYm+yveOmCeSWDQ/e95IP7g
+ 2AYd199Ltz2R+B65G0IMZsPX72400hg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-517--XzGeVWxNbiTFPXxKtPpHA-1; Wed, 21 Jul 2021 05:16:52 -0400
+X-MC-Unique: -XzGeVWxNbiTFPXxKtPpHA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 39961804141;
+ Wed, 21 Jul 2021 09:16:48 +0000 (UTC)
+Received: from localhost (ovpn-112-135.ams2.redhat.com [10.36.112.135])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 796352C016;
+ Wed, 21 Jul 2021 09:16:40 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
+ Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
+ <alex.williamson@redhat.com>, Christian Borntraeger
+ <borntraeger@de.ibm.com>, Jonathan Corbet <corbet@lwn.net>, Daniel Vetter
+ <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
+ dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, Eric
+ Farman <farman@linux.ibm.com>, Harald Freudenberger
+ <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
+ <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Jani Nikula
+ <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>, Joonas
+ Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
+ Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>, Peter
+ Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Vineeth Vijayan
+ <vneethv@linux.ibm.com>, Zhi Wang <zhi.a.wang@intel.com>
+Subject: Re: [PATCH v2 02/14] vfio/mbochs: Fix missing error unwind in
+ mbochs_probe()
+In-Reply-To: <2-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+Organization: Red Hat GmbH
+References: <2-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
+Date: Wed, 21 Jul 2021 11:16:38 +0200
+Message-ID: <87czrc81s9.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20210721062607.512307-1-zhenyuw@linux.intel.com>
-In-Reply-To: <20210721062607.512307-1-zhenyuw@linux.intel.com>
-From: Daniel Vetter <daniel@ffwll.ch>
-Date: Wed, 21 Jul 2021 11:08:30 +0200
-Message-ID: <CAKMK7uGhcnfOPMUuWOZMErHWFqeixpPFURXFS2oVm2d-r32NZw@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH] drm/i915/gvt: Fix cached atomics setting for
- Windows VM
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, "Bloomfield,
- Jon" <jon.bloomfield@intel.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,78 +76,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
- stable <stable@vger.kernel.org>
+Cc: Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas <yishaih@nvidia.com>,
+ "Raj, Ashok" <ashok.raj@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Leon Romanovsky <leonro@nvidia.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jul 21, 2021 at 8:21 AM Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
-> We've seen recent regression with host and windows VM running
-> simultaneously that cause gpu hang or even crash. Finally bisect to
-> 58586680ffad ("drm/i915: Disable atomics in L3 for gen9"), which seems
-> cached atomics behavior difference caused regression issue.
->
-> This trys to add new scratch register handler and add those in mmio
-> save/restore list for context switch. No gpu hang produced with this one.
->
-> Cc: stable@vger.kernel.org # 5.12+
-> Cc: "Xu, Terrence" <terrence.xu@intel.com>
-> Fixes: 58586680ffad ("drm/i915: Disable atomics in L3 for gen9")
-> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+On Tue, Jul 20 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-Adding Jon Bloomfield, since different settings between linux and
-windows for something that can hard-hang the machine on gen9 sounds
-... not good.
--Daniel
-
+> Compared to mbochs_remove() two cases are missing from the
+> vfio_register_group_dev() unwind. Add them in.
+>
+> Fixes: 681c1615f891 ("vfio/mbochs: Convert to use vfio_register_group_dev()")
+> Reported-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->  drivers/gpu/drm/i915/gvt/handlers.c     | 1 +
->  drivers/gpu/drm/i915/gvt/mmio_context.c | 2 ++
->  2 files changed, 3 insertions(+)
->
-> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-> index 98eb48c24c46..345b4be5ebad 100644
-> --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> @@ -3134,6 +3134,7 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
->         MMIO_DFH(_MMIO(0xb100), D_BDW, F_CMD_ACCESS, NULL, NULL);
->         MMIO_DFH(_MMIO(0xb10c), D_BDW, F_CMD_ACCESS, NULL, NULL);
->         MMIO_D(_MMIO(0xb110), D_BDW);
-> +       MMIO_D(GEN9_SCRATCH_LNCF1, D_BDW_PLUS);
->
->         MMIO_F(_MMIO(0x24d0), 48, F_CMD_ACCESS | F_CMD_WRITE_PATCH, 0, 0,
->                 D_BDW_PLUS, NULL, force_nonpriv_write);
-> diff --git a/drivers/gpu/drm/i915/gvt/mmio_context.c b/drivers/gpu/drm/i915/gvt/mmio_context.c
-> index b8ac80765461..f776c470914d 100644
-> --- a/drivers/gpu/drm/i915/gvt/mmio_context.c
-> +++ b/drivers/gpu/drm/i915/gvt/mmio_context.c
-> @@ -105,6 +105,8 @@ static struct engine_mmio gen9_engine_mmio_list[] __cacheline_aligned = {
->         {RCS0, COMMON_SLICE_CHICKEN2, 0xffff, true}, /* 0x7014 */
->         {RCS0, GEN9_CS_DEBUG_MODE1, 0xffff, false}, /* 0x20ec */
->         {RCS0, GEN8_L3SQCREG4, 0, false}, /* 0xb118 */
-> +       {RCS0, GEN9_SCRATCH1, 0, false}, /* 0xb11c */
-> +       {RCS0, GEN9_SCRATCH_LNCF1, 0, false}, /* 0xb008 */
->         {RCS0, GEN7_HALF_SLICE_CHICKEN1, 0xffff, true}, /* 0xe100 */
->         {RCS0, HALF_SLICE_CHICKEN2, 0xffff, true}, /* 0xe180 */
->         {RCS0, HALF_SLICE_CHICKEN3, 0xffff, true}, /* 0xe184 */
-> --
-> 2.32.0.rc2
->
-> _______________________________________________
-> Intel-gfx mailing list
-> Intel-gfx@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+>  samples/vfio-mdev/mbochs.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
 
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
