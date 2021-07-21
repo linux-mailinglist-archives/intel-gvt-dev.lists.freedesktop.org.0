@@ -2,44 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 574BE3D1332
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 18:02:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D0843D172D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 21:41:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0DDD06E99C;
-	Wed, 21 Jul 2021 16:02:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 00FD06E86C;
+	Wed, 21 Jul 2021 19:41:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from casper.infradead.org (casper.infradead.org
- [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E7E3F6E9AB;
- Wed, 21 Jul 2021 16:02:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=L0rgG4EJeXpovhpXwl2DgG837tqFwqB9CPy8joRs7n4=; b=hW5O9M4BRvla3Ak7xYsdSvRW2v
- AQBxPFtWHyyXI8fwpvvQBErkwwsMJ4oKsjoRnH3NrcvW0Q1k5eE3scc02cf7JMzPrET9J2v0G0NSP
- KvP6iPzb5ApwW1VyvxcV2lYB7UPUdFF3Ft7EjO96lI+fO8fCPvRokcEPaNXNViApzZ9Hh6dMn/vVY
- 4y26URANnd4gobzsa33vjvKMfKOXqe6H1HTRXyVWjJerE8as8MGy7JFnRHm5qYGcNn13gJX/26LtO
- VG6HgywbqmGUhv+cxyjXR7LapkzeHVyb9EjyIj7D4/Kmijnbbh+Ps1OcmNygJ9mWoR95RisenZY9A
- b0GPlvcg==;
-Received: from [2001:4bb8:193:7660:d6d5:72f4:23f7:1898] (helo=localhost)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6Efb-009Mlw-V3; Wed, 21 Jul 2021 16:02:06 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 21/21] drm/i915/gvt: remove struct intel_gvt_mpt
-Date: Wed, 21 Jul 2021 17:53:55 +0200
-Message-Id: <20210721155355.173183-22-hch@lst.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210721155355.173183-1-hch@lst.de>
-References: <20210721155355.173183-1-hch@lst.de>
+Received: from mail-yb1-xb35.google.com (mail-yb1-xb35.google.com
+ [IPv6:2607:f8b0:4864:20::b35])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D1D506E86C
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 21 Jul 2021 19:41:31 +0000 (UTC)
+Received: by mail-yb1-xb35.google.com with SMTP id y38so1946922ybi.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 21 Jul 2021 12:41:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=jlekstrand-net.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aE+5WwECBEzPAUwAaWfDdAD19hgeRUlb1b67ifBCq5o=;
+ b=NHYeqjAvIR5LX96lTaPKxGXirYVHohK75u0STCtpH04+EhGdt5RBfH8jzsRvPlV7D0
+ /YGsy0IYccphno9DdjcT0mO52fkPh+Z+n4iF6zfYXBJdC7kzLk2R/MufTGGJb59S8Uwv
+ ZrQ5prbfZxJTqWGdbeQ54WrSKbtUc424c3vmHupcPvbs9+jMk91TizR1RESmW4P6h+xz
+ kpWv6wz+xHU8UudN2lEvSA51KK28QvhEpJuKfxocw0M+4o6UD7MGlEmQyVyaSbrs7LWy
+ RdkhpSPnCtXSjIT2wRXULKihbl74OMq4F8FDmUHHiZVyUDuycIjVQUs9Z2mCwC1XdGhS
+ YEaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aE+5WwECBEzPAUwAaWfDdAD19hgeRUlb1b67ifBCq5o=;
+ b=IK/ZKfAq7Qje66qqg3VNAGZlvHafevTvGisW2sMmup4c27/layGO/cbBpfNGBlW18D
+ 7r9GVewB3fOvUUmH3UE3gc4hsQpprgTFYCe5avckqO5kL/rAlWquO/J/lOSCkLmUR+ta
+ 1rLsAKkhoLxgJgZXUs0v0XmjKdBSg60a1Ge3G3IQJYAeXMdLhzoB/ZOBftru7y4OGU2c
+ gNJ6Qb/8ZdR0X19VGpaaDsz8qbn+KyM5N4ESGzdZdgkSz7y3WGc8bLAn/WQTJKbOoQe0
+ kB3cuoCEPNhWL3MvvWr1G+Ar2s1EZ/g5/Pzn/ThoWEXi2eabo3ljGmVddK+e5gD+RLnr
+ CEsw==
+X-Gm-Message-State: AOAM53394oUngbM9VU1XtE7ibFVgads2LoJTD0tmhvLQEM2sPfFE/0DK
+ qCpZF8jFdfVzlZUyymoPsRbC1PUe/4ZiSPTwtYoFIg==
+X-Google-Smtp-Source: ABdhPJwv81VIOC4BcCR36exqFNCJG7bRgBnlMaYWgf2/RhJ0NJYg55BQ0FzNosliXCaFLiih8NKuFq7PxdVM6uvCJ44=
+X-Received: by 2002:a25:aa69:: with SMTP id s96mr48626057ybi.241.1626896490772; 
+ Wed, 21 Jul 2021 12:41:30 -0700 (PDT)
 MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
+References: <20210721062607.512307-1-zhenyuw@linux.intel.com>
+ <CAKMK7uGhcnfOPMUuWOZMErHWFqeixpPFURXFS2oVm2d-r32NZw@mail.gmail.com>
+In-Reply-To: <CAKMK7uGhcnfOPMUuWOZMErHWFqeixpPFURXFS2oVm2d-r32NZw@mail.gmail.com>
+From: Jason Ekstrand <jason@jlekstrand.net>
+Date: Wed, 21 Jul 2021 14:41:19 -0500
+Message-ID: <CAOFGe97Q=gVZcH2U94s87ftj-YeeeoEVwF8cuo4-jO8Y-ZR4NQ@mail.gmail.com>
+Subject: Re: [Intel-gfx] [PATCH] drm/i915/gvt: Fix cached atomics setting for
+ Windows VM
+To: Daniel Vetter <daniel@ffwll.ch>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,318 +65,95 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ stable <stable@vger.kernel.org>, "Xu, Terrence" <terrence.xu@intel.com>,
+ "Bloomfield, Jon" <jon.bloomfield@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Just call the initializion and exit functions directly and remove
-this abstraction entirely.
+On Wed, Jul 21, 2021 at 4:08 AM Daniel Vetter <daniel@ffwll.ch> wrote:
+>
+> On Wed, Jul 21, 2021 at 8:21 AM Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
+> > We've seen recent regression with host and windows VM running
+> > simultaneously that cause gpu hang or even crash. Finally bisect to
+> > 58586680ffad ("drm/i915: Disable atomics in L3 for gen9"), which seems
+> > cached atomics behavior difference caused regression issue.
+> >
+> > This trys to add new scratch register handler and add those in mmio
+> > save/restore list for context switch. No gpu hang produced with this one.
+> >
+> > Cc: stable@vger.kernel.org # 5.12+
+> > Cc: "Xu, Terrence" <terrence.xu@intel.com>
+> > Fixes: 58586680ffad ("drm/i915: Disable atomics in L3 for gen9")
+> > Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+>
+> Adding Jon Bloomfield, since different settings between linux and
+> windows for something that can hard-hang the machine on gen9 sounds
+> ... not good.
 
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- drivers/gpu/drm/i915/gvt/gvt.c       | 11 ++++-
- drivers/gpu/drm/i915/gvt/gvt.h       | 12 ++---
- drivers/gpu/drm/i915/gvt/hypercall.h | 50 -------------------
- drivers/gpu/drm/i915/gvt/kvmgt.c     | 39 ++-------------
- drivers/gpu/drm/i915/gvt/mpt.h       | 74 ----------------------------
- 5 files changed, 17 insertions(+), 169 deletions(-)
- delete mode 100644 drivers/gpu/drm/i915/gvt/hypercall.h
- delete mode 100644 drivers/gpu/drm/i915/gvt/mpt.h
+The difference there is legit and intentional.
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gvt.c
-index 2b59e79f5e3b..c55c542e3c75 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.c
-+++ b/drivers/gpu/drm/i915/gvt/gvt.c
-@@ -135,7 +135,8 @@ static void intel_gvt_clean_device(struct drm_i915_private *i915)
- 	if (drm_WARN_ON(&i915->drm, !gvt))
- 		return;
- 
--	intel_gvt_hypervisor_host_exit(i915->drm.dev, gvt);
-+	mdev_unregister_device(i915->drm.dev);
-+	intel_gvt_cleanup_vgpu_type_groups(gvt);
- 	intel_gvt_destroy_idle_vgpu(gvt->idle_vgpu);
- 	intel_gvt_clean_vgpu_types(gvt);
- 
-@@ -235,13 +236,19 @@ static int intel_gvt_init_device(struct drm_i915_private *i915)
- 
- 	intel_gvt_debugfs_init(gvt);
- 
--	ret = intel_gvt_hypervisor_host_init(i915->drm.dev, gvt);
-+	ret = intel_gvt_init_vgpu_type_groups(gvt);
- 	if (ret)
- 		goto out_destroy_idle_vgpu;
- 
-+	ret = mdev_register_device(i915->drm.dev, &intel_vgpu_ops);
-+	if (ret)
-+		goto out_cleanup_vgpu_type_groups;
-+
- 	gvt_dbg_core("gvt device initialization is done\n");
- 	return 0;
- 
-+out_cleanup_vgpu_type_groups:
-+	intel_gvt_cleanup_vgpu_type_groups(gvt);
- out_destroy_idle_vgpu:
- 	intel_gvt_destroy_idle_vgpu(gvt->idle_vgpu);
- 	intel_gvt_debugfs_clean(gvt);
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index a8fc381f558e..a1fba27462b7 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -40,7 +40,6 @@
- #include "i915_drv.h"
- 
- #include "debug.h"
--#include "hypercall.h"
- #include "mmio.h"
- #include "reg.h"
- #include "interrupt.h"
-@@ -58,12 +57,6 @@
- 
- #define GVT_MAX_VGPU 8
- 
--struct intel_gvt_host {
--	const struct intel_gvt_mpt *mpt;
--};
--
--extern struct intel_gvt_host intel_gvt_host;
--
- /* Describe per-platform limitations. */
- struct intel_gvt_device_info {
- 	u32 max_support_vgpus;
-@@ -772,9 +765,12 @@ int intel_gvt_dma_map_guest_page(struct intel_vgpu *vgpu, unsigned long gfn,
- void intel_gvt_dma_unmap_guest_page(struct intel_vgpu *vgpu,
- 		dma_addr_t dma_addr);
- 
-+int intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt);
-+void intel_gvt_cleanup_vgpu_type_groups(struct intel_gvt *gvt);
-+
- #include "trace.h"
--#include "mpt.h"
- 
-+extern const struct mdev_parent_ops intel_vgpu_ops;
- extern const struct i915_virtual_gpu_ops intel_gvt_vgpu_ops;
- 
- #endif
-diff --git a/drivers/gpu/drm/i915/gvt/hypercall.h b/drivers/gpu/drm/i915/gvt/hypercall.h
-deleted file mode 100644
-index d49437aeabac..000000000000
---- a/drivers/gpu/drm/i915/gvt/hypercall.h
-+++ /dev/null
-@@ -1,50 +0,0 @@
--/*
-- * Copyright(c) 2011-2016 Intel Corporation. All rights reserved.
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a
-- * copy of this software and associated documentation files (the "Software"),
-- * to deal in the Software without restriction, including without limitation
-- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-- * and/or sell copies of the Software, and to permit persons to whom the
-- * Software is furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice (including the next
-- * paragraph) shall be included in all copies or substantial portions of the
-- * Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-- * SOFTWARE.
-- *
-- * Authors:
-- *    Eddie Dong <eddie.dong@intel.com>
-- *    Dexuan Cui
-- *    Jike Song <jike.song@intel.com>
-- *
-- * Contributors:
-- *    Zhi Wang <zhi.a.wang@intel.com>
-- *
-- */
--
--#ifndef _GVT_HYPERCALL_H_
--#define _GVT_HYPERCALL_H_
--
--#include <linux/types.h>
--
--struct device;
--struct intel_vgpu;
--
--/*
-- * Specific GVT-g MPT modules function collections. Currently GVT-g supports
-- * both Xen and KVM by providing dedicated hypervisor-related MPT modules.
-- */
--struct intel_gvt_mpt {
--	int (*host_init)(struct device *dev, void *gvt);
--	void (*host_exit)(struct device *dev, void *gvt);
--};
--
--#endif /* _GVT_HYPERCALL_H_ */
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 5f10ed5eccde..5c72dcf205fb 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -153,7 +153,7 @@ static struct attribute_group *gvt_vgpu_type_groups[] = {
- 	[0 ... NR_MAX_INTEL_VGPU_TYPES - 1] = NULL,
- };
- 
--static int intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt)
-+int intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt)
- {
- 	int i, j;
- 	struct intel_vgpu_type *type;
-@@ -182,7 +182,7 @@ static int intel_gvt_init_vgpu_type_groups(struct intel_gvt *gvt)
- 	return -ENOMEM;
- }
- 
--static void intel_gvt_cleanup_vgpu_type_groups(struct intel_gvt *gvt)
-+void intel_gvt_cleanup_vgpu_type_groups(struct intel_gvt *gvt)
- {
- 	int i;
- 	struct attribute_group *group;
-@@ -1646,8 +1646,9 @@ static const struct attribute_group *intel_vgpu_groups[] = {
- 	NULL,
- };
- 
--static struct mdev_parent_ops intel_vgpu_ops = {
-+const struct mdev_parent_ops intel_vgpu_ops = {
- 	.mdev_attr_groups       = intel_vgpu_groups,
-+	.supported_type_groups	= gvt_vgpu_type_groups,
- 	.create			= intel_vgpu_create,
- 	.remove			= intel_vgpu_remove,
- 
-@@ -1660,29 +1661,6 @@ static struct mdev_parent_ops intel_vgpu_ops = {
- 	.ioctl			= intel_vgpu_ioctl,
- };
- 
--static int kvmgt_host_init(struct device *dev, void *gvt)
--{
--	int ret;
--
--	ret = intel_gvt_init_vgpu_type_groups((struct intel_gvt *)gvt);
--	if (ret)
--		return ret;
--
--	intel_vgpu_ops.supported_type_groups = gvt_vgpu_type_groups;
--
--	ret = mdev_register_device(dev, &intel_vgpu_ops);
--	if (ret)
--		intel_gvt_cleanup_vgpu_type_groups((struct intel_gvt *)gvt);
--
--	return ret;
--}
--
--static void kvmgt_host_exit(struct device *dev, void *gvt)
--{
--	mdev_unregister_device(dev);
--	intel_gvt_cleanup_vgpu_type_groups((struct intel_gvt *)gvt);
--}
--
- int intel_gvt_page_track_add(struct intel_vgpu *info, u64 gfn)
- {
- 	struct kvm *kvm = info->kvm;
-@@ -1945,14 +1923,5 @@ void intel_gvt_dma_unmap_guest_page(struct intel_vgpu *vgpu,
- 	mutex_unlock(&vgpu->cache_lock);
- }
- 
--static const struct intel_gvt_mpt kvmgt_mpt = {
--	.host_init = kvmgt_host_init,
--	.host_exit = kvmgt_host_exit,
--};
--
--struct intel_gvt_host intel_gvt_host = {
--	.mpt		= &kvmgt_mpt,
--};
--
- MODULE_LICENSE("GPL and additional rights");
- MODULE_AUTHOR("Intel Corporation");
-diff --git a/drivers/gpu/drm/i915/gvt/mpt.h b/drivers/gpu/drm/i915/gvt/mpt.h
-deleted file mode 100644
-index 3be602a3f764..000000000000
---- a/drivers/gpu/drm/i915/gvt/mpt.h
-+++ /dev/null
-@@ -1,74 +0,0 @@
--/*
-- * Copyright(c) 2011-2016 Intel Corporation. All rights reserved.
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a
-- * copy of this software and associated documentation files (the "Software"),
-- * to deal in the Software without restriction, including without limitation
-- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-- * and/or sell copies of the Software, and to permit persons to whom the
-- * Software is furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice (including the next
-- * paragraph) shall be included in all copies or substantial portions of the
-- * Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-- * SOFTWARE.
-- *
-- * Authors:
-- *    Eddie Dong <eddie.dong@intel.com>
-- *    Dexuan Cui
-- *    Jike Song <jike.song@intel.com>
-- *
-- * Contributors:
-- *    Zhi Wang <zhi.a.wang@intel.com>
-- *
-- */
--
--#ifndef _GVT_MPT_H_
--#define _GVT_MPT_H_
--
--#include "gvt.h"
--
--/**
-- * DOC: Hypervisor Service APIs for GVT-g Core Logic
-- *
-- * This is the glue layer between specific hypervisor MPT modules and GVT-g core
-- * logic. Each kind of hypervisor MPT module provides a collection of function
-- * callbacks and will be attached to GVT host when the driver is loading.
-- * GVT-g core logic will call these APIs to request specific services from
-- * hypervisor.
-- */
--
--/**
-- * intel_gvt_hypervisor_host_init - init GVT-g host side
-- *
-- * Returns:
-- * Zero on success, negative error code if failed
-- */
--static inline int intel_gvt_hypervisor_host_init(struct device *dev, void *gvt)
--{
--	if (!intel_gvt_host.mpt->host_init)
--		return -ENODEV;
--
--	return intel_gvt_host.mpt->host_init(dev, gvt);
--}
--
--/**
-- * intel_gvt_hypervisor_host_exit - exit GVT-g host side
-- */
--static inline void intel_gvt_hypervisor_host_exit(struct device *dev, void *gvt)
--{
--	/* optional to provide */
--	if (!intel_gvt_host.mpt->host_exit)
--		return;
--
--	intel_gvt_host.mpt->host_exit(dev, gvt);
--}
--
--#endif /* _GVT_MPT_H_ */
--- 
-2.30.2
+As far as what we do about it for GVT, if we can safely smash L3
+atomics off underneath Windows without causing problems for the VM, we
+should do that.  If not, we need to discuss this internally before
+proceeding.
 
+--Jason
+
+> -Daniel
+>
+> > ---
+> >  drivers/gpu/drm/i915/gvt/handlers.c     | 1 +
+> >  drivers/gpu/drm/i915/gvt/mmio_context.c | 2 ++
+> >  2 files changed, 3 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+> > index 98eb48c24c46..345b4be5ebad 100644
+> > --- a/drivers/gpu/drm/i915/gvt/handlers.c
+> > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
+> > @@ -3134,6 +3134,7 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
+> >         MMIO_DFH(_MMIO(0xb100), D_BDW, F_CMD_ACCESS, NULL, NULL);
+> >         MMIO_DFH(_MMIO(0xb10c), D_BDW, F_CMD_ACCESS, NULL, NULL);
+> >         MMIO_D(_MMIO(0xb110), D_BDW);
+> > +       MMIO_D(GEN9_SCRATCH_LNCF1, D_BDW_PLUS);
+> >
+> >         MMIO_F(_MMIO(0x24d0), 48, F_CMD_ACCESS | F_CMD_WRITE_PATCH, 0, 0,
+> >                 D_BDW_PLUS, NULL, force_nonpriv_write);
+> > diff --git a/drivers/gpu/drm/i915/gvt/mmio_context.c b/drivers/gpu/drm/i915/gvt/mmio_context.c
+> > index b8ac80765461..f776c470914d 100644
+> > --- a/drivers/gpu/drm/i915/gvt/mmio_context.c
+> > +++ b/drivers/gpu/drm/i915/gvt/mmio_context.c
+> > @@ -105,6 +105,8 @@ static struct engine_mmio gen9_engine_mmio_list[] __cacheline_aligned = {
+> >         {RCS0, COMMON_SLICE_CHICKEN2, 0xffff, true}, /* 0x7014 */
+> >         {RCS0, GEN9_CS_DEBUG_MODE1, 0xffff, false}, /* 0x20ec */
+> >         {RCS0, GEN8_L3SQCREG4, 0, false}, /* 0xb118 */
+> > +       {RCS0, GEN9_SCRATCH1, 0, false}, /* 0xb11c */
+> > +       {RCS0, GEN9_SCRATCH_LNCF1, 0, false}, /* 0xb008 */
+> >         {RCS0, GEN7_HALF_SLICE_CHICKEN1, 0xffff, true}, /* 0xe100 */
+> >         {RCS0, HALF_SLICE_CHICKEN2, 0xffff, true}, /* 0xe180 */
+> >         {RCS0, HALF_SLICE_CHICKEN3, 0xffff, true}, /* 0xe184 */
+> > --
+> > 2.32.0.rc2
+> >
+> > _______________________________________________
+> > Intel-gfx mailing list
+> > Intel-gfx@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+>
+>
+>
+> --
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
+> _______________________________________________
+> Intel-gfx mailing list
+> Intel-gfx@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
