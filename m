@@ -1,36 +1,69 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53EA93D0D85
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 13:24:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 582803D0DB2
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 13:33:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E2D3E6E85D;
-	Wed, 21 Jul 2021 11:24:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 01F3B6E419;
+	Wed, 21 Jul 2021 11:33:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BBC5C6EB62;
- Wed, 21 Jul 2021 11:24:49 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10051"; a="211477340"
-X-IronPort-AV: E=Sophos;i="5.84,258,1620716400"; d="scan'208";a="211477340"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jul 2021 04:24:49 -0700
-X-IronPort-AV: E=Sophos;i="5.84,258,1620716400"; d="scan'208";a="501246323"
-Received: from pramodhp-mobl1.amr.corp.intel.com (HELO intel.com)
- ([10.212.44.180])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jul 2021 04:24:48 -0700
-Date: Wed, 21 Jul 2021 07:24:47 -0400
-From: Rodrigo Vivi <rodrigo.vivi@intel.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [Intel-gfx] 5.14-rc2 warnings with kvmgvt
-Message-ID: <YPgD/8Y3/te/Hsu3@intel.com>
-References: <YPgAuSt6Ps7w4/AI@infradead.org>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 56B566E419
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 21 Jul 2021 11:33:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626867224;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=00OcMiF0F2gS1ZNqukAXzYGpVfpA2IKDuUHwrSni+LI=;
+ b=QlLvIsTAzVlCHnce7dFAPrTNmhByCL0HqjFkDqBaZnfO1GZC7Ejfvrm3zeBKkqbp5MiZWq
+ qh6XlcpgS8w99If2LHMGuxBcOEhWcH4IA6JN867XQXarx64+dM1ZFgvZc7R42RXc03625q
+ t8dMY9KsBkY66SOFsWxyN28veCQfIZM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-364-zkp5VfsMM6-lurNQyTFRCA-1; Wed, 21 Jul 2021 07:33:43 -0400
+X-MC-Unique: zkp5VfsMM6-lurNQyTFRCA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D34510086C4;
+ Wed, 21 Jul 2021 11:33:39 +0000 (UTC)
+Received: from localhost (ovpn-112-135.ams2.redhat.com [10.36.112.135])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E28BB60854;
+ Wed, 21 Jul 2021 11:33:30 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
+ Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
+ <alex.williamson@redhat.com>, Christian Borntraeger
+ <borntraeger@de.ibm.com>, Jonathan Corbet <corbet@lwn.net>, Daniel Vetter
+ <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
+ dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, Eric
+ Farman <farman@linux.ibm.com>, Harald Freudenberger
+ <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
+ <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Jani Nikula
+ <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>, Joonas
+ Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
+ Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>, Peter
+ Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Vineeth Vijayan
+ <vneethv@linux.ibm.com>, Zhi Wang <zhi.a.wang@intel.com>
+Subject: Re: [PATCH v2 03/14] vfio: Introduce a vfio_uninit_group_dev() API
+ call
+In-Reply-To: <3-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+Organization: Red Hat GmbH
+References: <3-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
+Date: Wed, 21 Jul 2021 13:33:29 +0200
+Message-ID: <877dhj9a0m.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YPgAuSt6Ps7w4/AI@infradead.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,152 +76,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas <yishaih@nvidia.com>,
+ "Raj, Ashok" <ashok.raj@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Leon Romanovsky <leonro@nvidia.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jul 21, 2021 at 01:10:49PM +0200, Christoph Hellwig wrote:
-> Hi all,
-> 
-> I'm trying to test some changes for the gvt code, but even with a baseline
-> 5.14-rc2 host and guest the 915 driver does not seem overly happy:
+On Tue, Jul 20 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-Is this a regression over -rc1 or over 5.13?
-Bisect possible?
+> From: Max Gurtovoy <mgurtovoy@nvidia.com>
+>
+> This pairs with vfio_init_group_dev() and allows undoing any state that is
+> stored in the vfio_device unrelated to registration. Add appropriately
+> placed calls to all the drivers.
+>
+> The following patch will use this to add pre-registration state for the
+> device set.
+>
+> Signed-off-by: Max Gurtovoy <mgurtovoy@nvidia.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  Documentation/driver-api/vfio.rst            |  4 ++-
+>  drivers/vfio/fsl-mc/vfio_fsl_mc.c            |  7 ++---
+>  drivers/vfio/mdev/vfio_mdev.c                | 13 +++++++---
+>  drivers/vfio/pci/vfio_pci.c                  |  6 +++--
+>  drivers/vfio/platform/vfio_platform_common.c |  7 +++--
+>  drivers/vfio/vfio.c                          |  5 ++++
+>  include/linux/vfio.h                         |  1 +
+>  samples/vfio-mdev/mbochs.c                   |  2 ++
+>  samples/vfio-mdev/mdpy.c                     | 25 ++++++++++--------
+>  samples/vfio-mdev/mtty.c                     | 27 ++++++++++++--------
+>  10 files changed, 64 insertions(+), 33 deletions(-)
 
-Could you please file a bug to our gitlab issues tracker:
-https://gitlab.freedesktop.org/drm/intel/-/wikis/How-to-file-i915-bugs
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
-Thanks,
-Rodrigo.
-
-> 
-> [    5.693099] i915 0000:00:04.0: [drm] Virtual GPU for Intel GVT-g detected.
-> [    5.694841] i915 0000:00:04.0: [drm] VT-d active for gfx access
-> [    5.696411] i915 0000:00:04.0: [drm] iGVT-g active, disabling use of stolen memory
-> [    5.711317] i915 0000:00:04.0: BAR 6: can't assign [??? 0x00000000 flags 0x20000000] (bogus alignm)
-> [    5.712847] i915 0000:00:04.0: [drm] Failed to find VBIOS tables (VBT)
-> [    5.714343] i915 0000:00:04.0: vgaarb: changed VGA decodes: olddecodes=io+mem,decodes=none:owns=iom
-> [    5.716466] i915 0000:00:04.0: Direct firmware load for i915/kbl_dmc_ver1_04.bin failed with error2
-> [    5.718021] i915 0000:00:04.0: [drm] Failed to load DMC firmware i915/kbl_dmc_ver1_04.bin. Disabli.
-> [    5.719914] i915 0000:00:04.0: [drm] DMC firmware homepage: https://git.kernel.org/pub/scm/linux/k5
-> [    5.733269] i915 0000:00:04.0: [drm] failed to retrieve link info, disabling eDP
-> [    5.735841] i915 0000:00:04.0: [drm] *ERROR* crtc 51: Can't calculate constants, dotclock = 0!
-> [    5.737354] ------------[ cut here ]------------
-> [    5.738141] i915 0000:00:04.0: drm_WARN_ON_ONCE(drm_drv_uses_atomic_modeset(dev))
-> [    5.738165] WARNING: CPU: 0 PID: 1 at drivers/gpu/drm/drm_vblank.c:728 drm_crtc_vblank_helper_get_0
-> [    5.738745] Modules linked in:
-> [    5.738745] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-rc2+ #22
-> [    5.738745] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.14.0-2 04/01/2014
-> [    5.738745] RIP: 0010:drm_crtc_vblank_helper_get_vblank_timestamp_internal+0x335/0x350
-> [    5.738745] Code: 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 34 10 26 00 48 c7 c1 20 54 0d 83 4c 89 ea0
-> [    5.738745] RSP: 0000:ffffc90000013a90 EFLAGS: 00010086
-> [    5.738745] RAX: 0000000000000000 RBX: ffffffff81c3c5b0 RCX: 0000000000000000
-> [    5.738745] RDX: 0000000000000003 RSI: 00000000fffeffff RDI: 00000000ffffffff
-> [    5.738745] RBP: ffffc90000013b00 R08: ffffffff83bb3e28 R09: 0000000000000003
-> [    5.738745] R10: ffffffff834b3e40 R11: 3fffffffffffffff R12: 0000000000000000
-> [    5.738745] R13: ffff888100e982f0 R14: ffff8881053f0340 R15: ffff888105592178
-> [    5.738745] FS:  0000000000000000(0000) GS:ffff88813bc00000(0000) knlGS:0000000000000000
-> [    5.738745] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [    5.738745] CR2: 0000000000000000 CR3: 0000000003462000 CR4: 00000000000006f0
-> [    5.738745] Call Trace:
-> [    5.738745]  drm_get_last_vbltimestamp+0xa5/0xb0
-> [    5.738745]  drm_reset_vblank_timestamp+0x56/0xc0
-> [    5.738745]  drm_crtc_vblank_on+0x81/0x140
-> [    5.738745]  intel_crtc_vblank_on+0x2b/0xe0
-> [    5.738745]  intel_modeset_setup_hw_state+0xa9c/0x1ab0
-> [    5.738745]  ? ww_mutex_lock+0x2b/0x90
-> [    5.738745]  intel_modeset_init_nogem+0x3c5/0x1310
-> [    5.738745]  ? intel_irq_postinstall+0x1aa/0x520
-> [    5.738745]  i915_driver_probe+0x695/0xd30
-> [    5.738745]  ? _raw_spin_unlock_irqrestore+0x33/0x50
-> [    5.738745]  pci_device_probe+0xcd/0x140
-> [    5.738745]  really_probe.part.0+0x99/0x270
-> [    5.738745]  __driver_probe_device+0x8b/0x120
-> [    5.738745]  driver_probe_device+0x19/0x90
-> [    5.738745]  __driver_attach+0x79/0x120
-> [    5.738745]  ? __device_attach_driver+0x90/0x90
-> [    5.738745]  bus_for_each_dev+0x78/0xc0
-> [    5.738745]  bus_add_driver+0x109/0x1b0
-> [    5.738745]  driver_register+0x86/0xd0
-> [    5.738745]  ? ttm_init+0x18/0x18
-> [    5.738745]  i915_init+0x58/0x72
-> [    5.738745]  do_one_initcall+0x56/0x2e0
-> [    5.738745]  ? rcu_read_lock_sched_held+0x3a/0x70
-> [    5.738745]  kernel_init_freeable+0x186/0x1ce
-> [    5.738745]  ? rest_init+0x250/0x250
-> [    5.738745]  kernel_init+0x11/0x110
-> [    5.738745]  ret_from_fork+0x22/0x30
-> [    5.738745] irq event stamp: 8200428
-> [    5.738745] hardirqs last  enabled at (8200427): [<ffffffff825d38e8>] _raw_spin_unlock_irqrestore+0
-> [    5.738745] hardirqs last disabled at (8200428): [<ffffffff825d3671>] _raw_spin_lock_irq+0x41/0x50
-> [    5.738745] softirqs last  enabled at (8199086): [<ffffffff8113f3c8>] irq_exit_rcu+0x108/0x140
-> [    5.738745] softirqs last disabled at (8199079): [<ffffffff8113f3c8>] irq_exit_rcu+0x108/0x140
-> [    5.738745] ---[ end trace e99e0812b8ee9c5d ]---
-> [    5.786472] i915 0000:00:04.0: [drm] VGT ballooning configuration:
-> [    5.787531] i915 0000:00:04.0: [drm] Mappable graphic memory: base 0x31c7000 size 65536KiB
-> [    5.788865] i915 0000:00:04.0: [drm] Unmappable graphic memory: base 0xe7ef8000 size 393216KiB
-> [    5.790270] i915 0000:00:04.0: [drm] balloon space: range [ 0x10000000 - 0xe7ef8000 ] 3537888 KiB.
-> [    5.791807] i915 0000:00:04.0: [drm] balloon space: range [ 0xffef8000 - 0x100000000 ] 1056 KiB.
-> [    5.793241] i915 0000:00:04.0: [drm] balloon space: range [ 0x0 - 0x31c7000 ] 50972 KiB.
-> [    5.794565] i915 0000:00:04.0: [drm] balloon space: range [ 0x71c7000 - 0x10000000 ] 145636 KiB.
-> [    5.796028] i915 0000:00:04.0: [drm] VGT balloon successfully
-> [    6.670284] ------------[ cut here ]------------
-> [    6.671155] crtc active state doesn't match with hw state (expected 0, found 1)
-> [    6.672376] WARNING: CPU: 0 PID: 1 at drivers/gpu/drm/i915/display/intel_display.c:8964 intel_atom0
-> [    6.674232] Modules linked in:
-> [    6.674767] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W         5.14.0-rc2+ #22
-> [    6.676039] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.14.0-2 04/01/2014
-> [    6.677402] RIP: 0010:intel_atomic_commit_tail+0x13c9/0x1410
-> [    6.678335] Code: 0f 0b 0f b6 34 24 89 f1 e9 8d fc ff ff e8 7f 19 7f 00 0f 0b e9 30 fd ff ff e8 739
-> [    6.681400] RSP: 0000:ffffc90000013b20 EFLAGS: 00010282
-> [    6.682264] RAX: 0000000000000000 RBX: ffff888105593800 RCX: 0000000000000000
-> [    6.683453] RDX: 0000000000000001 RSI: ffffffff831a6e3f RDI: 00000000ffffffff
-> [    6.684623] RBP: ffff888104ab2000 R08: 0000000000000001 R09: 0000000000000001
-> [    6.685782] R10: 00000000ffff0000 R11: 3fffffffffffffff R12: ffff888104baa000
-> [    6.686972] R13: ffff888104e5a000 R14: ffff8881053f0000 R15: ffff8881053f0000
-> [    6.688147] FS:  0000000000000000(0000) GS:ffff88813bc00000(0000) knlGS:0000000000000000
-> [    6.689475] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [    6.690421] CR2: 0000000000000000 CR3: 0000000003462000 CR4: 00000000000006f0
-> [    6.691611] Call Trace:
-> [    6.692038]  intel_atomic_commit+0x32d/0x3b0
-> [    6.692751]  intel_initial_commit+0x156/0x1e0
-> [    6.693488]  intel_modeset_init+0x19/0x80
-> [    6.694156]  i915_driver_probe+0x6bb/0xd30
-> [    6.694860]  ? _raw_spin_unlock_irqrestore+0x33/0x50
-> [    6.695690]  pci_device_probe+0xcd/0x140
-> [    6.696346]  really_probe.part.0+0x99/0x270
-> [    6.697041]  __driver_probe_device+0x8b/0x120
-> [    6.697767]  driver_probe_device+0x19/0x90
-> [    6.698459]  __driver_attach+0x79/0x120
-> [    6.699120]  ? __device_attach_driver+0x90/0x90
-> [    6.699878]  bus_for_each_dev+0x78/0xc0
-> [    6.700522]  bus_add_driver+0x109/0x1b0
-> [    6.701163]  driver_register+0x86/0xd0
-> [    6.701786]  ? ttm_init+0x18/0x18
-> [    6.702342]  i915_init+0x58/0x72
-> [    6.702906]  do_one_initcall+0x56/0x2e0
-> [    6.703553]  ? rcu_read_lock_sched_held+0x3a/0x70
-> [    6.704335]  kernel_init_freeable+0x186/0x1ce
-> [    6.705057]  ? rest_init+0x250/0x250
-> [    6.705660]  kernel_init+0x11/0x110
-> [    6.706250]  ret_from_fork+0x22/0x30
-> [    6.706893] irq event stamp: 8204007
-> [    6.707520] hardirqs last  enabled at (8204015): [<ffffffff811acba3>] console_unlock+0x323/0x560
-> [    6.708967] hardirqs last disabled at (8204022): [<ffffffff811acc50>] console_unlock+0x3d0/0x560
-> [    6.710409] softirqs last  enabled at (8203694): [<ffffffff8113f3c8>] irq_exit_rcu+0x108/0x140
-> [    6.711894] softirqs last disabled at (8203689): [<ffffffff8113f3c8>] irq_exit_rcu+0x108/0x140
-> [    6.713302] ---[ end trace e99e0812b8ee9c5e ]---
-> [    6.719970] [drm] Initialized i915 1.6.0 20201103 for 0000:00:04.0 on minor 0
-> 
-> _______________________________________________
-> Intel-gfx mailing list
-> Intel-gfx@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
