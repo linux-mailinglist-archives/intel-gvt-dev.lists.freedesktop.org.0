@@ -1,39 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 655F23D12EE
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 17:55:36 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5B4C3D12F0
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 17:56:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 15D4E6E9AB;
-	Wed, 21 Jul 2021 15:55:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 75F3F6E98C;
+	Wed, 21 Jul 2021 15:56:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from casper.infradead.org (casper.infradead.org
  [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 72D686E97A;
- Wed, 21 Jul 2021 15:55:33 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5030F6E98C;
+ Wed, 21 Jul 2021 15:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=7I579GypQLYEVh+6zoCesHj8dA7m7g5kDfHc+VPf3Ok=; b=XMrI5vkeal3hOA0WE3+XgekGME
- E1Cpk44izATLqvjqTUYmlQvRFlQgcPmrbTsdbeyrX4v+VZ3S9rYq4TntdoDylV6wQGkWu+y9pj6SE
- RyO/iAFdw9Zc1dMrKIWsOEhUe134WLWpvzm/lUqMIaoH3NhWk0IQQbIpC14uipB8MVw/7n/1Lggmj
- r997XO1oSHFlLyXuA6J5fCS9zRaIoJUXHYygw3GxhFrajr+A97nlcTpGqRnp20Tf0E7V5HzjeoiRw
- YFTwvhmt3vXzE0ZZM99NUB6w11EWX46PYvA3gnneKYGhqirYiqeKU6YZIw9C0nsiaXO+CI2ouwkwA
- I3zAgZqQ==;
+ bh=F6zmZdoQEpDNqAkiwEvwpaY+U34MG0vMNRiv3qWpt/c=; b=tvfmyL47/SWVpLe3eLDiA4V+5A
+ bSts6g5IbrZaooG+bFufygW2IhuSQvdKsXMdZjuJIPkDw2vcjhgM6G6tEoTuD20wdM989cfauu/z9
+ Zp4XOat/EKBWpLEKIje6rfE8/+j47fCOaIS2SCrXweoJL4P4PkNLuiqnclxRuvBMN4vuuIUvLuKE9
+ GPNFylrp3z7moiIsQjJb5jxLaFJBNt7tXngvAomJXtMPRQ+yPdyRUMfLqQwuSXBZCMvIljgHBh9Pq
+ T0WB3rxyVia1oxXiTjh3DzKY9U1CwKHbROGAZtc+I/SEahqD+PXXihQq9nAzWYMAFnkXxZsb+LEMY
+ zu2pF6KA==;
 Received: from [2001:4bb8:193:7660:d6d5:72f4:23f7:1898] (helo=localhost)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6EYk-009MHH-6X; Wed, 21 Jul 2021 15:55:02 +0000
+ id 1m6EZ7-009MJZ-By; Wed, 21 Jul 2021 15:55:26 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 04/21] drm/i915/gvt: move the gvt code into kvmgt.ko
-Date: Wed, 21 Jul 2021 17:53:38 +0200
-Message-Id: <20210721155355.173183-5-hch@lst.de>
+Subject: [PATCH 05/21] drm/i915/gvt: remove intel_gvt_ops
+Date: Wed, 21 Jul 2021 17:53:39 +0200
+Message-Id: <20210721155355.173183-6-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210721155355.173183-1-hch@lst.de>
 References: <20210721155355.173183-1-hch@lst.de>
@@ -59,461 +59,271 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Instead of having an option to build the gvt code into the main i915
-module, just move it into the kvmgt.ko module.  This only requires
-a new struct with three entries that the main i915 module needs to
-request before enabling VGPU passthrough operations.
-
-This also conveniently streamlines the GVT initialization and avoids
-the need for the global device pointer.
+Remove these pointless indirect alls by just calling the only instance
+of each method directly.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/gpu/drm/i915/Kconfig                  | 31 +++------
- drivers/gpu/drm/i915/Makefile                 |  7 +-
- .../drm/i915/gt/intel_execlists_submission.c  |  4 +-
- drivers/gpu/drm/i915/gvt/gvt.c                | 56 ++++++----------
- drivers/gpu/drm/i915/gvt/gvt.h                |  6 +-
- drivers/gpu/drm/i915/gvt/kvmgt.c              | 19 ++----
- drivers/gpu/drm/i915/gvt/mpt.h                |  3 -
- drivers/gpu/drm/i915/i915_drv.h               |  7 ++
- drivers/gpu/drm/i915/i915_params.c            |  2 +-
- drivers/gpu/drm/i915/intel_gvt.c              | 64 +++++++++++++++++--
- drivers/gpu/drm/i915/intel_gvt.h              |  4 +-
- 11 files changed, 107 insertions(+), 96 deletions(-)
+ drivers/gpu/drm/i915/gvt/gvt.c       | 20 +--------------
+ drivers/gpu/drm/i915/gvt/gvt.h       | 24 ------------------
+ drivers/gpu/drm/i915/gvt/hypercall.h |  2 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c     | 37 +++++++++++-----------------
+ drivers/gpu/drm/i915/gvt/mpt.h       |  5 ++--
+ 5 files changed, 19 insertions(+), 69 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/Kconfig b/drivers/gpu/drm/i915/Kconfig
-index f960f5d7664e..46e37238b2e4 100644
---- a/drivers/gpu/drm/i915/Kconfig
-+++ b/drivers/gpu/drm/i915/Kconfig
-@@ -98,39 +98,24 @@ config DRM_I915_USERPTR
- 
- 	  If in doubt, say "Y".
- 
--config DRM_I915_GVT
--	bool "Enable Intel GVT-g graphics virtualization host support"
-+config DRM_I915_GVT_KVMGT
-+	tristate "Enable KVM host support Intel GVT-g graphics virtualization"
- 	depends on DRM_I915
- 	depends on 64BIT
--	default n
-+	depends on KVM
-+	depends on VFIO_MDEV
- 	help
- 	  Choose this option if you want to enable Intel GVT-g graphics
- 	  virtualization technology host support with integrated graphics.
- 	  With GVT-g, it's possible to have one integrated graphics
--	  device shared by multiple VMs under different hypervisors.
-+	  device shared by multiple VMs under KVM.
- 
--	  Note that at least one hypervisor like Xen or KVM is required for
--	  this driver to work, and it only supports newer device from
--	  Broadwell+. For further information and setup guide, you can
--	  visit: http://01.org/igvt-g.
--
--	  Now it's just a stub to support the modifications of i915 for
--	  GVT device model. It requires at least one MPT modules for Xen/KVM
--	  and other components of GVT device model to work. Use it under
--	  you own risk.
-+	  Note that this driver only supports newer device from Broadwell on.
-+	  For further information and setup guide, you can visit:
-+	  http://01.org/igvt-g.
- 
- 	  If in doubt, say "N".
- 
--config DRM_I915_GVT_KVMGT
--	tristate "Enable KVM/VFIO support for Intel GVT-g"
--	depends on DRM_I915_GVT
--	depends on KVM
--	depends on VFIO_MDEV
--	default n
--	help
--	  Choose this option if you want to enable KVMGT support for
--	  Intel GVT-g.
--
- menu "drm/i915 Debugging"
- depends on DRM_I915
- depends on EXPERT
-diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefile
-index 2153f67705b8..45cdb94363c7 100644
---- a/drivers/gpu/drm/i915/Makefile
-+++ b/drivers/gpu/drm/i915/Makefile
-@@ -289,8 +289,9 @@ i915-$(CONFIG_DRM_I915_SELFTEST) += \
- 
- # virtual gpu code
- i915-y += i915_vgpu.o
--i915-$(CONFIG_DRM_I915_GVT) += \
--	intel_gvt.o \
-+i915-$(CONFIG_DRM_I915_GVT_KVMGT) += intel_gvt.o
-+
-+kvmgt-y += gvt/kvmgt.o \
- 	gvt/gvt.o \
- 	gvt/aperture_gm.o \
- 	gvt/handlers.o \
-@@ -315,7 +316,7 @@ i915-$(CONFIG_DRM_I915_GVT) += \
- 	gvt/page_track.o
- 
- obj-$(CONFIG_DRM_I915) += i915.o
--obj-$(CONFIG_DRM_I915_GVT_KVMGT) += gvt/kvmgt.o
-+obj-$(CONFIG_DRM_I915_GVT_KVMGT) += kvmgt.o
- 
- # header test
- 
-diff --git a/drivers/gpu/drm/i915/gt/intel_execlists_submission.c b/drivers/gpu/drm/i915/gt/intel_execlists_submission.c
-index fc77592d88a9..8b23c63db7ba 100644
---- a/drivers/gpu/drm/i915/gt/intel_execlists_submission.c
-+++ b/drivers/gpu/drm/i915/gt/intel_execlists_submission.c
-@@ -417,7 +417,7 @@ execlists_context_status_change(struct i915_request *rq, unsigned long status)
- 	 * Only used when GVT-g is enabled now. When GVT-g is disabled,
- 	 * The compiler should eliminate this function as dead-code.
- 	 */
--	if (!IS_ENABLED(CONFIG_DRM_I915_GVT))
-+	if (!IS_ENABLED(CONFIG_DRM_I915_GVT_KVMGT))
- 		return;
- 
- 	atomic_notifier_call_chain(&rq->engine->context_status_notifier,
-@@ -911,7 +911,7 @@ static void execlists_submit_ports(struct intel_engine_cs *engine)
- 
- static bool ctx_single_port_submission(const struct intel_context *ce)
- {
--	return (IS_ENABLED(CONFIG_DRM_I915_GVT) &&
-+	return (IS_ENABLED(CONFIG_DRM_I915_GVT_KVMGT) &&
- 		intel_context_force_single_submission(ce));
- }
- 
 diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gvt.c
-index ee09bba970af..3671a076bd7a 100644
+index 3671a076bd7a..2b59e79f5e3b 100644
 --- a/drivers/gpu/drm/i915/gvt/gvt.c
 +++ b/drivers/gpu/drm/i915/gvt/gvt.c
-@@ -39,8 +39,6 @@
+@@ -39,23 +39,6 @@
  #include <linux/vfio.h>
  #include <linux/mdev.h>
  
--struct intel_gvt_host intel_gvt_host;
+-static const struct intel_gvt_ops intel_gvt_ops = {
+-	.emulate_cfg_read = intel_vgpu_emulate_cfg_read,
+-	.emulate_cfg_write = intel_vgpu_emulate_cfg_write,
+-	.emulate_mmio_read = intel_vgpu_emulate_mmio_read,
+-	.emulate_mmio_write = intel_vgpu_emulate_mmio_write,
+-	.vgpu_create = intel_gvt_create_vgpu,
+-	.vgpu_destroy = intel_gvt_destroy_vgpu,
+-	.vgpu_release = intel_gvt_release_vgpu,
+-	.vgpu_reset = intel_gvt_reset_vgpu,
+-	.vgpu_activate = intel_gvt_activate_vgpu,
+-	.vgpu_deactivate = intel_gvt_deactivate_vgpu,
+-	.vgpu_query_plane = intel_vgpu_query_plane,
+-	.vgpu_get_dmabuf = intel_vgpu_get_dmabuf,
+-	.write_protect_handler = intel_vgpu_page_track_handler,
+-	.emulate_hotplug = intel_vgpu_emulate_hotplug,
+-};
 -
- static const struct intel_gvt_ops intel_gvt_ops = {
- 	.emulate_cfg_read = intel_vgpu_emulate_cfg_read,
- 	.emulate_cfg_write = intel_vgpu_emulate_cfg_write,
-@@ -147,13 +145,14 @@ static int init_service_thread(struct intel_gvt *gvt)
-  * resources owned by a GVT device.
-  *
-  */
--void intel_gvt_clean_device(struct drm_i915_private *i915)
-+static void intel_gvt_clean_device(struct drm_i915_private *i915)
+ static void init_device_info(struct intel_gvt *gvt)
  {
- 	struct intel_gvt *gvt = fetch_and_zero(&i915->gvt);
- 
- 	if (drm_WARN_ON(&i915->drm, !gvt))
- 		return;
- 
-+	intel_gvt_hypervisor_host_exit(i915->drm.dev, gvt);
- 	intel_gvt_destroy_idle_vgpu(gvt->idle_vgpu);
- 	intel_gvt_clean_vgpu_types(gvt);
- 
-@@ -181,7 +180,7 @@ void intel_gvt_clean_device(struct drm_i915_private *i915)
-  * Zero on success, negative error code if failed.
-  *
-  */
--int intel_gvt_init_device(struct drm_i915_private *i915)
-+static int intel_gvt_init_device(struct drm_i915_private *i915)
- {
- 	struct intel_gvt *gvt;
- 	struct intel_vgpu *vgpu;
-@@ -253,11 +252,17 @@ int intel_gvt_init_device(struct drm_i915_private *i915)
+ 	struct intel_gvt_device_info *info = &gvt->device_info;
+@@ -252,8 +235,7 @@ static int intel_gvt_init_device(struct drm_i915_private *i915)
  
  	intel_gvt_debugfs_init(gvt);
  
-+	ret = intel_gvt_hypervisor_host_init(i915->drm.dev, gvt,
-+					     &intel_gvt_ops);
-+	if (ret)
-+		goto out_destroy_idle_vgpu;
-+
- 	gvt_dbg_core("gvt device initialization is done\n");
--	intel_gvt_host.dev = i915->drm.dev;
--	intel_gvt_host.initialized = true;
- 	return 0;
- 
-+out_destroy_idle_vgpu:
-+	intel_gvt_destroy_idle_vgpu(gvt->idle_vgpu);
-+	intel_gvt_debugfs_clean(gvt);
- out_clean_types:
- 	intel_gvt_clean_vgpu_types(gvt);
- out_clean_thread:
-@@ -281,39 +286,18 @@ int intel_gvt_init_device(struct drm_i915_private *i915)
- 	return ret;
- }
- 
--int
--intel_gvt_pm_resume(struct intel_gvt *gvt)
-+static void intel_gvt_pm_resume(struct drm_i915_private *i915)
- {
-+	struct intel_gvt *gvt = i915->gvt;
-+
- 	intel_gvt_restore_fence(gvt);
- 	intel_gvt_restore_mmio(gvt);
- 	intel_gvt_restore_ggtt(gvt);
--	return 0;
--}
--
--int
--intel_gvt_register_hypervisor(const struct intel_gvt_mpt *m)
--{
--	int ret;
--	void *gvt;
--
--	if (!intel_gvt_host.initialized)
--		return -ENODEV;
--
--	intel_gvt_host.mpt = m;
--	gvt = (void *)kdev_to_i915(intel_gvt_host.dev)->gvt;
--
--	ret = intel_gvt_hypervisor_host_init(intel_gvt_host.dev, gvt,
+-	ret = intel_gvt_hypervisor_host_init(i915->drm.dev, gvt,
 -					     &intel_gvt_ops);
--	if (ret < 0)
--		return -ENODEV;
--	return 0;
- }
--EXPORT_SYMBOL_GPL(intel_gvt_register_hypervisor);
++	ret = intel_gvt_hypervisor_host_init(i915->drm.dev, gvt);
+ 	if (ret)
+ 		goto out_destroy_idle_vgpu;
  
--void
--intel_gvt_unregister_hypervisor(void)
--{
--	void *gvt = (void *)kdev_to_i915(intel_gvt_host.dev)->gvt;
--	intel_gvt_hypervisor_host_exit(intel_gvt_host.dev, gvt);
--}
--EXPORT_SYMBOL_GPL(intel_gvt_unregister_hypervisor);
-+const struct i915_virtual_gpu_ops intel_gvt_vgpu_ops = {
-+	.init_device	= intel_gvt_init_device,
-+	.clean_device	= intel_gvt_clean_device,
-+	.pm_resume	= intel_gvt_pm_resume,
-+};
-+EXPORT_SYMBOL_GPL(intel_gvt_vgpu_ops);
 diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 9b9fdbf9df10..c346111f0300 100644
+index c346111f0300..40643fe14383 100644
 --- a/drivers/gpu/drm/i915/gvt/gvt.h
 +++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -57,8 +57,6 @@
- #define GVT_MAX_VGPU 8
+@@ -555,30 +555,6 @@ void populate_pvinfo_page(struct intel_vgpu *vgpu);
+ int intel_gvt_scan_and_shadow_workload(struct intel_vgpu_workload *workload);
+ void enter_failsafe_mode(struct intel_vgpu *vgpu, int reason);
  
- struct intel_gvt_host {
--	struct device *dev;
--	bool initialized;
- 	const struct intel_gvt_mpt *mpt;
- };
- 
-@@ -727,9 +725,9 @@ void intel_gvt_debugfs_remove_vgpu(struct intel_vgpu *vgpu);
- void intel_gvt_debugfs_init(struct intel_gvt *gvt);
- void intel_gvt_debugfs_clean(struct intel_gvt *gvt);
- 
--int intel_gvt_pm_resume(struct intel_gvt *gvt);
+-struct intel_gvt_ops {
+-	int (*emulate_cfg_read)(struct intel_vgpu *, unsigned int, void *,
+-				unsigned int);
+-	int (*emulate_cfg_write)(struct intel_vgpu *, unsigned int, void *,
+-				unsigned int);
+-	int (*emulate_mmio_read)(struct intel_vgpu *, u64, void *,
+-				unsigned int);
+-	int (*emulate_mmio_write)(struct intel_vgpu *, u64, void *,
+-				unsigned int);
+-	struct intel_vgpu *(*vgpu_create)(struct intel_gvt *,
+-				struct intel_vgpu_type *);
+-	void (*vgpu_destroy)(struct intel_vgpu *vgpu);
+-	void (*vgpu_release)(struct intel_vgpu *vgpu);
+-	void (*vgpu_reset)(struct intel_vgpu *);
+-	void (*vgpu_activate)(struct intel_vgpu *);
+-	void (*vgpu_deactivate)(struct intel_vgpu *);
+-	int (*vgpu_query_plane)(struct intel_vgpu *vgpu, void *);
+-	int (*vgpu_get_dmabuf)(struct intel_vgpu *vgpu, unsigned int);
+-	int (*write_protect_handler)(struct intel_vgpu *, u64, void *,
+-				     unsigned int);
+-	void (*emulate_hotplug)(struct intel_vgpu *vgpu, bool connected);
+-};
 -
- #include "trace.h"
- #include "mpt.h"
- 
-+extern const struct i915_virtual_gpu_ops intel_gvt_vgpu_ops;
-+
- #endif
+-
+ enum {
+ 	GVT_FAILSAFE_UNSUPPORTED_GUEST,
+ 	GVT_FAILSAFE_INSUFFICIENT_RESOURCE,
+diff --git a/drivers/gpu/drm/i915/gvt/hypercall.h b/drivers/gpu/drm/i915/gvt/hypercall.h
+index 317983153645..395bce9633fa 100644
+--- a/drivers/gpu/drm/i915/gvt/hypercall.h
++++ b/drivers/gpu/drm/i915/gvt/hypercall.h
+@@ -42,7 +42,7 @@ struct device;
+  * both Xen and KVM by providing dedicated hypervisor-related MPT modules.
+  */
+ struct intel_gvt_mpt {
+-	int (*host_init)(struct device *dev, void *gvt, const void *ops);
++	int (*host_init)(struct device *dev, void *gvt);
+ 	void (*host_exit)(struct device *dev, void *gvt);
+ 	int (*attach_vgpu)(void *vgpu, unsigned long *handle);
+ 	void (*detach_vgpu)(void *vgpu);
 diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 0d0902d7405d..65659094eee6 100644
+index 65659094eee6..935d1c8287a4 100644
 --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
 +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -49,6 +49,8 @@
- #include "i915_drv.h"
- #include "gvt.h"
+@@ -51,8 +51,6 @@
  
-+MODULE_IMPORT_NS(I915_GVT);
-+
- static const struct intel_gvt_ops *intel_gvt_ops;
+ MODULE_IMPORT_NS(I915_GVT);
  
+-static const struct intel_gvt_ops *intel_gvt_ops;
+-
  /* helper macros copied from vfio-pci */
-@@ -2225,20 +2227,9 @@ static const struct intel_gvt_mpt kvmgt_mpt = {
- 	.is_valid_gfn = kvmgt_is_valid_gfn,
+ #define VFIO_PCI_OFFSET_SHIFT   40
+ #define VFIO_PCI_OFFSET_TO_INDEX(off)   (off >> VFIO_PCI_OFFSET_SHIFT)
+@@ -602,9 +600,9 @@ static int handle_edid_regs(struct intel_vgpu *vgpu,
+ 					gvt_vgpu_err("invalid EDID blob\n");
+ 					return -EINVAL;
+ 				}
+-				intel_gvt_ops->emulate_hotplug(vgpu, true);
++				intel_vgpu_emulate_hotplug(vgpu, true);
+ 			} else if (data == VFIO_DEVICE_GFX_LINK_STATE_DOWN)
+-				intel_gvt_ops->emulate_hotplug(vgpu, false);
++				intel_vgpu_emulate_hotplug(vgpu, false);
+ 			else {
+ 				gvt_vgpu_err("invalid EDID link state %d\n",
+ 					regs->link_state);
+@@ -806,7 +804,7 @@ static int intel_vgpu_create(struct mdev_device *mdev)
+ 		goto out;
+ 	}
+ 
+-	vgpu = intel_gvt_ops->vgpu_create(gvt, type);
++	vgpu = intel_gvt_create_vgpu(gvt, type);
+ 	if (IS_ERR_OR_NULL(vgpu)) {
+ 		ret = vgpu == NULL ? -EFAULT : PTR_ERR(vgpu);
+ 		gvt_err("failed to create intel vgpu: %d\n", ret);
+@@ -833,7 +831,7 @@ static int intel_vgpu_remove(struct mdev_device *mdev)
+ 	if (handle_valid(vgpu->handle))
+ 		return -EBUSY;
+ 
+-	intel_gvt_ops->vgpu_destroy(vgpu);
++	intel_gvt_destroy_vgpu(vgpu);
+ 	return 0;
+ }
+ 
+@@ -936,7 +934,7 @@ static int intel_vgpu_open(struct mdev_device *mdev)
+ 	if (ret)
+ 		goto undo_group;
+ 
+-	intel_gvt_ops->vgpu_activate(vgpu);
++	intel_gvt_activate_vgpu(vgpu);
+ 
+ 	atomic_set(&vdev->released, 0);
+ 	return ret;
+@@ -981,7 +979,7 @@ static void __intel_vgpu_release(struct intel_vgpu *vgpu)
+ 	if (atomic_cmpxchg(&vdev->released, 0, 1))
+ 		return;
+ 
+-	intel_gvt_ops->vgpu_release(vgpu);
++	intel_gvt_release_vgpu(vgpu);
+ 
+ 	ret = vfio_unregister_notifier(mdev_dev(vdev->mdev), VFIO_IOMMU_NOTIFY,
+ 					&vdev->iommu_notifier);
+@@ -1055,10 +1053,10 @@ static int intel_vgpu_bar_rw(struct intel_vgpu *vgpu, int bar, u64 off,
+ 	int ret;
+ 
+ 	if (is_write)
+-		ret = intel_gvt_ops->emulate_mmio_write(vgpu,
++		ret = intel_vgpu_emulate_mmio_write(vgpu,
+ 					bar_start + off, buf, count);
+ 	else
+-		ret = intel_gvt_ops->emulate_mmio_read(vgpu,
++		ret = intel_vgpu_emulate_mmio_read(vgpu,
+ 					bar_start + off, buf, count);
+ 	return ret;
+ }
+@@ -1114,10 +1112,10 @@ static ssize_t intel_vgpu_rw(struct mdev_device *mdev, char *buf,
+ 	switch (index) {
+ 	case VFIO_PCI_CONFIG_REGION_INDEX:
+ 		if (is_write)
+-			ret = intel_gvt_ops->emulate_cfg_write(vgpu, pos,
++			ret = intel_vgpu_emulate_cfg_write(vgpu, pos,
+ 						buf, count);
+ 		else
+-			ret = intel_gvt_ops->emulate_cfg_read(vgpu, pos,
++			ret = intel_vgpu_emulate_cfg_read(vgpu, pos,
+ 						buf, count);
+ 		break;
+ 	case VFIO_PCI_BAR0_REGION_INDEX:
+@@ -1685,7 +1683,7 @@ static long intel_vgpu_ioctl(struct mdev_device *mdev, unsigned int cmd,
+ 
+ 		return ret;
+ 	} else if (cmd == VFIO_DEVICE_RESET) {
+-		intel_gvt_ops->vgpu_reset(vgpu);
++		intel_gvt_reset_vgpu(vgpu);
+ 		return 0;
+ 	} else if (cmd == VFIO_DEVICE_QUERY_GFX_PLANE) {
+ 		struct vfio_device_gfx_plane_info dmabuf;
+@@ -1698,7 +1696,7 @@ static long intel_vgpu_ioctl(struct mdev_device *mdev, unsigned int cmd,
+ 		if (dmabuf.argsz < minsz)
+ 			return -EINVAL;
+ 
+-		ret = intel_gvt_ops->vgpu_query_plane(vgpu, &dmabuf);
++		ret = intel_vgpu_query_plane(vgpu, &dmabuf);
+ 		if (ret != 0)
+ 			return ret;
+ 
+@@ -1706,14 +1704,10 @@ static long intel_vgpu_ioctl(struct mdev_device *mdev, unsigned int cmd,
+ 								-EFAULT : 0;
+ 	} else if (cmd == VFIO_DEVICE_GET_GFX_DMABUF) {
+ 		__u32 dmabuf_id;
+-		__s32 dmabuf_fd;
+ 
+ 		if (get_user(dmabuf_id, (__u32 __user *)arg))
+ 			return -EFAULT;
+-
+-		dmabuf_fd = intel_gvt_ops->vgpu_get_dmabuf(vgpu, dmabuf_id);
+-		return dmabuf_fd;
+-
++		return intel_vgpu_get_dmabuf(vgpu, dmabuf_id);
+ 	}
+ 
+ 	return -ENOTTY;
+@@ -1764,7 +1758,7 @@ static struct mdev_parent_ops intel_vgpu_ops = {
+ 	.ioctl			= intel_vgpu_ioctl,
  };
  
--static int __init kvmgt_init(void)
--{
--	if (intel_gvt_register_hypervisor(&kvmgt_mpt) < 0)
--		return -ENODEV;
--	return 0;
--}
--
--static void __exit kvmgt_exit(void)
--{
--	intel_gvt_unregister_hypervisor();
--}
--
--module_init(kvmgt_init);
--module_exit(kvmgt_exit);
-+struct intel_gvt_host intel_gvt_host = {
-+	.mpt		= &kvmgt_mpt,
-+};
+-static int kvmgt_host_init(struct device *dev, void *gvt, const void *ops)
++static int kvmgt_host_init(struct device *dev, void *gvt)
+ {
+ 	int ret;
  
- MODULE_LICENSE("GPL and additional rights");
- MODULE_AUTHOR("Intel Corporation");
+@@ -1772,7 +1766,6 @@ static int kvmgt_host_init(struct device *dev, void *gvt, const void *ops)
+ 	if (ret)
+ 		return ret;
+ 
+-	intel_gvt_ops = ops;
+ 	intel_vgpu_ops.supported_type_groups = gvt_vgpu_type_groups;
+ 
+ 	ret = mdev_register_device(dev, &intel_vgpu_ops);
+@@ -1864,7 +1857,7 @@ static void kvmgt_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa,
+ 					struct kvmgt_guest_info, track_node);
+ 
+ 	if (kvmgt_gfn_is_write_protected(info, gpa_to_gfn(gpa)))
+-		intel_gvt_ops->write_protect_handler(info->vgpu, gpa,
++		intel_vgpu_page_track_handler(info->vgpu, gpa,
+ 						     (void *)val, len);
+ }
+ 
 diff --git a/drivers/gpu/drm/i915/gvt/mpt.h b/drivers/gpu/drm/i915/gvt/mpt.h
-index e6c5a792a49a..1b5617bb2745 100644
+index 1b5617bb2745..0e3966e1fec8 100644
 --- a/drivers/gpu/drm/i915/gvt/mpt.h
 +++ b/drivers/gpu/drm/i915/gvt/mpt.h
-@@ -394,7 +394,4 @@ static inline bool intel_gvt_hypervisor_is_valid_gfn(
- 	return intel_gvt_host.mpt->is_valid_gfn(vgpu->handle, gfn);
- }
- 
--int intel_gvt_register_hypervisor(const struct intel_gvt_mpt *);
--void intel_gvt_unregister_hypervisor(void);
--
- #endif /* _GVT_MPT_H_ */
-diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_drv.h
-index 38ff2fb89744..37afbe2d9563 100644
---- a/drivers/gpu/drm/i915/i915_drv.h
-+++ b/drivers/gpu/drm/i915/i915_drv.h
-@@ -750,10 +750,17 @@ struct i915_frontbuffer_tracking {
- 	unsigned flip_bits;
- };
- 
-+struct i915_virtual_gpu_ops {
-+	int (*init_device)(struct drm_i915_private *dev_priv);
-+	void (*clean_device)(struct drm_i915_private *dev_priv);
-+	void (*pm_resume)(struct drm_i915_private *i915);
-+};
-+
- struct i915_virtual_gpu {
- 	struct mutex lock; /* serialises sending of g2v_notify command pkts */
- 	bool active;
- 	u32 caps;
-+	const struct i915_virtual_gpu_ops *ops;
- };
- 
- struct intel_cdclk_config {
-diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
-index e07f4cfea63a..a7394294c010 100644
---- a/drivers/gpu/drm/i915/i915_params.c
-+++ b/drivers/gpu/drm/i915/i915_params.c
-@@ -187,7 +187,7 @@ i915_param_named(enable_dpcd_backlight, int, 0400,
- 	"Enable support for DPCD backlight control"
- 	"(-1=use per-VBT LFP backlight type setting [default], 0=disabled, 1=enable, 2=force VESA interface, 3=force Intel interface)");
- 
--#if IS_ENABLED(CONFIG_DRM_I915_GVT)
-+#if IS_ENABLED(CONFIG_DRM_I915_GVT_KVMGT)
- i915_param_named(enable_gvt, bool, 0400,
- 	"Enable support for Intel GVT-g graphics virtualization host support(default:false)");
- #endif
-diff --git a/drivers/gpu/drm/i915/intel_gvt.c b/drivers/gpu/drm/i915/intel_gvt.c
-index 4e70c1a9ef2e..315707624d9f 100644
---- a/drivers/gpu/drm/i915/intel_gvt.c
-+++ b/drivers/gpu/drm/i915/intel_gvt.c
-@@ -25,6 +25,9 @@
- #include "i915_vgpu.h"
- #include "intel_gvt.h"
- #include "gvt/gvt.h"
-+#include "gt/intel_context.h"
-+#include "gt/intel_ring.h"
-+#include "gt/shmem_utils.h"
- 
- /**
-  * DOC: Intel GVT-g host support
-@@ -115,14 +118,23 @@ int intel_gvt_init(struct drm_i915_private *dev_priv)
- 		return -EIO;
- 	}
- 
--	ret = intel_gvt_init_device(dev_priv);
-+	request_module("kvmgt");
-+	dev_priv->vgpu.ops = symbol_get(intel_gvt_vgpu_ops);
-+	if (!dev_priv->vgpu.ops) {
-+		drm_dbg(&dev_priv->drm, "Fail to find GVT ops\n");
-+		goto bail;
-+	}
-+
-+	ret = dev_priv->vgpu.ops->init_device(dev_priv);
- 	if (ret) {
- 		drm_dbg(&dev_priv->drm, "Fail to init GVT device\n");
--		goto bail;
-+		goto bail_put_ops;
- 	}
- 
- 	return 0;
- 
-+bail_put_ops:
-+	symbol_put(gvt_ops);
- bail:
- 	dev_priv->params.enable_gvt = 0;
- 	return 0;
-@@ -143,10 +155,10 @@ static inline bool intel_gvt_active(struct drm_i915_private *dev_priv)
+@@ -51,13 +51,12 @@
+  * Returns:
+  * Zero on success, negative error code if failed
   */
- void intel_gvt_driver_remove(struct drm_i915_private *dev_priv)
+-static inline int intel_gvt_hypervisor_host_init(struct device *dev,
+-						 void *gvt, const void *ops)
++static inline int intel_gvt_hypervisor_host_init(struct device *dev, void *gvt)
  {
--	if (!intel_gvt_active(dev_priv))
--		return;
--
--	intel_gvt_clean_device(dev_priv);
-+	if (intel_gvt_active(dev_priv)) {
-+		dev_priv->vgpu.ops->clean_device(dev_priv);
-+		symbol_put(dev_priv->vgpu.ops);
-+	}
+ 	if (!intel_gvt_host.mpt->host_init)
+ 		return -ENODEV;
+ 
+-	return intel_gvt_host.mpt->host_init(dev, gvt, ops);
++	return intel_gvt_host.mpt->host_init(dev, gvt);
  }
  
  /**
-@@ -160,5 +172,43 @@ void intel_gvt_driver_remove(struct drm_i915_private *dev_priv)
- void intel_gvt_resume(struct drm_i915_private *dev_priv)
- {
- 	if (intel_gvt_active(dev_priv))
--		intel_gvt_pm_resume(dev_priv->gvt);
-+		dev_priv->vgpu.ops->pm_resume(dev_priv);
- }
-+
-+/*
-+ * Exported here so that the exports only get created when GVT support is
-+ * actually enabled.
-+ */
-+EXPORT_SYMBOL_NS_GPL(i915_gem_object_alloc, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_object_create_shmem, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_object_init, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_object_ggtt_pin_ww, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_object_pin_map, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_object_set_to_cpu_domain, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(__i915_gem_object_flush_map, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(__i915_gem_object_set_pages, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_gtt_insert, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_prime_export, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_ww_ctx_init, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_ww_ctx_backoff, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_gem_ww_ctx_fini, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_ppgtt_create, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_request_add, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_request_create, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_request_wait, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_reserve_fence, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_unreserve_fence, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_vm_release, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(i915_vma_move_to_active, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_context_create, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_context_unpin, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(__intel_context_do_pin, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_ring_begin, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_runtime_pm_get, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_runtime_pm_put_unchecked, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_uncore_forcewake_for_reg, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_uncore_forcewake_get, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(intel_uncore_forcewake_put, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(shmem_pin_map, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(shmem_unpin_map, I915_GVT);
-+EXPORT_SYMBOL_NS_GPL(__px_dma, I915_GVT);
-diff --git a/drivers/gpu/drm/i915/intel_gvt.h b/drivers/gpu/drm/i915/intel_gvt.h
-index d7d3fb6186fd..389589f006ad 100644
---- a/drivers/gpu/drm/i915/intel_gvt.h
-+++ b/drivers/gpu/drm/i915/intel_gvt.h
-@@ -26,11 +26,9 @@
- 
- struct drm_i915_private;
- 
--#ifdef CONFIG_DRM_I915_GVT
-+#if IS_ENABLED(CONFIG_DRM_I915_GVT_KVMGT)
- int intel_gvt_init(struct drm_i915_private *dev_priv);
- void intel_gvt_driver_remove(struct drm_i915_private *dev_priv);
--int intel_gvt_init_device(struct drm_i915_private *dev_priv);
--void intel_gvt_clean_device(struct drm_i915_private *dev_priv);
- int intel_gvt_init_host(void);
- void intel_gvt_sanitize_options(struct drm_i915_private *dev_priv);
- void intel_gvt_resume(struct drm_i915_private *dev_priv);
 -- 
 2.30.2
 
