@@ -2,76 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 137683D04D7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 00:55:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19F7D3D06AC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Jul 2021 04:21:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 927ED6E14F;
-	Tue, 20 Jul 2021 22:55:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CC60A6E171;
+	Wed, 21 Jul 2021 02:21:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DEBCB6E14F
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Jul 2021 22:54:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626821698;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JPmMSBIIRpMLR6pnHriNECIPx7e3cs1ugIoacnqy1RY=;
- b=deWJrQiajDE/Msu17LkNlrn5p+O2XIprx9FBDs5rPhPpw2VWpcWQO/vmuYnQlB5rf2loVx
- 6lQnJGEAwG6sRESg8fUapG/aVi2vnai6lgb3RsznCMHuveRnVDUoh+vyA5dVAykQkGd7dM
- izR/q8YzNVPgUmrrYnVsOoOOWdd8lsI=
-Received: from mail-oo1-f70.google.com (mail-oo1-f70.google.com
- [209.85.161.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-412-IHF4dgiTNEi49CRAtZ4urw-1; Tue, 20 Jul 2021 18:54:54 -0400
-X-MC-Unique: IHF4dgiTNEi49CRAtZ4urw-1
-Received: by mail-oo1-f70.google.com with SMTP id
- t24-20020a4ac8980000b029025fd0948c41so270761ooq.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Jul 2021 15:54:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=JPmMSBIIRpMLR6pnHriNECIPx7e3cs1ugIoacnqy1RY=;
- b=ZMFr0WaeD1LWAVjWeIw+/XJ/TKqA3163S4xJQgs+SVbWQFN5OHPgfAvfdB6B0G3zhh
- melkCQz578VeY04cupjq1gi/pJm0yPrW0oxg+ZSbQ3l/4Jfsb1wHzMjHSkCVhZr085UJ
- bueMnoACEhXIt+T2fouerRQ45vQ6un7DtdxUvBke+rnWoamHScC/4tg9eWW/RwEIzol5
- WRxVdTFl1LoQeT6ZwpDjuxQD7J1b7FyXhPjwh/MQ5Xb5LpENEqm10pqvQV76KsbPmpcf
- 5iuFLMhYFW7Ih1PxJYkJ/UYWxInQSaCP/xH+ANq6kFdL5Fj2ABwk91o6GHVq+s4g0FYb
- 45iA==
-X-Gm-Message-State: AOAM531BwxcjUdj3eT3AJLgyFfIQRoDTNLB4jpP9LipmBW7wCV4LzIJO
- XtjS3aqX13fH++CXSK30OvXLCKP4TvKCaD2lLwQ0mc8ZErHWax9guSr2XK5KYZiybneAq8fmuSR
- ixh7DyMn103qTcMFLqnOh9Xamr0XL4Fkceg==
-X-Received: by 2002:a9d:4b02:: with SMTP id q2mr13197552otf.52.1626821694107; 
- Tue, 20 Jul 2021 15:54:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7ncl7zRpBxXCyp5ocCnM/u43LPRAaepFBcKVNjugNChC0csQAeVdr5AwkuCzyfA5+QlRtnQ==
-X-Received: by 2002:a9d:4b02:: with SMTP id q2mr13197528otf.52.1626821693761; 
- Tue, 20 Jul 2021 15:54:53 -0700 (PDT)
-Received: from redhat.com ([198.99.80.109])
- by smtp.gmail.com with ESMTPSA id l196sm3275801oib.14.2021.07.20.15.54.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Jul 2021 15:54:53 -0700 (PDT)
-Date: Tue, 20 Jul 2021 16:54:51 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 02/14] vfio/mbochs: Fix missing error unwind in
- mbochs_probe()
-Message-ID: <20210720165451.625dddd4.alex.williamson@redhat.com>
-In-Reply-To: <20210720224955.GD1117491@nvidia.com>
-References: <0-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
- <2-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
- <20210720160127.17bf3c19.alex.williamson@redhat.com>
- <20210720224955.GD1117491@nvidia.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E14C36E171;
+ Wed, 21 Jul 2021 02:21:48 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10051"; a="208241621"
+X-IronPort-AV: E=Sophos;i="5.84,256,1620716400"; 
+ d="asc'?scan'208";a="208241621"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jul 2021 19:21:48 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,256,1620716400"; 
+ d="asc'?scan'208";a="495105095"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by fmsmga004.fm.intel.com with ESMTP; 20 Jul 2021 19:21:45 -0700
+Date: Wed, 21 Jul 2021 10:00:09 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Xiyu Yang <xiyuyang19@fudan.edu.cn>
+Subject: Re: [PATCH] drm/i915/gvt: Convert from atomic_t to refcount_t on
+ intel_vgpu_ppgtt_spt->refcount
+Message-ID: <20210721020009.GG13928@zhen-hp.sh.intel.com>
+References: <1626432098-27626-1-git-send-email-xiyuyang19@fudan.edu.cn>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <1626432098-27626-1-git-send-email-xiyuyang19@fudan.edu.cn>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,101 +44,136 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
- David Airlie <airlied@linux.ie>,
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Xin Tan <tanxin.ctf@gmail.com>, yuanxzhang@fudan.edu.cn,
+ David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Kirti Wankhede <kwankhede@nvidia.com>,
- Max Gurtovoy <mgurtovoy@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>, Leon Romanovsky <leonro@nvidia.com>,
- Christoph Hellwig <hch@lst.de>, linux-s390@vger.kernel.org,
- Matthew Rosato <mjrosato@linux.ibm.com>, Jonathan Corbet <corbet@lwn.net>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, "Raj, Ashok" <ashok.raj@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Yishai Hadas <yishaih@nvidia.com>,
- Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Daniel Vetter <daniel@ffwll.ch>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============0576266495=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 20 Jul 2021 19:49:55 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> On Tue, Jul 20, 2021 at 04:01:27PM -0600, Alex Williamson wrote:
-> > On Tue, 20 Jul 2021 14:42:48 -0300
-> > Jason Gunthorpe <jgg@nvidia.com> wrote:
-> >   
-> > > Compared to mbochs_remove() two cases are missing from the
-> > > vfio_register_group_dev() unwind. Add them in.
-> > > 
-> > > Fixes: 681c1615f891 ("vfio/mbochs: Convert to use vfio_register_group_dev()")
-> > > Reported-by: Cornelia Huck <cohuck@redhat.com>
-> > > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> > >  samples/vfio-mdev/mbochs.c | 7 +++++--
-> > >  1 file changed, 5 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-> > > index e81b875b4d87b4..501845b08c0974 100644
-> > > +++ b/samples/vfio-mdev/mbochs.c
-> > > @@ -553,11 +553,14 @@ static int mbochs_probe(struct mdev_device *mdev)
-> > >  
-> > >  	ret = vfio_register_group_dev(&mdev_state->vdev);
-> > >  	if (ret)
-> > > -		goto err_mem;
-> > > +		goto err_bytes;
-> > >  	dev_set_drvdata(&mdev->dev, mdev_state);
-> > >  	return 0;
-> > >  
-> > > +err_bytes:
-> > > +	mbochs_used_mbytes -= mdev_state->type->mbytes;
-> > >  err_mem:
-> > > +	kfree(mdev_state->pages);
-> > >  	kfree(mdev_state->vconfig);
-> > >  	kfree(mdev_state);
-> > >  	return ret;
-> > > @@ -567,8 +570,8 @@ static void mbochs_remove(struct mdev_device *mdev)
-> > >  {
-> > >  	struct mdev_state *mdev_state = dev_get_drvdata(&mdev->dev);
-> > >  
-> > > -	mbochs_used_mbytes -= mdev_state->type->mbytes;
-> > >  	vfio_unregister_group_dev(&mdev_state->vdev);
-> > > +	mbochs_used_mbytes -= mdev_state->type->mbytes;
-> > >  	kfree(mdev_state->pages);
-> > >  	kfree(mdev_state->vconfig);
-> > >  	kfree(mdev_state);  
-> > 
-> > Hmm, doesn't this suggest we need another atomic conversion?  (untested)  
-> 
-> Sure why not, I can add this as another patch
-> 
-> > @@ -567,11 +573,11 @@ static void mbochs_remove(struct mdev_device *mdev)
-> >  {
-> >  	struct mdev_state *mdev_state = dev_get_drvdata(&mdev->dev);
-> >  
-> > -	mbochs_used_mbytes -= mdev_state->type->mbytes;
-> >  	vfio_unregister_group_dev(&mdev_state->vdev);
-> >  	kfree(mdev_state->pages);
-> >  	kfree(mdev_state->vconfig);
-> >  	kfree(mdev_state);
-> > +	atomic_add(mdev_state->type->mbytes, &mbochs_avail_mbytes);  
-> 
-> This should be up after the vfio_unregister_group_dev(), it is a use after free?
+--===============0576266495==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="DNUSDXU7R7AVVM8C"
+Content-Disposition: inline
 
-Oops, yep.  That or get the mbochs_type so we can mirror the _probe
-setup.  Same on the _probe unwind, but we've already got type->mbytes
-there.  Thanks,
 
-Alex
+--DNUSDXU7R7AVVM8C
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2021.07.16 18:41:38 +0800, Xiyu Yang wrote:
+> refcount_t type and corresponding API can protect refcounters from
+> accidental underflow and overflow and further use-after-free situations
+>
+
+Thanks for the patch. Is there any specific problem you run with current co=
+de?
+Any shadow ppgtt error?
+
+> Signed-off-by: Xiyu Yang <xiyuyang19@fudan.edu.cn>
+> Signed-off-by: Xin Tan <tanxin.ctf@gmail.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c | 11 ++++++-----
+>  drivers/gpu/drm/i915/gvt/gtt.h |  3 ++-
+>  2 files changed, 8 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index cc2c05e18206..62f3daff5a36 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -841,7 +841,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
+>  	}
+> =20
+>  	spt->vgpu =3D vgpu;
+> -	atomic_set(&spt->refcount, 1);
+> +	refcount_set(&spt->refcount, 1);
+>  	INIT_LIST_HEAD(&spt->post_shadow_list);
+> =20
+>  	/*
+> @@ -927,18 +927,19 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt=
+_gfn(
+> =20
+>  static inline void ppgtt_get_spt(struct intel_vgpu_ppgtt_spt *spt)
+>  {
+> -	int v =3D atomic_read(&spt->refcount);
+> +	int v =3D refcount_read(&spt->refcount);
+> =20
+>  	trace_spt_refcount(spt->vgpu->id, "inc", spt, v, (v + 1));
+> -	atomic_inc(&spt->refcount);
+> +	refcount_inc(&spt->refcount);
+>  }
+> =20
+>  static inline int ppgtt_put_spt(struct intel_vgpu_ppgtt_spt *spt)
+>  {
+> -	int v =3D atomic_read(&spt->refcount);
+> +	int v =3D refcount_read(&spt->refcount);
+> =20
+>  	trace_spt_refcount(spt->vgpu->id, "dec", spt, v, (v - 1));
+> -	return atomic_dec_return(&spt->refcount);
+> +	refcount_dec(&spt->refcount);
+> +	return refcount_read(&spt->refcount);
+>  }
+> =20
+>  static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.h b/drivers/gpu/drm/i915/gvt/gt=
+t.h
+> index 3bf45672ef98..944c2d0739df 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.h
+> @@ -38,6 +38,7 @@
+>  #include <linux/kref.h>
+>  #include <linux/mutex.h>
+>  #include <linux/radix-tree.h>
+> +#include <linux/refcount.h>
+> =20
+>  #include "gt/intel_gtt.h"
+> =20
+> @@ -243,7 +244,7 @@ struct intel_vgpu_oos_page {
+> =20
+>  /* Represent a vgpu shadow page table. */
+>  struct intel_vgpu_ppgtt_spt {
+> -	atomic_t refcount;
+> +	refcount_t refcount;
+>  	struct intel_vgpu *vgpu;
+> =20
+>  	struct {
+> --=20
+> 2.7.4
+>=20
+> _______________________________________________
+> intel-gvt-dev mailing list
+> intel-gvt-dev@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--DNUSDXU7R7AVVM8C
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYPd/qQAKCRCxBBozTXgY
+J4MVAJ95yNAURQh6cNjOk/8THKqisqplMwCbBUeMC3+rNCFCjrGdgeMCTprr3WI=
+=isR6
+-----END PGP SIGNATURE-----
+
+--DNUSDXU7R7AVVM8C--
+
+--===============0576266495==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============0576266495==--
