@@ -1,44 +1,36 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AAB93D1ED7
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Jul 2021 09:21:00 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7FB23D21BA
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Jul 2021 12:07:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E2EA66EE18;
-	Thu, 22 Jul 2021 07:20:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E26A6EC9F;
+	Thu, 22 Jul 2021 10:06:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from casper.infradead.org (casper.infradead.org
- [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6F5D76EE18;
- Thu, 22 Jul 2021 07:20:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=II9VDk2bGBQcqDz1JdadrNxc8E93VszZnx5F4NY1PAw=; b=gzkV4pvqB4Ckl3l2ZUeZNkyii+
- i3a1ZuymtTya2qyNPG50yR2dojq9FW/0kL0qA68b8QOEM2EaimNcjCQkFUtehp76h+slQ8xZKNAfU
- 0pfVu9MKPoX+AyKFJSCn7Mro0sdykKxGmvmQzIdI549MnmFr0d9cIMb48+a2nNa6m2bic8uiBEDsG
- 7BULTm3W8TesYZmzsOlgp+BCHQAXrdzH+lD3hZogLip6Kwiee0+YwlbZY1YCkaYt7nbqbCrClHBnY
- 2PRKP/LnC2VIFs3plwKARr+sHbJRX3OAIY6GbssSjfe2hn5k8ptYbsSp/TbxNzhWy9GL2bm4WoJb5
- tmYnjDMw==;
-Received: from hch by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat
- Linux)) id 1m6T0U-009zcD-Nt; Thu, 22 Jul 2021 07:20:39 +0000
-Date: Thu, 22 Jul 2021 08:20:34 +0100
-From: Christoph Hellwig <hch@infradead.org>
-To: Lucas De Marchi <lucas.demarchi@intel.com>
-Subject: Re: [Intel-gfx] 5.14-rc2 warnings with kvmgvt
-Message-ID: <YPkcQqnRGZABpmce@infradead.org>
-References: <YPgAuSt6Ps7w4/AI@infradead.org> <YPgD/8Y3/te/Hsu3@intel.com>
- <YPhApJo1o6yBYUh2@infradead.org> <YPiGI9tzLzGZg47j@infradead.org>
- <YPiPGv/wtnjsxSZy@intel.com> <YPjy/sYgy1SvZBD+@infradead.org>
- <20210722055523.e5tdgcledznyzmxt@ldmartin-desk2>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C813F6EA2A;
+ Thu, 22 Jul 2021 10:06:57 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10052"; a="272727227"
+X-IronPort-AV: E=Sophos;i="5.84,260,1620716400"; 
+ d="asc'?scan'208";a="272727227"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jul 2021 03:06:57 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,260,1620716400"; 
+ d="asc'?scan'208";a="433069587"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by fmsmga007.fm.intel.com with ESMTP; 22 Jul 2021 03:06:54 -0700
+Date: Thu, 22 Jul 2021 17:45:16 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: refactor the i915 GVT support
+Message-ID: <20210722094516.GQ13928@zhen-hp.sh.intel.com>
+References: <20210721155355.173183-1-hch@lst.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210722055523.e5tdgcledznyzmxt@ldmartin-desk2>
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
+In-Reply-To: <20210721155355.173183-1-hch@lst.de>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,22 +43,112 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@infradead.org>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, Rodrigo Vivi <rodrigo.vivi@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
+Content-Type: multipart/mixed; boundary="===============1111833593=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Jul 22, 2021 at 01:55:23AM -0400, Lucas De Marchi wrote:
-> humn... PORT_F. KBL doesn't have PORT_F. We decided to keep the handling
-> of DISPLAY_VER == 10 and DISPLAY_VER == 9 together and trust the VBT,
-> but when the VBT is not present, DDI F will get added unconditio.
-> 
-> maybe best thing to do is to split that
 
-With this and the previous patch the stack traces are gone.
+--===============1111833593==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="wjoFZxbW4tu+iR6v"
+Content-Disposition: inline
+
+
+--wjoFZxbW4tu+iR6v
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2021.07.21 17:53:34 +0200, Christoph Hellwig wrote:
+> Hi all,
+>=20
+> the GVT code in the i915 is a bit of a mess right now due to strange
+> abstractions and lots of indirect calls.  This series refactors various
+> bits to clean that up.  The main user visible change is that almost all
+> of the GVT code moves out of the main i915 driver and into the kvmgt
+> module.
+>
+
+The reason we isolated hypervisor specific code from core vgpu
+emulation is to make multiple hypervisor support possible. Yes, we do
+have Xen support but never got way into upstream...And we also have
+third party hypervisors which leverage gvt function through current
+hypervisor interface.
+
+Sorry I may not have more time to check in details for now, but some
+of them look fine to me. I'll review more after vacation or let Zhi check d=
+etails.
+
+Thanks!
+
+> Tested on my Thinkpad with a Kaby Lake CPU and integrated graphics.
+>=20
+> Git tree:
+>=20
+>     git://git.infradead.org/users/hch/misc.git i915-gvt
+>=20
+> Gitweb:
+>=20
+>     http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/i915-=
+gvt
+>=20
+> Diffstat:
+>  b/drivers/gpu/drm/i915/Kconfig                         |   31=20
+>  b/drivers/gpu/drm/i915/Makefile                        |   30=20
+>  b/drivers/gpu/drm/i915/gt/intel_execlists_submission.c |    4=20
+>  b/drivers/gpu/drm/i915/gvt/cfg_space.c                 |   89 --
+>  b/drivers/gpu/drm/i915/gvt/cmd_parser.c                |    4=20
+>  b/drivers/gpu/drm/i915/gvt/dmabuf.c                    |   36=20
+>  b/drivers/gpu/drm/i915/gvt/execlist.c                  |   12=20
+>  b/drivers/gpu/drm/i915/gvt/gtt.c                       |   55 -
+>  b/drivers/gpu/drm/i915/gvt/gvt.c                       |  100 --
+>  b/drivers/gpu/drm/i915/gvt/gvt.h                       |  132 ++-
+>  b/drivers/gpu/drm/i915/gvt/interrupt.c                 |   38 -
+>  b/drivers/gpu/drm/i915/gvt/kvmgt.c                     |  634 ++++------=
+-------
+>  b/drivers/gpu/drm/i915/gvt/mmio.c                      |    4=20
+>  b/drivers/gpu/drm/i915/gvt/opregion.c                  |  148 ---
+>  b/drivers/gpu/drm/i915/gvt/page_track.c                |    8=20
+>  b/drivers/gpu/drm/i915/gvt/scheduler.c                 |   37=20
+>  b/drivers/gpu/drm/i915/gvt/trace.h                     |    2=20
+>  b/drivers/gpu/drm/i915/gvt/vgpu.c                      |   22=20
+>  b/drivers/gpu/drm/i915/i915_drv.h                      |    7=20
+>  b/drivers/gpu/drm/i915/i915_params.c                   |    2=20
+>  b/drivers/gpu/drm/i915/intel_gvt.c                     |   64 +
+>  b/drivers/gpu/drm/i915/intel_gvt.h                     |    4=20
+>  drivers/gpu/drm/i915/gvt/Makefile                      |    9=20
+>  drivers/gpu/drm/i915/gvt/hypercall.h                   |   82 --
+>  drivers/gpu/drm/i915/gvt/mpt.h                         |  400 ----------
+>  25 files changed, 541 insertions(+), 1413 deletions(-)
+
+--wjoFZxbW4tu+iR6v
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYPk+JAAKCRCxBBozTXgY
+J09VAJ9C5w8OkOxQaT+Hh6GRuwyrHlKVPgCfR2B56jaNxNaxyz+943xRn2xdLCo=
+=enIC
+-----END PGP SIGNATURE-----
+
+--wjoFZxbW4tu+iR6v--
+
+--===============1111833593==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
+
+--===============1111833593==--
