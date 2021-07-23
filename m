@@ -1,30 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 316073D362F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 10:12:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D88883D3638
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 10:13:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AD54F6F50A;
-	Fri, 23 Jul 2021 08:12:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 54D176E8FD;
+	Fri, 23 Jul 2021 08:13:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B3DCC6F51C;
- Fri, 23 Jul 2021 08:12:12 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AE55589F99;
+ Fri, 23 Jul 2021 08:13:39 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id E2D7267373; Fri, 23 Jul 2021 10:12:08 +0200 (CEST)
-Date: Fri, 23 Jul 2021 10:12:08 +0200
+ id A9C4267373; Fri, 23 Jul 2021 10:13:37 +0200 (CEST)
+Date: Fri, 23 Jul 2021 10:13:37 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 10/14] vfio/pci: Reorganize
- VFIO_DEVICE_PCI_HOT_RESET to use the device set
-Message-ID: <20210723081208.GE2795@lst.de>
+Subject: Re: [PATCH v2 11/14] vfio/mbochs: Fix close when multiple device
+ FDs are open
+Message-ID: <20210723081337.GF2795@lst.de>
 References: <0-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
- <10-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+ <11-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <10-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+In-Reply-To: <11-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -64,23 +64,19 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jul 20, 2021 at 02:42:56PM -0300, Jason Gunthorpe wrote:
-> Like vfio_pci_try_bus_reset() this code wants to reset all of the devices
-> in the "reset group" which is the same membership as the device set.
+On Tue, Jul 20, 2021 at 02:42:57PM -0300, Jason Gunthorpe wrote:
+> mbochs_close() iterates over global device state and frees it. Currently
+> this is done every time a device FD is closed, but if multiple device FDs
+> are open this could corrupt other still active FDs.
 > 
-> Instead of trying to reconstruct the device set from the PCI list go
-> directly from the device set's device list to execute the reset.
+> Change this to use close_device() so it only runs on the last close.
 > 
-> The same basic structure as vfio_pci_try_bus_reset() is used. The
-> 'vfio_devices' struct is replaced with the device set linked list and we
-> simply sweep it multiple times under the lock.
-> 
-> This eliminates a memory allocation and get/put traffic and another
-> improperly locked test of pci_dev_driver().
+> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 
-Looks fine.  But oh gad is that locking scheme awful..
+Looks good,
 
-Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
