@@ -1,29 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF5553D3598
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 09:44:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 197483D359E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 09:45:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 66B286E3B7;
-	Fri, 23 Jul 2021 07:44:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CD89C6E9C5;
+	Fri, 23 Jul 2021 07:45:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0E1E96E3B7;
- Fri, 23 Jul 2021 07:44:42 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C74736E3B7;
+ Fri, 23 Jul 2021 07:45:23 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id D948467373; Fri, 23 Jul 2021 09:44:36 +0200 (CEST)
-Date: Fri, 23 Jul 2021 09:44:35 +0200
+ id BA31A67373; Fri, 23 Jul 2021 09:45:21 +0200 (CEST)
+Date: Fri, 23 Jul 2021 09:45:21 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 06/14] vfio/fsl: Move to the device set infrastructure
-Message-ID: <20210723074435.GA2795@lst.de>
+Subject: Re: [PATCH v2 07/14] vfio/platform: Use open_device() instead of
+ open coding a refcnt scheme
+Message-ID: <20210723074521.GB2795@lst.de>
 References: <0-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
- <6-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+ <7-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+In-Reply-To: <7-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -63,20 +64,20 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jul 20, 2021 at 02:42:52PM -0300, Jason Gunthorpe wrote:
->  	.write		= vfio_fsl_mc_write,
-> @@ -625,13 +526,15 @@ static int vfio_fsl_mc_probe(struct fsl_mc_device *mc_dev)
->  	vdev->mc_dev = mc_dev;
->  	mutex_init(&vdev->igate);
->  
-> +	ret = vfio_assign_device_set(&vdev->vdev, is_fsl_mc_bus_dprc(mc_dev) ?
-> +							  &mc_dev->dev :
-> +							  mc_dev->dev.parent);
+Looks good,
 
-A good old if/else would be much cleaner here.  But do we even need
-the else part?  Assingning &mc_dev->dev is equivalent to the default
-per-device set anyway, isn't it?
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
+On Tue, Jul 20, 2021 at 02:42:53PM -0300, Jason Gunthorpe wrote:
+> Platform simply wants to run some code when the device is first
+> opened/last closed. Use the core framework and locking for this.  Aside
+> from removing a bit of code this narrows the locking scope from a global
+> lock.
+> 
+> Signed-off-by: Yishai Hadas <yishaih@nvidia.com>
+
+Btw, this seems to miss the second from line for Yishai, which should
+match the first signoff.
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
