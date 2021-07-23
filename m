@@ -2,28 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A59A43D3522
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 09:18:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C52E73D3529
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 09:18:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 373F66F94B;
-	Fri, 23 Jul 2021 07:18:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F45D6FA49;
+	Fri, 23 Jul 2021 07:18:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D19D36F8C5;
- Fri, 23 Jul 2021 07:18:05 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2CCBD6F94B;
+ Fri, 23 Jul 2021 07:18:36 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id F357567373; Fri, 23 Jul 2021 09:18:01 +0200 (CEST)
-Date: Fri, 23 Jul 2021 09:18:01 +0200
+ id 09D2468AFE; Fri, 23 Jul 2021 09:18:34 +0200 (CEST)
+Date: Fri, 23 Jul 2021 09:18:33 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 01/14] vfio/samples: Remove module get/put
-Message-ID: <20210723071801.GA864@lst.de>
+Subject: Re: [PATCH v2 03/14] vfio: Introduce a vfio_uninit_group_dev() API
+ call
+Message-ID: <20210723071833.GB864@lst.de>
 References: <0-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
- <1-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+ <3-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+In-Reply-To: <3-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
