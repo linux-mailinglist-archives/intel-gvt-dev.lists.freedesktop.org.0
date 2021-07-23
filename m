@@ -1,29 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 051B33D35AA
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 09:47:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 431543D3616
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jul 2021 10:05:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6E3C96E926;
-	Fri, 23 Jul 2021 07:47:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EE6856F4E8;
+	Fri, 23 Jul 2021 08:05:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8074C6E3B7;
- Fri, 23 Jul 2021 07:47:52 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7660B6F4DE;
+ Fri, 23 Jul 2021 08:05:46 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 5CF0167373; Fri, 23 Jul 2021 09:47:49 +0200 (CEST)
-Date: Fri, 23 Jul 2021 09:47:49 +0200
+ id 6E28D67373; Fri, 23 Jul 2021 10:05:43 +0200 (CEST)
+Date: Fri, 23 Jul 2021 10:05:43 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 08/14] vfio/pci: Move to the device set infrastructure
-Message-ID: <20210723074749.GC2795@lst.de>
+Subject: Re: [PATCH v2 09/14] vfio/pci: Change vfio_pci_try_bus_reset() to
+ use the dev_set
+Message-ID: <20210723080543.GD2795@lst.de>
 References: <0-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
- <8-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+ <9-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <8-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
+In-Reply-To: <9-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -63,153 +64,151 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jul 20, 2021 at 02:42:54PM -0300, Jason Gunthorpe wrote:
-> From: Yishai Hadas <yishaih@nvidia.com>
+On Tue, Jul 20, 2021 at 02:42:55PM -0300, Jason Gunthorpe wrote:
+> Keep track of all the vfio_devices that have been added to the device set
+> and use this list in vfio_pci_try_bus_reset() instead of trying to work
+> backwards from the pci_device.
 > 
-> PCI wants to have the usual open/close_device() logic with the slight
-> twist that the open/close_device() must be done under a singelton lock
-> shared by all of the vfio_devices that are in the PCI "reset group".
+> The dev_set->lock directly prevents devices from joining/leaving the set,
+> which further implies the pci_device cannot change drivers or that the
+> vfio_device be freed, eliminating the need for get/put's.
 > 
-> The reset group, and thus the device set, is determined by what devices
-> pci_reset_bus() touches, which is either the entire bus or only the slot.
+> Completeness of the device set can be directly measured by checking if
+> every PCI device in the reset group is also in the device set - which
+> proves that VFIO drivers are attached to everything.
 > 
-> Rely on the core code to do everything reflck was doing and delete reflck
-> entirely.
+> This restructuring corrects a call to pci_dev_driver() without holding the
+> device_lock() and removes a hard wiring to &vfio_pci_driver.
 > 
-> Signed-off-by: Yishai Hadas <yishaih@nvidia.com>
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/vfio/pci/vfio_pci.c         | 156 ++++++----------------------
->  drivers/vfio/pci/vfio_pci_private.h |   7 --
->  2 files changed, 31 insertions(+), 132 deletions(-)
-> 
-> diff --git a/drivers/vfio/pci/vfio_pci.c b/drivers/vfio/pci/vfio_pci.c
-> index fab3715d60d4ba..22774e447b5f4a 100644
-> --- a/drivers/vfio/pci/vfio_pci.c
-> +++ b/drivers/vfio/pci/vfio_pci.c
-> @@ -530,53 +530,40 @@ static void vfio_pci_vf_token_user_add(struct vfio_pci_device *vdev, int val)
->  	vfio_device_put(&pf_vdev->vdev);
->  }
->  
-> -static void vfio_pci_release(struct vfio_device *core_vdev)
-> +static void vfio_pci_close_device(struct vfio_device *core_vdev)
+
+I think the addition of the list to the dev_set should be a different
+patch.  Or maybe even go into the one adding the dev_set concept.
+
+> +static int vfio_pci_check_all_devices_bound(struct pci_dev *pdev, void *data)
 >  {
->  	struct vfio_pci_device *vdev =
->  		container_of(core_vdev, struct vfio_pci_device, vdev);
+> +	struct vfio_device_set *dev_set = data;
+> +	struct vfio_device *cur;
 >  
-> -	mutex_lock(&vdev->reflck->lock);
-> -
-> -	if (!(--vdev->refcnt)) {
-> -		vfio_pci_vf_token_user_add(vdev, -1);
-> -		vfio_spapr_pci_eeh_release(vdev->pdev);
-> -		vfio_pci_disable(vdev);
-> +	vfio_pci_vf_token_user_add(vdev, -1);
-> +	vfio_spapr_pci_eeh_release(vdev->pdev);
-> +	vfio_pci_disable(vdev);
+> +	lockdep_assert_held(&dev_set->lock);
 >  
-> -		mutex_lock(&vdev->igate);
-> -		if (vdev->err_trigger) {
-> -			eventfd_ctx_put(vdev->err_trigger);
-> -			vdev->err_trigger = NULL;
-> -		}
-> -		if (vdev->req_trigger) {
-> -			eventfd_ctx_put(vdev->req_trigger);
-> -			vdev->req_trigger = NULL;
-> -		}
-> -		mutex_unlock(&vdev->igate);
-> +	mutex_lock(&vdev->igate);
-> +	if (vdev->err_trigger) {
-> +		eventfd_ctx_put(vdev->err_trigger);
-> +		vdev->err_trigger = NULL;
->  	}
-> -
-> -	mutex_unlock(&vdev->reflck->lock);
-> +	if (vdev->req_trigger) {
-> +		eventfd_ctx_put(vdev->req_trigger);
-> +		vdev->req_trigger = NULL;
-> +	}
-> +	mutex_unlock(&vdev->igate);
->  }
->  
-> -static int vfio_pci_open(struct vfio_device *core_vdev)
-> +static int vfio_pci_open_device(struct vfio_device *core_vdev)
+> +	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
+> +		if (cur->dev == &pdev->dev)
+> +			return 0;
+> +	return -EBUSY;
+
+I don't understand this logic.  If there is any device in the set that
+does now have the same struct device we're in trouble?  Please clearly
+document what this is trying to do.  If the bound in the name makes sense
+you probably want to check the driver instead.
+
+>  static void vfio_pci_try_bus_reset(struct vfio_pci_device *vdev)
 >  {
->  	struct vfio_pci_device *vdev =
->  		container_of(core_vdev, struct vfio_pci_device, vdev);
->  	int ret = 0;
+> +	/* All VFIO devices have a closed FD */
+> +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list)
+> +		if (cur->vdev.open_count)
+> +			return;
+> +
+> +	/* All devices in the group to be reset need VFIO devices */
+> +	if (vfio_pci_for_each_slot_or_bus(
+> +		    vdev->pdev, vfio_pci_check_all_devices_bound, dev_set,
+> +		    !pci_probe_reset_slot(vdev->pdev->slot)))
+> +		return;
 >  
-> -	mutex_lock(&vdev->reflck->lock);
-> -
-> -	if (!vdev->refcnt) {
-> -		ret = vfio_pci_enable(vdev);
-> -		if (ret)
-> -			goto error;
-> +	ret = vfio_pci_enable(vdev);
-> +	if (ret)
-> +		return ret;
->  
-> -		vfio_spapr_pci_eeh_open(vdev->pdev);
-> -		vfio_pci_vf_token_user_add(vdev, 1);
-> -	}
-> -	vdev->refcnt++;
-> -error:
-> -	mutex_unlock(&vdev->reflck->lock);
-> -	return ret;
-> +	vfio_spapr_pci_eeh_open(vdev->pdev);
-> +	vfio_pci_vf_token_user_add(vdev, 1);
-> +	return 0;
->  }
->  
->  static int vfio_pci_get_irq_count(struct vfio_pci_device *vdev, int irq_type)
-> @@ -1870,8 +1857,8 @@ static int vfio_pci_match(struct vfio_device *core_vdev, char *buf)
->  
->  static const struct vfio_device_ops vfio_pci_ops = {
->  	.name		= "vfio-pci",
-> -	.open		= vfio_pci_open,
-> -	.release	= vfio_pci_release,
-> +	.open_device	= vfio_pci_open_device,
-> +	.close_device	= vfio_pci_close_device,
->  	.ioctl		= vfio_pci_ioctl,
->  	.read		= vfio_pci_read,
->  	.write		= vfio_pci_write,
-> @@ -1880,9 +1867,6 @@ static const struct vfio_device_ops vfio_pci_ops = {
->  	.match		= vfio_pci_match,
->  };
->  
-> -static int vfio_pci_reflck_attach(struct vfio_pci_device *vdev);
-> -static void vfio_pci_reflck_put(struct vfio_pci_reflck *reflck);
-> -
->  static int vfio_pci_bus_notifier(struct notifier_block *nb,
->  				 unsigned long action, void *data)
->  {
-> @@ -2020,12 +2004,17 @@ static int vfio_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  	INIT_LIST_HEAD(&vdev->vma_list);
->  	init_rwsem(&vdev->memory_lock);
->  
-> -	ret = vfio_pci_reflck_attach(vdev);
-> +	if (pci_is_root_bus(pdev->bus))
-> +		ret = vfio_assign_device_set(&vdev->vdev, vdev);
-> +	else if (!pci_probe_reset_slot(pdev->slot))
-> +		ret = vfio_assign_device_set(&vdev->vdev, pdev->slot);
-> +	else
-> +		ret = vfio_assign_device_set(&vdev->vdev, pdev->bus);
+>  	/* Does at least one need a reset? */
 
-Maybe invert this and add a comment:
+These checks look a little strange, and the comments don't make much
+sense.  What about an incremental patch like this?
 
-	if (pci_is_root_bus(pdev->bus))
-		ret = vfio_assign_device_set(&vdev->vdev, vdev);
-	/*
-	 * If there is no slot reset support for this device, the whole
-	 * bus needs to be grouped together to support bus-wide resets.
-	 */
-	else if (pci_probe_reset_slot(pdev->slot) < 0)
-		ret = vfio_assign_device_set(&vdev->vdev, pdev->bus);
-	else
-		ret = vfio_assign_device_set(&vdev->vdev, pdev->slot);
-
-Otherwise looks good:
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+diff --git a/drivers/vfio/pci/vfio_pci.c b/drivers/vfio/pci/vfio_pci.c
+index fbc20f6d2dd412..d8375a5e77e07c 100644
+--- a/drivers/vfio/pci/vfio_pci.c
++++ b/drivers/vfio/pci/vfio_pci.c
+@@ -2188,10 +2188,34 @@ static int vfio_pci_try_zap_and_vma_lock_cb(struct pci_dev *pdev, void *data)
+ 	return 0;
+ }
+ 
++static struct pci_dev *vfio_pci_reset_target(struct vfio_pci_device *vdev)
++{
++	struct vfio_device_set *dev_set = vdev->vdev.dev_set;
++	struct vfio_pci_device *cur;
++
++	/* none of the device is allowed to be currently open: */
++	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list)
++		if (cur->vdev.open_count)
++			return NULL;
++
++	/* all devices in the group to be reset need to be VFIO devices: */
++	if (vfio_pci_for_each_slot_or_bus(vdev->pdev,
++			vfio_pci_check_all_devices_bound, dev_set,
++			!pci_probe_reset_slot(vdev->pdev->slot)))
++		return NULL;
++
++	/* Does at least one need a reset? */
++	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list)
++		if (cur->needs_reset)
++			return cur->pdev;
++
++	return NULL;
++}
++
+ /*
+  * If a bus or slot reset is available for the provided device and:
+  *  - All of the devices affected by that bus or slot reset are unused
+- *    (!refcnt)
++ *    (!open_count)
+  *  - At least one of the affected devices is marked dirty via
+  *    needs_reset (such as by lack of FLR support)
+  * Then attempt to perform that bus or slot reset.  Callers are required
+@@ -2206,8 +2230,8 @@ static int vfio_pci_try_zap_and_vma_lock_cb(struct pci_dev *pdev, void *data)
+ static void vfio_pci_try_bus_reset(struct vfio_pci_device *vdev)
+ {
+ 	struct vfio_device_set *dev_set = vdev->vdev.dev_set;
+-	struct vfio_pci_device *to_reset = NULL;
+ 	struct vfio_pci_device *cur;
++	struct pci_dev *to_reset;
+ 	int ret;
+ 
+ 	if (pci_probe_reset_slot(vdev->pdev->slot) &&
+@@ -2216,35 +2240,18 @@ static void vfio_pci_try_bus_reset(struct vfio_pci_device *vdev)
+ 
+ 	lockdep_assert_held(&vdev->vdev.dev_set->lock);
+ 
+-	/* All VFIO devices have a closed FD */
+-	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list)
+-		if (cur->vdev.open_count)
+-			return;
+-
+-	/* All devices in the group to be reset need VFIO devices */
+-	if (vfio_pci_for_each_slot_or_bus(
+-		    vdev->pdev, vfio_pci_check_all_devices_bound, dev_set,
+-		    !pci_probe_reset_slot(vdev->pdev->slot)))
+-		return;
+-
+-	/* Does at least one need a reset? */
+-	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list) {
+-		if (cur->needs_reset) {
+-			to_reset = cur;
+-			break;
+-		}
+-	}
++	to_reset = vfio_pci_reset_target(vdev);
+ 	if (!to_reset)
+ 		return;
+ 
+-	ret = pci_reset_bus(to_reset->pdev);
++	ret = pci_reset_bus(to_reset);
+ 	if (ret)
+ 		return;
+ 
+ 	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list) {
+ 		cur->needs_reset = false;
+ 
+-		if (cur != to_reset && !disable_idle_d3)
++		if (cur->pdev != to_reset && !disable_idle_d3)
+ 			vfio_pci_set_power_state(cur, PCI_D3hot);
+ 	}
+ }
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
