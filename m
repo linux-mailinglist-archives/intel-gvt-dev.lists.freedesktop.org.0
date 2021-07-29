@@ -1,57 +1,125 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E3B23D9779
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Jul 2021 23:22:36 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DAB003D9A4E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Jul 2021 02:49:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E01166E0E8;
-	Wed, 28 Jul 2021 21:22:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5D9196EB7B;
+	Thu, 29 Jul 2021 00:49:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ua1-x931.google.com (mail-ua1-x931.google.com
- [IPv6:2607:f8b0:4864:20::931])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6130D6E0E8;
- Wed, 28 Jul 2021 21:22:34 +0000 (UTC)
-Received: by mail-ua1-x931.google.com with SMTP id 79so1653698uau.9;
- Wed, 28 Jul 2021 14:22:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Pba/v/pyxUDOSp5lyoyUOTseU+hbcR6eHrbJSQhcDNo=;
- b=OX2Ll+qZEh8EzkHBpN58N6m5UZ7zpcB8pqdnelJW79ffuTnBWlvXeUKHD0K7fKWCtf
- fZIm4SxNkewzqyCLflb3lDl8zMw7VTftE2SF1Nv4a330tM4TcHu2mL9ksdAl0W4WErVQ
- 0uiH9LW593kZ0JE5NRb8ospfzXBq0NqSWgDHaLYjx73FdgtFQr1q9RAfQje8KBf5tdgJ
- v0202XL7HIA0PpESTiqCJ0pVMPZ0begoP/2fVFV9UX7cNbBh4LjoFBo4NibdCOMfrjZ3
- qv1rxZ/NIVk3SHTdVF/1wBdQNrCxhtanL2aYeDs1eXaYS0Pp9dGUgB3t42ifEZtT+UPv
- zS/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Pba/v/pyxUDOSp5lyoyUOTseU+hbcR6eHrbJSQhcDNo=;
- b=HT1C14hpf6wrwMXBrX9vDDzjpQ7ZxECde5INJSVfZf4OclPsxB/JrfJIj1vKjecDSU
- 2PolMTv7oQ7OzT3tieVfWANEuEu6XPyQcCSn2BR0E/hWQJfeZGpFHgkvnEWqpNTgblnC
- RYwPgh6qotw6+tpbIgGayGyWi0A5RI3b4PnIfqL7BnX3LEiQkdUl96NVZGkiEhCvcXOW
- Jghccx2VJGAE5q9cm0uskMSeDM+gn2xRRbb5oGqnAnCwSeMet5QT9kuhsrJMwhAMACcC
- xy821rRRqCjWRKq2B1mKvqu03D3FWokKqEgWs9lBzxPm9QGlOy3A2qxyfJC00CZuu1SI
- /2PA==
-X-Gm-Message-State: AOAM530sltaFXXIDRW676qjKY8SV1wj1+td8S8nkkvnbrLwnLmJbaraf
- L59K4ekPhYGDf6+YKRQWlk1VvyJGrjm7RyflHJw=
-X-Google-Smtp-Source: ABdhPJzAs0yzTvXgxxOSYq066tXaCYS7v0MJu/JjRrJc1rFT9MLivrodw5GzOitrZ6U79sZapq5zEdsxvZ2jG4UjJIY=
-X-Received: by 2002:ab0:6dcb:: with SMTP id r11mr2267037uaf.128.1627507353294; 
- Wed, 28 Jul 2021 14:22:33 -0700 (PDT)
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2088.outbound.protection.outlook.com [40.107.237.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8BF626E372;
+ Thu, 29 Jul 2021 00:49:30 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Rq4gWNdHPMtKAECuN7dSDiftvEsrVJ2hhYLYKZDEZZ8VKK9AZGzl8glmEgoC7zxQkYCEID0vuzPHu0+U3RSZ7PfTx+w0I+EozfGpDm8wt8TG+uKNQ4TTJbnKCljiGG7jkPOOTJKGzjamwJmACDIY/S5RjH+BEa+/Esg7dl4vqHqGWRePPowc1d6LZ1TsFwVdGP5yngAJcU9xlhUnmlJCrX7Cesa4/8PsnHF79BXTDRfk+tOyl4J5moQxiqsed1MwR4z3dgkyINZhLHi6Ej8r1tVnyZ6sUu+MHYLhXNiDz1DkR7M7/13pzALBKCh7Nt7onvDH2RoA0YufjIVchA7InA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Paf/jTYWkw1MmiuskqweN6CvR3s/4SLmYIiKg28mD5c=;
+ b=QR2rFL2S4obuk27PjnBiQCudp/K1EMiJWsPd2v3HyhflIuBpW5eaftAqvGfvxr8B+1NTxuMRwHeZFQ1pHBNbx6zPyhZTdegrmnN4D/MUnl9pcoQkAm9UgTzFWYAqKlMf0XPCdPSd3JsIzPbI7PjQy2e9yf5kfOY/D75zn0N7vW1hhkgYhQu2HRYLSYiljp4qFLoBrLJXOv2riEadxGDW5lOZlmNellJQhyhfM8OYR9fsyUAatnvL7XGgbAJu7FXuEg+SEyqx50WWGmBiMHrJmbzUFME4mGESDjgaAMZSbm/h4a4e1yIs9gvv05skAbqAEE5QM20bjIf3kqnDaZA1nQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Paf/jTYWkw1MmiuskqweN6CvR3s/4SLmYIiKg28mD5c=;
+ b=J1q711OKIEeTzITjICo0PAOXw3m6QryfyoKLRP8CxLwC9930u4tLa+TROh7ykswtcKtQuopenNWrOK66ohSUnU/GfbJZJ8dVj5BEuoAoV8ipT4mJ6FDDHZj+KSk3n08V2IYCTx6qQvzcEwlyZp/l3qD9i/uedsSjlVBnJomMYHaSgoKc2XI7gQ9rzdqh27fSaBZbop2I4PkzXWWu7t7tEMxHpYN4U+Lrv3fNpuHkSxc+SKLC57BO1XcBI5H+6SZhcr4AAQSRUxQZtEbPcPPol+2yIvGid7jXQV2BjFoRHtu8fcvlq1xK1hjThlkAsKYWqNe9SAjPkmKcRx26dB3XoA==
+Authentication-Results: linux.ie; dkim=none (message not signed)
+ header.d=none;linux.ie; dmarc=none action=none header.from=nvidia.com;
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com (2603:10b6:208:1cb::22)
+ by BL1PR12MB5160.namprd12.prod.outlook.com (2603:10b6:208:311::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4373.20; Thu, 29 Jul
+ 2021 00:49:25 +0000
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d017:af2f:7049:5482]) by BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d017:af2f:7049:5482%5]) with mapi id 15.20.4373.019; Thu, 29 Jul 2021
+ 00:49:25 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+ Daniel Vetter <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
+ dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>, Zhi Wang <zhi.a.wang@intel.com>
+Subject: [PATCH v3 00/14] Provide core infrastructure for managing open/release
+Date: Wed, 28 Jul 2021 21:49:09 -0300
+Message-Id: <0-v3-6c9e19cc7d44+15613-vfio_reflck_jgg@nvidia.com>
+X-ClientProxiedBy: YTBPR01CA0030.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:b01:14::43) To BL0PR12MB5506.namprd12.prod.outlook.com
+ (2603:10b6:208:1cb::22)
 MIME-Version: 1.0
-References: <20210714175138.319514-1-jim.cromie@gmail.com>
- <20210714175138.319514-4-jim.cromie@gmail.com>
- <YPbPvm/xcBlTK1wq@phenom.ffwll.local> <20210722152009.GZ22946@art_vandelay>
- <CAMavQKJ-ULhqn8BiGu8iMEwXe9whLGVf5Y7D6dcYnwbn1b08cQ@mail.gmail.com>
-In-Reply-To: <CAMavQKJ-ULhqn8BiGu8iMEwXe9whLGVf5Y7D6dcYnwbn1b08cQ@mail.gmail.com>
-From: jim.cromie@gmail.com
-Date: Wed, 28 Jul 2021 17:22:07 -0400
-Message-ID: <CAJfuBxxGg+b4ePkNXRz=OeUd4xQWSv8cJOV6XWRhy57hSx_ftA@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH v3 3/5] drm/print: RFC add choice to use
- dynamic debug in drm-debug
-To: Sean Paul <sean@poorly.run>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mlx.ziepe.ca (206.223.160.26) by
+ YTBPR01CA0030.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01:14::43) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4373.18 via Frontend Transport; Thu, 29 Jul 2021 00:49:25 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from
+ <jgg@nvidia.com>)	id 1m8uEl-009pmd-MG; Wed, 28 Jul 2021 21:49:23 -0300
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ad08860f-caa8-44b9-ea12-08d9522ab662
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5160:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BL1PR12MB5160FD9D7EB54DF5EDBCD2BEC2EB9@BL1PR12MB5160.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: RdFQuRbJMf95weNFF0w7rOMot7C3ZfPpST3foZJHKBi+4WALyn5ShBbmyaoe8gP0usnzh2gnYlQjZmvYUWPbIm3AUCGO9YZJwXnrVJM1+op08oUwkDVpX6YS/dVDu34hmGgBu47GXQbYsLp++P5ClTqen2do6lFHQ1jRcMBPjO6DAhEIJMf0xLsd4jAN3o1TM3YbbEiNvV1beVDq9/Wsgf8jXAvQwqwwA6T9jo+x2m7E7KQS9bzmL/qrU7VPGDSy56820zClOMHUk5AR47fzUQ+pwkNcjJRPmPQDrJwmN+RUMzKQMW4YX0G9K99vKC6lCAe0alTDrsHQs4GToQiw/Bq1GwYS3sLTtBZqkLsRQ1gSajmtosXgwPjLsMjNGENRR4GL1SdReCQk9a3GIBFJL+jeeO5fmpGJvbW0r+zrlik8ouxcKS4JaQwxt86HU1Lg58ccNYgnKzkvs4FZtD7bC7Rcudmb2yEUTgaz0UayUOBxfJqqnX/voT2u+wSCmuOPOeasr0okrD/XNuFaotDI3hrlpP8mICJCu++Q5GWsC5q6GCG4FOqFMsYm1Azx8YJwMZpZZEM6wfYFNZ/t0EyhsyPIXQEp/pHAcNu+dmcPqj51ABON703cE0aidGyWEKEfAugu027ruuSpFd1gWU024TFe7+B9ueoisTDnfzUy5aS0y4Ciw0/Q64wYzglQRXCUloZOJl+SjfhUNuQOD24gk8QETM/MUThD9A5PZwpRGwBOV80GzdTadh13bab/98oWDNfXStDbk/13+KYdKTOaebLvAjx5awy+K78DxV19aJYm/o1ouCML0bZkTArEFnyc/GLW2VDut59aCOckJ7U4sg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR12MB5506.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(396003)(376002)(366004)(39860400002)(346002)(8936002)(86362001)(2906002)(6666004)(426003)(921005)(8676002)(2616005)(5660300002)(316002)(186003)(7406005)(7416002)(54906003)(110136005)(26005)(66946007)(66556008)(66476007)(36756003)(9786002)(9746002)(4326008)(83380400001)(966005)(478600001)(38100700002)(4216001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?MC+EkU5vlU3+0ScxUnj5xro7wYoFH9vSusD1/HCVZu3ufpKmgDn2eBixSSAf?=
+ =?us-ascii?Q?p0xWniyhAbnC0Mp2q+8eO4V2vFJ9iiTEsB87wW2cWBgsI9wZ+wuq0CpaZtgD?=
+ =?us-ascii?Q?0MOA49y5h64+jbzpqlsplxis/Vwx10QPOpmm59B+Nvi+AlLcS4Z0V1kcM3a3?=
+ =?us-ascii?Q?vk0R1vjFQ5wgo1ZvdgWMDv5dTGGWrWDgVrBIQhDlCZx83w9rNlNzqTNwK4s0?=
+ =?us-ascii?Q?V6E+lLo+XywKglPZbR2yVuxGAa1VzDjVpGio7gDjJ2XziBbnIGO7Rk73g9Ce?=
+ =?us-ascii?Q?4qJTX5tFYZzWigtJiMqJrdINbelrMl4WA6qsKx6q8OXsUEfPMH+GdHHe/WqT?=
+ =?us-ascii?Q?L96t4UIViWLNW4FYXI3YOhiGXtv+X5qfxH3+beoe5N2SzRMJnJlZHBYZswZD?=
+ =?us-ascii?Q?WkxzC4wh3A2q1xnTaaDMQx4T5sTZ5IGJyV4xIPSCO+/XB4iaB1upcQatvbwF?=
+ =?us-ascii?Q?m2wVAEOfjCFYdMxiGKsty2Adg+HA8Rw2UMEHWlwUf5KeeKoyneUgiYoj9lST?=
+ =?us-ascii?Q?iPj/z9duRwriXYLGdw3igDjXbaBIRqEBcoBmpyhJb+2biDuSe+hcKCwOtzyp?=
+ =?us-ascii?Q?uNDHM/fLKV97CYEgNsj8nTAo+DHZnnRqkUBwyQ3bvvC8xk6yiUuqwF5pMa49?=
+ =?us-ascii?Q?ie66Yz2tgof6zmMg7AsIL53EZRqDLgQ5Arx/zRTK3zYHgYoc1nqq0yMm6p+m?=
+ =?us-ascii?Q?8LAyYXman3nlZBq2ela+KJCEAe8zyXwXYcvSaqSsZeyPKqH7w+mjtD80K7O3?=
+ =?us-ascii?Q?5XUoa4D82mZ0dp6onKCTB4aO5c8OZSgzSlQQQS2b8fDDSlLsHibLDST4B+P4?=
+ =?us-ascii?Q?PyYbWn1OYq8rGzPCumD1fjT+9w6XBTAI7WQat7WCgq5xb5x5dpT8p1B23ocF?=
+ =?us-ascii?Q?wC0HdTP4MgCWLs3o9Kq3K2Df1KYUMOc/zWoQClR7AwS02ECdB7sh0Zuf8K+n?=
+ =?us-ascii?Q?YQlDjbF+GJJ+wDgsAU+wZx5CgMuVD+qxv/NrpkYMWqOsL7o9sZ1lGky5QAtX?=
+ =?us-ascii?Q?tihNb/og6ZSrDz9KWbuEc5OirqPGELYeDI3DxTXp6u4Wf7kJfr34BU7Z4Kgz?=
+ =?us-ascii?Q?G7QRNJ8PgUPEOF+wVYOCj+o5dnWaJPUpR4eu6VKKOfleYC2mT8YNGuu2yjLu?=
+ =?us-ascii?Q?NQJfXDxoRDyzUmj3zARy6KvNvv8/k2os9beVlR9D+jKjnGEJswfrVRb6KYVg?=
+ =?us-ascii?Q?HkgQ8idiUuQRiXKFC/Ur5736p/wONoRsbtEf3n4/GcXQyzzv4pEtTsmD7W22?=
+ =?us-ascii?Q?PhWdeMU0Sxx9sXAMTeCqr2uEuy6zTDTY7lsSN/uxEfahx3AVYoeb6lXgZVpT?=
+ =?us-ascii?Q?WioKAjtVgh8I47urUy8GD347?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ad08860f-caa8-44b9-ea12-08d9522ab662
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB5506.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jul 2021 00:49:25.4334 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jDiCXB0nJul1NzL8YVnc+1OK6W7ZBBDDtQkfPZMMti5orGGoPG8rP/JaG6Rn8QiP
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5160
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,200 +132,115 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- LKML <linux-kernel@vger.kernel.org>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Jason Baron <jbaron@akamai.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas <yishaih@nvidia.com>,
+ "Raj, Ashok" <ashok.raj@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Leon Romanovsky <leonro@nvidia.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jul 27, 2021 at 10:03 AM Sean Paul <sean@poorly.run> wrote:
->
-> On Thu, Jul 22, 2021 at 11:20 AM Sean Paul <sean@poorly.run> wrote:
-> >
->
-> Reply-all fail. Adding everyone else back to my response.
->
-> > On Tue, Jul 20, 2021 at 03:29:34PM +0200, Daniel Vetter wrote:
-> > > On Wed, Jul 14, 2021 at 11:51:36AM -0600, Jim Cromie wrote:
-> > > > drm's debug system uses distinct categories of debug messages, encoded
-> > > > in an enum (DRM_UT_<CATEGORY>), which are mapped to bits in drm.debug.
-> > > > drm_debug_enabled() does a lot of unlikely bit-mask checks on
-> > > > drm.debug; we can use dynamic debug instead, and get all that
-> > > > static_key/jump_label goodness.
-> >
-> > Hi Jim,
-> > Thanks for your patches! Daniel pointed me at them in response to my drm_trace
-> > patchset (https://patchwork.freedesktop.org/series/78133/). I'd love to get your
-> > input on it. I think the 2 sets are mostly compatible, we'd just need to keep
-> > drm_dev_dbg and do the CONFIG check in the function beside the trace_enabled
-> > checks.
-> >
-> > > >
-> > > > Dynamic debug has no concept of category, but we can map the DRM_UT_*
-> > > > to a set of distinct prefixes; "drm:core:", "drm:kms:" etc, and
-> > > > prepend them to the given formats.
-> > > >
-> > > > Then we can use:
-> > > >   `echo module drm format ^drm:core: +p > control`
-> > > >
-> > > > to enable every such "prefixed" pr_debug with one query.  This new
-> > > > prefix changes pr_debug's output, so is user visible, but it seems
-> > > > unlikely to cause trouble for log watchers; they're not relying on the
-> > > > absence of class prefix strings.
-> > > >
-> > > > This conversion yields ~2100 new callsites on my i7/i915 laptop:
-> > > >
-> > > >   dyndbg: 195 debug prints in module drm_kms_helper
-> > > >   dyndbg: 298 debug prints in module drm
-> > > >   dyndbg: 1630 debug prints in module i915
-> > > >
-> > > > CONFIG_DRM_USE_DYNAMIC_DEBUG enables this, and is available if
-> > > > CONFIG_DYNAMIC_DEBUG or CONFIG_DYNAMIC_DEBUG_CORE is chosen, and if
-> > > > CONFIG_JUMP_LABEL is enabled; this because its required to get the
-> > > > promised optimizations.
-> > > >
-> > > > The indirection/switchover is layered into the macro scheme:
-> > > >
-> > > > 0. A new callback on drm.debug which calls dynamic_debug_exec_queries
-> > > >    to map those bits to specific query/commands
-> > > >    dynamic_debug_exec_queries("format ^drm:kms: +p", "drm*");
-> > > >    here for POC, this should be in dynamic_debug.c
-> > > >    with a MODULE_PARAM_DEBUG_BITMAP(__drm_debug, { "prefix-1", "desc-1" }+)
-> > >
-> > > This is really awesome.
-> >
-> >
-> > Agreed, this is a very clever way of merging the 2 worlds!
-> >
-> >
-> > > For merging I think we need to discuss with dyn
-> > > debug folks whether they're all ok with this, but it's exported already
-> > > should should be fine.
-> >
-> > I wonder if this is a good time to reconsider our drm categories. IMO they're
-> > overly broad and it's hard to get the right information without subscribing to
-> > the firehose. It seems like dyndbg might be a good opportunity to unlock
-> > subcategories of log messages.
-> >
-> > More concretely, on CrOS we can't subscribe to atomic or state categories since
-> > they're too noisy. However if there was a "fail" subcategory which dumped
-> > state/atomic logs on check failures, that would be really compelling. Something
-> > like:
-> >
-> >         drm:atomic:fail vs. drm:atomic
-> >
+This is in support of Max's series to split vfio-pci. For that to work the
+reflck concept embedded in vfio-pci needs to be sharable across all of the
+new VFIO PCI drivers which motivated re-examining how this is
+implemented.
 
-YES
+Another significant issue is how the VFIO PCI core includes code like:
 
-> > Both would be picked up if (drm.debug & DRM_DBG_ATOMIC), however it would allow
-> > dyndbg-aware clients to get better logs without having a huge table of
-> > individual log signatures.
-> >
-> > I'm not sure how tightly we'd want to control the subcategories. It could be
-> > strict like the categories spelled out in drm_print.h, or an open prefix arg to
-> > drm_dev_dbg. I suspect we'd want the former, but would want to be careful to
-> > provide enough flexibility to properly
+   if (pci_dev_driver(pdev) != &vfio_pci_driver)
 
-formalizing categories and subcategories is where the
-practical selectivity of format ^prefix is determined.
+Which is not scalable if there are going to be multiple different driver
+types.
 
-While endless bikeshedding is a possible downside,
-there are a few subtleties to note,  so we can pick a harmonious 3-color scheme:
+This series takes the approach of moving the "reflck" mechanism into the
+core code as a "device set". Each vfio_device driver can specify how
+vfio_devices are grouped into the set using a key and the set comes along
+with a set-global mutex. The core code manages creating per-device set
+memory and associating it with each vfio_device.
 
-"drm:kms: " and "drm:kms:" are different  (2nd, w/o trailing space,
-allows subcats)
-"drm:kms"  is also different  (includes "drm:kmsmart", whatever that would be)
-"drm.kms"  again.   dot names anyone ?
+In turn this allows the core code to provide an open/close_device()
+operation that is called only for the first/last FD, and is called under
+the global device set lock.
 
-ASIDE(s):
+Review of all the drivers show that they are either already open coding
+the first/last semantic or are buggy and missing it. All drivers are
+migrated/fixed to the new open/close_device ops and the unused per-FD
+open()/release() ops are deleted.
 
-"drm:kms"  and  "drm:kms*" are different,
-the latter does not work as you might reasonably expect.
-This is because
+The special behavior of PCI around the bus/slot "reset group" is recast in
+terms of the device set which conslidates the reflck, eliminates two
+touches of pci_dev_driver(), and allows the reset mechanism to share
+across all VFIO PCI drivers. PCI is changed to acquire devices directly
+from the device set instead of trying to work backwards from the struct
+pci_device.
 
-commit 578b1e0701af34f9ef69daabda4431f1e8501109
-Author: Changbin Du <changbin.du@intel.com>
-Date:   Thu Jan 23 15:54:14 2014 -0800
+Overall a few minor bugs are squashed and quite a bit of code is removed
+through consolidation.
 
-    dynamic_debug: add wildcard support to filter files/functions/modules
+v3:
+ - Atomic conversion of mbochs_used_mbytes
+ - Add missing vfio_uninit_group_dev in error unwind of mbochs
+ - Reorganize vfio_assign_device_set()
+ - Move the dev_set_list hunks to the introduction of the dev_set
+ - Use if instead of ?: in fsl
+ - Add a comment about the whole bus reset in vfio_pci_probe()
+ - Rename vfio_pci_check_all_devices_bound() to
+   vfio_pci_is_device_in_set()
+ - Move logic from vfio_pci_try_bus_reset() into vfio_pci_find_reset_target()
+v2: https://lore.kernel.org/r/0-v2-b6a5582525c9+ff96-vfio_reflck_jgg@nvidia.com
+ - Reorder fsl and mbochs vfio_uninit_group_dev
+ - Fix missing error unwind in mbochs
+ - Return 0 from mdev open_device if there is no op
+ - Fix style for else {}
+ - Spelling fix for singleton
+ - Acquire cur_mem under lock
+ - Always use error unwind flow for vfio_pci_check_all_devices_bound()
+v1: https://lore.kernel.org/r/0-v1-eaf3ccbba33c+1add0-vfio_reflck_jgg@nvidia.com
 
-    Add wildcard '*'(matches zero or more characters) and '?' (matches one
-    character) support when qurying debug flags.
+Jason Gunthorpe (12):
+  vfio/samples: Remove module get/put
+  vfio/mbochs: Fix missing error unwind of mbochs_used_mbytes
+  vfio: Provide better generic support for open/release vfio_device_ops
+  vfio/samples: Delete useless open/close
+  vfio/fsl: Move to the device set infrastructure
+  vfio/platform: Use open_device() instead of open coding a refcnt
+    scheme
+  vfio/pci: Change vfio_pci_try_bus_reset() to use the dev_set
+  vfio/pci: Reorganize VFIO_DEVICE_PCI_HOT_RESET to use the device set
+  vfio/mbochs: Fix close when multiple device FDs are open
+  vfio/ap,ccw: Fix open/close when multiple device FDs are open
+  vfio/gvt: Fix open/close when multiple device FDs are open
+  vfio: Remove struct vfio_device_ops open/release
 
-specifically left format out of the wildcarded query terms.
-And that was rational since the format search was already special
-(floating substring, not exact match or basename match)
-and format foobar  should work analogously to grep foobar, ie w/o wildcards.
-while an implied "format *foobar*" is possible, I dont like the
-regex-iness implied in that 1st '*'
+Max Gurtovoy (1):
+  vfio: Introduce a vfio_uninit_group_dev() API call
 
-(2)
+Yishai Hadas (1):
+  vfio/pci: Move to the device set infrastructure
 
-dyndbg is extremely agnostic about prefixes used by authors/subsystems
+ Documentation/driver-api/vfio.rst             |   4 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |   8 +-
+ drivers/s390/cio/vfio_ccw_ops.c               |   8 +-
+ drivers/s390/crypto/vfio_ap_ops.c             |   8 +-
+ drivers/vfio/fsl-mc/vfio_fsl_mc.c             | 159 +-----
+ drivers/vfio/fsl-mc/vfio_fsl_mc_intr.c        |   6 +-
+ drivers/vfio/fsl-mc/vfio_fsl_mc_private.h     |   7 -
+ drivers/vfio/mdev/vfio_mdev.c                 |  31 +-
+ drivers/vfio/pci/vfio_pci.c                   | 487 +++++++-----------
+ drivers/vfio/pci/vfio_pci_private.h           |   7 -
+ drivers/vfio/platform/vfio_platform_common.c  |  86 ++--
+ drivers/vfio/platform/vfio_platform_private.h |   1 -
+ drivers/vfio/vfio.c                           | 144 +++++-
+ include/linux/mdev.h                          |   9 +-
+ include/linux/vfio.h                          |  26 +-
+ samples/vfio-mdev/mbochs.c                    |  40 +-
+ samples/vfio-mdev/mdpy.c                      |  40 +-
+ samples/vfio-mdev/mtty.c                      |  40 +-
+ 18 files changed, 468 insertions(+), 643 deletions(-)
 
-"1:", "2:", "3:" is a lot like the original: void dev_printk(const
-char *level, ..).
-w/o the trailing colon, even more so (I will be checking what it does!)
-"Lo:", "Mid:", "Hi:" was proposed in a patchset once, and is usable today.
+-- 
+2.32.0
 
-some unification of explicit wildcard chars * & ? and format floating
-substr seems practical,
-with it, prefix matching could handle complicated error message regimes.
-Specifically, http return codes like 100, 200, 400, 404 etc would work.
-
-/ASIDE
-
-
-In any case, lets not try to over-control the categories & optional
-subcategories,
-at least not with lots of structure. Afterall, only code review will
-prevent something like:
-
-   pr_debug("%s: blah blah\n", hex(sha1))
-(queries on it are highly selective, but not organized)
-
-IMO, its potentially useful to be able to add ad-hoc categories,
-review and taste can moderate the ad-hockery,
-"drm:misc:" seems a reasonable catch-all, esp with 3rd level
-selectivity possible
-
-Consider Sean's example: "drm:atomic:fail", and variations:
-
-"drm:atomic:ok" - not as useful, unless we wanted a counter.
-I dont think we need to rule it out.
-to the extent that theres a traceable event here (success)
-theres some utility to be able to put something of a label on it.
-
-"drm:atomic:fail-%s"   - we could have a dictionary of reasons,
-(with open dictionary, neologisms allowed, any reason not to?)
-
-
-> >
-> > Of course, none of this needs to be decided to land this initial support, it can
-> > be bolted on later easily enough (I think).
-> >
-
-I think so too,  one such revisit...
-
-Eventually, the "drm:" part of the prefix may become sufficiently unnecessary
-that we could drop it in the name of log brevity.
-The selectivity lost to "format ^prefix" is recovered by adding
-"module drm*" or similar,
-so somemod.foobar's use of pr_debug("atomic: blabla") would be excluded,
-
-Or a flag-day, where we swap over to drm.dot.naming.
-Doing so modestly improves the use of ':' for a log-entry field separator.
-(though probably not a material improvement, structured logs are
-better for this)
 _______________________________________________
 intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
