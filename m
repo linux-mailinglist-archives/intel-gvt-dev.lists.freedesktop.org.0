@@ -2,24 +2,24 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 637613DA1B5
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Jul 2021 13:03:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A3793D9F94
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Jul 2021 10:29:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1967B6ED22;
-	Thu, 29 Jul 2021 11:03:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BB2466ECE5;
+	Thu, 29 Jul 2021 08:29:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3289 seconds by postgrey-1.36 at gabe;
- Thu, 29 Jul 2021 11:03:05 UTC
-Received: from plantandflowerinfo.com (unknown [188.214.104.60])
- by gabe.freedesktop.org (Postfix) with ESMTP id B645E6ED22
+X-Greylist: delayed 3783 seconds by postgrey-1.36 at gabe;
+ Thu, 29 Jul 2021 08:29:23 UTC
+Received: from pixnlovepublishing.com (ip20.ip-51-38-164.eu [51.38.164.20])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 18F086ECA0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Jul 2021 11:03:05 +0000 (UTC)
+ Thu, 29 Jul 2021 08:29:23 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: we have this foosball table
-Message-ID: <b1c5883f67cedf2838ffe52bc97efb72@electroswitch.com>
-Date: Thu, 29 Jul 2021 07:15:54 +0200
-From: "Owen Dean" <jadendi@pianoreport.com>
+Subject: Re: about our drone
+Message-ID: <8f2fa1102903694e0471cf841ebdcfa2@agrelays.com>
+Date: Thu, 29 Jul 2021 07:24:20 +0200
+From: "Casey Carpenter" <caseykp@phonecopy.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -34,12 +34,12 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jaden@profoosball.shop
-Content-Type: multipart/mixed; boundary="===============1925409278=="
+Reply-To: casey@raxprodrone.shop
+Content-Type: multipart/mixed; boundary="===============2127807758=="
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============1925409278==
+--===============2127807758==
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 
@@ -47,57 +47,64 @@ Content-Transfer-Encoding: 8bit
 <head>
 </head>
 <body>
-Hi,<br /> <br /> How are you doing?<br /> It will take you a few minutes.
-<br /> Can you have a look at what I sent you? I hope you appreciate it; it
-is in our inventory.<br /> <br /> 1 table gives fun, 22 players, 2 manual
-scouts, restoring the original football surface, green playground, and two
-manual scorers.<br /> Friendly design: The rod bars are soft to prevent
-slips on your hand and to better manage the ball (2 balls included) (Two
-balls included)<br /> Fiberboard: Our football table is composed of
-high-quality, environmentally sustainable MDF fiberboard.<br /> The Game
-Tables can be set up using the instructions and clearly numbered
-components.<br /> With a natural wood-like look framework, this table fits
-into any playroom or extra space in your home.<br /> There is a viable
-option for you.<br />MDF (Carb P2) substance, Iron, Wood Color Plastic
-Color Frame, Wood Color Table Leg<br />Product dimensions are 121.92cm x
-77.5cm x 60cm (L x W x H)<br />Weight: 21.5kg / 47.40lb<br />Packaging
-Dimensions: (325.1 x 167.6 x 35.6) "/ (128 x 66 x 14) centimeters (L x W x
-H) 1 set / cardboard package<br /><br />Foosball table pricing:<br />One
-foosball table: 195.70.<br />Two foosball table: 185.70 each<br />For three
-or more foosball tables, the price is 175.70 a piece.<br /><br />Are you
-interested in taking one or two of our tables?<br />Simply provide us the
-address for shipping, and we will contact logistics to organize shipment
-for you.<br /><br /><br />
+Hi,<br /> <br /> How are things going for you?<br /> Have you read the
+information on the drone that was supplied to you previously?<br /> This
+product is now available in our warehouse. I'm not sure if you like it or
+not. <br /> I will email you the product's precise information once
+more.<br /> <br /> The drone has a 28-minute battery life. The electric
+fence has a safety distance of 1000m.<br /> GPS position is outside the
+optical flow fixed point.<br /> Return to your home on low power via the
+power off/on signal.<br /> In addition to follow and surround modes and
+multi-point cruises, VR mode, multi-lens switching, and panoramic
+photo/video capture are available.<br /> MV (multi-view) mode, one-button
+return to the home screen, headless mode, definition switching, gesture
+photo/video, <br />and front lens up/down adjustment are just a few of the
+features available.<br /> Altitude is determined using GPS and air
+pressure.<br /> Electronic stabilization camera parameters for ESC PTZ + ES
+electronic stabilization at 30 frames per second at 3840x2160.<br /> Wind
+resistance rating: 8 (high wind resistance)<br /> Low-interference 5G
+picture transmission signal<br /> The fan blades have a diameter of about
+5.8 cm (in centimeters).<br /> With the board, the battery capacity is 7.4V
+3000mAh.<br /> It comes with a remote that can be used to charge the
+battery. The battery's capacity is critical (with charging)<br /> Optical
+flow in 5G 4K WIFI configuration<br /> Charge time: 180 minutes<br />
+Remote control charging endurance (no battery required)<br /> Dimensions of
+the drone: unfolded: 26x30x5cm, folded: 14x19x5cm<br /> <br /> Drone prices
+start at 288.50 for a single drone.<br /> For two drones, the price is
+278.50 each<br /> For three or more drones, the price is 268.50.<br /> <br
+/> Are you interested to take a drone today?<br /> Please provide us with
+your shipping info, and we will contact logistics to arrange shipment.<br
+/> <br />
 <p><img
-src="https://contents.bebee.com/users/id/cRqpL6101fdc50578f/post/RNx026101fde1bf065/zHKOa.jpg"
-alt="" width="450" height="393" /><img
-src="https://media.taringa.net/knn/fit:550/Z3M6Ly9rbjMvZjdkZTc5NTViYTEzYTg0NGEyNDMwNDRhMWNkMWFlZGMuanBn"
-alt="" width="450" height="460" /></p>
-<p><img
-src="https://contents.bebee.com/users/id/cRqpL6101fdc50578f/post/RNx026101fde1bf065/Q1roO.jpg"
-alt="" width="450" height="435" /><img
-src="https://media.taringa.net/knn/fit:550/Z3M6Ly9rbjMvNGUxMmI1YTYwMzEzNDgzOTVhNmM3YTE5MDhiN2FlYmYuanBn"
+src="https://contents.bebee.com/users/id/cRqpL6101fdc50578f/post/RNx026101fde1bf065/0cjTt.jpg"
+alt="" width="450" height="450" /><img
+src="https://media.taringa.net/knn/fit:550/Z3M6Ly9rbjMvMTE1MmI3OTljZWRmOTY0NWVlNDYyYzU1ZTc2MzUxNzguanBn"
 alt="" width="450" height="450" /></p>
 <p><img
-src="https://contents.bebee.com/users/id/cRqpL6101fdc50578f/post/RNx026101fde1bf065/BsX4d.jpg"
-alt="" width="450" height="377" /><img
-src="https://media.taringa.net/knn/fit:550/Z3M6Ly9rbjMvZTY1ZmZjZWFkODFjMWIzZmJmNWJjNmRhNzA4OTI1MWYuanBn"
+src="https://contents.bebee.com/users/id/cRqpL6101fdc50578f/post/RNx026101fde1bf065/iprIR.jpg"
+alt="" width="450" height="450" /><img
+src="https://media.taringa.net/knn/fit:550/Z3M6Ly9rbjMvOGQ2NTczYWRiZmM0ZmFjZTRmY2QyMDg4ODkwNDAzZDguanBn"
 alt="" width="450" height="450" /></p>
-<br />1 playable table, 22 participants, green playgrounds, 2 manual
-scorers, and the restoration of authentic soccer fields<br />
-Design-friendly: 2 cup holders' features that will keep them hydrated
-during the race; Soft grips are used on rod bars to reduce slippage and
-improve ball control (2 balls included) (There are two balls provided.)<br
-/> MDF fiberboard, which is good for the environment: Our football table is
-made of high-quality, secure MDF fiberboard.<br /> <br /> Each leg has four
-sturdy legs that provide a stable and adjustable slip basis.<br /> The game
-table can be customized by following the directions and utilizing clearly
-numbered components.<br /> <br /> Thanks,<br /> Owen Dean<br /><br />
+<p><img
+src="https://contents.bebee.com/users/id/cRqpL6101fdc50578f/post/RNx026101fde1bf065/cBJxA.jpg"
+alt="" width="450" height="450" /><img
+src="https://media.taringa.net/knn/fit:550/Z3M6Ly9rbjMvYTY0MmFlMmNkMjJlY2FjNzQ0ZDU4OTNjOTI1NTIzMzUuanBn"
+alt="" width="450" height="450" /></p>
+<br /> Internal optical flow with a fixed point and GPS positioning
+outside.<br /> When you return home, the power goes out or you receive a
+notification that the power has been turned off.<br /> This camera includes
+features such as virtual reality mode, multi-lens switching, and
+video/picture panorama.<br /> Modes include: MV (one key to return to the
+home screen); headless; photo/video gestures; and front lens adjustment.<br
+/> GPS/air pressure is a combination of the two in a fixed altitude flight
+system.<br /> 30 frames at 3840x2160/4K<br /> Wind resistance is excellent
+(wind resistance level of 8)<br /> <br /> Thanks,<br /> Casey Carpenter<br
+/><br />
 </body>
 </html>
 
 
---===============1925409278==
+--===============2127807758==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -108,4 +115,4 @@ intel-gvt-dev mailing list
 intel-gvt-dev@lists.freedesktop.org
 https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev
 
---===============1925409278==--
+--===============2127807758==--
