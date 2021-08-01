@@ -1,78 +1,59 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 899B13DC872
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 31 Jul 2021 23:43:08 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44CCC3DC970
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Aug 2021 05:34:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1A2786E930;
-	Sat, 31 Jul 2021 21:43:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DCEA06EA34;
+	Sun,  1 Aug 2021 03:34:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x12f.google.com (mail-il1-x12f.google.com
- [IPv6:2607:f8b0:4864:20::12f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D1D5A6E939;
- Sat, 31 Jul 2021 21:43:05 +0000 (UTC)
-Received: by mail-il1-x12f.google.com with SMTP id j18so9992524ile.8;
- Sat, 31 Jul 2021 14:43:05 -0700 (PDT)
+Received: from mail-il1-x134.google.com (mail-il1-x134.google.com
+ [IPv6:2607:f8b0:4864:20::134])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3A3E66E945;
+ Sun,  1 Aug 2021 03:34:51 +0000 (UTC)
+Received: by mail-il1-x134.google.com with SMTP id i13so1538507ilm.11;
+ Sat, 31 Jul 2021 20:34:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Fjsw3W3/UmlQsTKfLEE1H6kTd7xaAkJp0etT9YYbz+I=;
- b=DUQOmqbS6V186tr3AR4AQ/htc0Bg66ZwKaVnDhi8fD4VVZlKCf/XiMXwkRotjoP/oD
- OlEohbOBL4Yoa9TdR+Rt4U35G0nEQ8KC1XEx4lPrsDTudjD848VcRX4MLxvsBeZw/1G1
- sTsh+9jmrH/+DkMS13G8ysj2cw3Gbc0Y/imnc903XG+ZXkdCSUgEye1gO5kadZ0NHB/7
- QoTZ/7GP4NjMU6SpCQNZxUXX0+r7NF0RdNFHb5ATQxh2tgpzFKgYwf2gNYLWlmt9BMSY
- cz2ik8KJfEIuoyTSo19BihMCTNQfO9StMfPsChEJF5EwgtM60BYWqB8C+i00hvEv47mX
- w6Wg==
+ bh=TuTXg0e3clW+MMWqMjMwfJqjaNCb4Ct1FoSRnnKkgJ8=;
+ b=kC3SpbfGQStvm0vYCDgFFccoBC/d4pOGgv6VuIWBrntvaxsyMaVZZc7hGtP30YQI8s
+ CpKdVoYLqeToXu/D392uoc4+5J2Ld5hYGS3ZyFJ0kHkkzrzLPE1Z0lhYp736hbm421hN
+ NdEjKol+y8rgsYVHqiqHTrw/Ef6lHfER8Vyk0Mg7H7uajPr4iM/nO4UyzopSTPAfA9Gn
+ KMxwEwnPlQ8a07egcI5HuqEjtAiqxSZ0rf3Yr3iMi+0T6cIhhnpJbiHRfXGmjJAKWFpd
+ JKlvxQaRcbXeBy0KM8d9guJrj/1vUFk3cG8mhmmy5DF4GPrqx/Q2lhgziM2U2TvocZ+3
+ CoOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Fjsw3W3/UmlQsTKfLEE1H6kTd7xaAkJp0etT9YYbz+I=;
- b=jHyaa3yzQHrk8f78TjOdoGWjbk3dYjis6gUd7m1nGkQT3v1WTF+OafJX+KuS/uPrBy
- 93ovNyDydSJJ9oo3QIVOjVTjaUXlJpoH9tsVpC62aUZAY7y4iB0HTOeKx9j2acBz603V
- 8Sk8e2jKV2y8PzNUFqNSbPe2+2hVGgGHZqlT/VLRFbtzSEEMLnPuxQcbhgs/svn5pPdG
- Wj54rf04BPZSl8cU5lFleWLiZnIxnIaAjKrU5dteWFviicKlGIpNW8b9Hbiz375YWlS9
- FYkon1k5UQPm6DOWTTgrmWm0N3EoU7ycYXxIyGnBx8TlVPM6IuQ/uPH1MkGLyhvYdrsr
- kyFA==
-X-Gm-Message-State: AOAM530vRMd5GVmmRX02BynQO8F8r8K2IMTYmuWQ5OiNA72dsa8nQB9N
- bBqnAmYVEX1zak41m4bPAxlRPuFoGTSCzSgy
-X-Google-Smtp-Source: ABdhPJz/2EtrrYIqo1LVW1aQs2Xb4oaL2S+YhuZgVD/CT6F5x/mjSOje1mie7ejlt/ixr3AwR/U9tQ==
-X-Received: by 2002:a92:c7d0:: with SMTP id g16mr6296943ilk.278.1627767785160; 
- Sat, 31 Jul 2021 14:43:05 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TuTXg0e3clW+MMWqMjMwfJqjaNCb4Ct1FoSRnnKkgJ8=;
+ b=nXDE+imSQBNdlp5ltcZcf70W4vmYJ/NQuSgHscqd7o26jkzithriwJeG4JXc2qK2mY
+ YHuBmgr65ggGYvJLD/E/zOempjBeJCe4+hvv7e4TAfjyMKliCMJAFBTa7vq3Z0JroxAJ
+ 7pXzRdULBsHwbn18NNpAKDdLPPHeKeoduOmQh05ySVBG4SdWPWwFp9xsdj/eVJycOVET
+ mDIkNvjRGzDD3VI3FLYWNH5bdyb6YWyFR4dqSxU5jPLmhp14vj8RPRw4HSgyIg+MuWyA
+ NxByBA+mBNWlULsCRhYSvDPT4SNhqPyVuCUv8YDToC4sJTUlSFH1klRv0PIT561ECXkP
+ POeA==
+X-Gm-Message-State: AOAM533kbazzMmDN96SK8FjO+FVUrl4NOfj26BPRtwLgNYlipmNyKvdP
+ 7Oq8QDCVjL769A7j66EbzpvDZEVUh5t3Tbqf
+X-Google-Smtp-Source: ABdhPJwxzVLBZL+ZmF8QBZL4Gvbcc1RiS9N6/uHnbx0dzquWp60KZIHGDWSCoHisTkYzkl8QyZYx3g==
+X-Received: by 2002:a92:c54d:: with SMTP id a13mr4253873ilj.74.1627788890249; 
+ Sat, 31 Jul 2021 20:34:50 -0700 (PDT)
 Received: from frodo.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
- by smtp.googlemail.com with ESMTPSA id q10sm3721040ion.3.2021.07.31.14.43.03
+ by smtp.googlemail.com with ESMTPSA id c1sm3366525ils.21.2021.07.31.20.34.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 31 Jul 2021 14:43:04 -0700 (PDT)
+ Sat, 31 Jul 2021 20:34:49 -0700 (PDT)
 From: Jim Cromie <jim.cromie@gmail.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Harry Wentland <harry.wentland@amd.com>,
- Leo Li <sunpeng.li@amd.com>, Alex Deucher <alexander.deucher@amd.com>,
- =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
- "Pan, Xinhui" <Xinhui.Pan@amd.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Jason Baron <jbaron@akamai.com>,
- Ashley Thomas <Ashley.Thomas2@amd.com>,
- Aurabindo Pillai <aurabindo.pillai@amd.com>,
- Wyatt Wood <Wyatt.Wood@amd.com>, Qingqing Zhuo <qingqing.zhuo@amd.com>,
- Jim Cromie <jim.cromie@gmail.com>, Johan Hovold <johan@kernel.org>,
- Jessica Yu <jeyu@kernel.org>, Joe Perches <joe@perches.com>,
- Miguel Ojeda <ojeda@kernel.org>,
- Nick Desaulniers <ndesaulniers@gooogle.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+To: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Subject: [PATCH v4 7/7] amdgpu: define a dydbg-bitmap to control categorized
- pr_debugs
-Date: Sat, 31 Jul 2021 15:42:04 -0600
-Message-Id: <20210731214211.657280-8-jim.cromie@gmail.com>
+ intel-gfx@lists.freedesktop.org, seanpaul@chromium.org
+Cc: Jim Cromie <jim.cromie@gmail.com>
+Subject: [PATCH] dyndbg: add special aux_print framework
+Date: Sat, 31 Jul 2021 21:34:32 -0600
+Message-Id: <20210801033432.831938-1-jim.cromie@gmail.com>
 X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210731214211.657280-1-jim.cromie@gmail.com>
-References: <20210731214211.657280-1-jim.cromie@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -90,73 +71,121 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-logger_types.h defines many DC_LOG_*() categorized debug wrappers.
-Many of these use DRM_DEBUG_*, so are controllable using drm.debug,
-but others use bare pr_debug()s, each with a different class-prefix
-matching "^[\w+]:"
+Sean Paul seanpaul@chromium.org proposed, in
+https://patchwork.freedesktop.org/series/78133/
+drm/trace: Mirror DRM debug logs to tracefs
 
-Use DYNDBG_BITMAP_DESC() to create a parameter/debug_dc, and to define
-bits to control those pr_debugs by their category.
+The problem with the approach is that its built upon splitting
+drm_debug_enabled() into syslog & trace flavors, which clashes rather
+profoundly with the strategy of obsoleting it using dyndbg.
+
+Instead, this puts the print-to-trace decision after the is-it-enabled
+test (which is a noop), so it has near zero additional cost.
+
+This is preliminary, Proof-of-Concept, and about 2 hrs old.
+But its surprisingly simple:
+
+ - add a new struct _ddebug member: (*aux_print)(char *format, ...)
+ - add a new S/special flag to check !!aux_print
+ - if S, invoke the function to handle the prepared vaf
+
+It intrinsically allows any number of alternate printf-ish consumers,
+but only 1 active per callsite.  I have another patchset that
+eliminates some of the data redundancies like this, it can be
+extended.
+
+It may also prove to be a generic way to implement the netdev & ibdev
+variants of __dynamic_pr_debug.
+
+It just needs a mechanism to set the per-callsite pointer to a
+printf-ish function to consume the pr_debug output, a tighter/better
+function prototype, and a wrapper on drm_trace_printf to bundle up the
+args and comport with the prototype, which can evolve to suit this 1st
+client.
+
+it is on top of:
+https://patchwork.freedesktop.org/series/92544/
+(v4 on lkml, v2 in patchwork)
 
 Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 ---
- .../gpu/drm/amd/display/dc/core/dc_debug.c    | 42 ++++++++++++++++++-
- 1 file changed, 41 insertions(+), 1 deletion(-)
+ include/linux/dynamic_debug.h |  7 ++++++-
+ lib/dynamic_debug.c           | 22 +++++++++++++++++++---
+ 2 files changed, 25 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/display/dc/core/dc_debug.c b/drivers/gpu/drm/amd/display/dc/core/dc_debug.c
-index 21be2a684393..3041e0c3d726 100644
---- a/drivers/gpu/drm/amd/display/dc/core/dc_debug.c
-+++ b/drivers/gpu/drm/amd/display/dc/core/dc_debug.c
-@@ -36,8 +36,48 @@
- 
- #include "resource.h"
- 
--#define DC_LOGGER_INIT(logger)
-+/* define a drm.debug style dyndbg pr-debug control point */
-+unsigned long __debug_dc;
-+EXPORT_SYMBOL(__debug_dc);
+diff --git a/include/linux/dynamic_debug.h b/include/linux/dynamic_debug.h
+index 677ad176b167..0d068e8ed7aa 100644
+--- a/include/linux/dynamic_debug.h
++++ b/include/linux/dynamic_debug.h
+@@ -22,6 +22,7 @@ struct _ddebug {
+ 	const char *function;
+ 	const char *filename;
+ 	const char *format;
++	int (*aux_print)(char *, void *, void *);
+ 	unsigned int lineno:18;
+ 	/*
+ 	 * The flags field controls the behaviour at the callsite.
+@@ -29,7 +30,11 @@ struct _ddebug {
+ 	 * writes commands to <debugfs>/dynamic_debug/control
+ 	 */
+ #define _DPRINTK_FLAGS_NONE	0
+-#define _DPRINTK_FLAGS_PRINT	(1<<0) /* printk() a message using the format */
++#define _DPRINTK_FLAGS_PRINT		(1<<0) /* printk() a message */
++#define _DPRINTK_FLAGS_PRINT_AUX	(1<<5) /* call (*aux_print) */
 +
-+#define _help(key)	"\t\t" key " : help for " key "\n"
-+#define cmd_help(key)	{ .prefix = key, .help = "help for " key }
++#define _DPRINTK_ENABLED (_DPRINTK_FLAGS_PRINT | _DPRINTK_FLAGS_PRINT_AUX)
 +
-+/* Id like to do these inside DEFINE_DYNDBG_BITMAP, later */
-+#define MY_DYNDBG_PARM_DESC(name)					\
-+	"Enable debug output via /sys/module/amdgpu/parameters/" #name	\
-+	", where each bit enables a debug category.\n"			\
-+		_help("[SURFACE]:")					\
-+		_help("[CURSOR]:")					\
-+		_help("[PFLIP]:")					\
-+		_help("[VBLANK]:")					\
-+		_help("[HW_LINK_TRAINING]:")				\
-+		_help("[HW_AUDIO]:")					\
-+		_help("[SCALER]:")					\
-+		_help("[BIOS]:")					\
-+		_help("[BANDWIDTH_CALCS]:")				\
-+		_help("[DML]:")						\
-+		_help("[IF_TRACE]:")					\
-+		_help("[GAMMA]:")					\
-+		_help("[SMU_MSG]:")
-+MODULE_PARM_DESC(debug_dc, MY_DYNDBG_PARM_DESC(name));
+ #define _DPRINTK_FLAGS_INCL_MODNAME	(1<<1)
+ #define _DPRINTK_FLAGS_INCL_FUNCNAME	(1<<2)
+ #define _DPRINTK_FLAGS_INCL_LINENO	(1<<3)
+diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
+index 045e1cf92c44..7bbdedabe6f1 100644
+--- a/lib/dynamic_debug.c
++++ b/lib/dynamic_debug.c
+@@ -85,6 +85,7 @@ static inline const char *trim_prefix(const char *path)
+ 
+ static struct { unsigned flag:8; char opt_char; } opt_array[] = {
+ 	{ _DPRINTK_FLAGS_PRINT, 'p' },
++	{ _DPRINTK_FLAGS_PRINT_AUX, 'S' },
+ 	{ _DPRINTK_FLAGS_INCL_MODNAME, 'm' },
+ 	{ _DPRINTK_FLAGS_INCL_FUNCNAME, 'f' },
+ 	{ _DPRINTK_FLAGS_INCL_LINENO, 'l' },
+@@ -206,10 +207,10 @@ static int ddebug_change(const struct ddebug_query *query,
+ 			if (newflags == dp->flags)
+ 				continue;
+ #ifdef CONFIG_JUMP_LABEL
+-			if (dp->flags & _DPRINTK_FLAGS_PRINT) {
+-				if (!(modifiers->flags & _DPRINTK_FLAGS_PRINT))
++			if (dp->flags & _DPRINTK_ENABLED) {
++				if (!(modifiers->flags & _DPRINTK_ENABLED))
+ 					static_branch_disable(&dp->key.dd_key_true);
+-			} else if (modifiers->flags & _DPRINTK_FLAGS_PRINT)
++			} else if (modifiers->flags & _DPRINTK_ENABLED)
+ 				static_branch_enable(&dp->key.dd_key_true);
+ #endif
+ 			dp->flags = newflags;
+@@ -639,6 +640,21 @@ void __dynamic_pr_debug(struct _ddebug *descriptor, const char *fmt, ...)
+ 
+ 	printk(KERN_DEBUG "%s%pV", dynamic_emit_prefix(descriptor, buf), &vaf);
+ 
++	if (descriptor->flags & _DPRINTK_FLAGS_PRINT_AUX) {
++		/* our model:
++		drm_trace_printf("%s%s[" DRM_NAME ":%ps] %pV",
++				 dev ? dev_name(dev) : "", dev ? " " : "",
++				 __builtin_return_address(0), &vaf);
++		*/
++		pr_info("reached check aux\n");
 +
-+DEFINE_DYNDBG_BITMAP(debug_dc, &__debug_dc,
-+		     MY_DYNDBG_PARM_DESC(debug_dc),
-+		     cmd_help("[CURSOR]:"),
-+		     cmd_help("[PFLIP]:"),
-+		     cmd_help("[VBLANK]:"),
-+		     cmd_help("[HW_LINK_TRAINING]:"),
-+		     cmd_help("[HW_AUDIO]:"),
-+		     cmd_help("[SCALER]:"),
-+		     cmd_help("[BIOS]:"),
-+		     cmd_help("[BANDWIDTH_CALCS]:"),
-+		     cmd_help("[DML]:"),
-+		     cmd_help("[IF_TRACE]:"),
-+		     cmd_help("[GAMMA]:"),
-+		     cmd_help("[SMU_MSG]:"));
- 
-+#define DC_LOGGER_INIT(logger)
- 
- #define SURFACE_TRACE(...) do {\
- 		if (dc->debug.surface_trace) \
++		if (descriptor->aux_channel) {
++			pr_info("calling aux\n");
++			(*descriptor->aux_channel)
++				("%s[DRM_mumble :%ps] %pV", buf,
++				 __builtin_return_address(0), &vaf);
++		}
++	}
+ 	va_end(args);
+ }
+ EXPORT_SYMBOL(__dynamic_pr_debug);
 -- 
 2.31.1
 
