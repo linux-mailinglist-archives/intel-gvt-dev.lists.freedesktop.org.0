@@ -1,44 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9D413DD1C3
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Aug 2021 10:13:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 964773DCA9D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Aug 2021 09:44:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 935636E1E8;
-	Mon,  2 Aug 2021 08:13:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 401036E94C;
+	Sun,  1 Aug 2021 07:44:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 85067 seconds by postgrey-1.36 at gabe;
- Mon, 02 Aug 2021 08:13:39 UTC
-Received: from mail.maynitek.ru (mail.maynitek.ru [94.137.227.4])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 064E86E1E8;
- Mon,  2 Aug 2021 08:13:38 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id 5447215795C27;
- Sun,  1 Aug 2021 09:21:07 +0500 (+05)
-Received: from mail.maynitek.ru ([127.0.0.1])
- by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id AWJtfjamKYJ4; Sun,  1 Aug 2021 09:21:06 +0500 (+05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id D0C5415795C2B;
- Sun,  1 Aug 2021 09:21:05 +0500 (+05)
-X-Virus-Scanned: amavisd-new at maynitek.ru
-Received: from mail.maynitek.ru ([127.0.0.1])
- by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id HdIhS3OD3Bqg; Sun,  1 Aug 2021 09:21:05 +0500 (+05)
-Received: from [192.168.1.3] (unknown [178.151.250.143])
- by mail.maynitek.ru (Postfix) with ESMTPSA id 81F29157931EC;
- Sun,  1 Aug 2021 09:21:03 +0500 (+05)
+Received: from senwd.co.kr (unknown [220.95.209.146])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8832D6E94C
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun,  1 Aug 2021 07:44:01 +0000 (UTC)
+Received: from IP-222-80.dataclub.eu (unknown [46.183.222.80])
+ (Authenticated sender: books@senwd.co.kr)
+ by senwd.co.kr (Postfix) with ESMTPA id 85F74B7188A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun,  1 Aug 2021 14:25:01 +0900 (KST)
 Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Description: Mail message body
-Subject: Lesen Sie Ihre EMail.
-To: Recipients <deployer@maynitek.ru>
-From: deployer@maynitek.ru
-Date: Sun, 01 Aug 2021 07:20:45 +0300
-Message-Id: <20210801042103.81F29157931EC@mail.maynitek.ru>
+Subject: Your Urgent Atttention is Required.
+To: intel-gvt-dev@lists.freedesktop.org
+From: "Aisha Al-Gaddafi " <aishaalgaddafi4944@citromail.hu>
+Date: Sun, 01 Aug 2021 08:24:58 +0300
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,25 +38,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: rinatakhmeto@gmail.com
+Reply-To: aishaalgaddafi14944@citromail.hu
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210801074403.401036E94C@gabe.freedesktop.org>
 
-Ich, Rinat Akhmetov, bin ein ukrainischer Milliard=E4r, Oligarch und Gr=FCn=
-der und Pr=E4sident von System Capital Management in der Ukraine (Europa). =
-Sie k=F6nnen =FCber mich lesen auf:
+Hello Dear,
 
-https://en.wikipedia.org/wiki/Rinat_Akhmetov
+May I use this medium to open a mutual communication with you seeking your =
+acceptance towards investing in your country under your management as my pa=
+rtner, My name is Aisha Gaddafi and presently living in Oman, i am a Widow =
+and single Mother with two survived Children, I am only biological Daughter=
+ of late Libyan President (Late Colonel Muammar Gaddafi) and presently i am=
+ under political asylum protection by the Omani Government.
 
-Ich beabsichtige, Ihnen einen Teil (Viertel) meines Nettoverm=F6gens von je=
-weils 1,500.000 EURO an 4 Personen weltweit im Rahmen unseres Wohlt=E4tigke=
-itsprojekts zu geben, das ich =FCberwiesen habe. Wenn Sie meine E-Mail erha=
-lten haben, senden Sie uns bitte Ihre Daten so dass wir unsere Bank anweise=
-n, die =DCberweisung der
+I have funds worth "Sixty Million United State Dollars Only" $60,000,000.00=
+ USD which i want to entrust on you for investment project in your country,=
+ if you are willing to handle this project on my behalf, please for your ki=
+nd assistance I will offer you 30% of the total sum, all the legal document=
+ation concerning the deposit are with me, I will only write power of attorn=
+ey making you the new beneficiary of the deposit so that the security compa=
+ny can release the consignment to you.
 
-1,500.000 EURO zu finanzieren, in der Hoffnung, dass es auch Ihnen und ande=
-ren hilft.
+Bear in mind that the funds was deposited with the security and deposit fir=
+m as household effect, therefore they do not know the real content, so you =
+are going to collect the consignment as house effect from the security comp=
+any where as only you and me know the real content Please kindly reply urge=
+ntly to enable me provides you more detail to start the transfer process.
+In case you want to know more about me and my family you can read through t=
+his BBC News links below:
 
-E-Mail zur Best=E4tigung unten.
 
-E-Mail oder Antwort an:rinatakhmeto@gmail.com
+I shall appreciate your urgent response.
+
+Mrs. Aisha Al-Gaddafi=20
