@@ -1,54 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1AF83DDD68
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Aug 2021 18:18:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 088A13DDD90
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Aug 2021 18:24:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 590D86E1D7;
-	Mon,  2 Aug 2021 16:18:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 965586E1D7;
+	Mon,  2 Aug 2021 16:24:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qv1-xf34.google.com (mail-qv1-xf34.google.com
- [IPv6:2607:f8b0:4864:20::f34])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7100B6E0CA;
- Mon,  2 Aug 2021 16:18:53 +0000 (UTC)
-Received: by mail-qv1-xf34.google.com with SMTP id cg4so4094769qvb.5;
- Mon, 02 Aug 2021 09:18:53 -0700 (PDT)
+Received: from mail-qk1-x72c.google.com (mail-qk1-x72c.google.com
+ [IPv6:2607:f8b0:4864:20::72c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DBB056E1D7;
+ Mon,  2 Aug 2021 16:24:30 +0000 (UTC)
+Received: by mail-qk1-x72c.google.com with SMTP id t68so17111286qkf.8;
+ Mon, 02 Aug 2021 09:24:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZqSi2DWJQSHFbeSWRi1dH74yVKtdTqQrPRmLEYWYlbs=;
- b=h/XQdhlILCw/+Q5AVlBwggYYgCsNnJTRn3Z6tqiQg/srd2PFd/5P0LfwY976zgfamt
- Eld7Ds6h/30s7hTfGfyHfhPfU76xhHXb13bScDcPC+XiV1tBNZQaWaRdeX3qiYaWMxQ3
- FmpoEwvQv4H3xkX/sbCP3CVkpVKZdsuP95PtxR4hCh3PuAYTg0bOi1oHP/T3s4qJ1iQh
- y0Hb7Q3hrOymsnDY2hgUm2CmUEOPshqEl/unsvM2yQeaGaYGFn8uNnBe607LszrJoyK0
- LKYHiKhZkHNYeuWo4OJR4+0R3gErVUk1M6pp2VyyE60cmsod8V/CYSdZC7/N8mZJDgjF
- 9Nbw==
+ :cc; bh=PABonhkfz0MvRGA6imtUnPyjypKDIpW3LfF+TjLeY4o=;
+ b=abqfi6gzVw+ynFGoz0A5rBsxqK7BLlHO4rmdg6nFQDPOxt1wwq12n3BaH9if/ZXaOn
+ fYBfeuWw6VKmuxNwo13braCXtqReoz3+AR/o0ROfzVlpmzUbY5rAjA98AezOF7T5biLR
+ 8Geu2xgl59mAwBEQQmdLzPWofp+8tv1cXKB8pbjhWgHG1USo3sD/vDSuS32yWER7r3Qj
+ 9TYb0uNWFAm7UoMPqBtQVDJi3hDWqI2Xa2T501rI8fR7sLTB42NjdldQPfhSV+wdln68
+ XgY1O0AGD94GK3KC9V2pfdQqV0j2lptAmzeLblBEIfuwNOuVp+9skRad2c4iTGTQVbUY
+ xSzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ZqSi2DWJQSHFbeSWRi1dH74yVKtdTqQrPRmLEYWYlbs=;
- b=lsyuxPUV2BC8KGX+pTWH1suWwSso7+7y1shjohyrA1DlWFYsmLPzLY1d3Pj8IRgq89
- IN1j/wQ8gE6z/wGNch5fXhRU3XbGldjem3kyRmMcTU9SsL6EAvgWTi6710C1YfENBO7D
- JuICFu7ycsgJQKDT040Jt8WyXP2iGuBP8QT8TimjcoZG1+FhZDxHCeSBpSLQAPXKw09F
- WhhTiVRPC/werNU2yprTMjsfeEqdsGUPUYYTUC+Bsvc7Tv6rIF9GskmSSr0kH82i+x29
- R/TmTnph1YMJ7egagg6VBXl08dk8D/Ei0sP2Bhd0Y9wo6qW4Hur+fcbI4yeK9Op1pSDZ
- DQwA==
-X-Gm-Message-State: AOAM531yOc03NzvgsMZnFn/wZ79Ac+/lphW7+JLDqQx73F85KY3hHy7u
- TRTrfmq9W33phO4HOgwg7lrHR98sQ+aL9HqT8dW3jkuF
-X-Google-Smtp-Source: ABdhPJwjeKX8dVL7c74Sv+rQlQ8wjBu7odGyPJrq3rHoCjO43yM5Gdqt+HyaXoJwAC2tNgSMrlEBo5d0qlYc/sl1Y10=
-X-Received: by 2002:a05:6214:1bcf:: with SMTP id
- m15mr8334112qvc.62.1627921132550; 
- Mon, 02 Aug 2021 09:18:52 -0700 (PDT)
+ bh=PABonhkfz0MvRGA6imtUnPyjypKDIpW3LfF+TjLeY4o=;
+ b=B5sCHLz+WGj93CufMMAAvnVyVHhWvQ1+n2sBJO8VSpoO10KqaVrAlj7BAtiZniPJlL
+ 6LxBYqNo41Q6LjOTC/KakMh8SEVvIeJwNSIsUgfyQXViHQMtG4eoCi9e+kSLqIMo5eDH
+ +wK02ZubOYv0a6e0Ry4No9RCVuC3RNYNdtpl4GYOpJPVZfQOU9NVMsGdHcwQiwM/S6qP
+ zltbeQIQwRE+WP5RIzBEnJssabbNkklrCVI5a9TxOrLFdFRXD0m1acrH5AOBiwSvLEID
+ 3jua/IuibgUs/vsTsCS8UUKHWP8tqJUqqQksy5MsbAqakH0VM6/5rwU5JYXXHb4cPfKA
+ T+yg==
+X-Gm-Message-State: AOAM530iL7q6LFrtFI3ZxQ4f+DxS00yxr2I/l3eFLJOyTAwq3BjDXIcO
+ YqhX8NyOwKra7xgwTuneuzLG27BYSQWaSrxVWUM=
+X-Google-Smtp-Source: ABdhPJxSICDT7QAUlLZoant5eoxfyRFLmIvUQ/yn35oDDIe5fQ6jBLfy0/FXQELa3F92AS84FaoFLpUf/W6p/DuJ2FI=
+X-Received: by 2002:a37:64d:: with SMTP id 74mr16630354qkg.407.1627921470080; 
+ Mon, 02 Aug 2021 09:24:30 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210731214211.657280-1-jim.cromie@gmail.com>
- <20210731214211.657280-3-jim.cromie@gmail.com>
-In-Reply-To: <20210731214211.657280-3-jim.cromie@gmail.com>
+ <20210731214211.657280-4-jim.cromie@gmail.com>
+In-Reply-To: <20210731214211.657280-4-jim.cromie@gmail.com>
 From: Emil Velikov <emil.l.velikov@gmail.com>
-Date: Mon, 2 Aug 2021 17:18:41 +0100
-Message-ID: <CACvgo50DDp3p=-2mzY8jvzuLo_4_1L+b8=x6ZRERtcVJUHcomQ@mail.gmail.com>
-Subject: Re: [PATCH v4 2/7] moduleparam: add data member to struct kernel_param
+Date: Mon, 2 Aug 2021 17:24:18 +0100
+Message-ID: <CACvgo509FWgNcBP9SPyuZV0Wey9sApmgB2Xa_+LJ4r91Cgqhgg@mail.gmail.com>
+Subject: Re: [Intel-gfx] [PATCH v4 3/7] dyndbg: add dyndbg-bitmap definer and
+ callbacks
 To: Jim Cromie <jim.cromie@gmail.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, 
@@ -62,10 +62,10 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, 
  Jason Baron <jbaron@akamai.com>, Ashley Thomas <Ashley.Thomas2@amd.com>, 
- Aurabindo Pillai <aurabindo.pillai@amd.com>,
- Qingqing Zhuo <qingqing.zhuo@amd.com>, 
- Wyatt Wood <Wyatt.Wood@amd.com>, Jessica Yu <jeyu@kernel.org>,
- Johan Hovold <johan@kernel.org>, 
+ Qingqing Zhuo <qingqing.zhuo@amd.com>,
+ Aurabindo Pillai <aurabindo.pillai@amd.com>, 
+ Wyatt Wood <Wyatt.Wood@amd.com>, Johan Hovold <johan@kernel.org>,
+ Jessica Yu <jeyu@kernel.org>, 
  Joe Perches <joe@perches.com>, Miguel Ojeda <ojeda@kernel.org>, 
  Nick Desaulniers <ndesaulniers@gooogle.com>,
  ML dri-devel <dri-devel@lists.freedesktop.org>, 
@@ -93,24 +93,22 @@ Hi Jim,
 
 On Sat, 31 Jul 2021 at 22:42, Jim Cromie <jim.cromie@gmail.com> wrote:
 
-> Use of this new data member will be rare, it might be worth redoing
-> this as a separate/sub-type to keep the base case.
->
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-> ---
->  include/linux/moduleparam.h | 11 +++++++++--
->  1 file changed, 9 insertions(+), 2 deletions(-)
->
-> diff --git a/include/linux/moduleparam.h b/include/linux/moduleparam.h
-> index eed280fae433..e9495b1e794d 100644
-> --- a/include/linux/moduleparam.h
-> +++ b/include/linux/moduleparam.h
-> @@ -78,6 +78,7 @@ struct kernel_param {
->                 const struct kparam_string *str;
->                 const struct kparam_array *arr;
->         };
-> +       void *data;
+> +struct dyndbg_bitdesc {
+> +       /* bitpos is inferred from index in containing array */
+> +       char *prefix;
+> +       char *help;
+AFAICT these two should also be constant, right?
 
-Might as well make this "const void *" since it is a compile-time constant?
+
+> +int param_set_dyndbg(const char *instr, const struct kernel_param *kp)
+> +{
+> +       unsigned int val;
+> +       unsigned long changes, result;
+> +       int rc, chgct = 0, totct = 0, bitpos, bitsmax;
+> +       char query[OUR_QUERY_SIZE];
+> +       struct dyndbg_bitdesc *bitmap = (struct dyndbg_bitdesc *) kp->data;
+> +
+> +       // pr_info("set_dyndbg: instr: %s curr: %d\n", instr, *kp->arg);
+Left-over debug code, here and below?
 
 -Emil
