@@ -2,54 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFC833DDDA2
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Aug 2021 18:27:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 656263DDF59
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Aug 2021 20:37:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 652B26E083;
-	Mon,  2 Aug 2021 16:27:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 191C888A33;
+	Mon,  2 Aug 2021 18:37:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-x731.google.com (mail-qk1-x731.google.com
- [IPv6:2607:f8b0:4864:20::731])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 502556E083;
- Mon,  2 Aug 2021 16:27:13 +0000 (UTC)
-Received: by mail-qk1-x731.google.com with SMTP id k7so17096479qki.11;
- Mon, 02 Aug 2021 09:27:13 -0700 (PDT)
+Received: from mail-vs1-xe2d.google.com (mail-vs1-xe2d.google.com
+ [IPv6:2607:f8b0:4864:20::e2d])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 47FF088A33;
+ Mon,  2 Aug 2021 18:37:07 +0000 (UTC)
+Received: by mail-vs1-xe2d.google.com with SMTP id x144so1250863vsx.3;
+ Mon, 02 Aug 2021 11:37:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hfG5pLLGBVmijGs7xD1CuYUYuRgtJdbg/w8jfytxMq8=;
- b=KCMBWwrB7rl9OU23KgEVRMNrHkjI1UKzf688kWLXVEwgeNJcNUEFn/VqxfBmj/RpNi
- fU7laMr621aEhNdbx+OdRBeG+gRjYLKUtX6YwfYdGH1jiOfiYbFh9RvqsE7G7X2Hcr6L
- IJD1goHuBubu29rquTw+430JSLxAt+s34C3IcQXoIbHdotn0TAHF96EnLgoC091BV6D8
- vKRxR4BW5FYKCX85Vyxg7ZVVfl6YOhLMldCnEvHDcsFJe8Fwf2EhaQjExoDYOarkFf0Y
- O41YnyeQ9I6FHv+VtEkpTJAWuNqqcU0IxGZo2xIbPmfEF6kRc4gS1MBxUmJXU2e9LQ32
- Knxg==
+ :cc; bh=IpKyihB3M+3oinMY5i464lWGHngiMrlvZE39L5yuKac=;
+ b=IELFFR56N8LyPmwrNGKlS1ao8vH/LLrw5ZS44V5f8D3W1JRnUh+LPgTzqBlU8FgoE8
+ fGGimjIp5iIsWIAIkJ35I5YGoLfKQoJrxQZRnTaj/YUANaLxOODm961BVRPP4fr6h7k3
+ CwtQLVbWYB0iEirh0GGxW+0thmIhG5wHoASQX/luG9Xj+JsIr/NssxM5XxQ0PrkJM11A
+ 2VJEKixVg6QFXFzsBqsqNM2funSFiKMT3NRmOmn5alXZcLarqoL7QOcIZgGjCIV5Qene
+ Z65cCkyLEtI5gkfeNntJ6lCMBvHJmtCe171UlD+regWNlwSnh0iE/oXwKOxH4IoM5hKm
+ 8wtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=hfG5pLLGBVmijGs7xD1CuYUYuRgtJdbg/w8jfytxMq8=;
- b=FE+hNV/OZ8RxANKDyK1j0t7XMWy42dPQcVL75fTn7+FhB5lMIflHAPvvspNvKPsgyA
- wpBomfE1p2KKa7X/SkYVBlI+CqTEkn1o452DnDCUoF8PCxJvhfssXk8ZQ/i/aHkdBloJ
- FnEo4f6UOIsYtHDc5VM3szwbq6cr7CHUAiPBhytVywnfveU2GcOlmzf72ws/9ukGiXKk
- juGudpLWJojP+RSWX+L4c+ssDWMzCJ+EgJO7MOAkKNt9RJFKF+qOF1N26dbotEf9kCid
- aaRJqDbjMZ8YUI0Hlct5K1LmlnWMWI34s7p0Sl+CXYyh628vN+dL7H7CfGbqi6cQz8Eb
- 4hCA==
-X-Gm-Message-State: AOAM533NOW1YllP6LhUA+2YOv/oQJrgS+UbGq+HpE4QF1S9156dn/T3y
- j7bhRrdV2w8Igt/gHQC8/xrHJJ7jo5dAe1Ed5o8=
-X-Google-Smtp-Source: ABdhPJw2gIhU+kR4Sx6iXg7nZweEAbd8+bVuItdW1omD41KUb06isEtVR9mByToT58siGUrRB/NUDTpHz2hl5JtZxys=
-X-Received: by 2002:a37:64d:: with SMTP id 74mr16642727qkg.407.1627921632473; 
- Mon, 02 Aug 2021 09:27:12 -0700 (PDT)
+ bh=IpKyihB3M+3oinMY5i464lWGHngiMrlvZE39L5yuKac=;
+ b=QgxEsJVIx5QK7/4kXNuyLnDpjhPwc/Z/hJCGcxykAR7JGgKll4HAoVjo08x7kdef1Y
+ aZZBJwLD+5XLAoWQN0R51mEkavCd/6zS9JdIdvO1n4vq7uhy9NO6t7ShfAUMEUxLDaZh
+ BvVlTYeBZLJEff0vEZbJ6ojUzZZnMq4bcnyuk0HWHqmb+RpeSxLeeP4vMlrEMnV28z69
+ c9s3xSeoUoMx6vYIyqUO9f20jZgyMnwrkuoU8/9QEkZpuFePUZZombSsab/jayiPteSa
+ gKe0M48SW+35+lKBEFwKabd0ebXLDDAY+wE+Hln1G+WUQ7RFhIgP1w4kNW2B7em2WZ7h
+ ynJQ==
+X-Gm-Message-State: AOAM532MlStRWTNH4EwHjcVbiJGgSmacnR41+0VR3qXN6GtAsV4rkq7G
+ J8pYcJUbeGzRgBbfoSu21P9nclE6RWxhqHW9ltM=
+X-Google-Smtp-Source: ABdhPJzjo/9qOXG0fdeyFyvhz+Aj/p8NcNMo/+WII7wlKLWCAd3lrkIimR0VXnppY4xXe7pst3ulKKdyrBotgKBzXac=
+X-Received: by 2002:a67:f58c:: with SMTP id i12mr1373736vso.7.1627929426283;
+ Mon, 02 Aug 2021 11:37:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210731214211.657280-1-jim.cromie@gmail.com>
- <20210731214211.657280-6-jim.cromie@gmail.com>
-In-Reply-To: <20210731214211.657280-6-jim.cromie@gmail.com>
-From: Emil Velikov <emil.l.velikov@gmail.com>
-Date: Mon, 2 Aug 2021 17:27:01 +0100
-Message-ID: <CACvgo53iF4Gk3XhQAtogf52CBFuB9tDxp+Mp8A1UwcvEOQto6Q@mail.gmail.com>
-Subject: Re: [PATCH v4 5/7] i915/gvt: control pr_debug("gvt:")s with bits in
- parameters/debug_gvt
-To: Jim Cromie <jim.cromie@gmail.com>
+ <20210731214211.657280-3-jim.cromie@gmail.com>
+ <CACvgo50DDp3p=-2mzY8jvzuLo_4_1L+b8=x6ZRERtcVJUHcomQ@mail.gmail.com>
+In-Reply-To: <CACvgo50DDp3p=-2mzY8jvzuLo_4_1L+b8=x6ZRERtcVJUHcomQ@mail.gmail.com>
+From: jim.cromie@gmail.com
+Date: Mon, 2 Aug 2021 12:36:39 -0600
+Message-ID: <CAJfuBxzsLToskA_dtdmsvQdSnEoDRgmrQycZ_nCKm4yQDqJ5Pg@mail.gmail.com>
+Subject: Re: [PATCH v4 2/7] moduleparam: add data member to struct kernel_param
+To: Emil Velikov <emil.l.velikov@gmail.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, 
  Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
@@ -62,12 +62,13 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, 
  Jason Baron <jbaron@akamai.com>, Ashley Thomas <Ashley.Thomas2@amd.com>, 
- Qingqing Zhuo <qingqing.zhuo@amd.com>,
- Aurabindo Pillai <aurabindo.pillai@amd.com>, 
+ Aurabindo Pillai <aurabindo.pillai@amd.com>,
+ Qingqing Zhuo <qingqing.zhuo@amd.com>, 
  Wyatt Wood <Wyatt.Wood@amd.com>, Jessica Yu <jeyu@kernel.org>,
  Johan Hovold <johan@kernel.org>, 
- Miguel Ojeda <ojeda@kernel.org>, Nick Desaulniers <ndesaulniers@gooogle.com>, 
- Joe Perches <joe@perches.com>, ML dri-devel <dri-devel@lists.freedesktop.org>, 
+ Joe Perches <joe@perches.com>, Miguel Ojeda <ojeda@kernel.org>, 
+ Nick Desaulniers <ndesaulniers@gooogle.com>,
+ ML dri-devel <dri-devel@lists.freedesktop.org>, 
  "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, 
  amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
  intel-gvt-dev@lists.freedesktop.org, 
@@ -88,23 +89,33 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Jim,
-
-On Sat, 31 Jul 2021 at 22:42, Jim Cromie <jim.cromie@gmail.com> wrote:
-
-> DYNDBG_BITMAP_DESC(__gvt_debug, "dyndbg bitmap desc",
->         { "gvt: cmd: ",  "command processing" },
->         { "gvt: core: ", "core help" },
->         { "gvt: dpy: ",  "display help" },
->         { "gvt: el: ",   "help" },
->         { "gvt: irq: ",  "help" },
->         { "gvt: mm: ",   "help" },
->         { "gvt: mmio: ", "help" },
->         { "gvt: render: ", "help" },
->         { "gvt: sched: " "help" });
+On Mon, Aug 2, 2021 at 10:18 AM Emil Velikov <emil.l.velikov@gmail.com> wrote:
 >
-Previous commit removed the space after the colon. The above example
-needs updating.
+> Hi Jim,
+>
+> On Sat, 31 Jul 2021 at 22:42, Jim Cromie <jim.cromie@gmail.com> wrote:
+>
+> > Use of this new data member will be rare, it might be worth redoing
+> > this as a separate/sub-type to keep the base case.
+> >
+> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> > ---
+> >  include/linux/moduleparam.h | 11 +++++++++--
+> >  1 file changed, 9 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/include/linux/moduleparam.h b/include/linux/moduleparam.h
+> > index eed280fae433..e9495b1e794d 100644
+> > --- a/include/linux/moduleparam.h
+> > +++ b/include/linux/moduleparam.h
+> > @@ -78,6 +78,7 @@ struct kernel_param {
+> >                 const struct kparam_string *str;
+> >                 const struct kparam_array *arr;
+> >         };
+> > +       void *data;
+>
+> Might as well make this "const void *" since it is a compile-time constant?
+>
 
-This concludes a casual read-through on my end. Hope it helps o/
--Emil
+yes indeed. revising.  thanks
+
+> -Emil
