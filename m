@@ -1,29 +1,79 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA6303DE082
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Aug 2021 22:14:55 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1AF83DDD68
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Aug 2021 18:18:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9EFE86E49A;
-	Mon,  2 Aug 2021 20:14:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 590D86E1D7;
+	Mon,  2 Aug 2021 16:18:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 15447 seconds by postgrey-1.36 at gabe;
- Mon, 02 Aug 2021 20:14:48 UTC
-Received: from rallyarmor.com (unknown [194.135.33.54])
- by gabe.freedesktop.org (Postfix) with ESMTP id 748236E49A
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Aug 2021 20:14:48 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: this drone can fly 28 mins in the air
-Message-ID: <03f561a04ce4c72fcfe165206d818a7c@macromatic.com>
-Date: Mon, 02 Aug 2021 17:05:07 +0200
-From: "Elliot Taylor" <elliotwx@rebeccadesnos.com>
+Received: from mail-qv1-xf34.google.com (mail-qv1-xf34.google.com
+ [IPv6:2607:f8b0:4864:20::f34])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7100B6E0CA;
+ Mon,  2 Aug 2021 16:18:53 +0000 (UTC)
+Received: by mail-qv1-xf34.google.com with SMTP id cg4so4094769qvb.5;
+ Mon, 02 Aug 2021 09:18:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZqSi2DWJQSHFbeSWRi1dH74yVKtdTqQrPRmLEYWYlbs=;
+ b=h/XQdhlILCw/+Q5AVlBwggYYgCsNnJTRn3Z6tqiQg/srd2PFd/5P0LfwY976zgfamt
+ Eld7Ds6h/30s7hTfGfyHfhPfU76xhHXb13bScDcPC+XiV1tBNZQaWaRdeX3qiYaWMxQ3
+ FmpoEwvQv4H3xkX/sbCP3CVkpVKZdsuP95PtxR4hCh3PuAYTg0bOi1oHP/T3s4qJ1iQh
+ y0Hb7Q3hrOymsnDY2hgUm2CmUEOPshqEl/unsvM2yQeaGaYGFn8uNnBe607LszrJoyK0
+ LKYHiKhZkHNYeuWo4OJR4+0R3gErVUk1M6pp2VyyE60cmsod8V/CYSdZC7/N8mZJDgjF
+ 9Nbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZqSi2DWJQSHFbeSWRi1dH74yVKtdTqQrPRmLEYWYlbs=;
+ b=lsyuxPUV2BC8KGX+pTWH1suWwSso7+7y1shjohyrA1DlWFYsmLPzLY1d3Pj8IRgq89
+ IN1j/wQ8gE6z/wGNch5fXhRU3XbGldjem3kyRmMcTU9SsL6EAvgWTi6710C1YfENBO7D
+ JuICFu7ycsgJQKDT040Jt8WyXP2iGuBP8QT8TimjcoZG1+FhZDxHCeSBpSLQAPXKw09F
+ WhhTiVRPC/werNU2yprTMjsfeEqdsGUPUYYTUC+Bsvc7Tv6rIF9GskmSSr0kH82i+x29
+ R/TmTnph1YMJ7egagg6VBXl08dk8D/Ei0sP2Bhd0Y9wo6qW4Hur+fcbI4yeK9Op1pSDZ
+ DQwA==
+X-Gm-Message-State: AOAM531yOc03NzvgsMZnFn/wZ79Ac+/lphW7+JLDqQx73F85KY3hHy7u
+ TRTrfmq9W33phO4HOgwg7lrHR98sQ+aL9HqT8dW3jkuF
+X-Google-Smtp-Source: ABdhPJwjeKX8dVL7c74Sv+rQlQ8wjBu7odGyPJrq3rHoCjO43yM5Gdqt+HyaXoJwAC2tNgSMrlEBo5d0qlYc/sl1Y10=
+X-Received: by 2002:a05:6214:1bcf:: with SMTP id
+ m15mr8334112qvc.62.1627921132550; 
+ Mon, 02 Aug 2021 09:18:52 -0700 (PDT)
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+References: <20210731214211.657280-1-jim.cromie@gmail.com>
+ <20210731214211.657280-3-jim.cromie@gmail.com>
+In-Reply-To: <20210731214211.657280-3-jim.cromie@gmail.com>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Date: Mon, 2 Aug 2021 17:18:41 +0100
+Message-ID: <CACvgo50DDp3p=-2mzY8jvzuLo_4_1L+b8=x6ZRERtcVJUHcomQ@mail.gmail.com>
+Subject: Re: [PATCH v4 2/7] moduleparam: add data member to struct kernel_param
+To: Jim Cromie <jim.cromie@gmail.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, 
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Alex Deucher <alexander.deucher@amd.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ "Pan, Xinhui" <Xinhui.Pan@amd.com>, Zhenyu Wang <zhenyuw@linux.intel.com>, 
+ Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Jason Baron <jbaron@akamai.com>, Ashley Thomas <Ashley.Thomas2@amd.com>, 
+ Aurabindo Pillai <aurabindo.pillai@amd.com>,
+ Qingqing Zhuo <qingqing.zhuo@amd.com>, 
+ Wyatt Wood <Wyatt.Wood@amd.com>, Jessica Yu <jeyu@kernel.org>,
+ Johan Hovold <johan@kernel.org>, 
+ Joe Perches <joe@perches.com>, Miguel Ojeda <ojeda@kernel.org>, 
+ Nick Desaulniers <ndesaulniers@gooogle.com>,
+ ML dri-devel <dri-devel@lists.freedesktop.org>, 
+ "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, 
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ intel-gvt-dev@lists.freedesktop.org, 
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -36,63 +86,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: elliot@lexdrone.shop
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hi,<br /> <br /> How is everything going for you?<br /> Have you read the
-information on the drone that was previously provided to you?<br /> I'll
-send you the product's specifics again via email.<br /> <br /> Batteries
-last for 28 minutes on the drone's battery. From the electric fence, there
-is a safe distance of 1000m.<br /> GPS position is outside the optical flow
-fixed point.<br /> Return home on low power using the power off/off
-signal.<br /> VR mode, multi-lens switching, and panoramic photo/video
-capture are available in addition to follow and surround modes, as well as
-multi-point cruises.<br /> MV (multi-view) mode, one-button return to the
-home screen, headless mode, definition switching, gesture photo/video, and
-front lens up/down adjustment are just a few of the features available.<br
-/> In order to determine altitude, GPS and air pressure are used.<br />
-Rating for wind resistance: 8. (high wind resistance)<br />
-Low-interference 5G transmission signal for pictures<br /> About 5.8 cm is
-the diameter of the fan blades (in centimeters).<br /> A 7.4V 3000mAh
-lithium-ion battery is included with the board's design.<br /> This device
-comes with a remote control for charging the battery. Batteries must have
-sufficient capacity (with charging)<br /> 5G 4K WIFI configuration with
-optical flow<br /> 180 minutes for a full charge<br /> The charging
-endurance of a remote control (no battery required)<br /> Size of the drone
-(in inches) Folded: 14x19x5cm, unfolded: 26x30x5cm (inches).<br /> <br />
-For a single drone, price is 288.70<br /> 278.70 each for two drones.<br />
-268.70 each for three or more drones.<br /> Shipping is included.<br /> <br
-/> Would you like to take a drone today?<br /> In order to arrange
-shipment, please provide us with address for shipping.<br /><br />
-<p><img
-src="https://drscdn.500px.org/photo/1035308579/m%3D900/v2?sig=8148742d6e4dae4a9b97e27ace2a914a32fc386a4361eafba39cea39b91d461d"
-alt="" width="450" height="450" /><img
-src="https://thumbs2.imgbox.com/99/7f/6rKaseaA_t.jpg" alt="" width="450"
-height="450" /></p>
-<p><img
-src="https://drscdn.500px.org/photo/1035308678/m%3D900/v2?sig=0a9035a18baee88b05bb5c7e78c96b4f30b12cdd92927de5f1203c47ab25d5d4"
-alt="" width="450" height="450" /><img
-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e142b76-5f4e-49ac-8be0-cd1694331ef6/deoextr-61efa6a1-a8f9-40d0-beef-1fd52f7ca271.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBlMTQyYjc2LTVmNGUtNDlhYy04YmUwLWNkMTY5NDMzMWVmNlwvZGVvZXh0ci02MWVmYTZhMS1hOGY5LTQwZDAtYmVlZi0xZmQ1MmY3Y2EyNzEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.PzNz8F1p9RnaTfTOL1W45xLlaVgyzjLz66q0S_Du7Mc"
-alt="" width="450" height="450" /></p>
-<p><img src="https://thumbs2.imgbox.com/e7/fc/C8bL3olG_t.jpg" alt=""
-width="450" height="450" /><img
-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e142b76-5f4e-49ac-8be0-cd1694331ef6/deoexyh-3ad756bf-7a89-4565-972a-5fba251c2015.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBlMTQyYjc2LTVmNGUtNDlhYy04YmUwLWNkMTY5NDMzMWVmNlwvZGVvZXh5aC0zYWQ3NTZiZi03YTg5LTQ1NjUtOTcyYS01ZmJhMjUxYzIwMTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.IsMpjHOooCmIbEfp2hNRQ3G5K36NAC90O6-oZEvFBi8"
-alt="" width="450" height="450" /></p>
-<p><br />The GPS brushless drone has a battery life of 28 minutes. Electric
-fence safety distance of 1000 meters. -<br /> GPS positioning outside,
-fixed point inside optical flow.<br /> With low power at home, there is a
-power off/off signal.<br /> Virtual reality mode, multiple lenses,
-video/picture panorama, and lens zoom are just a few of the features
-available.<br /> Photos and videos can be taken with the photo/video
-gesture. The front lens can be adjusted up or down using the single key to
-return to home.<br /> <br /> Thanks,<br /> Elliot Taylor<br /> <br /> <br
-/> <br /><br /> Reply with your full email i d for taking off.<br /><br
-/><br /></p>
-</body>
-</html>
+Hi Jim,
 
+On Sat, 31 Jul 2021 at 22:42, Jim Cromie <jim.cromie@gmail.com> wrote:
+
+> Use of this new data member will be rare, it might be worth redoing
+> this as a separate/sub-type to keep the base case.
+>
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+>  include/linux/moduleparam.h | 11 +++++++++--
+>  1 file changed, 9 insertions(+), 2 deletions(-)
+>
+> diff --git a/include/linux/moduleparam.h b/include/linux/moduleparam.h
+> index eed280fae433..e9495b1e794d 100644
+> --- a/include/linux/moduleparam.h
+> +++ b/include/linux/moduleparam.h
+> @@ -78,6 +78,7 @@ struct kernel_param {
+>                 const struct kparam_string *str;
+>                 const struct kparam_array *arr;
+>         };
+> +       void *data;
+
+Might as well make this "const void *" since it is a compile-time constant?
+
+-Emil
