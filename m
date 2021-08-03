@@ -1,25 +1,24 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 102ED3DF6AD
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Aug 2021 22:59:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 994733DF4E5
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Aug 2021 20:41:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B9C8689F8E;
-	Tue,  3 Aug 2021 20:59:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5B5066E8AD;
+	Tue,  3 Aug 2021 18:41:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3660 seconds by postgrey-1.36 at gabe;
- Tue, 03 Aug 2021 20:58:38 UTC
-Received: from rolldabeats.com (unknown [179.43.150.104])
- by gabe.freedesktop.org (Postfix) with ESMTP id 305F789F6D
+Received: from ranchcity.com (unknown [188.214.104.60])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2391A6E8AD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Aug 2021 20:58:38 +0000 (UTC)
+ Tue,  3 Aug 2021 18:41:37 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: what color do you choose for this chair?
-Message-ID: <89da2b31290538f982c025c6cfd13124@terminalsupplyco.com>
-Date: Tue, 03 Aug 2021 16:44:30 +0200
-From: "George Kaur" <georgets@rbinnovations.com>
+Subject: Re: have you received the foosball table information we sent
+ previously?
+Message-ID: <053dfbf4e9f1d727190ced4ce24ddca4@standexelectronics.com>
+Date: Tue, 03 Aug 2021 16:57:06 +0200
+From: "Julien Sanford" <julienob@reelpowerhandles.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 Content-Type: text/html; charset="UTF-8"
@@ -36,7 +35,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: george@bexchair.shop
+Reply-To: julien@uretable.shop
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
@@ -44,55 +43,43 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 <head>
 </head>
 <body>
-<p>Hi,<br /> <br /> Hope you are doing well.<br /> Our company recently
-launched the below office chair with mutiple colors to choose from.<br />
-Black, white, blue, grey, green, red, pink, purple, and cyan are among the
-chair colors available.<br /> You can check it through the following
-product information.<br /> <br /> Foam with a high density, which is more
-comfortable, elastic, resilient, and long-lasting. 1.8% thicker, more
-stable and robust steel frame. <br />Skin and wear are not affected by its
-smooth, non-abrasive surface.<br /> Lifts up to 300 lbs. with this device.
-The gas lift configuration for class 3 has been improved.<br /> <br />
-Tests were conducted on a rubber roller that rolls quietly for 1,000
-kilometers.<br /> Rotating rollers that can move in multiple directions and
-rotate 360 degrees, max.<br /> Its weight limit is 300 pounds. Users can
-recline their chairs using this feature. From 90 to 180 degrees, the user
-can recline the chair. <br />Changing the knob under the seat causes the
-chair to bounce.<br /> <br /> 22.5 cm on the front and 30.5 cm on the rear
-are the dimensions. It is possible to choose between 14" and 20" wide
-seats.<br /> It is possible to adjust the seat's height from 17.3 inches up
-to 21.5 inches.<br /> It's perfect for playing computer games, watching TV,
-working, and relaxing, among other activities.<br /> As a result, your
-living room or bedroom will be revitalized.<br /> <br /> The cost of each
-chair is 195.90 each.<br /> A pair of chairs costs 185.90 each.<br /> Three
-or more chairs cost 175.90 each.<br /> <br /> Do you consider to receive
-one or two of our chairs for yourself? We need your location for
-shipping.<br /><br /><br /><br /><img
-src="https://drscdn.500px.org/photo/1035354058/m%3D900/v2?sig=684025cae7747482a97a2784d682ed9fb76af301742c2b2115f53b60bb1dfe74"
-alt="" width="450" height="735" /><img
-src="https://thumbs2.imgbox.com/a3/63/5Ov6y8iC_t.jpg" alt="" width="450"
-height="750" /></p>
+<p>Hi,<br /> <br /> How are you doing?<br /> Have you received the foosball
+table information we sent previously? This product are available here.<br
+/> I'm going to send you again the product info here.<br /> <br /> A single
+table can accommodate up to 22 players, two scouts, a green playground, and
+two manual scorers.<br /> Handles the ball with ease thanks to the rod
+bars' suppleness. (2 balls included) (There are two balls included.)<br />
+High-quality MDF fiberboard makes up our football table.<br /> <br /> By
+following the instructions and using the clearly numbered components, the
+Game Tables can be put together quickly.<br /> Thanks to its natural
+wood-like appearance, this table fits into any playroom or extra space in
+your home.<br /> You have a viable option.<br /> Size 121.92 cm x 77.5 cm x
+60 cm Material MDF (Carb P2), Iron, Wood Color, Plastic Color Frame, Wood
+Color Leg (L x W x H)<br /> The weight of the set is 21.5 kilograms (47.40
+pounds).<br /> <br /> 195.20 for one foosball table.<br /> 185.20 each for
+two foosball tables<br /> Three or more foosball tables are priced at
+175.20 each.<br /> <br /> Do you like to receive one or two of our
+tables?<br /> Just send us your location, and we will arrange shipment on
+your behalf.<br /><br /><br /><img
+src="https://drscdn.500px.org/photo/1035354466/m%3D900/v2?sig=b80b2800b26462a83b580f8b22af1f34ba36dfe6d56f7c786aca236c4d81a1df"
+alt="" width="450" height="393" /><img
+src="https://thumbs2.imgbox.com/90/41/uLdZFQA4_t.jpg" alt="" width="450"
+height="436" /></p>
 <p><img
-src="https://drscdn.500px.org/photo/1035354327/m%3D900/v2?sig=ec47b9edbcaaafa01421436848b44acedec823d8fb6a1c70ff84dfe08d63ad90"
-alt="" width="450" height="757" /><img
-src="https://thumbs2.imgbox.com/3e/55/cysDAz8S_t.jpg" alt="" width="450"
-height="756" /></p>
-<p><img
-src="https://drscdn.500px.org/photo/1035354403/m%3D900/v2?sig=a0f8fb39d8910391f5ffc3df2ec7996a2ca7174335de99b8e123bdd1440f312e"
-alt="" width="450" height="757" /><img
-src="https://thumbs2.imgbox.com/bd/16/e86kjk7V_t.jpg" alt="" width="450"
-height="756" /><br /><br /><br />From the head and neck, shoulders are
-supported. You will find a natural body form in our seats.<br /> With its
-pu leather furniture, this home provides maximum comfort.<br />
-Specification:<br /> It is possible to adjust the locking mechanism's angle
-between 90 and 180 degrees. Height can be adjusted for the spring
-cylinder<br /> This is a five-star foundation when it comes to toughness
-and durability.<br /> In the design process, orthopaedic and ergonomic
-considerations are given top priority.<br /> A premium leather, pu leather
-is made from pigskin.<br /> Chair's headrest and lumbar coils are covered
-by its price.<br /> Weight capacity is 300 pounds.<br /> Size of the
-backrest: 22.5 x 30 inches<br /> <br /> Thanks,<br /> George Kaur<br /><br
-/></p>
+src="https://drscdn.500px.org/photo/1035354490/m%3D900/v2?sig=1fc66e9e2bf5165b4704f6208c611a1889dd8e2e61de3fde8360596adc6c043d"
+alt="" width="450" height="377" /><img
+src="https://thumbs2.imgbox.com/4c/cf/mxFfZckV_t.jpg" alt="" width="450"
+height="450" /><br /><br /><br />It includes a playable table with 22
+players and two manual scorers, as well as the restoration of real soccer
+fields.<br /> Design-friendly: &bull; 2 cup holders that will allow
+participants to stay hydrated during the race; Soft grips are used on rod
+bars to prevent slipping and <br />improve ball control (2 balls included)
+A pair of balls is included in the package.<br /> It's made of MDF
+fiberboard, which is a sturdy, high-quality material.<br /> <br /> It has
+four sturdy legs that provide a stable and adjustable slip basis for each
+of its legs.<br /> With a few simple steps and clearly numbered components,
+you can create your own custom-designed game table!<br /> <br /> Thanks,<br
+/> Julien Sanford<br /><br /></p>
 </body>
 </html>
 
