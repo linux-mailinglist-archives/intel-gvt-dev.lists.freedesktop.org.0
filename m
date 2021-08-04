@@ -1,97 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2A633DF344
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Aug 2021 18:52:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 829AF3DFB43
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Aug 2021 07:50:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C44C96E8A2;
-	Tue,  3 Aug 2021 16:52:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2E3026E9C9;
+	Wed,  4 Aug 2021 05:50:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 51E176E85B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Aug 2021 16:52:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628009550;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sKtEVRvHNGT42iZNHToUtsFsYwSj6OAOl6LkhSWUXzQ=;
- b=HLV1Uxh/gQiv/X+OpQ5B69XeaYIxGDambTtmAWr5ZJH2dj7N4Z4L/z7Yj1gnzZXn3i9R2B
- lG9R4VggXRkMLPa9N8Q+o0v1TrFDrBkrrRBzYDyC9aUjDb8L1xpFEdVO8QbrLGotDuWGEm
- O4cGC8S+awZQszOe82cNu04N+KI6Jbw=
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-529-zozNOpG3MaKCGuJcZhHEGA-1; Tue, 03 Aug 2021 12:52:29 -0400
-X-MC-Unique: zozNOpG3MaKCGuJcZhHEGA-1
-Received: by mail-oi1-f200.google.com with SMTP id
- n2-20020aca40020000b029025c9037b7faso8876918oia.14
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 03 Aug 2021 09:52:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=sKtEVRvHNGT42iZNHToUtsFsYwSj6OAOl6LkhSWUXzQ=;
- b=G/OgjRoc04wnPTj+akAejO7nV3fotx3rURIfth4GS5R69Y/lblSB5GmS79QlLDYUi0
- Wy7teSL1HkprMoEdeGb3wFN+Ny8BuMUFjzbyrgPAB7dsSESpQJAv7kwffdS+ERMNiqk9
- pDDZzRUrRPHyYmdLlk1Z6Ce5ml94gN0SLoMCROpjrKM3A216TJUMaJ3vaP18LGDmCJyu
- 9zmKbxxU8er1KYFBO+1KDY+yV4pQ+K6+WVW8Zis04FMxlHuVXw62qEP0Y/kKsrZ2c9y/
- 5T2L8Rttlh7ggNJP0wGD8tRenkVZqi15VgvT6XqiMk8QX+jsUgJX2xO+jAMbmeQTLY4x
- 2/4w==
-X-Gm-Message-State: AOAM533wcAR4rCaUV/UJbOd5fcksXQmAcTPyZlP85ULBQmMPvybMxFda
- ZgURiRmCAoJZ/vteB+/rPInXWJyVN18CcBLC5dclDf1HNezAhuiGm1uO+LWGiAwv1p+8PHUCFTz
- kL8rjblR5mujUYYdhzvXtGGvPdw/rM3OpIQ==
-X-Received: by 2002:a9d:62d4:: with SMTP id z20mr16205606otk.305.1628009548259; 
- Tue, 03 Aug 2021 09:52:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwvKOEKD8L0w37wO357XcF+/U3bT3CXb+wzZAe9sXlApc1eVkv2cU2JtkoR7Kvj984JI4QXhg==
-X-Received: by 2002:a9d:62d4:: with SMTP id z20mr16205581otk.305.1628009548040; 
- Tue, 03 Aug 2021 09:52:28 -0700 (PDT)
-Received: from redhat.com ([198.99.80.109])
- by smtp.gmail.com with ESMTPSA id bd20sm2365330oib.1.2021.08.03.09.52.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Aug 2021 09:52:27 -0700 (PDT)
-Date: Tue, 3 Aug 2021 10:52:25 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0A75D6E9C2;
+ Wed,  4 Aug 2021 05:48:19 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10065"; a="201040672"
+X-IronPort-AV: E=Sophos;i="5.84,293,1620716400"; 
+ d="asc'?scan'208";a="201040672"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Aug 2021 22:48:18 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,293,1620716400"; 
+ d="asc'?scan'208";a="479969434"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by fmsmga008.fm.intel.com with ESMTP; 03 Aug 2021 22:48:14 -0700
+Date: Wed, 4 Aug 2021 13:26:06 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Cornelia Huck
- <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>, Daniel Vetter
- <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
- dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, Eric
- Farman <farman@linux.ibm.com>, Harald Freudenberger <freude@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, Jani
- Nikula <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
- linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>, Peter
- Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Vineeth Vijayan
- <vneethv@linux.ibm.com>, Zhi Wang <zhi.a.wang@intel.com>, "Raj, Ashok"
- <ashok.raj@intel.com>, Christoph Hellwig <hch@lst.de>, Leon Romanovsky
- <leonro@nvidia.com>, Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas
- <yishaih@nvidia.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH v3 09/14] vfio/pci: Change vfio_pci_try_bus_reset() to
- use the dev_set
-Message-ID: <20210803105225.2ee7dac2.alex.williamson@redhat.com>
-In-Reply-To: <20210803164152.GC1721383@nvidia.com>
-References: <0-v3-6c9e19cc7d44+15613-vfio_reflck_jgg@nvidia.com>
- <9-v3-6c9e19cc7d44+15613-vfio_reflck_jgg@nvidia.com>
- <20210803103406.5e1be269.alex.williamson@redhat.com>
- <20210803164152.GC1721383@nvidia.com>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
+Cc: Christoph Hellwig <hch@lst.de>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Greg KH <gregkh@linuxfoundation.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
+Subject: Re: refactor the i915 GVT support
+Message-ID: <20210804052606.GG13928@zhen-hp.sh.intel.com>
+References: <20210721155355.173183-1-hch@lst.de>
+ <DM4PR11MB55496531B246A4604FC86998CAE49@DM4PR11MB5549.namprd11.prod.outlook.com>
+ <20210722112636.wj277vqhg4dez5ug@sirius.home.kraxel.org>
+ <20210727121224.GA2145868@nvidia.com>
+ <DM4PR11MB5549EC882AA6076F3468274DCAEA9@DM4PR11MB5549.namprd11.prod.outlook.com>
+ <20210728175925.GU1721383@nvidia.com>
+ <20210729072022.GB31896@lst.de>
+ <20210803094315.GF13928@zhen-hp.sh.intel.com>
+ <20210803143058.GA1721383@nvidia.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="1SVgZ+3xbDF9VW5n"
+Content-Disposition: inline
+In-Reply-To: <20210803143058.GA1721383@nvidia.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,29 +65,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 3 Aug 2021 13:41:52 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
-> On Tue, Aug 03, 2021 at 10:34:06AM -0600, Alex Williamson wrote:
-> > I think the vfio_pci_find_reset_target() function needs to be re-worked
-> > to just tell us true/false that it's ok to reset the provided device,
-> > not to anoint an arbitrary target device.  Thanks,  
-> 
-> Yes, though this logic is confusing, why do we need to check if any
-> device needs a reset at this point? If we are being asked to reset
-> vdev shouldn't vdev needs_reset?
-> 
-> Or is the function more of a 'synchronize pending reset' kind of
-> thing?
 
-Yes, the latter.  For instance think about a multi-function PCI device
-such as a GPU.  The functions have dramatically different capabilities,
-some might have function level reset abilities and others not.  We want
-to be able to trigger a bus reset as the last device of the set is
-released, no matter the order they're released and no matter the
-capabilities of the device we're currently processing.  Thanks,
+--1SVgZ+3xbDF9VW5n
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Alex
+On 2021.08.03 11:30:58 -0300, Jason Gunthorpe wrote:
+> On Tue, Aug 03, 2021 at 05:43:15PM +0800, Zhenyu Wang wrote:
+> > Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> >=20
+> > Thanks a lot for this effort!
+>=20
+> Great, do we have a submission plan for this? how much does it clash
+> with my open_device/etc patch? ie does the whole thing have to go
+> through the vfio tree?
+>=20
 
+I think Alex would determine when to merge open_device series, gvt part
+can be through vfio tree without problem. For this refactor, I would first
+merge for gvt staging to do more regression testing before sending through
+i915 tree.
+
+Thanks
+
+--1SVgZ+3xbDF9VW5n
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYQok3wAKCRCxBBozTXgY
+J5caAJ40TmBXSY9oMyHAvup4EhMUzcv+fACgkIVPVmaSfgOPAjUn4UZv/iNQst0=
+=tcld
+-----END PGP SIGNATURE-----
+
+--1SVgZ+3xbDF9VW5n--
