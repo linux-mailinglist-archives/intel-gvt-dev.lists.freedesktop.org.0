@@ -1,42 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D8C13E0A20
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Aug 2021 23:47:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id CBEDE3E0AE9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Aug 2021 01:35:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BB1266E11A;
-	Wed,  4 Aug 2021 21:47:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 656136E214;
+	Wed,  4 Aug 2021 23:35:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mail.maynitek.ru (mail.maynitek.ru [94.137.227.4])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CC66E6E11A;
- Wed,  4 Aug 2021 21:47:37 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8159F6E435;
+ Wed,  4 Aug 2021 23:35:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id 523D630271BD;
- Wed,  4 Aug 2021 22:23:43 +0500 (+05)
+ by mail.maynitek.ru (Postfix) with ESMTP id CB6B6307EC77;
+ Wed,  4 Aug 2021 23:55:01 +0500 (+05)
 Received: from mail.maynitek.ru ([127.0.0.1])
  by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id NBKcGshbMrcK; Wed,  4 Aug 2021 22:23:42 +0500 (+05)
+ with ESMTP id iTDWjwa_IUnC; Wed,  4 Aug 2021 23:55:01 +0500 (+05)
 Received: from localhost (localhost [127.0.0.1])
- by mail.maynitek.ru (Postfix) with ESMTP id 58B473021930;
- Wed,  4 Aug 2021 22:23:39 +0500 (+05)
+ by mail.maynitek.ru (Postfix) with ESMTP id 7D7FD132DCEF6;
+ Wed,  4 Aug 2021 23:54:38 +0500 (+05)
 X-Virus-Scanned: amavisd-new at maynitek.ru
 Received: from mail.maynitek.ru ([127.0.0.1])
  by localhost (mail.maynitek.ru [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id tbBHW1yvf96M; Wed,  4 Aug 2021 22:23:39 +0500 (+05)
+ with ESMTP id zSeeVFomkOmm; Wed,  4 Aug 2021 23:54:38 +0500 (+05)
 Received: from [192.168.1.3] (unknown [178.151.250.143])
- by mail.maynitek.ru (Postfix) with ESMTPSA id 309301387A4D6;
- Wed,  4 Aug 2021 22:23:31 +0500 (+05)
+ by mail.maynitek.ru (Postfix) with ESMTPSA id 564A31400DA08;
+ Wed,  4 Aug 2021 23:53:57 +0500 (+05)
 Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Description: Mail message body
-Subject: Lesen Sie Ihre E-Mail.
-To: Recipients <deployer@maynitek.ru>
-From: deployer@maynitek.ru
-Date: Wed, 04 Aug 2021 20:23:13 +0300
-Message-Id: <20210804172331.309301387A4D6@mail.maynitek.ru>
+Subject: Lesen Sie Ihre EMail..
+To: Recipients <vao@maynitek.ru>
+From: vao@maynitek.ru
+Date: Wed, 04 Aug 2021 21:53:39 +0300
+Message-Id: <20210804185357.564A31400DA08@mail.maynitek.ru>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
