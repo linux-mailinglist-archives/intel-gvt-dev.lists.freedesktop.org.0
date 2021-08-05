@@ -1,27 +1,100 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 243F13E1DD0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Aug 2021 23:24:25 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 475DC3E1A6F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Aug 2021 19:33:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7BA466EB5D;
-	Thu,  5 Aug 2021 21:24:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CA95F6EB21;
+	Thu,  5 Aug 2021 17:33:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from readyresearch.com (unknown [188.72.187.170])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8844C6EB5D
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CAF486EB1D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  5 Aug 2021 21:24:21 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: football table includes 22 players
-Message-ID: <5a28ef254a4c9d2d5683c6a6d0405f73@arteche.com>
-Date: Thu, 05 Aug 2021 16:45:03 +0200
-From: "Edgar Avila" <edgarzj@rolls.com>
+ Thu,  5 Aug 2021 17:33:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1628184798;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fDWzWOKY9gRGQIrv08IMtQtjh7HeqqaHb9oXpUOEXe8=;
+ b=eC3FS9Aw7QQBMNMjzjJEZ8LsCwvKj5t6UR14iFeTUMhTJyUAPlTBQRDE7hJphgDA6WGUjO
+ MTzqJpgHefL8fVjeab+XapV7jTJKskROSKfXSJGT7S3j8PfZ1bUTlpbEfV4NLHkgTieviP
+ oVjxgWu6eAElLnMjl964QKT4qvxVRW0=
+Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
+ [209.85.167.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-458-6Et9MS-dOpO76Ih3KTdCrw-1; Thu, 05 Aug 2021 13:33:15 -0400
+X-MC-Unique: 6Et9MS-dOpO76Ih3KTdCrw-1
+Received: by mail-oi1-f198.google.com with SMTP id
+ n2-20020aca40020000b029025c9037b7faso3050778oia.14
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 05 Aug 2021 10:33:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=fDWzWOKY9gRGQIrv08IMtQtjh7HeqqaHb9oXpUOEXe8=;
+ b=nDPC8cGPN4ITSaxToLNPFm/grszJ4SnMmRQhjZdgtvxXHARHCWwrszpbKzuza8E+SN
+ RF4upOpzhvGYFQXQ7uZLGixwmte5cT6RT4viORKKkaRyRd/Lx4EoG/jMq2g75LR43yYb
+ VkttWfQEvzb7e4H55YgqrQo9pJ5ljghdYyLqZEW1c5+D35xREzTVjlEcMJaA3TexKDnB
+ SyDFTtEO6kiw2VV2x8WBdjQUOZT7CnO5yt86i8Iv3hql+W5sTr+JxYiyi1rZO4MOGorF
+ jsceVBIah+RpU8NTMB2u5Gpni+Y8CbVZ1MNkxANV594voDayG+TXHFAeDNjwOemtkdI9
+ M3EQ==
+X-Gm-Message-State: AOAM530skfRLGAZez3hGGYRMlrhF8HCtf7Kab8HkudqFbmx3lyY1YPb3
+ uJ4wINFARJHnBWxWAcnetqeoIMyZ3Fx1HLsE0zMppk2oO5bV2xi+PmlcgatypS43wD1oBJkPLrI
+ AObSZ6yleK4rsBWAvpMftx5pbqSqO70BGNQ==
+X-Received: by 2002:a9d:4e16:: with SMTP id p22mr4456204otf.173.1628184794741; 
+ Thu, 05 Aug 2021 10:33:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzgne5vH4F/tdkjcY9nwVFcfF47fNX2nFmDPhfapXicykX6MF2W8wxSNajz6keH3dZKwbyTaw==
+X-Received: by 2002:a9d:4e16:: with SMTP id p22mr4456177otf.173.1628184794507; 
+ Thu, 05 Aug 2021 10:33:14 -0700 (PDT)
+Received: from redhat.com ([198.99.80.109])
+ by smtp.gmail.com with ESMTPSA id 50sm1021773oti.31.2021.08.05.10.33.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Aug 2021 10:33:14 -0700 (PDT)
+Date: Thu, 5 Aug 2021 11:33:11 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Cornelia Huck
+ <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>, Daniel Vetter
+ <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
+ dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, Eric
+ Farman <farman@linux.ibm.com>, Harald Freudenberger <freude@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, Jani
+ Nikula <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>, Peter
+ Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Vineeth Vijayan
+ <vneethv@linux.ibm.com>, Zhi Wang <zhi.a.wang@intel.com>, "Raj, Ashok"
+ <ashok.raj@intel.com>, Christoph Hellwig <hch@lst.de>, Leon Romanovsky
+ <leonro@nvidia.com>, Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas
+ <yishaih@nvidia.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [PATCH v3 09/14] vfio/pci: Change vfio_pci_try_bus_reset() to
+ use the dev_set
+Message-ID: <20210805113311.65a16bba.alex.williamson@redhat.com>
+In-Reply-To: <20210805114701.GC1672295@nvidia.com>
+References: <0-v3-6c9e19cc7d44+15613-vfio_reflck_jgg@nvidia.com>
+ <9-v3-6c9e19cc7d44+15613-vfio_reflck_jgg@nvidia.com>
+ <20210803103406.5e1be269.alex.williamson@redhat.com>
+ <20210803164152.GC1721383@nvidia.com>
+ <20210803105225.2ee7dac2.alex.williamson@redhat.com>
+ <20210805114701.GC1672295@nvidia.com>
+Organization: Red Hat
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,62 +107,262 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: edgar@btxtable.shop
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hi,<br /> <br /> How are you doing?<br /> Have you read the information on
-the workplace foosball table that we previously supplied to you? <br />
-This product is now available from our warehouse.<br /> I'm going to
-present you with the product information once again right now.<br /> <br />
-This table includes 22 players, a green playground, two manual scorers, and
-a football field that has been restored to its former glory.<br /> Keeping
-hydrated when the competition heats up is made easy thanks to two cup
-holders. <br />Rod bars provide comfortable grips that help to avoid hand
-slippage and improve ball control (2 balls included) A total of two balls
-are included in the set.<br /> MDF Fiberboard is a product that is
-favorable to the environment. When it comes to the building of our football
-table, <br />we employ high-quality MDF fiberboard.<br /> Stability is
-provided by four robust legs with non-slip footings.<br /> <br /> In fact,
-a single table can give hours of game enjoyment for one or two people.<br
-/> If you have a playroom or an extra room in your home, this table will be
-a perfect addition. <br />It is really light and easy to move around in.
-This is an excellent option for you.<br /> <br /> MDF (Carb P2) and plastic
-are used to construct it.<br /> The size of the product is determined by
-the product (48 x 24 x 30)<br /> "This piece has the following dimensions:
-121.92 x 61 x 77.5 cm (L x W x H) and weighs 21.5kg / 47.40lbs (325.16 x
-35.6)."<br /> The artwork has the following measurements: 128x66x14mm (L x
-W x H)<br /> One set is contained within each carton.<br /> <br /> Prices:
-<br /> For one foosball table is 195.85 per table.<br /> For two or three
-football tables is 185.85 each<br /> <br /> If you'd like to pick up one or
-two today, please let us know your exact location so we can prepare
-accordingly. <br /> We will make every effort to have your tables shipped
-as quickly as possible.<br /><br /><br />
-<p><img src="https://i.postimg.cc/L40RzZkB/71-Wl-OLpww-RL-AC-SL1500.jpg"
-alt="" width="455" height="397" /><img
-src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/s600x600/233740856_119694827058662_3983398240237199014_n.jpg?_nc_cat=101&amp;ccb=1-3&amp;_nc_sid=730e14&amp;_nc_ohc=tnOt7_PSnXYAX9aaX0R&amp;_nc_ht=scontent-dfw5-1.xx&amp;oh=089164449f2266cd277ed3b53d34ef5c&amp;oe=610FBBF1"
-alt="" width="455" height="440" /></p>
-<p><img src="https://i.postimg.cc/Dwk9gQSs/716pa01-Gci-L-AC-SL1500.jpg"
-alt="" width="455" height="381" /><img
-src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/s600x600/233545274_119694857058659_439351054354747842_n.jpg?_nc_cat=101&amp;ccb=1-3&amp;_nc_sid=730e14&amp;_nc_ohc=MJMUUN4U1sUAX-Fmp4B&amp;_nc_ht=scontent-dfw5-1.xx&amp;oh=8fb482a0d26af661cdef9274d2af3124&amp;oe=610FF46A"
-alt="" width="455" height="464" /></p>
-<p><img src="https://i.postimg.cc/gJT5639x/71-mmebvb8-L-AC-SL1500.jpg"
-alt="" width="455" height="455" /><img
-src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/p600x600/234091037_119694887058656_7097099529715584513_n.jpg?_nc_cat=110&amp;ccb=1-3&amp;_nc_sid=730e14&amp;_nc_ohc=QxBh_f2D13gAX9pNMjo&amp;_nc_ht=scontent-dfw5-1.xx&amp;oh=81d3c4a98cae0d3fa8d94d19ea55837c&amp;oe=610F4DB6"
-alt="" width="455" height="455" /><br /><br /><br />There are 22 players at
-this table, as well as a green playing area and two goalkeepers who use
-manual controls.<br /> Design that is compatible with a wide variety of
-devices. Additionally, soft grips are included on the rod bars to aid with
-ball control and<br /> to prevent the rod bars from slipping out of the
-hands during play (2 balls included) Two balls are included in the
-price.<br /> MDF Fiberboard that is environmentally friendly: Our football
-table is constructed of high-quality, durable MDF fiberboard.<br /> Each
-leg, which is supported by four sturdy legs, is stabilized by an adjustable
-non-slip foundation.<br /> <br /> Thanks,<br /> Edgar Avila</p>
-</body>
-</html>
+On Thu, 5 Aug 2021 08:47:01 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+
+> On Tue, Aug 03, 2021 at 10:52:25AM -0600, Alex Williamson wrote:
+> > On Tue, 3 Aug 2021 13:41:52 -0300
+> > Jason Gunthorpe <jgg@nvidia.com> wrote:  
+> > > On Tue, Aug 03, 2021 at 10:34:06AM -0600, Alex Williamson wrote:  
+> > > > I think the vfio_pci_find_reset_target() function needs to be re-worked
+> > > > to just tell us true/false that it's ok to reset the provided device,
+> > > > not to anoint an arbitrary target device.  Thanks,    
+> > > 
+> > > Yes, though this logic is confusing, why do we need to check if any
+> > > device needs a reset at this point? If we are being asked to reset
+> > > vdev shouldn't vdev needs_reset?
+> > > 
+> > > Or is the function more of a 'synchronize pending reset' kind of
+> > > thing?  
+> > 
+> > Yes, the latter.  For instance think about a multi-function PCI device
+> > such as a GPU.  The functions have dramatically different capabilities,
+> > some might have function level reset abilities and others not.  We want
+> > to be able to trigger a bus reset as the last device of the set is
+> > released, no matter the order they're released and no matter the
+> > capabilities of the device we're currently processing.  Thanks,  
+> 
+> I worked on this for awhile, I think this is much clearer about what
+> this algorithm is trying to do:
+> 
+> diff --git a/drivers/vfio/pci/vfio_pci.c b/drivers/vfio/pci/vfio_pci.c
+> index 5d6db93d6c680f..e418bcbb68facc 100644
+> --- a/drivers/vfio/pci/vfio_pci.c
+> +++ b/drivers/vfio/pci/vfio_pci.c
+> @@ -223,7 +223,7 @@ static void vfio_pci_probe_mmaps(struct vfio_pci_device *vdev)
+>  	}
+>  }
+>  
+> -static void vfio_pci_try_bus_reset(struct vfio_pci_device *vdev);
+> +static bool vfio_pci_dev_set_try_reset(struct vfio_device_set *dev_set);
+>  static void vfio_pci_disable(struct vfio_pci_device *vdev);
+>  static int vfio_pci_try_zap_and_vma_lock_cb(struct pci_dev *pdev, void *data);
+>  
+> @@ -404,6 +404,9 @@ static void vfio_pci_disable(struct vfio_pci_device *vdev)
+>  	struct vfio_pci_ioeventfd *ioeventfd, *ioeventfd_tmp;
+>  	int i, bar;
+>  
+> +	/* For needs_reset */
+> +	lockdep_assert_held(&vdev->vdev.dev_set->lock);
+> +
+>  	/* Stop the device from further DMA */
+>  	pci_clear_master(pdev);
+>  
+> @@ -487,9 +490,7 @@ static void vfio_pci_disable(struct vfio_pci_device *vdev)
+>  out:
+>  	pci_disable_device(pdev);
+>  
+> -	vfio_pci_try_bus_reset(vdev);
+> -
+> -	if (!disable_idle_d3)
+> +	if (!vfio_pci_dev_set_try_reset(vdev->vdev.dev_set) && !disable_idle_d3)
+>  		vfio_pci_set_power_state(vdev, PCI_D3hot);
+>  }
+>  
+> @@ -2145,36 +2146,6 @@ static struct pci_driver vfio_pci_driver = {
+>  	.err_handler		= &vfio_err_handlers,
+>  };
+>  
+> -static int vfio_pci_get_unused_devs(struct pci_dev *pdev, void *data)
+> -{
+> -	struct vfio_devices *devs = data;
+> -	struct vfio_device *device;
+> -	struct vfio_pci_device *vdev;
+> -
+> -	if (devs->cur_index == devs->max_index)
+> -		return -ENOSPC;
+> -
+> -	device = vfio_device_get_from_dev(&pdev->dev);
+> -	if (!device)
+> -		return -EINVAL;
+> -
+> -	if (pci_dev_driver(pdev) != &vfio_pci_driver) {
+> -		vfio_device_put(device);
+> -		return -EBUSY;
+> -	}
+> -
+> -	vdev = container_of(device, struct vfio_pci_device, vdev);
+> -
+> -	/* Fault if the device is not unused */
+> -	if (device->open_count) {
+> -		vfio_device_put(device);
+> -		return -EBUSY;
+> -	}
+> -
+> -	devs->devices[devs->cur_index++] = vdev;
+> -	return 0;
+> -}
+> -
+>  static int vfio_pci_try_zap_and_vma_lock_cb(struct pci_dev *pdev, void *data)
+>  {
+>  	struct vfio_devices *devs = data;
+> @@ -2208,79 +2179,86 @@ static int vfio_pci_try_zap_and_vma_lock_cb(struct pci_dev *pdev, void *data)
+>  	return 0;
+>  }
+>  
+> +static int vfio_pci_is_device_in_set(struct pci_dev *pdev, void *data)
+> +{
+> +	struct vfio_device_set *dev_set = data;
+> +	struct vfio_device *cur;
+> +
+> +	lockdep_assert_held(&dev_set->lock);
+> +
+> +	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
+> +		if (cur->dev == &pdev->dev)
+> +			return 0;
+> +	return -EBUSY;
+> +}
+> +
+> +static bool vfio_pci_dev_set_needs_reset(struct vfio_device_set *dev_set)
+
+Slight nit on the name here since we're essentially combining
+needs_reset along with the notion of the device being unused.  I'm not
+sure, maybe "should_reset"?  Otherwise it looks ok.  Thanks,
+
+Alex
+
+> +{
+> +	struct vfio_pci_device *cur;
+> +	bool needs_reset = false;
+> +
+> +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list) {
+> +		/* No VFIO device in the set can have an open device FD */
+> +		if (cur->vdev.open_count)
+> +			return false;
+> +		needs_reset |= cur->needs_reset;
+> +	}
+> +	return needs_reset;
+> +}
+> +
+>  /*
+> - * If a bus or slot reset is available for the provided device and:
+> + * If a bus or slot reset is available for the provided dev_set and:
+>   *  - All of the devices affected by that bus or slot reset are unused
+> - *    (!refcnt)
+>   *  - At least one of the affected devices is marked dirty via
+>   *    needs_reset (such as by lack of FLR support)
+> - * Then attempt to perform that bus or slot reset.  Callers are required
+> - * to hold vdev->dev_set->lock, protecting the bus/slot reset group from
+> - * concurrent opens.  A vfio_device reference is acquired for each device
+> - * to prevent unbinds during the reset operation.
+> - *
+> - * NB: vfio-core considers a group to be viable even if some devices are
+> - * bound to drivers like pci-stub or pcieport.  Here we require all devices
+> - * to be bound to vfio_pci since that's the only way we can be sure they
+> - * stay put.
+> + * Then attempt to perform that bus or slot reset.
+> + * Returns true if the dev_set was reset.
+>   */
+> -static void vfio_pci_try_bus_reset(struct vfio_pci_device *vdev)
+> +static bool vfio_pci_dev_set_try_reset(struct vfio_device_set *dev_set)
+>  {
+> -	struct vfio_devices devs = { .cur_index = 0 };
+> -	int i = 0, ret = -EINVAL;
+> -	bool slot = false;
+> -	struct vfio_pci_device *tmp;
+> +	struct vfio_pci_device *cur;
+> +	struct pci_dev *pdev;
+> +	int ret;
+>  
+> -	if (!pci_probe_reset_slot(vdev->pdev->slot))
+> -		slot = true;
+> -	else if (pci_probe_reset_bus(vdev->pdev->bus))
+> -		return;
+> +	lockdep_assert_held(&dev_set->lock);
+>  
+> -	if (vfio_pci_for_each_slot_or_bus(vdev->pdev, vfio_pci_count_devs,
+> -					  &i, slot) || !i)
+> -		return;
+> +	/*
+> +	 * By definition all PCI devices in the dev_set share the same PCI
+> +	 * reset, so any pci_dev will have the same outcomes for
+> +	 * pci_probe_reset_*() and pci_reset_bus().
+> +	 */
+> +	pdev = list_first_entry(&dev_set->device_list, struct vfio_pci_device,
+> +				vdev.dev_set_list)->pdev;
+>  
+> -	devs.max_index = i;
+> -	devs.devices = kcalloc(i, sizeof(struct vfio_device *), GFP_KERNEL);
+> -	if (!devs.devices)
+> -		return;
+> +	/* Reset of the dev_set is possible */
+> +	if (pci_probe_reset_slot(pdev->slot) && pci_probe_reset_bus(pdev->bus))
+> +		return false;
+>  
+> -	if (vfio_pci_for_each_slot_or_bus(vdev->pdev,
+> -					  vfio_pci_get_unused_devs,
+> -					  &devs, slot))
+> -		goto put_devs;
+> +	if (!vfio_pci_dev_set_needs_reset(dev_set))
+> +		return false;
+>  
+> -	/* Does at least one need a reset? */
+> -	for (i = 0; i < devs.cur_index; i++) {
+> -		tmp = devs.devices[i];
+> -		if (tmp->needs_reset) {
+> -			ret = pci_reset_bus(vdev->pdev);
+> -			break;
+> -		}
+> +	/*
+> +	 * vfio-core considers a group to be viable and will create a
+> +	 * vfio_device even if some devices are bound to drivers like pci-stub
+> +	 * or pcieport. Here we require all PCI devices to be inside our dev_set
+> +	 * since that ensures they stay put and that every driver controlling
+> +	 * the device can co-ordinate with the device reset.
+> +	 */
+> +	if (vfio_pci_for_each_slot_or_bus(pdev, vfio_pci_is_device_in_set,
+> +					  dev_set,
+> +					  !pci_probe_reset_slot(pdev->slot)))
+> +		return false;
+> +
+> +	ret = pci_reset_bus(pdev);
+> +	if (ret)
+> +		return false;
+> +
+> +	list_for_each_entry(cur, &dev_set->device_list, vdev.dev_set_list) {
+> +		cur->needs_reset = false;
+> +		if (!disable_idle_d3)
+> +			vfio_pci_set_power_state(cur, PCI_D3hot);
+>  	}
+> -
+> -put_devs:
+> -	for (i = 0; i < devs.cur_index; i++) {
+> -		tmp = devs.devices[i];
+> -
+> -		/*
+> -		 * If reset was successful, affected devices no longer need
+> -		 * a reset and we should return all the collateral devices
+> -		 * to low power.  If not successful, we either didn't reset
+> -		 * the bus or timed out waiting for it, so let's not touch
+> -		 * the power state.
+> -		 */
+> -		if (!ret) {
+> -			tmp->needs_reset = false;
+> -
+> -			if (tmp != vdev && !disable_idle_d3)
+> -				vfio_pci_set_power_state(tmp, PCI_D3hot);
+> -		}
+> -
+> -		vfio_device_put(&tmp->vdev);
+> -	}
+> -
+> -	kfree(devs.devices);
+> +	return true;
+>  }
+>  
+>  static void __exit vfio_pci_cleanup(void)
+> 
 
