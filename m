@@ -2,24 +2,22 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EE913E1CFE
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Aug 2021 21:52:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 243F13E1DD0
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Aug 2021 23:24:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9535B6EB26;
-	Thu,  5 Aug 2021 19:52:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7BA466EB5D;
+	Thu,  5 Aug 2021 21:24:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 6813 seconds by postgrey-1.36 at gabe;
- Thu, 05 Aug 2021 19:52:37 UTC
-Received: from qualityrestorations.com (unknown [188.72.187.171])
- by gabe.freedesktop.org (Postfix) with ESMTP id B72806EB26
+Received: from readyresearch.com (unknown [188.72.187.170])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8844C6EB5D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  5 Aug 2021 19:52:37 +0000 (UTC)
+ Thu,  5 Aug 2021 21:24:21 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: office chair 8 colors
-Message-ID: <732dbcb2d576b75d62ff0c5ec9a89c24@newark.com>
-Date: Thu, 05 Aug 2021 16:33:31 +0200
-From: "Gabriel Robertson" <gabrielui@planethair.it>
+Subject: Re: football table includes 22 players
+Message-ID: <5a28ef254a4c9d2d5683c6a6d0405f73@arteche.com>
+Date: Thu, 05 Aug 2021 16:45:03 +0200
+From: "Edgar Avila" <edgarzj@rolls.com>
 MIME-Version: 1.0
 X-Mailer-Sent-By: 1
 Content-Type: text/html; charset="UTF-8"
@@ -36,7 +34,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: gabriel@atxchair.shop
+Reply-To: edgar@btxtable.shop
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
@@ -44,62 +42,54 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 <head>
 </head>
 <body>
-Hi,<br /> <br /> I hope everything is going well for you.<br /> Our company
-recently introduced the office chair below, which is available in a variety
-of colors.<br /> Chair colors are available in black, white, blue, grey,
-green, red, pink, purple, and cyan.<br /> You may find out more about it by
-reading the following product information.<br /> <br /> Dense foam that is
-more comfortable to sit on while also being more elastic, tough, and
-long-lasting. Steel structure that is 1.8 percent thicker, more sturdy, and
-more strong. The smooth, non-abrasive surface has no negative impact on the
-skin or the wearer's clothing.<br /> With this equipment, you can lift up
-to 300 pounds. Improvements have been made to the gas lift setup for class
-3.<br /> <br /> The tests were carried out on a rubber roller that can
-travel silently for 1,000 kilometers at a time.<br /> Rotating rollers with
-the ability to travel in numerous directions and rotate 360 degrees at
-their maximum rotation.<br /> It can only support a maximum weight of 300
-pounds. With the use of this feature, users can recline their chairs. The
-chair can be reclined in any direction between 90 and 180 degrees. The
-chair bounces when the knob under the seat is turned. (See
-illustration.)<br /> <br /> The dimensions are 22.5 cm on the front and
-30.5 cm on the back of the shoe. You can choose between 14" and 20" broad
-chairs depending on your preference.<br /> The seat height can be adjusted
-from 17.3 inches to 21.5 inches, with a maximum height of 21.5 inches.<br
-/> Other activities such as computer gaming, watching television, working,
-and resting are all possible with this setup.<br /> Consequently, your
-living room or bedroom will be completely transformed.<br /> <br />
-Pricing:<br /> Each chair has a cost of 195.80 per chair unit.<br /> A set
-of chairs costs 185.80 each chair.<br /> Each chair costs 175.80 if you
-take three or more.<br /> <br /> Do you think you'd be interested in
-receiving one or two of our chairs for yourself? <br /> We require your
-mailing address to arrange shipment for you.<br /><br /><br /><br />
-<p><img
-src="https://www.rockinit.co.za/wp-content/uploads/2020/11/DXRACER-FORMULA-F08-N-Black-PU-Leather-Gaming-Chair-1.webp"
-width="500" height="400" /><img
-src="https://foter.com/photos/205/gaming-chairs-7.jpg" width="250"
-height="463" /></p>
-<p><img
-src="https://www.rockinit.co.za/wp-content/uploads/2020/11/DXRACER-FORMULA-F08-N-Black-PU-Leather-Gaming-Chair-3.webp"
-width="500" height="400" /><img
-src="https://bestratedgamingchairs.com/wp-content/uploads/2020/04/Noblechairs-Epic-Gaming-Chair-review.jpg"
-width="300" height="327" /></p>
-<p><img
-src="https://www.rockinit.co.za/wp-content/uploads/2020/11/DXRACER-FORMULA-F08-N-Black-PU-Leather-Gaming-Chair-2.webp"
-alt="" width="400" height="320" /><img
-src="https://www.techadvisor.com/cmsdata/reviews/3666339/nitro_concepts_s300_multiple_thumb1200_4-3.png"
-alt="" width="400" height="300" /><br /><br /><br /></p>
-<p>Shoulders are supported from the top of the head and neck. Our seats
-have a natural body shape that you will like.<br /> With its pu leather
-furniture, this residence offers the greatest amount of comfort.<br />
-Specification:<br /> It is possible to change the angle of the locking
-mechanism between 90 and 180 degrees by turning the knob. The spring
-cylinder's height can be changed by adjusting the bracket.<br /> When it
-comes to toughness and durability, this foundation is a five-star
-foundation.<br /> Orthopaedic and ergonomic issues are given the highest
-attention during the design phase of the project.<br /> Pu leather is a
-high-end leather that is manufactured from pigskin.<br /> The maximum
-weight that may be carried is 300 pounds.<br /> The backrest measures 22.5
-x 30 inches in size.<br /> <br /> Thanks,<br /> Gabriel Robertson</p>
+Hi,<br /> <br /> How are you doing?<br /> Have you read the information on
+the workplace foosball table that we previously supplied to you? <br />
+This product is now available from our warehouse.<br /> I'm going to
+present you with the product information once again right now.<br /> <br />
+This table includes 22 players, a green playground, two manual scorers, and
+a football field that has been restored to its former glory.<br /> Keeping
+hydrated when the competition heats up is made easy thanks to two cup
+holders. <br />Rod bars provide comfortable grips that help to avoid hand
+slippage and improve ball control (2 balls included) A total of two balls
+are included in the set.<br /> MDF Fiberboard is a product that is
+favorable to the environment. When it comes to the building of our football
+table, <br />we employ high-quality MDF fiberboard.<br /> Stability is
+provided by four robust legs with non-slip footings.<br /> <br /> In fact,
+a single table can give hours of game enjoyment for one or two people.<br
+/> If you have a playroom or an extra room in your home, this table will be
+a perfect addition. <br />It is really light and easy to move around in.
+This is an excellent option for you.<br /> <br /> MDF (Carb P2) and plastic
+are used to construct it.<br /> The size of the product is determined by
+the product (48 x 24 x 30)<br /> "This piece has the following dimensions:
+121.92 x 61 x 77.5 cm (L x W x H) and weighs 21.5kg / 47.40lbs (325.16 x
+35.6)."<br /> The artwork has the following measurements: 128x66x14mm (L x
+W x H)<br /> One set is contained within each carton.<br /> <br /> Prices:
+<br /> For one foosball table is 195.85 per table.<br /> For two or three
+football tables is 185.85 each<br /> <br /> If you'd like to pick up one or
+two today, please let us know your exact location so we can prepare
+accordingly. <br /> We will make every effort to have your tables shipped
+as quickly as possible.<br /><br /><br />
+<p><img src="https://i.postimg.cc/L40RzZkB/71-Wl-OLpww-RL-AC-SL1500.jpg"
+alt="" width="455" height="397" /><img
+src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/s600x600/233740856_119694827058662_3983398240237199014_n.jpg?_nc_cat=101&amp;ccb=1-3&amp;_nc_sid=730e14&amp;_nc_ohc=tnOt7_PSnXYAX9aaX0R&amp;_nc_ht=scontent-dfw5-1.xx&amp;oh=089164449f2266cd277ed3b53d34ef5c&amp;oe=610FBBF1"
+alt="" width="455" height="440" /></p>
+<p><img src="https://i.postimg.cc/Dwk9gQSs/716pa01-Gci-L-AC-SL1500.jpg"
+alt="" width="455" height="381" /><img
+src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/s600x600/233545274_119694857058659_439351054354747842_n.jpg?_nc_cat=101&amp;ccb=1-3&amp;_nc_sid=730e14&amp;_nc_ohc=MJMUUN4U1sUAX-Fmp4B&amp;_nc_ht=scontent-dfw5-1.xx&amp;oh=8fb482a0d26af661cdef9274d2af3124&amp;oe=610FF46A"
+alt="" width="455" height="464" /></p>
+<p><img src="https://i.postimg.cc/gJT5639x/71-mmebvb8-L-AC-SL1500.jpg"
+alt="" width="455" height="455" /><img
+src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/p600x600/234091037_119694887058656_7097099529715584513_n.jpg?_nc_cat=110&amp;ccb=1-3&amp;_nc_sid=730e14&amp;_nc_ohc=QxBh_f2D13gAX9pNMjo&amp;_nc_ht=scontent-dfw5-1.xx&amp;oh=81d3c4a98cae0d3fa8d94d19ea55837c&amp;oe=610F4DB6"
+alt="" width="455" height="455" /><br /><br /><br />There are 22 players at
+this table, as well as a green playing area and two goalkeepers who use
+manual controls.<br /> Design that is compatible with a wide variety of
+devices. Additionally, soft grips are included on the rod bars to aid with
+ball control and<br /> to prevent the rod bars from slipping out of the
+hands during play (2 balls included) Two balls are included in the
+price.<br /> MDF Fiberboard that is environmentally friendly: Our football
+table is constructed of high-quality, durable MDF fiberboard.<br /> Each
+leg, which is supported by four sturdy legs, is stabilized by an adjustable
+non-slip foundation.<br /> <br /> Thanks,<br /> Edgar Avila</p>
 </body>
 </html>
 
