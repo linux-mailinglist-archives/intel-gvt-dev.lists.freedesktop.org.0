@@ -1,40 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 732BD3E2310
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Aug 2021 07:50:37 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 379C63E2D2D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Aug 2021 17:05:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 60D9A6EA58;
-	Fri,  6 Aug 2021 05:50:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C77F26E14C;
+	Fri,  6 Aug 2021 15:05:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 24E6B6EA50;
- Fri,  6 Aug 2021 05:50:34 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10067"; a="278061765"
-X-IronPort-AV: E=Sophos;i="5.84,299,1620716400"; d="scan'208";a="278061765"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Aug 2021 22:50:32 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,299,1620716400"; d="scan'208";a="481278257"
-Received: from unknown (HELO coxu-arch-shz) ([10.239.160.21])
- by fmsmga008.fm.intel.com with ESMTP; 05 Aug 2021 22:50:22 -0700
-Date: Fri, 6 Aug 2021 13:50:20 +0800 (CST)
-From: Colin Xu <colin.xu@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
- stable@vger.kernel.org, "Xu, Terrence" <terrence.xu@intel.com>, 
- "Bloomfield, Jon" <jon.bloomfield@intel.com>, 
- "Ekstrand, Jason" <jason.ekstrand@intel.com>
-Subject: Re: [PATCH v2] drm/i915/gvt: Fix cached atomics setting for Windows VM
-In-Reply-To: <20210806044056.648016-1-zhenyuw@linux.intel.com>
-Message-ID: <facea19-1a97-9cd8-c4a5-cb5dc557ed4d@outlook.office365.com>
-References: <20210721062607.512307-1-zhenyuw@linux.intel.com>
- <20210806044056.648016-1-zhenyuw@linux.intel.com>
+X-Greylist: delayed 3625 seconds by postgrey-1.36 at gabe;
+ Fri, 06 Aug 2021 15:05:55 UTC
+Received: from powerhaircollection.com (hml01.careptice.info [103.136.42.97])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 244C66E14C
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri,  6 Aug 2021 15:05:55 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Re: quick follow up on my last email
+Message-ID: <4dda2f764485b9c91ebb04a49d72043a@k6edu.com>
+Date: Fri, 06 Aug 2021 15:40:04 +0200
+From: "Eric Jones" <ericei@rancba.org.au>
 MIME-Version: 1.0
-Content-Type: text/plain; format=flowed; charset=US-ASCII
+X-Mailer-Sent-By: 1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,65 +36,62 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: eric@vedrone.shop
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 6 Aug 2021, Zhenyu Wang wrote:
+<html>
+<head>
+</head>
+<body>
+Hi,<br /> <br /> How are you getting along?<br /> Have you taken the time
+to read the information regarding the drone that was sent to you earlier
+today?<br /> I'll email you the specifics about the product once more.
+Thanks for your patience.<br /> <br /> The drone's battery lasts for 30
+minutes on a charge. <br /> There is a 1000m safety barrier between the
+electric fence and the surrounding area.<br /> GPS position is outside the
+optical flow fixed point, but inside the optical flow fixed point.<br />
+Return to your home on a low power setting by using the power off/off
+signal.<br /> In addition to follow and surround modes, as well as
+multi-point cruises, VR mode, as well as multi-lens switching and panoramic
+photo/video recording, are also available options.<br /> Included are
+several useful functions such as the MV (multi-view) mode, one-button
+return to the home screen, headless mode, definition switching, gesture
+photo/video, and the ability to adjust the front lens up and down.<br />
+Level of wind resistance: 8. (high wind resistance)<br /> The fan blades
+have a diameter of approximately 5.8 cm (in centimeters).<br /> With the
+board, the battery has a capacity of 7.4V 3000mAh.<br /> It is equipped
+with a remote control that can be used to recharge the battery if
+necessary. <br /> When it comes to batteries, capacity is essential (with
+charging)<br /> Drone dimensions: When fully unfurled, the finished size is
+26x30x5cm.<br /> <br /> Pricing:<br /> One drone is 289.90<br /> Two drones
+is 279.90 each<br /> For three drones, 265.80 each<br /> <br /> Interested
+in taking one or two for this weekend? Please let me know.<br /> Send us
+your shipment location, and we'll get in touch with logistics to make
+arrangements for you.<br /><br /><br /><img
+src="https://dron-shop.com.ua/image/cache/catalog/kvadrokoptery/k80air2s/eis-selft-4k-gps-600x600.jpg"
+width="450" height="450" /><img
+src="https://store.roboticsbd.com/3868-large_default/dji-air-2s-robotics-bangladesh.jpg"
+width="450" height="450" /><br /><img
+src="https://img.joomcdn.net/b6cff37ac6ba365ff87ef8fdaa29878970535866_original.jpeg"
+width="450" height="450" /><img
+src="https://my-test-11.slatic.net/p/bb0f900d91a2ef2b5064a4c67401f983.jpg"
+width="450" height="624" /><br /><img
+src="https://www.dhresource.com/f2/albu/g20/M00/50/63/rBVaqGC90M2AW09YAAMT_fTmotI84.jpeg"
+width="500" height="783" /><br /><br />With a fixed point located within
+and GPS positioning located outside, optical flow is created.<br /> When
+you return to your home, the power goes out, or you receive a signal
+indicating that the energy has been shut off.<br /> In addition to virtual
+reality mode and multi-lens switching, this camera also has video/picture
+panorama and a video/picture panorama.<br /> There are other modes,
+including MV (with a single key for returning to the home screen),
+headless, photo/video gestures, and front lens adjustment.<br /> The
+GPS/air pressure combination used in the fixed altitude flight system is a
+mixture of the two.<br /> Wind resistance is wind resistance level of 8)<br
+/><br />Interested in taking one or two for this weekend? Please let me
+know.<br />Send us your shipment location, and we'll get in touch with
+logistics to make arrangements for you.<br /><br /> Thanks,<br /> Eric
+Jones<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>
 
-Thanks for the fix! Otherwise Windows VM is unusable with recent kernel.
-
-Reviewed-by: Colin Xu <colin.xu@intel.com>
-
-> We've seen recent regression with host and windows VM running
-> simultaneously that cause gpu hang or even crash. Finally bisect to
-> commit 58586680ffad ("drm/i915: Disable atomics in L3 for gen9"),
-> which seems cached atomics behavior difference caused regression
-> issue.
->
-> This tries to add new scratch register handler and add those in mmio
-> save/restore list for context switch. No gpu hang produced with this one.
->
-> Cc: stable@vger.kernel.org # 5.12+
-> Cc: "Xu, Terrence" <terrence.xu@intel.com>
-> Cc: "Bloomfield, Jon" <jon.bloomfield@intel.com>
-> Cc: "Ekstrand, Jason" <jason.ekstrand@intel.com>
-> Fixes: 58586680ffad ("drm/i915: Disable atomics in L3 for gen9")
-> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> ---
-> drivers/gpu/drm/i915/gvt/handlers.c     | 1 +
-> drivers/gpu/drm/i915/gvt/mmio_context.c | 2 ++
-> 2 files changed, 3 insertions(+)
->
-> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-> index 06024d321a1a..cde0a477fb49 100644
-> --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> @@ -3149,6 +3149,7 @@ static int init_bdw_mmio_info(struct intel_gvt *gvt)
-> 	MMIO_DFH(_MMIO(0xb100), D_BDW, F_CMD_ACCESS, NULL, NULL);
-> 	MMIO_DFH(_MMIO(0xb10c), D_BDW, F_CMD_ACCESS, NULL, NULL);
-> 	MMIO_D(_MMIO(0xb110), D_BDW);
-> +	MMIO_D(GEN9_SCRATCH_LNCF1, D_BDW_PLUS);
->
-> 	MMIO_F(_MMIO(0x24d0), 48, F_CMD_ACCESS | F_CMD_WRITE_PATCH, 0, 0,
-> 		D_BDW_PLUS, NULL, force_nonpriv_write);
-> diff --git a/drivers/gpu/drm/i915/gvt/mmio_context.c b/drivers/gpu/drm/i915/gvt/mmio_context.c
-> index b8ac80765461..f776c470914d 100644
-> --- a/drivers/gpu/drm/i915/gvt/mmio_context.c
-> +++ b/drivers/gpu/drm/i915/gvt/mmio_context.c
-> @@ -105,6 +105,8 @@ static struct engine_mmio gen9_engine_mmio_list[] __cacheline_aligned = {
-> 	{RCS0, COMMON_SLICE_CHICKEN2, 0xffff, true}, /* 0x7014 */
-> 	{RCS0, GEN9_CS_DEBUG_MODE1, 0xffff, false}, /* 0x20ec */
-> 	{RCS0, GEN8_L3SQCREG4, 0, false}, /* 0xb118 */
-> +	{RCS0, GEN9_SCRATCH1, 0, false}, /* 0xb11c */
-> +	{RCS0, GEN9_SCRATCH_LNCF1, 0, false}, /* 0xb008 */
-> 	{RCS0, GEN7_HALF_SLICE_CHICKEN1, 0xffff, true}, /* 0xe100 */
-> 	{RCS0, HALF_SLICE_CHICKEN2, 0xffff, true}, /* 0xe180 */
-> 	{RCS0, HALF_SLICE_CHICKEN3, 0xffff, true}, /* 0xe184 */
-> -- 
-> 2.32.0.rc2
->
->
-
---
-Best Regards,
-Colin Xu
