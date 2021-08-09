@@ -2,37 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87DE73E4788
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Aug 2021 16:29:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2428E3E4D4F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Aug 2021 21:48:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3290089C33;
-	Mon,  9 Aug 2021 14:29:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C9F3D89D87;
+	Mon,  9 Aug 2021 19:48:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 71E83890DB;
- Mon,  9 Aug 2021 14:29:48 +0000 (UTC)
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 2CAA967357; Mon,  9 Aug 2021 16:29:45 +0200 (CEST)
-Date: Mon, 9 Aug 2021 16:29:45 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Cc: Christoph Hellwig <hch@lst.de>, Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 04/21] drm/i915/gvt: move the gvt code into kvmgt.ko
-Message-ID: <20210809142945.GA18850@lst.de>
-References: <20210721155355.173183-1-hch@lst.de>
- <20210721155355.173183-5-hch@lst.de>
- <162850857939.5634.17747219922172884449@jlahtine-mobl.ger.corp.intel.com>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3736989CBC
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  9 Aug 2021 19:48:22 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10070"; a="278515080"
+X-IronPort-AV: E=Sophos;i="5.84,308,1620716400"; d="scan'208";a="278515080"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2021 12:48:21 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,308,1620716400"; d="scan'208";a="674386864"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 09 Aug 2021 12:48:19 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mDBFy-000JqU-WF; Mon, 09 Aug 2021 19:48:19 +0000
+Date: Tue, 10 Aug 2021 03:47:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
+ zhenyu.z.wang@intel.com
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ a887d5eb432801331bbba293a880c37a0d1f714f
+Message-ID: <61118649.2islnwElkaqnCIpX%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <162850857939.5634.17747219922172884449@jlahtine-mobl.ger.corp.intel.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,21 +52,126 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Aug 09, 2021 at 02:29:39PM +0300, Joonas Lahtinen wrote:
-> Thanks for putting the work into this. This conversion has been
-> requested for a long time. For clarity, should we call the module
-> i915_kvmgt?
+tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
+branch HEAD: a887d5eb432801331bbba293a880c37a0d1f714f  gvt-staging: 2021y-08m-09d-14h-45m-17s CST integration manifest
 
-If this was a new module that would be my preferance.  But the
-kvmgt module already exists, so I thought it might be a good idea
-to keep the name.
+elapsed time: 722m
 
-> How far would we be from dynamically modprobing/rmmoding the kvmgt
-> module in order to eliminate the enable_gvt parameter?
+configs tested: 105
+configs skipped: 3
 
-Hmm.  I suspect it could be done fairly easily, but from what I see
-it would still require to disable GUC at i915 module load time.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-If you want I could look into that for an incremental patch, but
-to unblock the vfio/mdev work I'd like to do that in a separate
-stage.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210809
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+sparc                               defconfig
+powerpc                 canyonlands_defconfig
+arm                       spear13xx_defconfig
+ia64                             alldefconfig
+mips                           ip27_defconfig
+arm                      tct_hammer_defconfig
+powerpc                         wii_defconfig
+openrisc                    or1ksim_defconfig
+arm                         nhk8815_defconfig
+powerpc                 mpc8272_ads_defconfig
+powerpc                      obs600_defconfig
+arm                       aspeed_g5_defconfig
+m68k                         amcore_defconfig
+powerpc                      ppc64e_defconfig
+powerpc                   microwatt_defconfig
+powerpc                    klondike_defconfig
+sh                          r7785rp_defconfig
+sh                           se7343_defconfig
+sh                          polaris_defconfig
+powerpc                     ep8248e_defconfig
+powerpc                 mpc832x_mds_defconfig
+powerpc                      ppc44x_defconfig
+sh                          urquell_defconfig
+mips                     loongson1b_defconfig
+mips                     loongson1c_defconfig
+powerpc                       holly_defconfig
+x86_64                            allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20210809
+x86_64               randconfig-a004-20210809
+x86_64               randconfig-a006-20210809
+x86_64               randconfig-a003-20210809
+x86_64               randconfig-a001-20210809
+x86_64               randconfig-a005-20210809
+i386                 randconfig-a004-20210809
+i386                 randconfig-a005-20210809
+i386                 randconfig-a006-20210809
+i386                 randconfig-a002-20210809
+i386                 randconfig-a001-20210809
+i386                 randconfig-a003-20210809
+x86_64               randconfig-a016-20210808
+x86_64               randconfig-a012-20210808
+x86_64               randconfig-a013-20210808
+x86_64               randconfig-a011-20210808
+x86_64               randconfig-a014-20210808
+x86_64               randconfig-a015-20210808
+i386                 randconfig-a012-20210808
+i386                 randconfig-a015-20210808
+i386                 randconfig-a011-20210808
+i386                 randconfig-a013-20210808
+i386                 randconfig-a014-20210808
+i386                 randconfig-a016-20210808
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-c001-20210809
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
