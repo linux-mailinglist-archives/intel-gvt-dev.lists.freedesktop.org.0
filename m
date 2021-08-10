@@ -1,56 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F1473E551C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Aug 2021 10:26:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E41C33E5AFC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Aug 2021 15:20:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E454589F19;
-	Tue, 10 Aug 2021 08:26:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 120F789F61;
+	Tue, 10 Aug 2021 13:20:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BEF1E89F0A;
- Tue, 10 Aug 2021 08:26:53 +0000 (UTC)
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 2F59F67373; Tue, 10 Aug 2021 10:26:48 +0200 (CEST)
-Date: Tue, 10 Aug 2021 10:26:47 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
- Daniel Vetter <daniel@ffwll.ch>, Diana Craciun <diana.craciun@oss.nxp.com>,
- dri-devel@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>,
- Eric Farman <farman@linux.ibm.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Jason Herne <jjherne@linux.ibm.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- kvm@vger.kernel.org, Kirti Wankhede <kwankhede@nvidia.com>,
- linux-doc@vger.kernel.org, linux-s390@vger.kernel.org,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Vineeth Vijayan <vneethv@linux.ibm.com>,
- Zhi Wang <zhi.a.wang@intel.com>, "Raj, Ashok" <ashok.raj@intel.com>,
- Christoph Hellwig <hch@lst.de>, Leon Romanovsky <leonro@nvidia.com>,
- Max Gurtovoy <mgurtovoy@nvidia.com>, Yishai Hadas <yishaih@nvidia.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH v4 09/14] vfio/pci: Change vfio_pci_try_bus_reset() to
- use the dev_set
-Message-ID: <20210810082647.GA21036@lst.de>
-References: <0-v4-9ea22c5e6afb+1adf-vfio_reflck_jgg@nvidia.com>
- <9-v4-9ea22c5e6afb+1adf-vfio_reflck_jgg@nvidia.com>
+Received: from mail-ua1-x92c.google.com (mail-ua1-x92c.google.com
+ [IPv6:2607:f8b0:4864:20::92c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AC87389F6B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 10 Aug 2021 13:20:13 +0000 (UTC)
+Received: by mail-ua1-x92c.google.com with SMTP id y14so3531703uai.7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 10 Aug 2021 06:20:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:sender:from:date:message-id:subject:to;
+ bh=2tvLhkad0w+Mh63WhnFJkmRFgYsLXsJmUqGVjzUAFIo=;
+ b=r56fIwbJz5SklG4JA6EP+FkmERPm8EjuNIz1zvYA0Tpmfsnzkuj9Mr9ilB+4O1t4iF
+ TJSaAiRseAeimWXIoiZ/aojR4w1dbcHsNBujLSCuMuiKaLluyvcgUi/JEQJlj70o9IEd
+ Yl/0OOPV9kllRbjD3zoBaFd2ApzxJDEEHzY9ZJTfL4UXq1/r4AobRJH0IUhbnGDv8HVX
+ yiVUloxSQKlbYb1M7BZgm8fAZ9m20jI1slKm68o1oKxPbw8XzrEgPc9oJSx/4tHQe2x8
+ HrZw5WHEF9bREO+R7wsyO2DExoyYmOVp3UFrXNeckA4TksY0PWoEs1kePiLiiulK2ynd
+ oMVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
+ :to; bh=2tvLhkad0w+Mh63WhnFJkmRFgYsLXsJmUqGVjzUAFIo=;
+ b=W57wJP9LDOmbAtyyOJtEbAUmyCEP3XeJlZnZv8FzLf5jTPvyJMd29Fqgltvx8Q0xBw
+ k0efoZfm6L9Z8bV8thIB4ddjXMa2C1yIlzSZLvQlXZHLzGt3kYEKWEWIhz4RizVhZoK6
+ D2bQxD0Cu0FYw4J/itfohbyTIcqJZRJZe5/yuuz33k5kUOPV5mgyBjZqpYXtqeh9ruDm
+ h+KY8T1+lYvffrDQRy5qNLLKsbf48fYR2NlSfXpL6AyTflBTj1t/vNQo0H06o2nKfUuR
+ /lZY30Y1jCgkeOtIHtVqhp9fquwq/z4l4xYGRqJVg5Xon4Eylc4GSRzr365UpWL90S6L
+ aCoA==
+X-Gm-Message-State: AOAM530qJgDtfAkBK1CKQmNEV3gyXlb/PAzYKDHPfqy6xp6DhK+AEbfd
+ 1ORkoatliMe2Kx8zbWfhvOpi/7MC9DES7XX45+I=
+X-Google-Smtp-Source: ABdhPJzvGsx1vfv3zDD0ahziTo63ivIbwfZEjzIqeDHBCiEzkGEl++4p3okNueaG6Xo6XFnebs4VnqPzJeE4UcTii44=
+X-Received: by 2002:a9f:2c93:: with SMTP id w19mr9591949uaj.26.1628601612739; 
+ Tue, 10 Aug 2021 06:20:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9-v4-9ea22c5e6afb+1adf-vfio_reflck_jgg@nvidia.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+Received: by 2002:ab0:3903:0:0:0:0:0 with HTTP; Tue, 10 Aug 2021 06:20:12
+ -0700 (PDT)
+From: John Kumor <owo219901@gmail.com>
+Date: Wed, 11 Aug 2021 01:20:12 +1200
+X-Google-Sender-Auth: zdxQGkl3dqzssRDPO2oW64CMnKw
+Message-ID: <CAHdg_cRt+TWqdUjK3Xf84mj5+AwgMtamTmu9J8c3d6u2KdArLQ@mail.gmail.com>
+Subject: Urgent
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,6 +66,8 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Looks good,
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+My dear,
+Greetings! I trust that all is well with you and your family. Did you
+receive my previous email?
+Regards
+John Kumor.
