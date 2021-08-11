@@ -2,40 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18C6A3E8EC8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Aug 2021 12:33:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 834AD3E8ED2
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Aug 2021 12:36:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9E5AF6E116;
-	Wed, 11 Aug 2021 10:33:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B93236E11F;
+	Wed, 11 Aug 2021 10:36:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 29E386E116
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C9F046E120
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Aug 2021 10:33:22 +0000 (UTC)
+ Wed, 11 Aug 2021 10:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1628678001;
+ s=mimecast20190719; t=1628678166;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=FClcYxsTNaJelqEsbQtnRJdqr/jkyNvyq3Av2pw8Tzg=;
- b=MaYQUXaAZRD3/gUfAAnZNFVEwTdvSoE8L4Yfu8MlI79Q0fb2oihheet6wx9RusF1M5MmiH
- sRHpbaF018bhHjfJgPhD6jDbfGubv7adpxrnx45kLkXOXuBQDtvtf/CgkTv/dD2eL8uGKF
- XmX2YxL1mOtHF2TbJuqYO3oy7/BYNrc=
+ bh=XIZM8cdhNJSfUJDnOLv+irfL8oNJu9keXxl/12RO/Tw=;
+ b=DO0/eyzQbeCg25lE7viV+0zb2uJ4xTNJY3b7WCvdSbdw7o8t7XRws2XZNJrS5Ai4h/KxAJ
+ 0+4t1g/h3FjXC2cNHWqsdtpJOzjSZhqo6Xe2d/JyB1Nm2QdBaQqjBZriKJSeXbLeIdJfwy
+ wmkp4ynkHXWTGbTHXN/pe1fkIkvwdYI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-564-n3jWRGIjODO2LnxMXrJU7g-1; Wed, 11 Aug 2021 06:33:20 -0400
-X-MC-Unique: n3jWRGIjODO2LnxMXrJU7g-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-214-T9CQQ_4iPJO-DImzn8_Ltw-1; Wed, 11 Aug 2021 06:36:03 -0400
+X-MC-Unique: T9CQQ_4iPJO-DImzn8_Ltw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8E6DC1008062;
- Wed, 11 Aug 2021 10:33:16 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B1401008063;
+ Wed, 11 Aug 2021 10:36:00 +0000 (UTC)
 Received: from localhost (unknown [10.39.192.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C56495C25A;
- Wed, 11 Aug 2021 10:33:02 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DF43F3AA2;
+ Wed, 11 Aug 2021 10:35:51 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
  Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
@@ -57,17 +57,16 @@ To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
 Cc: "Raj, Ashok" <ashok.raj@intel.com>, Christoph Hellwig <hch@lst.de>, Leon
  Romanovsky <leonro@nvidia.com>, Max Gurtovoy <mgurtovoy@nvidia.com>,
  Yishai Hadas <yishaih@nvidia.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH v4 10/14] vfio/pci: Reorganize VFIO_DEVICE_PCI_HOT_RESET
- to use the device set
-In-Reply-To: <10-v4-9ea22c5e6afb+1adf-vfio_reflck_jgg@nvidia.com>
+Subject: Re: [PATCH v4 14/14] vfio: Remove struct vfio_device_ops open/release
+In-Reply-To: <14-v4-9ea22c5e6afb+1adf-vfio_reflck_jgg@nvidia.com>
 Organization: Red Hat GmbH
-References: <10-v4-9ea22c5e6afb+1adf-vfio_reflck_jgg@nvidia.com>
+References: <14-v4-9ea22c5e6afb+1adf-vfio_reflck_jgg@nvidia.com>
 User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
-Date: Wed, 11 Aug 2021 12:33:01 +0200
-Message-ID: <87tujwuv8i.fsf@redhat.com>
+Date: Wed, 11 Aug 2021 12:35:50 +0200
+Message-ID: <87r1f0uv3t.fsf@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,25 +84,17 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 On Thu, Aug 05 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> Like vfio_pci_dev_set_try_reset() this code wants to reset all of the
-> devices in the "reset group" which is the same membership as the device
-> set.
+> Nothing uses this anymore, delete it.
 >
-> Instead of trying to reconstruct the device set from the PCI list go
-> directly from the device set's device list to execute the reset.
->
-> The same basic structure as vfio_pci_dev_set_try_reset() is used. The
-> 'vfio_devices' struct is replaced with the device set linked list and we
-> simply sweep it multiple times under the lock.
->
-> This eliminates a memory allocation and get/put traffic and another
-> improperly locked test of pci_dev_driver().
->
-> Reviewed-off-by: Christoph Hellwig <hch@lst.de>
+> Signed-off-by: Yishai Hadas <yishaih@nvidia.com>
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->  drivers/vfio/pci/vfio_pci.c | 213 +++++++++++++++---------------------
->  1 file changed, 89 insertions(+), 124 deletions(-)
+>  drivers/vfio/mdev/vfio_mdev.c | 22 ----------------------
+>  drivers/vfio/vfio.c           | 14 +-------------
+>  include/linux/mdev.h          |  7 -------
+>  include/linux/vfio.h          |  4 ----
+>  4 files changed, 1 insertion(+), 46 deletions(-)
 
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
