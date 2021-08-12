@@ -1,42 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 306443EAB07
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Aug 2021 21:31:05 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C2643EAD5B
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Aug 2021 00:48:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DD3616E452;
-	Thu, 12 Aug 2021 19:31:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C9F3C6E457;
+	Thu, 12 Aug 2021 22:48:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DF14C6E450
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Aug 2021 19:31:02 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10074"; a="279173675"
-X-IronPort-AV: E=Sophos;i="5.84,316,1620716400"; d="scan'208";a="279173675"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2021 12:31:01 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,316,1620716400"; d="scan'208";a="485578397"
-Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 12 Aug 2021 12:30:59 -0700
-Received: from kbuild by d053b881505b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mEGPr-000MuH-5T; Thu, 12 Aug 2021 19:30:59 +0000
-Date: Fri, 13 Aug 2021 03:30:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
- zhenyu.z.wang@intel.com
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 5510d18049674d32edc49032f35029b01d23a8a6
-Message-ID: <611576ef.flTsKa5nBuydUzjR%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail.davidos.dp.ua (mail.davidos.dp.ua [195.177.241.189])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 663D76E457;
+ Thu, 12 Aug 2021 22:47:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.davidos.dp.ua (Postfix) with ESMTP id 798E32C70C3;
+ Thu, 12 Aug 2021 18:09:21 +0300 (EEST)
+Received: from mail.davidos.dp.ua ([127.0.0.1])
+ by localhost (mail.davidos.dp.ua [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id ICN3ky4IQXlw; Thu, 12 Aug 2021 18:09:21 +0300 (EEST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.davidos.dp.ua (Postfix) with ESMTP id F05DD2C59CF;
+ Thu, 12 Aug 2021 18:08:22 +0300 (EEST)
+X-Virus-Scanned: amavisd-new at mail.davidos.dp.ua
+Received: from mail.davidos.dp.ua ([127.0.0.1])
+ by localhost (mail.davidos.dp.ua [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id cGIFWdq4YLy6; Thu, 12 Aug 2021 18:08:22 +0300 (EEST)
+Received: from DESKTOP-0N84GHA..home (unknown [106.210.41.83])
+ by mail.davidos.dp.ua (Postfix) with ESMTPSA id 109192C6CC4;
+ Thu, 12 Aug 2021 18:07:23 +0300 (EEST)
+Content-Type: multipart/alternative; boundary="===============0376231787=="
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Subject: 
+To: Recipients <info@mail.com>
+From: "Ms.Haviva" <info@mail.com>
+Date: Thu, 12 Aug 2021 20:37:06 +0530
+Message-Id: <20210812150724.109192C6CC4@mail.davidos.dp.ua>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,143 +47,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: d4325l@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 5510d18049674d32edc49032f35029b01d23a8a6  gvt-staging: 2021y-08m-12d-14h-05m-08s CST integration manifest
+You will not see this in a MIME-aware mail reader.
+--===============0376231787==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-elapsed time: 720m
+=6211=662F Haviva =5973=58EB=FF0C=6211=662F=4EE5=8272=5217=7B2C=4E00=56FD=
+=9645=94F6=884C=6709=9650=516C=53F8=7684=6267=884C=526F=603B=88C1/=8D1F=
+=8D23=4EBA=FF1A=6CD5=52A1=3002=6211=6B63=5728=5C31=4E00=4E2A=6781=5176=91CD=
+=8981=548C=7D27=6025=7684=95EE=9898=4E0E=60A8=53D6=5F97=8054=7CFB=3002 =
+=5982=679C=4F60=7ED9=6211=673A=4F1A=FF0C=6211=4F1A=4E3A=4F60=63D0=4F9B=8BE6=
+=7EC6=4FE1=606F
+--===============0376231787==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-configs tested: 119
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210812
-arm                        mvebu_v5_defconfig
-xtensa                       common_defconfig
-sh                            hp6xx_defconfig
-powerpc                     tqm8560_defconfig
-sh                        sh7785lcr_defconfig
-m68k                          hp300_defconfig
-sparc                       sparc32_defconfig
-arm                        multi_v5_defconfig
-mips                  decstation_64_defconfig
-powerpc                     mpc512x_defconfig
-sh                      rts7751r2d1_defconfig
-arc                     haps_hs_smp_defconfig
-m68k                        m5307c3_defconfig
-powerpc                    mvme5100_defconfig
-sh                          polaris_defconfig
-arc                            hsdk_defconfig
-sh                        sh7757lcr_defconfig
-sh                           se7780_defconfig
-powerpc                    ge_imp3a_defconfig
-powerpc                    adder875_defconfig
-sh                          r7780mp_defconfig
-powerpc                 mpc832x_mds_defconfig
-arm                        mini2440_defconfig
-arc                     nsimosci_hs_defconfig
-sh                           se7750_defconfig
-arm                           u8500_defconfig
-powerpc                     tqm8540_defconfig
-powerpc                     kmeter1_defconfig
-arm                        multi_v7_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a006-20210812
-x86_64               randconfig-a004-20210812
-x86_64               randconfig-a003-20210812
-x86_64               randconfig-a005-20210812
-x86_64               randconfig-a002-20210812
-x86_64               randconfig-a001-20210812
-i386                 randconfig-a004-20210812
-i386                 randconfig-a003-20210812
-i386                 randconfig-a002-20210812
-i386                 randconfig-a001-20210812
-i386                 randconfig-a006-20210812
-i386                 randconfig-a005-20210812
-i386                 randconfig-a004-20210811
-i386                 randconfig-a001-20210811
-i386                 randconfig-a002-20210811
-i386                 randconfig-a003-20210811
-i386                 randconfig-a006-20210811
-i386                 randconfig-a005-20210811
-i386                 randconfig-a011-20210811
-i386                 randconfig-a015-20210811
-i386                 randconfig-a014-20210811
-i386                 randconfig-a013-20210811
-i386                 randconfig-a016-20210811
-i386                 randconfig-a012-20210811
-i386                 randconfig-a011-20210812
-i386                 randconfig-a015-20210812
-i386                 randconfig-a013-20210812
-i386                 randconfig-a014-20210812
-i386                 randconfig-a016-20210812
-i386                 randconfig-a012-20210812
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-c001-20210812
-x86_64               randconfig-a011-20210812
-x86_64               randconfig-a013-20210812
-x86_64               randconfig-a012-20210812
-x86_64               randconfig-a016-20210812
-x86_64               randconfig-a015-20210812
-x86_64               randconfig-a014-20210812
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8"/></head><BODY>=E6=88=91=E6=98=AF Haviva =E5=A5=B3=E5=A3=AB=EF=BC=
+=8C=E6=88=91=E6=98=AF=E4=BB=A5=E8=89=B2=E5=88=97=E7=AC=AC=E4=B8=80=E5=9B=BD=
+=E9=99=85=E9=93=B6=E8=A1=8C=E6=9C=89=E9=99=90=E5=85=AC=E5=8F=B8=E7=9A=84=E6=
+=89=A7=E8=A1=8C=E5=89=AF=E6=80=BB=E8=A3=81/=E8=B4=9F=E8=B4=A3=E4=BA=BA=EF=
+=BC=9A=E6=B3=95=E5=8A=A1=E3=80=82=E6=88=91=E6=AD=A3=E5=9C=A8=E5=B0=B1=E4=B8=
+=80=E4=B8=AA=E6=9E=81=E5=85=B6=E9=87=8D=E8=A6=81=E5=92=8C=E7=B4=A7=E6=80=A5=
+=E7=9A=84=E9=97=AE=E9=A2=98=E4=B8=8E=E6=82=A8=E5=8F=96=E5=BE=97=E8=81=94=E7=
+=B3=BB=E3=80=82 =E5=A6=82=E6=9E=9C=E4=BD=A0=E7=BB=99=E6=88=91=E6=9C=BA=E4=
+=BC=9A=EF=BC=8C=E6=88=91=E4=BC=9A=E4=B8=BA=E4=BD=A0=E6=8F=90=E4=BE=9B=E8=AF=
+=A6=E7=BB=86=E4=BF=A1=E6=81=AF</BODY></HTML>
+--===============0376231787==--
