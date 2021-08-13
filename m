@@ -2,36 +2,87 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC7C83EB9C4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Aug 2021 18:07:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3ADD83EB9D8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Aug 2021 18:13:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 511CC6E87F;
-	Fri, 13 Aug 2021 16:07:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C23E46E881;
+	Fri, 13 Aug 2021 16:13:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 31170 seconds by postgrey-1.36 at gabe;
- Fri, 13 Aug 2021 16:07:19 UTC
-Received: from ms.isibang.ac.in (ms.isibang.ac.in [14.139.157.212])
- by gabe.freedesktop.org (Postfix) with ESMTP id D50936E876;
- Fri, 13 Aug 2021 16:07:19 +0000 (UTC)
-Received: from mail.isibang.ac.in (localhost.localdomain [127.0.0.1])
- by ms.isibang.ac.in (Postfix) with ESMTP id C882160014607;
- Fri, 13 Aug 2021 03:21:37 +0530 (IST)
-Received: from 105.0.4.129 (SquirrelMail authenticated user isil)
- by mail.isibang.ac.in with HTTP; Fri, 13 Aug 2021 03:21:38 +0530
-Message-ID: <1c3361fc2339016b5d8759f8f4b8a80c.squirrel@mail.isibang.ac.in>
-Date: Fri, 13 Aug 2021 03:21:38 +0530
-Subject: International Relief Fund (Award Notice)
-From: "Dr. Patrick Wiz" <wizpatrick00001@outlook.com>
-User-Agent: SquirrelMail/1.4.23 [SVN]-1.el7.20190710
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 690126E880;
+ Fri, 13 Aug 2021 16:13:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=9Jq9OYg9EXI1aRB5/mW+60AZEjUGr9kH6BUneFaePHw=; b=srU2gOhlF1tA35b57YG0YNmQxP
+ Bu7cAtaISOcIQ5NX4BIk/TfOlOHPn82r4hLbjJIY3Kk+5STCK2yycxhkCFjMHMTuPyOtY5mPtiWNu
+ 8PHYiam1b2H2D5UTeByA4eT4hYZqxpnTD0gI4LS3RPWD4zhiBBYdhekex0P6p0SwZZnA1Mk3vivuw
+ xZsJSC70p0qDfbsiYBbd79goLwWxx4ahK+itkfJyAiFkIg/M1Yzxt0y5EVeoTaCw6l5+FpwtajKn/
+ kqW98BeM4RU3mYmkl5oFkchdxpk8NQpZxkj/oV2ihrSsq0bv5lQRgq7SbOM5b2CPcMbVs6WEqLE2l
+ JJZoY3wQ==;
+Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red
+ Hat Linux)) id 1mEZjj-00FqgB-G6; Fri, 13 Aug 2021 16:09:06 +0000
+Date: Fri, 13 Aug 2021 17:08:47 +0100
+From: Matthew Wilcox <willy@infradead.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Jim Cromie <jim.cromie@gmail.com>, gregkh@linuxfoundation.org,
+ seanpaul@chromium.org,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ "Pan, Xinhui" <Xinhui.Pan@amd.com>,
+ Harry Wentland <harry.wentland@amd.com>,
+ Leo Li <sunpeng.li@amd.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Jason Baron <jbaron@akamai.com>,
+ Hawking Zhang <Hawking.Zhang@amd.com>, Tao Zhou <tao.zhou1@amd.com>,
+ Huang Rui <ray.huang@amd.com>, Kevin Wang <kevin1.wang@amd.com>,
+ Chengming Gui <Jack.Gui@amd.com>, Likun Gao <Likun.Gao@amd.com>,
+ John Clements <john.clements@amd.com>,
+ Ashley Thomas <Ashley.Thomas2@amd.com>,
+ Qingqing Zhuo <qingqing.zhuo@amd.com>,
+ Aurabindo Pillai <aurabindo.pillai@amd.com>,
+ Wyatt Wood <Wyatt.Wood@amd.com>, Johan Hovold <johan@kernel.org>,
+ Jessica Yu <jeyu@kernel.org>, Joe Perches <joe@perches.com>,
+ Miguel Ojeda <ojeda@kernel.org>,
+ Nick Desaulniers <ndesaulniers@gooogle.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Masahiro Yamada <masahiroy@kernel.org>,
+ Peter Zijlstra <peterz@infradead.org>,
+ "Paul E. McKenney" <paulmck@kernel.org>,
+ Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Vitor Massaru Iha <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>,
+ Changbin Du <changbin.du@intel.com>, Marco Elver <elver@google.com>,
+ Jarkko Sakkinen <jarkko@kernel.org>,
+ Alexander Potapenko <glider@google.com>,
+ Zhen Lei <thunder.leizhen@huawei.com>,
+ Albert van der Linde <alinde@google.com>,
+ Johannes Berg <johannes.berg@intel.com>,
+ Arvind Sankar <nivedita@alum.mit.edu>,
+ Patricia Alfonso <trishalfonso@google.com>, Arnd Bergmann <arnd@arndb.de>,
+ Palmer Dabbelt <palmerdabbelt@google.com>, Jiri Olsa <jolsa@kernel.org>,
+ Andrey Konovalov <andreyknvl@gmail.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Subject: Re: [PATCH v5 3/9] dyndbg: add DEFINE_DYNAMIC_DEBUG_CATEGORIES and
+ callbacks
+Message-ID: <YRaZDzROiEhqJgUb@casper.infradead.org>
+References: <20210813151734.1236324-1-jim.cromie@gmail.com>
+ <20210813151734.1236324-4-jim.cromie@gmail.com>
+ <YRaU6fbGjcV7BGC/@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain;charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-X-Priority: 3 (Normal)
-Importance: Normal
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-Error: Unable to connect local ctasd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YRaU6fbGjcV7BGC/@smile.fi.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,115 +95,22 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jabufk@highveldmail.co.za
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Fri, Aug 13, 2021 at 06:51:05PM +0300, Andy Shevchenko wrote:
+> On Fri, Aug 13, 2021 at 09:17:11AM -0600, Jim Cromie wrote:
+> > +int param_set_dyndbg(const char *instr, const struct kernel_param *kp)
+> > +{
+> > +	unsigned long inbits;
+> > +	int rc, i, chgct = 0, totct = 0;
+> > +	char query[OUR_QUERY_SIZE];
+> > +	struct dyndbg_bitdesc *bitmap = (struct dyndbg_bitdesc *) kp->data;
+> 
+> So you need space after ')' ?
 
-
-
-
-
-From: Relief International Charity Foundation Incorporated.
-Office: Post-Pandemic Economic Relief Donation.
-Address: United Nation's Office, 351 Francis Baard St, Pretoria Central,
-Pretoria, 0001. South Africa.
-Tel/Fax: +27(086) 750 3877
-
-
-
-
-Attn: Email beneficiary,
-
-
-COVID-19 RELIEF FUND DONATION.
-
-You have been awarded the sum of US$2,000,000 (Two Million US Dollars) as
-Covid-19 Economic Devastation Relief Package.
-
-The COVID-19 pandemic marks an unprecedented time in modern history that
-will require the best of humanity to overcome. Our Global Donation will
-support immediate and long-term relief and recovery to vulnerable
-individuals, businesses and communities during one of the most challenging
-times we have collectively faced. The crisis has brought so many
-businesses, companies and small scale businesses to a devastating halt. It
-has threatened everyone's way of life, but it is especially difficult for
-people who are already vulnerable. Some people around the globe,
-especially migrants, wage workers, and those with flexible jobs and small
-scale businesses have already started feeling the devastating economic
-impact.
-
-We have received Billions of Dollars from Donors to help in this poverty
-alleviation program. This money is expected to be shared to all the
-Selected Global Citizenry to help them regain the Economic Losses of
-Multiple Global Lockdowns since the beginning of this Pandemic. We have
-worked and will continue working with our partners on the ground to
-allocate funds where they're most needed. We believe that organizations
-that are deeply rooted are best positioned to lead long-term plans to stop
-the spread of COVID-19 and the devastating economic effect of the Global
-Lock-downs.
-
-Our funds have been delivered down to our distribution points and
-currently secured by the International Committee of Red Cross (ICRC) Vault
-Operations, Centurion, South Africa, as you can see on the following
-Web-video page:
-
-https://drive.google.com/file/d/1P1TUPuxFnusug3Da8MpyaFoHUbS7GVEm/view?usp=sharing
-
-Our Payment Administrator will help processing and releasing to you the
-sum of US$2, 000,000 (Two Million United States Dollars) to enable you
-boost your business, stabilize your region, help the vulnerable and
-less-privileged around you, and help stop the spread of Covid-19.
-
-Kindly contact the payment administrator to his email:
-jabufk@highveldmail.co.za (Mr. Jabu Fisani Agbanu).  Ensure to provide him
-with your following
- information:
-
-1. Your full names.
-2. Your address.
-3. Your telephone.
-4. Your age.
-5. Your occupation.
-6. Your bank account information
-
-
-We thank you, and congratulations from Relief International Post-Pandemic
-Economic Relief Fund!
-
-Yours truly,
-
-
-
-Dr.  Patrick Wiz
-(Secretary; Relief International Charity Foundation Incorporated)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+More importantly, if ->data is of type 'void *', it is bad style to
+cast the pointer at all.  I can't tell what type 'data' has; if it
+is added to kernel_param as part of this series, I wasn't cc'd on
+the patch that did that.
 
