@@ -1,30 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C26A73EB958
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Aug 2021 17:44:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D61BB3EB98A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Aug 2021 17:51:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 089D16E873;
-	Fri, 13 Aug 2021 15:44:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 42E8A6E879;
+	Fri, 13 Aug 2021 15:51:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2BD356E85A;
- Fri, 13 Aug 2021 15:44:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10075"; a="215571979"
-X-IronPort-AV: E=Sophos;i="5.84,319,1620716400"; d="scan'208";a="215571979"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2021 08:44:05 -0700
-X-IronPort-AV: E=Sophos;i="5.84,319,1620716400"; d="scan'208";a="571833136"
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5607D6E877;
+ Fri, 13 Aug 2021 15:51:31 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10075"; a="237623499"
+X-IronPort-AV: E=Sophos;i="5.84,319,1620716400"; d="scan'208";a="237623499"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2021 08:51:30 -0700
+X-IronPort-AV: E=Sophos;i="5.84,319,1620716400"; d="scan'208";a="440395249"
 Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2021 08:43:52 -0700
+ by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2021 08:51:13 -0700
 Received: from andy by smile with local (Exim 4.94.2)
  (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1mEZLU-009Hky-Ik; Fri, 13 Aug 2021 18:43:44 +0300
-Date: Fri, 13 Aug 2021 18:43:44 +0300
+ id 1mEZSb-009HtM-QE; Fri, 13 Aug 2021 18:51:05 +0300
+Date: Fri, 13 Aug 2021 18:51:05 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Jim Cromie <jim.cromie@gmail.com>
 Cc: gregkh@linuxfoundation.org, seanpaul@chromium.org,
@@ -41,15 +41,16 @@ Cc: gregkh@linuxfoundation.org, seanpaul@chromium.org,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, Jason Baron <jbaron@akamai.com>,
  Hawking Zhang <Hawking.Zhang@amd.com>, Tao Zhou <tao.zhou1@amd.com>,
- Huang Rui <ray.huang@amd.com>, Likun Gao <Likun.Gao@amd.com>,
- Chengming Gui <Jack.Gui@amd.com>, Aaron Liu <aaron.liu@amd.com>,
- John Clements <john.clements@amd.com>, Kevin Wang <kevin1.wang@amd.com>,
+ Huang Rui <ray.huang@amd.com>, Kevin Wang <kevin1.wang@amd.com>,
+ Chengming Gui <Jack.Gui@amd.com>, Likun Gao <Likun.Gao@amd.com>,
+ John Clements <john.clements@amd.com>,
  Ashley Thomas <Ashley.Thomas2@amd.com>,
- Qingqing Zhuo <qingqing.zhuo@amd.com>, Wyatt Wood <Wyatt.Wood@amd.com>,
+ Qingqing Zhuo <qingqing.zhuo@amd.com>,
  Aurabindo Pillai <aurabindo.pillai@amd.com>,
- Johan Hovold <johan@kernel.org>, Jessica Yu <jeyu@kernel.org>,
+ Wyatt Wood <Wyatt.Wood@amd.com>, Johan Hovold <johan@kernel.org>,
+ Jessica Yu <jeyu@kernel.org>, Joe Perches <joe@perches.com>,
+ Miguel Ojeda <ojeda@kernel.org>,
  Nick Desaulniers <ndesaulniers@gooogle.com>,
- Joe Perches <joe@perches.com>, Miguel Ojeda <ojeda@kernel.org>,
  Andrew Morton <akpm@linux-foundation.org>,
  Masahiro Yamada <masahiroy@kernel.org>,
  Peter Zijlstra <peterz@infradead.org>,
@@ -57,25 +58,29 @@ Cc: gregkh@linuxfoundation.org, seanpaul@chromium.org,
  Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
  Thomas Gleixner <tglx@linutronix.de>,
  Vitor Massaru Iha <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>,
- Zhen Lei <thunder.leizhen@huawei.com>,
- Marco Elver <elver@google.com>, Jarkko Sakkinen <jarkko@kernel.org>,
+ Changbin Du <changbin.du@intel.com>, Marco Elver <elver@google.com>,
+ Jarkko Sakkinen <jarkko@kernel.org>,
  Alexander Potapenko <glider@google.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>,
- Patricia Alfonso <trishalfonso@google.com>, Jiri Olsa <jolsa@kernel.org>,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- Arvind Sankar <nivedita@alum.mit.edu>,
+ "Matthew Wilcox (Oracle)" <willy@infradead.org>,
+ Zhen Lei <thunder.leizhen@huawei.com>,
+ Albert van der Linde <alinde@google.com>,
  Johannes Berg <johannes.berg@intel.com>,
- Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
-Subject: Re: [PATCH v5 2/9] moduleparam: add data member to struct kernel_param
-Message-ID: <YRaTMFzUFCeC6ELA@smile.fi.intel.com>
+ Arvind Sankar <nivedita@alum.mit.edu>,
+ Patricia Alfonso <trishalfonso@google.com>, Arnd Bergmann <arnd@arndb.de>,
+ Palmer Dabbelt <palmerdabbelt@google.com>, Jiri Olsa <jolsa@kernel.org>,
+ Andrey Konovalov <andreyknvl@gmail.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Subject: Re: [PATCH v5 3/9] dyndbg: add DEFINE_DYNAMIC_DEBUG_CATEGORIES and
+ callbacks
+Message-ID: <YRaU6fbGjcV7BGC/@smile.fi.intel.com>
 References: <20210813151734.1236324-1-jim.cromie@gmail.com>
- <20210813151734.1236324-3-jim.cromie@gmail.com>
+ <20210813151734.1236324-4-jim.cromie@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20210813151734.1236324-3-jim.cromie@gmail.com>
+In-Reply-To: <20210813151734.1236324-4-jim.cromie@gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -92,41 +97,216 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Aug 13, 2021 at 09:17:10AM -0600, Jim Cromie wrote:
-> Add a const void* data member to the struct, to allow attaching
-> private data that will be used soon by a setter method (via kp->data)
-> to perform more elaborate actions.
+On Fri, Aug 13, 2021 at 09:17:11AM -0600, Jim Cromie wrote:
+> DEFINE_DYNAMIC_DEBUG_CATEGORIES(name, var, bitmap_desc, @bit_descs)
+> allows users to define a drm.debug style (bitmap) sysfs interface, and
+> to specify the desired mapping from bits[0-N] to the format-prefix'd
+> pr_debug()s to be controlled.
 > 
-> To attach the data at compile time, add new macros:
+> DEFINE_DYNAMIC_DEBUG_CATEGORIES(debug_gvt, __gvt_debug,
+> 	"i915/gvt bitmap desc",
+> 	/**
+> 	 * search-prefixes, passed to dd-exec_queries
+> 	 * defines bits 0-N in order.
+> 	 * leading ^ is tacitly inserted (by callback currently)
+> 	 * trailing space used here excludes subcats.
+> 	 * helper macro needs more work
+> 	 * macro to autogen ++$i, 0x%x$i ?
+> 	 */
+> 	_DD_cat_("gvt:cmd: "),
+> 	_DD_cat_("gvt:core: "),
+> 	_DD_cat_("gvt:dpy: "),
+> 	_DD_cat_("gvt:el: "),
+> 	_DD_cat_("gvt:irq: "),
+> 	_DD_cat_("gvt:mm: "),
+> 	_DD_cat_("gvt:mmio: "),
+> 	_DD_cat_("gvt:render: "),
+> 	_DD_cat_("gvt:sched: "));
 > 
-> module_param_cbd() derives from module_param_cb(), adding data param,
-> and latter is redefined to use former.
+> dynamic_debug.c: add 3 new elements:
 > 
-> It calls __module_param_call_wdata(), which accepts a new data param
-> and inits .data with it. Re-define __module_param_call() to use it.
+>  - int param_set_dyndbg()
+>  - int param_get_dyndbg()
+>  - struct kernel_param_ops param_ops_dyndbg
 > 
-> Use of this new data member will be rare, it might be worth redoing
-> this as a separate/sub-type to de-bloat the base case.
+> Following the model of kernel/params.c STANDARD_PARAM_DEFS, All 3 are
+> non-static and exported.
+> 
+> dynamic_debug.h:
+> 
+> Add DEFINE_DYNAMIC_DEBUG_CATEGORIES() described above, and a do-nothing stub.
+> 
+> Note that it also calls MODULE_PARM_DESC for the user, but expects the
+> user to catenate all the bit-descriptions together (as is done in
+> drm.debug), and in the following uses in amdgpu, i915.
+> 
+> This in the hope that someone can offer an auto-incrementing
+> label-generating macro, producing "\tbit-4 0x10\t" etc, and can show
+> how to apply it to __VA_ARGS__.
+> 
+> Also extern the struct kernel_param param_ops_dyndbg symbol, as is
+> done in moduleparams.h for all the STANDARD params.
+> 
+> USAGE NOTES:
+> 
+> Using dyndbg to query on "format ^$prefix" requires that the prefix be
+> present in the compiled-in format string; where run-time prefixing is
+> used, that format would be "%s...", which is not usefully selectable.
+> 
+> Adding structural query terms (func,file,lineno) could help (module is
+> already done), but DEFINE_DYNAMIC_DEBUG_CATEGORIES can't do that now,
+> adding it needs a better reason imo.
+> 
+> Dyndbg is completely agnostic wrt the categorization scheme used, to
+> play well with any prefix convention already in use.  Ad-hoc
+> categories and sub-categories are implicitly allowed, author
+> discipline and review is expected.
+> 
+> Here are some examples:
+> 
+> "1","2","3"		2 doesnt imply 1.
+>    			otherwize, sorta like printk levels
+> "1:","2:","3:"		are better, avoiding [1-9]\d+ ambiguity
+> "hi:","mid:","low:"	are reasonable, and imply independence
+> "todo:","rfc:"		might be handy
+> "A:".."Z:"		uhm, yeah
+> 
+> Hierarchical classes/categories are natural:
+> 
+> "drm:<CAT>:"		is used in later commit
+> "drm:<CAT>:<SUB>:"	is a natural extension.
+> "drm:atomic:fail:"	has been proposed, sounds directly useful
+> 
+> Some properties of a hierarchical category deserve explication:
+> 
+> Trailing spaces matter !
+> 
+> With 1..3-space ("drm: ", "drm:atomic: ", "drm:atomic:fail: "), the
+> ":" doesnt terminate the search-space, the trailing space does.
+> So a "drm:" search specification will match all DRM categories &
+> subcategories, and will not be useful in an interface where all
+> categories are controlled together.  That said, "drm:atomic:" &
+> "drm:atomic: " are different, and both are useful in cases.
+> 
+> Ad-Hoc sub-categories:
+> 
+> These have a caveat wrt wrapper macros adding prefixes like
+> "drm:atomic: "; the trailing space in the prefix means that
+> drm_dbg("fail: ...") renders as "drm:atomic: fail: ", which obviously
+> isn't ideal wrt clear and simple bitmaps.
+> 
+> A possible solution is to have a FOO_() version of every FOO() macro
+> which (anti-mnemonically) elides the trailing space, which is normally
+> inserted by a modified FOO().  Doing this would enforce a policy
+> decision that "debug categories will be space terminated", with an
+> pressure-relief valve.
+> 
+> Summarizing:
+> 
+>  - "drm:kms: " & "drm:kms:" are different
+>  - "drm:kms"		also different - includes drm:kms2:
+>  - "drm:kms:\t"		also different
+>  - "drm:kms:*"		doesnt work, no wildcard on format atm.
+> 
+> Order matters in DEFINE_DYNAMIC_DEBUG_CATEGORIES(... @bit_descs)
+> 
+> @bit_descs (array) position determines the bit mapping to the prefix,
+> so to keep a stable map, new categories or 3rd level categories must
+> be added to the end.
+> 
+> Since bits are/will-stay applied 0-N, the later bits can countermand
+> the earlier ones, but its tricky - consider;
+> 
+>     DD_CATs(... "drm:atomic:", ""drm:atomic:fail:" ) // misleading
+> 
+> The 1st search-term is misleading, because it includes (modifies)
+> subcategories, but then 2nd overrides it.  So don't do that.
+> 
+> There is still plenty of bikeshedding to do.
+
+> ---
+> v4+:
+> 
+> . rename to DEFINE_DYNAMIC_DEBUG_CATEGORIES from DEFINE_DYNDBG_BITMAP
+> . in query, replace hardcoded "i915" w kp->mod->name
+> . static inline the stubs
+> . const *str in structs, const array. -Emil
+> . dyndbg: add do-nothing DEFINE_DYNAMIC_DEBUG_CATEGORIES if !DD_CORE
+> . call MOD_PARM_DESC(name, "$desc") for users
+> . simplify callback, remove bit-change detection
+> . config errs reported by <lkp@intel.com>
+> 
+> ddh-helpers
+
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+
+So, it is signed or not? I didn't get (perhaps due to misplaced changlog?).
 
 ...
 
-> +#define module_param_cbd(name, ops, arg, perm, data)				\
-> +	__module_param_call_wdata(MODULE_PARAM_PREFIX, name, ops, arg, perm, -1, 0, data)
+>  } __attribute__((aligned(8)));
+>  
+>  
 
-Cryptic name. Moreover, inconsistent with the rest.
-What about module_param_cb_data() ?
+Do we need two blank lines here?
 
->  #define module_param_cb_unsafe(name, ops, arg, perm)			      \
->  	__module_param_call(MODULE_PARAM_PREFIX, name, ops, arg, perm, -1,    \
->  			    KERNEL_PARAM_FL_UNSAFE)
-
-(above left for the above comment)
+> +struct kernel_param;
 
 ...
 
-> +#define __module_param_call_wdata(prefix, name, ops, arg, perm, level, flags, data) \
+> +int param_set_dyndbg(const char *instr, const struct kernel_param *kp)
+> +{
+> +	unsigned long inbits;
+> +	int rc, i, chgct = 0, totct = 0;
+> +	char query[OUR_QUERY_SIZE];
+> +	struct dyndbg_bitdesc *bitmap = (struct dyndbg_bitdesc *) kp->data;
 
-Similar __module_param_call_with_data()
+So you need space after ')' ?
+
+> +	rc = kstrtoul(instr, 0, &inbits);
+> +	if (rc) {
+> +		pr_err("set_dyndbg: failed\n");
+
+> +		return -EINVAL;
+
+Why not to return rc?
+
+> +	}
+> +	vpr_info("set_dyndbg: input 0x%lx\n", inbits);
+> +
+> +	for (i = 0; !!bitmap[i].prefix; i++) {
+
+Hmm... Why not simply
+
+	for (bitmap = ...; bitmap->prefix; bitmap++) {
+
+?
+
+> +
+
+Redundant blank line.
+
+> +		sprintf(query, "format '^%s' %cp", bitmap[i].prefix,
+> +			test_bit(i, &inbits) ? '+' : '-');
+
+snprintf() ?
+
+> +
+> +		chgct = dynamic_debug_exec_queries(query, kp->mod->name);
+> +
+> +		v2pr_info("bit-%d: %d changes by '%s'\n", i, chgct, query);
+> +		totct += chgct;
+> +	}
+> +	vpr_info("total changes: %d\n", totct);
+> +	return 0;
+> +}
+
+...
+
+> +	return scnprintf(buffer, PAGE_SIZE, "%u\n",
+> +			 *((unsigned int *)kp->arg));
+
+One line.
 
 -- 
 With Best Regards,
