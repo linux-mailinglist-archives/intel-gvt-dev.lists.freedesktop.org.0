@@ -1,88 +1,96 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ADD83EB9D8
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Aug 2021 18:13:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id DAB153EBB27
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Aug 2021 19:15:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C23E46E881;
-	Fri, 13 Aug 2021 16:13:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D1AE86E8B3;
+	Fri, 13 Aug 2021 17:15:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from casper.infradead.org (casper.infradead.org
- [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 690126E880;
- Fri, 13 Aug 2021 16:13:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=9Jq9OYg9EXI1aRB5/mW+60AZEjUGr9kH6BUneFaePHw=; b=srU2gOhlF1tA35b57YG0YNmQxP
- Bu7cAtaISOcIQ5NX4BIk/TfOlOHPn82r4hLbjJIY3Kk+5STCK2yycxhkCFjMHMTuPyOtY5mPtiWNu
- 8PHYiam1b2H2D5UTeByA4eT4hYZqxpnTD0gI4LS3RPWD4zhiBBYdhekex0P6p0SwZZnA1Mk3vivuw
- xZsJSC70p0qDfbsiYBbd79goLwWxx4ahK+itkfJyAiFkIg/M1Yzxt0y5EVeoTaCw6l5+FpwtajKn/
- kqW98BeM4RU3mYmkl5oFkchdxpk8NQpZxkj/oV2ihrSsq0bv5lQRgq7SbOM5b2CPcMbVs6WEqLE2l
- JJZoY3wQ==;
-Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red
- Hat Linux)) id 1mEZjj-00FqgB-G6; Fri, 13 Aug 2021 16:09:06 +0000
-Date: Fri, 13 Aug 2021 17:08:47 +0100
-From: Matthew Wilcox <willy@infradead.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Jim Cromie <jim.cromie@gmail.com>, gregkh@linuxfoundation.org,
- seanpaul@chromium.org,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- "Pan, Xinhui" <Xinhui.Pan@amd.com>,
- Harry Wentland <harry.wentland@amd.com>,
- Leo Li <sunpeng.li@amd.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Jason Baron <jbaron@akamai.com>,
- Hawking Zhang <Hawking.Zhang@amd.com>, Tao Zhou <tao.zhou1@amd.com>,
- Huang Rui <ray.huang@amd.com>, Kevin Wang <kevin1.wang@amd.com>,
- Chengming Gui <Jack.Gui@amd.com>, Likun Gao <Likun.Gao@amd.com>,
- John Clements <john.clements@amd.com>,
- Ashley Thomas <Ashley.Thomas2@amd.com>,
- Qingqing Zhuo <qingqing.zhuo@amd.com>,
- Aurabindo Pillai <aurabindo.pillai@amd.com>,
- Wyatt Wood <Wyatt.Wood@amd.com>, Johan Hovold <johan@kernel.org>,
- Jessica Yu <jeyu@kernel.org>, Joe Perches <joe@perches.com>,
- Miguel Ojeda <ojeda@kernel.org>,
- Nick Desaulniers <ndesaulniers@gooogle.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Masahiro Yamada <masahiroy@kernel.org>,
- Peter Zijlstra <peterz@infradead.org>,
- "Paul E. McKenney" <paulmck@kernel.org>,
- Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
- Thomas Gleixner <tglx@linutronix.de>,
- Vitor Massaru Iha <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>,
- Changbin Du <changbin.du@intel.com>, Marco Elver <elver@google.com>,
- Jarkko Sakkinen <jarkko@kernel.org>,
- Alexander Potapenko <glider@google.com>,
- Zhen Lei <thunder.leizhen@huawei.com>,
- Albert van der Linde <alinde@google.com>,
- Johannes Berg <johannes.berg@intel.com>,
- Arvind Sankar <nivedita@alum.mit.edu>,
- Patricia Alfonso <trishalfonso@google.com>, Arnd Bergmann <arnd@arndb.de>,
- Palmer Dabbelt <palmerdabbelt@google.com>, Jiri Olsa <jolsa@kernel.org>,
- Andrey Konovalov <andreyknvl@gmail.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Subject: Re: [PATCH v5 3/9] dyndbg: add DEFINE_DYNAMIC_DEBUG_CATEGORIES and
- callbacks
-Message-ID: <YRaZDzROiEhqJgUb@casper.infradead.org>
-References: <20210813151734.1236324-1-jim.cromie@gmail.com>
- <20210813151734.1236324-4-jim.cromie@gmail.com>
- <YRaU6fbGjcV7BGC/@smile.fi.intel.com>
+Received: from mail-ed1-x534.google.com (mail-ed1-x534.google.com
+ [IPv6:2a00:1450:4864:20::534])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6FF736E8A5;
+ Fri, 13 Aug 2021 17:15:22 +0000 (UTC)
+Received: by mail-ed1-x534.google.com with SMTP id n12so16397801edx.8;
+ Fri, 13 Aug 2021 10:15:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zlUEA9e1VkT1gKXLNSjj1Okgcd3GspYEDUxv1J4Esdc=;
+ b=fA8sxxgKhksZ1i4Qq5qRH12NiDHha3/axZgW4UCqa9o6CPE7sxYCS7rBOg2/0txpSW
+ 9+CrDumsBSyBBbBOgASKG9jgN4jCYaWf65uXG4ctkYYMZRsdKpewJCdKa5BsgvDVsEiQ
+ lugujmU729iB3ptr+YbPg+hzVpo3j3hrNsPMQ3TcqJrNMAv5nR+Oml2UD6+SC6DE+TS7
+ tR40hw02reD9jMswhju68QwoefFwFXeKZxcuYQwQjzGEd4RlAG9oeAhbRxPcaeTw9hzH
+ 6N9GvTCTUuzi8s5WaICar7uNOE9CsKOl2V0hhkKWwZHOGFF8Od4q+JLKItGPOpoA0HFA
+ apkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zlUEA9e1VkT1gKXLNSjj1Okgcd3GspYEDUxv1J4Esdc=;
+ b=nooOMFt+e7cIJ7bgiuX949u+iCK/qNpswNNA5357s9njE+8CNOaqhjp3cbAJTfpDS4
+ kbBtR47h3aaLGRnGxDepEbzn2WSe3rpYUl2TRqB5aqB5beTNfkLRegw/EFl41kWTSeqC
+ RV54RmBqERLhy8GnngmXeBo0Wc6PUnVUryvfWXNPgnx2JCDTdoIflG+BPw/Ai6AYHJUL
+ oMSO2b0ZUIW/KrmJPB5faS+MGct2sTeSQxUFddLDCwKKcExoXSR4Bp6n5ZejJj6p/zYb
+ 5pB2r6m/rB6mx0/Z5ofQtaER/jdv4feLmHZ1r8/wthVTdyzUQmv4IHgL55xWt0zF752d
+ xPHg==
+X-Gm-Message-State: AOAM530vEIKux4NYsb+VWUud556hY9lb46FU8QSMnfurT9O7tw2u79Q4
+ 1WJXkLQgFq5kUOnalpeNLMZ2YA21qYhm3E4bBUQ=
+X-Google-Smtp-Source: ABdhPJxKqDQE7Wsav+ukfzCwEKv0lituAMXiubWkS1keXQNfA9S610Xmqy8VSXVezfOBZx/BMV9dsWiuwOIMar4rUmc=
+X-Received: by 2002:a05:6402:31ad:: with SMTP id
+ dj13mr4363446edb.296.1628874920810; 
+ Fri, 13 Aug 2021 10:15:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YRaU6fbGjcV7BGC/@smile.fi.intel.com>
+References: <20210813151734.1236324-1-jim.cromie@gmail.com>
+ <20210813151734.1236324-3-jim.cromie@gmail.com>
+ <YRaTMFzUFCeC6ELA@smile.fi.intel.com>
+In-Reply-To: <YRaTMFzUFCeC6ELA@smile.fi.intel.com>
+From: jim.cromie@gmail.com
+Date: Fri, 13 Aug 2021 11:14:54 -0600
+Message-ID: <CAJfuBxyaAG567-PFJo4DX12yUAOPQG4uJfhccgL0=xU9O4rzjA@mail.gmail.com>
+Subject: Re: [PATCH v5 2/9] moduleparam: add data member to struct kernel_param
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, Sean Paul <seanpaul@chromium.org>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Alex Deucher <alexander.deucher@amd.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ "Pan, Xinhui" <Xinhui.Pan@amd.com>, Harry Wentland <harry.wentland@amd.com>,
+ Leo Li <sunpeng.li@amd.com>, 
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Jason Baron <jbaron@akamai.com>, Hawking Zhang <Hawking.Zhang@amd.com>,
+ Tao Zhou <tao.zhou1@amd.com>, 
+ Huang Rui <ray.huang@amd.com>, Likun Gao <Likun.Gao@amd.com>,
+ Chengming Gui <Jack.Gui@amd.com>, 
+ Aaron Liu <aaron.liu@amd.com>, John Clements <john.clements@amd.com>, 
+ Kevin Wang <kevin1.wang@amd.com>, Ashley Thomas <Ashley.Thomas2@amd.com>, 
+ Qingqing Zhuo <qingqing.zhuo@amd.com>, Wyatt Wood <Wyatt.Wood@amd.com>, 
+ Aurabindo Pillai <aurabindo.pillai@amd.com>, Johan Hovold <johan@kernel.org>, 
+ Jessica Yu <jeyu@kernel.org>, Nick Desaulniers <ndesaulniers@gooogle.com>, 
+ Joe Perches <joe@perches.com>, Miguel Ojeda <ojeda@kernel.org>, 
+ Andrew Morton <akpm@linux-foundation.org>,
+ Masahiro Yamada <masahiroy@kernel.org>, 
+ Peter Zijlstra <peterz@infradead.org>, "Paul E. McKenney" <paulmck@kernel.org>,
+ Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
+ Thomas Gleixner <tglx@linutronix.de>, 
+ Vitor Massaru Iha <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>, 
+ Zhen Lei <thunder.leizhen@huawei.com>, Marco Elver <elver@google.com>, 
+ Jarkko Sakkinen <jarkko@kernel.org>, Alexander Potapenko <glider@google.com>, 
+ Palmer Dabbelt <palmerdabbelt@google.com>,
+ Patricia Alfonso <trishalfonso@google.com>, Jiri Olsa <jolsa@kernel.org>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>, 
+ Arvind Sankar <nivedita@alum.mit.edu>, Johannes Berg <johannes.berg@intel.com>,
+ Arnd Bergmann <arnd@arndb.de>, LKML <linux-kernel@vger.kernel.org>, 
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ intel-gvt-dev@lists.freedesktop.org, 
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,19 +106,50 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Aug 13, 2021 at 06:51:05PM +0300, Andy Shevchenko wrote:
-> On Fri, Aug 13, 2021 at 09:17:11AM -0600, Jim Cromie wrote:
-> > +int param_set_dyndbg(const char *instr, const struct kernel_param *kp)
-> > +{
-> > +	unsigned long inbits;
-> > +	int rc, i, chgct = 0, totct = 0;
-> > +	char query[OUR_QUERY_SIZE];
-> > +	struct dyndbg_bitdesc *bitmap = (struct dyndbg_bitdesc *) kp->data;
-> 
-> So you need space after ')' ?
+On Fri, Aug 13, 2021 at 9:44 AM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Fri, Aug 13, 2021 at 09:17:10AM -0600, Jim Cromie wrote:
+> > Add a const void* data member to the struct, to allow attaching
+> > private data that will be used soon by a setter method (via kp->data)
+> > to perform more elaborate actions.
+> >
+> > To attach the data at compile time, add new macros:
+> >
+> > module_param_cbd() derives from module_param_cb(), adding data param,
+> > and latter is redefined to use former.
+> >
+> > It calls __module_param_call_wdata(), which accepts a new data param
+> > and inits .data with it. Re-define __module_param_call() to use it.
+> >
+> > Use of this new data member will be rare, it might be worth redoing
+> > this as a separate/sub-type to de-bloat the base case.
+>
+> ...
+>
+> > +#define module_param_cbd(name, ops, arg, perm, data)                         \
+> > +     __module_param_call_wdata(MODULE_PARAM_PREFIX, name, ops, arg, perm, -1, 0, data)
+>
+> Cryptic name. Moreover, inconsistent with the rest.
+> What about module_param_cb_data() ?
+>
+> >  #define module_param_cb_unsafe(name, ops, arg, perm)                       \
+> >       __module_param_call(MODULE_PARAM_PREFIX, name, ops, arg, perm, -1,    \
+> >                           KERNEL_PARAM_FL_UNSAFE)
+>
+> (above left for the above comment)
+>
+> ...
+>
+> > +#define __module_param_call_wdata(prefix, name, ops, arg, perm, level, flags, data) \
+>
+> Similar __module_param_call_with_data()
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
-More importantly, if ->data is of type 'void *', it is bad style to
-cast the pointer at all.  I can't tell what type 'data' has; if it
-is added to kernel_param as part of this series, I wasn't cc'd on
-the patch that did that.
-
+yes to all renames, revised.
+thanks
