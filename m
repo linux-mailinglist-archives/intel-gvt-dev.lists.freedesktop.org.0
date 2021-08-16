@@ -2,48 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D60B53ECE8E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Aug 2021 08:22:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EAB5F3EDC77
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Aug 2021 19:35:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6B6D589C07;
-	Mon, 16 Aug 2021 06:22:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3816F89E14;
+	Mon, 16 Aug 2021 17:35:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from casper.infradead.org (casper.infradead.org
- [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 54C7C89C07;
- Mon, 16 Aug 2021 06:22:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=xsvqImlktTgwIAXp0oXAhVPLBXMkPr0Ho9dmWnNdMJA=; b=UrSgpLdoF+H/N7Mjn7t7PKMHmm
- qtyRLsfb3vDWrGlrTcDbPt62gZDE4mrKzTbcGQB6ol832WftuIeyJOsIeF63tTFA1LoyTiovCj0y8
- pdfKFMuI/ujC9fbzDVz2d6pLMvok72DU1TsFQXeb2KNRZNSfGUyAdGneAL0ZxTAz8UTjFBRn20i2B
- TepVE3aA4ebk8I6lsCsyQyPoVxHvdWDj4Ny365Q/uhZ03fmXKANAWnUxXxY1WU5rzmEClT2W5oTih
- tfIwLA9z+hwh0Bez5aMR8DHGAKKQAhBSKFu3KjkVLaBuG1Rkmexb24nP8x/QZEZwzrj1g5oGjpTQE
- TgSGCCWA==;
-Received: from hch by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat
- Linux)) id 1mFW0J-0012V1-0B; Mon, 16 Aug 2021 06:21:53 +0000
-Date: Mon, 16 Aug 2021 07:21:46 +0100
-From: Christoph Hellwig <hch@infradead.org>
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 57C3989DDD;
+ Mon, 16 Aug 2021 17:35:04 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 853F568AFE; Mon, 16 Aug 2021 19:34:59 +0200 (CEST)
+Date: Mon, 16 Aug 2021 19:34:58 +0200
+From: Christoph Hellwig <hch@lst.de>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Christoph Hellwig <hch@infradead.org>,
- Jani Nikula <jani.nikula@linux.intel.com>,
+Cc: Jason Gunthorpe <jgg@nvidia.com>, Christoph Hellwig <hch@lst.de>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Greg KH <gregkh@linuxfoundation.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org
-Subject: Re: i915 timeouts delaying boot under GVT
-Message-ID: <YRoD+p2tdkfAmA8U@infradead.org>
-References: <YRYRwG5jscfl54pj@infradead.org>
- <20210816024534.GV13928@zhen-hp.sh.intel.com>
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
+Subject: Re: refactor the i915 GVT support
+Message-ID: <20210816173458.GA9183@lst.de>
+References: <20210721155355.173183-1-hch@lst.de>
+ <DM4PR11MB55496531B246A4604FC86998CAE49@DM4PR11MB5549.namprd11.prod.outlook.com>
+ <20210722112636.wj277vqhg4dez5ug@sirius.home.kraxel.org>
+ <20210727121224.GA2145868@nvidia.com>
+ <DM4PR11MB5549EC882AA6076F3468274DCAEA9@DM4PR11MB5549.namprd11.prod.outlook.com>
+ <20210728175925.GU1721383@nvidia.com> <20210729072022.GB31896@lst.de>
+ <20210803094315.GF13928@zhen-hp.sh.intel.com>
+ <20210803143058.GA1721383@nvidia.com>
+ <20210804052606.GG13928@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20210816024534.GV13928@zhen-hp.sh.intel.com>
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
+In-Reply-To: <20210804052606.GG13928@zhen-hp.sh.intel.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,50 +59,21 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Aug 16, 2021 at 10:45:34AM +0800, Zhenyu Wang wrote:
-> Hi, Christoph, what platform is this?
+On Wed, Aug 04, 2021 at 01:26:06PM +0800, Zhenyu Wang wrote:
+> On 2021.08.03 11:30:58 -0300, Jason Gunthorpe wrote:
+> > On Tue, Aug 03, 2021 at 05:43:15PM +0800, Zhenyu Wang wrote:
+> > > Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > > 
+> > > Thanks a lot for this effort!
+> > 
+> > Great, do we have a submission plan for this? how much does it clash
+> > with my open_device/etc patch? ie does the whole thing have to go
+> > through the vfio tree?
+> > 
+> 
+> I think Alex would determine when to merge open_device series, gvt part
+> can be through vfio tree without problem. For this refactor, I would first
+> merge for gvt staging to do more regression testing before sending through
+> i915 tree.
 
-Kaby Lake ( i7-8550U)
-
->
-> And what's your guest i915 config?
-
-guest config as in i915-related .config options?
-
----------------- snip ----------------
-CONFIG_DRM_I915=y
-CONFIG_DRM_I915_FORCE_PROBE=""
-CONFIG_DRM_I915_CAPTURE_ERROR=y
-CONFIG_DRM_I915_COMPRESS_ERROR=y
-CONFIG_DRM_I915_USERPTR=y
-# CONFIG_DRM_I915_GVT is not set
-
-#
-# drm/i915 Debugging
-#
-# CONFIG_DRM_I915_WERROR is not set
-# CONFIG_DRM_I915_DEBUG is not set
-# CONFIG_DRM_I915_DEBUG_MMIO is not set
-# CONFIG_DRM_I915_SW_FENCE_DEBUG_OBJECTS is not set
-# CONFIG_DRM_I915_SW_FENCE_CHECK_DAG is not set
-# CONFIG_DRM_I915_DEBUG_GUC is not set
-# CONFIG_DRM_I915_SELFTEST is not set
-# CONFIG_DRM_I915_LOW_LEVEL_TRACEPOINTS is not set
-# CONFIG_DRM_I915_DEBUG_VBLANK_EVADE is not set
-# CONFIG_DRM_I915_DEBUG_RUNTIME_PM is not set
-# end of drm/i915 Debugging
-#
-
-#
-# drm/i915 Profile Guided Optimisation
-#
-CONFIG_DRM_I915_REQUEST_TIMEOUT=20000
-CONFIG_DRM_I915_FENCE_TIMEOUT=10000
-CONFIG_DRM_I915_USERFAULT_AUTOSUSPEND=250
-CONFIG_DRM_I915_HEARTBEAT_INTERVAL=2500
-CONFIG_DRM_I915_PREEMPT_TIMEOUT=100
-CONFIG_DRM_I915_MAX_REQUEST_BUSYWAIT=8000
-CONFIG_DRM_I915_STOP_TIMEOUT=100
-CONFIG_DRM_I915_TIMESLICE_DURATION=1
-# end of drm/i915 Profile Guided Optimisation
----------------- snip ----------------
+Any updates on this?  I'd really hate to miss this merge window.
