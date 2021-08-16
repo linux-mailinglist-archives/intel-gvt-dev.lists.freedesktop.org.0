@@ -1,45 +1,49 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E36083ECCFB
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Aug 2021 05:08:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D60B53ECE8E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Aug 2021 08:22:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8331589A75;
-	Mon, 16 Aug 2021 03:08:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6B6D589C07;
+	Mon, 16 Aug 2021 06:22:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AA9B789A75;
- Mon, 16 Aug 2021 03:08:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10077"; a="213936220"
-X-IronPort-AV: E=Sophos;i="5.84,324,1620716400"; 
- d="asc'?scan'208";a="213936220"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2021 20:08:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,324,1620716400"; 
- d="asc'?scan'208";a="487056715"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
- by fmsmga008.fm.intel.com with ESMTP; 15 Aug 2021 20:08:10 -0700
-Date: Mon, 16 Aug 2021 10:45:34 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Christoph Hellwig <hch@infradead.org>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 54C7C89C07;
+ Mon, 16 Aug 2021 06:22:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=xsvqImlktTgwIAXp0oXAhVPLBXMkPr0Ho9dmWnNdMJA=; b=UrSgpLdoF+H/N7Mjn7t7PKMHmm
+ qtyRLsfb3vDWrGlrTcDbPt62gZDE4mrKzTbcGQB6ol832WftuIeyJOsIeF63tTFA1LoyTiovCj0y8
+ pdfKFMuI/ujC9fbzDVz2d6pLMvok72DU1TsFQXeb2KNRZNSfGUyAdGneAL0ZxTAz8UTjFBRn20i2B
+ TepVE3aA4ebk8I6lsCsyQyPoVxHvdWDj4Ny365Q/uhZ03fmXKANAWnUxXxY1WU5rzmEClT2W5oTih
+ tfIwLA9z+hwh0Bez5aMR8DHGAKKQAhBSKFu3KjkVLaBuG1Rkmexb24nP8x/QZEZwzrj1g5oGjpTQE
+ TgSGCCWA==;
+Received: from hch by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat
+ Linux)) id 1mFW0J-0012V1-0B; Mon, 16 Aug 2021 06:21:53 +0000
+Date: Mon, 16 Aug 2021 07:21:46 +0100
+From: Christoph Hellwig <hch@infradead.org>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Christoph Hellwig <hch@infradead.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
  Zhi Wang <zhi.a.wang@intel.com>, intel-gfx@lists.freedesktop.org,
  intel-gvt-dev@lists.freedesktop.org
 Subject: Re: i915 timeouts delaying boot under GVT
-Message-ID: <20210816024534.GV13928@zhen-hp.sh.intel.com>
+Message-ID: <YRoD+p2tdkfAmA8U@infradead.org>
 References: <YRYRwG5jscfl54pj@infradead.org>
+ <20210816024534.GV13928@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="N1feavoG/SlNLCrA"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <YRYRwG5jscfl54pj@infradead.org>
+In-Reply-To: <20210816024534.GV13928@zhen-hp.sh.intel.com>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,80 +56,53 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Mon, Aug 16, 2021 at 10:45:34AM +0800, Zhenyu Wang wrote:
+> Hi, Christoph, what platform is this?
 
---N1feavoG/SlNLCrA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Kaby Lake ( i7-8550U)
 
-On 2021.08.13 08:31:28 +0200, Christoph Hellwig wrote:
-> Hi all,
->=20
-> when botting a current 4.14-rc tree in a VM using GVT-g (with the host
-> also running a current 4.14-rc tree), I see bunch of long timeouts
-> followed by i915 errors:
->=20
-> [    4.252066] i915 0000:00:03.0: [drm] VGT balloon successfully
-> [    5.095190] i915 0000:00:03.0: [drm] *ERROR* Failed to disable SAGV (-=
-110)
-> [   15.334559] [drm:drm_atomic_helper_wait_for_flip_done] *ERROR* [CRTC:5=
-1:pipe
-> A] flip_done timed out
-> [   15.346934] [drm] Initialized i915 1.6.0 20201103 for 0000:00:03.0 on =
-minor
-> 0
->=20
-> I did a hackjob to track them down and just if out the offending code,
-> which speeds up the boot by ~11 seconds but is probably dangerous as hell:
+>
+> And what's your guest i915 config?
 
-Hi, Christoph, what platform is this? And what's your guest i915 config?
+guest config as in i915-related .config options?
 
-I'll try to reproduce on our side. Thanks for reporting this.
+---------------- snip ----------------
+CONFIG_DRM_I915=y
+CONFIG_DRM_I915_FORCE_PROBE=""
+CONFIG_DRM_I915_CAPTURE_ERROR=y
+CONFIG_DRM_I915_COMPRESS_ERROR=y
+CONFIG_DRM_I915_USERPTR=y
+# CONFIG_DRM_I915_GVT is not set
 
->=20
-> diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/d=
-rm/i915/display/intel_display.c
-> index 2d5d21740c25..ee82fd67f386 100644
-> --- a/drivers/gpu/drm/i915/display/intel_display.c
-> +++ b/drivers/gpu/drm/i915/display/intel_display.c
-> @@ -10696,7 +10696,7 @@ static void intel_atomic_commit_tail(struct intel=
-_atomic_state *state)
->  	 * - switch over to the vblank wait helper in the core after that since
->  	 *   we don't need out special handling any more.
->  	 */
-> -	drm_atomic_helper_wait_for_flip_done(dev, &state->base);
-> +//	drm_atomic_helper_wait_for_flip_done(dev, &state->base);
-> =20
->  	for_each_new_intel_crtc_in_state(state, crtc, new_crtc_state, i) {
->  		if (new_crtc_state->uapi.async_flip)
-> diff --git a/drivers/gpu/drm/i915/intel_pm.c b/drivers/gpu/drm/i915/intel=
-_pm.c
-> index 45fefa0ed160..f03ce729cc4b 100644
-> --- a/drivers/gpu/drm/i915/intel_pm.c
-> +++ b/drivers/gpu/drm/i915/intel_pm.c
-> @@ -3753,7 +3753,7 @@ intel_disable_sagv(struct drm_i915_private *dev_pri=
-v)
->  	if (!intel_has_sagv(dev_priv))
->  		return 0;
-> =20
-> -	if (dev_priv->sagv_status =3D=3D I915_SAGV_DISABLED)
-> +	if (1 || dev_priv->sagv_status =3D=3D I915_SAGV_DISABLED)
->  		return 0;
-> =20
->  	drm_dbg_kms(&dev_priv->drm, "Disabling SAGV\n");
+#
+# drm/i915 Debugging
+#
+# CONFIG_DRM_I915_WERROR is not set
+# CONFIG_DRM_I915_DEBUG is not set
+# CONFIG_DRM_I915_DEBUG_MMIO is not set
+# CONFIG_DRM_I915_SW_FENCE_DEBUG_OBJECTS is not set
+# CONFIG_DRM_I915_SW_FENCE_CHECK_DAG is not set
+# CONFIG_DRM_I915_DEBUG_GUC is not set
+# CONFIG_DRM_I915_SELFTEST is not set
+# CONFIG_DRM_I915_LOW_LEVEL_TRACEPOINTS is not set
+# CONFIG_DRM_I915_DEBUG_VBLANK_EVADE is not set
+# CONFIG_DRM_I915_DEBUG_RUNTIME_PM is not set
+# end of drm/i915 Debugging
+#
 
---N1feavoG/SlNLCrA
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYRnRQwAKCRCxBBozTXgY
-J7Q8AJsHTvAvpGJUskW0DHYOUnKA6cxcCQCZAaaJks+wH8DDmB43G8ppNAMDYPs=
-=8+Rv
------END PGP SIGNATURE-----
-
---N1feavoG/SlNLCrA--
+#
+# drm/i915 Profile Guided Optimisation
+#
+CONFIG_DRM_I915_REQUEST_TIMEOUT=20000
+CONFIG_DRM_I915_FENCE_TIMEOUT=10000
+CONFIG_DRM_I915_USERFAULT_AUTOSUSPEND=250
+CONFIG_DRM_I915_HEARTBEAT_INTERVAL=2500
+CONFIG_DRM_I915_PREEMPT_TIMEOUT=100
+CONFIG_DRM_I915_MAX_REQUEST_BUSYWAIT=8000
+CONFIG_DRM_I915_STOP_TIMEOUT=100
+CONFIG_DRM_I915_TIMESLICE_DURATION=1
+# end of drm/i915 Profile Guided Optimisation
+---------------- snip ----------------
