@@ -1,40 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCBA63ECC2E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Aug 2021 03:06:06 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E36083ECCFB
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Aug 2021 05:08:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2AE9289B60;
-	Mon, 16 Aug 2021 01:06:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8331589A75;
+	Mon, 16 Aug 2021 03:08:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0CCA789B60
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 16 Aug 2021 01:05:58 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10077"; a="213926604"
-X-IronPort-AV: E=Sophos;i="5.84,324,1620716400"; d="scan'208";a="213926604"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AA9B789A75;
+ Mon, 16 Aug 2021 03:08:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10077"; a="213936220"
+X-IronPort-AV: E=Sophos;i="5.84,324,1620716400"; 
+ d="asc'?scan'208";a="213936220"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2021 18:05:57 -0700
-X-IronPort-AV: E=Sophos;i="5.84,324,1620716400"; d="scan'208";a="519329009"
-Received: from yzhao56-desk.sh.intel.com ([10.239.13.16])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2021 18:05:56 -0700
-Date: Mon, 16 Aug 2021 08:50:56 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: [bug report] drm/i915/gvt: hold reference of VFIO group during
- opening of vgpu
-Message-ID: <20210816005049.GA15842@yzhao56-desk.sh.intel.com>
-References: <20210813110419.GA28028@kili>
+ 15 Aug 2021 20:08:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,324,1620716400"; 
+ d="asc'?scan'208";a="487056715"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by fmsmga008.fm.intel.com with ESMTP; 15 Aug 2021 20:08:10 -0700
+Date: Mon, 16 Aug 2021 10:45:34 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Christoph Hellwig <hch@infradead.org>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org
+Subject: Re: i915 timeouts delaying boot under GVT
+Message-ID: <20210816024534.GV13928@zhen-hp.sh.intel.com>
+References: <YRYRwG5jscfl54pj@infradead.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="N1feavoG/SlNLCrA"
 Content-Disposition: inline
-In-Reply-To: <20210813110419.GA28028@kili>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <YRYRwG5jscfl54pj@infradead.org>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,93 +52,80 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Aug 13, 2021 at 02:04:19PM +0300, Dan Carpenter wrote:
-> Hello Yan Zhao,
-> 
-> The patch 776d95b768e6: "drm/i915/gvt: hold reference of VFIO group
-> during opening of vgpu" from Mar 12, 2020, leads to the following
-> Smatch static checker warning:
-> 
-> 	drivers/gpu/drm/i915/gvt/kvmgt.c:919 intel_vgpu_open_device()
-> 	warn: 'vfio_group' is an error pointer or valid
-> 
-> drivers/gpu/drm/i915/gvt/kvmgt.c
->     909 	ret = vfio_register_notifier(mdev_dev(mdev), VFIO_GROUP_NOTIFY, &events,
->     910 				&vdev->group_notifier);
->     911 	if (ret != 0) {
->     912 		gvt_vgpu_err("vfio_register_notifier for group failed: %d\n",
->     913 			ret);
->     914 		goto undo_iommu;
->     915 	}
->     916 
->     917 	vfio_group = vfio_group_get_external_user_from_dev(mdev_dev(mdev));
->     918 	if (IS_ERR_OR_NULL(vfio_group)) {
->                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
-> When a function returns both NULLs and error pointers, then the NULL is
-> NOT an error.  This normally happens when a feature has been
-> deliberately disabled:
-> 
-> 	foo = get_optional_feature();
-> 
-hi Dan,
-Thanks for your mail.
-The reason IS_ERR_OR_NULL was selected is that I think even the function
-returns a valid NULL pointer for whatever reason, kvmgt should refuse to
-handle it.
-Though I agree we can turn it to IS_ERR safely for now, I'll leave it to
-the maintainer to decide whether this change is deserved.
 
-Thanks
-Yan
+--N1feavoG/SlNLCrA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> If the feature is disabled, then the code has to continue without
-> printing an error message or crashing.  If the feature has an error then
-> that has to be reported to the user and we return an error code.
-> 
-> In this case, I don't think vfio_group_get_external_user_from_dev()
-> returns NULL so the fix is to just change the check to IS_ERR().
-> 
-> --> 919 		ret = !vfio_group ? -EFAULT : PTR_ERR(vfio_group);
->     920 		gvt_vgpu_err("vfio_group_get_external_user_from_dev failed\n");
->     921 		goto undo_register;
->     922 	}
->     923 	vdev->vfio_group = vfio_group;
->     924 
->     925 	/* Take a module reference as mdev core doesn't take
->     926 	 * a reference for vendor driver.
->     927 	 */
->     928 	if (!try_module_get(THIS_MODULE)) {
->     929 		ret = -ENODEV;
->     930 		goto undo_group;
->     931 	}
->     932 
->     933 	ret = kvmgt_guest_init(mdev);
->     934 	if (ret)
->     935 		goto undo_group;
->     936 
->     937 	intel_gvt_ops->vgpu_activate(vgpu);
->     938 
->     939 	atomic_set(&vdev->released, 0);
->     940 	return ret;
->     941 
->     942 undo_group:
->     943 	vfio_group_put_external_user(vdev->vfio_group);
->     944 	vdev->vfio_group = NULL;
->     945 
->     946 undo_register:
->     947 	vfio_unregister_notifier(mdev_dev(mdev), VFIO_GROUP_NOTIFY,
->     948 					&vdev->group_notifier);
->     949 
->     950 undo_iommu:
->     951 	vfio_unregister_notifier(mdev_dev(mdev), VFIO_IOMMU_NOTIFY,
->     952 					&vdev->iommu_notifier);
->     953 out:
->     954 	return ret;
->     955 }
-> 
-> regards,
-> dan carpenter
+On 2021.08.13 08:31:28 +0200, Christoph Hellwig wrote:
+> Hi all,
+>=20
+> when botting a current 4.14-rc tree in a VM using GVT-g (with the host
+> also running a current 4.14-rc tree), I see bunch of long timeouts
+> followed by i915 errors:
+>=20
+> [    4.252066] i915 0000:00:03.0: [drm] VGT balloon successfully
+> [    5.095190] i915 0000:00:03.0: [drm] *ERROR* Failed to disable SAGV (-=
+110)
+> [   15.334559] [drm:drm_atomic_helper_wait_for_flip_done] *ERROR* [CRTC:5=
+1:pipe
+> A] flip_done timed out
+> [   15.346934] [drm] Initialized i915 1.6.0 20201103 for 0000:00:03.0 on =
+minor
+> 0
+>=20
+> I did a hackjob to track them down and just if out the offending code,
+> which speeds up the boot by ~11 seconds but is probably dangerous as hell:
+
+Hi, Christoph, what platform is this? And what's your guest i915 config?
+
+I'll try to reproduce on our side. Thanks for reporting this.
+
+>=20
+> diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/d=
+rm/i915/display/intel_display.c
+> index 2d5d21740c25..ee82fd67f386 100644
+> --- a/drivers/gpu/drm/i915/display/intel_display.c
+> +++ b/drivers/gpu/drm/i915/display/intel_display.c
+> @@ -10696,7 +10696,7 @@ static void intel_atomic_commit_tail(struct intel=
+_atomic_state *state)
+>  	 * - switch over to the vblank wait helper in the core after that since
+>  	 *   we don't need out special handling any more.
+>  	 */
+> -	drm_atomic_helper_wait_for_flip_done(dev, &state->base);
+> +//	drm_atomic_helper_wait_for_flip_done(dev, &state->base);
+> =20
+>  	for_each_new_intel_crtc_in_state(state, crtc, new_crtc_state, i) {
+>  		if (new_crtc_state->uapi.async_flip)
+> diff --git a/drivers/gpu/drm/i915/intel_pm.c b/drivers/gpu/drm/i915/intel=
+_pm.c
+> index 45fefa0ed160..f03ce729cc4b 100644
+> --- a/drivers/gpu/drm/i915/intel_pm.c
+> +++ b/drivers/gpu/drm/i915/intel_pm.c
+> @@ -3753,7 +3753,7 @@ intel_disable_sagv(struct drm_i915_private *dev_pri=
+v)
+>  	if (!intel_has_sagv(dev_priv))
+>  		return 0;
+> =20
+> -	if (dev_priv->sagv_status =3D=3D I915_SAGV_DISABLED)
+> +	if (1 || dev_priv->sagv_status =3D=3D I915_SAGV_DISABLED)
+>  		return 0;
+> =20
+>  	drm_dbg_kms(&dev_priv->drm, "Disabling SAGV\n");
+
+--N1feavoG/SlNLCrA
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYRnRQwAKCRCxBBozTXgY
+J7Q8AJsHTvAvpGJUskW0DHYOUnKA6cxcCQCZAaaJks+wH8DDmB43G8ppNAMDYPs=
+=8+Rv
+-----END PGP SIGNATURE-----
+
+--N1feavoG/SlNLCrA--
