@@ -2,26 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD2783F0975
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Aug 2021 18:45:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A43413F1019
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Aug 2021 03:54:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6A5976E917;
-	Wed, 18 Aug 2021 16:45:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3D63289256;
+	Thu, 19 Aug 2021 01:54:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from safewaydriving.com (unknown [188.72.187.172])
- by gabe.freedesktop.org (Postfix) with ESMTP id A79726E86C
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 910FA89256
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Aug 2021 16:45:06 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: office chair 8 colors to choose from
-Message-ID: <18f7cfc690026cac6b4fb5e4c5121713@lineelectric.com>
-Date: Wed, 18 Aug 2021 08:13:33 +0200
-From: "Harvey" <harveyxn@ericwichman.ca>
+ Thu, 19 Aug 2021 01:53:58 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10080"; a="203616149"
+X-IronPort-AV: E=Sophos;i="5.84,333,1620716400"; d="scan'208";a="203616149"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2021 18:53:58 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,333,1620716400"; d="scan'208";a="681473643"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 18 Aug 2021 18:53:56 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mGXFj-000TVu-F3; Thu, 19 Aug 2021 01:53:55 +0000
+Date: Thu, 19 Aug 2021 09:53:19 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
+ zhenyu.z.wang@intel.com
+Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
+ b35e6832b52e51b88784d739a0940e9caaa58434
+Message-ID: <611db98f.Su20P9FhM4F9Kvle%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,67 +49,131 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: harvey@tudchair.xyz
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hi,<br /> <br /> I hope everything is going well.<br /> Our company
-recently introduced the office chair pictured below, which is available in
-multiple colors.<br /> Chairs are available in black, white, blue, grey,
-green, red, pink, purple, and cyan.<br /> <br /> Dense foam that is more
-comfortable to sit on while also being more elastic, tough, and
-long-lasting. <br />Steel structure that is 1.8 percent thicker, more
-sturdy, and more strong. <br />The smooth, non-abrasive surface has no
-negative impact on the skin or the wearer's clothing.<br /> With this
-equipment, you can lift up to 300 pounds. Improvements have been made to
-the gas lift setup for class 3.<br /> <br /> The tests were carried out on
-a rubber roller that can travel silently for 1,000 kilometers at a time.<br
-/> Rotating rollers with the ability to travel in numerous directions and
-rotate 360 degrees at their maximum rotation.<br /> It can only support a
-maximum weight of 300 pounds. With the use of this feature, users can
-recline their chairs. <br />The chair can be reclined in any direction
-between 90 and 180 degrees. The chair bounces when the knob under the seat
-is turned. (See illustration.)<br /> <br /> The dimensions are 22.5 cm on
-the front and 30.5 cm on the back of the shoe. <br />You can choose between
-14" and 20" broad chairs depending on your preference.<br /> The seat
-height can be adjusted from 17.3 inches to 21.5 inches, with a maximum
-height of 21.5 inches.<br /> Other activities such as computer gaming,
-watching television, working, and resting are all possible with this
-setup.<br /> Consequently, your living room or bedroom will be completely
-transformed.<br /> <br /> Chair pricing start at 225.50 for one chair<br />
-For two chairs: 195.50 each<br /> For three or more chairs: 175.50 each<br
-/> <br /> Would you be interested in receiving one or more of our chairs?
-<br /> Send us your location for shipment, and we'll&nbsp; in touch with
-logistics to make the shipment.<br /><br /><br /><img
-src="https://dreamyhome.co.uk/wp-content/uploads/2021/07/chair-5-642x1024.jpg"
-width="250" height="399" /><img
-src="https://gamingpirate.com/wp-content/uploads/2019/08/gaming-chairs-1106794316.jpg"
-width="400" height="400" /><img
-src="https://gamingchairshunter.com/wp-content/uploads/homall-lilac-gaming-chair.jpg"
-width="250" height="377" /><br /><img
-src="https://1bigshop.co.uk/39355-large_default/Gaming-Chair-High-Back-Computer-Chair-PU-Leather-Executive-Ergonomic-Adjustable-Swivel-Task-Chair-with-Headrest-and-Lumbar-Supp.jpg"
-width="350" height="420" /><img
-src="https://10roar.com/wp-content/uploads/2019/11/Homall-Gaming-Chair-Office-Chair.jpg"
-width="380" height="380" /><br /><br /><br />Shoulders are supported from
-the top of the head and neck. Our seats have a natural body shape that you
-will like.<br /> With its pu leather furniture, this residence offers the
-greatest amount of comfort.<br /> Specification:<br /> It is possible to
-change the angle of the locking mechanism between 90 and 180 degrees by
-turning the knob. <br />The spring cylinder's height can be changed by
-adjusting the bracket.<br /> When it comes to toughness and durability,
-this foundation is a five-star foundation.<br /> Orthopaedic and ergonomic
-issues are given the highest attention during the design phase of the
-project.<br /> Pu leather is a high-end leather that is manufactured from
-pigskin.<br /> The chair's headrest and lumbar coils are included in the
-purchase price.<br /> The maximum weight that may be carried is 300
-pounds.<br /> The backrest measures 22.5 x 30 inches in size.<br /><br
-/>Would you be interested in receiving one or more of our chairs?<br />Send
-us your location for shipment, and we'll&nbsp; in touch with logistics to
-make the shipment.<br /> <br /> Thanks,<br /> Harvey<br /><br />
-</body>
-</html>
+tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
+branch HEAD: b35e6832b52e51b88784d739a0940e9caaa58434  gvt-staging: 2021y-08m-18d-18h-21m-36s CST integration manifest
 
+elapsed time: 928m
+
+configs tested: 107
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210816
+h8300                       h8s-sim_defconfig
+powerpc                       maple_defconfig
+sh                           se7751_defconfig
+arm                        realview_defconfig
+mips                      loongson3_defconfig
+s390                                defconfig
+mips                         rt305x_defconfig
+powerpc                 linkstation_defconfig
+arm                       netwinder_defconfig
+riscv                    nommu_k210_defconfig
+powerpc                      ep88xc_defconfig
+arm                        cerfcube_defconfig
+arm                       aspeed_g4_defconfig
+nios2                         10m50_defconfig
+m68k                       m5249evb_defconfig
+m68k                       bvme6000_defconfig
+microblaze                          defconfig
+um                                  defconfig
+arm                         at91_dt_defconfig
+xtensa                  audio_kc705_defconfig
+powerpc                   microwatt_defconfig
+powerpc                     asp8347_defconfig
+powerpc                     mpc83xx_defconfig
+arm                       multi_v4t_defconfig
+m68k                        m5272c3_defconfig
+arm                       spear13xx_defconfig
+x86_64                            allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20210816
+x86_64               randconfig-a004-20210816
+x86_64               randconfig-a003-20210816
+x86_64               randconfig-a001-20210816
+x86_64               randconfig-a005-20210816
+x86_64               randconfig-a002-20210816
+i386                 randconfig-a004-20210818
+i386                 randconfig-a006-20210818
+i386                 randconfig-a002-20210818
+i386                 randconfig-a001-20210818
+i386                 randconfig-a003-20210818
+i386                 randconfig-a005-20210818
+x86_64               randconfig-a004-20210818
+x86_64               randconfig-a006-20210818
+x86_64               randconfig-a003-20210818
+x86_64               randconfig-a005-20210818
+x86_64               randconfig-a002-20210818
+x86_64               randconfig-a001-20210818
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a011-20210816
+x86_64               randconfig-a013-20210816
+x86_64               randconfig-a016-20210816
+x86_64               randconfig-a012-20210816
+x86_64               randconfig-a015-20210816
+x86_64               randconfig-a014-20210816
+i386                 randconfig-a015-20210818
+i386                 randconfig-a011-20210818
+i386                 randconfig-a013-20210818
+i386                 randconfig-a014-20210818
+i386                 randconfig-a016-20210818
+i386                 randconfig-a012-20210818
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
