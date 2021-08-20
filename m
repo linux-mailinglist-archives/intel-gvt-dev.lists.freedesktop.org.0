@@ -2,54 +2,32 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92BEC3F1BD0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Aug 2021 16:43:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D24C3F2867
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Aug 2021 10:28:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D50C26E990;
-	Thu, 19 Aug 2021 14:43:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E90A06EA3F;
+	Fri, 20 Aug 2021 08:28:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 20B4B6E877;
- Thu, 19 Aug 2021 14:43:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10081"; a="216565780"
-X-IronPort-AV: E=Sophos;i="5.84,335,1620716400"; d="scan'208";a="216565780"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2021 07:43:49 -0700
-X-IronPort-AV: E=Sophos;i="5.84,335,1620716400"; d="scan'208";a="522455413"
-Received: from pbhadrir-mobl.gar.corp.intel.com (HELO localhost)
- ([10.251.211.137])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2021 07:43:46 -0700
-Content-Type: text/plain; charset="utf-8"
+X-Greylist: delayed 965 seconds by postgrey-1.36 at gabe;
+ Fri, 20 Aug 2021 08:28:20 UTC
+Received: from bizcloud-server1.hauniniopandek.net (unknown [138.68.173.244])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 529E16EA3F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 20 Aug 2021 08:28:20 +0000 (UTC)
+Received: from test.com (bizcloud-server1.hauniniopandek.net [IPv6:::1])
+ by bizcloud-server1.hauniniopandek.net (Postfix) with ESMTP id 39E51665E8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 20 Aug 2021 08:08:31 +0000 (UTC)
+From: Kristalina Georgieva <test@test.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: YOUR PAYMENT COMPENSATION
+Date: 20 Aug 2021 01:07:03 -0700
+Message-ID: <20210820010703.7A2D634AC4331ED9@test.com>
 MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20210819082929.GB13928@zhen-hp.sh.intel.com>
-References: <20210727121224.GA2145868@nvidia.com>
- <20210728175925.GU1721383@nvidia.com> <20210729072022.GB31896@lst.de>
- <20210803094315.GF13928@zhen-hp.sh.intel.com>
- <20210803143058.GA1721383@nvidia.com>
- <20210804052606.GG13928@zhen-hp.sh.intel.com> <20210816173458.GA9183@lst.de>
- <20210817010851.GW13928@zhen-hp.sh.intel.com>
- <20210817052203.GX13928@zhen-hp.sh.intel.com>
- <20210819082929.GB13928@zhen-hp.sh.intel.com>
-From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Subject: Re: refactor the i915 GVT support
-To: Christoph Hellwig <hch@lst.de>, Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Jason Gunthorpe <jgg@nvidia.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Greg KH <gregkh@linuxfoundation.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jani Nikula <jani.nikula@linux.intel.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Wang, Zhi A" <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Message-ID: <162938422376.18233.1867777087725408939@jlahtine-mobl.ger.corp.intel.com>
-User-Agent: alot/0.8.1
-Date: Thu, 19 Aug 2021 17:43:43 +0300
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,145 +40,81 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: rachaeladelmo@protonmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Quoting Zhenyu Wang (2021-08-19 11:29:29)
-> On 2021.08.17 13:22:03 +0800, Zhenyu Wang wrote:
-> > > On 2021.08.16 19:34:58 +0200, Christoph Hellwig wrote:
-> > > > Any updates on this?  I'd really hate to miss this merge window.
-> > >=20
-> > > I'm still waiting for our validation team's report on this. I'm afraid
-> > > it might be missing for next version as i915 merge window is mostly
-> > > till rc5...and for any change outside of gvt, it still needs to be
-> > > acked by i915 maintainers.
-> >=20
-> > Looks our validation team did have problem against recent i915 change.
-> > If you like to try, we have a gvt-staging branch on
-> > https://github.com/intel/gvt-linux which is generated against drm-tip
-> > with gvt changes for testing, currently it's broken.
-> >=20
-> > One issue is with i915 export that intel_context_unpin has been
-> > changed into static inline function. Another is that intel_gvt.c
-> > should be part of i915 for gvt interface instead of depending on KVMGT
-> > config.
->=20
-> I'm working on below patch to resolve this. But I met a weird issue in
-> case when building i915 as module and also kvmgt module, it caused
-> busy wait on request_module("kvmgt") when boot, it doesn't happen if
-> building i915 into kernel. I'm not sure what could be the reason?
->=20
-> > But the problem I see is that after moving gvt device model (gvt/*.c
-> > except kvmgt.c) into kvmgt module, we'll have issue with initial mmio
-> > state which current gvt relies on, that is in design supposed to get
-> > initial HW state before i915 driver has taken any operation.
-
-As mentioned in some past discussions, I think it would be best rely on
-golden MMIO located in /lib/firmware or elsewhere. This way we will better
-isolate the guest system from host system updates/changes.
-
-This should also hopefully allow enabling kvmgt module after i915 has
-already loaded, as the initialization would not be conditional to
-capture the MMIO.
-
-Regards, Joonas
-
-> > Before
-> > we can ensure that, I think we may only remove MPT part first but
-> > still keep gvt device model as part of i915 with config. I'll try to
-> > split that out.
->=20
-> Sorry I misread the code that as we always request kvmgt module when
-> gvt init, so it should still apply original method that this isn't a
-> problem. Our current validation result has shown no regression as well.
->=20
-> ---8<---
-> From 58ff84572f1a0f9d79ca1d7ec0cff5ecbe78d280 Mon Sep 17 00:00:00 2001
-> From: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Date: Thu, 19 Aug 2021 16:36:33 +0800
-> Subject: [PATCH] TESTONLY:drm/i915/gvt: potential fix for refactor against
->  current tip
->=20
-> ---
->  drivers/gpu/drm/i915/Makefile           | 4 +++-
->  drivers/gpu/drm/i915/gt/intel_context.c | 5 +++++
->  drivers/gpu/drm/i915/gt/intel_context.h | 3 ++-
->  drivers/gpu/drm/i915/i915_trace.h       | 1 +
->  4 files changed, 11 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefile
-> index c4f953837f72..2248574428a1 100644
-> --- a/drivers/gpu/drm/i915/Makefile
-> +++ b/drivers/gpu/drm/i915/Makefile
-> @@ -296,7 +296,9 @@ i915-$(CONFIG_DRM_I915_SELFTEST) +=3D \
-> =20
->  # virtual gpu code
->  i915-y +=3D i915_vgpu.o
-> -i915-$(CONFIG_DRM_I915_GVT_KVMGT) +=3D intel_gvt.o
-> +ifneq ($(CONFIG_DRM_I915_GVT_KVMGT),)
-> +i915-y +=3D intel_gvt.o
-> +endif
-> =20
->  kvmgt-y +=3D gvt/kvmgt.o \
->         gvt/gvt.o \
-> diff --git a/drivers/gpu/drm/i915/gt/intel_context.c b/drivers/gpu/drm/i9=
-15/gt/intel_context.c
-> index 745e84c72c90..20e7522fed84 100644
-> --- a/drivers/gpu/drm/i915/gt/intel_context.c
-> +++ b/drivers/gpu/drm/i915/gt/intel_context.c
-> @@ -328,6 +328,11 @@ void __intel_context_do_unpin(struct intel_context *=
-ce, int sub)
->         intel_context_put(ce);
->  }
-> =20
-> +void intel_context_unpin(struct intel_context *ce)
-> +{
-> +       _intel_context_unpin(ce);
-> +}
-> +
->  static void __intel_context_retire(struct i915_active *active)
->  {
->         struct intel_context *ce =3D container_of(active, typeof(*ce), ac=
-tive);
-> diff --git a/drivers/gpu/drm/i915/gt/intel_context.h b/drivers/gpu/drm/i9=
-15/gt/intel_context.h
-> index c41098950746..f942cbf6300a 100644
-> --- a/drivers/gpu/drm/i915/gt/intel_context.h
-> +++ b/drivers/gpu/drm/i915/gt/intel_context.h
-> @@ -131,7 +131,7 @@ static inline void intel_context_sched_disable_unpin(=
-struct intel_context *ce)
->         __intel_context_do_unpin(ce, 2);
->  }
-> =20
-> -static inline void intel_context_unpin(struct intel_context *ce)
-> +static inline void _intel_context_unpin(struct intel_context *ce)
->  {
->         if (!ce->ops->sched_disable) {
->                 __intel_context_do_unpin(ce, 1);
-> @@ -150,6 +150,7 @@ static inline void intel_context_unpin(struct intel_c=
-ontext *ce)
->                 }
->         }
->  }
-> +void intel_context_unpin(struct intel_context *ce);
-> =20
->  void intel_context_enter_engine(struct intel_context *ce);
->  void intel_context_exit_engine(struct intel_context *ce);
-> diff --git a/drivers/gpu/drm/i915/i915_trace.h b/drivers/gpu/drm/i915/i91=
-5_trace.h
-> index 806ad688274b..2c6a8bcef7c1 100644
-> --- a/drivers/gpu/drm/i915/i915_trace.h
-> +++ b/drivers/gpu/drm/i915/i915_trace.h
-> @@ -17,6 +17,7 @@
-> =20
->  #undef TRACE_SYSTEM
->  #define TRACE_SYSTEM i915
-> +#undef TRACE_INCLUDE_FILE
->  #define TRACE_INCLUDE_FILE i915_trace
-> =20
->  /* watermark/fifo updates */
-> --=20
-> 2.32.0
-> ---8<---
->=20
->=20
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.19377"></HEAD>
+<body>
+<P>ANTI-TERRORIST AND MONETARY CRIMES DIVISION<BR>INTERNATIONAL MONETARY FU=
+ND (IMF)<BR>1900 PENNSYLVANIA AVENUE, NW WASHINGTON D.C. 20431, USA<BR>YOUR=
+ OUTSTANDING PAYMENT NOTIFICATION<BR>Customers Service Hours Are From 8:15a=
+=2Em. To 5:00p.m., Monday Through Friday.<BR>Office Hours Monday to Sunday:=
+<BR><BR><BR>Dear Beneficiary, (intel-gvt-dev@lists.freedesktop.org)<BR><BR>=
+<BR>
+Series of meetings have been held over the past 7 months with the secretary=
+-general of the United States Organization, which ended Three(3) days ago. =
+You have not received your funds to the tune amount of $2,800.000.00 due to=
+ past corrupt Governmental Officials who almost held the fund to themselves=
+ for their selfish reason(s) and some people who have taken advantage of yo=
+ur funds all in an attempt to swindle away with your funds which have led t=
+o so many losses from your end and unnecessary=20
+delay in the receipt of your funds.<BR><BR>
+The INTERNATIONAL MONETARY FUND (IMF) enhanced by the United States and Fed=
+eral Bureau of Investigation have successfully passed a mandate to the curr=
+ent president of the United States, his Excellency President&nbsp;Joe Biden=
+&nbsp;to boost the exercise of clearing all foreign debts owed to you and o=
+ther people and organizations who have been found not to have received thei=
+r Contract Sum, Lottery/Gambling, Inheritance, and the likes. Please be req=
+uired to make an option on how you would like to=20
+receive your payment, Because there are two(2) methods of payment available=
+ to you, which is either by Certified Cashier's Check or by ATM card delive=
+ry?<BR><BR>
+ATM Card: We will be issuing you a custom pin-based ATM card which you will=
+ be able to make use of to withdraw up to $12,000.00 per day from any Autom=
+ated Teller Machine that has the Master Card Logo on it. Also with the ATM =
+card, you will be able to transfer your funds to your local bank account. T=
+he ATM card comes with a handbook or manual to enlighten you about how to u=
+se it. Even if you do not have a bank account.<BR><BR>
+Certified Cashier's Check: To be deposited in your bank for it to be cleare=
+d within three working days. Your payment would be sent to you via any of y=
+our preferred options and would be mailed to you via FedEx. Because we have=
+ signed a contract with FedEx Express which should expire by the end of nex=
+t month, you will only be required to pay the sum of $450 instead of $680 s=
+aving you $230 So if you pay before the end of this month you save $230 Tak=
+e note that anyone asking you for money above the=20
+usual fee is aligned to fraudulent activity and you will have to stop commu=
+nicating with every other person if you have been in contact with any. Also=
+, remember that all you will ever have to spend is $450.00 and nothing more=
+! Nothing less! And we guarantee the receipt of your fund to be successfull=
+y delivered to you within the next 48 hours after the receipt of payment ha=
+s been confirmed.<BR><BR>
+N.B: Everything has been taken care of by the United States Government and =
+the Federal Bureau of Investigations which includes IRS taxes, custom paper=
+, and clearance duty so all you will ever need to pay is $450.<BR><BR>
+DO NOT SEND MONEY TO ANYONE UNTIL YOU READ THIS: The actual fee for shippin=
+g your ATM card/Cashiers Check is $680 but because we have signed a contrac=
+t with FedEx for bulk shipping which makes the fees reduced from the actual=
+ fee of $680 to $450, nothing more and no hidden fees of any sort!<BR><BR>T=
+o effect the release of your fund valued at $2,800.000.00 you are advised t=
+o contact our correspondent the delivery officer Rachael Adelmo with the in=
+formation below,<BR><BR>Name: Rachael Adelmo<BR>
+Email: <A href=3D"mailto:rachaeladelmo@protonmail.com">rachaeladelmo@proton=
+mail.com</A><BR><BR>You are advised to contact him with the information as =
+stated below:<BR><BR>Your full Name:<BR>Your Residential Address (Not P.O B=
+ox):<BR>Home/Cell Phone:<BR>Preferred Payment Method (ATM / Cashiers Check)=
+:<BR><BR>
+Upon receipt of payment, the delivery officer will make sure that your pack=
+age is sent within 48 working hours. Because we are so sure of everything, =
+we are giving you a 100% money-back guarantee if you do not receive payment=
+/package within the next 48 hours after you have made the payment for shipp=
+ing we the INTERNATIONAL MONETARY FUND (IMF) will get your funds refunded b=
+ack to you with immediate effect.<BR><BR>Best Regards,<BR><BR>Ms. Kristalin=
+a Georgieva<BR>
+Managing Director and Chairman of the Executive Board<BR>International Mone=
+tary Fund<BR>&copy;2021<BR><BR>Note: Do disregard any email you get from an=
+y impostors or offices claiming to be in possession of your FUNDS, you are =
+therefore advised only to be in contact with this office in regards to your=
+ FUNDS PAYMENT and forward any emails you get to this office.</P></BODY></H=
+TML>
