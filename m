@@ -2,37 +2,60 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E98BC3F41C3
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 22 Aug 2021 23:36:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A39FA3F41EC
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 Aug 2021 00:20:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8235989E50;
-	Sun, 22 Aug 2021 21:36:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 655A089D39;
+	Sun, 22 Aug 2021 22:20:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1350 seconds by postgrey-1.36 at gabe;
- Sun, 22 Aug 2021 21:36:13 UTC
-Received: from out.smtpout.orange.fr (out02.smtpout.orange.fr [193.252.22.211])
- by gabe.freedesktop.org (Postfix) with ESMTP id D2FDD89E50
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 22 Aug 2021 21:36:13 +0000 (UTC)
-Received: from pop-os.home ([90.126.253.178]) by mwinf5d51 with ME
- id kl6A250043riaq203l6Aw9; Sun, 22 Aug 2021 23:06:12 +0200
-X-ME-Helo: pop-os.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 22 Aug 2021 23:06:12 +0200
-X-ME-IP: 90.126.253.178
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com,
- rodrigo.vivi@intel.com, airlied@linux.ie, daniel@ffwll.ch,
- zhenyuw@linux.intel.com, zhi.a.wang@intel.com
-Cc: intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- kernel-janitors@vger.kernel.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH] drm/i915: switch from 'pci_' to 'dma_' API
-Date: Sun, 22 Aug 2021 23:06:09 +0200
-Message-Id: <dbf1018fb773785e0b3b40e601246ed6438e645e.1629666258.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.30.2
+Received: from mail-ot1-x32e.google.com (mail-ot1-x32e.google.com
+ [IPv6:2607:f8b0:4864:20::32e])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 73D0089CDF;
+ Sun, 22 Aug 2021 22:20:19 +0000 (UTC)
+Received: by mail-ot1-x32e.google.com with SMTP id
+ m7-20020a9d4c87000000b0051875f56b95so31211693otf.6; 
+ Sun, 22 Aug 2021 15:20:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Vjgj6w+zbgn1146WXU3kPdkHix2wiSW7AS6QZB19vv0=;
+ b=U1RHlD1xBGXU36FLOnv0uEdvjekxmddM94p1l4+8iCvPqWge47JtmbvBWn1D9qthN9
+ ROAV55DeIpXnxg2d6w8rNYH12Gk+2nYASm/wLHpJQW3YThU7HyvkhVCw8TJEV7SlaSQ1
+ Lt1IFjhnsCASv+agnyd8oApkjCOD1XVHVFvktAIkkf8mF+Yxe44bGWQJSajiOYmcmS4f
+ AuVWSmaFDiKjJy0a2YgJokSc+CVT3uapEwtyfWieztoWxAK5tVYxk5rzZrxO2tVBlGsR
+ Jt9cH1NpMfklUdB70zID5PkMUHRgdKanql0papRHm6ZxDMGXoTMIZeYl4sasDNfF0asM
+ ihPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Vjgj6w+zbgn1146WXU3kPdkHix2wiSW7AS6QZB19vv0=;
+ b=ouSo/hJ13yN5LfATAXqmIZllzk/pQnQTgLdASkF9o/pOAWiDHWxn8OE3NNkCd0FZ9i
+ eZhymz1Z7Y66KnDsz7ZkgRRlZooeYk0mXHd7+IR7wfg52KOHFqs9xjSqHYWyuy7cscQm
+ VMXX1U5GOOXiMQbyZraSTvbtezu9AQN2K7FuBte7/kJ5lZXUAMiSmW4hOIyf0AzoEleo
+ pP1G3w5UAjyllF1WQrUEVZkLVuK3f5R4T4FP+0GiZZpe7m/LbSwmjCk1rJYG6gIkeCGH
+ aHkfh8gnTyClMDcupSRA0W4on+d/Oo5Y8jDoDH2nonfFA0PS6QKDOu5/+p668EasTjP3
+ Mxpg==
+X-Gm-Message-State: AOAM531hxObntu93rTL+0PqTUNsmP8Oz73357+FOmItZbBHV/DZ+xUMG
+ 5BmQuj5ix4V5MiGcgeWxDfs=
+X-Google-Smtp-Source: ABdhPJz0eijJJyjUfIl7atjizNUf0pAk5ocAxfrb2CaKZtlQF2ggxgSMrsYBn+jo24OYrKUoUtTtcQ==
+X-Received: by 2002:a9d:5f16:: with SMTP id f22mr24670188oti.322.1629670818575; 
+ Sun, 22 Aug 2021 15:20:18 -0700 (PDT)
+Received: from frodo.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
+ by smtp.googlemail.com with ESMTPSA id x198sm2964122ooa.43.2021.08.22.15.20.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 22 Aug 2021 15:20:18 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: jbaron@akamai.com, gregkh@linuxfoundation.org, seanpaul@chromium.org,
+ jeyu@kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
+Cc: Jim Cromie <jim.cromie@gmail.com>
+Subject: [PATCH v6 00/11] use DYNAMIC_DEBUG to implement DRM.debug
+Date: Sun, 22 Aug 2021 16:19:58 -0600
+Message-Id: <20210822222009.2035788-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -50,281 +73,56 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-The wrappers in include/linux/pci-dma-compat.h should go away.
+This patchset does 3 main things.
 
-The patch has been generated with the coccinelle script below.
+Adds DEFINE_DYNAMIC_DEBUG_CATEGORIES to define bitmap => category
+control of pr_debugs, and to create their sysfs entries.
 
-It has been compile tested.
+Uses it in amdgpu, i915 to control existing pr_debugs according to
+their ad-hoc categorizations.
 
-@@
-@@
--    PCI_DMA_BIDIRECTIONAL
-+    DMA_BIDIRECTIONAL
+Plugs dyndbg into drm-debug framework, in a configurable manner.
 
-@@
-@@
--    PCI_DMA_TODEVICE
-+    DMA_TO_DEVICE
+v6: cleans up per v5 feedback, and adds RFC stuff:
 
-@@
-@@
--    PCI_DMA_FROMDEVICE
-+    DMA_FROM_DEVICE
+- test_dynamic_debug.ko: uses tracer facility added in v5:8/9
+- prototype print-once & rate-limiting
 
-@@
-@@
--    PCI_DMA_NONE
-+    DMA_NONE
+Hopefully adding RFC stuff doesnt distract too much.
 
-@@
-expression e1, e2, e3;
-@@
--    pci_alloc_consistent(e1, e2, e3)
-+    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
+Jim Cromie (11):
+  moduleparam: add data member to struct kernel_param
+  dyndbg: add DEFINE_DYNAMIC_DEBUG_CATEGORIES and callbacks
+  i915/gvt: remove spaces in pr_debug "gvt: core:" etc prefixes
+  i915/gvt: use DEFINE_DYNAMIC_DEBUG_CATEGORIES to create "gvt:core:"
+    etc categories
+  amdgpu: use DEFINE_DYNAMIC_DEBUG_CATEGORIES to control categorized
+    pr_debugs
+  drm_print: add choice to use dynamic debug in drm-debug
+  drm_print: instrument drm_debug_enabled
+  amdgpu_ucode: reduce number of pr_debug calls
+  nouveau: fold multiple DRM_DEBUG_DRIVERs together
+  dyndbg: RFC add debug-trace callback, selftest with it. RFC
+  dyndbg: RFC add print-once and print-ratelimited features. RFC.
 
-@@
-expression e1, e2, e3;
-@@
--    pci_zalloc_consistent(e1, e2, e3)
-+    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
+ drivers/gpu/drm/Kconfig                       |  13 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c     | 293 ++++++++-------
+ .../gpu/drm/amd/display/dc/core/dc_debug.c    |  44 ++-
+ drivers/gpu/drm/drm_print.c                   |  49 ++-
+ drivers/gpu/drm/i915/gvt/Makefile             |   4 +
+ drivers/gpu/drm/i915/gvt/debug.h              |  18 +-
+ drivers/gpu/drm/i915/i915_params.c            |  35 ++
+ drivers/gpu/drm/nouveau/nouveau_drm.c         |  36 +-
+ include/drm/drm_print.h                       | 148 ++++++--
+ include/linux/dynamic_debug.h                 |  81 ++++-
+ include/linux/moduleparam.h                   |  11 +-
+ lib/Kconfig.debug                             |  11 +
+ lib/Makefile                                  |   1 +
+ lib/dynamic_debug.c                           | 336 ++++++++++++++++--
+ lib/test_dynamic_debug.c                      | 279 +++++++++++++++
+ 15 files changed, 1117 insertions(+), 242 deletions(-)
+ create mode 100644 lib/test_dynamic_debug.c
 
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_free_consistent(e1, e2, e3, e4)
-+    dma_free_coherent(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_map_single(e1, e2, e3, e4)
-+    dma_map_single(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_single(e1, e2, e3, e4)
-+    dma_unmap_single(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4, e5;
-@@
--    pci_map_page(e1, e2, e3, e4, e5)
-+    dma_map_page(&e1->dev, e2, e3, e4, e5)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_page(e1, e2, e3, e4)
-+    dma_unmap_page(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_map_sg(e1, e2, e3, e4)
-+    dma_map_sg(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_sg(e1, e2, e3, e4)
-+    dma_unmap_sg(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_single_for_cpu(e1, e2, e3, e4)
-+    dma_sync_single_for_cpu(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_single_for_device(e1, e2, e3, e4)
-+    dma_sync_single_for_device(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_sg_for_cpu(e1, e2, e3, e4)
-+    dma_sync_sg_for_cpu(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_sg_for_device(e1, e2, e3, e4)
-+    dma_sync_sg_for_device(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2;
-@@
--    pci_dma_mapping_error(e1, e2)
-+    dma_mapping_error(&e1->dev, e2)
-
-@@
-expression e1, e2;
-@@
--    pci_set_dma_mask(e1, e2)
-+    dma_set_mask(&e1->dev, e2)
-
-@@
-expression e1, e2;
-@@
--    pci_set_consistent_dma_mask(e1, e2)
-+    dma_set_coherent_mask(&e1->dev, e2)
-
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-If needed, see post from Christoph Hellwig on the kernel-janitors ML:
-   https://marc.info/?l=kernel-janitors&m=158745678307186&w=4
----
- drivers/gpu/drm/i915/gt/intel_region_lmem.c |  4 ++--
- drivers/gpu/drm/i915/gvt/gtt.c              | 16 ++++++++--------
- drivers/gpu/drm/i915/gvt/kvmgt.c            |  4 ++--
- drivers/gpu/drm/i915/i915_gem_gtt.c         |  4 ++--
- 4 files changed, 14 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gt/intel_region_lmem.c b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-index a74b72f50cc9..afb35d2e5c73 100644
---- a/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-+++ b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-@@ -32,7 +32,7 @@ static int init_fake_lmem_bar(struct intel_memory_region *mem)
- 	mem->remap_addr = dma_map_resource(i915->drm.dev,
- 					   mem->region.start,
- 					   mem->fake_mappable.size,
--					   PCI_DMA_BIDIRECTIONAL,
-+					   DMA_BIDIRECTIONAL,
- 					   DMA_ATTR_FORCE_CONTIGUOUS);
- 	if (dma_mapping_error(i915->drm.dev, mem->remap_addr)) {
- 		drm_mm_remove_node(&mem->fake_mappable);
-@@ -62,7 +62,7 @@ static void release_fake_lmem_bar(struct intel_memory_region *mem)
- 	dma_unmap_resource(mem->i915->drm.dev,
- 			   mem->remap_addr,
- 			   mem->fake_mappable.size,
--			   PCI_DMA_BIDIRECTIONAL,
-+			   DMA_BIDIRECTIONAL,
- 			   DMA_ATTR_FORCE_CONTIGUOUS);
- }
- 
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index e5c2fdfc20e3..fb4e96a3e79e 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -745,7 +745,7 @@ static void ppgtt_free_spt(struct intel_vgpu_ppgtt_spt *spt)
- 	trace_spt_free(spt->vgpu->id, spt, spt->guest_page.type);
- 
- 	dma_unmap_page(kdev, spt->shadow_page.mfn << I915_GTT_PAGE_SHIFT, 4096,
--		       PCI_DMA_BIDIRECTIONAL);
-+		       DMA_BIDIRECTIONAL);
- 
- 	radix_tree_delete(&spt->vgpu->gtt.spt_tree, spt->shadow_page.mfn);
- 
-@@ -849,7 +849,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
- 	 */
- 	spt->shadow_page.type = type;
- 	daddr = dma_map_page(kdev, spt->shadow_page.page,
--			     0, 4096, PCI_DMA_BIDIRECTIONAL);
-+			     0, 4096, DMA_BIDIRECTIONAL);
- 	if (dma_mapping_error(kdev, daddr)) {
- 		gvt_vgpu_err("fail to map dma addr\n");
- 		ret = -EINVAL;
-@@ -865,7 +865,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
- 	return spt;
- 
- err_unmap_dma:
--	dma_unmap_page(kdev, daddr, PAGE_SIZE, PCI_DMA_BIDIRECTIONAL);
-+	dma_unmap_page(kdev, daddr, PAGE_SIZE, DMA_BIDIRECTIONAL);
- err_free_spt:
- 	free_spt(spt);
- 	return ERR_PTR(ret);
-@@ -2410,7 +2410,7 @@ static int alloc_scratch_pages(struct intel_vgpu *vgpu,
- 	}
- 
- 	daddr = dma_map_page(dev, virt_to_page(scratch_pt), 0,
--			4096, PCI_DMA_BIDIRECTIONAL);
-+			4096, DMA_BIDIRECTIONAL);
- 	if (dma_mapping_error(dev, daddr)) {
- 		gvt_vgpu_err("fail to dmamap scratch_pt\n");
- 		__free_page(virt_to_page(scratch_pt));
-@@ -2461,7 +2461,7 @@ static int release_scratch_page_tree(struct intel_vgpu *vgpu)
- 		if (vgpu->gtt.scratch_pt[i].page != NULL) {
- 			daddr = (dma_addr_t)(vgpu->gtt.scratch_pt[i].page_mfn <<
- 					I915_GTT_PAGE_SHIFT);
--			dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
-+			dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
- 			__free_page(vgpu->gtt.scratch_pt[i].page);
- 			vgpu->gtt.scratch_pt[i].page = NULL;
- 			vgpu->gtt.scratch_pt[i].page_mfn = 0;
-@@ -2741,7 +2741,7 @@ int intel_gvt_init_gtt(struct intel_gvt *gvt)
- 	}
- 
- 	daddr = dma_map_page(dev, virt_to_page(page), 0,
--			4096, PCI_DMA_BIDIRECTIONAL);
-+			4096, DMA_BIDIRECTIONAL);
- 	if (dma_mapping_error(dev, daddr)) {
- 		gvt_err("fail to dmamap scratch ggtt page\n");
- 		__free_page(virt_to_page(page));
-@@ -2755,7 +2755,7 @@ int intel_gvt_init_gtt(struct intel_gvt *gvt)
- 		ret = setup_spt_oos(gvt);
- 		if (ret) {
- 			gvt_err("fail to initialize SPT oos\n");
--			dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
-+			dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
- 			__free_page(gvt->gtt.scratch_page);
- 			return ret;
- 		}
-@@ -2779,7 +2779,7 @@ void intel_gvt_clean_gtt(struct intel_gvt *gvt)
- 	dma_addr_t daddr = (dma_addr_t)(gvt->gtt.scratch_mfn <<
- 					I915_GTT_PAGE_SHIFT);
- 
--	dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
-+	dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
- 
- 	__free_page(gvt->gtt.scratch_page);
- 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 7efa386449d1..20b82fb036f8 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -328,7 +328,7 @@ static int gvt_dma_map_page(struct intel_vgpu *vgpu, unsigned long gfn,
- 		return ret;
- 
- 	/* Setup DMA mapping. */
--	*dma_addr = dma_map_page(dev, page, 0, size, PCI_DMA_BIDIRECTIONAL);
-+	*dma_addr = dma_map_page(dev, page, 0, size, DMA_BIDIRECTIONAL);
- 	if (dma_mapping_error(dev, *dma_addr)) {
- 		gvt_vgpu_err("DMA mapping failed for pfn 0x%lx, ret %d\n",
- 			     page_to_pfn(page), ret);
-@@ -344,7 +344,7 @@ static void gvt_dma_unmap_page(struct intel_vgpu *vgpu, unsigned long gfn,
- {
- 	struct device *dev = vgpu->gvt->gt->i915->drm.dev;
- 
--	dma_unmap_page(dev, dma_addr, size, PCI_DMA_BIDIRECTIONAL);
-+	dma_unmap_page(dev, dma_addr, size, DMA_BIDIRECTIONAL);
- 	gvt_unpin_guest_page(vgpu, gfn, size);
- }
- 
-diff --git a/drivers/gpu/drm/i915/i915_gem_gtt.c b/drivers/gpu/drm/i915/i915_gem_gtt.c
-index 36489be4896b..cd5f2348a187 100644
---- a/drivers/gpu/drm/i915/i915_gem_gtt.c
-+++ b/drivers/gpu/drm/i915/i915_gem_gtt.c
-@@ -30,7 +30,7 @@ int i915_gem_gtt_prepare_pages(struct drm_i915_gem_object *obj,
- 	do {
- 		if (dma_map_sg_attrs(obj->base.dev->dev,
- 				     pages->sgl, pages->nents,
--				     PCI_DMA_BIDIRECTIONAL,
-+				     DMA_BIDIRECTIONAL,
- 				     DMA_ATTR_SKIP_CPU_SYNC |
- 				     DMA_ATTR_NO_KERNEL_MAPPING |
- 				     DMA_ATTR_NO_WARN))
-@@ -64,7 +64,7 @@ void i915_gem_gtt_finish_pages(struct drm_i915_gem_object *obj,
- 		usleep_range(100, 250);
- 
- 	dma_unmap_sg(i915->drm.dev, pages->sgl, pages->nents,
--		     PCI_DMA_BIDIRECTIONAL);
-+		     DMA_BIDIRECTIONAL);
- }
- 
- /**
 -- 
-2.30.2
+2.31.1
 
