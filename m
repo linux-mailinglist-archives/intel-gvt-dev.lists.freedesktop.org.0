@@ -2,64 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D9BA3F5070
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 Aug 2021 20:36:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5924B3F5B9B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Aug 2021 12:04:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 25B7B899C4;
-	Mon, 23 Aug 2021 18:36:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0519F89C93;
+	Tue, 24 Aug 2021 10:04:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vk1-xa2f.google.com (mail-vk1-xa2f.google.com
- [IPv6:2607:f8b0:4864:20::a2f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5C27F89991;
- Mon, 23 Aug 2021 18:36:29 +0000 (UTC)
-Received: by mail-vk1-xa2f.google.com with SMTP id 13so4762490vke.8;
- Mon, 23 Aug 2021 11:36:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=oD+FfNvttTlhjkxgv46BkQdP0Q+7tbVwZBHtdENnPDs=;
- b=pgZbSzzqkGGiIpo4Gf6Xk8xnzSqmebfIAehocG0R9hnETl094QpzNQljT3BxuZjRTo
- u4oC3AZSt3Ps679D3bD4AQBNVwNPLV1ZtB3J988aFWWam6k4aAae4xk63JzNrMViBLVr
- 9PFReSdv9CPouKzddX4B14cHs6mA4gEMzW5bIFGwFAiIbw2PKHJSTezVmNVkWb0gHwGt
- fbr4n+I9nFuwB2DB8dSRt2PPTAAAJXF6bG+Viam15tiofrL9NOUp/9sTo2h4GU791KVN
- MqNfxnMXap6nOtZxJ6k18nY5EViEOIriZ292kXpnxLj2b8Ub4HlFebW9sRvpYvB4oP/0
- q//w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=oD+FfNvttTlhjkxgv46BkQdP0Q+7tbVwZBHtdENnPDs=;
- b=PU7pQFEOTuCM+rqB+KhGGUG5OuOqEm1AX67v8o4mCvktfv30Oh1Yk6dYVNQzy+Y/2k
- ylAnCOEE04tJfsh88DF7PIgiClDq3jvCtk5kUrio+2+GjJDaXaLaa6Ki3Vl1SxykjMqO
- NjC6+fkebl1Tx/X9+gUXffgQhAG3LWLbWCEieAt1yFM3nkn/4nzMnOourdweCvz1QLQM
- b7HFm9E2mDTzYtKmTlMgNe0ZXHZUIYxLY33ZMDZJC17MuIKPykqWYIr6YCBzyCg/9U6g
- 6nOZm+/j+InBklUYFG6RIqOtf/zCLzf0hr9UpAlPE0DnlhqvM0CokgT5U4KETDxaisAB
- SOxA==
-X-Gm-Message-State: AOAM532cHdQ0FoYuLLQBwmBkNeGLWVLM4OTSB35hiClAdkNnvLQE1fro
- RYdMmP2xvmkziPTVlSjMZp9YC+YgFQqNNFwaJL0=
-X-Google-Smtp-Source: ABdhPJxkBUE5Mb3AVj1rY8pemuvJ22/gztSRZps/lKhX3Bb0VUAxGBfiMN04gCVGgcanD3Bvuyb8NXhzHOhc7M04BeM=
-X-Received: by 2002:a05:6122:189f:: with SMTP id
- bi31mr14411337vkb.8.1629743788056; 
- Mon, 23 Aug 2021 11:36:28 -0700 (PDT)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7796889C93;
+ Tue, 24 Aug 2021 10:04:34 +0000 (UTC)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4A5C0101E;
+ Tue, 24 Aug 2021 03:04:33 -0700 (PDT)
+Received: from [10.57.15.112] (unknown [10.57.15.112])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 66B393F66F;
+ Tue, 24 Aug 2021 03:04:31 -0700 (PDT)
+Subject: Re: [PATCH] drm/i915: switch from 'pci_' to 'dma_' API
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com,
+ rodrigo.vivi@intel.com, airlied@linux.ie, daniel@ffwll.ch,
+ zhenyuw@linux.intel.com, zhi.a.wang@intel.com
+Cc: intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org
+References: <dbf1018fb773785e0b3b40e601246ed6438e645e.1629666258.git.christophe.jaillet@wanadoo.fr>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <0cd61d5b-ac88-31e8-99ad-143af480416f@arm.com>
+Date: Tue, 24 Aug 2021 11:04:25 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-References: <20210822222009.2035788-1-jim.cromie@gmail.com>
- <20210822222009.2035788-3-jim.cromie@gmail.com>
- <CAHp75VeGGRX-LWfDg_6+p2b27LMLSy+8gdH8ApqGchR=QDyEqA@mail.gmail.com>
-In-Reply-To: <CAHp75VeGGRX-LWfDg_6+p2b27LMLSy+8gdH8ApqGchR=QDyEqA@mail.gmail.com>
-From: jim.cromie@gmail.com
-Date: Mon, 23 Aug 2021 12:36:01 -0600
-Message-ID: <CAJfuBxxqO=z0rVtj9_rKnxMWF5HyWzcBPJMu2oVd74opbiGdVA@mail.gmail.com>
-Subject: Re: [PATCH v6 02/11] dyndbg: add DEFINE_DYNAMIC_DEBUG_CATEGORIES and
- callbacks
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Jason Baron <jbaron@akamai.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Sean Paul <seanpaul@chromium.org>, Jessica Yu <jeyu@kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, 
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
- intel-gfx <intel-gfx@lists.freedesktop.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <dbf1018fb773785e0b3b40e601246ed6438e645e.1629666258.git.christophe.jaillet@wanadoo.fr>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,49 +52,69 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Aug 23, 2021 at 12:41 AM Andy Shevchenko
-<andy.shevchenko@gmail.com> wrote:
->
-> On Mon, Aug 23, 2021 at 1:21 AM Jim Cromie <jim.cromie@gmail.com> wrote:
-> >
-> > DEFINE_DYNAMIC_DEBUG_CATEGORIES(name, var, bitmap_desc, @bit_descs)
-> > allows users to define a drm.debug style (bitmap) sysfs interface, and
-> > to specify the desired mapping from bits[0-N] to the format-prefix'd
-> > pr_debug()s to be controlled.
-> >
+Hi,
 
-yes to everything, 1 question
+FWIW this patch itself looks fine, but it does highlight some things 
+which could be further cleaned up if anyone's interested...
 
+On 2021-08-22 22:06, Christophe JAILLET wrote:
+[...]
+> diff --git a/drivers/gpu/drm/i915/gt/intel_region_lmem.c b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
+> index a74b72f50cc9..afb35d2e5c73 100644
+> --- a/drivers/gpu/drm/i915/gt/intel_region_lmem.c
+> +++ b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
+> @@ -32,7 +32,7 @@ static int init_fake_lmem_bar(struct intel_memory_region *mem)
+>   	mem->remap_addr = dma_map_resource(i915->drm.dev,
+>   					   mem->region.start,
+>   					   mem->fake_mappable.size,
+> -					   PCI_DMA_BIDIRECTIONAL,
+> +					   DMA_BIDIRECTIONAL,
+>   					   DMA_ATTR_FORCE_CONTIGUOUS);
 
-> > +       if (!bitmap) {
-> > +               pr_err("set_dyndbg: no bits=>queries map\n");
-> > +               return -EINVAL;
-> > +       }
-> > +       rc = kstrtoul(instr, 0, &inbits);
-> > +       if (rc) {
-> > +               pr_err("set_dyndbg: failed\n");
-> > +               return rc;
-> > +       }
-> > +       vpr_info("set_dyndbg: input 0x%lx\n", inbits);
-> > +
-> > +       for (i = 0; bitmap->prefix; i++, bitmap++) {
-> > +               snprintf(query, FMT_QUERY_SIZE, "format '^%s' %cp", bitmap->prefix,
-> > +                        test_bit(i, &inbits) ? '+' : '-');
-> > +
-> > +               matches = ddebug_exec_queries(query, KP_MOD_NAME);
-> > +
-> > +               v2pr_info("bit-%d: %d matches on '%s'\n", i, matches, query);
-> > +               totct += matches;
-> > +       }
->
-> I'm wondering if there is a room to parse a bitmap as a bitmap.
->
+DMA_ATTR_FORCE_CONTIGUOUS is nonsensical here (and below) as it is only 
+meaningful for coherent buffers allocated by dma_alloc_attrs().
 
-I dont know what you mean here.
-can you point to an example to crib from ?
+>   	if (dma_mapping_error(i915->drm.dev, mem->remap_addr)) {
+>   		drm_mm_remove_node(&mem->fake_mappable);
+> @@ -62,7 +62,7 @@ static void release_fake_lmem_bar(struct intel_memory_region *mem)
+>   	dma_unmap_resource(mem->i915->drm.dev,
+>   			   mem->remap_addr,
+>   			   mem->fake_mappable.size,
+> -			   PCI_DMA_BIDIRECTIONAL,
+> +			   DMA_BIDIRECTIONAL,
+>   			   DMA_ATTR_FORCE_CONTIGUOUS);
+>   }
+>   
+[...]
+> diff --git a/drivers/gpu/drm/i915/i915_gem_gtt.c b/drivers/gpu/drm/i915/i915_gem_gtt.c
+> index 36489be4896b..cd5f2348a187 100644
+> --- a/drivers/gpu/drm/i915/i915_gem_gtt.c
+> +++ b/drivers/gpu/drm/i915/i915_gem_gtt.c
+> @@ -30,7 +30,7 @@ int i915_gem_gtt_prepare_pages(struct drm_i915_gem_object *obj,
+>   	do {
+>   		if (dma_map_sg_attrs(obj->base.dev->dev,
+>   				     pages->sgl, pages->nents,
+> -				     PCI_DMA_BIDIRECTIONAL,
+> +				     DMA_BIDIRECTIONAL,
+>   				     DMA_ATTR_SKIP_CPU_SYNC |
+>   				     DMA_ATTR_NO_KERNEL_MAPPING |
+>   				     DMA_ATTR_NO_WARN))
 
-thanks
+Similarly DMA_ATTR_NO_KERNEL_MAPPING and DMA_ATTR_NO_WARN are also for 
+coherent allocations rather than streaming mappings.
 
-> --
-> With Best Regards,
-> Andy Shevchenko
+I'll see if I can whip up a patch to make the API documentation clearer...
+
+Thanks,
+Robin.
+
+> @@ -64,7 +64,7 @@ void i915_gem_gtt_finish_pages(struct drm_i915_gem_object *obj,
+>   		usleep_range(100, 250);
+>   
+>   	dma_unmap_sg(i915->drm.dev, pages->sgl, pages->nents,
+> -		     PCI_DMA_BIDIRECTIONAL);
+> +		     DMA_BIDIRECTIONAL);
+>   }
+>   
+>   /**
+> 
