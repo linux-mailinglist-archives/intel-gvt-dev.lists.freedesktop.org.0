@@ -2,41 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5924B3F5B9B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Aug 2021 12:04:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E18C3F6147
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Aug 2021 17:07:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0519F89C93;
-	Tue, 24 Aug 2021 10:04:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9D22C8976D;
+	Tue, 24 Aug 2021 15:07:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7796889C93;
- Tue, 24 Aug 2021 10:04:34 +0000 (UTC)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4A5C0101E;
- Tue, 24 Aug 2021 03:04:33 -0700 (PDT)
-Received: from [10.57.15.112] (unknown [10.57.15.112])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 66B393F66F;
- Tue, 24 Aug 2021 03:04:31 -0700 (PDT)
-Subject: Re: [PATCH] drm/i915: switch from 'pci_' to 'dma_' API
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com,
- rodrigo.vivi@intel.com, airlied@linux.ie, daniel@ffwll.ch,
- zhenyuw@linux.intel.com, zhi.a.wang@intel.com
-Cc: intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- kernel-janitors@vger.kernel.org
-References: <dbf1018fb773785e0b3b40e601246ed6438e645e.1629666258.git.christophe.jaillet@wanadoo.fr>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <0cd61d5b-ac88-31e8-99ad-143af480416f@arm.com>
-Date: Tue, 24 Aug 2021 11:04:25 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+Received: from senwd.co.kr (unknown [220.95.209.146])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9B5168976D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 24 Aug 2021 15:07:00 +0000 (UTC)
+Received: from IP-222-80.dataclub.eu (unknown [46.183.222.80])
+ (Authenticated sender: books@senwd.co.kr)
+ by senwd.co.kr (Postfix) with ESMTPA id 7FF7EFDF5D7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 24 Aug 2021 23:45:07 +0900 (KST)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-In-Reply-To: <dbf1018fb773785e0b3b40e601246ed6438e645e.1629666258.git.christophe.jaillet@wanadoo.fr>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-GB
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: Your Urgent Attention is Required.
+To: intel-gvt-dev@lists.freedesktop.org
+From: "Aisha Al-Gaddafi" <aishaalgaddafi4944@citromail.hu>
+Date: Tue, 24 Aug 2021 17:45:00 +0300
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,72 +38,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: aishaalgaddafi14944@citromail.hu
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210824150701.9D22C8976D@gabe.freedesktop.org>
 
-Hi,
+Hello Dear,
 
-FWIW this patch itself looks fine, but it does highlight some things 
-which could be further cleaned up if anyone's interested...
+May I use this medium to open a mutual communication with you seeking your =
+acceptance towards investing in your country under your management as my pa=
+rtner, My name is Aisha Gaddafi and presently living in Oman, i am a Widow =
+and single Mother with two survived Children, I am only biological Daughter=
+ of late Libyan President (Late Colonel Muammar Gaddafi) and presently i am=
+ under political asylum protection by the Omani Government.
 
-On 2021-08-22 22:06, Christophe JAILLET wrote:
-[...]
-> diff --git a/drivers/gpu/drm/i915/gt/intel_region_lmem.c b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-> index a74b72f50cc9..afb35d2e5c73 100644
-> --- a/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-> +++ b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-> @@ -32,7 +32,7 @@ static int init_fake_lmem_bar(struct intel_memory_region *mem)
->   	mem->remap_addr = dma_map_resource(i915->drm.dev,
->   					   mem->region.start,
->   					   mem->fake_mappable.size,
-> -					   PCI_DMA_BIDIRECTIONAL,
-> +					   DMA_BIDIRECTIONAL,
->   					   DMA_ATTR_FORCE_CONTIGUOUS);
+I have funds worth "Sixty Million United State Dollars Only" $60,000,000.00=
+ USD which I want to entrust on you for an investment project in your count=
+ry, if you are willing to handle this project on my behalf, please for your=
+ kind assistance I will offer you 30% of the total amount, all the legal do=
+cumentation concerning the deposit are with me, I will only write power of =
+attorney making you the new beneficiary of the deposit so that the security=
+ company can release the consignment to you.Bear in mind that the funds wer=
+e deposited with the security and deposit firm as a household effect, there=
+fore they do not know the real content, so you are going to collect the con=
+signment as a house effect from the security company where as only you and =
+me know the real content Please kindly reply urgently to enable me provides=
+ you more detail to start the transfer process. =
 
-DMA_ATTR_FORCE_CONTIGUOUS is nonsensical here (and below) as it is only 
-meaningful for coherent buffers allocated by dma_alloc_attrs().
 
->   	if (dma_mapping_error(i915->drm.dev, mem->remap_addr)) {
->   		drm_mm_remove_node(&mem->fake_mappable);
-> @@ -62,7 +62,7 @@ static void release_fake_lmem_bar(struct intel_memory_region *mem)
->   	dma_unmap_resource(mem->i915->drm.dev,
->   			   mem->remap_addr,
->   			   mem->fake_mappable.size,
-> -			   PCI_DMA_BIDIRECTIONAL,
-> +			   DMA_BIDIRECTIONAL,
->   			   DMA_ATTR_FORCE_CONTIGUOUS);
->   }
->   
-[...]
-> diff --git a/drivers/gpu/drm/i915/i915_gem_gtt.c b/drivers/gpu/drm/i915/i915_gem_gtt.c
-> index 36489be4896b..cd5f2348a187 100644
-> --- a/drivers/gpu/drm/i915/i915_gem_gtt.c
-> +++ b/drivers/gpu/drm/i915/i915_gem_gtt.c
-> @@ -30,7 +30,7 @@ int i915_gem_gtt_prepare_pages(struct drm_i915_gem_object *obj,
->   	do {
->   		if (dma_map_sg_attrs(obj->base.dev->dev,
->   				     pages->sgl, pages->nents,
-> -				     PCI_DMA_BIDIRECTIONAL,
-> +				     DMA_BIDIRECTIONAL,
->   				     DMA_ATTR_SKIP_CPU_SYNC |
->   				     DMA_ATTR_NO_KERNEL_MAPPING |
->   				     DMA_ATTR_NO_WARN))
+In case you want to know more about me and my family you can read through t=
+his BBC News links below: http://www.bbc.com/news/world-africa-19966059
 
-Similarly DMA_ATTR_NO_KERNEL_MAPPING and DMA_ATTR_NO_WARN are also for 
-coherent allocations rather than streaming mappings.
+I shall appreciate your urgent response.
 
-I'll see if I can whip up a patch to make the API documentation clearer...
-
-Thanks,
-Robin.
-
-> @@ -64,7 +64,7 @@ void i915_gem_gtt_finish_pages(struct drm_i915_gem_object *obj,
->   		usleep_range(100, 250);
->   
->   	dma_unmap_sg(i915->drm.dev, pages->sgl, pages->nents,
-> -		     PCI_DMA_BIDIRECTIONAL);
-> +		     DMA_BIDIRECTIONAL);
->   }
->   
->   /**
-> 
+Mrs. Aisha Al-Gaddafi.
