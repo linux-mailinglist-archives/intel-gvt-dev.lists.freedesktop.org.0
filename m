@@ -2,58 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4944D3F8281
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Aug 2021 08:35:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B1073F8A3B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Aug 2021 16:38:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 632B36E512;
-	Thu, 26 Aug 2021 06:35:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4E5C989D7F;
+	Thu, 26 Aug 2021 14:38:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 96C7089A91;
- Thu, 26 Aug 2021 06:35:42 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10087"; a="278689518"
-X-IronPort-AV: E=Sophos;i="5.84,352,1620716400"; 
- d="asc'?scan'208";a="278689518"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Aug 2021 23:35:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,352,1620716400"; 
- d="asc'?scan'208";a="527640870"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
- by FMSMGA003.fm.intel.com with ESMTP; 25 Aug 2021 23:35:18 -0700
-Date: Thu, 26 Aug 2021 14:12:19 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Luis Chamberlain <mcgrof@kernel.org>
-Cc: Christoph Hellwig <hch@lst.de>, Jason Gunthorpe <jgg@nvidia.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Greg KH <gregkh@linuxfoundation.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Wang, Zhi A" <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@intel.com>
-Subject: Re: refactor the i915 GVT support
-Message-ID: <20210826061219.GD9942@zhen-hp.sh.intel.com>
-References: <20210729072022.GB31896@lst.de>
- <20210803094315.GF13928@zhen-hp.sh.intel.com>
- <20210803143058.GA1721383@nvidia.com>
- <20210804052606.GG13928@zhen-hp.sh.intel.com>
- <20210816173458.GA9183@lst.de>
- <20210817010851.GW13928@zhen-hp.sh.intel.com>
- <20210817052203.GX13928@zhen-hp.sh.intel.com>
- <20210819082929.GB13928@zhen-hp.sh.intel.com>
- <20210820141724.GA29034@lst.de>
- <YSAI8pKAvvW/8S2O@bombadil.infradead.org>
+Received: from mail-lj1-x234.google.com (mail-lj1-x234.google.com
+ [IPv6:2a00:1450:4864:20::234])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3814A89D7F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Aug 2021 14:38:38 +0000 (UTC)
+Received: by mail-lj1-x234.google.com with SMTP id i28so5545112ljm.7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Aug 2021 07:38:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Vh/zNpzg9E+1VDLABSaxgI+0bzfYF05fxMUcPBZBbvM=;
+ b=OaKId6IXRXK10ro9Gm9ds3d2RY27h/GHSVlLphJaPRYGJPE37/1t31t+5vPCT5Waaq
+ 8YYaUdDq6NFHY1Saz3YBQ+7p8bkkSCoPREABvVVulboXU3Lg9Xpyf6+GZ7ENbyxEehkP
+ hQ3VTho3CSLSUEkGHw7Ef5mYcLQ1FAamx1JXONNqkgytRcXT2IeNFkb0UfFUXC8o0ZoC
+ hVBJWBFRt8xiC2lYLHx/pxcviZPotaCL5x5DBQFTJhGdxID2tM0O3VeymlJXeZgQO7Ox
+ ti3P1Du3vIkTWNoIFYlj9InkhtnlIofgRVHroKmrQqeAdsSHoSQ6ZqkQAMQDiR+B4tCj
+ EYTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Vh/zNpzg9E+1VDLABSaxgI+0bzfYF05fxMUcPBZBbvM=;
+ b=ouJyr/lSTQJlYIYSvTM2myKuy2aT3ml1swewlis5HBEJdF95Ff6kWXFZne7FscK1cr
+ 8RFQzSPDt+GUb4n2C70oIadhVoDeDb38YWXbMj4hTL7X4S1TswlJJoqRtaKOtx/SKbM8
+ qXcvptYFHL8s97il2E4MsnZh+k5w69rFZVrcP/UTlL34NJEPMxIwxuMrb1M1gWKyrsRS
+ h855tdSaI6tsPY3mdjS7/avNus8YP/pBlaXQcyOEphVU8FU+8WzWmj+rKFP908ZLZijO
+ Z98MLPLkqR2YR/gVxF3AYuWLX6M03Kiq+6fKQMwnLxtPn+Vv7JFK/vIkK78hNLLv3Uls
+ cyGg==
+X-Gm-Message-State: AOAM532opByRxCFi1cvdfF5cL1XOPVw2uVmP8NTNRfgZbpH4Q2CbTEi9
+ MkX5n8K9dLjnBBNr3OPLXTGnmE7sddZ0oQ==
+X-Google-Smtp-Source: ABdhPJwnZ2LOI6Hp2h+UclqgISRC9EwklhmTKI81XQxJuKQHM0VRYcsncu1R3ypPBFh8Y8ubvDsxfg==
+X-Received: by 2002:a2e:a367:: with SMTP id i7mr3402898ljn.244.1629988716324; 
+ Thu, 26 Aug 2021 07:38:36 -0700 (PDT)
+Received: from localhost.localdomain (88-115-160-70.elisa-laajakaista.fi.
+ [88.115.160.70])
+ by smtp.gmail.com with ESMTPSA id g25sm336815lfv.62.2021.08.26.07.38.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Aug 2021 07:38:35 -0700 (PDT)
+From: Zhi A Wang <zhi.wang.linux2@gmail.com>
+X-Google-Original-From: Zhi A Wang <zhi.a.wang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Cc: Zhi A Wang <zhi.a.wang@intel.com>,
+	Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [PATCH] drm/i915/gvt: fix the usage of ww lock in gvt scheduler.
+Date: Thu, 26 Aug 2021 14:38:34 +0000
+Message-Id: <20210826143834.25410-1-zhi.a.wang@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="GZVR6ND4mMseVXL/"
-Content-Disposition: inline
-In-Reply-To: <YSAI8pKAvvW/8S2O@bombadil.infradead.org>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,64 +71,44 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+As the APIs related to ww lock in i915 was changed recently, the usage of
+ww lock in GVT-g scheduler needs to be changed accrodingly. We noticed a
+deadlock when GVT-g scheduler submits the workload to i915. After some
+investigation, it seems the way of how to use ww lock APIs has been
+changed. Releasing a ww now requires a explict i915_gem_ww_ctx_fini().
 
---GZVR6ND4mMseVXL/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Fixes: 67f1120381df ("drm/i915/gvt: Introduce per object locking in GVT scheduler.")
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+Signed-off-by: Zhi A Wang <zhi.a.wang@intel.com>
+---
+ drivers/gpu/drm/i915/gvt/scheduler.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On 2021.08.20 12:56:34 -0700, Luis Chamberlain wrote:
-> On Fri, Aug 20, 2021 at 04:17:24PM +0200, Christoph Hellwig wrote:
-> > On Thu, Aug 19, 2021 at 04:29:29PM +0800, Zhenyu Wang wrote:
-> > > I'm working on below patch to resolve this. But I met a weird issue in
-> > > case when building i915 as module and also kvmgt module, it caused
-> > > busy wait on request_module("kvmgt") when boot, it doesn't happen if
-> > > building i915 into kernel. I'm not sure what could be the reason?
-> >=20
-> > Luis, do you know if there is a problem with a request_module from
-> > a driver ->probe routine that is probably called by a module_init
-> > function itself?
->=20
-> Generally no, but you can easily foot yourself in the feet by creating
-> cross dependencies and not dealing with them properly. I'd make sure
-> to keep module initialization as simple as possible, and run whatever
-> takes more time asynchronously, then use a state machine to allow
-> you to verify where you are in the initialization phase or query it
-> or wait for a completion with a timeout.
->=20
-> It seems the code in question is getting some spring cleaning, and its
-> unclear where the code is I can inspect. If there's a tree somewhere I
-> can take a peak I'd be happy to review possible oddities that may stick
-> out.
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
+index 9578e57db4c2..43fedfe9639a 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.c
++++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+@@ -576,7 +576,7 @@ static int prepare_shadow_batch_buffer(struct intel_vgpu_workload *workload)
+ 
+ 			/* No one is going to touch shadow bb from now on. */
+ 			i915_gem_object_flush_map(bb->obj);
+-			i915_gem_object_unlock(bb->obj);
++			i915_gem_ww_ctx_fini(&ww);
+ 		}
+ 	}
+ 	return 0;
+@@ -630,7 +630,7 @@ static int prepare_shadow_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
+ 		return ret;
+ 	}
+ 
+-	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
++	i915_gem_ww_ctx_fini(&ww);
+ 
+ 	/* FIXME: we are not tracking our pinned VMA leaving it
+ 	 * up to the core to fix up the stray pin_count upon
+-- 
+2.25.1
 
-I tried to put current patches under test here: https://github.com/intel/gv=
-t-linux/tree/gvt-staging
-The issue can be produced with CONFIG_DRM_I915=3Dm and CONFIG_DRM_I915_GVT_=
-KVMGT=3Dm.
-
->=20
-> My goto model for these sorts of problems is to abstract the issue
-> *outside* of the driver in question and implement new selftests to
-> try to reproduce. This serves two purposes, 1) helps with testing
-> 2) may allow you to see the problem more clearly.
->=20
-
-I'll see if can abstract that.
-
-Thanks, Luis.
-
---GZVR6ND4mMseVXL/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYScwwwAKCRCxBBozTXgY
-J4yKAJ0d9jcEa21+qw9af0hJvQT2LXk0WACggn/GD2G8nFh6SY4kc8+7qqXkpi0=
-=fIjO
------END PGP SIGNATURE-----
-
---GZVR6ND4mMseVXL/--
