@@ -1,63 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6277F3F9E7B
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Aug 2021 20:05:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37F523FAEAC
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 29 Aug 2021 23:16:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 88F0F6E9A1;
-	Fri, 27 Aug 2021 18:05:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C875C89BDB;
+	Sun, 29 Aug 2021 21:16:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe30.google.com (mail-vs1-xe30.google.com
- [IPv6:2607:f8b0:4864:20::e30])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C9FF46E99A;
- Fri, 27 Aug 2021 18:05:06 +0000 (UTC)
-Received: by mail-vs1-xe30.google.com with SMTP id t4so5231963vsm.5;
- Fri, 27 Aug 2021 11:05:06 -0700 (PDT)
+Received: from mail-lj1-x22a.google.com (mail-lj1-x22a.google.com
+ [IPv6:2a00:1450:4864:20::22a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3214289BDB
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 29 Aug 2021 21:16:47 +0000 (UTC)
+Received: by mail-lj1-x22a.google.com with SMTP id d16so22389933ljq.4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 29 Aug 2021 14:16:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=88JiBN68KFkPvgUKvvgM6auDxOEjKddEpXMvH74tSU0=;
- b=OlwWwQfPg4x+JJlvPNh300Bq1LWQakwQ25UjGQSFu+e/ONGVka7NnKHJa+lgNw1pXV
- O/VaBhbQV0p5s2/S3HszX9pzR0SadV3bqBaL/0a48gJ9IGvbaB4+SIEcxTiCHR7KQJ8B
- J1a5QBQJPr4qWh90Oj3DuALxdosTczcnDdni2cSNTkI8cSuqR8wklMDBXc8ldGdEK46o
- 0zcdpFqpN0s/xEFW3FLjXWWA1ZwBWL+8GLjzKkkgYnRZh7SCSIlTLkDqH2XmtErs4aPk
- 1rqZ/YjPwLsXASog5KOY4AHNWfaWbxESg1O/qpwsb3e0lfivzJjauzD88S0GagWg5pQz
- pVSQ==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=5X8hCz3Ojd81XhnoVxUJInNJp1Jrv4OdQtWUDXiYUic=;
+ b=e6FUAkNtc5AudDJT7bOyD1zniKzKJN6YEVOXro5TDU75cTytSIXMIy1OgT10R+1Uf8
+ 4ViE8SuPaMb7qbcAMHSS6sOuFwV0Jg3T72562te8Hi4GEC3l8qsby/I0GGMBwI3XxvUH
+ lGm+QwMww79sMgqgL2M3fMk/FIvTTmp3DXTy/ygC4lWEl8F7Txex3i1x4gPfXX1IQgb7
+ Zd67+0Cw2uwZ9/gvJ3JNEmXEXSeUzlTRPq1Y4M669G+svBCEYKerLu7XK4k04pYXVHQh
+ ig+LzwhMMKJcP3iihdJnKVoQp9u0rktgXXKpJtqhiPrZUAkv0Np80g64PWCLQt7Q30sl
+ wKyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=88JiBN68KFkPvgUKvvgM6auDxOEjKddEpXMvH74tSU0=;
- b=HZ5nwJ+TfaN1KFaxclzph4OsR4Ac4WJ+aXTexK3/mFEWC0hTHMDmX/PmX4IbhL/Wud
- htPomGH0Z9Sh7yTsqhhAS3+iGBAmJnG0tc1chHc54Q7vU1y74EtmgWBOkhYCLZeGCOMp
- kudfJWOiy9PC/2N7GTGzFCLVWJB53FvB0GswENKL5p2kolhhtBHTWVcljJbf/mWzIxww
- TdTz6nyEuBD5sPVAbhZkqV+0HamwQaLKMMyuRcAQmCEhsnFzcqaf5a5zbyZlcI7SAc/n
- EujE3XL3dLH3n8lbB9dUzE9wIfOx93C93vE4U/6WqczxBWoDEDLgyhIFwTGdoKo3znDq
- +A+g==
-X-Gm-Message-State: AOAM531QQwzkzafoLtctztBdf27KkcF0gSQd3fDzSx3cE7M+NzNmRgG+
- t3O3Pkqr1RoRwbS+fI61Jdw9EvgeqingDzxUll8=
-X-Google-Smtp-Source: ABdhPJzGaciYM1/s8m8/B975vUfIbvCRz+B6Bp+lNCm9eTPHyZtDPjmUuOFML4/BZkts2fosFQFBO2nGMugI2IF9+i8=
-X-Received: by 2002:a67:c789:: with SMTP id t9mr8673774vsk.60.1630087505693;
- Fri, 27 Aug 2021 11:05:05 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=5X8hCz3Ojd81XhnoVxUJInNJp1Jrv4OdQtWUDXiYUic=;
+ b=TnlS3+G0rgXTmHb4GBVbJ9DghgNhf9+yDiARJd0nVP/vkMJrSCxiUKwr2eXV6Qoe54
+ WashuvWRKqKXOYyDB6GE7bBJugZxTkT9DxK/jyzWn8DE7cFWRFd331APeW1DnSJa1KoA
+ UnOfvIL/gABl+uvPWCe+i7NhGoNGN+o/8Ax0vaRl3RaHcO0iQS92CDPupJaIyI0Dmqf+
+ iC1vGyictWJdjGnqbhiBfJel79hXOc6sXALwp0Po2FwWddNHaSLKgl75ItaQKf6mnvaJ
+ BDXEeV7YWwr2nplbDxtzUWfguXfn+W2N33+5SBRXLgXyhMqkGJAUIRY0+knEJSh6FkH7
+ K/Kg==
+X-Gm-Message-State: AOAM531rvrlyM+VICExDL8gg1yznF/wOHARFCsDNTyDptcCIYMU9QVbu
+ I+vv5cj/f5oZZ7gI89duQFYI5HFDScsUlAEr4tA=
+X-Google-Smtp-Source: ABdhPJyXIGDbmk1OuvV+nMMNriifqCD41NNYhn5I900g1KPyq8hzfDkvmHk/0xIBTSH69IINDiGSyfjOHY9Ib2jXRUY=
+X-Received: by 2002:a2e:b708:: with SMTP id j8mr17460463ljo.488.1630271805398; 
+ Sun, 29 Aug 2021 14:16:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210822222009.2035788-1-jim.cromie@gmail.com>
- <20210822222009.2035788-2-jim.cromie@gmail.com>
- <c83b0814-b8e1-91f5-ba28-f9db3f363ce1@akamai.com>
-In-Reply-To: <c83b0814-b8e1-91f5-ba28-f9db3f363ce1@akamai.com>
-From: jim.cromie@gmail.com
-Date: Fri, 27 Aug 2021 12:04:39 -0600
-Message-ID: <CAJfuBxz83LUFqPmApV22d0R1pHxFH4ZhObi7PgQeQ75w4zvb7A@mail.gmail.com>
-Subject: Re: [PATCH v6 01/11] moduleparam: add data member to struct
- kernel_param
-To: Jason Baron <jbaron@akamai.com>
-Cc: Greg KH <gregkh@linuxfoundation.org>, Sean Paul <seanpaul@chromium.org>, 
- Jessica Yu <jeyu@kernel.org>, LKML <linux-kernel@vger.kernel.org>, 
- dri-devel <dri-devel@lists.freedesktop.org>, 
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- intel-gvt-dev@lists.freedesktop.org, 
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>
-Content-Type: text/plain; charset="UTF-8"
+From: David Zheng <coldavid.petra@gmail.com>
+Date: Mon, 30 Aug 2021 00:15:56 +0300
+Message-ID: <CAD=tLi0RAO2y22xgH5t8pm27qa-K0_H2e8p6L+kwb6y640zu4Q@mail.gmail.com>
+Subject: My business offer
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000d922af05cab93b24"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,40 +61,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: zhenh.david1@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Aug 25, 2021 at 11:13 AM Jason Baron <jbaron@akamai.com> wrote:
->
->
->
-> On 8/22/21 6:19 PM, Jim Cromie wrote:
-> > Add a const void* data member to the struct, to allow attaching
-> > private data that will be used soon by a setter method (via kp->data)
-> > to perform more elaborate actions.
-> >
-> > To attach the data at compile time, add new macros:
-> >
+--000000000000d922af05cab93b24
+Content-Type: text/plain; charset="UTF-8"
 
->
-> I wonder if kp->arg can just be used for all this and avoid this patch entirely?
->
-> define something like:
->
-> struct dd_bitmap_param {
->         int bitmap;
->         struct dyndbg_bitdesc *bitmap_arr;
-> };
->
-> and then just pass a pointer to it as 'arg' for module_param_cb? And then in
-> the get/set callbacks you can use kp->bitmap and kp->bitmap_arr.
->
+Dear Sir,
 
-yes, thanks, this is working out nicely.
-I think I was thrown off by the arg name,
-if it had been called data, it would have slapped me
+With respect, I am the portfolio manager with an Investment Bank in the UK.
 
-> Thanks,
->
-> -Jason
->
+I am communicating to you in full capacity of my official duties and
+obligations, and on this note, I hereby submit and solicit for a viable
+possible external partnership with you which I want us to discuss the
+details when you respond to this mail.
+
+Could you send me your contact address and phone number so that I can send
+you mail as well as discuss the details with you.
+
+I will send you the details as soon as I receive your response that you
+will be able to enter into our business cooperation.
+
+Your truly,
+David Zheng
+
+--000000000000d922af05cab93b24
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_sig=
+nature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><br></div>=
+<div>Dear Sir,</div><div>=C2=A0</div><div>With respect, I am the portfolio =
+manager with an Investment Bank in the UK.</div><div>=C2=A0</div><div>I am =
+communicating to you in full capacity of my official duties and obligations=
+, and on this note, I hereby submit and solicit for a viable possible exter=
+nal partnership with you which I want us to discuss the details when you re=
+spond to this mail.</div><div><br></div><div>Could you send me your contact=
+ address and phone number so that I can send you mail as well as discuss th=
+e details with you.</div><div>=C2=A0</div><div>I will send you the details =
+as soon as I receive your response that you will be able to enter into our =
+business cooperation.</div><div>=C2=A0</div><div>Your truly,</div><div>Davi=
+d Zheng</div></div></div></div></div>
+
+--000000000000d922af05cab93b24--
