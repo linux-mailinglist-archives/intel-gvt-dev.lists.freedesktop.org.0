@@ -2,41 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02CFC3FC432
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Aug 2021 10:28:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAC613FCD2D
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Aug 2021 21:15:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9388189C0A;
-	Tue, 31 Aug 2021 08:28:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 61EDC6E055;
+	Tue, 31 Aug 2021 19:15:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 84E7E89BA9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 Aug 2021 08:28:29 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10092"; a="218146944"
-X-IronPort-AV: E=Sophos;i="5.84,365,1620716400"; d="scan'208";a="218146944"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Aug 2021 01:28:24 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,365,1620716400"; d="scan'208";a="689812530"
-Received: from lkp-server01.sh.intel.com (HELO 4fbc2b3ce5aa) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 31 Aug 2021 01:28:22 -0700
-Received: from kbuild by 4fbc2b3ce5aa with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mKz81-0006HN-Th; Tue, 31 Aug 2021 08:28:21 +0000
-Date: Tue, 31 Aug 2021 16:27:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
- zhenyu.z.wang@intel.com
-Subject: [intel-gvt-linux:gvt-staging] BUILD SUCCESS
- 62511d13dd957a86838ae8c74dc3be3f2f9edc83
-Message-ID: <612de7f4.BR5ddQf7SsPFGXy4%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-Greylist: delayed 1622 seconds by postgrey-1.36 at gabe;
+ Tue, 31 Aug 2021 19:14:59 UTC
+Received: from serverunix10.conectivachile.cl (serverunix10.conectivachile.cl
+ [172.111.194.154])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 095C86E09A;
+ Tue, 31 Aug 2021 19:14:59 +0000 (UTC)
+Received: from imme.cl (localhost [127.0.0.1])
+ (Authenticated sender: turismo@imme.cl)
+ by serverunix10.conectivachile.cl (Postfix) with ESMTPA id 84F7434AD;
+ Tue, 31 Aug 2021 14:40:53 -0400 (-04)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=imme.cl; s=default;
+ t=1630435276; h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:mime-version:mime-version:
+ content-type:content-type; bh=CsEk1OqJyNqv70Z+yISft6NGRJexnX21wWGg0CZkEKM=;
+ b=bP7YaYX1jQGlwE3mkbBs8b8PaFHdtX8DYIQga857Ix4opuL+wqI2G0J/XTV/pcvufZc22k
+ aC+WooKzpMNf7ebIl/gK5mtDieR3aD5W8p61vdBjKEOdDRICs1D4Jzz+VesJLGtsf6WXPz
+ 3AwbM4DaNspjmvzuJ74fbmdCNhMvZ6U=
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Date: Tue, 31 Aug 2021 19:40:53 +0100
+From: "MRS. CORIS WHENT" <turismo@imme.cl>
+To: undisclosed-recipients:;
+Subject: GOOD NEWS
+User-Agent: Roundcube Webmail/1.4.3
+Message-ID: <adc244db5022c7091d0e8a9a6839af46@imme.cl>
+X-Sender: turismo@imme.cl
+Content-Type: multipart/alternative;
+ boundary="=_98a72b59bdbbba4db9a1b0bf29add502"
+X-Spam: Yes
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,134 +49,146 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: whentfamilyfoundation@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 62511d13dd957a86838ae8c74dc3be3f2f9edc83  TESTONLY:drm/i915/gvt: potential fix for refactor against current tip
+--=_98a72b59bdbbba4db9a1b0bf29add502
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 
-elapsed time: 7245m
+-- 
+My Dear Beneficiary,
 
-configs tested: 110
-configs skipped: 4
+I am sure this mail would be coming to you as a surprise, since we have
+never met before and you would also be asking why I have decided to
+choose you among the numerous internet users in the world. Your email
+address came up in a random draw conducted by Vodafone Group plc charity
+fundraising support, I cannot say Why I have chosen you but do not be
+worried because we have made our random draw and your e-mail address was
+picked to receive this charity fund as the beneficiary of my (LAST WILL)
+which has made me accomplish my request. May the almighty God bless and
+see you through with this mission. Please carefully read and digest the
+message below.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Before I move further, permit me to give you a little of my biography,
+My name is Mother Coris Whent, 84 Years old, Founder of Whent Family
+Foundation and wife to Late Sir, Gerald Arthur "Gerry" Whent, founder
+and former chief executive of Vodafone Group plc. After the death of my
+husband I became the Head of his investment and now that I am old and
+weak I have decided to spend the rest of my life with my family and
+loved ones whom I never had time for during the course of my business
+life, but before the death of my husband we had a plan to use the last
+days of our lives to donate half of what we have worked for to the less
+privilege and charity homes and the other half for ourselves, family
+members and close friends, and it is so unfortunate that my husband is
+not alive today to do this with me and I am very weak and old now, hence
+I have decided to do this philanthropic work on behalf of my late
+husband and I.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                          pxa3xx_defconfig
-powerpc                     tqm5200_defconfig
-mips                malta_qemu_32r6_defconfig
-mips                         cobalt_defconfig
-arm                          gemini_defconfig
-powerpc                 xes_mpc85xx_defconfig
-mips                     cu1000-neo_defconfig
-sparc                       sparc32_defconfig
-arm                           sunxi_defconfig
-mips                     loongson2k_defconfig
-powerpc                     redwood_defconfig
-sh                           se7724_defconfig
-arm                           stm32_defconfig
-s390                             alldefconfig
-powerpc                 mpc832x_mds_defconfig
-arc                            hsdk_defconfig
-arm                  colibri_pxa270_defconfig
-h8300                               defconfig
-sh                          lboxre2_defconfig
-nios2                         3c120_defconfig
-m68k                             alldefconfig
-mips                       capcella_defconfig
-arm                         assabet_defconfig
-arm                      integrator_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-x86_64                            allnoconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nios2                               defconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a014-20210827
-x86_64               randconfig-a015-20210827
-x86_64               randconfig-a016-20210827
-x86_64               randconfig-a013-20210827
-x86_64               randconfig-a012-20210827
-x86_64               randconfig-a011-20210827
-i386                 randconfig-a011-20210827
-i386                 randconfig-a016-20210827
-i386                 randconfig-a012-20210827
-i386                 randconfig-a014-20210827
-i386                 randconfig-a013-20210827
-i386                 randconfig-a015-20210827
-x86_64               randconfig-a006-20210828
-x86_64               randconfig-a001-20210828
-x86_64               randconfig-a005-20210828
-x86_64               randconfig-a003-20210828
-x86_64               randconfig-a004-20210828
-x86_64               randconfig-a002-20210828
-arc                  randconfig-r043-20210826
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+I have presently deposited a Cheque in the sum of (FIVE MILLION UNITED
+STATES DOLLARS) with ING Bank N.V to be transfer to you, what you have
+to do now is to contact Mr. Tanate Phutrakul the (CFO of ING Groep and
+ING Bank N.V) as soon as possible to know when they will transfer or
+deliver your cheque to you because of the expiring date of the Cheque. I
+only made the deposit with your EMAIL ADDRESS and the DEPOSIT CODE is
+(ING_55519724_WFP). I have paid for the Full Insurance Premium of the
+Cheque deposit to ING Bank, showing that it is not a Drug Fund or Fund
+meant to sponsor Terrorism in your Country. Let me repeat again, you are
+not to pay for the Insurance Premium of the Cheque to ING Bank because I
+have already paid for them.
 
-clang tested configs:
-i386                 randconfig-a001-20210829
-i386                 randconfig-a006-20210829
-i386                 randconfig-a005-20210829
-i386                 randconfig-a004-20210829
-i386                 randconfig-a003-20210829
-x86_64               randconfig-a005-20210827
-x86_64               randconfig-a001-20210827
-x86_64               randconfig-a006-20210827
-x86_64               randconfig-a003-20210827
-x86_64               randconfig-a004-20210827
-x86_64               randconfig-a002-20210827
-hexagon              randconfig-r041-20210826
-hexagon              randconfig-r045-20210826
-riscv                randconfig-r042-20210826
-s390                 randconfig-r044-20210826
+I am sorry to inform you that you may not have the chance to meet me
+because I have just concluded the assignment which my husband and I have
+agreed upon before his death and you happened to be the beneficiary of
+my (LAST WILL) donation, irrespective of your previous financial status,
+hence I need you to do me a favor by accepting our offer that will cost
+you nothing. PLEASE MY DEAR, IF YOU KNOW THAT YOU WILL NOT USE THIS
+MONEY FOR BETTERMENT OF THE POOR IN YOUR SOCIETY, please do not contact
+me or the Mr. Tanate Phutrakul, please i need someone that will help me
+distribute this money generously to the less privilege in their
+communities.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Kindly contact Mr. Tanate Phutrakul, with Your Full Names: Your Postal
+address; Your Direct telephone number; for transfer of the Cheque to
+you.
+
+Contact Person: Mr. Tanate Phutrakul
+E-mail: cfo@ing-tanate.com
+Tel: +44 7451280367
+
+Note: Please I do not want you to thank me or our family, all I need you
+to do is to invest wisely and do the same good to someone's life someday
+as this is the only way this world would be a better community if we
+render selfless services to one another especially in this period of
+Covid-19 pandemic. GOD BLESS YOU!
+
+Yours Faithfully
+Mrs. Coris Whent
+(c) 2021 Whent Family Foundation.
+--=_98a72b59bdbbba4db9a1b0bf29add502
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8" /></head><body style=3D'font-size: 10pt; font-family: Verdana,Gen=
+eva,sans-serif'>
+<p><br /></p>
+<div id=3D"signature">-- <br />
+<div class=3D"pre" style=3D"margin: 0; padding: 0; font-family: monospace">=
+My Dear Beneficiary,<br /><br />I am sure this mail would be coming to you =
+as a surprise, since we have never met before and you would also be asking =
+why I have decided to choose you among the numerous internet users in the w=
+orld. Your email address came up in a random draw conducted by Vodafone Gro=
+up plc charity fundraising support, I cannot say Why I have chosen you but =
+do not be worried because we have made our random draw and your e-mail addr=
+ess was picked to receive this charity fund as the beneficiary of my (LAST =
+WILL) which has made me accomplish my request. May the almighty God bless a=
+nd see you through with this mission. Please carefully read and digest the =
+message below.<br /><br />Before I move further, permit me to give you a li=
+ttle of my biography, My name is Mother Coris Whent, 84 Years old, Founder =
+of Whent Family Foundation and wife to Late Sir, Gerald Arthur "Gerry" When=
+t, founder and former chief executive of Vodafone Group plc. After the deat=
+h of my husband I became the Head of his investment and now that I am old a=
+nd weak I have decided to spend the rest of my life with my family and love=
+d ones whom I never had time for during the course of my business life, but=
+ before the death of my husband we had a plan to use the last days of our l=
+ives to donate half of what we have worked for to the less privilege and ch=
+arity homes and the other half for ourselves, family members and close frie=
+nds, and it is so unfortunate that my husband is not alive today to do this=
+ with me and I am very weak and old now, hence I have decided to do this ph=
+ilanthropic work on behalf of my late husband and I.<br />&nbsp;<br />I hav=
+e presently deposited a Cheque in the sum of (FIVE MILLION UNITED STATES DO=
+LLARS) with ING Bank N.V to be transfer to you, what you have to do now is =
+to contact Mr. Tanate Phutrakul the (CFO of ING Groep and ING Bank N.V) as =
+soon as possible to know when they will transfer or deliver your cheque to =
+you because of the expiring date of the Cheque. I only made the deposit wit=
+h your EMAIL ADDRESS and the DEPOSIT CODE is (ING_55519724_WFP). I have pai=
+d for the Full Insurance Premium of the Cheque deposit to ING Bank, showing=
+ that it is not a Drug Fund or Fund meant to sponsor Terrorism in your Coun=
+try. Let me repeat again, you are not to pay for the Insurance Premium of t=
+he Cheque to ING Bank because I have already paid for them.<br />&nbsp;<br =
+/>I am sorry to inform you that you may not have the chance to meet me beca=
+use I have just concluded the assignment which my husband and I have agreed=
+ upon before his death and you happened to be the beneficiary of my (LAST W=
+ILL) donation, irrespective of your previous financial status, hence I need=
+ you to do me a favor by accepting our offer that will cost you nothing. PL=
+EASE MY DEAR, IF YOU KNOW THAT YOU WILL NOT USE THIS MONEY FOR BETTERMENT O=
+F THE POOR IN YOUR SOCIETY, please do not contact me or the Mr. Tanate Phut=
+rakul, please i need someone that will help me distribute this money genero=
+usly to the less privilege in their communities.<br />&nbsp;<br />Kindly co=
+ntact Mr. Tanate Phutrakul, with Your Full Names: Your Postal address; Your=
+ Direct telephone number; for transfer of the Cheque to you.<br /><br />Con=
+tact Person: Mr. Tanate Phutrakul<br />E-mail: <a href=3D"mailto:cfo@ing-ta=
+nate.com">cfo@ing-tanate.com</a><br />Tel: +44 7451280367<br />&nbsp;<br />=
+Note: Please I do not want you to thank me or our family, all I need you to=
+ do is to invest wisely and do the same good to someone&rsquo;s life someda=
+y as this is the only way this world would be a better community if we rend=
+er selfless services to one another especially in this period of Covid-19 p=
+andemic. GOD BLESS YOU!<br />&nbsp;<br />Yours Faithfully<br />Mrs. Coris W=
+hent<br />&copy; 2021 Whent Family Foundation.</div>
+</div>
+</body></html>
+
+--=_98a72b59bdbbba4db9a1b0bf29add502--
