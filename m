@@ -2,41 +2,62 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BAC613FCD2D
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Aug 2021 21:15:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D4B33FCE4F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Aug 2021 22:21:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 61EDC6E055;
-	Tue, 31 Aug 2021 19:15:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0A6A6899DB;
+	Tue, 31 Aug 2021 20:21:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1622 seconds by postgrey-1.36 at gabe;
- Tue, 31 Aug 2021 19:14:59 UTC
-Received: from serverunix10.conectivachile.cl (serverunix10.conectivachile.cl
- [172.111.194.154])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 095C86E09A;
- Tue, 31 Aug 2021 19:14:59 +0000 (UTC)
-Received: from imme.cl (localhost [127.0.0.1])
- (Authenticated sender: turismo@imme.cl)
- by serverunix10.conectivachile.cl (Postfix) with ESMTPA id 84F7434AD;
- Tue, 31 Aug 2021 14:40:53 -0400 (-04)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=imme.cl; s=default;
- t=1630435276; h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type; bh=CsEk1OqJyNqv70Z+yISft6NGRJexnX21wWGg0CZkEKM=;
- b=bP7YaYX1jQGlwE3mkbBs8b8PaFHdtX8DYIQga857Ix4opuL+wqI2G0J/XTV/pcvufZc22k
- aC+WooKzpMNf7ebIl/gK5mtDieR3aD5W8p61vdBjKEOdDRICs1D4Jzz+VesJLGtsf6WXPz
- 3AwbM4DaNspjmvzuJ74fbmdCNhMvZ6U=
+Received: from mail-io1-xd29.google.com (mail-io1-xd29.google.com
+ [IPv6:2607:f8b0:4864:20::d29])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D639E897D0;
+ Tue, 31 Aug 2021 20:21:39 +0000 (UTC)
+Received: by mail-io1-xd29.google.com with SMTP id g9so524600ioq.11;
+ Tue, 31 Aug 2021 13:21:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Yv9YRDAo21vPUpqq6KEd4YHQvcm8cpWSUp6HK2qPHDk=;
+ b=nKEO2sA9RNXa/COb4Oof/EkP0lulNWqSv4xbF8nbsyHxRK6Q3kHq7P7GkBRtE3Kdt2
+ bql4F0KUn7YGKXEDG7kdu+mYfTfaPoTxF92YNhNgpDNSXQk6eMnvrMYDtitXmnn2Qde9
+ 82NF1LfYU50VNXVUfS+x1Qmx6jpVNnxyyQXNOf8ax7UVDGPB9RrfHHl/rsqpFU4ZmjKb
+ GchBWTcsoctOzjHoUA2EsDHNgfMCWLP4DjIN3W0tD5JMjLcXJ6w9Zh2O3HHaNzIUxyFH
+ 87qm6+KUk7of/7P7EfrRq3ZB5NSqy3bBd7B0ImsDIC9by7lfJw273DGdaJ9N2HxxUY8O
+ MRGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Yv9YRDAo21vPUpqq6KEd4YHQvcm8cpWSUp6HK2qPHDk=;
+ b=otXi5sSLfCeulYmNGo2BZsFNlKRgv5kVvl9s6mixEBYOZojCNSermAY80iC8mMBHFb
+ vvu+YIqa2epNWzzSLKXuUJqkUFYWsiGERB54I14t4p1AVmALbWM+M/d62FUqrxrukF+q
+ 6feAy0e2cf25Gw94btQ18QT6lG40C2kEBcAY1044ClcLyGgG+7nggk9uq/vWneog0SR5
+ yBpVzaZMNRe2jB5fpongG/mEkvmYJpHcO6IJDeZgx7W/okp5SH1Ozl6OSLL4YbU5kNU5
+ RYJcCa1E/+fxm02QdL5it98fisvlpXATp2JJu9zJDAmFl2SPU8aIKvS31N1FLZiZPTK0
+ KWQQ==
+X-Gm-Message-State: AOAM532JAs8oYy3joTOCkFfkqm86eOABOop45g8+/UHYoHmNAY0Ik9We
+ srXs/y0F2mzR9U7U7mAgbxI=
+X-Google-Smtp-Source: ABdhPJz8fln4kSXOzMYZNrXWgoMrkH1zDRuSuWNF9ErsAK2lP1IaxWTOZDe/ytRdBgYLObj5IF2rAg==
+X-Received: by 2002:a05:6638:191c:: with SMTP id
+ p28mr4445838jal.41.1630441299131; 
+ Tue, 31 Aug 2021 13:21:39 -0700 (PDT)
+Received: from frodo.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
+ by smtp.googlemail.com with ESMTPSA id u15sm10597384ilk.53.2021.08.31.13.21.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 Aug 2021 13:21:38 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: jbaron@akamai.com, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Cc: Jim Cromie <jim.cromie@gmail.com>
+Subject: [PATCH v7 0/8] use DYNAMIC_DEBUG to implement DRM.debug
+Date: Tue, 31 Aug 2021 14:21:25 -0600
+Message-Id: <20210831202133.2165222-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Date: Tue, 31 Aug 2021 19:40:53 +0100
-From: "MRS. CORIS WHENT" <turismo@imme.cl>
-To: undisclosed-recipients:;
-Subject: GOOD NEWS
-User-Agent: Roundcube Webmail/1.4.3
-Message-ID: <adc244db5022c7091d0e8a9a6839af46@imme.cl>
-X-Sender: turismo@imme.cl
-Content-Type: multipart/alternative;
- boundary="=_98a72b59bdbbba4db9a1b0bf29add502"
-X-Spam: Yes
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,146 +70,85 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: whentfamilyfoundation@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=_98a72b59bdbbba4db9a1b0bf29add502
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+Hi Jason, DRM folks,
+
+In DRM-debug currently, drm_debug_enabled() is called a lot to decide
+whether or not to write debug messages.  Each test is cheap, but costs
+continue with uptime.  DYNAMIC_DEBUG "dyndbg", when built with
+JUMP_LABEL, replaces each of those tests with a patchable NOOP, for
+"zero cost when off" debugs.
+
+this is v7:
+- drops RFC distractions -JBaron
+- drops patch-1: kp->data addition in moduleparams.h not needed -JBaron
+- rework dyndbg callbacks to use kp->arg instead -JBaron
+- fixes for problem configs reported -lkp 
+- others noted per patch below ---
+
+Broadly, this patchset does 3 things:
+
+Adds DEFINE_DYNAMIC_DEBUG_CATEGORIES, which defines a mapping from
+bits to "categorized" pr_debugs, a sysfs interface, and callbacks to
+implement the bits as dynamic_debug >controls.  This is modelled after
+DRM's debug interface.
+
+Uses the new macro in amdgpu & i915 to control existing pr_debugs
+according to their ad-hoc categorizations.
+
+Adapts the drm-debug API (~20 macros) to configurably "replace"
+drm_dbg & drm_dev_dbg with pr_debug & dev_dbg, which avoids
+drm_debug_enabled() overheads.  DEFINE_DYNAMIC_DEBUG_CATEGORIES is
+used to create the controlling bitmap, which is wired to __drm_debug
+var so remaining drm_debug_enabled() users stay in sync.
+
+on a virtual box:
+bash-5.1# for m in i915 amdgpu nouveau; do modprobe $m; done
+[43833.332326] dyndbg: 384 debug prints in module drm
+[43833.609577] dyndbg: 211 debug prints in module drm_kms_helper
+[43833.707124] dyndbg:   2 debug prints in module ttm
+[43837.471166] dyndbg: 1727 debug prints in module i915
+[43838.030774] AMD-Vi: AMD IOMMUv2 driver by Joerg Roedel <jroedel@suse.de>
+[43838.031905] AMD-Vi: AMD IOMMUv2 functionality not available on this system
+[43846.209583] dyndbg: 3852 debug prints in module amdgpu
+[43846.261391] [drm] amdgpu kernel modesetting enabled.
+[43846.262512] amdgpu: CRAT table not found
+[43846.263264] amdgpu: Virtual CRAT table created for CPU
+[43846.264293] amdgpu: Topology: Add CPU node
+[43846.743781] dyndbg:   3 debug prints in module wmi
+[43852.517497] dyndbg:  92 debug prints in module nouveau
+
+There are a few multi-second delays there, just before dyndbg
+initializes the large blocks of debug prints.
+
+
+Jim Cromie (8):
+  dyndbg: add DEFINE_DYNAMIC_DEBUG_CATEGORIES and callbacks
+  dyndbg: remove spaces in pr_debug "gvt: core:" etc prefixes
+  i915/gvt: use DEFINE_DYNAMIC_DEBUG_CATEGORIES to create "gvt:core:"
+    etc categories
+  amdgpu: use DEFINE_DYNAMIC_DEBUG_CATEGORIES
+  drm_print: add choice to use dynamic debug in drm-debug
+  drm_print: instrument drm_debug_enabled
+  amdgpu_ucode: reduce number of pr_debug calls
+  nouveau: fold multiple DRM_DEBUG_DRIVERs together
+
+ drivers/gpu/drm/Kconfig                       |  13 +
+ drivers/gpu/drm/Makefile                      |   3 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c     | 293 ++++++++++--------
+ .../gpu/drm/amd/display/dc/core/dc_debug.c    |  44 ++-
+ drivers/gpu/drm/drm_print.c                   |  53 +++-
+ drivers/gpu/drm/i915/Makefile                 |   4 +
+ drivers/gpu/drm/i915/gvt/debug.h              |  18 +-
+ drivers/gpu/drm/i915/i915_params.c            |  35 +++
+ drivers/gpu/drm/nouveau/nouveau_drm.c         |  36 ++-
+ include/drm/drm_print.h                       | 150 +++++++--
+ include/linux/dynamic_debug.h                 |  60 ++++
+ lib/dynamic_debug.c                           |  79 ++++-
+ 12 files changed, 582 insertions(+), 206 deletions(-)
 
 -- 
-My Dear Beneficiary,
+2.31.1
 
-I am sure this mail would be coming to you as a surprise, since we have
-never met before and you would also be asking why I have decided to
-choose you among the numerous internet users in the world. Your email
-address came up in a random draw conducted by Vodafone Group plc charity
-fundraising support, I cannot say Why I have chosen you but do not be
-worried because we have made our random draw and your e-mail address was
-picked to receive this charity fund as the beneficiary of my (LAST WILL)
-which has made me accomplish my request. May the almighty God bless and
-see you through with this mission. Please carefully read and digest the
-message below.
-
-Before I move further, permit me to give you a little of my biography,
-My name is Mother Coris Whent, 84 Years old, Founder of Whent Family
-Foundation and wife to Late Sir, Gerald Arthur "Gerry" Whent, founder
-and former chief executive of Vodafone Group plc. After the death of my
-husband I became the Head of his investment and now that I am old and
-weak I have decided to spend the rest of my life with my family and
-loved ones whom I never had time for during the course of my business
-life, but before the death of my husband we had a plan to use the last
-days of our lives to donate half of what we have worked for to the less
-privilege and charity homes and the other half for ourselves, family
-members and close friends, and it is so unfortunate that my husband is
-not alive today to do this with me and I am very weak and old now, hence
-I have decided to do this philanthropic work on behalf of my late
-husband and I.
-
-I have presently deposited a Cheque in the sum of (FIVE MILLION UNITED
-STATES DOLLARS) with ING Bank N.V to be transfer to you, what you have
-to do now is to contact Mr. Tanate Phutrakul the (CFO of ING Groep and
-ING Bank N.V) as soon as possible to know when they will transfer or
-deliver your cheque to you because of the expiring date of the Cheque. I
-only made the deposit with your EMAIL ADDRESS and the DEPOSIT CODE is
-(ING_55519724_WFP). I have paid for the Full Insurance Premium of the
-Cheque deposit to ING Bank, showing that it is not a Drug Fund or Fund
-meant to sponsor Terrorism in your Country. Let me repeat again, you are
-not to pay for the Insurance Premium of the Cheque to ING Bank because I
-have already paid for them.
-
-I am sorry to inform you that you may not have the chance to meet me
-because I have just concluded the assignment which my husband and I have
-agreed upon before his death and you happened to be the beneficiary of
-my (LAST WILL) donation, irrespective of your previous financial status,
-hence I need you to do me a favor by accepting our offer that will cost
-you nothing. PLEASE MY DEAR, IF YOU KNOW THAT YOU WILL NOT USE THIS
-MONEY FOR BETTERMENT OF THE POOR IN YOUR SOCIETY, please do not contact
-me or the Mr. Tanate Phutrakul, please i need someone that will help me
-distribute this money generously to the less privilege in their
-communities.
-
-Kindly contact Mr. Tanate Phutrakul, with Your Full Names: Your Postal
-address; Your Direct telephone number; for transfer of the Cheque to
-you.
-
-Contact Person: Mr. Tanate Phutrakul
-E-mail: cfo@ing-tanate.com
-Tel: +44 7451280367
-
-Note: Please I do not want you to thank me or our family, all I need you
-to do is to invest wisely and do the same good to someone's life someday
-as this is the only way this world would be a better community if we
-render selfless services to one another especially in this period of
-Covid-19 pandemic. GOD BLESS YOU!
-
-Yours Faithfully
-Mrs. Coris Whent
-(c) 2021 Whent Family Foundation.
---=_98a72b59bdbbba4db9a1b0bf29add502
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html; charset=UTF-8
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3DUTF-8" /></head><body style=3D'font-size: 10pt; font-family: Verdana,Gen=
-eva,sans-serif'>
-<p><br /></p>
-<div id=3D"signature">-- <br />
-<div class=3D"pre" style=3D"margin: 0; padding: 0; font-family: monospace">=
-My Dear Beneficiary,<br /><br />I am sure this mail would be coming to you =
-as a surprise, since we have never met before and you would also be asking =
-why I have decided to choose you among the numerous internet users in the w=
-orld. Your email address came up in a random draw conducted by Vodafone Gro=
-up plc charity fundraising support, I cannot say Why I have chosen you but =
-do not be worried because we have made our random draw and your e-mail addr=
-ess was picked to receive this charity fund as the beneficiary of my (LAST =
-WILL) which has made me accomplish my request. May the almighty God bless a=
-nd see you through with this mission. Please carefully read and digest the =
-message below.<br /><br />Before I move further, permit me to give you a li=
-ttle of my biography, My name is Mother Coris Whent, 84 Years old, Founder =
-of Whent Family Foundation and wife to Late Sir, Gerald Arthur "Gerry" When=
-t, founder and former chief executive of Vodafone Group plc. After the deat=
-h of my husband I became the Head of his investment and now that I am old a=
-nd weak I have decided to spend the rest of my life with my family and love=
-d ones whom I never had time for during the course of my business life, but=
- before the death of my husband we had a plan to use the last days of our l=
-ives to donate half of what we have worked for to the less privilege and ch=
-arity homes and the other half for ourselves, family members and close frie=
-nds, and it is so unfortunate that my husband is not alive today to do this=
- with me and I am very weak and old now, hence I have decided to do this ph=
-ilanthropic work on behalf of my late husband and I.<br />&nbsp;<br />I hav=
-e presently deposited a Cheque in the sum of (FIVE MILLION UNITED STATES DO=
-LLARS) with ING Bank N.V to be transfer to you, what you have to do now is =
-to contact Mr. Tanate Phutrakul the (CFO of ING Groep and ING Bank N.V) as =
-soon as possible to know when they will transfer or deliver your cheque to =
-you because of the expiring date of the Cheque. I only made the deposit wit=
-h your EMAIL ADDRESS and the DEPOSIT CODE is (ING_55519724_WFP). I have pai=
-d for the Full Insurance Premium of the Cheque deposit to ING Bank, showing=
- that it is not a Drug Fund or Fund meant to sponsor Terrorism in your Coun=
-try. Let me repeat again, you are not to pay for the Insurance Premium of t=
-he Cheque to ING Bank because I have already paid for them.<br />&nbsp;<br =
-/>I am sorry to inform you that you may not have the chance to meet me beca=
-use I have just concluded the assignment which my husband and I have agreed=
- upon before his death and you happened to be the beneficiary of my (LAST W=
-ILL) donation, irrespective of your previous financial status, hence I need=
- you to do me a favor by accepting our offer that will cost you nothing. PL=
-EASE MY DEAR, IF YOU KNOW THAT YOU WILL NOT USE THIS MONEY FOR BETTERMENT O=
-F THE POOR IN YOUR SOCIETY, please do not contact me or the Mr. Tanate Phut=
-rakul, please i need someone that will help me distribute this money genero=
-usly to the less privilege in their communities.<br />&nbsp;<br />Kindly co=
-ntact Mr. Tanate Phutrakul, with Your Full Names: Your Postal address; Your=
- Direct telephone number; for transfer of the Cheque to you.<br /><br />Con=
-tact Person: Mr. Tanate Phutrakul<br />E-mail: <a href=3D"mailto:cfo@ing-ta=
-nate.com">cfo@ing-tanate.com</a><br />Tel: +44 7451280367<br />&nbsp;<br />=
-Note: Please I do not want you to thank me or our family, all I need you to=
- do is to invest wisely and do the same good to someone&rsquo;s life someda=
-y as this is the only way this world would be a better community if we rend=
-er selfless services to one another especially in this period of Covid-19 p=
-andemic. GOD BLESS YOU!<br />&nbsp;<br />Yours Faithfully<br />Mrs. Coris W=
-hent<br />&copy; 2021 Whent Family Foundation.</div>
-</div>
-</body></html>
-
---=_98a72b59bdbbba4db9a1b0bf29add502--
