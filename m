@@ -1,65 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C53BA3FCE6B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Aug 2021 22:22:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CC083FE1D4
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  1 Sep 2021 20:10:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B037F6E0F2;
-	Tue, 31 Aug 2021 20:21:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2D9006E237;
+	Wed,  1 Sep 2021 18:10:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd35.google.com (mail-io1-xd35.google.com
- [IPv6:2607:f8b0:4864:20::d35])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E7E366E0F0;
- Tue, 31 Aug 2021 20:21:48 +0000 (UTC)
-Received: by mail-io1-xd35.google.com with SMTP id b7so588912iob.4;
- Tue, 31 Aug 2021 13:21:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=L+08hq9MDL1yzT8HxFNaQNtrlEM6Xv6fhZuNRn1F1mc=;
- b=kkg/vsJwa/PC9gwR6TjotF0CzvHRDa/wuXMq9HtcCwPhn1g2Qx8JJRgXcybbEg67Jh
- pVs6K3PIw1uNZjI8XQTu7Gtu2rAgJyLE3S5fqrjQn/gMx+Y+ZO5dzNZ0DPUeD6YISBEy
- TG2cM2xh57GL/+uZmpfJRK2sRGyI0rb9Bs14sl0GkLes6WrhB4wj4vZvj6dOBBEzdlaG
- 5tejIMovQXK8GpOcVIzJi8bR0T/1clUcGK/JHxg+3kfVG8T5AUOiTcBh0wzfwmTQICTb
- 50e4FgMlhKbkfsSHYjgKlmdQFZwHO4m0OmtQizYHYx42HivYCa029Jn1NkPAE/Dw4/qN
- cn8w==
+Received: from mail-vs1-xe2c.google.com (mail-vs1-xe2c.google.com
+ [IPv6:2607:f8b0:4864:20::e2c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 44DB26E237
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  1 Sep 2021 18:10:39 +0000 (UTC)
+Received: by mail-vs1-xe2c.google.com with SMTP id a25so587758vso.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 01 Sep 2021 11:10:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=2joGkq8i8C5vglZO1FYNTlWqLyr4vSiCXKQYXBVnv4Q=;
+ b=aWy3cDH4K7NKSTBgYt8Bl18q0lXYKjz3ODXdmd5qU7m90xwy3ClH86Fmqm70UE78nE
+ cCxNC2hrFzrK21sAYwmJvZ/U+5mdXkxd1IMUCJxXRKjHkX0wBv/2ij+O+Nv6M0RZHUbB
+ SgDMjtFc6B5Opf6kAG308YOEF6YuPV/5s+Q9UeQ0p4xSAbv+1X1fSjRbtbfK+/P/I1ut
+ yF5RiZ8tTqrM0rWFbjWeLKYFejzLxZ4ocR6PwIc8zP43Fgz4JomqAimOsmz8T8akJ38+
+ EjVap2/eOZ9ijI65rVdm0YZ0F1r6WMgluPdPrm+97Bpb6kmwgRV0NO5Z2YqswqBRPEYa
+ tfMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=L+08hq9MDL1yzT8HxFNaQNtrlEM6Xv6fhZuNRn1F1mc=;
- b=iCVUuxoSVswEYo6HssFsAmV2+tZING2Ea6RRmX/lmtSxHaWlBT3+GJhU5Q+kaFsWSS
- 2//cWwJTH1xkPLD+y6UA2oktOXxoo2/I5UytwWLHp1QEr6zC0rmvFIYus+XGsVhOF148
- Ye5QDJyW/PdShG6CqP2Nh4Smw9Tiyc4iwPuTp/4TFaUygeJ8B2AGPQDgzipVjRuVcQQh
- Y/vIfgTPGdYUdJSsQbLprr6KlHGh2bXHdwpuxe/AH7utGZG/WuQ/GGCJdkO7dtoDxeTX
- EMKU8aqhQv/NqURdqONJYIlArHbB/Ws/8S+b07r1swzGWyAz7/+PhhKBCFLNwYZwH/G8
- Gdag==
-X-Gm-Message-State: AOAM5313Z0zzmf71ORyFCliIOyDgE7jWXv+067oUqY40Mt28fPGPKvmZ
- L2OcuS8G/GXe5Fi/5ybl6YYoBICD0hc=
-X-Google-Smtp-Source: ABdhPJzGE5W/brNtojRAI3ODL+k+VqSv5/EuvNY5lJztWnokfQOk0zya7SQYN7UHGJl6it18QB3GDQ==
-X-Received: by 2002:a05:6638:1613:: with SMTP id
- x19mr4431178jas.77.1630441308243; 
- Tue, 31 Aug 2021 13:21:48 -0700 (PDT)
-Received: from frodo.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
- by smtp.googlemail.com with ESMTPSA id u15sm10597384ilk.53.2021.08.31.13.21.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Aug 2021 13:21:47 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Cc: Jim Cromie <jim.cromie@gmail.com>
-Subject: [PATCH v7 8/8] nouveau: fold multiple DRM_DEBUG_DRIVERs together
-Date: Tue, 31 Aug 2021 14:21:33 -0600
-Message-Id: <20210831202133.2165222-9-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210831202133.2165222-1-jim.cromie@gmail.com>
-References: <20210831202133.2165222-1-jim.cromie@gmail.com>
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=2joGkq8i8C5vglZO1FYNTlWqLyr4vSiCXKQYXBVnv4Q=;
+ b=eQFl+CXpMP4ZBcbCqXyD22Sk9r99UyhheVy2+MZRpq1RroqwsbRSsz9qJX+XOlIZ3E
+ ZJ4r9D0giJw/3fjMBhk89oQ1HmkrG8OqlHyDFFPHKTgD546TGrPIl5VRJNL63s3br+12
+ pQiUNj8aCLx2Dmdfax1h3a6i6avnhSH9QFgKDO2YmTz1d7w+RIlPvQcOUoRgV8kckUyP
+ rq+uR5c2VAQmF0/GUO/fo1J8p6+7KQkiHG0QBfg8hqi/HFY0V1VF1j/ju3NWGnoJet3O
+ /sfmCGUZbAyAXFTuvmDgTilVXpwafYucNW2ubSnyWzY8hWY4WJBOGnLefUzSLIkQSqeq
+ dmZA==
+X-Gm-Message-State: AOAM531gEl/an5pJ8XRC7Qpi0M9A/nQPDxtT7igzXBQuDGuXjYVrz3og
+ oETImm7yv6eQPeGVTvJlG78gFidJliJgCYwayGo=
+X-Google-Smtp-Source: ABdhPJxGoNi/0czF+xRmQ05WFx5cr2kEZwinIL3LleRtkLW+QsVTiZOaA4KJYkw/9kn3GpVNkYKQAMF2TNzW6Ircyf0=
+X-Received: by 2002:a67:d981:: with SMTP id u1mr959843vsj.9.1630519837973;
+ Wed, 01 Sep 2021 11:10:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Received: by 2002:ab0:740d:0:0:0:0:0 with HTTP;
+ Wed, 1 Sep 2021 11:10:37 -0700 (PDT)
+From: CorisBank International <corisbankintlbf@gmail.com>
+Date: Wed, 1 Sep 2021 11:10:37 -0700
+Message-ID: <CA+25hwyFXCiNqe3eKARTEFesPdQesF1A2eDZ6oE4=wtX4oxyqw@mail.gmail.com>
+Subject: CORISBANK INTERNATIONAL OFFICIAL NOTIFICATION
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,61 +65,40 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-With DRM_USE_DYNAMIC_DEBUG, each callsite record requires 56 bytes.
-We can combine 12 into one here and save ~620 bytes.
+Att: Client
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/gpu/drm/nouveau/nouveau_drm.c | 36 +++++++++++++++++----------
- 1 file changed, 23 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/nouveau/nouveau_drm.c b/drivers/gpu/drm/nouveau/nouveau_drm.c
-index ba4cd5f83725..0f45399535bf 100644
---- a/drivers/gpu/drm/nouveau/nouveau_drm.c
-+++ b/drivers/gpu/drm/nouveau/nouveau_drm.c
-@@ -1245,19 +1245,29 @@ nouveau_drm_pci_table[] = {
- 
- static void nouveau_display_options(void)
- {
--	DRM_DEBUG_DRIVER("Loading Nouveau with parameters:\n");
--
--	DRM_DEBUG_DRIVER("... tv_disable   : %d\n", nouveau_tv_disable);
--	DRM_DEBUG_DRIVER("... ignorelid    : %d\n", nouveau_ignorelid);
--	DRM_DEBUG_DRIVER("... duallink     : %d\n", nouveau_duallink);
--	DRM_DEBUG_DRIVER("... nofbaccel    : %d\n", nouveau_nofbaccel);
--	DRM_DEBUG_DRIVER("... config       : %s\n", nouveau_config);
--	DRM_DEBUG_DRIVER("... debug        : %s\n", nouveau_debug);
--	DRM_DEBUG_DRIVER("... noaccel      : %d\n", nouveau_noaccel);
--	DRM_DEBUG_DRIVER("... modeset      : %d\n", nouveau_modeset);
--	DRM_DEBUG_DRIVER("... runpm        : %d\n", nouveau_runtime_pm);
--	DRM_DEBUG_DRIVER("... vram_pushbuf : %d\n", nouveau_vram_pushbuf);
--	DRM_DEBUG_DRIVER("... hdmimhz      : %d\n", nouveau_hdmimhz);
-+	DRM_DEBUG_DRIVER("Loading Nouveau with parameters:\n"
-+			 "... tv_disable   : %d\n"
-+			 "... ignorelid    : %d\n"
-+			 "... duallink     : %d\n"
-+			 "... nofbaccel    : %d\n"
-+			 "... config       : %s\n"
-+			 "... debug        : %s\n"
-+			 "... noaccel      : %d\n"
-+			 "... modeset      : %d\n"
-+			 "... runpm        : %d\n"
-+			 "... vram_pushbuf : %d\n"
-+			 "... hdmimhz      : %d\n"
-+			 , nouveau_tv_disable
-+			 , nouveau_ignorelid
-+			 , nouveau_duallink
-+			 , nouveau_nofbaccel
-+			 , nouveau_config
-+			 , nouveau_debug
-+			 , nouveau_noaccel
-+			 , nouveau_modeset
-+			 , nouveau_runtime_pm
-+			 , nouveau_vram_pushbuf
-+			 , nouveau_hdmimhz);
- }
- 
- static const struct dev_pm_ops nouveau_pm_ops = {
--- 
-2.31.1
+CORISBANK INTERNATIONAL URGENT NOTIFICATION
 
+Notification / Notification/ Notification
+
+Note, We are writing to inform you officially that Finally the Central
+Bank Financial Authority have approved to transfer your $8.2Million
+which was signed by late Mrs Rose Banneth the COVID.19 victim to
+transfer to you, Late Mrs Rose Banneth the France Lady contacted us to
+transfer her fund in our bank to you for Orphanage work before she
+died by the COVID.19
+and as it is now, you will receive your fund through our corresponding
+bank in Dubai [Emirate Investment Bank ] for security reason. Please
+you should reconfirm your details to receive the $8.2Million.
+
+Name, Country, Address, occupations, Age, Telephone number, account
+Details so that we can immediately forward to the World Bank to
+transfer the fund.
+You are advised to comply on timely manner to permit this esteem bank
+transfer your fund as scheduled.
+
+We look forward to serving you better
+Your Financial Comfort Is A Priority
+Thank you for choosing Corisbank International.
+
+Sincerely,
+
+----
+
+Mr Diakarya Ouattara
+Managing Director
+Bank Coris
+Burkina Faso
++226 556 163 37
+financial_bf_info@accountant.com
