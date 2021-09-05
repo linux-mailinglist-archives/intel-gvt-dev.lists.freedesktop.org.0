@@ -1,42 +1,60 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD00E400F54
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Sep 2021 13:43:59 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F95B401137
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Sep 2021 20:51:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 351D989C16;
-	Sun,  5 Sep 2021 11:43:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F15F189B3C;
+	Sun,  5 Sep 2021 18:51:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 90406 seconds by postgrey-1.36 at gabe;
- Sun, 05 Sep 2021 11:43:57 UTC
-Received: from ns1.omnis.com (unknown [50.7.226.34])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4C06989C16
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Sep 2021 11:43:57 +0000 (UTC)
-Received: from [144.217.169.125] (port=56965 helo=ip125.ip-144-217-169.net)
- by ns1.omnis.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <roseline.pat@aol.com>) id 1mMqZ0-0000fJ-89
- for intel-gvt-dev@lists.freedesktop.org; Sun, 05 Sep 2021 07:43:54 -0400
-From: roseline.pat<roseline.pat@aol.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: lnquiry
-Date: 5 Sep 2021 04:43:54 -0700
-Message-ID: <20210905044354.30FB7F0490BD164A@aol.com>
+Received: from mail-vk1-xa2b.google.com (mail-vk1-xa2b.google.com
+ [IPv6:2607:f8b0:4864:20::a2b])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7D0BF89B30;
+ Sun,  5 Sep 2021 18:51:16 +0000 (UTC)
+Received: by mail-vk1-xa2b.google.com with SMTP id g34so1503941vkd.11;
+ Sun, 05 Sep 2021 11:51:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=OFhp5qOgHpAi603N0nela2D85qEGVdFHkGLbavWDR6w=;
+ b=Tn4yoeJXDQw2MDPyO5z0Pll4WYHKB9sTqXQ5s5dsFJ7CMLurgNRWfNQs9ez5KxmwEd
+ hcm2va+WW9xNJy8ae/POty5VIqq8ZnM/LT7PlN34iSXsh25CUw0OPD+lKiHTn2J/0yPz
+ gqUpy3kXEWZ81n+1JepzH3iovBITzmo0gaMtd2/WbJ9NobKx8kiUP+NRsmXVCJImKc+F
+ WX+L1w9/JbAo+Al/KBJY4UK//84VPYNV4aI+ZjrH8YXbjMhTzToW6DvQDyA3hNyF1eWL
+ rU0SgrQ2F9EtULcTk8TLE9YENUH7RKI6/XpGk861gYAFO/SdLmAn1UvwsTeG4t/cRPTF
+ 3Cng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=OFhp5qOgHpAi603N0nela2D85qEGVdFHkGLbavWDR6w=;
+ b=CzWZnNKJoqDq+7K70bMbufUmtShlfyeO3tffOXBjsptyPlFapfqrX4h7WhR2pbVpV3
+ gx+KqTGvnDFCGcrvNivjexm4hExGBGLXLlCHdwWxPqBXyXd+YllqOLfzbbEgF6YENO9+
+ MJ+xewf8ALJFmulvL4gnxuNaJcJ8A7bZjQVBJ/7OwRpW/Q91e6K7Ql8ERKdB8pQfCx9H
+ qCcuGZxMApyLm0ssu/01Kvfr9mBiK8uamiuMi3eYUcxxvGH16QSvlqrR4FBj/jexMWUX
+ m66MciG2EKT8PX0I8vXGJ6i/CuaqwyhG9WqdOGzwKzcsp82xgBrvTZtUQXuyY0e4QwYn
+ ZBfw==
+X-Gm-Message-State: AOAM5307oxd16duhClDeBA9/uLPyMF9dcQwQblOoy3TT8z8a77Xm6thN
+ hYtysGF9Y+rtEjVmSrN2BDNEJoz6EPOrL8gSIGw=
+X-Google-Smtp-Source: ABdhPJwe5mYz8Qo5C8x6jThg2xR12TyzrY7uSlQtxgco4MVzuWlwZ2fvpqc12r6MAaX62HtYq+ZcTG81lVmZXibfAFg=
+X-Received: by 2002:a1f:9e85:: with SMTP id h127mr1010337vke.22.1630867875366; 
+ Sun, 05 Sep 2021 11:51:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/html
-Content-Transfer-Encoding: quoted-printable
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - ns1.omnis.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - aol.com
-X-Get-Message-Sender-Via: ns1.omnis.com: authenticated_id:
- info@feroxtechnologies.solutions
-X-Authenticated-Sender: ns1.omnis.com: info@feroxtechnologies.solutions
+References: <20210831202133.2165222-1-jim.cromie@gmail.com>
+ <20210831202133.2165222-7-jim.cromie@gmail.com>
+In-Reply-To: <20210831202133.2165222-7-jim.cromie@gmail.com>
+From: jim.cromie@gmail.com
+Date: Sun, 5 Sep 2021 12:50:48 -0600
+Message-ID: <CAJfuBxwqdy888_v7a6U5BYPZxDkQAB4SLPdFyEv+MW98ByNuQg@mail.gmail.com>
+Subject: Re: [PATCH v7 6/8] drm_print: instrument drm_debug_enabled
+To: Jason Baron <jbaron@akamai.com>, Greg KH <gregkh@linuxfoundation.org>, 
+ LKML <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ intel-gvt-dev@lists.freedesktop.org, 
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,76 +70,69 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html><head>
-<meta name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.19180">
-<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
-</head>
-<body>
-<span style=3D"color: rgb(0, 0, 0); text-transform: none; text-indent: 0px;=
- letter-spacing: normal; font-family: Vrinda; font-size: 14pt; font-style: =
-normal; font-weight: 400; word-spacing: 0px; float: none; display: inline !=
-important; white-space: normal; orphans: 2; widows: 2; background-color: rg=
-b(255, 255, 255); font-variant-ligatures: normal; font-variant-caps: normal=
-; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-=
-decoration-style: initial; text-decoration-color:=20
-initial;">
-<div style=3D"color: rgb(34, 34, 34); text-transform: none; text-indent: 0p=
-x; letter-spacing: normal; font-family: Arial, Helvetica, sans-serif; font-=
-size: small; font-style: normal; font-weight: 400; word-spacing: 0px; white=
--space: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255)=
-; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-s=
-troke-width: 0px; text-decoration-thickness: initial; text-decoration-style=
-: initial; text-decoration-color: initial;"=20
-dir=3D"ltr"><font color=3D"#351c75" face=3D"verdana, sans-serif">Hi,<br><br=
-></font></div>
-<div style=3D"color: rgb(34, 34, 34); text-transform: none; text-indent: 0p=
-x; letter-spacing: normal; font-family: Arial, Helvetica, sans-serif; font-=
-size: small; font-style: normal; font-weight: 400; word-spacing: 0px; white=
--space: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255)=
-; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-s=
-troke-width: 0px; text-decoration-thickness: initial; text-decoration-style=
-: initial; text-decoration-color: initial;"=20
-dir=3D"ltr"><font color=3D"#351c75" face=3D"verdana, sans-serif">Please we =
-are interested in buying those products listed on our previouse mail, thoug=
-h it has been a while since pandemic started.<br>Please reply us with the p=
-ayment method and your delivery time?</font></div>
-<div style=3D"color: rgb(34, 34, 34); text-transform: none; text-indent: 0p=
-x; letter-spacing: normal; font-family: Arial, Helvetica, sans-serif; font-=
-size: small; font-style: normal; font-weight: 400; word-spacing: 0px; white=
--space: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255)=
-; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-s=
-troke-width: 0px; text-decoration-thickness: initial; text-decoration-style=
-: initial; text-decoration-color: initial;"=20
-dir=3D"ltr"><font color=3D"#351c75" face=3D"verdana, sans-serif">Please rep=
-ly to us as soon as possible very important so we can place our order Asp.<=
-/font></div>
-<div style=3D"color: rgb(34, 34, 34); text-transform: none; text-indent: 0p=
-x; letter-spacing: normal; font-family: Arial, Helvetica, sans-serif; font-=
-size: small; font-style: normal; font-weight: 400; word-spacing: 0px; white=
--space: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255)=
-; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-s=
-troke-width: 0px; text-decoration-thickness: initial; text-decoration-style=
-: initial; text-decoration-color: initial;"=20
-dir=3D"ltr"><font color=3D"#351c75" face=3D"verdana, sans-serif"><br>Waitin=
-g for your reply<br><font color=3D"#351c75" face=3D"verdana, sans-serif" st=
-yle=3D"font-size: 12pt;"><br><span style=3D"font-size: 11pt;">Thank you.</s=
-pan><br><br></font></font></div>
-<div style=3D"color: rgb(34, 34, 34); text-transform: none; text-indent: 0p=
-x; letter-spacing: normal; font-family: Arial, Helvetica, sans-serif; font-=
-size: small; font-style: normal; font-weight: 400; word-spacing: 0px; white=
--space: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255)=
-; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-s=
-troke-width: 0px; text-decoration-thickness: initial; text-decoration-style=
-: initial; text-decoration-color: initial;"=20
-dir=3D"ltr"><font color=3D"#351c75" face=3D"verdana, sans-serif">Richard Ke=
-eble</font></div>
-<div style=3D"color: rgb(34, 34, 34); text-transform: none; text-indent: 0p=
-x; letter-spacing: normal; font-family: Arial, Helvetica, sans-serif; font-=
-size: small; font-style: normal; font-weight: 400; word-spacing: 0px; white=
--space: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255)=
-; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-s=
-troke-width: 0px; text-decoration-thickness: initial; text-decoration-style=
-: initial; text-decoration-color: initial;"=20
-dir=3D"ltr"><font color=3D"#351c75" face=3D"verdana, sans-serif">420 North =
-20th Street Suite<br>2400 Birmingham,<br>AL 35203-3289 United States<br>Pho=
-ne: +1 205 321 600<br>Fax: +1 205 322 228</font></div></span></body></html>=
+On Tue, Aug 31, 2021 at 2:21 PM Jim Cromie <jim.cromie@gmail.com> wrote:
+>
+> Duplicate drm_debug_enabled() code into both "basic" and "dyndbg"
+> ifdef branches.  Then add a pr_debug("todo: ...") into the "dyndbg"
+> branch.
+>
+> Then convert the "dyndbg" branch's code to a macro, so that its
+> pr_debug() get its callsite info from the invoking function, instead
+> of from drm_debug_enabled() itself.
+>
+> This gives us unique callsite info for the 8 remaining users of
+> drm_debug_enabled(), and lets us enable them individually to see how
+> much logging traffic they generate.  The oft-visited callsites can
+> then be reviewed for runtime cost and possible optimizations.
+>
+> Heres what we get:
+>
+> bash-5.1# modprobe drm
+> dyndbg: 384 debug prints in module drm
+> bash-5.1# grep todo: /proc/dynamic_debug/control
+> drivers/gpu/drm/drm_edid.c:1843 [drm]connector_bad_edid =_ "todo: maybe avoid via dyndbg\012"
+> drivers/gpu/drm/drm_print.c:309 [drm]___drm_dbg =p "todo: maybe avoid via dyndbg\012"
+> drivers/gpu/drm/drm_print.c:286 [drm]__drm_dev_dbg =p "todo: maybe avoid via dyndbg\012"
+> drivers/gpu/drm/drm_vblank.c:1491 [drm]drm_vblank_restore =_ "todo: maybe avoid via dyndbg\012"
+> drivers/gpu/drm/drm_vblank.c:787 [drm]drm_crtc_vblank_helper_get_vblank_timestamp_internal =_ "todo: maybe avoid via dyndbg\012"
+> drivers/gpu/drm/drm_vblank.c:410 [drm]drm_crtc_accurate_vblank_count =_ "todo: maybe avoid via dyndbg\012"
+> drivers/gpu/drm/drm_atomic_uapi.c:1457 [drm]drm_mode_atomic_ioctl =_ "todo: maybe avoid via dyndbg\012"
+> drivers/gpu/drm/drm_edid_load.c:178 [drm]edid_load =_ "todo: maybe avoid via dyndbg\012"
+>
+> At quick glance, edid won't qualify, drm_print might, drm_vblank is
+> strongest chance, maybe atomic-ioctl too.
+>
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+
+heres 120 seconds of enabled todos, from this patch
+
+[jimc@frodo wk-next]$ journalctl -b0 | grep todo | grep 'frodo kernel'
+[jimc@frodo wk-next]$ sudo su -c 'echo format ^todo: +pfml >
+/proc/dynamic_debug/control;  sleep 120; echo format ^todo: -p >
+/proc/dynamic_debug/control'
+[sudo] password for jimc:
+[jimc@frodo wk-next]$ journalctl -b0 | grep todo | grep 'frodo kernel'
+ > todo-120-log
+[jimc@frodo wk-next]$ wc todo-120-log
+  228  2516 24066 todo-120-log
+
+so overall thats not too much work, not so many bitchecks as to be
+worth avoiding.
+
+I think I'll try hitting it with my new igt-tools hammer, see what breaks :-)
+
+
+[jimc@frodo wk-next]$ hsto todo-120-log
+120 :  drm:drm_crtc_vblank_helper_get_vblank_timestamp_internal:787:
+todo: maybe avoid via dyndbg
+40 :  i915:process_csb:1904: todo: maybe avoid via dyndbg
+20 :  drm:drm_vblank_restore:1491: todo: maybe avoid via dyndbg
+20 :  drm:drm_crtc_accurate_vblank_count:410: todo: maybe avoid via dyndbg
+20 :  i915:skl_print_wm_changes:6068: todo: maybe avoid via dyndbg
+2 :  dyndbg: applied: func="" file="" module="" format="^todo:" lineno=0-0
+2 :  dyndbg: parsed: func="" file="" module="" format="^todo:" lineno=0-0
+1 :  dyndbg: split into words: "format" "^todo:" "-p"
+1 :  dyndbg: split into words: "format" "^todo:" "+pfml"
+1 :  dyndbg: query 0: "format ^todo: -p" mod:*
+1 :  dyndbg: query 0: "format ^todo: +pfml" mod:*
