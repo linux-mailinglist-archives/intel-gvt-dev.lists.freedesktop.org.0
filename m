@@ -2,65 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11F8A401F80
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Sep 2021 20:25:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE90C402B78
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Sep 2021 17:14:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B31C3899F2;
-	Mon,  6 Sep 2021 18:25:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 465906E030;
+	Tue,  7 Sep 2021 15:14:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe2f.google.com (mail-vs1-xe2f.google.com
- [IPv6:2607:f8b0:4864:20::e2f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3F2758996F;
- Mon,  6 Sep 2021 18:25:13 +0000 (UTC)
-Received: by mail-vs1-xe2f.google.com with SMTP id f6so6261548vsr.3;
- Mon, 06 Sep 2021 11:25:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=i6BKrN7X5suyNsmFH5r3sUKXBVHf29sG6WVeH2BVyjM=;
- b=clAkQy9mohMLPnVHW5cIgwm5UEQQ5nDlPiwgp0cwJEYS0ycJTwv/DWUsRr0B8bbniX
- 5/nkndYJJQt+jFffYyrtHZE10RuffIy6IiG+DYcDqlWqy8v1aJQBv/22QpJfJH5sAPEp
- lFzSMj0ku9aH22fxeXosDlemQyfBnrg21y/mGp51LbpdTK2SbNrLJNY55iFB8CjdVghV
- cCQba6HKcoqGwISK6MvywQ7Ew8wNqzUPIVUUw2uSew4EA9ZcK7Tn69EDc0rfdmfmLWbZ
- QQBHqFLn51nzUM6pTyUzm7OOUvLdQYde41jakHoVKOSwyJNU9iVB7OSZZDf1tmA+23aw
- oPsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=i6BKrN7X5suyNsmFH5r3sUKXBVHf29sG6WVeH2BVyjM=;
- b=lfRY+X+5SJm+hwkjvTX0zzChbvnLp2sa1/bPxKSaXSwwSeQh84Q8mbngp8WUvYRYQ8
- esVJN3YgOEi7FG9EIvivh444EAaWlTOXHQ/nwHVcmeBHGbt9PW6NhHESOrU1lyZf95Fo
- GVnqUvEetVdxfvJgRJXSqdyAoFMNBRECN2atA4oob904FwmgSmdntem+85FeoqB6dxJI
- lZIz07BSFbv6Nf/o4NUNNK+dPFpiu5feEE03LoqH4ZXPYxLOn8rA+NzgkcLMYNo7IQfm
- qUfLMYLL/4Cwq2ZRqbPP+9zt2pHHMyC5QOMpoc49dsE6K0pgH4ppgZvVPT2thE+rwg/t
- YFBw==
-X-Gm-Message-State: AOAM530DwrL5jDugw80BlzVzxsNXh9SJrKMTq/RxXQxy4aea68BE3GMs
- 8S5V/kzJNx1aDiUstqv15Kl/8J8NsMoc8v1yuRw=
-X-Google-Smtp-Source: ABdhPJyg4VWsnkepgpvWdmz4JefgU8pNg5h7OlRD3wfkop9WYoZH2bRCi5vo8Qu00MZRxt35BDmA2bUFrpbKx4ektFA=
-X-Received: by 2002:a05:6102:188:: with SMTP id
- r8mr6850374vsq.11.1630952712249; 
- Mon, 06 Sep 2021 11:25:12 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210831202133.2165222-1-jim.cromie@gmail.com>
- <20210831202133.2165222-6-jim.cromie@gmail.com>
- <b3c4b3aa-b873-a2aa-c1ad-5fed80038c6e@linux.intel.com>
- <CAJfuBxw-i-7YUenvBGHA0unBQ8BqmOGRF3nRYNwNPLVaxWpSvQ@mail.gmail.com>
- <1aabb5c0-eef9-a483-2631-25726c9dc268@linux.intel.com>
-In-Reply-To: <1aabb5c0-eef9-a483-2631-25726c9dc268@linux.intel.com>
-From: jim.cromie@gmail.com
-Date: Mon, 6 Sep 2021 12:24:46 -0600
-Message-ID: <CAJfuBxxQ-dNWHv1VGu7Hh705wZbxmsStDa_-cc=63fDtNZiyjg@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH v7 5/8] drm_print: add choice to use dynamic
- debug in drm-debug
-To: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
-Cc: Jason Baron <jbaron@akamai.com>, Greg KH <gregkh@linuxfoundation.org>, 
- LKML <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, 
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B8CAB6E02D;
+ Tue,  7 Sep 2021 15:14:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10099"; a="200430372"
+X-IronPort-AV: E=Sophos;i="5.85,274,1624345200"; d="scan'208";a="200430372"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Sep 2021 08:14:11 -0700
+X-IronPort-AV: E=Sophos;i="5.85,274,1624345200"; d="scan'208";a="464857924"
+Received: from ikcrook-mobl.amr.corp.intel.com (HELO [10.213.197.103])
+ ([10.213.197.103])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Sep 2021 08:14:09 -0700
+Subject: Re: [Intel-gfx] [PATCH v7 3/8] i915/gvt: use
+ DEFINE_DYNAMIC_DEBUG_CATEGORIES to create "gvt:core:" etc categories
+To: jim.cromie@gmail.com, Sean Paul <seanpaul@chromium.org>,
+ Jason Baron <jbaron@akamai.com>, Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: Greg KH <gregkh@linuxfoundation.org>, LKML
+ <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>,
  amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- intel-gvt-dev@lists.freedesktop.org, 
+ intel-gvt-dev@lists.freedesktop.org,
  Intel Graphics Development <intel-gfx@lists.freedesktop.org>
-Content-Type: text/plain; charset="UTF-8"
+References: <20210831202133.2165222-1-jim.cromie@gmail.com>
+ <20210831202133.2165222-4-jim.cromie@gmail.com>
+ <9fe5e962-e65e-6844-269a-058cce944a89@linux.intel.com>
+ <CAJfuBxz+cZyyDSBrDR0+Rf7K9fqpmeAfcWb1x2MkwD0P9LuDcQ@mail.gmail.com>
+ <2bfbd75c-8f7f-e756-05c3-13dff41264e4@linux.intel.com>
+ <CAJfuBxymoFx79kQzGw_Gxv1vk7kVaTN-V0Hn694C6kT=kP7u2A@mail.gmail.com>
+From: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+Organization: Intel Corporation UK Plc
+Message-ID: <92c7639b-c8f4-cfa4-f9ca-82c0a06e0337@linux.intel.com>
+Date: Tue, 7 Sep 2021 16:14:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <CAJfuBxymoFx79kQzGw_Gxv1vk7kVaTN-V0Hn694C6kT=kP7u2A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,31 +63,162 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> I'll try to extract the "executive summary" from this, you tell me if I
-> got it right.
->
-> So using or not using dynamic debug for DRM debug ends up being about
-> shifting the cost between kernel binary size (data section grows by each
-> pr_debug call site) and runtime conditionals?
 
-Yes.
+On 06/09/2021 18:41, jim.cromie@gmail.com wrote:
+> On Mon, Sep 6, 2021 at 6:26 AM Tvrtko Ursulin 
+> <tvrtko.ursulin@linux.intel.com <mailto:tvrtko.ursulin@linux.intel.com>> 
+> wrote:
+>  >
+>  >
+>  > On 03/09/2021 20:22, jim.cromie@gmail.com 
+> <mailto:jim.cromie@gmail.com> wrote:
+>  > > On Fri, Sep 3, 2021 at 5:07 AM Tvrtko Ursulin
+>  > > <tvrtko.ursulin@linux.intel.com 
+> <mailto:tvrtko.ursulin@linux.intel.com>> wrote:
+>  > >>
+>  > >>
+>  > >> On 31/08/2021 21:21, Jim Cromie wrote:
+>  > >>> The gvt component of this driver has ~120 pr_debugs, in 9 categories
+>  > >>> quite similar to those in DRM.  Following the interface model of
+>  > >>> drm.debug, add a parameter to map bits to these categorizations.
+>  > >>>
+>  > >>> DEFINE_DYNAMIC_DEBUG_CATEGORIES(debug_gvt, __gvt_debug,
+>  > >>>        "dyndbg bitmap desc",
+>  > >>>        { "gvt:cmd: ",  "command processing" },
+> 
+>  > >>> v7:
+>  > >>> . move ccflags addition up to i915/Makefile from i915/gvt
+>  > >>> ---
+>  > >>>    drivers/gpu/drm/i915/Makefile      |  4 ++++
+>  > >>>    drivers/gpu/drm/i915/i915_params.c | 35 
+> ++++++++++++++++++++++++++++++
+>  > >>
+>  > >> Can this work if put under gvt/ or at least intel_gvt.h|c?
+> 
+> I tried this.
+> I moved the code block into gvt/debug.c (new file)
+> added it to Makefile GVT_SOURCES
+> dunno why it wont make.
+> frustratig basic err, Im not seeing.
+> It does seem proper placement, will resolve...
+> 
+> 
+>  > >>
+>  > >
+>  > > I thought it belonged here more, at least according to the name of the
+>  > > config.var
+>  >
+>  > Hmm bear with me please - the categories this patch creates are intended
+>  > to be used explicitly from the GVT "sub-module", or they somehow even
+>  > get automatically used with no further intervention to callers required?
+>  >
+> 
+> 2009 - v5.9.0  the only users were admins reading/echoing 
+> /proc/dynamic_debug/control
+> presumably cuz they wanted more info in the logs, episodically.
+> v5.9.0 exported dynamic_debug_exec_queries for in-kernel use,
+> reusing the stringy: echo $query_command > control  idiom.
+> My intention was to let in-kernel users roll their own drm.debug type 
+> interface,
+> or whatever else they needed.  nobodys using it yet.
 
-> Since the table sizes you mention seem significant enough, I think that
-> justifies existence of DRM_USE_DYNAMIC_DEBUG. It would probably be a
-> good idea to put some commentary on that there. Ideally including some
-> rough estimates both including space cost per call site and space cost
-> for a typical distro kernel build?
+What is 2009 referring to?
 
-yeah, agreed.  I presume you mean in Kconfig entry,
-since commits have some size info now - I have i915, amdgpu, nouveau;
-I can see some prose improvements for 5/8
+I am still not quite following. In case of the GVT categories you added, 
+in order for them to be used, would you or not also need to use some new 
+logging macros?
 
+> patch 1/8 implements that drm.debug interface.
+> 5/8 is the primary use case
+> 3/8 (this patch) & 4/8 are patches of opportunity, test cases, proof of 
+> function/utility.
+> its value as such is easier control of those pr-debugs than given by 
+> echo > control
+> 
+> Sean Paul seanpaul@chromium.org <mailto:seanpaul@chromium.org> worked up 
+> a patchset to do runtime steering of drm-debug stream,
+> in particular watching for drm:atomic:fail: type activity (a subcategory 
+> which doesnt exist yet).
+> 5/8 conflicts with his patchset, I have an rfc approach to that, so his 
+> concerns are mine too.
 
+What kind of runtime steering is that - would you happen to have a link?
 
+One idea we in the GEM team have mentioned a few time is the ability of 
+making the debug log stream per DRM client. That means opening 
+"something" (socket, fd, etc), enabling debug, which would only show 
+debug logs belonging to one client. That can sometimes be useful (and 
+more secure) than enabling a lot of debug for the system as a whole. But 
+of course there isn't much overlap with your dyndbg work. So just 
+mentioning this since the word "runtime steering" reminded me of it.
 
-> Regards,
->
-> Tvrtko
+<snip>
 
-thanks
-Jim
+>      > unsigned long __gvt_debug;
+>      > EXPORT_SYMBOL(__gvt_debug);
+>      >
+>      >
+>      >>> +
+>      >>>    # Please keep these build lists sorted!
+>      >>>
+>      >>>    # core driver code
+>      >>> diff --git a/drivers/gpu/drm/i915/i915_params.c
+>     b/drivers/gpu/drm/i915/i915_params.c
+>      >>> index e07f4cfea63a..e645e149485e 100644
+>      >>> --- a/drivers/gpu/drm/i915/i915_params.c
+>      >>> +++ b/drivers/gpu/drm/i915/i915_params.c
+>      >>> @@ -265,3 +265,38 @@ void i915_params_free(struct i915_params
+>     *params)
+>      >>> +                             _DD_cat_("gvt:mmio:"),
+>      >>> +                             _DD_cat_("gvt:render:"),
+>      >>> +                             _DD_cat_("gvt:sched:"));
+>      >>> +
+>      >>> +#endif
+>      >>
+>      >> So just the foundation - no actual use sites I mean? How would
+>     these be
+>      >> used from the code?
+>      >>
+>      >
+>      > there are 120 pr_debug "users" :-)
+>      >
+>      > no users per se, but anyone using drm.debug
+>      > /sys/module/drm/parameters/debug
+>      > might use this too.
+>      > its a bit easier than composing queries for
+>      >/proc/dyamic_debug/control
+> 
+>     Same as my previous question, perhaps I am not up to speed with this
+>     yet.. Even if pr_debug is used inside GVT - are the categories and
+>     debug_gvt global as of this patch (or series)?
+> 
+> 
+> they are already global in the sense that if kernel is built with 
+> DYNAMIC_DEBUG,
+> the admin can turn those pr_debugs on and off, and change their 
+> decorations in the log (mod,func.line).
+> Nor are modules protected from each other; drm-core could use 
+> dd-exec-queries to enable/disable
+> pr-debugs in i915 etc
+> 
+> This patch just adds a gvt-debug knob like drm-debug. using the existing 
+> format prefixes to categorize them.
+> Whether those prefixes should be bent towards consistency with the rest 
+> of drm-debug
+> or adapted towards some gvt community need I couldnt say.
+> 
+> Its no save-the-world feature, but its pretty cheap.
+> 
+> Id expect the same users as those who play with drm.debug, for similar 
+> reasons.
+> 
+> does this clarify ?
+
+Not yet I'm afraid. :) When you say "using the existing format 
+prefixes", but it is not using __drm_debug but __gvt_debug (which isn't 
+a modparam). So I am lost as to what is __gvt_debug for and how does it 
+tie to existing DRM categories.
+
+Regards,
+
+Tvrtko
