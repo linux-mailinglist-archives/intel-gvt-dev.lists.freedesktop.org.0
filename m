@@ -1,32 +1,38 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FFDB4044E3
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Sep 2021 07:20:47 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7CC4405A5B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Sep 2021 17:45:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9F9356E14F;
-	Thu,  9 Sep 2021 05:20:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1071888AC8;
+	Thu,  9 Sep 2021 15:45:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by gabe.freedesktop.org (Postfix) with ESMTP id 224556E14F;
- Thu,  9 Sep 2021 05:20:44 +0000 (UTC)
-Received: from User (8ta-229-140-86.telkomadsl.co.za [197.229.140.86])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id B6A5D2A0E26;
- Thu,  9 Sep 2021 12:43:03 +0800 (CST)
-From: "Dr. Emmanuel Ibe Kachikwu (GMD)"<nnpcexecutorintrust2020@gmail.com>
-Subject: PROJECT:From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
- Abuja::
-Date: Thu, 9 Sep 2021 06:43:24 +0200
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
+X-Greylist: delayed 325 seconds by postgrey-1.36 at gabe;
+ Thu, 09 Sep 2021 15:45:13 UTC
+Received: from YYMailBox01.china12520.com (workmail.rongcloud.cn
+ [124.42.103.143])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9F53588AC8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu,  9 Sep 2021 15:45:13 +0000 (UTC)
+Received: from kmbyk (122.241.39.224) by YYMailBox01.china12520.com
+ (10.10.208.225) with Microsoft SMTP Server (TLS) id 15.0.620.29; Thu, 9 Sep
+ 2021 02:51:08 +0800
+Date: Thu, 9 Sep 2021 02:50:58 +0800
+From: =?UTF-8?B?6YCa55+lOg==?= <liyan@rongcloud.cn>
+To: intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?B?5YWz5LqO77ya5YWs5Y+45ZCv55So5paw6YKu5Lu257O757uf6YCa55+l77yB?=
 X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Has-Attach: no
+X-Mailer: Foxmail 7, 0, 1, 91[cn]
+MIME-Version: 1.0
+Message-ID: <202109090251091783860@rongcloud.cn>
+Content-Type: multipart/alternative;
+ boundary="=====001_Dragon538515618887_====="
+X-Originating-IP: [122.241.39.224]
+X-ClientProxiedBy: YYCAS01.china12520.com (10.10.208.223) To
+ YYMailBox01.china12520.com (10.10.208.225)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,37 +45,202 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: nnpcnnpcontractor1994@contractor.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20210909052045.9F9356E14F@gabe.freedesktop.org>
 
-Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
- 
-From: Dr. Emmanuel Ibe Kachikwu (GMD)
-Contract Ref No: NNPC/PED/1462/KADREF/92)                                                     
- 
-Attn: Ceo
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not meet before I got your information from your country chamber of commerce here in Nigeria.
- 
-My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
- 
-The contract has been successfully executed by the contractors and their contract sum have been paid to them, leaving us overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
- 
-We, as government officials, are not permitted to own or operate foreign bank account. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
- 
-Note that 10% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
- 
-The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
- 
-Awaiting your urgent response.
- 
-Best regards.
- 
-Dr. Emmanuel Ibe Kachikwu.
-The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
- 
+--=====001_Dragon538515618887_=====
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
 
+ICAgICAgICAgICAgICAgICAgICAgIA0K55So5oi3aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcgDQrnu7TmiqTljp/lm6Dlhazlj7jlsIbkuo4yMDIx5bm0OeaciDnml6XlkK/nlKjm
+lrDnmoTnlLXlrZDpgq7ku7bns7vnu58NCuS4uuS6huaOqOi/m+WFrOWPuOeahOS/oeaBr+WMluWu
+ieWFqO+8jOivt+WQhOS9jSzkvb/nlKjmlrDnlLXlrZDpgq7ku7bns7vnu5/jgIINCg0K5rOo5oSP
+5LqL6aG56K+35pS25Yiw5q2k6YKu5Lu255qE5Lq65ZGY56uL5Y2z5Y2H57qnLOS7peWFjeW9seWT
+jeS9oOeahOato+W4uOS9v+eUqCzoi6XkuI3ov5vooYzljYfnuqfns7vnu5/lsIboh6rliqjliKDp
+maTor6XnlKjmiLfkv6Hmga8s6YeN6KaB5paH5Lu25Lya5Lii5aSxDQrmk43kvZzmjIfnpLoNCuiv
+t+eCuei/memHjOi/m+ihjOWNh+e6pw0KDQo=
+
+--=====001_Dragon538515618887_=====
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
+Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
+bnQ9Ik1TSFRNTCAxMS4wMC45NjAwLjE3ODQyIj48L0hFQUQ+DQo8Qk9EWT4NCjxUQUJMRSANCnN0
+eWxlPSJCT1JERVItVE9QOiByZ2IoMTkzLDIxNywyNDMpIDFweCBzb2xpZDsgRk9OVC1GQU1JTFk6
+IFZlcmRhbmE7IEJPUkRFUi1SSUdIVDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IFdJRFRI
+OiA2MDBweDsgV09SRC1TUEFDSU5HOiAwcHg7IEJPUkRFUi1DT0xMQVBTRTogY29sbGFwc2U7IEJP
+UkRFUi1CT1RUT006IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBURVhULVRSQU5TRk9STTog
+bm9uZTsgTUFSR0lOOiAwcHggMHB4IDEwcHg7IEJPUkRFUi1MRUZUOiByZ2IoMTkzLDIxNywyNDMp
+IDFweCBzb2xpZDsgT1JQSEFOUzogMjsgV0lET1dTOiAyOyBMRVRURVItU1BBQ0lORzogbm9ybWFs
+OyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4IiAN
+CmNlbGxTcGFjaW5nPTAgY2VsbFBhZGRpbmc9MCBib3JkZXI9MT4NCiAgPFRCT0RZPg0KICA8VFIg
+c3R5bGU9IkhFSUdIVDogMzdweDsgQkFDS0dST1VORC1DT0xPUjogcmdiKDE5MywyMTcsMjQzKSI+
+DQogICAgPFREIA0KICAgIHN0eWxlPSJGT05ULVNJWkU6IDEycHg7IEJPUkRFUi1UT1A6IHJnYigx
+OTMsMjE3LDI0MykgMXB4IHNvbGlkOyBGT05ULUZBTUlMWTogJ2x1Y2lkYSBHcmFuZGUnLCBWZXJk
+YW5hLCAnTWljcm9zb2Z0IFlhSGVpJzsgQk9SREVSLVJJR0hUOiByZ2IoMTkzLDIxNywyNDMpIDFw
+eCBzb2xpZDsgQk9SREVSLUJPVFRPTTogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQt
+V0VJR0hUOiBib2xkOyBDT0xPUjogcmdiKDAsMCwwKTsgUEFERElORy1CT1RUT006IDVweDsgUEFE
+RElORy1UT1A6IDVweDsgUEFERElORy1MRUZUOiAxMHB4OyBCT1JERVItTEVGVDogcmdiKDE5Mywy
+MTcsMjQzKSAxcHggc29saWQ7IFBBRERJTkctUklHSFQ6IDEwcHg7IC13ZWJraXQtZm9udC1zbW9v
+dGhpbmc6IHN1YnBpeGVsLWFudGlhbGlhc2VkIiANCiAgICBjb2xTcGFuPTM+PEZPTlQgc3R5bGU9
+IkxJTkUtSEVJR0hUOiAyMHB4IiBmYWNlPem7keS9kz4mbmJzcDs8Rk9OVCANCiAgICAgIHN0eWxl
+PSJMSU5FLUhFSUdIVDogMjBweCIgZmFjZT1WZXJkYW5hPiZuYnNwOyZuYnNwOyZuYnNwOyAmbmJz
+cDsgJm5ic3A7IA0KICAgICAgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJz
+cDsgJm5ic3A7PC9GT05UPjwvRk9OVD48L1REPjwvVFI+DQogIDxUUiBzdHlsZT0iSEVJR0hUOiA0
+NHB4Ij4NCiAgICA8VEQgDQogICAgc3R5bGU9IkZPTlQtU0laRTogMTJweDsgQk9SREVSLVRPUDog
+cmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQtRkFNSUxZOiAnbHVjaWRhIEdyYW5kZScs
+IFZlcmRhbmEsICdNaWNyb3NvZnQgWWFIZWknOyBCT1JERVItUklHSFQ6IHJnYigxOTMsMjE3LDI0
+MykgMXB4IHNvbGlkOyBXSURUSDogMTAwcHg7IEJPUkRFUi1CT1RUT006IHJnYigxOTMsMjE3LDI0
+MykgMXB4IHNvbGlkOyBDT0xPUjogcmdiKDAsMCwwKTsgVEVYVC1BTElHTjogY2VudGVyOyBCT1JE
+RVItTEVGVDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEJBQ0tHUk9VTkQtQ09MT1I6IHJn
+YigyMzksMjQ1LDI1MSk7IC13ZWJraXQtZm9udC1zbW9vdGhpbmc6IHN1YnBpeGVsLWFudGlhbGlh
+c2VkIj48Rk9OVCANCiAgICAgIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29sb3I9Ymx1ZSBz
+aXplPTMgZmFjZT3pu5HkvZM+55So5oi3PC9GT05UPjwvVEQ+DQogICAgPFREIA0KICAgIHN0eWxl
+PSJGT05ULVNJWkU6IDE4cHg7IEJPUkRFUi1UT1A6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlk
+OyBGT05ULUZBTUlMWTogdmVyZGFuYTsgQk9SREVSLVJJR0hULVdJRFRIOiAwcHg7IEJPUkRFUi1C
+T1RUT006IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBQQURESU5HLUJPVFRPTTogNXB4OyBQ
+QURESU5HLVRPUDogNXB4OyBQQURESU5HLUxFRlQ6IDE1cHg7IEJPUkRFUi1MRUZUOiByZ2IoMTkz
+LDIxNywyNDMpIDFweCBzb2xpZDsgUEFERElORy1SSUdIVDogMTVweDsgLXdlYmtpdC1mb250LXNt
+b290aGluZzogc3VicGl4ZWwtYW50aWFsaWFzZWQiPjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUt
+SEVJR0hUOiAzMHB4IiBmYWNlPem7keS9kz48Rk9OVCBzdHlsZT0iTElORS1IRUlHSFQ6IDMwcHgi
+IA0KICAgICAgY29sb3I9Ymx1ZSBzaXplPTQ+PEEgdGl0bGU9J2hyZWY9Im1haWx0bzoxNTgwMzEx
+OTFAcXEuY29tIicgDQogICAgICBzdHlsZT0iQ1VSU09SOiBwb2ludGVyOyBURVhULURFQ09SQVRJ
+T046IHVuZGVybGluZTsgQ09MT1I6IHJnYig2MSw5NCwxMzQpOyBPVVRMSU5FLVdJRFRIOiBtZWRp
+dW07IE9VVExJTkUtU1RZTEU6IG5vbmU7IE9VVExJTkUtQ09MT1I6IGludmVydCIgDQogICAgICB0
+YXJnZXQ9X2JsYW5rPmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnPC9BPjwvRk9O
+VD48L0ZPTlQ+PC9URD4NCiAgICA8VEQgDQogICAgc3R5bGU9IkZPTlQtU0laRTogMTJweDsgQk9S
+REVSLVRPUDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQtRkFNSUxZOiAnbHVjaWRh
+IEdyYW5kZScsIFZlcmRhbmEsICdNaWNyb3NvZnQgWWFIZWknOyBCT1JERVItUklHSFQ6IHJnYigx
+OTMsMjE3LDI0MykgMXB4IHNvbGlkOyBXSURUSDogODBweDsgQk9SREVSLUJPVFRPTTogcmdiKDE5
+MywyMTcsMjQzKSAxcHggc29saWQ7IENPTE9SOiByZ2IoMCwwLDApOyBCT1JERVItTEVGVDogcmdi
+KDE5MywyMTcsMjQzKSAwcHggc29saWQ7IC13ZWJraXQtZm9udC1zbW9vdGhpbmc6IHN1YnBpeGVs
+LWFudGlhbGlhc2VkIj4mbmJzcDs8L1REPjwvVFI+DQogIDxUUj4NCiAgICA8VEQgDQogICAgc3R5
+bGU9IkZPTlQtU0laRTogMTJweDsgQk9SREVSLVRPUDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29s
+aWQ7IEZPTlQtRkFNSUxZOiAnbHVjaWRhIEdyYW5kZScsIFZlcmRhbmEsICdNaWNyb3NvZnQgWWFI
+ZWknOyBCT1JERVItUklHSFQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCT1JERVItQk9U
+VE9NOiByZ2IoMTkzLDIxNywyNDMpIDFweCBzb2xpZDsgQ09MT1I6IHJnYigwLDAsMCk7IFRFWFQt
+QUxJR046IGNlbnRlcjsgQk9SREVSLUxFRlQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBC
+QUNLR1JPVU5ELUNPTE9SOiByZ2IoMjM5LDI0NSwyNTEpOyAtd2Via2l0LWZvbnQtc21vb3RoaW5n
+OiBzdWJwaXhlbC1hbnRpYWxpYXNlZCI+PEZPTlQgDQogICAgICBzdHlsZT0iTElORS1IRUlHSFQ6
+IDIwcHgiIHNpemU9MyBmYWNlPem7keS9kz7nu7TmiqTljp/lm6A8L0ZPTlQ+PC9URD4NCiAgICA8
+VEQgDQogICAgc3R5bGU9IkZPTlQtU0laRTogMTJweDsgQk9SREVSLVRPUDogcmdiKDE5MywyMTcs
+MjQzKSAxcHggc29saWQ7IEZPTlQtRkFNSUxZOiB2ZXJkYW5hOyBCT1JERVItUklHSFQ6IHJnYigx
+OTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCT1JERVItQk9UVE9NOiByZ2IoMTkzLDIxNywyNDMpIDFw
+eCBzb2xpZDsgQ09MT1I6IHJnYigwLDAsMCk7IFBBRERJTkctQk9UVE9NOiA1cHg7IFBBRERJTkct
+VE9QOiA1cHg7IFBBRERJTkctTEVGVDogMTVweDsgQk9SREVSLUxFRlQ6IHJnYigxOTMsMjE3LDI0
+MykgMXB4IHNvbGlkOyBQQURESU5HLVJJR0hUOiAxNXB4OyAtd2Via2l0LWZvbnQtc21vb3RoaW5n
+OiBzdWJwaXhlbC1hbnRpYWxpYXNlZCIgDQogICAgY29sU3Bhbj0yPjxGT05UIHN0eWxlPSJMSU5F
+LUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1YSANCiAgICAgIGZhY2U96buR5L2TPjxTUEFOPjxT
+UEFOIHN0eWxlPSJGT05ULVNJWkU6IDE0cHgiPjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJ
+R0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZhY2U96buR5L2TPjxTUEFOIA0KICAgICAgc3R5bGU9
+IkZPTlQtU0laRTogMTNweCI+PEZPTlQgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0j
+NWE1YTVhIA0KICAgICAgZmFjZT3pu5HkvZM+PEZPTlQgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4
+IiBjb2xvcj0jNWE1YTVhIGZhY2U96buR5L2TPjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJ
+R0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZhY2U96buR5L2TPjxGT05UIA0KICAgICAgc3R5bGU9
+IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZhY2U96buR5L2TPjxTUEFOIA0KICAg
+ICAgc3R5bGU9IkZPTlQtRkFNSUxZOiDpu5HkvZMiPjxGT05UIHN0eWxlPSJMSU5FLUhFSUdIVDog
+MjBweCIgY29sb3I9IzVhNWE1YSANCiAgICAgIGZhY2U96buR5L2TPjxGT05UIHN0eWxlPSJMSU5F
+LUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1YSBmYWNlPem7keS9kz48Rk9OVCANCiAgICAgIHN0
+eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1YSBmYWNlPem7keS9kz48Rk9OVCAN
+CiAgICAgIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1YSBmYWNlPem7keS9
+kz48U1RST05HPjxTUEFOIA0KICAgICAgc3R5bGU9IkZPTlQtU0laRTogMTVweCI+PEZPTlQgc3R5
+bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIA0KICAgICAgZmFjZT3pu5HkvZM+
+PEZPTlQgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZhY2U96buR5L2T
+PjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZh
+Y2U96buR5L2TPjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0j
+NWE1YTVhIGZhY2U96buR5L2TPjxTUEFOIA0KICAgICAgc3R5bGU9IkZPTlQtRkFNSUxZOiDpu5Hk
+vZMiPjxGT05UIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1YSANCiAgICAg
+IGZhY2U96buR5L2TPjxGT05UIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1
+YSBmYWNlPem7keS9kz48Rk9OVCANCiAgICAgIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29s
+b3I9IzVhNWE1YSBmYWNlPem7keS9kz48Rk9OVCANCiAgICAgIHN0eWxlPSJMSU5FLUhFSUdIVDog
+MjBweCIgY29sb3I9IzVhNWE1YSBmYWNlPem7keS9kz48U1RST05HPjxGT05UIA0KICAgICAgc3R5
+bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZhY2U96buR5L2TPjxGT05UIA0K
+ICAgICAgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZhY2U96buR5L2T
+PjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0jNWE1YTVhIGZh
+Y2U96buR5L2TPjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJR0hUOiAyMHB4IiBjb2xvcj0j
+NWE1YTVhIGZhY2U96buR5L2TPjxTUEFOIA0KICAgICAgc3R5bGU9IkZPTlQtRkFNSUxZOiDpu5Hk
+vZMiPjxGT05UIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1YSANCiAgICAg
+IGZhY2U96buR5L2TPjxGT05UIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29sb3I9IzVhNWE1
+YSBmYWNlPem7keS9kz48Rk9OVCANCiAgICAgIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgY29s
+b3I9IzVhNWE1YSBmYWNlPem7keS9kz48Rk9OVCANCiAgICAgIHN0eWxlPSJMSU5FLUhFSUdIVDog
+MjBweCIgY29sb3I9IzVhNWE1YSANCiAgICAgIGZhY2U96buR5L2TPjxTVFJPTkc+5YWs5Y+45bCG
+5LqOMjAyMeW5tDnmnIg55pel5ZCv55So5paw55qE55S15a2Q6YKu5Lu257O757ufPEJSPuS4uuS6
+huaOqOi/m+WFrOWPuOeahOS/oeaBr+WMluWuieWFqO+8jOivt+WQhOS9jSzkvb/nlKjmlrDnlLXl
+rZDpgq7ku7bns7vnu5/jgII8L1NUUk9ORz48L0ZPTlQ+PC9GT05UPjwvRk9OVD48L0ZPTlQ+PC9T
+UEFOPjwvRk9OVD48L0ZPTlQ+PC9GT05UPjwvRk9OVD48L1NUUk9ORz48L0ZPTlQ+PC9GT05UPjwv
+Rk9OVD48L0ZPTlQ+PC9TUEFOPjwvRk9OVD48L0ZPTlQ+PC9GT05UPjwvRk9OVD48L1NQQU4+PC9T
+VFJPTkc+PC9GT05UPjwvRk9OVD48L0ZPTlQ+PC9GT05UPjwvU1BBTj48L0ZPTlQ+PC9GT05UPjwv
+Rk9OVD48L0ZPTlQ+PC9TUEFOPjwvRk9OVD48L1NQQU4+PC9TUEFOPjwvRk9OVD48L1REPjwvVFI+
+DQogIDxUUiBzdHlsZT0iSEVJR0hUOiAzMXB4Ij4NCiAgICA8VEQgDQogICAgc3R5bGU9IkZPTlQt
+U0laRTogMTJweDsgQk9SREVSLVRPUDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQt
+RkFNSUxZOiAnbHVjaWRhIEdyYW5kZScsIFZlcmRhbmEsICdNaWNyb3NvZnQgWWFIZWknOyBCT1JE
+RVItUklHSFQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCT1JERVItQk9UVE9NOiByZ2Io
+MTkzLDIxNywyNDMpIDFweCBzb2xpZDsgQ09MT1I6IHJnYigwLDAsMCk7IFRFWFQtQUxJR046IGNl
+bnRlcjsgQk9SREVSLUxFRlQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCQUNLR1JPVU5E
+LUNPTE9SOiByZ2IoMjM5LDI0NSwyNTEpOyAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBzdWJwaXhl
+bC1hbnRpYWxpYXNlZCI+PEZPTlQgDQogICAgICBzdHlsZT0iTElORS1IRUlHSFQ6IDIwcHgiIHNp
+emU9MyBmYWNlPem7keS9kz48L0ZPTlQ+PC9URD4NCiAgICA8VEQgDQogICAgc3R5bGU9IkZPTlQt
+U0laRTogMTJweDsgQk9SREVSLVRPUDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQt
+RkFNSUxZOiAnbHVjaWRhIEdyYW5kZScsIFZlcmRhbmEsICdNaWNyb3NvZnQgWWFIZWknOyBCT1JE
+RVItUklHSFQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCT1JERVItQk9UVE9NOiByZ2Io
+MTkzLDIxNywyNDMpIDFweCBzb2xpZDsgQ09MT1I6IHJnYigwLDAsMCk7IFBBRERJTkctQk9UVE9N
+OiA1cHg7IFBBRERJTkctVE9QOiA1cHg7IFBBRERJTkctTEVGVDogMTBweDsgQk9SREVSLUxFRlQ6
+IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBQQURESU5HLVJJR0hUOiAxMHB4OyAtd2Via2l0
+LWZvbnQtc21vb3RoaW5nOiBzdWJwaXhlbC1hbnRpYWxpYXNlZCIgDQogICAgY29sU3Bhbj0yPjxG
+T05UIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBweCIgZmFjZT3pu5HkvZM+PFNQQU4+PFNQQU4gDQog
+ICAgICBzdHlsZT0iRk9OVC1TSVpFOiAxNHB4Ij48Rk9OVCBzdHlsZT0iTElORS1IRUlHSFQ6IDIw
+cHgiIA0KICAgICAgZmFjZT3pu5HkvZM+PC9GT05UPjwvU1BBTj48L1NQQU4+PC9GT05UPjwvVEQ+
+PC9UUj4NCiAgPFRSIHN0eWxlPSJIRUlHSFQ6IDMxcHgiPg0KICAgIDxURCANCiAgICBzdHlsZT0i
+Rk9OVC1TSVpFOiAxMnB4OyBCT1JERVItVE9QOiByZ2IoMTkzLDIxNywyNDMpIDFweCBzb2xpZDsg
+Rk9OVC1GQU1JTFk6ICdsdWNpZGEgR3JhbmRlJywgVmVyZGFuYSwgJ01pY3Jvc29mdCBZYUhlaSc7
+IEJPUkRFUi1SSUdIVDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEJPUkRFUi1CT1RUT006
+IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBDT0xPUjogcmdiKDAsMCwwKTsgVEVYVC1BTElH
+TjogY2VudGVyOyBCT1JERVItTEVGVDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEJBQ0tH
+Uk9VTkQtQ09MT1I6IHJnYigyMzksMjQ1LDI1MSk7IC13ZWJraXQtZm9udC1zbW9vdGhpbmc6IHN1
+YnBpeGVsLWFudGlhbGlhc2VkIj48Rk9OVCANCiAgICAgIHN0eWxlPSJMSU5FLUhFSUdIVDogMjBw
+eCIgY29sb3I9cmVkIHNpemU9MyBmYWNlPem7keS9kz7ms6jmhI/kuovpobk8L0ZPTlQ+PC9URD4N
+CiAgICA8VEQgDQogICAgc3R5bGU9IkZPTlQtU0laRTogMTJweDsgQk9SREVSLVRPUDogcmdiKDE5
+MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQtRkFNSUxZOiAnbHVjaWRhIEdyYW5kZScsIFZlcmRh
+bmEsICdNaWNyb3NvZnQgWWFIZWknOyBCT1JERVItUklHSFQ6IHJnYigxOTMsMjE3LDI0MykgMXB4
+IHNvbGlkOyBCT1JERVItQk9UVE9NOiByZ2IoMTkzLDIxNywyNDMpIDFweCBzb2xpZDsgQ09MT1I6
+IHJnYigwLDAsMCk7IFBBRERJTkctQk9UVE9NOiA1cHg7IFBBRERJTkctVE9QOiA1cHg7IFBBRERJ
+TkctTEVGVDogMTBweDsgQk9SREVSLUxFRlQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBQ
+QURESU5HLVJJR0hUOiAxMHB4OyAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBzdWJwaXhlbC1hbnRp
+YWxpYXNlZCIgDQogICAgY29sU3Bhbj0yPjxGT05UIGNvbG9yPSM1YTVhNWEgc2l6ZT0zIA0KICAg
+ICAgZmFjZT3pu5HkvZM+PFNUUk9ORz7or7fmlLbliLDmraTpgq7ku7bnmoTkurrlkZjnq4vljbPl
+jYfnuqcs5Lul5YWN5b2x5ZON5L2g55qE5q2j5bi45L2/55SoLOiLpeS4jei/m+ihjOWNh+e6p+ez
+u+e7n+WwhuiHquWKqOWIoOmZpOivpeeUqOaIt+S/oeaBryzph43opoHmlofku7bkvJrkuKLlpLE8
+L1NUUk9ORz48L0ZPTlQ+PEZPTlQgDQogICAgICBzdHlsZT0iTElORS1IRUlHSFQ6IDMwcHgiIGNv
+bG9yPSM1YTVhNWEgc2l6ZT0zIGZhY2U96buR5L2TPjwvRk9OVD48L1REPjwvVFI+DQogIDxUUiBz
+dHlsZT0iSEVJR0hUOiAzMXB4Ij4NCiAgICA8VEQgDQogICAgc3R5bGU9IkZPTlQtU0laRTogMTJw
+eDsgQk9SREVSLVRPUDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQtRkFNSUxZOiAn
+bHVjaWRhIEdyYW5kZScsIFZlcmRhbmEsICdNaWNyb3NvZnQgWWFIZWknOyBCT1JERVItUklHSFQ6
+IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCT1JERVItQk9UVE9NOiByZ2IoMTkzLDIxNywy
+NDMpIDFweCBzb2xpZDsgQ09MT1I6IHJnYigwLDAsMCk7IFRFWFQtQUxJR046IGNlbnRlcjsgQk9S
+REVSLUxFRlQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCQUNLR1JPVU5ELUNPTE9SOiBy
+Z2IoMjM5LDI0NSwyNTEpOyAtd2Via2l0LWZvbnQtc21vb3RoaW5nOiBzdWJwaXhlbC1hbnRpYWxp
+YXNlZCI+PEZPTlQgDQogICAgICBzdHlsZT0iTElORS1IRUlHSFQ6IDIwcHg7IEJBQ0tHUk9VTkQt
+Q09MT1I6IHJnYigyNTUsMjU1LDI1NSkiIGNvbG9yPXJlZCANCiAgICAgIHNpemU9MyBmYWNlPem7
+keS9kz7mk43kvZzmjIfnpLo8L0ZPTlQ+PC9URD4NCiAgICA8VEQgDQogICAgc3R5bGU9IkZPTlQt
+U0laRTogMTJweDsgQk9SREVSLVRPUDogcmdiKDE5MywyMTcsMjQzKSAxcHggc29saWQ7IEZPTlQt
+RkFNSUxZOiAnbHVjaWRhIEdyYW5kZScsIFZlcmRhbmEsICdNaWNyb3NvZnQgWWFIZWknOyBCT1JE
+RVItUklHSFQ6IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBCT1JERVItQk9UVE9NOiByZ2Io
+MTkzLDIxNywyNDMpIDFweCBzb2xpZDsgQ09MT1I6IHJnYigwLDAsMCk7IFBBRERJTkctQk9UVE9N
+OiA1cHg7IFBBRERJTkctVE9QOiA1cHg7IFBBRERJTkctTEVGVDogMTBweDsgQk9SREVSLUxFRlQ6
+IHJnYigxOTMsMjE3LDI0MykgMXB4IHNvbGlkOyBQQURESU5HLVJJR0hUOiAxMHB4OyAtd2Via2l0
+LWZvbnQtc21vb3RoaW5nOiBzdWJwaXhlbC1hbnRpYWxpYXNlZCIgDQogICAgY29sU3Bhbj0yPg0K
+ICAgICAgPFAgc3R5bGU9IkxJTkUtSEVJR0hUOiAyM3B4Ij48QSB0aXRsZT0naHJlZj0iIicgY2xh
+c3M9ZG9tYWluQnV0dG9uIA0KICAgICAgc3R5bGU9IkNVUlNPUjogcG9pbnRlcjsgRk9OVC1TSVpF
+OiAxNHB4OyBURVhULURFQ09SQVRJT046IHVuZGVybGluZTsgSEVJR0hUOiA0OHB4OyBXSURUSDog
+MTkxcHg7IEZPTlQtV0VJR0hUOiBib2xkOyBDT0xPUjogcmdiKDI1NSwyNTUsMjU1KTsgT1VUTElO
+RS1XSURUSDogbWVkaXVtOyBURVhULUFMSUdOOiBjZW50ZXI7IE9VVExJTkUtU1RZTEU6IG5vbmU7
+IERJU1BMQVk6IGJsb2NrOyBPVVRMSU5FLUNPTE9SOiBpbnZlcnQ7IExJTkUtSEVJR0hUOiA0OHB4
+OyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoNzgsMTI1LDE4NCk7IEJBQ0tHUk9VTkQtaWRpb2N5MHB4
+MHB4OiAiIA0KICAgICAgaHJlZj0iaHR0cDovL3VtYWlsLiIgbmFtZT0nXz0idHJ1ZScgDQogICAg
+ICB0YXJnZXQ9X2JsYW5rPuivt+eCuei/memHjOi/m+ihjOWNh+e6pzwvQT48L1A+PC9URD48L1RS
+PjwvVEJPRFk+PC9UQUJMRT48L0JPRFk+PC9IVE1MPg0K
+
+--=====001_Dragon538515618887_=====--
