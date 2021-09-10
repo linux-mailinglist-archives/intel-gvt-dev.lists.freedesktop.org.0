@@ -1,30 +1,63 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A4BD4065CD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Sep 2021 04:48:55 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DB05406AAF
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Sep 2021 13:28:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D17BA6E954;
-	Fri, 10 Sep 2021 02:48:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9138C6E9F2;
+	Fri, 10 Sep 2021 11:28:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from smtp2.orange.ci (smtp2.orange.ci [196.201.64.69])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1A70B6E954
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Sep 2021 02:48:51 +0000 (UTC)
-Received: from KENPC ([160.154.151.147])
- by smtp2.orange.ci  with ESMTP id 18A2mmFU026048-18A2mmFV026048
- for <intel-gvt-dev@lists.freedesktop.org>; Fri, 10 Sep 2021 02:48:49 GMT
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4F9756E9E6;
+ Fri, 10 Sep 2021 11:28:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=2++cV2JnD7bTzi6VmrHK6QfUgKwltk9kOD+RazPcbpI=; b=G+7U57r85k3HFkWNdyCUgCPZff
+ xACimE5/41OczRjPb2gKBZjjTxk9N9aK2P6IKvNp4U4XOvSwsSm36QV7OctJjQ8h6W3Osg9UxweXn
+ drM6Eg7ri97z748cZyHbGUYt5gdf8IB0yB6scDU62uwrfcUwi7iY6r2YKzEfBZ3bE4cLq6h8rpQ9r
+ XOc2oMZYGs1U/YheK8FAesU6aEU+bIiymmYNuk6mqs5s8dLdyK6cYkfpTDsigNxrhO2xvEwrZNOjg
+ HhOsNnbYdNxq9Xjqc58OADY+kGXWBPKvvhkeZd3+LFNChshprVSB6r9lbTrw6F/nYWsOuraQC+XDC
+ xo3IJS+g==;
+Received: from hch by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat
+ Linux)) id 1mOegX-00Ax1W-UQ; Fri, 10 Sep 2021 11:27:23 +0000
+Date: Fri, 10 Sep 2021 12:27:09 +0100
+From: Christoph Hellwig <hch@infradead.org>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, Eric Farman <farman@linux.ibm.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ kvm@vger.kernel.org, Kirti Wankhede <kwankhede@nvidia.com>,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH v2 1/9] vfio/ccw: Use functions for alloc/free of the
+ vfio_ccw_private
+Message-ID: <YTtBDbVsRveVE3i9@infradead.org>
+References: <0-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
+ <1-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
 MIME-Version: 1.0
-From: "Miss Marina Gab..." <marinagab001@gmail.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Dearest
-Content-Type: text/html; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
-X-Mailer: Default
-Date: Fri, 10 Sep 2021 02:48:49 +0000
-Message-ID: <67962076290401453815745@KEN-PC>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,29 +70,16 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marinagab001@outlook.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<HEAD>
-<META content=3D"text/html; charset=3Dwindows-1252" http-equiv=3DContent-Ty=
-pe>
-<META name=3DGENERATOR content=3D"MSHTML 8.00.7601.17514"></HEAD>
-<BODY>
-<P>Dearest,</P>
-<P>I have email you a week ago but no response from you=3F </P>
-<P>It is with profound respect for your time, that I plead to state the fol=
-lowing few lines for your kind consideration, <BR>and I hope you will spare=
- some of your valuable minutes to read the following appeal with sympatheti=
-c mind and understanding.</P>
-<P>I am Miss Marina. 31 years old, the only daughter to Late Mrs Grace Tekk=
-o. <BR>My Mother died 6 years ago and since then life has been difficult fo=
-r me because my uncle have not be treating me fine and now </P>
-<P>He is threatening to kill me if I do not provide the documents covering =
-my late Mother's fund with the bank.<BR>The sum of ($4.5,Million)I want you=
- to assist me receive this fund from the bank due to the agreement my Mothe=
-r had with the bank, </P>
-<P>so that I can join you in your country for you to help me investment the=
- money. <BR>As soon as I hear from you, I will give you more information on=
- this.</P>
-<P>May God bless you real good Amen<BR>Miss Marina...</P></BODY>
+On Thu, Sep 09, 2021 at 04:38:41PM -0300, Jason Gunthorpe wrote:
+> +
+> +	private = kzalloc(sizeof(*private), GFP_KERNEL | GFP_DMA);
+> +	if (!private)
+> +		return ERR_PTR(-ENOMEM);
+
+Nit: there is no need to add GFP_KERNEL when using GFP_DMA.
+
+Also a question to the s390 maintainers: why do we need 31-bit
+addressability for the main private data structure?
