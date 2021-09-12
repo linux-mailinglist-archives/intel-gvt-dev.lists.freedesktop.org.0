@@ -2,36 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1F9541437A
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Sep 2021 10:16:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51EE6414734
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Sep 2021 13:03:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2E0966EAE2;
-	Wed, 22 Sep 2021 08:16:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8BF866EB73;
+	Wed, 22 Sep 2021 11:03:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 608 seconds by postgrey-1.36 at gabe;
- Wed, 22 Sep 2021 08:16:54 UTC
-Received: from bizcloud-mxmail0.aaacarqo.com (bizcloud-mxmail0.aaacarqo.com
- [134.209.93.125])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 224996EAD6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Sep 2021 08:16:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=aaacarqo.com;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=support@aaacarqo.com;
- bh=S2ThQKQMxGbflQplYKMenX1AO2ZM74ohnre4MKlMxf8=;
- b=vGrI59s5JAucN8gJ+dDJFjlu6AIVEKQVtaYvQ/w+n+JpPMjHp6GYK20vdZqRwgxKM7rVgedACUa1
- stSHdzFgk8VF9LBZor3EFpS7DKq6HYxH6E0oO+YJIMo8B7rktAVln06WlKrPYBfGC/ZrYO6FlrNH
- SITluLwZufjoLniIS8w=
-From: admin <support@aaacarqo.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: You have undelivered mails on intel-gvt-dev@lists.freedesktop.org
-Date: 22 Sep 2021 07:59:00 +0000
-Message-ID: <20210922075900.BB626954B91889BA@aaacarqo.com>
+Received: from menu.navajomanufacturing.com (unknown [66.84.11.179])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E87EF6EB73;
+ Wed, 22 Sep 2021 11:03:41 +0000 (UTC)
+Received: from [::1] (port=40612 helo=User)
+ by menu.navajomanufacturing.com with smtp (Exim 4.89)
+ (envelope-from <commissionrep1819@outlook.com>)
+ id 1mPSuQ-0000wR-9I; Sun, 12 Sep 2021 13:04:50 -0400
+From: "John M."<commissionrep1819@outlook.com>
+Subject: Prospective Contractor
+Date: Sun, 12 Sep 2021 10:04:51 -0700
 MIME-Version: 1.0
 Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - menu.navajomanufacturing.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - outlook.com
+X-Get-Message-Sender-Via: menu.navajomanufacturing.com: acl_c_authenticated_local_user:
+ root
+X-Authenticated-Sender: menu.navajomanufacturing.com: root
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,88 +51,32 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: jmansah1819@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20210922110342.8BF866EB73@gabe.freedesktop.org>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
-<html><head>
-  <meta http-equiv=3D"content-type" content=3D"text/html; charset=3DISO-885=
-9-1">
-  <title></title>
-<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
-</head>
-<body>
-<br class=3D"Apple-interchange-newline">
-<table width=3D"520" align=3D"center" style=3D"border: 1px dotted rgb(211, =
-211, 211); border-image: none; text-align: left; color: rgb(0, 0, 0); text-=
-transform: none; line-height: 1.2; text-indent: 0px; letter-spacing: normal=
-; font-family: Helvetica,Arial,Tahoma,Verdana,sans-serif; font-size: 15px; =
-font-style: normal; font-weight: 400; word-spacing: 0px; white-space: norma=
-l; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);" border=3D"=
-1" cellspacing=3D"0" cellpadding=3D"0">
-  <tbody>
-    <tr style=3D"min-height: 90px;">
-      <td height=3D"90" style=3D"border: 1px dotted rgb(211, 211, 211); bor=
-der-image: none; min-height: 90px;">
-      <table width=3D"100%" style=3D"border: 1px dotted rgb(211, 211, 211);=
- border-image: none; line-height: 1.2; font-family: Arial,Helvetica; font-s=
-ize: 14px; border-collapse: collapse; min-height: 90px;" bgcolor=3D"#0078d7=
-" border=3D"1" cellspacing=3D"0" cellpadding=3D"0">
-        <tbody>
-          <tr style=3D"min-height: 90px;">
-            <td height=3D"90" style=3D"border: 1px dotted rgb(211, 211, 211=
-); border-image: none; min-height: 90px;" bgcolor=3D"#0078d7">
-            <div style=3D'margin: 0px 30px; padding: 0px; font-family: "UI =
-WP Helvetica",Arial,serif,EmojiFont; font-size: 18px;'>
-            <div style=3D"margin: 0px 0px 0px 10px; padding: 0px; font-size=
-: 28px;"><a rel=3D"nofollow"><font color=3D"#ffffff">lists.freedesktop.org<=
-/font></a></div>
-            </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </td>
-    </tr>
-    <tr>
-      <td style=3D"border: 1px dotted rgb(211, 211, 211); border-image: non=
-e;">
-      <div style=3D"margin: 0px 0px 0px 120px; padding: 0px; line-height: 2=
-0px; direction: ltr;">
-      <div style=3D"margin: 20px 120px 30px 0px; padding: 0px; color: rgb(5=
-1, 51, 51); line-height: 20px; font-family: Segoe,Tahoma,sans-serif,serif,E=
-mojiFont;">&nbsp;</div>
-      <div style=3D"margin: 0px 120px 30px 0px; padding: 0px; color: rgb(10=
-2, 102, 102); line-height: 20px; font-size: 12px;"><strong>Dear&nbsp;
-intel-gvt-dev,</strong><br>
-      <br>
-You have [12] undelivered mails on (9/22/2021 7:59:00 a.m.).. This was caus=
-ed due
-to a system delay, Rectify Below:<br>
-      <br>
-intel-gvt-dev@lists.freedesktop.org<br>
-      </div>
-      <div style=3D"margin: 0px 120px 30px 0px; padding: 0px; color: rgb(10=
-2, 102, 102); line-height: 20px; font-size: 12px;"><a style=3D"padding: 5px=
-; color: white; text-decoration: underline; display: block; background-imag=
-e: none; background-repeat: repeat; background-color: rgb(0, 120, 215);" hr=
-ef=3D"https://tristaffcorp.com/asjhdjsew/wtyuewjkas/ewyfeikasd/yeruisjjkasj=
-98.html#intel-gvt-dev@lists.freedesktop.org" target=3D"_blank" rel=3D"nofol=
-low"><strong>&nbsp;Click
-Here To Release Pending Messages Inbox</strong></a><br>
-      <br>
-lists.freedesktop.org</div>
-      </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<p style=3D'text-align: left; color: rgb(0, 0, 0); text-transform: none; te=
-xt-indent: 0px; letter-spacing: normal; font-family: "Helvetica Neue",Helve=
-tica,Arial,sans-serif; font-size: 14px; font-style: normal; font-weight: 40=
-0; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; backgroun=
-d-color: rgb(255, 255, 255);'>&nbsp;</p>
-
-
-</body></html>
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+Hi,</DIV>
+<DIV>
+ </DIV>
+<DIV>
+I will appreciate your prompt response to the email. I request you stand as a "Prospective Contractor" to supply products worth millions of US dollars.&nbsp; In other words, you shall be presented as a qualified contractor to supply the products and the contract shall last for 3 years.&nbsp; I have a personal relationship with the chairman of a board who can influence and assist to&nbsp; secure the contract. Kindly depict your interest and forward&nbsp; your whatsapp/mobile number for details.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+Thank you.</DIV>
+<DIV>
+ </DIV>
+<DIV>
+Yours,</DIV>
+<DIV>
+ </DIV>
+<DIV>
+John Mensah</DIV>
+</FONT>
+</BODY></HTML>
