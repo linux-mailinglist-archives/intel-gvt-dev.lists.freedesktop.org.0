@@ -2,54 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96058407217
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Sep 2021 21:43:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A68D24090AA
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Sep 2021 15:55:11 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2FA946EA8B;
-	Fri, 10 Sep 2021 19:43:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3ED156E0EC;
+	Mon, 13 Sep 2021 13:55:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb33.google.com (mail-yb1-xb33.google.com
- [IPv6:2607:f8b0:4864:20::b33])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 21F3C6EA8D
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EC26C6E0EC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Sep 2021 19:43:15 +0000 (UTC)
-Received: by mail-yb1-xb33.google.com with SMTP id v10so6083688ybq.7
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Sep 2021 12:43:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=EXQL75fBdnA7KFnoJtq38EtjcdGOjFa4b77LQ6HqOag=;
- b=Ujptgrk8VhQO+tWhVcunVmZog2RMfGeFjPIV4vEJ0MU3+D9/bKXr3uuU+YoMhAl1ko
- a3DPT9PNzBjn/rBRHBG3C0O2ir3FXt8f8AzqMXwUcnHxTjU4Dyna0SSldP//108SfkQ8
- dUmBT33QJlK4pn2iK5Kd+KbL4nBx6vbzESq2vgcMvalBcAV0kmuk4tTCGV1IDGDRwd1t
- tX/s73KGbEwt95ya4vYYuT7nmjI7und2lYnQM1fLv2AJwy51HwAOXywxTwAgXggRkpH6
- HnbqlMRuUQGHyMV+3QPVh0HTbj45SWt+xNWAd1An4zpBbJ/jjOP2Eusz2XWyKDsN3i4Z
- mIDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=EXQL75fBdnA7KFnoJtq38EtjcdGOjFa4b77LQ6HqOag=;
- b=JYIzW0qiDM1vTaRjvzj7OTQ0234HQWRlBuYFuDrgBYnvKh4LNTPQR43VvltdAzN1se
- wanmlcRDTyDRaa5O9cQlauI6YJ3mrc7ecrGN6F5UrjguiuiLEvIbOs5JqK4XvXjOsyo3
- bR4ckVHenKSo1njDIFs9qJR5oI/AMuUmOcMQ5iPS/qpyf/ZBeprVvfq3QYw1bmfTdUeI
- ZCWyNUT1/Jz+3diJ1mw92ExjZi1c1Jyt+O3SU7cPUktWdiTDngsVUDbNQEwHDBC5HIyP
- 5NZhAyojFjNG9OtEeLvdzngJBIo87WHKAp3WlZwZaAy9Uj/gTG6bWRmT9FYtMGhBQmYm
- x8Rg==
-X-Gm-Message-State: AOAM532CEPaXpE3m4qgTyc7lnz0W56dyw8uy8cq91wlpUnZk81xq+/xj
- MDLdqiB3PvXQYi39dT0EF+UrHGNjVw8ykY1CFaA=
-X-Google-Smtp-Source: ABdhPJy0077yp3BSsOBMDFR/oDw3FZN39T6vRdpvvhrnxqiBTPsQq+DAV7YIZ9RaTeCVlwbasTZFRzMXPNYCJ7QLya0=
-X-Received: by 2002:a05:6902:725:: with SMTP id
- l5mr14695057ybt.178.1631302994147; 
- Fri, 10 Sep 2021 12:43:14 -0700 (PDT)
+ Mon, 13 Sep 2021 13:55:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10105"; a="244004336"
+X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; 
+ d="asc'?scan'208";a="244004336"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Sep 2021 06:55:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; 
+ d="asc'?scan'208";a="507303105"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by fmsmga008.fm.intel.com with ESMTP; 13 Sep 2021 06:55:07 -0700
+Date: Mon, 13 Sep 2021 21:31:25 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Zhi A Wang <zhi.wang.linux2@gmail.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, Zhi A Wang <zhi.a.wang@intel.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix the usage of ww lock in gvt scheduler.
+Message-ID: <20210913133125.GM14689@zhen-hp.sh.intel.com>
+References: <20210826143834.25410-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-From: Prof Laurent David <llaurentdavid47@gmail.com>
-Date: Fri, 10 Sep 2021 19:43:04 +0000
-Message-ID: <CAHA3qLKuA_qPTV3tLQgTKz1N-VZBdOop0ZmmUkFzQbv10dwCQA@mail.gmail.com>
-Subject: Project Information
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000007cbe8305cba95398"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="0OAP2g/MAC+5xKAE"
+Content-Disposition: inline
+In-Reply-To: <20210826143834.25410-1-zhi.a.wang@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,100 +48,75 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: lau.david.ld@gmail.com
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0000000000007cbe8305cba95398
-Content-Type: text/plain; charset="UTF-8"
 
-Hello.,
-
-How are you and how is your family doing? I'm Laurent David, CEO, BNP
-Paribas. I would humbly request that you keep the contents of this message
-confidential and also respect the integrity of the information you may come
-across as a result of this communique. I'm contacting you privately, no one
-else is aware of this communique hence I am contacting you unofficially and
-then advocate we communicate strictly via our private emails. I was an
-account officer or a personal accountant to one of our bank's high
-reputable customers who once owned a reputable company here in Paris, and
-also one time the CEO of a company, and then he operated an investment
-account worth millions of euros in our bank.
-
-Unfortunately, he died along with his nuclear families while on sabbatical
-in the summer of 2005 in northwest Venezuela. He died in intestacy
-(intestate), without a functional will. After his death my bank made
-several efforts to locate any member of his extended families via his
-consulates without success. Fleetingly, in line with our bank inheritance's
-claim(s) rules and regulate, as stipulated by the WBG I have been mandated
-by our bank board/committee as his personal accountant to declare the
-account without an inheritor, provide one or the bank will revert the funds
-back into our treasury as an unclaimed and abandoned monies otherwise the
-funds will be confiscated by the government (es-cheat). Like they say
-"drastic situations call for drastic measures" Hence I decided to contact
-you and then have you nominated/listed as the next of KIN to be awarded the
-abandoned estate of (US$ 23.7 millions dollars)
-
-I went through your profile. You share the same family/surname with the
-subject matter before I decided to contact you. You will stand as his
-family representative of the deceased for the bank to release and award you
-the funds as his heir. This project will be executed legally, officially
-without breaking any law, and success is guaranteed with your total
-corporation. Please if you are interested, indicate so that I can give you
-all the necessary information and also some back up documents. Please I
-cannot be discussing this sensitive issue with people as such your
-cooperation is seriously needed. Please, treat this proposal with utmost
-confidentiality as I assure you it's 100% risk free. Please get back to me
-with your full Name and direct telephone number.
-
-
-Thank You
-Yours Sincerely,
-Prof. Laurent David
-CEO BNP Paribas Personal Finance.
-Please reply me to my private email address ( proflaurentdavid020@outlook.fr
-)
-
---0000000000007cbe8305cba95398
-Content-Type: text/html; charset="UTF-8"
+--0OAP2g/MAC+5xKAE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Hello.,<br><br>How are you and how is your family doing? I=
-&#39;m Laurent David, CEO, BNP Paribas. I would humbly request that you kee=
-p the contents of this message confidential and also respect the integrity =
-of the information you may come across as a result of this communique. I&#3=
-9;m contacting you privately, no one else is aware of this communique hence=
- I am contacting you unofficially and then advocate we communicate strictly=
- via our private emails. I was an account officer or a personal accountant =
-to one of our bank&#39;s high reputable customers who once owned a reputabl=
-e company here in Paris, and also one time the CEO of a company, and then h=
-e operated an investment account worth millions of euros in our bank.<br><b=
-r>Unfortunately, he died along with his nuclear families while on sabbatica=
-l in the summer of 2005 in northwest Venezuela. He died in intestacy (intes=
-tate), without a functional will. After his death my bank made several effo=
-rts to locate any member of his extended families via his consulates withou=
-t success. Fleetingly, in line with our bank inheritance&#39;s claim(s) rul=
-es and regulate, as stipulated by the WBG I have been mandated by our bank =
-board/committee as his personal accountant to declare the account without a=
-n inheritor, provide one or the bank will revert the funds back into our tr=
-easury as an unclaimed and abandoned monies otherwise the funds will be con=
-fiscated by the government (es-cheat). Like they say &quot;drastic situatio=
-ns call for drastic measures&quot; Hence I decided to contact you and then =
-have you nominated/listed as the next of KIN to be awarded the abandoned es=
-tate of (US$ 23.7 millions dollars)<br><br>I went through your profile. You=
- share the same family/surname with the subject matter before I decided to =
-contact you. You will stand as his family representative of the deceased fo=
-r the bank to release and award you the funds as his heir. This project wil=
-l be executed legally, officially without breaking any law, and success is =
-guaranteed with your total corporation. Please if you are interested, indic=
-ate so that I can give you all the necessary information and also some back=
- up documents. Please I cannot be discussing this sensitive issue with peop=
-le as such your cooperation is seriously needed. Please, treat this proposa=
-l with utmost confidentiality as I assure you it&#39;s 100% risk free. Plea=
-se get back to me with your full Name and direct telephone number.<br><br><=
-br>Thank You<br>Yours Sincerely,<br>Prof. Laurent David<br>CEO BNP Paribas =
-Personal Finance.<br>Please reply me to my private email address ( <a href=
-=3D"mailto:proflaurentdavid020@outlook.fr">proflaurentdavid020@outlook.fr</=
-a> )<br></div>
+On 2021.08.26 14:38:34 +0000, Zhi A Wang wrote:
+> As the APIs related to ww lock in i915 was changed recently, the usage of
+> ww lock in GVT-g scheduler needs to be changed accrodingly. We noticed a
+> deadlock when GVT-g scheduler submits the workload to i915. After some
+> investigation, it seems the way of how to use ww lock APIs has been
+> changed. Releasing a ww now requires a explict i915_gem_ww_ctx_fini().
+>=20
+> Fixes: 67f1120381df ("drm/i915/gvt: Introduce per object locking in GVT s=
+cheduler.")
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Signed-off-by: Zhi A Wang <zhi.a.wang@intel.com>
+> ---
 
---0000000000007cbe8305cba95398--
+Oops, looks I missed this one.
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+Thanks for the fix!
+
+>  drivers/gpu/drm/i915/gvt/scheduler.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/=
+gvt/scheduler.c
+> index 9578e57db4c2..43fedfe9639a 100644
+> --- a/drivers/gpu/drm/i915/gvt/scheduler.c
+> +++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+> @@ -576,7 +576,7 @@ static int prepare_shadow_batch_buffer(struct intel_v=
+gpu_workload *workload)
+> =20
+>  			/* No one is going to touch shadow bb from now on. */
+>  			i915_gem_object_flush_map(bb->obj);
+> -			i915_gem_object_unlock(bb->obj);
+> +			i915_gem_ww_ctx_fini(&ww);
+>  		}
+>  	}
+>  	return 0;
+> @@ -630,7 +630,7 @@ static int prepare_shadow_wa_ctx(struct intel_shadow_=
+wa_ctx *wa_ctx)
+>  		return ret;
+>  	}
+> =20
+> -	i915_gem_object_unlock(wa_ctx->indirect_ctx.obj);
+> +	i915_gem_ww_ctx_fini(&ww);
+> =20
+>  	/* FIXME: we are not tracking our pinned VMA leaving it
+>  	 * up to the core to fix up the stray pin_count upon
+> --=20
+> 2.25.1
+>=20
+
+--0OAP2g/MAC+5xKAE
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYT9SqAAKCRCxBBozTXgY
+J4hfAKCD6+9nbO43sNK00uHPPAW4tZcJTACfe6efIW5mi6gI5JP2eOpfrZQzI1U=
+=Gyr6
+-----END PGP SIGNATURE-----
+
+--0OAP2g/MAC+5xKAE--
