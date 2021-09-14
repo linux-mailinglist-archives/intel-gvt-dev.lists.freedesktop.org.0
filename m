@@ -2,106 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16E4E409E2A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Sep 2021 22:32:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CDFED40A3E1
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Sep 2021 04:51:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BF5CF6E249;
-	Mon, 13 Sep 2021 20:32:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 877F16E342;
+	Tue, 14 Sep 2021 02:51:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0D05A6E249;
- Mon, 13 Sep 2021 20:32:08 +0000 (UTC)
-Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.0.43) with SMTP id 18DIxULk018537;
- Mon, 13 Sep 2021 16:32:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=yBRQSXYa6E0Da+LOl4wVPZbAFonIeAlEysP3yqC0kzY=;
- b=iyRyMymH7QfKN3srOByUI7wHO00B6QMgqGhD3OT/yH2ZdLiVFkZuDXvI7Pd+rcXSldW1
- PJbbcCsrGoliN+CVb/3xICZwMwxMIfx1agtSUZMylE/A7xAjsVqC513ZKefVaxA+aMqc
- q2QD5lLwtuSf/cZZ1fEm9e0OO6tHoTby2LcihbT07yVhfLVz/lBWGdeu3sD2/UdKaIFi
- g+QQYblvKFm4t0VM6fv+9iGAvxwCLtgYNLEd/kPKqedxkWJhH8cgWZXzC+XErQw4V8ea
- rRK9mNHhnNyFnPjqu+okcZQAuSDIjqwynBwF0ZCP5bOow07lMkpk/wQDtvbqqS5wDzU9 8w== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3b24777ndw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 13 Sep 2021 16:32:05 -0400
-Received: from m0098393.ppops.net (m0098393.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 18DIospt026987;
- Mon, 13 Sep 2021 16:32:04 -0400
-Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.27])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3b24777ndh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 13 Sep 2021 16:32:04 -0400
-Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
- by ppma05wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 18DKDMSq030005;
- Mon, 13 Sep 2021 20:32:03 GMT
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
- [9.57.198.29]) by ppma05wdc.us.ibm.com with ESMTP id 3b0m3a9b8n-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 13 Sep 2021 20:32:03 +0000
-Received: from b01ledav001.gho.pok.ibm.com (b01ledav001.gho.pok.ibm.com
- [9.57.199.106])
- by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 18DKW2Bn44237072
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 13 Sep 2021 20:32:02 GMT
-Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 42C442805C;
- Mon, 13 Sep 2021 20:32:02 +0000 (GMT)
-Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5E31B2805A;
- Mon, 13 Sep 2021 20:31:55 +0000 (GMT)
-Received: from farman-thinkpad-t470p (unknown [9.211.116.76])
- by b01ledav001.gho.pok.ibm.com (Postfix) with ESMTP;
- Mon, 13 Sep 2021 20:31:55 +0000 (GMT)
-Message-ID: <6f55044373dea4515b831957981bbf333e03de59.camel@linux.ibm.com>
-Subject: Re: [PATCH v2 0/9] Move vfio_ccw to the new mdev API
-From: Eric Farman <farman@linux.ibm.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>, Christian Borntraeger
- <borntraeger@de.ibm.com>, Cornelia Huck <cohuck@redhat.com>, Daniel Vetter
- <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Harald Freudenberger
- <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Joonas
- Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
- Wankhede <kwankhede@nvidia.com>, linux-s390@vger.kernel.org, Matthew
- Rosato <mjrosato@linux.ibm.com>, Peter Oberparleiter
- <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi
- <rodrigo.vivi@intel.com>, Vineeth Vijayan <vneethv@linux.ibm.com>, Zhenyu
- Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>, Christoph
- Hellwig <hch@lst.de>
-Date: Mon, 13 Sep 2021 16:31:54 -0400
-In-Reply-To: <20210913192407.GZ2505917@nvidia.com>
-References: <0-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
- <1e431e58465b86430d02d429c86c427f7088bf1f.camel@linux.ibm.com>
- <20210913192407.GZ2505917@nvidia.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-16.el8) 
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: J2Mq2xTpaK-3MSFbfYoVTtsLoCLgmINY
-X-Proofpoint-ORIG-GUID: r492AUbxpbkj-DNzhYj7IEyrQ8grPz3w
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D442A6E328
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Sep 2021 02:51:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10106"; a="282857566"
+X-IronPort-AV: E=Sophos;i="5.85,291,1624345200"; d="scan'208";a="282857566"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Sep 2021 19:51:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,291,1624345200"; d="scan'208";a="481598161"
+Received: from lkp-server01.sh.intel.com (HELO 730d49888f40) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 13 Sep 2021 19:51:49 -0700
+Received: from kbuild by 730d49888f40 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mPyY0-00086c-RZ; Tue, 14 Sep 2021 02:51:48 +0000
+Date: Tue, 14 Sep 2021 10:51:10 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
+ zhenyu.z.wang@intel.com
+Subject: [intel-gvt-linux:gvt-fixes] BUILD SUCCESS
+ d168cd797982db9db617113644c87b8f5f3cf27e
+Message-ID: <61400e1e.DK/byun77t3fEMz+%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.182.1,Aquarius:18.0.687,Hydra:6.0.235,FMLib:17.0.607.475
- definitions=2020-10-13_15,2020-10-13_02,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015
- lowpriorityscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
- adultscore=0 mlxscore=0 priorityscore=1501 spamscore=0 impostorscore=0
- bulkscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2109030001 definitions=main-2109130063
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,75 +52,171 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 2021-09-13 at 16:24 -0300, Jason Gunthorpe wrote:
-> On Mon, Sep 13, 2021 at 01:40:34PM -0400, Eric Farman wrote:
-> > On Thu, 2021-09-09 at 16:38 -0300, Jason Gunthorpe wrote:
-> > > This addresses Cornelia's remark on the earlier patch that ccw
-> > > has a
-> > > confusing lifecycle. While it doesn't seem like the original
-> > > attempt
-> > > was
-> > > functionally wrong, the result can be made better with a lot of
-> > > further
-> > > work.
-> > 
-> > I thought I'd take a stab at seeing how this works with the
-> > hardware
-> > before looking at the code much. git couldn't apply patches 1, 6,
-> > or 9
-> > to 5.15-rc1, but I was able to hand-fit them into place. 
-> 
-> Oh? Thats odd, I had no remarks from git when rebasing onto
-> v5.15-rc1..
-> 
-> Maybe this is a situation where you need "b4 am --prep-3way" ...
+tree/branch: https://github.com/intel/gvt-linux.git gvt-fixes
+branch HEAD: d168cd797982db9db617113644c87b8f5f3cf27e  drm/i915/gvt: fix the usage of ww lock in gvt scheduler.
 
-Ah, that does indeed help, thanks. Still missing the vfio-ap patch
-that's elsewhere on the list, but I'm not caring about that at the
-moment.
+elapsed time: 727m
 
-> 
-> > [   64.585462] Call Trace:
-> > [   64.585464]  [<0000000000000002>] 0x2 
-> > [   64.585467] ([<000003ff80179d74>] vfio_ccw_mdev_ioctl+0x84/0x318
-> > [vfio_ccw])
-> > [   64.585476]  [<00000000bb7adda6>] __s390x_sys_ioctl+0xbe/0x100 
-> > [   64.585481]  [<00000000bbfbf5e4>] __do_syscall+0x1bc/0x1e8 
-> > [   64.585488]  [<00000000bbfcc8d8>] system_call+0x78/0xa0 
-> 
-> I think it is this:
-> 
-> diff --git a/drivers/s390/cio/vfio_ccw_fsm.c
-> b/drivers/s390/cio/vfio_ccw_fsm.c
-> index df1490943b20ec..5ea392959c0711 100644
-> --- a/drivers/s390/cio/vfio_ccw_fsm.c
-> +++ b/drivers/s390/cio/vfio_ccw_fsm.c
-> @@ -441,6 +441,7 @@ fsm_func_t
-> *vfio_ccw_jumptable[NR_VFIO_CCW_STATES][NR_VFIO_CCW_EVENTS] = {
->  		[VFIO_CCW_EVENT_IO_REQ]		= fsm_io_error,
->  		[VFIO_CCW_EVENT_ASYNC_REQ]	= fsm_async_error,
->  		[VFIO_CCW_EVENT_INTERRUPT]	= fsm_disabled_irq,
-> +		[VFIO_CCW_EVENT_OPEN]		= fsm_nop,
->  		[VFIO_CCW_EVENT_CLOSE]		= fsm_nop,
->  	},
->  	[VFIO_CCW_STATE_CLOSED] = {
-> 
-> I rebased it and fixed it up here:
-> 
-> https://github.com/jgunthorpe/linux/tree/vfio_ccw
-> 
-> Can you try again?
+configs tested: 148
+configs skipped: 3
 
-That does address the crash, but then why is it processing a BROKEN
-event? Seems problematic. All the configuration works fine, but the
-devices get ripped away once a guest is started that wants to open/use
-them.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-So, there's more problems to figure out.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210913
+powerpc                   motionpro_defconfig
+arm                         axm55xx_defconfig
+powerpc                 mpc8540_ads_defconfig
+m68k                        m5307c3_defconfig
+powerpc                      ppc6xx_defconfig
+mips                           gcw0_defconfig
+mips                      fuloong2e_defconfig
+arm                          pxa168_defconfig
+arm                          pxa910_defconfig
+arm                       aspeed_g4_defconfig
+m68k                            q40_defconfig
+arm                        keystone_defconfig
+powerpc                 canyonlands_defconfig
+mips                            e55_defconfig
+mips                     loongson1b_defconfig
+powerpc                     taishan_defconfig
+arm                         s3c2410_defconfig
+arm                            mps2_defconfig
+xtensa                  cadence_csp_defconfig
+arm                     davinci_all_defconfig
+powerpc                     redwood_defconfig
+arm                       netwinder_defconfig
+powerpc                        cell_defconfig
+mips                      maltasmvp_defconfig
+mips                        workpad_defconfig
+arm                            mmp2_defconfig
+m68k                       m5275evb_defconfig
+powerpc                    ge_imp3a_defconfig
+powerpc                    gamecube_defconfig
+xtensa                         virt_defconfig
+sparc64                          alldefconfig
+xtensa                          iss_defconfig
+openrisc                    or1ksim_defconfig
+sh                          kfr2r09_defconfig
+powerpc                 linkstation_defconfig
+mips                         bigsur_defconfig
+mips                        maltaup_defconfig
+arc                        nsim_700_defconfig
+arm                             mxs_defconfig
+powerpc                  iss476-smp_defconfig
+arm                         bcm2835_defconfig
+m68k                          atari_defconfig
+sh                   secureedge5410_defconfig
+sh                           se7721_defconfig
+mips                         rt305x_defconfig
+mips                        omega2p_defconfig
+ia64                        generic_defconfig
+arm                       aspeed_g5_defconfig
+riscv                    nommu_virt_defconfig
+xtensa                  audio_kc705_defconfig
+alpha                               defconfig
+s390                             alldefconfig
+sh                      rts7751r2d1_defconfig
+openrisc                         alldefconfig
+m68k                        mvme16x_defconfig
+powerpc                     ep8248e_defconfig
+powerpc                      arches_defconfig
+riscv                               defconfig
+h8300                            allyesconfig
+arm                        neponset_defconfig
+powerpc                     stx_gp3_defconfig
+arm                           viper_defconfig
+mips                         cobalt_defconfig
+sh                        edosk7705_defconfig
+x86_64               randconfig-c001-20210913
+arm                  randconfig-c002-20210913
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+s390                                defconfig
+parisc                           allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+x86_64               randconfig-a002-20210913
+x86_64               randconfig-a003-20210913
+x86_64               randconfig-a006-20210913
+x86_64               randconfig-a004-20210913
+x86_64               randconfig-a005-20210913
+x86_64               randconfig-a001-20210913
+i386                 randconfig-a004-20210913
+i386                 randconfig-a005-20210913
+i386                 randconfig-a002-20210913
+i386                 randconfig-a006-20210913
+i386                 randconfig-a003-20210913
+i386                 randconfig-a001-20210913
+arc                  randconfig-r043-20210913
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
 
-Eric
+clang tested configs:
+riscv                randconfig-c006-20210913
+x86_64               randconfig-c007-20210913
+mips                 randconfig-c004-20210913
+powerpc              randconfig-c003-20210913
+i386                 randconfig-c001-20210913
+arm                  randconfig-c002-20210913
+s390                 randconfig-c005-20210913
+x86_64               randconfig-a016-20210913
+x86_64               randconfig-a013-20210913
+x86_64               randconfig-a012-20210913
+x86_64               randconfig-a011-20210913
+x86_64               randconfig-a014-20210913
+x86_64               randconfig-a015-20210913
+i386                 randconfig-a016-20210913
+i386                 randconfig-a011-20210913
+i386                 randconfig-a015-20210913
+i386                 randconfig-a012-20210913
+i386                 randconfig-a013-20210913
+i386                 randconfig-a014-20210913
+riscv                randconfig-r042-20210913
+hexagon              randconfig-r045-20210913
+s390                 randconfig-r044-20210913
+hexagon              randconfig-r041-20210913
 
-> 
-> Thanks,
-> Jason
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
