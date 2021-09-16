@@ -2,64 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EF0940CAB9
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Sep 2021 18:41:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4772440D828
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Sep 2021 13:12:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 918B56E9B4;
-	Wed, 15 Sep 2021 16:41:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0715A6EB71;
+	Thu, 16 Sep 2021 11:12:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd29.google.com (mail-io1-xd29.google.com
- [IPv6:2607:f8b0:4864:20::d29])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C83076E9A0;
- Wed, 15 Sep 2021 16:40:58 +0000 (UTC)
-Received: by mail-io1-xd29.google.com with SMTP id b200so4216313iof.13;
- Wed, 15 Sep 2021 09:40:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=L+08hq9MDL1yzT8HxFNaQNtrlEM6Xv6fhZuNRn1F1mc=;
- b=SPHkRDp72gZ0c3y6KviDI/XqZYrcZIJbitZr0Tn3ly4ZDKRUWJN+H5ImQ/Xu97dYZw
- I3Imaalk8TcTOyP1LWMt//qfSBnXW11JO+x9EhO7ppI7EoAarp0lD+jKvVtc6G2m+9hn
- 0v8Zq65qDkSVsUcg41H6kE16HDhUxXJzIuPAg2/xA7Bbx98rtr7WIm8NlHkR7JCxfHqt
- YFfAHa5JPkHHVTRuxQ5MP8pkyxC+boUZyVJYi2S3+gOHdRUMflGNWKrkY+7IamKxGw+h
- ICoDXqE7nbQ8HPSJ5RvRNGpw56F/zDe5NIlUd/uUyJOa7uQvEgmOuk4HFqa/rCItm4H0
- ZL3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=L+08hq9MDL1yzT8HxFNaQNtrlEM6Xv6fhZuNRn1F1mc=;
- b=O3ru6AJTMXwra3c27ARXYVnUExOV7wGfjdiy24hxnIKWiYwc0YJewLYtvU590vmG4Q
- /U5Riyd7YQDg16/bBmsdbObE5CZW7vFBIbIQEnkS0TnpRr4C95gyvl7M2Ej96WwS3HFd
- 8iAYns18iPzNTQ6t2jQAPBuYOefvFyUpmX3GCqe9BevZfJYmdHJDPvwmkITYBb0S6at9
- hHgJ1GEOPl2HdFO2Hm3wzvadFwVO9x865hUqL572bx3nH3clm+d+vuiIGiTIyHHlhUxR
- bmRshWNHbUDmwoJrIDLOtet4gFYCAuO9UH2LRgyHxfK1aR9bF7I9Mxlf8bY7ciwACGQ/
- BT7Q==
-X-Gm-Message-State: AOAM532paXHUQl07aYUxPBI2XuQWXxXDAyUh8tMZAc50jSVo0bjI96JK
- 02lHHZuoVD3O2AppkOp4U/c=
-X-Google-Smtp-Source: ABdhPJzSyZoM8g2dKxoNfe2FZae8tupg/vf6LyJMERVhe0uSm1eAISI0AaPoWL5D3InPcL3OH4xdGQ==
-X-Received: by 2002:a05:6638:1484:: with SMTP id
- j4mr802097jak.80.1631724058166; 
- Wed, 15 Sep 2021 09:40:58 -0700 (PDT)
-Received: from frodo.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
- by smtp.googlemail.com with ESMTPSA id a5sm299540ilf.27.2021.09.15.09.40.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Sep 2021 09:40:57 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, daniel@ffwll.ch
-Cc: Jim Cromie <jim.cromie@gmail.com>
-Subject: [PATCH v8 16/16] nouveau: fold multiple DRM_DEBUG_DRIVERs together
-Date: Wed, 15 Sep 2021 10:39:57 -0600
-Message-Id: <20210915163957.2949166-17-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210915163957.2949166-1-jim.cromie@gmail.com>
-References: <20210915163957.2949166-1-jim.cromie@gmail.com>
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4110C6EB71
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 16 Sep 2021 11:12:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10108"; a="244916431"
+X-IronPort-AV: E=Sophos;i="5.85,298,1624345200"; d="scan'208";a="244916431"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Sep 2021 04:12:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,298,1624345200"; d="scan'208";a="698823442"
+Received: from lkp-server01.sh.intel.com (HELO 285e7b116627) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 16 Sep 2021 04:12:20 -0700
+Received: from kbuild by 285e7b116627 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mQpJT-0000yq-Kj; Thu, 16 Sep 2021 11:12:19 +0000
+Date: Thu, 16 Sep 2021 19:11:50 +0800
+From: kernel test robot <lkp@intel.com>
+To: John Harrison <John.C.Harrison@Intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
+ zhenyu.z.wang@intel.com
+Subject: [intel-gvt:gvt-gt-next] BUILD SUCCESS
+ f25e3908b9cd4a3fe819e9bdcdde58f20bacb34c
+Message-ID: <61432676./zhzdVL+1hP38IEt%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,61 +52,284 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-With DRM_USE_DYNAMIC_DEBUG, each callsite record requires 56 bytes.
-We can combine 12 into one here and save ~620 bytes.
+tree/branch: https://github.com/intel/gvt-linux.git gvt-gt-next
+branch HEAD: f25e3908b9cd4a3fe819e9bdcdde58f20bacb34c  drm/i915: Get PM ref before accessing HW register
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+elapsed time: 8049m
+
+configs tested: 263
+configs skipped: 4
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210916
+i386                 randconfig-c001-20210910
+powerpc                     pq2fads_defconfig
+powerpc                      pasemi_defconfig
+m68k                         amcore_defconfig
+arm                         lpc32xx_defconfig
+arm                  colibri_pxa270_defconfig
+mips                        nlm_xlp_defconfig
+sh                                  defconfig
+arm                     am200epdkit_defconfig
+arm                     eseries_pxa_defconfig
+powerpc                   currituck_defconfig
+powerpc                     skiroot_defconfig
+mips                       lemote2f_defconfig
+powerpc                 mpc8313_rdb_defconfig
+mips                malta_qemu_32r6_defconfig
+arm                      footbridge_defconfig
+arm                          lpd270_defconfig
+sh                   sh7724_generic_defconfig
+sh                          kfr2r09_defconfig
+sh                     sh7710voipgw_defconfig
+mips                 decstation_r4k_defconfig
+arm                           h3600_defconfig
+mips                          rb532_defconfig
+xtensa                          iss_defconfig
+ia64                         bigsur_defconfig
+arm                         nhk8815_defconfig
+arm                       aspeed_g4_defconfig
+sparc                            alldefconfig
+powerpc                     ksi8560_defconfig
+powerpc                 mpc834x_mds_defconfig
+powerpc                  mpc885_ads_defconfig
+mips                         rt305x_defconfig
+mips                     loongson1b_defconfig
+powerpc                   lite5200b_defconfig
+powerpc                      acadia_defconfig
+powerpc                      tqm8xx_defconfig
+h8300                       h8s-sim_defconfig
+sh                   sh7770_generic_defconfig
+arm                            hisi_defconfig
+powerpc                        warp_defconfig
+mips                        workpad_defconfig
+sh                        edosk7760_defconfig
+sh                          r7785rp_defconfig
+powerpc                 mpc832x_mds_defconfig
+sparc                       sparc64_defconfig
+mips                      loongson3_defconfig
+arm                         axm55xx_defconfig
+arm                           sama5_defconfig
+arm                          ixp4xx_defconfig
+arm                         bcm2835_defconfig
+m68k                          atari_defconfig
+sh                   secureedge5410_defconfig
+sh                           se7721_defconfig
+powerpc                     mpc5200_defconfig
+arm                  colibri_pxa300_defconfig
+arm                        clps711x_defconfig
+s390                             alldefconfig
+ia64                      gensparse_defconfig
+powerpc                    mvme5100_defconfig
+arm                       cns3420vb_defconfig
+mips                        nlm_xlr_defconfig
+mips                      bmips_stb_defconfig
+arm                      pxa255-idp_defconfig
+sh                            hp6xx_defconfig
+sh                          urquell_defconfig
+arm                         s5pv210_defconfig
+arm                         palmz72_defconfig
+arm                        multi_v7_defconfig
+sh                      rts7751r2d1_defconfig
+openrisc                         alldefconfig
+m68k                        mvme16x_defconfig
+powerpc                     ep8248e_defconfig
+powerpc                      arches_defconfig
+riscv                               defconfig
+powerpc                     mpc83xx_defconfig
+mips                         tb0226_defconfig
+arm                          pxa168_defconfig
+mips                        bcm63xx_defconfig
+arm                              alldefconfig
+arm                        multi_v5_defconfig
+openrisc                    or1ksim_defconfig
+sh                          rsk7203_defconfig
+arc                      axs103_smp_defconfig
+mips                         bigsur_defconfig
+mips                           xway_defconfig
+arc                              alldefconfig
+m68k                             alldefconfig
+powerpc                 mpc8272_ads_defconfig
+powerpc                 mpc8560_ads_defconfig
+sh                            shmin_defconfig
+sh                        dreamcast_defconfig
+x86_64               randconfig-c001-20210915
+arm                  randconfig-c002-20210915
+i386                 randconfig-c001-20210915
+x86_64               randconfig-c001-20210916
+arm                  randconfig-c002-20210916
+x86_64               randconfig-c001-20210910
+arm                  randconfig-c002-20210910
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                                defconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nios2                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                             allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20210913
+x86_64               randconfig-a003-20210913
+x86_64               randconfig-a006-20210913
+x86_64               randconfig-a004-20210913
+x86_64               randconfig-a005-20210913
+x86_64               randconfig-a001-20210913
+x86_64               randconfig-a016-20210916
+x86_64               randconfig-a013-20210916
+x86_64               randconfig-a012-20210916
+x86_64               randconfig-a011-20210916
+x86_64               randconfig-a014-20210916
+x86_64               randconfig-a015-20210916
+x86_64               randconfig-a013-20210910
+x86_64               randconfig-a016-20210910
+x86_64               randconfig-a012-20210910
+x86_64               randconfig-a011-20210910
+x86_64               randconfig-a014-20210910
+x86_64               randconfig-a015-20210910
+x86_64               randconfig-a013-20210914
+x86_64               randconfig-a016-20210914
+x86_64               randconfig-a012-20210914
+x86_64               randconfig-a011-20210914
+x86_64               randconfig-a014-20210914
+x86_64               randconfig-a015-20210914
+i386                 randconfig-a016-20210916
+i386                 randconfig-a015-20210916
+i386                 randconfig-a011-20210916
+i386                 randconfig-a012-20210916
+i386                 randconfig-a013-20210916
+i386                 randconfig-a014-20210916
+i386                 randconfig-a016-20210914
+i386                 randconfig-a015-20210914
+i386                 randconfig-a011-20210914
+i386                 randconfig-a012-20210914
+i386                 randconfig-a013-20210914
+i386                 randconfig-a014-20210914
+i386                 randconfig-a016-20210910
+i386                 randconfig-a011-20210910
+i386                 randconfig-a015-20210910
+i386                 randconfig-a012-20210910
+i386                 randconfig-a013-20210910
+i386                 randconfig-a014-20210910
+riscv                randconfig-r042-20210910
+s390                 randconfig-r044-20210910
+arc                  randconfig-r043-20210910
+arc                  randconfig-r043-20210913
+riscv                randconfig-r042-20210916
+s390                 randconfig-r044-20210916
+arc                  randconfig-r043-20210916
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                          rv32_defconfig
+riscv                            allyesconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-c007-20210912
+i386                 randconfig-c001-20210912
+arm                  randconfig-c002-20210912
+riscv                randconfig-c006-20210912
+mips                 randconfig-c004-20210912
+powerpc              randconfig-c003-20210912
+s390                 randconfig-c005-20210912
+x86_64               randconfig-a002-20210910
+x86_64               randconfig-a003-20210910
+x86_64               randconfig-a004-20210910
+x86_64               randconfig-a006-20210910
+x86_64               randconfig-a005-20210910
+x86_64               randconfig-a001-20210910
+x86_64               randconfig-a002-20210914
+x86_64               randconfig-a003-20210914
+x86_64               randconfig-a004-20210914
+x86_64               randconfig-a006-20210914
+x86_64               randconfig-a005-20210914
+x86_64               randconfig-a001-20210914
+i386                 randconfig-a004-20210916
+i386                 randconfig-a005-20210916
+i386                 randconfig-a006-20210916
+i386                 randconfig-a002-20210916
+i386                 randconfig-a003-20210916
+i386                 randconfig-a001-20210916
+i386                 randconfig-a004-20210914
+i386                 randconfig-a005-20210914
+i386                 randconfig-a006-20210914
+i386                 randconfig-a002-20210914
+i386                 randconfig-a001-20210914
+i386                 randconfig-a003-20210914
+i386                 randconfig-a004-20210910
+i386                 randconfig-a005-20210910
+i386                 randconfig-a002-20210910
+i386                 randconfig-a006-20210910
+i386                 randconfig-a001-20210910
+i386                 randconfig-a003-20210910
+x86_64               randconfig-a016-20210913
+x86_64               randconfig-a013-20210913
+x86_64               randconfig-a012-20210913
+x86_64               randconfig-a011-20210913
+x86_64               randconfig-a014-20210913
+x86_64               randconfig-a015-20210913
+i386                 randconfig-a016-20210913
+i386                 randconfig-a011-20210913
+i386                 randconfig-a015-20210913
+i386                 randconfig-a012-20210913
+i386                 randconfig-a013-20210913
+i386                 randconfig-a014-20210913
+x86_64               randconfig-a002-20210916
+x86_64               randconfig-a003-20210916
+x86_64               randconfig-a006-20210916
+x86_64               randconfig-a004-20210916
+x86_64               randconfig-a005-20210916
+x86_64               randconfig-a001-20210916
+hexagon              randconfig-r045-20210910
+hexagon              randconfig-r041-20210910
+riscv                randconfig-r042-20210913
+hexagon              randconfig-r045-20210913
+s390                 randconfig-r044-20210913
+hexagon              randconfig-r041-20210913
+hexagon              randconfig-r045-20210914
+hexagon              randconfig-r041-20210914
+hexagon              randconfig-r045-20210916
+hexagon              randconfig-r041-20210916
+
 ---
- drivers/gpu/drm/nouveau/nouveau_drm.c | 36 +++++++++++++++++----------
- 1 file changed, 23 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/gpu/drm/nouveau/nouveau_drm.c b/drivers/gpu/drm/nouveau/nouveau_drm.c
-index ba4cd5f83725..0f45399535bf 100644
---- a/drivers/gpu/drm/nouveau/nouveau_drm.c
-+++ b/drivers/gpu/drm/nouveau/nouveau_drm.c
-@@ -1245,19 +1245,29 @@ nouveau_drm_pci_table[] = {
- 
- static void nouveau_display_options(void)
- {
--	DRM_DEBUG_DRIVER("Loading Nouveau with parameters:\n");
--
--	DRM_DEBUG_DRIVER("... tv_disable   : %d\n", nouveau_tv_disable);
--	DRM_DEBUG_DRIVER("... ignorelid    : %d\n", nouveau_ignorelid);
--	DRM_DEBUG_DRIVER("... duallink     : %d\n", nouveau_duallink);
--	DRM_DEBUG_DRIVER("... nofbaccel    : %d\n", nouveau_nofbaccel);
--	DRM_DEBUG_DRIVER("... config       : %s\n", nouveau_config);
--	DRM_DEBUG_DRIVER("... debug        : %s\n", nouveau_debug);
--	DRM_DEBUG_DRIVER("... noaccel      : %d\n", nouveau_noaccel);
--	DRM_DEBUG_DRIVER("... modeset      : %d\n", nouveau_modeset);
--	DRM_DEBUG_DRIVER("... runpm        : %d\n", nouveau_runtime_pm);
--	DRM_DEBUG_DRIVER("... vram_pushbuf : %d\n", nouveau_vram_pushbuf);
--	DRM_DEBUG_DRIVER("... hdmimhz      : %d\n", nouveau_hdmimhz);
-+	DRM_DEBUG_DRIVER("Loading Nouveau with parameters:\n"
-+			 "... tv_disable   : %d\n"
-+			 "... ignorelid    : %d\n"
-+			 "... duallink     : %d\n"
-+			 "... nofbaccel    : %d\n"
-+			 "... config       : %s\n"
-+			 "... debug        : %s\n"
-+			 "... noaccel      : %d\n"
-+			 "... modeset      : %d\n"
-+			 "... runpm        : %d\n"
-+			 "... vram_pushbuf : %d\n"
-+			 "... hdmimhz      : %d\n"
-+			 , nouveau_tv_disable
-+			 , nouveau_ignorelid
-+			 , nouveau_duallink
-+			 , nouveau_nofbaccel
-+			 , nouveau_config
-+			 , nouveau_debug
-+			 , nouveau_noaccel
-+			 , nouveau_modeset
-+			 , nouveau_runtime_pm
-+			 , nouveau_vram_pushbuf
-+			 , nouveau_hdmimhz);
- }
- 
- static const struct dev_pm_ops nouveau_pm_ops = {
--- 
-2.31.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
