@@ -1,74 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1385140FA5C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Sep 2021 16:38:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ABE14104CD
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Sep 2021 09:35:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 85D096ED7D;
-	Fri, 17 Sep 2021 14:38:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C72E66E0E9;
+	Sat, 18 Sep 2021 07:35:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 941E16ED6B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Sep 2021 14:38:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631889488;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=iOTb3UE3yMAXob/FqBUe/TKYJnFydFEqXkEY8HDT4zI=;
- b=OWVREdzGI7gOkzL2cz9k6AstPRvBCyxSWW3lnMxIk5ClqBax07oJ7vaqKAhUt34MvkwuZK
- 1nCeJ9mQ/Xo9i5U8/uOhbAjuS8fWNCu5Tn42+RiMvTUGW3nh0U52jiaEEse8E5qRCjb2Aa
- TutT/8ZTAMpME77lIETcYsM9oV+Gi98=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-34-f4qtFLsONraZNqNdM3BV9g-1; Fri, 17 Sep 2021 10:38:05 -0400
-X-MC-Unique: f4qtFLsONraZNqNdM3BV9g-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4D087BBEEC;
- Fri, 17 Sep 2021 14:38:02 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.115])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4E6111001281;
- Fri, 17 Sep 2021 14:37:46 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Eric Farman <farman@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
- <alex.williamson@redhat.com>, Christian Borntraeger
- <borntraeger@de.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, Harald Freudenberger
- <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, Jani Nikula
- <jani.nikula@linux.intel.com>, Jason Herne <jjherne@linux.ibm.com>, Joonas
- Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
- Wankhede <kwankhede@nvidia.com>, linux-s390@vger.kernel.org, Matthew
- Rosato <mjrosato@linux.ibm.com>, Peter Oberparleiter
- <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi
- <rodrigo.vivi@intel.com>, Vineeth Vijayan <vneethv@linux.ibm.com>, Zhenyu
- Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>, Christoph
- Hellwig <hch@lst.de>
-Subject: Re: [PATCH v2 0/9] Move vfio_ccw to the new mdev API
-In-Reply-To: <20210917125109.GE327412@nvidia.com>
-Organization: Red Hat GmbH
-References: <0-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
- <1e431e58465b86430d02d429c86c427f7088bf1f.camel@linux.ibm.com>
- <20210913192407.GZ2505917@nvidia.com>
- <6f55044373dea4515b831957981bbf333e03de59.camel@linux.ibm.com>
- <20210914133618.GD4065468@nvidia.com> <87h7ejh0q3.fsf@redhat.com>
- <20210917125109.GE327412@nvidia.com>
-User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
-Date: Fri, 17 Sep 2021 16:37:44 +0200
-Message-ID: <87ee9ngtdz.fsf@redhat.com>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5B4716E0E9;
+ Sat, 18 Sep 2021 07:35:04 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10110"; a="202421990"
+X-IronPort-AV: E=Sophos;i="5.85,303,1624345200"; 
+ d="asc'?scan'208";a="202421990"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Sep 2021 00:35:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,303,1624345200"; 
+ d="asc'?scan'208";a="472547845"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by fmsmga007.fm.intel.com with ESMTP; 18 Sep 2021 00:34:58 -0700
+Date: Sat, 18 Sep 2021 15:11:05 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Jani Nikula <jani.nikula@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>,
+ Zhi Wang <zhi.a.wang@intel.com>, "Lv, Zhiyuan" <zhiyuan.lv@intel.com>,
+ "Yuan, Hang" <hang.yuan@intel.com>
+Subject: [PULL] gvt-fixes
+Message-ID: <20210918071105.GY14689@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="JP+T4n/bALQSJXh8"
+Content-Disposition: inline
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,83 +50,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Sep 17 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> On Fri, Sep 17, 2021 at 01:59:16PM +0200, Cornelia Huck wrote:
->> >  		ret = cio_cancel_halt_clear(sch, &iretry);
->> > -
->> >  		if (ret == -EIO) {
->> >  			pr_err("vfio_ccw: could not quiesce subchannel 0.%x.%04x!\n",
->> >  			       sch->schid.ssid, sch->schid.sch_no);
->> > -			break;
->> > +			return ret;
->> 
->> Looking at this, I wonder why we had special-cased -EIO -- for -ENODEV
->> we should be done as well, as then the device is dead and we do not need
->> to disable it.
->
-> cio_cancel_halt_clear() should probably succeed in that case.
+--JP+T4n/bALQSJXh8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-It will actually give us -ENODEV, as the very first call in that
-function will already fail.
 
->
->> > @@ -413,13 +403,28 @@ static void fsm_close(struct vfio_ccw_private *private,
->> >  		spin_unlock_irq(sch->lock);
->> >  
->> >  		if (ret == -EBUSY)
->> > -			wait_for_completion_timeout(&completion, 3*HZ);
->> > +			wait_for_completion_timeout(&completion, 3 * HZ);
->> >  
->> >  		private->completion = NULL;
->> >  		flush_workqueue(vfio_ccw_work_q);
->> >  		spin_lock_irq(sch->lock);
->> >  		ret = cio_disable_subchannel(sch);
->> >  	} while (ret == -EBUSY);
->> > +	return ret;
->> > +}
->> > +
->> > +static void fsm_close(struct vfio_ccw_private *private,
->> > +		      enum vfio_ccw_event event)
->> > +{
->> > +	struct subchannel *sch = private->sch;
->> > +	int ret;
->> > +
->> > +	spin_lock_irq(sch->lock);
->> > +	if (!sch->schib.pmcw.ena)
->> > +		goto err_unlock;
->> > +	ret = cio_disable_subchannel(sch);
->> 
->> cio_disable_subchannel() should be happy to disable an already disabled
->> subchannel, so I guess we can just walk through this and end up in
->> CLOSED state... unless entering with !ena actually indicates that we
->> messed up somewhere else in the state machine. I still need to find time
->> to read the patches.
->
-> I don't know, I looked at that ena stuff for a bit and couldn't guess
-> what it is trying to do.
+Hi,
 
-It is one of the bits in the pmcw control block that can be modified; if
-it is 1, the subchannel is enabled and can be used for I/O, if it is 0,
-the subchannel is disabled and all instructions that initiate or stop
-I/O will fail. Basically, you enable the subchannel if you actually want
-to access the device associated with it. Online/offline for (normal
-usage) ccw devices maps (among other things) to associated subchannel
-enabled/disabled; for a subchannel that is supposed to be passed via
-vfio-ccw, we want to have it enabled so that it is actually usable.
+Here's one ww lock fini fix from Zhi which resolved recent regression
+with i915 change.
 
-I think the ena checking had been inspired from what the ccw bus
-does. We could probably just forge ahead in any case and the called
-functions in the css bus would be able to handle it just fine, but I
-have not double checked.
+Thanks
+--
+The following changes since commit 71de496cc489b6bae2f51f89da7f28849bf2836e:
 
-> Arguably the channel should not be ripped away from vfio while the FSM
-> is in the open states, so I'm not sure what a lot of this is for.
+  drm/i915/dp: Drop redundant debug print (2021-08-26 07:31:52 -0400)
 
-We could have surprise removal (i.e. a subchannel in active use being
-ripped out), as that's what happens on real hardware as well. E.g. doing
-a device_del in QEMU.
+are available in the Git repository at:
 
+  https://github.com/intel/gvt-linux tags/gvt-fixes-2021-09-18
+
+for you to fetch changes up to d168cd797982db9db617113644c87b8f5f3cf27e:
+
+  drm/i915/gvt: fix the usage of ww lock in gvt scheduler. (2021-09-13 21:59:31 +0800)
+
+----------------------------------------------------------------
+gvt-fixes-2021-09-18
+
+- ww locking fix from Zhi
+
+----------------------------------------------------------------
+Zhi A Wang (1):
+      drm/i915/gvt: fix the usage of ww lock in gvt scheduler.
+
+ drivers/gpu/drm/i915/gvt/scheduler.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--JP+T4n/bALQSJXh8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYUWRBAAKCRCxBBozTXgY
+J1PJAJwKnf5blAPxydslLivIrdp4QVJtewCeP0eJC0AYSu3CjmfCM9tVIoltXvo=
+=tN2f
+-----END PGP SIGNATURE-----
+
+--JP+T4n/bALQSJXh8--
