@@ -2,40 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 482E3411363
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Sep 2021 13:12:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7D8241142F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Sep 2021 14:19:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E4F746E4B5;
-	Mon, 20 Sep 2021 11:12:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 04C3D6E4CF;
+	Mon, 20 Sep 2021 12:19:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 948826E4B5
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 706506E4CF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Sep 2021 11:12:53 +0000 (UTC)
+ Mon, 20 Sep 2021 12:19:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1632136372;
+ s=mimecast20190719; t=1632140375;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=+cEXBCv3p2JJaUUhjnLsa8UXFemD949tckGIE20lGD4=;
- b=PBB/DkDXGYQ3vvazq6178wOfuRLeLbljqliUHrwlcnnAvqucCg6LRfWWtVMRpzF/H7CV3L
- 1ASQQnK1Pylky3MqbyuzpKHmQ6KBjbVJFO2gf6SJu5UctbByPGT8OCDAaH2PhN1TLTVaDU
- hkCyjXdJ+cE2edaLlzvxmMgv70i8OVo=
+ bh=oqV0BaNYpr2I0JiEDB8GSwff72PtI0XltHh00N1EQLw=;
+ b=LqlxfgkFFErIyxBjZtyJioPdbUA8wNbXLqVXHtknMJi//gkqtBbtxJ26VNRxvWw51nygsV
+ x2Ju4AtP0T8oydJ57zCPDoxz+bVQ0QoovHbJwGMb8/pPeh721RpfA8LEeUoMtbMRfrcGzL
+ 84uWlze/yr3gQ0qNgAEM3Pt2RG7tuI4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-342-rqEgMrLrPOK9YDeOoXLLgA-1; Mon, 20 Sep 2021 07:12:49 -0400
-X-MC-Unique: rqEgMrLrPOK9YDeOoXLLgA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-415-XPNszXZzMVGAp3Bhyu4PVQ-1; Mon, 20 Sep 2021 08:19:32 -0400
+X-MC-Unique: XPNszXZzMVGAp3Bhyu4PVQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7BBC9180830B;
- Mon, 20 Sep 2021 11:12:46 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 255DA835DE1;
+ Mon, 20 Sep 2021 12:19:29 +0000 (UTC)
 Received: from localhost (unknown [10.39.193.92])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B495E60C17;
- Mon, 20 Sep 2021 11:12:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1F3785D9DC;
+ Mon, 20 Sep 2021 12:19:20 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
  Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
@@ -53,17 +53,17 @@ To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
  <rodrigo.vivi@intel.com>, Vineeth Vijayan <vneethv@linux.ibm.com>, Zhenyu
  Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
 Cc: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH v2 2/9] vfio/ccw: Pass vfio_ccw_private not mdev_device
- to various functions
-In-Reply-To: <2-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
+Subject: Re: [PATCH v2 4/9] vfio/ccw: Make the FSM complete and synchronize
+ it to the mdev
+In-Reply-To: <4-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
 Organization: Red Hat GmbH
-References: <2-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
+References: <4-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
 User-Agent: Notmuch/0.32.1 (https://notmuchmail.org)
-Date: Mon, 20 Sep 2021 13:12:34 +0200
-Message-ID: <8735pzh55p.fsf@redhat.com>
+Date: Mon, 20 Sep 2021 14:19:18 +0200
+Message-ID: <87zgs7fni1.fsf@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,14 +81,47 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 On Thu, Sep 09 2021, Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> mdev_device should only be used in functions assigned to ops callbacks,
-> interior functions should use the struct vfio_ccw_private instead of
-> repeatedly trying to get it from the mdev.
+> The subchannel should be left in a quiescent state unless the VFIO device
+> FD is opened. When the FD is opened bring the chanel to active and allow
+> the VFIO device to operate. When the device FD is closed then quiesce the
+> channel.
 >
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/s390/cio/vfio_ccw_ops.c | 37 +++++++++++++--------------------
->  1 file changed, 15 insertions(+), 22 deletions(-)
+> To make this work the FSM needs to handle the transitions to/from open and
+> closed so everything is sequenced. Rename state NOT_OPER to BROKEN and use
+> it wheneven the driver has malfunctioned. STANDBY becomes CLOSED. The
+> normal case FSM looks like:
+>     CLOSED -> IDLE -> PROCESS/PENDING* -> IDLE -> CLOSED
+>
+> With a possible branch off to BROKEN from any state. Once the device is in
+> BROKEN it cannot be recovered other than be reloading the driver.
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Hm, not sure whether it is a good idea to conflate "something went
+wrong" and "device is not operational". In the latter case, we will
+eventually get a removal of the css device when the common I/O layer has
+processed the channel report for the subchannel; while the former case
+could mean all kind of things, but the subchannel will likely stay
+around. I think NOT_OPER was always meant to be a transitional state.
+
+>
+> Delete the triply redundant calls to
+> vfio_ccw_sch_quiesce(). vfio_ccw_mdev_close_device() always leaves the
+> subchannel quiescent. vfio_ccw_mdev_remove() cannot return until
+> vfio_ccw_mdev_close_device() completes and vfio_ccw_sch_remove() cannot
+> return until vfio_ccw_mdev_remove() completes. Have the FSM code take care
+> of calling cp_free() when appropriate.
+
+I remember some serialization issues wrt cp_free() etc. coming up every
+now and than; that might need extra care (I'm taking a look.)
+
+>
+> Device reset becomes a CLOSE/OPEN sequence which now properly handles the
+> situation if the device becomes BROKEN.
+>
+> Machine shutdown via vfio_ccw_sch_shutdown() now simply tries to close and
+> leaves the device BROKEN (though arguably the bus should take care to
+> quiet down the subchannel HW during shutdown, not the drivers)
+
+The problem is that there is not really a uniform thing that can be done
+for shutdown; e.g. we can quiesce and then disable I/O and EADM
+subchannels, but CHSC subchannels cannot be quiesced.
 
