@@ -1,58 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0247D4150F0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Sep 2021 22:04:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EECB541519B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Sep 2021 22:49:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3F5C26E049;
-	Wed, 22 Sep 2021 20:04:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9A4D66EC46;
+	Wed, 22 Sep 2021 20:49:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com
- [IPv6:2607:f8b0:4864:20::e42])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EAE026E049
+Received: from mail-qk1-x741.google.com (mail-qk1-x741.google.com
+ [IPv6:2607:f8b0:4864:20::741])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 467326EC74
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Sep 2021 20:04:31 +0000 (UTC)
-Received: by mail-vs1-xe42.google.com with SMTP id l19so4226877vst.7
+ Wed, 22 Sep 2021 20:49:03 +0000 (UTC)
+Received: by mail-qk1-x741.google.com with SMTP id t4so14225323qkb.9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Sep 2021 13:04:31 -0700 (PDT)
+ Wed, 22 Sep 2021 13:49:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=HyojCuqfsBOAZqq1B3Z8c4xkKvvHwFaZYWxD/njvKF0=;
- b=kSp2EWnLyHI1QZrivQXiPiYXnToYsXjg9i7drcb5YYfZVGctAmCHKSUwIyGEZgSurK
- mYreXbzPGT3ejECtvJBUhVdRg4UNgdAAyl9NWmQNUHENGLIQhZQMynjP9M7txrHnq4aQ
- jbvr7lK1wFPsv+k6jyiKB9iK6PLjv+ez/fLqABYZHNweF+d7M7898jCQlExV2vFmmjjL
- lmw3g5ZojSTXr/suoX2dUMgrzdiysV6i07y110NXW/i+gZ6SkgVgAtn+A5J9Oua487S+
- PBZkBQRVPTFIB3J0XpmAWR++pw4V10DCSIGqwN2chge4OiVf5rw6T6ZKkN6gu8ES5Gbn
- 84vw==
+ h=mime-version:sender:from:date:message-id:subject:to;
+ bh=ijKrByR1/KtEp2Ut8Wj0vMi00kBZm/A/r1gPwOEYZIg=;
+ b=HgFbMGsOZCai/4tbOerlWfdO8DybuOJw7RZz6ZrdK2h8oWoZpGwfrk8AXH8ic15zZ1
+ AZh04wyt3i4Dkft+vgYMcoepLT++iqFfIEAQX0pBz2OAYkU22MN8kbl0U2FH14FZK9ar
+ sZyn8dzx4U+7mZL4HuH8yX9MkyvnDbRDJwO5wqIPPh24TnRf1r8gNK9BBjt09gQKoYEW
+ 1o6eGK9gT9bJHSK8UjT0L1Y2eGwkXI6lfyV6031QZkL2JqleDNias3FbPca5rTX65t0Q
+ 9wh04Hdr/90HiDgteYNuYvQmm+Sar7uGUSMY9OwdxT+OyWIq11Z1gpScMZn8UIw7kG1w
+ JCEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=HyojCuqfsBOAZqq1B3Z8c4xkKvvHwFaZYWxD/njvKF0=;
- b=2yksweQrmPvbV3NLvhg3kO2c3e3X+yRcwNRWvVpb90MUib2q/Egyg7IyRC9iH0eQvx
- kuUr9Xxiv/TNoTd6f7P5b6y0seGHC57dqp6/TbFzaXTocWzgBJNv7FWRAEGWD+eQmRWH
- rFswlVtq/0mRqzGzBSKefB6UYj5CYgY8QcaTSRg4VUm7Pha7RBhKZQDVSJwpS1yiPQM9
- J3DQExLw3Qe5JjyAbqT0r06v5U5iZRn4C1u0GXg2+L9IMNMNWDv/Ku4qv6A13E9BP4OU
- y1nHRpkgEFs7UWJ1m7Nndw4sAizp4TDKp+bbzT5tlZGk8I8LvV/1GC+JgmAGwpF42uk9
- oRbQ==
-X-Gm-Message-State: AOAM5311IC8cjuhhGc1L7aMzdB9dIxVrGv7qnTCs1ws4o6H8w+rR/5cG
- 5Wq1TGxaikzUBB2zOspmNTc7pkNqPWZtaTZBvV4=
-X-Google-Smtp-Source: ABdhPJzbpDiBDpjsgRW840JAosyCKrpI/PyCeaZRllJRjShFdLG1g1n30DZYxF4Uqu+C+Aw7mh579FTlysyxZ9nvkL8=
-X-Received: by 2002:a67:b005:: with SMTP id z5mr1149679vse.13.1632341070877;
- Wed, 22 Sep 2021 13:04:30 -0700 (PDT)
+ h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
+ :to; bh=ijKrByR1/KtEp2Ut8Wj0vMi00kBZm/A/r1gPwOEYZIg=;
+ b=HUCVSfn4RUZy5i2W6xZDpggagwClPDpPRYEhJv9lRhMGH1BpPQZy66PLY86MR2a+hg
+ MGqPpH3I8giIRlU3ioCy4cgsbfpi6t08/2FfdkI5XH5sUbSFz3/RP5QKAsnjPKtJqbbp
+ pC4NpF+rGX3ZqnxdMjlo49HfAkTb4ZC016MpAmKmTrKXINCR4vCB/gTYQwQRyYYQlZaE
+ xPDWOu8BAoL9TQuHQtUGcn/vTeRpjptBk3fSZuCzBxIvqrb7fQ+sMs9CJAI82Bqrc1++
+ N5dHoQ/9E7U4HkPtGR4dngq27cIDP7uvHLgykUD1kyqg1n9Zok6o+ZZeUCN3+qHHqDMp
+ H70A==
+X-Gm-Message-State: AOAM531Vfw2cLLIQjIPll7bQThCKid+Q+yYN4+DiWyxemFmdKwzDWLZ/
+ HhS3IeB72giSngRVZWa5gq+Y9izDK+4JqcyE5yI=
+X-Google-Smtp-Source: ABdhPJxijJDsaoqOM5766HnqohIaVrTgb3WuhLCWdq3LMr0IlF4yqzbUuYtTMEI1D+3NtsB4LmQtz+BO4kDtudKTTfs=
+X-Received: by 2002:a25:1345:: with SMTP id 66mr1234533ybt.502.1632343742412; 
+ Wed, 22 Sep 2021 13:49:02 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:ab0:23c2:0:0:0:0:0 with HTTP; Wed, 22 Sep 2021 13:04:30
- -0700 (PDT)
-From: DR JAMES TATUM <kennetha913@gmail.com>
-Date: Wed, 22 Sep 2021 13:04:30 -0700
-Message-ID: <CAE7JR-xWgSpi_0N8wTbuUBFURBoCV6SKuEVcfJHM-KZ4rAMFxw@mail.gmail.com>
-Subject: Urgent Reply
+Received: by 2002:a05:7110:8224:b0:f6:e178:3ae6 with HTTP; Wed, 22 Sep 2021
+ 13:49:02 -0700 (PDT)
+From: Aisha Al-Qaddafi <aisha.gdaff21@gmail.com>
+Date: Wed, 22 Sep 2021 21:49:02 +0100
+X-Google-Sender-Auth: w3OPmGT1nKYOaz1Qe-n_gAptvI4
+Message-ID: <CAP_P75Q5Fk7_Va3LOsanyydT+=_A1VLKZ_j8a_F5YkCnkCn6Lg@mail.gmail.com>
+Subject: My Dear Friend
 To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,94 +63,19 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jamestatum4444@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Attention Please
-
-
-I am DR JAMES TATUM a Manager with the CUMBERLAND NATIONAL BANK  I
-have an urgent and confidential business proposal for you. I got your
-information in my search for reliable partners who can assist me
-actualize this arrangement.
-
-PROPOSAL:
-
-On June 6, 1999, an American oil merchant and Contractor ALBERT SEN
-DALY made a numbered time Fixed) Deposit for twelve(12)calendar
-months, valued at US$28,000,000.00 (Twenty-Eight Million United states
-Dollars) in my branch.
-
-Upon maturity, I sent a routine notification to his forwarding address
-but got no reply. After a month, we sent a reminder and finally we
-discovered from his contract employers, that he died in Swissair Plane
-crash on Monday the 7th of September 2009 GMT 14:22 UK while they were
-flying from New York to Geneva.
-
-On further investigation, I found out that he died without making a
-WILL and all attempts to trace his NEXT OF KIN were fruitless. I
-therefore made further investigation and discovered that ALBERT SEN
-DALY  did not declare any KIN OR RELATIONS IN ALL HIS OFFICIAL
-DOCUMENTS, INCLUDING HER BANK DEPOSIT PAPER WORK IN MY BANK.
-
-This sum of US$28,000,000.00 is still sitting in my Bank and the
-interest is being rolled over with the principal sum at the end of
-each year. NO PERSON WILL EVER COME FORWARD TO CLAIM IT.  According to
-OUR FINANCIAL LAW, at the expiration of 25 (TWENTY FIVE) YEARS, the
-money will revert to the ownership of the GOVERNMENT OF THIS COUNTRY
-IF NOBODY APPLIES TO CLAIM THE FUND.
-
-Consequently, my proposal is that I WANT YOU TO STAND IN AS THE NEXT
-OF KIN/BENEFICIARY OF THIS FUND DEPOSIT SO THAT THE FUND CAN BE
-RELEASED TO YOU FOR OUR MUTUAL BENEFIT. If you will assist me, send
-down the following information=E2=80=99s. I will require them for operation=
-.
-
-1: YOUR FULL NAMES AND ADDRESS
-
-2: YOUR PRIVATE PHONE AND FAX NUMBERS
-
-3: YOUR AGE.
-
-5: YOUR OCCUPATION.
-
-FOR YOUR ASSISTANCE, YOU WILL BE ADEQUATELY COMPENSATED WITH ( 40%) OF
-THE TOTAL SUM. (55%) WILL BE MY OWN SHARE WHILE (5%) WILL BE SET ASIDE
-TO COVER ALL INCIDENTAL EXPENSES MADE BOTH AT HOME AND ABROAD BEFORE
-CONCLUSION OF THIS DEAL.
-
-THIS TRANSACTION IS 100% RISK FREE as all the paper works that will be
-required to effect this fund transfer will be obtained from the
-Federal ministry / high court of justice by an Attorney hear in
-Nigeria, and my position as the Branch Manager guarantees the
-successful execution of this arrangement.
-
-More so, ALL ASPECTS OF THIS TRANSACTION ( FROM THE FIRST TO THE LAST
-), WILL BE CONDUCTED LEGALLY in such a manner that it will not
-constitute a breach of the law either in your country or in mine.
-
-IF YOU ARE INTERESTED IN ASSISTING ME IN THIS TRANSACTION, PLEASE
-REPLY IMMEDIATELY FOR DETAILS. This has to do with fund transfer and
-consequently requires speed.
-
-Upon your response, I SHALL PROVIDE YOU WITH DETAILS ON HOW WE CAN
-SUCCESSFULLY ACTUALIZE THIS DEAL, I SHALL ALSO PROVIDE YOU WITH
-DOCUMENTS IN RELATION TO THIS FUND DEPOSIT THAT WILL HELP YOU
-UNDERSTAND THIS TRANSACTION BETTER.
-
-Please realize that the confidentiality of this arrangement must be
-maintained from now, and even after the successful completion of this
-deal. I WILL MEET WITH YOU IN YOUR COUNTRY FOR DISBURSEMENT AFTER THE
-FUND HAVE BEEN RELEASED TO YOU, AND ALSO DISCUSS INVESTMENT POTENTIALS
-AS I WILL LIKE TO INVEST IN YOUR COUNTRY WITH YOUR ASSISTANCE.
-
-Awaiting your urgent reply through this email address :()
-
-Thanks and God bless.
-
-
-
-Best regards,
-
-DR JAMES TATUM
+Assalamu alaikum,
+I came across your e-mail contact prior to a private search while in
+need of your assistance. I am Aisha Al-Qaddafi, the only biological,
+Daughter of Former President of Libya Col. Muammar Al-Qaddafi. Am a
+single Mother and a Widow with three Children. I have investment funds
+worth Twenty Seven Million Five Hundred Thousand United State Dollar
+($27.500.000.00 ) and i need a trusted  investment Manager/Partner
+because of my current refugee status, however, I am interested in you
+for investment project assistance in your country. If you are willing
+to handle this project on my behalf kindly reply urgently to enable me
+to provide you more information about the investment
+funds.
+Best Regards
