@@ -2,54 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9F83414A35
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Sep 2021 15:10:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0247D4150F0
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Sep 2021 22:04:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 750906EB93;
-	Wed, 22 Sep 2021 13:10:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3F5C26E049;
+	Wed, 22 Sep 2021 20:04:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com
- [IPv6:2607:f8b0:4864:20::1035])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DDF856EB94
+Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com
+ [IPv6:2607:f8b0:4864:20::e42])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EAE026E049
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Sep 2021 13:10:49 +0000 (UTC)
-Received: by mail-pj1-x1035.google.com with SMTP id dw14so2018414pjb.1
+ Wed, 22 Sep 2021 20:04:31 +0000 (UTC)
+Received: by mail-vs1-xe42.google.com with SMTP id l19so4226877vst.7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Sep 2021 06:10:49 -0700 (PDT)
+ Wed, 22 Sep 2021 13:04:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=gt626KzQ7mDMBjlWKh9vPEGTHzWkpDnlExUgDwQw4lA=;
- b=RMtqvQ4qPGdurCjOjKFDLeJeulIOceEaegrYv2tr/dbTd9eTt4WrtavS9TyxrCecOf
- Qgokh64eCUDX8cz4bi5ZbsuEk/YGx25WooM2/09FspBC2B7ZBZ+4ow19L0R3JAUQz6JR
- GR7RKoxxHMYfZR8rx6TeAGd95AMLb8W9vjShheEajTsndsmp9c8GlOWbl9JhARlRhOOm
- +4DGPHuYHLu7O17O/kwdTxznTP9KUwu/Jek8cH99j866Kh1OOQsVNBZAnluFKM+wp31F
- oMtmVcw2aoucJhPCUzVdnTyQPJFuthOnS247/zWP7cLOlwEEfBGLbhisWl7NTccPuNE2
- Xkww==
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=HyojCuqfsBOAZqq1B3Z8c4xkKvvHwFaZYWxD/njvKF0=;
+ b=kSp2EWnLyHI1QZrivQXiPiYXnToYsXjg9i7drcb5YYfZVGctAmCHKSUwIyGEZgSurK
+ mYreXbzPGT3ejECtvJBUhVdRg4UNgdAAyl9NWmQNUHENGLIQhZQMynjP9M7txrHnq4aQ
+ jbvr7lK1wFPsv+k6jyiKB9iK6PLjv+ez/fLqABYZHNweF+d7M7898jCQlExV2vFmmjjL
+ lmw3g5ZojSTXr/suoX2dUMgrzdiysV6i07y110NXW/i+gZ6SkgVgAtn+A5J9Oua487S+
+ PBZkBQRVPTFIB3J0XpmAWR++pw4V10DCSIGqwN2chge4OiVf5rw6T6ZKkN6gu8ES5Gbn
+ 84vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=gt626KzQ7mDMBjlWKh9vPEGTHzWkpDnlExUgDwQw4lA=;
- b=VftDkkB00nitBvYpQbNmDhX7DWUkc513VXi9RQK4P8Doczka2G7ZB8ZYHIUK3GAGZD
- rx+TS9fRg/XIvfn5oh4nJm7WdYLkP00tLeERl8X8Mpi+CGRym57fEQS2G4r0LGomzqSk
- H3SeAsZjze9HwpOioUJ8Y+PFdGCDi6/GwGilBlkn62q4QJLSFuxvfrE7mRxp8aK5Pf9G
- mrWSF1bSf3m29z2DMsl3+/qUEHr+Bkz8HYnkytC5rF/fxCta54opbuCs4LiDZC/Gro1+
- AnmIIwPz/Xe24W0Gyr2HdpvmD3kFSioBmGOb/Xd2oj9lyRnmClZ/1asINxA4f9MDXFOA
- zhpg==
-X-Gm-Message-State: AOAM533pe6wA6j5x1az0wCk8uJMKQh50T+T8uLlrh/xVFPkYR37iksON
- jDxgkj+lGOWAab4vd8vWqLjFKg8AjGR+ZmxxC/g=
-X-Google-Smtp-Source: ABdhPJy8cF/BJA2g8tbJWckap08GmHk/rxPo7VzINvMC2T0TwUk3FDvNRE+9VbvHKsZuu4xDfdkaEaq0Kvyf7NUBHpY=
-X-Received: by 2002:a17:90b:3ec3:: with SMTP id
- rm3mr11226925pjb.70.1632316249237; 
- Wed, 22 Sep 2021 06:10:49 -0700 (PDT)
+ :subject:to:content-transfer-encoding;
+ bh=HyojCuqfsBOAZqq1B3Z8c4xkKvvHwFaZYWxD/njvKF0=;
+ b=2yksweQrmPvbV3NLvhg3kO2c3e3X+yRcwNRWvVpb90MUib2q/Egyg7IyRC9iH0eQvx
+ kuUr9Xxiv/TNoTd6f7P5b6y0seGHC57dqp6/TbFzaXTocWzgBJNv7FWRAEGWD+eQmRWH
+ rFswlVtq/0mRqzGzBSKefB6UYj5CYgY8QcaTSRg4VUm7Pha7RBhKZQDVSJwpS1yiPQM9
+ J3DQExLw3Qe5JjyAbqT0r06v5U5iZRn4C1u0GXg2+L9IMNMNWDv/Ku4qv6A13E9BP4OU
+ y1nHRpkgEFs7UWJ1m7Nndw4sAizp4TDKp+bbzT5tlZGk8I8LvV/1GC+JgmAGwpF42uk9
+ oRbQ==
+X-Gm-Message-State: AOAM5311IC8cjuhhGc1L7aMzdB9dIxVrGv7qnTCs1ws4o6H8w+rR/5cG
+ 5Wq1TGxaikzUBB2zOspmNTc7pkNqPWZtaTZBvV4=
+X-Google-Smtp-Source: ABdhPJzbpDiBDpjsgRW840JAosyCKrpI/PyCeaZRllJRjShFdLG1g1n30DZYxF4Uqu+C+Aw7mh579FTlysyxZ9nvkL8=
+X-Received: by 2002:a67:b005:: with SMTP id z5mr1149679vse.13.1632341070877;
+ Wed, 22 Sep 2021 13:04:30 -0700 (PDT)
 MIME-Version: 1.0
-From: "Mrs. Barbara Wolniakowski" <donkorr189@gmail.com>
-Date: Wed, 22 Sep 2021 06:11:54 -0700
-Message-ID: <CANZUN7YTdEnjgY=qcSVUi2i4_5we0D-a-nN30zVOV7mBzr6CLg@mail.gmail.com>
-Subject: Greetings From My Heart.
+Received: by 2002:ab0:23c2:0:0:0:0:0 with HTTP; Wed, 22 Sep 2021 13:04:30
+ -0700 (PDT)
+From: DR JAMES TATUM <kennetha913@gmail.com>
+Date: Wed, 22 Sep 2021 13:04:30 -0700
+Message-ID: <CAE7JR-xWgSpi_0N8wTbuUBFURBoCV6SKuEVcfJHM-KZ4rAMFxw@mail.gmail.com>
+Subject: Urgent Reply
 To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000326f6405cc953e27"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,85 +65,94 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: barbarawolniakowski@hotmail.com
+Reply-To: jamestatum4444@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000326f6405cc953e27
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Attention Please
 
-Dear Beloved Friend,
 
-My name is Mrs. Barbara J. Wolniakowski (citizen of Oklahoma, USA), widow
-to the late Dr. Jean Wolniakowski, former owner of Petroleum & Gas Company,
-based in Kuwait. I am suffering from long time Cancer of the Lungs and
-leukemia. From all indications my condition is really deteriorating and
-it's quite obvious that I won't live more than 6 months according to my
-doctors. This is because the cancer stage has gotten to a very bad stage. I
-don't want your pity but I need your trust. My late husband died early last
-year from Heart attack, and during the period of our marriage we couldn't
-produce any children. My late husband was very wealthy and after his death,
-I inherited all his businesses and wealth. The doctor has advised me that I
-will not live for more than 6 months, so I have now decided to spread all
-my wealth, to contribute mainly to the development of research and charity
-in Africa, America, Asia and Europe. I am sorry if you are embarrassed by
-my mail. I found your e-mail address in the web directory, and I have
-decided to contact you, but if for any reason you find this mail offensive,
-you can ignore it and please accept my apology.  Before my late husband
-died he was major oil tycoon in Kuwait, also deal in Cocoa export from
-Africa and had a fund deposit at the bank in the sum of Seven Million Five
-Hundred Thousand US Dollars (US$7.5 million) in a fixed deposit some years
-ago, that=E2=80=99s all I have left now aside from the cash I have mapped o=
-ut here
-for my treatment till I pass on.
+I am DR JAMES TATUM a Manager with the CUMBERLAND NATIONAL BANK  I
+have an urgent and confidential business proposal for you. I got your
+information in my search for reliable partners who can assist me
+actualize this arrangement.
 
-I need you to collect these funds and distribute it yourself for charity to
-help the orphan kids, homeless and retired old people, handicapped persons,
-refugees etc. so that when I die my soul can rest in peace. The funds will
-be entirely in your hands and management. 20% of this money will be for
-your time and effort, while 80% goes to charity. You can get back to me at
-your earliest convenience through my email: barbarawolniakowski@hotmail.com
+PROPOSAL:
 
-Remain blessed,
-Mrs. Barbara Wolniakowski
-(United States of America)
-Email: barbarawolniakowski@hotmail.com
+On June 6, 1999, an American oil merchant and Contractor ALBERT SEN
+DALY made a numbered time Fixed) Deposit for twelve(12)calendar
+months, valued at US$28,000,000.00 (Twenty-Eight Million United states
+Dollars) in my branch.
 
---000000000000326f6405cc953e27
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Upon maturity, I sent a routine notification to his forwarding address
+but got no reply. After a month, we sent a reminder and finally we
+discovered from his contract employers, that he died in Swissair Plane
+crash on Monday the 7th of September 2009 GMT 14:22 UK while they were
+flying from New York to Geneva.
 
-<div dir=3D"ltr">Dear Beloved Friend,<br><br>My name is Mrs. Barbara J. Wol=
-niakowski (citizen of Oklahoma, USA), widow to the late Dr. Jean Wolniakows=
-ki, former owner of Petroleum &amp; Gas Company, based in Kuwait. I am suff=
-ering from long time Cancer of the Lungs and leukemia. From all indications=
- my condition is really deteriorating and it&#39;s quite obvious that I won=
-&#39;t live more than 6 months according to my doctors. This is because the=
- cancer stage has gotten to a very bad stage. I don&#39;t want your pity bu=
-t I need your trust. My late husband died early last year from Heart attack=
-, and during the period of our marriage we couldn&#39;t produce any childre=
-n. My late husband was very wealthy and after his death, I inherited all hi=
-s businesses and wealth. The doctor has advised me that I will not live for=
- more than 6 months, so I have now decided to spread all my wealth, to cont=
-ribute mainly to the development of research and charity in Africa, America=
-, Asia and Europe. I am sorry if you are embarrassed by my mail. I found yo=
-ur e-mail address in the web directory, and I have decided to contact you, =
-but if for any reason you find this mail offensive, you can ignore it and p=
-lease accept my apology.=C2=A0 Before my late husband died he was major oil=
- tycoon in Kuwait, also deal in Cocoa export from Africa and had a fund dep=
-osit at the bank in the sum of Seven Million Five Hundred Thousand US Dolla=
-rs (US$7.5 million) in a fixed deposit some years ago, that=E2=80=99s all I=
- have left now aside from the cash I have mapped out here for my treatment =
-till I pass on.<br><br>I need you to collect these funds and distribute it =
-yourself for charity to help the orphan kids, homeless and retired old peop=
-le, handicapped persons, refugees etc. so that when I die my soul can rest =
-in peace. The funds will be entirely in your hands and management. 20% of t=
-his money will be for your time and effort, while 80% goes to charity. You =
-can get back to me at your earliest convenience through my email: <a href=
-=3D"mailto:barbarawolniakowski@hotmail.com">barbarawolniakowski@hotmail.com=
-</a><br><br>Remain blessed,<br>Mrs. Barbara Wolniakowski<br>(United States =
-of America)<br>Email: <a href=3D"mailto:barbarawolniakowski@hotmail.com">ba=
-rbarawolniakowski@hotmail.com</a><br></div>
+On further investigation, I found out that he died without making a
+WILL and all attempts to trace his NEXT OF KIN were fruitless. I
+therefore made further investigation and discovered that ALBERT SEN
+DALY  did not declare any KIN OR RELATIONS IN ALL HIS OFFICIAL
+DOCUMENTS, INCLUDING HER BANK DEPOSIT PAPER WORK IN MY BANK.
 
---000000000000326f6405cc953e27--
+This sum of US$28,000,000.00 is still sitting in my Bank and the
+interest is being rolled over with the principal sum at the end of
+each year. NO PERSON WILL EVER COME FORWARD TO CLAIM IT.  According to
+OUR FINANCIAL LAW, at the expiration of 25 (TWENTY FIVE) YEARS, the
+money will revert to the ownership of the GOVERNMENT OF THIS COUNTRY
+IF NOBODY APPLIES TO CLAIM THE FUND.
+
+Consequently, my proposal is that I WANT YOU TO STAND IN AS THE NEXT
+OF KIN/BENEFICIARY OF THIS FUND DEPOSIT SO THAT THE FUND CAN BE
+RELEASED TO YOU FOR OUR MUTUAL BENEFIT. If you will assist me, send
+down the following information=E2=80=99s. I will require them for operation=
+.
+
+1: YOUR FULL NAMES AND ADDRESS
+
+2: YOUR PRIVATE PHONE AND FAX NUMBERS
+
+3: YOUR AGE.
+
+5: YOUR OCCUPATION.
+
+FOR YOUR ASSISTANCE, YOU WILL BE ADEQUATELY COMPENSATED WITH ( 40%) OF
+THE TOTAL SUM. (55%) WILL BE MY OWN SHARE WHILE (5%) WILL BE SET ASIDE
+TO COVER ALL INCIDENTAL EXPENSES MADE BOTH AT HOME AND ABROAD BEFORE
+CONCLUSION OF THIS DEAL.
+
+THIS TRANSACTION IS 100% RISK FREE as all the paper works that will be
+required to effect this fund transfer will be obtained from the
+Federal ministry / high court of justice by an Attorney hear in
+Nigeria, and my position as the Branch Manager guarantees the
+successful execution of this arrangement.
+
+More so, ALL ASPECTS OF THIS TRANSACTION ( FROM THE FIRST TO THE LAST
+), WILL BE CONDUCTED LEGALLY in such a manner that it will not
+constitute a breach of the law either in your country or in mine.
+
+IF YOU ARE INTERESTED IN ASSISTING ME IN THIS TRANSACTION, PLEASE
+REPLY IMMEDIATELY FOR DETAILS. This has to do with fund transfer and
+consequently requires speed.
+
+Upon your response, I SHALL PROVIDE YOU WITH DETAILS ON HOW WE CAN
+SUCCESSFULLY ACTUALIZE THIS DEAL, I SHALL ALSO PROVIDE YOU WITH
+DOCUMENTS IN RELATION TO THIS FUND DEPOSIT THAT WILL HELP YOU
+UNDERSTAND THIS TRANSACTION BETTER.
+
+Please realize that the confidentiality of this arrangement must be
+maintained from now, and even after the successful completion of this
+deal. I WILL MEET WITH YOU IN YOUR COUNTRY FOR DISBURSEMENT AFTER THE
+FUND HAVE BEEN RELEASED TO YOU, AND ALSO DISCUSS INVESTMENT POTENTIALS
+AS I WILL LIKE TO INVEST IN YOUR COUNTRY WITH YOUR ASSISTANCE.
+
+Awaiting your urgent reply through this email address :()
+
+Thanks and God bless.
+
+
+
+Best regards,
+
+DR JAMES TATUM
