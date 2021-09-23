@@ -1,56 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EECB541519B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Sep 2021 22:49:05 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6CCB4159AD
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Sep 2021 10:01:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9A4D66EC46;
-	Wed, 22 Sep 2021 20:49:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 10A0A6ECF9;
+	Thu, 23 Sep 2021 08:01:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-x741.google.com (mail-qk1-x741.google.com
- [IPv6:2607:f8b0:4864:20::741])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 467326EC74
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Sep 2021 20:49:03 +0000 (UTC)
-Received: by mail-qk1-x741.google.com with SMTP id t4so14225323qkb.9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Sep 2021 13:49:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to;
- bh=ijKrByR1/KtEp2Ut8Wj0vMi00kBZm/A/r1gPwOEYZIg=;
- b=HgFbMGsOZCai/4tbOerlWfdO8DybuOJw7RZz6ZrdK2h8oWoZpGwfrk8AXH8ic15zZ1
- AZh04wyt3i4Dkft+vgYMcoepLT++iqFfIEAQX0pBz2OAYkU22MN8kbl0U2FH14FZK9ar
- sZyn8dzx4U+7mZL4HuH8yX9MkyvnDbRDJwO5wqIPPh24TnRf1r8gNK9BBjt09gQKoYEW
- 1o6eGK9gT9bJHSK8UjT0L1Y2eGwkXI6lfyV6031QZkL2JqleDNias3FbPca5rTX65t0Q
- 9wh04Hdr/90HiDgteYNuYvQmm+Sar7uGUSMY9OwdxT+OyWIq11Z1gpScMZn8UIw7kG1w
- JCEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to; bh=ijKrByR1/KtEp2Ut8Wj0vMi00kBZm/A/r1gPwOEYZIg=;
- b=HUCVSfn4RUZy5i2W6xZDpggagwClPDpPRYEhJv9lRhMGH1BpPQZy66PLY86MR2a+hg
- MGqPpH3I8giIRlU3ioCy4cgsbfpi6t08/2FfdkI5XH5sUbSFz3/RP5QKAsnjPKtJqbbp
- pC4NpF+rGX3ZqnxdMjlo49HfAkTb4ZC016MpAmKmTrKXINCR4vCB/gTYQwQRyYYQlZaE
- xPDWOu8BAoL9TQuHQtUGcn/vTeRpjptBk3fSZuCzBxIvqrb7fQ+sMs9CJAI82Bqrc1++
- N5dHoQ/9E7U4HkPtGR4dngq27cIDP7uvHLgykUD1kyqg1n9Zok6o+ZZeUCN3+qHHqDMp
- H70A==
-X-Gm-Message-State: AOAM531Vfw2cLLIQjIPll7bQThCKid+Q+yYN4+DiWyxemFmdKwzDWLZ/
- HhS3IeB72giSngRVZWa5gq+Y9izDK+4JqcyE5yI=
-X-Google-Smtp-Source: ABdhPJxijJDsaoqOM5766HnqohIaVrTgb3WuhLCWdq3LMr0IlF4yqzbUuYtTMEI1D+3NtsB4LmQtz+BO4kDtudKTTfs=
-X-Received: by 2002:a25:1345:: with SMTP id 66mr1234533ybt.502.1632343742412; 
- Wed, 22 Sep 2021 13:49:02 -0700 (PDT)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D51DB6ECF6;
+ Thu, 23 Sep 2021 08:01:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10115"; a="246237859"
+X-IronPort-AV: E=Sophos;i="5.85,316,1624345200"; 
+ d="asc'?scan'208";a="246237859"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Sep 2021 01:01:06 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,316,1624345200"; 
+ d="asc'?scan'208";a="550748427"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
+ by FMSMGA003.fm.intel.com with ESMTP; 23 Sep 2021 01:01:03 -0700
+Date: Thu, 23 Sep 2021 15:36:59 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Jim Cromie <jim.cromie@gmail.com>
+Cc: jbaron@akamai.com, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, daniel@ffwll.ch
+Subject: Re: [PATCH v8 10/16] i915/gvt: remove spaces in pr_debug "gvt:
+ core:" etc prefixes
+Message-ID: <20210923073659.GZ14689@zhen-hp.sh.intel.com>
+References: <20210915163957.2949166-1-jim.cromie@gmail.com>
+ <20210915163957.2949166-11-jim.cromie@gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a05:7110:8224:b0:f6:e178:3ae6 with HTTP; Wed, 22 Sep 2021
- 13:49:02 -0700 (PDT)
-From: Aisha Al-Qaddafi <aisha.gdaff21@gmail.com>
-Date: Wed, 22 Sep 2021 21:49:02 +0100
-X-Google-Sender-Auth: w3OPmGT1nKYOaz1Qe-n_gAptvI4
-Message-ID: <CAP_P75Q5Fk7_Va3LOsanyydT+=_A1VLKZ_j8a_F5YkCnkCn6Lg@mail.gmail.com>
-Subject: My Dear Friend
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="Bu8it7iiRSEf40bY"
+Content-Disposition: inline
+In-Reply-To: <20210915163957.2949166-11-jim.cromie@gmail.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,19 +52,114 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Assalamu alaikum,
-I came across your e-mail contact prior to a private search while in
-need of your assistance. I am Aisha Al-Qaddafi, the only biological,
-Daughter of Former President of Libya Col. Muammar Al-Qaddafi. Am a
-single Mother and a Widow with three Children. I have investment funds
-worth Twenty Seven Million Five Hundred Thousand United State Dollar
-($27.500.000.00 ) and i need a trusted  investment Manager/Partner
-because of my current refugee status, however, I am interested in you
-for investment project assistance in your country. If you are willing
-to handle this project on my behalf kindly reply urgently to enable me
-to provide you more information about the investment
-funds.
-Best Regards
+
+--Bu8it7iiRSEf40bY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2021.09.15 10:39:51 -0600, Jim Cromie wrote:
+> Taking embedded spaces out of existing prefixes makes them better
+> class-prefixes; simplifying the extra quoting needed otherwise:
+>=20
+>   $> echo format "^gvt: core:" +p >control
+>=20
+> Dropping the internal spaces means any trailing space in a query will
+> more clearly terminate the prefix being searched for.
+>=20
+> Consider a generic drm-debug example:
+>=20
+>   # turn off ATOMIC reports
+>   echo format "^drm:atomic: " -p > control
+>=20
+>   # turn off all ATOMIC:* reports, including any sub-categories
+>   echo format "^drm:atomic:" -p > control
+>=20
+>   # turn on ATOMIC:FAIL: reports
+>   echo format "^drm:atomic:fail: " +p > control
+>=20
+> Removing embedded spaces in the class-prefixes simplifies the
+> corresponding match-prefix.  This means that "quoted" match-prefixes
+> are only needed when the trailing space is desired, in order to
+> exclude explicitly sub-categorized pr-debugs; in this example,
+> "drm:atomic:fail:".
+>=20
+> RFC: maybe the prefix catenation should paste in the " " class-prefix
+> terminator explicitly.  A pr_debug_() flavor could exclude the " ",
+> allowing ad-hoc sub-categorization by appending for example, "fail:"
+> to "drm:atomic:" without the default " " insertion.
+>=20
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+> v8:
+> . fix patchwork CI warning
+> ---
+>  drivers/gpu/drm/i915/gvt/debug.h | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/debug.h b/drivers/gpu/drm/i915/gvt/=
+debug.h
+> index c6027125c1ec..bbecc279e077 100644
+> --- a/drivers/gpu/drm/i915/gvt/debug.h
+> +++ b/drivers/gpu/drm/i915/gvt/debug.h
+> @@ -36,30 +36,30 @@ do {									\
+>  } while (0)
+> =20
+>  #define gvt_dbg_core(fmt, args...) \
+> -	pr_debug("gvt: core: "fmt, ##args)
+> +	pr_debug("gvt:core: " fmt, ##args)
+> =20
+>  #define gvt_dbg_irq(fmt, args...) \
+> -	pr_debug("gvt: irq: "fmt, ##args)
+> +	pr_debug("gvt:irq: " fmt, ##args)
+> =20
+>  #define gvt_dbg_mm(fmt, args...) \
+> -	pr_debug("gvt: mm: "fmt, ##args)
+> +	pr_debug("gvt:mm: " fmt, ##args)
+> =20
+>  #define gvt_dbg_mmio(fmt, args...) \
+> -	pr_debug("gvt: mmio: "fmt, ##args)
+> +	pr_debug("gvt:mmio: " fmt, ##args)
+> =20
+>  #define gvt_dbg_dpy(fmt, args...) \
+> -	pr_debug("gvt: dpy: "fmt, ##args)
+> +	pr_debug("gvt:dpy: " fmt, ##args)
+> =20
+>  #define gvt_dbg_el(fmt, args...) \
+> -	pr_debug("gvt: el: "fmt, ##args)
+> +	pr_debug("gvt:el: " fmt, ##args)
+> =20
+>  #define gvt_dbg_sched(fmt, args...) \
+> -	pr_debug("gvt: sched: "fmt, ##args)
+> +	pr_debug("gvt:sched: " fmt, ##args)
+> =20
+>  #define gvt_dbg_render(fmt, args...) \
+> -	pr_debug("gvt: render: "fmt, ##args)
+> +	pr_debug("gvt:render: " fmt, ##args)
+> =20
+>  #define gvt_dbg_cmd(fmt, args...) \
+> -	pr_debug("gvt: cmd: "fmt, ##args)
+> +	pr_debug("gvt:cmd: " fmt, ##args)
+> =20
+>  #endif
+> --=20
+
+Looks good to me. Thanks!
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+--Bu8it7iiRSEf40bY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYUwulgAKCRCxBBozTXgY
+J8qzAJ9cfZulZLyzqg5hhI9G1fLDqKMDlQCgi+YapDkpvZuzya6guQeaCyf+Nps=
+=+ZKA
+-----END PGP SIGNATURE-----
+
+--Bu8it7iiRSEf40bY--
