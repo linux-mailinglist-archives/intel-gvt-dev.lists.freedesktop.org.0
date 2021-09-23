@@ -2,44 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6CCB4159AD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Sep 2021 10:01:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94A2E4169AC
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Sep 2021 03:55:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 10A0A6ECF9;
-	Thu, 23 Sep 2021 08:01:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 21CA86EDBF;
+	Fri, 24 Sep 2021 01:55:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D51DB6ECF6;
- Thu, 23 Sep 2021 08:01:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10115"; a="246237859"
-X-IronPort-AV: E=Sophos;i="5.85,316,1624345200"; 
- d="asc'?scan'208";a="246237859"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Sep 2021 01:01:06 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,316,1624345200"; 
- d="asc'?scan'208";a="550748427"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.143])
- by FMSMGA003.fm.intel.com with ESMTP; 23 Sep 2021 01:01:03 -0700
-Date: Thu, 23 Sep 2021 15:36:59 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Jim Cromie <jim.cromie@gmail.com>
-Cc: jbaron@akamai.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, daniel@ffwll.ch
-Subject: Re: [PATCH v8 10/16] i915/gvt: remove spaces in pr_debug "gvt:
- core:" etc prefixes
-Message-ID: <20210923073659.GZ14689@zhen-hp.sh.intel.com>
-References: <20210915163957.2949166-1-jim.cromie@gmail.com>
- <20210915163957.2949166-11-jim.cromie@gmail.com>
+X-Greylist: delayed 351 seconds by postgrey-1.36 at gabe;
+ Fri, 24 Sep 2021 01:55:17 UTC
+Received: from NORTHDAKOTA.PERIMETER.FEDERATIONIT.ORG (EDGE.UJAFEDNJ.ORG
+ [66.246.118.218])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6F50B6EDBF;
+ Fri, 24 Sep 2021 01:55:17 +0000 (UTC)
+Received: from User (23.175.48.206) by mail.federationit.org (10.100.252.187)
+ with Microsoft SMTP Server id 14.3.498.0;
+ Thu, 23 Sep 2021 11:40:49 -0400
+From: ALBERT FORD <jmsbfrn@ownmail.net>
+Subject: RE:REQUEST FOR INHERITANCE!!!
+Date: Thu, 23 Sep 2021 06:40:49 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="Bu8it7iiRSEf40bY"
-Content-Disposition: inline
-In-Reply-To: <20210915163957.2949166-11-jim.cromie@gmail.com>
+Content-Type: text/plain; charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <bdd1e210-056d-4317-a4d4-bae87519c235@NORTHDAKOTA.PERIMETER.FEDERATIONIT.ORG>
+To: Undisclosed recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,114 +42,28 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Reply-To: fordalbert155@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---Bu8it7iiRSEf40bY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+WHATSAPP:+44 7415 128 234
 
-On 2021.09.15 10:39:51 -0600, Jim Cromie wrote:
-> Taking embedded spaces out of existing prefixes makes them better
-> class-prefixes; simplifying the extra quoting needed otherwise:
->=20
->   $> echo format "^gvt: core:" +p >control
->=20
-> Dropping the internal spaces means any trailing space in a query will
-> more clearly terminate the prefix being searched for.
->=20
-> Consider a generic drm-debug example:
->=20
->   # turn off ATOMIC reports
->   echo format "^drm:atomic: " -p > control
->=20
->   # turn off all ATOMIC:* reports, including any sub-categories
->   echo format "^drm:atomic:" -p > control
->=20
->   # turn on ATOMIC:FAIL: reports
->   echo format "^drm:atomic:fail: " +p > control
->=20
-> Removing embedded spaces in the class-prefixes simplifies the
-> corresponding match-prefix.  This means that "quoted" match-prefixes
-> are only needed when the trailing space is desired, in order to
-> exclude explicitly sub-categorized pr-debugs; in this example,
-> "drm:atomic:fail:".
->=20
-> RFC: maybe the prefix catenation should paste in the " " class-prefix
-> terminator explicitly.  A pr_debug_() flavor could exclude the " ",
-> allowing ad-hoc sub-categorization by appending for example, "fail:"
-> to "drm:atomic:" without the default " " insertion.
->=20
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-> ---
-> v8:
-> . fix patchwork CI warning
-> ---
->  drivers/gpu/drm/i915/gvt/debug.h | 18 +++++++++---------
->  1 file changed, 9 insertions(+), 9 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/debug.h b/drivers/gpu/drm/i915/gvt/=
-debug.h
-> index c6027125c1ec..bbecc279e077 100644
-> --- a/drivers/gpu/drm/i915/gvt/debug.h
-> +++ b/drivers/gpu/drm/i915/gvt/debug.h
-> @@ -36,30 +36,30 @@ do {									\
->  } while (0)
-> =20
->  #define gvt_dbg_core(fmt, args...) \
-> -	pr_debug("gvt: core: "fmt, ##args)
-> +	pr_debug("gvt:core: " fmt, ##args)
-> =20
->  #define gvt_dbg_irq(fmt, args...) \
-> -	pr_debug("gvt: irq: "fmt, ##args)
-> +	pr_debug("gvt:irq: " fmt, ##args)
-> =20
->  #define gvt_dbg_mm(fmt, args...) \
-> -	pr_debug("gvt: mm: "fmt, ##args)
-> +	pr_debug("gvt:mm: " fmt, ##args)
-> =20
->  #define gvt_dbg_mmio(fmt, args...) \
-> -	pr_debug("gvt: mmio: "fmt, ##args)
-> +	pr_debug("gvt:mmio: " fmt, ##args)
-> =20
->  #define gvt_dbg_dpy(fmt, args...) \
-> -	pr_debug("gvt: dpy: "fmt, ##args)
-> +	pr_debug("gvt:dpy: " fmt, ##args)
-> =20
->  #define gvt_dbg_el(fmt, args...) \
-> -	pr_debug("gvt: el: "fmt, ##args)
-> +	pr_debug("gvt:el: " fmt, ##args)
-> =20
->  #define gvt_dbg_sched(fmt, args...) \
-> -	pr_debug("gvt: sched: "fmt, ##args)
-> +	pr_debug("gvt:sched: " fmt, ##args)
-> =20
->  #define gvt_dbg_render(fmt, args...) \
-> -	pr_debug("gvt: render: "fmt, ##args)
-> +	pr_debug("gvt:render: " fmt, ##args)
-> =20
->  #define gvt_dbg_cmd(fmt, args...) \
-> -	pr_debug("gvt: cmd: "fmt, ##args)
-> +	pr_debug("gvt:cmd: " fmt, ##args)
-> =20
->  #endif
-> --=20
+Dear Friend,
 
-Looks good to me. Thanks!
+I am sorry for intruding on your privacy without prior notice.
+My name is Albert Ford, a staff of Standard Chartered Bank, London. As
+an account Officer, I am privy to the particulars of an esteem
+customer  who died intestate (without Will).
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+ I need a very reliable person whose assistance, name and account can be used to perfect the
+WILL and claim the money as inheritance Upon the successful claim of
+the  INHERITANCE, it will be shared in an agreed percentage between
+the two of us.This is the reason why I am contacting you .
 
---Bu8it7iiRSEf40bY
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+Please,indicate your readiness willingness by contacting me through
+my private email address above for more information and modalities.
+Thanks,
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYUwulgAKCRCxBBozTXgY
-J8qzAJ9cfZulZLyzqg5hhI9G1fLDqKMDlQCgi+YapDkpvZuzya6guQeaCyf+Nps=
-=+ZKA
------END PGP SIGNATURE-----
-
---Bu8it7iiRSEf40bY--
+Mr. Albert Ford
