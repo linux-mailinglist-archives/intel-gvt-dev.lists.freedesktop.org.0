@@ -2,104 +2,49 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3820417C71
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Sep 2021 22:45:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 757E8417DF5
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Sep 2021 00:56:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 426556E24D;
-	Fri, 24 Sep 2021 20:45:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 698576EE94;
+	Fri, 24 Sep 2021 22:56:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0FFE86E250;
- Fri, 24 Sep 2021 20:45:17 +0000 (UTC)
-Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 18OHugnb012036; 
- Fri, 24 Sep 2021 16:45:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=Qbl1jgNBLU/RW3f0mOWsJN8VIAmFbigzPQMZsq4WgSU=;
- b=qvx2HmJQc+aX1Sbsb69NPsWd/qXBwlSftEdazgLK+AGDFPVCl3ROr0iFAGOaTC69W8aM
- 40ll+caY4/aqk+XFkIJm0XAr8Dv2pGwJhYwsW6sGNgr/TV50MBW9LDQkIfGZepPi+i90
- PCY8DWTSbHhSuWMRiZSwBYCXzhDoUiqiPn29p2dEikZaCgg7BxjstpUzEDekNa37Hl2T
- lSrXMk7FbthWIyQ5PutjBkfDtJmPOkyH/zkWJUFBx4H1gbDk+oKSDjExh117qsYNbnA6
- OhDnxYrJv+MQRVlFX0JW/sGocG5+KSFX6l5iqkCsV/qq1TikH/OAK0ZYL7jj8mvTy1CQ aw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3b93sths8e-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 24 Sep 2021 16:45:14 -0400
-Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 18OJlME8020899;
- Fri, 24 Sep 2021 16:45:13 -0400
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.26])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3b93sths7u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 24 Sep 2021 16:45:13 -0400
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
- by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 18OKS806002744;
- Fri, 24 Sep 2021 20:45:12 GMT
-Received: from b03cxnp08025.gho.boulder.ibm.com
- (b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
- by ppma04wdc.us.ibm.com with ESMTP id 3b93g9mnhv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 24 Sep 2021 20:45:12 +0000
-Received: from b03ledav001.gho.boulder.ibm.com
- (b03ledav001.gho.boulder.ibm.com [9.17.130.232])
- by b03cxnp08025.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 18OKjAEV51118436
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 24 Sep 2021 20:45:10 GMT
-Received: from b03ledav001.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A2A1F6E058;
- Fri, 24 Sep 2021 20:45:10 +0000 (GMT)
-Received: from b03ledav001.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7376A6E05B;
- Fri, 24 Sep 2021 20:45:03 +0000 (GMT)
-Received: from farman-thinkpad-t470p (unknown [9.211.34.14])
- by b03ledav001.gho.boulder.ibm.com (Postfix) with ESMTP;
- Fri, 24 Sep 2021 20:45:03 +0000 (GMT)
-Message-ID: <f887a563e688057d6759e6de65d480326f502331.camel@linux.ibm.com>
-Subject: Re: [PATCH v2 7/9] vfio/ccw: Remove private->mdev
-From: Eric Farman <farman@linux.ibm.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>, Tony
- Krowiak <akrowiak@linux.ibm.com>, Alex Williamson
- <alex.williamson@redhat.com>, Christian Borntraeger
- <borntraeger@de.ibm.com>, Cornelia Huck <cohuck@redhat.com>, Daniel Vetter
- <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Harald Freudenberger
- <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+Received: from smtp-relay-canonical-1.canonical.com
+ (smtp-relay-canonical-1.canonical.com [185.125.188.121])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 891D16EE93;
+ Fri, 24 Sep 2021 22:56:25 +0000 (UTC)
+Received: from localhost (1.general.cking.uk.vpn [10.172.193.212])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
+ SHA256) (No client certificate requested)
+ by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id C75A53F357; 
+ Fri, 24 Sep 2021 22:56:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1632524183;
+ bh=OarWx6xOy/KHU1UmciEyVQmDM6Ujt+aKXAOoZfMNx6Y=;
+ h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Type;
+ b=ScxhRnmwaIAiTeeaPGZK5QhVHpE6R2iy9iSxeNlafTd80IpC9RIZbxxaHtyb9WXgL
+ cM0Xl/9G/SSZuTJfc6+dlujXZXGd5wK28uqbwOYvACd/JfpbWig0sjZNJr7D6ltQgn
+ 4rSqU71ZlgAO4Np8RQd5/uj4wa0BciaPgZB9OQfpEpPJ45jRjS6UbqmEIKQTde4291
+ 7ipnMlIiGSo6qDJxzhdSRwnyLcTC8NcXo+vI01LqzazJZC1E4F77BEzJjq258wz2tE
+ j1QVi7t/gVtQHM0W28nMNkNdg+lzcPQ0hzGYZItHszdhzbrBkr6AIe3qnLknbfVtXU
+ 0VYor9CeXJ1YQ==
+From: Colin King <colin.king@canonical.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>,
  Jani Nikula <jani.nikula@linux.intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Joonas
- Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org, Kirti
- Wankhede <kwankhede@nvidia.com>, linux-s390@vger.kernel.org, Matthew
- Rosato <mjrosato@linux.ibm.com>, Peter Oberparleiter
- <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi
- <rodrigo.vivi@intel.com>, Vineeth Vijayan <vneethv@linux.ibm.com>, Zhenyu
- Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Date: Fri, 24 Sep 2021 16:45:02 -0400
-In-Reply-To: <7-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
-References: <7-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-16.el8) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: b2_yHavk4FB7ohGDjl3D7NrdyfGtthIz
-X-Proofpoint-GUID: XXc8zInA60qVYvXS8o2fAP6z_DnB2Knj
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.391,FMLib:17.0.607.475
- definitions=2021-09-24_05,2021-09-24_02,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- phishscore=0 mlxlogscore=830 spamscore=0 impostorscore=0 adultscore=0
- malwarescore=0 lowpriorityscore=0 clxscore=1015 suspectscore=0 bulkscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2109230001 definitions=main-2109240124
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/i915/gvt: Fix spelling mistake "Unsupport" ->
+ "Unsupported"
+Date: Fri, 24 Sep 2021 23:56:23 +0100
+Message-Id: <20210924225623.143409-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.32.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,40 +60,28 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 2021-09-09 at 16:38 -0300, Jason Gunthorpe wrote:
-> Having a mdev pointer floating about in addition to a struct
-> vfio_device
-> is confusing. It is only used for three things:
-> 
-> - Getting the mdev 'struct device *' - this is the same as
->      private->vdev.dev
-> 
-> - Printing the uuid of the mdev in logging. The uuid is also the
-> dev_name
->   of the mdev so this is the same string as
->      dev_name(private->vdev.dev)
-> 
-> - A weird attempt to fence the vfio_ccw_sch_io_todo() work. This work
-> is
->   only queued during states IDLE/PROCESSING/PENDING and flushed when
->   entering CLOSED. Thus the work already cannot run when the mdev is
-> NULL.
->   Remove it.
-> 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/s390/cio/vfio_ccw_drv.c     |  6 ++--
->  drivers/s390/cio/vfio_ccw_fsm.c     | 48 +++++++++++++------------
-> ----
->  drivers/s390/cio/vfio_ccw_ops.c     | 16 ++++------
->  drivers/s390/cio/vfio_ccw_private.h |  2 --
->  include/linux/mdev.h                |  4 ---
->  5 files changed, 30 insertions(+), 46 deletions(-)
+From: Colin Ian King <colin.king@canonical.com>
 
-I like this patch. Unfortunately it depends on the removal of a hunk in
-patch 4, which sets the FSM state to different values based on whether
-private->mdev is NULL or not, so can't go on its own. Need to spend
-more time thinking about that patch.
+There is a spelling mistake in a gvt_vgpu_err error message. Fix it.
 
-Eric
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/gpu/drm/i915/gvt/handlers.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index cde0a477fb49..7ed7dba42c83 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -909,7 +909,7 @@ static int update_fdi_rx_iir_status(struct intel_vgpu *vgpu,
+ 	else if (FDI_RX_IMR_TO_PIPE(offset) != INVALID_INDEX)
+ 		index = FDI_RX_IMR_TO_PIPE(offset);
+ 	else {
+-		gvt_vgpu_err("Unsupport registers %x\n", offset);
++		gvt_vgpu_err("Unsupported registers %x\n", offset);
+ 		return -EINVAL;
+ 	}
+ 
+-- 
+2.32.0
 
