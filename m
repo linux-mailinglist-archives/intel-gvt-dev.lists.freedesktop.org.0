@@ -2,60 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E53B41D1E9
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Sep 2021 05:37:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92C2441D2AB
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Sep 2021 07:24:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4921C6EB44;
-	Thu, 30 Sep 2021 03:37:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D74696E2E1;
+	Thu, 30 Sep 2021 05:24:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vk1-xa29.google.com (mail-vk1-xa29.google.com
- [IPv6:2607:f8b0:4864:20::a29])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9808C6E2D5;
- Thu, 30 Sep 2021 03:37:43 +0000 (UTC)
-Received: by mail-vk1-xa29.google.com with SMTP id w68so2180124vkd.7;
- Wed, 29 Sep 2021 20:37:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4b3DOEuint+WBw7an5Qknmrkjl0i1y1HcTIoKU3zalE=;
- b=BNthy7e7lNpu4+NE9vBtOHHjcEgbb9FfvTE2xiomHVM5k2AoSstsZb0Ib/bCmpHFL2
- I7MR8CYJ1bz2mS6+go3Vk3zlHbpEz2YpzUW4xC+aZL+sl50WG8u78lofZsgMmXGZO6wh
- SLuR9F9VRZ68fE7aorklrfFUs40JM6A2qD1kgg8mj6vBGvoiR/kUJ0cnY9Shc0zUkdmu
- ZSWq3OAoyiTyhP074mbKhtSX7Dif1MwN/KE1ylJ708rkMwt1FA6CQhcKE2gVly5xOd3G
- cJOK7OgaI/JneKqOYeXV4utbWJjLCypgybzg8yYzI27DyrECFZKR+YY/IVrB4p1G4/h5
- jiPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4b3DOEuint+WBw7an5Qknmrkjl0i1y1HcTIoKU3zalE=;
- b=4qoY6rZpKtsu31ZmuwpxhDQjDjHVuO8MQxdvAgvQAqGtuhfHA6FSIlhW5hPupPwt6A
- rtk/cvtF3JIYC0q48Oz9YTWV6i63qVCIeS5aRrqKSwi78mSyP1IijTZqVJDLfswshCx8
- w2cYr8gwRNFEpCR8Fgz74Ro9MTt49TcpCoV6KXXCjtDutHKD0zvsvX60gsPU7hAUxFh7
- QAFWyJECwwCU0qCV7Z8YQFHps8S6HrF2vDaQtAVUkIeS7TYfqhb495Hn5eb1TjVSRtXZ
- 4Ugm7VtrTZF7EGBD4vco0ZQ9JqOVUemqowRuK/pHZ0+kkLq50ayN2JBVljkFvPKR8dSQ
- idqw==
-X-Gm-Message-State: AOAM533UoJjx+ZPVQESgwQ7zuKg+7lSA7LUCnuXnj5FT7rMOk0zRWtkF
- Nlf1ukdXX3DckNGaKM1Te+IaM36T+e/EDDktaug=
-X-Google-Smtp-Source: ABdhPJziVCgaFcxzo8BazIHTTlgJGuIrwL4ipzqezGpkldOKIC4mrZi+hraS0wbXD15E+6UNWvZS0MEa3h+MYmpMsEU=
-X-Received: by 2002:a1f:1f0a:: with SMTP id f10mr1667502vkf.21.1632973062492; 
- Wed, 29 Sep 2021 20:37:42 -0700 (PDT)
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 19D386E2DF;
+ Thu, 30 Sep 2021 05:24:05 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 896FC67373; Thu, 30 Sep 2021 07:24:02 +0200 (CEST)
+Date: Thu, 30 Sep 2021 07:24:02 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: "Wang, Zhi A" <zhi.a.wang@intel.com>
+Cc: Jason Gunthorpe <jgg@nvidia.com>, Luis Chamberlain <mcgrof@kernel.org>,
+ Jessica Yu <jeyu@kernel.org>,
+ "De Marchi, Lucas" <lucas.demarchi@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Christoph Hellwig <hch@lst.de>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Greg KH <gregkh@linuxfoundation.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Nikula, Jani" <jani.nikula@intel.com>
+Subject: Re: refactor the i915 GVT support
+Message-ID: <20210930052402.GA21841@lst.de>
+References: <20210817052203.GX13928@zhen-hp.sh.intel.com>
+ <20210819082929.GB13928@zhen-hp.sh.intel.com> <20210820141724.GA29034@lst.de>
+ <YSAI8pKAvvW/8S2O@bombadil.infradead.org>
+ <20210826061219.GD9942@zhen-hp.sh.intel.com>
+ <55c11f22-99e5-6109-3be3-a04b06b3336e@intel.com>
+ <YVMgGKk1K4gO8ls6@bombadil.infradead.org>
+ <af40291a-de36-b39f-9ded-aaf4ddba641f@intel.com>
+ <20210928150507.GM964074@nvidia.com>
+ <24c7bbec-b425-52fb-d3f9-539a0a391dfa@intel.com>
 MIME-Version: 1.0
-References: <20210930014427.14239-1-jim.cromie@gmail.com>
- <20210930014427.14239-3-jim.cromie@gmail.com>
- <a61f6bc2dc18397de92e4b7cdd9b37e2dff7e114.camel@perches.com>
-In-Reply-To: <a61f6bc2dc18397de92e4b7cdd9b37e2dff7e114.camel@perches.com>
-From: jim.cromie@gmail.com
-Date: Wed, 29 Sep 2021 21:37:16 -0600
-Message-ID: <CAJfuBxxHM+peMGnFQaQVOvhLC8n9GhVtWBOk1zmLwXpVmDSYpA@mail.gmail.com>
-Subject: Re: [PATCH 2/4] amdgpu_ucode: reduce number of pr_debug calls
-To: Joe Perches <joe@perches.com>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, 
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- intel-gvt-dev@lists.freedesktop.org, 
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- LKML <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <24c7bbec-b425-52fb-d3f9-539a0a391dfa@intel.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,27 +62,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Sep 29, 2021 at 8:08 PM Joe Perches <joe@perches.com> wrote:
->
-> On Wed, 2021-09-29 at 19:44 -0600, Jim Cromie wrote:
-> > There are blocks of DRM_DEBUG calls, consolidate their args into
-> > single calls.  With dynamic-debug in use, each callsite consumes 56
-> > bytes of callsite data, and this patch removes about 65 calls, so
-> > it saves ~3.5kb.
-> >
-> > no functional changes.
->
-> No functional change, but an output logging content change.
->
-> > RFC: this creates multi-line log messages, does that break any syslog
-> > conventions ?
->
-> It does change the output as each individual DRM_DEBUG is a call to
-> __drm_dbg which is effectively:
->
->         printk(KERN_DEBUG "[" DRM_NAME ":%ps] %pV",
->                __builtin_return_address(0), &vaf);
->
->
+On Wed, Sep 29, 2021 at 06:27:16PM +0000, Wang, Zhi A wrote:
+> Thanks for the idea. I am not sure i915 guys would take this idea since 
+> that it's only for GVT-g, i915 doesn't use this at all. We need to take 
+> a snapshot of both PCI configuration space and MMIO registers before 
+> i915 driver starts to touch the HW.
+> 
+> One idea is we capture the registers in intel_gvt.c during the early 
+> initialization and do everything else when i915.ko is fully loaded. But 
+> how about dependence between i915.ko and kvmgt.ko? We cannot do 
+> request_module("kvmgt") in i915.ko.
+> 
+> Maybe Christoph can give more input on this and how we can deal with 
+> this? Before we figure out an solution, we have to pick that patch out 
+> since it blocks our pull request schedule.
+> 
+> Also I was thinking if moving gvt into kvmgt.ko is the right direction. 
+> It seems the module loading system in kernel is not designed for "module 
+> A loading module B, which needs symbols from module A, in the 
+> initialization path of module A".
 
-ok.  that would disqualify the nouveau patch too.
+I have a few idea on how to sort this "deadlock" out.  But I'm completely
+swamped until the end of next week, so I won't get to anything before
+that.
