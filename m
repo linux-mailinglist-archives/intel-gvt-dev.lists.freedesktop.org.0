@@ -2,45 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1257741E1FA
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Sep 2021 21:06:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EE40641E465
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Oct 2021 00:58:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 95DFC6EC4A;
-	Thu, 30 Sep 2021 19:06:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 973A06E48B;
+	Thu, 30 Sep 2021 22:58:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from smtp.smtpout.orange.fr (smtp08.smtpout.orange.fr
- [80.12.242.130])
- by gabe.freedesktop.org (Postfix) with ESMTP id CE30E6EC48
+Received: from mail-lf1-x12c.google.com (mail-lf1-x12c.google.com
+ [IPv6:2a00:1450:4864:20::12c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2E63B6E491
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Sep 2021 19:06:14 +0000 (UTC)
-Received: from [192.168.1.18] ([90.126.248.220]) by mwinf5d10 with ME
- id 0JyF260054m3Hzu03JyFua; Thu, 30 Sep 2021 20:58:42 +0200
-X-ME-Helo: [192.168.1.18]
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Thu, 30 Sep 2021 20:58:42 +0200
-X-ME-IP: 90.126.248.220
-Subject: Re: [PATCH] drm/i915: Use direction definition DMA_BIDIRECTIONAL
- instead of PCI_DMA_BIDIRECTIONAL
-To: Cai Huoqing <caihuoqing@baidu.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org
-References: <20210925124613.144-1-caihuoqing@baidu.com>
- <YVXH87Uw3urD6q5x@phenom.ffwll.local>
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Message-ID: <3a2ada00-fe4f-284c-46a5-c0f6676bcfe1@wanadoo.fr>
-Date: Thu, 30 Sep 2021 20:58:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ Thu, 30 Sep 2021 22:58:41 +0000 (UTC)
+Received: by mail-lf1-x12c.google.com with SMTP id z24so31562004lfu.13
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 30 Sep 2021 15:58:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=AnIUtRQtDgk3YDJAatwz+LXUKRWPbctJNdAprjwvZ5o=;
+ b=FYrpNEp0zwymsUrUWvdUY9zg7bQqbIGfxDPPCHvF42IJ3bBpebm7KBYvtEnhjVJU+k
+ kc0RkBkQWIC9qz9CmBvVwjaqxOXjsJrW+nKNcZSRCDscgYzAFIAzmbAFq4EDpnq2sNEI
+ sbWlhfW7LvmJcBf2lYyFaAQ1NoPe0MZZNTMSdqwxSZQ9FrihxeYL48acwLrCVx0/oOCu
+ bo/5xgQpQVGtvQrGXriciZI6ZLcCfsanEfD3fSOc+k4HKjLcd5FiNq+W1H/K1U0FLt0x
+ TtjtVS2fUVBBlnpRN7k6ja0F1yP1w+LTfJJvd97Etbqlgl/4h4tpEJiIbsHj2huvYLaO
+ 4TFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=AnIUtRQtDgk3YDJAatwz+LXUKRWPbctJNdAprjwvZ5o=;
+ b=31r2Dx3nuiwlZrQFL4ipYx0sKPEEaQFtHoYOoTq/A614+IsQ79fmFX+wHBrwiOPKSb
+ gB39L2tju3B7AggBXxt/GJd+J4Y6dC3gAzT+26A/dqIgsxvMU2QdFQB/OBvrwTRPGMG5
+ EtsH6CoXrWDrQWdn5Qv0vHvsRZWqIIZKZKuBxKtbKwaKJ+CfkXvWIM2mo9VW5YmF9oqs
+ it4/75KPW0L298ksPqFMYroUn7/QkfPDT5klW3eT67Oo2Zb6PPtcY6S0VaTAI9TQG9JC
+ 7f5pYNHTLb0QXQcidoQobnA/43HM8idv/EbQOZbb0OPqjVt8TEFNanH/hFVo8iXScGXE
+ igkA==
+X-Gm-Message-State: AOAM533Cecyn4eAHI14ehhUzz6j0Exa51XloPoDMsvJzHPisER5KYeL4
+ 4aJ48Kd9q7FMYNoqCw0n4dlazSjQGmJW3tO6vwU=
+X-Google-Smtp-Source: ABdhPJx4GVBpAqUdpSc6GV2Ccser+SzsoFXEvbqpvIweCdcopVV+06RlyWu2S8RAkedNbXO5I85gVF7ApS9JXlkXPY0=
+X-Received: by 2002:a2e:98c3:: with SMTP id s3mr8845623ljj.430.1633042719148; 
+ Thu, 30 Sep 2021 15:58:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <YVXH87Uw3urD6q5x@phenom.ffwll.local>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a05:6512:5d8:0:0:0:0 with HTTP; Thu, 30 Sep 2021 15:58:38
+ -0700 (PDT)
+From: SOUTHWESTLOANCO <saniabdullahinng2020@gmail.com>
+Date: Thu, 30 Sep 2021 15:58:38 -0700
+Message-ID: <CA+3X9TwgMQ7NU-AkrdA8VQ5-2PDYbids5N+jtor+L_1QHLjV2w@mail.gmail.com>
+Subject: Dear owner,
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,188 +63,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: southwestloanco59@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Le 30/09/2021 à 16:21, Daniel Vetter a écrit :
-> On Sat, Sep 25, 2021 at 08:46:12PM +0800, Cai Huoqing wrote:
->> Replace direction definition PCI_DMA_BIDIRECTIONAL
->> with DMA_BIDIRECTIONAL, because it helps to enhance readability
->> and avoid possible inconsistency.
->>
->> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
-> 
-> Applied to drm-intel-gt-next, thanks for the patch.
-> -Daniel
+-- 
+Good day,
+          Do you need a loan ? We offer any kind of loan to repay in
+6months with just 2% interest
 
-Hi,
-just in case, a similar patch received some (unrelated) comments a few 
-weeks ago. See [1].
+Kindly Reply with below information
 
-Should it rings some bells to someone who know who knows what should be 
-done.
+NAME...............
+ADDRESS..........
+OCCUPATION....
+AGE...................
+PHONE..............
+AMOUNT NEEDED......
 
-Just my 2c.
+Regards
 
-[1]: 
-https://lore.kernel.org/kernel-janitors/0cd61d5b-ac88-31e8-99ad-143af480416f@arm.com/
+Contact  Mr Gary Edward +13182955380
 
-CJ
-
-
-> 
->> ---
->>   drivers/gpu/drm/i915/gt/intel_region_lmem.c |  4 ++--
->>   drivers/gpu/drm/i915/gvt/gtt.c              | 17 ++++++++---------
->>   drivers/gpu/drm/i915/gvt/kvmgt.c            |  4 ++--
->>   drivers/gpu/drm/i915/i915_gem_gtt.c         |  4 ++--
->>   4 files changed, 14 insertions(+), 15 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/i915/gt/intel_region_lmem.c b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
->> index a74b72f50cc9..afb35d2e5c73 100644
->> --- a/drivers/gpu/drm/i915/gt/intel_region_lmem.c
->> +++ b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
->> @@ -32,7 +32,7 @@ static int init_fake_lmem_bar(struct intel_memory_region *mem)
->>   	mem->remap_addr = dma_map_resource(i915->drm.dev,
->>   					   mem->region.start,
->>   					   mem->fake_mappable.size,
->> -					   PCI_DMA_BIDIRECTIONAL,
->> +					   DMA_BIDIRECTIONAL,
->>   					   DMA_ATTR_FORCE_CONTIGUOUS);
->>   	if (dma_mapping_error(i915->drm.dev, mem->remap_addr)) {
->>   		drm_mm_remove_node(&mem->fake_mappable);
->> @@ -62,7 +62,7 @@ static void release_fake_lmem_bar(struct intel_memory_region *mem)
->>   	dma_unmap_resource(mem->i915->drm.dev,
->>   			   mem->remap_addr,
->>   			   mem->fake_mappable.size,
->> -			   PCI_DMA_BIDIRECTIONAL,
->> +			   DMA_BIDIRECTIONAL,
->>   			   DMA_ATTR_FORCE_CONTIGUOUS);
->>   }
->>   
->> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
->> index e5c2fdfc20e3..53d0cb327539 100644
->> --- a/drivers/gpu/drm/i915/gvt/gtt.c
->> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
->> @@ -745,7 +745,7 @@ static void ppgtt_free_spt(struct intel_vgpu_ppgtt_spt *spt)
->>   	trace_spt_free(spt->vgpu->id, spt, spt->guest_page.type);
->>   
->>   	dma_unmap_page(kdev, spt->shadow_page.mfn << I915_GTT_PAGE_SHIFT, 4096,
->> -		       PCI_DMA_BIDIRECTIONAL);
->> +		       DMA_BIDIRECTIONAL);
->>   
->>   	radix_tree_delete(&spt->vgpu->gtt.spt_tree, spt->shadow_page.mfn);
->>   
->> @@ -849,7 +849,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
->>   	 */
->>   	spt->shadow_page.type = type;
->>   	daddr = dma_map_page(kdev, spt->shadow_page.page,
->> -			     0, 4096, PCI_DMA_BIDIRECTIONAL);
->> +			     0, 4096, DMA_BIDIRECTIONAL);
->>   	if (dma_mapping_error(kdev, daddr)) {
->>   		gvt_vgpu_err("fail to map dma addr\n");
->>   		ret = -EINVAL;
->> @@ -865,7 +865,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
->>   	return spt;
->>   
->>   err_unmap_dma:
->> -	dma_unmap_page(kdev, daddr, PAGE_SIZE, PCI_DMA_BIDIRECTIONAL);
->> +	dma_unmap_page(kdev, daddr, PAGE_SIZE, DMA_BIDIRECTIONAL);
->>   err_free_spt:
->>   	free_spt(spt);
->>   	return ERR_PTR(ret);
->> @@ -2409,8 +2409,7 @@ static int alloc_scratch_pages(struct intel_vgpu *vgpu,
->>   		return -ENOMEM;
->>   	}
->>   
->> -	daddr = dma_map_page(dev, virt_to_page(scratch_pt), 0,
->> -			4096, PCI_DMA_BIDIRECTIONAL);
->> +	daddr = dma_map_page(dev, virt_to_page(scratch_pt), 0, 4096, DMA_BIDIRECTIONAL);
->>   	if (dma_mapping_error(dev, daddr)) {
->>   		gvt_vgpu_err("fail to dmamap scratch_pt\n");
->>   		__free_page(virt_to_page(scratch_pt));
->> @@ -2461,7 +2460,7 @@ static int release_scratch_page_tree(struct intel_vgpu *vgpu)
->>   		if (vgpu->gtt.scratch_pt[i].page != NULL) {
->>   			daddr = (dma_addr_t)(vgpu->gtt.scratch_pt[i].page_mfn <<
->>   					I915_GTT_PAGE_SHIFT);
->> -			dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
->> +			dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
->>   			__free_page(vgpu->gtt.scratch_pt[i].page);
->>   			vgpu->gtt.scratch_pt[i].page = NULL;
->>   			vgpu->gtt.scratch_pt[i].page_mfn = 0;
->> @@ -2741,7 +2740,7 @@ int intel_gvt_init_gtt(struct intel_gvt *gvt)
->>   	}
->>   
->>   	daddr = dma_map_page(dev, virt_to_page(page), 0,
->> -			4096, PCI_DMA_BIDIRECTIONAL);
->> +			4096, DMA_BIDIRECTIONAL);
->>   	if (dma_mapping_error(dev, daddr)) {
->>   		gvt_err("fail to dmamap scratch ggtt page\n");
->>   		__free_page(virt_to_page(page));
->> @@ -2755,7 +2754,7 @@ int intel_gvt_init_gtt(struct intel_gvt *gvt)
->>   		ret = setup_spt_oos(gvt);
->>   		if (ret) {
->>   			gvt_err("fail to initialize SPT oos\n");
->> -			dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
->> +			dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
->>   			__free_page(gvt->gtt.scratch_page);
->>   			return ret;
->>   		}
->> @@ -2779,7 +2778,7 @@ void intel_gvt_clean_gtt(struct intel_gvt *gvt)
->>   	dma_addr_t daddr = (dma_addr_t)(gvt->gtt.scratch_mfn <<
->>   					I915_GTT_PAGE_SHIFT);
->>   
->> -	dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
->> +	dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
->>   
->>   	__free_page(gvt->gtt.scratch_page);
->>   
->> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
->> index 7efa386449d1..20b82fb036f8 100644
->> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
->> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
->> @@ -328,7 +328,7 @@ static int gvt_dma_map_page(struct intel_vgpu *vgpu, unsigned long gfn,
->>   		return ret;
->>   
->>   	/* Setup DMA mapping. */
->> -	*dma_addr = dma_map_page(dev, page, 0, size, PCI_DMA_BIDIRECTIONAL);
->> +	*dma_addr = dma_map_page(dev, page, 0, size, DMA_BIDIRECTIONAL);
->>   	if (dma_mapping_error(dev, *dma_addr)) {
->>   		gvt_vgpu_err("DMA mapping failed for pfn 0x%lx, ret %d\n",
->>   			     page_to_pfn(page), ret);
->> @@ -344,7 +344,7 @@ static void gvt_dma_unmap_page(struct intel_vgpu *vgpu, unsigned long gfn,
->>   {
->>   	struct device *dev = vgpu->gvt->gt->i915->drm.dev;
->>   
->> -	dma_unmap_page(dev, dma_addr, size, PCI_DMA_BIDIRECTIONAL);
->> +	dma_unmap_page(dev, dma_addr, size, DMA_BIDIRECTIONAL);
->>   	gvt_unpin_guest_page(vgpu, gfn, size);
->>   }
->>   
->> diff --git a/drivers/gpu/drm/i915/i915_gem_gtt.c b/drivers/gpu/drm/i915/i915_gem_gtt.c
->> index 36489be4896b..cd5f2348a187 100644
->> --- a/drivers/gpu/drm/i915/i915_gem_gtt.c
->> +++ b/drivers/gpu/drm/i915/i915_gem_gtt.c
->> @@ -30,7 +30,7 @@ int i915_gem_gtt_prepare_pages(struct drm_i915_gem_object *obj,
->>   	do {
->>   		if (dma_map_sg_attrs(obj->base.dev->dev,
->>   				     pages->sgl, pages->nents,
->> -				     PCI_DMA_BIDIRECTIONAL,
->> +				     DMA_BIDIRECTIONAL,
->>   				     DMA_ATTR_SKIP_CPU_SYNC |
->>   				     DMA_ATTR_NO_KERNEL_MAPPING |
->>   				     DMA_ATTR_NO_WARN))
->> @@ -64,7 +64,7 @@ void i915_gem_gtt_finish_pages(struct drm_i915_gem_object *obj,
->>   		usleep_range(100, 250);
->>   
->>   	dma_unmap_sg(i915->drm.dev, pages->sgl, pages->nents,
->> -		     PCI_DMA_BIDIRECTIONAL);
->> +		     DMA_BIDIRECTIONAL);
->>   }
->>   
->>   /**
->> -- 
->> 2.25.1
->>
-> 
-
+Remittance Department southwestloanco59@gmail.com
