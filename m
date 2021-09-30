@@ -1,50 +1,61 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FBB141D0F2
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Sep 2021 03:30:47 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B49BA41D10C
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Sep 2021 03:44:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B0C926EB15;
-	Thu, 30 Sep 2021 01:30:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D38FC6EB18;
+	Thu, 30 Sep 2021 01:44:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.uwakakuritsu.com (unknown [210.74.158.82])
- by gabe.freedesktop.org (Postfix) with ESMTP id 25C4C6EB15;
- Thu, 30 Sep 2021 01:30:45 +0000 (UTC)
-Received: from localhost (mail.uwakakuritsu.com [127.0.0.1])
- by mail.uwakakuritsu.com (EMOS V1.5 (Postfix)) with ESMTP id 40AEC4FD3E81;
- Wed, 29 Sep 2021 10:35:52 +0800 (CST)
-X-Virus-Scanned: amavisd-new at uwakakuritsu.com
-X-Spam-Flag: YES
-X-Spam-Score: 12.629
-X-Spam-Level: ************
-X-Spam-Status: Yes, score=12.629 tagged_above=-10 required=5
- tests=[ALL_TRUSTED=-1, BAYES_99=3.5, DEAR_FRIEND=2.577,
- DSPAM_ERROR=0.1, FORGED_MUA_OUTLOOK=1.927, FORGED_OUTLOOK_HTML=0.021,
- FORGED_OUTLOOK_TAGS=0.052, FROM_MISSP_MSFT=1.648, HTML_MESSAGE=0.001,
- MIME_HTML_ONLY=0.723, MISSING_HEADERS=1.021, MISSING_MID=0.497,
- REPLYTO_WITHOUT_TO_CC=1.552, T_FROM_MISSPACED=0.01]
- autolearn=unavailable
-Received: from mail.uwakakuritsu.com ([127.0.0.1])
- by localhost (mail.uwakakuritsu.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P7CI2-O91XDD; Wed, 29 Sep 2021 10:35:52 +0800 (CST)
-Received: from User (unknown [103.156.93.238])
- by mail.uwakakuritsu.com (EMOS V1.5 (Postfix)) with ESMTPA id 69AC74FD3FC2;
- Wed, 29 Sep 2021 10:35:49 +0800 (CST)
-From: "INFO"<da@uwakakuritsu.com>
-Subject: INFO
-Date: Tue, 28 Sep 2021 20:25:47 -0700
+Received: from mail-io1-xd29.google.com (mail-io1-xd29.google.com
+ [IPv6:2607:f8b0:4864:20::d29])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 57BC76EB18;
+ Thu, 30 Sep 2021 01:44:40 +0000 (UTC)
+Received: by mail-io1-xd29.google.com with SMTP id e144so5578313iof.3;
+ Wed, 29 Sep 2021 18:44:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ag+4yNg3t4lDobvnoXDI3lx/G6JRcztPX349EfTrvys=;
+ b=XA15C3MS+Ru70z9K5PsYOaBwzptA+i62Y+vQntpRsUlukIjSnmeJDdPy2atqjE4DQR
+ upfKCZTzoypEmAcTBoDbVGcEycJBD/EsN9lwpZmGmbVzEshIauR/Th4Sg6ZyVkxKuGZx
+ oOq8Vk6++/nCq19t1N0DSSwrCudU9Ekp9hio0+CM4o9vwyxXn2HufWdP0VBIhzTJJja/
+ HjfYjviablg2wJeVWudVV0StGkDHDeAq7qRuWywrOcOcgaAEViNTpRhJTx7bj85adxQo
+ Flq1RK8Idpuec8A5BjLGPihMJ1cq2L31ryzrAtm+4gvFYUJsmSSshaOW4A778StHdkWL
+ 1toQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ag+4yNg3t4lDobvnoXDI3lx/G6JRcztPX349EfTrvys=;
+ b=CTIhZuRgUX4D3ZyWel3BQ5TSUcoSyf6bg/TX1VGRp0x5nNeuFJ41c9OiL6beM+i9NC
+ r6ziTysjqZpovbMHZza7pF6TgEQleGXR7NJb0rLBLeLp7ZBQZy++rS16WCrEMqQHQ2cR
+ EooARV8eLzOm7I2AY9C3q4UNbwhF3K6hRaIQwmFHdpdnI3o+bCtuv/Dfyc9dWljDpGcQ
+ IuxeXs3i+0dJNfg0q3mssbkcBTSS03VVA7+GPuR7bgr5Apxtp++eotMxPa/Wde11Wk0p
+ OWuyy+6AIYKEeeXVn2uPq+2bEaU2m6kQxLFxSNLluYLoW0KKoN5IbbiHo6GBNAO0Qu7/
+ +pGg==
+X-Gm-Message-State: AOAM531WqCkismmFgFbem1JG1IuKenCTunxFo3i5ktouPTeckpkxS7pO
+ xd0nkkVCDNO7rHuwJdKHr0FxVb3rPLQ=
+X-Google-Smtp-Source: ABdhPJw9+lHlgC4C0Iib/UIs9kg4hYI1KRlIi8BBpwfD2Erth25p4XAh09jmFmHvTdGWPRLhCLs9Aw==
+X-Received: by 2002:a5d:9145:: with SMTP id y5mr2010979ioq.200.1632966279194; 
+ Wed, 29 Sep 2021 18:44:39 -0700 (PDT)
+Received: from samwise.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
+ by smtp.googlemail.com with ESMTPSA id h23sm1155414ila.32.2021.09.29.18.44.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Sep 2021 18:44:38 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+Cc: Jim Cromie <jim.cromie@gmail.com>
+Subject: [PATCH 0/4] drm: maintenance patches for 5.15-rcX
+Date: Wed, 29 Sep 2021 19:44:23 -0600
+Message-Id: <20210930014427.14239-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20210929023552.40AEC4FD3E81@mail.uwakakuritsu.com>
-To: undisclosed-recipients:;
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,47 +68,27 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: hamed.eid.eltabey01@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-<B>Dear Friend,</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>Trust this email to find you well.</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>We are an investment and lending company based in Turkey and sourcing for a foreign direct investment partners in any of the sectors stated</B></DIV>
-<DIV>
-<B>below:</B></DIV>
-<DIV>
-<B>Energy and power sectors,oil and Gas,Agriculture,Acquisition, Health,Real Estate,IT, Technology Transportation,Mining,Maritime and Manufacturing.</B></DIV>
-<DIV>
-<B>If you are seriously pursuing any direct investment or joint venture for your projects and clients in any of the sectors stated above, kindly notify us so as to provide you with the basic financing terms of this&nbsp; offer.</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>Best regards, </B></DIV>
-<DIV>
-<B>Mr.Hamed Eid Eltabey Serag.</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-</FONT>
-</BODY></HTML>
+hi drm folks,
+
+Heres a small set of assorted patches which are IMO suitable for rcX;
+one doc fix, 2 patches folding multiple DBGs together, and a format
+string modification.
+
+Jim Cromie (4):
+  drm: fix doc grammar error
+  amdgpu_ucode: reduce number of pr_debug calls
+  nouveau: fold multiple DRM_DEBUG_DRIVERs together
+  i915/gvt: remove spaces in pr_debug "gvt: core:" etc prefixes
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c | 293 ++++++++++++----------
+ drivers/gpu/drm/i915/gvt/debug.h          |  18 +-
+ drivers/gpu/drm/nouveau/nouveau_drm.c     |  36 ++-
+ include/drm/drm_drv.h                     |   2 +-
+ 4 files changed, 191 insertions(+), 158 deletions(-)
+
+-- 
+2.31.1
+
