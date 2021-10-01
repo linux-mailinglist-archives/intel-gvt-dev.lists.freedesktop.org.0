@@ -2,84 +2,128 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F07EA41EFF3
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Oct 2021 16:50:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6726A41F3C2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Oct 2021 19:53:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7DF396EDAA;
-	Fri,  1 Oct 2021 14:50:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EC2826EE94;
+	Fri,  1 Oct 2021 17:52:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
- [IPv6:2a00:1450:4864:20::334])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7449A6EDAD
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  1 Oct 2021 14:50:22 +0000 (UTC)
-Received: by mail-wm1-x334.google.com with SMTP id
- j10-20020a1c230a000000b0030d523b6693so894111wmj.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 01 Oct 2021 07:50:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to; bh=XObjtU4PyVbF/ZbbwoSfuVLsd6n+GoMhRgnIczIDqqE=;
- b=g+tE4NGMt8NgHUTGaid9q2/e6/yn54CaeuKWN84VbR9vgKLRNepXvLoLL/MiAwIEJ4
- dIxekSzimYn5iQCF1lDktkOpQrU1qCqtdxt9JQF74fWAeUzDyk2p5dt4QE5f22PgO2/o
- Wwk1wQsas67fVB6OOL4mzsqkgqtLrHFZhEiAA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to;
- bh=XObjtU4PyVbF/ZbbwoSfuVLsd6n+GoMhRgnIczIDqqE=;
- b=c7Klda6PU2u3bVaERgCk+FGNYr7CndACbn5MIjwelAFPvTFB+N83xRoHqphggxV/pM
- ffJNEVDyE5ZDDUaV4WQ9jECnQozRlGuPnGQSWkV4eqDyTPjHx2SM9IlVwwYPz4owQV9M
- 1he0NcV8fWZ3C0eCTHjvqf0cnIxKO2EWva6i0LmKo6sfV7+aSofXKlaoi3np63L0Dg0H
- p6oQ88ZQyXVQknLY5GADp9hPKNUi17YBtCgWYNRMqx1eDP4eFQJdC7n1YNFXpCXMXnoN
- YuOkBUhUPGjYEz2KI6RTmxVkdWb+VKOZbOTyFfw1WNpjV7XKHqVbrg1kOSvB095UgTAH
- k3pA==
-X-Gm-Message-State: AOAM533yZXsk4P6fr7JHQyWqeOdfMwJHJP6aO71Y73UoFCSL1rnQ46zJ
- DFSxjOdD1CDLUR0ulqZYUUb/bj3rbd2FMg==
-X-Google-Smtp-Source: ABdhPJw8T8GUVt7v4Ij+Ecdrg5qyP218Ix34mdcAMZ78zHjwhCBNKnCwsTQ9nfDW+q8et8Ml/yuf4Q==
-X-Received: by 2002:a05:600c:4e86:: with SMTP id
- f6mr5180927wmq.52.1633099820785; 
- Fri, 01 Oct 2021 07:50:20 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id k10sm7821605wmr.32.2021.10.01.07.50.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Oct 2021 07:50:20 -0700 (PDT)
-Date: Fri, 1 Oct 2021 16:50:18 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Cai Huoqing <caihuoqing@baidu.com>,
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10on2083.outbound.protection.outlook.com [40.107.94.83])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9F9766EE93;
+ Fri,  1 Oct 2021 17:52:56 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jSPDmywVuYJZr3FNiP7FVDp/gJJtIuYLCPQxxPs4wh/GA/TIlytPzORKo/rgZ/89Xii9tg1xq0WEEnbgxBlCNz2mA5fOA6wcTgIX7FiHHmBpwdwyeKHXYfGvkkueptL2cQnHjKavpeCq5lL0zuLlyg05E4nbYGdBUy+0wE+chSrcDlMX/ewh85FAjPuT06y4FuMtnm6e1cmDuv2kcyMwuAcw5/8Rxd75/s62/S9peY1xYiEmdzKRtu1ykxab9G/I+6cFOZheBc9R3PnC6tWnx/V8ga8zDgfigjidNkRumLI5NcJ8B1LQgCNS1GMKAU7cH/fN9VlTBU47s/dBAbxg5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xkS9M/++Xop7frTxsR2JxiOoUcqYsdqH9YI7swRWdqQ=;
+ b=E0V61+7Q2cMR+BXPAz8TpDa8Cy+5j7+ucqmCfH3c5hlK6/UqIJa+4BRlFN/iz089kPYMKl+mcp29exwXNaYXtt4p8MJD6LWJwREzl3YDQdp/Xf9TU1NPZ4apAApk51YY/jxFpPWRgflZzodwVb2a0nHPKki1exyBU0ZGlrid8jHUbeMjYXysXNZ5L5ud5U8gm549VoFCA9duKrbmtGbw7tubv5wc0S6pW835o2mXHmXXl+VxyiRiBRUZWGEZMRx/9KCVwpjiHSOzyHAiTJAM69SOukdqaqmaViV68CrmfUHWcwIkm5PeUorPCnFUoaSaqltIbjA83xla7/NKo2p2Lg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xkS9M/++Xop7frTxsR2JxiOoUcqYsdqH9YI7swRWdqQ=;
+ b=sHrr20nhK4zD+KOX0PTiemXHqY/tDR/SHxhOek9p4nZUFGA9CLi/JQvmPumTz46yoL+7UBpY4fKlozxvGHb3ceGVfhtflj6PkA0KABP+jZ9CXSOAQPCyQes3NVq1IO6kOv8KsGBdxuJ3Ec9YbicxP8orfz3qcYiOoWv1zVSuSzQ245acDbWfBA10n/LRwMa3geh3cJpA7OPVpMWNFo3GehZJwz75vJANVFZ+vxsJIMvBW3dSEf8FVhxjK7BqtQRmcIDypkNE5oImnxM+o7DWpfp3f4lyWPEwxareCClZ2gnddthT0HJirYdURPIDPNz2IU5SfVc6NIKHG4QshMhT5Q==
+Authentication-Results: linux.ie; dkim=none (message not signed)
+ header.d=none;linux.ie; dmarc=none action=none header.from=nvidia.com;
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com (2603:10b6:208:1cb::22)
+ by BL1PR12MB5126.namprd12.prod.outlook.com (2603:10b6:208:312::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.15; Fri, 1 Oct
+ 2021 17:52:53 +0000
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::e8af:232:915e:2f95]) by BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::e8af:232:915e:2f95%8]) with mapi id 15.20.4566.019; Fri, 1 Oct 2021
+ 17:52:53 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+ Eric Farman <farman@linux.ibm.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
  Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- intel-gvt-dev@lists.freedesktop.org
-Subject: Re: [PATCH] drm/i915: Use direction definition DMA_BIDIRECTIONAL
- instead of PCI_DMA_BIDIRECTIONAL
-Message-ID: <YVcgKj0UCB2WmBXF@phenom.ffwll.local>
-Mail-Followup-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Cai Huoqing <caihuoqing@baidu.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- David Airlie <airlied@linux.ie>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- intel-gvt-dev@lists.freedesktop.org
-References: <20210925124613.144-1-caihuoqing@baidu.com>
- <YVXH87Uw3urD6q5x@phenom.ffwll.local>
- <3a2ada00-fe4f-284c-46a5-c0f6676bcfe1@wanadoo.fr>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ Jason Herne <jjherne@linux.ibm.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Cc: Christoph Hellwig <hch@infradead.org>,
+	Christoph Hellwig <hch@lst.de>
+Subject: [PATCH v3 00/10] Move vfio_ccw to the new mdev API
+Date: Fri,  1 Oct 2021 14:52:41 -0300
+Message-Id: <0-v3-57c1502c62fd+2190-ccw_mdev_jgg@nvidia.com>
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <3a2ada00-fe4f-284c-46a5-c0f6676bcfe1@wanadoo.fr>
-X-Operating-System: Linux phenom 5.10.0-8-amd64 
+Content-Type: text/plain
+X-ClientProxiedBy: BL1PR13CA0412.namprd13.prod.outlook.com
+ (2603:10b6:208:2c2::27) To BL0PR12MB5506.namprd12.prod.outlook.com
+ (2603:10b6:208:1cb::22)
+MIME-Version: 1.0
+Received: from mlx.ziepe.ca (142.162.113.129) by
+ BL1PR13CA0412.namprd13.prod.outlook.com (2603:10b6:208:2c2::27) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.7 via Frontend
+ Transport; Fri, 1 Oct 2021 17:52:52 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from
+ <jgg@nvidia.com>)	id 1mWMiJ-00988w-Vb; Fri, 01 Oct 2021 14:52:51 -0300
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: abe9ef51-7ac8-45f5-5e94-08d985044a8c
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5126:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <BL1PR12MB512600B27324961DB45A73ECC2AB9@BL1PR12MB5126.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2449;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: gGhD6tjleUCuKuUJK2ssHsnXtYbIzhW7w2bSKyVMIBvdmfFecUMqYozl4TDr9yg2sO228HsVuYYQjnLShFQPaQ/gDQkqLqdBNYFMOIRv8ziep2Zz3RWL/Zf7QbOZbAXzT20lC2Fmx+JMWbSNU4APtahxDZCvqWj4JhABB0wup/RqQC+5O5v9tiKgI5k0QvvRz5WIOynrNxwStMhq8QeQ9yGrHS4VuI4b9s7/RlQ+IJ580LidZ9osv22+Wa+GVR9fs9sEnjfCMZhTcy1uZMgx1IcIpx2yT4cgptLOhzyR3LjLIvtH1GQ1ATrKcWXbc0v7xB+dmxodBTHLR4aZtryMDXYAQ8oy9AiUDldxVrmq4lXNzMcboTdh56pqwi7nFz+sfw9F5uYdgL0CizBUxsIEJ1EpJvSxf6r0Jv0lf2wrSWgImdWdpluFO1TMOI1YKTTWXHvLapcCS6rQxX+nyQ9f46L7rvUyjz1AR1NBrxjOmFh4vNujIZa2tZ3DJVWrsLZN17UwbXGvpzO5TDhnQsD+30wOghr8zsQBn6dPaX0+jGakloox56kkcqLJBneZIAAH9xNAROPBYPgf3QnLdS4yvmkKdCHd4UuzPqTuuOZD4fecwiCiN70deg+ZFqKYr/p/A+GybuRN10gsmBOvcBXZaeHaAiH8pryqEwyZemGTuHpORXZE4/9WSoi74S39Fx1kQ//QmDorEHIZRSLVjEOQFDyKAAWUlrMSbWsL8pP4iVfkZeXXLo/5/6UMFhVWwloQIwwbQNQuBnFbSen77pc8cFnUW0ZgV+CMmFxDGTASm1ljfb9nLgdiwC8u+Xywjyb27H8lxQFPw5/FqhOELAEp/g==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR12MB5506.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(508600001)(921005)(2616005)(26005)(83380400001)(6666004)(966005)(186003)(426003)(9746002)(2906002)(86362001)(9786002)(38100700002)(4326008)(36756003)(8676002)(66556008)(66946007)(110136005)(54906003)(316002)(7416002)(5660300002)(8936002)(66476007)(4216001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?v8XIDuMd3+7v7AHKg7shkWINe3L9MInQKw0Aj5HKzKVH7MeQncl1ZoGBl0gQ?=
+ =?us-ascii?Q?EFsT+iruYq1Ooa+LOQwwdhxgv6Woan6liRbgKGDa7DKw66etflzaItPWHVvz?=
+ =?us-ascii?Q?Ym6IsamCEwq6FXGulHUDVWEwPw0h0cxOsK4TqVWd4YMLvEaAu0b9Tpc0fLYd?=
+ =?us-ascii?Q?9vXPtURDz8WUNy+JXZspjCVchp6TXVBh0kO8pAC3QgtoGzhEUXJqwDn+s2pd?=
+ =?us-ascii?Q?gOS0d3kffC3J1TsFFH5GyVlzDgIkJMCAj0ESjx1Ru5LwbwiHouZXkK864tIG?=
+ =?us-ascii?Q?rBcxu2K0h8BBbe23V4eOL3fgnvXJOFkJ3qjU03KxKTpP1+Y7QOer/3L7wEBv?=
+ =?us-ascii?Q?SDSd+IuRrwM4Ao93zUesQDdFuuvba6fR+1QBVbcPgozcyL37VGZtwT6OGlL0?=
+ =?us-ascii?Q?a9gpUTAcWho97NoZ6DMBVt91bAXM9orSqBlBPkFRSB1E8aMXiWCi5y5ECNYP?=
+ =?us-ascii?Q?CZ3swQgiwkzsneSn/V3uF0gUGDzr5uS6YtN81/X+cKbgRaApCSCw+wGpxaPN?=
+ =?us-ascii?Q?UYgZPmzeUcHzhefCKA1o+jbUcTqS3xf31o0RKY3d2JsG/drXvmJwRdRvZVg9?=
+ =?us-ascii?Q?mVxiX9UltAGF1dZMgrjbrCxSOZt9NPUqfp8LnP32dXRY1JRVSEn1RAwakoDJ?=
+ =?us-ascii?Q?hD7w1UGlQHlOe/lRswZAB3JkHRB3CHWMTh1t7mXsVZa/3/nyzmZDuM9fn1En?=
+ =?us-ascii?Q?Mw/AB7KL67LEaHFA/EsSa//UnH6k+UaCPYV9+V1LvnJqHvl3Dux1Ejn/Z9CU?=
+ =?us-ascii?Q?L30oU6Twli77XNiq7EQsxYqxdAtOfv9YYaOd9DUmrmVbqev3tiRzlc53X0BC?=
+ =?us-ascii?Q?a49R4ReN+1Z093KGqy+loBmgBlGTe+7baX8TKtabLRshVmUorvulPpsHLdQV?=
+ =?us-ascii?Q?RmW2RxiZpXJvdSWrnRU+Iw0HKtDi2J4Z2niK0qFXS999fNONBeOWzFMjS2Hm?=
+ =?us-ascii?Q?y+Lp5SRQTdxR1Rx8bwV4iQrOr2uBud7jMS7xBe+Q1lwLCTeTlqyyJRvI2tOH?=
+ =?us-ascii?Q?MqQqXkYePLREmDesKTSHOQCNSUhOS24JqAagzOLxCF9z5nsXDYgNY7FXFg9n?=
+ =?us-ascii?Q?8zzseXw7NMVHL4FErHMkA1lwcIsmNrKtGT8PhXoxj5Q6XXFoKDUtZ9ZcCtcw?=
+ =?us-ascii?Q?/53sHjO5PCu71eOzSOCBXSLS9S33dHmy6e1ZNvLm7tqP3pJeQVBTYcVKHtDR?=
+ =?us-ascii?Q?c1d3SN3wdXU1eAV196fnjWo4DuPYUhn5v6s7/wf9HzuNw3gxbGLOawF6Wyn9?=
+ =?us-ascii?Q?ycj2rSZH/W4sECSGxw0q4+pclo8aAEh7qAqK4VVz4V9pHG6jn/rf0YLnuij1?=
+ =?us-ascii?Q?qrhvwGyGGj8BpGeN/ucHOVGG?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: abe9ef51-7ac8-45f5-5e94-08d985044a8c
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB5506.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Oct 2021 17:52:52.8892 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: dF87A3ctNLysHMh0Ekv87sNRl7Farx5f76wQFDfT/M4/5JR0ZzV9C3eb8psPbZhd
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5126
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,180 +139,78 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Sep 30, 2021 at 08:58:15PM +0200, Christophe JAILLET wrote:
-> Le 30/09/2021 à 16:21, Daniel Vetter a écrit :
-> > On Sat, Sep 25, 2021 at 08:46:12PM +0800, Cai Huoqing wrote:
-> > > Replace direction definition PCI_DMA_BIDIRECTIONAL
-> > > with DMA_BIDIRECTIONAL, because it helps to enhance readability
-> > > and avoid possible inconsistency.
-> > > 
-> > > Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
-> > 
-> > Applied to drm-intel-gt-next, thanks for the patch.
-> > -Daniel
-> 
-> Hi,
-> just in case, a similar patch received some (unrelated) comments a few weeks
-> ago. See [1].
-> 
-> Should it rings some bells to someone who know who knows what should be
-> done.
-> 
-> Just my 2c.
-> 
-> [1]: https://lore.kernel.org/kernel-janitors/0cd61d5b-ac88-31e8-99ad-143af480416f@arm.com/
+This addresses Cornelia's remark on the earlier patch that ccw has a
+confusing lifecycle. While it doesn't seem like the original attempt was
+functionally wrong, the result can be made better with a lot of further
+work.
 
-Hm yeah there's some fishy stuff in here, but it's cc'ed to intel-gfx so
-should get picked up there.
--Daniel
+Reorganize the driver so that the mdev owns the private memory and
+controls the lifecycle, not the css_driver. The memory associated with the
+css_driver lifecycle is only the mdev_parent/mdev_type registration.
 
-> 
-> CJ
-> 
-> 
-> > 
-> > > ---
-> > >   drivers/gpu/drm/i915/gt/intel_region_lmem.c |  4 ++--
-> > >   drivers/gpu/drm/i915/gvt/gtt.c              | 17 ++++++++---------
-> > >   drivers/gpu/drm/i915/gvt/kvmgt.c            |  4 ++--
-> > >   drivers/gpu/drm/i915/i915_gem_gtt.c         |  4 ++--
-> > >   4 files changed, 14 insertions(+), 15 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/i915/gt/intel_region_lmem.c b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-> > > index a74b72f50cc9..afb35d2e5c73 100644
-> > > --- a/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-> > > +++ b/drivers/gpu/drm/i915/gt/intel_region_lmem.c
-> > > @@ -32,7 +32,7 @@ static int init_fake_lmem_bar(struct intel_memory_region *mem)
-> > >   	mem->remap_addr = dma_map_resource(i915->drm.dev,
-> > >   					   mem->region.start,
-> > >   					   mem->fake_mappable.size,
-> > > -					   PCI_DMA_BIDIRECTIONAL,
-> > > +					   DMA_BIDIRECTIONAL,
-> > >   					   DMA_ATTR_FORCE_CONTIGUOUS);
-> > >   	if (dma_mapping_error(i915->drm.dev, mem->remap_addr)) {
-> > >   		drm_mm_remove_node(&mem->fake_mappable);
-> > > @@ -62,7 +62,7 @@ static void release_fake_lmem_bar(struct intel_memory_region *mem)
-> > >   	dma_unmap_resource(mem->i915->drm.dev,
-> > >   			   mem->remap_addr,
-> > >   			   mem->fake_mappable.size,
-> > > -			   PCI_DMA_BIDIRECTIONAL,
-> > > +			   DMA_BIDIRECTIONAL,
-> > >   			   DMA_ATTR_FORCE_CONTIGUOUS);
-> > >   }
-> > > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-> > > index e5c2fdfc20e3..53d0cb327539 100644
-> > > --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> > > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> > > @@ -745,7 +745,7 @@ static void ppgtt_free_spt(struct intel_vgpu_ppgtt_spt *spt)
-> > >   	trace_spt_free(spt->vgpu->id, spt, spt->guest_page.type);
-> > >   	dma_unmap_page(kdev, spt->shadow_page.mfn << I915_GTT_PAGE_SHIFT, 4096,
-> > > -		       PCI_DMA_BIDIRECTIONAL);
-> > > +		       DMA_BIDIRECTIONAL);
-> > >   	radix_tree_delete(&spt->vgpu->gtt.spt_tree, spt->shadow_page.mfn);
-> > > @@ -849,7 +849,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
-> > >   	 */
-> > >   	spt->shadow_page.type = type;
-> > >   	daddr = dma_map_page(kdev, spt->shadow_page.page,
-> > > -			     0, 4096, PCI_DMA_BIDIRECTIONAL);
-> > > +			     0, 4096, DMA_BIDIRECTIONAL);
-> > >   	if (dma_mapping_error(kdev, daddr)) {
-> > >   		gvt_vgpu_err("fail to map dma addr\n");
-> > >   		ret = -EINVAL;
-> > > @@ -865,7 +865,7 @@ static struct intel_vgpu_ppgtt_spt *ppgtt_alloc_spt(
-> > >   	return spt;
-> > >   err_unmap_dma:
-> > > -	dma_unmap_page(kdev, daddr, PAGE_SIZE, PCI_DMA_BIDIRECTIONAL);
-> > > +	dma_unmap_page(kdev, daddr, PAGE_SIZE, DMA_BIDIRECTIONAL);
-> > >   err_free_spt:
-> > >   	free_spt(spt);
-> > >   	return ERR_PTR(ret);
-> > > @@ -2409,8 +2409,7 @@ static int alloc_scratch_pages(struct intel_vgpu *vgpu,
-> > >   		return -ENOMEM;
-> > >   	}
-> > > -	daddr = dma_map_page(dev, virt_to_page(scratch_pt), 0,
-> > > -			4096, PCI_DMA_BIDIRECTIONAL);
-> > > +	daddr = dma_map_page(dev, virt_to_page(scratch_pt), 0, 4096, DMA_BIDIRECTIONAL);
-> > >   	if (dma_mapping_error(dev, daddr)) {
-> > >   		gvt_vgpu_err("fail to dmamap scratch_pt\n");
-> > >   		__free_page(virt_to_page(scratch_pt));
-> > > @@ -2461,7 +2460,7 @@ static int release_scratch_page_tree(struct intel_vgpu *vgpu)
-> > >   		if (vgpu->gtt.scratch_pt[i].page != NULL) {
-> > >   			daddr = (dma_addr_t)(vgpu->gtt.scratch_pt[i].page_mfn <<
-> > >   					I915_GTT_PAGE_SHIFT);
-> > > -			dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
-> > > +			dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
-> > >   			__free_page(vgpu->gtt.scratch_pt[i].page);
-> > >   			vgpu->gtt.scratch_pt[i].page = NULL;
-> > >   			vgpu->gtt.scratch_pt[i].page_mfn = 0;
-> > > @@ -2741,7 +2740,7 @@ int intel_gvt_init_gtt(struct intel_gvt *gvt)
-> > >   	}
-> > >   	daddr = dma_map_page(dev, virt_to_page(page), 0,
-> > > -			4096, PCI_DMA_BIDIRECTIONAL);
-> > > +			4096, DMA_BIDIRECTIONAL);
-> > >   	if (dma_mapping_error(dev, daddr)) {
-> > >   		gvt_err("fail to dmamap scratch ggtt page\n");
-> > >   		__free_page(virt_to_page(page));
-> > > @@ -2755,7 +2754,7 @@ int intel_gvt_init_gtt(struct intel_gvt *gvt)
-> > >   		ret = setup_spt_oos(gvt);
-> > >   		if (ret) {
-> > >   			gvt_err("fail to initialize SPT oos\n");
-> > > -			dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
-> > > +			dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
-> > >   			__free_page(gvt->gtt.scratch_page);
-> > >   			return ret;
-> > >   		}
-> > > @@ -2779,7 +2778,7 @@ void intel_gvt_clean_gtt(struct intel_gvt *gvt)
-> > >   	dma_addr_t daddr = (dma_addr_t)(gvt->gtt.scratch_mfn <<
-> > >   					I915_GTT_PAGE_SHIFT);
-> > > -	dma_unmap_page(dev, daddr, 4096, PCI_DMA_BIDIRECTIONAL);
-> > > +	dma_unmap_page(dev, daddr, 4096, DMA_BIDIRECTIONAL);
-> > >   	__free_page(gvt->gtt.scratch_page);
-> > > diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> > > index 7efa386449d1..20b82fb036f8 100644
-> > > --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> > > +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> > > @@ -328,7 +328,7 @@ static int gvt_dma_map_page(struct intel_vgpu *vgpu, unsigned long gfn,
-> > >   		return ret;
-> > >   	/* Setup DMA mapping. */
-> > > -	*dma_addr = dma_map_page(dev, page, 0, size, PCI_DMA_BIDIRECTIONAL);
-> > > +	*dma_addr = dma_map_page(dev, page, 0, size, DMA_BIDIRECTIONAL);
-> > >   	if (dma_mapping_error(dev, *dma_addr)) {
-> > >   		gvt_vgpu_err("DMA mapping failed for pfn 0x%lx, ret %d\n",
-> > >   			     page_to_pfn(page), ret);
-> > > @@ -344,7 +344,7 @@ static void gvt_dma_unmap_page(struct intel_vgpu *vgpu, unsigned long gfn,
-> > >   {
-> > >   	struct device *dev = vgpu->gvt->gt->i915->drm.dev;
-> > > -	dma_unmap_page(dev, dma_addr, size, PCI_DMA_BIDIRECTIONAL);
-> > > +	dma_unmap_page(dev, dma_addr, size, DMA_BIDIRECTIONAL);
-> > >   	gvt_unpin_guest_page(vgpu, gfn, size);
-> > >   }
-> > > diff --git a/drivers/gpu/drm/i915/i915_gem_gtt.c b/drivers/gpu/drm/i915/i915_gem_gtt.c
-> > > index 36489be4896b..cd5f2348a187 100644
-> > > --- a/drivers/gpu/drm/i915/i915_gem_gtt.c
-> > > +++ b/drivers/gpu/drm/i915/i915_gem_gtt.c
-> > > @@ -30,7 +30,7 @@ int i915_gem_gtt_prepare_pages(struct drm_i915_gem_object *obj,
-> > >   	do {
-> > >   		if (dma_map_sg_attrs(obj->base.dev->dev,
-> > >   				     pages->sgl, pages->nents,
-> > > -				     PCI_DMA_BIDIRECTIONAL,
-> > > +				     DMA_BIDIRECTIONAL,
-> > >   				     DMA_ATTR_SKIP_CPU_SYNC |
-> > >   				     DMA_ATTR_NO_KERNEL_MAPPING |
-> > >   				     DMA_ATTR_NO_WARN))
-> > > @@ -64,7 +64,7 @@ void i915_gem_gtt_finish_pages(struct drm_i915_gem_object *obj,
-> > >   		usleep_range(100, 250);
-> > >   	dma_unmap_sg(i915->drm.dev, pages->sgl, pages->nents,
-> > > -		     PCI_DMA_BIDIRECTIONAL);
-> > > +		     DMA_BIDIRECTIONAL);
-> > >   }
-> > >   /**
-> > > -- 
-> > > 2.25.1
-> > > 
-> > 
-> 
+Along the way we change when the sch is quiescent or not to be linked to
+the open/close_device lifetime of the vfio_device, which is sort of what
+it was tring to do already, just not completely.
 
+The troublesome racey lifecycle of the css_driver callbacks is made clear
+with simple vfio_device refcounting so a callback is only delivered into a
+registered vfio_device and has obvious correctness.
+
+Move the only per-css_driver state, the "available instance" counter, into
+the core code and share that logic with many of the other drivers. The
+value is kept in the mdev_type memory.
+
+This is on github: https://github.com/jgunthorpe/linux/commits/vfio_ccw
+
+v3:
+ - Rebase to Christoph's group work & rc3; use
+   vfio_register_emulated_iommu_dev()
+ - Remove GFP_DMA
+ - Order mdev_unregister_driver() symmetrically with init
+ - Rework what is considered a BROKEN event in fsm_close()
+ - NOP both CCW_EVENT_OPEN/CLOSE
+ - Documentation updates
+ - Remane goto label to err_init vfio_ccw_mdev_probe()
+ - Fix NULL pointer deref in mdev_device_create()
+v2: https://lore.kernel.org/r/0-v2-7d3a384024cf+2060-ccw_mdev_jgg@nvidia.com
+ - Clean up the lifecycle in ccw with 7 new patches
+ - Rebase
+v1: https://lore.kernel.org/all/7-v2-7667f42c9bad+935-vfio3_jgg@nvidia.com
+
+Jason Gunthorpe (10):
+  vfio/ccw: Remove unneeded GFP_DMA
+  vfio/ccw: Use functions for alloc/free of the vfio_ccw_private
+  vfio/ccw: Pass vfio_ccw_private not mdev_device to various functions
+  vfio/ccw: Convert to use vfio_register_emulated_iommu_dev()
+  vfio/ccw: Make the FSM complete and synchronize it to the mdev
+  vfio/mdev: Consolidate all the device_api sysfs into the core code
+  vfio/mdev: Add mdev available instance checking to the core
+  vfio/ccw: Remove private->mdev
+  vfio: Export vfio_device_try_get()
+  vfio/ccw: Move the lifecycle of the struct vfio_ccw_private to the
+    mdev
+
+ .../driver-api/vfio-mediated-device.rst       |   8 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |   9 +-
+ drivers/s390/cio/vfio_ccw_drv.c               | 282 ++++++++----------
+ drivers/s390/cio/vfio_ccw_fsm.c               | 158 +++++++---
+ drivers/s390/cio/vfio_ccw_ops.c               | 240 +++++++--------
+ drivers/s390/cio/vfio_ccw_private.h           |  42 ++-
+ drivers/s390/crypto/vfio_ap_ops.c             |  41 +--
+ drivers/s390/crypto/vfio_ap_private.h         |   2 -
+ drivers/vfio/mdev/mdev_core.c                 |  13 +-
+ drivers/vfio/mdev/mdev_private.h              |   2 +
+ drivers/vfio/mdev/mdev_sysfs.c                |  64 +++-
+ drivers/vfio/vfio.c                           |   3 +-
+ include/linux/mdev.h                          |  13 +-
+ include/linux/vfio.h                          |   1 +
+ samples/vfio-mdev/mbochs.c                    |   9 +-
+ samples/vfio-mdev/mdpy.c                      |  31 +-
+ samples/vfio-mdev/mtty.c                      |  10 +-
+ 17 files changed, 482 insertions(+), 446 deletions(-)
+
+
+base-commit: d9a0cd510c3383b61db6f70a84e0c3487f836a63
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.33.0
+
