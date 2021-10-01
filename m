@@ -2,53 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE40641E465
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Oct 2021 00:58:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88A7C41EC4D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Oct 2021 13:36:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 973A06E48B;
-	Thu, 30 Sep 2021 22:58:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4E3606EE0F;
+	Fri,  1 Oct 2021 11:36:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x12c.google.com (mail-lf1-x12c.google.com
- [IPv6:2a00:1450:4864:20::12c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2E63B6E491
+Received: from mail-ed1-x529.google.com (mail-ed1-x529.google.com
+ [IPv6:2a00:1450:4864:20::529])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0B7C56EE0F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Sep 2021 22:58:41 +0000 (UTC)
-Received: by mail-lf1-x12c.google.com with SMTP id z24so31562004lfu.13
+ Fri,  1 Oct 2021 11:36:01 +0000 (UTC)
+Received: by mail-ed1-x529.google.com with SMTP id s17so33003023edd.8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Sep 2021 15:58:41 -0700 (PDT)
+ Fri, 01 Oct 2021 04:36:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=AnIUtRQtDgk3YDJAatwz+LXUKRWPbctJNdAprjwvZ5o=;
- b=FYrpNEp0zwymsUrUWvdUY9zg7bQqbIGfxDPPCHvF42IJ3bBpebm7KBYvtEnhjVJU+k
- kc0RkBkQWIC9qz9CmBvVwjaqxOXjsJrW+nKNcZSRCDscgYzAFIAzmbAFq4EDpnq2sNEI
- sbWlhfW7LvmJcBf2lYyFaAQ1NoPe0MZZNTMSdqwxSZQ9FrihxeYL48acwLrCVx0/oOCu
- bo/5xgQpQVGtvQrGXriciZI6ZLcCfsanEfD3fSOc+k4HKjLcd5FiNq+W1H/K1U0FLt0x
- TtjtVS2fUVBBlnpRN7k6ja0F1yP1w+LTfJJvd97Etbqlgl/4h4tpEJiIbsHj2huvYLaO
- 4TFw==
+ bh=5L/E4eErsLvrvRSyjenHMn1XgR3BfAibYkaUBTxnmho=;
+ b=pDRVncxZuVQY+ApUyAwcDbKHiRyNKYrCMGqacCkxsHbdpYsuSIii//AcJ7OUoJM12i
+ FzsOJUYq7uH0RGSU73XQciArGmU0o6Qo5SXQLVAvcv2p/Mr8qucNe/2CEHFzpJ9ZWmfj
+ EXZHZWQOKm3yoaoPKRmK/WDidtYpqCGDPxpQlSHLdJb628Xi4aTG8K1guni4i7QammQr
+ PAEUPhAuq0TK7C0/VVOQ1jLio5AWVmHE3t26L2ko9zp0FjwJwqYY1c61Y+wtM2xUwU0g
+ LGNwhFpCGOD1rsLzwFHgcH3GV7/BR2U0QnGP8dF33VJSsZWl1JaFHSAEzEH87UgjPDW6
+ Xyzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
- bh=AnIUtRQtDgk3YDJAatwz+LXUKRWPbctJNdAprjwvZ5o=;
- b=31r2Dx3nuiwlZrQFL4ipYx0sKPEEaQFtHoYOoTq/A614+IsQ79fmFX+wHBrwiOPKSb
- gB39L2tju3B7AggBXxt/GJd+J4Y6dC3gAzT+26A/dqIgsxvMU2QdFQB/OBvrwTRPGMG5
- EtsH6CoXrWDrQWdn5Qv0vHvsRZWqIIZKZKuBxKtbKwaKJ+CfkXvWIM2mo9VW5YmF9oqs
- it4/75KPW0L298ksPqFMYroUn7/QkfPDT5klW3eT67Oo2Zb6PPtcY6S0VaTAI9TQG9JC
- 7f5pYNHTLb0QXQcidoQobnA/43HM8idv/EbQOZbb0OPqjVt8TEFNanH/hFVo8iXScGXE
- igkA==
-X-Gm-Message-State: AOAM533Cecyn4eAHI14ehhUzz6j0Exa51XloPoDMsvJzHPisER5KYeL4
- 4aJ48Kd9q7FMYNoqCw0n4dlazSjQGmJW3tO6vwU=
-X-Google-Smtp-Source: ABdhPJx4GVBpAqUdpSc6GV2Ccser+SzsoFXEvbqpvIweCdcopVV+06RlyWu2S8RAkedNbXO5I85gVF7ApS9JXlkXPY0=
-X-Received: by 2002:a2e:98c3:: with SMTP id s3mr8845623ljj.430.1633042719148; 
- Thu, 30 Sep 2021 15:58:39 -0700 (PDT)
+ bh=5L/E4eErsLvrvRSyjenHMn1XgR3BfAibYkaUBTxnmho=;
+ b=LxQGkGRiuJV/qsHCnsbqi8z56djSesFB1X95OCJ9YUCFtZ0g5+RBJBEhdf3snio6DZ
+ 2v8nQSm7ronPOxJK2T8kXyHIvVjFoNuWxWlW+ih8n/qMkttYEq22L4wqVEZ4UlOSL19x
+ Jemawtz8vPZW+zvErAl8WTycApgTSCOVfea4rgvzb0h/7niUkk8RkmlQUIFOmcrB4Bwg
+ Ru6o250lmumAQzqaIt6TsP3LwdcZgWAlw6iWCAufSTIAsAj6omMBcWwF5BfV5gA/LzOY
+ 75CcnabkB5osbuttQTjubNhv7qnBe6FtAA41XcIRcN/kCQQotFaMvP9S6TqzKpJPLmuf
+ RJuQ==
+X-Gm-Message-State: AOAM533lGG9jWRwsLCAketMF3fPR6AdsaO/BbHH1uLALDXwHrFmkHySW
+ tF446vN09XxPep5d8TEoPRlN12ro4KOWT8TAH5Y=
+X-Google-Smtp-Source: ABdhPJzUbMhzx/EgTHV2sT9r56FkS8CptO9IFU+2bf8Ex2a74NwIJUt+mXahipYfUpIQ4MV6GMNKD1cvXpApPzTpbh4=
+X-Received: by 2002:a17:906:c05a:: with SMTP id
+ bm26mr5755375ejb.498.1633088159317; 
+ Fri, 01 Oct 2021 04:35:59 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a05:6512:5d8:0:0:0:0 with HTTP; Thu, 30 Sep 2021 15:58:38
+Received: by 2002:a17:906:724a:0:0:0:0 with HTTP; Fri, 1 Oct 2021 04:35:58
  -0700 (PDT)
-From: SOUTHWESTLOANCO <saniabdullahinng2020@gmail.com>
-Date: Thu, 30 Sep 2021 15:58:38 -0700
-Message-ID: <CA+3X9TwgMQ7NU-AkrdA8VQ5-2PDYbids5N+jtor+L_1QHLjV2w@mail.gmail.com>
-Subject: Dear owner,
+From: Joyce Thomas <tjoyc1234@gmail.com>
+Date: Fri, 1 Oct 2021 04:35:58 -0700
+Message-ID: <CAF-RpUiXZAnk+dimPUnrOX8gr9MM8G-jeCyScLZawJnh=en+Hw@mail.gmail.com>
+Subject: ATTN:
 To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -63,26 +64,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: southwestloanco59@gmail.com
+Reply-To: joymat52@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
--- 
-Good day,
-          Do you need a loan ? We offer any kind of loan to repay in
-6months with just 2% interest
-
-Kindly Reply with below information
-
-NAME...............
-ADDRESS..........
-OCCUPATION....
-AGE...................
-PHONE..............
-AMOUNT NEEDED......
-
-Regards
-
-Contact  Mr Gary Edward +13182955380
-
-Remittance Department southwestloanco59@gmail.com
+Hello Dear
+My Name is Mr. Joyce Thomas. Contact me for more information on the
+transfer of ($7.9 million dollars) left by my late client from your
+Country. I want to present you as a business partner and next of kin
+of the fund. I will give you the details of this transaction, as soon
+as I hear from you. I need the information below:
+Full Name:
+Address:
+Occupation:
+Age:
+Personal Email:
+Personal Telephone:
+Best Regards,
+Mr.Joyce  Thomas
