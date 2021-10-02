@@ -2,40 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8984241FC57
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Oct 2021 15:40:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B1D5E41FB9E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Oct 2021 14:08:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E25566E844;
-	Sat,  2 Oct 2021 13:40:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4B5B96E84E;
+	Sat,  2 Oct 2021 12:08:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.chl.kiev.ua (unknown [77.120.240.145])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 987946E83D
+Received: from mail-il1-x131.google.com (mail-il1-x131.google.com
+ [IPv6:2607:f8b0:4864:20::131])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 73E546E84E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  2 Oct 2021 13:40:05 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.chl.kiev.ua (Postfix) with ESMTP id 9D54D157BBFDF;
- Sat,  2 Oct 2021 02:31:28 +0300 (EEST)
-Received: from mail.chl.kiev.ua ([127.0.0.1])
- by localhost (mail.chl.kiev.ua [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id e2_WEfgo_cWw; Sat,  2 Oct 2021 02:31:28 +0300 (EEST)
-Received: from localhost (localhost [127.0.0.1])
- by mail.chl.kiev.ua (Postfix) with ESMTP id 0DF4E157BC4B1;
- Sat,  2 Oct 2021 01:02:12 +0300 (EEST)
-X-Virus-Scanned: amavisd-new at chl.kiev.ua
-Received: from mail.chl.kiev.ua ([127.0.0.1])
- by localhost (mail.chl.kiev.ua [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id VuRuXW_5lqxH; Sat,  2 Oct 2021 01:02:11 +0300 (EEST)
-Received: from [192.168.1.35] (unknown [154.57.3.93])
- by mail.chl.kiev.ua (Postfix) with ESMTPSA id 0DB6F15495EAA;
- Fri,  1 Oct 2021 21:14:35 +0300 (EEST)
-Content-Type: multipart/alternative; boundary="===============0277105884=="
+ Sat,  2 Oct 2021 12:07:59 +0000 (UTC)
+Received: by mail-il1-x131.google.com with SMTP id d11so13331084ilc.8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 02 Oct 2021 05:07:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=nsZbpm1YBoHMpWTnzHLuE/zYZ0yg4jBiKD5Q7oCTPBE=;
+ b=XX/iko2hurEe1bugEJypdaQs4WnL6ePxIm/ALugfB95HSayorI4kttqzMfFflQyw0v
+ NujLa6ABkSA8M8ZbpcyISjMir/Ra0KUFWPq9MgM7b+f5wCftGlAAUgkQ9AUMnZskpzic
+ HWrQTWEugroiqrtKMCgRB0f5HO0/mH5GuTVd7kQ/AiCHvR76g9ZKQM86f8GG36aZJxnG
+ jIk5VZYvywh6SnGNhdlcK26ym7101orNMxqq9370wI77kIFPkz7tO9WFua4ngxzSvFzJ
+ UC9+awugXmY6/L7EaTxIlppJ7nXts9AGG1edcJgOeJqkikxZ5fXXs3aRC2llSoVgJ5/i
+ Icyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=nsZbpm1YBoHMpWTnzHLuE/zYZ0yg4jBiKD5Q7oCTPBE=;
+ b=oNGK1PIuTRNSV9N8F0XmRasq5MqDL9igphw8mmO0UQJ5E1+6oHg1FDRdv2a3n25IHD
+ cjNoa2XsqYJShXJ5bUeJhUDeQ44Qkq1uhcB7Rldjw+uVBoPe9uDh4w2efDk3CL2DftcJ
+ +ZLKBUecmtzQfGH6UcwtkCHrjIPaYSRHgDHqAkXSdAjHGZk7deVIvpJrDNCSrCNCWkix
+ j32gJJtSBSMlkjWbgwqRx5tmrK6+pRf1MG0RLOWQWqkB8cbeRboh9OLhh1zMEDrccIlc
+ FGwun0ynW6TokayixAam+AgOLd7/2jQIYQaIS92yKYpZRDLQwneDRGTWD0jsiHd6Gagb
+ KhNw==
+X-Gm-Message-State: AOAM531e8gB6555cVPwzCW+r8X0PGTxBNYxjlsXVBP3wE8tYkuVksqj3
+ UaMeU3yhps2sBA1Lgy6vcH4oWPaL8RqBRATdyhI=
+X-Google-Smtp-Source: ABdhPJydZUyJ2zWfWNDskJbpzswJRBlzng31dRxkv3LN4TV8DcJ3jmoBc1j/+k3dhbEIWNbcbJwIs6Akvk0668Z5RJ4=
+X-Received: by 2002:a05:6e02:154f:: with SMTP id
+ j15mr2417939ilu.236.1633176478834; 
+ Sat, 02 Oct 2021 05:07:58 -0700 (PDT)
 MIME-Version: 1.0
-Subject: re
-To: Recipients <lawyer@chl.kiev.ua>
-From: lawyer@chl.kiev.ua
-Date: Fri, 01 Oct 2021 11:14:33 -0700
-Message-Id: <20211001181437.0DB6F15495EAA@mail.chl.kiev.ua>
+Received: by 2002:a4f:f90d:0:0:0:0:0 with HTTP;
+ Sat, 2 Oct 2021 05:07:58 -0700 (PDT)
+From: "U.n" <wadebaye33@gmail.com>
+Date: Sat, 2 Oct 2021 00:07:58 -1200
+Message-ID: <CACE0T5USv32sEayyZzzFEsoSStrmnr+9qTcrTB2UDrRPoGOCbQ@mail.gmail.com>
+Subject: Attention
+To: unitednnation0@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,41 +66,32 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: zionnetcredit5@financier.com
+Reply-To: unitednnation0@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============0277105884==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+--=20
 
-Hallo, Wij van Zion Finance Group bieden momenteel leningen aan tegen een l=
-age rente van 2%.
-Dit is een kans die u niet mag missen. We hebben een paar vragen;
-Heeft u schulden?
-Wilt u uw schulden afbetalen?
-Wil je financieel uitgerust zijn?
-Vraag dan vandaag nog een lening aan bij Zion Net Credit. Ge=EFnteresseerde=
- klanten worden verzocht contact op te nemen met zionnetcredit5@financier.c=
-om voor meer informatie.
-Wij willen u helpen met een lening.
-Gegroet, meneer Bernard.
---===============0277105884==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
 
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Diso-8859-1"/></head><BODY>Hallo, Wij van Zion Finance Group bieden momen=
-teel leningen aan tegen een lage rente van 2%.<BR>Dit is een kans die u nie=
-t mag missen. We hebben een paar vragen;<BR>Heeft u schulden?<BR>Wilt u uw =
-schulden afbetalen?<BR>Wil je financieel uitgerust zijn?<BR>Vraag dan vanda=
-ag nog een lening aan bij Zion Net Credit. Ge=EFnteresseerde klanten worden=
- verzocht contact op te nemen met <A href=3D"mailto:zionnetcredit5@financie=
-r.com">zionnetcredit5@financier.com</A> voor meer informatie.<BR>Wij willen=
- u helpen met een lening.<BR>Gegroet, meneer Bernard.</BODY></HTML>
---===============0277105884==--
+Attention Sir/Madam
+This is the United Nation (UN). We the United Nations (UN) Globally
+has approved (US$2.500,000)( two Million Five hundred thousand
+dollars) compensation as part of our responsibilities for humanitarian
+Aid for fighting against CoronaVirus and you are among the lucky ones.
+
+
+This compensation is for the most affected countries, communities and
+families across the global. Your funds were deposited with Bank in USA
+to transfer your funds to you via Internet Banking. You have to send
+your full details as state below:with this email Address
+  ( unitednnation0@gmail.com )
+Your full names:
+Address:
+Telephone:
+Occupation:
+
+
+
+Yours Sincerely
+Mr. Ant=C3=B3nio Guterres
+United Nations (UN).
