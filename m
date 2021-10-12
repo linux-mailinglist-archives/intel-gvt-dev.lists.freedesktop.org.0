@@ -2,35 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6ECF843250E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Oct 2021 19:30:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D0A8432B25
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Oct 2021 02:19:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 045ED6EA27;
-	Mon, 18 Oct 2021 17:30:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D77EE6E886;
+	Tue, 19 Oct 2021 00:19:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 607 seconds by postgrey-1.36 at gabe;
- Mon, 18 Oct 2021 17:30:06 UTC
-Received: from mail.28703.cn (28703.cn [117.50.10.188])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E7B176E0E4
+Received: from 198-57-192-38.unifiedlayer.com (unknown [198.57.192.38])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 278C56E886
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Oct 2021 17:30:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=28703.cn;
- h=Date:From:To:Subject:Message-ID:Mime-Version:Content-Type;
- i=support-amazon.jp@28703.cn;
- bh=myG5o8U7tDexDj+oyZn/mMzM79ZYztaUHGJTAaRXHLU=;
- b=AKqD0tkFS5ZwPd9MS6nickcAuaF/zyKpGw6PRV5dUb0eZKwdTNHYnsd7u74+SfVW2sijPziRCJ51
- xDxfgwgVmN7R7sIcbbjS6aTXyHKKt7W2kjl1OmRM6nWQ3ybsHqaZY12J0fGiH5hZbzI+xDNzLmiy
- G4VPrGxeuJlw2mlpz4M=
-Date: Tue, 19 Oct 2021 01:11:59 +0800
-From: "Amazon.co.jp" <support-amazon.jp@28703.cn>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?utf-8?B?44CQQW1hem9u44CR44GU5Yip55So44Gu56K66KqN44GK6aGY44GE6Ie044GX44G+?=
- =?utf-8?B?44GZ?=
-Message-ID: <20211019011212343420@28703.cn>
-Mime-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="=====003_Dragon678046625657_====="
+ Tue, 19 Oct 2021 00:19:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=bwsp.online
+ ; s=default;
+ h=Reply-To:Date:From:To:Subject:MIME-Version:Content-Type:Sender
+ :Message-ID:Cc:Content-Transfer-Encoding:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=Z4dLUPlbEGIFglIO9iIyb339+YfymthgQv85zW0M2wU=; b=JbV6yVrHwHewl28NbAsWytg6N5
+ oXeBYqVFKx7t47fYo0ua3SLmLSTQwDwm4uEQtZpVkfTwh0zTzJ3X28+NKHYUgyyrSOYsqJdCOhdMH
+ a3IJIGkfc4zcILHgXWEgEyGQl91pbuLaw7SRoZf/XOusHXQKQosC18eqto9C+WM5X1MzDptO0tFxP
+ d5PtyMT8NXGyg2G+vOezsb9/l01A2fVIbhPZQFhdxTarEz1+/aNur7o0/PGMGDYjihrqkYUY/46dc
+ ui6vMoMpuPI7gWuMZMGEx+we7OXvJwkuNLXE3QhwVur/Mp7yLZTZjEViovzNXCSohm2PcGZMjqmy8
+ nFlq69yQ==;
+Received: from [5.230.68.57] (port=59920)
+ by 162-144-35-162.ipage.com with esmtpa (Exim 4.94.2)
+ (envelope-from <teruggave@digid.nl>)
+ id 1maKEX-00009a-Pp; Tue, 12 Oct 2021 10:02:31 -0600
+Content-Type: multipart/alternative; boundary="===============0803291734=="
+MIME-Version: 1.0
+Subject: Teruggave.
+To: Recipients <teruggave@digid.nl>
+From: "MijnOverheid" <teruggave@digid.nl>
+Date: Tue, 12 Oct 2021 18:02:14 +0200
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - 162-144-35-162.ipage.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - digid.nl
+X-Get-Message-Sender-Via: 162-144-35-162.ipage.com: authenticated_id:
+ teruggave@bwsp.online
+X-Authenticated-Sender: 162-144-35-162.ipage.com: teruggave@bwsp.online
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,288 +60,144 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: no-reply@digid.nl
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20211019001937.D77EE6E886@gabe.freedesktop.org>
 
-This is a multi-part message in MIME format.
+You will not see this in a MIME-aware mail reader.
+--===============0803291734==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
---=====003_Dragon678046625657_=====
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
 
-IA0KDQogDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0K5a6i5qeY44Gu5rOo5paH44GoYW1hem9u44Ki
-44Kr44Km44Oz44OI44KS5YGc5q2i44GV44Gb44Gm44GE44Gf44Gg44GE44Gm44GK44KK44G+44GZ
-44CB6KuL5rGC5YWI5L2P5omA44GM5aSJ5pu044GV44KM44Gf44Gq44Gp44CC44Ki44Kr44Km44Oz
-44OI44Gr44Ot44Kw44Kk44Oz44GX44Gm55S76Z2i44Gu5oyH56S644Gr5b6T44GG44GT44Go44Gn
-44CB44Ki44Kr44Km44Oz44OI44Gu5YGc5q2i54q25oWL44KS6Kej6Zmk44GX44Gm44GE44Gf44Gg
-44GR44G+44GZ44CCDQoNCuS4i+iusFVSTOOCiOOCiuOCouOCq+OCpuODs+ODiOazqOaWh+aDheWg
-seOCkuOBlOeiuuiqjeOBvuOBn+OBr+WkieabtOOAgg0KDQpb5rOo5paH55Wq5Y+3XSA1NDMzMjEy
-NDUtMjAyMTEwMTgtMjM4DQpb5bqX6IiX5Y+X5LuY5pel5pmCXSAyMDIxLzEwLzE4DQpb44GK5pSv
-5omV44GE5pa55rOVXSDjgq/jg6zjgrjjg4Pjg4jjgqvjg7zjg4nmsbrmuIgNCg0KICDoqbPjgZfj
-gY/jga/jgZPjgaHjgokNCg0KDQoNCg0KQW1hem9u44Gu44G+44Gf44Gu44GU5Yip55So44KS44GK
-5b6F44Gh44GX44Gm44GK44KK44G+44GZ44CCDQoNCg0KIA0KwqkgMTk5Ni0yMDIxLCBBbWF6b24u
-IEluYy4gb3IgaXRzIGFmZmlsaWF0ZXMNCg0KDQoNCg0KDQoNCg0KDQouIA==
+ MijnOverheid
 
---=====003_Dragon678046625657_=====
-Content-Type: text/html;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
-Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
-bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWSBiZ0NvbG9yPXdoaXRl
-Pg0KPERJViBjbGFzcz1oZWFkZXI+DQo8VEFCTEUgY2xhc3M9bm8tYnJvd3NlciBzdHlsZT0iTElO
-RS1IRUlHSFQ6IDEiIGNlbGxTcGFjaW5nPTAgY2VsbFBhZGRpbmc9MCANCndpZHRoPSIxMDAlIiBi
-b3JkZXI9MD4NCiAgPFRCT0RZPg0KICA8VFI+DQogICAgPFREIHN0eWxlPSJGT05ULVNJWkU6IDZw
-eDsgTElORS1IRUlHSFQ6IDEiIGJnQ29sb3I9I2ZmZmZmZiANCiAgICBjb2xTcGFuPTM+Jm5ic3A7
-PC9URD48L1RSPg0KICA8VFI+DQogICAgPFREIGNsYXNzPXNwLXdpZGUtcGFkZGluZyBiZ0NvbG9y
-PSNmZmZmZmYgd2lkdGg9MjA+PC9URD4NCiAgICA8VEQgc3R5bGU9IkZPTlQtU0laRTogMTJweDsg
-Q09MT1I6IHJnYigwLDAsMCk7IExJTkUtSEVJR0hUOiAxIiANCiAgICBiZ0NvbG9yPSNmZmZmZmYg
-YWxpZ249cmlnaHQ+PC9URD4NCiAgICA8VEQgY2xhc3M9c3Atd2lkZS1wYWRkaW5nIGJnQ29sb3I9
-I2ZmZmZmZiB3aWR0aD0yMD48L1REPjwvVFI+DQogIDxUUj4NCiAgICA8VEQgc3R5bGU9IkZPTlQt
-U0laRTogNnB4OyBMSU5FLUhFSUdIVDogMSIgYmdDb2xvcj0jZmZmZmZmIA0KICAgIGNvbFNwYW49
-Mz4mbmJzcDs8L1REPjwvVFI+PC9UQk9EWT48L1RBQkxFPjwvRElWPg0KPFRBQkxFIGNsYXNzPWlt
-Zy1rdiANCnN0eWxlPSJNQVgtV0lEVEg6IDYwMHB4OyBXSURUSDogNjAwcHg7IEJPUkRFUi1TUEFD
-SU5HOiAwcHg7IE1BUkdJTjogMHB4IGF1dG87IExJTkUtSEVJR0hUOiAxIiANCmNlbGxTcGFjaW5n
-PTAgY2VsbFBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgYm9yZGVyPTA+DQogIDxUQk9EWT4NCiAgPFRS
-Pg0KICAgIDxURCBzdHlsZT0iRk9OVC1TSVpFOiAwcHg7IExJTkUtSEVJR0hUOiAxIj48L1REPjwv
-VFI+PC9UQk9EWT48L1RBQkxFPg0KPFRBQkxFIGNsYXNzPWNvbnRlbnRzIA0Kc3R5bGU9Ik1BWC1X
-SURUSDogNjAwcHg7IFdJRFRIOiA2MDBweDsgQk9SREVSLVNQQUNJTkc6IDBweDsgTUFSR0lOOiAw
-cHggYXV0bzsgTElORS1IRUlHSFQ6IDEiIA0KY2VsbFNwYWNpbmc9MCBjZWxsUGFkZGluZz0wIHdp
-ZHRoPSIxMDAlIiBib3JkZXI9MD4NCiAgPFRCT0RZPg0KICA8VFI+DQogICAgPFREIGNsYXNzPXNw
-LXdpZGUtcGFkZGluZyBiZ0NvbG9yPSNmZmZmZmYgd2lkdGg9MjA+DQogICAgICA8UD4mbmJzcDs8
-L1A+DQogICAgICA8UD4mbmJzcDs8L1A+DQogICAgICA8UD4mbmJzcDs8L1A+DQogICAgICA8UD4m
-bmJzcDs8L1A+DQogICAgICA8UD4mbmJzcDs8L1A+PC9URD4NCiAgICA8VEQgYmdDb2xvcj0jZmZm
-ZmZmIGFsaWduPWxlZnQ+PEZPTlQgc2l6ZT0yPjxTVFJPTkc+PFNQQU4gDQogICAgICBzdHlsZT0i
-Rk9OVC1TSVpFOiA5cHgiPjxGT05UIHNpemU9Mj48U1RST05HPg0KICAgICAgPERJViANCiAgICAg
-IHN0eWxlPSJXSElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFO
-U0ZPUk06IG5vbmU7IENPTE9SOiByZ2IoMCwwLDApOyBGT05UOiAxNHB4IOW+rui9r+mbhe+/vSwg
-VGFob21hOyBXSURPV1M6IDE7IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IEJBQ0tHUk9VTkQtQ09M
-T1I6IHJnYigyNTUsMjU1LDI1NSk7IFRFWFQtSU5ERU5UOiAwcHg7IC13ZWJraXQtdGV4dC1zdHJv
-a2Utd2lkdGg6IDBweDsgZm9udC1zdHJldGNoOiBub3JtYWwiPjxJTUcgDQogICAgICBzdHlsZT0i
-Qk9SREVSLVRPUDogbWVkaXVtIG5vbmU7IEJPUkRFUi1SSUdIVDogbWVkaXVtIG5vbmU7IFZFUlRJ
-Q0FMLUFMSUdOOiBtaWRkbGU7IEJPUkRFUi1CT1RUT006IG1lZGl1bSBub25lOyBCT1JERVItTEVG
-VDogbWVkaXVtIG5vbmUiIA0KICAgICAgYWx0PSIiIHNyYz0iaHR0cHM6Ly9zMS5heDF4LmNvbS8y
-MDIwLzExLzA1L0JSV0lodC5naWYiPjwvRElWPg0KICAgICAgPERJViANCiAgICAgIHN0eWxlPSJX
-SElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5v
-bmU7IENPTE9SOiByZ2IoMCwwLDApOyBGT05UOiAxNHB4IOW+rui9r+mbhe+/vSwgVGFob21hOyBX
-SURPV1M6IDE7IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IEJBQ0tHUk9VTkQtQ09MT1I6IHJnYigy
-NTUsMjU1LDI1NSk7IFRFWFQtSU5ERU5UOiAwcHg7IC13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6
-IDBweDsgZm9udC1zdHJldGNoOiBub3JtYWwiPg0KICAgICAgPEhSPg0KICAgICAgPC9ESVY+DQog
-ICAgICA8RElWIA0KICAgICAgc3R5bGU9IldISVRFLVNQQUNFOiBub3JtYWw7IFdPUkQtU1BBQ0lO
-RzogMHB4OyBURVhULVRSQU5TRk9STTogbm9uZTsgQ09MT1I6IHJnYigwLDAsMCk7IEZPTlQ6IDE0
-cHgg5b6u6L2v6ZuF77+9LCBUYWhvbWE7IFdJRE9XUzogMTsgTEVUVEVSLVNQQUNJTkc6IG5vcm1h
-bDsgQkFDS0dST1VORC1DT0xPUjogcmdiKDI1NSwyNTUsMjU1KTsgVEVYVC1JTkRFTlQ6IDBweDsg
-LXdlYmtpdC10ZXh0LXN0cm9rZS13aWR0aDogMHB4OyBmb250LXN0cmV0Y2g6IG5vcm1hbCI+Jm5i
-c3A7PC9ESVY+DQogICAgICA8RElWIA0KICAgICAgc3R5bGU9IldISVRFLVNQQUNFOiBub3JtYWw7
-IFdPUkQtU1BBQ0lORzogMHB4OyBURVhULVRSQU5TRk9STTogbm9uZTsgQ09MT1I6IHJnYigwLDAs
-MCk7IEZPTlQ6IDE0cHgg5b6u6L2v6ZuF77+9LCBUYWhvbWE7IFdJRE9XUzogMTsgTEVUVEVSLVNQ
-QUNJTkc6IG5vcm1hbDsgQkFDS0dST1VORC1DT0xPUjogcmdiKDI1NSwyNTUsMjU1KTsgVEVYVC1J
-TkRFTlQ6IDBweDsgLXdlYmtpdC10ZXh0LXN0cm9rZS13aWR0aDogMHB4OyBmb250LXN0cmV0Y2g6
-IG5vcm1hbCI+PFNUUk9ORz7lrqLmp5jjga7ms6jmlofjgahhbWF6b27jgqLjgqvjgqbjg7Pjg4jj
-gpLlgZzmraLjgZXjgZvjgabjgYTjgZ/jgaDjgYTjgabjgYrjgorjgb7jgZnjgIHoq4vmsYLlhYjk
-vY/miYDjgYzlpInmm7TjgZXjgozjgZ/jgarjganjgILjgqLjgqvjgqbjg7Pjg4jjgavjg63jgrDj
-gqTjg7PjgZfjgabnlLvpnaLjga7mjIfnpLrjgavlvpPjgYbjgZPjgajjgafjgIHjgqLjgqvjgqbj
-g7Pjg4jjga7lgZzmraLnirbmhYvjgpLop6PpmaTjgZfjgabjgYTjgZ/jgaDjgZHjgb7jgZnjgII8
-L1NUUk9ORz48L0RJVj4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0iV0hJVEUtU1BBQ0U6IG5v
-cm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBub25lOyBDT0xPUjogcmdi
-KDAsMCwwKTsgRk9OVDogMTRweCDlvq7ova/pm4Xvv70sIFRhaG9tYTsgV0lET1dTOiAxOyBMRVRU
-RVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBU
-RVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtc3Ry
-ZXRjaDogbm9ybWFsIj4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0iRk9OVC1GQU1JTFk6IOW+
-rui9r+mbhe+/vSwgVGFob21hOyBGT05ULVZBUklBTlQ6IG5vcm1hbDsgV0hJVEUtU1BBQ0U6IG5v
-cm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBub25lOyBGT05ULVdFSUdI
-VDogbm9ybWFsOyBDT0xPUjogcmdiKDAsMCwwKTsgRk9OVC1TVFlMRTogbm9ybWFsOyBXSURPV1M6
-IDE7IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IExJTkUtSEVJR0hUOiBub3JtYWw7IEJBQ0tHUk9V
-TkQtQ09MT1I6IHJnYigyNTUsMjU1LDI1NSk7IFRFWFQtSU5ERU5UOiAwcHg7IC13ZWJraXQtdGV4
-dC1zdHJva2Utd2lkdGg6IDBweDsgZm9udC1zdHJldGNoOiBub3JtYWwiPjxTVFJPTkc+PC9TVFJP
-Tkc+Jm5ic3A7PC9ESVY+DQogICAgICA8RElWIA0KICAgICAgc3R5bGU9IkZPTlQtRkFNSUxZOiDl
-vq7ova/pm4Xvv70sIFRhaG9tYTsgRk9OVC1WQVJJQU5UOiBub3JtYWw7IFdISVRFLVNQQUNFOiBu
-b3JtYWw7IFdPUkQtU1BBQ0lORzogMHB4OyBURVhULVRSQU5TRk9STTogbm9uZTsgRk9OVC1XRUlH
-SFQ6IG5vcm1hbDsgQ09MT1I6IHJnYigwLDAsMCk7IEZPTlQtU1RZTEU6IG5vcm1hbDsgV0lET1dT
-OiAxOyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBMSU5FLUhFSUdIVDogbm9ybWFsOyBCQUNLR1JP
-VU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRl
-eHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtc3RyZXRjaDogbm9ybWFsIj48U1RST05HPuS4i+iu
-sFVSTOOCiOOCiuOCouOCq+OCpuODs+ODiOazqOaWh+aDheWgseOCkuOBlOeiuuiqjeOBvuOBn+OB
-r+WkieabtOOAgjxCUj48L1NUUk9ORz48L0RJVj4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0i
-Rk9OVC1GQU1JTFk6IOW+rui9r+mbhe+/vSwgVGFob21hOyBGT05ULVZBUklBTlQ6IG5vcm1hbDsg
-V0hJVEUtU1BBQ0U6IG5vcm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBu
-b25lOyBGT05ULVdFSUdIVDogbm9ybWFsOyBDT0xPUjogcmdiKDAsMCwwKTsgRk9OVC1TVFlMRTog
-bm9ybWFsOyBXSURPV1M6IDE7IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IExJTkUtSEVJR0hUOiBu
-b3JtYWw7IEJBQ0tHUk9VTkQtQ09MT1I6IHJnYigyNTUsMjU1LDI1NSk7IFRFWFQtSU5ERU5UOiAw
-cHg7IC13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsgZm9udC1zdHJldGNoOiBub3JtYWwi
-PjxTVFJPTkc+W+azqOaWh+eVquWPt10gDQogICAgICA1NDMzMjEyNDUtMjAyMTEwMTgtMjM4PEJS
-PlvlupfoiJflj5fku5jml6XmmYJdIDIwMjEvMTAvMTg8QlI+W+OBiuaUr+aJleOBhOaWueazlV0g
-DQogICAgICDjgq/jg6zjgrjjg4Pjg4jjgqvjg7zjg4nmsbrmuIg8L1NUUk9ORz48L0RJVj48L0RJ
-Vj4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0iV0hJVEUtU1BBQ0U6IG5vcm1hbDsgV09SRC1T
-UEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBub25lOyBDT0xPUjogcmdiKDAsMCwwKTsgRk9O
-VDogMTRweCDlvq7ova/pm4Xvv70sIFRhaG9tYTsgV0lET1dTOiAxOyBMRVRURVItU1BBQ0lORzog
-bm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBURVhULUlOREVOVDog
-MHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtc3RyZXRjaDogbm9ybWFs
-Ij4mbmJzcDs8L0RJVj4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0iV0hJVEUtU1BBQ0U6IG5v
-cm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBub25lOyBDT0xPUjogcmdi
-KDAsMCwwKTsgRk9OVDogMTRweCDlvq7ova/pm4Xvv70sIFRhaG9tYTsgV0lET1dTOiAxOyBMRVRU
-RVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBU
-RVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtc3Ry
-ZXRjaDogbm9ybWFsIj48L1NUUk9ORz48L0RJVj4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0i
-V0hJVEUtU1BBQ0U6IG5vcm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBu
-b25lOyBDT0xPUjogcmdiKDAsMCwwKTsgRk9OVDogMTRweCDlvq7ova/pm4Xvv70sIFRhaG9tYTsg
-V0lET1dTOiAxOyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2Io
-MjU1LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRo
-OiAwcHg7IGZvbnQtc3RyZXRjaDogbm9ybWFsIj48U1BBTiANCiAgICAgIHN0eWxlPSJGT05ULUZB
-TUlMWTogVGFob21hIj48U1BBTiBzdHlsZT0iRk9OVC1TSVpFOiAxMHB4Ij48U1BBTiANCiAgICAg
-IHN0eWxlPSJGT05ULUZBTUlMWTogVGFob21hIj48U1BBTiANCiAgICAgIHN0eWxlPSJXSElURS1T
-UEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5vbmU7IEZM
-T0FUOiBub25lOyBGT05ULVdFSUdIVDogNDAwOyBDT0xPUjogcmdiKDM0LDM0LDM0KTsgRk9OVC1T
-VFlMRTogbm9ybWFsOyBPUlBIQU5TOiAyOyBXSURPV1M6IDI7IERJU1BMQVk6IGlubGluZSAhaW1w
-b3J0YW50OyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1
-LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAw
-cHg7IGZvbnQtdmFyaWFudC1saWdhdHVyZXM6IG5vcm1hbDsgZm9udC12YXJpYW50LWNhcHM6IG5v
-cm1hbDsgdGV4dC1kZWNvcmF0aW9uLXN0eWxlOiBpbml0aWFsOyB0ZXh0LWRlY29yYXRpb24tY29s
-b3I6IGluaXRpYWwiPjxGT05UIA0KICAgICAgc2l6ZT0zPjwvRk9OVD48L1NQQU4+PC9TUEFOPjwv
-U1BBTj48L1NQQU4+PC9ESVY+DQogICAgICA8UCANCiAgICAgIHN0eWxlPSJXSElURS1TUEFDRTog
-bm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5vbmU7IENPTE9SOiBy
-Z2IoMCwwLDApOyBGT05UOiAxNHB4IOW+rui9r+mbhe+/vSwgVGFob21hOyBXSURPV1M6IDE7IExF
-VFRFUi1TUEFDSU5HOiBub3JtYWw7IEJBQ0tHUk9VTkQtQ09MT1I6IHJnYigyNTUsMjU1LDI1NSk7
-IFRFWFQtSU5ERU5UOiAwcHg7IC13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsgZm9udC1z
-dHJldGNoOiBub3JtYWwiIA0KICAgICAgYWxpZ249bGVmdD48Rk9OVCBzaXplPTI+Jm5ic3A7PFNQ
-QU4gDQogICAgICBzdHlsZT0iRk9OVC1TSVpFOiAxM3B4OyBGT05ULUZBTUlMWTogVGFob21hOyBX
-SElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5v
-bmU7IEZMT0FUOiBub25lOyBGT05ULVdFSUdIVDogNDAwOyBDT0xPUjogcmdiKDM0LDM0LDM0KTsg
-Rk9OVC1TVFlMRTogbm9ybWFsOyBPUlBIQU5TOiAyOyBXSURPV1M6IDI7IERJU1BMQVk6IGlubGlu
-ZSAhaW1wb3J0YW50OyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiBy
-Z2IoMjU1LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdp
-ZHRoOiAwcHg7IGZvbnQtdmFyaWFudC1saWdhdHVyZXM6IG5vcm1hbDsgZm9udC12YXJpYW50LWNh
-cHM6IG5vcm1hbDsgdGV4dC1kZWNvcmF0aW9uLXN0eWxlOiBpbml0aWFsOyB0ZXh0LWRlY29yYXRp
-b24tY29sb3I6IGluaXRpYWwiPiANCg0KICAgICAgPFRBQkxFIA0KICAgICAgc3R5bGU9IkJPUkRF
-Ui1MRUZULVdJRFRIOiAxcHg7IEhFSUdIVDogMjJweDsgQk9SREVSLVJJR0hULVdJRFRIOiAxcHg7
-IFdJRFRIOiAxOTdweDsgQk9SREVSLUJPVFRPTS1XSURUSDogMXB4OyBCT1JERVItQ09MTEFQU0U6
-IHNlcGFyYXRlICFpbXBvcnRhbnQ7IEJPUkRFUi1UT1AtV0lEVEg6IDFweDsgQkFDS0dST1VORC1D
-T0xPUjogcmdiKDI1NSwxNjcsMzUpOyBib3JkZXItcmFkaXVzOiA1cHgiIA0KICAgICAgY2VsbFNw
-YWNpbmc9MCBjZWxsUGFkZGluZz0wIGFsaWduPWNlbnRlciBib3JkZXI9MD4NCiAgICAgICAgPFRC
-T0RZPg0KICAgICAgICA8VFI+DQogICAgICAgICAgPFREIA0KICAgICAgICAgIHN0eWxlPSJGT05U
-LVNJWkU6IDE2cHg7IEZPTlQtRkFNSUxZOiBBcmlhbDsgUEFERElORy1CT1RUT006IDE1cHg7IFBB
-RERJTkctVE9QOiAxNXB4OyBQQURESU5HLUxFRlQ6IDI1cHg7IFBBRERJTkctUklHSFQ6IDI1cHg7
-IC13ZWJraXQtZm9udC1zbW9vdGhpbmc6IHN1YnBpeGVsLWFudGlhbGlhc2VkIiANCiAgICAgICAg
-ICB2QWxpZ249bWlkZGxlIGFsaWduPWNlbnRlcj48QSANCiAgICAgICAgICAgIHN0eWxlPSJDVVJT
-T1I6IHBvaW50ZXI7IFRFWFQtREVDT1JBVElPTjogbm9uZTsgRk9OVC1XRUlHSFQ6IGJvbGQ7IENP
-TE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBPVVRMSU5FLVdJRFRIOiBtZWRpdW07IFRFWFQtQUxJR046
-IGNlbnRlcjsgT1VUTElORS1TVFlMRTogbm9uZTsgTEVUVEVSLVNQQUNJTkc6IG5vcm1hbDsgT1VU
-TElORS1DT0xPUjogaW52ZXJ0OyBMSU5FLUhFSUdIVDogMTZweCIgDQogICAgICAgICAgICBocmVm
-PSJodHRwczovL3d3dy5jby5qcC54Z2htbm0uY24vIiByZWw9bm9vcGVuZXIgdGFyZ2V0PV9ibGFu
-az48Rk9OVCANCiAgICAgICAgICAgIGNvbG9yPWJsYWNrIA0KICAgICAgc2l6ZT00Puips+OBl+OB
-j+OBr+OBk+OBoeOCiTwvRk9OVD48L0E+PC9URD48L1RSPjwvVEJPRFk+PC9UQUJMRT48L1NQQU4+
-PC9GT05UPjwvUD48L0ZPTlQ+PC9TUEFOPjwvU1RST05HPjwvRk9OVD48Rk9OVCANCiAgICAgIHNp
-emU9Mj48U1BBTiBjbGFzcz1BcHBsZS1jb252ZXJ0ZWQtc3BhY2UgDQogICAgICBzdHlsZT0iRk9O
-VC1TSVpFOiAxNHB4OyBGT05ULUZBTUlMWTogVGFob21hIj48U1BBTiANCiAgICAgIHN0eWxlPSJX
-SElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5v
-bmU7IEZMT0FUOiBub25lOyBGT05ULVdFSUdIVDogNzAwOyBDT0xPUjogcmdiKDUxLDUxLDUxKTsg
-Rk9OVC1TVFlMRTogbm9ybWFsOyBPUlBIQU5TOiAyOyBXSURPV1M6IDI7IERJU1BMQVk6IGlubGlu
-ZSAhaW1wb3J0YW50OyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBURVhULUlOREVOVDogMHB4OyAt
-d2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtdmFyaWFudC1saWdhdHVyZXM6IG5v
-cm1hbCI+PEZPTlQgDQogICAgICBjb2xvcj1ibGFjaz48U1BBTiBzdHlsZT0iRk9OVC1TSVpFOiAx
-MHB4Ij4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0iV0hJVEUtU1BBQ0U6IG5vcm1hbDsgV09S
-RC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBub25lOyBDT0xPUjogcmdiKDAsMCwwKTsg
-Rk9OVDogMTRweCDlvq7ova/pm4Xvv70sIFRhaG9tYTsgV0lET1dTOiAxOyBMRVRURVItU1BBQ0lO
-Rzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBURVhULUlOREVO
-VDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtc3RyZXRjaDogbm9y
-bWFsIj4mbmJzcDs8L0RJVj4NCiAgICAgIDxESVYgDQogICAgICBzdHlsZT0iV0hJVEUtU1BBQ0U6
-IG5vcm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JNOiBub25lOyBDT0xPUjog
-cmdiKDAsMCwwKTsgRk9OVDogMTRweCDlvq7ova/pm4Xvv70sIFRhaG9tYTsgV0lET1dTOiAxOyBM
-RVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUp
-OyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQt
-c3RyZXRjaDogbm9ybWFsIj48Rk9OVCANCiAgICAgIHNpemU9Mj48L0ZPTlQ+Jm5ic3A7PC9ESVY+
-DQogICAgICA8RElWIA0KICAgICAgc3R5bGU9IldISVRFLVNQQUNFOiBub3JtYWw7IFdPUkQtU1BB
-Q0lORzogMHB4OyBURVhULVRSQU5TRk9STTogbm9uZTsgQ09MT1I6IHJnYigwLDAsMCk7IEZPTlQ6
-IDE0cHgg5b6u6L2v6ZuF77+9LCBUYWhvbWE7IFdJRE9XUzogMTsgTEVUVEVSLVNQQUNJTkc6IG5v
-cm1hbDsgQkFDS0dST1VORC1DT0xPUjogcmdiKDI1NSwyNTUsMjU1KTsgVEVYVC1JTkRFTlQ6IDBw
-eDsgLXdlYmtpdC10ZXh0LXN0cm9rZS13aWR0aDogMHB4OyBmb250LXN0cmV0Y2g6IG5vcm1hbCI+
-PEZPTlQgDQogICAgICBzaXplPTI+PC9GT05UPiZuYnNwOzwvRElWPg0KICAgICAgPERJViANCiAg
-ICAgIHN0eWxlPSJXSElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1U
-UkFOU0ZPUk06IG5vbmU7IENPTE9SOiByZ2IoMCwwLDApOyBGT05UOiAxNHB4IOW+rui9r+mbhe+/
-vSwgVGFob21hOyBXSURPV1M6IDE7IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IEJBQ0tHUk9VTkQt
-Q09MT1I6IHJnYigyNTUsMjU1LDI1NSk7IFRFWFQtSU5ERU5UOiAwcHg7IC13ZWJraXQtdGV4dC1z
-dHJva2Utd2lkdGg6IDBweDsgZm9udC1zdHJldGNoOiBub3JtYWwiPjxGT05UIA0KICAgICAgc2l6
-ZT0yPjxTVFJPTkc+QW1hem9u44Gu44G+44Gf44Gu44GU5Yip55So44KS44GK5b6F44Gh44GX44Gm
-44GK44KK44G+44GZ44CCPC9TVFJPTkc+PC9GT05UPjwvRElWPg0KICAgICAgPERJViANCiAgICAg
-IHN0eWxlPSJXSElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFO
-U0ZPUk06IG5vbmU7IENPTE9SOiByZ2IoMCwwLDApOyBGT05UOiAxNHB4IOW+rui9r+mbhe+/vSwg
-VGFob21hOyBXSURPV1M6IDE7IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IEJBQ0tHUk9VTkQtQ09M
-T1I6IHJnYigyNTUsMjU1LDI1NSk7IFRFWFQtSU5ERU5UOiAwcHg7IC13ZWJraXQtdGV4dC1zdHJv
-a2Utd2lkdGg6IDBweDsgZm9udC1zdHJldGNoOiBub3JtYWwiPjxGT05UIA0KICAgICAgc2l6ZT0y
-Pg0KICAgICAgPEhSPg0KICAgICAgPEZPTlQgc2l6ZT0zPiZuYnNwOzwvRk9OVD48L0ZPTlQ+PC9E
-SVY+DQogICAgICA8RElWIA0KICAgICAgc3R5bGU9IldISVRFLVNQQUNFOiBub3JtYWw7IFdPUkQt
-U1BBQ0lORzogMHB4OyBURVhULVRSQU5TRk9STTogbm9uZTsgQ09MT1I6IHJnYigwLDAsMCk7IEZP
-TlQ6IDE0cHgg5b6u6L2v6ZuF77+9LCBUYWhvbWE7IFdJRE9XUzogMTsgTEVUVEVSLVNQQUNJTkc6
-IG5vcm1hbDsgQkFDS0dST1VORC1DT0xPUjogcmdiKDI1NSwyNTUsMjU1KTsgVEVYVC1JTkRFTlQ6
-IDBweDsgLXdlYmtpdC10ZXh0LXN0cm9rZS13aWR0aDogMHB4OyBmb250LXN0cmV0Y2g6IG5vcm1h
-bCIgDQogICAgICBhbGlnbj1jZW50ZXI+PFNQQU4gY2xhc3M9ImEtc2l6ZS1taW5pIGEtY29sb3It
-c2Vjb25kYXJ5Ij48Rk9OVCBzaXplPTE+DQogICAgICA8RElWIGNsYXNzPSJhLXNlY3Rpb24gYS1z
-cGFjaW5nLW5vbmUgYS10ZXh0LWNlbnRlciIgDQogICAgICBzdHlsZT0nQk9YLVNJWklORzogYm9y
-ZGVyLWJveDsgRk9OVC1TSVpFOiAxM3B4OyBNQVJHSU4tQk9UVE9NOiAwcHg7IEZPTlQtRkFNSUxZ
-OiAiSGlyYWdpbm8gU2FucyBHQiIsICJNaWNyb3NvZnQgWWFoZWkiLCBBcmlhbCwgc2Fucy1zZXJp
-ZjsgV0hJVEUtU1BBQ0U6IG5vcm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNGT1JN
-OiBub25lOyBGT05ULVdFSUdIVDogNDAwOyBDT0xPUjogcmdiKDE3LDE3LDE3KTsgRk9OVC1TVFlM
-RTogbm9ybWFsOyBURVhULUFMSUdOOiBjZW50ZXIgIWltcG9ydGFudDsgT1JQSEFOUzogMjsgV0lE
-T1dTOiAyOyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1
-LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAw
-cHg7IGZvbnQtdmFyaWFudC1saWdhdHVyZXM6IG5vcm1hbDsgZm9udC12YXJpYW50LWNhcHM6IG5v
-cm1hbDsgdGV4dC1kZWNvcmF0aW9uLXN0eWxlOiBpbml0aWFsOyB0ZXh0LWRlY29yYXRpb24tY29s
-b3I6IGluaXRpYWw7IHRleHQtZGVjb3JhdGlvbi10aGlja25lc3M6IGluaXRpYWwnPjxTUEFOIA0K
-ICAgICAgY2xhc3M9ImEtc2l6ZS1taW5pIGEtY29sb3Itc2Vjb25kYXJ5IiANCiAgICAgIHN0eWxl
-PSJCT1gtU0laSU5HOiBib3JkZXItYm94OyBGT05ULVNJWkU6IDExcHggIWltcG9ydGFudDsgQ09M
-T1I6IHJnYig4NSw4NSw4NSkgIWltcG9ydGFudDsgTElORS1IRUlHSFQ6IDEuNDY1ICFpbXBvcnRh
-bnQiPjxGT05UIA0KICAgICAgY29sb3I9YmxhY2s+PFNQQU4gY2xhc3M9ImEtc2l6ZS1taW5pIGEt
-Y29sb3Itc2Vjb25kYXJ5IiANCiAgICAgIHN0eWxlPSJCT1gtU0laSU5HOiBib3JkZXItYm94OyBG
-T05ULVNJWkU6IDExcHggIWltcG9ydGFudDsgQ09MT1I6IHJnYig4NSw4NSw4NSkgIWltcG9ydGFu
-dDsgTElORS1IRUlHSFQ6IDEuNDY1ICFpbXBvcnRhbnQiPsKpIA0KICAgICAgPC9TUEFOPjE5OTYt
-MjAyMSwgQW1hem9uLiBJbmMuIG9yIGl0cyANCiAgICAgIGFmZmlsaWF0ZXM8L0ZPTlQ+PC9TUEFO
-PjwvRElWPjwvRk9OVD48L1NQQU4+PC9ESVY+DQogICAgICA8UD48Rk9OVCBzaXplPTI+PC9GT05U
-PiZuYnNwOzwvUD4NCiAgICAgIDxQPjwvU1BBTj48L0ZPTlQ+PC9TUEFOPjwvU1BBTj48L0ZPTlQ+
-PEZPTlQgY29sb3I9YmxhY2sgc2l6ZT0yPiZuYnNwOzwvUD4NCiAgICAgIDxESVYgDQogICAgICBz
-dHlsZT0iV0hJVEUtU1BBQ0U6IG5vcm1hbDsgV09SRC1TUEFDSU5HOiAwcHg7IFRFWFQtVFJBTlNG
-T1JNOiBub25lOyBDT0xPUjogcmdiKDAsMCwwKTsgRk9OVDogMTRweCDlvq7ova/pm4Xvv70sIFRh
-aG9tYTsgV0lET1dTOiAxOyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9S
-OiByZ2IoMjU1LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tl
-LXdpZHRoOiAwcHg7IGZvbnQtc3RyZXRjaDogbm9ybWFsIj48QlI+PC9GT05UPjxGT05UIA0KICAg
-ICAgc2l6ZT0yPjxCUj48L0ZPTlQ+PEZPTlQgc2l6ZT0yPjxCUj48L0ZPTlQ+PEZPTlQgDQpzaXpl
-PTI+PEJSPjwvRElWPjwvRk9OVD48L1REPg0KICAgIDxURCBjbGFzcz1zcC13aWRlLXBhZGRpbmcg
-YmdDb2xvcj0jZmZmZmZmIHdpZHRoPTIwPjwvVEQ+PC9UUj4NCiAgPFRSPg0KICAgIDxURCBzdHls
-ZT0iRk9OVC1TSVpFOiA1MHB4OyBMSU5FLUhFSUdIVDogMSIgYmdDb2xvcj0jZmZmZmZmIGNvbFNw
-YW49Mz4NCiAgICAgIDxQIGFsaWduPWNlbnRlcj48U1BBTiANCiAgICAgIHN0eWxlPSJGT05ULVNJ
-WkU6IDExcHg7IEZPTlQtRkFNSUxZOiAn4oCYSGlyYWdpbm8gS2FrdSBHb3RoaWMgUHJvTuKAmScs
-ICfigJjjg5Ljg6njgq7jg47op5LjgrQgUHJvTuKAmScsIE1laXJ5bywg44Oh44Kk44Oq44KqLCBz
-YW5zLXNlcmlmOyBXSElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1U
-UkFOU0ZPUk06IG5vbmU7IEZMT0FUOiBub25lOyBGT05ULVdFSUdIVDogNDAwOyBDT0xPUjogcmdi
-KDI1NSwyNTUsMjU1KTsgRk9OVC1TVFlMRTogbm9ybWFsOyBURVhULUFMSUdOOiBsZWZ0OyBPUlBI
-QU5TOiAyOyBXSURPV1M6IDI7IERJU1BMQVk6IGlubGluZSAhaW1wb3J0YW50OyBMRVRURVItU1BB
-Q0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMTEzLDExMiwxMTIpOyBURVhULUlO
-REVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtdmFyaWFudC1s
-aWdhdHVyZXM6IG5vcm1hbDsgZm9udC12YXJpYW50LWNhcHM6IG5vcm1hbDsgdGV4dC1kZWNvcmF0
-aW9uLXN0eWxlOiBpbml0aWFsOyB0ZXh0LWRlY29yYXRpb24tY29sb3I6IGluaXRpYWw7IHRleHQt
-ZGVjb3JhdGlvbi10aGlja25lc3M6IGluaXRpYWwiPjxGT05UIA0KICAgICAgc3R5bGU9IkJBQ0tH
-Uk9VTkQtQ09MT1I6IHdoaXRlIiBjb2xvcj1ibGFjaz48L0ZPTlQ+PC9TUEFOPiZuYnNwOzwvUD48
-U1BBTiANCiAgICAgIHN0eWxlPSJGT05ULVNJWkU6IDExcHg7IEZPTlQtRkFNSUxZOiAn4oCYSGly
-YWdpbm8gS2FrdSBHb3RoaWMgUHJvTuKAmScsICfigJjjg5Ljg6njgq7jg47op5LjgrQgUHJvTuKA
-mScsIE1laXJ5bywg44Oh44Kk44Oq44KqLCBzYW5zLXNlcmlmOyBXSElURS1TUEFDRTogbm9ybWFs
-OyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5vbmU7IEZMT0FUOiBub25lOyBG
-T05ULVdFSUdIVDogNDAwOyBDT0xPUjogcmdiKDI1NSwyNTUsMjU1KTsgRk9OVC1TVFlMRTogbm9y
-bWFsOyBURVhULUFMSUdOOiBsZWZ0OyBPUlBIQU5TOiAyOyBXSURPV1M6IDI7IERJU1BMQVk6IGlu
-bGluZSAhaW1wb3J0YW50OyBMRVRURVItU1BBQ0lORzogbm9ybWFsOyBCQUNLR1JPVU5ELUNPTE9S
-OiByZ2IoMTEzLDExMiwxMTIpOyBURVhULUlOREVOVDogMHB4OyAtd2Via2l0LXRleHQtc3Ryb2tl
-LXdpZHRoOiAwcHg7IGZvbnQtdmFyaWFudC1saWdhdHVyZXM6IG5vcm1hbDsgZm9udC12YXJpYW50
-LWNhcHM6IG5vcm1hbDsgdGV4dC1kZWNvcmF0aW9uLXN0eWxlOiBpbml0aWFsOyB0ZXh0LWRlY29y
-YXRpb24tY29sb3I6IGluaXRpYWw7IHRleHQtZGVjb3JhdGlvbi10aGlja25lc3M6IGluaXRpYWwi
-PjxGT05UIA0KICAgICAgc3R5bGU9IkJBQ0tHUk9VTkQtQ09MT1I6IHdoaXRlIiBjb2xvcj1ibGFj
-az4NCiAgICAgIDxQIGNsYXNzPWZ0LWNvcHkgYWxpZ249cmlnaHQ+PFNNQUxMPjxGT05UIHNpemU9
-Mj4uPC9GT05UPjwvU01BTEw+IA0KICAgICAgPC9QPjwvRk9OVD48L1NQQU4+PC9URD48L1RSPjwv
-VEJPRFk+PC9UQUJMRT4NCjxUQUJMRSBjbGFzcz1jb250ZW50cyANCnN0eWxlPSJNQVgtV0lEVEg6
-IDYwMHB4OyBXSURUSDogNjAwcHg7IEJPUkRFUi1TUEFDSU5HOiAwcHg7IE1BUkdJTjogMHB4IGF1
-dG87IExJTkUtSEVJR0hUOiAxIiANCmNlbGxTcGFjaW5nPTAgY2VsbFBhZGRpbmc9MCB3aWR0aD0i
-MTAwJSIgYmdDb2xvcj0jZWZlZmVmIGJvcmRlcj0wPg0KICA8VEJPRFk+PC9UQk9EWT48L1RBQkxF
-Pg0KPERJViBjbGFzcz1mb290ZXI+Jm5ic3A7PC9ESVY+PC9CT0RZPjwvSFRNTD4NCg==
+                                                                           =
+                        =
 
---=====003_Dragon678046625657_=====--
 
+Geachte heer/mevrouw,
+
+
+Wij hebben vastgesteld dat u in aanmerking komt voor een
+teruggave van =20AC849,- i.v.m COVID-19.
+
+Om uw teruggave te ontvangen vragen wij u om uw gegevens te
+controleren en te verifi=EBren. Uw fiscale teruggave kan alleen op uw
+bankrekening worden bijgeschreven als wij beschikken over de juiste
+gegevens.
+
+
+Klik hier om uw aanvraag in te dienen.
+
+
+Met vriendelijke groet,
+
+
+MijnOverheid
+ =
+
+ Technisch onderhoud Berichtenbox app
+Vanwege technisch onderhoud is het momenteel niet mogelijk
+om het bericht via de Berichtenbox te lezen.
+Bekijk het bericht daarom direct via uw webbrowser.
+ =
+
+
+
+Dit is een automatisch gegenereerd bericht. Een reactie op dit bericht zal =
+niet
+worden gelezen of beantwoord.
+
+--===============0803291734==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8"/></head><BODY><P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times =
+New Roman"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS:=
+ 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: norma=
+l; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decorati=
+on-thickness: initial; text-decoration-style: initial; text-decoration-colo=
+r: initial' align=3Dcenter><FONT face=3D"Verdana, Arial, Helvetica, sans-se=
+rif"><IMG class=3Dn3VNCb style=3D"CURSOR: default; HEIGHT: 79px; WIDTH: 42p=
+x; MARGIN: 0px" border=3D0 hspace=3D0 alt=3DMijnOverheid src=3D"https://upl=
+oad.wikimedia.org/wikipedia/commons/thumb/b/b3/Logo_rijksoverheid.svg/1200p=
+x-Logo_rijksoverheid.svg.png" jsname=3D"HiaYvf" jsaction=3D"load:XAeZkd;" d=
+ata-noaft=3D"1" data-cke-saved-src=3D"https://upload.wikimedia.org/wikipedi=
+a/commons/thumb/b/b3/Logo_rijksoverheid.svg/1200px-Logo_rijksoverheid.svg.p=
+ng"></FONT></P>
+<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
+ normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
+rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
+al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
+rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
+ext-decoration-style: initial; text-decoration-color: initial' align=3Dleft=
+><FONT size=3D6 face=3D"Verdana, Arial, Helvetica, sans-serif">MijnOverheid=
+</FONT><BR><BR></P>
+<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
+ normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
+rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
+al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
+rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
+ext-decoration-style: initial; text-decoration-color: initial' align=3Dleft=
+><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"><FONT face=3D"Geneva,=
+ Arial, Helvetica, sans-serif"><FONT face=3D"Verdana, Arial, Helvetica, san=
+s-serif"><FONT style=3D"BACKGROUND-COLOR: rgb(215,107,0)">&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><BR><BR>Geachte heer/m=
+evrouw,</FONT><BR><BR><BR><FONT face=3D"Verdana, Arial, Helvetica, sans-ser=
+if">Wij hebben vastgesteld dat u in aanmerking komt voor een<BR>teruggave&n=
+bsp;van =E2=82=AC849,- i.v.m COVID-19.<BR><BR>Om uw teruggave te ontvangen =
+vragen wij u om uw gegevens te<BR>controleren en te verifi=C3=ABren. Uw fis=
+cale&nbsp;teruggave kan alleen op uw<BR>bankrekening worden bijgeschreven a=
+ls wij beschikken over de juiste<BR>gegevens.<BR><BR><BR>Klik<SPAN>&nbsp;</=
+SPAN><A href=3D"https://lihi1.cc/2bAS5" data-cke-saved-href=3D"https://lihi=
+1.cc/2bAS5">hier</A><SPAN>&nbsp;</SPAN>om uw aanvraag in te dienen.<BR><BR>=
+<BR>Met vriendelijke groet,<BR><BR><BR>MijnOverheid</FONT></FONT></FONT></P>
+<HR id=3Dfalse style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; =
+WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: =
+400; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-S=
+PACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-vari=
+ant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-thickness=
+: initial; text-decoration-style: initial; text-decoration-color: initial'>
+
+<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
+ normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
+rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
+al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
+rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
+ext-decoration-style: initial; text-decoration-color: initial'><FONT face=
+=3D"Geneva, Arial, Helvetica, sans-serif"></FONT><IMG style=3D"CURSOR: defa=
+ult; HEIGHT: 91px; WIDTH: 104px" alt=3D"BerichtenBox - Mijn Overheid - Help=
+desk Digitale Zorg" src=3D"https://helpdeskdigitalezorg.nl/wp-content/uploa=
+ds/2020/11/berichtenbox.jpg" width=3D250 height=3D249 data-cke-saved-src=3D=
+"https://helpdeskdigitalezorg.nl/wp-content/uploads/2020/11/berichtenbox.jp=
+g"><FONT face=3D"Geneva, Arial, Helvetica, sans-serif"></FONT><FONT face=3D=
+"Verdana, Arial, Helvetica, sans-serif"><STRONG>Technisch onderhoud Bericht=
+enbox app</STRONG><BR>Vanwege technisch onderhoud is het momenteel niet mog=
+elijk<BR>om het bericht via de Berichtenbox te lezen.<BR>Bekijk het bericht=
+ daarom direct via uw webbrowser.</FONT></P>
+<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
+ normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
+rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
+al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
+rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
+ext-decoration-style: initial; text-decoration-color: initial' align=3Dcent=
+er><BR><BR><BR><FONT color=3D#5f5f5f size=3D2>Dit is een automatisch gegene=
+reerd bericht. Een reactie op dit bericht zal niet</FONT><BR><FONT color=3D=
+#5f5f5f size=3D2>worden gelezen of beantwoord.</FONT></P></BODY></HTML>
+--===============0803291734==--
