@@ -2,41 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7000842C18D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Oct 2021 15:37:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B4FDB42FF8B
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Oct 2021 02:52:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1877E89A44;
-	Wed, 13 Oct 2021 13:37:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6F70D6EE38;
+	Sat, 16 Oct 2021 00:52:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DA5806E0E5
+X-Greylist: delayed 614 seconds by postgrey-1.36 at gabe;
+ Sat, 16 Oct 2021 00:52:05 UTC
+Received: from e-sj.pw (e-sj.pw [106.75.109.90])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 001A86EE37
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Oct 2021 13:37:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="227322681"
-X-IronPort-AV: E=Sophos;i="5.85,371,1624345200"; d="scan'208";a="227322681"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Oct 2021 06:37:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,371,1624345200"; d="scan'208";a="480793777"
-Received: from lkp-server02.sh.intel.com (HELO 08b2c502c3de) ([10.239.97.151])
- by orsmga007.jf.intel.com with ESMTP; 13 Oct 2021 06:37:14 -0700
-Received: from kbuild by 08b2c502c3de with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1maeRV-0004e4-V8; Wed, 13 Oct 2021 13:37:13 +0000
-Date: Wed, 13 Oct 2021 21:36:46 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhi Wang <zhi.a.wang@intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
- zhenyu.z.wang@intel.com
-Subject: [intel-gvt:gvt-next] BUILD SUCCESS
- 1309e8a5b4d0f7b41c3c839e7c376e8359a13251
-Message-ID: <6166e0ee.dFRRZUKZ1UUYq3XX%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Sat, 16 Oct 2021 00:52:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=e-sj.pw;
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=sales@e-sj.pw; bh=zy2TNaAagZU5pknsYymFV2oTrnk=;
+ b=srkZ6kdqFw8AoNv/dKOSicFBcVvGyVH01OtSou1sv5FHOpj5sqJGHRd7r/fYTl2IaRZcw4+UwLmR
+ Cz11S+uqHfZzxY3tp4boqjkXV+N7FidZWpA2Gsw+tFxgCdl/jCNkkDtcMHHADDmzsqf6xgXN/lk6
+ IYsqDthZ0Dvn4mO1Mjc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=default; d=e-sj.pw;
+ b=rdg4dNMlb840V4ZWqWgB9czMIvnaJnzg/Km5n2sgP9PM+ReP+RW0ahvTiKsJ9tw63btHbwvWarsM
+ 7BdHNZ9+9GPnUNYcnLxpo3bSZ9YlYKI9lRIsHcKXxtKt21TL3uAAjWd0JdZ7IKkXLzUfgMPgYTfq
+ lZ/MSOcxudzzwK+YG8M=;
+From: Government Of South Sudan<sales@e-sj.pw >
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: RE:  OPPORTUNITY FOR CONSTRUCTION,
+ SUPPLY OF GOOD AND SERVICES IN SOUTH SUDAN
+Date: 16 Oct 2021 08:32:16 +0800
+Message-ID: <20211016083216.793775680551B0F2@e-sj.pw>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,276 +47,422 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: info@sivd.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-next
-branch HEAD: 1309e8a5b4d0f7b41c3c839e7c376e8359a13251  drm/i915/gvt: Fix cmd parser error for Passmark9
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.20120"></HEAD>
+<BODY>
+<SPAN style=3D'FONT-SIZE: small; FONT-FAMILY: "trebuchet ms", sans-serif; W=
+HITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 4=
+00; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER=
+-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; fon=
+t-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke=
+-width: 0px; text-decoration-thickness: initial; text-decoration-style: ini=
+tial; text-decoration-color: initial'=20
+name=3D"PlaceName"><SPAN name=3D"PlaceType"><SPAN name=3D"place">
+<P style=3D'FONT-SIZE: 12pt; FONT-FAMILY: "Times New Roman"; BACKGROUND-IMA=
+GE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MARGIN: 0i=
+n 0in 0pt; background-size: initial; background-origin: initial; background=
+-clip: initial'><SPAN style=3D"BOX-SIZING: border-box"><SPAN style=3D"BOX-S=
+IZING: border-box"><B>
+<SPAN style=3D"FONT-SIZE: 18pt; BORDER-TOP: windowtext 1pt; BORDER-RIGHT: w=
+indowtext 1pt; BORDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-=
+TOP: 0in; PADDING-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0i=
+n">Government of Republic of South Sudan</SPAN></B></SPAN></SPAN><SPAN styl=
+e=3D"FONT-SIZE: 10.5pt"></SPAN></P></SPAN></SPAN></SPAN>
+<DIV class=3Dgmail_default style=3D'FONT-SIZE: small; FONT-FAMILY: "trebuch=
+et ms", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM:=
+ none; FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS:=
+ 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); =
+TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal=
+; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-=
+decoration-style: initial; text-decoration-color:=20
+initial'>
+<DIV class=3Dgmail_default>
+<DIV class=3Dgmail_default>
+<DIV class=3Dgmail_default><SPAN name=3D"PlaceName"><SPAN name=3D"PlaceType=
+"><SPAN name=3D"place"></SPAN></SPAN></SPAN><SPAN name=3D"PlaceName"><SPAN =
+name=3D"PlaceType"><SPAN name=3D"place"></SPAN></SPAN></SPAN><SPAN name=3D"=
+PlaceName"><SPAN name=3D"PlaceType"><SPAN name=3D"place"></SPAN></SPAN></SP=
+AN><SPAN name=3D"PlaceName"><SPAN name=3D"PlaceType"><SPAN name=3D"place"><=
+/SPAN></SPAN></SPAN><SPAN name=3D"PlaceName"><SPAN name=3D"PlaceType"><SPAN=
+ name=3D"place">
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><SPAN style=3D"BOX-SIZING: border-b=
+ox"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"FONT-SIZE: 18pt; BORDER-TOP: windowtext 1pt; BORDER-RIGHT: w=
+indowtext 1pt; BORDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-=
+TOP: 0in; PADDING-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0i=
+n">Ministry of Presidential Affairs</SPAN></B></SPAN></SPAN><SPAN style=3D"=
+FONT-SIZE: 10.5pt"></SPAN></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><SPAN style=3D"BOX-SIZING: border-b=
+ox"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"FONT-SIZE: 18pt; BORDER-TOP: windowtext 1pt; BORDER-RIGHT: w=
+indowtext 1pt; BORDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-=
+TOP: 0in; PADDING-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0i=
+n">Juba, Republic Of South Sudan.</SPAN></B></SPAN></SPAN><SPAN style=3D"FO=
+NT-SIZE: 10.5pt"></SPAN></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><SPAN style=3D"FONT-SIZE: 10.5pt"><=
+/SPAN>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><SPAN style=3D"FONT-SIZE: 10.5pt"><=
+/SPAN>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><SPAN style=3D"BOX-SIZING: border-b=
+ox"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"FONT-SIZE: 18pt; BORDER-TOP: windowtext 1pt; BORDER-RIGHT: w=
+indowtext 1pt; BORDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-=
+TOP: 0in; PADDING-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0i=
+n">Attention: The Managing Director/CEO</SPAN></B></SPAN></SPAN><SPAN style=
+=3D"FONT-SIZE: 10.5pt"></SPAN></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><U><FONT size=3D4><SPAN style=3D"BO=
+X-SIZING: border-box"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"BORDER-TOP: windowtext 1pt; BORDER-RIGHT: windowtext 1pt; BO=
+RDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-TOP: 0in; PADDING=
+-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0in">RE:&nbsp; OPPO=
+RTUNITY FOR CONSTRUCTION, SUPPLY OF GOOD AND SERVICES IN SOUTH SUDAN.</SPAN=
+></B></SPAN></SPAN></FONT></U></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><BR style=3D"BOX-SIZING: border-box=
+">Dear intel-gvt-dev,</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>
+The Revitalized Transitional Government of National Unity (RTGoNU) of South=
+ Sudan under the terms of the agreement of the government has agreed to wor=
+k together to bring development to the people of South Sudan. The governmen=
+t's major budget has been centered on these opportunities which we intend t=
+o spend higher for the construction and provision of goods and services.</P=
+>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>
+On this note, many opportunities are open to individuals, companies and org=
+anizations to come and partner with the Government of South Sudan to achiev=
+e this aim. Are you a contractor, broker, company, individual&nbsp; organiz=
+ation or consultant interested in construction, supply of goods and service=
+s in various ministries and government agencies here, kindly contact us bac=
+k for the list of construction, goods and services we require.</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>We have supply opportunities in the=
+se key areas of</P>
+<P style=3D'FONT-SIZE: 12pt; FONT-FAMILY: "Times New Roman"; BACKGROUND-IMA=
+GE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MARGIN: 0i=
+n 0in 0pt; background-size: initial; background-origin: initial; background=
+-clip: initial'>&nbsp;</P>
+<P style=3D'FONT-SIZE: 12pt; FONT-FAMILY: "Times New Roman"; BACKGROUND-IMA=
+GE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MARGIN: 0i=
+n 0in 0pt 0.75in; background-size: initial; background-origin: initial; bac=
+kground-clip: initial'><B>I.<SPAN style=3D"FONT-SIZE: 7pt; LINE-HEIGHT: nor=
+mal; font-variant-numeric: normal; font-variant-east-asian: normal; font-st=
+retch: normal; font-kerning: auto; font-feature-settings: normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN>Agricultu<WBR>ral Equipments =
+&amp; Machineries</B></P>
+<P style=3D'FONT-SIZE: 12pt; FONT-FAMILY: "Times New Roman"; BACKGROUND-IMA=
+GE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MARGIN: 0i=
+n 0in 0pt 0.75in; background-size: initial; background-origin: initial; bac=
+kground-clip: initial'><B>II.<SPAN style=3D"FONT-SIZE: 7pt; LINE-HEIGHT: no=
+rmal; font-variant-numeric: normal; font-variant-east-asian: normal; font-s=
+tretch: normal; font-kerning: auto; font-feature-settings: normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;</SPAN>Constructio<WBR>n Equipments &amp; Infrastructu=
+ral Developments</B></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt 0.75in; background-size: initial; backgro=
+und-origin: initial; background-clip: initial'><B>III.<SPAN style=3D"FONT-S=
+IZE: 7pt; LINE-HEIGHT: normal; font-variant-numeric: normal; font-variant-e=
+ast-asian: normal; font-stretch: normal; font-kerning: auto; font-feature-s=
+ettings: normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</SPAN>Consultancy, Health and Hospital consumables</B></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt 0.75in; background-size: initial; backgro=
+und-origin: initial; background-clip: initial'><B>IV.<SPAN style=3D"FONT-SI=
+ZE: 7pt; LINE-HEIGHT: normal; font-variant-numeric: normal; font-variant-ea=
+st-asian: normal; font-stretch: normal; font-kerning: auto; font-feature-se=
+ttings: normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</SPAN>Computer &nbsp;&amp; Accessories, /I.C.T,</B></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt 0.75in; background-size: initial; backgro=
+und-origin: initial; background-clip: initial'><B>V.<SPAN style=3D"FONT-SIZ=
+E: 7pt; LINE-HEIGHT: normal; font-variant-numeric: normal; font-variant-eas=
+t-asian: normal; font-stretch: normal; font-kerning: auto; font-feature-set=
+tings: normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;</SPAN>Office Equipment &amp; School Accessories</B></=
+P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt 0.75in; background-size: initial; backgro=
+und-origin: initial; background-clip: initial'><B>VI.<SPAN style=3D"FONT-SI=
+ZE: 7pt; LINE-HEIGHT: normal; font-variant-numeric: normal; font-variant-ea=
+st-asian: normal; font-stretch: normal; font-kerning: auto; font-feature-se=
+ttings: normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</SPAN>Transportation &#8211; Truck, Buses, Cars &amp; Utility Vehicles,=
+ Motorcycles.</B></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt 0.75in; background-size: initial; backgro=
+und-origin: initial; background-clip: initial'><B>VII.<SPAN style=3D"FONT-S=
+IZE: 7pt; LINE-HEIGHT: normal; font-variant-numeric: normal; font-variant-e=
+ast-asian: normal; font-stretch: normal; font-kerning: auto; font-feature-s=
+ettings: normal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></B><B>P=
+ower Plant/ Electricity Development, Generators &amp; Street Lights</B></P>=
 
-elapsed time: 1636m
-
-configs tested: 250
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allmodconfig
-arm                              allyesconfig
-i386                 randconfig-c001-20211012
-i386                 randconfig-c001-20211013
-s390                       zfcpdump_defconfig
-m68k                        m5307c3_defconfig
-mips                        omega2p_defconfig
-arm                            mmp2_defconfig
-arm                        mini2440_defconfig
-arc                     nsimosci_hs_defconfig
-sh                   sh7724_generic_defconfig
-powerpc                     pseries_defconfig
-xtensa                          iss_defconfig
-arm                           sunxi_defconfig
-powerpc                   motionpro_defconfig
-arm                           corgi_defconfig
-arm                        vexpress_defconfig
-powerpc                     stx_gp3_defconfig
-sh                  sh7785lcr_32bit_defconfig
-arm                        shmobile_defconfig
-sh                          r7780mp_defconfig
-powerpc                 linkstation_defconfig
-mips                      malta_kvm_defconfig
-arm                           sama7_defconfig
-powerpc                 mpc834x_itx_defconfig
-m68k                       m5249evb_defconfig
-csky                             alldefconfig
-mips                            e55_defconfig
-powerpc                     mpc5200_defconfig
-xtensa                generic_kc705_defconfig
-powerpc                      makalu_defconfig
-sh                             espt_defconfig
-m68k                       bvme6000_defconfig
-sh                         ecovec24_defconfig
-arm                          lpd270_defconfig
-arc                          axs103_defconfig
-s390                          debug_defconfig
-mips                           mtx1_defconfig
-parisc                generic-32bit_defconfig
-xtensa                  audio_kc705_defconfig
-powerpc                     tqm8548_defconfig
-powerpc                     tqm8560_defconfig
-powerpc                 mpc8560_ads_defconfig
-powerpc                       holly_defconfig
-arm                            dove_defconfig
-ia64                            zx1_defconfig
-nds32                            alldefconfig
-arc                            hsdk_defconfig
-arm                         s5pv210_defconfig
-arm                            hisi_defconfig
-arm                        keystone_defconfig
-powerpc                     akebono_defconfig
-arm                            qcom_defconfig
-powerpc                      obs600_defconfig
-sparc                            alldefconfig
-powerpc                        warp_defconfig
-arm                    vt8500_v6_v7_defconfig
-m68k                        m5407c3_defconfig
-powerpc                    klondike_defconfig
-powerpc                 mpc85xx_cds_defconfig
-riscv                             allnoconfig
-arm                       mainstone_defconfig
-sh                          urquell_defconfig
-arm                        realview_defconfig
-arm                          exynos_defconfig
-m68k                           sun3_defconfig
-arm                           omap1_defconfig
-alpha                            allyesconfig
-powerpc                        icon_defconfig
-m68k                          multi_defconfig
-arm                          imote2_defconfig
-mips                  maltasmvp_eva_defconfig
-openrisc                            defconfig
-arm64                            alldefconfig
-powerpc                       maple_defconfig
-arm                             ezx_defconfig
-ia64                             allyesconfig
-mips                 decstation_r4k_defconfig
-arm                     eseries_pxa_defconfig
-sh                           se7751_defconfig
-arm                        spear6xx_defconfig
-arm                          iop32x_defconfig
-mips                        bcm47xx_defconfig
-arm                      tct_hammer_defconfig
-arm                         lpc32xx_defconfig
-arm                       multi_v4t_defconfig
-sh                        sh7785lcr_defconfig
-powerpc                    sam440ep_defconfig
-mips                           ip28_defconfig
-sh                           se7724_defconfig
-sparc                       sparc64_defconfig
-mips                          ath25_defconfig
-powerpc                      tqm8xx_defconfig
-arm                            pleb_defconfig
-mips                      bmips_stb_defconfig
-powerpc                 mpc834x_mds_defconfig
-arc                    vdk_hs38_smp_defconfig
-arc                              alldefconfig
-arm                           tegra_defconfig
-mips                   sb1250_swarm_defconfig
-powerpc                      ep88xc_defconfig
-sh                          kfr2r09_defconfig
-powerpc                      mgcoge_defconfig
-arm                          simpad_defconfig
-mips                           ip22_defconfig
-powerpc                     tqm5200_defconfig
-sh                   secureedge5410_defconfig
-powerpc                       ppc64_defconfig
-mips                         cobalt_defconfig
-sh                      rts7751r2d1_defconfig
-sh                           se7206_defconfig
-arm                        mvebu_v5_defconfig
-powerpc                        fsp2_defconfig
-mips                          malta_defconfig
-m68k                         amcore_defconfig
-arm                          badge4_defconfig
-sh                            hp6xx_defconfig
-arm                          collie_defconfig
-arm                         axm55xx_defconfig
-nios2                         10m50_defconfig
-powerpc                      katmai_defconfig
-powerpc                      ppc44x_defconfig
-powerpc                 mpc837x_rdb_defconfig
-mips                         tb0219_defconfig
-m68k                          amiga_defconfig
-arm                      footbridge_defconfig
-microblaze                          defconfig
-mips                        vocore2_defconfig
-sh                          landisk_defconfig
-um                             i386_defconfig
-arc                           tb10x_defconfig
-mips                           ip32_defconfig
-powerpc                       ebony_defconfig
-powerpc                       eiger_defconfig
-mips                        nlm_xlp_defconfig
-sh                 kfr2r09-romimage_defconfig
-mips                        qi_lb60_defconfig
-powerpc                         ps3_defconfig
-mips                         tb0287_defconfig
-sh                           se7722_defconfig
-powerpc                    adder875_defconfig
-arm                           spitz_defconfig
-powerpc                     sequoia_defconfig
-openrisc                    or1ksim_defconfig
-mips                          rb532_defconfig
-powerpc                     tqm8540_defconfig
-mips                      maltaaprp_defconfig
-arm                  randconfig-c002-20211012
-x86_64               randconfig-c001-20211012
-arm                  randconfig-c002-20211013
-x86_64               randconfig-c001-20211013
-ia64                             allmodconfig
-ia64                                defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-nios2                               defconfig
-nds32                             allnoconfig
-arc                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                                defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                             allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-x86_64               randconfig-a004-20211012
-x86_64               randconfig-a006-20211012
-x86_64               randconfig-a001-20211012
-x86_64               randconfig-a005-20211012
-x86_64               randconfig-a002-20211012
-x86_64               randconfig-a003-20211012
-i386                 randconfig-a001-20211012
-i386                 randconfig-a003-20211012
-i386                 randconfig-a004-20211012
-i386                 randconfig-a005-20211012
-i386                 randconfig-a002-20211012
-i386                 randconfig-a006-20211012
-i386                 randconfig-a016-20211013
-i386                 randconfig-a014-20211013
-i386                 randconfig-a011-20211013
-i386                 randconfig-a015-20211013
-i386                 randconfig-a012-20211013
-i386                 randconfig-a013-20211013
-arc                  randconfig-r043-20211012
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allyesconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-arm                  randconfig-c002-20211012
-mips                 randconfig-c004-20211012
-i386                 randconfig-c001-20211012
-s390                 randconfig-c005-20211012
-x86_64               randconfig-c007-20211012
-powerpc              randconfig-c003-20211012
-riscv                randconfig-c006-20211012
-x86_64               randconfig-a004-20211013
-x86_64               randconfig-a006-20211013
-x86_64               randconfig-a001-20211013
-x86_64               randconfig-a005-20211013
-x86_64               randconfig-a002-20211013
-x86_64               randconfig-a003-20211013
-i386                 randconfig-a001-20211013
-i386                 randconfig-a003-20211013
-i386                 randconfig-a004-20211013
-i386                 randconfig-a005-20211013
-i386                 randconfig-a002-20211013
-i386                 randconfig-a006-20211013
-x86_64               randconfig-a015-20211012
-x86_64               randconfig-a012-20211012
-x86_64               randconfig-a016-20211012
-x86_64               randconfig-a014-20211012
-x86_64               randconfig-a013-20211012
-x86_64               randconfig-a011-20211012
-i386                 randconfig-a016-20211012
-i386                 randconfig-a014-20211012
-i386                 randconfig-a011-20211012
-i386                 randconfig-a015-20211012
-i386                 randconfig-a012-20211012
-i386                 randconfig-a013-20211012
-hexagon              randconfig-r041-20211012
-s390                 randconfig-r044-20211012
-riscv                randconfig-r042-20211012
-hexagon              randconfig-r045-20211012
-hexagon              randconfig-r041-20211013
-hexagon              randconfig-r045-20211013
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>
+Interested persons, company or origination should send their Application fo=
+r Expression of Interest with full contact information stating clearly thei=
+r area of interest for more information on the goods and services required =
+by the government under: MPA/AD/CGS/VOL/1/21.</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>
+This opportunity is open for any interested individual, company or organiza=
+tion from any part of the world as far as you meet our standard. Interested=
+ persons or company can quote many areas of Interest within your individual=
+ or company capacity.</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>All Application for Expression of I=
+nterest should be sent to email below quoting MPA/AD/CGS/VOL/1/21:</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><B><SPAN style=3D"FONT-SIZE: 18pt">=
+The &nbsp;Executive Director,</SPAN></B></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><B><SPAN style=3D"FONT-SIZE: 18pt">=
+Ministry of Presidential Affairs.</SPAN></B></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'><B><SPAN style=3D"FONT-SIZE: 18pt">=
+Juba, Republic of South Sudan.</SPAN></B></P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>Important Information:</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>I) More information will be provide=
+d to companies pre-qualified and found capable of executing contracts based=
+ on any of the chosen area(s) of interest. Only selected people or companie=
+s will be contacted.</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>II) Nothing in the notification sha=
+ll be interpreted to be a commitment on the part of the Government of South=
+ Sudan.</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>Thank you for your understanding.</=
+P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>Regards,</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-SIZE: 12pt; FONT-FAMILY: "Times Ne=
+w Roman"; BACKGROUND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POS=
+ITION: 0% 0%; MARGIN: 0in 0in 0pt; background-size: initial; background-ori=
+gin: initial; background-clip: initial'>&nbsp;</P>
+<P style=3D'BOX-SIZING: border-box; FONT-FAMILY: "Times New Roman"; BACKGRO=
+UND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MAR=
+GIN: 0in 0in 0pt; background-size: initial; background-origin: initial; bac=
+kground-clip: initial'><FONT size=3D4><SPAN style=3D"BOX-SIZING: border-box=
+"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"BORDER-TOP: windowtext 1pt; BORDER-RIGHT: windowtext 1pt; BO=
+RDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-TOP: 0in; PADDING=
+-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0in">Wek Ateny</SPA=
+N></B></SPAN></SPAN></FONT></P>
+<P style=3D'BOX-SIZING: border-box; FONT-FAMILY: "Times New Roman"; BACKGRO=
+UND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MAR=
+GIN: 0in 0in 0pt; background-size: initial; background-origin: initial; bac=
+kground-clip: initial'><FONT size=3D4><SPAN style=3D"BOX-SIZING: border-box=
+"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"BORDER-TOP: windowtext 1pt; BORDER-RIGHT: windowtext 1pt; BO=
+RDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-TOP: 0in; PADDING=
+-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0in">Chief Press Se=
+cretary</SPAN></B></SPAN></SPAN></FONT></P>
+<P style=3D'BOX-SIZING: border-box; FONT-FAMILY: "Times New Roman"; BACKGRO=
+UND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MAR=
+GIN: 0in 0in 0pt; background-size: initial; background-origin: initial; bac=
+kground-clip: initial'><FONT size=3D4><SPAN style=3D"BOX-SIZING: border-box=
+"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"BORDER-TOP: windowtext 1pt; BORDER-RIGHT: windowtext 1pt; BO=
+RDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-TOP: 0in; PADDING=
+-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0in">Presidential A=
+ffairs</SPAN></B></SPAN></SPAN></FONT></P>
+<P style=3D'BOX-SIZING: border-box; FONT-FAMILY: "Times New Roman"; BACKGRO=
+UND-IMAGE: none; BACKGROUND-REPEAT: repeat; BACKGROUND-POSITION: 0% 0%; MAR=
+GIN: 0in 0in 0pt; background-size: initial; background-origin: initial; bac=
+kground-clip: initial'><FONT size=3D4><SPAN style=3D"BOX-SIZING: border-box=
+"><SPAN style=3D"BOX-SIZING: border-box"><B>
+<SPAN style=3D"BORDER-TOP: windowtext 1pt; BORDER-RIGHT: windowtext 1pt; BO=
+RDER-BOTTOM: windowtext 1pt; PADDING-BOTTOM: 0in; PADDING-TOP: 0in; PADDING=
+-LEFT: 0in; BORDER-LEFT: windowtext 1pt; PADDING-RIGHT: 0in">Juba, Republic=
+ of South Sudan.</SPAN></B></SPAN></SPAN></FONT></P></SPAN></SPAN></SPAN></=
+DIV></DIV></DIV></DIV></BODY></HTML>
