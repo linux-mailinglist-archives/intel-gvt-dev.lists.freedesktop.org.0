@@ -2,52 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D0A8432B25
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Oct 2021 02:19:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 97552433134
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Oct 2021 10:39:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D77EE6E886;
-	Tue, 19 Oct 2021 00:19:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 445F56EB54;
+	Tue, 19 Oct 2021 08:39:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from 198-57-192-38.unifiedlayer.com (unknown [198.57.192.38])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 278C56E886
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Oct 2021 00:19:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=bwsp.online
- ; s=default;
- h=Reply-To:Date:From:To:Subject:MIME-Version:Content-Type:Sender
- :Message-ID:Cc:Content-Transfer-Encoding:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=Z4dLUPlbEGIFglIO9iIyb339+YfymthgQv85zW0M2wU=; b=JbV6yVrHwHewl28NbAsWytg6N5
- oXeBYqVFKx7t47fYo0ua3SLmLSTQwDwm4uEQtZpVkfTwh0zTzJ3X28+NKHYUgyyrSOYsqJdCOhdMH
- a3IJIGkfc4zcILHgXWEgEyGQl91pbuLaw7SRoZf/XOusHXQKQosC18eqto9C+WM5X1MzDptO0tFxP
- d5PtyMT8NXGyg2G+vOezsb9/l01A2fVIbhPZQFhdxTarEz1+/aNur7o0/PGMGDYjihrqkYUY/46dc
- ui6vMoMpuPI7gWuMZMGEx+we7OXvJwkuNLXE3QhwVur/Mp7yLZTZjEViovzNXCSohm2PcGZMjqmy8
- nFlq69yQ==;
-Received: from [5.230.68.57] (port=59920)
- by 162-144-35-162.ipage.com with esmtpa (Exim 4.94.2)
- (envelope-from <teruggave@digid.nl>)
- id 1maKEX-00009a-Pp; Tue, 12 Oct 2021 10:02:31 -0600
-Content-Type: multipart/alternative; boundary="===============0803291734=="
+X-Greylist: delayed 1043 seconds by postgrey-1.36 at gabe;
+ Tue, 19 Oct 2021 08:39:10 UTC
+Received: from gp-1vm-smtp01.mediaserv.net (unknown [213.188.172.34])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A31DA6EB54;
+ Tue, 19 Oct 2021 08:39:10 +0000 (UTC)
+Received: from gp-2pm-mxpro02.mediaserv.net (mail.entredeux.re
+ [213.188.172.71])
+ by gp-1vm-smtp01.mediaserv.net (Postfix) with ESMTP id 0CA74246F9;
+ Tue, 19 Oct 2021 04:20:54 -0400 (AST)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by gp-2pm-mxpro02.mediaserv.net (Postfix) with ESMTP id 071442F6A022;
+ Tue, 19 Oct 2021 04:21:47 -0400 (AST)
+X-Virus-Scanned: amavisd-new at mediaserv.gp
+Received: from gp-2pm-mxpro02.mediaserv.net ([127.0.0.1])
+ by localhost (gp-2pm-mxpro02.mediaserv.net [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id euE-IdR8tujB; Tue, 19 Oct 2021 04:21:46 -0400 (AST)
+Received: from gp-2pm-mxpro02.mediaserv.net (gp-2pm-mxpro02.mediaserv.net
+ [213.188.172.71])
+ by gp-2pm-mxpro02.mediaserv.net (Postfix) with ESMTP id B86862F6A01A;
+ Tue, 19 Oct 2021 04:21:46 -0400 (AST)
+Date: Tue, 19 Oct 2021 04:21:46 -0400 (AST)
+From: Ben Bomann <smblas@conforama.mq>
+Message-ID: <13661283.907.1634631706743.JavaMail.root@gp-2pm-mxpro02>
+Subject: Vorschlag.
 MIME-Version: 1.0
-Subject: Teruggave.
-To: Recipients <teruggave@digid.nl>
-From: "MijnOverheid" <teruggave@digid.nl>
-Date: Tue, 12 Oct 2021 18:02:14 +0200
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - 162-144-35-162.ipage.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - digid.nl
-X-Get-Message-Sender-Via: 162-144-35-162.ipage.com: authenticated_id:
- teruggave@bwsp.online
-X-Authenticated-Sender: 162-144-35-162.ipage.com: teruggave@bwsp.online
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_906_6125939.1634631706741"
+X-Originating-IP: [83.137.2.202]
+X-Mailer: Zimbra 6.0.9_GA_2686 (zclient/6.0.9_GA_2686)
+To: undisclosed-recipients:;
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,144 +52,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: no-reply@digid.nl
+Reply-To: Ben Bomann <null@gp-2pm-mxpro02.mediaserv.net>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20211019001937.D77EE6E886@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============0803291734==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
+------=_Part_906_6125939.1634631706741
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-
- MijnOverheid
-
-
-                                                                           =
-                        =
-
-
-Geachte heer/mevrouw,
-
-
-Wij hebben vastgesteld dat u in aanmerking komt voor een
-teruggave van =20AC849,- i.v.m COVID-19.
-
-Om uw teruggave te ontvangen vragen wij u om uw gegevens te
-controleren en te verifi=EBren. Uw fiscale teruggave kan alleen op uw
-bankrekening worden bijgeschreven als wij beschikken over de juiste
-gegevens.
-
-
-Klik hier om uw aanvraag in te dienen.
-
-
-Met vriendelijke groet,
-
-
-MijnOverheid
- =
-
- Technisch onderhoud Berichtenbox app
-Vanwege technisch onderhoud is het momenteel niet mogelijk
-om het bericht via de Berichtenbox te lezen.
-Bekijk het bericht daarom direct via uw webbrowser.
- =
 
 
 
-Dit is een automatisch gegenereerd bericht. Een reactie op dit bericht zal =
-niet
-worden gelezen of beantwoord.
-
---===============0803291734==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
+HalloIch bin aufgrund unerwarteter Umst=C3=A4nde gezwungen, mich mit Ihnen =
+in Verbindung zu setzen, um zu sehen, ob wir zusammenarbeiten k=C3=B6nnen.I=
+ch habe einen Gesch=C3=A4ftsidee im Wert von 38,5 Millionen Pfund, die wir =
+beide teilen k=C3=B6nnen, wenn Sie bereit sind, mit mir zusammenzuarbeitenW=
+enn Sie in die Transaktion interessiert sind, kontaktieren Sie mich bitte u=
+nter meiner privaten E-Mail-Adresse (benbomann5217@gmail.com) und ich werde=
+ Ihnen alle Informationen zukommen lassen, die Sie ben=C3=B6tigen.MfG,Ben B=
+omannNachlass
+------=_Part_906_6125939.1634631706741
+Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
 
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Dutf-8"/></head><BODY><P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times =
-New Roman"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
-ONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS:=
- 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: norma=
-l; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decorati=
-on-thickness: initial; text-decoration-style: initial; text-decoration-colo=
-r: initial' align=3Dcenter><FONT face=3D"Verdana, Arial, Helvetica, sans-se=
-rif"><IMG class=3Dn3VNCb style=3D"CURSOR: default; HEIGHT: 79px; WIDTH: 42p=
-x; MARGIN: 0px" border=3D0 hspace=3D0 alt=3DMijnOverheid src=3D"https://upl=
-oad.wikimedia.org/wikipedia/commons/thumb/b/b3/Logo_rijksoverheid.svg/1200p=
-x-Logo_rijksoverheid.svg.png" jsname=3D"HiaYvf" jsaction=3D"load:XAeZkd;" d=
-ata-noaft=3D"1" data-cke-saved-src=3D"https://upload.wikimedia.org/wikipedi=
-a/commons/thumb/b/b3/Logo_rijksoverheid.svg/1200px-Logo_rijksoverheid.svg.p=
-ng"></FONT></P>
-<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
- normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
-rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
-al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
-rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
-ext-decoration-style: initial; text-decoration-color: initial' align=3Dleft=
-><FONT size=3D6 face=3D"Verdana, Arial, Helvetica, sans-serif">MijnOverheid=
-</FONT><BR><BR></P>
-<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
- normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
-rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
-al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
-rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
-ext-decoration-style: initial; text-decoration-color: initial' align=3Dleft=
-><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"><FONT face=3D"Geneva,=
- Arial, Helvetica, sans-serif"><FONT face=3D"Verdana, Arial, Helvetica, san=
-s-serif"><FONT style=3D"BACKGROUND-COLOR: rgb(215,107,0)">&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><BR><BR>Geachte heer/m=
-evrouw,</FONT><BR><BR><BR><FONT face=3D"Verdana, Arial, Helvetica, sans-ser=
-if">Wij hebben vastgesteld dat u in aanmerking komt voor een<BR>teruggave&n=
-bsp;van =E2=82=AC849,- i.v.m COVID-19.<BR><BR>Om uw teruggave te ontvangen =
-vragen wij u om uw gegevens te<BR>controleren en te verifi=C3=ABren. Uw fis=
-cale&nbsp;teruggave kan alleen op uw<BR>bankrekening worden bijgeschreven a=
-ls wij beschikken over de juiste<BR>gegevens.<BR><BR><BR>Klik<SPAN>&nbsp;</=
-SPAN><A href=3D"https://lihi1.cc/2bAS5" data-cke-saved-href=3D"https://lihi=
-1.cc/2bAS5">hier</A><SPAN>&nbsp;</SPAN>om uw aanvraag in te dienen.<BR><BR>=
-<BR>Met vriendelijke groet,<BR><BR><BR>MijnOverheid</FONT></FONT></FONT></P>
-<HR id=3Dfalse style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; =
-WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: =
-400; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-S=
-PACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-thickness=
-: initial; text-decoration-style: initial; text-decoration-color: initial'>
-
-<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
- normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
-rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
-al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
-rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
-ext-decoration-style: initial; text-decoration-color: initial'><FONT face=
-=3D"Geneva, Arial, Helvetica, sans-serif"></FONT><IMG style=3D"CURSOR: defa=
-ult; HEIGHT: 91px; WIDTH: 104px" alt=3D"BerichtenBox - Mijn Overheid - Help=
-desk Digitale Zorg" src=3D"https://helpdeskdigitalezorg.nl/wp-content/uploa=
-ds/2020/11/berichtenbox.jpg" width=3D250 height=3D249 data-cke-saved-src=3D=
-"https://helpdeskdigitalezorg.nl/wp-content/uploads/2020/11/berichtenbox.jp=
-g"><FONT face=3D"Geneva, Arial, Helvetica, sans-serif"></FONT><FONT face=3D=
-"Verdana, Arial, Helvetica, sans-serif"><STRONG>Technisch onderhoud Bericht=
-enbox app</STRONG><BR>Vanwege technisch onderhoud is het momenteel niet mog=
-elijk<BR>om het bericht via de Berichtenbox te lezen.<BR>Bekijk het bericht=
- daarom direct via uw webbrowser.</FONT></P>
-<P style=3D'FONT-SIZE: medium; FONT-FAMILY: "Times New Roman"; WHITE-SPACE:=
- normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: =
-rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: norm=
-al; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: no=
-rmal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; t=
-ext-decoration-style: initial; text-decoration-color: initial' align=3Dcent=
-er><BR><BR><BR><FONT color=3D#5f5f5f size=3D2>Dit is een automatisch gegene=
-reerd bericht. Een reactie op dit bericht zal niet</FONT><BR><FONT color=3D=
-#5f5f5f size=3D2>worden gelezen of beantwoord.</FONT></P></BODY></HTML>
---===============0803291734==--
+<html><head><style> body {height: 100%; color:#000000; font-size:12pt; font=
+-family:Times New Roman;}</style></head><body><br><br><div><div><p>Hallo</p=
+><p>Ich bin aufgrund unerwarteter Umst=C3=A4nde gezwungen, mich mit Ihnen i=
+n Verbindung zu setzen, um zu sehen, ob wir zusammenarbeiten k=C3=B6nnen.</=
+p><p>Ich habe einen Gesch=C3=A4ftsidee im Wert von 38,5 Millionen Pfund, di=
+e wir beide teilen k=C3=B6nnen, wenn Sie bereit sind, mit mir zusammenzuarb=
+eiten</p><p>Wenn Sie in die Transaktion interessiert sind, kontaktieren Sie=
+ mich bitte unter meiner privaten E-Mail-Adresse (<a href=3D"mailto:ben.bom=
+ann011@gmail.com">benbomann5217@gmail.com</a>) und ich werde Ihnen alle Inf=
+ormationen zukommen lassen, die Sie ben=C3=B6tigen.</p><p>MfG,</p><p>Ben Bo=
+mann</p><p>Nachlass</p></body></html>
+------=_Part_906_6125939.1634631706741--
