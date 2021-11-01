@@ -2,32 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 814C24410D7
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 31 Oct 2021 21:50:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 716D3441496
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  1 Nov 2021 09:03:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2B04B896A5;
-	Sun, 31 Oct 2021 20:50:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2E15889916;
+	Mon,  1 Nov 2021 08:03:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by gabe.freedesktop.org (Postfix) with ESMTP id C1AFA896A5;
- Sun, 31 Oct 2021 20:50:51 +0000 (UTC)
-Received: from User (8ta-229-139-111.telkomadsl.co.za [197.229.139.111])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id DE72F2A0D63;
- Mon,  1 Nov 2021 04:49:58 +0800 (CST)
-From: "Nigerian National Petroleum Corporation
- (NNPC)"<nnpcexecutorintrust20200@gmail.com>
-Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
- Abuja
-Date: Sun, 31 Oct 2021 22:50:19 +0200
+Received: from mail-lj1-x233.google.com (mail-lj1-x233.google.com
+ [IPv6:2a00:1450:4864:20::233])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4DAC389916
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  1 Nov 2021 08:02:59 +0000 (UTC)
+Received: by mail-lj1-x233.google.com with SMTP id h11so28130836ljk.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 01 Nov 2021 01:02:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=kTlPYaJ3qmdiuwil3bN4/5BGELxQxYaH2mDV2D/+NOc=;
+ b=afk96XLZPNdq0XUQ+C+Sg/ozYAwaC3yaDksIj/6w1qfCAtpHcUBLhL7vVLQ2g6kyU8
+ HuE8JkrDQw9Pe98zTGVBizjoC/CJ2gIf2SQfvUW4I2bBAgnGSkvoj21GNxy44xhgi8wa
+ zFqdnoxEWlXQcHKmvAjcp9ZZENtgzq59rPy6DMYJA8ElDG6A/MSiYpBhtVSFjq7WeFZP
+ cS6h1mcE593mSy7oo/5H2eZoBJu7VmxoLBdfXFmBSkynwummjWwhugkKOoxpGYUahMwe
+ FMx1gVtUWQYu0DZ7PVYIUCO/5nTM47dFNeeCKaLcfD+PjrFqLHGMy32UvVj5G8XqzaCt
+ nFaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=kTlPYaJ3qmdiuwil3bN4/5BGELxQxYaH2mDV2D/+NOc=;
+ b=vNIqBlDPO9FZP/KQCRDFVXwslqhNCLm7Ta2NHVona74RypSCXUU16pLDRsPjXFbeBG
+ Sh3NTwWGnrTqfnl++iO5nOGjRoN5TwPOuw1Oh+d6ncfBw4221PSrKFpfL262J27NOT7D
+ J9z8Rz0ymz/Ls0OZ4UIbI5NxAK0KOEaCDaXJDj0DVVaVGgAzI/O+N78LQHzf+fOZtc7N
+ QYB0v6NlIrarLvZFbaysLgnOoxwxP+SUzlwLYuNzObJ/yejYrdAGr/OPGtPGPd5YkdD3
+ jxXbkARcxTmCnpBhWlpwR2JSpZdcrgQmugBvB1milq6SnoM0BpV3kRmZ9LLVLGcp3wGm
+ MW5A==
+X-Gm-Message-State: AOAM5303patMMBsyOks4Z2cm0TMn2+ffC/iYOFlkEzK2P0lLnvvGqUxm
+ 2VRrjB/yMTow0gN98UcGNMwSJSNif5UmkBhc7PE=
+X-Google-Smtp-Source: ABdhPJz7bell/PbLM6PCZG9oyOsUGoUjtisMZ1a9wMI9p2Dqg6vVVtPriD7UyogYfoQSpqejN5auU/4R+7TnSX8/I0Y=
+X-Received: by 2002:a05:651c:893:: with SMTP id
+ d19mr30628974ljq.236.1635753777571; 
+ Mon, 01 Nov 2021 01:02:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Received: by 2002:a05:6512:304b:0:0:0:0 with HTTP; Mon, 1 Nov 2021 01:02:57
+ -0700 (PDT)
+From: Aisha AG <rbx17058@gmail.com>
+Date: Mon, 1 Nov 2021 00:02:57 -0800
+Message-ID: <CA+KbyyfmtMHH304LH3vgL9OeVB3eEp+KwfJyCty=yC1JWDycfg@mail.gmail.com>
+Subject: Hello Dear,
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,39 +64,30 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: nnpcnnpcontractor1994@contractor.net
+Reply-To: aisha.7d@yahoo.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20211031205053.2B04B896A5@gabe.freedesktop.org>
 
-Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
- 
-From: Dr. Emmanuel Ibe Kachikwu (GMD)
-Contract Ref No: NNPC/PED/1462/KADREF/92)      
-                        
-Attn: Ceo,
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not met before. I got your information from your country's chamber of commerce here in Nigeria.
- 
-My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
- 
-The contract has been successfully executed by the contractors and their contract sum has been paid to them, leaving us an overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
- 
-We, as government officials, are not permitted to own or operate foreign bank accounts. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
- 
-Note that 50% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
- 
-The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
- 
- 
-Awaiting your urgent response.
- 
-Best regards.
+-- 
+Hello Dear,
 
-Dr. Emmanuel Ibe Kachikwu.
-The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
- 
-This email and any attachments to it may be confidential and are intended solely for the use of the individual to whom it is addressed. Any views or opinions expressed are solely those of the author and do not necessarily represent those of Masterpage®. If you are not the intended recipient of this email, you must neither take any action based upon its contents, nor copy or show it to anyone. Please contact the sender if you believe you have received this email in error.
+I came across your e-mail contact prior to a private search while in
+need of your assistance. I am Aisha Al-Qaddafi, the only biological
+Daughter of Former President of Libya Col.Muammar Al-Qaddafi.
+Am a Widow and a single Mother with three Children.
 
+I have investment funds worth Twenty Seven Million Five Hundred
+Thousand United State Dollar $27.500.000.00, and i need a trusted
+investment Manager/Partner because of my current refugee status,
+however, I am interested in you for investment project assistance in
+your country, may be from there, we can build business relationship
+in the nearest future.
+
+I am willing to negotiate an investment/business profit sharing ratio
+with you based on the future investment earning profits.
+
+If you are willing to handle this project on my behalf kindly reply
+urgently to enable me to provide you more information about the
+investment funds.
+Best Regards
+Mrs Aisha Al-Qaddafi.
