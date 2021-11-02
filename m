@@ -1,41 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC82F4427C0
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  2 Nov 2021 08:08:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56ACC4427C4
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  2 Nov 2021 08:08:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7E8D96FAB5;
-	Tue,  2 Nov 2021 07:08:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0371B6FAC7;
+	Tue,  2 Nov 2021 07:08:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:e::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6616C6FABF;
- Tue,  2 Nov 2021 07:08:28 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4E4DC6FAC7;
+ Tue,  2 Nov 2021 07:08:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=0cvxm+1NDIuIjwW6TCzfd8E3JMSEUjYmjWbtvzBc2eY=; b=d/eDM1VEchLVS3pbAngUVSb+Qf
- b2W9RL6bmvkl2DcGj7oxtAp7vHWBhMzv9RBi0DAezAZcn612RJppDZKn10f8vcl9rhTkFvKLL7pMo
- oF4zA4QvA7ucMy6xCmz7zoYReSC6fRyTEt0XgmaGL+Th5VCIpliXhb5ZjCVR+0+XLae/9Q3t8Nqxg
- X2Y7jzQfct9ndhhgvtwkSkgNRmjxciUhMlgo++kAneKZ1f30dwf+COv+yq/2G+PYWO+wRy7cwKUef
- FflP0r+U8CavuCOSRgdlf9i2rBL2YjQFZeikY0UjPf+ABm/r0E2B+6yj2BULeXI20ebAhVn3QN2RO
- 56xR7aNw==;
+ bh=tcK+GeyX8NZZN0h0/L+3lzdbP4oBFdoZo3maiXxcc6E=; b=ieFWj5SXjKWewgQcpvTV7WNO5y
+ A1z7vpbmS3+tJyjzYFkD5/QzhNPu9iJV0Tf8Czvbz+IWdKMsCZvBQv3cNuv6L0PFPWAyeQq5NJPNr
+ i/gFOmF5tQRdIzT9soETHatsVrQv0j72nuhth8gN9xOW4BujVx3CQg37l8+st5Q+P2DjkYA4oO/RX
+ PB19hzFbz/OXBphijO5LQWJIWy+4uvWv+IOCo1LNLWPu77+kL5HPNvphvMeTJJOqXdYaz0T9QeOS6
+ 0EKfQ1I0jhzUIRc+VoMVf4TaBJLSC5rdDmkrpXz+PKBAng0o80EJnS+SEslZHpFCrHZiDQXvjOpT2
+ h9xtkHVQ==;
 Received: from 213-225-15-89.nat.highway.a1.net ([213.225.15.89]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhnuE-000iOC-GT; Tue, 02 Nov 2021 07:08:27 +0000
+ id 1mhnuI-000iQe-TQ; Tue, 02 Nov 2021 07:08:31 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 24/29] drm/i915/gvt: remove the extra vfio_device refcounting
- for dmabufs
-Date: Tue,  2 Nov 2021 08:05:56 +0100
-Message-Id: <20211102070601.155501-25-hch@lst.de>
+Subject: [PATCH 25/29] drm/i915/gvt: streamline intel_vgpu_create
+Date: Tue,  2 Nov 2021 08:05:57 +0100
+Message-Id: <20211102070601.155501-26-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20211102070601.155501-1-hch@lst.de>
 References: <20211102070601.155501-1-hch@lst.de>
@@ -61,66 +60,65 @@ Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-All the dmabufs are torn down when th VGPU is released, so there is
-no need for extra refcounting here.
-
-Based on an patch from Jason Gunthorpe.
+Initialize variables at declaration time, avoid pointless gotos and
+cater for the fact that intel_gvt_create_vgpu can't return NULL.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/gpu/drm/i915/gvt/dmabuf.c | 12 ------------
- drivers/gpu/drm/i915/gvt/gvt.h    |  1 -
- 2 files changed, 13 deletions(-)
+ drivers/gpu/drm/i915/gvt/kvmgt.c | 28 +++++++++-------------------
+ 1 file changed, 9 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.c b/drivers/gpu/drm/i915/gvt/dmabuf.c
-index eacfe7beaaf67..88c4f8b02ffb6 100644
---- a/drivers/gpu/drm/i915/gvt/dmabuf.c
-+++ b/drivers/gpu/drm/i915/gvt/dmabuf.c
-@@ -134,7 +134,6 @@ static void dmabuf_gem_object_free(struct kref *kref)
- 					struct intel_vgpu_dmabuf_obj, list);
- 			if (dmabuf_obj == obj) {
- 				list_del(pos);
--				vfio_device_put(vgpu->vfio_device);
- 				idr_remove(&vgpu->object_idr,
- 					   dmabuf_obj->dmabuf_id);
- 				kfree(dmabuf_obj->info);
-@@ -474,16 +473,6 @@ int intel_vgpu_query_plane(struct intel_vgpu *vgpu, void *args)
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index a369564fd8509..021cd8328db32 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -702,26 +702,19 @@ int intel_gvt_set_edid(struct intel_vgpu *vgpu, int port_num)
  
- 	kref_init(&dmabuf_obj->kref);
- 
--	mutex_lock(&vgpu->dmabuf_lock);
--	vgpu->vfio_device = vfio_device_get_from_dev(mdev_dev(vgpu->mdev));
--	if (!vgpu->vfio_device) {
--		gvt_vgpu_err("failed to get vfio device\n");
--		mutex_unlock(&vgpu->dmabuf_lock);
--		ret = -ENODEV;
--		goto out_free_info;
--	}
--	mutex_unlock(&vgpu->dmabuf_lock);
+ static int intel_vgpu_create(struct mdev_device *mdev)
+ {
+-	struct intel_vgpu *vgpu = NULL;
++	struct device *pdev = mdev_parent_dev(mdev);
++	struct intel_gvt *gvt = kdev_to_i915(pdev)->gvt;
+ 	struct intel_vgpu_type *type;
+-	struct device *pdev;
+-	struct intel_gvt *gvt;
+-	int ret;
 -
- 	update_fb_info(gfx_plane_info, &fb_info);
+-	pdev = mdev_parent_dev(mdev);
+-	gvt = kdev_to_i915(pdev)->gvt;
++	struct intel_vgpu *vgpu;
  
- 	INIT_LIST_HEAD(&dmabuf_obj->list);
-@@ -589,7 +578,6 @@ void intel_vgpu_dmabuf_cleanup(struct intel_vgpu *vgpu)
- 		dmabuf_obj->vgpu = NULL;
+ 	type = &gvt->types[mdev_get_type_group_id(mdev)];
+-	if (!type) {
+-		ret = -EINVAL;
+-		goto out;
+-	}
++	if (!type)
++		return -EINVAL;
  
- 		idr_remove(&vgpu->object_idr, dmabuf_obj->dmabuf_id);
--		vfio_device_put(vgpu->vfio_device);
- 		list_del(pos);
+ 	vgpu = intel_gvt_create_vgpu(gvt, type);
+-	if (IS_ERR_OR_NULL(vgpu)) {
+-		ret = vgpu == NULL ? -EFAULT : PTR_ERR(vgpu);
+-		gvt_err("failed to create intel vgpu: %d\n", ret);
+-		goto out;
++	if (IS_ERR(vgpu)) {
++		gvt_err("failed to create intel vgpu: %ld\n", PTR_ERR(vgpu));
++		return PTR_ERR(vgpu);
+ 	}
  
- 		/* dmabuf_obj might be freed in dmabuf_obj_put */
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 7c87d7638e6b2..fa83365227514 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -230,7 +230,6 @@ struct intel_vgpu {
- 	struct kvm *kvm;
- 	struct work_struct release_work;
- 	atomic_t released;
--	struct vfio_device *vfio_device;
- 	struct vfio_group *vfio_group;
+ 	INIT_WORK(&vgpu->release_work, intel_vgpu_release_work);
+@@ -731,10 +724,7 @@ static int intel_vgpu_create(struct mdev_device *mdev)
  
- 	struct kvm_page_track_notifier_node track_node;
+ 	gvt_dbg_core("intel_vgpu_create succeeded for mdev: %s\n",
+ 		     dev_name(mdev_dev(mdev)));
+-	ret = 0;
+-
+-out:
+-	return ret;
++	return 0;
+ }
+ 
+ static int intel_vgpu_remove(struct mdev_device *mdev)
 -- 
 2.30.2
 
