@@ -2,41 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCAF4445360
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 13:54:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2087B44536E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 13:59:28 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6CBCC6F464;
-	Thu,  4 Nov 2021 12:54:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B2D756F471;
+	Thu,  4 Nov 2021 12:59:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 831296F462;
- Thu,  4 Nov 2021 12:54:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="231944825"
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="231944825"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2021 05:54:37 -0700
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="489935011"
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7777B6F478;
+ Thu,  4 Nov 2021 12:59:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="292531884"
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="292531884"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2021 05:59:23 -0700
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="450441783"
 Received: from agilev-mobl.ccr.corp.intel.com (HELO localhost)
  ([10.249.254.157])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2021 05:54:33 -0700
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2021 05:59:21 -0700
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20211102070601.155501-7-hch@lst.de>
+In-Reply-To: <20211102070601.155501-1-hch@lst.de>
 References: <20211102070601.155501-1-hch@lst.de>
- <20211102070601.155501-7-hch@lst.de>
 To: Christoph Hellwig <hch@lst.de>, Jani Nikula <jani.nikula@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
  Zhi Wang <zhi.a.wang@intel.com>
-Subject: Re: [PATCH 06/29] drm/i915/gvt: move the gvt code into kvmgt.ko
+Subject: Re: refactor the i915 GVT support and move to the modern mdev API v2
 From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Message-ID: <163603047089.4807.10176282951802208428@jlahtine-mobl.ger.corp.intel.com>
+Message-ID: <163603075885.4807.880888219859400958@jlahtine-mobl.ger.corp.intel.com>
 User-Agent: alot/0.8.1
-Date: Thu, 04 Nov 2021 14:54:30 +0200
+Date: Thu, 04 Nov 2021 14:59:18 +0200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,84 +48,82 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Hellström <thomas.hellstrom@linux.intel.com>, intel-gfx@lists.freedesktop.org, maarten.lankhorst@linux.intel.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, matthew.auld@intel.com, Jason Gunthorpe <jgg@nvidia.com>, intel-gvt-dev@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, Jason Gunthorpe <jgg@nvidia.com>,
+ linux-kernel@vger.kernel.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-+ Thomas, Maarten and Matt
+Hi Zhenyu and Zhi,
 
-(Also, Zhi and Zhenyu, please see down)
+Can you have somebody from the GVT team to review the patches that
+are fully contained in gvt/ ?
 
-Quoting Christoph Hellwig (2021-11-02 09:05:38)
-> Instead of having an option to build the gvt code into the main i915
-> module, just move it into the kvmgt.ko module.  This only requires
-> a new struct with three entries that the KVMGT modules needs to register
-> with the main i915 module, and a proper list of GVT-enabled devices
-> instead of global device pointer.
->=20
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
+I also started discussion on patch 6 which is about defining the
+interface between the modules. I remember there is prior work to shrink
+the interface. Do you have links to such patches?
 
-<SNIP>
-
-> +/*
-> + * Exported here so that the exports only get created when GVT support is
-> + * actually enabled.
-> + */
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_object_alloc, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_object_create_shmem, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_object_init, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_object_ggtt_pin_ww, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_object_pin_map, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_object_set_to_cpu_domain, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(__i915_gem_object_flush_map, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(__i915_gem_object_set_pages, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_gtt_insert, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_prime_export, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_ww_ctx_init, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_ww_ctx_backoff, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_gem_ww_ctx_fini, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_ppgtt_create, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_request_add, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_request_create, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_request_wait, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_reserve_fence, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_unreserve_fence, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_vm_release, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(i915_vma_move_to_active, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(intel_context_create, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(__intel_context_do_pin, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(__intel_context_do_unpin, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(intel_ring_begin, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(intel_runtime_pm_get, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(intel_runtime_pm_put_unchecked, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(intel_uncore_forcewake_for_reg, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(intel_uncore_forcewake_get, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(intel_uncore_forcewake_put, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(shmem_pin_map, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(shmem_unpin_map, I915_GVT);
-> +EXPORT_SYMBOL_NS_GPL(__px_dma, I915_GVT);
-
-This is where the module conversion got stuck last time.
-
-Conditionally exporting is kind of a partial remedy. Previously the
-intention for the rewrite was to define a clear interface between the
-two modules which would be well defined enough that we could avoid frequent
-clashes and hopefully get GVT into drm-tip, too.
-
-The absolute minimum requirement is not to have any of the double
-underscore symbols in this list. As that convention is specifically used
-to mark functions which are expected to have reduced error checking
-because of the exact point they are being called from. With that done
-we should be where we can enable the exports by default and modprobe
-would be all that is required.
-
-I think Zhenyu and Zhi took an AR back in time to see how small they
-could shrink this list. Would we have some followup patches available
-to shrink this interface?
-
-Also, the golden MMIO state capture remains something that leaks the
-hypervisor state into the guests. For example the fact which bug W/A
-are applied in hypervisor, and I would rather have that code path
-isolated before enabling by default.
+The minimal we should do is to eliminate the double underscore
+prefixed functions. But I would prefer to have the symbol exports by
+default so that we can enable the functionality just by loading the
+module.
 
 Regards, Joonas
+
+Quoting Christoph Hellwig (2021-11-02 09:05:32)
+> Hi all,
+>=20
+> the GVT code in the i915 is a bit of a mess right now due to strange
+> abstractions and lots of indirect calls.  This series refactors various
+> bits to clean that up.  The main user visible change is that almost all
+> of the GVT code moves out of the main i915 driver and into the kvmgt
+> module.
+>=20
+> Tested on my Thinkpad with a Kaby Lake CPU and integrated graphics.
+>=20
+> Git tree:
+>=20
+>     git://git.infradead.org/users/hch/misc.git i915-gvt
+>=20
+> Gitweb:
+>=20
+>     http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/i915-=
+gvt
+>=20
+> Changes since v1:
+>  - rebased on Linux 5.15
+>  - allow the kvmgvt module to be loaded at any time and thus solve
+>    the deadlock when both i915 amd kvmgvt are modular
+>  - include the conversion to the modern mdev API
+>=20
+> Note that I do expect to rebased this again against 5.16-rc1 once
+> released, but I'd like to get this out for review ASAP.
+>=20
+> Diffstat:
+>  b/drivers/gpu/drm/i915/Kconfig          |   33=20
+>  b/drivers/gpu/drm/i915/Makefile         |   31=20
+>  b/drivers/gpu/drm/i915/gvt/cfg_space.c  |   89 --
+>  b/drivers/gpu/drm/i915/gvt/cmd_parser.c |    4=20
+>  b/drivers/gpu/drm/i915/gvt/dmabuf.c     |   36 -
+>  b/drivers/gpu/drm/i915/gvt/execlist.c   |   12=20
+>  b/drivers/gpu/drm/i915/gvt/gtt.c        |   55 +
+>  b/drivers/gpu/drm/i915/gvt/gvt.h        |  125 ++-
+>  b/drivers/gpu/drm/i915/gvt/interrupt.c  |   38 +
+>  b/drivers/gpu/drm/i915/gvt/kvmgt.c      | 1099 +++++++++++++++----------=
+-------
+>  b/drivers/gpu/drm/i915/gvt/mmio.c       |    4=20
+>  b/drivers/gpu/drm/i915/gvt/opregion.c   |  148 ----
+>  b/drivers/gpu/drm/i915/gvt/page_track.c |    8=20
+>  b/drivers/gpu/drm/i915/gvt/scheduler.c  |   37 -
+>  b/drivers/gpu/drm/i915/gvt/trace.h      |    2=20
+>  b/drivers/gpu/drm/i915/gvt/vgpu.c       |   22=20
+>  b/drivers/gpu/drm/i915/i915_drv.c       |    7=20
+>  b/drivers/gpu/drm/i915/i915_drv.h       |    1=20
+>  b/drivers/gpu/drm/i915/i915_trace.h     |    1=20
+>  b/drivers/gpu/drm/i915/intel_gvt.c      |  162 +++-
+>  b/drivers/gpu/drm/i915/intel_gvt.h      |   17=20
+>  drivers/gpu/drm/i915/gvt/Makefile       |    9=20
+>  drivers/gpu/drm/i915/gvt/gvt.c          |  340 ---------
+>  drivers/gpu/drm/i915/gvt/hypercall.h    |   82 --
+>  drivers/gpu/drm/i915/gvt/mpt.h          |  400 -----------
+>  25 files changed, 929 insertions(+), 1833 deletions(-)
