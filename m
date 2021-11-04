@@ -2,40 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C81AD444BB3
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 00:39:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B7D1A444DB1
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 04:28:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6ADBA6F389;
-	Wed,  3 Nov 2021 23:39:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 46E1B7B5EB;
+	Thu,  4 Nov 2021 03:28:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from gzxxg-sdnproxy-2.icoremail.net (unknown [121.9.212.75])
- by gabe.freedesktop.org (Postfix) with SMTP id 668F76F389
+ by gabe.freedesktop.org (Postfix) with SMTP id 0A3717B5EB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  3 Nov 2021 23:39:54 +0000 (UTC)
-Received: from icoremail.net (unknown [10.13.4.1])
+ Thu,  4 Nov 2021 03:28:25 +0000 (UTC)
+Received: from icoremail.net (unknown [10.13.4.4])
  by hzbj-transport-1.c3.icoremail.net (Coremail) with SMTP id
- AQAAfwBnb_PIHYNhoFwGAw--.44742S2; 
- Thu, 04 Nov 2021 07:39:52 +0800 (CST)
+ AQAAfwDX3_NXU4NhgEMHAw--.26741S2; 
+ Thu, 04 Nov 2021 11:28:23 +0800 (CST)
 Received: from iZ2zedrui104r8wk4e0f82Z (unknown [101.201.83.128])
- by c3-front-1 (Coremail) with SMTP id AQQNCgDXuJXGHYNhu+TsAA--.28536S2;
- Thu, 04 Nov 2021 07:39:51 +0800 (CST)
+ by c3-front-4 (Coremail) with SMTP id BAQNCgD3n4ZVU4NhruFsAA--.42479S2;
+ Thu, 04 Nov 2021 11:28:22 +0800 (CST)
 Content-Type: multipart/alternative;
- boundary="===============5364487533772828845=="
+ boundary="===============2053792444631840390=="
 MIME-Version: 1.0
 Subject: Hello, friend, the product supplier you need
 From: kkhba@sseao.com
 To: intel-gvt-dev@lists.freedesktop.org
-Date: Wed, 03 Nov 2021 23:39:51 -0000
-Message-ID: <20211103233951.17447.8247@iZ2zedrui104r8wk4e0f82Z>
-X-CM-TRANSID: AQQNCgDXuJXGHYNhu+TsAA--.28536S2
-X-Originating-IP: [101.201.83.128]
+Date: Thu, 04 Nov 2021 03:28:22 -0000
+Message-ID: <20211104032822.17447.5770@iZ2zedrui104r8wk4e0f82Z>
+X-CM-TRANSID: BAQNCgD3n4ZVU4NhruFsAA--.42479S2
 X-CM-SenderInfo: xnnkut46vvvt3rof0z/
 Authentication-Results: hzbj-transport-1.c3.icoremail.net; spf=neutral
  smtp.mail=kkhba@sseao.com;
 X-Coremail-Antispam: 1UD129KBjvJXoW7Kr4DtFy8Gry7AF43tFWDJwb_yoW8GrW5pF
  ZYgw4xCa4DtFs5X34UAw4IvF1rX39rtF1UA3WrWw18J3Z8uFyFq3ZxtanFgayagw47K3y0
- vr47Zws8Z3Z8CF7anT9S1TB71UUUUQ7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU8nxnvy2
+ vr47Zws8Z3Z8CF7anT9S1TB71UUUUyUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU8nxnvy2
  9KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UUUUUUUUU==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -52,7 +51,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============5364487533772828845==
+--===============2053792444631840390==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -77,7 +76,7 @@ Content-Transfer-Encoding: 7bit
 <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Tel. + 86 18931862421</span></p>
 <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Email: kkhb@ssoea.com</span></p>
 <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;"><span style="font-family: 'Times New Roman';">Web:www.sjzkkhbkj.com</span></span></p>
---===============5364487533772828845==
+--===============2053792444631840390==
 Content-Type: text/html; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -102,5 +101,5 @@ Content-Transfer-Encoding: 7bit
 <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Tel. + 86 18931862421</span></p>
 <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Email: kkhb@ssoea.com</span></p>
 <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;"><span style="font-family: 'Times New Roman';">Web:www.sjzkkhbkj.com</span></span></p>
---===============5364487533772828845==--
+--===============2053792444631840390==--
 
