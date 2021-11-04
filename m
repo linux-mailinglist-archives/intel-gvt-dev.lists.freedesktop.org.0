@@ -1,41 +1,57 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7D1A444DB1
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 04:28:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31D65444EE2
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 07:32:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 46E1B7B5EB;
-	Thu,  4 Nov 2021 03:28:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 462B56ED0D;
+	Thu,  4 Nov 2021 06:32:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from gzxxg-sdnproxy-2.icoremail.net (unknown [121.9.212.75])
- by gabe.freedesktop.org (Postfix) with SMTP id 0A3717B5EB
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  4 Nov 2021 03:28:25 +0000 (UTC)
-Received: from icoremail.net (unknown [10.13.4.4])
- by hzbj-transport-1.c3.icoremail.net (Coremail) with SMTP id
- AQAAfwDX3_NXU4NhgEMHAw--.26741S2; 
- Thu, 04 Nov 2021 11:28:23 +0800 (CST)
-Received: from iZ2zedrui104r8wk4e0f82Z (unknown [101.201.83.128])
- by c3-front-4 (Coremail) with SMTP id BAQNCgD3n4ZVU4NhruFsAA--.42479S2;
- Thu, 04 Nov 2021 11:28:22 +0800 (CST)
-Content-Type: multipart/alternative;
- boundary="===============2053792444631840390=="
+Received: from mail-ua1-x936.google.com (mail-ua1-x936.google.com
+ [IPv6:2607:f8b0:4864:20::936])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D1DC56EB70;
+ Thu,  4 Nov 2021 06:32:25 +0000 (UTC)
+Received: by mail-ua1-x936.google.com with SMTP id o26so8959472uab.5;
+ Wed, 03 Nov 2021 23:32:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KXnPAB3AiBWrY7SU8k+mx2QdDTS+Fxkn/CtfTF2GojQ=;
+ b=eczselLNEhFBMle12JjPVn4CXc0ejYxMnkpeCQWhy2+uu85TAv5xBPI5w7Sg6KM2v5
+ aeJmwjLhWaJcDh8QLY+lAOxBC34RugJQgrPcvPuCXlzhJNDtPdMaY+piD19HHRPFMPhd
+ ZDz9C2NmtqaKAzs9A0IBA8ib5nrh19O8rUar/2jeovtwfW8J6NJA2hADuM05Mv2rIPKK
+ JXZZObJ5btcIu3rCHrksGMCWtFQFrN+BjxcbNvHvm7WP/s8TRKtEZfUiEvL9drvDcNq1
+ +rtm3993TkKiBMe3dcwZkFgV1Ge7hf/s1P7xaPfDaasHx+LvRgdvh/lqQthyxlz9wM2s
+ PFyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KXnPAB3AiBWrY7SU8k+mx2QdDTS+Fxkn/CtfTF2GojQ=;
+ b=4luaHGUZjLogGYEOewWCgiWCf9b5wutvFdNLi24ecCSwZFeTOjqlkqnS6hqwcimHU0
+ uPH+2rGBVDHwp7Zkvjf25nUlW3PDNBHTREBfVR21T1ouA7oxIiv12umoIIBwb6gSPJ4j
+ ppb64av7ZK+o1tk/BfM9lPVcpuR2D5xJMnRljYj+zwbyNQbRoJqRbTSPukO9dMKZ1Jqe
+ hmW/LyzXReOYht+Oi4PusC1CgBOdmth5O7qXFHxFxE90LCu8mdcUWQhS7G5w+HfWtxlE
+ G1oAia9AxD7pzGKaToydmIHIRkEET2xxIDRWH8xn0ahXcZZyFO5Rn4FI2rlab2N3z2SG
+ zkQw==
+X-Gm-Message-State: AOAM531amsqXHscib3nNK898kiK7U/3fIdiF8OxL8+9tTRIysW5gtX4A
+ TaZjUNrU7qAlhKJe7+m+lxHKE/nOk4o3k85XTCc=
+X-Google-Smtp-Source: ABdhPJwnwimOYTTmodrLByGFncVyeNmazEftmcNcyXiRSrc+/9K5LypExo+SZI7+7QlNp8TCpTBhp8bDClQJYErw360=
+X-Received: by 2002:a9f:234a:: with SMTP id 68mr54022717uae.13.1636007544779; 
+ Wed, 03 Nov 2021 23:32:24 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Hello, friend, the product supplier you need
-From: kkhba@sseao.com
-To: intel-gvt-dev@lists.freedesktop.org
-Date: Thu, 04 Nov 2021 03:28:22 -0000
-Message-ID: <20211104032822.17447.5770@iZ2zedrui104r8wk4e0f82Z>
-X-CM-TRANSID: BAQNCgD3n4ZVU4NhruFsAA--.42479S2
-X-CM-SenderInfo: xnnkut46vvvt3rof0z/
-Authentication-Results: hzbj-transport-1.c3.icoremail.net; spf=neutral
- smtp.mail=kkhba@sseao.com;
-X-Coremail-Antispam: 1UD129KBjvJXoW7Kr4DtFy8Gry7AF43tFWDJwb_yoW8GrW5pF
- ZYgw4xCa4DtFs5X34UAw4IvF1rX39rtF1UA3WrWw18J3Z8uFyFq3ZxtanFgayagw47K3y0
- vr47Zws8Z3Z8CF7anT9S1TB71UUUUyUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU8nxnvy2
- 9KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UUUUUUUUU==
+References: <20211027043645.153133-1-jim.cromie@gmail.com>
+ <20211027043645.153133-11-jim.cromie@gmail.com>
+ <3a55ab9c-8109-8025-21e3-e3635bd891b2@akamai.com>
+In-Reply-To: <3a55ab9c-8109-8025-21e3-e3635bd891b2@akamai.com>
+From: jim.cromie@gmail.com
+Date: Thu, 4 Nov 2021 00:31:58 -0600
+Message-ID: <CAJfuBxyMeC5_H-RakOpqH9jDuh07gn4cjCuJ=ebQ8tLQVOTGrg@mail.gmail.com>
+Subject: Re: [PATCH v9 10/10] drm: use DEFINE_DYNAMIC_DEBUG_TRACE_CATEGORIES
+ bitmap to tracefs
+To: Jason Baron <jbaron@akamai.com>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,58 +64,87 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ LKML <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, Sean Paul <seanpaul@chromium.org>,
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============2053792444631840390==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+On Wed, Nov 3, 2021 at 9:58 AM Jason Baron <jbaron@akamai.com> wrote:
+>
+>
+>
+> On 10/27/21 12:36 AM, Jim Cromie wrote:
+> > Use new macro to create a sysfs control bitmap knob to control
+> > print-to-trace in: /sys/module/drm/parameters/trace
+> >
+> > todo: reconsider this api, ie a single macro expecting both debug &
+> > trace terms (2 each), followed by a single description and the
+> > bitmap-spec::
+> >
+> > Good: declares bitmap once for both interfaces
+> >
+> > Bad: arg-type/count handling (expecting 4 args) is ugly,
+> >      especially preceding the bitmap-init var-args.
+> >
+>
+> Hi Jim,
+>
+> I agree having the bitmap declared twice seems redundant. But I like having fewer args and not necessarily combining the trace/log variants of
+> DEBUG_CATEGORIES. hmmm...what if the DEFINE_DYNAMIC_DEBUG_CATEGORIES() took a pointer to the array of struct dyndbg_bitdesc map[] directly as the
+> final argument instead of the __VA_ARGS__? Then, we could just declare the map once?
+>
 
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Hello!</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Dear purchasing manager,</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">I&rsquo;m the foreign trade manager of China Shijiazhuang KUKA Environmental Protection Technology Co., Ltd.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Shijiazhuang KUKA Environmental Protection Technology Co., Ltd. is a comprehensive enterprise specialized in design, R &amp; D, production and sales.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">The company's main business: Feed machinery, mixer, pulverizer, conveyor, granulator, cooling machinery, packaging machinery, steel warehouse, filing cabinet, iron cabinet, pulse bag filter, bag, fan, solenoid valve, controller, spray tower, can be customized according to your needs, support customized products with drawings and samples.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Our products are sold all over the country and exported to Japan, South Korea, Singapore, Australia, New Zealand, Vietnam, Indonesia, Malaysia, Pakistan, India and other countries and regions, which have been recognized and affirmed by customers at home and abroad, and achieved good reputation in the industry with strong economic strength.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">We hope to find the opportunity to cooperate with you! We can provide detailed information for your needs, can quote for your needs, for your reference!</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">We look forward to your letter!</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Thank you and best regards,</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Shijiazhuang KUKA Environmental Protection Technology Co., Ltd</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Mr. li</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Tel. + 86 18931862421</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Email: kkhb@ssoea.com</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;"><span style="font-family: 'Times New Roman';">Web:www.sjzkkhbkj.com</span></span></p>
---===============2053792444631840390==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+indeed. that seems obvious in retrospect,
+thanks for the nudge.
 
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Hello!</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Dear purchasing manager,</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">I&rsquo;m the foreign trade manager of China Shijiazhuang KUKA Environmental Protection Technology Co., Ltd.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Shijiazhuang KUKA Environmental Protection Technology Co., Ltd. is a comprehensive enterprise specialized in design, R &amp; D, production and sales.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">The company's main business: Feed machinery, mixer, pulverizer, conveyor, granulator, cooling machinery, packaging machinery, steel warehouse, filing cabinet, iron cabinet, pulse bag filter, bag, fan, solenoid valve, controller, spray tower, can be customized according to your needs, support customized products with drawings and samples.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Our products are sold all over the country and exported to Japan, South Korea, Singapore, Australia, New Zealand, Vietnam, Indonesia, Malaysia, Pakistan, India and other countries and regions, which have been recognized and affirmed by customers at home and abroad, and achieved good reputation in the industry with strong economic strength.</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">We hope to find the opportunity to cooperate with you! We can provide detailed information for your needs, can quote for your needs, for your reference!</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">&nbsp;</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">We look forward to your letter!</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Thank you and best regards,</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Shijiazhuang KUKA Environmental Protection Technology Co., Ltd</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Mr. li</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Tel. + 86 18931862421</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;">Email: kkhb@ssoea.com</span></p>
-<p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; vertical-align: baseline; line-height: 20.0000pt; mso-line-height-rule: exactly;" align="justify"><span class="15" style="mso-spacerun: 'yes'; font-family: 'Times New Roman'; font-size: 12.0000pt; mso-font-kerning: 1.0000pt;"><span style="font-family: 'Times New Roman';">Web:www.sjzkkhbkj.com</span></span></p>
---===============2053792444631840390==--
+also, Im inclined to (uhm, have now done) bikeshed the API in patch 1,
+and  change _CATEGORIES to something else,
+maybe  _FMTGRPS
+or  _BITGRPS  < -- this one
 
+ISTM better to be explicit wrt the underlying mechanisms, (least surprise)
+let users decide the meaning of "CATEGORIES"
+
+also, HEAD~1  added DEFINE_DYNAMIC_DEBUG_CATEGORIES_FLAGS
+which could be used directly for both purposes (after a rename).
+TLDR: flags exposes the shared nature of the decorator flags,
+the trace and syslog customers of pr_debug traffic should agree on their use.
+
+redoing now...
+
+
+
+
+> Thanks,
+>
+> -Jason
+>
+> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> > ---
+> >  drivers/gpu/drm/drm_print.c | 19 +++++++++++++++++++
+> >  1 file changed, 19 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
+> > index ce662d0f339b..7b49fbc5e21d 100644
+> > --- a/drivers/gpu/drm/drm_print.c
+> > +++ b/drivers/gpu/drm/drm_print.c
+> > @@ -73,6 +73,25 @@ DEFINE_DYNAMIC_DEBUG_CATEGORIES(debug, __drm_debug,
+
+
+static mumble-map
+> >                               [7] = { DRM_DBG_CAT_LEASE },
+> >                               [8] = { DRM_DBG_CAT_DP },
+> >                               [9] = { DRM_DBG_CAT_DRMRES });
+> > +
+> > +#ifdef CONFIG_TRACING
+> > +unsigned long __drm_trace;
+> > +EXPORT_SYMBOL(__drm_trace);
+> > +DEFINE_DYNAMIC_DEBUG_TRACE_CATEGORIES(trace, __drm_trace,
+> > +                                   DRM_DEBUG_DESC,
+
+                                mumble-map)
