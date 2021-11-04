@@ -2,54 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 566B1445281
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 12:49:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16757445300
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Nov 2021 13:30:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0757C6E7D3;
-	Thu,  4 Nov 2021 11:49:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BA2476F3D6;
+	Thu,  4 Nov 2021 12:30:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x144.google.com (mail-il1-x144.google.com
- [IPv6:2607:f8b0:4864:20::144])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 581516E7D3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  4 Nov 2021 11:49:37 +0000 (UTC)
-Received: by mail-il1-x144.google.com with SMTP id i12so5828389ila.12
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 04 Nov 2021 04:49:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=w2sO9GBLInp5/uz20unDTRmAZW8kFhT0WUtWzyA59uM=;
- b=IFzpE6qkVor1Ou01wuSAr2ysPeafeWPfLIev2Kaur7AQRvPSkUAmA1XC65XgWmgeKX
- 2l8K3Z2fswGc/qKzmF36jPZY7dSpYw9xO2DOuLuZPvAeKCRlUX5mchK/bLvBQXcI6RNz
- xJUiAqGv+ZiJXKkLUQvONrpxqKMzMAxRSUM3kHta459z8TUAyjNShiVRPDUj5SCjZNGw
- M8kf80w/stpkjketIIS6peGVIJjRUjhlcomPZ5IfbIOJffgdxcQI8B5YKxnv9N4A9eKB
- v12xHun9UyRHc2UbRY92m7cee2522yYANJDqG2YLYAN5mXxyATNT+FUz6kGXcSxVteED
- akbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=w2sO9GBLInp5/uz20unDTRmAZW8kFhT0WUtWzyA59uM=;
- b=4rG1uPRghb2EzzGmSZXoiCKlH1QTeNUoHacKUNu3MhX1Q3xIMXVzQVy+e1wsyQDNNi
- eEhg/k+4eQ6XeeO2JXieX1h8Z4sAd/FAwOIxogUeHm9LTkEnLcXeXMb89D8vu7XRSFpw
- 0+Jb3wU/BaG0uSyzhZIGeUdPrV9TmyJWWWufy28KAUQQlppzmYENHrVd/6v1Er1drlcp
- xiCrOS2kZU+wZy7wfP2D4Rjbol+Exai5wXwtfBqIcbUwfUDCeXDbAQkWgGhOAI24MhPh
- uhVse1RsqaKIPfJv+atVhW8JRpn2G3KicIQ7OJLRe8O9jSHEZTzaZPwCPag0jQrw5+XX
- zI/g==
-X-Gm-Message-State: AOAM532xgrzkqtfFM9Z7sMVgdMJa//+tX+URP3JY8dmPL3elASCQ49A5
- m++gwZQzaDoUJIpbPTT48H21d5bOVUPZWoIC0Ro=
-X-Google-Smtp-Source: ABdhPJzb6jYd1qQ5KZ6lOxwcjZ9eB3XVQdApglyzhTbU0yY5hTNhM2+vYbBLrtwXWBcPlws9oLiU+iyojzGC99NSea0=
-X-Received: by 2002:a05:6e02:216e:: with SMTP id
- s14mr17617875ilv.247.1636026576746; 
- Thu, 04 Nov 2021 04:49:36 -0700 (PDT)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 796866F3D6;
+ Thu,  4 Nov 2021 12:30:26 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="292528687"
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="292528687"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2021 05:30:25 -0700
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="667884307"
+Received: from agilev-mobl.ccr.corp.intel.com (HELO localhost)
+ ([10.249.254.157])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2021 05:30:22 -0700
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-From: jim ikye <jimikye259@gmail.com>
-Date: Thu, 4 Nov 2021 10:49:24 +0100
-Message-ID: <CAOiNOUSijVz0DC5ntkUA07pMUq2+2n798CoAbeoNa0rxiqe8cw@mail.gmail.com>
-Subject: GOOD DAY
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000f33e3b05cff51e9a"
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20211102070601.155501-3-hch@lst.de>
+References: <20211102070601.155501-1-hch@lst.de>
+ <20211102070601.155501-3-hch@lst.de>
+To: Christoph Hellwig <hch@lst.de>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>
+Subject: Re: [PATCH 02/29] drm/i915/gvt: integrate into the main Makefile
+From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Message-ID: <163602902009.4807.3745093259631583283@jlahtine-mobl.ger.corp.intel.com>
+User-Agent: alot/0.8.1
+Date: Thu, 04 Nov 2021 14:30:20 +0200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,88 +49,108 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: julianeric100@gmail.com
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, Jason Gunthorpe <jgg@nvidia.com>,
+ linux-kernel@vger.kernel.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000f33e3b05cff51e9a
-Content-Type: text/plain; charset="UTF-8"
+Quoting Christoph Hellwig (2021-11-02 09:05:34)
+> Remove the separately included Makefile and just use the relative
+> reference from the main i915 Makefile as for source files in other
+> subdirectories.
 
-Dear Sir,
+The thinking behind the split is to avoid any merge conflicts as the
+gvt/ subdirectory is handled through separate pull request flow and
+are note part of drm-tip.
 
-My name is julian eric. I am the Administrative Secretary of
-Keystone Capital Group Inc. Keystone Capital Group Inc., is an
-independent private equity investment group that supports
-entrepreneurs in realizing their growth ambitions.
+The other subdirectories are part of drm-intel-next/drm-intel-gt-next
+and are part of drm-tip.
 
-As a measure to mitigate the severe negative impact of the coronavirus
-pandemic on the global economy which has resulted in winding up of
-companies, Keystone Capital Group Inc., wishes to invite you to
-participate as a broker/agent/partner to Keystone Capital Group Inc.,
-individualized equity investment portfolio management programme.
-Keystone Capital Group Inc., is one of the largest private Investment
-Company in the United States of America with over $3 trillion private
-and corporate investment portfolios.
+So I would rather still see the Makefile live in gvt/ directory.
 
-We are privately looking for fiduciary agents and management experts
-who will be willing to act as investment portfolio holders and
-administrators. We currently have a back-log of an Excess Maximum
-Return Capital Profit (EMRCP) of an average of 1.2% on each private
-investment and corporate portfolio under our administration and
-control. We wish to re-invest this fund by putting it into the
-management of private businessmen and corporations with good business
-ideas that can generate at least 3.5% ROI per annum over maximum of 10
-years duration.
+Regards, Joonas
 
-Keystone Capital Group Inc., will support you if you need LOAN to
-finance your businesses and ideas, funds for your existing and new
-projects, funds to meet up with the supply for an order or need
-CAPITAL to start any good business. We would like to help you and that
-is why we are inviting you to apply for Loan today at Keystone Capital
-Group Inc.
-
-For further details please contact me directly.
-
-Sincerely,
-
-Mr. julian eric.
-Director of Operations
-Keystone Capital Group Inc.
-8777 N Gainey Center Dr Ste 245
-Scottsdale, AZ, 85258-2154 United States
-Tel: +1 (301) 973 5488
-
---000000000000f33e3b05cff51e9a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">=C2=A0 =C2=A0<br>Dear Sir,<br><br>My name is julian eric. =
-I am the Administrative Secretary of<br>Keystone Capital Group Inc. Keyston=
-e Capital Group Inc., is an<br>independent private equity investment group =
-that supports<br>entrepreneurs in realizing their growth ambitions.<br><br>=
-As a measure to mitigate the severe negative impact of the coronavirus<br>p=
-andemic on the global economy which has resulted in winding up of<br>compan=
-ies, Keystone Capital Group Inc., wishes to invite you to<br>participate as=
- a broker/agent/partner to Keystone Capital Group Inc.,<br>individualized e=
-quity investment portfolio management programme.<br>Keystone Capital Group =
-Inc., is one of the largest private Investment<br>Company in the United Sta=
-tes of America with over $3 trillion private<br>and corporate investment po=
-rtfolios.<br><br>We are privately looking for fiduciary agents and manageme=
-nt experts<br>who will be willing to act as investment portfolio holders an=
-d<br>administrators. We currently have a back-log of an Excess Maximum<br>R=
-eturn Capital Profit (EMRCP) of an average of 1.2% on each private<br>inves=
-tment and corporate portfolio under our administration and<br>control. We w=
-ish to re-invest this fund by putting it into the<br>management of private =
-businessmen and corporations with good business<br>ideas that can generate =
-at least 3.5% ROI per annum over maximum of 10<br>years duration.<br><br>Ke=
-ystone Capital Group Inc., will support you if you need LOAN to<br>finance =
-your businesses and ideas, funds for your existing and new<br>projects, fun=
-ds to meet up with the supply for an order or need<br>CAPITAL to start any =
-good business. We would like to help you and that<br>is why we are inviting=
- you to apply for Loan today at Keystone Capital<br>Group Inc.<br><br>For f=
-urther details please contact me directly.<br><br>Sincerely,<br><br>Mr. jul=
-ian eric.<br>Director of Operations<br>Keystone Capital Group Inc.<br>8777 =
-N Gainey Center Dr Ste 245<br>Scottsdale, AZ, 85258-2154 United States<br>T=
-el: +1 (301) 973 5488=C2=A0=C2=A0<br></div>
-
---000000000000f33e3b05cff51e9a--
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  drivers/gpu/drm/i915/Makefile     | 29 ++++++++++++++++++++++++-----
+>  drivers/gpu/drm/i915/gvt/Makefile |  9 ---------
+>  drivers/gpu/drm/i915/gvt/trace.h  |  2 +-
+>  3 files changed, 25 insertions(+), 15 deletions(-)
+>  delete mode 100644 drivers/gpu/drm/i915/gvt/Makefile
+>=20
+> diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefile
+> index 335ba9f43d8f7..63523032eea26 100644
+> --- a/drivers/gpu/drm/i915/Makefile
+> +++ b/drivers/gpu/drm/i915/Makefile
+> @@ -295,11 +295,30 @@ i915-$(CONFIG_DRM_I915_SELFTEST) +=3D \
+> =20
+>  # virtual gpu code
+>  i915-y +=3D i915_vgpu.o
+> -
+> -ifeq ($(CONFIG_DRM_I915_GVT),y)
+> -i915-y +=3D intel_gvt.o
+> -include $(src)/gvt/Makefile
+> -endif
+> +i915-$(CONFIG_DRM_I915_GVT) +=3D \
+> +       intel_gvt.o \
+> +       gvt/gvt.o \
+> +       gvt/aperture_gm.o \
+> +       gvt/handlers.o \
+> +       gvt/vgpu.o \
+> +       gvt/trace_points.o \
+> +       gvt/firmware.o \
+> +       gvt/interrupt.o \
+> +       gvt/gtt.o \
+> +       gvt/cfg_space.o \
+> +       gvt/opregion.o \
+> +       gvt/mmio.o \
+> +       gvt/display.o \
+> +       gvt/edid.o \
+> +       gvt/execlist.o \
+> +       gvt/scheduler.o \
+> +       gvt/sched_policy.o \
+> +       gvt/mmio_context.o \
+> +       gvt/cmd_parser.o \
+> +       gvt/debugfs.o \
+> +       gvt/fb_decoder.o \
+> +       gvt/dmabuf.o \
+> +       gvt/page_track.o
+> =20
+>  obj-$(CONFIG_DRM_I915) +=3D i915.o
+>  obj-$(CONFIG_DRM_I915_GVT_KVMGT) +=3D gvt/kvmgt.o
+> diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt=
+/Makefile
+> deleted file mode 100644
+> index ea8324abc784a..0000000000000
+> --- a/drivers/gpu/drm/i915/gvt/Makefile
+> +++ /dev/null
+> @@ -1,9 +0,0 @@
+> -# SPDX-License-Identifier: GPL-2.0
+> -GVT_DIR :=3D gvt
+> -GVT_SOURCE :=3D gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o fir=
+mware.o \
+> -       interrupt.o gtt.o cfg_space.o opregion.o mmio.o display.o edid.o \
+> -       execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o=
+ debugfs.o \
+> -       fb_decoder.o dmabuf.o page_track.o
+> -
+> -ccflags-y                              +=3D -I $(srctree)/$(src) -I $(sr=
+ctree)/$(src)/$(GVT_DIR)/
+> -i915-y                                 +=3D $(addprefix $(GVT_DIR)/, $(G=
+VT_SOURCE))
+> diff --git a/drivers/gpu/drm/i915/gvt/trace.h b/drivers/gpu/drm/i915/gvt/=
+trace.h
+> index 6d787750d279f..348f57f8301db 100644
+> --- a/drivers/gpu/drm/i915/gvt/trace.h
+> +++ b/drivers/gpu/drm/i915/gvt/trace.h
+> @@ -379,5 +379,5 @@ TRACE_EVENT(render_mmio,
+>  #undef TRACE_INCLUDE_PATH
+>  #define TRACE_INCLUDE_PATH .
+>  #undef TRACE_INCLUDE_FILE
+> -#define TRACE_INCLUDE_FILE trace
+> +#define TRACE_INCLUDE_FILE gvt/trace
+>  #include <trace/define_trace.h>
+> --=20
+> 2.30.2
+>=20
