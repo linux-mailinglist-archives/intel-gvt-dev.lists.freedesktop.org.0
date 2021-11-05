@@ -1,31 +1,28 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4616C445FE4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Nov 2021 07:55:21 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55A844465AD
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Nov 2021 16:26:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 62F146E0C5;
-	Fri,  5 Nov 2021 06:55:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0DB0B89CBE;
+	Fri,  5 Nov 2021 15:26:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 611 seconds by postgrey-1.36 at gabe;
- Fri, 05 Nov 2021 06:55:17 UTC
-Received: from smtp.alphacall.com.au (smtp.alphacall.com.au [202.182.128.111])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2C5A76E0C5;
- Fri,  5 Nov 2021 06:55:17 +0000 (UTC)
-Received: from static.tcrholdings.com (unknown [202.182.128.118])
- by smtp.alphacall.com.au (Postfix) with ESMTP id A129B56F325;
- Fri,  5 Nov 2021 17:43:52 +1100 (AEDT)
-From: "Susan Frost" <suefrost@nelsonbay.com>
-User-Agent: SOGoMail 4.3.2
+Received: from ukdc.ac.id (unknown [203.134.232.91])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A005E89CB3;
+ Fri,  5 Nov 2021 15:26:19 +0000 (UTC)
+Received: from [142.147.97.185] (unknown [142.147.97.185])
+ by ukdc.ac.id (Postfix) with ESMTP id 405444BA33FB;
+ Fri,  5 Nov 2021 11:32:30 +0700 (WIB)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Date: Fri, 05 Nov 2021 17:43:52 +1100
-Subject: =?utf-8?q?Re=3A?= Investment Opportunity!!
-Message-ID: <2ca-6184d280-6c1-53fb8680@72582979>
-X-Forward: 66.251.164.244
-Content-Type: multipart/alternative;
- boundary="----=_=-_OpenGroupware_org_NGMime-714-1636094632.652929-926------"
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: INVESTMENT
+To: Recipients <genrebrogue22@gmail.com>
+From: genrebrogue22@gmail.com
+Date: Thu, 04 Nov 2021 21:32:18 -0700
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,67 +35,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Genrebrogue@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-
-------=_=-_OpenGroupware_org_NGMime-714-1636094632.652929-926------
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Length: 1153
+Message-Id: <20211105152621.0DB0B89CBE@gabe.freedesktop.org>
 
 
-Dear Sir/Madam,
+Dear Sir/Madam
+ =
 
-=C2=A0 =C2=A0 =C2=A0 =C2=A0My name is David Stringham an Investment Att=
-orney with a reputable legal & investment =C2=A0management firm. My Fir=
-m mostly represents the interests of wealthy investors.
+I work as an agent to some Investors. Do you need a business loan or
+funds for a business idea or want to expand but need huge funding? We
+are expanding our investment presence by granting debt loan to fund
+viable and lucrative projects.
+ =
 
-Due to the sensitivity of the position they once held in their country =
-and the unstable investment environment of their country, some of our C=
-lients evacuate the majority of their funds into more stable economies =
-and developed nations where they can get good yield for their money.
+If you have any project that needs funding, kindly revert to me with your b=
+usiness plan and if we find your business to be worthy of investment, you w=
+ill be promptly contacted and both parties will meet face to face and have =
+a round-table meeting together.
+ =
 
-A Reserved Client, whom I had personally worked with a few years ago wi=
-th a proposal, recently approached me. What he requests is an individua=
-l such as you, who will be willing to receive money on his behalf, and =
-put it to good use for a period not exceeding 6 years for a start.
+Good documentation will be carried out between you and the Investor
+before putting down his funds.
+ =
 
-The Client has offered some terms which will be discussed when you show=
- interest and if you aren't interested and you know of someone looking =
-for an investor, please do give him/her my contact.
-
-Please respond to the personal address below.
-(stringhamdavid0@gmail.com}
-
-Sincerely,
-David Stringham
-Investment Attorney
-stringhamdavid0@gmail.com
-
-------=_=-_OpenGroupware_org_NGMime-714-1636094632.652929-926------
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Length: 1270
-
-<html>Dear Sir/Madam,<br /><br />&nbsp; &nbsp; &nbsp; &nbsp;My name is =
-David Stringham an Investment Attorney with a reputable legal &amp; inv=
-estment &nbsp;management firm. My Firm mostly represents the interests =
-of wealthy investors.<br /><br />Due to the sensitivity of the position=
- they once held in their country and the unstable investment environmen=
-t of their country, some of our Clients evacuate the majority of their =
-funds into more stable economies and developed nations where they can g=
-et good yield for their money.<br /><br />A Reserved Client, whom I had=
- personally worked with a few years ago with a proposal, recently appro=
-ached me. What he requests is an individual such as you, who will be wi=
-lling to receive money on his behalf, and put it to good use for a peri=
-od not exceeding 6 years for a start.<br /><br />The Client has offered=
- some terms which will be discussed when you show interest and if you a=
-ren't interested and you know of someone looking for an investor, pleas=
-e do give him/her my contact.<br /><br />Please respond to the personal=
- address below.<br />(stringhamdavid0@gmail.com}<br /><br />Sincerely,<=
-br />David Stringham<br />Investment Attorney<br />stringhamdavid0@gmai=
-l.com</html>
-
-------=_=-_OpenGroupware_org_NGMime-714-1636094632.652929-926--------
+Regards
+ =
 
 
+Genre Brogue
