@@ -2,65 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4FAE44690D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  5 Nov 2021 20:27:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB4A0446E53
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 Nov 2021 15:32:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7FE8D6EC89;
-	Fri,  5 Nov 2021 19:27:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A0FD06E364;
+	Sat,  6 Nov 2021 14:32:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd2b.google.com (mail-io1-xd2b.google.com
- [IPv6:2607:f8b0:4864:20::d2b])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CCEC96EAD0;
- Fri,  5 Nov 2021 19:27:18 +0000 (UTC)
-Received: by mail-io1-xd2b.google.com with SMTP id i79so11592152ioa.13;
- Fri, 05 Nov 2021 12:27:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=vpU+SSLFFT68FpBw2vFN+h9yffUizferjvptZotty9E=;
- b=NN0Np2pW3UrsG+9AqO+AohEktBfzKGEDHpdeKujznu3pDIYoBDhDZOXQ6P1lTZBMpB
- 2JkWUN4ZodhwWgqXtdvceIMDWR0CVlVHYdhsQsSKy2wgT/wvfiPDDiCSpklNzQ7YsiuA
- 79Y5TJGzTZRddQel5VH8D0BBtGZXuADlBj7MbqBQD6tRwcqhoTafPJpqeb8eoqpF5Rnl
- 9ahVbAQm8bsLhNfPbH909uvS/4cXOneOAoDI7B6K6jptVpUzL32IhgkgAqVlSSOpp/9A
- PENpqdIPEAedlQZ91CCy2ozBx2xiBApHQbJ3A8mJon9utYPwDXeLipWnBybv1vkX8+5x
- OF8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=vpU+SSLFFT68FpBw2vFN+h9yffUizferjvptZotty9E=;
- b=y6k/XYleq+eUFQnm/kAZfWKuSYiWT/Q6Y1rrrtdaNlIBUk8K6Ptu7dernrsmdzxI7e
- iL3FQn6C8zAJhc+JGoH++VyQOQjoCjdVdkkffF43tYGe5A0dyCZ5vuEASrbPjy+5Voi2
- VF+o49+qXuafxhIuJRzXKxZMvrYyCU7Ft5xmBX8o4NxIG4mA0thjmlcnqPq5RovcOn0s
- BH45UG1Ljec1+CDX0ysAuO3i1LAzhi1g8ZBQGSppLIfarLwp2gyd1BoJUyFytv5E3AmS
- RPec+H7f5bXqMoWb738dzUxAExC+wdPB0TZk76XCS3xtskC092G+jJr584fR0aEkXaCT
- Zuaw==
-X-Gm-Message-State: AOAM533/S6QJIoaGwgzNnv//WLPa+AtPCaa4OTPWkuIcIWUqaxT2SAow
- ODspY8iOaYR6oaVE4x/Etew=
-X-Google-Smtp-Source: ABdhPJzkRMbSENTrjwDyn1PtHkgzb9XW0WXE5GZRnPEmxet7Nadw/IFlSp9CRcRmJAGvoHxlipKbOQ==
-X-Received: by 2002:a05:6638:613:: with SMTP id
- g19mr285013jar.77.1636140437436; 
- Fri, 05 Nov 2021 12:27:17 -0700 (PDT)
-Received: from samwise.. (c-24-9-77-57.hsd1.co.comcast.net. [24.9.77.57])
- by smtp.googlemail.com with ESMTPSA id l18sm4338617iob.17.2021.11.05.12.27.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Nov 2021 12:27:17 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, robdclark@gmail.com, sean@poorly.run,
- daniel.vetter@ffwll.ch, seanpaul@chromium.org, lyude@redhat.com,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
-Subject: [PATCH v10 10/10] drm: use DEFINE_DYNAMIC_DEBUG_TRACE_GROUPS in 3
- places
-Date: Fri,  5 Nov 2021 13:26:37 -0600
-Message-Id: <20211105192637.2370737-11-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20211105192637.2370737-1-jim.cromie@gmail.com>
-References: <20211105192637.2370737-1-jim.cromie@gmail.com>
+Received: from ukdc.ac.id (unknown [203.134.232.91])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 281626E364;
+ Sat,  6 Nov 2021 14:32:02 +0000 (UTC)
+Received: from [142.147.97.185] (unknown [142.147.97.185])
+ by ukdc.ac.id (Postfix) with ESMTP id 4F14A458749A;
+ Sat,  6 Nov 2021 10:18:11 +0700 (WIB)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: INVESTMENT
+To: Recipients <genrebrogue22@gmail.com>
+From: genrebrogue22@gmail.com
+Date: Fri, 05 Nov 2021 20:18:02 -0700
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,87 +35,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jim Cromie <jim.cromie@gmail.com>
+Reply-To: Genrebrogue@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20211106143202.A0FD06E364@gabe.freedesktop.org>
 
-add sysfs knobs to enable modules' pr_debug()s ---> tracefs
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/gpu/drm/amd/display/dc/core/dc_debug.c |  8 ++++++++
- drivers/gpu/drm/drm_print.c                    | 13 ++++++++++---
- drivers/gpu/drm/i915/intel_gvt.c               | 15 ++++++++++++---
- 3 files changed, 30 insertions(+), 6 deletions(-)
+Dear Sir/Madam
+ =
 
-diff --git a/drivers/gpu/drm/amd/display/dc/core/dc_debug.c b/drivers/gpu/drm/amd/display/dc/core/dc_debug.c
-index e49a755c6a69..58c56c1708e7 100644
---- a/drivers/gpu/drm/amd/display/dc/core/dc_debug.c
-+++ b/drivers/gpu/drm/amd/display/dc/core/dc_debug.c
-@@ -80,6 +80,14 @@ DEFINE_DYNAMIC_DEBUG_LOG_GROUPS(debug_dc, __debug_dc,
- 				DC_DYNDBG_BITMAP_DESC(debug_dc),
- 				amdgpu_bitmap);
- 
-+#if defined(CONFIG_TRACING)
-+
-+unsigned long __trace_dc;
-+EXPORT_SYMBOL(__trace_dc);
-+DEFINE_DYNAMIC_DEBUG_LOG_GROUPS(trace_dc, __trace_dc,
-+				DC_DYNDBG_BITMAP_DESC(trace_dc),
-+				amdgpu_bitmap);
-+#endif
- #endif
- 
- #define DC_LOGGER_INIT(logger)
-diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-index d5e0ffad467b..ee20e9c14ce9 100644
---- a/drivers/gpu/drm/drm_print.c
-+++ b/drivers/gpu/drm/drm_print.c
-@@ -72,9 +72,16 @@ static struct dyndbg_bitdesc drm_dyndbg_bitmap[] = {
- 	[8] = { DRM_DBG_CAT_DP },
- 	[9] = { DRM_DBG_CAT_DRMRES }
- };
--DEFINE_DYNAMIC_DEBUG_BITGRPS(debug, __drm_debug, DRM_DEBUG_DESC,
--			     drm_dyndbg_bitmap);
--
-+DEFINE_DYNAMIC_DEBUG_LOG_GROUPS(debug, __drm_debug, DRM_DEBUG_DESC,
-+				drm_dyndbg_bitmap);
-+
-+#ifdef CONFIG_TRACING
-+struct trace_array *trace_arr;
-+unsigned long __drm_trace;
-+EXPORT_SYMBOL(__drm_trace);
-+DEFINE_DYNAMIC_DEBUG_TRACE_GROUPS(trace, __drm_trace, DRM_DEBUG_DESC,
-+				  drm_dyndbg_bitmap);
-+#endif
- #endif
- 
- void __drm_puts_coredump(struct drm_printer *p, const char *str)
-diff --git a/drivers/gpu/drm/i915/intel_gvt.c b/drivers/gpu/drm/i915/intel_gvt.c
-index efaac5777873..84348d4aedf6 100644
---- a/drivers/gpu/drm/i915/intel_gvt.c
-+++ b/drivers/gpu/drm/i915/intel_gvt.c
-@@ -195,8 +195,17 @@ static struct dyndbg_bitdesc i915_dyndbg_bitmap[] = {
- 	help_(7, "gvt:render:")						\
- 	help_(8, "gvt:sched:")
- 
--DEFINE_DYNAMIC_DEBUG_BITGRPS(debug_gvt, __gvt_debug,
--			     I915_GVT_CATEGORIES(debug_gvt),
--			     i915_dyndbg_bitmap);
-+DEFINE_DYNAMIC_DEBUG_LOG_GROUPS(debug_gvt, __gvt_debug,
-+				I915_GVT_CATEGORIES(debug_gvt),
-+				i915_dyndbg_bitmap);
- 
-+#if defined(CONFIG_TRACING)
-+
-+unsigned long __gvt_trace;
-+EXPORT_SYMBOL(__gvt_trace);
-+DEFINE_DYNAMIC_DEBUG_TRACE_GROUPS(trace_gvt, __gvt_trace,
-+				  I915_GVT_CATEGORIES(trace_gvt),
-+				  i915_dyndbg_bitmap);
-+
-+#endif
- #endif
--- 
-2.31.1
+I work as an agent to some Investors. Do you need a business loan or
+funds for a business idea or want to expand but need huge funding? We
+are expanding our investment presence by granting debt loan to fund
+viable and lucrative projects.
+ =
 
+If you have any project that needs funding, kindly revert to me with your b=
+usiness plan and if we find your business to be worthy of investment, you w=
+ill be promptly contacted and both parties will meet face to face and have =
+a round-table meeting together.
+ =
+
+Good documentation will be carried out between you and the Investor
+before putting down his funds.
+ =
+
+Regards
+ =
+
+
+Genre Brogue
