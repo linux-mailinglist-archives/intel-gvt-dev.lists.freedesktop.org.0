@@ -1,44 +1,57 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5235E447842
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 02:28:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 45352447AE8
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 08:30:44 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1D8126E185;
-	Mon,  8 Nov 2021 01:28:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E5D8B6E167;
+	Mon,  8 Nov 2021 07:30:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 2713 seconds by postgrey-1.36 at gabe;
- Mon, 08 Nov 2021 01:28:31 UTC
-Received: from mail2.bsgrebocin.pl (unknown [213.25.29.186])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B99956E185;
- Mon,  8 Nov 2021 01:28:31 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail2.bsgrebocin.pl (Postfix) with ESMTP id 13681824F58A;
- Mon,  8 Nov 2021 01:19:34 +0100 (CET)
-Received: from mail2.bsgrebocin.pl ([127.0.0.1])
- by localhost (mail2.bsgrebocin.pl [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id bPPmGA7Lc-ra; Mon,  8 Nov 2021 01:19:33 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by mail2.bsgrebocin.pl (Postfix) with ESMTP id C9B99824F5A9;
- Mon,  8 Nov 2021 01:19:33 +0100 (CET)
-X-Virus-Scanned: amavisd-new at bsgrebocin.pl
-Received: from mail2.bsgrebocin.pl ([127.0.0.1])
- by localhost (mail2.bsgrebocin.pl [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id D6ViTt680A7t; Mon,  8 Nov 2021 01:19:33 +0100 (CET)
-Received: from [185.239.242.42] (_gateway [213.25.29.177])
- by mail2.bsgrebocin.pl (Postfix) with ESMTP id 0C3DB824F58A;
- Mon,  8 Nov 2021 01:19:33 +0100 (CET)
-Content-Type: text/plain; charset="iso-8859-1"
+Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com
+ [IPv6:2a00:1450:4864:20::530])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 91BD96E1BA
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  8 Nov 2021 07:30:41 +0000 (UTC)
+Received: by mail-ed1-x530.google.com with SMTP id c8so41927574ede.13
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 07 Nov 2021 23:30:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=gS+G2bXPLTc8QV9oSOsVFPfildfSifO+gabOlUjPn+8=;
+ b=ndar4tdyg9vu9nkPf60x+V+WrVNh2z5eoFqiiokwkf9fo/ihe1LdPMi0+Y9hf0Pl7d
+ WPzkG2taZAsuOdSM/K7cefMF0ErprUlttJ9uVDEg3pKU4jFK3b6s4vXxRZGEBrh4SKG6
+ EQlt4Ti5Q4NjpZG7z812oKoOc8lpkAA2KcugOtYAVkcN4HjqyXRt/cvyE/MPqAVNT2+s
+ lwOFI29MWcaQGgzs5dr7G+6mNKZA+UEyOUaSClAmB88vI36DDHswF8/PJKEnUE/DGi/p
+ Padz9PS1UolP4ozxwX6GCKYAWVkOPu1HmzV9upuS3WB+9bqCGA6SyQg/zJnOqw99nsYE
+ UmtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=gS+G2bXPLTc8QV9oSOsVFPfildfSifO+gabOlUjPn+8=;
+ b=nuwMgQ3JZCp10USRpKDDFbCGmwCkQETLLN5S5kEkCqjPWdbb/DfvlcZ5FnXvkCAzPj
+ VU9IQ8EKfnGWSdkyPkY3bjC7dmQpkpRg0Px6lAg/7piy9bVkUtL2xfFTWCBUrCaS4BrD
+ cBeNf+02WXbESh+B1ltZNOLBFAMZp48AjF/M8Lo+bNXZNQ3MKpVNjYV20NZhhOOXMaMj
+ 3L5JfdjyxU2EWl69MHU8bKvw0x2JhZiWHgjgDNmZtt5GF+lttMkgOhPrKoC2JMgqwTR4
+ WqLbT1u6krCi3qsMN2Lmt+byPpW+KCqUsPr5zfH+j+HBhVl6Bi2/NPcYlLc39Kgyoq/G
+ cpiw==
+X-Gm-Message-State: AOAM533mUvduIwZf72ftnhLNd6w4S60C81hp2GCCnupsxzgIG9pL1EV/
+ GrJ6bCNpdgCB+5HG6QkW3Fqr3g3TOcRXjO9KHVs=
+X-Google-Smtp-Source: ABdhPJwgO3M+ZdxGG4H4KjGVnffsj2/riFmC0+qEOIG03i78DeYhVRaHaUkoo8415xDriNCB80TMIAcUexk7Th4T/jM=
+X-Received: by 2002:a17:906:d92f:: with SMTP id
+ rn15mr52777186ejb.557.1636356640103; 
+ Sun, 07 Nov 2021 23:30:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: USUS$1,500,000.00USD Donation for you and your family;
-To: Recipients <send@car-part.com>
-From: "Piramal Foundation" <send@car-part.com>
-Date: Sun, 07 Nov 2021 16:19:31 -0800
-Message-Id: <20211108001933.0C3DB824F58A@mail2.bsgrebocin.pl>
+Received: by 2002:a50:2501:0:0:0:0:0 with HTTP;
+ Sun, 7 Nov 2021 23:30:39 -0800 (PST)
+From: Maria Schaefler <ziskoraa@gmail.com>
+Date: Mon, 8 Nov 2021 07:30:39 +0000
+Message-ID: <CAJh0FjjNo1TzC2CFsCBP-t_+zaOUWoqrO27OEVOS6ZC1qz=VSA@mail.gmail.com>
+Subject: MY HEART CHOOSE YOU.
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,33 +64,12 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: piramalfoundation6@gmail.com
+Reply-To: mariaschaefler@gmx.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi,
-
-Congratulations from the Piramal Philanthropies Foundation, where life chan=
-ging opportunities and cash are given-out on a daily basis. The foundation/=
-founder has indeed been a great Philanthropist to this generation and is tr=
-uly committed to "giving while living," We are pleased to inform you that y=
-ou are one (1) of the lucky people to benefit and receive $ 1,500,000.00 US=
-D from our foundation's ongoing goodwill project, grant/donations program. =
-Ajay Piramal (born 3 August 1955) is an Indian billionaire industrialist, a=
-nd the chairman of the Piramal Foundation and Piramal Group, a conglomerate=
- with interests in pharmaceutical, financial services, real estate, healthc=
-are analytics and glass packaging.
-
-Is this message sent to a valid e-mail account? Your email account was rand=
-omly selected to receive a cash donation of $ 1,500,000.00 USD from the Phi=
-lanthropist. If this is a valid e-mail account, contact us immediately for =
-comprehensive information.
-
-For more details visit https://en.wikipedia.org/wiki/Ajay_Piramal or Google=
- Ajay Piramal.
-
-Sincerely,
-
-Narayanan Iyer
-Chief Financial Officer
-Piramal Foundation
+Given my current state of health, I have decided to donate what I
+inherited from my late husband to you to help the poor and needy. I am
+Mrs Maria Schaefler,a 57years old dying woman. I was diagnosed for
+cancer about 2 years ago and I have few months to live according to
+medical experts. Email me for my directives
