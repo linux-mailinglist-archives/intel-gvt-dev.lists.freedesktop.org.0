@@ -2,24 +2,37 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99662449D59
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 21:59:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 35DBE449DD0
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 22:18:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 28CA66E97F;
-	Mon,  8 Nov 2021 20:59:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CF95C6E96C;
+	Mon,  8 Nov 2021 21:18:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from netrider.rowland.org (netrider.rowland.org [192.131.102.5])
- by gabe.freedesktop.org (Postfix) with SMTP id BC0506E97E
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Nov 2021 20:59:27 +0000 (UTC)
-Received: (qmail 1679175 invoked by uid 1000); 8 Nov 2021 15:59:26 -0500
-Date: Mon, 8 Nov 2021 15:59:26 -0500
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Borislav Petkov <bp@alien8.de>
+Received: from mail.skyhub.de (mail.skyhub.de [5.9.137.197])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 94C5E6E95A;
+ Mon,  8 Nov 2021 21:18:54 +0000 (UTC)
+Received: from zn.tnic (p200300ec2f3311007827e440708b1099.dip0.t-ipconnect.de
+ [IPv6:2003:ec:2f33:1100:7827:e440:708b:1099])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id E3BE71EC051F;
+ Mon,  8 Nov 2021 22:18:52 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alien8.de; s=dkim;
+ t=1636406333;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:in-reply-to:in-reply-to:  references:references;
+ bh=AU7V4fSHGUK4yNvIX3QFWGgL2mpvsQwlJrzk1EYTZE4=;
+ b=HI4wHVqdPFUaTmLfTawRP0YuILjCSvy0XvR7UY6GhjpkLZ7Jcpensq3GPz/wKuSVQPh/ah
+ JjfisFcmsOLL77YybjTfUcF4SOtfsMptjoCY2iNpL/QAVX8IlmhT4tll2zqUciAF4fFC2q
+ GhOxoJIWWV9UKbtfg9ziQ2wDV7UERPU=
+Date: Mon, 8 Nov 2021 22:18:47 +0100
+From: Borislav Petkov <bp@alien8.de>
+To: Alan Stern <stern@rowland.harvard.edu>
 Subject: Re: [PATCH v0 42/42] notifier: Return an error when callback is
  already registered
-Message-ID: <20211108205926.GA1678880@rowland.harvard.edu>
+Message-ID: <YYmUN69Y7z9xITas@zn.tnic>
 References: <20211108101157.15189-1-bp@alien8.de>
  <20211108101157.15189-43-bp@alien8.de>
  <CAMuHMdWH+txiSP_d7Jc4f_bU8Lf9iWpT4E3o5o7BJr-YdA6-VA@mail.gmail.com>
@@ -28,11 +41,11 @@ References: <20211108101157.15189-1-bp@alien8.de>
  <YYlJQYLiIrhjwOmT@zn.tnic>
  <CAMuHMdXHikGrmUzuq0WG5JRHUUE=5zsaVCTF+e4TiHpM5tc5kA@mail.gmail.com>
  <YYlOmd0AeA8DSluD@zn.tnic>
+ <20211108205926.GA1678880@rowland.harvard.edu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <YYlOmd0AeA8DSluD@zn.tnic>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20211108205926.GA1678880@rowland.harvard.edu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,33 +92,32 @@ Cc: ALSA Development Mailing List <alsa-devel@alsa-project.org>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Nov 08, 2021 at 05:21:45PM +0100, Borislav Petkov wrote:
-> On Mon, Nov 08, 2021 at 05:12:16PM +0100, Geert Uytterhoeven wrote:
-> > Returning void is the other extreme ;-)
-> > 
-> > There are 3 levels (ignoring BUG_ON()/panic () inside the callee):
-> >   1. Return void: no one can check success or failure,
-> >   2. Return an error code: up to the caller to decide,
-> >   3. Return a __must_check error code: every caller must check.
-> > 
-> > I'm in favor of 2, as there are several places where it cannot fail.
+On Mon, Nov 08, 2021 at 03:59:26PM -0500, Alan Stern wrote:
+> Is there really any reason for returning an error code?  For example, is 
+> it anticipated that at some point in the future these registration calls 
+> might fail?
 > 
-> Makes sense to me. I'll do that in the next iteration.
+> Currently, the only reason for failing...
 
-Is there really any reason for returning an error code?  For example, is 
-it anticipated that at some point in the future these registration calls 
-might fail?
+Right, I believe with not making it return void we're leaving the door
+open for some, *hypothetical* future return values if we decide we need
+to return them too, at some point.
 
-Currently, the only reason for failing to register a notifier callback 
-is because the callback is already registered.  In a sense this isn't 
-even an actual failure -- after the registration returns the callback 
-_will_ still be registered.
+Yes, I can't think of another fact to state besides that the callback
+was already registered or return success but who knows what we wanna do
+in the future...
 
-So if the call can never really fail, why bother with a return code?  
-Especially since the caller can't do anything with such a code value.
+And so if we change them all to void now, I think it'll be a lot more
+churn to switch back to returning a non-void value and having the
+callers who choose to handle that value, do so again.
 
-Given the current state of affairs, I vote in favor of 1 (plus a WARN or 
-something similar to generate a stack dump in the callee, since double 
-registration really is a bug).
+So, long story short, keeping the retval - albeit not very useful right
+now - is probably easier.
 
-Alan Stern
+I hope I'm making some sense here.
+
+-- 
+Regards/Gruss,
+    Boris.
+
+https://people.kernel.org/tglx/notes-about-netiquette
