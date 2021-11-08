@@ -1,45 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 452D044818F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 15:24:45 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 478164481DD
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 15:36:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C20AA6E9EA;
-	Mon,  8 Nov 2021 14:24:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E19E76E9FC;
+	Mon,  8 Nov 2021 14:35:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mail.skyhub.de (mail.skyhub.de [5.9.137.197])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5674D6E9EA;
- Mon,  8 Nov 2021 14:24:42 +0000 (UTC)
-Received: from zn.tnic (p200300ec2f33110093973d8dfcf40fd9.dip0.t-ipconnect.de
- [IPv6:2003:ec:2f33:1100:9397:3d8d:fcf4:fd9])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 993A46E9FC;
+ Mon,  8 Nov 2021 14:35:57 +0000 (UTC)
+Received: from zn.tnic (p200300ec2f331100b486bab6e60d7aaf.dip0.t-ipconnect.de
+ [IPv6:2003:ec:2f33:1100:b486:bab6:e60d:7aaf])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id D54F61EC04EE;
- Mon,  8 Nov 2021 15:24:40 +0100 (CET)
+ by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id 1A75E1EC01FC;
+ Mon,  8 Nov 2021 15:35:56 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alien8.de; s=dkim;
- t=1636381481;
+ t=1636382156;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:in-reply-to:in-reply-to:  references:references;
- bh=oQBbYlaqexu4t08cRZdDH3XaT2khXLTGUfDdhXY+o6w=;
- b=BzFVBEJotdv+x1wk5r7BVthkB7IfDjFkcs3Qa23VnQgw6n7GoUvAnfTwnsI1XwsFUQ2pfc
- wTEtmUg2zpiIKZgiV8GtlPXLXcMCnwwX7vbzvuM7Jd46qSvtVDp/eqlUHv6UrUSSdUIxSB
- fTiz2Hj9eXxtQyoPpRyOqBuxOD7Awrk=
-Date: Mon, 8 Nov 2021 15:24:39 +0100
+ bh=B6oOQ1q4gjLTOu5usgfET43xDRmf4tLazw1TZ6CRXFw=;
+ b=Upd25HzfEqhrG5TAXmV4X7VLTXjG+2mbIZvAcNaA5XdFGwWxC22cjGdH367SqKuC2YI35V
+ XePkT+plNO8Rcdx9qRLbflORPHDjzc4q/HfinrM2oVoUmKJ3f3FbXqZbeiIVI7zzNRafCc
+ NDGlsVX5pxz7i7hCYlNzvvCrAxbHbAs=
+Date: Mon, 8 Nov 2021 15:35:50 +0100
 From: Borislav Petkov <bp@alien8.de>
-To: Alan Stern <stern@rowland.harvard.edu>
+To: Alan Stern <stern@rowland.harvard.edu>,
+ Geert Uytterhoeven <geert@linux-m68k.org>
 Subject: Re: [PATCH v0 00/42] notifiers: Return an error when callback is
  already registered
-Message-ID: <YYkzJ3+faVga2Tl3@zn.tnic>
+Message-ID: <YYk1xi3eJdMJdjHC@zn.tnic>
 References: <20211108101157.15189-1-bp@alien8.de>
  <20211108101924.15759-1-bp@alien8.de>
  <20211108141703.GB1666297@rowland.harvard.edu>
+ <YYkzJ3+faVga2Tl3@zn.tnic>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20211108141703.GB1666297@rowland.harvard.edu>
+In-Reply-To: <YYkzJ3+faVga2Tl3@zn.tnic>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,22 +76,60 @@ Cc: alsa-devel@alsa-project.org, x86@kernel.org, linux-sh@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Nov 08, 2021 at 09:17:03AM -0500, Alan Stern wrote:
-> What reason is there for moving the check into the callers?  It seems 
-> like pointless churn.  Why not add the error return code, change the 
-> WARN to pr_warn, and leave the callers as they are?  Wouldn't that end 
-> up having exactly the same effect?
-> 
-> For that matter, what sort of remedial action can a caller take if the 
-> return code is -EEXIST?  Is there any point in forcing callers to check 
-> the return code if they can't do anything about it?
+On Mon, Nov 08, 2021 at 03:24:39PM +0100, Borislav Petkov wrote:
+> I guess I can add another indirection to notifier_chain_register() and
+> avoid touching all the call sites.
 
-See my reply to Geert from just now:
+IOW, something like this below.
 
-https://lore.kernel.org/r/YYkyUEqcsOwQMb1S@zn.tnic
+This way I won't have to touch all the callsites and the registration
+routines would still return a proper value instead of returning 0
+unconditionally.
 
-I guess I can add another indirection to notifier_chain_register() and
-avoid touching all the call sites.
+---
+diff --git a/kernel/notifier.c b/kernel/notifier.c
+index b8251dc0bc0f..04f08b2ef17f 100644
+--- a/kernel/notifier.c
++++ b/kernel/notifier.c
+@@ -19,14 +19,12 @@ BLOCKING_NOTIFIER_HEAD(reboot_notifier_list);
+  *	are layered on top of these, with appropriate locking added.
+  */
+ 
+-static int notifier_chain_register(struct notifier_block **nl,
+-		struct notifier_block *n)
++static int __notifier_chain_register(struct notifier_block **nl,
++				     struct notifier_block *n)
+ {
+ 	while ((*nl) != NULL) {
+-		if (unlikely((*nl) == n)) {
+-			WARN(1, "double register detected");
+-			return 0;
+-		}
++		if (unlikely((*nl) == n))
++			return -EEXIST;
+ 		if (n->priority > (*nl)->priority)
+ 			break;
+ 		nl = &((*nl)->next);
+@@ -36,6 +34,18 @@ static int notifier_chain_register(struct notifier_block **nl,
+ 	return 0;
+ }
+ 
++static int notifier_chain_register(struct notifier_block **nl,
++				   struct notifier_block *n)
++{
++	int ret = __notifier_chain_register(nl, n);
++
++	if (ret == -EEXIST)
++		WARN(1, "double register of notifier callback %ps detected",
++			n->notifier_call);
++
++	return ret;
++}
++
+ static int notifier_chain_unregister(struct notifier_block **nl,
+ 		struct notifier_block *n)
+ {
+
 
 -- 
 Regards/Gruss,
