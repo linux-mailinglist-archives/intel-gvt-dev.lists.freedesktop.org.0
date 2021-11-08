@@ -1,58 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76D4944732B
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  7 Nov 2021 14:58:51 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5235E447842
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 02:28:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B16189F5B;
-	Sun,  7 Nov 2021 13:58:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1D8126E185;
+	Mon,  8 Nov 2021 01:28:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1017 seconds by postgrey-1.36 at gabe;
- Sun, 07 Nov 2021 13:58:48 UTC
-Received: from mail2.ecuacopia.com (mail2.ecuacopia.com [201.234.210.174])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9203D89F5B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  7 Nov 2021 13:58:48 +0000 (UTC)
-Received: from [192.168.80.18] (port=50890 helo=mail.ecuacopia.com)
- by mail2.ecuacopia.com with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <servicio_cliente@ecuacopia.com>)
- id 1mjheG-0006fB-Oh; Sun, 07 Nov 2021 07:51:48 -0500
-Received: from mail.ecuacopia.com (localhost.localdomain [127.0.0.1])
- by mail.ecuacopia.com (Postfix) with ESMTPS id F0CCA2581DA1;
- Sun,  7 Nov 2021 07:51:45 -0500 (-05)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.ecuacopia.com (Postfix) with ESMTP id 876332581D96;
- Sun,  7 Nov 2021 07:51:45 -0500 (-05)
-Received: from mail.ecuacopia.com ([127.0.0.1])
- by localhost (mail.ecuacopia.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id OaqkA_ffRFd0; Sun,  7 Nov 2021 07:51:45 -0500 (-05)
-Received: from mail.ecuacopia.com (mail.ecuacopia.com [192.168.80.18])
- by mail.ecuacopia.com (Postfix) with ESMTP id 2D5E32581856;
- Sun,  7 Nov 2021 07:51:42 -0500 (-05)
-Date: Sun, 7 Nov 2021 07:51:42 -0500 (ECT)
-From: VERONICA SIERRA <servicio_cliente@ecuacopia.com>
-Message-ID: <201590394.9894566.1636289502066.JavaMail.zimbra@ecuacopia.com>
-Subject: Vorschlag.
+X-Greylist: delayed 2713 seconds by postgrey-1.36 at gabe;
+ Mon, 08 Nov 2021 01:28:31 UTC
+Received: from mail2.bsgrebocin.pl (unknown [213.25.29.186])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B99956E185;
+ Mon,  8 Nov 2021 01:28:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail2.bsgrebocin.pl (Postfix) with ESMTP id 13681824F58A;
+ Mon,  8 Nov 2021 01:19:34 +0100 (CET)
+Received: from mail2.bsgrebocin.pl ([127.0.0.1])
+ by localhost (mail2.bsgrebocin.pl [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id bPPmGA7Lc-ra; Mon,  8 Nov 2021 01:19:33 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by mail2.bsgrebocin.pl (Postfix) with ESMTP id C9B99824F5A9;
+ Mon,  8 Nov 2021 01:19:33 +0100 (CET)
+X-Virus-Scanned: amavisd-new at bsgrebocin.pl
+Received: from mail2.bsgrebocin.pl ([127.0.0.1])
+ by localhost (mail2.bsgrebocin.pl [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id D6ViTt680A7t; Mon,  8 Nov 2021 01:19:33 +0100 (CET)
+Received: from [185.239.242.42] (_gateway [213.25.29.177])
+ by mail2.bsgrebocin.pl (Postfix) with ESMTP id 0C3DB824F58A;
+ Mon,  8 Nov 2021 01:19:33 +0100 (CET)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="=_e7764af4-f88a-40b1-a9d5-7df6abca674a"
-X-Originating-IP: [37.120.137.70]
-X-Mailer: Zimbra 8.8.15_GA_4125 (ZimbraWebClient - GC95 (Win)/8.8.15_GA_4059)
-Thread-Index: z8ZEQ6J4SuZ8lJniiDrcZ17XUMW0nw==
-Thread-Topic: Vorschlag.
-X-Sophos-OBS: success
-X-CTCH-PVer: 0000001
-X-CTCH-Spam: Bulk
-X-CTCH-VOD: Unknown
-X-CTCH-Flags: 0
-X-CTCH-RefID: str=0001.0A742F18.618744D0.0018, ss=3, sh, re=0.000, recu=0.000,
- reip=0.000, cl=3, cld=1, fgs=0
-X-CTCH-Score: 0.000
-X-CTCH-ScoreCust: 0.000
-X-CTCH-Rules: 
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: USUS$1,500,000.00USD Donation for you and your family;
+To: Recipients <send@car-part.com>
+From: "Piramal Foundation" <send@car-part.com>
+Date: Sun, 07 Nov 2021 16:19:31 -0800
+Message-Id: <20211108001933.0C3DB824F58A@mail2.bsgrebocin.pl>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,55 +51,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: piramalfoundation6@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=_e7764af4-f88a-40b1-a9d5-7df6abca674a
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
+Congratulations from the Piramal Philanthropies Foundation, where life chan=
+ging opportunities and cash are given-out on a daily basis. The foundation/=
+founder has indeed been a great Philanthropist to this generation and is tr=
+uly committed to "giving while living," We are pleased to inform you that y=
+ou are one (1) of the lucky people to benefit and receive $ 1,500,000.00 US=
+D from our foundation's ongoing goodwill project, grant/donations program. =
+Ajay Piramal (born 3 August 1955) is an Indian billionaire industrialist, a=
+nd the chairman of the Piramal Foundation and Piramal Group, a conglomerate=
+ with interests in pharmaceutical, financial services, real estate, healthc=
+are analytics and glass packaging.
 
+Is this message sent to a valid e-mail account? Your email account was rand=
+omly selected to receive a cash donation of $ 1,500,000.00 USD from the Phi=
+lanthropist. If this is a valid e-mail account, contact us immediately for =
+comprehensive information.
 
+For more details visit https://en.wikipedia.org/wiki/Ajay_Piramal or Google=
+ Ajay Piramal.
 
-Hallo=20
+Sincerely,
 
-Ich bin aufgrund unerwarteter Umst=C3=A4nde gezwungen, mich mit Ihnen in Ve=
-rbindung zu setzen, um zu sehen, ob wir zusammenarbeiten k=C3=B6nnen.=20
-
-Ich habe einen Gesch=C3=A4ftsidee im Wert von 38,5 Millionen Pfund, die wir=
- beide teilen k=C3=B6nnen, wenn Sie bereit sind, mit mir zusammenzuarbeiten=
-=20
-
-Wenn Sie in die Transaktion interessiert sind, kontaktieren Sie mich bitte =
-unter meiner privaten E-Mail-Adresse ( [ mailto:benbomann5217@gmail.com | b=
-enbomann5217@gmail.com ] ) und ich werde Ihnen alle Informationen zukommen =
-lassen, die Sie ben=C3=B6tigen.=20
-
-MfG,=20
-
-Ben Bomann=20
-
-Nachlass=20
-
---=_e7764af4-f88a-40b1-a9d5-7df6abca674a
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html><body><div style=3D"font-family: arial, helvetica, sans-serif; font-s=
-ize: 12pt; color: #000000"><div><br></div><!--StartFragment--><p style=3D"m=
-argin: 0px;" data-mce-style=3D"margin: 0px;">Hallo</p><p style=3D"margin: 0=
-px;" data-mce-style=3D"margin: 0px;">Ich bin aufgrund unerwarteter Umst=C3=
-=A4nde gezwungen, mich mit Ihnen in Verbindung zu setzen, um zu sehen, ob w=
-ir zusammenarbeiten k=C3=B6nnen.</p><p style=3D"margin: 0px;" data-mce-styl=
-e=3D"margin: 0px;">Ich habe einen Gesch=C3=A4ftsidee im Wert von 38,5 Milli=
-onen Pfund, die wir beide teilen k=C3=B6nnen, wenn Sie bereit sind, mit mir=
- zusammenzuarbeiten</p><p style=3D"margin: 0px;" data-mce-style=3D"margin: =
-0px;">Wenn Sie in die Transaktion interessiert sind, kontaktieren Sie mich =
-bitte unter meiner privaten E-Mail-Adresse (<a href=3D"mailto:benbomann5217=
-@gmail.com" data-mce-href=3D"mailto:benbomann5217@gmail.com">benbomann5217@=
-gmail.com</a>) und ich werde Ihnen alle Informationen zukommen lassen, die =
-Sie ben=C3=B6tigen.</p><p style=3D"margin: 0px;" data-mce-style=3D"margin: =
-0px;">MfG,</p><p style=3D"margin: 0px;" data-mce-style=3D"margin: 0px;">Ben=
- Bomann</p><p style=3D"margin: 0px;" data-mce-style=3D"margin: 0px;">Nachla=
-ss</p><!--EndFragment--></div></body></html>
---=_e7764af4-f88a-40b1-a9d5-7df6abca674a--
+Narayanan Iyer
+Chief Financial Officer
+Piramal Foundation
