@@ -2,56 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45352447AE8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 08:30:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0335B447DD5
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 11:22:13 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E5D8B6E167;
-	Mon,  8 Nov 2021 07:30:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 429566ED0E;
+	Mon,  8 Nov 2021 10:22:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com
- [IPv6:2a00:1450:4864:20::530])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 91BD96E1BA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Nov 2021 07:30:41 +0000 (UTC)
-Received: by mail-ed1-x530.google.com with SMTP id c8so41927574ede.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 07 Nov 2021 23:30:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=gS+G2bXPLTc8QV9oSOsVFPfildfSifO+gabOlUjPn+8=;
- b=ndar4tdyg9vu9nkPf60x+V+WrVNh2z5eoFqiiokwkf9fo/ihe1LdPMi0+Y9hf0Pl7d
- WPzkG2taZAsuOdSM/K7cefMF0ErprUlttJ9uVDEg3pKU4jFK3b6s4vXxRZGEBrh4SKG6
- EQlt4Ti5Q4NjpZG7z812oKoOc8lpkAA2KcugOtYAVkcN4HjqyXRt/cvyE/MPqAVNT2+s
- lwOFI29MWcaQGgzs5dr7G+6mNKZA+UEyOUaSClAmB88vI36DDHswF8/PJKEnUE/DGi/p
- Padz9PS1UolP4ozxwX6GCKYAWVkOPu1HmzV9upuS3WB+9bqCGA6SyQg/zJnOqw99nsYE
- UmtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=gS+G2bXPLTc8QV9oSOsVFPfildfSifO+gabOlUjPn+8=;
- b=nuwMgQ3JZCp10USRpKDDFbCGmwCkQETLLN5S5kEkCqjPWdbb/DfvlcZ5FnXvkCAzPj
- VU9IQ8EKfnGWSdkyPkY3bjC7dmQpkpRg0Px6lAg/7piy9bVkUtL2xfFTWCBUrCaS4BrD
- cBeNf+02WXbESh+B1ltZNOLBFAMZp48AjF/M8Lo+bNXZNQ3MKpVNjYV20NZhhOOXMaMj
- 3L5JfdjyxU2EWl69MHU8bKvw0x2JhZiWHgjgDNmZtt5GF+lttMkgOhPrKoC2JMgqwTR4
- WqLbT1u6krCi3qsMN2Lmt+byPpW+KCqUsPr5zfH+j+HBhVl6Bi2/NPcYlLc39Kgyoq/G
- cpiw==
-X-Gm-Message-State: AOAM533mUvduIwZf72ftnhLNd6w4S60C81hp2GCCnupsxzgIG9pL1EV/
- GrJ6bCNpdgCB+5HG6QkW3Fqr3g3TOcRXjO9KHVs=
-X-Google-Smtp-Source: ABdhPJwgO3M+ZdxGG4H4KjGVnffsj2/riFmC0+qEOIG03i78DeYhVRaHaUkoo8415xDriNCB80TMIAcUexk7Th4T/jM=
-X-Received: by 2002:a17:906:d92f:: with SMTP id
- rn15mr52777186ejb.557.1636356640103; 
- Sun, 07 Nov 2021 23:30:40 -0800 (PST)
+Received: from mail.skyhub.de (mail.skyhub.de [5.9.137.197])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8A0A56ECFD;
+ Mon,  8 Nov 2021 10:22:09 +0000 (UTC)
+Received: from zn.tnic (p200300ec2f33110088892b77bd117736.dip0.t-ipconnect.de
+ [IPv6:2003:ec:2f33:1100:8889:2b77:bd11:7736])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id BEB5A1EC04DE;
+ Mon,  8 Nov 2021 11:12:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alien8.de; s=dkim;
+ t=1636366333;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/n9zv3Ih/2b/ULU8CYj7KD0zgXcVtXxLDavocXSrT0w=;
+ b=POP3CK1f/I03P+kpDnOv7Q/bh2MFk3no6AfJgV0+2NKHfn2NWmu4jJOoyA17+pWPwNBmyo
+ BgbdWTxAF4YZwvU29DVvbgpwi8LSbpb4TYj8sayxKqBWgfhaFHQDBDRamWe64Fb68Fgpxv
+ BJ69CX3Ff3OzXpKGSoKCWkfen9caYYw=
+From: Borislav Petkov <bp@alien8.de>
+To: LKML <linux-kernel@vger.kernel.org>
+Subject: [PATCH v0 07/42] drm/i915: Check notifier registration return value
+Date: Mon,  8 Nov 2021 11:11:22 +0100
+Message-Id: <20211108101157.15189-8-bp@alien8.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20211108101157.15189-1-bp@alien8.de>
+References: <20211108101157.15189-1-bp@alien8.de>
 MIME-Version: 1.0
-Received: by 2002:a50:2501:0:0:0:0:0 with HTTP;
- Sun, 7 Nov 2021 23:30:39 -0800 (PST)
-From: Maria Schaefler <ziskoraa@gmail.com>
-Date: Mon, 8 Nov 2021 07:30:39 +0000
-Message-ID: <CAJh0FjjNo1TzC2CFsCBP-t_+zaOUWoqrO27OEVOS6ZC1qz=VSA@mail.gmail.com>
-Subject: MY HEART CHOOSE YOU.
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,12 +50,40 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mariaschaefler@gmx.com
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Given my current state of health, I have decided to donate what I
-inherited from my late husband to you to help the poor and needy. I am
-Mrs Maria Schaefler,a 57years old dying woman. I was diagnosed for
-cancer about 2 years ago and I have few months to live according to
-medical experts. Email me for my directives
+From: Borislav Petkov <bp@suse.de>
+
+Avoid homegrown notifier registration checks.
+
+No functional changes.
+
+Signed-off-by: Borislav Petkov <bp@suse.de>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org
+---
+ drivers/gpu/drm/i915/gvt/scheduler.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/scheduler.c b/drivers/gpu/drm/i915/gvt/scheduler.c
+index 6c804102528b..3bafaca5789f 100644
+--- a/drivers/gpu/drm/i915/gvt/scheduler.c
++++ b/drivers/gpu/drm/i915/gvt/scheduler.c
+@@ -1277,8 +1277,10 @@ int intel_gvt_init_workload_scheduler(struct intel_gvt *gvt)
+ 
+ 		gvt->shadow_ctx_notifier_block[i].notifier_call =
+ 					shadow_context_status_change;
+-		atomic_notifier_chain_register(&engine->context_status_notifier,
+-					&gvt->shadow_ctx_notifier_block[i]);
++
++		if (atomic_notifier_chain_register(&engine->context_status_notifier,
++						   &gvt->shadow_ctx_notifier_block[i]))
++			pr_warn("Context status notifier %d already registered\n", i);
+ 	}
+ 
+ 	return 0;
+-- 
+2.29.2
+
