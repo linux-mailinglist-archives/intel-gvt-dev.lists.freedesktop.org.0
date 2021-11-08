@@ -1,47 +1,62 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25E374498CC
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 16:59:12 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5402C44992E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Nov 2021 17:12:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C191A6E1D3;
-	Mon,  8 Nov 2021 15:59:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D8F8A89E14;
+	Mon,  8 Nov 2021 16:12:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.skyhub.de (mail.skyhub.de [5.9.137.197])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B8DDA6E1D3;
- Mon,  8 Nov 2021 15:59:09 +0000 (UTC)
-Received: from zn.tnic (p200300ec2f331100b486bab6e60d7aaf.dip0.t-ipconnect.de
- [IPv6:2003:ec:2f33:1100:b486:bab6:e60d:7aaf])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id 341131EC04DE;
- Mon,  8 Nov 2021 16:59:08 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alien8.de; s=dkim;
- t=1636387148;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:in-reply-to:in-reply-to:  references:references;
- bh=JALJsenIQCt4BletZS/B+Zq0YBxBp6L9Ch45cvOw8XQ=;
- b=LCBDSZEhct23FIVquhfAlhIS3MpLXm84rotG+ppp99dGMPWi9iJHGgKkfiFg0DoLQ+NSWf
- ixY2Bl+WafqAknd6kFkKb4q9SvLPR/pI4iyCTMD6S/zki4CWzqH6/1ZBq8awazUNWt4Xi0
- idSLz3mdlao9wfI9n1SzGKhLH2sR0dI=
-Date: Mon, 8 Nov 2021 16:58:57 +0100
-From: Borislav Petkov <bp@alien8.de>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH v0 42/42] notifier: Return an error when callback is
- already registered
-Message-ID: <YYlJQYLiIrhjwOmT@zn.tnic>
+Received: from mail-ua1-f54.google.com (mail-ua1-f54.google.com
+ [209.85.222.54])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 46BED89E14;
+ Mon,  8 Nov 2021 16:12:30 +0000 (UTC)
+Received: by mail-ua1-f54.google.com with SMTP id q13so32559690uaq.2;
+ Mon, 08 Nov 2021 08:12:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hEQQmRj7LTpJogPgt2xRVOX7N+txus6iMmGepIZghfU=;
+ b=FOa2jE2f5LCcQj5vcd+bc39cX0CV59Ocr8/4kqNpzp550EoWtzr0KhamvvsgSJo1ZO
+ qOLfDUrPMaxZOWDbHIeiw0W5LQJbtQGeirlIi5HQU8HE3uEf1J7EJY51EsMDyplkAstL
+ Ls9I5np9WkdyGq/++Kcvze/sLLJANRtHGowFZIFfBlTSsJ7EkMgOctjPPent2Nh/6l07
+ W2A6Nz2TSKV9PFo4KKOKeEWsnRs9SAYAYS0hQnpsEzqBZj/i5sx/2r+j8dNQaP9Z5jyr
+ /haH9j5Vu4hbmtHwYJ8x6NHMQIZ0iy/M6nV0fIGDzJ58tBBdwip4zFBCtwbIK3YLqZAU
+ +45w==
+X-Gm-Message-State: AOAM530ZsXMnf/uTR+uzMfoLAgwTG7QaqrfWSRjX8LOOc7VwXFRTxOHC
+ TbISo+YQACQlNfLALqynRLK4ZLDsWopp+tr7
+X-Google-Smtp-Source: ABdhPJw6cLSk0zXvSm73+NS4FOA/p9m6/lsST6qQG2fle8pCxUWY9KC9hhtMUQU9BhBEqBl77IBSsA==
+X-Received: by 2002:a05:6102:3e82:: with SMTP id
+ m2mr772005vsv.58.1636387948933; 
+ Mon, 08 Nov 2021 08:12:28 -0800 (PST)
+Received: from mail-vk1-f179.google.com (mail-vk1-f179.google.com.
+ [209.85.221.179])
+ by smtp.gmail.com with ESMTPSA id az30sm2651179vkb.53.2021.11.08.08.12.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Nov 2021 08:12:27 -0800 (PST)
+Received: by mail-vk1-f179.google.com with SMTP id p22so6781836vke.7;
+ Mon, 08 Nov 2021 08:12:27 -0800 (PST)
+X-Received: by 2002:a1f:f24f:: with SMTP id q76mr347755vkh.11.1636387947335;
+ Mon, 08 Nov 2021 08:12:27 -0800 (PST)
+MIME-Version: 1.0
 References: <20211108101157.15189-1-bp@alien8.de>
  <20211108101157.15189-43-bp@alien8.de>
  <CAMuHMdWH+txiSP_d7Jc4f_bU8Lf9iWpT4E3o5o7BJr-YdA6-VA@mail.gmail.com>
  <YYkyUEqcsOwQMb1S@zn.tnic>
  <CAMuHMdXiBEQyEXJagSfpH44hxVA2t0sDH7B7YubLGHrb2MJLLA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdXiBEQyEXJagSfpH44hxVA2t0sDH7B7YubLGHrb2MJLLA@mail.gmail.com>
+ <YYlJQYLiIrhjwOmT@zn.tnic>
+In-Reply-To: <YYlJQYLiIrhjwOmT@zn.tnic>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 8 Nov 2021 17:12:16 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXHikGrmUzuq0WG5JRHUUE=5zsaVCTF+e4TiHpM5tc5kA@mail.gmail.com>
+Message-ID: <CAMuHMdXHikGrmUzuq0WG5JRHUUE=5zsaVCTF+e4TiHpM5tc5kA@mail.gmail.com>
+Subject: Re: [PATCH v0 42/42] notifier: Return an error when callback is
+ already registered
+To: Borislav Petkov <bp@alien8.de>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,29 +102,33 @@ Cc: ALSA Development Mailing List <alsa-devel@alsa-project.org>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Nov 08, 2021 at 04:25:47PM +0100, Geert Uytterhoeven wrote:
-> I'm not against returning proper errors codes.  I'm against forcing
-> callers to check things that cannot fail and to add individual error
-> printing to each and every caller.
+Hi Borislav,
 
-If you're against checking things at the callers, then the registration
-function should be void. IOW, those APIs are not optimally designed atm.
+On Mon, Nov 8, 2021 at 4:59 PM Borislav Petkov <bp@alien8.de> wrote:
+> On Mon, Nov 08, 2021 at 04:25:47PM +0100, Geert Uytterhoeven wrote:
+> > I'm not against returning proper errors codes.  I'm against forcing
+> > callers to check things that cannot fail and to add individual error
+> > printing to each and every caller.
+>
+> If you're against checking things at the callers, then the registration
+> function should be void. IOW, those APIs are not optimally designed atm.
 
-> Note that in other areas, we are moving in the other direction,
-> to a centralized printing of error messages, cfr. e.g. commit
-> 7723f4c5ecdb8d83 ("driver core: platform: Add an error message to
-> platform_get_irq*()").
+Returning void is the other extreme ;-)
 
-Yes, thus my other idea to add a lower level __notifier_chain_register()
-to do the checking.
+There are 3 levels (ignoring BUG_ON()/panic () inside the callee):
+  1. Return void: no one can check success or failure,
+  2. Return an error code: up to the caller to decide,
+  3. Return a __must_check error code: every caller must check.
 
-I'll see if I can convert those notifier registration functions to
-return void, in the process. But let's see what the others think first.
+I'm in favor of 2, as there are several places where it cannot fail.
 
-Thanks for taking the time.
+Gr{oetje,eeting}s,
 
--- 
-Regards/Gruss,
-    Boris.
+                        Geert
 
-https://people.kernel.org/tglx/notes-about-netiquette
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
