@@ -1,32 +1,30 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74DDD44A7F1
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Nov 2021 08:56:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E441744A809
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Nov 2021 09:00:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0EFF089F2D;
-	Tue,  9 Nov 2021 07:56:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 845C16E4BA;
+	Tue,  9 Nov 2021 08:00:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3A78E89F2D;
- Tue,  9 Nov 2021 07:56:28 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B9E2A6E4BA;
+ Tue,  9 Nov 2021 07:59:59 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 5E36168AA6; Tue,  9 Nov 2021 08:56:26 +0100 (CET)
-Date: Tue, 9 Nov 2021 08:56:26 +0100
+ id 5D03968AA6; Tue,  9 Nov 2021 08:59:57 +0100 (CET)
+Date: Tue, 9 Nov 2021 08:59:57 +0100
 From: Christoph Hellwig <hch@lst.de>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 02/29] drm/i915/gvt: integrate into the main Makefile
-Message-ID: <20211109075626.GB27339@lst.de>
+To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Subject: Re: refactor the i915 GVT support and move to the modern mdev API v2
+Message-ID: <20211109075957.GC27339@lst.de>
 References: <20211102070601.155501-1-hch@lst.de>
- <20211102070601.155501-3-hch@lst.de>
- <163602902009.4807.3745093259631583283@jlahtine-mobl.ger.corp.intel.com>
- <20211104123225.GV2744544@nvidia.com>
+ <163603075885.4807.880888219859400958@jlahtine-mobl.ger.corp.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20211104123225.GV2744544@nvidia.com>
+In-Reply-To: <163603075885.4807.880888219859400958@jlahtine-mobl.ger.corp.intel.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -41,26 +39,24 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
  Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Nov 04, 2021 at 09:32:25AM -0300, Jason Gunthorpe wrote:
-> On Thu, Nov 04, 2021 at 02:30:20PM +0200, Joonas Lahtinen wrote:
-> > Quoting Christoph Hellwig (2021-11-02 09:05:34)
-> > > Remove the separately included Makefile and just use the relative
-> > > reference from the main i915 Makefile as for source files in other
-> > > subdirectories.
-> > 
-> > The thinking behind the split is to avoid any merge conflicts as the
-> > gvt/ subdirectory is handled through separate pull request flow and
-> > are note part of drm-tip.
-> 
-> Oh? In that case can we eventually move the VFIO mdev driver to
-> drivers/vfio/mdev/intel_gvt/ please?
+On Thu, Nov 04, 2021 at 02:59:18PM +0200, Joonas Lahtinen wrote:
+> The minimal we should do is to eliminate the double underscore
+> prefixed functions. But I would prefer to have the symbol exports by
+> default so that we can enable the functionality just by loading the
+> module.
 
-It pull in a lot from the general i915 driver..
+I'm fine with exporting by default, but just loading won't really work
+even with that:
+
+ - there are a bunch of IS_ENABLED conditionals in the i915 (although
+   they look like minor optimizations to me).
+ - the enable_gvt needs to be set, although after this refactor this
+   option is completely pointless and should probably be enabled
+ - the enable_guc option needs to be disable for gvt to work.
