@@ -1,41 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7D9B44C280
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 10 Nov 2021 14:49:55 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91C7B44CB2A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 10 Nov 2021 22:18:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4FF996E4F8;
-	Wed, 10 Nov 2021 13:49:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 048BD6E456;
+	Wed, 10 Nov 2021 21:18:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 55A336E484;
- Wed, 10 Nov 2021 13:49:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10163"; a="219872669"
-X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="219872669"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2021 05:49:52 -0800
-X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="492101967"
-Received: from skofoed-mobl.ger.corp.intel.com (HELO localhost)
- ([10.249.254.124])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2021 05:49:48 -0800
-Content-Type: text/plain; charset="utf-8"
+X-Greylist: delayed 3597 seconds by postgrey-1.36 at gabe;
+ Wed, 10 Nov 2021 21:18:55 UTC
+Received: from mail.arencore.com (mail.arencore.com [66.226.79.236])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D13F16E456;
+ Wed, 10 Nov 2021 21:18:55 +0000 (UTC)
+Received: from MACBOOKPROF612.localdomain (unknown [102.165.194.203])
+ by mail.arencore.com (Postfix) with ESMTPA id 4DCF32461CC8;
+ Wed, 10 Nov 2021 13:54:25 -0600 (CST)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20211109075957.GC27339@lst.de>
-References: <20211102070601.155501-1-hch@lst.de>
- <163603075885.4807.880888219859400958@jlahtine-mobl.ger.corp.intel.com>
- <20211109075957.GC27339@lst.de>
-Subject: Re: refactor the i915 GVT support and move to the modern mdev API v2
-To: Christoph Hellwig <hch@lst.de>
-From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Message-ID: <163655218578.6332.7934375733343731100@jlahtine-mobl.ger.corp.intel.com>
-User-Agent: alot/0.8.1
-Date: Wed, 10 Nov 2021 15:49:45 +0200
+Content-Description: Mail message body
+Subject: CHARITY!!!!
+To: Recipients <Charity@freedesktop.org>
+From: Charity@freedesktop.org
+Date: Wed, 10 Nov 2021 21:54:17 +0200
+X-Antivirus: AVG (VPS 211110-2, 11/10/2021), Outbound message
+X-Antivirus-Status: Clean
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,42 +39,17 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.a.wang@intel.com>
+Reply-To: thomasyi.org@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20211110211857.048BD6E456@gabe.freedesktop.org>
 
-Quoting Christoph Hellwig (2021-11-09 09:59:57)
-> On Thu, Nov 04, 2021 at 02:59:18PM +0200, Joonas Lahtinen wrote:
-> > The minimal we should do is to eliminate the double underscore
-> > prefixed functions. But I would prefer to have the symbol exports by
-> > default so that we can enable the functionality just by loading the
-> > module.
->=20
-> I'm fine with exporting by default, but just loading won't really work
-> even with that:
->=20
->  - there are a bunch of IS_ENABLED conditionals in the i915 (although
->    they look like minor optimizations to me).
+It is a great preiviledge to be in a position to help others and for that r=
+eason i will be making a donation of $1,000,000(Million) to you from Thomas=
+ Yi,winner of $235.4 million Powerball Jackpot 2021,for more information pl=
+ease contact via email: thomasyi.org@gmail.com Thanks.
 
-I'd assume the golden state capture being the one with biggest impact.
+-- 
+This email has been checked for viruses by AVG.
+https://www.avg.com
 
->  - the enable_gvt needs to be set, although after this refactor this
->    option is completely pointless and should probably be enabled
-
-Indeed. Hope is that modprobe/rmmod would be enough to enable/disable.
-This should help any distros intending to enable the feature, too.
-
-So mostly about making sure the IS_ENABLED portions in base i915
-operation are not too invasive.
-
->  - the enable_guc option needs to be disable for gvt to work.
-
-On the GVT supported platforms GuC is disabled by default, so it should
-be fine. We can change the logic to opposite to disable the feature if
-the enable_guc unsafe modparam is used.
-
-Regards, Joonas
