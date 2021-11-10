@@ -1,43 +1,41 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3BD044BD35
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 10 Nov 2021 09:43:13 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7D9B44C280
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 10 Nov 2021 14:49:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2EA586E44D;
-	Wed, 10 Nov 2021 08:43:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4FF996E4F8;
+	Wed, 10 Nov 2021 13:49:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 588 seconds by postgrey-1.36 at gabe;
- Wed, 10 Nov 2021 08:43:10 UTC
-Received: from mail.tomediacase.pl (mail.tomediacase.pl [151.236.28.249])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D8EFB6E44D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 10 Nov 2021 08:43:10 +0000 (UTC)
-Received: by mail.tomediacase.pl (Postfix, from userid 1001)
- id 9DEAD408EC; Wed, 10 Nov 2021 09:31:51 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tomediacase.pl;
- s=mail; t=1636533201;
- bh=Bje9A+dX2J3376TsmOuP73t2Vi7ACwCdfE9j+pWA3Rs=;
- h=Date:From:To:Subject:From;
- b=c9QSVuWDYfzFydht6ywm0VQ4++2wkA35z7CHcY1A3ajuzaGAiD0hGwfWWd7nJJw0Z
- 5sILdvMNx0HSkLUEKPDH+JjQRzE5q+t0+546eUz+SA8tyzs/0bEwhfR1upXpdt9zTc
- IReM2GhY3UUuLhmtqNoNo5ftjkRSsaBhjBzhEk0I0P9spcslfthGYE+o4fIQvvX33W
- RXoz9yi6PGUz5u3D7AGoyCFN8WNXrJoBUSzcxixlRWVjmYT+8Z+QIJJufmCVmwPfr/
- Ak6Qfv+BgfTtgHIlYdSsuEMtufl8nPsA7NfE5arFgjdi8nhoAD/I3OcZ/v42x5muYS
- 33/75k7z7H/CA==
-Received: by mail.tomediacase.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 10 Nov 2021 08:31:38 GMT
-Message-ID: <20211110084500-0.1.6.1f3.0.w8p73ic0r5@tomediacase.pl>
-Date: Wed, 10 Nov 2021 08:31:38 GMT
-From: =?UTF-8?Q?"Mi=C5=82osz_Nowak"?= <milosz.nowak@tomediacase.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Wycena paneli fotowoltaicznych
-X-Mailer: mail.tomediacase.pl
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 55A336E484;
+ Wed, 10 Nov 2021 13:49:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10163"; a="219872669"
+X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="219872669"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2021 05:49:52 -0800
+X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="492101967"
+Received: from skofoed-mobl.ger.corp.intel.com (HELO localhost)
+ ([10.249.254.124])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2021 05:49:48 -0800
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20211109075957.GC27339@lst.de>
+References: <20211102070601.155501-1-hch@lst.de>
+ <163603075885.4807.880888219859400958@jlahtine-mobl.ger.corp.intel.com>
+ <20211109075957.GC27339@lst.de>
+Subject: Re: refactor the i915 GVT support and move to the modern mdev API v2
+To: Christoph Hellwig <hch@lst.de>
+From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Message-ID: <163655218578.6332.7934375733343731100@jlahtine-mobl.ger.corp.intel.com>
+User-Agent: alot/0.8.1
+Date: Wed, 10 Nov 2021 15:49:45 +0200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,20 +48,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+Quoting Christoph Hellwig (2021-11-09 09:59:57)
+> On Thu, Nov 04, 2021 at 02:59:18PM +0200, Joonas Lahtinen wrote:
+> > The minimal we should do is to eliminate the double underscore
+> > prefixed functions. But I would prefer to have the symbol exports by
+> > default so that we can enable the functionality just by loading the
+> > module.
+>=20
+> I'm fine with exporting by default, but just loading won't really work
+> even with that:
+>=20
+>  - there are a bunch of IS_ENABLED conditionals in the i915 (although
+>    they look like minor optimizations to me).
 
-dostrzegam mo=C5=BCliwo=C5=9B=C4=87 wsp=C3=B3=C5=82pracy z Pa=C5=84stwa f=
-irm=C4=85.
+I'd assume the golden state capture being the one with biggest impact.
 
-=C5=9Awiadczymy kompleksow=C4=85 obs=C5=82ug=C4=99 inwestycji w fotowolta=
-ik=C4=99, kt=C3=B3ra obni=C5=BCa koszty energii elektrycznej nawet o 90%.
+>  - the enable_gvt needs to be set, although after this refactor this
+>    option is completely pointless and should probably be enabled
 
-Czy s=C4=85 Pa=C5=84stwo zainteresowani weryfikacj=C4=85 wst=C4=99pnych p=
-ropozycji?
+Indeed. Hope is that modprobe/rmmod would be enough to enable/disable.
+This should help any distros intending to enable the feature, too.
 
+So mostly about making sure the IS_ENABLED portions in base i915
+operation are not too invasive.
 
-Pozdrawiam,
-Mi=C5=82osz Nowak
+>  - the enable_guc option needs to be disable for gvt to work.
+
+On the GVT supported platforms GuC is disabled by default, so it should
+be fine. We can change the logic to opposite to disable the feature if
+the enable_guc unsafe modparam is used.
+
+Regards, Joonas
