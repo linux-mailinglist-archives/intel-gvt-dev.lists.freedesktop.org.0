@@ -2,39 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F74E44EC44
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 Nov 2021 18:54:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 108F144FCC8
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Nov 2021 02:43:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D8F386E85F;
-	Fri, 12 Nov 2021 17:54:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6057F896B0;
+	Mon, 15 Nov 2021 01:43:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C2EAC6E85F;
- Fri, 12 Nov 2021 17:54:55 +0000 (UTC)
-Received: from gandalf.local.home (cpe-66-24-58-225.stny.res.rr.com
- [66.24.58.225])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6771D60EBD;
- Fri, 12 Nov 2021 17:54:53 +0000 (UTC)
-Date: Fri, 12 Nov 2021 12:54:51 -0500
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Jason Baron <jbaron@akamai.com>
-Subject: Re: [PATCH v10 08/10] dyndbg: add print-to-tracefs, selftest with
- it - RFC
-Message-ID: <20211112125451.76b00818@gandalf.local.home>
-In-Reply-To: <cfbc074c-73a5-b6be-580b-dae398d95d6b@akamai.com>
-References: <20211111220206.121610-1-jim.cromie@gmail.com>
- <20211111220206.121610-9-jim.cromie@gmail.com>
- <20211112114953.GA1381@axis.com>
- <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
- <20211112120721.3a4827ce@gandalf.local.home>
- <cfbc074c-73a5-b6be-580b-dae398d95d6b@akamai.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+X-Greylist: delayed 12274 seconds by postgrey-1.36 at gabe;
+ Mon, 15 Nov 2021 01:43:33 UTC
+Received: from mail.attitudemarketing.ca (unknown [207.253.141.242])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 91616896B0;
+ Mon, 15 Nov 2021 01:43:33 +0000 (UTC)
+Message-ID: <558068421-340877312@mail.attitudemarketing.ca>
+X-Spam-Status: Yes, hits=5.1 required=4.3
+ tests=AWL: -0.126,BAYES_50: 1.567,LOTS_OF_MONEY: 0.001,
+ MILLION_USD: 3.247,MISSING_MID: 0.497,TOTAL_SCORE: 5.186,autolearn=no
+X-Spam-Flag: YES
+X-Spam-Level: *****
+Received: from [77.247.110.57] ([77.247.110.57])
+ by mail.attitudemarketing.ca (Kerio Connect 8.5.1);
+ Sun, 14 Nov 2021 16:20:44 -0500
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+X-Original-Subject: UAE Base Soft Loan Project Funding.
+Subject: **SPAM**  UAE Base Soft Loan Project Funding.
+To: Recipients <info@rina.org>
+From: "Loan. Consultant" <info@rina.org>
+Date: Sun, 14 Nov 2021 22:20:29 +0100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,33 +44,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: quic_saipraka@quicinc.com, catalin.marinas@arm.com,
- dri-devel@lists.freedesktop.org, will@kernel.org, maz@kernel.org,
- Vincent Whitchurch <vincent.whitchurch@axis.com>,
- amd-gfx@lists.freedesktop.org, mingo@redhat.com, daniel.vetter@ffwll.ch,
- lyude@redhat.com, arnd@arndb.de, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, seanpaul@chromium.org,
- intel-gvt-dev@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- sean@poorly.run, Jim Cromie <jim.cromie@gmail.com>, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, robdclark@gmail.com, quic_psodagud@quicinc.com,
- mathieu.desnoyers@efficios.com
+Reply-To: mr.zhangya9090@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 12 Nov 2021 12:32:23 -0500
-Jason Baron <jbaron@akamai.com> wrote:
+Greetings
 
-> Ok, it looks like Vincent's patch defines a dyndbg event and then uses
-> 'trace_dyndbg()' to output to the 'main' log. So all dynamic output to
-> the 'main' ftrace buffer goes through that event if I understand it
-> correctly. Here's a pointer to it for reference:
-> 
-> https://lore.kernel.org/lkml/20200825153338.17061-3-vincent.whitchurch@axis.com/
-> 
-> Would you be ok with that approach?
+we are a Group of License Investment Company, a Global Loan Investment Fund=
+ing Group based in the UAE. We are interested in Loan Funding around the Gl=
+obe. Below are brief on the Investment Loan Funding portfolio: We are looki=
+ng out for viable Investment Projects outside the UAE We can Fund as a Soft=
+ Loan under our ongoing Corporate Finance Program at 2% interest rate per a=
+nnum without collateral except a Surety Bond from UAE Authority.
 
-Yes that approach is fine, because it doesn't actually go to the main log
-unless you enable the dyndbg trace event in the main buffer. You could
-also enable that event in an instance and have it go there.
+Below are brief on the investment loan portfolio
+Minimum and Maximum Funding: USD 1 Million to USD 10 Billion
+Placement Opens to: Entrepreneurs, Corporations and Investors around the gl=
+obe
+Funding Type: Soft Loan Investment Funding with no physical collateral requ=
+irement if you are outside UAE except a Surety Bond.
+Funding Rate: 2% Interest Rate Per Annum
+Term: 2 to10 Years Repayment Renewable Tenure
 
--- Steve
+We don't have any major area of Funding but we give priority attention to R=
+eal Estate Development, other areas of interests include: Oil and Gas, Agri=
+culture, Health, Aviation, Tourism, Construction, IT & Communications, Tech=
+nology, Education, Energy, Engineering, Utilities, Telecom, Mining, Maritim=
+e and host of other profitable ventures. Therefore, based on the above info=
+rmation, we would be glad to receive your Project Plan Executive Summary in=
+ a compatible format for review by our Funding Management Team.
+
+If you have any viable Project that requires funding, kindly revert back to=
+ us via email at;  em0000192019@asia.com
+
+Management Dubai UAE
+
