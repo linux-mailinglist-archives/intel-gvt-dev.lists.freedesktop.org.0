@@ -2,34 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 334BD450F48
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 Nov 2021 19:26:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CB06452D19
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 16 Nov 2021 09:46:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B67B66E595;
-	Mon, 15 Nov 2021 18:26:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 041086F3F7;
+	Tue, 16 Nov 2021 08:46:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.attitudemarketing.ca (unknown [207.253.141.242])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8409D6E595;
- Mon, 15 Nov 2021 18:26:29 +0000 (UTC)
-Message-ID: <545797452-351313920@mail.attitudemarketing.ca>
-X-Spam-Status: Yes, hits=5.2 required=4.3
- tests=AWL: -0.096,BAYES_50: 1.567,LOTS_OF_MONEY: 0.001,
- MILLION_USD: 3.247,MISSING_MID: 0.497,TOTAL_SCORE: 5.216,autolearn=no
-X-Spam-Flag: YES
-X-Spam-Level: *****
-Received: from [77.247.110.57] ([77.247.110.57])
- by mail.attitudemarketing.ca (Kerio Connect 8.5.1);
- Sun, 14 Nov 2021 17:18:42 -0500
-Content-Type: text/plain; charset="iso-8859-1"
+Received: from mail-lj1-x22e.google.com (mail-lj1-x22e.google.com
+ [IPv6:2a00:1450:4864:20::22e])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 91BD46F3F2;
+ Tue, 16 Nov 2021 08:46:41 +0000 (UTC)
+Received: by mail-lj1-x22e.google.com with SMTP id e7so27086564ljq.12;
+ Tue, 16 Nov 2021 00:46:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version; bh=B+4475Nz0EJEw1btKnS6lbGHGzgnMTR6vRIDIHfcqkg=;
+ b=AHjnsSgzVUrwMtIn2hzKlQ7zcUO9w2GxgF7iClKlNlQkjIwFGpO584TH3tmeXy97zF
+ gZBJJiZtURTMLV9CzFsoOrn3DlNdSYs06nMlEIMpVhxTnKRawq3Cg5WiAnHG9H/r7afV
+ i2BMBtpJiDhzO/y5stgpGkCV59rHJPJ7IkMBOKJ/dSTinie5byqIB7sjXwlvYH9sNnjr
+ vKGy8b1l7meUPMQ/M9RlZd416KZNlN+bRznsZ3+YzywCmOBAgkgoCb9BkuqunSH1/hQL
+ ITC2w/0pAXLOHmjwxGuNkfSqM3QgAObfTJpMBcPSF4fDDwLbI6GC2gcRxsy9vpjFYC+J
+ VDMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version;
+ bh=B+4475Nz0EJEw1btKnS6lbGHGzgnMTR6vRIDIHfcqkg=;
+ b=Ffz8gYrO0I1DzBl/tMVdbOY4bCIZYnV5svMg3SpgF+mZF3RUujcvBhuAsDz0sEb6Lp
+ 8OYCE8GfNxF/Y7Y8kJMf7Ss+eEyQtalKRDOq+4C6vc8MEyvYVRz5xuVlQbxgzmwGKCuv
+ ihLf8ZaSThMaVyCUlP7pU90UnTo60Wj4FpmrTWpFomzkBJMhYhVv6klmrYAPBPN4pdbw
+ YduGnJV/3Cn3C0rVU3ubeNRVsz7NjxWRgzMKxm9Jrrp9rZXKMmy7MqR96GyhGRsMbH66
+ kNq+AxRW5Fizkq635CWRh32F2rWwGtXZzPAd/V1luFZ8whP91vuCe8hJ9buP+L5HQYV1
+ CNzg==
+X-Gm-Message-State: AOAM532HTgCh20PkFBqfo4caq8ge2aAl6KeGNZ0OqhHaijGT3jmpLkrd
+ qHLyj02pFxgiQuZqsL6VFV0=
+X-Google-Smtp-Source: ABdhPJx+P8W2uhzddSw3fnTmEhpfFIZRj2/R8Je3b+El+xG49yzo/zN4B9vsrQxVsH5Cm9iD/9YFHw==
+X-Received: by 2002:a2e:b88d:: with SMTP id r13mr5295292ljp.362.1637052399848; 
+ Tue, 16 Nov 2021 00:46:39 -0800 (PST)
+Received: from eldfell ([194.136.85.206])
+ by smtp.gmail.com with ESMTPSA id d23sm1692776lfm.107.2021.11.16.00.46.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Nov 2021 00:46:39 -0800 (PST)
+Date: Tue, 16 Nov 2021 10:46:31 +0200
+From: Pekka Paalanen <ppaalanen@gmail.com>
+To: Jason Baron <jbaron@akamai.com>
+Subject: Re: [PATCH v10 08/10] dyndbg: add print-to-tracefs, selftest with
+ it - RFC
+Message-ID: <20211116104631.195cbd0b@eldfell>
+In-Reply-To: <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
+References: <20211111220206.121610-1-jim.cromie@gmail.com>
+ <20211111220206.121610-9-jim.cromie@gmail.com>
+ <20211112114953.GA1381@axis.com>
+ <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-X-Original-Subject: UAE Base Soft Loan Project Funding.
-Subject: **SPAM**  UAE Base Soft Loan Project Funding.
-To: Recipients <info@rina.org>
-From: "Loan. Consultant" <info@rina.org>
-Date: Sun, 14 Nov 2021 23:18:27 +0100
+Content-Type: multipart/signed; boundary="Sig_/Y5Z_1H8x236jEerk/fTWs86";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,38 +71,150 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mr.zhangya9090@gmail.com
+Cc: quic_saipraka@quicinc.com, catalin.marinas@arm.com,
+ dri-devel@lists.freedesktop.org, will@kernel.org,
+ intel-gvt-dev@lists.freedesktop.org,
+ Vincent Whitchurch <vincent.whitchurch@axis.com>,
+ amd-gfx@lists.freedesktop.org, mingo@redhat.com, daniel.vetter@ffwll.ch,
+ arnd@arndb.de, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ rostedt@goodmis.org, mathieu.desnoyers@efficios.com, sean@poorly.run,
+ linux-arm-kernel@lists.infradead.org, Jim Cromie <jim.cromie@gmail.com>,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ quic_psodagud@quicinc.com, maz@kernel.org, seanpaul@chromium.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Greetings
+--Sig_/Y5Z_1H8x236jEerk/fTWs86
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-we are a Group of License Investment Company, a Global Loan Investment Fund=
-ing Group based in the UAE. We are interested in Loan Funding around the Gl=
-obe. Below are brief on the Investment Loan Funding portfolio: We are looki=
-ng out for viable Investment Projects outside the UAE We can Fund as a Soft=
- Loan under our ongoing Corporate Finance Program at 2% interest rate per a=
-nnum without collateral except a Surety Bond from UAE Authority.
+On Fri, 12 Nov 2021 10:08:41 -0500
+Jason Baron <jbaron@akamai.com> wrote:
 
-Below are brief on the investment loan portfolio
-Minimum and Maximum Funding: USD 1 Million to USD 10 Billion
-Placement Opens to: Entrepreneurs, Corporations and Investors around the gl=
-obe
-Funding Type: Soft Loan Investment Funding with no physical collateral requ=
-irement if you are outside UAE except a Surety Bond.
-Funding Rate: 2% Interest Rate Per Annum
-Term: 2 to10 Years Repayment Renewable Tenure
+> On 11/12/21 6:49 AM, Vincent Whitchurch wrote:
+> > On Thu, Nov 11, 2021 at 03:02:04PM -0700, Jim Cromie wrote: =20
+> >> Sean Paul proposed, in:
+> >> https://urldefense.com/v3/__https://patchwork.freedesktop.org/series/7=
+8133/__;!!GjvTz_vk!HcKnMRByYkIdyF1apqQjlN5aBIomzJR1an3YWXM6KXs0EftVMQdrewRA=
+8Dki4A$=20
+> >> drm/trace: Mirror DRM debug logs to tracefs
+> >>
+> >> His patchset's objective is to be able to independently steer some of
+> >> the drm.debug stream to an alternate tracing destination, by splitting
+> >> drm_debug_enabled() into syslog & trace flavors, and enabling them
+> >> separately.  2 advantages were identified:
+> >>
+> >> 1- syslog is heavyweight, tracefs is much lighter
+> >> 2- separate selection of enabled categories means less traffic
+> >>
+> >> Dynamic-Debug can do 2nd exceedingly well:
+> >>
+> >> A- all work is behind jump-label's NOOP, zero off cost.
+> >> B- exact site selectivity, precisely the useful traffic.
+> >>    can tailor enabled set interactively, at shell.
+> >>
+> >> Since the tracefs interface is effective for drm (the threads suggest
+> >> so), adding that interface to dynamic-debug has real potential for
+> >> everyone including drm.
+> >>
+> >> if CONFIG_TRACING:
+> >>
+> >> Grab Sean's trace_init/cleanup code, use it to provide tracefs
+> >> available by default to all pr_debugs.  This will likely need some
+> >> further per-module treatment; perhaps something reflecting hierarchy
+> >> of module,file,function,line, maybe with a tuned flattening.
+> >>
+> >> endif CONFIG_TRACING
+> >>
+> >> Add a new +T flag to enable tracing, independent of +p, and add and
+> >> use 3 macros: dyndbg_site_is_enabled/logging/tracing(), to encapsulate
+> >> the flag checks.  Existing code treats T like other flags. =20
+> >=20
+> > I posted a patchset a while ago to do something very similar, but that
+> > got stalled for some reason and I unfortunately didn't follow it up:
+> >=20
+> >  https://urldefense.com/v3/__https://lore.kernel.org/lkml/2020082515333=
+8.17061-1-vincent.whitchurch@axis.com/__;!!GjvTz_vk!HcKnMRByYkIdyF1apqQjlN5=
+aBIomzJR1an3YWXM6KXs0EftVMQdrewRGytKHPg$=20
+> >=20
+> > A key difference between that patchset and this patch (besides that
+> > small fact that I used +x instead of +T) was that my patchset allowed
+> > the dyndbg trace to be emitted to the main buffer and did not force them
+> > to be in an instance-specific buffer. =20
+>=20
+> Yes, I agree I'd prefer that we print here to the 'main' buffer - it
+> seems to keep things simpler and easier to combine the output from
+> different sources as you mentioned.
 
-We don't have any major area of Funding but we give priority attention to R=
-eal Estate Development, other areas of interests include: Oil and Gas, Agri=
-culture, Health, Aviation, Tourism, Construction, IT & Communications, Tech=
-nology, Education, Energy, Engineering, Utilities, Telecom, Mining, Maritim=
-e and host of other profitable ventures. Therefore, based on the above info=
-rmation, we would be glad to receive your Project Plan Executive Summary in=
- a compatible format for review by our Funding Management Team.
+Hi,
 
-If you have any viable Project that requires funding, kindly revert back to=
- us via email at;  em0000192019@asia.com
+I'm not quite sure I understand this discussion, but I would like to
+remind you all of what Sean's original work is about:
 
-Management Dubai UAE
+Userspace configures DRM tracing into a flight recorder buffer (I guess
+this is what you refer to "instance-specific buffer").
 
+Userspace runs happily for months, and then hits a problem: a failure
+in the DRM sub-system most likely, e.g. an ioctl that should never
+fail, failed. Userspace handles that failure by dumping the flight
+recorder buffer into a file and saving or sending a bug report. The
+flight recorder contents give a log of all relevant DRM in-kernel
+actions leading to the unexpected failure to help developers debug it.
+
+I don't mind if one can additionally send the flight recorder stream to
+the main buffer, but I do want the separate flight recorder buffer to
+be an option so that a) unrelated things cannot flood the interesting
+bits out of it, and b) the scope of collected information is relevant.
+
+The very reason for this work is problems that are very difficult to
+reproduce in practice, either because the problem itself is triggered
+very rarely and randomly, or because the end users of the system have
+either no knowledge or no access to reconfigure debug logging and then
+reproduce the problem with good debug logs.
+
+Thank you very much for pushing this work forward!
+
+
+Thanks,
+pq
+
+>=20
+> Thanks,
+>=20
+> -Jason
+>=20
+> >=20
+> > That feature is quite important at least for my use case since I often
+> > use dyndbg combined with function tracing, and the latter doesn't work
+> > on non-main instances according to Documentation/trace/ftrace.rst.
+> >=20
+> > For example, here's a random example of a bootargs from one of my recent
+> > debugging sessions:
+> >=20
+> >  trace_event=3Dprintk:* ftrace_filter=3D_mmc*,mmc*,sd*,dw_mci*,mci*
+> >  ftrace=3Dfunction trace_buf_size=3D20M dyndbg=3D"file drivers/mmc/* +x"
+> >  =20
+
+
+--Sig_/Y5Z_1H8x236jEerk/fTWs86
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmGTb+cACgkQI1/ltBGq
+qqdRKg/+JPfzhGvv0UVAPJ+OJ9EYLVCYiKfXrGgNS2ks5BZLaBFB2l4WeRLmL59R
+wqm2UkmeiIAnR+tWVZ5YPBPm5nhaHMfwNdOR2J9AHxI3goTZoJkGNeizBSLVi0jb
+QK6RTGsy2CdF4se9MO7e6IS6nGu+Qb4W6MrSZSCCiTwQMjAPYgxOCeMngdlTjkOp
+CRen7osuGgeRhm74yyyhX/BPg2WKORPFPL80sBiw6IET1IxPen5DgGJ4Nc0jXc7r
+62bncv0J74eOe+w3XRpwwlz1Gm3rNlBQ9zQfkYtsWJe9oA6cD7+cJ6W2SvDSjZi6
+utYM7hnrLbOK/XBkAFcetb8dHAQ/uuaIq75hcz3nho9/P2Hk+5SnwtzzYYcwvV5A
+UIrq96U6r4mWKoGaBySkdBQ0qvi+YUzDDX6SVCTGKcfncjHNcZNyryO7F7/CDMlr
+3yEvgr+8gOIcgWAhKpHgF5DsY8GfKfcgHf0USwDZVmDNmrkProTf3MeFSryXeEiI
+867arY2KKHcGUVvfyfwT28/W+Y+LK7aD9UhUyvnMIVd0IbZ7+Adl9Q/F1wYikYW8
+QtlynecLTKZACjYRqUe2Wow4b9Uqlz7bsexOFE8xGoV/+Z7wsYFKm7wx732ZBy/V
+E9sUEn/oqiTQSv0/gi5U2e2g9Sv0N8wotSgs1ENwb+2ixHc2i/w=
+=CCnA
+-----END PGP SIGNATURE-----
+
+--Sig_/Y5Z_1H8x236jEerk/fTWs86--
