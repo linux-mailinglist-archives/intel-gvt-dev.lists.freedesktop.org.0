@@ -1,65 +1,86 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9378F456F3F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Nov 2021 14:03:17 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B6B1A4572C1
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Nov 2021 17:22:17 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4637C6F587;
-	Fri, 19 Nov 2021 13:03:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5A2BD6EE76;
+	Fri, 19 Nov 2021 16:22:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com
- [IPv6:2a00:1450:4864:20::135])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0A6D26F582;
- Fri, 19 Nov 2021 13:03:15 +0000 (UTC)
-Received: by mail-lf1-x135.google.com with SMTP id bu18so43392084lfb.0;
- Fri, 19 Nov 2021 05:03:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=74UAaAlyeYorhD8LiTFFDJpHlo7FxQjyV94+QBnI/UU=;
- b=Ej9xPYoOzVMnUvBB65ibgggdM7iToNoZS1avGOysQWLq+JVAMC1ra+2dG/bY5VLIFC
- 3/cNWGFjnUTkuZ97uz+s2tsV7k09iPk15squqqTxXYVOn2bNSenQyRVZhmicMMSYPB0z
- O9BvfHppI80mRcHULK9NmqUyg4n2aLDGM0r2D3dPp5oUorkUtYAMrs+3GGk20ntU3JfE
- XeozBrLNDEv9/YRKb6tUBueQ9DCbqZBAzRTQN84Zzat4LshNEvDLdsZofkBAUs07EwQ+
- gJmMzfk5K5o0MRpz6uf+JFV9GMxhUyKeFJITyorI4q5MVELGppkTz0ZaoIC6Zq6FrHKn
- 2ukw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=74UAaAlyeYorhD8LiTFFDJpHlo7FxQjyV94+QBnI/UU=;
- b=nJUk1Djqu6SXhHebJTrPNA3fhtUzoMCNd16anqm7vi6gVULRHNBTJmhmqseNtFOWhu
- Ahs8YSKpxSwSoGX8FUrR33yaCIBwimkaCdIB2w02mf6/wgQXAb4tK6pTDV4sx3jJSOtm
- +PSE1c/mlSeKxEjlZ+1NtAz1a1xulG9APq4c2ta36c1SeX57KAg39mrdcOnc2bm8/dcE
- lTATeYcuq3RbGvBLTvefh0j7LWgIifaYxwNsa4WgmYkSNyIPDXPCcxIfjUNLKj7d4cBd
- leGECY9mvk1N3qSOQ9toj8He1XwZj6eGmlS0uqow0lvJFsEiTnh1QZXSlVJJhFS2p5rs
- CBmg==
-X-Gm-Message-State: AOAM5333Ab036f/ey/t6CXFFFOX79d5ifl+tg1L3jxVu2Va5tcgRCA8H
- U36gfzzp5e0obc+OaMejwbyYErnRpog=
-X-Google-Smtp-Source: ABdhPJzC1y09BmFT4vqj3Oye5DhvhOnKckcfdTr3CXRANhsG08svFeRlo/juDHbos+Xfh/ZhRgxCjw==
-X-Received: by 2002:a05:651c:1788:: with SMTP id
- bn8mr6014524ljb.521.1637326991565; 
- Fri, 19 Nov 2021 05:03:11 -0800 (PST)
-Received: from inno-pc.lan (88-115-161-74.elisa-laajakaista.fi.
- [88.115.161.74])
- by smtp.gmail.com with ESMTPSA id e6sm356815lfn.172.2021.11.19.05.03.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Nov 2021 05:03:11 -0800 (PST)
-From: Zhi Wang <zhi.wang.linux@gmail.com>
-X-Google-Original-From: Zhi Wang <zhi.a.wang@intel.com>
-To: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] i915/gvt: save the MMIO snapshot in the early init of
- GVT-g
-Date: Fri, 19 Nov 2021 08:03:07 -0500
-Message-Id: <20211119130307.21098-2-zhi.a.wang@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211119130307.21098-1-zhi.a.wang@intel.com>
-References: <20211119130307.21098-1-zhi.a.wang@intel.com>
+Received: from mx0a-00190b01.pphosted.com (mx0a-00190b01.pphosted.com
+ [IPv6:2620:100:9001:583::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5568B6EE79;
+ Fri, 19 Nov 2021 16:22:14 +0000 (UTC)
+Received: from pps.filterd (m0122333.ppops.net [127.0.0.1])
+ by mx0a-00190b01.pphosted.com (8.16.1.2/8.16.1.2) with ESMTP id 1AJFLKHk028100;
+ Fri, 19 Nov 2021 16:21:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=jan2016.eng;
+ bh=9YhPnMhtNA7tLEuoFyc4djop0J+S5ShMmbv7d5TlvcM=;
+ b=nK1JRSkfkdsISQO8Iz8scJYiOzhmRJBvsJk8VWg6mfGB0dnQ6iZyPbgSL2vux/qi60r1
+ SvMzUQSyfsH1lDm1HIGiT37/5rHDHb8Trfsk6M9HjoTXExBTIykERnehYHKcix6zkc8v
+ prIN+lbI6l6lJ5Wtmn1ekDbLB9aDem5b+l6lO3+b/7QsDfSNb2iShVYdl06RtPQbx0J6
+ BIYOe7PJJP0GCbdRwu1Y19YNCA2u4oyqCcH9xYpbQ/CrStNbvRoG3z+69fuS8kiY+HnN
+ H3IG3yGsia2CUtSzInp+C1NMpropJUsRIcqmK0Lz0GhahexiA7CSGIiYan8xNkyyBxk2 Gg== 
+Received: from prod-mail-ppoint4
+ (a72-247-45-32.deploy.static.akamaitechnologies.com [72.247.45.32] (may be
+ forged))
+ by mx0a-00190b01.pphosted.com (PPS) with ESMTPS id 3cdrf3n5ty-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 19 Nov 2021 16:21:39 +0000
+Received: from pps.filterd (prod-mail-ppoint4.akamai.com [127.0.0.1])
+ by prod-mail-ppoint4.akamai.com (8.16.1.2/8.16.1.2) with SMTP id
+ 1AJGKA8J031865; Fri, 19 Nov 2021 11:21:38 -0500
+Received: from prod-mail-relay19.dfw02.corp.akamai.com ([172.27.165.173])
+ by prod-mail-ppoint4.akamai.com with ESMTP id 3ccn28ku20-1;
+ Fri, 19 Nov 2021 11:21:38 -0500
+Received: from [0.0.0.0] (prod-ssh-gw01.bos01.corp.akamai.com [172.27.119.138])
+ by prod-mail-relay19.dfw02.corp.akamai.com (Postfix) with ESMTP id DFCF4605CD; 
+ Fri, 19 Nov 2021 16:21:36 +0000 (GMT)
+Subject: Re: [PATCH v10 08/10] dyndbg: add print-to-tracefs, selftest with it
+ - RFC
+To: Pekka Paalanen <ppaalanen@gmail.com>, seanpaul@chromium.org,
+ sean@poorly.run
+References: <20211111220206.121610-1-jim.cromie@gmail.com>
+ <20211111220206.121610-9-jim.cromie@gmail.com>
+ <20211112114953.GA1381@axis.com>
+ <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
+ <20211116104631.195cbd0b@eldfell>
+ <f87b7076-47e6-89b1-aaf9-b67aa6713e01@akamai.com>
+ <20211118172401.0b4d722e@eldfell>
+From: Jason Baron <jbaron@akamai.com>
+Message-ID: <41ea83b2-a707-cb6f-521e-070bb12502de@akamai.com>
+Date: Fri, 19 Nov 2021 11:21:36 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20211118172401.0b4d722e@eldfell>
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.425, 18.0.790
+ definitions=2021-11-19_06:2021-11-17,
+ 2021-11-19 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxscore=0 mlxlogscore=999
+ adultscore=0 suspectscore=0 malwarescore=0 spamscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
+ definitions=main-2111190090
+X-Proofpoint-ORIG-GUID: wAvvlZeEqbaLEYHr7ZT1eS9bIMmWqfL8
+X-Proofpoint-GUID: wAvvlZeEqbaLEYHr7ZT1eS9bIMmWqfL8
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.0.607.475
+ definitions=2021-11-19_09,2021-11-17_01,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ adultscore=0 spamscore=0
+ clxscore=1015 impostorscore=0 priorityscore=1501 suspectscore=0
+ malwarescore=0 lowpriorityscore=0 mlxscore=0 mlxlogscore=999 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
+ definitions=main-2111190090
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,270 +93,179 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Zhi Wang <zhi.wang.linux@gmail.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Terrence Xu <terrence.xu@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Vivi Rodrigo <rodrigo.vivi@intel.com>, Christoph Hellwig <hch@lst.de>,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org, quic_saipraka@quicinc.com,
+ arnd@arndb.de, gregkh@linuxfoundation.org, Jim Cromie <jim.cromie@gmail.com>,
+ catalin.marinas@arm.com, linux-arm-msm@vger.kernel.org,
+ Vincent Whitchurch <vincent.whitchurch@axis.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, daniel.vetter@ffwll.ch, mingo@redhat.com,
+ rostedt@goodmis.org, amd-gfx@lists.freedesktop.org, quic_psodagud@quicinc.com,
+ maz@kernel.org, mathieu.desnoyers@efficios.com, will@kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: Zhi Wang <zhi.wang.linux@gmail.com>
 
-To support the early init of GVT-g, which will be put in i915, after the
-GVT-g is moved into a dedicated module, we need to save the MMIO snapshot
-in the early init of GVT-g, when the HW hasn't been touched.
 
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Cc: Vivi Rodrigo <rodrigo.vivi@intel.com>
-Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.a.wang@intel.com>
-Tested-by: Terrence Xu <terrence.xu@intel.com>
-Signed-off-by: Zhi Wang <zhi.wang.linux@gmail.com>
----
- drivers/gpu/drm/i915/gvt/firmware.c        | 36 +----------
- drivers/gpu/drm/i915/gvt/handlers.c        | 39 ------------
- drivers/gpu/drm/i915/gvt/mmio_info_table.c | 72 +++++++++++++++++++++-
- drivers/gpu/drm/i915/gvt/mmio_info_table.h |  3 +
- 4 files changed, 76 insertions(+), 74 deletions(-)
+On 11/18/21 10:24 AM, Pekka Paalanen wrote:
+> On Thu, 18 Nov 2021 09:29:27 -0500
+> Jason Baron <jbaron@akamai.com> wrote:
+> 
+>> On 11/16/21 3:46 AM, Pekka Paalanen wrote:
+>>> On Fri, 12 Nov 2021 10:08:41 -0500
+>>> Jason Baron <jbaron@akamai.com> wrote:
+>>>   
+>>>> On 11/12/21 6:49 AM, Vincent Whitchurch wrote:  
+>>>>> On Thu, Nov 11, 2021 at 03:02:04PM -0700, Jim Cromie wrote:    
+>>>>>> Sean Paul proposed, in:
+>>>>>> https://urldefense.com/v3/__https://patchwork.freedesktop.org/series/78133/__;!!GjvTz_vk!HcKnMRByYkIdyF1apqQjlN5aBIomzJR1an3YWXM6KXs0EftVMQdrewRA8Dki4A$ 
+>>>>>> drm/trace: Mirror DRM debug logs to tracefs
+>>>>>>
+>>>>>> His patchset's objective is to be able to independently steer some of
+>>>>>> the drm.debug stream to an alternate tracing destination, by splitting
+>>>>>> drm_debug_enabled() into syslog & trace flavors, and enabling them
+>>>>>> separately.  2 advantages were identified:
+>>>>>>
+>>>>>> 1- syslog is heavyweight, tracefs is much lighter
+>>>>>> 2- separate selection of enabled categories means less traffic
+>>>>>>
+>>>>>> Dynamic-Debug can do 2nd exceedingly well:
+>>>>>>
+>>>>>> A- all work is behind jump-label's NOOP, zero off cost.
+>>>>>> B- exact site selectivity, precisely the useful traffic.
+>>>>>>    can tailor enabled set interactively, at shell.
+>>>>>>
+>>>>>> Since the tracefs interface is effective for drm (the threads suggest
+>>>>>> so), adding that interface to dynamic-debug has real potential for
+>>>>>> everyone including drm.
+>>>>>>
+>>>>>> if CONFIG_TRACING:
+>>>>>>
+>>>>>> Grab Sean's trace_init/cleanup code, use it to provide tracefs
+>>>>>> available by default to all pr_debugs.  This will likely need some
+>>>>>> further per-module treatment; perhaps something reflecting hierarchy
+>>>>>> of module,file,function,line, maybe with a tuned flattening.
+>>>>>>
+>>>>>> endif CONFIG_TRACING
+>>>>>>
+>>>>>> Add a new +T flag to enable tracing, independent of +p, and add and
+>>>>>> use 3 macros: dyndbg_site_is_enabled/logging/tracing(), to encapsulate
+>>>>>> the flag checks.  Existing code treats T like other flags.    
+>>>>>
+>>>>> I posted a patchset a while ago to do something very similar, but that
+>>>>> got stalled for some reason and I unfortunately didn't follow it up:
+>>>>>
+>>>>>  https://urldefense.com/v3/__https://lore.kernel.org/lkml/20200825153338.17061-1-vincent.whitchurch@axis.com/__;!!GjvTz_vk!HcKnMRByYkIdyF1apqQjlN5aBIomzJR1an3YWXM6KXs0EftVMQdrewRGytKHPg$ 
+>>>>>
+>>>>> A key difference between that patchset and this patch (besides that
+>>>>> small fact that I used +x instead of +T) was that my patchset allowed
+>>>>> the dyndbg trace to be emitted to the main buffer and did not force them
+>>>>> to be in an instance-specific buffer.    
+>>>>
+>>>> Yes, I agree I'd prefer that we print here to the 'main' buffer - it
+>>>> seems to keep things simpler and easier to combine the output from
+>>>> different sources as you mentioned.  
+>>>
+>>> Hi,
+>>>
+>>> I'm not quite sure I understand this discussion, but I would like to
+>>> remind you all of what Sean's original work is about:
+>>>
+>>> Userspace configures DRM tracing into a flight recorder buffer (I guess
+>>> this is what you refer to "instance-specific buffer").
+>>>
+>>> Userspace runs happily for months, and then hits a problem: a failure
+>>> in the DRM sub-system most likely, e.g. an ioctl that should never
+>>> fail, failed. Userspace handles that failure by dumping the flight
+>>> recorder buffer into a file and saving or sending a bug report. The
+>>> flight recorder contents give a log of all relevant DRM in-kernel
+>>> actions leading to the unexpected failure to help developers debug it.
+>>>
+>>> I don't mind if one can additionally send the flight recorder stream to
+>>> the main buffer, but I do want the separate flight recorder buffer to
+>>> be an option so that a) unrelated things cannot flood the interesting
+>>> bits out of it, and b) the scope of collected information is relevant.
+>>>
+>>> The very reason for this work is problems that are very difficult to
+>>> reproduce in practice, either because the problem itself is triggered
+>>> very rarely and randomly, or because the end users of the system have
+>>> either no knowledge or no access to reconfigure debug logging and then
+>>> reproduce the problem with good debug logs.
+>>>
+>>> Thank you very much for pushing this work forward!
+>>>
+>>>   
+>>
+>> So I think Vincent (earlier in the thread) was saying that he finds it
+>> very helpful have dynamic debug output go to the 'main' trace buffer,
+>> while you seem to be saying you'd prefer it just go to dynamic debug
+>> specific trace buffer.
+> 
+> Seems like we have different use cases: traditional debugging, and
+> in-production flight recorder for problem reporting. I'm not surprised
+> if they need different treatment.
+> 
+>> So we certainly can have dynamic output potentially go to both places -
+>> although I think this would mean two tracepoints? But I really wonder
+>> if we really need a separate tracing buffer for dynamic debug when
+>> what goes to the 'main' buffer can be controlled and filtered to avoid
+>> your concern around a 'flood'?
+> 
+> If the DRM tracing goes into the main buffer, then systems in
+> production cannot have any other sub-system traced in a similar
+> fashion. To me it would feel very arrogant to say that to make use of
+> DRM flight recording, you cannot trace much or anything else.
+> 
+> The very purpose of the flight recorder is run in production all the
+> time, not in a special debugging session.
+> 
+> There is also the question of access and contents of the trace buffer.
+> Ultimately, if automatic bug reports are enabled in a system, the
+> contents of the trace buffer would be sent as-is to some bug tracking
+> system. If there is a chance to put non-DRM stuff in the trace buffer,
+> that could be a security problem.
+> 
+> My use case is Weston. When Weston encounters an unexpected problem in
+> production, something should automatically capture the DRM flight
+> recorder contents and save it alongside the Weston log. Would be really
+> nice if Weston itself could do that, but I suspect it is going to need
+> root privileges so it needs some helper daemon.
+> 
+> Maybe Sean can reiterate their use case more?
+> 
+> 
+> Thanks,
+> pq
+> 
 
-diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/gvt/firmware.c
-index 1a8274a3f4b1..dd5d4dd7a8cf 100644
---- a/drivers/gpu/drm/i915/gvt/firmware.c
-+++ b/drivers/gpu/drm/i915/gvt/firmware.c
-@@ -66,12 +66,6 @@ static struct bin_attribute firmware_attr = {
- 	.mmap = NULL,
- };
- 
--static int mmio_snapshot_handler(struct intel_gvt *gvt, u32 offset, void *data)
--{
--	*(u32 *)(data + offset) = intel_uncore_read_notrace(gvt->gt->uncore,
--							    _MMIO(offset));
--	return 0;
--}
- 
- static int expose_firmware_sysfs(struct intel_gvt *gvt)
- {
-@@ -99,17 +93,11 @@ static int expose_firmware_sysfs(struct intel_gvt *gvt)
- 
- 	p = firmware + h->cfg_space_offset;
- 
--	for (i = 0; i < h->cfg_space_size; i += 4)
--		pci_read_config_dword(pdev, i, p + i);
--
--	memcpy(gvt->firmware.cfg_space, p, info->cfg_space_size);
-+	memcpy(p, gvt->firmware.cfg_space, info->cfg_space_size);
- 
- 	p = firmware + h->mmio_offset;
- 
--	/* Take a snapshot of hw mmio registers. */
--	intel_gvt_for_each_tracked_mmio(gvt, mmio_snapshot_handler, p);
--
--	memcpy(gvt->firmware.mmio, p, info->mmio_size);
-+	memcpy(p, gvt->firmware.mmio, info->mmio_size);
- 
- 	crc32_start = offsetof(struct gvt_firmware_header, crc32) + 4;
- 	h->crc32 = crc32_le(0, firmware + crc32_start, size - crc32_start);
-@@ -142,9 +130,6 @@ void intel_gvt_free_firmware(struct intel_gvt *gvt)
- {
- 	if (!gvt->firmware.firmware_loaded)
- 		clean_firmware_sysfs(gvt);
--
--	kfree(gvt->firmware.cfg_space);
--	vfree(gvt->firmware.mmio);
- }
- 
- static int verify_firmware(struct intel_gvt *gvt,
-@@ -217,23 +202,6 @@ int intel_gvt_load_firmware(struct intel_gvt *gvt)
- 	if (!path)
- 		return -ENOMEM;
- 
--	mem = kmalloc(info->cfg_space_size, GFP_KERNEL);
--	if (!mem) {
--		kfree(path);
--		return -ENOMEM;
--	}
--
--	firmware->cfg_space = mem;
--
--	mem = vmalloc(info->mmio_size);
--	if (!mem) {
--		kfree(path);
--		kfree(firmware->cfg_space);
--		return -ENOMEM;
--	}
--
--	firmware->mmio = mem;
--
- 	sprintf(path, "%s/vid_0x%04x_did_0x%04x_rid_0x%02x.golden_hw_state",
- 		 GVT_FIRMWARE_PATH, pdev->vendor, pdev->device,
- 		 pdev->revision);
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 2c064da3db6d..ba7b330a2c71 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -2406,45 +2406,6 @@ int intel_gvt_setup_mmio_handlers(struct intel_gvt *gvt)
- 	return ret;
- }
- 
--/**
-- * intel_gvt_for_each_tracked_mmio - iterate each tracked mmio
-- * @gvt: a GVT device
-- * @handler: the handler
-- * @data: private data given to handler
-- *
-- * Returns:
-- * Zero on success, negative error code if failed.
-- */
--int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
--	int (*handler)(struct intel_gvt *gvt, u32 offset, void *data),
--	void *data)
--{
--	struct gvt_mmio_block *block = gvt->mmio.mmio_block;
--	struct intel_gvt_mmio_info *e;
--	int i, j, ret;
--
--	hash_for_each(gvt->mmio.mmio_info_table, i, e, node) {
--		ret = handler(gvt, e->offset, data);
--		if (ret)
--			return ret;
--	}
--
--	for (i = 0; i < gvt->mmio.num_mmio_block; i++, block++) {
--		/* pvinfo data doesn't come from hw mmio */
--		if (i915_mmio_reg_offset(block->offset) == VGT_PVINFO_PAGE)
--			continue;
--
--		for (j = 0; j < block->size; j += 4) {
--			ret = handler(gvt,
--				      i915_mmio_reg_offset(block->offset) + j,
--				      data);
--			if (ret)
--				return ret;
--		}
--	}
--	return 0;
--}
--
- /**
-  * intel_vgpu_default_mmio_read - default MMIO read handler
-  * @vgpu: a vGPU
-diff --git a/drivers/gpu/drm/i915/gvt/mmio_info_table.c b/drivers/gpu/drm/i915/gvt/mmio_info_table.c
-index 723190c25313..76535e3cc9ba 100644
---- a/drivers/gpu/drm/i915/gvt/mmio_info_table.c
-+++ b/drivers/gpu/drm/i915/gvt/mmio_info_table.c
-@@ -1398,6 +1398,54 @@ void intel_gvt_clean_mmio_info(struct intel_gvt *gvt)
- 
- 	vfree(gvt->mmio.mmio_attribute);
- 	gvt->mmio.mmio_attribute = NULL;
-+	kfree(gvt->firmware.cfg_space);
-+	vfree(gvt->firmware.mmio);
-+}
-+
-+static int mmio_snapshot_handler(struct intel_gvt *gvt, u32 offset, void *data)
-+{
-+	*(u32 *)(data + offset) = intel_uncore_read_notrace(gvt->gt->uncore,
-+							    _MMIO(offset));
-+	return 0;
-+}
-+
-+/**
-+ * intel_gvt_for_each_tracked_mmio - iterate each tracked mmio
-+ * @gvt: a GVT device
-+ * @handler: the handler
-+ * @data: private data given to handler
-+ *
-+ * Returns:
-+ * Zero on success, negative error code if failed.
-+ */
-+int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
-+	int (*handler)(struct intel_gvt *gvt, u32 offset, void *data),
-+	void *data)
-+{
-+	struct gvt_mmio_block *block = gvt->mmio.mmio_block;
-+	struct intel_gvt_mmio_info *e;
-+	int i, j, ret;
-+
-+	hash_for_each(gvt->mmio.mmio_info_table, i, e, node) {
-+		ret = handler(gvt, e->offset, data);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	for (i = 0; i < gvt->mmio.num_mmio_block; i++, block++) {
-+		/* pvinfo data doesn't come from hw mmio */
-+		if (i915_mmio_reg_offset(block->offset) == VGT_PVINFO_PAGE)
-+			continue;
-+
-+		for (j = 0; j < block->size; j += 4) {
-+			ret = handler(gvt,
-+				      i915_mmio_reg_offset(block->offset) + j,
-+				      data);
-+			if (ret)
-+				return ret;
-+		}
-+	}
-+	return 0;
- }
- 
- /**
-@@ -1414,8 +1462,10 @@ int intel_gvt_setup_mmio_info(struct intel_gvt *gvt)
- {
- 	struct intel_gvt_device_info *info = &gvt->device_info;
- 	struct drm_i915_private *i915 = gvt->gt->i915;
-+	struct pci_dev *pdev = to_pci_dev(i915->drm.dev);
- 	int size = info->mmio_size / 4 * sizeof(*gvt->mmio.mmio_attribute);
--	int ret;
-+	void *mem;
-+	int i, ret;
- 
- 	gvt->mmio.mmio_attribute = vzalloc(size);
- 	if (!gvt->mmio.mmio_attribute)
-@@ -1454,6 +1504,26 @@ int intel_gvt_setup_mmio_info(struct intel_gvt *gvt)
- 	gvt->mmio.mmio_block = mmio_blocks;
- 	gvt->mmio.num_mmio_block = ARRAY_SIZE(mmio_blocks);
- 
-+	mem = kzalloc(info->cfg_space_size, GFP_KERNEL);
-+	if (!mem)
-+		goto err;
-+
-+	gvt->firmware.cfg_space = mem;
-+
-+	for (i = 0; i < info->cfg_space_size; i += 4)
-+		pci_read_config_dword(pdev, i, mem + i);
-+
-+	mem = vzalloc(info->mmio_size);
-+	if (!mem) {
-+		kfree(gvt->firmware.cfg_space);
-+		goto err;
-+	}
-+
-+	gvt->firmware.mmio = mem;
-+
-+	/* Take a snapshot of hw mmio registers. */
-+	intel_gvt_for_each_tracked_mmio(gvt, mmio_snapshot_handler, mem);
-+
- 	return 0;
- err:
- 	intel_gvt_clean_mmio_info(gvt);
-diff --git a/drivers/gpu/drm/i915/gvt/mmio_info_table.h b/drivers/gpu/drm/i915/gvt/mmio_info_table.h
-index 1c78ab1906c4..8379cb41735f 100644
---- a/drivers/gpu/drm/i915/gvt/mmio_info_table.h
-+++ b/drivers/gpu/drm/i915/gvt/mmio_info_table.h
-@@ -27,6 +27,9 @@
- 
- unsigned long intel_gvt_get_device_type(struct intel_gvt *gvt);
- bool intel_gvt_match_device(struct intel_gvt *gvt, unsigned long device);
-+int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
-+	int (*handler)(struct intel_gvt *gvt, u32 offset, void *data),
-+	void *data);
- struct intel_gvt_mmio_info *intel_gvt_find_mmio_info(struct intel_gvt *gvt,
- 						     unsigned int offset);
- int intel_gvt_setup_mmio_info(struct intel_gvt *gvt);
--- 
-2.25.1
+Ok, so in this current thread the proposal was to create a "dyndbg-tracefs"
+buffer to put the dynamic debug output (including drm output from dynamic
+debug) into. And I was saying let's just put in the 'main' trace buffer
+(predicated on a dynamic debug specific tracepoint), since there seems
+to be a a use-case for that and it keeps things simpler.
+
+But I went back to Sean's original patch, and it creates a drm specific
+trace buffer "drm" (via trace_array_get_by_name("drm")). Here:
+https://patchwork.freedesktop.org/patch/445549/?series=78133&rev=5
+
+So I think that may be some of the confusion here? The current thread/
+proposal is not for a drm specific trace buffer...
+
+Having a subsystem specific trace buffer would allow subsystem specific
+trace log permissions depending on the sensitivity of the data. But
+doesn't drm output today go to the system log which is typically world
+readable today?
+
+So I could see us supporting subsystem specific trace buffer output
+via dynamic debug here. We could add new dev_debug() variants that
+allow say a trace buffer to be supplied. So in that way subsystems
+could 'opt-out' of having their data put into the global trace buffer.
+And perhaps some subsystems we would want to allow output to both
+buffers? The subsystem specific one and the global one?
+
+Thanks,
+
+-Jason
+
+
+
 
