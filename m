@@ -2,62 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4689A459F52
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Nov 2021 10:32:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89CE145A364
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Nov 2021 14:00:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ADD346EBB5;
-	Tue, 23 Nov 2021 09:32:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 372EF6FA6B;
+	Tue, 23 Nov 2021 13:00:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-4321.protonmail.ch (mail-4321.protonmail.ch [185.70.43.21])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A5E956EBB5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 23 Nov 2021 09:32:36 +0000 (UTC)
-Received: from mail-0201.mail-europe.com (mail-0201.mail-europe.com
- [51.77.79.158])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail-4321.protonmail.ch (Postfix) with ESMTPS id 4HyzSf6K6qz4x5jc
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 23 Nov 2021 09:32:34 +0000 (UTC)
-Authentication-Results: mail-4321.protonmail.ch;
- dkim=pass (2048-bit key) header.d=emersion.fr header.i=@emersion.fr
- header.b="mF2LsX4w"
-Date: Tue, 23 Nov 2021 09:32:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=emersion.fr;
- s=protonmail; t=1637659949;
- bh=WaYv4Vo1ied5Can2vStLBRqq5qJ8vzsHC41nroVCbKU=;
- h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:From;
- b=mF2LsX4wZDisixKtW1bcOAJTHf0WjPG91SzlHISEtGuZGk1Cn8biO9ZokaN192Yz8
- BzOP9TotglL3KB6ghzW169xRSIpHRdWqu4RtCay7x6PYP5SI2K3qFivh/bRVx5qGHv
- /mBYvwXmxvkXueWSArOCQrcblEfT1hnRsuTk08NfJ8YqaXEE/RwMIqM5APRvvfsmHz
- Rctozj430tUUIcsMyBcIOgeY2daYHpj9S7GV1zVdYPa0/Tqx8ydyhdZZEXDk3+gdj3
- 5f+BQCmZAUVfr/EtsUINCrt9+kkMZWWFG2J9UIjBWseWwcTz4YRxMInK4sb7XDjQuF
- JQjv+Fr35uKEw==
-To: Pekka Paalanen <ppaalanen@gmail.com>
-From: Simon Ser <contact@emersion.fr>
-Subject: Re: [PATCH v10 08/10] dyndbg: add print-to-tracefs,
- selftest with it - RFC
-Message-ID: <-PHBNsA2s0YNaFjE_76_aCTSMbqUpcaqbttDKFOZv0n9VRShPsgC8NDHq_S8KCpNbE32E9LRrw7CHb3pgFzgg99jFb0DX59vpcPVODkYe4Y=@emersion.fr>
-In-Reply-To: <20211123104522.7a336773@eldfell>
-References: <20211111220206.121610-1-jim.cromie@gmail.com>
- <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
- <20211116104631.195cbd0b@eldfell>
- <f87b7076-47e6-89b1-aaf9-b67aa6713e01@akamai.com>
- <20211118172401.0b4d722e@eldfell>
- <41ea83b2-a707-cb6f-521e-070bb12502de@akamai.com>
- <20211122110208.528e1d80@eldfell>
- <CAJfuBxyFzA++2JUxLY-6yLqmrETbmsWpTiyJH5w1qKiAkMriNw@mail.gmail.com>
- <20211123104522.7a336773@eldfell>
+X-Greylist: delayed 22182 seconds by postgrey-1.36 at gabe;
+ Tue, 23 Nov 2021 13:00:30 UTC
+Received: from mail1.simpur.net.bn (mail.simpur.net.bn [202.152.94.149])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 115086FA6B;
+ Tue, 23 Nov 2021 13:00:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=simpur.net.bn; s=mail; h=Reply-To:Date:From:To:Subject:Content-Description:
+ Content-Transfer-Encoding:MIME-Version:Content-Type:Sender:Message-ID:Cc:
+ Content-ID:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:
+ Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=cvg12IYJMyPRD8zLyrOxjUM+1OXbz8vOs/VceyAL25U=; b=VhKck+655WVMaZ9yegsE/QFEIX
+ q55DuwSN71hmgTJjyKbYm3e2n53uNX34X0LNlcZaAbEXsZ+SrhyShwC1iYX7uf9bCE5zzGfjpnCu0
+ nHPc88mnF+pBFwYR1iyZIdB5Yd/umecICPxfEcBNyH7qG/u+ZFvtSY9/CnzQ2+sjwVhY=;
+Received: from [161.129.70.174] (helo=[10.162.132.51])
+ by mail1.simpur.net.bn with esmtpsa (TLSv1:DHE-RSA-AES256-SHA:256)
+ (Exim 4.90_1) (envelope-from <Elinev@my.ccsu.edu>)
+ id 1mp4Va-00052p-3I; Mon, 22 Nov 2021 16:17:02 +0800
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Spam-Status: No, score=-1.2 required=10.0 tests=ALL_TRUSTED,DKIM_SIGNED,
- DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF shortcircuit=no
- autolearn=disabled version=3.4.4
-X-Spam-Checker-Version: SpamAssassin 3.4.4 (2020-01-24) on
- mailout.protonmail.ch
+Content-Description: Mail message body
+Subject: Kreditangebot bei 2%
+To: Recipients <Elinev@my.ccsu.edu>
+From: "NT"<Elinev@my.ccsu.edu>
+Date: Mon, 22 Nov 2021 09:16:34 +0100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,122 +47,22 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Simon Ser <contact@emersion.fr>
-Cc: quic_saipraka@quicinc.com, Catalin Marinas <catalin.marinas@arm.com>,
- dri-devel <dri-devel@lists.freedesktop.org>, Will Deacon <will@kernel.org>,
- intel-gvt-dev@lists.freedesktop.org,
- Vincent Whitchurch <vincent.whitchurch@axis.com>,
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Ingo Molnar <mingo@redhat.com>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- Arnd Bergmann <arnd@arndb.de>, linux-arm-msm@vger.kernel.org,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Steven Rostedt <rostedt@goodmis.org>, Jason Baron <jbaron@akamai.com>,
- Sean Paul <seanpaul@chromium.org>, Sean Paul <sean@poorly.run>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, jim.cromie@gmail.com,
- Greg KH <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kernel.org>,
- quic_psodagud@quicinc.com, maz@kernel.org, mathieu.desnoyers@efficios.com
+Reply-To: clmloans9@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20211123130031.372EF6FA6B@gabe.freedesktop.org>
 
-First off, let me reiterate that this feature would be invaluable as user-s=
-pace
-developers. It's often pretty difficult to figure out the cause of an EINVA=
-L,
-we have to ask users to follow complicated instructions [1] to grab DRM log=
-s.
-Then have to skim through several megabytes of logs to find the error.
+Ben=F6tigen Sie finanzielle Hilfe? Wir bieten Darlehen zu einem niedrigen Z=
+inssatz von 2% an. Wenn Sie an einer Art von Darlehen interessiert sind, ko=
+ntaktieren Sie uns mit den untenstehenden Details f=FCr weitere Details.
 
-I have a hack [2] which just calls system("sudo dmesg") after a failed atom=
-ic
-commit, it's been pretty handy. But it's really just a hack, a proper solut=
-ion
-would be awesome.
+Vollst=E4ndiger Name:
+Adresse/Land:
+Ben=F6tigte Menge:
+Dauer:
+Alter:
+Handy Nummer:
 
-[1]: https://gitlab.freedesktop.org/wlroots/wlroots/-/wikis/DRM-Debugging
-[2]: https://gitlab.freedesktop.org/emersion/libliftoff/-/merge_requests/61
+Ich warte darauf, etwas von dir zu h=F6ren.
 
-> > > > Having a subsystem specific trace buffer would allow subsystem spec=
-ific
-> > > > trace log permissions depending on the sensitivity of the data. But
-> > > > doesn't drm output today go to the system log which is typically wo=
-rld
-> > > > readable today?
-
-dmesg isn't world-readable these days, it's been changed recently-ish (last
-year?) at least on my distribution (Arch). I need root to grab dmesg.
-
-(Maybe we can we just let the DRM master process grab the logs?)
-
-> > > Yes, and that is exactly the problem. The DRM debug output is so high
-> > > traffic it would make the system log both unusable due to cruft and
-> > > slow down the whole machine. The debug output is only useful when
-> > > something went wrong, and at that point it is too late to enable
-> > > debugging. That's why a flight recorder with an over-written circular
-> > > in-memory buffer is needed.
-> >
-> > Seans patch reuses enum drm_debug_category to split the tracing
-> > stream into 10 sub-streams
-> > - how much traffic from each ?
-> > - are some sub-streams more valuable for post-mortem ?
-> > - any value from further refinement of categories ?
-> > - drop irrelevant callsites individually to reduce clutter, extend
-> > buffer time/space ?
->
-> I think it's hard to predict which sub-streams you are going to need
-> before you have a bug to debug. Hence I would err on the side of
-> enabling too much. This also means that better or more refined
-> categorisation might not be that much of help - or if it is, then are
-> the excluded debug messages worth having in the kernel to begin with.
-> Well, we're probably not that interested in GPU debugs but just
-> everything related to the KMS side, which on the existing categories
-> is... everything except half of CORE and DRIVER, maybe? Not sure.
-
-We've been recommending drm.debug=3D0x19F so far (see wiki linked above).
-KMS + PRIME + ATOMIC + LEASE is definitely something we want in, and
-CORE + DRIVER contains other useful info. We definitely don't want VBL.
-
-> My feeling is that that could mean in the order of hundreds of log
-> events at framerate (e.g. 60 times per second) per each enabled output
-> individually. And per DRM device, of course. This is with the
-> uninteresting GPU debugs already excluded.
-
-Indeed, successful KMS atomic commits already generate a lot of noise. On m=
-y
-machine, setting drm.debug=3D0x19F and running the following command:
-
-    sudo dmesg -w | pv >/dev/null
-
-I get 400KiB/s when idling, and 850KiB/s when wiggling the cursor.
-
-> Still, I don't think the flight recorder buffer would need to be
-> massive. I suspect it would be enough to hold a few frames' worth which
-> is just a split second under active operation. When something happens,
-> the userspace stack is likely going to stop on its tracks immediately
-> to collect the debug information, which means the flooding should pause
-> and the relevant messages don't get overwritten before we get them. In
-> a multi-seat system where each device is controlled by a separate
-> display server instance, per-device logs would help with this. OTOH,
-> multi-seat is not a very common use case I suppose.
-
-There's also the case of multi-GPU where GPU B's logs could clutter GPU A's=
-,
-making it harder to understand the cause of an atomic commit failure on GPU=
- A.
-So per-device logs would be useful, but not a hard requirement for me, havi=
-ng
-*anything* at all would already be a big win.
-
-In my experiments linked above [2], system("sudo dmesg") after atomic commi=
-t
-failure worked pretty well, and the bottom of the log contained the cause o=
-f
-the failure. It was pretty useful to system("sudo dmesg -C") before perform=
-ing
-an atomic commit, to be able to only collect the extract of the log relevan=
-t to
-the atomic commit.
-
-Having some kind of "marker" mechanism could be pretty cool. "Mark" the log
-stream before performing an atomic commit (ideally that'd just return e.g. =
-an
-uint64 offset), then on failure request the logs collected after that mark.
+Mit freundlichen Gr=FC=DFen
