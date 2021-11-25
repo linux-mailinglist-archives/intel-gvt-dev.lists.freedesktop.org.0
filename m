@@ -2,47 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15CBA45DBAD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 25 Nov 2021 14:51:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BAED45E411
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Nov 2021 02:33:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B24706EF38;
-	Thu, 25 Nov 2021 13:51:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9EAB06E3C4;
+	Fri, 26 Nov 2021 01:33:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from smtp1.axis.com (smtp1.axis.com [195.60.68.17])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F10396EF38;
- Thu, 25 Nov 2021 13:51:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=axis.com; q=dns/txt; s=axis-central1; t=1637848282;
- x=1669384282; h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=IZMfh96pc1eATKuBd9LQI2ag0STcz/D7Jqsa3v1w6EA=;
- b=jgzgG10w9vP4Gs2lzNKK5OcYWIoSjFCceX8DfO4YOJzZrwuB6uWkU+lh
- N/CD5xSySDkCXP39gNpoQDqbD9npZ2jEJ67qoJ4Y1m4s8/63qSGXmtpdX
- v5+YKWgrrJK5qrNiqgPcu2XvrW3x/1/v+fDfTHjFniB74T+Az0yq/bY+d
- QuIqeYSQVmODoOG7SlniN07TqY+gmVtrFhfcvJrzsUfO+ayb/EoOACknS
- Ecc+Tik9aU72uOh3QCtDj7VvFxOM7Md34cuvpJxb4ZiUm7St+4SVFi2zd
- fQeBhoivxxvTPhX68ikboM3RrwAH98C6zhGLcjst+LHcPtZt5qNv1CAHJ A==;
-Date: Thu, 25 Nov 2021 14:51:19 +0100
-From: Vincent Whitchurch <vincent.whitchurch@axis.com>
-To: "jim.cromie@gmail.com" <jim.cromie@gmail.com>
-Subject: Re: [PATCH v10 08/10] dyndbg: add print-to-tracefs, selftest with it
- - RFC
-Message-ID: <20211125135119.GA7625@axis.com>
-References: <20211111220206.121610-1-jim.cromie@gmail.com>
- <20211111220206.121610-9-jim.cromie@gmail.com>
- <20211112114953.GA1381@axis.com>
- <f3914fa9-8b22-d54e-3f77-d998e74094b9@akamai.com>
- <20211116104631.195cbd0b@eldfell>
- <f87b7076-47e6-89b1-aaf9-b67aa6713e01@akamai.com>
- <20211118172401.0b4d722e@eldfell>
- <41ea83b2-a707-cb6f-521e-070bb12502de@akamai.com>
- <CAJfuBxyvDtALAHM53RdnWT4ke6Cjrc3OWTAqNKe_n-o_LhtpYg@mail.gmail.com>
+Received: from mx.unica.cu (mx.unica.cu [200.14.52.201])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4D8EE6E3C4;
+ Fri, 26 Nov 2021 01:33:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=unica.cu;
+ s=mail; 
+ h=Content-Type:MIME-Version:Subject:Message-ID:Reply-To:From:Date;
+ bh=I2f/xpioPxZHfV3jCef8uuf3vYviwIYgSCKjiwTyz9s=; 
+ b=ePCpdtaq35vEx7cXca3otNFRlTEhdtuvcZjG+Ss6Ymd/2G2/EBUnjJP6DVpU9/oY+Rlf3gp0jioo7jpj5390IVeVbBghRv24QMAtAIkAwgAHsF9XmSU3XNxzVkZ7h9oJE0MuGxnJ0jmA+Gk/IvgudblpKO1Hxb2XGT65hoegvDA=;
+Received: from mx.unica.cu ([10.18.1.6] helo=correo.unica.cu)
+ by mx.unica.cu with esmtp (Exim 4.80)
+ (envelope-from <rgutierrez@unica.cu>)
+ id 1mqC5n-00063e-Po; Thu, 25 Nov 2021 05:35:03 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by correo.unica.cu (Postfix) with ESMTP id 024A23C70B4;
+ Thu, 25 Nov 2021 05:36:15 -0500 (EST)
+Received: from correo.unica.cu ([127.0.0.1])
+ by localhost (correo.unica.cu [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id RN9EwIYf_X7i; Thu, 25 Nov 2021 05:36:14 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by correo.unica.cu (Postfix) with ESMTP id 8426C3C6B17;
+ Thu, 25 Nov 2021 05:36:13 -0500 (EST)
+X-Amavis-Modified: Mail body modified (using disclaimer) - correo.unica.cu
+X-Virus-Scanned: amavisd-new at unica.cu
+Received: from correo.unica.cu ([127.0.0.1])
+ by localhost (correo.unica.cu [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id y4H9mS-gKuv8; Thu, 25 Nov 2021 05:36:13 -0500 (EST)
+Received: from correo.unica.cu (correo.unica.cu [10.18.1.6])
+ by correo.unica.cu (Postfix) with ESMTP id 2E0CF3C6B81;
+ Thu, 25 Nov 2021 05:36:07 -0500 (EST)
+Date: Thu, 25 Nov 2021 05:36:07 -0500 (EST)
+From: Manuel Franco <rgutierrez@unica.cu>
+Message-ID: <934262403.81710.1637836567125.JavaMail.zimbra@unica.cu>
+Subject: 2.000.000,00. Euro
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <CAJfuBxyvDtALAHM53RdnWT4ke6Cjrc3OWTAqNKe_n-o_LhtpYg@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: multipart/alternative; 
+ boundary="=_1812bb8e-ea0b-4f45-a90f-1fd41ebeaeb0"
+X-Originating-IP: [105.0.6.146]
+X-Mailer: Zimbra 8.8.12_GA_3803 (zclient/8.8.12_GA_3803)
+Thread-Index: FXhlNDqz5h09Ucj5i6FHfcL+DfKnfA==
+Thread-Topic: 2.000.000,00. Euro
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,56 +61,99 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "quic_saipraka@quicinc.com" <quic_saipraka@quicinc.com>,
- Jason Baron <jbaron@akamai.com>, Catalin Marinas <catalin.marinas@arm.com>,
- dri-devel <dri-devel@lists.freedesktop.org>, Will Deacon <will@kernel.org>,
- "maz@kernel.org" <maz@kernel.org>,
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Ingo Molnar <mingo@redhat.com>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- Arnd Bergmann <arnd@arndb.de>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Steven Rostedt <rostedt@goodmis.org>, Pekka Paalanen <ppaalanen@gmail.com>,
- Sean Paul <seanpaul@chromium.org>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, Sean Paul <sean@poorly.run>,
- Greg KH <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kernel.org>,
- "quic_psodagud@quicinc.com" <quic_psodagud@quicinc.com>,
- "mathieu.desnoyers@efficios.com" <mathieu.desnoyers@efficios.com>
+Reply-To: Manuel Franco <manuelfrancospende002@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Nov 19, 2021 at 11:46:31PM +0100, jim.cromie@gmail.com wrote:
-> Vincent's code has the macro magic to define that event, which IIUC
-> is what  makes it controllable by ftrace, and therefore acceptable in
-> principle to Steve.
-> Would there be any reason to expand his set of 2 events into dev_dbg,
-> pr_debug etc varieties ?
-> (ie any value to separating dev, !dev ?, maybe so
-> 
-> Sean's code uses trace_array_printk primarily, which is EXPORTed,
-> which is a virtue.
-> 
-> Vincents code does
-> +/*
-> + * This code is heavily based on __ftrace_trace_stack().
-> + *
-> + * Allow 4 levels of nesting: normal, softirq, irq, NMI.
-> + */
-> 
-> to implement
-> 
-> +static void dynamic_trace(const char *fmt, va_list args)
-> 
-> Has this __ftrace_trace_stack() code been bundled into or hidden under
-> a supported interface ?
-> 
-> would it look anything like trace_array_printk() ?
-> 
-> what problem is that code solving inside dynamic-debug.c ?
+--=_1812bb8e-ea0b-4f45-a90f-1fd41ebeaeb0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-I'm not sure I fully understand all of your questions, but perhaps this
-thread with Steven's reply to the first version of my patchset will
-answer some of them:
 
- https://lore.kernel.org/lkml/20200723112644.7759f82f@oasis.local.home/
+
+
+You have a donation of 2,000,000.00. Euro
+My name is Manuel Franco from the United States. I won the America lottery worth $768 million and I am donating a portion of it to just 5 lucky people and a few Orphanage homes as goodwill to humanity. 
+
+--=_1812bb8e-ea0b-4f45-a90f-1fd41ebeaeb0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><style> body {height: 100%; color:#000000; font-size:12pt; font=
+-family:arial,helvetica,sans-serif;}</style></head><body><div><br></div><di=
+v><br></div><div><br></div><div style=3D"color: #222222; font-family: Arial=
+, Helvetica, sans-serif; font-size: small; font-style: normal; font-variant=
+-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spa=
+cing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transfo=
+rm: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-s=
+troke-width: 0px; background-color: #ffffff; text-decoration-thickness: ini=
+tial; text-decoration-style: initial; text-decoration-color: initial;" data=
+-mce-style=3D"color: #222222; font-family: Arial, Helvetica, sans-serif; fo=
+nt-size: small; font-style: normal; font-variant-ligatures: normal; font-va=
+riant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; white-space: norm=
+al; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; backgroun=
+d-color: #ffffff; text-decoration-thickness: initial; text-decoration-style=
+: initial; text-decoration-color: initial;">You have a donation of 2,000,00=
+0.00.&nbsp;Euro</div><div style=3D"color: #222222; font-family: Arial, Helv=
+etica, sans-serif; font-size: small; font-style: normal; font-variant-ligat=
+ures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: no=
+ne; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-=
+width: 0px; background-color: #ffffff; text-decoration-thickness: initial; =
+text-decoration-style: initial; text-decoration-color: initial;" data-mce-s=
+tyle=3D"color: #222222; font-family: Arial, Helvetica, sans-serif; font-siz=
+e: small; font-style: normal; font-variant-ligatures: normal; font-variant-=
+caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-al=
+ign: start; text-indent: 0px; text-transform: none; white-space: normal; wi=
+dows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-colo=
+r: #ffffff; text-decoration-thickness: initial; text-decoration-style: init=
+ial; text-decoration-color: initial;"><br></div><div style=3D"color: #22222=
+2; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style:=
+ normal; font-variant-ligatures: normal; font-variant-caps: normal; font-we=
+ight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-inde=
+nt: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing=
+: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-deco=
+ration-thickness: initial; text-decoration-style: initial; text-decoration-=
+color: initial;" data-mce-style=3D"color: #222222; font-family: Arial, Helv=
+etica, sans-serif; font-size: small; font-style: normal; font-variant-ligat=
+ures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: no=
+ne; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-=
+width: 0px; background-color: #ffffff; text-decoration-thickness: initial; =
+text-decoration-style: initial; text-decoration-color: initial;">My name is=
+ Manuel Franco from the United States.&nbsp;</div><div style=3D"color: #222=
+222; font-family: Arial, Helvetica, sans-serif; font-size: small; font-styl=
+e: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-=
+weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-in=
+dent: 0px; text-transform: none; white-space: normal; widows: 2; word-spaci=
+ng: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-de=
+coration-thickness: initial; text-decoration-style: initial; text-decoratio=
+n-color: initial;" data-mce-style=3D"color: #222222; font-family: Arial, He=
+lvetica, sans-serif; font-size: small; font-style: normal; font-variant-lig=
+atures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing=
+: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-strok=
+e-width: 0px; background-color: #ffffff; text-decoration-thickness: initial=
+; text-decoration-style: initial; text-decoration-color: initial;">I won th=
+e America lottery worth $768 million and I am donating a portion of it to j=
+ust 5 lucky people and a few Orphanage homes as goodwill to humanity.</div>=
+<div style=3D"color: #222222; font-family: Arial, Helvetica, sans-serif; fo=
+nt-size: small; font-style: normal; font-variant-ligatures: normal; font-va=
+riant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; t=
+ext-align: start; text-indent: 0px; text-transform: none; white-space: norm=
+al; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; backgroun=
+d-color: #ffffff; text-decoration-thickness: initial; text-decoration-style=
+: initial; text-decoration-color: initial;" data-mce-style=3D"color: #22222=
+2; font-family: Arial, Helvetica, sans-serif; font-size: small; font-style:=
+ normal; font-variant-ligatures: normal; font-variant-caps: normal; font-we=
+ight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-inde=
+nt: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing=
+: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-deco=
+ration-thickness: initial; text-decoration-style: initial; text-decoration-=
+color: initial;">&nbsp;</div>
+<br>=
+<html><body><h3></h3></body></html>=0A
+<br>=
+</body></html>
+--=_1812bb8e-ea0b-4f45-a90f-1fd41ebeaeb0--
