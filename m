@@ -1,64 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0799445ECDE
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Nov 2021 12:46:39 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81CBC45F6E8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 26 Nov 2021 23:37:27 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 57BB46E7D3;
-	Fri, 26 Nov 2021 11:46:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0963A6E093;
+	Fri, 26 Nov 2021 22:37:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-x229.google.com (mail-lj1-x229.google.com
- [IPv6:2a00:1450:4864:20::229])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 523196E7FA;
- Fri, 26 Nov 2021 11:46:35 +0000 (UTC)
-Received: by mail-lj1-x229.google.com with SMTP id z8so18202440ljz.9;
- Fri, 26 Nov 2021 03:46:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=771D8j+j6GY3D7m6lQgfgOiT77k90+QQB3iXGzCnqwI=;
- b=nke0byi9pUeD77reHH3E/amQB5LyH3GLk9EvVeONpHfna7hb1eaGJEArAijVw7xG3J
- WsND9bCW2fMG1Dz+of9Bymb6too31n4Dh0PdB4J+V+fC9YgWoAz4hcKZ9zKS6kv/oraP
- 2zbSATXHp1NRXXbngu2d0hbkHm35T3SZxDCerDNLA9imU+S08VIecwTe3kG7W31Kemgw
- ZVdgTRHtsiZE7YMrliUrOBD9LSNEL8Uf0LE5z+DZGZv2MF5ZwqyarS2FheDRwpIROkRZ
- UEDuZJIEhdbgzNaY6l3OzyZFOF2J78nVAtcgK8h06gU/Jxogwlz/zov5NuqgYjMKnoFv
- frag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=771D8j+j6GY3D7m6lQgfgOiT77k90+QQB3iXGzCnqwI=;
- b=NFqJJGQEW0t3ZAQVm1KFaBwNXzWucv73x5IFkgVwHOHxZoNObvHzhIltLE7qjnuAXf
- 8RwbhhC9II79JQcc6xXZ7WEXRt+4PjiteNGSLqkfnkruuD/9F/FMkHVzw0hfpq6vucvW
- n4q12scDFhMW/S6syrBMrTUeEPayJenq4iqqygyPuxwYNJu4TLq3LPgVGH2JglXNRN54
- 2LyXIFZzgVLY2w9eufTIs6TQWy8L2NzUuFOwxDFBwQa53xEEZOcq+gGeX/a1jsLa5k2v
- J5CyG0VnZ6evaZoKRNtewPBSdC6f6dxPgZxN2RRItW5BQR9vGiaT3SbylJrrx2caH+/d
- JZiQ==
-X-Gm-Message-State: AOAM531PFDTylYOusPKYjlHcHRm0KdrnxmL1kmchM7byPBnFh1e/hTUB
- vEPwy7Z/wuYI08CwLainpIoHFp4fijg=
-X-Google-Smtp-Source: ABdhPJwbNELuNUo3IsF3TGtBzAP74FlXOLqdPSY3hc+lMa/6E7Mmg3z3Qynf84ETfd5Yf32TEIscGA==
-X-Received: by 2002:a2e:99cf:: with SMTP id l15mr31804064ljj.111.1637927193243; 
- Fri, 26 Nov 2021 03:46:33 -0800 (PST)
-Received: from inno-pc.lan (88-115-161-74.elisa-laajakaista.fi.
- [88.115.161.74])
- by smtp.gmail.com with ESMTPSA id c15sm556536lfb.40.2021.11.26.03.46.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Nov 2021 03:46:32 -0800 (PST)
-From: Zhi Wang <zhi.wang.linux@gmail.com>
-X-Google-Original-From: Zhi Wang <zhi.a.wang@intel.com>
-To: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EF5006E061;
+ Fri, 26 Nov 2021 22:37:22 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10180"; a="234455217"
+X-IronPort-AV: E=Sophos;i="5.87,266,1631602800"; d="scan'208";a="234455217"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Nov 2021 14:37:21 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,266,1631602800"; d="scan'208";a="458392168"
+Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
+ by orsmga006.jf.intel.com with ESMTP; 26 Nov 2021 14:37:18 -0800
+Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mqjqH-0008gx-W6; Fri, 26 Nov 2021 22:37:17 +0000
+Date: Sat, 27 Nov 2021 06:37:05 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org,
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 2/2] i915/gvt: save the MMIO snapshot in the early init of
- GVT-g
-Date: Fri, 26 Nov 2021 06:46:23 -0500
-Message-Id: <20211126114623.88739-2-zhi.a.wang@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211126114623.88739-1-zhi.a.wang@intel.com>
+Subject: Re: [PATCH v3 1/2] i915/gvt: Introduce the mmio_info_table.c to
+ support VFIO new mdev API
+Message-ID: <202111270654.IbLd57DI-lkp@intel.com>
 References: <20211126114623.88739-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20211126114623.88739-1-zhi.a.wang@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,296 +50,60 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Zhi Wang <zhi.wang.linux@gmail.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Terrence Xu <terrence.xu@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Vivi Rodrigo <rodrigo.vivi@intel.com>, Christoph Hellwig <hch@lst.de>,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: Christoph Hellwig <hch@lst.de>, kbuild-all@lists.01.org,
+ Zhi Wang <zhi.wang.linux@gmail.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Vivi Rodrigo <rodrigo.vivi@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: Zhi Wang <zhi.wang.linux@gmail.com>
+Hi Zhi,
 
-To support the early init of GVT-g, which will be put in i915, after the
-GVT-g is moved into a dedicated module, we need to save the MMIO snapshot
-in the early init of GVT-g, when the HW hasn't been touched.
+I love your patch! Perhaps something to improve:
 
-v3:
+[auto build test WARNING on drm-intel/for-linux-next]
+[also build test WARNING on drm-tip/drm-tip drm/drm-next tegra-drm/drm/tegra/for-next v5.16-rc2 next-20211126]
+[cannot apply to airlied/drm-next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-- Fix errors when CONFIG_DRM_I915_WERROR is turned on. (Jani)
+url:    https://github.com/0day-ci/linux/commits/Zhi-Wang/i915-gvt-Introduce-the-mmio_info_table-c-to-support-VFIO-new-mdev-API/20211126-194800
+base:   git://anongit.freedesktop.org/drm-intel for-linux-next
+config: x86_64-rhel-8.3 (https://download.01.org/0day-ci/archive/20211127/202111270654.IbLd57DI-lkp@intel.com/config)
+compiler: gcc-9 (Debian 9.3.0-22) 9.3.0
+reproduce (this is a W=1 build):
+        # https://github.com/0day-ci/linux/commit/82dadc38be63d9271031336db366cd71104df3a0
+        git remote add linux-review https://github.com/0day-ci/linux
+        git fetch --no-tags linux-review Zhi-Wang/i915-gvt-Introduce-the-mmio_info_table-c-to-support-VFIO-new-mdev-API/20211126-194800
+        git checkout 82dadc38be63d9271031336db366cd71104df3a0
+        # save the config file to linux build tree
+        mkdir build_dir
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/
 
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Cc: Vivi Rodrigo <rodrigo.vivi@intel.com>
-Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.a.wang@intel.com>
-Tested-by: Terrence Xu <terrence.xu@intel.com>
-Signed-off-by: Zhi Wang <zhi.wang.linux@gmail.com>
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/gpu/drm/i915/gvt/mmio_info_table.c:1414: warning: expecting prototype for intel_gvt_setup_mmio_table(). Prototype was for intel_gvt_setup_mmio_info() instead
+
+
+vim +1414 drivers/gpu/drm/i915/gvt/mmio_info_table.c
+
+  1402	
+  1403	/**
+  1404	 * intel_gvt_setup_mmio_table - setup MMIO information table for GVT device
+  1405	 * @gvt: GVT device
+  1406	 *
+  1407	 * This function is called at the initialization stage, to setup the MMIO
+  1408	 * information table for GVT device
+  1409	 *
+  1410	 * Returns:
+  1411	 * zero on success, negative if failed.
+  1412	 */
+  1413	int intel_gvt_setup_mmio_info(struct intel_gvt *gvt)
+> 1414	{
+
 ---
- drivers/gpu/drm/i915/gvt/firmware.c        | 40 +-----------
- drivers/gpu/drm/i915/gvt/handlers.c        | 39 ------------
- drivers/gpu/drm/i915/gvt/mmio_info_table.c | 72 +++++++++++++++++++++-
- drivers/gpu/drm/i915/gvt/mmio_info_table.h |  3 +
- 4 files changed, 77 insertions(+), 77 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/gvt/firmware.c
-index 1a8274a3f4b1..28719c2f253f 100644
---- a/drivers/gpu/drm/i915/gvt/firmware.c
-+++ b/drivers/gpu/drm/i915/gvt/firmware.c
-@@ -66,12 +66,6 @@ static struct bin_attribute firmware_attr = {
- 	.mmap = NULL,
- };
- 
--static int mmio_snapshot_handler(struct intel_gvt *gvt, u32 offset, void *data)
--{
--	*(u32 *)(data + offset) = intel_uncore_read_notrace(gvt->gt->uncore,
--							    _MMIO(offset));
--	return 0;
--}
- 
- static int expose_firmware_sysfs(struct intel_gvt *gvt)
- {
-@@ -81,7 +75,7 @@ static int expose_firmware_sysfs(struct intel_gvt *gvt)
- 	void *firmware;
- 	void *p;
- 	unsigned long size, crc32_start;
--	int i, ret;
-+	int ret;
- 
- 	size = sizeof(*h) + info->mmio_size + info->cfg_space_size;
- 	firmware = vzalloc(size);
-@@ -99,17 +93,11 @@ static int expose_firmware_sysfs(struct intel_gvt *gvt)
- 
- 	p = firmware + h->cfg_space_offset;
- 
--	for (i = 0; i < h->cfg_space_size; i += 4)
--		pci_read_config_dword(pdev, i, p + i);
--
--	memcpy(gvt->firmware.cfg_space, p, info->cfg_space_size);
-+	memcpy(p, gvt->firmware.cfg_space, info->cfg_space_size);
- 
- 	p = firmware + h->mmio_offset;
- 
--	/* Take a snapshot of hw mmio registers. */
--	intel_gvt_for_each_tracked_mmio(gvt, mmio_snapshot_handler, p);
--
--	memcpy(gvt->firmware.mmio, p, info->mmio_size);
-+	memcpy(p, gvt->firmware.mmio, info->mmio_size);
- 
- 	crc32_start = offsetof(struct gvt_firmware_header, crc32) + 4;
- 	h->crc32 = crc32_le(0, firmware + crc32_start, size - crc32_start);
-@@ -142,9 +130,6 @@ void intel_gvt_free_firmware(struct intel_gvt *gvt)
- {
- 	if (!gvt->firmware.firmware_loaded)
- 		clean_firmware_sysfs(gvt);
--
--	kfree(gvt->firmware.cfg_space);
--	vfree(gvt->firmware.mmio);
- }
- 
- static int verify_firmware(struct intel_gvt *gvt,
-@@ -204,36 +189,17 @@ static int verify_firmware(struct intel_gvt *gvt,
-  */
- int intel_gvt_load_firmware(struct intel_gvt *gvt)
- {
--	struct intel_gvt_device_info *info = &gvt->device_info;
- 	struct pci_dev *pdev = to_pci_dev(gvt->gt->i915->drm.dev);
- 	struct intel_gvt_firmware *firmware = &gvt->firmware;
- 	struct gvt_firmware_header *h;
- 	const struct firmware *fw;
- 	char *path;
--	void *mem;
- 	int ret;
- 
- 	path = kmalloc(PATH_MAX, GFP_KERNEL);
- 	if (!path)
- 		return -ENOMEM;
- 
--	mem = kmalloc(info->cfg_space_size, GFP_KERNEL);
--	if (!mem) {
--		kfree(path);
--		return -ENOMEM;
--	}
--
--	firmware->cfg_space = mem;
--
--	mem = vmalloc(info->mmio_size);
--	if (!mem) {
--		kfree(path);
--		kfree(firmware->cfg_space);
--		return -ENOMEM;
--	}
--
--	firmware->mmio = mem;
--
- 	sprintf(path, "%s/vid_0x%04x_did_0x%04x_rid_0x%02x.golden_hw_state",
- 		 GVT_FIRMWARE_PATH, pdev->vendor, pdev->device,
- 		 pdev->revision);
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 2c064da3db6d..ba7b330a2c71 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -2406,45 +2406,6 @@ int intel_gvt_setup_mmio_handlers(struct intel_gvt *gvt)
- 	return ret;
- }
- 
--/**
-- * intel_gvt_for_each_tracked_mmio - iterate each tracked mmio
-- * @gvt: a GVT device
-- * @handler: the handler
-- * @data: private data given to handler
-- *
-- * Returns:
-- * Zero on success, negative error code if failed.
-- */
--int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
--	int (*handler)(struct intel_gvt *gvt, u32 offset, void *data),
--	void *data)
--{
--	struct gvt_mmio_block *block = gvt->mmio.mmio_block;
--	struct intel_gvt_mmio_info *e;
--	int i, j, ret;
--
--	hash_for_each(gvt->mmio.mmio_info_table, i, e, node) {
--		ret = handler(gvt, e->offset, data);
--		if (ret)
--			return ret;
--	}
--
--	for (i = 0; i < gvt->mmio.num_mmio_block; i++, block++) {
--		/* pvinfo data doesn't come from hw mmio */
--		if (i915_mmio_reg_offset(block->offset) == VGT_PVINFO_PAGE)
--			continue;
--
--		for (j = 0; j < block->size; j += 4) {
--			ret = handler(gvt,
--				      i915_mmio_reg_offset(block->offset) + j,
--				      data);
--			if (ret)
--				return ret;
--		}
--	}
--	return 0;
--}
--
- /**
-  * intel_vgpu_default_mmio_read - default MMIO read handler
-  * @vgpu: a vGPU
-diff --git a/drivers/gpu/drm/i915/gvt/mmio_info_table.c b/drivers/gpu/drm/i915/gvt/mmio_info_table.c
-index 723190c25313..76535e3cc9ba 100644
---- a/drivers/gpu/drm/i915/gvt/mmio_info_table.c
-+++ b/drivers/gpu/drm/i915/gvt/mmio_info_table.c
-@@ -1398,6 +1398,54 @@ void intel_gvt_clean_mmio_info(struct intel_gvt *gvt)
- 
- 	vfree(gvt->mmio.mmio_attribute);
- 	gvt->mmio.mmio_attribute = NULL;
-+	kfree(gvt->firmware.cfg_space);
-+	vfree(gvt->firmware.mmio);
-+}
-+
-+static int mmio_snapshot_handler(struct intel_gvt *gvt, u32 offset, void *data)
-+{
-+	*(u32 *)(data + offset) = intel_uncore_read_notrace(gvt->gt->uncore,
-+							    _MMIO(offset));
-+	return 0;
-+}
-+
-+/**
-+ * intel_gvt_for_each_tracked_mmio - iterate each tracked mmio
-+ * @gvt: a GVT device
-+ * @handler: the handler
-+ * @data: private data given to handler
-+ *
-+ * Returns:
-+ * Zero on success, negative error code if failed.
-+ */
-+int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
-+	int (*handler)(struct intel_gvt *gvt, u32 offset, void *data),
-+	void *data)
-+{
-+	struct gvt_mmio_block *block = gvt->mmio.mmio_block;
-+	struct intel_gvt_mmio_info *e;
-+	int i, j, ret;
-+
-+	hash_for_each(gvt->mmio.mmio_info_table, i, e, node) {
-+		ret = handler(gvt, e->offset, data);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	for (i = 0; i < gvt->mmio.num_mmio_block; i++, block++) {
-+		/* pvinfo data doesn't come from hw mmio */
-+		if (i915_mmio_reg_offset(block->offset) == VGT_PVINFO_PAGE)
-+			continue;
-+
-+		for (j = 0; j < block->size; j += 4) {
-+			ret = handler(gvt,
-+				      i915_mmio_reg_offset(block->offset) + j,
-+				      data);
-+			if (ret)
-+				return ret;
-+		}
-+	}
-+	return 0;
- }
- 
- /**
-@@ -1414,8 +1462,10 @@ int intel_gvt_setup_mmio_info(struct intel_gvt *gvt)
- {
- 	struct intel_gvt_device_info *info = &gvt->device_info;
- 	struct drm_i915_private *i915 = gvt->gt->i915;
-+	struct pci_dev *pdev = to_pci_dev(i915->drm.dev);
- 	int size = info->mmio_size / 4 * sizeof(*gvt->mmio.mmio_attribute);
--	int ret;
-+	void *mem;
-+	int i, ret;
- 
- 	gvt->mmio.mmio_attribute = vzalloc(size);
- 	if (!gvt->mmio.mmio_attribute)
-@@ -1454,6 +1504,26 @@ int intel_gvt_setup_mmio_info(struct intel_gvt *gvt)
- 	gvt->mmio.mmio_block = mmio_blocks;
- 	gvt->mmio.num_mmio_block = ARRAY_SIZE(mmio_blocks);
- 
-+	mem = kzalloc(info->cfg_space_size, GFP_KERNEL);
-+	if (!mem)
-+		goto err;
-+
-+	gvt->firmware.cfg_space = mem;
-+
-+	for (i = 0; i < info->cfg_space_size; i += 4)
-+		pci_read_config_dword(pdev, i, mem + i);
-+
-+	mem = vzalloc(info->mmio_size);
-+	if (!mem) {
-+		kfree(gvt->firmware.cfg_space);
-+		goto err;
-+	}
-+
-+	gvt->firmware.mmio = mem;
-+
-+	/* Take a snapshot of hw mmio registers. */
-+	intel_gvt_for_each_tracked_mmio(gvt, mmio_snapshot_handler, mem);
-+
- 	return 0;
- err:
- 	intel_gvt_clean_mmio_info(gvt);
-diff --git a/drivers/gpu/drm/i915/gvt/mmio_info_table.h b/drivers/gpu/drm/i915/gvt/mmio_info_table.h
-index 0303fd447330..7572b255d5d0 100644
---- a/drivers/gpu/drm/i915/gvt/mmio_info_table.h
-+++ b/drivers/gpu/drm/i915/gvt/mmio_info_table.h
-@@ -29,6 +29,9 @@
- 
- unsigned long intel_gvt_get_device_type(struct intel_gvt *gvt);
- bool intel_gvt_match_device(struct intel_gvt *gvt, unsigned long device);
-+int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
-+	int (*handler)(struct intel_gvt *gvt, u32 offset, void *data),
-+	void *data);
- struct intel_gvt_mmio_info *intel_gvt_find_mmio_info(struct intel_gvt *gvt,
- 						     unsigned int offset);
- int intel_gvt_setup_mmio_info(struct intel_gvt *gvt);
--- 
-2.25.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
