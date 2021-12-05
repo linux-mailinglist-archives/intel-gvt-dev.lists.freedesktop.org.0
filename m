@@ -1,69 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 163B4469396
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Dec 2021 11:25:15 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5526E46937C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Dec 2021 11:22:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5A4D07A487;
-	Mon,  6 Dec 2021 10:20:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5967673D67;
+	Mon,  6 Dec 2021 10:20:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sonic308-21.consmr.mail.sg3.yahoo.com
- (sonic308-21.consmr.mail.sg3.yahoo.com [106.10.241.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 35C8172C4E
+Received: from mail-lj1-x233.google.com (mail-lj1-x233.google.com
+ [IPv6:2a00:1450:4864:20::233])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2906372CE9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Dec 2021 03:36:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1638675404; bh=v3kmCDF4uC+e2GUrhMqm80p0VgEmWDCOMg3f62x+O/8=;
- h=Date:From:To:Subject:References:From:Subject:Reply-To;
- b=FRM8SKn54s8Meio5Cr6SODr9/XizhRq7O4gh4o/6uiXNLAhh/w0qmRJqBhenYLX/HAW35qJjktXVKCdfqagYVaealBuvbfjX7gD8mIqj1npOmBd1NQcmKTEY/fHdZASYmW89CCUTkW8r+NvkABYlmFKn0oac3NHn1kj1QyE7dwuFh1ILJIn4I4px+VBD/8m/fri6k966bkXyWU+pXAAlLwX9p2viLvx2HbyItnaqzovXMMVwSSlSy3VF3jeY/3cQ03oF9RrPYBqHUT08ILH+A0i8MU2UXSG/9tieA2XN/QcG7lGfEEzB3Rsk3KN8LkraB5FiwQV5ursvnE3qMJhWFA==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1638675404; bh=R52sgQR2/H0+iL8jTluTJkfsSh/tNon7EZE1FwYGJuC=;
- h=X-Sonic-MF:Date:From:To:Subject:From:Subject;
- b=ixLEeudYOuZz4BpAsCCL13IGDvJEgTRLmxbM1X4IWvmp9xPfrvqzAbK7gN1NSJPXpV7H+IuvgDxPvlBHwlt138mqMKOqzIro9xwATEPrb3MD8vsO0kx72BVVr81tA9C7l1YqagHDJicKxNFLgkbDm3IfScwYTV9wWQHSNIlDdcDcQTJjSChbY69lFBn2jjERaDIORAysUo/oBi9QwQERlDjeoNcaob7aR2gAqjQnahKYc8R41TgxSrWRjUnggVnKCupRgZ5T5KERn0HoWTMV92qyGYcWObSiKLfLe+x0jFpNtML7bKQfakj/ne6g9UQ+hA3oIB2uzAT0NLyNQyUhgg==
-X-YMail-OSG: f9SOGQEVM1mQOSAXacSqsGI76WETX2jGvqadHc.b6gIs_kUW2kzZmxHyX6gYxLv
- rqaFVb6gqf7ep5ZmMVDs2A6oCCDhve.pTIRsB7D4BgEo7tGUYlaGTrhfgEr35xJRRu_ggTg46qeI
- _zKwsJJk.lxpykmpmAm6LEE6tG9kjSXQiH8u7l2i7BTCuS95IkPqQDI3lZRoyoBmw1bQ3AQDuzkT
- 91gtkoGRqXLsrEn13BucnKzuusMcRGwUdRpDBj2e87bz9aOHTYxO4RhgkAhSre9NNVpuXsM7EWTR
- fwcUR6j.Brj6OgCib.wwrcjDDrO9Brw5dgskpHbOY0GjG_R981ORKRXedjRhOnCgwM6Oe_C8QUaj
- OVBkk1RO6xGYArTIlocBePvHxwkI_vvdfLGs2bQvq2oIS0XCbj7vAv.HXP_9rbTfkQQfMS0SeYU9
- oOE5sidTutBO4TIv9sOf15_xv1PqE1VR.E.fimVMOzJFjkSMtcmy8ioQ8zxOFQaPRLmPc3gYPNgf
- vUKvEBovRwBsqIoNcSYjr7U_Dsmq.lJ92iMJhZ.tqF57dIE4f0qdhGTo4F859K_YrAa0KKuWZP_X
- 7IPkzXX.DD3en9k.KYiH_UwUYJIqwt8DavhKFqabEkFa0NSFAckiSKMVXtOZ7ZgFn2tzFaCRvlhM
- WhinM68EAAGX8v_N4nX8njFTOc0EdqStRvndn_Gjn4zQ0iswSiLTOxZJDfQapsiPJepwwmuravI8
- DQU4vf3SjXjMItuIjxjYprUUWhCRc6fnm1NC8zQDqStKNEF3sw6maq5rXLCkYUJ24UCE_7WI_RSB
- 7cR74VrSJXFNcpFN4kWNMVxw2n717dAVVrEQiYaMFJiWDTxhapI3raDy0DZyYBK.rgP2A5GGzNMP
- Ve7urJAkkApiFwd1fxnTaiYsZXNPYnpS1avgkYYM8B6yaOZu1kbUzrjCN849SwZlZzjEp11BbLMK
- aD4jCgt7FuUZK9a13okbamSMc8NzAHtQ2SYWeULB6.QtP7FCPoDB_HQ95g_Fzy8_tsa9OB1_HfQK
- J6p0Lon4NjP7OKKezqS4v7W_xpKigTaFlx1ZDyhS3JqHhXzs.KVuhE.iLTr7oIDgCdZqbBBN7z8o
- 3DEYmb6NXoynPzxndZ.0Mg63IGg7YaW7O32Qc7lw3tLJS7_cusBpWt_Shu0uJQ6e1OHq6rGg4E.E
- Juwbm1Htb3wL1TYEMb2w3twFYOQonqflSToStsytbotSvbdH13AxEXp2i7emKKi.Dk9ZOQpL2g5K
- i3r2sAuwKl9YP17fpKadMT49A1QK84dyy.0c4YVvrTE3jkJmjBPtE7beLmy9WcKjNI3n1BumRWX9
- HwHmDz6qPhl2oVDkb5oIf3V0ha6DtErI8D7udAAqA9i.0U22dq8UUxrclDZ_uxWIrC9BigwzxRyB
- __bFN1_W6xLH1bBXMbUeMBSjvRdpFCVXWrNucvsIdCWQAM2d1TfVumtkQhtTUNQtNMESFR9MElvR
- MGFjfP9C9yDCYF3.PvnmXTVP3g7ZTLdHHZ8xtPSHeKCaBNUkkq_7HDyql5IVGqePyKY4n3xB0mXm
- Qt6uAdMH0gVpBglN5h2hBDeLKOltjwcFzbzJJx2Xxeg2AzanWeP6JG5ubs8CrPAmc2WB.60AJVel
- PiWjIBlyFSml3rYRiuc6FefptHdurhC457APC_g4VG7N06_n6pPgkBbi5olbeCtmfY.2Cy.2ACKH
- 7iuq01JZxksQbt4R23HBDgaOYJGtpzVwphcTZ4.5sK1_BrZIVx9SGQP6HEjlcTSMLHeWkFsWxM6p
- s6sqLEy1aQixFjHnoqOA2pKf1ucRPeEcQilNo4Xq0So.IGc.m.iLs35aNkMx6iejuIrRCoAeFUCk
- 9ZuaiE9Zj_objA7_y0sv31N3AFMilF0lCSAKE.c9QKeXxurt2hg2vBrNEGRNnq.TWzMTOWKZrlNk
- o54lb3euod986Hsc4Pna.Dhh7QzWRgtyQM2_wJT54QWd6cF4opThn1rdm4s82oCP1tGVoUXU2Dhc
- Do8wYRtFo77Fux_446GrOuWcvHHCssy4037PdJ8u18FaU.Jqb.P2Dd0j9awZ5IwtcpC8kOVd_XAu
- FTBwjwwgHD9GlfkXusqyDdogH6gRLkZteWFnIytjZ5sKveFwKWWpj_mVOLXQY
-X-Sonic-MF: <good25_news@yahoo.com>
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic308.consmr.mail.sg3.yahoo.com with HTTP; Sun, 5 Dec 2021 03:36:44 +0000
-Date: Sun, 5 Dec 2021 03:36:40 +0000 (UTC)
-From: good25 NEWS <good25_news@yahoo.com>
-To: "britishhighcommi111@gmail.com" <britishhighcommi111@gmail.com>
-Message-ID: <1771558146.784835.1638675400383@mail.yahoo.com>
-Subject: Fw: G
+ Sun,  5 Dec 2021 03:38:30 +0000 (UTC)
+Received: by mail-lj1-x233.google.com with SMTP id k23so14188522lje.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 04 Dec 2021 19:38:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=QarC29jPS4dy8I/WiAgw54rL6Oj73f5hXVCg2cu9dBA=;
+ b=dzr9VsJdHFu4jYQ71GAy5zIHLYHtMoUS5FC2epDx4EsJAr9r516nJbuEgbOKLrObWt
+ FWBcFNS/0OcTHXp0ZYsuVcISECfYXlNjfpDB/1DkOQ8wnnwWwiF5aGLHQYUjJE7+KRjr
+ S7ag6e6839meBMNlZLrZog46JMJBZrVf8MPhQgWaYDDHXSESQYUyPqWLScDNY/4QwOHN
+ 4PChOrYk6P2S/GjbqAidYF9PB0sTSgzSYO72/NUoqYXqbUejlGhNTuYwxN+Y/lMQ2+15
+ gMG9zVxCxcQv/HpYwKEfBJoDkw7WxCCIaHKOlqsqqWLFCesnt0xGytCDTJz6OX3LEqc8
+ GEfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=QarC29jPS4dy8I/WiAgw54rL6Oj73f5hXVCg2cu9dBA=;
+ b=GLrNEiRVbZlBzW2DhH15Ckh6/PRulTgtJ9N3ei9mFCwXpc7Axe+bzqEvdkRUkeQujf
+ h0sE0HIGsOCB+wa0HGpvWS0D7fFCZoY+0JjfHRMgi5cKYLrs45kYeNXhMR3SevothBCC
+ wyAXew0ZlUeMFY+7J/+UJ7igJ0A3ERjXjJneo8CosJ0qECTU9ak8O7n3GJLz7chQgTif
+ Zmk+xr1HFZJX21GSNFLWryNRHyyTws/zrfXmvvzPARag0Q2oYXrfc3YRVTGKM+q0poZv
+ 39AR7E0T7wsGaFZ+hKCwglFoorLti9i+F10arGo82RqXOYMwtW82K3IWtQyKlY9UvGtE
+ s7Xw==
+X-Gm-Message-State: AOAM533w0L+l3m6KhUW3p+CpwwmQU2xtX7uvuj3G9HlOptmGUoHmLRK5
+ l5JNVT0eM46pHyQf8FEUZdN6Pc/Fyi1pR0bbVkQ=
+X-Google-Smtp-Source: ABdhPJyOzHomhRg/PBQqICCi0XNoO/azxBlWeH25SnD2qqR3HOyw507HjIroMO89Pc+1om552/dX+5d6MT3b8aaxkvg=
+X-Received: by 2002:a05:651c:503:: with SMTP id
+ o3mr27249971ljp.249.1638675508355; 
+ Sat, 04 Dec 2021 19:38:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
- boundary="----=_Part_784834_229692268.1638675400383"
-References: <1771558146.784835.1638675400383.ref@mail.yahoo.com>
-X-Mailer: WebService/1.1.19306 YMailNorrin
+From: hi <royalnationalhospitalh@gmail.com>
+Date: Sun, 5 Dec 2021 09:08:16 +0530
+Message-ID: <CADBYqjNncYWNQrMw9rcSwdCXATCdqPOEcFJY=LAQZRU0FM6z6Q@mail.gmail.com>
+Subject: 6-0
+To: undisclosed-recipients:;
+Content-Type: multipart/mixed; boundary="00000000000093fef405d25ddfbe"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,28 +64,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_784834_229692268.1638675400383
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_784833_682258375.1638675400350"
+--00000000000093fef405d25ddfbe
+Content-Type: multipart/alternative; boundary="00000000000093fef105d25ddfbc"
 
-------=_Part_784833_682258375.1638675400350
-Content-Type: text/plain; charset=UTF-8
+--00000000000093fef105d25ddfbc
+Content-Type: text/plain; charset="UTF-8"
+
+
+
+--00000000000093fef105d25ddfbc
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr"><br></div>
+
+--00000000000093fef105d25ddfbc--
+
+--00000000000093fef405d25ddfbe
+Content-Type: text/plain; charset="Shift_JIS"; name="5.txt"
+Content-Disposition: attachment; filename="5.txt"
 Content-Transfer-Encoding: base64
-
-IArCoA==
-------=_Part_784833_682258375.1638675400350
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-<html><head></head><body><div class="ydp714b5541yahoo-style-wrap" style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;"><div></div>
-        <div><br></div><div>&nbsp;</div></div></body></html>
-------=_Part_784833_682258375.1638675400350--
-
-------=_Part_784834_229692268.1638675400383
-Content-Type: text/plain
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="f-.txt"
-Content-ID: <d8b9dbf6-c267-0366-6050-6ae367f4d216@yahoo.com>
+Content-ID: <f_kwsp1ny90>
+X-Attachment-Id: f_kwsp1ny90
 
 Y1NDQU1NRUQgVklDVElNUyAkNzUwLDAwMFVTRCBET0xMQVJTIEJFTkVGSUNJQVJZLiAgIGJyaXRp
 c2hoaWdoY29tbWkxMTFAZ21haWwuY29tDQpSRUYvUEFZTUVOVFMgQ09ERTogRUNJTkJELyAkNzUw
@@ -139,5 +123,4 @@ IGltbWVkaWF0ZWx5IHdpdGhvdXQgZGVsYXkgb3Igd2hhdCBzbyBldmVyLiBZb3UgYXJlIG5vdCB0
 byBkdXBsaWNhdGUgb3IgY29tbXVuaWNhdGUgd2l0aCBhbnkgb25lIGFib3V0IHRoaXM7IHdlIGFy
 ZSBpbiB0cmFjZSBvZiB0aGVzZSBob29kbHVtcy4NCllvdXJzIFRydWx5IEZyYW5jZXMgSG9vcGVy
 DQpCcml0aXNoIEhpZ2ggQ29tbWlzc2lvbiBOZXcgRGVsaGk=
-
-------=_Part_784834_229692268.1638675400383--
+--00000000000093fef405d25ddfbe--
