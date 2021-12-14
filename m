@@ -1,62 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 749DE471A64
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Dec 2021 14:25:42 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12E5547471A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Dec 2021 17:06:13 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 85C6B10EB42;
-	Sun, 12 Dec 2021 13:25:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8D33410E5AE;
+	Tue, 14 Dec 2021 16:06:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-x230.google.com (mail-lj1-x230.google.com
- [IPv6:2a00:1450:4864:20::230])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 216DC10EB42;
- Sun, 12 Dec 2021 13:25:39 +0000 (UTC)
-Received: by mail-lj1-x230.google.com with SMTP id u22so20115561lju.7;
- Sun, 12 Dec 2021 05:25:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:date:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ve598KfcQjMxrN8DF+2cp9+JVJ390WXc4dmmTe7HN5c=;
- b=WSF3+HDisDiQZ8snqo5VYAJMjQ6TsEhaBTf9cGpbPVJEhDcFlIqzko6Y9w4FOpfLPI
- a2IbhnUJP5wdzkMdJ6BuhWMjVf8QJ0dyJS0TpxAqke8i0kH7wqfNqE4scEBhI4ob3ub3
- y51OBOl5gYffizYK2frAmpWuSaSCizO9qv5UtWzLNKp3/YFTtWX1/r/P2UD2LyU6BwjG
- XEeqawPZiJDHhfIfXCeTA8reAJEEML2+TkibGcqqbv40GZiNeQbxP3GiHlsDpjzNE+xh
- 0lAm0kHB9huo8Kw3yb6w6ASRzqamGJl+l+iOsoo7mj++MuyL5rPhzNNBcXONb4eeaMmG
- qkdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:date:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ve598KfcQjMxrN8DF+2cp9+JVJ390WXc4dmmTe7HN5c=;
- b=HR1gq2N0JM7cRhiBPaku4spd5JVqWvmSVlk2gVv8EFtFM8SW63cefF6hSozvHdZ8D/
- RPQ84wu+yQdbBdA6RtEtMQQ56AJdQ2Z7eBDtNTsSZqx2z9gZ3QhVGlep3RYZTsVRfqJP
- 0//hHqu1CgAkuw3tgzTR1TgvounoBjTNg0gEGaRChqImIgND+TGXZwxBa/RdB4OZq6y2
- NrDemSlKPa2P9jwVQxgognJRHfPWHs80A2u8DkZIZ9Htx3TnPBp9zaAShBg4y5aesKIj
- k7qiq4CuTW6XwkF57aoXg3PyEncQZulLsQ1dKiz3t0l3tE6Q1u4utPLdMOb7sl6hqz2k
- d2aA==
-X-Gm-Message-State: AOAM532Pn9eH2dcvxGDvQDB9w+yzFy1gq7NXBkWumX7vQGdJmt10wDZW
- o0NEQPsqXzoQTagU3sryTu4=
-X-Google-Smtp-Source: ABdhPJxrAW+qcnMprjTjS7C6EU0UJV8c47Plc/QFwingZzCya+B1SR+noXjcPHs6Wxk/7N+p8qZ7cA==
-X-Received: by 2002:a2e:894e:: with SMTP id b14mr23592116ljk.216.1639315537349; 
- Sun, 12 Dec 2021 05:25:37 -0800 (PST)
-Received: from rikard (h-155-4-221-129.NA.cust.bahnhof.se. [155.4.221.129])
- by smtp.gmail.com with ESMTPSA id x23sm1061671ljm.36.2021.12.12.05.25.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Dec 2021 05:25:36 -0800 (PST)
-From: Rikard Falkeborn <rikard.falkeborn@gmail.com>
-X-Google-Original-From: Rikard Falkeborn <rikard.falkeborn>
-Date: Sun, 12 Dec 2021 14:25:33 +0100
-To: "Wang, Zhi A" <zhi.a.wang@intel.com>
-Subject: Re: [PATCH 0/9] drm/i915/gvt: Constify static structs
-Message-ID: <YbX4TYifpiUJ4txx@rikard>
-References: <20211204105527.15741-1-rikard.falkeborn@gmail.com>
- <d612055c-e433-4bd0-b819-82e866619b23@intel.com>
+X-Greylist: delayed 602 seconds by postgrey-1.36 at gabe;
+ Tue, 14 Dec 2021 16:06:09 UTC
+Received: from q0cv0iw.cn (er123e.asia [113.31.112.187])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DC34E10E599
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Dec 2021 16:06:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=key1; d=q0cv0iw.cn;
+ h=Message-ID:From:To:Subject:Date:MIME-Version:Content-Type; i=admin@q0cv0iw.cn;
+ bh=j6YTeU03DDK1ger56aoIExUCdWE=;
+ b=V8mRU3N7cETJ53d/RMKgS5pCKvfbggT4pxC5oxbbr9seACND7+MMTnaxCkiwChV/nG7JJwK2wIUb
+ xXtQGd7+Md1gQGO0Pevfk+TyUXx0qs1QKXVFPsOvfF9AqHomwrPtU8r8ux4exBoVu4gGJZBmd2gB
+ NVx3ZEO0n/TfiyfsUUW3RCYsUDm/U8zRNnoQ1VgWKDUeY05hQOlyiBsiuZ8unVjyKk0XUWu37j4a
+ wBeHN5dilvOGarBmbzE16hzRRLa4dV6whDYVVikjchl8wytd8XIWadHqzH4TPNRSNpKdqnN3NnMK
+ eecbv/bshmfHAfiStxbeXcANZwMYgCWQTOmdqw==
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=key1; d=q0cv0iw.cn;
+ b=uG5Rz4OBxmlUtSE43QXcA/AyxjNA6Yn6AC/DuPgV3GJcnvxKd+Y+bhalW/Pv4TM+Zxpakua+Eot6
+ HubSPxonn1uyqfkDKu+yUOikch/y8vI3J4fMYEIKVPpCtM3gUx48hJZDP1UkdQG4yLJY2HVbTQl1
+ R5aSi0DOLR/LcHRDEWq0RjnlZTfSgno4MhbFH3JZTnQQLLHNYocszWpM41GHmd2iJmXUE4VxrxGf
+ u8dTa8IpgyCrBLSshs7VypLg0S2kUu6jkNjHN4j69OA/zn1hbmd7aO1zs2OllDDEsjVesbZ9l8hm
+ 1PnIznPR30xrZA9r+R4S3OrlpIzOT4m9JU5RCQ==;
+Received: by mail.q0cv0iw.cn id hn30f20e97c4 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Dec 2021 23:56:04 +0800 (envelope-from <admin@q0cv0iw.cn>)
+Message-ID: <20211214235604251367@q0cv0iw.cn>
+From: =?utf-8?B?44Kk44Kq44Oz44Kr44O844OJ?= <admin@q0cv0iw.cn>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?utf-8?B?44CQQUVPTiBDQVJE44CR44GK5Y+W5byV44Gu44GU56K66KqN?=
+Date: Tue, 14 Dec 2021 23:55:50 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <d612055c-e433-4bd0-b819-82e866619b23@intel.com>
+Content-Type: multipart/alternative;
+ boundary="----=_NextPart_000_01C0_01D5F2A8.1358B9D0"
+X-mailer: Wkljizbw 5
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,59 +53,95 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- David Airlie <airlied@linux.ie>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rikard Falkeborn <rikard.falkeborn@gmail.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Dec 10, 2021 at 09:00:56AM +0000, Wang, Zhi A wrote:
-> On 12/4/2021 12:55 PM, Rikard Falkeborn wrote:
-> > Constify a number of static structs that are never modified to allow the
-> > compiler to put them in read-only memory. In order to do this, constify a
-> > number of local variables and pointers in structs.
-> >
-> > This is most important for structs that contain function pointers, and
-> > the patches for those structs are placed first in the series.
-> >
-> > Rikard Falkeborn (9):
-> >    drm/i915/gvt: Constify intel_gvt_gtt_pte_ops
-> >    drm/i915/gvt: Constify intel_gvt_gtt_pte_ops
-> >    drm/i915/gvt: Constify intel_gvt_irq_ops
-> >    drm/i915/gvt: Constify intel_gvt_sched_policy_ops
-> >    drm/i915/gvt: Constify gvt_mmio_block
-> >    drm/i915/gvt: Constify cmd_interrupt_events
-> >    drm/i915/gvt: Constify formats
-> >    drm/i915/gvt: Constify gtt_type_table_entry
-> >    drm/i915/gvt: Constify vgpu_types
-> >
-> >   drivers/gpu/drm/i915/gvt/cmd_parser.c   |  2 +-
-> >   drivers/gpu/drm/i915/gvt/fb_decoder.c   | 24 ++++-----
-> >   drivers/gpu/drm/i915/gvt/gtt.c          | 68 ++++++++++++-------------
-> >   drivers/gpu/drm/i915/gvt/gtt.h          |  4 +-
-> >   drivers/gpu/drm/i915/gvt/gvt.h          |  2 +-
-> >   drivers/gpu/drm/i915/gvt/handlers.c     | 12 ++---
-> >   drivers/gpu/drm/i915/gvt/interrupt.c    | 10 ++--
-> >   drivers/gpu/drm/i915/gvt/interrupt.h    |  2 +-
-> >   drivers/gpu/drm/i915/gvt/sched_policy.c |  2 +-
-> >   drivers/gpu/drm/i915/gvt/scheduler.h    |  2 +-
-> >   drivers/gpu/drm/i915/gvt/vgpu.c         |  4 +-
-> >   11 files changed, 66 insertions(+), 66 deletions(-)
-> >
-> Thanks so much for the contribuition. You only need to refine the PATCH 
-> 2 a little bit and re-send it.
-> 
+This is a multi-part message in MIME format.
 
-Thanks for reviewing. Just to clarify, did you mean patch 7 (since
-that's the one you commented on)? And is it enough to send just that
-patch or do you want the entire series resent?
+------=_NextPart_000_01C0_01D5F2A8.1358B9D0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
 
-Rikard
+QUVPTiBDQVJE44KS44GU5Yip55So44GE44Gf44Gg44GN44CB6Kqg44Gr44GC44KK44GM44Go44GG
+44GU44GW44GE44G+44GZ44CCDQrjgZPjga7jgZ/jgbPjgIHjgYrlrqLjgZXjgb7jga7jgYrlj5bl
+vJXjgavjgaTjgY3jgb7jgZfjgabjgIHnrKzkuInogIXjgavjgojjgovkuI3mraPkvb/nlKjjga7l
+j6/og73mgKfjgpLmpJznn6XjgZfjgZ/jgZ/jgoHCt+S4gOaZgueahOOBq+OBiuWPluW8leOCkuOB
+iuatouOCgeOBl+OBvuOBl+OBn+OAgg0K44GU5pys5Lq644GV44G+44Gu44GU5Yip55So44Gn44GC
+44Gj44Gf5aC05ZCI44Gv44CB5aSn5aSJ44GK5omL5pWw44KS44GK44GL44GR44GE44Gf44GX44G+
+44GZ44GM44CB5YaN5bqm44GU5Yip55So44KS44GK6aGY44CB55Sz44GX44GC44GS44G+44GZ44CC
+DQoo44Kk44Oz44K/44O844ON44OD5bqX6IiX44Gn44Gu44GU5Yip55So44Gu5aC05ZCI44Gv44CB
+44GK5Y+W5byV44Gu5oiQ56uL54q25rOB44KS44GU56K66KqN44Gu44GG44GI44CB5YaN5bqm44GU
+5Yip55So44KS44GK5Y6f44GE44Gf44GX44G+44GZ44CCKQ0K44CQ5Y+W5byV5bm05pyI5pelXToy
+MDIxLzEyLzE0DQrjgJDjgYrllY/lkIjjgZvnlarlj7ddOjUxMTAtOTM4Mi01OTc2LTE2MTANCuWI
+qeeUqOeiuuiqjeOBruOBiuaJi+e2muS4i+iomFVSTA0KaHR0cHM6Ly92OWw3YnVpLmNuP2Flb24v
+cG9pbnQvdG9raW1la2kvDQrjgojjgorjgqLjgq/jgrvjgrnjgZflrozkuobjgYTjgZ/jgaDjgY3j
+gb7jgZnjgojjgYbjgYrpoZjjgYTjgZ/jgZfjgb7jgZnjgIINCg0K44GU5pys5Lq644GV44G+44Gu
+44GU5Yip55So44Gn44Gq44GE5aC05ZCI44Gr44Gv44CB5LuK5b6M44CB5a6J5YWo44Gr44Kr44O8
+44OJ44KS44GU5Yip55So44GE44Gf44Gg44GP44Gf44KB44CB44Kr44O844OJ44Gu5beu5pu/wrfj
+gYjnrYnjgYrmiYvntprjgY3jgYzlv4XopoHjgajjgarjgorjgb7jgZnjgILjgYrmiYvmlbDjgafj
+gZnjgYzjgIHkuIvoqJgNCuOAkOacrOODoeODvOODq+WwgueUqOODgOOCpOODpOODq+OAkeOBuOOB
+iumbu+ipseOBj+OBoOOBleOBhOOBvuOBmeOCiOOBhuOBiumhmOOBhOOBn+OBl+OBvuOBmeOAgg0K
+DQrjgZTlv4PphY3jgajjgZTkuI3kvr/jgpLjgYrjgYvjgZHjgYTjgZ/jgZfjgb7jgZnjgYzjgIHk
+vZXljZLjgZTnkIbop6Pos5zjgorjgb7jgZnjgojjgYbjgYrpoZjjgYTnlLPjgZfjgYLjgZLjgb7j
+gZnjgIINCsK35LiN5q2j5Y+W5byV44Gu55uj6KaW5L2T5Yi244Gr44Gk44GE44GmDQooMSnlvIrn
+pL7jgafjga/jgYrlrqLjgZXjgb7jgYzniq/nvarjgavlt7vjgY3ovrzjgb7jgozjgarjgYTjgojj
+gYbjgIHjgYrlrqLjgZXjgb7jga7jgqvjg7zjg4njgavkuI3lr6njgarjgYrlj5blvJXjgYzjgarj
+gYTjgYsyNOaZgumWkzM2NeaXpeODouODi+OCv+ODquODs+OCsCjkuI3mraPkvb/nlKjjga7nm6Po
+ppYp44KS6KGM44Gj44Gm44GK44KK44G+44GZ44CCDQooMinjgYrlj5blvJXjga7nm6Poppbjgavj
+gojjgorkuI3mraPlj5blvJXjga7lgr7lkJHjgajlkIjoh7TjgZfjgZ/jgYrlj5blvJXjgpLkv53n
+lZnjga7jgYbjgYjjgIHmnKzjg6Hjg7zjg6vjgpLphY3kv6HjgZfjgabjgYrjgorjgb7jgZnjgIIN
+CigzKeW8iuekvuOBruOCq+ODvOODieS4jeato+S9v+eUqOOBq+WvvuOBmeOCi+WPlue1hOOBv+OB
+q+OBpOOBhOOBpuOBr+OAgeips+OBl+OBj+OBr+W8iuekvuODm+ODvOODoOODmuODvOOCuOOCkuOB
+lOimp+OBj+OBoOOBleOBhOOAgg0KIA==
+
+------=_NextPart_000_01C0_01D5F2A8.1358B9D0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
+Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
+bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxQPkFFT04gQ0FS
+ROOCkuOBlOWIqeeUqOOBhOOBn+OBoOOBjeOAgeiqoOOBq+OBguOCiuOBjOOBqOOBhuOBlOOBluOB
+hOOBvuOBmeOAgjwvUD4NCjxQPuOBk+OBruOBn+OBs+OAgeOBiuWuouOBleOBvuOBruOBiuWPluW8
+leOBq+OBpOOBjeOBvuOBl+OBpuOAgeesrOS4ieiAheOBq+OCiOOCi+S4jeato+S9v+eUqOOBruWP
+r+iDveaAp+OCkuaknOefpeOBl+OBn+OBn+OCgcK35LiA5pmC55qE44Gr44GK5Y+W5byV44KS44GK
+5q2i44KB44GX44G+44GX44Gf44CCPC9QPg0KPFA+44GU5pys5Lq644GV44G+44Gu44GU5Yip55So
+44Gn44GC44Gj44Gf5aC05ZCI44Gv44CB5aSn5aSJ44GK5omL5pWw44KS44GK44GL44GR44GE44Gf
+44GX44G+44GZ44GM44CB5YaN5bqm44GU5Yip55So44KS44GK6aGY44CB55Sz44GX44GC44GS44G+
+44GZ44CCPEJSPijjgqTjg7Pjgr/jg7zjg43jg4PlupfoiJfjgafjga7jgZTliKnnlKjjga7loLTl
+kIjjga/jgIHjgYrlj5blvJXjga7miJDnq4vnirbms4HjgpLjgZTnorroqo3jga7jgYbjgYjjgIHl
+ho3luqbjgZTliKnnlKjjgpLjgYrljp/jgYTjgZ/jgZfjgb7jgZnjgIIpPC9QPg0KPFA+44CQ5Y+W
+5byV5bm05pyI5pelXToyMDIxLzEyLzE0PEJSPuOAkOOBiuWVj+WQiOOBm+eVquWPt106NjcxMy02
+NDc1LTM1NjEtMDk3NjxCUj7liKnnlKjnorroqo3jga7jgYrmiYvntprkuIvoqJhVUkw8L1A+DQo8
+UD48QSANCmhyZWY9Imh0dHBzOi8vdjlsN2J1aS5jbj9hZW9uL3BvaW50L3Rva2ltZWtpLyI+aHR0
+cHM6Ly92OWw3YnVpLmNuP2Flb24vcG9pbnQvdG9raW1la2kvPC9BPjwvUD4NCjxQPuOCiOOCiuOC
+ouOCr+OCu+OCueOBl+WujOS6huOBhOOBn+OBoOOBjeOBvuOBmeOCiOOBhuOBiumhmOOBhOOBn+OB
+l+OBvuOBmeOAgjxCUj48L1A+DQo8UD7jgZTmnKzkurrjgZXjgb7jga7jgZTliKnnlKjjgafjgarj
+gYTloLTlkIjjgavjga/jgIHku4rlvozjgIHlronlhajjgavjgqvjg7zjg4njgpLjgZTliKnnlKjj
+gYTjgZ/jgaDjgY/jgZ/jgoHjgIHjgqvjg7zjg4njga7lt67mm7/Ct+OBiOetieOBiuaJi+e2muOB
+jeOBjOW/heimgeOBqOOBquOCiuOBvuOBmeOAguOBiuaJi+aVsOOBp+OBmeOBjOOAgeS4i+iomDxC
+Uj7jgJDmnKzjg6Hjg7zjg6vlsILnlKjjg4DjgqTjg6Tjg6vjgJHjgbjjgYrpm7voqbHjgY/jgaDj
+gZXjgYTjgb7jgZnjgojjgYbjgYrpoZjjgYTjgZ/jgZfjgb7jgZnjgII8L1A+DQo8UD48QlI+44GU
+5b+D6YWN44Go44GU5LiN5L6/44KS44GK44GL44GR44GE44Gf44GX44G+44GZ44GM44CB5L2V5Y2S
+44GU55CG6Kej6LOc44KK44G+44GZ44KI44GG44GK6aGY44GE55Sz44GX44GC44GS44G+44GZ44CC
+PC9QPg0KPFA+wrfkuI3mraPlj5blvJXjga7nm6PoppbkvZPliLbjgavjgaTjgYTjgaY8QlI+KDEp
+5byK56S+44Gn44Gv44GK5a6i44GV44G+44GM54qv572q44Gr5be744GN6L6844G+44KM44Gq44GE
+44KI44GG44CB44GK5a6i44GV44G+44Gu44Kr44O844OJ44Gr5LiN5a+p44Gq44GK5Y+W5byV44GM
+44Gq44GE44GLMjTmmYLplpMzNjXml6Xjg6Ljg4vjgr/jg6rjg7PjgrAo5LiN5q2j5L2/55So44Gu
+55uj6KaWKeOCkuihjOOBo+OBpuOBiuOCiuOBvuOBmeOAgjxCUj4oMinjgYrlj5blvJXjga7nm6Po
+ppbjgavjgojjgorkuI3mraPlj5blvJXjga7lgr7lkJHjgajlkIjoh7TjgZfjgZ/jgYrlj5blvJXj
+gpLkv53nlZnjga7jgYbjgYjjgIHmnKzjg6Hjg7zjg6vjgpLphY3kv6HjgZfjgabjgYrjgorjgb7j
+gZnjgII8QlI+KDMp5byK56S+44Gu44Kr44O844OJ5LiN5q2j5L2/55So44Gr5a++44GZ44KL5Y+W
+57WE44G/44Gr44Gk44GE44Gm44Gv44CB6Kmz44GX44GP44Gv5byK56S+44Ob44O844Og44Oa44O8
+44K444KS44GU6Kan44GP44Gg44GV44GE44CCPC9QPjxJTUcgDQpib3JkZXI9MCBoc3BhY2U9MCBh
+bHQ9IiIgDQpzcmM9Imh0dHA6Ly9zdGF0aXN0aWNhbC54bm5ydWcud29yay8/cD15b2RvYmFzaGks
+aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcsMzE4Niw3eWFzdXltemd2Z3FmdGZt
+cmtwdDZiOGhqY3Q4emg3cnB0MHFvaWFyZHNkYzVzcnN3aHlycmxubWtyMnprNnd5aTRqYzltenZ3
+aHd1ZG1sd3lkbXptMXU4eDR0enp2Y20zdmoiIA0KYWxpZ249YmFzZWxpbmU+IDwvQk9EWT48L0hU
+TUw+DQo=
+
+------=_NextPart_000_01C0_01D5F2A8.1358B9D0--
+
