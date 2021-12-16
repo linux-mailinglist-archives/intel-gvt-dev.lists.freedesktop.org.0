@@ -1,32 +1,57 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2D60474E82
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Dec 2021 00:22:44 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF6FE477093
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Dec 2021 12:42:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 55B6710E12B;
-	Tue, 14 Dec 2021 23:22:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4662110E90D;
+	Thu, 16 Dec 2021 11:42:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3E62210E12B;
- Tue, 14 Dec 2021 23:22:42 +0000 (UTC)
-Received: from User (unknown [197.184.173.15])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id 522192A0DA8;
- Wed, 15 Dec 2021 07:05:25 +0800 (CST)
-From: "Dr. Emmanuel Ibe Kachikwu (GMD)"<nnpcexecutorintrust2020@gmail.com>
-Subject: PROJECT:From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
- Abuja::
-Date: Wed, 15 Dec 2021 01:05:42 +0200
+Received: from mail-qt1-x831.google.com (mail-qt1-x831.google.com
+ [IPv6:2607:f8b0:4864:20::831])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A032C10E90D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 16 Dec 2021 11:42:29 +0000 (UTC)
+Received: by mail-qt1-x831.google.com with SMTP id n15so25162206qta.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 16 Dec 2021 03:42:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=xre5um49Rnqa1tZMCD58Cd6UlD4MleswKAp3tzt2gjo=;
+ b=XAiY5JQCbKhUV3kfV68NxknTY8076aQ+jZiIG+NNSnrj8SbWsLA5ZyVis9Hv7MDsX5
+ Wp1aJ8rEmDfQ1U3vhA+W5Q6fUW0sQxhqwaHiosPbQFbyYijHt4Icvm/T0vEK5/kKmBc+
+ QqELCOAj0es+5TzRQyWwGBhwQGehjbOewfhMN3/S4hQw7QoR6Y3+tDzh1TbUcqm1TT9t
+ NYT2/qpfB6ahTcpnyVYoBu/0br0EmuZ66fyA68h0ieuZcBkGcxPgfheRqd2GHCJMPyzP
+ 6QgpFUXd/uCVTtz1/hZUUGudKd9Q0ZImcSJeB1tjd8lIsCPvJkt1eKVnbTcB60Kk9v0/
+ CoRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=xre5um49Rnqa1tZMCD58Cd6UlD4MleswKAp3tzt2gjo=;
+ b=WeM2ZNLYIl3Te7nHx6NNif1vt5t/jQo/j2gg6mpq6S83eedPgEglwmE+C6uL8/aCj/
+ DAFtw2r3He0wUpm3dOomS/cSotrzqLcmy0UxFZNgeSEywpAUxLeB8H1uTDaaVTxcbyYM
+ rWuByvN7IB0u8WKG4zXwXkXPyUqGCfnFQ/73DSR9On2Ev809b8vjXKLMzvIGegJnWpNZ
+ FDMOJzUBJFeAsMAplZZkGrLn3drdGgsfGRKCBympZ4LWOeAnF0Qf3cJEgDUYkyYrS8wh
+ J1PGwfv1NNyGvYxPonmvCaRTnY/8fuOC8mZy7yszIwqX+DTUSbScSu7Kf6UvXZxS+/yZ
+ maDg==
+X-Gm-Message-State: AOAM532CD5TJ8Tov+2StnWhyyCqU5ivVrulTvSCXTz+XY74653anUQBO
+ GCf4Z5TqawA0ThG4KbJaByxdvZtRLI77l20cHGo=
+X-Google-Smtp-Source: ABdhPJxzAaV5DauAecsJzqBWmheSvDxk3ghiLfb6YRovClVg4kL4yUlGwYUFAnV+1q8jYrfo3AT6l8iJutzsg/2jTPA=
+X-Received: by 2002:a05:622a:1d4:: with SMTP id
+ t20mr16497208qtw.84.1639654948506; 
+ Thu, 16 Dec 2021 03:42:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Received: by 2002:a05:622a:199c:0:0:0:0 with HTTP; Thu, 16 Dec 2021 03:42:28
+ -0800 (PST)
+From: Selvia Santiago <mariamatinez119@gmail.com>
+Date: Thu, 16 Dec 2021 11:42:28 +0000
+Message-ID: <CAONDhKOtxcgjB1YEPd0RXNOVbbQ8k-9k32v_cdFxEKFzk62kJg@mail.gmail.com>
+Subject: Urgent
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,37 +64,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: nnpcnnpcontractor1994@contractor.net
+Reply-To: selviasantiago1@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20211214232243.55B6710E12B@gabe.freedesktop.org>
 
-Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
- 
-From: Dr. Emmanuel Ibe Kachikwu (GMD)
-Contract Ref No: NNPC/PED/1462/KADREF/92)                                                     
- 
-Attn: Ceo
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not meet before I got your information from your country chamber of commerce here in Nigeria.
- 
-My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
- 
-The contract has been successfully executed by the contractors and their contract sum have been paid to them, leaving us overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
- 
-We, as government officials, are not permitted to own or operate foreign bank account. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
- 
-Note that 50% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
- 
-The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
- 
-Awaiting your urgent response.
- 
-Best regards.
- 
-Dr. Emmanuel Ibe Kachikwu.
-The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
- 
+-- 
+Urgent
 
+I am Mrs. Selvia Santiago from Abidjan, Cote D'Ivoire, I am a widow
+suffering from long time illness (Cancer), there is funds I inherited
+from my late loving husband Mr. Santiago Carlos, the sum of (US$2.7
+Million Dollars) which he deposited in bank before his death, I need a
+honest and Faithful person that can use these funds for humanity work.
+
+I took this decision because I don't have any child that will inherit
+this money and I don't want a situation where this money will be used
+in an ungodly way. That is why I am taking this decision, and my
+doctor has confirmed to me that I have less than two weeks to live,
+having known my condition I decided to donate this fund to a charity
+or individual that will utilize this money to assist the poor and the
+needy in accordance to my instructions.
+
+I want you to use 70% of this funds for orphanages, school, church,
+widows, propagating the word and other humanity works,The remaining
+30% should be yours for your efforts as the new beneficiary.
+
+Please if you would be able to use these funds for humanity work
+kindly reply me. As soon as I have received your response, I will give
+you further directives on how you are to go about the claims of the
+said funds.
+
+Remain blessed.
+Mrs Selvia Santiago.
