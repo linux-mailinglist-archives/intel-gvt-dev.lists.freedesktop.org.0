@@ -1,41 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7E63478394
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Dec 2021 04:15:05 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A06A47849F
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Dec 2021 06:43:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B96F310E265;
-	Fri, 17 Dec 2021 03:15:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D490110E2FF;
+	Fri, 17 Dec 2021 05:43:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BD80C10E210
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BC23C10E2FF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Dec 2021 03:15:01 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10200"; a="238410706"
-X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; 
- d="asc'?scan'208";a="238410706"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Dec 2021 19:15:00 -0800
+ Fri, 17 Dec 2021 05:43:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1639719829; x=1671255829;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=rAFiYFlif6CrtbYJVEIXjzUExfcu5quKeIf8++GeNzw=;
+ b=H7no+E9RmA3A9KIoskhb8Yu5Pw44LfTXLC7ZP5ilHgFatRT4PpMsqER2
+ yGZTat4Srwlsps6+QSFGPZT0Ef8EdsFBMatPkVsz9ffNWwIJPq5HDYWaZ
+ XvWIwaTrxRiNVpMIanP6d2h3KG6dtz1MzdQop3fgMtTrzpfiuKPu3We3x
+ MLQN+A9RluypNwFP6Vi/1KT/d79M9wa9Vylhx5oIi4M7T4Iv8AZT1eUN+
+ gaoXJDih9nf4hp+E/vUnTrdVLv/O5Ow/ZeUAJAdJOo/9DMQ1o7LSZbQiy
+ aY9+dIy5xTgLoCsnigj97FM2E3vmui58lMmIFkeih0tMj0mAgv+And03M A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10200"; a="263857565"
+X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; d="scan'208";a="263857565"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Dec 2021 21:43:48 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; 
- d="asc'?scan'208";a="506600559"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.160.59])
- by orsmga007.jf.intel.com with ESMTP; 16 Dec 2021 19:14:59 -0800
-Date: Fri, 17 Dec 2021 10:47:39 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Zhi Wang <zhi.wang.linux@gmail.com>
-Subject: Re: [PATCH] i915/gvt: Stop tracking the pages of page table when
- failing to do shadow.
-Message-ID: <20211217024739.GF1856@zhen-hp.sh.intel.com>
-References: <20211216202900.1111-1-zhi.a.wang@intel.com>
+X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; d="scan'208";a="466380735"
+Received: from lkp-server02.sh.intel.com (HELO 9f38c0981d9f) ([10.239.97.151])
+ by orsmga006.jf.intel.com with ESMTP; 16 Dec 2021 21:43:46 -0800
+Received: from kbuild by 9f38c0981d9f with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1my61y-0004Gl-4s; Fri, 17 Dec 2021 05:43:46 +0000
+Date: Fri, 17 Dec 2021 13:43:09 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.a.wang@intel.com>
+Subject: [intel-gvt:gvt-next] BUILD SUCCESS
+ d7a8585430f2b6df5960bbc305edcec5a55180f3
+Message-ID: <61bc236d.29BoKsARLudHkgJX%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="hQiwHBbRI9kgIhsi"
-Content-Disposition: inline
-In-Reply-To: <20211216202900.1111-1-zhi.a.wang@intel.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,257 +59,171 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+tree/branch: https://github.com/intel/gvt-linux.git gvt-next
+branch HEAD: d7a8585430f2b6df5960bbc305edcec5a55180f3  drm/i915/gvt: Constify vgpu_types
 
---hQiwHBbRI9kgIhsi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+elapsed time: 893m
 
-On 2021.12.16 15:29:00 -0500, Zhi Wang wrote:
-> The PPGTT page table inside a VM will be tracked when created. When a
-> tracked page is modified, GVT-g will update the shadow page table
-> accordingly.
->=20
-> Sometimes, the guest will free a page belongs to a PPGTT page table, but
-> doesn't unbind the page from its upper level. So the page is still
+configs tested: 145
+configs skipped: 3
 
-That's bad, right? Is there real case the guest driver might do this?
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> tracked. Later that page might be allocated to other clients, which causes
-> a flood of garbage traps. As the page has been used for other purpose,
-> doing the shadow on this page will always fail, which causes the error
-> "guest page write error".
->=20
-> The patch will identify this case by counting the times of failure of
-> doing shadow on a tracked page. If the times of failure is larger than
-> 3, GVT-g will stop tracking the page and release the sub level of the
-> shadow pages accordingly.
->=20
-> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/gtt.c | 62 ++++++++++++++++++++++------------
->  drivers/gpu/drm/i915/gvt/gtt.h |  1 +
->  2 files changed, 41 insertions(+), 22 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
-t.c
-> index d7054bfb3e7d..fbfa5b8f1544 100644
-> --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> @@ -778,6 +778,21 @@ static void ppgtt_free_all_spt(struct intel_vgpu *vg=
-pu)
->  		ppgtt_free_spt(spt);
->  }
-> =20
-> +static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt, bool f=
-orce);
-> +
-> +static void ppgtt_handle_invalid_spt(struct intel_vgpu_ppgtt_spt *spt)
-> +{
-> +	if (spt->fail_cnt > 3) {
-> +		ppgtt_invalidate_spt(spt, true);
-> +	} else
-> +		spt->fail_cnt++;
-> +}
-> +
-> +static void ppgtt_set_spt_valid(struct intel_vgpu_ppgtt_spt *spt)
-> +{
-> +	spt->fail_cnt =3D 0;
-> +}
-> +
->  static int ppgtt_handle_guest_write_page_table_bytes(
->  		struct intel_vgpu_ppgtt_spt *spt,
->  		u64 pa, void *p_data, int bytes);
-> @@ -791,12 +806,18 @@ static int ppgtt_write_protection_handler(
->  	int ret;
-> =20
->  	if (bytes !=3D 4 && bytes !=3D 8)
-> -		return -EINVAL;
-> +		goto invalid_spt;
-> =20
->  	ret =3D ppgtt_handle_guest_write_page_table_bytes(spt, gpa, data, bytes=
-);
->  	if (ret)
-> -		return ret;
-> -	return ret;
-> +		goto invalid_spt;
-> +
-> +	ppgtt_set_spt_valid(spt);
-> +	return 0;
-> +
-> +invalid_spt:
-> +	ppgtt_handle_invalid_spt(spt);
-> +	return 0;
->  }
-> =20
->  /* Find a spt by guest gfn. */
-> @@ -941,10 +962,8 @@ static inline int ppgtt_put_spt(struct intel_vgpu_pp=
-gtt_spt *spt)
->  	return atomic_dec_return(&spt->refcount);
->  }
-> =20
-> -static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);
-> -
->  static int ppgtt_invalidate_spt_by_shadow_entry(struct intel_vgpu *vgpu,
-> -		struct intel_gvt_gtt_entry *e)
-> +		struct intel_gvt_gtt_entry *e, bool force)
->  {
->  	struct drm_i915_private *i915 =3D vgpu->gvt->gt->i915;
->  	const struct intel_gvt_gtt_pte_ops *ops =3D vgpu->gvt->gtt.pte_ops;
-> @@ -973,11 +992,11 @@ static int ppgtt_invalidate_spt_by_shadow_entry(str=
-uct intel_vgpu *vgpu,
->  	}
->  	s =3D intel_vgpu_find_spt_by_mfn(vgpu, ops->get_pfn(e));
->  	if (!s) {
-> -		gvt_vgpu_err("fail to find shadow page: mfn: 0x%lx\n",
-> +		gvt_dbg_mm("fail to find shadow page: mfn: 0x%lx\n",
->  				ops->get_pfn(e));
-> -		return -ENXIO;
-> +		return 0;
->  	}
-> -	return ppgtt_invalidate_spt(s);
-> +	return ppgtt_invalidate_spt(s, force);
->  }
-> =20
->  static inline void ppgtt_invalidate_pte(struct intel_vgpu_ppgtt_spt *spt,
-> @@ -998,9 +1017,8 @@ static inline void ppgtt_invalidate_pte(struct intel=
-_vgpu_ppgtt_spt *spt,
->  	intel_gvt_hypervisor_dma_unmap_guest_page(vgpu, pfn << PAGE_SHIFT);
->  }
-> =20
-> -static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt)
-> +static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt, bool f=
-orce)
->  {
-> -	struct intel_vgpu *vgpu =3D spt->vgpu;
->  	struct intel_gvt_gtt_entry e;
->  	unsigned long index;
->  	int ret;
-> @@ -1008,7 +1026,7 @@ static int ppgtt_invalidate_spt(struct intel_vgpu_p=
-pgtt_spt *spt)
->  	trace_spt_change(spt->vgpu->id, "die", spt,
->  			spt->guest_page.gfn, spt->shadow_page.type);
-> =20
-> -	if (ppgtt_put_spt(spt) > 0)
-> +	if (!force && ppgtt_put_spt(spt) > 0)
->  		return 0;
-> =20
->  	for_each_present_shadow_entry(spt, &e, index) {
-> @@ -1032,7 +1050,7 @@ static int ppgtt_invalidate_spt(struct intel_vgpu_p=
-pgtt_spt *spt)
->  		case GTT_TYPE_PPGTT_PDE_ENTRY:
->  			gvt_vdbg_mm("invalidate PMUL4/PDP/PDE entry\n");
->  			ret =3D ppgtt_invalidate_spt_by_shadow_entry(
-> -					spt->vgpu, &e);
-> +					spt->vgpu, &e, force);
->  			if (ret)
->  				goto fail;
->  			break;
-> @@ -1046,7 +1064,7 @@ static int ppgtt_invalidate_spt(struct intel_vgpu_p=
-pgtt_spt *spt)
->  	ppgtt_free_spt(spt);
->  	return 0;
->  fail:
-> -	gvt_vgpu_err("fail: shadow page %p shadow entry 0x%llx type %d\n",
-> +	gvt_dbg_mm("fail: shadow page %p shadow entry 0x%llx type %d\n",
->  			spt, e.val64, e.type);
->  	return ret;
->  }
-> @@ -1196,7 +1214,7 @@ static int split_2MB_gtt_entry(struct intel_vgpu *v=
-gpu,
->  		ret =3D intel_gvt_hypervisor_dma_map_guest_page(vgpu,
->  				start_gfn + sub_index, PAGE_SIZE, &dma_addr);
->  		if (ret) {
-> -			ppgtt_invalidate_spt(spt);
-> +			ppgtt_invalidate_spt(spt, false);
->  			return ret;
->  		}
->  		sub_se.val64 =3D se->val64;
-> @@ -1371,11 +1389,11 @@ static int ppgtt_handle_guest_entry_removal(struc=
-t intel_vgpu_ppgtt_spt *spt,
->  		struct intel_vgpu_ppgtt_spt *s =3D
->  			intel_vgpu_find_spt_by_mfn(vgpu, ops->get_pfn(se));
->  		if (!s) {
-> -			gvt_vgpu_err("fail to find guest page\n");
-> -			ret =3D -ENXIO;
-> +			gvt_dbg_mm("fail to find guest page\n");
-> +			ret =3D 0;
->  			goto fail;
->  		}
-> -		ret =3D ppgtt_invalidate_spt(s);
-> +		ret =3D ppgtt_invalidate_spt(s, false);
->  		if (ret)
->  			goto fail;
->  	} else {
-> @@ -1387,7 +1405,7 @@ static int ppgtt_handle_guest_entry_removal(struct =
-intel_vgpu_ppgtt_spt *spt,
-> =20
->  	return 0;
->  fail:
-> -	gvt_vgpu_err("fail: shadow page %p guest entry 0x%llx type %d\n",
-> +	gvt_dbg_mm("fail: shadow page %p guest entry 0x%llx type %d\n",
->  			spt, se->val64, se->type);
->  	return ret;
->  }
-> @@ -1422,7 +1440,7 @@ static int ppgtt_handle_guest_entry_add(struct inte=
-l_vgpu_ppgtt_spt *spt,
->  	}
->  	return 0;
->  fail:
-> -	gvt_vgpu_err("fail: spt %p guest entry 0x%llx type %d\n",
-> +	gvt_dbg_mm("fail: spt %p guest entry 0x%llx type %d\n",
->  		spt, we->val64, we->type);
->  	return ret;
->  }
-> @@ -1653,7 +1671,7 @@ static int ppgtt_handle_guest_write_page_table(
-> =20
->  	return 0;
->  fail:
-> -	gvt_vgpu_err("fail: shadow page %p guest entry 0x%llx type %d.\n",
-> +	gvt_dbg_mm("fail: shadow page %p guest entry 0x%llx type %d.\n",
->  			spt, we->val64, we->type);
->  	return ret;
->  }
-> @@ -1798,7 +1816,7 @@ static void invalidate_ppgtt_mm(struct intel_vgpu_m=
-m *mm)
->  		if (!ops->test_present(&se))
->  			continue;
-> =20
-> -		ppgtt_invalidate_spt_by_shadow_entry(vgpu, &se);
-> +		ppgtt_invalidate_spt_by_shadow_entry(vgpu, &se, false);
->  		se.val64 =3D 0;
->  		ppgtt_set_shadow_root_entry(mm, &se, index);
-> =20
-> diff --git a/drivers/gpu/drm/i915/gvt/gtt.h b/drivers/gpu/drm/i915/gvt/gt=
-t.h
-> index a3b0f59ec8bd..8b02ff5d9651 100644
-> --- a/drivers/gpu/drm/i915/gvt/gtt.h
-> +++ b/drivers/gpu/drm/i915/gvt/gtt.h
-> @@ -263,6 +263,7 @@ struct intel_vgpu_ppgtt_spt {
->  	} guest_page;
-> =20
->  	DECLARE_BITMAP(post_shadow_bitmap, GTT_ENTRY_NUM_IN_ONE_PAGE);
-> +	unsigned long fail_cnt;
->  	struct list_head post_shadow_list;
->  };
-> =20
-> --=20
-> 2.17.1
->=20
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20211216
+m68k                       m5475evb_defconfig
+sh                           se7712_defconfig
+arm                         lubbock_defconfig
+arm                        magician_defconfig
+arm                         s3c2410_defconfig
+ia64                            zx1_defconfig
+arm                      tct_hammer_defconfig
+powerpc                      katmai_defconfig
+sh                            migor_defconfig
+sh                           se7724_defconfig
+m68k                       m5208evb_defconfig
+sparc                               defconfig
+mips                        vocore2_defconfig
+sh                   rts7751r2dplus_defconfig
+powerpc                 xes_mpc85xx_defconfig
+arm                            pleb_defconfig
+mips                         mpc30x_defconfig
+powerpc                   currituck_defconfig
+mips                     loongson1b_defconfig
+m68k                          atari_defconfig
+h8300                    h8300h-sim_defconfig
+sh                        dreamcast_defconfig
+arm                           sunxi_defconfig
+powerpc                      walnut_defconfig
+powerpc                     rainier_defconfig
+sh                            hp6xx_defconfig
+powerpc                      pmac32_defconfig
+sh                           se7722_defconfig
+mips                           mtx1_defconfig
+csky                                defconfig
+arm                        mvebu_v7_defconfig
+sparc                       sparc32_defconfig
+powerpc                 mpc836x_mds_defconfig
+arm                           sama5_defconfig
+riscv                            alldefconfig
+mips                malta_qemu_32r6_defconfig
+arm                          ixp4xx_defconfig
+arm                        oxnas_v6_defconfig
+parisc                generic-32bit_defconfig
+arm                       omap2plus_defconfig
+arm                           u8500_defconfig
+m68k                         amcore_defconfig
+arm                      integrator_defconfig
+arm                         at91_dt_defconfig
+sh                        sh7763rdp_defconfig
+powerpc                      bamboo_defconfig
+powerpc                      ppc64e_defconfig
+xtensa                  audio_kc705_defconfig
+arm                         lpc32xx_defconfig
+powerpc                 mpc832x_mds_defconfig
+arm                        vexpress_defconfig
+s390                       zfcpdump_defconfig
+arm                       imx_v4_v5_defconfig
+arm                        mvebu_v5_defconfig
+sparc64                             defconfig
+mips                           ip32_defconfig
+mips                            e55_defconfig
+arm                     davinci_all_defconfig
+powerpc                       ebony_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                        edosk7705_defconfig
+powerpc                    adder875_defconfig
+arm                  randconfig-c002-20211216
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20211216
+x86_64               randconfig-a005-20211216
+x86_64               randconfig-a001-20211216
+x86_64               randconfig-a002-20211216
+x86_64               randconfig-a003-20211216
+x86_64               randconfig-a004-20211216
+i386                 randconfig-a001-20211216
+i386                 randconfig-a002-20211216
+i386                 randconfig-a005-20211216
+i386                 randconfig-a003-20211216
+i386                 randconfig-a006-20211216
+i386                 randconfig-a004-20211216
+i386                 randconfig-a013-20211217
+i386                 randconfig-a011-20211217
+i386                 randconfig-a016-20211217
+i386                 randconfig-a014-20211217
+i386                 randconfig-a015-20211217
+i386                 randconfig-a012-20211217
+arc                  randconfig-r043-20211216
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
 
---hQiwHBbRI9kgIhsi
-Content-Type: application/pgp-signature; name="signature.asc"
+clang tested configs:
+x86_64               randconfig-a011-20211216
+x86_64               randconfig-a014-20211216
+x86_64               randconfig-a012-20211216
+x86_64               randconfig-a013-20211216
+x86_64               randconfig-a016-20211216
+x86_64               randconfig-a015-20211216
+hexagon              randconfig-r045-20211216
+s390                 randconfig-r044-20211216
+riscv                randconfig-r042-20211216
+hexagon              randconfig-r041-20211216
 
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYbv6SwAKCRCxBBozTXgY
-J2/MAJ0SzScDc2UEeZ7yb5RBx20drt7Y+gCfXMgZVsPA9wShdu4HS9CooPjuZYE=
-=aVKb
------END PGP SIGNATURE-----
-
---hQiwHBbRI9kgIhsi--
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
