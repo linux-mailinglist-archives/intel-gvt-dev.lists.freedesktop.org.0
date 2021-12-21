@@ -1,55 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81FA447B90D
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Dec 2021 04:37:48 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE92B47C10F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Dec 2021 14:55:17 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EE2BF10E18F;
-	Tue, 21 Dec 2021 03:37:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7F8BF1136EF;
+	Tue, 21 Dec 2021 13:55:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-x22c.google.com (mail-lj1-x22c.google.com
- [IPv6:2a00:1450:4864:20::22c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9776610E1C0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Dec 2021 03:37:45 +0000 (UTC)
-Received: by mail-lj1-x22c.google.com with SMTP id m12so19200112ljj.6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Dec 2021 19:37:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=dvYMyLplijb9aWbUA9RvLPSyTQJCKNVwcpj7Ix1s9sM=;
- b=h9S4o0oJzPRWYIMcvkGe5q5YEJeE8bSFRvBAHqU8+LD0g0HJdE2S19wmSeeF2hDnHa
- o8Z4m3/BBc8hCF1Y1yIMNvrkOaaKSUcIkGz/yecxqSXFC8fOvDK/FGHXYpQ1Viy76NQE
- Uu/PO0QmEoXqY+o3yzCwzhoHMatuc8K2JTZURpm/wDogY4Vr1MhRrfip05uOk9pgiGfu
- oEdUqwhZf1ytnb06QG6S85i93exGPFFwHFruPiYeFbjPv+GbPoj97nDfZZEA4Rkz18G4
- 4nftxaH9IQ04kBRWVWGqc5TDnE2E9hyMXNXGyqoJKtf72RJNSnt8oeae3TPIxUlO8rOj
- DzEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=dvYMyLplijb9aWbUA9RvLPSyTQJCKNVwcpj7Ix1s9sM=;
- b=STW+E/TAmV602FY9BUMzFGI4zw+gd6dOyUCdE5Nkm2YzPeFXScSHC+gSqPwTdr6gvN
- RqEokha8/Y58P3aUwmVaFoMkgMYrJkQCkwLutP6V/pTgYVEpKI2hCAmBwNQi1VB7ZUMh
- DlNunC98LLAYDKz+182LWsL7DYd2Q+GldqXcNHnrXz8d6JcLMHU9QLdlbmd9vXLrVXcN
- NFCI4Y+w09x2Vd4u8CUcQlQ2n8kQUcFgWoscuZWWiZdayBrhInCTGjrVBIkCW+UA4Voo
- g5eDbVVpUQRiaOPrMhK9QSO7oyM8dtYl8ilTRxvBoXuh0t4kuZqJ63vyqOCsHgmD9y4G
- IrWA==
-X-Gm-Message-State: AOAM533n4DlsgCKzktEBzY88vpN62T663mbEfmeGpHHZAlKd5eDiuTM7
- 54DlRDBn8ncjRngpYqIFZ69HL7yyAs/wviMgKrc=
-X-Google-Smtp-Source: ABdhPJwEwwWD4aTAcwX0Ll7mANzovl9uAb6uENdhWbJ4TW2akvIfWeVIqkON/Hs3ezzTlkVUSHMmgLkCOdEKdW+WauA=
-X-Received: by 2002:a05:651c:205:: with SMTP id
- y5mr977941ljn.386.1640057863747; 
- Mon, 20 Dec 2021 19:37:43 -0800 (PST)
+Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 918EE1136ED;
+ Tue, 21 Dec 2021 13:55:14 +0000 (UTC)
+Received: from User (unknown [197.185.103.157])
+ by mail.service-fujitsu.com (Postfix) with ESMTPA id 9F51B2A0F0D;
+ Tue, 21 Dec 2021 20:42:55 +0800 (CST)
+From: "Nigerian National Petroleum Corporation
+ (NNPC)"<nnpcexecutorintrust2020@gmail.com>
+Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
+ Abuja
+Date: Tue, 21 Dec 2021 14:43:19 +0200
 MIME-Version: 1.0
-From: "Rochelle P. Walensky" <monpessoissa@gmail.com>
-Date: Tue, 21 Dec 2021 03:37:04 +0000
-Message-ID: <CAAjEgqOsy-EvWFh3RPdcTA+wZRnDUON2Jw8xOVQvJZEDyuaU2Q@mail.gmail.com>
-Subject: RE
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000613f7505d39fba04"
+Content-Type: text/plain;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,56 +40,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: paula19692021@outlook.com
+Reply-To: nnpcnnpcontractor1994@contractor.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20211221135516.7F8BF1136EF@gabe.freedesktop.org>
 
---000000000000613f7505d39fba04
-Content-Type: text/plain; charset="UTF-8"
+Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
+ 
+From: Dr. Emmanuel Ibe Kachikwu (GMD)
+Contract Ref No: NNPC/PED/1462/KADREF/92)      
+                        
+Attn: Ceo,
+ 
+I know that this proposal may come to you as a surprise especially having to come from someone you have not met before. I got your information from your country's chamber of commerce here in Nigeria.
+ 
+My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
+ 
+I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
+ 
+The contract has been successfully executed by the contractors and their contract sum has been paid to them, leaving us an overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
+ 
+We, as government officials, are not permitted to own or operate foreign bank accounts. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
+ 
+Note that 50% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
+ 
+The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
+ 
+ 
+Awaiting your urgent response.
+ 
+Best regards.
 
- hello
+Dr. Emmanuel Ibe Kachikwu.
+The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
+ 
+This email and any attachments to it may be confidential and are intended solely for the use of the individual to whom it is addressed. Any views or opinions expressed are solely those of the author and do not necessarily represent those of Masterpage®. If you are not the intended recipient of this email, you must neither take any action based upon its contents, nor copy or show it to anyone. Please contact the sender if you believe you have received this email in error.
 
-I am so sorry for contacting you through this means, this message may come
-to your spam folder or junk due to bad network or distance
-
-My name is paula,i am from Saudi Arabia,
-I have been diagnosed with Esophageal cancer, It has defied all forms of
-medical treatment, and
-Right now, I have only few months to live and I want you to
-use this Money(Saudi riyal 20,000.000.00 million twenty million Which is
-about 5 million pounds) to charities home as my promise to Allah, i have my
-only daughter which i will like you to take care of as their father died
-when she was young and my late husbands brothers may kill her, they have
-sold my gold company and my late husbands oil companies due to my sickness
-i am given you 40% for you and your family. I will give you more details on
-how to get the money.
-remember Allah is the giver of wealth
-Our Allah, give us in this world [that which is] good and in the Hereafter
-[that which is] good and protect us from the punishment of the Fire.(
-Al-Baqarah -201)
-yours truly
-
-Miss paula Mohammed
-
---000000000000613f7505d39fba04
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">=C2=A0hello <br><br>I am so sorry for contacting you throu=
-gh this means, this message may come to your spam folder or junk due to bad=
- network or distance<br>=C2=A0<br>My name is paula,i am from Saudi Arabia,<=
-br>I have been diagnosed with Esophageal cancer, It has defied all forms of=
- medical treatment, and<br>Right now, I have only few months to live and I =
-want you to<br>use this Money(Saudi riyal 20,000.000.00 million twenty mill=
-ion Which is about 5 million pounds) to charities home as my promise to All=
-ah, i have my only daughter which i will like you to take care of as their =
-father died when she was young and my late husbands brothers may kill her, =
-they have sold my gold company and my late husbands oil companies due to my=
- sickness<br>i am given you 40% for you and your family. I will give you mo=
-re details on how to get the money.<br>remember Allah is the giver of wealt=
-h<br>Our Allah, give us in this world [that which is] good and in the Herea=
-fter [that which is] good and protect us from the punishment of the Fire.( =
-Al-Baqarah -201)<br>yours truly<br><br>Miss paula Mohammed=C2=A0 =C2=A0=C2=
-=A0<br></div>
-
---000000000000613f7505d39fba04--
