@@ -2,35 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6780447CBAD
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Dec 2021 04:21:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B11B47CDB9
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Dec 2021 08:55:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ED3FD8825B;
-	Wed, 22 Dec 2021 03:21:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 111E01123BE;
+	Wed, 22 Dec 2021 07:55:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1087 seconds by postgrey-1.36 at gabe;
- Wed, 22 Dec 2021 03:21:31 UTC
-Received: from smtpbbmailout.smartone.com (smtpbbmailout.smartone.com
- [202.140.76.164])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 73EC610E339;
- Wed, 22 Dec 2021 03:21:31 +0000 (UTC)
-Received: from User (m121-203-234-214.smartone.com [121.203.234.214] (may be
- forged))
- by smtpbbmailout.smartone.com (8.14.4/8.14.4) with SMTP id 1BM32d6j028772;
- Wed, 22 Dec 2021 11:02:43 +0800
-Message-Id: <202112220302.1BM32d6j028772@smtpbbmailout.smartone.com>
-From: "Kristalina Georgieva"<kristalina483@imf-usa.com>
-Subject: Very Important and Urgent.
-Date: Tue, 21 Dec 2021 22:03:02 -0500
+X-Greylist: delayed 517 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Dec 2021 07:55:48 UTC
+Received: from mail.thebizzie.pl (mail.thebizzie.pl [192.236.147.111])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 103F31123BE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 22 Dec 2021 07:55:48 +0000 (UTC)
+Received: by mail.thebizzie.pl (Postfix, from userid 1002)
+ id 09EF6181A8E; Wed, 22 Dec 2021 07:45:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=thebizzie.pl; s=mail;
+ t=1640159230; bh=kU+//Lu71IqgcFfjayWXuIc0mZtoyrYJc2YuqyU8eS8=;
+ h=Date:From:To:Subject:From;
+ b=S3bImxeuWvbAb+OeWaHWhxv4glOkDHReWYWyGpGJ56wKTBcVN149MCDeF7NP7hikj
+ 9CVrLbyoPcMtqKT6xI7KNKgHgdetvt5OqqbdyXMu1HYeVB/bH59qxusvfbAdcPIZ/l
+ MMHIfaIs4pNkxZph/rbr6shdLfAqNi7rEk5CuXCbnjVgWXsbnWRY/LyXESM5eQzeQO
+ 1vgnfqwb3A70N56uaMFHhfQ++a7bzEyLCIxkZowScH1CpMgKRgNBRvzvr+7nt08ZWS
+ gIPlgeR5Pa0RGvEEKVrNMhFz9fGXdPPVdVfvTluPgXaW876HagnGvG3PhYQyHZtHHz
+ b0caGRTR39PoQ==
+Received: by mail.thebizzie.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 22 Dec 2021 07:45:38 GMT
+Message-ID: <20211222074500-0.1.d.puz.0.arl3nx1cef@thebizzie.pl>
+Date: Wed, 22 Dec 2021 07:45:38 GMT
+From: "Mateusz Adamczyk" <mateusz.adamczyk@thebizzie.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Wycena paneli fotowoltaicznych
+X-Mailer: mail.thebizzie.pl
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,29 +49,20 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mkg10102@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Attn: Beneficiary
-This is to intimate you of a very important information which will be of a great help to redeem you from all the difficulties you have been experiencing in getting your long overdue payment due to excessive demand for money from you by both corrupt Bank officials and Courier Companies after which your fund remain unpaid to you.
+Dzie=C5=84 dobry,
 
-I am Mrs.Kristalina Georgieva, Managing Director (MD) of the International Monetary Fund (IMF). It may interest you to know that reports have reached our office by so many correspondences on the uneasy way which people like you are treated by various Banks and Courier Companies Diplomat(s) across Europe to Africa and Asia London UK, and we have decided to put a stop to that and that is why I was appointed to handle your transaction here in Washington, DC 20431, USA.
-I am delighted to inform you that the contract/Inheritance Lottery  panel of the UN/COVID19 Awarded Payment has been approved.All Governmental and Non-Governmental prostates, NGO's, Finance Companies, Banks, Security Companies and Diplomat(s) which have been
-in contact with you of late have been instructed to back off from your transaction and you have been advised NOT to respond to them anymore since the  International Monetary Fund (I.M.F) Head Office is now directly in charge of your Contract Sum, Lottery/Inheritance payment US$15.500.000.00 (fifteen  Million five  hundred thousand United State Dollars)
-You are hereby advised NOT to remit further payment to any institutions with respect to your transaction as your fund will be transferred to you directly from our source. I hope this is clear. Any action contrary to this instruction is at your own risk.
-In order for us to proceed you /must get back to us with the below requested information:
-Your Full Name:
-Your Address:
-Your Age:
-Your Direct Phone Numbers:
-Your Profession:
-And we shall give you further details on how your fund will be released to you.
-Regards,
-Mrs.Kristalina Georgieva
-Managing Director (MD)
-Communications Department, IMF.
-Cc: Gerry Rice, Director,
-Chief Economist
-Cc: Gita Gopinath
-Managing Director (IMF)
+dostrzegam mo=C5=BCliwo=C5=9B=C4=87 wsp=C3=B3=C5=82pracy z Pa=C5=84stwa f=
+irm=C4=85.
+
+=C5=9Awiadczymy kompleksow=C4=85 obs=C5=82ug=C4=99 inwestycji w fotowolta=
+ik=C4=99, kt=C3=B3ra obni=C5=BCa koszty energii elektrycznej nawet o 90%.
+
+Czy s=C4=85 Pa=C5=84stwo zainteresowani weryfikacj=C4=85 wst=C4=99pnych p=
+ropozycji?
+
+
+Pozdrawiam,
+Mateusz Adamczyk
