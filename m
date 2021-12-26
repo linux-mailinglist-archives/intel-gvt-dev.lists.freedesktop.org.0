@@ -1,57 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 181D847EDCF
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Dec 2021 10:34:24 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66FF447F66A
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 26 Dec 2021 11:30:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B8B7D10E450;
-	Fri, 24 Dec 2021 09:34:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 88FC410E696;
+	Sun, 26 Dec 2021 10:30:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qt1-x844.google.com (mail-qt1-x844.google.com
- [IPv6:2607:f8b0:4864:20::844])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 13DE010E450
+X-Greylist: delayed 1810 seconds by postgrey-1.36 at gabe;
+ Sun, 26 Dec 2021 10:30:13 UTC
+Received: from slot0.jllresort.com (slot0.jllresort.com [62.197.136.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B881F10E698
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 Dec 2021 09:34:21 +0000 (UTC)
-Received: by mail-qt1-x844.google.com with SMTP id j17so7246242qtx.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 Dec 2021 01:34:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=DA2RfWm5BfTc8dY4tRUxJejPvziWb2AgHmDwtjqgqi8=;
- b=WWOS4I1kQWPrPYpKqYqjmjMYNEXIvJqSn31pNPwldp0k1Yqnh4hdoFqKLl4w5dW0Xd
- c+3vFwk6hJBrQJLFC1hrcsWvY6kurawgYaTerSyrNTPeJ+5gtUna8tD2c0c0bPuTtxB8
- gInu1NvHm1iEndYfoi8sO508gxgxsCRKGPTVM8m1tuCtOFR42d6jwJJoij2PbtqI0JSk
- dqYPXBrwXEBNwkwZ7nlkISR+Sps9OIUKwXCf6k5ftsvn6gI/27ePQj4mWOmwC7jsRhqy
- 9w5rukVlLnwkCIQ/CjE7Wg9SdhryJEvGFR2UleCqMSF/hnW2g70A22hH6TrHLMmGFyKq
- Yxng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=DA2RfWm5BfTc8dY4tRUxJejPvziWb2AgHmDwtjqgqi8=;
- b=tlawUGt3Ub1C/5zedmz7B7TBt62/L2hDy8P1nCLjVWjJe/yPNuifmwyioXhOiZc0k9
- jDgpRsmJQSjMmQPb1R/6f4/KCDj7u279Xxp/ziBBYcLLn5Xx3fQgunRYfuKaPwVr7E8h
- rSCYNUHueW/j7Anr+lFPf5lisBvLwe1sBlW1Tfq4D6G2DOAmyPv175bQ3Tc2Df07KMQq
- E61MR/00h+Hae+jDDRTg4uvbtBS0BjJdef9Vi4sFUz54ZGO2RLXmby/o2XbtA5lprnmP
- DgOMy8wCFufMzx59rdSk9pe8N/YMq9+VAfBEi4yAeUiZEVms0m36GAu2KjcjzfW4s4gc
- yrXQ==
-X-Gm-Message-State: AOAM532X4DFNzysYQE9BOYqCho24+GWz0qm1xECenaoqyyCFc4MUX1GK
- Y2sVZOOjGfhD8f4606ew6Os6IWvOyt8aB2sNA8A=
-X-Google-Smtp-Source: ABdhPJyzu/mNoW+oVMfgamSqQA+JrOJ1qGhSfbNzvJZj91GGQKJYxCbOzk+wvmuu0+LTNdkl0THRFujOs67KCh6yaqg=
-X-Received: by 2002:a05:622a:1306:: with SMTP id
- v6mr4984992qtk.115.1640338460156; 
- Fri, 24 Dec 2021 01:34:20 -0800 (PST)
+ Sun, 26 Dec 2021 10:30:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jllresort.com;
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=ele.mon@jllresort.com; bh=+EuiuR1rW5NdOV3hym3U6Ie66zI=;
+ b=hwzhjll+J9RtrtYZYhjAgKmKHTUIrJGSu6GTuRQq1+ITg1Zc2oiIZhbf5yPApbsMumXMxCWNaYZA
+ 7UYMRve+mHfn+nq577mC3pDwlzsubI3ogGucfvdVwzAHtinJRt5OHxXwz+SQvHgexHnPVTdvbP9E
+ qIykBk7XRJSWAsQeWvxbBumJT4l5NfrmJ6puy1jTFSnRDcuaMGiDw2jFrMXFPyMUW852g7xeSv0Z
+ nedUUmibyNMURqUONY9EhIqB0ht92SGZXNctUAYiLZmKHrpSFouTTBBE5nN8G6WX5bm7LhucyXBB
+ pbZCDj5ckzvGx7uDOwH4JcNVD1W/v5F/jc1Sgg==
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jllresort.com;
+ b=rzZwGKcgT7/PndAyx2RZbqpL79NyQ8yFIuK6zrTlTL672u7exVD6gnWk59td/1rtDKS3Q9eYGsUN
+ tUSnJ00t3hRFXSWnMQHxaXll8iKrXXKATOsw7Admco2BY4Mtz8iVGcx+1kbO3o7Ep/37BOFXKOfn
+ r2qwNlhzmXgRFzNKqBL+YWOM8Cwnheite5LcL1t5onM5k5SxXaOaQPV4lLGnab2DaUmr3Q7KixtX
+ Z4VJdIKTkFCcpHdHNBUUJKnZmFcqiX0XGz6MhYvDVdlv86IlmkF4cKFbsrsVnysCR04EMK08qEwe
+ HPciLzxxrvCAZvgZmNA84nnT6LhUWFpHxzWm4g==;
+From: ele.mon@jllresort.com
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Happy Weekend:
+Date: 26 Dec 2021 10:29:29 +0100
+Message-ID: <20211226102855.0DD59534B972C20F@jllresort.com>
 MIME-Version: 1.0
-Received: by 2002:ad4:5c62:0:0:0:0:0 with HTTP; Fri, 24 Dec 2021 01:34:19
- -0800 (PST)
-From: MISS WILLIAMS <info.turvateealfastar@gmail.com>
-Date: Fri, 24 Dec 2021 01:34:19 -0800
-Message-ID: <CAM-qQYaGkiPY50kYX4q1pW-rLDs0SD-+GZdj0uj5_y2kVbf21w@mail.gmail.com>
-Subject: Greetings Dearest One,
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,64 +50,16 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: williamsreneta2019@gmail.com
+Reply-To: mustafa.ayvaz@ayvazburosu.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Greetings Dearest One,
+Greetings to you intel-gvt-dev,
 
-How are you today, together with your family?Hope fine.I would like to
-use this opportunity to introduce myself to you. I am Miss Reneta
-Williams, From Benin Republic, West Africa. And my late parents are
-Mr. and Mrs. Dikko Williams; my father was a highly reputable business
-magnet who operated in Benin Republic during his days.
+I was wondering if you got my previous email? I have been trying=20
+to reach you by email intel-gvt-dev@lists.freedesktop.org, kindly=20
+get back to me swiftly, it is very important and urgent.
 
-I am writing this mail to you with tears and sorrow from my heart.
-With due respect trust and humanity, I know this mail will come to you
-as a surprise since we haven't known or come across each other before,
-considering the fact that I sourced your email contact through the
-Internet in search of trusted person who can be trusted and will
-assist me.
-
-It is sad to say that he passed away mysteriously in France during one
-of his business trips abroad. Though his sudden death was linked or
-rather suspected to have been masterminded by an uncle of his who
-traveled with him at that time. But God knows the truth! My mother
-died when I was just 6yrs old, and since then my father took me so
-special.
-
-Before his death, he called me and informed me that he has the sum of
-Eighteen Million Five Hundred , United State Dollar
-(USD$18.500,000.00) left in fixed deposit account in one of the
-leading banks in Africa. He further told me that he deposited the
-money in my name, and also gave me all the necessary but legal
-documents to this fund with the bank.
-
-I am 21 years old and a university undergraduate and really don't know
-what to do. Now I want an account overseas where I can transfer this
-funds and after the transaction I will come and reside permanently in
-your country till such a time that it will be convenient for me to
-return back home if I so desire.
-
-The death of my father actually brought sorrow to my life. I also want
-to invest the fund under your care because I am ignorant of business
-world. I am in a sincere desire of your humble assistance in this
-regards. Your suggestions and ideas will be highly regarded.
-
-Now permit me to ask these few questions:
-
-1. Can you honestly help me from your heart?
-
-2. Can I completely trust you?
-
-3. What percentage of the total amount in question will be good for
-you after the money is in your account?
-
-Please, consider this and get back to me as soon as
-possible.Immediately and confirm your willingness on this my
-email(williamsreneta2019@gmail.com), here is one of my Picture and
-also i will inform you more details involved in this matter.
-
-Regards,
-
-Miss Reneta Williams.
+Thanks
+Mustafa Ayvaz
+Email: mustafa.ayvaz@ayvazburosu.com
