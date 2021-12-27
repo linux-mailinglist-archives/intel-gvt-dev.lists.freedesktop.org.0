@@ -1,42 +1,41 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66FF447F66A
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 26 Dec 2021 11:30:18 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id DD18947FB1F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Dec 2021 09:43:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 88FC410E696;
-	Sun, 26 Dec 2021 10:30:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 89AB110E570;
+	Mon, 27 Dec 2021 08:43:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1810 seconds by postgrey-1.36 at gabe;
- Sun, 26 Dec 2021 10:30:13 UTC
-Received: from slot0.jllresort.com (slot0.jllresort.com [62.197.136.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B881F10E698
+X-Greylist: delayed 371 seconds by postgrey-1.36 at gabe;
+ Mon, 27 Dec 2021 08:43:01 UTC
+Received: from mail.ceseli.pl (mail.ceseli.pl [192.121.46.86])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E937D10E570
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 26 Dec 2021 10:30:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jllresort.com;
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=ele.mon@jllresort.com; bh=+EuiuR1rW5NdOV3hym3U6Ie66zI=;
- b=hwzhjll+J9RtrtYZYhjAgKmKHTUIrJGSu6GTuRQq1+ITg1Zc2oiIZhbf5yPApbsMumXMxCWNaYZA
- 7UYMRve+mHfn+nq577mC3pDwlzsubI3ogGucfvdVwzAHtinJRt5OHxXwz+SQvHgexHnPVTdvbP9E
- qIykBk7XRJSWAsQeWvxbBumJT4l5NfrmJ6puy1jTFSnRDcuaMGiDw2jFrMXFPyMUW852g7xeSv0Z
- nedUUmibyNMURqUONY9EhIqB0ht92SGZXNctUAYiLZmKHrpSFouTTBBE5nN8G6WX5bm7LhucyXBB
- pbZCDj5ckzvGx7uDOwH4JcNVD1W/v5F/jc1Sgg==
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jllresort.com;
- b=rzZwGKcgT7/PndAyx2RZbqpL79NyQ8yFIuK6zrTlTL672u7exVD6gnWk59td/1rtDKS3Q9eYGsUN
- tUSnJ00t3hRFXSWnMQHxaXll8iKrXXKATOsw7Admco2BY4Mtz8iVGcx+1kbO3o7Ep/37BOFXKOfn
- r2qwNlhzmXgRFzNKqBL+YWOM8Cwnheite5LcL1t5onM5k5SxXaOaQPV4lLGnab2DaUmr3Q7KixtX
- Z4VJdIKTkFCcpHdHNBUUJKnZmFcqiX0XGz6MhYvDVdlv86IlmkF4cKFbsrsVnysCR04EMK08qEwe
- HPciLzxxrvCAZvgZmNA84nnT6LhUWFpHxzWm4g==;
-From: ele.mon@jllresort.com
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Happy Weekend:
-Date: 26 Dec 2021 10:29:29 +0100
-Message-ID: <20211226102855.0DD59534B972C20F@jllresort.com>
+ Mon, 27 Dec 2021 08:43:01 +0000 (UTC)
+Received: by mail.ceseli.pl (Postfix, from userid 1001)
+ id D0EE94079B; Mon, 27 Dec 2021 09:36:38 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ceseli.pl; s=mail;
+ t=1640594206; bh=mSI8Hujt35QcAihw1HSx9BrRXuzdS4yvNvGK8lgmw80=;
+ h=Date:From:To:Subject:From;
+ b=uMrDFu512er11BMdBNiHccKxhELAUGJ0D/70D4IHGLpwMRikoB2TVzBUpCdOyo+0m
+ eMM0iNFh+/J1BzKFQlejt8b9dNnR2hsLS2UiSmZd8kGxXXYDBEq7Szt6p6O+h/5kaf
+ 0mbPvldv6TbzmSfCfoOzbhDmZUGW52ONrrxo+1Wl8Xsm1nuEcuzRl2nqnMeGbjMszd
+ TIst/47LsLORd0NT9QCsBWnWdUq2RkM93dYiQy71KzqHwzGJIWV1x0/rc6yl2noPG+
+ TAF3v0U7rmQcxa2dbWrND7T89xyaX1wfHI0HTyNVIODIAoBPLwXBbw7LNnFa69rjB4
+ Jff3H9cUPTkng==
+Received: by mail.ceseli.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 27 Dec 2021 08:36:20 GMT
+Message-ID: <20211227084502-0.1.x.1vwx.0.8ab251363j@ceseli.pl>
+Date: Mon, 27 Dec 2021 08:36:20 GMT
+From: "Wiktor Radyjowski" <wiktor.radyjowski@ceseli.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
+X-Mailer: mail.ceseli.pl
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -50,16 +49,22 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mustafa.ayvaz@ayvazburosu.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Greetings to you intel-gvt-dev,
+Dzie=C5=84 dobry,
 
-I was wondering if you got my previous email? I have been trying=20
-to reach you by email intel-gvt-dev@lists.freedesktop.org, kindly=20
-get back to me swiftly, it is very important and urgent.
+zapozna=C5=82em si=C4=99 z Pa=C5=84stwa ofert=C4=85 i z przyjemno=C5=9Bci=
+=C4=85 przyznaj=C4=99, =C5=BCe przyci=C4=85ga uwag=C4=99 i zach=C4=99ca d=
+o dalszych rozm=C3=B3w.=20
 
-Thanks
-Mustafa Ayvaz
-Email: mustafa.ayvaz@ayvazburosu.com
+Pomy=C5=9Bla=C5=82em, =C5=BCe mo=C5=BCe m=C3=B3g=C5=82bym mie=C4=87 sw=C3=
+=B3j wk=C5=82ad w Pa=C5=84stwa rozw=C3=B3j i pom=C3=B3c dotrze=C4=87 z t=C4=
+=85 ofert=C4=85 do wi=C4=99kszego grona odbiorc=C3=B3w. Pozycjonuj=C4=99 =
+strony www, dzi=C4=99ki czemu generuj=C4=85 =C5=9Bwietny ruch w sieci.
+
+Mo=C5=BCemy porozmawia=C4=87 w najbli=C5=BCszym czasie?
+
+
+Pozdrawiam,
+Wiktor Radyjowski
