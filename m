@@ -2,35 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83338482C5F
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  2 Jan 2022 18:35:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57A1E482C9C
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  2 Jan 2022 20:56:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A980789B55;
-	Sun,  2 Jan 2022 17:35:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D61DF89930;
+	Sun,  2 Jan 2022 19:56:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 617 seconds by postgrey-1.36 at gabe;
- Sun, 02 Jan 2022 17:35:01 UTC
 Received: from mail.xvozbds.cn (xvozbds.cn [106.75.67.128])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A24F389B55
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4551089930
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  2 Jan 2022 17:35:00 +0000 (UTC)
+ Sun,  2 Jan 2022 19:56:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=xvozbds.cn; 
  h=Date:From:To:Subject:Message-ID:Mime-Version:Content-Type;
  i=support-amazon.jp@xvozbds.cn;
- bh=oVv1g2ZU1uGjzNTuZkoQCSNDdnhq8DFqj98jt0uJUBg=;
- b=qgQyr2+F0wslisqzUr2Eipi9wapJ1hcr3bWW62JCxr6f1kaW93r8jFRA7JMXe0+cYe1g6Gg63k9j
- 8Gg10mn4x99/K2R80oFTzv3xxlmfyHlzEznaFhtPG6pqZyWozdgOcmFyp9FObvVL7Mx6CPS4NvMr
- H6XPA20Fvjh2ChQSZlM=
-Date: Mon, 3 Jan 2022 01:17:22 +0800
+ bh=MNVkKL4sZU4q0NGYVFq2w5bJstKLQLiN1X4UmE4LTMU=;
+ b=nCnUXOD4hdXmaYMUPXMw/EuI19llGnhuuLzeR7oNx34yMFfYZLP9QNQKEunlLs8ax6r4M64riL4J
+ CAAm3SKUDq4bKBtqe7np5/XbmfYpFPdZmPaCZzgEQNkjOEfZ2SHgMhVA8pUjlck39cXX8Rq1biAw
+ vM/W+XkDAn+42FjeUtc=
+Date: Mon, 3 Jan 2022 03:58:52 +0800
 From: "Amazon" <support-amazon.jp@xvozbds.cn>
 To: <intel-gvt-dev@lists.freedesktop.org>
 Subject: =?utf-8?B?44CQQW1hb3pu44CR5YCL5Lq65oOF5aCx44KS5pu05paw44GX44Gm44GP44Gg44GV?=
  =?utf-8?B?44GE44CC?=
-Message-ID: <20220103011736080417@xvozbds.cn>
+Message-ID: <20220103035858538071@xvozbds.cn>
 Mime-Version: 1.0
 Content-Type: multipart/alternative;
- boundary="=====003_Dragon578711241510_====="
+ boundary="=====003_Dragon843056671886_====="
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,7 +46,7 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 This is a multi-part message in MIME format.
 
---=====003_Dragon578711241510_=====
+--=====003_Dragon843056671886_=====
 Content-Type: text/plain;
 	charset="utf-8"
 Content-Transfer-Encoding: base64
@@ -70,7 +68,7 @@ tOaWsOOBmeOCiw0KDQoNCg0KQW1hem9u44Gu44G+44Gf44Gu44GU5Yip55So44KS44GK5b6F44Gh
 44GX44Gm44GK44KK44G+44GZ44CCDQoNCg0KDQrCqSAxOTk2LTIwMjIsIEFtYXpvbi4gSW5jLiBv
 ciBpdHMgYWZmaWxpYXRlcw0KDQoNCg0KDQog
 
---=====003_Dragon578711241510_=====
+--=====003_Dragon843056671886_=====
 Content-Type: text/html;
 	charset="utf-8"
 Content-Transfer-Encoding: base64
@@ -214,5 +212,5 @@ czogZm9udC12YXJpYW50LWNhcHM6IG5vcm1hbDsgdGV4dC1kZWNvcmF0aW9uLXN0eWxlOiANCnRl
 eHQtZGVjb3JhdGlvbi1jb2xvcjogaW5pdGlhbDsgdGV4dC1kZWNvcmF0aW9uLXRoaWNrbmVzczog
 aW5pdGlhbD8+IA0KPC9CT0RZPjwvSFRNTD4NCg==
 
---=====003_Dragon578711241510_=====--
+--=====003_Dragon843056671886_=====--
 
