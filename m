@@ -2,56 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F2FE489949
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Jan 2022 14:10:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CE46F48A2CF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Jan 2022 23:31:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B8381130FB;
-	Mon, 10 Jan 2022 13:10:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6EA0010E1FE;
+	Mon, 10 Jan 2022 22:31:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com
- [IPv6:2a00:1450:4864:20::134])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4C4541130FB
+X-Greylist: delayed 15622 seconds by postgrey-1.36 at gabe;
+ Mon, 10 Jan 2022 22:31:28 UTC
+Received: from mail.yuanyangyihao.com (mail.yuanyangyihao.com [106.75.141.101])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0261410E1FE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Jan 2022 13:10:24 +0000 (UTC)
-Received: by mail-lf1-x134.google.com with SMTP id x7so44099614lfu.8
+ Mon, 10 Jan 2022 22:31:28 +0000 (UTC)
+Received: from ufkyqeyx (unknown [223.73.211.148])
+ by mail.yuanyangyihao.com (Postfix) with ESMTPA id 35C0217294D0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Jan 2022 05:10:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=STst/NZz7XpLuhkw/fjT1YooCLQUEgoChj9j28RAYfs=;
- b=WS6n6FubqXyqMIzuqOu3TJ0thtWWWbQNR/2JsHTgKXQ37qjIc056NOB/J48rWkv76H
- /lvsjQ8yXh5+PfR/Q1xCmBp5n3f+joMFT7AYJMPGGTDdQsu5/x+uTEVL0AnbHqpumTB9
- lie4H2zXqRAg6NE/R2qz73k0azNbEiYOHRjsAR9aPbTXk9vqo10zoDtgiqhlphhvBOEy
- YeOexeQVUh/Nid7cTxfwDjVt7YtgK5EWmSfyQjte3OJP1RnI8xKLn2GR+Cu1PKhGYddU
- FVchemUtqBDegp7vP08tOSk/dC2NLGurYZA8LXtlhbTdfPI1A86xQkmAkOZJv0Jk3LT5
- fgyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=STst/NZz7XpLuhkw/fjT1YooCLQUEgoChj9j28RAYfs=;
- b=ueXWttZhq56cSrH2qfMPB5V0wS0Yp0IrrHv861Gcz3UJ5YcU0Tevegxdloic8WHHXl
- gs419o+iZrjkbI7PEtyyUMidw/VVoTtlawfbo/DpzpHDvx4Q/zQYpe/p8ATQeRzHwb7L
- C00qpFzJigbroYzrdX+Y8JkT0UPedeMtU1tpPrn/gc4KmTnyr9i51t/4v2/xSnKyTXTy
- mUR+xYGtvbShBOd3yALUZVzNgLeLj1fQmfVpxP9ajTVXm9nO/W0FBHy4G1GDNC32QpkS
- ari4kS9GIBB0W3BvGrrgfEF9Mp4ZOdy7pKPxJWCHoowjCi97VQqYMH+2bPTZX9+9+Qox
- XPUQ==
-X-Gm-Message-State: AOAM532Dyxw1AWcWtwwidIPNL0Zi68aXsIWQi36oYmWPzwY1wk94q0T/
- t1UP9koOzJvj7QT2bLmAxPMaLn2PioqVyyUFU+8=
-X-Google-Smtp-Source: ABdhPJwA+YGhQBF8/seHCto5LplrfCXsfk+Vbs38e/6k0iquuYEysLKO5AqRVJDHFLHE16dAb+eMnAqCu7MtZeCg//A=
-X-Received: by 2002:a19:a402:: with SMTP id q2mr2560146lfc.380.1641820222278; 
- Mon, 10 Jan 2022 05:10:22 -0800 (PST)
+ Tue, 11 Jan 2022 01:39:19 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yuanyangyihao.com;
+ s=default; t=1641836359;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type;
+ bh=xxsMYDnhHQrpoDrpE9fgv+d06cAAX/JNYpFaY2JspmA=;
+ b=WDQ4CGhzDOA+21z5lU7M+dmR6yFdhnmlRyezk2TXJk6WGcu4zre7HYDcI6cMtupme1elLw
+ U+cAwZCQbHTeHPVJY1OvqJHG+FnIhSM47uHAu16y6yZB2MX+QMvimcsSXOIy8cLhCFlNKq
+ tP+vq8vMe1RTSIFLI7f78bd0v3Suzao=
+From: ETC-CBC <etc-a3@yuanyangyihao.com>
+To: intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?utf-8?B?77yl77y077yj44K144O844OT44K544KS44GU5Yip55So44GE44Gf44Gg44GN44GC44KK44GM44Go44GG?=
+ =?utf-8?B?44GU44GW44GE44G+44GZ44CC?=
+Date: Tue, 11 Jan 2022 02:39:13 +0900
+Message-ID: <0033c3b1f041$b6b6b58c$ec038537$@ufkyqeyx>
 MIME-Version: 1.0
-Received: by 2002:a05:6504:15d1:0:0:0:0 with HTTP; Mon, 10 Jan 2022 05:10:21
- -0800 (PST)
-From: Barr Robert Richter <westernunion.benin982@gmail.com>
-Date: Mon, 10 Jan 2022 14:10:21 +0100
-Message-ID: <CAP=nHBKx1=rhHyyyJXVMv0CjVzycwRka0RU79SojDqwuEmYrVg@mail.gmail.com>
-Subject: Contact GT Bank-Benin to receive your transfer amount of $18.5m US
- Dollars.
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/alternative;
+ boundary="----=_NextPart_000_032F_01D78F91.185D9B50"
+X-Mailer: Microsoft Outlook 16.0
+X-Spam: Yes
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,89 +50,143 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: gtbank107@yahoo.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Attn,Dear
-I need you to know that the fear of the LORD is
-the beginning of wisdom, and knowledge of the Holy One is
-understanding. As power of God Most High. And This is the confidence
-we have in approaching God, that if we ask anything according to his
-will, he hears us. I will make you know that Slow and steady wins the race.
-It is your turn to receive your overdue compensation funds total
-amount $18.5Milion  USD.
-I actualized that you will receive your transfer today without any more delay
-No More fee OK, Believe me , I am your Attorney standing here on your favor.
-I just concluded conversation with the Gt Bank Director, Mrs Mary Gate
-And She told me that your transfer is ready today
+This is a multi-part message in MIME format.
 
-So the Bank Asked you to contact them immediately by re-confirming
-your Bank details asap.
-Because this is the Only thing holding this transfer
-If you did not trust me and Mrs Mary Gate,Who Else will you Trust?
-For we are the ones trying to protect your funds here
-and make sure that your funds is secure.
-So Promisingly, I am here to assure you, that Grate Miracle is coming on
-your way, and this funds total amount of $18.500,000 is your
-compensation, entitlement inheritance overdue funds on your name.
-Which you cannot let anything delay you from receiving your funds now,
+------=_NextPart_000_032F_01D78F91.185D9B50
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
 
-Finally i advised you to try your possible best and contact Gt Bank Benin
-once you get this message to receive your transfer $18.5 USD today.
-I know that a journey of thousand miles begins with a single step.
-Always put your best foot forward
-Try as hard as you can, God give you best.
-take my advice and follow the due process of your payment, the
-transfer will be released to
-you smoothly without any hitches or hindrance.
+DQrigLvvvKXvvLTvvKPjgrXjg7zjg5PjgrnjgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgYLjgorj
+gYzjgajjgYbjgZTjgZbjgYTjgb7jgZnjgIINCg0KIA0KDQrigLvmnKzjg6Hjg7zjg6vjgbjjga7o
+v5Tkv6HjgavjgojjgovjgZTos6rllY/jgavjga/jgZTlm57nrZTjgafjgY3jgb7jgZvjgpPjgIIN
+Cg0KIA0KDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoNCg0KIA0KDQrm
+nKzjg6Hjg7zjg6vjgYzjgZToh6rouqvlrpvjgafjgarjgYTloLTlkIjjgIHku5bjga7mlrnjgYzo
+qqTjgaPjgablkIzjgZjjg6Hjg7zjg6vjgqLjg4njg6zjgrnjgpLnmbvpjLLjgZfjgZ/jgoLjga7j
+gajogIPjgYjjgonjgozjgb7jgZnjgIINCuOBiuW/g+W9k+OBn+OCiuOBruOBquOBhOaWueOBr+OA
+geOBiuaJi+aVsOOBp+OBmeOBjOODoeODvOODq+acrOaWh+OCkuWJiumZpOOBj+OBoOOBleOBhOOB
+vuOBmeOCiOOBhuOBiumhmOOBhOOBhOOBn+OBl+OBvuOBmeOAgg0KDQogDQoNCi0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCg0KDQoNCiANCg0KIA0KDQrigLsg44G744KT44Gr
+44KT5pys5Lq644GL44GP44Gr44KT56K66KqN44Gu44Gf44KB44Gr44CB44Om44O844K244O8SUTj
+gIHjgajjg7zjgo3jgY/nmbvpjLLjg6Hjg7zjg6vjgqLjg4njg6zjgrnjgIFFVEPjgqvjg7zjg4nj
+gbDjgpPjgZTjg7znlarlj7fjgarjganjga7jgZjjgofjg7zjgbvjg7zmg4XloLHjgpLjgojjg7zj
+gYTnlKjmhI/jgZfjgabjgY/jgaDjgZXjgYTjgIIgDQoNCiANCg0KIA0KDQogDQoNCuKAu+ODoeOD
+vOODq+OCkuWPl+OBkeWPluOBo+OBn+OBiuWuouOBleOBvuWwgueUqOOBruODmuODvOOCuOOBp+OB
+meOAguOBu+OBi+OBruOBiuWuouOBleOBvuOBr+OBlOWIqeeUqOOBhOOBn+OBoOOBkeOBvuOBm+OC
+k+OAgg0K44Gq44GK44CBNzLmmYLplpPku6XlhoXjgavjgZTnorroqo3jgYzjgarjgYTloLTlkIjj
+gIHoqqDjgavnlLPjgZfoqLPjgZTjgZbjgYTjgb7jgZvjgpPjgIHjgYrlrqLmp5jjga7lronlhajj
+ga7ngrrjgIHjgqLjgqvjgqbjg7Pjg4jjga7liKnnlKjliLbpmZDjgpLjgZXjgZvjgabjgYTjgZ/j
+gaDjgY3jgb7jgZnjga7jgafjgIHkuojjgoHjgZTkuobmib/jgY/jgaDjgZXjgYTjgIINCg0KDQoN
+CuKGkuOBlOWkieabtOOBr+OBk+OBoeOCieOBi+OCiQ0KDQogDQoNCiANCg0KIA0KDQogDQoNCuKA
+u+acrOODoeODvOODq+OBuOOBrui/lOS/oeOBq+OCiOOCi+OBlOizquWVj+OBq+OBr+OBlOWbnuet
+lOOBp+OBjeOBvuOBm+OCk+OAgg0KDQoNCiANCg0K4pSB4pSB4pSB4pSB4pSB4pSB4pSBDQrilqDn
+mbrooYzogIUNCuKUgeKUgeKUgeKUgeKUgeKUgeKUgQ0KDQoNCiANCg0K77yl77y077yj5Yip55So
+54Wn5Lya44K144O844OT44K55LqL5YuZ5bGADQpFYXN0IE5pcHBvbiBFeHByZXNzd2F5IENvbXBh
+bnkgTGltaXRlZCwNCk1ldHJvcG9saXRhbiBFeHByZXNzd2F5IENvbXBhbnkgTGltaXRlZCANCg0K
 
-Contact DR.MRS MARY GATE, Director Gt bank-Benin to receive your
-transfer amount of $18.5m US Dollars
-It was deposited and registered to your name this morning.
-Contact the Bank now to know when they will transfer to your
-country today
+------=_NextPart_000_032F_01D78F91.185D9B50
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
 
-Email id: gtbank107@yahoo.com
-Tel/mobile, +229 99069872
-Contact person, Mrs Mary Gate,Director Gt bank-Benin.
-Among the blind the one-eyed man is king
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MIHhtbG5zOm8gPSAidXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6
+b2ZmaWNlIj48SEVBRD4NCjxNRVRBIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCIg
+aHR0cC1lcXVpdj1Db250ZW50LVR5cGU+DQo8TUVUQSBuYW1lPUdFTkVSQVRPUiBjb250ZW50PSJN
+U0hUTUwgMTEuMDAuMTA1NzAuMTAwMSI+PC9IRUFEPg0KPEJPRFk+DQo8UCBjbGFzcz1Nc29Ob3Jt
+YWwgDQpzdHlsZT0iVEVYVC1BTElHTjogbGVmdDsgTUFSR0lOOiAwY207IG1zby1wYWdpbmF0aW9u
+OiB3aWRvdy1vcnBoYW4iIA0KYWxpZ249bGVmdD48Rk9OVCBmYWNlPeetiee6vz48U1BBTiANCmxh
+bmc9RU4tVVM+4oC7PC9TUEFOPu+8pe+8tO+8o+OCteODvOODk+OCueOCkuOBlOWIqeeUqOOBhOOB
+n+OBoOOBjeOBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgjwvRk9OVD48U1BBTiANCmxh
+bmc9RU4tVVM+PC9QPjwvU1BBTj48U1BBTiBsYW5nPUVOLVVTPg0KPFAgY2xhc3M9TXNvTm9ybWFs
+IHN0eWxlPSJNQVJHSU46IDBjbSI+PC9TUEFOPiZuYnNwOzwvUD48U1BBTiBsYW5nPUVOLVVTPg0K
+PFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJNQVJHSU46IDBjbSI+PEZPTlQgDQpmYWNlPeetiee6
+vz7igLs8L0ZPTlQ+5pys44Oh44O844Or44G444Gu6L+U5L+h44Gr44KI44KL44GU6LOq5ZWP44Gr
+44Gv44GU5Zue562U44Gn44GN44G+44Gb44KT44CCPC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0
+eWxlPSJNQVJHSU46IDBjbSI+Jm5ic3A7PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJN
+QVJHSU46IDBjbSI+PEZPTlQgDQpmYWNlPeetiee6vz4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tPC9GT05UPjwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lO
+OiAwY20iPjxGT05UIA0KZmFjZT3nrYnnur8+PEJSPiZuYnNwOzwvUD48L0ZPTlQ+PC9TUEFOPjxG
+T05UIGZhY2U9562J57q/PjwvRk9OVD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lO
+OiAwY20iPjxGT05UIA0KZmFjZT3nrYnnur8+5pys44Oh44O844Or44GM44GU6Ieq6Lqr5a6b44Gn
+44Gq44GE5aC05ZCI44CB5LuW44Gu5pa544GM6Kqk44Gj44Gm5ZCM44GY44Oh44O844Or44Ki44OJ
+44Os44K544KS55m76Yyy44GX44Gf44KC44Gu44Go6ICD44GI44KJ44KM44G+44GZ44CCPC9GT05U
+PjxTUEFOIA0KbGFuZz1FTi1VUz48QlI+PC9TUEFOPjxGT05UIA0KZmFjZT3nrYnnur8+44GK5b+D
+5b2T44Gf44KK44Gu44Gq44GE5pa544Gv44CB44GK5omL5pWw44Gn44GZ44GM44Oh44O844Or5pys
+5paH44KS5YmK6Zmk44GP44Gg44GV44GE44G+44GZ44KI44GG44GK6aGY44GE44GE44Gf44GX44G+
+44GZ44CCPC9GT05UPjwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lOOiAwY20i
+PjxGT05UIGZhY2U9562J57q/PjwvRk9OVD4mbmJzcDs8L1A+PEZPTlQgDQpmYWNlPeetiee6vz48
+L0ZPTlQ+PFNQQU4gbGFuZz1FTi1VUz4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lO
+OiAwY20iPjxGT05UIA0KZmFjZT3nrYnnur8+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLTwvRk9OVD48L1A+PEZPTlQgZmFjZT3nrYnnur8+DQo8UCBjbGFzcz1Nc29Ob3JtYWwg
+c3R5bGU9Ik1BUkdJTjogMGNtIj48QlI+PEJSPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1zb05vcm1h
+bCBzdHlsZT0iTUFSR0lOOiAwY20iPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHls
+ZT0iTUFSR0lOOiAwY20iPuKAuzwvRk9OVD48L1NQQU4+PEZPTlQgPCFET0NUWVBFIFBVQkxJQyA/
+LSANClczQyBEVEQgSFRNTCA0LjAgVHJhbnNpdGlvbmFsIEVOPz4gDQo8TUVUQSBuYW1lPUdFTkVS
+QVRPUiBjb250ZW50PSJNU0hUTUwgMTEuMDAuMTA1NzAuMTAwMSI+PFUgDQpzdHlsZT0iRk9OVC1X
+RUlHSFQ6IGJvbGQ7IENPTE9SOiAjZjAwIj48QSANCmhyZWY9Imh0dHBzOi8vZXRjLnRtbmNoLmNv
+bS8iPuOBu+OCk+OBq+OCk+acrOS6uuOBi+OBj+OBq+OCk+eiuuiqjeOBruOBn+OCgeOBq+OAgeOD
+puODvOOCtuODvElE44CB44Go44O844KN44GP55m76Yyy44Oh44O844Or44Ki44OJ44Os44K544CB
+RVRD44Kr44O844OJ44Gw44KT44GU44O855Wq5Y+344Gq44Gp44Gu44GY44KH44O844G744O85oOF
+5aCx44KS44KI44O844GE55So5oSP44GX44Gm44GP44Gg44GV44GE44CCIA0KPC9BPjwvVT48L0ZP
+TlQ+PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJNQVJHSU46IDBjbSI+PFNUUk9ORz48
+VT48Rk9OVCANCmNvbG9yPSNmZjAwMDA+PC9GT05UPjwvVT48L1NUUk9ORz4mbmJzcDs8L1A+DQo8
+UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9Ik1BUkdJTjogMGNtIj48U1RST05HPjxVPjxGT05UIA0K
+Y29sb3I9I2ZmMDAwMD48L0ZPTlQ+PC9VPjwvU1RST05HPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1z
+b05vcm1hbCBzdHlsZT0iTUFSR0lOOiAwY20iPjxTVFJPTkc+PFU+PEZPTlQgDQpjb2xvcj0jZmYw
+MDAwPjwvRk9OVD48L1U+PC9TVFJPTkc+Jm5ic3A7PC9QPg0KPFA+PFNQQU4gbGFuZz1FTi1VUz48
+Rk9OVCBmYWNlPeetiee6vz7igLs8L0ZPTlQ+PEZPTlQgDQpmYWNlPeetiee6vz7jg6Hjg7zjg6vj
+gpLlj5fjgZHlj5bjgaPjgZ/jgYrlrqLjgZXjgb7lsILnlKjjga7jg5rjg7zjgrjjgafjgZnjgILj
+gbvjgYvjga7jgYrlrqLjgZXjgb7jga/jgZTliKnnlKjjgYTjgZ/jgaDjgZHjgb7jgZvjgpPjgII8
+L0ZPTlQ+PFNQQU4gDQpsYW5nPUVOLVVTPjxCUj48L1NQQU4+PEZPTlQgZmFjZT3nrYnnur8+44Gq
+44GK44CBPFNQQU4gDQpsYW5nPUVOLVVTPjcyPC9TUEFOPuaZgumWk+S7peWGheOBq+OBlOeiuuiq
+jeOBjOOBquOBhOWgtOWQiOOAgeiqoOOBq+eUs+OBl+ios+OBlOOBluOBhOOBvuOBm+OCk+OAgeOB
+iuWuouanmOOBruWuieWFqOOBrueCuuOAgeOCouOCq+OCpuODs+ODiOOBruWIqeeUqOWItumZkOOC
+kuOBleOBm+OBpuOBhOOBn+OBoOOBjeOBvuOBmeOBruOBp+OAgeS6iOOCgeOBlOS6huaJv+OBj+OB
+oOOBleOBhOOAgjwvRk9OVD48L1NQQU4+PFNQQU4gDQpsYW5nPUVOLVVTPjxCUj48L1NQQU4+PC9Q
+PjxTUEFOIGxhbmc9RU4tVVM+DQo8UCBjbGFzcz1Nc29Ob3JtYWwgDQpzdHlsZT0iVEVYVC1BTElH
+TjogbGVmdDsgTUFSR0lOOiAwY207IG1zby1wYWdpbmF0aW9uOiB3aWRvdy1vcnBoYW4iIA0KYWxp
+Z249bGVmdD48QlI+PEEgaHJlZj0iaHR0cHM6Ly9ldGMudG1uY2guY29tLyI+PFNUUk9ORz48U1BB
+TiANCnN0eWxlPSdGT05ULUZBTUlMWTogRGVuZ1hpYW47IENPTE9SOiBibHVlOyBtc28tYXNjaWkt
+dGhlbWUtZm9udDogbWlub3ItbGF0aW47IG1zby1mYXJlYXN0LXRoZW1lLWZvbnQ6IG1pbm9yLWZh
+cmVhc3Q7IG1zby1oYW5zaS10aGVtZS1mb250OiBtaW5vci1sYXRpbjsgbXNvLWJpZGktZm9udC1m
+YW1pbHk6ICJUaW1lcyBOZXcgUm9tYW4iOyBtc28tYmlkaS10aGVtZS1mb250OiBtaW5vci1iaWRp
+Jz7ihpI8L1NQQU4+PC9TVFJPTkc+PFNUUk9ORz48U1BBTiANCmxhbmc9RU4tVVMgDQpzdHlsZT0n
+Rk9OVC1GQU1JTFk6IERlbmdYaWFuOyBDT0xPUjogYmx1ZTsgbXNvLWFzY2lpLXRoZW1lLWZvbnQ6
+IG1pbm9yLWxhdGluOyBtc28tZmFyZWFzdC10aGVtZS1mb250OiBtaW5vci1mYXJlYXN0OyBtc28t
+aGFuc2ktdGhlbWUtZm9udDogbWlub3ItbGF0aW47IG1zby1iaWRpLWZvbnQtZmFtaWx5OiAiVGlt
+ZXMgTmV3IFJvbWFuIjsgbXNvLWJpZGktdGhlbWUtZm9udDogbWlub3ItYmlkaSc+PFNQQU4gDQps
+YW5nPUVOLVVTPuOBlOWkieabtOOBr+OBk+OBoeOCieOBi+OCiTwvU1BBTj48L1NQQU4+PC9TVFJP
+Tkc+PEZPTlQgZmFjZT3nrYnnur8+IDwvRk9OVD48L0E+PC9QPjwvU1BBTj4NCjxQIGNsYXNzPU1z
+b05vcm1hbCBzdHlsZT0iTUFSR0lOOiAwY20iPjxTVFJPTkc+PFU+PEZPTlQgDQpjb2xvcj0jZmYw
+MDAwPjwvRk9OVD48L1U+PC9TVFJPTkc+Jm5ic3A7PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0
+eWxlPSJNQVJHSU46IDBjbSI+PFNUUk9ORz48VT48Rk9OVCANCmNvbG9yPSNmZjAwMDA+PC9GT05U
+PjwvVT48L1NUUk9ORz4mbmJzcDs8L1A+DQo8UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9Ik1BUkdJ
+TjogMGNtIj48U1RST05HPjxVPjxGT05UIA0KY29sb3I9I2ZmMDAwMD48L0ZPTlQ+PC9VPjwvU1RS
+T05HPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lOOiAwY20iPjxG
+T05UIDwhRE9DVFlQRSBQVUJMSUMgPy0gVzNDIERURCBIVE1MIA0KNC4wIFRyYW5zaXRpb25hbCBF
+Tj8+PEZPTlQgZmFjZT3nrYnnur8+PC9GT05UPjwvRk9OVD4mbmJzcDs8L1A+DQo8UCBjbGFzcz1N
+c29Ob3JtYWwgc3R5bGU9Ik1BUkdJTjogMGNtIj48Rk9OVCA8IURPQ1RZUEUgUFVCTElDID8tIFcz
+QyBEVEQgSFRNTCANCjQuMCBUcmFuc2l0aW9uYWwgRU4/PjxGT05UIGZhY2U9562J57q/PuKAuzwv
+Rk9OVD7mnKzjg6Hjg7zjg6vjgbjjga7ov5Tkv6HjgavjgojjgovjgZTos6rllY/jgavjga/jgZTl
+m57nrZTjgafjgY3jgb7jgZvjgpPjgII8L0ZPTlQ+PFNQQU4gDQpsYW5nPUVOLVVTPjxCUj48L1A+
+PEZPTlQgZmFjZT3nrYnnur8+PC9GT05UPjwvU1BBTj4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHls
+ZT0iTUFSR0lOOiAwY20iPjxTUEFOIGxhbmc9RU4tVVM+PEZPTlQgDQpmYWNlPeetiee6vz48L0ZP
+TlQ+PC9TUEFOPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lOOiAw
+Y20iPjxTUEFOIGxhbmc9RU4tVVM+PEZPTlQgDQpmYWNlPeetiee6vz7ilIHilIHilIHilIHilIHi
+lIHilIE8QlI+4pagPC9GT05UPjwvU1BBTj48Rk9OVCBmYWNlPeetiee6vz7nmbrooYzogIU8L0ZP
+TlQ+PFNQQU4gDQpsYW5nPUVOLVVTPjxCUj48Rk9OVCBmYWNlPeetiee6vz7ilIHilIHilIHilIHi
+lIHilIHilIE8QlI+PC9QPjwvRk9OVD48L1NQQU4+PEZPTlQgZmFjZT3nrYnnur8+PC9GT05UPg0K
+PFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJNQVJHSU46IDBjbSI+PEZPTlQgZmFjZT3nrYnnur8+
+PC9GT05UPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lOOiAwY20i
+PjxGT05UIGZhY2U9562J57q/Pu+8pe+8tO+8o+WIqeeUqOeFp+S8muOCteODvOODk+OCueS6i+WL
+meWxgDwvRk9OVD48U1BBTiANCmxhbmc9RU4tVVM+PEJSPjxGT05UIGZhY2U9562J57q/PkVhc3Qg
+TmlwcG9uIEV4cHJlc3N3YXkgQ29tcGFueSANCkxpbWl0ZWQsPEJSPk1ldHJvcG9saXRhbiBFeHBy
+ZXNzd2F5IENvbXBhbnkgTGltaXRlZCANCjwvRk9OVD48bzpwPjwvbzpwPjwvU1BBTj48L1A+PEJS
+PjwvQk9EWT48L0hUTUw+DQo=
 
-As you sow, so you shall reap, i want you to receive your funds
-Best things in life are free
-Send to her your Bank Details as i listed here.
+------=_NextPart_000_032F_01D78F91.185D9B50--
 
-Your account name-------------
-Your Bank Name----------------
-Account Number----------
-your Bank address----------
-Country-----------
-Your private phone number---------
-Routing Numbers-------------
-Swift Code-----------
-
-Note, Your funds is %100 Percent ready for
-transfer.
-Everything you do remember that Good things come to those who wait.
-I have done this work for you with my personally effort, Honesty is
-the best policy.
-now your transfer is currently deposited with paying bank this morning.
-It is by the grace of God that I received Christ, having known the truth.
-I had no choice than to do what is lawful and justice in the
-sight of God for eternal life and in the sight of man for witness of
-God & His Mercies and glory upon my life.
-
-send this needed bank details to the bank today, so that you receive
-your transfer today as
-it is available for your confirmation today.
-Please do your best as a serious person and send the fee urgent, Note
-that this transfer of $18.500.000 M USD is a Gift from God to Bless
-you.
-
-If you did not contact the bank urgent, finally the Bank will release
-your transfer of $18.500.000M USD to  Mr. David Bollen as your
-representative.
-So not allow another to claim your Money.
-Thanks For your Understanding.
-
-Barr Robert Richter, UN Attorney At Law Court-Benin
