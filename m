@@ -1,53 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 170AA48AFB8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Jan 2022 15:40:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C19A48B434
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Jan 2022 18:44:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9C09E10E343;
-	Tue, 11 Jan 2022 14:40:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2C39D10E179;
+	Tue, 11 Jan 2022 17:44:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D4C5210E343;
- Tue, 11 Jan 2022 14:40:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1641912036; x=1673448036;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=0fI1L/2R6TCi3ZunCsAB7x5GndtclqN8UHNcgES3ACA=;
- b=aTMF9ih5SQaDxJOtQ0HWXGxFnpWeVlJb6KzaqbUIh46pvK4JWXfqp4yp
- L7dLt+KEegiW0cgm3QEeChQGsypqERSKbu1qRa+kFbbb5q+nOi6KtWj9O
- Y7TbfcxQtN1OIhJ/pNNs2QNHKk+yzYlPq7uuY+pYP2odS36C0zZDIpZcx
- sB8/oH93/oqe+fgmSGEcvVoOR9Zex3Stwk0xstk4XjDQiT3C3P538JjfU
- tYfb6LL+pcy7/lqQHaJp+8S22P5bMc/xtQOvxi15i9Fuzk3iLN/8x8/Vk
- /Ik0P3u9Sa6Nle0jlwTLeEIeIW+CTyJwudgKVIOa/u15q8wFmxiwkUSZB A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10223"; a="223478684"
-X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="223478684"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2022 06:40:36 -0800
-X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="528763069"
-Received: from kumaryog-mobl.gar.corp.intel.com (HELO intel.com)
- ([10.255.38.100])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2022 06:40:35 -0800
-Date: Tue, 11 Jan 2022 09:40:33 -0500
-From: Rodrigo Vivi <rodrigo.vivi@intel.com>
-To: "Wang, Zhi A" <zhi.a.wang@intel.com>
-Subject: Re: [GIT PULL] GVT next changes for drm-intel-next-queued
-Message-ID: <Yd2W4T1Y8X0cP/PL@intel.com>
-References: <e87298d5-0efb-981c-03d6-8b1bb7ab2cd6@intel.com>
- <f869fab00a4b5757fd272b3b7e178b4dcd921e6b.camel@intel.com>
- <02808c4c-7725-2afa-1968-2177ba112872@intel.com>
- <ab642779-7efd-2bf0-6484-ca6bfd20f2d0@intel.com>
+X-Greylist: delayed 631 seconds by postgrey-1.36 at gabe;
+ Tue, 11 Jan 2022 17:44:16 UTC
+Received: from trpc7pu.cn (unknown [117.50.176.222])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7E1C110E179
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 11 Jan 2022 17:44:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=key1; d=trpc7pu.cn;
+ h=Message-ID:From:To:Subject:Date:MIME-Version:Content-Type; i=admin@trpc7pu.cn;
+ bh=QHu3UWgpxXr0c/rPPWf4WsFSF9o=;
+ b=Hg/2WPnqOFgNq3P66st63OmlLpmNIzYnaTL+2Dk+uknFyMM+7WxqVE905uI4luzcZ/N1LPrrO3Nv
+ RKwczUpGAE4AIv3MkynsbkAZCIQNXuSrd2jzdHjoEK/GVkyf8kGCnJrRmiOJASVBGeqjBcrT12lP
+ u4FLjHfeaziOzSQ/3WTEu0pazJ7IXzAhZwPmNCIxAOL82nAVoxWaTVKlz0knOEuLjOfqQ4s5PGQ9
+ kDjiviQhN3G48gHG7DCwpVBEMYO5l5KDN0YXxr5YpiBPEgHb0IeRnYak9DpqJcTyeyXOW9UDCL+8
+ WUzk7tpuaRxKiQmOiKOgivmBg3hJ8B0984WIwA==
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=key1; d=trpc7pu.cn;
+ b=oXQV164uqE9f2rdYNvfHVHqqgKASxpbCNzlRKUGNcK/M3FOF1D7IJRK17H96juxhpvinPv/rRcwI
+ U8VNrID7SY77YYsUnosDrENcGqOlX6ANqc7302t+j3tl8Cz76Du9Qjb06eHbLNvFyOPfA7L1fKsh
+ N7frDENaz8PH3tIOXw21qaaQWY2Ri3Zwp6+XRQj0B5NX9u8b5Ddlt9EhjgBdEK2Kxk0skprpK3+9
+ tTDb5sjUiSk+mFYvUULsu4ovi10CeSSLcVMa8dJpE/eqVTY5co8/ZeaLbKyEo6BjLZgfnB9CVzo3
+ JhchKsMB2+xOqt+WVYjH90OwWi+xPi+2bIP4Tw==;
+Received: by mail.trpc7pu.cn id hrn0v00e97ce for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 12 Jan 2022 01:33:44 +0800 (envelope-from <admin@trpc7pu.cn>)
+Message-ID: <20220112013344285730@trpc7pu.cn>
+From: "etc-meisai" <admin@trpc7pu.cn>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?gb2312?B?RSBUIEOltalgpdOluaTOpKrWqqTppLs=?=
+Date: Wed, 12 Jan 2022 01:33:31 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ab642779-7efd-2bf0-6484-ca6bfd20f2d0@intel.com>
+Content-Type: multipart/alternative;
+ boundary="----=_NextPart_000_0EAB_01E1527A.1C462E50"
+X-mailer: Amdufdz 3
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,116 +53,56 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "Nikula, Jani" <jani.nikula@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jan 11, 2022 at 06:08:28AM -0500, Wang, Zhi A wrote:
-> On 1/11/22 6:08 AM, Wang, Zhi A wrote:
-> > On 1/11/2022 12:52 AM, Vivi, Rodrigo wrote:
-> >> On Fri, 2022-01-07 at 14:43 +0000, Wang, Zhi A wrote:
-> >>> Hi folks:
-> >>>
-> >>> Happy holidays! This pull mostly contains the code re-factors patches
-> >>> from Guenter Roeck and Rikard. Also a minor change from Zhenyu.
-> >>>
-> >>> Zhi
-> >>>
-> >>> The following changes since commit
-> >>> 3bfa7d40ce736ffbbfe07127061f54b359ee2b12:
-> >>>
-> >>>     drm/i915/dg2: Add support for new DG2-G11 revid 0x5 (2021-08-06
-> >>> 09:03:10 -0700)
-> >>>
-> >>> are available in the Git repository at:
-> >>>
-> >>>     https://github.com/intel/gvt-linux tags/gvt-next-2022-01-07
-> >>>
-> >>> for you to fetch changes up to
-> >>> d7a8585430f2b6df5960bbc305edcec5a55180f3:
-> >> I'm not sure what's going on here, but:
-> >>
-> >> dim: no pull request found
-> >>
-> >> did you do anything different on this round for generating and sending
-> >> out this pull request email?
-> > Strange.
-> >
-> > I generated this pull request by git pull-request since there is no
-> > support for generating pull-request for gvt-next right in dim now. Can
-> > you share me the command line of dim you were using for apply this pull
-> > request? I can try to apply it before sending the pull request.
-> >
-> > Thanks,
-> >
-> > Zhi.
-> >
-> Hi Vivi:
-> 
-> I did some checks and dumped the plain source of the email I sent. I
-> guess I figured out the reason. It's the problem of thunderbird in
-> Windows. When it sends the plain email, it will replace some space with
-> "Â", which caused the dim cannot find the git repo url. I have no idea
-> how that can happen since Thunderbird in Linux worked totally fine with
-> the same settings.
-> 
-> Before the vacation, my VPN certificate in Linux has been expired. I had
-> to use the thunderbird in Windows, which caused the problem above.
-> 
-> Will re-sent. Sorry for the bumps.
+This is a multi-part message in MIME format.
 
-understood. no problem at all. it happens.
+------=_NextPart_000_0EAB_01E1527A.1C462E50
+Content-Type: text/plain;
+	charset="gb2312"
+Content-Transfer-Encoding: base64
 
-Thanks for resending, but there's something else now...
+aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmcgmJQNCqPFo9Sjw6W1qWCl06W5pPKk
+tMD708OkpKS/pMCkraSipOqkrKTIpKaktKS2pKSk3qS5DQqjxaPUo8OltalgpdOluaTPn2+Ev6TL
+pMqk6qTepLekv6GjDQrS/aStvkGkraW1qWCl06W5pPKktMD708OkpKS/pMCkraS/pKSI9rrPpM+h
+os/C05ul6qXzpa+k6KTq1JS8mqTypLS0X9VKpK+kwKS1pKShow0KaHR0cHM6Ly96NHEyMGt5LmNu
+P2V0Yy9ycD0vbG9naW4NCqS0srux46TIpLTQxMXkpPKkqqSrpLGkt6TepLekxtVcpMvJ6qS31FWk
+tKS2pKSk3qS7pPOkrKGiDQq6zqTIpL6ktMDtveLZbqTqpL+kr6Sq7oqkpMnqpLekoqSypN6kuaGj
+DQqh9iDXotLiysLtlw0KqaWppamlqaWppamlqaUNCqH5pMqkqqGiMjSVculn0tTE2qTLpLS0X9VK
+pKykyqSkiPa6z6Gi1Vyky996urakyqSspOmhoqWipaulpqXzpcik8qXtpcOlr6S1pLukxqSkpL+k
+wKSvpLOkyKTyvq+45qSkpL+kt6TepLkgDQqh+bG+peGpYKXrpM+hotbY0qqkyqSq1qqk6aS7pMik
+t6TGpeGpYKXrpM7F5NDFpPLPo837pLWk7KTGpKSkyqSkpKq/zaS1pN6ky6TipKrLzaTqpLWku6TG
+pKSkv6TApKSkxqSqpOqk3qS5oaO6ztfkpLTBy7PQpK+kwKS1pKShow0Kofmks6TOpeGpYKXrpMvQ
+xLWxpL+k6qTOpMqkpKSrpL+kz6Giv9ak7MjrpOqk3qS5pKyjxaPUo8OlpqWnpdaltaWkpcik6KTq
+pKqGlqSkus+k76S7pK+kwKS1pKShow0KqaWppamlqaWppamlqaUNCqH2sGvQ0NXfDQqppamlqaWp
+pamlqaWppQ0Ko8Wj1KPDwPvTw9XVu+GltalgpdOlucrChNW+1g==
 
-dim attempt a mega rebase of thousands and thousands of patches
-when trying to apply this.
+------=_NextPart_000_0EAB_01E1527A.1C462E50
+Content-Type: text/html;
+	charset="gb2312"
+Content-Transfer-Encoding: base64
 
-Could you please rebase on a more recent drm-intel-next tag?
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PWdi
+MjMxMiIgaHR0cC1lcXVpdj1Db250ZW50LVR5cGU+DQo8TUVUQSBuYW1lPUdFTkVSQVRPUiBjb250
+ZW50PSJNU0hUTUwgMTEuMDAuMTA1NzAuMTAwMSI+PC9IRUFEPg0KPEJPRFk+DQo8UD5pbnRlbC1n
+dnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZyZuYnNwO5iUPEJSPqPFo9Sjw6W1qWCl06W5pPKk
+tMD708OkpKS/pMCkraSipOqkrKTIpKaktKS2pKSk3qS5PC9QPg0KPFA+o8Wj1KPDpbWpYKXTpbmk
+z59vhL+ky6TKpOqk3qS3pL+hozxCUj7S/aStvkGkraW1qWCl06W5pPKktMD708OkpKS/pMCkraS/
+pKSI9rrPpM+hos/C05ul6qXzpa+k6KTq1JS8mqTypLS0X9VKpK+kwKS1pKShozwvUD4NCjxQPjxB
+IA0KaHJlZj0iaHR0cHM6Ly96NHEyMGt5LmNuP2V0Yy9ycD0vbG9naW4iPmh0dHBzOi8vejRxMjBr
+eS5jbj9ldGMvcnA9L2xvZ2luPC9BPjwvUD4NCjxQPqS0srux46TIpLTQxMXkpPKkqqSrpLGkt6Te
+pLekxtVcpMvJ6qS31FWktKS2pKSk3qS7pPOkrKGiPEJSPrrOpMikvqS0wO294tlupOqkv6SvpKru
+iqSkyeqkt6SipLKk3qS5oaM8L1A+DQo8UD6h9iDXotLiysLtlzxCUj6ppamlqaWppamlqaWppTxC
+Uj6h+aTKpKqhojI0lXLpZ9LUxNqky6S0tF/VSqSspMqkpIj2us+hotVcpMvferq2pMqkrKTpoaKl
+oqWrpaal86XIpPKl7aXDpa+ktaS7pMakpKS/pMCkr6SzpMik8r6vuOakpKS/pLek3qS5IA0KPEJS
+PqH5sb6l4algpeukz6Gi1tjSqqTKpKrWqqTppLukyKS3pMal4algpeukzsXk0MWk8s+jzfuktaTs
+pMakpKTKpKSkqr/NpLWk3qTLpOKkqsvNpOqktaS7pMakpKS/pMCkpKTGpKqk6qTepLmho7rO1+Sk
+tMHLs9Ckr6TApLWkpKGjPEJSPqH5pLOkzqXhqWCl66TL0MS1saS/pOqkzqTKpKSkq6S/pM+hor/W
+pOzI66TqpN6kuaSso8Wj1KPDpaalp6XWpbWlpKXIpOik6qSqhpakpLrPpO+ku6SvpMCktaSkoaM8
+QlI+qaWppamlqaWppamlqaU8QlI+ofawa9DQ1d88QlI+qaWppamlqaWppamlqaU8QlI+o8Wj1KPD
+wPvTw9XVu+GltalgpdOlucrChNW+1jwvUD48L0JPRFk+PC9IVE1MPg0K
 
-Thanks,
-Rodrigo.
+------=_NextPart_000_0EAB_01E1527A.1C462E50--
 
-> 
-> Zhi.
-> 
-> >>>     drm/i915/gvt: Constify vgpu_types (2021-12-16 09:13:02 -0500)
-> >>>
-> >>> ----------------------------------------------------------------
-> >>> Guenter Roeck (1):
-> >>>         drm/i915/gvt: Use list_entry to access list members
-> >>>
-> >>> Rikard Falkeborn (9):
-> >>>         drm/i915/gvt: Constify intel_gvt_gtt_gma_ops
-> >>>         drm/i915/gvt: Constify intel_gvt_gtt_pte_ops
-> >>>         drm/i915/gvt: Constify intel_gvt_irq_ops
-> >>>         drm/i915/gvt: Constify intel_gvt_sched_policy_ops
-> >>>         drm/i915/gvt: Constify gvt_mmio_block
-> >>>         drm/i915/gvt: Constify cmd_interrupt_events
-> >>>         drm/i915/gvt: Constify formats
-> >>>         drm/i915/gvt: Constify gtt_type_table_entry
-> >>>         drm/i915/gvt: Constify vgpu_types
-> >>>
-> >>> Zhenyu Wang (1):
-> >>>         drm/i915/gvt: Fix cmd parser error for Passmark9
-> >>>
-> >>>    drivers/gpu/drm/i915/gvt/cmd_parser.c   |  2 +-
-> >>>    drivers/gpu/drm/i915/gvt/dmabuf.c       | 18 +++------
-> >>>    drivers/gpu/drm/i915/gvt/fb_decoder.c   | 24 ++++++------
-> >>>    drivers/gpu/drm/i915/gvt/gtt.c          | 68
-> >>> ++++++++++++++++-----------------
-> >>>    drivers/gpu/drm/i915/gvt/gtt.h          |  4 +-
-> >>>    drivers/gpu/drm/i915/gvt/gvt.h          |  2 +-
-> >>>    drivers/gpu/drm/i915/gvt/handlers.c     | 13 ++++---
-> >>>    drivers/gpu/drm/i915/gvt/interrupt.c    | 10 ++---
-> >>>    drivers/gpu/drm/i915/gvt/interrupt.h    |  2 +-
-> >>>    drivers/gpu/drm/i915/gvt/sched_policy.c |  2 +-
-> >>>    drivers/gpu/drm/i915/gvt/scheduler.h    |  2 +-
-> >>>    drivers/gpu/drm/i915/gvt/vgpu.c         |  4 +-
-> >>>    12 files changed, 72 insertions(+), 79 deletions(-)
-> >>>
-> >
-> 
