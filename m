@@ -1,41 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25F4F48E97D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Jan 2022 12:54:15 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DB0848E983
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Jan 2022 12:57:24 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 290AD10E15D;
-	Fri, 14 Jan 2022 11:54:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E58A910E13A;
+	Fri, 14 Jan 2022 11:57:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 431 seconds by postgrey-1.36 at gabe;
- Fri, 14 Jan 2022 11:54:07 UTC
 Received: from smtp2.axis.com (smtp2.axis.com [195.60.68.18])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BCF8010E13A;
- Fri, 14 Jan 2022 11:54:07 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D645510E15D;
+ Fri, 14 Jan 2022 11:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=axis.com; q=dns/txt; s=axis-central1; t=1642161248;
- x=1673697248; h=date:from:to:cc:subject:message-id:references:
+ d=axis.com; q=dns/txt; s=axis-central1; t=1642161442;
+ x=1673697442; h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=AMs+u9nkmpDZ5lxA/fLhYjA5QxFXQFce1TTDfia+q9o=;
- b=BwnurFI7TWdUrKvcHbOtcOxy6j66lWHbOY25eFyI7MGQ16S7Ofa9uyUw
- bBUz9a9+r7UuIExfqKaIaXSVAN5E5tYg7Wku7GC44+9rj0X8QwffSE3B9
- RMpYq2uX5eGW2CHnRm/rqnN/n95eJKaom5cFT3zQQq8RDXA/5bGJHj1t3
- qjoxC56I0hBLhu4lBYEPC1/1baWAOEAuuS9mwYltDRfl2w9OXZx9zeuCL
- P2I58Bswrn8mPnZYSHUNWUVrL3WoFf/4z64G8SycEl5HAio6FUzfQMUaP
- 0go8S0UZVavRw0l0w5QAp1ewoU2PjODMGxnEKWolr1h8KIELBITe9I0AW Q==;
-Date: Fri, 14 Jan 2022 12:46:54 +0100
+ bh=GxYdK86AwVncAjnPJuoy99CKiKtTmvQPJrbjyinZXo0=;
+ b=K6Bb66TgHSLe9Eto1TTvmIMMX4fWSEGiwArKscNhF9ON0+Nhc1arpw6v
+ oRAgoWkGLAI74zVOy9IXsW8doj6CiDJNxQ1l67gpJqTec5qvpIyYT4k84
+ ZxDdpqy/yO6CBxFPPb2zyCB6Ay7eBGWFXhOv+Glht2WOSpqBS9d0fAIju
+ bouTMq2Ig4C/kPAC5c/C2PBSpy3z6gXBxA7Qu3BGdRtA1a8ucy582WxVA
+ X6K87uPn7WIBe9a+/FKAzTbtnPBEb7MYCuGB56noEVvDXbAmTzPG956VR
+ LLAnS0LBjQX2Gtb/KpIOdzDmpft530ZhE8hwOhmUlDkYL0IH/tmKBG5J9 g==;
+Date: Fri, 14 Jan 2022 12:57:18 +0100
 From: Vincent Whitchurch <vincent.whitchurch@axis.com>
 To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v11 03/19] dyndbg: add write-to-tracefs code
-Message-ID: <20220114114654.GA23983@axis.com>
+Subject: Re: [PATCH v11 01/19] dyndbg: add _DPRINTK_FLAGS_ENABLED
+Message-ID: <20220114115718.GB23983@axis.com>
 References: <20220107052942.1349447-1-jim.cromie@gmail.com>
- <20220107052942.1349447-4-jim.cromie@gmail.com>
+ <20220107052942.1349447-2-jim.cromie@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <20220107052942.1349447-4-jim.cromie@gmail.com>
+In-Reply-To: <20220107052942.1349447-2-jim.cromie@gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -73,97 +71,50 @@ Cc: "quic_saipraka@quicinc.com" <quic_saipraka@quicinc.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jan 07, 2022 at 06:29:26AM +0100, Jim Cromie wrote:
-> adds: dynamic_trace()
->  uses trace_console() temporarily to issue printk:console event
->  uses internal-ish __ftrace_trace_stack code:
->       4-context buffer stack, barriers per Steve
+On Fri, Jan 07, 2022 at 06:29:24AM +0100, Jim Cromie wrote:
+>  #ifdef CONFIG_JUMP_LABEL
+> -			if (dp->flags & _DPRINTK_FLAGS_PRINT) {
+> -				if (!(modifiers->flags & _DPRINTK_FLAGS_PRINT))
+> +			if (dp->flags & _DPRINTK_FLAGS_ENABLED) {
+> +				if (!(modifiers->flags & _DPRINTK_FLAGS_ENABLED))
+>  					static_branch_disable(&dp->key.dd_key_true);
+> -			} else if (modifiers->flags & _DPRINTK_FLAGS_PRINT)
+> +			} else if (modifiers->flags & _DPRINTK_FLAGS_ENABLED)
+>  				static_branch_enable(&dp->key.dd_key_true);
+>  #endif
+>  			dp->flags = newflags;
+> -- 
+> 2.33.1
 > 
-> call it from new funcs:
->   dynamic_printk() - print to both syslog/tracefs
->   dynamic_dev_printk() - dev-print to both syslog/tracefs
-> 
-> These handle both _DPRINTK_FLAGS_PRINTK and _DPRINTK_FLAGS_TRACE
-> cases, allowing to vsnprintf the message once and use it for both,
-> skipping past the KERN_DEBUG character for tracing.
-> 
-> Finally, adjust the callers: __dynamic_{pr_debug,{,net,ib}dev_dbg},
-> replacing printk and dev_printk with the new funcs above.
-> 
-> The _DPRINTK_FLAGS_TRACE flag character s 'T', so the following finds
-> all callsites enabled for tracing:
-> 
->   grep -P =p?T /proc/dynamic_debug/control
-> 
-> Enabling debug-to-tracefs is 2 steps:
-> 
->   # event enable
->   echo 1 > /sys/kernel/tracing/events/dyndbg/enable
->   # callsite enable
->   echo module foo +T > /proc/dynamic_debug/control
-> 
-> This patch,~1,~2 are based upon:
->   https://lore.kernel.org/lkml/20200825153338.17061-1-vincent.whitchurch@axis.com/
-> 
-> .. with simplification of temporarily reusing trace_console() rather
-> than adding a new printk:dyndbg event.  Soon, add 2 new events
-> capturing the pr_debug & dev_dbg() args.
 
-The example above does not match the code in this patch since the
-dyndbg:* events are only added in a later patch.  Perhaps you could
-reorder this patch stack so that you don't use trace_console() in this
-patch just to replace it with the new events in the next patch?
+I haven't tested it so I could be mistaken, but when
+_DPRINTK_FLAGS_ENABLED gets two flags in the next patch, it looks like
+this code still has the problem which I mentioned in
+https://lore.kernel.org/lkml/20211209150910.GA23668@axis.com/?
 
-> 
-> CC: vincent.whitchurch@axis.com
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-> ---
->  .../admin-guide/dynamic-debug-howto.rst       |   1 +
->  lib/dynamic_debug.c                           | 155 +++++++++++++++---
->  2 files changed, 130 insertions(+), 26 deletions(-)
-> 
-> diff --git a/Documentation/admin-guide/dynamic-debug-howto.rst b/Documentation/admin-guide/dynamic-debug-howto.rst
-[...]
-> @@ -723,29 +822,33 @@ void __dynamic_ibdev_dbg(struct _ddebug *descriptor,
->  {
->  	struct va_format vaf;
->  	va_list args;
-> +	unsigned int flags;
->  
->  	va_start(args, fmt);
->  
->  	vaf.fmt = fmt;
->  	vaf.va = &args;
-> +	flags = descriptor->flags;
->  
->  	if (ibdev && ibdev->dev.parent) {
->  		char buf[PREFIX_SIZE] = "";
->  
-> -		dev_printk_emit(LOGLEVEL_DEBUG, ibdev->dev.parent,
-> -				"%s%s %s %s: %pV",
-> -				dynamic_emit_prefix(descriptor, buf),
-> -				dev_driver_string(ibdev->dev.parent),
-> -				dev_name(ibdev->dev.parent),
-> -				dev_name(&ibdev->dev),
-> -				&vaf);
-> +		dynamic_dev_printk(flags, ibdev->dev.parent,
-> +				   "%s%s %s %s: %pV",
-> +				   dynamic_emit_prefix(descriptor, buf),
-> +				   dev_driver_string(ibdev->dev.parent),
-> +				   dev_name(ibdev->dev.parent),
-> +				   dev_name(&ibdev->dev),
-> +				   &vaf);
->  	} else if (ibdev) {
-> -		printk(KERN_DEBUG "%s: %pV", dev_name(&ibdev->dev), &vaf);
-> +		dynamic_printk(flags, KERN_DEBUG "%s%s: %pV",
-> +			       dev_name(&ibdev->dev), &vaf);
->  	} else {
-> -		printk(KERN_DEBUG "(NULL ib_device): %pV", &vaf);
-> +		dynamic_printk(flags, KERN_DEBUG "(NULL ip_device): %pV",
-> +			       &vaf);
->  	}
->  
-> -	va_end(args);
-> +va_end(args);
-
-This looks like an unintentional whitespace change?
+| I noticed a bug inside the CONFIG_JUMP_LABEL handling (also present
+| in the last version I posted) which should be fixed as part of the
+| diff below (I've added a comment).
+| [...] 
+|  #ifdef CONFIG_JUMP_LABEL
+| -			if (dp->flags & _DPRINTK_FLAGS_PRINT) {
+| -				if (!(modifiers->flags & _DPRINTK_FLAGS_PRINT))
+| +			if (dp->flags & _DPRINTK_FLAGS_ENABLE) {
+| +				/*
+| +				 * The newflags check is to ensure that the
+| +				 * static branch doesn't get disabled in step
+| +				 * 3:
+| +				 *
+| +				 * (1) +pf
+| +				 * (2) +x
+| +				 * (3) -pf
+| +				 */
+| +				if (!(modifiers->flags & _DPRINTK_FLAGS_ENABLE) &&
+| +				    !(newflags & _DPRINTK_FLAGS_ENABLE)) {
+|  					static_branch_disable(&dp->key.dd_key_true);
+| -			} else if (modifiers->flags & _DPRINTK_FLAGS_PRINT)
+| +				}
+| +			} else if (modifiers->flags & _DPRINTK_FLAGS_ENABLE) {
+|  				static_branch_enable(&dp->key.dd_key_true);
+| +			}
+|  #endif
