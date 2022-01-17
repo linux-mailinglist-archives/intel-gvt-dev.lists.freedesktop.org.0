@@ -1,64 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB65E48F66B
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Jan 2022 11:46:24 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF604490113
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Jan 2022 06:17:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 492B410E5C8;
-	Sat, 15 Jan 2022 10:46:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9666110EA79;
+	Mon, 17 Jan 2022 05:17:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com
- [IPv6:2a00:1450:4864:20::135])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D000010E5C8;
- Sat, 15 Jan 2022 10:46:22 +0000 (UTC)
-Received: by mail-lf1-x135.google.com with SMTP id m3so24722410lfu.0;
- Sat, 15 Jan 2022 02:46:22 -0800 (PST)
+Received: from mail-oi1-x230.google.com (mail-oi1-x230.google.com
+ [IPv6:2607:f8b0:4864:20::230])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1B72610EA79
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 17 Jan 2022 05:17:42 +0000 (UTC)
+Received: by mail-oi1-x230.google.com with SMTP id s127so21977036oig.2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 16 Jan 2022 21:17:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=6/WqjtvaldvIuuDILXcOhy2UUZHcFUmWvxb8cg9aqZE=;
- b=fI7XUHCO75BeA0ZGEszIWf1Wuth81Clw7+miYojKvdV46DzreGYdGIt47UTAsnsxJh
- TnAMUz8YPyOWIA9GMcv6kvhRjsx+u4DBbdR/2iUF8afdQpOEck0ZOIFuoVMZ9EqsNOPQ
- CH+BZ/DDBo4H4LUbpPX8r/GEijEtqu4L7VoiCH5ZyqMcm0RzLIrnb/hE0DzCoAFkMecC
- iPZ5554X7pPzC9eyBANGZIBzz8YaGIOmgmMp9O+h8IrYzLMuP+u+B+jBGR0RP02Hy9Sp
- wiyO1xW0CBnX1Kfg3Rx7DNne4hhzK9lwDUs/Y59eMXGJRdx7GYLAPl8XLoK+/dV7KV+H
- IkeA==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=NkFdYUumTFJwN/sDeiXI3MHwJBBp8bmDeLQq9TTNLyo=;
+ b=dKLzqIi8sF+U+t7tjfQElLhQjajSYhqRr8XGXwWbzU92D2qlJGibaAPkQ4eTRl0t3J
+ yaLbVl5SwYojh7UNpMev1EzhhQybdc20SQwmHcjE6z1oDsHe06RpL+Z1azHnvI77w6Lh
+ TfIgAVEjJpMW2yHldV7Cn7UXu1hc+L4MRxK2Z4u2w9VB9AI3mUGAffLB0rRfL1uwDAL9
+ tbyFrtwy/y5rEUBFHTpBMfPMvEHUc+/tMLoMeFKhNmTnDVwzDlBqEo6E1R2T8dNZsbIp
+ 6W8nWFg+LUio5I/fXy6huglFQGoW7pBl8+rMM6/KYl1G36WsY0ZPWi2sNxY7C/+jHJ7c
+ KeGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=6/WqjtvaldvIuuDILXcOhy2UUZHcFUmWvxb8cg9aqZE=;
- b=PvTcm8C90/iBiH1zkOUliYkNkc6YriQrt0tNPpHR+1acVuo0LFYyPXHDmfde81wvp8
- jWewdXzH89Z1bGHNOtuXD+4Y8/oZeRJel23jO0COHswFHQKCjvkAPBUnuzOM+Dsaxnu1
- ZCIi3y3RS1yr7miIXhO4LO0BRwYrb8YdFTsFWGXm3jF3dqu7ul2TJpDZP3myR/iAzNJG
- 4SDSIWEt6rU6SxcwryCob5jpEQ36hijDhgC0YNeAstoswWISjbF5mnP+/AoYoBtaW6J9
- UfgMX0aePi9LtATV1Qf4zcu8coOK/2f1xmQKBdeN3UnzMN5eoBoebgYmaDBBNfYGww/Z
- E3CQ==
-X-Gm-Message-State: AOAM532+h9eYmOuoePftAGYsMzHYiCZYEmyFZetyr4KW90N0lbbsVYYf
- Nqya1sDoT0PExq6jJa2ca9E=
-X-Google-Smtp-Source: ABdhPJzDNdwOkxS97tI2rsozJpm7dE8suX70zKimxNyqGQMPdii7rl0iYPHAw1aJSrvpWthJRU/mkA==
-X-Received: by 2002:a05:6512:3f20:: with SMTP id
- y32mr9913631lfa.401.1642243580991; 
- Sat, 15 Jan 2022 02:46:20 -0800 (PST)
-Received: from [192.168.1.14] (88-113-32-99.elisa-laajakaista.fi.
- [88.113.32.99])
- by smtp.gmail.com with ESMTPSA id g8sm80294ljl.78.2022.01.15.02.46.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 15 Jan 2022 02:46:20 -0800 (PST)
-To: rodrigo.vivi@intel.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com
-From: Zhi Wang <zhi.wang.linux@gmail.com>
-Subject: [GVT PULL] gvt-fixes for drm-intel-fixes
-Message-ID: <1f619581-e3da-3899-09ac-f714d954a580@gmail.com>
-Date: Sat, 15 Jan 2022 10:46:20 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=NkFdYUumTFJwN/sDeiXI3MHwJBBp8bmDeLQq9TTNLyo=;
+ b=EG8znJWcjdPVFqwl4IS0reHpDg5sCze5MeQPYlHomzZU05XeKNj6enZk7uFo+ucC/g
+ VgrVbjv0P3KUj+2+XNWmuguFVNAFos7ofF9zupQ1jfA7WwnnG4LIo7Avs+tsoYaIzS3/
+ zbTOYgfJNzz1+kP/3o2SzmzAEVWXHStVYjAFixLpvIgfRIKdbep2xiWaGjnO/tOcW2NA
+ 72AXxw0scs/qKNRWGedmLqY9drTTuP5+GdykaBV4dyyJs+uZmXWUprX6KAnsz+YuLc1E
+ 38uaMaW4dx9UL/yZm4SHo6JgWviRVCK5el1dfoUGoUMMeH4nSdZPR24+F5B8DcvtrLF6
+ HUKQ==
+X-Gm-Message-State: AOAM531wgeBASOPJF0pihBHxki3+WiIoFM+pEFLoW7ESTi3GIBTurIEO
+ JYhK/c67yyTc70h93k55t8NXBeV/vvNzZZjJXdo=
+X-Google-Smtp-Source: ABdhPJy4WoMZMZr9d4F0P50nzPY+LtyeYKC57ay5dofZJcrxi/fWEdYhfmyGPT/f/Ol4XyACmcCPVvkOoCz8SSu6Nn8=
+X-Received: by 2002:a05:6808:1185:: with SMTP id
+ j5mr21478956oil.78.1642396661156; 
+ Sun, 16 Jan 2022 21:17:41 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+From: "Mr. Vincent Bounie" <chimeberece@gmail.com>
+Date: Mon, 17 Jan 2022 06:16:42 +0100
+Message-ID: <CALmWpHtxxkcALyBUGDFiqfFYJuXExGuT7O7X2UJ0jjrOKyBuHw@mail.gmail.com>
+Subject: If you have good business/project plan.
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000918e9905d5c04506"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,47 +62,63 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
+Reply-To: v.bounievb@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi folks:
+--000000000000918e9905d5c04506
+Content-Type: text/plain; charset="UTF-8"
 
-Here is the gvt-fixes pull for drm-intel-fixes. It contains:
+Dear,
 
-- Make DRM_I915_GVT depend on X86 (Siva Mullati)
-- Clean kernel doc in gtt.c (Randy Dunlap)
+Good day and happy new year.
 
-This pull has been tested by: dim apply-pull drm-intel-fixes < this_email.eml
+Our Client is currently seeking means of expanding and relocating our
+business interest in the following sectors; Manufacturing, Construction,
+Oil and Gas, Banking, Real Estate, Stock Speculation, Mining,
+Transportation and Tobacco or any other businesses. If you have a solid
+background and idea of making good profit in any of the above-mentioned
+business sectors or any other business in your country, please write to me
+for possible business co-operation.
 
-Zhi.
+Moreover, our clients are ready to facilitate and fund any business that is
+capable of generating 5% annual return on investment (AROI) but will be
+Purely on Loan Financing. I think I will be delighted to discuss in detail
+with you about your project (s). Our client has enough needed capital in
+excess of ($5Billion US Dollars) to take your project to completion and so
+kindly get back to me for more discussions.
 
-The following changes since commit d46f329a3f6048e04736e86cb13c880645048792:
+Our company would be happy to receive your Executive Summary/Project Plan
+as well as accepting an NDA and our client is ready to provide you with a
+loan.
 
-  drm/i915: Increment composite fence seqno (2021-12-27 11:33:40 +0200)
+Waiting for your urgent reply.
 
-are available in the Git repository at:
+Best regards,
+Vincent Bounie
+Loan Agent,
+Fenchurch Advisory Financiers/Loan Disbursements.
 
-  https://github.com/intel/gvt-linux.git tags/gvt-fixes-2022-01-13
+--000000000000918e9905d5c04506
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-for you to fetch changes up to d72d69abfdb6e0375981cfdda8eb45143f12c77d:
+<div dir=3D"ltr">Dear,<br><br>Good day and happy new year.<br><br>Our Clien=
+t is currently seeking means of expanding and relocating our business inter=
+est in the following sectors; Manufacturing, Construction, Oil and Gas, Ban=
+king, Real Estate, Stock Speculation, Mining, Transportation and Tobacco or=
+ any other businesses. If you have a solid background and idea of making go=
+od profit in any of the above-mentioned business sectors or any other busin=
+ess in your country, please write to me for possible business co-operation.=
+<br><br>Moreover, our clients are ready to facilitate and fund any business=
+ that is capable of generating 5% annual return on investment (AROI) but wi=
+ll be Purely on Loan Financing. I think I will be delighted to discuss in d=
+etail with you about your project (s). Our client has enough needed capital=
+ in excess of ($5Billion US Dollars) to take your project to completion and=
+ so kindly get back to me for more discussions.<br><br>Our company would be=
+ happy to receive your Executive Summary/Project Plan as well as accepting =
+an NDA and our client is ready to provide you with a loan.<br><br>Waiting f=
+or your urgent reply.<br><br>Best regards,<br>Vincent Bounie<br>Loan Agent,=
+<br>Fenchurch Advisory Financiers/Loan Disbursements. </div>
 
-  drm/i915/gvt: Make DRM_I915_GVT depend on X86 (2022-01-13 18:13:12 +0000)
-
-----------------------------------------------------------------
-gvt-fixes-2022-01-13
-
-- Make DRM_I915_GVT depend on X86 (Siva Mullati)
-- Clean kernel doc in gtt.c (Randy Dunlap)
-
-----------------------------------------------------------------
-Randy Dunlap (1):
-      drm/i915/gvt: clean up kernel-doc in gtt.c
-
-Siva Mullati (1):
-      drm/i915/gvt: Make DRM_I915_GVT depend on X86
-
- drivers/gpu/drm/i915/Kconfig   | 1 +
- drivers/gpu/drm/i915/gvt/gtt.c | 4 ++--
- 2 files changed, 3 insertions(+), 2 deletions(-)
+--000000000000918e9905d5c04506--
