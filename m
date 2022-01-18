@@ -1,56 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBBEB4911C6
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Jan 2022 23:34:02 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DD034921CD
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jan 2022 10:03:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2C6FD112184;
-	Mon, 17 Jan 2022 22:34:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 13993112985;
+	Tue, 18 Jan 2022 09:03:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ua1-x933.google.com (mail-ua1-x933.google.com
- [IPv6:2607:f8b0:4864:20::933])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2FBB9112184;
- Mon, 17 Jan 2022 22:34:00 +0000 (UTC)
-Received: by mail-ua1-x933.google.com with SMTP id l15so33094196uai.11;
- Mon, 17 Jan 2022 14:34:00 -0800 (PST)
+Received: from mail-yb1-xb30.google.com (mail-yb1-xb30.google.com
+ [IPv6:2607:f8b0:4864:20::b30])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E204F112985
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 18 Jan 2022 09:03:50 +0000 (UTC)
+Received: by mail-yb1-xb30.google.com with SMTP id g81so53653381ybg.10
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 18 Jan 2022 01:03:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=J6GKKmupfWWlnbgXJKPfzJduT4T53vFjxxafbxuWCWg=;
- b=petsnc8lPMN850o8bB7rXXqsr7jTek96Ibwh+lLVqGy1nC6IOknt0HnjXjpcmfOEqm
- N/8+yo35F8ZgjCaaeqzv1NMEfg7Pt8yXnHz6muenSeqEVoSTHjOUb8xy/SD9+ryVqwn6
- Fj5lk09WqWsy0Kf+4puiN1ivWTVcYpLYEq9dkw1ntuRXpuYJsqjg/5AdiWeRYvAMh/iN
- k7pZNkMA5uha61nx/Z/SLrNpCkLup0vmUItmGaIpaQHallceNw9mza3k38ierx/W2LY8
- aPSdCBM1OrasuuvSjuu8RVtTHKm6rIkCTLJs18gthrAO1slm8npdnXZLDIRFkAoEm8T9
- 4tSA==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=IAamEH5Xu1dJ3X0trVcFTPIrL7aTtcDGn5mUS4vw1a8=;
+ b=MKVoGuH84JEqwH7FLePXiHWn749zPRU0NdtP8Sm2JMhUl9c1iVyWjbwz6g8cfGp/lf
+ wGwjovvsv0mdzOrkruLS7VCe5a7nqOLOAOguQfLlO7KlNogBFH31ts7TJnJIMROay93O
+ zLFD2FXmAbjh/mANJwaPSceaNEIBY2ial/GMPVceYyFjbk49spZ6usuG0YECL34rgvGB
+ iei5o2VJiTWPHrHs+06yeYgSnvm3Lro4YfCcKClwdqQV0oHYRRf0rSUvau/jSGUGIY/g
+ PIq25ry8zIUYTR1kpaKtOSp5p5QnPiBRoNfQN58gXlJM4igUY1pzRJNojXS4U/9SVgkd
+ 1m4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=J6GKKmupfWWlnbgXJKPfzJduT4T53vFjxxafbxuWCWg=;
- b=qy9Gj9KSy4KIdUAgOBNzJnhi1M4CWEiA8IdIoCUMLXmfrF+uhQuwhZaEgwROC/ea/Z
- 5F9DE+5vTew56xV/R2JKMOOoI9eyV8IA6WOPYJhuAlL66QF3R/48ev4nLJR6Bw7zZrZA
- UBJMETz8Y6n4zN0F36isXLu9+QZjOWd/1Z3xqcunnjQ3rNmhebJk9N8iLQsVMDuZCEox
- 7jea5A8pONIGlybwUZUwTlT0DfroHOtV5gnI4oUqQanL1fcXr7ZVEYcyaifWrwyvqw4P
- Gi+0rVu7k7NuG6wrc5Shbu+/QjC+XDGeGr7p4ozaucJN+ct97izALBMA23LCEj07tPv/
- leHA==
-X-Gm-Message-State: AOAM533xudQ9R4yre4tEKS7fBX9YHHbzLLscFaol+duTE1qljAhhVEv7
- 4WLTxzZi0rKTVLVI/ow5lFAeVjo6/ZNagOLTKc8=
-X-Google-Smtp-Source: ABdhPJxWhkcwjL2R6hpGY61yBJ6r2FktnPVmLesfV1BZdfVRhtY/6a2CDJAHrMsl0L46bPttGQkAEE28ovqTC/SSiYI=
-X-Received: by 2002:a05:6102:3f56:: with SMTP id
- l22mr7888725vsv.20.1642458839004; 
- Mon, 17 Jan 2022 14:33:59 -0800 (PST)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=IAamEH5Xu1dJ3X0trVcFTPIrL7aTtcDGn5mUS4vw1a8=;
+ b=NHW+Sh+Qi4dHfuTTEzONAtHi2z2Z/2tWBO7c9aCH7za1Xn8ygjXwYRlBTvIDxQwenF
+ 1W0S2stmOgs6cHZXGdHVvs7ohdfYTI0RXkKB01YcbMtUzjnP2wx4XvIEu55+6hLlvaD7
+ WDXxVydgT5/WlKyUG0v/xbTR3YpHwqYIi22VSsXcuECnqON4DA9hX9JEKVsjtRwV9f0n
+ jDw5dK/i+48SqWACdhYksbpSUZ75WmlZU5JFeqGogBqLmzmKNaUGo2Urlx+KQS1zoXw0
+ nfkzjmcTGymFmwd8NesrrklkMsPq9xYFMqcFNN3YD3CHSR4U47DGYQFdOZdkxvypBuBx
+ xbjA==
+X-Gm-Message-State: AOAM530vyePA/IOKdwIKZSXsw9vRCgLzWdwfXoFCDT51nJmg8i2VC1aP
+ Y8pU7UZ8o0bsMw31LypjqxjaKzYSS8x+NWRLIxQ=
+X-Google-Smtp-Source: ABdhPJy6S8YpzyetQz5KgFrhfh63qx4z5C4Z/Y2SVI8oau6/Qt6fRl+454Z9GiaGeU2dYh9fMxr8ktnL9Tw7RDFSq4I=
+X-Received: by 2002:a25:7287:: with SMTP id
+ n129mr30710797ybc.351.1642496630031; 
+ Tue, 18 Jan 2022 01:03:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20220107052942.1349447-1-jim.cromie@gmail.com>
- <20220107052942.1349447-2-jim.cromie@gmail.com>
- <20220114115718.GB23983@axis.com>
-In-Reply-To: <20220114115718.GB23983@axis.com>
-From: jim.cromie@gmail.com
-Date: Mon, 17 Jan 2022 15:33:33 -0700
-Message-ID: <CAJfuBxw1scH7xS7-RfxZ369wVQ8umP+0MHqz1U_3cW-BLPsDkg@mail.gmail.com>
-Subject: Re: [PATCH v11 01/19] dyndbg: add _DPRINTK_FLAGS_ENABLED
-To: Vincent Whitchurch <vincent.whitchurch@axis.com>
+Received: by 2002:a05:7108:3655:0:0:0:0 with HTTP; Tue, 18 Jan 2022 01:03:49
+ -0800 (PST)
+From: Asil Ajwad <graceyaogokamboule@gmail.com>
+Date: Mon, 17 Jan 2022 21:03:49 -1200
+Message-ID: <CA+Yy_gAHH8Aue7iwiH_cJ4+g8NkHKK3sLYXeb_HRC+HesC70HA@mail.gmail.com>
+Subject: Greetings,
+To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -64,82 +64,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "quic_saipraka@quicinc.com" <quic_saipraka@quicinc.com>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "linux@rasmusvillemoes.dk" <linux@rasmusvillemoes.dk>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "will@kernel.org" <will@kernel.org>, "maz@kernel.org" <maz@kernel.org>,
- "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
- "mingo@redhat.com" <mingo@redhat.com>,
- "daniel.vetter@ffwll.ch" <daniel.vetter@ffwll.ch>,
- "arnd@arndb.de" <arnd@arndb.de>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "rostedt@goodmis.org" <rostedt@goodmis.org>,
- "jbaron@akamai.com" <jbaron@akamai.com>,
- "mathieu.desnoyers@efficios.com" <mathieu.desnoyers@efficios.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robdclark@gmail.com" <robdclark@gmail.com>,
- "quic_psodagud@quicinc.com" <quic_psodagud@quicinc.com>,
- "seanpaul@chromium.org" <seanpaul@chromium.org>
+Reply-To: asil.ajwad@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jan 14, 2022 at 4:57 AM Vincent Whitchurch
-<vincent.whitchurch@axis.com> wrote:
->
-> On Fri, Jan 07, 2022 at 06:29:24AM +0100, Jim Cromie wrote:
-> >  #ifdef CONFIG_JUMP_LABEL
-> > -                     if (dp->flags & _DPRINTK_FLAGS_PRINT) {
-> > -                             if (!(modifiers->flags & _DPRINTK_FLAGS_PRINT))
-> > +                     if (dp->flags & _DPRINTK_FLAGS_ENABLED) {
-> > +                             if (!(modifiers->flags & _DPRINTK_FLAGS_ENABLED))
-> >                                       static_branch_disable(&dp->key.dd_key_true);
-> > -                     } else if (modifiers->flags & _DPRINTK_FLAGS_PRINT)
-> > +                     } else if (modifiers->flags & _DPRINTK_FLAGS_ENABLED)
-> >                               static_branch_enable(&dp->key.dd_key_true);
-> >  #endif
-> >                       dp->flags = newflags;
-> > --
-> > 2.33.1
-> >
->
-> I haven't tested it so I could be mistaken, but when
-> _DPRINTK_FLAGS_ENABLED gets two flags in the next patch, it looks like
-> this code still has the problem which I mentioned in
-> https://lore.kernel.org/lkml/20211209150910.GA23668@axis.com/?
->
+-- 
+Greetings,
 
-Yes, thanks for noticing.  I missed that detail.
-Apriori, I dont know why bit-and of bit-or'd flags doesnt cover it,
-but I will take a careful look.
+I am Mr.Asil Ajwad, I work with United Bank of Africa, can you use
+an ATM Visa Card to withdraw money at, ATM Cash Machine in your
+country, if yes I want to transfer abounded fund the sum of $10.5million
+US-Dollars, to you from my country, this is part of the money that was
+abounded by our late old client a politician who unfortunately lost
+his life and was forced out of power Du to greedy act, the bank will
 
-> | I noticed a bug inside the CONFIG_JUMP_LABEL handling (also present
-> | in the last version I posted) which should be fixed as part of the
-> | diff below (I've added a comment).
-> | [...]
-> |  #ifdef CONFIG_JUMP_LABEL
-> | -                     if (dp->flags & _DPRINTK_FLAGS_PRINT) {
-> | -                             if (!(modifiers->flags & _DPRINTK_FLAGS_PRINT))
-> | +                     if (dp->flags & _DPRINTK_FLAGS_ENABLE) {
-> | +                             /*
-> | +                              * The newflags check is to ensure that the
-> | +                              * static branch doesn't get disabled in step
-> | +                              * 3:
-> | +                              *
-> | +                              * (1) +pf
-> | +                              * (2) +x
-> | +                              * (3) -pf
-> | +                              */
-> | +                             if (!(modifiers->flags & _DPRINTK_FLAGS_ENABLE) &&
-> | +                                 !(newflags & _DPRINTK_FLAGS_ENABLE)) {
-> |                                       static_branch_disable(&dp->key.dd_key_true);
-> | -                     } else if (modifiers->flags & _DPRINTK_FLAGS_PRINT)
-> | +                             }
-> | +                     } else if (modifiers->flags & _DPRINTK_FLAGS_ENABLE) {
-> |                               static_branch_enable(&dp->key.dd_key_true);
-> | +                     }
-> |  #endif
+change the account details to your name, and apply for a Visa Card
+with your details, the Visa Card will be send to you, and you can be
+withdrawing money with it always, whatever any amount you withdraw
+daily, you will send 60% to me and you will take 40%, the Visa Card
+and the bank account will be on your name, I will be waiting for your
+response for more details, thanks to you a lot for giving me your time.
+
+regards,
+Mr.Asil Ajwad.
