@@ -2,45 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C00D3494000
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Jan 2022 19:34:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6109949706D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 23 Jan 2022 08:03:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 64C8410E216;
-	Wed, 19 Jan 2022 18:34:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2D08C10EE61;
+	Sun, 23 Jan 2022 07:03:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 6509 seconds by postgrey-1.36 at gabe;
- Wed, 19 Jan 2022 18:34:42 UTC
-Received: from server4.candhtruckparts.com (unknown [66.84.10.49])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1BAD810E216;
- Wed, 19 Jan 2022 18:34:42 +0000 (UTC)
-Received: from [::1] (port=53288 helo=User)
- by server4.candhtruckparts.com with smtp (Exim 4.86_1)
- (envelope-from <cbnigeria@citromail.hu>)
- id 1nADzt-0008Tf-9P; Wed, 19 Jan 2022 11:39:45 -0500
-From: "CBN Notification"<cbnigeria@citromail.hu>
-Subject: Claim this your payment as quickly as possible
-Date: Wed, 19 Jan 2022 08:46:03 -0800
+Received: from mail-ua1-x92b.google.com (mail-ua1-x92b.google.com
+ [IPv6:2607:f8b0:4864:20::92b])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 92C0710EE5B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 23 Jan 2022 07:03:03 +0000 (UTC)
+Received: by mail-ua1-x92b.google.com with SMTP id b37so7198530uad.12
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 22 Jan 2022 23:03:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=KeMi8W+p20zdR41YZoRj2EapY7imNsLYkAgQIQsIzqY=;
+ b=HW9sl8VFP4Qktb78ttQItQsfiXz6oCWNUpE1O4Z7iCipKxBzjW0aTPsQm9lLxnoxui
+ 92WBklVeWdwXAPV4BTJRuGRiByNPBcsy+PORttZZejna+qIkMfNZJWZuZDsgDs3rlufI
+ DxaxTz2LiTKQzVD95G3Rz/XEk3LaBGXfKA/bLyJbGjBvJYQtimYx0ZtjpX2F0LuNem0f
+ IqSivYIHiuHm4Tyu/x2Fk+blQzYzopSpaZB4j7fgcYdLcokKzMLKWyYg+dji8eWBxd7I
+ IDxL/lgEmTO63UyT0BQLMuoh/BM/Gjg5S+xPT1OCjeazU7X8W3ckuDNQRskNmdidO2kD
+ +Vow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=KeMi8W+p20zdR41YZoRj2EapY7imNsLYkAgQIQsIzqY=;
+ b=7YGOsPOBvwl7rrtjhzD+HcxTbOulvHHtOHoJXhh3vC8Sp4dlVxUKXali5iyNvF2Ait
+ GTLr9gr5kmnvW5eN4vlkGwUSdFdeP+ezm+FrFVpMHbM82deU6uqW8mYB6altxqR+0RXM
+ 57yhSvzAVKhpmxe+X/x7RvW5d8tC+rB1rnbVZFiCMW8pixIvAEPmXNRVh67sotrVpt8c
+ D+hu56oraFN6DhYRF4GH6URZ0FqMJx8T4eValL3eHI2t2SRjjX6TciebHpFlz6dUYsta
+ U0gHy1w/+2b3hYSx5njX1aLjhU4Ntlmy4qdsGiRA+6HPjezZFS/c5JAsujcBPgV+CYPv
+ ne3Q==
+X-Gm-Message-State: AOAM532UZtSbUL2+44CS4BzBizuEIvOtlanZQJPi/2+xvF4HKaZA4e/u
+ FHO2KxuqLZ0NQLp69jrfK8/1DcaW1bQufKNWwQg=
+X-Google-Smtp-Source: ABdhPJw77vvVJlLjBB/8Mo9YtdMH37wRan1KioQzSx40769Imo6LeRNxc86+5LKFuk/0PbFo1JckvqU9EneNBrZQ5e4=
+X-Received: by 2002:a9f:31cc:: with SMTP id w12mr4414443uad.46.1642921382321; 
+ Sat, 22 Jan 2022 23:03:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server4.candhtruckparts.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - citromail.hu
-X-Get-Message-Sender-Via: server4.candhtruckparts.com: acl_c_authenticated_local_user:
- root
-X-Authenticated-Sender: server4.candhtruckparts.com: root
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Received: by 2002:a59:cff0:0:b0:282:20c4:52f9 with HTTP; Sat, 22 Jan 2022
+ 23:03:01 -0800 (PST)
+From: Seyba Daniel <kango3159@gmail.com>
+Date: Sun, 23 Jan 2022 08:03:01 +0100
+Message-ID: <CAN=6-KXWhp1eo-FRy=+ApkkowRa57mLuVo4ZVMPkWOVkCtptDA@mail.gmail.com>
+Subject: Hello,
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,41 +63,22 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: cbnig@citromail.hu
+Reply-To: daniel.seyba@yahoo.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220119183443.64C8410E216@gabe.freedesktop.org>
 
-<html>
+Hello,
 
-<head>
-<meta http-equiv="Content-Language" content="en-us">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Attention</title>
-</head>
+I am so sorry contacting you in this means especially when we have never
+met before. I urgently seek your service to represent me in investing in
+your region / country and you will be rewarded for your service without
+affecting your present job with very little time invested in it.
 
-<body>
+My interest is in buying real estate, private schools or companies with
+potentials for rapid growth in long terms.
 
-<p><font face="Segoe UI" size="4">Attention: Beneficiary,<br>
-<br>
-Re: Cash Payment release has been made today in our board of directors meeting.
-<br>
-<br>
-After the (C.B.N) Board of Directors meeting held on (07/01/2022 )<br>
-the management has agreed to release your overdue fund to you in <br>
-cash through our offshore paying Vault in Madrid, Spain. <br>
-<br>
-Consequently, payment release instructions of US$10.5 million dollars<br>
-has been issued to our offshore paying Vault in Madrid for onward<br>
-Cash release to Your humble self. <br><br><b>Note:</b> to the above payment release instructions, your fund will be directly given<br>to
-you in Cash or any other way you may want it via our affiliated offshore<br>paying Vault in Madrid, Spain without any further delays
-as soon as you<br>respond to this email notice.
-<br><br>
-Yours sincerely,<br>
-<br>
-Godwin Emefiele<br>
-<b>Central Bank ~ Governor</b></font></p>
+So please confirm interest by responding back.
 
-</body>
+My dearest regards
 
-</html>
+Seyba Daniel
