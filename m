@@ -2,42 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DC5549E947
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Jan 2022 18:47:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F40849E89F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Jan 2022 18:15:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C037E10E1F8;
-	Thu, 27 Jan 2022 17:47:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0195410E309;
+	Thu, 27 Jan 2022 17:15:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1517 seconds by postgrey-1.36 at gabe;
- Thu, 27 Jan 2022 17:47:42 UTC
-Received: from mail.vgdkvwt.cn (elhauu.cn [106.75.32.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 50EAB10E1F8
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 27 Jan 2022 17:47:42 +0000 (UTC)
-Received: from lfx (unknown [120.229.60.59])
- by mail.vgdkvwt.cn (Postfix) with ESMTPA id 98674329C44E
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 Jan 2022 01:12:11 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vgdkvwt.cn; s=default; 
- t=1643303531;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type;
- bh=rTqCoHd7EfWPjtyeZ0B0pqaBH11uXz3t8YloPpsk3IY=;
- b=lRIvwp/XtQzcHwCWXoj3qqq2dH48z9y+CTotRY0Fg2GyTSvFB/vOvGACWO39nCJKlHUk0D
- K/XX4AYHfDuKQ8aW9vZ7U1Qz8PgLRcKvxySAEiBL0q32aL1Dolzu4l4KOYxildal8I5yw+
- Jf44z72Y64tkM+KOF6YhSKblReMCz64=
-From: ETC-CBC <ac4@vgdkvwt.cn>
-To: intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?utf-8?B?77yl77y077yj44K144O844OT44K544KS44GU5Yip55So44GE44Gf44Gg44GN44GC44KK44GM44Go44GG?=
- =?utf-8?B?44GU44GW44GE44G+44GZ44CC?=
-Date: Fri, 28 Jan 2022 02:12:05 +0900
-Message-ID: <00ff07421e36$28f40152$c987f67b$@lfx>
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C909C10E13E;
+ Thu, 27 Jan 2022 17:15:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1643303708; x=1674839708;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=BTXif3Y9BcQ+bT2YufKy99tXJ8gEEYoStW5cRVM5Nxc=;
+ b=ImGpTlDkJYmY7YxG0yOnYXVdFehzn96d8lppr5waC5IktZzFgEm/JwM9
+ DAZd9w8K6BjsLahLS8+9ZcvsYQTK3nbkCXuNl1kL3qKLkduk5jSHCHEt8
+ vGXhuXLTR0JEgilwTe5AmgcC+qUiribUNGK5CmwZiZ4PSk0knyGAXjM8m
+ 5CRLmAEdW7mFmopGpgrYEvh+bjIVYdF5thVhv/sAQDS0RFz5hjJGRYJZ7
+ L0jXq2qx1XjoMgrsMa2DI/vyOvgCpeL1zuuEkWlLNVj0I1f4Bcn2i9PZe
+ uubFICsxS7u0XwEp0sx1/taQAQ4biJdh4tyLkrZnMwktgAVy/Ufou9aZs A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="234293495"
+X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; d="scan'208";a="234293495"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jan 2022 09:15:08 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; d="scan'208";a="480379643"
+Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 27 Jan 2022 09:15:05 -0800
+Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nD8MS-000MqK-P7; Thu, 27 Jan 2022 17:15:04 +0000
+Date: Fri, 28 Jan 2022 01:14:47 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>, hch@lst.de, jgg@nvidia.com,
+ jani.nikula@linux.intel.com
+Subject: Re: [Intel-gfx] [PATCH 1/3] i915/gvt: Introduce the mmio_table.c to
+ support VFIO new mdev API
+Message-ID: <202201280125.VuLtasAS-lkp@intel.com>
+References: <20220127120508.11330-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="----=_NextPart_000_0686_013ADBF1.187826D0"
-X-Mailer: Microsoft Outlook 16.0
-X-Spam: Yes
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220127120508.11330-1-zhi.a.wang@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,184 +61,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kbuild-all@lists.01.org, Zhi Wang <zhi.wang.linux@gmail.com>,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Terrence Xu <terrence.xu@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format.
+Hi Zhi,
 
-------=_NextPart_000_0686_013ADBF1.187826D0
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
+I love your patch! Perhaps something to improve:
 
-DQrigLvvvKXvvLTvvKPjgrXjg7zjg5PjgrnjgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgYLjgorj
-gYzjgajjgYbjgZTjgZbjgYTjgb7jgZnjgIINCg0KDQrlvJXjgY3ntprjgY3kuIvoqJhVUkzjgojj
-gorlv4XopoHkuovpoIXjga7lhaXlipvjgpLjgYrpoZjjgYTjgYTjgZ/jgZfjgb7jgZnjgIINCuKA
-uyDjgbvjgpPjgavjgpPmnKzkurrjgYvjgY/jgavjgpPnorroqo3jga7jgZ/jgoHjgavjgIHjg6bj
-g7zjgrbjg7xJROOAgeOBqOODvOOCjeOBj+eZu+mMsuODoeODvOODq+OCouODieODrOOCueOAgUVU
-Q+OCq+ODvOODieOBsOOCk+OBlOODvOeVquWPt+OBquOBqeOBruOBmOOCh+ODvOOBu+ODvOaDheWg
-seOCkuOCiOODvOOBhOeUqOaEj+OBl+OBpuOBj+OBoOOBleOBhOOAgiANCiANCg0KIA0KDQrigLvm
-nKzjg6Hjg7zjg6vjgYzjgZToh6rouqvlrpvjgafjgarjgYTloLTlkIjjgIHku5bjga7mlrnjgYzo
-qqTjgaPjgablkIzjgZjjg6Hjg7zjg6vjgqLjg4njg6zjgrnjgpLnmbvpjLLjgZfjgZ/jgoLjga7j
-gajogIPjgYjjgonjgozjgb7jgZnjgIINCuOBiuW/g+W9k+OBn+OCiuOBruOBquOBhOaWueOBr+OA
-geOBiuaJi+aVsOOBp+OBmeOBjOODoeODvOODq+acrOaWh+OCkuWJiumZpOOBj+OBoOOBleOBhOOB
-vuOBmeOCiOOBhuOBiumhmOOBhOOBhOOBn+OBl+OBvuOBmeOAgg0KDQoNCi0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLQ0KDQoNCuODoeODvOODq+OCkuWPl+OBkeWPluOBo+OBn+OBiuWuouOBleOB
-vuWwgueUqOOBruODmuODvOOCuOOBp+OBmeOAguOBu+OBi+OBruOBiuWuouOBleOBvuOBr+OBlOWI
-qeeUqOOBhOOBn+OBoOOBkeOBvuOBm+OCk+OAgg0K44Gq44GK44CBNzLmmYLplpPku6XlhoXjgavj
-gZTnorroqo3jgYzjgarjgYTloLTlkIjjgIHoqqDjgavnlLPjgZfoqLPjgZTjgZbjgYTjgb7jgZvj
-gpPjgIHjgqLjgqvjgqbjg7Pjg4jjga7liKnnlKjliLbpmZDjgpLjgZXjgZvjgabjgYTjgZ/jgaDj
-gY3jgb7jgZnjga7jgafjgIHkuojjgoHjgZTkuobmib/jgY/jgaDjgZXjgYTjgIINCg0KDQotLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCg0KDQogDQoNCuKAu+acrOODoeODvOODq+OBuOOBrui/
-lOS/oeOBq+OCiOOCi+OBlOizquWVj+OBq+OBr+OBlOWbnuetlOOBp+OBjeOBvuOBm+OCk+OAgg0K
-DQogDQoNCuKGkuOBlOWkieabtOOBr+OBk+OBoeOCieOBi+OCiSANCg0KIA0KDQogDQoNCiANCg0K
-IA0KDQrilIHilIHilIHilIHilIHilIHilIENCuKWoOeZuuihjOiAhQ0K4pSB4pSB4pSB4pSB4pSB
-4pSB4pSBDQoNCg0K77yl77y077yj5Yip55So54Wn5Lya44K144O844OT44K55LqL5YuZ5bGADQoN
-CkNvcHlyaWdodChDKSAyMDExDQoNCkVhc3QgTmlwcG9uIEV4cHJlc3N3YXkgQ29tcGFueSBMaW1p
-dGVkLA0KTWV0cm9wb2xpdGFuIEV4cHJlc3N3YXkgQ29tcGFueSBMaW1pdGVkLA0KQ2VudHJhbCBO
-aXBwb24gRXhwcmVzc3dheSBDb21wYW55IExpbWl0ZWQsDQpXZXN0IE5pcHBvbiBFeHByZXNzd2F5
-IENvbXBhbnkgTGltaXRlZCwNCkhhbnNoaW4gRXhwcmVzc3dheSBDb21wYW55IExpbWl0ZWQsDQpI
-b25zaHUtU2hpa29rdSBCcmlkZ2UgRXhwcmVzc3dheSBDb21wYW55IExpbWl0ZWQuIEFsbCBSaWdo
-dHMgUmVzZXJ2ZWQNCg0KDQo=
+[auto build test WARNING on drm-tip/drm-tip]
+[also build test WARNING on next-20220127]
+[cannot apply to drm-intel/for-linux-next v5.17-rc1]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-------=_NextPart_000_0686_013ADBF1.187826D0
-Content-Type: text/html;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
+url:    https://github.com/0day-ci/linux/commits/Zhi-Wang/i915-gvt-Introduce-the-mmio_table-c-to-support-VFIO-new-mdev-API/20220127-200727
+base:   git://anongit.freedesktop.org/drm/drm-tip drm-tip
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20220128/202201280125.VuLtasAS-lkp@intel.com/config)
+compiler: gcc-9 (Debian 9.3.0-22) 9.3.0
+reproduce (this is a W=1 build):
+        # https://github.com/0day-ci/linux/commit/533f92651a7a56481a053f1e04dc5a5ec024ffb9
+        git remote add linux-review https://github.com/0day-ci/linux
+        git fetch --no-tags linux-review Zhi-Wang/i915-gvt-Introduce-the-mmio_table-c-to-support-VFIO-new-mdev-API/20220127-200727
+        git checkout 533f92651a7a56481a053f1e04dc5a5ec024ffb9
+        # save the config file to linux build tree
+        mkdir build_dir
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MIHhtbG5zOm8gPSAidXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6
-b2ZmaWNlIj48SEVBRD4NCjxNRVRBIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCIg
-aHR0cC1lcXVpdj1Db250ZW50LVR5cGU+DQo8TUVUQSBuYW1lPUdFTkVSQVRPUiBjb250ZW50PSJN
-U0hUTUwgMTEuMDAuMTA1NzAuMTAwMSI+PC9IRUFEPg0KPEJPRFk+DQo8UCBjbGFzcz1Nc29Ob3Jt
-YWwgDQpzdHlsZT0iVEVYVC1BTElHTjogbGVmdDsgTUFSR0lOOiAwY207IG1zby1wYWdpbmF0aW9u
-OiB3aWRvdy1vcnBoYW4iIA0KYWxpZ249bGVmdD48Rk9OVCBmYWNlPeW+rui9r+mbhem7kT48U1BB
-TiANCmxhbmc9RU4tVVM+4oC7PC9TUEFOPu+8pe+8tO+8o+OCteODvOODk+OCueOCkuOBlOWIqeeU
-qOOBhOOBn+OBoOOBjeOBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgjwvRk9OVD48U1BB
-TiANCmxhbmc9RU4tVVM+PEJSPjwvU1BBTj48U1BBTiBsYW5nPUVOLVVTPjxGT05UIGZhY2U95b6u
-6L2v6ZuF6buRPjxTUEFOIGxhbmc9RU4tVVM+PC9QPg0KPFA+PC9TUEFOPjwvRk9OVD48L1NQQU4+
-PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCBmYWNlPeW+rui9r+mbhem7kT48Rk9OVCANCmZhY2U95b6u
-6L2v6ZuF6buRPuW8leOBjee2muOBjeS4i+iomDxTUEFOIA0KbGFuZz1FTi1VUz5VUkw8L1NQQU4+
-44KI44KK5b+F6KaB5LqL6aCF44Gu5YWl5Yqb44KS44GK6aGY44GE44GE44Gf44GX44G+44GZ44CC
-PC9GT05UPjwvRk9OVD48L1NQQU4+PC9QPuKAuzxGT05UIEVOPyANClRyYW5zaXRpb25hbCA0LjAg
-SFRNTCBEVEQgVzNDID8tIFBVQkxJQyA8IURPQ1RZUEU+PEZPTlQgZmFjZT3lvq7ova/pm4Xpu5E+
-IA0KPE1FVEEgbmFtZT1HRU5FUkFUT1IgY29udGVudD0iTVNIVE1MIDExLjAwLjEwNTcwLjEwMDEi
-PjxVIA0Kc3R5bGU9IkZPTlQtV0VJR0hUOiBib2xkOyBDT0xPUjogI2YwMCI+PEEgDQpocmVmPSJo
-dHRwczovL2V0Yy43cHZqaDN1ay5jbi8iPuOBu+OCk+OBq+OCk+acrOS6uuOBi+OBj+OBq+OCk+ei
-uuiqjeOBruOBn+OCgeOBq+OAgeODpuODvOOCtuODvElE44CB44Go44O844KN44GP55m76Yyy44Oh
-44O844Or44Ki44OJ44Os44K544CBRVRD44Kr44O844OJ44Gw44KT44GU44O855Wq5Y+344Gq44Gp
-44Gu44GY44KH44O844G744O85oOF5aCx44KS44KI44O844GE55So5oSP44GX44Gm44GP44Gg44GV
-44GE44CCIA0KPC9BPjwvVT48L0ZPTlQ+PC9GT05UPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxl
-PSJNQVJHSU46IDBjbSI+PFNUUk9ORz48VT48Rk9OVCBjb2xvcj0jZmYwMDAwIA0KZmFjZT3lvq7o
-va/pm4Xpu5E+PC9GT05UPjwvVT48L1NUUk9ORz4mbmJzcDs8L1A+DQo8UCBjbGFzcz1Nc29Ob3Jt
-YWwgc3R5bGU9Ik1BUkdJTjogMGNtIj48U1BBTiBsYW5nPUVOLVVTPjwvU1BBTj48U1BBTiANCmxh
-bmc9RU4tVVM+PEZPTlQgZmFjZT3lvq7ova/pm4Xpu5E+PFNQQU4gbGFuZz1FTi1VUz48U1BBTiBs
-YW5nPUVOLVVTPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lOOiAw
-Y20iPjxGT05UIGZhY2U95b6u6L2v6ZuF6buRPuKAuzwvRk9OVD48L1NQQU4+PEZPTlQgDQpmYWNl
-PeW+rui9r+mbhem7kT48Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPuacrOODoeODvOODq+OBjOOB
-lOiHqui6q+Wum+OBp+OBquOBhOWgtOWQiOOAgeS7luOBruaWueOBjOiqpOOBo+OBpuWQjOOBmOOD
-oeODvOODq+OCouODieODrOOCueOCkueZu+mMsuOBl+OBn+OCguOBruOBqOiAg+OBiOOCieOCjOOB
-vuOBmeOAgjwvRk9OVD48U1BBTiANCmxhbmc9RU4tVVM+PEJSPjwvU1BBTj48Rk9OVCANCmZhY2U9
-5b6u6L2v6ZuF6buRPuOBiuW/g+W9k+OBn+OCiuOBruOBquOBhOaWueOBr+OAgeOBiuaJi+aVsOOB
-p+OBmeOBjOODoeODvOODq+acrOaWh+OCkuWJiumZpOOBj+OBoOOBleOBhOOBvuOBmeOCiOOBhuOB
-iumhmOOBhOOBhOOBn+OBl+OBvuOBmeOAgjwvRk9OVD48L0ZPTlQ+PC9QPg0KPFAgY2xhc3M9TXNv
-Tm9ybWFsIHN0eWxlPSJNQVJHSU46IDBjbSI+PEZPTlQgZmFjZT3lvq7ova/pm4Xpu5E+PFNQQU4g
-DQpsYW5nPUVOLVVTPjxCUj48L1NQQU4+PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCANCmZhY2U95b6u
-6L2v6ZuF6buRPi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTwvRk9OVD48L1NQQU4+PC9GT05U
-PjwvUD48Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPjxTUEFOIGxhbmc9RU4tVVM+PEZPTlQgZmFj
-ZT3lvq7ova/pm4Xpu5E+DQo8UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9Ik1BUkdJTjogMGNtIj48
-QlI+PC9GT05UPjwvU1BBTj48L0ZPTlQ+PFNQQU4gDQpsYW5nPUVOLVVTPjxGT05UIGZhY2U95b6u
-6L2v6ZuF6buRPuODoeODvOODq+OCkuWPl+OBkeWPluOBo+OBn+OBiuWuouOBleOBvuWwgueUqOOB
-ruODmuODvOOCuOOBp+OBmeOAguOBu+OBi+OBruOBiuWuouOBleOBvuOBr+OBlOWIqeeUqOOBhOOB
-n+OBoOOBkeOBvuOBm+OCk+OAgjxTUEFOIA0KbGFuZz1FTi1VUz48QlI+PC9TUEFOPjxGT05UIGZh
-Y2U95b6u6L2v6ZuF6buRPuOBquOBiuOAgTxTUEFOIA0KbGFuZz1FTi1VUz43MjwvU1BBTj7mmYLp
-lpPku6XlhoXjgavjgZTnorroqo3jgYzjgarjgYTloLTlkIjjgIHoqqDjgavnlLPjgZfoqLPjgZTj
-gZbjgYTjgb7jgZvjgpPjgIHjgqLjgqvjgqbjg7Pjg4jjga7liKnnlKjliLbpmZDjgpLjgZXjgZvj
-gabjgYTjgZ/jgaDjgY3jgb7jgZnjga7jgafjgIHkuojjgoHjgZTkuobmib/jgY/jgaDjgZXjgYTj
-gII8L0ZPTlQ+PFNQQU4gDQpsYW5nPUVOLVVTPjxCUj48L1NQQU4+PC9GT05UPjwvU1BBTj48L1A+
-DQo8UCBjbGFzcz1Nc29Ob3JtYWwgc3R5bGU9Ik1BUkdJTjogMGNtIj48U1BBTiBsYW5nPUVOLVVT
-PjxGT05UIGZhY2U95b6u6L2v6ZuF6buRPjxTUEFOIA0KbGFuZz1FTi1VUz48Rk9OVCANCmZhY2U9
-5b6u6L2v6ZuF6buRPi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTwvRk9OVD48L1NQQU4+PEJS
-PjwvUD48L0ZPTlQ+PC9TUEFOPjwvU1BBTj48L0ZPTlQ+PC9TUEFOPjxTUEFOIA0KbGFuZz1FTi1V
-Uz48Rk9OVCBmYWNlPeW+rui9r+mbhem7kT4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFS
-R0lOOiAwY20iPiZuYnNwOzwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0iTUFSR0lOOiAw
-Y20iPuKAu+acrOODoeODvOODq+OBuOOBrui/lOS/oeOBq+OCiOOCi+OBlOizquWVj+OBq+OBr+OB
-lOWbnuetlOOBp+OBjeOBvuOBm+OCk+OAgjwvUD4NCjxQIGNsYXNzPU1zb05vcm1hbCBzdHlsZT0i
-TUFSR0lOOiAwY20iPjxGT05UIGZhY2U95b6u6L2v6ZuF6buRPjxTUEFOIGxhbmc9RU4tVVM+PEZP
-TlQgDQpmYWNlPeW+rui9r+mbhem7kT48L0ZPTlQ+PC9TUEFOPiZuYnNwOzwvUD48U1BBTiBsYW5n
-PUVOLVVTPjxGT05UIGZhY2U95b6u6L2v6ZuF6buRPg0KPFAgY2xhc3M9TXNvTm9ybWFsIA0Kc3R5
-bGU9IlRFWFQtQUxJR046IGxlZnQ7IE1BUkdJTjogMGNtOyBtc28tcGFnaW5hdGlvbjogd2lkb3ct
-b3JwaGFuIiANCmFsaWduPWxlZnQ+PFNQQU4gbGFuZz1FTi1VUz48QSBocmVmPSJodHRwczovL2V0
-Yy43cHZqaDN1ay5jbi8iPjxGT05UIA0KZmFjZT3lvq7ova/pm4Xpu5E+PFNUUk9ORz48U1BBTiAN
-CnN0eWxlPSdGT05ULUZBTUlMWTogRGVuZ1hpYW47IENPTE9SOiBibHVlOyBtc28tYXNjaWktdGhl
-bWUtZm9udDogbWlub3ItbGF0aW47IG1zby1mYXJlYXN0LXRoZW1lLWZvbnQ6IG1pbm9yLWZhcmVh
-c3Q7IG1zby1oYW5zaS10aGVtZS1mb250OiBtaW5vci1sYXRpbjsgbXNvLWJpZGktZm9udC1mYW1p
-bHk6ICJUaW1lcyBOZXcgUm9tYW4iOyBtc28tYmlkaS10aGVtZS1mb250OiBtaW5vci1iaWRpJz7i
-hpI8L1NQQU4+PC9TVFJPTkc+PFNUUk9ORz48U1BBTiANCmxhbmc9RU4tVVMgDQpzdHlsZT0nRk9O
-VC1GQU1JTFk6IERlbmdYaWFuOyBDT0xPUjogYmx1ZTsgbXNvLWFzY2lpLXRoZW1lLWZvbnQ6IG1p
-bm9yLWxhdGluOyBtc28tZmFyZWFzdC10aGVtZS1mb250OiBtaW5vci1mYXJlYXN0OyBtc28taGFu
-c2ktdGhlbWUtZm9udDogbWlub3ItbGF0aW47IG1zby1iaWRpLWZvbnQtZmFtaWx5OiAiVGltZXMg
-TmV3IFJvbWFuIjsgbXNvLWJpZGktdGhlbWUtZm9udDogbWlub3ItYmlkaSc+PFNQQU4gDQpsYW5n
-PUVOLVVTPuOBlOWkieabtOOBr+OBk+OBoeOCieOBi+OCiTwvU1BBTj48L1NQQU4+PC9TVFJPTkc+
-PC9GT05UPjwvQT48Rk9OVCBmYWNlPeW+rui9r+mbhem7kT4gDQo8L0ZPTlQ+PC9TUEFOPjwvUD48
-L0ZPTlQ+PC9TUEFOPjwvRk9OVD48L0ZPTlQ+PC9TUEFOPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0
-eWxlPSJNQVJHSU46IDBjbSI+PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCANCmZhY2U95b6u6L2v6ZuF
-6buRPjwvRk9OVD48L1NQQU4+Jm5ic3A7PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJN
-QVJHSU46IDBjbSI+PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPjwv
-Rk9OVD48L1NQQU4+Jm5ic3A7PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJNQVJHSU46
-IDBjbSI+PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPjwvRk9OVD48
-L1NQQU4+Jm5ic3A7PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJNQVJHSU46IDBjbSI+
-PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPjwvRk9OVD48L1NQQU4+
-Jm5ic3A7PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0eWxlPSJNQVJHSU46IDBjbSI+PFNQQU4g
-bGFuZz1FTi1VUz48Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPuKUgeKUgeKUgeKUgeKUgeKUgeKU
-gTxCUj7ilqA8L0ZPTlQ+PC9TUEFOPjxGT05UIGZhY2U95b6u6L2v6ZuF6buRPueZuuihjOiAhTwv
-Rk9OVD48U1BBTiANCmxhbmc9RU4tVVM+PEJSPjxGT05UIGZhY2U95b6u6L2v6ZuF6buRPuKUgeKU
-geKUgeKUgeKUgeKUgeKUgTwvRk9OVD48L1NQQU4+PC9QPg0KPFAgY2xhc3M9TXNvTm9ybWFsIHN0
-eWxlPSJNQVJHSU46IDBjbSI+PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCANCmZhY2U95b6u6L2v6ZuF
-6buRPjwvRk9OVD48L1NQQU4+PFNQQU4gbGFuZz1FTi1VUz48Rk9OVCBmYWNlPeW+rui9r+mbhem7
-kT48QlI+PC9GT05UPjwvU1BBTj48Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPu+8pe+8tO+8o+WI
-qeeUqOeFp+S8muOCteODvOODk+OCueS6i+WLmeWxgDwvRk9OVD48L1A+DQo8UCBjbGFzcz1jb3B5
-cmlnaHQtdGl0IA0Kc3R5bGU9J0ZPTlQtU0laRTogMTJweDsgRk9OVC1GQU1JTFk6IEFyaWFsLCAi
-77yt77yzIO+8sOOCtOOCt+ODg+OCryIsICJNUyBQR290aGljIiwgIuODkuODqeOCruODjuinkuOC
-tCBQcm8gVzMiLCAiSGlyYWdpbm8gS2FrdSBHb3RoaWMgUHJvIiwgT3Nha2EsIHNhbnMtc2VyaWY7
-IEZMT0FUOiBsZWZ0OyBQQURESU5HLUJPVFRPTTogMHB4OyBURVhULUFMSUdOOiBqdXN0aWZ5ICFp
-bXBvcnRhbnQ7IFBBRERJTkctVE9QOiAwcHg7IFBBRERJTkctTEVGVDogMHB4OyBNQVJHSU46IDBw
-eCAxMHB4IDBweCAwcHg7IExJTkUtSEVJR0hUOiAxLjRlbTsgUEFERElORy1SSUdIVDogMHB4Jz48
-Rk9OVCANCmZhY2U95b6u6L2v6ZuF6buRPkNvcHlyaWdodChDKSAyMDExPC9GT05UPjwvUD4NCjxE
-SVYgaWQ9Zm9vdGVyIGNsYXNzPWNsZWFyZml4IA0Kc3R5bGU9J0ZPTlQtU0laRTogMTJweDsgSEVJ
-R0hUOiBhdXRvOyBGT05ULUZBTUlMWTogQXJpYWwsICLvvK3vvLMg77yw44K044K344OD44KvIiwg
-Ik1TIFBHb3RoaWMiLCAi44OS44Op44Ku44OO6KeS44K0IFBybyBXMyIsICJIaXJhZ2lubyBLYWt1
-IEdvdGhpYyBQcm8iLCBPc2FrYSwgc2Fucy1zZXJpZjsgV0lEVEg6IDgwOHB4OyBCQUNLR1JPVU5E
-OiB1cmwoLi4vaW1nL2NvbW1vbi9mb290X2JnLmdpZikgbm8tcmVwZWF0OyBXSElURS1TUEFDRTog
-bm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5vbmU7IEZPTlQtV0VJ
-R0hUOiA0MDA7IENPTE9SOiByZ2IoNTEsNTEsNTEpOyBQQURESU5HLUJPVFRPTTogMHB4OyBGT05U
-LVNUWUxFOiBub3JtYWw7IFBBRERJTkctVE9QOiA1cHg7IFBBRERJTkctTEVGVDogMHB4OyBPUlBI
-QU5TOiAyOyBXSURPV1M6IDI7IE1BUkdJTjogMTBweCBhdXRvIDBweDsgRElTUExBWTogYmxvY2s7
-IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IFBBRERJTkctUklHSFQ6IDBweDsgVEVYVC1JTkRFTlQ6
-IDBweDsgZm9udC12YXJpYW50LWxpZ2F0dXJlczogbm9ybWFsOyBmb250LXZhcmlhbnQtY2Fwczog
-bm9ybWFsOyAtd2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IHRleHQtZGVjb3JhdGlvbi10
-aGlja25lc3M6IGluaXRpYWw7IHRleHQtZGVjb3JhdGlvbi1zdHlsZTogaW5pdGlhbDsgdGV4dC1k
-ZWNvcmF0aW9uLWNvbG9yOiBpbml0aWFsJz4NCjxESVYgY2xhc3M9cmlnaHQgDQpzdHlsZT0nRk9O
-VC1TSVpFOiAwLjdlbTsgRk9OVC1GQU1JTFk6IEFyaWFsLCAi77yt77yzIO+8sOOCtOOCt+ODg+OC
-ryIsICJNUyBQR290aGljIiwgIuODkuODqeOCruODjuinkuOCtCBQcm8gVzMiLCAiSGlyYWdpbm8g
-S2FrdSBHb3RoaWMgUHJvIiwgT3Nha2EsIHNhbnMtc2VyaWY7IFdJRFRIOiA0MjBweDsgRkxPQVQ6
-IHJpZ2h0OyBQQURESU5HLUJPVFRPTTogMHB4OyBURVhULUFMSUdOOiBsZWZ0OyBQQURESU5HLVRP
-UDogMHB4OyBQQURESU5HLUxFRlQ6IDBweDsgTUFSR0lOOiAxMHB4IDE1cHggMHB4IDBweDsgRElT
-UExBWTogaW5saW5lOyBQQURESU5HLVJJR0hUOiAwcHgnPjxGT05UIA0KZmFjZT3lvq7ova/pm4Xp
-u5E+PC9GT05UPjwvRElWPg0KPFAgY2xhc3M9Y29weXJpZ2h0LXRleHQgDQpzdHlsZT0nRk9OVC1T
-SVpFOiAxMnB4OyBGT05ULUZBTUlMWTogQXJpYWwsICLvvK3vvLMg77yw44K044K344OD44KvIiwg
-Ik1TIFBHb3RoaWMiLCAi44OS44Op44Ku44OO6KeS44K0IFBybyBXMyIsICJIaXJhZ2lubyBLYWt1
-IEdvdGhpYyBQcm8iLCBPc2FrYSwgc2Fucy1zZXJpZjsgRkxPQVQ6IGxlZnQ7IFBBRERJTkctQk9U
-VE9NOiAwcHg7IFRFWFQtQUxJR046IGp1c3RpZnkgIWltcG9ydGFudDsgUEFERElORy1UT1A6IDBw
-eDsgUEFERElORy1MRUZUOiAwcHg7IE1BUkdJTjogMHB4OyBMSU5FLUhFSUdIVDogMS40ZW07IFBB
-RERJTkctUklHSFQ6IDBweCc+PEZPTlQgDQpmYWNlPeW+rui9r+mbhem7kT5FYXN0IE5pcHBvbiBF
-eHByZXNzd2F5IENvbXBhbnkgTGltaXRlZCw8QlI+TWV0cm9wb2xpdGFuIEV4cHJlc3N3YXkgDQpD
-b21wYW55IExpbWl0ZWQsPEJSPkNlbnRyYWwgTmlwcG9uIEV4cHJlc3N3YXkgQ29tcGFueSBMaW1p
-dGVkLDxCUj5XZXN0IE5pcHBvbiANCkV4cHJlc3N3YXkgQ29tcGFueSBMaW1pdGVkLDxCUj5IYW5z
-aGluIEV4cHJlc3N3YXkgQ29tcGFueSANCkxpbWl0ZWQsPEJSPkhvbnNodS1TaGlrb2t1IEJyaWRn
-ZSBFeHByZXNzd2F5IENvbXBhbnkgTGltaXRlZC4gQWxsIFJpZ2h0cyANClJlc2VydmVkPC9GT05U
-PjwvUD48L0RJVj48QlIgY2xhc3M9QXBwbGUtaW50ZXJjaGFuZ2UtbmV3bGluZT48QlI+PC9CT0RZ
-PjwvSFRNTD4NCg==
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-------=_NextPart_000_0686_013ADBF1.187826D0--
+All warnings (new ones prefixed by >>):
 
+>> drivers/gpu/drm/i915/gvt/mmio_table.c:37: warning: expecting prototype for intel_gvt_get_init_device_info(). Prototype was for intel_gvt_init_device_info() instead
+
+
+vim +37 drivers/gpu/drm/i915/gvt/mmio_table.c
+
+    28	
+    29	/**
+    30	 * intel_gvt_get_init_device_info - Fill a GVT device info
+    31	 * @i915: drm i915 private data
+    32	 * @info: GVT device info
+    33	 *
+    34	 * This function will be called during the initialization of a GVT device.
+    35	 */
+    36	void intel_gvt_init_device_info(struct drm_i915_private *i915, struct intel_gvt_device_info *info)
+  > 37	{
+    38		struct pci_dev *pdev = to_pci_dev(i915->drm.dev);
+    39	
+    40		info->max_support_vgpus = 8;
+    41		info->cfg_space_size = PCI_CFG_SPACE_EXP_SIZE;
+    42		info->mmio_size = 2 * 1024 * 1024;
+    43		info->mmio_bar = 0;
+    44		info->gtt_start_offset = 8 * 1024 * 1024;
+    45		info->gtt_entry_size = 8;
+    46		info->gtt_entry_size_shift = 3;
+    47		info->gmadr_bytes_in_cmd = 8;
+    48		info->max_surface_size = 36 * 1024 * 1024;
+    49		info->msi_cap_offset = pdev->msi_cap;
+    50	}
+    51	
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
