@@ -1,53 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8101649EAE0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Jan 2022 20:09:16 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 45CD849F2B5
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Jan 2022 06:02:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F085A10E21C;
-	Thu, 27 Jan 2022 19:09:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D355410F2CD;
+	Fri, 28 Jan 2022 05:01:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4A9D410E195;
- Thu, 27 Jan 2022 19:09:13 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E2BFF10F2CA;
+ Fri, 28 Jan 2022 05:01:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643310553; x=1674846553;
+ t=1643346118; x=1674882118;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=om3QU/Nx/QWSkShOFUdOrzDE6Wl2EDZ0YOIUwwJGKNY=;
- b=nJdAnemntuiD82opWaZCh3/KzOOwmccCJY4pfDSmRcBOzvWb5+1z2GbP
- RZe8bnK3R3MHHXTxd9F/vaXNUTRTC/3i3N9VbiLk5bhZMK7nGwSCfk6ZW
- 7DE+g1WECm9aOD1iWVEvI5yhup07LAVOo/1fLpT5a8Dn4jafFV1Aiw00a
- G5GNOPtrimkInjJinleftegIleuNQEfHZg+jeI5WBlPmJGb6nd74jNNAn
- djN7//RDRG9v5ZmB8DelLsRkGAYL56Be8meCQfSmenZhHsHRUvf674J+V
- Efi5Sh9F6T9WbLEVkNEp0YwNZLlXZvEYPmD7uEGF4sA50cX6LXNj5MGMB A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="247163525"
-X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; d="scan'208";a="247163525"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2022 11:09:12 -0800
+ bh=RO9ZZxmjqCuKF+rRhN0z+oMjHUed1ETrae8AqmGHMHw=;
+ b=n3qIbAeABicvEIAyKluOA/YE79RNqku9liLx9vOkYS/nP3ZlJGbZY5jl
+ Qo/V54qZYoSXMkOludFp7zWZUun+3neajGjz/IWgYrR2UOQ7ZdQIrQE+v
+ fhVpkl4zZYpDbBoyZuk/y0HR2yuY4yL/NpNZSy9z++zouJON9d94yahOt
+ wNblf0+5M8nUr/imA94bAXTfSE29V95bUk0PS8e4nMd8LKB20btDuDDuH
+ 7diz5SzBrQCcxme8fwpcV/zf2ouQGj+Dt5fH+Ci1OzlYbuEMF1Bvx8ClY
+ ChriSsEf0/bG2AN1hmFoQ4GFEjNws3pMJxqKzvbUyH7Jcf6VJ+ltQDXLR A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10240"; a="230623852"
+X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="230623852"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jan 2022 21:01:57 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; d="scan'208";a="767616133"
+X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="628984302"
 Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 27 Jan 2022 11:09:10 -0800
+ by orsmga004.jf.intel.com with ESMTP; 27 Jan 2022 21:01:54 -0800
 Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nDA8r-000MwU-B6; Thu, 27 Jan 2022 19:09:09 +0000
-Date: Fri, 28 Jan 2022 03:08:17 +0800
+ id 1nDJOU-000NUt-82; Fri, 28 Jan 2022 05:01:54 +0000
+Date: Fri, 28 Jan 2022 13:01:11 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhi Wang <zhi.wang.linux@gmail.com>, hch@lst.de, jgg@nvidia.com,
  jani.nikula@linux.intel.com
-Subject: Re: [Intel-gfx] [PATCH 1/3] i915/gvt: Introduce the mmio_table.c to
- support VFIO new mdev API
-Message-ID: <202201280218.aDxaMjx6-lkp@intel.com>
+Subject: [RFC PATCH] i915/gvt: intel_gvt_match_device() can be static
+Message-ID: <20220128050111.GA69282@e2c1dfe2c692>
 References: <20220127120508.11330-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20220127120508.11330-1-zhi.a.wang@intel.com>
+X-Patchwork-Hint: ignore
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -68,50 +68,24 @@ Cc: kbuild-all@lists.01.org, Zhi Wang <zhi.wang.linux@gmail.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Zhi,
+drivers/gpu/drm/i915/gvt/handlers.c:45:6: warning: symbol 'intel_gvt_match_device' was not declared. Should it be static?
 
-I love your patch! Perhaps something to improve:
-
-[auto build test WARNING on drm-tip/drm-tip]
-[also build test WARNING on next-20220127]
-[cannot apply to drm-intel/for-linux-next v5.17-rc1]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Zhi-Wang/i915-gvt-Introduce-the-mmio_table-c-to-support-VFIO-new-mdev-API/20220127-200727
-base:   git://anongit.freedesktop.org/drm/drm-tip drm-tip
-config: x86_64-rhel-8.3 (https://download.01.org/0day-ci/archive/20220128/202201280218.aDxaMjx6-lkp@intel.com/config)
-compiler: gcc-9 (Debian 9.3.0-22) 9.3.0
-reproduce (this is a W=1 build):
-        # https://github.com/0day-ci/linux/commit/533f92651a7a56481a053f1e04dc5a5ec024ffb9
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Zhi-Wang/i915-gvt-Introduce-the-mmio_table-c-to-support-VFIO-new-mdev-API/20220127-200727
-        git checkout 533f92651a7a56481a053f1e04dc5a5ec024ffb9
-        # save the config file to linux build tree
-        mkdir build_dir
-        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/
-
-If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
-
-All warnings (new ones prefixed by >>):
-
->> drivers/gpu/drm/i915/gvt/handlers.c:45:6: warning: no previous prototype for 'intel_gvt_match_device' [-Wmissing-prototypes]
-      45 | bool intel_gvt_match_device(struct intel_gvt *gvt,
-         |      ^~~~~~~~~~~~~~~~~~~~~~
-
-
-vim +/intel_gvt_match_device +45 drivers/gpu/drm/i915/gvt/handlers.c
-
-12d14cc43b3470 Zhi Wang 2016-08-30  44  
-12d14cc43b3470 Zhi Wang 2016-08-30 @45  bool intel_gvt_match_device(struct intel_gvt *gvt,
-12d14cc43b3470 Zhi Wang 2016-08-30  46  		unsigned long device)
-12d14cc43b3470 Zhi Wang 2016-08-30  47  {
-533f92651a7a56 Zhi Wang 2022-01-27  48  	return intel_gvt_get_device_type(gvt->gt->i915) & device;
-12d14cc43b3470 Zhi Wang 2016-08-30  49  }
-12d14cc43b3470 Zhi Wang 2016-08-30  50  
-
+Signed-off-by: kernel test robot <lkp@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ handlers.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+index dad31ad074a03..459f0d902f64f 100644
+--- a/drivers/gpu/drm/i915/gvt/handlers.c
++++ b/drivers/gpu/drm/i915/gvt/handlers.c
+@@ -42,7 +42,7 @@
+ #include "display/intel_display_types.h"
+ #include "display/intel_fbc.h"
+ 
+-bool intel_gvt_match_device(struct intel_gvt *gvt,
++static bool intel_gvt_match_device(struct intel_gvt *gvt,
+ 		unsigned long device)
+ {
+ 	return intel_gvt_get_device_type(gvt->gt->i915) & device;
