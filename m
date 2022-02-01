@@ -1,54 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9561F4A5B24
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Feb 2022 12:28:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B13D4A683A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Feb 2022 23:53:20 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 34B5010E8C1;
-	Tue,  1 Feb 2022 11:28:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B1F4E10E231;
+	Tue,  1 Feb 2022 22:53:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ua1-x941.google.com (mail-ua1-x941.google.com
- [IPv6:2607:f8b0:4864:20::941])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8506710E8C3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  1 Feb 2022 11:28:28 +0000 (UTC)
-Received: by mail-ua1-x941.google.com with SMTP id u76so13664774uau.3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 01 Feb 2022 03:28:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=5jZCFoA+XHoriCW0AmpoA8a/SgKSwmXEgII/Q5xj33M=;
- b=L4lWIPEEDdPNEDi0OBe33doMNKPQ6xOCaKXGQjGyvOSTk6NjUgjD5LgTzy7o62Xdyq
- NPFA+rppTrFwivPCRafzbESkNiGliPfKqE3e1/FLpU6pLqem2dRjsnFFHCq+s04cxBNR
- cPK55VGsi1K+8Rmo5rAF++n668Ll/uKqWUv6KRMGEHMP+sw5SP3QXfd6UoX1RF1uzvxx
- UcaJizHUDt286ZcgzvBf5gYsKxojPVwV1EOh3PK2Gnspx/ocWEvdgzi9sIVzcF1dBsPU
- FpzO9omZrUx6pr+7BxJiLwDbWNEvwq+fRtqExxTXdtSDTx0gWim6iof2Be+6WYbdGnr3
- toSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=5jZCFoA+XHoriCW0AmpoA8a/SgKSwmXEgII/Q5xj33M=;
- b=z+6Agv05YGz8uul70KVWkccAvMCJ0HqgD3TJPqo9CTxEwZ3OQz5qa4lMoNzNRe+DkO
- cvi2LY5MbauVqH8BpSomYHc2jzEqkTnVmpeSgTRRaPPNtITPhZXgKypi3FVsLl5TtSXH
- 2AXPCscF9ixFNnC/p8oEi2LzG71E+1KduopbEX7D3H2BGWI0csJVoj+N3AdCpQGhL4QN
- rN/sAh4pHA45pRaE7HEgWRJFSDwVbtY5sKTePx+ACrBtWQeeIWvN8cAImZy6oUVRc8mO
- XKYP7iNc/7BCJV0iwJGehNvD6/QxmySCgIbjkTuJKAKYXLd56ha4GJtlMqMxycGmZVGW
- +FGQ==
-X-Gm-Message-State: AOAM531IG7oftHPL72t+cJ5k0dGczcHBnWIcm9UXAiBPISpQWzvnkjka
- Naj/18d1pMuNQB26LDdcufG7TFMI61OXhz+GJII=
-X-Google-Smtp-Source: ABdhPJw0wcvWAzY64F+FSx03/Babrama9okaomROcZepJ61dfXnvG59xYo5kFRVbYZQzrG0luwh7+gwRpgdeJybMNOY=
-X-Received: by 2002:ab0:69cf:: with SMTP id u15mr8738292uaq.30.1643714907438; 
- Tue, 01 Feb 2022 03:28:27 -0800 (PST)
+Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DEA6310E231;
+ Tue,  1 Feb 2022 22:53:16 +0000 (UTC)
+Received: from User (unknown [197.185.97.192])
+ by mail.service-fujitsu.com (Postfix) with ESMTPA id C83B12A0FC4;
+ Wed,  2 Feb 2022 06:18:46 +0800 (CST)
+From: "Nigerian National Petroleum Corporation
+ (NNPC)"<dremmanuelibekachikwun20221@gmail.com>
+Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
+ Abuja
+Date: Wed, 2 Feb 2022 00:19:09 +0200
 MIME-Version: 1.0
-From: Moritz <josephineadams4u@gmail.com>
-Date: Tue, 1 Feb 2022 12:27:37 +0100
-Message-ID: <CABQLdqLW+2wKzC-AKU5cZEA8WLtPQnU1gZvKNJwtZ3GwPmVJSg@mail.gmail.com>
-Subject: Product Catalogue/Price 2022
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000002b82d605d6f33308"
+Content-Type: text/plain;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,53 +40,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: moritz_baumann@aol.com
+Reply-To: dremmanuelibekachikwun2022@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20220201225318.B1F4E10E231@gabe.freedesktop.org>
 
---0000000000002b82d605d6f33308
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
+ 
+From: Dr. Emmanuel Ibe Kachikwu (GMD)
+Contract Ref No: NNPC/PED/1462/KADREF/92)      
+                        
+Attn: Ceo,
+ 
+I know that this proposal may come to you as a surprise especially having to come from someone you have not met before. I got your information from your country's chamber of commerce here in Nigeria.
+ 
+My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
+ 
+I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
+ 
+The contract has been successfully executed by the contractors and their contract sum has been paid to them, leaving us an overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
+ 
+We, as government officials, are not permitted to own or operate foreign bank accounts. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
+ 
+Note that 50% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
+ 
+The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
+ 
+ 
+Awaiting your urgent response.
+ 
+Best regards.
 
- Hello,
+Dr. Emmanuel Ibe Kachikwu.
+The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
+ 
+This email and any attachments to it may be confidential and are intended solely for the use of the individual to whom it is addressed. Any views or opinions expressed are solely those of the author and do not necessarily represent those of Masterpage®. If you are not the intended recipient of this email, you must neither take any action based upon its contents, nor copy or show it to anyone. Please contact the sender if you believe you have received this email in error.
 
-We are interested in purchasing your products,
-kindly send us more information/catalogs about your products to my below
-email : moritz_baumann@aol.com
-
-Also inform me about the minimum order quantity + lead time and payment
-terms warranty.
-
-For further conversation please kindly reply to my email:
-moritz_baumann@aol.com
-purchase order will be sent to you upon the receipt of your feedback.
-
-
-
-
-
-
-
-*Best Regards!Moritz BaumannNPMG GermanyHansastra=C3=9Fe 33c80364 M=C3=BCnc=
-henGermany*
-
---0000000000002b82d605d6f33308
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">
-Hello,<br><br>We are interested in purchasing your products,<br>kindly send=
- us more information/catalogs about your products to my below email :
-
- <a href=3D"mailto:moritz_baumann@aol.com" target=3D"_blank">moritz_baumann=
-@aol.com</a> <br><br>Also inform me about the minimum order quantity + lead=
- time and payment terms warranty.<br><br>For further conversation please ki=
-ndly reply to my email: <a href=3D"mailto:moritz_baumann@aol.com" target=3D=
-"_blank">moritz_baumann@aol.com</a> <br>purchase order will be sent to you =
-upon the receipt of your feedback.<br><br><b>Best Regards!<br>Moritz Bauman=
-n<br><br>NPMG Germany<br>Hansastra=C3=9Fe 33c<br>80364 M=C3=BCnchen<br>Germ=
-any</b>
-
-</div>
-
---0000000000002b82d605d6f33308--
