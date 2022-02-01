@@ -2,53 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE0C54A5489
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Feb 2022 02:12:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D96A4A58AA
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Feb 2022 09:43:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 82C8010E2D6;
-	Tue,  1 Feb 2022 01:12:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C5CAF10EC06;
+	Tue,  1 Feb 2022 08:43:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com
- [IPv6:2a00:1450:4864:20::42f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7F40610E2D6
+X-Greylist: delayed 410 seconds by postgrey-1.36 at gabe;
+ Tue, 01 Feb 2022 08:43:10 UTC
+Received: from mail.westfry.pl (mail.westfry.pl [37.235.53.118])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CE1D910EBFC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  1 Feb 2022 01:12:56 +0000 (UTC)
-Received: by mail-wr1-x42f.google.com with SMTP id v13so28737240wrv.10
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 31 Jan 2022 17:12:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=RdO+S8IhMJhw9rPCRp5/w7vWahd+4h+4ukzA1Ad0CYc=;
- b=C9XB2VcXlFAgodLQkmE+X8j1vdRkfBakQysT/5tF2j9JcOtfZHqCHtCDMM9P87YOzG
- 94LQTeOhwnKCR0jzP2jivNkfvqOGMa7Bzc7fWbFD0UzFdS2djDJJi9MPyAgikeBS3T/A
- 3QP3tNUmeRkXiSdu9dYom5ktWx1jhnvFiDv/+mgVSkkUo82a8koRDDBBArmQqMc8+YrE
- jbJQgx6iZvNUsaukwRhzRxWh+j+Szxf49CiO/S4n/yOdlNSbDMbk72FLRyh1AHUcuxtI
- QZC66exygF12/E2fWb7hsSIJCwoTZOAVfYJyfX2dO3UeGFjFfnQzETyPHrKUxYCFe/kh
- 2WLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=RdO+S8IhMJhw9rPCRp5/w7vWahd+4h+4ukzA1Ad0CYc=;
- b=dCUUMzdXTK0YYjQ86nbfhY+Ks6zRLjrbTp4TmbEc4pjl6DojkoMjoqOi/KK6MRbmSY
- TyyqldgtMthlnLAkuTbN8u9gOiJNO2ptqA0Ip3L81D54V9Sh2bJ0VXEm9imGq/xv8Ag+
- GAJaElyl0YzjNp/FplhlhhKNUAp1HRoA6tt1uSP/rRRD9IIMVHSVbhB3R+QYPSvECVRB
- X+ssTi8ehJZR12MKHrklDI2QOoZgaPdr4PmIdZx/c5VCZW2AHfUeocwz7DElHoIdU+sx
- etiPBmWxal/cWROLr6bw4nSV6/GV46MsbAkZ77Fr7gdXfUYHu5XhWZFy9IZVWNjeo+jW
- HHaw==
-X-Gm-Message-State: AOAM531Wu2iK+odKJccXd7Gzay/lEkkhJnkpJyv8p2lloP/XmWPiftyM
- 5G7s2t263HpEzQGoKYYovJuFvXUj+/5H5ULttgs=
-X-Google-Smtp-Source: ABdhPJy+vPFamiNPncQQqzri5/VR6k+5/oNUH5cE50kMULYovaqHWuw8ezMYe9CEDs6+hY3yPktlIkQSMwZA+HdnyNs=
-X-Received: by 2002:a5d:548a:: with SMTP id h10mr10596295wrv.221.1643677974868; 
- Mon, 31 Jan 2022 17:12:54 -0800 (PST)
+ Tue,  1 Feb 2022 08:43:10 +0000 (UTC)
+Received: by mail.westfry.pl (Postfix, from userid 1001)
+ id 3F7A9408C9; Tue,  1 Feb 2022 09:36:07 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=westfry.pl; s=mail;
+ t=1643704576; bh=LR+NVe8ereA5M/TBxYmbtwf3vktekJuIGl7bOrar+t4=;
+ h=Date:From:To:Subject:From;
+ b=CCqDT8dzWH8cBgApcEVAsxGIhxlLrqFVUV6MD3EqQ7QqfS6mzSQZ3WxrCj1m2ah2K
+ 86FADBLZGwta6HiyLZWjXy4t17X1fy0+tZWK/VlbUbONenv3/vhlel6z336ANGFAkm
+ pBxefkPSL30QmllMw0uzo+MLelUGvUQOe2pNB0ZJawC0DZAxeZR5nXpSyUpx0wxQRM
+ yH3uod72ZunC80qgwsfXu6SF+j9VLPyMN2GJor8/A/BuwulYQz0AqIm4d92hB+Wln7
+ LdcdiyueH/cF0mlOFWdzlyybNvyTdJx9oml8Gnk9NTPRnxgzJ+JqUeXSbNPb3pI0+c
+ 71f7T4Y5gs7jQ==
+Received: by mail.westfry.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  1 Feb 2022 08:36:04 GMT
+Message-ID: <20220201084500-0.1.m.19v0.0.og00a4xbkc@westfry.pl>
+Date: Tue,  1 Feb 2022 08:36:04 GMT
+From: =?UTF-8?Q?"Mariusz_B=C5=82ach"?= <mariusz.blach@westfry.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?UTF-8?Q?Zu=C5=BCycie_auta?=
+X-Mailer: mail.westfry.pl
 MIME-Version: 1.0
-From: mary mark <sinone.jessie@gmail.com>
-Date: Mon, 31 Jan 2022 17:12:21 -0800
-Message-ID: <CACFAAw5h06ZL6Z9CZJ60cfCW2uZPeKCnArEFAut10PJOb1umOA@mail.gmail.com>
-Subject: Hello Dear
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000d1382c05d6ea992b"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,56 +49,25 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: marymarkvv@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000d1382c05d6ea992b
-Content-Type: text/plain; charset="UTF-8"
+Dzie=C5=84 dobry,
 
-Hello Dear
+Czy s=C4=85 Pa=C5=84stwo zainteresowani rozwi=C4=85zaniem do monitorowani=
+a pojazd=C3=B3w?
 
+Optymalizacja zu=C5=BCycia paliwa, zarz=C4=85dzanie trasami oraz dziesi=C4=
+=85tki innych przydatnych funkcjonalno=C5=9Bci wspiera w osi=C4=85ganiu l=
+epszej wydajno=C5=9Bci w zakresie obs=C5=82ugi samochod=C3=B3w firmowych.=
+=20
 
+Natomiast bezp=C5=82atny 3-miesi=C4=99czny test rozwi=C4=85zania, pozwala=
+ dobrze pozna=C4=87 system przed decyzj=C4=85 dotycz=C4=85c=C4=85 nawi=C4=
+=85zania wsp=C3=B3=C5=82pracy.=20
 
-
-
-How are you today? I feel like communicating with you, my name is Mary
- 22 years by age,It is my pleasure with respect to cultivate a healthy
-friendship with you,I have great interest in making new friend my hobbies
-are reading,
-teaching little kids,Today i found your id then i took the opportunity to
-write to you as i will really want us to be good friends and I will so much
-appreciate it if we can click together as one great friend.
-
-I will send you my photo at least for you to see who is writing to you, so
-that I will give you full explanation about
-myself and my reasons and purpose of contacting you,
-Please feel free to write me back with my email address so i will send you
-my pictures really hope
-to hear from you soon,
-
-Yours faithfully
+Czy przekaza=C4=87 wi=C4=99cej informacji ?
 
 
-
-Miss Mary Mark
-
---000000000000d1382c05d6ea992b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello Dear<br><br><br><br><br><br>How are you today? I fee=
-l like communicating with you, my name is Mary =C2=A0 =C2=A022 years by age=
-,It is my pleasure with respect to cultivate a healthy friendship with you,=
-I have great interest in making new friend my hobbies are reading,<br>teach=
-ing little kids,Today i found your id then i took the opportunity to write =
-to you as i will really want us to be good friends and I will so much appre=
-ciate it if we can click together as one great friend.<br><br>I will send y=
-ou my photo at least for you to see who is writing to you, so that I will g=
-ive you full explanation about<br>myself and my reasons and purpose of cont=
-acting you,<br>Please feel free to write me back with my email address so i=
- will send you my pictures really hope<br>to hear from you soon,<br><br>You=
-rs faithfully<br><br><br><br>Miss Mary Mark=C2=A0 =C2=A0 =C2=A0 =C2=A0<br><=
-/div>
-
---000000000000d1382c05d6ea992b--
+Pozdrawiam,
+Mariusz B=C5=82ach
