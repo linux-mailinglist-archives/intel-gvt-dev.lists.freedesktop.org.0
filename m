@@ -1,31 +1,145 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A13A24AB5E9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Feb 2022 08:32:55 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46DE14AB687
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Feb 2022 09:28:27 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AC45810EE41;
-	Mon,  7 Feb 2022 07:32:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6241910F507;
+	Mon,  7 Feb 2022 08:28:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 77F6010E7BB;
- Mon,  7 Feb 2022 07:32:51 +0000 (UTC)
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 82EE568AFE; Mon,  7 Feb 2022 08:32:47 +0100 (CET)
-Date: Mon, 7 Feb 2022 08:32:47 +0100
-From: Christoph Hellwig <hch@lst.de>
-To: Zhi Wang <zhi.wang.linux@gmail.com>
-Subject: Re: [PATCH 1/3] i915/gvt: Introduce the mmio_table.c to support
- VFIO new mdev API
-Message-ID: <20220207073247.GA24327@lst.de>
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 864E810F507;
+ Mon,  7 Feb 2022 08:28:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1644222504; x=1675758504;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=c0RdL9kLxiLPov2cAQaWTrXB4gDWItlFmMdukgwd05M=;
+ b=B+3kr9qbm5/KV2Bh1c400V22uIgxDZdam1FZbiTku6VBZd1jmiUbd7oS
+ pO42RzjdHjL8j9mcar8ck96NRiy/yfSiE5HhcFPaBPtLwLlYnCGNZf/3m
+ /9T3mg5Wc4j3tp0TAUtbMiYLJRJt2s2VcHR3yJ4Mrro//XXnFJGwsXLpL
+ ganmOLWWbBANtyWzUHwlN812UaRYlK7hPyf4gGQhfWukuvIIo3yEin3pA
+ lbFXr+/fqzX4R6SE2UDu3yzDNnQCfFX9r15hcq92sJ2xuv0apr6Ue4jpX
+ HmeQmvacVlGNqit+hdueVdwT8Wf1Pcxjl+vo4DrWxjSEszREoVJ2VG1EL w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10250"; a="236072290"
+X-IronPort-AV: E=Sophos;i="5.88,349,1635231600"; d="scan'208";a="236072290"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Feb 2022 00:28:23 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,349,1635231600"; d="scan'208";a="621471290"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by FMSMGA003.fm.intel.com with ESMTP; 07 Feb 2022 00:28:19 -0800
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Mon, 7 Feb 2022 00:28:18 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Mon, 7 Feb 2022 00:28:18 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.106)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Mon, 7 Feb 2022 00:28:18 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eaUYKXRXRwijLiAHILTAV+ohMpB4op4AP942XIH4M7SGmIlBmHpawD9cyqNrbAGL10152PiYM8wze3szRIWM6a3IMMVZgxhoK6YfD9GBqOu+PWyfB8u9xYfzvsz7BLHxrUU7/EMrEXDc+6R1aV9h4JWy70tmYuRFJ4Uxn4LX8t9sLRLi5VfzsutOEYEf6VMRiAKsUbfQggxqy0FFQiQqNZao995hgk0nF4EJkjDl+vL+taFtONq+UV+6dGVqyGJ9stFpkt3L29kBp5+0B2izVb6Q3s5NHJ+uxnm6H4iwG1HG7q9N/s/HBFDHY+5bigUsKrryUxtZYisi8btXoaysyQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fYZcfGlBVDPqFopGzoMgjogEWl3oUdRr83R4WfLqdOw=;
+ b=gimfmi+nVxCfUun9HKbr92uuoySRqnSlueVxaJaQceuTkwkSekIAoQjYRDCWQZN0POFze2gPZh4DyRhhcVOcNzk1C+M8lXictCr8jvQDfBE3HM8cYKByM2/LT7bjM6ped6HlQiK2R+SbuTQEkfGZ2m7XZA2/GS4xbwvWaFaUBv6+7tV7FS2jkfB7rXd7lvuZRxNi0UM23m4CH9bF91RvKCdvicHtd1eYhyg0vLn4puvn7Yu95T4si6JgTwShVwHpth1rAXomwuDgvboVI5wTDYO6O+AECbZdLzsRB0uPKUF2zGqbusKeL8y8dKzmvAJ3yPzlweAHLAcj0qNSG4E6Eg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from DM4PR11MB5549.namprd11.prod.outlook.com (2603:10b6:5:388::7) by
+ DM5PR11MB1449.namprd11.prod.outlook.com (2603:10b6:4:8::20) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4951.17; Mon, 7 Feb 2022 08:28:13 +0000
+Received: from DM4PR11MB5549.namprd11.prod.outlook.com
+ ([fe80::897e:762a:f772:1c34]) by DM4PR11MB5549.namprd11.prod.outlook.com
+ ([fe80::897e:762a:f772:1c34%5]) with mapi id 15.20.4951.018; Mon, 7 Feb 2022
+ 08:28:13 +0000
+From: "Wang, Zhi A" <zhi.a.wang@intel.com>
+To: Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: RE: [PATCH 1/3] i915/gvt: Introduce the mmio_table.c to support VFIO
+ new mdev API
+Thread-Topic: [PATCH 1/3] i915/gvt: Introduce the mmio_table.c to support VFIO
+ new mdev API
+Thread-Index: AQHYE3Y9z6Tjc/s730STc3ES82+RdayHwuGAgAANvQA=
+Date: Mon, 7 Feb 2022 08:28:13 +0000
+Message-ID: <DM4PR11MB5549FE45F8098368114ADE75CA2C9@DM4PR11MB5549.namprd11.prod.outlook.com>
 References: <20220127120508.11330-1-zhi.a.wang@intel.com>
+ <20220207073247.GA24327@lst.de>
+In-Reply-To: <20220207073247.GA24327@lst.de>
+Accept-Language: en-FI, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: dedf720d-609d-4c4b-a837-08d9ea13c824
+x-ms-traffictypediagnostic: DM5PR11MB1449:EE_
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-microsoft-antispam-prvs: <DM5PR11MB1449D854E8302D5391B174FECA2C9@DM5PR11MB1449.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:644;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: dDtGAcGo6Hhvz3t+y6zkFNEjFptjTtVVZIkCs2vSobTs2vNZfntv+PCTouvxmO1ZftZY7KQTBGkv2sboYcXqjWL7B1rQm4kfvduA2NIZaqP3+bSvtcIkUfDAihPRiY2zu+9uomfvD1GG/dGe739YAmEOKL0YuE7z12EDUx4MHwv/eV4g4Nvrr53BERocGWImEQ0QU7VNHp60UU9c9r/IRu7mOLTJH1Qo3RZnR8ogLBTP56yUML0g1rZHst2DFPd+ID5CO0h00I9Xz/k1XmuXsqLqdM6kcavPKHkZgJliWJY6hyq7VYbpYOIwGckhtCAiv4ohf+61HyyrtfA0feCrWmD/PLLYs0Fo56jB/i+n7pVqRwX7nDR04buB7ym9Mf5/2uuHlWbkRR3cWnQsdnhAxmHEeXuZpwHs6gAh3ji70P7Wa+sqm431ST3tOrI5RAwWyeXgsDE6ocRPdOHgwkisctczUcnQZzLTS1x3DgaR0A5QcUPfs4iDDohpBxqQBw/XXMF4+lw1vjxOp5lAhcFv0Fy+2Pl2hQfXTcU9/hZyDrI6yGNe9WK0NCSDL9Tr6ClppMRvY/OJ7o98YYIH1XooY+0nFzi6zkRQlli2Ks9XFCR8Pwwm7ajirR/OIIobW72Ul87mVBLwMm5PrbMsFv+H+GX+ceg0KBNLNG/plInqDOmZzO9zklrWoX3WGU4jGrJ+5u+fFy7zNLGo/Vc5mWV5tTVALgBWE0lV3vH6H5RatyM=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB5549.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(9686003)(53546011)(66946007)(76116006)(8676002)(8936002)(66556008)(66476007)(66446008)(64756008)(4326008)(38070700005)(508600001)(7696005)(33656002)(6506007)(316002)(110136005)(54906003)(71200400001)(86362001)(2906002)(30864003)(7416002)(186003)(82960400001)(122000001)(52536014)(38100700002)(55016003)(83380400001)(5660300002)(26005)(21314003)(579004)(559001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?/sFRbkt59clKDJ3yo8pYCcLMAUycz5mSpNspF174an8k9Uu/hLAWa6p9R9B/?=
+ =?us-ascii?Q?hBtsEDD43dzlWgF1n1idPHqtIy3kfxblDmA6W3pegGzMEMEiaeRMKzJ5mG6e?=
+ =?us-ascii?Q?QKBZaSqxd98RiPdDGbF4QTT8g8aBi6u+SY6i0MmR4l8cDXlJ/wwajH0XWpAo?=
+ =?us-ascii?Q?/J9pfAwX/uBug6OO67Hs6HCBFBsn2HLLxeMrgWJodQBivbqsHtC3bf4EpEAX?=
+ =?us-ascii?Q?kcfHvqo7jx79uqzHlqaQxkzGiY1659zZgA6kbrxedh5tdSOjE7oRIXAwp7y4?=
+ =?us-ascii?Q?DAbFk811ddYJixqfXFxrORGRTfggieHejhmorNRuIPgNM0XcXpJHq1uP4D9T?=
+ =?us-ascii?Q?yGeIGGEtE4TWFeY0Ga5Cv+jdZQxR2skg3V4tBXs+qZT/rfgLQ3RjZTTRgN9s?=
+ =?us-ascii?Q?HqRYTQfp623mx3O0vhtG4gDQJY1Rc9WZZNL9zZ04Dp8DlmXS68QNwrKCJuAl?=
+ =?us-ascii?Q?xkWx4t7bO/D/i3Onqo/3cPjvD5cgAl2sYMNQX7K/Tx6ggPAOpfVPCa4kB1BW?=
+ =?us-ascii?Q?rSg/1wQywAgO9tpfTN4MCs3OtiFdvTTsUu8aLfMLDBf8C2wkRcEhbWD5z943?=
+ =?us-ascii?Q?klQ5v86gEzHlHDMQpQIbq2alRvMJxkXrnMu0/Eb/Pk7R3HhOik51TMtgWynQ?=
+ =?us-ascii?Q?G5WtDARftMz36Em2Yg5lPvk7cOvnmVZ6B2Pqob/tXUBziUONzdQinMVBilXC?=
+ =?us-ascii?Q?DRKA1J3APUOLnC1xNQRLdhZ0xREwRdWSbIL1EpzsoTQ8kNOCWvMN5ckNjg1k?=
+ =?us-ascii?Q?CR84zyWw4fRiXv6wS1WhghErjy5TUzm+n0q43AdBic7lp4SDYc7QIhLBRvfB?=
+ =?us-ascii?Q?BjlxDv75ewL8ONIYmTAXzmeldFIwJ+R7zgSCDXNEFw4xQGtW0Xz9uLUN0xmU?=
+ =?us-ascii?Q?rehBKyxwkpxchFyaZ2lpvz/X1/F0Q+B9Lb489FVlyfQbt2/wgJSObJJ8Lbp1?=
+ =?us-ascii?Q?uisPmqXcfj3Q1FvEuDn7IRvkR1amUcfjV9ph4L3BZY2q/tcC++Cc+DJ6UDjT?=
+ =?us-ascii?Q?JjFCMEDngBN/Fn1OPKPzzJBHf2s53gQpnLiAQZzPVnc7pcH88fw9QAEJECi4?=
+ =?us-ascii?Q?noD/ViYgnBAP12UUJ1yQ+U/TCwjoN+YUT9BJVVfw5INQN9K9Fk/21sWFsZyM?=
+ =?us-ascii?Q?/0nLQ9bFDskwDbJQ0Ol2K0ayFZ5rTgYgP8+5q3fbNa9RfuZWAfHi33NS1w0K?=
+ =?us-ascii?Q?qsxzUe4InwuJDbasnpK1yEKsmr2MQgg+z1popfaJM7SDHNTXE09fIbc/20XX?=
+ =?us-ascii?Q?HZ1RcUVRVXAr61czmj6XSW+rjyHB9OYidn+WQJ+Q4QI4Pj8Ig1DYviXK72AR?=
+ =?us-ascii?Q?4d760Zt24a3Ek0T5rrSi415uxuvKxxZYNx7TOjaBEc4oz2VoznXRHSxj20j4?=
+ =?us-ascii?Q?iH8Hariz5pBqG8ybFlaRCv5XtqCbFZOdyV2Vxbl1T+uYEnlxQJbyqeEMHNz/?=
+ =?us-ascii?Q?C21R5bhFAQigF/heslFdzTAq/7b1H4IcDvGrXmpsqFZnuq8q+kcynRcddqly?=
+ =?us-ascii?Q?eAbHru8x8JB73P6cA+R0qrIW8dY5cjFO87XefcGTqF9NMpH/CfRYSfoQaufu?=
+ =?us-ascii?Q?dL8GEDSL6yLYPaWgyDCgiw2kNa7FEzRaJrZg6/3WHVtz6cwYUZ5Nt6pDboYp?=
+ =?us-ascii?Q?nA=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220127120508.11330-1-zhi.a.wang@intel.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5549.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: dedf720d-609d-4c4b-a837-08d9ea13c824
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Feb 2022 08:28:13.1185 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: QmyC6fSSCxEK5d9knQRfN+DysjS0T1dqgtWnfg9iCMjUKC6JCH72PbkRo6beSOrgJqGUpamQkq4oSEC5ScpzBw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1449
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,52 +152,85 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org,
+Cc: "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, jani.nikula@linux.intel.com,
- Terrence Xu <terrence.xu@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- dri-devel@lists.freedesktop.org, jgg@nvidia.com,
- Vivi Rodrigo <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- hch@lst.de, Zhi Wang <zhi.a.wang@intel.com>
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "Xu,
+ Terrence" <terrence.xu@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+
+Hi Christoph:
+
+I am going to send it today or tomorrow. I had been testing it with QA sinc=
+e last week. I would like to discuss two comments you mentioned:
+
+1) About having the mmio_table.h, I would like to keep the stuff in a dedic=
+ated header as putting them in intel_gvt.h might needs i915 guys to maintai=
+n it.
+2) The other one is about if we should move the mmio_table.c into i915 fold=
+er. I guess we need the some comments from Jani. In the current version tha=
+t I am testing, it's still in GVT folder. Guess we can submit a patch to mo=
+ve it to i915 folder later if Jani is ok about that.
+
+The rest of your comments had been addressed.
+
+Thanks,
+Zhi. =20
+
+-----Original Message-----
+From: Christoph Hellwig <hch@lst.de>=20
+Sent: Monday, February 7, 2022 9:33 AM
+To: Zhi Wang <zhi.wang.linux@gmail.com>
+Cc: hch@lst.de; jgg@nvidia.com; jani.nikula@linux.intel.com; intel-gfx@list=
+s.freedesktop.org; intel-gvt-dev@lists.freedesktop.org; dri-devel@lists.fre=
+edesktop.org; linux-kernel@vger.kernel.org; Joonas Lahtinen <joonas.lahtine=
+n@linux.intel.com>; Vivi, Rodrigo <rodrigo.vivi@intel.com>; Zhenyu Wang <zh=
+enyuw@linux.intel.com>; Wang, Zhi A <zhi.a.wang@intel.com>; Xu, Terrence <t=
+errence.xu@intel.com>
+Subject: Re: [PATCH 1/3] i915/gvt: Introduce the mmio_table.c to support VF=
+IO new mdev API
 
 Any comments on my suggestions?  Should I help to implement them?
 
 On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > From: Zhi Wang <zhi.wang.linux@gmail.com>
-> 
+>=20
 > To support the new mdev interfaces and the re-factor patches from
 > Christoph, which moves the GVT-g code into a dedicated module, the GVT-g
 > initialization path has to be separated into two phases:
-> 
+>=20
 > a) Early initialization.
-> 
+>=20
 > The early initialization of GVT requires to be done when loading i915.
 > Mostly it's because the initial clean HW state needs to be saved before
 > i915 touches the HW.
-> 
+>=20
 > b) Late initalization.
-> 
+>=20
 > This phases of initalization will setup the rest components of GVT-g,
 > which can be done later when the dedicated module is being loaded.
-> 
+>=20
 > v5:
-> 
+>=20
 > - Re-design the mmio table framework. (Chirstoph)
-> 
+>=20
 > v4:
-> 
+>=20
 > - Fix the errors of patch checking scripts.
-> 
+>=20
 > v3:
-> 
+>=20
 > - Fix the errors when CONFIG_DRM_I915_WERROR is turned on. (Jani)
-> 
+>=20
 > v2:
-> 
-> - Implement a mmio table instead of generating it by marco in i915. (Jani)
-> 
+>=20
+> - Implement a mmio table instead of generating it by marco in i915. (Jani=
+)
+>=20
 > Cc: Christoph Hellwig <hch@lst.de>
 > Cc: Jason Gunthorpe <jgg@nvidia.com>
 > Cc: Jani Nikula <jani.nikula@linux.intel.com>
@@ -106,71 +253,77 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 >  9 files changed, 1796 insertions(+), 1581 deletions(-)
 >  create mode 100644 drivers/gpu/drm/i915/gvt/mmio_table.c
 >  create mode 100644 drivers/gpu/drm/i915/gvt/mmio_table.h
-> 
-> diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefile
+>=20
+> diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefil=
+e
 > index a26e6736bebb..029e5f5e0955 100644
 > --- a/drivers/gpu/drm/i915/Makefile
 > +++ b/drivers/gpu/drm/i915/Makefile
-> @@ -318,7 +318,7 @@ i915-$(CONFIG_DRM_I915_SELFTEST) += \
->  i915-y += i915_vgpu.o
->  
+> @@ -318,7 +318,7 @@ i915-$(CONFIG_DRM_I915_SELFTEST) +=3D \
+>  i915-y +=3D i915_vgpu.o
+> =20
 >  ifeq ($(CONFIG_DRM_I915_GVT),y)
-> -i915-y += intel_gvt.o
-> +i915-y += intel_gvt.o gvt/mmio_table.o
+> -i915-y +=3D intel_gvt.o
+> +i915-y +=3D intel_gvt.o gvt/mmio_table.o
 >  include $(src)/gvt/Makefile
 >  endif
->  
-> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> =20
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.c
 > index ec18122cc216..e9b5c70bb004 100644
 > --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
 > +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-> @@ -3205,7 +3205,7 @@ int intel_gvt_scan_engine_context(struct intel_vgpu_workload *workload)
->  
+> @@ -3205,7 +3205,7 @@ int intel_gvt_scan_engine_context(struct intel_vgpu=
+_workload *workload)
+> =20
 >  static int init_cmd_table(struct intel_gvt *gvt)
 >  {
-> -	unsigned int gen_type = intel_gvt_get_device_type(gvt);
-> +	unsigned int gen_type = intel_gvt_get_device_type(gvt->gt->i915);
+> -	unsigned int gen_type =3D intel_gvt_get_device_type(gvt);
+> +	unsigned int gen_type =3D intel_gvt_get_device_type(gvt->gt->i915);
 >  	int i;
->  
->  	for (i = 0; i < ARRAY_SIZE(cmd_info); i++) {
-> diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gvt.c
+> =20
+>  	for (i =3D 0; i < ARRAY_SIZE(cmd_info); i++) {
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.c b/drivers/gpu/drm/i915/gvt/gv=
+t.c
 > index f0b69e4dcb52..a0243e863613 100644
 > --- a/drivers/gpu/drm/i915/gvt/gvt.c
 > +++ b/drivers/gpu/drm/i915/gvt/gvt.c
-> @@ -63,23 +63,6 @@ static const struct intel_gvt_ops intel_gvt_ops = {
->  	.emulate_hotplug = intel_vgpu_emulate_hotplug,
+> @@ -63,23 +63,6 @@ static const struct intel_gvt_ops intel_gvt_ops =3D {
+>  	.emulate_hotplug =3D intel_vgpu_emulate_hotplug,
 >  };
->  
+> =20
 > -static void init_device_info(struct intel_gvt *gvt)
 > -{
-> -	struct intel_gvt_device_info *info = &gvt->device_info;
-> -	struct pci_dev *pdev = to_pci_dev(gvt->gt->i915->drm.dev);
+> -	struct intel_gvt_device_info *info =3D &gvt->device_info;
+> -	struct pci_dev *pdev =3D to_pci_dev(gvt->gt->i915->drm.dev);
 > -
-> -	info->max_support_vgpus = 8;
-> -	info->cfg_space_size = PCI_CFG_SPACE_EXP_SIZE;
-> -	info->mmio_size = 2 * 1024 * 1024;
-> -	info->mmio_bar = 0;
-> -	info->gtt_start_offset = 8 * 1024 * 1024;
-> -	info->gtt_entry_size = 8;
-> -	info->gtt_entry_size_shift = 3;
-> -	info->gmadr_bytes_in_cmd = 8;
-> -	info->max_surface_size = 36 * 1024 * 1024;
-> -	info->msi_cap_offset = pdev->msi_cap;
+> -	info->max_support_vgpus =3D 8;
+> -	info->cfg_space_size =3D PCI_CFG_SPACE_EXP_SIZE;
+> -	info->mmio_size =3D 2 * 1024 * 1024;
+> -	info->mmio_bar =3D 0;
+> -	info->gtt_start_offset =3D 8 * 1024 * 1024;
+> -	info->gtt_entry_size =3D 8;
+> -	info->gtt_entry_size_shift =3D 3;
+> -	info->gmadr_bytes_in_cmd =3D 8;
+> -	info->max_surface_size =3D 36 * 1024 * 1024;
+> -	info->msi_cap_offset =3D pdev->msi_cap;
 > -}
 > -
 >  static void intel_gvt_test_and_emulate_vblank(struct intel_gvt *gvt)
 >  {
 >  	struct intel_vgpu *vgpu;
-> @@ -208,7 +191,7 @@ int intel_gvt_init_device(struct drm_i915_private *i915)
->  	gvt->gt = to_gt(i915);
->  	i915->gvt = gvt;
->  
+> @@ -208,7 +191,7 @@ int intel_gvt_init_device(struct drm_i915_private *i9=
+15)
+>  	gvt->gt =3D to_gt(i915);
+>  	i915->gvt =3D gvt;
+> =20
 > -	init_device_info(gvt);
 > +	intel_gvt_init_device_info(i915, &gvt->device_info);
->  
->  	ret = intel_gvt_setup_mmio_info(gvt);
+> =20
+>  	ret =3D intel_gvt_setup_mmio_info(gvt);
 >  	if (ret)
-> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
 > index 0ebffc327528..e4513e2ce469 100644
 > --- a/drivers/gpu/drm/i915/gvt/gvt.h
 > +++ b/drivers/gpu/drm/i915/gvt/gvt.h
@@ -183,9 +336,9 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 >  #include "interrupt.h"
 >  #include "gtt.h"
 > @@ -65,20 +66,6 @@ struct intel_gvt_host {
->  
+> =20
 >  extern struct intel_gvt_host intel_gvt_host;
->  
+> =20
 > -/* Describe per-platform limitations. */
 > -struct intel_gvt_device_info {
 > -	u32 max_support_vgpus;
@@ -205,7 +358,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 >  	u64 aperture_sz;
 > @@ -239,9 +226,9 @@ struct intel_gvt_fence {
 >  };
->  
+> =20
 >  /* Special MMIO blocks. */
 > -struct gvt_mmio_block {
 > +struct intel_gvt_mmio_block {
@@ -218,20 +371,21 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > @@ -272,7 +259,7 @@ struct intel_gvt_mmio {
 >  /* Value of command write of this reg needs to be patched */
 >  #define F_CMD_WRITE_PATCH	(1 << 8)
->  
+> =20
 > -	const struct gvt_mmio_block *mmio_block;
 > +	struct intel_gvt_mmio_block *mmio_block;
 >  	unsigned int num_mmio_block;
->  
+> =20
 >  	DECLARE_HASHTABLE(mmio_info_table, INTEL_GVT_MMIO_HASH_BITS);
-> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
+> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/g=
+vt/handlers.c
 > index 9f8ae6776e98..5b3640058b84 100644
 > --- a/drivers/gpu/drm/i915/gvt/handlers.c
 > +++ b/drivers/gpu/drm/i915/gvt/handlers.c
 > @@ -42,35 +42,10 @@
 >  #include "display/intel_display_types.h"
 >  #include "display/intel_fbc.h"
->  
+> =20
 > -/* XXX FIXME i915 has changed PP_XXX definition */
 > -#define PCH_PP_STATUS  _MMIO(0xc7200)
 > -#define PCH_PP_CONTROL _MMIO(0xc7204)
@@ -241,7 +395,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -
 > -unsigned long intel_gvt_get_device_type(struct intel_gvt *gvt)
 > -{
-> -	struct drm_i915_private *i915 = gvt->gt->i915;
+> -	struct drm_i915_private *i915 =3D gvt->gt->i915;
 > -
 > -	if (IS_BROADWELL(i915))
 > -		return D_BDW;
@@ -263,12 +417,13 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	return intel_gvt_get_device_type(gvt) & device;
 > +	return intel_gvt_get_device_type(gvt->gt->i915) & device;
 >  }
->  
+> =20
 >  static void read_vreg(struct intel_vgpu *vgpu, unsigned int offset,
-> @@ -97,12 +72,11 @@ struct intel_gvt_mmio_info *intel_gvt_find_mmio_info(struct intel_gvt *gvt,
+> @@ -97,12 +72,11 @@ struct intel_gvt_mmio_info *intel_gvt_find_mmio_info(=
+struct intel_gvt *gvt,
 >  	return NULL;
 >  }
->  
+> =20
 > -static int new_mmio_info(struct intel_gvt *gvt,
 > -		u32 offset, u16 flags, u32 size,
 > -		u32 addr_mask, u32 ro_mask, u32 device,
@@ -279,18 +434,18 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	struct intel_gvt_mmio_info *info, *p;
 > +	struct intel_gvt_mmio_info *p;
 >  	u32 start, end, i;
->  
+> =20
 >  	if (!intel_gvt_match_device(gvt, device))
 > @@ -115,32 +89,14 @@ static int new_mmio_info(struct intel_gvt *gvt,
->  	end = offset + size;
->  
->  	for (i = start; i < end; i += 4) {
-> -		info = kzalloc(sizeof(*info), GFP_KERNEL);
+>  	end =3D offset + size;
+> =20
+>  	for (i =3D start; i < end; i +=3D 4) {
+> -		info =3D kzalloc(sizeof(*info), GFP_KERNEL);
 > -		if (!info)
 > -			return -ENOMEM;
 > -
-> -		info->offset = i;
-> -		p = intel_gvt_find_mmio_info(gvt, info->offset);
+> -		info->offset =3D i;
+> -		p =3D intel_gvt_find_mmio_info(gvt, info->offset);
 > -		if (p) {
 > -			WARN(1, "dup mmio definition offset %x\n",
 > -				info->offset);
@@ -301,45 +456,46 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -			 * possible.
 > -			 */
 > -			return -EEXIST;
-> +		p = intel_gvt_find_mmio_info(gvt, i);
+> +		p =3D intel_gvt_find_mmio_info(gvt, i);
 > +		if (!p) {
 > +			WARN(1, "assign a handler to a non-tracked mmio %x\n",
 > +				i);
 > +			return -ENODEV;
 >  		}
 > -
-> -		info->ro_mask = ro_mask;
-> -		info->device = device;
-> -		info->read = read ? read : intel_vgpu_default_mmio_read;
-> -		info->write = write ? write : intel_vgpu_default_mmio_write;
-> -		gvt->mmio.mmio_attribute[info->offset / 4] = flags;
+> -		info->ro_mask =3D ro_mask;
+> -		info->device =3D device;
+> -		info->read =3D read ? read : intel_vgpu_default_mmio_read;
+> -		info->write =3D write ? write : intel_vgpu_default_mmio_write;
+> -		gvt->mmio.mmio_attribute[info->offset / 4] =3D flags;
 > -		INIT_HLIST_NODE(&info->node);
 > -		hash_add(gvt->mmio.mmio_info_table, &info->node, info->offset);
 > -		gvt->mmio.num_tracked_mmio++;
-> +		p->read = read ? read : intel_vgpu_default_mmio_read;
-> +		p->write = write ? write : intel_vgpu_default_mmio_write;
+> +		p->read =3D read ? read : intel_vgpu_default_mmio_read;
+> +		p->write =3D write ? write : intel_vgpu_default_mmio_write;
 >  	}
 >  	return 0;
 >  }
-> @@ -2132,1516 +2088,266 @@ static int csfe_chicken1_mmio_write(struct intel_vgpu *vgpu,
+> @@ -2132,1516 +2088,266 @@ static int csfe_chicken1_mmio_write(struct int=
+el_vgpu *vgpu,
 >  	return 0;
 >  }
->  
+> =20
 > -#define MMIO_F(reg, s, f, am, rm, d, r, w) do { \
-> -	ret = new_mmio_info(gvt, i915_mmio_reg_offset(reg), \
+> -	ret =3D new_mmio_info(gvt, i915_mmio_reg_offset(reg), \
 > -		f, s, am, rm, d, r, w); \
 > +#define MMIO_F(reg, s, d, r, w) do { \
-> +	ret = setup_mmio_handler(gvt, i915_mmio_reg_offset(reg), \
+> +	ret =3D setup_mmio_handler(gvt, i915_mmio_reg_offset(reg), \
 > +		s, d, r, w); \
 >  	if (ret) \
 >  		return ret; \
 >  } while (0)
->  
+> =20
 > -#define MMIO_D(reg, d) \
 > -	MMIO_F(reg, 4, 0, 0, 0, d, NULL, NULL)
 > +#define MMIO_H(reg, d, r, w) \
 > +	MMIO_F(reg, d, 4, r, w)
->  
+> =20
 > -#define MMIO_DH(reg, d, r, w) \
 > -	MMIO_F(reg, 4, 0, 0, 0, d, r, w)
 > -
@@ -369,12 +525,12 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -		MMIO_F(prefix(GEN8_BSD2_RING_BASE), s, f, am, rm, d, r, w); \
 > +		MMIO_F(prefix(GEN8_BSD2_RING_BASE), s, d, r, w); \
 >  } while (0)
->  
+> =20
 > -#define MMIO_RING_D(prefix, d) \
 > -	MMIO_RING_F(prefix, 4, 0, 0, 0, d, NULL, NULL)
 > +#define MMIO_RING_H(prefix, d, r, w) \
 > +	MMIO_RING_F(prefix, 4, d, r, w)
->  
+> =20
 > -#define MMIO_RING_DFH(prefix, d, f, r, w) \
 > -	MMIO_RING_F(prefix, 4, f, 0, 0, d, r, w)
 > -
@@ -390,9 +546,9 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -static int init_generic_mmio_info(struct intel_gvt *gvt)
 > +static int init_generic_mmio_handlers(struct intel_gvt *gvt)
 >  {
->  	struct drm_i915_private *dev_priv = gvt->gt->i915;
+>  	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
 >  	int ret;
->  
+> =20
 > -	MMIO_RING_DFH(RING_IMR, D_ALL, 0, NULL,
 > -		intel_vgpu_reg_imr_handler);
 > -
@@ -422,8 +578,9 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(SDEIMR, D_ALL, NULL, intel_vgpu_reg_imr_handler);
 > +	MMIO_H(SDEIER, D_ALL, NULL, intel_vgpu_reg_ier_handler);
 > +	MMIO_H(SDEIIR, D_ALL, NULL, intel_vgpu_reg_iir_handler);
-> +	MMIO_H(GEN8_GAMW_ECO_DEV_RW_IA, D_BDW_PLUS, NULL, gamw_echo_dev_rw_ia_write);
->  
+> +	MMIO_H(GEN8_GAMW_ECO_DEV_RW_IA, D_BDW_PLUS, NULL, gamw_echo_dev_rw_ia_w=
+rite);
+> =20
 >  #define RING_REG(base) _MMIO((base) + 0x6c)
 > -	MMIO_RING_DFH(RING_REG, D_ALL, 0, mmio_read_from_hw, NULL);
 > +	MMIO_RING_H(RING_REG, D_ALL, mmio_read_from_hw, NULL);
@@ -442,7 +599,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	MMIO_RING_GM(RING_START, D_ALL, NULL, NULL);
 > +	MMIO_H(GEN7_SC_INSTDONE, D_BDW_PLUS, mmio_read_from_hw, NULL);
 > +	MMIO_RING_H(RING_ACTHD, D_ALL, mmio_read_from_hw, NULL);
->  
+> =20
 >  	/* RING MODE */
 >  #define RING_REG(base) _MMIO((base) + 0x29c)
 > -	MMIO_RING_DFH(RING_REG, D_ALL,
@@ -450,7 +607,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -		ring_mode_mmio_write);
 > +	MMIO_RING_H(RING_REG, D_ALL, NULL, ring_mode_mmio_write);
 >  #undef RING_REG
->  
+> =20
 > -	MMIO_RING_DFH(RING_MI_MODE, D_ALL, F_MODE_MASK | F_CMD_ACCESS,
 > -		NULL, NULL);
 > -	MMIO_RING_DFH(RING_INSTPM, D_ALL, F_MODE_MASK | F_CMD_ACCESS,
@@ -486,8 +643,10 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	MMIO_DFH(_MMIO(0x2438), D_ALL, F_CMD_ACCESS, NULL, NULL);
 > -	MMIO_DFH(_MMIO(0x243c), D_ALL, F_CMD_ACCESS, NULL, NULL);
 > -	MMIO_DFH(_MMIO(0x7018), D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
-> -	MMIO_DFH(HALF_SLICE_CHICKEN3, D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
-> -	MMIO_DFH(GEN7_HALF_SLICE_CHICKEN1, D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
+> -	MMIO_DFH(HALF_SLICE_CHICKEN3, D_ALL, F_MODE_MASK | F_CMD_ACCESS, NULL, =
+NULL);
+> -	MMIO_DFH(GEN7_HALF_SLICE_CHICKEN1, D_ALL, F_MODE_MASK | F_CMD_ACCESS, N=
+ULL, NULL);
 > -
 > -	/* display */
 > -	MMIO_F(_MMIO(0x60220), 0x20, 0, 0, 0, D_ALL, NULL, NULL);
@@ -1074,7 +1233,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	MMIO_D(RSTDBYCTL, D_ALL);
 > -
 > -	MMIO_DH(GEN6_GDRST, D_ALL, NULL, gdrst_mmio_write);
-> -	MMIO_F(FENCE_REG_GEN6_LO(0), 0x80, 0, 0, 0, D_ALL, fence_mmio_read, fence_mmio_write);
+> -	MMIO_F(FENCE_REG_GEN6_LO(0), 0x80, 0, 0, 0, D_ALL, fence_mmio_read, fen=
+ce_mmio_write);
 > -	MMIO_DH(CPU_VGACNTRL, D_ALL, NULL, vga_control_mmio_write);
 > -
 > -	MMIO_D(TILECTL, D_ALL);
@@ -1224,21 +1384,30 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(PIPECONF(PIPE_C), D_ALL, NULL, pipeconf_mmio_write);
 > +	MMIO_H(PIPECONF(_PIPE_EDP), D_ALL, NULL, pipeconf_mmio_write);
 > +	MMIO_H(DSPSURF(PIPE_A), D_ALL, NULL, pri_surf_mmio_write);
-> +	MMIO_H(REG_50080(PIPE_A, PLANE_PRIMARY), D_ALL, NULL, reg50080_mmio_write);
+> +	MMIO_H(REG_50080(PIPE_A, PLANE_PRIMARY), D_ALL, NULL, reg50080_mmio_wri=
+te);
 > +	MMIO_H(DSPSURF(PIPE_B), D_ALL, NULL, pri_surf_mmio_write);
-> +	MMIO_H(REG_50080(PIPE_B, PLANE_PRIMARY), D_ALL, NULL, reg50080_mmio_write);
+> +	MMIO_H(REG_50080(PIPE_B, PLANE_PRIMARY), D_ALL, NULL, reg50080_mmio_wri=
+te);
 > +	MMIO_H(DSPSURF(PIPE_C), D_ALL, NULL, pri_surf_mmio_write);
-> +	MMIO_H(REG_50080(PIPE_C, PLANE_PRIMARY), D_ALL, NULL, reg50080_mmio_write);
+> +	MMIO_H(REG_50080(PIPE_C, PLANE_PRIMARY), D_ALL, NULL, reg50080_mmio_wri=
+te);
 > +	MMIO_H(SPRSURF(PIPE_A), D_ALL, NULL, spr_surf_mmio_write);
-> +	MMIO_H(REG_50080(PIPE_A, PLANE_SPRITE0), D_ALL, NULL, reg50080_mmio_write);
+> +	MMIO_H(REG_50080(PIPE_A, PLANE_SPRITE0), D_ALL, NULL, reg50080_mmio_wri=
+te);
 > +	MMIO_H(SPRSURF(PIPE_B), D_ALL, NULL, spr_surf_mmio_write);
-> +	MMIO_H(REG_50080(PIPE_B, PLANE_SPRITE0), D_ALL, NULL, reg50080_mmio_write);
+> +	MMIO_H(REG_50080(PIPE_B, PLANE_SPRITE0), D_ALL, NULL, reg50080_mmio_wri=
+te);
 > +	MMIO_H(SPRSURF(PIPE_C), D_ALL, NULL, spr_surf_mmio_write);
-> +	MMIO_H(REG_50080(PIPE_C, PLANE_SPRITE0), D_ALL, NULL, reg50080_mmio_write);
+> +	MMIO_H(REG_50080(PIPE_C, PLANE_SPRITE0), D_ALL, NULL, reg50080_mmio_wri=
+te);
 > +	MMIO_F(PCH_GMBUS0, 4 * 4, D_ALL, gmbus_mmio_read, gmbus_mmio_write);
-> +	MMIO_F(_MMIO(_PCH_DPB_AUX_CH_CTL), 6 * 4, D_PRE_SKL, NULL, dp_aux_ch_ctl_mmio_write);
-> +	MMIO_F(_MMIO(_PCH_DPC_AUX_CH_CTL), 6 * 4, D_PRE_SKL, NULL, dp_aux_ch_ctl_mmio_write);
-> +	MMIO_F(_MMIO(_PCH_DPD_AUX_CH_CTL), 6 * 4, D_PRE_SKL, NULL, dp_aux_ch_ctl_mmio_write);
+> +	MMIO_F(_MMIO(_PCH_DPB_AUX_CH_CTL), 6 * 4, D_PRE_SKL, NULL, dp_aux_ch_ct=
+l_mmio_write);
+> +	MMIO_F(_MMIO(_PCH_DPC_AUX_CH_CTL), 6 * 4, D_PRE_SKL, NULL, dp_aux_ch_ct=
+l_mmio_write);
+> +	MMIO_F(_MMIO(_PCH_DPD_AUX_CH_CTL), 6 * 4, D_PRE_SKL, NULL, dp_aux_ch_ct=
+l_mmio_write);
 > +	MMIO_H(PCH_ADPA, D_PRE_SKL, NULL, pch_adpa_mmio_write);
 > +	MMIO_H(_MMIO(_PCH_TRANSACONF), D_ALL, NULL, transconf_mmio_write);
 > +	MMIO_H(_MMIO(_PCH_TRANSBCONF), D_ALL, NULL, transconf_mmio_write);
@@ -1262,7 +1431,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(SOUTH_CHICKEN2, D_ALL, NULL, south_chicken2_mmio_write);
 > +	MMIO_H(SBI_DATA, D_ALL, sbi_data_mmio_read, NULL);
 > +	MMIO_H(SBI_CTL_STAT, D_ALL, NULL, sbi_ctl_mmio_write);
-> +	MMIO_F(_MMIO(_DPA_AUX_CH_CTL), 6 * 4, D_ALL, NULL, dp_aux_ch_ctl_mmio_write);
+> +	MMIO_F(_MMIO(_DPA_AUX_CH_CTL), 6 * 4, D_ALL, NULL, dp_aux_ch_ctl_mmio_w=
+rite);
 > +	MMIO_H(DDI_BUF_CTL(PORT_A), D_ALL, NULL, ddi_buf_ctl_mmio_write);
 > +	MMIO_H(DDI_BUF_CTL(PORT_B), D_ALL, NULL, ddi_buf_ctl_mmio_write);
 > +	MMIO_H(DDI_BUF_CTL(PORT_C), D_ALL, NULL, ddi_buf_ctl_mmio_write);
@@ -1285,7 +1455,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(HSW_PWR_WELL_CTL5, D_BDW, NULL, power_well_ctl_mmio_write);
 > +	MMIO_H(HSW_PWR_WELL_CTL6, D_BDW, NULL, power_well_ctl_mmio_write);
 > +	MMIO_H(GEN6_GDRST, D_ALL, NULL, gdrst_mmio_write);
-> +	MMIO_F(FENCE_REG_GEN6_LO(0), 0x80, D_ALL, fence_mmio_read, fence_mmio_write);
+> +	MMIO_F(FENCE_REG_GEN6_LO(0), 0x80, D_ALL, fence_mmio_read, fence_mmio_w=
+rite);
 > +	MMIO_H(CPU_VGACNTRL, D_ALL, NULL, vga_control_mmio_write);
 > +	MMIO_H(GEN6_MBCTL, D_ALL, NULL, mbctl_write);
 > +	MMIO_H(FPGA_DBG, D_ALL, NULL, fpga_dbg_mmio_write);
@@ -1303,9 +1474,9 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +
 > +static int init_bdw_mmio_handlers(struct intel_gvt *gvt)
 >  {
-> -	struct drm_i915_private *dev_priv = gvt->gt->i915;
+> -	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
 >  	int ret;
->  
+> =20
 > -	MMIO_DH(GEN8_GT_IMR(0), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
 > -	MMIO_DH(GEN8_GT_IER(0), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
 > -	MMIO_DH(GEN8_GT_IIR(0), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
@@ -1350,14 +1521,20 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -		intel_vgpu_reg_iir_handler);
 > -	MMIO_D(GEN8_DE_PIPE_ISR(PIPE_C), D_BDW_PLUS);
 > -
-> -	MMIO_DH(GEN8_DE_PORT_IMR, D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
-> -	MMIO_DH(GEN8_DE_PORT_IER, D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
-> -	MMIO_DH(GEN8_DE_PORT_IIR, D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
+> -	MMIO_DH(GEN8_DE_PORT_IMR, D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler)=
+;
+> -	MMIO_DH(GEN8_DE_PORT_IER, D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler)=
+;
+> -	MMIO_DH(GEN8_DE_PORT_IIR, D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler)=
+;
 > -	MMIO_D(GEN8_DE_PORT_ISR, D_BDW_PLUS);
 > -
-> -	MMIO_DH(GEN8_DE_MISC_IMR, D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
-> -	MMIO_DH(GEN8_DE_MISC_IER, D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
-> -	MMIO_DH(GEN8_DE_MISC_IIR, D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
+> -	MMIO_DH(GEN8_DE_MISC_IMR, D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler)=
+;
+> -	MMIO_DH(GEN8_DE_MISC_IER, D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler)=
+;
+> -	MMIO_DH(GEN8_DE_MISC_IIR, D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler)=
+;
 > -	MMIO_D(GEN8_DE_MISC_ISR, D_BDW_PLUS);
 > -
 > -	MMIO_DH(GEN8_PCU_IMR, D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
@@ -1382,15 +1559,24 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(GEN8_GT_IMR(3), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
 > +	MMIO_H(GEN8_GT_IER(3), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
 > +	MMIO_H(GEN8_GT_IIR(3), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IMR(PIPE_A), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IER(PIPE_A), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IIR(PIPE_A), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IMR(PIPE_B), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IER(PIPE_B), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IIR(PIPE_B), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IMR(PIPE_C), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IER(PIPE_C), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
-> +	MMIO_H(GEN8_DE_PIPE_IIR(PIPE_C), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
+> +	MMIO_H(GEN8_DE_PIPE_IMR(PIPE_A), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IER(PIPE_A), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IIR(PIPE_A), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IMR(PIPE_B), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IER(PIPE_B), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IIR(PIPE_B), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IMR(PIPE_C), D_BDW_PLUS, NULL, intel_vgpu_reg_imr_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IER(PIPE_C), D_BDW_PLUS, NULL, intel_vgpu_reg_ier_h=
+andler);
+> +	MMIO_H(GEN8_DE_PIPE_IIR(PIPE_C), D_BDW_PLUS, NULL, intel_vgpu_reg_iir_h=
+andler);
 > +	MMIO_H(GEN8_DE_PORT_IMR, D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
 > +	MMIO_H(GEN8_DE_PORT_IER, D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
 > +	MMIO_H(GEN8_DE_PORT_IIR, D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
@@ -1400,16 +1586,17 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(GEN8_PCU_IMR, D_BDW_PLUS, NULL, intel_vgpu_reg_imr_handler);
 > +	MMIO_H(GEN8_PCU_IER, D_BDW_PLUS, NULL, intel_vgpu_reg_ier_handler);
 > +	MMIO_H(GEN8_PCU_IIR, D_BDW_PLUS, NULL, intel_vgpu_reg_iir_handler);
-> +	MMIO_H(GEN8_MASTER_IRQ, D_BDW_PLUS, NULL, intel_vgpu_reg_master_irq_handler);
+> +	MMIO_H(GEN8_MASTER_IRQ, D_BDW_PLUS, NULL, intel_vgpu_reg_master_irq_han=
+dler);
 > +	MMIO_RING_H(RING_ACTHD_UDW, D_BDW_PLUS, mmio_read_from_hw, NULL);
->  
+> =20
 >  #define RING_REG(base) _MMIO((base) + 0xd0)
 > -	MMIO_RING_F(RING_REG, 4, F_RO, 0,
 > -		~_MASKED_BIT_ENABLE(RESET_CTL_REQUEST_RESET), D_BDW_PLUS, NULL,
 > -		ring_reset_ctl_write);
 > +	MMIO_RING_F(RING_REG, 4, D_BDW_PLUS, NULL, ring_reset_ctl_write);
 >  #undef RING_REG
->  
+> =20
 >  #define RING_REG(base) _MMIO((base) + 0x230)
 > -	MMIO_RING_DFH(RING_REG, D_BDW_PLUS, 0, NULL, elsp_mmio_write);
 > -#undef RING_REG
@@ -1427,7 +1614,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	MMIO_RING_F(RING_REG, 48, F_RO, 0, ~0, D_BDW_PLUS, NULL, NULL);
 > +	MMIO_RING_H(RING_REG, D_BDW_PLUS, NULL, elsp_mmio_write);
 >  #undef RING_REG
->  
+> =20
 > -#define RING_REG(base) _MMIO((base) + 0x3a0)
 > -	MMIO_RING_DFH(RING_REG, D_BDW_PLUS, F_MODE_MASK, NULL, NULL);
 > -#undef RING_REG
@@ -1453,7 +1640,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -
 > -	MMIO_RING_GM(RING_HWS_PGA, D_BDW_PLUS, NULL, hws_pga_write);
 > -
-> -	MMIO_DFH(HDC_CHICKEN0, D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
+> -	MMIO_DFH(HDC_CHICKEN0, D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, NU=
+LL);
 > -
 > -	MMIO_D(CHICKEN_PIPESL_1(PIPE_A), D_BDW_PLUS);
 > -	MMIO_D(CHICKEN_PIPESL_1(PIPE_B), D_BDW_PLUS);
@@ -1502,16 +1690,20 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(GEN6_PCODE_MAILBOX, D_BDW_PLUS, NULL, mailbox_write);
 > +	MMIO_RING_H(RING_HWS_PGA, D_BDW_PLUS, NULL, hws_pga_write);
 > +	MMIO_F(_MMIO(0x24d0), 48, D_BDW_PLUS, NULL, force_nonpriv_write);
->  
+> =20
 > -	MMIO_D(_MMIO(0x48400), D_BDW_PLUS);
 > -
 > -	MMIO_D(_MMIO(0x6e570), D_BDW_PLUS);
 > -	MMIO_D(_MMIO(0x65f10), D_BDW_PLUS);
 > -
-> -	MMIO_DFH(_MMIO(0xe194), D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
-> -	MMIO_DFH(_MMIO(0xe188), D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
-> -	MMIO_DFH(HALF_SLICE_CHICKEN2, D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
-> -	MMIO_DFH(_MMIO(0x2580), D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, NULL);
+> -	MMIO_DFH(_MMIO(0xe194), D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, N=
+ULL);
+> -	MMIO_DFH(_MMIO(0xe188), D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, N=
+ULL);
+> -	MMIO_DFH(HALF_SLICE_CHICKEN2, D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, N=
+ULL, NULL);
+> -	MMIO_DFH(_MMIO(0x2580), D_BDW_PLUS, F_MODE_MASK | F_CMD_ACCESS, NULL, N=
+ULL);
 > -
 > -	MMIO_DFH(_MMIO(0x2248), D_BDW, F_CMD_ACCESS, NULL, NULL);
 > -
@@ -1527,13 +1719,13 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	MMIO_DFH(_MMIO(0x21f0), D_BDW_PLUS, F_CMD_ACCESS, NULL, NULL);
 >  	return 0;
 >  }
->  
+> =20
 > -static int init_skl_mmio_info(struct intel_gvt *gvt)
 > +static int init_skl_mmio_handlers(struct intel_gvt *gvt)
 >  {
->  	struct drm_i915_private *dev_priv = gvt->gt->i915;
+>  	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
 >  	int ret;
->  
+> =20
 > -	MMIO_DH(FORCEWAKE_RENDER_GEN9, D_SKL_PLUS, NULL, mul_force_wake_write);
 > -	MMIO_DH(FORCEWAKE_ACK_RENDER_GEN9, D_SKL_PLUS, NULL, NULL);
 > -	MMIO_DH(FORCEWAKE_GT_GEN9, D_SKL_PLUS, NULL, mul_force_wake_write);
@@ -1556,7 +1748,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	MMIO_D(GEN9_PG_ENABLE, D_SKL_PLUS);
 > -	MMIO_D(GEN9_MEDIA_PG_IDLE_HYSTERESIS, D_SKL_PLUS);
 > -	MMIO_D(GEN9_RENDER_PG_IDLE_HYSTERESIS, D_SKL_PLUS);
-> -	MMIO_DFH(GEN9_GAMT_ECO_REG_RW_IA, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL);
+> -	MMIO_DFH(GEN9_GAMT_ECO_REG_RW_IA, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL)=
+;
 > -	MMIO_DFH(MMCD_MISC_CTRL, D_SKL_PLUS, F_CMD_ACCESS, NULL, NULL);
 > -	MMIO_DH(CHICKEN_PAR1_1, D_SKL_PLUS, NULL, NULL);
 > -	MMIO_D(DC_STATE_EN, D_SKL_PLUS);
@@ -1768,9 +1961,12 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(FORCEWAKE_RENDER_GEN9, D_SKL_PLUS, NULL, mul_force_wake_write);
 > +	MMIO_H(FORCEWAKE_GT_GEN9, D_SKL_PLUS, NULL, mul_force_wake_write);
 > +	MMIO_H(FORCEWAKE_MEDIA_GEN9, D_SKL_PLUS, NULL, mul_force_wake_write);
-> +	MMIO_F(DP_AUX_CH_CTL(AUX_CH_B), 6 * 4, D_SKL_PLUS, NULL, dp_aux_ch_ctl_mmio_write);
-> +	MMIO_F(DP_AUX_CH_CTL(AUX_CH_C), 6 * 4, D_SKL_PLUS, NULL, dp_aux_ch_ctl_mmio_write);
-> +	MMIO_F(DP_AUX_CH_CTL(AUX_CH_D), 6 * 4, D_SKL_PLUS, NULL, dp_aux_ch_ctl_mmio_write);
+> +	MMIO_F(DP_AUX_CH_CTL(AUX_CH_B), 6 * 4, D_SKL_PLUS, NULL, dp_aux_ch_ctl_=
+mmio_write);
+> +	MMIO_F(DP_AUX_CH_CTL(AUX_CH_C), 6 * 4, D_SKL_PLUS, NULL, dp_aux_ch_ctl_=
+mmio_write);
+> +	MMIO_F(DP_AUX_CH_CTL(AUX_CH_D), 6 * 4, D_SKL_PLUS, NULL, dp_aux_ch_ctl_=
+mmio_write);
 > +	MMIO_H(HSW_PWR_WELL_CTL2, D_SKL_PLUS, NULL, skl_power_well_ctl_write);
 > +	MMIO_H(DBUF_CTL_S(0), D_SKL_PLUS, NULL, gen9_dbuf_ctl_mmio_write);
 > +	MMIO_H(LCPLL1_CTL, D_SKL_PLUS, NULL, skl_lcpll_write);
@@ -1799,9 +1995,11 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_H(DMA_CTRL, D_SKL_PLUS, NULL, dma_ctrl_write);
 > +
 >  #define CSFE_CHICKEN1_REG(base) _MMIO((base) + 0xD4)
-> -	MMIO_RING_DFH(CSFE_CHICKEN1_REG, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS,
+> -	MMIO_RING_DFH(CSFE_CHICKEN1_REG, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS=
+,
 > -		      NULL, csfe_chicken1_mmio_write);
-> +	MMIO_RING_H(CSFE_CHICKEN1_REG, D_SKL_PLUS, NULL, csfe_chicken1_mmio_write);
+> +	MMIO_RING_H(CSFE_CHICKEN1_REG, D_SKL_PLUS, NULL, csfe_chicken1_mmio_wri=
+te);
 >  #undef CSFE_CHICKEN1_REG
 > -	MMIO_DFH(GEN8_HDC_CHICKEN1, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS,
 > -		 NULL, NULL);
@@ -1811,16 +2009,16 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	MMIO_DFH(GAMT_CHKN_BIT_REG, D_KBL | D_CFL, F_CMD_ACCESS, NULL, NULL);
 > -	MMIO_D(GEN9_CTX_PREEMPT_REG, D_SKL_PLUS & ~D_BXT);
 > -	MMIO_DFH(_MMIO(0xe4cc), D_BDW_PLUS, F_CMD_ACCESS, NULL, NULL);
->  
+> =20
 >  	return 0;
 >  }
->  
+> =20
 > -static int init_bxt_mmio_info(struct intel_gvt *gvt)
 > +static int init_bxt_mmio_handlers(struct intel_gvt *gvt)
 >  {
-> -	struct drm_i915_private *dev_priv = gvt->gt->i915;
+> -	struct drm_i915_private *dev_priv =3D gvt->gt->i915;
 >  	int ret;
->  
+> =20
 > -	MMIO_F(_MMIO(0x80000), 0x3000, 0, 0, 0, D_BXT, NULL, NULL);
 > -
 > -	MMIO_D(GEN7_SAMPLER_INSTDONE, D_BXT);
@@ -2003,62 +2201,77 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > -	return 0;
 > -}
 > -
-> -static const struct gvt_mmio_block *find_mmio_block(struct intel_gvt *gvt,
+> -static const struct gvt_mmio_block *find_mmio_block(struct intel_gvt *gv=
+t,
 > +	MMIO_H(BXT_P_CR_GT_DISP_PWRON, D_BXT, NULL, bxt_gt_disp_pwron_write);
-> +	MMIO_H(BXT_PHY_CTL_FAMILY(DPIO_PHY0), D_BXT, NULL, bxt_phy_ctl_family_write);
-> +	MMIO_H(BXT_PHY_CTL_FAMILY(DPIO_PHY1), D_BXT, NULL, bxt_phy_ctl_family_write);
-> +	MMIO_H(BXT_PORT_PLL_ENABLE(PORT_A), D_BXT, NULL, bxt_port_pll_enable_write);
-> +	MMIO_H(BXT_PORT_PLL_ENABLE(PORT_B), D_BXT, NULL, bxt_port_pll_enable_write);
-> +	MMIO_H(BXT_PORT_PLL_ENABLE(PORT_C), D_BXT, NULL, bxt_port_pll_enable_write);
-> +	MMIO_H(BXT_PORT_PCS_DW12_GRP(DPIO_PHY0, DPIO_CH0), D_BXT, NULL, bxt_pcs_dw12_grp_write);
-> +	MMIO_H(BXT_PORT_TX_DW3_LN0(DPIO_PHY0, DPIO_CH0), D_BXT, bxt_port_tx_dw3_read, NULL);
-> +	MMIO_H(BXT_PORT_PCS_DW12_GRP(DPIO_PHY0, DPIO_CH1), D_BXT, NULL, bxt_pcs_dw12_grp_write);
-> +	MMIO_H(BXT_PORT_TX_DW3_LN0(DPIO_PHY0, DPIO_CH1), D_BXT, bxt_port_tx_dw3_read, NULL);
-> +	MMIO_H(BXT_PORT_PCS_DW12_GRP(DPIO_PHY1, DPIO_CH0), D_BXT, NULL, bxt_pcs_dw12_grp_write);
-> +	MMIO_H(BXT_PORT_TX_DW3_LN0(DPIO_PHY1, DPIO_CH0), D_BXT, bxt_port_tx_dw3_read, NULL);
+> +	MMIO_H(BXT_PHY_CTL_FAMILY(DPIO_PHY0), D_BXT, NULL, bxt_phy_ctl_family_w=
+rite);
+> +	MMIO_H(BXT_PHY_CTL_FAMILY(DPIO_PHY1), D_BXT, NULL, bxt_phy_ctl_family_w=
+rite);
+> +	MMIO_H(BXT_PORT_PLL_ENABLE(PORT_A), D_BXT, NULL, bxt_port_pll_enable_wr=
+ite);
+> +	MMIO_H(BXT_PORT_PLL_ENABLE(PORT_B), D_BXT, NULL, bxt_port_pll_enable_wr=
+ite);
+> +	MMIO_H(BXT_PORT_PLL_ENABLE(PORT_C), D_BXT, NULL, bxt_port_pll_enable_wr=
+ite);
+> +	MMIO_H(BXT_PORT_PCS_DW12_GRP(DPIO_PHY0, DPIO_CH0), D_BXT, NULL, bxt_pcs=
+_dw12_grp_write);
+> +	MMIO_H(BXT_PORT_TX_DW3_LN0(DPIO_PHY0, DPIO_CH0), D_BXT, bxt_port_tx_dw3=
+_read, NULL);
+> +	MMIO_H(BXT_PORT_PCS_DW12_GRP(DPIO_PHY0, DPIO_CH1), D_BXT, NULL, bxt_pcs=
+_dw12_grp_write);
+> +	MMIO_H(BXT_PORT_TX_DW3_LN0(DPIO_PHY0, DPIO_CH1), D_BXT, bxt_port_tx_dw3=
+_read, NULL);
+> +	MMIO_H(BXT_PORT_PCS_DW12_GRP(DPIO_PHY1, DPIO_CH0), D_BXT, NULL, bxt_pcs=
+_dw12_grp_write);
+> +	MMIO_H(BXT_PORT_TX_DW3_LN0(DPIO_PHY1, DPIO_CH0), D_BXT, bxt_port_tx_dw3=
+_read, NULL);
 > +	MMIO_H(BXT_DE_PLL_ENABLE, D_BXT, NULL, bxt_de_pll_enable_write);
 > +	MMIO_H(GEN8_PRIVATE_PAT_LO, D_BXT, NULL, bxt_ppat_low_write);
 > +
 > +	return 0;
 > +}
 > +
-> +static struct intel_gvt_mmio_block *find_mmio_block(struct intel_gvt *gvt,
+> +static struct intel_gvt_mmio_block *find_mmio_block(struct intel_gvt *gv=
+t,
 >  						    unsigned int offset)
 >  {
-> -	unsigned long device = intel_gvt_get_device_type(gvt);
-> -	const struct gvt_mmio_block *block = gvt->mmio.mmio_block;
-> +	unsigned long device = intel_gvt_get_device_type(gvt->gt->i915);
-> +	struct intel_gvt_mmio_block *block = gvt->mmio.mmio_block;
->  	int num = gvt->mmio.num_mmio_block;
+> -	unsigned long device =3D intel_gvt_get_device_type(gvt);
+> -	const struct gvt_mmio_block *block =3D gvt->mmio.mmio_block;
+> +	unsigned long device =3D intel_gvt_get_device_type(gvt->gt->i915);
+> +	struct intel_gvt_mmio_block *block =3D gvt->mmio.mmio_block;
+>  	int num =3D gvt->mmio.num_mmio_block;
 >  	int i;
->  
->  	for (i = 0; i < num; i++, block++) {
+> =20
+>  	for (i =3D 0; i < num; i++, block++) {
 >  		if (!(device & block->device))
 >  			continue;
-> -		if (offset >= i915_mmio_reg_offset(block->offset) &&
+> -		if (offset >=3D i915_mmio_reg_offset(block->offset) &&
 > -		    offset < i915_mmio_reg_offset(block->offset) + block->size)
-> +		if (offset >= block->offset &&
+> +		if (offset >=3D block->offset &&
 > +		    offset < block->offset + block->size)
 >  			return block;
 >  	}
 >  	return NULL;
-> @@ -3664,23 +2370,110 @@ void intel_gvt_clean_mmio_info(struct intel_gvt *gvt)
+> @@ -3664,23 +2370,110 @@ void intel_gvt_clean_mmio_info(struct intel_gvt =
+*gvt)
 >  	hash_for_each_safe(gvt->mmio.mmio_info_table, i, tmp, e, node)
 >  		kfree(e);
->  
+> =20
 > +	kfree(gvt->mmio.mmio_block);
-> +	gvt->mmio.mmio_block = NULL;
-> +	gvt->mmio.num_mmio_block = 0;
+> +	gvt->mmio.mmio_block =3D NULL;
+> +	gvt->mmio.num_mmio_block =3D 0;
 > +
 >  	vfree(gvt->mmio.mmio_attribute);
->  	gvt->mmio.mmio_attribute = NULL;
+>  	gvt->mmio.mmio_attribute =3D NULL;
 >  }
->  
-> -/* Special MMIO blocks. registers in MMIO block ranges should not be command
+> =20
+> -/* Special MMIO blocks. registers in MMIO block ranges should not be com=
+mand
 > - * accessible (should have no F_CMD_ACCESS flag).
 > - * otherwise, need to update cmd_reg_handler in cmd_parser.c
 > - */
-> -static const struct gvt_mmio_block mmio_blocks[] = {
+> -static const struct gvt_mmio_block mmio_blocks[] =3D {
 > -	{D_SKL_PLUS, _MMIO(DMC_MMIO_START_RANGE), 0x3000, NULL, NULL},
 > -	{D_ALL, _MMIO(MCHBAR_MIRROR_BASE_SNB), 0x40000, NULL, NULL},
 > -	{D_ALL, _MMIO(VGT_PVINFO_PAGE), VGT_PVINFO_SIZE,
@@ -2071,7 +2284,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +		   u32 ro_mask, u32 device,
 > +		   struct intel_gvt_mmio_table_iter *iter)
 > +{
-> +	struct intel_gvt *gvt = iter->data;
+> +	struct intel_gvt *gvt =3D iter->data;
 > +	struct intel_gvt_mmio_info *info, *p;
 > +	u32 start, end, i;
 > +
@@ -2081,16 +2294,16 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	if (WARN_ON(!IS_ALIGNED(offset, 4)))
 > +		return -EINVAL;
 > +
-> +	start = offset;
-> +	end = offset + size;
+> +	start =3D offset;
+> +	end =3D offset + size;
 > +
-> +	for (i = start; i < end; i += 4) {
-> +		info = kzalloc(sizeof(*info), GFP_KERNEL);
+> +	for (i =3D start; i < end; i +=3D 4) {
+> +		info =3D kzalloc(sizeof(*info), GFP_KERNEL);
 > +		if (!info)
 > +			return -ENOMEM;
 > +
-> +		info->offset = i;
-> +		p = intel_gvt_find_mmio_info(gvt, info->offset);
+> +		info->offset =3D i;
+> +		p =3D intel_gvt_find_mmio_info(gvt, info->offset);
 > +		if (p) {
 > +			WARN(1, "dup mmio definition offset %x\n",
 > +				info->offset);
@@ -2103,11 +2316,11 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +			return -EEXIST;
 > +		}
 > +
-> +		info->ro_mask = ro_mask;
-> +		info->device = device;
-> +		info->read = intel_vgpu_default_mmio_read;
-> +		info->write = intel_vgpu_default_mmio_write;
-> +		gvt->mmio.mmio_attribute[info->offset / 4] = flags;
+> +		info->ro_mask =3D ro_mask;
+> +		info->device =3D device;
+> +		info->read =3D intel_vgpu_default_mmio_read;
+> +		info->write =3D intel_vgpu_default_mmio_write;
+> +		gvt->mmio.mmio_attribute[info->offset / 4] =3D flags;
 > +		INIT_HLIST_NODE(&info->node);
 > +		hash_add(gvt->mmio.mmio_info_table, &info->node, info->offset);
 > +		gvt->mmio.num_tracked_mmio++;
@@ -2118,23 +2331,23 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +static int do_mmio_block(u32 offset, u32 size, u32 device,
 > +			 struct intel_gvt_mmio_table_iter *iter)
 > +{
-> +	struct intel_gvt *gvt = iter->data;
-> +	struct intel_gvt_mmio_block *block = gvt->mmio.mmio_block;
+> +	struct intel_gvt *gvt =3D iter->data;
+> +	struct intel_gvt_mmio_block *block =3D gvt->mmio.mmio_block;
 > +	void *ret;
 > +
-> +	ret = krealloc(block,
+> +	ret =3D krealloc(block,
 > +			 (gvt->mmio.num_mmio_block + 1) * sizeof(*block),
 > +			 GFP_KERNEL);
 > +	if (!ret)
 > +		return -ENOMEM;
 > +
-> +	gvt->mmio.mmio_block = block = ret;
+> +	gvt->mmio.mmio_block =3D block =3D ret;
 > +
-> +	block += gvt->mmio.num_mmio_block;
+> +	block +=3D gvt->mmio.num_mmio_block;
 > +
-> +	block->offset = offset;
-> +	block->size = size;
-> +	block->device = device;
+> +	block->offset =3D offset;
+> +	block->size =3D size;
+> +	block->device =3D device;
 > +
 > +	gvt->mmio.num_mmio_block++;
 > +
@@ -2145,10 +2358,10 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +{
 > +	struct intel_gvt_mmio_table_iter iter;
 > +
-> +	iter.i915 = gvt->gt->i915;
-> +	iter.data = gvt;
-> +	iter.do_mmio = do_mmio;
-> +	iter.do_mmio_block = do_mmio_block;
+> +	iter.i915 =3D gvt->gt->i915;
+> +	iter.data =3D gvt;
+> +	iter.do_mmio =3D do_mmio;
+> +	iter.do_mmio_block =3D do_mmio_block;
 > +
 > +	return intel_gvt_iterate_mmio_table(&iter);
 > +}
@@ -2157,121 +2370,130 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +{
 > +	struct intel_gvt_mmio_block *block;
 > +
-> +	block = find_mmio_block(gvt, VGT_PVINFO_PAGE);
-> +	block->read = pvinfo_mmio_read;
-> +	block->write = pvinfo_mmio_write;
+> +	block =3D find_mmio_block(gvt, VGT_PVINFO_PAGE);
+> +	block->read =3D pvinfo_mmio_read;
+> +	block->write =3D pvinfo_mmio_write;
 > +
 > +	return 0;
 > +}
->  
+> =20
 >  /**
->   * intel_gvt_setup_mmio_info - setup MMIO information table for GVT device
-> @@ -3703,39 +2496,44 @@ int intel_gvt_setup_mmio_info(struct intel_gvt *gvt)
+>   * intel_gvt_setup_mmio_info - setup MMIO information table for GVT devi=
+ce
+> @@ -3703,39 +2496,44 @@ int intel_gvt_setup_mmio_info(struct intel_gvt *g=
+vt)
 >  	if (!gvt->mmio.mmio_attribute)
 >  		return -ENOMEM;
->  
-> -	ret = init_generic_mmio_info(gvt);
-> +	ret = init_mmio_info(gvt);
+> =20
+> -	ret =3D init_generic_mmio_info(gvt);
+> +	ret =3D init_mmio_info(gvt);
 > +	if (ret)
 > +		goto err;
 > +
-> +	ret = init_mmio_block_handlers(gvt);
+> +	ret =3D init_mmio_block_handlers(gvt);
 > +	if (ret)
 > +		goto err;
 > +
-> +	ret = init_generic_mmio_handlers(gvt);
+> +	ret =3D init_generic_mmio_handlers(gvt);
 >  	if (ret)
 >  		goto err;
->  
+> =20
 >  	if (IS_BROADWELL(i915)) {
-> -		ret = init_bdw_mmio_info(gvt);
-> +		ret = init_bdw_mmio_handlers(gvt);
+> -		ret =3D init_bdw_mmio_info(gvt);
+> +		ret =3D init_bdw_mmio_handlers(gvt);
 >  		if (ret)
 >  			goto err;
 >  	} else if (IS_SKYLAKE(i915) ||
 > -		   IS_KABYLAKE(i915) ||
 > -		   IS_COFFEELAKE(i915) ||
 > -		   IS_COMETLAKE(i915)) {
-> -		ret = init_bdw_mmio_info(gvt);
+> -		ret =3D init_bdw_mmio_info(gvt);
 > +			IS_KABYLAKE(i915) ||
 > +			IS_COFFEELAKE(i915) ||
 > +			IS_COMETLAKE(i915)) {
-> +		ret = init_bdw_mmio_handlers(gvt);
+> +		ret =3D init_bdw_mmio_handlers(gvt);
 >  		if (ret)
 >  			goto err;
-> -		ret = init_skl_mmio_info(gvt);
-> +		ret = init_skl_mmio_handlers(gvt);
+> -		ret =3D init_skl_mmio_info(gvt);
+> +		ret =3D init_skl_mmio_handlers(gvt);
 >  		if (ret)
 >  			goto err;
 >  	} else if (IS_BROXTON(i915)) {
-> -		ret = init_bdw_mmio_info(gvt);
-> +		ret = init_bdw_mmio_handlers(gvt);
+> -		ret =3D init_bdw_mmio_info(gvt);
+> +		ret =3D init_bdw_mmio_handlers(gvt);
 >  		if (ret)
 >  			goto err;
-> -		ret = init_skl_mmio_info(gvt);
-> +		ret = init_skl_mmio_handlers(gvt);
+> -		ret =3D init_skl_mmio_info(gvt);
+> +		ret =3D init_skl_mmio_handlers(gvt);
 >  		if (ret)
 >  			goto err;
-> -		ret = init_bxt_mmio_info(gvt);
-> +		ret = init_bxt_mmio_handlers(gvt);
+> -		ret =3D init_bxt_mmio_info(gvt);
+> +		ret =3D init_bxt_mmio_handlers(gvt);
 >  		if (ret)
 >  			goto err;
 >  	}
->  
-> -	gvt->mmio.mmio_block = mmio_blocks;
-> -	gvt->mmio.num_mmio_block = ARRAY_SIZE(mmio_blocks);
+> =20
+> -	gvt->mmio.mmio_block =3D mmio_blocks;
+> -	gvt->mmio.num_mmio_block =3D ARRAY_SIZE(mmio_blocks);
 > -
 >  	return 0;
 >  err:
 >  	intel_gvt_clean_mmio_info(gvt);
-> @@ -3755,7 +2553,7 @@ int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
+> @@ -3755,7 +2553,7 @@ int intel_gvt_for_each_tracked_mmio(struct intel_gv=
+t *gvt,
 >  	int (*handler)(struct intel_gvt *gvt, u32 offset, void *data),
 >  	void *data)
 >  {
-> -	const struct gvt_mmio_block *block = gvt->mmio.mmio_block;
-> +	const struct intel_gvt_mmio_block *block = gvt->mmio.mmio_block;
+> -	const struct gvt_mmio_block *block =3D gvt->mmio.mmio_block;
+> +	const struct intel_gvt_mmio_block *block =3D gvt->mmio.mmio_block;
 >  	struct intel_gvt_mmio_info *e;
 >  	int i, j, ret;
->  
-> @@ -3767,13 +2565,11 @@ int intel_gvt_for_each_tracked_mmio(struct intel_gvt *gvt,
->  
->  	for (i = 0; i < gvt->mmio.num_mmio_block; i++, block++) {
+> =20
+> @@ -3767,13 +2565,11 @@ int intel_gvt_for_each_tracked_mmio(struct intel_=
+gvt *gvt,
+> =20
+>  	for (i =3D 0; i < gvt->mmio.num_mmio_block; i++, block++) {
 >  		/* pvinfo data doesn't come from hw mmio */
-> -		if (i915_mmio_reg_offset(block->offset) == VGT_PVINFO_PAGE)
-> +		if (block->offset == VGT_PVINFO_PAGE)
+> -		if (i915_mmio_reg_offset(block->offset) =3D=3D VGT_PVINFO_PAGE)
+> +		if (block->offset =3D=3D VGT_PVINFO_PAGE)
 >  			continue;
->  
->  		for (j = 0; j < block->size; j += 4) {
-> -			ret = handler(gvt,
+> =20
+>  		for (j =3D 0; j < block->size; j +=3D 4) {
+> -			ret =3D handler(gvt,
 > -				      i915_mmio_reg_offset(block->offset) + j,
 > -				      data);
-> +			ret = handler(gvt, block->offset + j, data);
+> +			ret =3D handler(gvt, block->offset + j, data);
 >  			if (ret)
 >  				return ret;
 >  		}
-> @@ -3873,7 +2669,7 @@ int intel_vgpu_mmio_reg_rw(struct intel_vgpu *vgpu, unsigned int offset,
->  	struct drm_i915_private *i915 = vgpu->gvt->gt->i915;
->  	struct intel_gvt *gvt = vgpu->gvt;
+> @@ -3873,7 +2669,7 @@ int intel_vgpu_mmio_reg_rw(struct intel_vgpu *vgpu,=
+ unsigned int offset,
+>  	struct drm_i915_private *i915 =3D vgpu->gvt->gt->i915;
+>  	struct intel_gvt *gvt =3D vgpu->gvt;
 >  	struct intel_gvt_mmio_info *mmio_info;
 > -	const struct gvt_mmio_block *mmio_block;
 > +	struct intel_gvt_mmio_block *mmio_block;
 >  	gvt_mmio_func func;
 >  	int ret;
->  
-> diff --git a/drivers/gpu/drm/i915/gvt/mmio.h b/drivers/gpu/drm/i915/gvt/mmio.h
+> =20
+> diff --git a/drivers/gpu/drm/i915/gvt/mmio.h b/drivers/gpu/drm/i915/gvt/m=
+mio.h
 > index 7c26af39fbfc..19239ebaf949 100644
 > --- a/drivers/gpu/drm/i915/gvt/mmio.h
 > +++ b/drivers/gpu/drm/i915/gvt/mmio.h
 > @@ -71,8 +71,6 @@ struct intel_gvt_mmio_info {
->  
+> =20
 >  const struct intel_engine_cs *
->  intel_gvt_render_mmio_to_engine(struct intel_gvt *gvt, unsigned int reg);
+>  intel_gvt_render_mmio_to_engine(struct intel_gvt *gvt, unsigned int reg)=
+;
 > -unsigned long intel_gvt_get_device_type(struct intel_gvt *gvt);
-> -bool intel_gvt_match_device(struct intel_gvt *gvt, unsigned long device);
->  
+> -bool intel_gvt_match_device(struct intel_gvt *gvt, unsigned long device)=
+;
+> =20
 >  int intel_gvt_setup_mmio_info(struct intel_gvt *gvt);
 >  void intel_gvt_clean_mmio_info(struct intel_gvt *gvt);
-> diff --git a/drivers/gpu/drm/i915/gvt/mmio_table.c b/drivers/gpu/drm/i915/gvt/mmio_table.c
+> diff --git a/drivers/gpu/drm/i915/gvt/mmio_table.c b/drivers/gpu/drm/i915=
+/gvt/mmio_table.c
 > new file mode 100644
 > index 000000000000..6bb44dcaf2a5
 > --- /dev/null
@@ -2280,23 +2502,35 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +/*
 > + * Copyright(c) 2021 Intel Corporation. All rights reserved.
 > + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a
-> + * copy of this software and associated documentation files (the "Software"),
-> + * to deal in the Software without restriction, including without limitation
-> + * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a
+> + * copy of this software and associated documentation files (the "Softwa=
+re"),
+> + * to deal in the Software without restriction, including without limita=
+tion
+> + * the rights to use, copy, modify, merge, publish, distribute, sublicen=
+se,
 > + * and/or sell copies of the Software, and to permit persons to whom the
 > + * Software is furnished to do so, subject to the following conditions:
 > + *
-> + * The above copyright notice and this permission notice (including the next
-> + * paragraph) shall be included in all copies or substantial portions of the
+> + * The above copyright notice and this permission notice (including the =
+next
+> + * paragraph) shall be included in all copies or substantial portions of=
+ the
 > + * Software.
 > + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SH=
+ALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN THE
 > + * SOFTWARE.
 > + *
 > + */
@@ -2310,22 +2544,24 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > + * @i915: drm i915 private data
 > + * @info: GVT device info
 > + *
-> + * This function will be called during the initialization of a GVT device.
+> + * This function will be called during the initialization of a GVT devic=
+e.
 > + */
-> +void intel_gvt_init_device_info(struct drm_i915_private *i915, struct intel_gvt_device_info *info)
+> +void intel_gvt_init_device_info(struct drm_i915_private *i915, struct in=
+tel_gvt_device_info *info)
 > +{
-> +	struct pci_dev *pdev = to_pci_dev(i915->drm.dev);
+> +	struct pci_dev *pdev =3D to_pci_dev(i915->drm.dev);
 > +
-> +	info->max_support_vgpus = 8;
-> +	info->cfg_space_size = PCI_CFG_SPACE_EXP_SIZE;
-> +	info->mmio_size = 2 * 1024 * 1024;
-> +	info->mmio_bar = 0;
-> +	info->gtt_start_offset = 8 * 1024 * 1024;
-> +	info->gtt_entry_size = 8;
-> +	info->gtt_entry_size_shift = 3;
-> +	info->gmadr_bytes_in_cmd = 8;
-> +	info->max_surface_size = 36 * 1024 * 1024;
-> +	info->msi_cap_offset = pdev->msi_cap;
+> +	info->max_support_vgpus =3D 8;
+> +	info->cfg_space_size =3D PCI_CFG_SPACE_EXP_SIZE;
+> +	info->mmio_size =3D 2 * 1024 * 1024;
+> +	info->mmio_bar =3D 0;
+> +	info->gtt_start_offset =3D 8 * 1024 * 1024;
+> +	info->gtt_entry_size =3D 8;
+> +	info->gtt_entry_size_shift =3D 3;
+> +	info->gmadr_bytes_in_cmd =3D 8;
+> +	info->max_surface_size =3D 36 * 1024 * 1024;
+> +	info->msi_cap_offset =3D pdev->msi_cap;
 > +}
 > +
 > +/**
@@ -2352,7 +2588,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +
 > +#define MMIO_F(reg, s, f, am, rm, d) do { \
 > +	if (intel_gvt_get_device_type(iter->i915) & (d)) { \
-> +		ret = iter->do_mmio(i915_mmio_reg_offset(reg), \
+> +		ret =3D iter->do_mmio(i915_mmio_reg_offset(reg), \
 > +			f, s, am, rm, d, iter); \
 > +		if (ret) \
 > +			return ret; \
@@ -2397,7 +2633,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +
 > +static int iterate_generic_mmio(struct intel_gvt_mmio_table_iter *iter)
 > +{
-> +	struct drm_i915_private *dev_priv = iter->i915;
+> +	struct drm_i915_private *dev_priv =3D iter->i915;
 > +	int ret;
 > +
 > +	MMIO_RING_D(RING_IMR, D_ALL);
@@ -3087,7 +3323,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +
 > +static int iterate_bdw_mmio(struct intel_gvt_mmio_table_iter *iter)
 > +{
-> +	struct drm_i915_private *dev_priv = iter->i915;
+> +	struct drm_i915_private *dev_priv =3D iter->i915;
 > +	int ret;
 > +
 > +	MMIO_D(GEN8_GT_IMR(0), D_BDW_PLUS);
@@ -3231,7 +3467,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +
 > +static int iterate_skl_mmio(struct intel_gvt_mmio_table_iter *iter)
 > +{
-> +	struct drm_i915_private *dev_priv = iter->i915;
+> +	struct drm_i915_private *dev_priv =3D iter->i915;
 > +	int ret;
 > +
 > +	MMIO_D(FORCEWAKE_RENDER_GEN9, D_SKL_PLUS);
@@ -3376,7 +3612,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_D(RPM_CONFIG0, D_SKL_PLUS);
 > +	MMIO_D(_MMIO(0xd08), D_SKL_PLUS);
 > +	MMIO_D(RC6_LOCATION, D_SKL_PLUS);
-> +	MMIO_DF(GEN7_FF_SLICE_CS_CHICKEN1, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS);
+> +	MMIO_DF(GEN7_FF_SLICE_CS_CHICKEN1, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCE=
+SS);
 > +	MMIO_DF(GEN9_CS_DEBUG_MODE1, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS);
 > +	/* TRTT */
 > +	MMIO_DF(TRVATTL3PTRDW(0), D_SKL_PLUS, F_CMD_ACCESS);
@@ -3415,7 +3652,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +	MMIO_D(_MMIO(_PLANE_KEYMSK_1(PIPE_C)), D_SKL_PLUS);
 > +	MMIO_D(_MMIO(0x44500), D_SKL_PLUS);
 > +#define CSFE_CHICKEN1_REG(base) _MMIO((base) + 0xD4)
-> +	MMIO_RING_DF(CSFE_CHICKEN1_REG, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS);
+> +	MMIO_RING_DF(CSFE_CHICKEN1_REG, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS)=
+;
 > +#undef CSFE_CHICKEN1_REG
 > +	MMIO_DF(GEN8_HDC_CHICKEN1, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS);
 > +	MMIO_DF(GEN9_WM_CHICKEN3, D_SKL_PLUS, F_MODE_MASK | F_CMD_ACCESS);
@@ -3428,7 +3666,7 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +
 > +static int iterate_bxt_mmio(struct intel_gvt_mmio_table_iter *iter)
 > +{
-> +	struct drm_i915_private *dev_priv = iter->i915;
+> +	struct drm_i915_private *dev_priv =3D iter->i915;
 > +	int ret;
 > +
 > +	MMIO_F(_MMIO(0x80000), 0x3000, 0, 0, 0, D_BXT);
@@ -3588,14 +3826,15 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +
 > +#define MMIO_BLOCK(reg, s, d) do { \
 > +	if (intel_gvt_get_device_type(iter->i915) & d) { \
-> +		ret = iter->do_mmio_block(i915_mmio_reg_offset(reg), s, \
+> +		ret =3D iter->do_mmio_block(i915_mmio_reg_offset(reg), s, \
 > +					  d, iter); \
 > +		if (ret) \
 > +			return ret; \
 > +	} \
 > +} while (0)
 > +
-> +/* Special MMIO blocks. registers in MMIO block ranges should not be command
+> +/* Special MMIO blocks. registers in MMIO block ranges should not be com=
+mand
 > + * accessible (should have no F_CMD_ACCESS flag).
 > + * otherwise, need to update cmd_reg_handler in cmd_parser.c
 > + */
@@ -3618,43 +3857,44 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > + * @iter: the interator
 > + *
 > + * This function is called for iterating the GVT MMIO table when i915 is
-> + * taking the snapshot of the HW and GVT is building MMIO tracking table.
+> + * taking the snapshot of the HW and GVT is building MMIO tracking table=
+.
 > + */
 > +int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter)
 > +{
-> +	struct drm_i915_private *i915 = iter->i915;
+> +	struct drm_i915_private *i915 =3D iter->i915;
 > +	int ret;
 > +
-> +	ret = iterate_mmio_block(iter);
+> +	ret =3D iterate_mmio_block(iter);
 > +	if (ret)
 > +		goto err;
 > +
-> +	ret = iterate_generic_mmio(iter);
+> +	ret =3D iterate_generic_mmio(iter);
 > +	if (ret)
 > +		goto err;
 > +
 > +	if (IS_BROADWELL(i915)) {
-> +		ret = iterate_bdw_mmio(iter);
+> +		ret =3D iterate_bdw_mmio(iter);
 > +		if (ret)
 > +			goto err;
 > +	} else if (IS_SKYLAKE(i915) ||
 > +		   IS_KABYLAKE(i915) ||
 > +		   IS_COFFEELAKE(i915) ||
 > +		   IS_COMETLAKE(i915)) {
-> +		ret = iterate_bdw_mmio(iter);
+> +		ret =3D iterate_bdw_mmio(iter);
 > +		if (ret)
 > +			goto err;
-> +		ret = iterate_skl_mmio(iter);
+> +		ret =3D iterate_skl_mmio(iter);
 > +		if (ret)
 > +			goto err;
 > +	} else if (IS_BROXTON(i915)) {
-> +		ret = iterate_bdw_mmio(iter);
+> +		ret =3D iterate_bdw_mmio(iter);
 > +		if (ret)
 > +			goto err;
-> +		ret = iterate_skl_mmio(iter);
+> +		ret =3D iterate_skl_mmio(iter);
 > +		if (ret)
 > +			goto err;
-> +		ret = iterate_bxt_mmio(iter);
+> +		ret =3D iterate_bxt_mmio(iter);
 > +		if (ret)
 > +			goto err;
 > +	}
@@ -3663,7 +3903,8 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +err:
 > +	return ret;
 > +}
-> diff --git a/drivers/gpu/drm/i915/gvt/mmio_table.h b/drivers/gpu/drm/i915/gvt/mmio_table.h
+> diff --git a/drivers/gpu/drm/i915/gvt/mmio_table.h b/drivers/gpu/drm/i915=
+/gvt/mmio_table.h
 > new file mode 100644
 > index 000000000000..06bae9c0290d
 > --- /dev/null
@@ -3672,23 +3913,35 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +/*
 > + * Copyright(c) 2021 Intel Corporation. All rights reserved.
 > + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a
-> + * copy of this software and associated documentation files (the "Software"),
-> + * to deal in the Software without restriction, including without limitation
-> + * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a
+> + * copy of this software and associated documentation files (the "Softwa=
+re"),
+> + * to deal in the Software without restriction, including without limita=
+tion
+> + * the rights to use, copy, modify, merge, publish, distribute, sublicen=
+se,
 > + * and/or sell copies of the Software, and to permit persons to whom the
 > + * Software is furnished to do so, subject to the following conditions:
 > + *
-> + * The above copyright notice and this permission notice (including the next
-> + * paragraph) shall be included in all copies or substantial portions of the
+> + * The above copyright notice and this permission notice (including the =
+next
+> + * paragraph) shall be included in all copies or substantial portions of=
+ the
 > + * Software.
 > + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SH=
+ALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN THE
 > + * SOFTWARE.
 > + *
 > + */
@@ -3722,19 +3975,22 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +		       struct intel_gvt_mmio_table_iter *iter);
 > +};
 > +
-> +void intel_gvt_init_device_info(struct drm_i915_private *i915, struct intel_gvt_device_info *info);
+> +void intel_gvt_init_device_info(struct drm_i915_private *i915, struct in=
+tel_gvt_device_info *info);
 > +unsigned long intel_gvt_get_device_type(struct drm_i915_private *i915);
-> +int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter);
+> +int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter)=
+;
 > +
 > +#endif
-> diff --git a/drivers/gpu/drm/i915/gvt/reg.h b/drivers/gpu/drm/i915/gvt/reg.h
+> diff --git a/drivers/gpu/drm/i915/gvt/reg.h b/drivers/gpu/drm/i915/gvt/re=
+g.h
 > index 7d666d34f9ff..d8216c63c39a 100644
 > --- a/drivers/gpu/drm/i915/gvt/reg.h
 > +++ b/drivers/gpu/drm/i915/gvt/reg.h
 > @@ -132,6 +132,13 @@
 >  #define RING_GFX_MODE(base)	_MMIO((base) + 0x29c)
 >  #define VF_GUARDBAND		_MMIO(0x83a4)
->  
+> =20
 > -
 >  #define BCS_TILE_REGISTER_VAL_OFFSET (0x43*4)
 > +
@@ -3746,6 +4002,6 @@ On Thu, Jan 27, 2022 at 07:05:06AM -0500, Zhi Wang wrote:
 > +#define PCH_PP_DIVISOR _MMIO(0xc7210)
 > +
 >  #endif
-> -- 
+> --=20
 > 2.25.1
 ---end quoted text---
