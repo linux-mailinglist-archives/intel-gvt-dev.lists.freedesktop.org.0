@@ -2,47 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10A5C4AC38B
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Feb 2022 16:32:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 435924AC38E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Feb 2022 16:32:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9799A11245B;
-	Mon,  7 Feb 2022 15:32:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BDAFA11245F;
+	Mon,  7 Feb 2022 15:32:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D181811245F
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2D62F112456
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  7 Feb 2022 15:32:11 +0000 (UTC)
+ Mon,  7 Feb 2022 15:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644247930;
+ s=mimecast20190719; t=1644247941;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JIz72i323mNLi2DkTwdrDXZhWqpT5EG0EiEDO8eaza0=;
- b=Ji5prR9uevHvD0Qk9w1JTi7MdQagAsAPNyA6AZPB6FVilzQBdlj3bsfje5hSfT8ERpxLAw
- C7erddFk5x50eKrAIHiiRqzgduuPVxxkD8jaF1sGnvSrHFskIHEiFCknuWBnb0iLe/gOqc
- rVoNwAx9t/dva6T55XAiMlYj+xNCHeA=
+ bh=ihOxmZAbTpzWMc2NwiHn3Gv0b20etgSCi1QvjMhiZ/g=;
+ b=YYkHv3chqQ83r+UOj6AsaPsCzn1NwjYKo+wivHepeUu7d+7HWto2TIJYHaFhQZGAuFyDlR
+ OkPxRAXGVyBsGmKEfF+ZPoW5fBwYTkP2N9lwMyz0hNl003Vt3PUP1dI6S6hXA0VCGJw+9W
+ xo2Q2s9P+ATXxq41giMiI0dc2fcBM6I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-52-xQCvYTM7OYOhVZ8PDv0x5Q-1; Mon, 07 Feb 2022 10:32:07 -0500
-X-MC-Unique: xQCvYTM7OYOhVZ8PDv0x5Q-1
+ us-mta-635-dIsqZjtWPc67o-KOzzRURA-1; Mon, 07 Feb 2022 10:32:16 -0500
+X-MC-Unique: dIsqZjtWPc67o-KOzzRURA-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9BDDF1091DA2;
- Mon,  7 Feb 2022 15:32:04 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C01291923B83;
+ Mon,  7 Feb 2022 15:32:12 +0000 (UTC)
 Received: from localhost.localdomain (unknown [10.40.192.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 18C485E495;
- Mon,  7 Feb 2022 15:31:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 18C765E495;
+ Mon,  7 Feb 2022 15:32:04 +0000 (UTC)
 From: Maxim Levitsky <mlevitsk@redhat.com>
 To: kvm@vger.kernel.org
-Subject: [PATCH 16/30] KVM: x86: SVM: allow to force AVIC to be enabled
-Date: Mon,  7 Feb 2022 17:28:33 +0200
-Message-Id: <20220207152847.836777-17-mlevitsk@redhat.com>
+Subject: [PATCH 17/30] KVM: x86: mmu: trace kvm_mmu_set_spte after the new
+ SPTE was set
+Date: Mon,  7 Feb 2022 17:28:34 +0200
+Message-Id: <20220207152847.836777-18-mlevitsk@redhat.com>
 In-Reply-To: <20220207152847.836777-1-mlevitsk@redhat.com>
 References: <20220207152847.836777-1-mlevitsk@redhat.com>
 MIME-Version: 1.0
@@ -85,47 +86,28 @@ Cc: Dave Hansen <dave.hansen@linux.intel.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Apparently on some systems AVIC is disabled in CPUID but still usable.
-
-Allow the user to override the CPUID if the user is willing to
-take the risk.
+It makes more sense to print new SPTE value than the
+old value.
 
 Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
 ---
- arch/x86/kvm/svm/svm.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ arch/x86/kvm/mmu/mmu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/x86/kvm/svm/svm.c b/arch/x86/kvm/svm/svm.c
-index 85035324ed762..b88ca7f07a0fc 100644
---- a/arch/x86/kvm/svm/svm.c
-+++ b/arch/x86/kvm/svm/svm.c
-@@ -202,6 +202,9 @@ module_param(tsc_scaling, int, 0444);
- static bool avic;
- module_param(avic, bool, 0444);
- 
-+static bool force_avic;
-+module_param_unsafe(force_avic, bool, 0444);
-+
- bool __read_mostly dump_invalid_vmcb;
- module_param(dump_invalid_vmcb, bool, 0644);
- 
-@@ -4839,10 +4842,14 @@ static __init int svm_hardware_setup(void)
- 			nrips = false;
+diff --git a/arch/x86/kvm/mmu/mmu.c b/arch/x86/kvm/mmu/mmu.c
+index 296f8723f9ae9..43c7abdd6b70f 100644
+--- a/arch/x86/kvm/mmu/mmu.c
++++ b/arch/x86/kvm/mmu/mmu.c
+@@ -2708,8 +2708,8 @@ static int mmu_set_spte(struct kvm_vcpu *vcpu, struct kvm_memory_slot *slot,
+ 	if (*sptep == spte) {
+ 		ret = RET_PF_SPURIOUS;
+ 	} else {
+-		trace_kvm_mmu_set_spte(level, gfn, sptep);
+ 		flush |= mmu_spte_update(sptep, spte);
++		trace_kvm_mmu_set_spte(level, gfn, sptep);
  	}
  
--	enable_apicv = avic = avic && npt_enabled && boot_cpu_has(X86_FEATURE_AVIC);
-+	enable_apicv = avic = avic && npt_enabled && (boot_cpu_has(X86_FEATURE_AVIC) || force_avic);
- 
- 	if (enable_apicv) {
--		pr_info("AVIC enabled\n");
-+		if (!boot_cpu_has(X86_FEATURE_AVIC)) {
-+			pr_warn("AVIC is not supported in CPUID but force enabled");
-+			pr_warn("Your system might crash and burn");
-+		} else
-+			pr_info("AVIC enabled\n");
- 
- 		amd_iommu_register_ga_log_notifier(&avic_ga_log_notifier);
- 	} else {
+ 	if (wrprot) {
 -- 
 2.26.3
 
