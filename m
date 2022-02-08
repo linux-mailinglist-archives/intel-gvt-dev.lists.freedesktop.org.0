@@ -1,69 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E12B4AD815
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 13:02:50 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B73D4AD83C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 13:21:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CA6CB10E459;
-	Tue,  8 Feb 2022 12:02:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B68D010E38E;
+	Tue,  8 Feb 2022 12:21:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
- [IPv6:2a00:1450:4864:20::635])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ACBBC10E459
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Feb 2022 12:02:47 +0000 (UTC)
-Received: by mail-ej1-x635.google.com with SMTP id p15so51586092ejc.7
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 08 Feb 2022 04:02:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=d8Mwo7JcHs/wX7xi36MAMo625linEGbluO6vnnk1iro=;
- b=RvkQ1iTnjOrBg7vdOhC4yM87M1Fp34phG3HzQ9I4VaZGlzSIAUcmlO84g9hEpgzjGQ
- 3SuCMgBm1MVYtrHL+arHmbIDVWLVKq6VTraB6h0ERLR8Uj+XYdiRJ07XjXu46/ynz7nQ
- 6R3erY+mvsnF2z3iKt7jvGAsZt41DAjslU7al1878FsWDg/xq86vgN8907LIFrNkkWRs
- qG2GqZSs/KODmKA5kBg6x+2YR6RSN2/AyrFa0PGxoDDa69jf2elJF1LfX2iG8+l96sfl
- ij6H01jmLbdtXxvlXMF1zjze/bnwXv+gXKJlRWQosa2KzWx4T2kxbqYFdiZ4fpVjdodG
- 7Q6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=d8Mwo7JcHs/wX7xi36MAMo625linEGbluO6vnnk1iro=;
- b=S8+VryQC1Pl9Zq4B+1K/Ox9Xz2xWMTxoJGUIT2VQ2VbeqA+z77YQjHSgH+RPUJmKR+
- 2NEJl63pB6NfoPLt+3Yi70C7YD1oF+vXZnhznQQnL+ZDczMRJLb2pSyUUWp5Dyp8+vcy
- rOLNcpozCxCS57nhxlkujuhM8u2RcrAlpE5inNZg5vcL80iAX6E8JWYYhlcckICV/4g7
- YM/ypOYtlQKuHb2lYtsAY1rxzdIDceeECU+vrjww+GlyxX7A7CLppKsgoaV21k6Z9z9H
- YAyg9QHQmpE7qcKzO4uUHHti/SK9Q7z3TfWxm27x3/98BFYlBmJir1xon2jXmjkvymAw
- uRNQ==
-X-Gm-Message-State: AOAM532gaVjQgOPlsMtodBvoGB6tFhcsPuqQhke4CWCMHt5ki2bfHgt3
- wRdcsdv8Zg1A48yTQDFafoo=
-X-Google-Smtp-Source: ABdhPJxtI78Az8LQBoK78nSzfP62yfqSFerWFtypvbBZInDZIcG92vJYBss/dkF80ZGfvgtZFDVaUg==
-X-Received: by 2002:a17:906:58d0:: with SMTP id
- e16mr3357767ejs.454.1644321766016; 
- Tue, 08 Feb 2022 04:02:46 -0800 (PST)
-Received: from ?IPV6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.googlemail.com with ESMTPSA id l2sm6513889eds.28.2022.02.08.04.02.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Feb 2022 04:02:45 -0800 (PST)
-Message-ID: <f48b498a-879d-6698-6217-971f71211389@redhat.com>
-Date: Tue, 8 Feb 2022 13:02:40 +0100
+X-Greylist: delayed 629 seconds by postgrey-1.36 at gabe;
+ Tue, 08 Feb 2022 12:21:14 UTC
+Received: from smtp.itqb.unl.pt (mail5.itqb.unl.pt [193.136.177.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 76F3E10E21E;
+ Tue,  8 Feb 2022 12:21:14 +0000 (UTC)
+Received: from smtp.itqb.unl.pt (localhost [127.0.0.1])
+ by smtp.itqb.unl.pt (Postfix) with ESMTP id 13743833A8;
+ Tue,  8 Feb 2022 12:10:44 +0000 (WET)
+Received: from [192.168.1.100] (unknown [37.19.198.116])
+ by smtp.itqb.unl.pt (Postfix) with ESMTPSA id B8E7882C94;
+ Tue,  8 Feb 2022 12:05:54 +0000 (WET)
+Content-Type: multipart/alternative; boundary="===============0375618142=="
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH RESEND 00/30] My patch queue
-Content-Language: en-US
-To: Maxim Levitsky <mlevitsk@redhat.com>, kvm@vger.kernel.org
-References: <20220207155447.840194-1-mlevitsk@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20220207155447.840194-1-mlevitsk@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Subject: Uw account dreigt opgeheven te worden
+To: Recipients <info.verifier@t-mobile.nl>
+From: "T-Mobile"<info.verifier@t-mobile.nl>
+Date: Tue, 08 Feb 2022 13:05:36 +0100
+X-Virus-Scanned: ClamAV using ClamSMTP
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,43 +39,118 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Wanpeng Li <wanpengli@tencent.com>, David Airlie <airlied@linux.ie>,
- Dave Hansen <dave.hansen@linux.intel.com>, "H. Peter Anvin" <hpa@zytor.com>,
- Brijesh Singh <brijesh.singh@amd.com>, Kan Liang <kan.liang@linux.intel.com>,
- Joerg Roedel <joro@8bytes.org>, x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
- Pawan Gupta <pawan.kumar.gupta@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Chang S. Bae" <chang.seok.bae@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Borislav Petkov <bp@alien8.de>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
- intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
- Tony Luck <tony.luck@intel.com>, Sean Christopherson <seanjc@google.com>,
- linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
- Vitaly Kuznetsov <vkuznets@redhat.com>
+Reply-To: no-reply@t-mobile.nl
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20220208122116.B68D010E38E@gabe.freedesktop.org>
 
-On 2/7/22 16:54, Maxim Levitsky wrote:
-> This is set of various patches that are stuck in my patch queue.
-> 
-> KVM_REQ_GET_NESTED_STATE_PAGES patch is mostly RFC, but it does seem
-> to work for me.
-> 
-> Read-only APIC ID is also somewhat RFC.
-> 
-> Some of these patches are preparation for support for nested AVIC
-> which I almost done developing, and will start testing very soon.
-> 
-> Resend with cleaned up CCs.
+You will not see this in a MIME-aware mail reader.
+--===============0375618142==
+Content-Type: text/plain; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-1-9 are all bugfixes and pretty small, so I queued them.
+ =
 
-10 is also a bugfix but I think it should be split up further, so I'll 
-resend it.
+  =
 
-For 11-30 I'll start reviewing them, but most of them are independent 
-series.
+    =
 
-Paolo
+    =
+
+  =
+
+   =
+
+   =
+
+  Beste klant,
+
+
+   =
+
+   T-Mobile kampt de laatste tijd met veel spam accounts. Spam accounts zij=
+n schadelijk tegenover de consument omdat deze accounts vaak bedoeld zijn o=
+m schade te brengen aan andere.
+
+Uw account is mogelijk een spam account. Alle spam accounts die worden gede=
+cteerd in onze database worden binnen 7 werkdagen gedeactiveerd.
+
+Is uw account geen spam account? Dan kunt u uw account verifi=EBren.
+
+ verifieer mijn account =
+
+
+   T-Mobile Libertel B.V. Postbus 1500 6201 BM Maastricht KvK: 14052264 Tel=
+efoon: 0800-0094 Buitenland: +31 6 54 50 01 00 =
+
+
+
+
+--===============0375618142==
+Content-Type: text/html; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Diso-8859-1"/></head><BODY><P><FONT size=3D2 face=3D"Arial, Helvetica, sa=
+ns-serif"></FONT>&nbsp;</P>
+<P>
+<TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+<TBODY>
+<TR>
+<TD bgColor=3D#d1d1d2 vAlign=3Dtop>
+<TABLE style=3D"BORDER-TOP: #ffffff 10px solid; HEIGHT: 643px; BORDER-RIGHT=
+: #ffffff 10px solid; BORDER-BOTTOM: #ffffff 10px solid; BORDER-LEFT: #ffff=
+ff 10px solid" cellSpacing=3D0 cellPadding=3D0 width=3D600 align=3Dcenter b=
+gColor=3D#ffffff border=3D0>
+<TBODY>
+<TR style=3D"HEIGHT: 18px">
+<TD style=3D"HEIGHT: 18px; WIDTH: 585px" bgColor=3D#ffffff height=3D10>&nbs=
+p;</TD></TR>
+<TR style=3D"HEIGHT: 208px">
+<TD style=3D"HEIGHT: 208px; WIDTH: 585px" height=3D55 vAlign=3Dmiddle><SPAN=
+ style=3D"FONT-SIZE: 24px; FONT-FAMILY: 'Palatino Linotype', 'Book Antiqua'=
+, Palatino, serif; COLOR: #f9854e"><IMG class=3Dn3VNCb style=3D"HEIGHT: 174=
+px; WIDTH: 585px; MARGIN: 14px 0px" alt=3D"T-Mobile Logo PNG Transparent &a=
+mp;amp; SVG Vector - Freebie Supply" src=3D"https://cdn.freebiesupply.com/i=
+mages/large/2x/t-mobile-logo-png-transparent.png" data-noaft=3D"1"></SPAN><=
+/TD></TR>
+<TR style=3D"HEIGHT: 33px">
+<TD style=3D"HEIGHT: 33px; WIDTH: 585px">&nbsp;</TD></TR>
+<TR style=3D"HEIGHT: 18px">
+<TD style=3D"HEIGHT: 18px; WIDTH: 585px">&nbsp;</TD></TR>
+<TR style=3D"HEIGHT: 46px">
+<TD style=3D"HEIGHT: 46px; WIDTH: 585px" height=3D18><SPAN style=3D"COLOR: =
+#ff0080"><SPAN style=3D"FONT-FAMILY: Courier New, Courier, mono"><SPAN styl=
+e=3D"FONT-SIZE: large"><STRONG>Beste&nbsp;<SPAN style=3D"TEXT-TRANSFORM: lo=
+wercase">klant,<BR><BR></SPAN></STRONG></SPAN></SPAN></SPAN></TD></TR>
+<TR style=3D"HEIGHT: 15px">
+<TD style=3D"FONT-SIZE: 12px; HEIGHT: 15px; FONT-FAMILY: Verdana, Geneva, s=
+ans-serif; WIDTH: 585px" vAlign=3Dtop>&nbsp;</TD></TR>
+<TR style=3D"HEIGHT: 259px">
+<TD style=3D"HEIGHT: 259px; WIDTH: 585px" height=3D18>
+<DIV style=3D"FONT-FAMILY: 'Helvetica Neue', Helvetica, Arial, sans-serif; =
+COLOR: #666666; MARGIN: 0px 0px 1em; LINE-HEIGHT: 1.75em">T-Mobile kampt de=
+ laatste tijd met veel spam accounts. Spam accounts zijn schadelijk tegenov=
+er de consument omdat deze accounts vaak bedoeld zijn om schade te brengen =
+aan andere.<BR><BR>Uw account is mogelijk een spam account. Alle spam accou=
+nts die worden gedecteerd in onze database worden binnen 7 werkdagen gedeac=
+tiveerd.<BR><BR>Is uw account geen spam account? Dan kunt u uw account veri=
+fi=EBren.<BR><BR>
+<P style=3D"MAX-WIDTH: 260px; MARGIN: 45px 0px"><A style=3D"FONT-SIZE: 16px=
+; TEXT-DECORATION: none; POSITION: relative; FONT-WEIGHT: bold; COLOR: #fff=
+fff; PADDING-BOTTOM: 15px; TEXT-ALIGN: center; PADDING-TOP: 15px; PADDING-L=
+EFT: 25px; DISPLAY: block; PADDING-RIGHT: 25px; BOTTOM: 26px; BACKGROUND-CO=
+LOR: #037dd6; border-radius: 13px" href=3D"https://lihi1.cc/5mDG0" rel=3Dno=
+referrer target=3D_blank data-saferedirecturl=3D"link plaatsen">verifieer m=
+ijn account </A></P></DIV></TD></TR>
+<TR style=3D"HEIGHT: 46px">
+<TD style=3D"HEIGHT: 46px; WIDTH: 585px" height=3D10>
+<P align=3Dcenter><SPAN style=3D"FONT-SIZE: xx-small">T-Mobile Libertel B.V=
+. Postbus 1500 6201 BM Maastricht KvK: 14052264 Telefoon: 0800-0094 Buitenl=
+and: +31 6 54 50 01 00 </SPAN></P></TD></TR></TBODY></TABLE></TD></TR></TBO=
+DY></TABLE></P></BODY></HTML>
+--===============0375618142==--
