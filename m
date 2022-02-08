@@ -2,58 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C52284AD847
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 13:24:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AE6204AD86C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 13:45:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6820B10E347;
-	Tue,  8 Feb 2022 12:24:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1C96D10E13E;
+	Tue,  8 Feb 2022 12:45:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9564710E347
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DF81110E13E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Feb 2022 12:24:26 +0000 (UTC)
+ Tue,  8 Feb 2022 12:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644323065;
+ s=mimecast20190719; t=1644324338;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OmNk9x3t77ts5HOhyjEsKGS6qVWrt92aX3uBiIq4k1Y=;
- b=NB6girQ7CODOoany7Zjll+I059oVrlmvvp3XLVQuQ6l94Uk77QIaY++Bmktu79plXex1Gf
- uSwHUTNkp2VPeGNQv/z0aOXbkkfwncWpPUL10F/jNegrgNE70awjYCNu2tVHHQZQDqMN0S
- QeoDSTjfNzQ9ll13P0+bW7vTUm8n/S0=
+ bh=SmULaSJ9/41bYKgiVa0NC3LLzANiIdl0eYGwm0duLms=;
+ b=LCltS71TT8KDRyfp2d7DzXquGIu0PEq3Bc3c+yTOQu/uQmxx/99Yk7mBkIdVGjRPdEyO4o
+ ze2pGAlZJqBQCXq90q/JtqW9m99HN6SGe4fZqtFAYa30SkxCfWJh4F9V+Z9X/6nfrIaRGz
+ tHKHjxL0dqg8rmeJK54AFnt2yWXrhrg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-635-cl1sK-SEMRGwiMugl2xPOw-1; Tue, 08 Feb 2022 07:24:22 -0500
-X-MC-Unique: cl1sK-SEMRGwiMugl2xPOw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-186-p85c9BeWM2GIiz6pCOO-4g-1; Tue, 08 Feb 2022 07:45:35 -0500
+X-MC-Unique: p85c9BeWM2GIiz6pCOO-4g-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3B0C19251AB;
- Tue,  8 Feb 2022 12:24:19 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B52571054F90;
+ Tue,  8 Feb 2022 12:45:31 +0000 (UTC)
 Received: from starship (unknown [10.40.192.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1EB102B44E;
- Tue,  8 Feb 2022 12:24:09 +0000 (UTC)
-Message-ID: <f198aca18f64b2e788ee53d5a03e739abe6a6697.camel@redhat.com>
-Subject: Re: [PATCH RESEND 07/30] KVM: x86: nSVM: deal with L1 hypervisor
- that intercepts interrupts but lets L2 control them
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5FE5F1059A4E;
+ Tue,  8 Feb 2022 12:45:20 +0000 (UTC)
+Message-ID: <d8dffd4267002465d15ea6b6fea1db80b8d84ef1.camel@redhat.com>
+Subject: Re: [PATCH RESEND 00/30] My patch queue
 From: Maxim Levitsky <mlevitsk@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org
-Date: Tue, 08 Feb 2022 14:24:08 +0200
-In-Reply-To: <0c20990f2543413f4a087b7918cff14db48bc774.camel@redhat.com>
+Date: Tue, 08 Feb 2022 14:45:19 +0200
+In-Reply-To: <f48b498a-879d-6698-6217-971f71211389@redhat.com>
 References: <20220207155447.840194-1-mlevitsk@redhat.com>
- <20220207155447.840194-8-mlevitsk@redhat.com>
- <dd9305d6-1e3a-24f9-1d48-c5dac440112d@redhat.com>
- <0c20990f2543413f4a087b7918cff14db48bc774.camel@redhat.com>
+ <f48b498a-879d-6698-6217-971f71211389@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,109 +81,63 @@ Cc: Wanpeng Li <wanpengli@tencent.com>, David Airlie <airlied@linux.ie>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 2022-02-08 at 13:55 +0200, Maxim Levitsky wrote:
-> On Tue, 2022-02-08 at 12:33 +0100, Paolo Bonzini wrote:
-> > On 2/7/22 16:54, Maxim Levitsky wrote:
-> > > Fix a corner case in which the L1 hypervisor intercepts
-> > > interrupts (INTERCEPT_INTR) and either doesn't set
-> > > virtual interrupt masking (V_INTR_MASKING) or enters a
-> > > nested guest with EFLAGS.IF disabled prior to the entry.
-> > > 
-> > > In this case, despite the fact that L1 intercepts the interrupts,
-> > > KVM still needs to set up an interrupt window to wait before
-> > > injecting the INTR vmexit.
-> > > 
-> > > Currently the KVM instead enters an endless loop of 'req_immediate_exit'.
-> > > 
-> > > Exactly the same issue also happens for SMIs and NMI.
-> > > Fix this as well.
-> > > 
-> > > Note that on VMX, this case is impossible as there is only
-> > > 'vmexit on external interrupts' execution control which either set,
-> > > in which case both host and guest's EFLAGS.IF
-> > > are ignored, or not set, in which case no VMexits are delivered.
-> > > 
-> > > Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
-> > > ---
-> > >   arch/x86/kvm/svm/svm.c | 17 +++++++++++++----
-> > >   1 file changed, 13 insertions(+), 4 deletions(-)
-> > > 
-> > > diff --git a/arch/x86/kvm/svm/svm.c b/arch/x86/kvm/svm/svm.c
-> > > index 9a4e299ed5673..22e614008cf59 100644
-> > > --- a/arch/x86/kvm/svm/svm.c
-> > > +++ b/arch/x86/kvm/svm/svm.c
-> > > @@ -3372,11 +3372,13 @@ static int svm_nmi_allowed(struct kvm_vcpu *vcpu, bool for_injection)
-> > >   	if (svm->nested.nested_run_pending)
-> > >   		return -EBUSY;
-> > >   
-> > > +	if (svm_nmi_blocked(vcpu))
-> > > +		return 0;
-> > > +
-> > >   	/* An NMI must not be injected into L2 if it's supposed to VM-Exit.  */
-> > >   	if (for_injection && is_guest_mode(vcpu) && nested_exit_on_nmi(svm))
-> > >   		return -EBUSY;
-> > > -
-> > > -	return !svm_nmi_blocked(vcpu);
-> > > +	return 1;
-> > >   }
-> > >   
-> > >   static bool svm_get_nmi_mask(struct kvm_vcpu *vcpu)
-> > > @@ -3428,9 +3430,13 @@ bool svm_interrupt_blocked(struct kvm_vcpu *vcpu)
-> > >   static int svm_interrupt_allowed(struct kvm_vcpu *vcpu, bool for_injection)
-> > >   {
-> > >   	struct vcpu_svm *svm = to_svm(vcpu);
-> > > +
-> > >   	if (svm->nested.nested_run_pending)
-> > >   		return -EBUSY;
-> > >   
-> > > +	if (svm_interrupt_blocked(vcpu))
-> > > +		return 0;
-> > > +
-> > >   	/*
-> > >   	 * An IRQ must not be injected into L2 if it's supposed to VM-Exit,
-> > >   	 * e.g. if the IRQ arrived asynchronously after checking nested events.
-> > > @@ -3438,7 +3444,7 @@ static int svm_interrupt_allowed(struct kvm_vcpu *vcpu, bool for_injection)
-> > >   	if (for_injection && is_guest_mode(vcpu) && nested_exit_on_intr(svm))
-> > >   		return -EBUSY;
-> > >   
-> > > -	return !svm_interrupt_blocked(vcpu);
-> > > +	return 1;
-> > >   }
-> > >   
-> > >   static void svm_enable_irq_window(struct kvm_vcpu *vcpu)
-> > > @@ -4169,11 +4175,14 @@ static int svm_smi_allowed(struct kvm_vcpu *vcpu, bool for_injection)
-> > >   	if (svm->nested.nested_run_pending)
-> > >   		return -EBUSY;
-> > >   
-> > > +	if (svm_smi_blocked(vcpu))
-> > > +		return 0;
-> > > +
-> > >   	/* An SMI must not be injected into L2 if it's supposed to VM-Exit.  */
-> > >   	if (for_injection && is_guest_mode(vcpu) && nested_exit_on_smi(svm))
-> > >   		return -EBUSY;
-> > >   
-> > > -	return !svm_smi_blocked(vcpu);
-> > > +	return 1;
-> > >   }
-> > >   
-> > >   static int svm_enter_smm(struct kvm_vcpu *vcpu, char *smstate)
+On Tue, 2022-02-08 at 13:02 +0100, Paolo Bonzini wrote:
+> On 2/7/22 16:54, Maxim Levitsky wrote:
+> > This is set of various patches that are stuck in my patch queue.
 > > 
-> > Can you prepare a testcase for at least the interrupt case?
+> > KVM_REQ_GET_NESTED_STATE_PAGES patch is mostly RFC, but it does seem
+> > to work for me.
+> > 
+> > Read-only APIC ID is also somewhat RFC.
+> > 
+> > Some of these patches are preparation for support for nested AVIC
+> > which I almost done developing, and will start testing very soon.
+> > 
+> > Resend with cleaned up CCs.
 > 
-> Yep, I already wrote a kvm unit tests for all the cases, and I will send them very soon.
+> 1-9 are all bugfixes and pretty small, so I queued them.
+> 
+> 10 is also a bugfix but I think it should be split up further, so I'll 
+> resend it.
 
-Done.
+> 
+> For 11-30 I'll start reviewing them, but most of them are independent 
+> series.
 
-I also included tests for LBR virtualization which I think I already posted but I am not sure.
+Thank you very much!
+ 
+I must again say sorry that I posted the whole thing as a one patch series,
+next time I'll post each series separately, and I also try to post
+the patches as soon as I write them.
+ 
+ I didn't post them because I felt that the whole thing needs good testing 
+and I only recently gotten to somewhat automate my nested migration tests 
+which I usually use to test this kind of work.
+ 
+ 
 
 Best regards,
 	Maxim Levitsky
+ 
+PS: the strict_mmu option does have quite an effect on nested migration with npt=0/ept=0.
+In my testing such migration crashes with pagefault in L2 kernel after around 50-100
+iterations, while with this options, on survived ~1000 iterations and around the same on intel,
+and on both machines L1 eventually crashed with a page fault instead.
+ 
+Could be that it just throws timing off, or maybe we still do have some form of bug
+in shadow paging after all, maybe even 2 bugs.
+Hmmm....
+ 
+I automated these tests so I can run them for days until I have more confidence
+in what is going on.
+
+
+
+Best regards,
+	Maxim Levitsky
+
 > 
-> Best regards,
-> 	Maxim Levitsky
-> > Thanks,
-> > 
-> > Paolo
-> > 
+> Paolo
+> 
 
 
