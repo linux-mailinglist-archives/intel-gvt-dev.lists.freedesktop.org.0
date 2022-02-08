@@ -2,31 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B73D4AD83C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 13:21:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C52284AD847
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 13:24:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B68D010E38E;
-	Tue,  8 Feb 2022 12:21:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6820B10E347;
+	Tue,  8 Feb 2022 12:24:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 629 seconds by postgrey-1.36 at gabe;
- Tue, 08 Feb 2022 12:21:14 UTC
-Received: from smtp.itqb.unl.pt (mail5.itqb.unl.pt [193.136.177.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 76F3E10E21E;
- Tue,  8 Feb 2022 12:21:14 +0000 (UTC)
-Received: from smtp.itqb.unl.pt (localhost [127.0.0.1])
- by smtp.itqb.unl.pt (Postfix) with ESMTP id 13743833A8;
- Tue,  8 Feb 2022 12:10:44 +0000 (WET)
-Received: from [192.168.1.100] (unknown [37.19.198.116])
- by smtp.itqb.unl.pt (Postfix) with ESMTPSA id B8E7882C94;
- Tue,  8 Feb 2022 12:05:54 +0000 (WET)
-Content-Type: multipart/alternative; boundary="===============0375618142=="
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9564710E347
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  8 Feb 2022 12:24:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1644323065;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OmNk9x3t77ts5HOhyjEsKGS6qVWrt92aX3uBiIq4k1Y=;
+ b=NB6girQ7CODOoany7Zjll+I059oVrlmvvp3XLVQuQ6l94Uk77QIaY++Bmktu79plXex1Gf
+ uSwHUTNkp2VPeGNQv/z0aOXbkkfwncWpPUL10F/jNegrgNE70awjYCNu2tVHHQZQDqMN0S
+ QeoDSTjfNzQ9ll13P0+bW7vTUm8n/S0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-635-cl1sK-SEMRGwiMugl2xPOw-1; Tue, 08 Feb 2022 07:24:22 -0500
+X-MC-Unique: cl1sK-SEMRGwiMugl2xPOw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3B0C19251AB;
+ Tue,  8 Feb 2022 12:24:19 +0000 (UTC)
+Received: from starship (unknown [10.40.192.15])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1EB102B44E;
+ Tue,  8 Feb 2022 12:24:09 +0000 (UTC)
+Message-ID: <f198aca18f64b2e788ee53d5a03e739abe6a6697.camel@redhat.com>
+Subject: Re: [PATCH RESEND 07/30] KVM: x86: nSVM: deal with L1 hypervisor
+ that intercepts interrupts but lets L2 control them
+From: Maxim Levitsky <mlevitsk@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org
+Date: Tue, 08 Feb 2022 14:24:08 +0200
+In-Reply-To: <0c20990f2543413f4a087b7918cff14db48bc774.camel@redhat.com>
+References: <20220207155447.840194-1-mlevitsk@redhat.com>
+ <20220207155447.840194-8-mlevitsk@redhat.com>
+ <dd9305d6-1e3a-24f9-1d48-c5dac440112d@redhat.com>
+ <0c20990f2543413f4a087b7918cff14db48bc774.camel@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
 MIME-Version: 1.0
-Subject: Uw account dreigt opgeheven te worden
-To: Recipients <info.verifier@t-mobile.nl>
-From: "T-Mobile"<info.verifier@t-mobile.nl>
-Date: Tue, 08 Feb 2022 13:05:36 +0100
-X-Virus-Scanned: ClamAV using ClamSMTP
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,118 +66,127 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: no-reply@t-mobile.nl
+Cc: Wanpeng Li <wanpengli@tencent.com>, David Airlie <airlied@linux.ie>,
+ Dave Hansen <dave.hansen@linux.intel.com>, "H. Peter Anvin" <hpa@zytor.com>,
+ Brijesh Singh <brijesh.singh@amd.com>, Kan Liang <kan.liang@linux.intel.com>,
+ Joerg Roedel <joro@8bytes.org>, x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Pawan Gupta <pawan.kumar.gupta@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "Chang S. Bae" <chang.seok.bae@intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Borislav Petkov <bp@alien8.de>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
+ intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
+ Tony Luck <tony.luck@intel.com>, Sean Christopherson <seanjc@google.com>,
+ linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220208122116.B68D010E38E@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============0375618142==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+On Tue, 2022-02-08 at 13:55 +0200, Maxim Levitsky wrote:
+> On Tue, 2022-02-08 at 12:33 +0100, Paolo Bonzini wrote:
+> > On 2/7/22 16:54, Maxim Levitsky wrote:
+> > > Fix a corner case in which the L1 hypervisor intercepts
+> > > interrupts (INTERCEPT_INTR) and either doesn't set
+> > > virtual interrupt masking (V_INTR_MASKING) or enters a
+> > > nested guest with EFLAGS.IF disabled prior to the entry.
+> > > 
+> > > In this case, despite the fact that L1 intercepts the interrupts,
+> > > KVM still needs to set up an interrupt window to wait before
+> > > injecting the INTR vmexit.
+> > > 
+> > > Currently the KVM instead enters an endless loop of 'req_immediate_exit'.
+> > > 
+> > > Exactly the same issue also happens for SMIs and NMI.
+> > > Fix this as well.
+> > > 
+> > > Note that on VMX, this case is impossible as there is only
+> > > 'vmexit on external interrupts' execution control which either set,
+> > > in which case both host and guest's EFLAGS.IF
+> > > are ignored, or not set, in which case no VMexits are delivered.
+> > > 
+> > > Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
+> > > ---
+> > >   arch/x86/kvm/svm/svm.c | 17 +++++++++++++----
+> > >   1 file changed, 13 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/arch/x86/kvm/svm/svm.c b/arch/x86/kvm/svm/svm.c
+> > > index 9a4e299ed5673..22e614008cf59 100644
+> > > --- a/arch/x86/kvm/svm/svm.c
+> > > +++ b/arch/x86/kvm/svm/svm.c
+> > > @@ -3372,11 +3372,13 @@ static int svm_nmi_allowed(struct kvm_vcpu *vcpu, bool for_injection)
+> > >   	if (svm->nested.nested_run_pending)
+> > >   		return -EBUSY;
+> > >   
+> > > +	if (svm_nmi_blocked(vcpu))
+> > > +		return 0;
+> > > +
+> > >   	/* An NMI must not be injected into L2 if it's supposed to VM-Exit.  */
+> > >   	if (for_injection && is_guest_mode(vcpu) && nested_exit_on_nmi(svm))
+> > >   		return -EBUSY;
+> > > -
+> > > -	return !svm_nmi_blocked(vcpu);
+> > > +	return 1;
+> > >   }
+> > >   
+> > >   static bool svm_get_nmi_mask(struct kvm_vcpu *vcpu)
+> > > @@ -3428,9 +3430,13 @@ bool svm_interrupt_blocked(struct kvm_vcpu *vcpu)
+> > >   static int svm_interrupt_allowed(struct kvm_vcpu *vcpu, bool for_injection)
+> > >   {
+> > >   	struct vcpu_svm *svm = to_svm(vcpu);
+> > > +
+> > >   	if (svm->nested.nested_run_pending)
+> > >   		return -EBUSY;
+> > >   
+> > > +	if (svm_interrupt_blocked(vcpu))
+> > > +		return 0;
+> > > +
+> > >   	/*
+> > >   	 * An IRQ must not be injected into L2 if it's supposed to VM-Exit,
+> > >   	 * e.g. if the IRQ arrived asynchronously after checking nested events.
+> > > @@ -3438,7 +3444,7 @@ static int svm_interrupt_allowed(struct kvm_vcpu *vcpu, bool for_injection)
+> > >   	if (for_injection && is_guest_mode(vcpu) && nested_exit_on_intr(svm))
+> > >   		return -EBUSY;
+> > >   
+> > > -	return !svm_interrupt_blocked(vcpu);
+> > > +	return 1;
+> > >   }
+> > >   
+> > >   static void svm_enable_irq_window(struct kvm_vcpu *vcpu)
+> > > @@ -4169,11 +4175,14 @@ static int svm_smi_allowed(struct kvm_vcpu *vcpu, bool for_injection)
+> > >   	if (svm->nested.nested_run_pending)
+> > >   		return -EBUSY;
+> > >   
+> > > +	if (svm_smi_blocked(vcpu))
+> > > +		return 0;
+> > > +
+> > >   	/* An SMI must not be injected into L2 if it's supposed to VM-Exit.  */
+> > >   	if (for_injection && is_guest_mode(vcpu) && nested_exit_on_smi(svm))
+> > >   		return -EBUSY;
+> > >   
+> > > -	return !svm_smi_blocked(vcpu);
+> > > +	return 1;
+> > >   }
+> > >   
+> > >   static int svm_enter_smm(struct kvm_vcpu *vcpu, char *smstate)
+> > 
+> > Can you prepare a testcase for at least the interrupt case?
+> 
+> Yep, I already wrote a kvm unit tests for all the cases, and I will send them very soon.
 
- =
+Done.
 
-  =
+I also included tests for LBR virtualization which I think I already posted but I am not sure.
 
-    =
-
-    =
-
-  =
-
-   =
-
-   =
-
-  Beste klant,
+Best regards,
+	Maxim Levitsky
+> 
+> Best regards,
+> 	Maxim Levitsky
+> > Thanks,
+> > 
+> > Paolo
+> > 
 
 
-   =
-
-   T-Mobile kampt de laatste tijd met veel spam accounts. Spam accounts zij=
-n schadelijk tegenover de consument omdat deze accounts vaak bedoeld zijn o=
-m schade te brengen aan andere.
-
-Uw account is mogelijk een spam account. Alle spam accounts die worden gede=
-cteerd in onze database worden binnen 7 werkdagen gedeactiveerd.
-
-Is uw account geen spam account? Dan kunt u uw account verifi=EBren.
-
- verifieer mijn account =
-
-
-   T-Mobile Libertel B.V. Postbus 1500 6201 BM Maastricht KvK: 14052264 Tel=
-efoon: 0800-0094 Buitenland: +31 6 54 50 01 00 =
-
-
-
-
---===============0375618142==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Diso-8859-1"/></head><BODY><P><FONT size=3D2 face=3D"Arial, Helvetica, sa=
-ns-serif"></FONT>&nbsp;</P>
-<P>
-<TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
-<TBODY>
-<TR>
-<TD bgColor=3D#d1d1d2 vAlign=3Dtop>
-<TABLE style=3D"BORDER-TOP: #ffffff 10px solid; HEIGHT: 643px; BORDER-RIGHT=
-: #ffffff 10px solid; BORDER-BOTTOM: #ffffff 10px solid; BORDER-LEFT: #ffff=
-ff 10px solid" cellSpacing=3D0 cellPadding=3D0 width=3D600 align=3Dcenter b=
-gColor=3D#ffffff border=3D0>
-<TBODY>
-<TR style=3D"HEIGHT: 18px">
-<TD style=3D"HEIGHT: 18px; WIDTH: 585px" bgColor=3D#ffffff height=3D10>&nbs=
-p;</TD></TR>
-<TR style=3D"HEIGHT: 208px">
-<TD style=3D"HEIGHT: 208px; WIDTH: 585px" height=3D55 vAlign=3Dmiddle><SPAN=
- style=3D"FONT-SIZE: 24px; FONT-FAMILY: 'Palatino Linotype', 'Book Antiqua'=
-, Palatino, serif; COLOR: #f9854e"><IMG class=3Dn3VNCb style=3D"HEIGHT: 174=
-px; WIDTH: 585px; MARGIN: 14px 0px" alt=3D"T-Mobile Logo PNG Transparent &a=
-mp;amp; SVG Vector - Freebie Supply" src=3D"https://cdn.freebiesupply.com/i=
-mages/large/2x/t-mobile-logo-png-transparent.png" data-noaft=3D"1"></SPAN><=
-/TD></TR>
-<TR style=3D"HEIGHT: 33px">
-<TD style=3D"HEIGHT: 33px; WIDTH: 585px">&nbsp;</TD></TR>
-<TR style=3D"HEIGHT: 18px">
-<TD style=3D"HEIGHT: 18px; WIDTH: 585px">&nbsp;</TD></TR>
-<TR style=3D"HEIGHT: 46px">
-<TD style=3D"HEIGHT: 46px; WIDTH: 585px" height=3D18><SPAN style=3D"COLOR: =
-#ff0080"><SPAN style=3D"FONT-FAMILY: Courier New, Courier, mono"><SPAN styl=
-e=3D"FONT-SIZE: large"><STRONG>Beste&nbsp;<SPAN style=3D"TEXT-TRANSFORM: lo=
-wercase">klant,<BR><BR></SPAN></STRONG></SPAN></SPAN></SPAN></TD></TR>
-<TR style=3D"HEIGHT: 15px">
-<TD style=3D"FONT-SIZE: 12px; HEIGHT: 15px; FONT-FAMILY: Verdana, Geneva, s=
-ans-serif; WIDTH: 585px" vAlign=3Dtop>&nbsp;</TD></TR>
-<TR style=3D"HEIGHT: 259px">
-<TD style=3D"HEIGHT: 259px; WIDTH: 585px" height=3D18>
-<DIV style=3D"FONT-FAMILY: 'Helvetica Neue', Helvetica, Arial, sans-serif; =
-COLOR: #666666; MARGIN: 0px 0px 1em; LINE-HEIGHT: 1.75em">T-Mobile kampt de=
- laatste tijd met veel spam accounts. Spam accounts zijn schadelijk tegenov=
-er de consument omdat deze accounts vaak bedoeld zijn om schade te brengen =
-aan andere.<BR><BR>Uw account is mogelijk een spam account. Alle spam accou=
-nts die worden gedecteerd in onze database worden binnen 7 werkdagen gedeac=
-tiveerd.<BR><BR>Is uw account geen spam account? Dan kunt u uw account veri=
-fi=EBren.<BR><BR>
-<P style=3D"MAX-WIDTH: 260px; MARGIN: 45px 0px"><A style=3D"FONT-SIZE: 16px=
-; TEXT-DECORATION: none; POSITION: relative; FONT-WEIGHT: bold; COLOR: #fff=
-fff; PADDING-BOTTOM: 15px; TEXT-ALIGN: center; PADDING-TOP: 15px; PADDING-L=
-EFT: 25px; DISPLAY: block; PADDING-RIGHT: 25px; BOTTOM: 26px; BACKGROUND-CO=
-LOR: #037dd6; border-radius: 13px" href=3D"https://lihi1.cc/5mDG0" rel=3Dno=
-referrer target=3D_blank data-saferedirecturl=3D"link plaatsen">verifieer m=
-ijn account </A></P></DIV></TD></TR>
-<TR style=3D"HEIGHT: 46px">
-<TD style=3D"HEIGHT: 46px; WIDTH: 585px" height=3D10>
-<P align=3Dcenter><SPAN style=3D"FONT-SIZE: xx-small">T-Mobile Libertel B.V=
-. Postbus 1500 6201 BM Maastricht KvK: 14052264 Telefoon: 0800-0094 Buitenl=
-and: +31 6 54 50 01 00 </SPAN></P></TD></TR></TBODY></TABLE></TD></TR></TBO=
-DY></TABLE></P></BODY></HTML>
---===============0375618142==--
