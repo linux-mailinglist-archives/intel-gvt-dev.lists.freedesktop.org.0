@@ -1,56 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE6204AD86C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 13:45:42 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9EE54ADB59
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Feb 2022 15:38:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1C96D10E13E;
-	Tue,  8 Feb 2022 12:45:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3BCF410E60E;
+	Tue,  8 Feb 2022 14:38:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DF81110E13E
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Feb 2022 12:45:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1644324338;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SmULaSJ9/41bYKgiVa0NC3LLzANiIdl0eYGwm0duLms=;
- b=LCltS71TT8KDRyfp2d7DzXquGIu0PEq3Bc3c+yTOQu/uQmxx/99Yk7mBkIdVGjRPdEyO4o
- ze2pGAlZJqBQCXq90q/JtqW9m99HN6SGe4fZqtFAYa30SkxCfWJh4F9V+Z9X/6nfrIaRGz
- tHKHjxL0dqg8rmeJK54AFnt2yWXrhrg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-186-p85c9BeWM2GIiz6pCOO-4g-1; Tue, 08 Feb 2022 07:45:35 -0500
-X-MC-Unique: p85c9BeWM2GIiz6pCOO-4g-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B52571054F90;
- Tue,  8 Feb 2022 12:45:31 +0000 (UTC)
-Received: from starship (unknown [10.40.192.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5FE5F1059A4E;
- Tue,  8 Feb 2022 12:45:20 +0000 (UTC)
-Message-ID: <d8dffd4267002465d15ea6b6fea1db80b8d84ef1.camel@redhat.com>
-Subject: Re: [PATCH RESEND 00/30] My patch queue
-From: Maxim Levitsky <mlevitsk@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org
-Date: Tue, 08 Feb 2022 14:45:19 +0200
-In-Reply-To: <f48b498a-879d-6698-6217-971f71211389@redhat.com>
-References: <20220207155447.840194-1-mlevitsk@redhat.com>
- <f48b498a-879d-6698-6217-971f71211389@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C0CC310E607;
+ Tue,  8 Feb 2022 14:38:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1644331122; x=1675867122;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=gA6guodQWyiVPgot2dWXNqcVIT6qKmygJjcTgUAPzwc=;
+ b=nqpS1Xl1+jUUFk9zVxrptkvIbhNP9PSFcGGYATW+cA5IYMKGoc9oWyNH
+ y70bfOBJrfee7JAE6uLy2d3oqxQXsLcPIo7EIq4hyTW5NBa0hqS77oLJt
+ l+x//mqYBaxUQi8hJ9K6Q7NCzZwp/ulvKoXHQwWzprwr3nRHxbl9TFevO
+ rdpX6h/zQMSRS8GHeqqagk4gz4Tyf6NEexqOA01LOOAXyTan+jfW+OpSP
+ s6kticXtwQ0KPTj6KUstP/9s4W2tq0Fv6i9YlEJM3SH5ttqUR9IQvceJa
+ al0fN7cGChW3ScP8Zv5A16DUD2K8kSua9BYn05WqqD9Q3vjWge8kpMGuA A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10252"; a="248906618"
+X-IronPort-AV: E=Sophos;i="5.88,352,1635231600"; d="scan'208";a="248906618"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Feb 2022 06:38:42 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,352,1635231600"; d="scan'208";a="700862339"
+Received: from lkp-server01.sh.intel.com (HELO d95dc2dabeb1) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 08 Feb 2022 06:38:39 -0800
+Received: from kbuild by d95dc2dabeb1 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nHRde-0000JQ-VX; Tue, 08 Feb 2022 14:38:38 +0000
+Date: Tue, 8 Feb 2022 22:38:26 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>, hch@lst.de, jgg@nvidia.com,
+ jani.nikula@linux.intel.com
+Subject: Re: [Intel-gfx] [PATCH 1/3] i915/gvt: Introduce the mmio_table.c to
+ support VFIO new mdev API
+Message-ID: <202202082210.BpzSju31-lkp@intel.com>
+References: <20220127120508.11330-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220127120508.11330-1-zhi.a.wang@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,81 +61,56 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Wanpeng Li <wanpengli@tencent.com>, David Airlie <airlied@linux.ie>,
- Dave Hansen <dave.hansen@linux.intel.com>, "H. Peter Anvin" <hpa@zytor.com>,
- Brijesh Singh <brijesh.singh@amd.com>, Kan Liang <kan.liang@linux.intel.com>,
- Joerg Roedel <joro@8bytes.org>, x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
- Pawan Gupta <pawan.kumar.gupta@linux.intel.com>,
- Zhi Wang <zhi.a.wang@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Chang S. Bae" <chang.seok.bae@intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Borislav Petkov <bp@alien8.de>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
- intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
- Tony Luck <tony.luck@intel.com>, Sean Christopherson <seanjc@google.com>,
- linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
- Vitaly Kuznetsov <vkuznets@redhat.com>
+Cc: kbuild-all@lists.01.org, Zhi Wang <zhi.wang.linux@gmail.com>,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Terrence Xu <terrence.xu@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 2022-02-08 at 13:02 +0100, Paolo Bonzini wrote:
-> On 2/7/22 16:54, Maxim Levitsky wrote:
-> > This is set of various patches that are stuck in my patch queue.
-> > 
-> > KVM_REQ_GET_NESTED_STATE_PAGES patch is mostly RFC, but it does seem
-> > to work for me.
-> > 
-> > Read-only APIC ID is also somewhat RFC.
-> > 
-> > Some of these patches are preparation for support for nested AVIC
-> > which I almost done developing, and will start testing very soon.
-> > 
-> > Resend with cleaned up CCs.
-> 
-> 1-9 are all bugfixes and pretty small, so I queued them.
-> 
-> 10 is also a bugfix but I think it should be split up further, so I'll 
-> resend it.
+Hi Zhi,
 
-> 
-> For 11-30 I'll start reviewing them, but most of them are independent 
-> series.
+I love your patch! Perhaps something to improve:
 
-Thank you very much!
- 
-I must again say sorry that I posted the whole thing as a one patch series,
-next time I'll post each series separately, and I also try to post
-the patches as soon as I write them.
- 
- I didn't post them because I felt that the whole thing needs good testing 
-and I only recently gotten to somewhat automate my nested migration tests 
-which I usually use to test this kind of work.
- 
- 
+[auto build test WARNING on drm-tip/drm-tip]
+[also build test WARNING on next-20220208]
+[cannot apply to drm-intel/for-linux-next v5.17-rc3]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-Best regards,
-	Maxim Levitsky
- 
-PS: the strict_mmu option does have quite an effect on nested migration with npt=0/ept=0.
-In my testing such migration crashes with pagefault in L2 kernel after around 50-100
-iterations, while with this options, on survived ~1000 iterations and around the same on intel,
-and on both machines L1 eventually crashed with a page fault instead.
- 
-Could be that it just throws timing off, or maybe we still do have some form of bug
-in shadow paging after all, maybe even 2 bugs.
-Hmmm....
- 
-I automated these tests so I can run them for days until I have more confidence
-in what is going on.
+url:    https://github.com/0day-ci/linux/commits/Zhi-Wang/i915-gvt-Introduce-the-mmio_table-c-to-support-VFIO-new-mdev-API/20220127-200727
+base:   git://anongit.freedesktop.org/drm/drm-tip drm-tip
+config: x86_64-rhel-8.3-kselftests (https://download.01.org/0day-ci/archive/20220208/202202082210.BpzSju31-lkp@intel.com/config)
+compiler: gcc-9 (Debian 9.3.0-22) 9.3.0
+reproduce:
+        # apt-get install sparse
+        # sparse version: v0.6.4-dirty
+        # https://github.com/0day-ci/linux/commit/533f92651a7a56481a053f1e04dc5a5ec024ffb9
+        git remote add linux-review https://github.com/0day-ci/linux
+        git fetch --no-tags linux-review Zhi-Wang/i915-gvt-Introduce-the-mmio_table-c-to-support-VFIO-new-mdev-API/20220127-200727
+        git checkout 533f92651a7a56481a053f1e04dc5a5ec024ffb9
+        # save the config file to linux build tree
+        mkdir build_dir
+        make W=1 C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
 
+sparse warnings: (new ones prefixed by >>)
+>> drivers/gpu/drm/i915/gvt/handlers.c:45:6: sparse: sparse: symbol 'intel_gvt_match_device' was not declared. Should it be static?
 
-Best regards,
-	Maxim Levitsky
+vim +/intel_gvt_match_device +45 drivers/gpu/drm/i915/gvt/handlers.c
 
-> 
-> Paolo
-> 
+12d14cc43b3470 Zhi Wang 2016-08-30  44  
+12d14cc43b3470 Zhi Wang 2016-08-30 @45  bool intel_gvt_match_device(struct intel_gvt *gvt,
+12d14cc43b3470 Zhi Wang 2016-08-30  46  		unsigned long device)
+12d14cc43b3470 Zhi Wang 2016-08-30  47  {
+533f92651a7a56 Zhi Wang 2022-01-27  48  	return intel_gvt_get_device_type(gvt->gt->i915) & device;
+12d14cc43b3470 Zhi Wang 2016-08-30  49  }
+12d14cc43b3470 Zhi Wang 2016-08-30  50  
 
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
