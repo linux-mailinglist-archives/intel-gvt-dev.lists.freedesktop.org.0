@@ -1,53 +1,40 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E65E04B14AD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 10 Feb 2022 18:55:58 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E30B4B2081
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Feb 2022 09:46:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 61B3510E8BE;
-	Thu, 10 Feb 2022 17:55:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D930810EA26;
+	Fri, 11 Feb 2022 08:46:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com
- [IPv6:2a00:1450:4864:20::42d])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D3E7310E8BE
+Received: from mail.cassym.pl (mail.cassym.pl [158.255.214.111])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4DE3110EA26
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 10 Feb 2022 17:55:55 +0000 (UTC)
-Received: by mail-wr1-x42d.google.com with SMTP id k18so10940492wrg.11
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 10 Feb 2022 09:55:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:from:date:message-id:subject:to;
- bh=qKjNpoh1DG7dpSG7QxsZzMQm795umqJUMUqKJW//aCo=;
- b=jW9tt+6eLBswa2svOL0XTY8LEEVOYehmcWpkhZ4MmffM9uPq5wB93SFdCdOsracSgb
- BelWfFZiXMWIkeSvnzdgsgzAn7C211K+OGdkbqkbHonpeXgFxhN0+xQu5Sr8DVuzFRt5
- 9U97W9Lj5wRDe4RFW95gS1ha11LsCiZ6aYXgl/kK9U/CdTin5MaqoDZBHz0xDzSx7g5Z
- lGU7lMrljOlB0E1WIgZ9YnyLJ9aBBXzA4AZqNElOEtPyHIzCa8IgXgUPPd5Fj42jHR7A
- IUFP9S6Rxcd8EG4LL4xOqZXxc2iX4P8uTqf6teL3ij9OaaOyDw7cUMyF01/7o/gE4OF7
- +fKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=qKjNpoh1DG7dpSG7QxsZzMQm795umqJUMUqKJW//aCo=;
- b=tzb4ASK34z4aRKEepHOFIUaI08O/YzLcccQ4y9YBvJz3/ZBQpujFkA+8IMP/VDvy/Y
- 8VkQZphAm0A7IAiOTKsO+v4ps57b3MQ2FszCDor4NkpWzvYQ8iz/vyXid6zf5e72azSb
- n/G/frTPjzZb34LXqwNiretvCZ8RkCEMrHdWfe/7yFSlLK7DIWqqyRIoh2UTTqxROLw7
- HVQ99YDLuncpfxX/QDioTuKneASezLu7KO/A9pS4IagMk2YIGb9U4kt/+MZkJ0ASJb6D
- zGtA3lquvk9hh39aV7FxFU4ZfTwyobZ67nDq8zmQf/MjTUNBhxUd2yFzJ0tSCq1DqZ2s
- LQLw==
-X-Gm-Message-State: AOAM5308Rw/KqD18AfhfWrvVonh2Z5qy4VBM6q06wBeUOF3CZCJEN7bH
- HyX/8qO54OZy3qrPe6ugj38IYwCupLyLPNTs8jg=
-X-Google-Smtp-Source: ABdhPJx0cKb4Z6tDAYdrnnAtDZHkXa5nxQ0oDSQ3zdX55Yv6GWh9mOzsYNPFc16fAwN8vcIUt483/Y8vgKeIJmxf4IA=
-X-Received: by 2002:adf:ee46:: with SMTP id w6mr7137561wro.451.1644515754223; 
- Thu, 10 Feb 2022 09:55:54 -0800 (PST)
+ Fri, 11 Feb 2022 08:46:28 +0000 (UTC)
+Received: by mail.cassym.pl (Postfix, from userid 1001)
+ id 82B28412AF; Fri, 11 Feb 2022 09:46:19 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=cassym.pl; s=mail;
+ t=1644569185; bh=M64dFpJAVtnWfq9rWMxUccQhCrbF5tDN2dEoARiPKHE=;
+ h=Date:From:To:Subject:From;
+ b=UGnN6JOFSd/M01dVNItZYwZUD5zS/Y9Lr65ZA5qi3oil3FAhstEdn3KXHeMIhji9g
+ X2HhRMF1tDiDj7BGkMtn25Gvn9BgZcSOGxPDL1WQ3P8+0JmqxLglVtAeUX8IbacXWX
+ DIUB90si6q4zX58eVC0VGArBEW2ySVobsptwU7+SCHO9lZG41S7LdQLS4DHYdjcuob
+ 7Rw3n50XKX9pq8Qpv5Jb3Ov2zdTIrL/GnixrebiBlywb889+vt2PVkYXJrYUspiBg7
+ kGNarrmVwbNp/NiY+pMZZSfXGpZPmJOM9dmrg3Lc9G4luuHfoe4mR9YYtzwrcaNjIW
+ Unwi5LIAiE58g==
+Received: by mail.cassym.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 11 Feb 2022 08:46:00 GMT
+Message-ID: <20220211084500-0.1.u.1rne.0.1hkn5833qk@cassym.pl>
+Date: Fri, 11 Feb 2022 08:46:00 GMT
+From: "Damian Pytlik" <damian.pytlik@cassym.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Pozycjonowanie- informacja
+X-Mailer: mail.cassym.pl
 MIME-Version: 1.0
-From: Nathan Caleb <nathancalebnathan@gmail.com>
-Date: Thu, 10 Feb 2022 05:55:37 -1200
-Message-ID: <CAMuE1iFPywt9nNVmxnKCLTPmC+=qyhJAC7WxpQ2vbX2qZLkPoQ@mail.gmail.com>
-Subject: From Karen Smith Trust
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000005baf7005d7ada93f"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,19 +50,22 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0000000000005baf7005d7ada93f
-Content-Type: text/plain; charset="UTF-8"
+Dzie=C5=84 dobry,=20
 
-I wrote a previous message which was not answered, hope all is well with
-you?
+jaki=C5=9B czas temu zg=C5=82osi=C5=82a si=C4=99 do nas firma, kt=C3=B3re=
+j strona internetowa nie pozycjonowa=C5=82a si=C4=99 wysoko w wyszukiwarc=
+e Google.=20
 
-Sincerely yours
-Nathan Caleb
-For Karen Smith Trust
+Na podstawie wykonanego przez nas audytu SEO zoptymalizowali=C5=9Bmy tre=C5=
+=9Bci na stronie pod k=C4=85tem wcze=C5=9Bniej opracowanych s=C5=82=C3=B3=
+w kluczowych. Nasz wewn=C4=99trzny system codziennie analizuje prawid=C5=82=
+owe dzia=C5=82anie witryny.  Dzi=C4=99ki indywidualnej strategii, firma z=
+dobywa coraz wi=C4=99cej Klient=C3=B3w. =20
 
---0000000000005baf7005d7ada93f
-Content-Type: text/html; charset="UTF-8"
+Czy chcieliby Pa=C5=84stwo zwi=C4=99kszy=C4=87 liczb=C4=99 os=C3=B3b odwi=
+edzaj=C4=85cych stron=C4=99 internetow=C4=85 firmy? M=C3=B3g=C5=82bym prz=
+edstawi=C4=87 ofert=C4=99?=20
 
-<div dir="ltr">I wrote a previous message which was not answered, hope all is well with you?<br><br>Sincerely yours<br>Nathan Caleb<br>For Karen Smith Trust<br></div>
 
---0000000000005baf7005d7ada93f--
+Pozdrawiam serdecznie,
+Damian Pytlik
