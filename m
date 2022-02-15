@@ -2,30 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4563D4B52F8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 14 Feb 2022 15:18:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2611D4B6BE9
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 15 Feb 2022 13:20:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E07C710E610;
-	Mon, 14 Feb 2022 14:18:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AD1CB892D5;
+	Tue, 15 Feb 2022 12:20:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from HikvisionOS.localdomain (unknown [118.188.20.179])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6CEDB10E603;
- Mon, 14 Feb 2022 14:18:07 +0000 (UTC)
-Received: from User (gateway [192.168.101.253])
- by HikvisionOS.localdomain (Postfix) with SMTP id DF98D3EE4BD;
- Mon, 14 Feb 2022 17:30:55 +0800 (CST)
-From: "World Health Organization"<t.ghebreyesus@who.int>
-Subject: "Stay Safe !  
-Date: Mon, 14 Feb 2022 01:31:06 -0800
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6F36B10E45F;
+ Tue, 15 Feb 2022 12:20:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1644927643; x=1676463643;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=DUSYKsrpkTrISyFfZQ72cAIve1h9tYeSIEpqJ7y8UlU=;
+ b=R+aemugphP0JKX3RTG+HyHcSlo+CFVVk2ezODsPvBgDhxd03p9u+Wdrc
+ mxJtNf5zfHDKLc1wJNLz8DZD/92/oj1PRSB8wrgVzYnRiYjTlZB2h0+OL
+ U5gc7ZjFPRClUoxYBOF+ssmaYig67G1GMMTQg35sW+avwrIvereS2gKlQ
+ WDkCoAJ6ZKUDXMUxEakB7kFh7fICPwSV9PzCiAc9OCpNVyCDiunbBxLlQ
+ y4mir+GwKHtePUCjoqCaFj4TL5MldUdc44KaGmBrvYTsuuSNKXGZf0aC0
+ SPmUhEQYu3jXNjycml4YWZV8bylZi6JfcezNGrurCfO21p8G4GrKMCXxp w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10258"; a="230302554"
+X-IronPort-AV: E=Sophos;i="5.88,370,1635231600"; d="scan'208";a="230302554"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Feb 2022 04:20:37 -0800
+X-IronPort-AV: E=Sophos;i="5.88,370,1635231600"; d="scan'208";a="544277370"
+Received: from ylian16-mobl1.ccr.corp.intel.com (HELO localhost)
+ ([10.252.20.230])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Feb 2022 04:20:34 -0800
+From: Jani Nikula <jani.nikula@intel.com>
+To: intel-gfx@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: #include drm_edid.h for drm_edid_block_valid()
+Date: Tue, 15 Feb 2022 14:20:30 +0200
+Message-Id: <20220215122030.2741656-1-jani.nikula@intel.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -38,54 +55,44 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: t.ghebreyesus@eim.ae
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, jani.nikula@intel.com,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220214141808.E07C710E610@gabe.freedesktop.org>
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-<B>Dear Sir/Madam</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>This is to notify you that you have been chosen by the World Health Organization (W.H.O) in-conjunction with the World Bank Organization</B></DIV>
-<DIV>
-<B>(W.B.O) as Quarantine funds donation to help and fight against the Corona Virus Disease (COVID-19).</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>The World Health Organization (W.H.O)/ World Bank Organization (W.B.O) release out a total of $800 Billion dollars to spread around the world. You have been granted with the sum of $750,000.00 USD (Seven Hundred and Fifty Thousand United States Dollars).</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>You are advised to contact the World Health Organization (W.H.O) Funds Claims Office as soon as possible at the email below, failure to do so</B></DIV>
-<DIV>
-<B>might result to funds been returned unclaimed.</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>Send your full name with the following Donation code to the below Email. Donation code: WHO#09385/Covid-19/22 E-Mail to: (younghoon.kim@eim.ae)</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>As soon as our claims office receive your donation code and your details, they shall inform you with the mode of payment. As we have appointed several Banks around the world for this purpose.</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>COVID-19 is real stay safe!</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>Best Regards,</B></DIV>
-<DIV>
-<B>&nbsp;</B></DIV>
-<DIV>
-<B>{Dr Tedros Adhanom Ghebreyesus}</B></DIV>
-<DIV>
-<B>Director-General.</B></DIV>
-</FONT>
-</BODY></HTML>
+As the excessive #includes from i915_drv.h were axed, kvmgt.c build
+started failing. Add the necessary #include where needed.
+
+Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
+Fixes: 14da21cc4671 ("drm/i915: axe lots of unnecessary includes from i915_drv.h")
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Zhi Wang <zhi.a.wang@intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+
+---
+
+Going to merge this via drm-intel-next along with the regressing commit.
+---
+ drivers/gpu/drm/i915/gvt/kvmgt.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 20b82fb036f8..e8d6c76e9234 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -46,6 +46,8 @@
+ 
+ #include <linux/nospec.h>
+ 
++#include <drm/drm_edid.h>
++
+ #include "i915_drv.h"
+ #include "gvt.h"
+ 
+-- 
+2.30.2
+
