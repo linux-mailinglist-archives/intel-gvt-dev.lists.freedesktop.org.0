@@ -1,54 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DE2E4B9E44
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Feb 2022 12:06:09 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31F3A4BC8B4
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 19 Feb 2022 14:37:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1327B10E94B;
-	Thu, 17 Feb 2022 11:06:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8C78E10E208;
+	Sat, 19 Feb 2022 13:37:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb43.google.com (mail-yb1-xb43.google.com
- [IPv6:2607:f8b0:4864:20::b43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C518710E94B
+Received: from mail-yw1-x1143.google.com (mail-yw1-x1143.google.com
+ [IPv6:2607:f8b0:4864:20::1143])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 470C010E20C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 17 Feb 2022 11:06:06 +0000 (UTC)
-Received: by mail-yb1-xb43.google.com with SMTP id y6so12244326ybc.5
+ Sat, 19 Feb 2022 13:37:02 +0000 (UTC)
+Received: by mail-yw1-x1143.google.com with SMTP id
+ 00721157ae682-2d07ae0b1c5so93325297b3.5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 17 Feb 2022 03:06:06 -0800 (PST)
+ Sat, 19 Feb 2022 05:37:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:from:date:message-id:subject:to;
- bh=rTJBXwJxq9/qp8kzA5tfxQDlzYVeKstWP0UMLLFCZDs=;
- b=EqyaLHF6buO0HSwiRNgsNK3KN6gVElHJPj8qrEeJg6Sh1u8o5FkGtrN7rkJ5/Vgeg9
- qMbUZxQ2TZEwHRZmPkf+RTH8OJPM5ImvKp8frCEN778Z9XxM9LOTJV0HgU4JdM4qLTcN
- IWJmmmU5AYfa0dO++NfP8O1LgiP9Z1Qikrt4hsYtGoLk+Iwoug9klmVo2qPzM1G2xfFQ
- lpUStdLOpPUp5IFFbaD8lkOPn13W2S0hThT+fQKXVeK2We4jY0gxRG5v7C/oKFl8AqyF
- ZszVftymWWtjPZxb6TqPZ8dlLPTOq2zBWSedm2EoJE3xYlwZAljBBhrMcm+35TP+M/9S
- vi3A==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=lh9laKvOxAaHoz9/q8Wwcp8X1fITwDLOFE3CYV0vU1M=;
+ b=QpKPm+PXGN0D+cOr5i0eOaOg1MojZPSsfxh93nEU1N2ytBwETzJyqUTsVZZiAExygD
+ 3fOqBTTlH78C3Wg9bUBvYm1ZDF3Z/SFa6lm4fFFen0ChHHLAWu7Ew7G9NAc0EYRnYp8C
+ 7D21Nk8wKCjmPK2kWPNRHb81QeqCI7vdsMIao1g6GbBuE5iTmPcQAOSKCA3xRnbo1EP7
+ EBfCzthYrQcdQ1/uSfVRe2p0IpZroDSzlaorG51fXydeC4+Y8tuIE2GsmGvQhM9GImEa
+ zTiQ6fs34VYA3cOLESsKDZHL/Nn0YukpCi5rj7OXZ1zTtnXNZDpXr2sem/CnosHyFOxn
+ DFUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=rTJBXwJxq9/qp8kzA5tfxQDlzYVeKstWP0UMLLFCZDs=;
- b=PZaCkPay5tf+51b0nPNmaTISoPZHVZh2FdMoU5iuUUyjlf37klSahLFFfHYTatv8T3
- ZPnA6mcB6neQa5+dx9MWkIMBJJv+DpQvEayTOCraimsclGX4iQSZoTqWeln6wG8lHZMp
- QAvNOD6rdbbDBtDTRjtLaufrC1lmrMGnX0zIlFBp4RbYSVFgjaZMYR9aG2Iqnhnr0dFa
- 5LD408KA+qzFWUA3zG3oIBveM/Yu4VaoxXmPiEOJgMHqsSXwnmYC7ptB0I+u/xcA7I/w
- qQAvltyOL8ulUdKYim+GzVc996+VfSuE61JKVTPmsobzY1Tv5DIqqmYBqXIhCyiPQcqU
- PUlw==
-X-Gm-Message-State: AOAM53049DlN98SbajdPlol8Oila5WueH3cT5pAc2bHus9wp2/blL+Sq
- oaDnI9Ghkm1q9udsB+Y57GOFvhxNHxXdvas51Rg=
-X-Google-Smtp-Source: ABdhPJzsTVzYkVsxP9BoId85d2EW8/5vPbRjAPv8JJwsgWU1cI1mrS/CbKqTfIByww7XMFXKiY9QlaEToq3vo2fdWFA=
-X-Received: by 2002:a5b:b08:0:b0:615:304c:fbb0 with SMTP id
- z8-20020a5b0b08000000b00615304cfbb0mr1960469ybp.556.1645095965859; Thu, 17
- Feb 2022 03:06:05 -0800 (PST)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=lh9laKvOxAaHoz9/q8Wwcp8X1fITwDLOFE3CYV0vU1M=;
+ b=SwIXpxoSgHKih0bDokwKZquYTqoNAEI/KWg3j9DlotpEUUndvm1cysm/HRij/GBoDl
+ /2hMsyIsepHZrJEdoJg1xCcSfxwQNeJ+EGGyPdCe4CMIM1LRhHrzoc08FOI+eAaQlDF1
+ Th6Q8ucmuQzzBpkDeBdJQUoiNiL8/jRqhW3/B5KnpSmxpXmNE+mi3C/5rH1jLzwr14Vx
+ 54iee/DjOUvn3VLuCDzqTkkrIol2HofAatWZEVxOHxJ9hqGDZ1FzLCVWA5OGgoE06vZW
+ OyrU9tiOlG9IICMoYh2A97KZrjkLLGq4mNrkyNpK4bCKoj7MNb6uWdtnFC2adClBEIC3
+ 55HA==
+X-Gm-Message-State: AOAM533nWgbRXapTc2PcSJXeH5ZR85fIiGnTJLG1pZMFCwsS07j4sbSi
+ UBumSrRMCmsZT7FQrzQvSO1VNQqnZxV03xLhRA0=
+X-Google-Smtp-Source: ABdhPJyR/V2oTKgN0zBt7S0G61Xd/Xw0jcBaa/YDLgiLdfngwT5lGM7YgqP0OPeVRKWxh4HWhP9M3kehH7gApr7jACY=
+X-Received: by 2002:a81:5591:0:b0:2ca:287c:6c8a with SMTP id
+ j139-20020a815591000000b002ca287c6c8amr12191559ywb.303.1645277821458; Sat, 19
+ Feb 2022 05:37:01 -0800 (PST)
 MIME-Version: 1.0
-From: Lisa Jaster <lisajaster1414@gmail.com>
-Date: Thu, 17 Feb 2022 11:05:51 +0000
-Message-ID: <CALwm_YorpzrhPHmaNbfkqP=F1VrQZToyEmRb5SX9=zckjG4zQA@mail.gmail.com>
+From: Sarah Lee <elvismcdonald55@gmail.com>
+Date: Sat, 19 Feb 2022 15:36:50 +0200
+Message-ID: <CAAT7ZTWTYxOLqZ89XJ8hDQYVCPh=-=fbT-+CxeJeUv4N2vZgQg@mail.gmail.com>
 Subject: 
 To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000aaa37605d834c0a7"
+Content-Type: multipart/alternative; boundary="0000000000001adeb505d85f18d9"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,21 +63,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: sarah_lee@accountanthkb.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000aaa37605d834c0a7
+--0000000000001adeb505d85f18d9
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hello,
-How are you doing? I am Lisa.
-Please get back to me urgently for an important discussion I want to have
-with you.
-Thank you.
+--=20
+Hello. I=E2=80=99m Mrs. Sarah Lee, if you were marked safe from the covid-1=
+9
+epidemic, my prayers are with you. I want to offer you a business deal
+worth $7,400,000.00 USD, if you are interested contact me privately .
+Email: sarah_lee@accountanthkb.com
 
---000000000000aaa37605d834c0a7
+Sarah Lee
+
+--0000000000001adeb505d85f18d9
 Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-<div dir="ltr">Hello,<br>How are you doing? I am Lisa.<br>Please get back to me urgently for an important discussion I want to have with you.<br>Thank you.<br><br><br></div>
+<div dir=3D"ltr"><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr" c=
+lass=3D"gmail_signature" data-smartmail=3D"gmail_signature">Hello. I=E2=80=
+=99m Mrs. Sarah Lee, if you were marked safe from the covid-19 epidemic, my=
+ prayers are with you. I want to offer you a business deal worth $7,400,000=
+.00 USD, if you are interested contact me privately . Email: <a href=3D"mai=
+lto:sarah_lee@accountanthkb.com" target=3D"_blank">sarah_lee@accountanthkb.=
+com</a><br><br>Sarah Lee</div></div>
 
---000000000000aaa37605d834c0a7--
+--0000000000001adeb505d85f18d9--
