@@ -2,24 +2,25 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 413564BD88F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 21 Feb 2022 10:34:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B66D84BD92F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 21 Feb 2022 11:49:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E18E910EB5D;
-	Mon, 21 Feb 2022 09:34:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 71B4610E306;
+	Mon, 21 Feb 2022 10:49:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 35848 seconds by postgrey-1.36 at gabe;
- Mon, 21 Feb 2022 09:34:27 UTC
-Received: from s146.perm.ru (s146.perm.ru [212.33.246.57])
- by gabe.freedesktop.org (Postfix) with ESMTP id 481F410EB36;
- Mon, 21 Feb 2022 09:34:27 +0000 (UTC)
-Received: from User (_gateway [10.146.0.253])
- by s146.perm.ru (Postfix) with SMTP id 8AE13498B5CD;
- Mon, 21 Feb 2022 04:05:24 +0500 (+05)
-From: "Mrs. Judith Peters"<info@s146.perm.ru>
-Subject: Attn:Dearest, Your GRANT Funds $5,500,000.00
-Date: Sun, 20 Feb 2022 15:05:37 -0800
+X-Greylist: delayed 623 seconds by postgrey-1.36 at gabe;
+ Mon, 21 Feb 2022 10:49:14 UTC
+Received: from smtpbbmailout.smartone.com (smtpbbmailout.smartone.com
+ [202.140.111.198])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1C9B310E306;
+ Mon, 21 Feb 2022 10:49:14 +0000 (UTC)
+Received: from User (unknown [121.202.147.39])
+ by smtpbbmailout.smartone.com (Postfix) with SMTP id ACF14304E4B;
+ Mon, 21 Feb 2022 18:37:14 +0800 (HKT)
+From: "Mr.David George"<effer@online.de>
+Subject: PAYMENT RELEASE NOTIFICATION
+Date: Mon, 21 Feb 2022 11:38:43 +0100
 MIME-Version: 1.0
 Content-Type: text/plain;
 	charset="Windows-1251"
@@ -40,29 +41,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: attorneygeorgewalter@aliyun.com
+Reply-To: andyjohns101@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220221093428.E18E910EB5D@gabe.freedesktop.org>
+Message-Id: <20220221104915.71B4610E306@gabe.freedesktop.org>
 
-Attn: Dearest.
+Dear Email Owner,
 
-I'm Mrs. Judith Peters a Successful business Woman dealing with Exportation, I got your mail contact through search to let you know my Ugly Situation Am a dying Woman here in Los Angeles California Hospital Bed in (USA), I Lost my Husband and my only Daughter for Covid-19 I'm dying with the same symptoms and more.
+This is to inform you that we have been working towards the eradication of fraudsters and scam Artists in Africa with the help of the Organization of African Unity (OAU), United Nations (UN), European Union (EU), and Federal Bureau of Investigation (FBI).We have been able to track down some scam artist in various parts of African countries which includes (Nigeria, Kenya, Ghana and Senegal) and they are all in Government custody now, they will appear at International Criminal Court (ICC) soon for Justice.
 
-My Doctor open-up to me that he is Afraid to tell me my Condition and inside me, I already know that I'm not going to survive and I can't live alone without my Family on Earth, I have a project that I am about to hand over to you. And I already instructed the Heritage Bank to transfer my fund sum of $5,500,000.00 (Five Million and Five Hundred Thousand Dollars) to you as to enable you to give 50% to Charitable Home and take 50% for yourself.
+During the course of investigation, they were able to recover some funds from these scam artists and IMF organizations have ordered the funds recovered to be shared among the 50 Lucky people listed around the World as compensation. This notice is being directed to you because your email address was found in one of the scam Artists file and computer hard-disk while the investigation, maybe you have been scammed or you are yet to. Well you are therefore being compensated with a sum of $5.5 million Dollars.
 
-Don't think otherwise and why would anybody send someone you barely know to help you deliver a message, help me do this for the happiness of my soul and for God to mercy me and my Family and give us a good place.
+Since your email address is among the lucky beneficiaries who will receive a compensation funds, we have arranged your payment to be paid to you through ATM VISA CARD and deliver to your postal address with the Pin Numbers as to enable you withdrawal maximum of $5,000 on each withdrawal from any Bank ATM Machine of your choice, until all the funds are exhausted.
 
-Please, do as I said there was someone from your State that I deeply love so very much and I miss her so badly I have no means to reach any Charitable Home there, that is why I go for a personal search of the Country and State and I got your mail contact through search to let you know my Bitterness and the situation that i am passing through.
+The ATM Card with Security Pin Numbers shall be delivered to you using courier service like DHL, FedEx or UPS. Please No PO Box or USPS.Also choose the courier service you would like to be use to deliver the ATM VISA CARD and don't forget to reconfirm your following information.So, if you like to receive your fund this way, please do let us know by forwarding the below details to the CARD PAYMENT CENTRE on this Email:
 
-Please help me. I am getting Dark. I ask my Attorney to help me keep you notice failure for me to reach you in person.
+Contact officer: Dr Andy Johnson
+Email:andyjohns101@gmail.com
 
-The Doctor said I have a few days to live, please contact my attorney with the following email address and phone number as soon as possible, I am finding it difficult to breathe now and I am not sure if I can stay up to 24 hours, please contact my attorney through his email below.
+(1). Your Full Name
+(2). Address where you want the payment centre to send your ATM CARD.
+(3). Phone And Fax Number
+(4). Your Total Fund to be received
+(5). Your Current Occupation
 
-Name Attorney George Walter.
-Email:attorneygeorgewalter@aliyun.com
+We advise you to stop all communications with everyone regarding your payment as we have short listed to deliver to you and now urge you to comply and receive your ATM Card funds.
 
-Please hurry up to contact my attorney so that he can direct you on how you will hand over 50% of the $5,500,000.00 to Charity, i really want to achieve that goal by helping the Charity organization before I die.
+Thanks for your understanding as you follow instructions while I wait to hear from you soon.
 
-My Regards.
-Mrs. Judith Peters.
+Yours in Services,
+Mr.David George
