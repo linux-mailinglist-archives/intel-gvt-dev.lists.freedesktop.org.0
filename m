@@ -2,53 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B24F4C3837
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Feb 2022 22:55:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F06D4C3843
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Feb 2022 22:59:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CFFD310E159;
-	Thu, 24 Feb 2022 21:55:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DCC7410E159;
+	Thu, 24 Feb 2022 21:59:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb2f.google.com (mail-yb1-xb2f.google.com
- [IPv6:2607:f8b0:4864:20::b2f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2155A10E159
+Received: from mail-yb1-xb2b.google.com (mail-yb1-xb2b.google.com
+ [IPv6:2607:f8b0:4864:20::b2b])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BF29210E184
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 24 Feb 2022 21:55:10 +0000 (UTC)
-Received: by mail-yb1-xb2f.google.com with SMTP id b35so2138629ybi.13
+ Thu, 24 Feb 2022 21:59:09 +0000 (UTC)
+Received: by mail-yb1-xb2b.google.com with SMTP id c6so2222201ybk.3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 24 Feb 2022 13:55:10 -0800 (PST)
+ Thu, 24 Feb 2022 13:59:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:reply-to:from:date:message-id:subject:to;
  bh=wv9+lUDiUamCN2D56q0OJAqCtadhguvOfwApXNhEE00=;
- b=fQ9VyErpjH1Ru2YRO5JMu4gTnRckhXUKJUhCFk6Y8aG47Hd8PwdJy/oPgKNwgHhoxC
- 5AhXHqsdJmhaZrZFPIArIbhFbISZPzBwxwb1ptDg+s5zvawMcO3MHfTJMqsCbaJbXa/A
- qgSWTSLdpw7rDo7AtX8srEaA+iIcbUpvNIBzdwp78WGvgWPqN0zdNGoDIv9iiC+XOXLj
- 9Fv374QMhIfiAwtdpHfsRGad6+RVBmTnL1dgAUSOwxFSP5FyPAkr1FdvMfosUEv035TL
- zYTc1pYNbfqUFAzg/PeSPjJPhBznE70PVOIXo8H8p/FpMQ5CFUITWh3JLRhT4e9tSNJA
- HqEQ==
+ b=hILtLVoo5W2+hBM4Xlan02qS50993LfJ89JU+7Y1yncXO9GKOFNAabULrgL9LGXnxB
+ +f4oRJ599HGAKbCd9BizecVBnbQGTMHqac3+H6rAXDFBb4H6qH1IwuQGPiqltR4HJek1
+ QdqtviXD3BEjBbtY9m89LRqH24+Pr4lVLHiJFMUFR/hQb/D74BnYgD0GqOyO/un4XaED
+ XUV55IksQVeh8N/7eXmcEylEtd4isIXCtDCEgtamqh+j4/aU2YFB1sYcifL6XsU54N4t
+ 83BU6XENIT9vgWYzuCiQOQc6d6z7MeNL7P6QI6fXgdN3Inc0L6PA7zSCsAdoB3T21neh
+ Cnkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
  bh=wv9+lUDiUamCN2D56q0OJAqCtadhguvOfwApXNhEE00=;
- b=INfUe/ZH7kQuvGivfGSMee/7bCZts9OMAfwO1zUC/XVaTbwIWs7EANTQCn2+cZkPSO
- bbgNHW7XsVO9IZItxAseU8NQxsxCC5yIK/JFees3UCb7NowjyhSp6zjt2Evz18OEJivA
- 6v9ZJCXMffeCWYlVRu7BxvAFORMDyC4YrBjE2gAx2ViUeufPtif/w4D0wcC0hdAh+Tq2
- 1QHe9VGMpkmar7luevsKyBMgNrEsveoAwKsL0xr+SrCE1NgQsgtCAfyfyMSej2OPhx9w
- Q1n0jYW6FiymvM+2pejMRa1+DmDYzJA2usvUwLPhpf9njWKqs9j0S/w82u8UlCrjMAj3
- xkaQ==
-X-Gm-Message-State: AOAM531OJYtzYxZv4IH8BS7tjWSjOL8hm8Y5O6YV7jaR/Wl9EAAegrGY
- +CDi2wKf/HcjGHhhhIqTmeVHOE8VSOaziP0V4M4=
-X-Google-Smtp-Source: ABdhPJxtktc3ImDCly16x55UpqgVlzHSFiUCHPWrCNE5Dze05Wt+ErZZdMR6SLAhyrMw5CKhFSvZJ+xLXI2T8qp5AxU=
-X-Received: by 2002:a5b:1cc:0:b0:625:2da3:cb6d with SMTP id
- f12-20020a5b01cc000000b006252da3cb6dmr2880172ybp.296.1645739709046; Thu, 24
- Feb 2022 13:55:09 -0800 (PST)
+ b=1CMrYrs71oBDQOduu+3eLxwylgxQ7gcxchMiX4uKZliaonjmIULLMJY9PtSmGB0Zl/
+ ZyaCVh+IEhygvNqv2pTqE+kwkVOVM9U8N5EoJyI/98MBubhfyPOM75sdwG9PjDuCZgGn
+ KaTIDm3zfAtozSIVknhvonABdvmpSW2BoupeUN2WkLPx//CvF14+1k1ewtZVkqCsqUQW
+ 7Kd4P+818luNrgxXUAsjyg1dqt4BGK7Ga1By1QWE7ow5U1NKWb9vhsj2fPRCcUT0L4bk
+ OGCfFKfmxMeDDL4OS0o59ubVbOlkI5HMfMpj3kBsu7LNjjGkPPX7jIwPH3OXR8FK0bsE
+ YK9A==
+X-Gm-Message-State: AOAM532WtxOS7ytBbSOGol1vlkoPWMLhRArtxecZ75DkC4Zz/CGoQahT
+ eVHWhGEdJQAKQWawy/vFQtC1oQk+SNVNUxZAVSw=
+X-Google-Smtp-Source: ABdhPJzyZwtuFpiBUIq3/1/GJN7MnAtGUvpTv1COEMdfZzKwAcngUZ/Vni1EJRZNOGXJzkNV/fwKf7wfqmfyMhrB/WA=
+X-Received: by 2002:a25:d2c1:0:b0:61d:add9:f029 with SMTP id
+ j184-20020a25d2c1000000b0061dadd9f029mr4419481ybg.312.1645739948713; Thu, 24
+ Feb 2022 13:59:08 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a05:7000:7f45:0:0:0:0 with HTTP; Thu, 24 Feb 2022 13:55:07
+Received: by 2002:a05:7108:7616:0:0:0:0 with HTTP; Thu, 24 Feb 2022 13:59:07
  -0800 (PST)
 From: MR DAVID MORRIS <mrjohnwegener35@gmail.com>
-Date: Thu, 24 Feb 2022 13:55:07 -0800
-Message-ID: <CA+Kwxe_LzQeA6t3SzVrqsymGbcsgko+Yqh+6hNoTZHx-xKVDpQ@mail.gmail.com>
+Date: Thu, 24 Feb 2022 13:59:07 -0800
+Message-ID: <CA+Kwxe9XS3C7vFQ0pWKEd++SyfUhiY3jBF4+RbGzxC-ZGfHuvw@mail.gmail.com>
 Subject: Dear Beneficiary
 To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
