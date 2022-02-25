@@ -1,25 +1,25 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7239D4C4809
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Feb 2022 15:55:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FFDF4C46FE
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Feb 2022 14:57:26 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1615D10E137;
-	Fri, 25 Feb 2022 14:55:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4D99B10E9C1;
+	Fri, 25 Feb 2022 13:57:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 44452 seconds by postgrey-1.36 at gabe;
- Fri, 25 Feb 2022 14:55:34 UTC
-Received: from mail.julivet.net (unknown [93.176.166.208])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C8E8010E137;
- Fri, 25 Feb 2022 14:55:34 +0000 (UTC)
-Received: from User (unknown [192.168.203.1])
- by mail.julivet.net (Postfix) with SMTP id 34C6016AF371;
- Thu, 24 Feb 2022 21:14:12 +0000 (UTC)
-From: "Abu Usman"<au5869@ec.dev.animestore.docomo.ne.jp>
-Subject: Greeting, 
-Date: Thu, 24 Feb 2022 13:14:51 -0800
+Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C6A6610E9C1;
+ Fri, 25 Feb 2022 13:57:23 +0000 (UTC)
+Received: from User (unknown [197.185.107.78])
+ by mail.service-fujitsu.com (Postfix) with ESMTPA id 9F1502A118C;
+ Fri, 25 Feb 2022 20:04:36 +0800 (CST)
+From: "Nigerian National Petroleum Corporation
+ (NNPC)"<dremmanuelibekachikwun20221@gmail.com>
+Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
+ Abuja
+Date: Fri, 25 Feb 2022 14:04:53 +0200
 MIME-Version: 1.0
 Content-Type: text/plain;
 	charset="Windows-1251"
@@ -28,11 +28,6 @@ X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Spam-Level: *************
-X-Spamd-Bar: +++++++++++++
-Authentication-Results: mail.julivet.net;
-	none
-X-Spam: Yes
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,31 +40,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: au845869@gmail.com
+Reply-To: dremmanuelibekachikwun2022@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220225145536.1615D10E137@gabe.freedesktop.org>
+Message-Id: <20220225135725.4D99B10E9C1@gabe.freedesktop.org>
 
-Greeting,
+Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
+ 
+From: Dr. Emmanuel Ibe Kachikwu (GMD)
+Contract Ref No: NNPC/PED/1462/KADREF/92)      
+                        
+Attn: Ceo,
+ 
+I know that this proposal may come to you as a surprise especially having to come from someone you have not met before. I got your information from your country's chamber of commerce here in Nigeria.
+ 
+My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
+ 
+I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
+ 
+The contract has been successfully executed by the contractors and their contract sum has been paid to them, leaving us an overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
+ 
+We, as government officials, are not permitted to own or operate foreign bank accounts. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
+ 
+Note that 50% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
+ 
+The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
+ 
+ 
+Awaiting your urgent response.
+ 
+Best regards.
 
-I am indeed glad to be in contact with you even though this medium of communication (internet) has been grossly abused by criminal minded
-people making it difficult for people with genuine intention to correspond and exchange views without skepticism.
+Dr. Emmanuel Ibe Kachikwu.
+The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
+ 
+This email and any attachments to it may be confidential and are intended solely for the use of the individual to whom it is addressed. Any views or opinions expressed are solely those of the author and do not necessarily represent those of Masterpage®. If you are not the intended recipient of this email, you must neither take any action based upon its contents, nor copy or show it to anyone. Please contact the sender if you believe you have received this email in error.
 
-In view of your outstanding profile and location,  I decided to write to you. I have decided that I seek your assistance in a matter that requires your urgent attention
-
-I'm Abu Usman from Afghanistan, and I am contacting you due to the ongoing takeover by the Taliban in my country.
-
-I need your urgent response to help me receive some funds for me.If this is something you can do, I will appreciate your early response, so that I can provide more and appropriate details of the entire proposal, given the fact that this is only a skeletal introduction.
-
-I will appreciate if you could let me have the following information
-
-1. Your Name
-2. Address
-3. Your cell Phone Number.
-4. Occupation
-
-Your positive response will be highly appreciated. As soon as I receive your response I will get back to you Asap.
-
-Sincerely,
-
-Abu Usman
