@@ -2,47 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CF7F4D23C7
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Mar 2022 23:01:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B450E4D27C7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Mar 2022 05:20:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DE78910E5D0;
-	Tue,  8 Mar 2022 22:01:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4ECE910E8EC;
+	Wed,  9 Mar 2022 04:20:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D58B410E517
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B2BAE10E8EE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Mar 2022 22:01:42 +0000 (UTC)
+ Wed,  9 Mar 2022 04:20:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646776902; x=1678312902;
+ t=1646799653; x=1678335653;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=bg1bUXWbqMWnKUgdVLevGgfJVMYKNkXMHVNfCqO0d/Q=;
- b=S5cDLnw2o3vNv4vX621K//mUI5H8KEBI3WI67BRgS6sgb5bokXxZ2gED
- ECFGEUCFU+WppqfgJwT48Jng1lK1IBEYJ44ftHbVa0uY4rdH9341fRaz/
- ysYHAkp2bzKBDD0Y3nYcnG/bR5ymiyOwjLoJWkmwEXHLdVNfsPf4DmfEA
- Fc3dFDQCmc3hU5Jts2sFIQnAuUnFj5rSHLCbFtKFx3qCo4MNTidLYkSHV
- 0UmgSo/9ZVYGun7cI1x2xf55NGKZaJSnI0Rx92UxtnC2QIAqpv7I6fs0x
- KsNJuXNLhfVYslFyW+oMbm+im6HQPxRJsluuRESWGun3rs0qxjU5G///b A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10280"; a="318053316"
-X-IronPort-AV: E=Sophos;i="5.90,165,1643702400"; d="scan'208";a="318053316"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2022 14:01:42 -0800
+ bh=i7EifrnWJgcCPENtlvN6u3/ncBJXDJewFyQ+TwVm4os=;
+ b=USIHr+xcmG8dQ6XxV8Y12uc6llf+Gcb6OdJFAujcKnINo6l8CJTNo+s7
+ LvZ9GWQXfNWHqFDnM1ksj+O4CpJVEOrYfWUMYSDwRrpR1PQeWWxgV8JsJ
+ HDZA8Ib7wNILiEIpkkssTkssYw+G47o31ttDRylsZkJUZQK8pK/rVAr1o
+ gogA5ilwSxogwtzIjUTm2k1a2KHhx9da24Hu/VRfA33fhLLH5LzajzSkm
+ CTuOP04dD+b6ojqgax+JgyhUCFb8RPRs+eMR2f/jcF30QXV8UfpwYynqb
+ 5wNn8WBbel1uidDqyAJR6d8U3LnEmTfjrVcNzPeoi5Cq4JGT3mN4rSHFh w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10280"; a="254612424"
+X-IronPort-AV: E=Sophos;i="5.90,166,1643702400"; d="scan'208";a="254612424"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2022 20:20:52 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,165,1643702400"; d="scan'208";a="641927017"
+X-IronPort-AV: E=Sophos;i="5.90,166,1643702400"; d="scan'208";a="596134365"
 Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
- by fmsmga002.fm.intel.com with ESMTP; 08 Mar 2022 14:01:40 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 08 Mar 2022 20:20:51 -0800
 Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nRhtj-00025C-Td; Tue, 08 Mar 2022 22:01:39 +0000
-Date: Wed, 09 Mar 2022 06:01:12 +0800
+ id 1nRnog-0002Zi-Cr; Wed, 09 Mar 2022 04:20:50 +0000
+Date: Wed, 09 Mar 2022 12:20:29 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhi Wang <zhi.a.wang@intel.com>
-Subject: [intel-gvt:gvt-staging] BUILD SUCCESS
- 18521b4e0c3f7c2c5717a41d6be85259fe308951
-Message-ID: <6227d228.VfowD6S2XM++DpBW%lkp@intel.com>
+Subject: [intel-gvt:gvt-next] BUILD SUCCESS
+ 43d26c4fc6c446d766253d546f0083d78023d34a
+Message-ID: <62282b0d.VW0+Bi/pLYB49c7Q%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -64,12 +64,12 @@ Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 18521b4e0c3f7c2c5717a41d6be85259fe308951  gvt-staging: 2022y-03m-07d-09h-44m-36s CST integration manifest
+tree/branch: https://github.com/intel/gvt-linux.git gvt-next
+branch HEAD: 43d26c4fc6c446d766253d546f0083d78023d34a  drm/i915/gvt: add the missing mdev attribute "name"
 
-elapsed time: 1500m
+elapsed time: 1880m
 
-configs tested: 130
+configs tested: 125
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -81,136 +81,129 @@ arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-i386                          randconfig-c001
-alpha                            alldefconfig
-arm                      footbridge_defconfig
-m68k                           sun3_defconfig
-sh                          rsk7269_defconfig
-mips                             allyesconfig
-sh                   secureedge5410_defconfig
-powerpc                       ppc64_defconfig
-sh                              ul2_defconfig
-powerpc                      tqm8xx_defconfig
-arm                         lubbock_defconfig
-sh                        dreamcast_defconfig
-powerpc                mpc7448_hpc2_defconfig
-mips                     decstation_defconfig
-ia64                          tiger_defconfig
-x86_64                              defconfig
-sparc                       sparc32_defconfig
-arm                            zeus_defconfig
-sh                          landisk_defconfig
-powerpc                   currituck_defconfig
-powerpc                      ppc40x_defconfig
-xtensa                           alldefconfig
-microblaze                          defconfig
-powerpc                     redwood_defconfig
-parisc                generic-32bit_defconfig
-um                                  defconfig
-sh                            titan_defconfig
+i386                 randconfig-c001-20220307
+mips                           xway_defconfig
+sparc                               defconfig
+arm                         assabet_defconfig
 arm                        oxnas_v6_defconfig
-arm                            pleb_defconfig
-mips                            ar7_defconfig
-riscv                               defconfig
-powerpc                 mpc834x_itx_defconfig
+arm                           u8500_defconfig
+sh                          lboxre2_defconfig
+sh                          landisk_defconfig
+sh                          urquell_defconfig
+mips                           ip32_defconfig
+ia64                            zx1_defconfig
+sh                           se7750_defconfig
+xtensa                  cadence_csp_defconfig
+mips                      fuloong2e_defconfig
+m68k                          atari_defconfig
+mips                    maltaup_xpa_defconfig
+openrisc                 simple_smp_defconfig
+sh                        edosk7705_defconfig
+powerpc                      arches_defconfig
+arm                        mini2440_defconfig
+arc                        vdk_hs38_defconfig
+microblaze                      mmu_defconfig
+sh                         ecovec24_defconfig
+sh                          rsk7201_defconfig
+sh                           se7712_defconfig
 arm                            hisi_defconfig
 m68k                       m5249evb_defconfig
-um                           x86_64_defconfig
+powerpc                 mpc834x_itx_defconfig
+riscv                               defconfig
 arm                  randconfig-c002-20220308
 arm                  randconfig-c002-20220307
 ia64                             allmodconfig
-ia64                             allyesconfig
 ia64                                defconfig
-m68k                             allmodconfig
+ia64                             allyesconfig
 m68k                                defconfig
 m68k                             allyesconfig
+m68k                             allmodconfig
 csky                                defconfig
 alpha                               defconfig
 nds32                               defconfig
-nios2                            allyesconfig
 alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
+nios2                            allyesconfig
 arc                                 defconfig
 sh                               allmodconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
 nios2                               defconfig
 arc                              allyesconfig
 nds32                             allnoconfig
 parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
 parisc64                            defconfig
+s390                             allmodconfig
+s390                             allyesconfig
 parisc                           allyesconfig
 s390                                defconfig
-sparc                               defconfig
-sparc                            allyesconfig
 i386                             allyesconfig
+sparc                            allyesconfig
 i386                                defconfig
 i386                   debian-10.3-kselftests
 i386                              debian-10.3
+mips                             allyesconfig
 mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
 powerpc                           allnoconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-i386                 randconfig-a005-20220307
-i386                 randconfig-a004-20220307
-i386                 randconfig-a003-20220307
-i386                 randconfig-a006-20220307
-i386                 randconfig-a002-20220307
-i386                 randconfig-a001-20220307
+powerpc                          allmodconfig
+powerpc                          allyesconfig
 x86_64               randconfig-a003-20220307
 x86_64               randconfig-a001-20220307
 x86_64               randconfig-a002-20220307
+x86_64               randconfig-a004-20220307
 x86_64               randconfig-a006-20220307
 x86_64               randconfig-a005-20220307
-x86_64               randconfig-a004-20220307
+i386                 randconfig-a003-20220307
+i386                 randconfig-a001-20220307
+i386                 randconfig-a004-20220307
+i386                 randconfig-a002-20220307
+i386                 randconfig-a006-20220307
+i386                 randconfig-a005-20220307
+x86_64                        randconfig-a015
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+i386                          randconfig-a014
+i386                          randconfig-a012
+i386                          randconfig-a016
+riscv                randconfig-r042-20220308
 arc                  randconfig-r043-20220307
-arc                  randconfig-r043-20220308
 riscv                    nommu_k210_defconfig
 riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
-riscv                          rv32_defconfig
 riscv                            allmodconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
 x86_64                    rhel-8.3-kselftests
 um                             i386_defconfig
+um                           x86_64_defconfig
 x86_64                           allyesconfig
-x86_64                                  kexec
+x86_64                              defconfig
 x86_64                               rhel-8.3
 x86_64                          rhel-8.3-func
 x86_64                         rhel-8.3-kunit
+x86_64                                  kexec
 
 clang tested configs:
 x86_64                        randconfig-c007
-powerpc              randconfig-c003-20220308
 arm                  randconfig-c002-20220308
 mips                 randconfig-c004-20220308
 i386                          randconfig-c001
 s390                 randconfig-c005-20220308
 riscv                randconfig-c006-20220308
-mips                           mtx1_defconfig
-arm                            dove_defconfig
-powerpc                     ksi8560_defconfig
-riscv                    nommu_virt_defconfig
-arm                         lpc32xx_defconfig
-arm                      tct_hammer_defconfig
+powerpc              randconfig-c003-20220308
+mips                     cu1830-neo_defconfig
+powerpc                        icon_defconfig
+powerpc                     mpc512x_defconfig
+arm                         bcm2835_defconfig
+mips                     loongson2k_defconfig
+mips                          rm200_defconfig
 powerpc                      walnut_defconfig
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a012
 x86_64                        randconfig-a014
+x86_64                        randconfig-a012
 x86_64                        randconfig-a016
 i386                          randconfig-a011
 i386                          randconfig-a013
 i386                          randconfig-a015
 hexagon              randconfig-r041-20220307
-riscv                randconfig-r042-20220307
-s390                 randconfig-r044-20220307
-hexagon              randconfig-r045-20220308
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
