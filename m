@@ -1,68 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D30FB4DA3EF
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 15 Mar 2022 21:24:54 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 221EF4DA4FC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 15 Mar 2022 23:05:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6995E10E3E6;
-	Tue, 15 Mar 2022 20:24:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CE49A10E236;
+	Tue, 15 Mar 2022 22:04:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com
- [IPv6:2a00:1450:4864:20::432])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 442E710E3E6;
- Tue, 15 Mar 2022 20:24:52 +0000 (UTC)
-Received: by mail-wr1-x432.google.com with SMTP id h15so185476wrc.6;
- Tue, 15 Mar 2022 13:24:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SLLTqIhVx97asbYPr4Ba30RhGW0/k9gGUJ6yMqUQca8=;
- b=HGVwT2u8w1di/2Ba6Mr3uF7wANvgMQhwksp2VCgHGD+YHZd2YNQFvthoW0aL1i+eUW
- Ut+47rb5iS6ZjVGYKl2VEeLBQBkEs0iwXXdh6PwbjyICixDvwj0+2y6GSgtdUAIsve/K
- Y1u/+x3hCOFHzjtISdWRQnfcaRJHy1R3n3I8jaNS8pqfX+EFIpDL3ZyF/dR8mnWyTSFa
- 9gwxCf5RcGXqMHGEWNpB1V1Eb1DvqizTGVwm9nggVh2QjXqGLhyWVkGBzGLAJ7W79MB+
- d8Z7AKgHVKJ/vLT0PSkxbR/zwLHNXat10jflfoOOXA2Ppjcb3X0gT2rqdevVVOXxRDt6
- 0ihA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SLLTqIhVx97asbYPr4Ba30RhGW0/k9gGUJ6yMqUQca8=;
- b=eLuWbXhRN8xzW5NlE0gtRHAURJkRrEGKJM1S7ciu5DRyaNd7Qek50BHbpOaeHmXrAd
- OkZ/Vr0XvLKXxCzi1bF5E4Px1k1LY0FsyALRE83Q0pE0WfnXj5FTsx6iU47PQ+jmF44/
- vNiPCW/Sa1UrHqt44iizSeCiElvn0gWwmx7pHKWZJILReE7+ZRnF8PCADBy5ul4KwgR0
- Gf1rXWerZxvORTQ9nMWTGl0ysPchhKM42j83wNpoyI0HoP16r4oxoa4/uoq9oKJ8t8MU
- sHuAF+onE82D1CS85DSYCtaat5N4ocEk67wYilkh0GLxciRFcle6aUndWK9FOodMvk+y
- 2SxA==
-X-Gm-Message-State: AOAM530bLHLaG8YXZVCdEH9mvyEZC+lkE0Z3NzTHX0w9vwzECCl9U5SY
- UC2Bi1ytKkNb+vqXqVWwtss=
-X-Google-Smtp-Source: ABdhPJxhdTXqW/kPnVuI531rJ1j83VzktKMWxWPNmL/em2OL4k0Zaihe+NRG+blq1ChVnZ991OdzQA==
-X-Received: by 2002:a5d:6d86:0:b0:1f1:f938:6626 with SMTP id
- l6-20020a5d6d86000000b001f1f9386626mr21184356wrs.701.1647375890836; 
- Tue, 15 Mar 2022 13:24:50 -0700 (PDT)
-Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net.
- [80.193.200.194]) by smtp.gmail.com with ESMTPSA id
- k18-20020adfe8d2000000b0020294da2b42sm24801116wrn.117.2022.03.15.13.24.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Mar 2022 13:24:50 -0700 (PDT)
-From: Colin Ian King <colin.i.king@gmail.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org
-Subject: [PATCH] drm/i915/reg: Fix spelling mistake "Unsupport" ->
- "Unsupported"
-Date: Tue, 15 Mar 2022 20:24:49 +0000
-Message-Id: <20220315202449.2952845-1-colin.i.king@gmail.com>
-X-Mailer: git-send-email 2.35.1
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Tue, 15 Mar 2022 22:04:57 UTC
+Received: from wrqvnhqs.outbound-mail.sendgrid.net
+ (wrqvnhqs.outbound-mail.sendgrid.net [149.72.32.70])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2310610E236
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 15 Mar 2022 22:04:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tokocrypto.com;
+ h=from:subject:mime-version:to:content-type:content-transfer-encoding;
+ s=s1; bh=8kMvts5OvWfZa+Xu8lXa9wUpHuNK2/oNLjjgH6ZvuxU=;
+ b=TC8yx3vj+wj4XkF5xqyQr5yz9jq3F0R0S1SMAC24qFELIG6eezTyQITFYqyezRZmAl1Z
+ oJ6CvMG/Y6rRaVneGUVuDeWRfdL4jcXq87wkRq+RB46oky3H+W/Ttvo5poCBxEysH1TfHm
+ JQCQ2uAbpMjJnojWyN61b4Q0MgwKzYrXSpqRt0xVuIhYd8OBzb9VTnuLCF17M6Ukfc5bij
+ +hAUx7EDnZvI/HEdRCdioaNR3N7GMbI3a6aJwTugYJJRIxjemWkTrPNxRiLjMbtcldDzKV
+ LPRkSkAsznb6icgUV78YPlO/bTEFL2Rf6jQzEDbL4CeRKr0ZfJmIIhcef13oNLzQ==
+Received: by filterdrecv-7b47b46d4b-cvz56 with SMTP id
+ filterdrecv-7b47b46d4b-cvz56-1-62310C58-83
+ 2022-03-15 21:59:52.905099686 +0000 UTC m=+16846736.568753293
+Received: from maxko (unknown) by geopod-ismtpd-1-0 (SG) with ESMTP
+ id pdx4ba8ZSMicvf5tk5IQ-g for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 15 Mar 2022 21:59:52.604 +0000 (UTC)
+Date: Tue, 15 Mar 2022 21:59:52 +0000 (UTC)
+From: Support Github <support@tokocrypto.com>
+Subject: [Warning suspicious api usage]
+Message-ID: <6be895a787669f75b7e13899bffe094a@maxko>
+X-Mailer: PHPMailer 5.2.23 (https://github.com/PHPMailer/PHPMailer)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+X-SG-EID: =?us-ascii?Q?=2F9KnH0m6klp+6c9sVsixfof6Gnd0dk92EU7zQCJMPMyMJyIHWbdwmfh2PXGoLv?=
+ =?us-ascii?Q?6jokTh8kDDYowVbR3Fb4p2c1DXZ26lLsfV6e5by?=
+ =?us-ascii?Q?4hunb21GdnfX9TQxZcIHKi=2F4RhJKrFv63ETmj0a?=
+ =?us-ascii?Q?WoEiHSneGHipCRkdzTV5hwhk3KOLDurcuRx+zIy?=
+ =?us-ascii?Q?FiNEBY4dcSf0KAiH6f7otqbOMEYtQYCWWCc9+xI?=
+ =?us-ascii?Q?wGyLndQOztuESnjSLQVdZvZKhUxVWp4ntv69b4a?=
+ =?us-ascii?Q?uVppRJYhmPnog2g2HAOQQ=3D=3D?=
+To: intel-gvt-dev@lists.freedesktop.org
+X-Entity-ID: pOj5zn8AgsUKCeyQbrpV5A==
+Content-Type: multipart/alternative;
+ boundary="b1_6be895a787669f75b7e13899bffe094a"
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -76,30 +60,69 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-There is a spelling mistake in a gvt_vgpu_err error message. Fix it.
+This is a multi-part message in MIME format.
 
-Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
----
- drivers/gpu/drm/i915/gvt/handlers.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--b1_6be895a787669f75b7e13899bffe094a
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
 
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index 520a7e1942f3..a01e3a893e24 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -914,7 +914,7 @@ static int update_fdi_rx_iir_status(struct intel_vgpu *vgpu,
- 	else if (FDI_RX_IMR_TO_PIPE(offset) != INVALID_INDEX)
- 		index = FDI_RX_IMR_TO_PIPE(offset);
- 	else {
--		gvt_vgpu_err("Unsupport registers %x\n", offset);
-+		gvt_vgpu_err("Unsupported registers %x\n", offset);
- 		return -EINVAL;
- 	}
- 
--- 
-2.35.1
+Review your account activity
+
+
+
+On march 15, 2022 at 22:15(UTC) a file bas been uploaded
+
+in your repository from "api.github.com".
+
+On an unknown device please click on the link below to check the activity.
+
+"http://url9810.tokocrypto.com/ls/click?upn=aLmEghmoxRJP-2F680gaYmGuALOd-2F7Hamb8NmuZmlKE-2Fty2OPsr5wg9ZIlu-2BKvUD4DXYLg-2Fi1AC0ZvUybZlEGKKo-2BsJDNfxgK4OX3dQi94zwsQm5Yl1pAweucFtGoLcN7YdwZpFLQAnCwTfsaQKKQIfw-3D-3DIc6p_mPBfdHdrbVENkhAsKCSHKEvklQcW-2FOAucTq3lqwsUj3fE5xFoYSYyNI3hLrf6jYjEm0Z8u1ITH85LIb7wt-2Fos-2FnASy5zqdpiZF1w0p1kggxSs5Z89p0kj13OG7F0uryG6gi8BLWVSFB9xakSWMchfpo1AsQLqn7q5vqsSd-2BelNPIrFN6SU5s1a-2F3RA9Q-2BziGnEnHloBL0jqpRm6B526Qc0MmiKc63E20x830qeM4X-2Bg-3D
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+--b1_6be895a787669f75b7e13899bffe094a
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!doctype html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h3>Review your account activity</h3>
+
+<p></p>
+
+<p>On march 15, 2022 at 22:15(UTC) a file bas been uploaded</p>
+
+<p>in&nbsp;your repository from&nbsp;&quot;api.github.com&quot;.</p>
+
+<p><span class="Y2IQFc" lang="en">On&nbsp;an unknown device please&nbsp;click on the link below to check the activity.</span></p>
+
+<p style="text-align: center;">&quot;<a href="http://url9810.tokocrypto.com/ls/click?upn=aLmEghmoxRJP-2F680gaYmGnaCKiHYPtgaMPpLS3eteh9DEzN3TiDW2-2FozNNXOXsUAUgBxEHXvhuQ0qWJ2-2Ferhe-2FwK3oxFdoh0mNIBhBxb5nkq3ajArS-2F4v2uxZBfX7oiwrVIf_mPBfdHdrbVENkhAsKCSHKEvklQcW-2FOAucTq3lqwsUj3fE5xFoYSYyNI3hLrf6jYjEm0Z8u1ITH85LIb7wt-2Fos4owyVVhYuol7WFvXJEhVAsD-2FaRHhSxzDMJqBawZrOlxGVhjIpU2XIdok0GSXDmxSWJbKn62MJoYfPLEEt-2FEw-2F-2Fo9Z30-2FzlokHaTgrD6JWWFf3yipYjidvWoyBUo1wUU0QqOBbDON-2FCJ-2FIv71H9u7Fs-3D">https://github.com/settings/devices/</a>&quot;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<img src="http://url9810.tokocrypto.com/wf/open?upn=ec9KGMvd07MEkKq6og6XsZh-2BADXfFtrbLnpp89uy9K8iyIskL4pv8LbHTyiPxF3JhxpbWJdRTMepWHSmj3QHHn7ubvs7VYGRnKyBawBENl1qihOmb6RcTQMSuyqO0wCLLnnHmrXm2twUfSBT7gGCC5dEr898ycZ7jw7SmXl5MsimbpRZteO6jaD4lcqCWfsEc6dudM3p15pX2KkrhGtotYH5Cp7cIbgz65cJ6ywXeSWNrlm8rVB0n-2Ft2H7ihKodW" alt="" width="1" height="1" border="0" style="height:1px !important;width:1px !important;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;"/></body>
+</html>
+
+
+
+--b1_6be895a787669f75b7e13899bffe094a--
 
