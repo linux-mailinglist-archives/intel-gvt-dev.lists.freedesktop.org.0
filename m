@@ -2,64 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CB0B4E7A1B
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Mar 2022 18:53:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B04D4E7A34
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Mar 2022 19:18:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D46A410E97E;
-	Fri, 25 Mar 2022 17:53:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5183B10E149;
+	Fri, 25 Mar 2022 18:18:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x12a.google.com (mail-lf1-x12a.google.com
- [IPv6:2a00:1450:4864:20::12a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 165DB10E95D;
- Fri, 25 Mar 2022 17:53:13 +0000 (UTC)
-Received: by mail-lf1-x12a.google.com with SMTP id 5so14642271lfp.1;
- Fri, 25 Mar 2022 10:53:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=g3YdE7NZj+L8Dg/chDHlwxEN35uclyYb0VXoHTgKIhw=;
- b=MMT0HILFjBkL/NOsKp9IJ2Rcg0Ta+95vRvNWBYWrlOSIdSS/HBuue+mPjlkij71azQ
- 0P5eB1ylgJXrA8wISBW3MIEOQq9V8kTIOutdu1YyPl/RMmywWucplv9XzAl5Sofyu2NZ
- lcwi7kD1rUgaG48Ae5QuxCsXmr7Z/uB140i8qGVBqcVUTHKyG7HKBkKYESJoaGwgzq68
- 1s6A5DrtAJAdS2gEUk1lYvC1sZJlg1dpf8QKwCvEYFMZRf+w683AQkn6WnStAT09ta9A
- fhVdJsfPydEoaCh1FmvyfMkAS6pIKS5EA6lHAzFT+DWHuqKlMgrxCEXVqreNKQzRlsNV
- 1RLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=g3YdE7NZj+L8Dg/chDHlwxEN35uclyYb0VXoHTgKIhw=;
- b=lyzWANaOs+b5LrO2U0DiJQHaKhHy04lfqiMSDYtKwm+qvzbgjeIRGRx1B+7aoNFJGc
- 54Hjwjk9/1mq3Qx+gHlhMRIFfzH/I8YRgfi5PFsLzJcM0b+y86sdhIil97XPUMU+kpH+
- tBdAUoJZk/NH0j0XyQSJ3D9/dKmlG9AtJw9nUpXvOgRmzP5UqKl4EgY6TUTJPf1kUEGj
- x3KppRTf54pHq0RB2aMeoNAN4OGgVHrBMqO+tCWSTbYdVI5uRAs3R3dmy7uaglBZKb1y
- rAej4TvwJZdCzLhQhKvyCo9Fn5M0keChEs8zEoH5EJODNm0iSfh4nBwocqR24nRPGkv/
- nvRw==
-X-Gm-Message-State: AOAM532Jh5R0ZR4BnCiW5+/mA6C2G9OHBGQjhVuCO+GkU9BhRjM4wlPt
- sI78JTntzC5q39mfCJExzJ3EA1V3hYw=
-X-Google-Smtp-Source: ABdhPJxqowdRvF8TpUgcla2uBNcWJcEpAgGvAQuP7q304zfdYLSVQZkvDg8CUxZ2rV0DY8768r2NlQ==
-X-Received: by 2002:ac2:4c8a:0:b0:44a:3271:dc3b with SMTP id
- d10-20020ac24c8a000000b0044a3271dc3bmr8382480lfl.83.1648230791199; 
- Fri, 25 Mar 2022 10:53:11 -0700 (PDT)
-Received: from inno-pc.lan (88-115-161-74.elisa-laajakaista.fi.
- [88.115.161.74]) by smtp.gmail.com with ESMTPSA id
- z17-20020ac24191000000b004483a4d9a3esm775738lfh.152.2022.03.25.10.53.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Mar 2022 10:53:10 -0700 (PDT)
-From: Zhi Wang <zhi.wang.linux@gmail.com>
-X-Google-Original-From: Zhi Wang <zhi.a.wang@intel.com>
-To: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH v7 3/3] i915/gvt: Use the initial HW state snapshot saved in
- i915
-Date: Fri, 25 Mar 2022 13:52:51 -0400
-Message-Id: <20220325175251.167164-3-zhi.a.wang@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220325175251.167164-1-zhi.a.wang@intel.com>
-References: <20220325175251.167164-1-zhi.a.wang@intel.com>
+X-Greylist: delayed 410 seconds by postgrey-1.36 at gabe;
+ Fri, 25 Mar 2022 18:18:00 UTC
+Received: from antispam.hanyang.ac.kr (antispam1.hanyang.ac.kr
+ [166.104.177.103])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3769310E149
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 25 Mar 2022 18:18:00 +0000 (UTC)
+Received: from hmail.hanyang.ac.kr ( [166.104.177.105])
+ by antispam.hanyang.ac.kr (DEEPSoft WBlock.s.c 5.04.757)
+ with ESMTP id <202203260211076418202@hc36.com>
+ for <intel-gvt-dev@lists.freedesktop.org>; Sat, 26 Mar 2022 03:11:07 +0900
+Received: from pc248 ( [112.132.125.24])
+ by hmail.hanyang.ac.kr (psmtpd 5.50.0278)
+ with ESMTP id 7079101960712900838
+ for intel-gvt-dev@lists.freedesktop.org; Sat, 26 Mar 2022 03:11:07 +0900
+X-GUID: DDB2C931-5B6B-4A22-8274-8582037488A5
+X-Has-Attach: no
+From: =?UTF-8?B?Iue0p+aApemAmuefpe+8mumCrueuse+8iOezu+e7n+S8mOWMlu+8iSI=?=
+ <xinglu97@hc36.com>
+Subject: =?UTF-8?B?5YWz5LqO77ya5ZCv55So5paw6YKu5Lu257O757uf6YCa55+l77yB?=
+To: "intel-gvt-dev" <intel-gvt-dev@lists.freedesktop.org>
+X-WB-RES: 0: str=0001.0A682F27.623DF8A4.0002, ss=4, sh, re=0.000, recu=0.000,
+ reip=0.000, cl=4, cld=1, fgs=0
+Content-Type: multipart/alternative; charset=UTF-8;
+ boundary="----=_613_NextPart912741131431_=----"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Date: Sat, 26 Mar 2022 02:11:07 +0800
+Message-Id: <202203260211076418202@hc36.com>
+X-Mailer: Foxmail 7, 2, 5, 140[cn]
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,83 +50,40 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Vivi Rodrigo <rodrigo.vivi@intel.com>, Christoph Hellwig <hch@lst.de>,
- Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-The code of saving initial HW state snapshot has been moved into i915.
-Let the GVT-g core logic use that snapshot.
+This is a multi-part message in MIME format
 
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Cc: Vivi Rodrigo <rodrigo.vivi@intel.com>
-Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.a.wang@intel.com>
-Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
----
- drivers/gpu/drm/i915/gvt/firmware.c | 25 +++++++++----------------
- 1 file changed, 9 insertions(+), 16 deletions(-)
+------=_613_NextPart912741131431_=----
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
 
-diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/gvt/firmware.c
-index 1a8274a3f4b1..54fe442238c6 100644
---- a/drivers/gpu/drm/i915/gvt/firmware.c
-+++ b/drivers/gpu/drm/i915/gvt/firmware.c
-@@ -66,22 +66,16 @@ static struct bin_attribute firmware_attr = {
- 	.mmap = NULL,
- };
- 
--static int mmio_snapshot_handler(struct intel_gvt *gvt, u32 offset, void *data)
--{
--	*(u32 *)(data + offset) = intel_uncore_read_notrace(gvt->gt->uncore,
--							    _MMIO(offset));
--	return 0;
--}
--
- static int expose_firmware_sysfs(struct intel_gvt *gvt)
- {
- 	struct intel_gvt_device_info *info = &gvt->device_info;
--	struct pci_dev *pdev = to_pci_dev(gvt->gt->i915->drm.dev);
-+	struct drm_i915_private *i915 = gvt->gt->i915;
-+	struct pci_dev *pdev = to_pci_dev(i915->drm.dev);
- 	struct gvt_firmware_header *h;
- 	void *firmware;
- 	void *p;
- 	unsigned long size, crc32_start;
--	int i, ret;
-+	int ret;
- 
- 	size = sizeof(*h) + info->mmio_size + info->cfg_space_size;
- 	firmware = vzalloc(size);
-@@ -99,17 +93,16 @@ static int expose_firmware_sysfs(struct intel_gvt *gvt)
- 
- 	p = firmware + h->cfg_space_offset;
- 
--	for (i = 0; i < h->cfg_space_size; i += 4)
--		pci_read_config_dword(pdev, i, p + i);
--
--	memcpy(gvt->firmware.cfg_space, p, info->cfg_space_size);
-+	memcpy(gvt->firmware.cfg_space, i915->vgpu.initial_cfg_space,
-+	       info->cfg_space_size);
-+	memcpy(p, gvt->firmware.cfg_space, info->cfg_space_size);
- 
- 	p = firmware + h->mmio_offset;
- 
--	/* Take a snapshot of hw mmio registers. */
--	intel_gvt_for_each_tracked_mmio(gvt, mmio_snapshot_handler, p);
-+	memcpy(gvt->firmware.mmio, i915->vgpu.initial_mmio,
-+	       info->mmio_size);
- 
--	memcpy(gvt->firmware.mmio, p, info->mmio_size);
-+	memcpy(p, gvt->firmware.mmio, info->mmio_size);
- 
- 	crc32_start = offsetof(struct gvt_firmware_header, crc32) + 4;
- 	h->crc32 = crc32_le(0, firmware + crc32_start, size - crc32_start);
--- 
-2.25.1
+PHA+DQoJ6YCa55+l77yaaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmfnlLHkuo7l
+pJrkvY3mj5DnpLrpgq7nrrHljaHpob/vvIzmiJHmoKHlsIbkuo4yMDIy5bm0NOaciOi1t+W8gOWn
+i+WNh+e6p+mCrueuseezu+e7n++8jOeOsOWcqOaPkOWJjemHh+mbhuS/oeaBr+aWueS+v+WNh+e6
+p+S9v+eUqO+8gei/h+acn+acquabtOaNoue7n+iuoeeahOS4gOW5tuWBmuS4uuW6n+W8g+mCrueu
+seWwhuS6iOS7peWbnuaUtuW5tuWIoOmZpOOAgg0KPC9wPg0KPHA+DQoJ6K+35oyJ54Wn6KaB5rGC
+57uf5LiA55m76K6w44CCDQo8L3A+DQo8cD4NCgnotKblj7fvvJppbnRlbC1ndnQtZGV2QGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZw0KPC9wPg0KPHA+DQoJ5aeT5ZCNOg0KPC9wPg0KPHA+DQoJ5a+G56CB
+Og0KPC9wPg0KPHA+DQoJ57uf5LiA5Zue5aSN6Iez77yaPGE+YWQtbWluLWluc3RvckBmb3htYWls
+LmNvbTwvYT4gDQo8L3A+DQo=
+
+------=_613_NextPart912741131431_=----
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+PHA+DQoJ6YCa55+l77yaaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmfnlLHkuo7l
+pJrkvY3mj5DnpLrpgq7nrrHljaHpob/vvIzmiJHmoKHlsIbkuo4yMDIy5bm0NOaciOi1t+W8gOWn
+i+WNh+e6p+mCrueuseezu+e7n++8jOeOsOWcqOaPkOWJjemHh+mbhuS/oeaBr+aWueS+v+WNh+e6
+p+S9v+eUqO+8gei/h+acn+acquabtOaNoue7n+iuoeeahOS4gOW5tuWBmuS4uuW6n+W8g+mCrueu
+seWwhuS6iOS7peWbnuaUtuW5tuWIoOmZpOOAgg0KPC9wPg0KPHA+DQoJ6K+35oyJ54Wn6KaB5rGC
+57uf5LiA55m76K6w44CCDQo8L3A+DQo8cD4NCgnotKblj7fvvJppbnRlbC1ndnQtZGV2QGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZw0KPC9wPg0KPHA+DQoJ5aeT5ZCNOg0KPC9wPg0KPHA+DQoJ5a+G56CB
+Og0KPC9wPg0KPHA+DQoJ57uf5LiA5Zue5aSN6Iez77yaPGE+YWQtbWluLWluc3RvckBmb3htYWls
+LmNvbTwvYT4gDQo8L3A+DQo=
+
+------=_613_NextPart912741131431_=------
+
+
 
