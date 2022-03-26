@@ -1,43 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B04D4E7A34
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Mar 2022 19:18:04 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 819004E7E1F
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 26 Mar 2022 01:27:44 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5183B10E149;
-	Fri, 25 Mar 2022 18:18:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2A57810E70D;
+	Sat, 26 Mar 2022 00:27:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 410 seconds by postgrey-1.36 at gabe;
- Fri, 25 Mar 2022 18:18:00 UTC
-Received: from antispam.hanyang.ac.kr (antispam1.hanyang.ac.kr
- [166.104.177.103])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3769310E149
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 25 Mar 2022 18:18:00 +0000 (UTC)
-Received: from hmail.hanyang.ac.kr ( [166.104.177.105])
- by antispam.hanyang.ac.kr (DEEPSoft WBlock.s.c 5.04.757)
- with ESMTP id <202203260211076418202@hc36.com>
- for <intel-gvt-dev@lists.freedesktop.org>; Sat, 26 Mar 2022 03:11:07 +0900
-Received: from pc248 ( [112.132.125.24])
- by hmail.hanyang.ac.kr (psmtpd 5.50.0278)
- with ESMTP id 7079101960712900838
- for intel-gvt-dev@lists.freedesktop.org; Sat, 26 Mar 2022 03:11:07 +0900
-X-GUID: DDB2C931-5B6B-4A22-8274-8582037488A5
-X-Has-Attach: no
-From: =?UTF-8?B?Iue0p+aApemAmuefpe+8mumCrueuse+8iOezu+e7n+S8mOWMlu+8iSI=?=
- <xinglu97@hc36.com>
-Subject: =?UTF-8?B?5YWz5LqO77ya5ZCv55So5paw6YKu5Lu257O757uf6YCa55+l77yB?=
-To: "intel-gvt-dev" <intel-gvt-dev@lists.freedesktop.org>
-X-WB-RES: 0: str=0001.0A682F27.623DF8A4.0002, ss=4, sh, re=0.000, recu=0.000,
- reip=0.000, cl=4, cld=1, fgs=0
-Content-Type: multipart/alternative; charset=UTF-8;
- boundary="----=_613_NextPart912741131431_=----"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 591BA10E70D;
+ Sat, 26 Mar 2022 00:27:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1648254461; x=1679790461;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=T9WKzF5uUODZK1coRF8zoA8Nl6WzVRin2ZfvLu8VrnM=;
+ b=a8xHM0/5L3+HIZs70mrCDlRoYHXJwmWsi3D+potOeFfcYynveH/M1b3+
+ FkZcuDeyatNMZ5AdTeMhKbXQeme1UyIvpFRnEi9UaRfpfuuP2A1HQrPSu
+ /RJiRnkCWn8GfHHX+9e4LOQax6N/QyHzrOlTHsmI5xWXHElZc7oclCdxO
+ 2QOJvydZxU/F50ie1wfPARqSwMV/xqpEk9LOzmRTlrCSwXwPppOiXqJci
+ +73M6tzZhV4UZHrqqCqXhSPTup8FCwYritfUzRr05enAswSEfgfrdOqzo
+ /8jf9q9FJnqNl0YRaTK9YNnbP5vUpjECDElMr3EGKoT478rjMWgrnRCN1 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10297"; a="257571491"
+X-IronPort-AV: E=Sophos;i="5.90,211,1643702400"; d="scan'208";a="257571491"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Mar 2022 17:27:40 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,211,1643702400"; d="scan'208";a="584632109"
+Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 25 Mar 2022 17:27:38 -0700
+Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nXuHJ-000Mn3-E7; Sat, 26 Mar 2022 00:27:37 +0000
+Date: Sat, 26 Mar 2022 08:27:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org
+Subject: Re: [PATCH v7 1/3] i915/gvt: Separate the MMIO tracking table from
+ GVT-g
+Message-ID: <202203260844.V9HDSROY-lkp@intel.com>
+References: <20220325175251.167164-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-Date: Sat, 26 Mar 2022 02:11:07 +0800
-Message-Id: <202203260211076418202@hc36.com>
-X-Mailer: Foxmail 7, 2, 5, 140[cn]
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220325175251.167164-1-zhi.a.wang@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,40 +62,56 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Zhi Wang <zhi.a.wang@gmail.com>, kbuild-all@lists.01.org,
+ Christoph Hellwig <hch@lst.de>, Jason Gunthorpe <jgg@nvidia.com>,
+ Vivi Rodrigo <rodrigo.vivi@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format
+Hi Zhi,
 
-------=_613_NextPart912741131431_=----
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+I love your patch! Perhaps something to improve:
 
-PHA+DQoJ6YCa55+l77yaaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmfnlLHkuo7l
-pJrkvY3mj5DnpLrpgq7nrrHljaHpob/vvIzmiJHmoKHlsIbkuo4yMDIy5bm0NOaciOi1t+W8gOWn
-i+WNh+e6p+mCrueuseezu+e7n++8jOeOsOWcqOaPkOWJjemHh+mbhuS/oeaBr+aWueS+v+WNh+e6
-p+S9v+eUqO+8gei/h+acn+acquabtOaNoue7n+iuoeeahOS4gOW5tuWBmuS4uuW6n+W8g+mCrueu
-seWwhuS6iOS7peWbnuaUtuW5tuWIoOmZpOOAgg0KPC9wPg0KPHA+DQoJ6K+35oyJ54Wn6KaB5rGC
-57uf5LiA55m76K6w44CCDQo8L3A+DQo8cD4NCgnotKblj7fvvJppbnRlbC1ndnQtZGV2QGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZw0KPC9wPg0KPHA+DQoJ5aeT5ZCNOg0KPC9wPg0KPHA+DQoJ5a+G56CB
-Og0KPC9wPg0KPHA+DQoJ57uf5LiA5Zue5aSN6Iez77yaPGE+YWQtbWluLWluc3RvckBmb3htYWls
-LmNvbTwvYT4gDQo8L3A+DQo=
+[auto build test WARNING on drm-intel/for-linux-next]
+[also build test WARNING on drm-tip/drm-tip drm/drm-next next-20220325]
+[cannot apply to tegra-drm/drm/tegra/for-next airlied/drm-next v5.17]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-------=_613_NextPart912741131431_=----
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: base64
+url:    https://github.com/0day-ci/linux/commits/Zhi-Wang/i915-gvt-Separate-the-MMIO-tracking-table-from-GVT-g/20220326-015627
+base:   git://anongit.freedesktop.org/drm-intel for-linux-next
+config: x86_64-randconfig-a011 (https://download.01.org/0day-ci/archive/20220326/202203260844.V9HDSROY-lkp@intel.com/config)
+compiler: gcc-9 (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0
+reproduce (this is a W=1 build):
+        # https://github.com/0day-ci/linux/commit/8203f91121efdcc910bde0bc4fe5ea678bdaaa5b
+        git remote add linux-review https://github.com/0day-ci/linux
+        git fetch --no-tags linux-review Zhi-Wang/i915-gvt-Separate-the-MMIO-tracking-table-from-GVT-g/20220326-015627
+        git checkout 8203f91121efdcc910bde0bc4fe5ea678bdaaa5b
+        # save the config file to linux build tree
+        mkdir build_dir
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/drm/i915/
 
-PHA+DQoJ6YCa55+l77yaaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmfnlLHkuo7l
-pJrkvY3mj5DnpLrpgq7nrrHljaHpob/vvIzmiJHmoKHlsIbkuo4yMDIy5bm0NOaciOi1t+W8gOWn
-i+WNh+e6p+mCrueuseezu+e7n++8jOeOsOWcqOaPkOWJjemHh+mbhuS/oeaBr+aWueS+v+WNh+e6
-p+S9v+eUqO+8gei/h+acn+acquabtOaNoue7n+iuoeeahOS4gOW5tuWBmuS4uuW6n+W8g+mCrueu
-seWwhuS6iOS7peWbnuaUtuW5tuWIoOmZpOOAgg0KPC9wPg0KPHA+DQoJ6K+35oyJ54Wn6KaB5rGC
-57uf5LiA55m76K6w44CCDQo8L3A+DQo8cD4NCgnotKblj7fvvJppbnRlbC1ndnQtZGV2QGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZw0KPC9wPg0KPHA+DQoJ5aeT5ZCNOg0KPC9wPg0KPHA+DQoJ5a+G56CB
-Og0KPC9wPg0KPHA+DQoJ57uf5LiA5Zue5aSN6Iez77yaPGE+YWQtbWluLWluc3RvckBmb3htYWls
-LmNvbTwvYT4gDQo8L3A+DQo=
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-------=_613_NextPart912741131431_=------
+All warnings (new ones prefixed by >>):
+
+>> drivers/gpu/drm/i915/gvt/handlers.c:74:6: warning: no previous prototype for 'intel_gvt_match_device' [-Wmissing-prototypes]
+      74 | bool intel_gvt_match_device(struct intel_gvt *gvt,
+         |      ^~~~~~~~~~~~~~~~~~~~~~
 
 
+vim +/intel_gvt_match_device +74 drivers/gpu/drm/i915/gvt/handlers.c
 
+12d14cc43b34706 Zhi Wang 2016-08-30  73  
+12d14cc43b34706 Zhi Wang 2016-08-30 @74  bool intel_gvt_match_device(struct intel_gvt *gvt,
+12d14cc43b34706 Zhi Wang 2016-08-30  75  		unsigned long device)
+12d14cc43b34706 Zhi Wang 2016-08-30  76  {
+12d14cc43b34706 Zhi Wang 2016-08-30  77  	return intel_gvt_get_device_type(gvt) & device;
+12d14cc43b34706 Zhi Wang 2016-08-30  78  }
+12d14cc43b34706 Zhi Wang 2016-08-30  79  
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
