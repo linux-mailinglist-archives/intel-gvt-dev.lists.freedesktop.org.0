@@ -1,31 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B87CB4E8E60
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 28 Mar 2022 08:50:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCCFD4E8E62
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 28 Mar 2022 08:50:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6B6D189FED;
-	Mon, 28 Mar 2022 06:50:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 58E1F10E598;
+	Mon, 28 Mar 2022 06:50:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 98D7110E18D;
- Mon, 28 Mar 2022 06:50:30 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 350BF89FED;
+ Mon, 28 Mar 2022 06:50:52 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id E5B6168B05; Mon, 28 Mar 2022 08:50:27 +0200 (CEST)
-Date: Mon, 28 Mar 2022 08:50:27 +0200
+ id 54A5D68B05; Mon, 28 Mar 2022 08:50:49 +0200 (CEST)
+Date: Mon, 28 Mar 2022 08:50:49 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Zhi Wang <zhi.wang.linux@gmail.com>
-Subject: Re: [PATCH v7 2/3] i915/gvt: Save the initial HW state snapshot in
- i915
-Message-ID: <20220328065027.GB29798@lst.de>
+Subject: Re: [PATCH v7 3/3] i915/gvt: Use the initial HW state snapshot
+ saved in i915
+Message-ID: <20220328065049.GC29798@lst.de>
 References: <20220325175251.167164-1-zhi.a.wang@intel.com>
- <20220325175251.167164-2-zhi.a.wang@intel.com>
+ <20220325175251.167164-3-zhi.a.wang@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220325175251.167164-2-zhi.a.wang@intel.com>
+In-Reply-To: <20220325175251.167164-3-zhi.a.wang@intel.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
