@@ -1,118 +1,59 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FC494E9C53
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 28 Mar 2022 18:34:11 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED67A4E9F85
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 28 Mar 2022 21:07:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 41CF710E70E;
-	Mon, 28 Mar 2022 16:34:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E4BE10ED15;
+	Mon, 28 Mar 2022 19:07:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from IND01-BMX-obe.outbound.protection.outlook.com
- (mail-bmxind01on2044.outbound.protection.outlook.com [40.107.239.44])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BEFF710E70E
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 28 Mar 2022 16:34:08 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kbzNYiI1cKc3SZA79eCaf/RUljx3FKZa/75DLLjew1xcq0wwBfZveHrEoe0fes5IK1njlKglshUnGTNqKXdg9Y1BGXbQplCfqFY7eUKbeQRkcqZVLi0GQp7uv/WO/UBxSoSYpRF7Mn9Wh7wGd2tD180xkD4vIAhb1y0zqvjlTYJAzQWEwK/Kl6kHPIc3T0/w2gs0ftVjjnPLH8n0l7+1czuLJAX8WUfvI8PNC62uzn0iKqwYfplSLFmflM2+RuRelIitjbi0snp5sQl2bpzjSKu666xdunfIxBdR4+HZXJmmh0p2Va7u+0ahI7HoN5M+rujR+u1EY3SVW6+jw+AkRw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8RJzr1ogoXH4tOMTWOaKWerD1u7hEH8Buw31khLLVFA=;
- b=XByE2bs9tOVOsipfQdfRbHeWhzmzN98h1JjsVt+YICIWJ74igEjVhW+zVZxEvgG42sHInJmYzhNpqBW98uIivgXANz9yYyh975eAi6p51aFonmMjo6vJ72PmLyQzSF4fPwUd6zsMSBrwK1l/3ARh5wbmd8pwyoEb+3bCZ7vEuJS3U1HbeA0uhI8PNhRGx0BBFJoLaQakuxsvotvdQQXIfx4+YLVfmuvURFnYSjiU/yEsoua0c3oBbT0WJ16kcnAF2qjKxp0wqmjajAAmjNgmVVmywHRtCzV6j6YYvjHTcfIPN72QGEgHliGAA5qeTZhNlP7ay4y0NkQWFZBB6LVI/g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=geek-squadservices88.co; dmarc=pass action=none
- header.from=geek-squadservices88.co; dkim=pass
- header.d=geek-squadservices88.co; arc=none
-Received: from PN3PR01MB6457.INDPRD01.PROD.OUTLOOK.COM (2603:1096:c01:84::11)
- by PN3PR01MB7712.INDPRD01.PROD.OUTLOOK.COM (2603:1096:c01:cd::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5102.16; Mon, 28 Mar
- 2022 16:34:03 +0000
-Received: from PN3PR01MB6457.INDPRD01.PROD.OUTLOOK.COM
- ([fe80::6d70:d4f2:474e:5661]) by PN3PR01MB6457.INDPRD01.PROD.OUTLOOK.COM
- ([fe80::6d70:d4f2:474e:5661%5]) with mapi id 15.20.5102.022; Mon, 28 Mar 2022
- 16:34:03 +0000
-From: Service Updates <info@geek-squadservices88.co>
-To: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your Geeks Squad Service Plan is Renewed #GKS-28-9895576
-Thread-Topic: Your Geeks Squad Service Plan is Renewed #GKS-28-9895576
-Thread-Index: AQHYQsGi0CDNG2FJ9kS1oRCg5r2cbQ==
-Date: Mon, 28 Mar 2022 16:34:03 +0000
-Message-ID: <553d0764-8732-e20c-30ed-0a70b6184c3e@geek-squadservices88.co>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=geek-squadservices88.co;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 34be17ad-07b8-474e-38ae-08da10d8c538
-x-ms-traffictypediagnostic: PN3PR01MB7712:EE_
-x-microsoft-antispam-prvs: <PN3PR01MB7712B9DA215C7BD38DE666DE8B1D9@PN3PR01MB7712.INDPRD01.PROD.OUTLOOK.COM>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: By67Yz1a61awGCcsldRPEbFSCrJm9MoEOYTZfz6VClLYxZKSW4rTty6mvl9lfosdMY6X4Xc5cY9L2K+IyEK5qXNNqvdb0zk24K2IXJhzoQyDGA+pqydRg44lualedKbtkqIHvr76VkWopUN1dv7drOcYOgJoERwNa3iC0u4LMZIm2ars3ATW9Ki4OMeBgou5LBvAJuOV7p+ngNV/Af8Sdjcpg0RToiLfK+lJI3yHtpN2kf5OgwqUnpbV5D1439aR+UxnFyWo1H37AIsLa7gb//nIkX6iRTGns/VADhnzcw/K49sq2cLyyIN4tl0TXatZrZCWEmuVCXl1cB1WdGpFRrazIW/PsPKgBT/jZdJtJVUAhzRxos0S63QsELGNbMUNg3/1uAc6ng8YRhMbFpyoCtsleD+eKQC8QuOgKrHahfJEt0jIxotQrf2Pbi4Fz+SfUIYbA4RNpVrzDq6xQLypb1BdagCyp06GeKpzCanc8lCzqK9tauYimVNMRWHzDpiGb7qVqaMLUuHYlzR9+CancDn9z/dt4CF1P31oFpNW+MrR2K7ec7nP8Xi88PwzjphUUCW5ODsSZyd+uuDdnsQTPrRxDanWYewqM1vB6tXx8O6otQwBNgr7mIHCH3PwHolbZ3eThCJtghZ/jsxCRFevi8y02L2BqHfsHTUGKGJRfsISCi8PtgLuUeYGaoxlzLRoUw8f1T0v7WhzJp7hOsITqlIkDPVEd5Q9t6fO1Xjtsu0=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PN3PR01MB6457.INDPRD01.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(55236004)(71200400001)(31686004)(4744005)(8936002)(6916009)(316002)(186003)(76116006)(6486002)(6506007)(38100700002)(26005)(2616005)(66446008)(5660300002)(66556008)(31696002)(86362001)(2906002)(40140700001)(8676002)(38070700005)(66946007)(66476007)(6512007)(508600001)(91956017)(36756003)(64756008)(122000001)(83380400001)(45980500001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NnA4eWphL2pxL05rN1Z2SkpteVhjdUJCbnpiajE5ZnYzUldsajJCZWNBOE5v?=
- =?utf-8?B?RUhrTEZ3Y2VSQUI2SWREaXFEVnAxL21nMktHcGdVbHJTaldxSzFTOER2Z0FU?=
- =?utf-8?B?OGVMdThuNHpMTkNKNkl6NDhPVGY0a0xKcFZEZ254cGprWlBMcUZsRVpGQnBM?=
- =?utf-8?B?WkovY055VmMvdERsd0Y2T3dhOW9yOWNxaW1CZFVRSGhnMm1NelRWVGNqbkZl?=
- =?utf-8?B?bHliQ3M2L3lxeDJrM2U2eGVZTDREVWVWa09hQXZ0UGRqZ1FaTzVXUFRwaXkz?=
- =?utf-8?B?bmZxWlJrc2lzTGQ0ZjhrOFNsT3lZL0pZZ1ppMXp1b0t1RS8yNkhhZiswcEFa?=
- =?utf-8?B?Rk1qNmE5a1ExSzEzUlJEU0xWbUxxZjRFRE5MSCtqTlRmK3Ewb1FKclRkSjNu?=
- =?utf-8?B?eGJLTitLNVlKREt3K1JDR3lHa3d6UXpUUWVvNVFEVjEyQ3V1czQ0RG92dHFG?=
- =?utf-8?B?WTJnYXJUcXU2d0x5TUI0Y1lsQTdzZHl6bFZQOUZxUTNMazkxaEJ0VVRXYzFK?=
- =?utf-8?B?NDBCUDdQYWFIdE1LdktzTmtkL3lFNlI2V1IxdEl5NkxsL095bXlVNUhpSlgz?=
- =?utf-8?B?bWQrTk9yaHV1OVpLT0s0OGtkQmVMTFFGSFlYYTFFTmd4MHJHS2g1K2lRa2pv?=
- =?utf-8?B?ZHozcitNVEhvZFROQ2RQZ0Ixd3JLc1laYzZHY1UyVi84djBCR0tGVmM0ZFE1?=
- =?utf-8?B?aU9YRlR5SCtkbWNhclQ3bWlRRHRMNEdYSEpHN1A0bDBXbi9WRkhSYjQ2M3dI?=
- =?utf-8?B?a0FxYW45NWVNQ2JrdFhrZThKOThJN1k1U3hwU2xORWFZcG9MQVZNS2xMQTBy?=
- =?utf-8?B?V1ltWmpoVHg1Yy9TK093T1d4WjljYStQNy8rQ2dMRGNaaXFoMkg5VU1jbUYr?=
- =?utf-8?B?SXkwQXlhZGRCUjAvRXNPOW9BT3J6MmtsZms1SVV6cCtnOC84RkxBL204a0Qy?=
- =?utf-8?B?Q2xyV2R5WG43aURsMXJLMXFFbWFkS1l1SDl5dzF5UkxCTVkyUkZJTlY0OEd0?=
- =?utf-8?B?czZRVWI0MllzVjJEMlUrbXV0NTZXcGQ4MG5MZnR2RkZ4SCs1QmltelJ5Mm1Y?=
- =?utf-8?B?eFZCZmdWZnljVFB5T0FhNWxLRDQveTVscUlpRkZIVUJmZStSYUVoQlhJUFla?=
- =?utf-8?B?Y3pRb3pqak5UVUZqN01nZFBGRHFxaGJCS2dGcGFSVURCdDd1R1B4djJpclhr?=
- =?utf-8?B?cUpxdy8wV2ZVYzBYOE1mNW9uS3J2RHRQRUxGNDduNkh4TGx6OHcrYmRSRjcx?=
- =?utf-8?B?OVFNNGNyZ2Q5eVY3aDZIWC9FZlBBS2tROFh1UVgyRXovZ2JrRzlSYUpoYk81?=
- =?utf-8?B?VFVJQ2E4VGdhUmp5MmphQjY1VDk5cWE2ZzFuc2NSSlhYT2NMaDY4LzBWVTVy?=
- =?utf-8?B?SlFRWW1FaklTMzVxMVZxd0NPRnhYYlhmYVlHZDdpL1dVWkczREk0K3ZvQ3l2?=
- =?utf-8?B?UGhTTENOTlI3V1VwbGcwTjY0T2xrc3R0NTRpRWdlWkRqSmwxL0t1djR0V2cx?=
- =?utf-8?B?VFdIc1Z5d0trZnBPbmlhSTJ6M0M2Yzc5MFVGaFAxV0wyelNXb3NKa1R2Z3dq?=
- =?utf-8?B?WmxGbzV5YWEzcFBmWUdaV3VxVFQ2QUlBYnpzTFg1Uk92TlhydGsxY3FTVm5v?=
- =?utf-8?B?ejJwa2NqOC91RWpWWm9HbDhwVVBTa3Z2dEplVmRDRm1QZU5rTHpIVkgydWlk?=
- =?utf-8?B?T05aaGFvYlRDc3U0c0VlMVJ5YXhlN3AvSXhRZTFtTXNNdUZhVXM2WmpDNW1t?=
- =?utf-8?B?ZE8wMWl6Ry9ybzMvaDcyZXVwcHh0K0JqaDhFU0phbGxuRWJiTkJNZ2hrT1RO?=
- =?utf-8?B?M05ONUhsaytpZVV0c3hhbG5yam5TanhmMExqY0RBV210S2lrMTBuM250UzY0?=
- =?utf-8?B?NnNJL2VDTzQvZFN5ZUlYQ3NYc25nOENhbmk2cTNPOTh4NCt5R2ZCQm5NdWVY?=
- =?utf-8?B?L28wVXU0eW4wbmJEQVdsMll2eWdwb1BSSER4Qmx2Vjl2TU13a0gvajNscjNZ?=
- =?utf-8?B?Ulp3VHdsTXh6akRiRGRIcGdaeGhQOUZEMDc3K0VvbWNtc3dGQXd5QXFqMWxt?=
- =?utf-8?B?R1BXd2hDeGdtVmE2ZVdNYTR1MHlrc3MyczVSZU9IajUrOU9vT2h1ZHJuVWtv?=
- =?utf-8?B?MUFtT2Q4d3dHWWJjcDZkOFNwaEFsTms3SVhuM3F6QlpPZm5YOUFRamZZb2I3?=
- =?utf-8?B?b0FFbkFUUTNMRHdKVENoTVdrYUFQMjJsaktuZHlCT1NmQkpNSzVCTnhYQmJG?=
- =?utf-8?B?U0Q3TWNKRjRvUWRDQThzeDlEeVRHWjMvQjZuNXVaeDdVNlplY3hzMm01WkRX?=
- =?utf-8?B?QjAvemUwRGllSHFQWXJ5UWdvSWVTVlNTR2JrNEpyRm01d0R1NnFuRkI1WHF0?=
- =?utf-8?Q?/m8djQItg2gur01w=3D?=
-Content-Type: multipart/alternative;
- boundary="_000_553d07648732e20c30ed0a70b6184c3egeeksquadservices88co_"
+Received: from mail-ua1-x92e.google.com (mail-ua1-x92e.google.com
+ [IPv6:2607:f8b0:4864:20::92e])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B0E3010E966;
+ Mon, 28 Mar 2022 19:07:55 +0000 (UTC)
+Received: by mail-ua1-x92e.google.com with SMTP id j20so362923uan.1;
+ Mon, 28 Mar 2022 12:07:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CCKplzUskEQ9PwRTyuFUMJADGXMGT+3wuQ0LIFqQJTA=;
+ b=iVLFo3/Wbarqi1Gy59ZX3ni8OxRbwnW/akTYc6RfW1m8CgbjSSyNDMtRp1RVi7Tejz
+ b8YQxZyK2jg/JAPh9AsJ0u4zLhoff1XDlf7NrWZEhJegte0LIdZ4IU6PC0WYwSjaHDjG
+ RFgv7u7HdAtOW66kFkWDiyk0LYdF9Ihm9DpHuX+mloqKl0secFILqUdD6yRMndKNIzGN
+ EFEJJBx6HsqPkivC5Zr9d/3RQqo6iWX2oenhxT7GQSq58SPUyBmNv6jwsg86dQzXeyE3
+ A3TdXe+MnA71RRcWLkbZ3wp8uGAphDzGldReYbNgQVUH49wE9PBm9VkLo0ky5A2w1yNh
+ 1p9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CCKplzUskEQ9PwRTyuFUMJADGXMGT+3wuQ0LIFqQJTA=;
+ b=PxW0umZHFyC2tNQLS7vYMYywuhPlOipIPm0bI5ezF/naYnezBP4IYk8wXiM8Uk/ZWi
+ ec5V3ZYzgFjOXXozq3dS/U1PS/jS4ofJRZvS3XuN5lLDwH74AV4mSTjOd1jbA3w3XFz6
+ Wsh0FfqdZdKpniygPAisr2qVztyMSpBqfqwpRwf2Ja+E9CX4eX5QLn2CjfFWkq6kpMpt
+ 7OZkdO0bPc6j7hagp2oswBrhBBBTyJMAyzZQJ/n8UT9Qg9f8ux6f0Sv3jKcq31VVzyc+
+ jNywgomYTzC554wVKaML5wpnyCePcAtYXqzDhdvPijr6vE8fAuNbR2BpC8pJasbVoPqr
+ I9aA==
+X-Gm-Message-State: AOAM533ByzerHIBaVh5ncdvgaOTYpwdruIDxvvYoDuSgvITA/3YuDc06
+ XRjoUiLYw44txbbAMzxBnS6sSe/L26Zzb+qptS0=
+X-Google-Smtp-Source: ABdhPJyeB+4PzruoBESQc2VKSlA60X+ybn+mXU9Z41UctfcgMdS1JkVl9uLoW0REsYsj4gV+ulwXOYj02EGWedpRbnw=
+X-Received: by 2002:ab0:4ac1:0:b0:351:ed7d:e65c with SMTP id
+ t1-20020ab04ac1000000b00351ed7de65cmr12559304uae.36.1648494474130; Mon, 28
+ Mar 2022 12:07:54 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: geek-squadservices88.co
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PN3PR01MB6457.INDPRD01.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-Network-Message-Id: 34be17ad-07b8-474e-38ae-08da10d8c538
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Mar 2022 16:34:03.3498 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b18f3b48-57c1-483e-ad74-cc5f5939799f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 97kexM2VlEGzias+vLO08nQ5otFpVR4fvmBFUnfF0jaYkHJ0Dwq1wPSbVnSeOw3d+uN1LWu0yILyUgl56e7M7NO9BCme0XSUBqkcmV/DQWM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PN3PR01MB7712
+References: <20220311044756.425777-1-jim.cromie@gmail.com>
+ <20220311044756.425777-3-jim.cromie@gmail.com>
+ <823e51e6-2af4-7854-9428-697a2af12488@akamai.com>
+ <CAJfuBxxVti_pa1YPmas=Ub28yWUFFGeR13wxveLvPCYS61NxuA@mail.gmail.com>
+ <0d00c529-3bac-f09f-e07c-584194251a06@akamai.com>
+In-Reply-To: <0d00c529-3bac-f09f-e07c-584194251a06@akamai.com>
+From: jim.cromie@gmail.com
+Date: Mon, 28 Mar 2022 13:07:27 -0600
+Message-ID: <CAJfuBxwxA-9EwBaEow2UTBXD5-iER03+f5=D1zCUjTUut_bQaw@mail.gmail.com>
+Subject: Re: [PATCH 2/5] dyndbg: add class_id field and query support
+To: Jason Baron <jbaron@akamai.com>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,202 +66,178 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ LKML <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, robdclark@gmail.com,
+ Sean Paul <seanpaul@chromium.org>,
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, Joe Perches <joe@perches.com>,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---_000_553d07648732e20c30ed0a70b6184c3egeeksquadservices88co_
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+On Mon, Mar 14, 2022 at 3:30 PM Jason Baron <jbaron@akamai.com> wrote:
+>
+>
+>
+> On 3/11/22 20:06, jim.cromie@gmail.com wrote:
+> > On Fri, Mar 11, 2022 at 12:06 PM Jason Baron <jbaron@akamai.com> wrote:
+> >>
+> >>
+> >>
+> >> On 3/10/22 23:47, Jim Cromie wrote:
+> >>>
+> >>> With the patch, one can enable current/unclassed callsites by:
+> >>>
+> >>>   #> echo drm class 15 +p > /proc/dynamic_debug/control
+> >>>
+> >>
+> >> To me, this is hard to read, what the heck is '15'? I have to go look it
+> >> up in the control file and it's not descriptive. I think that using
+> >> classes/categories makes sense but I'm wondering if it can be a bit more
+> >> user friendly? Perhaps, we can pass an array of strings that is indexed
+> >> by the class id to each pr_debug() site that wants to use class. So
+> >> something like:
 
-DQpTZXJ2aWNlcyBSZW5ld2VkDQoNCg0KRGVhciBVc2VyLA0KDQpDb25ncmF0dWxhdGlvbnMhIFlv
-dXIgR2Vla3MgU3F1YWQgU2VjdXJlIDM2MCBQcmVtaXVtIC0gQW5udWFsICgzIERldmljZXMpIFBy
-b3RlY3Rpb24gUGxhbiBpcyBub3cgcmVuZXdlZC4gUGxlYXNlIGZpbmQgYmVsb3cgaW1wb3J0YW50
-IGRldGFpbHMgb2YgdGhlIHBsYW4uIEtpbmRseSBnbyB0aHJvdWdoIGl0IGNhcmVmdWxseS4NCg0K
-U2VydmljZSBjb250cmFjdCBkZXRhaWxzDQoNCg0KDQpTZXJ2aWNlIGNvbnRyYWN0IG51bWJlciAg
-ICAgICAgIDoNCkdLUy0yOC05ODk1NTc2DQoNClJlZ2lzdGVyZWQgZW1haWw6DQppbnRlbC1ndnQt
-ZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZzxtYWlsdG86aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmc+DQoNClBsYW4gbmFtZToNCkdlZWtzIFNxdWFkIFNlY3VyZSAzNjAgUHJlbWl1
-bSAtIEFubnVhbCAoMyBEZXZpY2VzKQ0KDQpQbGFuIHJlbmV3YWwgZGF0ZToNCjI4IE1hciAyMDIy
-DQoNClBsYW4gcmVuZXdhbCBwcmljZToNCiQgMzQ5Ljk5DQoNCg0KQ292ZXJhZ2UgZGV0YWlscw0K
-DQpFeHRlbmRlZCBXYXJyYW50eToNClBsYW4gU3RhcnRzIDoNCjI4IE1hciAyMDIyDQoNClBsYW4g
-RW5kcyA6DQoyNyBNYXIgMjAyMw0KDQoNClByZW1pdW0gUGhvbmUgU3VwcG9ydA0KOg0KUGxhbiBT
-dGFydHMgOg0KMjggTWFyIDIwMjINCg0KUGxhbiBFbmRzIDoNCjI3IE1hciAyMDIzDQoNCg0KRGFt
-YWdlIFByb3RlY3Rpb24NCjoNClBsYW4gU3RhcnRzIDoNCjI4IE1hciAyMDIyDQoNClBsYW4gRW5k
-cyA6DQoyNyBNYXIgMjAyMw0KDQoNCg0KR2V0IFF1aWNrIFN1cHBvcnQgOiArMSAoODA1KSA1ODYt
-ODEwNSBNb25kYXkgdG8gRnJpZGF5IDA5LjAwQU0gdG8gMDcuMDBQTQ0KDQpGb3IgbW9yZSBkZXRh
-aWxzIGFib3V0IHRoZSBwbGFuLCBraW5kbHkgcmVmZXIgdG8gdGhlIFRlcm1zICYgY29uZGl0aW9u
-cy4gRm9yIHF1ZXJpZXMsIGZlZWwgZnJlZSB0byByZWFjaCB1cy4NCg0KQmVzdCBSZWdhcmRzLA0K
-R2Vla3MgU3F1YWQNCg0KDQpUZXJtcyAmIENvbmRpdGlvbnMNCg==
+hi Jason,
+Im now in basically full agreement with you
 
---_000_553d07648732e20c30ed0a70b6184c3egeeksquadservices88co_
-Content-Type: text/html; charset="utf-8"
-Content-ID: <BD69C0E2FEB7164591FFDF467542D1DA@INDPRD01.PROD.OUTLOOK.COM>
-Content-Transfer-Encoding: base64
+1.   .class_id  is a "global" space, in that all callsites have one.
+2.    0-15 is an exceedingly small range for a global space
 
-PGh0bWw+DQo8aGVhZD4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0i
-dGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjwvaGVhZD4NCjxib2R5Pg0KPHA+PC9wPg0KPHA+
-PC9wPg0KPGRpdiBjbGFzcz0ibW96LXRleHQtaHRtbCIgbGFuZz0ieC11bmljb2RlIj4NCjxkaXYg
-Y2xhc3M9Im1vei10ZXh0LWh0bWwiIGxhbmc9IngtdW5pY29kZSI+DQo8ZGl2IGNsYXNzPSJtb3ot
-dGV4dC1odG1sIiBsYW5nPSJ4LXVuaWNvZGUiPjxicj4NCjxkaXYgY2xhc3M9Im1vei1mb3J3YXJk
-LWNvbnRhaW5lciI+DQo8ZGl2IGNsYXNzPSJtb3otdGV4dC1odG1sIiBsYW5nPSJ4LXVuaWNvZGUi
-Pg0KPGRpdiBjbGFzcz0ibW96LXRleHQtaHRtbCIgbGFuZz0ieC11bmljb2RlIj4NCjxkaXYgZGly
-PSJsdHIiPg0KPGRpdiBjbGFzcz0iZ21haWxfcXVvdGUiPg0KPGRpdiBkaXI9Imx0ciI+DQo8ZGl2
-IGNsYXNzPSJnbWFpbF9xdW90ZSI+DQo8ZGl2Pg0KPGRpdj4NCjxkaXYgc3R5bGU9ImNvbG9yOnJn
-YigwLDAsMCk7Zm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7
-Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtsZXR0ZXItc3BhY2lu
-Zzpub3JtYWw7dGV4dC1hbGlnbjpzdGFydDt0ZXh0LWluZGVudDowcHg7dGV4dC10cmFuc2Zvcm06
-bm9uZTt3aGl0ZS1zcGFjZTpub3JtYWw7d29yZC1zcGFjaW5nOjBweDt0ZXh0LWRlY29yYXRpb24t
-c3R5bGU6aW5pdGlhbDt0ZXh0LWRlY29yYXRpb24tY29sb3I6aW5pdGlhbDtmb250LWZhbWlseTom
-cXVvdDtTYW1zdW5nDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTaGFycA0KICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgU2FucyZxdW90OyxBcmlhbCxzYW5zLXNlcmlmO2ZvbnQt
-c2l6ZToxMnB4Ij4NCjxkaXYgc3R5bGU9IndpZHRoOjU1MHB4O21heC13aWR0aDo1NTBweDttYXJn
-aW46MHB4DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGF1dG87Ym9yZGVyOjFweCBz
-b2xpZCByZ2IoMjQzLDI0MywyNDMpIj4NCjxkaXYgc3R5bGU9InBhZGRpbmc6MjBweCI+DQo8ZGl2
-IHN0eWxlPSJ3aWR0aDo1MTBweDttaW4taGVpZ2h0OjIwcHg7cGFkZGluZy1sZWZ0OjE2cHgiPg0K
-PGRpdiBzdHlsZT0iZGlzcGxheTpibG9jaztmbG9hdDpsZWZ0IiBhbGlnbj0iY2VudGVyIj48Zm9u
-dCBzaXplPSIrMSI+PGI+U2VydmljZXMgUmVuZXdlZDwvYj48L2ZvbnQ+PGJyPg0KPC9kaXY+DQo8
-ZGl2IHN0eWxlPSJjbGVhcjpib3RoIj48YnI+DQo8L2Rpdj4NCjwvZGl2Pg0KPGRpdiBzdHlsZT0i
-cGFkZGluZzowcHggMjBweCI+DQo8ZGl2IHN0eWxlPSJtYXJnaW4tYm90dG9tOjIwcHgiPg0KPHAg
-c3R5bGU9ImZvbnQtc2l6ZToxMnB4O21hcmdpbi10b3A6MjMuNXB4O21hcmdpbi1ib3R0b206MHB4
-Ij5EZWFyIFVzZXIsPGJyPg0KPGJyPg0KPHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OkFyaWFsLEhl
-bHZldGljYSxzYW5zLXNlcmlmIj5Db25ncmF0dWxhdGlvbnMhIFlvdXIgR2Vla3MgU3F1YWQgU2Vj
-dXJlIDM2MCBQcmVtaXVtIC0gQW5udWFsICgzIERldmljZXMpIFByb3RlY3Rpb24gUGxhbiBpcyBu
-b3cmbmJzcDs8L3NwYW4+PHN0cm9uZyBzdHlsZT0iZm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNh
-LHNhbnMtc2VyaWYiPnJlbmV3ZWQ8L3N0cm9uZz48c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6QXJp
-YWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiPi4NCiBQbGVhc2UgZmluZCBiZWxvdyBpbXBvcnRhbnQg
-ZGV0YWlscyBvZiB0aGUgcGxhbi4gS2luZGx5IGdvIHRocm91Z2ggaXQgY2FyZWZ1bGx5Ljwvc3Bh
-bj48L3A+DQo8L2Rpdj4NCjwvZGl2Pg0KPGRpdiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjpyZ2Io
-MjQzLDI0MywyNDMpIj4NCjxkaXYgc3R5bGU9Im1heC13aWR0aDo1MDBweDttaW4td2lkdGg6MTU4
-cHg7cGFkZGluZzoxNXB4DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIw
-cHggMHB4Ij4NCjxwIHN0eWxlPSJtYXJnaW4tYm90dG9tOjBweDt3aWR0aDo0NzBweDtmb250LXNp
-emU6MTZweDtmb250LXdlaWdodDo2MDA7bWFyZ2luLXRvcDowcHg7Zm9udC1mYW1pbHk6JnF1b3Q7
-U2Ftc3VuZw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFNoYXJwDQog
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU2Fucy1ib2xkJnF1b3Q7LEFy
-aWFsLHNhbnMtc2VyaWYiPg0KU2VydmljZSBjb250cmFjdCBkZXRhaWxzPC9wPg0KPHAgc3R5bGU9
-Im1hcmdpbi1ib3R0b206MHB4O3dpZHRoOjQ3MHB4O2ZvbnQtc2l6ZToxNnB4O2ZvbnQtd2VpZ2h0
-OjYwMDttYXJnaW4tdG9wOjBweDtmb250LWZhbWlseTomcXVvdDtTYW1zdW5nDQogICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU2hhcnANCiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBTYW5zLWJvbGQmcXVvdDssQXJpYWwsc2Fucy1zZXJpZiI+DQo8
-YnI+DQo8L3A+DQo8cCBzdHlsZT0ibWFyZ2luLWJvdHRvbTowcHg7d2lkdGg6NDcwcHg7Zm9udC1z
-aXplOjE2cHg7Zm9udC13ZWlnaHQ6NjAwO21hcmdpbi10b3A6MHB4O2ZvbnQtZmFtaWx5OiZxdW90
-O1NhbXN1bmcNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTaGFycA0K
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFNhbnMtYm9sZCZxdW90OyxB
-cmlhbCxzYW5zLXNlcmlmIj4NCjxicj4NCjwvcD4NCjwvZGl2Pg0KPGRpdiBzdHlsZT0ibWF4LXdp
-ZHRoOjI1MHB4O21pbi13aWR0aDoxNThweDtmbG9hdDpsZWZ0O3BhZGRpbmc6MHB4DQogICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwcHggMTVweCI+DQpTZXJ2aWNlIGNvbnRy
-YWN0IG51bWJlciAmbmJzcDsmbmJzcDsmbmJzcDsgJm5ic3A7Jm5ic3A7Jm5ic3A7IDo8L2Rpdj4N
-CjxkaXYgc3R5bGU9Im1heC13aWR0aDoyNTBweDttaW4td2lkdGg6MTU4cHg7ZmxvYXQ6bGVmdDtw
-YWRkaW5nOjBweA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAyMHB4IDE1
-cHgiPg0KR0tTLTI4LTk4OTU1NzY8L2Rpdj4NCjxkaXYgc3R5bGU9ImNsZWFyOmJvdGgiPjxicj4N
-CjwvZGl2Pg0KPC9kaXY+DQo8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOnJnYigyNDMsMjQz
-LDI0Myk7bWFyZ2luLXRvcDoycHgiPg0KPGRpdiBzdHlsZT0ibWF4LXdpZHRoOjI1MHB4O21pbi13
-aWR0aDoxNThweDtmbG9hdDpsZWZ0O3BhZGRpbmc6MTVweA0KICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAyMHB4Ij4NClJlZ2lzdGVyZWQgZW1haWw8c3BhbiBzdHlsZT0iZmxv
-YXQ6cmlnaHQiPjo8L3NwYW4+PC9kaXY+DQo8ZGl2IHN0eWxlPSJtYXgtd2lkdGg6MjUwcHg7bWlu
-LXdpZHRoOjE1OHB4O2Zsb2F0OmxlZnQ7cGFkZGluZzoxNXB4DQogICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIDIwcHgiPg0KPGEgY2xhc3M9Im1vei10eHQtbGluay1hYmJyZXZp
-YXRlZCIgaHJlZj0ibWFpbHRvOmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnIj5p
-bnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZzwvYT48L2Rpdj4NCjxkaXYgc3R5bGU9
-ImNsZWFyOmJvdGgiPjxicj4NCjwvZGl2Pg0KPC9kaXY+DQo8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5k
-LWNvbG9yOnJnYigyNDMsMjQzLDI0Myk7bWFyZ2luLXRvcDoycHgiPg0KPGRpdiBzdHlsZT0ibWF4
-LXdpZHRoOjI1MHB4O21pbi13aWR0aDoxNThweDtmbG9hdDpsZWZ0O3BhZGRpbmc6MTVweA0KICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAyMHB4Ij4NClBsYW4gbmFtZTxzcGFu
-IHN0eWxlPSJmbG9hdDpyaWdodCI+Ojwvc3Bhbj48L2Rpdj4NCjxkaXYgc3R5bGU9Im1heC13aWR0
-aDoyNTBweDttaW4td2lkdGg6MTU4cHg7ZmxvYXQ6bGVmdDtwYWRkaW5nOjE1cHgNCiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMjBweCI+DQpHZWVrcyBTcXVhZCBTZWN1cmUg
-MzYwIFByZW1pdW0gLSBBbm51YWwgKDMgRGV2aWNlcyk8c3BhbiBzdHlsZT0iZmxvYXQ6cmlnaHQi
-Pjwvc3Bhbj48YnI+DQo8c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNh
-bnMtc2VyaWY7Zm9udC1zaXplOnNtYWxsIj48L3NwYW4+PC9kaXY+DQo8ZGl2IHN0eWxlPSJjbGVh
-cjpib3RoIj48YnI+DQo8L2Rpdj4NCjwvZGl2Pg0KPGRpdiBzdHlsZT0iYmFja2dyb3VuZC1jb2xv
-cjpyZ2IoMjQzLDI0MywyNDMpO21hcmdpbi10b3A6MnB4Ij4NCjxkaXYgc3R5bGU9Im1heC13aWR0
-aDoyNTBweDttaW4td2lkdGg6MTU4cHg7ZmxvYXQ6bGVmdDtwYWRkaW5nOjE1cHgNCiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMjBweCI+DQpQbGFuIHJlbmV3YWwgZGF0ZTxz
-cGFuIHN0eWxlPSJmbG9hdDpyaWdodCI+Ojwvc3Bhbj48L2Rpdj4NCjxkaXYgc3R5bGU9Im1heC13
-aWR0aDoyNTBweDttaW4td2lkdGg6MTU4cHg7ZmxvYXQ6bGVmdDtwYWRkaW5nOjE1cHgNCiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMjBweCI+DQoyOCBNYXIgMjAyMjwvZGl2
-Pg0KPGRpdiBzdHlsZT0iY2xlYXI6Ym90aCI+PGJyPg0KPC9kaXY+DQo8L2Rpdj4NCjxkaXYgc3R5
-bGU9ImJhY2tncm91bmQtY29sb3I6cmdiKDI0MywyNDMsMjQzKTttYXJnaW4tdG9wOjJweCI+DQo8
-ZGl2IHN0eWxlPSJtYXgtd2lkdGg6MjUwcHg7bWluLXdpZHRoOjE1OHB4O2Zsb2F0OmxlZnQ7cGFk
-ZGluZzoxNXB4DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwcHgiPg0K
-UGxhbiByZW5ld2FsIHByaWNlPHNwYW4gc3R5bGU9ImZsb2F0OnJpZ2h0Ij46PC9zcGFuPjwvZGl2
-Pg0KPGRpdiBzdHlsZT0ibWF4LXdpZHRoOjI1MHB4O21pbi13aWR0aDoxNThweDtmbG9hdDpsZWZ0
-O3BhZGRpbmc6MTVweA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAyMHB4
-Ij4NCiQgMzQ5Ljk5PC9kaXY+DQo8L2Rpdj4NCjxkaXYgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6
-cmdiKDI0MywyNDMsMjQzKTttYXJnaW4tdG9wOjJweCI+DQo8ZGl2IHN0eWxlPSJjbGVhcjpib3Ro
-Ij48YnI+DQo8L2Rpdj4NCjwvZGl2Pg0KPGRpdiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjpyZ2Io
-MjQzLDI0MywyNDMpO21hcmdpbi10b3A6MnB4Ij4NCjxkaXYgc3R5bGU9Im1heC13aWR0aDoyNTBw
-eDttaW4td2lkdGg6MTU4cHg7ZmxvYXQ6bGVmdDtwYWRkaW5nOjE1cHgNCiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgMjBweCI+DQo8cCBzdHlsZT0ibWFyZ2luLWJvdHRvbTow
-cHg7d2lkdGg6NDcwcHg7Zm9udC1zaXplOjE2cHg7Zm9udC13ZWlnaHQ6NjAwO21hcmdpbi10b3A6
-MHB4O2ZvbnQtZmFtaWx5OiZxdW90O1NhbXN1bmcNCiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBTaGFycA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIFNhbnMtYm9sZCZxdW90OyxBcmlhbCxzYW5zLXNlcmlmIj4NCkNvdmVyYWdlIGRldGFpbHM8
-L3A+DQo8L2Rpdj4NCjxkaXYgc3R5bGU9ImNsZWFyOmJvdGgiPjxicj4NCjwvZGl2Pg0KPC9kaXY+
-DQo8ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOnJnYigyNDMsMjQzLDI0Myk7bWFyZ2luLXRv
-cDoycHgiPg0KPGRpdiBzdHlsZT0ibWF4LXdpZHRoOjE1OHB4O21pbi13aWR0aDoxNThweDtmbG9h
-dDpsZWZ0O3BhZGRpbmc6MTVweA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAyMHB4Ij4NCkV4dGVuZGVkIFdhcnJhbnR5PHNwYW4gc3R5bGU9ImZsb2F0OnJpZ2h0Ij46PC9z
-cGFuPjwvZGl2Pg0KPGRpdiBzdHlsZT0ibWF4LXdpZHRoOjI1MHB4O21pbi13aWR0aDoxNThweDtm
-bG9hdDpsZWZ0O3BhZGRpbmc6MTVweA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAwcHggMTVweCAyMHB4Ij4NCjxkaXYgc3R5bGU9Im1hcmdpbi1ib3R0b206MTFweCI+DQo8
-ZGl2IHN0eWxlPSJmbG9hdDpsZWZ0O3dpZHRoOjEwMS4xMDlweCI+UGxhbiBTdGFydHMgOjwvZGl2
-Pg0KPGRpdiBzdHlsZT0iZmxvYXQ6bGVmdDt3aWR0aDo1Ni44NzVweCI+MjggTWFyIDIwMjI8L2Rp
-dj4NCjxkaXYgc3R5bGU9ImNsZWFyOmJvdGgiPjxicj4NCjwvZGl2Pg0KPC9kaXY+DQo8ZGl2IHN0
-eWxlPSJmbG9hdDpsZWZ0O3dpZHRoOjEwMS4xMDlweCI+UGxhbiBFbmRzIDo8L2Rpdj4NCjxkaXYg
-c3R5bGU9ImZsb2F0OmxlZnQ7d2lkdGg6NTYuODc1cHgiPjI3IE1hciAyMDIzPC9kaXY+DQo8ZGl2
-IHN0eWxlPSJjbGVhcjpib3RoIj48YnI+DQo8L2Rpdj4NCjwvZGl2Pg0KPGRpdiBzdHlsZT0iY2xl
-YXI6Ym90aCI+PGJyPg0KPC9kaXY+DQo8L2Rpdj4NCjxkaXYgc3R5bGU9ImJhY2tncm91bmQtY29s
-b3I6cmdiKDI0MywyNDMsMjQzKTttYXJnaW4tdG9wOjJweCI+DQo8ZGl2IHN0eWxlPSJtYXgtd2lk
-dGg6MTU4cHg7bWluLXdpZHRoOjE1OHB4O2Zsb2F0OmxlZnQ7cGFkZGluZzoxNXB4DQogICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwcHgiPg0KUHJlbWl1bSBQaG9uZSBTdXBw
-b3J0PGJyPg0KPHNwYW4gc3R5bGU9ImZsb2F0OnJpZ2h0Ij46PC9zcGFuPjwvZGl2Pg0KPGRpdiBz
-dHlsZT0ibWF4LXdpZHRoOjI1MHB4O21pbi13aWR0aDoxNThweDtmbG9hdDpsZWZ0O3BhZGRpbmc6
-MTVweA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwcHggMTVweCAyMHB4
-Ij4NCjxkaXYgc3R5bGU9Im1hcmdpbi1ib3R0b206MTFweCI+DQo8ZGl2IHN0eWxlPSJmbG9hdDps
-ZWZ0O3dpZHRoOjEwMS4xMDlweCI+UGxhbiBTdGFydHMgOjwvZGl2Pg0KPGRpdiBzdHlsZT0iZmxv
-YXQ6bGVmdDt3aWR0aDo1Ni44NzVweCI+MjggTWFyIDIwMjI8L2Rpdj4NCjxkaXYgc3R5bGU9ImNs
-ZWFyOmJvdGgiPjxicj4NCjwvZGl2Pg0KPC9kaXY+DQo8ZGl2IHN0eWxlPSJmbG9hdDpsZWZ0O3dp
-ZHRoOjEwMS4xMDlweCI+UGxhbiBFbmRzIDo8L2Rpdj4NCjxkaXYgc3R5bGU9ImZsb2F0OmxlZnQ7
-d2lkdGg6NTYuODc1cHgiPjI3IE1hciAyMDIzPC9kaXY+DQo8ZGl2IHN0eWxlPSJjbGVhcjpib3Ro
-Ij48YnI+DQo8L2Rpdj4NCjwvZGl2Pg0KPGRpdiBzdHlsZT0iY2xlYXI6Ym90aCI+PGJyPg0KPC9k
-aXY+DQo8L2Rpdj4NCjxkaXYgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6cmdiKDI0MywyNDMsMjQz
-KTttYXJnaW4tdG9wOjJweCI+DQo8ZGl2IHN0eWxlPSJtYXgtd2lkdGg6MTU4cHg7bWluLXdpZHRo
-OjE1OHB4O2Zsb2F0OmxlZnQ7cGFkZGluZzoxNXB4DQogICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIDIwcHgiPg0KRGFtYWdlIFByb3RlY3Rpb248YnI+DQo8c3BhbiBzdHlsZT0i
-ZmxvYXQ6cmlnaHQiPjo8L3NwYW4+PC9kaXY+DQo8ZGl2IHN0eWxlPSJtYXgtd2lkdGg6MjUwcHg7
-bWluLXdpZHRoOjE1OHB4O2Zsb2F0OmxlZnQ7cGFkZGluZzoxNXB4DQogICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIDBweCAxNXB4IDIwcHgiPg0KPGRpdiBzdHlsZT0ibWFyZ2lu
-LWJvdHRvbToxMXB4Ij4NCjxkaXYgc3R5bGU9ImZsb2F0OmxlZnQ7d2lkdGg6MTAxLjEwOXB4Ij5Q
-bGFuIFN0YXJ0cyA6PC9kaXY+DQo8ZGl2IHN0eWxlPSJmbG9hdDpsZWZ0O3dpZHRoOjU2Ljg3NXB4
-Ij4yOCBNYXIgMjAyMjwvZGl2Pg0KPGRpdiBzdHlsZT0iY2xlYXI6Ym90aCI+PGJyPg0KPC9kaXY+
-DQo8L2Rpdj4NCjxkaXYgc3R5bGU9ImZsb2F0OmxlZnQ7d2lkdGg6MTAxLjEwOXB4Ij5QbGFuIEVu
-ZHMgOjwvZGl2Pg0KPGRpdiBzdHlsZT0iZmxvYXQ6bGVmdDt3aWR0aDo1Ni44NzVweCI+MjcgTWFy
-IDIwMjM8L2Rpdj4NCjxkaXYgc3R5bGU9ImNsZWFyOmJvdGgiPjxicj4NCjwvZGl2Pg0KPC9kaXY+
-DQo8ZGl2IHN0eWxlPSJjbGVhcjpib3RoIj48YnI+DQo8L2Rpdj4NCjwvZGl2Pg0KPGRpdiBzdHls
-ZT0ibWFyZ2luLWJvdHRvbTo1cHg7bWFyZ2luLXRvcDoycHg7b3ZlcmZsb3c6aGlkZGVuO3BhZGRp
-bmc6MnB4DQoyMHB4O2JhY2tncm91bmQtY29sb3I6cmdiKDI0MywyNDMsMjQzKSI+DQo8ZGl2IHN0
-eWxlPSJwYWRkaW5nLWJvdHRvbTowcHg7cGFkZGluZy10b3A6NXB4Ij4NCjxwPjxzcGFuIHN0eWxl
-PSJmb250LWZhbWlseTomcXVvdDtTYW1zdW5nDQogICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBTaGFycA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgU2Fucy1ib2xkJnF1b3Q7LEFyaWFsLHNhbnMtc2VyaWY7Zm9udC1zaXplOjE2cHg7Zm9u
-dC13ZWlnaHQ6NjAwIj5HZXQgUXVpY2sgU3VwcG9ydCA6ICsxICg4MDUpIDU4Ni04MTA1IE1vbmRh
-eSB0byBGcmlkYXkgMDkuMDBBTSB0byAwNy4wMFBNPC9zcGFuPjxicj4NCjwvcD4NCjwvZGl2Pg0K
-PC9kaXY+DQo8ZGl2IHN0eWxlPSJwYWRkaW5nOjBweA0KICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgMjBweDttYXJnaW4tdG9wOjIwcHgiPg0KPHA+Rm9yIG1vcmUgZGV0YWlscyBh
-Ym91dCB0aGUgcGxhbiwga2luZGx5IHJlZmVyIHRvIHRoZSBUZXJtcyAmYW1wOyBjb25kaXRpb25z
-LiBGb3IgcXVlcmllcywgZmVlbCBmcmVlIHRvIHJlYWNoIHVzLjxzcGFuIHN0eWxlPSJmb250LWZh
-bWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtmb250LXNpemU6c21hbGwiPjwvc3Bhbj48
-L3A+DQo8L2Rpdj4NCjxkaXYgc3R5bGU9InBhZGRpbmc6MTBweCAyMHB4IDIwcHgiPkJlc3QgUmVn
-YXJkcyw8YnI+DQpHZWVrcyBTcXVhZDwvZGl2Pg0KPHAgc3R5bGU9IndpZHRoOjUzNS41cHg7bWFy
-Z2luLWJvdHRvbTowcHg7Zm9udC1zaXplOjEycHg7Zm9udC13ZWlnaHQ6NjAwO3BhZGRpbmc6MHB4
-DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAyMHB4O2ZvbnQtZmFtaWx5OiZx
-dW90O1NhbXN1bmcgU2hhcnANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFNh
-bnMtYm9sZCZxdW90OyxBcmlhbCxzYW5zLXNlcmlmIj4NCjxicj4NCjwvcD4NCjxkaXYgc3R5bGU9
-InBhZGRpbmc6MjBweCI+DQo8ZGl2IHN0eWxlPSJ0ZXh0LWFsaWduOmNlbnRlciI+DQo8ZGl2IHN0
-eWxlPSJwYWRkaW5nOjIwcHg7Zm9udC1zaXplOjEwcHgiPg0KPHAgc3R5bGU9Im1hcmdpbjowcHg7
-dGV4dC1hbGlnbjpjZW50ZXIiPlRlcm1zICZhbXA7IENvbmRpdGlvbnM8L3A+DQo8L2Rpdj4NCjwv
-ZGl2Pg0KPC9kaXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPC9kaXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPC9k
-aXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPC9kaXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPC9kaXY+DQo8L2Rp
-dj4NCjwvZGl2Pg0KPC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+DQo=
+Fix that by
+3. make it private (by removing "class N" parsing)
+   now nobody can do
+   echo module * class N +p >control
 
---_000_553d07648732e20c30ed0a70b6184c3egeeksquadservices88co_--
+4. add private/per-module "string" -> class_id map
+    each module will have to declare the class-strings they use/accept
+    opt-in - want coordinated / shared names for DRM_UT_KMS etc.
+
+5. validate input using the known class_string -> class_id
+
+then, this is knowably right or wrong, depending on DRM_FOO:
+     echo module drm class DRM_FOO +p > control
+
+it also means that
+     echo class DRM_UT_KMS +p >control
+is both wellformed and minimal;
+any module that has DRM_UT_KMS defined will know which class_id *they*
+have mapped it to.
+theres no global "DRM_UT_KMS" to be abused.
+
+So Ive been working towards that..
+Heres my current biggest roadblock
+
+DEFINE_DYNAMIC_DEBUG_CLASSBITS
+creates the class-strings[] array declaratively, at compile-time.
+This array is attached to the kernel-param.args,
+so it can be used by the callbacks (to construct the command)
+
+But its not obviously available from outside the sysfs knob
+that its attached to, as is needed to apply command >control generally.
+
+If I can attach the class-strings[]  to struct ddebug_table,
+then ddebug_change() can use it to validate >control input.
+
+So, how to attach ?
+its got to work for both builtin & loadable modules.
+(which precludes something in struct module ?)
+
+I looked for a kernel_param_register callback, came up empty.
+Trying to add it feels invasive / imposing.
+
+
+> >
+> > If that works, its cuz DEFINE_DYNAMIC_DEBUG_CLASSBITS()
+> > plucks class symbols out of its __VA_ARGS__, and #stringifes them.
+> > So that macro could then build the 1-per-module static constant string array
+> > and (only) the callbacks would be able to use it.
+> >
+
+So Ive been tinkering hard on this macro, since its pretty central to
+the interface defn.
+heres some choices:
+
+this is what Ive been working towards.
+using enum symbols directly like this associates them by grep,
+in contrast, class-strings are mealy-mouthed, milquetoast.
+
+DEFINE_DYNAMIC_DEBUG_CLASSBITS(debug, __drm_debug, "p",
+        "enable drm.debug categories - 1 bit per category",
+        DRM_UT_CORE,
+        DRM_UT_DRIVER,
+        DRM_UT_KMS,
+        DRM_UT_PRIME,
+        DRM_UT_ATOMIC,
+        DRM_UT_VBL,
+        DRM_UT_STATE,
+        DRM_UT_LEASE,
+        DRM_UT_DP,
+        DRM_UT_DRMRES);
+
+ I found a slick MAP ( ) macro to do this:
+
+#define DEFINE_DYNAMIC_DEBUG_CLASSBITS(fsname, _var, _flgs, desc, ...) \
+  MODULE_PARM_DESC(fsname, desc); \
+  static struct dyndbg_classbits_param ddcats_##_var = { \
+    .bits = &(_var), \
+    .flags = _flgs, \
+    .classes = { __VA_ARGS__, _DPRINTK_CLASS_DFLT }, \
+    .class_names = { mgMAP(__stringify, sCOMMA, \
+                                                __VA_ARGS__,
+_DPRINTK_CLASS_DFLT) } \
+}; \
+module_param_cb(fsname, &param_ops_dyndbg_classbits, \
+&ddcats_##_var, 0644)
+
+ __VA_ARGS__   is used 2x
+.class_names is available for validating command >control
+
+As much as I like the above, the MAP macro has a longer, more risky
+path to the kernel
+
+so a more modest alternative: module user defines class-strings in interface,
+but they *must* align manually with the enum values they correspond to;
+the order determines the bit-pos in the sysfs node,
+since the interface no longer provides the enum values themselves.
+
+DEFINE_DYNAMIC_DEBUG_CLASS_STRINGS(debug, __drm_debug, "p",
+        "enable drm.debug categories - 1 bit per category",
+        "DRM_UT_CORE",
+        "DRM_UT_DRIVER",
+        "DRM_UT_KMS",
+
+different name allows CLASSBITs or similar in future, if MAP works out.
+class-strings are completely defined by users, drm can drop UT naming
+
+TLDR: FWIW
+
+iSTM that  the same macro will support the coordinated use of class-strings
+across multiple modules.
+
+drm_print.c - natural home for exposed sysfs node
+
+amdgpu/, drm_helper/ i915/  nouveau/  will all need a DEFINE_DD added,
+so that ddebug_change() can allow those .class_ids to be controlled.
+sysfs perm inits can disable their nodes, since theyre coordinated.
+
+> >
+>
+> Ok, yeah so I guess I'm thinking about the 'class' more as global namespace,
+> so that for example, it could span modules, or be specific to certain modules.
+> I'm also thinking of it as a 'string' which is maybe hierarchical, so that it's
+> clear what sub-system, or sub-sub-system it belongs to. So for DRM for example,
+> it could be a string like "DRM:CORE". The index num I think is still helpful for
+> implementation so we don't have to store a pointer size, but I don't think it's
+> really exposed (except perhaps in module params b/c drm is doing that already?).
+>
+
+So what Ive got here is as described above,
+I just need a few bright ideas,
+then I can bring it together.
+got a spare tuit?
+
+Jim
