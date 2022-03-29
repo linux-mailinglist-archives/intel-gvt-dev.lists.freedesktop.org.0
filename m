@@ -2,57 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED67A4E9F85
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 28 Mar 2022 21:07:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A4914EA6C3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Mar 2022 06:56:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6E4BE10ED15;
-	Mon, 28 Mar 2022 19:07:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 48FAD10E133;
+	Tue, 29 Mar 2022 04:56:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ua1-x92e.google.com (mail-ua1-x92e.google.com
- [IPv6:2607:f8b0:4864:20::92e])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B0E3010E966;
- Mon, 28 Mar 2022 19:07:55 +0000 (UTC)
-Received: by mail-ua1-x92e.google.com with SMTP id j20so362923uan.1;
- Mon, 28 Mar 2022 12:07:55 -0700 (PDT)
+Received: from mail-yb1-xb34.google.com (mail-yb1-xb34.google.com
+ [IPv6:2607:f8b0:4864:20::b34])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EDAE710E0E4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 29 Mar 2022 04:56:00 +0000 (UTC)
+Received: by mail-yb1-xb34.google.com with SMTP id v35so29607686ybi.10
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 28 Mar 2022 21:56:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CCKplzUskEQ9PwRTyuFUMJADGXMGT+3wuQ0LIFqQJTA=;
- b=iVLFo3/Wbarqi1Gy59ZX3ni8OxRbwnW/akTYc6RfW1m8CgbjSSyNDMtRp1RVi7Tejz
- b8YQxZyK2jg/JAPh9AsJ0u4zLhoff1XDlf7NrWZEhJegte0LIdZ4IU6PC0WYwSjaHDjG
- RFgv7u7HdAtOW66kFkWDiyk0LYdF9Ihm9DpHuX+mloqKl0secFILqUdD6yRMndKNIzGN
- EFEJJBx6HsqPkivC5Zr9d/3RQqo6iWX2oenhxT7GQSq58SPUyBmNv6jwsg86dQzXeyE3
- A3TdXe+MnA71RRcWLkbZ3wp8uGAphDzGldReYbNgQVUH49wE9PBm9VkLo0ky5A2w1yNh
- 1p9g==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=vYqcWnY1V5jcJvcPZ85SGOV0DTFa7a26QmAmZGGRYEI=;
+ b=l0pWMWb5wOrXurZFYlWXsKwAo2cZgpacGZrquVR9QEaFLYAcsXV8v2sg/sObiyx0ig
+ u+FqgCh9x2fRh1o0FQSENROWa+yA9oT5Km220jSeeOnKXudBRMY2dSl+HC67vnt2C4bM
+ sQ0i6GsGvWa2FpSq8zc5Em2fggVpr8OO9iECFBBfUM2D79D16Hw3Rf3UDBC6ZAyip6uz
+ Lz57QeRtYcKSwBRl/XFeETJJ/EJzegMDArwXRWrA/YPSkZxAUyzjIBmIXb3jWhudO+P4
+ v0XotgtX63Fij0JIgUxVZgaitMVTMEMaqi2JUzD425EFKRO6cyuCkyGf96rz66HMTSP2
+ +8Yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CCKplzUskEQ9PwRTyuFUMJADGXMGT+3wuQ0LIFqQJTA=;
- b=PxW0umZHFyC2tNQLS7vYMYywuhPlOipIPm0bI5ezF/naYnezBP4IYk8wXiM8Uk/ZWi
- ec5V3ZYzgFjOXXozq3dS/U1PS/jS4ofJRZvS3XuN5lLDwH74AV4mSTjOd1jbA3w3XFz6
- Wsh0FfqdZdKpniygPAisr2qVztyMSpBqfqwpRwf2Ja+E9CX4eX5QLn2CjfFWkq6kpMpt
- 7OZkdO0bPc6j7hagp2oswBrhBBBTyJMAyzZQJ/n8UT9Qg9f8ux6f0Sv3jKcq31VVzyc+
- jNywgomYTzC554wVKaML5wpnyCePcAtYXqzDhdvPijr6vE8fAuNbR2BpC8pJasbVoPqr
- I9aA==
-X-Gm-Message-State: AOAM533ByzerHIBaVh5ncdvgaOTYpwdruIDxvvYoDuSgvITA/3YuDc06
- XRjoUiLYw44txbbAMzxBnS6sSe/L26Zzb+qptS0=
-X-Google-Smtp-Source: ABdhPJyeB+4PzruoBESQc2VKSlA60X+ybn+mXU9Z41UctfcgMdS1JkVl9uLoW0REsYsj4gV+ulwXOYj02EGWedpRbnw=
-X-Received: by 2002:ab0:4ac1:0:b0:351:ed7d:e65c with SMTP id
- t1-20020ab04ac1000000b00351ed7de65cmr12559304uae.36.1648494474130; Mon, 28
- Mar 2022 12:07:54 -0700 (PDT)
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=vYqcWnY1V5jcJvcPZ85SGOV0DTFa7a26QmAmZGGRYEI=;
+ b=k9mHmLRQnzLPUSRzymbgEmVXtJhg+FcG9Z8XwCxmv2gLn1wsUr9M4TN84nX3ciRZiN
+ k+VvZMlYx0ZX57pdiewH6mbc9WPL1Tq4QQa62SgCZ3dqwJk0APA6xMg93nSDMcWl2HXd
+ s84TEeUw0MXVTfV3sPuufAlDoYk1eSDnBsW1p9fFJD+GwrlwIF5+tWuUlbS8mP3SlXs5
+ xJT73nLofc9aQDLFMytofg6u+Khh6qSJG3gNh8yN5LdTgsRq3nWtIT5QPKQqr1JBNBnd
+ wh0owq81G5eKtb0/vHDbY7Runzkzzob+3qhAn5PA3Iji3MYyAQC0jlS3uzmqZvZDNqQ3
+ hPnA==
+X-Gm-Message-State: AOAM531FEyJTYXznoheFrwbuBGWfc4MMSWnyBNWRmFuHFjYiwe/japRB
+ YjUk3duJ8vIwMn3UzZsTE3NfxDw4CrOWgbqsZsY=
+X-Google-Smtp-Source: ABdhPJwxcP1BTskdXlXZyMr4IyZBY0h3j2rlv3oWl7+AlSUmltw7KNx0TjrcbjuK0ywFvolvClWtw604o4aqByvFoTI=
+X-Received: by 2002:a25:760d:0:b0:637:f4f:eb05 with SMTP id
+ r13-20020a25760d000000b006370f4feb05mr24450967ybc.550.1648529760106; Mon, 28
+ Mar 2022 21:56:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220311044756.425777-1-jim.cromie@gmail.com>
- <20220311044756.425777-3-jim.cromie@gmail.com>
- <823e51e6-2af4-7854-9428-697a2af12488@akamai.com>
- <CAJfuBxxVti_pa1YPmas=Ub28yWUFFGeR13wxveLvPCYS61NxuA@mail.gmail.com>
- <0d00c529-3bac-f09f-e07c-584194251a06@akamai.com>
-In-Reply-To: <0d00c529-3bac-f09f-e07c-584194251a06@akamai.com>
-From: jim.cromie@gmail.com
-Date: Mon, 28 Mar 2022 13:07:27 -0600
-Message-ID: <CAJfuBxwxA-9EwBaEow2UTBXD5-iER03+f5=D1zCUjTUut_bQaw@mail.gmail.com>
-Subject: Re: [PATCH 2/5] dyndbg: add class_id field and query support
-To: Jason Baron <jbaron@akamai.com>
+Received: by 2002:a05:7000:6590:0:0:0:0 with HTTP; Mon, 28 Mar 2022 21:55:59
+ -0700 (PDT)
+From: zenith banks <zenithbannknig11@gmail.com>
+Date: Mon, 28 Mar 2022 21:55:59 -0700
+Message-ID: <CA+k8gY6chdAD004DuaFnsDm=85CViEU++obMxU7W5etcq8==Gg@mail.gmail.com>
+Subject: The Diplomat is ready to meet with you
+To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -66,178 +63,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Greg KH <gregkh@linuxfoundation.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- LKML <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, robdclark@gmail.com,
- Sean Paul <seanpaul@chromium.org>,
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Daniel Vetter <daniel.vetter@ffwll.ch>, Joe Perches <joe@perches.com>,
- intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Mar 14, 2022 at 3:30 PM Jason Baron <jbaron@akamai.com> wrote:
->
->
->
-> On 3/11/22 20:06, jim.cromie@gmail.com wrote:
-> > On Fri, Mar 11, 2022 at 12:06 PM Jason Baron <jbaron@akamai.com> wrote:
-> >>
-> >>
-> >>
-> >> On 3/10/22 23:47, Jim Cromie wrote:
-> >>>
-> >>> With the patch, one can enable current/unclassed callsites by:
-> >>>
-> >>>   #> echo drm class 15 +p > /proc/dynamic_debug/control
-> >>>
-> >>
-> >> To me, this is hard to read, what the heck is '15'? I have to go look it
-> >> up in the control file and it's not descriptive. I think that using
-> >> classes/categories makes sense but I'm wondering if it can be a bit more
-> >> user friendly? Perhaps, we can pass an array of strings that is indexed
-> >> by the class id to each pr_debug() site that wants to use class. So
-> >> something like:
+Mr.Ebenezer Onyeagwu GMD/CEO,
+Zenith Bank Int'l Plc.
+E-MAIL: zenithbannknig11@gmail.com
+Our Ref: ZBNPL/FGN/PAYMENT/NG/02/2022
+PAYMENT FILE: ZBPL/CP/2/22
+Phone: +234-811-692-2078
 
-hi Jason,
-Im now in basically full agreement with you
+Dear Sir
 
-1.   .class_id  is a "global" space, in that all callsites have one.
-2.    0-15 is an exceedingly small range for a global space
-
-Fix that by
-3. make it private (by removing "class N" parsing)
-   now nobody can do
-   echo module * class N +p >control
-
-4. add private/per-module "string" -> class_id map
-    each module will have to declare the class-strings they use/accept
-    opt-in - want coordinated / shared names for DRM_UT_KMS etc.
-
-5. validate input using the known class_string -> class_id
-
-then, this is knowably right or wrong, depending on DRM_FOO:
-     echo module drm class DRM_FOO +p > control
-
-it also means that
-     echo class DRM_UT_KMS +p >control
-is both wellformed and minimal;
-any module that has DRM_UT_KMS defined will know which class_id *they*
-have mapped it to.
-theres no global "DRM_UT_KMS" to be abused.
-
-So Ive been working towards that..
-Heres my current biggest roadblock
-
-DEFINE_DYNAMIC_DEBUG_CLASSBITS
-creates the class-strings[] array declaratively, at compile-time.
-This array is attached to the kernel-param.args,
-so it can be used by the callbacks (to construct the command)
-
-But its not obviously available from outside the sysfs knob
-that its attached to, as is needed to apply command >control generally.
-
-If I can attach the class-strings[]  to struct ddebug_table,
-then ddebug_change() can use it to validate >control input.
-
-So, how to attach ?
-its got to work for both builtin & loadable modules.
-(which precludes something in struct module ?)
-
-I looked for a kernel_param_register callback, came up empty.
-Trying to add it feels invasive / imposing.
+Contract number: NNPC PED 2039-X20/ FGN MIN 020 : Contract amount: US$ 25.32M
+----------------------------------------------------------------------------------------------------------------------
 
 
-> >
-> > If that works, its cuz DEFINE_DYNAMIC_DEBUG_CLASSBITS()
-> > plucks class symbols out of its __VA_ARGS__, and #stringifes them.
-> > So that macro could then build the 1-per-module static constant string array
-> > and (only) the callbacks would be able to use it.
-> >
+I decided to write you again just to confirm your readiness to receive
+your fund through Diplomatic payment system as we have not heard from
+you in recent time as you abandon your fund and stop communication
+with the  paying bank. I will like to hear from you if you are ready
+to receive the fund as I have been directed officially to inform you
+that your approved over due funds payment for the year 2022 new
+payment policy will be released to you via Diplomatic payment system
+to you in Europe, Brussels, Belgium.This new payment resolution is as
+a result of excess demands of fees/charges which a lot of complain has
+been reaching our office.
 
-So Ive been tinkering hard on this macro, since its pretty central to
-the interface defn.
-heres some choices:
+In line with the payment procedures, You are advised to confirm the
+receipt of this mail immediately to enable us to give you the details
+of the Diplomatic procedures in Belgium  for your payment. That is to
+say you are expected to meet the Diplomat as to receive your approved
+funds by cash delivery payment.Knowing fully well what is going on in
+the World globally because of COVID, ravaging the entire continent.
 
-this is what Ive been working towards.
-using enum symbols directly like this associates them by grep,
-in contrast, class-strings are mealy-mouthed, milquetoast.
+We will process the cash delivery arrangement and give you the details
+of the Executive Directives appointed Diplomat that will fly in to
+Belgium with United Nations Diplomatic flight without any problems for
+the cash delivery safe and secured. This is an Irrevocable
+Presidential payment instructions/Directives that must be strictly
+adhere by funds beneficiary.Meanwhile this are required of you to
+re-confirm to us.
 
-DEFINE_DYNAMIC_DEBUG_CLASSBITS(debug, __drm_debug, "p",
-        "enable drm.debug categories - 1 bit per category",
-        DRM_UT_CORE,
-        DRM_UT_DRIVER,
-        DRM_UT_KMS,
-        DRM_UT_PRIME,
-        DRM_UT_ATOMIC,
-        DRM_UT_VBL,
-        DRM_UT_STATE,
-        DRM_UT_LEASE,
-        DRM_UT_DP,
-        DRM_UT_DRMRES);
+1.Your Full Names
+2.Your Address
+3.Your Direct Telephone Number.
+4.Scan copy of Your Driver's License.
 
- I found a slick MAP ( ) macro to do this:
+As soon as I receive the above information from you then  we will
+then,commence on the process of payment and you will receive the
+Document that will assist you meet with the Diplomat as the rightful
+beneficiary of the fund.  As soon as this is done,I will update you on
+the day and time of meeting the Diplomat as He will call you on his
+arrival.
 
-#define DEFINE_DYNAMIC_DEBUG_CLASSBITS(fsname, _var, _flgs, desc, ...) \
-  MODULE_PARM_DESC(fsname, desc); \
-  static struct dyndbg_classbits_param ddcats_##_var = { \
-    .bits = &(_var), \
-    .flags = _flgs, \
-    .classes = { __VA_ARGS__, _DPRINTK_CLASS_DFLT }, \
-    .class_names = { mgMAP(__stringify, sCOMMA, \
-                                                __VA_ARGS__,
-_DPRINTK_CLASS_DFLT) } \
-}; \
-module_param_cb(fsname, &param_ops_dyndbg_classbits, \
-&ddcats_##_var, 0644)
+Please help us to serve you more better, A mandate have been giving to
+the office, Debts Management office (DMO)
+Kindly read this message while you revert back to me for more briefings.
 
- __VA_ARGS__   is used 2x
-.class_names is available for validating command >control
-
-As much as I like the above, the MAP macro has a longer, more risky
-path to the kernel
-
-so a more modest alternative: module user defines class-strings in interface,
-but they *must* align manually with the enum values they correspond to;
-the order determines the bit-pos in the sysfs node,
-since the interface no longer provides the enum values themselves.
-
-DEFINE_DYNAMIC_DEBUG_CLASS_STRINGS(debug, __drm_debug, "p",
-        "enable drm.debug categories - 1 bit per category",
-        "DRM_UT_CORE",
-        "DRM_UT_DRIVER",
-        "DRM_UT_KMS",
-
-different name allows CLASSBITs or similar in future, if MAP works out.
-class-strings are completely defined by users, drm can drop UT naming
-
-TLDR: FWIW
-
-iSTM that  the same macro will support the coordinated use of class-strings
-across multiple modules.
-
-drm_print.c - natural home for exposed sysfs node
-
-amdgpu/, drm_helper/ i915/  nouveau/  will all need a DEFINE_DD added,
-so that ddebug_change() can allow those .class_ids to be controlled.
-sysfs perm inits can disable their nodes, since theyre coordinated.
-
-> >
->
-> Ok, yeah so I guess I'm thinking about the 'class' more as global namespace,
-> so that for example, it could span modules, or be specific to certain modules.
-> I'm also thinking of it as a 'string' which is maybe hierarchical, so that it's
-> clear what sub-system, or sub-sub-system it belongs to. So for DRM for example,
-> it could be a string like "DRM:CORE". The index num I think is still helpful for
-> implementation so we don't have to store a pointer size, but I don't think it's
-> really exposed (except perhaps in module params b/c drm is doing that already?).
->
-
-So what Ive got here is as described above,
-I just need a few bright ideas,
-then I can bring it together.
-got a spare tuit?
-
-Jim
+Sincerely Yours
+Mr.Ebenezer Onyeagwu  GMD/CEO,
+Zenith Bank Int'l Plc
