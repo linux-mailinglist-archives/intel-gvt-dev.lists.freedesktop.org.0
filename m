@@ -1,50 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A0E74ED55A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Mar 2022 10:21:42 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CF874ED582
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Mar 2022 10:25:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E73B210F607;
-	Thu, 31 Mar 2022 08:21:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A493010F670;
+	Thu, 31 Mar 2022 08:25:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 78F6510F605;
- Thu, 31 Mar 2022 08:21:39 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D017B10F670;
+ Thu, 31 Mar 2022 08:25:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648714899; x=1680250899;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=CyO8FsM8tZgUaBkDtVMI1v27hxk0lpBU5WnbEc98PhQ=;
- b=ZsFUz9T0uuPRrNRuxu7LzLDY2NujlvS4qGXQOUBQ5oE0vYOFQgG9RGfY
- GI5rs9wvbsuEjMBTOv8dEZOicam4TmpPW8ngrLkFo0/VvEv03jRyp4fqJ
- axNSTb3ZAT8XcJcmCL51hEDA3Q4jSLaGzaZkWD/0sy0VkdT2XYxbYmIBi
- nsIgBcQYKxXWaOcC6ZggA3MEBdT/slFAq+yI+2YNqx82kgMg/y9uozncf
- hZPs6sarGoMJ2VnkGqsxU9MTtGT5znz7K09aA2IOFf4aB2q/zMKF9lzQo
- +1cTPj3EndX4K3YuhqWC8fg9q8kQA/MD/2o0OzfbG3MRNhWGiRyOJ2fuB A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="240346752"
-X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="240346752"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2022 01:21:38 -0700
-X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="547219718"
+ t=1648715131; x=1680251131;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=KCSXDm3RC4aQp01a11FrJWqsx450JrWrRKmLFEH0CtQ=;
+ b=OPE5H/W3jyGGQFvUYE0lUohQH8EaZ6qrW5N25yY39rAc52KqJBP8gicr
+ jYcaooiMsI/729GrD46flnM5F5zXU4SGcLmQCeB1MyI2mEZia4VEBDrJl
+ X30rk9bZm/vdUbmqvT/y8SmWcZAx9f6xQu2fkrvlSVog5OAyyFt4fnmD7
+ dZC6SZBcaSRmHc2dm8mz+K4oN1Q7/AXtQ3t/3X/yr4FkG3E2zaK6LnmBI
+ OXegOScptBOFYhGvDm/tRsCRuvtMxwWjUtglAx5SIvksEcyzqYfIFnSTn
+ 4ouaVI3J/sINl99DR1W12kXh6gKVF/b0hd6GLvxWxPBoP5wHK6wvRZZBe g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="259937577"
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="259937577"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2022 01:25:31 -0700
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="566269025"
 Received: from cgarnier-mobl1.ger.corp.intel.com (HELO localhost)
  ([10.252.62.224])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2022 01:21:36 -0700
-From: Jani Nikula <jani.nikula@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH 2/2] drm/i915/gvt: better align the Makefile with i915 Makefile
-Date: Thu, 31 Mar 2022 11:21:27 +0300
-Message-Id: <20220331082127.432171-2-jani.nikula@intel.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220331082127.432171-1-jani.nikula@intel.com>
-References: <20220331082127.432171-1-jani.nikula@intel.com>
-MIME-Version: 1.0
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2022 01:25:27 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: "Wang, Zhi A" <zhi.a.wang@intel.com>, Christoph Hellwig <hch@lst.de>,
+ Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: Re: [PATCH v7 1/3] i915/gvt: Separate the MMIO tracking table from
+ GVT-g
+In-Reply-To: <4af59d97-b583-4022-3ec3-360e7df43689@intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Content-Transfer-Encoding: 8bit
+References: <20220325175251.167164-1-zhi.a.wang@intel.com>
+ <20220328065008.GA29798@lst.de>
+ <4af59d97-b583-4022-3ec3-360e7df43689@intel.com>
+Date: Thu, 31 Mar 2022 11:25:25 +0300
+Message-ID: <871qyibkay.fsf@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,74 +60,69 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jani.nikula@intel.com, intel-gfx@lists.freedesktop.org,
- Zhi Wang <zhi.wang.linux@gmail.com>
+Cc: Zhi Wang <zhi.a.wang@gmail.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Drop extra ccflags, drop extra intermediate variables, list object files
-one per line alphabetically.
+On Thu, 31 Mar 2022, "Wang, Zhi A" <zhi.a.wang@intel.com> wrote:
+> Hi Jani and Joonas:
+>
+> Are you OK with these patches? I noticed I need to change the license
+> of the new file. Will do that when check-in if you are OK with these.
 
-Cc: Zhi Wang <zhi.wang.linux@gmail.com>
-Signed-off-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/i915/Makefile     |  4 +---
- drivers/gpu/drm/i915/gvt/Makefile | 30 +++++++++++++++++++++++-------
- 2 files changed, 24 insertions(+), 10 deletions(-)
+Use SPDX license header instead of the full text?
 
-diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefile
-index c1d5540f6052..27d4e0f8b31c 100644
---- a/drivers/gpu/drm/i915/Makefile
-+++ b/drivers/gpu/drm/i915/Makefile
-@@ -324,10 +324,8 @@ i915-$(CONFIG_DRM_I915_SELFTEST) += \
- # virtual gpu code
- i915-y += i915_vgpu.o
- 
--ifeq ($(CONFIG_DRM_I915_GVT),y)
--i915-y += intel_gvt.o
-+i915-$(CONFIG_DRM_I915_GVT) += intel_gvt.o
- include $(src)/gvt/Makefile
--endif
- 
- obj-$(CONFIG_DRM_I915) += i915.o
- obj-$(CONFIG_DRM_I915_GVT_KVMGT) += gvt/kvmgt.o
-diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt/Makefile
-index ea8324abc784..584661047945 100644
---- a/drivers/gpu/drm/i915/gvt/Makefile
-+++ b/drivers/gpu/drm/i915/gvt/Makefile
-@@ -1,9 +1,25 @@
- # SPDX-License-Identifier: GPL-2.0
--GVT_DIR := gvt
--GVT_SOURCE := gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o firmware.o \
--	interrupt.o gtt.o cfg_space.o opregion.o mmio.o display.o edid.o \
--	execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o debugfs.o \
--	fb_decoder.o dmabuf.o page_track.o
- 
--ccflags-y				+= -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
--i915-y					+= $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
-+i915-$(CONFIG_DRM_I915_GVT) += \
-+	gvt/aperture_gm.o \
-+	gvt/cfg_space.o \
-+	gvt/cmd_parser.o \
-+	gvt/debugfs.o \
-+	gvt/display.o \
-+	gvt/dmabuf.o \
-+	gvt/edid.o \
-+	gvt/execlist.o \
-+	gvt/fb_decoder.o \
-+	gvt/firmware.o \
-+	gvt/gtt.o \
-+	gvt/gvt.o \
-+	gvt/handlers.o \
-+	gvt/interrupt.o \
-+	gvt/mmio.o \
-+	gvt/mmio_context.o \
-+	gvt/opregion.o \
-+	gvt/page_track.o \
-+	gvt/sched_policy.o \
-+	gvt/scheduler.o \
-+	gvt/trace_points.o \
-+	gvt/vgpu.o
+I don't know much about the actual contents, I'll leave that part to
+others.
+
+Seems that you are dropping const in a number of places where I thought
+you could perhaps retain it.
+
+Also in drivers/gpu/drm/i915/intel_gvt_mmio_table.c:
+
+#include "gvt.h" 
+
+looks bad. It should be "gvt/gvt.h". I realize you can do that because
+gvt/Makefile has:
+
+ccflags-y += -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
+
+which I think should be removed.
+
+I sent patches fixing this to give you an idea. No need to queue them
+first, I can rebase them later. But please make sure this builds without
+the ccflags.
+
+
+BR,
+Jani.
+
+
+>
+> Thanks,
+> Zhi.
+>
+> On 3/28/22 6:50 AM, Christoph Hellwig wrote:
+>> On Fri, Mar 25, 2022 at 01:52:49PM -0400, Zhi Wang wrote:
+>>>
+>>> v7:
+>>>
+>>> - Keep the marcos of device generation in GVT-g. (Christoph, Jani)
+>> 
+>> The changelog go under the "---" line (also for the other patches).
+>> 
+>> Otherwise looks good:
+>> 
+>> Reviewed-by: Christoph Hellwig <hch@lst.de>
+>> 
+>
+
 -- 
-2.30.2
-
+Jani Nikula, Intel Open Source Graphics Center
