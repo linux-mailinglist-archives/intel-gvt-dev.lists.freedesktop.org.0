@@ -1,45 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 937864ED55B
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Mar 2022 10:21:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A0E74ED55A
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Mar 2022 10:21:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3567510F606;
-	Thu, 31 Mar 2022 08:21:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E73B210F607;
+	Thu, 31 Mar 2022 08:21:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7184F10F608;
- Thu, 31 Mar 2022 08:21:41 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 78F6510F605;
+ Thu, 31 Mar 2022 08:21:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648714901; x=1680250901;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=myVCPXLKnE2azmLhkrDxrF54mH1jpd2DeSM054qRZdo=;
- b=cnq+wzNWjW8Pf9fWCz3j5pG7rXw6w5+fs9C13OzZwHpZQSCGdp0sOObC
- WxgnV5LpsfiD+AoW8tIETh6HrqhpYukDMb25pDmTWxy4wPby1gavhmxY0
- 0ZPDTeOoVQ20HAGRYO2p1lfA5hG43tM3Cbpf2rSsHa6+Bbo6BL1i+p5Jf
- +xCXMUHifjFOTDBZNbQqetj0sxnswTwVXqj9whTbPAwTrcffqsfZkiiAa
- lHSIO8m4EO4Lgh3k02B/VBZXvcW0W2sY90QZdvpJCUAVwTUgaGX/bSEWh
- xttysfGMhLw0OcDw2W/ey1e7/pgdW4J9AQ4YB4FnNDDDa9WC44bvRoNB5 g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="284669980"
-X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="284669980"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2022 01:21:34 -0700
-X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="566266485"
+ t=1648714899; x=1680250899;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=CyO8FsM8tZgUaBkDtVMI1v27hxk0lpBU5WnbEc98PhQ=;
+ b=ZsFUz9T0uuPRrNRuxu7LzLDY2NujlvS4qGXQOUBQ5oE0vYOFQgG9RGfY
+ GI5rs9wvbsuEjMBTOv8dEZOicam4TmpPW8ngrLkFo0/VvEv03jRyp4fqJ
+ axNSTb3ZAT8XcJcmCL51hEDA3Q4jSLaGzaZkWD/0sy0VkdT2XYxbYmIBi
+ nsIgBcQYKxXWaOcC6ZggA3MEBdT/slFAq+yI+2YNqx82kgMg/y9uozncf
+ hZPs6sarGoMJ2VnkGqsxU9MTtGT5znz7K09aA2IOFf4aB2q/zMKF9lzQo
+ +1cTPj3EndX4K3YuhqWC8fg9q8kQA/MD/2o0OzfbG3MRNhWGiRyOJ2fuB A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="240346752"
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="240346752"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2022 01:21:38 -0700
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; d="scan'208";a="547219718"
 Received: from cgarnier-mobl1.ger.corp.intel.com (HELO localhost)
  ([10.252.62.224])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2022 01:21:32 -0700
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2022 01:21:36 -0700
 From: Jani Nikula <jani.nikula@intel.com>
 To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH 1/2] drm/i915/gvt: fix trace TRACE_INCLUDE_PATH
-Date: Thu, 31 Mar 2022 11:21:26 +0300
-Message-Id: <20220331082127.432171-1-jani.nikula@intel.com>
+Subject: [PATCH 2/2] drm/i915/gvt: better align the Makefile with i915 Makefile
+Date: Thu, 31 Mar 2022 11:21:27 +0300
+Message-Id: <20220331082127.432171-2-jani.nikula@intel.com>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220331082127.432171-1-jani.nikula@intel.com>
+References: <20220331082127.432171-1-jani.nikula@intel.com>
 MIME-Version: 1.0
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 Content-Transfer-Encoding: 8bit
@@ -60,28 +62,69 @@ Cc: jani.nikula@intel.com, intel-gfx@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-TRACE_INCLUDE_PATH should be a path relative to define_trace.h, not the
-file including it. (See the comment in include/trace/define_trace.h.)
+Drop extra ccflags, drop extra intermediate variables, list object files
+one per line alphabetically.
 
 Cc: Zhi Wang <zhi.wang.linux@gmail.com>
 Signed-off-by: Jani Nikula <jani.nikula@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/trace.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/i915/Makefile     |  4 +---
+ drivers/gpu/drm/i915/gvt/Makefile | 30 +++++++++++++++++++++++-------
+ 2 files changed, 24 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/trace.h b/drivers/gpu/drm/i915/gvt/trace.h
-index 6d787750d279..020f1aa28322 100644
---- a/drivers/gpu/drm/i915/gvt/trace.h
-+++ b/drivers/gpu/drm/i915/gvt/trace.h
-@@ -377,7 +377,7 @@ TRACE_EVENT(render_mmio,
+diff --git a/drivers/gpu/drm/i915/Makefile b/drivers/gpu/drm/i915/Makefile
+index c1d5540f6052..27d4e0f8b31c 100644
+--- a/drivers/gpu/drm/i915/Makefile
++++ b/drivers/gpu/drm/i915/Makefile
+@@ -324,10 +324,8 @@ i915-$(CONFIG_DRM_I915_SELFTEST) += \
+ # virtual gpu code
+ i915-y += i915_vgpu.o
  
- /* This part must be out of protection */
- #undef TRACE_INCLUDE_PATH
--#define TRACE_INCLUDE_PATH .
- #undef TRACE_INCLUDE_FILE
-+#define TRACE_INCLUDE_PATH ../../drivers/gpu/drm/i915/gvt
- #define TRACE_INCLUDE_FILE trace
- #include <trace/define_trace.h>
+-ifeq ($(CONFIG_DRM_I915_GVT),y)
+-i915-y += intel_gvt.o
++i915-$(CONFIG_DRM_I915_GVT) += intel_gvt.o
+ include $(src)/gvt/Makefile
+-endif
+ 
+ obj-$(CONFIG_DRM_I915) += i915.o
+ obj-$(CONFIG_DRM_I915_GVT_KVMGT) += gvt/kvmgt.o
+diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt/Makefile
+index ea8324abc784..584661047945 100644
+--- a/drivers/gpu/drm/i915/gvt/Makefile
++++ b/drivers/gpu/drm/i915/gvt/Makefile
+@@ -1,9 +1,25 @@
+ # SPDX-License-Identifier: GPL-2.0
+-GVT_DIR := gvt
+-GVT_SOURCE := gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o firmware.o \
+-	interrupt.o gtt.o cfg_space.o opregion.o mmio.o display.o edid.o \
+-	execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o debugfs.o \
+-	fb_decoder.o dmabuf.o page_track.o
+ 
+-ccflags-y				+= -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
+-i915-y					+= $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
++i915-$(CONFIG_DRM_I915_GVT) += \
++	gvt/aperture_gm.o \
++	gvt/cfg_space.o \
++	gvt/cmd_parser.o \
++	gvt/debugfs.o \
++	gvt/display.o \
++	gvt/dmabuf.o \
++	gvt/edid.o \
++	gvt/execlist.o \
++	gvt/fb_decoder.o \
++	gvt/firmware.o \
++	gvt/gtt.o \
++	gvt/gvt.o \
++	gvt/handlers.o \
++	gvt/interrupt.o \
++	gvt/mmio.o \
++	gvt/mmio_context.o \
++	gvt/opregion.o \
++	gvt/page_track.o \
++	gvt/sched_policy.o \
++	gvt/scheduler.o \
++	gvt/trace_points.o \
++	gvt/vgpu.o
 -- 
 2.30.2
 
