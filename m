@@ -1,55 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B91864F0450
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Apr 2022 17:08:55 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27E424F065E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Apr 2022 23:10:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 273C610E08C;
-	Sat,  2 Apr 2022 15:08:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B49BB10E02F;
+	Sat,  2 Apr 2022 21:10:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.jywrepuestos.com (mail.jywrepuestos.com [190.119.242.179])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 03DCE10E08C
+Received: from mail-lf1-x12f.google.com (mail-lf1-x12f.google.com
+ [IPv6:2a00:1450:4864:20::12f])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DB04310E035
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  2 Apr 2022 15:08:51 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.jywrepuestos.com (Postfix) with ESMTP id 5CB41AEF073;
- Sat,  2 Apr 2022 00:03:59 -0500 (-05)
-Received: from mail.jywrepuestos.com ([127.0.0.1])
- by localhost (mail.jywrepuestos.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id uEpQUP23OTlS; Sat,  2 Apr 2022 00:03:58 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.jywrepuestos.com (Postfix) with ESMTP id AB031AEF08B;
- Sat,  2 Apr 2022 00:03:58 -0500 (-05)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.jywrepuestos.com AB031AEF08B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jywrepuestos.com;
- s=F71C435A-5232-11EB-AA07-242A54BEB359; t=1648875838;
- bh=qJnVWcXtwVz0uXaA0PFiE3fkYQcbav2ErvEGevgwIaA=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=DThnJJQTBq0eGR4IIcwaYHMYd5i5G/+eVo4h6fnzkbRksrTSRPO0FVfZTRUukFg0R
- y+p5jQRAmONUuXID9Xivb1H5DXzc92OzA26m3d0rGqQHk+JtbcG3SSE2kCxiXUsWa6
- jh51HSmPOO427w4Dx5PTnAAtD0Rr9YbyqaUXoH9GjwS784FPZGjJsUzr6JFnXd5tgS
- mHXq0uPFzvwu8a5PPIceuDYJasZBxzdMZr5cIZVSQA8uFfTeZ4yrTZdyjoieu4PHs9
- 6/917quAAEJq860dqsS3Edw+2RVzvdTVgxLcY2k8LXaKdAHbY5Mbaxo+Sz7PNRm9LY
- UXykzEOWwFV6A==
-X-Virus-Scanned: amavisd-new at jywrepuestos.com
-Received: from mail.jywrepuestos.com ([127.0.0.1])
- by localhost (mail.jywrepuestos.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id frMcPatST_Ug; Sat,  2 Apr 2022 00:03:58 -0500 (-05)
-Received: from infogo.23py1kceab5uho4wqi03gw4ffe.syx.internal.cloudapp.net
- (unknown [52.231.28.69])
- by mail.jywrepuestos.com (Postfix) with ESMTPSA id B023EAEF073;
- Sat,  2 Apr 2022 00:03:51 -0500 (-05)
-Content-Type: text/plain; charset="iso-8859-1"
+ Sat,  2 Apr 2022 21:10:03 +0000 (UTC)
+Received: by mail-lf1-x12f.google.com with SMTP id z12so10675852lfu.10
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 02 Apr 2022 14:10:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=vKJkaXus8ZSkNLp1B0xT3YIETHC2SQjUedGtvYAqsm0=;
+ b=M3yiuvPWt+HdWvjHocnP2JwTZXx/cT7O66aen+oKwkt7uaFlBko+ClSx5QLkqjl0aw
+ R6qFd+I5yZS9GYsTRcTYuQ+dvV3hUwevnJQoGWGG7tn2QLCeNHqwHYSsikD3XeqnJrGd
+ WgU7W2Y6WAPSXIoZkw31RcOnWLhZifuau63oqGXViwYeTwmvSYJF0/k0fmunJLlnyHFD
+ n5Au0iBWN7Yye0D+1wRHiNdroo/KaAvr5al6iB5GarEOedbCU/o2bspwSX7JOCboOljQ
+ JrbeVLp+M0MCpPkFuqv+fzZcVkKcm5kSv3VkJwgjSjcZCRfouDhOfA46yM7m7i6pnVk/
+ /KKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=vKJkaXus8ZSkNLp1B0xT3YIETHC2SQjUedGtvYAqsm0=;
+ b=T6RmaaQh6gInt/9PLWMvBe5H/DlFgcq+gjWgp6Ksn1jWdhWxsiapaoWJqyqeCDU/Em
+ H7UUYq7C3K9c0vvlNr64svSpPXd7p2//ggcd5qFSCWRxwN7eLMUgFss52C/Y72fkVOnd
+ V9bZUV/fmfsgByT1ixYAzY4yEMMLm/Tel2VsN2aCasn4acxiQPCXtR4muc11+YiVsNqk
+ rQwCQzJlZOAmytBZ8wuTHJgCjYlCi90TB1QLfD6r1vCFX0tkd/1UEqCr8te/AXFGU2z6
+ xO1U73hz/OioeI71IN5GqbXXTr6eAMFBavQpD5wVM7Idi7PpE67Vy9YN1OlOqjv7au40
+ YQYA==
+X-Gm-Message-State: AOAM530ezJ0J4W/UfQSAZzMBnh2B/sZp5lFHAOMh7siHjagtHWQucJkK
+ b2U2pvqsAtfTWWaUT/mZkHbMrThrmbbzdvBuACg=
+X-Google-Smtp-Source: ABdhPJxO3VID+qjfddzwlkIUE8BEtYt6uDC+gC/6nOljtj+9drsXxRuqErDQpjHfFhBSUQneGj83aV81HNXBterpWf8=
+X-Received: by 2002:ac2:58eb:0:b0:448:1eac:5428 with SMTP id
+ v11-20020ac258eb000000b004481eac5428mr17910663lfo.172.1648933802155; Sat, 02
+ Apr 2022 14:10:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: Hello 
-To: Recipients <wilson@jywrepuestos.com>
-From: wilson@jywrepuestos.com
-Date: Sat, 02 Apr 2022 05:29:46 +0000
-Message-Id: <20220402050351.B023EAEF073@mail.jywrepuestos.com>
+From: Sarah Riterhouse <sarahriterhouse89@gmail.com>
+Date: Sat, 2 Apr 2022 21:09:44 +0000
+Message-ID: <CA+BT2oVmLh77TEfd0pONdeFM98mCWbo57gz2VnZg7mKVNqOBag@mail.gmail.com>
+Subject: HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000008922f805dbb251e7"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,33 +61,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: reemhashimy309@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+--0000000000008922f805dbb251e7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
 
-My name is Reem Hashimy, the Emirates Minister of State and Managing Direct=
-or of the United Arab Emirates (Dubai) World Expo 2020 Committee which was =
-postponed from 2020 to October 2021 to March 2022 because of the Covid-19 p=
-andemic.
+LS0gDQrmgqjlpb3vvIzor7fnoa7orqTmraTpgq7ku7bmmK/lkKblpITkuo7mtLvliqjnirbmgIHj
+gIINCg==
+--0000000000008922f805dbb251e7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: base64
 
-I am writing to you to manage the funds I received as financial gratificati=
-on from various foreign companies I assisted to participate in the event th=
-at is taking place as we speak. The amount is $44,762,906.00 United States =
-dollars. But I can not personally manage the fund in my country because of =
-the sensitive nature of my office and the certain restriction on married Mu=
-slim women.
-
-For this reason, an agreement was reached with the various firms to direct =
-the financial gifts to an account with a financial institution where it wil=
-l be possible for me to instruct the transfer of the fund to a third party =
-for investment purpose; which is the reason I am contacting you to receive =
-the fund and manage it as my investment partner. Note that the fund is NOT =
-connected to any criminal or terrorist activity.
-
-On your indication of interest with your information; I will instruct the f=
-inancial institution to process the fund to your country for investment pur=
-poses.
-
-Regards.
-Reem Hashimy.
+PGRpdiBkaXI9Imx0ciI+PGJyIGNsZWFyPSJhbGwiPjxicj4tLSA8YnI+PGRpdiBkaXI9Imx0ciIg
+Y2xhc3M9ImdtYWlsX3NpZ25hdHVyZSIgZGF0YS1zbWFydG1haWw9ImdtYWlsX3NpZ25hdHVyZSI+
+PGRpdiBkaXI9Imx0ciI+5oKo5aW977yM6K+356Gu6K6k5q2k6YKu5Lu25piv5ZCm5aSE5LqO5rS7
+5Yqo54q25oCB44CCPGJyPjwvZGl2PjwvZGl2PjwvZGl2Pg0K
+--0000000000008922f805dbb251e7--
