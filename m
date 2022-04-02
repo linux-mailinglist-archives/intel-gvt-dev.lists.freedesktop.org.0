@@ -1,60 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78B894EFE2C
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Apr 2022 05:25:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CB9A4EFF8B
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Apr 2022 10:12:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 26E4610E15B;
-	Sat,  2 Apr 2022 03:25:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AEBB610E4A3;
+	Sat,  2 Apr 2022 08:12:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com
- [IPv6:2a00:1450:4864:20::244])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3350610E15B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  2 Apr 2022 03:25:11 +0000 (UTC)
-Received: by mail-lj1-x244.google.com with SMTP id h11so6221614ljb.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 01 Apr 2022 20:25:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=Md8Wi0wHo3ak/F0ZvB70PXhS+akEsbDCaNRZVuECpu0=;
- b=WiobNIPybM2vE5KEPNXC5V62CYbsxgP1Unay4ucxjdWj4UWAjWu9oiUOU1F57fo5MB
- 69lK3KAtrJRBR0kh5NEN08UYd3hKv+FVx9tYPHFIx9lc8+ENI0fl1rr7mnckysoo/GOS
- qr0ybeLV0S900JbhrE8r8xoCR4gyzf6o6zOUMEMMapVwS5qi2j5EkjUgSF3lOQ7v41vc
- 3OBatJn++8F6XG6yw5vXPV/WouhY/0ipPwe3HBs/DFCMLvzLEalSwdHLzu77iLMHh2jj
- SE6bIPqDdAUtKrVE1ijvye7Hgiv+6MPC+dS6jaTBJs1DdSjJkRcZi/eKGEFXc//v+6Yt
- jVOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to:content-transfer-encoding;
- bh=Md8Wi0wHo3ak/F0ZvB70PXhS+akEsbDCaNRZVuECpu0=;
- b=5FUu6JOaT/oakPgviS4Du+Pf/bQ5kHF0M9qDuA1QAbfWRvrEeXkNX/nJBVtys4pbi+
- FAqJ93lRwBMO2KR/LnjNjSvNMdJ64EFzazZMuSEqfa91EzH5yulZP9CuGfxGmNvKKaXk
- MA18MRv/0E6+nDosDFlcm7MpDuF2H74mLno4DiT1MVokst1iFe3d4yIBhRrsJiIJSPtn
- fn6AFc8c4quIcFghGo35idMHv4rtwA93ZMEx2/UQ7RRJZPVK9tvdLY5R7iJycO7sjCSG
- bkjpGv/70mmvCvEpJGkQ2xe/SSIqze6/D13s7m4ESzUziBStVyMn9kjBgjMNdyV3eV32
- xBnQ==
-X-Gm-Message-State: AOAM530KQBSOtECWtmEJ8I1PeQfQOy7FvMFUeFenNG2nYnHRF3pvlMwz
- B/X4YmygoVXhA2Osir6InOSCmLP8vaV5mzw52xc=
-X-Google-Smtp-Source: ABdhPJyTOhOky0yXFFcnBtCYIl1/lRnES6JQ/RiSoeaISFYb/JOMTGP/YimohLPs0SUYdyCZs3zHmP6D1aeN1bL58JU=
-X-Received: by 2002:a2e:a7ca:0:b0:249:862b:525 with SMTP id
- x10-20020a2ea7ca000000b00249862b0525mr15158548ljp.491.1648869909147; Fri, 01
- Apr 2022 20:25:09 -0700 (PDT)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B4D1810E282;
+ Sat,  2 Apr 2022 08:12:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1648887172; x=1680423172;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=9nakgVIZsBk8MoVNmlFRigUOZ3RgRXBKut7mIr/t7TY=;
+ b=UmdBlHSXLywanxXZGhndjREEbUeh44fuifCGuWGnNeIbzCC8WBlE/s7B
+ yiE1ttg0WaMScngGXKCKzSm6lJbWw38+MXTTqVr5f2jvoJeyxLF097hkf
+ NKOpoG4liaI81IoXJGN0fXu3b+M/Oxo+1lX18MybYfo6hMJOo/59XKTBX
+ Mky1ygwyiH7X8pb8I2kHfENK2J7tY3xiZay6CSWoUNq6gMzveQg7xWxe5
+ UuPJwSsa3B0yRiYrfxTaZfUcaXDxg5pdSjmbH6JtMZ47KXu6BdOq4ZBBl
+ FWahyfUVVc5GBqk1m/uTb0y+e4lpfFSURkYI7vbwHpE3dwCqL7oEoF7Mm w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="247795758"
+X-IronPort-AV: E=Sophos;i="5.90,229,1643702400"; d="scan'208";a="247795758"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Apr 2022 01:12:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,229,1643702400"; d="scan'208";a="504416562"
+Received: from lkp-server02.sh.intel.com (HELO 3231c491b0e2) ([10.239.97.151])
+ by orsmga003.jf.intel.com with ESMTP; 02 Apr 2022 01:12:49 -0700
+Received: from kbuild by 3231c491b0e2 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1naYsK-00024e-A7;
+ Sat, 02 Apr 2022 08:12:48 +0000
+Date: Sat, 2 Apr 2022 16:12:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org
+Subject: Re: [PATCH v8 1/3] i915/gvt: Separate the MMIO tracking table from
+ GVT-g
+Message-ID: <202204021603.W9Au0C65-lkp@intel.com>
+References: <20220401130207.33944-2-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-Received: by 2002:a05:6512:1517:0:0:0:0 with HTTP; Fri, 1 Apr 2022 20:25:08
- -0700 (PDT)
-From: "Mrs. Therese Nina" <mrstheresenina10@gmail.com>
-Date: Fri, 1 Apr 2022 20:25:08 -0700
-X-Google-Sender-Auth: mlSB-A3FFladpBPxlww73gOHbVQ
-Message-ID: <CAH+=8uTirV-NB0Tn7++MGLuqSzw7gXPg19O+c_ucARt=3DQBHw@mail.gmail.com>
-Subject: My Greetings
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220401130207.33944-2-zhi.a.wang@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,51 +62,76 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mrstheresenina10@gmail.com
+Cc: Zhi Wang <zhi.a.wang@gmail.com>, kbuild-all@lists.01.org,
+ Christoph Hellwig <hch@lst.de>, Jason Gunthorpe <jgg@nvidia.com>,
+ Vivi Rodrigo <rodrigo.vivi@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-My Dear in the Lord
+Hi Zhi,
 
-My Name is Mrs. Therese Nina, from Norway. I know that this message
-will be a surprise to you. Firstly, I am married to Mr. Patrick Nina,
-A gold merchant who owns a small gold Mine in Austria; He died of
-Cardiovascular Disease in mid-March 2011. During his life time he
-deposited the sum of =E2=82=AC 8.5 Million Euro) Eight million, Five hundre=
-d
-thousand Euros in a bank in Vienna, Austria. The deposited money was
-from the sale of the shares, death benefits payment and entitlements
-of my deceased husband by his company.
+I love your patch! Yet something to improve:
 
-I am sending this message to you praying that it will reach you in
-good health, since I am not in good health condition in which I sleep
-every night without knowing if I may be alive to see the next day. I
-am suffering from long time cancer and presently i am partially
-suffering from a stroke illness which has become almost impossible for
-me to move around. I am married to my late husband for over 4 years
-before he died and is unfortunately that we don't have a child, my
-doctor confided in me that i have less chance to live. Having known my
-health condition, I decided to contact you to claim the fund since I
-don't have any relation I grew up from the orphanage home
+[auto build test ERROR on drm-intel/for-linux-next]
+[also build test ERROR on drm-tip/drm-tip drm/drm-next next-20220401]
+[cannot apply to tegra-drm/drm/tegra/for-next airlied/drm-next v5.17]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-I have decided to donate what I have to you for the support of helping
-Motherless babies/Less privileged/Widows' because I am dying and
-diagnosed of cancer for about 2 years ago. I have been touched by God
-Almighty to donate from what I have inherited from my late husband to
-you for good work of God Almighty. I have asked Almighty God to
-forgive me and believe he has, because He is a Merciful God I will be
-going in for an operation surgery soon
+url:    https://github.com/intel-lab-lkp/linux/commits/Zhi-Wang/Refactor-GVT-g-MMIO-tracking-table-and-handlers/20220401-210319
+base:   git://anongit.freedesktop.org/drm-intel for-linux-next
+config: x86_64-randconfig-c002 (https://download.01.org/0day-ci/archive/20220402/202204021603.W9Au0C65-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.2.0-19) 11.2.0
+reproduce (this is a W=1 build):
+        # https://github.com/intel-lab-lkp/linux/commit/eeae6480610a35a271461e864f84540d6849d8d6
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Zhi-Wang/Refactor-GVT-g-MMIO-tracking-table-and-handlers/20220401-210319
+        git checkout eeae6480610a35a271461e864f84540d6849d8d6
+        # save the config file to linux build tree
+        mkdir build_dir
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/
 
-This is the reason i need your services to stand as my next of kin or
-an executor to claim the funds for charity purposes. If this money
-remains unclaimed after my death, the bank executives or the
-government will take the money as unclaimed fund and maybe use it for
-selfish and worthless ventures, I need a very honest person who can
-claim this money and use it for Charity works, for orphanages, widows
-and also build schools for less privilege that will be named after my
-late husband and my name; I need your urgent answer to know if you
-will be able to execute this project, and I will give you more
-Information on how the fund will be transferred to your bank account.
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-Thanks
-Mrs. Therese Nina
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/gpu/drm/i915/gvt/gvt.h:39,
+                    from drivers/gpu/drm/i915/gvt/mpt.h:36,
+                    from <command-line>:
+   drivers/gpu/drm/i915/intel_gvt.h:66:15: error: no previous prototype for 'intel_gvt_get_device_type' [-Werror=missing-prototypes]
+      66 | unsigned long intel_gvt_get_device_type(struct drm_i915_private *i915)
+         |               ^~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/gpu/drm/i915/intel_gvt.h:71:41: error: 'struct intel_gvt_mmio_table_iter' declared inside parameter list will not be visible outside of this definition or declaration [-Werror]
+      71 | int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter)
+         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/gpu/drm/i915/intel_gvt.h:71:5: error: no previous prototype for 'intel_gvt_iterate_mmio_table' [-Werror=missing-prototypes]
+      71 | int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter)
+         |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/i915/gvt/gvt.h:43,
+                    from drivers/gpu/drm/i915/gvt/mpt.h:36,
+                    from <command-line>:
+>> drivers/gpu/drm/i915/gvt/mmio.h:74:15: error: conflicting types for 'intel_gvt_get_device_type'; have 'long unsigned int(struct intel_gvt *)'
+      74 | unsigned long intel_gvt_get_device_type(struct intel_gvt *gvt);
+         |               ^~~~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/i915/gvt/gvt.h:39,
+                    from drivers/gpu/drm/i915/gvt/mpt.h:36,
+                    from <command-line>:
+   drivers/gpu/drm/i915/intel_gvt.h:66:15: note: previous definition of 'intel_gvt_get_device_type' with type 'long unsigned int(struct drm_i915_private *)'
+      66 | unsigned long intel_gvt_get_device_type(struct drm_i915_private *i915)
+         |               ^~~~~~~~~~~~~~~~~~~~~~~~~
+   cc1: all warnings being treated as errors
+
+
+vim +74 drivers/gpu/drm/i915/gvt/mmio.h
+
+12d14cc43b34706 Zhi Wang     2016-08-30  71  
+8fde41076f6df53 Chris Wilson 2020-03-04  72  const struct intel_engine_cs *
+8fde41076f6df53 Chris Wilson 2020-03-04  73  intel_gvt_render_mmio_to_engine(struct intel_gvt *gvt, unsigned int reg);
+12d14cc43b34706 Zhi Wang     2016-08-30 @74  unsigned long intel_gvt_get_device_type(struct intel_gvt *gvt);
+12d14cc43b34706 Zhi Wang     2016-08-30  75  
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
