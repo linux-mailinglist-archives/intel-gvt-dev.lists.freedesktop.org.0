@@ -2,53 +2,32 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5664B4F826A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Apr 2022 17:04:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A4AC74F8F66
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Apr 2022 09:18:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F343710EA94;
-	Thu,  7 Apr 2022 15:04:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 63A9910F4C1;
+	Fri,  8 Apr 2022 07:18:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 08D5910EA64;
- Thu,  7 Apr 2022 15:04:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649343896; x=1680879896;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version:content-transfer-encoding;
- bh=Y3VPFPEBEueMVx8dW2rbCqqe+xkFwaxTb9dysb5/jW4=;
- b=DpI/LUW8BL5y/ys2/QEtXr8rAM+NN2VHQLsARenoI+mIRO9WHsjeULVi
- 1qEc5D3ETENfmRAHBbnFfefw4xl6jg76hvzfMA7pJNE664mSowVyRxYQo
- yIPOL8w8MOPmBF5L+1WffVImoH+WtZm99EyMyGkl5xmPp6fua16/CVvmH
- nTI3IlyUO7FrfvenEg6Qt0RBT0lJVnEyJKkWbt/Qw6ZfayStCPkaDH0f0
- 0F1N6g41DpwmAOiXwfD3ba5NnkeVI9/2Tcijn5Cxp6QxTDr2vmj7O3IEF
- t/yHDTM75Q1YSamVSufqJGn5vb7Z9HwkH3vv+YiIT8iGk9nURCtYny8Qc Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="261525809"
-X-IronPort-AV: E=Sophos;i="5.90,242,1643702400"; d="scan'208";a="261525809"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Apr 2022 08:03:46 -0700
-X-IronPort-AV: E=Sophos;i="5.90,242,1643702400"; d="scan'208";a="571089386"
-Received: from kgibala-mobl.ger.corp.intel.com (HELO localhost)
- ([10.249.142.48])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Apr 2022 08:03:41 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Zhi Wang <zhi.wang.linux@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org
-Subject: Re: [PATCH v9 1/3] i915/gvt: Separate the MMIO tracking table from
- GVT-g
-In-Reply-To: <20220407071945.72148-2-zhi.a.wang@intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20220407071945.72148-1-zhi.a.wang@intel.com>
- <20220407071945.72148-2-zhi.a.wang@intel.com>
-Date: Thu, 07 Apr 2022 18:03:38 +0300
-Message-ID: <874k35541h.fsf@intel.com>
+X-Greylist: delayed 21059 seconds by postgrey-1.36 at gabe;
+ Fri, 08 Apr 2022 07:18:51 UTC
+Received: from xjh.xoi.com (unknown [178.62.38.204])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 77EFC10F4B2;
+ Fri,  8 Apr 2022 07:18:51 +0000 (UTC)
+Received: from User (unknown [178.62.40.158])
+ by xjh.xoi.com (Postfix) with SMTP id 92F96371198;
+ Thu,  7 Apr 2022 22:18:06 +0000 (UTC)
+From: "Ishida Aliko Mkt. Dealers"<market.daifuku@yahoo.co.jp>
+Subject: Price Amendments. ETCDHZHQTV
+Date: Thu, 7 Apr 2022 22:18:20 -0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,104 +40,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Zhi Wang <zhi.a.wang@gmail.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Vivi Rodrigo <rodrigo.vivi@intel.com>, Christoph Hellwig <hch@lst.de>,
- Zhi Wang <zhi.a.wang@intel.com>
+Reply-To: market.daifuku@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20220408071852.63A9910F4C1@gabe.freedesktop.org>
 
-On Thu, 07 Apr 2022, Zhi Wang <zhi.wang.linux@gmail.com> wrote:
-> diff --git a/drivers/gpu/drm/i915/intel_gvt.h b/drivers/gpu/drm/i915/inte=
-l_gvt.h
-> index d7d3fb6186fd..7665d7cf0bdd 100644
-> --- a/drivers/gpu/drm/i915/intel_gvt.h
-> +++ b/drivers/gpu/drm/i915/intel_gvt.h
-> @@ -26,7 +26,17 @@
->=20=20
->  struct drm_i915_private;
->=20=20
-> +#include <linux/kernel.h>
-
-You only need <linux/types.h>. Please add it before the forward
-declaration above.
-
-> +
->  #ifdef CONFIG_DRM_I915_GVT
-> +
-> +struct intel_gvt_mmio_table_iter {
-> +	struct drm_i915_private *i915;
-> +	void *data;
-> +	int (*handle_mmio_cb)(struct intel_gvt_mmio_table_iter *iter,
-> +			      u32 offset, u32 size);
-> +};
-> +
->  int intel_gvt_init(struct drm_i915_private *dev_priv);
->  void intel_gvt_driver_remove(struct drm_i915_private *dev_priv);
->  int intel_gvt_init_device(struct drm_i915_private *dev_priv);
-> @@ -34,6 +44,7 @@ void intel_gvt_clean_device(struct drm_i915_private *de=
-v_priv);
->  int intel_gvt_init_host(void);
->  void intel_gvt_sanitize_options(struct drm_i915_private *dev_priv);
->  void intel_gvt_resume(struct drm_i915_private *dev_priv);
-> +int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter);
->  #else
->  static inline int intel_gvt_init(struct drm_i915_private *dev_priv)
->  {
-> @@ -51,6 +62,16 @@ static inline void intel_gvt_sanitize_options(struct d=
-rm_i915_private *dev_priv)
->  static inline void intel_gvt_resume(struct drm_i915_private *dev_priv)
->  {
->  }
-> +
-> +unsigned long intel_gvt_get_device_type(struct drm_i915_private *i915)
-> +{
-> +	return 0;
-> +}
-
-The CONFIG_DRM_I915_GVT=3Dy counterpart for this is in mmio.h. Should be
-both in the same header.
-
-> +
-> +int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter)
-> +{
-> +	return 0;
-> +}
->  #endif
->=20=20
->  #endif /* _INTEL_GVT_H_ */
-> diff --git a/drivers/gpu/drm/i915/intel_gvt_mmio_table.c b/drivers/gpu/dr=
-m/i915/intel_gvt_mmio_table.c
-> new file mode 100644
-> index 000000000000..d29491a6d209
-> --- /dev/null
-> +++ b/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
-> @@ -0,0 +1,1290 @@
-> +// SPDX-License-Identifier: MIT
-> +/*
-> + * Copyright =C2=A9 2020 Intel Corporation
-> + */
-> +
-> +#include "i915_drv.h"
-> +#include "i915_reg.h"
-> +#include "display/vlv_dsi_pll_regs.h"
-> +#include "gt/intel_gt_regs.h"
-> +#include "intel_mchbar_regs.h"
-> +#include "i915_pvinfo.h"
-> +#include "intel_gvt.h"
-> +#include "gvt/gvt.h"
-
-Generally we have the include lists sorted.
-
-Other than the nitpicks above, the series is
-
-Acked-by: Jani Nikula <jani.nikula@intel.com>
+Good Morning,
 
 
-BR,
-Jani.
+ Did you received my previous email?  Please reply is urgent for business. If you did not I can resend it again for your attention.
+We need quality and affordable products and services, this will help us to satisfy our clients, make new customers and have good business expansion with your company. Please send us your catalog/website for our kind reference.
+ 
 
+Thanks.
 
---=20
-Jani Nikula, Intel Open Source Graphics Center
+Ishida Alico
+( Sales Representative)
+Daifuku Co., Ltd.1-2-3 Kaigan, Minato-ku, Tokyo 105-0022 JAPAN
+Tel:+81-3-6731-3555
+Fax:+81-3-6731-3540
+3-9-31 Himesato, Nishi-yodogawa-ku, Osaka, JAPAN 555-0025
+??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+ 
+EYNQQSSHJPEBTFVSZWPCRKSNCRULNEWBEFETFK
