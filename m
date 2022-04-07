@@ -2,52 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2328F4F80D8
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Apr 2022 15:40:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5664B4F826A
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Apr 2022 17:04:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6950010E5CB;
-	Thu,  7 Apr 2022 13:40:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F343710EA94;
+	Thu,  7 Apr 2022 15:04:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6783110E3CB;
- Thu,  7 Apr 2022 13:40:50 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 08D5910EA64;
+ Thu,  7 Apr 2022 15:04:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649338850; x=1680874850;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- mime-version:in-reply-to;
- bh=Ed54NXbJJI7Rw4e9sYio4n1il0ylHLWLAnh/F3tjv5k=;
- b=XC/JSpQRnlozXeC3iX0ddttIT13KzRcnyPSEJNOslMAhJcF9IzSb6zrN
- k3AeKNd5uNIsxtglpnduQQz572Pl9/FUokErebVJCfV22W6FNTxzCQJsk
- c36I7qeuXdJWOFluZNpY0X1aI2TnZghGEufststlZi8LtCD59vewYES94
- Nkl1mhtTBacVMkYlDR0/wgLB+chZIgn4pJJ4t8oCGI6+FJWVH93Wt+pea
- C2ltIfvq2+i7AfjqFlykGhQe7kMJDvgFvVxycC2qDVljJ34TLWvKCJ9tn
- p1OgA4yLKSucPbeyY2FHW25b5TQAKbPFXYPMlBqjRMoGvrtza2H2lJLKk A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10309"; a="258919953"
-X-IronPort-AV: E=Sophos;i="5.90,242,1643702400"; 
- d="asc'?scan'208";a="258919953"
+ t=1649343896; x=1680879896;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version:content-transfer-encoding;
+ bh=Y3VPFPEBEueMVx8dW2rbCqqe+xkFwaxTb9dysb5/jW4=;
+ b=DpI/LUW8BL5y/ys2/QEtXr8rAM+NN2VHQLsARenoI+mIRO9WHsjeULVi
+ 1qEc5D3ETENfmRAHBbnFfefw4xl6jg76hvzfMA7pJNE664mSowVyRxYQo
+ yIPOL8w8MOPmBF5L+1WffVImoH+WtZm99EyMyGkl5xmPp6fua16/CVvmH
+ nTI3IlyUO7FrfvenEg6Qt0RBT0lJVnEyJKkWbt/Qw6ZfayStCPkaDH0f0
+ 0F1N6g41DpwmAOiXwfD3ba5NnkeVI9/2Tcijn5Cxp6QxTDr2vmj7O3IEF
+ t/yHDTM75Q1YSamVSufqJGn5vb7Z9HwkH3vv+YiIT8iGk9nURCtYny8Qc Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="261525809"
+X-IronPort-AV: E=Sophos;i="5.90,242,1643702400"; d="scan'208";a="261525809"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Apr 2022 06:40:49 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,242,1643702400"; 
- d="asc'?scan'208";a="571055512"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by orsmga008.jf.intel.com with ESMTP; 07 Apr 2022 06:40:46 -0700
-Date: Thu, 7 Apr 2022 21:20:54 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Zhi Wang <zhi.wang.linux@gmail.com>
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Apr 2022 08:03:46 -0700
+X-IronPort-AV: E=Sophos;i="5.90,242,1643702400"; d="scan'208";a="571089386"
+Received: from kgibala-mobl.ger.corp.intel.com (HELO localhost)
+ ([10.249.142.48])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Apr 2022 08:03:41 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org
 Subject: Re: [PATCH v9 1/3] i915/gvt: Separate the MMIO tracking table from
  GVT-g
-Message-ID: <20220407132054.GJ1089@zhen-hp.sh.intel.com>
+In-Reply-To: <20220407071945.72148-2-zhi.a.wang@intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 References: <20220407071945.72148-1-zhi.a.wang@intel.com>
  <20220407071945.72148-2-zhi.a.wang@intel.com>
+Date: Thu, 07 Apr 2022 18:03:38 +0300
+Message-ID: <874k35541h.fsf@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="twz1s1Hj1O0rHoT0"
-Content-Disposition: inline
-In-Reply-To: <20220407071945.72148-2-zhi.a.wang@intel.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,43 +61,104 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.a.wang@gmail.com>, intel-gfx@lists.freedesktop.org,
+Cc: Zhi Wang <zhi.a.wang@gmail.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Vivi Rodrigo <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.a.wang@intel.com>
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Vivi Rodrigo <rodrigo.vivi@intel.com>, Christoph Hellwig <hch@lst.de>,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Thu, 07 Apr 2022, Zhi Wang <zhi.wang.linux@gmail.com> wrote:
+> diff --git a/drivers/gpu/drm/i915/intel_gvt.h b/drivers/gpu/drm/i915/inte=
+l_gvt.h
+> index d7d3fb6186fd..7665d7cf0bdd 100644
+> --- a/drivers/gpu/drm/i915/intel_gvt.h
+> +++ b/drivers/gpu/drm/i915/intel_gvt.h
+> @@ -26,7 +26,17 @@
+>=20=20
+>  struct drm_i915_private;
+>=20=20
+> +#include <linux/kernel.h>
 
---twz1s1Hj1O0rHoT0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+You only need <linux/types.h>. Please add it before the forward
+declaration above.
 
-On 2022.04.07 03:19:43 -0400, Zhi Wang wrote:
-> From: Zhi Wang <zhi.a.wang@gmail.com>
->=20
-> To support the new mdev interfaces and the re-factor patches from
-> Christoph, which moves the GVT-g code into a dedicated module, the GVT-g
-> MMIO tracking table needs to be separated from GVT-g.
->
+> +
+>  #ifdef CONFIG_DRM_I915_GVT
+> +
+> +struct intel_gvt_mmio_table_iter {
+> +	struct drm_i915_private *i915;
+> +	void *data;
+> +	int (*handle_mmio_cb)(struct intel_gvt_mmio_table_iter *iter,
+> +			      u32 offset, u32 size);
+> +};
+> +
+>  int intel_gvt_init(struct drm_i915_private *dev_priv);
+>  void intel_gvt_driver_remove(struct drm_i915_private *dev_priv);
+>  int intel_gvt_init_device(struct drm_i915_private *dev_priv);
+> @@ -34,6 +44,7 @@ void intel_gvt_clean_device(struct drm_i915_private *de=
+v_priv);
+>  int intel_gvt_init_host(void);
+>  void intel_gvt_sanitize_options(struct drm_i915_private *dev_priv);
+>  void intel_gvt_resume(struct drm_i915_private *dev_priv);
+> +int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter);
+>  #else
+>  static inline int intel_gvt_init(struct drm_i915_private *dev_priv)
+>  {
+> @@ -51,6 +62,16 @@ static inline void intel_gvt_sanitize_options(struct d=
+rm_i915_private *dev_priv)
+>  static inline void intel_gvt_resume(struct drm_i915_private *dev_priv)
+>  {
+>  }
+> +
+> +unsigned long intel_gvt_get_device_type(struct drm_i915_private *i915)
+> +{
+> +	return 0;
+> +}
 
-Looks fine to me. Thanks!
+The CONFIG_DRM_I915_GVT=3Dy counterpart for this is in mmio.h. Should be
+both in the same header.
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> +
+> +int intel_gvt_iterate_mmio_table(struct intel_gvt_mmio_table_iter *iter)
+> +{
+> +	return 0;
+> +}
+>  #endif
+>=20=20
+>  #endif /* _INTEL_GVT_H_ */
+> diff --git a/drivers/gpu/drm/i915/intel_gvt_mmio_table.c b/drivers/gpu/dr=
+m/i915/intel_gvt_mmio_table.c
+> new file mode 100644
+> index 000000000000..d29491a6d209
+> --- /dev/null
+> +++ b/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
+> @@ -0,0 +1,1290 @@
+> +// SPDX-License-Identifier: MIT
+> +/*
+> + * Copyright =C2=A9 2020 Intel Corporation
+> + */
+> +
+> +#include "i915_drv.h"
+> +#include "i915_reg.h"
+> +#include "display/vlv_dsi_pll_regs.h"
+> +#include "gt/intel_gt_regs.h"
+> +#include "intel_mchbar_regs.h"
+> +#include "i915_pvinfo.h"
+> +#include "intel_gvt.h"
+> +#include "gvt/gvt.h"
 
---twz1s1Hj1O0rHoT0
-Content-Type: application/pgp-signature; name="signature.asc"
+Generally we have the include lists sorted.
 
------BEGIN PGP SIGNATURE-----
+Other than the nitpicks above, the series is
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYk7lLAAKCRCxBBozTXgY
-J6juAJ4/fE3Ex93O/3BhoMK0jebj1njtVwCfXDscbKT5PuPP5NWW0hwjYVTpv44=
-=VtR0
------END PGP SIGNATURE-----
+Acked-by: Jani Nikula <jani.nikula@intel.com>
 
---twz1s1Hj1O0rHoT0--
+
+BR,
+Jani.
+
+
+--=20
+Jani Nikula, Intel Open Source Graphics Center
