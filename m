@@ -1,161 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33DCA4F97A9
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Apr 2022 16:08:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46F1C4F9D7A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Apr 2022 21:08:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 997D910F27F;
-	Fri,  8 Apr 2022 14:08:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E94E510E68B;
+	Fri,  8 Apr 2022 19:08:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 481FC10F27F;
- Fri,  8 Apr 2022 14:08:04 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B1A5E10E68B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri,  8 Apr 2022 19:08:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649426884; x=1680962884;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=N04CrbonghHbn4TEAC8OxOt2//PU0GVTUSrjO906ko4=;
- b=RY9aHh8DvWAPWRRBptMyH+zPrVmObaWr/ms9pIn+iwJx2w3AVuozBOsA
- gLf/0RvpYEDF6I3IkHjhTXkqnROZ5jo+gaxxRiNi1GT7RaYCbCoaj/16n
- 6UhCKRBPskPJg4PlVdNUv9RKqqABsJ5iuTtNx0W+Q23mVe4Ko0MA37s/I
- 83UgO1zQ/3WvrLPkAn4pb0yBpLQqWXgppSpHWl6OE24aZwMLqTZOFAXqq
- ccv1iocUAVU70ljmafQPj7qNokRnUX+fubw47R42El8Xz9SyrSpvKmWNP
- djNytdAhRDXtptr3h0qgFfmOpUnHVDOhOfBW0E/wnafagPUEDopRzj2ie g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="261591778"
-X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="261591778"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2022 07:08:03 -0700
+ t=1649444886; x=1680980886;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=FxJKwOUl1MlqPc/WkywJNLE0a2oQDkypTFPhDqZX7mg=;
+ b=BIo81or8VRY5/rBf1fDKitx8mpDTVmEWOs53FOqMYkIIqNJRnFLxlyJ8
+ xEfNmGAWEYpWjs/fXkJ9ELThNHovJlhkugClkvMIL/y2OfLglIZT6XyO9
+ rkIg3s33YxQy90WcdptOyZQ6xccgq/QKe4y+pMhKTpEzf30Etx/OuYVqw
+ 7n2oBd+1si+NydN4u/Ssik7PfvBmcauu5ZmnOi8c/tAyeFqWO4bruFaQE
+ IbNO9a+VsGuZiWTGvA4aeoD/ronhdIVRa477Ev2PjL5KQ0AVTfFZv9hko
+ 4grezBX7e5RfQOvNeaaCaaquOxcqVJyNl4f9L1R4x7UBL0gqp+BA2TWnf g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="324829752"
+X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="324829752"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2022 12:08:06 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="557787569"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by fmsmga007.fm.intel.com with ESMTP; 08 Apr 2022 07:08:02 -0700
-Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Fri, 8 Apr 2022 07:08:02 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Fri, 8 Apr 2022 07:08:02 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.175)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Fri, 8 Apr 2022 07:08:01 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VeEBN+vbMJQDAGSsInROsud+CsVwJmWmZ8I2ccv2BVcHEa3lsbbs6Rm5Q9KkDbSwOVDh4zU0PdecnuCTqFR6F2CYQ1MUKj26u0oX4aJRkCqptIkVhnU3k3TnMQdzXlB3jCZ2wHfh8Hn3euYGnbdQcj8jjMX094PN0ibEhbomMpWOKF5wfxNvu/4uN38hLYCwOMEbv9if4za7IrOXSFNp+XrGgdyJK+u230bnxoPhblJ37zg4x4hfIFScoKTqOV9Id+xU8vWvpiUzKlbcE2CvcVjkgS/ypkeFMkFSXVquqBRKgyT/7jVDPVoBF82Crdy+OH6MfIhVvnYXurMfTsbFbw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=N04CrbonghHbn4TEAC8OxOt2//PU0GVTUSrjO906ko4=;
- b=ed0NLsxH/XelQvcMs9L4sBL3hWasLujA664pJccPjGRGV4r0sKWW1RB6Vq/64EatT3saysmdmtIMSz2sy245ZFTb+JvDzPttJjdTi8+KJH9Xm8YaEoVu7rTL+7RYHI1zzwg+lNNtshE2fypK8fEiMjYBer9WD7zNkCkBQMCLrFmw89xwqTNHOrhb4OHzg3SiCjHX/h84wPlD0YsTp2VgYohS77/n7JksM356Yjjq+Uqk23txaieUHAwEdLhqel7qQXyWq2+es9TXKbgdSDv9TF9qgNkNjw8BE/MOg6mu203gBMqgsVLVKSe/uvlWOX72ivgmpFS/b6OB+7cafV7SqA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM4PR11MB5549.namprd11.prod.outlook.com (2603:10b6:5:388::7) by
- BN6PR11MB1476.namprd11.prod.outlook.com (2603:10b6:405:b::12) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5144.26; Fri, 8 Apr 2022 14:07:59 +0000
-Received: from DM4PR11MB5549.namprd11.prod.outlook.com
- ([fe80::e5b8:93eb:e06b:f1ab]) by DM4PR11MB5549.namprd11.prod.outlook.com
- ([fe80::e5b8:93eb:e06b:f1ab%5]) with mapi id 15.20.5144.022; Fri, 8 Apr 2022
- 14:07:59 +0000
-From: "Wang, Zhi A" <zhi.a.wang@intel.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>, Zhi Wang
- <zhi.wang.linux@gmail.com>, "dri-devel@lists.freedesktop.org"
- <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "intel-gfx@lists.freedesktop.org"
- <intel-gfx@lists.freedesktop.org>, "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>
-Subject: Re: [PATCH v9 1/3] i915/gvt: Separate the MMIO tracking table from
- GVT-g
-Thread-Topic: [PATCH v9 1/3] i915/gvt: Separate the MMIO tracking table from
- GVT-g
-Thread-Index: AQHYSk/vDxh6otQMi0KsvRqKHUKM56zkjLIAgAGCyIA=
-Date: Fri, 8 Apr 2022 14:07:59 +0000
-Message-ID: <986b8ff0-d0de-437c-8a56-c54aafb6159a@intel.com>
-References: <20220407071945.72148-1-zhi.a.wang@intel.com>
- <20220407071945.72148-2-zhi.a.wang@intel.com> <874k35541h.fsf@intel.com>
-In-Reply-To: <874k35541h.fsf@intel.com>
-Accept-Language: en-FI, en-US
-Content-Language: aa
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6da904a9-9425-470c-f721-08da1969303b
-x-ms-traffictypediagnostic: BN6PR11MB1476:EE_
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-microsoft-antispam-prvs: <BN6PR11MB1476B9CDD26C60D734466FA6CAE99@BN6PR11MB1476.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: BgUahAS02BRsAY1d0/+4uYxgT8D0t+rqMXqsbPPimMVdMTsiJ6SalqQxhoe9BCU4JCFL0YqN0RcbATqfxlu0Uioog05NkGUjKEosy9ym1u/aGcYXWU9W4yrVxTfwiwVNfPYVe5+TRjabo2U7cJ4lVC1STWRduNyEAh0Wn3iLQ4b9o094XDm5jOjiZmwdY/Ira239gx44smfPuTC00EDH1sRazfpQGf3+HKKgAnaP2B6xXUmN5QFNYwrRawgDgqXwfNY+FDsFqOfSJppR8EJ5JvRK4hvbIB61zorJkR5nQ5vNlGJ+dMbrb5NRiJu1XD3Rx+KF2bzMel+FrUkV5bcshV8FpeVk9tenQN1Jv40PynBc4VtR5AwwhmSfVvP8vJUufbK+8ZtSmS173JPP+oY5TkPkU+T4arwkWkZbgiMlWLxoTNf5bnMK0wjSn5pOxn3JcwzQjAYTGEgqSCNKmmSVoIn+in7YFR/r+clzpO9hDOwQvvstvd/O2+WQaajHTSuWjcGp3XcZLG4JV5PhTr5juNYj1SP9FUzYJGQQfo4VjTt/huDAXYeecNLymv2guA19l0R9KuZ55DIMaJVuUlJt6aFMWzEVceCVPi2AkF676XMCmOa0tirrMke2V2WFxd57FTx18DtxNchQRVouVAY8o//NPJEZAPKFL3COf9U2FqhK2A5vxAChlgMxWsV4c/nbEurWVAG+R9Q426uTqEQbCDH1GaqP+yqS2fVtECVQv0f9yH44ji9Rt/uaQkx8TwXnHadBo4/SQB95a0KQ8TdbFQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB5549.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(64756008)(91956017)(4326008)(66946007)(66446008)(66556008)(8676002)(2616005)(76116006)(6512007)(66476007)(31686004)(82960400001)(36756003)(53546011)(6506007)(316002)(110136005)(54906003)(26005)(186003)(7416002)(122000001)(6486002)(71200400001)(8936002)(83380400001)(38100700002)(31696002)(86362001)(5660300002)(508600001)(2906002)(38070700005)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?a3IvbERqVVB2NkpkWGN1b2xyL3VVVkNjVnpqUHJJcEtLdDZ1TTkrcEtRdlJL?=
- =?utf-8?B?VlNxbU9Ebk8rSElid3A1YVN5a1dVaWRwcjQzUkxQa2JvZWtpbEIzMW1EQ0pG?=
- =?utf-8?B?WWZicE1yQzJPcmFxTWdab2dlWlp6ZTY2blNva3hFazZTNE1mTjczSXBSUkJP?=
- =?utf-8?B?a1hWS0JoNVZMMXRJSkdhT3Y3UlkwWllCY0FBOGUxNmt3L2UwcHZna3BMNzVU?=
- =?utf-8?B?VEhUTTREM1Z0TysxcGg4MjNVOEhGL3lRUWF2YXI3Wi96aVdVc2hQekdXdVNM?=
- =?utf-8?B?eFFDQlp1UmJacmFTTmsydGVqeFNwOXArMTVpY0JVYjNqTUFnR2IvRnR4WnBj?=
- =?utf-8?B?a1hsOUE5bytoYkVXYTJQUVBpOWRQREhzSDlla1Rxd3pzSXd6WEtYY0ZaK1RK?=
- =?utf-8?B?ZVJibEF5eDcyVzNrOVlVSzR4QXZNRGFXc21saG9lMVBibTNlZGFIODFBb1RV?=
- =?utf-8?B?eHNtcW5SZmZtRFc4UHRKWDI5Y25RNDZJNkhlWjF6dm1LYllTbHZlTW1PUzht?=
- =?utf-8?B?bHhGQzBJV09rOWJrdHRWU1hOVGQwYTA2NkRsQkNBVm5Qb0t6a0krZjFwNm9w?=
- =?utf-8?B?ai9ENkJpa1JyUFkwbFg0Y3Uvb0VuanZ2NndUc2hEK28vM205UzJDZUNiY3k3?=
- =?utf-8?B?WkRGNWRFcDU5SHZMZGplTVZoNVJtREJ0UTFXZlFxVDhNZng2RUZUbnJsMm1U?=
- =?utf-8?B?ajdRY3V3NTRLZTdsK3h4ZGtmYmlpUDRGTWl2VjBuVzBVb3NDWTRYRWlhUnRo?=
- =?utf-8?B?QTFoSWdXdzRtQ0tGR2hlaVQzTktxc3ZHWTMyb2lmMzhWUHNxdFdNM3pIZ3Fa?=
- =?utf-8?B?czZzVm5zQXdvdzJRMDJEeHpQYmJjQXU3bGtSbjNERG5MSkV5TzRXV0xYOUxI?=
- =?utf-8?B?Y3F6VXNFQk52WnFTbTdQcEk4akFyQ2dtS1hxYkd4Um9LL3dTS3A4SWpORitY?=
- =?utf-8?B?WllHRm9lR01jQVREb0kwQnYwNUNnZlpOUWk0aDVQWkIyTllkSlo3ZGtaSkdl?=
- =?utf-8?B?QjMxUWxpU0Q0d3E1NzF4THI5ZEZXV21DbEFMeTAzcHZyZFYzdzQwcjc4RUlO?=
- =?utf-8?B?YjlRMjMzcGlqYmtYak9NTlAvbnJCdVA4V1p6U2tEbFhOTmpGTW9CY2VWOGdh?=
- =?utf-8?B?Y2VjSXA2YTZLbXUxcUN4ckxBelVQVTlDTGdHU045UzlWOWFXZzhsVjVHUlBJ?=
- =?utf-8?B?WVpRRlc2N1FiTDZCV0dVZHQ3MTE3THYrVUZVY3NvYTEwZENWK2xMMUZxY0ph?=
- =?utf-8?B?OThwQldLS0Rwd3U2VHUwV0t3TnZqWHowMDUra1I2azFQOUJQTTR3Qm5Bbnpz?=
- =?utf-8?B?cTlqWVdEUnRHTXRaRXpWa3dXdG5rdURneUh4dzhRMDN2OFk0ejNsbkNsVW1v?=
- =?utf-8?B?QWRBOFpYUmVjQ1NDNzVNUDZKS2Fmdm5JaUN5cWEwbUw1R0Y4Q3VUVC9ZUG84?=
- =?utf-8?B?MlprcHJid0VvTHhORFFkVGgwb2lsZy9uUnNvZkZ5Uk9Ca1NkVUZwM09CSE1T?=
- =?utf-8?B?RUJGQk5oUDMva0RhL2ZSUGRZWXl5eTd4UUF2VEFlK2JDVkF6QUtNcGFhV1ZE?=
- =?utf-8?B?TGVYVDhMdk5DeHI0QzhTSnYxTmhYSVFXQmxDeXl2Z1NMcVZYUlVWb21VdTV1?=
- =?utf-8?B?bUxLOUY1OHIyb0dBMncrRTlUMCtMb0dVRnVNWnVMZ2NxK2lTNG9BQVF0MU9t?=
- =?utf-8?B?cVdSRW5GVUV0cklFRjZKTHNTdThVYVNPaXlibVZPZUIvaDlNb0ZoQnprd0lz?=
- =?utf-8?B?citCQVk2dUtPcmYwdjV2V2RiWm1Oa1JaNnpseEp4YWUwTENpUk12aVdIRXh6?=
- =?utf-8?B?cVlSa3Z3OEhpSURXUitESU9QS24yMXhCUjYzWXE0UnY2STQvVDA5RHpxWnJ1?=
- =?utf-8?B?N1lPZ3lva2czd3dhSTBDbmIyWGpqMlBHeXc1SStDaEFjVGV2cmtqelpXY01J?=
- =?utf-8?B?TDB5MXBEUURyOGFHangwOUVLcHJEOGpPdFdkTFBNUDI1K3FCdzNLTktOZFNk?=
- =?utf-8?B?RWhOYUI2TGw1cDBBRnBtREc3b3dLWUlabm9PRGVvZ2J0Ujltby91S09vUlFu?=
- =?utf-8?B?OXQwT04xL3FJbC85MGpxNG9qRnd6dlZ4djBHclFETkI3SHlLdWowWENWc0da?=
- =?utf-8?B?WE1ZRXczUG5QY09ZelhnS1c0a2VrcCtmanM3NHh6N200eGkrSitTMWpsQVEx?=
- =?utf-8?B?ZDlWdExESGlObU5ickR1bUppY3hpSDBCNVlONTJhYUNFQ2tUUHpnSjNneVk0?=
- =?utf-8?B?TXc4MUlmMXZ1cnVNK3RSb3dOVTBXcjBDVHVBTTA1emxOam5TV3lBREEwb0ZE?=
- =?utf-8?B?K2NsTVY2d00rNmkzME0vVmRDM2c5RE9Gckh4OHI5YTRQYm1aTHViZz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <278712CB053F3B428BB5AB2D98705F55@namprd11.prod.outlook.com>
-Content-Transfer-Encoding: base64
+X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="609863990"
+Received: from lkp-server02.sh.intel.com (HELO 7e80bc2a00a0) ([10.239.97.151])
+ by fmsmga008.fm.intel.com with ESMTP; 08 Apr 2022 12:08:04 -0700
+Received: from kbuild by 7e80bc2a00a0 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nctxj-0000Yi-CJ;
+ Fri, 08 Apr 2022 19:08:03 +0000
+Date: Sat, 9 Apr 2022 03:07:53 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.a.wang@intel.com>
+Subject: [intel-gvt:gvt-staging 2/3]
+ drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:9: error: use of undeclared
+ identifier 'DMC_SSP_BASE'
+Message-ID: <202204090309.4k0CRWvn-lkp@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5549.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6da904a9-9425-470c-f721-08da1969303b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Apr 2022 14:07:59.7218 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: z/lPTDM6IqJQePvhdZPWPin6lSObsNdE6B7ELQLQq39WklrNQ20LVcX9FPaaKLAbsmpEkCJHQJVoUM79dh8Qiw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1476
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -168,67 +59,256 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Zhi Wang <zhi.a.wang@gmail.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Jason
- Gunthorpe <jgg@nvidia.com>, "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: kbuild-all@lists.01.org, zhenyu.z.wang@intel.com, llvm@lists.linux.dev,
+ linux-kernel@vger.kernel.org, terrence.xu@intel.com,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-SGkgSmFuaToNCg0KVGhhbmtzIHNvIG11Y2ggZm9yIHRoZSBoZWxwLiBDYW4geW91IGdlbmVyYXRl
-IGEgbmV3IHRhZyBvbiBkcm0taW50ZWwtbmV4dD8gSSBub3RpY2VkIHRoYXQgdGhlcmUgd2FzIG9u
-ZSBwYXRjaCBtb3ZpbmcgdGhlIERNQyByZWxhdGVkIHJlZ2lzdGVycyBpbnRvIGRpc3BsYXkvaW50
-ZWxfZG1jX3JlZ3MuaCwgd2hpY2ggaXMgbm90IGluY2x1ZGVkIGluIHRoZSBsYXRlc3QgdGFnIG9u
-IGRybS1pbnRlbC1uZXh0Lg0KDQpHdWVzcyBpdCB3b3VsZCBiZSBiZXR0ZXIgdGhhdCBJIGNhbiBj
-aGFuZ2UgdGhpcyBwYXRjaCBhY2NvcmRpbmcgdG8gaXQgd2hlbiBjaGVja2luZyBpbi4gVGhpcyB3
-b3VsZCBwcmV2ZW50IGEgY29uZmxpY3QgaW4gZnV0dXJlLg0KDQpUaGFua3MsDQpaaGkuDQoNCk9u
-IDQvNy8yMiAzOjAzIFBNLCBKYW5pIE5pa3VsYSB3cm90ZToNCj4gT24gVGh1LCAwNyBBcHIgMjAy
-MiwgWmhpIFdhbmcgPHpoaS53YW5nLmxpbnV4QGdtYWlsLmNvbT4gd3JvdGU6DQo+PiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfZ3Z0LmggYi9kcml2ZXJzL2dwdS9kcm0v
-aTkxNS9pbnRlbF9ndnQuaA0KPj4gaW5kZXggZDdkM2ZiNjE4NmZkLi43NjY1ZDdjZjBiZGQgMTAw
-NjQ0DQo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pbnRlbF9ndnQuaA0KPj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfZ3Z0LmgNCj4+IEBAIC0yNiw3ICsyNiwxNyBAQA0K
-Pj4gIA0KPj4gIHN0cnVjdCBkcm1faTkxNV9wcml2YXRlOw0KPj4gIA0KPj4gKyNpbmNsdWRlIDxs
-aW51eC9rZXJuZWwuaD4NCj4gDQo+IFlvdSBvbmx5IG5lZWQgPGxpbnV4L3R5cGVzLmg+LiBQbGVh
-c2UgYWRkIGl0IGJlZm9yZSB0aGUgZm9yd2FyZA0KPiBkZWNsYXJhdGlvbiBhYm92ZS4NCj4gDQo+
-PiArDQo+PiAgI2lmZGVmIENPTkZJR19EUk1fSTkxNV9HVlQNCj4+ICsNCj4+ICtzdHJ1Y3QgaW50
-ZWxfZ3Z0X21taW9fdGFibGVfaXRlciB7DQo+PiArCXN0cnVjdCBkcm1faTkxNV9wcml2YXRlICpp
-OTE1Ow0KPj4gKwl2b2lkICpkYXRhOw0KPj4gKwlpbnQgKCpoYW5kbGVfbW1pb19jYikoc3RydWN0
-IGludGVsX2d2dF9tbWlvX3RhYmxlX2l0ZXIgKml0ZXIsDQo+PiArCQkJICAgICAgdTMyIG9mZnNl
-dCwgdTMyIHNpemUpOw0KPj4gK307DQo+PiArDQo+PiAgaW50IGludGVsX2d2dF9pbml0KHN0cnVj
-dCBkcm1faTkxNV9wcml2YXRlICpkZXZfcHJpdik7DQo+PiAgdm9pZCBpbnRlbF9ndnRfZHJpdmVy
-X3JlbW92ZShzdHJ1Y3QgZHJtX2k5MTVfcHJpdmF0ZSAqZGV2X3ByaXYpOw0KPj4gIGludCBpbnRl
-bF9ndnRfaW5pdF9kZXZpY2Uoc3RydWN0IGRybV9pOTE1X3ByaXZhdGUgKmRldl9wcml2KTsNCj4+
-IEBAIC0zNCw2ICs0NCw3IEBAIHZvaWQgaW50ZWxfZ3Z0X2NsZWFuX2RldmljZShzdHJ1Y3QgZHJt
-X2k5MTVfcHJpdmF0ZSAqZGV2X3ByaXYpOw0KPj4gIGludCBpbnRlbF9ndnRfaW5pdF9ob3N0KHZv
-aWQpOw0KPj4gIHZvaWQgaW50ZWxfZ3Z0X3Nhbml0aXplX29wdGlvbnMoc3RydWN0IGRybV9pOTE1
-X3ByaXZhdGUgKmRldl9wcml2KTsNCj4+ICB2b2lkIGludGVsX2d2dF9yZXN1bWUoc3RydWN0IGRy
-bV9pOTE1X3ByaXZhdGUgKmRldl9wcml2KTsNCj4+ICtpbnQgaW50ZWxfZ3Z0X2l0ZXJhdGVfbW1p
-b190YWJsZShzdHJ1Y3QgaW50ZWxfZ3Z0X21taW9fdGFibGVfaXRlciAqaXRlcik7DQo+PiAgI2Vs
-c2UNCj4+ICBzdGF0aWMgaW5saW5lIGludCBpbnRlbF9ndnRfaW5pdChzdHJ1Y3QgZHJtX2k5MTVf
-cHJpdmF0ZSAqZGV2X3ByaXYpDQo+PiAgew0KPj4gQEAgLTUxLDYgKzYyLDE2IEBAIHN0YXRpYyBp
-bmxpbmUgdm9pZCBpbnRlbF9ndnRfc2FuaXRpemVfb3B0aW9ucyhzdHJ1Y3QgZHJtX2k5MTVfcHJp
-dmF0ZSAqZGV2X3ByaXYpDQo+PiAgc3RhdGljIGlubGluZSB2b2lkIGludGVsX2d2dF9yZXN1bWUo
-c3RydWN0IGRybV9pOTE1X3ByaXZhdGUgKmRldl9wcml2KQ0KPj4gIHsNCj4+ICB9DQo+PiArDQo+
-PiArdW5zaWduZWQgbG9uZyBpbnRlbF9ndnRfZ2V0X2RldmljZV90eXBlKHN0cnVjdCBkcm1faTkx
-NV9wcml2YXRlICppOTE1KQ0KPj4gK3sNCj4+ICsJcmV0dXJuIDA7DQo+PiArfQ0KPiANCj4gVGhl
-IENPTkZJR19EUk1fSTkxNV9HVlQ9eSBjb3VudGVycGFydCBmb3IgdGhpcyBpcyBpbiBtbWlvLmgu
-IFNob3VsZCBiZQ0KPiBib3RoIGluIHRoZSBzYW1lIGhlYWRlci4NCj4gDQo+PiArDQo+PiAraW50
-IGludGVsX2d2dF9pdGVyYXRlX21taW9fdGFibGUoc3RydWN0IGludGVsX2d2dF9tbWlvX3RhYmxl
-X2l0ZXIgKml0ZXIpDQo+PiArew0KPj4gKwlyZXR1cm4gMDsNCj4+ICt9DQo+PiAgI2VuZGlmDQo+
-PiAgDQo+PiAgI2VuZGlmIC8qIF9JTlRFTF9HVlRfSF8gKi8NCj4+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vaTkxNS9pbnRlbF9ndnRfbW1pb190YWJsZS5jIGIvZHJpdmVycy9ncHUvZHJt
-L2k5MTUvaW50ZWxfZ3Z0X21taW9fdGFibGUuYw0KPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQNCj4+
-IGluZGV4IDAwMDAwMDAwMDAwMC4uZDI5NDkxYTZkMjA5DQo+PiAtLS0gL2Rldi9udWxsDQo+PiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pbnRlbF9ndnRfbW1pb190YWJsZS5jDQo+PiBAQCAt
-MCwwICsxLDEyOTAgQEANCj4+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogTUlUDQo+PiAr
-LyoNCj4+ICsgKiBDb3B5cmlnaHQgwqkgMjAyMCBJbnRlbCBDb3Jwb3JhdGlvbg0KPj4gKyAqLw0K
-Pj4gKw0KPj4gKyNpbmNsdWRlICJpOTE1X2Rydi5oIg0KPj4gKyNpbmNsdWRlICJpOTE1X3JlZy5o
-Ig0KPj4gKyNpbmNsdWRlICJkaXNwbGF5L3Zsdl9kc2lfcGxsX3JlZ3MuaCINCj4+ICsjaW5jbHVk
-ZSAiZ3QvaW50ZWxfZ3RfcmVncy5oIg0KPj4gKyNpbmNsdWRlICJpbnRlbF9tY2hiYXJfcmVncy5o
-Ig0KPj4gKyNpbmNsdWRlICJpOTE1X3B2aW5mby5oIg0KPj4gKyNpbmNsdWRlICJpbnRlbF9ndnQu
-aCINCj4+ICsjaW5jbHVkZSAiZ3Z0L2d2dC5oIg0KPiANCj4gR2VuZXJhbGx5IHdlIGhhdmUgdGhl
-IGluY2x1ZGUgbGlzdHMgc29ydGVkLg0KPiANCj4gT3RoZXIgdGhhbiB0aGUgbml0cGlja3MgYWJv
-dmUsIHRoZSBzZXJpZXMgaXMNCj4gDQo+IEFja2VkLWJ5OiBKYW5pIE5pa3VsYSA8amFuaS5uaWt1
-bGFAaW50ZWwuY29tPg0KPiANCj4gDQo+IEJSLA0KPiBKYW5pLg0KPiANCj4gDQoNCg==
+tree:   https://github.com/intel/gvt-linux.git gvt-staging
+head:   d7b5d2c7c69602d92c926075fb8191a7d6df2c08
+commit: 94b8f98a1026f9b304417f8152b99993f24baf13 [2/3] Merge remote-tracking branch 'origin/gvt-next' into gvt-staging
+config: x86_64-randconfig-a005 (https://download.01.org/0day-ci/archive/20220409/202204090309.4k0CRWvn-lkp@intel.com/config)
+compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project c29a51b3a257908aebc01cd7c4655665db317d66)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel/gvt-linux/commit/94b8f98a1026f9b304417f8152b99993f24baf13
+        git remote add intel-gvt https://github.com/intel/gvt-linux.git
+        git fetch --no-tags intel-gvt gvt-staging
+        git checkout 94b8f98a1026f9b304417f8152b99993f24baf13
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/drm/i915/
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:9: error: use of undeclared identifier 'DMC_SSP_BASE'
+           MMIO_D(DMC_SSP_BASE);
+                  ^
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1022:9: error: use of undeclared identifier 'DMC_HTP_SKL'
+           MMIO_D(DMC_HTP_SKL);
+                  ^
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1023:9: error: use of undeclared identifier 'DMC_LAST_WRITE'
+           MMIO_D(DMC_LAST_WRITE);
+                  ^
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1080:15: error: use of undeclared identifier 'DMC_MMIO_START_RANGE'
+           MMIO_F(_MMIO(DMC_MMIO_START_RANGE), 0x3000);
+                        ^
+   4 errors generated.
+
+
+vim +/DMC_SSP_BASE +1021 drivers/gpu/drm/i915/intel_gvt_mmio_table.c
+
+e870ce1791520c Zhi Wang 2022-04-07   885  
+e870ce1791520c Zhi Wang 2022-04-07   886  static int iterate_skl_plus_mmio(struct intel_gvt_mmio_table_iter *iter)
+e870ce1791520c Zhi Wang 2022-04-07   887  {
+e870ce1791520c Zhi Wang 2022-04-07   888  	struct drm_i915_private *dev_priv = iter->i915;
+e870ce1791520c Zhi Wang 2022-04-07   889  
+e870ce1791520c Zhi Wang 2022-04-07   890  	MMIO_D(FORCEWAKE_RENDER_GEN9);
+e870ce1791520c Zhi Wang 2022-04-07   891  	MMIO_D(FORCEWAKE_ACK_RENDER_GEN9);
+e870ce1791520c Zhi Wang 2022-04-07   892  	MMIO_D(FORCEWAKE_GT_GEN9);
+e870ce1791520c Zhi Wang 2022-04-07   893  	MMIO_D(FORCEWAKE_ACK_GT_GEN9);
+e870ce1791520c Zhi Wang 2022-04-07   894  	MMIO_D(FORCEWAKE_MEDIA_GEN9);
+e870ce1791520c Zhi Wang 2022-04-07   895  	MMIO_D(FORCEWAKE_ACK_MEDIA_GEN9);
+e870ce1791520c Zhi Wang 2022-04-07   896  	MMIO_F(DP_AUX_CH_CTL(AUX_CH_B), 6 * 4);
+e870ce1791520c Zhi Wang 2022-04-07   897  	MMIO_F(DP_AUX_CH_CTL(AUX_CH_C), 6 * 4);
+e870ce1791520c Zhi Wang 2022-04-07   898  	MMIO_F(DP_AUX_CH_CTL(AUX_CH_D), 6 * 4);
+e870ce1791520c Zhi Wang 2022-04-07   899  	MMIO_D(HSW_PWR_WELL_CTL1);
+e870ce1791520c Zhi Wang 2022-04-07   900  	MMIO_D(HSW_PWR_WELL_CTL2);
+e870ce1791520c Zhi Wang 2022-04-07   901  	MMIO_D(DBUF_CTL_S(0));
+e870ce1791520c Zhi Wang 2022-04-07   902  	MMIO_D(GEN9_PG_ENABLE);
+e870ce1791520c Zhi Wang 2022-04-07   903  	MMIO_D(GEN9_MEDIA_PG_IDLE_HYSTERESIS);
+e870ce1791520c Zhi Wang 2022-04-07   904  	MMIO_D(GEN9_RENDER_PG_IDLE_HYSTERESIS);
+e870ce1791520c Zhi Wang 2022-04-07   905  	MMIO_D(GEN9_GAMT_ECO_REG_RW_IA);
+e870ce1791520c Zhi Wang 2022-04-07   906  	MMIO_D(MMCD_MISC_CTRL);
+e870ce1791520c Zhi Wang 2022-04-07   907  	MMIO_D(CHICKEN_PAR1_1);
+e870ce1791520c Zhi Wang 2022-04-07   908  	MMIO_D(DC_STATE_EN);
+e870ce1791520c Zhi Wang 2022-04-07   909  	MMIO_D(DC_STATE_DEBUG);
+e870ce1791520c Zhi Wang 2022-04-07   910  	MMIO_D(CDCLK_CTL);
+e870ce1791520c Zhi Wang 2022-04-07   911  	MMIO_D(LCPLL1_CTL);
+e870ce1791520c Zhi Wang 2022-04-07   912  	MMIO_D(LCPLL2_CTL);
+e870ce1791520c Zhi Wang 2022-04-07   913  	MMIO_D(_MMIO(_DPLL1_CFGCR1));
+e870ce1791520c Zhi Wang 2022-04-07   914  	MMIO_D(_MMIO(_DPLL2_CFGCR1));
+e870ce1791520c Zhi Wang 2022-04-07   915  	MMIO_D(_MMIO(_DPLL3_CFGCR1));
+e870ce1791520c Zhi Wang 2022-04-07   916  	MMIO_D(_MMIO(_DPLL1_CFGCR2));
+e870ce1791520c Zhi Wang 2022-04-07   917  	MMIO_D(_MMIO(_DPLL2_CFGCR2));
+e870ce1791520c Zhi Wang 2022-04-07   918  	MMIO_D(_MMIO(_DPLL3_CFGCR2));
+e870ce1791520c Zhi Wang 2022-04-07   919  	MMIO_D(DPLL_CTRL1);
+e870ce1791520c Zhi Wang 2022-04-07   920  	MMIO_D(DPLL_CTRL2);
+e870ce1791520c Zhi Wang 2022-04-07   921  	MMIO_D(DPLL_STATUS);
+e870ce1791520c Zhi Wang 2022-04-07   922  	MMIO_D(SKL_PS_WIN_POS(PIPE_A, 0));
+e870ce1791520c Zhi Wang 2022-04-07   923  	MMIO_D(SKL_PS_WIN_POS(PIPE_A, 1));
+e870ce1791520c Zhi Wang 2022-04-07   924  	MMIO_D(SKL_PS_WIN_POS(PIPE_B, 0));
+e870ce1791520c Zhi Wang 2022-04-07   925  	MMIO_D(SKL_PS_WIN_POS(PIPE_B, 1));
+e870ce1791520c Zhi Wang 2022-04-07   926  	MMIO_D(SKL_PS_WIN_POS(PIPE_C, 0));
+e870ce1791520c Zhi Wang 2022-04-07   927  	MMIO_D(SKL_PS_WIN_POS(PIPE_C, 1));
+e870ce1791520c Zhi Wang 2022-04-07   928  	MMIO_D(SKL_PS_WIN_SZ(PIPE_A, 0));
+e870ce1791520c Zhi Wang 2022-04-07   929  	MMIO_D(SKL_PS_WIN_SZ(PIPE_A, 1));
+e870ce1791520c Zhi Wang 2022-04-07   930  	MMIO_D(SKL_PS_WIN_SZ(PIPE_B, 0));
+e870ce1791520c Zhi Wang 2022-04-07   931  	MMIO_D(SKL_PS_WIN_SZ(PIPE_B, 1));
+e870ce1791520c Zhi Wang 2022-04-07   932  	MMIO_D(SKL_PS_WIN_SZ(PIPE_C, 0));
+e870ce1791520c Zhi Wang 2022-04-07   933  	MMIO_D(SKL_PS_WIN_SZ(PIPE_C, 1));
+e870ce1791520c Zhi Wang 2022-04-07   934  	MMIO_D(SKL_PS_CTRL(PIPE_A, 0));
+e870ce1791520c Zhi Wang 2022-04-07   935  	MMIO_D(SKL_PS_CTRL(PIPE_A, 1));
+e870ce1791520c Zhi Wang 2022-04-07   936  	MMIO_D(SKL_PS_CTRL(PIPE_B, 0));
+e870ce1791520c Zhi Wang 2022-04-07   937  	MMIO_D(SKL_PS_CTRL(PIPE_B, 1));
+e870ce1791520c Zhi Wang 2022-04-07   938  	MMIO_D(SKL_PS_CTRL(PIPE_C, 0));
+e870ce1791520c Zhi Wang 2022-04-07   939  	MMIO_D(SKL_PS_CTRL(PIPE_C, 1));
+e870ce1791520c Zhi Wang 2022-04-07   940  	MMIO_D(PLANE_BUF_CFG(PIPE_A, 0));
+e870ce1791520c Zhi Wang 2022-04-07   941  	MMIO_D(PLANE_BUF_CFG(PIPE_A, 1));
+e870ce1791520c Zhi Wang 2022-04-07   942  	MMIO_D(PLANE_BUF_CFG(PIPE_A, 2));
+e870ce1791520c Zhi Wang 2022-04-07   943  	MMIO_D(PLANE_BUF_CFG(PIPE_A, 3));
+e870ce1791520c Zhi Wang 2022-04-07   944  	MMIO_D(PLANE_BUF_CFG(PIPE_B, 0));
+e870ce1791520c Zhi Wang 2022-04-07   945  	MMIO_D(PLANE_BUF_CFG(PIPE_B, 1));
+e870ce1791520c Zhi Wang 2022-04-07   946  	MMIO_D(PLANE_BUF_CFG(PIPE_B, 2));
+e870ce1791520c Zhi Wang 2022-04-07   947  	MMIO_D(PLANE_BUF_CFG(PIPE_B, 3));
+e870ce1791520c Zhi Wang 2022-04-07   948  	MMIO_D(PLANE_BUF_CFG(PIPE_C, 0));
+e870ce1791520c Zhi Wang 2022-04-07   949  	MMIO_D(PLANE_BUF_CFG(PIPE_C, 1));
+e870ce1791520c Zhi Wang 2022-04-07   950  	MMIO_D(PLANE_BUF_CFG(PIPE_C, 2));
+e870ce1791520c Zhi Wang 2022-04-07   951  	MMIO_D(PLANE_BUF_CFG(PIPE_C, 3));
+e870ce1791520c Zhi Wang 2022-04-07   952  	MMIO_D(CUR_BUF_CFG(PIPE_A));
+e870ce1791520c Zhi Wang 2022-04-07   953  	MMIO_D(CUR_BUF_CFG(PIPE_B));
+e870ce1791520c Zhi Wang 2022-04-07   954  	MMIO_D(CUR_BUF_CFG(PIPE_C));
+e870ce1791520c Zhi Wang 2022-04-07   955  	MMIO_F(PLANE_WM(PIPE_A, 0, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   956  	MMIO_F(PLANE_WM(PIPE_A, 1, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   957  	MMIO_F(PLANE_WM(PIPE_A, 2, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   958  	MMIO_F(PLANE_WM(PIPE_B, 0, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   959  	MMIO_F(PLANE_WM(PIPE_B, 1, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   960  	MMIO_F(PLANE_WM(PIPE_B, 2, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   961  	MMIO_F(PLANE_WM(PIPE_C, 0, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   962  	MMIO_F(PLANE_WM(PIPE_C, 1, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   963  	MMIO_F(PLANE_WM(PIPE_C, 2, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   964  	MMIO_F(CUR_WM(PIPE_A, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   965  	MMIO_F(CUR_WM(PIPE_B, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   966  	MMIO_F(CUR_WM(PIPE_C, 0), 4 * 8);
+e870ce1791520c Zhi Wang 2022-04-07   967  	MMIO_D(PLANE_WM_TRANS(PIPE_A, 0));
+e870ce1791520c Zhi Wang 2022-04-07   968  	MMIO_D(PLANE_WM_TRANS(PIPE_A, 1));
+e870ce1791520c Zhi Wang 2022-04-07   969  	MMIO_D(PLANE_WM_TRANS(PIPE_A, 2));
+e870ce1791520c Zhi Wang 2022-04-07   970  	MMIO_D(PLANE_WM_TRANS(PIPE_B, 0));
+e870ce1791520c Zhi Wang 2022-04-07   971  	MMIO_D(PLANE_WM_TRANS(PIPE_B, 1));
+e870ce1791520c Zhi Wang 2022-04-07   972  	MMIO_D(PLANE_WM_TRANS(PIPE_B, 2));
+e870ce1791520c Zhi Wang 2022-04-07   973  	MMIO_D(PLANE_WM_TRANS(PIPE_C, 0));
+e870ce1791520c Zhi Wang 2022-04-07   974  	MMIO_D(PLANE_WM_TRANS(PIPE_C, 1));
+e870ce1791520c Zhi Wang 2022-04-07   975  	MMIO_D(PLANE_WM_TRANS(PIPE_C, 2));
+e870ce1791520c Zhi Wang 2022-04-07   976  	MMIO_D(CUR_WM_TRANS(PIPE_A));
+e870ce1791520c Zhi Wang 2022-04-07   977  	MMIO_D(CUR_WM_TRANS(PIPE_B));
+e870ce1791520c Zhi Wang 2022-04-07   978  	MMIO_D(CUR_WM_TRANS(PIPE_C));
+e870ce1791520c Zhi Wang 2022-04-07   979  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_A, 0));
+e870ce1791520c Zhi Wang 2022-04-07   980  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_A, 1));
+e870ce1791520c Zhi Wang 2022-04-07   981  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_A, 2));
+e870ce1791520c Zhi Wang 2022-04-07   982  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_A, 3));
+e870ce1791520c Zhi Wang 2022-04-07   983  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_B, 0));
+e870ce1791520c Zhi Wang 2022-04-07   984  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_B, 1));
+e870ce1791520c Zhi Wang 2022-04-07   985  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_B, 2));
+e870ce1791520c Zhi Wang 2022-04-07   986  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_B, 3));
+e870ce1791520c Zhi Wang 2022-04-07   987  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_C, 0));
+e870ce1791520c Zhi Wang 2022-04-07   988  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_C, 1));
+e870ce1791520c Zhi Wang 2022-04-07   989  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_C, 2));
+e870ce1791520c Zhi Wang 2022-04-07   990  	MMIO_D(PLANE_NV12_BUF_CFG(PIPE_C, 3));
+e870ce1791520c Zhi Wang 2022-04-07   991  	MMIO_D(_MMIO(_REG_701C0(PIPE_A, 1)));
+e870ce1791520c Zhi Wang 2022-04-07   992  	MMIO_D(_MMIO(_REG_701C0(PIPE_A, 2)));
+e870ce1791520c Zhi Wang 2022-04-07   993  	MMIO_D(_MMIO(_REG_701C0(PIPE_A, 3)));
+e870ce1791520c Zhi Wang 2022-04-07   994  	MMIO_D(_MMIO(_REG_701C0(PIPE_A, 4)));
+e870ce1791520c Zhi Wang 2022-04-07   995  	MMIO_D(_MMIO(_REG_701C0(PIPE_B, 1)));
+e870ce1791520c Zhi Wang 2022-04-07   996  	MMIO_D(_MMIO(_REG_701C0(PIPE_B, 2)));
+e870ce1791520c Zhi Wang 2022-04-07   997  	MMIO_D(_MMIO(_REG_701C0(PIPE_B, 3)));
+e870ce1791520c Zhi Wang 2022-04-07   998  	MMIO_D(_MMIO(_REG_701C0(PIPE_B, 4)));
+e870ce1791520c Zhi Wang 2022-04-07   999  	MMIO_D(_MMIO(_REG_701C0(PIPE_C, 1)));
+e870ce1791520c Zhi Wang 2022-04-07  1000  	MMIO_D(_MMIO(_REG_701C0(PIPE_C, 2)));
+e870ce1791520c Zhi Wang 2022-04-07  1001  	MMIO_D(_MMIO(_REG_701C0(PIPE_C, 3)));
+e870ce1791520c Zhi Wang 2022-04-07  1002  	MMIO_D(_MMIO(_REG_701C0(PIPE_C, 4)));
+e870ce1791520c Zhi Wang 2022-04-07  1003  	MMIO_D(_MMIO(_REG_701C4(PIPE_A, 1)));
+e870ce1791520c Zhi Wang 2022-04-07  1004  	MMIO_D(_MMIO(_REG_701C4(PIPE_A, 2)));
+e870ce1791520c Zhi Wang 2022-04-07  1005  	MMIO_D(_MMIO(_REG_701C4(PIPE_A, 3)));
+e870ce1791520c Zhi Wang 2022-04-07  1006  	MMIO_D(_MMIO(_REG_701C4(PIPE_A, 4)));
+e870ce1791520c Zhi Wang 2022-04-07  1007  	MMIO_D(_MMIO(_REG_701C4(PIPE_B, 1)));
+e870ce1791520c Zhi Wang 2022-04-07  1008  	MMIO_D(_MMIO(_REG_701C4(PIPE_B, 2)));
+e870ce1791520c Zhi Wang 2022-04-07  1009  	MMIO_D(_MMIO(_REG_701C4(PIPE_B, 3)));
+e870ce1791520c Zhi Wang 2022-04-07  1010  	MMIO_D(_MMIO(_REG_701C4(PIPE_B, 4)));
+e870ce1791520c Zhi Wang 2022-04-07  1011  	MMIO_D(_MMIO(_REG_701C4(PIPE_C, 1)));
+e870ce1791520c Zhi Wang 2022-04-07  1012  	MMIO_D(_MMIO(_REG_701C4(PIPE_C, 2)));
+e870ce1791520c Zhi Wang 2022-04-07  1013  	MMIO_D(_MMIO(_REG_701C4(PIPE_C, 3)));
+e870ce1791520c Zhi Wang 2022-04-07  1014  	MMIO_D(_MMIO(_REG_701C4(PIPE_C, 4)));
+e870ce1791520c Zhi Wang 2022-04-07  1015  	MMIO_D(_MMIO(_PLANE_CTL_3_A));
+e870ce1791520c Zhi Wang 2022-04-07  1016  	MMIO_D(_MMIO(_PLANE_CTL_3_B));
+e870ce1791520c Zhi Wang 2022-04-07  1017  	MMIO_D(_MMIO(0x72380));
+e870ce1791520c Zhi Wang 2022-04-07  1018  	MMIO_D(_MMIO(0x7239c));
+e870ce1791520c Zhi Wang 2022-04-07  1019  	MMIO_D(_MMIO(_PLANE_SURF_3_A));
+e870ce1791520c Zhi Wang 2022-04-07  1020  	MMIO_D(_MMIO(_PLANE_SURF_3_B));
+e870ce1791520c Zhi Wang 2022-04-07 @1021  	MMIO_D(DMC_SSP_BASE);
+e870ce1791520c Zhi Wang 2022-04-07 @1022  	MMIO_D(DMC_HTP_SKL);
+e870ce1791520c Zhi Wang 2022-04-07 @1023  	MMIO_D(DMC_LAST_WRITE);
+e870ce1791520c Zhi Wang 2022-04-07  1024  	MMIO_D(BDW_SCRATCH1);
+e870ce1791520c Zhi Wang 2022-04-07  1025  	MMIO_D(SKL_DFSM);
+e870ce1791520c Zhi Wang 2022-04-07  1026  	MMIO_D(DISPIO_CR_TX_BMU_CR0);
+e870ce1791520c Zhi Wang 2022-04-07  1027  	MMIO_F(GEN9_GFX_MOCS(0), 0x7f8);
+e870ce1791520c Zhi Wang 2022-04-07  1028  	MMIO_F(GEN7_L3CNTLREG2, 0x80);
+e870ce1791520c Zhi Wang 2022-04-07  1029  	MMIO_D(RPM_CONFIG0);
+e870ce1791520c Zhi Wang 2022-04-07  1030  	MMIO_D(_MMIO(0xd08));
+e870ce1791520c Zhi Wang 2022-04-07  1031  	MMIO_D(RC6_LOCATION);
+e870ce1791520c Zhi Wang 2022-04-07  1032  	MMIO_D(GEN7_FF_SLICE_CS_CHICKEN1);
+e870ce1791520c Zhi Wang 2022-04-07  1033  	MMIO_D(GEN9_CS_DEBUG_MODE1);
+e870ce1791520c Zhi Wang 2022-04-07  1034  	/* TRTT */
+e870ce1791520c Zhi Wang 2022-04-07  1035  	MMIO_D(TRVATTL3PTRDW(0));
+e870ce1791520c Zhi Wang 2022-04-07  1036  	MMIO_D(TRVATTL3PTRDW(1));
+e870ce1791520c Zhi Wang 2022-04-07  1037  	MMIO_D(TRVATTL3PTRDW(2));
+e870ce1791520c Zhi Wang 2022-04-07  1038  	MMIO_D(TRVATTL3PTRDW(3));
+e870ce1791520c Zhi Wang 2022-04-07  1039  	MMIO_D(TRVADR);
+e870ce1791520c Zhi Wang 2022-04-07  1040  	MMIO_D(TRTTE);
+e870ce1791520c Zhi Wang 2022-04-07  1041  	MMIO_D(_MMIO(0x4dfc));
+e870ce1791520c Zhi Wang 2022-04-07  1042  	MMIO_D(_MMIO(0x46430));
+e870ce1791520c Zhi Wang 2022-04-07  1043  	MMIO_D(_MMIO(0x46520));
+e870ce1791520c Zhi Wang 2022-04-07  1044  	MMIO_D(_MMIO(0xc403c));
+e870ce1791520c Zhi Wang 2022-04-07  1045  	MMIO_D(GEN8_GARBCNTL);
+e870ce1791520c Zhi Wang 2022-04-07  1046  	MMIO_D(DMA_CTRL);
+e870ce1791520c Zhi Wang 2022-04-07  1047  	MMIO_D(_MMIO(0x65900));
+e870ce1791520c Zhi Wang 2022-04-07  1048  	MMIO_D(GEN6_STOLEN_RESERVED);
+e870ce1791520c Zhi Wang 2022-04-07  1049  	MMIO_D(_MMIO(0x4068));
+e870ce1791520c Zhi Wang 2022-04-07  1050  	MMIO_D(_MMIO(0x67054));
+e870ce1791520c Zhi Wang 2022-04-07  1051  	MMIO_D(_MMIO(0x6e560));
+e870ce1791520c Zhi Wang 2022-04-07  1052  	MMIO_D(_MMIO(0x6e554));
+e870ce1791520c Zhi Wang 2022-04-07  1053  	MMIO_D(_MMIO(0x2b20));
+e870ce1791520c Zhi Wang 2022-04-07  1054  	MMIO_D(_MMIO(0x65f00));
+e870ce1791520c Zhi Wang 2022-04-07  1055  	MMIO_D(_MMIO(0x65f08));
+e870ce1791520c Zhi Wang 2022-04-07  1056  	MMIO_D(_MMIO(0x320f0));
+e870ce1791520c Zhi Wang 2022-04-07  1057  	MMIO_D(_MMIO(0x70034));
+e870ce1791520c Zhi Wang 2022-04-07  1058  	MMIO_D(_MMIO(0x71034));
+e870ce1791520c Zhi Wang 2022-04-07  1059  	MMIO_D(_MMIO(0x72034));
+e870ce1791520c Zhi Wang 2022-04-07  1060  	MMIO_D(_MMIO(_PLANE_KEYVAL_1(PIPE_A)));
+e870ce1791520c Zhi Wang 2022-04-07  1061  	MMIO_D(_MMIO(_PLANE_KEYVAL_1(PIPE_B)));
+e870ce1791520c Zhi Wang 2022-04-07  1062  	MMIO_D(_MMIO(_PLANE_KEYVAL_1(PIPE_C)));
+e870ce1791520c Zhi Wang 2022-04-07  1063  	MMIO_D(_MMIO(_PLANE_KEYMAX_1(PIPE_A)));
+e870ce1791520c Zhi Wang 2022-04-07  1064  	MMIO_D(_MMIO(_PLANE_KEYMAX_1(PIPE_B)));
+e870ce1791520c Zhi Wang 2022-04-07  1065  	MMIO_D(_MMIO(_PLANE_KEYMAX_1(PIPE_C)));
+e870ce1791520c Zhi Wang 2022-04-07  1066  	MMIO_D(_MMIO(_PLANE_KEYMSK_1(PIPE_A)));
+e870ce1791520c Zhi Wang 2022-04-07  1067  	MMIO_D(_MMIO(_PLANE_KEYMSK_1(PIPE_B)));
+e870ce1791520c Zhi Wang 2022-04-07  1068  	MMIO_D(_MMIO(_PLANE_KEYMSK_1(PIPE_C)));
+e870ce1791520c Zhi Wang 2022-04-07  1069  	MMIO_D(_MMIO(0x44500));
+e870ce1791520c Zhi Wang 2022-04-07  1070  #define CSFE_CHICKEN1_REG(base) _MMIO((base) + 0xD4)
+e870ce1791520c Zhi Wang 2022-04-07  1071  	MMIO_RING_D(CSFE_CHICKEN1_REG);
+e870ce1791520c Zhi Wang 2022-04-07  1072  #undef CSFE_CHICKEN1_REG
+e870ce1791520c Zhi Wang 2022-04-07  1073  	MMIO_D(GEN8_HDC_CHICKEN1);
+e870ce1791520c Zhi Wang 2022-04-07  1074  	MMIO_D(GEN9_WM_CHICKEN3);
+e870ce1791520c Zhi Wang 2022-04-07  1075  
+e870ce1791520c Zhi Wang 2022-04-07  1076  	if (IS_KABYLAKE(dev_priv) || IS_COFFEELAKE(dev_priv))
+e870ce1791520c Zhi Wang 2022-04-07  1077  		MMIO_D(GAMT_CHKN_BIT_REG);
+e870ce1791520c Zhi Wang 2022-04-07  1078  	if (!IS_BROXTON(dev_priv))
+e870ce1791520c Zhi Wang 2022-04-07  1079  		MMIO_D(GEN9_CTX_PREEMPT_REG);
+e870ce1791520c Zhi Wang 2022-04-07 @1080  	MMIO_F(_MMIO(DMC_MMIO_START_RANGE), 0x3000);
+e870ce1791520c Zhi Wang 2022-04-07  1081  	return 0;
+e870ce1791520c Zhi Wang 2022-04-07  1082  }
+e870ce1791520c Zhi Wang 2022-04-07  1083  
+
+:::::: The code at line 1021 was first introduced by commit
+:::::: e870ce1791520cd03f67c5a16f309d94e4aede85 i915/gvt: Separate the MMIO tracking table from GVT-g
+
+:::::: TO: Zhi Wang <zhi.a.wang@intel.com>
+:::::: CC: Zhi Wang <zhi.a.wang@intel.com>
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
