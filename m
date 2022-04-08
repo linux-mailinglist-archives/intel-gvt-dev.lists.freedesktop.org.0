@@ -2,47 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46F1C4F9D7A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Apr 2022 21:08:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 650304F9FB0
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Apr 2022 00:43:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E94E510E68B;
-	Fri,  8 Apr 2022 19:08:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1B7B110E07F;
+	Fri,  8 Apr 2022 22:43:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B1A5E10E68B
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3A9CD10E07F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  8 Apr 2022 19:08:06 +0000 (UTC)
+ Fri,  8 Apr 2022 22:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649444886; x=1680980886;
+ t=1649457832; x=1680993832;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=FxJKwOUl1MlqPc/WkywJNLE0a2oQDkypTFPhDqZX7mg=;
- b=BIo81or8VRY5/rBf1fDKitx8mpDTVmEWOs53FOqMYkIIqNJRnFLxlyJ8
- xEfNmGAWEYpWjs/fXkJ9ELThNHovJlhkugClkvMIL/y2OfLglIZT6XyO9
- rkIg3s33YxQy90WcdptOyZQ6xccgq/QKe4y+pMhKTpEzf30Etx/OuYVqw
- 7n2oBd+1si+NydN4u/Ssik7PfvBmcauu5ZmnOi8c/tAyeFqWO4bruFaQE
- IbNO9a+VsGuZiWTGvA4aeoD/ronhdIVRa477Ev2PjL5KQ0AVTfFZv9hko
- 4grezBX7e5RfQOvNeaaCaaquOxcqVJyNl4f9L1R4x7UBL0gqp+BA2TWnf g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="324829752"
-X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="324829752"
+ bh=BSRE43UznrvHyqy7V4uvX4L2v07Twg1CVAkkE2JpXVA=;
+ b=avDY7PWKtEwSNdofynU6y6rPdxQDVhgAPGPBYQiZ1pFbQY8i92HrrIe3
+ mTHNZ93+lb7vVMW+N6cNdz2xE5KZxQs/j0kBB41CJAZbWuUr2DcGUut6p
+ 8jmDJnj5aRZSvnNN7LPVX96cxF1npGkxrIA/SW+5jFz3vAICMhv3dX10q
+ BhNbkKBk7yM15G0eYIfTqAiRVz4UnaX3Jc2wxWTPKK/TCUIph9t+Fd3Hy
+ iunVeFnITFm5NEFnhDs//PG/zNzm0aN7lKyqKnso8V/cZrGoVoWb14L+S
+ Ezd49Ft0z3uFwBU3SGMhyM+xGPJISInpYRbqYXyZW7p22hkM0KwtLi/Si A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="260552419"
+X-IronPort-AV: E=Sophos;i="5.90,246,1643702400"; d="scan'208";a="260552419"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2022 12:08:06 -0700
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2022 15:43:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="609863990"
+X-IronPort-AV: E=Sophos;i="5.90,246,1643702400"; d="scan'208";a="609937654"
 Received: from lkp-server02.sh.intel.com (HELO 7e80bc2a00a0) ([10.239.97.151])
- by fmsmga008.fm.intel.com with ESMTP; 08 Apr 2022 12:08:04 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 08 Apr 2022 15:43:49 -0700
 Received: from kbuild by 7e80bc2a00a0 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nctxj-0000Yi-CJ;
- Fri, 08 Apr 2022 19:08:03 +0000
-Date: Sat, 9 Apr 2022 03:07:53 +0800
+ (envelope-from <lkp@intel.com>) id 1ncxKX-0000gp-0K;
+ Fri, 08 Apr 2022 22:43:49 +0000
+Date: Sat, 9 Apr 2022 06:43:21 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhi Wang <zhi.a.wang@intel.com>
 Subject: [intel-gvt:gvt-staging 2/3]
- drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:9: error: use of undeclared
- identifier 'DMC_SSP_BASE'
-Message-ID: <202204090309.4k0CRWvn-lkp@intel.com>
+ drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:16: error: 'DMC_SSP_BASE'
+ undeclared
+Message-ID: <202204090611.WX3Wi3np-lkp@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -59,46 +59,76 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kbuild-all@lists.01.org, zhenyu.z.wang@intel.com, llvm@lists.linux.dev,
- linux-kernel@vger.kernel.org, terrence.xu@intel.com,
- intel-gvt-dev@lists.freedesktop.org
+Cc: intel-gvt-dev@lists.freedesktop.org, terrence.xu@intel.com,
+ kbuild-all@lists.01.org, linux-kernel@vger.kernel.org, zhenyu.z.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 tree:   https://github.com/intel/gvt-linux.git gvt-staging
 head:   d7b5d2c7c69602d92c926075fb8191a7d6df2c08
 commit: 94b8f98a1026f9b304417f8152b99993f24baf13 [2/3] Merge remote-tracking branch 'origin/gvt-next' into gvt-staging
-config: x86_64-randconfig-a005 (https://download.01.org/0day-ci/archive/20220409/202204090309.4k0CRWvn-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project c29a51b3a257908aebc01cd7c4655665db317d66)
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20220409/202204090611.WX3Wi3np-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.2.0-19) 11.2.0
 reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
         # https://github.com/intel/gvt-linux/commit/94b8f98a1026f9b304417f8152b99993f24baf13
         git remote add intel-gvt https://github.com/intel/gvt-linux.git
         git fetch --no-tags intel-gvt gvt-staging
         git checkout 94b8f98a1026f9b304417f8152b99993f24baf13
         # save the config file to linux build tree
         mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/drm/i915/
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
 All errors (new ones prefixed by >>):
 
->> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:9: error: use of undeclared identifier 'DMC_SSP_BASE'
-           MMIO_D(DMC_SSP_BASE);
-                  ^
->> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1022:9: error: use of undeclared identifier 'DMC_HTP_SKL'
-           MMIO_D(DMC_HTP_SKL);
-                  ^
->> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1023:9: error: use of undeclared identifier 'DMC_LAST_WRITE'
-           MMIO_D(DMC_LAST_WRITE);
-                  ^
->> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1080:15: error: use of undeclared identifier 'DMC_MMIO_START_RANGE'
-           MMIO_F(_MMIO(DMC_MMIO_START_RANGE), 0x3000);
-                        ^
-   4 errors generated.
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c: In function 'iterate_skl_plus_mmio':
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:16: error: 'DMC_SSP_BASE' undeclared (first use in this function)
+    1021 |         MMIO_D(DMC_SSP_BASE);
+         |                ^~~~~~~~~~~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:17:63: note: in definition of macro 'MMIO_F'
+      17 |         ret = iter->handle_mmio_cb(iter, i915_mmio_reg_offset(reg), s); \
+         |                                                               ^~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:9: note: in expansion of macro 'MMIO_D'
+    1021 |         MMIO_D(DMC_SSP_BASE);
+         |         ^~~~~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:16: note: each undeclared identifier is reported only once for each function it appears in
+    1021 |         MMIO_D(DMC_SSP_BASE);
+         |                ^~~~~~~~~~~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:17:63: note: in definition of macro 'MMIO_F'
+      17 |         ret = iter->handle_mmio_cb(iter, i915_mmio_reg_offset(reg), s); \
+         |                                                               ^~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1021:9: note: in expansion of macro 'MMIO_D'
+    1021 |         MMIO_D(DMC_SSP_BASE);
+         |         ^~~~~~
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1022:16: error: 'DMC_HTP_SKL' undeclared (first use in this function)
+    1022 |         MMIO_D(DMC_HTP_SKL);
+         |                ^~~~~~~~~~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:17:63: note: in definition of macro 'MMIO_F'
+      17 |         ret = iter->handle_mmio_cb(iter, i915_mmio_reg_offset(reg), s); \
+         |                                                               ^~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1022:9: note: in expansion of macro 'MMIO_D'
+    1022 |         MMIO_D(DMC_HTP_SKL);
+         |         ^~~~~~
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1023:16: error: 'DMC_LAST_WRITE' undeclared (first use in this function)
+    1023 |         MMIO_D(DMC_LAST_WRITE);
+         |                ^~~~~~~~~~~~~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:17:63: note: in definition of macro 'MMIO_F'
+      17 |         ret = iter->handle_mmio_cb(iter, i915_mmio_reg_offset(reg), s); \
+         |                                                               ^~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1023:9: note: in expansion of macro 'MMIO_D'
+    1023 |         MMIO_D(DMC_LAST_WRITE);
+         |         ^~~~~~
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1080:22: error: 'DMC_MMIO_START_RANGE' undeclared (first use in this function)
+    1080 |         MMIO_F(_MMIO(DMC_MMIO_START_RANGE), 0x3000);
+         |                      ^~~~~~~~~~~~~~~~~~~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:17:63: note: in definition of macro 'MMIO_F'
+      17 |         ret = iter->handle_mmio_cb(iter, i915_mmio_reg_offset(reg), s); \
+         |                                                               ^~~
+   drivers/gpu/drm/i915/intel_gvt_mmio_table.c:1080:16: note: in expansion of macro '_MMIO'
+    1080 |         MMIO_F(_MMIO(DMC_MMIO_START_RANGE), 0x3000);
+         |                ^~~~~
 
 
 vim +/DMC_SSP_BASE +1021 drivers/gpu/drm/i915/intel_gvt_mmio_table.c
