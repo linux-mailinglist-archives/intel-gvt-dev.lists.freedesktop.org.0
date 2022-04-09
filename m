@@ -2,51 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCF674FA15B
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Apr 2022 03:43:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 653CD4FA78F
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Apr 2022 14:14:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 80FFC10E226;
-	Sat,  9 Apr 2022 01:43:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0E0D210E0E8;
+	Sat,  9 Apr 2022 12:14:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E3D2E10E169
+Received: from mail-ed1-x541.google.com (mail-ed1-x541.google.com
+ [IPv6:2a00:1450:4864:20::541])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3CF0C10E2B1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  9 Apr 2022 01:43:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649468635; x=1681004635;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=RzhVw1TtruakT+iZxvb0eaOU++UC5AkbY8cWPQlIp4A=;
- b=AZoXduDEwEWjEgf8xghzz2xtoF9k2y4wEE6+ZjEUcp96wXaSNq/F358D
- ZhWYM5vpMUNcf4sLSlBhC8hPwvXVh5GCA26XVjiQAnVid9B1VGKrW5t8y
- T/GBMFgyzKYTuBzgjY2m5qBGu98WV2XSBonCixmyJ43ecz+Uk/nF05zOM
- GFLbQusiNeQ1PSSo0ZnzSI1GlQ2NqIpXx3gyDUB9jLm4GDEL9RQfbNyGp
- uZzxjNhPl0BolAsREMjEt0cL6BO2ZR33ZYzjuLIA4oWERZWEaqNQkSKyK
- dJPsRCmtXmi3kgK52m873pXaK0ndSaBxfJzVhtsqxThz/evMe0cUYB7ml A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="259338960"
-X-IronPort-AV: E=Sophos;i="5.90,246,1643702400"; d="scan'208";a="259338960"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2022 18:43:54 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,246,1643702400"; d="scan'208";a="610005116"
-Received: from lkp-server02.sh.intel.com (HELO 7e80bc2a00a0) ([10.239.97.151])
- by fmsmga008.fm.intel.com with ESMTP; 08 Apr 2022 18:43:52 -0700
-Received: from kbuild by 7e80bc2a00a0 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nd08m-0000mU-1R;
- Sat, 09 Apr 2022 01:43:52 +0000
-Date: Sat, 09 Apr 2022 09:43:04 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhi Wang <zhi.a.wang@intel.com>
-Subject: [intel-gvt:gvt-next] BUILD SUCCESS
- f267d34e47f33a283b785a31b7b8d1c899502743
-Message-ID: <6250e4a8.7IkKOb5SVe0hgp0N%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Sat,  9 Apr 2022 12:14:31 +0000 (UTC)
+Received: by mail-ed1-x541.google.com with SMTP id b24so12788220edu.10
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 09 Apr 2022 05:14:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=KD+7LUh13xay2TU7PrGW0N3xGt/fvIfFeTpBoeANRG8=;
+ b=dIaK5YMCOZu4qwwIStorxR2x6IRW4MDbhkJryiLut0pSARr+R0dUsq7jWeUI4wACnz
+ jZztYg7G9QMPvdyvoG2YV2BmphvfWdKP+rxLR2eclcTlI49TzCT/rxoCyQr1qFxHGELR
+ zX9Da8+ed3wA+WLcyvZXeRXciEoCcCt8MmKzMPX778LMvZIOcz6AWWpSnLEt8gUKAhhy
+ 3tCFmmBClIE84M0afuALP/jup3hU3f/ATUTF+gb60LM3qI+t/D8u7WxeD+2J3cjKPfAe
+ FIzOVHK3xOx5RoAQoXvPAmnVFIUHhWqH3QDOk9TnQQ3yJ2fiusH4rTelpOYsCBWEkNpB
+ u6Fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=KD+7LUh13xay2TU7PrGW0N3xGt/fvIfFeTpBoeANRG8=;
+ b=FWMpFEb+BVGu+AXV7w5sWHY5s0KgVOB1QA/g/zIvGJmS2hIOj6L+5ZDLXPEDhEaN2O
+ WzFpC8dTNwtPOhjgrZ/Z1yHqWwhquOp6qI8XmAwTWgaty2K7pjTmBXUFPyJS4KDvr0tt
+ JzqTEB/ijHUSpGEEBsobCZN9FMcwJsQytgH3ZqqDoL4IOZAI/N5hwWOL78yBw6bFwkTz
+ gWjV0qsrCVJ+p7dPdhCt1VA3+oNylB3tLA73VFILHpK6Pbt3ZWD5TAvCacojK9jgvPYE
+ tuMxbvD/jvmQYKwy8/dse9Wxpxms7ypod3Fq8wFd1OcGP3dodnoU+Ru4vUmIox6lO9mJ
+ 5QoQ==
+X-Gm-Message-State: AOAM532JJPvwDZJ8w02W5fHU8v0wsebCxReuk+1wD+9y3Re8l57uRbcH
+ w9ZB36mr/4PVzPxUDazkR3IRJAvg9cTWpY9hI+c=
+X-Google-Smtp-Source: ABdhPJzwAM54/XaqZg7c6nHFaWatGCJX6OxgCYfozEuVVlwwyXUF6caw727QFtrmT3hlAbtnTvEmL/Hi50qs3vShQTk=
+X-Received: by 2002:aa7:ce11:0:b0:41d:5b84:eecd with SMTP id
+ d17-20020aa7ce11000000b0041d5b84eecdmr5015058edv.15.1649506469514; Sat, 09
+ Apr 2022 05:14:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+From: Joe Chibuike <chibuikejoe429@gmail.com>
+Date: Sat, 9 Apr 2022 16:14:17 +0400
+Message-ID: <CANP9YKPCQU-nAHRSaq1Fmh7z1cqsjenXtCNnOG=iJM7MnADiLA@mail.gmail.com>
+Subject: contact me
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000002b95b605dc37a719"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,152 +62,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Reply-To: anhthuong554@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-next
-branch HEAD: f267d34e47f33a283b785a31b7b8d1c899502743  i915/gvt: Use the initial HW state snapshot saved in i915
+--0000000000002b95b605dc37a719
+Content-Type: text/plain; charset="UTF-8"
 
-elapsed time: 723m
+There's something important I would like us to discuss, if you don't mind
+reply
 
-configs tested: 123
-configs skipped: 3
+--0000000000002b95b605dc37a719
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+<div dir=3D"ltr"><br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_sig=
+nature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div>There&#39;=
+s something important I would like us to discuss, if you don&#39;t mind rep=
+ly</div><div><br></div></div></div></div></div>
 
-gcc tested configs:
-arm64                               defconfig
-arm64                            allyesconfig
-arm                              allmodconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                          randconfig-c001
-microblaze                      mmu_defconfig
-powerpc                    sam440ep_defconfig
-xtensa                              defconfig
-m68k                        m5407c3_defconfig
-h8300                            alldefconfig
-sh                        edosk7760_defconfig
-sh                           se7722_defconfig
-arc                          axs103_defconfig
-mips                 decstation_r4k_defconfig
-sh                        sh7785lcr_defconfig
-sh                            hp6xx_defconfig
-mips                     decstation_defconfig
-arm                          exynos_defconfig
-s390                       zfcpdump_defconfig
-powerpc64                           defconfig
-ia64                          tiger_defconfig
-powerpc                 mpc8540_ads_defconfig
-arm                          gemini_defconfig
-powerpc                     ep8248e_defconfig
-ia64                             alldefconfig
-sh                          kfr2r09_defconfig
-xtensa                generic_kc705_defconfig
-ia64                             allmodconfig
-h8300                       h8s-sim_defconfig
-parisc                generic-32bit_defconfig
-x86_64                        randconfig-c001
-arm                  randconfig-c002-20220408
-ia64                             allyesconfig
-ia64                                defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-csky                                defconfig
-nios2                            allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-h8300                            allyesconfig
-xtensa                           allyesconfig
-parisc                              defconfig
-parisc64                            defconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-s390                             allyesconfig
-sparc                               defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-x86_64                        randconfig-a015
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-arc                  randconfig-r043-20220408
-s390                 randconfig-r044-20220408
-riscv                randconfig-r042-20220408
-riscv                            allmodconfig
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                          rv32_defconfig
-riscv                            allyesconfig
-riscv                               defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                                  kexec
-x86_64                               rhel-8.3
-x86_64                         rhel-8.3-kunit
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-
-clang tested configs:
-x86_64                        randconfig-c007
-i386                          randconfig-c001
-powerpc              randconfig-c003-20220408
-riscv                randconfig-c006-20220408
-mips                 randconfig-c004-20220408
-arm                  randconfig-c002-20220408
-s390                 randconfig-c005-20220408
-s390                             alldefconfig
-mips                        omega2p_defconfig
-powerpc                      ppc64e_defconfig
-arm                     am200epdkit_defconfig
-powerpc                   bluestone_defconfig
-powerpc                      obs600_defconfig
-mips                        qi_lb60_defconfig
-mips                     cu1000-neo_defconfig
-riscv                             allnoconfig
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-i386                          randconfig-a013
-i386                          randconfig-a015
-i386                          randconfig-a011
-hexagon              randconfig-r045-20220408
-hexagon              randconfig-r041-20220408
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+--0000000000002b95b605dc37a719--
