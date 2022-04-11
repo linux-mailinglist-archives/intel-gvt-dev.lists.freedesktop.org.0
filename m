@@ -2,39 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 769074FBE7C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 Apr 2022 16:14:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BC604FBE7F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 Apr 2022 16:14:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 350F110E2A8;
-	Mon, 11 Apr 2022 14:14:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1A09110E827;
+	Mon, 11 Apr 2022 14:14:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:e::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ABD8710E2A8;
- Mon, 11 Apr 2022 14:14:20 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 58F7910E3FC;
+ Mon, 11 Apr 2022 14:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=2CKZnVDwRbmavT6IByuUkxzVO/hIRHVsBfHKJD/UCD4=; b=Qa6yGQ9PChKdxgeyF3wQjKEoPW
- MJCjS8bN7MrzmtpZrO1CE0wZoQAP/iqhKu/bLAM+mdWTrxMThW9HsZ7cEeKQcLECKnkq4ED0yS+wB
- Q1ovDGwFdtXSITpaLgGxwqitn+DtHqxeT+EQOnEB2kwmmm1F/0WD13lFrq8ncZ5KVXeNABuAWyKZf
- OU4TDj+bRdmAzd8MYpoDZ60de1jnXkctm1tM9mpcerSvO8IGM+smkgpArNND+iFIRcVWhMFR+CdN7
- imh2cH7NXTyVf9Hfjkx/dcwWNO3EIYD2wAedO3HhOM/xB2exds6xSa70yD492L5sDNV92rp4pMQsp
- FZJLSXAA==;
+ bh=BLKPzt6UhuF0qWHtONyuatQ8VTYibdXrDV6MGR+HIHQ=; b=nG6hwjmN+lf16CyFUQTt37hva5
+ avEQman3t2gqcLb5L4Dra7rS28UqtElcpPcL5WdYZetXO4/KiKAwESxlVuP2q9d4NU1B2/lbSPfnq
+ dBuBCZf/3UeEdw8RtAGI4wjoNR8sT5/8+I457uDJPXKdfTyFFJVLyiqxTssR92iECrd0U+F0CdCu9
+ vlkZI3TFN3Yvr6RLJkTAGJJ8+goFzWjadSejD1r3bH/lz0tI04yomis5Ul30X0Jtn/o8d4XT2V/FR
+ IkvynxvFJAKNDIlzAYkqop9J7fMQm36wdrefcNR5p46/y9uRaet0C/74ZA+74D+vUKZ6xI2qGRJnQ
+ Zb0QLagA==;
 Received: from [2001:4bb8:18e:76f5:3747:ef85:d03d:53e4] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nduo5-009KK6-MC; Mon, 11 Apr 2022 14:14:18 +0000
+ id 1nduo8-009KLU-Hr; Mon, 11 Apr 2022 14:14:21 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 03/34] drm/i915/gvt: rename intel_vgpu_ops to
- intel_vgpu_mdev_ops
-Date: Mon, 11 Apr 2022 16:13:32 +0200
-Message-Id: <20220411141403.86980-4-hch@lst.de>
+Subject: [PATCH 04/34] drm/i915/gvt: don't override the include path
+Date: Mon, 11 Apr 2022 16:13:33 +0200
+Message-Id: <20220411141403.86980-5-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220411141403.86980-1-hch@lst.de>
 References: <20220411141403.86980-1-hch@lst.de>
@@ -60,38 +59,38 @@ Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Free the intel_vgpu_ops symbol name for something that fits better.
+drivers/gpu/drm/i915/gvt/Makefile is included
+from drivers/gpu/drm/i915/Makefile and thus inherits the normal include
+path relative to drivers/gpu/drm/i915/.  Fix up the gvt-specific trace
+header and just do away with the include path manipulation.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/gpu/drm/i915/gvt/kvmgt.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/i915/gvt/Makefile | 1 -
+ drivers/gpu/drm/i915/gvt/trace.h  | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 5231ce8084b36..e3f0c555ed5f6 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1765,7 +1765,7 @@ static const struct attribute_group *intel_vgpu_groups[] = {
- 	NULL,
- };
+diff --git a/drivers/gpu/drm/i915/gvt/Makefile b/drivers/gpu/drm/i915/gvt/Makefile
+index ea8324abc784a..4d70f4689479c 100644
+--- a/drivers/gpu/drm/i915/gvt/Makefile
++++ b/drivers/gpu/drm/i915/gvt/Makefile
+@@ -5,5 +5,4 @@ GVT_SOURCE := gvt.o aperture_gm.o handlers.o vgpu.o trace_points.o firmware.o \
+ 	execlist.o scheduler.o sched_policy.o mmio_context.o cmd_parser.o debugfs.o \
+ 	fb_decoder.o dmabuf.o page_track.o
  
--static struct mdev_parent_ops intel_vgpu_ops = {
-+static struct mdev_parent_ops intel_vgpu_mdev_ops = {
- 	.mdev_attr_groups       = intel_vgpu_groups,
- 	.create			= intel_vgpu_create,
- 	.remove			= intel_vgpu_remove,
-@@ -1788,9 +1788,9 @@ static int kvmgt_host_init(struct device *dev, void *gvt, const void *ops)
- 		return ret;
- 
- 	intel_gvt_ops = ops;
--	intel_vgpu_ops.supported_type_groups = gvt_vgpu_type_groups;
-+	intel_vgpu_mdev_ops.supported_type_groups = gvt_vgpu_type_groups;
- 
--	ret = mdev_register_device(dev, &intel_vgpu_ops);
-+	ret = mdev_register_device(dev, &intel_vgpu_mdev_ops);
- 	if (ret)
- 		intel_gvt_cleanup_vgpu_type_groups((struct intel_gvt *)gvt);
- 
+-ccflags-y				+= -I $(srctree)/$(src) -I $(srctree)/$(src)/$(GVT_DIR)/
+ i915-y					+= $(addprefix $(GVT_DIR)/, $(GVT_SOURCE))
+diff --git a/drivers/gpu/drm/i915/gvt/trace.h b/drivers/gpu/drm/i915/gvt/trace.h
+index 6d787750d279f..348f57f8301db 100644
+--- a/drivers/gpu/drm/i915/gvt/trace.h
++++ b/drivers/gpu/drm/i915/gvt/trace.h
+@@ -379,5 +379,5 @@ TRACE_EVENT(render_mmio,
+ #undef TRACE_INCLUDE_PATH
+ #define TRACE_INCLUDE_PATH .
+ #undef TRACE_INCLUDE_FILE
+-#define TRACE_INCLUDE_FILE trace
++#define TRACE_INCLUDE_FILE gvt/trace
+ #include <trace/define_trace.h>
 -- 
 2.30.2
 
