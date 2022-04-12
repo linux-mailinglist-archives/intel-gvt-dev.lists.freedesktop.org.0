@@ -1,130 +1,128 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E61FF4FE543
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Apr 2022 17:53:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 618FC4FE9A1
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Apr 2022 22:51:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BDD0310E700;
-	Tue, 12 Apr 2022 15:53:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C97DB10E6EB;
+	Tue, 12 Apr 2022 20:51:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2077.outbound.protection.outlook.com [40.107.93.77])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D83B510E37F;
- Tue, 12 Apr 2022 15:53:40 +0000 (UTC)
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12on2084.outbound.protection.outlook.com [40.107.244.84])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 817AD10E5CB;
+ Tue, 12 Apr 2022 20:51:55 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YY9zcyssM3PwfIdYdogYTRn5fIgnwaXb60ylq8YG2jzhzk+g7d8oNhN8BJ/gqytGLtUBJd4bnM1nqa2XtMq1c59CSJ71DP4pGGQRjT9y4aOLCXuaB8EucppRQE3IJ0rDMiIgw2XLGazZwFZciV9D3XfcC0Spdq2b8LLMpcenYY3r9lOUTI6p7P0Bsyhu4pL1/9veg4jrC2G68QhuS8F8AN+NOsyFPNhyEOoD0S2OpPpoHisHO9hCoA2//lebdd3vtk9UohkPCFor1oyYapvc2S1ETgjOc1Nbx+lmMyehU3mzLQnyWsYQKu42m4DH4QxyepZVTAz9Z2GDvie98SK0iA==
+ b=QZm3Xb/0CMuaTugNXq6BaPgVy8wMqaaABLm0Z2LbeAw+qmt+IszeapX56gvb2tznU3PMdfn0jiy2P9ZxFxg5wmyY+hpu50VrfOFuBtx6xw1N8AfFOBF1RCuh2bMeffDonNbAEt8CttJlQy5CnE6kDsUE8GGMh+6fA79DwGytrhu8NexUzoH3B6GYm3eWR9ZDwWb82CNS2T6FEfFY2ogJy0g1zvbQFZNwLlxfMBD4DkceKgAXeHVsyEdm+q3UcgZfdq43hUckUoM3e20eErYVnSBVNRtw+j/5J2GJHo4BnwTXiTjxiAWPNsT8fF8BGkpti4YOmuh5f5nafLSBHpTI2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pL6fMmsy3sjaZPRWSMFgOEgjLTB+AnOQW85MOhaJYWU=;
- b=nRvH6/mII8p4TLT0Aql9BrC55BtEj/3NsT314/rf4Pzj88olYLHJvKCtWTRPoZrnwWOqUFcFNBVe0ssOWul510fCXTZ32VI3mEFfRNkJpuep38gA+HgafdmzyqI2nS53WuKXlpPROnkCtRGNK1FTjBb+FhL3G8gqQOYdKF0rbiq6YJ/DmGZjNScxdv6bwkDAPZ7GoGRgk6+hEG14U7mJjQoSUQrLUyZJ9zLDRvaFEU2AXZutlf33GsruGmK63sYVuaV26lhSJx9gdX8f7HzPK67cdycJC6xk9sZIIvZxLyR44zLcSxqb8ax7qDRDwwt3h14E5LX2uJ60Mk9CxPu10g==
+ bh=V0/IZHTzcS7MQ5HaddCUdA9vCUCdVxQwxJj8OOtlM1k=;
+ b=lf6rfROHlszyeP8uNKERZsLyyyydMDnXXfuqZfj/Yn6ap55yME5Cx5QDNGdoTwG02vlsEXDhlFeXL8fo33GnsAxcQSCiW0Bb6a0ctIeWLNYUTl+ty7YyyVzp+TTEANaX7QHUd5Qcp6cuH2DBOCRiCOQeqF4Tcm17vtQBBeCMQK5EXjLBVZHqnPF4Ei7K+e0H6L1HkA3ypSVqZPz7bVgMUQ3GV7LtO4kEou+s8yohLljSR33LCfipx0x7lKlDWvht5jrK+ZRGkU6cJVIXzI8ZFzu6wloEqbakNTsZGh1enJbY+Z0bYir3NPjdPTjJwZyXhHRhXhKOz8yCrzA8SoDcYw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pL6fMmsy3sjaZPRWSMFgOEgjLTB+AnOQW85MOhaJYWU=;
- b=AFLwff/K+WGG2QPO8ZqJ+BfWpvlPt+84S+m1jzm6TM1YtLw/nmFD637+zWeW41K45ItlLNDOCbgBHThpR++RfrtbcoSIuBhFcZGk6pTS7Sk2H9vWunPaNcEZld/ZoOZ7Q0R6uQddwzfyRwu4kMFikNDfAsU91TFBiJwYlYH5GB3Omwxl6haqRTaEImM39lhQu1H6NqwTul9gZFj7PsxavqcyZ1HfEpR1jidFIlp1UZYfw5V27K9NLuVTOk6r7jYwmKm6Lb7lGpe4BsT8V6IIrOXGxKH7iPLtpWpgeUVTM7SfoqzMOB3FKOdjDAWOv89b9TDgI409t+YuryZf1usnnQ==
+ bh=V0/IZHTzcS7MQ5HaddCUdA9vCUCdVxQwxJj8OOtlM1k=;
+ b=CSqW6RppkWJItABxcSYYj3da9Zhdshe7B9Rc7jO93yGbl2igAq7LErduwFRfqKWOFkS4bxKMCw3ORuwiKRenKsugVQflMOkOdbCm2HHaTPfxKb9w71lEVG/4K4aJwWhkbgS2eI+ewv6i4QgeKDXl7by5PZRWhc65oOf6RIfNJWYor4ILpzDJCof1bewawt9PV9WJ+K/R2dwbYJOCaPqzMd2uF5sPmcvnFKnHv7RSf544z/HD+kXTOJ5by238VsiC1JiCJJeTfLD+Hi3+RNdkpJxezAZ/TOY/GRxZb4v31aEPcoS1KHD27GqNfmGqyPGSqqXLdDUfaafctPOydTNZSw==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH2PR12MB4181.namprd12.prod.outlook.com (2603:10b6:610:a8::16)
- by DM6PR12MB4172.namprd12.prod.outlook.com (2603:10b6:5:212::9) with
+Received: from MN2PR12MB4206.namprd12.prod.outlook.com (2603:10b6:208:1d5::18)
+ by MWHPR12MB1679.namprd12.prod.outlook.com (2603:10b6:301:f::7) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5144.29; Tue, 12 Apr
- 2022 15:53:39 +0000
-Received: from CH2PR12MB4181.namprd12.prod.outlook.com
- ([fe80::c911:71b5:78e6:3a38]) by CH2PR12MB4181.namprd12.prod.outlook.com
- ([fe80::c911:71b5:78e6:3a38%8]) with mapi id 15.20.5144.029; Tue, 12 Apr 2022
- 15:53:39 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alexander Gordeev <agordeev@linux.ibm.com>,
- David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- Eric Farman <farman@linux.ibm.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Jason Herne <jjherne@linux.ibm.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
- linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Sven Schnelle <svens@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Vineeth Vijayan <vneethv@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Subject: [PATCH 9/9] vfio: Remove calls to vfio_group_add_container_user()
-Date: Tue, 12 Apr 2022 12:53:36 -0300
-Message-Id: <9-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
-In-Reply-To: <0-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
-References: 
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: BLAPR03CA0132.namprd03.prod.outlook.com
- (2603:10b6:208:32e::17) To CH2PR12MB4181.namprd12.prod.outlook.com
- (2603:10b6:610:a8::16)
+ 2022 20:51:49 +0000
+Received: from MN2PR12MB4206.namprd12.prod.outlook.com
+ ([fe80::211e:d78f:c944:6665]) by MN2PR12MB4206.namprd12.prod.outlook.com
+ ([fe80::211e:d78f:c944:6665%7]) with mapi id 15.20.5144.030; Tue, 12 Apr 2022
+ 20:51:49 +0000
+Message-ID: <4d03a738-a023-21a5-fe32-675861f48646@nvidia.com>
+Date: Wed, 13 Apr 2022 02:21:36 +0530
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.2
+Subject: Re: [PATCH 30/34] vfio/mdev: Remove vfio_mdev.c
+Content-Language: en-US
+To: Christoph Hellwig <hch@lst.de>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Zhenyu Wang
+ <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+References: <20220411141403.86980-1-hch@lst.de>
+ <20220411141403.86980-31-hch@lst.de>
+X-Nvconfidentiality: public
+From: Kirti Wankhede <kwankhede@nvidia.com>
+In-Reply-To: <20220411141403.86980-31-hch@lst.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MA1PR0101CA0068.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a00:20::30) To MN2PR12MB4206.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::18)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: adaa8adb-2860-4c57-f709-08da1c9c9c1d
-X-MS-TrafficTypeDiagnostic: DM6PR12MB4172:EE_
-X-Microsoft-Antispam-PRVS: <DM6PR12MB417238C0D599DA740242A488C2ED9@DM6PR12MB4172.namprd12.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: 4899cfab-aee4-4376-d412-08da1cc6439a
+X-MS-TrafficTypeDiagnostic: MWHPR12MB1679:EE_
+X-Microsoft-Antispam-PRVS: <MWHPR12MB16796D6FDA370C882418EE45DCED9@MWHPR12MB1679.namprd12.prod.outlook.com>
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: sC43+zzKfIVxLbRhIEbF+OsW2Yb6wtlm4oKcbylG5oVe3A1Nt+YoqUKO10qYEmXb5FuaDWJvgf8LIQSHq5CA4ziG+iXcFwAk3cMdzsk4aU2Wk3s3QnoMTT00cbUf5VdSpiyNWcmTAYo6nduuVDu0yevimzm57y0qq4VBVFQ3hRtQ3oeIw5PJYMtPLfNhsbnAWCdHgSYiX819i5e9KAfHvTXQQv/szD4VzvismnZ2PKPq0dWjK1A1nHbUbJni77iStAHq1OHcHLY+6SS/W8sDV0bYlHhquZ3sHrFd5//wqu8T1+TdjxK+16lv+UYae2jX5Ni8qmMqk3c/L7bXQMnP6aVDgNzofZyIjOdM3iGIuKonLcBxUC9B3KSzEHwuIyBcTVQVzaFuA2Q0uTpVyEEHerbomF2PrpomUhoQ2tZ1ih2ktaDjTfm9RM8jpzDM5UdfUTG31CPD5/Ud1oLFkApgxxDlGkhuH+ub8Z52FN5zAPq64B955XCfACd9kHzC5ZllGYNqOu/OtNAqvY2PzCTBXoot33UXtdTvlW1m4QKg6yBQ1gp68kgkoX6ML6LhIWKGAC/RqqhhH7EyMszDmhd9Y7YwoCncsZM/gUKpZFg0yds3J5HRKEmzb+170UTDiImT89TlvyuuJK0+xgs6BLK/zlCLiToMfdXrGNmeAbTUyRd1/jnSmJRRdxwlP4Se8lHrxh4mkk8ru7p4JfpmFIA+DA==
+X-Microsoft-Antispam-Message-Info: LxFdSeHjLcUxVdFpecNOFbY+EW9aeZWjlBTpYs2Tn//r/ejyLmEp4Rx4Z9fg04N7cM4iEYIzYLy5Dh2hvwLia1CMdmZe8YmG3pr6AGRRpg454ZStIFWOv94mp5UivvRvqGjKQE9HYGElFZ5TiK6hBvN+iSiyytGC/pNRNthcJibwPHV1xyG9rd7ROiefNvsLiwB74b9kTDg/wEYfmXsQNsQIOKfg7XkPAmS/CCXV87BCMoQM7kjGiwnc1wM9tf2LTA5SaX87hoI5nfnf2sEbGzzyPjIAXXyWWaFD77pQKqjpjmeyjgd6lWQUQPudwwu6lkqVixu7ZLrvHhroYFa+QOSJSLL97uPjNjO947KqaLBy27wGLkTbpV0xZKVTGx7GvYeEvLyw/BymdsY1A/s93Dn+29mKzLYc4NGBUwKY48zePbkBstPiNB0YUXytSnrLlsE9jhqHwH0coWIdCOAxsvW94V8G9bqUjJUfZ1LM6DwpgEoyBcUMqKBoczsrkpeHIep+TGGLHnNgTzjbJNMnOudPP5u4OiYo48QebBBly93vuCQDTvBhIp7axDJxuvt896b4yO3Nv7p1q4y9HMIBWNzmpz2BHr/yY6QQGM7MfrPwMqtvOJLBZQ3zcAuIV+DNfxosPHZtaIF3ao5Vp0VL4pYobGEIyR/z1WwYFt3HTonGWFhPtX5oCjq/WLLnrsTp64B19qGsZNPCT6XscDntMeZP6lJbdWhb6rkx1G04VmE=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH2PR12MB4181.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(508600001)(6486002)(6506007)(6666004)(66946007)(66476007)(4326008)(66556008)(26005)(186003)(36756003)(83380400001)(8676002)(316002)(54906003)(86362001)(8936002)(6512007)(2616005)(921005)(110136005)(7416002)(5660300002)(38100700002)(2906002)(7406005)(4216001);
+ IPV:NLI; SFV:NSPM; H:MN2PR12MB4206.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(6486002)(2906002)(6512007)(31686004)(66946007)(31696002)(4744005)(8676002)(186003)(26005)(4326008)(7416002)(53546011)(8936002)(5660300002)(6666004)(86362001)(66556008)(55236004)(2616005)(6506007)(508600001)(83380400001)(66476007)(36756003)(316002)(110136005)(38100700002)(43740500002)(45980500001);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?eWXmhOGX7sQUzgq5DYvFOHFc9HL3WGG9FlOIWFQp/F7GXODhKYyCBK0c6VM0?=
- =?us-ascii?Q?P//0+NSGg6D+QJSQlBN05jzptloikpGnWiahQ2TPAoesuXxQv9pI4RsvQvEc?=
- =?us-ascii?Q?B3OiKeA41xlP5VQ9ucPZNduU4SaR6t4EXP5MuKcRRPzkxpION9v5tAS9WHd8?=
- =?us-ascii?Q?qOnnDZFed80hFPFQfD45MngJ4kQfqMWIOGxkhaPackUp1Z4/AWcnLZ0xDpRu?=
- =?us-ascii?Q?db4864YQTGXMML6IG0U+DYGKuTHgOprI/2Um9Z23c0G7ethBGKzWfSfiVTTH?=
- =?us-ascii?Q?XiBf5kQtoDQ6LdUjubFHEziAQuU5NY3YukzmGiZxid/s9J+XmyEiryiT3/gG?=
- =?us-ascii?Q?NlXgYkcNNGG/xsjlOWNr6cUKlKxGbU4MROdq8+QbuW11t6B0x35TwaWxbgy7?=
- =?us-ascii?Q?6W/N37Ql/gUeqwFCfwZDDB6L2wrZdL7TWb3k9PugVpvt3MuKW52VSS/kpJud?=
- =?us-ascii?Q?LYognTLov63gT5YwBgWRhw0bIaQ4B4pTz/f/YQO5Citve25PVBMiV94Qbqoj?=
- =?us-ascii?Q?v/nC2oICphqfKZqdcRMJgRsCmSfUxc2pHbJL0v/rVW5FcGlCx+DEdrIRlZtT?=
- =?us-ascii?Q?c5woofJ+JfXZMbckta7wGFJzjQGocQPzqCN3oh/ajNoMKxLGEc/cy1C+KC2o?=
- =?us-ascii?Q?fhnkr7i+Kn5msicOLTcvPCIk/ncatchm/vYnS8fGB8PMA0evDXNuD37U3zWV?=
- =?us-ascii?Q?saWKxF1NNwO6rDmpRaIZoel0MSlvJRXQkAF9WwdTzafpAwS7iiexX9Hdg8dY?=
- =?us-ascii?Q?Xdf2Lehz0VwwCT2qXOqeKHVV7YVaSjfPocJCJSUT/jvxDTpkSHQFfderrQjO?=
- =?us-ascii?Q?I7ILKh5ouk8uhz/1W43H5Y5zNlk2hIT/nnqkC8PWAO+R249EIc8wOPckmG76?=
- =?us-ascii?Q?+CbtCazxbq8t3UlqVqF5WFxS/JId/wnBSIF2A9oS2jfHWhbM6pKCj+1YG4VM?=
- =?us-ascii?Q?vH75Pnb4TyzF00tDAdOqg23WuBPHLdD6buGp3KgY/WEFdwNyuSS+bPFyBwK0?=
- =?us-ascii?Q?uBbRvJyacrVpyRvsytymGdzdI7KDnOBDulzvAaaPX07KEal1M3MJhr2WhbIr?=
- =?us-ascii?Q?Nxv82extd4aO79usoBcNilKjq/YY7jFZ/eFdu4nDVlfnpMY3QlW+Giz9gLsW?=
- =?us-ascii?Q?jGhUMmyPCDaSbjr+0X/qSYFT2Qolh5aZitajz0vDv5sC/c8AwCTF2NM+RQmg?=
- =?us-ascii?Q?zPbYxiirF7zwsWbJV+THCAdv7AE9NW2n7dCuTMkuDwRJzaTZy0dxgeBv/2e4?=
- =?us-ascii?Q?l660C0GzlCB7MjRuTsAmW5oFuphs3ceCQf+sQUwXRFUGuqLXCwB7KOFJE2MW?=
- =?us-ascii?Q?AVqyCb1Korr9zE2mTxjGCaoqEeu4KaLencj7ROmmW9NNvhaIjncCRglyyg47?=
- =?us-ascii?Q?gph/8GnnRHiCUyAzBTkB03/B+EHKMbXyKO06wBqTzAALdazGvuMv8Z5PZ2Zn?=
- =?us-ascii?Q?x5680uJVw1pVW+OwO5bQTA6d+7IBCb94YdBiZkjo2MfKSy97uulZveIFXX/Y?=
- =?us-ascii?Q?9bH52FhbEQ09is9fc8tMaxju3jDLh1lf182WuI74+7/jxQHY34Zr92LbCYV0?=
- =?us-ascii?Q?MH3RBjoztrPkKv8wVStxexgFlrC8Yu4Ci2fdvNAFLt4oruqIGxqpM533JZNd?=
- =?us-ascii?Q?0+ZORXTCXqVkPiyLdLcmUHnpXR9EpaC/RVF3UfL4yTbyvSN/45gC/VdNhM4Z?=
- =?us-ascii?Q?Xgju9Qgg0qb85TG6E9lRTb1UATKT9pa386qPtlrq0joLuaxo/2D7ktxD35dg?=
- =?us-ascii?Q?REPLpsjXGQ=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cEtHbFNSUHYrNVdDbVRKZ0cxT3RTQ0ozdytBNXczbGVoU3h0NlNUZGYxdlA2?=
+ =?utf-8?B?aWpvRzA2b3dpWkRqVUNPRjBOcndCQlc2VzFSbklwd2lTWTUzNDVpeXcvMjRE?=
+ =?utf-8?B?OVE3YjJJcU1OYXZkbzJ6djNlMEFCVzlta25oUVRFTkNhVVYvM242eDNmNkQ3?=
+ =?utf-8?B?WmNPNytsbFc1R21penlYR2JoaDFiM0doNmJFOXBXSExIb0JCTTZHZ2lVVDdZ?=
+ =?utf-8?B?Y0VsSXZBSTdoeXd0QzlCZ2VhdjdTeG5FWjRPQngyUXkwOHJ2cmxoeEE2a0hz?=
+ =?utf-8?B?L1ZaaklLUDNUczU5b2YvZVhsNDk5a0gvcXp1QU1odnVLdnZyNmQyRGk4anFY?=
+ =?utf-8?B?c0pRQ05HSWtDRkNPMkFEZ2ZjTmNJRTRyZXpxZTNpekxnQzZxeEJ2Y1BjM1pO?=
+ =?utf-8?B?eFRaQTI3b0d6Nk9UYy9qT2s1elFnRHpoRkcxTXhobnJFMFg3SGhyM05iOVpu?=
+ =?utf-8?B?SFBVM0Zmd0tXT3ZobkpYWHJmeDNndFZIc3pvS0JiM1VvanAxb1k2V0szYWw4?=
+ =?utf-8?B?OWpSM1ozdlNDeng3a0lBNThCNkpOdkI3VWh3RGpKbC96dGx0TnorOGhqeXNi?=
+ =?utf-8?B?WVpGRDlWcjhGSHh2T3MvbUVEaWV2NXFBeUw5R1d1S0xnbHFKZnR6ZWZUa0ZV?=
+ =?utf-8?B?MEJIM0lhQzVNenVXRkd0WFZQU3BIZzVHNysvZnRnUTRGdFhwUjdUT2d0SFlh?=
+ =?utf-8?B?R1A4TW1jN2ZUaVFmZ2pmVTh3eDhlbnp3L1d5MkNBeGZIQWhoSkxENWVjWjNh?=
+ =?utf-8?B?WDE0NjVrM24wdXVFWGhnVE05LzVHWWdKRDNTQ3VKMG11U0lKeXRjQVFIaUtv?=
+ =?utf-8?B?emhISmN0K00wbjJ0WHdORHVLb2VsVDVINFJBeS9hcXZtYWgvTjRFNC9tc3Vn?=
+ =?utf-8?B?R3FqUGVHL0hKSUpHcUMrbTh0TUlnd1RVcWtSTm40dHdXc3dMR2ZyelF3NXFu?=
+ =?utf-8?B?R0dka1lGZXlob1hJSlpTOHkweFhPL0JJbXhsVGlraXd2T3IybDZFQmVaS2hX?=
+ =?utf-8?B?eFhxZDhMUXNyY3RFRDR6ek9mUFhSNGxMSnpSUzBoMThiV3dqNHJ1M1lGZS9M?=
+ =?utf-8?B?WW80ODJtSlMvSUZCM1JYTHgvR3VYOGhLcE0wc3pwNGZ4QWsvc1RZV09pcDFY?=
+ =?utf-8?B?UWtwUm9mNUUwdTIzMDExQ01UdEplZ25zUkFwazVSenN2TTBZRFlzSVZqOExW?=
+ =?utf-8?B?U3FwcVBYMnozeTlFWmNETlRNRGhWdWhNck52U3JnamNpM21BK2l3VnhsaUxy?=
+ =?utf-8?B?TDJERDgxaUVKaDRKU0k1RHA4SnhHSzNwYlpsRU85SWhSU091VDZkVnlzbWdr?=
+ =?utf-8?B?R1RFcklyVlA0UmkyQTdydGpkN1dxNHdYYVlFNTV5Q2F4bHJOSmhzaS9xNC9r?=
+ =?utf-8?B?M1dHYUMzMFoyWUVMSHRCb0JjM3pTc2ZtVjFmNHhjZGQyaGpMUVdNMzdPbGlv?=
+ =?utf-8?B?QVhDMmY2S1lrYjFpdHNPY25CUm41SGxycjdwRUd3Ni92WS9BSDVXTU82emhH?=
+ =?utf-8?B?V0pzaTFHR2RkTEVMY0t3MXJsSmY4NGdPM3FHQ0FUMXQ4ZE1GWUdCUGhSS0xS?=
+ =?utf-8?B?NHBTZEQ2T0RJMGpKVXlSd3BhL1VPS0lscU1sQTRMZ2gxZFRRN1htMnFuZzZM?=
+ =?utf-8?B?NmdIbmlIVkZQZzdTRjhLei9CRWJtcnRhWGM0eHIwRksrcmV0VTg2MWFTRHor?=
+ =?utf-8?B?aXJwaHYyV3BDQjc0bU9BRkVDc0tCN01pY3dGdGllVEdBTndFSTNyR3VOL01I?=
+ =?utf-8?B?V2xPemJPdnZ5QjZNZWZTTUR1M01jcmFwUmo0U3V5Sk1Wa1UweDdZN2lhR0ZE?=
+ =?utf-8?B?eW52WjdtWlhDM1VRS1hLSDU0RnRTc3ErT1RrK2JIZnlWNFdrL3BwSFpnUlhs?=
+ =?utf-8?B?ajh2VVhmMEN4eDhQUm1jVFdGVllIclVGeTVQU3VmakZweGh2amx0T2dzUEJB?=
+ =?utf-8?B?RklDUUQwSDZwSXNKUmsyWkJTOU15eFZsODcwMi9OQXVQZkhJYmpVTnVVWE1L?=
+ =?utf-8?B?VnoyMUlHWGZ4Qzg4R20xMUV3TERqYlNmbnpWM1daTlRRcStFbitNeFNmOHdl?=
+ =?utf-8?B?RnRjYUcyY0hrUmFScmdocit5Tzc0VEZGM0V6a3FpYlNjZ1hHSU1GUkdZOE43?=
+ =?utf-8?B?bURmWWRSbndDSXZDTTA0elZuQ3dDMjhEVHZuRjgzU0VwRHlrWlU2Y3VOYjlC?=
+ =?utf-8?B?WUg4Z3FTYjM0TmlFUEpWVVphQWl3TVFqMFFFS1FISEpsUEc0M25uR1QyUUhJ?=
+ =?utf-8?B?SkpwMkNtczVFcGxPa3laejFmdXMwT3JGOUJhOHJueTY3czdwZFRsRVc1MkV2?=
+ =?utf-8?B?eVp5VU02YmZvTVcwK0s1TExjdVNLS2R1NlVPU3d0Yy9rbzJPTk1KcnY1ZWZp?=
+ =?utf-8?Q?azctSi4JlnRj6UBc=3D?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: adaa8adb-2860-4c57-f709-08da1c9c9c1d
-X-MS-Exchange-CrossTenant-AuthSource: CH2PR12MB4181.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4899cfab-aee4-4376-d412-08da1cc6439a
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4206.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Apr 2022 15:53:38.7281 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Apr 2022 20:51:49.3574 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: h6t5RNUhDQezu6Efm9GKlNGtZuKdLzzba4TDw0wrw376aZke9dJQ5mtNvC+Q8g1i
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4172
+X-MS-Exchange-CrossTenant-UserPrincipalName: fWgCR6T//D4Kaw4iq+QQj/weu+4rl3dSLSSgwS/T5Nx8QNb5DYW2ilKPs9IV159dYz79/ImID/QVsI2RC6uTIQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR12MB1679
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -137,207 +135,25 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, Jason Gunthorpe <jgg@nvidia.com>,
+ linux-kernel@vger.kernel.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-When the open_device() op is called the container_users is incremented and
-held incremented until close_device(). Thus, so long as drivers call
-functions within their open_device()/close_device() region they do not
-need to worry about the container_users.
 
-These functions can all only be called between
-open_device()/close_device():
 
-  vfio_pin_pages()
-  vfio_unpin_pages()
-  vfio_dma_rw()
-  vfio_register_notifier()
-  vfio_unregister_notifier()
+On 4/11/2022 7:43 PM, Christoph Hellwig wrote:
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> 
+> Now that all mdev drivers directly create their own mdev_device driver and
+> directly register with the vfio core's vfio_device_ops this is all dead
+> code.
+> 
+> Delete vfio_mdev.c and the mdev_parent_ops members that are connected to
+> it.
+> 
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
 
-So eliminate the calls to vfio_group_add_container_user() and add a simple
-WARN_ON to detect mis-use by drivers.
-
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
----
- drivers/vfio/vfio.c | 67 +++++++++------------------------------------
- 1 file changed, 13 insertions(+), 54 deletions(-)
-
-diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-index 3d75505bf3cc26..ab0c3f5635905c 100644
---- a/drivers/vfio/vfio.c
-+++ b/drivers/vfio/vfio.c
-@@ -2121,9 +2121,8 @@ int vfio_pin_pages(struct vfio_device *vdev, unsigned long *user_pfn, int npage,
- 	if (group->dev_counter > 1)
- 		return -EINVAL;
- 
--	ret = vfio_group_add_container_user(group);
--	if (ret)
--		return ret;
-+	if (WARN_ON(!READ_ONCE(vdev->open_count)))
-+		return -EINVAL;
- 
- 	container = group->container;
- 	driver = container->iommu_driver;
-@@ -2134,8 +2133,6 @@ int vfio_pin_pages(struct vfio_device *vdev, unsigned long *user_pfn, int npage,
- 	else
- 		ret = -ENOTTY;
- 
--	vfio_group_try_dissolve_container(group);
--
- 	return ret;
- }
- EXPORT_SYMBOL(vfio_pin_pages);
-@@ -2162,9 +2159,8 @@ int vfio_unpin_pages(struct vfio_device *vdev, unsigned long *user_pfn,
- 	if (npage > VFIO_PIN_PAGES_MAX_ENTRIES)
- 		return -E2BIG;
- 
--	ret = vfio_group_add_container_user(vdev->group);
--	if (ret)
--		return ret;
-+	if (WARN_ON(!READ_ONCE(vdev->open_count)))
-+		return -EINVAL;
- 
- 	container = vdev->group->container;
- 	driver = container->iommu_driver;
-@@ -2174,8 +2170,6 @@ int vfio_unpin_pages(struct vfio_device *vdev, unsigned long *user_pfn,
- 	else
- 		ret = -ENOTTY;
- 
--	vfio_group_try_dissolve_container(vdev->group);
--
- 	return ret;
- }
- EXPORT_SYMBOL(vfio_unpin_pages);
-@@ -2207,9 +2201,8 @@ int vfio_dma_rw(struct vfio_device *vdev, dma_addr_t user_iova,
- 	if (!data || len <= 0)
- 		return -EINVAL;
- 
--	ret = vfio_group_add_container_user(vdev->group);
--	if (ret)
--		return ret;
-+	if (WARN_ON(!READ_ONCE(vdev->open_count)))
-+		return -EINVAL;
- 
- 	container = vdev->group->container;
- 	driver = container->iommu_driver;
-@@ -2219,9 +2212,6 @@ int vfio_dma_rw(struct vfio_device *vdev, dma_addr_t user_iova,
- 					  user_iova, data, len, write);
- 	else
- 		ret = -ENOTTY;
--
--	vfio_group_try_dissolve_container(vdev->group);
--
- 	return ret;
- }
- EXPORT_SYMBOL(vfio_dma_rw);
-@@ -2234,10 +2224,6 @@ static int vfio_register_iommu_notifier(struct vfio_group *group,
- 	struct vfio_iommu_driver *driver;
- 	int ret;
- 
--	ret = vfio_group_add_container_user(group);
--	if (ret)
--		return -EINVAL;
--
- 	container = group->container;
- 	driver = container->iommu_driver;
- 	if (likely(driver && driver->ops->register_notifier))
-@@ -2245,9 +2231,6 @@ static int vfio_register_iommu_notifier(struct vfio_group *group,
- 						     events, nb);
- 	else
- 		ret = -ENOTTY;
--
--	vfio_group_try_dissolve_container(group);
--
- 	return ret;
- }
- 
-@@ -2258,10 +2241,6 @@ static int vfio_unregister_iommu_notifier(struct vfio_group *group,
- 	struct vfio_iommu_driver *driver;
- 	int ret;
- 
--	ret = vfio_group_add_container_user(group);
--	if (ret)
--		return -EINVAL;
--
- 	container = group->container;
- 	driver = container->iommu_driver;
- 	if (likely(driver && driver->ops->unregister_notifier))
-@@ -2269,9 +2248,6 @@ static int vfio_unregister_iommu_notifier(struct vfio_group *group,
- 						       nb);
- 	else
- 		ret = -ENOTTY;
--
--	vfio_group_try_dissolve_container(group);
--
- 	return ret;
- }
- 
-@@ -2300,10 +2276,6 @@ static int vfio_register_group_notifier(struct vfio_group *group,
- 	if (*events)
- 		return -EINVAL;
- 
--	ret = vfio_group_add_container_user(group);
--	if (ret)
--		return -EINVAL;
--
- 	ret = blocking_notifier_chain_register(&group->notifier, nb);
- 
- 	/*
-@@ -2313,25 +2285,6 @@ static int vfio_register_group_notifier(struct vfio_group *group,
- 	if (!ret && set_kvm && group->kvm)
- 		blocking_notifier_call_chain(&group->notifier,
- 					VFIO_GROUP_NOTIFY_SET_KVM, group->kvm);
--
--	vfio_group_try_dissolve_container(group);
--
--	return ret;
--}
--
--static int vfio_unregister_group_notifier(struct vfio_group *group,
--					 struct notifier_block *nb)
--{
--	int ret;
--
--	ret = vfio_group_add_container_user(group);
--	if (ret)
--		return -EINVAL;
--
--	ret = blocking_notifier_chain_unregister(&group->notifier, nb);
--
--	vfio_group_try_dissolve_container(group);
--
- 	return ret;
- }
- 
-@@ -2344,6 +2297,9 @@ int vfio_register_notifier(struct vfio_device *dev, enum vfio_notify_type type,
- 	if (!nb || !events || (*events == 0))
- 		return -EINVAL;
- 
-+	if (WARN_ON(!READ_ONCE(dev->open_count)))
-+		return -EINVAL;
-+
- 	switch (type) {
- 	case VFIO_IOMMU_NOTIFY:
- 		ret = vfio_register_iommu_notifier(group, events, nb);
-@@ -2368,12 +2324,15 @@ int vfio_unregister_notifier(struct vfio_device *dev,
- 	if (!nb)
- 		return -EINVAL;
- 
-+	if (WARN_ON(!READ_ONCE(dev->open_count)))
-+		return -EINVAL;
-+
- 	switch (type) {
- 	case VFIO_IOMMU_NOTIFY:
- 		ret = vfio_unregister_iommu_notifier(group, nb);
- 		break;
- 	case VFIO_GROUP_NOTIFY:
--		ret = vfio_unregister_group_notifier(group, nb);
-+		ret = blocking_notifier_chain_unregister(&group->notifier, nb);
- 		break;
- 	default:
- 		ret = -EINVAL;
--- 
-2.35.1
-
+Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
