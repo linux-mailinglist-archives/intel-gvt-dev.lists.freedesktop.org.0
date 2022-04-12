@@ -2,41 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CF7F4FD2CF
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Apr 2022 10:06:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B73B4FD322
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Apr 2022 10:58:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7FCF010FEF0;
-	Tue, 12 Apr 2022 08:06:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B62C710FF9D;
+	Tue, 12 Apr 2022 08:57:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 917 seconds by postgrey-1.36 at gabe;
- Tue, 12 Apr 2022 08:06:11 UTC
-Received: from mail.ourpartnership.pl (mail.ourpartnership.pl [80.211.82.238])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 94C1110FEF2
+Received: from mail-qv1-xf42.google.com (mail-qv1-xf42.google.com
+ [IPv6:2607:f8b0:4864:20::f42])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B1E0F10FF9E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Apr 2022 08:06:11 +0000 (UTC)
-Received: by mail.ourpartnership.pl (Postfix, from userid 1001)
- id 84A6962F10; Tue, 12 Apr 2022 08:43:44 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ourpartnership.pl;
- s=mail; t=1649749523;
- bh=M1ZVeu3q6Upppe+FUx/3rgI7MKJXh389NZDbgCK1SX4=;
- h=Date:From:To:Subject:From;
- b=dMwKZKptw0kqYhMGSRpCQlMqBilPaArO4CL67FaLmirnsyPgY0IVGnW1iwRhATcXh
- sKhvLq5ToOXVtBGj8SK0tv9/WdBP2UxOgu4/Z8ua+5/o/uSK5wMU+80NpShOsU0ilo
- A3flOjkuvSzD6oxVX+58NxtjtER5h4UcHFWV+M/aWSZ+3uslVBuhadOdCGysu6aSIB
- 8ajey159hlz0AlFCZuQWPH4XbLNK47QU76CnRXyioOl8oW264oY3kZLLL/mMHrXll9
- l2XPU6evHRCi8TdpWH2ViZz2TKQAb3agA7C04wMTGPnwSeqs7bpB8xycHm1N5Xkkwa
- ipHo/2QXp/5lg==
-Received: by mail.ourpartnership.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Apr 2022 07:43:43 GMT
-Message-ID: <20220412073002-0.1.j.9uwr.0.seavocu2u5@ourpartnership.pl>
-Date: Tue, 12 Apr 2022 07:43:43 GMT
-From: =?UTF-8?Q?"Arkadiusz_Soko=C5=82owski"?=
- <arkadiusz.sokolowski@ourpartnership.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Koszty instalacji fotowoltaicznej
-X-Mailer: mail.ourpartnership.pl
+ Tue, 12 Apr 2022 08:57:57 +0000 (UTC)
+Received: by mail-qv1-xf42.google.com with SMTP id c1so6192739qvl.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 12 Apr 2022 01:57:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=0Xk90BHf6mwPdkYbVeFP81sv99Zzs1R/GjMtspPD45M=;
+ b=h72WcJR9Sy5AL2DY9ke2DKnB9lRj5u4vCCRBKIjqB6Ib7zEtULk9AtUZlplS627uQD
+ 7fhiAsTxSp3DIL5CWhfhA6vSIgj35Pcn7OjHeODX35L6P3UGdWrU+KKY8Y38ufJqkaEx
+ o0c6PCqaNy85N/WLsSkmQQDeBYbmOilnWUmkBXS1ZGVAXdsX2LqmPNtUmE0wok08vK5D
+ U3N2xv9WtFX+idYDfV1JicsysjGe0AB0zFGXhXXqL5zRYtcIH+I0n31JWRQXh8D9Aa/u
+ BVEsMZ3s/S5yML+u3DUEDeho+Qx9tEVZJjCDdo6F6xJPCqSzG0sBqeiydt0fcD1A9Twm
+ Gi3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=0Xk90BHf6mwPdkYbVeFP81sv99Zzs1R/GjMtspPD45M=;
+ b=fkwQihChmi7YsedoCq21AxAhtSxR08E2GPmEolUsbMwWau999xfDjzRk97gzIByqEd
+ LEFS1IaIIqAY4WQ//4NCwaDP8jE+fvdkbxFyHezkmuqiQjf5tMk0PelNFbC1awQk8aTB
+ fOZA3zLRJbAbGHU+uSJ8NBEWARxvqIAcpaclV8jvtvtRtcuCccpAJ6UJZe5hkxrfcQqQ
+ K54iBQf7/S0BdCngBjuPVhbFPDxez+2hSyzgKipFnBfjR8JF97SRsrwUsDuz2flzl6aD
+ INwjo+lY5hBeOYVXuANWZKrjw7Ljrvn4bOZ19OA7AFg8zX8TGaChLX7Ngmi2qMY/9Lm8
+ WKXQ==
+X-Gm-Message-State: AOAM532yxR5AfTLlkPctDNghCQI/jtoZ5EU+IHF90yLF9nTyJB1LjUmq
+ 4bfKt/L8QTiCFHulLhpj4E8Rea/pmxF3wjGCfLU=
+X-Google-Smtp-Source: ABdhPJzW4qsAyik8Eo2Ztk8FzwL8FczCFgxEl8eZuAie0wj5SD69b6qTvH/2Si9LfvyHHlpippyftJTkH4SEEZITrpU=
+X-Received: by 2002:a05:6214:e41:b0:443:3a2a:f0a5 with SMTP id
+ o1-20020a0562140e4100b004433a2af0a5mr29895051qvc.100.1649753876273; Tue, 12
+ Apr 2022 01:57:56 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:a05:622a:205:0:0:0:0 with HTTP; Tue, 12 Apr 2022 01:57:55
+ -0700 (PDT)
+From: "Mrs.Rose Raya" <govermentcountrycourtbf@gmail.com>
+Date: Tue, 12 Apr 2022 08:57:55 +0000
+Message-ID: <CAMYDLVC9LG5n9qBPCMTL=w=pwzW+9Ds0MEJV_7au8urg+6ytVA@mail.gmail.com>
+Subject: FROM MRS ROSE RAYA
+To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -51,25 +66,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: mrsroseraya32@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+My name is Mrs.Rose Raya.from Indonesia,
 
-stworzyli=C5=9Bmy specjaln=C4=85 ofert=C4=99 dla firm, na kompleksow=C4=85=
- obs=C5=82ug=C4=99 inwestycji w fotowoltaik=C4=99. =20
+I know that this message might come to you as a surprise because we
+don't know each other nor have we ever met before but accept it with
+an open and positive mind. I have a Very important request that made
+me to contact you; I was diagnosed with ovarian cancer disease which
+doctors have confirmed and announced to me that i have just few days
+to leave, Now that I=E2=80=99m ending the race like this, without any famil=
+y
+members and no child, I just came across your email contact from my
+personal search.
 
-Specjalizujemy si=C4=99 w zakresie doboru, monta=C5=BCu i serwisie instal=
-acji fotowoltaicznych, dysponujemy najnowocze=C5=9Bniejszymi rozwi=C4=85z=
-ania, kt=C3=B3re zapewni=C4=85 Pa=C5=84stwu oczekiwane rezultaty.
+I=E2=80=99m a business woman from Indonesia dealing with gold exportation h=
+ere
+in the Republic of Burkina Faso. I have decided to hand over the sum
+of ($10.5 Million Dollar) in my account to you for the help of
+orphanage homes/the needy once in your location to fulfill my wish on
+earth. But before handing over my data=E2=80=99s to you, kindly assure me t=
+hat
+you will take only 50% of the money and share the rest to orphanage
+homes/the needy once in your country, Return to enable me forward to
+you the bank contact details now that I have access to Internet in the
+hospital to enable you contact the bank, always
+check your email and reply in time for better communications.
 
-Mo=C5=BCemy przygotowa=C4=87 dla Pa=C5=84stwa wst=C4=99pn=C4=85 kalkulacj=
-=C4=99 i przeanalizowa=C4=87 efekty mo=C5=BCliwe do osi=C4=85gni=C4=99cia=
-=2E
+PLEASE REPLY ME WITH THE ANSWERS TO THOSE QUESTIONS BELOW FOR MY
+CONFIRMATION SO THAT I CAN GIVE YOU THE EMAIL ADDRESS OF THE BANK FOR YOU
+TO CONTACT THEM.
 
-Czy s=C4=85 Pa=C5=84stwo otwarci na wst=C4=99pn=C4=85 rozmow=C4=99 w tym =
-temacie?
+1. FULL NAME:
+2. YOUR AGE:
+3. SEX:
+4. NATIONALITY:
+5. COUNTRY OF RESIDENCE:
+6. TELEPHONE NUMBER:
+7. YOUR MARITAL STATUS:
+8. YOUR OCCUPATION:
+9. SEND TO ME YOUR PICTURE:
+10. YOU HAVE TO ASSURE ME YOU WILL ACT AS I HAVE INSTRUCTED YOU IF THE
+MONEY GETS TO YOUR BANK ACCOUNT.
 
-
-Pozdrawiam
-Arkadiusz Soko=C5=82owski
+Your early response will be appreciated.
+Yours Faithfully,
+Mrs.Rose Raya.
