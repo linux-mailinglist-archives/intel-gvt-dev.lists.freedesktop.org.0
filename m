@@ -2,30 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A1D84FFAF1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Apr 2022 18:07:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CBA164FFAFD
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Apr 2022 18:12:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9F16110E401;
-	Wed, 13 Apr 2022 16:07:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6F22410E485;
+	Wed, 13 Apr 2022 16:12:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E65D510E3A8;
- Wed, 13 Apr 2022 16:07:03 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C56DF10E485;
+ Wed, 13 Apr 2022 16:12:15 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 2166F68BEB; Wed, 13 Apr 2022 18:07:01 +0200 (CEST)
-Date: Wed, 13 Apr 2022 18:07:00 +0200
+ id 723C368AFE; Wed, 13 Apr 2022 18:12:12 +0200 (CEST)
+Date: Wed, 13 Apr 2022 18:12:12 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 9/9] vfio: Remove calls to vfio_group_add_container_user()
-Message-ID: <20220413160700.GB29631@lst.de>
-References: <0-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
- <9-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
- <20220413061105.GA32701@lst.de> <20220413140305.GD368031@nvidia.com>
+To: Jani Nikula <jani.nikula@intel.com>
+Subject: Re: [PATCH 0/2] drm/i915/gvt: clean up makefile
+Message-ID: <20220413161212.GA30300@lst.de>
+References: <cover.1649852517.git.jani.nikula@intel.com>
+ <20220413154120.GC27532@lst.de> <87y209ezq1.fsf@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220413140305.GD368031@nvidia.com>
+In-Reply-To: <87y209ezq1.fsf@intel.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -39,43 +38,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
- linux-s390@vger.kernel.org, "Liu, Yi L" <yi.l.liu@intel.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Jonathan Corbet <corbet@lwn.net>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Christoph Hellwig <hch@lst.de>, Jason Gunthorpe <jgg@nvidia.com>,
+ Zhi Wang <zhi.wang.linux@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Apr 13, 2022 at 11:03:05AM -0300, Jason Gunthorpe wrote:
-> On Wed, Apr 13, 2022 at 08:11:05AM +0200, Christoph Hellwig wrote:
-> > On Tue, Apr 12, 2022 at 12:53:36PM -0300, Jason Gunthorpe wrote:
-> > > +	if (WARN_ON(!READ_ONCE(vdev->open_count)))
-> > > +		return -EINVAL;
-> > 
-> > I think all the WARN_ON()s in this patch need to be WARN_ON_ONCE,
-> > otherwise there will be too many backtraces to be useful if a driver
-> > ever gets the API wrong.
+On Wed, Apr 13, 2022 at 07:04:54PM +0300, Jani Nikula wrote:
+> > v6:
+> >  - Remove the reference of intel_gvt_device_info.(Christoph)
+> >  - Refine the save_mmio() function. (Christoph)
+> >
+> > which don't belong in the commit log.  It might be worth to fix that
+> > before sending a pull request.
 > 
-> Sure, I added a wrapper to make that have less overhead and merged it
-> with the other 'driver is calling this correctly' checks:
+> I'll just note, without any value judgement, that it is customary in the
+> drm land to do so. They are fine here even if they're not accepted in
+> other subsystems. I'm not going to insist one way or the other.
 
-Looks good:
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+Ok.  Seems very odd to me, but I guess I don't spend enough time in
+drm land to know this particular quirk.
