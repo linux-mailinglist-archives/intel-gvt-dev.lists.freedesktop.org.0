@@ -2,31 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DC644FFAE7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Apr 2022 18:06:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A1D84FFAF1
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Apr 2022 18:07:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9AA9D10E401;
-	Wed, 13 Apr 2022 16:06:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9F16110E401;
+	Wed, 13 Apr 2022 16:07:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2FC4B10E401;
- Wed, 13 Apr 2022 16:06:05 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E65D510E3A8;
+ Wed, 13 Apr 2022 16:07:03 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 720B768BEB; Wed, 13 Apr 2022 18:06:01 +0200 (CEST)
-Date: Wed, 13 Apr 2022 18:06:01 +0200
+ id 2166F68BEB; Wed, 13 Apr 2022 18:07:01 +0200 (CEST)
+Date: Wed, 13 Apr 2022 18:07:00 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 1/9] vfio: Make vfio_(un)register_notifier accept a
- vfio_device
-Message-ID: <20220413160601.GA29631@lst.de>
+Subject: Re: [PATCH 9/9] vfio: Remove calls to vfio_group_add_container_user()
+Message-ID: <20220413160700.GB29631@lst.de>
 References: <0-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
- <1-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
- <20220413055524.GB32092@lst.de> <20220413113952.GN2120790@nvidia.com>
+ <9-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
+ <20220413061105.GA32701@lst.de> <20220413140305.GD368031@nvidia.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220413113952.GN2120790@nvidia.com>
+In-Reply-To: <20220413140305.GD368031@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -64,19 +63,19 @@ Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Apr 13, 2022 at 08:39:52AM -0300, Jason Gunthorpe wrote:
-> I already looked into that for a while, it is a real mess too because
-> of how the notifiers are used by the current drivers, eg gvt assumes
-> the notifier is called during its open_device callback to setup its
-> kvm.
+On Wed, Apr 13, 2022 at 11:03:05AM -0300, Jason Gunthorpe wrote:
+> On Wed, Apr 13, 2022 at 08:11:05AM +0200, Christoph Hellwig wrote:
+> > On Tue, Apr 12, 2022 at 12:53:36PM -0300, Jason Gunthorpe wrote:
+> > > +	if (WARN_ON(!READ_ONCE(vdev->open_count)))
+> > > +		return -EINVAL;
+> > 
+> > I think all the WARN_ON()s in this patch need to be WARN_ON_ONCE,
+> > otherwise there will be too many backtraces to be useful if a driver
+> > ever gets the API wrong.
+> 
+> Sure, I added a wrapper to make that have less overhead and merged it
+> with the other 'driver is calling this correctly' checks:
 
-gvt very much expects kvm to be set before open and thus get the
-cachup notifier, yes.  And given that this is how qemu uses
-the ioctl I think we can actually simplify this further and require
-vfio_group_set_kvm to be called before open for s390/ap as well and
-do away with this whole mess.
+Looks good:
 
-> For this series I prefer to leave it alone
-
-Ok, let's do it one step at a time.
-
+Reviewed-by: Christoph Hellwig <hch@lst.de>
