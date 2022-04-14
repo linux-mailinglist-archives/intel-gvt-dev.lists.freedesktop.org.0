@@ -2,56 +2,111 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CC74500FBC
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Apr 2022 15:45:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DB30500FD9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Apr 2022 16:07:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 85BD610FCBE;
-	Thu, 14 Apr 2022 13:44:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0C39E10FDEC;
+	Thu, 14 Apr 2022 14:07:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BADCC10FCBA;
- Thu, 14 Apr 2022 13:44:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649943896; x=1681479896;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=h/1cEA2KokmS/KpSs5jH8/70OIy1UebIn7InZNEstbU=;
- b=ds/GWiSq2YktergqhNzQ3YS57BVqKXDBn0OB6WpC96ohx6ZTtIE7UtNe
- whcjME8jeCirLrqWsMMFniLOSaV+8X8uXx2YBFjJV+6KPt/WLYeJFNnfF
- Jr452wZ0rtlcoZbhN68vO+gVOSoPcXjM+dHvVdLW1okMhqTTjrfyBSUr9
- m/gAGKkOb5pmlgc2yB8HF7W0ZgmFQi8wQ6GyuuFDSGgCnPHSQ4F6QI6NA
- hDb3CzM1fFoGcBxAohzHvEvE9SHkLxw7F/QfQpP96PSbaMfP8i7PGlkrp
- qJsFZ//DAv/nNH6E1ITjqtCBCthLymIrHFdUVnr3fw4Av6iEcjy+Z2AdE g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10316"; a="287986674"
-X-IronPort-AV: E=Sophos;i="5.90,259,1643702400"; d="scan'208";a="287986674"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2022 06:44:56 -0700
-X-IronPort-AV: E=Sophos;i="5.90,259,1643702400"; d="scan'208";a="573801563"
-Received: from nplaweck-mobl.ger.corp.intel.com (HELO localhost)
- ([10.249.149.236])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2022 06:44:52 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, "Wang, Zhi A" <zhi.a.wang@intel.com>
-Subject: Re: refactor the i915 GVT support and move to the modern mdev API v3
-In-Reply-To: <20220414134129.GC2120790@nvidia.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20220411141403.86980-1-hch@lst.de>
- <82c13d8e-1cb4-2873-86e9-16fd38e15b27@intel.com>
- <20220413154642.GA28095@lst.de> <871qy1geko.fsf@intel.com>
- <5af7726e-920e-603a-bad3-8adb09d2ba89@intel.com>
- <20220413232053.GA2120790@nvidia.com>
- <1c3aaab9-3bd4-95d4-9f9f-4be9e10e6516@intel.com>
- <20220414133427.GB2120790@nvidia.com>
- <ae3bec3f-b89a-2845-a924-046874fa38c7@intel.com>
- <20220414134129.GC2120790@nvidia.com>
-Date: Thu, 14 Apr 2022 16:44:52 +0300
-Message-ID: <87fsmfeq3v.fsf@intel.com>
+X-Greylist: delayed 923 seconds by postgrey-1.36 at gabe;
+ Thu, 14 Apr 2022 14:07:27 UTC
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2327710FDEC;
+ Thu, 14 Apr 2022 14:07:27 +0000 (UTC)
+Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 23EC3x8m006615; 
+ Thu, 14 Apr 2022 13:52:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=oHY6GZiVb5HyuxgKDnBJtLv236U25bxeDI9Xv19FNTk=;
+ b=gOHaXCF6Yb7Tdkl6Qe1YRyLuVxqrwiUjA5tyGFt/K/LWHAsrfBE8gJkT1t7iVBM4L7Yf
+ /YBp6dsQn2s3j9urf4T7HQ5cvujwFnRvHGSXZtK4HnhfQvU2NwLDk4DLP7+Q+x0ev06p
+ TUxvgqjNFo8bIUuTaTBLbaMT8gck8PIz55J7lYtwyWdjZfO8CVgTHObMU8ShTAd5RmJZ
+ WnrfEPGqxtGbxaXcKLa6JIxWjU+arE1EcXyWIvqVkv68luZvUzO1WZct5BgfQ5vXMlQg
+ Bt+TokHdsPhuG9T9CPZJoKNyuLetz2gKD44e5gHu1cxkLqe1MyMGDX5ga72vsmaRsEml fg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3fefh56up2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 14 Apr 2022 13:52:00 +0000
+Received: from m0098404.ppops.net (m0098404.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 23EDTc1s002057;
+ Thu, 14 Apr 2022 13:52:00 GMT
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3fefh56unq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 14 Apr 2022 13:51:59 +0000
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 23EDhjun003747;
+ Thu, 14 Apr 2022 13:51:58 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
+ [9.57.198.26]) by ppma04wdc.us.ibm.com with ESMTP id 3fb1sa7ntq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 14 Apr 2022 13:51:58 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 23EDpvES13828434
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 14 Apr 2022 13:51:57 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AD049AE05F;
+ Thu, 14 Apr 2022 13:51:57 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 63B9AAE05C;
+ Thu, 14 Apr 2022 13:51:50 +0000 (GMT)
+Received: from [9.211.76.45] (unknown [9.211.76.45])
+ by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Thu, 14 Apr 2022 13:51:50 +0000 (GMT)
+Message-ID: <d6e2778a-01e4-6468-2c2b-3b718d924e65@linux.ibm.com>
+Date: Thu, 14 Apr 2022 09:51:49 -0400
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 9/9] vfio: Remove calls to vfio_group_add_container_user()
+Content-Language: en-US
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+ Eric Farman <farman@linux.ibm.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Sven Schnelle <svens@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+References: <9-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+In-Reply-To: <9-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: p__mnI6kUAsRVhj3MeN1iQJ3xzHvSix8
+X-Proofpoint-ORIG-GUID: eRlxuhpLbLi2wEFbBZUimbF33iPl8iJP
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-04-14_04,2022-04-14_01,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 mlxscore=0
+ malwarescore=0 adultscore=0 priorityscore=1501 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 impostorscore=0 phishscore=0
+ mlxlogscore=765 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2204140074
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,31 +119,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+Cc: "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
  Christoph Hellwig <hch@lst.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 14 Apr 2022, Jason Gunthorpe <jgg@nvidia.com> wrote:
-> On Thu, Apr 14, 2022 at 01:39:11PM +0000, Wang, Zhi A wrote:
->> This one belongs to i915, which has already been queued in drm-intel-next, but
->> not yet reached to the top. When it is landed in -rc, I will rebase this branch
->> on it, then we can drop this patch in this branch.
->
-> A commit called 'split out dmc registers' with no Fixes: will be sent
-> to a rc?
+On 4/12/22 11:53 AM, Jason Gunthorpe wrote:
+> When the open_device() op is called the container_users is incremented and
+> held incremented until close_device(). Thus, so long as drivers call
+> functions within their open_device()/close_device() region they do not
+> need to worry about the container_users.
+> 
+> These functions can all only be called between
+> open_device()/close_device():
+> 
+>    vfio_pin_pages()
+>    vfio_unpin_pages()
+>    vfio_dma_rw()
+>    vfio_register_notifier()
+>    vfio_unregister_notifier()
+> 
+> So eliminate the calls to vfio_group_add_container_user() and add a simple
+> WARN_ON to detect mis-use by drivers.
+> 
 
-Won't. It's in drm-intel-next (and drm-next), headed to v5.19.
+vfio_device_fops_release decrements dev->open_count immediately before 
+calling dev->ops->close_device, which means we could enter close_device 
+with a dev_count of 0.
 
-BR,
-Jani.
+Maybe vfio_device_fops_release should handle the same way as 
+vfio_group_get_device_fd?
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
+	if (device->open_count == 1 && device->ops->close_device)
+		device->ops->close_device(device);
+	device->open_count--;
+
