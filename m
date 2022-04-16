@@ -2,144 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2DB05031EA
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Apr 2022 01:45:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29806503467
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Apr 2022 08:12:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2EAA910E54B;
-	Fri, 15 Apr 2022 23:45:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F21CF10E600;
+	Sat, 16 Apr 2022 06:12:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 57E3B10E0D4;
- Fri, 15 Apr 2022 23:45:18 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 32DB510E5F0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 16 Apr 2022 06:12:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1650066318; x=1681602318;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=Lvza6qB84Gm+/e3tSzNIrxnq4zKuQRxIz5xk/AZ9bB8=;
- b=DdXtZoj7qs8y6crnZg5dzyuaP1XHQR2bQfSSG37HqiO2of25ZybyXLyr
- FnB6s7N/KA5OXg4qWEYE/0gxQyGZzaR634O6btUbOPwU+3Z+jc1ngj9Ms
- 9oF+aVlxa30kFN4IZNT2GU6MQnbSnoJPX5Q/JlXAxR5KhL9CuA3DO4ucg
- BWZgg6HariSGT8OgitorrjnSxwEFrpByIknKB6m6DBffHz3XvKrdN9Ser
- 50h+ZUVfZIyOq4HJ1/iweRIA0FGfTeGo/T639/VvTMFfKU1iyokdSyga3
- I1X5vBHHuET/Sc9SXIRfl6rHIoCUZ328TS+pq1RyO+QdxsPAXoxZkm/Gf A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10318"; a="245135025"
-X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="245135025"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2022 16:45:17 -0700
+ t=1650089575; x=1681625575;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=HtY2wK4bdDITZWiBsRqb8cbufTUNqXILiR/B9GXnvRQ=;
+ b=Vr7KYqXfHoMr1L3VddCcCfM6Zoai5Jq/7r4eTDVElT9M5spxUnGssKLm
+ 64wopGfxnALZVH7gvMniC0hQoeiwH1KpfOloBiuUm4UofqvxYEkC6C5K7
+ WBAkvYbM3NuCxK61n8vFjRcAPxZkpNIb2GivZa6LOvmtzMamU6z1cvVk7
+ SKzAXmQaX0r3lagKHU7Au5/vUluaEAnDMQa2mIvx9paJMlJI7fvDR+Yqt
+ n0gMN7KPXT9scAFH71/Z3TOK52+odVCJjdoc+D5j3jC/Jna0PRBorrX3g
+ 3ClDvxAUCb+xAa2LN4VwgTBBvaTdhzBiXvfUUsSXFJ4OAiQEDeZ7VwvHs Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10318"; a="288340507"
+X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="288340507"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2022 23:12:54 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="509110204"
-Received: from orsmsx605.amr.corp.intel.com ([10.22.229.18])
- by orsmga003.jf.intel.com with ESMTP; 15 Apr 2022 16:45:17 -0700
-Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
- ORSMSX605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Fri, 15 Apr 2022 16:45:16 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Fri, 15 Apr 2022 16:45:16 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.175)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Fri, 15 Apr 2022 16:45:16 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EQ3hCpVzUmY6AUctN6igpABaRFIimxq9uSrB12VCYxN6mCm1G44gwxE3fLaM88Sv1Zbom4UGG8QGfs/ZCEo5XTZgqvEJ2rP3Xd+lcmnv0LmSZxH1tAmJi/r9IVk6Lz8EsSAmS4pDlB6mTiUq6tfSm1h+PBL9Cu5rLbtuXV/duNzcmEH/S8DEycVbqc4DuTzduOTbEFxuoWX4A//RfFC2P4SgsyNOk+PAortAW4XvAWBHu4WdRfcGWs686XPQKAGkc+nuO887izbLLLbS57RK3zgyIVWsZC1HLx1TBj8jJ09zKLyC5FV+JPbJFfKZnviPPY8hrtFjI39fVTAD8NahrA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Lvza6qB84Gm+/e3tSzNIrxnq4zKuQRxIz5xk/AZ9bB8=;
- b=dXUsAWFLHajzjXk7u8qZ56LXmVEv2lCF2mWzdBRvpnem13tfPDrEYsq8dFUyo3n4Dk53VpUaN/dML72fCOiJcmV7mPZTR0c/dX/0TdjEg4remVJxGA6Ea0ZXwTdwMNLGhBBLXOtanCHvOJN8o26RC+G8pDvV+bImqnyyww6bTdXh1qFjuobncYQMxgNTQ1wNM785S11jSQmBuEC8zbY6q89YvbjYSf/TnesVfdYlWU/SuPNpu5/IYhiLzIEVoioa6JC7GW73NIU/JJqWiboQEYDf4bBJCVSibW4DCXmVewMpst5OdTcBM1Mu6F4BwmODvRue3BkMTx82MZ3kgxWNqg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by CY4PR11MB0007.namprd11.prod.outlook.com (2603:10b6:910:79::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5144.29; Fri, 15 Apr
- 2022 23:45:14 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::c4ea:a404:b70b:e54e]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::c4ea:a404:b70b:e54e%8]) with mapi id 15.20.5164.020; Fri, 15 Apr 2022
- 23:45:14 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: RE: [PATCH 9/9] vfio: Remove calls to vfio_group_add_container_user()
-Thread-Topic: [PATCH 9/9] vfio: Remove calls to vfio_group_add_container_user()
-Thread-Index: AQHYToWALOjmn4an1kSZ0RkA8dFDlKzvcIiAgAAIewCAAMWwEIAApwIAgADCL2A=
-Date: Fri, 15 Apr 2022 23:45:14 +0000
-Message-ID: <BN9PR11MB527668FA6B65E4B18D7AB7E28CEE9@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <9-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
- <d6e2778a-01e4-6468-2c2b-3b718d924e65@linux.ibm.com>
- <20220414142210.GE2120790@nvidia.com>
- <BN9PR11MB527672B82DCFAD2C9B28E8CC8CEE9@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20220415120728.GG2120790@nvidia.com>
-In-Reply-To: <20220415120728.GG2120790@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ea8923c3-32b8-4fc1-179e-08da1f39fd37
-x-ms-traffictypediagnostic: CY4PR11MB0007:EE_
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-microsoft-antispam-prvs: <CY4PR11MB00075B9F350960ACF2482DBC8CEE9@CY4PR11MB0007.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: +sypawHZtNKNaa8c4SNS9zn5JazXH/LufCOIMEuZUyPBNQIjK09GzqfvpcQqDFf+O4RAX1TIZ+4VJA9CaoSOt63fVqI5Sj40ukKfqwV8/VMUj8K0cmQxVJ2j+7a3o9AbQADtavQ0qUA9k82S/CRIRaUxCkQULKknolLmXFHpJa7qMw2i9jZCOCd68SvlkzXBsdw3gqa11qCAN4WUjT/U9FOPmhWnSdWg7l7/PRCdeKqFDC5CRYOFxa/TBZlSQV7BYvCYDT7ZDWtGVPrh1DXoUeUHhaV1ElDi7ffCZwAwWYdm8vTs+wnyzbAUNhX+2arp82xq24+GwjaDiGlerOUYatw9qR9QPGkealZaxTB/lPsgPwVR3dGTokWsi0dFtF5ij/pa0BHDx57wiEPqswpQU0MDfp2HwknFhPh0UNN9F7VOIkWtvqAwkyEztnsdjkyjLMxWvnlJSxWkmuysQOnr22/Z1qqF6C0NKSQB9CkIkSy4CtoFMjIPr8ylvachHum1h3pOokt9YOFINRRpAYPZ/tdt5ynRsBS5azidbOf9qpEeVwnnTJzC4ZWKEUO+qvW9PIgnJUqV1edtOKNG85lX+HtX2dhD1kwFcAUrxaQk8MaB7h8MkxrmNBOfI3z2RS0VUIomEaoBOL0u1/548XyU9E+2aLuDQri+Yr5ALCW24qin+P7zjZRLLQYq73xrjw0eams4zZU1fkg4GdgtbUHu0Q==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(66476007)(5660300002)(7416002)(66556008)(82960400001)(122000001)(83380400001)(38100700002)(38070700005)(66946007)(52536014)(4326008)(2906002)(8936002)(9686003)(86362001)(33656002)(76116006)(8676002)(55016003)(186003)(26005)(64756008)(7696005)(4744005)(7406005)(6916009)(54906003)(71200400001)(508600001)(316002)(6506007)(66446008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?SpHMIAUqEmcztcsmsXaD0ZmHaPjFuEa95WzXvSNKPRrO3mgNnxXTd0yQmqUR?=
- =?us-ascii?Q?ZN3wh/n74jp7Y0WZNWSh1lKh8dRznk1HJCeN7t5kN+xPcaJnYTKpsSRHdon+?=
- =?us-ascii?Q?7aBsRs+Ydizd6Jx7icGcTxGs+vTnODU971Fa5uaAStQUhGPemPPmJIZ5KrtO?=
- =?us-ascii?Q?DYrdinQDy7Y3lW8OQDJ3y1chA8tTUsOZkwIYWHIVRzn8nusiCRGT/XKOqfLP?=
- =?us-ascii?Q?wisDVSRQAuCpsagypTVE/DHEK5leY9vuM9KeZ3tmtVbakVGRWY7ElfEXTgca?=
- =?us-ascii?Q?C6HGv0ca2a1M98uBBn0p8pGLs4Mrta1t6MgD/x+yYH7yFHmkp9TFmsrLj91j?=
- =?us-ascii?Q?qjVmf/o1rF1KqEwGYwqL6tvlN7a7EbWY7CHhNPq5EmLmDnpeOmnXg+fVd5eF?=
- =?us-ascii?Q?jwc5q16Lt92gqC/3vvbj05mlY/q4Kjl0+98ieO4yacsWWBDDzWpnMou7fBzM?=
- =?us-ascii?Q?NH6rA9y8yTrVFYA4Vdtl6K9dvv5QjrijmLI6iZ1m1oQuD/V7jPtUbQPg4BW0?=
- =?us-ascii?Q?Wak81GCKlVAPO2pNYVvObQt4wE1AVJQR23npnoSOs1Ybh3qtTiok1TKURaKI?=
- =?us-ascii?Q?5gYgXdgue3/cvjhDxBwzILavsPFa+MGCvp/KYYLBMt83ObDswp3tklV6xEKy?=
- =?us-ascii?Q?93tBKszAW9vVOBdlyBkYWiHCq5rjNjbDxsMuSBtMYjd9fvfF3suL3L6OTen3?=
- =?us-ascii?Q?0eQCL09Wh36o1+UCze36hQeLIrRpp3qUzzKwRbxrqFqOEIoVYHmrAU3qLs8J?=
- =?us-ascii?Q?QqvDE5Z1/Mxz/3JC0ith1linivEBN3Fz4UWiApG6NFVBg9t0ZUyKXz+zCO6+?=
- =?us-ascii?Q?f78FnJJRuGfEZCsgA1m5QPoCNGb5RXyWOw+zdknYIkcF7omM2NowKXyiHnFY?=
- =?us-ascii?Q?A3TH13b1tV7sRFjzvGFrHDHp7nxSRAvP6z1Sns/KDT8+VrMmG+30mRekmtj3?=
- =?us-ascii?Q?IMg3jw8esWKDflpb7418PPya7huJIOIPxIpvTzS3NVb8BhjsS2vQEe82lBjC?=
- =?us-ascii?Q?Uf02n/wbSm6VZfDm0rBYI1297o3W4cXJkLT6rAtxTTUBjV8LHCXQgxpfW5xT?=
- =?us-ascii?Q?nq2x5huA7PCmw6KKNWzq7cC7lJINxw/mTohw1VMysXsWl7J2BIaa2XCyxR86?=
- =?us-ascii?Q?Ptu5fl0WdtrCajUqQG4L1oFaXv69mIQOtOcxctGVW6HpTFLwTI3el59DQYxE?=
- =?us-ascii?Q?6zZQersyduc3nvuACdNgG/QBeOk0vvsOuAIx15bPgipyDo1wK874xUS/8Stk?=
- =?us-ascii?Q?UOfWu9guggDgx+pIvi4Bjoc8z0Zqo3NGAo/BmrI96n/xxFpOCn3E4Uw9tuBT?=
- =?us-ascii?Q?ipqWlhWsA/GkFSAPB/Ywfrc0ZhvqH/Nf5odzcBATcOhR/uoDirLjurPbdAJm?=
- =?us-ascii?Q?GKT40zPLnCoDKoSyv14Cg7Gvn+W6vy6kGjxqPMK5p5cZ99Z/abChlal+NfR6?=
- =?us-ascii?Q?7St+X0mqyAR+li/rU/lMnW+uBxn4uj27D//hvYIS9c5NVPKviyA5VPr5hlag?=
- =?us-ascii?Q?emEARH4UIMCPrMMfoTfuTb4uc8k2ObdZctTq/ejgX3BD7wSgZv0NuS3/Gcr+?=
- =?us-ascii?Q?FynRNIOWKRS8nZ4nJ7MxqWytwinXVHiGsgnvTSWrZ2A2i8D0ksCss8Y59sJ/?=
- =?us-ascii?Q?Aon0j4/k5HFD9L6OnGDNLFpdL+fYxqRWmpLAb3gDOo9b7gDC2gGWl+Nokxfd?=
- =?us-ascii?Q?dSJkVfvttFHRyPP3FcKUuQEdkX50uSWx6PX6bdthJrcgXLNAbp/g8eAA+aVY?=
- =?us-ascii?Q?OzDMoGxc+g=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="527821518"
+Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 15 Apr 2022 23:12:52 -0700
+Received: from kbuild by 3abc53900bec with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nfbfv-0002qX-G8;
+ Sat, 16 Apr 2022 06:12:51 +0000
+Date: Sat, 16 Apr 2022 14:12:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhi Wang <zhi.a.wang@intel.com>
+Subject: [intel-gvt:topic/for-christoph] BUILD SUCCESS
+ fd6f410fe5eced449a4d6467a4f4789a8eb10382
+Message-ID: <625a5e3c.bN0zek1EfKWB6NsQ%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ea8923c3-32b8-4fc1-179e-08da1f39fd37
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Apr 2022 23:45:14.6002 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: E07bIQVu2TZzhfhkvF168d4Wzqscz785CfyWotfr50onYg5XjcPdty04NewnItEQ2liCEGAnLCsKkFW8fOLMPw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR11MB0007
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -152,46 +59,173 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, Jason Herne <jjherne@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Friday, April 15, 2022 8:07 PM
->=20
-> On Fri, Apr 15, 2022 at 02:32:08AM +0000, Tian, Kevin wrote:
->=20
-> > While it's a welcomed fix is it actually related to this series? The po=
-int
-> > of this patch is that those functions are called when container_users
-> > is non-zero. This is true even without this fix given container_users
-> > is decremented after calling device->ops->close_device().
->=20
-> It isn't, it is decremented before which causes it to be 0 when the
-> assertions are called.
->=20
+tree/branch: https://github.com/intel/gvt-linux.git topic/for-christoph
+branch HEAD: fd6f410fe5eced449a4d6467a4f4789a8eb10382  vfio/mdev: Remove mdev drvdata
 
-right, it's quite obvious when I read it the second time.=20
+elapsed time: 2167m
+
+configs tested: 146
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm64                               defconfig
+arm64                            allyesconfig
+arm                              allmodconfig
+arm                                 defconfig
+arm                              allyesconfig
+i386                          randconfig-c001
+s390                          debug_defconfig
+powerpc                     taishan_defconfig
+arc                           tb10x_defconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                            q40_defconfig
+h8300                               defconfig
+sh                             espt_defconfig
+sh                        edosk7705_defconfig
+arm                       imx_v6_v7_defconfig
+sh                               j2_defconfig
+arm                         lubbock_defconfig
+arm                           tegra_defconfig
+arc                     haps_hs_smp_defconfig
+ia64                                defconfig
+arm                        trizeps4_defconfig
+mips                         db1xxx_defconfig
+mips                      fuloong2e_defconfig
+powerpc                       eiger_defconfig
+powerpc                 linkstation_defconfig
+powerpc                 mpc834x_mds_defconfig
+sh                   sh7770_generic_defconfig
+arm                          lpd270_defconfig
+sh                           se7722_defconfig
+powerpc                        warp_defconfig
+sparc                       sparc64_defconfig
+h8300                       h8s-sim_defconfig
+arm                       multi_v4t_defconfig
+powerpc                     mpc83xx_defconfig
+sh                        sh7757lcr_defconfig
+mips                      maltasmvp_defconfig
+sh                          r7780mp_defconfig
+sh                        edosk7760_defconfig
+arm                       aspeed_g5_defconfig
+openrisc                            defconfig
+powerpc                 mpc85xx_cds_defconfig
+powerpc64                        alldefconfig
+sh                   sh7724_generic_defconfig
+arm                     eseries_pxa_defconfig
+i386                             alldefconfig
+powerpc                      ppc6xx_defconfig
+powerpc                   motionpro_defconfig
+powerpc                      cm5200_defconfig
+arm                            mps2_defconfig
+powerpc                     ep8248e_defconfig
+arc                        nsim_700_defconfig
+xtensa                  cadence_csp_defconfig
+xtensa                  nommu_kc705_defconfig
+sh                         microdev_defconfig
+x86_64                              defconfig
+powerpc                     tqm8555_defconfig
+um                                  defconfig
+x86_64                        randconfig-c001
+arm                  randconfig-c002-20220414
+arm                  randconfig-c002-20220415
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+nios2                               defconfig
+arc                              allyesconfig
+csky                                defconfig
+nios2                            allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+s390                                defconfig
+s390                             allmodconfig
+parisc                              defconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+s390                             allyesconfig
+sparc                               defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+x86_64                        randconfig-a011
+x86_64                        randconfig-a013
+x86_64                        randconfig-a015
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+riscv                randconfig-r042-20220415
+arc                  randconfig-r043-20220415
+s390                 randconfig-r044-20220415
+arc                  randconfig-r043-20220414
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+riscv                             allnoconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                                  kexec
+x86_64                          rhel-8.3-func
+x86_64                               rhel-8.3
+x86_64                         rhel-8.3-kunit
+
+clang tested configs:
+mips                         tb0287_defconfig
+i386                             allyesconfig
+powerpc                      ppc64e_defconfig
+mips                     cu1000-neo_defconfig
+arm                       aspeed_g4_defconfig
+arm                          ixp4xx_defconfig
+arm                  colibri_pxa300_defconfig
+arm                       imx_v4_v5_defconfig
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
+riscv                randconfig-r042-20220414
+hexagon              randconfig-r041-20220414
+hexagon              randconfig-r045-20220414
+s390                 randconfig-r044-20220414
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
