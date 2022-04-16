@@ -2,51 +2,51 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29806503467
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Apr 2022 08:12:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B10DD50348F
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Apr 2022 08:53:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F21CF10E600;
-	Sat, 16 Apr 2022 06:12:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5857110E2F6;
+	Sat, 16 Apr 2022 06:53:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 32DB510E5F0
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BD56D10E2F6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 16 Apr 2022 06:12:55 +0000 (UTC)
+ Sat, 16 Apr 2022 06:53:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1650089575; x=1681625575;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=HtY2wK4bdDITZWiBsRqb8cbufTUNqXILiR/B9GXnvRQ=;
- b=Vr7KYqXfHoMr1L3VddCcCfM6Zoai5Jq/7r4eTDVElT9M5spxUnGssKLm
- 64wopGfxnALZVH7gvMniC0hQoeiwH1KpfOloBiuUm4UofqvxYEkC6C5K7
- WBAkvYbM3NuCxK61n8vFjRcAPxZkpNIb2GivZa6LOvmtzMamU6z1cvVk7
- SKzAXmQaX0r3lagKHU7Au5/vUluaEAnDMQa2mIvx9paJMlJI7fvDR+Yqt
- n0gMN7KPXT9scAFH71/Z3TOK52+odVCJjdoc+D5j3jC/Jna0PRBorrX3g
- 3ClDvxAUCb+xAa2LN4VwgTBBvaTdhzBiXvfUUsSXFJ4OAiQEDeZ7VwvHs Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10318"; a="288340507"
-X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="288340507"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2022 23:12:54 -0700
+ t=1650092036; x=1681628036;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=fAE2xMjKJTAYYfojBwucYXlSRxc0bm4fLjTRmufZB7M=;
+ b=Z5fgMA8KewDZd6KXhxI6LOfAe5LxrsXDi8UdIu6Ka1dooKzFP/9bW0L5
+ XsIo1aWgmt+AkNWmh4ccvOYMSc5RBRBt7DfId9cIkpLtAxx1pe5OUegZv
+ v8DN+ngIDe2VlhvPASlw16R2xy1FNZ5lAirf5ykewvI370aDA5lbvTZ95
+ 2F7HqaygwMvPcJAcaDy/02kkuDlkWdqQMqeoMBXdriVVfMLEDhTzIy/ax
+ IJwG1Qxo1dj20ChATlyfZfQmTnE2dnQkHFQ1iS5gwtAiIgmRwaZp1eZvq
+ AqQACb8H9McKcU8ofHBRzwHl07NpD3G+ZC1KBRf3M4tfbPM5pgNsIXI2h Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10318"; a="263448534"
+X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="263448534"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2022 23:53:55 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="527821518"
+X-IronPort-AV: E=Sophos;i="5.90,264,1643702400"; d="scan'208";a="662698366"
 Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 15 Apr 2022 23:12:52 -0700
+ by orsmga004.jf.intel.com with ESMTP; 15 Apr 2022 23:53:53 -0700
 Received: from kbuild by 3abc53900bec with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nfbfv-0002qX-G8;
- Sat, 16 Apr 2022 06:12:51 +0000
-Date: Sat, 16 Apr 2022 14:12:12 +0800
+ (envelope-from <lkp@intel.com>) id 1nfcJc-0002sf-MQ;
+ Sat, 16 Apr 2022 06:53:52 +0000
+Date: Sat, 16 Apr 2022 14:52:54 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhi Wang <zhi.a.wang@intel.com>
-Subject: [intel-gvt:topic/for-christoph] BUILD SUCCESS
- fd6f410fe5eced449a4d6467a4f4789a8eb10382
-Message-ID: <625a5e3c.bN0zek1EfKWB6NsQ%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Subject: [intel-gvt:topic/for-christoph 1/37]
+ drivers/gpu/drm/i915/intel_gvt_mmio_table.c:7:10: fatal error:
+ display/intel_dmc_regs.h: No such file or directory
+Message-ID: <202204161401.AtiDTPRF-lkp@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,172 +59,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: kbuild-all@lists.01.org, zhenyu.z.wang@intel.com,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ Christoph Hellwig <hch@lst.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git topic/for-christoph
-branch HEAD: fd6f410fe5eced449a4d6467a4f4789a8eb10382  vfio/mdev: Remove mdev drvdata
+tree:   https://github.com/intel/gvt-linux.git topic/for-christoph
+head:   fd6f410fe5eced449a4d6467a4f4789a8eb10382
+commit: 07de96038f7d8a179287ae178dfcad8f085abb9e [1/37] i915/gvt: Separate the MMIO tracking table from GVT-g
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20220416/202204161401.AtiDTPRF-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.2.0-19) 11.2.0
+reproduce (this is a W=1 build):
+        # https://github.com/intel/gvt-linux/commit/07de96038f7d8a179287ae178dfcad8f085abb9e
+        git remote add intel-gvt https://github.com/intel/gvt-linux.git
+        git fetch --no-tags intel-gvt topic/for-christoph
+        git checkout 07de96038f7d8a179287ae178dfcad8f085abb9e
+        # save the config file to linux build tree
+        mkdir build_dir
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash
 
-elapsed time: 2167m
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-configs tested: 146
-configs skipped: 3
+All errors (new ones prefixed by >>):
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+>> drivers/gpu/drm/i915/intel_gvt_mmio_table.c:7:10: fatal error: display/intel_dmc_regs.h: No such file or directory
+       7 | #include "display/intel_dmc_regs.h"
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   compilation terminated.
 
-gcc tested configs:
-arm64                               defconfig
-arm64                            allyesconfig
-arm                              allmodconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                          randconfig-c001
-s390                          debug_defconfig
-powerpc                     taishan_defconfig
-arc                           tb10x_defconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                            q40_defconfig
-h8300                               defconfig
-sh                             espt_defconfig
-sh                        edosk7705_defconfig
-arm                       imx_v6_v7_defconfig
-sh                               j2_defconfig
-arm                         lubbock_defconfig
-arm                           tegra_defconfig
-arc                     haps_hs_smp_defconfig
-ia64                                defconfig
-arm                        trizeps4_defconfig
-mips                         db1xxx_defconfig
-mips                      fuloong2e_defconfig
-powerpc                       eiger_defconfig
-powerpc                 linkstation_defconfig
-powerpc                 mpc834x_mds_defconfig
-sh                   sh7770_generic_defconfig
-arm                          lpd270_defconfig
-sh                           se7722_defconfig
-powerpc                        warp_defconfig
-sparc                       sparc64_defconfig
-h8300                       h8s-sim_defconfig
-arm                       multi_v4t_defconfig
-powerpc                     mpc83xx_defconfig
-sh                        sh7757lcr_defconfig
-mips                      maltasmvp_defconfig
-sh                          r7780mp_defconfig
-sh                        edosk7760_defconfig
-arm                       aspeed_g5_defconfig
-openrisc                            defconfig
-powerpc                 mpc85xx_cds_defconfig
-powerpc64                        alldefconfig
-sh                   sh7724_generic_defconfig
-arm                     eseries_pxa_defconfig
-i386                             alldefconfig
-powerpc                      ppc6xx_defconfig
-powerpc                   motionpro_defconfig
-powerpc                      cm5200_defconfig
-arm                            mps2_defconfig
-powerpc                     ep8248e_defconfig
-arc                        nsim_700_defconfig
-xtensa                  cadence_csp_defconfig
-xtensa                  nommu_kc705_defconfig
-sh                         microdev_defconfig
-x86_64                              defconfig
-powerpc                     tqm8555_defconfig
-um                                  defconfig
-x86_64                        randconfig-c001
-arm                  randconfig-c002-20220414
-arm                  randconfig-c002-20220415
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-nios2                               defconfig
-arc                              allyesconfig
-csky                                defconfig
-nios2                            allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-h8300                            allyesconfig
-xtensa                           allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-s390                                defconfig
-s390                             allmodconfig
-parisc                              defconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-s390                             allyesconfig
-sparc                               defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-x86_64                        randconfig-a011
-x86_64                        randconfig-a013
-x86_64                        randconfig-a015
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-riscv                randconfig-r042-20220415
-arc                  randconfig-r043-20220415
-s390                 randconfig-r044-20220415
-arc                  randconfig-r043-20220414
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                                  kexec
-x86_64                          rhel-8.3-func
-x86_64                               rhel-8.3
-x86_64                         rhel-8.3-kunit
 
-clang tested configs:
-mips                         tb0287_defconfig
-i386                             allyesconfig
-powerpc                      ppc64e_defconfig
-mips                     cu1000-neo_defconfig
-arm                       aspeed_g4_defconfig
-arm                          ixp4xx_defconfig
-arm                  colibri_pxa300_defconfig
-arm                       imx_v4_v5_defconfig
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-riscv                randconfig-r042-20220414
-hexagon              randconfig-r041-20220414
-hexagon              randconfig-r045-20220414
-s390                 randconfig-r044-20220414
+vim +7 drivers/gpu/drm/i915/intel_gvt_mmio_table.c
+
+   > 7	#include "display/intel_dmc_regs.h"
+     8	#include "gt/intel_gt_regs.h"
+     9	#include "gvt/gvt.h"
+    10	#include "i915_drv.h"
+    11	#include "i915_pvinfo.h"
+    12	#include "i915_reg.h"
+    13	#include "intel_gvt.h"
+    14	#include "intel_mchbar_regs.h"
+    15	
 
 -- 
 0-DAY CI Kernel Test Service
