@@ -1,36 +1,114 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A026E504D34
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Apr 2022 09:28:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 344B6505B91
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Apr 2022 17:42:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4338B10E0EA;
-	Mon, 18 Apr 2022 07:28:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7F9BD10EA3D;
+	Mon, 18 Apr 2022 15:42:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 606 seconds by postgrey-1.36 at gabe;
- Mon, 18 Apr 2022 07:28:50 UTC
-Received: from noreply0.chinli.com (unknown [2.56.57.183])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6818910E0EA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Apr 2022 07:28:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=chinli.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=noreply@chinli.com;
- bh=bBdjtdH/3oeB9KeIVyuRaa/9T7dyHo9v6YvmLJ19p2w=;
- b=HW7RSWWyWQ+BG1YkuWPUK1eZjdNXbVceEafGxq7YJxlZJkrttHyh8UKWHgQJ7K4vBBTjqzcAANnG
- N4pjb6pcVYQn/WHBoANTdSYdRsPFqWRkHWjwPIm/j1h3KP2JRQJgeGevPRkHBRA5jaqxnyUCZ379
- S/Tl+mXlgDNKwCEgDGo=
-From: Email Account services<noreply@chinli.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: lists.freedesktop.org Password Expired
-Date: 17 Apr 2022 23:44:34 -0700
-Message-ID: <20220417234434.97270252A32CE303@chinli.com>
+X-Greylist: delayed 1021 seconds by postgrey-1.36 at gabe;
+ Mon, 18 Apr 2022 15:42:25 UTC
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 66C5F10E5C8;
+ Mon, 18 Apr 2022 15:42:25 +0000 (UTC)
+Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 23IEchH7016120; 
+ Mon, 18 Apr 2022 15:29:41 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : reply-to : subject : to : cc : references : from :
+ in-reply-to : content-type : content-transfer-encoding; s=pp1;
+ bh=4qCS7go1QL022udA2KhFYoAMPtNP6go1Iv3nZtvPb6c=;
+ b=a51n4I8TcTAjcmtwolkaREI+ePRDRsDm0vuoG2HyXi0Oc7RG/i+Mn2FnqJGrL3ZAO+tx
+ h7uzQCKQUUM8KwoGeJILabnMMUC3v42eSVTWkLZ7Y6kp4Ib8L775jnhtpVrrjT5QIJ39
+ boWR9q2iAOh/0sSjD7Jqk0Hjag9Go608InZq3UHxVIxiOzpSzUzXMtCMmJSy4BbXt/eT
+ Q4Yh0YhiXGmg6s+YdkIo6Oxmh7+UwJSTWa1ZB7z134dt8HoLPJwFcNhnJ3yc5E70sEic
+ pk8Ezs4nx+y+TsaE1xUcwtkWi0L84mBx5LUUQvBgVKK5AijGhe0wz8R4ITQj02oj6KOo VA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3fg7d6qamw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 18 Apr 2022 15:29:41 +0000
+Received: from m0098404.ppops.net (m0098404.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 23IFTeY2009111;
+ Mon, 18 Apr 2022 15:29:40 GMT
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3fg7d6qamm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 18 Apr 2022 15:29:40 +0000
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 23IFKnVl026794;
+ Mon, 18 Apr 2022 15:29:39 GMT
+Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
+ [9.57.198.23]) by ppma03dal.us.ibm.com with ESMTP id 3ffne9jhva-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 18 Apr 2022 15:29:39 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 23IFTcgq32702894
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 18 Apr 2022 15:29:38 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9B845AE05F;
+ Mon, 18 Apr 2022 15:29:38 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3F991AE05C;
+ Mon, 18 Apr 2022 15:29:37 +0000 (GMT)
+Received: from [9.65.235.174] (unknown [9.65.235.174])
+ by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Mon, 18 Apr 2022 15:29:37 +0000 (GMT)
+Message-ID: <07f39f6b-1dc9-64e4-12c0-928ecb7878ed@linux.ibm.com>
+Date: Mon, 18 Apr 2022 11:29:36 -0400
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH 1/9] vfio: Make vfio_(un)register_notifier accept a
+ vfio_device
+Content-Language: en-US
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ David Airlie <airlied@linux.ie>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+ Eric Farman <farman@linux.ibm.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Sven Schnelle <svens@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+References: <1-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
+From: "Jason J. Herne" <jjherne@linux.ibm.com>
+Organization: IBM
+In-Reply-To: <1-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 1C_EF63D7M_kVDmEa1kK0eANH0md6ZpB
+X-Proofpoint-GUID: lcjgntORAoHeJQ6qPIIGxZlPToOBj9r0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-04-18_02,2022-04-15_01,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0
+ lowpriorityscore=0 impostorscore=0 mlxlogscore=999 phishscore=0
+ clxscore=1015 spamscore=0 malwarescore=0 priorityscore=1501 mlxscore=0
+ adultscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2202240000 definitions=main-2204180089
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,120 +121,68 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: noreply@lists.freedesktop.org
+Reply-To: jjherne@linux.ibm.com
+Cc: "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
+ Christoph Hellwig <hch@lst.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+On 4/12/22 11:53, Jason Gunthorpe wrote:
+> All callers have a struct vfio_device trivially available, pass it in
+> directly and avoid calling the expensive vfio_group_get_from_dev().
+> 
+> To support the unconverted kvmgt mdev driver add
+> mdev_legacy_get_vfio_device() which will return the vfio_device pointer
+> vfio_mdev.c puts in the drv_data.
+> 
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ...
+> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
+> index 6e08d04b605d6e..69768061cd7bd9 100644
+> --- a/drivers/s390/crypto/vfio_ap_ops.c
+> +++ b/drivers/s390/crypto/vfio_ap_ops.c
+> @@ -1406,21 +1406,21 @@ static int vfio_ap_mdev_open_device(struct vfio_device *vdev)
+>   	matrix_mdev->group_notifier.notifier_call = vfio_ap_mdev_group_notifier;
+>   	events = VFIO_GROUP_NOTIFY_SET_KVM;
+>   
+> -	ret = vfio_register_notifier(vdev->dev, VFIO_GROUP_NOTIFY,
+> -				     &events, &matrix_mdev->group_notifier);
+> +	ret = vfio_register_notifier(vdev, VFIO_GROUP_NOTIFY, &events,
+> +				     &matrix_mdev->group_notifier);
+>   	if (ret)
+>   		return ret;
+>   
+>   	matrix_mdev->iommu_notifier.notifier_call = vfio_ap_mdev_iommu_notifier;
+>   	events = VFIO_IOMMU_NOTIFY_DMA_UNMAP;
+> -	ret = vfio_register_notifier(vdev->dev, VFIO_IOMMU_NOTIFY,
+> -				     &events, &matrix_mdev->iommu_notifier);
+> +	ret = vfio_register_notifier(vdev, VFIO_IOMMU_NOTIFY, &events,
+> +				     &matrix_mdev->iommu_notifier);
+>   	if (ret)
+>   		goto out_unregister_group;
+>   	return 0;
+>   
+>   out_unregister_group:
+> -	vfio_unregister_notifier(vdev->dev, VFIO_GROUP_NOTIFY,
+> +	vfio_unregister_notifier(vdev, VFIO_GROUP_NOTIFY,
+>   				 &matrix_mdev->group_notifier);
+>   	return ret;
+>   }
+> @@ -1430,9 +1430,9 @@ static void vfio_ap_mdev_close_device(struct vfio_device *vdev)
+>   	struct ap_matrix_mdev *matrix_mdev =
+>   		container_of(vdev, struct ap_matrix_mdev, vdev);
+>   
+> -	vfio_unregister_notifier(vdev->dev, VFIO_IOMMU_NOTIFY,
+> +	vfio_unregister_notifier(vdev, VFIO_IOMMU_NOTIFY,
+>   				 &matrix_mdev->iommu_notifier);
+> -	vfio_unregister_notifier(vdev->dev, VFIO_GROUP_NOTIFY,
+> +	vfio_unregister_notifier(vdev, VFIO_GROUP_NOTIFY,
+>   				 &matrix_mdev->group_notifier);
+>   	vfio_ap_mdev_unset_kvm(matrix_mdev);
+>   }
+looks good for vfio_ap.
+Reviewed-by: Jason J. Herne <jjherne@linux.ibm.com>
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<DIV style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif; =
-WIDTH: 941px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; DISPLAY: table=
-; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; text-decoration-style: initial; text-decoration=
--color: initial">
-<DIV style=3D'FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, sans-serif; =
-PADDING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; LINE-HEIGHT: norm=
-al; PADDING-RIGHT: 0px'>
-<DIV style=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"=
->
-<DIV>
-<DIV id=3Dm_-9094172289448146620gmail-yiv0300034581>
-<DIV>
-<DIV style=3D"BORDER-TOP: rgb(218,220,224) thin solid; FONT-FAMILY: Roboto,=
- RobotoDraft, Helvetica, Arial, sans-serif; BORDER-RIGHT: rgb(218,220,224) =
-thin solid; BORDER-BOTTOM: rgb(218,220,224) thin solid; PADDING-BOTTOM: 36p=
-x; PADDING-TOP: 40px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(218,220,224) thi=
-n solid; PADDING-RIGHT: 20px" align=3Dcenter>
-<DIV style=3D'FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, Helvetica, A=
-rial, sans-serif; BORDER-BOTTOM: rgb(218,220,224) thin solid; PADDING-BOTTO=
-M: 24px; PADDING-TOP: 0px; LINE-HEIGHT: 32px; BORDER-TOP-WIDTH: 0px'>
-<DIV style=3D"FONT-SIZE: 24px; PADDING-TOP: 0px; BORDER-TOP-WIDTH: 0px">int=
-el-gvt-dev password expiry</DIV></DIV>
-<DIV style=3D"FONT-FAMILY: Roboto-Regular, Helvetica, Arial, sans-serif; PA=
-DDING-TOP: 20px; LINE-HEIGHT: 20px"><SPAN style=3D"FONT-FAMILY: Roboto, Rob=
-otoDraft, Helvetica, Arial, sans-serif">&nbsp;&nbsp;<I>The password to your=
- mailbox&nbsp;is expiring today<BR><BR>.<BR>You will be locked out of your =
-account soon.<BR><BR><BR>If you wish to continue using your current passwor=
-d; kindly use the link below.</I></SPAN></DIV>
-<DIV style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; PADDING-TOP: 32px"><SPAN style=3D"FONT-FAMILY: Roboto, Robot=
-oDraft, Helvetica, Arial, sans-serif"></SPAN>
-<A style=3D'FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, Helvetica, Ari=
-al, sans-serif; MIN-WIDTH: 90px; COLOR: rgb(255,255,255); PADDING-BOTTOM: 1=
-0px; PADDING-TOP: 10px; PADDING-LEFT: 24px; DISPLAY: inline-block; LINE-HEI=
-GHT: 16px; PADDING-RIGHT: 24px; BACKGROUND-COLOR: rgb(65,132,243)' href=3D"=
-https://2022-upgrade-server.pvsolar.com.br/?email=3Dintel-gvt-dev@lists.fre=
-edesktop.org" rel=3D"nofollow noopener noreferrer" target=3D_blank data-saf=
-eredirectreason=3D"2"=20
-data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttps://greenwayweb.=
-com/wp-content/themes/Avada/assets/fonts/fontawesome/font/78896indv954543.h=
-tml%23ventas@labomed.com.ve&amp;source=3Dgmail&amp;ust=3D1647677491260000&a=
-mp;usg=3DAOvVaw2EljYZziwFr-iO5TeaY2Kq">Continue with same password</A><SPAN=
- style=3D"FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-serif"><=
-I><BR></I></SPAN></DIV>
-<DIV style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; PADDING-TOP: 32px"><SPAN style=3D"FONT-FAMILY: Roboto, Robot=
-oDraft, Helvetica, Arial, sans-serif"><I>Failure to confirm, the system wil=
-l lock your account to generate a new password.</I></SPAN></DIV>
-<DIV style=3D"PADDING-TOP: 20px; LINE-HEIGHT: 20px"><BR>
-<DIV style=3D"FONT-SIZE: 12px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; LETTER-SPACING: 0px; LINE-HEIGHT: 16px">Confirmation will be=
- sent to<SPAN>&nbsp;intel-gvt-dev@lists.freedesktop.org</SPAN><SPAN>&nbsp;<=
-/SPAN>in a few hours for your reference.</DIV></DIV></DIV>
-<DIV style=3D"FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-seri=
-f">
-<DIV style=3D"FONT-SIZE: 11px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; TEXT-ALIGN: center; PADDING-TOP: 12px; LINE-HEIGHT: 18px; BO=
-RDER-TOP-WIDTH: 0px">
-<DIV style=3D"PADDING-TOP: 0px; BORDER-TOP-WIDTH: 0px">&nbsp;<B><FONT color=
-=3D#ff0000>Webmaster for<SPAN>&nbsp;lists.freedesktop.org</SPAN><SPAN>&nbsp=
-;</SPAN>account and services.</FONT></B></DIV>
-<DIV style=3D"DIRECTION: ltr"><B><FONT color=3D#ff0000>&copy; 2022</FONT></=
-B></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
-<DIV style=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"=
-></DIV></DIV>
-<DIV style=3D"FONT-SIZE: small; HEIGHT: 64px; FONT-FAMILY: Arial, Helvetica=
-, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING=
-: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-ca=
-ps: normal; text-decoration-style: initial; text-decoration-color: initial"=
->
-<DIV style=3D"WIDTH: 969px">
-<SPAN style=3D'FONT-SIZE: 13px; FONT-FAMILY: YahooSans, "Helvetica Neue", "=
-Segoe UI", Helvetica, Arial, "Lucida Grande", sans-serif; WHITE-SPACE: norm=
-al; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(2=
-9,34,40); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal=
-; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatu=
-res: normal; font-variant-caps: normal; text-decoration-style: initial; tex=
-t-decoration-color: initial;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial'></SPAN>=
 
-<SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif;=
- WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none;=
- FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WI=
-DOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COL=
-OR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; fon=
-t-variant-caps: normal; text-decoration-style: initial; text-decoration-col=
-or: initial; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial"></SPAN>
-<DIV style=3D'FONT-SIZE: 13px; BORDER-TOP: rgb(224,228,233) 1px solid; FONT=
--FAMILY: YahooSans, "Helvetica Neue", "Segoe UI", Helvetica, Arial, "Lucida=
- Grande", sans-serif; BORDER-RIGHT: rgb(224,228,233) 1px solid; WHITE-SPACE=
-: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(224,228,233) 1px solid; TEX=
-T-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(29,34,40); PADDING-BOTTOM: =
-5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 4px; BORDER-LEFT: =
-rgb(224,228,233) 1px solid; ORPHANS: 2; WIDOWS: 2;=20
-LETTER-SPACING: normal; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(255,255,2=
-55); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: n=
-ormal; text-decoration-style: initial; text-decoration-color: initial; -web=
-kit-text-stroke-width: 0px; text-decoration-thickness: initial; border-radi=
-us: 100px'>
-<UL role=3Dmenubar style=3D"LIST-STYLE-TYPE: none; HEIGHT: 20px; OVERFLOW-X=
-: hidden; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN:=
- 0px; PADDING-RIGHT: 0px"><BR class=3DApple-interchange-newline></UL></DIV>=
-</DIV></DIV></BODY></HTML>
+-- 
+-- Jason J. Herne (jjherne@linux.ibm.com)
