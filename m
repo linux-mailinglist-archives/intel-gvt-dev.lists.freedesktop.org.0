@@ -2,112 +2,111 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04A83505C6A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Apr 2022 18:27:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E8015075B3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Apr 2022 19:00:36 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A058E10E6E1;
-	Mon, 18 Apr 2022 16:27:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1635B10F04B;
+	Tue, 19 Apr 2022 17:00:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9A07C10E695;
- Mon, 18 Apr 2022 16:27:23 +0000 (UTC)
-Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 23IDZS9f023024; 
- Mon, 18 Apr 2022 15:56:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=HqQciTar/dr6XQaGag4BrX8X9OeIsbpgI5h9o2qOgg8=;
- b=Ubmf8doaXyPNt6S90i748iQ1lCbVXFJ/DyAJ8bf8HWZeBumVNjxXP3m+523H3dS64AV0
- ctCFNnErBnaHk27UWIhyCWoOqhTqqgtipp3blEJIlXn0bDl5beScrOq4H+Ek0XaanKgs
- XyiTcYVinH9dGJqsKXB7kTI9aBmuLbKnISFGcb9kdY+8k9D+dKInnCEy6YHDGy0++1hr
- v8O/o4bUBwYd9LnspnykyQP23YNzVRBYUuV7s6H3V7lEaWAE+NBF1JsNExO9gX9MnSe2
- 4Jkax4xukPbp6HTZxKdmx+HnrUYa0cqWyaTmKJ/lmJwYgG6SQesGc0LlQ0w7u9+bEXy9 fw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3fg79e0f0f-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 18 Apr 2022 15:56:24 +0000
-Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 23IFpBdH003472;
- Mon, 18 Apr 2022 15:56:23 GMT
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3fg79e0f02-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 18 Apr 2022 15:56:23 +0000
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 23IFqmlb023970;
- Mon, 18 Apr 2022 15:56:22 GMT
-Received: from b03cxnp08028.gho.boulder.ibm.com
- (b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
- by ppma02dal.us.ibm.com with ESMTP id 3ffne9tpb7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 18 Apr 2022 15:56:22 +0000
-Received: from b03ledav005.gho.boulder.ibm.com
- (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
- by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 23IFuLLI33227178
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 18 Apr 2022 15:56:21 GMT
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 22968BE05A;
- Mon, 18 Apr 2022 15:56:21 +0000 (GMT)
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7ABB1BE04F;
- Mon, 18 Apr 2022 15:56:18 +0000 (GMT)
-Received: from [9.65.204.148] (unknown [9.65.204.148])
- by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
- Mon, 18 Apr 2022 15:56:18 +0000 (GMT)
-Message-ID: <3231af63-4d36-f8bd-e8d7-426222a883d9@linux.ibm.com>
-Date: Mon, 18 Apr 2022 11:56:18 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2086.outbound.protection.outlook.com [40.107.243.86])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F198610F04B;
+ Tue, 19 Apr 2022 17:00:33 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kyQ19BdcidDo9QLqczEZaDSyEnNN8Wo+Dm/Ab9Ma0t4i2TXySmpesoFfE3nyEJ3JrxRzNqWNxQ0j0BGnmJYJ3Mc4sczSD1MMg5NR2Wzq6MZkhkdsVeFLbETUpSV03KIcOYYH88pH9wSYsnZ8+Qn2DzsXoo2E7vmUsegilLEpPUXWexzr3GCbvR+q9m9A6NCzUwOEsC6zbKnYnosmzYfCC8vlwr+KmPSlgk3OYAvekYjmoJdVvc+0dOSSkwRdyCzDed2vSkOiZboVEa4xJ3f5uzJQzfV7L7yuGNfCk1gX4DKpB190zIH1s0C7G+laE1oCG5DIAHgdfyVeRXPPaYvhpA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=eg7iVLmUzpCuNkTSMHRFlq+bBGXRLA0bh8fVs2ztDV4=;
+ b=BPa9sW/sR6ueWiX6b6wPHelOw+iF67DMfRtAv2mlnHtJbjK9YeBeZyYz0u4F6mierM+6qPsvnUIe4ncFciY3Y/bXohiHmM+A6V3u+EK9y8AEMjq0vXXTjOKy2mocgs4dM+UqP/j2oVwBboHfdergW77RMFjV0W8nCTgdpdtXx1GkhS73UOw/XBmQZ2fkRolDvXXS58W9Lvm5r3abrXsq9fowcC2RKR4teXDBnxkSZcUZgGVTBYStlzNrevz0jRvEGA0Sr8RC2mr9xGVPXuMXSogCZZ2pTINLmU+PLHcRWfJNcCEZJ3oxWa6U/o7Ns3PJ4gmFHIYnru1vfl31SiltYA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=eg7iVLmUzpCuNkTSMHRFlq+bBGXRLA0bh8fVs2ztDV4=;
+ b=HDT7Vmb1QbFHOy132s5KFX5DRdzHj9LGDC4OZGOLA6zUYqnELE8oCiZUHgz+mJ04JM7CGiJ29CqDDYbLUupIXli7uQ+KMrXYSiIzGv4OcuaJk7miOEfGuiLPaO2pVQAlrolGxfM7eJ9BGMa84+BLVCjm3fObNrUnTyezbCWEW6ORMzv5PdPPcP1bQ9h4ODbt7yhRger+jslfH/aqydK939OGHBZSJMs/7NuZ7TlVSFyvk5n+4d8zVHhUkHrk/bP/JpatmCRK5cH8M4JNTD3lwE0s1ePtLPryXa0rddVpwc8cIGSVy6sDekUalmsdar2oHQ+26t9HTd1+5wD0HOG8tw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+ by SA0PR12MB4512.namprd12.prod.outlook.com (2603:10b6:806:71::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5164.20; Tue, 19 Apr
+ 2022 17:00:31 +0000
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ec2d:9167:1b47:2db2]) by MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ec2d:9167:1b47:2db2%5]) with mapi id 15.20.5164.025; Tue, 19 Apr 2022
+ 17:00:31 +0000
+Date: Tue, 19 Apr 2022 14:00:30 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: "Jason J. Herne" <jjherne@linux.ibm.com>
 Subject: Re: [PATCH 3/9] vfio/mdev: Pass in a struct vfio_device * to
  vfio_pin/unpin_pages()
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- David Airlie <airlied@linux.ie>,
- Alex Williamson <alex.williamson@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- Eric Farman <farman@linux.ibm.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Jason Herne <jjherne@linux.ibm.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, kvm@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, linux-doc@vger.kernel.org,
- linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Sven Schnelle <svens@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Vineeth Vijayan <vneethv@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Message-ID: <20220419170030.GA1251821@nvidia.com>
 References: <3-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
-From: Tony Krowiak <akrowiak@linux.ibm.com>
-In-Reply-To: <3-v1-a8faf768d202+125dd-vfio_mdev_no_group_jgg@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: KCIN7UZDZuCEvtHigmg5n1CB9zndGDrN
-X-Proofpoint-ORIG-GUID: qjhturDoRjoL-gez5Wt0TNIVHwtnmzm6
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
- definitions=2022-04-18_02,2022-04-15_01,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 suspectscore=0
- bulkscore=0 phishscore=0 clxscore=1015 malwarescore=0 spamscore=0
- priorityscore=1501 mlxscore=0 impostorscore=0 lowpriorityscore=0
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2202240000 definitions=main-2204180091
+ <9cebd8fb-e7c2-690f-90f5-be84f9a9d6b1@linux.ibm.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <9cebd8fb-e7c2-690f-90f5-be84f9a9d6b1@linux.ibm.com>
+X-ClientProxiedBy: MN2PR01CA0047.prod.exchangelabs.com (2603:10b6:208:23f::16)
+ To MN2PR12MB4192.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::15)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e3abb4e0-7c22-4c06-e667-08da22261c9f
+X-MS-TrafficTypeDiagnostic: SA0PR12MB4512:EE_
+X-Microsoft-Antispam-PRVS: <SA0PR12MB4512732B574F648028BE73CDC2F29@SA0PR12MB4512.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: s/1L1hxropDun/i+4aowbOzBQ3gM65UVE+9XlJ7ihVjWtU4QXQ99nRUe7D+AWFK5gWMpMCIX2VQNVh1tgnaLE5wBTcFeaEQE/OZyqNf6B3whVFvs+N2nQbjiBN+EB48sZ74UExibf2LiiW4tDJH5MRb+POSkkVU/OTgwZw7hCLQi7e41QUwZw0GnZv4p3+HmuxslW5vqiSs+zlLU+QNpIkEoktZVSv5yWjuhH75Bcze4zYj/OSWYRqKggymT/tc+oqTloCkqLe4OwgN9ix8kcM8UzKS3WhNJ5uwDZGOmE+EFEo5ThycLMyb+biBb9RC4h9CpPJ06Or3d8XV6HLsx3tlf1j8oq0WJCKeiGlduvrmJUCQWwDX1ArMh0bfEhg/o2d36P3qm+zcvfKqUlWUiTRngtu8MF1zcFwEX89/IXLYik2HRMADRfwL/xdebl43ulyXaKL/7uRlgd6UKGWIdCJumIm9QjJimIm65DnVGih+i8f8vAQcufBKzJ+PUVWL07H+e335cA88UewCq9vE6qZNkTiuz/kjh6leNZe224Bk3hftnP1xv1JzTi4TE/GnMA6C/FxnELEcqpY5pL5eu3VKJhFo5m88rGb9ALU6b3esk/u6NEhwBFQuke9aGvjAvEW0p2TASBBUyLLcGIKC+Ww==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(508600001)(6506007)(4326008)(316002)(86362001)(53546011)(8676002)(66946007)(66556008)(66476007)(6486002)(38100700002)(54906003)(6916009)(1076003)(2616005)(6512007)(26005)(186003)(2906002)(5660300002)(36756003)(33656002)(7406005)(4744005)(7416002)(8936002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9eF8/qfTw4IdBOhAKPz8kpumRINsSnVCjXyQ80JGdjD5mAvVRlDnXDeuAMsv?=
+ =?us-ascii?Q?vm4CMcIgchG8s1RoqZ8gxfASx5CTpIvxH4bNrg7NRz1sFYM9s9dWHFjHr+G4?=
+ =?us-ascii?Q?pTYqnrT6Q4hTQoLnZgDJPYQmToT90QyeMTc6nhImQ1yaJHxWsJW5vIN+nfa/?=
+ =?us-ascii?Q?zQ8yCTiHsJbQyH+q1rTxZkBNrkNjd8Ab8OABRPiDE4YZr5u7rJB+sylcn4xt?=
+ =?us-ascii?Q?ngb/qphecfofaZIYOXOLxQOlZ2vJPHsdtOwkBQ0bmxIYAKftkizya1pF/0Hi?=
+ =?us-ascii?Q?Ps4lTbGpT2zbXDhTOydEu4gS/cIUA5RYLg+oHkTWF8bWAAJ5JKOw9DZgiqMn?=
+ =?us-ascii?Q?d3aMSgmjAU3LaTmSeQF0jMJX7j8LWdI74LXirTtMNk83P1PSolbUh7uZazZB?=
+ =?us-ascii?Q?ZNmoZghhaMyXLSKz2wrwART8YftCYxeeACFYblOJCOR8NwuSXpRufStTYPBR?=
+ =?us-ascii?Q?JzkgbcVq/ICXc0yCjmQjEh/veMUIaWEbgwbEsxyZ66Mp1ZQsexwqMT/oasDO?=
+ =?us-ascii?Q?aJF8RLMghLggpgc47534c/0dIE6Jsnccx4mgsC871yTHk09oi5/8zpzn6FLh?=
+ =?us-ascii?Q?l37lRPIz9cjuTrh9mA9u/mluPeodFf+dnV0HBL9sxXAWRdU70pOB6w8TfwDM?=
+ =?us-ascii?Q?HnxjNaYxy3FthSJ10G4sHVEqEx5Iq5HrFKnNnFp1z1cM1AIqcKKdOsAetSg/?=
+ =?us-ascii?Q?FRELubOLAkUEo/NJRjOyN3eRaVZBEEGsW9v6ORYvgzrcbZQJrnMtZ2kQdhXI?=
+ =?us-ascii?Q?xQVGg7oXorF+mZ7jZklEToQo8NtbIi88Z7aM9Zef2734Jh9BgV7PFfEuxplS?=
+ =?us-ascii?Q?ZyvKuPFH7nOQ7QI+ZDaTULJaktKyiVGzwltC7Mw6fVSg0HaialKlzPgUu0pP?=
+ =?us-ascii?Q?EhXvm3mxIDZftTNWTGJAJRkMgnUhJ/zuS0/W+C4KodZIgFZ9lAlH2322t2Qx?=
+ =?us-ascii?Q?ldQG/pvFtTsMJ62TTUULnagOgjvrQvP7q+uzbPs2dQ/JaLsL/8iTO7K2GCff?=
+ =?us-ascii?Q?Q6HZrAkxAuVgAx9ojLsEf7PYdUBde/vccbJtuGC81x9k7nsPasMUkSHRjU/A?=
+ =?us-ascii?Q?IuCc2fJhju7JgKiU00is6TJxyk23mdUaa50cU4W/gXrjKM+f772j8MPfJPRK?=
+ =?us-ascii?Q?nmlIOooM/msda7/NgR823ZbRKIhzaAolIf/0YRaccii4T7Mj2E20zN71UdmL?=
+ =?us-ascii?Q?gQc0+xb76PYHq1XYVquOdJWkaBJn3kSkObodCCZ76Od9LWdscGBl+RVVtWmk?=
+ =?us-ascii?Q?b1/T74wg5IsnHdh77j1DPbpvBdukTNe5XyeXAdMUsJxL9UmtEB12698Gy2n3?=
+ =?us-ascii?Q?VYKH/voosUglLVJ7TS2dmJvkQSsYNaxwbtIiLvq0+wp7ICjFOgx7+Aw2ZcAF?=
+ =?us-ascii?Q?U9lsgjmLHHp6/9fGDXuIKTH1Ev0vyAX9FSTdVXlzDAeSz2S9c718pZoFZioT?=
+ =?us-ascii?Q?/+XpAZZYHXYVJpExfvaRm8NaOi2jEVoc2qP6kqZtBWmn9fvNrTGQ9mfLVeF7?=
+ =?us-ascii?Q?7Uty9Vfw1FeuD5me0CG5IU+FXQK5SYjXr/zwyPlak+m9daP9Ryqa9is55JyE?=
+ =?us-ascii?Q?aDYzbxqDj0zOmeFi22WfSvbbgLt2h3b9O8/buWtFaWw4YRAOQBbsD6oqc8DC?=
+ =?us-ascii?Q?Y3qFMQByycqidMM4fzTBYw06mp7JM0LAqM/bGDIyTM1hdczoyyU95SICIJMH?=
+ =?us-ascii?Q?eK0Un11Uy3cZYcxZv44uhTOKS8WnLniPb8ubYDCyn034GtSka3SA37rDkZaB?=
+ =?us-ascii?Q?4EfkAdLdRQ=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e3abb4e0-7c22-4c06-e667-08da22261c9f
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Apr 2022 17:00:31.3970 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Rflb48v2hVhgbSM1Q0lUHu3Kc3zpqHFaypKVhRalo2erM0wp4gFpqbOmY3cIOZt7
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR12MB4512
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,89 +119,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
+ David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
+ linux-s390@vger.kernel.org, "Liu, Yi L" <yi.l.liu@intel.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Jonathan Corbet <corbet@lwn.net>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Eric Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Mon, Apr 18, 2022 at 11:25:15AM -0400, Jason J. Herne wrote:
+> On 4/12/22 11:53, Jason Gunthorpe wrote:
+> > Every caller has a readily available vfio_device pointer, use that instead
+> > of passing in a generic struct device. The struct vfio_device already
+> > contains the group we need so this avoids complexity, extra refcountings,
+> > and a confusing lifecycle model.
+> > ...
+> > diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
+> > index 69768061cd7bd9..a10b3369d76c41 100644
+> > +++ b/drivers/s390/crypto/vfio_ap_ops.c
+> > @@ -124,7 +124,7 @@ static void vfio_ap_free_aqic_resources(struct vfio_ap_queue *q)
+> >   		q->saved_isc = VFIO_AP_ISC_INVALID;
+> >   	}
+> >   	if (q->saved_pfn && !WARN_ON(!q->matrix_mdev)) {
+> > -		vfio_unpin_pages(mdev_dev(q->matrix_mdev->mdev),
+> > +		vfio_unpin_pages(&q->matrix_mdev->vdev,
+> >   				 &q->saved_pfn, 1);
+> 
+> Could be contracted to a single line. If you feel like it :)
 
+Done, thanks
 
-On 4/12/22 11:53 AM, Jason Gunthorpe wrote:
-> Every caller has a readily available vfio_device pointer, use that instead
-> of passing in a generic struct device. The struct vfio_device already
-> contains the group we need so this avoids complexity, extra refcountings,
-> and a confusing lifecycle model.
->
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   .../driver-api/vfio-mediated-device.rst       |  4 +-
->   drivers/s390/cio/vfio_ccw_cp.c                |  6 +--
->   drivers/s390/crypto/vfio_ap_ops.c             |  8 ++--
->   drivers/vfio/vfio.c                           | 40 ++++++-------------
->   include/linux/vfio.h                          |  4 +-
->   5 files changed, 24 insertions(+), 38 deletions(-)
->
-> diff --git a/Documentation/driver-api/vfio-mediated-device.rst b/Documentation/driver-api/vfio-mediated-device.rst
-> index 9f26079cacae35..6aeca741dc9be1 100644
-> --- a/Documentation/driver-api/vfio-mediated-device.rst
-> +++ b/Documentation/driver-api/vfio-mediated-device.rst
-> @@ -279,10 +279,10 @@ Translation APIs for Mediated Devices
->   The following APIs are provided for translating user pfn to host pfn in a VFIO
->   driver::
->   
-> -	extern int vfio_pin_pages(struct device *dev, unsigned long *user_pfn,
-> +	extern int vfio_pin_pages(struct vfio_device *vdev, unsigned long *user_pfn,
->   				  int npage, int prot, unsigned long *phys_pfn);
->   
-> -	extern int vfio_unpin_pages(struct device *dev, unsigned long *user_pfn,
-> +	extern int vfio_unpin_pages(struct vfio_device *vdev, unsigned long *user_pfn,
->   				    int npage);
->   
->   These functions call back into the back-end IOMMU module by using the pin_pages
->
-> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-> index 69768061cd7bd9..a10b3369d76c41 100644
-> --- a/drivers/s390/crypto/vfio_ap_ops.c
-> +++ b/drivers/s390/crypto/vfio_ap_ops.c
-> @@ -124,7 +124,7 @@ static void vfio_ap_free_aqic_resources(struct vfio_ap_queue *q)
->   		q->saved_isc = VFIO_AP_ISC_INVALID;
->   	}
->   	if (q->saved_pfn && !WARN_ON(!q->matrix_mdev)) {
-> -		vfio_unpin_pages(mdev_dev(q->matrix_mdev->mdev),
-> +		vfio_unpin_pages(&q->matrix_mdev->vdev,
->   				 &q->saved_pfn, 1);
->   		q->saved_pfn = 0;
->   	}
-> @@ -258,7 +258,7 @@ static struct ap_queue_status vfio_ap_irq_enable(struct vfio_ap_queue *q,
->   		return status;
->   	}
->   
-> -	ret = vfio_pin_pages(mdev_dev(q->matrix_mdev->mdev), &g_pfn, 1,
-> +	ret = vfio_pin_pages(&q->matrix_mdev->vdev, &g_pfn, 1,
->   			     IOMMU_READ | IOMMU_WRITE, &h_pfn);
->   	switch (ret) {
->   	case 1:
-> @@ -301,7 +301,7 @@ static struct ap_queue_status vfio_ap_irq_enable(struct vfio_ap_queue *q,
->   		break;
->   	case AP_RESPONSE_OTHERWISE_CHANGED:
->   		/* We could not modify IRQ setings: clear new configuration */
-> -		vfio_unpin_pages(mdev_dev(q->matrix_mdev->mdev), &g_pfn, 1);
-> +		vfio_unpin_pages(&q->matrix_mdev->vdev, &g_pfn, 1);
->   		kvm_s390_gisc_unregister(kvm, isc);
->   		break;
->   	default:
-> @@ -1250,7 +1250,7 @@ static int vfio_ap_mdev_iommu_notifier(struct notifier_block *nb,
->   		struct vfio_iommu_type1_dma_unmap *unmap = data;
->   		unsigned long g_pfn = unmap->iova >> PAGE_SHIFT;
->   
-> -		vfio_unpin_pages(mdev_dev(matrix_mdev->mdev), &g_pfn, 1);
-> +		vfio_unpin_pages(&matrix_mdev->vdev, &g_pfn, 1);
->   		return NOTIFY_OK;
->   	}
-
-The vfio_ap snippet:
-Reviewed-by: Tony Krowiak <akrowiak@linux.ibm.com>
-
->   
->
-
+Jason
