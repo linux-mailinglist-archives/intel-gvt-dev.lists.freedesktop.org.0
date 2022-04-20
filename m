@@ -2,111 +2,152 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35439508B77
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Apr 2022 17:02:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FB00508D1C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Apr 2022 18:20:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 177F110F0AF;
-	Wed, 20 Apr 2022 15:02:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 17BFA10EF7E;
+	Wed, 20 Apr 2022 16:20:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam12on2054.outbound.protection.outlook.com [40.107.237.54])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A32A910E1E1;
- Wed, 20 Apr 2022 15:02:19 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6632510E3B5;
+ Wed, 20 Apr 2022 16:20:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1650471616; x=1682007616;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=7DOC0KbwwLCW/eZCjEAw7QyLhvHjK+4yGm1/cWqqrgY=;
+ b=U0ODgn72E6IstIu6cb7dKW90YtFMnTOb6ErMhKTGq+QcJOopeRrZ638f
+ +oYqOEk43kTXK11XUwJjWhYaz54nshT+TW3Ri5uAVrF5n8+inT8P8zLvZ
+ l9aTswFhJZHsWtlALdFF+jsr8OfNvtRbpKzQoPkcr72H1p7M0ZnJzThWO
+ cl0z+JDrsQsE+acRMKHmSFFQJVVYk7/qr5qkoiI82+KElZchT2aIq2jEx
+ EPzh9s8mzYhFbM9iswXyNHwXsm+bkj7miBZ1Jy2/Kivrz4e7osz0Gdmwk
+ ZBT+du+3h2ELEyrejO9u/nZ6oIJSmlxWt5zvCzrdVitP0M4gKSPA2cCdW A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10323"; a="251384955"
+X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; d="scan'208";a="251384955"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Apr 2022 09:13:38 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; d="scan'208";a="555271933"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by orsmga007.jf.intel.com with ESMTP; 20 Apr 2022 09:13:38 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 20 Apr 2022 09:13:37 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 20 Apr 2022 09:13:36 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Wed, 20 Apr 2022 09:13:36 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.105)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Wed, 20 Apr 2022 09:13:36 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=J4FS+5ZOdu2hW2vH2jafZl96TUxcfB/l6G2jz7bqij3qnvFOFemg3YmpaLBRFo9eJVAWZj+w5GipAl4XhwjYeR+R3QHxi2cCF7CZqnA7NCEzIivz2cGnfEtaHpj7dh6Cl634caaP/A/nmZrJ1WVlgswQfXbuxNuC6WQoG9La3SO7RPM5pMJZJ4GvscbksbboHU644FoDDL/YhAD8Q6cRxmXDE3GkSVmGQkrqihOHeWIu4UqaS2TbcT9i+7xFBjRD/LVcHjsMj0x9aGxfQk6OyOZc8OpGcfvjpbEWzuWrrVsyt8ZmcKtYFlieCO39vbkrp1Pr7VLc728GzZ959ad3wA==
+ b=S8JbiuQH7vXEP4BY02E0l+HYvs3zZHA8vLS4/eozm2Gl7mYod0IzmipRZOmFace/mW/7QfgH2pye2YVVrJ4B3UkURhLMULOzxSJTkPA/8yixoRRKZQRKrbCGvkDTUgDmm8INJNPtSRDxfqwXmqYUBcfoHbmbPI13+hUyaQsaricxjRq7talWYZ6Re4LySB0z4mFK/Pgo/WVb0ETc6aDKG22j3jcm23+XhxBg5wdOBiSz24yWbV2UPKNRgZQ7e+ZmBdlD7JxncpSGkk9PrNdgYeIToLWTUtTEzy2o7Z+zmKpNFGyv7OPxGtvT++LU9pQ5LkEStGEviAJ9qudjOYbONA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=S65JvFn+JVHkmHdSIAtlH/IgrJdsFqJvVvanaKwtRf8=;
- b=XZTGpuCI9BB6TTNArxDqH85fwrzS5IPwf6HooKIHkwmEBWPKwPueGUOcUyQKGz+taIz0Vzp7Q36lbdiaKoijGuyBVeVGWQGXu5ZxRPv0o834rRMIk5NJev561imc8qgf8U29/j3+Mt25pisEOKVCbio00IQVkVKUSNr6yFi0WGbxaKZtSIya0PBmy/7vECv6bJn+nvZTp6OGRpAAbwbXZnP1oIGnqa7Ks64h2y/YmRCGa3OdqoA83l7AjdYLcsvCHNDFPBiCqIE2vtCnRaPAwSJej0Rxz3M/2d6ORFklfTv6oEWdAyFvnXJU+24xEB29bjc4GnMQDT84G148TicM0w==
+ bh=MFYzHmERDV9ci6x/RLTP+kM3yMQXrsIMsVpeV557F1w=;
+ b=Ohy4k1iHRwpOEPM3G0uFLJoBgK/C/z7ND4QhRzA+YkXxkK0e2zzimYWegrumi37dXadyAo07//nydZ0WVJ6Z8C3Tt+o7ulmEtn4n+Xw9cNfmgsHXxBkvZB4COTzUP9YcMbEepDvRv+TjPyDGcBcJPHdfWYeokbpsij0GHWWBRGk3ZRz1iO3rmZXMcTreUwf9VXDtX+48jw//HPCEV3RUa/Vi4EbCP3tH8W31c8pWAaM+babe7j6iMHbW08L3C3Bh2WyC/wYkMYPd9G9xXYZpo7Qvk68retxvB1jcDEuu76uz/KTv3seYmYnyQlfezg9FDGhNj5H0GRiUCP20BsIPuQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=S65JvFn+JVHkmHdSIAtlH/IgrJdsFqJvVvanaKwtRf8=;
- b=HAl2hvaqH/LX3Y8b9+d2g+g23yW0272Vy9Myf2uV3jIYx1DSUZMNBE1DeMdl/woDrqBS4T4bo7Xjuo6V78JeOoo+0aWmhQCfA/rXqeVXrW1CHpPswgcnvbCkgov78MLtlbIdMHFOhFuwC4nNKX3SqwxcM2yhjZKs7iq8702YBytb1M63IC6UCHGer0BTaTxo0gjSpjfFgnyTbCaHuY1OnV1f7ahTcQjI85wEx2eqJoD98nExXRApnxZps9kthtNxG5IbGT+SmvlrydUDkHM7G/YoAi0S2MTE2mpQs4rSIbcLcq5UD4t8DLuhmGOeiZSDO7/L1q7Qy58db4Kn5BOBZQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by CH2PR12MB4184.namprd12.prod.outlook.com (2603:10b6:610:a7::9) with
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB5549.namprd11.prod.outlook.com (2603:10b6:5:388::7) by
+ MN2PR11MB4496.namprd11.prod.outlook.com (2603:10b6:208:18e::26) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5186.14; Wed, 20 Apr
- 2022 15:02:16 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2%6]) with mapi id 15.20.5186.014; Wed, 20 Apr 2022
- 15:02:16 +0000
-Date: Wed, 20 Apr 2022 12:02:15 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Wang, Zhi A" <zhi.a.wang@intel.com>
+ 2022 16:13:34 +0000
+Received: from DM4PR11MB5549.namprd11.prod.outlook.com
+ ([fe80::e5b8:93eb:e06b:f1ab]) by DM4PR11MB5549.namprd11.prod.outlook.com
+ ([fe80::e5b8:93eb:e06b:f1ab%6]) with mapi id 15.20.5164.025; Wed, 20 Apr 2022
+ 16:13:34 +0000
+From: "Wang, Zhi A" <zhi.a.wang@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
 Subject: Re: [PULL] gvt-next
-Message-ID: <20220420150215.GA2120790@nvidia.com>
+Thread-Topic: [PULL] gvt-next
+Thread-Index: AQHYVI1DfNiTLpeqnEGvHyikgylmNqz4tu6AgAApSYCAAAXsgIAAE+0A
+Date: Wed, 20 Apr 2022 16:13:34 +0000
+Message-ID: <b36e6a2b-74f4-83be-a1ab-383536cd486d@intel.com>
 References: <18c3c1b1-6f78-6140-4ec8-e18bc7916352@intel.com>
  <20220420121317.GV2120790@nvidia.com>
  <16fd439d-6a6d-63d0-76d8-16daadfe5bde@intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <16fd439d-6a6d-63d0-76d8-16daadfe5bde@intel.com>
-X-ClientProxiedBy: BL1PR13CA0371.namprd13.prod.outlook.com
- (2603:10b6:208:2c0::16) To MN2PR12MB4192.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::15)
+ <20220420150215.GA2120790@nvidia.com>
+In-Reply-To: <20220420150215.GA2120790@nvidia.com>
+Accept-Language: en-FI, en-US
+Content-Language: aa
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: c2a628e0-24f5-4ca5-7f8a-08da22e8b868
+x-ms-traffictypediagnostic: MN2PR11MB4496:EE_
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-microsoft-antispam-prvs: <MN2PR11MB4496E7BC7EABBEF6E9F9AC92CAF59@MN2PR11MB4496.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: c3l0qmIsab01fsuy4DelNzMbj7nvg+occX8/Ph7yBgjzlipQn7bVX9WVM2BEHgmxQzqIbj14EQPQJ/+cmUcrwacIFVWDDfx+R49jGSY0j/YiPAXv33rMitml7UMGdU6KfEGh+nSgXY3wpBNrCe8uiZ94N98vNFqASLcEx94OnNnPa/jqJ1G/p1SBlSLucXPLqRQYW08nju2YCH9s+rk7G1yel84Wd/Lg7yzukH/VMB1qBcmTYyQwxvrS6yXu2uJx2HLW96gCuLPYYMSHn0/bQ8BngUsPBcDfjDkAkz0gslYqJI/S6W+Di8FkwYHu/05OKff7G68UaMbzeGvWvEPoDw0eJKuPOdpubVBcl0MHN6Zk0fowN0Jih/7d504u8IWTGlKZXsm4mZ4aIp1RfrD4J/sHLAJBbTafsQTTE9PlxsuVTUZecDMa5AJj9sHBz+GDimnppUCUannpvaI99ly2Oim4Ef3q+mtwfjRZOWB1PlbDw/S0A9/pXQSTW6rkREWo5LeKFiOAVnSypIPm3puGxfiXlssYJX+JlIrJqaa/2XtasGx/18Y5Eau4bRj3nCf9Q2j2GDM01rWl3tO8IgLgqJ0Ocdxe4Rfd6uScENKoxa/31YtEZ6UaM6wqHIqzMV5Sn1qhywCKiLe6SuIAL+F8lqZU9kr77Wmh8efLaJEIU0h8sE2Hor9W5M4VmT0bfUoPcPGOESK5id/L86TwXynxB6wKYCxAZnxGL51k+D4sINoZT3UMfA/J3KiMi+GDwzc2Ri/OzMCaPNLoQ4xaUo3BdgeOc7NM4PRUH0uOSvd5vRtPS5zz88QGJpEeFb37XZqNCUCXiSxFfFsSed65yLa0aq9iBBtxJegqShHewUV/bVpqy0Q0u6NbsYy0Z6FQ++aP4i0Fk3TiD77Eqlyzl5ds5w==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB5549.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(83380400001)(66556008)(31686004)(76116006)(26005)(64756008)(4326008)(53546011)(71200400001)(36756003)(91956017)(66476007)(2616005)(66446008)(8676002)(6512007)(2906002)(66946007)(6506007)(5660300002)(186003)(8936002)(508600001)(38070700005)(966005)(6486002)(38100700002)(82960400001)(316002)(31696002)(122000001)(6916009)(54906003)(86362001)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?9radLZI2CpUcAanE0lmnwbc2xKvHK2wDMFUlDv/0Odh9CWL23q4umA/x?=
+ =?Windows-1252?Q?uHOEqN5FWx73U5cc2w07Voe0Msw0ECysScIGd7o+RzJd5OStYwZm3pc9?=
+ =?Windows-1252?Q?X++Jdy1y8uSuh7FM1Nlefejlk0GHZT8SJWJ+1DarfhPT1Q0kcfJ7KoHB?=
+ =?Windows-1252?Q?87sZRrmwmUyhXNjO+xtbw4Y3J9VVDWomYGGws4EG2s7MkqFpV/BjfCYY?=
+ =?Windows-1252?Q?l7/El+R4h0VhayasXpMSSkIJzVSXIfHK08khex8Dk9hpbwK8C3/faNsr?=
+ =?Windows-1252?Q?wGdb6xI8FlEL88+UoPUJ2NJ1Ae6wgxOwdSlj9sqmB/xboBGx5iVnVE9J?=
+ =?Windows-1252?Q?Xnf/oAldTUt3Pn1pUch+bInIohnRQlCcr5MKd9LJ3a5D1YUWdrDxswRs?=
+ =?Windows-1252?Q?8HGZJ26g16qa57Z8NZOEBg8Br+4ArzOjy17/OZjUiktAumVZEkgLfzxB?=
+ =?Windows-1252?Q?dcAqBcHLYtmut0tyawwJ8xziBf8xC3e9e8ptbrNPHFF17I9C4F7yCx6G?=
+ =?Windows-1252?Q?KQqAaD8dExOC+7lsmhcYMWQD10AeHe5h2elfwd+Tp5ci9yGSK/gi5Kvd?=
+ =?Windows-1252?Q?10StgpaiTxF88v66fRAkI5C3VMHnnh9n5xHDVzENZnbLGGv0BGJ3NVV4?=
+ =?Windows-1252?Q?hDGRndq6qf6lD9zPDp4Gmqnc5OT0l3e5lhtsBJaf5+I4YGAP/jZZdr0w?=
+ =?Windows-1252?Q?CpaOKGwJ1coNzbf3ZO3bvVP2uWGyY8Eg2lIwBHKoI9R/G4W8RTplUpWO?=
+ =?Windows-1252?Q?n/45X6KTYgsu4XBoHkFIZZYp9cBVmL7tc5AfbOB3jamdu/LDb1kR+22u?=
+ =?Windows-1252?Q?DBTNNH3+0fiJbxAdkfp602zPqTWp+MglgnvSmnmRIY0Yj/HiCB2Weyja?=
+ =?Windows-1252?Q?NSkszd7zjZW05UAG6pZHTaAQ0+E5kMtDpDEoY1wX2HFjZPxr2x/9zF84?=
+ =?Windows-1252?Q?iMMKxPGAAzh3Tt5xEKYXV5YnxQ48wvfDIx40SLTtEnLsriiW8uiIEExY?=
+ =?Windows-1252?Q?fyhuad/p5jDA9E0UcmQT+708SAGn/xJZhSWXU3IPFeV5CjK5034J1oS+?=
+ =?Windows-1252?Q?LMa41y3MAg/TpuL+Boko2LikOkg8tdSDRlcgSUOBEFka98+KdbHUa9Ej?=
+ =?Windows-1252?Q?9540B0yeSgLoevnv2UxI2+IccZYThkYv0Oe44wVjyIia2jhSY+qAPhds?=
+ =?Windows-1252?Q?+D6KKxWNFEt9NcTP2J+nNlMCTYue53Pc4mqesOu7Ku9yi1Bh45B2rNVx?=
+ =?Windows-1252?Q?7O1j/YJnK+gKmVeeqjpAIht2prrfHRC+6oNsZK0xzGuz8pOiCxzUUbyY?=
+ =?Windows-1252?Q?WmlGwm868BCt9IIUo+3+jQCeMinVccxapvfeqfhrHRdOOf24WaPl5mL6?=
+ =?Windows-1252?Q?xtt2oJoW1CQ4/4ssrUL3/MQqzAD3ekgVlO3Ix4ugoafEzUuLRpwquTej?=
+ =?Windows-1252?Q?n6fsaVLCrSugMGZHMZffezcVTkrg/lq9oeD1ewB8HliT/3Q7nl7pNgsj?=
+ =?Windows-1252?Q?VVjh4LDWSpvQoRpZwlN6WSWvi5NefkjPETT+qAVrPzROZQ/GGI/QoxpE?=
+ =?Windows-1252?Q?jyjPzIzLCg2NdYXD5j+AR7GdFk5YaHekC4WJoMbr5gFCA/ybFup0lgbe?=
+ =?Windows-1252?Q?FhJZxoHCsGC2AqDLVzNTza9m2Fgt34SH5hBy7YeLwMY9LQG3MNA82fhX?=
+ =?Windows-1252?Q?RZVCb+f9ApFxllyhPj3nziOzZeBBYwXpfT+bC4gTxdSFvS2+DJ8Gc1xU?=
+ =?Windows-1252?Q?XPkgcDedqXT7iPWiYHeH63/tBG1XxhIRiVE6IclreimwPlGxB0HK4rW8?=
+ =?Windows-1252?Q?zvHoOS/nwYMrNCRcfQNWuVx9IO+ZAgvB0yljqE0+f/Q7WJ/pTzIlojHY?=
+ =?Windows-1252?Q?uHrrSFeJArCQyA=3D=3D?=
+Content-Type: text/plain; charset="Windows-1252"
+Content-ID: <62D5A6F553597F41A4A0EEBF1DC06A81@namprd11.prod.outlook.com>
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 9cb002c3-8842-4cf3-3f19-08da22dec270
-X-MS-TrafficTypeDiagnostic: CH2PR12MB4184:EE_
-X-Microsoft-Antispam-PRVS: <CH2PR12MB41846447455F1D8AB3D6B318C2F59@CH2PR12MB4184.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ERVHuHadltD4Fg6ednDJyMsvYtEey5C0a4RpgvmXs7nIWM2pNSp86mvHy76J4PEi6n7R4XiYf39x00D24vIddXsj9GoSZ9TXjHM9pokR7RgdXYeQbD8zvpy0knr1gYnxXT9bQlI4sVjxV3NuIS1HhFvR1HoBoJ+NiYOrwdHqFtq/I/pFkU5bzNWIJ2hPiUYkp6ADr2OoVRrP0q5OIJ/v2HbKWR4ULfoo4glvZ1V4tjJYgJwBMqrRhxS390K1bbC4iszXU8esH6+TFNWpWvqqioJrdt/6cOptj2NZrZ1FqlsHDtGkLDZrqx8x3DhXkr0oj+A3RiX8JVuZ23q4VYoPSZ+dE3g3O8v1BFPUVAhd33AfrvU7HsSJmhQIuioyTmDtSOHU0eJoJWWLjwk23f8cjnYyFNPKGM31vuYnuJ+sHmSOTB2enfQrJ38uAywDT5fjTsqL5/HPHRu7xEp/yqN5BiNREJJ5PbhsQW0mwfcsL8go2mKWpRta8NRSev2rsRKemZMmXxynxZqJhI2RREbQZo9/0UJnqg2FdwPnG7yc0+TDuEyah4nQJnljyPa2FCdKqvjxiOI6zSNSnpbhlrC1kYY81+OM68C9/KKYPj4DSa4L9WQbmEv5zeSziI94BpI9euc10+wBlFO0aDYSu7+mdwlhQY265XzwmkFJGDqvVdWJipdANfXMxR+CxHn3pN+DLYMtxFU0ifxg6Ru4dLj6WwaVfNHbDyclZYN3/G2nj1CEtPLgC5x0m2aGV9RLEWTPRXMy4/LGVVPMAHeHGs9KPQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(966005)(5660300002)(36756003)(6486002)(86362001)(6916009)(54906003)(508600001)(316002)(2906002)(186003)(26005)(66946007)(6506007)(83380400001)(53546011)(2616005)(8936002)(33656002)(38100700002)(66556008)(8676002)(66476007)(4326008)(1076003)(6512007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?kSWleorxmO1t6XQNtUqEGy8XG/EwF1a3Xy86DlZIMQ0rxxvuozkOfbWXwwn8?=
- =?us-ascii?Q?W4qfQB2WfBmgCuNgGFqZcIXfnqBJ5InBPbn0cMUFYt4y9CgOrQoOBNr/GVgQ?=
- =?us-ascii?Q?w7f/mupdrC44rmWsYQwPi6LkFGyTrpRJXSPZ1HkewwslkgZzpDK6ui3xoPEJ?=
- =?us-ascii?Q?dPUdD3hfLYsDqF6I1RJQryJg94IZ8X8rjArHI8gNTapTb9iI+Oj+ya+Trgxt?=
- =?us-ascii?Q?gtinb/cA/RUwmv+tOOL18AY1BpvVRV1Kh1j1GEGBDV9F7EiCBloHg5DXbNm6?=
- =?us-ascii?Q?QZX4uM2P1xD7YrztJaTbn/jp3WdsGMINJQN0qmtJUZe/YGeuy1/HKkKpU3TY?=
- =?us-ascii?Q?6KVDx8fhdGjkJomM9J1ENkeCxXFMQpryzLo28TVduDt8ksRcgcWRfKIRlaIA?=
- =?us-ascii?Q?GpTALjq9WYe7EMnpr7xGAzufwqVjOePwveQGyAOIEDIIJ3zHTCC6I1hf2LLk?=
- =?us-ascii?Q?xVpaij4NObZ3VEIzUIIHV0IWtvcZA5/zyU6T8HGBRqbgecNRiRow+7RLkiOE?=
- =?us-ascii?Q?PKMVEbYrhXgRJuOdRxwreWPiDHa13IeDgXAUo6uEHlJ4iizPF7hmMKUbM3s9?=
- =?us-ascii?Q?XC6ejT7lhhYQmlkXSjULcFw3BZ+sgEIqJuDbFqVGDzfFAi9wBVFv+bcVYXta?=
- =?us-ascii?Q?ceiSf5sjNYG1Y5QdQrbTd3s0k5dRyI7KtWzpmkuNTDn9fpoGdgzCu/RcREEJ?=
- =?us-ascii?Q?2w6yquPx/CCNYztuT5OvJCCEqksslacQpqXxhe4U6+ulBoURywXKltIR9yWW?=
- =?us-ascii?Q?FYIfT+AICkyb94V145kI4j1C0LoCP5Uh8dCt/g+t8Y8CxnKStcEihvtn3L+v?=
- =?us-ascii?Q?F7fLlyGKSYpItvZPAZewyOaLiqo5Bgae47MBKzgTIkNNhyDbFghOkHh7gBFv?=
- =?us-ascii?Q?oB3fYAX/m+ljaEA6fgcg9z/SJVKs1/iSAAPzALRAlt2fv/M9yRPCo/BUhSmZ?=
- =?us-ascii?Q?rJXIoorLhQ1n8AD+twZ8CzprJ9nr+9LMgF8mdkZIyXMyDK3cuWketMfbZS8r?=
- =?us-ascii?Q?sCfq36AeI0VxMx0DPWh1QH7dvWHvlfEu7i8dNiA/eScN1COvV3gq0rXRzEle?=
- =?us-ascii?Q?TnJEnwa4k4t9hoxw0++hH6c/VwpFbXqyDeVGkZDzfil0/eMW37hyJbRtnj+/?=
- =?us-ascii?Q?Zl+TcdaR2tHyDJYsNPFeJ2Hvygxg+ophzPxE/IaogRKouwrXr1AO5K9jIXkF?=
- =?us-ascii?Q?qpcjhVoZ9KYWjpfi9qburgA3GtKVsgamFL6V/qZIsE+BRKHldRmyGjeQekGc?=
- =?us-ascii?Q?JD2T5+ZMjO13aJKxkLjp6ZLwVxOL3mD9PzN0kekoTXr66VEqW7AzW3ruDKZA?=
- =?us-ascii?Q?T5A92lK1tC5Zj1txZqh0GO3oJbQj/G0eAG6mBU5EjfRZ6lmNWqS01M9pBWvK?=
- =?us-ascii?Q?ldffRPhlcRnAOju5LzsGqnNTMH9wDeT5XLOmG70DAHPUSmqK5uZI8OhdrWul?=
- =?us-ascii?Q?n8fUTRMfiSd/4OltTi3WXtwpqKkQzKstjpvS5YD58ujzuc+XrQnVx0l5Id7c?=
- =?us-ascii?Q?ezQxT3N4nOjcT7o2fr4ktRc7D00Hc8/JRFD7TTDzI5lBqSb0T8ofWGjLCneA?=
- =?us-ascii?Q?E38kdXjaUY6NlxzCMFt/7cx0C5rMAsSBIlNXgdbLNpm2lvuWWfVoxG0dHAB7?=
- =?us-ascii?Q?ovHOQycyZLOVyeCJfjKqyruH3CrSEORasS4Uvt//wXo+4RevhppJDpmBMAV7?=
- =?us-ascii?Q?8UbDBXyLMr4plwh09QP2XAnAtH8txQojiV2OqQEJxol90sYgpA+Z023KEaRx?=
- =?us-ascii?Q?JsM1mv+SJg=3D=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9cb002c3-8842-4cf3-3f19-08da22dec270
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2022 15:02:16.7827 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: OhPpwTLhs1bgCYTL0p20evdFQrAGpqV/44fncCnvlQctujYjcZaGIQd4rstfCPCw
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4184
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5549.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c2a628e0-24f5-4ca5-7f8a-08da22e8b868
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Apr 2022 16:13:34.7178 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: oWLTrf2VwfE/54pD+b0GiwTiamy2vUeT78CNRDdJDa4wCnnJ/2x14ZmqB5QSABu4fQ3POcgCom+NA5SCXbTG/g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4496
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,90 +169,103 @@ Cc: "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Apr 20, 2022 at 02:41:04PM +0000, Wang, Zhi A wrote:
-> On 4/20/22 12:13 PM, Jason Gunthorpe wrote:
-> > On Wed, Apr 20, 2022 at 08:04:31AM +0000, Wang, Zhi A wrote:
-> >> Hi folks:
-> >>
-> >> Here is the PR of gvt-next.
-> >>
-> >> Mostly it includes the patch bundle of GVT-g re-factor patches for adapting the GVT-g with the
-> >> new MDEV interfaces:
-> >>
-> >> - Separating the MMIO table from GVT-g. (Zhi)
-> >> - GVT-g re-factor. (Christoph)
-> >> - GVT-g mdev API cleanup. (Jason)
-> >> - GVT-g trace/makefile cleanup. (Jani)
-> >>
-> >> Thanks so much for making this happen.
-> >>
-> >> This PR has been tested as following and no problem shows up:
-> >>
-> >> $dim update-branches
-> >> $dim apply-pull drm-intel-next < this_email.eml
-> >>
-> >> The following changes since commit b39d2c6202426b560641e5800c5523851b5db586:
-> >>
-> >>   drm/i915/fbc: Call intel_fbc_activate() directly from frontbuffer flush (2022-04-13 17:20:49 +0300)
-> > 
-> > ??
-> > 
-> > Why did you rebase this again? It needs to be on a rc release tag as
-> > you had in your github, not whatever this is.
-> > 
-> Hi Jason:
-> 
-> Here is what I understand, the pull going to the drm-intel-next
-> needs to be based on drm-intel-next from the branch gvt-next. 
+On 4/20/22 3:02 PM, Jason Gunthorpe wrote:
+> On Wed, Apr 20, 2022 at 02:41:04PM +0000, Wang, Zhi A wrote:
+>> On 4/20/22 12:13 PM, Jason Gunthorpe wrote:
+>>> On Wed, Apr 20, 2022 at 08:04:31AM +0000, Wang, Zhi A wrote:
+>>>> Hi folks:
+>>>>
+>>>> Here is the PR of gvt-next.
+>>>>
+>>>> Mostly it includes the patch bundle of GVT-g re-factor patches for ada=
+pting the GVT-g with the
+>>>> new MDEV interfaces:
+>>>>
+>>>> - Separating the MMIO table from GVT-g. (Zhi)
+>>>> - GVT-g re-factor. (Christoph)
+>>>> - GVT-g mdev API cleanup. (Jason)
+>>>> - GVT-g trace/makefile cleanup. (Jani)
+>>>>
+>>>> Thanks so much for making this happen.
+>>>>
+>>>> This PR has been tested as following and no problem shows up:
+>>>>
+>>>> $dim update-branches
+>>>> $dim apply-pull drm-intel-next < this_email.eml
+>>>>
+>>>> The following changes since commit b39d2c6202426b560641e5800c5523851b5=
+db586:
+>>>>
+>>>>   drm/i915/fbc: Call intel_fbc_activate() directly from frontbuffer fl=
+ush (2022-04-13 17:20:49 +0300)
+>>>
+>>> ??
+>>>
+>>> Why did you rebase this again? It needs to be on a rc release tag as
+>>> you had in your github, not whatever this is.
+>>>
+>> Hi Jason:
+>>
+>> Here is what I understand, the pull going to the drm-intel-next
+>> needs to be based on drm-intel-next from the branch gvt-next.=20
+>=20
+> No, there cannot be two pulls, as I explained when using topic
+> branches you must never rebase.
+>=20
+>> The pull going to the VFIO needs to be based on -rc, the
+>> topic/for-christoph brnach.
+>=20
+> Yes, so what you need to do is:
+>=20
+> # Get a clean tree on drm-intel-next
+> $ git worktree add /tmp/gvt-next
+> Preparing worktree (new branch 'gvt-next')
+> $ cd /tmp/gvt-next
+> $ git reset --hard b39d2c6202426b560641e5800c5523851b5db586  # drm-intel-=
+next commit you tested
+>=20
+> # Merge Christoph's topic:
+> $ git fetch https://github.com/intel/gvt-linux.git topic/for-christoph
+> $ git merge FETCH_HEAD
+> Auto-merging drivers/gpu/drm/i915/Makefile
+> Auto-merging drivers/gpu/drm/i915/gvt/handlers.c
+> Auto-merging drivers/gpu/drm/i915/i915_driver.c
+> Auto-merging drivers/gpu/drm/i915/i915_drv.h
+> Merge made by the 'ort' strategy.
+>=20
+Exactly what I did on my branch except that I sent the pull request based o=
+n my gvt-next. :(
+> [..
+> Merge branch 'topic/for-christoph' of https://github.com/intel/gvt-linux =
+into gvt-next
+>=20
+> # By Christoph Hellwig (27) and others
+> # Via Zhi Wang
+> * 'topic/for-christoph' of https://github.com/intel/gvt-linux: (37 commit=
+s)
+> ]
+>=20
+> And then check it against what you prepared in this PR here:
+>=20
+> $ git diff HEAD 888471711a80b22c53547f3a625f20f487714f28
+> [empty]
+>=20
+> *do not rebase a topic branch* this is very important.
+>=20
+> Now - given that we can see there is no merge conflict you don't need
+> to do anything! Just send topic/for-christoph, exactly as-it-is to
+> drm-intel-next as a PR and that is all.
+>=20
+>> Sorry this is way too complicated to me. Let me prepare the new pull
+>> as what you ask. Shall I send the exact same pull to i915 and VFIO ?
+>=20
+> Yes, exact same, this is important.
+>=20
+> You were very close before, the only issue was rebasing
+> topic/for-christoph instead of merging.
+>
+I will send it by the end of the day. Thanks so much for your patience.
+=20
+> Jason
+>=20
 
-No, there cannot be two pulls, as I explained when using topic
-branches you must never rebase.
-
-> The pull going to the VFIO needs to be based on -rc, the
-> topic/for-christoph brnach.
-
-Yes, so what you need to do is:
-
-# Get a clean tree on drm-intel-next
-$ git worktree add /tmp/gvt-next
-Preparing worktree (new branch 'gvt-next')
-$ cd /tmp/gvt-next
-$ git reset --hard b39d2c6202426b560641e5800c5523851b5db586  # drm-intel-next commit you tested
-
-# Merge Christoph's topic:
-$ git fetch https://github.com/intel/gvt-linux.git topic/for-christoph
-$ git merge FETCH_HEAD
-Auto-merging drivers/gpu/drm/i915/Makefile
-Auto-merging drivers/gpu/drm/i915/gvt/handlers.c
-Auto-merging drivers/gpu/drm/i915/i915_driver.c
-Auto-merging drivers/gpu/drm/i915/i915_drv.h
-Merge made by the 'ort' strategy.
-
-[..
-Merge branch 'topic/for-christoph' of https://github.com/intel/gvt-linux into gvt-next
-
-# By Christoph Hellwig (27) and others
-# Via Zhi Wang
-* 'topic/for-christoph' of https://github.com/intel/gvt-linux: (37 commits)
-]
-
-And then check it against what you prepared in this PR here:
-
-$ git diff HEAD 888471711a80b22c53547f3a625f20f487714f28
-[empty]
-
-*do not rebase a topic branch* this is very important.
-
-Now - given that we can see there is no merge conflict you don't need
-to do anything! Just send topic/for-christoph, exactly as-it-is to
-drm-intel-next as a PR and that is all.
-
-> Sorry this is way too complicated to me. Let me prepare the new pull
-> as what you ask. Shall I send the exact same pull to i915 and VFIO ?
-
-Yes, exact same, this is important.
-
-You were very close before, the only issue was rebasing
-topic/for-christoph instead of merging.
-
-Jason
