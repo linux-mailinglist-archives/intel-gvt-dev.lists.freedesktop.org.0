@@ -1,57 +1,34 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DFF85096D0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Apr 2022 07:26:55 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF82F5096F6
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Apr 2022 07:47:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7F2AE10F352;
-	Thu, 21 Apr 2022 05:26:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2BF3D10E49F;
+	Thu, 21 Apr 2022 05:47:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6CE4A10F355
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Apr 2022 05:26:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650518811;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=09wIP+Ezh+boJlEnNU0DFCx3hEkdvqLMQ0cz6cNAjsc=;
- b=UwCqGx/4HgRXjTO9wj37Ge2+fddLxbfcC8AdG9fzFRN5y9r6VF+xZpMbJtp4+ScLSXhTTs
- EmjXomi2egGm37ql8u1P+/Dz0JdlQCmWJwPjrxV/CSG8eWJ2qAq05drqOHZ8OLK6bPwVA4
- TujYOu8JmM+V4znjPdPuFphGtgFahTc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-37--1U9P576OECVU_d2kZEZSA-1; Thu, 21 Apr 2022 01:26:46 -0400
-X-MC-Unique: -1U9P576OECVU_d2kZEZSA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 06FE480005D;
- Thu, 21 Apr 2022 05:26:45 +0000 (UTC)
-Received: from starship (unknown [10.40.194.231])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 649EC40D0168;
- Thu, 21 Apr 2022 05:26:39 +0000 (UTC)
-Message-ID: <b622882b4fbcacdeb09e4112251aeeab48059ded.camel@redhat.com>
-Subject: Re: [RFC PATCH v2 04/10] KVM: x86: mmu: tweak fast path for
- emulation of access to nested NPT pages
-From: Maxim Levitsky <mlevitsk@redhat.com>
-To: kvm@vger.kernel.org
-Date: Thu, 21 Apr 2022 08:26:38 +0300
-In-Reply-To: <20220421051244.187733-5-mlevitsk@redhat.com>
-References: <20220421051244.187733-1-mlevitsk@redhat.com>
- <20220421051244.187733-5-mlevitsk@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1B23E10E49F;
+ Thu, 21 Apr 2022 05:47:42 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 9154768B05; Thu, 21 Apr 2022 07:47:38 +0200 (CEST)
+Date: Thu, 21 Apr 2022 07:47:38 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: "Wang, Zhi A" <zhi.a.wang@intel.com>
+Subject: Re: [PULL v2] gvt-next
+Message-ID: <20220421054738.GA20772@lst.de>
+References: <5a8b9f48-2c32-8177-1c18-e3bd7bfde558@intel.com>
+ <20220420164351.GC2120790@nvidia.com>
+ <20220420114033.7f8b57c7.alex.williamson@redhat.com>
+ <20220420174600.GD2120790@nvidia.com> <20220420200034.GE2120790@nvidia.com>
+ <55cb46db-754e-e339-178c-0a2cfaf65810@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <55cb46db-754e-e339-178c-0a2cfaf65810@intel.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,62 +41,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Wanpeng Li <wanpengli@tencent.com>, David Airlie <airlied@linux.ie>,
+Cc: "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, "H. Peter Anvin" <hpa@zytor.com>,
- Joerg Roedel <joro@8bytes.org>, x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Dave Hansen <dave.hansen@linux.intel.com>,
- intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
- intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Sean Christopherson <seanjc@google.com>, linux-kernel@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ Christoph Hellwig <hch@lst.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 2022-04-21 at 08:12 +0300, Maxim Levitsky wrote:
-> ---
->  arch/x86/kvm/mmu/mmu.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/x86/kvm/mmu/mmu.c b/arch/x86/kvm/mmu/mmu.c
-> index 23f895d439cf5..b63398dfdac3b 100644
-> --- a/arch/x86/kvm/mmu/mmu.c
-> +++ b/arch/x86/kvm/mmu/mmu.c
-> @@ -5315,8 +5315,8 @@ int kvm_mmu_page_fault(struct kvm_vcpu *vcpu, gpa_t cr2_or_gpa, u64 error_code,
->  	 */
->  	if (vcpu->arch.mmu->root_role.direct &&
->  	    (error_code & PFERR_NESTED_GUEST_PAGE) == PFERR_NESTED_GUEST_PAGE) {
-> -		kvm_mmu_unprotect_page(vcpu->kvm, gpa_to_gfn(cr2_or_gpa));
-> -		return 1;
-> +		if (kvm_mmu_unprotect_page(vcpu->kvm, gpa_to_gfn(cr2_or_gpa)))
-> +			return 1;
->  	}
->  
->  	/*
+On Thu, Apr 21, 2022 at 04:57:34AM +0000, Wang, Zhi A wrote:
+> Is it possible that I can send two different pull based on the same branch?
+> I was thinking I can remove this line in the original patch and then add a
+> small patch to add this line back on the top. Then make two different tags
+> before and after that small patch, send one pull with tag that includes that
+> small patch to i915 and the other pull with tag that doesn't includes it to
+> VFIO?
 
-I forgot to add commit description here:
-
-If non leaf mmu page is write tracked externally for some reason,
-which can in theory happen if it was used for nested avic physid page
-before, then this code will enter an endless loop of page faults because
-unprotecting the page will not remove write tracking, nor will the
-write tracker callback be called.
-
-Fix this by only invoking the fast patch if we succeeded in zapping the
-mmu page.
-
-Fixes: 147277540bbc5 ("kvm: svm: Add support for additional SVM NPF error codes")
-Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
-
---
-
-In theory, KVMGT also does external write tracking so in theory this issue can happen today,
-but it is highly unlikely.
-
-Best regards,
-	Maxim Levitsk
-
+Yes, you can do that as long as the small fixup commit is the very last
+one.
