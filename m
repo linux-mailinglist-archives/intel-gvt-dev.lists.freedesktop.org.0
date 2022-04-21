@@ -2,55 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 069C35097CD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Apr 2022 08:41:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4A59509EFE
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Apr 2022 13:51:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6CF0A10F4BD;
-	Thu, 21 Apr 2022 06:41:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 75C3310E937;
+	Thu, 21 Apr 2022 11:51:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4FCD010F4B7;
- Thu, 21 Apr 2022 06:41:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1650523298; x=1682059298;
- h=mime-version:content-transfer-encoding:in-reply-to:
- references:cc:subject:to:from:message-id:date;
- bh=vFGSRbEcLkms+IbiDdCfsUKr+xXgWNEER3JK8P3rTHs=;
- b=N2cIb4sEiy/DRfsNiwlGF7AA90l8gWS0IIe9tegQuKWTlBeZrCbF/kTa
- Mzi/c3AFGbdgD4UXOGPcivuTv+kNSbw60O6XYuPCsP0NJQ6M/J9aDcIMR
- Gf+AopTd2hZLCbIVDchexhmk1d6ArEmESWXArS757UGIIzv4Y6lSKpdbM
- m5uC61wKGNJ18kbcaAf2CHSRu4N9fFJR7Jea292JUkseUUppuIRll6vYY
- ZTaV9F/tLjZZKP2mFvt8BBv++ADGT//WIfY8FEyHD6ntNqqWUhgt6EX9U
- EiCulyu/ZQHhc5+wumbK4yO9EJNnErFyh2g2YrBtm+rp1Gowf0qWvAeQc g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10323"; a="264428967"
-X-IronPort-AV: E=Sophos;i="5.90,278,1643702400"; d="scan'208";a="264428967"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Apr 2022 23:41:37 -0700
-X-IronPort-AV: E=Sophos;i="5.90,278,1643702400"; d="scan'208";a="562448290"
-Received: from hyeongju-mobl2.ger.corp.intel.com (HELO localhost)
- ([10.252.54.203])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Apr 2022 23:41:33 -0700
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20220421054738.GA20772@lst.de>
-References: <5a8b9f48-2c32-8177-1c18-e3bd7bfde558@intel.com>
- <20220420164351.GC2120790@nvidia.com>
- <20220420114033.7f8b57c7.alex.williamson@redhat.com>
- <20220420174600.GD2120790@nvidia.com> <20220420200034.GE2120790@nvidia.com>
- <55cb46db-754e-e339-178c-0a2cfaf65810@intel.com>
- <20220421054738.GA20772@lst.de>
-Subject: Re: [PULL v2] gvt-next
-To: "Wang, Zhi A" <zhi.a.wang@intel.com>, Christoph Hellwig <hch@lst.de>
-From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Message-ID: <165052329083.6597.933445971686511585@jlahtine-mobl.ger.corp.intel.com>
-User-Agent: alot/0.8.1
-Date: Thu, 21 Apr 2022 09:41:30 +0300
+Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com
+ [IPv6:2a00:1450:4864:20::131])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1102B10E8AB
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 21 Apr 2022 11:51:43 +0000 (UTC)
+Received: by mail-lf1-x131.google.com with SMTP id g19so8264964lfv.2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 21 Apr 2022 04:51:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id;
+ bh=Jcb+pa04Ecfoa7lH2lG7Bl4kxr3kZIzfaziLYBjSAhE=;
+ b=fXMV7+9l7SA4r2W1MGF0SWsd/C8IZ5Sjse9uNDrOPwNawr201aTjz6TaYdawDdRSY+
+ sdp+ilI3zGsdZTbytCKbKuN9xjDVJDB0rJKmJbs4Or9XTMmQ6b6njqIx4TA7V2aw2+fe
+ 2EWAfiRQEXN52KOJKcJkGiyUpgzGjaT9F3pdB+NMlh4jL4wAXRGI2yYV7Hl8noyvry1i
+ Xtyw/0FFYrOkO9DGpKPmOw+ZUPfUfgZ2AaVrh5iFnEfhBY3jrg14zPTFLbehT/ySsZ6X
+ SiY4w8mpOYz8ObE1IFTAkcYVCu7cr9X/FxjAa4nLgGaxOSemrIiBPNLsp9598qukCmGk
+ 6xzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=Jcb+pa04Ecfoa7lH2lG7Bl4kxr3kZIzfaziLYBjSAhE=;
+ b=ZDGwQCIVlvHD2r35Dl5RQ+DfJp4lfc3pWMQAv9a+ZaYQ0ii0AmAWXV2tzVLrm59hRz
+ x8nb7jhwoQ2FPAqVj3A+nPwEsMCnFfJRpTMdFYYW9WmUlAndOoT4x0cfDRxxRptaAuQF
+ 9MUwj029K7j0MlRBjKJaHuqMkEVDFtiH4b8WkQttlyx2LqOTZX1QcsI4nTstPTLcpxm2
+ 7fYJyXiPMnVeBVfF8NZWtFSvkl0AmAspz9ndAdofg6JfHsv8NUCy1Fx5fsPUzduWRueU
+ fHqOXjQumi/HQwHOyK5yARpdeDgdWVtnv4dj9TozxhyxrduRwJVL7jmU4xxJ5KAcAWNp
+ 3XhA==
+X-Gm-Message-State: AOAM532g5RVKH2mR4IPAcGCONuOZDuidBGQYSAVcbmLpVlfoH911jRsv
+ MGJuGInc0cZzIsX4DSqNiZQQhYrP0iA=
+X-Google-Smtp-Source: ABdhPJymaJNiG/F2IdIgFQm0R7qfd3NdU0UcYoeMRGyS57TkgZ4JhYvs5W2M9HeGUIAW27zObkwKbA==
+X-Received: by 2002:a05:6512:108b:b0:471:c321:102e with SMTP id
+ j11-20020a056512108b00b00471c321102emr3521182lfg.463.1650541900947; 
+ Thu, 21 Apr 2022 04:51:40 -0700 (PDT)
+Received: from zhiwang1-mobl.lan (88-115-161-74.elisa-laajakaista.fi.
+ [88.115.161.74]) by smtp.gmail.com with ESMTPSA id
+ e5-20020ac25ca5000000b004705dbcc329sm1700799lfq.222.2022.04.21.04.51.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Apr 2022 04:51:40 -0700 (PDT)
+From: Zhi Wang <zhi.wang.linux@gmail.com>
+X-Google-Original-From: Zhi Wang <zhi.a.wang@intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH] drm/i915/gvt: add the missing header back for drm-intel-next
+Date: Thu, 21 Apr 2022 07:51:33 -0400
+Message-Id: <20220421115133.8052-1-zhi.a.wang@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,34 +66,32 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Jason Gunthorpe <jgg@nvidia.com>, "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Christoph Hellwig <hch@lst.de>
+Cc: Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-+ Tvrtko
+Add the missing header back for the pull request for drm-intel-next. The
+patches of GVT-g re-factor will go through both i915 and vfio. As the
+header of DMC registers has been moved in the latest drm-intel-next,
+the patch is required for compiling.
 
-Quoting Christoph Hellwig (2022-04-21 08:47:38)
-> On Thu, Apr 21, 2022 at 04:57:34AM +0000, Wang, Zhi A wrote:
-> > Is it possible that I can send two different pull based on the same bra=
-nch?
-> > I was thinking I can remove this line in the original patch and then ad=
-d a
-> > small patch to add this line back on the top. Then make two different t=
-ags
-> > before and after that small patch, send one pull with tag that includes=
- that
-> > small patch to i915 and the other pull with tag that doesn't includes i=
-t to
-> > VFIO?
->=20
-> Yes, you can do that as long as the small fixup commit is the very last
-> one.
+Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+---
+ drivers/gpu/drm/i915/intel_gvt_mmio_table.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/i915/intel_gvt_mmio_table.c b/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
+index 03a7fcd0f904..a8edb3f317f3 100644
+--- a/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
++++ b/drivers/gpu/drm/i915/intel_gvt_mmio_table.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include "display/vlv_dsi_pll_regs.h"
++#include "display/intel_dmc_regs.h"
+ #include "gt/intel_gt_regs.h"
+ #include "gvt/gvt.h"
+ #include "i915_drv.h"
+-- 
+2.17.1
+
