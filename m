@@ -2,50 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1386E5097CB
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Apr 2022 08:40:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66A9C5097C8
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Apr 2022 08:40:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BD58E10F493;
-	Thu, 21 Apr 2022 06:40:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7B66A10F46F;
+	Thu, 21 Apr 2022 06:40:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1CA1510F493
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Apr 2022 06:40:52 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 930DC10F337;
+ Thu, 21 Apr 2022 06:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1650523252; x=1682059252;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=nu5Wpf/FIryLF3arCfxEzEoOTvoNmAs9ROtYcVQsZuU=;
- b=Hu0s733OyDx+7M39HFzFpa+5gzI89os7kwq8ne47WtA9Vo4FmqmPV6wZ
- VVR7HyixEVlUSbDs3mziBkh0BI8HnDZGOrb5QCm0CuS2kc4HOOJOJKvLa
- Qul0PdQWVaCOWedsXPT16ygIItLT9sUEfaZr0CpLm/Il+1mO4wWhLse7u
- 6WvDY65tG81isWIaqL/Xb8doKsauAsrl3RiE1kvHS3zpLBsO/ZRg58z5+
- Zj5JwK7OjM8ZNtFo7unMXtO/7oEQnDbKhHKEYVK6zCqE0irOq9jM28U1I
- 7q6NQxbykBXtb9QU4V16C5RxBHFh5P7ZVsKK+odqEc3zM4VxxQzIaeBTf g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10323"; a="289368912"
-X-IronPort-AV: E=Sophos;i="5.90,278,1643702400"; d="scan'208";a="289368912"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Apr 2022 23:40:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,278,1643702400"; d="scan'208";a="658390984"
-Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 20 Apr 2022 23:40:50 -0700
-Received: from kbuild by 3abc53900bec with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nhQUj-0007xm-CN;
- Thu, 21 Apr 2022 06:40:49 +0000
-Date: Thu, 21 Apr 2022 14:40:21 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhi Wang <zhi.a.wang@intel.com>
-Subject: [intel-gvt:gvt-next-bak-without-chris-patches 1/5]
- drivers/gpu/drm/i915/gvt/handlers.c:75:6: error: no previous prototype for
- 'intel_gvt_match_device'
-Message-ID: <202204202233.2S88zDWj-lkp@intel.com>
+ t=1650523236; x=1682059236;
+ h=mime-version:content-transfer-encoding:in-reply-to:
+ references:cc:subject:to:from:message-id:date;
+ bh=71JJ0eHi2arpf9/f536F1pmq5dhuMhUNGfpsM7vmudQ=;
+ b=klU8dIX5s+VaBkI8S2cVPJv5c3zMLq8QR6ER20DrZwe8oqkquTt03KcB
+ yrM7gO7y//lkNrVsmspfHTzZ3qcmH7Z3VMFJIpHFmYFf29O8TrrJnD+P0
+ CCjc4edURrL+u5EhT/2Mxen7uFraeZiU/gEX5Higyh7JdmCp9DgjHFZ3n
+ oVlSmUZOZnnvzR7nRzMe/3INtGYUYq2QTjpg2M2B7QaSg6gyUqbsMMULc
+ eNa2noZcCK6Ykwxfu3qQBiBhgtDxTZzvKaaQebW/FSlYMpAHxy5xLv2ta
+ hobLM1h1j6KFUf8HEnh5GVOMuTgp/I1tMsuShysaEHJbu2FNd7rAsyGvw A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10323"; a="263722226"
+X-IronPort-AV: E=Sophos;i="5.90,278,1643702400"; d="scan'208";a="263722226"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Apr 2022 23:40:36 -0700
+X-IronPort-AV: E=Sophos;i="5.90,278,1643702400"; d="scan'208";a="555608128"
+Received: from hyeongju-mobl2.ger.corp.intel.com (HELO localhost)
+ ([10.252.54.203])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Apr 2022 23:40:31 -0700
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20220413144548.GR2120790@nvidia.com>
+References: <20220411141403.86980-1-hch@lst.de>
+ <20220411141403.86980-6-hch@lst.de> <20220411152508.GH2120790@nvidia.com>
+ <87zgkrha7c.fsf@intel.com> <20220411165121.GA26801@lst.de>
+ <877d7tgo33.fsf@intel.com> <e8cdc103-f683-0b73-70a7-807f6fee0280@intel.com>
+ <20220413134307.GC368031@nvidia.com>
+ <86ee8fcc-e021-bb9f-fda6-a8e85cb1d9b4@intel.com>
+ <20220413144548.GR2120790@nvidia.com>
+Subject: Re: [PATCH 05/34] drm/i915/gvt: cleanup the Makefile
+To: "Wang, Zhi A" <zhi.a.wang@intel.com>, Jason Gunthorpe <jgg@nvidia.com>
+From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Message-ID: <165052322868.6597.3051928698772494571@jlahtine-mobl.ger.corp.intel.com>
+User-Agent: alot/0.8.1
+Date: Thu, 21 Apr 2022 09:40:28 +0300
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,54 +64,91 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kbuild-all@lists.01.org, zhenyu.z.wang@intel.com,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
  Christoph Hellwig <hch@lst.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree:   https://github.com/intel/gvt-linux.git gvt-next-bak-without-chris-patches
-head:   1f9dedeee16643ba20fffd43296978bc434218d2
-commit: 8c7bb1f9b70a7b490776961767e69f9423280181 [1/5] i915/gvt: Separate the MMIO tracking table from GVT-g
-config: x86_64-syzkaller (https://download.01.org/0day-ci/archive/20220420/202204202233.2S88zDWj-lkp@intel.com/config)
-compiler: gcc-11 (Debian 11.2.0-20) 11.2.0
-reproduce (this is a W=1 build):
-        # https://github.com/intel/gvt-linux/commit/8c7bb1f9b70a7b490776961767e69f9423280181
-        git remote add intel-gvt https://github.com/intel/gvt-linux.git
-        git fetch --no-tags intel-gvt gvt-next-bak-without-chris-patches
-        git checkout 8c7bb1f9b70a7b490776961767e69f9423280181
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/gpu/
++ Tvrtko
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+Quoting Jason Gunthorpe (2022-04-13 17:45:48)
+> On Wed, Apr 13, 2022 at 02:26:23PM +0000, Wang, Zhi A wrote:
+> > On 4/13/22 1:43 PM, Jason Gunthorpe wrote:
+> > > On Wed, Apr 13, 2022 at 01:39:35PM +0000, Wang, Zhi A wrote:
+> > >=20
+> > >> It seems Jani's makefile clean patch has already included this one, =
+I can
+> > >> just simply drop this one so that Christoph won't need to re-send ev=
+erything.
+> > >>
+> > >> For the branch to move on, I am merging the patches and will re-gene=
+rate the
+> > >> gvt-staging branch, which combines the newest drm-tip vfio-upstream =
+and other
+> > >> gvt branches.
+> > >>
+> > >> If you are in a rush of re-basing the patches of non-GVT-g stuff, yo=
+u can use
+> > >> gvt-staging branch until my pull request landed in drm-intel-next.
+> > >>
+> > >> Also our QA will test gvt-staging-branch before the pull request. I =
+suppose
+> > >> it will take one or two days.
+> > >=20
+> > > When you are wrangling the branches it would be great if Christoph's
+> > > series and it's minimal dependencies could be on a single branch that
+> > > could reasonably be pulled to the VFIO tree too, thanks
+> > >=20
+> > > Jason
+> > >=20
+> >=20
+> > Hi Jason:
+> >=20
+> > I am thinking about the process of merging process. Here are the depend=
+ence:
+> >=20
+> > 1) My patches depend on one patch in drm-intel/drm-intel-next. So it ha=
+s to
+> > go through drm.
+> > My patches of GVT-g will go through drm-intel-next -> drm -> upstream. =
 
-All errors (new ones prefixed by >>):
-
->> drivers/gpu/drm/i915/gvt/handlers.c:75:6: error: no previous prototype for 'intel_gvt_match_device' [-Werror=missing-prototypes]
-      75 | bool intel_gvt_match_device(struct intel_gvt *gvt,
-         |      ^~~~~~~~~~~~~~~~~~~~~~
-   cc1: all warnings being treated as errors
-
-
-vim +/intel_gvt_match_device +75 drivers/gpu/drm/i915/gvt/handlers.c
-
-12d14cc43b3470 Zhi Wang 2016-08-30  74  
-12d14cc43b3470 Zhi Wang 2016-08-30 @75  bool intel_gvt_match_device(struct intel_gvt *gvt,
-12d14cc43b3470 Zhi Wang 2016-08-30  76  		unsigned long device)
-12d14cc43b3470 Zhi Wang 2016-08-30  77  {
-12d14cc43b3470 Zhi Wang 2016-08-30  78  	return intel_gvt_get_device_type(gvt) & device;
-12d14cc43b3470 Zhi Wang 2016-08-30  79  }
-12d14cc43b3470 Zhi Wang 2016-08-30  80  
-
-:::::: The code at line 75 was first introduced by commit
-:::::: 12d14cc43b34706283246917329b2182163ba9aa drm/i915/gvt: Introduce a framework for tracking HW registers.
-
-:::::: TO: Zhi Wang <zhi.a.wang@intel.com>
-:::::: CC: Zhenyu Wang <zhenyuw@linux.intel.com>
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+> >=20
+> > 2) Christoph's patches depends on my patches, but part of them are for =
+VFIO.
+> >=20
+> > a. If they are fully going through VFIO repo, they might have to wait my
+> > patches to get landed first.
+> >=20
+> > b. If only the GVT-g parts goes through GVT repo, and rest of them goes
+> > through VFIO, the rest part still needs to wait.
+> >=20
+> > What would be a better process?
+>=20
+> You should organize everything onto one simple branch based on a rc to
+> make this all work.
+>=20
+> Make your #1 patch as a single patch PR based on rc to drm-intel so it
+> gets to the right tree
+>=20
+> Make your MMIO series as PR on the branch above that first PR and merge to
+> the gvt tree
+>=20
+> Make Christoph's series as a PR on the branch above the second PR's
+> MMIO series and merge to the gvt tree
+>=20
+> Merge the gvt toward DRM in the normal way - ie the main merge path for
+> this should be through DRM.
+>=20
+> Then ask Alex to merge the 3rd PR as well.
+>=20
+> I don't see any intel-next stuff in linux-next yet so hopefully it is
+> early enough to get #1 OK.
+>=20
+> Jason
