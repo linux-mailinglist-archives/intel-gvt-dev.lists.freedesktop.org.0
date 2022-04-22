@@ -1,31 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB24550B067
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Apr 2022 08:21:29 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2ECD750B06E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Apr 2022 08:22:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 02BE41120D5;
-	Fri, 22 Apr 2022 06:21:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B2E1B1120D5;
+	Fri, 22 Apr 2022 06:22:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F280A1120D5;
- Fri, 22 Apr 2022 06:21:25 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EE10F1120DC;
+ Fri, 22 Apr 2022 06:22:35 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 2767D68B05; Fri, 22 Apr 2022 08:21:21 +0200 (CEST)
-Date: Fri, 22 Apr 2022 08:21:20 +0200
+ id 2895A68B05; Fri, 22 Apr 2022 08:22:33 +0200 (CEST)
+Date: Fri, 22 Apr 2022 08:22:32 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 1/7] vfio: Make vfio_(un)register_notifier accept a
- vfio_device
-Message-ID: <20220422062120.GA11926@lst.de>
+Subject: Re: [PATCH v2 3/7] vfio/mdev: Pass in a struct vfio_device * to
+ vfio_pin/unpin_pages()
+Message-ID: <20220422062232.GB11926@lst.de>
 References: <0-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
- <1-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
+ <3-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
+In-Reply-To: <3-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -63,6 +63,5 @@ Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Looks good (for now):
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+Nit: why do some of these patches that don't touch the mdev code
+mdev in the subject?
