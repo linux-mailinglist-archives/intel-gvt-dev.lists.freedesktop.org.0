@@ -1,41 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E73FA510E19
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 Apr 2022 03:47:24 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBD43511331
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 Apr 2022 10:06:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 99FC310E0F3;
-	Wed, 27 Apr 2022 01:47:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 790FA10E3E7;
+	Wed, 27 Apr 2022 08:06:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mta-out-06.alice.it (mta-out-06.alice.it [217.169.118.12])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 72C5B10E13E;
- Wed, 27 Apr 2022 01:47:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alice.it; s=20211207;
- t=1651024042; bh=m9WtUeW5WbLyaDyXUGKspd8UYZln3gdM2y7sv04wBfE=;
- h=Message-ID:Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- b=R6xcRdVt9Aix06wKQc1znyoYq64KvWigU8Efi1BFlkH398fJ50vzTH305SlhEIQLCgqrbbHbVHO7WD5dgIXEYCp7ZRxQPTLO6NYgU79RwgXnbrjMxhAEVqdHIZ1B9zBoojUN3PVb0CJb+tqKZfmp8BaRXy09bESH2UB9q2UMDX3gnZzSf3HtO8u9IJbhO/ANAZ2BiVqFuPDLGM09cIX5j/9jdMKQ/MKdx/Ghmlz/goFsWJTrn4LLMwEG+d51SDDLO/Ea5AIvPnZm1O+cK6nbMimzej0/JFm/dIxMVUNMeGskDrjkanomdpfC+aZM1BkOQlA7I81sgRIwiXrrEzrlCA==
-X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgedvfedrudeggdeghecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfvgffngfevqffokffvtefnkfetpdfqfgfvnecuuegrihhlohhuthemuceftddunecumhhishhsihhnghcuvffquchfihgvlhguucdlfedtmdenogfpohfkffculddutddmnecujfgurheprhfhufffgggtgffrigfoqfesthejtddtuddtfeenucfhrhhomhepfdeurhgvnhhtucfvihhmmhhonhhsfdeovhgrlhgvrdhtvhgssegrlhhitggvrdhitheqnecuggftrfgrthhtvghrnhepvdethfejueefiedtueduudetheegvdeugfdtteegkedtvdfgffdtieduheduhfeknecukfhppeeivddrvdduvddrvdefledrieenucfuphgrmhfkphfpvghtfihorhhkpeeivddrvdduvddrvdefledrieenucevlhhushhtvghrufhiiigvpeegheenucfrrghrrghmpehhvghlohepfghsvghrpdhinhgvthepiedvrddvuddvrddvfeelrdeipdhmrghilhhfrhhomhepvhgrlhgvrdhtvhgssegrlhhitggvrdhithdpnhgspghrtghpthhtohepuddtpdhrtghpthhtohepihhnthgvlhdqghhfgieslhhishhtshdrfhhrvggvuggvshhkthhophdrohhrghdprhgtphhtthhopehinhhtvghlqdhgvhhtqdguvghvsehlihhsthhsrdhfrhgvvgguvghskhhtohhprdhorhhgpdhrtghpthhtohepihhnthgvlhgvkhhtohesnhgvthiivghrohdrnhgvthdprhgtphhtthhopehinhhtvghlghhurghrugesuhhsrgdr
- nhgvthdprhgtphhtthhopehinhhtvghlihhsseifphdrphhlpdhrtghpthhtohepihhnthgvlhhlihhgvghntggvuhhnihhtsehqshdrtghomhdprhgtphhtthhopehinhhtvghllhhighgvnhhtsehmrghilhdrughkpdhrtghpthhtohepihhnthgvlhhlihhgvghnthgtohhpseihrghhohhordgtohhmpdhrtghpthhtohepihhnthgvlhhlihhgvghnthhshhgrihhfrghlihduvdefsehrvgguihhffhhmrghilhdrtghomhdprhgtphhtthhopehinhhtvghllhhighgvnhhtfigvsghhrggtkhgvrhhssehgmhgrihhlrdgtohhm
-X-RazorGate-Vade-Verdict: clean 40
-X-RazorGate-Vade-Classification: clean
-Received: from User (62.212.239.6) by mta-out-06.alice.it (5.8.807.04)
- (authenticated as vale.tvb@alice.it)
- id 6259240D0330EEFB; Wed, 27 Apr 2022 03:47:19 +0200
-Message-ID: <6259240D0330EEFB@mta-out-06.alice.it> (added by
- postmaster@alice.it)
-From: "Brent Timmons"<vale.tvb@alice.it>
-Subject: RE:
-Date: Tue, 26 Apr 2022 15:47:17 -1000
+X-Greylist: delayed 379 seconds by postgrey-1.36 at gabe;
+ Wed, 27 Apr 2022 08:06:37 UTC
+Received: from mail.ruletown.pl (mail.ruletown.pl [192.71.213.39])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F2ED510E3ED
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 27 Apr 2022 08:06:37 +0000 (UTC)
+Received: by mail.ruletown.pl (Postfix, from userid 1001)
+ id 58A7F41062; Wed, 27 Apr 2022 10:00:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ruletown.pl; s=mail;
+ t=1651046417; bh=VNuNg2MzRkdVVfp4kSZZW7SxoKEFGotk5GCW4ktyH/8=;
+ h=Date:From:To:Subject:From;
+ b=TDkjwdkmG1XcS/7rbAdUyB/UBMtdoV4qcwefOJgRT0uY1R8WP83t7kCHULT3WPRYw
+ xYptFmWZEoqXMuJxQU/ZbNAysbk5z2maqzeE8NvgFicvy/9A4XFbkzsL5LWdPMHdsT
+ hr6IGszEqdrS7UtTmfvuODA7Py3DglG4fND5Z7J70tJfI/IZOVj8X//pR1Q5W8pjZU
+ wCAU1pd6tIZ1EeYOE/B2bGyBDMMHH40WnuBA8hIhi6pVrqXJAAQ/bWkwzAPl24FNeb
+ 41kIKBS+LXFCZY6TO342GfCd8PoMLf6bPRHipiuzeTvxbJ4HjNEaoQVb0iZSi51lW9
+ ERbSxPydUEWQw==
+Received: by mail.ruletown.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 27 Apr 2022 08:00:16 GMT
+Message-ID: <20220427084500-0.1.2a.7sm8.0.d8x15h1865@ruletown.pl>
+Date: Wed, 27 Apr 2022 08:00:16 GMT
+From: "Filip Ostrowski" <filip.ostrowski@ruletown.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: W sprawie samochodu
+X-Mailer: mail.ruletown.pl
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,10 +49,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: timmonsbrent14@gmail.com, 
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-I was wondering if you received the email sent to you last night? 
+Dzie=C5=84 dobry,
 
-Brent Timmons
+chcieliby=C5=9Bmy zapewni=C4=87 Pa=C5=84stwu kompleksowe rozwi=C4=85zania=
+, je=C5=9Bli chodzi o system monitoringu GPS.
+
+Precyzyjne monitorowanie pojazd=C3=B3w na mapach cyfrowych, =C5=9Bledzeni=
+e ich parametr=C3=B3w eksploatacyjnych w czasie rzeczywistym oraz kontrol=
+a paliwa to kluczowe funkcjonalno=C5=9Bci naszego systemu.=20
+
+Organizowanie pracy pracownik=C3=B3w jest dzi=C4=99ki temu prostsze i bar=
+dziej efektywne, a oszcz=C4=99dno=C5=9Bci i optymalizacja w zakresie pono=
+szonych koszt=C3=B3w, maj=C4=85 dla ka=C5=BCdego przedsi=C4=99biorcy ogro=
+mne znaczenie.
+
+Dopasujemy nasz=C4=85 ofert=C4=99 do Pa=C5=84stwa oczekiwa=C5=84 i potrze=
+b organizacji. Czy mogliby=C5=9Bmy porozmawia=C4=87 o naszej propozycji?
+
+
+Pozdrawiam,
+Filip Ostrowski
