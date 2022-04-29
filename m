@@ -1,32 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 224885140B4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Apr 2022 04:48:16 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0BF85146DE
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Apr 2022 12:37:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BE3D110F619;
-	Fri, 29 Apr 2022 02:48:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 168AD10F619;
+	Fri, 29 Apr 2022 10:37:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 404 seconds by postgrey-1.36 at gabe;
- Fri, 29 Apr 2022 02:48:13 UTC
-Received: from mail.flyaudiodg.com (unknown [61.145.203.249])
- by gabe.freedesktop.org (Postfix) with ESMTP id D194110F619;
- Fri, 29 Apr 2022 02:48:13 +0000 (UTC)
-Received: from [192.168.0.100] (unknown [105.112.154.87])
- (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mail.flyaudiodg.com (Flyaudio) with ESMTPSA id 3B56F5508A63;
- Fri, 29 Apr 2022 10:23:27 +0800 (CST)
-Content-Type: text/plain; charset="iso-8859-1"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B9BAF10E7A9;
+ Fri, 29 Apr 2022 10:37:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1651228662; x=1682764662;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=4OZhsqmR2au0DmNIvEXATzin+QYbOtBayivNtuiR7yA=;
+ b=EPror3BqeMNrk9O4YN4EJlNYiG+0TI9qNd5AWitM8hk3PMOy4TPeXbRq
+ 9UUCmJ53XT4GwHZ5Q7+IZ52cG0n2ZgCsJ96Lufbyg449R4ciJtRxqpIMe
+ zdlfCfxqJzjwgHEjAc/W4xxkFObKmduFfZW1WZHwAyVqYB2vrDMa5Qx1L
+ x5GdaVsGWSRC2IFUHi3ZSBhKpfjdAteWWpMNMuqPOVIOIquV/AfvLcWQj
+ gEF6hCOLuk/apg/8LYHmuNY+ZlHe+9LGY1yRK/S6uTBiytOfB9vh0s9zz
+ //RbuAcZhpEEbG1iQ55odfbeYMFTrLQP4/Qhulr6r1V4r6oJiWxu2yGwA A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10331"; a="353035902"
+X-IronPort-AV: E=Sophos;i="5.91,298,1647327600"; d="scan'208";a="353035902"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Apr 2022 03:37:42 -0700
+X-IronPort-AV: E=Sophos;i="5.91,298,1647327600"; d="scan'208";a="534423064"
+Received: from agerasym-mobl.ger.corp.intel.com (HELO localhost)
+ ([10.249.133.25])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Apr 2022 03:37:37 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: "Wang, Zhi A" <zhi.a.wang@intel.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, "Vivi, Rodrigo"
+ <rodrigo.vivi@intel.com>, Alex Williamson <alex.williamson@redhat.com>,
+ Jason Gunthorpe <jgg@nvidia.com>, Christoph Hellwig <hch@lst.de>, Tvrtko
+ Ursulin <tvrtko.ursulin@linux.intel.com>
+Subject: Re: [PULL] gvt-next-2022-04-29
+In-Reply-To: <9c2fc678-2e6e-a9d5-a540-2a6bfda31196@intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <9c2fc678-2e6e-a9d5-a540-2a6bfda31196@intel.com>
+Date: Fri, 29 Apr 2022 13:37:34 +0300
+Message-ID: <87zgk4rx8x.fsf@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: Donate Now To Save Lives.
-To: Support Ukraine Community <help-save-ukrainians@seanet.ro>
-From: "Support Ukraine Community" <panjin@flyaudiodg.com>
-Date: Fri, 29 Apr 2022 03:40:35 +0100
+Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,78 +60,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: help-save-ukrainians@proton.me
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220429024814.BE3D110F619@gabe.freedesktop.org>
 
-Dear Supporter,
+On Thu, 28 Apr 2022, "Wang, Zhi A" <zhi.a.wang@intel.com> wrote:
+> Hi folks:
+>
+> Here is the pull of gvt-next which fixes the compilation error and warnings
+> for the the GVT-g refactor patches: 
+>
+> - Fix a compiling warning of non-static function only having one caller.
+> - Fix a potential NULL pointer reference in the code re-factor.
+> - Fix a compiling error when CONFIG_DRM_I915_DEBUG_RUNTIME_PM=n
+>
+> I also tried to apply this pull on the latest drm-inte-next and it succeeded
+> without error and warnings.
 
-People in Ukraine are in grave danger of physical harm. Over Five Million h=
-ave fled their homes seeking refuge in neighbouring countries and others ar=
-e stuck in Ukraine, sheltering from Heavy Shelling and bombardments in majo=
-r cities. =
+Thanks again, pulled to drm-intel-next.
 
+BR,
+Jani.
 
-Normal working life has been forced to stop. Ukrainian member organisations=
- like ours, are providing support to families who desperately need assistan=
-ce. We have few people who are putting themselves at high risk of distribut=
-ing domestic items to people hiding in bunkers. Trade unions in neighbourin=
-g countries including Poland, Slovakia, Hungary, Romania and Moldova are su=
-pporting the increasing number of refugees. =
+>
+> The following changes since commit 5e9ae5c47052e28a31fb4f55a6e735c28d4c3948:
+>
+>   drm/i915/gvt: Add missing symbol export. (2022-04-26 04:18:43 -0400)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/intel/gvt-linux tags/gvt-next-2022-04-29
+>
+> for you to fetch changes up to 419f8299ddad6070a6c95aaedf78e50265871f36:
+>
+>   i915/gvt: Fix NULL pointer dereference in init_mmio_block_handlers (2022-04-28 17:06:02 -0400)
+>
+> ----------------------------------------------------------------
+> gvt-next-2022-04-29
+>
+> Introduce fixes from previous pull.
+> - Fix a compiling warning of non-static funtion only having one caller.
+> - Fix a potential NULL pointer reference in the code re-factor.
+> - Fix a compiling error when CONFIG_DRM_I915_DEBUG_RUNTIME_PM=n
+>
+> ----------------------------------------------------------------
+> Wan Jiabing (1):
+>       i915/gvt: Fix NULL pointer dereference in init_mmio_block_handlers
+>
+> Zhi Wang (2):
+>       drm/i915/gvt: Make intel_gvt_match_device() static
+>       drm/i915/gvt: Fix the compiling error when CONFIG_DRM_I915_DEBUG_RUNTIME_PM=n
+>
+>  drivers/gpu/drm/i915/gvt/handlers.c | 4 ++--
+>  drivers/gpu/drm/i915/intel_gvt.c    | 2 ++
+>  2 files changed, 4 insertions(+), 2 deletions(-)
 
-
-Every morning, we get an extremely long list of peoples' needs from differe=
-nt quarters. We have to assemble the items and provide them to our people t=
-hrough highly secure but risky means.
-
-People need:
-
-** Bunker illuminators
-** Food and water provisions
-** Groceries
-** Medical supplies
-** Hygiene items
-
-The situation of our women and children in several accommodating countries =
-is not easy. Worst still, our front line soldiers need your help, not just =
-by monitoring war situation but to be concerned and more financially involv=
-ed.
-
-You can help Ukraine workers and their families by donating to this emergen=
-cy fundraising appeal. Also, support the brave soldiers on the frontline.
-
-We can receive your donations in the ways mentioned below:
-
-Receiving donations through Bitcoin  has made great impact so far. =
-
-
-Donations from =A320 to =A3500 are received through Bitcoin wallet:
-
-BTC - bc1qq852vf4l8vy6j90zauva5hg0crnww6vgpgwtcm
-
-Donations above =A3500 are sent via Western Union, MoneyGram or RIA to the =
-information below and transaction slip sent to us by email.
-
-Receiver's name: Jonathan Stevens
-Receiver's Address: 377 The Crescent
-London - E43 9XL - United Kingdom
-
-Donations above =A31,000 are by wire transfer. We provide bank coordinates =
-for such donations.
-
-All funds donated are shared to Two Organisations. One in Ukraine that supp=
-orts the humanitarian work for stranded people and organisations in neighbo=
-uring countries supporting refugees.
-
-The people of Ukraine are grateful for support and donations from you and o=
-ther supporters as we protect our freedom.
-
-Your donation will certainly contribute to Ukrainian victory as well as sup=
-port civil people. We will win as the best people are with us.
-
-Thank you.
-
-Mikhail Fedorov
-Support Ukraine Community
-Petitions ITUC-CSI-UA
+-- 
+Jani Nikula, Intel Open Source Graphics Center
