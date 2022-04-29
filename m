@@ -2,71 +2,71 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68A7D51558D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Apr 2022 22:28:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F5EA51584C
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 30 Apr 2022 00:22:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D235110FA6A;
-	Fri, 29 Apr 2022 20:28:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1884310E32F;
+	Fri, 29 Apr 2022 22:22:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6D43010FA6A
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7BE8410E937
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Apr 2022 20:28:26 +0000 (UTC)
+ Fri, 29 Apr 2022 22:22:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1651264105;
+ s=mimecast20190719; t=1651270934;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=n8HsfkpqhssnZoIsPQ1O3oVRAyXbkapxW4GnxH0gSv4=;
- b=OXyk+ZlA2xofIDLIpoh4YJ+rLWv81XKCIyy/IB39BgGEe31RKH4WNLCYpEDcIa1ShrAN2n
- Df/3G8VM/wCkyyVQ1ZiPCi2WCGcyyQGgVCm4XzcCAkmyd+sygyQJLNjtrtFnsUkDESUdmC
- f8FSupPV971Lb1Wl1zABlpBDfU5IZDE=
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ATKyFNAAAkRRTMtWxAFMAqDXlfz2eEkoQ0lWbdsfdDE=;
+ b=DwQYV3FePSX6Qla3J0/FYZ0+WO4dSHSXBBgbvv3/W1yHxG0vZIy/YkqtffXonsZPk/C9fa
+ pMuSk47iMnFODYdCvFj73U35C+Ub6BIS4xwPHeuOz6ay6hEMisrpNi4ndRq1xR1gMwpOID
+ L329yMBQR2hpQEgZRjlJJ0FCD4KVO2A=
+Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
+ [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-316-ZJeL2ba_MvOIgUVG0qCTsw-1; Fri, 29 Apr 2022 16:28:24 -0400
-X-MC-Unique: ZJeL2ba_MvOIgUVG0qCTsw-1
-Received: by mail-il1-f200.google.com with SMTP id
- r20-20020a056e02109400b002cc174742c9so4185717ilj.5
+ us-mta-599-KVyL_NxQMDSTK8Z-Rg4twA-1; Fri, 29 Apr 2022 18:22:13 -0400
+X-MC-Unique: KVyL_NxQMDSTK8Z-Rg4twA-1
+Received: by mail-io1-f70.google.com with SMTP id
+ g16-20020a05660226d000b00638d8e1828bso7378627ioo.13
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Apr 2022 13:28:23 -0700 (PDT)
+ Fri, 29 Apr 2022 15:22:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=n8HsfkpqhssnZoIsPQ1O3oVRAyXbkapxW4GnxH0gSv4=;
- b=PELMsqmPe5CetunZrvGxDVVn4dRJ/t3vBx8nXG8r9Gr3OaADLL4GS+WIYe7YAf16at
- HOEZRxiYy7cC+hvNTbqK+nqFScSoa9qX16n2M8yCWh+SfFpb/0bWdgmuEMguRBPGTSpv
- zPd1/ZanmaH4F3G9ZHGPg5vM4c/MgZZ5qvTC5DcMwdMLZMCgfFoVGnjmJYLPiR74D84m
- u1XjoidIFoUnwFmPCc2svxMt4TFyjZJ79aZI6VRHYpaKnBUI9RrSfwyj7Z2ZUFok2TVE
- IemZan+qU0dgKr0CN1FBlwiQZtAt65P8g2RxeyVfPsV7rws2dyPrM/ThdB1CLRBfG2g+
- xGIg==
-X-Gm-Message-State: AOAM530nPGyhIjssfjBSclq4ie4oQzpnoi7NAtfkwc8FXUUzggpzZq7P
- e0r21C+yemC3o0CQ6KnVyzMiqJrJOfexOLV+cJfpj9YoEBWWvqiiDtYoDrpUG4tyADfAGWW+ZIo
- K61zp7sa/S1PKW7uhZFxxPYY1Xf4h4fYBdw==
-X-Received: by 2002:a6b:ca44:0:b0:657:b54a:5c53 with SMTP id
- a65-20020a6bca44000000b00657b54a5c53mr445924iog.108.1651264103326; 
- Fri, 29 Apr 2022 13:28:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwXw055Zf6CAZcffMOqFXVe3D8deItwuTS9dyUJRlHujGyFKq6cxPYeLOoiZHbK09XyaEEw5w==
-X-Received: by 2002:a6b:ca44:0:b0:657:b54a:5c53 with SMTP id
- a65-20020a6bca44000000b00657b54a5c53mr445889iog.108.1651264103032; 
- Fri, 29 Apr 2022 13:28:23 -0700 (PDT)
+ bh=ATKyFNAAAkRRTMtWxAFMAqDXlfz2eEkoQ0lWbdsfdDE=;
+ b=uNNR4z44oDGGAw+qZYsj2DaHZFoGYzej4oD4z3YKvJAjhpnvvmbRrWmhbSLV+7FrxH
+ oPYWcULzCszoKCyjGrTVE9Mx0o+XLu52NRl+5Ym0K3oNLbG5iTHeNIcKVct7EPcrn5jv
+ px9P2mMOumgXJShaECGcyTmJ83xniwvHZJ8Y8Nd2pgo4eybTiM9I9fxyfXfcivODPh7v
+ TkVRM8nqWU9JqesZmthNs85t+LN8eCL1HMsNti5Wn7LsGQahPs2LZWZ83foK2aYVC2gk
+ a/dpUf4Tp9tiTuALmXCkCMtIcS1qeXVn7OFqoGSSVKQm5W22DYH0GOBgkwzwjaoFco2q
+ bjww==
+X-Gm-Message-State: AOAM530MmpVkRNlFH1iM9qR/SBIfWPCAt/cFarV2l/SCRhmWc7pGImHT
+ UC9NF1MxMSHUgLVSvm4lfv61SGBOWOQzFQ8Be25n0BDm0yPzOgG1G2I34ZF/QIzK/5RYkZaTyP8
+ g4OZHIc9N6g1QzITDCppx30jWVdxE25tIYQ==
+X-Received: by 2002:a05:6638:4604:b0:32b:4eab:7394 with SMTP id
+ bw4-20020a056638460400b0032b4eab7394mr636126jab.18.1651270932498; 
+ Fri, 29 Apr 2022 15:22:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPQNrRSGnW48FBq1t2/hjh8q51j2JzUcOvWsug9aMrqr32bPZVspTaleHuRHvQdSR9CF/bGw==
+X-Received: by 2002:a05:6638:4604:b0:32b:4eab:7394 with SMTP id
+ bw4-20020a056638460400b0032b4eab7394mr636115jab.18.1651270932123; 
+ Fri, 29 Apr 2022 15:22:12 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- j7-20020a02cb07000000b0032b3a7817b2sm836302jap.118.2022.04.29.13.28.21
+ e71-20020a02864d000000b0032b3a78176bsm897885jai.47.2022.04.29.15.22.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Apr 2022 13:28:22 -0700 (PDT)
-Date: Fri, 29 Apr 2022 14:28:20 -0600
+ Fri, 29 Apr 2022 15:22:11 -0700 (PDT)
+Date: Fri, 29 Apr 2022 16:22:09 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 7/7] vfio: Remove calls to
- vfio_group_add_container_user()
-Message-ID: <20220429142820.6afe7bbe.alex.williamson@redhat.com>
-In-Reply-To: <7-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
+Subject: Re: [PATCH v2 0/7] Make the rest of the VFIO driver interface use
+ vfio_device
+Message-ID: <20220429162209.2ec03e4f.alex.williamson@redhat.com>
+In-Reply-To: <20220429173149.GA167483@nvidia.com>
 References: <0-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
- <7-v2-6011bde8e0a1+5f-vfio_mdev_no_group_jgg@nvidia.com>
+ <20220429173149.GA167483@nvidia.com>
 X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -89,18 +89,18 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
  David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Eric Farman <farman@linux.ibm.com>, dri-devel@lists.freedesktop.org,
  Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
  Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
- linux-s390@vger.kernel.org, "Liu, Yi L" <yi.l.liu@intel.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Jonathan Corbet <corbet@lwn.net>,
- Halil Pasic <pasic@linux.ibm.com>,
+ linux-s390@vger.kernel.org, "Liu, Yi
+ L" <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Jonathan Corbet <corbet@lwn.net>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, "Tian, 
+ Kevin" <kevin.tian@intel.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
  Harald Freudenberger <freude@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
  intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
@@ -110,32 +110,86 @@ Cc: kvm@vger.kernel.org, linux-doc@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 21 Apr 2022 13:28:38 -0300
+On Fri, 29 Apr 2022 14:31:49 -0300
 Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> When the open_device() op is called the container_users is incremented and
-> held incremented until close_device(). Thus, so long as drivers call
-> functions within their open_device()/close_device() region they do not
-> need to worry about the container_users.
+> On Thu, Apr 21, 2022 at 01:28:31PM -0300, Jason Gunthorpe wrote:
+> > Prior series have transformed other parts of VFIO from working on struct
+> > device or struct vfio_group into working directly on struct
+> > vfio_device. Based on that work we now have vfio_device's readily
+> > available in all the drivers.
+> > 
+> > Update the rest of the driver facing API to use vfio_device as an input.
+> > 
+> > The following are switched from struct device to struct vfio_device:
+> >   vfio_register_notifier()
+> >   vfio_unregister_notifier()
+> >   vfio_pin_pages()
+> >   vfio_unpin_pages()
+> >   vfio_dma_rw()
+> > 
+> > The following group APIs are obsoleted and removed by just using struct
+> > vfio_device with the above:
+> >   vfio_group_pin_pages()
+> >   vfio_group_unpin_pages()
+> >   vfio_group_iommu_domain()
+> >   vfio_group_get_external_user_from_dev()
+> > 
+> > To retain the performance of the new device APIs relative to their group
+> > versions optimize how vfio_group_add_container_user() is used to avoid
+> > calling it when the driver must already guarantee the device is open and
+> > the container_users incrd.
+> > 
+> > The remaining exported VFIO group interfaces are only used by kvm, and are
+> > addressed by a parallel series.
+> > 
+> > This series is based on Christoph's gvt rework here:
+> > 
+> >  https://lore.kernel.org/all/5a8b9f48-2c32-8177-1c18-e3bd7bfde558@intel.com/
+> > 
+> > and so will need the PR merged first.  
 > 
-> These functions can all only be called between open_device() and
-> close_device():
+> Hi Alex,
 > 
->   vfio_pin_pages()
->   vfio_unpin_pages()
->   vfio_dma_rw()
->   vfio_register_notifier()
->   vfio_unregister_notifier()
-> 
-> Eliminate the calls to vfio_group_add_container_user() and add
-> vfio_assert_device_open() to detect driver mis-use.
+> Since all the shared branch PRs are ready, do you have any remarks on
+> this series and the others before I rebase and repost them?
 
-A comment here explaining that decrementing open_count is pushed until
-after close_device to support this feature would help to explain the
-somewhat subtle change in vfio_group_get_device_fd().
+Only the nit in the commit log:
+https://lore.kernel.org/all/20220429142820.6afe7bbe.alex.williamson@redhat.com/ 
 
-Otherwise the series looks ok with fixes noted by previous reviews.
-Thanks,
+> This one has a few changes to the commit messages outstanding, but v2
+> didn't have any code changes.
+> 
+> Also, what order would like the different series in - they conflict
+> with each other a little bit. I suggest this:
+> 
+> - mdev group removal (this one)
+> - Remove vfio_device_get_from_dev()
+>   https://lore.kernel.org/r/0-v1-7f2292e6b2ba+44839-vfio_get_from_dev_jgg@nvidia.com
+> - Remove group from kvm
+>   https://lore.kernel.org/r/0-v1-33906a626da1+16b0-vfio_kvm_no_group_jgg@nvidia.com
+
+I think you mean (v2):
+
+https://lore.kernel.org/all/0-v2-6a528653a750+1578a-vfio_kvm_no_group_jgg@nvidia.com/
+
+Otherwise, thanks for sorting these out for me.
+
+> All of them seem to have got enough reviews now.
+>
+> I have one more series on this group topic and a few little patches still
+> 
+> It would be great if you could merge the gvt and iommu series together
+> into your tree toward linux-next so I can post patches against a
+> stable commit ID so the build-bots can test them.
+
+Please check my vfio next branch and see if this matches what you're
+looking for:
+
+https://github.com/awilliam/linux-vfio/commits/next
+
+I'll look for any fallout from Stephen and build bots on Monday's
+linux-next compilation.  Thanks,
 
 Alex
 
