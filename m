@@ -1,34 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 206A051B9B4
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 May 2022 10:12:04 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97B7C51B9CA
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 May 2022 10:14:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CE4AD10F702;
-	Thu,  5 May 2022 08:12:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4E57810F7F8;
+	Thu,  5 May 2022 08:14:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 31476 seconds by postgrey-1.36 at gabe;
- Thu, 05 May 2022 08:12:00 UTC
-Received: from mail.univergaming.com (unknown [178.62.3.99])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 991F010F702;
- Thu,  5 May 2022 08:12:00 +0000 (UTC)
-Received: from User (unknown [178.62.40.158])
- by mail.univergaming.com (Postfix) with SMTP id A8AEEFD0AEB;
- Wed,  4 May 2022 21:26:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.univergaming.com A8AEEFD0AEB
-From: "Agents"<consumer.care@ca.nestle.com>
-Subject: Can You Supply the products
-Date: Wed, 4 May 2022 21:26:49 -0000
+X-Greylist: delayed 1177 seconds by postgrey-1.36 at gabe;
+ Thu, 05 May 2022 08:14:41 UTC
+Received: from mail.profitbizdesign.com.pl (mail.profitbizdesign.com.pl
+ [94.177.252.218])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D55F810F7F8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu,  5 May 2022 08:14:41 +0000 (UTC)
+Received: by mail.profitbizdesign.com.pl (Postfix, from userid 1001)
+ id 24F9EA7B33; Thu,  5 May 2022 08:47:55 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=profitbizdesign.com.pl; s=mail; t=1651736932;
+ bh=Rfzvu4C+yJ1wyuJ4V+t/udh6cgYEQVnY6S5ltO4wdNg=;
+ h=Date:From:To:Subject:From;
+ b=EJKFqYnGSkl1NnoKlwuLsXWc2iO9gWwTpEEemOkTqffgbkf68PNrJb/JafMo6AD9e
+ s50lvZwD+rJKGa00M2fQDRAAKPo1uSfFtvwXkZ46540W4nnoUTY2aHiRORVOfnWFFK
+ wWEt7nnm+wPcO8Z4iKbP9kbBz0G39X9J9F7gtCdaQwSi52SbBp0jQEFgKnaLFnLzic
+ oCO/ZplHkXRlpYVWqeaFlpkHQclh3/nXwilA6UHD2wHOohf9+cSJbVqaRmFyCs9hBN
+ 9iFLxxi10KdShiv622szZLp44XXxJfmdJ1RS2UxqUKp2odxNJ3voiCsuGNXCwTsH9M
+ am/Y9UBB4Hy9Q==
+Received: by mail.profitbizdesign.com.pl for
+ <intel-gvt-dev@lists.freedesktop.org>; Thu,  5 May 2022 07:45:59 GMT
+Message-ID: <20220505074502-0.1.23.8tdb.0.lpcw7eb609@profitbizdesign.com.pl>
+Date: Thu,  5 May 2022 07:45:59 GMT
+From: =?UTF-8?Q?"Arkadiusz_Soko=C5=82owski"?=
+ <arkadiusz.sokolowski@profitbizdesign.com.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Koszty instalacji fotowoltaicznej
+X-Mailer: mail.profitbizdesign.com.pl
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1250"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1081
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,33 +52,24 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: bnzz1@outlook.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220505081202.CE4AD10F702@gabe.freedesktop.org>
 
-Hi,
+Dzie=C5=84 dobry,
 
-My name is Paul Tekia, I work in the accounting and purchase department of the Nigerian National Petroleum Cooperation (NNPC) our division is mainly into research, purchase and production.
+stworzyli=C5=9Bmy specjaln=C4=85 ofert=C4=99 dla firm, na kompleksow=C4=85=
+ obs=C5=82ug=C4=99 inwestycji w fotowoltaik=C4=99. =20
 
-I am personally contacting you base on a business that I feel will be beneficial to both of us. Majority of the ingredients used in production by the agency are procured from Australia, Asia, America and Middle East, which is the reason why I am contacting you.
+Specjalizujemy si=C4=99 w zakresie doboru, monta=C5=BCu i serwisie instal=
+acji fotowoltaicznych, dysponujemy najnowocze=C5=9Bniejszymi rozwi=C4=85z=
+ania, kt=C3=B3re zapewni=C4=85 Pa=C5=84stwu oczekiwane rezultaty.
 
-Santalum Spicatum Nopid Oil,  is one of the most expensive raw materials in our Integrative  production and is not risky or illegal product by any country law as it’s used in the formation various chemical for industrial and farmers use.
+Mo=C5=BCemy przygotowa=C4=87 dla Pa=C5=84stwa wst=C4=99pn=C4=85 kalkulacj=
+=C4=99 i przeanalizowa=C4=87 efekty mo=C5=BCliwe do osi=C4=85gni=C4=99cia=
+=2E
 
-Formerly, our company purchased it from a Ukraine  based supplier until we lost him to death this March, but the product are found in your country which is the same place where the Ukrainian supplier sourced from, I confidentially got the contact of the local dealer in your country and I came to know that this product is sold at a cheaper rate $12,300 from your country but it is supplied to our company at the rate of$23,300 per gallon. I have the contact of the local dealer of which I don't want to release to my director since I have personal interest in the business.
+Czy s=C4=85 Pa=C5=84stwo otwarci na wst=C4=99pn=C4=85 rozmow=C4=99 w tym =
+temacie?
 
-Sir, I am looking out for a reliable and competent business person that I can trust, who will be able to bridge the gap between the local vendor and our company and have the product supply directly after receiving advance payment, without letting anyone in our ministry know the source and the value price of the product, after the supply,  the profit  will be shared  between us  60% to you 40% for me, that is my interest in the business
-
-If you are interested, could you kindly leave your phone/whats app number for effective and enhance communication that will lead to a better understanding of the business. Please consider it urgent as your delay may prompt me to   search elsewhere.
-
-
-Thanks.
-
-
-Yours sincerely,
-
-
-
-Paul Tekia.
- 
-XNFPIJGHOWFIQXOXRHXBTSSURVCFSJRIEFRBRO
+Pozdrawiam
+Arkadiusz Soko=C5=82owski
