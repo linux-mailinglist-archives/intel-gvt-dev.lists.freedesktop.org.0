@@ -2,34 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8970351E517
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 May 2022 09:17:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B999051EB4A
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 May 2022 05:34:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 394F6112895;
-	Sat,  7 May 2022 07:17:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2151310F450;
+	Sun,  8 May 2022 03:34:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 4620 seconds by postgrey-1.36 at gabe;
- Sat, 07 May 2022 07:17:28 UTC
-Received: from 66-252-206-104.staticrdns.eonix.net (unknown
- [IPv6:2607:ff28:b005:2a:f4a8:a9ff:fe09:6fe3])
- by gabe.freedesktop.org (Postfix) with ESMTP id 31932112894;
- Sat,  7 May 2022 07:17:28 +0000 (UTC)
-Received: from User (localhost [IPv6:::1])
- by 66-252-206-104.staticrdns.eonix.net (Postfix) with SMTP id D119260F572;
- Sat,  7 May 2022 01:17:09 -0400 (EDT)
-From: "Mr. Khasan"<mr.khasanaredh@outlook.com>
-Subject: Re: Follow Up my previous email to you
-Date: Fri, 6 May 2022 22:17:09 -0700
+Received: from bigmainstreet.co.uk (unknown [178.62.54.204])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A780310F36C;
+ Sun,  8 May 2022 03:34:36 +0000 (UTC)
+Received: from User (unknown [178.62.40.158])
+ by bigmainstreet.co.uk (Postfix) with SMTP id CB36E42656;
+ Sun,  8 May 2022 00:52:22 +0100 (BST)
+From: "Economic and Social Council (ECOSOC) - (
+ UNSFA)."<consumer.care@ca.nestle.com>
+Subject: Department of Economic and Social Affairs(UN)
+Date: Sat, 7 May 2022 23:52:17 -0000
 MIME-Version: 1.0
-Content-Type: text/html;
+Content-Type: text/plain;
 	charset="Windows-1251"
 Content-Transfer-Encoding: 7bit
 X-Priority: 3
 X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220507051709.D119260F572@66-252-206-104.staticrdns.eonix.net>
+X-Mailer: Microsoft Outlook Express 6.00.2800.1081
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,42 +39,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: khasanaredh@citromail.hu
+Reply-To: joeflowers@formail.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20220508033438.2151310F450@gabe.freedesktop.org>
 
-<html>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Hello Sir/Ma</title>
-</head>
 
-<body>
+Attention Beneficiary,
 
-<p><font face="Courier New" size="4">Hello Sir/Ma,<br>
-<br>
-Hope you are doing great?<br>
-<br>
-I'm following up on the previously email I sent to you.<br>
-I understand that you are busy, but I would appreciate<br> it if you
-could review this brief message and respond<br> to me as quickly as
-possible.<br>
-<br>
-I'm a Mandate and International Outsource Personal. In my<br> long years of work with top financial management companies<br>
-in Europe, I presently have a client who have funds
-and<br> good a thing, She chooses to invest in your Country either<br> on
-Equity or Loan basis.<br>
-<br>
-Please feel free to reply to me immediately so that we can<br> talk
-more about it since your Country is the investor’s <br>choice for investments on 
-your care/management.<br>
-<br>
-Kind regards,<br>
-<br>
-Mr. Khasan Araki Redh<br>
-<b>Email:</b><font color="#0000FF">khasanarakiredh@citromail.hu</font></font></p>
+                                                      Reference number: CHR /20/UNCCCoV/20 UPY2
 
-</body>
+This is to notify you again, that your Email Address have been officially selected to receive a financial compensation amount of US$100,000.00 in the ongoing United Nations Special Financial Assistance Trust Funds. For guidelines and to immediately receive your US$100,000.00, kindly contact our payment inspector director, Mr. Joe Flower today by email, with the below information.
+Name: Mr. Joe Flowers
+E-mail: joeflowers@formail.net
 
-</html>
+       PLEASE NOTE: All correspondence to Mr.Joe Flowers, should have the above stated reference number:CHR /20/CoV/20 UPY2, including your 
+1.Current mailing address
+2.Phone numbers/fax
+3.Means of Identification
+4.Occupation 
+The above is required for prompt attention.
+
+Yours sincerely,
+
+Economic and Social Council (ECOSOC) - ( UNSFA). 
+Copyright © United Nations
+All rights reserved.
+None of the materials provided on this web site may be used, reproduced or transmitted, in whole or in part, in any form or by any means, electronic or mechanical, including photocopying, recording or the use of any information storage and retrieval system, except as provided for in the Terms and Conditions of Use of United Nations Web Sites, without permission in writing from the publisher. News-related material can be used as long as the appropriate credit is given and the United Nations is advised.To request such permission or for further enquiries, please visit: United Nations Publications: Rights and Permissions.
+ 
+IQYFKCWFVTPHLIZNHXDUPJRQMMGYTSZJBBVYWK
