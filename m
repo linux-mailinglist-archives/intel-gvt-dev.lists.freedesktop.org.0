@@ -2,86 +2,110 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C67052AA04
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 May 2022 20:09:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB24752AB51
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 May 2022 20:56:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8FF0E1126DB;
-	Tue, 17 May 2022 18:09:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0230411371F;
+	Tue, 17 May 2022 18:56:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EAED61126B3;
- Tue, 17 May 2022 18:09:07 +0000 (UTC)
-Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24HHuaFE031667;
- Tue, 17 May 2022 18:09:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=VYXwEe5iZv2mwo3l3hE+X8aSXZ0Li5xOUzmVOx3nM0M=;
- b=Id7bJOQLPB7soggaR1pFsZ/Sr04eZimzgZ3TwdOCyI+Md06ywDpgrG35mx/l9Mfz4/OW
- uqcjBa/qRUEaAJnmYnMhYuq9tiNC+czKcHE5bmzzbWp+kDVc1rE8n8rf4qqeKWWKNCp2
- cZivgk4It4RVJ5osNl6n8EPMtdfaQrvzCsyjO2xj7VZnc9tlYOF6EVq+OUTRlwJFBYF/
- u1WSmU56nZSNngAX2ub/B1BeR7atqAXOcMa52WuN9Uv0RSfdNI0bcfnlw4s88Md7N3ec
- sxWURmB1MemKiuRUCoRXrqGuMn3g/+LRUSnDD8sqbi65ICiGivRE5Sia32qi+1Ogh6il UA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3g4gj40evf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 17 May 2022 18:09:01 +0000
-Received: from m0098404.ppops.net (m0098404.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 24HHvpKA004898;
- Tue, 17 May 2022 18:09:01 GMT
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3g4gj40eu9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 17 May 2022 18:09:01 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 24HI8okM011214;
- Tue, 17 May 2022 18:09:00 GMT
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
- [9.57.198.29]) by ppma04dal.us.ibm.com with ESMTP id 3g3r2etqr3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 17 May 2022 18:09:00 +0000
-Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
- [9.57.199.110])
- by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 24HI8xNL23855446
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 17 May 2022 18:08:59 GMT
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1A312AE066;
- Tue, 17 May 2022 18:08:59 +0000 (GMT)
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F3C94AE05F;
- Tue, 17 May 2022 18:08:56 +0000 (GMT)
-Received: from li-c92d2ccc-254b-11b2-a85c-a700b5bfb098.ibm.com.com (unknown
- [9.211.37.97]) by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue, 17 May 2022 18:08:56 +0000 (GMT)
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-To: jgg@nvidia.com, alex.williamson@redhat.com
-Subject: [PATCH 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
-Date: Tue, 17 May 2022 14:08:51 -0400
-Message-Id: <20220517180851.166538-2-mjrosato@linux.ibm.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20220517180851.166538-1-mjrosato@linux.ibm.com>
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12on2066.outbound.protection.outlook.com [40.107.244.66])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 201A511370E;
+ Tue, 17 May 2022 18:56:48 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SD5FNG5Il+qyL3WBH17iChP9etdGNxYP4UGE7CN0jifzGngYsnRGAFrp1vHkWi35AzBzey6btZ6vt2mWrk60GAiJLY1R99SSMGJXBLBXbpeUn7/3izQe70jX0utCzcNij0CqXc+sSnWvmZhs+yr4wI7rgdz7QnPwPapgMLGdI5Wldak4PCTXGrbYkw02ciVHyqEmXdw1x7GcC4k5wm1n2jdGO6v2gXboFLci919AaXnncnkFmZoNNdgWt63AN5L3iHenPQfWk+SA9qknn8BTwhaOVzPVJTCDUTqDCdRlupIDy7qPv1jz0eD/AG3eRgT3lKkqPKKH0hhF7a7Ezh4jPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Bc4I1YBxsF7ltTyt2zDHPziypcBrLW5kYPw53HZwet8=;
+ b=WplwdvWJx/8iIBxzNJViDC58O929dx3bZkpBIFuAiBB+/mrsSORc5M1+wT5qLDBZ/0+T7jtKu8zVSoAt7tvbWiO58xJ78ZzdFwKEL0WefkdEBrFLp9GQkB7AIDmAyWpnQ+A21LBaIGscLteVNlAMjnekASzDHvOZ/F9Sa2bX7MtraGUK08SqXvHGB2OJeNO0SW2234qKXnIo/JO4RNmeAsamdT6Rza9i3lmDH0iBgEoN4TWXlBFlqBFC+y9dmaPuVXkCyXALVwKnqTk98bIzQ83/0GzOBtjScrKbFLrgkrl+3ayAk3ZhAEEazTzRVkgqpK9mev7xq9WJX/OJv0UiKw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Bc4I1YBxsF7ltTyt2zDHPziypcBrLW5kYPw53HZwet8=;
+ b=OOW606n1luNTDeljkmkK9HYgwvYO/EIHQODPEcWrjT0qFiKld+ccAZqj5AWGca3aDT7PWuVJwwxqF+DY/zEBMsQlzPn2qT/3Oow3pu9wQrHfCdcO+6xnKtlUsk0/+gc8xAtBvV+ISZVhSHTzT+MBc7hu2yp9pmWPnhnzvc/SElRN2BZPAqSy+VT46r12zid8UVFDgxpv6AjnRuTjyxiYCQ8+D9Gnx7k5ugT/nIeZoRIODwvrvcQuByQOdrutz4GP0yzUxH0fZ9FBob0k1Z1s207sLVeYrvZmtGSbL0A+143DFrip1Fn7GaBeasoNOfEPPR7rMfwCK/oz/QcuOp5bvA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CH2PR12MB4181.namprd12.prod.outlook.com (2603:10b6:610:a8::16)
+ by BN6PR12MB1891.namprd12.prod.outlook.com (2603:10b6:404:107::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.14; Tue, 17 May
+ 2022 18:56:45 +0000
+Received: from CH2PR12MB4181.namprd12.prod.outlook.com
+ ([fe80::182c:a653:21b2:b351]) by CH2PR12MB4181.namprd12.prod.outlook.com
+ ([fe80::182c:a653:21b2:b351%4]) with mapi id 15.20.5250.018; Tue, 17 May 2022
+ 18:56:45 +0000
+Date: Tue, 17 May 2022 15:56:43 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>
+Subject: Re: [PATCH 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
+Message-ID: <20220517185643.GY1343366@nvidia.com>
 References: <20220517180851.166538-1-mjrosato@linux.ibm.com>
+ <20220517180851.166538-2-mjrosato@linux.ibm.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220517180851.166538-2-mjrosato@linux.ibm.com>
+X-ClientProxiedBy: BLAPR03CA0109.namprd03.prod.outlook.com
+ (2603:10b6:208:32a::24) To CH2PR12MB4181.namprd12.prod.outlook.com
+ (2603:10b6:610:a8::16)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: PepWRFow__d1vC7o5bAZDAmSiQqjBD3F
-X-Proofpoint-GUID: jA-Kk5bkabutBwUgCZBfe_6pd_zHho0g
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.486,FMLib:17.11.64.514
- definitions=2022-05-17_03,2022-05-17_02,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 mlxscore=0
- malwarescore=0 priorityscore=1501 phishscore=0 spamscore=0 impostorscore=0
- mlxlogscore=999 bulkscore=0 clxscore=1015 suspectscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
- definitions=main-2205170107
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: d89b4610-5887-4f20-5f45-08da3836fd49
+X-MS-TrafficTypeDiagnostic: BN6PR12MB1891:EE_
+X-Microsoft-Antispam-PRVS: <BN6PR12MB1891FDF8EB4AF49B03B4C16AC2CE9@BN6PR12MB1891.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: i7S71Zus40JFM4QDnHBbWBAc6VhMJfF/8yqlHbXwjlzzj//WJdAk0jp4IB6qJ78bJY4G7k/gsQYQQOUCokRF672C7GeaJecDNSPRyhBWKYK6E2WuQoKobi0Rk+Zn5lttUSCcixkErhVz1T8q6f+GACjAw343wwEXyho60Ieo3JEJ+TQJFsum9y19KJ9jfJ8evdyx3JbCUd+FqzH1eW+o/DEGIYNvXlJnHNcm4NCzezUQF2j8Qdnx8/G8drjOIXBiRRm9dbDtJAkBXiFBNigYVq9W6530NXGIx68ZXetteXwwaI7iGBgOS2BpsnbIdj0ggIDJHGQ3uURtEbZzH1K/mfzZZvrYulz0uLaCht4TW6HphQhNLO/gemYiQ7+mWrHTrTwB2ud/Ni68T362YvX1KWgxQDyYWAwdreKe7H6vCSYcCyMuf6lbHYC0UG4vomnuns9o9WESl2oUety6hVYIAZCPiHebWrZUocfLg/s/SLtY+C+KUr5tJU588WmFzrzMn9qn63D9DrrH/kDg0vYXG8tWKlpGw6eYbZLW8tRyIcGBOugtM3KsAfHwDIvFznkr/M/brEsxfn82zqasiAjKLYUl8JaT1qmboMoh/G1qZxlD5SSV+cWcr7tIvyFNXRmt3FuDwWDFDfqNAQLBIcZVsg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH2PR12MB4181.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(316002)(7416002)(186003)(5660300002)(8936002)(4326008)(66556008)(66476007)(66946007)(8676002)(38100700002)(6486002)(36756003)(6916009)(2906002)(1076003)(26005)(2616005)(6512007)(508600001)(83380400001)(86362001)(6506007)(33656002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?dUz4GwIVj/vNEJ8Qq1aE37w042TK4L5Uak0Sqe74m0jU0rX8Qs1NepvnZweU?=
+ =?us-ascii?Q?vPb0C++2cMutR1OEHm6jAur6SI/ENgrFvSSdI2rRsEzmZ0tgH36HvVGVlSdQ?=
+ =?us-ascii?Q?MrN4rtKW/N0PgLJrJFfUQwebYtSMhB2XTn4XXPOH7iZTT3JbiTIotrgJ4/0O?=
+ =?us-ascii?Q?PPxB0YxKFb5wgHIWy1MHbPyXtK0uHLXSPJOyebgU1rH6hjvJhbrx2+pT72uA?=
+ =?us-ascii?Q?cuayKHF2PXRB2wD5JD+wWr306rak2Ke4m8JQKttg7q4ZirhTms8aDh+4k3Wd?=
+ =?us-ascii?Q?KVOKns0z8wx7ue8BEuesWtekwD9dn/gqCRCDg9WZ/9gY855tk65/bWLZKyrG?=
+ =?us-ascii?Q?kNcvxB3mJ0qtlMtadio+6xXwrhnI6Bc3VCQSSA/l8zW6Jn8UnxXdE4I5A8H1?=
+ =?us-ascii?Q?3N9ndPqTBw2qF7vDD8PQOAvC6hUmOquyLKFCq+tuW9RB14m0X3wdxRcth3m3?=
+ =?us-ascii?Q?LKDfnqahW/rCowV2I95+plAbg2DlEO98t+3c5mfbPCoV4+MZQLeE3G6HlxfL?=
+ =?us-ascii?Q?q/SyF/Z2YfCkO1ZVUxDIpVRYT18utJdkvX0pU5g476oRjJoFCcoop+Dw381A?=
+ =?us-ascii?Q?znISCt9bSdFjxaSAXDl4R/ptTp8kdGDg4tT1bLIw4E9VVC/38GIvED9r89DF?=
+ =?us-ascii?Q?GznyFUUBBkWyJHm+Ddjo+ZsR48uOeWMKaOoC3MoDJPEZQNynr821S1MXTpRo?=
+ =?us-ascii?Q?+/TGu52RuD+EfvYchwnySItaXomiTrHRxx/4ei290c2iuv5cVeB4bMtPYiGC?=
+ =?us-ascii?Q?Wdphyh1PvIkhzC9zFxSxu1Y+fo8fHeoLWQypSeq1TQHyq1JxdhADv6MxZTQX?=
+ =?us-ascii?Q?TIRNZEdwF/rhGpHlnlOL6KXMZO5gk4IEXCqvRohi/BlDjFuITYl+Uj98yzvO?=
+ =?us-ascii?Q?d0wEonKvT1yi0Xe63lDfpHaO+N4JnLs89yW/MC3YXTPlN1ZllfxtXkDdciao?=
+ =?us-ascii?Q?1Gs2kEkDbJEiFDu7uJAg6TVhz/krZSMSCtYQ4g5BnaWvRXegv/Cnd9AqvtKX?=
+ =?us-ascii?Q?W3kM7RpTVHq9ckejPZT8sXSwWA5PwAMNMYM9f+QF3+nmizYp1ycSjA55SamT?=
+ =?us-ascii?Q?MkKZ2i3AR/XleMByqJNRYsDYiOiRwoPbcu0D0IaWjTsrrUoORFHzKMaBb2Zd?=
+ =?us-ascii?Q?h5XQ9TNrFt8DZlR9NFyQ5hsidNI1JBR0XLHcZAaxyC+p4ra49LsBmyRh8eX4?=
+ =?us-ascii?Q?5MIddaobnf+YUQEwcp79Oxs6uVDjaVNiRd0FaADc1KzSjxtE0EI/dpU7kaQD?=
+ =?us-ascii?Q?pW7xjtpqT8/CfaZkr9APvaEz8ib4fmphMTxwKhkGMZRXUSheAXS5cjigSUjp?=
+ =?us-ascii?Q?neqC/zh+1YpqJcUQuhNXVkMYACvf4ocydUiCUmxUfaYuQyCwANyJDVWDInGd?=
+ =?us-ascii?Q?r4azeSdZ7/fDb4JyiJ15UPgSecDc9/f5WC3QJ1NovwWS+StGZCS43UfKomLk?=
+ =?us-ascii?Q?pzMIP1+lTnhqJHvl5wmYThOibqijQUxWwVC7JywlAIHoxFb9KDywfoukhSm3?=
+ =?us-ascii?Q?jGB6OZK4xHRDlZXeUAFJUMVSJJJFy5PXmS3VgbsDQGmc8O9Pi0ic9IrMY7Ca?=
+ =?us-ascii?Q?rpTVOiUzbsGMa03PcgjqRmfdVlPR7FEvaYtRy3eZ95F9cJaYTQ55P7kkOwwU?=
+ =?us-ascii?Q?ggPzdvu/ViVZf5aLRIhh5Ui+66y1g+L9Li2ho/EpazDDd5dQAF7YvwAMBmJ9?=
+ =?us-ascii?Q?7fRZ3ijGJr7oyNffSjmAY9+GgIzBdqEFmbO7Wx4BFwsAluGABsDgfT0VvU8u?=
+ =?us-ascii?Q?wKJjQfvy+w=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d89b4610-5887-4f20-5f45-08da3836fd49
+X-MS-Exchange-CrossTenant-AuthSource: CH2PR12MB4181.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 May 2022 18:56:45.7234 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: mK6qFWlzXD8FlRi8FdabANzqP33yl1PHEBT5Lce8kvQOt/kguGwuZUJAseeGUywP
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR12MB1891
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,438 +121,288 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
  hch@infradead.org, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
  cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ pasic@linux.ibm.com, alex.williamson@redhat.com, borntraeger@linux.ibm.com,
  intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Rather than relying on a notifier for associating the KVM with
-the group, let's assume that the association has already been
-made prior to device_open.  The first time a device is opened
-associate the group KVM with the device.
+On Tue, May 17, 2022 at 02:08:51PM -0400, Matthew Rosato wrote:
+> Rather than relying on a notifier for associating the KVM with
+> the group, let's assume that the association has already been
+> made prior to device_open.  The first time a device is opened
+> associate the group KVM with the device.
 
-Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
----
- drivers/gpu/drm/i915/gvt/gvt.h        |  2 -
- drivers/gpu/drm/i915/gvt/kvmgt.c      | 60 +++++------------------
- drivers/s390/crypto/vfio_ap_ops.c     | 35 +++-----------
- drivers/s390/crypto/vfio_ap_private.h |  3 --
- drivers/vfio/vfio.c                   | 68 +++++++++------------------
- include/linux/vfio.h                  |  5 +-
- 6 files changed, 41 insertions(+), 132 deletions(-)
+This also fixes a user triggerable oops in gvt
+ 
+> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 2af4c83e733c..633acfcf76bf 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -227,8 +227,6 @@ struct intel_vgpu {
- 	struct mutex cache_lock;
- 
- 	struct notifier_block iommu_notifier;
--	struct notifier_block group_notifier;
--	struct kvm *kvm;
- 	struct work_struct release_work;
- 	atomic_t released;
- 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 7655ffa97d51..b317ae4cc7d2 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -761,23 +761,6 @@ static int intel_vgpu_iommu_notifier(struct notifier_block *nb,
- 	return NOTIFY_OK;
- }
- 
--static int intel_vgpu_group_notifier(struct notifier_block *nb,
--				     unsigned long action, void *data)
--{
--	struct intel_vgpu *vgpu =
--		container_of(nb, struct intel_vgpu, group_notifier);
--
--	/* the only action we care about */
--	if (action == VFIO_GROUP_NOTIFY_SET_KVM) {
--		vgpu->kvm = data;
--
--		if (!data)
--			schedule_work(&vgpu->release_work);
--	}
--
--	return NOTIFY_OK;
--}
--
- static bool __kvmgt_vgpu_exist(struct intel_vgpu *vgpu)
- {
- 	struct intel_vgpu *itr;
-@@ -789,7 +772,7 @@ static bool __kvmgt_vgpu_exist(struct intel_vgpu *vgpu)
- 		if (!itr->attached)
- 			continue;
- 
--		if (vgpu->kvm == itr->kvm) {
-+		if (vgpu->vfio_device.kvm == itr->vfio_device.kvm) {
- 			ret = true;
- 			goto out;
- 		}
-@@ -806,7 +789,6 @@ static int intel_vgpu_open_device(struct vfio_device *vfio_dev)
- 	int ret;
- 
- 	vgpu->iommu_notifier.notifier_call = intel_vgpu_iommu_notifier;
--	vgpu->group_notifier.notifier_call = intel_vgpu_group_notifier;
- 
- 	events = VFIO_IOMMU_NOTIFY_DMA_UNMAP;
- 	ret = vfio_register_notifier(vfio_dev, VFIO_IOMMU_NOTIFY, &events,
-@@ -817,38 +799,30 @@ static int intel_vgpu_open_device(struct vfio_device *vfio_dev)
- 		goto out;
- 	}
- 
--	events = VFIO_GROUP_NOTIFY_SET_KVM;
--	ret = vfio_register_notifier(vfio_dev, VFIO_GROUP_NOTIFY, &events,
--				     &vgpu->group_notifier);
--	if (ret != 0) {
--		gvt_vgpu_err("vfio_register_notifier for group failed: %d\n",
--			ret);
--		goto undo_iommu;
--	}
--
- 	ret = -EEXIST;
- 	if (vgpu->attached)
--		goto undo_register;
-+		goto undo_iommu;
- 
- 	ret = -ESRCH;
--	if (!vgpu->kvm || vgpu->kvm->mm != current->mm) {
-+	if (!vgpu->vfio_device.kvm ||
-+	    vgpu->vfio_device.kvm->mm != current->mm) {
- 		gvt_vgpu_err("KVM is required to use Intel vGPU\n");
--		goto undo_register;
-+		goto undo_iommu;
- 	}
- 
- 	ret = -EEXIST;
- 	if (__kvmgt_vgpu_exist(vgpu))
--		goto undo_register;
-+		goto undo_iommu;
- 
- 	vgpu->attached = true;
--	kvm_get_kvm(vgpu->kvm);
- 
- 	kvmgt_protect_table_init(vgpu);
- 	gvt_cache_init(vgpu);
- 
- 	vgpu->track_node.track_write = kvmgt_page_track_write;
- 	vgpu->track_node.track_flush_slot = kvmgt_page_track_flush_slot;
--	kvm_page_track_register_notifier(vgpu->kvm, &vgpu->track_node);
-+	kvm_page_track_register_notifier(vgpu->vfio_device.kvm,
-+					 &vgpu->track_node);
- 
- 	debugfs_create_ulong(KVMGT_DEBUGFS_FILENAME, 0444, vgpu->debugfs,
- 			     &vgpu->nr_cache_entries);
-@@ -858,10 +832,6 @@ static int intel_vgpu_open_device(struct vfio_device *vfio_dev)
- 	atomic_set(&vgpu->released, 0);
- 	return 0;
- 
--undo_register:
--	vfio_unregister_notifier(vfio_dev, VFIO_GROUP_NOTIFY,
--				 &vgpu->group_notifier);
--
- undo_iommu:
- 	vfio_unregister_notifier(vfio_dev, VFIO_IOMMU_NOTIFY,
- 				 &vgpu->iommu_notifier);
-@@ -898,21 +868,15 @@ static void __intel_vgpu_release(struct intel_vgpu *vgpu)
- 	drm_WARN(&i915->drm, ret,
- 		 "vfio_unregister_notifier for iommu failed: %d\n", ret);
- 
--	ret = vfio_unregister_notifier(&vgpu->vfio_device, VFIO_GROUP_NOTIFY,
--				       &vgpu->group_notifier);
--	drm_WARN(&i915->drm, ret,
--		 "vfio_unregister_notifier for group failed: %d\n", ret);
--
- 	debugfs_remove(debugfs_lookup(KVMGT_DEBUGFS_FILENAME, vgpu->debugfs));
- 
--	kvm_page_track_unregister_notifier(vgpu->kvm, &vgpu->track_node);
--	kvm_put_kvm(vgpu->kvm);
-+	kvm_page_track_unregister_notifier(vgpu->vfio_device.kvm,
-+					   &vgpu->track_node);
- 	kvmgt_protect_table_destroy(vgpu);
- 	gvt_cache_destroy(vgpu);
- 
- 	intel_vgpu_release_msi_eventfd_ctx(vgpu);
- 
--	vgpu->kvm = NULL;
- 	vgpu->attached = false;
- }
- 
-@@ -1713,7 +1677,7 @@ static struct mdev_driver intel_vgpu_mdev_driver = {
- 
- int intel_gvt_page_track_add(struct intel_vgpu *info, u64 gfn)
- {
--	struct kvm *kvm = info->kvm;
-+	struct kvm *kvm = info->vfio_device.kvm;
- 	struct kvm_memory_slot *slot;
- 	int idx;
- 
-@@ -1743,7 +1707,7 @@ int intel_gvt_page_track_add(struct intel_vgpu *info, u64 gfn)
- 
- int intel_gvt_page_track_remove(struct intel_vgpu *info, u64 gfn)
- {
--	struct kvm *kvm = info->kvm;
-+	struct kvm *kvm = info->vfio_device.kvm;
- 	struct kvm_memory_slot *slot;
- 	int idx;
- 
-diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-index e8914024f5b1..43c68afe7e87 100644
---- a/drivers/s390/crypto/vfio_ap_ops.c
-+++ b/drivers/s390/crypto/vfio_ap_ops.c
-@@ -1284,25 +1284,6 @@ static void vfio_ap_mdev_unset_kvm(struct ap_matrix_mdev *matrix_mdev)
- 	}
- }
- 
--static int vfio_ap_mdev_group_notifier(struct notifier_block *nb,
--				       unsigned long action, void *data)
--{
--	int notify_rc = NOTIFY_OK;
--	struct ap_matrix_mdev *matrix_mdev;
--
--	if (action != VFIO_GROUP_NOTIFY_SET_KVM)
--		return NOTIFY_OK;
--
--	matrix_mdev = container_of(nb, struct ap_matrix_mdev, group_notifier);
--
--	if (!data)
--		vfio_ap_mdev_unset_kvm(matrix_mdev);
--	else if (vfio_ap_mdev_set_kvm(matrix_mdev, data))
--		notify_rc = NOTIFY_DONE;
--
--	return notify_rc;
--}
--
- static struct vfio_ap_queue *vfio_ap_find_queue(int apqn)
- {
- 	struct device *dev;
-@@ -1402,11 +1383,10 @@ static int vfio_ap_mdev_open_device(struct vfio_device *vdev)
- 	unsigned long events;
- 	int ret;
- 
--	matrix_mdev->group_notifier.notifier_call = vfio_ap_mdev_group_notifier;
--	events = VFIO_GROUP_NOTIFY_SET_KVM;
-+	if (!vdev->kvm)
-+		return -EPERM;
- 
--	ret = vfio_register_notifier(vdev, VFIO_GROUP_NOTIFY, &events,
--				     &matrix_mdev->group_notifier);
-+	ret = vfio_ap_mdev_set_kvm(matrix_mdev, vdev->kvm);
- 	if (ret)
- 		return ret;
- 
-@@ -1415,12 +1395,11 @@ static int vfio_ap_mdev_open_device(struct vfio_device *vdev)
- 	ret = vfio_register_notifier(vdev, VFIO_IOMMU_NOTIFY, &events,
- 				     &matrix_mdev->iommu_notifier);
- 	if (ret)
--		goto out_unregister_group;
-+		goto err_kvm;
- 	return 0;
- 
--out_unregister_group:
--	vfio_unregister_notifier(vdev, VFIO_GROUP_NOTIFY,
--				 &matrix_mdev->group_notifier);
-+err_kvm:
-+	vfio_ap_mdev_unset_kvm(matrix_mdev);
- 	return ret;
- }
- 
-@@ -1431,8 +1410,6 @@ static void vfio_ap_mdev_close_device(struct vfio_device *vdev)
- 
- 	vfio_unregister_notifier(vdev, VFIO_IOMMU_NOTIFY,
- 				 &matrix_mdev->iommu_notifier);
--	vfio_unregister_notifier(vdev, VFIO_GROUP_NOTIFY,
--				 &matrix_mdev->group_notifier);
- 	vfio_ap_mdev_unset_kvm(matrix_mdev);
- }
- 
-diff --git a/drivers/s390/crypto/vfio_ap_private.h b/drivers/s390/crypto/vfio_ap_private.h
-index 648fcaf8104a..a26efd804d0d 100644
---- a/drivers/s390/crypto/vfio_ap_private.h
-+++ b/drivers/s390/crypto/vfio_ap_private.h
-@@ -81,8 +81,6 @@ struct ap_matrix {
-  * @node:	allows the ap_matrix_mdev struct to be added to a list
-  * @matrix:	the adapters, usage domains and control domains assigned to the
-  *		mediated matrix device.
-- * @group_notifier: notifier block used for specifying callback function for
-- *		    handling the VFIO_GROUP_NOTIFY_SET_KVM event
-  * @iommu_notifier: notifier block used for specifying callback function for
-  *		    handling the VFIO_IOMMU_NOTIFY_DMA_UNMAP even
-  * @kvm:	the struct holding guest's state
-@@ -94,7 +92,6 @@ struct ap_matrix_mdev {
- 	struct vfio_device vdev;
- 	struct list_head node;
- 	struct ap_matrix matrix;
--	struct notifier_block group_notifier;
- 	struct notifier_block iommu_notifier;
- 	struct kvm *kvm;
- 	crypto_hook pqap_hook;
+You can add my signed-off-by as well
+
+> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+> index cfcff7764403..c5d421eda275 100644
+> +++ b/drivers/vfio/vfio.c
+> @@ -10,6 +10,7 @@
+>   * Author: Tom Lyon, pugs@cisco.com
+>   */
+>  
+> +#include "linux/kvm_host.h"
+
+This is the wrong format of include (editor automation, sigh)
+
+> @@ -1083,6 +1084,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
+>  
+>  	mutex_lock(&device->dev_set->lock);
+>  	device->open_count++;
+> +	down_write(&device->group->group_rwsem);
+
+Read I suppose
+
+> +	if (device->open_count == 1 && device->group->kvm) {
+> +		device->kvm = device->group->kvm;
+> +		kvm_get_kvm(device->kvm);
+> +	}
+> +	up_write(&device->group->group_rwsem);
+
+Yeah, this is OK, not very elegant though
+
+I was looking at this - but it could come later too:
+
 diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-index cfcff7764403..c5d421eda275 100644
+index 8e11d9119418be..c5d8dfe8314108 100644
 --- a/drivers/vfio/vfio.c
 +++ b/drivers/vfio/vfio.c
-@@ -10,6 +10,7 @@
+@@ -10,7 +10,6 @@
   * Author: Tom Lyon, pugs@cisco.com
   */
  
-+#include "linux/kvm_host.h"
+-#include "linux/kvm_host.h"
  #include <linux/cdev.h>
  #include <linux/compat.h>
  #include <linux/device.h>
-@@ -1083,6 +1084,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
+@@ -33,6 +32,7 @@
+ #include <linux/vfio.h>
+ #include <linux/wait.h>
+ #include <linux/sched/signal.h>
++#include <linux/kvm_host.h>
+ #include "vfio.h"
  
- 	mutex_lock(&device->dev_set->lock);
- 	device->open_count++;
-+	down_write(&device->group->group_rwsem);
-+	if (device->open_count == 1 && device->group->kvm) {
-+		device->kvm = device->group->kvm;
-+		kvm_get_kvm(device->kvm);
-+	}
-+	up_write(&device->group->group_rwsem);
+ #define DRIVER_VERSION	"0.3"
+@@ -1059,93 +1059,71 @@ static int vfio_device_assign_container(struct vfio_device *device)
+ 
+ static void vfio_device_unassign_container(struct vfio_device *device)
+ {
+-	down_write(&device->group->group_rwsem);
++	lockdep_assert_held(&device->group->group_rwsem);
 +
- 	if (device->open_count == 1 && device->ops->open_device) {
+ 	WARN_ON(device->group->container_users <= 1);
+ 	device->group->container_users--;
+ 	fput(device->group->opened_file);
+-	up_write(&device->group->group_rwsem);
+ }
+ 
+-static struct file *vfio_device_open(struct vfio_device *device)
++static int vfio_device_open(struct vfio_device *device)
+ {
+-	struct file *filep;
+ 	int ret;
+ 
++	lockdep_assert_held(&device->dev_set->lock);
++
++	if (!try_module_get(device->dev->driver->owner))
++		return -ENODEV;
++
+ 	down_write(&device->group->group_rwsem);
+ 	ret = vfio_device_assign_container(device);
+-	if (ret) {
+-		up_write(&device->group->group_rwsem);
+-		return ERR_PTR(ret);
+-	}
++	if (ret)
++		goto err_unlock;
+ 
+ 	if (device->ops->flags & VFIO_DEVICE_NEEDS_KVM)
+ 	{
+-		if (!device->group->kvm) {
+-			up_write(&device->group->group_rwsem);
++		if (!device->group->kvm)
+ 			goto err_unassign_container;
+-		}
+ 		device->kvm = device->group->kvm;
+ 		kvm_get_kvm(device->kvm);
+ 	}
+ 	up_write(&device->group->group_rwsem);
+ 
+-	if (!try_module_get(device->dev->driver->owner)) {
+-		ret = -ENODEV;
+-		goto err_put_kvm;
+-	}
+-
+-	mutex_lock(&device->dev_set->lock);
+-	device->open_count++;
+-	if (device->open_count == 1 && device->ops->open_device) {
++	if (device->ops->open_device) {
  		ret = device->ops->open_device(device);
  		if (ret)
-@@ -1123,6 +1131,12 @@ static struct file *vfio_device_open(struct vfio_device *device)
- 		device->ops->close_device(device);
- err_undo_count:
- 	device->open_count--;
-+	down_write(&device->group->group_rwsem);
-+	if (device->open_count == 0 && device->kvm) {
-+		kvm_put_kvm(device->kvm);
-+		device->kvm = NULL;
-+	}
-+	up_write(&device->group->group_rwsem);
- 	mutex_unlock(&device->dev_set->lock);
- 	module_put(device->dev->driver->owner);
- err_unassign_container:
-@@ -1318,6 +1332,12 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
- 	if (device->open_count == 1 && device->ops->close_device)
- 		device->ops->close_device(device);
- 	device->open_count--;
-+	down_write(&device->group->group_rwsem);
-+	if (device->open_count == 0 && device->kvm) {
-+		kvm_put_kvm(device->kvm);
-+		device->kvm = NULL;
-+	}
-+	up_write(&device->group->group_rwsem);
- 	mutex_unlock(&device->dev_set->lock);
+-			goto err_undo_count;
++			goto err_put_kvm;
+ 	}
+-	mutex_unlock(&device->dev_set->lock);
++	return 0;
  
- 	module_put(device->dev->driver->owner);
-@@ -1726,8 +1746,8 @@ EXPORT_SYMBOL_GPL(vfio_file_enforced_coherent);
-  * @file: VFIO group file
-  * @kvm: KVM to link
-  *
-- * The kvm pointer will be forwarded to all the vfio_device's attached to the
-- * VFIO file via the VFIO_GROUP_NOTIFY_SET_KVM notifier.
-+ * When a VFIO device is first opened the KVM will be available in
-+ * device->kvm if one was associated with the group.
-  */
- void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
- {
-@@ -1738,8 +1758,6 @@ void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
- 
- 	down_write(&group->group_rwsem);
- 	group->kvm = kvm;
--	blocking_notifier_call_chain(&group->notifier,
--				     VFIO_GROUP_NOTIFY_SET_KVM, kvm);
- 	up_write(&group->group_rwsem);
- }
- EXPORT_SYMBOL_GPL(vfio_file_set_kvm);
-@@ -2039,42 +2057,6 @@ static int vfio_unregister_iommu_notifier(struct vfio_group *group,
- 	return ret;
- }
- 
--static int vfio_register_group_notifier(struct vfio_group *group,
--					unsigned long *events,
--					struct notifier_block *nb)
--{
--	int ret;
--	bool set_kvm = false;
--
--	if (*events & VFIO_GROUP_NOTIFY_SET_KVM)
--		set_kvm = true;
--
--	/* clear known events */
--	*events &= ~VFIO_GROUP_NOTIFY_SET_KVM;
--
--	/* refuse to continue if still events remaining */
--	if (*events)
--		return -EINVAL;
--
--	ret = blocking_notifier_chain_register(&group->notifier, nb);
--	if (ret)
--		return ret;
--
 -	/*
--	 * The attaching of kvm and vfio_group might already happen, so
--	 * here we replay once upon registration.
+-	 * We can't use anon_inode_getfd() because we need to modify
+-	 * the f_mode flags directly to allow more than just ioctls
 -	 */
--	if (set_kvm) {
--		down_read(&group->group_rwsem);
--		if (group->kvm)
--			blocking_notifier_call_chain(&group->notifier,
--						     VFIO_GROUP_NOTIFY_SET_KVM,
--						     group->kvm);
--		up_read(&group->group_rwsem);
+-	filep = anon_inode_getfile("[vfio-device]", &vfio_device_fops,
+-				   device, O_RDWR);
+-	if (IS_ERR(filep)) {
+-		ret = PTR_ERR(filep);
+-		goto err_close_device;
++err_put_kvm:
++	if (device->kvm) {
++		kvm_put_kvm(device->kvm);
++		device->kvm = NULL;
+ 	}
++	down_write(&device->group->group_rwsem);
++err_unassign_container:
++	vfio_device_unassign_container(device);
++err_unlock:
++	up_write(&device->group->group_rwsem);
++	module_put(device->dev->driver->owner);
++	return ret;
++}
+ 
+-	/*
+-	 * TODO: add an anon_inode interface to do this.
+-	 * Appears to be missing by lack of need rather than
+-	 * explicitly prevented.  Now there's need.
+-	 */
+-	filep->f_mode |= (FMODE_LSEEK | FMODE_PREAD | FMODE_PWRITE);
+-
+-	if (device->group->type == VFIO_NO_IOMMU)
+-		dev_warn(device->dev, "vfio-noiommu device opened by user "
+-			 "(%s:%d)\n", current->comm, task_pid_nr(current));
+-	/*
+-	 * On success the ref of device is moved to the file and
+-	 * put in vfio_device_fops_release()
+-	 */
+-	return filep;
++static void vfio_device_close(struct vfio_device *device)
++{
++	lockdep_assert_held(&device->dev_set->lock);
+ 
+-err_close_device:
+-	mutex_lock(&device->dev_set->lock);
+-	if (device->open_count == 1 && device->ops->close_device)
++	if (device->ops->close_device)
+ 		device->ops->close_device(device);
+-err_undo_count:
+-	device->open_count--;
+-	mutex_unlock(&device->dev_set->lock);
+-	module_put(device->dev->driver->owner);
+-err_put_kvm:
+ 	if (device->kvm) {
+ 		kvm_put_kvm(device->kvm);
+ 		device->kvm = NULL;
+ 	}
+-err_unassign_container:
++	down_write(&device->group->group_rwsem);
+ 	vfio_device_unassign_container(device);
+-	return ERR_PTR(ret);
++	up_write(&device->group->group_rwsem);
++	module_put(device->dev->driver->owner);
+ }
+ 
+ static int vfio_group_get_device_fd(struct vfio_group *group, char *buf)
+@@ -1159,23 +1137,61 @@ static int vfio_group_get_device_fd(struct vfio_group *group, char *buf)
+ 	if (IS_ERR(device))
+ 		return PTR_ERR(device);
+ 
+-	fdno = get_unused_fd_flags(O_CLOEXEC);
+-	if (fdno < 0) {
+-		ret = fdno;
+-		goto err_put_device;
++	mutex_lock(&device->dev_set->lock);
++	device->open_count++;
++	if (device->open_count == 1) {
++		ret = vfio_device_open(device);
++		if (ret) {
++			device->open_count--;
++			mutex_unlock(&device->dev_set->lock);
++			goto err_put_device;
++		}
+ 	}
++	mutex_unlock(&device->dev_set->lock);
+ 
+-	filep = vfio_device_open(device);
++	/*
++	 * We can't use anon_inode_getfd() because we need to modify
++	 * the f_mode flags directly to allow more than just ioctls
++	 */
++	filep = anon_inode_getfile("[vfio-device]", &vfio_device_fops, device,
++				   O_RDWR);
+ 	if (IS_ERR(filep)) {
+ 		ret = PTR_ERR(filep);
+-		goto err_put_fdno;
++		goto err_close_device;
++	}
++
++	/*
++	 * TODO: add an anon_inode interface to do this.
++	 * Appears to be missing by lack of need rather than
++	 * explicitly prevented.  Now there's need.
++	 */
++	filep->f_mode |= (FMODE_LSEEK | FMODE_PREAD | FMODE_PWRITE);
++
++	fdno = get_unused_fd_flags(O_CLOEXEC);
++	if (fdno < 0) {
++		ret = fdno;
++		goto err_put_file;
+ 	}
+ 
++	if (device->group->type == VFIO_NO_IOMMU)
++		dev_warn(device->dev, "vfio-noiommu device opened by user "
++			 "(%s:%d)\n", current->comm, task_pid_nr(current));
++
++	/*
++	 * On success the ref of device is moved to the file and put in
++	 * vfio_device_fops_release().
++	 */
+ 	fd_install(fdno, filep);
+ 	return fdno;
+ 
+-err_put_fdno:
+-	put_unused_fd(fdno);
++err_put_file:
++	fput(filep);
++err_close_device:
++	mutex_lock(&device->dev_set->lock);
++	if (device->open_count == 1)
++		vfio_device_close(device);
++	device->open_count--;
++	mutex_unlock(&device->dev_set->lock);
+ err_put_device:
+ 	vfio_device_put(device);
+ 	return ret;
+@@ -1333,19 +1349,11 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
+ 
+ 	mutex_lock(&device->dev_set->lock);
+ 	vfio_assert_device_open(device);
+-	if (device->open_count == 1 && device->ops->close_device)
+-		device->ops->close_device(device);
++	if (device->open_count == 1)
++		vfio_device_close(device);
+ 	device->open_count--;
+ 	mutex_unlock(&device->dev_set->lock);
+ 
+-	module_put(device->dev->driver->owner);
+-
+-	if (device->kvm) {
+-		kvm_put_kvm(device->kvm);
+-		device->kvm = NULL;
 -	}
--	return 0;
--}
+-	vfio_device_unassign_container(device);
 -
- int vfio_register_notifier(struct vfio_device *device,
- 			   enum vfio_notify_type type, unsigned long *events,
- 			   struct notifier_block *nb)
-@@ -2090,9 +2072,6 @@ int vfio_register_notifier(struct vfio_device *device,
- 	case VFIO_IOMMU_NOTIFY:
- 		ret = vfio_register_iommu_notifier(group, events, nb);
- 		break;
--	case VFIO_GROUP_NOTIFY:
--		ret = vfio_register_group_notifier(group, events, nb);
--		break;
- 	default:
- 		ret = -EINVAL;
- 	}
-@@ -2114,9 +2093,6 @@ int vfio_unregister_notifier(struct vfio_device *device,
- 	case VFIO_IOMMU_NOTIFY:
- 		ret = vfio_unregister_iommu_notifier(group, nb);
- 		break;
--	case VFIO_GROUP_NOTIFY:
--		ret = blocking_notifier_chain_unregister(&group->notifier, nb);
--		break;
- 	default:
- 		ret = -EINVAL;
- 	}
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index 45b287826ce6..5f691453e3fb 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -36,6 +36,7 @@ struct vfio_device {
- 	struct vfio_device_set *dev_set;
- 	struct list_head dev_set_list;
- 	unsigned int migration_flags;
-+	struct kvm *kvm;
+ 	vfio_device_put(device);
  
- 	/* Members below here are private, not for driver use */
- 	refcount_t refcount;
-@@ -155,15 +156,11 @@ extern int vfio_dma_rw(struct vfio_device *device, dma_addr_t user_iova,
- /* each type has independent events */
- enum vfio_notify_type {
- 	VFIO_IOMMU_NOTIFY = 0,
--	VFIO_GROUP_NOTIFY = 1,
- };
- 
- /* events for VFIO_IOMMU_NOTIFY */
- #define VFIO_IOMMU_NOTIFY_DMA_UNMAP	BIT(0)
- 
--/* events for VFIO_GROUP_NOTIFY */
--#define VFIO_GROUP_NOTIFY_SET_KVM	BIT(0)
--
- extern int vfio_register_notifier(struct vfio_device *device,
- 				  enum vfio_notify_type type,
- 				  unsigned long *required_events,
--- 
-2.27.0
-
+ 	return 0;
