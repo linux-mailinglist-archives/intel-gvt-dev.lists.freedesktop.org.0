@@ -1,64 +1,85 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 114A252944E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 May 2022 00:58:17 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 312C052AA01
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 May 2022 20:09:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9F58810F751;
-	Mon, 16 May 2022 22:57:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 36C841126B0;
+	Tue, 17 May 2022 18:09:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x136.google.com (mail-il1-x136.google.com
- [IPv6:2607:f8b0:4864:20::136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 86E0910EF03;
- Mon, 16 May 2022 22:57:35 +0000 (UTC)
-Received: by mail-il1-x136.google.com with SMTP id 3so11550107ily.2;
- Mon, 16 May 2022 15:57:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=FF9XER8KsVOkO1Gdata3KepQ+J2Lr+NLtjqQThof0Pg=;
- b=QMR7Uv7IGU4dFlQ7XbaLDl8oMTWWGZP8W/kIowrn4M8i2Lw1cKjWfBvIQCyDVsk3K5
- 6AUg94ocYqw6aOmdD+JMQJ8X8DPX2rZPU8YSfJbHND7oPm24AfMTT84oH1as3SXEIGb3
- 523GC2519SINNOFvGjkI78C+OqFZ8wGoaY9rRVexPvZ8T2hd4jVASyMWJYI9P2/sy21C
- gn6Vwf/lc7O+I2XuHib/dpWz5vH/EfXuoTmNQ+ehHsY1xKFoU1Wo6jL0eSWRiPN4w53C
- 15ayP/Cr96VmOumROCuOJoWl2HJ0wDKVYoimLCzzofh4L7znSGAuuSODf1ChhXsHSlpz
- 6JdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=FF9XER8KsVOkO1Gdata3KepQ+J2Lr+NLtjqQThof0Pg=;
- b=xpTFxIxte2jZ+aUvLnPKe5yq0Q69d0yaS1AoEb1W/nfm5mab4j+F+o4d3bcMm2fZuW
- 2ZskQpe5CnQa0NrZxggTmXRpObUml1DZ5xYZaylJhnurmI4il4ZZzG5Tf+dclIjTfL1C
- EcTjRsK0ZcBLpLzBhHtbqm+nDXMckC3yMZ+qGxBXmAMwrAW44/rkx2nn7uoxiT3dXLAp
- zBklYYr3Ko0+w70TXwM1VRKwN8J3dt7KqTjsgXiflXkPt6NZYFm4jSkbYEtDbFhH8142
- UxF+lK+Av7KjkV4ysrl0uhfFdnMxeardUHd23YhwdPLdsUuvwse5zjSuH/nlmDw7GJj5
- r8mA==
-X-Gm-Message-State: AOAM533OlCS0zv8QSrqCngI19WaAoPpvtjGphUoMnBsFF0eulNDIZMDo
- gjKq0jq1TLvXAUPNLNlMFBY=
-X-Google-Smtp-Source: ABdhPJxS9t9CHQ1y5o2+/sKdUJFOmRXlBo10ke52iiCLaoO7cYr11kQ2d2iMU5f/GP5Uh8uwZxF29g==
-X-Received: by 2002:a05:6e02:1d1d:b0:2d1:1250:437a with SMTP id
- i29-20020a056e021d1d00b002d11250437amr5815025ila.35.1652741854834; 
- Mon, 16 May 2022 15:57:34 -0700 (PDT)
-Received: from frodo.hsd1.co.comcast.net ([2601:284:8204:2010::dd9f])
- by smtp.googlemail.com with ESMTPSA id
- k26-20020a02661a000000b0032b74686763sm3133949jac.76.2022.05.16.15.57.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 May 2022 15:57:34 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
-Subject: [PATCH v2 27/27] dyndbg/drm: POC add tracebits sysfs-knob
-Date: Mon, 16 May 2022 16:56:40 -0600
-Message-Id: <20220516225640.3102269-28-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20220516225640.3102269-1-jim.cromie@gmail.com>
-References: <20220516225640.3102269-1-jim.cromie@gmail.com>
-MIME-Version: 1.0
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9DD1810FB40;
+ Tue, 17 May 2022 18:09:05 +0000 (UTC)
+Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24HHuj7S032306;
+ Tue, 17 May 2022 18:08:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : content-transfer-encoding : mime-version; s=pp1;
+ bh=lZFnxU6GEX5YViFl4HPs4Icmctdn4XUXeWdOlmCpBqI=;
+ b=QJPxroUWOl7U/e0Sj75xbp+o88cRZji5Oj7CRaL/Cp9v/7F55yT+phD+bPuDDd9rdYVh
+ TR2jHE7Uyun/vqjI/VFfour4iWTs3PZjw0WiYbdoTpUugmoJRPac1PqNTMgragcgMWli
+ b89L9WdNoBtfhU2mjjIJ0YuvH/3+U08OcDx2p4L5S1UdQWMKgpdQUPLdNPDzeVNH29Wp
+ iuybvA7sgUFyjxJsSccP0yaIdsqVXGLvjPlnCUPrKC9S9baTj53bUBAZEsG4/ZrJrztw
+ cQwaEQRRkMH2Hl7I1Do3OJBt3fhIaBG616NbXSjh3gNxN4gAd8+aHdvK9EH3JDngVH7r rg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3g4gj40esf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 17 May 2022 18:08:59 +0000
+Received: from m0098404.ppops.net (m0098404.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 24HHvk73004564;
+ Tue, 17 May 2022 18:08:58 GMT
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
+ [169.63.214.131])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3g4gj40erg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 17 May 2022 18:08:58 +0000
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+ by ppma01dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 24HI8Z07005730;
+ Tue, 17 May 2022 18:08:57 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
+ [9.57.198.26]) by ppma01dal.us.ibm.com with ESMTP id 3g242b4v30-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 17 May 2022 18:08:57 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 24HI8ube7078890
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 17 May 2022 18:08:56 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id BC5E9AE05F;
+ Tue, 17 May 2022 18:08:56 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9BAD5AE062;
+ Tue, 17 May 2022 18:08:54 +0000 (GMT)
+Received: from li-c92d2ccc-254b-11b2-a85c-a700b5bfb098.ibm.com.com (unknown
+ [9.211.37.97]) by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Tue, 17 May 2022 18:08:54 +0000 (GMT)
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+To: jgg@nvidia.com, alex.williamson@redhat.com
+Subject: [PATCH 0/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
+Date: Tue, 17 May 2022 14:08:50 -0400
+Message-Id: <20220517180851.166538-1-mjrosato@linux.ibm.com>
+X-Mailer: git-send-email 2.27.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: qhZLpU9-0YZ89O6SOHMewEQV1JK1GVPw
+X-Proofpoint-GUID: 9Pst9FCHRpDpoz83T36CDDZkW0241MAR
 Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-05-17_03,2022-05-17_02,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 mlxscore=0
+ malwarescore=0 priorityscore=1501 phishscore=0 spamscore=0 impostorscore=0
+ mlxlogscore=765 bulkscore=0 clxscore=1011 suspectscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
+ definitions=main-2205170107
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,126 +92,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: maz@kernel.org, quic_saipraka@quicinc.com, catalin.marinas@arm.com,
- arnd@arndb.de, jim.cromie@gmail.com, gregkh@linuxfoundation.org,
- linux-arm-msm@vger.kernel.org, rostedt@goodmis.org, robdclark@gmail.com,
- mingo@redhat.com, mathieu.desnoyers@efficios.com, quic_psodagud@quicinc.com,
- daniel.vetter@ffwll.ch, seanpaul@chromium.org, will@kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
+ hch@infradead.org, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-clone DRM.debug interface to DRM.tracebits: ie map bits to
-drm-debug-categories, except this interface enables messages to
-tracefs, not to syslog.
+As discussed in this thread:
 
-This reuses dyndbg's register-classes API to add the new sysfs-knob:
+https://lore.kernel.org/kvm/20220516172734.GE1343366@nvidia.com/
 
-drm_drv.h:
+Let's remove VFIO_GROUP_NOTIFY_SET_KVM and instead assume the association
+has already been established prior to device_open.  For the types today
+that need a KVM (GVT, vfio-ap) these will fail if a KVM is not found.
+Looking ahead, vfio-pci-zdev will optionally want the KVM association
+(enable hardware assists) but it will not be a hard requirement (still
+want to allow other, non-KVM userspace usage). 
 
-[A] 2nd use of DYNAMIC_DEBUG_CLASSES(drm_trace_classes), which
-declares and initializes a known-classes map with the same literal
-classnames as in the 1st use.  This "shares" the classnames for both
-sysfs-knobs, which is necessary because they're manipulating a shared
-dyndbg callsite, toggling "p" and "T" flags respectively.
+This is built on top of Jason's group locking series:
+https://github.com/jgunthorpe/linux/commits/vfio_group_locking
 
-This incurs a tiny waste of constant strings, but its worth it for the
-simpler declarative macro.
+And tested with s390x-pci (zdev-kvm series) and vfio-ap (no GVT to test
+with)
 
-drm_print.c:
+@Jason since it's based on your initial patch if you'd rather a SoB just
+let me know.
 
-1- declare and export a 2nd bit-vector: __drm_trace, like __drm_debug
+Matthew Rosato (1):
+  vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
 
-2- declare and init a struct ddebug_classes_bitmap_param with:
-   __drm_trace [1], drm_trace_classes [A].
+ drivers/gpu/drm/i915/gvt/gvt.h        |  2 -
+ drivers/gpu/drm/i915/gvt/kvmgt.c      | 60 +++++------------------
+ drivers/s390/crypto/vfio_ap_ops.c     | 35 +++-----------
+ drivers/s390/crypto/vfio_ap_private.h |  3 --
+ drivers/vfio/vfio.c                   | 68 +++++++++------------------
+ include/linux/vfio.h                  |  5 +-
+ 6 files changed, 41 insertions(+), 132 deletions(-)
 
-3- module_param_cb([2]) - does the sysfs part
-
-drm_drv.c:
-
-register and unregister [A], and missed unregister on drm_debug_classes.
-
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/gpu/drm/drm_drv.c   |  3 +++
- drivers/gpu/drm/drm_print.c | 10 ++++++++++
- include/drm/drm_drv.h       | 14 +++++++++++++-
- 3 files changed, 26 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/drm_drv.c b/drivers/gpu/drm/drm_drv.c
-index 16683fb169aa..ad141c5e29ca 100644
---- a/drivers/gpu/drm/drm_drv.c
-+++ b/drivers/gpu/drm/drm_drv.c
-@@ -1039,6 +1039,8 @@ static void drm_core_exit(void)
- 	drm_sysfs_destroy();
- 	idr_destroy(&drm_minors_idr);
- 	drm_connector_ida_destroy();
-+	dynamic_debug_unregister_classes(&drm_debug_classes);
-+	dynamic_debug_unregister_classes(&drm_trace_classes);
- }
- 
- static int __init drm_core_init(void)
-@@ -1046,6 +1048,7 @@ static int __init drm_core_init(void)
- 	int ret;
- 
- 	dynamic_debug_register_classes(&drm_debug_classes);
-+	dynamic_debug_register_classes(&drm_trace_classes);
- 
- 	drm_connector_ida_init();
- 	idr_init(&drm_minors_idr);
-diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-index 9afb676bda4d..970b6dd46c42 100644
---- a/drivers/gpu/drm/drm_print.c
-+++ b/drivers/gpu/drm/drm_print.c
-@@ -44,6 +44,9 @@
- unsigned long __drm_debug;
- EXPORT_SYMBOL(__drm_debug);
- 
-+unsigned long __drm_trace;
-+EXPORT_SYMBOL(__drm_trace);
-+
- MODULE_PARM_DESC(debug, "Enable debug output, where each bit enables a debug category.\n"
- "\t\tBit 0 (0x01)  will enable CORE messages (drm core code)\n"
- "\t\tBit 1 (0x02)  will enable DRIVER messages (drm controller code)\n"
-@@ -63,6 +66,13 @@ static struct ddebug_classes_bitmap_param drm_debug_bitmap = {
- 	.map = &drm_debug_classes,
- };
- module_param_cb(debug, &param_ops_dyndbg_classes, &drm_debug_bitmap, 0600);
-+
-+static struct ddebug_classes_bitmap_param drm_trace_bitmap = {
-+	.bits = &__drm_trace,
-+	.flags = "T",
-+	.map = &drm_trace_classes,
-+};
-+module_param_cb(tracecats, &param_ops_dyndbg_classes, &drm_trace_bitmap, 0600);
- #endif
- 
- void __drm_puts_coredump(struct drm_printer *p, const char *str)
-diff --git a/include/drm/drm_drv.h b/include/drm/drm_drv.h
-index c2ffe12161b8..596de0addfd5 100644
---- a/include/drm/drm_drv.h
-+++ b/include/drm/drm_drv.h
-@@ -45,7 +45,19 @@ struct drm_printer;
- struct sg_table;
- 
- /* these must comport with enum drm_debug_category values */
--DYNAMIC_DEBUG_CLASSES(drm_debug_classes, "*", 0,
-+DYNAMIC_DEBUG_CLASSES(drm_debug_classes, 0,
-+		      "DRM_UT_CORE",
-+		      "DRM_UT_DRIVER",
-+		      "DRM_UT_KMS",
-+		      "DRM_UT_PRIME",
-+		      "DRM_UT_ATOMIC",
-+		      "DRM_UT_VBL",
-+		      "DRM_UT_STATE",
-+		      "DRM_UT_LEASE",
-+		      "DRM_UT_DP",
-+		      "DRM_UT_DRMRES");
-+
-+DYNAMIC_DEBUG_CLASSES(drm_trace_classes, 0,
- 		      "DRM_UT_CORE",
- 		      "DRM_UT_DRIVER",
- 		      "DRM_UT_KMS",
 -- 
-2.35.3
+2.27.0
 
