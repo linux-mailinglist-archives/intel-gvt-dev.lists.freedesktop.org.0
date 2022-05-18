@@ -2,59 +2,90 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9D3752B9EA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 14:37:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9279152BDA4
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 17:00:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7D34B10F404;
-	Wed, 18 May 2022 12:36:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 303CE10EFA0;
+	Wed, 18 May 2022 15:00:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0523210F404
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 May 2022 12:36:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1652877418;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZnwAbpuf8out8csgmDT/1EJa0Dp/wEa0FwZfSMt3EgU=;
- b=fAbahCo0YATze7pzVH1o8kv8t2+O6shAnWtV7O3l+vYgAgsIInJZhPpdGOfkijssluul6p
- yO+N2GsWiInu8ajvGLErUteZWsrzu/deO/4AnbVZ/6qvedK39vMNl65Z5lJquHa54MV9ky
- y8f2A6fNIAWzZup1inISYRJpFrFM4p4=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-382-rJch5im4PDmw0Q0Y98zPcg-1; Wed, 18 May 2022 08:36:52 -0400
-X-MC-Unique: rJch5im4PDmw0Q0Y98zPcg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AC5BF398CA60;
- Wed, 18 May 2022 12:36:51 +0000 (UTC)
-Received: from starship (unknown [10.40.192.55])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0B23940CF8EE;
- Wed, 18 May 2022 12:36:45 +0000 (UTC)
-Message-ID: <670fdf36585b1bf7c367cff4ab0653f4c7de8808.camel@redhat.com>
-Subject: Re: [RFC PATCH v3 02/19] KVM: x86: inhibit APICv/AVIC when the
- guest and/or host changes apic id/base from the defaults.
-From: Maxim Levitsky <mlevitsk@redhat.com>
-To: Chao Gao <chao.gao@intel.com>
-Date: Wed, 18 May 2022 15:36:44 +0300
-In-Reply-To: <20220518115056.GA18087@gao-cwp>
-References: <20220427200314.276673-1-mlevitsk@redhat.com>
- <20220427200314.276673-3-mlevitsk@redhat.com>
- <20220518082811.GA8765@gao-cwp>
- <8c78939bf01a98554696add10e17b07631d97a28.camel@redhat.com>
- <20220518115056.GA18087@gao-cwp>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5680E899AB;
+ Wed, 18 May 2022 15:00:36 +0000 (UTC)
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24IEgr6V017549;
+ Wed, 18 May 2022 15:00:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : from : to : cc : references : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=xW1COiFlwf0PL00R4GkXtkJN3M/L1hWKr4zjOB9Yp9M=;
+ b=pPZD/yxVLcy5VnDo5Jgh0tk0ovOcQbNqZ4LsoKnycLW3vfseSiMBUPwbrdCh3XYkBa3S
+ DgyFVqTWd5g0nrN7qw+VokS94G2YSTFqMANSmq4yIjq1wEGkkD8sZLyluuqf7Ue2Xuqe
+ kl/D3aV8yyOWgd3vWln/+e2hE53zPIedtzRhfg2lEgfHFpFKZh2LY1i0XqGLs4ob+dA/
+ O1lZb3Q649ODOCRETCAXcpb58oExMIG07klJQSGFLiRy+BUse1iyqnDV0953MQyCAFpS
+ PMU+PZ2Aw5ieGsVXdW+8SymNrZTZJVCbzoUDPNxTcZf19HekuYV1phtJXQKnAnxjtPnf Ng== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3g52t70e0r-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 May 2022 15:00:21 +0000
+Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 24IEhUDl019538;
+ Wed, 18 May 2022 15:00:19 GMT
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3g52t70dwk-3
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 May 2022 15:00:19 +0000
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 24IEbXS0011511;
+ Wed, 18 May 2022 14:37:53 GMT
+Received: from b01cxnp22035.gho.pok.ibm.com (b01cxnp22035.gho.pok.ibm.com
+ [9.57.198.25]) by ppma02wdc.us.ibm.com with ESMTP id 3g2429w3t2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 May 2022 14:37:53 +0000
+Received: from b01ledav002.gho.pok.ibm.com (b01ledav002.gho.pok.ibm.com
+ [9.57.199.107])
+ by b01cxnp22035.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 24IEbrW721561800
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 18 May 2022 14:37:53 GMT
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 172B3124058;
+ Wed, 18 May 2022 14:37:53 +0000 (GMT)
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7D0B0124052;
+ Wed, 18 May 2022 14:37:49 +0000 (GMT)
+Received: from [9.211.37.97] (unknown [9.211.37.97])
+ by b01ledav002.gho.pok.ibm.com (Postfix) with ESMTP;
+ Wed, 18 May 2022 14:37:49 +0000 (GMT)
+Message-ID: <2e51b388-48d0-4689-07f4-65f607dbce59@linux.ibm.com>
+Date: Wed, 18 May 2022 10:37:48 -0400
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
+Content-Language: en-US
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+To: jgg@nvidia.com, alex.williamson@redhat.com
+References: <20220517180851.166538-1-mjrosato@linux.ibm.com>
+ <20220517180851.166538-2-mjrosato@linux.ibm.com>
+In-Reply-To: <20220517180851.166538-2-mjrosato@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: XQrM_ApcMDR7ZDvn9Jz1fR-tTzTwQMqx
+X-Proofpoint-ORIG-GUID: OXJa_RJ2BtWJbsJAxvOQSjAKl28F0lCB
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-05-18_05,2022-05-17_02,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 mlxlogscore=999
+ lowpriorityscore=0 clxscore=1015 priorityscore=1501 spamscore=0
+ suspectscore=0 mlxscore=0 malwarescore=0 phishscore=0 bulkscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2205180087
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,101 +98,46 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
- David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, "H. Peter
- Anvin" <hpa@zytor.com>, Brijesh Singh <brijesh.singh@amd.com>,
- Joerg Roedel <joro@8bytes.org>, x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Tom Lendacky <thomas.lendacky@amd.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
- intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Sean Christopherson <seanjc@google.com>, linux-kernel@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>
+Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
+ hch@infradead.org, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 2022-05-18 at 19:51 +0800, Chao Gao wrote:
-> On Wed, May 18, 2022 at 12:50:27PM +0300, Maxim Levitsky wrote:
-> > > > struct kvm_arch {
-> > > > @@ -1258,6 +1260,7 @@ struct kvm_arch {
-> > > > 	hpa_t	hv_root_tdp;
-> > > > 	spinlock_t hv_root_tdp_lock;
-> > > > #endif
-> > > > +	bool apic_id_changed;
-> > > 
-> > > What's the value of this boolean? No one reads it.
-> > 
-> > I use it in later patches to kill the guest during nested VM entry 
-> > if it attempts to use nested AVIC after any vCPU changed APIC ID.
-> > 
-> > I mentioned this boolean in the commit description.
-> > 
-> > This boolean avoids the need to go over all vCPUs and checking
-> > if they still have the initial apic id.
+On 5/17/22 2:08 PM, Matthew Rosato wrote:
+> Rather than relying on a notifier for associating the KVM with
+> the group, let's assume that the association has already been
+> made prior to device_open.  The first time a device is opened
+> associate the group KVM with the device.
 > 
-> Do you want to kill the guest if APIC base got changed? If yes,
-> you can check if APICV_INHIBIT_REASON_RO_SETTINGS is set and save
-> the boolean.
+> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
 
-Yep, I thrown in the apic base just because I can. It doesn't matter to 
-my nested AVIC logic at all, but since it is also something that guests
-don't change, I also don't care if this will lead to inhibit and
-killing the guest if it attempts to use nested AVIC.
+...
 
-That boolean should have the same value as the APICV_INHIBIT_REASON_RO_SETTINGS
-inhibit, so yes I can instead check if the inhibit is active.
+> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+> index cfcff7764403..c5d421eda275 100644
+> --- a/drivers/vfio/vfio.c
+> +++ b/drivers/vfio/vfio.c
+> @@ -10,6 +10,7 @@
+>    * Author: Tom Lyon, pugs@cisco.com
+>    */
+>   
+> +#include "linux/kvm_host.h"
+>   #include <linux/cdev.h>
+>   #include <linux/compat.h>
+>   #include <linux/device.h>
+> @@ -1083,6 +1084,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
+>   
+>   	mutex_lock(&device->dev_set->lock);
+>   	device->open_count++;
+> +	down_write(&device->group->group_rwsem);
+> +	if (device->open_count == 1 && device->group->kvm) {
+> +		device->kvm = device->group->kvm;
+> +		kvm_get_kvm(device->kvm);
 
-I don't know if that is cleaner that this boolean though, individual
-inhibit value is currently not something that anybody uses in logic.
-
-Best regards,
-	Maxim Levitsky
-
-
-> 
-> > In the future maybe we can introduce a more generic 'taint'
-> > bitmap with various flags like that, indicating that the guest
-> > did something unexpected.
-> > 
-> > BTW, the other option in regard to the nested AVIC is just to ignore this issue completely.
-> > The code itself always uses vcpu_id's, thus regardless of when/how often the guest changes
-> > its apic ids, my code would just use the initial APIC ID values consistently.
-> > 
-> > In this case I won't need this boolean.
-> > 
-> > > > };
-> > > > 
-> > > > struct kvm_vm_stat {
-> > > > diff --git a/arch/x86/kvm/lapic.c b/arch/x86/kvm/lapic.c
-> > > > index 66b0eb0bda94e..8996675b3ef4c 100644
-> > > > --- a/arch/x86/kvm/lapic.c
-> > > > +++ b/arch/x86/kvm/lapic.c
-> > > > @@ -2038,6 +2038,19 @@ static void apic_manage_nmi_watchdog(struct kvm_lapic *apic, u32 lvt0_val)
-> > > > 	}
-> > > > }
-> > > > 
-> > > > +static void kvm_lapic_check_initial_apic_id(struct kvm_lapic *apic)
-> > > > +{
-> > > > +	if (kvm_apic_has_initial_apic_id(apic))
-> > > > +		return;
-> > > > +
-> > > > +	pr_warn_once("APIC ID change is unsupported by KVM");
-> > > 
-> > > It is misleading because changing xAPIC ID is supported by KVM; it just
-> > > isn't compatible with APICv. Probably this pr_warn_once() should be
-> > > removed.
-> > 
-> > Honestly since nobody uses this feature, I am not sure if to call this supported,
-> > I am sure that KVM has more bugs in regard of using non standard APIC ID.
-> > This warning might hopefuly make someone complain about it if this
-> > feature is actually used somewhere.
-> 
-> Now I got you. It is fine to me.
-> 
-
-
+Did some more compile testing, since vfio has no hard kvm dependency, 
+kvm_get_kvm and kvm_put_kvm are an issue if KVM is a module while vfio 
+is built-in...
