@@ -1,112 +1,93 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 833F652BDAE
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 17:12:53 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B38352BEC4
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 17:33:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2554210E2FC;
-	Wed, 18 May 2022 15:12:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E845910E4B0;
+	Wed, 18 May 2022 15:33:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com
- (mail-sn1anam02on2051.outbound.protection.outlook.com [40.107.96.51])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 43F8F10E2FC;
- Wed, 18 May 2022 15:12:51 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=gSSMBKvXfLjeITBsv0vmD/+sVos8ZgS2+TKe4AtrLPILeMy/3rGR2k9Pn/vdvUMIUJOM8zVHumLlWgl99TpVgPlOU6nqebIxtOoUqkKOx2nuAYr3UPaslmtSkwy2/y+ETLZIHJK7wsBgMLhEY/FhpjoB0SBzFMCELc6tG5McwM2uhqhT+/0ssb7KQfO1bOIm3rVjUkqOzFOOF346WoxO1nNuvmejHGMky/AIA2LKDMIP8zBGjHyuYaVLL1RwwmZPf6DGgsQmU88TYQSuLOhCYZ78Le7bOfPsarz27Ly/ESn6MbSTm+3QbLRBbQDUWHMUnylfFWq69H2ew+SclJolvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wTGsz5wxR/hbfwvCtwIMRLzkaQrTyy4FyPBgjvizNmw=;
- b=QFi5Ye/2rCyImWvCAz7jHs0f3rLocdwuCjv/eEJONPg1qdxl+TWh79gFIFK2i0Dmz0UWzlcyCIeGRpgXJ8jMCX2r8qL3Wrj5Py/frziSjSd0q997peDq6wnRpbNIopQ7byL4rO2KmGLPfqWuvxM+7wZnGb7EDFm0sG3aHIEwcodY5RyJIN08YkPzaContLxfSY833U0XsCxiijWmTJOxT/1STHTOVNW/CFx2CFslORT4pEjOhV03ID3BuaJYJFL9kDqun+QgTXdJpYWphb9PN2LFSdvXgU6tSS5rac5+l+9hcz2hYuFoVBi4mcguGdXi01sBlW4eX0SRN4MZnu6Dgw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wTGsz5wxR/hbfwvCtwIMRLzkaQrTyy4FyPBgjvizNmw=;
- b=ULdX2/EXygPf8TXdAejoeAh42Y4coNVTvmNNIGcBErEjjWeTq8nEtP6+IU2H3Q3w/48SJXGbwSulGs3cN7uxW+gHHq8ZhP1fQV7vFfdrcrDc8TLjy9Di+FIbON7MbfobaX/wI/MksE+hgWk7m5YcfrTdHM6JItpClG1fldQTGvNic9/mTEkfQ2cS6Bf386jQ+IUMgxtkpb8KpxIgn1zNEClpVmBUXtL3VqUq6LyBuXsoSnY8q7K1beIcyfn3Fuy0vkHt/0XamxNK+DwV2ltzystHFKe7cqoD/ABproBb8OdxvzW2wg4JHtIlwg7dRj+Bz0PVaJGidWPkZB0ceDbW0Q==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by BN8PR12MB2931.namprd12.prod.outlook.com (2603:10b6:408:6d::25)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.13; Wed, 18 May
- 2022 15:12:48 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2%7]) with mapi id 15.20.5273.014; Wed, 18 May 2022
- 15:12:48 +0000
-Date: Wed, 18 May 2022 12:12:47 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 14F7D10F37F;
+ Wed, 18 May 2022 15:33:51 +0000 (UTC)
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24IFO4Kc007205;
+ Wed, 18 May 2022 15:33:44 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=H6Vc3MVfyrLUyE4tx33xTvG94JG+q8zgiXWOBhDaWFQ=;
+ b=pwQUWmd4ThOuY5539Mk5g04fHqX087GUVCiz/pRcD+nA4GNtRQZ3HWBXZbTSOrmxlB6U
+ fWg3Gsb/vJdBiwo1fgSo291F2OTqC7IiRQKoR1NGxqgU2k3yZ6H5RfBpOO+f7ZcNwqNk
+ Mba9KYjW5PRiRn8P/JvffHI2VXiD9hiZG11XGUycQGdsQou9FULaRaOeOn5A6qpeXe+R
+ fnrmIMPmK8I6WUR2Yw//+cocKr4igf4aa2GNt2RpuFkyTOGdpzbHoLsN4eLGXmYHw/gK
+ G2KhWjU/LpsFAI1uk0DQJo69jYsTCBf0u1BqKG3UlhSztDz0bln6h9D3ZaKdeHal9qbz cA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3g53dm8762-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 May 2022 15:33:44 +0000
+Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 24IFTiUU032585;
+ Wed, 18 May 2022 15:33:43 GMT
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.10])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3g53dm875r-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 May 2022 15:33:43 +0000
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+ by ppma02dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 24IFJwgq026460;
+ Wed, 18 May 2022 15:33:42 GMT
+Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
+ [9.57.198.29]) by ppma02dal.us.ibm.com with ESMTP id 3g242amrwh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 May 2022 15:33:42 +0000
+Received: from b01ledav002.gho.pok.ibm.com (b01ledav002.gho.pok.ibm.com
+ [9.57.199.107])
+ by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 24IFXfMN19923388
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 18 May 2022 15:33:41 GMT
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AD72C12405C;
+ Wed, 18 May 2022 15:33:41 +0000 (GMT)
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 68F1612405A;
+ Wed, 18 May 2022 15:33:38 +0000 (GMT)
+Received: from [9.211.37.97] (unknown [9.211.37.97])
+ by b01ledav002.gho.pok.ibm.com (Postfix) with ESMTP;
+ Wed, 18 May 2022 15:33:38 +0000 (GMT)
+Message-ID: <34c5fd53-c75c-cb96-c627-9d30b8c45c37@linux.ibm.com>
+Date: Wed, 18 May 2022 11:33:37 -0400
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
 Subject: Re: [PATCH 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
-Message-ID: <20220518151247.GI1343366@nvidia.com>
+Content-Language: en-US
+To: Jason Gunthorpe <jgg@nvidia.com>
 References: <20220517180851.166538-1-mjrosato@linux.ibm.com>
  <20220517180851.166538-2-mjrosato@linux.ibm.com>
  <2e51b388-48d0-4689-07f4-65f607dbce59@linux.ibm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2e51b388-48d0-4689-07f4-65f607dbce59@linux.ibm.com>
-X-ClientProxiedBy: BLAPR03CA0093.namprd03.prod.outlook.com
- (2603:10b6:208:32a::8) To MN2PR12MB4192.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::15)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 0648f6e1-938c-4de5-5a37-08da38e0de67
-X-MS-TrafficTypeDiagnostic: BN8PR12MB2931:EE_
-X-Microsoft-Antispam-PRVS: <BN8PR12MB29316D4D84DE88C99AEDE9B6C2D19@BN8PR12MB2931.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: I30a7tiJoE7nybazReDU8lkxpsCR+nE/H5B+FFu/zeVnLpw0NjP0c4UaDIOG3R9bl9XMRnIx4uWoaYjCOYiLHFx3qYmVg51gAhSWFoBVRmXnprCxxPQyXjNv7tPufrP9PfVTq27vTf8tr0kqfLVEaY711TEfPN7kCp/SMjLhh8O/S5j7CET7yN+x4SE9fa3cSLZBsZaMzk+jvAuVLaasSWD8rDV65hMhk9oyVwORIig0hfvQwr5nlEHZWyJ/oKzv6OoebL7Os793HVnvGGH6BEw6oRRoAJTsxL+8tYcgXDNRQXgG6cJlyPgn0DewO9rkTsdL6Br2S4eJlevAWlz8kXSIF7sseVNSvbm4ZbMOf9/JpqEqbCerIqggomu/J0HUo+b7VivXbs5sX0cDHZpUBkmhB3I2k+cyx5Gcd0MFf+goK09dNMfIZ/aYvfwHHxfbD0A0li+2GSABCYWGVmMQ2e8WNXnXJjUNTil5jsrdKmn2r2zmm55ltX0Vmd39c17efpU6W+OXyoBcyAobSC8s4Nk2V61Av9D4B/96Z7q5ndulrz//2lgOwkkHQq+Z+hhWpEKAGCoBA0mlMpG0+NCjAEDaEOrEqc2OKBkdnuS+kLTqFiXC2VtyIE6GGG7dEJ2P9gHtOs6pKS8EHTyppQvfOw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(53546011)(33656002)(36756003)(6506007)(1076003)(6512007)(83380400001)(6486002)(26005)(8676002)(4326008)(66476007)(66556008)(38100700002)(2616005)(508600001)(7416002)(8936002)(6916009)(86362001)(316002)(2906002)(186003)(5660300002)(66946007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?aTJwgm1jQ9CCs8YbRNzM7qyuwkEmzvBXUeyQATbuL3NhMdKnZtCvWK3bF6ei?=
- =?us-ascii?Q?haqiyZ2Pp2WyXvC+bJTWLsSQVkiE1RxVe2cZy2q8LDVXFej8bvi9zxENfusp?=
- =?us-ascii?Q?bDw70aG3Yx37zzlrODLOB+7g2jAcalWexC+D0MqwEA9m6eNb2x1jKxDr/cu1?=
- =?us-ascii?Q?+yl00NcqSAgu19mLJscJXsHY8xUW/hPjiXHYY6I7RBsgr3YrBaIfFLWjaMn0?=
- =?us-ascii?Q?ERc2WlDwlEorXeNLLMJzhxrleQOEIX19m4oAc56P5kl3yzSqDiLYW6+4hBED?=
- =?us-ascii?Q?VRz2Wen3ipi7UcDvOpP5RkcAhxyDJMYhyxuY3IgjsY9qT7qrYnpub7JMcYXd?=
- =?us-ascii?Q?SOxqSWNEnK3aGNlSucfgEMm8ConT1R5UvQ+B5JNNPwsNjLPkw8hMkqb9apmh?=
- =?us-ascii?Q?d8A96SnVNjhwrMh3q1KesfjMWukErIk3Wg0fSy7AlDg5iBeHWOxeyeFojm4F?=
- =?us-ascii?Q?Hob07/i8q940eCrDSglaClgRrjBb9iiDrTqg3Jlrzxc3SPbv0TDQLkCQpa5V?=
- =?us-ascii?Q?Y51atY+iOyrj5XpFAqfPFNgu7Vx6229sml6woHnfO/5lnkDh18PnugCi2gDZ?=
- =?us-ascii?Q?g60rY9XuUPBMErFYDGeGayCoXjtgDC/q+oVdZl9NVoiINTgyDSaYWZHLIpHW?=
- =?us-ascii?Q?56Wr75CdOe0nZSUC/4JgOzQzTIXe+8GztD6UOPJLaXVjK2HMao0cGVIetW4i?=
- =?us-ascii?Q?7nUJEx1HWzIyheyP8ydzms2BP4pGcIIe1dFsNoF4mF2R7VNx4LZyTODuv9B4?=
- =?us-ascii?Q?daqyLD7kC6IQSQgWUoQiODT+DyUbrT4Xdq1vukZyUCkIoTpSD++iDyiXB0gy?=
- =?us-ascii?Q?c56C0eAyLS2+DCo2w/sXv0cMJ6223wOxmC23uhEXSthW7JW2+rv68ULJPUJ3?=
- =?us-ascii?Q?x3dwLbAs7BDatviUtSZI97GEWoP6BVHjhG/gBtwbcI+wFbG3w7UUytSqYTML?=
- =?us-ascii?Q?JAGd7Nm/bf5LsvQeo24vkoIls1RDkEv9A3Eleu6o4ooXBlS3/E71Xl1rC5A+?=
- =?us-ascii?Q?f1vrBsCRF3mlEYPO2BLWuXK9ZRtitfdRRy80CRSEtTak+RJqMxzcjLrKwKF5?=
- =?us-ascii?Q?rWe1wgRpTx/QeyFTB61H6IT2/To1HgPhz9G9x+dP4KSTbywu+beICeDPHMtZ?=
- =?us-ascii?Q?rSnLBrj0H2ENc42kND6eQsq37KOaPT1+6LvsHrXV7Tt7Cl3Ab37eVYHHX++Z?=
- =?us-ascii?Q?gpngL86/rOimKvFrWy5bDs7KlFwYKYnPl0oD8TREE+b9YG6AiO8P3F4syjzV?=
- =?us-ascii?Q?cJ5BXzbbvU4EHOaDrBv+cGYJ/O40lXQgUUjUwh+EW+wcZc3a1w4E38fr4Evn?=
- =?us-ascii?Q?mowd0ZGDA1tqto7OMkrGzoaOt+6b2RPwSkmnFHVp2Zxr5C8DYoL8FzF+pMS7?=
- =?us-ascii?Q?PX/hzycCcW5L/8KWEoETXJ6V8d4mfQE8SHY6fS8b9d5S7f+aL1jYi4QYz3aC?=
- =?us-ascii?Q?QeaqYDD1U3VzX663qneX3yqoy7pMBzMVgN5VaTB1FuOcrxYz04mezO79O2/Q?=
- =?us-ascii?Q?3cA7yxt8vQo8HJiBYp+kw0r3WESrB1FxZ/V6gFisXlBxwg1C9l8YfD7PVcVV?=
- =?us-ascii?Q?JTncL6meHtPHlIKsjw4nM3sE++kEqLPAtNgroAvS9AB2tj3+5t/um9YOyuMK?=
- =?us-ascii?Q?aqyMGt8z0DYra6wgEVadOciDKHZ+hl69vymkNky/xhIQ+kEguJxGxsKPqSH6?=
- =?us-ascii?Q?vEaEoTdjI+e3S//J8M70QQAw7y3D4UsjvPiJ/vOj42ohbQJ1PE7NYms0KwYr?=
- =?us-ascii?Q?l/i9H07d0g=3D=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0648f6e1-938c-4de5-5a37-08da38e0de67
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 May 2022 15:12:48.2428 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Ur2wD2C+vfI4Da+JJ+v1NdVjt5a/iIH5AIP5TzNyCKIP6AEmZenfO++Fj2zakJb/
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR12MB2931
+ <20220518151247.GI1343366@nvidia.com>
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+In-Reply-To: <20220518151247.GI1343366@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: x8aS-_aMEqYWg_MOFc4u10zptZE03O1w
+X-Proofpoint-ORIG-GUID: UVwqhqkeeZKxIv-g8DOJjNo9QYNkHSaQ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-05-18_05,2022-05-17_02,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ spamscore=0 mlxlogscore=999 malwarescore=0 impostorscore=0 suspectscore=0
+ phishscore=0 adultscore=0 bulkscore=0 priorityscore=1501 mlxscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2205180089
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,46 +108,54 @@ Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, May 18, 2022 at 10:37:48AM -0400, Matthew Rosato wrote:
-> On 5/17/22 2:08 PM, Matthew Rosato wrote:
-> > Rather than relying on a notifier for associating the KVM with
-> > the group, let's assume that the association has already been
-> > made prior to device_open.  The first time a device is opened
-> > associate the group KVM with the device.
-> > 
-> > Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-> > Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+On 5/18/22 11:12 AM, Jason Gunthorpe wrote:
+> On Wed, May 18, 2022 at 10:37:48AM -0400, Matthew Rosato wrote:
+>> On 5/17/22 2:08 PM, Matthew Rosato wrote:
+>>> Rather than relying on a notifier for associating the KVM with
+>>> the group, let's assume that the association has already been
+>>> made prior to device_open.  The first time a device is opened
+>>> associate the group KVM with the device.
+>>>
+>>> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+>>> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+>>
+>> ...
+>>
+>>> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+>>> index cfcff7764403..c5d421eda275 100644
+>>> +++ b/drivers/vfio/vfio.c
+>>> @@ -10,6 +10,7 @@
+>>>     * Author: Tom Lyon, pugs@cisco.com
+>>>     */
+>>> +#include "linux/kvm_host.h"
+>>>    #include <linux/cdev.h>
+>>>    #include <linux/compat.h>
+>>>    #include <linux/device.h>
+>>> @@ -1083,6 +1084,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
+>>>    	mutex_lock(&device->dev_set->lock);
+>>>    	device->open_count++;
+>>> +	down_write(&device->group->group_rwsem);
+>>> +	if (device->open_count == 1 && device->group->kvm) {
+>>> +		device->kvm = device->group->kvm;
+>>> +		kvm_get_kvm(device->kvm);
+>>
+>> Did some more compile testing, since vfio has no hard kvm dependency,
+>> kvm_get_kvm and kvm_put_kvm are an issue if KVM is a module while vfio is
+>> built-in...
 > 
-> ...
+> Ugh, my other plan was to have the driver itself capture the kvm, ie
+> we lock the group_rwsem to keep the group->kvm valid and then pass the
+> kvm to open_device in some way, then the driver can kvm_get_kvm() it
 > 
-> > diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> > index cfcff7764403..c5d421eda275 100644
-> > +++ b/drivers/vfio/vfio.c
-> > @@ -10,6 +10,7 @@
-> >    * Author: Tom Lyon, pugs@cisco.com
-> >    */
-> > +#include "linux/kvm_host.h"
-> >   #include <linux/cdev.h>
-> >   #include <linux/compat.h>
-> >   #include <linux/device.h>
-> > @@ -1083,6 +1084,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
-> >   	mutex_lock(&device->dev_set->lock);
-> >   	device->open_count++;
-> > +	down_write(&device->group->group_rwsem);
-> > +	if (device->open_count == 1 && device->group->kvm) {
-> > +		device->kvm = device->group->kvm;
-> > +		kvm_get_kvm(device->kvm);
+
+Hrm... If we did that we would have to re-evaluate some other usage of 
+the rwsem e.g. if driver open_device calls vfio_register_iommu_notifier 
+it will try to get the rwsem but it's already locked.
+
+> Alternatively, I don't know why kvm_get_kvm() is an exported symbol
+> when it is just calling refcount_inc() - inlining it would be an
+> improvement I think.
 > 
-> Did some more compile testing, since vfio has no hard kvm dependency,
-> kvm_get_kvm and kvm_put_kvm are an issue if KVM is a module while vfio is
-> built-in...
 
-Ugh, my other plan was to have the driver itself capture the kvm, ie
-we lock the group_rwsem to keep the group->kvm valid and then pass the
-kvm to open_device in some way, then the driver can kvm_get_kvm() it
-
-Alternatively, I don't know why kvm_get_kvm() is an exported symbol
-when it is just calling refcount_inc() - inlining it would be an
-improvement I think.
-
-Jason
+I think that would work for kvm_get_kvm, but kvm_put_kvm (which we also 
+need) calls kvm_destroy_kvm after the refcount_dec and that can't be inlined
