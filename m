@@ -2,42 +2,50 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 631AD52B3C0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 09:48:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6834B52B49B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 10:28:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 10DF9113E41;
-	Wed, 18 May 2022 07:47:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D1D0210ECB4;
+	Wed, 18 May 2022 08:28:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [IPv6:2607:7c80:54:e::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B1E22113E41;
- Wed, 18 May 2022 07:47:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=aexzG6QT7OwxTkVV+awVYjuMAu3L2V7mGlqxPgNrxYU=; b=EeO0qMprxdclZ/T8O5w4wRGgBl
- yK0/SLxrtiPXqvDFHbKQtiWVdp64UUltfCI1iRQnDWSYMd3RlVxHG9ta+pJwcJCSTA/mKQE15m0lq
- erOEmg0Id8OWhU5wRqbxttRf+G8qjAbJZM5s/iK87aHb2mOwadXq9j5/qaxRJ2yjAzP6ANeXODmGd
- U+YNi9VopdTaZoHirm7hf0+1oivBlF9vpqLLI8c+suSdyS0GXyVhx5rjrdFfa5Jg3vYrksBV+MEkI
- 04rYnOCMwrm+a1zIiUk4IyLU+z3bDUxaENtVN4TbyAFLQHxTwu91d2cZ8qIWq8G/p5d+e9e5Rs7rn
- XOdHS+KQ==;
-Received: from hch by bombadil.infradead.org with local (Exim 4.94.2 #2 (Red
- Hat Linux)) id 1nrEPR-000EBP-Sb; Wed, 18 May 2022 07:47:53 +0000
-Date: Wed, 18 May 2022 00:47:53 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
-Message-ID: <YoSkqWl7YkqYksG5@infradead.org>
-References: <20220517180851.166538-1-mjrosato@linux.ibm.com>
- <20220517180851.166538-2-mjrosato@linux.ibm.com>
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AB0C610EC1A;
+ Wed, 18 May 2022 08:28:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1652862512; x=1684398512;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=5CA8FtuEdlmAndh2dvdGmeNEcE6jVfqnArBWtfSrmrA=;
+ b=T77Ti53zY/cDro6twKpVk6a3ZYDPZrftjEvM7kSkp7WtVhjr9y0vL96h
+ zyynd+J5uz0rMxptYFR+qu/u25bkhfiahlOVuYZ68KDm92qiadTI1Z6TH
+ bGw1Q1OJlL3BH8YCztZU7eSDtFZtWMKDEVsTvrccDEm2z63brOET92W4j
+ nhi6FZdQ2d1YFSoDcR1rvzGsyLzx1QkB/J4TW5U6R86DHlfAFiwtEIhD2
+ eOdQ0Wh3LnrARM0D8R8NwSObMMrJgNsxVgM8eSS8xlPOopBJbe5XWOvO3
+ s8IvVMYbodQ44zSjJB0JEDHx1S2vY57rhTfpB6pcz8/4vtFGtfvV6RrR3 Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10350"; a="296842855"
+X-IronPort-AV: E=Sophos;i="5.91,234,1647327600"; d="scan'208";a="296842855"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 May 2022 01:28:32 -0700
+X-IronPort-AV: E=Sophos;i="5.91,234,1647327600"; d="scan'208";a="523408190"
+Received: from gao-cwp.sh.intel.com (HELO gao-cwp) ([10.239.159.23])
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 May 2022 01:28:25 -0700
+Date: Wed, 18 May 2022 16:28:17 +0800
+From: Chao Gao <chao.gao@intel.com>
+To: Maxim Levitsky <mlevitsk@redhat.com>
+Subject: Re: [RFC PATCH v3 02/19] KVM: x86: inhibit APICv/AVIC when the guest
+ and/or host changes apic id/base from the defaults.
+Message-ID: <20220518082811.GA8765@gao-cwp>
+References: <20220427200314.276673-1-mlevitsk@redhat.com>
+ <20220427200314.276673-3-mlevitsk@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220517180851.166538-2-mjrosato@linux.ibm.com>
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
+In-Reply-To: <20220427200314.276673-3-mlevitsk@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,78 +58,149 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
- hch@infradead.org, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, alex.williamson@redhat.com, jgg@nvidia.com,
- borntraeger@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
+Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, "H. Peter Anvin" <hpa@zytor.com>,
+ Brijesh Singh <brijesh.singh@amd.com>, Joerg Roedel <joro@8bytes.org>,
+ x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Tom Lendacky <thomas.lendacky@amd.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
+ intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Sean Christopherson <seanjc@google.com>, linux-kernel@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-With this the release_work in gvt can go away as well:
+On Wed, Apr 27, 2022 at 11:02:57PM +0300, Maxim Levitsky wrote:
+>Neither of these settings should be changed by the guest and it is
+>a burden to support it in the acceleration code, so just inhibit
+>it instead.
+>
+>Also add a boolean 'apic_id_changed' to indicate if apic id ever changed.
+>
+>Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
+>---
+> arch/x86/include/asm/kvm_host.h |  3 +++
+> arch/x86/kvm/lapic.c            | 25 ++++++++++++++++++++++---
+> arch/x86/kvm/lapic.h            |  8 ++++++++
+> 3 files changed, 33 insertions(+), 3 deletions(-)
+>
+>diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
+>index 63eae00625bda..636df87542555 100644
+>--- a/arch/x86/include/asm/kvm_host.h
+>+++ b/arch/x86/include/asm/kvm_host.h
+>@@ -1070,6 +1070,8 @@ enum kvm_apicv_inhibit {
+> 	APICV_INHIBIT_REASON_ABSENT,
+> 	/* AVIC is disabled because SEV doesn't support it */
+> 	APICV_INHIBIT_REASON_SEV,
+>+	/* APIC ID and/or APIC base was changed by the guest */
+>+	APICV_INHIBIT_REASON_RO_SETTINGS,
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 633acfcf76bf2..aee1a45da74bc 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -227,7 +227,6 @@ struct intel_vgpu {
- 	struct mutex cache_lock;
- 
- 	struct notifier_block iommu_notifier;
--	struct work_struct release_work;
- 	atomic_t released;
- 
- 	struct kvm_page_track_notifier_node track_node;
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index b317ae4cc7d2d..917617d7599a9 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -228,8 +228,6 @@ static void intel_gvt_cleanup_vgpu_type_groups(struct intel_gvt *gvt)
- 	}
- }
- 
--static void intel_vgpu_release_work(struct work_struct *work);
--
- static void gvt_unpin_guest_page(struct intel_vgpu *vgpu, unsigned long gfn,
- 		unsigned long size)
- {
-@@ -850,8 +848,9 @@ static void intel_vgpu_release_msi_eventfd_ctx(struct intel_vgpu *vgpu)
- 	}
- }
- 
--static void __intel_vgpu_release(struct intel_vgpu *vgpu)
-+static void intel_vgpu_close_device(struct vfio_device *vfio_dev)
- {
-+	struct intel_vgpu *vgpu = vfio_dev_to_vgpu(vfio_dev);
- 	struct drm_i915_private *i915 = vgpu->gvt->gt->i915;
- 	int ret;
- 
-@@ -880,19 +879,6 @@ static void __intel_vgpu_release(struct intel_vgpu *vgpu)
- 	vgpu->attached = false;
- }
- 
--static void intel_vgpu_close_device(struct vfio_device *vfio_dev)
--{
--	__intel_vgpu_release(vfio_dev_to_vgpu(vfio_dev));
--}
--
--static void intel_vgpu_release_work(struct work_struct *work)
--{
--	struct intel_vgpu *vgpu =
--		container_of(work, struct intel_vgpu, release_work);
--
--	__intel_vgpu_release(vgpu);
--}
--
- static u64 intel_vgpu_get_bar_addr(struct intel_vgpu *vgpu, int bar)
- {
- 	u32 start_lo, start_hi;
-@@ -1639,7 +1625,6 @@ static int intel_vgpu_probe(struct mdev_device *mdev)
- 		return PTR_ERR(vgpu);
- 	}
- 
--	INIT_WORK(&vgpu->release_work, intel_vgpu_release_work);
- 	vfio_init_group_dev(&vgpu->vfio_device, &mdev->dev,
- 			    &intel_vgpu_dev_ops);
- 
+You need to add it to check_apicv_inhibit_reasons as well.
+
+> };
+> 
+> struct kvm_arch {
+>@@ -1258,6 +1260,7 @@ struct kvm_arch {
+> 	hpa_t	hv_root_tdp;
+> 	spinlock_t hv_root_tdp_lock;
+> #endif
+>+	bool apic_id_changed;
+
+What's the value of this boolean? No one reads it.
+
+> };
+> 
+> struct kvm_vm_stat {
+>diff --git a/arch/x86/kvm/lapic.c b/arch/x86/kvm/lapic.c
+>index 66b0eb0bda94e..8996675b3ef4c 100644
+>--- a/arch/x86/kvm/lapic.c
+>+++ b/arch/x86/kvm/lapic.c
+>@@ -2038,6 +2038,19 @@ static void apic_manage_nmi_watchdog(struct kvm_lapic *apic, u32 lvt0_val)
+> 	}
+> }
+> 
+>+static void kvm_lapic_check_initial_apic_id(struct kvm_lapic *apic)
+>+{
+>+	if (kvm_apic_has_initial_apic_id(apic))
+>+		return;
+>+
+>+	pr_warn_once("APIC ID change is unsupported by KVM");
+
+It is misleading because changing xAPIC ID is supported by KVM; it just
+isn't compatible with APICv. Probably this pr_warn_once() should be
+removed.
+
+>+
+>+	kvm_set_apicv_inhibit(apic->vcpu->kvm,
+>+			APICV_INHIBIT_REASON_RO_SETTINGS);
+
+The indentation here looks incorrect to me.
+	kvm_set_apicv_inhibit(apic->vcpu->kvm,
+			      APICV_INHIBIT_REASON_RO_SETTINGS);
+
+>+
+>+	apic->vcpu->kvm->arch.apic_id_changed = true;
+>+}
+>+
+> static int kvm_lapic_reg_write(struct kvm_lapic *apic, u32 reg, u32 val)
+> {
+> 	int ret = 0;
+>@@ -2046,9 +2059,11 @@ static int kvm_lapic_reg_write(struct kvm_lapic *apic, u32 reg, u32 val)
+> 
+> 	switch (reg) {
+> 	case APIC_ID:		/* Local APIC ID */
+>-		if (!apic_x2apic_mode(apic))
+>+		if (!apic_x2apic_mode(apic)) {
+>+
+> 			kvm_apic_set_xapic_id(apic, val >> 24);
+>-		else
+>+			kvm_lapic_check_initial_apic_id(apic);
+>+		} else
+> 			ret = 1;
+> 		break;
+> 
+>@@ -2335,8 +2350,11 @@ void kvm_lapic_set_base(struct kvm_vcpu *vcpu, u64 value)
+> 			     MSR_IA32_APICBASE_BASE;
+> 
+> 	if ((value & MSR_IA32_APICBASE_ENABLE) &&
+>-	     apic->base_address != APIC_DEFAULT_PHYS_BASE)
+>+	     apic->base_address != APIC_DEFAULT_PHYS_BASE) {
+>+		kvm_set_apicv_inhibit(apic->vcpu->kvm,
+>+				APICV_INHIBIT_REASON_RO_SETTINGS);
+> 		pr_warn_once("APIC base relocation is unsupported by KVM");
+>+	}
+> }
+> 
+> void kvm_apic_update_apicv(struct kvm_vcpu *vcpu)
+>@@ -2649,6 +2667,7 @@ static int kvm_apic_state_fixup(struct kvm_vcpu *vcpu,
+> 		}
+> 	}
+> 
+>+	kvm_lapic_check_initial_apic_id(vcpu->arch.apic);
+> 	return 0;
+> }
+> 
+>diff --git a/arch/x86/kvm/lapic.h b/arch/x86/kvm/lapic.h
+>index 4e4f8a22754f9..b9c406d383080 100644
+>--- a/arch/x86/kvm/lapic.h
+>+++ b/arch/x86/kvm/lapic.h
+>@@ -252,4 +252,12 @@ static inline u8 kvm_xapic_id(struct kvm_lapic *apic)
+> 	return kvm_lapic_get_reg(apic, APIC_ID) >> 24;
+> }
+> 
+>+static inline bool kvm_apic_has_initial_apic_id(struct kvm_lapic *apic)
+>+{
+>+	if (apic_x2apic_mode(apic))
+>+		return true;
+
+I suggest warning of x2apic mode:
+	if (WARN_ON_ONCE(apic_x2apic_mode(apic)))
+
+Because it is weird that callers care about initial apic id when apic is
+in x2apic mode.
