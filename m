@@ -2,113 +2,68 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FC3452BEC6
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 17:38:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E6E7352BECB
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 17:39:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E3E5D10F38C;
-	Wed, 18 May 2022 15:38:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7BB4310F152;
+	Wed, 18 May 2022 15:39:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam08on2057.outbound.protection.outlook.com [40.107.102.57])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4B6B410F38C;
- Wed, 18 May 2022 15:38:37 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bgCHZW2glbcTIXfsU1cHB4lEWC09LWAc4QHOScScrR060WEGX6vQ98wBeQCqecnczDOfruOCLvjW9UpoD97huEigKv4bAo60s3z20IBUviZKADqhlfTtk3We5xC2qqovl9QvbYVp4P+hl6IjR3E17OSShJLVHETEf8oyy+Lc5+7MUyd1ts19OxrtPBxo/cYW3SvgeQbzi6rKyYHRf08KVQJ7tmIQCPAZzd+XMwZI3lLf3GOUjpDga06ZM7EoCy4tOP1r3lKPcx140Mm6DdjVs1bUzEoEmLaoSfrPPzecoEC9TIL8fiebhP3eEVnUFkW2Al9SL4wjIDA5L0+n7AJbbA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TBbkK9VgXWmlIxgYtUWpWpBdjch31Cirzl6AheYvsxY=;
- b=KDHIu8mpFXZcS3y+Nz2wmbI9MVsDgKYvTp5NcvYJhOnF5ZkOup5P4kzPRdsl/Sfc9udbX2tnNcOoUrQK4fAg2tKcgdElGREGQQi7aIIVEfMTiumNUvN8dQOHDB6ey6kkGQInyVQGUg8/mV98gPVEJzSpbIhl7Z14deVJpHZq0NkaEtVrdOf86r02Fik3xBp22WXXnG6GLcIEsoXmqEJAyUwQPEkZxfxLxf248JWx2gFE8AmmUxfi4QjO5wFKImMtLt9qoclvZ/H+2rg7i0qTy46vzLRc8MTXxATCtf7nOqAa4YKncMbzPC6Z25cOPcLWTAa6nZvroj3B6iRnJ6fC5Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TBbkK9VgXWmlIxgYtUWpWpBdjch31Cirzl6AheYvsxY=;
- b=BqX/hN0whGXzlSjX50ZXT4lLCjRXrMsEdNNJaOfX+zcK7g84IgXfSi0D1laffbuPtMhTqzjyaA8QOlsw7EMMtDgLbL17Xtj75AI+a6oqglTlA5cfjnz47kR8Oa318RWJtUwDvpugZuB+fmojRZPM2ZaMYFB1Usu0E5yr2gkfPv3Uy85exCTgdIyOvgNo6oFv2XNv8zZteiAULuYMcunn/WaIDTw1d0ILVWMWh41PjxTt1+Ir5TFcmLPlP3c7O3xVtoT8q7o3iOD5tzxHLkrtN5OacVOXAYqJ4pcJmc+jdLPuMGiAKR+FWBAZBpxe/+WQKiDQK9JjEfijWMnZxhjbCg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by MWHPR12MB1423.namprd12.prod.outlook.com (2603:10b6:300:14::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.14; Wed, 18 May
- 2022 15:38:34 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2%7]) with mapi id 15.20.5273.014; Wed, 18 May 2022
- 15:38:33 +0000
-Date: Wed, 18 May 2022 12:38:32 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
-Message-ID: <20220518153832.GJ1343366@nvidia.com>
-References: <20220517180851.166538-1-mjrosato@linux.ibm.com>
- <20220517180851.166538-2-mjrosato@linux.ibm.com>
- <2e51b388-48d0-4689-07f4-65f607dbce59@linux.ibm.com>
- <20220518151247.GI1343366@nvidia.com>
- <34c5fd53-c75c-cb96-c627-9d30b8c45c37@linux.ibm.com>
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 95CD910F381
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 18 May 2022 15:39:35 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id
+ l20-20020a17090a409400b001dd2a9d555bso2481902pjg.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 18 May 2022 08:39:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Z/HMrrvCFWNmAHmvXNwS49dfDiOpl1n+gYXOKnIc4zI=;
+ b=dar/R+iwJh6De/GxHOwX6pHMbcfNFw2VosEiMVS9rUR0uhV04veQWjUvNn1Um9Mals
+ wRoCyapdixfM61qMc2HADICJWAjNnbA0wtGr+uJWt1QyWrw8PNXt7Yv4NGDLvF2Gd909
+ XcWfnB1NhBE0JV5FT3WZn8Q7ynTgoH7QPo1cYLo2usyEG3DmpqGOF4Wvrv4j9nv286VG
+ lcdB7BWKcl6xOcJUlig3kblVxHP0L0b6ubldhuv/9M5eUxiQc66zPE9PTz5a6oeBRpRm
+ cN/wh3MpbOvQlWkpL/q6/zoIwYwptqGj6VxyDCscWcLs6MIpRyajD/xgVpEZAEStq968
+ ahlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Z/HMrrvCFWNmAHmvXNwS49dfDiOpl1n+gYXOKnIc4zI=;
+ b=aBCfs35yZKvVPsPEsOQZvgi3A6wUF3HB2/lFvEx8XYuliM6NGnyE34q+vTdDC7SY+0
+ J/fBqxoRTdo4liXif80KyDT2Af3CJglFn6hnqUtSx65g+c53Rm2ugeoy2fu1sUJRbsuv
+ Uwz4dOO3dMgBMUu9VlKCLRzrc00DFD/12+uv9zA6IqpO/pqPVE93F4/yFiv1ewMz/AuU
+ P8gW+bdbM3EfbBQRX6UbzzVdJIlUTtMLAjXINhrsPm8CpC3NTKpnz24pZ8adRlVq/rQP
+ rr8XOtGwKI1zAHZb3td8PuRqVxIEiJJJKu3R35y5puUKIPNC26O40vnb1lcG+VzSrqx9
+ RSRQ==
+X-Gm-Message-State: AOAM53257Wuk4qa4gR2TmDnBR6AmILNELYhQm3fszEClTZuSEZpalRnp
+ Z9KXZmoltivtqhEDzdgtmOolFQ==
+X-Google-Smtp-Source: ABdhPJy4YDsen62GVqvNQ0gvtfR6xnGo8BpbBvHMqJCocqqqkTLqWVsTvmo43FO52CB7x/t5SXQ/jg==
+X-Received: by 2002:a17:902:f814:b0:161:505d:a4f4 with SMTP id
+ ix20-20020a170902f81400b00161505da4f4mr318446plb.6.1652888374834; 
+ Wed, 18 May 2022 08:39:34 -0700 (PDT)
+Received: from google.com (157.214.185.35.bc.googleusercontent.com.
+ [35.185.214.157]) by smtp.gmail.com with ESMTPSA id
+ gv3-20020a17090b11c300b001da160621d1sm1671704pjb.45.2022.05.18.08.39.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 18 May 2022 08:39:34 -0700 (PDT)
+Date: Wed, 18 May 2022 15:39:30 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Maxim Levitsky <mlevitsk@redhat.com>
+Subject: Re: [RFC PATCH v3 02/19] KVM: x86: inhibit APICv/AVIC when the guest
+ and/or host changes apic id/base from the defaults.
+Message-ID: <YoUTMsnFS+bSED+5@google.com>
+References: <20220427200314.276673-1-mlevitsk@redhat.com>
+ <20220427200314.276673-3-mlevitsk@redhat.com>
+ <20220518082811.GA8765@gao-cwp>
+ <8c78939bf01a98554696add10e17b07631d97a28.camel@redhat.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <34c5fd53-c75c-cb96-c627-9d30b8c45c37@linux.ibm.com>
-X-ClientProxiedBy: BL0PR0102CA0021.prod.exchangelabs.com
- (2603:10b6:207:18::34) To MN2PR12MB4192.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::15)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b5b18c7a-b2ff-42d5-d928-08da38e477ab
-X-MS-TrafficTypeDiagnostic: MWHPR12MB1423:EE_
-X-Microsoft-Antispam-PRVS: <MWHPR12MB142308308072E34022B205FBC2D19@MWHPR12MB1423.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: pfljtfeJJU5z2DK9bPDkLBlNLsSwsFrLy9KN4dLpAf77ov7nbPjjMyc3IRFoCNMD1FDF+YWlgQ481dX9++okSUaATEZI4fZGRhHwD2GFGNrWjyjI/C+0Mf9XvJke9wlf/ivDKBMsqgnizXhmso7OS37x4/HU5Q/8jVJfrywEsGDU+a0iynXvLcOkH2RckYTWYl9Yr8EpMU2OPhxv95v5NN+g6M2b97KQ7hjx2vgT6vmMDVuBicUY4a4kuEzVH+rCW9HEWdy9WO2occIl21/kc3Loc85SuIZk/unClb9lmX6O6bt79xpYCoXj8MqGAaFXPvLc2ZVMWc0QF5BCXpb7kscAvtt6G+XbFFxLysOgvee1syFgWKlGMLaoGnAvxdQiRmvubsVrCoMjHbo+5p6mwwJXzY5/aOpE2U47zFC9l4lXEedJ+rMnroIvf9xN1Rwj0cTHR9imsaPSbOQhE4CGrcmJKsBMbcB3mCFJBcwbYNtuNp+MSXeGjf/bWpP4Z/RPuu/MUsZT9sLbkwqcNzkYw3TvWE++iI2EYkRSPCytFH9GFlSeL6lpUoeMFj6ghiNC5w9p37V75DpAUEnGFRwQOLc3PielPC8V0WYTJhlJjjrUM7KV8CwNHCt9RkBp6IVPD3bnugkCrBO+m+TZUYtCRQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(1076003)(316002)(6916009)(36756003)(508600001)(26005)(86362001)(6512007)(53546011)(6506007)(5660300002)(66556008)(66476007)(66946007)(7416002)(4326008)(8676002)(33656002)(38100700002)(8936002)(2906002)(186003)(2616005)(83380400001)(6486002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?m+izraPsjI2KtyefV7eoAYgmN3PqoRdq1lUbPyFWfQhKQvAB/1oN2dW1iei7?=
- =?us-ascii?Q?hSBJTI5uAcpCKM3O9a20JN0tJtuiYgL6aURqW2OQi/o+iJZ05xzhycPEaRu+?=
- =?us-ascii?Q?bPA71165RrIVuPZy4gkWCji7U5VLkW0nggTbqze33sWQH2Vz2AwxQw6vxTcx?=
- =?us-ascii?Q?wuDUvpCh+E/fXsEbWrJUkeuDY5zeJFYIBJEnkrBSfags/HELC2NLR16y65lz?=
- =?us-ascii?Q?gVVe9ALec+oaM+DuKvcTgup/JMyZnFixAwEP8SeCdMIkdpI4k9SC6TlYX0Gf?=
- =?us-ascii?Q?+tAMfAX4KZk2vcgalki9gv4bbZd82l1/lgn6uIADxtDewbp0eu2/baY+Zcxo?=
- =?us-ascii?Q?8MH+RNgTZ99wDMVMdfvEgjIqFqrP+w1NxSgPKxvZ2idZ/w+bXUmEF26iDHCA?=
- =?us-ascii?Q?IbsPlbfs9vQ4lJz+G26WbJafHBcPpANw8NzjOLjpIUM8iQeixRQTvPpkmtcO?=
- =?us-ascii?Q?PsWg/0lSvjiUtwuGthO4cR1Ak0tR7QxgtEEYKmKYDHPKjukzC7VmJ8MVV5v8?=
- =?us-ascii?Q?1zm5gv3aF9dvokGe6EcvFP6fuJ9D7dO02p4BVtYfVCKpWdmLLW9QtjF3uXJd?=
- =?us-ascii?Q?EFu4iOwgYTB9Yd+GRA1bKEHJ0dKYMUDT41Yrb2b5b0Q/FarpieeDn+VVF9f7?=
- =?us-ascii?Q?qn5Sd824xMMlypJwkG8EtGXIEoq+nYwSvel7okZUim5D6gCKLm3RkTYnjRnt?=
- =?us-ascii?Q?3L7LS6ovr39VZPgyaIXRwE5vQsXl6dARYMYPo8OwJW3wmSXoGd86HADyAplT?=
- =?us-ascii?Q?wqK8C/q4wC86Mc4TAo4H+XG+mg6syD0Y+RMZaQXej14R7GhzaB5EKSakYsxM?=
- =?us-ascii?Q?/74BlkEKvc+0VNFFRlrtZ/hlo8HPwErZe2yVNqg22qhR/e3iHBeannWzqlzn?=
- =?us-ascii?Q?dcrMFRJ7K8PgSDelr055XrvgfwzOQo5u6eOXLKfFiEuEIzBi86oKS3lzDQ0N?=
- =?us-ascii?Q?RcPtPpcJZu84jIL5f/UH+8e3bNcXCtWv+DBIoi+uwFFaisMxcUhI433qW987?=
- =?us-ascii?Q?tl+rZ6vdzANZRNxHOYgWpl1IGhDapDoiTIryf6PkDJyBSXWFFfGfmIcqJlEk?=
- =?us-ascii?Q?kHMkb+8aljxZKmyis4EBe2eh3EEQF36c7QwxLMv9Bz8ZGNhsDPgumNea6C76?=
- =?us-ascii?Q?Svct4qZYkNeCvDUvD9u0v+Ln6OxAG2v5xjzeb8WGdCnFq/yXjU2uboxbuT1M?=
- =?us-ascii?Q?N38rqp5HuR8JZFfWYZr/sibm2S2J0veMfJYfuFHxj5q7IT7CWPUK3QQvK+yk?=
- =?us-ascii?Q?4mRW0+vMA9BhAjEeI5spnTJkuOP4c6mZYI9ygULtS7am2uIrqnSrIFTHMEGt?=
- =?us-ascii?Q?Y5tMkM9FeaM3rksm3VJa1onLwnAoppo4xgUAomrUzPaUTOJJbz4tg3Cf7Vg+?=
- =?us-ascii?Q?Q7xx00kV7LRkvTbvt2xczSQPt3r/Es8R7+z68l02ZZEzStCToONUFIkM3wpr?=
- =?us-ascii?Q?Bya9Bgd3VyWw1kw2bYZ4wuc0yi1czrS27TZVrcj6s6ELaeO5ZFZVPhJUuTid?=
- =?us-ascii?Q?D2shVRQDPGJiK3413lBuXqmtIPUzw/QxDwxemfFkn5632PdXNU+WKYpOCiku?=
- =?us-ascii?Q?y8c/lEOeXr+VZPnBXXjQVHYV//XT/gaK1/h+kvbTQc+mmVhtgGJE+AGmgBzu?=
- =?us-ascii?Q?cH+Y/lUInrX2a/yKLtp3iOlHJyuwc0WGV7GY5G4rPUbIEgegpPWvfOecnZ5q?=
- =?us-ascii?Q?bS/61JuWxoe3isxAU6N0wqVolU2QBjwgZyXVGXiSX8XP415QL8la5vHzg0zw?=
- =?us-ascii?Q?T7xrvS91yw=3D=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b5b18c7a-b2ff-42d5-d928-08da38e477ab
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 May 2022 15:38:33.8889 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: pO+fugJOV8//MieqEs/TvQ2znIb/YcQhdjgLXEFo/iQVGnZR7C9jTGmou4IWPnBA
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR12MB1423
+In-Reply-To: <8c78939bf01a98554696add10e17b07631d97a28.camel@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,71 +76,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
- hch@infradead.org, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, alex.williamson@redhat.com, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, "H. Peter Anvin" <hpa@zytor.com>,
+ Brijesh Singh <brijesh.singh@amd.com>, Joerg Roedel <joro@8bytes.org>,
+ x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Chao Gao <chao.gao@intel.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
+ intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, linux-kernel@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, May 18, 2022 at 11:33:37AM -0400, Matthew Rosato wrote:
-> On 5/18/22 11:12 AM, Jason Gunthorpe wrote:
-> > On Wed, May 18, 2022 at 10:37:48AM -0400, Matthew Rosato wrote:
-> > > On 5/17/22 2:08 PM, Matthew Rosato wrote:
-> > > > Rather than relying on a notifier for associating the KVM with
-> > > > the group, let's assume that the association has already been
-> > > > made prior to device_open.  The first time a device is opened
-> > > > associate the group KVM with the device.
-> > > > 
-> > > > Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-> > > > Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
-> > > 
-> > > ...
-> > > 
-> > > > diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> > > > index cfcff7764403..c5d421eda275 100644
-> > > > +++ b/drivers/vfio/vfio.c
-> > > > @@ -10,6 +10,7 @@
-> > > >     * Author: Tom Lyon, pugs@cisco.com
-> > > >     */
-> > > > +#include "linux/kvm_host.h"
-> > > >    #include <linux/cdev.h>
-> > > >    #include <linux/compat.h>
-> > > >    #include <linux/device.h>
-> > > > @@ -1083,6 +1084,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
-> > > >    	mutex_lock(&device->dev_set->lock);
-> > > >    	device->open_count++;
-> > > > +	down_write(&device->group->group_rwsem);
-> > > > +	if (device->open_count == 1 && device->group->kvm) {
-> > > > +		device->kvm = device->group->kvm;
-> > > > +		kvm_get_kvm(device->kvm);
-> > > 
-> > > Did some more compile testing, since vfio has no hard kvm dependency,
-> > > kvm_get_kvm and kvm_put_kvm are an issue if KVM is a module while vfio is
-> > > built-in...
+On Wed, May 18, 2022, Maxim Levitsky wrote:
+> On Wed, 2022-05-18 at 16:28 +0800, Chao Gao wrote:
+> > > struct kvm_arch {
+> > > @@ -1258,6 +1260,7 @@ struct kvm_arch {
+> > > 	hpa_t	hv_root_tdp;
+> > > 	spinlock_t hv_root_tdp_lock;
+> > > #endif
+> > > +	bool apic_id_changed;
 > > 
-> > Ugh, my other plan was to have the driver itself capture the kvm, ie
-> > we lock the group_rwsem to keep the group->kvm valid and then pass the
-> > kvm to open_device in some way, then the driver can kvm_get_kvm() it
-> > 
+> > What's the value of this boolean? No one reads it.
 > 
-> Hrm... If we did that we would have to re-evaluate some other usage of the
-> rwsem e.g. if driver open_device calls vfio_register_iommu_notifier it will
-> try to get the rwsem but it's already locked.
+> I use it in later patches to kill the guest during nested VM entry 
+> if it attempts to use nested AVIC after any vCPU changed APIC ID.
 
-Ugh, yes, it means removing the other notifier callback too, which I
-was expecting to do as well
+Then the flag should be introduced in the later patch, because (a) it's dead code
+if that patch is never merged and (b) it's impossible to review this patch for
+correctness without seeing the usage, e.g. setting apic_id_changed isn't guarded
+with a lock and so the usage may or may not be susceptible to races.
 
-Maybe we could split the lock for just this patch though.
-
-> > Alternatively, I don't know why kvm_get_kvm() is an exported symbol
-> > when it is just calling refcount_inc() - inlining it would be an
-> > improvement I think.
-> 
-> I think that would work for kvm_get_kvm, but kvm_put_kvm (which we also
-> need) calls kvm_destroy_kvm after the refcount_dec and that can't be inlined
-
-Indeed.
-
-Jason
+> > > +	apic->vcpu->kvm->arch.apic_id_changed = true;
+> > > +}
+> > > +
