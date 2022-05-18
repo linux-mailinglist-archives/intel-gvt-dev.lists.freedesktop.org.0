@@ -2,31 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F22E52B11F
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 06:10:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FD8052B3AD
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 May 2022 09:39:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 83F2410EED5;
-	Wed, 18 May 2022 04:10:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CAEE5113E17;
+	Wed, 18 May 2022 07:39:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 33105 seconds by postgrey-1.36 at gabe;
- Wed, 18 May 2022 04:10:48 UTC
-Received: from rental.2viscom.com (unknown [47.176.28.138])
- by gabe.freedesktop.org (Postfix) with ESMTP id AA76B10EED5;
- Wed, 18 May 2022 04:10:48 +0000 (UTC)
-Received: from MACBOOKPROF612.localdomain (unknown [197.234.142.111])
- by rental.2viscom.com (Postfix) with ESMTPSA id A38EC387A20;
- Tue, 17 May 2022 10:42:47 -0700 (PDT)
-Content-Type: text/plain; charset="iso-8859-1"
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:e::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1343F1124FA;
+ Wed, 18 May 2022 07:39:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=P5UqBAHM0WQnE0g9GWkUw6qeNdkfJBe6hJymXR6R360=; b=zP2u3zx4Nqx82fjyBoNHLz6AOY
+ fHpXQJ24sWyjJtbHiAfCUHkKqWlu+/N5+S0QbL3dxp8min4ZnwWiMdlFcvfoW1l3rHL6lvSU8JyPu
+ tI3TV57NNnj4Bq/keqxZOTeeF9+9ZA4sWjS7BtUPWhT9DC+xFJLcsYPpuaji0p2/Oxwir7jvsuX/U
+ y9dpkmCJOjq2ER5XK5/faIeJxiQU9bZ+mnUsplo/ChCMm+unL1KWLS94bBjJDlzxjHqeD1l6dxzdJ
+ VudQgLy9jb8GOsrg3Fazw16gK5iNYGZFgwlNxo8CYGkPD+FAuZ8uZSZp9jKMhuX8XVLWsUSQokF10
+ K34xQl0g==;
+Received: from hch by bombadil.infradead.org with local (Exim 4.94.2 #2 (Red
+ Hat Linux)) id 1nrEHV-00084D-Sx; Wed, 18 May 2022 07:39:41 +0000
+Date: Wed, 18 May 2022 00:39:41 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
+Message-ID: <YoSivTU7nivO9FMD@infradead.org>
+References: <20220517180851.166538-1-mjrosato@linux.ibm.com>
+ <20220517180851.166538-2-mjrosato@linux.ibm.com>
+ <20220517185643.GY1343366@nvidia.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: HELLO!!!!
-To: Recipients <aglaw@nulau.edu.ua>
-From: aglaw@nulau.edu.ua
-Date: Tue, 17 May 2022 19:42:38 +0200
-X-Antivirus: AVG (VPS 220517-2, 5/17/2022), Outbound message
-X-Antivirus-Status: Clean
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220517185643.GY1343366@nvidia.com>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,19 +51,24 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: scottgodfrey.net@outlook.com
+Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, hch@infradead.org,
+ linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org, cohuck@redhat.com,
+ linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com, pasic@linux.ibm.com,
+ alex.williamson@redhat.com, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220518041049.83F2410EED5@gabe.freedesktop.org>
 
-Hello Email Owner Kindly confirm ownership of your email. It was randomly s=
-elected after an Electronic Computer ProDraw, to receive a donation of ($2,=
-500,000 Million USD) From Scott Godfrey. I won the sum of $699.8 Million in=
- the Million Dollars Power-Ball Jackpot Lottery,2021.. Send a confirmation =
-Email to scottgodfrey.net@outlook.com. For more details. Thanks
+>  	if (device->ops->flags & VFIO_DEVICE_NEEDS_KVM)
+>  	{
 
+Nit: this is not the normal brace placement.
 
--- 
-This email has been checked for viruses by AVG.
-https://www.avg.com
+But what is you diff against anyway?  The one Matthew sent did away
+with the VFIO_DEVICE_NEEDS_KVM flags, which does the wrong thing for
+zpci, so it can't be that..
 
+Also if we want to do major code movement, it really needs to go into
+a separate patch or patches, as the combinations of all these moves
+with actual code changes is almost unreadable.
