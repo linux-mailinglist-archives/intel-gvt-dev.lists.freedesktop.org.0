@@ -2,66 +2,64 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6317752DA65
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 May 2022 18:38:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3227752DA79
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 May 2022 18:43:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 04D1C11A018;
-	Thu, 19 May 2022 16:38:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C531F11A30D;
+	Thu, 19 May 2022 16:43:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x102a.google.com (mail-pj1-x102a.google.com
- [IPv6:2607:f8b0:4864:20::102a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5061610EC90
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com
+ [IPv6:2607:f8b0:4864:20::62c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7627511A336
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 May 2022 16:38:33 +0000 (UTC)
-Received: by mail-pj1-x102a.google.com with SMTP id
- v5-20020a17090a7c0500b001df84fa82f8so5719437pjf.5
+ Thu, 19 May 2022 16:43:56 +0000 (UTC)
+Received: by mail-pl1-x62c.google.com with SMTP id s14so5287743plk.8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 May 2022 09:38:33 -0700 (PDT)
+ Thu, 19 May 2022 09:43:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=5R5CIsenxtrkxTKlA3MXRGhcGTe2bd3z24V2JTX79wc=;
- b=qKiBkzaLa8x6UswSmJfUjwYZA/+8KqTAJth5R0NSkIFDS+OYa4KsG2uOIOgIGEQdP4
- F8mf2P2TCB85o7/umxXqrhR9Y71M26PoV9VW5PCToTGFtrBnh84Ox36EcDFBLWVp71jD
- XUqHHJtkU1aIZoAcr/4yG0jh3rkr4iZ6nyVh6EgEC+gAcHqOjsaXpiFmpOLk1JBJsMqF
- Dy47hm/WdCkWyLrEe65dUCuQzyzmf/ZvJxQxRDY8dIqoUHYIFuyJWOvXaxPmG2/nZQaw
- 4q2fomKvJhevs2t2VPjRs0pMPgC3OMNtFLTy1febiE8+FpKTb9FgypUFQEX5dL8geTIh
- bWJA==
+ bh=221Yw0kf0kWHOuKCBmfC/ycEQMuPJsFgC9zSqVTAwSA=;
+ b=bu8vQ+GWvqJrRdEuq8YVrsfud1b3bQhlBNIuRQm9N4t2Lj3E7ojrr5du8GpLJyVQpt
+ zI6LAgP0cWVNyhkC2dx8jWx3d1dzS6qKn2apfQz90gm0zn8LV2J6jLUuu+darR0d5jp1
+ LpTWI9ig8g7I0oCfkW8terjt+U3QuRwraIIgfyUbQlX7hnu3WzrJLPVhPL16qrotB7X8
+ X0sGHQiLnxPwCuwzmOoubt1yCoAYcRgt5bbtFh+Kh0gFthhZS04NdGml6wCRoLPw4YTT
+ 8exX0VVLnNWqt0NnU9LMNUK3s3E1Z3IQqSxPNndBTJ1hO64zu+VRfQofIL4ohxv4FNRK
+ FrmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=5R5CIsenxtrkxTKlA3MXRGhcGTe2bd3z24V2JTX79wc=;
- b=2QZyWaV1njk6bJWqSqr34iO1XbrgCHMAVNgwmyUybpKlSFDrafIfenqVeJOu6u+YDz
- tn7cGVzyjyZ52PfZ8M6kRwP2K9NKfCq9lb+VW1mCDHQY5RiY5tmfVzU7Po7XdCAyEJz8
- qONKvhIqMT8huCJI02qKbyMcuAwbiYWSfytINvJNm2VCfU7tKitak2csFlvth1wqDHCQ
- UxaDDEnKgGhXtcifG8EB6JiDp8vIO5W7ZtEiplX5Q7HmF8QbkU64TtILtUB+bVLYunUp
- rHRJlCEPnJ7P5Ae9Kw8O+p8+4Bp+AcIUFh6JaxFDldgMJg0jbPMhihyV+5GnY6rJHjvo
- V0+A==
-X-Gm-Message-State: AOAM533HQudBe2K53wJjs9xKs44lscQ3kOnWVcZcTSZaK90ATGIZKWpz
- FsBBCyoBHLxGIcqJqOP3ALLvkg==
-X-Google-Smtp-Source: ABdhPJxiRsm84/7Erm3zrVNXQjVrfgfFlxyNelaI6knzQLt/AHi12NfjLuBHc0kegGIYgOlMcbZmkQ==
-X-Received: by 2002:a17:902:db11:b0:161:9513:da41 with SMTP id
- m17-20020a170902db1100b001619513da41mr5545300plx.145.1652978312706; 
- Thu, 19 May 2022 09:38:32 -0700 (PDT)
+ bh=221Yw0kf0kWHOuKCBmfC/ycEQMuPJsFgC9zSqVTAwSA=;
+ b=tz1Wrf8wBVDNmEZ6vusMCX7HOqh3dHs7nFza0Ha/Vb7qhlSiKksFHci0DLKosmWMWj
+ iqLNyz/pXOe5x4BJQfPpRzTq0uYmJ1bIL+Aal1dGeEpZd7LN4ANxE1cmeARD9fUrjO6d
+ xpSJs725mMmJyRTQSwNh0BwaemDYA82v0ro2eHNrvMKgA4s84WamfaU2kKguQ/cWIE8L
+ sdVhDHEe+WwQq0bHdffXxk5cCDpzwWImStptZZsjRpD42HB214gaYMJtNmG2xncjLcRI
+ 8UiH6LkFXnVo+t+JLz4MNoqSygR1387z0whT/fwXPUSTcF9XqRCvcmYOfPSNuJoU3aob
+ q0wQ==
+X-Gm-Message-State: AOAM533kK/IJj0fUXJoE4lu02OX6mylS6coNiqYf+GbGM9qcUNgNLDB0
+ VCtuHwOQK3vSldmmUgyyZQXzPA==
+X-Google-Smtp-Source: ABdhPJw2CROjZjF/tfI3pH/231wqbGMtrzoTlXEZCDadRe7+Y7fJupSq7bjozl06CSrvxLG1Gs7+EA==
+X-Received: by 2002:a17:902:b289:b0:161:872d:6f03 with SMTP id
+ u9-20020a170902b28900b00161872d6f03mr5698065plr.30.1652978635790; 
+ Thu, 19 May 2022 09:43:55 -0700 (PDT)
 Received: from google.com (157.214.185.35.bc.googleusercontent.com.
  [35.185.214.157]) by smtp.gmail.com with ESMTPSA id
- a32-20020a056a001d2000b0050dc762819bsm4173554pfx.117.2022.05.19.09.38.32
+ jh9-20020a170903328900b0015e8d4eb1f8sm4027559plb.66.2022.05.19.09.43.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 May 2022 09:38:32 -0700 (PDT)
-Date: Thu, 19 May 2022 16:38:28 +0000
+ Thu, 19 May 2022 09:43:55 -0700 (PDT)
+Date: Thu, 19 May 2022 16:43:51 +0000
 From: Sean Christopherson <seanjc@google.com>
 To: Maxim Levitsky <mlevitsk@redhat.com>
-Subject: Re: [RFC PATCH v3 05/19] x86: KVMGT: use
- kvm_page_track_write_tracking_enable
-Message-ID: <YoZyhIuvxNZBOdko@google.com>
+Subject: Re: [RFC PATCH v3 06/19] KVM: x86: mmu: add gfn_in_memslot helper
+Message-ID: <YoZzx6f1XBWL3i8F@google.com>
 References: <20220427200314.276673-1-mlevitsk@redhat.com>
- <20220427200314.276673-6-mlevitsk@redhat.com>
+ <20220427200314.276673-7-mlevitsk@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220427200314.276673-6-mlevitsk@redhat.com>
+In-Reply-To: <20220427200314.276673-7-mlevitsk@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,22 +90,61 @@ Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 On Wed, Apr 27, 2022, Maxim Levitsky wrote:
-> @@ -1948,6 +1949,10 @@ static int kvmgt_guest_init(struct mdev_device *mdev)
->  	if (__kvmgt_vgpu_exist(vgpu, kvm))
->  		return -EEXIST;
->  
-> +	ret = kvm_page_track_write_tracking_enable(kvm);
-> +	if (ret)
-> +		return ret;
+> This is a tiny refactoring, and can be useful to check
+> if a GPA/GFN is within a memslot a bit more cleanly.
 
-If for some reason my idea to enable tracking during kvm_page_track_register_notifier()
-doesn't pan out, it's probably worth adding a comment saying that enabling write
-tracking can't be undone.
+This doesn't explain the actual motivation, which is to use the new helper from
+arch code.
+
+> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
+> ---
+>  include/linux/kvm_host.h | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/linux/kvm_host.h b/include/linux/kvm_host.h
+> index 252ee4a61b58b..12e261559070b 100644
+> --- a/include/linux/kvm_host.h
+> +++ b/include/linux/kvm_host.h
+> @@ -1580,6 +1580,13 @@ int kvm_request_irq_source_id(struct kvm *kvm);
+>  void kvm_free_irq_source_id(struct kvm *kvm, int irq_source_id);
+>  bool kvm_arch_irqfd_allowed(struct kvm *kvm, struct kvm_irqfd *args);
+>  
+> +
+> +static inline bool gfn_in_memslot(struct kvm_memory_slot *slot, gfn_t gfn)
+> +{
+> +	return (gfn >= slot->base_gfn && gfn < slot->base_gfn + slot->npages);
+> +}
+> +
+
+Spurious newline.
 
 > +
->  	info = vzalloc(sizeof(struct kvmgt_guest_info));
->  	if (!info)
->  		return -ENOMEM;
+>  /*
+>   * Returns a pointer to the memslot if it contains gfn.
+>   * Otherwise returns NULL.
+> @@ -1590,12 +1597,13 @@ try_get_memslot(struct kvm_memory_slot *slot, gfn_t gfn)
+>  	if (!slot)
+>  		return NULL;
+>  
+> -	if (gfn >= slot->base_gfn && gfn < slot->base_gfn + slot->npages)
+> +	if (gfn_in_memslot(slot, gfn))
+>  		return slot;
+>  	else
+>  		return NULL;
+
+At this point, maybe:
+
+	if (!slot || !gfn_in_memslot(slot, gfn))
+		return NULL;
+
+	return slot;
+
+>  }
+>  
+> +
+>  /*
+>   * Returns a pointer to the memslot that contains gfn. Otherwise returns NULL.
+>   *
 > -- 
 > 2.26.3
 > 
