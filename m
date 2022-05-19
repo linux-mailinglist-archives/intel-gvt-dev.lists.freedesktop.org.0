@@ -2,53 +2,84 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 034A452DB34
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 May 2022 19:27:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1126752DCDE
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 May 2022 20:33:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A911A11A5E6;
-	Thu, 19 May 2022 17:27:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C6F0310E0A8;
+	Thu, 19 May 2022 18:33:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vk1-xa41.google.com (mail-vk1-xa41.google.com
- [IPv6:2607:f8b0:4864:20::a41])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 178E911A4A1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 May 2022 17:27:14 +0000 (UTC)
-Received: by mail-vk1-xa41.google.com with SMTP id e144so3079013vke.9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 May 2022 10:27:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:from:date:message-id:subject:to;
- bh=unwjVi4JyvOT5YpHK4gkij0pj4qmYJyCx7UeebCZMKE=;
- b=EzXlb3/3NEdhpDBSZ4ovyg6VEsjCSf8aFUnjucMFWH/fqaCqQbBv3wMNVQM6dguvmu
- kKkih8ewF2ja9q8iSXtDafKBjGA+n1yT/uz1cBKh2Tu/WSwY5qvM+ADfS7AXNTRQR909
- 5zEjxQ4VcS7fZ8UFLF1i2kgIJOL3d56RliSool91CGe9g1D+n2kh/GlUu4DSYk51jr/o
- J4vMcMHQAnRM6LucqK52wU4Fn9Ik/W4hZ9toz2obiw4WUE0EusyG1pwTNEBDkfknx26l
- Z2dd1xYkn4fpT3X0ENGRtfb4gyS1+HDW2sFhR0oFv+p6TI4HQBnCkNymq1Oh2tfrLY4W
- GHfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=unwjVi4JyvOT5YpHK4gkij0pj4qmYJyCx7UeebCZMKE=;
- b=wm9Y0/ROJZ3P/caQl6v7i5qgWAl2u+nYYUGbCvba+3QF0wLknOCXxFqVjrEbmZ+uxl
- yO7Q6f2H4ybeCvXjjlv2BLfucjfOvyTo2NKNRw9NJMUoAkhRyasygC6dabEjFdEz6FXO
- x7YnL44ciYjKLFia2ObImQNjKz+RIeSENbLiOGfZf01wQ/bPFB7kdAqKjncK+vIZTLwC
- GglZ0rHbAyzuYKI/WAIRGes0c9nTmPX8p98+a9tk9Ir1zu80ItODHQxtqgTtF40BHhTG
- zIrzkz5CMs0JaTtHrk60TP5qgairZC1niHKunB6gQre5ibAuW4J2VgcE3L02oZuMd0zo
- yKcw==
-X-Gm-Message-State: AOAM531d7x9kU07BqgbUkfVGfdaCJ4TjuwSIhN6f5HP4F19NnPEjaeVs
- h+fiVZbKBQsswzLD/jCTn9I6ZYkIDaVXwSx0XAqYIh1fFGLj8T+I3WUuM4WB
-X-Google-Smtp-Source: ABdhPJxjUnKL/E3ik3Ces+g8/pqziGWN80URw7dqeKs9dXqaRmRQfVyeYXu2v4m0/AbRRzfjSO/SA1qSH6zTLTLkIO0=
-X-Received: by 2002:a1f:a851:0:b0:357:53d5:6021 with SMTP id
- r78-20020a1fa851000000b0035753d56021mr218837vke.30.1652981232890; Thu, 19 May
- 2022 10:27:12 -0700 (PDT)
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 48AE010E09B;
+ Thu, 19 May 2022 18:33:28 +0000 (UTC)
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24JGFltO014988;
+ Thu, 19 May 2022 18:33:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : content-transfer-encoding : mime-version; s=pp1;
+ bh=FzmMrJydP7SjW/h1T8aJMfFDr6sSO5l8oKubCo8nHjg=;
+ b=nTjolHdvK+LKE/W9U6na7yzXN/+FMKxNLlTqIyVFPcGZhZtsQWIDb2cUy9BmLdAQDyZn
+ FzMVh2RF8Io0Y/mZsrmBfHhwpXWshw+QLysSwTzoNaObP/sG6dYXW58QLT+CEn1uKc0F
+ MJQXUnT1PG0Wrnh9NxCJ0O8xinY5BALWPaQr2PlEK4KNfjV1vJzVKSOTw8x/hzqd/l8h
+ ZFmc4sdkXA6X9XqpoIYp1EIQwccdoYMiu4xeIjwBeEhZtEU+0zaDJS9F1CGSUFcjRHjY
+ Eaz3nLVFzELKHWoPX6o/4DAJIuO+jqMxBgHhJIxYuHLusc6AH+KjRchuH72JMSTv2p/w 0w== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3g5rfjv60p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 19 May 2022 18:33:20 +0000
+Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 24JIDlXX025526;
+ Thu, 19 May 2022 18:33:20 GMT
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
+ [169.53.41.122])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3g5rfjv60e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 19 May 2022 18:33:20 +0000
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+ by ppma04dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 24JIWUHY016339;
+ Thu, 19 May 2022 18:33:19 GMT
+Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com
+ [9.57.198.24]) by ppma04dal.us.ibm.com with ESMTP id 3g3r2fcs4t-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 19 May 2022 18:33:19 +0000
+Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
+ [9.57.199.109])
+ by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 24JIXIu263308282
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 19 May 2022 18:33:18 GMT
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 86962112064;
+ Thu, 19 May 2022 18:33:18 +0000 (GMT)
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C1D7F112061;
+ Thu, 19 May 2022 18:33:15 +0000 (GMT)
+Received: from li-c92d2ccc-254b-11b2-a85c-a700b5bfb098.ibm.com.com (unknown
+ [9.211.37.97]) by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
+ Thu, 19 May 2022 18:33:15 +0000 (GMT)
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+To: jgg@nvidia.com, alex.williamson@redhat.com
+Subject: [PATCH v3 0/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
+Date: Thu, 19 May 2022 14:33:10 -0400
+Message-Id: <20220519183311.582380-1-mjrosato@linux.ibm.com>
+X-Mailer: git-send-email 2.27.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 9p4q8YdRssq0xupqY300qb0RYenay28B
+X-Proofpoint-GUID: gsf9CrkNesk4CEtlXrNJky73nDARnE4O
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-From: Jessica Kiirnec <omotosofunmilayoruth@gmail.com>
-Date: Thu, 19 May 2022 19:27:02 +0200
-Message-ID: <CAGvCTiFwgtWB-BkuymxUfj6BkPAGaTcWfU1R5sxfAiD9TiJ08w@mail.gmail.com>
-Subject: ''How are you today?
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="00000000000034f6ce05df60af4b"
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.486,FMLib:17.11.64.514
+ definitions=2022-05-19_06,2022-05-19_03,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ clxscore=1015 impostorscore=0 bulkscore=0 mlxlogscore=431 adultscore=0
+ lowpriorityscore=0 spamscore=0 suspectscore=0 mlxscore=0 malwarescore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2205190105
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,56 +92,60 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
+ hch@infradead.org, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---00000000000034f6ce05df60af4b
-Content-Type: text/plain; charset="UTF-8"
+As discussed in this thread:
 
-J. Kirinec
-1166 Mohican Trail, Stone Mountasin, Georgia 30083
-Marital Status: Single
-occupation:  Marine Nurse
+https://lore.kernel.org/kvm/20220516172734.GE1343366@nvidia.com/
 
+Let's remove VFIO_GROUP_NOTIFY_SET_KVM and instead assume the association
+has already been established prior to device_open.  For the types today
+that need a KVM (GVT, vfio-ap) these will fail if a KVM is not found.
+Looking ahead, vfio-pci-zdev will optionally want the KVM association
+(enable hardware assists) but it will not be a hard requirement (still
+want to allow other, non-KVM userspace usage). 
 
+This is built on top of vfio-next and tested with s390x-pci
+(zdev-kvm series) and vfio-ap (GVT changes are compile-tested only)
 
-          ''How are you today? fine i hope. It's nice to meet you, I hope
-you do not mind me being connected with you in such a way. Actually, I was
-looking for my old friend when I came across your profiles. I must say that
-you are different. I believe it's curiosity that brings me to you, i will
-wish to meet you, I believe that both of us want the same thing. Once again
-I must say that I am sorry if the connection with you contradicts your
-moral ethics. I look forward to hearing from you. J. Kirinec.
+Changes for v3:
+- merge branches under if (device->open_count == 1) (Kevin)
+- move device->open_count-- out from group_rwsem (Kevin)
+- drop null KVM check (Christoph)
+- remove extra kvm_{get,put}_kvm from vfio_ap_ops, it was already getting
+  a reference (Jason)
+- Add comment about kvm reference in vfio.h (Jason)
+- Return -EINVAL if !kvm for vfio-ap (Tony)
 
---00000000000034f6ce05df60af4b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Changes for v2:
+- gvt no longer needs release_work, get rid of it (Christoph)
+- a few compile fixes for gvt
+- update commit to mention fixes gvt oops (Jason)
+- s/down_write/down_read/ in a few spots (Jason)
+- avoid kvm build dependency by holding group read lock over device
+  open/close and put the onus on the driver to obtain a reference if
+  it will actually use the kvm pointer.  Document the requirement,
+  use lockdep_assert to ensure lock is held during register_notifer;
+  today all callers are from driver open_device. 
 
-<div dir=3D"ltr">
+Matthew Rosato (1):
+  vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
 
-<div style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;fo=
-nt-size:small;font-style:normal;font-variant-ligatures:normal;font-variant-=
-caps:normal;font-weight:400;letter-spacing:normal;text-align:start;text-ind=
-ent:0px;text-transform:none;white-space:normal;word-spacing:0px;background-=
-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:=
-initial"><div><p style=3D"margin:0px">J. Kirinec<br aria-hidden=3D"true">11=
-66 Mohican Trail, Stone Mountasin, Georgia 30083<br aria-hidden=3D"true">Ma=
-rital Status: Single<br aria-hidden=3D"true">occupation:=C2=A0 Marine Nurse=
-<u></u><u></u></p></div><div><p style=3D"margin:0px"><u></u>=C2=A0<u></u></=
-p></div></div><p style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,s=
-ans-serif;font-size:small;font-style:normal;font-variant-ligatures:normal;f=
-ont-variant-caps:normal;font-weight:400;letter-spacing:normal;text-align:st=
-art;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px=
-;background-color:rgb(255,255,255);text-decoration-style:initial;text-decor=
-ation-color:initial;margin:0px">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;&#3=
-9;How are you today? fine i hope. It&#39;s nice to meet you, I hope you do =
-not mind me being connected with you in such a way. Actually, I was looking=
- for my old friend when I came across your profiles. I must say that you ar=
-e different. I believe it&#39;s curiosity that brings me to you, i will wis=
-h=C2=A0to meet you, I believe that both of us want the same thing. Once aga=
-in I must say that I am sorry if the connection with you contradicts your m=
-oral ethics. I look forward to hearing from you. J. Kirinec.</p>
+ drivers/gpu/drm/i915/gvt/gtt.c        |  4 +-
+ drivers/gpu/drm/i915/gvt/gvt.h        |  3 -
+ drivers/gpu/drm/i915/gvt/kvmgt.c      | 82 ++++++--------------------
+ drivers/s390/crypto/vfio_ap_ops.c     | 35 ++---------
+ drivers/s390/crypto/vfio_ap_private.h |  3 -
+ drivers/vfio/vfio.c                   | 83 ++++++++++-----------------
+ include/linux/vfio.h                  |  6 +-
+ 7 files changed, 57 insertions(+), 159 deletions(-)
 
-</div>
+-- 
+2.27.0
 
---00000000000034f6ce05df60af4b--
