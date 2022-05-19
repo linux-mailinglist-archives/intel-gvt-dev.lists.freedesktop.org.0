@@ -1,111 +1,66 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1C4552D28A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 May 2022 14:33:37 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 480E452D9C4
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 May 2022 18:06:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B23E10F304;
-	Thu, 19 May 2022 12:33:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BB3C610F19D;
+	Thu, 19 May 2022 16:06:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on2080.outbound.protection.outlook.com [40.107.236.80])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C53B210ED90;
- Thu, 19 May 2022 12:33:34 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MZdBFm7bw7dEGjOo3OkzXYNlu+F4TcED2jf6A43zND7/kBT/RFj0m3EWegUjE9HizKxS+hz4eHzHzEhR/F5Zpu4XovT90L00Ki54XwMKWVb0ThDLnpANUxaogtUKI2zOtaRDiU7JczrDYlS5/BaaSLTdKFm89WFQUpDlRZUfHVZmgCG9WERu/9ETY0c4b+TZdgeSp2MClc/HibehC+/qsdbiMj33kHhgAlR+YCm0YeiMx/NIK80Oo6QCJSvm73Kg7/j2qWY+fJm+naiwi39sx37bpHmWk5zyyDI5ptg/R8h/S54GiIPGAaUZYoR2ZhxmV9Yg1Uz9eQvCfVrFlp9pxw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QU2nDcshoWncnVsYgS+ayp34ItuwYSSqm+NPwikmTyQ=;
- b=dxvD+cj1W1djVdlw/wcjVuQv1+J7scUEzBl8zAn7tQwSbOSel7K5sYDhjSv7Zf9UsAZjBMewD8zjqxxEh05+JVdol/VYBhInZTCiqoxmWIoYOPOw9AM0Ua0E3hYHw2XUquQyz9+m/DXGVLwQ6qOKCDdRhvgfTqRfjPBciqIxHId2DAOqaAkgve/lHXY9rAGr6dwgUtA/jp7f7mnTAwuqtIEmDAXq+uBAbA6IUplJve8JLAizKSsiRiYP3oFjM0E5gSfWxxZYoOuoNyDKJ7CILPsja5tPRbltbbn06PxkJ8k7GAZlsIwtEU+WVKKuxgPmBrPYFx+FASlz5Hjsx0YrVw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QU2nDcshoWncnVsYgS+ayp34ItuwYSSqm+NPwikmTyQ=;
- b=Pdstg6i2gIcxZvKfRbdaCLLrkBZ4IrrvQgJB7WVPXp/9Al6ksuFpfZDDtfI05TbtCKHmqletn9Gi86kjLuKbCPtEbHZlQMsvYD+ueTimdA0T1ROBJgSV/8KJyw2uENY8On+XiLrDnvNkxR2e08z7VP8f9ZjvIZIg1VmNyS4tWbEklxsCW9nE0iIlyhJw+uU4AsdGsYHlUVDlUYhuXcQHt1HifpIe+/qv8PX2pj08+iqZU6LlqVxq2liIn9XnqhhbImIzdS/pUkaLyyqkEN/W4bEN+c5tObom59PhZEdpn54OmouGaHRF9RtedsS93oMTOByQTmYvbOX0WFtCkxEHgg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by DM6PR12MB2684.namprd12.prod.outlook.com (2603:10b6:5:4a::33) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.13; Thu, 19 May
- 2022 12:33:32 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ec2d:9167:1b47:2db2%7]) with mapi id 15.20.5273.014; Thu, 19 May 2022
- 12:33:32 +0000
-Date: Thu, 19 May 2022 09:33:31 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH v2 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
-Message-ID: <20220519123331.GX1343366@nvidia.com>
-References: <20220518212607.467538-1-mjrosato@linux.ibm.com>
- <20220518212607.467538-2-mjrosato@linux.ibm.com>
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6181610F1AD
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 19 May 2022 16:06:56 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id s14so5204462plk.8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 19 May 2022 09:06:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=vb5Fnrc6nvtN1QtPGNOnSmpxdHdQwhzVPVW+3aY5wHk=;
+ b=bthLWmgwcikyZgGW6rfnkIduMLxplP+DXLV0jYgCgLPYDUYOnSFxunRjjtmbMLvTsh
+ Sb07SOOLIEr7jmCPXtgmCs1nkY1OAOhbqJj5++OYyW8VQlTC7ix0RDfar6BjM6SQozbU
+ CGXT6au5xsfjXj5ZIcMDlpYS2QrDsL+YHg2fxz0By7UbglWG+i0ixwv3IqN+8tepzyzR
+ WJSJbjhM8rYadb/PQ+66UpxzMkLvCkqr6aAcJkM/sKJAgqbAZHh1s6d+Qjgo44MK4vnd
+ bnMCRhYyAEOQHd0ecCPLdXij7An1AfrHImdoL9qP+DlwZhbKZqm3fxXKQzq1VxefDRit
+ EIEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=vb5Fnrc6nvtN1QtPGNOnSmpxdHdQwhzVPVW+3aY5wHk=;
+ b=xGlu3/Wm90XV8YqQVUtnEygIZe1NPyUDeFQgNFyDZpFFpAgYqyGjIvSyN/Wju76xF4
+ KoM0DCatDvOT9mutQcZcp3KH6oyIXCYMxwpyknfdLbUVcia3h4zdsBq2F9ntjy0TW08B
+ POmeQfmPOxlkbH8HS1c67MrmFlTgpYBE9gEevFLPKR7PjqhP04K5bH9hIHiS3fbHrD78
+ XRKLl2bBAIqGeJLwCfPj4048tVTANmhRYBPMwUD7FNOcsaJmVm0d+7Bm0/83ZRHWHE5/
+ NTNy/klZXf/uYeXVc+239jxqXzw84kJ3WuZsjh5typJyP9HtH7d8PmRF35IyQk11CY9F
+ tAtw==
+X-Gm-Message-State: AOAM532xWTgNOXLZ0qpy3kh/aOk/UEwmUTGsXNjATEnRo0je3oXuXV10
+ ZJ2xp5VUw+ncK48U6YLm8W2T/g==
+X-Google-Smtp-Source: ABdhPJyeLc4AGyvXKd1KpG/Rm0x8OTOUXyvVlK/e3r152D9+knL3BxE9xzM0Up4sV2KRWTCnHP/A4A==
+X-Received: by 2002:a17:90b:1c82:b0:1dd:1b46:5aa9 with SMTP id
+ oo2-20020a17090b1c8200b001dd1b465aa9mr5954557pjb.158.1652976415612; 
+ Thu, 19 May 2022 09:06:55 -0700 (PDT)
+Received: from google.com (157.214.185.35.bc.googleusercontent.com.
+ [35.185.214.157]) by smtp.gmail.com with ESMTPSA id
+ b2-20020a621b02000000b005182d0a3d5csm4029858pfb.7.2022.05.19.09.06.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 May 2022 09:06:55 -0700 (PDT)
+Date: Thu, 19 May 2022 16:06:51 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Maxim Levitsky <mlevitsk@redhat.com>
+Subject: Re: [RFC PATCH v3 02/19] KVM: x86: inhibit APICv/AVIC when the guest
+ and/or host changes apic id/base from the defaults.
+Message-ID: <YoZrG3n5fgMp4LQl@google.com>
+References: <20220427200314.276673-1-mlevitsk@redhat.com>
+ <20220427200314.276673-3-mlevitsk@redhat.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220518212607.467538-2-mjrosato@linux.ibm.com>
-X-ClientProxiedBy: BL0PR02CA0045.namprd02.prod.outlook.com
- (2603:10b6:207:3d::22) To MN2PR12MB4192.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::15)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7f13fa0f-2a61-4ae1-e1e7-08da3993c93e
-X-MS-TrafficTypeDiagnostic: DM6PR12MB2684:EE_
-X-Microsoft-Antispam-PRVS: <DM6PR12MB2684D4456789285D4429618EC2D09@DM6PR12MB2684.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: KKfhgraPmF5blb5xVYfEnYww46dA3jwCEzilCnltqcxZIAOUAc55OhRU/1U/J7Bwt0+qKtGVm7jCWdkqRgjOQkfQvBadmqZT3z6tJ7pu0jVNsERDGgWIGaXHonvxepMlyw8+cl4zA/dYmPisHphT7Kn6IjXmKcpDCengIfd9HGM1F3fzeI+6hK3f/RIArybH+52gsoDY6SkHMDbM+6TmkvN0ukpxTdsHnT1g9oO/QUdHX2vIU9Kl8ZllOCG+0T5nksp721w1XpME34f+0+wQ4cY3rTY6MykJ6Z6wYzDCyjwEGkuYM/6aE/c7fdMP0aGm1ICaK/5/xiGsmRv3t0LO1wgmPHoAxVolXwehXNYiAR69Kp+V1Vv7x80KCtygy9XfoGRH9zSnVeGeXeJrPJK0t3zgBfee23+kP4mn9hzd2zUWkdrfw3+TslVl5qe1l0y10VrizeXxf3BQYFIsqRMkN+huLoCsrE2Fa6gwHYd0EZwqNUDxfs0LkmtNGYhLNVCahSNyjgWcuENbCB3nKzMQRASPm3p3usKxlH1wjio8YsZLIW04Fg7KMaWIFwZUJDQ6azA+3AaPjhgyuFOfV0Bs2gVoCUZVO7lhzuXwwYPViv/dmQEQJFgCXvj2Uf3TinMsMD5fZSyzfJZHkjIwOqmmTw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(66556008)(6486002)(6916009)(38100700002)(316002)(8676002)(4326008)(36756003)(83380400001)(66946007)(66476007)(33656002)(6512007)(5660300002)(86362001)(2616005)(7416002)(186003)(26005)(508600001)(8936002)(1076003)(2906002)(6506007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ZJv+bq89jh2MpxDMrXMBoCEDgwTml70qavvFOmGq9Lm9eSgbv6lnASUtq420?=
- =?us-ascii?Q?uOutmf1E1lVKZmU12tJbRUha14w/BMENWiClPorjWOpUtEhJWB8AdbH1SKVE?=
- =?us-ascii?Q?r2KUhkth5a7x/NcgWDhX8ugJ6/tlufiG0SGyV/+E3QVw2kG84Rq6qTnZGQkR?=
- =?us-ascii?Q?8/mJVES8uYm79Nw5Y5RMpnKshJz4yR0UHubizmKKrJImJBZZGjR/z4ghE4Zs?=
- =?us-ascii?Q?Puf7hmG0Bf3R8+Ju0QCBGdAWlNb3cnLWJXRIUINxf3qJio9d3HsBArVMjaSR?=
- =?us-ascii?Q?lOdhCxouc6Q12Dka8CkFy+suCaTvTnjy6RCj1R3qzn2yefxeCk4aMHUiwTyQ?=
- =?us-ascii?Q?mWm9S5aD/xjJPfk+ebJw827zC3hHhevVBJ5KmX7Wc8BI0/cQa5rc+y553Sde?=
- =?us-ascii?Q?HML4pHpwH30DvO1OuuXTViP1HV8RLiXEUUkUqpF6uc/9rTi+gJVwQMpEg7Sp?=
- =?us-ascii?Q?XP9y9l/QbjDrMyOB+s3RQfRNqaUIqd2xhqPCHxQrGJ3nAJOrtsy4o+97SzqL?=
- =?us-ascii?Q?jnAQWBmZjDs/TKBCsYUz0uAlKDZLAiQreDL1vNsBdAkOsxaqexdwPod8pjBC?=
- =?us-ascii?Q?lkdtz33NGCqjVD/if9oECtBTg5Bqtv3GOYPWMDt6rI6RuhMX1d7UialH9WSz?=
- =?us-ascii?Q?BRYeWRCwPxyTUfI5kS3NZrc1EGX5ALZF0Jea+/xbK8dAk20nmTFXhkPAMFRy?=
- =?us-ascii?Q?M8dIZ9BANwxzKZpvC1wBE248JPzTjiv8DnrDD7/Go/loxZU520QLQsrsm76c?=
- =?us-ascii?Q?c2pPB9m/2p4uWc4mMlCq/axhUXpgBMwXPoRYn4j/wZxtQqww3qOCeGRz8Zqx?=
- =?us-ascii?Q?/qQRGr1FPlW3sVGK/0Zx7mYM3RsYJMRAMsR/yqQ8hKcKOi1/s9J6MPULmUJO?=
- =?us-ascii?Q?Bj7bRKAyfCXvNPWAjKRATeLMvZ9UsID7FVTu0lyn+3/culHcIFmGa7RRPmXK?=
- =?us-ascii?Q?kS4Hr8vcw9lf58wP1NBITDV3muRLzSZ5hBb+8+SU1Q+mm+12jg5dU45Y6QH/?=
- =?us-ascii?Q?SJWkjGfvoioSv9J6+P66+xdLGnj1I1InXiV+h+YNk6pTm9oftDaoAYVXmlFe?=
- =?us-ascii?Q?caMYVJ4fztZF+oMUZ8qT/5Ga70I130F/xM7O0c/J80JOyjrxkOXadXgbpxgB?=
- =?us-ascii?Q?ZgPdKIYy4rEceZkT7cQ1VoqUN6ZHa3cAD2w/tFKxtCpNO2S6eBT6q8OGelye?=
- =?us-ascii?Q?+dwjIPhl6CfIJ213uwukA4fFWeOlG5oxCXu/qUBFEwvGsdu+u5bvNAns7f0H?=
- =?us-ascii?Q?XyuskH2aQPdhn6P6LMwBo6e7VyJsnmY9sxooFeJKNOCw762oUMy3dPKNiPiY?=
- =?us-ascii?Q?3+7l7XIjtlUEYTzzJd1C/Dvn1eOr/7qBEt6H7m/vpsJiiCR0O67xBM+ajlUN?=
- =?us-ascii?Q?FF4Q1efJZrujGkRVE7GXAhBBDVszhaOBZn7fqE4YYzvix6fTNz+YlNSXsH8K?=
- =?us-ascii?Q?pdDL/HtlFVEJMcg0Cte9wn7RSdLucdId01jGLsczTZnZf4iKfIcKeJJ9JXRp?=
- =?us-ascii?Q?UVBLodGE39TXb3IUuRZ6X7op+Kvve16GBcC1sY2c5juPJZhSPUbPZzEK9NcC?=
- =?us-ascii?Q?VNML3LKCAMUmCWqIG9GWJc4OIbYbH8m7ROnBajHLrcLcSSu0M+aYx7hwJyHs?=
- =?us-ascii?Q?wIrO3noaUz3wZhkkvnWl+UwT62PY5jLLb/bRvapLHF9jMoxVCjhiUPI2dyLe?=
- =?us-ascii?Q?YL8ZEH/+uZ3r9aATMfeGIlYetrVbye9IgGR7BfdiE6SXdFkog/Og287dA3qk?=
- =?us-ascii?Q?0dPMicNQSA=3D=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7f13fa0f-2a61-4ae1-e1e7-08da3993c93e
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2022 12:33:32.6912 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: U/5Quyb1iblClBL5aR8IfFcLtBmUlgSI9eX9CjeV0dk1W1jjxDK0pXX6wOh1IxIm
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB2684
+In-Reply-To: <20220427200314.276673-3-mlevitsk@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,79 +73,227 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com, kvm@vger.kernel.org,
- hch@infradead.org, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, alex.williamson@redhat.com, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, "H. Peter Anvin" <hpa@zytor.com>,
+ Brijesh Singh <brijesh.singh@amd.com>, Joerg Roedel <joro@8bytes.org>,
+ x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Tom Lendacky <thomas.lendacky@amd.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
+ intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, linux-kernel@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, May 18, 2022 at 05:26:07PM -0400, Matthew Rosato wrote:
-> Rather than relying on a notifier for associating the KVM with
-> the group, let's assume that the association has already been
-> made prior to device_open.  The first time a device is opened
-> associate the group KVM with the device.
+On Wed, Apr 27, 2022, Maxim Levitsky wrote:
+> Neither of these settings should be changed by the guest and it is
+> a burden to support it in the acceleration code, so just inhibit
+> it instead.
 > 
-> This fixes a user-triggerable oops in GVT.
+> Also add a boolean 'apic_id_changed' to indicate if apic id ever changed.
 > 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
 > ---
->  drivers/gpu/drm/i915/gvt/gtt.c        |  4 +-
->  drivers/gpu/drm/i915/gvt/gvt.h        |  3 -
->  drivers/gpu/drm/i915/gvt/kvmgt.c      | 82 ++++++---------------------
->  drivers/s390/crypto/vfio_ap_ops.c     | 38 ++++---------
->  drivers/s390/crypto/vfio_ap_private.h |  3 -
->  drivers/vfio/vfio.c                   | 75 ++++++++----------------
->  include/linux/vfio.h                  |  5 +-
->  7 files changed, 56 insertions(+), 154 deletions(-)
+>  arch/x86/include/asm/kvm_host.h |  3 +++
+>  arch/x86/kvm/lapic.c            | 25 ++++++++++++++++++++++---
+>  arch/x86/kvm/lapic.h            |  8 ++++++++
+>  3 files changed, 33 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
+> index 63eae00625bda..636df87542555 100644
+> --- a/arch/x86/include/asm/kvm_host.h
+> +++ b/arch/x86/include/asm/kvm_host.h
+> @@ -1070,6 +1070,8 @@ enum kvm_apicv_inhibit {
+>  	APICV_INHIBIT_REASON_ABSENT,
+>  	/* AVIC is disabled because SEV doesn't support it */
+>  	APICV_INHIBIT_REASON_SEV,
+> +	/* APIC ID and/or APIC base was changed by the guest */
 
-I'm fine with this, thanks for finishing it
+I don't see any reason to inhibit APICv if the APIC base is changed.  KVM has
+never supported that, and disabling APICv won't "fix" anything.
 
-> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-> index e8914024f5b1..17a56bb4cf25 100644
-> --- a/drivers/s390/crypto/vfio_ap_ops.c
-> +++ b/drivers/s390/crypto/vfio_ap_ops.c
-> @@ -1196,6 +1196,8 @@ static int vfio_ap_mdev_set_kvm(struct ap_matrix_mdev *matrix_mdev,
+Ignoring that is a minor simplification, but also allows for a more intuitive
+name, e.g.
+
+	APICV_INHIBIT_REASON_APIC_ID_MODIFIED,
+
+The inhibit also needs to be added avic_check_apicv_inhibit_reasons() and
+vmx_check_apicv_inhibit_reasons().
+
+> +	APICV_INHIBIT_REASON_RO_SETTINGS,
+>  };
+>  
+>  struct kvm_arch {
+> @@ -1258,6 +1260,7 @@ struct kvm_arch {
+>  	hpa_t	hv_root_tdp;
+>  	spinlock_t hv_root_tdp_lock;
+>  #endif
+> +	bool apic_id_changed;
+>  };
+>  
+>  struct kvm_vm_stat {
+> diff --git a/arch/x86/kvm/lapic.c b/arch/x86/kvm/lapic.c
+> index 66b0eb0bda94e..8996675b3ef4c 100644
+> --- a/arch/x86/kvm/lapic.c
+> +++ b/arch/x86/kvm/lapic.c
+> @@ -2038,6 +2038,19 @@ static void apic_manage_nmi_watchdog(struct kvm_lapic *apic, u32 lvt0_val)
+>  	}
+>  }
+>  
+> +static void kvm_lapic_check_initial_apic_id(struct kvm_lapic *apic)
+
+The "check" part is misleading/confusing.  "check" helpers usually query and return
+state.  I assume you avoided "changed" because the ID may or may not actually be
+changing.  Maybe kvm_apic_id_updated()?  Ah, better idea.  What about
+kvm_lapic_xapic_id_updated()?  See below for reasoning.
+
+> +{
+> +	if (kvm_apic_has_initial_apic_id(apic))
+
+Rather than add a single-use helper, invoke the helper from kvm_apic_state_fixup()
+in the !x2APIC path, then this can KVM_BUG_ON() x2APIC to help document that KVM
+should never allow the ID to change for x2APIC.
+
+> +		return;
+> +
+> +	pr_warn_once("APIC ID change is unsupported by KVM");
+
+It's supported (modulo x2APIC shenanigans), otherwise KVM wouldn't need to disable
+APICv.
+
+> +	kvm_set_apicv_inhibit(apic->vcpu->kvm,
+> +			APICV_INHIBIT_REASON_RO_SETTINGS);
+> +
+> +	apic->vcpu->kvm->arch.apic_id_changed = true;
+> +}
+> +
+>  static int kvm_lapic_reg_write(struct kvm_lapic *apic, u32 reg, u32 val)
 >  {
->         struct ap_matrix_mdev *m;
->
-> +       kvm_get_kvm(kvm);
+>  	int ret = 0;
+> @@ -2046,9 +2059,11 @@ static int kvm_lapic_reg_write(struct kvm_lapic *apic, u32 reg, u32 val)
+>  
+>  	switch (reg) {
+>  	case APIC_ID:		/* Local APIC ID */
+> -		if (!apic_x2apic_mode(apic))
+> +		if (!apic_x2apic_mode(apic)) {
 > +
 
-[..]
+Spurious newline.
 
-> +       if (kvm)
-> +               kvm_put_kvm(kvm);
->  }
+>  			kvm_apic_set_xapic_id(apic, val >> 24);
+> -		else
+> +			kvm_lapic_check_initial_apic_id(apic);
+> +		} else
 
-This extra ref traffic is not necessary, the kvm will have a valid ref
-because we are under the group_rwsem here and then the function will
-obtain a ref when it stores it in matrix_mdev->kvm.
+Needs curly braces for both paths.
 
-> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> index cfcff7764403..272acb62facd 100644
-> --- a/drivers/vfio/vfio.c
-> +++ b/drivers/vfio/vfio.c
-> @@ -1083,11 +1083,22 @@ static struct file *vfio_device_open(struct vfio_device *device)
+>  			ret = 1;
+>  		break;
 >  
->  	mutex_lock(&device->dev_set->lock);
->  	device->open_count++;
-> +	down_read(&device->group->group_rwsem);
-> +	if (device->open_count == 1 && device->group->kvm) {
-> +		/*
-> +		 * Here we pass the KVM pointer with the group under the read
-> +		 * lock.  If the device driver will use it, it must obtain a
-> +		 * reference and release it during close_device.
-> +		 */
-> +		device->kvm = device->group->kvm;
-> +	}
 
-But it is a bit ugly to keep the device->kvm in the struct device
-without holding a reference count.
+E.g.
 
-It is probably worth adding a comment to the definition in the struct
-as well that the device driver must reference it or never touch it.
+---
+ arch/x86/include/asm/kvm_host.h |  1 +
+ arch/x86/kvm/lapic.c            | 21 +++++++++++++++++++--
+ arch/x86/kvm/svm/avic.c         |  3 ++-
+ arch/x86/kvm/vmx/vmx.c          |  3 ++-
+ 4 files changed, 24 insertions(+), 4 deletions(-)
 
-Jason
+diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
+index d895d25c5b2f..d888fa1bae77 100644
+--- a/arch/x86/include/asm/kvm_host.h
++++ b/arch/x86/include/asm/kvm_host.h
+@@ -1071,6 +1071,7 @@ enum kvm_apicv_inhibit {
+ 	APICV_INHIBIT_REASON_BLOCKIRQ,
+ 	APICV_INHIBIT_REASON_ABSENT,
+ 	APICV_INHIBIT_REASON_SEV,
++	APICV_INHIBIT_REASON_APIC_ID_MODIFIED,
+ };
+
+ struct kvm_arch {
+diff --git a/arch/x86/kvm/lapic.c b/arch/x86/kvm/lapic.c
+index 5fd678c90288..6fe8f20f03d8 100644
+--- a/arch/x86/kvm/lapic.c
++++ b/arch/x86/kvm/lapic.c
+@@ -2039,6 +2039,19 @@ static void apic_manage_nmi_watchdog(struct kvm_lapic *apic, u32 lvt0_val)
+ 	}
+ }
+
++static void kvm_lapic_xapic_id_updated(struct kvm_lapic *apic)
++{
++	struct kvm *kvm = apic->vcpu->kvm;
++
++	if (KVM_BUG_ON(apic_x2apic_mode(apic), kvm))
++		return;
++
++	if (kvm_xapic_id(apic) == apic->vcpu->vcpu_id)
++		return;
++
++	kvm_set_apicv_inhibit(kvm, APICV_INHIBIT_REASON_APIC_ID_MODIFIED);
++}
++
+ static int kvm_lapic_reg_write(struct kvm_lapic *apic, u32 reg, u32 val)
+ {
+ 	int ret = 0;
+@@ -2047,10 +2060,12 @@ static int kvm_lapic_reg_write(struct kvm_lapic *apic, u32 reg, u32 val)
+
+ 	switch (reg) {
+ 	case APIC_ID:		/* Local APIC ID */
+-		if (!apic_x2apic_mode(apic))
++		if (!apic_x2apic_mode(apic)) {
+ 			kvm_apic_set_xapic_id(apic, val >> 24);
+-		else
++			kvm_lapic_xapic_id_updated(apic);
++		} else {
+ 			ret = 1;
++		}
+ 		break;
+
+ 	case APIC_TASKPRI:
+@@ -2665,6 +2680,8 @@ static int kvm_apic_state_fixup(struct kvm_vcpu *vcpu,
+ 			icr = __kvm_lapic_get_reg64(s->regs, APIC_ICR);
+ 			__kvm_lapic_set_reg(s->regs, APIC_ICR2, icr >> 32);
+ 		}
++	} else {
++		kvm_lapic_xapic_id_updated(vcpu->arch.apic);
+ 	}
+
+ 	return 0;
+diff --git a/arch/x86/kvm/svm/avic.c b/arch/x86/kvm/svm/avic.c
+index 54fe03714f8a..239c3e8b1f3f 100644
+--- a/arch/x86/kvm/svm/avic.c
++++ b/arch/x86/kvm/svm/avic.c
+@@ -910,7 +910,8 @@ bool avic_check_apicv_inhibit_reasons(enum kvm_apicv_inhibit reason)
+ 			  BIT(APICV_INHIBIT_REASON_PIT_REINJ) |
+ 			  BIT(APICV_INHIBIT_REASON_X2APIC) |
+ 			  BIT(APICV_INHIBIT_REASON_BLOCKIRQ) |
+-			  BIT(APICV_INHIBIT_REASON_SEV);
++			  BIT(APICV_INHIBIT_REASON_SEV) |
++			  BIT(APICV_INHIBIT_REASON_APIC_ID_MODIFIED);
+
+ 	return supported & BIT(reason);
+ }
+diff --git a/arch/x86/kvm/vmx/vmx.c b/arch/x86/kvm/vmx/vmx.c
+index b06eafa5884d..941adade21ea 100644
+--- a/arch/x86/kvm/vmx/vmx.c
++++ b/arch/x86/kvm/vmx/vmx.c
+@@ -7818,7 +7818,8 @@ static bool vmx_check_apicv_inhibit_reasons(enum kvm_apicv_inhibit reason)
+ 	ulong supported = BIT(APICV_INHIBIT_REASON_DISABLE) |
+ 			  BIT(APICV_INHIBIT_REASON_ABSENT) |
+ 			  BIT(APICV_INHIBIT_REASON_HYPERV) |
+-			  BIT(APICV_INHIBIT_REASON_BLOCKIRQ);
++			  BIT(APICV_INHIBIT_REASON_BLOCKIRQ) |
++			  BIT(APICV_INHIBIT_REASON_APIC_ID_MODIFIED);
+
+ 	return supported & BIT(reason);
+ }
+
+base-commit: 6ab6e3842d18e4529fa524fb6c668ae8a8bf54f4
+--
+
