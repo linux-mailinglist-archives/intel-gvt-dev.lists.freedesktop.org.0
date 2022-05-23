@@ -1,59 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96E3A5309A9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 May 2022 08:50:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67F85530A02
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 May 2022 09:59:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 37F8610EFAA;
-	Mon, 23 May 2022 06:50:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1026810E687;
+	Mon, 23 May 2022 07:59:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B73D410EFA4
+X-Greylist: delayed 516 seconds by postgrey-1.36 at gabe;
+ Mon, 23 May 2022 07:59:40 UTC
+Received: from mail.bizcall.pl (mail.bizcall.pl [192.71.213.112])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 53C5610E687
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 23 May 2022 06:50:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1653288639;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6or0LDEr8+Nq81Rkj47r4fBHy8teKoRGQNGc1avEiUw=;
- b=NB7bs09ziwWInAauIkduwDhjvHiNd0UsxGu53lsGN9ZsTrPzmS/gTLefjTUZwhXtkp4BnE
- /Xyz2DgJcNVLdBKiZcoVgBdNKVv+P1nUQE/tw4dqPryv+Msq/JrZ0gzBnKGuUVqgKnAKLn
- tJvrtvOuDjagzRB2sADuv15lhcpz6UY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-509-eUJsIwmcNCqspPyOcQzEDw-1; Mon, 23 May 2022 02:50:33 -0400
-X-MC-Unique: eUJsIwmcNCqspPyOcQzEDw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 43A08801210;
- Mon, 23 May 2022 06:50:32 +0000 (UTC)
-Received: from starship (unknown [10.40.192.55])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2C58041047E8;
- Mon, 23 May 2022 06:50:25 +0000 (UTC)
-Message-ID: <65991ac329a32cf4128400b643d5b5ccf3918cfe.camel@redhat.com>
-Subject: Re: [RFC PATCH v3 02/19] KVM: x86: inhibit APICv/AVIC when the
- guest and/or host changes apic id/base from the defaults.
-From: Maxim Levitsky <mlevitsk@redhat.com>
-To: Jim Mattson <jmattson@google.com>
-Date: Mon, 23 May 2022 09:50:24 +0300
-In-Reply-To: <CALMp9eSVji2CPW1AjFoSbWZ_b-r3y67HyatgdqXEqSyUaD1_BQ@mail.gmail.com>
-References: <20220427200314.276673-1-mlevitsk@redhat.com>
- <20220427200314.276673-3-mlevitsk@redhat.com> <YoZrG3n5fgMp4LQl@google.com>
- <e32f6c904c92e9e9efabcc697917a232f5e88881.camel@redhat.com>
- <CALMp9eSVji2CPW1AjFoSbWZ_b-r3y67HyatgdqXEqSyUaD1_BQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
+ Mon, 23 May 2022 07:59:40 +0000 (UTC)
+Received: by mail.bizcall.pl (Postfix, from userid 1001)
+ id EBED642275; Mon, 23 May 2022 09:50:36 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizcall.pl; s=mail;
+ t=1653292262; bh=L7rZPDqncV/PGNK3vBL4eFyhOA8rMHMu3jCfxnl4mEc=;
+ h=Date:From:To:Subject:From;
+ b=ZaG8TMqCFPaOXdam/Ujq+00et5e7iLQEIPklB87WiYTbtqvz402Ii419lL5U1v9lf
+ 67ylUCqMMl8DKvBm7n8H2ksXa81o5zUFSx0FbCwSEBePoM8irYJyvBUwgPsax0BP5N
+ 2MwpIrLGfUm35qy1kAp3Ul8KU3U6d3uEmdFiHUmKGMParQlT41SXW7yf62pEiA4eaj
+ UXSeI/KFjS/oziViwgZMH2fQhArKws0sl7eWmDi4qByIQVUds7RCqQXIx9V3zZX/sk
+ 3jOSFMAghYMQcTUzR/w8bj4bqj3vIf2qazga22DGUFFBwQ21xK0KYFe5DSA6JUS5qm
+ /PD3QeuDRz48A==
+Received: by mail.bizcall.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 23 May 2022 07:48:26 GMT
+Message-ID: <20220523084503-0.1.2r.dwau.0.s5l5qdg08g@bizcall.pl>
+Date: Mon, 23 May 2022 07:48:26 GMT
+From: "Marek Onufrowicz" <marek.onufrowicz@bizcall.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Prezentacja
+X-Mailer: mail.bizcall.pl
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,92 +49,27 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
- David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, "H. Peter Anvin" <hpa@zytor.com>,
- Brijesh Singh <brijesh.singh@amd.com>, Joerg Roedel <joro@8bytes.org>,
- x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Tom Lendacky <thomas.lendacky@amd.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
- intel-gvt-dev@lists.freedesktop.org,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Sean Christopherson <seanjc@google.com>, linux-kernel@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
- Vitaly Kuznetsov <vkuznets@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sun, 2022-05-22 at 07:47 -0700, Jim Mattson wrote:
-> On Sun, May 22, 2022 at 2:03 AM Maxim Levitsky <mlevitsk@redhat.com> wrote:
-> > On Thu, 2022-05-19 at 16:06 +0000, Sean Christopherson wrote:
-> > > On Wed, Apr 27, 2022, Maxim Levitsky wrote:
-> > > > Neither of these settings should be changed by the guest and it is
-> > > > a burden to support it in the acceleration code, so just inhibit
-> > > > it instead.
-> > > > 
-> > > > Also add a boolean 'apic_id_changed' to indicate if apic id ever changed.
-> > > > 
-> > > > Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
-> > > > ---
-> > > > +           return;
-> > > > +
-> > > > +   pr_warn_once("APIC ID change is unsupported by KVM");
-> > > 
-> > > It's supported (modulo x2APIC shenanigans), otherwise KVM wouldn't need to disable
-> > > APICv.
-> > 
-> > Here, as I said, it would be nice to see that warning if someone complains.
-> > Fact is that AVIC code was totally broken in this regard, and there are probably more,
-> > so it would be nice to see if anybody complains.
-> > 
-> > If you insist, I'll remove this warning.
-> 
-> This may be fine for a hobbyist, but it's a terrible API in an
-> enterprise environment. To be honest, I have no way of propagating
-> this warning from /var/log/messages on a particular host to a
-> potentially impacted customer. Worse, if they're not the first
-> impacted customer since the last host reboot, there's no warning to
-> propagate. I suppose I could just tell every later customer, "Your VM
-> was scheduled to run on a host that previously reported, 'APIC ID
-> change is unsupported by KVM.' If you notice any unusual behavior,
-> that might be the reason for it," but that isn't going to inspire
-> confidence. I could schedule a drain and reboot of the host, but that
-> defeats the whole point of the "_once" suffix.
+Dzie=C5=84 dobry!
 
-Mostly agree, and I read alrady few discussions about exactly this,
-those warnings are mostly useless, but they are used in the
-cases where we don't have the courage to just exit with KVM_EXIT_INTERNAL_ERROR.
+Czy m=C3=B3g=C5=82bym przedstawi=C4=87 rozwi=C4=85zanie, kt=C3=B3re umo=C5=
+=BCliwia monitoring ka=C5=BCdego auta w czasie rzeczywistym w tym jego po=
+zycj=C4=99, zu=C5=BCycie paliwa i przebieg?
 
-I do not thing though that the warning is completely useless, 
-as we often have the kernel log of the target machine when things go wrong, 
-so *we* can notice it.
-In other words a kernel warning is mostly useless but better that nothing.
+Dodatkowo nasze narz=C4=99dzie minimalizuje koszty utrzymania samochod=C3=
+=B3w, skraca czas przejazd=C3=B3w, a tak=C5=BCe tworzenie planu tras czy =
+dostaw.
 
-About KVM_EXIT_WARNING, this is IMHO a very good idea, probably combined
-with some form of taint flag, which could be read by qemu and then shown
-over hmp/qmp interfaces.
+Z naszej wiedzy i do=C5=9Bwiadczenia korzysta ju=C5=BC ponad 49 tys. Klie=
+nt=C3=B3w. Monitorujemy 809 000 pojazd=C3=B3w na ca=C5=82ym =C5=9Bwiecie,=
+ co jest nasz=C4=85 najlepsz=C4=85 wizyt=C3=B3wk=C4=85.
 
-Best regards,
-	Maxim levitsky
+Bardzo prosz=C4=99 o e-maila zwrotnego, je=C5=9Bli mogliby=C5=9Bmy wsp=C3=
+=B3lnie om=C3=B3wi=C4=87 potencja=C5=82 wykorzystania takiego rozwi=C4=85=
+zania w Pa=C5=84stwa firmie.
 
 
-> 
-> I know that there's a long history of doing this in KVM, but I'd like
-> to ask that we:
-> a) stop piling on
-> b) start fixing the existing uses
-> 
-> If KVM cannot emulate a perfectly valid operation, an exit to
-> userspace with KVM_EXIT_INTERNAL_ERROR is warranted. Perhaps for
-> operations that we suspect KVM might get wrong, we should have a new
-> userspace exit: KVM_EXIT_WARNING?
-> 
-> I'm not saying that you should remove the warning. I'm just asking
-> that it be augmented with a direct signal to userspace that KVM may no
-> longer be reliable.
-> 
-
-
+Pozdrawiam,
+Marek Onufrowicz
