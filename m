@@ -1,35 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1B5A532595
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 May 2022 10:43:01 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 51E2753269E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 May 2022 11:39:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1597E10E8D2;
-	Tue, 24 May 2022 08:43:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 05D2F10E9E9;
+	Tue, 24 May 2022 09:39:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from out30-133.freemail.mail.aliyun.com
- (out30-133.freemail.mail.aliyun.com [115.124.30.133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1199E10E8D2;
- Tue, 24 May 2022 08:42:57 +0000 (UTC)
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R411e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e01424;
- MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=14; SR=0;
- TI=SMTPD_---0VEHJJLh_1653381467; 
-Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com
- fp:SMTPD_---0VEHJJLh_1653381467) by smtp.aliyun-inc.com(127.0.0.1);
- Tue, 24 May 2022 16:37:50 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: zhenyuw@linux.intel.com
-Subject: [PATCH 1/2] drm/i915/gvt: Fix kernel-doc
-Date: Tue, 24 May 2022 16:37:33 +0800
-Message-Id: <20220524083733.67148-2-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
-In-Reply-To: <20220524083733.67148-1-jiapeng.chong@linux.alibaba.com>
-References: <20220524083733.67148-1-jiapeng.chong@linux.alibaba.com>
+X-Greylist: delayed 758 seconds by postgrey-1.36 at gabe;
+ Tue, 24 May 2022 09:39:19 UTC
+Received: from box.indicandustries.com (hwsrv-970840.hostwindsdns.com
+ [IPv6:2607:5501:3000:21a5::2])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 17DCF10E9E9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 24 May 2022 09:39:19 +0000 (UTC)
+Received: from authenticated-user (box.indicandustries.com [104.168.149.109])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by box.indicandustries.com (Postfix) with ESMTPSA id 2249A1088E8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 24 May 2022 03:25:40 -0600 (MDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=box.indicandustries.com; s=mail; t=1653384341;
+ bh=V6VCn7WEbqHjVVQ20/+SYu6rwS1WmTHcxX88g+j430s=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=dgDToMCAGfHkLQ4Dv7CKR01uSgFGFRj+pMlDSObmSYfWSbXUmRwyaNHCCGZHE5Es3
+ A3PRZHsG38GTeH7vXyf1lyeudxOl0L8IGOjVphCfn70E4sknrERgwXu8cfkn34WKLL
+ 63uXYdaqJqcacHZX6kYGk7NetBCeq2ujQXNZwObrUKToAX9Q//I4zxzJJ+6tR4C6b/
+ NnvcsUT1EkL7edxQ7ZyridRb/udmlMO5KSmBvkXRulT6aKMh+b3wi5HzeMIAdvd7pN
+ XRt3E3RvF1OFBOMAheNg/8iou8A/v9lC/Fsi5xUsdyxuES7XMmpbYsRHbOGF4JCYzu
+ 4Wp4pr/Z7W1fw==
+From: amjad.ali@box.indicandustries.com
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Hello Sir, I seek your urgent consideration.
+Date: 24 May 2022 11:25:40 +0200
+Message-ID: <20220524112540.AB7D68C0B96A53BE@box.indicandustries.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,41 +53,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: tvrtko.ursulin@linux.intel.com,
- Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, airlied@linux.ie,
- intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
- Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
- jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, daniel@ffwll.ch,
- rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
+Reply-To: amjalia90@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Fix the following W=1 kernel warnings:
+Hello,
 
-drivers/gpu/drm/i915/gvt/handlers.c:3066: warning: expecting prototype
-for intel_t_default_mmio_write(). Prototype was for
-intel_vgpu_default_mmio_write() instead.
+Greetings? I am Amjad. I work with a leading Bio Firm.  Due to=20
+the setbacks of the pandemic, my company has opened a bid in=20
+search of new suppliers for basic raw materials needed in=20
+production.
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
- drivers/gpu/drm/i915/gvt/handlers.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I am seeking a representative=C2=A0as I am a staff, I can not be=20
+involved directly. It may not be your area of work but the=20
+profits are great and I will guide you through. I have already=20
+sourced a local supplier for this. I only need a reliable=20
+representative.
 
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index beea5895e499..9c8dde079cb4 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -3052,7 +3052,7 @@ int intel_vgpu_default_mmio_read(struct intel_vgpu *vgpu, unsigned int offset,
- }
- 
- /**
-- * intel_t_default_mmio_write - default MMIO write handler
-+ * intel_vgpu_default_mmio_write() - default MMIO write handler
-  * @vgpu: a vGPU
-  * @offset: access offset
-  * @p_data: write data buffer
--- 
-2.20.1.7.g153144c
+Please get back to me so I can explain this in full.
 
+Amjad
