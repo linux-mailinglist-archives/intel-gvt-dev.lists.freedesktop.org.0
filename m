@@ -1,55 +1,39 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DF055353DC
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 May 2022 21:21:36 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9ECEE5363F3
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 May 2022 16:21:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2A22810E5C8;
-	Thu, 26 May 2022 19:21:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 433DA10E312;
+	Fri, 27 May 2022 14:21:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x143.google.com (mail-lf1-x143.google.com
- [IPv6:2a00:1450:4864:20::143])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3EAF710E61F
+X-Greylist: delayed 11500 seconds by postgrey-1.36 at gabe;
+ Fri, 27 May 2022 14:21:52 UTC
+Received: from mail.composit.net (mail.composit.net [195.49.185.119])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 25C4710E312
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 26 May 2022 19:21:34 +0000 (UTC)
-Received: by mail-lf1-x143.google.com with SMTP id t25so3777819lfg.7
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 26 May 2022 12:21:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=FjSmNLDJzqwi2mJniYh6K1s64bZhn5+QqdEKtM+4dqk=;
- b=Nf6TxNrqbmCB03MI8EeZ6CwABria9l7rre1N7mbHaR3N7w+Q15mAItSvoL/gz9yyLy
- B0USpgtwDHP87qkpCc95YlOaP+ppLL89RznOTVKeO8cCYWr3dUXzxQHJZSSU1Vs4U7yY
- qm+gVNFahqMjYZS78bWvsXdjD00u5yDvDQZxpKOSsw9BOF9AWLg9Ga8ptcIUyWOi9lgK
- 6EuxTCa/WYR3mCZOz6aP73Ki9DgkdpDnYqr3mXs/UCLUC/LM8uZlWHBFlyAaVr5SiIqT
- Z5B0bLcih4VdU9K1O5p05GTwCo9XWdkndqJDSsVX3I05Q+u3wEVoAYYo0UqxBsDo/0LH
- nzwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=FjSmNLDJzqwi2mJniYh6K1s64bZhn5+QqdEKtM+4dqk=;
- b=zdv0RmSdGl7huTDpslxgxmM+XCkLB1Pyq4RlniavKV39OSfBQX/cbDF5LtBcoCM+nF
- CRtKFDyGZ5oMzXoDnGIJHsH7fHCa0ERgjx99cww+vf3TWPW6iZtubFSQwug4wubMc45+
- a2TUiK6pi7MmMzb7vnN1vF6zswqLY6qgsG/WYcLBTpA58E94AJJzMWkt48l/iGXzo37R
- jP6obA6LVXIYasNgBUyfFr62clIx67v/AF6S8A3mzktew/gSVh1Vra01ZYZiM9xiZjPH
- KH8QA66IbLBGROOgOE6u7WEXwIfSqHYs7uvSSKQ9HdPlL2+rG1Lh/Sni6pVkE4cva2nD
- pTIA==
-X-Gm-Message-State: AOAM532vyYl7ZN9OaFxvS2Hnly54Y3/9fucwblxQMoau7GOqnpkm4nFf
- AQc+yVd14Gh7iEFWG5ZE8XM/QbqqJxukLbh3o3Y=
-X-Google-Smtp-Source: ABdhPJxMbGz+oipraoLqWsqadyv3sH0gycVHk2OHNn1+WTuzRMnieqvm1Toy+8Nh0Evbz6pWYC2VfZj/YouSX2MdBRk=
-X-Received: by 2002:a19:4306:0:b0:471:bc59:aeb1 with SMTP id
- q6-20020a194306000000b00471bc59aeb1mr26505062lfa.566.1653592892284; Thu, 26
- May 2022 12:21:32 -0700 (PDT)
+ Fri, 27 May 2022 14:21:52 +0000 (UTC)
+Received: from mail.composit.net (localhost.localdomain [127.0.0.1])
+ by mail.composit.net (Proxmox) with ESMTP id 3FD8B394309;
+ Fri, 27 May 2022 14:06:22 +0300 (MSK)
+Received: from mail.composit.net (mail.composit.local [192.168.101.14])
+ by mail.composit.net (Proxmox) with SMTP id 11C29390A85;
+ Fri, 27 May 2022 14:06:22 +0300 (MSK)
+Received: from [192.168.1.105] (Unknown [197.234.219.23])
+ by mail.composit.net with ESMTPSA
+ (version=TLSv1 cipher=DHE-RSA-AES256-SHA bits=256)
+ ; Fri, 27 May 2022 14:06:23 +0300
+Message-ID: <D41E5813-B1C9-4025-81FC-DE961B85D11E@mail.composit.net>
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-From: deborah machefer <edivadavis2@gmail.com>
-Date: Thu, 26 May 2022 19:20:41 +0000
-Message-ID: <CAFJhRepX-K9746dSHYN+tQo6=wsFfhG9Wdwn79zXt+dYhSpc+Q@mail.gmail.com>
-Subject: Greetings to you.
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000f2a89e05dfef1860"
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: Greetings From Ukraine.  
+To: Recipients <heiss@dnet.it>
+From: "Kostiantyn Chichkov" <heiss@dnet.it>
+Date: Fri, 27 May 2022 12:06:02 +0100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,30 +46,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: 20212021dm@gmail.com
+Reply-To: kostiantync@online.ee
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000f2a89e05dfef1860
-Content-Type: text/plain; charset="UTF-8"
+Good Morning,
 
-Greetings to you. I'm Mrs. Deborah Machefer,by name. Can I trust you? on
-getting my late husband's inheritance fund from the bank as my donation to
-you? I will give you more details on how you can get my charity donation,
-to help the poor because of my poor health condition. God bless you as I
-wait for your reply.
-Your sister.
-Mrs.Machefer Deborah.
+We are Kostiantyn Chychkov and Maryna Chudnovska from Ukraine, we need your=
+ service, we have gone through your profile and we will like to work with y=
+ou on an important service that needs urgent attention due to the ongoing w=
+ar in our country. Kindly acknowledge this inquiry as soon as possible for =
+a detailed discussion about the service.
 
---000000000000f2a89e05dfef1860
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Thank you.
 
-<div dir=3D"ltr">Greetings to you. I&#39;m Mrs. Deborah Machefer,by name. C=
-an I trust you? on getting my late husband&#39;s inheritance fund from the =
-bank as my donation to you? I will give you more details on how you can get=
- my charity donation, to help the poor because of my poor health condition.=
- God bless you as I wait for your reply.<br>Your sister.<br>Mrs.Machefer De=
-borah.<br></div>
+Yours expectantly,
 
---000000000000f2a89e05dfef1860--
+Kostiantyn Chichkov & Ms. Maryna Chudnovska,
+From Ukraine.
+
+
