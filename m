@@ -1,29 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 449CF5373CB
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 May 2022 05:53:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C9B65385FE
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 May 2022 18:19:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DAAB210E741;
-	Mon, 30 May 2022 03:53:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1FF4C10E6FD;
+	Mon, 30 May 2022 16:19:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3671 seconds by postgrey-1.36 at gabe;
- Mon, 30 May 2022 03:53:17 UTC
-Received: from timeseriesmodelling.com (mojondal.xyz [146.19.253.31])
- by gabe.freedesktop.org (Postfix) with ESMTP id F0D2D10E6AC
+X-Greylist: delayed 609 seconds by postgrey-1.36 at gabe;
+ Mon, 30 May 2022 16:19:51 UTC
+Received: from fr27rsrxa.cn (unknown [45.156.21.36])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4523A10E255
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 30 May 2022 03:53:17 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Tap Fly
-Message-ID: <f4c77946ad486a7c8e22a5bb3f3a34b4@horizonhobby.com>
-Date: Mon, 30 May 2022 03:38:30 +0200
-From: "Simon Ryan" <simonts@trademaster-philippine.com>
+ Mon, 30 May 2022 16:19:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=fr27rsrxa.cn;
+ h=Message-ID:From:To:Subject:Date:MIME-Version:Content-Type;
+ i=admin-jr-odetake-net@fr27rsrxa.cn;
+ bh=7rS9NbZYN5U/Hx2uD5QevOsajMQ57Q888HvN8hbK/KI=;
+ b=c7/OUIb6YlT2azEpSxnXkCfq3J6aioUCah29vN8ZQrPP91L8NYK0F52J/xrsc92UxPJxcpZkj0QI
+ 0KVHzvL94NEiasyq2QPn/8iqV3jUDFle4x3K5WytXofZMgnGiP4GEmm0YBjIBZ0W3jTs7eyuzSSp
+ hdCBkJWDXew/LT+oBgk=
+Message-ID: <20220530160036423458@fr27rsrxa.cn>
+From: =?utf-8?B?77yq77yy6KW/5pel5pys44CAQ2x1YiBKLVdFU1Tkuovli5nlsYA=?=
+ <admin-jr-odetake-net@fr27rsrxa.cn>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: =?utf-8?B?44CQSlLopb/ml6XmnKw6Q2x1YiBKLVdFU1TjgJHjgYo=?=
+ =?utf-8?B?5a6i5qeY44G444Gu6YeN6KaB44Gq44GK55+l44KJ44Gb44Gn44GZ44CC?=
+Date: Mon, 30 May 2022 16:00:31 +000
 MIME-Version: 1.0
-X-Mailer-Sent-By: 2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative;
+ boundary="----=_NextPart_000_0E81_0150B274.163B8DA0"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -36,49 +44,157 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: info@677726.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hello,<br /><br />How are things going for you right now?<br /> Have you
-gone over the information on the Quadcopter that was originally sent to
-you? If not, please do so immediately.<br /> This item is now available for
-purchase in our warehouse. <br /> <br /> I'll send you an email with
-further information about the product.<br /> <br /> Transmission of FPV
-images via 5G WiFi at a distance of 2000m<br /> Lithium-ion battery with a
-voltage of 11.4V and a capacity of 2850mAh (included)<br /> Flight duration
-is 28 minutes.<br /> Distance between the remote control and the device:
-around 2000m<br /> The field of view is 110 degrees broad.<br /><br />If
-you would like to purchase one of RC drones. Please let us know your
-address, we will get the shipment ready for you.<br />Unit price is 285.00
-each<br /><img
-src="https://jola.vn/cdn/720/Product/xXviCD_ct/Flycam%208811%20Aviator%20Pro%20Camera%206K%205.jpg"
-width="450" height="450" /><img
-src="https://www.dhresource.com/0x0/f2/albu/g16/M01/8F/6F/rBVa4F-gvAaATYnXAAChOP-L-H4386.jpg"
-width="450" height="450" /><br /> <br /> <br /> The following is an
-introduction to our company:<br /> We started in the domestic toy market in
-2003 and expanded into the international toy company in 2015.<br /> We are
-a professional firm specializing in the research, development,
-manufacturing, distribution, and support of radio-controlled toys and
-camera goods.<br /> Because we are committed to tight quality control and
-considerate customer care, our professional sales team is always accessible
-for consultation in order to meet your needs and ensure complete customer
-satisfaction.<br /><br /> OEM and ODM projects are always accepted at our
-company. Whether you're looking for a specific current product from our
-catalog or need engineering support for a specific application, you can
-speak with a representative from our customer care center about your
-sourcing needs.<br /> We have a skilled and experienced engineer staff that
-can assist you in realizing all of your designs, even if they are just
-concepts.<br /> <br /> Transmission of FPV images via 5G WiFi at a distance
-of 2000m<br /> Lithium-ion battery with a voltage of 11.4V and a capacity
-of 2850mAh (included)<br /> Flight duration is 28 minutes.<br /> <br />
-Distance between the remote control and the device: around 2000m<br /> The
-field of view is 110 degrees broad.<br /><br /> Thanks,<br /> Simon Ryan<br
-/>
-</body>
-</html>
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0E81_0150B274.163B8DA0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
+
+DQog44GK5a6i5qeY44G4DQrml6XpoIPjgojjgorjgIzvvKrvvLLopb/ml6XmnKzjgI3jgpLjgZTl
+iKnnlKjjgYTjgZ/jgaDjgY3jgYLjgorjgYzjgajjgYbjgZTjgZbjgYTjgb7jgZnjgIIgDQrjgIzv
+vKrvvLLopb/ml6XmnKzjgI3jga8gMjAyMiDlubQgNSDmnIggMjgg5pelKOaXpSnjgavjgrXjg7zj
+g5PjgrnjgpLjg6rjg4vjg6Xjg7zjgqLjg6vjgYTjgZ/jgZfjgb7jgZfjgZ/jgILjgZPjgowg44Gr
+5Ly044GE44CB44CM77yq77yy6KW/5pel5pys44CN5Yip55So6KaP57SE44O75Lya5ZOh6KaP57SE
+44KS5aSJ5pu044GX44CB5pyA5b6M44Gr44Ot44Kw44Kk44Oz44KS44GX44Gf5pel44KI44KK6LW3
+566X44GXIOOBpu+8kuW5tOS7peS4iuOAjO+8qu+8suilv+aXpeacrOOAjeOBruOBlOWIqeeUqO+8
+iOODreOCsOOCpOODs++8ieOBjOeiuuiqjeOBp+OBjeOBquOBhOOAjO+8qu+8suilv+aXpeacrOOA
+jeOCouOCq+OCpuODs+ODiCDjga/jgIHoh6rli5XnmoTjgavpgIDkvJrlh6bnkIbjgZXjgZvjgabj
+gYTjgZ/jgaDjgY/jgZPjgajjgajjgYTjgZ/jgZfjgb7jgZfjgZ/jgILjgarjgYrjgIHlr77osaHj
+gqLjgqvjgqbjg7Pjg4jjga7oh6rli5XpgIAg5Lya5Yem55CG44KS44CB5pys6KaP57SE44Gr5Z+6
+44Gl44GN44CBMjAyMiDlubQgNiDmnIggMjggIOaXpeOCiOOCiumghuasoeOAgeWun+aWveOBleOB
+m+OBpuOBhOOBn+OBoOOBjeOBvuOBmeOAgg0KDQogDQoyNOaZgumWk+S7peS4iuODreOCsOOCpOOD
+s+OBl+OBpuOBiuOCieOBmuOAgeOAjO+8qu+8suilv+aXpeacrOOAjeOCkuS9v+OBhOe2muOBkeOB
+n+OBhOWgtOWQiOOBr+OAgTIwMjLlubQ15pyIMjjml6Xjgb7jgafjgavkuIDluqbjg63jgrDjgqTj
+g7PjgZfjgabjgY/jgaDjgZXjgYTjgIINCuKHkuODreOCsOOCpOODs+OBr+OBk+OBoeOCiSANCuKA
+u+OBiOOBjeOBreOBo+OBqOODiOODg+ODl+ODmuODvOOCuOWPs+S4iuOBruODreOCsOOCpOODs+OD
+nOOCv+ODs+OCiOOCiuODreOCsOOCpOODs+OBl+OBpuOBj+OBoOOBleOBhOOAgg0KDQoNCuOBquOB
+iuOAgeOCouOCq+OCpuODs+ODiOOBjOmAgOS8muWHpueQhuOBleOCjOOBn+WgtOWQiOOCguOAgeaW
+sOOBn+OBq+OCouOCq+OCpuODs+ODiOeZu+mMsu+8iOeEoeaWmeeZu+mMsu+8ieOBl+OBpuOBhOOB
+nyDjgaDjgY/jgZPjgajjgafjgZnjgZDjgavjgIzjgYjjgY3jga3jgaPjgajjgI3jgpLjgZTliKnn
+lKjjgYTjgZ/jgaDjgY/jgZPjgajjgYzjgafjgY3jgb7jgZnjga7jgafjgIHku4rlvozjgoLjgZTm
+hJvpoafjgYTjgZ8g44Gg44GR44G+44GZ44KI44GG44KI44KN44GX44GP44GK6aGY44GE44GE44Gf
+44GX44G+44GZ44CCIA0KDQoNCiAgQ29weXJpZ2h0IMKpIEpSIEVhc3QgTmV0IFN0YXRpb24gQ28u
+LEx0ZC4gQWxsIFJpZ2h0cyBSZXNlcnZlZC4=
+
+------=_NextPart_000_0E81_0150B274.163B8DA0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MPjxIRUFEPjxUSVRMRT7ml6DmoIfpopjmlofmoaM8L1RJVExFPg0KPE1FVEEg
+Y2hhcnNldD11dGYtOD4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRlbnQ9Ik1TSFRNTCAxMS4w
+MC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxTVFlMRSBjbGFzcz1mb3hfZ2xvYmFsX3N0
+eWxlPiANCmRpdi5mb3hfaHRtbF9jb250ZW50IHsgbGluZS1oZWlnaHQ6IDEuNTt9IC8qIOS4gOS6
+m+m7mOiupOagt+W8jyAqLyBibG9ja3F1b3RlIHsgbWFyZ2luLVRvcDogMHB4OyBtYXJnaW4tQm90
+dG9tOiAwcHg7IG1hcmdpbi1MZWZ0OiAwLjVlbSB9IG9sLCB1bCB7IG1hcmdpbi1Ub3A6IDBweDsg
+bWFyZ2luLUJvdHRvbTogMHB4OyBsaXN0LXN0eWxlLXBvc2l0aW9uOiBpbnNpZGU7IH0gcCB7IG1h
+cmdpbi1Ub3A6IDBweDsgbWFyZ2luLUJvdHRvbTogMHB4IH0gDQo8L1NUWUxFPg0KDQo8RElWPjxT
+UEFOIGNsYXNzPW1haWwtc3ViamVjdCBzdHlsZT0iQ09MT1I6IGJsYWNrIj48L1NQQU4+Jm5ic3A7
+PC9ESVY+DQo8RElWPg0KPERJViBpZD1jb250ZW50RGVzY3JpcHRpb24gDQpzdHlsZT0iVEVYVC1B
+TElHTjoganVzdGlmeTsgVEVYVC1KVVNUSUZZOiBpbnRlci1pZGVvZ3JhcGg7IExJTkUtSEVJR0hU
+OiAxLjUiPg0KPERJVj48U1BBTiBjbGFzcz1wcmVoZWFkZXIgDQpzdHlsZT0iRk9OVC1TSVpFOiAx
+cHg7IE9WRVJGTE9XOiBoaWRkZW47IE1BWC1XSURUSDogMHB4OyBDT0xPUjogI2ZhZmFmYTsgRElT
+UExBWTogbm9uZSAhaW1wb3J0YW50OyBMSU5FLUhFSUdIVDogMXB4OyBNQVgtSEVJR0hUOiAwcHg7
+IFZJU0lCSUxJVFk6IGhpZGRlbjsgbXNvLWhpZGU6IGFsbDsgb3BhY2l0eTogMCI+PC9TUEFOPg0K
+PFRBQkxFIGNsYXNzPWJvZHkgDQpzdHlsZT0iRk9OVC1TSVpFOiAxNHB4OyBIRUlHSFQ6IDI2NXB4
+OyBGT05ULUZBTUlMWTogUm9ib3RvLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmOyBXSURUSDog
+ODIuNSU7IFZFUlRJQ0FMLUFMSUdOOiB0b3A7IEJBQ0tHUk9VTkQ6ICNmOGY5ZmE7IEJPUkRFUi1D
+T0xMQVBTRTogY29sbGFwc2U7IEZPTlQtV0VJR0hUOiA0MDA7IENPTE9SOiAjM2M0MDQzOyBQQURE
+SU5HLUJPVFRPTTogMHB4OyBURVhULUFMSUdOOiBsZWZ0OyBQQURESU5HLVRPUDogMHB4OyBQQURE
+SU5HLUxFRlQ6IDBweDsgQk9SREVSLVNQQUNJTkc6IDA7IE1BUkdJTjogMHB4OyBQQURESU5HLVJJ
+R0hUOiAwcHgiIA0KYWxpZ249Y2VudGVyPg0KICA8VEJPRFk+DQogIDxUUiANCiAgc3R5bGU9IlZF
+UlRJQ0FMLUFMSUdOOiB0b3A7IFBBRERJTkctQk9UVE9NOiAwcHg7IFBBRERJTkctVE9QOiAwcHg7
+IFBBRERJTkctTEVGVDogMHB4OyBQQURESU5HLVJJR0hUOiAwcHgiPg0KICAgIDxURCBjbGFzcz1j
+ZW50ZXI+DQogICAgICA8U1RZTEUgY2xhc3M9Zm94X2dsb2JhbF9zdHlsZT4gZGl2LmZveF9odG1s
+X2NvbnRlbnQgeyBsaW5lLWhlaWdodDogMS41O30gLyog5LiA5Lqb6buY6K6k5qC35byPICovIGJs
+b2NrcXVvdGUgeyBtYXJnaW4tVG9wOiAwcHg7IG1hcmdpbi1Cb3R0b206IDBweDsgbWFyZ2luLUxl
+ZnQ6IDAuNWVtIH0gb2wsIHVsIHsgbWFyZ2luLVRvcDogMHB4OyBtYXJnaW4tQm90dG9tOiAwcHg7
+IGxpc3Qtc3R5bGUtcG9zaXRpb246IGluc2lkZTsgfSBwIHsgbWFyZ2luLVRvcDogMHB4OyBtYXJn
+aW4tQm90dG9tOiAwcHggfSA8L1NUWUxFPg0KPCEtLSBOQU1FOiAxIENPTFVNTiAtLT48IS0tW2lm
+IGd0ZSBtc28gMTVdPiA8eG1sPiA8bzpPZmZpY2VEb2N1bWVudFNldHRpbmdzPiA8bzpBbGxvd1BO
+Rz48L286QWxsb3dQTkc+IDxvOlBpeGVsc1BlckluY2g+OTY8L286UGl4ZWxzUGVySW5jaD4gPC9v
+Ok9mZmljZURvY3VtZW50U2V0dGluZ3M+IDwveG1sPiA8IVtlbmRpZl0tLT4NCiAgICAgIDxQIA0K
+ICAgICAgc3R5bGU9IlBBRERJTkctQk9UVE9NOiAwcHg7IFBBRERJTkctVE9QOiAwcHg7IFBBRERJ
+TkctTEVGVDogMHB4OyBNQVJHSU46IDEwcHggMHB4OyBQQURESU5HLVJJR0hUOiAwcHgiPiZuYnNw
+OzxTUEFOIA0KICAgICAgc3R5bGU9IkZPTlQtU0laRTogMTRweDsgRk9OVC1GQU1JTFk6IGFyaWFs
+OyBXSElURS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06
+IG5vbmU7IEZMT0FUOiBub25lOyBGT05ULVdFSUdIVDogNDAwOyBDT0xPUjogcmdiKDUxLDUxLDUx
+KTsgRk9OVC1TVFlMRTogbm9ybWFsOyBURVhULUFMSUdOOiBsZWZ0OyBPUlBIQU5TOiAyOyBXSURP
+V1M6IDI7IERJU1BMQVk6IGlubGluZSAhaW1wb3J0YW50OyBMRVRURVItU1BBQ0lORzogbm9ybWFs
+OyBCQUNLR1JPVU5ELUNPTE9SOiByZ2IoMjU1LDI1NSwyNTUpOyBURVhULUlOREVOVDogMHB4OyAt
+d2Via2l0LXRleHQtc3Ryb2tlLXdpZHRoOiAwcHg7IGZvbnQtdmFyaWFudC1saWdhdHVyZXM6IG5v
+cm1hbDsgZm9udC12YXJpYW50LWNhcHM6IG5vcm1hbDsgdGV4dC1kZWNvcmF0aW9uLXRoaWNrbmVz
+czogaW5pdGlhbDsgdGV4dC1kZWNvcmF0aW9uLXN0eWxlOiBpbml0aWFsOyB0ZXh0LWRlY29yYXRp
+b24tY29sb3I6IGluaXRpYWwiPuOBiuWuouanmOOBuDwvU1BBTj48L1A+DQogICAgICA8UCANCiAg
+ICAgIHN0eWxlPSJQQURESU5HLUJPVFRPTTogMHB4OyBQQURESU5HLVRPUDogMHB4OyBQQURESU5H
+LUxFRlQ6IDBweDsgTUFSR0lOOiAxMHB4IDBweDsgUEFERElORy1SSUdIVDogMHB4Ij7ml6XpoIPj
+gojjgorjgIzvvKrvvLLopb/ml6XmnKzjgI3jgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgYLjgorj
+gYzjgajjgYbjgZTjgZbjgYTjgb7jgZnjgIIgDQogICAgICA8L1A+DQogICAgICA8UCANCiAgICAg
+IHN0eWxlPSJQQURESU5HLUJPVFRPTTogMHB4OyBQQURESU5HLVRPUDogMHB4OyBQQURESU5HLUxF
+RlQ6IDBweDsgTUFSR0lOOiAxMHB4IDBweDsgUEFERElORy1SSUdIVDogMHB4Ij7jgIzvvKrvvLLo
+pb/ml6XmnKzjgI3jga8gDQogICAgICAyMDIyIOW5tCA1IOaciCZuYnNwOzI4IOaXpSjml6Up44Gr
+44K144O844OT44K544KS44Oq44OL44Ol44O844Ki44Or44GE44Gf44GX44G+44GX44Gf44CC44GT
+44KMIA0KICAgICAg44Gr5Ly044GE44CB44CM77yq77yy6KW/5pel5pys44CN5Yip55So6KaP57SE
+44O75Lya5ZOh6KaP57SE44KS5aSJ5pu044GX44CB5pyA5b6M44Gr44Ot44Kw44Kk44Oz44KS44GX
+44Gf5pel44KI44KK6LW3566X44GXIA0KICAgICAg44Gm77yS5bm05Lul5LiK44CM77yq77yy6KW/
+5pel5pys44CN44Gu44GU5Yip55So77yI44Ot44Kw44Kk44Oz77yJ44GM56K66KqN44Gn44GN44Gq
+44GE44CM77yq77yy6KW/5pel5pys44CN44Ki44Kr44Km44Oz44OIIA0KICAgICAg44Gv44CB6Ieq
+5YuV55qE44Gr6YCA5Lya5Yem55CG44GV44Gb44Gm44GE44Gf44Gg44GP44GT44Go44Go44GE44Gf
+44GX44G+44GX44Gf44CC44Gq44GK44CB5a++6LGh44Ki44Kr44Km44Oz44OI44Gu6Ieq5YuV6YCA
+IOS8muWHpueQhuOCkuOAgeacrOimj+e0hOOBq+WfuuOBpeOBjeOAgTIwMjIg5bm0Jm5ic3A7NiAN
+CiAgICAgIOaciCZuYnNwOzI4Jm5ic3A7IOaXpeOCiOOCiumghuasoeOAgeWun+aWveOBleOBm+OB
+puOBhOOBn+OBoOOBjeOBvuOBmeOAgjwvUD4NCiAgICAgIDxQIA0KICAgICAgc3R5bGU9IlBBRERJ
+TkctQk9UVE9NOiAwcHg7IFBBRERJTkctVE9QOiAwcHg7IFBBRERJTkctTEVGVDogMHB4OyBNQVJH
+SU46IDEwcHggMHB4OyBQQURESU5HLVJJR0hUOiAwcHgiPjxCUj4mbmJzcDs8L1A+DQogICAgICA8
+UCANCiAgICAgIHN0eWxlPSJQQURESU5HLUJPVFRPTTogMHB4OyBQQURESU5HLVRPUDogMHB4OyBQ
+QURESU5HLUxFRlQ6IDBweDsgTUFSR0lOOiAxMHB4IDBweDsgUEFERElORy1SSUdIVDogMHB4Ij4y
+NOaZgumWk+S7peS4iuODreOCsOOCpOODs+OBl+OBpuOBiuOCieOBmuOAgeOAjO+8qu+8suilv+aX
+peacrOOAjeOCkuS9v+OBhOe2muOBkeOBn+OBhOWgtOWQiOOBr+OAgTIwMjLlubQ15pyIMjjml6Xj
+gb7jgafjgavkuIDluqbjg63jgrDjgqTjg7PjgZfjgabjgY/jgaDjgZXjgYTjgII8L1A+DQogICAg
+ICA8UCANCiAgICAgIHN0eWxlPSJQQURESU5HLUJPVFRPTTogMHB4OyBQQURESU5HLVRPUDogMHB4
+OyBQQURESU5HLUxFRlQ6IDBweDsgTUFSR0lOOiAxMHB4IDBweDsgUEFERElORy1SSUdIVDogMHB4
+Ij7ih5I8QSANCiAgICAgIGhyZWY9Imh0dHBzOi8vd3d3LmFkbWluLWpyLW9kZXRha2UtbmV0Lnls
+b2p4ZW8uY24iPjxTVFJPTkc+PEZPTlQgDQogICAgICBzaXplPTQ+44Ot44Kw44Kk44Oz44Gv44GT
+44Gh44KJIDwvRk9OVD48L1NUUk9ORz48L0E+PC9QPg0KICAgICAgPFAgDQogICAgICBzdHlsZT0i
+UEFERElORy1CT1RUT006IDBweDsgUEFERElORy1UT1A6IDBweDsgUEFERElORy1MRUZUOiAwcHg7
+IE1BUkdJTjogMTBweCAwcHg7IFBBRERJTkctUklHSFQ6IDBweCI+4oC744GI44GN44Gt44Gj44Go
+44OI44OD44OX44Oa44O844K45Y+z5LiK44Gu44Ot44Kw44Kk44Oz44Oc44K/44Oz44KI44KK44Ot
+44Kw44Kk44Oz44GX44Gm44GP44Gg44GV44GE44CCPC9QPg0KICAgICAgPFAgDQogICAgICBzdHls
+ZT0iUEFERElORy1CT1RUT006IDBweDsgUEFERElORy1UT1A6IDBweDsgUEFERElORy1MRUZUOiAw
+cHg7IE1BUkdJTjogMTBweCAwcHg7IFBBRERJTkctUklHSFQ6IDBweCI+PEJSPjwvUD4NCiAgICAg
+IDxQIA0KICAgICAgc3R5bGU9IlBBRERJTkctQk9UVE9NOiAwcHg7IFBBRERJTkctVE9QOiAwcHg7
+IFBBRERJTkctTEVGVDogMHB4OyBNQVJHSU46IDEwcHggMHB4OyBQQURESU5HLVJJR0hUOiAwcHgi
+PuOBquOBiuOAgeOCouOCq+OCpuODs+ODiOOBjOmAgOS8muWHpueQhuOBleOCjOOBn+WgtOWQiOOC
+guOAgeaWsOOBn+OBq+OCouOCq+OCpuODs+ODiOeZu+mMsu+8iOeEoeaWmeeZu+mMsu+8ieOBl+OB
+puOBhOOBnyANCiAgICAgIOOBoOOBj+OBk+OBqOOBp+OBmeOBkOOBq+OAjOOBiOOBjeOBreOBo+OB
+qOOAjeOCkuOBlOWIqeeUqOOBhOOBn+OBoOOBj+OBk+OBqOOBjOOBp+OBjeOBvuOBmeOBruOBp+OA
+geS7iuW+jOOCguOBlOaEm+mhp+OBhOOBnyDjgaDjgZHjgb7jgZnjgojjgYbjgojjgo3jgZfjgY/j
+gYrpoZjjgYTjgYTjgZ/jgZfjgb7jgZnjgIImbmJzcDs8L1A+DQogICAgICA8UCANCiAgICAgIHN0
+eWxlPSJQQURESU5HLUJPVFRPTTogMHB4OyBQQURESU5HLVRPUDogMHB4OyBQQURESU5HLUxFRlQ6
+IDBweDsgTUFSR0lOOiAxMHB4IDBweDsgUEFERElORy1SSUdIVDogMHB4Ij48QlI+PC9QPg0KICAg
+ICAgPFAgDQogICAgICBzdHlsZT0iUEFERElORy1CT1RUT006IDBweDsgUEFERElORy1UT1A6IDBw
+eDsgUEFERElORy1MRUZUOiAwcHg7IE1BUkdJTjogMTBweCAwcHg7IFBBRERJTkctUklHSFQ6IDBw
+eCIgDQogICAgICBhbGlnbj1jZW50ZXI+PFNQQU4gDQogICAgICBzdHlsZT0iRk9OVC1TSVpFOiAx
+MXB4OyBGT05ULUZBTUlMWTogJ05vdG8gU2VyaWYgSmFwYW5lc2UnLCBzYW5zLXNlcmlmOyBXSElU
+RS1TUEFDRTogbm9ybWFsOyBXT1JELVNQQUNJTkc6IDBweDsgVEVYVC1UUkFOU0ZPUk06IG5vbmU7
+IEZMT0FUOiBub25lOyBGT05ULVdFSUdIVDogNDAwOyBDT0xPUjogcmdiKDUxLDUxLDUxKTsgRk9O
+VC1TVFlMRTogbm9ybWFsOyBURVhULUFMSUdOOiBjZW50ZXI7IE9SUEhBTlM6IDI7IFdJRE9XUzog
+MjsgRElTUExBWTogaW5saW5lICFpbXBvcnRhbnQ7IExFVFRFUi1TUEFDSU5HOiBub3JtYWw7IEJB
+Q0tHUk9VTkQtQ09MT1I6IHJnYigyNDUsMjQ1LDI0NSk7IFRFWFQtSU5ERU5UOiAwcHg7IC13ZWJr
+aXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsgZm9udC12YXJpYW50LWxpZ2F0dXJlczogbm9ybWFs
+OyBmb250LXZhcmlhbnQtY2Fwczogbm9ybWFsOyB0ZXh0LWRlY29yYXRpb24tdGhpY2tuZXNzOiBp
+bml0aWFsOyB0ZXh0LWRlY29yYXRpb24tc3R5bGU6IGluaXRpYWw7IHRleHQtZGVjb3JhdGlvbi1j
+b2xvcjogaW5pdGlhbCI+Jm5ic3A7IA0KICAgICAgQ29weXJpZ2h0IMKpIEpSIEVhc3QgTmV0IFN0
+YXRpb24gQ28uLEx0ZC4gQWxsIFJpZ2h0cyANCiAgICAgIFJlc2VydmVkLjwvU1BBTj48QlI+PC9Q
+Pg0KICAgICAgPFAgDQogICAgICBzdHlsZT0iUEFERElORy1CT1RUT006IDBweDsgUEFERElORy1U
+T1A6IDBweDsgUEFERElORy1MRUZUOiAwcHg7IE1BUkdJTjogMTBweCAwcHg7IFBBRERJTkctUklH
+SFQ6IDBweCI+PEJSPjwvUD48L1REPjwvVFI+PC9UQk9EWT48L1RBQkxFPjwvRElWPjwvRElWPjwv
+RElWPjwvQk9EWT48L0hUTUw+DQo=
+
+------=_NextPart_000_0E81_0150B274.163B8DA0--
 
