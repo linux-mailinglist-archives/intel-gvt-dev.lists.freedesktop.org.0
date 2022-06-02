@@ -1,33 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6FE253B464
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Jun 2022 09:35:37 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9421D53B4AE
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Jun 2022 10:02:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 675E71129F0;
-	Thu,  2 Jun 2022 07:35:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 30BAE10F4D7;
+	Thu,  2 Jun 2022 08:02:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from out30-130.freemail.mail.aliyun.com
- (out30-130.freemail.mail.aliyun.com [115.124.30.130])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1ACB81129F0;
- Thu,  2 Jun 2022 07:35:33 +0000 (UTC)
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R131e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=alimailimapcm10staff010182156082;
- MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=14; SR=0;
- TI=SMTPD_---0VF9ffSI_1654155321; 
-Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com
- fp:SMTPD_---0VF9ffSI_1654155321) by smtp.aliyun-inc.com(127.0.0.1);
- Thu, 02 Jun 2022 15:35:27 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: zhenyuw@linux.intel.com
-Subject: [PATCH] drm/i915/gvt: Fix kernel-doc
-Date: Thu,  2 Jun 2022 15:35:19 +0800
-Message-Id: <20220602073519.22363-1-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DD1BF112B18
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu,  2 Jun 2022 08:02:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1654156945; x=1685692945;
+ h=date:from:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=d/5uQN4PI8fd1ymLjtSa2H+32cvDj9r+VO8sYEIxQdI=;
+ b=keTk0c1+q6Uu9z2QxZw2AR3zQoxNs6LzvAsvzOrC5Gc6c54d5TUtBA0U
+ G/4+IPwm/PgDMDpM0gEmshnjXaZcCJOgklwIu7Z6DqgaAIHYJMc7XJydJ
+ p/2nNCZF1LzTDV7O/Y0paPJy3rZ/VzsKJJnt2ypXnsa86/MpfsSFgfZWI
+ bU6C7HlStZU+4eYmkYpjuLYuEMETGVxx2IYnRgPSCNEhi5ACots5mQ/pN
+ xrycpe1eolbFFfE2SSuqiwpPsMlN0oli5zCdxwvDBgh/Zo0CkEy5GgGHz
+ 001iVIVrHDavZlwxbYKDXkX9E2IsZmLxTHZYEOsNqvEpypjU01ZFm+Kl7 g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10365"; a="275877284"
+X-IronPort-AV: E=Sophos;i="5.91,270,1647327600"; d="scan'208";a="275877284"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2022 01:02:18 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,270,1647327600"; d="scan'208";a="563196586"
+Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 02 Jun 2022 01:02:16 -0700
+Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nwfmZ-0004rN-Kb;
+ Thu, 02 Jun 2022 08:02:15 +0000
+Date: Thu, 02 Jun 2022 16:01:29 +0800
+From: kernel test robot <lkp@intel.com>
+Subject: [intel-gvt:codeql] BUILD SUCCESS
+ f16fcbbcfe1ee097552b464f7d471cf34c621347
+Message-ID: <62986e59.nB7j7TfUr1UZuzr5%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,54 +58,110 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: tvrtko.ursulin@linux.intel.com,
- Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, airlied@linux.ie,
- intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
- Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
- jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, daniel@ffwll.ch,
- rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Fix the following W=1 kernel warnings:
+tree/branch: https://github.com/intel/gvt-linux.git codeql
+branch HEAD: f16fcbbcfe1ee097552b464f7d471cf34c621347  Create codeql-test.yml
 
-drivers/gpu/drm/i915/gvt/aperture_gm.c:308: warning: expecting prototype
-for inte_gvt_free_vgpu_resource(). Prototype was for
-intel_vgpu_free_resource() instead.
+elapsed time: 720m
 
-drivers/gpu/drm/i915/gvt/aperture_gm.c:344: warning: expecting prototype
-for intel_alloc_vgpu_resource(). Prototype was for
-intel_vgpu_alloc_resource() instead.
+configs tested: 84
+configs skipped: 3
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
- drivers/gpu/drm/i915/gvt/aperture_gm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-diff --git a/drivers/gpu/drm/i915/gvt/aperture_gm.c b/drivers/gpu/drm/i915/gvt/aperture_gm.c
-index 557f3314291a..3b81a6d35a7b 100644
---- a/drivers/gpu/drm/i915/gvt/aperture_gm.c
-+++ b/drivers/gpu/drm/i915/gvt/aperture_gm.c
-@@ -298,7 +298,7 @@ static int alloc_resource(struct intel_vgpu *vgpu,
- }
- 
- /**
-- * inte_gvt_free_vgpu_resource - free HW resource owned by a vGPU
-+ * intel_vgpu_free_resource() - free HW resource owned by a vGPU
-  * @vgpu: a vGPU
-  *
-  * This function is used to free the HW resource owned by a vGPU.
-@@ -328,7 +328,7 @@ void intel_vgpu_reset_resource(struct intel_vgpu *vgpu)
- }
- 
- /**
-- * intel_alloc_vgpu_resource - allocate HW resource for a vGPU
-+ * intel_vgpu_alloc_resource() - allocate HW resource for a vGPU
-  * @vgpu: vGPU
-  * @param: vGPU creation params
-  *
+gcc tested configs:
+arm                              allmodconfig
+arm                              allyesconfig
+arm                                 defconfig
+arm64                               defconfig
+arm64                            allyesconfig
+ia64                                defconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+alpha                               defconfig
+csky                                defconfig
+nios2                            allyesconfig
+alpha                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+parisc                              defconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+s390                             allyesconfig
+parisc64                            defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+i386                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+nios2                               defconfig
+arc                              allyesconfig
+mips                             allmodconfig
+mips                             allyesconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+powerpc                          allyesconfig
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+x86_64                        randconfig-a006
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+x86_64                        randconfig-a015
+i386                          randconfig-a014
+i386                          randconfig-a012
+i386                          randconfig-a016
+arc                  randconfig-r043-20220531
+riscv                randconfig-r042-20220531
+s390                 randconfig-r044-20220531
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                            allmodconfig
+riscv                    nommu_k210_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_virt_defconfig
+riscv                               defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                          rhel-8.3-func
+x86_64                         rhel-8.3-kunit
+x86_64                    rhel-8.3-kselftests
+x86_64                           rhel-8.3-syz
+x86_64                              defconfig
+x86_64                                  kexec
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
+
+clang tested configs:
+x86_64                        randconfig-a005
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+i386                          randconfig-a002
+i386                          randconfig-a004
+i386                          randconfig-a006
+x86_64                        randconfig-a016
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
+hexagon              randconfig-r041-20220531
+hexagon              randconfig-r045-20220531
+
 -- 
-2.20.1.7.g153144c
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
