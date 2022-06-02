@@ -1,26 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DEAA538E76
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 May 2022 12:07:00 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6FE253B464
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Jun 2022 09:35:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 05E2711278D;
-	Tue, 31 May 2022 10:06:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 675E71129F0;
+	Thu,  2 Jun 2022 07:35:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from thesleepstudies.com (mutanlik.xyz [188.214.104.212])
- by gabe.freedesktop.org (Postfix) with ESMTP id D269F112773
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 May 2022 10:06:57 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: following up on the email from last week
-Message-ID: <9ffd4293807388e3ff4f6d1b2bb07451@safetygearonline.com>
-Date: Tue, 31 May 2022 10:54:48 +0200
-From: "Jonathan" <jermeyfalenop@lumikousa.com>
+Received: from out30-130.freemail.mail.aliyun.com
+ (out30-130.freemail.mail.aliyun.com [115.124.30.130])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1ACB81129F0;
+ Thu,  2 Jun 2022 07:35:33 +0000 (UTC)
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R131e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=alimailimapcm10staff010182156082;
+ MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=14; SR=0;
+ TI=SMTPD_---0VF9ffSI_1654155321; 
+Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com
+ fp:SMTPD_---0VF9ffSI_1654155321) by smtp.aliyun-inc.com(127.0.0.1);
+ Thu, 02 Jun 2022 15:35:27 +0800
+From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+To: zhenyuw@linux.intel.com
+Subject: [PATCH] drm/i915/gvt: Fix kernel-doc
+Date: Thu,  2 Jun 2022 15:35:19 +0800
+Message-Id: <20220602073519.22363-1-jiapeng.chong@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
-X-Mailer-Sent-By: 1
-Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -34,26 +40,54 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jerowabinson@aliyun.com
+Cc: tvrtko.ursulin@linux.intel.com,
+ Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, airlied@linux.ie,
+ intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
+ Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
+ jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, daniel@ffwll.ch,
+ rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-<p>The bathrobe is soft and fluffy, which can be worn all day long; the
-bathrobe carries a classic design<br /> Each bathrobe features an
-adjustable waist belt that assists in securely closing the robe from the
-front so that you can wear it.<br /> <br />Please indicate the color you
-like and the quantity in need, we will prepare for you as early as we
-can.<br /><br />Colors<br />- Navy<br />- Black<br />- Black with Steel
-Grey Contrast<br />- Grey<br />- Burgundy with Black Contrast<br />- Steel
-Grey<br />- Steel Grey with Black Contrast<br /><br /><img
-src="https://www.linenslimited.com/media/catalog/product/cache/61d078516c6c8e1492bf4cb9012ecdd8/b/a/bath-robe-charcoal-1210803_1_1_t77jyyqnprnssq96.jpg"
-width="600" height="600" /><br /><br /><br /><br /> Thanks,<br /> Nick
-Williams<br /> Textile Production</p>
-<br />
-</body>
-</html>
+Fix the following W=1 kernel warnings:
+
+drivers/gpu/drm/i915/gvt/aperture_gm.c:308: warning: expecting prototype
+for inte_gvt_free_vgpu_resource(). Prototype was for
+intel_vgpu_free_resource() instead.
+
+drivers/gpu/drm/i915/gvt/aperture_gm.c:344: warning: expecting prototype
+for intel_alloc_vgpu_resource(). Prototype was for
+intel_vgpu_alloc_resource() instead.
+
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+---
+ drivers/gpu/drm/i915/gvt/aperture_gm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/aperture_gm.c b/drivers/gpu/drm/i915/gvt/aperture_gm.c
+index 557f3314291a..3b81a6d35a7b 100644
+--- a/drivers/gpu/drm/i915/gvt/aperture_gm.c
++++ b/drivers/gpu/drm/i915/gvt/aperture_gm.c
+@@ -298,7 +298,7 @@ static int alloc_resource(struct intel_vgpu *vgpu,
+ }
+ 
+ /**
+- * inte_gvt_free_vgpu_resource - free HW resource owned by a vGPU
++ * intel_vgpu_free_resource() - free HW resource owned by a vGPU
+  * @vgpu: a vGPU
+  *
+  * This function is used to free the HW resource owned by a vGPU.
+@@ -328,7 +328,7 @@ void intel_vgpu_reset_resource(struct intel_vgpu *vgpu)
+ }
+ 
+ /**
+- * intel_alloc_vgpu_resource - allocate HW resource for a vGPU
++ * intel_vgpu_alloc_resource() - allocate HW resource for a vGPU
+  * @vgpu: vGPU
+  * @param: vGPU creation params
+  *
+-- 
+2.20.1.7.g153144c
 
