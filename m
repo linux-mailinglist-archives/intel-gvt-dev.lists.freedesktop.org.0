@@ -1,92 +1,111 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DCCD53BD25
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Jun 2022 19:20:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F31053BEC5
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Jun 2022 21:29:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 02A5810FF78;
-	Thu,  2 Jun 2022 17:20:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 377E5112CF5;
+	Thu,  2 Jun 2022 19:29:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5730C10F2D6
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam04on2083.outbound.protection.outlook.com [40.107.101.83])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 36DC6112CDA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Jun 2022 17:20:01 +0000 (UTC)
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 252FFKx2015514;
- Thu, 2 Jun 2022 17:19:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : content-transfer-encoding
- : mime-version; s=pp1; bh=hUfScC0g2XWH5ZvTkbfOIeWuDqLh6nYqV7Yx2EeH6jg=;
- b=jvtpUyvrLYANw7X+1WCDYBpAV5U+/l8cNFZTGHptq7EDvgVjOT+1hqJlTd6DK75walYg
- zacdxkoowOaD5pNXgtQIzEfaJVvi5MwNauFkoyQ4rtrEkW/JrfQjRh/LCPbFIddA0Vsu
- 7cWseJ0dwmBv6855ihrMrLLSiDAXc2PV6fqxFl5+B28qb6xs6sYDAib8iocICYIz1P7e
- bIv3QhiD3ZnWGKkZ8LefQ1wClptHjSN8yqRqvjUaSguUx++eDHV5CXEKh4qzH6SIVnaG
- aQQWrVXU80iVp5wBgTnaoMrZ8n/Q97pTogX8pyXltvAvOuuJBShWk854bORUo6AgJJNl Yg== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3geypha6e5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 02 Jun 2022 17:19:57 +0000
-Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 252H59MD024779;
- Thu, 2 Jun 2022 17:19:56 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3geypha6dk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 02 Jun 2022 17:19:56 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 252H53jK023144;
- Thu, 2 Jun 2022 17:19:54 GMT
-Received: from b06cxnps3075.portsmouth.uk.ibm.com
- (d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
- by ppma03ams.nl.ibm.com with ESMTP id 3gbc7h7by2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 02 Jun 2022 17:19:54 +0000
-Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
- [9.149.105.59])
- by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 252HJpAX24052202
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 2 Jun 2022 17:19:51 GMT
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 65DEDA404D;
- Thu,  2 Jun 2022 17:19:51 +0000 (GMT)
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 47034A4040;
- Thu,  2 Jun 2022 17:19:51 +0000 (GMT)
-Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
- by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTPS;
- Thu,  2 Jun 2022 17:19:51 +0000 (GMT)
-Received: by tuxmaker.boeblingen.de.ibm.com (Postfix, from userid 4958)
- id CB7B9E1277; Thu,  2 Jun 2022 19:19:50 +0200 (CEST)
-From: Eric Farman <farman@linux.ibm.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: [PATCH v1 13/18] vfio/mdev: Consolidate all the device_api sysfs into
- the core code
-Date: Thu,  2 Jun 2022 19:19:43 +0200
-Message-Id: <20220602171948.2790690-14-farman@linux.ibm.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220602171948.2790690-1-farman@linux.ibm.com>
+ Thu,  2 Jun 2022 19:29:22 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Is/CqN2UzWfShJF8IsYDzGnG5+Sd1HHTe2zaOz5EZTTMP/gnKGpnmkXGk9+YYaYSt9EWIS0GseMpZDmQb7Xxui5/2in/5J79jg+6y1tD1vIZvUcq/XhuBBBeMA42sWLZBr/6GSvMVCGjEqhS666tl0fUXjUERHY85MxbiAC5RKTowKHCr5jy2VQh6HBOqNjMXIhGnuB2VslIytHJ+Ks8KUHHM8POCwjyg8Co1uaTtcWz/nfIyemy7pduoinTakakgU9GJ5PfwP3YwPOGK1SpKZtSP6MIRdgkjGHslIiLW3RshpkGLV/XTPFSTP1783xsicDdloJlrM3KVfCClodKMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EDt3+RX1oxcsxRNtVdC4+EKZbYaqfjeez0Tdcu/49iQ=;
+ b=Dt+yLPBjPGoApMxTgLO7YgdRKAOScAkTVlQmx1xlfWMbDDIygsCn4tjvYnEpWK5VfiudF0E9Qv60tk//2d/ai6Wns5Hm17f28vneOa37jG87zxU6+rxYysL8XAwE6ucIdltbP0Ub38TRxRkSXKzuokjL4gjWIYeYXLS0rB7yuopjJAS0EyNmDuVbsAADGPie1Pq9dj6CwbT3pvdZ6CviEmHQiMNzWPP7+2j6ArPwUR3hSYV/6LKiLMTmEob6OeuDBNOdipJBJo9crsQexVUVUUPsnMBFkMBMRypYvtKd8QbAJtIqjJmLZ0ybyySkIAd5QB9hvlE24rUDmknW972aDA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EDt3+RX1oxcsxRNtVdC4+EKZbYaqfjeez0Tdcu/49iQ=;
+ b=LXNbm/NLnjJUa7K8PgVcgU1njeomlyxTv5aY8ja6U58T2DcCjiDb4jN69AZqqPlpjiXd2MGxrmQqrKXKuOoyFqYHHdl+f9mSrhBvj7eBnciiRKShQRILXxERv/snyAT8A+DdJl47udruazpsr/wR4PsAx0cIjPQFuE5n+DDu3YZ8yHBXNt/p/5jDQdxYBs9y3PFh2nU+gb14L33LqNbqVQ+sw+FMQg83CAeL/a8YNJKQS5eRdnKrm3B2nLvVDZZkyslKdLwIV/mwhwj9iBNHQ5XwE0m/EcMIDOOySflYIkCxul1ZeQkaLqEP8QnYXhJ5QGPlkqsnKizXMcECrPmgEQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+ by BY5PR12MB3795.namprd12.prod.outlook.com (2603:10b6:a03:1a9::32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.13; Thu, 2 Jun
+ 2022 19:29:20 +0000
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::2484:51da:d56f:f1a5]) by MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::2484:51da:d56f:f1a5%9]) with mapi id 15.20.5314.015; Thu, 2 Jun 2022
+ 19:29:20 +0000
+Date: Thu, 2 Jun 2022 16:29:18 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Eric Farman <farman@linux.ibm.com>
+Subject: Re: [PATCH v1 00/18] VFIO ccw/mdev rework
+Message-ID: <20220602192918.GL3936592@nvidia.com>
 References: <20220602171948.2790690-1-farman@linux.ibm.com>
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: vw6u-7JXTdHmerovcXcg5SH6o7rR-c6Y
-X-Proofpoint-GUID: ne-zoUtARXpi_QZ2SS2bK4qVMdgMplAs
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220602171948.2790690-1-farman@linux.ibm.com>
+X-ClientProxiedBy: BL1P221CA0018.NAMP221.PROD.OUTLOOK.COM
+ (2603:10b6:208:2c5::30) To MN2PR12MB4192.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::15)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.517,FMLib:17.11.64.514
- definitions=2022-06-02_05,2022-06-02_01,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 phishscore=0
- impostorscore=0 clxscore=1011 lowpriorityscore=0 spamscore=0 bulkscore=0
- adultscore=0 priorityscore=1501 mlxlogscore=999 mlxscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2204290000
- definitions=main-2206020071
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e623d114-e23c-4d98-62a1-08da44ce30e0
+X-MS-TrafficTypeDiagnostic: BY5PR12MB3795:EE_
+X-Microsoft-Antispam-PRVS: <BY5PR12MB3795DC4ED2B56DEC6469E45DC2DE9@BY5PR12MB3795.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 99FpYBZT1tbF1752SpBMy10CKoy6ayrdzZXCaoFqF63S3WSyKecBJLjLzML4gpItWVhwdny8fD4UcW6gdfABiNZ/LAi9tfoMT44U96HKlxArJac+0FAmvf7gE2txKK85EO+c7+zXy3dE7JdJd8u54lnXk1SvQEaYl24Eqx5GsegxeEDQTo30bbgGH8Zf4s1Orc+y/6/knNReWbehmaggdnHSxaVnRoP5KtFhL6Ot3WpiFnDLbrHVqMbkdqYG2rjPTP/lHl3MdWMD8LUo0kyU8P0JIwu4/e9IfwB2BtIfusIJLR7HMc1poN0lt40MZTbGxLA4aCU0NuxNPDI3gJQkRi0k5cL8dHkxAtwYlcLjFbUPLErlnbT88ah1dd42fpN7S1BawqFFQsulpvc40YRKrkaoZNPntq5l8rIE+JKiug4F7BlInBH8r0i2t9KwOp3mTFg/hAv1pW3zLkdEEk4wqAieAwr/2f5ajr/sjWlugQdynyw/XSG4weRISSKUsWoj5KT6uPxYUkU5vezI4035J6hP9Lq+u34DWC+rQPOcCH1ASJwtK8nvTgMei5t14RVxcqJonTH52bkLRuscoe+LQRKA4cyZwvEpZ8zo3Q4wLY+4babrd4PoLZKUqVDyIpr/i3G/73IOeFri4ycVNBabGQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(186003)(2906002)(8936002)(86362001)(1076003)(38100700002)(26005)(33656002)(508600001)(5660300002)(6486002)(7416002)(2616005)(6506007)(66946007)(6512007)(66556008)(66476007)(8676002)(316002)(4326008)(36756003)(54906003)(6916009)(83380400001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3nFy1+TW6G3TNNJsA2AWxPNC0rCH9Gf0nq5AL5AWHXLAaH2vPIv3lfCvs6BQ?=
+ =?us-ascii?Q?neRCMuVg7E4wmGWsYi4kufGbOPXenBxTgIbRJ0jcA3uqOGycySWnqY5vJKcI?=
+ =?us-ascii?Q?MKPPuJ04+WdFW/XW6WkR58cfK4dvu1CLf3HMMy547OzmYmDj7BVXfjwxB2lF?=
+ =?us-ascii?Q?6NTVBMAHJbQJxXkzxV1amlDfHHDMxnyQQGXyUUen0ZzI5m+VsBeqgTg7st23?=
+ =?us-ascii?Q?OVYTIEXU307v7Ams+v3b2zxBG7BQLlWJLakzH4qc7vSVRa9FqC8ZtPmNt2sb?=
+ =?us-ascii?Q?79fyPrwnzzomyphHrWTlfTSzYMjJN2imKwMHZ6/EBTFungN0NyJRqQqZIlV4?=
+ =?us-ascii?Q?2g407S4QJvntk5hCEoJuGjz7bomXCgIDp98Lp1OPG7+OtuG8NOGvmuKvpn1q?=
+ =?us-ascii?Q?Hv+S8mT5+GFvDwRG/BvtfI6cYpZ0BMEZfVLjj6gjzfGSL6tKCAT/6Gx6cb7l?=
+ =?us-ascii?Q?dEIHoNVWDOGuP07tRfkFcm3JbGh/xKj++K4aOlgWwvkxEXr2hMFLHzxOSZdI?=
+ =?us-ascii?Q?yBZKSr64lBZXX8LKs9sdlZWHMi/nMaXHNdNdV+GDCX2ktBqWa492MsVhSAdV?=
+ =?us-ascii?Q?oelpA4o0gQHQKqLgqFLyPwBxC5VfN/+6vMuJXfOSP1bidksAlLObNfV7EtdD?=
+ =?us-ascii?Q?CKif89+CajVOQMGcvqAL87aH9Ki1p5BlGZ6XDc7f9ySWiBUAZi477RiagHSp?=
+ =?us-ascii?Q?g3hG3DaTD+gIpSMBKfyufGfj6UxxQ6GQOe2RWqHDiheSpZ39bxduBVu4lsZh?=
+ =?us-ascii?Q?7NtPj7jBa8z2YewI4MRjmX0aRSHI/IPOzNQnvNOBXNGRgqYVhgeIv1mTku1Y?=
+ =?us-ascii?Q?RcPmNYU4e0S328MTIWi7BpAzI9s94695MqEf4hjdDRFxktbCtlbMKnC9gQ1W?=
+ =?us-ascii?Q?0ixDEKH1rfiE0lQlGciS7gFM3ijRHJczvl34HO/pgbA5cEOTPIvJo+lVsqOx?=
+ =?us-ascii?Q?Ahf3hqoDgbDo/g8mBSA7GFEyf0MKxlvM7w40jisPsxE7KJGZjfD+mk7jaWV4?=
+ =?us-ascii?Q?rl7yoNItElP/ZUYe3Kt6KJ43bA5nEKYNAAVZo1FStaNu/qeyuNObCPmTiu6o?=
+ =?us-ascii?Q?WrhqBOdhcgLlv4Ql+eymAlhJe737ENJupLmMdOlLH5HD3DXgPrh5yYIpJJzT?=
+ =?us-ascii?Q?CFNj5zOjY0dvVpq0o9y3Ap9udu2FSeHTs3ZZ+Qu8mkAKJzWliA3kMWTIkxXL?=
+ =?us-ascii?Q?ENIh8LHcpVGujIOVDxPnWsEfDo5DQZ0I4CiX39vBYVG7YtCetbFAd3gHD0nd?=
+ =?us-ascii?Q?8QypmauOfPZjkxltktkOF+VsLP6Ns3h2LvSeIrhZpK8NX05WgBgT+UYdPfpd?=
+ =?us-ascii?Q?tZa+bQ2T/YkhVT02tsRQWIeYMl9MCHTtNbp57rUhjA5eOWvCoRlA0EKXaEdo?=
+ =?us-ascii?Q?Z+vezX3mFHr8PgrW6ximesZ8bqWVIA/HsnfUpoKkeBBjxiFE2BTbAJE3drGq?=
+ =?us-ascii?Q?aoT29/0uD/GYGwlEVCDssh9MngxQWmKVjcd3CM7iF4860cdiWHTyDNA4Q4Bf?=
+ =?us-ascii?Q?004SlT0DRuDliO0P3RkU+NgElnqAzJMJy/LM4G3NgxEyrcX6NiOegcPjB1Kn?=
+ =?us-ascii?Q?Rv7IaoyulfB8+DRsznntRB0NOqB9Iaa91jrQvzvENrU8AxUG7G2ARlHdmZ2r?=
+ =?us-ascii?Q?1BkDG+Mr82ChpIhZASso6YrL+qmEZqCM+9p80lontQeD4/y3KMYe86IF0gcu?=
+ =?us-ascii?Q?u72KEikxGJ6Q8eO7ucv0Ye7u4vgpqWhLFGzUe4eunqHtD+90Eu63wl/2ACuH?=
+ =?us-ascii?Q?QqHrqdUchA=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e623d114-e23c-4d98-62a1-08da44ce30e0
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jun 2022 19:29:20.1403 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jUPPFNrKSYyeLIPIK1HJHMH4KFGaPTAxL0Zrn6V3zHC4JLSzUk1Ue1JJvmpkM82Q
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB3795
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,357 +119,57 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: Tony Krowiak <akrowiak@linux.ibm.com>, linux-s390@vger.kernel.org,
- Eric Farman <farman@linux.ibm.com>, Liu Yi L <yi.l.liu@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, kvm@vger.kernel.org,
- Jonathan Corbet <corbet@lwn.net>, Kirti Wankhede <kwankhede@nvidia.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Halil Pasic <pasic@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Liu Yi L <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ kvm@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ Kirti Wankhede <kwankhede@nvidia.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
  intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: Jason Gunthorpe <jgg@nvidia.com>
+On Thu, Jun 02, 2022 at 07:19:30PM +0200, Eric Farman wrote:
+> Last autumn, Jason Gunthorpe proposed some rework of vfio-ccw [1],
+> to better fit with the new mdev API (thank you!). Part of that
+> series was pulled for kernel 5.16 [2], but the complexities of
+> the remaining patches got them hung up behind other work.
+> 
+> This series attempts to dust off and complete that, with the
+> goal of untangling the lifecycle of a s390 subchannel when
+> bound to vfio-ccw instead of the usual io_subchannel driver.
+> 
+> Patches 1-8 are inspired by and/or split out from that series,
+> in order to be consumable on their own (backports, etc.).
+> 
+> Patches 9-12 handle the goal of making the FSM complete,
+> and synchronizing the subchannel's life with that of the mdev.
+> (This was the goal of patch 5 of the larger series [3].)
+> 
+> Patches 13-14 are pulled directly from the earlier series.
+> As these patches hit some other of the consumers of vfio,
+> those on CC who are unfamiliar with vfio-ccw probably only
+> care about these. :)
+> 
+> Patches 15-18 links the lifecycle of the vfio_ccw_private struct
+> with the mdev via a vfio reference. (Patch 17 was also pulled
+> directly from the earlier series.)
+> 
+> In the end, the subchannel probe/remove callbacks from the css
+> driver simply register/unregister with vfio-mdev. The communication
+> with the subchannel is delayed until the mdev routines, which
+> handles all the vfio-related memory and subchannel enablement.
+> There's no longer a configuration where the mdev is closed while
+> the subchannel remains enabled, since that's weird.
 
-Every driver just emits a static string, simply feed it through the ops
-and provide a standard sysfs show function.
+This all looks great thanks!
 
-Cc: Kirti Wankhede <kwankhede@nvidia.com>
-Cc: Jonathan Corbet <corbet@lwn.net>
-Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.a.wang@intel.com>
-Cc: Tony Krowiak <akrowiak@linux.ibm.com>
-Cc: Jason Herne <jjherne@linux.ibm.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-Link: https://lore.kernel.org/r/6-v3-57c1502c62fd+2190-ccw_mdev_jgg@nvidia.com/
-[farman: added Cc: tags]
-Signed-off-by: Eric Farman <farman@linux.ibm.com>
----
- .../driver-api/vfio-mediated-device.rst       |  4 ++-
- drivers/gpu/drm/i915/gvt/kvmgt.c              |  9 +------
- drivers/s390/cio/vfio_ccw_ops.c               |  9 +------
- drivers/s390/crypto/vfio_ap_ops.c             |  9 +------
- drivers/vfio/mdev/mdev_core.c                 |  2 +-
- drivers/vfio/mdev/mdev_sysfs.c                | 27 ++++++++++++++++---
- include/linux/mdev.h                          |  7 ++---
- samples/vfio-mdev/mbochs.c                    |  9 +------
- samples/vfio-mdev/mdpy.c                      |  9 +------
- samples/vfio-mdev/mtty.c                      | 10 +------
- 10 files changed, 36 insertions(+), 59 deletions(-)
+I would like this to go through the VFIO tree once you repost it on v5.19-rc1
 
-diff --git a/Documentation/driver-api/vfio-mediated-device.rst b/Documentation/driver-api/vfio-mediated-device.rst
-index 9f26079cacae..f410a1cd98bb 100644
---- a/Documentation/driver-api/vfio-mediated-device.rst
-+++ b/Documentation/driver-api/vfio-mediated-device.rst
-@@ -137,6 +137,7 @@ The structures in the mdev_parent_ops structure are as follows:
- * mdev_attr_groups: attributes of the mediated device
- * supported_config: attributes to define supported configurations
- * device_driver: device driver to bind for mediated device instances
-+* device_api: String to pass through the sysfs file below
- 
- The mdev_parent_ops also still has various functions pointers.  Theses exist
- for historical reasons only and shall not be used for new drivers.
-@@ -225,7 +226,8 @@ Directories and files under the sysfs for Each Physical Device
- * device_api
- 
-   This attribute should show which device API is being created, for example,
--  "vfio-pci" for a PCI device.
-+  "vfio-pci" for a PCI device. The core code maintins this sysfs using the
-+  device_api member of mdev_parent_ops.
- 
- * available_instances
- 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 057ec4490104..752d7a1211e6 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -163,12 +163,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- 	return sprintf(buf, "%u\n", num);
- }
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
--}
--
- static ssize_t description_show(struct mdev_type *mtype,
- 				struct mdev_type_attribute *attr, char *buf)
- {
-@@ -202,13 +196,11 @@ static ssize_t name_show(struct mdev_type *mtype,
- }
- 
- static MDEV_TYPE_ATTR_RO(available_instances);
--static MDEV_TYPE_ATTR_RO(device_api);
- static MDEV_TYPE_ATTR_RO(description);
- static MDEV_TYPE_ATTR_RO(name);
- 
- static struct attribute *gvt_type_attrs[] = {
- 	&mdev_type_attr_available_instances.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_description.attr,
- 	&mdev_type_attr_name.attr,
- 	NULL,
-@@ -1767,6 +1759,7 @@ static const struct attribute_group *intel_vgpu_groups[] = {
- 
- static struct mdev_parent_ops intel_vgpu_ops = {
- 	.mdev_attr_groups       = intel_vgpu_groups,
-+	.device_api		= VFIO_DEVICE_API_PCI_STRING,
- 	.create			= intel_vgpu_create,
- 	.remove			= intel_vgpu_remove,
- 
-diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-index 2afb8f13739f..6793c8b3c58b 100644
---- a/drivers/s390/cio/vfio_ccw_ops.c
-+++ b/drivers/s390/cio/vfio_ccw_ops.c
-@@ -66,13 +66,6 @@ static ssize_t name_show(struct mdev_type *mtype,
- }
- static MDEV_TYPE_ATTR_RO(name);
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_CCW_STRING);
--}
--static MDEV_TYPE_ATTR_RO(device_api);
--
- static ssize_t available_instances_show(struct mdev_type *mtype,
- 					struct mdev_type_attribute *attr,
- 					char *buf)
-@@ -86,7 +79,6 @@ static MDEV_TYPE_ATTR_RO(available_instances);
- 
- static struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
- 	NULL,
- };
-@@ -644,5 +636,6 @@ struct mdev_driver vfio_ccw_mdev_driver = {
- const struct mdev_parent_ops vfio_ccw_mdev_ops = {
- 	.owner			= THIS_MODULE,
- 	.device_driver		= &vfio_ccw_mdev_driver,
-+	.device_api		= VFIO_DEVICE_API_CCW_STRING,
- 	.supported_type_groups  = mdev_type_groups,
- };
-diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-index 6e08d04b605d..838b1a3eac8a 100644
---- a/drivers/s390/crypto/vfio_ap_ops.c
-+++ b/drivers/s390/crypto/vfio_ap_ops.c
-@@ -530,17 +530,9 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- 
- static MDEV_TYPE_ATTR_RO(available_instances);
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_AP_STRING);
--}
--
--static MDEV_TYPE_ATTR_RO(device_api);
- 
- static struct attribute *vfio_ap_mdev_type_attrs[] = {
- 	&mdev_type_attr_name.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
- 	NULL,
- };
-@@ -1501,6 +1493,7 @@ static struct mdev_driver vfio_ap_matrix_driver = {
- static const struct mdev_parent_ops vfio_ap_matrix_ops = {
- 	.owner			= THIS_MODULE,
- 	.device_driver		= &vfio_ap_matrix_driver,
-+	.device_api		= VFIO_DEVICE_API_AP_STRING,
- 	.supported_type_groups	= vfio_ap_mdev_type_groups,
- };
- 
-diff --git a/drivers/vfio/mdev/mdev_core.c b/drivers/vfio/mdev/mdev_core.c
-index b314101237fe..c3018e8e6d32 100644
---- a/drivers/vfio/mdev/mdev_core.c
-+++ b/drivers/vfio/mdev/mdev_core.c
-@@ -129,7 +129,7 @@ int mdev_register_device(struct device *dev, const struct mdev_parent_ops *ops)
- 	char *envp[] = { env_string, NULL };
- 
- 	/* check for mandatory ops */
--	if (!ops || !ops->supported_type_groups)
-+	if (!ops || !ops->supported_type_groups || !ops->device_api)
- 		return -EINVAL;
- 	if (!ops->device_driver && (!ops->create || !ops->remove))
- 		return -EINVAL;
-diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
-index f5cf1931c54e..d4b99440d19e 100644
---- a/drivers/vfio/mdev/mdev_sysfs.c
-+++ b/drivers/vfio/mdev/mdev_sysfs.c
-@@ -74,9 +74,30 @@ static ssize_t create_store(struct mdev_type *mtype,
- 
- 	return count;
- }
--
- static MDEV_TYPE_ATTR_WO(create);
- 
-+static ssize_t device_api_show(struct mdev_type *mtype,
-+			       struct mdev_type_attribute *attr, char *buf)
-+{
-+	return sysfs_emit(buf, "%s\n", mtype->parent->ops->device_api);
-+}
-+static MDEV_TYPE_ATTR_RO(device_api);
-+
-+static struct attribute *mdev_types_std_attrs[] = {
-+	&mdev_type_attr_create.attr,
-+	&mdev_type_attr_device_api.attr,
-+	NULL,
-+};
-+
-+static struct attribute_group mdev_type_std_group = {
-+	.attrs = mdev_types_std_attrs,
-+};
-+
-+static const struct attribute_group *mdev_type_groups[] = {
-+	&mdev_type_std_group,
-+	NULL,
-+};
-+
- static void mdev_type_release(struct kobject *kobj)
- {
- 	struct mdev_type *type = to_mdev_type(kobj);
-@@ -123,7 +144,7 @@ static struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
- 		return ERR_PTR(ret);
- 	}
- 
--	ret = sysfs_create_file(&type->kobj, &mdev_type_attr_create.attr);
-+	ret = sysfs_create_groups(&type->kobj, mdev_type_groups);
- 	if (ret)
- 		goto attr_create_failed;
- 
-@@ -144,7 +165,7 @@ static struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
- attrs_failed:
- 	kobject_put(type->devices_kobj);
- attr_devices_failed:
--	sysfs_remove_file(&type->kobj, &mdev_type_attr_create.attr);
-+	sysfs_remove_groups(&type->kobj, mdev_type_groups);
- attr_create_failed:
- 	kobject_del(&type->kobj);
- 	kobject_put(&type->kobj);
-diff --git a/include/linux/mdev.h b/include/linux/mdev.h
-index a5788f592817..14655215417b 100644
---- a/include/linux/mdev.h
-+++ b/include/linux/mdev.h
-@@ -36,6 +36,7 @@ struct device *mtype_get_parent_dev(struct mdev_type *mtype);
-  *
-  * @owner:		The module owner.
-  * @device_driver:	Which device driver to probe() on newly created devices
-+ * @device_api:		String to return for the device_api sysfs
-  * @dev_attr_groups:	Attributes of the parent device.
-  * @mdev_attr_groups:	Attributes of the mediated device.
-  * @supported_type_groups: Attributes to define supported types. It is mandatory
-@@ -80,6 +81,7 @@ struct device *mtype_get_parent_dev(struct mdev_type *mtype);
- struct mdev_parent_ops {
- 	struct module   *owner;
- 	struct mdev_driver *device_driver;
-+	const char *device_api;
- 	const struct attribute_group **dev_attr_groups;
- 	const struct attribute_group **mdev_attr_groups;
- 	struct attribute_group **supported_type_groups;
-@@ -108,11 +110,6 @@ struct mdev_type_attribute {
- 			 size_t count);
- };
- 
--#define MDEV_TYPE_ATTR(_name, _mode, _show, _store)		\
--struct mdev_type_attribute mdev_type_attr_##_name =		\
--	__ATTR(_name, _mode, _show, _store)
--#define MDEV_TYPE_ATTR_RW(_name) \
--	struct mdev_type_attribute mdev_type_attr_##_name = __ATTR_RW(_name)
- #define MDEV_TYPE_ATTR_RO(_name) \
- 	struct mdev_type_attribute mdev_type_attr_##_name = __ATTR_RO(_name)
- #define MDEV_TYPE_ATTR_WO(_name) \
-diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-index e90c8552cc31..8d3ae97d9d6e 100644
---- a/samples/vfio-mdev/mbochs.c
-+++ b/samples/vfio-mdev/mbochs.c
-@@ -1358,17 +1358,9 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- }
- static MDEV_TYPE_ATTR_RO(available_instances);
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
--}
--static MDEV_TYPE_ATTR_RO(device_api);
--
- static struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
- 	&mdev_type_attr_description.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
- 	NULL,
- };
-@@ -1417,6 +1409,7 @@ static struct mdev_driver mbochs_driver = {
- static const struct mdev_parent_ops mdev_fops = {
- 	.owner			= THIS_MODULE,
- 	.device_driver		= &mbochs_driver,
-+	.device_api		= VFIO_DEVICE_API_PCI_STRING,
- 	.supported_type_groups	= mdev_type_groups,
- };
- 
-diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-index fe5d43e797b6..402a7ebe6563 100644
---- a/samples/vfio-mdev/mdpy.c
-+++ b/samples/vfio-mdev/mdpy.c
-@@ -670,17 +670,9 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- }
- static MDEV_TYPE_ATTR_RO(available_instances);
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
--}
--static MDEV_TYPE_ATTR_RO(device_api);
--
- static struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
- 	&mdev_type_attr_description.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
- 	NULL,
- };
-@@ -728,6 +720,7 @@ static struct mdev_driver mdpy_driver = {
- static const struct mdev_parent_ops mdev_fops = {
- 	.owner			= THIS_MODULE,
- 	.device_driver          = &mdpy_driver,
-+	.device_api		= VFIO_DEVICE_API_PCI_STRING,
- 	.supported_type_groups	= mdev_type_groups,
- };
- 
-diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
-index a0e1a469bd47..5dc1b6a4c02c 100644
---- a/samples/vfio-mdev/mtty.c
-+++ b/samples/vfio-mdev/mtty.c
-@@ -1281,17 +1281,8 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- 
- static MDEV_TYPE_ATTR_RO(available_instances);
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
--}
--
--static MDEV_TYPE_ATTR_RO(device_api);
--
- static struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
- 	NULL,
- };
-@@ -1333,6 +1324,7 @@ static struct mdev_driver mtty_driver = {
- static const struct mdev_parent_ops mdev_fops = {
- 	.owner                  = THIS_MODULE,
- 	.device_driver		= &mtty_driver,
-+	.device_api		= VFIO_DEVICE_API_PCI_STRING,
- 	.dev_attr_groups        = mtty_dev_groups,
- 	.supported_type_groups  = mdev_type_groups,
- };
--- 
-2.32.0
+> @Jason: I carried the S-o-b/r-b tags on patches 13, 14, and 17,
+> as they were cherry-picked straight from your v3.
+> If you'd prefer your S-o-b on others, please let me know.
 
+It is OK, you did a lot of work splitting things up
+
+Thanks,
+Jason
