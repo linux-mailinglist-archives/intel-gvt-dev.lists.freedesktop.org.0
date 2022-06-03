@@ -1,52 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17CBF53C3BD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Jun 2022 06:25:50 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D587553C4E8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Jun 2022 08:33:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B8B0E10E154;
-	Fri,  3 Jun 2022 04:25:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 69999113A7C;
+	Fri,  3 Jun 2022 06:33:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1EFD710E154
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:3::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 50DFD112C8E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Jun 2022 04:25:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1654230347; x=1685766347;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=OKaJl/mMGQGdS0R8+wcY02PhRDy7EnOosarhOH1FkX0=;
- b=TtdmWnNBPR3KhHmLHChbyW6WXUWMkInuoZv8Obf4gtL+im/bV7eI3ZQm
- SRUQvyWsOR1MJtY3ABvQuv8tB0qyrRcEa7G/ocllcgKt6qeOgKjs0bYWS
- tpYYh6XvY9PZbwV+CVgONThI6VgEny1Cr1joeQxS+Lf1rJ5xCgHyFCbS2
- ZtVA029T77/j732VBPzlwNvDwKHf/n9pHMztnbLcwVDTNARdOV6yCD8/d
- ad+cc2eH6Ey6u6vhKTb1LoiHfHNbW/7U3jnJnzJjP8YtJD/WarkbrQpcN
- 607CKXk2oBLKBy/dNeM/Wt6JCxBMsjiMkPomtGZ+a6pZ7W6e2z7zmI/Fj g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10366"; a="276234825"
-X-IronPort-AV: E=Sophos;i="5.91,273,1647327600"; d="scan'208";a="276234825"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jun 2022 21:25:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,273,1647327600"; d="scan'208";a="530864468"
-Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 02 Jun 2022 21:25:43 -0700
-Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nwysZ-0006D3-4q;
- Fri, 03 Jun 2022 04:25:43 +0000
-Date: Fri, 03 Jun 2022 12:24:45 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhi Wang <zhi.a.wang@intel.com>
-Subject: [intel-gvt:gvt-staging] BUILD SUCCESS
- 467b3e66decf388474d1fa3b607c65ed0ddef54a
-Message-ID: <62998d0d.gUXNZcgh1xKH4C24%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Fri,  3 Jun 2022 06:33:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=0uBGXCRA3EENtOnIKbDFlPVB4jKOIAxPBU76Buv3j3M=; b=0uZvK/8SNHCMvpPoFLkj53nN3+
+ on6+1wVinmHTEwU8iFXGZsvS45VQesZ1BC9SskcKA9OHVctRAkH34d0/eRGRNo5V0rjZt20S3Jm6P
+ fqR+yzS6IkS0UJu8Ohw3L9sWuQNAmwKgy79VlG/SUzp/UDhTjGhZANIE/u91dw6lAoQX3GmQUPs2p
+ ShzotAkNYZ92+BhGJhwUA+1IGESFeGtv0Kd3u+AGa0FuP8CxX7g7LzftH9pFFNuw996IBZq+XC6DC
+ 1/tmQ3oXJ0fejwn2Zv5hwCz14Hh5R+kb4Sv4w73Vc4zQ64Lr7hjohArPpbakH8BQi6mnuLkyr93CE
+ bx33cVbw==;
+Received: from [2001:4bb8:185:a81e:b29a:8b56:eb9a:ca3b] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nx0sE-00610C-7L; Fri, 03 Jun 2022 06:33:30 +0000
+From: Christoph Hellwig <hch@lst.de>
+To: Kirti Wankhede <kwankhede@nvidia.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+Subject: simplify the mdev interface
+Date: Fri,  3 Jun 2022 08:33:20 +0200
+Message-Id: <20220603063328.3715-1-hch@lst.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,107 +54,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: linux-s390@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ kvm@vger.kernel.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 467b3e66decf388474d1fa3b607c65ed0ddef54a  gvt-staging: 2022y-06m-02d-12h-08m-16s CST integration manifest
+Hi all,
 
-elapsed time: 727m
+this series signigicantly simplies the mdev driver interface by following
+the patterns for device model interaction used elsewhere in the kernel.
 
-configs tested: 81
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                              allmodconfig
-arm                              allyesconfig
-arm64                            allyesconfig
-arm                                 defconfig
-arm64                               defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-arc                              allyesconfig
-nios2                               defconfig
-alpha                               defconfig
-csky                                defconfig
-alpha                            allyesconfig
-nios2                            allyesconfig
-arc                                 defconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-xtensa                           allyesconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc64                            defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-i386                                defconfig
-i386                             allyesconfig
-sparc                               defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allmodconfig
-powerpc                          allyesconfig
-powerpc                           allnoconfig
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64                        randconfig-a006
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                        randconfig-a015
-i386                          randconfig-a012
-i386                          randconfig-a016
-i386                          randconfig-a014
-arc                  randconfig-r043-20220531
-riscv                randconfig-r042-20220531
-s390                 randconfig-r044-20220531
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                            allmodconfig
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                          rhel-8.3-func
-x86_64                         rhel-8.3-kunit
-x86_64                    rhel-8.3-kselftests
-x86_64                           rhel-8.3-syz
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                                  kexec
-x86_64                               rhel-8.3
-
-clang tested configs:
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-hexagon              randconfig-r041-20220531
-hexagon              randconfig-r045-20220531
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Diffstat:
+ Documentation/driver-api/vfio-mediated-device.rst |   16 -
+ Documentation/s390/vfio-ap.rst                    |    2 
+ Documentation/s390/vfio-ccw.rst                   |    2 
+ drivers/gpu/drm/i915/gvt/gvt.h                    |    1 
+ drivers/gpu/drm/i915/gvt/kvmgt.c                  |  116 ++++----------
+ drivers/gpu/drm/i915/i915_drv.h                   |    2 
+ drivers/s390/cio/cio.h                            |    3 
+ drivers/s390/cio/vfio_ccw_ops.c                   |   32 +--
+ drivers/s390/crypto/vfio_ap_ops.c                 |   25 +--
+ drivers/s390/crypto/vfio_ap_private.h             |    2 
+ drivers/vfio/mdev/mdev_core.c                     |  181 ++++------------------
+ drivers/vfio/mdev/mdev_driver.c                   |    1 
+ drivers/vfio/mdev/mdev_private.h                  |   38 ----
+ drivers/vfio/mdev/mdev_sysfs.c                    |  145 ++---------------
+ include/linux/mdev.h                              |   40 +++-
+ samples/vfio-mdev/mbochs.c                        |   69 ++++----
+ samples/vfio-mdev/mdpy.c                          |   61 +++----
+ samples/vfio-mdev/mtty.c                          |   77 +++++----
+ 18 files changed, 258 insertions(+), 555 deletions(-)
