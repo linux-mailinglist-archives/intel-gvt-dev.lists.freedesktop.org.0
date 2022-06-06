@@ -1,75 +1,130 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED1FD53E538
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Jun 2022 17:00:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D1BD953EE7E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Jun 2022 21:22:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 497D910FAFC;
-	Mon,  6 Jun 2022 15:00:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7704611AFB4;
+	Mon,  6 Jun 2022 19:22:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com
- [IPv6:2a00:1450:4864:20::52e])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5079A10FB3C;
- Mon,  6 Jun 2022 15:00:05 +0000 (UTC)
-Received: by mail-ed1-x52e.google.com with SMTP id o10so19194005edi.1;
- Mon, 06 Jun 2022 08:00:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=A4brwVq972U5Cy5SArwJ+3RcY5BE7XJcKiLcZM5bXIg=;
- b=ebFb6iqNJFZiPZiWnmKDO7dEP68cK+FoW8vXzrP5Fks5IjVYQ5KD7xcjVGogrp1jaK
- tSTzUP+/ElsJCotyF7jOKZSs/ErxzErYTeTKBoyDUVifknmBzs3LEpH++LChHUyw8RFW
- kg2rLfXhL2CUSTb6yPjk0GxgqyqEIE+1EMegj2gmO7JcNw92PI60fXqUktgfshLjZNqz
- t6osXqlL17LYEgWsnrNrX5ikm15/pWjw7m8Z5TgVMLxcYeD7NnmHuRZcpQ5h2truhj54
- LTCCwvcQIpR335afRgDDx1Yt9+IEhEOxCLCXYhjoG5bov+j38Bs4PqefbVaiNjRjfn09
- 5Pgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=A4brwVq972U5Cy5SArwJ+3RcY5BE7XJcKiLcZM5bXIg=;
- b=od0xkI8hddwfYFz2C2a48ZkrGEIHr8ECxTFzDrJDpjJY9y4i7Ok8KoLJqkDjzBwv4B
- XArUdtDFs1b9T24DTPYXuprgH3Bi/dbt2ODWKnjoOnHNK6u6vQTxTxWqUEGGgbGKJ/ul
- l2zW9DvZunNENQxOJ7sVX9UuMJkoxJyfq2tlt/Kx/tW1H0iIqS3UUnk+JTWyiUpDSuKw
- ixpHMe/nk8PuqM2aTU5MpMSMnbuzkjZLUUdA2SekSjjkJN/YreGMzX3gQfqWxbQmZHac
- iKXnjCztmD6QoS1GIz8vVqk1jrlrhL6ST0JwQM5VwO9czR7jVx2x7IW3ZyWIogesREXG
- kYng==
-X-Gm-Message-State: AOAM5322fFzXgoQHHyVNRyolJUQJlx0oDd/Mv5cwgJnJZnJygfFZ/+Oj
- 2MDAucW7D37WIy1a+zy6tWctFSYKJP7DrcGN82c=
-X-Google-Smtp-Source: ABdhPJzLti6TUUZHJfMec1JUrCsTmwoizRibw8eAdJaxg3bN0xJ9XMOJVeqNHpQGX5I05TWYbejuSINHWA3H0CyqbSM=
-X-Received: by 2002:aa7:c846:0:b0:431:6c7b:26af with SMTP id
- g6-20020aa7c846000000b004316c7b26afmr3720487edt.123.1654527603550; Mon, 06
- Jun 2022 08:00:03 -0700 (PDT)
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2079.outbound.protection.outlook.com [40.107.92.79])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CD6A911AFB4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  6 Jun 2022 19:22:46 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=n5n2TPyfoc5RpNxefIK5k2iQO4PaLP5qll4gDn9jrRPUz6uwA1ZzwSKrRZT5M4Bwt8uX/UYhz+t2vcirrz8g9kd+p29Nena7mTFPsVgHKYWZ5+97kLUThbTxJczyP6CekKMSBvo30xY4CPDop1HWcnFiqY5QMY59n4pAuwejgyyNsX5IXROAbiKsbWmPcAEJBR39obZiD9Ju3WOfo761dX2h+CfRguTYjKzNiAqvKKVb+1huQ9YIY0HDnqMWRsevzwbA5dPkDyMUpyyEFr+0TDnb6zcY6GKo/Tfs3KpbEw8Rzxv8ocIgNGqwv/0jUFQt0nUR9eQ7lglreYHkPCeM/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jmanQcnC1XEuyw6VpnOj4fcNZSP9OmWzn0tadgYsw18=;
+ b=Jg55slwPiYYtYpkO6fQqi2s8lk6RAYka+CN0TxoiuqM0jjWAeGYZUnFvz4lRvQPbPk1roo1swst8dCJ+SLymS9WNwghuhj4xoCrFQVxdCP91dZY5CGhWdl1SCNOQDMI5biO5pvem8JAGIcpluEWWyTxsjjwD4t8pv3jArTer3qFGJZQ3dOXpM+mSbbhVn0rK8jD5rI42bAMICr0vXgUnZ31CUxJEGIVVuUnJf5Uz5YwpAKl8I660rNFM0pnn8D6x8MWbmyKlOYJCm7/tIvBk8ImkS3MwcwtnHZ1A7mOiz711uFB8tp9mxDURShjklr2w0aaBgSUAzRFc90nmlT/JBQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jmanQcnC1XEuyw6VpnOj4fcNZSP9OmWzn0tadgYsw18=;
+ b=GiDNuXyCVgxXdXwKMF8OMPIj/WIs4VIMaoveahULrzk7tp6jQ2hpYa/LdYivD4qOcHhy+RTqK+6r9q9so2vaomjUP+TWeliD9VrZp+qjMRUIC0AC7GXeMtBK0RLA9iBOCfbnookyyKaTRnWqDn/ZzGYCVc/5xqHf4r20S2+w8BYgUV3KRJhd2gy7zc6iA6xemCnc9iWF/rVCiTrD6qno/YBwpJScifD6eFCzCEg1VNxaJ96I0S6cDuiek0tWT/ic8C15U6EefYB7svWq/OOQRUTYNVhmPhxaioex4JHB5zZ2el7dSn8GHpiXQVUAbYWaMtsZS0ZQH4WjJlD5gaSo7Q==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB4206.namprd12.prod.outlook.com (2603:10b6:208:1d5::18)
+ by MWHPR12MB1790.namprd12.prod.outlook.com (2603:10b6:300:109::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.13; Mon, 6 Jun
+ 2022 19:22:43 +0000
+Received: from MN2PR12MB4206.namprd12.prod.outlook.com
+ ([fe80::d5df:ac97:8e92:fc14]) by MN2PR12MB4206.namprd12.prod.outlook.com
+ ([fe80::d5df:ac97:8e92:fc14%6]) with mapi id 15.20.5314.019; Mon, 6 Jun 2022
+ 19:22:43 +0000
+Message-ID: <71e7d9a8-1005-0458-b8cd-147ccc6430d7@nvidia.com>
+Date: Tue, 7 Jun 2022 00:52:30 +0530
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH 2/8] vfio/mdev: embedd struct mdev_parent in the parent
+ data structure
+Content-Language: en-US
+To: Christoph Hellwig <hch@lst.de>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+References: <20220603063328.3715-1-hch@lst.de>
+ <20220603063328.3715-3-hch@lst.de>
+X-Nvconfidentiality: public
+From: Kirti Wankhede <kwankhede@nvidia.com>
+In-Reply-To: <20220603063328.3715-3-hch@lst.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MA0PR01CA0064.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a01:ad::6) To MN2PR12MB4206.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::18)
 MIME-Version: 1.0
-References: <20220516225640.3102269-1-jim.cromie@gmail.com>
- <Yo5FFMbNG1Viirj1@phenom.ffwll.local>
-In-Reply-To: <Yo5FFMbNG1Viirj1@phenom.ffwll.local>
-From: jim.cromie@gmail.com
-Date: Mon, 6 Jun 2022 08:59:36 -0600
-Message-ID: <CAJfuBxzQPeYvpzd_=WkQasKJceHrUYK8umG6gWbTmoAUfApJ8w@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 00/27] DRM.debug on DYNAMIC_DEBUG, add trace events
-To: Jim Cromie <jim.cromie@gmail.com>, Jason Baron <jbaron@akamai.com>, 
- LKML <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, 
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- intel-gvt-dev@lists.freedesktop.org, 
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Greg KH <gregkh@linuxfoundation.org>, 
- Sean Paul <seanpaul@chromium.org>, robdclark@gmail.com, 
- Steven Rostedt <rostedt@goodmis.org>, mathieu.desnoyers@efficios.com, 
- quic_saipraka@quicinc.com, Will Deacon <will@kernel.org>, 
- Catalin Marinas <catalin.marinas@arm.com>, quic_psodagud@quicinc.com, 
- Marc Zyngier <maz@kernel.org>, Arnd Bergmann <arnd@arndb.de>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-arm-msm@vger.kernel.org,
- Ingo Molnar <mingo@redhat.com>, David Airlie <airlied@gmail.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Pekka Paalanen <ppaalanen@gmail.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>,
- =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
- Chris Wilson <chris@chris-wilson.co.uk>
-Content-Type: multipart/alternative; boundary="00000000000014abc905e0c8ba93"
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ce900222-0348-4b94-d7e0-08da47f1ee10
+X-MS-TrafficTypeDiagnostic: MWHPR12MB1790:EE_
+X-Microsoft-Antispam-PRVS: <MWHPR12MB1790F12DBB24F92B1FA9D9AADCA29@MWHPR12MB1790.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 3+tpg44wM/GKEvBOesCaaXl3lrD3lrdo8MJysr4iAWm1eeh7Jh++l7OyBBKUvuv13vI/LXsliE/696O84Zjot6JpVAN/tsBtoVr8LK7LmKhUdzirqvj3rdDOoR8gYlnZ7RmiOCRVU0/3rEcXSHoaddjKLQ6yOIZZuKEjn2MVzUepLjeSoNctOFOg13JueXs1HhWyPlJ4trWShh6g/4sNnNcNb0XZAvhM8yVkX2QP9nl5a41eV7y3W0lL9OFAyGSrSL0n8gtzYBZ4b7Mh98kfVdufktMyvWEchmzU5QTosr7F48zYAy0X6sXL3mgQ7JJ6bZea60+WN8jT5UVmM8nXUnSJmSUpWnCD7ziYp/WDZFnF05jiYYI6cZcAKVMxIzHE4yUb5q8otvjF+elvRanUD27+9EPhPl7EId049hqZKSnjyMUn7jkUWhCAFTZ+kQHcIfthREiVqn3RmYqk1E1qVIgc+vixn2yb+S4EbqD6Y1dGN67Vi9/tL/uKoBkrFMEM6NbxsLiUlXSOnCshRR1GhTzJCG6iQIErpQW4AlXoQ02Z368Ogd5WBmpzIKdx3qv5neaDS7yu/GF1LLB/BMUrYChuNZHH3lf6JfBiDONxP555D4J36cgyo9KuMVUEgbeOZk3d3iFI7d2eyitAxGa09VmA3If4r6ZNb25zqq72v7Xg6jM8qy28jQqTIJKE8ksIlT1ojeWJbUKu4vUhUeNv8hnNbCyNilrvxqUxgwpngo4=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR12MB4206.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(30864003)(7416002)(5660300002)(508600001)(38100700002)(55236004)(53546011)(6512007)(26005)(86362001)(6486002)(6666004)(186003)(6506007)(31696002)(2616005)(8936002)(107886003)(83380400001)(4326008)(8676002)(316002)(36756003)(66476007)(66556008)(66946007)(31686004)(110136005)(54906003)(2906002)(43740500002)(45980500001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aGs5dTl2UDJjMEhpaWw5ZHRJZFpzY2hwdzVsVnYwaFd4LzhyYUQwUTE5NDdB?=
+ =?utf-8?B?Z0EzT2VZRFRDbytTYXZxcUNIWTk2WEFHMEJaS3lsYS9YUVVMaUdRM2dneGM3?=
+ =?utf-8?B?U0xLTUM5L0UyTUJzUkwrUEtGT0RoS2x6emtvL1VFbCtKWmxSdDMwM3gyeFd2?=
+ =?utf-8?B?SGFsWXJPZ01NaTI5NE5qMkN0NzZSdk5rVGNFV3cvVm40SFc5YlZPdXJFRkNN?=
+ =?utf-8?B?VTB4T1ByTlVRb01GTzAvNitMeU9Ka2pTcnpxTmxFLzBKa1RtWXVHUGlLVEk4?=
+ =?utf-8?B?QXdPU1d0bzJ6dy9CcXRrYVh3bExVMW43VW5tS3hxMGk4RmpYNGpvNXZiSGNk?=
+ =?utf-8?B?S1NFUm9rNUc3TGtUOTVXVkQyRkJsMjRYSXNPRDZtOGg5ZWtUSjVEUEpZbkxV?=
+ =?utf-8?B?NHd1bSswT1JzNVZFR01xMWJIMFZEYzBKYzZRMHhBbWFlbk80OWZHZDdESUlB?=
+ =?utf-8?B?MUVHNE1yT1NIcmt0NzFYdTVYaWdBZlo4OG9lQUV5TWpHTDZJUGx2UEdMelVE?=
+ =?utf-8?B?UW9ianRUbnhnd3FSRmw3Qjc0TDNlVXlDck9iNnZZTVBHRGlRUUhBWXhKei9F?=
+ =?utf-8?B?aDRmSHJsU2pjOGQ4YktYVHpMYTlDMWFPRFk0WTh6Um82dU5GVHlQS0oyekhC?=
+ =?utf-8?B?SURiTzZNQi9SUFNrYmdBdEVyZVVSK05VU1dMNU9UbVpxM1lydGkyYVRsWFFI?=
+ =?utf-8?B?S3c0K1hkQTFJdnBmSlB4U2cyOUg5T2trYkRBNk1aWEFPTlJNRGxMcWZWYU1a?=
+ =?utf-8?B?bWc3MXVORHNVbVlydDJzbU9PNEJsODJDc0RpaXlQdncrc0UwbDBwcU1BVDEw?=
+ =?utf-8?B?Yzk4TGpjRjZiWmVrUzJvS21zME9ETVV2M3lINU9KM2tSWGx3bHFGVGV0MVVB?=
+ =?utf-8?B?TC9zSTRCR0ZwNGhDOUptNmpmVFBqKzZlWWl3d2ljdWVoanFFL0xuYkIzYW1E?=
+ =?utf-8?B?OFRQTFE1TStSUXpSQWJ2b0RZelBWd3hMUkFveWZlVE9mTXFDdmkvOWppdkdy?=
+ =?utf-8?B?Rk92TTQrWlZmaVlUNHg2SWlZU1VrSXhOMHpzMVdBUnRkZkJ1T1RIU1VvNThu?=
+ =?utf-8?B?ZFdJU01qMzJBMmwzdlpVdHQ4NFpjaHRoQlFrWnNBYndKZTd6eG1wYXd6TDJa?=
+ =?utf-8?B?QmJUSHVYa29tcmRNaGYvMW8xQytNV2ZFcWFEK1pjSUNoWENOdXFRc0JCUVFq?=
+ =?utf-8?B?cmpXajlTVmJXUDNId0FySlgxekJOKzY0ckNzZUJlOEpXR3MxUXBUeXQwWDlm?=
+ =?utf-8?B?L2g5ZkFiZ1BBaDFwTjMrREJMVkdPM0NneWtHM3Fyd0FCZ1JVQjBBclIzRml5?=
+ =?utf-8?B?WC9oZ3BVY0IySXM1VDkzUldiWVhIVjMvT2RoaytEaTFqUTN6cHR2L2xsK2p0?=
+ =?utf-8?B?dU9Ca3hlMXRsbU9WMWNQSnpPLzRyVlcvdjVzdHRiUjNlUWcvcEFyaWFGdFRO?=
+ =?utf-8?B?b2RFUEhpMEgxdEdTSUtuT0JISVg5K1JGRmFWQ0FBenJQZkZmOGF3ZzdZYWFB?=
+ =?utf-8?B?MGYwNXVJZUFEcjFXaWNxcjFMVlROREdaekw0TmRuamIyMkdkdU1PS09CeFU2?=
+ =?utf-8?B?UzlSUFZId0trb3loZ2pOalNaU1Fubi9pUWl4WlhxeTRzY3UwQWNlMWN0K1NG?=
+ =?utf-8?B?ak9ScnFCVkx5RkpraVd3RjNjUWZXSC9KbFRCdnQrenJMWFR1VEloSXpjYS9K?=
+ =?utf-8?B?Z0xZTGMxVC9iQkJRSjNUdy9wS0tuODZuUFZ0VzI2bnhnTjdVTVRoT0xGNjVy?=
+ =?utf-8?B?clo4bjg0bVp0WHJMNERlM0ZCcE5OcXZWSjgvcGdJdUlSYXNwM1VxRnZmeEpu?=
+ =?utf-8?B?YWdKTVpyditLUEZlRmtDM3FQNzBENTM1bXNrbk01MW1Ta0NvTFE5ZzdzSW1a?=
+ =?utf-8?B?TUwyQUl0R2FxTllLZjhuTVY5ZTBwUFMyQzAxcEF6QkxCYWcwaGQ3enlOWlI4?=
+ =?utf-8?B?dEcrVnp0dkJWTzFjbmtkUVBYME9KQkR3MFlCSm52dXh5RWR1Ums0akJQSGdh?=
+ =?utf-8?B?M0tFN3NTUWwzU3JCK01BZEJyUjFZTU4vYThhb2Z1L0pROXVja3BFV05YUmhk?=
+ =?utf-8?B?cVNRaWErbkNhc1NvRUgvbitSSElGQTZFaXJ4WFp3R3N6MjhjZ1hzMU1Va2JF?=
+ =?utf-8?B?TDhqbERCQjdNS2pFcDhSZU5ER3prRFpaS21LeVpNRGhGck5GSkI2eGtiSk1r?=
+ =?utf-8?B?a1pPZHNvQ2hJbnV3MTZ5TWliQ2RJd1lUNytJSlRNaG1OYkU4VVRMQWVsNkkw?=
+ =?utf-8?B?ZFpZcDJTdTNNUGFGMUM1RnFLSm02NzByZHJMNHZFS285dWpvNzRrQ29NeE1V?=
+ =?utf-8?B?SGg2blFVR0Jja2pKMC9hdXMra0RkTDR0Q0xiNkF0YXJ3bTVEMG9tdz09?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ce900222-0348-4b94-d7e0-08da47f1ee10
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4206.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2022 19:22:43.6242 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: tm1OqcyYvVkJcTciZvzimhQQ8E3F8XQ85NGy5mEz9NWUPHOwxYVZcsnMPHAk9qLS+cIVJj+7em6llbUH9BnE5Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR12MB1790
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,531 +137,627 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: linux-s390@vger.kernel.org, Neo Jia <cjia@nvidia.com>, kvm@vger.kernel.org,
+ Dheeraj Nigam <dnigam@nvidia.com>, intel-gvt-dev@lists.freedesktop.org,
+ Tarun Gupta <targupta@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---00000000000014abc905e0c8ba93
-Content-Type: text/plain; charset="UTF-8"
-
-On Wed, May 25, 2022 at 9:02 AM Daniel Vetter <daniel@ffwll.ch> wrote:
-
-> On Mon, May 16, 2022 at 04:56:13PM -0600, Jim Cromie wrote:
-> > DRM.debug API is 23 macros, issuing 10 exclusive categories of debug
-> > messages.  By rough count, they are used 5140 times in the kernel.
-> > These all call drm_dbg or drm_devdbg, which call drm_debug_enabled(),
-> > which checks bits in global __drm_debug.  Some of these are page-flips
-> > and vblanks, and get called often.
-> >
-> > DYNAMIC_DEBUG (with CONFIG_JUMP_LABEL) is built to avoid this kind of
-> > work, with NOOPd jump/callsites.
-> >
-> > This patchset is RFC because:
-> > - it touches 2.5 subsystems: dyndbg, drm, tracefs (new events)
-> > - dyndbg class support is built for drm, needs it for validation
-> > - new api, used by drm
-> > - big memory impact, with 5100 new pr-debug callsites.
-> > - drm class bikeshedding opportunities
-> > - others, names etc.
->
-> Thanks a lot for keeping on pushing this!
 
 
-> >
-> > DYNAMIC_DEBUG:
-> >
+On 6/3/2022 12:03 PM, Christoph Hellwig wrote:
+> Simplify mdev_{un}register_device by requiring the caller to pass in
+> a structure allocate as part of the parent device structure.  This
+> removes the need for a list of parents and the separate mdev_parent
+> refcount as we can simplify rely on the reference to the parent device.
+> 
 
+By removing this list, there is no way to know if parent device is 
+registered repeatedly? What will happen if same parent device is 
+registered twice? will it fail somewhere else?
 
-
-> > RFC:
-> >
-> > dynamic_debug_register_classes() cannot act early enough to be in
-> > effect at module-load.  So this will not work as you'd reasonably
-> > expect:
-> >
-> >   modprobe test_dynamic_debug dyndbg='+pfm; class FOO +pfmlt'
-> >
-> > The 1st query:+pfm will be enabled during load, but in the 2nd query,
-> > "class FOO" will be unknown at load time.  Early class enablement
-> > would be nice.  DYNAMIC_DEBUG_CLASSES is a static initializer, which
-> > is certainly early enough, but Im missing a trick, suggestions?
->
-> So maybe I'm just totally overloading this work here so feel free to
-> ignore or postpone, but: Could we do the dynamic_debug_register_classes()
-> automatically at module load as a new special section? And then throw in a
-> bit of kbuild so that in a given subsystem every driver gets the same
-> class names by default and everything would just work, without having to
-> sprinkle calls to dynamic_debug_register_classes() all over the place?
->
-
-This is now done; Ive added __dyndbg_classes section.
-load_module() now grabs it from the .ko
-and ddebug_add_module() attaches it to the module's ddebug_table record.
-for builtins, dynamic_debug_init feeds the builtin class-maps to
-ddebug_add_module
-
-bash-5.1# modprobe test_dynamic_debug dyndbg="class FOO +p"
-[   88.374722] dyndbg: class[0]: nm:test_dynamic_debug base:20 len:7 ty:1
-[   88.375158] dyndbg:  0: EMERG
-[   88.375345] dyndbg:  1: DANGER
-[   88.375540] dyndbg:  2: ERROR
-[   88.375726] dyndbg:  3: WARNING
-[   88.375930] dyndbg:  4: NOTICE
-[   88.376130] dyndbg:  5: INFO
-[   88.376310] dyndbg:  6: DEBUG
-[   88.376499] dyndbg: class[1]: nm:test_dynamic_debug base:12 len:3 ty:1
-[   88.376903] dyndbg:  0: ONE
-[   88.377079] dyndbg:  1: TWO
-[   88.377253] dyndbg:  2: THREE
-[   88.377441] dyndbg: class[2]: nm:test_dynamic_debug base:8 len:3 ty:0
-[   88.377837] dyndbg:  0: bing
-[   88.378022] dyndbg:  1: bong
-[   88.378203] dyndbg:  2: boom
-[   88.378387] dyndbg: class[3]: nm:test_dynamic_debug base:4 len:3 ty:0
-[   88.378800] dyndbg:  0: Foo
-[   88.378986] dyndbg:  1: Bar
-[   88.379167] dyndbg:  2: Buzz
-[   88.379348] dyndbg: class[4]: nm:test_dynamic_debug base:0 len:3 ty:0
-[   88.379757] dyndbg:  0: FOO
-[   88.379938] dyndbg:  1: BAR
-[   88.380136] dyndbg:  2: BUZZ
-[   88.380410] dyndbg: module:test_dynamic_debug attached 5 classes
-[   88.380881] dyndbg:  24 debug prints in module test_dynamic_debug
-[   88.381315] dyndbg: module: test_dynamic_debug dyndbg="class FOO +p"
-[   88.381714] dyndbg: query 0: "class FOO +p" mod:test_dynamic_debug
-[   88.382109] dyndbg: split into words: "class" "FOO" "+p"
-[   88.382445] dyndbg: op='+'
-[   88.382616] dyndbg: flags=0x1
-[   88.382802] dyndbg: *flagsp=0x1 *maskp=0xffffffff
-[   88.383101] dyndbg: parsed: func="" file="" module="test_dynamic_debug"
-format="" lineno=0-0 class=FOO
-[   88.383740] dyndbg: applied: func="" file="" module="test_dynamic_debug"
-format="" lineno=0-0 class=FOO
-[   88.384324] dyndbg: processed 1 queries, with 2 matches, 0 errs
-bash-5.1#
-
-so its working at module-load time.
-
-
-> For the entire class approach, did you spot another subsystem that could
-> benefit from this and maybe make a more solid case that this is something
-> good?
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>   .../driver-api/vfio-mediated-device.rst       |  12 +-
+>   Documentation/s390/vfio-ap.rst                |   2 +-
+>   Documentation/s390/vfio-ccw.rst               |   2 +-
+>   drivers/gpu/drm/i915/gvt/kvmgt.c              |   5 +-
+>   drivers/gpu/drm/i915/i915_drv.h               |   2 +
+>   drivers/s390/cio/cio.h                        |   2 +
+>   drivers/s390/cio/vfio_ccw_ops.c               |   6 +-
+>   drivers/s390/crypto/vfio_ap_ops.c             |   5 +-
+>   drivers/s390/crypto/vfio_ap_private.h         |   1 +
+>   drivers/vfio/mdev/mdev_core.c                 | 116 +++---------------
+>   drivers/vfio/mdev/mdev_private.h              |  23 ----
+>   drivers/vfio/mdev/mdev_sysfs.c                |   4 +-
+>   include/linux/mdev.h                          |  15 ++-
+>   samples/vfio-mdev/mbochs.c                    |   5 +-
+>   samples/vfio-mdev/mdpy.c                      |   5 +-
+>   samples/vfio-mdev/mtty.c                      |   6 +-
+>   16 files changed, 65 insertions(+), 146 deletions(-)
+> 
+> diff --git a/Documentation/driver-api/vfio-mediated-device.rst b/Documentation/driver-api/vfio-mediated-device.rst
+> index eded8719180fb..3749f59c855fa 100644
+> --- a/Documentation/driver-api/vfio-mediated-device.rst
+> +++ b/Documentation/driver-api/vfio-mediated-device.rst
+> @@ -60,19 +60,19 @@ devices as examples, as these devices are the first devices to use this module::
+>        |  MDEV CORE    |
+>        |   MODULE      |
+>        |   mdev.ko     |
+> -     | +-----------+ |  mdev_register_device() +--------------+
+> +     | +-----------+ |  mdev_register_parent() +--------------+
+>        | |           | +<------------------------+              |
+>        | |           | |                         |  nvidia.ko   |<-> physical
+>        | |           | +------------------------>+              |    device
+>        | |           | |        callbacks        +--------------+
+>        | | Physical  | |
+> -     | |  device   | |  mdev_register_device() +--------------+
+> +     | |  device   | |  mdev_register_parent() +--------------+
+>        | | interface | |<------------------------+              |
+>        | |           | |                         |  i915.ko     |<-> physical
+>        | |           | +------------------------>+              |    device
+>        | |           | |        callbacks        +--------------+
+>        | |           | |
+> -     | |           | |  mdev_register_device() +--------------+
+> +     | |           | |  mdev_register_parent() +--------------+
+>        | |           | +<------------------------+              |
+>        | |           | |                         | ccw_device.ko|<-> physical
+>        | |           | +------------------------>+              |    device
+> @@ -127,8 +127,8 @@ vfio_device_ops.
+>   When a driver wants to add the GUID creation sysfs to an existing device it has
+>   probe'd to then it should call::
+>   
+> -	extern int  mdev_register_device(struct device *dev,
+> -	                                 struct mdev_driver *mdev_driver);
+> +	int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
+> +			struct mdev_driver *mdev_driver);
 >
 
-I had been working on the premise that ~4k drm*dbg callsites was a good
-case.
+No need to change API name as it still registers 'struct device *dev', 
+it could be 'mdev_register_device' but with new argument list.
 
-verbosity-levels - with x<y logic instead of x==y is what's currently
-missing.
+>   This will provide the 'mdev_supported_types/XX/create' files which can then be
+>   used to trigger the creation of a mdev_device. The created mdev_device will be
+> @@ -136,7 +136,7 @@ attached to the specified driver.
+>   
+>   When the driver needs to remove itself it calls::
+>   
+> -	extern void mdev_unregister_device(struct device *dev);
+> +	void mdev_unregister_parent(struct mdev_parent *parent);
+>   
 
-the next revision adds something, which "kinda works".
-But I think I'll rip it out, and do this simpler approach instead:
+Same as above.
 
-implement a verbose/levels  param & callback, which takes
+>   Which will unbind and destroy all the created mdevs and remove the sysfs files.
+>   
+> diff --git a/Documentation/s390/vfio-ap.rst b/Documentation/s390/vfio-ap.rst
+> index f57ae621f33e8..37e16158c7fbf 100644
+> --- a/Documentation/s390/vfio-ap.rst
+> +++ b/Documentation/s390/vfio-ap.rst
+> @@ -299,7 +299,7 @@ of the VFIO AP mediated matrix device driver::
+>      |  MDEV CORE  |
+>      |   MODULE    |
+>      |   mdev.ko   |
+> -   | +---------+ | mdev_register_device() +--------------+
+> +   | +---------+ | mdev_register_parent() +--------------+
+>      | |Physical | +<-----------------------+              |
+>      | | device  | |                        |  vfio_ap.ko  |<-> matrix
+>      | |interface| +----------------------->+              |    device
+> diff --git a/Documentation/s390/vfio-ccw.rst b/Documentation/s390/vfio-ccw.rst
+> index 8aad08a8b8a50..ea928a3806f43 100644
+> --- a/Documentation/s390/vfio-ccw.rst
+> +++ b/Documentation/s390/vfio-ccw.rst
+> @@ -156,7 +156,7 @@ Below is a high Level block diagram::
+>    |  MDEV CORE  |
+>    |   MODULE    |
+>    |   mdev.ko   |
+> - | +---------+ | mdev_register_device() +--------------+
+> + | +---------+ | mdev_register_parent() +--------------+
+>    | |Physical | +<-----------------------+              |
+>    | | device  | |                        |  vfio_ccw.ko |<-> subchannel
+>    | |interface| +----------------------->+              |     device
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> index e2f6c56ab3420..37bda01c1bb97 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -1960,7 +1960,7 @@ static void intel_gvt_clean_device(struct drm_i915_private *i915)
+>   	if (drm_WARN_ON(&i915->drm, !gvt))
+>   		return;
+>   
+> -	mdev_unregister_device(i915->drm.dev);
+> +	mdev_unregister_parent(&i915->vgpu.parent);
 
-   echo 3 > /sys/module/foo/parameters/debug_verbosity
+Ideally, parent should be member of gvt. There could be multiple vgpus 
+created on one physical device. Intel folks would be better reviewer though.
 
-and effectively does
+>   	intel_gvt_cleanup_vgpu_type_groups(gvt);
+>   	intel_gvt_destroy_idle_vgpu(gvt->idle_vgpu);
+>   	intel_gvt_clean_vgpu_types(gvt);
+> @@ -2065,7 +2065,8 @@ static int intel_gvt_init_device(struct drm_i915_private *i915)
+>   	if (ret)
+>   		goto out_destroy_idle_vgpu;
+>   
+> -	ret = mdev_register_device(i915->drm.dev, &intel_vgpu_mdev_driver);
+> +	ret = mdev_register_parent(&i915->vgpu.parent, i915->drm.dev,
+> +				   &intel_vgpu_mdev_driver);
+>   	if (ret)
+>   		goto out_cleanup_vgpu_type_groups;
+>   
+> diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_drv.h
+> index 00d7eeae33bd3..7d62cc9a57e4e 100644
+> --- a/drivers/gpu/drm/i915/i915_drv.h
+> +++ b/drivers/gpu/drm/i915/i915_drv.h
+> @@ -32,6 +32,7 @@
+>   
+>   #include <uapi/drm/i915_drm.h>
+>   
+> +#include <linux/mdev.h>
+>   #include <linux/pm_qos.h>
+>   
+>   #include <drm/drm_connector.h>
+> @@ -400,6 +401,7 @@ struct i915_frontbuffer_tracking {
+>   
+>   struct i915_virtual_gpu {
+>   	struct mutex lock; /* serialises sending of g2v_notify command pkts */
+> +	struct mdev_parent parent;
+>   	bool active;
+>   	u32 caps;
+>   	u32 *initial_mmio;
+> diff --git a/drivers/s390/cio/cio.h b/drivers/s390/cio/cio.h
+> index 1cb9daf9c6450..4ae462da7b45b 100644
+> --- a/drivers/s390/cio/cio.h
+> +++ b/drivers/s390/cio/cio.h
+> @@ -5,6 +5,7 @@
+>   #include <linux/mutex.h>
+>   #include <linux/device.h>
+>   #include <linux/mod_devicetable.h>
+> +#include <linux/mdev.h>
+>   #include <asm/chpid.h>
+>   #include <asm/cio.h>
+>   #include <asm/fcx.h>
+> @@ -104,6 +105,7 @@ struct subchannel {
+>   	struct schib_config config;
+>   	u64 dma_mask;
+>   	char *driver_override; /* Driver name to force a match */
+> +	struct mdev_parent parent;
+>   } __attribute__ ((aligned(8)));
+>   
+>   DECLARE_PER_CPU_ALIGNED(struct irb, cio_irb);
+> diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
+> index b49e2e9db2dc6..9192a21085ce4 100644
+> --- a/drivers/s390/cio/vfio_ccw_ops.c
+> +++ b/drivers/s390/cio/vfio_ccw_ops.c
+> @@ -11,7 +11,6 @@
+>    */
+>   
+>   #include <linux/vfio.h>
+> -#include <linux/mdev.h>
+>   #include <linux/nospec.h>
+>   #include <linux/slab.h>
+>   
+> @@ -660,10 +659,11 @@ struct mdev_driver vfio_ccw_mdev_driver = {
+>   
+>   int vfio_ccw_mdev_reg(struct subchannel *sch)
+>   {
+> -	return mdev_register_device(&sch->dev, &vfio_ccw_mdev_driver);
+> +	return mdev_register_parent(&sch->parent, &sch->dev,
+> +				    &vfio_ccw_mdev_driver);
+>   }
+>   
+>   void vfio_ccw_mdev_unreg(struct subchannel *sch)
+>   {
+> -	mdev_unregister_device(&sch->dev);
+> +	mdev_unregister_parent(&sch->parent);
+>   }
+> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
+> index a7d2a95796d36..834945150dc9f 100644
+> --- a/drivers/s390/crypto/vfio_ap_ops.c
+> +++ b/drivers/s390/crypto/vfio_ap_ops.c
+> @@ -1485,7 +1485,8 @@ int vfio_ap_mdev_register(void)
+>   	if (ret)
+>   		return ret;
+>   
+> -	ret = mdev_register_device(&matrix_dev->device, &vfio_ap_matrix_driver);
+> +	ret = mdev_register_parent(&matrix_dev->parent, &matrix_dev->device,
+> +				   &vfio_ap_matrix_driver);
+>   	if (ret)
+>   		goto err_driver;
+>   	return 0;
+> @@ -1497,6 +1498,6 @@ int vfio_ap_mdev_register(void)
+>   
+>   void vfio_ap_mdev_unregister(void)
+>   {
+> -	mdev_unregister_device(&matrix_dev->device);
+> +	mdev_unregister_parent(&matrix_dev->parent);
+>   	mdev_unregister_driver(&vfio_ap_matrix_driver);
+>   }
+> diff --git a/drivers/s390/crypto/vfio_ap_private.h b/drivers/s390/crypto/vfio_ap_private.h
+> index a26efd804d0df..b97dc548a7c95 100644
+> --- a/drivers/s390/crypto/vfio_ap_private.h
+> +++ b/drivers/s390/crypto/vfio_ap_private.h
+> @@ -46,6 +46,7 @@ struct ap_matrix_dev {
+>   	struct list_head mdev_list;
+>   	struct mutex lock;
+>   	struct ap_driver  *vfio_ap_drv;
+> +	struct mdev_parent parent;
+>   };
+>   
+>   extern struct ap_matrix_dev *matrix_dev;
+> diff --git a/drivers/vfio/mdev/mdev_core.c b/drivers/vfio/mdev/mdev_core.c
+> index b8b9e7911e559..8b5a2b3f0c882 100644
+> --- a/drivers/vfio/mdev/mdev_core.c
+> +++ b/drivers/vfio/mdev/mdev_core.c
+> @@ -20,8 +20,6 @@
+>   #define DRIVER_AUTHOR		"NVIDIA Corporation"
+>   #define DRIVER_DESC		"Mediated device Core Driver"
+>   
+> -static LIST_HEAD(parent_list);
+> -static DEFINE_MUTEX(parent_list_lock);
+>   static struct class_compat *mdev_bus_compat_class;
+>   
+>   static LIST_HEAD(mdev_list);
+> @@ -63,28 +61,6 @@ struct device *mtype_get_parent_dev(struct mdev_type *mtype)
+>   }
+>   EXPORT_SYMBOL(mtype_get_parent_dev);
+>   
+> -/* Should be called holding parent_list_lock */
+> -static struct mdev_parent *__find_parent_device(struct device *dev)
+> -{
+> -	struct mdev_parent *parent;
+> -
+> -	list_for_each_entry(parent, &parent_list, next) {
+> -		if (parent->dev == dev)
+> -			return parent;
+> -	}
+> -	return NULL;
+> -}
+> -
+> -void mdev_release_parent(struct kref *kref)
+> -{
+> -	struct mdev_parent *parent = container_of(kref, struct mdev_parent,
+> -						  ref);
+> -	struct device *dev = parent->dev;
+> -
+> -	kfree(parent);
+> -	put_device(dev);
+> -}
+> -
+>   /* Caller must hold parent unreg_sem read or write lock */
+>   static void mdev_device_remove_common(struct mdev_device *mdev)
+>   {
+> @@ -107,125 +83,69 @@ static int mdev_device_remove_cb(struct device *dev, void *data)
+>   }
+>   
+>   /*
+> - * mdev_register_device : Register a device
+> + * mdev_register_parent: Register a device as parent for mdevs
+> + * @parent: parent structure registered
+>    * @dev: device structure representing parent device.
+>    * @mdev_driver: Device driver to bind to the newly created mdev
+>    *
+> - * Add device to list of registered parent devices.
+>    * Returns a negative value on error, otherwise 0.
+>    */
+> -int mdev_register_device(struct device *dev, struct mdev_driver *mdev_driver)
+> +int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
+> +		struct mdev_driver *mdev_driver)
+>   {
+> -	int ret;
+> -	struct mdev_parent *parent;
+>   	char *env_string = "MDEV_STATE=registered";
+>   	char *envp[] = { env_string, NULL };
+> +	int ret;
+>   
+>   	/* check for mandatory ops */
+>   	if (!mdev_driver->supported_type_groups)
+>   		return -EINVAL;
+>   
+> -	dev = get_device(dev);
+> -	if (!dev)
+> -		return -EINVAL;
+> -
 
-  echo <<EOQRY  > /proc/dynamic_debug/control
-module foo class V1 +p
-module foo class V2 +p
-module foo class V3 +p
-module foo class V4 -p
-module foo class V5 -p
-module foo class V6 -p
-module foo class V7 -p
-module foo class V8 -p
-EOQRY
+Why not held device here? What if some driver miss behave where it 
+registers device to mdev, but unloads without unregistering from mdev?
 
-since only real +/-p changes incur kernel-patching costs,
-the remaining overheads are minimal.
+Thanks,
+Kirti
 
-
-> RFC for DRM:
->
-> - decoration flags "fmlt" do not work on drm_*dbg().
->   (drm_*dbg() dont use pr_debug, they *become* one flavor of them)
->   this could (should?) be added, and maybe tailored for drm.
->   some of the device prefixes are very long, a "d" flag could optionalize
-them.
-
-I'm lost what the fmlt decoration flags are?
-
-
-The flags are::
-
-  p    enables the pr_debug() callsite.
-  f    Include the function name in the printed message
-  l    Include line number in the printed message
-  m    Include module name in the printed message
-  t    Include thread ID in messages not generated from interrupt context
-  _    No flags are set. (Or'd with others on input)
-
-
-the fmlt flags add a "decoration" prefix to enabled/printed log messages
-
-
-> - api use needs review wrt drm life-cycle.
-> >   enum drm_debug_category and DYNAMIC_DEBUG_CLASSES could be together?
->
-> Hm if they're tied to module lifetime we should be good? Not sure what
-> could go wrong here.
->
->
-with the new __section, "life-cycle" doesnt really pertain.
-the new issue is how the class-maps are shared across the subsystem;
-the current class-maps list for each module will probably break;
-a list item cannot be on N different lists of different modules.
-Altering the list-items to ref the class-map (not contain it) should solve
-the problem.
-
-
-
-
-> > - class-names could stand review, perhaps extension
-> >   "drm:core:" etc have appeared (maybe just from me)
-> >   or a "plan" to look at it later
->
-> Yeah it's been a bit sprawling. I'm kinda hoping that by firmly
-> establishing dyndbg as the drm debug approach we can cut down for the need
-> for ad-hoc flags a bit.
->
-> yeah thats why I kept the DRM_UT_* names.
-OTOH - the symbolic names patch exposes the choices,
-which locks the names as API ??
-
-
-
-> > - i915 & amdgpu have pr_debugs (DC_LOG_*, gvt_dbg_*) that have
-> > class-ish prefixes that are separate from, but similar to DRM_UT_*,
-> > and could stand review and possible unification with reformed or
-> > extended drm categories.
->
-> Yeah drm is not entirely consistent with how exactly driver debug printing
-> should be done. Another reason why I'm hoping that the kitchen sync with
-> everything approach you're doing here could help unify things.
->
-
-
-the decoration flags can help here; they loosely/precisely describe
-the elements of most/all the current debug format-prefix variations.
-So case by case, the ad-hoc variations should map onto these flags,
-
-The flags allow selectively dropping the prefix info from some of the log
-entries,
-after you've seen the module name and function a dozen times,
-it's helpful to reduce screen clutter.
-
-It might make sense to add a new flag for device,
-so that dev_dbg() flavors can shorten-or-skip the longer device strings,
-maybe some drm specific flavors.
-
-
-
->
-> > - the change to enum drm_debug_category from bitmask values to 0..31
-> >   means that we foreclose this possiblility:
-> >
-> >    drm_dbg(DRM_UT_CORE|DRM_UT_KMS, "wierd double-cat experiment");
->
-> Yeah no, that doesn't make much sense to me :-)
->
-> no chuckles for the schrodinger's cat joke ?
-(maybe "yeah no" is the artful superpositional reply, I just caught :)
-
-
-> > - nouveau has very few drm.debug calls,
-> >   has NV_DEBUG, VMM_DEBUG, nvkm_printk_, I havent looked deeply.
->
->
-nouveau has like levels, man ..
-test_dynamic_debug implements its priority-style names as a POC
-
-patch 18 converts nvkm_debug/trace to use dev_dbg instead of dev_info
-it probably could adapt to use drm_devdbg
-
-
-
-
-> Yeah see above. There's a pile more drivers (more on the armsoc side of
-> things) which are quite big on the raw debug call approach.
->
->
-LOW, MID, HI has been proposed at least once wrt dyndbg.
-that probably fits well with current disjoint classes.
-level/verbose classes should be practical too, as described above.
-
-NB: The symbolic names should also work
-
-   echo +MID > /sys/module/foobar/parameters/debug_verbosity
-
-though theres some ambiguity with
-
-   echo -V3 > /sys/module/foobar/parameters/debug_verbosity
-
-that should turn off V4,5,6,
-but what about V1,2 ?
-it could leave them alone (whatever their previous settings are)
-
-anyway, lkp-robot and igt-trybot should be grinding on the latest patchset
-soon,
-I'll send it after I fix whatever breaks.
-
-
-
-> Cheers, Daniel
->
-
-thanks,
-Jim
-
---00000000000014abc905e0c8ba93
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, May 25, 2022 at 9:02 AM Danie=
-l Vetter &lt;<a href=3D"mailto:daniel@ffwll.ch" target=3D"_blank">daniel@ff=
-wll.ch</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On Mon, May 16, 2022 at 04:56:13PM -0600, Jim Cromie wrote:<br>
-&gt; DRM.debug API is 23 macros, issuing 10 exclusive categories of debug<b=
-r>
-&gt; messages.=C2=A0 By rough count, they are used 5140 times in the kernel=
-.<br>
-&gt; These all call drm_dbg or drm_devdbg, which call drm_debug_enabled(),<=
-br>
-&gt; which checks bits in global __drm_debug.=C2=A0 Some of these are page-=
-flips<br>
-&gt; and vblanks, and get called often.<br>
-&gt; <br>
-&gt; DYNAMIC_DEBUG (with CONFIG_JUMP_LABEL) is built to avoid this kind of<=
-br>
-&gt; work, with NOOPd jump/callsites.<br>
-&gt; <br>
-&gt; This patchset is RFC because:<br>
-&gt; - it touches 2.5 subsystems: dyndbg, drm, tracefs (new events)<br>
-&gt; - dyndbg class support is built for drm, needs it for validation<br>
-&gt; - new api, used by drm<br>
-&gt; - big memory impact, with 5100 new pr-debug callsites.<br>
-&gt; - drm class bikeshedding opportunities<br>
-&gt; - others, names etc.<br>
-<br>
-Thanks a lot for keeping on pushing this!</blockquote><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
-4,204,204);padding-left:1ex">
-<br>
-&gt; <br>
-&gt; DYNAMIC_DEBUG:<br>
-&gt;</blockquote><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-&gt; RFC:<br>
-&gt; <br>
-&gt; dynamic_debug_register_classes() cannot act early enough to be in<br>
-&gt; effect at module-load.=C2=A0 So this will not work as you&#39;d reason=
-ably<br>
-&gt; expect:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0modprobe test_dynamic_debug dyndbg=3D&#39;+pfm; class FOO =
-+pfmlt&#39;<br>
-&gt; <br>
-&gt; The 1st query:+pfm will be enabled during load, but in the 2nd query,<=
-br>
-&gt; &quot;class FOO&quot; will be unknown at load time.=C2=A0 Early class =
-enablement<br>
-&gt; would be nice.=C2=A0 DYNAMIC_DEBUG_CLASSES is a static initializer, wh=
-ich<br>
-&gt; is certainly early enough, but Im missing a trick, suggestions?<br>
-<br>
-So maybe I&#39;m just totally overloading this work here so feel free to<br=
->
-ignore or postpone, but: Could we do the dynamic_debug_register_classes()<b=
-r>
-automatically at module load as a new special section? And then throw in a<=
-br>
-bit of kbuild so that in a given subsystem every driver gets the same<br>
-class names by default and everything would just work, without having to<br=
->
-sprinkle calls to dynamic_debug_register_classes() all over the place?<br><=
-/blockquote><div><br></div><div>This is now done; Ive added __dyndbg_classe=
-s section.</div><div>load_module() now grabs it from the .ko</div><div>and =
-ddebug_add_module() attaches it to the module&#39;s ddebug_table record.</d=
-iv><div>for builtins, dynamic_debug_init feeds the builtin class-maps to dd=
-ebug_add_module</div><div><br></div><div>bash-5.1# modprobe test_dynamic_de=
-bug dyndbg=3D&quot;class FOO +p&quot;<br>[ =C2=A0 88.374722] dyndbg: class[=
-0]: nm:test_dynamic_debug base:20 len:7 ty:1<br>[ =C2=A0 88.375158] dyndbg:=
- =C2=A00: EMERG<br>[ =C2=A0 88.375345] dyndbg: =C2=A01: DANGER<br>[ =C2=A0 =
-88.375540] dyndbg: =C2=A02: ERROR<br>[ =C2=A0 88.375726] dyndbg: =C2=A03: W=
-ARNING<br>[ =C2=A0 88.375930] dyndbg: =C2=A04: NOTICE<br>[ =C2=A0 88.376130=
-] dyndbg: =C2=A05: INFO<br>[ =C2=A0 88.376310] dyndbg: =C2=A06: DEBUG<br>[ =
-=C2=A0 88.376499] dyndbg: class[1]: nm:test_dynamic_debug base:12 len:3 ty:=
-1<br>[ =C2=A0 88.376903] dyndbg: =C2=A00: ONE<br>[ =C2=A0 88.377079] dyndbg=
-: =C2=A01: TWO<br>[ =C2=A0 88.377253] dyndbg: =C2=A02: THREE<br>[ =C2=A0 88=
-.377441] dyndbg: class[2]: nm:test_dynamic_debug base:8 len:3 ty:0<br>[ =C2=
-=A0 88.377837] dyndbg: =C2=A00: bing<br>[ =C2=A0 88.378022] dyndbg: =C2=A01=
-: bong<br>[ =C2=A0 88.378203] dyndbg: =C2=A02: boom<br>[ =C2=A0 88.378387] =
-dyndbg: class[3]: nm:test_dynamic_debug base:4 len:3 ty:0<br>[ =C2=A0 88.37=
-8800] dyndbg: =C2=A00: Foo<br>[ =C2=A0 88.378986] dyndbg: =C2=A01: Bar<br>[=
- =C2=A0 88.379167] dyndbg: =C2=A02: Buzz<br>[ =C2=A0 88.379348] dyndbg: cla=
-ss[4]: nm:test_dynamic_debug base:0 len:3 ty:0<br>[ =C2=A0 88.379757] dyndb=
-g: =C2=A00: FOO<br>[ =C2=A0 88.379938] dyndbg: =C2=A01: BAR<br>[ =C2=A0 88.=
-380136] dyndbg: =C2=A02: BUZZ<br>[ =C2=A0 88.380410] dyndbg: module:test_dy=
-namic_debug attached 5 classes<br>[ =C2=A0 88.380881] dyndbg: =C2=A024 debu=
-g prints in module test_dynamic_debug<br>[ =C2=A0 88.381315] dyndbg: module=
-: test_dynamic_debug dyndbg=3D&quot;class FOO +p&quot;<br>[ =C2=A0 88.38171=
-4] dyndbg: query 0: &quot;class FOO +p&quot; mod:test_dynamic_debug<br>[ =
-=C2=A0 88.382109] dyndbg: split into words: &quot;class&quot; &quot;FOO&quo=
-t; &quot;+p&quot;<br>[ =C2=A0 88.382445] dyndbg: op=3D&#39;+&#39;<br>[ =C2=
-=A0 88.382616] dyndbg: flags=3D0x1<br>[ =C2=A0 88.382802] dyndbg: *flagsp=
-=3D0x1 *maskp=3D0xffffffff<br>[ =C2=A0 88.383101] dyndbg: parsed: func=3D&q=
-uot;&quot; file=3D&quot;&quot; module=3D&quot;test_dynamic_debug&quot; form=
-at=3D&quot;&quot; lineno=3D0-0 class=3DFOO<br>[ =C2=A0 88.383740] dyndbg: a=
-pplied: func=3D&quot;&quot; file=3D&quot;&quot; module=3D&quot;test_dynamic=
-_debug&quot; format=3D&quot;&quot; lineno=3D0-0 class=3DFOO<br>[ =C2=A0 88.=
-384324] dyndbg: processed 1 queries, with 2 matches, 0 errs<br>bash-5.1#=C2=
-=A0<br></div><div><br></div><div>so its working at module-load time.</div><=
-div><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><br>
-For the entire class approach, did you spot another subsystem that could<br=
->
-benefit from this and maybe make a more solid case that this is something<b=
-r>
-good?<br></blockquote><div><br></div><div>I had been working on the premise=
- that ~4k drm*dbg callsites was a good case.</div><div><br></div><div>verbo=
-sity-levels - with x&lt;y logic instead=C2=A0of=C2=A0x=3D=3Dy is what&#39;s=
-=C2=A0currently missing.</div><div><br></div><div>the next revision adds so=
-mething, which &quot;kinda works&quot;.</div><div>But I think I&#39;ll rip =
-it out, and do this simpler approach instead:</div><div><br></div><div>impl=
-ement a verbose/levels=C2=A0 param &amp; callback, which takes</div><div><b=
-r></div><div>=C2=A0 =C2=A0echo 3 &gt; /sys/module/foo/parameters/debug_verb=
-osity</div><div><br></div><div>and effectively does</div><div><br></div><di=
-v>=C2=A0 echo &lt;&lt;EOQRY=C2=A0 &gt; /proc/dynamic_debug/control</div><di=
-v>module foo class V1 +p</div><div><div>module foo class V2 +p</div><div><d=
-iv>module foo class V3 +p</div><div><div>module foo class V4 -p</div><div><=
-div>module foo class V5 -p</div><div><div>module foo class V6 -p</div><div>=
-<div>module foo class V7 -p</div><div><div>module foo class V8 -p</div><div=
->EOQRY</div></div></div></div></div></div></div></div><div><br></div><div>s=
-ince only real=C2=A0+/-p changes incur=C2=A0kernel-patching costs,</div><di=
-v>the remaining overheads are minimal.</div><div><br></div><div> <br>
-&gt; RFC for DRM:<br>
-&gt; <br>
-&gt; - decoration flags &quot;fmlt&quot; do not work on drm_*dbg().<br>
-&gt;=C2=A0 =C2=A0(drm_*dbg() dont use pr_debug, they *become* one flavor of=
- them)<br>
-&gt;=C2=A0 =C2=A0this could (should?) be added, and maybe tailored for drm.=
-<br>
-&gt;=C2=A0 =C2=A0some of the device prefixes are very long, a &quot;d&quot;=
- flag could optionalize them.<br>
-<br>
-I&#39;m lost what the fmlt decoration flags are?<br>
-<br></div><br>The flags are::<br><br>=C2=A0 p =C2=A0 =C2=A0enables the pr_d=
-ebug() callsite.<br>=C2=A0 f =C2=A0 =C2=A0Include the function name in the =
-printed message<br>=C2=A0 l =C2=A0 =C2=A0Include line number in the printed=
- message<br>=C2=A0 m =C2=A0 =C2=A0Include module name in the printed messag=
-e<br>=C2=A0 t =C2=A0 =C2=A0Include thread ID in messages not generated from=
- interrupt context<br>=C2=A0 _ =C2=A0 =C2=A0No flags are set. (Or&#39;d wit=
-h others on input)<br><div><br></div><div><br></div><div>the fmlt flags add=
- a &quot;decoration&quot; prefix to enabled/printed log messages</div><div>=
-<br></div><div><br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
-0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-&gt; - api use needs review wrt drm life-cycle.<br>
-&gt;=C2=A0 =C2=A0enum drm_debug_category and DYNAMIC_DEBUG_CLASSES could be=
- together?<br>
-<br>
-Hm if they&#39;re tied to module lifetime we should be good? Not sure what<=
-br>
-could go wrong here.<br>
-<br></blockquote><div><br></div><div>with the new __section, &quot;life-cyc=
-le&quot; doesnt really pertain.</div><div>the new issue is how the class-ma=
-ps are shared across the subsystem;</div><div>the current class-maps list f=
-or each module will probably break;</div><div>a list item cannot be on N di=
-fferent lists of different modules.</div><div>Altering the list-items to re=
-f the class-map (not contain it) should solve the problem.</div><div><br></=
-div><div><br></div><div>=C2=A0<br></div><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
-ding-left:1ex">
-&gt; - class-names could stand review, perhaps extension<br>
-&gt;=C2=A0 =C2=A0&quot;drm:core:&quot; etc have appeared (maybe just from m=
-e)<br>
-&gt;=C2=A0 =C2=A0or a &quot;plan&quot; to look at it later<br>
-<br>
-Yeah it&#39;s been a bit sprawling. I&#39;m kinda hoping that by firmly<br>
-establishing dyndbg as the drm debug approach we can cut down for the need<=
-br>
-for ad-hoc flags a bit.<br>
-<br></blockquote><div>yeah thats why I kept the DRM_UT_* names.</div><div>O=
-TOH - the symbolic names patch exposes the choices,</div><div>which locks t=
-he names as API ??</div><div><br></div><div>=C2=A0</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-&gt; - i915 &amp; amdgpu have pr_debugs (DC_LOG_*, gvt_dbg_*) that have<br>
-&gt; class-ish prefixes that are separate from, but similar to DRM_UT_*,<br=
->
-&gt; and could stand review and possible unification with reformed or<br>
-&gt; extended drm categories.<br>
-<br>
-Yeah drm is not entirely consistent with how exactly driver debug printing<=
-br>
-should be done. Another reason why I&#39;m hoping that the kitchen sync wit=
-h<br>
-everything approach you&#39;re doing here could help unify things.<br></blo=
-ckquote><div><br></div><div><br></div><div>the decoration flags can help he=
-re; they loosely/precisely describe</div><div>the elements of most/all the =
-current debug format-prefix variations.</div><div>So case by case, the ad-h=
-oc variations should map onto these flags,</div><div><br></div><div>The fla=
-gs allow selectively dropping the prefix info from some of the log entries,=
-</div><div>after you&#39;ve=C2=A0seen the module name and function a dozen =
-times,=C2=A0</div><div>it&#39;s helpful to reduce screen clutter.</div><div=
-><br></div><div>It might make sense to add a new flag for device,</div><div=
->so that dev_dbg() flavors can shorten-or-skip the longer device strings,=
-=C2=A0</div><div>maybe some drm specific flavors.</div><div><br></div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; - the change to enum drm_debug_category from bitmask values to 0..31<b=
-r>
-&gt;=C2=A0 =C2=A0means that we foreclose this possiblility:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 drm_dbg(DRM_UT_CORE|DRM_UT_KMS, &quot;wierd double-cat ex=
-periment&quot;);<br>
-<br>
-Yeah no, that doesn&#39;t make much sense to me :-)<br>
-<br></blockquote><div>no chuckles for the schrodinger&#39;s cat joke ?</div=
-><div>(maybe &quot;yeah no&quot; is the artful superpositional reply, I jus=
-t caught :)</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-&gt; - nouveau has very few drm.debug calls,<br>
-&gt;=C2=A0 =C2=A0has NV_DEBUG, VMM_DEBUG, nvkm_printk_, I havent looked dee=
-ply.<br>
-<br></blockquote><div><br></div><div>nouveau has like levels, man ..</div><=
-div>test_dynamic_debug implements its priority-style names as a POC</div><d=
-iv><br></div><div>patch 18 converts nvkm_debug/trace to use dev_dbg instead=
- of dev_info<br></div><div>it probably could adapt to use drm_devdbg</div><=
-div><br></div><div><br></div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">
-Yeah see above. There&#39;s a pile more drivers (more on the armsoc side of=
-<br>
-things) which are quite big on the raw debug call approach.<br>
-<br></blockquote><div><br></div><div><div>LOW, MID, HI has been proposed at=
- least once wrt dyndbg.</div><div>that probably fits well with current disj=
-oint classes.</div><div>level/verbose classes should be practical too, as d=
-escribed above.</div><div><br></div><div>NB: The symbolic names should also=
- work=C2=A0</div><div><br></div><div>=C2=A0 =C2=A0echo +MID &gt; /sys/modul=
-e/foobar/parameters/debug_verbosity</div><div>=C2=A0</div></div><div>though=
- theres some ambiguity with</div><div><br></div><div><div>=C2=A0 =C2=A0echo=
- -V3 &gt; /sys/module/foobar/parameters/debug_verbosity</div><br class=3D"g=
-mail-Apple-interchange-newline"></div><div>that should turn off V4,5,6,=C2=
-=A0</div><div>but what about V1,2 ?</div><div>it could leave them alone (wh=
-atever their previous settings are)</div><div><br></div><div>anyway, lkp-ro=
-bot and igt-trybot should be grinding on the latest patchset soon,</div><di=
-v>I&#39;ll send it after I fix whatever breaks.</div><div><br></div><div>=
-=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
-.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-Cheers, Daniel<br></blockquote><div><br></div><div>thanks,=C2=A0</div><div>=
-Jim=C2=A0</div></div></div>
-
---00000000000014abc905e0c8ba93--
+> -	mutex_lock(&parent_list_lock);
+> -
+> -	/* Check for duplicate */
+> -	parent = __find_parent_device(dev);
+> -	if (parent) {
+> -		parent = NULL;
+> -		ret = -EEXIST;
+> -		goto add_dev_err;
+> -	}
+> -
+> -	parent = kzalloc(sizeof(*parent), GFP_KERNEL);
+> -	if (!parent) {
+> -		ret = -ENOMEM;
+> -		goto add_dev_err;
+> -	}
+> -
+> -	kref_init(&parent->ref);
+> +	memset(parent, 0, sizeof(*parent));
+>   	init_rwsem(&parent->unreg_sem);
+> -
+>   	parent->dev = dev;
+>   	parent->mdev_driver = mdev_driver;
+>   
+>   	if (!mdev_bus_compat_class) {
+>   		mdev_bus_compat_class = class_compat_register("mdev_bus");
+> -		if (!mdev_bus_compat_class) {
+> -			ret = -ENOMEM;
+> -			goto add_dev_err;
+> -		}
+> +		if (!mdev_bus_compat_class)
+> +			return -ENOMEM;
+>   	}
+>   
+>   	ret = parent_create_sysfs_files(parent);
+>   	if (ret)
+> -		goto add_dev_err;
+> +		return ret;
+>   
+>   	ret = class_compat_create_link(mdev_bus_compat_class, dev, NULL);
+>   	if (ret)
+>   		dev_warn(dev, "Failed to create compatibility class link\n");
+>   
+> -	list_add(&parent->next, &parent_list);
+> -	mutex_unlock(&parent_list_lock);
+> -
+>   	dev_info(dev, "MDEV: Registered\n");
+>   	kobject_uevent_env(&dev->kobj, KOBJ_CHANGE, envp);
+> -
+>   	return 0;
+> -
+> -add_dev_err:
+> -	mutex_unlock(&parent_list_lock);
+> -	if (parent)
+> -		mdev_put_parent(parent);
+> -	else
+> -		put_device(dev);
+> -	return ret;
+>   }
+> -EXPORT_SYMBOL(mdev_register_device);
+> +EXPORT_SYMBOL(mdev_register_parent);
+>   
+>   /*
+> - * mdev_unregister_device : Unregister a parent device
+> - * @dev: device structure representing parent device.
+> - *
+> - * Remove device from list of registered parent devices. Give a chance to free
+> - * existing mediated devices for given device.
+> + * mdev_unregister_parent : Unregister a parent device
+> + * @parent: parent structure to unregister
+>    */
+> -
+> -void mdev_unregister_device(struct device *dev)
+> +void mdev_unregister_parent(struct mdev_parent *parent)
+>   {
+> -	struct mdev_parent *parent;
+>   	char *env_string = "MDEV_STATE=unregistered";
+>   	char *envp[] = { env_string, NULL };
+>   
+> -	mutex_lock(&parent_list_lock);
+> -	parent = __find_parent_device(dev);
+> -
+> -	if (!parent) {
+> -		mutex_unlock(&parent_list_lock);
+> -		return;
+> -	}
+> -	dev_info(dev, "MDEV: Unregistering\n");
+> -
+> -	list_del(&parent->next);
+> -	mutex_unlock(&parent_list_lock);
+> +	dev_info(parent->dev, "MDEV: Unregistering\n");
+>   
+>   	down_write(&parent->unreg_sem);
+> -
+> -	class_compat_remove_link(mdev_bus_compat_class, dev, NULL);
+> -
+> -	device_for_each_child(dev, NULL, mdev_device_remove_cb);
+> -
+> +	class_compat_remove_link(mdev_bus_compat_class, parent->dev, NULL);
+> +	device_for_each_child(parent->dev, NULL, mdev_device_remove_cb);
+>   	parent_remove_sysfs_files(parent);
+>   	up_write(&parent->unreg_sem);
+>   
+> -	mdev_put_parent(parent);
+> -
+> -	/* We still have the caller's reference to use for the uevent */
+> -	kobject_uevent_env(&dev->kobj, KOBJ_CHANGE, envp);
+> +	kobject_uevent_env(&parent->dev->kobj, KOBJ_CHANGE, envp);
+>   }
+> -EXPORT_SYMBOL(mdev_unregister_device);
+> +EXPORT_SYMBOL(mdev_unregister_parent);
+>   
+>   static void mdev_device_release(struct device *dev)
+>   {
+> diff --git a/drivers/vfio/mdev/mdev_private.h b/drivers/vfio/mdev/mdev_private.h
+> index 7c9fc79f3d838..297f911fdc890 100644
+> --- a/drivers/vfio/mdev/mdev_private.h
+> +++ b/drivers/vfio/mdev/mdev_private.h
+> @@ -13,17 +13,6 @@
+>   int  mdev_bus_register(void);
+>   void mdev_bus_unregister(void);
+>   
+> -struct mdev_parent {
+> -	struct device *dev;
+> -	struct mdev_driver *mdev_driver;
+> -	struct kref ref;
+> -	struct list_head next;
+> -	struct kset *mdev_types_kset;
+> -	struct list_head type_list;
+> -	/* Synchronize device creation/removal with parent unregistration */
+> -	struct rw_semaphore unreg_sem;
+> -};
+> -
+>   struct mdev_type {
+>   	struct kobject kobj;
+>   	struct kobject *devices_kobj;
+> @@ -48,16 +37,4 @@ void mdev_remove_sysfs_files(struct mdev_device *mdev);
+>   int mdev_device_create(struct mdev_type *kobj, const guid_t *uuid);
+>   int  mdev_device_remove(struct mdev_device *dev);
+>   
+> -void mdev_release_parent(struct kref *kref);
+> -
+> -static inline void mdev_get_parent(struct mdev_parent *parent)
+> -{
+> -	kref_get(&parent->ref);
+> -}
+> -
+> -static inline void mdev_put_parent(struct mdev_parent *parent)
+> -{
+> -	kref_put(&parent->ref, mdev_release_parent);
+> -}
+> -
+>   #endif /* MDEV_PRIVATE_H */
+> diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
+> index 0ccfeb3dda245..becce814aabfb 100644
+> --- a/drivers/vfio/mdev/mdev_sysfs.c
+> +++ b/drivers/vfio/mdev/mdev_sysfs.c
+> @@ -83,7 +83,7 @@ static void mdev_type_release(struct kobject *kobj)
+>   
+>   	pr_debug("Releasing group %s\n", kobj->name);
+>   	/* Pairs with the get in add_mdev_supported_type() */
+> -	mdev_put_parent(type->parent);
+> +	put_device(type->parent->dev);
+>   	kfree(type);
+>   }
+>   
+> @@ -112,7 +112,7 @@ static struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
+>   	type->kobj.kset = parent->mdev_types_kset;
+>   	type->parent = parent;
+>   	/* Pairs with the put in mdev_type_release() */
+> -	mdev_get_parent(parent);
+> +	get_device(parent->dev);
+>   	type->type_group_id = type_group_id;
+>   
+>   	ret = kobject_init_and_add(&type->kobj, &mdev_type_ktype, NULL,
+> diff --git a/include/linux/mdev.h b/include/linux/mdev.h
+> index 555c1d015b5f0..327ce3e5c6b5f 100644
+> --- a/include/linux/mdev.h
+> +++ b/include/linux/mdev.h
+> @@ -23,6 +23,16 @@ struct mdev_device {
+>   	bool active;
+>   };
+>   
+> +/* embedded into the struct device that the mdev devices hang off */
+> +struct mdev_parent {
+> +	struct device *dev;
+> +	struct mdev_driver *mdev_driver;
+> +	struct kset *mdev_types_kset;
+> +	struct list_head type_list;
+> +	/* Synchronize device creation/removal with parent unregistration */
+> +	struct rw_semaphore unreg_sem;
+> +};
+> +
+>   static inline struct mdev_device *to_mdev_device(struct device *dev)
+>   {
+>   	return container_of(dev, struct mdev_device, dev);
+> @@ -75,8 +85,9 @@ static inline const guid_t *mdev_uuid(struct mdev_device *mdev)
+>   
+>   extern struct bus_type mdev_bus_type;
+>   
+> -int mdev_register_device(struct device *dev, struct mdev_driver *mdev_driver);
+> -void mdev_unregister_device(struct device *dev);
+> +int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
+> +		struct mdev_driver *mdev_driver);
+> +void mdev_unregister_parent(struct mdev_parent *parent);
+>   
+>   int mdev_register_driver(struct mdev_driver *drv);
+>   void mdev_unregister_driver(struct mdev_driver *drv);
+> diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
+> index 344c2901a82bf..f0967a81eabe7 100644
+> --- a/samples/vfio-mdev/mbochs.c
+> +++ b/samples/vfio-mdev/mbochs.c
+> @@ -129,6 +129,7 @@ static dev_t		mbochs_devt;
+>   static struct class	*mbochs_class;
+>   static struct cdev	mbochs_cdev;
+>   static struct device	mbochs_dev;
+> +static struct mdev_parent mbochs_parent;
+>   static atomic_t mbochs_avail_mbytes;
+>   static const struct vfio_device_ops mbochs_dev_ops;
+>   
+> @@ -1457,7 +1458,7 @@ static int __init mbochs_dev_init(void)
+>   	if (ret)
+>   		goto err_class;
+>   
+> -	ret = mdev_register_device(&mbochs_dev, &mbochs_driver);
+> +	ret = mdev_register_parent(&mbochs_parent, &mbochs_dev, &mbochs_driver);
+>   	if (ret)
+>   		goto err_device;
+>   
+> @@ -1478,7 +1479,7 @@ static int __init mbochs_dev_init(void)
+>   static void __exit mbochs_dev_exit(void)
+>   {
+>   	mbochs_dev.bus = NULL;
+> -	mdev_unregister_device(&mbochs_dev);
+> +	mdev_unregister_parent(&mbochs_parent);
+>   
+>   	device_unregister(&mbochs_dev);
+>   	mdev_unregister_driver(&mbochs_driver);
+> diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
+> index e8c46eb2e2468..8ab88a1d149cb 100644
+> --- a/samples/vfio-mdev/mdpy.c
+> +++ b/samples/vfio-mdev/mdpy.c
+> @@ -84,6 +84,7 @@ static dev_t		mdpy_devt;
+>   static struct class	*mdpy_class;
+>   static struct cdev	mdpy_cdev;
+>   static struct device	mdpy_dev;
+> +static struct mdev_parent mdpy_parent;
+>   static u32		mdpy_count;
+>   static const struct vfio_device_ops mdpy_dev_ops;
+>   
+> @@ -766,7 +767,7 @@ static int __init mdpy_dev_init(void)
+>   	if (ret)
+>   		goto err_class;
+>   
+> -	ret = mdev_register_device(&mdpy_dev, &mdpy_driver);
+> +	ret = mdev_register_parent(&mdpy_parent, &mdpy_dev, &mdpy_driver);
+>   	if (ret)
+>   		goto err_device;
+>   
+> @@ -787,7 +788,7 @@ static int __init mdpy_dev_init(void)
+>   static void __exit mdpy_dev_exit(void)
+>   {
+>   	mdpy_dev.bus = NULL;
+> -	mdev_unregister_device(&mdpy_dev);
+> +	mdev_unregister_parent(&mdpy_parent);
+>   
+>   	device_unregister(&mdpy_dev);
+>   	mdev_unregister_driver(&mdpy_driver);
+> diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
+> index f42a59ed2e3fe..20136def93fdb 100644
+> --- a/samples/vfio-mdev/mtty.c
+> +++ b/samples/vfio-mdev/mtty.c
+> @@ -74,6 +74,7 @@ static struct mtty_dev {
+>   	struct cdev	vd_cdev;
+>   	struct idr	vd_idr;
+>   	struct device	dev;
+> +	struct mdev_parent parent;
+>   } mtty_dev;
+>   
+>   struct mdev_region_info {
+> @@ -1352,7 +1353,8 @@ static int __init mtty_dev_init(void)
+>   	if (ret)
+>   		goto err_class;
+>   
+> -	ret = mdev_register_device(&mtty_dev.dev, &mtty_driver);
+> +	ret = mdev_register_parent(&mtty_dev.parent, &mtty_dev.dev,
+> +				   &mtty_driver);
+>   	if (ret)
+>   		goto err_device;
+>   	return 0;
+> @@ -1372,7 +1374,7 @@ static int __init mtty_dev_init(void)
+>   static void __exit mtty_dev_exit(void)
+>   {
+>   	mtty_dev.dev.bus = NULL;
+> -	mdev_unregister_device(&mtty_dev.dev);
+> +	mdev_unregister_parent(&mtty_dev.parent);
+>   
+>   	device_unregister(&mtty_dev.dev);
+>   	idr_destroy(&mtty_dev.vd_idr);
