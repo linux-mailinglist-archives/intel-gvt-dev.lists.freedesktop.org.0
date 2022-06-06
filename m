@@ -1,55 +1,68 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8755F53F174
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Jun 2022 23:14:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE7FC53F27A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jun 2022 01:21:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 361F011B276;
-	Mon,  6 Jun 2022 21:14:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 825EF11BBCE;
+	Mon,  6 Jun 2022 23:21:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb2c.google.com (mail-yb1-xb2c.google.com
- [IPv6:2607:f8b0:4864:20::b2c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 400F211B276
+Received: from mail-qk1-x734.google.com (mail-qk1-x734.google.com
+ [IPv6:2607:f8b0:4864:20::734])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1A5B911BBCE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  6 Jun 2022 21:14:29 +0000 (UTC)
-Received: by mail-yb1-xb2c.google.com with SMTP id w2so27888032ybi.7
+ Mon,  6 Jun 2022 23:21:25 +0000 (UTC)
+Received: by mail-qk1-x734.google.com with SMTP id n197so4991488qke.1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 06 Jun 2022 14:14:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=yAg45i4icGXWCP75tOWAYhBAFx6CRLgoAMP6qmGJPeU=;
- b=h5JvO84l85NedjhqVH3nNTZq996wLlvLASej2d8ABKewlQG2uHI2Or9Ph+KJX1Q3lL
- RbK1qgBVesK0+F8Alw5DCI/XyjEHHI12LeheQDkXRP/WjNdsaFr7p765okd4QUL+JKGC
- /ko9DETGxCZKkDsIedCq7I55hpfGKD90dlGqwZ5Xn3StBYvtM9xc6AzK3902KsLfyEpR
- 3WUbq03NvdPMauFWXGKFaEH4Ql2vTKXqFmlGIGvlLQPbihdYu/5LJbPaaIYXm6Z+cAH1
- 2uP53k4xqixp59EWCkNqEx9roYoKJWt5O7R041NLzick8fld8wZ+iF+pDzGe5qPkdgGQ
- XWMw==
+ Mon, 06 Jun 2022 16:21:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=v5vcjjBO5Hf7YQjGIjjL9G5k1C6N2WYoLNXXwX5nxBQ=;
+ b=WBSJSZBieh+Cj1oFaheiZ15LpB3nTTuTiYVUhSHgCo9F/SI8JUFSktbhiOxMhmiZiJ
+ pE4vzWpBbzJbHq4rm3An0RyNSSWcTLQivvbwhdDcFxpyp96ObudXGn27dCtWY5ABCPzh
+ 6ftMcfcswU1+p3ZmDVnFj5j94FDg/+MwixwnJ2TH/uRwux2ZDaCHa41ND8fsoLoETLof
+ SrX1xpQ3j6bViqbX0vdWrjApj/OIAA4iscB0JUGHffSuETDo3gyqOKRB6qSbc5mbFpQY
+ p4ZbXHr9l4gqYY3i/gWg/buCdVYtU9GocYXQhSeYhwqRCtQ/G8Tt9ZKYWWox4s0fszRL
+ 6vDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=yAg45i4icGXWCP75tOWAYhBAFx6CRLgoAMP6qmGJPeU=;
- b=fHPiEyViZ+5ntJKVnu2m+UN1FkjhScbk6Sfq/PNgRFmv63bzkWzGYp9o3bNuV64wko
- f04eyJBKJfdu5v9aAVbHXOi4y1XP1Qm4El0W02KpNgDKy/jVmGw9Us5/qxhtzNsBIBM0
- 55MP20R2yGM38CSdWMOCDz9EfK+exV6uJomw/Xi87S6+GnpbLhEDcuVeH6u5qyT9spB2
- v23RPvus04r24e5CV6FHFSSmnkoiZ1/fkLDcqVmGll4RTpsM28+N0ieH84jCHvXlzxDs
- 55RXYqUcnjVFBpTCk8LDVpbPxHHvdLjF67nP8hHFae0AqeJ4Nccen8bT6hivVih2D6tH
- aQ1g==
-X-Gm-Message-State: AOAM530lSEbUrZs/AfnqWeKnU9KriMRdtg+Q4823wqyGidiYv7b/0onK
- smlzWZVTzhXwkI+yOZw4ixHYf1mChOpGiCU0thQ=
-X-Google-Smtp-Source: ABdhPJwlLd2cSIYIyoyLYnIZpAHtGfxJEVnuWWDwGOFKMQN6bvpZ6P5MUVa4gKYSDDsiRQcflB/5NdVOzv2OxBuX/hE=
-X-Received: by 2002:a25:2ac9:0:b0:65d:3dca:9638 with SMTP id
- q192-20020a252ac9000000b0065d3dca9638mr27084992ybq.196.1654550068490; Mon, 06
- Jun 2022 14:14:28 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=v5vcjjBO5Hf7YQjGIjjL9G5k1C6N2WYoLNXXwX5nxBQ=;
+ b=KmGylUzyVTpQ3w8qV+nBIB7jn7+HZ1YPfr/lUBCWtFZnOC2OWbkpJFXChCUlANSDDd
+ UWM1Ma45uCR8XPyL/YYWKT46RDfnUeaT9wVYAlKko2NEXaprYqfRqkCX1XhzHS9JPI2G
+ I6l7xZgwkV+z/FHAVKH6o/UCXRwaCo3Rh6Opv6tcduxmugLyuKY0dd+SStIk2z8sDMf3
+ wLeMyzYFX09gB8VqVbreFZALjgebrLkXTSKo2+dGeg2NIDnv990oxeW2mOwuOVpGzAeC
+ NqdFYU4TX0uWxtPuUUEpVuL97GH5kSwg7hHyyeNqVLpwFhi77yfKl1fDAsPpnva2TW+S
+ QZgw==
+X-Gm-Message-State: AOAM53002bpnn0y77FtcIcPdxwSUEwipSNMBor9gFEcS+jAyrRsE2m+F
+ lZub9E1bhrvoK7g2++BGV260KQ==
+X-Google-Smtp-Source: ABdhPJwa4cdiCcTjwM0PprUnLIbY2ss8Gs7aLyp/S9zRUiWanpo7k2O0otOSWKDRr/Dg++yAS4D4Jg==
+X-Received: by 2002:ae9:f20d:0:b0:6a6:ab5e:33ca with SMTP id
+ m13-20020ae9f20d000000b006a6ab5e33camr9918929qkg.176.1654557685060; 
+ Mon, 06 Jun 2022 16:21:25 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-142-162-113-129.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [142.162.113.129]) by smtp.gmail.com with ESMTPSA id
+ z19-20020ac87f93000000b002f936bae288sm11751235qtj.87.2022.06.06.16.21.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Jun 2022 16:21:24 -0700 (PDT)
+Received: from jgg by mlx with local (Exim 4.94) (envelope-from <jgg@ziepe.ca>)
+ id 1nyM2F-002pag-P1; Mon, 06 Jun 2022 20:21:23 -0300
+Date: Mon, 6 Jun 2022 20:21:23 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH 1/8] vfio/mdev: make mdev.h standalone includable
+Message-ID: <20220606232123.GC3932382@ziepe.ca>
+References: <20220603063328.3715-1-hch@lst.de>
+ <20220603063328.3715-2-hch@lst.de>
 MIME-Version: 1.0
-From: Elizabeth Mark <elizabethmark12022@gmail.com>
-Date: Tue, 7 Jun 2022 05:14:17 +0800
-Message-ID: <CADtbehRpXsqXbcpEqfq-jC8Anu_zGUaQbZ2Mtq1S5tP6S=ejAQ@mail.gmail.com>
-Subject: =?UTF-8?B?0JfQtNGA0LDQstC10LnRgtC1?=
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000001877f605e0cdf559"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220603063328.3715-2-hch@lst.de>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,31 +75,25 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: elizabethmark12022@gmail.com
+Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, kvm@vger.kernel.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0000000000001877f605e0cdf559
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+On Fri, Jun 03, 2022 at 08:33:21AM +0200, Christoph Hellwig wrote:
+> Include <linux/device.h> and <linux/uuid.h> so that users of this headers
+> don't need to do that.
+> 
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  include/linux/mdev.h | 3 +++
+>  1 file changed, 3 insertions(+)
 
-INCX0LTRgNCw0LLQtdC50YLQtQ0KICDQnNC+0LvRjywg0YHQutGK0L/QuCwg0LzQvtC20LXRgtC1
-INC70Lgg0LTQsCDQvNC4INC60LDQttC10YLQtSDQv9GA0LjRh9C40L3QsNGC0LAsINC/0L7RgNCw
-0LTQuCDQutC+0Y/RgtC+INC90LUg0YHRgtC1DQrQvtGC0LPQvtCy0L7RgNC40LvQuCDQvdCwINGB
-0YrQvtCx0YnQtdC90LjQtdGC0L4g0LzQuA0KICDQktCw0YjQuNGP0YIg0YHQtdGA0LbQsNC90YIg
-0JXQu9C40LfQsNCx0LXRgtCwINCc0LDRgNC6DQpIZWxsbw0KIFBsZWFzZSBkZWFyIGNhbiB5b3Ug
-bGV0IG1lIGtub3cgdGhlIHJlYXNvbiB3aHkgeW91IGhhdmUgbm90IHJlcGx5IG15DQptZXNzYWdl
-DQogWW91ciBzZXJnZWFudCBFbGlzYWJldHRhIE1hcmsNCg==
---0000000000001877f605e0cdf559
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: base64
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-PGRpdiBkaXI9Imx0ciI+wqDQl9C00YDQsNCy0LXQudGC0LU8YnI+wqAg0JzQvtC70Y8sINGB0LrR
-itC/0LgsINC80L7QttC10YLQtSDQu9C4INC00LAg0LzQuCDQutCw0LbQtdGC0LUg0L/RgNC40YfQ
-uNC90LDRgtCwLCDQv9C+0YDQsNC00Lgg0LrQvtGP0YLQviDQvdC1INGB0YLQtSDQvtGC0LPQvtCy
-0L7RgNC40LvQuCDQvdCwINGB0YrQvtCx0YnQtdC90LjQtdGC0L4g0LzQuDxicj7CoCDQktCw0YjQ
-uNGP0YIg0YHQtdGA0LbQsNC90YIg0JXQu9C40LfQsNCx0LXRgtCwINCc0LDRgNC6PGJyPkhlbGxv
-PGJyPsKgUGxlYXNlIGRlYXIgY2FuIHlvdSBsZXQgbWUga25vdyB0aGUgcmVhc29uIHdoeSB5b3Ug
-aGF2ZSBub3QgcmVwbHkgbXkgbWVzc2FnZTxicj7CoFlvdXIgc2VyZ2VhbnQgRWxpc2FiZXR0YSBN
-YXJrwqDCoDxicj48L2Rpdj4NCg==
---0000000000001877f605e0cdf559--
+Jason
