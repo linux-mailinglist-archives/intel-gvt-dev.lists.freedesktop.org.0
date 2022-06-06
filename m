@@ -1,68 +1,68 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BED853F2BA
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jun 2022 01:46:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A820553F2BC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jun 2022 01:46:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4641910E24D;
-	Mon,  6 Jun 2022 23:46:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5826E10E247;
+	Mon,  6 Jun 2022 23:46:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-x72a.google.com (mail-qk1-x72a.google.com
- [IPv6:2607:f8b0:4864:20::72a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B543C10E247
+Received: from mail-qt1-x82f.google.com (mail-qt1-x82f.google.com
+ [IPv6:2607:f8b0:4864:20::82f])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 22E0F10E247
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  6 Jun 2022 23:46:28 +0000 (UTC)
-Received: by mail-qk1-x72a.google.com with SMTP id br33so10366521qkb.0
+ Mon,  6 Jun 2022 23:46:39 +0000 (UTC)
+Received: by mail-qt1-x82f.google.com with SMTP id x16so8254662qtw.12
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 06 Jun 2022 16:46:28 -0700 (PDT)
+ Mon, 06 Jun 2022 16:46:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=BobLl+SlFstwFdCAgot2j19OhmEJmjKMcmrAyX++IpQ=;
- b=nTfkLS746hnRkFmQz8zZo7fxRpg63kXstyT8r7gW9PDX8jfk8n9wPYN+FQ0XgmC9fz
- nii/p1w15omesttBp8810sHQEh+P+NwdH+lOHKg2lWA3f2I8rz+/LiPoLfY9Uf3zExmn
- lZvIKLet/yrIs+LRJwbHr5A1+ceMHQeE50rVoUBTkrXSrBNNMbtbnb9Nvh3bdrFCuqce
- GrOxC1ZVY9FnqjAoPe7//ERX/vTKxps9R4em/RHDci4XEK17vekdDuvS/NZ2BAnQli9z
- Q3lznZLbcnaaLSm+/994C56wGWaJJmwTkCqSGQ7EQ/olGImF4gaBV85YzOVtWO4suYRA
- k0IA==
+ bh=j1H7IqILsLgN2CLXPDKK6acRAfuZh56Xcw12qco3jXo=;
+ b=bc9kiCl7t9BZtFVHNxzFELos2shypIE0YUTZCngM0Yp7jg9XtY9c6eUzlTZP2E1Jk5
+ AXxKO4dl1Ci4IwS1k/Sh25q55jcee0jvpBKkK95nwry1tJxmgXCek/f5NPaXEhFIuWw+
+ 4ppyLgdp95IsMou+3NZPE4LClKvKT/DTg56fW9rT9uxjn/L9KpsViEA+dYagM/H74iqz
+ PSm9+uW7uTYReIf6JlsHjyweJ0+MaCdVncu97/sSvSqrDeNIudGRAYg5bXmOFBfW8INF
+ g/haibEx0ibK72fG0Oi2l0qAsZXAPcwu+MjNxjQpYDlwYQc1j6SktB/0rZzAb4vMeQSa
+ QmEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=BobLl+SlFstwFdCAgot2j19OhmEJmjKMcmrAyX++IpQ=;
- b=mpaDQ8aXiN3LgOPNQYBMmlp13knfGG4MNbuKOEQg0mu1c/ML2FrjVvARuPVtKMxrAA
- ckrOsnR6tGf7F4fiOhPSmNBcBLSImQpHnYQ25QUoAn83dZ7qw3Qpapxd5cI/+uHkGswT
- DxKO4hvDQvrzw6Unj+y4BeJt9cr4pbSavWFvgXRqVxiFKFLQILK2dx/Fc6wlu/HiJjpz
- +n+UX4G5yWml5Fi+iy+GdK+zN+cXNkEvxquW3dIu0tS7AnTNh1MNPPGdHp/UEHYlHscm
- gsHM7PPOhDRqDoJQVJ6Rzc3f+YsUyc6HYKvgMrgmzOQazi6aHq/7SpPqc0/goXKECp4P
- k4uw==
-X-Gm-Message-State: AOAM530ABkMok9KaCRidCT5l1NZqdcPjDNc00+A6pUPy1EdZhSTr+niE
- dDnl68gXi1jCCfm1eOb/aOdCRg==
-X-Google-Smtp-Source: ABdhPJxdw6L/xOuwADspsqstoD5nz7gt8vQH/za9tZhkeo/mqgj+nrGe6IzJ+9V9rqmxQ7fk9+5a4w==
-X-Received: by 2002:ae9:eb88:0:b0:6a6:b3e3:4c44 with SMTP id
- b130-20020ae9eb88000000b006a6b3e34c44mr6995123qkg.83.1654559187889; 
- Mon, 06 Jun 2022 16:46:27 -0700 (PDT)
+ bh=j1H7IqILsLgN2CLXPDKK6acRAfuZh56Xcw12qco3jXo=;
+ b=W0A0zlrUK2TPHDMoVptsk8WDkWBr03/4kmP76p5gK8Www2Q+v/POobpY9Q7QycWuj4
+ 7bYn728mCo6yZwKhxWVXIQnJJZWh9NdX2KL8ti6usvE1rSPhHBlrRM8FsncbH3WAL4c6
+ dPaHif/GSAulpltIAUBT66DUrJwUU7mwxqmWOPc24AFngjPKkbAH8J+kyWfFAD6K3lif
+ Ra7A/WQTUAZrcJaGwOP5Co3ATlWmtKOWbkgsVLAU2lpGR4q5tKAUUYeuorsKmX7NSrcT
+ IkXln6euqgz35UUyeXtpJ0YXw8E29+y3Col8K/OQ70ORBRS10/2JfLXwYvaaaLoiSCFI
+ QHtg==
+X-Gm-Message-State: AOAM532Ifuqe2RwBcC3paWDt2s+VBtq+AT1uRrKEvQat3pGXiJ4FhqJ7
+ KOAeiKjmQTR1jd6Oxu9G8yR8hA==
+X-Google-Smtp-Source: ABdhPJz68POlk+9eI9qP8Z7p2wfePXMmY+ovCyRTsxy5OMhFkzf6KgrRPgaa4PQPV7u/FDrTKaAJuA==
+X-Received: by 2002:ac8:5f0b:0:b0:2f9:3e0c:b569 with SMTP id
+ x11-20020ac85f0b000000b002f93e0cb569mr20105545qta.663.1654559198226; 
+ Mon, 06 Jun 2022 16:46:38 -0700 (PDT)
 Received: from ziepe.ca
  (hlfxns017vw-142-162-113-129.dhcp-dynamic.fibreop.ns.bellaliant.net.
  [142.162.113.129]) by smtp.gmail.com with ESMTPSA id
- g16-20020ac85810000000b002f906fc8530sm2525617qtg.46.2022.06.06.16.46.27
+ cb24-20020a05622a1f9800b002fc8a2c14c0sm11031129qtb.66.2022.06.06.16.46.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jun 2022 16:46:27 -0700 (PDT)
+ Mon, 06 Jun 2022 16:46:37 -0700 (PDT)
 Received: from jgg by mlx with local (Exim 4.94) (envelope-from <jgg@ziepe.ca>)
- id 1nyMQU-002q3M-Lz; Mon, 06 Jun 2022 20:46:26 -0300
-Date: Mon, 6 Jun 2022 20:46:26 -0300
+ id 1nyMQf-002q3r-3h; Mon, 06 Jun 2022 20:46:37 -0300
+Date: Mon, 6 Jun 2022 20:46:37 -0300
 From: Jason Gunthorpe <jgg@ziepe.ca>
 To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 7/8] vfio/mdev: remove mdev_parent_dev
-Message-ID: <20220606234626.GH3932382@ziepe.ca>
+Subject: Re: [PATCH 8/8] vfio/mdev: remove mtype_get_parent_dev
+Message-ID: <20220606234637.GI3932382@ziepe.ca>
 References: <20220603063328.3715-1-hch@lst.de>
- <20220603063328.3715-8-hch@lst.de>
+ <20220603063328.3715-9-hch@lst.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220603063328.3715-8-hch@lst.de>
+In-Reply-To: <20220603063328.3715-9-hch@lst.de>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,16 +85,15 @@ Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jun 03, 2022 at 08:33:27AM +0200, Christoph Hellwig wrote:
+On Fri, Jun 03, 2022 at 08:33:28AM +0200, Christoph Hellwig wrote:
 > Just open code the dereferences in the only user.
 > 
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 > ---
->  Documentation/driver-api/vfio-mediated-device.rst | 3 ---
->  drivers/gpu/drm/i915/gvt/kvmgt.c                  | 2 +-
->  drivers/vfio/mdev/mdev_core.c                     | 6 ------
->  include/linux/mdev.h                              | 1 -
->  4 files changed, 1 insertion(+), 11 deletions(-)
+>  drivers/s390/cio/vfio_ccw_ops.c |  3 +--
+>  drivers/vfio/mdev/mdev_core.c   | 10 ----------
+>  include/linux/mdev.h            |  2 --
+>  3 files changed, 1 insertion(+), 14 deletions(-)
 
 Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
