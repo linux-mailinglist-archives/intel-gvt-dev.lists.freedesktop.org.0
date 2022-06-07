@@ -1,33 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60DFF53F5A2
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jun 2022 07:49:01 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A88C53F5A5
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jun 2022 07:50:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6D7EA1123A8;
-	Tue,  7 Jun 2022 05:48:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B4DCB1123A8;
+	Tue,  7 Jun 2022 05:50:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6AA941123A8
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3D61D1123A8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Jun 2022 05:48:56 +0000 (UTC)
+ Tue,  7 Jun 2022 05:50:54 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 197A068BFE; Tue,  7 Jun 2022 07:48:53 +0200 (CEST)
-Date: Tue, 7 Jun 2022 07:48:52 +0200
+ id B4A7F68AFE; Tue,  7 Jun 2022 07:50:50 +0200 (CEST)
+Date: Tue, 7 Jun 2022 07:50:50 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Kirti Wankhede <kwankhede@nvidia.com>
-Subject: Re: [PATCH 2/8] vfio/mdev: embedd struct mdev_parent in the parent
- data structure
-Message-ID: <20220607054852.GA8680@lst.de>
+Subject: Re: [PATCH 3/8] vfio/mdev: simplify mdev_type handling
+Message-ID: <20220607055050.GB8680@lst.de>
 References: <20220603063328.3715-1-hch@lst.de>
- <20220603063328.3715-3-hch@lst.de>
- <71e7d9a8-1005-0458-b8cd-147ccc6430d7@nvidia.com>
+ <20220603063328.3715-4-hch@lst.de>
+ <86df429e-9f01-7a91-c420-bb1130b4d343@nvidia.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <71e7d9a8-1005-0458-b8cd-147ccc6430d7@nvidia.com>
+In-Reply-To: <86df429e-9f01-7a91-c420-bb1130b4d343@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -53,51 +52,34 @@ Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jun 07, 2022 at 12:52:30AM +0530, Kirti Wankhede wrote:
-> By removing this list, there is no way to know if parent device is 
-> registered repeatedly? What will happen if same parent device is registered 
-> twice? will it fail somewhere else?
-
-The driver core will warn if you double register a device.
-
->>   probe'd to then it should call::
->>   -	extern int  mdev_register_device(struct device *dev,
->> -	                                 struct mdev_driver *mdev_driver);
->> +	int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
->> +			struct mdev_driver *mdev_driver);
->>
+On Tue, Jun 07, 2022 at 12:52:49AM +0530, Kirti Wankhede wrote:
+>>   	void (*remove)(struct mdev_device *dev);
+>> -	struct attribute_group **supported_type_groups;
+>>   	struct device_driver driver;
+>>   };
 >
-> No need to change API name as it still registers 'struct device *dev', it 
-> could be 'mdev_register_device' but with new argument list.
+> mdev_type should be part of mdev_parent, separating it from mdev_parent 
+> could result in more errors while using mdev framework.
 
-I think the name name is a lot more clear, as device is really overused.
-Especially as this is not a mdev_device, which are registered
-elsewhere..
+Why?
 
->>   -	mdev_unregister_device(i915->drm.dev);
->> +	mdev_unregister_parent(&i915->vgpu.parent);
->
-> Ideally, parent should be member of gvt. There could be multiple vgpus 
-> created on one physical device. Intel folks would be better reviewer 
-> though.
+> Similarly it should 
+> be added as part of mdev_register_device. Below adding types is separated 
+> from mdev_register_device which is more error prone.
 
-i915->vgpu is not for a single VGPU, but all VGPU related core
-support.
+How so?
 
->> -	struct mdev_parent *parent;
->>   	char *env_string = "MDEV_STATE=registered";
->>   	char *envp[] = { env_string, NULL };
->> +	int ret;
->>     	/* check for mandatory ops */
->>   	if (!mdev_driver->supported_type_groups)
->>   		return -EINVAL;
->>   -	dev = get_device(dev);
->> -	if (!dev)
->> -		return -EINVAL;
->> -
->
-> Why not held device here? What if some driver miss behave where it 
-> registers device to mdev, but unloads without unregistering from mdev?
+> What if driver 
+> registering to mdev doesn't add mdev_types? - mdev framework is un-usable 
+> in that case.
 
-Then that driver is buggy.  We don't add extra reference to slightly
-paper over buggy code elsewhere in the kernel either.
+Yes, so it is if you don't add it to the supported_type_groups field
+in the current kernel.  Basic programmer error, and trivially caught.
+
+> We had kept it together with mdev registration so that 
+> mdev_types should be mandatory to be defined by driver during registration. 
+> How would you mandate mdev_type by such separation?
+
+I would not.  Registering a parent without types is perfectly valid from
+the code correctness perspective.  It just isn't very useful.  Just
+like say creating a kobject without attributes in the device model.
