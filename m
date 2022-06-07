@@ -2,32 +2,29 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69D1853F5A0
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jun 2022 07:48:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BEDCD53F5B8
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Jun 2022 07:53:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1DD1711A233;
-	Tue,  7 Jun 2022 05:48:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EB73F12A07C;
+	Tue,  7 Jun 2022 05:53:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 511 seconds by postgrey-1.36 at gabe;
- Tue, 07 Jun 2022 05:48:31 UTC
 Received: from verein.lst.de (verein.lst.de [213.95.11.211])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2801C89F24;
- Tue,  7 Jun 2022 05:48:31 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 14A1389CE3;
+ Tue,  7 Jun 2022 05:53:31 +0000 (UTC)
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 4704568AFE; Tue,  7 Jun 2022 07:39:56 +0200 (CEST)
-Date: Tue, 7 Jun 2022 07:39:55 +0200
+ id B899068BEB; Tue,  7 Jun 2022 07:44:37 +0200 (CEST)
+Date: Tue, 7 Jun 2022 07:44:37 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 1/2] vfio: Replace the DMA unmapping notifier with a
- callback
-Message-ID: <20220607053955.GA8508@lst.de>
+Subject: Re: [PATCH 2/2] vfio: Replace the iommu notifier with a device list
+Message-ID: <20220607054437.GB8508@lst.de>
 References: <0-v1-896844109f36+a-vfio_unmap_notif_jgg@nvidia.com>
- <1-v1-896844109f36+a-vfio_unmap_notif_jgg@nvidia.com>
+ <2-v1-896844109f36+a-vfio_unmap_notif_jgg@nvidia.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1-v1-896844109f36+a-vfio_unmap_notif_jgg@nvidia.com>
+In-Reply-To: <2-v1-896844109f36+a-vfio_unmap_notif_jgg@nvidia.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -62,45 +59,39 @@ Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jun 06, 2022 at 09:34:35PM -0300, Jason Gunthorpe wrote:
-> +static void intel_vgpu_dma_unmap(struct vfio_device *vfio_dev, u64 iova,
-> +				 u64 length)
+On Mon, Jun 06, 2022 at 09:34:36PM -0300, Jason Gunthorpe wrote:
+> +			if (!list_empty(&iommu->device_list)) {
+> +				mutex_lock(&iommu->device_list_lock);
+> +				mutex_unlock(&iommu->lock);
+> +
+> +				list_for_each_entry(device,
+> +						    &iommu->device_list,
+> +						    iommu_entry)
+> +					device->ops->dma_unmap(
+> +						device, dma->iova, dma->size);
+> +
+> +				mutex_unlock(&iommu->device_list_lock);
+> +				mutex_lock(&iommu->lock);
+> +			}
+
+I wonder if factoring this into a little helper instead of the
+very deep indentation might be a bit better for readability.
+
+> +static void vfio_iommu_type1_register_device(void *iommu_data,
+> +					     struct vfio_device *vdev)
 >  {
-> +	struct intel_vgpu *vgpu = vfio_dev_to_vgpu(vfio_dev);
-> +	struct gvt_dma *entry;
-> +	u64 iov_pfn, end_iov_pfn;
+>  	struct vfio_iommu *iommu = iommu_data;
 >  
-> +	iov_pfn = iova >> PAGE_SHIFT;
-> +	end_iov_pfn = iov_pfn + length / PAGE_SIZE;
+> +	if (!vdev->ops->dma_unmap)
+> +		return;
+>  
+> +	mutex_lock(&iommu->lock);
+> +	mutex_lock(&iommu->device_list_lock);
+> +	list_add(&vdev->iommu_entry, &iommu->device_list);
+> +	mutex_unlock(&iommu->device_list_lock);
+> +	mutex_unlock(&iommu->lock);
 
-I'd just initialize these at declaration time.  The mix between
-shifting and division here is also kind weird, but we probably
-shouldn't change too much from the original version.
-
-> +	/* Vendor drivers MUST unpin pages in response to an invalidation. */
-
-s/Vendor//g
-
->  /**
-> + * vfio_ap_mdev_dma_unmap - Notifier that IOVA has been unmapped
-> + * @vdev: The VFIO device
-> + * @unmap: IOVA range unmapped
->   *
-> + * Unpin the guest IOVA (the NIB guest address we pinned before).
->   */
-
-kerneldoc comments for method instances are a bit silly..
-
-> +static int vfio_iommu_notifier(struct notifier_block *nb, unsigned long action,
-> +			       void *data)
-> +{
-> +	struct vfio_device *vfio_device =
-> +		container_of(nb, struct vfio_device, iommu_nb);
-> +	struct vfio_iommu_type1_dma_unmap *unmap = data;
-
-Using the iommu type 1 UAPI structure in the core vfio code for a
-subset of its field is kinda weird.  But we can fix this later.
-
-Otherwise looks good:
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+Why do we need both iommu->lock and the device_list_lock everywhere?
+Maybe explain the locking scheme somewhere so that people don't have
+to guess, because it seems to me that just using iommu->lock would
+be enough right now.
