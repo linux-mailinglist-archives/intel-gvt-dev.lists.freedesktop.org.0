@@ -1,33 +1,108 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18F125430A0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Jun 2022 14:41:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D917D54380E
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Jun 2022 17:51:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B579910E931;
-	Wed,  8 Jun 2022 12:41:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6D40410E541;
+	Wed,  8 Jun 2022 15:51:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1183010E931;
- Wed,  8 Jun 2022 12:41:16 +0000 (UTC)
-Received: from User (unknown [197.184.169.178])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id 0BC772A0D19;
- Wed,  8 Jun 2022 20:09:28 +0800 (CST)
-From: "Nigerian National Petroleum Corporation
- (NNPC)"<nnpcexecutorintrust95@gmail.com>
-Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
- Abuja
-Date: Wed, 8 Jun 2022 14:09:47 +0200
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5CFE810E541;
+ Wed,  8 Jun 2022 15:51:43 +0000 (UTC)
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 258Ee8Pd017857;
+ Wed, 8 Jun 2022 15:50:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ mime-version : content-transfer-encoding; s=pp1;
+ bh=Lk0It611U/P8w0OoOgtqUslrDxiX8rH2mlYcAYsbsS0=;
+ b=DBmOimV5vskk/4O0H+ASMGsNH63DhJtNCLTnFgqZRUTK+X7zMc3lzDikf4MIzRHvOo+n
+ CVuXtMEUwvjuCMOsUvQCLxzvDPxq7MQJe7nH+QxMrKvnDdWtXb8oyiJThMyDSNmQyxD3
+ ijL4l1DZuEndT6CwVj7RjePrrfdNownPuIdFcAe2iz7z67jgpwlpo6+o3tw5AN4Gu+24
+ pg+OxytyddKWHjnLb8mNA5mmg0dpDiOFrVNo/85Pv/lEsOcOUlXsqNxyxX9Z1qi04T0N
+ kBV8kNOLpxfageJqTysUeV/gNjQBlwj1yN5Oz04VInZCZj3AJdqMbvLCgosERRxiDkCE ZA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3gjum6cr0a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 08 Jun 2022 15:50:38 +0000
+Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 258E4HP3023930;
+ Wed, 8 Jun 2022 15:50:37 GMT
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3gjum6cr01-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 08 Jun 2022 15:50:37 +0000
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 258FoSB1013311;
+ Wed, 8 Jun 2022 15:50:36 GMT
+Received: from b03cxnp08028.gho.boulder.ibm.com
+ (b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
+ by ppma02wdc.us.ibm.com with ESMTP id 3gfy19v6w2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 08 Jun 2022 15:50:36 +0000
+Received: from b03ledav003.gho.boulder.ibm.com
+ (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
+ by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 258FoZtr41419236
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 8 Jun 2022 15:50:35 GMT
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 346DC6A04D;
+ Wed,  8 Jun 2022 15:50:35 +0000 (GMT)
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A70566A054;
+ Wed,  8 Jun 2022 15:50:32 +0000 (GMT)
+Received: from farman-thinkpad-t470p (unknown [9.211.94.47])
+ by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Wed,  8 Jun 2022 15:50:32 +0000 (GMT)
+Message-ID: <1ae0abaaa4fc7959ba25cf59b3ef0da39bfc7f36.camel@linux.ibm.com>
+Subject: Re: [PATCH v2 1/2] vfio: Replace the DMA unmapping notifier with a
+ callback
+From: Eric Farman <farman@linux.ibm.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, Alexander Gordeev
+ <agordeev@linux.ibm.com>, David Airlie <airlied@linux.ie>, Tony Krowiak
+ <akrowiak@linux.ibm.com>, Alex Williamson <alex.williamson@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, Cornelia Huck
+ <cohuck@redhat.com>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, Harald Freudenberger
+ <freude@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens
+ <hca@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Joonas
+ Lahtinen <joonas.lahtinen@linux.intel.com>,
+ kvm@vger.kernel.org, linux-s390@vger.kernel.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Peter
+ Oberparleiter <oberpar@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Sven Schnelle <svens@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>, Zhenyu Wang
+ <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Date: Wed, 08 Jun 2022 11:50:31 -0400
+In-Reply-To: <1-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
+References: <1-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: c5zZRiJ_GxhZY7_iHg0OAYza3tR4OGQ2
+X-Proofpoint-ORIG-GUID: Etbix-epMN6oZyGKbVGn0eVZ0GN7YlSS
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.517,FMLib:17.11.64.514
+ definitions=2022-06-08_05,2022-06-07_02,2022-02-23_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 phishscore=0
+ mlxlogscore=999 spamscore=0 bulkscore=0 priorityscore=1501 suspectscore=0
+ mlxscore=0 impostorscore=0 malwarescore=0 lowpriorityscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2204290000
+ definitions=main-2206080065
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,39 +115,57 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: dremmanuelibekachikwun2022@gmail.com
+Cc: Christoph Hellwig <hch@lst.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220608124117.B579910E931@gabe.freedesktop.org>
 
-Nnpc Towers, Central Business District, Herbert Macaulay way, P.m.b. 190, Garki, Abuja.
- 
-From: Dr. Emmanuel Ibe Kachikwu (GMD)
-Contract Ref No: NNPC/PED/1462/KADREF/92)      
-                        
-Attn: Ceo,
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not met before. I got your information from your country's chamber of commerce here in Nigeria.
- 
-My name is Dr. Emmanuel Ibe Kachikwu, The Minister of State for Petroleum Resources, National Petroleum Corporation (NNPC). Be informed that my partner Dr. Maikanti Baru and I awarded a contract to a foreign firm (Sheng Yang Contraction Company) with contract Ref No: NNPC/PED/1462/KADREF/92) for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
- 
-I know that this proposal may come to you as a surprise especially having to come from someone you have not met before, but I would like you to co-operate with me so that this U$D98, 000,000.00 will be released and transferred into your account, it is mine profound intention to contact you for this very important and highly confidential transaction for the transfer of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only into your bank account.
- 
-The contract has been successfully executed by the contractors and their contract sum has been paid to them, leaving us an overestimated balance of (U$D98, 000,000.00 Ninety-Eight Million United States Dollars Only) still pending at the bank. Right now, we are left with this overestimated balance of (U$D98, 000,000.00) which is still floating at the escrow account in the Central Bank of Nigeria (CBN) waiting for final payment to any reliable foreign bank account, you may provide.
- 
-We, as government officials, are not permitted to own or operate foreign bank accounts. therefore, we need reliable person who will provide us with a foreign account where to transfer and deposit this US$98,000,000.00, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money .all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
- 
-Note that 50% of our share will be invested in your country, as we propose to give you 30% of the U$D98, 000,000.00, my partners and I will get 60% of the money.
- 
-The balance of 10% will be allocated to cover all expenses incurred by both partners, be informed that this proposal is urgent and confidential, please send to me your bank account details and full address of company name and address, your private phone and fax number for easy communication which will be used in securing all the necessary documents for easy transfer of the fund.
- 
- 
-Awaiting your urgent response.
- 
-Best regards.
+On Tue, 2022-06-07 at 20:02 -0300, Jason Gunthorpe wrote:
+> Instead of having drivers register the notifier with explicit code
+> just
+> have them provide a dma_unmap callback op in their driver ops and
+> rely on
+> the core code to wire it up.
+> 
+> Suggested-by: Christoph Hellwig <hch@lst.de>
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gvt.h        |   1 -
+>  drivers/gpu/drm/i915/gvt/kvmgt.c      |  75 ++++-----------
+>  drivers/s390/cio/vfio_ccw_ops.c       |  41 ++-------
+>  drivers/s390/cio/vfio_ccw_private.h   |   1 -
+>  drivers/s390/crypto/vfio_ap_ops.c     |  53 ++---------
+>  drivers/s390/crypto/vfio_ap_private.h |   3 -
+>  drivers/vfio/vfio.c                   | 126 +++++++++---------------
+> --
+>  drivers/vfio/vfio.h                   |   5 +
+>  include/linux/vfio.h                  |  21 +----
+>  9 files changed, 87 insertions(+), 239 deletions(-)
+> 
+> 
 
-Dr. Emmanuel Ibe Kachikwu.
-The Minister of State for Petroleum Resources, Nigerian National Petroleum Corporation (NNPC)
- 
-This email and any attachments to it may be confidential and are intended solely for the use of the individual to whom it is addressed. Any views or opinions expressed are solely those of the author and do not necessarily represent those of Masterpage®. If you are not the intended recipient of this email, you must neither take any action based upon its contents, nor copy or show it to anyone. Please contact the sender if you believe you have received this email in error.
+...snip...
+
+> diff --git a/drivers/s390/cio/vfio_ccw_private.h
+> b/drivers/s390/cio/vfio_ccw_private.h
+> index 7272eb78861244..2627791c9006d4 100644
+> --- a/drivers/s390/cio/vfio_ccw_private.h
+> +++ b/drivers/s390/cio/vfio_ccw_private.h
+> @@ -98,7 +98,6 @@ struct vfio_ccw_private {
+>  	struct completion	*completion;
+>  	atomic_t		avail;
+>  	struct mdev_device	*mdev;
+> -	struct notifier_block	nb;
+
+Could you also remove this from the comment block above the struct?
+Besides that, this is fine for -ccw.
+
+Reviewed-by: Eric Farman <farman@linux.ibm.com>
+
+>  	struct ccw_io_region	*io_region;
+>  	struct mutex		io_mutex;
+>  	struct vfio_ccw_region *region;
+> 
+
+...snip...
 
