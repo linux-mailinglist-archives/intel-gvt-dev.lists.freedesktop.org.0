@@ -2,43 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C45A254293B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Jun 2022 10:20:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B2E0542C73
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Jun 2022 12:02:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7940910EF88;
-	Wed,  8 Jun 2022 08:20:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CC04810E2B9;
+	Wed,  8 Jun 2022 10:02:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1391 seconds by postgrey-1.36 at gabe;
- Wed, 08 Jun 2022 08:20:12 UTC
-Received: from mail.greatagencyonline.pl (mail.greatagencyonline.pl
- [89.40.125.71])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F3CFA10EEFB
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Jun 2022 08:20:12 +0000 (UTC)
-Received: by mail.greatagencyonline.pl (Postfix, from userid 1001)
- id 17362AFD5E; Wed,  8 Jun 2022 08:49:26 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greatagencyonline.pl;
- s=mail; t=1654674607;
- bh=ksvwLPFdjL017OLwir5xHXy3Vmrj/5fhZ5DwBI62qzc=;
- h=Date:From:To:Subject:From;
- b=XuAfwq26ZM73Nmp0Q4yBH9MoQSF88xTO92gYNNXD5xCCQPItg0IsKwiSMzsnw4jrZ
- BVmUCRjOCt/kvU3QAoavRT3YmfUHIIIgx4YeHUgB/9Pi2yG7StLVeZHPst8SztOZDA
- fcXA3in2eF6GIQB3CxIEQi37zF8fsK+s/St+1SYSZilVwVifngF1oGkWhjA5ErAtkl
- TtUgSSP736QpTbwk2dAh57uOMsm0MU64jXHJbg17bQVoVu7MNNPP+Fb2jnwnawgsYX
- hF0CeWs0nn3YkRbD7Lxz6WATqwp5iYu54pI3VlvUPRS/qZFWsibRPCtc/Cs+nIWq4r
- duyG8T3j2UxOw==
-Received: by mail.greatagencyonline.pl for
- <intel-gvt-dev@lists.freedesktop.org>; Wed,  8 Jun 2022 07:47:43 GMT
-Message-ID: <20220608074502-0.1.4d.156c6.0.psd8d0tc1v@greatagencyonline.pl>
-Date: Wed,  8 Jun 2022 07:47:43 GMT
-From: =?UTF-8?Q?"Miko=C5=82aj_Rudzik"?= <mikolaj.rudzik@greatagencyonline.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Nap=C5=82yw_Klient=C3=B3w_ze_strony?=
-X-Mailer: mail.greatagencyonline.pl
+X-Greylist: delayed 2007 seconds by postgrey-1.36 at gabe;
+ Wed, 08 Jun 2022 10:02:38 UTC
+Received: from smtpbbmailout.smartone.com (smtpbbmailout.smartone.com
+ [202.140.76.164])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AC46010E122;
+ Wed,  8 Jun 2022 10:02:38 +0000 (UTC)
+Received: from User ([49.130.64.27])
+ by smtpbbmailout.smartone.com (8.14.4/8.14.4) with SMTP id 2589ScEb025845;
+ Wed, 8 Jun 2022 17:28:41 +0800
+Message-Id: <202206080928.2589ScEb025845@smtpbbmailout.smartone.com>
+From: "Mrs.Kristalina Georgieva"<kristalina73309860@swazi.net>
+Subject: Kindly Respond...
+Date: Wed, 8 Jun 2022 05:28:56 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,21 +42,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: mkg10103@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+Attn: Beneficiary
 
-chcia=C5=82bym poinformowa=C4=87 Pa=C5=84stwa o mo=C5=BCliwo=C5=9Bci pozy=
-skania nowych zlece=C5=84 ze strony www.
+This is to intimate you of a very important information which will be of a great help to redeem you from all the difficulties you have been experiencing in getting your long overdue payment due to excessive demand for money from you by both corrupt Bank officials and Courier
+Companies after which your fund remain unpaid to you.
 
-Widzimy zainteresowanie potencjalnych Klient=C3=B3w Pa=C5=84stwa firm=C4=85=
-, dlatego ch=C4=99tnie pomo=C5=BCemy Pa=C5=84stwu dotrze=C4=87 z ofert=C4=
-=85 do wi=C4=99kszego grona odbiorc=C3=B3w poprzez efektywne metody pozyc=
-jonowania strony w Google.
-
-Czy m=C3=B3g=C5=82bym liczy=C4=87 na kontakt zwrotny?
+I am Mrs.Kristalina Georgieva, Managing Director (MD) of the International Monetary Fund (IMF). It may interest you to know that reports have reached our office by so many correspondences on the uneasy way which people like you are treated by various Banks and Courier Companies Diplomat(s) across Europe to Africa and Asia London UK, and we have
+decided to put a stop to that and that is why I was appointed to handle your transaction here in Washington, DC 20431, USA.
 
 
-Pozdrawiam,
-Miko=C5=82aj Rudzik
+I am delighted to inform you that the contract/Inheritance Lottery  panel of the UN/COVID19 Awarded Payment has been approved.All Governmental and Non-Governmental prostates, NGO's, Finance Companies, Banks, Security Companies and Diplomat(s) which have been
+in contact with you of late have been instructed to back off from your transaction and you have been advised NOT to respond to them anymore since the  International Monetary Fund (I.M.F) Head Office is now directly in charge of your Contract Sum, Lottery/Inheritance payment US$15.500.000.00 (fifteen  Million five  hundred thousand United State Dollars)
+
+You are hereby advised NOT to remit further payment to any institutions with respect to your transaction as your fund will be transferred to you directly from our source. I hope this is clear. Any action contrary to this instruction is at your own risk.
+In order for us to proceed you /must get back to us with the below requested information:
+
+Your Full Name:
+Your Address:
+Your Age:
+Your Direct Phone Numbers:
+Your Profession:
+
+
+And we shall give you further details on how your fund will be released to you.
+
+Regards,
+
+Mrs.Kristalina Georgieva
+Managing Director (IMF)
