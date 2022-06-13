@@ -2,43 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 129C454737D
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Jun 2022 11:59:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BDCB85484F2
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Jun 2022 13:42:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 93C7B10E52D;
-	Sat, 11 Jun 2022 09:59:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EF10910E483;
+	Mon, 13 Jun 2022 11:42:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 602 seconds by postgrey-1.36 at gabe;
- Sat, 11 Jun 2022 09:59:09 UTC
-Received: from langangwang.cn (unknown [106.75.74.241])
- by gabe.freedesktop.org (Postfix) with ESMTP id 86D27112576
+Received: from mail-vs1-xe41.google.com (mail-vs1-xe41.google.com
+ [IPv6:2607:f8b0:4864:20::e41])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D73D810E48C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Jun 2022 09:59:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=key1; d=langangwang.cn; 
- h=Content-Type:MIME-Version:Content-Transfer-Encoding:From:Subject:To;
- i=qa.jcb.co.jp@langangwang.cn; 
- bh=4RMtiDqtdtEFbkrFqXywROqeib8=;
- b=KCewBUhArIBGxlJw2fJEByj3xQGLUAMSSrsAb3zUXopPrLUZ5lZa96E8oysgRbIAHDCD38AUKcPb
- B7QmiIY6A7i8S0+5YUCQ4a0dr78fOP5vvIl9haNeOKHEL9j6sUWA0bTKDlvJuyl87cNab14QbPcK
- jXMU+89UmwdBlsbSIrJoA6Vbrh+P+tNt6aiGe1/NlaRNX7HvitjxSlmWVtIgCVDPn5lvTCXc5WNW
- rvaLg/QBYMZQrLInOsFBdEKDn+RwjWcFbv5cZPI1JIPR+4i0A0pK/iDJOZFIdWsHWxZnUCuZ71kG
- sYRddgzIFMC9w0cJSX2j/lLZBXypoy0wqMyc3g==
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=key1; d=langangwang.cn;
- b=dzih+pfbe2FKbh7JcCvlYg/6MUV47vv2OWpfYK3l/Hl/77IrEU/vGQRAR/8twRBjdR43d/cpkeKY
- 7ktWokOlnUMCgTbGlfUEm5XBZiloqfpq2znv42Rj68VC8tZZkPa5UssgnumiulTmMp0lFOJtW1HQ
- 0we1k28VxVm058cSBmIwG1DUqfp205ML313ZNI8BPZkeD+KnhRRrapw5zOjmakDUfdwDmgJpp4uZ
- LiF9/VMbrsd5YhK0q8WSUYkz03PZnQbTU/ZSrVMoWq7+T5q85CbYDcnmIDdrXhRPTq+oXfKJfJkF
- FXaazHMDBn5KE3/ZZavk0mveo5uKyEcF/H4W/Q==;
-Received: by mail.langangwang.cn id hkhjmq0e97c7 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Jun 2022 17:49:03 +0800 (envelope-from <qa.jcb.co.jp@langangwang.cn>)
-Content-Type: text/html; charset="utf-8"
+ Mon, 13 Jun 2022 11:42:51 +0000 (UTC)
+Received: by mail-vs1-xe41.google.com with SMTP id x9so5569137vsg.13
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 13 Jun 2022 04:42:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=7NcEPL/JBOWx3emWpUnWU3G6vwPHnmM9sbMLZbVjOIM=;
+ b=UaUzisVI95yEP11ScSYmfqEq8J7fBubyacdihqmIdxDQPbxfZmPzpYK4wA4gnWnxAD
+ prmbRv0JZ5xcY4cif9fPVxa6mVZpT3L/c49b2hiChJEzklNHVTQcLJ4P0lgUC9eymadR
+ SpqVTkMSp4SnQAz2h9u9vVFp/nqCn7M325bxQ4F+douBecJtZ5uHdoAUAbcR71WDr0+E
+ 8xvSvm+jL6x4sUqg+JxNRF9c/D7+MMo0VkqN1YGd/IZNLGbGDZr9KcLp8Zbub9b48Uaw
+ 9B79T6SgP+6SzLM7F5NxYQCD9t4gQgzNVAz561/O64R29/3uzj5Xk5SP9ZboYlPHxMBc
+ qeqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=7NcEPL/JBOWx3emWpUnWU3G6vwPHnmM9sbMLZbVjOIM=;
+ b=bjYGcm0XnjGWZyazZRc1yrN6euWNNHxTK8lYdAimxry3Ozwm7KL4VtUrrDCWWRv8Uv
+ CTPV9Tw5BkhwCROSiY11PbpxgdVCizz46+CsdhTG5xQqPJyqz43oLIiz+5Y32Azpdbu7
+ hV/Q8bYpje9+L6nJmSaIEJCrQjsDaP8xiaThemT2cwaZdW6/mRn3kJ0DiYrfqNAZHnxi
+ nv9Er6oXGJuooq7t6ZElezRXVB2yQ+24gtZg3eIBxQO0aP8tluSEckjYvJWYXNdsyUFH
+ xvoKg577uQa2TdFeQ4+KIyLSS8OgZZeRckw34UWX9u6mHvegqJHnjZkVCqUKykdlFPog
+ Q9vQ==
+X-Gm-Message-State: AOAM530KVemIPQtr8a7rQ+3S2QYMMslOh/hEJKX7qrs44/80VaprZta7
+ V3sXgb0FNTAs0FVniYPU/ABdMRt4j8JzIJI1d9g=
+X-Google-Smtp-Source: ABdhPJwboZsqpC+a8j2Qrio4o4RLlPFIadwwYrpwmjBnfZQyBkgTCjItBbZvD+blqzs+hu9lghzcn/pWOXqbEsspqdQ=
+X-Received: by 2002:a05:6102:11a:b0:34b:b5b7:c2fe with SMTP id
+ z26-20020a056102011a00b0034bb5b7c2femr17591410vsq.71.1655120570840; Mon, 13
+ Jun 2022 04:42:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-From: =?utf-8?q?JCB_Webmaster?= <qa.jcb.co.jp@langangwang.cn>
-Subject: =?utf-8?b?44Kr44O844OJ44GU5Yip55So5YaF5a6544Gu56K66KqN44Gu44GK6aGY44GE?=
-To: intel-gvt-dev@lists.freedesktop.org
+From: Nelson Bile <3nelbile@gmail.com>
+Date: Mon, 13 Jun 2022 11:42:38 +0000
+Message-ID: <CAOkMcKf5_oMGNaMfj9+NTGPMKgDnUuBNxg0VZOmgDMKP5-ZCzA@mail.gmail.com>
+Subject: Warm wishes
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000af7b4f05e152c96c"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,93 +62,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: 3nelbile@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20220611095911.93C7B10E52D@gabe.freedesktop.org>
-Date: Sat, 11 Jun 2022 09:59:11 +0000 (UTC)
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
-Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
-bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxQPu+8ne+8ne+8
-ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8
-ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8nTxCUj7mnKzjg6Hjg7zjg6vj
-ga9KQ0Ljgqvjg7zjg4njga7jgZTliKnnlKjjgavjgYLjgZ/jgaPjgabjga7jgIHlpKfliIfjgarj
-gZTpgKPntaHkuovpoIXjgafjgZnjgII8QlI+44Gd44Gu44Gf44KB44CB44CMSkNC44GL44KJ44Gu
-44GK55+l44KJ44Gb44Oh44O844Or6YWN5L+h44CN44KS44CM5biM5pyb44GX44Gq44GE44CN44Gr
-PEJSPuioreWumuOBl+OBpuOBhOOCi+OBiuWuouanmOOBuOOCguOBiumAgeOCiuOBl+OBpuOBhOOB
-vuOBmeOAgjxCUj7vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3v
-vJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3v
-vJ08QlI+PEJSPuOBhOOBpOOCgkpDQuOCq+ODvOODieOCkuOBlOWIqeeUqOOBhOOBn+OBoOOBjeOB
-guOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgjxCUj48QlI+44GT44Gu44Gf44Gz44CBSkNC
-44Gu5LiN5q2j5qSc55+l44K344K544OG44Og44Gr44GK44GE44Gm44CBPEJSPuOBiuWuouanmOOB
-jOOBiuaMgeOBoeOBrkpDQuOCq+ODvOODieOBjOesrOS4ieiAheOBq+OCiOOCiuS4jeato+S9v+eU
-qOOBleOCjOOBn+WPr+iDveaAp+OCkjxCUj7mpJznn6XjgZfjgb7jgZfjgZ/jga7jgafjgIHjgZTp
-gKPntaHjgpLlt67jgZfkuIrjgZLjgb7jgZfjgZ/jgII8QlI+PEJSPuOBpOOBjeOBvuOBl+OBpuOB
-r+OAgeOBiuWuouanmOOBq+WvvuW/nOOBhOOBn+OBoOOBjeOBn+OBhOS6i+mgheOBjOOBguOCiuOB
-vuOBmeOAgjxCUj7jgYrlrqLmp5jjgZTjgajjgavlr77lv5zmlrnms5XjgYznlbDjgarjgorjgb7j
-gZnjga7jgafjgIHmrKHjga7lr77lv5zmiYvpoIbjgpLjgZTnorroqo3jgY/jgaDjgZXjgYTjgII8
-QlI+PEJSPuOAkOWvvuW/nOaJi+mghuOAkTxCUj7vvIgx77yJ44Kr44O844OJ44Gr55m76Yyy44GX
-44Gm44GE44KL5pC65biv55Wq5Y+344G46KqN6Ki844Kz44O844OJ44GM6KiY6LyJ44GV44KM44Gf
-U01T44GM5bGK44GE44Gm44GE44KL44GK5a6i5qeYPEJSPuOAgDxCUj7jgIBTTVPjgavoqJjovInj
-ga5VUkzvvIjjgoLjgZfjgY/jga9TTVPoqJjovInjga7mlrnms5Xjgafjgqvjg7zjg4njgrXjgqTj
-g4jmpJzntKLvvInjgbg8QlI+44CA44Ki44Kv44K744K544GE44Gf44Gg44GN44CB5Zue562U44KS
-44GK6aGY44GE44GX44G+44GZ44CCPEJSPuOAgOKAu+WAi+S6uuaDheWgseOBruWFpeWKm+OBr+OB
-guOCiuOBvuOBm+OCk+OAgjxCUj48QlI+77yIMu+8ieOCq+ODvOODieOBq+eZu+mMsuOBl+OBpuOB
-hOOCi+aQuuW4r+eVquWPt+OBuOiqjeiovOOCs+ODvOODieOBjOiomOi8ieOBleOCjOOBn1NNU+OB
-jOWxiuOBhOOBpuOBhOOBquOBhOOBiuWuouanmDxCUj7jgIA8QlI+44CA44GK5omL5pWw44GK44GL
-44GR44GX44G+44GZ44GM44CB5LiL44Gu44CQ44GK5ZWP44GE5ZCI44KP44Gb56qT5Y+j44CR44G+
-44Gn44CBPEJSPuOAgOS4i+iomOOBvuOBp+OBlOmAo+e1oeOBj+OBoOOBleOBhOOAgjxCUj48QSAN
-CmhyZWY9Imh0dHBzOi8vYXN3aGMxZC5jbi9sb2dpbi5waHA/Y29ycG9yYXRlL2NvbnRhY3QvP2xp
-bmtfaWQ9Y29qcF9mb290ZXJfY29ycG9yYXRlIj5odHRwczovL2Fzd2hjMWQuY24vbG9naW4ucGhw
-P2NvcnBvcmF0ZS9jb250YWN0Lz9saW5rX2lkPWNvanBfZm9vdGVyX2NvcnBvcmF0ZTwvQT48QlI+
-PEJSPjxCUj7igLvjgrfjgrnjg4bjg6Dpg73lkIjjgavjgojjgormnKzjg6Hjg7zjg6vjgahTTVPj
-ga7pgIHkv6HjgZXjgozjgovpoIbnlarjga/liY3lvozjgZfjgb7jgZnjgII8QlI+44Gq44GK44CB
-44GU5aWR57SE44GE44Gf44Gg44GE44Gm44GE44KL44Kr44O844OJ44Gr44Gk44GE44Gm44Gv44CB
-56ys5LiJ6ICF44Gr44KI44KL5LiN5q2j5L2/55So44GuPEJSPuWPr+iDveaAp+OBjOOBguOCiuOB
-vuOBmeOBruOBp+OAgeOCq+ODvOODieOBruOBlOWIqeeUqOOCkuS4gOaZgueahOOBq+WBnOatouOB
-leOBm+OBpuOBhOOBn+OBoOOBhOOBpuOBhOOCi+OAgTxCUj7jgoLjgZfjgY/jga/ku4rlvozlgZzm
-raLjgZXjgZvjgabjgYTjgZ/jgaDjgY/loLTlkIjjgYzjgYLjgorjgb7jgZnjgII8QlI+PEJSPuOB
-lOS4jeS+v+OBqOOBlOW/g+mFjeOCkuOBiuOBi+OBkeOBl+OBvuOBl+OBpuiqoOOBq+eUs+OBl+io
-s+OBlOOBluOBhOOBvuOBm+OCk+OBjOOAgTxCUj7kvZXjgajjgZ7jgZTnkIbop6Pos5zjgorjgZ/j
-gY/jgYrpoZjjgYTnlLPjgZfjgYLjgZLjgb7jgZnjgII8QlI+PEJSPuOBvuOBn+OAgeacrOODoeOD
-vOODq+OBqOOBguOCj+OBm+OBpuOAgeW8iuekvuOBuOOBlOeZu+mMsuOBhOOBn+OBoOOBhOOBpuOB
-hOOCi+OBlOmAo+e1oeWFiOOBq+OAgTxCUj7jgqvjg7zjg4njga7jgZTliKnnlKjnirbms4HjgpLn
-orroqo3jgZnjgovjgZ/jgoHjga7jgYrpm7voqbHjgpLlt67jgZfjgYLjgZLjgovjgZPjgajjgoLj
-gZTjgZbjgYTjgb7jgZnjgII8QlI+44GC44KP44Gb44Gm44GU55CG6Kej6LOc44KK44Gf44GP44GK
-6aGY44GE55Sz44GX44GC44GS44G+44GZ44CCPEJSPjxCUj7vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3v
-vJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3v
-vJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ08QlI+5byK56S+44Gr44GK44GR44KL44K744Kt44Ol
-44Oq44OG44Kj44O85a++562W44Gr44Gk44GE44GmPEJSPjxCUj7lvIrnpL7jgafjga/jgIHjgqvj
-g7zjg4njga7kuI3mraPkvb/nlKjjgpLmnKrnhLbjgavpmLLjgZDjgZ/jgoHjgavjgZXjgb7jgZbj
-gb7jgarjgrvjgq3jg6Xjg6rjg4bjgqPjg7w8QlI+5a++562W44KS5a6f5pa944GX44Gm44GK44KK
-44CB5LuK5Zue44Gu44GU5qGI5YaF44KC5pyq54S26Ziy5q2i562W44Gu44Gy44Go44Gk44Gn44GZ
-44CCPEJSPuips+e0sOOBr0pDQuOCq+ODvOODieOCteOCpOODiO+8muOAjEpDQuOBruOCu+OCreOD
-peODquODhuOCo+ODvOOAjeOCkuOBlOWPgueFp+OBj+OBoOOBleOBhOOAgjxCUj7igLvjg5XjgqPj
-g4Pjgrfjg7PjgrDjg6Hjg7zjg6vlr77nrZbjga7jgZ/jgoFVUkzjga7mjrLovInjgpLjgZfjgabj
-gYrjgorjgb7jgZvjgpPjgILmgZDjgozlhaXjgorjgb7jgZnjgYzjgZToh6rouqvjgafjgqTjg7Pj
-gr/jg7zjg43jg4Pjg4jjgrXjgqTjg4jjgojjgormpJzntKLjgpLjgYrpoZjjgYTjgZfjgb7jgZnj
-gII8QlI+77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd
-77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77yd77ydPEJS
-PjxCUj7jgJDjgYrllY/jgYTlkIjjgo/jgZvnqpPlj6PjgJE8QlI+5qCq5byP5Lya56S+44K444Kn
-44O844K344O844OT44O8PEJSPuOCu+OCreODpeODquODhuOCo+ODvOODh+OCueOCrzxCUj7pm7vo
-qbHnlarlj7cgDQrvvJogMDEyMC0zMzEtNzIw77yI5pel5pys5Zu95YaF44GL44KJ44CA6YCa6Kmx
-5paZ54Sh5paZ77yJPEJSPuOAgOOAgOOAgOOAgOOAgCZuYnNwOyANCjA0MjItNDAtODY2Me+8iOa1
-t+WkluOBi+OCieOAgOOCs+ODrOOCr+ODiOOCs+ODvOODq+WPr++8iOKAuzHvvInvvIk8QlI+4oC7
-MeOBlOa7nuWcqOWbveOBruWbvemam+mbu+ipseOBruOCquODmuODrOODvOOCv+ODvOOCkuWRvOOB
-s+WHuuOBl+OAgeOCs+ODrOOCr+ODiOOCs+ODvOODq+OCkuS+nemgvOOBl+OBpuOBj+OBoOOBleOB
-hOOAgjxCUj7llrbmpa3mmYLplpMgDQrvvJogDQrvvIjlubPml6XvvIk5OjAwQU3vvZ44OjAwUE3j
-gIHvvIjlnJ/jg7vml6Xjg7vnpZ3vvIk5OjAwQU3vvZ42OjAwUE3jgIDvvIjjgYTjgZrjgozjgoLl
-ubTkuK3nhKHkvJHvvIk8QlI+PEJSPuKAu+S4iuOBruWWtualreaZgumWk+WkluOBp+OCguOBiumb
-u+ipseOBrzI05pmC6ZaT44Gk44Gq44GM44KK44G+44GZ44CCPEJSPuOAgOWWtualreaZgumWk+Wk
-luOBr+OAgUpDQuOCquODvOOCveODquOCu+ODs+OCv+ODvOOBq+OBpuOBlOWIqeeUqOWGheWuueOC
-kueiuuiqjeOBl+OBvuOBmeOAgjxCUj7igLvmnKzjg6Hjg7zjg6vjgavnm7TmjqXov5Tkv6HjgZXj
-gozjgb7jgZfjgabjgoLlr77lv5zjgafjgY3jgb7jgZvjgpPjgII8QlI+4oC744GK5ZWP44GE5ZCI
-44KP44Gb44Gv5LiK44Gu6Zu76Kmx55Wq5Y+344G+44Gn44GU6YCj57Wh44KS44GK6aGY44GE44GX
-44G+44GZ44CCPEJSPjxCUj7vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3v
-vJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3vvJ3v
-vJ3vvJ3vvJ08QlI+5pys44Oh44O844Or44Gr5o6y6LyJ44GV44KM44Gm44GE44KL44GZ44G544Gm
-44Gu6KiY5LqL44CB5paH56ug562J44Gu54Sh5pat6Lui6LyJ44KS56aB5q2i44GX44G+44GZ44CC
-PEJSPuiRl+S9nOaoqeOBr+OBmeOBueOBpuOAgeagquW8j+S8muekvuOCuOOCp+ODvOOCt+ODvOOD
-k+ODvOOBq+W4sOWxnuOBl+OBvuOBmeOAgjxCUj5Db3B5cmlnaHQgDQooQykgSkNCIENvLixMdGQu
-IEFsbCByaWdodHMgcmVzZXJ2ZWQuPEJSPjwvUD48L0JPRFk+PC9IVE1MPg0K
+--000000000000af7b4f05e152c96c
+Content-Type: text/plain; charset="UTF-8"
+
+Hello,
+I am Mr.Nelson Bile, a lawyer based in Lome, capital city of Togo republic
+in West Africa. I need your assistance to claim the sum of $9.8 Million
+deposited in a bank by my late client who has the same surname as you. He
+died a few years ago. He was an independent oil merchant in my country.
+
+The bank has authorized me as his personal attorney to bring his next of
+kin for the fund claim because he died together with the wife and the only
+daughter who are supposed to have inherited this fund. He did not indicate
+who is to inherit the fund apart from his immediate family that died with
+him in an auto crash. So this is why I contacted you. Declare your interest
+to enable me to send you the full details.
+Regards,
+Nelson.
+
+--000000000000af7b4f05e152c96c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,<br>I am Mr.Nelson Bile, a lawyer based in Lome, cap=
+ital city of Togo republic in West Africa. I need your assistance to claim =
+the sum of $9.8 Million deposited in a bank by my late client who has the s=
+ame surname as you. He died a few years ago. He was an independent oil merc=
+hant in my country. <br><br>The bank has authorized me as his personal atto=
+rney to bring his next of kin for the fund claim because he died together w=
+ith the wife and the only daughter who are supposed to have inherited this =
+fund. He did not indicate who is to inherit the fund apart from his immedia=
+te family that died with him in an auto crash. So this is why I contacted y=
+ou. Declare your interest to enable me to send you the full details.<br>Reg=
+ards,<br>Nelson.<br></div>
+
+--000000000000af7b4f05e152c96c--
