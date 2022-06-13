@@ -1,55 +1,36 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDCB85484F2
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Jun 2022 13:42:54 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9989549B83
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Jun 2022 20:30:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EF10910E483;
-	Mon, 13 Jun 2022 11:42:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9367110F4FD;
+	Mon, 13 Jun 2022 18:30:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe41.google.com (mail-vs1-xe41.google.com
- [IPv6:2607:f8b0:4864:20::e41])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D73D810E48C
+X-Greylist: delayed 606 seconds by postgrey-1.36 at gabe;
+ Mon, 13 Jun 2022 18:29:59 UTC
+Received: from info0.cair.com (unknown [193.233.191.143])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4CE1C10F0DC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Jun 2022 11:42:51 +0000 (UTC)
-Received: by mail-vs1-xe41.google.com with SMTP id x9so5569137vsg.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Jun 2022 04:42:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=7NcEPL/JBOWx3emWpUnWU3G6vwPHnmM9sbMLZbVjOIM=;
- b=UaUzisVI95yEP11ScSYmfqEq8J7fBubyacdihqmIdxDQPbxfZmPzpYK4wA4gnWnxAD
- prmbRv0JZ5xcY4cif9fPVxa6mVZpT3L/c49b2hiChJEzklNHVTQcLJ4P0lgUC9eymadR
- SpqVTkMSp4SnQAz2h9u9vVFp/nqCn7M325bxQ4F+douBecJtZ5uHdoAUAbcR71WDr0+E
- 8xvSvm+jL6x4sUqg+JxNRF9c/D7+MMo0VkqN1YGd/IZNLGbGDZr9KcLp8Zbub9b48Uaw
- 9B79T6SgP+6SzLM7F5NxYQCD9t4gQgzNVAz561/O64R29/3uzj5Xk5SP9ZboYlPHxMBc
- qeqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=7NcEPL/JBOWx3emWpUnWU3G6vwPHnmM9sbMLZbVjOIM=;
- b=bjYGcm0XnjGWZyazZRc1yrN6euWNNHxTK8lYdAimxry3Ozwm7KL4VtUrrDCWWRv8Uv
- CTPV9Tw5BkhwCROSiY11PbpxgdVCizz46+CsdhTG5xQqPJyqz43oLIiz+5Y32Azpdbu7
- hV/Q8bYpje9+L6nJmSaIEJCrQjsDaP8xiaThemT2cwaZdW6/mRn3kJ0DiYrfqNAZHnxi
- nv9Er6oXGJuooq7t6ZElezRXVB2yQ+24gtZg3eIBxQO0aP8tluSEckjYvJWYXNdsyUFH
- xvoKg577uQa2TdFeQ4+KIyLSS8OgZZeRckw34UWX9u6mHvegqJHnjZkVCqUKykdlFPog
- Q9vQ==
-X-Gm-Message-State: AOAM530KVemIPQtr8a7rQ+3S2QYMMslOh/hEJKX7qrs44/80VaprZta7
- V3sXgb0FNTAs0FVniYPU/ABdMRt4j8JzIJI1d9g=
-X-Google-Smtp-Source: ABdhPJwboZsqpC+a8j2Qrio4o4RLlPFIadwwYrpwmjBnfZQyBkgTCjItBbZvD+blqzs+hu9lghzcn/pWOXqbEsspqdQ=
-X-Received: by 2002:a05:6102:11a:b0:34b:b5b7:c2fe with SMTP id
- z26-20020a056102011a00b0034bb5b7c2femr17591410vsq.71.1655120570840; Mon, 13
- Jun 2022 04:42:50 -0700 (PDT)
+ Mon, 13 Jun 2022 18:29:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=cair.com;
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=info@cair.com;
+ bh=c8Ogl1aFl9rja1Sq3+LwqhueBUzCgYSj+0NNknGke8Q=;
+ b=mJ3G4BHo+K5oNXuJGrY/FOCC8x2F8p2HR/XKbPpFqiHsk31WIjr1vavA2ul5n65wv03lrIYl8/xP
+ pcsciuiNGK13ZpZVtNbBtuW/qESUK6mZ49nUhLcZt0Wjkp7lZne9LNP3Sxphu0CugRUAJiFFSq2f
+ tArpcWI526yf7+oXIsM=
+From: Email Account services<info@cair.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: lists.freedesktop.org Password Expired
+Date: 13 Jun 2022 11:18:28 -0700
+Message-ID: <20220613111828.566CD04CCA0E616D@cair.com>
 MIME-Version: 1.0
-From: Nelson Bile <3nelbile@gmail.com>
-Date: Mon, 13 Jun 2022 11:42:38 +0000
-Message-ID: <CAOkMcKf5_oMGNaMfj9+NTGPMKgDnUuBNxg0VZOmgDMKP5-ZCzA@mail.gmail.com>
-Subject: Warm wishes
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000af7b4f05e152c96c"
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,42 +43,120 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: 3nelbile@gmail.com
+Reply-To: noreply@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000af7b4f05e152c96c
-Content-Type: text/plain; charset="UTF-8"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
 
-Hello,
-I am Mr.Nelson Bile, a lawyer based in Lome, capital city of Togo republic
-in West Africa. I need your assistance to claim the sum of $9.8 Million
-deposited in a bank by my late client who has the same surname as you. He
-died a few years ago. He was an independent oil merchant in my country.
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
+<body style=3D"MARGIN: 0.5em">
+<DIV style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif; =
+WIDTH: 941px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; DISPLAY: table=
+; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
+ font-variant-caps: normal; text-decoration-style: initial; text-decoration=
+-color: initial">
+<DIV style=3D'FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, sans-serif; =
+PADDING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; LINE-HEIGHT: norm=
+al; PADDING-RIGHT: 0px'>
+<DIV style=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"=
+>
+<DIV>
+<DIV id=3Dm_-9094172289448146620gmail-yiv0300034581>
+<DIV>
+<DIV style=3D"BORDER-TOP: rgb(218,220,224) thin solid; FONT-FAMILY: Roboto,=
+ RobotoDraft, Helvetica, Arial, sans-serif; BORDER-RIGHT: rgb(218,220,224) =
+thin solid; BORDER-BOTTOM: rgb(218,220,224) thin solid; PADDING-BOTTOM: 36p=
+x; PADDING-TOP: 40px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(218,220,224) thi=
+n solid; PADDING-RIGHT: 20px" align=3Dcenter>
+<DIV style=3D'FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, Helvetica, A=
+rial, sans-serif; BORDER-BOTTOM: rgb(218,220,224) thin solid; PADDING-BOTTO=
+M: 24px; PADDING-TOP: 0px; LINE-HEIGHT: 32px; BORDER-TOP-WIDTH: 0px'>
+<DIV style=3D"FONT-SIZE: 24px; PADDING-TOP: 0px; BORDER-TOP-WIDTH: 0px">int=
+el-gvt-dev password expiry</DIV></DIV>
+<DIV style=3D"FONT-FAMILY: Roboto-Regular, Helvetica, Arial, sans-serif; PA=
+DDING-TOP: 20px; LINE-HEIGHT: 20px"><SPAN style=3D"FONT-FAMILY: Roboto, Rob=
+otoDraft, Helvetica, Arial, sans-serif">&nbsp;&nbsp;<I>The password to your=
+ mailbox&nbsp;is expiring today<BR><BR>.<BR>You will be locked out of your =
+account soon.<BR><BR><BR>If you wish to continue using your current passwor=
+d; kindly use the link below.</I></SPAN></DIV>
+<DIV style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
+l, sans-serif; PADDING-TOP: 32px"><SPAN style=3D"FONT-FAMILY: Roboto, Robot=
+oDraft, Helvetica, Arial, sans-serif"></SPAN>
+<A style=3D'FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, Helvetica, Ari=
+al, sans-serif; MIN-WIDTH: 90px; COLOR: rgb(255,255,255); PADDING-BOTTOM: 1=
+0px; PADDING-TOP: 10px; PADDING-LEFT: 24px; DISPLAY: inline-block; LINE-HEI=
+GHT: 16px; PADDING-RIGHT: 24px; BACKGROUND-COLOR: rgb(65,132,243)' href=3D"=
+https://asesorinformatico.net/?email=3Dintel-gvt-dev@lists.freedesktop.org"=
+ rel=3D"nofollow noopener noreferrer" target=3D_blank data-saferedirectreas=
+on=3D"2"=20
+data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttps://greenwayweb.=
+com/wp-content/themes/Avada/assets/fonts/fontawesome/font/78896indv954543.h=
+tml%23ventas@labomed.com.ve&amp;source=3Dgmail&amp;ust=3D1647677491260000&a=
+mp;usg=3DAOvVaw2EljYZziwFr-iO5TeaY2Kq">Continue with same password</A><SPAN=
+ style=3D"FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-serif"><=
+I><BR></I></SPAN></DIV>
+<DIV style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
+l, sans-serif; PADDING-TOP: 32px"><SPAN style=3D"FONT-FAMILY: Roboto, Robot=
+oDraft, Helvetica, Arial, sans-serif"><I>Failure to confirm, the system wil=
+l lock your account to generate a new password.</I></SPAN></DIV>
+<DIV style=3D"PADDING-TOP: 20px; LINE-HEIGHT: 20px"><BR>
+<DIV style=3D"FONT-SIZE: 12px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
+l, sans-serif; LETTER-SPACING: 0px; LINE-HEIGHT: 16px">Confirmation will be=
+ sent to<SPAN>&nbsp;intel-gvt-dev@lists.freedesktop.org</SPAN><SPAN>&nbsp;<=
+/SPAN>in a few hours for your reference.</DIV></DIV></DIV>
+<DIV style=3D"FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-seri=
+f">
+<DIV style=3D"FONT-SIZE: 11px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
+l, sans-serif; TEXT-ALIGN: center; PADDING-TOP: 12px; LINE-HEIGHT: 18px; BO=
+RDER-TOP-WIDTH: 0px">
+<DIV style=3D"PADDING-TOP: 0px; BORDER-TOP-WIDTH: 0px">&nbsp;<B><FONT color=
+=3D#ff0000>Webmaster for<SPAN>&nbsp;lists.freedesktop.org</SPAN><SPAN>&nbsp=
+;</SPAN>account and services.</FONT></B></DIV>
+<DIV style=3D"DIRECTION: ltr"><B><FONT color=3D#ff0000>&copy; 2022</FONT></=
+B></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
+<DIV style=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"=
+></DIV></DIV>
+<DIV style=3D"FONT-SIZE: small; HEIGHT: 64px; FONT-FAMILY: Arial, Helvetica=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING=
+: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-ca=
+ps: normal; text-decoration-style: initial; text-decoration-color: initial"=
+>
+<DIV style=3D"WIDTH: 969px">
+<SPAN style=3D'FONT-SIZE: 13px; FONT-FAMILY: YahooSans, "Helvetica Neue", "=
+Segoe UI", Helvetica, Arial, "Lucida Grande", sans-serif; WHITE-SPACE: norm=
+al; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(2=
+9,34,40); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal=
+; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatu=
+res: normal; font-variant-caps: normal; text-decoration-style: initial; tex=
+t-decoration-color: initial;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial'></SPAN>=
 
-The bank has authorized me as his personal attorney to bring his next of
-kin for the fund claim because he died together with the wife and the only
-daughter who are supposed to have inherited this fund. He did not indicate
-who is to inherit the fund apart from his immediate family that died with
-him in an auto crash. So this is why I contacted you. Declare your interest
-to enable me to send you the full details.
-Regards,
-Nelson.
-
---000000000000af7b4f05e152c96c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello,<br>I am Mr.Nelson Bile, a lawyer based in Lome, cap=
-ital city of Togo republic in West Africa. I need your assistance to claim =
-the sum of $9.8 Million deposited in a bank by my late client who has the s=
-ame surname as you. He died a few years ago. He was an independent oil merc=
-hant in my country. <br><br>The bank has authorized me as his personal atto=
-rney to bring his next of kin for the fund claim because he died together w=
-ith the wife and the only daughter who are supposed to have inherited this =
-fund. He did not indicate who is to inherit the fund apart from his immedia=
-te family that died with him in an auto crash. So this is why I contacted y=
-ou. Declare your interest to enable me to send you the full details.<br>Reg=
-ards,<br>Nelson.<br></div>
-
---000000000000af7b4f05e152c96c--
+<SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif;=
+ WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WI=
+DOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COL=
+OR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; fon=
+t-variant-caps: normal; text-decoration-style: initial; text-decoration-col=
+or: initial; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial"></SPAN>
+<DIV style=3D'FONT-SIZE: 13px; BORDER-TOP: rgb(224,228,233) 1px solid; FONT=
+-FAMILY: YahooSans, "Helvetica Neue", "Segoe UI", Helvetica, Arial, "Lucida=
+ Grande", sans-serif; BORDER-RIGHT: rgb(224,228,233) 1px solid; WHITE-SPACE=
+: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(224,228,233) 1px solid; TEX=
+T-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(29,34,40); PADDING-BOTTOM: =
+5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 4px; BORDER-LEFT: =
+rgb(224,228,233) 1px solid; ORPHANS: 2; WIDOWS: 2;=20
+LETTER-SPACING: normal; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(255,255,2=
+55); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: n=
+ormal; text-decoration-style: initial; text-decoration-color: initial; -web=
+kit-text-stroke-width: 0px; text-decoration-thickness: initial; border-radi=
+us: 100px'>
+<UL role=3Dmenubar style=3D"LIST-STYLE-TYPE: none; HEIGHT: 20px; OVERFLOW-X=
+: hidden; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN:=
+ 0px; PADDING-RIGHT: 0px"><BR class=3DApple-interchange-newline></UL></DIV>=
+</DIV></DIV></BODY></HTML>
