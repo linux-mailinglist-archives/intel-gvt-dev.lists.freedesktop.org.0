@@ -2,31 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3522E54A85C
+	by mail.lfdr.de (Postfix) with ESMTPS id E764B54A85D
 	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Jun 2022 06:54:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D46FC10F8AE;
-	Tue, 14 Jun 2022 04:54:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A8C0110FAEA;
+	Tue, 14 Jun 2022 04:54:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0068910F89B
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0132F10F8FA
  for <intel-gvt-dev@lists.freedesktop.org>;
  Tue, 14 Jun 2022 04:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=CPcuQGJ8u4Jy0B6sriKitXk9Z5PFXAtCX9f68K5wl1A=; b=mUfbeiR89N4DsxNp6xXOH41i6Y
- JmtqblFYQ4hQGF0fmFwHUye5cQJeGWzSt6b16HZEhcjTN4z901V6X4j0zUdTyxqe4fHe1Z3+Zk/tl
- E54UlgsHkEsAnlXtiHdxA8PfqYDM352o5h239lCiulcNUHeh8taU4z+nhIqROXdaXMxbJN5Xhysvp
- JylXTOMt78ZlKNirLVWZLj10TSzdPgbe7rBrhEpCGYbyjOj5fa2DJn9FEr0bu+MPUZerflgvD1FYM
- yfN1Ul2LmLSK7zpPfpyCLr9H4JFJqAN/TxrPiWcA4URVnHMkhckT9gwPe7BlphpA8BfL3nqfKjmyJ
- Wtkrw3Sw==;
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=0nWwvpLwY71FCZMDrY73Hq3quadFqWPx9640HmGvd+Q=; b=hxEnpCyBGtfcSQxEoMhphGtcQo
+ hj1yRWefeKlJtNas8IVPUPKpF7S3E4v/tiC3AovGaitVoA6L6yEOI/GdOBym9/X0G5n91H5kIJQzd
+ v4oTu2xLZhpa3YZdlJW5rlgDlUR4ASm25Qqn+eAYoZkxUBNoZQklaS/30MAvsddth4PuuFgwSS1ia
+ L+T5BuiBMsu3rQkdqK7JQMtXM8roqLUYqe9lRNIGg8Y/vncJnyjA5IKGfmMQdlt1KgG0sk30hJqS0
+ rlHZFWs7+7WIzmGoJ0nj11NtdY3nt6QMk8oL6H7vGdGmKDEqN0z2PJLiAO0VMnznqArCx010LQph0
+ s9QcYw1w==;
 Received: from [2001:4bb8:180:36f6:1fed:6d48:cf16:d13c] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1o0yZS-0072dn-Ep; Tue, 14 Jun 2022 04:54:30 +0000
+ id 1o0yZU-0072e1-UH; Tue, 14 Jun 2022 04:54:33 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Kirti Wankhede <kwankhede@nvidia.com>,
  Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
@@ -34,10 +34,12 @@ To: Kirti Wankhede <kwankhede@nvidia.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
-Subject: simplify the mdev interface v2
-Date: Tue, 14 Jun 2022 06:54:15 +0200
-Message-Id: <20220614045428.278494-1-hch@lst.de>
+Subject: [PATCH 01/13] vfio/mdev: make mdev.h standalone includable
+Date: Tue, 14 Jun 2022 06:54:16 +0200
+Message-Id: <20220614045428.278494-2-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220614045428.278494-1-hch@lst.de>
+References: <20220614045428.278494-1-hch@lst.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
@@ -59,37 +61,168 @@ Cc: linux-s390@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi all,
+Include <linux/device.h> and <linux/uuid.h> so that users of this headers
+don't need to do that and remove those includes that aren't needed
+any more.
 
-this series signigicantly simplies the mdev driver interface by following
-the patterns for device model interaction used elsewhere in the kernel.
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+---
+ drivers/gpu/drm/i915/gvt/kvmgt.c      | 2 --
+ drivers/s390/cio/vfio_ccw_drv.c       | 2 --
+ drivers/s390/crypto/vfio_ap_private.h | 1 -
+ drivers/vfio/mdev/mdev_core.c         | 2 --
+ drivers/vfio/mdev/mdev_driver.c       | 1 -
+ drivers/vfio/mdev/mdev_sysfs.c        | 2 --
+ include/linux/mdev.h                  | 3 +++
+ samples/vfio-mdev/mbochs.c            | 1 -
+ samples/vfio-mdev/mdpy.c              | 1 -
+ samples/vfio-mdev/mtty.c              | 2 --
+ 10 files changed, 3 insertions(+), 14 deletions(-)
 
-Changes since v1:
- - embedd the mdev_parent into a different sub-structure in i916
- - remove headers now inclued by mdev.h from individual source files
- - pass an array of mdev_types to mdev_register_parent
- - add additional patches to implement all attributes on the
-   mdev_type in the core code
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index e2f6c56ab3420..50c0081c4f0d5 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -34,7 +34,6 @@
+  */
+ 
+ #include <linux/init.h>
+-#include <linux/device.h>
+ #include <linux/mm.h>
+ #include <linux/kthread.h>
+ #include <linux/sched/mm.h>
+@@ -43,7 +42,6 @@
+ #include <linux/rbtree.h>
+ #include <linux/spinlock.h>
+ #include <linux/eventfd.h>
+-#include <linux/uuid.h>
+ #include <linux/mdev.h>
+ #include <linux/debugfs.h>
+ 
+diff --git a/drivers/s390/cio/vfio_ccw_drv.c b/drivers/s390/cio/vfio_ccw_drv.c
+index ee182cfb467d1..750d0315f1f5b 100644
+--- a/drivers/s390/cio/vfio_ccw_drv.c
++++ b/drivers/s390/cio/vfio_ccw_drv.c
+@@ -12,9 +12,7 @@
+ 
+ #include <linux/module.h>
+ #include <linux/init.h>
+-#include <linux/device.h>
+ #include <linux/slab.h>
+-#include <linux/uuid.h>
+ #include <linux/mdev.h>
+ 
+ #include <asm/isc.h>
+diff --git a/drivers/s390/crypto/vfio_ap_private.h b/drivers/s390/crypto/vfio_ap_private.h
+index a26efd804d0df..6616aa83347ad 100644
+--- a/drivers/s390/crypto/vfio_ap_private.h
++++ b/drivers/s390/crypto/vfio_ap_private.h
+@@ -13,7 +13,6 @@
+ #define _VFIO_AP_PRIVATE_H_
+ 
+ #include <linux/types.h>
+-#include <linux/device.h>
+ #include <linux/mdev.h>
+ #include <linux/delay.h>
+ #include <linux/mutex.h>
+diff --git a/drivers/vfio/mdev/mdev_core.c b/drivers/vfio/mdev/mdev_core.c
+index b8b9e7911e559..2c32923fbad27 100644
+--- a/drivers/vfio/mdev/mdev_core.c
++++ b/drivers/vfio/mdev/mdev_core.c
+@@ -8,9 +8,7 @@
+  */
+ 
+ #include <linux/module.h>
+-#include <linux/device.h>
+ #include <linux/slab.h>
+-#include <linux/uuid.h>
+ #include <linux/sysfs.h>
+ #include <linux/mdev.h>
+ 
+diff --git a/drivers/vfio/mdev/mdev_driver.c b/drivers/vfio/mdev/mdev_driver.c
+index 9c2af59809e2e..7bd4bb9850e81 100644
+--- a/drivers/vfio/mdev/mdev_driver.c
++++ b/drivers/vfio/mdev/mdev_driver.c
+@@ -7,7 +7,6 @@
+  *             Kirti Wankhede <kwankhede@nvidia.com>
+  */
+ 
+-#include <linux/device.h>
+ #include <linux/iommu.h>
+ #include <linux/mdev.h>
+ 
+diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
+index 0ccfeb3dda245..4bfbf49aaa66a 100644
+--- a/drivers/vfio/mdev/mdev_sysfs.c
++++ b/drivers/vfio/mdev/mdev_sysfs.c
+@@ -9,9 +9,7 @@
+ 
+ #include <linux/sysfs.h>
+ #include <linux/ctype.h>
+-#include <linux/device.h>
+ #include <linux/slab.h>
+-#include <linux/uuid.h>
+ #include <linux/mdev.h>
+ 
+ #include "mdev_private.h"
+diff --git a/include/linux/mdev.h b/include/linux/mdev.h
+index bb539794f54a8..555c1d015b5f0 100644
+--- a/include/linux/mdev.h
++++ b/include/linux/mdev.h
+@@ -10,6 +10,9 @@
+ #ifndef MDEV_H
+ #define MDEV_H
+ 
++#include <linux/device.h>
++#include <linux/uuid.h>
++
+ struct mdev_type;
+ 
+ struct mdev_device {
+diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
+index 344c2901a82bf..d0d1bb7747240 100644
+--- a/samples/vfio-mdev/mbochs.c
++++ b/samples/vfio-mdev/mbochs.c
+@@ -21,7 +21,6 @@
+  */
+ #include <linux/init.h>
+ #include <linux/module.h>
+-#include <linux/device.h>
+ #include <linux/kernel.h>
+ #include <linux/slab.h>
+ #include <linux/vmalloc.h>
+diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
+index e8c46eb2e2468..0c4ca1f4be7ed 100644
+--- a/samples/vfio-mdev/mdpy.c
++++ b/samples/vfio-mdev/mdpy.c
+@@ -17,7 +17,6 @@
+  */
+ #include <linux/init.h>
+ #include <linux/module.h>
+-#include <linux/device.h>
+ #include <linux/kernel.h>
+ #include <linux/slab.h>
+ #include <linux/vmalloc.h>
+diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
+index f42a59ed2e3fe..4f5a6f2d3629d 100644
+--- a/samples/vfio-mdev/mtty.c
++++ b/samples/vfio-mdev/mtty.c
+@@ -12,7 +12,6 @@
+ 
+ #include <linux/init.h>
+ #include <linux/module.h>
+-#include <linux/device.h>
+ #include <linux/kernel.h>
+ #include <linux/fs.h>
+ #include <linux/poll.h>
+@@ -20,7 +19,6 @@
+ #include <linux/cdev.h>
+ #include <linux/sched.h>
+ #include <linux/wait.h>
+-#include <linux/uuid.h>
+ #include <linux/vfio.h>
+ #include <linux/iommu.h>
+ #include <linux/sysfs.h>
+-- 
+2.30.2
 
-Diffstat:
- Documentation/driver-api/vfio-mediated-device.rst |   26 +-
- Documentation/s390/vfio-ap.rst                    |    2 
- Documentation/s390/vfio-ccw.rst                   |    2 
- drivers/gpu/drm/i915/gvt/gvt.h                    |    6 
- drivers/gpu/drm/i915/gvt/kvmgt.c                  |  158 +++------------
- drivers/gpu/drm/i915/gvt/vgpu.c                   |   60 +----
- drivers/s390/cio/cio.h                            |    4 
- drivers/s390/cio/vfio_ccw_drv.c                   |    3 
- drivers/s390/cio/vfio_ccw_ops.c                   |   60 -----
- drivers/s390/cio/vfio_ccw_private.h               |    2 
- drivers/s390/crypto/vfio_ap_ops.c                 |   68 ------
- drivers/s390/crypto/vfio_ap_private.h             |    6 
- drivers/vfio/mdev/mdev_core.c                     |  214 ++++++--------------
- drivers/vfio/mdev/mdev_driver.c                   |    7 
- drivers/vfio/mdev/mdev_private.h                  |   39 ---
- drivers/vfio/mdev/mdev_sysfs.c                    |  230 ++++++++--------------
- include/linux/mdev.h                              |   77 +++----
- samples/vfio-mdev/mbochs.c                        |  103 ++-------
- samples/vfio-mdev/mdpy.c                          |  115 ++---------
- samples/vfio-mdev/mtty.c                          |   94 +++-----
- 20 files changed, 389 insertions(+), 887 deletions(-)
