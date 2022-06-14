@@ -2,31 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA3F954A866
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Jun 2022 06:54:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA64D54A868
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Jun 2022 06:54:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8C50A10FB42;
-	Tue, 14 Jun 2022 04:54:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 77AAA10FB15;
+	Tue, 14 Jun 2022 04:54:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 274B310F89B
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B4D6910FB9A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Jun 2022 04:54:50 +0000 (UTC)
+ Tue, 14 Jun 2022 04:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=AZzutnG50lKr2/Ph8sA9sjy9B+4ZEBV2t6fpN+CzXzo=; b=tFnS+0fakga6Q0vQBV8FcxmZ1S
- L20a7yhIpJRNhm72PBPsx7BUjfNhcudP7srTCbK6lFiWUmshB1rheI+8Vdv3fniwoyz8pKTrR6lIB
- kufsPG3/6lcShXAS0gUMUsII4DHGgZl3tgxtU7OtBKzrDBRISpOPbFKOKXXZC5/BFjzrqBpmSMP2x
- vkPcBuLVmgy2nfF8DBPJJul7aQomUipseh6H+W89mkHacMFIehdWPIPMY3l8ondywnc8ZbS3RWTA9
- NofO43fGaOZx0CVGBqEo124JT9QEulwvTkH+vaDSO8xhqUtfPdJh6cUxTGUVSEEAA/9sgz+UmJiWA
- W20kpcjg==;
+ bh=J0kYVL6nlYL/lfMrUVbKAG7gBaKcZ6pJXaUTArnsTyM=; b=GyJTGHxnFClQSBabQbbMj1s3pd
+ duzVdcsANwhvm2Qc/vVILaqIOtaEXrMo1a1n00umFYZzPvj1QerLcnFiDy0mz5TJvmvzqaBz7oaRu
+ Xf9eBTUqGcUuapgMWqNpME8QyJ2hdBi9yZkx3dFD8fFnXxDYY2OrPI3iMM9NAzBvsWKjFWitiin4D
+ Ds2iYTY0gZm6H5nBAmrhebet+afIpXehCuUTakwm7Vp2mXnVtgOLbjE/jda1taQPcRf3sWVPN4CP7
+ F+u8/3xPiDlUkKrUXriWnsxlYOLzgi9M2Yl1tJXg4LK0mJBcqc71PFaSlAw+ibia0NGUcSVx3xUKc
+ jWLrzriA==;
 Received: from [2001:4bb8:180:36f6:1fed:6d48:cf16:d13c] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1o0yZi-0072fj-82; Tue, 14 Jun 2022 04:54:46 +0000
+ id 1o0yZk-0072gT-T8; Tue, 14 Jun 2022 04:54:49 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Kirti Wankhede <kwankhede@nvidia.com>,
  Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
@@ -34,9 +34,9 @@ To: Kirti Wankhede <kwankhede@nvidia.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
-Subject: [PATCH 06/13] vfio/mdev: unexport mdev_bus_type
-Date: Tue, 14 Jun 2022 06:54:21 +0200
-Message-Id: <20220614045428.278494-7-hch@lst.de>
+Subject: [PATCH 07/13] vfio/mdev: remove mdev_parent_dev
+Date: Tue, 14 Jun 2022 06:54:22 +0200
+Message-Id: <20220614045428.278494-8-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220614045428.278494-1-hch@lst.de>
 References: <20220614045428.278494-1-hch@lst.de>
@@ -62,54 +62,74 @@ Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-mdev_bus_type is only used in mdev.ko now, so unexport it.
+Just open code the dereferences in the only user.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 Reviewed-by: Kevin Tian <kevin.tian@intel.com>
 ---
- drivers/vfio/mdev/mdev_driver.c  | 1 -
- drivers/vfio/mdev/mdev_private.h | 1 +
- include/linux/mdev.h             | 2 --
- 3 files changed, 1 insertion(+), 3 deletions(-)
+ Documentation/driver-api/vfio-mediated-device.rst | 3 ---
+ drivers/gpu/drm/i915/gvt/kvmgt.c                  | 2 +-
+ drivers/vfio/mdev/mdev_core.c                     | 6 ------
+ include/linux/mdev.h                              | 1 -
+ 4 files changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/vfio/mdev/mdev_driver.c b/drivers/vfio/mdev/mdev_driver.c
-index 1da1ecf76a0d5..5b3c94f4fb13d 100644
---- a/drivers/vfio/mdev/mdev_driver.c
-+++ b/drivers/vfio/mdev/mdev_driver.c
-@@ -46,7 +46,6 @@ struct bus_type mdev_bus_type = {
- 	.remove		= mdev_remove,
- 	.match		= mdev_match,
- };
--EXPORT_SYMBOL_GPL(mdev_bus_type);
+diff --git a/Documentation/driver-api/vfio-mediated-device.rst b/Documentation/driver-api/vfio-mediated-device.rst
+index 599008bdc1dcb..27247b3bdcb57 100644
+--- a/Documentation/driver-api/vfio-mediated-device.rst
++++ b/Documentation/driver-api/vfio-mediated-device.rst
+@@ -202,9 +202,6 @@ Directories and files under the sysfs for Each Physical Device
  
- /**
-  * mdev_register_driver - register a new MDEV driver
-diff --git a/drivers/vfio/mdev/mdev_private.h b/drivers/vfio/mdev/mdev_private.h
-index 346b9ec320466..62a98b78d929d 100644
---- a/drivers/vfio/mdev/mdev_private.h
-+++ b/drivers/vfio/mdev/mdev_private.h
-@@ -13,6 +13,7 @@
- int  mdev_bus_register(void);
- void mdev_bus_unregister(void);
+ 	sprintf(buf, "%s-%s", dev_driver_string(parent->dev), group->name);
  
-+extern struct bus_type mdev_bus_type;
- extern const struct attribute_group *mdev_device_groups[];
+-  (or using mdev_parent_dev(mdev) to arrive at the parent device outside
+-  of the core mdev code)
+-
+ * device_api
  
- #define to_mdev_type_attr(_attr)	\
+   This attribute should show which device API is being created, for example,
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 1c6b7e8bec4fb..136f9c0df48b9 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -1549,7 +1549,7 @@ static const struct vfio_device_ops intel_vgpu_dev_ops = {
+ 
+ static int intel_vgpu_probe(struct mdev_device *mdev)
+ {
+-	struct device *pdev = mdev_parent_dev(mdev);
++	struct device *pdev = mdev->type->parent->dev;
+ 	struct intel_gvt *gvt = kdev_to_i915(pdev)->gvt;
+ 	struct intel_vgpu_type *type =
+ 		container_of(mdev->type, struct intel_vgpu_type, type);
+diff --git a/drivers/vfio/mdev/mdev_core.c b/drivers/vfio/mdev/mdev_core.c
+index 49a4a26787ce6..479ae5ed6c392 100644
+--- a/drivers/vfio/mdev/mdev_core.c
++++ b/drivers/vfio/mdev/mdev_core.c
+@@ -23,12 +23,6 @@ static struct class_compat *mdev_bus_compat_class;
+ static LIST_HEAD(mdev_list);
+ static DEFINE_MUTEX(mdev_list_lock);
+ 
+-struct device *mdev_parent_dev(struct mdev_device *mdev)
+-{
+-	return mdev->type->parent->dev;
+-}
+-EXPORT_SYMBOL(mdev_parent_dev);
+-
+ /*
+  * Used in mdev_type_attribute sysfs functions to return the parent struct
+  * device
 diff --git a/include/linux/mdev.h b/include/linux/mdev.h
-index 409e86d343a05..dd11c142bf887 100644
+index dd11c142bf887..83c85a0247f25 100644
 --- a/include/linux/mdev.h
 +++ b/include/linux/mdev.h
-@@ -92,8 +92,6 @@ static inline const guid_t *mdev_uuid(struct mdev_device *mdev)
- 	return &mdev->uuid;
- }
+@@ -100,7 +100,6 @@ void mdev_unregister_parent(struct mdev_parent *parent);
+ int mdev_register_driver(struct mdev_driver *drv);
+ void mdev_unregister_driver(struct mdev_driver *drv);
  
--extern struct bus_type mdev_bus_type;
--
- int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
- 		struct mdev_driver *mdev_driver, struct mdev_type **types,
- 		unsigned int nr_types);
+-struct device *mdev_parent_dev(struct mdev_device *mdev);
+ static inline struct device *mdev_dev(struct mdev_device *mdev)
+ {
+ 	return &mdev->dev;
 -- 
 2.30.2
 
