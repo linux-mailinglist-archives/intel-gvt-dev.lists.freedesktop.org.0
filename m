@@ -1,51 +1,50 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 657DE54D19B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jun 2022 21:30:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9562D54D214
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jun 2022 21:55:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 08E78112A90;
-	Wed, 15 Jun 2022 19:30:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 54AEC112B39;
+	Wed, 15 Jun 2022 19:55:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2087.outbound.protection.outlook.com [40.107.223.87])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0550E112A90
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2060.outbound.protection.outlook.com [40.107.220.60])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C0ADB112B32
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Jun 2022 19:30:07 +0000 (UTC)
+ Wed, 15 Jun 2022 19:55:40 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GiEVL2qbLC2SfXsh8BvF+jHMxtjyeJ5R0EYOHkTUyIxb7UjPjt60MG1i4fZJGSkq2YnCLFhWFZXdwlB8SDZo1YKX+b19nlyROX8WRRrYROV3tMKK+93SLwyy2yTiqPY7iSl1V/aLYUYqDFtwt9wS9WfXFIsvtnAtslH1V+QpvFV5DY6ATHUhi8DiHxs6M63WHcPY4VGW5K6LvFA8CYB1Gtqy67wtKevPkhFq6AeLB4DMVj1m+L1iQLeuTm2RiNvkOC1sIajMPV6PEhCchpvOkcHZG/wIk1vQBJveZmnUHPyI4jfN2bdByKGQGP+FqjddwO1uvUOJTuEWqZ3IZVOMJA==
+ b=XIXf23gG8hZ5SnffCMtyG5myk7GLNfesHn7qlYO+33mn54dPLqp9B84HSd7dtjkkA3NlOZRPZwK1HBouVHUlbqKoVfuRv1ZLsxQCfql9fOacA1ahkWd9JYvGcHTFDgUDYjUsYKINcDwuNOwDpjamLRQzmFSBHJ7rZg5CRXixk8A6rgd6Y7i56Ho+WNu2QaZl7RSRiyJK64SiZgczmfVudavtKmCA9A9aibEEz2HM2/nvSYnMzwP5tL95r7lZ371Je714njMzpgKolQuj7tWfU1lfTHQHtFDEHNl9EXxXV5xu1eEEAE7MrKIHBxqzcufO365RuavwxJuOwv2Cu+SmWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=i0w5ZEWhiWbJpJUdX3D9XeaJTVDL2qWWrQLYLwD1cOg=;
- b=Q0q9UMWQE43lSQff575nrbfLDko/xtuNY66fFLAm3+M5XkRtj87MgpknoQAQ7KDiFwtZw3/zIcEa9j/yYahCw4i/qSBr2Xz2pAHxKXNBfp/vDNHdwtNYfXwOF343S1cm+4uAFRI1r18VjjYCLARshdsuJ+Z0nCXonxMxyfcVym6KgnQCeRYA3VsLGbNDy5LscaMRF88dgS5Vm7jxWYznJsmwuC8E8bqJOnaoHvm7GgG4/3OAHWhcNb5/w5wAlNnLv4hbyOGbJ55eYiekd/X4QkZg4Y+rHt2uUMbAw5fIR+kAJ/oqYCCjKFNDf8Io+W3FRMUTY3NZy1A1zZZPEh4O/w==
+ bh=kgeu4vJqyOpj/zEViSQRaMn/F+TAYSoSDXdMYlrMl3k=;
+ b=AhocZYFslVrjdQpHDDYygqDM6mUj0EXT/JkY1z4vRC3BN2+AhZ2YLdUhKFcUv8QJYnK8GzR+5ilpfoLvEOMCh8Ja0Nw0xI2qBwWok5mVwvHur/V02WV3sbR80rE/r0OsSybgiE2spOb8VsHptrh4JK5PUXxQnRun9lzR7rdrmYXPcWaHjJgGlzdhBXHoztYGg83wuVFe24YnVLzH8elNFRIYAHP0iBgXupH+9awci3epmNSKRU3tVzmOtw571cBi9Y8V0xYcG5ZVco3+XucVoH9VO2pXsKskXkS07p0mTrL6Hmf//1Yv5gBztiI/hohZ283DDi9fIWGFaMZB2VHpTA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=i0w5ZEWhiWbJpJUdX3D9XeaJTVDL2qWWrQLYLwD1cOg=;
- b=d+a7FYL5HwjrW3oPkTMLG2ryo1lj6AIgM7EisY+wi2BcZe6CPOgdd84+KX0UD7afhX+byKTblRFfc91B2CRV1iRRTCrSej9EyHNBhuzmqVuKDJYdCIXZIy1JwO/1JFg/+Jnyc8TtV9uPBRaRWSmcesSjoRDyAgyT/k3XfOltSFJaweBdI2rkLxrXpxm+JUSAPB1W+0EhjV1Nymq+Y03cwasoXZ7QoD9O25SGwLNlY/795BR9jnwf8kXQI5kCKOpk8vBwil/Bj7XGLDTCeitmLlBy/WM6/zbUFLbgwwybt2NUptObbyhApoveKGamQHYkwGhPuO8TCgP96MW01ZMZIQ==
+ bh=kgeu4vJqyOpj/zEViSQRaMn/F+TAYSoSDXdMYlrMl3k=;
+ b=Zk+leH1KRlL9Dh5FXzSbNfUl1Uwi77dMHPG1ueIxfLgBQ2ISjO7KybsjukLKKacG8hTO7do8L7cMINyovoTr/lcsS1tE0ODpmr1FVQckq76vJ+Fr9E1/NLWbKla/X8/bOUoLSxq94aUpeX7T8Z9uYlIYxQqRXXflZZEdR6vunhjv2qfu7Gpfl1mHc3/Fxp0rlj2BBlmgZJvyndCfEeF+eN1dpYpL6Dhli2keKv1f8GKSFHEJrEHwbntHbLwMmw85oGA+zLlATkMriXjuqm4MWhxzQiMSmpdozpOifSE+p2YydM+cBwiin2/9iE+JZtUGnM/sFshGLieOO64ULHepCg==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from MN2PR12MB4206.namprd12.prod.outlook.com (2603:10b6:208:1d5::18)
- by BYAPR12MB4696.namprd12.prod.outlook.com (2603:10b6:a03:9d::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.15; Wed, 15 Jun
- 2022 19:30:00 +0000
+ by DM4PR12MB5039.namprd12.prod.outlook.com (2603:10b6:5:38a::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12; Wed, 15 Jun
+ 2022 19:55:39 +0000
 Received: from MN2PR12MB4206.namprd12.prod.outlook.com
  ([fe80::d5df:ac97:8e92:fc14]) by MN2PR12MB4206.namprd12.prod.outlook.com
  ([fe80::d5df:ac97:8e92:fc14%7]) with mapi id 15.20.5332.022; Wed, 15 Jun 2022
- 19:30:00 +0000
-Message-ID: <ab47e216-f027-2083-308b-89c6aaa2e806@nvidia.com>
-Date: Thu, 16 Jun 2022 00:59:47 +0530
+ 19:55:39 +0000
+Message-ID: <6900fbd9-5f12-e53d-1a57-d9671491372b@nvidia.com>
+Date: Thu, 16 Jun 2022 01:25:25 +0530
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH 02/13] vfio/mdev: embedd struct mdev_parent in the parent
- data structure
+Subject: Re: [PATCH 03/13] vfio/mdev: simplify mdev_type handling
 Content-Language: en-US
 To: Christoph Hellwig <hch@lst.de>, Tony Krowiak <akrowiak@linux.ibm.com>,
  Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
@@ -53,78 +52,78 @@ To: Christoph Hellwig <hch@lst.de>, Tony Krowiak <akrowiak@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
 References: <20220614045428.278494-1-hch@lst.de>
- <20220614045428.278494-3-hch@lst.de>
+ <20220614045428.278494-4-hch@lst.de>
 X-Nvconfidentiality: public
 From: Kirti Wankhede <kwankhede@nvidia.com>
-In-Reply-To: <20220614045428.278494-3-hch@lst.de>
+In-Reply-To: <20220614045428.278494-4-hch@lst.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MA1PR0101CA0070.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:20::32) To MN2PR12MB4206.namprd12.prod.outlook.com
+X-ClientProxiedBy: MA1PR0101CA0004.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a00:21::14) To MN2PR12MB4206.namprd12.prod.outlook.com
  (2603:10b6:208:1d5::18)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 1eb4176b-f7f7-40cb-d4a1-08da4f057015
-X-MS-TrafficTypeDiagnostic: BYAPR12MB4696:EE_
-X-Microsoft-Antispam-PRVS: <BYAPR12MB46962188DAB1A91529CBC944DCAD9@BYAPR12MB4696.namprd12.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: c94b8fd9-2eed-4770-bc2d-08da4f09053f
+X-MS-TrafficTypeDiagnostic: DM4PR12MB5039:EE_
+X-Microsoft-Antispam-PRVS: <DM4PR12MB50397EEDBC3A00E77AE187AADCAD9@DM4PR12MB5039.namprd12.prod.outlook.com>
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: VdzKprm0XZKd3bAQtUaxlrTiyDdzN4x1xF8ehTWaNCKUWCY4faCUjgyyIL+AMHC2p8tmLxq3uwsNviX6eVXoys/tGP0MldQe6wCEkCaFxMVjr3NENw7ibN9cG14tdbiwMURpgCL0iV195wasY5fY5o1xDMJOt2o5hsrlkSzuygVQVjP7REApF1ZZsC40q3iNbdND/VxSZ0lBi5w1lE3cUH7jin++VFmdmSmyi23585cwpEimwmyzq8q11SMucga0ZdhcFdfHcLrJrlRPnt3G3eh0tQbwpeXppOyUUZrw2wsCAk8ruieQlwFmGt2EgT60rs0DHXh4sXNSrn8prAwTLTH0v1qmU1nVwQE8r7hMJCC48qFkBR++XWAnRXtkJPKCvbX+6Akx6tJUEs0T0jMu4+Fw739ZFq54yO9XQjVsITv4LbOjAFtFSD57icetnSA6FemfyEdn2g69s4O57G+CV/aJ8T1KpMqQaojoar2t2s0LmZ0an18KFqqZ1ngB74P7dtrScnrNkjD2uNU1aPVnJXEX0zYoH0mwJPylKdYXi4oz8f5TlbVO3L5S3i6XAVWGDrNX21ng0lXO5H50m0+SheNBx5QCIGUM36Qi4e8Cdh+pYnrfPayIRh2GVsUR63UpYZIhqexnZ71QQM5FKWAF/18UvHHO5OsZ6AMGGBFxRftQQsKP8uCDepksW/QU6ydGlFuwnhB+1OePJ1XhxpMgNe4hh+ExyZyFwneR1fE2ToI=
+X-Microsoft-Antispam-Message-Info: 19pbHtoyaoK2D6oNWJElxMXKiJ4ooMIkJc9FkiHzHNhkn6/1ktiuPfNvotH+qtQsY8ftYPd09SwabBvqsvTu7//OCmj+IAzVLBZVfbFssX9abieYA3ihpSFVQmK0jdquzdVhIFplYX6tBvUvXsXoyVxC44oMrEyomHjwPCiWkSwZNQLWOEQrmgchW09n6AWWSHX0CK1Ii9f+6KB6dUVrVNv0wv6fW4kvCWLDbULCxUyEoLjAyBgIrMh25StJsRhH2DgiPO8tKa2kssVoK1xZDSUr/R/EDOsa1AZ+DCrlepSoZ1m8jYgT+1oBhx6NJGNPx3PNdvdOdgYpOhhc7C9kJ8tMQGyEnX8OC2nR4jislYxms2fqaWOd5C6oQAu5d7ILiYgba/7+ERIiBeEuyjF2yjVtWkEhnNMSa89F4VNpmc1pT+tZ0zAICh1ymVa+r/L8+gto0/74LU/b2QZUfcfNJQZk0I0HUkZoGEx+8CVqH4hFifIbMBsVMC7NA418NXa4NEO61DshwqHlE54o+WFQwBkl5OjE+QoA3Nw0A9Oyqbn5bC2YT78Hl4Itpqzh/7yrsmAEwepl5Z6Wrf5KiYgtu7+EKvsEfsQ50enfWxWbAsdS48k1dgXJ2nc0bW2EapkHW2V+kOi/PbjSVAuQA1WdVWAlifDrzrybLs6PVYCv7UfsAL5Qi9uqeb8u46VJjhGca0V2sfW9B6+DBsPfPky6ibyl2lxn1HxVykhLhRj4wdI=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MN2PR12MB4206.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(366004)(26005)(5660300002)(2906002)(2616005)(107886003)(7416002)(83380400001)(36756003)(110136005)(6512007)(6666004)(31686004)(508600001)(8936002)(186003)(38100700002)(316002)(6506007)(4326008)(6486002)(66946007)(66476007)(8676002)(55236004)(31696002)(86362001)(54906003)(53546011)(66556008)(43740500002)(45980500001);
+ SFS:(13230016)(4636009)(366004)(2906002)(6666004)(66946007)(66556008)(316002)(8676002)(8936002)(110136005)(7416002)(4326008)(5660300002)(31696002)(53546011)(6486002)(86362001)(6512007)(6506007)(55236004)(508600001)(26005)(54906003)(31686004)(66476007)(186003)(2616005)(38100700002)(83380400001)(36756003)(107886003)(43740500002)(45980500001);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Tk5udE4vTHN1VzE4VDllUmVzRCtHZ2NtRTA4eXYwdmxzVnBvYkJ0dEF5TStL?=
- =?utf-8?B?RzN0N1g3MVp2YW9oVlUrRHFtSlBWZmM3ZXhENmdyWm5CREFYR3lnOGxHelpC?=
- =?utf-8?B?OFlIQnF4OWFNc1JBZE1KVE5xR1poL0swd2xsR0IwbG5tY1F2bDczNktBc2x1?=
- =?utf-8?B?WnNmMnpFMTVjQzBRbUEvYnJ1MzJyUmpycDRNZWJsVnJlZW5ZTlFEdTg2VTFp?=
- =?utf-8?B?MXdkYjBJQ3dkenhpNnpNeWs2U2pkN2M4QTFvWS9kNzExYStwM3ZacFpOWEh4?=
- =?utf-8?B?T1BIV2RrMDVHTGM1Ym9DdTBkOXFBQ0hvNzBhcTVOaWJZeXB5VmxFQ1NobThB?=
- =?utf-8?B?ZjVFNGdrU2l0ZG5rSThNa1lzODFVNWd3WUlqRFg4WXI4bnN6c1NtTzd5Nllo?=
- =?utf-8?B?aHpUYmFpOUpsK0dHbkRlMjZYRXNUMUd5cXpRcGM5YzFDRU9ZRE5vcGlUZTBk?=
- =?utf-8?B?VmMxWW9QK3dnWXNNZkhHUjIwVFo3SlduMjd4T1VJQjlGTkp2OTY1UUYxT0My?=
- =?utf-8?B?R0NGNGxEWC95Wmp4RnBmK0JZbVNBejZFZFFNUjVnbE1xUFlsdGQ5UGZHT0RI?=
- =?utf-8?B?bitEWERiVHpCbmU1eG0xc3piVFlxMEdwNTdDaU43WHdLN3JnVTNEU0h2L1Vm?=
- =?utf-8?B?M0pvZnMzbjh3bHQ2VjNRL0tYQktnOHd0eE9yZHlPYWhEMEp3ZE5CUU9GU0dW?=
- =?utf-8?B?Q3FhTDNtNkJhTnc5bU1OSmVpcTEwd3FFdlpHWWducFRBam9TVE9KRDJ0Nkd3?=
- =?utf-8?B?eTdoeTA0aFBSZm9LMWVpRzgzWHp5MDNJa0VGZHJBYmJCRFQxSFg5YjBQUUlO?=
- =?utf-8?B?QUxxVUcrQW1rU0ZHNzJHU204N0xGSzlocWVlTm4xMktzcU14UkZMc2RsTVJy?=
- =?utf-8?B?OXd0eVFhYnkrWlJhSFQzdjNNbVdwTWcyVEJBdWZXcmdYSWRsbU1JbFdCVWky?=
- =?utf-8?B?b1cyQUI5Vm1NbkNDWjR5QWoxamIxVW1XQWw3MUxmV3JSSFR5MnhJelRSV0NF?=
- =?utf-8?B?YzIyVTI4YllDZUJoR0ZBdFRaTEQ2WXhJMjhLbE5Zeml5eXVQY0NQdStGY0x2?=
- =?utf-8?B?SktaSXY5bkx6V1dKWFB5V0hDTHBHallkR05kMnMyQmthVHNQR0h0Y1dqSWg5?=
- =?utf-8?B?U21IN3dsanlKSDZTbmtGZjRkUGNmYXEzMmpKT3lwOU8renF2OW9mLzAvL1Bo?=
- =?utf-8?B?WXFCNFQ4cUQ0RjNhaXRLcmJxVXNyeVQ2VnZnN3ZheTM2dXdLS0ZQZUFFbThC?=
- =?utf-8?B?Ny9yckFXMHlkbXhLalFEcmhpU1V6RHhWVHQydmVLdkZyZTlKQXZiekc0dXlu?=
- =?utf-8?B?K2dqK0lMLzlJelR5Q01XUU1sTU1VazVCQTdFRE10NkswY1RPOTFVN05uWi9B?=
- =?utf-8?B?a1hUUkxnTDIrUkI1Ung5M1JibG03YS9pK29meTJVaVhQK3A1SDlJUXh1cjNw?=
- =?utf-8?B?dXFrTnpTZEFSc1pjdjRYeDNFUHdpeE5GV3p6Tis0Mk41YlppOWdwVWg0OTkx?=
- =?utf-8?B?L3ZJR2pKLzkxaHRzYWVEc0dLZGQ1dEhmbkRMaGV0OUdmNUVXd085NEEzeU03?=
- =?utf-8?B?b0NrYjMrQmpWNE0xbU85bnRwbHRzV1duRVF2K29kOEkzT0RkcW5aVzlTcFdL?=
- =?utf-8?B?Q09uNTZVR0NWUFZWMkRnZnZVTVpzRE16L21jY3J6YmIrRlFkd2UvZVlBaE5C?=
- =?utf-8?B?M3czTStvMWdlOHQ4R1ZBQlFINkJoL0YwRDlyUHZlbWgzVmlsQjQ3dzcreG1E?=
- =?utf-8?B?aWNkUDBtV2wxdEZSYVJrQnZWZkwyRTkvSUhBMVhHb01PNHRSZTlvOUh6TUxJ?=
- =?utf-8?B?ZUhiMWNXaE5zcWxKSmhNWXcyMkFuYW51bWRKVG43U0JteWMxN1N3WXVFTytF?=
- =?utf-8?B?NmRnSzY0eDllVENYM25SZjNVWDJTZjFuTXNlWmJESmFRbi9yQVF4azNVQ09v?=
- =?utf-8?B?REc5L3lCOXpYeThINDh6K2l1Z1pYMTNEZ1Rpd09sWkdrazJPRjF5M0RYQ2Fo?=
- =?utf-8?B?d3ZvNDNCalhrWWRLNUVsNkJxWjhLb0NyRVVqbWtTMk1NNVhnWmtiMk44SjR0?=
- =?utf-8?B?ekRnVHZLOWp0bk52WjM1U3NaTTJPWkZxZ3ZIM2E5SDMzaXRVa3dxcUZhd0oy?=
- =?utf-8?B?V1IwdVZ2ZVNlSHM4K2JUYXRQQXl6TUxIVUVDbS96dDdUaXJHVHV4UU9RVzJT?=
- =?utf-8?B?NXVHVEVmT2ZmZFVldmxRVWZVNVU0NUhsN0VmWEs4bld6RlRmQ0dsY3pPeUVX?=
- =?utf-8?B?R0gzb0JQL0JIeDAyRW03RmN6bGd2S29wNmw0VUh0N0p2TjU1MlcwcGRYNkJ4?=
- =?utf-8?B?ZlhyVWRMdThyNEdrVlZDN2FNRmNlMm42cHcxN0UxZWxFZnZOY01KZz09?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WDk5WVd5R2gvMkZyeU1OL3FONFJvY21RQktqSEp4YTJ5SWhSMU9COFZUQ1hF?=
+ =?utf-8?B?ZkZQdTlWTlU2NzBtL2l3TWx5M0FQclpHc3NyWk14enR2d0VCOG1zWVliaitJ?=
+ =?utf-8?B?MHlhTVFQZnYxUTM2dVB1ZitORldoN1NnZ1RWeUdUNXpjbTk5eVZFRDVOWGp2?=
+ =?utf-8?B?elF3aVVVcE4rYmFRZ0dQbFdDU1d5V3Y0akhGYkd6SzM3WG81aENRS1FaSXdV?=
+ =?utf-8?B?bDNhL2kxcTgvcjJmN0x2VDZTNUVad0phWDZ2cVFWWnowc2VMa3RqUnorU0N2?=
+ =?utf-8?B?bFYzNExBZFl4eVBUWEVZSllId29wK1diVStpU2lyeFBwTC9BK2FEOE5YR2VL?=
+ =?utf-8?B?bW8wTXRHeE8rYkxEZnhibmw3VEU1VXEwbmZ4b0hnekVmZ0NCMGR4NXpIaitk?=
+ =?utf-8?B?Ni93RTV0WHZPVnhGUTIyNVRzM2MwRnhodzVIaitOaFgxTk0wR0F4NTlUNWdj?=
+ =?utf-8?B?dVdMa294enJ1d1pUakplS1drQk90Y1FWZXpKUDBJUWNsbVdqemZYYnAxNGQ4?=
+ =?utf-8?B?OXhYem5PenRmZ3l1NEhaVk92TGxnREdWNFhtVExRaG9laHJyRzFpM3F2d243?=
+ =?utf-8?B?QTJNKzNPQVhsMlZBejhvT3JiQnFMMkduTFpjOWltTDR3dWpQOWFqRVJjOGhq?=
+ =?utf-8?B?SW1RVkhhYTV5UnM0MVN5cnA3a0VnUnRXNnRYWUY4dzlJMElOdGNnSFk5RW5V?=
+ =?utf-8?B?bXh5T0hURmRqSjFSWUQ0L3lkR3B0Ulh2V1FWY0hYRTJkSG9RUkMvcmIydEU1?=
+ =?utf-8?B?S2p5dlBXQ3NDeHZNSXlaaXRvZkFRc3BBUDlyS1hxbkg4TzAvcjlRTnBoOVJm?=
+ =?utf-8?B?c2VXbTNVMHdhRUwyanU3eUVHQkJONnlkd1ZhSlo5Zi9mcGpraTFaWGxOMGRK?=
+ =?utf-8?B?b2ZDM1JtaXpZbnl6SnBYZjhPSnRpQmNNdFVpOGE0Q1NJRXVXUmlnVTI2MWov?=
+ =?utf-8?B?bG5JeEc3MXYxaXhkQXI5bjkydVIwWGNBQXJFdDF1Mit4eTVwZUFZRGV1bmZF?=
+ =?utf-8?B?eGZETkJGQ0V4SWkzNDlXOFpuZ3FjQmZSVFovNy9UNFJGalplZHNXaGFuTzZw?=
+ =?utf-8?B?dHh4TGNzSGVtZjFRSjVScmxxblRIUzFobHFYTWNLNXo4RlNHZkR3cWJGaTZH?=
+ =?utf-8?B?TUI5Sk5QdkhNbEJ2UnhhQThoZVc2NlhIYjhhRHR5WnhGVzhWeURSZTJNcE1I?=
+ =?utf-8?B?NzJueFgvc0pwcWFhUE93NVRrbVNKckJPOTRhdDUwK0xUWXhsN2ZpR2ZNSEta?=
+ =?utf-8?B?YllSeHREUkx6Y2ZnL25hUzJZcEFVYkY3UzE5M1NHdlhreW5YV3I2bjQyYk1z?=
+ =?utf-8?B?d0JQQ3gxdDFWbGNlVFludm41Z1hFbTI2SGdxQ2E2c0JHbEtEUmZiUFJHcEh5?=
+ =?utf-8?B?VmkzRVFvREtRaVVNY1ZXV1hOanhhSjBiMkk0VDB1dkF0clNWaWIvTDJiTWlK?=
+ =?utf-8?B?Mi8rQnFsanFHaXRITm5FWW5pVWtBM21zenpGNlZYQ1o3bDArbU5LVHhPMWc4?=
+ =?utf-8?B?cThadVVHVHgvaUtWR0wxSTNUYXFuK1hJUWlnUzhEWFV4dGVKVGdtWTBhYnNo?=
+ =?utf-8?B?bWpwbUZRZ0NNM21vYWtHMUJlNk92MGM4MFBHcFhMM0VQZ3p1RzA2azduR2d3?=
+ =?utf-8?B?a253a1ZWL3hHdmh3cDNocG4ydFNxWHl6UEQrR0xMclRxa2VuSHNvQ3R4L0Fl?=
+ =?utf-8?B?aXBJNm5qdjkwOXR6ZjZMdHloSFk1bW5XS3o5cHJHTDdNSkUwMnpFRWJMMVMy?=
+ =?utf-8?B?RHl6UE1TSUdtbXNvRmdLaWdCSnZwSS9PdUtJR2dGL01iNGJjd0dHbGpwUG81?=
+ =?utf-8?B?RDB1TWh4TW13Rit5T0xNNFFpZUZMNXhVckEzWGtncWtGN2JSMTg1aDlZazFV?=
+ =?utf-8?B?OXppVU8yZGRLWkJkOHowaDV0T1JFcWlHdU51YnFWVzhqbEduczZDVnh0SUN2?=
+ =?utf-8?B?QjJ2ZHFORDJsOVNqc005RlhrTVRlVGlXM0RHWmhjbUI4ekNpcmlUSjFvSUxv?=
+ =?utf-8?B?RTVMQUpHbWRJV25GaCtxWFFYMnp2MnV3ZVJrTW1pcmlVbHdLdG03TzRpdnhz?=
+ =?utf-8?B?QXlrNnRqTnd2L2pIVllHZUh1a0FwMytEMWo4VXBJeEMvWXVwVWJwSzJnZ3Ra?=
+ =?utf-8?B?bmd1eUp3VXZ6N0NQNDNrUk93WXdQbUpsbW5JdFNhbHhEeEVSalpPbHBBK2ZO?=
+ =?utf-8?B?bk5yRlQ2RlV1S2loZGRoWEViRXNDR0Jlb1dkdkJBYjFzNWpRV2kyc3BPL2xv?=
+ =?utf-8?B?U3h4bDQ2dTh3VW0rZ0ZXckJEZUt1R29qQnd5bUhUeFdyd2hNY20vbEJiVy9p?=
+ =?utf-8?B?NTFPY25vRFgwc0ZTY0ZiemxEN3lBemRmUll3a1RaNTBjRWZqNVJSQT09?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1eb4176b-f7f7-40cb-d4a1-08da4f057015
+X-MS-Exchange-CrossTenant-Network-Message-Id: c94b8fd9-2eed-4770-bc2d-08da4f09053f
 X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4206.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2022 19:30:00.3380 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2022 19:55:39.0677 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: WDBz+n8Hl2fA9erKBiXNiTGgEYEbAh/oYwAN5kl6qp1CRmwn2HakyUcJ5aT0VvFQ0QxTQazOd+iCH69mK6y9+g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR12MB4696
+X-MS-Exchange-CrossTenant-UserPrincipalName: +9xk8pfY+eUYY0Dghv7ArkY2ztLkw1yO91uAXn+Xm7LcrPDEpIaP106EYYdx8UpadU+9oA6t24k/jr66rbGbCg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5039
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,8 +137,8 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: linux-s390@vger.kernel.org, Neo Jia <cjia@nvidia.com>, kvm@vger.kernel.org,
- Dheeraj Nigam <dnigam@nvidia.com>, intel-gvt-dev@lists.freedesktop.org,
- Tarun Gupta <targupta@nvidia.com>
+ Tarun Gupta <targupta@nvidia.com>, intel-gvt-dev@lists.freedesktop.org,
+ Dheeraj Nigam <dnigam@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
@@ -148,216 +147,88 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 On 6/14/2022 10:24 AM, Christoph Hellwig wrote:
 <snip>
 
-
->   /*
-> - * mdev_register_device : Register a device
-> + * mdev_register_parent: Register a device as parent for mdevs
-> + * @parent: parent structure registered
+    /*
+>    * Used in mdev_type_attribute sysfs functions to return the parent struct
+>    * device
+> @@ -85,19 +65,19 @@ static int mdev_device_remove_cb(struct device *dev, void *data)
+>    * @parent: parent structure registered
 >    * @dev: device structure representing parent device.
 >    * @mdev_driver: Device driver to bind to the newly created mdev
+> + * @types: Array of supported mdev types
+> + * @nr_types: Number of entries in @types
 >    *
-> - * Add device to list of registered parent devices.
 >    * Returns a negative value on error, otherwise 0.
 >    */
-> -int mdev_register_device(struct device *dev, struct mdev_driver *mdev_driver)
-> +int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
-> +		struct mdev_driver *mdev_driver)
+>   int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
+> -		struct mdev_driver *mdev_driver)
+> +		struct mdev_driver *mdev_driver, struct mdev_type **types,
+> +		unsigned int nr_types)
 >   {
-> -	int ret;
-> -	struct mdev_parent *parent;
 >   	char *env_string = "MDEV_STATE=registered";
 >   	char *envp[] = { env_string, NULL };
-> +	int ret;
->   
->   	/* check for mandatory ops */
->   	if (!mdev_driver->supported_type_groups)
->   		return -EINVAL;
->   
-> -	dev = get_device(dev);
-> -	if (!dev)
+>   	int ret;
+> -
+> -	/* check for mandatory ops */
+> -	if (!mdev_driver->supported_type_groups)
 > -		return -EINVAL;
-> -
-
-Hold the reference for device here once rather than helding multiple 
-times while adding sysfs for each mdev_types below. See more below
-
-> -	mutex_lock(&parent_list_lock);
-> -
-> -	/* Check for duplicate */
-> -	parent = __find_parent_device(dev);
-> -	if (parent) {
-> -		parent = NULL;
-> -		ret = -EEXIST;
-> -		goto add_dev_err;
-> -	}
-> -
-> -	parent = kzalloc(sizeof(*parent), GFP_KERNEL);
-> -	if (!parent) {
-> -		ret = -ENOMEM;
-> -		goto add_dev_err;
-> -	}
-> -
-> -	kref_init(&parent->ref);
-> +	memset(parent, 0, sizeof(*parent));
->   	init_rwsem(&parent->unreg_sem);
-> -
->   	parent->dev = dev;
->   	parent->mdev_driver = mdev_driver;
+> +	int i;
 >   
->   	if (!mdev_bus_compat_class) {
->   		mdev_bus_compat_class = class_compat_register("mdev_bus");
-> -		if (!mdev_bus_compat_class) {
-> -			ret = -ENOMEM;
-> -			goto add_dev_err;
-> -		}
-> +		if (!mdev_bus_compat_class)
-> +			return -ENOMEM;
+>   	memset(parent, 0, sizeof(*parent));
+>   	init_rwsem(&parent->unreg_sem);
+> @@ -110,9 +90,23 @@ int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
+>   			return -ENOMEM;
 >   	}
 >   
->   	ret = parent_create_sysfs_files(parent);
->   	if (ret)
-> -		goto add_dev_err;
-> +		return ret;
+> -	ret = parent_create_sysfs_files(parent);
+> -	if (ret)
+> +	parent->mdev_types_kset = kset_create_and_add("mdev_supported_types",
+> +					       NULL, &parent->dev->kobj);
+> +	if (!parent->mdev_types_kset)
+> +		return -ENOMEM;
+> +
+> +	for (i = 0; i < nr_types; i++) {
+> +		ret = mdev_type_add(parent, types[i]);
+> +		if (ret)
+> +			break;
+> +	}
+
+Above code should be in parent_create_sysfs_files(), all sysfs related 
+stuff should be placed in mdev_sysfs.c
+
+> +	parent->types = types;
+> +	parent->nr_types = i;
+> +
+> +	if (ret) {
+> +		mdev_unregister_parent(parent);
+>   		return ret;
+> +	}
 >   
 >   	ret = class_compat_create_link(mdev_bus_compat_class, dev, NULL);
 >   	if (ret)
->   		dev_warn(dev, "Failed to create compatibility class link\n");
->   
-> -	list_add(&parent->next, &parent_list);
-> -	mutex_unlock(&parent_list_lock);
-> -
->   	dev_info(dev, "MDEV: Registered\n");
->   	kobject_uevent_env(&dev->kobj, KOBJ_CHANGE, envp);
-> -
->   	return 0;
-> -
-> -add_dev_err:
-> -	mutex_unlock(&parent_list_lock);
-> -	if (parent)
-> -		mdev_put_parent(parent);
-> -	else
-> -		put_device(dev);
-> -	return ret;
->   }
-> -EXPORT_SYMBOL(mdev_register_device);
-> +EXPORT_SYMBOL(mdev_register_parent);
->   
->   /*
-> - * mdev_unregister_device : Unregister a parent device
-> - * @dev: device structure representing parent device.
-> - *
-> - * Remove device from list of registered parent devices. Give a chance to free
-> - * existing mediated devices for given device.
-> + * mdev_unregister_parent : Unregister a parent device
-> + * @parent: parent structure to unregister
->    */
-> -
-> -void mdev_unregister_device(struct device *dev)
-> +void mdev_unregister_parent(struct mdev_parent *parent)
+> @@ -132,13 +126,17 @@ void mdev_unregister_parent(struct mdev_parent *parent)
 >   {
-> -	struct mdev_parent *parent;
 >   	char *env_string = "MDEV_STATE=unregistered";
 >   	char *envp[] = { env_string, NULL };
+> +	int i;
 >   
-> -	mutex_lock(&parent_list_lock);
-> -	parent = __find_parent_device(dev);
-> -
-> -	if (!parent) {
-> -		mutex_unlock(&parent_list_lock);
-> -		return;
-> -	}
-> -	dev_info(dev, "MDEV: Unregistering\n");
-> -
-> -	list_del(&parent->next);
-> -	mutex_unlock(&parent_list_lock);
-> +	dev_info(parent->dev, "MDEV: Unregistering\n");
+>   	dev_info(parent->dev, "MDEV: Unregistering\n");
 >   
+> +	for (i = 0; i < parent->nr_types; i++)
+> +		mdev_type_remove(parent->types[i]);
+> +									
 >   	down_write(&parent->unreg_sem);
-> -
-> -	class_compat_remove_link(mdev_bus_compat_class, dev, NULL);
-> -
-> -	device_for_each_child(dev, NULL, mdev_device_remove_cb);
-> -
-> +	class_compat_remove_link(mdev_bus_compat_class, parent->dev, NULL);
-> +	device_for_each_child(parent->dev, NULL, mdev_device_remove_cb);
->   	parent_remove_sysfs_files(parent);
+>   	class_compat_remove_link(mdev_bus_compat_class, parent->dev, NULL);
+>   	device_for_each_child(parent->dev, NULL, mdev_device_remove_cb);
+> -	parent_remove_sysfs_files(parent);
+> +	kset_unregister(parent->mdev_types_kset);
 >   	up_write(&parent->unreg_sem);
->   
-> -	mdev_put_parent(parent);
-> -
-> -	/* We still have the caller's reference to use for the uevent */
-> -	kobject_uevent_env(&dev->kobj, KOBJ_CHANGE, envp);
-> +	kobject_uevent_env(&parent->dev->kobj, KOBJ_CHANGE, envp);
->   }
-> -EXPORT_SYMBOL(mdev_unregister_device);
-> +EXPORT_SYMBOL(mdev_unregister_parent);
->   
->   static void mdev_device_release(struct device *dev)
->   {
-> diff --git a/drivers/vfio/mdev/mdev_private.h b/drivers/vfio/mdev/mdev_private.h
-> index 7c9fc79f3d838..297f911fdc890 100644
-> --- a/drivers/vfio/mdev/mdev_private.h
-> +++ b/drivers/vfio/mdev/mdev_private.h
-> @@ -13,17 +13,6 @@
->   int  mdev_bus_register(void);
->   void mdev_bus_unregister(void);
->   
-> -struct mdev_parent {
-> -	struct device *dev;
-> -	struct mdev_driver *mdev_driver;
-> -	struct kref ref;
-> -	struct list_head next;
-> -	struct kset *mdev_types_kset;
-> -	struct list_head type_list;
-> -	/* Synchronize device creation/removal with parent unregistration */
-> -	struct rw_semaphore unreg_sem;
-> -};
-> -
->   struct mdev_type {
->   	struct kobject kobj;
->   	struct kobject *devices_kobj;
-> @@ -48,16 +37,4 @@ void mdev_remove_sysfs_files(struct mdev_device *mdev);
->   int mdev_device_create(struct mdev_type *kobj, const guid_t *uuid);
->   int  mdev_device_remove(struct mdev_device *dev);
->   
-> -void mdev_release_parent(struct kref *kref);
-> -
-> -static inline void mdev_get_parent(struct mdev_parent *parent)
-> -{
-> -	kref_get(&parent->ref);
-> -}
-> -
-> -static inline void mdev_put_parent(struct mdev_parent *parent)
-> -{
-> -	kref_put(&parent->ref, mdev_release_parent);
-> -}
-> -
->   #endif /* MDEV_PRIVATE_H */
-> diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
-> index 4bfbf49aaa66a..b71ffc5594870 100644
-> --- a/drivers/vfio/mdev/mdev_sysfs.c
-> +++ b/drivers/vfio/mdev/mdev_sysfs.c
-> @@ -81,7 +81,7 @@ static void mdev_type_release(struct kobject *kobj)
->   
->   	pr_debug("Releasing group %s\n", kobj->name);
->   	/* Pairs with the get in add_mdev_supported_type() */
-> -	mdev_put_parent(type->parent);
-> +	put_device(type->parent->dev);
->   	kfree(type);
->   }
->   
-> @@ -110,7 +110,7 @@ static struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
->   	type->kobj.kset = parent->mdev_types_kset;
->   	type->parent = parent;
->   	/* Pairs with the put in mdev_type_release() */
-> -	mdev_get_parent(parent);
-> +	get_device(parent->dev);
->   	type->type_group_id = type_group_id;
 >
 
-Here device reference is held and release multiple times for each 
-mdev_type. It should be held once from mdev_register_parent() and 
-released from mdev_unregister_parent().
+Same as above, parent_remove_sysfs_files() can be updated accordingly 
+instead of moving it here.
+
+Rest looks fine to me.
 
 Thanks,
 Kirti
+
