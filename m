@@ -2,50 +2,50 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id ACB2054D295
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jun 2022 22:31:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1655154D2C1
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Jun 2022 22:38:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 69954112DB9;
-	Wed, 15 Jun 2022 20:31:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BAA83112EFC;
+	Wed, 15 Jun 2022 20:38:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2042.outbound.protection.outlook.com [40.107.223.42])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A9A55112DBB
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2082.outbound.protection.outlook.com [40.107.220.82])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D9E62112EF1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Jun 2022 20:31:42 +0000 (UTC)
+ Wed, 15 Jun 2022 20:38:06 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IWlra7hkmxj/rWvcjJPuzijRSh0ik1uWLFBLLEFKqmzG/FPdyhs5lMV7uLfPKCk1d1TcF4AezaUQMedlOq9yLhteslOqQhWwVwztxMWcB+sujw9XzxbDTfaOFm1nsoavvRGa8oSn1KZG2BsP6seWuNYczDxI/ZlQ6oSGWWGfdt1fKWv4TuDIUAFDcrRjkMIlKHGH8VG63tjPveyP9ySxrSF8OVgfM8VEI2UG+z4ptkNaZVC2uhmLtdZdhywkgwR0NJgjJF9CnSTYXB71dNbYfm8K6aJAABtqgh7pFkZRwE2jQY21HjzlxcZL4XYIKuebMldBJes/4wGsdYkTPzz8Ug==
+ b=aXQOy+EGOBeV/afIYq0Eca4L4LufbvCyTgptkXGCuCYZux71+Kv1GSTIR+pWz2xw0kPYuRhRviajBqQgqF9owAqOmcP7d4krqSW5/sVornwcRq1JhwjVkFzDkmzmb0+Ds6VWADhqQb2IXZlTxorVGdsPMX8Txb9iMKVo/6kgKUmqx0YmgC/O+0HUavAAO1/4WEEbBI9/Jb2lhmqO5JUoQrVWhGpfqGxtcd6FHHlT2RzBGg/I0FjvwRPtcJ3sWTMr5BCms/m4MQnH9TOAkrC2lO6PHo5puZZ6Tg4vmd/IbkaudvX+oNalOGzKne5p30/XyU+O73WxpumOgNAp50aR/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NhatQNvfxf7iLHPCCGVJDAzu9iGLS7PiZi6bq/lxBXg=;
- b=AeE8AjzswhxHI2ptT5NJBm1KOOfMddzZQ/wjEjCZ4ck6OQuE4LtjGq4FZtUygjU0BrxQ+/af1z3NpkWq1GQcO9PElSjTUO6w+/Shcz+elRw4aKJBJIxt1sOO8uddf7sgM7q5ieye92yd7EjYfayTtvl/5rbPabctjArZ4918RFan+/8zfVV0m8UurnyWJvMPsRlpaEecg+ZsVhEIwEZ9dAcvZRPB+i+LvyvlL+qbH/mD1iVbXZa13QjBHK2+1b6Dk/Z58aujp6+BbUHa/5v0GEIpeT4D4p818eIBHyDea7T/c6UitDmjXVH5BOgciedfKrS/gKkjiEGpEGArPgYHQA==
+ bh=mcqS4/TeUseE6sPfFpoWH8zs5lrAIW9DyBEREwM4EOE=;
+ b=IXPTOEZsSHPvYjCAckhO2lyxsHEllyOmeIfNoWgWl+J7QzU7fixgRYymFqzcfoTmOxDK3V2RCQoVIZRR+5CoWtb4T+noM1LKG7DfrYDk2dflLXHgsDJKf0RgTvGKPiQFBHkRkIdXLZ0eeNds1JZ8mjY7bloCOdzVX+ZbzST32A3kC+x0QiuQbDdOe5z9mOuPc6vLo+44/ya/iz8R8f8y6l/+oTj255+QEA8lu6tqvZ+yg2xeR79IcqXkrf1Rhtx970g0t/M8Tae5Tgo+tyFnqc2xzoWpGnDv39KzRf+YIx91+OAjQdxCDDYmXxWQy8ulyJGqYOGhvJvcyD6FlO4xOA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NhatQNvfxf7iLHPCCGVJDAzu9iGLS7PiZi6bq/lxBXg=;
- b=QFQdp+YIUaBZaC2pUtm0MfuO9qAE/RppP4o6fZbAgzuBBY7Hy650n6T6yl+DrbtVIhb0xNJe6oADRDd6Ts9zC1ss/bBzqIzKFWHDTiQ3po4HuFYoqh8tBu6Evnjx3wAciRqCMw5DJssyqt5uaRDfj45qHUbjb5e+J9UUuOEXOdWBRRMcmmGQjRgbTtlljqJBmcNAkB48078DCEu78YjXsEoZwQz97XHuD0HqYXttIXxg4r3eRFflGSphbsxhR6Boi1gB4N3hzfK/Ytj9E11EeG+NX78CSXasM0rNCV5BOOREw+nvwTY3L//XZsytgiDG5sfqpdqFD+HIBgTuFLS18w==
+ bh=mcqS4/TeUseE6sPfFpoWH8zs5lrAIW9DyBEREwM4EOE=;
+ b=lluNuZGHGGzxGX7jEDtsF9nZNbr3OJmZ8PtEucP4eHL+M5uXFY5x6VGPWbsUwb/fMrq+iPgesPrqf2I1ozpOSwXlFJbuuiF+BbMIEqQyysqJaT5A/BuDlx63AWfARQ7XWjcpHDEeGdZKRH/5bzhjS4ETbTc/hlrwujQKqDAyIcffS/0PHAeCyCoBfgKa12tQA+8qTZ11OKA6MZ+jH7Buv42MBOjPZZ1u2N4rcs0sMiWjk9YngA6Jc+2pM+feOk5Tjmat5KM5x/an0sd8MpE4UT9PA1Fel2cSWxkMswYNWKC/Wx6u+PexXSI6ZrNav6NUi6rTx89OtuwAzjlEZPtv3g==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from MN2PR12MB4206.namprd12.prod.outlook.com (2603:10b6:208:1d5::18)
- by SN6PR12MB2640.namprd12.prod.outlook.com (2603:10b6:805:6c::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12; Wed, 15 Jun
- 2022 20:31:39 +0000
+ by DM6PR12MB2841.namprd12.prod.outlook.com (2603:10b6:5:49::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.14; Wed, 15 Jun
+ 2022 20:38:04 +0000
 Received: from MN2PR12MB4206.namprd12.prod.outlook.com
  ([fe80::d5df:ac97:8e92:fc14]) by MN2PR12MB4206.namprd12.prod.outlook.com
  ([fe80::d5df:ac97:8e92:fc14%7]) with mapi id 15.20.5332.022; Wed, 15 Jun 2022
- 20:31:39 +0000
-Message-ID: <adab68ab-1f61-f975-8dee-f9f95012ecb5@nvidia.com>
-Date: Thu, 16 Jun 2022 02:01:23 +0530
+ 20:38:04 +0000
+Message-ID: <da987b5b-c9a0-a142-eb12-1537ea21e209@nvidia.com>
+Date: Thu, 16 Jun 2022 02:07:51 +0530
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH 10/13] vfio/mdev: consolidate all the name sysfs into the
- core code
+Subject: Re: [PATCH 11/13] vfio/mdev: consolidate all the available_instance
+ sysfs into the core code
 Content-Language: en-US
 To: Christoph Hellwig <hch@lst.de>, Tony Krowiak <akrowiak@linux.ibm.com>,
  Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
@@ -53,79 +53,78 @@ To: Christoph Hellwig <hch@lst.de>, Tony Krowiak <akrowiak@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
 References: <20220614045428.278494-1-hch@lst.de>
- <20220614045428.278494-11-hch@lst.de>
+ <20220614045428.278494-12-hch@lst.de>
 X-Nvconfidentiality: public
 From: Kirti Wankhede <kwankhede@nvidia.com>
-In-Reply-To: <20220614045428.278494-11-hch@lst.de>
+In-Reply-To: <20220614045428.278494-12-hch@lst.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MA1PR0101CA0020.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:21::30) To MN2PR12MB4206.namprd12.prod.outlook.com
+X-ClientProxiedBy: MAXPR0101CA0044.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a00:d::30) To MN2PR12MB4206.namprd12.prod.outlook.com
  (2603:10b6:208:1d5::18)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 6b37ede4-6a04-4e9a-68e5-08da4f0e0b37
-X-MS-TrafficTypeDiagnostic: SN6PR12MB2640:EE_
-X-Microsoft-Antispam-PRVS: <SN6PR12MB264016E29FA79FE79FEE143ADCAD9@SN6PR12MB2640.namprd12.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: a53b64d6-32ce-4c62-f473-08da4f0ef290
+X-MS-TrafficTypeDiagnostic: DM6PR12MB2841:EE_
+X-Microsoft-Antispam-PRVS: <DM6PR12MB28414F7258DE2CDA76C57FFDDCAD9@DM6PR12MB2841.namprd12.prod.outlook.com>
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: g88yLSd11NU9f/EXlW3ZZCyPn9yncy82Fy4ZqdYTLtkXKX5kaX8vaRjVyUQBqm5JpRxhgsGK7DVcwCsVdKJ5EXUxLarLfQTSN3bQCgfNhoSC3NVnxx4vUEhiF9Qe3ItvFNEmIR/6gFMrhv/IzqOJeVohu3hcdkeGFfMC/AvPyPyuYRXawNgf+7WHbdCVmNMksBvNX969z4XBkoPP20lxfAZPRqfz0bhmW65BnmiyI8uKMFIuDt56HnawlQE4to01yslrf+Jw/cJHmg4CuVjeu+LU9C/8gJY7CNas59iJoJhGMeA/agNMnfDzJEqCx7V7AF9QG2ZcKwDNkvzLqNWbwdjZwsoDppUCVR3QbrLjWPK3KS9vhgbM1vxyQnpyzhx8frxzLBjOZMsFMz0oZF/g0d7VJuUyRUClGiqRdGDR1h9mahgSxdmNN9J7sYs2uxSMXqHVOn6tQnMd7uTg7VXrc1T15gE/ZCnJu5voeo9s3VWLOjn5KKpG11thYEmzuVjcS4kmHJ9axn+JRD9qDJ63HEXwC1OzscgZAavHueZILA02CY2/VRq37cs9iEj3GsSbVfjhNJlJamQG0vvXc9LJhFLcX05R7KxplhsGGiFEOrglSeiL79viWXvjg8O2OUsglzLAmHJg0ksDJsYek8G8Xgxqmgcu0rbDdElj6KK1+VOH/vVCiyqTx7suzHWNdkQtqQu+l0td18uwCy+443gZoS72Wah/BBs/s+BsCbj+XoM=
+X-Microsoft-Antispam-Message-Info: Ne4Obswn9vOLdUriWSXoF2ywsEtdLRbOw7psXQDQYBncHWuOfxtDeLAGIQEvg31GtYduWdf9IktBlqrp0EfrCgJG+UnBMic71PB6oVl6VesPHYQZsDUlps+ivl7j3aF+N2n4NYczLkX5taCoaEzp1Mw8a74mIDEi6QjuDQJ1mofW8NF12qYxSBZbECCDfUEKHmouxIPrbVoBRBBOP1R/mUuPor0NJquPlEZRlhQhSZAtVUpREis2X6RJ94M6X/OqALgr+hWkrttNt8c17bdNWXomLPtGKuz7AXSh34Z3gIfUx18aWLXcw0ym2I+psMGVhfgMz2ob6LMKj5x8k++tCBZBn+DKxweY8RQr7mD3za6il+aCSkgOMcdkXjA8G/sUzptrct9wLF4kfT3E31x/t1zeRW5RJSUE1vfOUBR3sUA7Vfe+mrG6YT8xLhP3MNOQSmQ8EXOTcM8dKKcp8vgQs3gPLsUxLroJwKn+GkIru1hksigkWRy5AiSwgQV9+VufnUoLyfXTZ5jqQ4dQXAAfrbjmLw9lhr9CRdWBTLZFGcMKsqTbARQ3xSWlu5OBlFvlbqW4Rg2NvpyO0j02Dj3V2QWyr+X5J4n09pYXax0yvoouA/JtTR+/TrkOl3hNi/yK0m6CjGWdHG6pHdDgGrNHRAfLgcHVKeSSKnWmecKhMXrv/r1L1OvLmXBoOHbikWEwp7NcaHvDrnV+yL7F+S1XHh/cj3WjOSa4+F/PYr/oIWE=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MN2PR12MB4206.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(366004)(30864003)(26005)(86362001)(2616005)(7416002)(66556008)(83380400001)(107886003)(31686004)(186003)(6486002)(6512007)(8676002)(2906002)(6666004)(6506007)(110136005)(54906003)(316002)(66476007)(53546011)(31696002)(4326008)(508600001)(38100700002)(36756003)(55236004)(8936002)(5660300002)(66946007)(45980500001)(43740500002);
+ SFS:(13230016)(4636009)(366004)(316002)(55236004)(6486002)(508600001)(53546011)(110136005)(36756003)(6512007)(2616005)(26005)(66476007)(5660300002)(31696002)(54906003)(8936002)(4326008)(2906002)(66556008)(8676002)(7416002)(31686004)(107886003)(66946007)(186003)(558084003)(6666004)(6506007)(38100700002)(86362001)(43740500002)(45980500001);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UlBSUmtUcWxmcHlKNTVwZ000K3NhbnlheTV5ZUhIZk93aTgydkx2NVA5L3BH?=
- =?utf-8?B?K2dQbGZnY1h0aEdETUMzYWNhVTJhUUJoeTlkR1lCUXVTSjB4QktSYk91RjZi?=
- =?utf-8?B?V3hlVngvZlVhZlVSSUxHelZyU3NkbTlReUtKS3RxTkhkNEYzakExaVlYUE1w?=
- =?utf-8?B?WXZZNDZhSnlCMDcyQ2N6T2kzSlZaYlNEUnpZZ09rSUV1eEFHNXZLcXh0Vmhy?=
- =?utf-8?B?eFd2bXRpaWUyYWR0REIrZHdoVjB6YU1xSWVsdzVEbWE2TGZmaisyRHFGY3cv?=
- =?utf-8?B?VGg4Uml2MmJuVGo1cjRuYUVydUp5dTdYeCthYzhBdi81Tmx3VVhQRWV0czFk?=
- =?utf-8?B?Q0srL2EwYllDNk0rMVdrKzhpSGpqd3FZa1VYT0F2V2JmMVRrL3gzT1N4YVg3?=
- =?utf-8?B?VGlQUnhPREJqNXJ6UzRNVUVWYjdER3IrUll1dW9UVWFVbUUwc1JTcjNIVlB2?=
- =?utf-8?B?cHFZNm5jZ3dFdGZCSm9GTXBPYnJOZXQwUE93Sk96N243RytuU0ZLM1E0SUdh?=
- =?utf-8?B?d24xNXRNYStTck9ETTVSNnJrbEt1V2s4WTRZSlU1a3ZWVG9PbWx6c2pWVzhn?=
- =?utf-8?B?YVFkQUZLTnRSSWREQ1plcjhLYk5RZzRuVEM0VFI3T1JXS1hSMFdYdlFQenNH?=
- =?utf-8?B?bXNLdytEaFN5VCt1aGRYQnFBN2RUb3BzNFkzNjc1dGt0amM3ejhPRmJkbUZ4?=
- =?utf-8?B?eHI1Zm5TUTEyWk9BSWtBd1BBRVFKbENmbWZ3RE1WSk5OcFFQL2tPdEE4bGZN?=
- =?utf-8?B?UW1OYURoR3J3clVTVXNaUWZUbTF5WExWVFBwYXBmRlBKVW9Wc2VOWURMN1pN?=
- =?utf-8?B?blBmcVl2bTl6UGMwZEtWbjZzRmJNeG11ejlPY1JwdnlQVVlYWkp1UEM2MUFX?=
- =?utf-8?B?N1RlRjV6cW1hTTlDWFQ4UWU3WFhuaFhHeWVEN1VnRTM0dXNLSlNLL0RVOVZl?=
- =?utf-8?B?UHZQWkdyTVZkNm1UNlBLMkpvOXJDcWFYSGdlOVdvek5odVNZdzFlbDNid1Vj?=
- =?utf-8?B?NHpmVnFrdnllT2ZaU1FpLzg4NUxZUm5XZ05PV1dQZmdkcHEwN2kwSHdHOVpH?=
- =?utf-8?B?M0lWeVdlcm1MdFlHTTk0cy9uZm1HcFpUT01UUXo5SGZ5SDJrR0svakZTRjA4?=
- =?utf-8?B?SmlUNWVZRlJTb2h3b1hOWkN0SmVXbElDT2YzYkh6eXoxWlVtUXd0Y2JqaW5G?=
- =?utf-8?B?T3pFS2NqNDdyelU2MWxlQUJ3WUxMNGRESm9McDV1ZkFiOHU4dVdBLzJWV2RX?=
- =?utf-8?B?Vzk1ZmhiR2RRMkxFcXVKVGEyWkRsWFJqVEtkYTlvN01ObzNMck9sQTlUQVZh?=
- =?utf-8?B?eEY3T1J5THNKUmpTMnlLL0VlTkJsUUxPZ3RuNHZ1UzFEVU1URVF3UG9UM1JV?=
- =?utf-8?B?ZGMxbGkzWVFDY3YxdFhoMXFUa2dNSnY2UDJkRFVUdEczRlRiT1NNTVRwazFJ?=
- =?utf-8?B?bDNGYUZzdVJyTDhaV1gxbWxVZ3p1ZTkxVXgwYkdpTUQvSlVpSUtFeFFrcGFX?=
- =?utf-8?B?QnlWZDV6RGVjQmdSVkN4cFl3NEJ2eEpiRzlXVm9VaVVjVXN2UnREZXBGdWti?=
- =?utf-8?B?WWVTQmZDL1Vvb0w1c2JsMERGVzkvUUxVYWRWbG1FZk5SUjZmK2JPdjd2T1pv?=
- =?utf-8?B?SFBMenpjWFBhWnN5cHBkOTlDNjh0cm1GM1RtZFN6VW8wV1dmeGF2eDBLbUtS?=
- =?utf-8?B?UzlmRyt5WHJnSXc2WkZ0TldVZnl0NElWQVB6S3M1RnhHSHRNSkJ1aW5pNXRF?=
- =?utf-8?B?MnZUTk1GRHUvOHFGSWIwalR1UU1LTWtLUTYybW91OW0rcGNOVkJrSStEN2NW?=
- =?utf-8?B?UjFtOGNkMVRGR2p0amdOb3E2ZkNoeDNOTFJPV2p3M2hWY2dqUVA2ZEZreDdO?=
- =?utf-8?B?SW41L0lBWm9QT3NCOXgwdGhXS1NLbnltd21QSFRDanBrelJrOW5ZY0liV2Fm?=
- =?utf-8?B?UjFGSCt0UGdkZWcvRTl4UUpoaksxVCsycE5XblNsSVJNTnVWUFc1cUxGOGdP?=
- =?utf-8?B?R05qQkxiYmxkS0U2Ynk3bmlHWS83blJCY0hXaUxmcWFLL2ZPRnZVVkFnV0xa?=
- =?utf-8?B?WGNPOExvVHBDd1RVN1NhL2hHLytNV1JiS1Y0a2pET1FIU0lrdFozTERReGta?=
- =?utf-8?B?SjZTSGtPUkRpWHZUcVZmZFlielhmSmFVZERGQ0JyMWUrR1pKSGZxYVphZVJN?=
- =?utf-8?B?REo3WGthRnhZZkF6VEZ0R00vMm1KUFVVb3c2a3lyOXEvVGtTaERoRTdqdVhp?=
- =?utf-8?B?U2lwY2RjVmF4dlAvS25zZ3k2SzJlSTlDM0doRytOdTYyemZTRHBnK1dSeDRx?=
- =?utf-8?B?WWpBTlVXWmtneU1IempRbEJ0K0pBa1lwbTQzZzNVWndIOTMyMDBiS2IrNEQy?=
- =?utf-8?Q?g39mEBjgyFjcAYiU=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dllJOTlNUWZEQWVxTERSK21nQlZEQUlrbFVCaFpZSzZTOW1qaXVTMDNGVlFj?=
+ =?utf-8?B?WDN4eGJISWtxREdoYTR5NWhGQVdibVpaRDhzZnQxVGZDeldiOU5zNllscXhp?=
+ =?utf-8?B?RkVhbWdvR1ZrTEJWSWUzbGVISzZCWDB0WWlySjhpdERBL3BRWE5XQnNMaFJy?=
+ =?utf-8?B?czdlM0I0eTIxMEtSVFNXaGFnWFB5OERqRmNpMzhWVzNhQy9PNElyb0VRMGNo?=
+ =?utf-8?B?WlpPQWRUeUI4WjJVczl1Q3lXSjcwWWNQZmZEWm5jUWR5U21UOEdPQXdJUW12?=
+ =?utf-8?B?NjRTTVprQ1A0T0prdkZQdXBJUURRaC9XYzMwdklGc01qVXNsK1d5MlEwQmJI?=
+ =?utf-8?B?RTQzYzk5R09DaGlaNWdlY1dYRTA0OHREVWpJSDNHZjhPYXhZT29TWGsvSUtY?=
+ =?utf-8?B?UXJMUmFvKytHU1hZelFKczlkM2dGRlhJRC9VZTdyb0hST2I3bDFPOW9UaGp3?=
+ =?utf-8?B?WnhEVzI1SFc0MDlzKzhEdmdWV2gvTDZvSk1FODRlMi9CMmh5VzRBMEdkSmd1?=
+ =?utf-8?B?OWlieXAyL24zOUNtZW4ySFJFWktFOW9qYVlnQnc1dXFjcEFEN2hON3lXYUFs?=
+ =?utf-8?B?aktLazU1UjFTU0tKT1FWUElFR2xyRzRRY2VXWjFJaFJRUEYrTlF0OGpoaUVh?=
+ =?utf-8?B?SjdHTGlCMkpUTVliYnRjYjdUVE05a2tVdXNMRFdjcElKRTFnTjlUdDQ1ZzBw?=
+ =?utf-8?B?Q0pMbS9RdmtCVktlSkxyS2FqOTdCN2ZHZGZOMzZvR3E2ZXZTOHpFVmFYbisy?=
+ =?utf-8?B?S0t3OVY5ZFFnTG1NeWkrMnEwWDhaZEsweFhwYUgvZ05hc1Y3RmN0RzU3VjI4?=
+ =?utf-8?B?cXNrMjhuSnlVc3lHWFV1cHJTK2oycFhwb1c2czhPS1BrOExWMmlaY3JIZklP?=
+ =?utf-8?B?bFVVamVMNzlQajkvZXhzT2ZvMG4zYWI1SkFoYjk5RnJ6UzFBTHJzV3FwN0I2?=
+ =?utf-8?B?THl0WXFLSTZLSzJTMUZaci9wNEN6NDFLSFVVUzluNkpTVTJZWlYzRDRUcXNZ?=
+ =?utf-8?B?NDNvYU9hSUdkOGZkMUVsd0ZmTUU2blc2ZExJM3dDQUhGbzZSZnZVVXpNcnVj?=
+ =?utf-8?B?TUoycXlZallLZ25QU1FwM0V6d0dZRmJrZGhBUnFHNmY5N2NJbE5uUzBpQ0VD?=
+ =?utf-8?B?QVFHLy80OWlSYkZlcUw3NGFRa0xSMXhhNDZWaHJONmE5bG1vdXcwSlNwL1Iz?=
+ =?utf-8?B?aTRnNEdCTStKWVRwRWZveVNzbFdHS3JvS3BDcWFNWk9FbkxLR0c5M3NRU0NM?=
+ =?utf-8?B?c0U4UGFzWUdhMzcvWmZqdnpkTkQwY2UyM2dOcDdpY0hVVHJ0OTlhSnlZRy9G?=
+ =?utf-8?B?WWpYZ3MxbXNPNEZRMyttUDZhN0pJOFBrZjRrN0thL0tvNlJWeUZ5dDVGZExE?=
+ =?utf-8?B?blRMdkpGWXFIWkorekw1K0RPMlFYbkhLd2k2S09oOTdpaW5mYlY1M0ZjT2lK?=
+ =?utf-8?B?M2hRYXEvZVk1VDJjNE5UczAyczZHRUd5U2psTnl0cjdKNTl3ck5EdFErYnJn?=
+ =?utf-8?B?U2Uxc3lnYVZCVlR4M1ExeVBzRG5xL3EvWWFkMEtYOE9FdGw1cWx1WjFqYlBT?=
+ =?utf-8?B?MFU5bnpEaTNrVy91S0NYaSt2UFFFN2ZQdG12eFB4WEJIanNyZXhFcjBoNkdl?=
+ =?utf-8?B?QlVCUEdyTnR1ckZhY2pCcFVycHcwc3dSN0NEb3FDS2pnTVNKY3pOTDhoMW1p?=
+ =?utf-8?B?Z21USERZS1ZXZGIzelVhR1prMUF5S1ZoOStHWW53emtRamNwd1AveFAwUk92?=
+ =?utf-8?B?WHNraWU5akxFL1h2QnRVNk40RnZYaFNBYzZpOFFqUDI2S2dsekhKd05mQUQy?=
+ =?utf-8?B?aWlZWjJxOTVBbHBBV2UyOEpHMlF0dWtDaXlSTU9wWnlZT2dmWVRucG5HMVUx?=
+ =?utf-8?B?ZTZ0ajhTdHJRb0VNVjhNaUpYTFM2Z3JLTmIzc3oxZjhtL2JPRlh0YXBzRm05?=
+ =?utf-8?B?THRSTUZpWUdTMWwwL0JqeWtKcjdvWVlBSktNT1Ird0FrUC9ONStlOXNHblJ6?=
+ =?utf-8?B?dHovK1dReG9Bd1BkZnp2cEExeHFlQi91Z3NlYUdueWt4N002SStJWllLZ2JF?=
+ =?utf-8?B?cjJhVHBYRE4zTUV4U2tMVjhMRk5GSWJ2ZzZaandvVDU0c2R5SnlwREh0ekpL?=
+ =?utf-8?B?ejNkcjlkTXZLUDJLNkJYa3dmcHZ3QmQzeGU3RW92NnRRakRROEdrVTlWTzM0?=
+ =?utf-8?B?QUZVK3IxaXdUalRHb2VlUHppNmVmNlZKSE1GcW43WWRTSG5KdGFrTnM4QjJP?=
+ =?utf-8?B?RFJicW9ObzBNTE1jdkFxb0lndGFPSVFtTUVhR29ZNmFIUUQrSUVjeEEzN1ZE?=
+ =?utf-8?B?WU1YMnNLNDFNZnJ1Zk9tWDlsaHJiWUdYVHFSVkVoNlRWVGZWdWNZdz09?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6b37ede4-6a04-4e9a-68e5-08da4f0e0b37
+X-MS-Exchange-CrossTenant-Network-Message-Id: a53b64d6-32ce-4c62-f473-08da4f0ef290
 X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4206.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2022 20:31:39.2360 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2022 20:38:04.7505 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZiaTIBaprWkAEJWKEm82WydtUn3joos/GmINIXk5u+UB2cqD3EOh+tjEES2MbQ4eWlXC6dAY764XIuTBuuzHaA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR12MB2640
+X-MS-Exchange-CrossTenant-UserPrincipalName: OqF/rND3TQ1TpgTCM6QDPHQaVukBn/HXDUI1MXI4GCZT/RJTz8S4EekEZH5ZBR/HdGpyUXv/stDpQnCy1yYNCQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB2841
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,343 +146,10 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
 On 6/14/2022 10:24 AM, Christoph Hellwig wrote:
-> Every driver just emits a static string, simply add a field to the
-> mdev_type for the driver to fill out or fall back to the sysfs name and
-> provide a standard sysfs show function.
+> Every driver just print a number, simply add a method to the mdev_driver
+> to return it and provide a standard sysfs show function.
 > 
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 
 Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
 
-> ---
->   .../driver-api/vfio-mediated-device.rst       |  2 +-
->   drivers/gpu/drm/i915/gvt/kvmgt.c              |  8 -------
->   drivers/s390/cio/vfio_ccw_ops.c               |  9 +-------
->   drivers/s390/crypto/vfio_ap_ops.c             |  9 --------
->   drivers/vfio/mdev/mdev_sysfs.c                | 11 ++++++++++
->   include/linux/mdev.h                          |  1 +
->   samples/vfio-mdev/mbochs.c                    | 20 ++++--------------
->   samples/vfio-mdev/mdpy.c                      | 21 +++++--------------
->   samples/vfio-mdev/mtty.c                      | 18 ++++------------
->   9 files changed, 27 insertions(+), 72 deletions(-)
-> 
-> diff --git a/Documentation/driver-api/vfio-mediated-device.rst b/Documentation/driver-api/vfio-mediated-device.rst
-> index e9913bfb4393b..87d207744db79 100644
-> --- a/Documentation/driver-api/vfio-mediated-device.rst
-> +++ b/Documentation/driver-api/vfio-mediated-device.rst
-> @@ -219,7 +219,7 @@ Directories and files under the sysfs for Each Physical Device
->   
->   * name
->   
-> -  This attribute should show human readable name. This is optional attribute.
-> +  This attribute shows a human readable name.
->   
->   * description
->   
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> index 44a418d897377..191e64ef70acf 100644
-> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -138,20 +138,12 @@ static ssize_t description_show(struct mdev_type *mtype,
->   		       type->weight);
->   }
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	return sprintf(buf, "%s\n", mtype->sysfs_name);
-> -}
-> -
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   static MDEV_TYPE_ATTR_RO(description);
-> -static MDEV_TYPE_ATTR_RO(name);
->   
->   static const struct attribute *gvt_type_attrs[] = {
->   	&mdev_type_attr_available_instances.attr,
->   	&mdev_type_attr_description.attr,
-> -	&mdev_type_attr_name.attr,
->   	NULL,
->   };
->   
-> diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-> index 730d87a96a305..35389f4b67dc5 100644
-> --- a/drivers/s390/cio/vfio_ccw_ops.c
-> +++ b/drivers/s390/cio/vfio_ccw_ops.c
-> @@ -70,13 +70,6 @@ static int vfio_ccw_mdev_notifier(struct notifier_block *nb,
->   	return NOTIFY_DONE;
->   }
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	return sprintf(buf, "I/O subchannel (Non-QDIO)\n");
-> -}
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t available_instances_show(struct mdev_type *mtype,
->   					struct mdev_type_attribute *attr,
->   					char *buf)
-> @@ -88,7 +81,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
->   };
-> @@ -642,6 +634,7 @@ struct mdev_driver vfio_ccw_mdev_driver = {
->   int vfio_ccw_mdev_reg(struct subchannel *sch)
->   {
->   	strcat(sch->mdev_type.sysfs_name, "io");
-> +	strcat(sch->mdev_type.pretty_name, "I/O subchannel (Non-QDIO)");
->   	sch->mdev_types[0] = &sch->mdev_type;
->   	return mdev_register_parent(&sch->parent, &sch->dev,
->   				    &vfio_ccw_mdev_driver, sch->mdev_types,
-> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-> index da21fd60877fb..d6b2e819a615e 100644
-> --- a/drivers/s390/crypto/vfio_ap_ops.c
-> +++ b/drivers/s390/crypto/vfio_ap_ops.c
-> @@ -511,14 +511,6 @@ static void vfio_ap_mdev_remove(struct mdev_device *mdev)
->   	atomic_inc(&matrix_dev->available_instances);
->   }
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	return sprintf(buf, "%s\n", VFIO_AP_MDEV_NAME_HWVIRT);
-> -}
-> -
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t available_instances_show(struct mdev_type *mtype,
->   					struct mdev_type_attribute *attr,
->   					char *buf)
-> @@ -530,7 +522,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *vfio_ap_mdev_type_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
->   };
-> diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
-> index 20763f1aa9f5a..8384e2992c706 100644
-> --- a/drivers/vfio/mdev/mdev_sysfs.c
-> +++ b/drivers/vfio/mdev/mdev_sysfs.c
-> @@ -81,9 +81,20 @@ static ssize_t device_api_show(struct mdev_type *mtype,
->   }
->   static MDEV_TYPE_ATTR_RO(device_api);
->   
-> +static ssize_t name_show(struct mdev_type *mtype,
-> +			 struct mdev_type_attribute *attr, char *buf)
-> +{
-> +	if (!mtype->pretty_name[0])
-> +		return sprintf(buf, "%s\n", mtype->sysfs_name);
-> +	return sprintf(buf, "%s\n", mtype->pretty_name);
-> +}
-> +
-> +static MDEV_TYPE_ATTR_RO(name);
-> +
->   static struct attribute *mdev_types_core_attrs[] = {
->   	&mdev_type_attr_create.attr,
->   	&mdev_type_attr_device_api.attr,
-> +	&mdev_type_attr_name.attr,
->   	NULL,
->   };
->   
-> diff --git a/include/linux/mdev.h b/include/linux/mdev.h
-> index 81e11e18b3e41..64ca2ba806ed3 100644
-> --- a/include/linux/mdev.h
-> +++ b/include/linux/mdev.h
-> @@ -26,6 +26,7 @@ struct mdev_device {
->   struct mdev_type {
->   	/* set by the driver before calling mdev_register parent: */
->   	char sysfs_name[32];
-> +	char pretty_name[32]; /* optional */
->   
->   	/* set by the core, can be used drivers */
->   	struct mdev_parent *parent;
-> diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-> index 199846f01de92..c8271168a96ad 100644
-> --- a/samples/vfio-mdev/mbochs.c
-> +++ b/samples/vfio-mdev/mbochs.c
-> @@ -101,26 +101,25 @@ MODULE_PARM_DESC(mem, "megabytes available to " MBOCHS_NAME " devices");
->   
->   static struct mbochs_type {
->   	struct mdev_type type;
-> -	const char *name;
->   	u32 mbytes;
->   	u32 max_x;
->   	u32 max_y;
->   } mbochs_types[] = {
->   	{
->   		.type.sysfs_name	= MBOCHS_TYPE_1,
-> -		.name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_1,
-> +		.type.pretty_name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_1,
->   		.mbytes = 4,
->   		.max_x  = 800,
->   		.max_y  = 600,
->   	}, {
->   		.type.sysfs_name	= MBOCHS_TYPE_2,
-> -		.name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_2,
-> +		.type.pretty_name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_2,
->   		.mbytes = 16,
->   		.max_x  = 1920,
->   		.max_y  = 1440,
->   	}, {
->   		.type.sysfs_name	= MBOCHS_TYPE_3,
-> -		.name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_3,
-> +		.type.pretty_name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_3,
->   		.mbytes = 64,
->   		.max_x  = 0,
->   		.max_y  = 0,
-> @@ -547,7 +546,7 @@ static int mbochs_probe(struct mdev_device *mdev)
->   		goto err_mem;
->   
->   	dev_info(dev, "%s: %s, %d MB, %ld pages\n", __func__,
-> -		 type->name, type->mbytes, mdev_state->pagecount);
-> +		 type->type.pretty_name, type->mbytes, mdev_state->pagecount);
->   
->   	mutex_init(&mdev_state->ops_lock);
->   	mdev_state->mdev = mdev;
-> @@ -1334,16 +1333,6 @@ static const struct attribute_group *mdev_dev_groups[] = {
->   	NULL,
->   };
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	struct mbochs_type *type =
-> -		container_of(mtype, struct mbochs_type, type);
-> -
-> -	return sprintf(buf, "%s\n", type->name);
-> -}
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t description_show(struct mdev_type *mtype,
->   				struct mdev_type_attribute *attr, char *buf)
->   {
-> @@ -1368,7 +1357,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_description.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
-> diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-> index 401a9a622673c..1b2117772192f 100644
-> --- a/samples/vfio-mdev/mdpy.c
-> +++ b/samples/vfio-mdev/mdpy.c
-> @@ -53,7 +53,6 @@ MODULE_PARM_DESC(count, "number of " MDPY_NAME " devices");
->   
->   static struct mdpy_type {
->   	struct mdev_type type;
-> -	const char *name;
->   	u32 format;
->   	u32 bytepp;
->   	u32 width;
-> @@ -61,21 +60,21 @@ static struct mdpy_type {
->   } mdpy_types[] = {
->   	{
->   		.type.sysfs_name 	= MDPY_TYPE_1,
-> -		.name	= MDPY_CLASS_NAME "-" MDPY_TYPE_1,
-> +		.type.pretty_name	= MDPY_CLASS_NAME "-" MDPY_TYPE_1,
->   		.format = DRM_FORMAT_XRGB8888,
->   		.bytepp = 4,
->   		.width	= 640,
->   		.height = 480,
->   	}, {
->   		.type.sysfs_name 	= MDPY_TYPE_2,
-> -		.name	= MDPY_CLASS_NAME "-" MDPY_TYPE_2,
-> +		.type.pretty_name	= MDPY_CLASS_NAME "-" MDPY_TYPE_2,
->   		.format = DRM_FORMAT_XRGB8888,
->   		.bytepp = 4,
->   		.width	= 1024,
->   		.height = 768,
->   	}, {
->   		.type.sysfs_name 	= MDPY_TYPE_3,
-> -		.name	= MDPY_CLASS_NAME "-" MDPY_TYPE_3,
-> +		.type.pretty_name	= MDPY_CLASS_NAME "-" MDPY_TYPE_3,
->   		.format = DRM_FORMAT_XRGB8888,
->   		.bytepp = 4,
->   		.width	= 1920,
-> @@ -256,8 +255,8 @@ static int mdpy_probe(struct mdev_device *mdev)
->   		ret = -ENOMEM;
->   		goto err_vconfig;
->   	}
-> -	dev_info(dev, "%s: %s (%dx%d)\n", __func__, type->name, type->width,
-> -		 type->height);
-> +	dev_info(dev, "%s: %s (%dx%d)\n", __func__, type->type.pretty_name,
-> +		 type->width, type->height);
->   
->   	mutex_init(&mdev_state->ops_lock);
->   	mdev_state->mdev = mdev;
-> @@ -651,15 +650,6 @@ static const struct attribute_group *mdev_dev_groups[] = {
->   	NULL,
->   };
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	struct mdpy_type *type = container_of(mtype, struct mdpy_type, type);
-> -
-> -	return sprintf(buf, "%s\n", type->name);
-> -}
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t description_show(struct mdev_type *mtype,
->   				struct mdev_type_attribute *attr, char *buf)
->   {
-> @@ -679,7 +669,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_description.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
-> diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
-> index 2a470424628af..b95a4491265c5 100644
-> --- a/samples/vfio-mdev/mtty.c
-> +++ b/samples/vfio-mdev/mtty.c
-> @@ -146,10 +146,11 @@ struct mdev_state {
->   static struct mtty_type {
->   	struct mdev_type type;
->   	int nr_ports;
-> -	const char *name;
->   } mtty_types[2] = {
-> -	{ .nr_ports = 1, .type.sysfs_name = "1", .name = "Single port serial" },
-> -	{ .nr_ports = 2, .type.sysfs_name = "2", .name = "Dual port serial" },
-> +	{ .nr_ports = 1, .type.sysfs_name = "1",
-> +	  .type.pretty_name = "Single port serial" },
-> +	{ .nr_ports = 2, .type.sysfs_name = "2",
-> +	  .type.pretty_name = "Dual port serial" },
->   };
->   
->   static struct mdev_type *mtty_mdev_types[] = {
-> @@ -1246,16 +1247,6 @@ static const struct attribute_group *mdev_dev_groups[] = {
->   	NULL,
->   };
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	struct mtty_type *type = container_of(mtype, struct mtty_type, type);
-> -
-> -	return sysfs_emit(buf, "%s\n", type->name);
-> -}
-> -
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t available_instances_show(struct mdev_type *mtype,
->   					struct mdev_type_attribute *attr,
->   					char *buf)
-> @@ -1269,7 +1260,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
->   };
