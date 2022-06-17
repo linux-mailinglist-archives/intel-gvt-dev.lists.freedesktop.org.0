@@ -1,73 +1,71 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C446550024
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Jun 2022 00:47:59 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8911F550095
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Jun 2022 01:19:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D996810EE18;
-	Fri, 17 Jun 2022 22:47:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2858810E338;
+	Fri, 17 Jun 2022 23:19:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DB9AC10EE48
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D92A810F3EC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Jun 2022 22:47:56 +0000 (UTC)
+ Fri, 17 Jun 2022 23:19:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1655506075;
+ s=mimecast20190719; t=1655507967;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RKxbMuSx84e0qKVho6q+J9unBV9pl4MxbJagk7m/J3c=;
- b=ep62v58+oMuicAfSumyYR84OU5eMCbXgJa11PuKTYV4zUankUKVFEguxEhvoPfcgJfeTIX
- 0bqajKddH6Y756AWqEd28DW5gM/ZoDUN8alsvEvA8+faOhIcSNUHdobA3OGxKjnsXV9vBu
- 7O41aJkCHFFAx/g7oRdpkO1yiuUkdok=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=m8OYUdYr/7uStGpTxjJZh8hjqGzxQdQwhj1gZ+QVtJE=;
+ b=eZlsyIE5AU8hLI59WlpjW6yHCy+QoiNulU2wldL/0rjOkjNzt8URdekSez0apgDihGrIOt
+ SMkRhCbrMLcaujw0ff2tWc/90sjZyLiFst7LKNT8f6uXvIqvMeAKGDKFEbSAfb4XHZaENe
+ S7JFneFv688e+Qm29TV2Udn+D3TYg7s=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-147-i49d2Gh4NqCBO9QGF1T2SA-1; Fri, 17 Jun 2022 18:47:55 -0400
-X-MC-Unique: i49d2Gh4NqCBO9QGF1T2SA-1
-Received: by mail-io1-f69.google.com with SMTP id
- k5-20020a6bba05000000b00668eb755190so3249471iof.13
+ us-mta-37-INqRbNTGNsyNRMSDCjAnQg-1; Fri, 17 Jun 2022 19:19:26 -0400
+X-MC-Unique: INqRbNTGNsyNRMSDCjAnQg-1
+Received: by mail-il1-f199.google.com with SMTP id
+ h5-20020a056e021b8500b002d8f50441a2so388174ili.13
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Jun 2022 15:47:54 -0700 (PDT)
+ Fri, 17 Jun 2022 16:19:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
  :references:organization:mime-version:content-transfer-encoding;
- bh=RKxbMuSx84e0qKVho6q+J9unBV9pl4MxbJagk7m/J3c=;
- b=nsndeSHmTxZQWYBiMREDpxqa0vsljBBW6GKFemoNqox5Q3maDoSDM1AsecbrMVz6Ww
- wxnBbIii5shYabVndnwP4NLvqEEcH0hL6HdRCmtoQNrZFanKT2vYlFxcWqoMwN/EGTZi
- PaqlTODdF5qbYuFJAK3ABM4hOs7f0yU14+v0Hq78BcCD1lZAWshk2Zl0iR25xli4VXgX
- 63iRgajh2z/iFIXliQBWV6xvbkVpP+eWtoktRNR5rnEk7iMNjNUOKH2CKr1g0MRSHcCB
- xLNxkBxggxZqQtOzlyby8cFMvI/HWjWuVsa/zXEfTrcL4R6RP0OFyw49eO0SC00clbiX
- ASYw==
-X-Gm-Message-State: AJIora82ESRFe+wcGyvpq8FlAJ3jUC3kjQUllNZWNfQ9FM+vqzF6nKHM
- XPZ9YUVnQMO/nKh6PX5gnz5vU5towKP5eaJ9N8lO+sjVOrpmkTTLWDdDAw3zn4AWVbnmpn7rBhK
- IVCM7EZpTcpwpiSNXgpgi+r0CZhadYWs/aw==
-X-Received: by 2002:a05:6638:c4b:b0:333:f06b:3b6c with SMTP id
- g11-20020a0566380c4b00b00333f06b3b6cmr6634469jal.46.1655506074173; 
- Fri, 17 Jun 2022 15:47:54 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1vz6Dt5FCCT3d+qged2m5qipE/eA4GR95e3L00ajT9WkKXttWTsiMH12QmfHfxKOxu1jO6Tkw==
-X-Received: by 2002:a05:6638:c4b:b0:333:f06b:3b6c with SMTP id
- g11-20020a0566380c4b00b00333f06b3b6cmr6634459jal.46.1655506073726; 
- Fri, 17 Jun 2022 15:47:53 -0700 (PDT)
+ bh=m8OYUdYr/7uStGpTxjJZh8hjqGzxQdQwhj1gZ+QVtJE=;
+ b=v2zejKMDrAQa/4kUnem6Y5h8Hi/zHlvitThFizJ/hYyF/CsmBmaS7iFCmGWIvl1akr
+ 354pO9iVWPVVNM/M6l9CmtRAW3B7cwMLx5V2L1Qd4Y3jmyZkywYZj3KnC5rJFnRJ8kDe
+ HCQc81v2fGMNE0eP1wHd2nQ9NETYzpazTf6ZBmZtreizmMzGSfsW/YfB05S99R+xTfqK
+ bHeHxVRVC0fUvcNuCc5CIGtUsjLNzZXnwg2usDts1wA93AMXzbVWx+0kLJeFnm51Kps+
+ mJ1ExJSkuA59Yxs101F+IcRvzxCvDG5hj4mqbwDGXs0L94Kj+gm7FwPlDmHpTzjRKLLv
+ 9NFg==
+X-Gm-Message-State: AJIora+2aoyQQTRm37mgeQgvIQoCJJubwixHLhG6br3Fl41hYm8Vb5BC
+ nkyXJ/k9QYc0UDQkFVM9DhCFxEMUihW/jKslt0byohhOW1BxxTxsWgQmCkaJPbxI2S5rmCA/ple
+ xC4+YvgS0rIXpiAN918OnUG0kGlKKjweoeg==
+X-Received: by 2002:a05:6638:2049:b0:332:2e25:b209 with SMTP id
+ t9-20020a056638204900b003322e25b209mr6885226jaj.168.1655507965218; 
+ Fri, 17 Jun 2022 16:19:25 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sCG9F5wCUnZcfDU16ZrtjA3XJrMwC/YqMJLGo64XHczgVeVe/vKg5OeDVsE9LxpSvMfdyeFQ==
+X-Received: by 2002:a05:6638:2049:b0:332:2e25:b209 with SMTP id
+ t9-20020a056638204900b003322e25b209mr6885198jaj.168.1655507964960; 
+ Fri, 17 Jun 2022 16:19:24 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- g19-20020a925213000000b002d8f1269e97sm510242ilb.42.2022.06.17.15.47.52
+ g91-20020a028564000000b0032e75bfe344sm2757808jai.171.2022.06.17.16.19.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jun 2022 15:47:53 -0700 (PDT)
-Date: Fri, 17 Jun 2022 16:47:51 -0600
+ Fri, 17 Jun 2022 16:19:24 -0700 (PDT)
+Date: Fri, 17 Jun 2022 17:19:23 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 1/2] vfio: Replace the DMA unmapping notifier with a
- callback
-Message-ID: <20220617164751.7ceaac6e.alex.williamson@redhat.com>
-In-Reply-To: <20220617164230.049c59f4.alex.williamson@redhat.com>
+Subject: Re: [PATCH v2 2/2] vfio: Replace the iommu notifier with a device list
+Message-ID: <20220617171923.129f3bf7.alex.williamson@redhat.com>
+In-Reply-To: <2-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
 References: <0-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
- <1-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
- <20220617164230.049c59f4.alex.williamson@redhat.com>
+ <2-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
 Organization: Red Hat
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
@@ -108,273 +106,179 @@ Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 17 Jun 2022 16:42:30 -0600
-Alex Williamson <alex.williamson@redhat.com> wrote:
+On Tue,  7 Jun 2022 20:02:12 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> On Tue,  7 Jun 2022 20:02:11 -0300
-> Jason Gunthorpe <jgg@nvidia.com> wrote:
-> > diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> > index 61e71c1154be67..f005b644ab9e69 100644
-> > --- a/drivers/vfio/vfio.c
-> > +++ b/drivers/vfio/vfio.c
-> > @@ -1077,8 +1077,20 @@ static void vfio_device_unassign_container(struct vfio_device *device)
-> >  	up_write(&device->group->group_rwsem);
-> >  }
-> >  
-> > +static int vfio_iommu_notifier(struct notifier_block *nb, unsigned long action,
-> > +			       void *data)
-> > +{
-> > +	struct vfio_device *vfio_device =
-> > +		container_of(nb, struct vfio_device, iommu_nb);
-> > +	struct vfio_iommu_type1_dma_unmap *unmap = data;
-> > +
-> > +	vfio_device->ops->dma_unmap(vfio_device, unmap->iova, unmap->size);
-> > +	return NOTIFY_OK;
-> > +}
-> > +
-> >  static struct file *vfio_device_open(struct vfio_device *device)
-> >  {
-> > +	struct vfio_iommu_driver *iommu_driver;
-> >  	struct file *filep;
-> >  	int ret;
-> >  
-> > @@ -1109,6 +1121,18 @@ static struct file *vfio_device_open(struct vfio_device *device)
-> >  			if (ret)
-> >  				goto err_undo_count;
-> >  		}
-> > +
-> > +		iommu_driver = device->group->container->iommu_driver;
-> > +		if (device->ops->dma_unmap && iommu_driver &&
-> > +		    iommu_driver->ops->register_notifier) {
-> > +			unsigned long events = VFIO_IOMMU_NOTIFY_DMA_UNMAP;
-> > +
-> > +			device->iommu_nb.notifier_call = vfio_iommu_notifier;
-> > +			iommu_driver->ops->register_notifier(
-> > +				device->group->container->iommu_data, &events,
-> > +				&device->iommu_nb);
-> > +		}
-> > +
-> >  		up_read(&device->group->group_rwsem);
-> >  	}
-> >  	mutex_unlock(&device->dev_set->lock);
-> > @@ -1143,8 +1167,16 @@ static struct file *vfio_device_open(struct vfio_device *device)
-> >  err_close_device:
-> >  	mutex_lock(&device->dev_set->lock);
-> >  	down_read(&device->group->group_rwsem);
-> > -	if (device->open_count == 1 && device->ops->close_device)
-> > +	if (device->open_count == 1 && device->ops->close_device) {
-> >  		device->ops->close_device(device);
-> > +
-> > +		iommu_driver = device->group->container->iommu_driver;
-> > +		if (device->ops->dma_unmap && iommu_driver &&
-> > +		    iommu_driver->ops->register_notifier)  
+> Instead of bouncing the function call to the driver op through a blocking
+> notifier just have the iommu layer call it directly.
 > 
-> Test for register_notifier callback...
+> Register each device that is being attached to the iommu with the lower
+> driver which then threads them on a linked list and calls the appropriate
+> driver op at the right time.
 > 
-> > +			iommu_driver->ops->unregister_notifier(
-> > +				device->group->container->iommu_data,
-> > +				&device->iommu_nb);  
+> Currently the only use is if dma_unmap() is defined.
 > 
-> use unregister_notifier callback.  Same below.
+> Also, fully lock all the debugging tests on the pinning path that a
+> dma_unmap is registered.
 > 
-> > +	}
-> >  err_undo_count:
-> >  	device->open_count--;
-> >  	if (device->open_count == 0 && device->kvm)
-> > @@ -1339,12 +1371,20 @@ static const struct file_operations vfio_group_fops = {
-> >  static int vfio_device_fops_release(struct inode *inode, struct file *filep)
-> >  {
-> >  	struct vfio_device *device = filep->private_data;
-> > +	struct vfio_iommu_driver *iommu_driver;
-> >  
-> >  	mutex_lock(&device->dev_set->lock);
-> >  	vfio_assert_device_open(device);
-> >  	down_read(&device->group->group_rwsem);
-> >  	if (device->open_count == 1 && device->ops->close_device)
-> >  		device->ops->close_device(device);
-> > +
-> > +	iommu_driver = device->group->container->iommu_driver;
-> > +	if (device->ops->dma_unmap && iommu_driver &&
-> > +	    iommu_driver->ops->register_notifier)
-> > +		iommu_driver->ops->unregister_notifier(
-> > +			device->group->container->iommu_data,
-> > +			&device->iommu_nb);
-> >  	up_read(&device->group->group_rwsem);
-> >  	device->open_count--;
-> >  	if (device->open_count == 0)
-> > @@ -2027,90 +2067,6 @@ int vfio_dma_rw(struct vfio_device *device, dma_addr_t user_iova, void *data,
-> >  }
-> >  EXPORT_SYMBOL(vfio_dma_rw);
-> >  
-> > -static int vfio_register_iommu_notifier(struct vfio_group *group,
-> > -					unsigned long *events,
-> > -					struct notifier_block *nb)
-> > -{
-> > -	struct vfio_container *container;
-> > -	struct vfio_iommu_driver *driver;
-> > -	int ret;
-> > -
-> > -	lockdep_assert_held_read(&group->group_rwsem);
-> > -
-> > -	container = group->container;
-> > -	driver = container->iommu_driver;
-> > -	if (likely(driver && driver->ops->register_notifier))
-> > -		ret = driver->ops->register_notifier(container->iommu_data,
-> > -						     events, nb);
-> > -	else
-> > -		ret = -ENOTTY;
-> > -
-> > -	return ret;
-> > -}
-> > -
-> > -static int vfio_unregister_iommu_notifier(struct vfio_group *group,
-> > -					  struct notifier_block *nb)
-> > -{
-> > -	struct vfio_container *container;
-> > -	struct vfio_iommu_driver *driver;
-> > -	int ret;
-> > -
-> > -	lockdep_assert_held_read(&group->group_rwsem);
-> > -
-> > -	container = group->container;
-> > -	driver = container->iommu_driver;
-> > -	if (likely(driver && driver->ops->unregister_notifier))
-> > -		ret = driver->ops->unregister_notifier(container->iommu_data,
-> > -						       nb);
-> > -	else
-> > -		ret = -ENOTTY;
-> > -
-> > -	return ret;
-> > -}
-> > -
-> > -int vfio_register_notifier(struct vfio_device *device,
-> > -			   enum vfio_notify_type type, unsigned long *events,
-> > -			   struct notifier_block *nb)
-> > -{
-> > -	struct vfio_group *group = device->group;
-> > -	int ret;
-> > -
-> > -	if (!nb || !events || (*events == 0) ||
-> > -	    !vfio_assert_device_open(device))
-> > -		return -EINVAL;
-> > -
-> > -	switch (type) {
-> > -	case VFIO_IOMMU_NOTIFY:
-> > -		ret = vfio_register_iommu_notifier(group, events, nb);
-> > -		break;
-> > -	default:
-> > -		ret = -EINVAL;
-> > -	}
-> > -	return ret;
-> > -}
-> > -EXPORT_SYMBOL(vfio_register_notifier);
-> > -
-> > -int vfio_unregister_notifier(struct vfio_device *device,
-> > -			     enum vfio_notify_type type,
-> > -			     struct notifier_block *nb)
-> > -{
-> > -	struct vfio_group *group = device->group;
-> > -	int ret;
-> > -
-> > -	if (!nb || !vfio_assert_device_open(device))
-> > -		return -EINVAL;
-> > -
-> > -	switch (type) {
-> > -	case VFIO_IOMMU_NOTIFY:
-> > -		ret = vfio_unregister_iommu_notifier(group, nb);
-> > -		break;
-> > -	default:
-> > -		ret = -EINVAL;
-> > -	}
-> > -	return ret;
-> > -}
-> > -EXPORT_SYMBOL(vfio_unregister_notifier);
-> > -
-> >  /*
-> >   * Module/class support
-> >   */
-> > diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-> > index a6713022115155..cb2e4e9baa8fe8 100644
-> > --- a/drivers/vfio/vfio.h
-> > +++ b/drivers/vfio/vfio.h
-> > @@ -33,6 +33,11 @@ enum vfio_iommu_notify_type {
-> >  	VFIO_IOMMU_CONTAINER_CLOSE = 0,
-> >  };
-> >  
-> > +/* events for register_notifier() */
-> > +enum {
-> > +	VFIO_IOMMU_NOTIFY_DMA_UNMAP = 1,
-> > +};  
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/vfio/vfio.c             |  42 ++++---------
+>  drivers/vfio/vfio.h             |  14 ++---
+>  drivers/vfio/vfio_iommu_type1.c | 103 ++++++++++++++++++++------------
+>  include/linux/vfio.h            |   2 +-
+>  4 files changed, 83 insertions(+), 78 deletions(-)
 > 
-> Can't say I understand why this changed from BIT(0) to an enum, the
-> event mask is meant to be a bitfield.  Using the notifier all the way
-> to the device was meant to avoid future callbacks on the device.  If we
-> now have a dma_unmap on the device, should the whole infrastructure be
-> tailored to that one task?  For example a dma_unmap_nb on the device,
-> {un}register_dma_unmap_notifier on the iommu ops,
-> vfio_dma_unmap_notifier, etc?  Thanks,
+> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+> index f005b644ab9e69..065b57e601bff7 100644
+> --- a/drivers/vfio/vfio.c
+> +++ b/drivers/vfio/vfio.c
+> @@ -619,6 +619,9 @@ EXPORT_SYMBOL_GPL(vfio_register_group_dev);
+>   */
+>  int vfio_register_emulated_iommu_dev(struct vfio_device *device)
+>  {
+> +	if (WARN_ON(!device->ops->dma_unmap))
+> +		return -EINVAL;
+> +
+>  	return __vfio_register_dev(device,
+>  		vfio_noiommu_group_alloc(device->dev, VFIO_EMULATED_IOMMU));
+>  }
+> @@ -1077,17 +1080,6 @@ static void vfio_device_unassign_container(struct vfio_device *device)
+>  	up_write(&device->group->group_rwsem);
+>  }
+>  
+> -static int vfio_iommu_notifier(struct notifier_block *nb, unsigned long action,
+> -			       void *data)
+> -{
+> -	struct vfio_device *vfio_device =
+> -		container_of(nb, struct vfio_device, iommu_nb);
+> -	struct vfio_iommu_type1_dma_unmap *unmap = data;
+> -
+> -	vfio_device->ops->dma_unmap(vfio_device, unmap->iova, unmap->size);
+> -	return NOTIFY_OK;
+> -}
+> -
+>  static struct file *vfio_device_open(struct vfio_device *device)
+>  {
+>  	struct vfio_iommu_driver *iommu_driver;
+> @@ -1123,15 +1115,9 @@ static struct file *vfio_device_open(struct vfio_device *device)
+>  		}
+>  
+>  		iommu_driver = device->group->container->iommu_driver;
+> -		if (device->ops->dma_unmap && iommu_driver &&
+> -		    iommu_driver->ops->register_notifier) {
+> -			unsigned long events = VFIO_IOMMU_NOTIFY_DMA_UNMAP;
+> -
+> -			device->iommu_nb.notifier_call = vfio_iommu_notifier;
+> -			iommu_driver->ops->register_notifier(
+> -				device->group->container->iommu_data, &events,
+> -				&device->iommu_nb);
+> -		}
+> +		if (iommu_driver && iommu_driver->ops->register_device)
+> +			iommu_driver->ops->register_device(
+> +				device->group->container->iommu_data, device);
+>  
+>  		up_read(&device->group->group_rwsem);
+>  	}
+> @@ -1171,11 +1157,9 @@ static struct file *vfio_device_open(struct vfio_device *device)
+>  		device->ops->close_device(device);
+>  
+>  		iommu_driver = device->group->container->iommu_driver;
+> -		if (device->ops->dma_unmap && iommu_driver &&
+> -		    iommu_driver->ops->register_notifier)
+> -			iommu_driver->ops->unregister_notifier(
+> -				device->group->container->iommu_data,
+> -				&device->iommu_nb);
+> +		if (iommu_driver && iommu_driver->ops->register_device)
+> +			iommu_driver->ops->unregister_device(
+> +				device->group->container->iommu_data, device);
 
-Ok, this all seems cleared up in the next patch, maybe there's a better
-intermediate step, but not worth bike shedding.  Thanks,
+But let's fix this in the next respin too, ie. test register but call
+unregister.  Got it right below in this one.
+
+>  	}
+>  err_undo_count:
+>  	device->open_count--;
+> @@ -1380,11 +1364,9 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
+>  		device->ops->close_device(device);
+>  
+>  	iommu_driver = device->group->container->iommu_driver;
+> -	if (device->ops->dma_unmap && iommu_driver &&
+> -	    iommu_driver->ops->register_notifier)
+> -		iommu_driver->ops->unregister_notifier(
+> -			device->group->container->iommu_data,
+> -			&device->iommu_nb);
+> +	if (iommu_driver && iommu_driver->ops->unregister_device)
+> +		iommu_driver->ops->unregister_device(
+> +			device->group->container->iommu_data, device);
+>  	up_read(&device->group->group_rwsem);
+>  	device->open_count--;
+>  	if (device->open_count == 0)
+> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+> index cb2e4e9baa8fe8..4a7db1f3c33e7e 100644
+> --- a/drivers/vfio/vfio.h
+> +++ b/drivers/vfio/vfio.h
+> @@ -33,11 +33,6 @@ enum vfio_iommu_notify_type {
+>  	VFIO_IOMMU_CONTAINER_CLOSE = 0,
+>  };
+>  
+> -/* events for register_notifier() */
+> -enum {
+> -	VFIO_IOMMU_NOTIFY_DMA_UNMAP = 1,
+> -};
+> -
+>  /**
+>   * struct vfio_iommu_driver_ops - VFIO IOMMU driver callbacks
+>   */
+> @@ -60,11 +55,10 @@ struct vfio_iommu_driver_ops {
+>  				     unsigned long *phys_pfn);
+>  	int		(*unpin_pages)(void *iommu_data,
+>  				       unsigned long *user_pfn, int npage);
+> -	int		(*register_notifier)(void *iommu_data,
+> -					     unsigned long *events,
+> -					     struct notifier_block *nb);
+> -	int		(*unregister_notifier)(void *iommu_data,
+> -					       struct notifier_block *nb);
+> +	void		(*register_device)(void *iommu_data,
+> +					   struct vfio_device *vdev);
+> +	void		(*unregister_device)(void *iommu_data,
+> +					     struct vfio_device *vdev);
+>  	int		(*dma_rw)(void *iommu_data, dma_addr_t user_iova,
+>  				  void *data, size_t count, bool write);
+>  	struct iommu_domain *(*group_iommu_domain)(void *iommu_data,
+> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
+> index c13b9290e35759..4ddb1f1abd238b 100644
+> --- a/drivers/vfio/vfio_iommu_type1.c
+> +++ b/drivers/vfio/vfio_iommu_type1.c
+> @@ -67,7 +67,8 @@ struct vfio_iommu {
+>  	struct list_head	iova_list;
+>  	struct mutex		lock;
+>  	struct rb_root		dma_list;
+> -	struct blocking_notifier_head notifier;
+> +	struct list_head	device_list;
+> +	struct mutex		device_list_lock;
+>  	unsigned int		dma_avail;
+>  	unsigned int		vaddr_invalid_count;
+>  	uint64_t		pgsize_bitmap;
+> @@ -865,8 +866,8 @@ static int vfio_iommu_type1_pin_pages(void *iommu_data,
+>  		}
+>  	}
+>  
+> -	/* Fail if notifier list is empty */
+> -	if (!iommu->notifier.head) {
+> +	/* Fail if no dma_umap notifier is registered */
+
+No "notifier" anymore.
+
+Should we even get here if this list is empty?  Seems like we can
+restrict page pinning to devices supporting unmap_dma now and this
+could be a WARN_ON.  Thanks,
 
 Alex
 
-> > +
-> >  /**
-> >   * struct vfio_iommu_driver_ops - VFIO IOMMU driver callbacks
-> >   */
-> > diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-> > index aa888cc517578e..b76623e3b92fca 100644
-> > --- a/include/linux/vfio.h
-> > +++ b/include/linux/vfio.h
-> > @@ -44,6 +44,7 @@ struct vfio_device {
-> >  	unsigned int open_count;
-> >  	struct completion comp;
-> >  	struct list_head group_next;
-> > +	struct notifier_block iommu_nb;
-> >  };
-> >  
-> >  /**
-> > @@ -60,6 +61,8 @@ struct vfio_device {
-> >   * @match: Optional device name match callback (return: 0 for no-match, >0 for
-> >   *         match, -errno for abort (ex. match with insufficient or incorrect
-> >   *         additional args)
-> > + * @dma_unmap: Called when userspace unmaps IOVA from the container
-> > + *             this device is attached to.
-> >   * @device_feature: Optional, fill in the VFIO_DEVICE_FEATURE ioctl
-> >   * @migration_set_state: Optional callback to change the migration state for
-> >   *         devices that support migration. It's mandatory for
-> > @@ -85,6 +88,7 @@ struct vfio_device_ops {
-> >  	int	(*mmap)(struct vfio_device *vdev, struct vm_area_struct *vma);
-> >  	void	(*request)(struct vfio_device *vdev, unsigned int count);
-> >  	int	(*match)(struct vfio_device *vdev, char *buf);
-> > +	void	(*dma_unmap)(struct vfio_device *vdev, u64 iova, u64 length);
-> >  	int	(*device_feature)(struct vfio_device *device, u32 flags,
-> >  				  void __user *arg, size_t argsz);
-> >  	struct file *(*migration_set_state)(
-> > @@ -154,23 +158,6 @@ extern int vfio_unpin_pages(struct vfio_device *device, unsigned long *user_pfn,
-> >  extern int vfio_dma_rw(struct vfio_device *device, dma_addr_t user_iova,
-> >  		       void *data, size_t len, bool write);
-> >  
-> > -/* each type has independent events */
-> > -enum vfio_notify_type {
-> > -	VFIO_IOMMU_NOTIFY = 0,
-> > -};
-> > -
-> > -/* events for VFIO_IOMMU_NOTIFY */
-> > -#define VFIO_IOMMU_NOTIFY_DMA_UNMAP	BIT(0)
-> > -
-> > -extern int vfio_register_notifier(struct vfio_device *device,
-> > -				  enum vfio_notify_type type,
-> > -				  unsigned long *required_events,
-> > -				  struct notifier_block *nb);
-> > -extern int vfio_unregister_notifier(struct vfio_device *device,
-> > -				    enum vfio_notify_type type,
-> > -				    struct notifier_block *nb);
-> > -
-> > -
-> >  /*
-> >   * Sub-module helpers
-> >   */  
-> 
+
+> +	if (list_empty(&iommu->device_list)) {
+>  		ret = -EINVAL;
+>  		goto pin_done;
+>  	}
 
