@@ -2,40 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3482454F34F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jun 2022 10:44:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E5E554F3A9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jun 2022 10:54:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D630011AAD2;
-	Fri, 17 Jun 2022 08:44:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F422411AB72;
+	Fri, 17 Jun 2022 08:54:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3C95111AAD2;
- Fri, 17 Jun 2022 08:44:37 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3000F11AACB;
+ Fri, 17 Jun 2022 08:54:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=cRcPliFH8a5nYGYbcpuAxJdVHyV2ltCZ23v97rgf1A4=; b=KiuwHF6aDNvC5t/LWv3aUEPzwE
- KBgvUpfkf5qDI6GElmlPwqGlCsWtGNTsSld0WuZewPo0/4mkHtzAiWM6dEK1eY4RySKpAlhO65R1D
- WAwqSuEBlSHCf5DkNowUItxtdZkM4ZA/lqbf20XRt3tR3vQic1RG+gSiipHa082lrFeJntOO3nL6y
- th0tSkAnySXos78OuuOupQOTbIqiHOC5RM5RDCtt86BUATvPwCygEQGPiY1c2rMXDglxq26ZxUHjd
- msVefU68/GFcLY3Vs1Mt7LyDHUYqx6nUIuYz/IWEJAxO+kEDCvTyVrRF9ed8BsbP8AEHXp6NHAjQ4
- s9lEnYkg==;
+ bh=8nZ1ta+BsGc00ew4rYHJjg70RdBuVGkJ01/aKd/F76M=; b=22UofexgYSmp52aMwe+HIOOhvH
+ HYrP5hQF/Y99IdWt/OJ7frq9bDlj6D/Gp2E2LfXGLyDec9bdW3ElpSca05pMX63lDBDkaRyZilvm3
+ s0jUbrt1CiiZKRQ7vdxJZ9yVK90jEAwy2ITMbKKpviGKsecKQDJYrt7hAOD3RKzBVjb7fHmOaLxxP
+ cWKZd5500xnwfiechgxDSX2HIctMCobu1VuwMbdK3f6uiymnj2Jg8g0IZBPG77/wBQcXmkLcVlGR6
+ ssra39uhQZxgkJ+zs68oXh47Qe6h+fzmWqqiKHEwunXSUDLK/l3ieRfYn9Q5bYSjpMZjludDm3YY1
+ UaH6OBmw==;
 Received: from hch by bombadil.infradead.org with local (Exim 4.94.2 #2 (Red
- Hat Linux)) id 1o27ag-006QLd-PI; Fri, 17 Jun 2022 08:44:30 +0000
-Date: Fri, 17 Jun 2022 01:44:30 -0700
+ Hat Linux)) id 1o27jx-006UvK-VQ; Fri, 17 Jun 2022 08:54:05 +0000
+Date: Fri, 17 Jun 2022 01:54:05 -0700
 From: Christoph Hellwig <hch@infradead.org>
 To: Nicolin Chen <nicolinc@nvidia.com>
-Subject: Re: [RFT][PATCH v1 5/6] vfio/ccw: Add kmap_local_page() for memcpy
-Message-ID: <Yqw+7gM3Lz96UFdz@infradead.org>
+Subject: Re: [RFT][PATCH v1 6/6] vfio: Replace phys_pfn with phys_page for
+ vfio_pin_pages()
+Message-ID: <YqxBLbu8yPJiwK6Z@infradead.org>
 References: <20220616235212.15185-1-nicolinc@nvidia.com>
- <20220616235212.15185-6-nicolinc@nvidia.com>
+ <20220616235212.15185-7-nicolinc@nvidia.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220616235212.15185-6-nicolinc@nvidia.com>
+In-Reply-To: <20220616235212.15185-7-nicolinc@nvidia.com>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
  bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -66,12 +67,24 @@ Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Jun 16, 2022 at 04:52:11PM -0700, Nicolin Chen wrote:
-> The pinned PFN list returned from vfio_pin_pages() is simply converted
-> using page_to_pfn() without protection, so direct access via memcpy()
-> will crash on S390 if the PFN is an IO PFN. Instead, the pages should
-> be touched using kmap_local_page().
+There is a bunch of code an comments in the iommu type1 code that
+suggest we can pin memory that is not page backed.  
 
-I don't see how this helps.  kmap_local_page only works for either
-pages in the kernel direct map or highmem, but not for memory that needs
-to be ioremapped.  And there is no highmem on s390.
+>  int vfio_pin_pages(struct vfio_device *device, dma_addr_t iova,
+> +		   int npage, int prot, struct page **phys_page)
+
+I don't think phys_page makes much sense as an argument name.
+I'd just call this pages.
+
+> +			phys_page[i] = pfn_to_page(vpfn->pfn);
+
+Please store the actual page pointer in the vfio_pfn structure.
+
+>  		remote_vaddr = dma->vaddr + (iova - dma->iova);
+> -		ret = vfio_pin_page_external(dma, remote_vaddr, &phys_pfn[i],
+> +		ret = vfio_pin_page_external(dma, remote_vaddr, &phys_pfn,
+>  					     do_accounting);
+
+Please just return the actual page from vaddr_get_pfns through
+vfio_pin_pages_remote and vfio_pin_page_external, maybe even as a prep
+patch as that is a fair amount of churn.
