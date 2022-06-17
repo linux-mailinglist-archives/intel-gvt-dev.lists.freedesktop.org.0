@@ -2,43 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E5E554F3A9
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jun 2022 10:54:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BEDD254FA36
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Jun 2022 17:26:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F422411AB72;
-	Fri, 17 Jun 2022 08:54:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5E37210E7BB;
+	Fri, 17 Jun 2022 15:26:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3000F11AACB;
- Fri, 17 Jun 2022 08:54:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=8nZ1ta+BsGc00ew4rYHJjg70RdBuVGkJ01/aKd/F76M=; b=22UofexgYSmp52aMwe+HIOOhvH
- HYrP5hQF/Y99IdWt/OJ7frq9bDlj6D/Gp2E2LfXGLyDec9bdW3ElpSca05pMX63lDBDkaRyZilvm3
- s0jUbrt1CiiZKRQ7vdxJZ9yVK90jEAwy2ITMbKKpviGKsecKQDJYrt7hAOD3RKzBVjb7fHmOaLxxP
- cWKZd5500xnwfiechgxDSX2HIctMCobu1VuwMbdK3f6uiymnj2Jg8g0IZBPG77/wBQcXmkLcVlGR6
- ssra39uhQZxgkJ+zs68oXh47Qe6h+fzmWqqiKHEwunXSUDLK/l3ieRfYn9Q5bYSjpMZjludDm3YY1
- UaH6OBmw==;
-Received: from hch by bombadil.infradead.org with local (Exim 4.94.2 #2 (Red
- Hat Linux)) id 1o27jx-006UvK-VQ; Fri, 17 Jun 2022 08:54:05 +0000
-Date: Fri, 17 Jun 2022 01:54:05 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Subject: Re: [RFT][PATCH v1 6/6] vfio: Replace phys_pfn with phys_page for
- vfio_pin_pages()
-Message-ID: <YqxBLbu8yPJiwK6Z@infradead.org>
-References: <20220616235212.15185-1-nicolinc@nvidia.com>
- <20220616235212.15185-7-nicolinc@nvidia.com>
+X-Greylist: delayed 615 seconds by postgrey-1.36 at gabe;
+ Fri, 17 Jun 2022 15:26:32 UTC
+Received: from sv220.xserver.jp (sv220.xserver.jp [202.226.39.121])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E54F010E7BB;
+ Fri, 17 Jun 2022 15:26:32 +0000 (UTC)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/521/virusgw2.xserver.jp)
+Received: from webmail.xserver.ne.jp (webmail.xserver.ne.jp [210.188.201.183])
+ by sv220.xserver.jp (Postfix) with ESMTPA id 5EE2A121A18A6E;
+ Sat, 18 Jun 2022 00:16:04 +0900 (JST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220616235212.15185-7-nicolinc@nvidia.com>
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Fri, 17 Jun 2022 23:16:04 +0800
+From: Steve Dibenedetto <y-kitsuya@bell-group.co.jp>
+To: undisclosed-recipients:;
+Subject: THIS IS VERY CONFIDENTIAL
+Mail-Reply-To: stevedibenedetto17@gmail.com
+Message-ID: <a290218cad068102b61f07b27ceba019@bell-group.co.jp>
+X-Sender: y-kitsuya@bell-group.co.jp
+User-Agent: Roundcube Webmail/1.2.0
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,40 +42,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
- joonas.lahtinen@linux.intel.com, kevin.tian@intel.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- kwankhede@nvidia.com, vneethv@linux.ibm.com, agordeev@linux.ibm.com,
- linux-s390@vger.kernel.org, kvm@vger.kernel.org, corbet@lwn.net,
- pasic@linux.ibm.com, jgg@nvidia.com, borntraeger@linux.ibm.com,
- intel-gfx@lists.freedesktop.org, zhi.a.wang@intel.com, jjherne@linux.ibm.com,
- farman@linux.ibm.com, jchrist@linux.ibm.com, gor@linux.ibm.com,
- hca@linux.ibm.com, jani.nikula@linux.intel.com, alex.williamson@redhat.com,
- freude@linux.ibm.com, zhenyuw@linux.intel.com, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
- tvrtko.ursulin@linux.intel.com, cohuck@redhat.com, oberpar@linux.ibm.com,
- svens@linux.ibm.com, daniel@ffwll.ch
+Reply-To: stevedibenedetto17@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-There is a bunch of code an comments in the iommu type1 code that
-suggest we can pin memory that is not page backed.  
 
->  int vfio_pin_pages(struct vfio_device *device, dma_addr_t iova,
-> +		   int npage, int prot, struct page **phys_page)
 
-I don't think phys_page makes much sense as an argument name.
-I'd just call this pages.
+-- 
+Hello,
 
-> +			phys_page[i] = pfn_to_page(vpfn->pfn);
+My name is Steve Dibenedetto.I apologize to have contacted you this way
+without a direct relationship. There is an opportunity to collaborate
+with me in the sourcing of some materials needed by our company for
+production of the different medicines we are researching.
 
-Please store the actual page pointer in the vfio_pfn structure.
+I'm aware that this might be totally outside your professional
+specialization, but it will be a great source for generating extra
+revenue. I  discovered a manufacturer who can supply us at a lower rate
+than our company's previous purchases.
+I will give you more specific details when/if I receive feedback from
+you showing interest.
 
->  		remote_vaddr = dma->vaddr + (iova - dma->iova);
-> -		ret = vfio_pin_page_external(dma, remote_vaddr, &phys_pfn[i],
-> +		ret = vfio_pin_page_external(dma, remote_vaddr, &phys_pfn,
->  					     do_accounting);
-
-Please just return the actual page from vaddr_get_pfns through
-vfio_pin_pages_remote and vfio_pin_page_external, maybe even as a prep
-patch as that is a fair amount of churn.
+Warm Regards
+Steve Dibenedetto
+Production & Control Manager,
+Green Field Laboratories
+Gothic House, Barker Gate,
+Nottingham, NG1 1JU,
+United Kingdom.
