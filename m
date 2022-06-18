@@ -2,78 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8911F550095
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Jun 2022 01:19:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D26235503F6
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Jun 2022 12:07:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2858810E338;
-	Fri, 17 Jun 2022 23:19:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A088211B437;
+	Sat, 18 Jun 2022 10:07:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D92A810F3EC
+X-Greylist: delayed 3611 seconds by postgrey-1.36 at gabe;
+ Sat, 18 Jun 2022 10:07:42 UTC
+Received: from romanpincek.com (unknown [193.160.32.89])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B2C9711B436
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Jun 2022 23:19:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1655507967;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=m8OYUdYr/7uStGpTxjJZh8hjqGzxQdQwhj1gZ+QVtJE=;
- b=eZlsyIE5AU8hLI59WlpjW6yHCy+QoiNulU2wldL/0rjOkjNzt8URdekSez0apgDihGrIOt
- SMkRhCbrMLcaujw0ff2tWc/90sjZyLiFst7LKNT8f6uXvIqvMeAKGDKFEbSAfb4XHZaENe
- S7JFneFv688e+Qm29TV2Udn+D3TYg7s=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-37-INqRbNTGNsyNRMSDCjAnQg-1; Fri, 17 Jun 2022 19:19:26 -0400
-X-MC-Unique: INqRbNTGNsyNRMSDCjAnQg-1
-Received: by mail-il1-f199.google.com with SMTP id
- h5-20020a056e021b8500b002d8f50441a2so388174ili.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Jun 2022 16:19:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=m8OYUdYr/7uStGpTxjJZh8hjqGzxQdQwhj1gZ+QVtJE=;
- b=v2zejKMDrAQa/4kUnem6Y5h8Hi/zHlvitThFizJ/hYyF/CsmBmaS7iFCmGWIvl1akr
- 354pO9iVWPVVNM/M6l9CmtRAW3B7cwMLx5V2L1Qd4Y3jmyZkywYZj3KnC5rJFnRJ8kDe
- HCQc81v2fGMNE0eP1wHd2nQ9NETYzpazTf6ZBmZtreizmMzGSfsW/YfB05S99R+xTfqK
- bHeHxVRVC0fUvcNuCc5CIGtUsjLNzZXnwg2usDts1wA93AMXzbVWx+0kLJeFnm51Kps+
- mJ1ExJSkuA59Yxs101F+IcRvzxCvDG5hj4mqbwDGXs0L94Kj+gm7FwPlDmHpTzjRKLLv
- 9NFg==
-X-Gm-Message-State: AJIora+2aoyQQTRm37mgeQgvIQoCJJubwixHLhG6br3Fl41hYm8Vb5BC
- nkyXJ/k9QYc0UDQkFVM9DhCFxEMUihW/jKslt0byohhOW1BxxTxsWgQmCkaJPbxI2S5rmCA/ple
- xC4+YvgS0rIXpiAN918OnUG0kGlKKjweoeg==
-X-Received: by 2002:a05:6638:2049:b0:332:2e25:b209 with SMTP id
- t9-20020a056638204900b003322e25b209mr6885226jaj.168.1655507965218; 
- Fri, 17 Jun 2022 16:19:25 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1sCG9F5wCUnZcfDU16ZrtjA3XJrMwC/YqMJLGo64XHczgVeVe/vKg5OeDVsE9LxpSvMfdyeFQ==
-X-Received: by 2002:a05:6638:2049:b0:332:2e25:b209 with SMTP id
- t9-20020a056638204900b003322e25b209mr6885198jaj.168.1655507964960; 
- Fri, 17 Jun 2022 16:19:24 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- g91-20020a028564000000b0032e75bfe344sm2757808jai.171.2022.06.17.16.19.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jun 2022 16:19:24 -0700 (PDT)
-Date: Fri, 17 Jun 2022 17:19:23 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 2/2] vfio: Replace the iommu notifier with a device list
-Message-ID: <20220617171923.129f3bf7.alex.williamson@redhat.com>
-In-Reply-To: <2-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
-References: <0-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
- <2-v2-80aa110d03ce+24b-vfio_unmap_notif_jgg@nvidia.com>
-Organization: Red Hat
+ Sat, 18 Jun 2022 10:07:42 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: projector for you
+Message-ID: <2870837f1060b8779cad18da0588b52e@outsidepursuits.com>
+Date: Sat, 18 Jun 2022 10:06:53 +0200
+From: "Simon Allen" <simonvk@smartarmorcube.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,199 +35,75 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
- linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>
+Reply-To: simon@286669.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue,  7 Jun 2022 20:02:12 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
-
-> Instead of bouncing the function call to the driver op through a blocking
-> notifier just have the iommu layer call it directly.
-> 
-> Register each device that is being attached to the iommu with the lower
-> driver which then threads them on a linked list and calls the appropriate
-> driver op at the right time.
-> 
-> Currently the only use is if dma_unmap() is defined.
-> 
-> Also, fully lock all the debugging tests on the pinning path that a
-> dma_unmap is registered.
-> 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/vfio/vfio.c             |  42 ++++---------
->  drivers/vfio/vfio.h             |  14 ++---
->  drivers/vfio/vfio_iommu_type1.c | 103 ++++++++++++++++++++------------
->  include/linux/vfio.h            |   2 +-
->  4 files changed, 83 insertions(+), 78 deletions(-)
-> 
-> diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
-> index f005b644ab9e69..065b57e601bff7 100644
-> --- a/drivers/vfio/vfio.c
-> +++ b/drivers/vfio/vfio.c
-> @@ -619,6 +619,9 @@ EXPORT_SYMBOL_GPL(vfio_register_group_dev);
->   */
->  int vfio_register_emulated_iommu_dev(struct vfio_device *device)
->  {
-> +	if (WARN_ON(!device->ops->dma_unmap))
-> +		return -EINVAL;
-> +
->  	return __vfio_register_dev(device,
->  		vfio_noiommu_group_alloc(device->dev, VFIO_EMULATED_IOMMU));
->  }
-> @@ -1077,17 +1080,6 @@ static void vfio_device_unassign_container(struct vfio_device *device)
->  	up_write(&device->group->group_rwsem);
->  }
->  
-> -static int vfio_iommu_notifier(struct notifier_block *nb, unsigned long action,
-> -			       void *data)
-> -{
-> -	struct vfio_device *vfio_device =
-> -		container_of(nb, struct vfio_device, iommu_nb);
-> -	struct vfio_iommu_type1_dma_unmap *unmap = data;
-> -
-> -	vfio_device->ops->dma_unmap(vfio_device, unmap->iova, unmap->size);
-> -	return NOTIFY_OK;
-> -}
-> -
->  static struct file *vfio_device_open(struct vfio_device *device)
->  {
->  	struct vfio_iommu_driver *iommu_driver;
-> @@ -1123,15 +1115,9 @@ static struct file *vfio_device_open(struct vfio_device *device)
->  		}
->  
->  		iommu_driver = device->group->container->iommu_driver;
-> -		if (device->ops->dma_unmap && iommu_driver &&
-> -		    iommu_driver->ops->register_notifier) {
-> -			unsigned long events = VFIO_IOMMU_NOTIFY_DMA_UNMAP;
-> -
-> -			device->iommu_nb.notifier_call = vfio_iommu_notifier;
-> -			iommu_driver->ops->register_notifier(
-> -				device->group->container->iommu_data, &events,
-> -				&device->iommu_nb);
-> -		}
-> +		if (iommu_driver && iommu_driver->ops->register_device)
-> +			iommu_driver->ops->register_device(
-> +				device->group->container->iommu_data, device);
->  
->  		up_read(&device->group->group_rwsem);
->  	}
-> @@ -1171,11 +1157,9 @@ static struct file *vfio_device_open(struct vfio_device *device)
->  		device->ops->close_device(device);
->  
->  		iommu_driver = device->group->container->iommu_driver;
-> -		if (device->ops->dma_unmap && iommu_driver &&
-> -		    iommu_driver->ops->register_notifier)
-> -			iommu_driver->ops->unregister_notifier(
-> -				device->group->container->iommu_data,
-> -				&device->iommu_nb);
-> +		if (iommu_driver && iommu_driver->ops->register_device)
-> +			iommu_driver->ops->unregister_device(
-> +				device->group->container->iommu_data, device);
-
-But let's fix this in the next respin too, ie. test register but call
-unregister.  Got it right below in this one.
-
->  	}
->  err_undo_count:
->  	device->open_count--;
-> @@ -1380,11 +1364,9 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
->  		device->ops->close_device(device);
->  
->  	iommu_driver = device->group->container->iommu_driver;
-> -	if (device->ops->dma_unmap && iommu_driver &&
-> -	    iommu_driver->ops->register_notifier)
-> -		iommu_driver->ops->unregister_notifier(
-> -			device->group->container->iommu_data,
-> -			&device->iommu_nb);
-> +	if (iommu_driver && iommu_driver->ops->unregister_device)
-> +		iommu_driver->ops->unregister_device(
-> +			device->group->container->iommu_data, device);
->  	up_read(&device->group->group_rwsem);
->  	device->open_count--;
->  	if (device->open_count == 0)
-> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-> index cb2e4e9baa8fe8..4a7db1f3c33e7e 100644
-> --- a/drivers/vfio/vfio.h
-> +++ b/drivers/vfio/vfio.h
-> @@ -33,11 +33,6 @@ enum vfio_iommu_notify_type {
->  	VFIO_IOMMU_CONTAINER_CLOSE = 0,
->  };
->  
-> -/* events for register_notifier() */
-> -enum {
-> -	VFIO_IOMMU_NOTIFY_DMA_UNMAP = 1,
-> -};
-> -
->  /**
->   * struct vfio_iommu_driver_ops - VFIO IOMMU driver callbacks
->   */
-> @@ -60,11 +55,10 @@ struct vfio_iommu_driver_ops {
->  				     unsigned long *phys_pfn);
->  	int		(*unpin_pages)(void *iommu_data,
->  				       unsigned long *user_pfn, int npage);
-> -	int		(*register_notifier)(void *iommu_data,
-> -					     unsigned long *events,
-> -					     struct notifier_block *nb);
-> -	int		(*unregister_notifier)(void *iommu_data,
-> -					       struct notifier_block *nb);
-> +	void		(*register_device)(void *iommu_data,
-> +					   struct vfio_device *vdev);
-> +	void		(*unregister_device)(void *iommu_data,
-> +					     struct vfio_device *vdev);
->  	int		(*dma_rw)(void *iommu_data, dma_addr_t user_iova,
->  				  void *data, size_t count, bool write);
->  	struct iommu_domain *(*group_iommu_domain)(void *iommu_data,
-> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-> index c13b9290e35759..4ddb1f1abd238b 100644
-> --- a/drivers/vfio/vfio_iommu_type1.c
-> +++ b/drivers/vfio/vfio_iommu_type1.c
-> @@ -67,7 +67,8 @@ struct vfio_iommu {
->  	struct list_head	iova_list;
->  	struct mutex		lock;
->  	struct rb_root		dma_list;
-> -	struct blocking_notifier_head notifier;
-> +	struct list_head	device_list;
-> +	struct mutex		device_list_lock;
->  	unsigned int		dma_avail;
->  	unsigned int		vaddr_invalid_count;
->  	uint64_t		pgsize_bitmap;
-> @@ -865,8 +866,8 @@ static int vfio_iommu_type1_pin_pages(void *iommu_data,
->  		}
->  	}
->  
-> -	/* Fail if notifier list is empty */
-> -	if (!iommu->notifier.head) {
-> +	/* Fail if no dma_umap notifier is registered */
-
-No "notifier" anymore.
-
-Should we even get here if this list is empty?  Seems like we can
-restrict page pinning to devices supporting unmap_dma now and this
-could be a WARN_ON.  Thanks,
-
-Alex
-
-
-> +	if (list_empty(&iommu->device_list)) {
->  		ret = -EINVAL;
->  		goto pin_done;
->  	}
+<html>
+<head>
+</head>
+<body>
+<p>Hello,<br /> <br /> I was wondering how things are going for you.<br />
+This particular model of projector is currently accessible for use in our
+storage facility.<br /> I'll write a more in-depth introduction to the
+product for you and send it to you via email after I've finished writing
+it.<br /><br /><img
+src="https://foorshop.com/wp-content/uploads/2020/06/C7-004.jpg"
+width="700" height="700" /><br /> <br /> Specifications:<br /> The TFT LCD
+display technology corresponds to a screen that is 3.77 inches in size.<br
+/> Brightness of the Light Source is 8500 LM<br /> brightness that has been
+approved by ANSI at 100 Lumens<br /> The resolution that is utilized by
+default in 720P is 1024 by 720 pixels.<br /> The maximum resolution that
+can be used is 1080P.<br /> There is a life expectancy of up to 30,000
+hours for the light source.<br /> There is a ratio of 1.4 to 1 in the
+projection.<br /> The projection technique consists of both front and back
+projection.<br /> The range of sizes that can be projected electronically
+by Keystone is from 40' to 200'.<br /> The distance that separates you from
+the display can be anywhere from 1.2 to 6.7 meters (Best Distance 8.2ft)<br
+/> STM53MK integrated circuit<br /> Memory, or random access memory (RAM:
+64 MB; read-only memory, or ROM: 4 MB)<br /> 3.5mm earphone output, HDMI,
+TFT, AV, and VGA interfaces, as well as a USB 2.0 port with a single
+port.<br /> WiFi: 2.4G WiFi support<br /> Bluetooth version 5.0 is now
+available (BT5.0),<br /> Maintain your capabilities of receiving and
+sending.<br /> transmission of infrared signals for remote controls<br />
+Product Dimensions: 214 x 160 x 81.7 mm The product has dimensions of 214
+by 160 by 81.7 millimeters and weighs 1.1 kg.<br /> Package Dimensions: 330
+x 115 x 215mm Weight: 1.6KG<br /><br /> Cost breakdown for our projectors
+is as follows:<br /> 1 unt: 259.00 each<br /> 2-5 units 239.00 each<br />
+6-10 units 219.00 each<br /> <br /> Would you be interested in taking a
+projector with you today?<br /> Just provide us with the specifics of your
+location, and we will take care of arranging shipment for you.<br /> <br />
+<br /> Thanks,<br /> Simon Allen</p>
+<p></p>
+<p>===========<br /> <br /> Is it necessary to print this email? If you
+care about the environment like we do, please refrain from printing emails.
+It helps to keep the environment forested.<br /> Please consider the
+environment before printing this email. Please do not print this email
+unless it is necessary. Every unprinted email helps the environment.<br />
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.<br /> <br /> Is printing out this email really
+required? If you share the same concern for the environment that we do, we
+kindly ask that you avoid from printing off any emails. It contributes to
+the maintenance of a forest-rich environment.<br /> Before printing this
+email, I ask that you keep in mind its impact on the environment. If
+printing it isn't absolutely required, please refrain from doing so. Every
+email that is not printed out is beneficial to the environment.<br /> If
+you believe that you have got this message in error, please respond to it
+and then delete it so that we can avoid making the same mistake in the
+future. Thank you.<br /> <br /> The content of this email is intended for
+the recipient specified in message only. If you received this message by
+mistake, please reply to this message and follow with its deletion, so that
+we can ensure such a mistake does not occur in the future. This email and
+any files transmitted with it intended solely for the use of the individual
+or entity to whom they are addressed. If you have received this email in
+error please notify the system manager. Please notify the sender
+immediately by email if you have received this email by mistake and delete
+this email from your system. <br /> This message has been sent as a part of
+discussion between and the addressee whose name is specified above. Should
+you receive this message by mistake, we would be most grateful if you
+informed us that the message has been sent to you.</p>
+<br />
+</body>
+</html>
 
