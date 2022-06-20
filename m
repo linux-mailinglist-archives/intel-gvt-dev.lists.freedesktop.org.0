@@ -1,93 +1,28 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EED7455150C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Jun 2022 12:01:06 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A8A555179D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Jun 2022 13:44:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9CB3110FB9F;
-	Mon, 20 Jun 2022 10:01:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4F35010ED40;
+	Mon, 20 Jun 2022 11:44:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 32A1410FB9F;
- Mon, 20 Jun 2022 10:01:04 +0000 (UTC)
-Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25K8BBZC005951;
- Mon, 20 Jun 2022 10:00:59 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=mime-version : date :
- from : to : cc : subject : reply-to : in-reply-to : references :
- message-id : content-type : content-transfer-encoding; s=pp1;
- bh=qdXJT9im5QV0plqMUSLWm0Wcj6DXIK8niv/AQOm1Cs0=;
- b=ei6bMxd/ZEDAOlWMSOpCGiRZXL8FCPCN+pV6DeazIe5uRrFugd/LTO8EScJ97+fU9dIb
- 7Dv45n8CS2fbwzOSwlPZXyQajBkzpi542cRS+CjQz6LjgGh/GZTDAxP/LRTG29/scmFC
- UTYGtsbDfQTva7wkZZppinpflFjRRklfCY0pgqVhdV0dZtxD+5UMW7hAw4Sfh5huPXaB
- 3STtzqlfTHrNeQsXwIP1g4QbBo/jJ7gwsWliLeXkyu4El7zak1cqJggStslCdjc9ZuNQ
- ybQ5vfKg4APvpSLFsB+xefpoKbIXGkhU0teQRZBXVu+AW/dBUKWDgWYbG1b85CNMX6jc zQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3gsrrrcqsf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 20 Jun 2022 10:00:59 +0000
-Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 25K9jCgn040650;
- Mon, 20 Jun 2022 10:00:58 GMT
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.11])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3gsrrrcqr9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 20 Jun 2022 10:00:58 +0000
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
- by ppma03dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 25K9pepv013082;
- Mon, 20 Jun 2022 10:00:57 GMT
-Received: from b03cxnp08025.gho.boulder.ibm.com
- (b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
- by ppma03dal.us.ibm.com with ESMTP id 3gs6b97mnx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 20 Jun 2022 10:00:57 +0000
-Received: from b03ledav002.gho.boulder.ibm.com
- (b03ledav002.gho.boulder.ibm.com [9.17.130.233])
- by b03cxnp08025.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 25KA0tES35717564
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 20 Jun 2022 10:00:55 GMT
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7C66F136053;
- Mon, 20 Jun 2022 10:00:55 +0000 (GMT)
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 21EE0136061;
- Mon, 20 Jun 2022 10:00:54 +0000 (GMT)
-Received: from ltc.linux.ibm.com (unknown [9.10.229.42])
- by b03ledav002.gho.boulder.ibm.com (Postfix) with ESMTP;
- Mon, 20 Jun 2022 10:00:54 +0000 (GMT)
+X-Greylist: delayed 8410 seconds by postgrey-1.36 at gabe;
+ Mon, 20 Jun 2022 11:44:27 UTC
+Received: from smokeysteakranch.com (kurashenko.com [104.160.19.61])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A0F5310ED33
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 20 Jun 2022 11:44:27 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: take a look at this again
+Message-ID: <94d549feb6e25c111b7c22e00e6bd920@dronesvilla.com>
+Date: Mon, 20 Jun 2022 07:24:18 +0200
+From: "Jonathan Durham" <jonathanfl@skateparts.net>
 MIME-Version: 1.0
-Date: Mon, 20 Jun 2022 12:00:53 +0200
-From: Harald Freudenberger <freude@linux.ibm.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Subject: Re: [RFT][PATCH v1 1/6] vfio/ap: Pass in physical address of ind to
- ap_aqic()
-In-Reply-To: <20220616235212.15185-2-nicolinc@nvidia.com>
-References: <20220616235212.15185-1-nicolinc@nvidia.com>
- <20220616235212.15185-2-nicolinc@nvidia.com>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <fd564e6270a4bfcd9249559a797365ae@linux.ibm.com>
-X-Sender: freude@linux.ibm.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: gLGI1jIr9iGSdbYfRFpp2XaL_luy8a7-
-X-Proofpoint-ORIG-GUID: PLdRf3ErnQsABDOyocwnsMqFxJOQY8FA
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.64.514
- definitions=2022-06-20_05,2022-06-17_01,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011 spamscore=0
- adultscore=0 mlxscore=0 mlxlogscore=999 impostorscore=0 bulkscore=0
- priorityscore=1501 lowpriorityscore=0 phishscore=0 malwarescore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2204290000 definitions=main-2206200044
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,117 +35,70 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: freude@linux.ibm.com
-Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
- joonas.lahtinen@linux.intel.com, kevin.tian@intel.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- kwankhede@nvidia.com, vneethv@linux.ibm.com, agordeev@linux.ibm.com,
- linux-s390@vger.kernel.org, kvm@vger.kernel.org, corbet@lwn.net,
- pasic@linux.ibm.com, jgg@nvidia.com, borntraeger@linux.ibm.com,
- intel-gfx@lists.freedesktop.org, zhi.a.wang@intel.com, akrowiak@linux.ibm.com,
- farman@linux.ibm.com, jchrist@linux.ibm.com, gor@linux.ibm.com,
- hca@linux.ibm.com, jani.nikula@linux.intel.com, alex.williamson@redhat.com,
- zhenyuw@linux.intel.com, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, jjherne@linux.ibm.com,
- tvrtko.ursulin@linux.intel.com, cohuck@redhat.com, oberpar@linux.ibm.com,
- svens@linux.ibm.com, daniel@ffwll.ch
+Reply-To: jonathan@zkchji.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 2022-06-17 01:52, Nicolin Chen wrote:
-> The ap_aqic() is called by vfio_ap_irq_enable() where it passes in a
-> virt value that's casted from a physical address "h_nib". Inside the
-> ap_aqic(), it does virt_to_phys() again.
-> 
-> Since ap_aqic() needs a physical address, let's just pass in a pa of
-> ind directly. So change the "ind" to "pa_ind".
-> 
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> ---
->  arch/s390/include/asm/ap.h        | 6 +++---
->  drivers/s390/crypto/ap_queue.c    | 2 +-
->  drivers/s390/crypto/vfio_ap_ops.c | 7 ++++---
->  3 files changed, 8 insertions(+), 7 deletions(-)
-> 
-> diff --git a/arch/s390/include/asm/ap.h b/arch/s390/include/asm/ap.h
-> index b515cfa62bd9..f508f5025e38 100644
-> --- a/arch/s390/include/asm/ap.h
-> +++ b/arch/s390/include/asm/ap.h
-> @@ -227,13 +227,13 @@ struct ap_qirq_ctrl {
->   * ap_aqic(): Control interruption for a specific AP.
->   * @qid: The AP queue number
->   * @qirqctrl: struct ap_qirq_ctrl (64 bit value)
-> - * @ind: The notification indicator byte
-> + * @pa_ind: Physical address of the notification indicator byte
->   *
->   * Returns AP queue status.
->   */
->  static inline struct ap_queue_status ap_aqic(ap_qid_t qid,
->  					     struct ap_qirq_ctrl qirqctrl,
-> -					     void *ind)
-> +					     phys_addr_t pa_ind)
->  {
->  	unsigned long reg0 = qid | (3UL << 24);  /* fc 3UL is AQIC */
->  	union {
-> @@ -241,7 +241,7 @@ static inline struct ap_queue_status 
-> ap_aqic(ap_qid_t qid,
->  		struct ap_qirq_ctrl qirqctrl;
->  		struct ap_queue_status status;
->  	} reg1;
-> -	unsigned long reg2 = virt_to_phys(ind);
-> +	unsigned long reg2 = pa_ind;
-> 
->  	reg1.qirqctrl = qirqctrl;
-> 
-> diff --git a/drivers/s390/crypto/ap_queue.c 
-> b/drivers/s390/crypto/ap_queue.c
-> index c48b0db824e3..a32457b4cbb8 100644
-> --- a/drivers/s390/crypto/ap_queue.c
-> +++ b/drivers/s390/crypto/ap_queue.c
-> @@ -34,7 +34,7 @@ static int ap_queue_enable_irq(struct ap_queue *aq, 
-> void *ind)
-> 
->  	qirqctrl.ir = 1;
->  	qirqctrl.isc = AP_ISC;
-> -	status = ap_aqic(aq->qid, qirqctrl, ind);
-> +	status = ap_aqic(aq->qid, qirqctrl, virt_to_phys(ind));
->  	switch (status.response_code) {
->  	case AP_RESPONSE_NORMAL:
->  	case AP_RESPONSE_OTHERWISE_CHANGED:
-> diff --git a/drivers/s390/crypto/vfio_ap_ops.c
-> b/drivers/s390/crypto/vfio_ap_ops.c
-> index a7d2a95796d3..bb869b28cebd 100644
-> --- a/drivers/s390/crypto/vfio_ap_ops.c
-> +++ b/drivers/s390/crypto/vfio_ap_ops.c
-> @@ -154,7 +154,7 @@ static struct ap_queue_status
-> vfio_ap_irq_disable(struct vfio_ap_queue *q)
->  	int retries = 5;
-> 
->  	do {
-> -		status = ap_aqic(q->apqn, aqic_gisa, NULL);
-> +		status = ap_aqic(q->apqn, aqic_gisa, 0);
->  		switch (status.response_code) {
->  		case AP_RESPONSE_OTHERWISE_CHANGED:
->  		case AP_RESPONSE_NORMAL:
-> @@ -245,7 +245,8 @@ static struct ap_queue_status
-> vfio_ap_irq_enable(struct vfio_ap_queue *q,
->  	struct kvm_s390_gisa *gisa;
->  	int nisc;
->  	struct kvm *kvm;
-> -	unsigned long h_nib, g_pfn, h_pfn;
-> +	unsigned long g_pfn, h_pfn;
-> +	phys_addr_t h_nib;
->  	int ret;
-> 
->  	/* Verify that the notification indicator byte address is valid */
-> @@ -290,7 +291,7 @@ static struct ap_queue_status
-> vfio_ap_irq_enable(struct vfio_ap_queue *q,
->  	aqic_gisa.ir = 1;
->  	aqic_gisa.gisa = (uint64_t)gisa >> 4;
-> 
-> -	status = ap_aqic(q->apqn, aqic_gisa, (void *)h_nib);
-> +	status = ap_aqic(q->apqn, aqic_gisa, h_nib);
->  	switch (status.response_code) {
->  	case AP_RESPONSE_NORMAL:
->  		/* See if we did clear older IRQ configuration */
-Add my Reviewed-By: Harald Freudenberger <freude@linux.ibm.com>
+<html>
+<head>
+</head>
+<body>
+<p>Hello,<br /> <br /> How is everything going with you?<br /> Have you
+received the introduction that we sent you on the little drone-quadcopter
+that we sent you last week?<br /> <br /> The drone-quadcopter can fly for
+30 minutes nonstop and record video at a frame rate of 25 frames per
+second.<br /> Product dimensions: 45x40x12cm (before folding) 21x11x9cm
+(after folding)<br /> Dual-mode The positioning system provides GPS
+positioning. Brushless motor model number: 1806.<br /> Remote control
+range: around 3000m<br /> The remote control's height is roughly 120
+meters.<br /> 1-3 meters for gesture recognition shooting Resolution of
+aerial images: 4096 x 3072 (APP)<br /> 2048 x 1080 video resolution
+(APP)<br /> Frame rate of transmission: 25fps<br /> <br /> The auto return
+feature allows you to order the aircraft to take off, land, and even return
+to its original spot with the push of a button.<br /> When summoned, the
+drone-quadcopter will return to the location from which it took off.<br />
+Fixed-point surround: you can now make stunning videos with this
+professional drone-quadcopter without doing any extra work.<br /> <br />
+The following are the cost details for varied quantities:<br /> 1 unit:
+229.90<br /> 2-50 units 209.90 each<br /> 51-100 units 189.90 each<br /><br
+/> Would you be interested in purchasing one or two of these?<br /> Send us
+your location and we will make the appropriate preparations on your behalf
+after contacting the logistics department.<br /><br /><img
+src="https://cdn.32pt.com/public/sl-prod-od-0/images/retail-products/D18C49281AF5F7/D18C49281AF5F7-DS_600ef313c100037048a59353_4487-DS_600ef313c100037048a59353-DS_600ef313c100037048a59353_1005002073569910-14%253A200006154%2523GPS-5G-4K%201B%20Foambox%253B200007763%253A201336100/template/thumb.jpg"
+width="640" height="636" /><br /><img
+src="https://media.karousell.com/media/photos/products/2021/3/8/drone_4drc_f9_4k_1615221385_0f7cbce4_progressive.jpg"
+width="585" height="812" /><br /> <br /> The development of optical flow
+occurs from the combination of a fixed point located within the system and
+a GPS position retrieved from outside the system.<br /> When you walk
+through your front door, either the electricity is totally turned off or
+you receive a notification stating that the energy has been turned off.<br
+/> This camera also has a virtual reality mode, as well as the option to
+switch between various lenses, a video/picture panorama, and a
+video/picture panorama.<br /> There are also MV (with a single button to
+return to the home screen), headless, photo/video gestures, and front lens
+adjustment modes. Each of these modes has its own set of capabilities.<br
+/> The GPS and air pressure combination employed in the system for flying
+at a fixed altitude is essentially a hybrid of the two technologies.<br />
+Wind resistance is rated as an 8, and it is measured in meters per
+second.<br /> <br /> <br /> Thanks,<br /> Jonathan Durham<br /> <br /> <br
+/> ======<br /> <br /> Is it necessary to print this email? If you care
+about the environment like we do, please refrain from printing emails. It
+helps to keep the environment forested.<br /> Please consider the
+environment before printing this email. Please do not print this email
+unless it is necessary. Every unprinted email helps the environment.<br />
+If you received this message by mistake, please reply to this message and
+follow with its deletion, so that we can ensure such a mistake does not
+occur in the future.<br /> <br /> Is printing out this email really
+required? If you share the same concern for the environment that we do, we
+kindly ask that you avoid from printing off any emails. It contributes to
+the maintenance of a forest-rich environment.<br /> Before printing this
+email, I ask that you keep in mind its impact on the environment. If
+printing it isn't absolutely required, please refrain from doing so. Every
+email that is not printed out is beneficial to the environment.<br /> If
+you believe that you have got this message in error, please respond to it
+and then delete it so that we can avoid making the same mistake in the
+future. Thank you.</p>
+<br /><br />
+</body>
+</html>
+
