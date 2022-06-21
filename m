@@ -1,57 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF30C552E8A
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Jun 2022 11:37:40 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A38325538CB
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Jun 2022 19:21:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8BF1810EF0A;
-	Tue, 21 Jun 2022 09:37:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 490F710F0B1;
+	Tue, 21 Jun 2022 17:21:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb2a.google.com (mail-yb1-xb2a.google.com
- [IPv6:2607:f8b0:4864:20::b2a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 818E510EF0A
+Received: from mail-pg1-x52b.google.com (mail-pg1-x52b.google.com
+ [IPv6:2607:f8b0:4864:20::52b])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 155A110F0F4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Jun 2022 09:37:37 +0000 (UTC)
-Received: by mail-yb1-xb2a.google.com with SMTP id e4so10830193ybq.7
+ Tue, 21 Jun 2022 17:21:36 +0000 (UTC)
+Received: by mail-pg1-x52b.google.com with SMTP id r66so7761047pgr.2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Jun 2022 02:37:37 -0700 (PDT)
+ Tue, 21 Jun 2022 10:21:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=/0bRExIb6Mv4sy5raFRmeQINC+UUx7zEZcUUOWWOPJg=;
- b=cYTFPAUCRTmBkCR+cVA5ZNzjA2Uqgc/HjR0zlOgbg9VuBnX3dwzG4Kj4FjhnRnvcvi
- wTyu7niNLf4R1OK+/LKzjCUdZ6XYPAkUSTnlVnVi+LNWF7h/kdKvp9e/2HfkHETOu+VA
- 2PSxObV5wY/xFH3voyR2x2qFYgLNClifj7+m1vJSVh24kwl8FGKk16kvXtvOc5VNOcrH
- UyKoKG1yWb9wGAVlxzIf2tj/E95L7Uf8qdMRFG5eH2sJkEk6Ptgi4txcgY8ONngKnpoS
- ooFz1cPReMEGpVh7DyEHUxeOUISoI1NpJTxEGX0hj235wu00/Nw5bO0+JQPRTCdmby+0
- /3DA==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=NKmHBGbwpbZSTpmn2RbhiPYyKFepvQ6c0iScucjmBr8=;
+ b=gmadbNSo2EcOhG/UM4r8sOVLYGZnNkYiDrkfQuo//zPD6FDXE3rvlpyne8nFoDCtnl
+ v47WPCnxiiFtntZAiipLQ7Ajr7sL4CkfIJXXgh07DjOSzhQQaIpdmubuzjjtbGyQJFnA
+ UN5LmH49t3mBc5chRYPcQIt5TKFQfS0GIHPTGQKG+dE7If2sYxT4//J/kIaPBkzMzBoL
+ U2p3x6Cr7THRxcmKaalD5d5GtO2wrIqO2Nrv8o+arqt4/mhnkO3o2dwrpOWrA9x5U7pg
+ LmdPMkXZfmg8VDe35PPlvYxJx7Mjezn6kCcbSP5zcYcICBDRkEoyENFFOqN9tCWRAnkf
+ WkOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=/0bRExIb6Mv4sy5raFRmeQINC+UUx7zEZcUUOWWOPJg=;
- b=BXTT/uotn+mq7l961Q89OAmFZ2G/tMZI2CHSGh+1kv936N3FXoiajmm3Le+6ycBF9M
- U9qKqOW4Xu2IJwmypytyVVkEoZSgJLtWZXqgBx2fUUGbWdD7epF/LsYO5lHK0RER7UZf
- 5+uTAKFO3VEk6h/3nx5QzDVREjDH1MJtceMCgp1PcRea8opbJk5SFA6edksKgeQSABXu
- kTDuQXt0BgLG9sCjhMVPW/1pYpqE+0qDFJEGeCDXmPmi1to1XMuIP1EiTSPvpg6lDx1P
- MDOMttXYTqfysMEzFxGjOr73jOuDPMUwsjc3+ne2p1fwMEG2d7khENL2ykA5oSreZsCw
- f1Kg==
-X-Gm-Message-State: AJIora8drWDh2AaeY8LLuL5yS5Qqvf2kk/geqDzrgaBX5EhgkOtJZVT+
- Zsi0J8XUQnryGjsGqB7cPrF09TBbMIOsVs7Rw8I=
-X-Google-Smtp-Source: AGRyM1s/+WOFM12bU7OZIdCkvOR7pxg4SYt+lPISunN/vKsxgA44GhPMdCRChVbTCxEcM9644YCRjMJp9MGT8NprzSY=
-X-Received: by 2002:a25:a066:0:b0:664:411a:1071 with SMTP id
- x93-20020a25a066000000b00664411a1071mr30958144ybh.366.1655804256510; Tue, 21
- Jun 2022 02:37:36 -0700 (PDT)
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=NKmHBGbwpbZSTpmn2RbhiPYyKFepvQ6c0iScucjmBr8=;
+ b=06eUVmYp+rVTx5Fszx5s+F4hoPylKvfuYJm1ogo8jKweegBIvK+KKPcmmNv9pOlzRF
+ 3cTFs+evuUY5WHORbxfeooF5r5Qv8r+giujdUJqGfR/V/Y4I0qDgrXWGf3R0eas/SjQL
+ R7DCa4K7a+EIrnUXandsP66nqYD4FYfEJ2epmTQRKxF5mq4C2qBdpwgu5ZVwa3T26+Jl
+ S2IDu4AkN+3GVpOiWjONJa4bgQQW2e/mA+cMjjku9fD+i8y/BvzLvRf3PzgoBw4H8jrt
+ lAEBdj7dWGy4QSLSm7CL0I8pCBbRBZMzlpWEBz1TgVpfsl9pUmaFB7Pu3QtukCNBaq3f
+ EAJw==
+X-Gm-Message-State: AJIora9i2atdslrNJE4wV9okarfLdMxNK8piRJpj3ugNKc06XKnhu0og
+ NkUix1c+mmFRiY5QXlBxHSR7A45wSC75yRHaqKo=
+X-Google-Smtp-Source: AGRyM1sGuncnRDu6a7EkXJIH6AxGayUY6jDmmmRrODA6gywnhKmYqo9oPBXXWC1hilaG5z2XybnRkve7cXL99uIcQx8=
+X-Received: by 2002:a63:7c2:0:b0:3fc:6f1f:d12 with SMTP id
+ 185-20020a6307c2000000b003fc6f1f0d12mr27372388pgh.372.1655832095771; 
+ Tue, 21 Jun 2022 10:21:35 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a05:7010:e10a:b0:2d9:e631:94d0 with HTTP; Tue, 21 Jun 2022
- 02:37:36 -0700 (PDT)
-From: Dimitry Edik <lsbthdwrds@gmail.com>
-Date: Tue, 21 Jun 2022 02:37:36 -0700
-Message-ID: <CAGrL05YAoCppH57zvOR2tcLWnZjxqWCDCU1_Az8pwHME1GWH0w@mail.gmail.com>
-Subject: Dear Partner,
+From: Sarah Ritterhouse <sarahritterhouse986@gmail.com>
+Date: Tue, 21 Jun 2022 17:21:23 +0000
+Message-ID: <CAJ1oPZ+hoVdbTMo1KSRHzaCSh_M8kohopmGTpYoGyNYTzOruQQ@mail.gmail.com>
+Subject: HIIIIIIIIIIIIIIIIIIIIIIII
 To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/alternative; boundary="000000000000e0504105e1f873dc"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,21 +61,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: dimitryedik@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello Dear,
+--000000000000e0504105e1f873dc
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-My Name is Dimitry Edik from Russia A special assistance to my Russia
-boss who deals in oil import and export He was killed by the Ukraine
-soldiers at the border side. He supplied
-oil to the Philippines company and he was paid over 90 per cent of the
-transaction and the remaining $18.6 Million dollars have been paid into a
-Taiwan bank in the Philippines..i want a partner that will assist me
-with the claims. Is a (DEAL ) 40% for you and 60% for me
-I have all information for the claims.
-Kindly read and reply to me back is 100 per cent risk-free
+Ciao, per favore confermami se questa mail =C3=A8 attiva.
 
-Yours Sincerely
-Dimitry Edik
+--000000000000e0504105e1f873dc
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_sig=
+nature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Ciao, per favor=
+e confermami se questa mail =C3=A8 attiva.<br></div></div></div></div>
+
+--000000000000e0504105e1f873dc--
