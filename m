@@ -2,100 +2,100 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 879E6553C47
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Jun 2022 23:01:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F582553D73
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Jun 2022 23:21:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2827A10E5B1;
-	Tue, 21 Jun 2022 21:01:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AE0A710F52D;
+	Tue, 21 Jun 2022 21:21:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2082.outbound.protection.outlook.com [40.107.92.82])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 676FF10E5B1;
- Tue, 21 Jun 2022 21:01:26 +0000 (UTC)
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2082.outbound.protection.outlook.com [40.107.243.82])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3F01010F52D;
+ Tue, 21 Jun 2022 21:21:31 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ef1525KvLIIbHFEXwI/9MPL89SOYsDlSXs7p+QTJe5KOTDOEEENmgkC6JN6xKfd3DoHIYKu2L0QuY1k2d5lSSmf00l0wvuPhBrX2eeHGCwYTT5bAcebFOzAPyo1WvRZQTrjQRkS1bFnKolLUwzTkXq6woBGb1QIFPVmLer+TVpC802XgS5CMXr4cHfoInjXKr1+EQrII30FqkH+WgNpqiXru4m/3NT+6tfYZ7i78Ea1a49RAIt9euLtD3AfNybVXPt5BCwEwsRnlBK7F+OwjDYHugv4aBDN4fNsDc8HsowOgVBQjwF0TKa9v+LXzM4p28W1kGgoqoSyHWA546z3Yog==
+ b=e9tCpbDH9Fk6Kcr2QUm9x/h1nhltk5oOwp87NCOkB4ec+37hu2fAkhDseRI659gHxAOJV9aV+TsnjCyetZFsULZ4ZbPs7zLOQqZLnuvDRh7HTLYdA9mpF9IlMN0I3fELW2sW7hcM3QYi9jaF1QrutkrBdGU/fReqnCvZPxWEDUvW7tdUbwDpw82Dz6brWMpIOaDtcfZjFUfqdwQ8U/CqrxU1aHMlMsNRwOqwgIU+vVf6s1dujfhHVfYjrH69LH4y8Glr/puCYYDSIIl7TbW4g2j6HNFc95nTlI8muvi3jXIYvKKw1AUXaIjkpQJLsxg5WvdImiI4FJkNsNmvYV1ZgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vUIF2uGYWjV8j5sOP5LZIAOG0iYID6apJ5elt83pzd4=;
- b=A7TyVQlOHoNACKhAQhR9Bxc6KFNeqjXz9iuUFMNlWeR83XuC4Y2gcidmQpcWVTlNI/J5Fab0j2jCDgIzEzqaQkHt3SEnFvbIMujRemkTzj/kb4/4pXKg04pGbcUWlJIEdHVVbjxXT3lYpDgHJtMk5xRouvtcLKyIEa1g6BwoNlf2Ylipl+dg3nDOP+zzW/H5qFO1UKDa0oF/sIZ0ehsaQkJnf/0tdQj0MFp1e9xHVcZyp9FZ4TXX97piUTYrnobzWn0Y7ZQQWLUKXlP5wWCzEb5HJ7J99aVlRnlmTbmwWAI2H8HXoIGY5ZNAV4Mnylb7PJpiMbvvIsmuY9d1v6l3KQ==
+ bh=7/csMImmXMS8W+ncO7h86h8MKt61Fpz6P3qybQ1Of5Y=;
+ b=LHp3TOwaLQLRotocyO2lyaNUv3a8U/EEUXcd0MxBwEarnvLnxGHB+fp8qYz14arJd7p9SH+Y0eqF4cv9rzyxX/kZ+E5Ge3juwgmt62tTg8FRyy2eEtwlJMIdI20vG/LrkmqEik9R9mbba4pUivCyGOT2Yu03DfTNXvuOV4t7CYZi5v6wmiG5Epc2A8uoIAPh6AeZAPzEM+QoutgN2KNsPJDhW5vt43QoDESOBDrBPXY6RXfhDTJxQDf9kYmeAaCYGerbIyuyAMdhgyDOBxi7h8bP9IpGYCsyoBfcitGjmfHMmy1Zk4BHOlgwaCvRmDPzNfD2M7L5hENxWeZzhQ+LtA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.236) smtp.rcpttodomain=linux.ibm.com smtp.mailfrom=nvidia.com;
+ 12.22.5.234) smtp.rcpttodomain=linux.ibm.com smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vUIF2uGYWjV8j5sOP5LZIAOG0iYID6apJ5elt83pzd4=;
- b=brHZSc4iipxBnLoq4noQxYIjaD+6h4EGFgb31mFP7l6S/UA7maRJXQEEogFiWGVjWZT6I4y5VQjNShRCmFgZgCu7OcVmmHbdIIpb8EHtkbO/U2q7/1KtJuMt0N6V1xqwSbvPCKsMlPOVoTTqlKcvLlfKGTi5bcfra86RzNQjEVig6kkkEfaTa/bQV/BiAPqsWNrFSAxPMr1Pv+8Q9qONoW5DbVaFwKKCmSbGkevWCGTYnTwmpelkSy8tRgghMRiYB5BYfyAeVYV6NGPVh0va9kgX8eYjPcUDBbogWXIlFexK6+8X1uW2yMmkWb+/oO31uF7gAUHazFm37iCRVoOXwA==
-Received: from DS7P222CA0015.NAMP222.PROD.OUTLOOK.COM (2603:10b6:8:2e::27) by
- CH2PR12MB4940.namprd12.prod.outlook.com (2603:10b6:610:65::10) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5353.15; Tue, 21 Jun 2022 21:01:24 +0000
-Received: from DM6NAM11FT068.eop-nam11.prod.protection.outlook.com
- (2603:10b6:8:2e:cafe::2a) by DS7P222CA0015.outlook.office365.com
- (2603:10b6:8:2e::27) with Microsoft SMTP Server (version=TLS1_2,
+ bh=7/csMImmXMS8W+ncO7h86h8MKt61Fpz6P3qybQ1Of5Y=;
+ b=k9BgDV1VBCYyZYTGxHu0L/9ZT3tKKc1n/m8ogiHlM4VE7MGPnw+M14DLuXQoclg1jwTlCt2ghK1UeSGomvVzDieX4TvhIi/bDKDwNbTt3Md4pmWWP4k0rmqwetQDQrA1hjuEQxaYk5K99Z1UWBWVOblGTShPrK6V5npS1Bao+zLxOAmjF/Gd3dBahA3Q46oPd284wP2YDX6geIlWR+QNdvj0rWOi5IP4gVVaMjaPkgfd3oy+/S1sLvAxZDuSd+GWZaW4uDMXbhHyq7nyrCZ6EgNId9h51DM81iOVTXhK6DHS5ZJUzxv466pq2i9AdTPVjM5SUJxD/87agxFkaWZreQ==
+Received: from MWHPR1401CA0022.namprd14.prod.outlook.com
+ (2603:10b6:301:4b::32) by DM8PR12MB5414.namprd12.prod.outlook.com
+ (2603:10b6:8:3e::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14; Tue, 21 Jun
+ 2022 21:21:29 +0000
+Received: from CO1NAM11FT028.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:301:4b:cafe::e3) by MWHPR1401CA0022.outlook.office365.com
+ (2603:10b6:301:4b::32) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.15 via Frontend
- Transport; Tue, 21 Jun 2022 21:01:24 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.236)
+ Transport; Tue, 21 Jun 2022 21:21:29 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.234)
  smtp.mailfrom=nvidia.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.236 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.236; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.236) by
- DM6NAM11FT068.mail.protection.outlook.com (10.13.173.67) with Microsoft SMTP
+ 12.22.5.234 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.234; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.234) by
+ CO1NAM11FT028.mail.protection.outlook.com (10.13.175.214) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5353.14 via Frontend Transport; Tue, 21 Jun 2022 21:01:22 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by DRHQMAIL109.nvidia.com
- (10.27.9.19) with Microsoft SMTP Server (TLS) id 15.0.1497.32;
- Tue, 21 Jun 2022 21:01:14 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ 15.20.5373.15 via Frontend Transport; Tue, 21 Jun 2022 21:21:29 +0000
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by DRHQMAIL101.nvidia.com
+ (10.27.9.10) with Microsoft SMTP Server (TLS) id 15.0.1497.32;
+ Tue, 21 Jun 2022 21:21:28 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail203.nvidia.com
+ (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Tue, 21 Jun
- 2022 14:01:13 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.10)
+ 2022 14:21:28 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.8)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
- Transport; Tue, 21 Jun 2022 14:01:10 -0700
-Date: Tue, 21 Jun 2022 14:01:08 -0700
+ Transport; Tue, 21 Jun 2022 14:21:24 -0700
+Date: Tue, 21 Jun 2022 14:21:22 -0700
 From: Nicolin Chen <nicolinc@nvidia.com>
-To: Harald Freudenberger <freude@linux.ibm.com>
-Subject: Re: [RFT][PATCH v1 1/6] vfio/ap: Pass in physical address of ind to
- ap_aqic()
-Message-ID: <YrIxlLjXS0GiEpYg@Asurada-Nvidia>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [RFT][PATCH v1 5/6] vfio/ccw: Add kmap_local_page() for memcpy
+Message-ID: <YrI2Ul/u6pRvt0rT@Asurada-Nvidia>
 References: <20220616235212.15185-1-nicolinc@nvidia.com>
- <20220616235212.15185-2-nicolinc@nvidia.com>
- <fd564e6270a4bfcd9249559a797365ae@linux.ibm.com>
+ <20220616235212.15185-6-nicolinc@nvidia.com>
+ <Yqw+7gM3Lz96UFdz@infradead.org> <20220620025726.GA5219@nvidia.com>
+ <YrAUZ7hXy2FcZcjl@infradead.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <fd564e6270a4bfcd9249559a797365ae@linux.ibm.com>
+In-Reply-To: <YrAUZ7hXy2FcZcjl@infradead.org>
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 75d236fb-eb13-4993-cf5b-08da53c9326e
-X-MS-TrafficTypeDiagnostic: CH2PR12MB4940:EE_
-X-Microsoft-Antispam-PRVS: <CH2PR12MB49407990A318F120856014A4ABB39@CH2PR12MB4940.namprd12.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: 2232a662-aa28-4c05-38f3-08da53cc01cb
+X-MS-TrafficTypeDiagnostic: DM8PR12MB5414:EE_
+X-Microsoft-Antispam-PRVS: <DM8PR12MB54142DE1CF737009C21BE559ABB39@DM8PR12MB5414.namprd12.prod.outlook.com>
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 04odEqA/RIkDlmpf/vRd/TJwXT4qGDzWPGJ2PtjwpfyQRKZNa7NqGJe5ShktE10UZXbnbIcwAFACJ+gmiQpiYdoqXuuyDeDmSpYUNwThHE9S46RaEMsd9HDbg8QqLaneus2w7QZGkJU+VFQowNSKsjIPSwvSBbPZ3NorDoG0fOqa6XDgZyBgp8yNYhl0VrgmhX2uXMJ6U/CqswgsrIAEk2aJnryF2p7bMwCJc6crAckbWwzS5uvXUewXml1GIyfCebOQQ0+yDsP2Zb1zIOqjddY5yGIgfB+riwmApP3XjeVY6lNt9qqrZ9Jgiu7L7TlU/xMVA251JQk02oHtLqOd0Tf3SjXZ5Z7xtJtWEoYh9rsctSHtmu2JY9xGLVjUmz7aQqtY+p3lq992ZEG7HYDoedczG4r0EvwQxHUqWnv7iDe4oafvGNPbHToid99k3kzq6LlQBIJJTpb/rEdsMtPJhFv8eFOD8O6u6BiR+dBSheUNI9OqrZZJnqSbRh4YYeFd6/sQ6YTCMOY2U9gJSw61NRhPgxjAIf1SwO9C4Qggoo5AMJ3VB09lfQln2xyeDmNODMoGgBZgPARIzdNm06KLGsKHpI3lkmFMjvRqzd3xScz3lNVeaXlIhogoSn6HFO81xE7pbQxqsZQa8TJ2qdrl168phb1Z5ceFur5RgDVBgtSIieOhI11v+rPu+VlFs3l5tk/ZBLAJi/3nBBis5oTyd/eb11kwB9enPp2pWwQRqYsYEgTITglRQPkCBZF5FnzF
-X-Forefront-Antispam-Report: CIP:12.22.5.236; CTRY:US; LANG:en; SCL:1; SRV:;
+X-Microsoft-Antispam-Message-Info: ju20LiE/hVT3OWFeuo+XyUQ1uwoFM58J1GnhfAZr3Anwt2ev1iTTMiMOAdGuswyUOWoxLkImGWG4VUMC9TlqvcY4qCKej2JHYr57VAW5U4P62dJwTxcnRhj8jg+aqMxfVz6ti55ODxCS2TThuftDhWaMLnxq2Z0Gk9wuq17rnDcZyeJ0VW6jQh2Nz4DgwLLEzYRA/QYVQJuQynMHshOTpitN4m3gQenH/nzxq0HrBW4ZREM1QROPqw9TngEup0yxiHWpYEWOnbh/776lr3pifhAw6tjXm0Pes9KQC6plNfdZo1Dpzq6J8DbUHSBTqvoneXbpZYf16TrON38jmRk8tzMiHJ2S8y7t9eZPMblIR2SHthukrLGL/UuSxgmQaQ4QEUspQPSk3bJnFhJuEgQKdjfkWFvPs1E6mdy51QQqn+rxV28p3nFjSnu699ZX+PxaTbSuZ2Y6OFwx/7MesAZmuUbJns3tUYh775EmMxdD8m4s8u+ZHlIZokKyunb9nUsUBfzG1YXt1vxShjVtqE93P7n9/0/ps7xpBRZNO9F0v5xyzQC2iLduYqu9YDmAumyJq1sQdVMK2PdiZGi5f9/Ph694XgD+RnhiR/VQEo4XbylBdHvUl8cXRyH5I/1VbongYZbGmk2sPWwqUD7AobjD8L3JzHeIfquVoeheCMEASc90UULfSSvw77MBKEyT69WpgoJQSkljAXeOHKSjzonJqNM1jyO42Ugg+PilIEiy2W2ppHLhthAxUbBpYhRpsN+A
+X-Forefront-Antispam-Report: CIP:12.22.5.234; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:InfoNoRecords; CAT:NONE;
- SFS:(13230016)(4636009)(376002)(396003)(136003)(39860400002)(346002)(46966006)(40470700004)(36840700001)(356005)(81166007)(86362001)(41300700001)(26005)(82740400003)(426003)(478600001)(316002)(54906003)(70206006)(70586007)(6916009)(186003)(9686003)(4744005)(8936002)(53546011)(5660300002)(33716001)(8676002)(7406005)(4326008)(2906002)(55016003)(7416002)(336012)(40480700001)(82310400005)(36860700001)(40460700003)(47076005)(36900700001);
+ SFS:(13230016)(4636009)(376002)(396003)(346002)(136003)(39860400002)(36840700001)(40470700004)(46966006)(8676002)(478600001)(70586007)(83380400001)(70206006)(47076005)(426003)(356005)(6916009)(4326008)(82740400003)(86362001)(36860700001)(336012)(41300700001)(9686003)(54906003)(316002)(40480700001)(26005)(81166007)(186003)(2906002)(5660300002)(40460700003)(82310400005)(33716001)(55016003)(7416002)(8936002)(7406005)(36900700001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2022 21:01:22.4751 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 75d236fb-eb13-4993-cf5b-08da53c9326e
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2022 21:21:29.3625 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2232a662-aa28-4c05-38f3-08da53cc01cb
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[12.22.5.236];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[12.22.5.234];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT068.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT028.eop-nam11.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4940
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR12MB5414
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,31 +113,47 @@ Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  kwankhede@nvidia.com, vneethv@linux.ibm.com, agordeev@linux.ibm.com,
  linux-s390@vger.kernel.org, kvm@vger.kernel.org, corbet@lwn.net,
- pasic@linux.ibm.com, jgg@nvidia.com, borntraeger@linux.ibm.com,
- intel-gfx@lists.freedesktop.org, zhi.a.wang@intel.com, akrowiak@linux.ibm.com,
- farman@linux.ibm.com, jchrist@linux.ibm.com, gor@linux.ibm.com,
- hca@linux.ibm.com, jani.nikula@linux.intel.com, alex.williamson@redhat.com,
+ pasic@linux.ibm.com, Jason Gunthorpe <jgg@nvidia.com>,
+ borntraeger@linux.ibm.com, intel-gfx@lists.freedesktop.org,
+ zhi.a.wang@intel.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ jchrist@linux.ibm.com, gor@linux.ibm.com, hca@linux.ibm.com,
+ jani.nikula@linux.intel.com, alex.williamson@redhat.com, freude@linux.ibm.com,
  zhenyuw@linux.intel.com, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, jjherne@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
  tvrtko.ursulin@linux.intel.com, cohuck@redhat.com, oberpar@linux.ibm.com,
  svens@linux.ibm.com, daniel@ffwll.ch
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jun 20, 2022 at 12:00:53PM +0200, Harald Freudenberger wrote:
-> External email: Use caution opening links or attachments
+On Sun, Jun 19, 2022 at 11:32:07PM -0700, Christoph Hellwig wrote:
+> On Sun, Jun 19, 2022 at 11:57:26PM -0300, Jason Gunthorpe wrote:
+> > The remark about io memory is because on s390 memcpy() will crash even
+> > on ioremapped memory, you have to use the memcpy_to/fromio() which
+> > uses the special s390 io access instructions.
 > 
+> Yes.  The same is true for various other architectures, inluding arm64
+> under the right circumstances.
 > 
-> On 2022-06-17 01:52, Nicolin Chen wrote:
-> > The ap_aqic() is called by vfio_ap_irq_enable() where it passes in a
-> > virt value that's casted from a physical address "h_nib". Inside the
-> > ap_aqic(), it does virt_to_phys() again.
-> > 
-> > Since ap_aqic() needs a physical address, let's just pass in a pa of
-> > ind directly. So change the "ind" to "pa_ind".
-> > 
-> > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> > This helps because we now block io memory from ever getting into these
+> > call paths. I'm pretty sure this is a serious security bug, but would
+> > let the IBM folks remark as I don't know it all that well..
+> 
+> Prevent as in crash when trying to convert it to a page?
+> 
+> > As for the kmap, I thought it was standard practice even if it is a
+> > non-highmem? Aren't people trying to use this for other security
+> > stuff these days?
+> 
+> Ira has been lookin into the protection keys, although they don't
+> apply to s390.  Either way I don't object to using kmap, but the
+> commit log doesn't make much sense to me.
 
-> Add my Reviewed-By: Harald Freudenberger <freude@linux.ibm.com>
+How about the updated commit log below? Thanks.
 
-Will do. Thanks!
+The pinned PFN list returned from vfio_pin_pages() is converted using
+page_to_pfn(), so direct access via memcpy() will crash on S390 if the
+PFN is an IO PFN, as we have to use the memcpy_to/fromio(), which uses
+the special s390 IO access instructions.
+
+As a standard practice for security purpose, add kmap_local_page() to
+block any IO memory from ever getting into this call path.
