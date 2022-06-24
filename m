@@ -1,128 +1,109 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54C74559A2A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Jun 2022 15:14:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B1AC559ABB
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Jun 2022 15:56:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EC74210E076;
-	Fri, 24 Jun 2022 13:14:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1379610E2F2;
+	Fri, 24 Jun 2022 13:56:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam04on2076.outbound.protection.outlook.com [40.107.100.76])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 95E0F10E076
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 Jun 2022 13:14:35 +0000 (UTC)
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2068.outbound.protection.outlook.com [40.107.92.68])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 117B410E2F2;
+ Fri, 24 Jun 2022 13:56:19 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MIaH6xibx4UYcq8X4gwX7ICMZxwVrWZqDlv3R0Dmi3dZzgdcHUnc3TkjiiNZFlAhvpmneg+WR4gQDiCdyZCMbQ7K5vupu5uWHgR3S0JuB2C+lJLydIVB//rythShzQ6uGTC6BEynlJa7RMK37WlIwWwUFmDCKBshuD1yqjK2elCtpcjjjEbKntUqrNs0hL1s1CKtdT7TwpJXxIfydMaIbzV4jk3igGRb2ENRHWD8n8mBimYAIHNaN3LaPtGeBnmSJayDq7eKnuNbpDUPRAFkdJPTevwiq0msoND8bUl1d/ZHueHqyQMzlpL04dAIUNo4T/BTy/pKzP0wrGQIBe+XeQ==
+ b=jOfkiaiBd3SaCUb5oUwDreND4pVCDGXR8sJwQ53+PRNN0TAPnsA94dOH12Cpp2dxYL40yFj3qxEHWmGRR5P75ykKsjdWS+cNQKnx/F6RyRd42UoZJG4d+9qnXTMmVBqAj6yBLR8Cgw9fCepO2i5ve4er9GWFBlalobaBgd2qmjCrQBY71Z7FVIPjppjKGM628WMmRLPhjOsoavnCjobHt1PwytgHHOjG+XvRxDDqmImk72i4xyY4QClcc2covTN8XV56tlkkMbkC7sGu36DfVv1fR57kQaQBPGdnCvNJyhOvjccr/7pThFSeOnu234S8es4OkU6NwlJ+LQ12/6h+ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9bbhVtkGVImcbju/BD8GkVr6Frbp0/LtF629uPqu6h0=;
- b=T1Z8iUNFThce3M8jR3uACUlGDr2Zb9F3rpBGbX9IzoyjlQTUt/7SORngMKkC4wcM1pdOsAeQiLdlKoWCsgipgU5MPcCWAtWWzNgknMB68eCcjo+2E6QML5ahx9q/TGJnvmwfMgZH0okhNMBBeb4YcpxsWJ7IburFriSJYemDXnZIf3hInptwWfqHfRO0OhJt5hyfirOcruJskvFfGo/d1/DNYAj39aaXU+epBtAb+Zoh4AR+WmCador2dyGW4ukFWghdPcz7PJYTS1RZeCvPLtPmJftyQCSYE3ohlRvkbxzmDNYoUqSTtndKpeoRemIt4K0v7/8w6vOnys269BSLvQ==
+ bh=xVsErnjxwZsw6/N2wI93VyrUlKVWC8i4eU+ooUC2Q7k=;
+ b=cI95rlr8PXc9Q0KeRPOMgqxQ8dTF2t8JOexECmcXi/lVB4fbSBXxLLOzoRZKaM3O6bfMWL8tg34OhTGXY3GbQKNcq1cwF6u6dkSMLxB3iTzVyTfJUILcVAb4kgPkKyrsqpMmq/N/RB2TTURDpm2h72UaiDkZWZbSRouUTQANkCvXUmu3nHfYyxhVS4ODEnExFa1/uAuge0SiKBf7646mB4ymqZQQMBOcSoFK9o26qHoFz/9UFOy3bgIXwIJNrxdUgE6zX4O6zsmbqU0e0f/QTuO9jl72O05k7ig/qufeNX/hgjkmN7P+3pb5ssoR/vSylpXVz/7PCaHFpkgpFAvR3Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9bbhVtkGVImcbju/BD8GkVr6Frbp0/LtF629uPqu6h0=;
- b=NsKq+rOE19h2tb90HEwMpJwLbEN4w/pQSfcdMzibPJZuXI/6Z7a1fO9CbYeFXXjt1PBauF0u/AZDK/xCo4hsK2UzB2uuNnp0tOovSu7KpMvBBkf68TkWZBadj7p5ojb8PjDCyhxZMl4eZF5JC4Jam9gpKSVmri8sS5zu9Y3bHuo+QqCjI58NIvJS3gj5Nz48afwVx0TbfQlB6K+8B7bZGmy0TJTTWH552IDWQNhmT0d9NaCzvcThxbKZSJR6iCPbEqGjkcHmgEDDtGuyD6lIxgpfFOrDqsEENQJPVFUUk8tmXweJvHm6Oz82Ei7ckCJ6S/ReOZyF+degPMZN1fxCcw==
+ bh=xVsErnjxwZsw6/N2wI93VyrUlKVWC8i4eU+ooUC2Q7k=;
+ b=pIqQd81Xnxp0JxOtUJOWvK5BM/2mkk3E+AvGRp9+FdOxvMVJ4dvCb6OBpTa7QeK50ywzT2gDGleGGLIb6y/H7tp4DEikwgRQ0cKhw/7mmg8H+BxUxa6XFWtAa24rNNbD4cHw+2Rgt/GMxKqyDv1IU3Hz3cuSuX0g/SzqBpZCLQkYEHxYGxNoEWsx9+OQMU9WshNypSipPNuZURRiBZVBu/ZqkkmFQIdeYQV4EMwbihnMhKfnGr1y2g9k2imHtDkwlwBEuYNJEc4i29DnoNu1m2FqTS2TOdGX0zxzqrgarHpAkJbAUuE9znd7OmcNo+XukveZVCzqMKqTsXwPeNcIvA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4206.namprd12.prod.outlook.com (2603:10b6:208:1d5::18)
- by DM6PR12MB2604.namprd12.prod.outlook.com (2603:10b6:5:4d::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.15; Fri, 24 Jun
- 2022 13:14:33 +0000
-Received: from MN2PR12MB4206.namprd12.prod.outlook.com
- ([fe80::d5df:ac97:8e92:fc14]) by MN2PR12MB4206.namprd12.prod.outlook.com
- ([fe80::d5df:ac97:8e92:fc14%8]) with mapi id 15.20.5373.017; Fri, 24 Jun 2022
- 13:14:32 +0000
-Message-ID: <34bbf698-cc76-d638-4c6d-c42bd726ec26@nvidia.com>
-Date: Fri, 24 Jun 2022 18:44:17 +0530
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 02/13] vfio/mdev: embedd struct mdev_parent in the parent
- data structure
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>
-References: <20220614045428.278494-1-hch@lst.de>
- <20220614045428.278494-3-hch@lst.de>
- <ab47e216-f027-2083-308b-89c6aaa2e806@nvidia.com>
- <20220623201844.GA48313@nvidia.com>
- <f152e97f-0d07-e7a5-baea-3ae7de5662cb@nvidia.com>
- <20220624123344.GL4147@nvidia.com>
- <b158ee0d-d7bf-c827-637b-3cd98c66b193@nvidia.com>
- <20220624130510.GA124353@nvidia.com>
-X-Nvconfidentiality: public
-From: Kirti Wankhede <kwankhede@nvidia.com>
-In-Reply-To: <20220624130510.GA124353@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MA1PR0101CA0037.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:22::23) To MN2PR12MB4206.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::18)
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+ by BL1PR12MB5333.namprd12.prod.outlook.com (2603:10b6:208:31f::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.17; Fri, 24 Jun
+ 2022 13:56:17 +0000
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ac35:7c4b:3282:abfb]) by MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ac35:7c4b:3282:abfb%3]) with mapi id 15.20.5373.016; Fri, 24 Jun 2022
+ 13:56:17 +0000
+Date: Fri, 24 Jun 2022 10:56:15 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Subject: Re: [RFT][PATCH v1 5/6] vfio/ccw: Add kmap_local_page() for memcpy
+Message-ID: <20220624135615.GO4147@nvidia.com>
+References: <20220616235212.15185-1-nicolinc@nvidia.com>
+ <20220616235212.15185-6-nicolinc@nvidia.com>
+ <Yqw+7gM3Lz96UFdz@infradead.org> <20220620025726.GA5219@nvidia.com>
+ <YrAUZ7hXy2FcZcjl@infradead.org> <YrI2Ul/u6pRvt0rT@Asurada-Nvidia>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YrI2Ul/u6pRvt0rT@Asurada-Nvidia>
+X-ClientProxiedBy: BL0PR02CA0019.namprd02.prod.outlook.com
+ (2603:10b6:207:3c::32) To MN2PR12MB4192.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::15)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 1819d775-918f-471e-550a-08da55e37a35
-X-MS-TrafficTypeDiagnostic: DM6PR12MB2604:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1bb14af7-45a4-424c-6f1d-08da55e94ef7
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5333:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: wgdKqPWQJImw12iWjei/i+HNbe/iv2JWsEB/XjDOxssq1i0FnQ9n3tAKvieVhy/fsNBvDt5Dia6QXTe1/VObtagPaPhDWmkHr7XWFu3L40XjOAl5wE6nMGj3gJDWn4Sa4qgo9yqCxzKy1gOOnaQBRrn5C8CwKR8338NaP8Uc7RC6MthpZDGAagibrHSlNFlGg7jTj5NBmrBsAZTQjibdEtLFnfvQ6W+DpAiQIX0v/LdkGycKeXEc+Gq8MjKESNMbgaR0ZmE4211fcACKwxMN9J9rbIIEO71ZoU6XrFZlVIAncuN/N2DPJYemkqLwlpriFxww7sHEA5varZdDVIJ6Z6oj9ts+pEvHccGF/9bnzWVtuzwqltjhZOH+2ejxx0gOJm4AzEtJKgxVopNc4gt9oNk8MSIU4y9/38Yw5DRpLlonl9Xd32qLBbT8pfidrrlAJPnwD+h7I/YAG7eNth6B/XiEct3IGJWGJ3Ke4A/IMB/IEdx9MutHwYOTPt5u00BO7S0/hEj4tmtnqoT5jRyLMbrP5XeVxpRmG2nXQK8d/zRcNwjonKMTKPUBt940ovVNhK4J2eUevVIjenkao/4q+/4D60Uf1w1r/EIXjmaOhm/U8WOmkYkYH2iTVDle7z80WhTTmn6gDHccE7ibBOoSHomMfxZRwdKRY2j4+JpUE0ihT2CCycCal/wyBRASSoWd38JxdvgzZLR14X2LiUZRT5w8V9EiNwmr5TFoihdG/WSEU7c+IySd6Q2xDEOpwD58nnazonNmhmFsqVHQg2giG5uh/n8THv0V+JDn4jyLCf09359Exzi0VsDWctWGeC/GHUUtWLeOOVyr4Ht+VyADgQ==
+X-Microsoft-Antispam-Message-Info: /4Uuxq1GZApsrKMT7xGnxhJOEmZOxdSBjvCUWN1jjB8/8W/FxS8v0g3hP0Q6gRd+ccNjTYH2uSQcv+s1d3LM0ZHrIzveA9BOEILJqdPKEwTfqboW9XgCGEiWrtBY6cWozsWIyR8RVE+K//7XtSorqVmTOOZ0qe+Q13hTi47HU8dDbG6KSZWpnTjzWofsqo0tXskxx4vCNIMkzm2GX6uswo20IxLVS7IvpPTU+1w/oLw7hp0mDnwkR8+JYOQCDaATtSMvRE5hpOz+6p60nXUygJVTudNPeMpXKKoU/QOlcgeVslDqpPxrDmO6rQKuUojW1FC8alHwDKcKwx+QN+TgDK/8waC789TQq8fje1/R28jngIZvMBwELCXioYj2ngD2FR4RH0eK6uN9I8jbWGkVzMFGXuht/F014+nVWpa8lUMEUTq2weiADHFRTUs0MXdSDEUaQgbBfBdgZpUGjnVzfAuwO4ao4paffkFu1aPB3YXS296eKsMk/PTbSbDgwt+BqrXpzNwEEdnk+gFc6cqB/zxYqB8uAV8uZhGoOol6/naRwxFPUsX1y1HomrPNMJe465DijPjY1V/Zfcgw8sPvK/lg8J5tjns1qe5sipWuqqL9QOHsIAP6rtddLvZpjvSe63OKZ6IAvaeGy25BgZSslG+lNKvzki6GTe8Hk2PRNJmkbEjFLWGkQudo3IgL9HAybVqZRxyhx2MbLz+4mxN2KQBZ8MxdxQ+vM88yMstQ9piskceFB1zpSFLJYOgxV9eP
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4206.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(376002)(366004)(346002)(39860400002)(396003)(136003)(107886003)(38100700002)(36756003)(8676002)(31686004)(186003)(2616005)(66476007)(316002)(86362001)(4326008)(66556008)(54906003)(31696002)(6636002)(41300700001)(37006003)(6486002)(8936002)(6512007)(478600001)(7416002)(53546011)(6666004)(26005)(6506007)(6862004)(55236004)(66946007)(5660300002)(2906002)(43740500002)(45980500001);
+ IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(4636009)(136003)(346002)(366004)(376002)(39860400002)(396003)(478600001)(36756003)(33656002)(2906002)(7416002)(6486002)(186003)(26005)(5660300002)(83380400001)(86362001)(316002)(4326008)(66556008)(66476007)(8676002)(7406005)(2616005)(1076003)(6636002)(8936002)(41300700001)(37006003)(6506007)(66946007)(6862004)(6512007)(38100700002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bnZYTUViWlBNZkV5RExHcS9nbk5PNGxpL2JUYmpMdkFDUFVYYWFSS3VCdm9C?=
- =?utf-8?B?RXdYanJ5c082QlVncVluejl2WkJPRnpMV1Z4TXBqZ05WazhxcWcyS21Wb21L?=
- =?utf-8?B?NlpJTmh5dGRSUzhzRkNmS0VmRVJTbDFTdDkxWEE4UWtGdkVEQjlrYUNvcWFr?=
- =?utf-8?B?ZjNaRGNlWFI1Y3A4elk0c3NTc3B3aitMczU0TmxrTWVHUlNycGRmWWl0YlZ1?=
- =?utf-8?B?ZWxTc0RtOTNoVUhGVWkrNk80NEgxM29SYWxSZ08rdlhmcXhkU013ZWkrQzlJ?=
- =?utf-8?B?VXk5aDBvNTRmMFJmdldSckxGa0xGVll5ZndPYzlVQ1Rqdm9ZQ3B5a3hvWDUz?=
- =?utf-8?B?cm8vNWM4RWViVlNLMVdTWklITUI2VERpcUl6aFNjYkxVbmlVYlBlL3g1NFlK?=
- =?utf-8?B?VzZ5ZG9oL1hicTRseG9EcVhIV2p4aCtPVHg4L1JVVjJSRlN1YkFTSUcxa2tt?=
- =?utf-8?B?Szg0dU41eHk2Q2JsVUdBWDNBQmFmVmM3RUplSHUvNklOQ0NIcE12ejZhc0tx?=
- =?utf-8?B?bllLVFh2UTdHT2N0d3paVk9ENms3Q3AwSkRKNUtwbjYza3N5VGZnWkhnU3Ez?=
- =?utf-8?B?cWFjU05DNHZOT0pCN1c0UitQVGQrMmFDNzFST2hjYnc4SnlXK2gybUw0R2FD?=
- =?utf-8?B?a1VZYzdPclE4bisvUWV4bVFXbkVIMGwrdkEzRG9OVUhOTmVOQnBHNnZKVmhs?=
- =?utf-8?B?eHNiVC8wRHFVK01qQ2JrK2NJeFlmWU1JMTd2ZU9TcG9WWTFYOXIvTi8wa3FN?=
- =?utf-8?B?QnlxU2duWmRPaFRUTjF1VG52NVFlVDNSRWZiYmNDOXhtVFZtZFluK0pNdHNw?=
- =?utf-8?B?Z2Fva0QyVktLVGNZOEp2dldCOGFjVHQ0ZXlHanJyTlZZbitnZ3ZSR1FVaUlx?=
- =?utf-8?B?bktDV3pEeFRaN1lwNTZiVEMxMno4elVoaGJiWDVDaWNmWmxjdFZrRlllUmxS?=
- =?utf-8?B?eGh4QWhpc05MMU5kVnZ0MExHZ2pPbUUvaG9PQTh5SXQ5MkV5cW9oajR0MEMx?=
- =?utf-8?B?S3dranF3L1haaGU3TmNESnJqU3BkYm1rMm5nNGNtNHNMV05FRTVmelovRWoy?=
- =?utf-8?B?VENYM1dlUG1yR1EvSHBHc29BdTRGQ3psc3g5V0hBRmZRaDVzR29yVVlSRE4x?=
- =?utf-8?B?MTc5dnd6SnlVV0VpSHRGU3Yrc0VadllNaUxVZHR3cllNOTdkNW1vVHhBc1FG?=
- =?utf-8?B?ejhxRGk3Q2dYS3RIV0xxU3NvUHExQzdwZ1ROeWRFN3ZRSUdJZ2crWmZyR09F?=
- =?utf-8?B?VU9jcFN5V0NidU93ajlRNTVuSnVRRlVweXZhR0xOYXBBT2pwcXhMeXlVei9B?=
- =?utf-8?B?WWFGYS9YSkhCN3g2QzNxWE1MMkdkc2Y3UE82OFlybktlZ0h1Wis3OTRRa0JP?=
- =?utf-8?B?KzlMcFhQUG1jcHg0bThwcUNsV0U4SEh5TDd0R0ZQZ0VFYnJ6SjhRL3pLZzlk?=
- =?utf-8?B?b1hGYlp1a3loVlBtVnpRZFowMjRYNW1rcHowYUR2VFVHS3orWXZONmNSZXJ3?=
- =?utf-8?B?UTUvU0lQUHpueFVZb2paMzVpQmE5UDNYc0ppT1RaY2tlUFlFVEdEOVRlZmlC?=
- =?utf-8?B?T3p5cG5EMWs5cS9DM2REb1V2SU95OEpyNFd6Q3VoTHFiYlcxQ1QwWm5SSjZY?=
- =?utf-8?B?U3d6cFQrbjZ5T1llSnkzL3dheW1kQ3BFbUMweExuLzNoZUlDNWd3ZjZvcC9n?=
- =?utf-8?B?cklKTjdGdzZDQ2dHNS9iVkdtcjNvY0tEVjM5azAzZjhONFM2R1QwaS9tdmtj?=
- =?utf-8?B?MGovYW5hUTdnai9jblBXMEJoZHdPNk5Na3lhZHFHV1lTQ0xmVEVaSVdqSTR4?=
- =?utf-8?B?c0Nwd20vOTNRa3N1Y2FzWE93Ty9hT3lHdmhHMWswNTRacDRRVnQyaGNubks3?=
- =?utf-8?B?SnRCZTY1YVAzbllnVTdsTUtEamE2TGFkdWY0RDNQVVkrMzI4eUZsL2l0QjdF?=
- =?utf-8?B?R2M5MTN2ZG5sQ0FGdEdSSDVnbmNuc0UvUHh1cVJvM1Z3Z0tabHZ0SkF4MFdo?=
- =?utf-8?B?dStheWhSWnVNcmxDbHdaczhmSWt0SURKSmpValgyNHA1UWc5eU0xbFNGQzVW?=
- =?utf-8?B?aTlSbFgvZGcwd0hYZExILzlFQ1QyanZkMEo4MW56QXRCakI3TXRWREhQcHVr?=
- =?utf-8?Q?FAHzlH1CKPxuj4aJk5GmEs8FH?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/4EAIsFnR1AZVJr2BVtOVwcXrhFFSjc9Q5LhSa26A+dfnn9H+aG38i4HZ3fN?=
+ =?us-ascii?Q?SY6ff4oFexFROcq4y8rrrTOsf6/8rKYKdNi+gOvQPqClgKxeQMbCFFq5+nUM?=
+ =?us-ascii?Q?EJhgS1mX2a/QC6Dk2R/eySj4kqZovwMxpHfvdmRQL+UkGcTkngjjIm/5vcPv?=
+ =?us-ascii?Q?ubfgqhhyjrmNBto46ncLCGKWaXNyNFuSbYo2LWq+ik9RkIZcDgfgwO4BF6Dh?=
+ =?us-ascii?Q?alzi12rq/qbdVf2H/pddNqXjvDuPpFWOGojhokt43ocXhwP0JaoXawGDzsgT?=
+ =?us-ascii?Q?0Vg67vtwxvA34S9/2B7+y/7rL40L6+1gF5wF0dbgUw8L/NS0e8s3THCd2Jgk?=
+ =?us-ascii?Q?5p/CwG3nZS4RCP0GBTisgsnYfTFbG5W/nhS5q5Aq9J8GlBAGi52mcPQ17UZe?=
+ =?us-ascii?Q?SmtLUiBq9sohhvqiW7Vh+FL++fXeQavlo36Jy6O40fvY3nfLFtLct/tOQOND?=
+ =?us-ascii?Q?FitpVQRuA0qhdd3Ltm8yysyO8Cd2Rl/nYnf0XnBKpFN7QV5Spnzg1xFN70HB?=
+ =?us-ascii?Q?SHFfuiLb+L9a6CikFFARPDUutIPa/QUGPqbMvwMG7b88QtSMGgWBNlSsp7M1?=
+ =?us-ascii?Q?sa4CLaYYA+hPSBk55zVuj1cv9y4W/ltqnOaofYvcUdwIw5T8KyqU/HRMjVfY?=
+ =?us-ascii?Q?p2HTzosqGP2IBqy+vPStvZBqzV5rsXPOLjnDIRnPLznOdTdtPLPXC+09fJcz?=
+ =?us-ascii?Q?U7lDJXCGgXL3wyQZjHmMnYU9XE9rZR+1jhda5d9aK+sxPzhvD7jeZ+7NKx25?=
+ =?us-ascii?Q?kWim5Hjy3hKtFzXR4ufITPKnNa3HkzPCEfFimwQQ6CBJh7u2BC8X7IXkXC1u?=
+ =?us-ascii?Q?kjWZ1C1Exu8FyNoYU3VxZ8mP3/wj/O9PVWWvawzttX5OxKzczuUtAbAkslX9?=
+ =?us-ascii?Q?IPvjEBlg46Pf/ON6DnADlZ2pvLWGZUmRpnz7cpSe1YaI4tftj29U9mhuQ5+y?=
+ =?us-ascii?Q?tHu3j2I0eDXxXu/PIZiMKxOZMIpxwTFZvszdwQPB8wQZIedWw5+BDkve6u8E?=
+ =?us-ascii?Q?OKIW/FdJpEMgbyYSYH1RNH1yYG0qMqrdydG7HwbK309AF8IrAmwmFq7IX7dA?=
+ =?us-ascii?Q?IqndMykDibFtLbXKU+G0cMjmq4n/jUsDUaZccGgbkzOAhWL/GIGnkOrTJ2iJ?=
+ =?us-ascii?Q?IstHq2QkMUOWWPFOF+iw901D8bD3ZECiBum1FEefyelmwNumoifpZYO5BMQw?=
+ =?us-ascii?Q?zN8HgLQ4xgCPoaWT/r368KAAzDAyLuIsZ2YZqUPa6tVXFXX/d/WnIjo2Zf0D?=
+ =?us-ascii?Q?64lHoX5en0P+9hUaGqz8WPApz6H7oLVpHIDltz4OmPiKXVjNziMWTT0N7NRb?=
+ =?us-ascii?Q?X5U2aH31+PH1AWIKa92PgjpH4gYrdg3vn6VMTWHdwWgOUbud8ycNO+WbpnCY?=
+ =?us-ascii?Q?oFCVq4tP84VJkJZ2U9uCnNClz7ZefRy0rdJ4FezyPHGkQh7wcydhDT8T3jo7?=
+ =?us-ascii?Q?NhXsl0gM657QoOhCP0zbQED5pUsSo+TE5Pm5ShQmigkvLgTM8+mjD5dguDnZ?=
+ =?us-ascii?Q?Iob7gfrHgQpWRu3lfAVyYaNZjFI2RhgCXWzD5vTUwr8Lfy01Jb5gT0d9XvPT?=
+ =?us-ascii?Q?lr6yY2nu1QG8xPE3aL0vOg7u3+3CtNV3Sh9SuHdc?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1819d775-918f-471e-550a-08da55e37a35
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4206.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1bb14af7-45a4-424c-6f1d-08da55e94ef7
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jun 2022 13:14:32.7454 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jun 2022 13:56:17.0206 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6kxi7kG75gRJ7cl3ZUV5fgzhXQXnbapQNSqAH92z9W4zl7H9VbkTyXvR1oR/NLa+V8Ku4Hn8zABCixQ1AMGzqg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB2604
+X-MS-Exchange-CrossTenant-UserPrincipalName: PuqlLCo+4x9gtj5pWXdVFHZdVs4CmcIkDy7H4ZlTvtu6Q5vgUEtZ1Py/lq/nJufr
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5333
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,100 +116,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Neo Jia <cjia@nvidia.com>,
- kvm@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
- linux-s390@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Dheeraj Nigam <dnigam@nvidia.com>, intel-gvt-dev@lists.freedesktop.org,
- Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.a.wang@intel.com>,
- Tarun Gupta <targupta@nvidia.com>
+Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
+ joonas.lahtinen@linux.intel.com, kevin.tian@intel.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ kwankhede@nvidia.com, vneethv@linux.ibm.com, agordeev@linux.ibm.com,
+ pasic@linux.ibm.com, kvm@vger.kernel.org, corbet@lwn.net,
+ Christoph Hellwig <hch@infradead.org>, borntraeger@linux.ibm.com,
+ intel-gfx@lists.freedesktop.org, zhi.a.wang@intel.com, jjherne@linux.ibm.com,
+ farman@linux.ibm.com, jchrist@linux.ibm.com, gor@linux.ibm.com,
+ linux-s390@vger.kernel.org, hca@linux.ibm.com, jani.nikula@linux.intel.com,
+ alex.williamson@redhat.com, freude@linux.ibm.com, zhenyuw@linux.intel.com,
+ rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ akrowiak@linux.ibm.com, tvrtko.ursulin@linux.intel.com, cohuck@redhat.com,
+ oberpar@linux.ibm.com, svens@linux.ibm.com, daniel@ffwll.ch
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
-
-On 6/24/2022 6:35 PM, Jason Gunthorpe wrote:
-> On Fri, Jun 24, 2022 at 06:23:48PM +0530, Kirti Wankhede wrote:
->>
->>
->> On 6/24/2022 6:03 PM, Jason Gunthorpe wrote:
->>> On Fri, Jun 24, 2022 at 05:59:58PM +0530, Kirti Wankhede wrote:
->>>
->>>>> The reason this is here is because the type->parent is used in a few
->>>>> places and is put back in release:
->>>>>
->>>>> @@ -81,7 +81,7 @@ static void mdev_type_release(struct kobject *kobj)
->>>>>
->>>>>            pr_debug("Releasing group %s\n", kobj->name);
->>>>>            /* Pairs with the get in add_mdev_supported_type() */
->>>>> -       mdev_put_parent(type->parent);
->>>>> +       put_device(type->parent->dev);
->>>>>            kfree(type);
->>>>>     }
->>>>>
->>>>> If this was a simple sysfs kobj with only a show/store we wouldn't
->>>>> need to do anything as the natural kobj parentage holds a ref up to
->>>>> the struct device - but this kobj is used internally, ie dependent
->>>>> from mdev_device_create(), independently of the normal sysfs
->>>>> life-cycle so that doesn't protect enough either.
->>>>>
->>>>
->>>>
->>>> Life span of 'type' is from mdev_register_device to mdev_unregister_device.
->>>> If device/parent is being unregistered then only types are removed, so
->>>> referencing 'type' from mdev_device_create() is still safe. Therefore,
->>>> parent device's reference should be held and release from
->>>> register-unregister call.
->>>
->>> No, I've already explained this.
->>
->> Its not correct.
->>
->> kobject_init_and_add(&type->kobj, ...) which called from
->> mdev_register_parent()
->>      -> parent_create_sysfs_files() holds reference for type->kobj
->            -> add_mdev_supported_type_groups()
->                 -> add_mdev_supported_type()
->                     -> kobject_init_and_add(&type->kobj)
+On Tue, Jun 21, 2022 at 02:21:22PM -0700, Nicolin Chen wrote:
+> On Sun, Jun 19, 2022 at 11:32:07PM -0700, Christoph Hellwig wrote:
+> > On Sun, Jun 19, 2022 at 11:57:26PM -0300, Jason Gunthorpe wrote:
+> > > The remark about io memory is because on s390 memcpy() will crash even
+> > > on ioremapped memory, you have to use the memcpy_to/fromio() which
+> > > uses the special s390 io access instructions.
+> > 
+> > Yes.  The same is true for various other architectures, inluding arm64
+> > under the right circumstances.
+> > 
+> > > This helps because we now block io memory from ever getting into these
+> > > call paths. I'm pretty sure this is a serious security bug, but would
+> > > let the IBM folks remark as I don't know it all that well..
+> > 
+> > Prevent as in crash when trying to convert it to a page?
+> > 
+> > > As for the kmap, I thought it was standard practice even if it is a
+> > > non-highmem? Aren't people trying to use this for other security
+> > > stuff these days?
+> > 
+> > Ira has been lookin into the protection keys, although they don't
+> > apply to s390.  Either way I don't object to using kmap, but the
+> > commit log doesn't make much sense to me.
 > 
->> This is released from
->>   mdev_unregister_parent()
->>       -> parent_remove_sysfs_files()
->>           -> kset_unregister()
+> How about the updated commit log below? Thanks.
 > 
-> It is not kset_unregister() that puts back.
->             -> remove_mdev_supported_type()
-> 	       -> kobject_put(&type->kobj) // pairs with kobject_init_and_add
+> The pinned PFN list returned from vfio_pin_pages() is converted using
+> page_to_pfn(), so direct access via memcpy() will crash on S390 if the
+> PFN is an IO PFN, as we have to use the memcpy_to/fromio(), which uses
+> the special s390 IO access instructions.
 > 
+> As a standard practice for security purpose, add kmap_local_page() to
+> block any IO memory from ever getting into this call path.
 
-that's correct, my bad.
+The kmap_local_page is not about the IO memory, the switch to struct
+page is what is protecting against IO memory.
 
-> So what is the issue? This is a properly paired usage of the ref.
-> 
->> In the next patch [3/13] of this series, these calltraces are changed as
->> mdev_register_parent()
->>      -> mdev_type_add()
->>          -> kobject_init_and_add(&type->kobj, ...) holds reference for
->> type->kobj
->>
->> which is released from
->>
->> mdev_unregister_parent()
->>      -> mdev_type_remove()
->>          -> kobject_put(&type->kobj)
-> 
-> This is the same logic? What is the problem?
-> 
+Use kmap_local_page() is just the correct way to convert a struct page
+into a CPU address to use with memcpy and it is a NOP on S390 because
+it doesn't use highmem/etc.
 
-Pasting here your comment:
- >>>>> the struct device - but this kobj is used internally, ie dependent
- >>>>> from mdev_device_create(), independently of the normal sysfs
- >>>>> life-cycle so that doesn't protect enough either.
-
-Since there references are held, its safe.
-
-Thanks,
-Kirti
-
+Jason
