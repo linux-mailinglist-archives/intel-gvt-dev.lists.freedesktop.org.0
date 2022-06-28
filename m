@@ -2,41 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C8F355BACD
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Jun 2022 17:36:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CB74255BE57
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Jun 2022 07:13:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 340FA10E50F;
-	Mon, 27 Jun 2022 15:36:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 74A45112892;
+	Tue, 28 Jun 2022 05:13:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from izattish.menstockings.com (izattish.menstockings.com
- [45.130.138.47])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3487C10E50F
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:3::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CCF8111287A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Jun 2022 15:36:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=menstockings.com;
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=jea.moo@menstockings.com; bh=lUBy0JApxThr6xZXuJO6YY3iLG4=;
- b=jme/4L/P8Qg8UngQRk25LLcG2jOcGN8Ce/3oQqN34k2PkYtYttoArSAXQQkk/L5D1AbGNDU3rMpB
- FvJ09IoKjh6JmZ9ZNMAQ3bdFngz+AtIiWJs956g84LoC9Ik0eOeYkQtB4HHW1ilUzyPgkXzydSCq
- A19fKaDjDDjqjuCyLYKdp1Fxu7KtG3vb/XMBqnXlq/rjpnsqikT4fAupvjOj2Q/ivyUbSPtsvn1V
- 8HMZSTSJwC3Klz/sebzkSna8CdP9pSETW62lwZOwEmR8wOdiM8FmxsZsmhDElqA9Mb1yX2hOWgPX
- 8OpTbtITzoEawA2zgOV4RVrgI8uvE0orZoE2OA==
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=menstockings.com;
- b=A0YftRIasx5A9nUkZYMdvX+cdAxwmTN20cZemT7CumPHviBYCD6tAgLZ6nOI4qbwLsWTQJITKfrs
- EbHZErNndfh4enZYXx8Em4/yIALf7sS1gzDbLVgx79qk42J7gXt8KfabB3rX0crKqX23n6FxW34s
- OneaW4wNTP58O5jyBz95u0+MQGTZrvjcRtqbxn+d/QQRIYz0whF/G+IhvB1PRUnxTXq9ukMkzSvs
- xKWb94KYXbAntIlLNMEuSQ0qmMuQ5rdlQTbNGJrac1PBN2ZgbASsq2jBYmUytlDjKkqwwssS2Sr1
- cLc8ZTAMATi5xmZ0B+jrkL/3iGjZp0sTv4RDSA==;
-From: Kevin Molen <jea.moo@menstockings.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Keep me in touch
-Date: 27 Jun 2022 10:36:25 -0500
-Message-ID: <20220627103625.223DB8B408CBF0E1@menstockings.com>
+ Tue, 28 Jun 2022 05:13:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=BybgAHG8mcJZK+n0MmfXzPg6oqI7+V4cJS5wzBl8ZAE=; b=B8vLEhmssejIlGYqBqjL6vg5OW
+ yAwmOIAjITTPfObls/2cn4SR/eqDHafdNul7pH1adSRUWjU+AnGfWFG+M5z0s9kCP++HP+P1BjYWI
+ vJDu27KezM1mjP9YOeR3m15BZGcD/EUa03l0UxvGJCsxR8RR+s1DhFR5kyF+5K3ybNxG+8TuUHDtk
+ xWHfWCfIxjrCs0Iv6a6oGeJgN0APPO3Ml9oAPo1E0GvAXS1nAggd27qg4nVW4ViIxZPhT+C29Z6l+
+ 1gUSKK9SqZr/12all5/AlLhiCLDp81esQ658YFFs2n3qPM4b+EzABEQ5s0gDd3bN4Y256ptl6GPt0
+ bjiFZUPg==;
+Received: from [2001:4bb8:199:3788:e965:1541:b076:2977] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1o63XK-004KYE-O0; Tue, 28 Jun 2022 05:13:19 +0000
+From: Christoph Hellwig <hch@lst.de>
+To: Kirti Wankhede <kwankhede@nvidia.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+Subject: simplify the mdev interface v3
+Date: Tue, 28 Jun 2022 07:13:02 +0200
+Message-Id: <20220628051315.695254-1-hch@lst.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,18 +54,52 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: kevinmolen.uk34@gmail.com
+Cc: linux-s390@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ kvm@vger.kernel.org, Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+Hi all,
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<P>Hello,</P>
-<P>I'm Kevin, Please did you receive my email yesterday? In acknowledgment =
-of this message, I shall divulge details of my intent for your consideratio=
-n.</P>
-<P>Warm Regards,<BR>Kevin Molen.</P></BODY></HTML>
+this series signigicantly simplies the mdev driver interface by following
+the patterns for device model interaction used elsewhere in the kernel.
+
+Changes since v2:
+ - rebased to vfio/next
+ - fix a pre-existing memory leak in i915 instead of making it worse
+ - never manipulate if ->available_instances if drv->get_available is
+   provided
+ - keep a parent reference for the mdev_type
+ - keep a few of the sysfs.c helper function around
+ - improve the documentation for the parent device lifetime
+ - minor spellig / formatting fixes
+
+Changes since v1:
+ - embedd the mdev_parent into a different sub-structure in i916
+ - remove headers now inclued by mdev.h from individual source files
+ - pass an array of mdev_types to mdev_register_parent
+ - add additional patches to implement all attributes on the
+   mdev_type in the core code
+
+Diffstat:
+ Documentation/driver-api/vfio-mediated-device.rst |   26 +--
+ Documentation/s390/vfio-ap.rst                    |    2 
+ Documentation/s390/vfio-ccw.rst                   |    2 
+ drivers/gpu/drm/i915/gvt/gvt.h                    |    6 
+ drivers/gpu/drm/i915/gvt/kvmgt.c                  |  158 ++++--------------
+ drivers/gpu/drm/i915/gvt/vgpu.c                   |   66 ++-----
+ drivers/s390/cio/cio.h                            |    4 
+ drivers/s390/cio/vfio_ccw_drv.c                   |    3 
+ drivers/s390/cio/vfio_ccw_ops.c                   |   60 +------
+ drivers/s390/cio/vfio_ccw_private.h               |    2 
+ drivers/s390/crypto/vfio_ap_ops.c                 |   68 +-------
+ drivers/s390/crypto/vfio_ap_private.h             |    6 
+ drivers/vfio/mdev/mdev_core.c                     |  185 ++++-----------------
+ drivers/vfio/mdev/mdev_driver.c                   |    7 
+ drivers/vfio/mdev/mdev_private.h                  |   32 ---
+ drivers/vfio/mdev/mdev_sysfs.c                    |  187 +++++++++++-----------
+ include/linux/mdev.h                              |   77 ++++-----
+ samples/vfio-mdev/mbochs.c                        |  103 +++---------
+ samples/vfio-mdev/mdpy.c                          |  115 +++----------
+ samples/vfio-mdev/mtty.c                          |   94 +++--------
+ 20 files changed, 380 insertions(+), 823 deletions(-)
