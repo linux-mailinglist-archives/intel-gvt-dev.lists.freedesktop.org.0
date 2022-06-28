@@ -2,31 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB74255BE57
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Jun 2022 07:13:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 279C155BE59
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Jun 2022 07:14:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 74A45112892;
-	Tue, 28 Jun 2022 05:13:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CA2DF11292B;
+	Tue, 28 Jun 2022 05:14:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CCF8111287A
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0625F11292B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Jun 2022 05:13:32 +0000 (UTC)
+ Tue, 28 Jun 2022 05:14:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:In-Reply-To:References;
- bh=BybgAHG8mcJZK+n0MmfXzPg6oqI7+V4cJS5wzBl8ZAE=; b=B8vLEhmssejIlGYqBqjL6vg5OW
- yAwmOIAjITTPfObls/2cn4SR/eqDHafdNul7pH1adSRUWjU+AnGfWFG+M5z0s9kCP++HP+P1BjYWI
- vJDu27KezM1mjP9YOeR3m15BZGcD/EUa03l0UxvGJCsxR8RR+s1DhFR5kyF+5K3ybNxG+8TuUHDtk
- xWHfWCfIxjrCs0Iv6a6oGeJgN0APPO3Ml9oAPo1E0GvAXS1nAggd27qg4nVW4ViIxZPhT+C29Z6l+
- 1gUSKK9SqZr/12all5/AlLhiCLDp81esQ658YFFs2n3qPM4b+EzABEQ5s0gDd3bN4Y256ptl6GPt0
- bjiFZUPg==;
+ bh=BybgAHG8mcJZK+n0MmfXzPg6oqI7+V4cJS5wzBl8ZAE=; b=yFERIp8x7nT49cP4kn2eTgcUme
+ 7TrwIDvqFubSp+iBy2hH7htaD/YNWlwa4nECrY6cBLZ2bt7RGZt5gxHk8SwaECDdQJ58u3XTGNQCd
+ 33h0vfsiw6YVlZ2HlB1kx4YOsNRn+QmaROeb4MW22f7Qqc99AOoo0u+uDp2zRzh/caChUmknJkMjv
+ SqTWXSr7GWWw68QJKtyGNRuQAjYoLTpk8uAUMpt4T1v0nY6BWQ/GH7FA6szdgV6PRu0YpzYskNJIE
+ T5kOAvM69afobMCj/ZzTKbOW8ELweOJoU0KpxBU2cO26MGnAFr0LY+g+fMTpLDmTxeJqjTQ1ksvQp
+ +VXZFPhA==;
 Received: from [2001:4bb8:199:3788:e965:1541:b076:2977] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1o63XK-004KYE-O0; Tue, 28 Jun 2022 05:13:19 +0000
+ id 1o63Yb-004Kkj-GK; Tue, 28 Jun 2022 05:14:38 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Kirti Wankhede <kwankhede@nvidia.com>,
  Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
@@ -35,8 +35,8 @@ To: Kirti Wankhede <kwankhede@nvidia.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
 Subject: simplify the mdev interface v3
-Date: Tue, 28 Jun 2022 07:13:02 +0200
-Message-Id: <20220628051315.695254-1-hch@lst.de>
+Date: Tue, 28 Jun 2022 07:14:22 +0200
+Message-Id: <20220628051435.695540-1-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
