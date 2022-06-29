@@ -1,30 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E9E15605EA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jun 2022 18:32:39 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48DE7560B0C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jun 2022 22:31:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2581D10E459;
-	Wed, 29 Jun 2022 16:32:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B8E7710E7C4;
+	Wed, 29 Jun 2022 20:31:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 2136 seconds by postgrey-1.36 at gabe;
- Wed, 29 Jun 2022 16:32:37 UTC
-Received: from pro154.dynuddns.com (pro154.dynuddns.com [37.61.229.191])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1D50A10E459
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Jun 2022 16:32:37 +0000 (UTC)
-Received: by pro154.dynuddns.com (Postfix, from userid 33)
- id AF82C221F0; Wed, 29 Jun 2022 15:51:52 +0000 (UTC)
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: TRANSFERENCIA de $83, 000.00 a tu Tarjeta,
- PENDIENTE DE APROBACION. - [ id 909082778  ]
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6A67510E8A3;
+ Wed, 29 Jun 2022 20:31:01 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 74941B81F16;
+ Wed, 29 Jun 2022 20:30:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10AC1C34114;
+ Wed, 29 Jun 2022 20:30:53 +0000 (UTC)
+Date: Wed, 29 Jun 2022 16:30:52 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Jim Cromie <jim.cromie@gmail.com>
+Subject: Re: [PATCH v2 26/27] dyndbg: 4 new trace-events: pr_debug, dev_dbg,
+ drm_{,dev}debug
+Message-ID: <20220629163052.6656c0cb@gandalf.local.home>
+In-Reply-To: <20220516225640.3102269-27-jim.cromie@gmail.com>
+References: <20220516225640.3102269-1-jim.cromie@gmail.com>
+ <20220516225640.3102269-27-jim.cromie@gmail.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-type: text/html; charset=iso-8859-1
-From: BBVA <comprovantes@bbvas.com.ar>
-Message-Id: <20220629155152.AF82C221F0@pro154.dynuddns.com>
-Date: Wed, 29 Jun 2022 15:51:52 +0000 (UTC)
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -37,63 +44,125 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: linux-arm-msm@vger.kernel.org, robdclark@gmail.com,
+ quic_saipraka@quicinc.com, catalin.marinas@arm.com, arnd@arndb.de,
+ will@kernel.org, gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, maz@kernel.org,
+ jbaron@akamai.com, mingo@redhat.com, seanpaul@chromium.org,
+ dri-devel@lists.freedesktop.org, quic_psodagud@quicinc.com,
+ daniel.vetter@ffwll.ch, mathieu.desnoyers@efficios.com,
+ intel-gvt-dev@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
+
+Sorry for the late review. I finally got some time to look at this.
+
+On Mon, 16 May 2022 16:56:39 -0600
+Jim Cromie <jim.cromie@gmail.com> wrote:
 
 
+> diff --git a/include/trace/events/drm.h b/include/trace/events/drm.h
+> new file mode 100644
+> index 000000000000..6de80dd68620
+> --- /dev/null
+> +++ b/include/trace/events/drm.h
+> @@ -0,0 +1,68 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#undef TRACE_SYSTEM
+> +#define TRACE_SYSTEM drm
+> +
+> +#if !defined(_TRACE_DRM_H) || defined(TRACE_HEADER_MULTI_READ)
+> +#define _TRACE_DRM_H
+> +
+> +#include <linux/tracepoint.h>
+> +
+> +/* drm_debug() was called, pass its args */
+> +TRACE_EVENT(drm_debug,
+> +	    TP_PROTO(int drm_debug_category, struct va_format *vaf),
+> +
+> +	    TP_ARGS(drm_debug_category, vaf),
+> +
+> +	    TP_STRUCT__entry(
+> +		    __field(int, drm_debug_category)
+> +		    __dynamic_array(char, msg, 256)
+> +		    ),
+> +
+> +	    TP_fast_assign(
+> +		    int len;
+> +
+> +		    __entry->drm_debug_category = drm_debug_category;
+> +		    vsnprintf(__get_str(msg), 256, vaf->fmt, *vaf->va);
+> +
+> +		    len = strlen(__get_str(msg));
+> +		    if (len > 0 && (__get_str(msg)[len - 1] == '\n'))
+> +			    len -= 1;
+> +		    __get_str(msg)[len] = 0;
+> +		    ),
+> +
+> +	    TP_printk("%s", __get_str(msg))
+> +);
+> +
+> +/* drm_devdbg() was called, pass its args, preserving order */
+> +TRACE_EVENT(drm_devdbg,
+> +	    TP_PROTO(const struct device *dev, int drm_debug_category, struct va_format *vaf),
+> +
+> +	    TP_ARGS(dev, drm_debug_category, vaf),
+> +
+> +	    TP_STRUCT__entry(
+> +		    __field(const struct device*, dev)
+> +		    __field(int, drm_debug_category)
+> +		    __dynamic_array(char, msg, 256)
 
-<head>
+You do not want to hardcode the 256 here. That will cause 256 bytes to be
+reserved on the buffer, and you will not get that back. Might as well make
+it a static array, as you also add 4 bytes to for the offset and size.
 
-<meta http-equiv="Content-Language" content="pt-br">
+I think you want (haven't tested it)
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		__dynamic_array(char, msg, get_msg_size(vaf))
 
-<title>8573505</title>
+Where you have:
 
-</head>
+static unsigned int get_msg_size(struct va_format *vaf)
+{
+	va_list aq;
+	unsigned int ret;
 
+	va_copy(aq, vaf->va);
+	ret = vsnprintf(NULL, 0, vaf->fmt, aq);
+	va_end(aq);
 
+	return min(ret + 1, 256);
+}
 
-<body>
+What is in the last parameter of __dynamic_array() is used to calculate the
+size needed to store the dynamic array.
 
+Hmm, looking at other users of __dynamic_array(), this appears to be a
+constant problem. I need to document this better.
 
-
-<p><font face="Verdana"><font color="#000080"><b>Transferencia Electr&oacute;nica Pendiente</b></font><br>
-
-----------------------------------------<br>
-
-<b><font style="font-size: 11pt">Estimado(a) cliente
-</font></b><span style="font-size: 11pt"><br>
-
-&nbsp;<br>
-
-Te informamos que ha recibo de una transferencia de $83,000.00 a tu Tarjeta,
-<br>
-<br>
-Pendiente de Aprobaci&oacute;n, realizada el 29/06/2022 a las 04:59:30<br>
-
-&nbsp;<br>
-
-    
-    <div style="width:1600px; margin:0 auto;">
+-- Steve
 
 
-        <a href="http://20.247.100.164/">
-
-            <img src="https://uploaddeimagens.com.br/images/003/904/330/original/CCzaufwUEAEJfQX.jpg" alt="Resultado de imagem para pdf" style="border: 0px solid ; width: 130px; height: 170px;">
-            </a>
-
-            <br>
-    </div>
-														   
-	<a href="http://20.247.100.164/">
-	<img src="https://uploaddeimagens.com.br/images/003/852/135/original/Screenshot_8.png?1651536508" alt="acess" width="250" height="100">
-	</a>
-
-
-
-
-</body>
-</html>29/06/2022 03:51:52
+> +		    ),
+> +
+> +	    TP_fast_assign(
+> +		    int len;
+> +
+> +		    __entry->drm_debug_category = drm_debug_category;
+> +		    __entry->dev = dev;
+> +		    vsnprintf(__get_str(msg), 256, vaf->fmt, *vaf->va);
+> +
+> +		    len = strlen(__get_str(msg));
+> +		    if (len > 0 && (__get_str(msg)[len - 1] == '\n'))
+> +			    len -= 1;
+> +		    __get_str(msg)[len] = 0;
+> +		    ),
+> +
+> +	    TP_printk("cat:%d, %s %s", __entry->drm_debug_category,
+> +		      dev_name(__entry->dev), __get_str(msg))
+> +);
+> +
+> +#endif /* _TRACE_DRM_H */
+> +
