@@ -2,36 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48DE7560B0C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Jun 2022 22:31:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 955B05619B8
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Jun 2022 13:58:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B8E7710E7C4;
-	Wed, 29 Jun 2022 20:31:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 41E6911A066;
+	Thu, 30 Jun 2022 11:58:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6A67510E8A3;
- Wed, 29 Jun 2022 20:31:01 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 74941B81F16;
- Wed, 29 Jun 2022 20:30:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10AC1C34114;
- Wed, 29 Jun 2022 20:30:53 +0000 (UTC)
-Date: Wed, 29 Jun 2022 16:30:52 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v2 26/27] dyndbg: 4 new trace-events: pr_debug, dev_dbg,
- drm_{,dev}debug
-Message-ID: <20220629163052.6656c0cb@gandalf.local.home>
-In-Reply-To: <20220516225640.3102269-27-jim.cromie@gmail.com>
-References: <20220516225640.3102269-1-jim.cromie@gmail.com>
- <20220516225640.3102269-27-jim.cromie@gmail.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+X-Greylist: delayed 3655 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Jun 2022 11:58:33 UTC
+Received: from alldock.com (unknown [45.67.156.120])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 12F4A11A055
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 30 Jun 2022 11:58:33 +0000 (UTC)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: quick follow up again
+Message-ID: <028015d3a76cbf707736bd408269a252@dprojector.com>
+Date: Thu, 30 Jun 2022 06:43:22 +0200
+From: "Jerry Dyson" <jerryud@lovethebrands.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,125 +35,63 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-arm-msm@vger.kernel.org, robdclark@gmail.com,
- quic_saipraka@quicinc.com, catalin.marinas@arm.com, arnd@arndb.de,
- will@kernel.org, gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, maz@kernel.org,
- jbaron@akamai.com, mingo@redhat.com, seanpaul@chromium.org,
- dri-devel@lists.freedesktop.org, quic_psodagud@quicinc.com,
- daniel.vetter@ffwll.ch, mathieu.desnoyers@efficios.com,
- intel-gvt-dev@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Reply-To: jerry@quaniu.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+<html>
+<head>
+</head>
+<body>
+<pre>How is everything going with you?<br />This type of projector is
+currently available in our warehouse.<br />I'll send you an email with a
+more full introduction to the product.<br /><br />Highlights: 8500 Lumens
+HD Video Projector: The projector's brightness is two to three times that
+of comparable small projectors. <br />You may spend quality time with your
+family or friends at home or outside thanks to the highly vivid image it
+provides for films and movies, which supports resolutions up to 1080P.<br
+/><br />The viewing size of the projector may be adjusted from 40 to 200
+inches, and the projection distance can be varied from 1.2 to 6.5 meters.
+<br />Despite its impressive projection effect, the design is remains
+portable, with a body size similar to that of a journal.<br /><br />Wifi
+2.4G and Bluetooth 5.0 connectivity You can wirelessly attach your favorite
+bluetooth speaker to the projector at any time because it features a
+bluetooth function. <br />In addition, the projector has a 2.4G internet
+connection. An ultra-fast 2.4G WiFi connection enables online gaming as
+well as continuous movie viewing. Wireless screen sharing enables you to
+stream your favorite content from your iOS or Android smartphone to another
+screen.<br /><br />"Multimedia Connection Support" refers to the
+projector's ability to connect to a number of devices such as USB, HDMI,
+AV, SD, and audio. <br />It is simple to connect it to your smartphone, TV
+Stick or Box, video game console, personal computer, tablet, laptop, DVD
+player, TF card, or USB Sticks.<br /><br />Our projectors are priced as
+follows:<br />A single projector 259.90.<br />Each of the two projectors:
+239.90<br /><br />Do you like to take one or two projectors today?<br
+/>Just provide us the place details where we should ship to, and we will
+arrange shipment for you.<br /><br /><br /></pre>
+<img
+src="https://www.teknostore.com/media/catalog/product/cache/5e326bdd18ad7684d3505705aaab496f/1/_/1_25_1.jpg"
+width="560" height="560" /><img
+src="https://www.teknostore.com/media/catalog/product/cache/5e326bdd18ad7684d3505705aaab496f/2/_/2_22_1.jpg"
+width="560" height="560" />
+<pre><br /><br /><br /><br />Specifications:<br />LCD screen size: 3.77
+inches TFT LCD display technology<br />8500 LM is the brightness of the
+light source.<br />100 Lumens of ANSI-certified brightness<br />The default
+resolution in 720P is 1024 x 720 pixels.<br />The resolution that is
+supported is 1080P.<br />Up to 30,000 hours of light source life
+expectancy<br />The projection to actual ratio is 1.4:1.<br />Front and
+back projection are the projection methods.<br />The electrical projection
+size range for Keystone is 40'-200'.<br />The distance between you and the
+screen is between 3.9 and 21.3 feet (Best Distance 8.2ft)<br />Integrated
+circuit STM53MK<br />RAM (memory): 64 MB; ROM (read-only memory): 4 MB<br
+/>USB 2.0 x 1 port, HDMI, TFT, AV, and VGA interfaces, and 3.5mm earphone
+output are all included.<br />WiFi: Support for 2.4G WiFi<br />Bluetooth
+5.0 is the latest version (BT5.0),<br />Maintain your receiving and sending
+capabilities.<br />Infrared Remote Control Transmission<br />Dimensions of
+the product: 214 * 160 * 81.7 mm Product Dimensions: 214 * 160 * 81.7 mm
+Product Weight: 1.1 KG<br />Weight: 1.6KG Dimensions: 330*115*215mm<br
+/><br /><br />Thanks,<br />Jerry Dyson</pre>
+<br />
+</body>
+</html>
 
-Sorry for the late review. I finally got some time to look at this.
-
-On Mon, 16 May 2022 16:56:39 -0600
-Jim Cromie <jim.cromie@gmail.com> wrote:
-
-
-> diff --git a/include/trace/events/drm.h b/include/trace/events/drm.h
-> new file mode 100644
-> index 000000000000..6de80dd68620
-> --- /dev/null
-> +++ b/include/trace/events/drm.h
-> @@ -0,0 +1,68 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +#undef TRACE_SYSTEM
-> +#define TRACE_SYSTEM drm
-> +
-> +#if !defined(_TRACE_DRM_H) || defined(TRACE_HEADER_MULTI_READ)
-> +#define _TRACE_DRM_H
-> +
-> +#include <linux/tracepoint.h>
-> +
-> +/* drm_debug() was called, pass its args */
-> +TRACE_EVENT(drm_debug,
-> +	    TP_PROTO(int drm_debug_category, struct va_format *vaf),
-> +
-> +	    TP_ARGS(drm_debug_category, vaf),
-> +
-> +	    TP_STRUCT__entry(
-> +		    __field(int, drm_debug_category)
-> +		    __dynamic_array(char, msg, 256)
-> +		    ),
-> +
-> +	    TP_fast_assign(
-> +		    int len;
-> +
-> +		    __entry->drm_debug_category = drm_debug_category;
-> +		    vsnprintf(__get_str(msg), 256, vaf->fmt, *vaf->va);
-> +
-> +		    len = strlen(__get_str(msg));
-> +		    if (len > 0 && (__get_str(msg)[len - 1] == '\n'))
-> +			    len -= 1;
-> +		    __get_str(msg)[len] = 0;
-> +		    ),
-> +
-> +	    TP_printk("%s", __get_str(msg))
-> +);
-> +
-> +/* drm_devdbg() was called, pass its args, preserving order */
-> +TRACE_EVENT(drm_devdbg,
-> +	    TP_PROTO(const struct device *dev, int drm_debug_category, struct va_format *vaf),
-> +
-> +	    TP_ARGS(dev, drm_debug_category, vaf),
-> +
-> +	    TP_STRUCT__entry(
-> +		    __field(const struct device*, dev)
-> +		    __field(int, drm_debug_category)
-> +		    __dynamic_array(char, msg, 256)
-
-You do not want to hardcode the 256 here. That will cause 256 bytes to be
-reserved on the buffer, and you will not get that back. Might as well make
-it a static array, as you also add 4 bytes to for the offset and size.
-
-I think you want (haven't tested it)
-
-		__dynamic_array(char, msg, get_msg_size(vaf))
-
-Where you have:
-
-static unsigned int get_msg_size(struct va_format *vaf)
-{
-	va_list aq;
-	unsigned int ret;
-
-	va_copy(aq, vaf->va);
-	ret = vsnprintf(NULL, 0, vaf->fmt, aq);
-	va_end(aq);
-
-	return min(ret + 1, 256);
-}
-
-What is in the last parameter of __dynamic_array() is used to calculate the
-size needed to store the dynamic array.
-
-Hmm, looking at other users of __dynamic_array(), this appears to be a
-constant problem. I need to document this better.
-
--- Steve
-
-
-> +		    ),
-> +
-> +	    TP_fast_assign(
-> +		    int len;
-> +
-> +		    __entry->drm_debug_category = drm_debug_category;
-> +		    __entry->dev = dev;
-> +		    vsnprintf(__get_str(msg), 256, vaf->fmt, *vaf->va);
-> +
-> +		    len = strlen(__get_str(msg));
-> +		    if (len > 0 && (__get_str(msg)[len - 1] == '\n'))
-> +			    len -= 1;
-> +		    __get_str(msg)[len] = 0;
-> +		    ),
-> +
-> +	    TP_printk("cat:%d, %s %s", __entry->drm_debug_category,
-> +		      dev_name(__entry->dev), __get_str(msg))
-> +);
-> +
-> +#endif /* _TRACE_DRM_H */
-> +
