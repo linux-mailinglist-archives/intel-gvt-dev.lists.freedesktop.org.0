@@ -2,98 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB88F562036
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Jun 2022 18:24:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 152F1565AEC
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Jul 2022 18:16:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A6CCB10F283;
-	Thu, 30 Jun 2022 16:24:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F89C10E4E6;
+	Mon,  4 Jul 2022 16:14:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B1AAB10F367
+X-Greylist: delayed 36017 seconds by postgrey-1.36 at gabe;
+ Sun, 03 Jul 2022 09:30:59 UTC
+Received: from mail.prestationsrecrutements.xyz
+ (mail.prestationsrecrutements.xyz [38.17.55.21])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C9F3910E032
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Jun 2022 16:24:09 +0000 (UTC)
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25UFrHBn016677;
- Thu, 30 Jun 2022 16:24:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : reply-to : subject : to : cc : references : from :
- in-reply-to : content-type : content-transfer-encoding; s=pp1;
- bh=VsXVub7i69OlSmt75b8fF6Rqo68g9H4j1XIDXGV7yoU=;
- b=JN/6JAfGGaa4KrUM1TuAJWE26nr9KGqWfuuhTdmKa5zXfi0hIMUUed+sba9QSNDqP8Hc
- 3YJPMaBlHEGDRbn8MMRJdRBv0v2eFFNYIfT6G1LXmnCAyMP5zEGkOSVh8wRZ5dxzhJ2V
- xYSksb5jKjaCP0x6kWiZHBsnZbS4gQegki7+8JyOJ5n85NCxKKkGfDEjn0Xx5doAs9Zv
- ivppMSpvv/r0E2rNaFJrvLqUwEQydhArEKcHqIW4rIEjSeqPQ3kf/tehYMwRdIA0IVQ7
- hzZQn+iu4ByGyTBgxTXar1B6XmRWYfzP9JNbfEN3lle2Pi3ru1Q5uA2/s41Evz1ywHUE ow== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3h1ev590u3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 30 Jun 2022 16:24:05 +0000
-Received: from m0098416.ppops.net (m0098416.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 25UFrv7a018774;
- Thu, 30 Jun 2022 16:24:05 GMT
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.11])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3h1ev590tf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 30 Jun 2022 16:24:05 +0000
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
- by ppma03dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 25UGMCmg030961;
- Thu, 30 Jun 2022 16:24:04 GMT
-Received: from b03cxnp07027.gho.boulder.ibm.com
- (b03cxnp07027.gho.boulder.ibm.com [9.17.130.14])
- by ppma03dal.us.ibm.com with ESMTP id 3gwt0b36dk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 30 Jun 2022 16:24:04 +0000
-Received: from b03ledav005.gho.boulder.ibm.com
- (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
- by b03cxnp07027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 25UGO2UL27525502
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 30 Jun 2022 16:24:02 GMT
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B7426BE051;
- Thu, 30 Jun 2022 16:24:02 +0000 (GMT)
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8791CBE04F;
- Thu, 30 Jun 2022 16:24:01 +0000 (GMT)
-Received: from [9.160.92.179] (unknown [9.160.92.179])
- by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
- Thu, 30 Jun 2022 16:24:01 +0000 (GMT)
-Message-ID: <17a7c3f9-4566-899e-ed29-4e4c0d25ad7f@linux.ibm.com>
-Date: Thu, 30 Jun 2022 12:24:01 -0400
+ Sun,  3 Jul 2022 09:30:59 +0000 (UTC)
+DKIM-Signature: v=1; c=relaxed/relaxed;
+ h=from:to:subject:date:message-id:mime-version:content-type; 
+ d=prestationsrecrutements.xyz; s=dkim; a=rsa-sha256;
+ bh=hBRCq5aQQdtvZD72arj1zLClSElI7sLMLD5J4AQaK6A=;
+ b=hPIRWwDRWC7Ec7yByDLVwp98QBHaIObSA4/R7XfFHB29CvCR1F3uockAtUrKEb06l
+ Qthj/+UqsagInbfjdHsrb527vrLtBqcIHkZaZdyP7iTJdrmILnFi57KLWwuz1MpFWIU
+ H4aOTSdZc0MPachi/+uvoCuJ7ym1EnN5qVV1xoI=;
+Received: from PRESTATIONSRECR ([::1]) by prestationsrecrutements.xyz with
+ MailEnable ESMTPA; Sat, 2 Jul 2022 07:28:42 -0500
+From: "Caroline Revin" <caroline.revin@prestationsrecrutements.xyz>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Pour vos recrutements ou prestations informatiques
+Date: Sat, 2 Jul 2022 07:28:25 -0500
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAAB6flKGoFnpDvi9SqHsHdDrCgAAAEAAAAAc2rB2QfB5Lp0iTa/9JlEEBAAAAAA==@prestationsrecrutements.xyz>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH 08/13] vfio/mdev: remove mtype_get_parent_dev
-Content-Language: en-US
-To: Christoph Hellwig <hch@lst.de>, Kirti Wankhede <kwankhede@nvidia.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>
-References: <20220628051435.695540-1-hch@lst.de>
- <20220628051435.695540-9-hch@lst.de>
-From: "Jason J. Herne" <jjherne@linux.ibm.com>
-Organization: IBM
-In-Reply-To: <20220628051435.695540-9-hch@lst.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: ySV7g_ZkRnY77ocr37erDuKsnPOV1GRq
-X-Proofpoint-ORIG-GUID: cuwRpwHpbp7COLTm-QA_wxCYQf8N7Ocq
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-06-30_11,2022-06-28_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- suspectscore=0 clxscore=1011 lowpriorityscore=0 adultscore=0 spamscore=0
- impostorscore=0 phishscore=0 bulkscore=0 malwarescore=0 mlxscore=0
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2204290000 definitions=main-2206300064
+Content-Type: multipart/alternative;
+ boundary="----=_NextPart_000_4068_01D88DE5.5B0C7580"
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AdiMLH22s+/f7OZbR8CVlseEl69ntw==
+Content-Language: en-us
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,40 +48,94 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jjherne@linux.ibm.com
-Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, kvm@vger.kernel.org,
- Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 6/28/22 01:14, Christoph Hellwig wrote:
-> Just open code the dereferences in the only user.
-> 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
-> ---
->   drivers/s390/cio/vfio_ccw_ops.c |  3 +--
->   drivers/vfio/mdev/mdev_core.c   | 10 ----------
->   include/linux/mdev.h            |  2 --
->   3 files changed, 1 insertion(+), 14 deletions(-)
-> 
-> diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-> index 25b8d42a522ac..43d53736dfe3c 100644
-> --- a/drivers/s390/cio/vfio_ccw_ops.c
-> +++ b/drivers/s390/cio/vfio_ccw_ops.c
-> @@ -88,8 +88,7 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   					struct mdev_type_attribute *attr,
->   					char *buf)
->   {
-> -	struct vfio_ccw_private *private =
-> -		dev_get_drvdata(mtype_get_parent_dev(mtype));
-> +	struct vfio_ccw_private *private = dev_get_drvdata(mtype->parent->dev);
->   
->   	return sprintf(buf, "%d\n", atomic_read(&private->avail));
-Reviewed-by: Jason J. Herne <jjherne@linux.ibm.com>
+This is a multipart message in MIME format.
 
--- 
--- Jason J. Herne (jjherne@linux.ibm.com)
+------=_NextPart_000_4068_01D88DE5.5B0C7580
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Bonjour,=20
+Au sein de votre entreprise, vous pouvez rencontrer des n=E9cessit=E9s
+d'accroitre votre =E9quipe et devoir recruter des collaborateurs
+informatiques. Notre soci=E9t=E9 est pr=E9sente sur le secteur du =
+recrutement de
+talent dans le secteur IT et nous pouvons mettre =E0 profit nos =
+comp=E9tences de
+recherche et ce en toute discr=E9tion.
+
+Les tarifs que nous proposons sont au succ=E8s.=20
+Nous pouvons vous proposer des prestations informatiques en r=E9gie sur =
+un
+ensemble vari=E9 de technologies : ERP, d=E9veloppement, syst=E8me,...=20
+
+Je me tiens =E0 votre disposition,=20
+Cordialement,=20
+Caroline Revin=20
+IT Resourcer=20
+Prestation Recrutement=20
+caroline.revin@prestation-recrutement.com=20
+List-Unsubscribe: <mailto: Unsubscribe@azdaz.xyz?subject=3Dunsubscribe>,
+<http://www.azdaz.xyz/unsubscribe.html>=20
+
+
+------=_NextPart_000_4068_01D88DE5.5B0C7580
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
+rmj.rmm.rup.rpr">
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<!-- Converted from text/rtf format -->
+
+<P><FONT FACE=3D"Calibri">Bonjour,</FONT>
+
+<BR><FONT FACE=3D"Calibri">Au sein de votre entreprise, vous pouvez =
+rencontrer des n=E9cessit=E9s d'accroitre votre =E9quipe et devoir =
+recruter des collaborateurs informatiques. Notre soci=E9t=E9 est =
+pr=E9sente sur le secteur du recrutement de talent dans le secteur IT et =
+nous pouvons mettre =E0 profit nos comp=E9tences de recherche et ce en =
+toute discr=E9tion.</FONT></P>
+
+<P><FONT FACE=3D"Calibri">Les tarifs que nous proposons sont au =
+succ=E8s.</FONT>
+
+<BR><FONT FACE=3D"Calibri">Nous pouvons vous proposer des prestations =
+informatiques en r=E9gie sur un ensemble vari=E9 de technologies : ERP, =
+d=E9veloppement, syst=E8me,... </FONT></P>
+
+<P><FONT FACE=3D"Calibri">Je me tiens =E0 votre disposition,</FONT>
+
+<BR><FONT FACE=3D"Calibri">Cordialement, </FONT>
+
+<BR><FONT FACE=3D"Calibri">Caroline Revin</FONT>
+
+<BR><FONT FACE=3D"Calibri">IT Resourcer</FONT>
+
+<BR><FONT FACE=3D"Calibri">Prestation Recrutement</FONT>
+
+<BR><FONT =
+FACE=3D"Calibri">caroline.revin@prestation-recrutement.com</FONT>
+
+<BR><FONT FACE=3D"Calibri">List-Unsubscribe: &lt;<A HREF=3D"mailto: =
+Unsubscribe@azdaz.xyz?subject=3Dunsubscribe">mailto: =
+Unsubscribe@azdaz.xyz?subject=3Dunsubscribe</A>&gt;, &lt;<A =
+HREF=3D"http://www.azdaz.xyz/unsubscribe.html">http://www.azdaz.xyz/unsub=
+scribe.html</A>&gt;</FONT>
+</P>
+
+</BODY>
+</HTML>
+------=_NextPart_000_4068_01D88DE5.5B0C7580--
+
