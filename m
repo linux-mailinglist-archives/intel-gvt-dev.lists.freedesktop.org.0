@@ -1,41 +1,34 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 152F1565AEC
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Jul 2022 18:16:59 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E15AD565B62
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Jul 2022 18:18:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F89C10E4E6;
-	Mon,  4 Jul 2022 16:14:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9F52210ED99;
+	Mon,  4 Jul 2022 16:15:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 36017 seconds by postgrey-1.36 at gabe;
- Sun, 03 Jul 2022 09:30:59 UTC
-Received: from mail.prestationsrecrutements.xyz
- (mail.prestationsrecrutements.xyz [38.17.55.21])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C9F3910E032
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ACEB710E00A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  3 Jul 2022 09:30:59 +0000 (UTC)
-DKIM-Signature: v=1; c=relaxed/relaxed;
- h=from:to:subject:date:message-id:mime-version:content-type; 
- d=prestationsrecrutements.xyz; s=dkim; a=rsa-sha256;
- bh=hBRCq5aQQdtvZD72arj1zLClSElI7sLMLD5J4AQaK6A=;
- b=hPIRWwDRWC7Ec7yByDLVwp98QBHaIObSA4/R7XfFHB29CvCR1F3uockAtUrKEb06l
- Qthj/+UqsagInbfjdHsrb527vrLtBqcIHkZaZdyP7iTJdrmILnFi57KLWwuz1MpFWIU
- H4aOTSdZc0MPachi/+uvoCuJ7ym1EnN5qVV1xoI=;
-Received: from PRESTATIONSRECR ([::1]) by prestationsrecrutements.xyz with
- MailEnable ESMTPA; Sat, 2 Jul 2022 07:28:42 -0500
-From: "Caroline Revin" <caroline.revin@prestationsrecrutements.xyz>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Pour vos recrutements ou prestations informatiques
-Date: Sat, 2 Jul 2022 07:28:25 -0500
-Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAAB6flKGoFnpDvi9SqHsHdDrCgAAAEAAAAAc2rB2QfB5Lp0iTa/9JlEEBAAAAAA==@prestationsrecrutements.xyz>
+ Mon,  4 Jul 2022 06:18:48 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id A857C68AA6; Mon,  4 Jul 2022 08:18:43 +0200 (CEST)
+Date: Mon, 4 Jul 2022 08:18:43 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH 04/13] vfio/mdev: simplify mdev_type handling
+Message-ID: <20220704061843.GA29047@lst.de>
+References: <20220628051435.695540-1-hch@lst.de>
+ <20220628051435.695540-5-hch@lst.de>
+ <20220628155915.060ba2d9.alex.williamson@redhat.com>
+ <20220629121709.GI693670@nvidia.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="----=_NextPart_000_4068_01D88DE5.5B0C7580"
-X-Mailer: Microsoft Outlook 16.0
-Thread-Index: AdiMLH22s+/f7OZbR8CVlseEl69ntw==
-Content-Language: en-us
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220629121709.GI693670@nvidia.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,94 +41,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, kvm@vger.kernel.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Kevin Tian <kevin.tian@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multipart message in MIME format.
+On Wed, Jun 29, 2022 at 09:17:09AM -0300, Jason Gunthorpe wrote:
+> On Tue, Jun 28, 2022 at 03:59:15PM -0600, Alex Williamson wrote:
+> > > +	strcpy(matrix_dev->mdev_type.sysfs_name, VFIO_AP_MDEV_TYPE_HWVIRT);
+> > 
+> > And then this might as well be an snprintf() as well too.
+> 
+> Kees has setup FORTIFY so the above will actually throw a compile
+> warning in build bots if the array size is too small. Changing it to
+> snprintf would loose this and cause undetected string truncation.
 
-------=_NextPart_000_4068_01D88DE5.5B0C7580
-Content-Type: text/plain;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-Bonjour,=20
-Au sein de votre entreprise, vous pouvez rencontrer des n=E9cessit=E9s
-d'accroitre votre =E9quipe et devoir recruter des collaborateurs
-informatiques. Notre soci=E9t=E9 est pr=E9sente sur le secteur du =
-recrutement de
-talent dans le secteur IT et nous pouvons mettre =E0 profit nos =
-comp=E9tences de
-recherche et ce en toute discr=E9tion.
-
-Les tarifs que nous proposons sont au succ=E8s.=20
-Nous pouvons vous proposer des prestations informatiques en r=E9gie sur =
-un
-ensemble vari=E9 de technologies : ERP, d=E9veloppement, syst=E8me,...=20
-
-Je me tiens =E0 votre disposition,=20
-Cordialement,=20
-Caroline Revin=20
-IT Resourcer=20
-Prestation Recrutement=20
-caroline.revin@prestation-recrutement.com=20
-List-Unsubscribe: <mailto: Unsubscribe@azdaz.xyz?subject=3Dunsubscribe>,
-<http://www.azdaz.xyz/unsubscribe.html>=20
-
-
-------=_NextPart_000_4068_01D88DE5.5B0C7580
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
-<HEAD>
-<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
-charset=3Diso-8859-1">
-<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
-rmj.rmm.rup.rpr">
-<TITLE></TITLE>
-</HEAD>
-<BODY>
-<!-- Converted from text/rtf format -->
-
-<P><FONT FACE=3D"Calibri">Bonjour,</FONT>
-
-<BR><FONT FACE=3D"Calibri">Au sein de votre entreprise, vous pouvez =
-rencontrer des n=E9cessit=E9s d'accroitre votre =E9quipe et devoir =
-recruter des collaborateurs informatiques. Notre soci=E9t=E9 est =
-pr=E9sente sur le secteur du recrutement de talent dans le secteur IT et =
-nous pouvons mettre =E0 profit nos comp=E9tences de recherche et ce en =
-toute discr=E9tion.</FONT></P>
-
-<P><FONT FACE=3D"Calibri">Les tarifs que nous proposons sont au =
-succ=E8s.</FONT>
-
-<BR><FONT FACE=3D"Calibri">Nous pouvons vous proposer des prestations =
-informatiques en r=E9gie sur un ensemble vari=E9 de technologies : ERP, =
-d=E9veloppement, syst=E8me,... </FONT></P>
-
-<P><FONT FACE=3D"Calibri">Je me tiens =E0 votre disposition,</FONT>
-
-<BR><FONT FACE=3D"Calibri">Cordialement, </FONT>
-
-<BR><FONT FACE=3D"Calibri">Caroline Revin</FONT>
-
-<BR><FONT FACE=3D"Calibri">IT Resourcer</FONT>
-
-<BR><FONT FACE=3D"Calibri">Prestation Recrutement</FONT>
-
-<BR><FONT =
-FACE=3D"Calibri">caroline.revin@prestation-recrutement.com</FONT>
-
-<BR><FONT FACE=3D"Calibri">List-Unsubscribe: &lt;<A HREF=3D"mailto: =
-Unsubscribe@azdaz.xyz?subject=3Dunsubscribe">mailto: =
-Unsubscribe@azdaz.xyz?subject=3Dunsubscribe</A>&gt;, &lt;<A =
-HREF=3D"http://www.azdaz.xyz/unsubscribe.html">http://www.azdaz.xyz/unsub=
-scribe.html</A>&gt;</FONT>
-</P>
-
-</BODY>
-</HTML>
-------=_NextPart_000_4068_01D88DE5.5B0C7580--
-
+I think I have an idea how to do away with these arrays entirely,
+and just use pointers to sting literals.
