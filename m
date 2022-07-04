@@ -2,107 +2,127 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 784F1565BF8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Jul 2022 18:24:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 933D3565BE3
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Jul 2022 18:23:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6611910F99E;
-	Mon,  4 Jul 2022 16:16:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2D89F10E404;
+	Mon,  4 Jul 2022 16:16:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2078.outbound.protection.outlook.com [40.107.92.78])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E822910E068
+ (mail-bn7nam10hn2211.outbound.protection.outlook.com [52.100.155.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B46E210E174
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  4 Jul 2022 14:15:39 +0000 (UTC)
+ Mon,  4 Jul 2022 15:07:42 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WFef6e6PjUG1Iue9gzlrjufESBaYw0Kwvyr+TklDBTNv+3pojX2eLUa29++R7PJXu+WXvr/PbQIno2UJ8ffhgvMFiP7ivg8+9bMjnDAb7GQfpvR0Bkhuxgi9cuvfqVccc19Q5IHssc6DePEWTuHjAzfhT1OzaJ0XIX13Cg4Kw8ixTQRiOgt1HRI2h6I8bI43Ts/Yna1Z15avOE0Qkyc0xhiLi6OsbYUe/GMkbpl7iQMkKzKCW7tjWwUohZVRSaChM537ynt8WJgl5mB25mpeJ0BDVOjDE3RaeRf/AQYDFdU3XzX/vpvfMExXQSkISgbO8V6ANVwWNbnOhvXPIVTtpg==
+ b=EohccX8kkvESKHrJKa7nZzhRa4aKOtPbu3lqdFkLMUMVYhbNKPYHgbPfYkU6UKS1bhhoAaBLBrRDeF1+JIqviufflkLGa9whZAOLkPEtYcOZDhhRVYQ67HDBSixjhJRmaIDA/Be8NV5dsbONGz7cxasj8aPvQ7SZ1V178pZSwxO9kZA/9P37byNvkl7sNOrNqN0CnsvIr8pw4BFfGoz7IM7zQNZOkURLTpqCGSEePUEqCUM4ow+9Ik3PFIVGZo6p+VO6y25M1vamgXN2nydwTLvave7n65UesnbB+uGs4nKsGPP+DR6Fa9U04oAAqWjcR/sPeQBd8yBNvHuXr40s9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vBjDFR8+tjtNRnSbA+TPylOHslH03F7mW9ZjLfHNyPA=;
- b=ReoGMdL6Sytayref7EUwveXXJV9R27LhSByVRve/8iQkqCjbdqMkZx2S/0NopSu0Kh5k7S9jRzUUX/JgPpsj8XpgeXp+pLwQ6W+8/aYGtiwT358cAGu9+8Jjd6nE+uXreKFz9WiaFxQ3bThf+FUZOG9E3b6qeUenTsd9CD1ockHe0YrvR5U+3T32Go6UiT3jBIhEbIuvqrAYp6I4SHdIWLwD3si2ycIEKRI300T+X0CWkhSSIS9T40VES/NBfN276fTkggu7YKmK6dNPw1hr7FhQVFT49emUveiE/PWmmbWVkexMvS1NtrFwUgdq0TwUqIepO7VHaTwhosZwmbsDGQ==
+ bh=wAOwMpqCWXN7IBR0Z6fOWwtbAxIvC0B3IPs/+wox04c=;
+ b=YvixFL5tp/p25JzWVzpd5bhgCiIZhRB8d1UNEs1PzmsuHq4u6Q8yyz8iYfrbj04ET2yh5vCBOMbDbYBqTnZiM/sewfF8Oz6h/zSXBnWvWaZ9IVJuSgq3UQck84UPhDyXol2Z7cEDa1BW4wf2Me4lZs0BvvzemxbwRteqC3SGVh5tgxHyFxGuq+2l+7QQTagqzWGO1taXKX+X6WmAezgnV1WOvNK5wAuVClLC6tr8RHHHiqy4AY/n4njpUPOBYDqyOjOyOsYO7FvDumhB8AhcyBFIxjjoOKeFxfKHu0E1svyWWZLDjO8TWZpuFU/j4rpg4sPbhW+Giz44E4wZD9mVTQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vBjDFR8+tjtNRnSbA+TPylOHslH03F7mW9ZjLfHNyPA=;
- b=cYkxtfyeEHYYNXJtOq3BOZ68m4jgukeCiDX0MNQDe4LPGdGWUAXL4mfaM2OA6B8QvXO9O4WAwhnFtMa8XLr/dDF8Qh6/mZp/b5WYzk0zRka8fsOiHYPh23hGrsoFigdRGo1+0S1ybKC53AOUGJ/htYBZzI2kmPMsvtnKtS5hO3Ti7NiUzzi8N++tRJFKrH3xIntn0ugylCNev8QAc4XRE8M0r9swCruqsY/3E+aUPlHFjOA5Fj87hwEN4aVjAUlvLAawAnFosVBMD2iS7Ab0LNgYKbNgYb0T6coKxbP0F9TJ37wyqu4KXkoT2doZ4Zc7kVPINv100UsWbpIKPAhlcw==
+ bh=wAOwMpqCWXN7IBR0Z6fOWwtbAxIvC0B3IPs/+wox04c=;
+ b=URr66Rpn7DIp3sqIjSCZFtZM627KhPvf7JXkfdtDLhzvWgNUXncLN8KZvKG75R3JWRUPPOI7QK+wNO9rCaosAvAjm39rR3fzVtC00yDCfL1+K7IPwnoKrR2K4H+PR7hsm5gn9t1o7r3ecaCUDw4XhNFOn2lp6j3K+VM5faqyY+uSHLYtfTEDsN15EUQ4cqp9PmS10Rzhxjn7epqGD6kmIhMmiBe1umUUeUMppSATYb5345eHDQfDaUSu21NQI8OAMOTkd9Swp8U1RBJLBucnDst8W/Kaa7I3Ge8mCOlRMBuy+2IO5LVIvtnO42EGD4okHcjmzKOZBFjI6iXvhLXtBw==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by DM6PR12MB2684.namprd12.prod.outlook.com (2603:10b6:5:4a::33) with
+ by DM6PR12MB3003.namprd12.prod.outlook.com (2603:10b6:5:38::24) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.14; Mon, 4 Jul
- 2022 14:15:37 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17; Mon, 4 Jul
+ 2022 15:07:37 +0000
 Received: from MN2PR12MB4192.namprd12.prod.outlook.com
  ([fe80::ac35:7c4b:3282:abfb]) by MN2PR12MB4192.namprd12.prod.outlook.com
  ([fe80::ac35:7c4b:3282:abfb%3]) with mapi id 15.20.5395.020; Mon, 4 Jul 2022
- 14:15:37 +0000
-Date: Mon, 4 Jul 2022 11:15:36 -0300
+ 15:07:37 +0000
+Date: Mon, 4 Jul 2022 12:07:36 -0300
 From: Jason Gunthorpe <jgg@nvidia.com>
 To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 02/14] drm/i915/gvt: simplify vgpu configuration management
-Message-ID: <20220704141536.GB1423020@nvidia.com>
+Subject: Re: [PATCH 14/14] vfio/mdev: add mdev available instance checking to
+ the core
+Message-ID: <20220704150736.GQ693670@nvidia.com>
 References: <20220704125144.157288-1-hch@lst.de>
- <20220704125144.157288-3-hch@lst.de>
+ <20220704125144.157288-15-hch@lst.de>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220704125144.157288-3-hch@lst.de>
-X-ClientProxiedBy: MN2PR08CA0029.namprd08.prod.outlook.com
- (2603:10b6:208:239::34) To MN2PR12MB4192.namprd12.prod.outlook.com
+In-Reply-To: <20220704125144.157288-15-hch@lst.de>
+X-ClientProxiedBy: BL1PR13CA0262.namprd13.prod.outlook.com
+ (2603:10b6:208:2ba::27) To MN2PR12MB4192.namprd12.prod.outlook.com
  (2603:10b6:208:1d5::15)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: cb74971c-2142-42d5-9dd4-08da5dc7aaff
-X-MS-TrafficTypeDiagnostic: DM6PR12MB2684:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6514b18a-1ff4-40ed-4d70-08da5dceeeb2
+X-MS-TrafficTypeDiagnostic: DM6PR12MB3003:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: BM81tgmn/5m/2OIWoHM9aSutzTV8fYJBNG20DtDUtGBw5K4EeyrojbqqsZk57XkeCJ5Azg3Bh92+FqDCjV1Xct6jzrRfmGwFypVBwvMKXBcNX13IDGh7JwzvlBGq3GtNQ3jl3H1MnW3qtyevQjserAF7a+XgGi9vwzsNH3mv6EIjZIZZUEhhHOsH7wGq/xfKQh/PMJ7fmKuejyDAyLO5jfl8u37VJPNsQTWuSGGi9/Yomf3EUjMt1S+zY1PdnNnd16PYlK/KX98F0XAo9s5ulT8qkN6s1xza0TCrh/vGC2sK8m9OECzfiJOrtNt7mxb9NpWN8jQtqvQujOk1aaNCyXXC04CXfKMY6ATdN/fvBgdMmi8WXj2ZitfjvTJOiKHMYJgR904RQAvJ+zy/+6UsQwT7xfcmIr9LHZm3soulBHBDquIgFowPyICeMJvGXPRBnKDM/O6tC1EBM8c1+9SwlvHgD99U9piRSNWkbAw5+g4QtDlHm1YQAOxa+hFd8lk/oxR6p5jqP/0zncKScyuN4CYIQx+B3zBYs9/fB3lFa/z8KBReER6AAs3hEPMWjTrR31uxB0r3uIAxywEO4XsOHZh5htEPy4RRgroEfVVdhxLphv6v5eakVms/vah51pvKCaqcnsE39kOxYrepqRQBamCYWEqNYO/ctyMkSWvEYSned5Rq1PhQm2I1mE2iPWvTGiun7CySLav970eVtfxj11slrbdn179hnxt95+DGQiWVzgJBebfsDEhp/DgLNSkmT8gZMuKhQjSa7rQTso39kA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(376002)(366004)(346002)(136003)(396003)(39860400002)(6486002)(66946007)(66556008)(41300700001)(478600001)(8676002)(316002)(4326008)(86362001)(6916009)(66476007)(54906003)(186003)(2616005)(1076003)(6506007)(83380400001)(26005)(38100700002)(6512007)(8936002)(7416002)(36756003)(2906002)(5660300002)(33656002);
- DIR:OUT; SFP:1101; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?s+oMDHtHHuC1+zulw8kctTOBwWYDbDC2evdWiEevcatVL/fhMaCQyv20wRRo?=
+ =?us-ascii?Q?BwbBsoGgeVT6owBILCy3OUR/M7IHQ7ihWYtNSUvOHKm3ZyF9oNX3Pq3Y1KOg?=
+ =?us-ascii?Q?OYGmRFmlJ449pcaAo25yGFzqON8lfmJPsQfsWMNtZ0+aC1bN67G/m2abksQr?=
+ =?us-ascii?Q?l0VxhigcIdLUEJhcUuC1TJ5LXPypV96s1JkjDeeh7vawgQA6qLn1JWJ1Y+p0?=
+ =?us-ascii?Q?qrxdAcxwaafLvlEHDIweqwOP2rbzQ2b6p/Xzpuq/oyW3Cd8YDatnwuz2W0I8?=
+ =?us-ascii?Q?ptupG3DdDbQlAdcFcw2+77NsnwxDaWpbehEv67T4nU/5ISHi4bX1aEYanlgF?=
+ =?us-ascii?Q?/ihnrvK31mAaAHlBnrs/eN3VPX9g6R1hGw305foKk+fsJ999cBhOHwuff3Qd?=
+ =?us-ascii?Q?P1ALYHU4+1LS9uyePDVpHHagGpKw2Sdoikw06Mtrj/lKy9htwGS1RAU8Z+zb?=
+ =?us-ascii?Q?NSWcD9nU3a2ms5X92Wl+rAe08IPQOEUZVZUQkkdwfLmRFfm4uhzHl/y+6ieV?=
+ =?us-ascii?Q?Ur3ERR8mNUjIfv+QAiOHJvsw96ZY0dQOyPiV2pqwiphXKHSJuJdVo6xTQIiX?=
+ =?us-ascii?Q?PmQj9NMHrt4SemDIxxEHC0Y5F9FYuAcmPmLpgVfXzJ5P1zI0pKhh27kLFwdu?=
+ =?us-ascii?Q?ytAo97+XnlFNaXVrGb/xUG2p/ewEH9Bp1C39gbCn4eTle9lspEwQ54MAwMGl?=
+ =?us-ascii?Q?cFu8boukYFOYuOowjX106dUmp2dPPbin6EqrzqJQO62MNjaItyWs/un+BAHP?=
+ =?us-ascii?Q?axtFiTKx2K7gHPzRi4SBDg2uSV1Mgx8btkT7AKIthej/hwkkonqawlpALKuX?=
+ =?us-ascii?Q?E/vcjHS+PguPcMXRM/y2lkCAxtRLNYa+CPQHbAiXK8z6OvFRPLos/Tg0poS5?=
+ =?us-ascii?Q?eSPO5XBr/l6Pq3/472X/B51DBXcHJStmnTyQQUP5Ev/8WlPRvi1LhmVx2L7Q?=
+ =?us-ascii?Q?L4PdTRfT06CDXuFAybK8Ei/6eCSI3JxV3NgspX1SUKPlfHnCdgeDGel7g6MU?=
+ =?us-ascii?Q?O7A8hzDcr+GTNOi4E/CrohtFPO6zz3yryIpeEHH7ClrbvRVoQsmoiN9inJiw?=
+ =?us-ascii?Q?Ekh19CkPGd1LxOf5ipz6jjdztu5oHsp5vqLos3hMF1h/9MI4UFIAcYKhhqGj?=
+ =?us-ascii?Q?SIuFGAq75mrKqIHRN5Vp9BLil1qGbNxXPg=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:5; SRV:;
+ IPV:NLI; SFV:SPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:OSPM;
+ SFS:(13230016)(4636009)(396003)(39860400002)(136003)(366004)(346002)(376002)(83380400001)(6486002)(36756003)(478600001)(186003)(4744005)(7416002)(33656002)(2906002)(8676002)(316002)(4326008)(66556008)(66476007)(66946007)(86362001)(2616005)(8936002)(6916009)(54906003)(1076003)(5660300002)(38100700002)(26005)(6512007)(6506007)(41300700001)(27376004)(131093003);
+ DIR:OUT; SFP:1501; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?2R2XkYBCSUzRYm5X2LVKxmGET8jvvJIX6rqvXjM4HqEmCM8Wimz/cfTStR7S?=
- =?us-ascii?Q?PRxDzAqeyif7jzGqKZJg8BvClyVJf9HrqXs+y758iH3d99dW9HjyzphvjdL0?=
- =?us-ascii?Q?MNldYLK1f7teLnSeQJTYozoWnvzvFVHi6M6avWM+Np99ReHvxwNge48DmFbW?=
- =?us-ascii?Q?COzNsq86K3Spnltoun7BSpz3o0MWm6SB3NmvMFzUN+bJfjkSbP9YOK5PF8IE?=
- =?us-ascii?Q?RIZEbqFzCgGkz8wHxlSQPmtzYAaiRr2EA23DClmT/xIQl4x0FR4NTgMAx67c?=
- =?us-ascii?Q?feIL+gGBPeC9jz1uslGhD+8HX7CWC01z2gPpulWIE4J4f9BWIbf5kT1SElO4?=
- =?us-ascii?Q?nmyw/EDMHmbp7SGxxKlvZynIC4jTk0Y9krpYAq9fumRfzLriAWAEOPXnf1Oi?=
- =?us-ascii?Q?ZiTcVGQY47wdOgoTM6LeurRUIZODIUSK81cbN9A0ZnhZURdBtyGtKB3uznkJ?=
- =?us-ascii?Q?viCu0sl19xsu4XLX3Rcxz4vwz00glWX9bE192pEprfG6JhaADw6r6rWG3vlb?=
- =?us-ascii?Q?ZM89BeXFfsO1CiKkLfVYb2sw7dCJPdEZU3VhI54gOitOc/+eqGcjlN8287P2?=
- =?us-ascii?Q?4QGfLVmkTD18TZdO9cvCIdZ5ioOVoPbSJNk6MvyvdYa3Tcvkh8O3iAWuQniv?=
- =?us-ascii?Q?BwO7vh5P5uGGmYbCrCqhJ5jCkXXSJMuEy+QCM8a/gVwNAoW6WW7EuArewFjA?=
- =?us-ascii?Q?Crt06s6tzGKPbwOBxgrORTzS0sT7c+VwMYRamD5gsxbBOXwiBSnPbBr4bTOX?=
- =?us-ascii?Q?EnbdINbheyVAUHSO15GjZ/SDqcWlLPk5bLc7wzE67Bkt+wBSnHAZUggEW7+C?=
- =?us-ascii?Q?fG4Anv7hKavLFRvPYNdcH/EyistgrGDd1sqXToGZ1YT61oFYCd8x+KXc1Wgu?=
- =?us-ascii?Q?1k4SvIU1g/pbQjwnBAe2HKLZdARAKgoHJ5PEQzXgQeU6XO4lQZLO61bwFHSS?=
- =?us-ascii?Q?7uwlfJrDqAYB09PS2O0pgkoHsR+YInJEjp5UZr29Khzkqku+ZMnFP/kLw3nu?=
- =?us-ascii?Q?Lf1yVJfBcGeGSVfF1YHkhN0WfRoZmTq5h1XVj+VLEHFfuzWcGbMD5J9zg3/y?=
- =?us-ascii?Q?M7LyyIOCHWcmEj4RWW5JKj0iNT84MeMcVGDg2yDawNA1mhLV5RYnDdIr6Oft?=
- =?us-ascii?Q?ee72CALJKSD7fIhvm2kNgVFeIyNqZw5naECAKlDvI5h/m5ThNDUoRlQ3JPpJ?=
- =?us-ascii?Q?ryNHZ8GdBrw2GvhpMfd9ENcWT30RP76oEKHGBuj2itXQAFUpva3iVcSej8KF?=
- =?us-ascii?Q?hPbdafvj9nFyKhoHxUuxOWxTUI5togk2K7XNBL/COctjdgu+gMwsec39dzB0?=
- =?us-ascii?Q?mPTb3Df7rMeLhjvm+E6Gx09DeFcLiNrxwBEpSETk1EJ55xLPY3fqTEU1Ccal?=
- =?us-ascii?Q?enU38/0c4yp83HfGype+lEGvSNRhZSEc7T2J9E83ll8cQw2MVTZG9o90DAiI?=
- =?us-ascii?Q?Lr1jM1F+yaGlFCvO8l3QHuTqBBMBO7wLPh1/kFbEKMDU1qy+x1y4RQq90n9i?=
- =?us-ascii?Q?d7cGFv8v1iOISFRLT2PZxJog0TFYc2jiyYKEVI2TCzmFjLgWnb4XGo8nRkxS?=
- =?us-ascii?Q?LZlYYkDYuWWGHa6TXdfc+jjn9ap97szYhtAveKwN?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mBtKTSApWrhcLM9hw9//QUneT6LKnw9w8BnlHUfli8xLZ7sKgw/axyhfJIX9?=
+ =?us-ascii?Q?CdYpkGTMi2H5+ZzhAQ/hVwLI03GO9DwHssu9y8ityZ+Qa+LTBDG1gth+LU0q?=
+ =?us-ascii?Q?lErE0bZUBHLwPFoGhhHWgmn7gUSXeAKEq7rvajOw5aZMdBdeQTAzr10rgDG6?=
+ =?us-ascii?Q?/2trCS2cu8jviVRtiJE0A/OE9di1Hi4doO0udtCXvtZ5NOGaZ92frjGhL94A?=
+ =?us-ascii?Q?jHiCksxDsDaoGTSSAGbF60dnvO5EiHUOG+Q/lhyMdAfhbES+7I7xmwUpm1QG?=
+ =?us-ascii?Q?XlTAd1XJhzjC/sYumA02FQbtw3FxVC5G9hKNrNmcysgHo3htPAfvxSNcetiw?=
+ =?us-ascii?Q?o66xM+JYYGWULk6wcGphJBCqAzSAiZM3OMgV73Ny2cQkMacQqYzTgji9toZK?=
+ =?us-ascii?Q?/IYRZEqh7jegsBQNbj0ykdiSrfrc6g5qumh4HQXcmauxSUVMtX9iJq/jMDMw?=
+ =?us-ascii?Q?wUswcWx5qDF1sqJg+7XK9zMRFPuwt1k4uhKmrvEbBv8pcYM+SjhNIBvs0a6K?=
+ =?us-ascii?Q?5DNGMc5tAEdDX6va/d3t/Yb9ZgBsoIp8GEvFIcKonXRGWT7pk87CxKAsiXT1?=
+ =?us-ascii?Q?G7Dr7z0qoLy2hPC0Tiw/SUaWcQZ3E7B//yntOcXHXWBrQWWDiYAY35wMLFGA?=
+ =?us-ascii?Q?zQI4dm9yv6lAtArZ+BMrWClKEvSwXsWPx5/Cl004HCnMdSVh7s2p8ozEUYcw?=
+ =?us-ascii?Q?7lkyhG66hLxZx9Izs5eLmX5x1xLeJzZEWofgJr65xTCs1G6ZDxqrM4wll3Ia?=
+ =?us-ascii?Q?q/HwxCspnafCHLfLpLksFONRpGS541UGtLCGdRs1saYDDdHyIWot2mqQhuCd?=
+ =?us-ascii?Q?jgC8jjbqF1GZIhMQVbPLzpm5UZvNtVvNmj2ImFonTr83grA8GXab7Z9iYCrw?=
+ =?us-ascii?Q?FQx6E71KlvoFNvoja/osMIJVxkvQupH2VELGM+UVe3s4u4KqzXaFt/0lnUxp?=
+ =?us-ascii?Q?OP+hYyzfbQ29KF2ke0m21noMLidO+qZy+RAmrNbk+s9A/kWsS1qGbtJxfz4X?=
+ =?us-ascii?Q?qr4/rbLXA+yff3Q2C/Gr46vmgJOvzurjuoIopQ2PiAFBsafFpNqS2Db62uY8?=
+ =?us-ascii?Q?FhSXGsn64lMYY3ZSIRSjhbR2R7ktlc9wDvaXqqRhFLvQ+D/gA4jjnvMlkIWT?=
+ =?us-ascii?Q?9qx8IhKA1UdxBJqMWVzjS7/8EFzSXnNaLHM6iRpb/lBg3tRt5Az/dSAWEcxS?=
+ =?us-ascii?Q?5MMqYxc7YljMLCeXxg/cS/aI+6LsgyxSI33SNzF2Do2OtJzSPS2lzGVFXaHa?=
+ =?us-ascii?Q?Y4Qns2MMVEvyef+QPBuBv4EZ5blJuIU699uzOvIuvvwgrV782ObdmvfAbuRA?=
+ =?us-ascii?Q?s/cZ5dlaiXhctSLhmEyCvyPor5xiqK7uduAbhNmt40EITKT/W6T3568ACLMv?=
+ =?us-ascii?Q?v5SG2iY6sxhwkbHBSrCq9M7vftQvHVs3uFo8u3qHB7hFZg9AVvzgANwPW0cc?=
+ =?us-ascii?Q?BROy/YkIVV6xiVGgdURfL6UtKE6vVWT8biK/jt+ZzCT8YR+iK6jeuRvb2MjO?=
+ =?us-ascii?Q?eftrjGcylaMbI0fTE22jABQniumhefXe9Gw1Qr7SLx3rzqph4/VRVie7PFuZ?=
+ =?us-ascii?Q?zyhYeD6/fUljjGNPIHHb4aM7nm1QzpfSK4n91kHE?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cb74971c-2142-42d5-9dd4-08da5dc7aaff
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6514b18a-1ff4-40ed-4d70-08da5dceeeb2
 X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2022 14:15:37.5726 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2022 15:07:37.6591 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YkdXirzgaEtQVEJttaL/XE+pObSsdnCiuWQFkrSv+IT6xXiHIhZezlgs62Y52I7R
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB2684
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4g5XNZbKB2xzlnvAe9hOs+x34NkmND1WerD06C2x/TE9hL6nATCPbNIIAx1R2xdA
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB3003
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,82 +140,34 @@ Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>, linux-s390@vger.kernel.org,
  Alex Williamson <alex.williamson@redhat.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Halil Pasic <pasic@linux.ibm.com>,
- Kirti Wankhede <kwankhede@nvidia.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
+ Kirti Wankhede <kwankhede@nvidia.com>, Kevin Tian <kevin.tian@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jul 04, 2022 at 02:51:32PM +0200, Christoph Hellwig wrote:
+On Mon, Jul 04, 2022 at 02:51:44PM +0200, Christoph Hellwig wrote:
 
-> +/*
-> + * vGPU type name is defined as GVTg_Vx_y which contains the physical GPU
-> + * generation type (e.g V4 as BDW server, V5 as SKL server).
-> + *
-> + * Depening on the physical SKU resource, we might see vGPU types like
-> + * GVTg_V4_8, GVTg_V4_4, GVTg_V4_2, etc. We can create different types of
-> + * vGPU on same physical GPU depending on available resource. Each vGPU
-> + * type will have a different number of avail_instance to indicate how
-> + * many vGPU instance can be created for this type.
-> + */
->  #define VGPU_MAX_WEIGHT 16
->  #define VGPU_WEIGHT(vgpu_num)	\
->  	(VGPU_MAX_WEIGHT / (vgpu_num))
+> @@ -115,12 +116,15 @@ EXPORT_SYMBOL(mdev_unregister_parent);
+>  static void mdev_device_release(struct device *dev)
+>  {
+>  	struct mdev_device *mdev = to_mdev_device(dev);
+> +	struct mdev_parent *parent = mdev->type->parent;
 >  
-> -static const struct {
-> -	unsigned int low_mm;
-> -	unsigned int high_mm;
-> -	unsigned int fence;
-> -
-> -	/* A vGPU with a weight of 8 will get twice as much GPU as a vGPU
-> -	 * with a weight of 4 on a contended host, different vGPU type has
-> -	 * different weight set. Legal weights range from 1 to 16.
-> -	 */
-> -	unsigned int weight;
-> -	enum intel_vgpu_edid edid;
-> -	const char *name;
-> -} vgpu_types[] = {
-> -/* Fixed vGPU type table */
-> +static const struct intel_vgpu_config intel_vgpu_configs[] = {
->  	{ MB_TO_BYTES(64), MB_TO_BYTES(384), 4, VGPU_WEIGHT(8), GVT_EDID_1024_768, "8" },
->  	{ MB_TO_BYTES(128), MB_TO_BYTES(512), 4, VGPU_WEIGHT(4), GVT_EDID_1920_1200, "4" },
->  	{ MB_TO_BYTES(256), MB_TO_BYTES(1024), 4, VGPU_WEIGHT(2), GVT_EDID_1920_1200, "2" },
-> @@ -106,63 +103,34 @@ static const struct {
->   */
-
-[..]
-
->  	for (i = 0; i < num_types; ++i) {
-> -		if (low_avail / vgpu_types[i].low_mm == 0)
-> -			break;
-> -
-> -		gvt->types[i].low_gm_size = vgpu_types[i].low_mm;
-> -		gvt->types[i].high_gm_size = vgpu_types[i].high_mm;
-> -		gvt->types[i].fence = vgpu_types[i].fence;
-> +		const struct intel_vgpu_config *conf = &intel_vgpu_configs[i];
+>  	/* Pairs with the get in mdev_device_create() */
+>  	kobject_put(&mdev->type->kobj);
 >  
-> -		if (vgpu_types[i].weight < 1 ||
-> -					vgpu_types[i].weight > VGPU_MAX_WEIGHT)
-> +		if (low_avail / conf->low_mm == 0)
-> +			break;
-> +		if (conf->weight < 1 || conf->weight > VGPU_MAX_WEIGHT)
->  			goto out_free_types;
+>  	mutex_lock(&mdev_list_lock);
+>  	list_del(&mdev->next);
+> +	if (!parent->mdev_driver->get_available)
+> +		parent->available_instances++;
+>  	mutex_unlock(&mdev_list_lock);
 
-This is now clearly impossible right? Maybe a BUILD_BUG_ON is all that
-is needed:
+I think the kobject_put() needs to be after this reference to parent
+because mdev_type_release() will:
 
-  #define VGPU_WEIGHT(vgpu_num)	\
-         (VGPU_MAX_WEIGHT + BUILD_BUG_ON_ZERO((vgpu_num) > VGPU_MAX_WEIGHT) / (vgpu_num))
+	put_device(type->parent->dev);
 
-> +		sprintf(gvt->types[i].name, "GVTg_V%u_%s",
-> +			GRAPHICS_VER(gvt->gt->i915) == 8 ? 4 : 5, conf->name);
-> +		gvt->types->conf = conf;
-> +		gvt->types[i].avail_instance = min(low_avail / conf->low_mm,
-> +						   high_avail / conf->high_mm);
-
-snprintf and check for failure?
-
-Regardless, makes sense to me:
-
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+Which is potentially the last reference holding dev, and thus parent,
+at this moment.
 
 Jason
