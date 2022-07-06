@@ -2,107 +2,98 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 073B5568B65
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Jul 2022 16:38:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34D88568E47
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Jul 2022 17:52:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 344D611BB82;
-	Wed,  6 Jul 2022 14:38:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 909F711B0FE;
+	Wed,  6 Jul 2022 15:52:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2042.outbound.protection.outlook.com [40.107.93.42])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4399B11BB87
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  6 Jul 2022 14:38:36 +0000 (UTC)
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11on2040.outbound.protection.outlook.com [40.107.236.40])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2CC4E11B0FC;
+ Wed,  6 Jul 2022 15:52:19 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WPS95TWsvkq5DnUQm9y9nawAftR3l1nqwcl10Xibxa/uqBBgmBrlOyIxKhVsNW0fbpzlyErNPy+sscK///RGUUEWGMvh/EehiEGU54e4nBRQLrXdYB9JN4XiIP7o1b2ncUlL7A/VXkQqf9gC0TulZ3g2J1Q5cTloTx1q9asgxoKa4SmzbAzv0veGdkZy49TrmYtDzufxV2zvk7j1U5IB1onznbnzbXGxsXjVyqcx/xABhq1KKgpJXBNdUv6tP+cDc+cpjU0kfMcYszc+rJuciHq1ILhlJeFeCebzZNNVOvUDLFg8N7C92MxgIkPg3akXms5ce5QD58kff3s5Vsmvdg==
+ b=a0QbMcVLv/lgN4P0ttYxrnTL6szYSy2z4ERhUSiUpBiRGVTU9oH6k4JeK/IozYcR1zi2FVisw4YHFnHgVWU6zfG9XjrzVVioLLFhD2t+9X+ORqt3vbfRV/Pa3Yl6E5sbee9QpaQv4bMX8Ff+SDZhsccD5ngBlE9omt7U3GeBxrJXJs0JO104hE9ONL3asU7944khuW/AokK1HQY5oJJmIKqtCR1RxD+33oII5eIEUcac/kurLhwzaCyCHRtFEyglvP6yhnthpyoDK5ngSG+kD+BavPTe55kwDwYeCbL8ohrJKGyS0AteSsMcnCH7D6VY1SNPpR0123MEYbBR1vjpMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+yWPo1tvuIEUxhwqkgWAnXMg0Y+AxAv/67zw1yf9UEg=;
- b=aDXzjWe/LoAdo0HqVBFzmp80CwDMVeuIRGWHhZJ/itXeGO8cPfj/PdAd+2u5kPW/HuDjiWN74wBYtGA/roYd5CD0cITMtaOWlYj4d0fj5Jc5VZ/gOnAmu3sn/nw8l1wOoSTvnIP2mubOroeTsg6zXyZgVVI2WeM1+eO875RAtholtOHB3ZchTBz0HNH3DN1pJQvCB1gJESkj4DdWewou6PO7CvSRR9ghiy/Vx3jWw8HZBP+E7r4o3hpAyzWRCsqMuBkUBnqBQ+ZVDmqpv/sP3WyjbheYR2Ied8i4tZBrjyWuPsyc5lP6nISgUuZR40UUQxPDnRH3AQh+3xgBxpbiug==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
+ bh=oHA8NTdDdhgx9P1LM9QYBQEaIXPhazV9+QslQRx+u1I=;
+ b=lNb/8G/4L1mni++GFM+y2du8yl5olTtnO/Z1/0UCgwW1xfwBL83vAJT7rvh6tHGAm45UVyja1tnfFyjpDoSmaWPjyx6EtPRB9beLZ54eg/PAreYm5QkbO1pgfsIGX2LSMOMV/HW/sTg8OZuNMIQ0wVX69xutydGtHi5G0PTmqxlWFCcn4ldlHoInXbglS64gtylyYglvYw5kyDkVQAuLFNU9xHFnG4tVDrWa/xSe64ptihaNKxGKqybWd4S9MP/n9VIwnZglfHucXdIf6f0fOB0IbaUeBdr5Z4m/RwxoIt1ks5Ehzby/370+4ICXNkG+rnwNb4+43WACMyFEp1UrDw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.236) smtp.rcpttodomain=linux.ibm.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+yWPo1tvuIEUxhwqkgWAnXMg0Y+AxAv/67zw1yf9UEg=;
- b=eWhuqQBi2Fofw4VAzfqrt7CTpkTIwuM+jur/5/3zuA0FqwTH2WLcvAlREdfaXJJkWAcH2qvEvM2kI98qXuq0rSKhh+hWOcJK+eWQu16vBVn0dfVXPhkT++ZbgE1I9gLYekbiJXuXP1xm/xGHgATBd73dmyvTJyegiFV+KpP6owIxNjZMPNpkzlr9GgdO9RNR6iwKdpe6n0yM+Anc5VxlcUxGWHOghYq5iqAOaqPMk7z3noNVhmKnSejap9Zc2wZIb/4b51aiPdJgiJwow1PNIaalsDW97t/s0rY5gxzUT1SKGSVITFDoG7H4qVlQVRW26WB+4JWZE5hVR8HlUxCqJw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by DM5PR1201MB0236.namprd12.prod.outlook.com (2603:10b6:4:57::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17; Wed, 6 Jul
- 2022 14:38:34 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ac35:7c4b:3282:abfb]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::ac35:7c4b:3282:abfb%3]) with mapi id 15.20.5395.021; Wed, 6 Jul 2022
- 14:38:34 +0000
-Date: Wed, 6 Jul 2022 11:38:33 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 15/15] vfio/mdev: remove an extra parent kobject reference
-Message-ID: <20220706143833.GD693670@nvidia.com>
-References: <20220706074219.3614-1-hch@lst.de>
- <20220706074219.3614-16-hch@lst.de>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220706074219.3614-16-hch@lst.de>
-X-ClientProxiedBy: BLAPR03CA0031.namprd03.prod.outlook.com
- (2603:10b6:208:32d::6) To MN2PR12MB4192.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::15)
+ bh=oHA8NTdDdhgx9P1LM9QYBQEaIXPhazV9+QslQRx+u1I=;
+ b=gX9ZKOcbJ2/U+iV3+97OffLuIUy1C0xInGrtf2PPtZ3WCsz0sEffg6yEfkAgP/JbEdTABgqUv6GYm3HdQrqaBFBmgg8ghYeCtfw2E4hyitPCKYyLrG5c/4DQtVr3pFhEhOHlaPRjzWPih/hVIUrQzQS0eRV0IiAzix1l5RC3VopjUoA2I0zMMomSUynmZFYYb2A8QjYK5LG+/PuIwiZC7nJKB88K9jN4LGK8gSV9oX2ZMhGvJVMyZw4ZlXizIikZE1C9vekMhbrk/hl5L/LTXd07FGJf0fSuLOrhLeXNtatr3EKRZfrCc+6LQeYp3wobWn8uIzs8Kcbi07sHxE5+dg==
+Received: from MWHPR22CA0002.namprd22.prod.outlook.com (2603:10b6:300:ef::12)
+ by CH2PR12MB4151.namprd12.prod.outlook.com (2603:10b6:610:78::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.15; Wed, 6 Jul
+ 2022 15:52:16 +0000
+Received: from CO1NAM11FT032.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:300:ef:cafe::bf) by MWHPR22CA0002.outlook.office365.com
+ (2603:10b6:300:ef::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.16 via Frontend
+ Transport; Wed, 6 Jul 2022 15:52:15 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.236)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.236 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.236; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.236) by
+ CO1NAM11FT032.mail.protection.outlook.com (10.13.174.218) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5417.15 via Frontend Transport; Wed, 6 Jul 2022 15:52:15 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ DRHQMAIL109.nvidia.com (10.27.9.19) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.32; Wed, 6 Jul 2022 15:52:13 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.26; Wed, 6 Jul 2022 08:52:12 -0700
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26 via Frontend
+ Transport; Wed, 6 Jul 2022 08:52:11 -0700
+Date: Wed, 6 Jul 2022 08:52:10 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [RFT][PATCH v2 1/9] vfio: Make vfio_unpin_pages() return void
+Message-ID: <YsWvqvlsccxmuhkv@Asurada-Nvidia>
+References: <20220706062759.24946-1-nicolinc@nvidia.com>
+ <20220706062759.24946-2-nicolinc@nvidia.com>
+ <YsUxurAoglm7GmZP@infradead.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <YsUxurAoglm7GmZP@infradead.org>
+X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 9f72cd91-92e6-4679-4771-08da5f5d346b
-X-MS-TrafficTypeDiagnostic: DM5PR1201MB0236:EE_
+X-MS-Office365-Filtering-Correlation-Id: 24a2e8ec-6764-4ee8-79fe-08da5f677fe6
+X-MS-TrafficTypeDiagnostic: CH2PR12MB4151:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 78BhOR80AwL3qg6z8ZQAl3RTMNkCVyda0io+xzRqxBEfwm9fqlpk+CVcCP4Aeuh5ZxtrpZy9KFF7A8uUlKgvcmxGHw4HGqN8gGeFNB5ntDwKJKryvGLkVn4K+G4oAMqEDg9mZfpSl9N5qY6kH5TKXWO05iPqsY5zuijP2TF4eZIQl77XF/z+PJAuBupC92amQ9+cTi1ZLYhDfGFIcqZ1QkT2WkkKhJJlC6dHyblQSFPew0LTTUgxv5uD7cRvlKsLCGGbWTUWJt7MvjwJOwRl8YfJJKYFF/uKwn7oNsmB0LqslycP0FPc7y1A4XvjpUW41iYxk7yYhqxnvWI1MxHT5K0oGMIrJdsC3zdcak3vIhbSM9oYQr7j1WkCu63TM6GHwRHGT17CFC4rFmsd2mGnVZfrVfkcXOOpfRRINjcLEiEfr/AEr6N4ofNx5fC05x5aIMG9qUIM+bCpRPiJuInigdG0tFUN1BuEgsDq0BC8b3AxDsUW201RA/6PLnzzKmHQgid0flMk78Ai4JgSOG+Z8OQ3ECWR9bL6y52sczyNioq3bG427fnOx8nME9S627/6cLM7woBBmOfKaTojLz++j6JnOWE2ohoka9zARKq/7O669G5k4sMIVWe3MDvU+2HyurpiY69ZQwADRCzbzTLz+5U+UY77HRwh7YlBgiIgN2d3gkV5eTtMjpnvG0duz4FcFCa3Nn+TtMuZRvSF4494CW2YFqWXZZjcNe5+yhHMYMYTiSYnQg4ePuRzC/kBiGARB/CTUldqyA2hhANnJkFUa9oHil9nIjoCY22mdeS4SCHMm01QsCP6g4NscDye1AKU
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(4636009)(136003)(346002)(366004)(376002)(396003)(39860400002)(6916009)(6486002)(26005)(54906003)(6512007)(186003)(36756003)(316002)(83380400001)(1076003)(86362001)(2616005)(66946007)(5660300002)(2906002)(7416002)(478600001)(6506007)(8936002)(8676002)(4326008)(66476007)(66556008)(38100700002)(41300700001)(33656002)(27376004);
+X-Microsoft-Antispam-Message-Info: aXVZZPtNvCX9FKcwmmGb8hfhwdzryP74DNrE7QZENjJWUI06OlRDVruQvn3gv/vEmFeqD2207mgKe2jfe6f5B32h1dNb6izWzB56fuEB81WZQwM5vry3KzwpC7C/lymOdnhDFtjANfL33IcausV656p6ubkvPsrWtrn2OqCZNn2H60AGyHaerSstfUf90awB9NcbolJFVAq+gjBK96nYyGtBWUr8B77zRAPVViMavEoKzWgpNhOUu52Zd//VuY7M8NGCTJOJ+SvIeHxU4oiM32OOr1iq+bSFC7bGRJBw9bEX8layOQvhjO9/T001hLhEZgtxbFZj7FEbDjpyqUEIkkyoyW/uObP1KSSvNk5xcDHma2QA+COaoeN8lGGCQBakJbbKnl8CbkJRXWjPmUpJyl4IPimQZOFrCirwsCvBxFUMRtmmPPAPd6dnm3jRPhrG52kw/TdAb07swkZwIwgeoagZDN5GkmiZEUgjSoyt8Po0IQFejEg3Ikqfoe50/WvKrpUTKSRNn6SU9WTwiFlYC0/bkXx+syjJkO8XEiVnHI/1I/uORza1zJNb9mafzIrGPfuWr4AV87knnLXLYQzTb5y3lL+CZA2lfsBo5B0+/qhhv3lXfV3d6nSFH/xbi0TALj9qFHSsbS2dMHUORZSJIbJlybXx0tw2hZtO92K0S2n7gXO9sHmB/3+yYFBOAyRvs/chZjM8EDHZJC26wrHWtBN+eIPiFwQYsA4cz1lIombbA0MnsWEE4DPi0ImBtFtYL/iaTLyaR8T3UIlPyGlO7fvmojLTBJZY30tHtF5xDtIGm9Tkj2/GYeo89oiGiZSH+viVO+UiynySkbYNpmqk1GYfpjp7PuJKmHZQ+Strahs=
+X-Forefront-Antispam-Report: CIP:12.22.5.236; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:InfoNoRecords; CAT:NONE;
+ SFS:(13230016)(4636009)(396003)(39860400002)(346002)(376002)(136003)(46966006)(36840700001)(40470700004)(426003)(336012)(81166007)(47076005)(82310400005)(6916009)(82740400003)(356005)(54906003)(316002)(8936002)(7416002)(5660300002)(7406005)(86362001)(55016003)(70586007)(40480700001)(4326008)(8676002)(33716001)(70206006)(40460700003)(26005)(36860700001)(9686003)(478600001)(2906002)(186003)(41300700001)(36900700001);
  DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?RB4chQUdzCmozzd+jjPpdxfQp8V4vDabUu9b1dJRcdbgAb2iOVqoDUrRPrSV?=
- =?us-ascii?Q?v2frNzzB81BF2BZNBYbUhUrosElWhzOWLJibYCF+Rn03LmLp8rvg34r0hqso?=
- =?us-ascii?Q?hO4yn162Er2ILE6Oc30EgyCLUBFynCmwtRm5qQEH17snivMwz9vUZSlu35S8?=
- =?us-ascii?Q?rlaMKWaz7TTDloILWVoB9y0MbbCl1iyDfe0ktC/x9iTsV9SwCLw4wwXbqGXG?=
- =?us-ascii?Q?waPjANEsss/0nDTSQ9yZGyrHuED1TOhfva437Ekj6AzqAqYo3LspcM30l/7N?=
- =?us-ascii?Q?9f2HJmZOHnapqkkyCwKiFFZHO45mUPf4fLY9rtZeB6xKvt7RHwP2MJjoa2SA?=
- =?us-ascii?Q?AdTdtXM9uHBx6DRjLk+tJvV5eehLVMUazapJXfWnsA+mxrEFLn5lXAcGZ5DD?=
- =?us-ascii?Q?ihrxvAjoXKgIIInK0EyaBF/U2LpIUw+p+9+XCbm2MbpT6tdGo3mar4iRBgYH?=
- =?us-ascii?Q?cgkVrFkQsGQ70zC/VeENTWQ41nHTKIcTlsN2WNd24EZczjZ8q4GmIKdQXq2s?=
- =?us-ascii?Q?6zMdXuVZ5Z49j8C+cOhQv/BrgxuxstvpkFEwm3kXjcaPychYGUJsOtIF+okF?=
- =?us-ascii?Q?wqPKRrRlEMFZkeUrCQAa/rg5BfQ1pwEzaSy/tgbtHxbP9r/44oB+6VvkJUoF?=
- =?us-ascii?Q?uBhoYDqUQGvKfsaIwkPGwdVu2V+2WchlphpzEGHZ8hUQCS2hWgWJwIWy+KY5?=
- =?us-ascii?Q?j5WqquDd417jmnAA4wv+/kn8mu9dBcAHUYW0knyS4AvvavYWKeu+zuWNsm3t?=
- =?us-ascii?Q?fntXiowekOQimGCZVIkTNgciem+DQgyADCzqKrjrlLo4v5AB7UYKVFWlPEGr?=
- =?us-ascii?Q?Hnna1DsmWdkMz4cuo5e5ngRtIezoLJn1hzQ72PJwORYGQecY/K1PHRgKisW1?=
- =?us-ascii?Q?vHsCLfipROLbtKPzeFKLB7/gVjA+3nS7BVm140q/QT5IPKfcSCYzt8JSbHlN?=
- =?us-ascii?Q?sQKZslyMz2ouHgCX38SVisL81pwuopIyY2h2CVS+CvNc4mwmxJVe7PNO0wUx?=
- =?us-ascii?Q?ZoMQITj7A4naow+W7hVb2dsbCSb8mi9OnPavFIP5I4sr8+qP5H8HKyMY+QRj?=
- =?us-ascii?Q?h0MqP5ItYA08/Wm9qLhc+3XGrOCBDbmJyWwAls2RhD5P2QMS1h8oIwpjrcJa?=
- =?us-ascii?Q?dV394ELmzKxnZZOf94Inn2ftq95zFbmz6/8ACHZ6LgRxwMgon/wpHfxUNVKw?=
- =?us-ascii?Q?o9ZP5QzjiZy61I1mQErHpM9qrcGIP/QXVHnCc4+Yy7vcKD8JW0uAuEy7LxJX?=
- =?us-ascii?Q?i2RrEvglYeUZpwDknSLlqOn649T/+nWyACroi+zB2yPcfBQuIbRPUUGP4v+1?=
- =?us-ascii?Q?Co80sDrIRNZUzwFAvw6TGn5kvHa6Jbo4ml02mmufGmARe1eKiTKO+/TzkhQz?=
- =?us-ascii?Q?yYxnDp8ow9j/XzvZ9UtRHCBaAC47eM7BPtVXRl/vJfzgGfsk7sPE7XvAALOo?=
- =?us-ascii?Q?erm4W115ZM0XLWQmcWIyymaCaBsAYGuRXDYjh8BCPIYmpjfSQF72qY337sRg?=
- =?us-ascii?Q?5JMhX0VldQNXhEtcropaK3Pg2VMXEWqVR+O6OTwZWLnkzwt8nGzZf6MV5pJj?=
- =?us-ascii?Q?W4GXWjloQQZYUSbOBEL6kHj5aTA5u4ZS0w8wU19p?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9f72cd91-92e6-4679-4771-08da5f5d346b
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2022 14:38:34.3951 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2022 15:52:15.7646 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 24a2e8ec-6764-4ee8-79fe-08da5f677fe6
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xwzwbC0RuzLK113X1tg2nUZdky7kFFrTearzStkMsHBXpcmHLJKNZMgI1xGB38rv
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR1201MB0236
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[12.22.5.236];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT032.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4151
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,39 +106,52 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, kvm@vger.kernel.org,
- Matthew Rosato <mjrosato@linux.ibm.com>, linux-s390@vger.kernel.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Halil Pasic <pasic@linux.ibm.com>,
- Kirti Wankhede <kwankhede@nvidia.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
+ joonas.lahtinen@linux.intel.com, kevin.tian@intel.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ kwankhede@nvidia.com, vneethv@linux.ibm.com, agordeev@linux.ibm.com,
+ linux-s390@vger.kernel.org, kvm@vger.kernel.org, corbet@lwn.net,
+ pasic@linux.ibm.com, jgg@nvidia.com, borntraeger@linux.ibm.com,
+ intel-gfx@lists.freedesktop.org, zhi.a.wang@intel.com, jjherne@linux.ibm.com,
+ farman@linux.ibm.com, jchrist@linux.ibm.com, gor@linux.ibm.com,
+ hca@linux.ibm.com, jani.nikula@linux.intel.com, alex.williamson@redhat.com,
+ freude@linux.ibm.com, zhenyuw@linux.intel.com, rodrigo.vivi@intel.com,
+ intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
+ tvrtko.ursulin@linux.intel.com, cohuck@redhat.com, oberpar@linux.ibm.com,
+ svens@linux.ibm.com, daniel@ffwll.ch
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jul 06, 2022 at 09:42:19AM +0200, Christoph Hellwig wrote:
-> The mdev_type already holds a reference to the parent through
-> mdev_types_kset, so drop the extra reference.
+On Tue, Jul 05, 2022 at 11:54:50PM -0700, Christoph Hellwig wrote:
+> > +void vfio_unpin_pages(struct vfio_device *device, unsigned long *user_pfn,
+> > +		      int npage)
+> >  {
+> >  	struct vfio_container *container;
+> >  	struct vfio_iommu_driver *driver;
+> > -	int ret;
+> >  
+> > -	if (!user_pfn || !npage || !vfio_assert_device_open(device))
+> > -		return -EINVAL;
+> > +	if (WARN_ON_ONCE(!user_pfn || !npage || !vfio_assert_device_open(device)))
+> 
+> This adds an overly long line.  Note that I think in general it is
+> better to have an individual WARN_ON per condition anyway, as that
+> allows to directly pinpoint what went wrong when it triggers.
 
-I would drop this patch, but at least the explanation needs tweaking..
+Following patches are touching this line too. And it'll be shrunk
+to a shorter line eventually by the end of PATCH-9.
 
-kobj's are weird things, they have a kobj.parent, but the refcount for
-that is dropped during kobject_del() and parent is NULL'd. vs this
-reference which is being put back at kobject release.
+Yet, I can separate them as you pointed out.
 
-So, the extra kset reference isn't contributing more protection - when
-mdev_unregister_device() calls kset_unregister() it still has a valid
-reference on the parent from the caller.
+> > +	if (WARN_ON_ONCE(unlikely(!driver || !driver->ops->unpin_pages)))
+> > +		return;
+> 
+> I'd just skip this check an let it crash.  If someone calls unpin
+> on something totally random that wasn't even pinned we don't need to
+> handle that gracefully.
 
-If this change is safe it is because no accesses to mdev->parent are
-happening after mdev_unregister_device() returns, due to things like
-the sysfs attribute fencing and the mdev_unreg_sem fencing child
-devices. I didn't check everything, but it seems believable it could
-be true.
+Makes sense. I can drop that in next version.
 
-I also suggest this patch should NULL mdev_type->parent during
-unregister_device as the kobj stuff does, so any use after unregister
-but before release could be crash, we generally shouldn't leave
-unref'd pointers floating around.
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
 
-Jason
+Will add to v3. Thanks for the review!
