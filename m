@@ -2,95 +2,154 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A70656989A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Jul 2022 05:09:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CA65569A3C
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Jul 2022 08:08:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D7D8C112A6B;
-	Thu,  7 Jul 2022 03:09:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 34B0D113FB9;
+	Thu,  7 Jul 2022 06:08:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 664CA112A85
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  7 Jul 2022 03:09:10 +0000 (UTC)
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2672kg1p008426;
- Thu, 7 Jul 2022 03:09:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=FgbRn1rMEilFWTW7lSXsCf9zFvfu1whbKZa3CuffxCQ=;
- b=rrDRCoC2ILLOTpCwtDFUagZYuo1kfYTBPkowGRneDBLboqrsSJgWtef3Wt0W6CU4aHcX
- 3DjRRx8oElty/5rKEPF0XC2fO86xNiaZ14B4JAsBGREntN0lhCMUB+Bp+Qwf4rKeqRci
- +SYZf80Tt1q3QIhpNATcrYQfFkCv+5NQH+JqwKglreR7D42kVZd3usGttgQK112dXbQE
- WDzFI48RGxLlSlsArmAYn04eDOw5kKrSBqjhR/d4bB7lFNNSzcDuwNvwJiuijy6Xc6o1
- WxrzfQLLOzShOC7C15fmTVxWwmz+tk14RK6RnrUHxMCskHM9bNcprm18zYmE7fQPEsPu RA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3h5q0c8cv7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 07 Jul 2022 03:09:04 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 267367gZ037203;
- Thu, 7 Jul 2022 03:09:04 GMT
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.26])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3h5q0c8cus-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 07 Jul 2022 03:09:04 +0000
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
- by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 26737X8i009503;
- Thu, 7 Jul 2022 03:09:02 GMT
-Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
- [9.57.198.26]) by ppma04wdc.us.ibm.com with ESMTP id 3h4ud50pec-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 07 Jul 2022 03:09:02 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
- [9.57.199.109])
- by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 267392ip7734188
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 7 Jul 2022 03:09:02 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 28547112065;
- Thu,  7 Jul 2022 03:09:02 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 156E1112061;
- Thu,  7 Jul 2022 03:08:59 +0000 (GMT)
-Received: from farman-thinkpad-t470p (unknown [9.211.38.121])
- by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Thu,  7 Jul 2022 03:08:58 +0000 (GMT)
-Message-ID: <488e7a98426dc64a53864ca302f7c32627a070fd.camel@linux.ibm.com>
-Subject: Re: [PATCH 14/15] vfio/mdev: add mdev available instance checking
- to the core
-From: Eric Farman <farman@linux.ibm.com>
-To: Christoph Hellwig <hch@lst.de>, Kirti Wankhede <kwankhede@nvidia.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>
-Date: Wed, 06 Jul 2022 23:08:57 -0400
-In-Reply-To: <20220706074219.3614-15-hch@lst.de>
-References: <20220706074219.3614-1-hch@lst.de>
- <20220706074219.3614-15-hch@lst.de>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: fyY09QKGKwnw8AkW3IzAtnAj068dTlwM
-X-Proofpoint-GUID: g5rmHJ9gzfUUFTSL06uaH11R9z6SKZjf
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-07_02,2022-06-28_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- lowpriorityscore=0 clxscore=1015 adultscore=0 spamscore=0 impostorscore=0
- bulkscore=0 suspectscore=0 malwarescore=0 mlxlogscore=999 phishscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2206140000 definitions=main-2207070011
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AD35E113E40;
+ Thu,  7 Jul 2022 06:08:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1657174128; x=1688710128;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=ye10hM3rzbbBjZ0ETRxS9cm+vzm82pbFIhW2byhgvQc=;
+ b=EgBpEK+9ZnRAZB1H0WPsSoYxrPaTc4flE40KebVLHmRrOhrHE4EEJFKc
+ STQAMRazMbn3e6PHjkQvX7p3UtVPlUbsSBgq4WK/r2P2pgeI6qHnfFH02
+ HG4BUhRqqwCRxLNPo+rh/aFPASIFdfwYDk4TL+s8KGDSiYym7e5N3LyMa
+ YYvhBxUIz6eE+txG8pGK8UpxpfAaE9dC0v//2AS01Vzc2SkBKVkGHkYvz
+ e+kldPLb/VHlSPVx1+ykPQzBjTB6GV9TX/tWAdt6+7ZLSy8wKWlss7H6F
+ SCGxHWQFyBACOYJP/wrINs9hQkt70061iw3uFOfv+I4p0BozzZAZSYC53 Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10400"; a="347924826"
+X-IronPort-AV: E=Sophos;i="5.92,252,1650956400"; d="scan'208";a="347924826"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jul 2022 23:08:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,252,1650956400"; d="scan'208";a="650995051"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga008.fm.intel.com with ESMTP; 06 Jul 2022 23:08:47 -0700
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 6 Jul 2022 23:08:47 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Wed, 6 Jul 2022 23:08:47 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.42) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Wed, 6 Jul 2022 23:08:47 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NbGzA4JIzWMiMwYs3sBqsinnbqa/CUPbAE7QwreyetN15AMU1bBH9+olB8qGrNPqj2p34qya0bj4tAMv1LVs8ffbjkNDzF+0v29NoP8SMx/CDD7YwF3zFPPywtefRMi+/x7GSlFiwME7PKddRKGZqCqICdAWR5rgrZ8/uT0zy175VH96GYStlFe31Wvqtk1rlWiIlKODYjBeyqZq+Hpdp5d8ua0PNCl0Xstof5br3ZpFA5H25zQK7lEwYzLCTrUmDQyCX61zvwFjcQU94fKlB4XsrQDH7TDT5D9yWRgudGBNMJxUUD7+rDTf/5P+Oltm40a0TjeGXZfVFsGbUgPT0g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ye10hM3rzbbBjZ0ETRxS9cm+vzm82pbFIhW2byhgvQc=;
+ b=USDEV2Jj0zI7WFtmk1wwnxPDK+ozhbGE1IqOGO9WLWtJkaSWogrM7dQjyX/+MYmtzLKvM9Vv8IX6Ka04wmZ6degh5OBOXqRzWCMNIU7LIhRekrCS2dBlZPeig2r0P7BVjoqUU7XCtbOl8eSfxbYQ8YxgzKVlwMwaCdsJruTfRQJI+oBPPQvoMsOKANskpDcsK4caMu+WWLeLUXjK0egmFofkn/NvQm1xMQbTbRsMVYCBE/aac7Dh8bqeBnejufdbLofsXMMGGmHQwlo9jyby+w0E4xP7kP33SPe3ymCRKjBWl5wglsAcZF9+bIkdnqzAQ6BA62qUn5OdfYC9bpva2A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by SN6PR11MB3293.namprd11.prod.outlook.com (2603:10b6:805:be::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17; Thu, 7 Jul
+ 2022 06:08:45 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::8435:5a99:1e28:b38c]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::8435:5a99:1e28:b38c%2]) with mapi id 15.20.5395.021; Thu, 7 Jul 2022
+ 06:08:45 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Nicolin Chen <nicolinc@nvidia.com>, "kwankhede@nvidia.com"
+ <kwankhede@nvidia.com>, "corbet@lwn.net" <corbet@lwn.net>,
+ "hca@linux.ibm.com" <hca@linux.ibm.com>, "gor@linux.ibm.com"
+ <gor@linux.ibm.com>, "agordeev@linux.ibm.com" <agordeev@linux.ibm.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "svens@linux.ibm.com" <svens@linux.ibm.com>, "zhenyuw@linux.intel.com"
+ <zhenyuw@linux.intel.com>, "Wang, Zhi A" <zhi.a.wang@intel.com>,
+ "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>, "tvrtko.ursulin@linux.intel.com"
+ <tvrtko.ursulin@linux.intel.com>, "airlied@linux.ie" <airlied@linux.ie>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>, "farman@linux.ibm.com"
+ <farman@linux.ibm.com>, "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "vneethv@linux.ibm.com"
+ <vneethv@linux.ibm.com>, "oberpar@linux.ibm.com" <oberpar@linux.ibm.com>,
+ "freude@linux.ibm.com" <freude@linux.ibm.com>, "akrowiak@linux.ibm.com"
+ <akrowiak@linux.ibm.com>, "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "hch@infradead.org" <hch@infradead.org>
+Subject: RE: [RFT][PATCH v2 0/9] Update vfio_pin/unpin_pages API
+Thread-Topic: [RFT][PATCH v2 0/9] Update vfio_pin/unpin_pages API
+Thread-Index: AQHYkQGYmzwXVwAIR0+upNM3ZOmxoq1ybcTA
+Date: Thu, 7 Jul 2022 06:08:45 +0000
+Message-ID: <BN9PR11MB52768822A11C158214C6A6A48C839@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20220706062759.24946-1-nicolinc@nvidia.com>
+In-Reply-To: <20220706062759.24946-1-nicolinc@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: edb57e31-3fac-4124-1ced-08da5fdf2675
+x-ms-traffictypediagnostic: SN6PR11MB3293:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: rN1dbzqg1C4BHL5DB5c/ZPMktGVsaJj6rUIJ7BpksUDa0aqcQRpiWxAvwSRcZ+V045292dTSY4hCkKkLxRF98vXNPeAeoSY9m8kBbpfVsDEH2LsqcK4VJi0FW6iGxPTrpf6JKrSewkW6Hr6ULM+5lFx1fNSQ4/niY1/uCqL2mWutGHb6QgfDko4ujuY0jDdSFXF/+zXdobZLRr0oqrNkfVWfJEiZ8opMxfx2NnJEp1p7H2IfuzwOKF4/lJ0GsvORloAu+IeNstcCHMyaFtzEAEXlAu6n0lQLpB5jvsjbTcBoLJhzXzJaVriCBmSMTIHJEOHAFVqJVcTEmdgO1QlHOpK5gf7+dVda1f06K39gC8HM3KJNuokQAum3fRNL5VkCC5l7Kx1rzQSRNJkLDGAZPgGdEuBC6+qhkzGuqamXLdoWD6nXDhJlUx9pa38+VfMFdxWa/Yoe95PhozYxsoPQvRUtoxdNe6lVypkrAWhhmKaJ6lMdxyFktXVyD4ZKpv7IRGR/8mwXDBO3Xu8IPh3dH/MNkp6r4f7hChOidvFiRYxAnNJJMOk7WcB/L76zbTJ0UYHP++UIYt9TLpVpahBAht6+U5fhXe+ozfgpECogplwFqoVLoEw1aVeCXZ1H58HTZwvG0c3n4OlV2i+ucUC5eA6EldyvVXlBrRCchF88A9ghXA3GDAXfk+OKje9LXRIORB8YdXmkrxYrYPB0zGLNJYmFiyWtsGVMj9JBva1lAoKzG7aSGJ5ug8yh5TgtPAk10gwfoL/AcT464mr4iR4vIE4Ymxll85f54KuXbiLc+4iZG+Esg/Xc8NOQ2bUkaLOQ6B50Pz+AjFpE7AfSM4z2mDMaU5oRyFfqayw0pF0e9Fo=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(136003)(376002)(396003)(366004)(39860400002)(346002)(9686003)(478600001)(54906003)(110136005)(38070700005)(966005)(38100700002)(186003)(316002)(8676002)(41300700001)(4326008)(15650500001)(76116006)(86362001)(66946007)(71200400001)(122000001)(5660300002)(66446008)(26005)(64756008)(8936002)(83380400001)(7416002)(55016003)(52536014)(33656002)(6506007)(7406005)(7696005)(2906002)(66556008)(82960400001)(921005)(66476007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?sYLKAky3pV803I2SXnwgoWNV6MGPz70A/cBCnQ6WUcB7MQN5OeUZ0+RRDqlZ?=
+ =?us-ascii?Q?1i+oBGlTnJmq4VCnAAwOlfC5GdjM/OzROXV07Yt1h/nOD4srN39zwzB+PVAp?=
+ =?us-ascii?Q?TBacnhUoL9K9a9Epa56F9n+OdWYUogpBjRuLG+WyF/riLWKe5In5oBTA6Zy5?=
+ =?us-ascii?Q?JJ3NqLbTHG2NrzUh0LQ+6YpyTIUyCgxr6e5GD5eJoIcRqdbDdHMRIDbyjkm1?=
+ =?us-ascii?Q?upwzvB1p2ODCL2oEI6+GmxHjjoSBIwqt13NyQOKXfaggIpGNy23NDZeK9yEz?=
+ =?us-ascii?Q?94M+emo7VPq8lQ6b302hilRNIVi7gljYwvtM9vXg0si1Mjlq4JotFqA0leav?=
+ =?us-ascii?Q?w+Ioj/Aw1C9DbRMETq9P8RVFpGRcW0MOhsdUhZbcWXfssSKe6DpThM9HEW13?=
+ =?us-ascii?Q?z+ByU6qbxmmR4odWq/4k8+C9JBwHJthAU7Y+6gO2kNzuvgqIiQccufMLpWkm?=
+ =?us-ascii?Q?1shD70+qq7DheJrXsjkD6uuhH/jIiKoTlEVktHxZdJodvkhGnJADyNr9w6l6?=
+ =?us-ascii?Q?7pIeR3cXORK41xaxoiPDy9HAiEgbhNJEna3tFvDSVfruHzNhUcQqk0RyP+wv?=
+ =?us-ascii?Q?WVFJFOu1kClX+Qvi/FBm24Xj5D5RBCL9DLM62uWAAeyLfe4nXmpX7Fc2y0yd?=
+ =?us-ascii?Q?xRdFabKThzrmRocEFf1duutgc1w+0XOoIbMDRlc+2SsBjoHQcXqlXEUufLYB?=
+ =?us-ascii?Q?d6xC29JT/o165ohZJT4ubYCUD7dtzCJfrwPPPtPhgLTTZyICJ5Jix05n2YpQ?=
+ =?us-ascii?Q?1DgHnTOJ1NvePGBBy99DNPDWoDn3QX8VOfc8YKvX86OdOKVhisX962IYo6U+?=
+ =?us-ascii?Q?f1g2XondREBrLF5NMXVbZ8tObd4IlryZQTy1fQafsb8PMcf7tPd3Yhb3nFdh?=
+ =?us-ascii?Q?61Lz2AX1qArbw6mcN+gQY1+p0sc84qrt/6rjDghFYmAEdweOnnyhsLxbdFz3?=
+ =?us-ascii?Q?2fVo2MJasgBjXMmB7wpJ913wTtyO35BG6KBfEGbWSDzaya1PO7Dx6gnjU1B1?=
+ =?us-ascii?Q?Asxb+xY9jGfHUcLWM5zD7BCE/jId9gMn6TBOAO00KFqCs4Uov1KIIp7DEny5?=
+ =?us-ascii?Q?gdIzdg+xbQh3EdClhxgY4tmiu3KpXtNwCG/dukoShaEZBj2rpgYSaQk+n1I9?=
+ =?us-ascii?Q?BQG+GB9bx3Ak1WzYJoX73jcXDzM0fJqi+83EtueMKCwd0xdbLXHHyqp8am6W?=
+ =?us-ascii?Q?wF8o2sPA0/JBY4AaP0h4nXoqgav/4P/GCeBNZjbgal0SKy+RfGEhmGN+dUVI?=
+ =?us-ascii?Q?ZNux30sJvcULCXXNSTrU5PTLdvfbaPoIofrPB/VSxIdEtEyxZqIVNTnL5pkF?=
+ =?us-ascii?Q?viV17YbnrkyGhhzWO5THPNhF2eYDWMU705tdVj4nUkEWKXu0ep4UZ53PNDXG?=
+ =?us-ascii?Q?EvCGFIfGS2NWPVrzF/+UvYxyWJX+kb3h51aDYK7KaLhP9AJgW/SdwiL4LCRz?=
+ =?us-ascii?Q?RBwK8JxlJzIpHPNxIBkoNjSiQA8Q2oZ2S7OC8IFVXCQfyFExfjBGcPn0y26T?=
+ =?us-ascii?Q?1gR497XjLV7T2NN7po8U6kvxyYt3vAmLVvUpy36/Bwbho+PCgXbCSTjhrvIo?=
+ =?us-ascii?Q?lEpEu0F9/lF/0Hett1ckVut3fPpPnx90hB9cGLYo?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: edb57e31-3fac-4124-1ced-08da5fdf2675
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Jul 2022 06:08:45.3589 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: XOlCJE0sx2F6s57xOMtfdTNhw/KfzBI49vzPY0G36PyVK5n9kQwW8S982M9j+ByvTJ3cKAim2B/+tW40yatm8Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3293
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,425 +162,44 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, kvm@vger.kernel.org,
- Jason Gunthorpe <jgg@nvidia.com>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "jchrist@linux.ibm.com" <jchrist@linux.ibm.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 2022-07-06 at 09:42 +0200, Christoph Hellwig wrote:
-> Many of the mdev drivers use a simple counter for keeping track of
-> the
-> available instances. Move this code to the core code and store the
-> counter
-> in the mdev_parent. Implement it using correct locking, fixing mdpy.
-> 
-> Drivers just provide the value in the mdev_driver at registration
-> time
-> and the core code takes care of maintaining it and exposing the value
-> in
-> sysfs.
+> From: Nicolin Chen
+> Sent: Wednesday, July 6, 2022 2:28 PM
+>=20
+> This is a preparatory series for IOMMUFD v2 patches. It prepares for
+> replacing vfio_iommu_type1 implementations of vfio_pin/unpin_pages()
+> with IOMMUFD version.
+>=20
+> There's a gap between these two versions: the vfio_iommu_type1 version
+> inputs a non-contiguous PFN list and outputs another PFN list for the
+> pinned physical page list, while the IOMMUFD version only supports a
+> contiguous address input by accepting the starting IO virtual address
+> of a set of pages to pin and by outputting to a physical page list.
+>=20
+> The nature of existing callers mostly aligns with the IOMMUFD version,
+> except s390's vfio_ccw_cp code where some additional change is needed
+> along with this series. Overall, updating to "iova" and "phys_page"
+> does improve the caller side to some extent.
+>=20
+> Also fix a misuse of physical address and virtual address in the s390's
+> crypto code. And update the input naming at the adjacent vfio_dma_rw().
+>=20
+> This is on github:
+> https://github.com/nicolinc/iommufd/commits/vfio_pin_pages
+>=20
+> Request for testing: I only did build for s390 and i915 code, so it'd
+> be nice to have people who have environment to run sanity accordingly.
+>=20
 
-If I read this right, .get_available and .max_instances are mutually
-exclusive. Which means that available_instances_show() from patch 12
-would need to emit parent->available_instances if .get_available is
-NULL.
-
-Eric
-
-> 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> [count instances per-parent instead of per-type]
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> ---
->  drivers/s390/cio/vfio_ccw_drv.c       |  1 -
->  drivers/s390/cio/vfio_ccw_ops.c       | 14 +-------------
->  drivers/s390/cio/vfio_ccw_private.h   |  2 --
->  drivers/s390/crypto/vfio_ap_ops.c     | 21 +++------------------
->  drivers/s390/crypto/vfio_ap_private.h |  2 --
->  drivers/vfio/mdev/mdev_core.c         | 18 +++++++++++++++---
->  include/linux/mdev.h                  |  3 +++
->  samples/vfio-mdev/mdpy.c              | 23 ++++-------------------
->  8 files changed, 26 insertions(+), 58 deletions(-)
-> 
-> diff --git a/drivers/s390/cio/vfio_ccw_drv.c
-> b/drivers/s390/cio/vfio_ccw_drv.c
-> index 750d0315f1f5b..449c76b29a3b5 100644
-> --- a/drivers/s390/cio/vfio_ccw_drv.c
-> +++ b/drivers/s390/cio/vfio_ccw_drv.c
-> @@ -149,7 +149,6 @@ static struct vfio_ccw_private
-> *vfio_ccw_alloc_private(struct subchannel *sch)
->  	INIT_LIST_HEAD(&private->crw);
->  	INIT_WORK(&private->io_work, vfio_ccw_sch_io_todo);
->  	INIT_WORK(&private->crw_work, vfio_ccw_crw_todo);
-> -	atomic_set(&private->avail, 1);
->  
->  	private->cp.guest_cp = kcalloc(CCWCHAIN_LEN_MAX, sizeof(struct
-> ccw1),
->  				       GFP_KERNEL);
-> diff --git a/drivers/s390/cio/vfio_ccw_ops.c
-> b/drivers/s390/cio/vfio_ccw_ops.c
-> index 6f6a0f2695059..c05d80add7be2 100644
-> --- a/drivers/s390/cio/vfio_ccw_ops.c
-> +++ b/drivers/s390/cio/vfio_ccw_ops.c
-> @@ -70,13 +70,6 @@ static int vfio_ccw_mdev_notifier(struct
-> notifier_block *nb,
->  	return NOTIFY_DONE;
->  }
->  
-> -static unsigned int vfio_ccw_get_available(struct mdev_type *mtype)
-> -{
-> -	struct vfio_ccw_private *private = dev_get_drvdata(mtype-
-> >parent->dev);
-> -
-> -	return atomic_read(&private->avail);
-> -}
-> -
->  static int vfio_ccw_mdev_probe(struct mdev_device *mdev)
->  {
->  	struct vfio_ccw_private *private = dev_get_drvdata(mdev-
-> >dev.parent);
-> @@ -85,9 +78,6 @@ static int vfio_ccw_mdev_probe(struct mdev_device
-> *mdev)
->  	if (private->state == VFIO_CCW_STATE_NOT_OPER)
->  		return -ENODEV;
->  
-> -	if (atomic_dec_if_positive(&private->avail) < 0)
-> -		return -EPERM;
-> -
->  	memset(&private->vdev, 0, sizeof(private->vdev));
->  	vfio_init_group_dev(&private->vdev, &mdev->dev,
->  			    &vfio_ccw_dev_ops);
-> @@ -108,7 +98,6 @@ static int vfio_ccw_mdev_probe(struct mdev_device
-> *mdev)
->  
->  err_atomic:
->  	vfio_uninit_group_dev(&private->vdev);
-> -	atomic_inc(&private->avail);
->  	private->mdev = NULL;
->  	private->state = VFIO_CCW_STATE_IDLE;
->  	return ret;
-> @@ -135,7 +124,6 @@ static void vfio_ccw_mdev_remove(struct
-> mdev_device *mdev)
->  	vfio_uninit_group_dev(&private->vdev);
->  	cp_free(&private->cp);
->  	private->mdev = NULL;
-> -	atomic_inc(&private->avail);
->  }
->  
->  static int vfio_ccw_mdev_open_device(struct vfio_device *vdev)
-> @@ -613,6 +601,7 @@ static const struct vfio_device_ops
-> vfio_ccw_dev_ops = {
->  
->  struct mdev_driver vfio_ccw_mdev_driver = {
->  	.device_api = VFIO_DEVICE_API_CCW_STRING,
-> +	.max_instances = 1,
->  	.driver = {
->  		.name = "vfio_ccw_mdev",
->  		.owner = THIS_MODULE,
-> @@ -620,7 +609,6 @@ struct mdev_driver vfio_ccw_mdev_driver = {
->  	},
->  	.probe = vfio_ccw_mdev_probe,
->  	.remove = vfio_ccw_mdev_remove,
-> -	.get_available = vfio_ccw_get_available,
->  };
->  
->  int vfio_ccw_mdev_reg(struct subchannel *sch)
-> diff --git a/drivers/s390/cio/vfio_ccw_private.h
-> b/drivers/s390/cio/vfio_ccw_private.h
-> index b7163bac8cc75..9be5baed0cb7f 100644
-> --- a/drivers/s390/cio/vfio_ccw_private.h
-> +++ b/drivers/s390/cio/vfio_ccw_private.h
-> @@ -72,7 +72,6 @@ struct vfio_ccw_crw {
->   * @sch: pointer to the subchannel
->   * @state: internal state of the device
->   * @completion: synchronization helper of the I/O completion
-> - * @avail: available for creating a mediated device
->   * @mdev: pointer to the mediated device
->   * @nb: notifier for vfio events
->   * @io_region: MMIO region to input/output I/O arguments/results
-> @@ -96,7 +95,6 @@ struct vfio_ccw_private {
->  	struct subchannel	*sch;
->  	int			state;
->  	struct completion	*completion;
-> -	atomic_t		avail;
->  	struct mdev_device	*mdev;
->  	struct notifier_block	nb;
->  	struct ccw_io_region	*io_region;
-> diff --git a/drivers/s390/crypto/vfio_ap_ops.c
-> b/drivers/s390/crypto/vfio_ap_ops.c
-> index edeec11c56560..69ed88fdaf383 100644
-> --- a/drivers/s390/crypto/vfio_ap_ops.c
-> +++ b/drivers/s390/crypto/vfio_ap_ops.c
-> @@ -461,14 +461,9 @@ static int vfio_ap_mdev_probe(struct mdev_device
-> *mdev)
->  	struct ap_matrix_mdev *matrix_mdev;
->  	int ret;
->  
-> -	if ((atomic_dec_if_positive(&matrix_dev->available_instances) <
-> 0))
-> -		return -EPERM;
-> -
->  	matrix_mdev = kzalloc(sizeof(*matrix_mdev), GFP_KERNEL);
-> -	if (!matrix_mdev) {
-> -		ret = -ENOMEM;
-> -		goto err_dec_available;
-> -	}
-> +	if (!matrix_mdev)
-> +		return -ENOMEM;
->  	vfio_init_group_dev(&matrix_mdev->vdev, &mdev->dev,
->  			    &vfio_ap_matrix_dev_ops);
->  
-> @@ -491,8 +486,6 @@ static int vfio_ap_mdev_probe(struct mdev_device
-> *mdev)
->  	mutex_unlock(&matrix_dev->lock);
->  	vfio_uninit_group_dev(&matrix_mdev->vdev);
->  	kfree(matrix_mdev);
-> -err_dec_available:
-> -	atomic_inc(&matrix_dev->available_instances);
->  	return ret;
->  }
->  
-> @@ -508,12 +501,6 @@ static void vfio_ap_mdev_remove(struct
-> mdev_device *mdev)
->  	mutex_unlock(&matrix_dev->lock);
->  	vfio_uninit_group_dev(&matrix_mdev->vdev);
->  	kfree(matrix_mdev);
-> -	atomic_inc(&matrix_dev->available_instances);
-> -}
-> -
-> -static unsigned int vfio_ap_mdev_get_available(struct mdev_type
-> *mtype)
-> -{
-> -	return atomic_read(&matrix_dev->available_instances);
->  }
->  
->  struct vfio_ap_queue_reserved {
-> @@ -1427,6 +1414,7 @@ static const struct vfio_device_ops
-> vfio_ap_matrix_dev_ops = {
->  
->  static struct mdev_driver vfio_ap_matrix_driver = {
->  	.device_api = VFIO_DEVICE_API_AP_STRING,
-> +	.max_instances = MAX_ZDEV_ENTRIES_EXT,
->  	.driver = {
->  		.name = "vfio_ap_mdev",
->  		.owner = THIS_MODULE,
-> @@ -1435,15 +1423,12 @@ static struct mdev_driver
-> vfio_ap_matrix_driver = {
->  	},
->  	.probe = vfio_ap_mdev_probe,
->  	.remove = vfio_ap_mdev_remove,
-> -	.get_available = vfio_ap_mdev_get_available,
->  };
->  
->  int vfio_ap_mdev_register(void)
->  {
->  	int ret;
->  
-> -	atomic_set(&matrix_dev->available_instances,
-> MAX_ZDEV_ENTRIES_EXT);
-> -
->  	ret = mdev_register_driver(&vfio_ap_matrix_driver);
->  	if (ret)
->  		return ret;
-> diff --git a/drivers/s390/crypto/vfio_ap_private.h
-> b/drivers/s390/crypto/vfio_ap_private.h
-> index 5dc5050d03791..b808b343b771f 100644
-> --- a/drivers/s390/crypto/vfio_ap_private.h
-> +++ b/drivers/s390/crypto/vfio_ap_private.h
-> @@ -28,7 +28,6 @@
->   * struct ap_matrix_dev - Contains the data for the matrix device.
->   *
->   * @device:	generic device structure associated with the AP matrix
-> device
-> - * @available_instances: number of mediated matrix devices that can
-> be created
->   * @info:	the struct containing the output from the PQAP(QCI)
-> instruction
->   * @mdev_list:	the list of mediated matrix devices created
->   * @lock:	mutex for locking the AP matrix device. This lock will
-> be
-> @@ -40,7 +39,6 @@
->   */
->  struct ap_matrix_dev {
->  	struct device device;
-> -	atomic_t available_instances;
->  	struct ap_config_info info;
->  	struct list_head mdev_list;
->  	struct mutex lock;
-> diff --git a/drivers/vfio/mdev/mdev_core.c
-> b/drivers/vfio/mdev/mdev_core.c
-> index 93f8caf2e5f77..9bc897235c492 100644
-> --- a/drivers/vfio/mdev/mdev_core.c
-> +++ b/drivers/vfio/mdev/mdev_core.c
-> @@ -70,6 +70,7 @@ int mdev_register_parent(struct mdev_parent
-> *parent, struct device *dev,
->  	parent->mdev_driver = mdev_driver;
->  	parent->types = types;
->  	parent->nr_types = nr_types;
-> +	parent->available_instances = mdev_driver->max_instances;
->  
->  	if (!mdev_bus_compat_class) {
->  		mdev_bus_compat_class =
-> class_compat_register("mdev_bus");
-> @@ -115,14 +116,17 @@ EXPORT_SYMBOL(mdev_unregister_parent);
->  static void mdev_device_release(struct device *dev)
->  {
->  	struct mdev_device *mdev = to_mdev_device(dev);
-> -
-> -	/* Pairs with the get in mdev_device_create() */
-> -	kobject_put(&mdev->type->kobj);
-> +	struct mdev_parent *parent = mdev->type->parent;
->  
->  	mutex_lock(&mdev_list_lock);
->  	list_del(&mdev->next);
-> +	if (!parent->mdev_driver->get_available)
-> +		parent->available_instances++;
->  	mutex_unlock(&mdev_list_lock);
->  
-> +	/* Pairs with the get in mdev_device_create() */
-> +	kobject_put(&mdev->type->kobj);
-> +
->  	dev_dbg(&mdev->dev, "MDEV: destroying\n");
->  	kfree(mdev);
->  }
-> @@ -144,6 +148,14 @@ int mdev_device_create(struct mdev_type *type,
-> const guid_t *uuid)
->  		}
->  	}
->  
-> +	if (!drv->get_available) {
-> +		if (!parent->available_instances) {
-> +			mutex_unlock(&mdev_list_lock);
-> +			return -EUSERS;
-> +		}
-> +		parent->available_instances--;
-> +	}
-> +
->  	mdev = kzalloc(sizeof(*mdev), GFP_KERNEL);
->  	if (!mdev) {
->  		mutex_unlock(&mdev_list_lock);
-> diff --git a/include/linux/mdev.h b/include/linux/mdev.h
-> index dc38ad2b07883..641ed18a61247 100644
-> --- a/include/linux/mdev.h
-> +++ b/include/linux/mdev.h
-> @@ -45,6 +45,7 @@ struct mdev_parent {
->  	struct rw_semaphore unreg_sem;
->  	struct mdev_type **types;
->  	unsigned int nr_types;
-> +	unsigned int available_instances;
->  };
->  
->  static inline struct mdev_device *to_mdev_device(struct device *dev)
-> @@ -55,6 +56,7 @@ static inline struct mdev_device
-> *to_mdev_device(struct device *dev)
->  /**
->   * struct mdev_driver - Mediated device driver
->   * @device_api: string to return for the device_api sysfs
-> + * @max_instances: maximum number of instances supported (optional)
->   * @probe: called when new device created
->   * @remove: called when device removed
->   * @get_available: Return the max number of instances that can be
-> created
-> @@ -63,6 +65,7 @@ static inline struct mdev_device
-> *to_mdev_device(struct device *dev)
->   **/
->  struct mdev_driver {
->  	const char *device_api;
-> +	unsigned int max_instances;
->  	int (*probe)(struct mdev_device *dev);
->  	void (*remove)(struct mdev_device *dev);
->  	unsigned int (*get_available)(struct mdev_type *mtype);
-> diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-> index 250b7ea2df2e4..7f7ac5491407e 100644
-> --- a/samples/vfio-mdev/mdpy.c
-> +++ b/samples/vfio-mdev/mdpy.c
-> @@ -42,11 +42,6 @@
->  
->  MODULE_LICENSE("GPL v2");
->  
-> -static int max_devices = 4;
-> -module_param_named(count, max_devices, int, 0444);
-> -MODULE_PARM_DESC(count, "number of " MDPY_NAME " devices");
-> -
-> -
->  #define MDPY_TYPE_1 "vga"
->  #define MDPY_TYPE_2 "xga"
->  #define MDPY_TYPE_3 "hd"
-> @@ -93,7 +88,6 @@ static struct class	*mdpy_class;
->  static struct cdev	mdpy_cdev;
->  static struct device	mdpy_dev;
->  static struct mdev_parent mdpy_parent;
-> -static u32		mdpy_count;
->  static const struct vfio_device_ops mdpy_dev_ops;
->  
->  /* State of each mdev device */
-> @@ -234,9 +228,6 @@ static int mdpy_probe(struct mdev_device *mdev)
->  	u32 fbsize;
->  	int ret;
->  
-> -	if (mdpy_count >= max_devices)
-> -		return -ENOMEM;
-> -
->  	mdev_state = kzalloc(sizeof(struct mdev_state), GFP_KERNEL);
->  	if (mdev_state == NULL)
->  		return -ENOMEM;
-> @@ -265,8 +256,6 @@ static int mdpy_probe(struct mdev_device *mdev)
->  	mdpy_create_config_space(mdev_state);
->  	mdpy_reset(mdev_state);
->  
-> -	mdpy_count++;
-> -
->  	ret = vfio_register_emulated_iommu_dev(&mdev_state->vdev);
->  	if (ret)
->  		goto err_mem;
-> @@ -293,8 +282,6 @@ static void mdpy_remove(struct mdev_device *mdev)
->  	kfree(mdev_state->vconfig);
->  	vfio_uninit_group_dev(&mdev_state->vdev);
->  	kfree(mdev_state);
-> -
-> -	mdpy_count--;
->  }
->  
->  static ssize_t mdpy_read(struct vfio_device *vdev, char __user *buf,
-> @@ -658,11 +645,6 @@ static ssize_t mdpy_show_description(struct
-> mdev_type *mtype, char *buf)
->  		       type->width, type->height);
->  }
->  
-> -static unsigned int mdpy_get_available(struct mdev_type *mtype)
-> -{
-> -	return max_devices - mdpy_count;
-> -}
-> -
->  static const struct vfio_device_ops mdpy_dev_ops = {
->  	.read = mdpy_read,
->  	.write = mdpy_write,
-> @@ -672,6 +654,7 @@ static const struct vfio_device_ops mdpy_dev_ops
-> = {
->  
->  static struct mdev_driver mdpy_driver = {
->  	.device_api = VFIO_DEVICE_API_PCI_STRING,
-> +	.max_instances = 4,
->  	.driver = {
->  		.name = "mdpy",
->  		.owner = THIS_MODULE,
-> @@ -680,7 +663,6 @@ static struct mdev_driver mdpy_driver = {
->  	},
->  	.probe = mdpy_probe,
->  	.remove	= mdpy_remove,
-> -	.get_available = mdpy_get_available,
->  	.show_description = mdpy_show_description,
->  };
->  
-> @@ -757,5 +739,8 @@ static void __exit mdpy_dev_exit(void)
->  	mdpy_class = NULL;
->  }
->  
-> +module_param_named(count, mdpy_driver.max_instances, int, 0444);
-> +MODULE_PARM_DESC(count, "number of " MDPY_NAME " devices");
-> +
->  module_init(mdpy_dev_init)
->  module_exit(mdpy_dev_exit)
-
++Terrence who is testing it for i915 now...
