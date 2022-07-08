@@ -1,25 +1,25 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32B6856C150
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Jul 2022 22:31:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4682056C19B
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Jul 2022 00:44:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5D83310E878;
-	Fri,  8 Jul 2022 20:31:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 15E6D10EED2;
+	Fri,  8 Jul 2022 22:44:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2060.outbound.protection.outlook.com [40.107.93.60])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 606B910E869;
- Fri,  8 Jul 2022 20:31:54 +0000 (UTC)
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12on2044.outbound.protection.outlook.com [40.107.244.44])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CF2BE10EED3;
+ Fri,  8 Jul 2022 22:44:34 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TCEcmAW2eBwnsIcN211V0sQRKkJUPlLO9fn5aV8UFS5ix/+WK4kXdk3NAPUpdreAaT15ivJLk6K/9pCGvMf1GYptai0WJlAdLUNDFaWfmM0gx3culTKK3O9rOwiJaCvrHvA59FB39kZA6sZvlvtu08ddzDORR+qUBagkC9eGgoNfDMNdqzMKuMY/HIGn23nhQnzRDfzLtilCBCp7PLKF/aIHKcdLGiIFGhZLZp0Ftz1NxgLf1cCEQE4QAQ8p2omIrEosIr9d3tUCVXnCj/UP9uCvmBeWCA96XyXtKx5FamFkyMlXiYJlyBTo+EJYAM6kQbA5eVjUtVTiKb1vbdXNiQ==
+ b=BqU4PRZRgvlq35GIbDKwdX35qbuWjwpAB1Bzz0OFKRJOb4iZz7/gkCvwapsIcMLFiL7xuKkTUCRadrHQ5I8waWkYbTdiEd3QDBV8+85W4jsbvBnZhM70azSyLRHTboBfLMo3WZ0YMNVA9CXlJP6Gzk0TUvXeMIQ2uwKI5lcHX9CdUmKmD+zXRm4N7ajigaGqlh8iicEuG4VEOQNuaiwnSlQJJWuE4t58SYn93s+Y0WTnZSyZcXQzwL2drfCBTKOnkE1e17G2UkvJx0a7YjgAge1HdCDVK6PYMhGB0DOKixQhNCsTAVZJvXTvnct8Qfltn4JJth+NtxLxjWaYiFc9RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AROgJCrFKTNh8ss+sbPa16c6l7f8KipxpiVwS66Cg2Y=;
- b=JJecR0pW2EDiGWyZ3P5IQYU6bJXcZn+ZPe4wJ0HrWAoobg4hBPSRyKiM4fPRXRbIkJn9duP/13+BnJPhnAWpct4to/DSCY7pSE4e4TEiTC7vheOZgIvOLIA1mK04c38RGThEenr6PY3Z92/C4oqwUz1ytwPatL7RVL3cAU+Y9DtEk672G7Z21wk+OaLyiiHQhCvzH8nR5kcwfryOSQmV+faQfWqmW5PW91nEoBe9olkiJe2rkVvCtCBRA5V4WgXKCAdbZ5h90JC7ja0jZJ6h+K5h09oILQrn8JGD6ncBdRjihOVxCfEixgssIWYFWNQGOvNgivHa7kEM6V9tRAF8Yg==
+ bh=OymqoGl9JVTjCBsUa8cL9aguT14rsPkOfq4pJ486iDQ=;
+ b=iv9QDjO8UFz6P0CCfzY6tJn5M1O/SZlGrBs8lIegPsfU94oQTIG8sQorJmaG+XV31z5IYsfkwyCGM2KwPhi3HuNGxPE0xogwMJfOEOHjoZfw5ylPdGfICB0K7efxAwS+9tGql2iLBmqcBa+W2Z13U2NhFafUpxmToE4EpqbQZtnRQpHBnODUYQY65keXJ6E4bm63ehkjpLXjj4xb9pf5TaItScVS2WJAx9X2uLLL5CypZ8hOJvX0uJ+obWMTkvG2/wy6sjlj5oq96mh50/VHM8quwKKofzaEuUg2j5Q6ycZN+n1+4gAQt8SdtTFN7R3bcIRd4wxSeFErCsfHG22ahg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  12.22.5.235) smtp.rcpttodomain=linux.ibm.com smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -27,18 +27,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AROgJCrFKTNh8ss+sbPa16c6l7f8KipxpiVwS66Cg2Y=;
- b=IuSQPvNvmhJgM1h70m2jYzxPyL0miuLUNsmAkiRq1EDLlj8A3cf4SbFwGrKTiNfjlMexXUAa3st1ggBSwgwzVP9DOc9sDCQLDctTLYFLNP1syhnLpy+dKLs9MDPpxklt/Aq8375GSzSp3ie5qK3/A/T0kYWCNQrbBNK92KnzPsPM35wuspoDqvRB56Wuen5c6dMWUjpDddoyv4/khMFJBWFAitToOlKzryUr+fkTgrQaIkRkl3sciBxvlhEfGZpvC3+jCAs5M9/ZQc6FxjeZ/pux0g4F6xR46JbC/kxnufK5/LsatqqZt3sk6aFuL8e55Gzp42Y2KdwGTy4B0XDJhg==
-Received: from BN9PR03CA0951.namprd03.prod.outlook.com (2603:10b6:408:108::26)
- by CY4PR1201MB2551.namprd12.prod.outlook.com (2603:10b6:903:d9::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.17; Fri, 8 Jul
- 2022 20:31:51 +0000
-Received: from BN8NAM11FT067.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:108:cafe::1c) by BN9PR03CA0951.outlook.office365.com
- (2603:10b6:408:108::26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.16 via Frontend
- Transport; Fri, 8 Jul 2022 20:31:51 +0000
+ bh=OymqoGl9JVTjCBsUa8cL9aguT14rsPkOfq4pJ486iDQ=;
+ b=NVAZmhRnmXvaM3EEblXdqunQ4ZARS8lHqFwT0AIkkaI6BXfB19826sWlIe9ElpWdsRJ9UW8SazpTCebFilkjUCKfw0fSe05xxUiXaFlGRPl+n5k4EcDVyQj3lMBqNEe1LsnjU5c51J8UoPRVcJmCY8cdo/+lWEHhKly5vscnn4k+ZmlU54ZgKORlh+l+iUlaj4av05IzbpwUHpZuZUT1wqaWnuSBcnrneJ3vWgCcK1SgMdeXju2C5VqTUm+8MruKA0vzWASx5kzxhqYGbykHLct/lOpLReVCbYCP4XQnw7Yt+D9WhCoU4stc9FrqjNMMmGlZm8T/9nZGOgMmWQvP5Q==
+Received: from BN9PR03CA0879.namprd03.prod.outlook.com (2603:10b6:408:13c::14)
+ by DM4PR12MB5373.namprd12.prod.outlook.com (2603:10b6:5:39d::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.16; Fri, 8 Jul
+ 2022 22:44:32 +0000
+Received: from BN8NAM11FT053.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:13c:cafe::61) by BN9PR03CA0879.outlook.office365.com
+ (2603:10b6:408:13c::14) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.21 via Frontend
+ Transport; Fri, 8 Jul 2022 22:44:32 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.235)
  smtp.mailfrom=nvidia.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
@@ -46,53 +46,75 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  12.22.5.235 as permitted sender) receiver=protection.outlook.com;
  client-ip=12.22.5.235; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (12.22.5.235) by
- BN8NAM11FT067.mail.protection.outlook.com (10.13.177.159) with Microsoft SMTP
+ BN8NAM11FT053.mail.protection.outlook.com (10.13.177.209) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5417.15 via Frontend Transport; Fri, 8 Jul 2022 20:31:51 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- DRHQMAIL107.nvidia.com (10.27.9.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.32; Fri, 8 Jul 2022 20:31:50 +0000
+ 15.20.5417.15 via Frontend Transport; Fri, 8 Jul 2022 22:44:32 +0000
 Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ DRHQMAIL107.nvidia.com (10.27.9.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.32; Fri, 8 Jul 2022 22:44:31 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.26; Fri, 8 Jul 2022 13:31:49 -0700
-Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26 via Frontend
- Transport; Fri, 8 Jul 2022 13:31:48 -0700
-Date: Fri, 8 Jul 2022 13:31:47 -0700
+ 15.2.986.26; Fri, 8 Jul 2022 15:44:31 -0700
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.13) by mail.nvidia.com
+ (10.126.190.181) with Microsoft SMTP Server id 15.2.986.26 via Frontend
+ Transport; Fri, 8 Jul 2022 15:44:29 -0700
 From: Nicolin Chen <nicolinc@nvidia.com>
-To: Eric Farman <farman@linux.ibm.com>
-Subject: Re: [RFT][PATCH v2 0/9] Update vfio_pin/unpin_pages API
-Message-ID: <YsiUM/xxymScErv4@Asurada-Nvidia>
-References: <20220706062759.24946-1-nicolinc@nvidia.com>
- <73ba16703b8b6f6b4bf37a55ab011324b5affa38.camel@linux.ibm.com>
+To: <kwankhede@nvidia.com>, <corbet@lwn.net>, <hca@linux.ibm.com>,
+ <gor@linux.ibm.com>, <agordeev@linux.ibm.com>, <borntraeger@linux.ibm.com>,
+ <svens@linux.ibm.com>, <zhenyuw@linux.intel.com>, <zhi.a.wang@intel.com>,
+ <jani.nikula@linux.intel.com>, <joonas.lahtinen@linux.intel.com>,
+ <rodrigo.vivi@intel.com>, <tvrtko.ursulin@linux.intel.com>,
+ <airlied@linux.ie>, <daniel@ffwll.ch>, <farman@linux.ibm.com>,
+ <mjrosato@linux.ibm.com>, <pasic@linux.ibm.com>, <vneethv@linux.ibm.com>,
+ <oberpar@linux.ibm.com>, <freude@linux.ibm.com>, <akrowiak@linux.ibm.com>,
+ <jjherne@linux.ibm.com>, <alex.williamson@redhat.com>, <cohuck@redhat.com>,
+ <jgg@nvidia.com>, <kevin.tian@intel.com>, <hch@infradead.org>
+Subject: [PATCH v3 00/10] Update vfio_pin/unpin_pages API
+Date: Fri, 8 Jul 2022 15:44:18 -0700
+Message-ID: <20220708224427.1245-1-nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <73ba16703b8b6f6b4bf37a55ab011324b5affa38.camel@linux.ibm.com>
+Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8b5bf56d-ad64-4dac-e8d9-08da6120e3a6
-X-MS-TrafficTypeDiagnostic: CY4PR1201MB2551:EE_
+X-MS-Office365-Filtering-Correlation-Id: 91442b58-3a07-4d03-f97d-08da61336cea
+X-MS-TrafficTypeDiagnostic: DM4PR12MB5373:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: l99dB0Cc6MZXc+9IXm7iDcDwRQWn7fyWP1+8eEuOJILlkkL/Dstv1mluBZ5fEVMa4bYuKCF4ZrIyrN4QtRUZu0iNMv5aFlpu7ld/L4F/D17PIJxUC7okvFdp12DyZzWFyvzahyfHD4PS+XA+zU5HNtEyXPBReLnB7rsJVT09Jg5K4lso2SVC2ZEaDOT6BPXEbKqOd6nfrbEoItZKdsquYC7V8PRnlvpEBvsdpzYJOMblS6A0R8QmhehjJpxhwcoxIc8/sPbWe0Qz46ItFZR0OhCxu56Y8HQlnJAOM679y2pIgh3T0bL2JYEgYLkL7SsXKjQUdwmLnt++9G40VsILMkvWlzG9V2zKx9sCKXYLj2lGVWeAusB23jMwh6KMrvka9sXYPGH6uPWI0hmcm00VQ3/03h/JDboi04l9wOLLGT/uaJFwrWiVkElLHhczqwSzX4kJB0yTh1CyI3Q6SWV7mM1dTcpYu3h6z02Fko0bkZyvvKtVckE7R0hL8DTkFQNKdWR6EotPZxC5dURj5FBSq0U9tNIc2FoDkU8OeuiqBGfbMISuC1zOGS8bLi8ulRYNfHeOoPOodqwknlHyS1eurYv69vkTJwtmPYb0hFZfdb4kxHDjMW4a/wimLLT78PP7wZQzG9KMtpN3lqKBxCQfnn5gfnKLG+NXuH9+GZOiRzhRBJeN9EuqTAQXVNvKZrrpoMgJmcbr52pee5AW70FZPLeNY50Ya5aCYL/tpTmXAkUQg5WxakhXrZ4tCD7qqGsXh1SwFrBG3F7bZBkItGsHfE28g1W+eGOdJsNBhIG2ApGSBn+MYA4jQeOLiJMgQxzWFt+9tpM5ntE3iy2E95xxUeQNKWtiOFtq8yWzgl76D4b1qALvHaWtLK0L7xLaOHrKPSvuGsFRBuyYx8tzH4umqWLHVQHwf71denGKmtfCnSrAj4wXWHHrxwWdGZbwUiRL
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?IKbGErheMe2PGrzLCJHsPwR7uaz1miYsHiHboQ6W2aVx1sepWn88IKQ9NeGk?=
+ =?us-ascii?Q?xjI4XnTXDJaK/395q/T73mfgGK2RvbX19KAZEnAKQVLe9qebzAhcxE68SHxK?=
+ =?us-ascii?Q?iaoOUb7oT0mn86plzB+fRawZFBWqGfdVLo3gSa9xACEbL1kUqSKUyZwCGNdC?=
+ =?us-ascii?Q?WOhN2aqGhsGtntJG6OMoI9tYqFwEXJ1a3Fprryvi8tEHclt2n8bIPJ/M6xnJ?=
+ =?us-ascii?Q?mUwcD8m86CvYJnp6Ms5mxIr8ELJeAtluduMt3d4g7Kwaa2WHziXFKi8sakrj?=
+ =?us-ascii?Q?MZQoxkNIKlmfH3tnLZcMWHIZUbwGMXb8DRGina0ZUz0SeT/0tyzm2d+PaNm0?=
+ =?us-ascii?Q?mpgSolUlnRrKhy0DaWicksIgBZswJ2Z18V3aIHK/nBoV1uIObtGFVpyIDSgm?=
+ =?us-ascii?Q?zTAqfRlqQYFOBswBDiBUfappFU2SSMimoJjGGTLc+FWHhahOCnzY4glp9F3c?=
+ =?us-ascii?Q?ztFkLV/TC3pp+D4M1xEswr54wYoEalIZuF/1j2qBPKyuVdAzKoFhVJ00h5zs?=
+ =?us-ascii?Q?4MP2sLpoZN3dEJ+QVF19GTnUbbmqmtE8Gw2N55HddmBKaDwRNyRgA7nmZRAA?=
+ =?us-ascii?Q?n7HM0aI2u5PWRNdhOae28DEFdQ15rgN2f6JtnZIkVmXCvk6g6GqKXNltLT1S?=
+ =?us-ascii?Q?qWG3iK64FiGAo/m1gloQ6q2NdEgzVfAiWFFggWkDcVH0MNxGe4wCghdNlXXQ?=
+ =?us-ascii?Q?xbbvG0RoYkco35jESQnrhxdUuGhzmgVmp/llYtBd/w8ZF0CpE/hdxUu/r0pK?=
+ =?us-ascii?Q?VTGI2nh9o0ZmY7BR6M/NpBE51yq/xvci6Ot4H4iziqJ5okOR68TdYVEJk0Zl?=
+ =?us-ascii?Q?R4o3g1DhQgvVQwE1uk8FqQBhyXUlWqLVyy4IAAflAxM5IC8TTT2l7SBt9aml?=
+ =?us-ascii?Q?tOCQOCDOR1xNmUxv8GNMDYNGj9qNmektUf26UyLo7J7/l8JRWuz3+zJF2pnq?=
+ =?us-ascii?Q?I+B3o4Vdms8bWUnTXgbZhi5bkULGEXF+GAjCgUN78/F3xST8PqWe4JPfURyD?=
+ =?us-ascii?Q?uOqD80rSdQgYTxQFfCNsleK1uA=3D=3D?=
 X-Forefront-Antispam-Report: CIP:12.22.5.235; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:InfoNoRecords; CAT:NONE;
- SFS:(13230016)(4636009)(39860400002)(346002)(136003)(376002)(396003)(46966006)(36840700001)(40470700004)(70586007)(478600001)(2906002)(8676002)(5660300002)(82740400003)(4326008)(15650500001)(70206006)(55016003)(86362001)(356005)(40480700001)(7406005)(81166007)(966005)(7416002)(54906003)(41300700001)(426003)(82310400005)(336012)(40460700003)(8936002)(33716001)(6916009)(316002)(186003)(83380400001)(9686003)(26005)(36860700001)(47076005)(36900700001);
+ SFS:(13230016)(4636009)(376002)(346002)(396003)(136003)(39860400002)(40470700004)(36840700001)(46966006)(6666004)(2906002)(82740400003)(8676002)(41300700001)(86362001)(921005)(186003)(83380400001)(2616005)(81166007)(316002)(36860700001)(5660300002)(356005)(40460700003)(4326008)(7416002)(36756003)(426003)(70206006)(15650500001)(8936002)(336012)(7406005)(82310400005)(110136005)(26005)(478600001)(966005)(40480700001)(54906003)(47076005)(7696005)(1076003)(70586007)(2101003)(36900700001)(83996005);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jul 2022 20:31:51.0686 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8b5bf56d-ad64-4dac-e8d9-08da6120e3a6
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jul 2022 22:44:32.3036 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 91442b58-3a07-4d03-f97d-08da61336cea
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[12.22.5.235];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT067.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT053.eop-nam11.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1201MB2551
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5373
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,55 +127,81 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
- joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, kwankhede@nvidia.com, vneethv@linux.ibm.com,
- agordeev@linux.ibm.com, hch@infradead.org, kvm@vger.kernel.org, corbet@lwn.net,
- pasic@linux.ibm.com, jgg@nvidia.com, borntraeger@linux.ibm.com,
- intel-gfx@lists.freedesktop.org, zhi.a.wang@intel.com, akrowiak@linux.ibm.com,
- kevin.tian@intel.com, jchrist@linux.ibm.com, gor@linux.ibm.com,
- linux-s390@vger.kernel.org, hca@linux.ibm.com, jani.nikula@linux.intel.com,
- alex.williamson@redhat.com, freude@linux.ibm.com, zhenyuw@linux.intel.com,
- rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
- jjherne@linux.ibm.com, tvrtko.ursulin@linux.intel.com, cohuck@redhat.com,
- oberpar@linux.ibm.com, svens@linux.ibm.com, daniel@ffwll.ch
+Cc: linux-s390@vger.kernel.org, kvm@vger.kernel.org, linux-doc@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, jchrist@linux.ibm.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jul 08, 2022 at 04:30:32PM -0400, Eric Farman wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> On Tue, 2022-07-05 at 23:27 -0700, Nicolin Chen wrote:
-> > This is a preparatory series for IOMMUFD v2 patches. It prepares for
-> > replacing vfio_iommu_type1 implementations of vfio_pin/unpin_pages()
-> > with IOMMUFD version.
-> >
-> > There's a gap between these two versions: the vfio_iommu_type1
-> > version
-> > inputs a non-contiguous PFN list and outputs another PFN list for the
-> > pinned physical page list, while the IOMMUFD version only supports a
-> > contiguous address input by accepting the starting IO virtual address
-> > of a set of pages to pin and by outputting to a physical page list.
-> >
-> > The nature of existing callers mostly aligns with the IOMMUFD
-> > version,
-> > except s390's vfio_ccw_cp code where some additional change is needed
-> > along with this series. Overall, updating to "iova" and "phys_page"
-> > does improve the caller side to some extent.
-> >
-> > Also fix a misuse of physical address and virtual address in the
-> > s390's
-> > crypto code. And update the input naming at the adjacent
-> > vfio_dma_rw().
-> >
-> > This is on github:
-> > https://github.com/nicolinc/iommufd/commits/vfio_pin_pages
-> >
-> > Request for testing: I only did build for s390 and i915 code, so it'd
-> > be nice to have people who have environment to run sanity
-> > accordingly.
-> 
-> Tested-by: Eric Farman <farman@linux.ibm.com>   # s390
+This is a preparatory series for IOMMUFD v2 patches. It prepares for
+replacing vfio_iommu_type1 implementations of vfio_pin/unpin_pages()
+with IOMMUFD version.
 
-Thank you for the review and test!
+There's a gap between these two versions: the vfio_iommu_type1 version
+inputs a non-contiguous PFN list and outputs another PFN list for the
+pinned physical page list, while the IOMMUFD version only supports a
+contiguous address input by accepting the starting IO virtual address
+of a set of pages to pin and by outputting to a physical page list.
+
+The nature of existing callers mostly aligns with the IOMMUFD version,
+except s390's vfio_ccw_cp code where some additional change is needed
+along with this series. Overall, updating to "iova" and "phys_page"
+does improve the caller side to some extent.
+
+Also fix a misuse of physical address and virtual address in the s390's
+crypto code. And update the input naming at the adjacent vfio_dma_rw().
+
+This is on github:
+https://github.com/nicolinc/iommufd/commits/vfio_pin_pages
+
+Terrence has tested this series on i915; Eric has tested on s390.
+
+Thanks!
+
+Changelog
+v3:
+ * Added a patch to replace roundup with DIV_ROUND_UP in i915 gvt
+ * Dropped the "driver->ops->unpin_pages" and NULL checks in PATCH-1
+ * Changed to use WARN_ON and separate into lines in PATCH-1
+ * Replaced "guest" words with "user" and fix typo in PATCH-5
+ * Updated commit log of PATCH-1, PATCH-6, and PATCH-10
+ * Added Reviewed/Acked-by from Christoph, Jason, Kirti, Kevin and Eric
+ * Added Tested-by from Terrence (i915) and Eric (s390)
+v2: https://lore.kernel.org/kvm/20220706062759.24946-1-nicolinc@nvidia.com/
+ * Added a patch to make vfio_unpin_pages return void
+ * Added two patches to remove PFN list from two s390 callers
+ * Renamed "phys_page" parameter to "pages" for vfio_pin_pages
+ * Updated commit log of kmap_local_page() patch
+ * Added Harald's "Reviewed-by" to pa_ind patch
+ * Rebased on top of Alex's extern removal path
+v1: https://lore.kernel.org/kvm/20220616235212.15185-1-nicolinc@nvidia.com/
+
+Nicolin Chen (10):
+  vfio: Make vfio_unpin_pages() return void
+  drm/i915/gvt: Replace roundup with DIV_ROUND_UP
+  vfio/ap: Pass in physical address of ind to ap_aqic()
+  vfio/ccw: Only pass in contiguous pages
+  vfio: Pass in starting IOVA to vfio_pin/unpin_pages API
+  vfio/ap: Change saved_pfn to saved_iova
+  vfio/ccw: Change pa_pfn list to pa_iova list
+  vfio: Rename user_iova of vfio_dma_rw()
+  vfio/ccw: Add kmap_local_page() for memcpy
+  vfio: Replace phys_pfn with pages for vfio_pin_pages()
+
+ .../driver-api/vfio-mediated-device.rst       |   6 +-
+ arch/s390/include/asm/ap.h                    |   6 +-
+ drivers/gpu/drm/i915/gvt/kvmgt.c              |  49 ++---
+ drivers/s390/cio/vfio_ccw_cp.c                | 195 +++++++++++-------
+ drivers/s390/crypto/ap_queue.c                |   2 +-
+ drivers/s390/crypto/vfio_ap_ops.c             |  54 +++--
+ drivers/s390/crypto/vfio_ap_private.h         |   4 +-
+ drivers/vfio/vfio.c                           |  54 ++---
+ drivers/vfio/vfio.h                           |   8 +-
+ drivers/vfio/vfio_iommu_type1.c               |  45 ++--
+ include/linux/vfio.h                          |   9 +-
+ 11 files changed, 215 insertions(+), 217 deletions(-)
+
+-- 
+2.17.1
+
