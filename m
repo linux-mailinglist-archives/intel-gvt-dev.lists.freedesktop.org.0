@@ -1,105 +1,48 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37D9756C1AA
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Jul 2022 00:44:58 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9A8256C706
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Jul 2022 06:55:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2A91E10EEF8;
-	Fri,  8 Jul 2022 22:44:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9EA1B10F312;
+	Sat,  9 Jul 2022 04:55:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2040.outbound.protection.outlook.com [40.107.220.40])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2168210EEE2;
- Fri,  8 Jul 2022 22:44:52 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=csTiI/kob2W2akVPjrLGT43O0Nbas2B7VdmJOrkDmhRiDxh8Cad1oEQdyQ3AMyZ1W7ug0Pt4M/JjbwnlLVRikLW5o5KcO324ALRVpYCslHaxqejz9jIu3QgjxbMtRmJ1qaCJxLWEHT1/u/K0Z2RY4bKCJ1vzFmHPX8yyVVoYrlI/8fQ4zTYSqb09mWylMfPTgZMfNqtq7dYBlnpcSCQ5ZP+m5H1kIzVzkqKpjhQPLMXJCGCt4AeJgpvFK/qz7W0/GqtI/1ypIB3Md2i/5Q07JrcZEHIE0c+B+l+xTiznP0sgk0v1K/RdrPcTJ/xnxSqDwgmzw0HDiDZ7ElDAzy6fsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fGLzRxlahipGqkxQeGiJRlLebLZDQeu5tc4Mr/URf1o=;
- b=M8HyUukYVRBcGv66X8GGt/nEEmZ5GRiRey6+bzUchufxVYzUPaCZFlZZh86cp285nRgJe/dP4UnH1z6WQu5NOA3FdtqlXSURthhYjMybgi4r7nw7ckYJNm0rS3FJkNWMo9qNO5DQVHRAGxbVtKGEwIBmyClGKX5NfMjnfSjf5PAox1P2h0bT2CLMHTuBsro5xWuLKty4N3vuricViD2Zk68KsONFFj8faCMfRbOQ8NddYPguIHsCeHNfw1VSJApEXka8liA7ttgG0m0OIlMnsLBa4X3ZddpTy1SXmPsloQQ/gU7TxsCoG1NrJx4SF+pjDmEw38ulKZssPe3xD6vcQQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.235) smtp.rcpttodomain=linux.ibm.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fGLzRxlahipGqkxQeGiJRlLebLZDQeu5tc4Mr/URf1o=;
- b=BJj+ITN5GaCOYUi6nyHkKlUHLG8eBxenZw5/uj9BKBcgYT9oD8iyJNCpRd6SDKkRhzJ+KbAcAuShgM7bNog2pi4CbXxnpWM+IchtjBWMMVoLK8XJXl+a8Kymjoud3AsPrOz5FXp82+Uc9DJY9GLUrtBJXTsJMg0qLLerp/7FqlpAszK1u5ZaZQvCsa3su6hHF8XulP3WZzxduge8Oa0UHbyhv10LiumoeCQkq332nnCSLnhgwt8JuQ+MKRonenkr3sgWv1cBnmJbFKWNFuISJXberdgPffhhIwt6jIrbyypX1n5qjWosusIMU2Mob7B2YmzbtMgHpRWN01MnXG37Bw==
-Received: from BN9PR03CA0257.namprd03.prod.outlook.com (2603:10b6:408:ff::22)
- by DS7PR12MB6359.namprd12.prod.outlook.com (2603:10b6:8:94::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.20; Fri, 8 Jul
- 2022 22:44:50 +0000
-Received: from BN8NAM11FT005.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:ff:cafe::37) by BN9PR03CA0257.outlook.office365.com
- (2603:10b6:408:ff::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.20 via Frontend
- Transport; Fri, 8 Jul 2022 22:44:49 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.235)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.235 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.235; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.235) by
- BN8NAM11FT005.mail.protection.outlook.com (10.13.176.69) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5417.15 via Frontend Transport; Fri, 8 Jul 2022 22:44:49 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- DRHQMAIL107.nvidia.com (10.27.9.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.32; Fri, 8 Jul 2022 22:44:49 +0000
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.26; Fri, 8 Jul 2022 15:44:48 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.13) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server id 15.2.986.26 via Frontend
- Transport; Fri, 8 Jul 2022 15:44:46 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <kwankhede@nvidia.com>, <corbet@lwn.net>, <hca@linux.ibm.com>,
- <gor@linux.ibm.com>, <agordeev@linux.ibm.com>, <borntraeger@linux.ibm.com>,
- <svens@linux.ibm.com>, <zhenyuw@linux.intel.com>, <zhi.a.wang@intel.com>,
- <jani.nikula@linux.intel.com>, <joonas.lahtinen@linux.intel.com>,
- <rodrigo.vivi@intel.com>, <tvrtko.ursulin@linux.intel.com>,
- <airlied@linux.ie>, <daniel@ffwll.ch>, <farman@linux.ibm.com>,
- <mjrosato@linux.ibm.com>, <pasic@linux.ibm.com>, <vneethv@linux.ibm.com>,
- <oberpar@linux.ibm.com>, <freude@linux.ibm.com>, <akrowiak@linux.ibm.com>,
- <jjherne@linux.ibm.com>, <alex.williamson@redhat.com>, <cohuck@redhat.com>,
- <jgg@nvidia.com>, <kevin.tian@intel.com>, <hch@infradead.org>
-Subject: [PATCH v3 09/10] vfio/ccw: Add kmap_local_page() for memcpy
-Date: Fri, 8 Jul 2022 15:44:27 -0700
-Message-ID: <20220708224427.1245-10-nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220708224427.1245-1-nicolinc@nvidia.com>
-References: <20220708224427.1245-1-nicolinc@nvidia.com>
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:3::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2583D10F312
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat,  9 Jul 2022 04:55:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=spTIKNEibGt8r3DPfP/HyGXmF3cU6IiWCcjdld1t2CY=; b=Ib47I4t4FFGn8i0C65C5Xuf/+Z
+ oy8kwC1O7+FvVzvr6xEtdiBNTzrNAH+uG/DOLXbBwAsii5BtXCyw3AbU96NH0c1brxGhP7+gKoUzc
+ L0AZAIsCBmaV0QzdpmbX856qUKEEcqoef2q0fItyB2umgqhdCbM7xtFNXh1o48lWT5ldaxlf6LgtC
+ vsUpezPF7X3Tnhp91dD9Wz5H4Yf4259veNpnkB12bbez26beovNIzcogeOAUK8qMj2BlXz/mf11X2
+ xUVfZQz1DYiEwvOAO+xIn73lkelBLVMFTUT+cqvSaO8sUxMyKcIPshC+yv+2v0NwqMpHuKoSv9fyt
+ XFjHfIOw==;
+Received: from 213-225-4-185.nat.highway.a1.net ([213.225.4.185]
+ helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1oA2UY-006zrk-0v; Sat, 09 Jul 2022 04:54:54 +0000
+From: Christoph Hellwig <hch@lst.de>
+To: Kirti Wankhede <kwankhede@nvidia.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+Subject: simplify the mdev interface v6
+Date: Sat,  9 Jul 2022 06:54:36 +0200
+Message-Id: <20220709045450.609884-1-hch@lst.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c0925e06-7428-4b4a-ea5f-08da61337721
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6359:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: nCm/XS6T6XrODZ0mmgX7SQjqhuXwSlmTO076CZ36z8XfTm07i5W6/eMrd0Qa0NQTOB7nipwL9INmEvaBfYrdJycDkatWt2Tf1iqNycsRW1YtUVdgssDqX8pF3nlOpmDzE/exthJl/+JBZsBXK1qWs2k1jSG4BZEyUlGsY1rcAmO6kXsM5pdq69bSUdLkjakR22km9u/N+GPtkkKNFCZAhkm+/nlg8+HhVYVvqf/wKJNXF0o3mM3oIQ4cpKf/X11mnoJM9zcgJKHCWjiQnn8UXgexYZzWRayrLQRAGEXaY8EPGzVMD/H4aGo/0lIZWVVQRucvXkmBTkR0QTOXwAOhsbXT66xHXx6ije3fLurcIrDqfQUFElE6MWlrClWA+7sUEjVVJZJg+XJllLCd4zc+lQ0wdMO7ne2z0Q1saSk5R5UDh9RcJaL5luaN/EJluXvvIw/96TbdaWlSRh+3EugGgUYIvrQkAesmh9jtbUwwlWBJAJ8l5k+l55Ry/qIP/WExk+zkOHTck6Z5eP6FBIoLekNKCAX3cCf1EB6r19JbdUJ2DYpDIE4BF5NQg0y+s5EwJvLIeqGEcZ0JDrZhrSIOSu9pNGSfCqxMFCMMtKe9ugIk/nl62DJPoiCroNngOQAk2efPkBJfOqoPUgS9o2iW30OhgkXnBepMQ+5o9hz0pfHtV2cD8Xsn53a7Gl2ixFx5pZfKR1LV1oBGYcQE193p2OhFqQw84Zh6mQdWiuQMFbyk/KUij8jmWlBZ+9GrsivqiPG/aIv7/sHMt3yxyFOby1WiFNQaywYNgEuWXBDwVqF6YjOUf0jubqA35Czo26QUplIU4fr3a/x5TFRPNPYU15JvL0BiAB2Nh3q23f8Z3YvNqyzM32aF4thvu8X9zIFz7hrI+zzO/DNsi5ywffHBYSUsicqsrPqCKBeAMN7RVnw=
-X-Forefront-Antispam-Report: CIP:12.22.5.235; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:InfoNoRecords; CAT:NONE;
- SFS:(13230016)(4636009)(39860400002)(396003)(376002)(346002)(136003)(46966006)(36840700001)(40470700004)(110136005)(26005)(5660300002)(7406005)(7416002)(6666004)(316002)(41300700001)(81166007)(70206006)(54906003)(70586007)(356005)(86362001)(8676002)(478600001)(8936002)(4326008)(7696005)(40460700003)(82740400003)(83380400001)(186003)(40480700001)(36860700001)(82310400005)(36756003)(426003)(47076005)(336012)(2616005)(1076003)(2906002)(921005)(2101003)(83996005)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jul 2022 22:44:49.4565 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c0925e06-7428-4b4a-ea5f-08da61337721
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[12.22.5.235];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT005.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB6359
+Content-Transfer-Encoding: 8bit
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,78 +55,68 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, kvm@vger.kernel.org, linux-doc@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, jchrist@linux.ibm.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org
+Cc: linux-s390@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ kvm@vger.kernel.org, Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-A PFN is not secure enough to promise that the memory is not IO. And
-direct access via memcpy() that only handles CPU memory will crash on
-S390 if the PFN is an IO PFN, as we have to use the memcpy_to/fromio()
-that uses the special S390 IO access instructions. On the other hand,
-a "struct page *" is always a CPU coherent thing that fits memcpy().
+Hi all,
 
-Also, casting a PFN to "void *" for memcpy() is not a proper practice,
-kmap_local_page() is the correct API to call here, though S390 doesn't
-use highmem, which means kmap_local_page() is a NOP.
+this series signigicantly simplies the mdev driver interface by following
+the patterns for device model interaction used elsewhere in the kernel.
 
-There's a following patch changing the vfio_pin_pages() API to return
-a list of "struct page *" instead of PFNs. It will block any IO memory
-from ever getting into this call path, for such a security purpose. In
-this patch, add kmap_local_page() to prepare for that.
+Changes since v5:
+ - rebased to the latest vfio/next branch
+ - drop the last patch again
+ - make sure show_available_instances works properly for the internallly
+   tracked case
 
-Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-Acked-by: Eric Farman <farman@linux.ibm.com>
-Tested-by: Eric Farman <farman@linux.ibm.com>
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
----
- drivers/s390/cio/vfio_ccw_cp.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+Changes since v4:
+ - move the kobject_put later in mdev_device_release 
+ - add a Fixes tag for the first patch
+ - add another patch to remove an extra kobject_get/put
 
-diff --git a/drivers/s390/cio/vfio_ccw_cp.c b/drivers/s390/cio/vfio_ccw_cp.c
-index 3854c3d573f5..cd4ec4f6d6ff 100644
---- a/drivers/s390/cio/vfio_ccw_cp.c
-+++ b/drivers/s390/cio/vfio_ccw_cp.c
-@@ -11,6 +11,7 @@
- #include <linux/ratelimit.h>
- #include <linux/mm.h>
- #include <linux/slab.h>
-+#include <linux/highmem.h>
- #include <linux/iommu.h>
- #include <linux/vfio.h>
- #include <asm/idals.h>
-@@ -230,7 +231,6 @@ static long copy_from_iova(struct vfio_device *vdev, void *to, u64 iova,
- 			   unsigned long n)
- {
- 	struct page_array pa = {0};
--	u64 from;
- 	int i, ret;
- 	unsigned long l, m;
- 
-@@ -246,7 +246,9 @@ static long copy_from_iova(struct vfio_device *vdev, void *to, u64 iova,
- 
- 	l = n;
- 	for (i = 0; i < pa.pa_nr; i++) {
--		from = pa.pa_pfn[i] << PAGE_SHIFT;
-+		struct page *page = pfn_to_page(pa.pa_pfn[i]);
-+		void *from = kmap_local_page(page);
-+
- 		m = PAGE_SIZE;
- 		if (i == 0) {
- 			from += iova & (PAGE_SIZE - 1);
-@@ -254,7 +256,8 @@ static long copy_from_iova(struct vfio_device *vdev, void *to, u64 iova,
- 		}
- 
- 		m = min(l, m);
--		memcpy(to + (n - l), (void *)from, m);
-+		memcpy(to + (n - l), from, m);
-+		kunmap_local(from);
- 
- 		l -= m;
- 		if (l == 0)
--- 
-2.17.1
+Changes since v3:
+ - make the sysfs_name and pretty_name fields pointers instead of arrays
+ - add an i915 cleanup to prepare for the above
 
+Changes since v2:
+ - rebased to vfio/next
+ - fix a pre-existing memory leak in i915 instead of making it worse
+ - never manipulate if ->available_instances if drv->get_available is
+   provided
+ - keep a parent reference for the mdev_type
+ - keep a few of the sysfs.c helper function around
+ - improve the documentation for the parent device lifetime
+ - minor spellig / formatting fixes
+
+Changes since v1:
+ - embedd the mdev_parent into a different sub-structure in i916
+ - remove headers now inclued by mdev.h from individual source files
+ - pass an array of mdev_types to mdev_register_parent
+ - add additional patches to implement all attributes on the
+   mdev_type in the core code
+
+Diffstat:
+ Documentation/driver-api/vfio-mediated-device.rst |   26 +-
+ Documentation/s390/vfio-ap.rst                    |    2 
+ Documentation/s390/vfio-ccw.rst                   |    2 
+ drivers/gpu/drm/i915/gvt/aperture_gm.c            |   20 +-
+ drivers/gpu/drm/i915/gvt/gvt.h                    |   42 ++--
+ drivers/gpu/drm/i915/gvt/kvmgt.c                  |  168 ++++-------------
+ drivers/gpu/drm/i915/gvt/vgpu.c                   |  210 +++++++---------------
+ drivers/s390/cio/cio.h                            |    4 
+ drivers/s390/cio/vfio_ccw_drv.c                   |   12 -
+ drivers/s390/cio/vfio_ccw_ops.c                   |   51 -----
+ drivers/s390/cio/vfio_ccw_private.h               |    2 
+ drivers/s390/crypto/vfio_ap_ops.c                 |   68 +------
+ drivers/s390/crypto/vfio_ap_private.h             |    6 
+ drivers/vfio/mdev/mdev_core.c                     |  190 ++++---------------
+ drivers/vfio/mdev/mdev_driver.c                   |    7 
+ drivers/vfio/mdev/mdev_private.h                  |   32 ---
+ drivers/vfio/mdev/mdev_sysfs.c                    |  189 ++++++++++---------
+ include/linux/mdev.h                              |   77 ++++----
+ samples/vfio-mdev/mbochs.c                        |  103 +++-------
+ samples/vfio-mdev/mdpy.c                          |  115 +++---------
+ samples/vfio-mdev/mtty.c                          |   94 +++------
+ 21 files changed, 463 insertions(+), 957 deletions(-)
