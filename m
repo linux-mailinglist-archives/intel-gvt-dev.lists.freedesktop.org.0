@@ -1,50 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3424356D45B
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 Jul 2022 07:43:51 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D1B6570B5D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 Jul 2022 22:25:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CE5E510EC97;
-	Mon, 11 Jul 2022 05:43:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4252A14A531;
+	Mon, 11 Jul 2022 20:25:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 35B2E10E6D3;
- Mon, 11 Jul 2022 05:43:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1657518228; x=1689054228;
- h=date:from:to:cc:subject:message-id:reply-to:mime-version;
- bh=NNNv9wotnyWTvqaDusWNRSfGm76FrlL8i6Bgub+Yn2M=;
- b=Qy2BlWwVkq5oo/LHTKjzQq1dIceUbhqii/qX0cB/EYGipncuYzADWOrQ
- 0qGPNjafHNlZFYeAhnJCLgikBN5wqZDW25kVvj/C8AyWcyb/5m7yAKd4/
- RKzNM3XDpSTXZ7eKkFCpbH9b2rqrvaoOaL4WfcqzgeYn6paDw0VLI8YCS
- kCey6RqDi3mkBF6zifeRxR5ieJwy9qVj5hNO7UyaG36/TYmU7fCVdD3+y
- /iA7GJW22OR7t7H9qGjzHiHhpaQIz+l4z4SAK4ojcFo0yy6OqMO6p1yUp
- H7UFKJGaPfFil1bjM4xwqymUExvOGzWLepbvw14vz6XWGBGXiEElXhCKl g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10404"; a="284606601"
-X-IronPort-AV: E=Sophos;i="5.92,262,1650956400"; 
- d="asc'?scan'208";a="284606601"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2022 22:43:47 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,262,1650956400"; 
- d="asc'?scan'208";a="598920006"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by fmsmga007.fm.intel.com with ESMTP; 10 Jul 2022 22:43:45 -0700
-Date: Mon, 11 Jul 2022 13:20:21 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Subject: [PULL] gvt-fixes
-Message-ID: <20220711052021.GV1089@zhen-hp.sh.intel.com>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B5D1411BE75;
+ Mon, 11 Jul 2022 20:25:24 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id AA59F61604;
+ Mon, 11 Jul 2022 20:25:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12E88C385A2;
+ Mon, 11 Jul 2022 20:25:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1657571123;
+ bh=C84LTeMv1GsveffvvN1df93tCCsgdFBzCTBnrEybj3o=;
+ h=From:To:Cc:Subject:Date:From;
+ b=EITthsjBCeFT1+8Y5CrvMeHdxTzOXltiVE4N+agy1lhf2lp046BO8uL8AS5Dx4jfL
+ hr1XDRRkI4SDm66QdWUhpFap2TjEjnEeOsqufJksmtDxVEi5sD2jYk1BRkoAX+UMj5
+ fICg5KTvV5e2X0zzn2OctYi6DU2G6zOEHXt+KvbiVh+uc3dyQ8KpHwaCkGbS/Mj7nR
+ 4IPcK9WJ2SOD9FGyUhVwEAKBIzUdB+b/hranRIpSEY5cyui/DTjq/cvAUDDX7Q+Jjx
+ wqZDOT2RUqg8FM+6Ziu4cRx7cmXXWj/vF4etu/U0WuBIjlq2EYnakFchpT4qCpbTpB
+ IakVN00Hy79NA==
+Received: from mchehab by mail.kernel.org with local (Exim 4.95)
+ (envelope-from <mchehab@kernel.org>) id 1oAzy3-004e7R-8d;
+ Mon, 11 Jul 2022 21:25:19 +0100
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: 
+Subject: [PATCH 00/32] drm/i915: fix kernel-doc issues
+Date: Mon, 11 Jul 2022 21:24:45 +0100
+Message-Id: <cover.1657565224.git.mchehab@kernel.org>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="ynll37MX3Fmyj3VY"
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,58 +53,146 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>,
+ David Airlie <airlied@linux.ie>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
+ Lucas De Marchi <lucas.demarchi@intel.com>, linux-kernel@vger.kernel.org,
+ Jani Nikula <jani.nikula@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+There are several kernel-doc markups along the i915 driver that aren't part
+of the i915.rst file, nor are included on any other file under Documentation.
+Maybe due to that, there are several kernel-doc markups that report problems
+when checked with scripts/kernel-doc. More than that, some of them also
+have problems when actually integrated at the building system, as reported
+by Sphinx.
 
---ynll37MX3Fmyj3VY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Along the issues we have:
+
+- renamed symbols where the prototype doesn't match the kernel-doc name;
+- some markups doesn't have the symbol name on it;
+- typos when defining parameter;
+- some parameters are missing;
+- some ascii artwork aren't properly displayed after parsed by Sphinx;
+- some other tags produce bad results and warnings after parsed by html build;
+- some "/**" patterns exist on places that aren't kernel-doc markups.
+
+This series, against drm-tip, fix all the above issues and all all such files to
+i915.rst. This way, it will be easier to avoid other problems to be introduced.
+
+While here, I also added SPDX on two display files. Besides being the current
+way to indicate the license, it also makes easier to find all files with kernel-doc
+markups, as all it is needed is to search for "/**" at i915 files to know what of
+them have embedded documentation.
+
+Mauro Carvalho Chehab (32):
+  drm/i915: fix kernel-doc trivial warnings on i915/*.[ch] files
+  drm/i915: display: fix kernel-doc markup warnings
+  drm/i915: gt: fix some Kernel-doc issues
+  drm/i915: gvt: fix kernel-doc trivial warnings
+  drm/i915: gem: fix some Kernel-doc issues
+  drm/i915: intel_wakeref.h: fix some kernel-doc markups
+  drm/i915: i915_gem_ttm: fix a kernel-doc markup
+  drm/i915: i915_gem_ttm_pm.c: fix kernel-doc markups
+  drm/i915: gem: add missing trivial function parameters
+  drm/i915: i915_gpu_error.c: document dump_flags
+  drm/i915: document kernel-doc trivial issues
+  drm/i915: intel_dp_link_training.c: fix kernel-doc markup
+  drm/i915: intel_fb: fix a kernel-doc issue with Sphinx
+  drm/i915: skl_scaler: fix return value kernel-doc markup
+  drm/i915: intel_pm.c: fix some ascii artwork at kernel-doc
+  drm/i915: i915_gem_region.h: fix i915_gem_apply_to_region_ops doc
+  drm/i915: i915_gem_wait.c: fix a kernel-doc markup
+  drm/i915: fix i915_gem_ttm_move.c DOC: markup
+  drm/i915: stop using kernel-doc markups for something else
+  drm/i915: dvo_ch7xxx.c: use SPDX header
+  drm/i915: dvo_sil164.c: use SPDX header
+  drm/i915: i915_vma_resource.c: fix some kernel-doc markups
+  drm/i915: i915_gem.c fix a kernel-doc issue
+  drm/i915: i915_scatterlist.h: fix some kernel-doc markups
+  drm/i915: i915_deps: use a shorter title markup
+  docs: gpu: i915.rst: display: add kernel-doc markups
+  docs: gpu: i915.rst: gt: add more kernel-doc markups
+  docs: gpu: i915.rst: GuC: add more kernel-doc markups
+  docs: gpu: i915.rst: GVT: add more kernel-doc markups
+  docs: gpu: i915.rst: PM: add more kernel-doc markups
+  docs: gpu: i915.rst: GEM/TTM: add more kernel-doc markups
+  docs: gpu: i915.rst: add the remaining kernel-doc markup files
+
+ Documentation/gpu/i915.rst                    | 283 ++++++++++++++++++
+ drivers/gpu/drm/i915/display/dvo_ch7017.c     |  26 +-
+ drivers/gpu/drm/i915/display/dvo_ch7xxx.c     |  39 +--
+ drivers/gpu/drm/i915/display/dvo_sil164.c     |  32 +-
+ .../drm/i915/display/intel_display_debugfs.c  |   2 +-
+ .../drm/i915/display/intel_display_power.c    |   2 +-
+ .../drm/i915/display/intel_display_types.h    |   2 +-
+ .../drm/i915/display/intel_dp_link_training.c |   2 +
+ drivers/gpu/drm/i915/display/intel_dvo_dev.h  |   6 +-
+ drivers/gpu/drm/i915/display/intel_fb.c       |   2 +-
+ drivers/gpu/drm/i915/display/intel_sdvo.c     |   4 +-
+ drivers/gpu/drm/i915/display/intel_tc.c       |   2 +-
+ drivers/gpu/drm/i915/display/intel_tv.c       |   2 +-
+ drivers/gpu/drm/i915/display/skl_scaler.c     |   6 +-
+ drivers/gpu/drm/i915/gem/i915_gem_create.c    |   8 +-
+ drivers/gpu/drm/i915/gem/i915_gem_domain.c    |  17 +-
+ drivers/gpu/drm/i915/gem/i915_gem_object.c    |   2 +
+ drivers/gpu/drm/i915/gem/i915_gem_object.h    |   2 +-
+ drivers/gpu/drm/i915/gem/i915_gem_region.h    |   8 +-
+ drivers/gpu/drm/i915/gem/i915_gem_ttm.c       |   2 +
+ drivers/gpu/drm/i915/gem/i915_gem_ttm.h       |   1 +
+ drivers/gpu/drm/i915/gem/i915_gem_ttm_move.c  |   4 +-
+ drivers/gpu/drm/i915/gem/i915_gem_ttm_pm.c    |   8 +-
+ drivers/gpu/drm/i915/gem/i915_gem_wait.c      |  26 +-
+ drivers/gpu/drm/i915/gt/intel_context.h       |   6 +-
+ drivers/gpu/drm/i915/gt/intel_context_types.h |  63 ++--
+ drivers/gpu/drm/i915/gt/intel_engine_cs.c     |   4 +-
+ drivers/gpu/drm/i915/gt/intel_engine_types.h  |   1 +
+ drivers/gpu/drm/i915/gt/intel_ggtt_fencing.h  |   2 +-
+ drivers/gpu/drm/i915/gt/intel_gt_types.h      |  12 +-
+ drivers/gpu/drm/i915/gt/intel_gtt.h           |   6 +-
+ drivers/gpu/drm/i915/gt/intel_reset_types.h   |   4 +-
+ drivers/gpu/drm/i915/gt/intel_rps.c           |   4 +-
+ .../gpu/drm/i915/gt/intel_timeline_types.h    |   6 +-
+ .../drm/i915/gt/shaders/clear_kernel/hsw.asm  |   4 +-
+ .../drm/i915/gt/shaders/clear_kernel/ivb.asm  |   4 +-
+ drivers/gpu/drm/i915/gt/uc/guc_capture_fwif.h |  24 +-
+ drivers/gpu/drm/i915/gt/uc/intel_guc_fwif.h   |   2 +-
+ .../gpu/drm/i915/gt/uc/intel_guc_hwconfig.c   |   5 +-
+ drivers/gpu/drm/i915/gvt/aperture_gm.c        |   4 +-
+ drivers/gpu/drm/i915/gvt/cfg_space.c          |   2 +-
+ drivers/gpu/drm/i915/gvt/dmabuf.h             |   2 +-
+ drivers/gpu/drm/i915/gvt/handlers.c           |   2 +-
+ drivers/gpu/drm/i915/gvt/mmio_context.c       |   2 +-
+ drivers/gpu/drm/i915/gvt/page_track.c         |   2 +-
+ drivers/gpu/drm/i915/gvt/vgpu.c               |   6 +-
+ drivers/gpu/drm/i915/i915_active.h            |  14 +-
+ drivers/gpu/drm/i915/i915_deps.c              |   4 +-
+ drivers/gpu/drm/i915/i915_drm_client.h        |   2 +-
+ drivers/gpu/drm/i915/i915_drv.h               |  30 +-
+ drivers/gpu/drm/i915/i915_file_private.h      |   8 +-
+ drivers/gpu/drm/i915/i915_gem.c               |  12 +-
+ drivers/gpu/drm/i915/i915_gpu_error.c         |   3 +-
+ drivers/gpu/drm/i915/i915_gpu_error.h         |   4 +-
+ drivers/gpu/drm/i915/i915_pmu.h               |  38 +--
+ drivers/gpu/drm/i915/i915_request.h           |   4 +-
+ drivers/gpu/drm/i915/i915_scatterlist.c       |   2 +-
+ drivers/gpu/drm/i915/i915_scatterlist.h       |  12 +-
+ drivers/gpu/drm/i915/i915_utils.h             |   2 +-
+ drivers/gpu/drm/i915/i915_vma.c               |   2 +
+ drivers/gpu/drm/i915/i915_vma_resource.c      |   4 +-
+ drivers/gpu/drm/i915/i915_vma_resource.h      |   3 +-
+ drivers/gpu/drm/i915/intel_pm.c               |  33 +-
+ drivers/gpu/drm/i915/intel_region_ttm.c       |   3 +-
+ drivers/gpu/drm/i915/intel_uncore.h           |   4 +-
+ drivers/gpu/drm/i915/intel_wakeref.h          |   4 +-
+ 66 files changed, 561 insertions(+), 282 deletions(-)
+
+-- 
+2.36.1
 
 
-Hi,
-
-Here's one gvt fix for 5.19, from Dan for shmem_pin_map() return check bug.
-
-Thanks!
----
-
-The following changes since commit d72d69abfdb6e0375981cfdda8eb45143f12c77d:
-
-  drm/i915/gvt: Make DRM_I915_GVT depend on X86 (2022-01-13 18:13:12 +0000)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux.git tags/gvt-fixes-2022-07-11
-
-for you to fetch changes up to e87197fbd137c888fd6c871c72fe7e89445dd015:
-
-  drm/i915/gvt: IS_ERR() vs NULL bug in intel_gvt_update_reg_whitelist() (2022-07-11 13:05:05 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2022-07-11
-
-- Fix return value for shmem_pin_map()
-
-----------------------------------------------------------------
-Dan Carpenter (1):
-      drm/i915/gvt: IS_ERR() vs NULL bug in intel_gvt_update_reg_whitelist()
-
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
---ynll37MX3Fmyj3VY
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYsuzCwAKCRCxBBozTXgY
-J6MZAJwOFIppSSP7yG37UTLmXsSckWO/jwCfSM/lt2X3x4eEDCpMx9hjMzRIBDE=
-=mfy7
------END PGP SIGNATURE-----
-
---ynll37MX3Fmyj3VY--
