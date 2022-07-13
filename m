@@ -2,43 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2B5C573032
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Jul 2022 10:12:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85A15573062
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Jul 2022 10:13:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4881E9527C;
-	Wed, 13 Jul 2022 08:12:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 151079536C;
+	Wed, 13 Jul 2022 08:12:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4AD8195467;
- Wed, 13 Jul 2022 08:12:36 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E18079528F;
+ Wed, 13 Jul 2022 08:12:34 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 916A7B81D62;
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 2351061A87;
  Wed, 13 Jul 2022 08:12:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15FF4C341CD;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29A8BC341D8;
  Wed, 13 Jul 2022 08:12:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1657699952;
- bh=yAgmeyAxqS0EcUuu/GWUo/Bto3NomZ1v5WXFoUCWkH4=;
+ bh=bSkbpAx11+TmEHvxW7ggJPLe705G0MX6L55HD9C2rwk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=J+tywVVfa0yg+WLWvTYYnUDVAjQOJNqjcLsVUISTqT04FIbr/7jXzt9hDgw3eb9gi
- Bi4Cw8eK+82mElILruz9ow38++ESt73z+M229eKhcLjxUJrYe7OHS50rpkJgwpjySa
- 2b88NcaOagz8GZiTcxT1mMZhc4tsURSNdcvUQgeD6UjhD6mMvkm70NAi1TqSGBEkJr
- bqPsyBWNK3lCmE/UVf5mId4Xn2Lt1YGTSZ0eBmUwnmozi89jwJstOvAFfh4Xz9n7Jw
- mTelJB7hfgWBhnB51v4rz5E5wzb45B7bvpD7IE6itP19NbRZeJjLt0vxOaEzcaWDmc
- VN10U+O6SXQsg==
+ b=rjOdtS7V4UCOa61lYWAyi5Mn+vyfIAjajlI8OZ5BtbuOLmNIUqHxX6HD/WL9mqHbe
+ Eo2bS6Z6QMfZNVptdvWXhxHU9qiEGrkIzWYREMF5p4K50eh84OHpPER9dzj+TyR0xt
+ 5dDzFtslvDmDnu/uNdmfStv0lC7sAC+CG+8RzqZoID4oiSQ1JWTGgFtbFZNtXsh6e/
+ +ZqjRww0p+q6PWg95mHanQbh9glaA2x2ysFsd4SQR/efLcq7CR4SkFS3ENCT2RxFEd
+ 9WqNresukybehqKoZq4+Rsf1oxRUOsGoAbHns/z1ZaYCcFH9+yY8iIcIWHvhthGzl9
+ faa+sIePWLqcA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.95)
- (envelope-from <mchehab@kernel.org>) id 1oBXTx-004zse-Bc;
+ (envelope-from <mchehab@kernel.org>) id 1oBXTx-004zsq-Ee;
  Wed, 13 Jul 2022 09:12:29 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: 
-Subject: [PATCH v2 03/39] drm/i915/gvt: Fix kernel-doc for
- intel_vgpu_*_resource()
-Date: Wed, 13 Jul 2022 09:11:51 +0100
-Message-Id: <4801d75e6c43c83fd5bba13bea3885da7b66fa9c.1657699522.git.mchehab@kernel.org>
+Subject: [PATCH v2 07/39] drm/i915: gvt: fix kernel-doc trivial warnings
+Date: Wed, 13 Jul 2022 09:11:55 +0100
+Message-Id: <375c0c0ca2ef414f25e14f274457f77373a9268d.1657699522.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <cover.1657699522.git.mchehab@kernel.org>
 References: <cover.1657699522.git.mchehab@kernel.org>
@@ -56,12 +54,10 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
  David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -70,52 +66,109 @@ Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+Some functions seem to have been renamed without updating the kernel-doc
+markup causing warnings. Also, struct intel_vgpu_dmabuf_obj is not
+properly documented, but has a kerneld-doc markup.
 
-Fix the following W=1 kernel warnings:
+Fix those warnings:
+	drivers/gpu/drm/i915/gvt/aperture_gm.c:308: warning: expecting prototype for inte_gvt_free_vgpu_resource(). Prototype was for intel_vgpu_free_resource() instead
+	drivers/gpu/drm/i915/gvt/aperture_gm.c:344: warning: expecting prototype for intel_alloc_vgpu_resource(). Prototype was for intel_vgpu_alloc_resource() instead
+	drivers/gpu/drm/i915/gvt/cfg_space.c:257: warning: expecting prototype for intel_vgpu_emulate_cfg_read(). Prototype was for intel_vgpu_emulate_cfg_write() instead
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'vgpu' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'info' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'dmabuf_id' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'kref' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'initref' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'list' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/handlers.c:3066: warning: expecting prototype for intel_t_default_mmio_write(). Prototype was for intel_vgpu_default_mmio_write() instead
+	drivers/gpu/drm/i915/gvt/mmio_context.c:560: warning: expecting prototype for intel_gvt_switch_render_mmio(). Prototype was for intel_gvt_switch_mmio() instead
+	drivers/gpu/drm/i915/gvt/page_track.c:131: warning: expecting prototype for intel_vgpu_enable_page_track(). Prototype was for intel_vgpu_disable_page_track() instead
+	drivers/gpu/drm/i915/gvt/vgpu.c:215: warning: expecting prototype for intel_gvt_active_vgpu(). Prototype was for intel_gvt_activate_vgpu() instead
+	drivers/gpu/drm/i915/gvt/vgpu.c:230: warning: expecting prototype for intel_gvt_deactive_vgpu(). Prototype was for intel_gvt_deactivate_vgpu() instead
+	drivers/gpu/drm/i915/gvt/vgpu.c:358: warning: expecting prototype for intel_gvt_destroy_vgpu(). Prototype was for intel_gvt_destroy_idle_vgpu() instead
 
-drivers/gpu/drm/i915/gvt/aperture_gm.c:308: warning: expecting prototype
-for inte_gvt_free_vgpu_resource(). Prototype was for
-intel_vgpu_free_resource() instead.
-
-drivers/gpu/drm/i915/gvt/aperture_gm.c:344: warning: expecting prototype
-for intel_alloc_vgpu_resource(). Prototype was for
-intel_vgpu_alloc_resource() instead.
-
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
 
 To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
 See [PATCH v2 00/39] at: https://lore.kernel.org/all/cover.1657699522.git.mchehab@kernel.org/
 
- drivers/gpu/drm/i915/gvt/aperture_gm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/gvt/cfg_space.c  | 2 +-
+ drivers/gpu/drm/i915/gvt/dmabuf.h     | 2 +-
+ drivers/gpu/drm/i915/gvt/page_track.c | 2 +-
+ drivers/gpu/drm/i915/gvt/vgpu.c       | 6 +++---
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/aperture_gm.c b/drivers/gpu/drm/i915/gvt/aperture_gm.c
-index 557f3314291a..3b81a6d35a7b 100644
---- a/drivers/gpu/drm/i915/gvt/aperture_gm.c
-+++ b/drivers/gpu/drm/i915/gvt/aperture_gm.c
-@@ -298,7 +298,7 @@ static int alloc_resource(struct intel_vgpu *vgpu,
+diff --git a/drivers/gpu/drm/i915/gvt/cfg_space.c b/drivers/gpu/drm/i915/gvt/cfg_space.c
+index dad3a6054335..a0fc6d356588 100644
+--- a/drivers/gpu/drm/i915/gvt/cfg_space.c
++++ b/drivers/gpu/drm/i915/gvt/cfg_space.c
+@@ -243,7 +243,7 @@ static void emulate_pci_bar_write(struct intel_vgpu *vgpu, unsigned int offset,
  }
  
  /**
-- * inte_gvt_free_vgpu_resource - free HW resource owned by a vGPU
-+ * intel_vgpu_free_resource() - free HW resource owned by a vGPU
+- * intel_vgpu_emulate_cfg_read - emulate vGPU configuration space write
++ * intel_vgpu_emulate_cfg_write - emulate vGPU configuration space write
+  * @vgpu: target vgpu
+  * @offset: offset
+  * @p_data: write data ptr
+diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.h b/drivers/gpu/drm/i915/gvt/dmabuf.h
+index 5f8f03fb1d1b..3dcdb6570eda 100644
+--- a/drivers/gpu/drm/i915/gvt/dmabuf.h
++++ b/drivers/gpu/drm/i915/gvt/dmabuf.h
+@@ -48,7 +48,7 @@ struct intel_vgpu_fb_info {
+ 	struct intel_vgpu_dmabuf_obj *obj;
+ };
+ 
+-/**
++/*
+  * struct intel_vgpu_dmabuf_obj- Intel vGPU device buffer object
+  */
+ struct intel_vgpu_dmabuf_obj {
+diff --git a/drivers/gpu/drm/i915/gvt/page_track.c b/drivers/gpu/drm/i915/gvt/page_track.c
+index 3375b51c75f1..df34e73cba41 100644
+--- a/drivers/gpu/drm/i915/gvt/page_track.c
++++ b/drivers/gpu/drm/i915/gvt/page_track.c
+@@ -120,7 +120,7 @@ int intel_vgpu_enable_page_track(struct intel_vgpu *vgpu, unsigned long gfn)
+ }
+ 
+ /**
+- * intel_vgpu_enable_page_track - cancel write-protection on guest page
++ * intel_vgpu_disable_page_track - cancel write-protection on guest page
   * @vgpu: a vGPU
+  * @gfn: the gfn of guest page
   *
-  * This function is used to free the HW resource owned by a vGPU.
-@@ -328,7 +328,7 @@ void intel_vgpu_reset_resource(struct intel_vgpu *vgpu)
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index 46da19b3225d..8e71cda19995 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -205,7 +205,7 @@ static void intel_gvt_update_vgpu_types(struct intel_gvt *gvt)
  }
  
  /**
-- * intel_alloc_vgpu_resource - allocate HW resource for a vGPU
-+ * intel_vgpu_alloc_resource() - allocate HW resource for a vGPU
-  * @vgpu: vGPU
-  * @param: vGPU creation params
+- * intel_gvt_active_vgpu - activate a virtual GPU
++ * intel_gvt_activate_vgpu - activate a virtual GPU
+  * @vgpu: virtual GPU
   *
+  * This function is called when user wants to activate a virtual GPU.
+@@ -219,7 +219,7 @@ void intel_gvt_activate_vgpu(struct intel_vgpu *vgpu)
+ }
+ 
+ /**
+- * intel_gvt_deactive_vgpu - deactivate a virtual GPU
++ * intel_gvt_deactivate_vgpu - deactivate a virtual GPU
+  * @vgpu: virtual GPU
+  *
+  * This function is called when user wants to deactivate a virtual GPU.
+@@ -348,7 +348,7 @@ struct intel_vgpu *intel_gvt_create_idle_vgpu(struct intel_gvt *gvt)
+ }
+ 
+ /**
+- * intel_gvt_destroy_vgpu - destroy an idle virtual GPU
++ * intel_gvt_destroy_idle_vgpu - destroy an idle virtual GPU
+  * @vgpu: virtual GPU
+  *
+  * This function is called when user wants to destroy an idle virtual GPU.
 -- 
 2.36.1
 
