@@ -1,35 +1,60 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9FEF7573587
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Jul 2022 13:35:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42CE0573B1E
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Jul 2022 18:24:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4F758999E1;
-	Wed, 13 Jul 2022 11:35:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0568D96C20;
+	Wed, 13 Jul 2022 16:24:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1646 seconds by postgrey-1.36 at gabe;
- Wed, 13 Jul 2022 11:35:54 UTC
-Received: from contactorutempresa22.sending.contact
- (contactorutempresa22.sending.contact [94.101.179.64])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4126799996
+Received: from mail-oa1-x2a.google.com (mail-oa1-x2a.google.com
+ [IPv6:2001:4860:4864:20::2a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E164C96A60
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Jul 2022 11:35:54 +0000 (UTC)
-Received: by contactorutempresa22.sending.contact (Postfix, from userid 0)
- id 9DC74127EB4; Wed, 13 Jul 2022 10:53:02 +0000 (UTC)
-Date: Wed, 13 Jul 2022 10:53:02 +0000
-To: intel-gvt-dev@lists.freedesktop.org
-From: =?UTF-8?Q?=E2=9C=85_?=Agencia Tributaria
- <contactorutempresacl002340@sending.contact>
-Subject: Plazos de presentacion: Aviso - Agencia Tributaria - Protocolo:
- 2D42OKN81Q
-Message-ID: <d3fda8741fc1b389381caf0777580ab7@localhost.localdomain>
-X-Priority: 3
-X-Mailer: PHPMailer [version 1.73]
+ Wed, 13 Jul 2022 16:24:54 +0000 (UTC)
+Received: by mail-oa1-x2a.google.com with SMTP id
+ 586e51a60fabf-10bd4812c29so14612265fac.11
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 13 Jul 2022 09:24:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=HpsyFkkNDzzJk4S5P1c51VzrrHINowyNi2oe+lhCViw=;
+ b=QtPcwqiFexcJtzvRQETtUS7yyPOVNbNiutSjdnbCPSukvY8WCCs4b0+CdWYuTsCkZ0
+ nBC0pzEo0nVRGEyehMvHb3mSE7eLUFpiFWfCAc/vZfYnH26+N/yIokXY4E45EeySpJFY
+ rD9GLJ/tTHYCGYlF3YbKqrKiNmwXUynos5LG6Mqiyf4vq7XUWeATpEq28wxeZndrnzSW
+ 8Z5dVTLxEDJpDAXo87cYiRsrqpGFmHsieMCeQjCJ8/nryvENJOLkFGlPNPOZ0Q8j0kDE
+ FQF3+wDl+8P5GMrHD2cJurEIYtCRO2taxNt5oDib2vyiQEXN3o4q7ykdOdEM1YXZ2uqN
+ PGwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=HpsyFkkNDzzJk4S5P1c51VzrrHINowyNi2oe+lhCViw=;
+ b=pE2R6OUKBdE+QtOIDi0byl+zZF433XRjQUDPWYVbyGxZ9DYvQ5397dRNK7VGlq5vXp
+ lRMCjve1B3U8YEq3nc0EqsmB3F4BntKK0XU+kff8mBXk6AfiW4xjQA2WevTDFVzu32hu
+ 0MkRBr824+uS4CmxgC2Jr7x41Jzv7gbd9lqParIX4TatVdIuYgyXuEnzWMN6oozGcUz3
+ ZMfwY9ImKGawbm5b+Ye20k+uZ9XjY4p9Q/h69Z0rslqa4oWAmyf3oONu8nOHT/FHlXZ0
+ SAc1eytfjYsUU5wHsHk4HC562S5MIhzn81UJKazL+wXdRFY+CKz0uBLhVnuK30k/mL+x
+ HRUg==
+X-Gm-Message-State: AJIora8z+BSfIKqKDUiR5qc7wzUdSbpsaClHPUgxrv/lHZChRhoDPevN
+ gkLTBxwYr1Bd4Bg6JkCB7Vs2DZBEFqq4VwtUafk=
+X-Google-Smtp-Source: AGRyM1stHAN3fC29P4KU93Jm0f5cprn7ZQ3dwrhQfFaghi/cQqen8PDAEDFw8fFVaEz+GN1wcuikppLwBWdMvWd04kQ=
+X-Received: by 2002:a05:6870:c101:b0:10c:66d2:b069 with SMTP id
+ f1-20020a056870c10100b0010c66d2b069mr5170881oad.190.1657729493924; Wed, 13
+ Jul 2022 09:24:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="b1_d3fda8741fc1b389381caf0777580ab7"
+Received: by 2002:a9d:6952:0:0:0:0:0 with HTTP; Wed, 13 Jul 2022 09:24:53
+ -0700 (PDT)
+From: Omar Arouna <chichirich666@gmail.com>
+Date: Wed, 13 Jul 2022 09:24:53 -0700
+Message-ID: <CAEWe2bbQYzCEm2GzJcJ6Hwrr6DfcR6QLp16zF0i_ceSbLq1AyQ@mail.gmail.com>
+Subject: good evening
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,92 +67,46 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: omar.arouna500@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+good evening
 
---b1_d3fda8741fc1b389381caf0777580ab7
-Content-Type: text/plain; charset = "UTF-8"
-Content-Transfer-Encoding: base64
+Dear Friend
 
-c3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc2FhYWFhYWFhYWFhYWFhYWFh
+Please
 
+ my name is Mr. Omar Arouna from Burkina Faso and I
+work with United bank for Africa (UBA) as acting head of finance. I
+contacted you in good faith and I am optimistic that the success of
+this transaction will go a long way to uplift our financial status in
+no distant time.
 
---b1_d3fda8741fc1b389381caf0777580ab7
-Content-Type: text/html; charset = "UTF-8"
-Content-Transfer-Encoding: base64
+However, one of our deceased customers from Malaysia abandoned the sum
+of $11.9 million in our bank since 2013, and according to the financial
+act my government has every right to confiscate funds in unclaimed
+bank account/unattended after 8 years, it=E2=80=99s in this regard that I w=
+ant
+to commission this fund to you so that you will stand as associate to
+the deceased customer and claim this fund from my bank after which we
+will share it at the ratio of 40% for you and 60% for me.Please
 
-PGh0bWw+DQoJPGhlYWQ+DQoJCTx0aXRsZT48L3RpdGxlPg0KCTwvaGVhZD4NCgk8Ym9keT4NCgkJ
-PHRhYmxlIGJvcmRlcj0iMCIgY2VsbHBhZGRpbmc9IjEiIGNlbGxzcGFjaW5nPSIxIiBzdHlsZT0i
-d2lkdGg6IDUwMHB4Ij4NCgkJCTx0Ym9keT4NCgkJCQk8dHI+DQoJCQkJCTx0ZD4NCgkJCQkJCTxp
-bWcgYWx0PSIiIHNyYz0iaHR0cDovL2VjMi0xOC0yMjgtMTEtMzYuc2EtZWFzdC0xLmNvbXB1dGUu
-YW1hem9uYXdzLmNvbS8wMDEyOTMwMS8wMTkyMzAxOTAyMy9pbWcvXzAwOTI5ODMyLmpwZyIgc3R5
-bGU9IndpZHRoOiA4NDBweDsgaGVpZ2h0OiA2M3B4OyIgLz48L3RkPg0KCQkJCTwvdHI+DQoJCQkJ
-PHRyPg0KCQkJCQk8dGQ+DQoJCQkJCQk8cD4NCgkJCQkJCQkmbmJzcDs8L3A+DQoJCQkJCQk8aDIg
-Y2xhc3M9InhfdGl0bGUiIHN0eWxlPSJmb250LWZhbWlseTogJnF1b3Q7SGVsdmV0aWNhIE5ldWUm
-cXVvdDssIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWY7IGJhY2tncm91bmQtY29sb3I6IHJn
-YigyNTUsIDI1NSwgMjU1KTsgYm94LXNpemluZzogYm9yZGVyLWJveDsgZm9udC13ZWlnaHQ6IG5v
-cm1hbDsgbGluZS1oZWlnaHQ6IDEuMTsgbWFyZ2luOiA1cHggMHB4IDE1cHg7IGZvbnQtc2l6ZTog
-MjdweDsgY29sb3I6IHJnYig1MSwgNTEsIDUxKSAhaW1wb3J0YW50OyI+DQoJCQkJCQkJRmFjdHVy
-YSBFbGVjdHImb2FjdXRlO25pY2E8L2gyPg0KCQkJCQkJPHA+DQoJCQkJCQkJPHNwYW4gc3R5bGU9
-ImZvbnQtc2l6ZToyMHB4OyI+PHNwYW4gc3R5bGU9ImNvbG9yOiMwMDAwODA7Ij48c3Ryb25nPkVz
-dGltYWRvKGEpIGRlbCBjb250cmlidXllbnRlPC9zdHJvbmc+PC9zcGFuPjwvc3Bhbj48L3A+DQoJ
-CQkJCQk8cD4NCgkJCQkJCQkmbmJzcDs8L3A+DQoJCQkJCQk8cD4NCgkJCQkJCQk8c3BhbiBzdHls
-ZT0iZm9udC13ZWlnaHQ6IGJvbGQ7IGNvbG9yOiByZ2IoMSwgNjIsIDEyNyk7Ij48c3BhbiBzdHls
-ZT0iZm9udC1mYW1pbHk6IFZlcmRhbmE7Ij5TZWd1cmlkYWQgU29jaWFsPC9zcGFuPjwvc3Bhbj48
-c21hbGwgc3R5bGU9ImNvbG9yOiByZ2IoMSwgNjIsIDEyNyk7Ij48c3BhbiBzdHlsZT0iZm9udC1m
-YW1pbHk6IFZlcmRhbmE7Ij48c3BhbiBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQ7Ij46PC9zcGFu
-PiZuYnNwO0xlIGluZm9ybWEgcXVlIGV4aXN0ZW4gb2JsaWdhY2lvbmVzLDxiciAvPg0KCQkJCQkJ
-CVByb2R1Y3RvIGRlIHVuYSBsaXF1aWRhY2kmb2FjdXRlO24gdHJpYnV0YXJpYSBxdWUgc2UgZW5j
-dWVudHJhIGltcGFnYS48c3BhbiBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQ7Ij4mbmJzcDs8L3Nw
-YW4+PC9zcGFuPjwvc21hbGw+PHNtYWxsIHN0eWxlPSJjb2xvcjogcmdiKDEsIDYyLCAxMjcpOyI+
-PHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OiBWZXJkYW5hOyI+cHVlZGUgZGVzY2FyZ2FyPGJyIC8+
-DQoJCQkJCQkJRWwgaW5mb3JtZSBnZW5lcmFkbyBwb3IgZWwmbmJzcDs8c3BhbiBzdHlsZT0iZm9u
-dC13ZWlnaHQ6IGJvbGQ7Ij5TSUk8L3NwYW4+Jm5ic3A7ZW4mbmJzcDs8c3BhbiBzdHlsZT0iZm9u
-dC13ZWlnaHQ6IGJvbGQ7Ij5lbCBzaWd1aWVudGU8L3NwYW4+Jm5ic3A7PHNwYW4gc3R5bGU9ImZv
-bnQtd2VpZ2h0OiBib2xkOyI+ZW5sYW5jZTwvc3Bhbj46PC9zcGFuPjwvc21hbGw+PC9wPg0KCQkJ
-CQkJPHA+DQoJCQkJCQkJPHNwYW4gc3R5bGU9ImNvbG9yOiByZ2IoMCwgMCwgMTI4KTsiPkxvIGlu
-dml0YW1vcyBhIHJlZ3VsYXJpemFyIGVzdGEgc2l0dWFjaSZvYWN1dGU7biBhIHRyYXYmZWFjdXRl
-O3MgZGUgbnVlc3RyYSBwJmFhY3V0ZTtnaW5hIHdlYiwgZW4gZWwgbWVuJnVhY3V0ZTsgcmVjYXVk
-YWNpb24vcGFnYWRvL0ltcHVlc3RvcyBpbXB1ZXN0b3MsIHBvciBsYSBicmV2ZWRhZCZuYnNwOyBw
-b3NpYmxlLCBhIGZpbiBkZSBldml0YXIgbGFzIG1vbGVzdGlhcyBkZSB1bmEgY2FyZ2EganVkaWNp
-YWwsIHF1ZSBlbnRyZSBvdHJhcyBhY2Npb25lcywgcHVlZGUgaW1wbGljYXIgZWwgZW1iYXJnbyBk
-ZSBiaWVuZXMgdSBvdHJhcyBtZWRpZGFzIGRlbCBsYXVkbyZuYnNwOzwvc3Bhbj48L3A+DQoJCQkJ
-CQk8cD4NCgkJCQkJCQkmbmJzcDs8L3A+DQoJCQkJCQk8dWwgY2xhc3M9Imxpc3QtdW5zdHlsZWQg
-bWItNSIgc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi10b3A6IDBweDsgcGFk
-ZGluZy1pbmxpbmUtc3RhcnQ6IDEuNXJlbTsgcGFkZGluZy1sZWZ0OiAwcHg7IGxpc3Qtc3R5bGU6
-IG5vbmU7IGZvbnQtZmFtaWx5OiBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmOyBmb250LXNp
-emU6IDE2cHg7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsgbWFyZ2luLWJv
-dHRvbTogMnJlbSAhaW1wb3J0YW50OyI+DQoJCQkJCQk8L3VsPg0KCQkJCQkJPHAgc3R5bGU9InRl
-eHQtYWxpZ246IGNlbnRlcjsiPg0KCQkJCQkJCTxhIGRhdGEtYXV0aD0iTm90QXBwbGljYWJsZSIg
-ZGF0YS1saW5raW5kZXg9IjAiIGhyZWY9Imh0dHA6Ly9lYzItMTgtMjI4LTExLTM2LnNhLWVhc3Qt
-MS5jb21wdXRlLmFtYXpvbmF3cy5jb20vMDAxMjkzMDEvMDE5MjMwMTkwMjMvP2hhc2g9YVc1MFpX
-d3RaM1owTFdSbGRrQnNhWE4wY3k1bWNtVmxaR1Z6YTNSdmNDNXZjbWM9IiByZWw9Im5vb3BlbmVy
-IG5vcmVmZXJyZXIiIHN0eWxlPSJib3JkZXI6IDBweDsgZm9udC12YXJpYW50LW51bWVyaWM6IGlu
-aGVyaXQ7IGZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOiBpbmhlcml0OyBmb250LXN0cmV0Y2g6IGlu
-aGVyaXQ7IGZvbnQtc2l6ZTogMTVweDsgbGluZS1oZWlnaHQ6IGluaGVyaXQ7IGZvbnQtZmFtaWx5
-OiAmcXVvdDtTZWdvZSBVSSZxdW90OywgJnF1b3Q7U2Vnb2UgVUkgV2ViIChXZXN0IEV1cm9wZWFu
-KSZxdW90OywgJnF1b3Q7U2Vnb2UgVUkmcXVvdDssIC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lz
-dGVtRm9udCwgUm9ib3RvLCAmcXVvdDtIZWx2ZXRpY2EgTmV1ZSZxdW90Oywgc2Fucy1zZXJpZjsg
-bWFyZ2luOiAwcHg7IHBhZGRpbmc6IDBweDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyB0ZXh0
-LWFsaWduOiBjZW50ZXI7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiIHRh
-cmdldD0iX2JsYW5rIj48c3BhbiBzdHlsZT0iYm9yZGVyOiAwcHg7IGZvbnQtc3R5bGU6IGluaGVy
-aXQ7IGZvbnQtdmFyaWFudDogaW5oZXJpdDsgZm9udC13ZWlnaHQ6IGluaGVyaXQ7IGZvbnQtc3Ry
-ZXRjaDogaW5oZXJpdDsgZm9udC1zaXplOiAyMHB4OyBsaW5lLWhlaWdodDogaW5oZXJpdDsgZm9u
-dC1mYW1pbHk6IGluaGVyaXQ7IG1hcmdpbjogMHB4OyBwYWRkaW5nOiAwcHg7IHZlcnRpY2FsLWFs
-aWduOiBiYXNlbGluZTsgY29sb3I6IGluaGVyaXQ7Ij5EZXNjYXJnYXIgaW5mb3JtYWNpJm9hY3V0
-ZTtuIGRldGFsbGFkYTwvc3Bhbj48L2E+PC9wPg0KCQkJCQkJPHA+DQoJCQkJCQkJJm5ic3A7PC9w
-Pg0KCQkJCQkJPHA+DQoJCQkJCQkJPHNwYW4gc3R5bGU9ImZvbnQtc2l6ZTogMTJweDsiPjxzcGFu
-IHN0eWxlPSJjb2xvcjogcmdiKDEyOCwgMCwgMCk7Ij5QdWVkZSBkZXNjYXJnYXIgZWwgaW5mb3Jt
-ZSBnZW5lcmFkbyBwb3IgZWwgU0lJIGVuIGVsIHNpZ3VpZW50ZSBQREY8L3NwYW4+PC9zcGFuPjwv
-cD4NCgkJCQkJCTxwPg0KCQkJCQkJCSZuYnNwOzwvcD4NCgkJCQkJCTxwPg0KCQkJCQkJCSZuYnNw
-OzwvcD4NCgkJCQkJCTxwPg0KCQkJCQkJCSZuYnNwOzwvcD4NCgkJCQkJCTxwPg0KCQkJCQkJCSZu
-YnNwOzwvcD4NCgkJCQkJCTxwPg0KCQkJCQkJCSZuYnNwOzwvcD4NCgkJCQkJCTxwPg0KCQkJCQkJ
-CSZuYnNwOzwvcD4NCgkJCQkJCTxwPg0KCQkJCQkJCSZuYnNwOzwvcD4NCgkJCQkJCTxwPg0KCQkJ
-CQkJCSZuYnNwOzwvcD4NCgkJCQkJPC90ZD4NCgkJCQk8L3RyPg0KCQkJCTx0cj4NCgkJCQkJPHRk
-Pg0KCQkJCQkJJm5ic3A7PC90ZD4NCgkJCQk8L3RyPg0KCQkJPC90Ym9keT4NCgkJPC90YWJsZT4N
-CgkJPHA+DQoJCQkmbmJzcDs8L3A+DQoJPC9ib2R5Pg0KPC9odG1sPg0K
+you on how to apply to my bank for the transfer of this fund
+into your personal bank account. I hope to hear from you soon.
 
+(1) Your Full Name,
 
+(2) Sex and Age:
 
---b1_d3fda8741fc1b389381caf0777580ab7--
+(3) Country of origin:
+
+(4) Residential address:
+
+(5) Phone number:
+
+(6) Occupation:
+
+Best regards,
+
+Mr. Omar Arouna.
