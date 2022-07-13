@@ -1,139 +1,134 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72737573F52
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Jul 2022 00:03:08 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8070E573F6C
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Jul 2022 00:08:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E62B093299;
-	Wed, 13 Jul 2022 22:03:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E6E6510EA90;
+	Wed, 13 Jul 2022 22:08:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 54CD911B259;
- Wed, 13 Jul 2022 22:03:04 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 02FC610EA90;
+ Wed, 13 Jul 2022 22:08:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1657749784; x=1689285784;
+ t=1657750113; x=1689286113;
  h=date:from:to:cc:subject:message-id:references:
  in-reply-to:mime-version;
- bh=5DZ0T+GH+S+Iua4Yd3hVKJGGleI8tlgHshCc9cYBPpY=;
- b=LE/w71d1ZOaj90MxYd0193rKrVZm6M2OW3c5ABLryGAXx1llJVGB+mh1
- /fQiSIPfJDQUS2xbWy6od74wVaMMU4mwzaPQCZzGqTxqnAq8NFcXgZeKy
- pUp9I6y7wXZFjR8xfxKQ+6/ZaUPkrT3fmaTExd3XM+YZwRGl9CgfASCVp
- 2BAwMNngrOELQuhl0gMiD48SsksAdZN1JQWOSKErp54TXxwh4jgonZcDH
- LwHAIutrUwk/LcLTnGifPMUEd0mLw91l1kTRZtX/sDDilMNtukE2ZwgH3
- tAEvppUmFy+bMcASMMI5JanLMkw01Q2zhcr/clrunjrQV2JoLLm4D7Uxz g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10407"; a="284111034"
-X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="284111034"
+ bh=QgxXkO69j3K2W/qsSQ/5JiuAHm8lgV8h9Ld96beQ06Y=;
+ b=I/bvBiQQOKWtESaIEqEjfupqvtFDq2zwXxobnFq08+LiTrKuqsYrTQB+
+ wZTFmMY55fmXIM8F7bH7/Kr6Uz2T2yLczgtAEvwPx/+GqB77Fz8Q7zL3v
+ LnvAlD3oCh5UPFT4FrLk7n6rxgWmNQPxSK3moOowFET94+Mw3J4BmbXkg
+ 1/10N3Qdz+8e7bfXAy9o2VURiIqG0nbwzZyZ6Okrx3zGAAfhemq3mkXgX
+ +CoMRBnz9wxqx/qrnVh8B02zZECMny3W6rXVRsRZFXFDdSNIG+Sb9h9J/
+ 8TXTzg4+AydLb6p1i2//VXPgfcd/MK1xKjuG2c1CNjnIbj9k2mXzQDNEV Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10407"; a="286495774"
+X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="286495774"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jul 2022 15:03:03 -0700
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jul 2022 15:08:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="653593231"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmsmga008.fm.intel.com with ESMTP; 13 Jul 2022 15:03:03 -0700
-Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="653594872"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga008.fm.intel.com with ESMTP; 13 Jul 2022 15:08:30 -0700
+Received: from fmsmsx605.amr.corp.intel.com (10.18.126.85) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Wed, 13 Jul 2022 15:03:02 -0700
-Received: from orsmsx604.amr.corp.intel.com (10.22.229.17) by
- ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ 15.1.2308.27; Wed, 13 Jul 2022 15:08:30 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Wed, 13 Jul 2022 15:03:02 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Wed, 13 Jul 2022 15:03:02 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2308.27 via Frontend Transport; Wed, 13 Jul 2022 15:08:30 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.49) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Wed, 13 Jul 2022 15:03:01 -0700
+ 15.1.2308.27; Wed, 13 Jul 2022 15:08:30 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ONUBg/qjpSdESR2q11b9h4/56TGT/C+nRrdHfpqXuYQehx5jNS619t1M6hBnHjMsVJNw0EgRHIVrRSu41/zkIj7GjdNdUMvcANzPfjfu/JeVmSXvGqUPqS6taelNRWuGetLJO9OIU3C452gUgTTtM0JbH13YIwg8eMhFmNnylZ0uMEPJ9DrB11LjTDSxztTUnf5NFRv8wP8oPdvbmwPBXVdzEJQUUxQAnKhS0pM7N848VZIKryt85NBPcsiD/ZlxH+xvqYeXnDU1sVbkvXnvAsIRMpJ1wM4OKtN0pMqjNzzw9gcUQdJR2fCzUJiUA9tE5r1frRbiVVFUxyZlBUL8aQ==
+ b=kSmoY0S7lmocI937bTWjJ0ivTwAb9gTwNNteegupmGi5Hrnme2Mh3MXt9kNVbujLewZ8qNX+VBb+DJTkhKJlq+PZEhWXV721dxZB8JL4q/CvgzSUrLdOgz+bbXiJfnCCmF+9AYs2ehK7tPmJqOV4y5PZ8MuVeu4100JkRo1jYfH33+51yr0WRbj9EQOI0cKNaQkM/kYdqDhvJW7OI+Ny2J5up7ctnBLv9FiXsGFF4fYiOT8VQb7SZSr4T7+GIOXMlt3FbkRlpa7ay8ZDNMBHh/KjSS4hc698mC6A5j56PrAwz/UL6WM8Thrlg+xtcjndODSDHAQGD11ELxO99Ju9Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MDbghXFJbEounZs66IPkjkkt8IIolV+0IcbQ4MO6Qtc=;
- b=FOVGSeo5MCm5eDaoNUOej/VVf66vKJcCO7eDkJv3Gp5fLvVijBeJaBMznCLZ0PzEadPzXfr0/kLTlUIn2IogxM4ZDaPBrSA3Z7baIevWmzcmw5FLnc7jYGvAg7nwYo0+l8wzOgkF+kp1CYA4SmRiJSAGDWeI70GtqflBxx0I09D+SEZtjUXFXgQZAOFmG7ZAQDTXQHHiJ/VVWhw9HD4tsvJ0ZVGRuPdGDzrMwT0rRQB0B31cr8gZUCTWj2c/CSg1SfbPQxeU8mjZHIP7Ut0x+G+8FQNpWtnG3lQGO0RzIAqFw3bpJWHbzLOwX6P3T2CYRjx3bndP92ow8sIHPgNa2g==
+ bh=Nd/aeUFOMU4dCEXbJetXxB0106Im7iYEAOg4DfIx4/Q=;
+ b=lvDrITQdlOgbAbZ+PL8xsUG6Bf8FdAlazDQ26FHnRzoFVGH7PETGFE+7xpU8J9ZrA8Cjw9Co9OI824uAYwB/9AtYvGxUyzTbZO9DuCORFFRkMyp7pKS1k2rnflJKEywq3vZ4RkSZkLXTnupoibZrwKy04eY9gQ1ILDhfSzRVIyNj1ey+acTiVu5Zxe7KhxvFEwxyB2qQBCPDd4ffpMOKV7WnqLQkMlmvv7WHeLCQWGys06ngOX/+RdNenguHtKkw6nMdxb96nXzyTqfzcd7REG3y9bpJcPFOrPDqq6/SZgF+eRVz2t7jJuH5Z5yb6hdfpX9un49xr6YmiDYBY8lQ/w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Received: from MN0PR11MB6059.namprd11.prod.outlook.com (2603:10b6:208:377::9)
- by CY4PR11MB1495.namprd11.prod.outlook.com (2603:10b6:910:c::10) with
+ by CY5PR11MB6211.namprd11.prod.outlook.com (2603:10b6:930:25::6) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.20; Wed, 13 Jul
- 2022 22:02:55 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.16; Wed, 13 Jul
+ 2022 22:08:28 +0000
 Received: from MN0PR11MB6059.namprd11.prod.outlook.com
  ([fe80::8053:3c59:9f5d:b615]) by MN0PR11MB6059.namprd11.prod.outlook.com
  ([fe80::8053:3c59:9f5d:b615%9]) with mapi id 15.20.5417.026; Wed, 13 Jul 2022
- 22:02:55 +0000
-Date: Wed, 13 Jul 2022 18:02:49 -0400
+ 22:08:28 +0000
+Date: Wed, 13 Jul 2022 18:08:24 -0400
 From: Rodrigo Vivi <rodrigo.vivi@intel.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: Re: [PATCH v2 03/39] drm/i915/gvt: Fix kernel-doc for
- intel_vgpu_*_resource()
-Message-ID: <Ys9BCTYV9XMvA/61@intel.com>
+Subject: Re: [PATCH v2 07/39] drm/i915: gvt: fix kernel-doc trivial warnings
+Message-ID: <Ys9CWElnKJknLVDb@intel.com>
 References: <cover.1657699522.git.mchehab@kernel.org>
- <4801d75e6c43c83fd5bba13bea3885da7b66fa9c.1657699522.git.mchehab@kernel.org>
+ <375c0c0ca2ef414f25e14f274457f77373a9268d.1657699522.git.mchehab@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <4801d75e6c43c83fd5bba13bea3885da7b66fa9c.1657699522.git.mchehab@kernel.org>
-X-ClientProxiedBy: BYAPR08CA0003.namprd08.prod.outlook.com
- (2603:10b6:a03:100::16) To MN0PR11MB6059.namprd11.prod.outlook.com
+In-Reply-To: <375c0c0ca2ef414f25e14f274457f77373a9268d.1657699522.git.mchehab@kernel.org>
+X-ClientProxiedBy: BYAPR05CA0076.namprd05.prod.outlook.com
+ (2603:10b6:a03:e0::17) To MN0PR11MB6059.namprd11.prod.outlook.com
  (2603:10b6:208:377::9)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: fbdf536a-2347-49a4-c690-08da651b7030
-X-MS-TrafficTypeDiagnostic: CY4PR11MB1495:EE_
+X-MS-Office365-Filtering-Correlation-Id: e712852b-cd9b-411d-fdc9-08da651c36fe
+X-MS-TrafficTypeDiagnostic: CY5PR11MB6211:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ZVn4m9IpIcY9WFbZNliD/Hw+fzvX+9k/glf8N1LCXlp/ypUGSBKc/e4suRMnkvkYqB0O/OWHunyrvvsiBS+jwlja55FNLAXAvzMM59li5GefvTkfZJWQhGL321aCPYmon9x8MgT5XSSU6aymqm2iCN4UzD29Hzw1Q2YXiiS/qGksMbT1BCMtXRLdClUhOc9JvUzHL5lBFuuzR+A1pBBNSZBx2lJ7X0R3G/1ya3em/ECWd22QqHDFw++y0CvJriwfs8edOv50RmgXaUiDHdxMx8HsskvhCxwHuQr6wte8glHuWnbL2yeVEU2/zvT9YGBih07P116GvsdPXdRN+zDK3UoRO2+gX6T97q23J8rTBZzP3xF1yXukMI+6Vp/abpvhMSuuIYyAna1rDk6DJPZW99E+EXxASqgvuuoFjWMF0ImiyZ65hfD0uanQl0PFjsLNX50da0otAc6PXv134JnE+kyr/jvOsuSlpKIax8yzX9ZgAZm6R7qimrtcDXqRvT6tKdQH/0zJzQB/9ODVPejeR8tIbciu3tCJgowPmuCbuQI+UknNZUEiqvCDXaeLCIQoA6R7orpeQsvDztZmnqySGWxUNswSVuHSOWpzSJSoxm6RZDeZA/dDFVv/kwIfIaNOjMNozKDgFLRtZsGEQOhMUuoHwuxJoJbOFWchhFkDagHpTHj5ssHrT15qk2yYPp2DjafdQ/uSzSseb3hEY1kIYNc+9E+x9sp4eecEnGx+fcCKQXan9DPReDqdhC+KGFFJ+8jdDEwY0/iTdO1SHqP6qyzDVeXGnZRdPyNYkxEG1bc=
+X-Microsoft-Antispam-Message-Info: MBU2z/XMs3VpXupd40ejNEXJOAGvqZbukYug6YzQvbmmM3Wo22HuT5icdvVgVKGoEcf5tyMAmgMJlmSzaC9SkBZksf51xAkPGmr0nl/vMojzhrIDvlKlnTqkUZ/8Nbdp612q6+LrEGfxFfxJo2S2oHNf8q7l4c/aQbHfyw0Npdm9dvUxcPXqwPf+EO+pfFDrjdeE1mzCBnc/Fl5njUixCsGiVOjLKINTerm+dXsEMRv6D9l3GXhEWEf/AQ+kSXIZa2Q9B/CoypF/ai/GsMcIyeHAaWeHGbKH7AVbCoWu5D/QOit0oZJiag8GCoir5n4zVwjRaf7A8v80+8x34rH9G0depM2mV3JOKeYHD53CQvnZU/TUxAazic+cpY94QqWQBSGchLHIdO/V1ePE9OlRa4659dHlWOjPGGXTW1kXFdNK6qvOykmKiiwd/vkkJvEMcx4eYrvfJdZdEr3fK3nsYqSdxXDlS1DLoIrr4FUe3giCyf2xdjf/R+gWaQ7xKs5FhX98Qw+3aFBs7dFi/X7SmyX8Ovtw45PZILFO8ba2XvrqbhZMLL19u+T10P774CJgqPhjFWQGfH3SWBEr2hL+g1D7fSK76GUNw73mXNma7OZzdaQP3vheJ8Vsp/ggSPGMlKiBwtvrzzCZy+5L6jGA0m6xCasuSVcue7Lcnm7whPv0coQfRWvSbRDJHMtJlstnq8vGGl2U5woFfBn2MCJfDF3IvpmEmb+2Px5VwBjCe1kJ9M+Fytj+cq6vWg9CyXGH7oXjFkHkh+4hf3axIU09ralR7D/gn4fBGsnYYjnQYV8=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MN0PR11MB6059.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(39860400002)(136003)(366004)(376002)(396003)(346002)(316002)(54906003)(41300700001)(8676002)(4326008)(38100700002)(66946007)(82960400001)(66476007)(66556008)(26005)(83380400001)(6506007)(6512007)(44832011)(478600001)(186003)(6666004)(966005)(86362001)(2616005)(6916009)(6486002)(2906002)(5660300002)(36756003)(8936002);
+ SFS:(13230016)(366004)(376002)(396003)(39860400002)(346002)(136003)(54906003)(66556008)(38100700002)(6486002)(2616005)(66476007)(2906002)(478600001)(966005)(41300700001)(5660300002)(6666004)(66946007)(44832011)(186003)(8676002)(36756003)(8936002)(6506007)(6512007)(83380400001)(26005)(82960400001)(316002)(4326008)(86362001)(6916009);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1h4TqVJL/vAf88o0T2leJOjS0DuGfo3wIQt2nsLuepdIgzvs9PBq+qFI7ZdB?=
- =?us-ascii?Q?mlE1ilNRAHyIFAn7TezhOCdaoL9Kxjx8JzoZjrWVk2/SBoRtwyo4RF600vfA?=
- =?us-ascii?Q?6L11qn9MqGMEKhsQnhZjCZ9ZqU/c20tO0GQdXptOFISynIKnkbKlGcB7f1CQ?=
- =?us-ascii?Q?2RHLQNGWjDUHpS+9DNGaLS2x1IIVZzQIvLN9ez1tUWYsB46myhyzHa4SqcPN?=
- =?us-ascii?Q?FQBGwopJUY24tAhta+yp353Xpz2FYeR+EOJgHWdAcvwIktZM1EByi9kZjH7o?=
- =?us-ascii?Q?nJbClzMAOIAtHsTJmWyEILDS20qJFpDX/RWxHNsF4ob44htKoOLZVO8VYsw8?=
- =?us-ascii?Q?tFWxMSl7u2agPzP+spUfAOUckTOWimkR9U/9H86ljDkTIPLMcWz957pOPHvm?=
- =?us-ascii?Q?O4hVLtcsp2gDGcQkasipKKleJS8rFYL2S2dSbX+BB9iLycW9LXFnGKdK+E/m?=
- =?us-ascii?Q?U9c848MHH+AWxwLIyPnrTP8Ys+73uBBR42NtY7ERHvARddR5azjEOw62C81J?=
- =?us-ascii?Q?iazAJ3qw8I6U1nUOLIN8D99DWBwkDrC9iBhn4scZud3/sTB5zwDjnYRGaHGA?=
- =?us-ascii?Q?Bjgusp2UtB53GLK7HrTtp5KTIsHycsfZJkPi2uENHXfouPNInxga5uLANK9A?=
- =?us-ascii?Q?3ZgivOxav6/bb7YKl9TC4HH9PSFga/tJBQL5wKRn4izQGyaF9qqQHBnj3tDC?=
- =?us-ascii?Q?7UeGXY03awRSbBvRjxQnSoxJoTIR9lRlE0pua21/yDoD35NoB693WbOYGVIa?=
- =?us-ascii?Q?vCL0iOJx6VNeUtCFUbj936kFnMioF+uVEJoU3LE8w4jlRRv8dMHDHHV/w9Jo?=
- =?us-ascii?Q?vwTUEw4BwacG/pRNpfzeWixuJFzHpuoluxh6dJzx8u52g8DNDmGCS14qa4v+?=
- =?us-ascii?Q?qoq1hLIyvB+y0rg13T5TlqmgE+IZYrbrr5u0rH+t+60CpdRugR7IMQ0C5U76?=
- =?us-ascii?Q?U4tRfntAVolagMSfEbUjQNgqFL9/3A/tKBOD6LzGd8gLbdzYoBvpXYgdGWlI?=
- =?us-ascii?Q?YZQ0hQeRJxnUySwk3om+Fy7X6aPDNj246PAUBwQehf3BnD2aJd3fb4XIqIpz?=
- =?us-ascii?Q?abBffogF7ELU/iuECtFaTM1YCz8imlwm9PURZAIjgm8pXWLjYIPmVfbgPfYd?=
- =?us-ascii?Q?triIfcGc1EgHw4zWmsFbkNnHqLTikVFEQo1bXREAD8NxceTB6xsfIbbOzxpM?=
- =?us-ascii?Q?fj8loWqhREEPYSyC7HAtueiIt90b99bAvms05kdufAj89BR0032hs5W4RJ3m?=
- =?us-ascii?Q?HQHKGzuQK9ct0fNwkJcCZU9I7ZWF+79hooiJFwIdwx8uZW8IrzC05FnmmX/s?=
- =?us-ascii?Q?6jWNo1gIyToYcekz0sl2GByHGB8hr4yEk+yvt7jcDKArB/Fwa4iMfCx6VP2s?=
- =?us-ascii?Q?rH1MWLRrNBtkBVJ2yNHTaxW4lTQItvuCn/kFLDF8/sYN5I4uemDHSWIDhLil?=
- =?us-ascii?Q?ffQgoaE0cI1jGSeH/G04Ejs6jJv7Wv0E28B9sGJ2wtWV9/m4GBOZaL8gJ/RJ?=
- =?us-ascii?Q?LvnVV4264hUPD28FozMtHGMeOwaZ3LaZJjTYZCmNgJn8j2AwvAyzlikhP5w9?=
- =?us-ascii?Q?4QubuD55Fot8DRLFtXpFb1AHcQQ3duzQwtz+1Hg6cx3Goo2F4lPjDhZLO0Pm?=
- =?us-ascii?Q?dA=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: fbdf536a-2347-49a4-c690-08da651b7030
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5oCKSlKu0SJWQmKKVP/gH423yZZopOV6NRUhlbcqyIhzjmGgRXLcFejFSa51?=
+ =?us-ascii?Q?982+usLWcqxQx0E2a+0OMQ+aO61R4TLLROycWIMdtk13D+UsqoOX7lP1UHsY?=
+ =?us-ascii?Q?gPbt01GjaXwXWw033+UorRhsNKTCrlFXlLCCa6Uz/F9qPdFCE4JZjDRUMmt1?=
+ =?us-ascii?Q?NEbGX98/X+VKtw9dGef8c/OzDYNIToohVOXS9fBbkNEq2gVLrODamy6EiOxt?=
+ =?us-ascii?Q?6feU90i7YR0hV8wWrfn74/Go1FvcBD8GCGDkFp0iRF7THCMCxC/loTW/Z3UI?=
+ =?us-ascii?Q?YEDXIWJq8yaw2yj1XC5sObgfgdEUHxGTcY8PX0F92YLtUN5q/q55jAgDDshA?=
+ =?us-ascii?Q?3zttx0J/gQeXRDZ0CtCDSgQuxvTlOqD0d8JonXtrytBennaomLMC0KDv1KLP?=
+ =?us-ascii?Q?vKxLdCbkHJ2mGq0cYc910bKFlBAOHnOWwBtEfTzxqU0hqgqEUa18A7cWqy6q?=
+ =?us-ascii?Q?ZHBa04kDgDlJtTjOmQxQHP8NP37zoOCd1kAWzftfFbA7yMTjbbAnhKTtGQ+s?=
+ =?us-ascii?Q?ILZHzK5uMGjTItsEwGdrY79KlJ6DlGnddW76FeRlTGUFG4k6rzXjoxGx+YuW?=
+ =?us-ascii?Q?CYHCVO44/v22tIvpsG1s4Ym9oR9KM/L7IOywH29U6fL1wfNVkNZeW6IcN7BY?=
+ =?us-ascii?Q?+q1+xVD0N17VyhzuO2YXpIFhaeHuRGuWlnE+I54F0U+9XJpwabrA+xw9nxYm?=
+ =?us-ascii?Q?kC10YiP5k4Qn0yU/mte5VOKSBVrgoPXT+Hs6zFylr8LU+T9+3EhPTroTN7m8?=
+ =?us-ascii?Q?MAIf+/4adpj/Dp5kUtvtkDVgXdlwRDpS4IzIeghWCM00dIiQTGERAVQhVq3h?=
+ =?us-ascii?Q?5tK/Fxc3+n5TGdZOkzasfLJIa4iaE2Naihw5XFvd+ERlEOu87XG8keHpDpTf?=
+ =?us-ascii?Q?wS8/HGgGKEdRKWdhc0Hnj5l2O1fbJym6KPF++6YEqTJ9gtlvw3I8n7muXyl8?=
+ =?us-ascii?Q?em4To77ZdH/pBfKOl7lfwN5KLpcNgkwJFzrly4tqxRf5I1Tru74LlbifUuiY?=
+ =?us-ascii?Q?YBIYajoCZ1sKCdMzGdvQGOahUJNoBnNdSPUCk4gAjP8SqSPM/JYgjOgafvNr?=
+ =?us-ascii?Q?E+9IinGRirDrlW4DrBGwEwYQTmPkWXNGgRXApu9QT/nIvPE43V/7HuWA2aOE?=
+ =?us-ascii?Q?ugDSntGco+gFs4Pr1H+kZcgzvxTwsKj7AIgRfg8yIhAtSJ7733jhjEa0PLhX?=
+ =?us-ascii?Q?RBnjIcQetiOTMCTKxRnroYD+HY/IlcIUY9EyiNYpOpvIR1TzSMgVqn6NejBr?=
+ =?us-ascii?Q?D1lHY3u1pVhy3L+6c3KHb7PpN5QwHBBv7Lvo1bcddBuPnzG2eQqqSh0ttV8q?=
+ =?us-ascii?Q?TcCNVC9sbvbWe8sOjFaKovtU8XY/Y6jZ/IU6BE0c0V4oFTb8Oj9g3PXlDOpG?=
+ =?us-ascii?Q?yhJ/2r6yTrQ3OTuTFWXscNFWkko/qTok8mx0E+mXtUNlX3quRqCxkMncSxzu?=
+ =?us-ascii?Q?GDD5DvUAu0tUdgi7lKb9pAImcPczl4eEsPMfSCg7soE8q6JwjUyPAg3fkTkv?=
+ =?us-ascii?Q?xbL/xCbdTXaGGAdrUrkbnlJHD7VIuXhIRjCKRGk+jHSioIW5fTDr0Ecr6d6Y?=
+ =?us-ascii?Q?gESN1Wf7YINDU78ulKsJw8P6CDsxv3lLAuLW27XNufya7gjjhmXuz/OkUK6/?=
+ =?us-ascii?Q?Pg=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e712852b-cd9b-411d-fdc9-08da651c36fe
 X-MS-Exchange-CrossTenant-AuthSource: MN0PR11MB6059.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jul 2022 22:02:55.1019 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jul 2022 22:08:28.5485 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: plXWXR0SCn0c6yDEJ3m1WGpW/mxpPblUOBA/Y4AufxE3BkKB7wc1hUuQZfNGt/9FoSXhkuGtc6DMrpMs11FkQQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR11MB1495
+X-MS-Exchange-CrossTenant-UserPrincipalName: zGSA6LR+Wf1k4A0p4xKjtFKVcDS1ksXp5umCfpxMCkEUIv06xOW+MJJYiR9Lj2zVJJSsFooaA3SRKeVZByAD9Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6211
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -147,69 +142,120 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
  David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jul 13, 2022 at 09:11:51AM +0100, Mauro Carvalho Chehab wrote:
-> From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+On Wed, Jul 13, 2022 at 09:11:55AM +0100, Mauro Carvalho Chehab wrote:
+> Some functions seem to have been renamed without updating the kernel-doc
+> markup causing warnings. Also, struct intel_vgpu_dmabuf_obj is not
+> properly documented, but has a kerneld-doc markup.
 > 
-> Fix the following W=1 kernel warnings:
+> Fix those warnings:
+> 	drivers/gpu/drm/i915/gvt/aperture_gm.c:308: warning: expecting prototype for inte_gvt_free_vgpu_resource(). Prototype was for intel_vgpu_free_resource() instead
+> 	drivers/gpu/drm/i915/gvt/aperture_gm.c:344: warning: expecting prototype for intel_alloc_vgpu_resource(). Prototype was for intel_vgpu_alloc_resource() instead
+> 	drivers/gpu/drm/i915/gvt/cfg_space.c:257: warning: expecting prototype for intel_vgpu_emulate_cfg_read(). Prototype was for intel_vgpu_emulate_cfg_write() instead
+> 	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'vgpu' not described in 'intel_vgpu_dmabuf_obj'
+> 	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'info' not described in 'intel_vgpu_dmabuf_obj'
+> 	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'dmabuf_id' not described in 'intel_vgpu_dmabuf_obj'
+> 	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'kref' not described in 'intel_vgpu_dmabuf_obj'
+> 	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'initref' not described in 'intel_vgpu_dmabuf_obj'
+> 	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'list' not described in 'intel_vgpu_dmabuf_obj'
+> 	drivers/gpu/drm/i915/gvt/handlers.c:3066: warning: expecting prototype for intel_t_default_mmio_write(). Prototype was for intel_vgpu_default_mmio_write() instead
+> 	drivers/gpu/drm/i915/gvt/mmio_context.c:560: warning: expecting prototype for intel_gvt_switch_render_mmio(). Prototype was for intel_gvt_switch_mmio() instead
+> 	drivers/gpu/drm/i915/gvt/page_track.c:131: warning: expecting prototype for intel_vgpu_enable_page_track(). Prototype was for intel_vgpu_disable_page_track() instead
+> 	drivers/gpu/drm/i915/gvt/vgpu.c:215: warning: expecting prototype for intel_gvt_active_vgpu(). Prototype was for intel_gvt_activate_vgpu() instead
+> 	drivers/gpu/drm/i915/gvt/vgpu.c:230: warning: expecting prototype for intel_gvt_deactive_vgpu(). Prototype was for intel_gvt_deactivate_vgpu() instead
+> 	drivers/gpu/drm/i915/gvt/vgpu.c:358: warning: expecting prototype for intel_gvt_destroy_vgpu(). Prototype was for intel_gvt_destroy_idle_vgpu() instead
 > 
-> drivers/gpu/drm/i915/gvt/aperture_gm.c:308: warning: expecting prototype
-> for inte_gvt_free_vgpu_resource(). Prototype was for
-> intel_vgpu_free_resource() instead.
-> 
-> drivers/gpu/drm/i915/gvt/aperture_gm.c:344: warning: expecting prototype
-> for intel_alloc_vgpu_resource(). Prototype was for
-> intel_vgpu_alloc_resource() instead.
-> 
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-> Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 > Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+
+Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+
 > ---
 > 
 > To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
 > See [PATCH v2 00/39] at: https://lore.kernel.org/all/cover.1657699522.git.mchehab@kernel.org/
 > 
->  drivers/gpu/drm/i915/gvt/aperture_gm.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/gpu/drm/i915/gvt/cfg_space.c  | 2 +-
+>  drivers/gpu/drm/i915/gvt/dmabuf.h     | 2 +-
+>  drivers/gpu/drm/i915/gvt/page_track.c | 2 +-
+>  drivers/gpu/drm/i915/gvt/vgpu.c       | 6 +++---
+>  4 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/i915/gvt/aperture_gm.c b/drivers/gpu/drm/i915/gvt/aperture_gm.c
-> index 557f3314291a..3b81a6d35a7b 100644
-> --- a/drivers/gpu/drm/i915/gvt/aperture_gm.c
-> +++ b/drivers/gpu/drm/i915/gvt/aperture_gm.c
-> @@ -298,7 +298,7 @@ static int alloc_resource(struct intel_vgpu *vgpu,
+> diff --git a/drivers/gpu/drm/i915/gvt/cfg_space.c b/drivers/gpu/drm/i915/gvt/cfg_space.c
+> index dad3a6054335..a0fc6d356588 100644
+> --- a/drivers/gpu/drm/i915/gvt/cfg_space.c
+> +++ b/drivers/gpu/drm/i915/gvt/cfg_space.c
+> @@ -243,7 +243,7 @@ static void emulate_pci_bar_write(struct intel_vgpu *vgpu, unsigned int offset,
 >  }
 >  
 >  /**
-> - * inte_gvt_free_vgpu_resource - free HW resource owned by a vGPU
-> + * intel_vgpu_free_resource() - free HW resource owned by a vGPU
-
-with the consistency in the usage of "()" feel free to use
-
-Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
-
-
-
+> - * intel_vgpu_emulate_cfg_read - emulate vGPU configuration space write
+> + * intel_vgpu_emulate_cfg_write - emulate vGPU configuration space write
+>   * @vgpu: target vgpu
+>   * @offset: offset
+>   * @p_data: write data ptr
+> diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.h b/drivers/gpu/drm/i915/gvt/dmabuf.h
+> index 5f8f03fb1d1b..3dcdb6570eda 100644
+> --- a/drivers/gpu/drm/i915/gvt/dmabuf.h
+> +++ b/drivers/gpu/drm/i915/gvt/dmabuf.h
+> @@ -48,7 +48,7 @@ struct intel_vgpu_fb_info {
+>  	struct intel_vgpu_dmabuf_obj *obj;
+>  };
+>  
+> -/**
+> +/*
+>   * struct intel_vgpu_dmabuf_obj- Intel vGPU device buffer object
+>   */
+>  struct intel_vgpu_dmabuf_obj {
+> diff --git a/drivers/gpu/drm/i915/gvt/page_track.c b/drivers/gpu/drm/i915/gvt/page_track.c
+> index 3375b51c75f1..df34e73cba41 100644
+> --- a/drivers/gpu/drm/i915/gvt/page_track.c
+> +++ b/drivers/gpu/drm/i915/gvt/page_track.c
+> @@ -120,7 +120,7 @@ int intel_vgpu_enable_page_track(struct intel_vgpu *vgpu, unsigned long gfn)
+>  }
+>  
+>  /**
+> - * intel_vgpu_enable_page_track - cancel write-protection on guest page
+> + * intel_vgpu_disable_page_track - cancel write-protection on guest page
 >   * @vgpu: a vGPU
+>   * @gfn: the gfn of guest page
 >   *
->   * This function is used to free the HW resource owned by a vGPU.
-> @@ -328,7 +328,7 @@ void intel_vgpu_reset_resource(struct intel_vgpu *vgpu)
+> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+> index 46da19b3225d..8e71cda19995 100644
+> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
+> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+> @@ -205,7 +205,7 @@ static void intel_gvt_update_vgpu_types(struct intel_gvt *gvt)
 >  }
 >  
 >  /**
-> - * intel_alloc_vgpu_resource - allocate HW resource for a vGPU
-> + * intel_vgpu_alloc_resource() - allocate HW resource for a vGPU
->   * @vgpu: vGPU
->   * @param: vGPU creation params
+> - * intel_gvt_active_vgpu - activate a virtual GPU
+> + * intel_gvt_activate_vgpu - activate a virtual GPU
+>   * @vgpu: virtual GPU
 >   *
+>   * This function is called when user wants to activate a virtual GPU.
+> @@ -219,7 +219,7 @@ void intel_gvt_activate_vgpu(struct intel_vgpu *vgpu)
+>  }
+>  
+>  /**
+> - * intel_gvt_deactive_vgpu - deactivate a virtual GPU
+> + * intel_gvt_deactivate_vgpu - deactivate a virtual GPU
+>   * @vgpu: virtual GPU
+>   *
+>   * This function is called when user wants to deactivate a virtual GPU.
+> @@ -348,7 +348,7 @@ struct intel_vgpu *intel_gvt_create_idle_vgpu(struct intel_gvt *gvt)
+>  }
+>  
+>  /**
+> - * intel_gvt_destroy_vgpu - destroy an idle virtual GPU
+> + * intel_gvt_destroy_idle_vgpu - destroy an idle virtual GPU
+>   * @vgpu: virtual GPU
+>   *
+>   * This function is called when user wants to destroy an idle virtual GPU.
 > -- 
 > 2.36.1
 > 
