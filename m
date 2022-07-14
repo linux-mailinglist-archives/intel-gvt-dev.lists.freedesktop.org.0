@@ -2,56 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9C0E5746F3
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Jul 2022 10:37:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8048057478F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Jul 2022 10:50:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 62542A3767;
-	Thu, 14 Jul 2022 08:37:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC7CDA38C7;
+	Thu, 14 Jul 2022 08:50:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com
- [IPv6:2a00:1450:4864:20::134])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7F51FA3760
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 14 Jul 2022 08:37:01 +0000 (UTC)
-Received: by mail-lf1-x134.google.com with SMTP id bf9so1596725lfb.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 14 Jul 2022 01:37:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=H3bGT1ZyGPu3PRQJlJHyQI9TvTjBPuNSyHjFOzNfiP0=;
- b=gaDZ6UkvWmoGLPkb5BiwWKXrxZqJRKNx4T2fn6EvGAM0nTMCvTzxyP4EuJ913j6Iv+
- SvMX4/pvx4tmhR/0cDdL9pbkcCOAwg/dZQZJjKvYYHG5zoS6pTup2xrhZON7aPFodE61
- jbdbe7f5x1iqsxnbqtRGk5VVyYe+GfguXyW53v/Jtk7m9BRLrugVau1mwPBhoM15I1rO
- FgfB/JoMGOti2QefdfOSOcdpcygQeBiN0idXo3yCL6hW5Cz+uWpratECqWcSagxAB5xP
- zT+sUZ3pJE3RjDVpLi/6z/hZ8yL43zLlaxwdm4ILJ3e9Bke6wVp5k2l7GAKtdogOGzmZ
- 5LQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=H3bGT1ZyGPu3PRQJlJHyQI9TvTjBPuNSyHjFOzNfiP0=;
- b=yQVckI237wAvZaRNj1Ax876/j2Aj1rwMXIje+itX0wQRGw/fh2NNLOP6wypMkw71P6
- REMRFhs0m074dvHrgZHfhd8zz+61WZtDWBZ4E2F+PBDAZ671YYwHxD+0dGWDjxfnuB99
- C/DJ+R/I6Ipp51Rj3pRhXA8w9/oXbARmkw/vHq3HNgDCpPzOqWOwX9t+2zFj2wHZMRKx
- HHKmeVmmnK4rCyMfvrpBVbXy5U2S5t7wvjAMm0QXwsZSr5oVnmMbtatcNfrmd0yttsxM
- kba6ePaI/fmRo58JRTzCqtoj6u7So3YQ84ATRB/xllkt7Ejm+UiF3QsNlx8hvAbD0TV8
- KywQ==
-X-Gm-Message-State: AJIora+SJ2HQHVSHlzC2+wZCrr1SLlZdjmEQrOLKnvQDvPG6EmUZGaDp
- AM67Av0W76ItJsbZG5lhxOSAfQE5nJju4KrP50I=
-X-Google-Smtp-Source: AGRyM1vX4Zd9WIWDxqKGtP81mt11peMiDiT310/qUqT5enM4eeA2HoIqQaHp0s5sIeDBZVZu8TIFwya2pg7lDHDFDeo=
-X-Received: by 2002:a05:6512:4004:b0:48a:12dc:7f63 with SMTP id
- br4-20020a056512400400b0048a12dc7f63mr2033540lfb.131.1657787820892; Thu, 14
- Jul 2022 01:37:00 -0700 (PDT)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CFFA3A38C4;
+ Thu, 14 Jul 2022 08:50:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1657788640; x=1689324640;
+ h=date:from:to:cc:subject:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=+nkwAyhBBbTdcIq1r+Hu2NumNZeEfZRU9U/lzgfMfTI=;
+ b=XovSQXpOZcj7uwp0B48ic02wrAcmoV7KTZIOdiw7ZDkok/Gzt4tvdo4n
+ e+4BtzD3V9oqFJ/Ak76Gn4fUWXJT+Z5y2wGtlO/wKElr6PJlAH07HSj1J
+ hlRsgm+7ghtUvigO+ByLOyuEfTqf3Z0YmeqJKZjaazVMR2WrnmNeq2s3+
+ KKu6Rp8xayHaB5Ly8kyiRPOhqMRD6fGtQ7jvOx2qa77AwPZzyN29FVr2Q
+ iaVpVoRCTeQbt1BDR+CvQbCmPZ8sZsE91GqK8ql6gqDC4WO2j8k557kbF
+ jmB4IASaXlRefKPVgPRFK6Fhb1LcWE/5VmhILzMdxsdvbZNkPe+H6O8c/ w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10407"; a="371768512"
+X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="371768512"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jul 2022 01:50:40 -0700
+X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="653784267"
+Received: from maurocar-mobl2.ger.corp.intel.com (HELO maurocar-mobl2)
+ ([10.252.36.101])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jul 2022 01:50:37 -0700
+Date: Thu, 14 Jul 2022 10:50:34 +0200
+From: Mauro Carvalho Chehab <mauro.chehab@linux.intel.com>
+To: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Subject: Re: [Intel-gfx] [PATCH v2 01/39] drm/i915/gvt: Fix kernel-doc for
+ intel_gvt_switch_mmio()
+Message-ID: <20220714105034.0b370a6a@maurocar-mobl2>
+In-Reply-To: <Ys9Am6jkPiVnA+uW@intel.com>
+References: <cover.1657699522.git.mchehab@kernel.org>
+ <72db6b58c1f223e326f84978267ba064eaf67ff0.1657699522.git.mchehab@kernel.org>
+ <Ys8/JP3ITMKF1aHp@intel.com> <Ys9Am6jkPiVnA+uW@intel.com>
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Received: by 2002:a2e:9041:0:0:0:0:0 with HTTP; Thu, 14 Jul 2022 01:37:00
- -0700 (PDT)
-From: Abdwabbo Maddah <abdwabbomaddah746@gmail.com>
-Date: Thu, 14 Jul 2022 09:37:00 +0100
-Message-ID: <CAFC-3ieta-vbGq7=-xp9Wgp2Sr8SYhFWTPWR2J6JsyQ_pZJxLQ@mail.gmail.com>
-Subject: Get back to me... URGENT
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,13 +60,82 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: abdwabbomaddahm@gmail.com
+Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
+ David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
+ Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
--- 
-Dear,
-I had sent you a mail but i don't think you received it that's why am
-writing you again.It is important you get back to me as soon as you
-can.
-Abd-Wabbo Maddah
+On Wed, 13 Jul 2022 18:00:59 -0400
+Rodrigo Vivi <rodrigo.vivi@intel.com> wrote:
+
+> On Wed, Jul 13, 2022 at 05:54:44PM -0400, Rodrigo Vivi wrote:
+> > On Wed, Jul 13, 2022 at 09:11:49AM +0100, Mauro Carvalho Chehab wrote:  
+> > > From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+> > > 
+> > > Fix the following W=1 kernel warnings:
+> > > 
+> > > drivers/gpu/drm/i915/gvt/mmio_context.c:560: warning: expecting
+> > > prototype for intel_gvt_switch_render_mmio(). Prototype was for
+> > > intel_gvt_switch_mmio() instead.
+> > > 
+> > > Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+> > > Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+> > > Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > > Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>  
+> > 
+> > Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>  
+> 
+> I actually changed my mind after seeing that in most cases you use "()"
+> for the functions and you didn't use for this case...
+
+The documentation build system handles both ways equally, and there's
+no consensus kernel-wide about what would be the preferred way[1].
+
+Also, at the html (or pdf) output, they'll all look the same. So, no
+difference in practice at the produced documentation.
+
+[1] The current count (using drm-tip 2022y-07m-12d-21h-47m-27s) as basis,
+    is:
+
+	$ git ls-files|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+ -" |wc -l
+	36680
+	$ git ls-files|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+\s*\(\) -" |wc -l
+	12068
+
+    So, 48748 documented functions, being ~25% with parenthesis, 
+    and ~75% without it.
+
+    Under drivers/gpu, the numbers are:
+
+	$ git ls-files|grep drivers/gpu/|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+\s*\(\) -" |wc -l
+	480
+	mchehab@sal /new_devel/v4l/tmp $ git ls-files|grep drivers/gpu/|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+ -" |wc -l
+	4046
+
+> which one should we pick for consistency?
+
+Yeah, it is nicer to use the same way everywhere. Btw, on media, I was
+enforcing one way at the beginning, but I ended giving up doing that
+as it was too many efforts for too little. Nowadays, half of media
+function declarations have parenthesis, half doesn't.
+
+Anyway, this is what we have at i915 driver, before this series:
+
+	$ grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+\s*\(\) -" $(find drivers/gpu/drm/i915 -type f)|wc -l
+	53
+	$ grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+ -" $(find drivers/gpu/drm/i915 -type f)|wc -l
+	542
+
+This series include 3 functions with "()" (on patches 1 and 3, both
+authored by Jiapeng, and 11 functions without it on my own patches.
+
+I'll change those two patches to remove the "()" for consistency.
+
+I guess I'll add a patch at the end changing the other 53 functions
+to drop "()".
+
+Regards,
+Mauro
