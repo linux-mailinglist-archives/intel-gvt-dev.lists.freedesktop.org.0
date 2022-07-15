@@ -1,52 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8048057478F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Jul 2022 10:50:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A116576EAA
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Jul 2022 16:37:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DC7CDA38C7;
-	Thu, 14 Jul 2022 08:50:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 392CD10EC77;
+	Sat, 16 Jul 2022 14:35:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CFFA3A38C4;
- Thu, 14 Jul 2022 08:50:40 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AD20310E06A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 15 Jul 2022 15:17:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1657788640; x=1689324640;
- h=date:from:to:cc:subject:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=+nkwAyhBBbTdcIq1r+Hu2NumNZeEfZRU9U/lzgfMfTI=;
- b=XovSQXpOZcj7uwp0B48ic02wrAcmoV7KTZIOdiw7ZDkok/Gzt4tvdo4n
- e+4BtzD3V9oqFJ/Ak76Gn4fUWXJT+Z5y2wGtlO/wKElr6PJlAH07HSj1J
- hlRsgm+7ghtUvigO+ByLOyuEfTqf3Z0YmeqJKZjaazVMR2WrnmNeq2s3+
- KKu6Rp8xayHaB5Ly8kyiRPOhqMRD6fGtQ7jvOx2qa77AwPZzyN29FVr2Q
- iaVpVoRCTeQbt1BDR+CvQbCmPZ8sZsE91GqK8ql6gqDC4WO2j8k557kbF
- jmB4IASaXlRefKPVgPRFK6Fhb1LcWE/5VmhILzMdxsdvbZNkPe+H6O8c/ w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10407"; a="371768512"
-X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="371768512"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jul 2022 01:50:40 -0700
-X-IronPort-AV: E=Sophos;i="5.92,269,1650956400"; d="scan'208";a="653784267"
-Received: from maurocar-mobl2.ger.corp.intel.com (HELO maurocar-mobl2)
- ([10.252.36.101])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jul 2022 01:50:37 -0700
-Date: Thu, 14 Jul 2022 10:50:34 +0200
-From: Mauro Carvalho Chehab <mauro.chehab@linux.intel.com>
-To: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Subject: Re: [Intel-gfx] [PATCH v2 01/39] drm/i915/gvt: Fix kernel-doc for
- intel_gvt_switch_mmio()
-Message-ID: <20220714105034.0b370a6a@maurocar-mobl2>
-In-Reply-To: <Ys9Am6jkPiVnA+uW@intel.com>
-References: <cover.1657699522.git.mchehab@kernel.org>
- <72db6b58c1f223e326f84978267ba064eaf67ff0.1657699522.git.mchehab@kernel.org>
- <Ys8/JP3ITMKF1aHp@intel.com> <Ys9Am6jkPiVnA+uW@intel.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
+ t=1657898278; x=1689434278;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=sk+ocr3w3zLAwDTZDXGS5V1pTDKWyL3ty+HKyRoGqgE=;
+ b=H7dm0eBRFLjtw4+OkKmMho7zcAPxeBOatZLRMcZSYFe0eMWw0TXhgtAA
+ mEO7lN5i22fmBOxaMlyff/L5/9nsLVzM9a97470g4G5vFwSmOKlA1I/Hw
+ EAG4RP8CJpyrSUP9rFjuzc5EMpqOmqXL5+6p7IBiVzbmmaDq9oBZryoCU
+ UFjzJMsSNKQvZ+sGUREFQDLoEDaLl/AHPLy+WqV1IOZopN3o6KovdYPPI
+ p3FYkYf3BKnby8URsus7MMDa4WnvzSmjSSc3TXVUQVKVLGDZHetBHitVL
+ h7Em5BGcLW4mMHyFxv8P8G9FO4QulSQIO7qcAKo46CMOYa/A20RHNRhnV g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10408"; a="286955439"
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; d="scan'208";a="286955439"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2022 08:17:58 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; d="scan'208";a="699236922"
+Received: from lkp-server02.sh.intel.com (HELO ff137eb26ff1) ([10.239.97.151])
+ by fmsmga002.fm.intel.com with ESMTP; 15 Jul 2022 08:17:56 -0700
+Received: from kbuild by ff137eb26ff1 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1oCN4l-000047-5p;
+ Fri, 15 Jul 2022 15:17:55 +0000
+Date: Fri, 15 Jul 2022 18:50:29 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt:gvt-next] BUILD SUCCESS
+ c312491f509ad1baa4a9793d1f74ce0f1dcd6267
+Message-ID: <62d14675.tIRBkVNEX6ifUoB7%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -60,82 +59,77 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
- David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
- intel-gvt-dev@lists.freedesktop.org
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 13 Jul 2022 18:00:59 -0400
-Rodrigo Vivi <rodrigo.vivi@intel.com> wrote:
+tree/branch: https://github.com/intel/gvt-linux.git gvt-next
+branch HEAD: c312491f509ad1baa4a9793d1f74ce0f1dcd6267  drm/i915: gvt: fix kernel-doc trivial warnings
 
-> On Wed, Jul 13, 2022 at 05:54:44PM -0400, Rodrigo Vivi wrote:
-> > On Wed, Jul 13, 2022 at 09:11:49AM +0100, Mauro Carvalho Chehab wrote:  
-> > > From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-> > > 
-> > > Fix the following W=1 kernel warnings:
-> > > 
-> > > drivers/gpu/drm/i915/gvt/mmio_context.c:560: warning: expecting
-> > > prototype for intel_gvt_switch_render_mmio(). Prototype was for
-> > > intel_gvt_switch_mmio() instead.
-> > > 
-> > > Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> > > Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-> > > Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> > > Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>  
-> > 
-> > Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>  
-> 
-> I actually changed my mind after seeing that in most cases you use "()"
-> for the functions and you didn't use for this case...
+elapsed time: 1663m
 
-The documentation build system handles both ways equally, and there's
-no consensus kernel-wide about what would be the preferred way[1].
+configs tested: 51
+configs skipped: 4
 
-Also, at the html (or pdf) output, they'll all look the same. So, no
-difference in practice at the produced documentation.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-[1] The current count (using drm-tip 2022y-07m-12d-21h-47m-27s) as basis,
-    is:
+gcc tested configs:
+powerpc                     pq2fads_defconfig
+sh                           se7343_defconfig
+sh                             espt_defconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+sh                               allmodconfig
+i386                                defconfig
+i386                             allyesconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+i386                          randconfig-a005
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+x86_64                        randconfig-a015
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+x86_64                        randconfig-a006
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                           allyesconfig
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+x86_64                           rhel-8.3-syz
+x86_64                         rhel-8.3-kunit
+x86_64                              defconfig
+x86_64                               rhel-8.3
 
-	$ git ls-files|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+ -" |wc -l
-	36680
-	$ git ls-files|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+\s*\(\) -" |wc -l
-	12068
+clang tested configs:
+arm                  colibri_pxa270_defconfig
+arm                      pxa255-idp_defconfig
+mips                        workpad_defconfig
+mips                malta_qemu_32r6_defconfig
+powerpc                     kilauea_defconfig
+i386                          randconfig-a006
+i386                          randconfig-a002
+i386                          randconfig-a004
+x86_64                        randconfig-a012
+x86_64                        randconfig-a016
+x86_64                        randconfig-a014
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
+hexagon              randconfig-r045-20220714
+hexagon              randconfig-r041-20220714
 
-    So, 48748 documented functions, being ~25% with parenthesis, 
-    and ~75% without it.
-
-    Under drivers/gpu, the numbers are:
-
-	$ git ls-files|grep drivers/gpu/|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+\s*\(\) -" |wc -l
-	480
-	mchehab@sal /new_devel/v4l/tmp $ git ls-files|grep drivers/gpu/|xargs grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+ -" |wc -l
-	4046
-
-> which one should we pick for consistency?
-
-Yeah, it is nicer to use the same way everywhere. Btw, on media, I was
-enforcing one way at the beginning, but I ended giving up doing that
-as it was too many efforts for too little. Nowadays, half of media
-function declarations have parenthesis, half doesn't.
-
-Anyway, this is what we have at i915 driver, before this series:
-
-	$ grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+\s*\(\) -" $(find drivers/gpu/drm/i915 -type f)|wc -l
-	53
-	$ grep -Pzo "\/\*\*\n \* [_a-zA-Z0-9]+ -" $(find drivers/gpu/drm/i915 -type f)|wc -l
-	542
-
-This series include 3 functions with "()" (on patches 1 and 3, both
-authored by Jiapeng, and 11 functions without it on my own patches.
-
-I'll change those two patches to remove the "()" for consistency.
-
-I guess I'll add a patch at the end changing the other 53 functions
-to drop "()".
-
-Regards,
-Mauro
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
