@@ -2,57 +2,78 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01C7F5789C5
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jul 2022 20:47:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EF42F578CC6
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jul 2022 23:33:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8F70A10E173;
-	Mon, 18 Jul 2022 18:47:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A9206112137;
+	Mon, 18 Jul 2022 21:33:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ot1-x331.google.com (mail-ot1-x331.google.com
- [IPv6:2607:f8b0:4864:20::331])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C185C10E173
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D9100112137
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Jul 2022 18:47:39 +0000 (UTC)
-Received: by mail-ot1-x331.google.com with SMTP id
- br15-20020a056830390f00b0061c9d73b8bdso3820850otb.6
+ Mon, 18 Jul 2022 21:33:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658180015;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=McBcNHr9RW9GxlAu+UJlcdP1dYuV9WY6CAhxiggXqkA=;
+ b=QyxmIgnaYtW7NNZjJpmGg6AGpvA08CBeX0soYaQLMuNL+0DXF/jjtxX+QL7ZMohRFRju10
+ wNCOCisL7Kv5DEum/Fy45BUa1Xe04MjAashG/7m3DnxYCQT0YmM0Vb1bW5Kj2ao3owD8oQ
+ +sIXYnG43Bxaz2ZDrtX8ats1SLq5tmE=
+Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
+ [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-592-UclNr6gwMeK7IXrYhkq9Ww-1; Mon, 18 Jul 2022 17:33:34 -0400
+X-MC-Unique: UclNr6gwMeK7IXrYhkq9Ww-1
+Received: by mail-io1-f71.google.com with SMTP id
+ m9-20020a6b7b49000000b0067c0331524cso2344761iop.21
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Jul 2022 11:47:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=h0ZslgqQ94UM3iGDYCZGEx8ZwvbYHY5ZrQARiO/Kpbc=;
- b=ePUT6dVysAkIZFKOLfNdqT7xedQOJBYadodmJhYbRZ/N+aedJupv2LzkfbQgnayWUz
- oEXvX41sTVlbxKEfL2Sn4jdQdSozH7GWNtTjnPTK/8upUZgDghSo4T4lgaw0rdf2UCmz
- VBcCAqBua1vu83U/1Piq1/ozJXW6abxnNzup5K60JZlzsdQYRWimViy6oIyVupWNESEE
- lOtrXuchlJ1HrEBR5qK8NNMSqS2p8P0ac27nyb3UDAkK0IcZktF/g9r2kbjXYMQnsQvp
- Cs7dcANmYt5PzDGIQ4EN9FYLu8HHQCkw0RKfhFznt1GRXWGPx6ESOq5rssGbjMY/qm83
- d29A==
+ Mon, 18 Jul 2022 14:33:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=h0ZslgqQ94UM3iGDYCZGEx8ZwvbYHY5ZrQARiO/Kpbc=;
- b=MCW3CshTa4GqKFFeaMSH4bXM/C7KCgVw8x1LIPOigjRqvfOG8FXMA1P2PKHLZeaL/K
- r8oOy2/N+hq2HDgzhechHclKtkBF1VLOMfInUaCWMwyaVxPT8XBO0t+XxUF+A7tT04K/
- pupkzFO2mNKMEc51J7JNDW8Gb86zevrEUh9kDWe1EFxh3KDgBv7xx0rdW5rMpWpnXTaH
- t+/Eff5wYOIBiDeknEeSywJP5N6bznJxe5GEUgZHVfxKOP0NAbETtNnFjytP6NClHwUd
- ZBe0JH+RwJaLGODY+j/cFO9jeOwVGGy1v+NVBEAptqiQDSBj0WqBUskLGW3oF4wmRrTd
- PEQw==
-X-Gm-Message-State: AJIora8PmOZQ9+P10srHQLi/Dmq8lPOOcZMfL9fgF7PkEJfsHQu7fBQa
- niegY7fT84FqxnU1xfLgSjUDR69xiTePBcNuplE=
-X-Google-Smtp-Source: AGRyM1sN9npyZ90saYAyzToQrTEliIs41GFk+lN5mNyx8YBM5MXK5qyIJPLaCDWfhXoe+S4Zjf8apP5QzN1+joGtQaA=
-X-Received: by 2002:a05:6830:16c8:b0:61c:a083:8a70 with SMTP id
- l8-20020a05683016c800b0061ca0838a70mr2916654otr.163.1658170058968; Mon, 18
- Jul 2022 11:47:38 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=McBcNHr9RW9GxlAu+UJlcdP1dYuV9WY6CAhxiggXqkA=;
+ b=kqDx+znU4xp96wV9JHZ1cq3YkE8jY6ZIBUp3WSj7Z8pOgH2e92+5yU1jqvMgZBwNqT
+ 6axWSAaJmQE8UrN9xxbbX+nrE9Ne6VMbpXVhd7AU25unlrz+/AuRz8L4z4U2j9yULEn/
+ M5vJiE42XAxDjo74lo0+zw8GEr92cunSIm0LUUSz2D0QzLavZj7z4KMNYOHPgRiVPSjZ
+ ONRZ5VfmYTZPjANC1CEAumt3Sgt5K697VQW8ZWOmBl04H8+KMQFP8AztJutYlKrZJuDh
+ uIgLo5l882Dj61ICP/W/PRFNIStkaPshybJjGgvUxvsimAnkUMlFQrQSj5Mf31Hcmthp
+ 3r6A==
+X-Gm-Message-State: AJIora+2Tq6yVq/piBRnpnhuxjcD1sIx7O2tiXQR1eUFlGCLWSkGSqnz
+ bNAuB1KfolXB1D4+k6AAW2OBbZZSBZRmQxI15BX9tt32WgjF1Ug8OcXhnLb6io7UUIIBvXl/gva
+ ckJegkSYLw/lJKNdv9XuWskXCVosF4bqpnA==
+X-Received: by 2002:a6b:3e83:0:b0:678:e63b:355d with SMTP id
+ l125-20020a6b3e83000000b00678e63b355dmr13719286ioa.134.1658180014077; 
+ Mon, 18 Jul 2022 14:33:34 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sDrGa8ze2j/q2lwFrndLWdf63qIpnOAVsNqsBc/gBPGdJhX41ARLJ2Yuy3bl7gy/bKR3KwsA==
+X-Received: by 2002:a6b:3e83:0:b0:678:e63b:355d with SMTP id
+ l125-20020a6b3e83000000b00678e63b355dmr13719265ioa.134.1658180013803; 
+ Mon, 18 Jul 2022 14:33:33 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ d190-20020a6bb4c7000000b0066961821575sm6386751iof.34.2022.07.18.14.33.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 Jul 2022 14:33:33 -0700 (PDT)
+Date: Mon, 18 Jul 2022 15:33:31 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: simplify the mdev interface v6
+Message-ID: <20220718153331.18a52e31.alex.williamson@redhat.com>
+In-Reply-To: <20220718054348.GA22345@lst.de>
+References: <20220709045450.609884-1-hch@lst.de>
+ <20220718054348.GA22345@lst.de>
+Organization: Red Hat
 MIME-Version: 1.0
-Received: by 2002:a05:6850:b093:b0:314:5f48:8afc with HTTP; Mon, 18 Jul 2022
- 11:47:38 -0700 (PDT)
-From: Lily William <gonwse11@gmail.com>
-Date: Mon, 18 Jul 2022 10:47:38 -0800
-Message-ID: <CALtkzusMkJdwJGWaMgSNQtn_4npe=eywuOaEQt1r=_TteNdQYw@mail.gmail.com>
-Subject: Hi Dear,
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,20 +86,87 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: lilywilliam989@gmail.com
+Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, kvm@vger.kernel.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Dear,
+On Mon, 18 Jul 2022 07:43:48 +0200
+Christoph Hellwig <hch@lst.de> wrote:
 
-My name is Dr Lily William from the United States.I am a French and
-American nationality (dual) living in the U.S and sometimes in France
-for Work Purpose.
+> Alex, does this series look good to you now?
 
-I hope you consider my friend request. I will share some of my pics
-and more details about myself when I get your response.
+It does.  I was hoping we'd get a more complete set acks from the mdev
+driver owners, but I'll grab this within the next day or two with
+whatever additional reviews come in by then.  Thanks,
 
-Thanks
+Alex
 
-With love
-Lily
+> On Sat, Jul 09, 2022 at 06:54:36AM +0200, Christoph Hellwig wrote:
+> > Hi all,
+> > 
+> > this series signigicantly simplies the mdev driver interface by following
+> > the patterns for device model interaction used elsewhere in the kernel.
+> > 
+> > Changes since v5:
+> >  - rebased to the latest vfio/next branch
+> >  - drop the last patch again
+> >  - make sure show_available_instances works properly for the internallly
+> >    tracked case
+> > 
+> > Changes since v4:
+> >  - move the kobject_put later in mdev_device_release 
+> >  - add a Fixes tag for the first patch
+> >  - add another patch to remove an extra kobject_get/put
+> > 
+> > Changes since v3:
+> >  - make the sysfs_name and pretty_name fields pointers instead of arrays
+> >  - add an i915 cleanup to prepare for the above
+> > 
+> > Changes since v2:
+> >  - rebased to vfio/next
+> >  - fix a pre-existing memory leak in i915 instead of making it worse
+> >  - never manipulate if ->available_instances if drv->get_available is
+> >    provided
+> >  - keep a parent reference for the mdev_type
+> >  - keep a few of the sysfs.c helper function around
+> >  - improve the documentation for the parent device lifetime
+> >  - minor spellig / formatting fixes
+> > 
+> > Changes since v1:
+> >  - embedd the mdev_parent into a different sub-structure in i916
+> >  - remove headers now inclued by mdev.h from individual source files
+> >  - pass an array of mdev_types to mdev_register_parent
+> >  - add additional patches to implement all attributes on the
+> >    mdev_type in the core code
+> > 
+> > Diffstat:
+> >  Documentation/driver-api/vfio-mediated-device.rst |   26 +-
+> >  Documentation/s390/vfio-ap.rst                    |    2 
+> >  Documentation/s390/vfio-ccw.rst                   |    2 
+> >  drivers/gpu/drm/i915/gvt/aperture_gm.c            |   20 +-
+> >  drivers/gpu/drm/i915/gvt/gvt.h                    |   42 ++--
+> >  drivers/gpu/drm/i915/gvt/kvmgt.c                  |  168 ++++-------------
+> >  drivers/gpu/drm/i915/gvt/vgpu.c                   |  210 +++++++---------------
+> >  drivers/s390/cio/cio.h                            |    4 
+> >  drivers/s390/cio/vfio_ccw_drv.c                   |   12 -
+> >  drivers/s390/cio/vfio_ccw_ops.c                   |   51 -----
+> >  drivers/s390/cio/vfio_ccw_private.h               |    2 
+> >  drivers/s390/crypto/vfio_ap_ops.c                 |   68 +------
+> >  drivers/s390/crypto/vfio_ap_private.h             |    6 
+> >  drivers/vfio/mdev/mdev_core.c                     |  190 ++++---------------
+> >  drivers/vfio/mdev/mdev_driver.c                   |    7 
+> >  drivers/vfio/mdev/mdev_private.h                  |   32 ---
+> >  drivers/vfio/mdev/mdev_sysfs.c                    |  189 ++++++++++---------
+> >  include/linux/mdev.h                              |   77 ++++----
+> >  samples/vfio-mdev/mbochs.c                        |  103 +++-------
+> >  samples/vfio-mdev/mdpy.c                          |  115 +++---------
+> >  samples/vfio-mdev/mtty.c                          |   94 +++------
+> >  21 files changed, 463 insertions(+), 957 deletions(-)  
+> ---end quoted text---
+> 
+
