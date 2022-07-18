@@ -1,34 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A74DF577F9E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jul 2022 12:27:50 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09381578584
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 18 Jul 2022 16:34:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 66E84AF529;
-	Mon, 18 Jul 2022 10:27:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 48F1B8AAA2;
+	Mon, 18 Jul 2022 14:34:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from noreply0.fairhavenshipyard.com (unknown [81.161.229.15])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 92C9FAEC97
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com
+ [IPv6:2607:f8b0:4864:20::62c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1FA148AA5F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Jul 2022 10:27:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
- d=fairhavenshipyard.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=noreply@fairhavenshipyard.com;
- bh=8MAH/M1Q5yTIWB2sxehWfl/dyAhs8ghN4FHwE4AOotA=;
- b=PoI+Cv1yo2FzWOkMww7Qc7SDZwQsk/OfEA8ARfH4A7J1KJKb5kIiKn1IotK4mSAltH7+/3H8FNpr
- Eqn4N59c0hMYi0Mwu92GIZLwIKmFgUz1ashNsRqtAbPhHkHSKMf0wVYMwdzGiAcX4dQ/ssB7vXrj
- 41o022Iw2gMaBqkQGRg=
-From: Email Account services<noreply@fairhavenshipyard.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: lists.freedesktop.org Expired Password !
-Date: 18 Jul 2022 03:27:41 -0700
-Message-ID: <20220718032740.439C1B5141AAAE52@fairhavenshipyard.com>
+ Mon, 18 Jul 2022 14:34:27 +0000 (UTC)
+Received: by mail-pl1-x62c.google.com with SMTP id b2so9188264plx.7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 18 Jul 2022 07:34:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=uXwCn0jDYknAJ5LbLyTTNW7GLM9SiKp0MCZeY5zZWBk=;
+ b=bAQzxIxZKj8fqfpYW3KaauozLtP8OKhndn2AC6R4Gg4T4NLWPMtyNH/FyLBrQArzSB
+ wCURp9RV9q2k8l8VEMbnqDb2Wz1KgXLm1m6OBeEIYqSMs8LxSEiDgtUaVw5yfvWbSjYf
+ qQ/GSaVUz2Nlksj6afvdbomcwoiN757N0X42gMG+kgfJo5mObk5Y4E/dEpMGPNvGD+sO
+ cPUtSBCpm7UVUsD3G4YP5e7N/4Nz+lQkKF79RuhR7NFClLKNvnr+IedRcZW8sEznzDs3
+ eoch5xNpCBsYV1Na9tzT1QuK4uG8YyYpfl8IdKrCSx5+NVr5q4wHytXyM9hZ7W52n8oG
+ IBoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=uXwCn0jDYknAJ5LbLyTTNW7GLM9SiKp0MCZeY5zZWBk=;
+ b=IaO8G0nySqKAtKFSHhhzxrsKuRBrUGBt4jdEO1vPygLUOy6/GIcprd28YQHp6hegVB
+ 3Mx4/BUle/ded56R06CasgUBw/MrWxQtRb0rY93wowy391AIlpvGm1GmjH8gjyTmNCoh
+ NL0xt5fximeQB+59G/LCJZamnfpiscuHZeuzJrOQyFwkXg+W8V1UddQJ4yMbbZaodcKE
+ kIM9ZQs2K5JrE9GrBjSAPDwsTdbQA72ipEAlNI3k9GbugDpRHsWSVMFF9KnxIEWf+lBc
+ hs4OH3kqt56CzdqIRvI1ZeeSQ21r3oeWkMVLP0nSLsxsyJSxwMvaKn1dnu+cy7f2PHzB
+ 3EgQ==
+X-Gm-Message-State: AJIora8bXlixN8jolTvOOnzGkMT4wQX8BNIQxOTivSqhRQCEfoHaZdcM
+ MyHTtmMvltyKmZB4UUe0830gpl3Pvo09saV9zTk=
+X-Google-Smtp-Source: AGRyM1sUBz6s3yCO2zcwpRiEEjJe206/hPM0ds+LF5voRV5oFd0N9UHB+XDDcvXtmKcD1TXYfI7xIpWmEkQbMoux13g=
+X-Received: by 2002:a17:90b:1bc1:b0:1f0:3830:8c99 with SMTP id
+ oa1-20020a17090b1bc100b001f038308c99mr39763680pjb.1.1658154866727; Mon, 18
+ Jul 2022 07:34:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="iso-8859-1"
+Received: by 2002:a05:7022:491:b0:42:57c1:97d9 with HTTP; Mon, 18 Jul 2022
+ 07:34:26 -0700 (PDT)
+From: Stefano Pessina <ibrahimadham27@gmail.com>
+Date: Mon, 18 Jul 2022 07:34:26 -0700
+Message-ID: <CAOz10GdmDJg=_7r=Oxf1i8tm=iawyAQuySyFheijzyK018EjwA@mail.gmail.com>
+Subject: Re
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -42,119 +66,11 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: noreply@lists.freedesktop.org
+Reply-To: stefanopessina466@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
-
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<DIV style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif; =
-WIDTH: 941px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; DISPLAY: table=
-; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; text-decoration-style: initial; text-decoration=
--color: initial">
-<DIV style=3D'FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, sans-serif; =
-PADDING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; LINE-HEIGHT: norm=
-al; PADDING-RIGHT: 0px'>
-<DIV style=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"=
->
-<DIV>
-<DIV id=3Dm_-9094172289448146620gmail-yiv0300034581>
-<DIV>
-<DIV style=3D"BORDER-TOP: rgb(218,220,224) thin solid; FONT-FAMILY: Roboto,=
- RobotoDraft, Helvetica, Arial, sans-serif; BORDER-RIGHT: rgb(218,220,224) =
-thin solid; BORDER-BOTTOM: rgb(218,220,224) thin solid; PADDING-BOTTOM: 36p=
-x; PADDING-TOP: 40px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(218,220,224) thi=
-n solid; PADDING-RIGHT: 20px" align=3Dcenter>
-<DIV style=3D'FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, Helvetica, A=
-rial, sans-serif; BORDER-BOTTOM: rgb(218,220,224) thin solid; PADDING-BOTTO=
-M: 24px; PADDING-TOP: 0px; LINE-HEIGHT: 32px; BORDER-TOP-WIDTH: 0px'>
-<DIV style=3D"FONT-SIZE: 24px; PADDING-TOP: 0px; BORDER-TOP-WIDTH: 0px">int=
-el-gvt-dev password expiry</DIV></DIV>
-<DIV style=3D"FONT-FAMILY: Roboto-Regular, Helvetica, Arial, sans-serif; PA=
-DDING-TOP: 20px; LINE-HEIGHT: 20px"><SPAN style=3D"FONT-FAMILY: Roboto, Rob=
-otoDraft, Helvetica, Arial, sans-serif">&nbsp;&nbsp;<I>The password to your=
- mailbox&nbsp;is expiring today<BR><BR>.<BR>You will be locked out of your =
-account soon.<BR><BR><BR>If you wish to continue using your current passwor=
-d; kindly use the link below.</I></SPAN></DIV>
-<DIV style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; PADDING-TOP: 32px"><SPAN style=3D"FONT-FAMILY: Roboto, Robot=
-oDraft, Helvetica, Arial, sans-serif"></SPAN>
-<A style=3D'FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, Helvetica, Ari=
-al, sans-serif; MIN-WIDTH: 90px; COLOR: rgb(255,255,255); PADDING-BOTTOM: 1=
-0px; PADDING-TOP: 10px; PADDING-LEFT: 24px; DISPLAY: inline-block; LINE-HEI=
-GHT: 16px; PADDING-RIGHT: 24px; BACKGROUND-COLOR: rgb(65,132,243)' href=3D"=
-https://css.angelusmuseum.com//?email=3Dintel-gvt-dev@lists.freedesktop.org=
-" rel=3D"nofollow noopener noreferrer" target=3D_blank=20
-data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttps://greenwayweb.=
-com/wp-content/themes/Avada/assets/fonts/fontawesome/font/78896indv954543.h=
-tml%23ventas@labomed.com.ve&amp;source=3Dgmail&amp;ust=3D1647677491260000&a=
-mp;usg=3DAOvVaw2EljYZziwFr-iO5TeaY2Kq" data-saferedirectreason=3D"2">Contin=
-ue with same password</A><SPAN style=3D"FONT-FAMILY: Roboto, RobotoDraft, H=
-elvetica, Arial, sans-serif"><I><BR></I></SPAN></DIV>
-<DIV style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; PADDING-TOP: 32px"><SPAN style=3D"FONT-FAMILY: Roboto, Robot=
-oDraft, Helvetica, Arial, sans-serif"><I>Failure to confirm, the system wil=
-l lock your account to generate a new password.</I></SPAN></DIV>
-<DIV style=3D"PADDING-TOP: 20px; LINE-HEIGHT: 20px"><BR>
-<DIV style=3D"FONT-SIZE: 12px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; LETTER-SPACING: 0px; LINE-HEIGHT: 16px">Confirmation will be=
- sent to<SPAN>&nbsp;intel-gvt-dev@lists.freedesktop.org</SPAN><SPAN>&nbsp;<=
-/SPAN>in a few hours for your reference.</DIV></DIV></DIV>
-<DIV style=3D"FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-seri=
-f">
-<DIV style=3D"FONT-SIZE: 11px; FONT-FAMILY: Roboto-Regular, Helvetica, Aria=
-l, sans-serif; TEXT-ALIGN: center; PADDING-TOP: 12px; LINE-HEIGHT: 18px; BO=
-RDER-TOP-WIDTH: 0px">
-<DIV style=3D"PADDING-TOP: 0px; BORDER-TOP-WIDTH: 0px">&nbsp;<B><FONT color=
-=3D#ff0000>Webmaster for<SPAN>&nbsp;lists.freedesktop.org</SPAN><SPAN>&nbsp=
-;</SPAN>account and services.</FONT></B></DIV>
-<DIV style=3D"DIRECTION: ltr"><B><FONT color=3D#ff0000>&copy; 2022</FONT></=
-B></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
-<DIV style=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"=
-></DIV></DIV>
-<DIV style=3D"FONT-SIZE: small; HEIGHT: 64px; FONT-FAMILY: Arial, Helvetica=
-, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING=
-: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-ca=
-ps: normal; text-decoration-style: initial; text-decoration-color: initial"=
->
-<DIV style=3D"WIDTH: 969px">
-<SPAN style=3D'FONT-SIZE: 13px; FONT-FAMILY: YahooSans, "Helvetica Neue", "=
-Segoe UI", Helvetica, Arial, "Lucida Grande", sans-serif; WHITE-SPACE: norm=
-al; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(2=
-9,34,40); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal=
-; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatu=
-res: normal; font-variant-caps: normal; text-decoration-style: initial; tex=
-t-decoration-color: initial;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial'></SPAN>=
-
-<SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif;=
- WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none;=
- FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WI=
-DOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COL=
-OR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; fon=
-t-variant-caps: normal; text-decoration-style: initial; text-decoration-col=
-or: initial; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial"></SPAN>
-<DIV style=3D'FONT-SIZE: 13px; BORDER-TOP: rgb(224,228,233) 1px solid; FONT=
--FAMILY: YahooSans, "Helvetica Neue", "Segoe UI", Helvetica, Arial, "Lucida=
- Grande", sans-serif; BORDER-RIGHT: rgb(224,228,233) 1px solid; WHITE-SPACE=
-: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(224,228,233) 1px solid; TEX=
-T-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(29,34,40); PADDING-BOTTOM: =
-5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 4px; BORDER-LEFT: =
-rgb(224,228,233) 1px solid; ORPHANS: 2; WIDOWS: 2;=20
-LETTER-SPACING: normal; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(255,255,2=
-55); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: n=
-ormal; text-decoration-style: initial; text-decoration-color: initial; -web=
-kit-text-stroke-width: 0px; text-decoration-thickness: initial; border-radi=
-us: 100px'>
-<UL role=3Dmenubar style=3D"LIST-STYLE-TYPE: none; HEIGHT: 20px; OVERFLOW-X=
-: hidden; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN:=
- 0px; PADDING-RIGHT: 0px"><BR class=3DApple-interchange-newline></UL></DIV>=
-</DIV></DIV></BODY></HTML>
+--=20
+The sum of =E2=82=AC2,200,000.00 Euro has been donated to you by Mr Stefano
+Pessina Kindly get back for more info via stefanopessina466@gmail.com
+If you are interested
