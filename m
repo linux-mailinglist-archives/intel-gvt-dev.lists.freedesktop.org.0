@@ -2,93 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BEA357905A
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Jul 2022 04:01:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D63657A225
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Jul 2022 16:48:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A172B10E6F8;
-	Tue, 19 Jul 2022 02:01:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F2F588AD1B;
+	Tue, 19 Jul 2022 14:48:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9348210E6F8
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4D3188AD0D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Jul 2022 02:01:48 +0000 (UTC)
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26J1ftM5020200;
- Tue, 19 Jul 2022 02:01:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=PPw8mwGhjQL0BJg93dX6d9Kp4ZAOw9NYB4OXGXK112s=;
- b=Tl1t3eBx/+3e/gWAWKsV8k8HP1+jM8dZulxAVGRFuTtwK040kXac+5SK3T5N2iBxcZ/f
- 4jZxEJfRkH5vaAr+RcVcOjyFZy+4QR6iq9DB/tx/SYe7jUbvbgaBTPwhbH8gubQuUxL0
- 80PqIgbmh0E9Q52090aWiNihpvUC8599UR9L12r25PeHvU0FI3OultgUvv0HUHsYUExr
- BwFxJfWSK/uWrSYCfblAaxUUsNYp8OFiDGb530AdmtUoP7E64dcB6G8nlZQiT/Me8e8P
- BUSB3YCJQ5VYrNFagozZDZDCuTTT/GQPMKfFq+vL8H8KDwfMAnfo3SDcp06ayPH8MePi uQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hdk640asq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 19 Jul 2022 02:01:46 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 26J1ugPW034569;
- Tue, 19 Jul 2022 02:01:45 GMT
-Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.27])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hdk640as8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 19 Jul 2022 02:01:45 +0000
-Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
- by ppma05wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 26J1onIf004560;
- Tue, 19 Jul 2022 02:01:44 GMT
-Received: from b03cxnp08027.gho.boulder.ibm.com
- (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
- by ppma05wdc.us.ibm.com with ESMTP id 3hbmy9geeg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 19 Jul 2022 02:01:44 +0000
-Received: from b03ledav002.gho.boulder.ibm.com
- (b03ledav002.gho.boulder.ibm.com [9.17.130.233])
- by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 26J21hYZ21168774
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 19 Jul 2022 02:01:43 GMT
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 34C7B136051;
- Tue, 19 Jul 2022 02:01:43 +0000 (GMT)
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id AC214136053;
- Tue, 19 Jul 2022 02:01:41 +0000 (GMT)
-Received: from farman-thinkpad-t470p (unknown [9.211.146.30])
- by b03ledav002.gho.boulder.ibm.com (Postfix) with ESMTP;
- Tue, 19 Jul 2022 02:01:41 +0000 (GMT)
-Message-ID: <1f945ef0eb6c02079700a6785ca3dd9864096b82.camel@linux.ibm.com>
-Subject: Re: simplify the mdev interface v6
-From: Eric Farman <farman@linux.ibm.com>
-To: Alex Williamson <alex.williamson@redhat.com>, Christoph Hellwig
- <hch@lst.de>
-Date: Mon, 18 Jul 2022 22:01:40 -0400
-In-Reply-To: <20220718153331.18a52e31.alex.williamson@redhat.com>
+ Tue, 19 Jul 2022 14:48:13 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 7060668AFE; Tue, 19 Jul 2022 16:48:08 +0200 (CEST)
+Date: Tue, 19 Jul 2022 16:48:08 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Eric Farman <farman@linux.ibm.com>
+Subject: Re: [PATCH 14/14] vfio/mdev: add mdev available instance checking
+ to the core
+Message-ID: <20220719144808.GA21431@lst.de>
 References: <20220709045450.609884-1-hch@lst.de>
- <20220718054348.GA22345@lst.de>
- <20220718153331.18a52e31.alex.williamson@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: bPzYFyV32OrQ-bvBA1OaEfajS1Z3nqoV
-X-Proofpoint-ORIG-GUID: uE_GeuD9Iu8rY6zWRdsziIVCXWySTCOe
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ <20220709045450.609884-15-hch@lst.de>
+ <c4c14deebf82cd2497fd9ebd0c3f321e9089b7ce.camel@linux.ibm.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-18_22,2022-07-18_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0
- priorityscore=1501 impostorscore=0 malwarescore=0 bulkscore=0
- mlxlogscore=999 spamscore=0 phishscore=0 clxscore=1015 suspectscore=0
- lowpriorityscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2206140000 definitions=main-2207190006
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c4c14deebf82cd2497fd9ebd0c3f321e9089b7ce.camel@linux.ibm.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,116 +42,25 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
- kvm@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
- linux-s390@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Halil Pasic <pasic@linux.ibm.com>, Kirti Wankhede <kwankhede@nvidia.com>,
- Jason Gunthorpe <jgg@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+ Kevin Tian <kevin.tian@intel.com>, kvm@vger.kernel.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ intel-gvt-dev@lists.freedesktop.org, Christoph Hellwig <hch@lst.de>,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 2022-07-18 at 15:33 -0600, Alex Williamson wrote:
-> On Mon, 18 Jul 2022 07:43:48 +0200
-> Christoph Hellwig <hch@lst.de> wrote:
+On Mon, Jul 18, 2022 at 10:00:26PM -0400, Eric Farman wrote:
+> > +	if (!drv->get_available) {
+> > +		if (atomic_dec_and_test(&parent->available_instances))
+> > {
 > 
-> > Alex, does this series look good to you now?
-> 
-> It does.  I was hoping we'd get a more complete set acks from the
-> mdev
-> driver owners, but I'll grab this within the next day or two with
-> whatever additional reviews come in by then. 
+> Ah, subtle change between v5 and v6 to use atomics. As vfio-ccw only
+> has 1 available instance per mdev, this breaks us. Did you mean
+> atomic_dec_if_positive() ?
 
-Apologies, I have been on vacation since this version was posted.
-
-I'll get the problem with struct subchannel [1] sorted out in the next
-couple of days. This series breaks vfio-ccw in its current form (see
-reply to patch 14), but even with that addressed the placement of all
-these other mdev structs needs to be handled differently.
-
-Eric
-
-[1] https://lore.kernel.org/r/20220707134017.GB19060@lst.de/
-
->  Thanks,
-> 
-> Alex
-> 
-> > On Sat, Jul 09, 2022 at 06:54:36AM +0200, Christoph Hellwig wrote:
-> > > Hi all,
-> > > 
-> > > this series signigicantly simplies the mdev driver interface by
-> > > following
-> > > the patterns for device model interaction used elsewhere in the
-> > > kernel.
-> > > 
-> > > Changes since v5:
-> > >  - rebased to the latest vfio/next branch
-> > >  - drop the last patch again
-> > >  - make sure show_available_instances works properly for the
-> > > internallly
-> > >    tracked case
-> > > 
-> > > Changes since v4:
-> > >  - move the kobject_put later in mdev_device_release 
-> > >  - add a Fixes tag for the first patch
-> > >  - add another patch to remove an extra kobject_get/put
-> > > 
-> > > Changes since v3:
-> > >  - make the sysfs_name and pretty_name fields pointers instead of
-> > > arrays
-> > >  - add an i915 cleanup to prepare for the above
-> > > 
-> > > Changes since v2:
-> > >  - rebased to vfio/next
-> > >  - fix a pre-existing memory leak in i915 instead of making it
-> > > worse
-> > >  - never manipulate if ->available_instances if drv-
-> > > >get_available is
-> > >    provided
-> > >  - keep a parent reference for the mdev_type
-> > >  - keep a few of the sysfs.c helper function around
-> > >  - improve the documentation for the parent device lifetime
-> > >  - minor spellig / formatting fixes
-> > > 
-> > > Changes since v1:
-> > >  - embedd the mdev_parent into a different sub-structure in i916
-> > >  - remove headers now inclued by mdev.h from individual source
-> > > files
-> > >  - pass an array of mdev_types to mdev_register_parent
-> > >  - add additional patches to implement all attributes on the
-> > >    mdev_type in the core code
-> > > 
-> > > Diffstat:
-> > >  Documentation/driver-api/vfio-mediated-device.rst |   26 +-
-> > >  Documentation/s390/vfio-ap.rst                    |    2 
-> > >  Documentation/s390/vfio-ccw.rst                   |    2 
-> > >  drivers/gpu/drm/i915/gvt/aperture_gm.c            |   20 +-
-> > >  drivers/gpu/drm/i915/gvt/gvt.h                    |   42 ++--
-> > >  drivers/gpu/drm/i915/gvt/kvmgt.c                  |  168 ++++---
-> > > ----------
-> > >  drivers/gpu/drm/i915/gvt/vgpu.c                   |  210
-> > > +++++++---------------
-> > >  drivers/s390/cio/cio.h                            |    4 
-> > >  drivers/s390/cio/vfio_ccw_drv.c                   |   12 -
-> > >  drivers/s390/cio/vfio_ccw_ops.c                   |   51 -----
-> > >  drivers/s390/cio/vfio_ccw_private.h               |    2 
-> > >  drivers/s390/crypto/vfio_ap_ops.c                 |   68 +------
-> > >  drivers/s390/crypto/vfio_ap_private.h             |    6 
-> > >  drivers/vfio/mdev/mdev_core.c                     |  190 ++++---
-> > > ------------
-> > >  drivers/vfio/mdev/mdev_driver.c                   |    7 
-> > >  drivers/vfio/mdev/mdev_private.h                  |   32 ---
-> > >  drivers/vfio/mdev/mdev_sysfs.c                    |  189
-> > > ++++++++++---------
-> > >  include/linux/mdev.h                              |   77 ++++---
-> > > -
-> > >  samples/vfio-mdev/mbochs.c                        |  103 +++--
-> > > -----
-> > >  samples/vfio-mdev/mdpy.c                          |  115 +++--
-> > > -------
-> > >  samples/vfio-mdev/mtty.c                          |   94 +++--
-> > > ----
-> > >  21 files changed, 463 insertions(+), 957 deletions(-)  
-> > ---end quoted text---
-> > 
-
+Yes, this should have been atomic_dec_if_positive.  Or just an open
+coded atomic_dec + atomic_read a the only reason to use an atomic is
+for the sysfs file that reads it outside the lock.
