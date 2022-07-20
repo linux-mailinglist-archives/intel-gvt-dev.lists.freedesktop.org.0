@@ -2,64 +2,79 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF7E457BA12
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Jul 2022 17:34:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E7CAA57BEB7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Jul 2022 21:41:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D9AAA8F587;
-	Wed, 20 Jul 2022 15:34:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 69F7A10EA46;
+	Wed, 20 Jul 2022 19:41:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x12f.google.com (mail-il1-x12f.google.com
- [IPv6:2607:f8b0:4864:20::12f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A75508F515;
- Wed, 20 Jul 2022 15:33:41 +0000 (UTC)
-Received: by mail-il1-x12f.google.com with SMTP id l11so7322724ilf.11;
- Wed, 20 Jul 2022 08:33:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=UI797gthTzsKQz4UC9U2UIsi1BTd/WhNl6933XAQbZ4=;
- b=Poas9gejc/b0A8dAg0bmZULf8ICEokfcNYpJEm09owl4HGVqEUefiujLlAhXL+LupH
- Ete2bN5SFEI+aVfScM6EXw89Cssp4j3sjXV78gQh/592OEgFrHFEKFDsGnrGUeIEJUK+
- EygsDXs3ZN7AZHWYZoWmtcfJe3nRw0wTAxk13HpS5a8Qe6qPQA1PXLlVhngW5TbdLkX3
- YuA9hTFyyiCXC7dd/ZRc7UZgc33hwYgOjSFqt5ZG07ePvP4o/7Tbk5gbajCuOSlUNEEF
- zHnZxfQHWkUvbwenvdI4SSckIZb44yjFweu6AtjqTQ6qaJ+t9Zrbo7Z5M8MNeHE84B3z
- Y6bg==
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8259910E166
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 20 Jul 2022 19:41:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658346078;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ehh4V90wN0RJR9qCy+oaecsD0c4O/PC+hN+Ir98d0Ho=;
+ b=gGSIfsfn1+yyekmGIyBu7EyoTKi/3qKa5NmRRF1/6fnGn2ZVJhjlvJd1jloH6yaE1uwrKq
+ oU3grPZjpIPlKXGJ06EDFkliVNk3mF+fwIxW5eTtEZB/U2ZVNbLcQ+wU5QzVVyRbKJHy51
+ KqHqXg4tM8i5kYZ4nAhMpto5QDluiyQ=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-590-pHgA2oaQNl2_d5Cg6l3pxw-1; Wed, 20 Jul 2022 15:41:17 -0400
+X-MC-Unique: pHgA2oaQNl2_d5Cg6l3pxw-1
+Received: by mail-il1-f200.google.com with SMTP id
+ w5-20020a056e021c8500b002dcb397284dso11468413ill.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 20 Jul 2022 12:41:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=UI797gthTzsKQz4UC9U2UIsi1BTd/WhNl6933XAQbZ4=;
- b=RX0R6tY0AUZM59/6oYuBiD0sSk+NOFvHJpaLRXzlRHczuEdllvnibzYnZP9lHlO1gT
- pbDAJUw4vWvG4vwyydGIb36q81KG5DQXlKeNOcJDg/qv1VGQ2HZ3PK1MWCF9nBRKdOJT
- 3W/xqrO85lrFi53DI23UtH+X9HoDv4pzeGA16oTpki7fZbQaFu+X5ZcjGO6L808qzxzh
- PtR8RucAlYgcXz5CFtdhXZa8Kxz21/MwUdDFnhtXeRKy/TvxC+8skVMp0NSuv8CIdP4D
- 49ZB2k1xBfZd2ObwT+NGk+2N9W0X1Wc7a/DBtmdGI5h7ZX1f8kuLrMj8GbyU5Mm0WNKv
- 4F+A==
-X-Gm-Message-State: AJIora918S2+2yTBW0wFc6aMsy14ACJ8WovVKK1q9370EhS/qYBLVURg
- 7RFuoCBMKU6HqSavXrKJjtMO/K+0eDoobQ==
-X-Google-Smtp-Source: AGRyM1tjGaF+LBdpRzSIiB7MSLS9Q90hG9GQK5slIiSavX77twFwLzBhz09TrbQz6+FEHxmkbwWFHA==
-X-Received: by 2002:a05:6e02:1c4c:b0:2dd:bfd:f2d8 with SMTP id
- d12-20020a056e021c4c00b002dd0bfdf2d8mr1333390ilg.106.1658331220606; 
- Wed, 20 Jul 2022 08:33:40 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- q1-20020a92d401000000b002dcdb4bbe87sm4579581ilm.22.2022.07.20.08.33.39
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=ehh4V90wN0RJR9qCy+oaecsD0c4O/PC+hN+Ir98d0Ho=;
+ b=oalf/mQaiyz0hrUEBqBMRBDOe6QKyMR+zWVtMCKAxko9XaFzw4eboDCh0diMYdVdnK
+ cr7Hk3ob2UTu7FZ/iii/dAGNhvb8kSSYyd+WZ5oO+0MzUaInuob+vGoINKIs5+gmxuS0
+ Qrr8+DPTboon9GXsG1MEaG/ddmBjuyyPB6JbLeeI0iE/JfnkOVE7CT4V+uNJd8GgGHXZ
+ Rgb4freQeVm13CNnla+Ik1WZh4OlKRI8ysFYll1Q1n6v92VH7nQwfQvxU7ayIS0yAVG6
+ 5LI8tRhI/3O8GbAZBsF+lhoVUiou4877IS2Lg00PN9Bc5eSona8CP/mqTSYqx8BdWNbB
+ YvGw==
+X-Gm-Message-State: AJIora+SYKP8Cv2bMiVyYMXbHit8aN6Jp6jSLWNKlvriw7+j5xxlALFm
+ aY5k7NTiGakEdBLnAh2Dl7sdnRvwBDhiYk1Myc8vRbCXUglmQgYgDo9R0HvEnHiuayF5j4amBjw
+ 3ZcpVZR8/XaQZ8/igKzcsCDel5QZ0VLJYZg==
+X-Received: by 2002:a05:6e02:1a0c:b0:2dc:8921:a8d9 with SMTP id
+ s12-20020a056e021a0c00b002dc8921a8d9mr20755572ild.145.1658346076528; 
+ Wed, 20 Jul 2022 12:41:16 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1vYxHlGrytgU3tCmIJ+Uhn7Hc+/RyJhZDLkKiiqtiSiv/P5YPbnk+rkd8QUKXd1S1jL+Xv4Pg==
+X-Received: by 2002:a05:6e02:1a0c:b0:2dc:8921:a8d9 with SMTP id
+ s12-20020a056e021a0c00b002dc8921a8d9mr20755544ild.145.1658346076213; 
+ Wed, 20 Jul 2022 12:41:16 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ g40-20020a022728000000b00339eedc7840sm8267773jaa.94.2022.07.20.12.41.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Jul 2022 08:33:40 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- jbaron@akamai.com, gregkh@linuxfoundation.org, daniel.vetter@ffwll.ch,
- seanpaul@chromium.org, robdclark@gmail.com
-Subject: [PATCH v4 41/41] nouveau-dyndbg: wip subdev refine, breaks on use
-Date: Wed, 20 Jul 2022 09:32:33 -0600
-Message-Id: <20220720153233.144129-42-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220720153233.144129-1-jim.cromie@gmail.com>
-References: <20220720153233.144129-1-jim.cromie@gmail.com>
+ Wed, 20 Jul 2022 12:41:15 -0700 (PDT)
+Date: Wed, 20 Jul 2022 13:41:13 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v4 1/2] vfio: Replace the DMA unmapping notifier with a
+ callback
+Message-ID: <20220720134113.4225f9d6.alex.williamson@redhat.com>
+In-Reply-To: <1-v4-681e038e30fd+78-vfio_unmap_notif_jgg@nvidia.com>
+References: <0-v4-681e038e30fd+78-vfio_unmap_notif_jgg@nvidia.com>
+ <1-v4-681e038e30fd+78-vfio_unmap_notif_jgg@nvidia.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,101 +87,173 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jim Cromie <jim.cromie@gmail.com>
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Nicolin Chen <nicolinc@nvidia.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Change nvkm_subdev.debug to a ulong, so dyndbg can maybe use it.
+On Tue, 19 Jul 2022 21:02:48 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
+> index a7d2a95796d360..bb1a1677c5c230 100644
+> --- a/drivers/s390/crypto/vfio_ap_ops.c
+> +++ b/drivers/s390/crypto/vfio_ap_ops.c
+> @@ -1226,34 +1226,14 @@ static int vfio_ap_mdev_set_kvm(struct ap_matrix_mdev *matrix_mdev,
+>  	return 0;
+>  }
+>  
+> -/**
+> - * vfio_ap_mdev_iommu_notifier - IOMMU notifier callback
+> - *
+> - * @nb: The notifier block
+> - * @action: Action to be taken
+> - * @data: data associated with the request
+> - *
+> - * For an UNMAP request, unpin the guest IOVA (the NIB guest address we
+> - * pinned before). Other requests are ignored.
+> - *
+> - * Return: for an UNMAP request, NOFITY_OK; otherwise NOTIFY_DONE.
+> - */
+> -static int vfio_ap_mdev_iommu_notifier(struct notifier_block *nb,
+> -				       unsigned long action, void *data)
+> +static void vfio_ap_mdev_dma_unmap(struct vfio_device *vdev, u64 iova,
+> +				   u64 length)
+>  {
+> -	struct ap_matrix_mdev *matrix_mdev;
+> -
+> -	matrix_mdev = container_of(nb, struct ap_matrix_mdev, iommu_notifier);
+> -
+> -	if (action == VFIO_IOMMU_NOTIFY_DMA_UNMAP) {
+> -		struct vfio_iommu_type1_dma_unmap *unmap = data;
+> -		unsigned long g_pfn = unmap->iova >> PAGE_SHIFT;
+> -
+> -		vfio_unpin_pages(&matrix_mdev->vdev, &g_pfn, 1);
+> -		return NOTIFY_OK;
+> -	}
+> +	struct ap_matrix_mdev *matrix_mdev =
+> +		container_of(vdev, struct ap_matrix_mdev, vdev);
+> +	unsigned long g_pfn = iova >> PAGE_SHIFT;
+>  
+> -	return NOTIFY_DONE;
+> +	vfio_unpin_pages(&matrix_mdev->vdev, &g_pfn, 1);
+>  }
+>  
+>  /**
 
-Move macro decl from nv-drm.c to subdev.c, and add a struct
-ddebug_classes_bitmap_param and a module_param_cb() that creates the
-sysfs-knob.
 
-Finally, in nvkm_subdev_ctor(), *attempt* to set dyndbg's pointer to
-the debug address, so that dyndbg can observe the underlying debug
-value, and make enable/disable decisions based upon it.
+I tried to apply this on top of Nicolin's series which results in a
+conflict that can be resolved as below:
 
-But Im not getting the ctor called, so the ptr is NULL when refd.
-
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- .../drm/nouveau/include/nvkm/core/subdev.h    |  2 +-
- drivers/gpu/drm/nouveau/nouveau_drm.c         |  7 ------
- drivers/gpu/drm/nouveau/nvkm/core/subdev.c    | 23 +++++++++++++++++++
- 3 files changed, 24 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/gpu/drm/nouveau/include/nvkm/core/subdev.h b/drivers/gpu/drm/nouveau/include/nvkm/core/subdev.h
-index d5f6ca05d5fa..05807403fdd6 100644
---- a/drivers/gpu/drm/nouveau/include/nvkm/core/subdev.h
-+++ b/drivers/gpu/drm/nouveau/include/nvkm/core/subdev.h
-@@ -19,7 +19,7 @@ struct nvkm_subdev {
- 	enum nvkm_subdev_type type;
- 	int inst;
- 	char name[16];
--	u32 debug;
-+	unsigned long debug;
- 	struct list_head head;
- 
- 	void **pself;
-diff --git a/drivers/gpu/drm/nouveau/nouveau_drm.c b/drivers/gpu/drm/nouveau/nouveau_drm.c
-index 85b63b527877..d45c71ffc09e 100644
---- a/drivers/gpu/drm/nouveau/nouveau_drm.c
-+++ b/drivers/gpu/drm/nouveau/nouveau_drm.c
-@@ -90,13 +90,6 @@ DECLARE_DYNDBG_CLASSMAP(nv_cli_debug_verbose, DD_CLASS_TYPE_VERBOSE, 10,
- 			"NV_CLI_DBG_TRACE",
- 			"NV_CLI_DBG_SPAM");
- 
--DECLARE_DYNDBG_CLASSMAP(nv_subdev_debug_verbose, DD_CLASS_TYPE_VERBOSE, 15,
--			"NV_SUBDEV_DBG_OFF",
--			"NV_SUBDEV_DBG_INFO",
--			"NV_SUBDEV_DBG_DEBUG",
--			"NV_SUBDEV_DBG_TRACE",
--			"NV_SUBDEV_DBG_SPAM");
--
- MODULE_PARM_DESC(config, "option string to pass to driver core");
- static char *nouveau_config;
- module_param_named(config, nouveau_config, charp, 0400);
-diff --git a/drivers/gpu/drm/nouveau/nvkm/core/subdev.c b/drivers/gpu/drm/nouveau/nvkm/core/subdev.c
-index a74b7acb6832..227871c3a749 100644
---- a/drivers/gpu/drm/nouveau/nvkm/core/subdev.c
-+++ b/drivers/gpu/drm/nouveau/nvkm/core/subdev.c
-@@ -26,6 +26,27 @@
- #include <core/option.h>
- #include <subdev/mc.h>
- 
-+#include <linux/dynamic_debug.h>
-+#include <linux/module.h>
-+
-+#define DEBUG
-+
-+DECLARE_DYNDBG_CLASSMAP(nv_subdev_debug_verbose, DD_CLASS_TYPE_VERBOSE, 15,
-+			"NV_SUBDEV_DBG_OFF",
-+			"NV_SUBDEV_DBG_INFO",
-+			"NV_SUBDEV_DBG_DEBUG",
-+			"NV_SUBDEV_DBG_TRACE",
-+			"NV_SUBDEV_DBG_SPAM");
-+
-+static struct ddebug_classes_bitmap_param nv_subdev_verbose = {
-+	.bits = NULL, // wants &_subdev->debug
-+	.flags = "p",
-+	.map = &nv_subdev_debug_verbose,
-+};
-+module_param_cb(debug_subdev, &param_ops_dyndbg_classes, &nv_subdev_verbose, 0600);
-+
-+
-+
- const char *
- nvkm_subdev_type[NVKM_SUBDEV_NR] = {
- #define NVKM_LAYOUT_ONCE(type,data,ptr,...) [type] = #ptr,
-@@ -180,6 +201,8 @@ nvkm_subdev_ctor(const struct nvkm_subdev_func *func, struct nvkm_device *device
- 	else
- 		strscpy(subdev->name, nvkm_subdev_type[type], sizeof(subdev->name));
- 	subdev->debug = nvkm_dbgopt(device->dbgopt, subdev->name);
-+	nv_subdev_verbose.bits = &subdev->debug;
-+	pr_debug("updated bitmap: %px\n", &nv_subdev_verbose.bits);
- 	list_add_tail(&subdev->head, &device->subdev);
+diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
+index e8856a7e151c..d7c38c82f694 100644
+--- a/drivers/s390/crypto/vfio_ap_ops.c
++++ b/drivers/s390/crypto/vfio_ap_ops.c
+@@ -1219,33 +1219,13 @@ static int vfio_ap_mdev_set_kvm(struct ap_matrix_mdev *matrix_mdev,
+ 	return 0;
  }
  
--- 
-2.36.1
+-/**
+- * vfio_ap_mdev_iommu_notifier - IOMMU notifier callback
+- *
+- * @nb: The notifier block
+- * @action: Action to be taken
+- * @data: data associated with the request
+- *
+- * For an UNMAP request, unpin the guest IOVA (the NIB guest address we
+- * pinned before). Other requests are ignored.
+- *
+- * Return: for an UNMAP request, NOFITY_OK; otherwise NOTIFY_DONE.
+- */
+-static int vfio_ap_mdev_iommu_notifier(struct notifier_block *nb,
+-				       unsigned long action, void *data)
++static void vfio_ap_mdev_dma_unmap(struct vfio_device *vdev, u64 iova,
++				   u64 length)
+ {
+-	struct ap_matrix_mdev *matrix_mdev;
+-
+-	matrix_mdev = container_of(nb, struct ap_matrix_mdev, iommu_notifier);
+-
+-	if (action == VFIO_IOMMU_NOTIFY_DMA_UNMAP) {
+-		struct vfio_iommu_type1_dma_unmap *unmap = data;
+-
+-		vfio_unpin_pages(&matrix_mdev->vdev, unmap->iova, 1);
+-		return NOTIFY_OK;
+-	}
++	struct ap_matrix_mdev *matrix_mdev =
++		container_of(vdev, struct ap_matrix_mdev, vdev);
+ 
+-	return NOTIFY_DONE;
++	vfio_unpin_pages(&matrix_mdev->vdev, iova, 1);
+ }
+ 
+ /**
+
+ie. we don't need the gfn, we only need the iova.
+
+However then I start to wonder why we're passing in 1 for the number of
+pages because this previously notifier, now callback is called for the
+entire vfio_dma range when we find any pinned pages.  It makes no sense for
+a driver to assume that the first iova is pinned and is the only pinned
+page.
+
+ccw has the same issue:
+
+static void vfio_ccw_dma_unmap(struct vfio_device *vdev, u64 iova, u64 length)
+{
+        struct vfio_ccw_private *private =
+                container_of(vdev, struct vfio_ccw_private, vdev);
+
+        /* Drivers MUST unpin pages in response to an invalidation. */
+        if (!cp_iova_pinned(&private->cp, iova))
+                return;
+
+        vfio_ccw_mdev_reset(private);
+}
+
+Entirely ignoring the length arg.
+
+It seems only GVT-g has this correct to actually look through the
+extent of the range being unmapped:
+
+static void intel_vgpu_dma_unmap(struct vfio_device *vfio_dev, u64 iova,
+                                 u64 length)
+{
+        struct intel_vgpu *vgpu = vfio_dev_to_vgpu(vfio_dev);
+        struct gvt_dma *entry;
+        u64 iov_pfn = iova >> PAGE_SHIFT;
+        u64 end_iov_pfn = iov_pfn + length / PAGE_SIZE;
+
+        mutex_lock(&vgpu->cache_lock);
+        for (; iov_pfn < end_iov_pfn; iov_pfn++) {
+                entry = __gvt_cache_find_gfn(vgpu, iov_pfn);
+                if (!entry)
+                        continue;
+
+                gvt_dma_unmap_page(vgpu, entry->gfn, entry->dma_addr,
+                                   entry->size);
+                __gvt_cache_remove_entry(vgpu, entry);
+        }
+        mutex_unlock(&vgpu->cache_lock);
+}
+
+Should ap and ccw implementations of .dma_unmap just be replaced with a
+BUG_ON(1)?  Thanks,
+
+Alex
 
