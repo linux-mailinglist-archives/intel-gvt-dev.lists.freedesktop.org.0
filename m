@@ -1,95 +1,82 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E37457BF53
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Jul 2022 22:47:25 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6386F57C06E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Jul 2022 01:05:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 014C4113FA4;
-	Wed, 20 Jul 2022 20:47:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C964F18B14A;
+	Wed, 20 Jul 2022 23:05:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B6435113EF0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CB64B18B129
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 20 Jul 2022 20:47:22 +0000 (UTC)
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26KKkrD5008773;
- Wed, 20 Jul 2022 20:47:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=PXCc9V5i424eVXq6XuYSFn2k2F4T0ZQCulJ+y2jDyXw=;
- b=K3MKcKXlHSGKORzu/7GxTBIim80IVq4Mt6fOC4pthwc072WsE5ZmgJvztImrOs30wof8
- yMOV6feNcKzhdv911y+P+fqO63+zfasaUeFYIoCc/mL4aMaGj+MpOcRf73NDTHlvn57D
- OuHHGnVRfqLwF8f0ROvLkpks03jVAbxcHD7AIFrtpFG/3kB+fUvW+XNeWnde449WC+09
- i8x+VX8NOJIa71GcXvpryvEdMP/W+eqKrjJU3jX7BUOJdjGlLkmXk6662PONCPymvdNk
- tTymQqtuCcarTVOdGYMg3yfnltxN7VJzm7ip8xsvJnFuD7O/iry3IAgskV2lOI3c0SWE Cw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3herp7rn8s-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 20 Jul 2022 20:47:20 +0000
-Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 26KKkvkF009114;
- Wed, 20 Jul 2022 20:47:20 GMT
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3herp7rn82-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 20 Jul 2022 20:47:19 +0000
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 26KKLUWD027125;
- Wed, 20 Jul 2022 20:47:19 GMT
-Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
- [9.57.198.23]) by ppma02dal.us.ibm.com with ESMTP id 3hbmy9tnm1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 20 Jul 2022 20:47:18 +0000
-Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
- [9.57.199.110])
- by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 26KKlHnt61735226
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 20 Jul 2022 20:47:17 GMT
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A903AAE060;
- Wed, 20 Jul 2022 20:47:17 +0000 (GMT)
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F40A1AE05C;
- Wed, 20 Jul 2022 20:47:14 +0000 (GMT)
-Received: from farman-thinkpad-t470p (unknown [9.211.146.30])
- by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
- Wed, 20 Jul 2022 20:47:14 +0000 (GMT)
-Message-ID: <65746aea193d4a814f895eca4b00b72cf29ac8f9.camel@linux.ibm.com>
-Subject: Re: [PATCH 05/14] vfio/mdev: simplify mdev_type handling
-From: Eric Farman <farman@linux.ibm.com>
-To: Christoph Hellwig <hch@lst.de>, Kirti Wankhede <kwankhede@nvidia.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>
-Date: Wed, 20 Jul 2022 16:47:13 -0400
-In-Reply-To: <20220709045450.609884-6-hch@lst.de>
-References: <20220709045450.609884-1-hch@lst.de>
- <20220709045450.609884-6-hch@lst.de>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-Mime-Version: 1.0
+ Wed, 20 Jul 2022 23:05:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658358301;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zg6tKh24AWnTu20bQJOGXj28spsKAAV7siHCBMGPsbs=;
+ b=AcYOeD8t+ZniHHUjNPOR3CSqdjTcms8uCNVY+uO7RE6ENMgyKkR6Wn9yUVP7h/ZzTp9LaR
+ 0++AnwAQAeyxVWHD9qv4NIpDXQRtd6anQqihoaV0HaN5DPbCpNj8Ksogr+TmIGT0X5rafO
+ U6MwvyLZhMsNc3QgIG3xZ8R18nyAgVw=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-631-c3oq0D3WMFuXXGTI5dIiEA-1; Wed, 20 Jul 2022 19:05:00 -0400
+X-MC-Unique: c3oq0D3WMFuXXGTI5dIiEA-1
+Received: by mail-il1-f199.google.com with SMTP id
+ w5-20020a056e021c8500b002dcb397284dso11706158ill.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 20 Jul 2022 16:05:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=zg6tKh24AWnTu20bQJOGXj28spsKAAV7siHCBMGPsbs=;
+ b=wwcHUgIEUlEddcAdkHyct5wzqf7+0FPD6eul/kLqx6t+DO2EY0rnqQ6OY87j73vk2z
+ VSXp1Unq+q28fB8MmTJvpuUHOQXXqi1X1X9BXhYyNwMVqMd2y/7h0X6bk52VIWVWbY2b
+ pxN+JIZNgKhQzu1ZpfC60S34c9UoFW6NsqdABhIwDdz6B0TbZHGGJdcUxrzlJkvm8BCv
+ mTOB/RWBmwy8LHt/UqzvonYJVf8UBLJ3FhCbriIo/o3oR93S7qbhCu1BjGMXgR6O6Wjq
+ fcA+6X8HzGyiTAgCdD7ov/2rPi7Us5IWxpEJ4BtJYd7ZdKNTo3BzZX8wwuck5SsXbvL4
+ Cflg==
+X-Gm-Message-State: AJIora9c/B5tValWHiQmQvNdB02oW+VmdHT+zD/qIyeBbLmGzwC8BR+1
+ NmPUMxDSsZr+skCydrp8I7g49lf83Bmpq4/KxqcKqP6yk6mUcTplgcuUG+ocDE7poDcYtFuRbyb
+ o1xBSbJAY0J+EmIy26ADNiC7CZGwMDP6Yaw==
+X-Received: by 2002:a92:d64d:0:b0:2dc:e337:58ab with SMTP id
+ x13-20020a92d64d000000b002dce33758abmr8883695ilp.85.1658358300016; 
+ Wed, 20 Jul 2022 16:05:00 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sQXCea5IlpPt4z3PoQC/VJ/h3ZRlmifntgfmb+p+6Hl0NlKR1GQe1eKRx6WPGYdv4/I+TsDA==
+X-Received: by 2002:a92:d64d:0:b0:2dc:e337:58ab with SMTP id
+ x13-20020a92d64d000000b002dce33758abmr8883682ilp.85.1658358299767; 
+ Wed, 20 Jul 2022 16:04:59 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ n24-20020a056638111800b0034195de93b3sm92309jal.51.2022.07.20.16.04.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 Jul 2022 16:04:59 -0700 (PDT)
+Date: Wed, 20 Jul 2022 17:04:57 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v4 1/2] vfio: Replace the DMA unmapping notifier with a
+ callback
+Message-ID: <20220720170457.39cda0d0.alex.williamson@redhat.com>
+In-Reply-To: <20220720200829.GW4609@nvidia.com>
+References: <0-v4-681e038e30fd+78-vfio_unmap_notif_jgg@nvidia.com>
+ <1-v4-681e038e30fd+78-vfio_unmap_notif_jgg@nvidia.com>
+ <20220720134113.4225f9d6.alex.williamson@redhat.com>
+ <20220720200829.GW4609@nvidia.com>
+Organization: Red Hat
+MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: LeTFFDCayeIQQckPjK9m0Nz8qL7MjNzM
-X-Proofpoint-GUID: Cu7dwAIP90sG6U9bqXnn85oF_odgVOTP
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-20_12,2022-07-20_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 bulkscore=0
- adultscore=0 suspectscore=0 mlxlogscore=999 mlxscore=0 priorityscore=1501
- phishscore=0 malwarescore=0 lowpriorityscore=0 clxscore=1015 spamscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2206140000
- definitions=main-2207200082
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,68 +89,93 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, kvm@vger.kernel.org,
- Jason Gunthorpe <jgg@nvidia.com>
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
+ linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Nicolin Chen <nicolinc@nvidia.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, 2022-07-09 at 06:54 +0200, Christoph Hellwig wrote:
-> Instead of abusing struct attribute_group to control initialization
-> of
-> struct mdev_type, just define the actual attributes in the
-> mdev_driver,
-> allocate the mdev_type structures in the caller and pass them to
-> mdev_register_parent.
-> 
-> This allows the caller to use container_of to get at the containing
-> structure and thus significantly simplify the code.
-> 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
-> ---
+On Wed, 20 Jul 2022 17:08:29 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-...snip...
-
-> diff --git a/drivers/vfio/mdev/mdev_sysfs.c
-> b/drivers/vfio/mdev/mdev_sysfs.c
-> b/drivers/vfio/mdev/mdev_sysfs.c
-> index b71ffc5594870..80b2d546a3d98 100644
-> --- a/drivers/vfio/mdev/mdev_sysfs.c
-> +++ b/drivers/vfio/mdev/mdev_sysfs.c
-> @@ -90,35 +90,21 @@ static struct kobj_type mdev_type_ktype = {
->  	.release = mdev_type_release,
->  };
+> On Wed, Jul 20, 2022 at 01:41:13PM -0600, Alex Williamson wrote:
 >  
-> -static struct mdev_type *add_mdev_supported_type(struct mdev_parent
-> *parent,
-> -						 unsigned int
-> type_group_id)
-> +static int mdev_type_add(struct mdev_parent *parent, struct
-> mdev_type *type)
->  {
-> -	struct mdev_type *type;
-> -	struct attribute_group *group =
-> -		parent->mdev_driver-
-> >supported_type_groups[type_group_id];
->  	int ret;
+> > ie. we don't need the gfn, we only need the iova.  
+> 
+> Right, that makes sense
 >  
-> -	if (!group->name) {
-> -		pr_err("%s: Type name empty!\n", __func__);
-> -		return ERR_PTR(-EINVAL);
-> -	}
-> -
-> -	type = kzalloc(sizeof(*type), GFP_KERNEL);
-> -	if (!type)
-> -		return ERR_PTR(-ENOMEM);
-> -
+> > However then I start to wonder why we're passing in 1 for the number of
+> > pages because this previously notifier, now callback is called for the
+> > entire vfio_dma range when we find any pinned pages.    
+> 
+> Well, it is doing this because it only ever pins one page.
 
-Since mdev_type is embedded in the parent and the alloc is removed,
-shouldn't the kfree(type) in mdev_type_release() also be removed? (This
-appears to be at least one of the causes of my system crashes.)
+Of course that page is not necessarily the page it unpins given the
+contract misunderstanding below.
+ 
+> The drivers are confused about what the contract is. vfio is calling
+> the notifier with the entire IOVA range that is being unmapped and the
+> drivers are expecting to receive notifications only for the IOVA they
+> have actually pinned.
+> 
+> > Should ap and ccw implementations of .dma_unmap just be replaced with a
+> > BUG_ON(1)?  
+> 
+> The point of these callbacks is to halt concurrent DMA, and ccw does
+> that today.
 
-...snip.
-..
+ccw essentially only checks whether the starting iova of the unmap is
+currently mapped.  If not it does nothing, if it is it tries to reset
+the device and unpin everything.  Chances are the first iova is not the
+one pinned, so we don't end up removing the pinned page and type1 will
+eventually BUG_ON after a few tries.
+
+> It looks like AP is missing a call to ap_aqic(), so it is
+> probably double wrong.
+
+Thankfully the type1 unpinning path can't be tricked into unpinning
+something that wasn't pinned, so chances are the unpin call does
+nothing, with a small risk that it unpins another driver's pinned page,
+which might not yet have been notified and could still be using the
+page.  In the end, if ap did have a page pinned in the range, we'll hit
+the same BUG_ON as above.
+
+> What I'd suggest is adding a WARN_ON that the dma->pfn_list is not
+> empty and leave these functions alone.
+
+The BUG_ON still exists in type1.
+
+Eric, Matt, Tony, Halil, JasonH, any quick fixes here?  ccw looks like
+it would be pretty straightforward to test against a range rather than
+a single iova.
+ 
+> Most likely AP should be fixed to call vfio_ap_irq_disable() and to
+> check the q->saved_pfn against the IOVA.
+
+Right, the q->saved_iova, perhaps calling vfio_ap_irq_disable() on
+finding a matching queue.
+
+> But I'm inclined to leave this as-is for this series given we are at
+> rc7.
+
+On the grounds that it's no worse, maybe, but given the changes
+around this code hopefully we can submit fixes patches to stable if the
+backport isn't obvious and the BUG_ON in type1 is reachable.  Thanks,
+
+Alex
 
