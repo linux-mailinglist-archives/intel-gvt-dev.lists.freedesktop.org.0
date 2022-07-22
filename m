@@ -2,83 +2,83 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA97857D1C0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Jul 2022 18:42:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4511E57E8B2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Jul 2022 23:09:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3D52310F8F2;
-	Thu, 21 Jul 2022 16:42:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6143C93A15;
+	Fri, 22 Jul 2022 21:09:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 49D7211AE58
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Jul 2022 16:42:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1658421723;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lpgjxHYzUdT13dg92JGLQAgwmOcrc+nlknH/en5JH44=;
- b=RI2+3b9D3uHFwxoJ7qtwOrVY8ZtBrMNDfujWVCjTtfGR4gVTTLf6HIzm2suXrfUIdw19KB
- hB4DSwItppZUmgX6oaQorCSTw4UmRUZanWgPpiekxJU/r6GnwXASViKdUJECQ9yXERdTxi
- bkB5uwrlnw6yqjV2L8cmtV0Bear4/cs=
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-389-LNeSS2YXNbSgRWFIHtJJSw-1; Thu, 21 Jul 2022 12:42:01 -0400
-X-MC-Unique: LNeSS2YXNbSgRWFIHtJJSw-1
-Received: by mail-il1-f198.google.com with SMTP id
- d6-20020a056e020be600b002dcc7977592so1201749ilu.17
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Jul 2022 09:42:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=lpgjxHYzUdT13dg92JGLQAgwmOcrc+nlknH/en5JH44=;
- b=w3vtJhOuBB1MCrQ1ZjZefAM6o7MqxaL+RySawphENkfGOLf5q44K8x/mOBHGtrqaz0
- NUVTUzRY2Zdfa9kA5+1+SwGCqmtmjuqMcjnhVne2btSZycPpHelhMtvGMgu/D3zpIxwx
- KMe6c6coEftW4j32OjcWVtzqDsHubJoWzT62gmbax9aL7uqzwUNUaCO8wG61GMQWSFnH
- C2bctfS8JJv7mAc3j8BK5XRaDQXgK7VZZ8wyjf9Xgq0aKyeadXbmLXerB5H0U7jhIXqC
- 4G3wbmgS7Dfbok2i5F8H2CotEjo9lgJvADM8hV77p9oX7LXanYxxbFNuVYtvyouHgLxo
- NzPw==
-X-Gm-Message-State: AJIora9MANKxraAk1/nMoCFyGBrFhDXq3JzuncXLNqtj5RyiwExsCE5+
- Zus0eJQ5JCKpskP/GrbZFAZrMEG5OGiJeLg3D0WwRmAsTFVPZOB7LeTh/bs/jFjLcbvxRd9Mc73
- dyZ3dIRMMtyjofiPF28FJae2ve04iLmm/xg==
-X-Received: by 2002:a02:9995:0:b0:33f:1def:a856 with SMTP id
- a21-20020a029995000000b0033f1defa856mr24004780jal.140.1658421721176; 
- Thu, 21 Jul 2022 09:42:01 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1uDra+sBjomhufuKVE3FoD1JmBYjfrwTVbG3vPUfrMl7qSHvCezbvx0MjlGPc8ncq7OqQjIFA==
-X-Received: by 2002:a02:9995:0:b0:33f:1def:a856 with SMTP id
- a21-20020a029995000000b0033f1defa856mr24004742jal.140.1658421720864; 
- Thu, 21 Jul 2022 09:42:00 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- d184-20020a0262c1000000b0033f0c9f4fbesm978665jac.135.2022.07.21.09.41.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jul 2022 09:42:00 -0700 (PDT)
-Date: Thu, 21 Jul 2022 10:41:58 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Eric Farman <farman@linux.ibm.com>
-Subject: Re: [PATCH v4 1/2] vfio: Replace the DMA unmapping notifier with a
- callback
-Message-ID: <20220721104158.225a3562.alex.williamson@redhat.com>
-In-Reply-To: <d4b7abce8ef8646819d32fef57ea51e38cd53f1b.camel@linux.ibm.com>
-References: <0-v4-681e038e30fd+78-vfio_unmap_notif_jgg@nvidia.com>
- <1-v4-681e038e30fd+78-vfio_unmap_notif_jgg@nvidia.com>
- <20220720134113.4225f9d6.alex.williamson@redhat.com>
- <20220720200829.GW4609@nvidia.com>
- <20220720170457.39cda0d0.alex.williamson@redhat.com>
- <d4b7abce8ef8646819d32fef57ea51e38cd53f1b.camel@linux.ibm.com>
-Organization: Red Hat
+X-Greylist: delayed 2713 seconds by postgrey-1.36 at gabe;
+ Fri, 22 Jul 2022 21:09:00 UTC
+Received: from mx0a-00190b01.pphosted.com (mx0a-00190b01.pphosted.com
+ [IPv6:2620:100:9001:583::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 193AE939F0;
+ Fri, 22 Jul 2022 21:08:59 +0000 (UTC)
+Received: from pps.filterd (m0050093.ppops.net [127.0.0.1])
+ by m0050093.ppops.net-00190b01. (8.17.1.5/8.17.1.5) with ESMTP id
+ 26MKJalr029775; Fri, 22 Jul 2022 21:23:42 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com;
+ h=message-id : date :
+ mime-version : subject : to : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=jan2016.eng;
+ bh=+1AONTHeZKujAZlWUT0X+IkeKoRkI9kd867PknMVwg0=;
+ b=EdVF8ZamAx9aTHgv1RBz/dVtJJ9wZvCxs2+SimSTrJOTl3iz4UJ83aSjs62HDnxEjxhU
+ e4ItfkliZKeHTJ6jFvcitACPKia3q/PAJzLex92rWd1wktsCv/oZWFF9LsyNNCUWITBA
+ 5KfLICK3rOQIHgnfpznD2heBjmEvFL7Aw3++hZbIGiVH7BEhg/Tlsb4eOB3DoE470iAF
+ sU/rWx5E41QASKF00nyASFKiLUwA1Yzqrv8qopECzyX9dc6TdsbNtQVJ15APQhdQLP+r
+ KlD0s/qdGJltf7zMqZ4JQakIiTzmNz5w+azl+VuvcLU0uWxZyZphLaDnDMxZ7fFKydFn Zg== 
+Received: from prod-mail-ppoint4
+ (a72-247-45-32.deploy.static.akamaitechnologies.com [72.247.45.32] (may be
+ forged))
+ by m0050093.ppops.net-00190b01. (PPS) with ESMTPS id 3hg0j46nf4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 22 Jul 2022 21:23:42 +0100
+Received: from pps.filterd (prod-mail-ppoint4.akamai.com [127.0.0.1])
+ by prod-mail-ppoint4.akamai.com (8.17.1.5/8.17.1.5) with ESMTP id
+ 26MIt3Uk020881; Fri, 22 Jul 2022 16:23:41 -0400
+Received: from prod-mail-relay18.dfw02.corp.akamai.com ([172.27.165.172])
+ by prod-mail-ppoint4.akamai.com (PPS) with ESMTP id 3hbrptdm45-1;
+ Fri, 22 Jul 2022 16:23:41 -0400
+Received: from [0.0.0.0] (unknown [172.27.119.138])
+ by prod-mail-relay18.dfw02.corp.akamai.com (Postfix) with ESMTP id 98D7716E;
+ Fri, 22 Jul 2022 20:23:40 +0000 (GMT)
+Message-ID: <9e34b45f-c091-223b-58ac-107cfbebd92c@akamai.com>
+Date: Fri, 22 Jul 2022 16:23:40 -0400
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v4 12/41] dyndbg: add DECLARE_DYNDBG_CLASSMAP
+Content-Language: en-US
+To: Jim Cromie <jim.cromie@gmail.com>, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, gregkh@linuxfoundation.org,
+ daniel.vetter@ffwll.ch, seanpaul@chromium.org, robdclark@gmail.com
+References: <20220720153233.144129-1-jim.cromie@gmail.com>
+ <20220720153233.144129-13-jim.cromie@gmail.com>
+From: Jason Baron <jbaron@akamai.com>
+In-Reply-To: <20220720153233.144129-13-jim.cromie@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-07-22_06,2022-07-21_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxlogscore=999
+ phishscore=0 mlxscore=0 spamscore=0 suspectscore=0 malwarescore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2206140000 definitions=main-2207220083
+X-Proofpoint-ORIG-GUID: iVW3af7nY-wh7IXZ-qsYpdTMGZ_K4vj0
+X-Proofpoint-GUID: iVW3af7nY-wh7IXZ-qsYpdTMGZ_K4vj0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-07-22_06,2022-07-21_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ bulkscore=0 adultscore=0
+ impostorscore=0 mlxscore=0 mlxlogscore=999 priorityscore=1501 spamscore=0
+ lowpriorityscore=0 clxscore=1011 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2206140000
+ definitions=main-2207220083
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,107 +91,208 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
- linux-s390@vger.kernel.org, Matthew Rosato <mjrosato@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Nicolin Chen <nicolinc@nvidia.com>,
- Jason Gunthorpe <jgg@nvidia.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Kevin Tian <kevin.tian@intel.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Cornelia Huck <cohuck@redhat.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 21 Jul 2022 12:01:47 -0400
-Eric Farman <farman@linux.ibm.com> wrote:
 
-> On Wed, 2022-07-20 at 17:04 -0600, Alex Williamson wrote:
-> > On Wed, 20 Jul 2022 17:08:29 -0300
-> > Jason Gunthorpe <jgg@nvidia.com> wrote:
-> >   
-> > > On Wed, Jul 20, 2022 at 01:41:13PM -0600, Alex Williamson wrote:
-> > >    
-> > > > ie. we don't need the gfn, we only need the iova.    
-> > > 
-> > > Right, that makes sense
-> > >    
-> > > > However then I start to wonder why we're passing in 1 for the
-> > > > number of
-> > > > pages because this previously notifier, now callback is called
-> > > > for the
-> > > > entire vfio_dma range when we find any pinned pages.      
-> > > 
-> > > Well, it is doing this because it only ever pins one page.  
-> > 
-> > Of course that page is not necessarily the page it unpins given the
-> > contract misunderstanding below.
-> >    
-> > > The drivers are confused about what the contract is. vfio is
-> > > calling
-> > > the notifier with the entire IOVA range that is being unmapped and
-> > > the
-> > > drivers are expecting to receive notifications only for the IOVA
-> > > they
-> > > have actually pinned.
-> > >   
-> > > > Should ap and ccw implementations of .dma_unmap just be replaced
-> > > > with a
-> > > > BUG_ON(1)?    
-> > > 
-> > > The point of these callbacks is to halt concurrent DMA, and ccw
-> > > does
-> > > that today.  
-> > 
-> > ccw essentially only checks whether the starting iova of the unmap is
-> > currently mapped.  If not it does nothing, if it is it tries to reset
-> > the device and unpin everything.  Chances are the first iova is not
-> > the
-> > one pinned, so we don't end up removing the pinned page and type1
-> > will
-> > eventually BUG_ON after a few tries.
-> >   
-> > > It looks like AP is missing a call to ap_aqic(), so it is
-> > > probably double wrong.  
-> > 
-> > Thankfully the type1 unpinning path can't be tricked into unpinning
-> > something that wasn't pinned, so chances are the unpin call does
-> > nothing, with a small risk that it unpins another driver's pinned
-> > page,
-> > which might not yet have been notified and could still be using the
-> > page.  In the end, if ap did have a page pinned in the range, we'll
-> > hit
-> > the same BUG_ON as above.
-> >   
-> > > What I'd suggest is adding a WARN_ON that the dma->pfn_list is not
-> > > empty and leave these functions alone.  
-> > 
-> > The BUG_ON still exists in type1.
-> > 
-> > Eric, Matt, Tony, Halil, JasonH, any quick fixes here?  ccw looks
-> > like
-> > it would be pretty straightforward to test against a range rather
-> > than
-> > a single iova.  
+
+On 7/20/22 11:32, Jim Cromie wrote:
+> DECLARE_DYNDBG_CLASSMAP lets modules declare a set of classnames, this
+> opt-in authorizes dyndbg to allow enabling of prdbgs by their class:
 > 
-> Agreed, ccw looks pretty easy. Should I send something to go before
-> this series to make stable easier? (It's a trivial change in either
-> direction, so either is fine to me.)
+>    :#> echo class DRM_UT_KMS +p > /proc/dynamic_debug/control
+> 
+> This is just the setup; following commits deliver.
+> 
+> The macro declares and initializes a static struct ddebug_class_map:
+> 
+>  - maps approved class-names to class_ids used in module,
+>    by array order. forex: DRM_UT_*
+>  - class-name vals allow validation of "class FOO" queries
+>    using macro is opt-in
+>  - enum class_map_type - determines interface, behavior
+> 
+> Each module has its own .class_id space, and only known class-names
+> will be authorized for a manipulation.  Only DRM stuff should know this:
+> 
+>   :#> echo class DRM_UT_CORE +p > control	# across all modules
+> 
+> pr_debugs (with default class_id) are still controllable as before.
+> 
+> DECLARE_DYNDBG_CLASSMAP(_var, _maptype, _base, classes...) is::
+> 
+>  _var: name of the static struct var. user passes to module_param_cb()
+>        if they want a sysfs node. (ive only done it this way).
+> 
+>  _maptype: this is hard-coded to DD_CLASS_TYPE_DISJOINT for now.
+> 
+>  _base: usually 0, it allows splitting 31 classes into subranges, so
+>  	that multiple classes / sysfs-nodes can share the module's
+>  	class-id space.
+> 
+>  classes: list of class_name strings, these are mapped to class-ids
+>  	  starting at _base.  This class-names list must have a
+>  	  corresponding ENUM, with SYMBOLS that match the literals,
+>  	  and 1st enum val = _base.
+> 
+> enum class_map_type has 4 values, on 2 factors::
+> 
+>  - classes are disjoint/independent vs relative/x<y/verbosity.
+>    disjoint is basis, verbosity by overlay.
+> 
+>  - input NUMBERS vs [+-]CLASS_NAMES
+>    uints, ideally hex.  vs  +DRM_UT_CORE,-DRM_UT_KMS
+> 
 
-It looks like we're expecting an rc8 for this development cycle, so the
-merge window will be pushed out a week (which works better for some
-upcoming PTO on my end), but if it's trivial either way let's plan for
-the fix to follow Nicolin's and Jason's series and we can always post a
-backport to the stable list if there's any trouble.  Thanks,
+Could the naming here directly reflect the 2 factors? At least for me
+I think it's more readable. So something like:
 
-Alex
 
+> DD_CLASS_TYPE_DISJOINT: classes are separate, one per bit.
+>    expecting hex input. basis for others.
+
+DD_CLASS_TYPE_DISJOINT_NUM
+
+> 
+> DD_CLASS_TYPE_SYMBOLIC: input is a CSV of [+-]CLASS_NAMES,
+>    classes are independent, like DISJOINT
+> 
+
+DD_CLASS_TYPE_DISJOINT_NAME
+
+> DD_CLASS_TYPE_VERBOSE: input is numeric level, 0-N.
+>    0 implies silence. use printk to break that.
+>    relative levels applied on bitmaps.
+> 
+
+DD_CLASS_TYPE_LEVEL_NUM
+
+> DD_CLASS_TYPE_LEVELS: input is a CSV of [+-]CLASS_NAMES,
+>    names like: ERR,WARNING,NOTICE,INFO,DEBUG
+>    avoiding EMERG,ALERT,CRIT,ERR - no point.
+> 
+
+DD_CLASS_TYPE_LEVEL_NAME
+
+> NOTES:
+> 
+> The macro places the initialized struct ddebug_class_map into the
+> __dyndbg_classes section.  That draws a 'orphan' warning which we
+> handle in next commit.  The struct attributes are necessary:
+> __aligned(8) stopped null-ptr derefs (why?), __used is needed by drm
+> drivers, which declare class-maps, but don't also declare a
+> sysfs-param, and thus dont ref the classmap; __used insures that the
+> linkage is made, then the class-map is found at load-time.
+> 
+> While its possible to handle both NAMES and NUMBERS in the same
+> sys-interface, there is ambiguity to avoid, by disallowing them
+> together.  Later, if ambiguities are resolved, 2 new enums can permit
+> both inputs, on verbose & independent types separately, and authors
+> can select the interface they like.
+> 
+> RFC:
+> 
+> My plan is to implement LEVELS in the callbacks, outside of
+> ddebug_exec_query(), which for simplicity will treat the CLASSES in
+> the map as disjoint.  This should handle most situations.
+> 
+> The callbacks can see map-type, and apply ++/-- loops (or bitops) to
+> force the relative meanings across the class-bitmap.
+> 
+> That leaves 2 issues:
+> 
+> 1. doing LEVELs in callbacks means that the native >control interface
+> doesn't enforce the LEVELS relationship, so you could confusingly have
+> V3 enabled, but V1 disabled.  OTOH, the control iface already allows
+> infinite variety in the underlying callsites, despite the veneer of
+> uniformity suggested by the bitmap overlay, and LEVELS over that.
+> 
+> 2. All dyndbg >control reduces to a query/command, includes +/-, which
+> is at-root a kernel patching operation with +/- semantics.  And the
+> symbolic sys-node handling exposes it to the user:
+> 
+> Consider whether these are/should-be 'exactly' the same:
+> 
+>    # force both 2 "half-duplex" relations
+>    echo +V3,-V4 > /sys/module/test_dynamic_debug/p_VX
+> 
+>    # should these both do the same ?
+>    echo +V3 > /sys/module/test_dynamic_debug/p_VX
+>    echo -V4 > /sys/module/test_dynamic_debug/p_VX
+> 
+> IOW, half relations are suggested by the +/-, and enum control of
+> individual behaviors leaves some room for this, especially wrt
+> handling [+-]SYMBOLIC inputs from the user.
+> 
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+>  include/linux/dynamic_debug.h | 55 +++++++++++++++++++++++++++++++++++
+>  1 file changed, 55 insertions(+)
+> 
+> diff --git a/include/linux/dynamic_debug.h b/include/linux/dynamic_debug.h
+> index 0f7ad6cecf05..84e97cd0e8c4 100644
+> --- a/include/linux/dynamic_debug.h
+> +++ b/include/linux/dynamic_debug.h
+> @@ -56,7 +56,62 @@ struct _ddebug {
+>  #endif
+>  } __attribute__((aligned(8)));
+>  
+> +enum class_map_type {
+> +	DD_CLASS_TYPE_DISJOINT,
+> +	/**
+> +	 * DD_CLASS_TYPE_DISJOINT: classes are independent, one per bit.
+> +	 * expecting hex input. basis for others.
+> +	 */
+> +	DD_CLASS_TYPE_VERBOSE,
+> +	/**
+> +	 * DD_CLASS_TYPE_VERBOSE: input is numeric level, 0-N.
+> +	 * 0 should be silent, use printk to break that.
+> +	 * (x<y) relationship on bitpos
+> +	 */
+> +	DD_CLASS_TYPE_SYMBOLIC,
+> +	/**
+> +	 * DD_CLASS_TYPE_SYMBOLIC: input is a CSV of [+-]CLASS_NAMES,
+> +	 * classes are independent, like DISJOINT
+> +	 */
+> +	DD_CLASS_TYPE_LEVELS,
+> +	/**
+> +	 * DD_CLASS_TYPE_LEVELS: input is a CSV of [+-]CLASS_NAMES,
+> +	 * intended for names like: ERR,WARNING,NOTICE,INFO,DEBUG
+> +	 * avoid ? EMERG,ALERT,CRIT,ERR,WARNING ??
+> +	 */
+> +};
+> +
+> +struct ddebug_class_map {
+> +	struct list_head link;
+> +	struct module *mod;
+> +	const char *mod_name;	/* needed for builtins */
+> +	const char **class_names;
+> +	const int length;
+> +	const int base;		/* index of 1st .class_id, allows split/shared space */
+> +	enum class_map_type map_type;
+> +};
+> +
+> +/**
+> + * DECLARE_DYNDBG_CLASSMAP - declare classnames known by a module
+> + * @_var:   a struct ddebug_class_map, passed to module_param_cb
+> + * @_type:  enum class_map_type, chooses bits/verbose, numeric/symbolic
+> + * @_base:  offset of 1st class-name. splits .class_id space
+> + * @classes: class-names used to control class'd prdbgs
+> + */
+> +#define DECLARE_DYNDBG_CLASSMAP(_var, _maptype, _base, ...)		\
+> +	static const char *_var##_classnames[] = { __VA_ARGS__ };	\
+> +	static struct ddebug_class_map __aligned(8) __used		\
+> +		__section("__dyndbg_classes") _var = {			\
+> +		.mod = THIS_MODULE,					\
+> +		.mod_name = KBUILD_MODNAME,				\
+> +		.base = _base,						\
+> +		.map_type = _maptype,					\
+> +		.length = NUM_TYPE_ARGS(char*, __VA_ARGS__),		\
+> +		.class_names = _var##_classnames,			\
+> +	}
+>  
+> +#define NUM_TYPE_ARGS(eltype, ...)				\
+> +	(sizeof((eltype[]) {__VA_ARGS__}) / sizeof(eltype))
+>  
+>  #if defined(CONFIG_DYNAMIC_DEBUG_CORE)
+>  
