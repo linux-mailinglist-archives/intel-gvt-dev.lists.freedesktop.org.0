@@ -1,83 +1,78 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDD6357E8A4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Jul 2022 22:59:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D88F857E988
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 23 Jul 2022 00:12:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 35F7293E2E;
-	Fri, 22 Jul 2022 20:59:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AC2E112A99F;
+	Fri, 22 Jul 2022 22:11:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1558 seconds by postgrey-1.36 at gabe;
- Fri, 22 Jul 2022 20:59:38 UTC
-Received: from mx0b-00190b01.pphosted.com (mx0b-00190b01.pphosted.com
- [IPv6:2620:100:9005:57f::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 89EF293E25;
- Fri, 22 Jul 2022 20:59:38 +0000 (UTC)
-Received: from pps.filterd (m0122331.ppops.net [127.0.0.1])
- by mx0b-00190b01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26MIdbb0018685;
- Fri, 22 Jul 2022 21:33:37 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com;
- h=message-id : date :
- mime-version : subject : to : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=jan2016.eng;
- bh=udXU8D0Z2aQFMw0LUJ7bIRsvZaLQ4wY57qalx4u18LI=;
- b=jeOu7RaIihegx8DjZBAhZBMIgJZfKL3F1xC9xnxMN5ob/HX7E+eLGFONqQi+8CYZ+NWG
- 3OJh6RDBvjE/+JttgNX6oSFmHFB0eDxcZkOeDuoLdOTFtRPHl3I0aAJlDVZijE2nEr0e
- /kSBR3yzyrkXS1R8DDGMAQ7el8ppaHDcH7rZN3m4PO2fBvHdjVUEhc6v1uiSZjdA1/NH
- h3Dha4O1bn+HLSh5STK1oKNvw7+nRm5/589LWZ952f7gfXwWrCptXmt4PsXaRbnrOaiu
- TauGa2iwU+t33HnWAi2Q0MyZ5OkJ7GSCrdaWpbYYjJp/aXFJuJAOxHTgQTSyRARxMTlA Rw== 
-Received: from prod-mail-ppoint5 (prod-mail-ppoint5.akamai.com [184.51.33.60]
- (may be forged))
- by mx0b-00190b01.pphosted.com (PPS) with ESMTPS id 3hg1c7daxn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 22 Jul 2022 21:33:37 +0100
-Received: from pps.filterd (prod-mail-ppoint5.akamai.com [127.0.0.1])
- by prod-mail-ppoint5.akamai.com (8.17.1.5/8.17.1.5) with ESMTP id
- 26MIliWb007780; Fri, 22 Jul 2022 13:33:36 -0700
-Received: from prod-mail-relay10.akamai.com ([172.27.118.251])
- by prod-mail-ppoint5.akamai.com (PPS) with ESMTP id 3hbuab0nw9-1;
- Fri, 22 Jul 2022 13:33:36 -0700
-Received: from [0.0.0.0] (prod-ssh-gw01.bos01.corp.akamai.com [172.27.119.138])
- by prod-mail-relay10.akamai.com (Postfix) with ESMTP id 977AC50EF8;
- Fri, 22 Jul 2022 20:33:35 +0000 (GMT)
-Message-ID: <715fa561-703f-0ac7-8a88-859ee60bcb4c@akamai.com>
-Date: Fri, 22 Jul 2022 16:33:35 -0400
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-124.mimecast.com
+ [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ABE5310F9C0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 22 Jul 2022 22:11:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658527894;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WTAu9Ie82eyCEnPfOUrQ1UYOeYONO590WPWh6n6IMVk=;
+ b=WDOdnPD64wypU5Jv9czfl31On5jo1g2bP//1LHUSVGQhxQx673dyv+Baooe5kyLnTqctuQ
+ olOqYQYV2pxddiJyD4OPIVYkiQUi0I2S2SmX8MtbNc6FkBQoo32Cz18w2GoV8jIVhWmEli
+ 405KZov8ffh1NU9Orc5bkhcMsTytC2Y=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-622-C3ezILrhNjexwYRfRTb7ew-1; Fri, 22 Jul 2022 18:11:33 -0400
+X-MC-Unique: C3ezILrhNjexwYRfRTb7ew-1
+Received: by mail-il1-f200.google.com with SMTP id
+ i9-20020a056e021b0900b002dd12dfd5b6so3391599ilv.16
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 22 Jul 2022 15:11:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=WTAu9Ie82eyCEnPfOUrQ1UYOeYONO590WPWh6n6IMVk=;
+ b=FYVVjIdBWhxGEalmDx4PZjXWslDnZqlOrRrwUezwfornTMsayjVPBteHfXAABvA/r+
+ oDr53FcVVZdcGiQR+5usxEuzdeQR/XKqls4QGVUFuxItGx+AhQutnd/+Kpoc5vBdxG7V
+ duJadhPfJlyHXZvp0ZpqQGVqfSnZtmrSOGwQWMIVUUvp/1V6sgjddQZl9I4gOFHea+WZ
+ 4r5IubPA5/7Jb5itZoDV8lXFIFlenr/hifh+b1NUZFvB4pC56GuI5M2RpLJ/VWNeIGKG
+ A03FM6YZq2vnt4C1B+ZjY/WmRvyyjWKEymX83R3Gpdmg9XN3XGO7qSj4qq/qf8GSDNRN
+ pqFw==
+X-Gm-Message-State: AJIora8bXwh86D7HVA3bCS5dCegdBI6BwiwuI00w536sI+CHetwm21Zh
+ ASK/ic8bnaXSg9VGHHnbyZkcNNPU20OqwNm/JxdHRDTFCyzqO2/ErJBTDZ689dSlR14wwaCYQnf
+ oefCAI0z4RqadeNdVGq4WlkFjPhGg8jTLqw==
+X-Received: by 2002:a05:6e02:180d:b0:2dc:2561:4b81 with SMTP id
+ a13-20020a056e02180d00b002dc25614b81mr808845ilv.149.1658527892265; 
+ Fri, 22 Jul 2022 15:11:32 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1tQfszjfffkbsvzx/Y2n9I9Nnb9tw/K3y9spbP6QR/C0TjwJrze6wv6O0NmOZWFKAIyPdjySw==
+X-Received: by 2002:a05:6e02:180d:b0:2dc:2561:4b81 with SMTP id
+ a13-20020a056e02180d00b002dc25614b81mr808821ilv.149.1658527891986; 
+ Fri, 22 Jul 2022 15:11:31 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ o22-20020a02c6b6000000b003415de88347sm2486092jan.123.2022.07.22.15.11.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Jul 2022 15:11:31 -0700 (PDT)
+Date: Fri, 22 Jul 2022 16:11:29 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Subject: Re: [PATCH v3 00/10] Update vfio_pin/unpin_pages API
+Message-ID: <20220722161129.21059262.alex.williamson@redhat.com>
+In-Reply-To: <20220708224427.1245-1-nicolinc@nvidia.com>
+References: <20220708224427.1245-1-nicolinc@nvidia.com>
+Organization: Red Hat
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v4 16/41] dyndbg: add drm.debug style bitmap support
-Content-Language: en-US
-To: Jim Cromie <jim.cromie@gmail.com>, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, gregkh@linuxfoundation.org,
- daniel.vetter@ffwll.ch, seanpaul@chromium.org, robdclark@gmail.com
-References: <20220720153233.144129-1-jim.cromie@gmail.com>
- <20220720153233.144129-17-jim.cromie@gmail.com>
-From: Jason Baron <jbaron@akamai.com>
-In-Reply-To: <20220720153233.144129-17-jim.cromie@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-22_06,2022-07-21_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- adultscore=0 phishscore=0
- mlxlogscore=999 spamscore=0 malwarescore=0 suspectscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2206140000
- definitions=main-2207220083
-X-Proofpoint-GUID: Q9wNIqphRBmBMUXO-vHHRUYmFprSwp19
-X-Proofpoint-ORIG-GUID: Q9wNIqphRBmBMUXO-vHHRUYmFprSwp19
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-22_06,2022-07-21_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 spamscore=0
- priorityscore=1501 malwarescore=0 phishscore=0 suspectscore=0 adultscore=0
- bulkscore=0 mlxscore=0 mlxlogscore=999 clxscore=1015 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2206140000
- definitions=main-2207220083
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,352 +85,138 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: mjrosato@linux.ibm.com, linux-doc@vger.kernel.org, airlied@linux.ie,
+ joonas.lahtinen@linux.intel.com, kevin.tian@intel.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ kwankhede@nvidia.com, terrence.xu@intel.com, vneethv@linux.ibm.com,
+ agordeev@linux.ibm.com, hch@infradead.org, kvm@vger.kernel.org, corbet@lwn.net,
+ pasic@linux.ibm.com, jgg@nvidia.com, borntraeger@linux.ibm.com,
+ intel-gfx@lists.freedesktop.org, zhi.a.wang@intel.com, jjherne@linux.ibm.com,
+ farman@linux.ibm.com, jchrist@linux.ibm.com, gor@linux.ibm.com,
+ linux-s390@vger.kernel.org, hca@linux.ibm.com, jani.nikula@linux.intel.com,
+ freude@linux.ibm.com, zhenyuw@linux.intel.com, rodrigo.vivi@intel.com,
+ intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
+ tvrtko.ursulin@linux.intel.com, cohuck@redhat.com, oberpar@linux.ibm.com,
+ svens@linux.ibm.com, daniel@ffwll.ch
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Fri, 8 Jul 2022 15:44:18 -0700
+Nicolin Chen <nicolinc@nvidia.com> wrote:
 
+> This is a preparatory series for IOMMUFD v2 patches. It prepares for
+> replacing vfio_iommu_type1 implementations of vfio_pin/unpin_pages()
+> with IOMMUFD version.
+> 
+> There's a gap between these two versions: the vfio_iommu_type1 version
+> inputs a non-contiguous PFN list and outputs another PFN list for the
+> pinned physical page list, while the IOMMUFD version only supports a
+> contiguous address input by accepting the starting IO virtual address
+> of a set of pages to pin and by outputting to a physical page list.
+> 
+> The nature of existing callers mostly aligns with the IOMMUFD version,
+> except s390's vfio_ccw_cp code where some additional change is needed
+> along with this series. Overall, updating to "iova" and "phys_page"
+> does improve the caller side to some extent.
+> 
+> Also fix a misuse of physical address and virtual address in the s390's
+> crypto code. And update the input naming at the adjacent vfio_dma_rw().
+> 
+> This is on github:
+> https://github.com/nicolinc/iommufd/commits/vfio_pin_pages
+> 
+> Terrence has tested this series on i915; Eric has tested on s390.
+> 
+> Thanks!
+> 
+> Changelog
+> v3:
+>  * Added a patch to replace roundup with DIV_ROUND_UP in i915 gvt
+>  * Dropped the "driver->ops->unpin_pages" and NULL checks in PATCH-1
+>  * Changed to use WARN_ON and separate into lines in PATCH-1
+>  * Replaced "guest" words with "user" and fix typo in PATCH-5
+>  * Updated commit log of PATCH-1, PATCH-6, and PATCH-10
+>  * Added Reviewed/Acked-by from Christoph, Jason, Kirti, Kevin and Eric
+>  * Added Tested-by from Terrence (i915) and Eric (s390)
+> v2: https://lore.kernel.org/kvm/20220706062759.24946-1-nicolinc@nvidia.com/
+>  * Added a patch to make vfio_unpin_pages return void
+>  * Added two patches to remove PFN list from two s390 callers
+>  * Renamed "phys_page" parameter to "pages" for vfio_pin_pages
+>  * Updated commit log of kmap_local_page() patch
+>  * Added Harald's "Reviewed-by" to pa_ind patch
+>  * Rebased on top of Alex's extern removal path
+> v1: https://lore.kernel.org/kvm/20220616235212.15185-1-nicolinc@nvidia.com/
+> 
+> Nicolin Chen (10):
+>   vfio: Make vfio_unpin_pages() return void
+>   drm/i915/gvt: Replace roundup with DIV_ROUND_UP
+>   vfio/ap: Pass in physical address of ind to ap_aqic()
+>   vfio/ccw: Only pass in contiguous pages
+>   vfio: Pass in starting IOVA to vfio_pin/unpin_pages API
+>   vfio/ap: Change saved_pfn to saved_iova
+>   vfio/ccw: Change pa_pfn list to pa_iova list
+>   vfio: Rename user_iova of vfio_dma_rw()
+>   vfio/ccw: Add kmap_local_page() for memcpy
+>   vfio: Replace phys_pfn with pages for vfio_pin_pages()
+> 
+>  .../driver-api/vfio-mediated-device.rst       |   6 +-
+>  arch/s390/include/asm/ap.h                    |   6 +-
+>  drivers/gpu/drm/i915/gvt/kvmgt.c              |  49 ++---
+>  drivers/s390/cio/vfio_ccw_cp.c                | 195 +++++++++++-------
+>  drivers/s390/crypto/ap_queue.c                |   2 +-
+>  drivers/s390/crypto/vfio_ap_ops.c             |  54 +++--
+>  drivers/s390/crypto/vfio_ap_private.h         |   4 +-
+>  drivers/vfio/vfio.c                           |  54 ++---
+>  drivers/vfio/vfio.h                           |   8 +-
+>  drivers/vfio/vfio_iommu_type1.c               |  45 ++--
+>  include/linux/vfio.h                          |   9 +-
+>  11 files changed, 215 insertions(+), 217 deletions(-)
+> 
 
-On 7/20/22 11:32, Jim Cromie wrote:
-> Add kernel_param_ops and callbacks to apply a class-map to a
-> sysfs-node, which then can control classes defined in that class-map.
-> This supports uses like:
-> 
->   echo 0x3 > /sys/module/drm/parameters/debug
-> 
-> IE add these:
-> 
->  - int param_set_dyndbg_classes()
->  - int param_get_dyndbg_classes()
->  - struct kernel_param_ops param_ops_dyndbg_classes
-> 
-> Following the model of kernel/params.c STANDARD_PARAM_DEFS, these are
-> non-static and exported.  This might be unnecessary here.
-> 
-> get/set use an augmented kernel_param; the arg refs a new struct
-> ddebug_classes_bitmap_param, initialized by DYNAMIC_DEBUG_CLASSBITS
-> macro, which contains:
-> 
-> BITS: a pointer to the user module's ulong holding the bits/state.  By
-> ref'g the client's bit-state _var, we coordinate with existing code
-> (such as drm_debug_enabled) which uses the _var, so it works
-> unchanged, even as the foundation is switched out underneath it..
-> Using a ulong allows use of BIT() etc.
-> 
-> FLAGS: dyndbg.flags toggled by changes to bitmap. Usually just "p".
-> 
-> MAP: a pointer to struct ddebug_classes_map, which maps those
-> class-names to .class_ids 0..N that the module is using.  This
-> class-map is declared & initialized by DEFINE_DYNDBG_CLASSMAP.
-> 
-> map-type: add support here for DD_CLASS_DISJOINT, DD_CLASS_VERBOSE.
-> 
-> These 2 class-types both expect an integer; _DISJOINT treats input
-> like a bit-vector (ala drm.debug), and sets each bit accordingly.
-> 
-> _VERBOSE treats input like a bit-pos:N, then sets bits(0..N)=1, and
-> bits(N+1..max)=0.  This applies (bit<N) semantics on top of disjoint
-> bits.
-> 
-> cases DD_CLASS_SYMBOLIC, DD_CLASS_LEVELS are included for the complete
-> picture, with commented out call to a following commit.
-> 
-> NOTES:
-> 
-> this now includes SYMBOLIC/LEVELS support, too tedious to keep
-> separate thru all the tweaking.
-> 
-> get-param undoes the bit-pos -> bitmap transform that set-param does
-> on VERBOSE inputs, this gives the read-what-was-written property.
-> 
-> _VERBOSE is overlay on _DISJOINT:
-> 
-> verbose-maps still need class-names, even though theyre not usable at
-> the sysfs interface (unlike with _SYMBOLIC/_LEVELS).
-> 
->  - It must have a "V0" name,
->    something below "V1" to turn "V1" off.
->    __pr_debug_cls(V0,..) is printk, don't do that.
-> 
->  - "class names" is required at the >control interface.
->  - relative levels are not enforced at >control
-> 
-> IOW this is possible, and maybe confusing:
-> 
->   echo class V3 +p > control
->   echo class V1 -p > control
-> 
-> IMO thats ok, relative verbosity is an interface property.
-> 
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-> ---
-> . drop kp->mod->name as unneeded (build-dependent) <lkp>
-> ---
->  include/linux/dynamic_debug.h |  18 ++++
->  lib/dynamic_debug.c           | 193 ++++++++++++++++++++++++++++++++++
->  2 files changed, 211 insertions(+)
-> 
-> diff --git a/include/linux/dynamic_debug.h b/include/linux/dynamic_debug.h
-> index f57076e02767..b50bdd5c8184 100644
-> --- a/include/linux/dynamic_debug.h
-> +++ b/include/linux/dynamic_debug.h
-> @@ -113,6 +113,12 @@ struct ddebug_class_map {
->  #define NUM_TYPE_ARGS(eltype, ...)				\
->  	(sizeof((eltype[]) {__VA_ARGS__}) / sizeof(eltype))
->  
-> +struct ddebug_classes_bitmap_param {
-> +	unsigned long *bits;
-> +	char flags[8];
-> +	const struct ddebug_class_map *map;
-> +};
-> +
->  #if defined(CONFIG_DYNAMIC_DEBUG_CORE)
->  
->  int ddebug_add_module(struct _ddebug *tab, unsigned int num_debugs,
-> @@ -274,6 +280,10 @@ void __dynamic_ibdev_dbg(struct _ddebug *descriptor,
->  				   KERN_DEBUG, prefix_str, prefix_type,	\
->  				   rowsize, groupsize, buf, len, ascii)
->  
-> +struct kernel_param;
-> +int param_set_dyndbg_classes(const char *instr, const struct kernel_param *kp);
-> +int param_get_dyndbg_classes(char *buffer, const struct kernel_param *kp);
-> +
->  /* for test only, generally expect drm.debug style macro wrappers */
->  #define __pr_debug_cls(cls, fmt, ...) do {			\
->  	BUILD_BUG_ON_MSG(!__builtin_constant_p(cls),		\
-> @@ -322,6 +332,14 @@ static inline int ddebug_dyndbg_module_param_cb(char *param, char *val,
->  				rowsize, groupsize, buf, len, ascii);	\
->  	} while (0)
->  
-> +struct kernel_param;
-> +static inline int param_set_dyndbg_classes(const char *instr, const struct kernel_param *kp)
-> +{ return 0; }
-> +static inline int param_get_dyndbg_classes(char *buffer, const struct kernel_param *kp)
-> +{ return 0; }
-> +
->  #endif /* !CONFIG_DYNAMIC_DEBUG_CORE */
->  
-> +extern const struct kernel_param_ops param_ops_dyndbg_classes;
-> +
->  #endif
-> diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
-> index 4c27bbe5187e..dd27dc514aa3 100644
-> --- a/lib/dynamic_debug.c
-> +++ b/lib/dynamic_debug.c
-> @@ -596,6 +596,199 @@ static int ddebug_exec_queries(char *query, const char *modname)
->  	return nfound;
->  }
->  
-> +static int ddebug_apply_class_bitmap(const struct ddebug_classes_bitmap_param *dcp,
-> +				     unsigned long inbits)
-> +{
-> +#define QUERY_SIZE 128
-> +	char query[QUERY_SIZE];
-> +	const struct ddebug_class_map *map = dcp->map;
-> +	int matches = 0;
-> +	int bi, ct;
-> +
-> +	v2pr_info("in: 0x%lx on: 0x%lx\n", inbits, *dcp->bits);
-> +
-> +	for (bi = 0; bi < map->length; bi++) {
-> +		if (test_bit(bi, &inbits) == test_bit(bi, dcp->bits))
-> +			continue;
-> +
-> +		snprintf(query, QUERY_SIZE, "class %s %c%s", map->class_names[bi],
-> +			 test_bit(bi, &inbits) ? '+' : '-', dcp->flags);
-> +
-> +		ct = ddebug_exec_queries(query, NULL);
-> +		matches += ct;
-> +
-> +		v2pr_info("bit_%d: %d matches on class: %s -> 0x%lx\n", bi,
-> +			  ct, map->class_names[bi], inbits);
-> +	}
-> +	return matches;
-> +}
-> +
-> +/* support for [+-] symbolic-name boolean list */
-> +static int param_set_dyndbg_class_strings(const char *instr, const struct kernel_param *kp)
-> +{
-> +	const struct ddebug_classes_bitmap_param *dcp = kp->arg;
-> +	const struct ddebug_class_map *map = dcp->map;
-> +	unsigned long inbits;
-> +	int idx, totct = 0;
-> +	bool wanted;
-> +	char *cls, *p;
-> +
-> +	cls = kstrdup(instr, GFP_KERNEL);
-> +	p = strchr(cls, '\n');
-> +	if (p)
-> +		*p = '\0';
-> +
-> +	vpr_info("\"%s\" > %s\n", cls, kp->name);
-> +	inbits = *dcp->bits;
-> +
-> +	for (; cls; cls = p) {
-> +		p = strchr(cls, ',');
-> +		if (p)
-> +			*p++ = '\0';
-> +
-> +		if (*cls == '-') {
-> +			wanted = false;
-> +			cls++;
-> +		} else {
-> +			wanted = true;
-> +			if (*cls == '+')
-> +				cls++;
-> +		}
-> +		idx = match_string(map->class_names, map->length, cls);
-> +		if (idx < 0) {
-> +			pr_err("%s unknown to %s\n", cls, kp->name);
-> +			continue;
-> +		}
-> +
-> +		switch (map->map_type) {
-> +		case DD_CLASS_TYPE_SYMBOLIC:
-> +			if (test_bit(idx, &inbits) == wanted) {
-> +				v3pr_info("no change on %s\n", cls);
-> +				continue;
-> +			}
-> +			inbits ^= BIT(idx);
+GVT-g explodes for me with this series on my Broadwell test system,
+continuously spewing the following:
 
-Didn't test this out but the code here confused me. In this case the bit at idx
-in inbits doesn't match. But you are doing an exclusive OR here. So doesn't that
-always set it? Shouldn't it be cleared if wanted is false?
+[   47.344126] ------------[ cut here ]------------
+[   47.348778] WARNING: CPU: 3 PID: 501 at drivers/vfio/vfio_iommu_type1.c:978 vfio_iommu_type1_unpin_pages+0x7b/0x100 [vfio_iommu_type1]
+[   47.360871] Modules linked in: xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink tun bridge stp llc rfkill sunrpc vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel iTCO_wdt at24 mei_wdt mei_hdcp intel_pmc_bxt mei_pxp rapl iTCO_vendor_support intel_cstate pcspkr e1000e mei_me intel_uncore i2c_i801 mei lpc_ich i2c_smbus acpi_pad fuse zram ip_tables kvmgt mdev vfio_iommu_type1 vfio kvm irqbypass i915 crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel pinctrl_lynxpoint i2c_algo_bit drm_buddy video drm_display_helper drm_kms_helper cec ttm drm
+[   47.423398] CPU: 3 PID: 501 Comm: gvt:rcs0 Tainted: G        W         5.19.0-rc4+ #3
+[   47.431228] Hardware name:  /NUC5i5MYBE, BIOS MYBDWi5v.86A.0054.2019.0520.1531 05/20/2019
+[   47.439408] RIP: 0010:vfio_iommu_type1_unpin_pages+0x7b/0x100 [vfio_iommu_type1]
+[   47.446818] Code: 10 00 00 45 31 ed 48 8b 7b 40 48 85 ff 74 12 48 8b 47 18 49 39 c6 77 23 48 8b 7f 10 48 85 ff 75 ee 48 8b 3c 24 e8 45 57 92 e4 <0f> 0b 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 03 47 28 49
+[   47.465573] RSP: 0018:ffff9ac5806cfbe0 EFLAGS: 00010246
+[   47.470807] RAX: ffff8cb42f4c5180 RBX: ffff8cb4145c03c0 RCX: 0000000000000000
+[   47.477948] RDX: 0000000000000000 RSI: 0000163802000000 RDI: ffff8cb4145c03e0
+[   47.485088] RBP: 0000000000000001 R08: 0000000000000000 R09: ffff9ac581aed000
+[   47.492230] R10: ffff9ac5806cfc58 R11: 00000001b2202000 R12: 0000000000000001
+[   47.499370] R13: 0000000000000000 R14: 0000163802001000 R15: 0000163802000000
+[   47.506513] FS:  0000000000000000(0000) GS:ffff8cb776d80000(0000) knlGS:0000000000000000
+[   47.514608] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   47.520361] CR2: ffffdc0933f76192 CR3: 0000000118118003 CR4: 00000000003726e0
+[   47.527510] Call Trace:
+[   47.529976]  <TASK>
+[   47.532091]  intel_gvt_dma_unmap_guest_page+0xd5/0x110 [kvmgt]
+[   47.537948]  ppgtt_invalidate_spt+0x323/0x340 [kvmgt]
+[   47.543017]  ppgtt_invalidate_spt+0x173/0x340 [kvmgt]
+[   47.548088]  ppgtt_invalidate_spt+0x173/0x340 [kvmgt]
+[   47.553159]  ppgtt_invalidate_spt+0x173/0x340 [kvmgt]
+[   47.558228]  invalidate_ppgtt_mm+0x5f/0x110 [kvmgt]
+[   47.563124]  _intel_vgpu_mm_release+0xd6/0xe0 [kvmgt]
+[   47.568193]  intel_vgpu_destroy_workload+0x1b7/0x1e0 [kvmgt]
+[   47.573872]  workload_thread+0xa4c/0x19a0 [kvmgt]
+[   47.578613]  ? _raw_spin_rq_lock_irqsave+0x20/0x20
+[   47.583422]  ? dequeue_task_stop+0x70/0x70
+[   47.587530]  ? _raw_spin_lock_irqsave+0x24/0x50
+[   47.592072]  ? intel_vgpu_reset_submission+0x40/0x40 [kvmgt]
+[   47.597746]  kthread+0xe7/0x110
+[   47.600902]  ? kthread_complete_and_exit+0x20/0x20
+[   47.605702]  ret_from_fork+0x22/0x30
+[   47.609293]  </TASK>
+[   47.611503] ---[ end trace 0000000000000000 ]---
 
+Line 978 is the WARN_ON(i != npage) line.  For the cases where we don't
+find a matching vfio_dma, I'm seeing addresses that look maybe like
+we're shifting  a value that's already an iova by PAGE_SHIFT somewhere.
+Thanks,
 
-> +			break;
-> +		case DD_CLASS_TYPE_LEVELS:
-> +			/* bitmask must respect classmap ranges, this does not */
-> +			inbits = (1 << (idx + wanted));
+Alex
 
-This line also confused me - below in DD_CLASS_TYPE_VERBOSE: case you use the
-CLASSMAP_BITMASK() which will set all the 'levels' below. So I was expecting
-that here as well as this is the symbolic level case. I think I'm missing
-something...
-
-> +			break;
-> +		default:
-> +			pr_err("illegal map-type value %d\n", map->map_type);
-> +		}
-> +		v2pr_info("%s: bit %d: %s\n", kp->name, idx, map->class_names[idx]);
-> +		totct += ddebug_apply_class_bitmap(dcp, inbits);
-> +	}
-> +	kfree(cls);
-> +	*dcp->bits = inbits;
-> +	vpr_info("total matches: %d\n", totct);
-> +	return 0;
-> +}
-> +
-> +#define CLASSMAP_BITMASK(width) ((1UL << (width)) - 1)
-> +
-> +/**
-> + * param_set_dyndbg_classes - bits => categories >control setter
-> + * @instr: string echo>d to sysfs
-> + * @kp:    kp->arg has state: bits, map
-> + *
-> + * Enable/disable prdbgs by their "category", as given in the
-> + * arguments to DYNAMIC_DEBUG_CLASSES.
-> + *
-> + * Returns: 0 or <0 if error.
-> + */
-> +int param_set_dyndbg_classes(const char *instr, const struct kernel_param *kp)
-> +{
-> +	const struct ddebug_classes_bitmap_param *dcp = kp->arg;
-> +	const struct ddebug_class_map *map = dcp->map;
-> +	unsigned long inrep;
-> +	int rc, totct = 0;
-> +
-> +	switch (map->map_type) {
-> +
-> +	case DD_CLASS_TYPE_SYMBOLIC:
-> +	case DD_CLASS_TYPE_LEVELS:
-> +		/* CSV list of [+-]classnames */
-> +		return param_set_dyndbg_class_strings(instr, kp);
-> +
-> +	case DD_CLASS_TYPE_DISJOINT:
-> +	case DD_CLASS_TYPE_VERBOSE:
-> +		/* numeric input */
-> +		rc = kstrtoul(instr, 0, &inrep);
-> +		if (rc) {
-> +			pr_err("expecting numeric input: %s > %s\n", instr, kp->name);
-> +			return -EINVAL;
-> +		}
-> +		break;
-> +	default:
-> +		pr_err("%s: bad map type: %d\n", kp->name, map->map_type);
-> +		return -EINVAL;
-> +	}
-> +
-> +	switch (map->map_type) {
-
-The second switch here on the same thing as above reads a bit a bit funny to me. Maybe
-the below can be moved into the first switch block? I guess the 'kstrtoul()' call is
-common, so I guess you could add an if (DD_CLASS_TYPE_DISJOINT) else {} above. This
-is a bit of style nitpick I guess.
-
-> +	case DD_CLASS_TYPE_DISJOINT:
-> +		/* expect bits. mask and warn if too many */
-> +		if (inrep & ~CLASSMAP_BITMASK(map->length)) {
-> +			pr_warn("%s: input: 0x%lx exceeds mask: 0x%lx, masking\n",
-> +				kp->name, inrep, CLASSMAP_BITMASK(map->length));
-> +			inrep &= CLASSMAP_BITMASK(map->length);
-> +		}
-> +		break;
-> +	case DD_CLASS_TYPE_VERBOSE:
-> +		/* input is bitpos, of highest verbosity enabled */
-> +		if (inrep > map->length) {
-> +			pr_warn("%s: verbosity:%ld exceeds range:%d, clamping\n",
-> +				kp->name, inrep, map->length);
-> +			inrep = map->length;
-> +		}
-> +		v2pr_info("VERBOSE: %ld > %s\n", inrep, kp->name);
-> +		inrep = CLASSMAP_BITMASK(inrep + 1);
-> +		break;
-> +	default:
-> +		pr_warn("%s: bad map type: %d\n", kp->name, map->map_type);
-> +	}
-> +	totct += ddebug_apply_class_bitmap(dcp, inrep);
-> +	*dcp->bits = inrep;
-> +
-> +	vpr_info("%s: total matches: %d\n", kp->name, totct);
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(param_set_dyndbg_classes);
-> +
-> +/**
-> + * param_get_dyndbg_classes - classes reader
-> + * @buffer: string description of controlled bits -> classes
-> + * @kp:     kp->arg has state: bits, map
-> + *
-> + * Reads last written bits, underlying prdbg state may have changed since.
-> + * Returns: #chars written or <0 on error
-> + */
-> +int param_get_dyndbg_classes(char *buffer, const struct kernel_param *kp)
-> +{
-> +	const struct ddebug_classes_bitmap_param *dcp = kp->arg;
-> +	const struct ddebug_class_map *map = dcp->map;
-> +	unsigned long val = *dcp->bits;
-> +
-> +	switch (map->map_type) {
-> +	case DD_CLASS_TYPE_SYMBOLIC:
-> +	case DD_CLASS_TYPE_DISJOINT:
-> +	case DD_CLASS_TYPE_LEVELS:
-> +		return scnprintf(buffer, PAGE_SIZE, "0x%lx\n", val);
-> +	case DD_CLASS_TYPE_VERBOSE:
-> +		/* convert internal bits to a level */
-> +		return scnprintf(buffer, PAGE_SIZE, "%lu\n",
-> +				 find_first_zero_bit(&val, map->length) - 1);
-> +	default:
-> +		return -1;
-> +	}
-> +}
-> +EXPORT_SYMBOL(param_get_dyndbg_classes);
-> +
-> +const struct kernel_param_ops param_ops_dyndbg_classes = {
-> +	.set = param_set_dyndbg_classes,
-> +	.get = param_get_dyndbg_classes,
-> +};
-> +EXPORT_SYMBOL(param_ops_dyndbg_classes);
-> +
->  #define PREFIX_SIZE 64
->  
->  static int remaining(int wrote)
