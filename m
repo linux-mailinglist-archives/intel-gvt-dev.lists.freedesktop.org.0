@@ -2,90 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2ACE65816B9
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 26 Jul 2022 17:47:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7ED355818D6
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 26 Jul 2022 19:48:24 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 84B1F14B490;
-	Tue, 26 Jul 2022 15:47:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3070295F8F;
+	Tue, 26 Jul 2022 17:48:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D2D5A14B45A
+Received: from verein.lst.de (verein.lst.de [213.95.11.211])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4EEE496117
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 26 Jul 2022 15:47:05 +0000 (UTC)
-Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26QFHCFJ002791;
- Tue, 26 Jul 2022 15:47:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=eEFqDNqG8KdMyw95MUHX0tp8ilxMqIueBv9vsA4vMQw=;
- b=namml8tv4AMoIj/+TWkn8Uu+gsbaRwZqkPUurCIJeCE0nxJJPBXh7T7LrKGpBazpyY3O
- itxYKfJcxYaGSCbaFEEizBYxWGd4Paqc3dq+nrkmkkDLdpN/1Izz4mBpdYfebLRoj9ya
- LASOY3zh5Nh8k0On925y3pCX5JEz+7K5fvS357qE/39kUY04B5Kx7McDbJ9NFeVor7Ok
- u0LB1qzmz9oaibaIY+vwTLOFXop+IgIdYyqMEMYOQm2o3C7X+cwmjlBbe3dddH2cvl3I
- /5SabtsF+c7XmeTQ/732B3/s6fmGYXivYDoyt8I6FU2TNbWHmTRThZ2HMfdP9msx+piE Vg== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hjjscs37k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 26 Jul 2022 15:47:01 +0000
-Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 26QFHB1v002679;
- Tue, 26 Jul 2022 15:47:00 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3hjjscs361-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 26 Jul 2022 15:47:00 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 26QFLKiA011893;
- Tue, 26 Jul 2022 15:46:58 GMT
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
- (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
- by ppma03ams.nl.ibm.com with ESMTP id 3hh6eujnp9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 26 Jul 2022 15:46:58 +0000
-Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
- [9.149.105.62])
- by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 26QFktrH20840868
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 26 Jul 2022 15:46:55 GMT
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 61503AE051;
- Tue, 26 Jul 2022 15:46:55 +0000 (GMT)
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4ECEEAE04D;
- Tue, 26 Jul 2022 15:46:55 +0000 (GMT)
-Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
- by d06av26.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Tue, 26 Jul 2022 15:46:55 +0000 (GMT)
-Received: by tuxmaker.boeblingen.de.ibm.com (Postfix, from userid 4958)
- id 5F0E1E01BC; Tue, 26 Jul 2022 17:37:28 +0200 (CEST)
-From: Eric Farman <farman@linux.ibm.com>
-To: hch@lst.de
-Subject: [RFC PATCH] vfio/ccw: Move mdev stuff out of struct subchannel
-Date: Tue, 26 Jul 2022 17:37:25 +0200
-Message-Id: <20220726153725.2573294-1-farman@linux.ibm.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220720050629.GA6076@lst.de>
+ Tue, 26 Jul 2022 17:48:21 +0000 (UTC)
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id C193D68AA6; Tue, 26 Jul 2022 19:48:17 +0200 (CEST)
+Date: Tue, 26 Jul 2022 19:48:17 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Eric Farman <farman@linux.ibm.com>
+Subject: Re: [RFC PATCH] vfio/ccw: Move mdev stuff out of struct subchannel
+Message-ID: <20220726174817.GB14002@lst.de>
 References: <20220720050629.GA6076@lst.de>
+ <20220726153725.2573294-1-farman@linux.ibm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: O-In2i8Pjnqj4-M6oiIC4skYEZWP6SPn
-X-Proofpoint-GUID: WjuuW-99nV0C11RcYEYWTNmF_tfFcINp
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-26_04,2022-07-26_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 mlxscore=0
- adultscore=0 mlxlogscore=638 clxscore=1015 spamscore=0 impostorscore=0
- suspectscore=0 malwarescore=0 phishscore=0 lowpriorityscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2206140000 definitions=main-2207260059
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220726153725.2573294-1-farman@linux.ibm.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,98 +39,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- mjrosato@linux.ibm.com, kvm@vger.kernel.org, linux-s390@vger.kernel.org,
- kwankhede@nvidia.com, vneethv@linux.ibm.com, pasic@linux.ibm.com,
- alex.williamson@redhat.com, zhenyuw@linux.intel.com, jgg@nvidia.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, mjrosato@linux.ibm.com,
+ kvm@vger.kernel.org, linux-s390@vger.kernel.org, kwankhede@nvidia.com,
+ vneethv@linux.ibm.com, pasic@linux.ibm.com, alex.williamson@redhat.com,
+ zhenyuw@linux.intel.com, jgg@nvidia.com, intel-gvt-dev@lists.freedesktop.org,
+ hch@lst.de, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Here's my swipe at a cleanup patch that can be folded in
-to this series, to get the mdev stuff in a more proper
-location for vfio-ccw.
+On Tue, Jul 26, 2022 at 05:37:25PM +0200, Eric Farman wrote:
+> Here's my swipe at a cleanup patch that can be folded in
+> to this series, to get the mdev stuff in a more proper
+> location for vfio-ccw.
+> 
+> As previously described, the subchannel is a device-agnostic
+> structure that does/should not need to know about specific
+> nuances such as mediated devices. This is why things like
+> struct vfio_ccw_private exist, so move these details there.
 
-As previously described, the subchannel is a device-agnostic
-structure that does/should not need to know about specific
-nuances such as mediated devices. This is why things like
-struct vfio_ccw_private exist, so move these details there.
-
-Signed-off-by: Eric Farman <farman@linux.ibm.com>
----
- drivers/s390/cio/cio.h              |  3 ---
- drivers/s390/cio/vfio_ccw_drv.c     | 13 +++++++------
- drivers/s390/cio/vfio_ccw_private.h |  4 ++++
- 3 files changed, 11 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/s390/cio/cio.h b/drivers/s390/cio/cio.h
-index 1da45307a186..2ad8833653e9 100644
---- a/drivers/s390/cio/cio.h
-+++ b/drivers/s390/cio/cio.h
-@@ -109,9 +109,6 @@ struct subchannel {
- 	 * frees it.  Use driver_set_override() to set or clear it.
- 	 */
- 	const char *driver_override;
--	struct mdev_parent parent;
--	struct mdev_type mdev_type;
--	struct mdev_type *mdev_types[1];
- } __attribute__ ((aligned(8)));
- 
- DECLARE_PER_CPU_ALIGNED(struct irb, cio_irb);
-diff --git a/drivers/s390/cio/vfio_ccw_drv.c b/drivers/s390/cio/vfio_ccw_drv.c
-index 6605b4239f88..bdf76805d175 100644
---- a/drivers/s390/cio/vfio_ccw_drv.c
-+++ b/drivers/s390/cio/vfio_ccw_drv.c
-@@ -142,6 +142,10 @@ static struct vfio_ccw_private *vfio_ccw_alloc_private(struct subchannel *sch)
- 	INIT_WORK(&private->io_work, vfio_ccw_sch_io_todo);
- 	INIT_WORK(&private->crw_work, vfio_ccw_crw_todo);
- 
-+	private->mdev_type.sysfs_name = "io";
-+	private->mdev_type.pretty_name = "I/O subchannel (Non-QDIO)";
-+	private->mdev_types[0] = &private->mdev_type;
-+
- 	private->cp.guest_cp = kcalloc(CCWCHAIN_LEN_MAX, sizeof(struct ccw1),
- 				       GFP_KERNEL);
- 	if (!private->cp.guest_cp)
-@@ -219,12 +223,9 @@ static int vfio_ccw_sch_probe(struct subchannel *sch)
- 
- 	dev_set_drvdata(&sch->dev, private);
- 
--	sch->mdev_type.sysfs_name = "io";
--	sch->mdev_type.pretty_name = "I/O subchannel (Non-QDIO)";
--	sch->mdev_types[0] = &sch->mdev_type;
--	ret = mdev_register_parent(&sch->parent, &sch->dev,
-+	ret = mdev_register_parent(&private->parent, &sch->dev,
- 				   &vfio_ccw_mdev_driver,
--				   sch->mdev_types, 1);
-+				   private->mdev_types, 1);
- 	if (ret)
- 		goto out_free;
- 
-@@ -244,7 +245,7 @@ static void vfio_ccw_sch_remove(struct subchannel *sch)
- 	struct vfio_ccw_private *private = dev_get_drvdata(&sch->dev);
- 
- 	vfio_ccw_fsm_event(private, VFIO_CCW_EVENT_CLOSE);
--	mdev_unregister_parent(&sch->parent);
-+	mdev_unregister_parent(&private->parent);
- 
- 	dev_set_drvdata(&sch->dev, NULL);
- 
-diff --git a/drivers/s390/cio/vfio_ccw_private.h b/drivers/s390/cio/vfio_ccw_private.h
-index 4aa806530974..358996897efc 100644
---- a/drivers/s390/cio/vfio_ccw_private.h
-+++ b/drivers/s390/cio/vfio_ccw_private.h
-@@ -111,6 +111,10 @@ struct vfio_ccw_private {
- 	struct eventfd_ctx	*req_trigger;
- 	struct work_struct	io_work;
- 	struct work_struct	crw_work;
-+
-+	struct mdev_parent	parent;
-+	struct mdev_type	mdev_type;
-+	struct mdev_type	*mdev_types[1];
- } __aligned(8);
- 
- int vfio_ccw_sch_quiesce(struct subchannel *sch);
--- 
-2.31.1
-
+Should I resend the series with that folded in?  At this point we're
+probably not talking about 5.20 anyway.
