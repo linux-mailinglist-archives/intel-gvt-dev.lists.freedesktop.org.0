@@ -1,92 +1,59 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C640258194D
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 26 Jul 2022 20:04:40 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 861ED5827CE
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 Jul 2022 15:37:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C535A96EA5;
-	Tue, 26 Jul 2022 18:04:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2CC3911AD8A;
+	Wed, 27 Jul 2022 13:37:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 76F1496E9C
+Received: from mail-oi1-x232.google.com (mail-oi1-x232.google.com
+ [IPv6:2607:f8b0:4864:20::232])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ECA3910F9E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 26 Jul 2022 18:04:36 +0000 (UTC)
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26QHDoB9031422;
- Tue, 26 Jul 2022 18:03:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=ieTag46EF2a1y3ONSFB+R6UbnY+B4XHu7AaqRFiMjtg=;
- b=J4Ck2ju2JzM7Sh4CPpLDsikyw3MA57kIeq/mDkt7a2Uj2shqxpRRTywi2TnYlTQL/pQD
- eS0rAq64zEXIC1g8/fNw4+u+0np6XXvLLb133PRmhSmIuehiTnFhtsq628ng21yZuGUK
- OJwsU60eHpqEsangj58+uNiIW8/A998G841td7WutdfFVAGPmmGw7qDxvz+TE/6ZUrzm
- Kj6rABksAVJKqDbIr4zFJXo8t+E/CrQ9BppYA4PxSQ6aC8NxOWaY3cvQn3ZrW6+s2nYq
- 5fRnaRSaJZvJpAwOSIQ1FgZ+yzniuv+gipuajjqhJZznzoOu20oiHcaJfAJVIAoj1BsH Aw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3hjmfx9pvx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 26 Jul 2022 18:03:32 +0000
-Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 26QHExQn003129;
- Tue, 26 Jul 2022 18:03:32 GMT
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.26])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3hjmfx9pv8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 26 Jul 2022 18:03:32 +0000
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
- by ppma04wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 26QHaXp5010173;
- Tue, 26 Jul 2022 18:03:31 GMT
-Received: from b03cxnp07027.gho.boulder.ibm.com
- (b03cxnp07027.gho.boulder.ibm.com [9.17.130.14])
- by ppma04wdc.us.ibm.com with ESMTP id 3hg94am7eb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 26 Jul 2022 18:03:31 +0000
-Received: from b03ledav001.gho.boulder.ibm.com
- (b03ledav001.gho.boulder.ibm.com [9.17.130.232])
- by b03cxnp07027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 26QI3Uoc38535572
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 26 Jul 2022 18:03:30 GMT
-Received: from b03ledav001.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4D51D6E054;
- Tue, 26 Jul 2022 18:03:30 +0000 (GMT)
-Received: from b03ledav001.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0FF536E052;
- Tue, 26 Jul 2022 18:03:28 +0000 (GMT)
-Received: from farman-thinkpad-t470p (unknown [9.211.142.12])
- by b03ledav001.gho.boulder.ibm.com (Postfix) with ESMTP;
- Tue, 26 Jul 2022 18:03:28 +0000 (GMT)
-Message-ID: <d23d6ef67bb709cbde3886ea24d528c3036bff9b.camel@linux.ibm.com>
-Subject: Re: [RFC PATCH] vfio/ccw: Move mdev stuff out of struct subchannel
-From: Eric Farman <farman@linux.ibm.com>
-To: Christoph Hellwig <hch@lst.de>
-Date: Tue, 26 Jul 2022 14:03:28 -0400
-In-Reply-To: <20220726174817.GB14002@lst.de>
-References: <20220720050629.GA6076@lst.de>
- <20220726153725.2573294-1-farman@linux.ibm.com>
- <20220726174817.GB14002@lst.de>
+ Wed, 27 Jul 2022 13:37:13 +0000 (UTC)
+Received: by mail-oi1-x232.google.com with SMTP id u76so20842887oie.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 27 Jul 2022 06:37:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=ObIdrx/2+rwrr3Spu0DNQxwWs/W3U8LHCozkhGpRsnM=;
+ b=qVT9GmE7NLTd2psKgB0XnVWsQJX+kbmhg3wvO7+/xhFJqZ/DaNR1wog5h2E5q+r07c
+ IvnisCiPoXcahNtTXYiBK7ORQnEVLk2Lko7ZIn+SF5uIM6tsPKUMiYWomZ/chvvuhurM
+ C/DvH1Myx0hcUjQpXZigwQeGRb9Gl/h3Gao6PyxzkJHKvKnSjjE3ud8r7RvP6cPj5R6A
+ QYWnfYWG2YtG7FTIW1E8ARErxOgi9EgqRC0B6ypF9uYMbe43WpwmqU81doDop3yv0/uF
+ frzRMz9cNFMklxEXO7ZI9uIA0V+GiEzmDM29PoJmKkY51YE9oMOWXM3WHwpgHDj5xCt5
+ nzOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=ObIdrx/2+rwrr3Spu0DNQxwWs/W3U8LHCozkhGpRsnM=;
+ b=jJhoK3vHntqYjhCwueFaOR8n4ZSgU9cfQ8RC+L2lbF7SJqqIjuxIWIKsxq6fNTEA/7
+ 1UMKjS/kExzLMmzCNTE83lrBZnXJzGoFr/Em61xOwG9O8P7RQBgWiyhmqBf6wxJWTwob
+ 0kyeT8TKwTzF7p7yHC3hI93jXQdJ17cXZ32qyfjypU8h6r358+ceuXMPEXcZa4lzQOtg
+ 5PRnSiJNY49OZE/TVgrWcg2wtLfK9btOBEos78dDg/TKGrgt6+bhteWfpuTpYgg6eABo
+ e3kY18OJiSls63AKHdzNM5fdoU4gCzClrOATgv57tfxd+PtNyms1lA3zfYITSrCRPuCQ
+ wn3w==
+X-Gm-Message-State: AJIora9YMU4oTG+TVtNpi8AyuX3FV0uqhVVC7bsfQO+q2j0ZSdrMSwkI
+ rtyFPlPaoUfi4itFGj4KuNWajE8dhGitLLBq8Ew=
+X-Google-Smtp-Source: AGRyM1sfnCOim7sOchy9PK1NJ3e/Grb6G2ppsSkULeCk9bAGm5SznREIkx5TQ8QrB+4v7Jx1W0+FIHoNKeLQhWE7EJY=
+X-Received: by 2002:a05:6808:143:b0:33a:d513:1443 with SMTP id
+ h3-20020a056808014300b0033ad5131443mr1835083oie.43.1658929032393; Wed, 27 Jul
+ 2022 06:37:12 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a8a:d94:0:0:0:0:0 with HTTP;
+ Wed, 27 Jul 2022 06:37:11 -0700 (PDT)
+From: Attorney Amadou <kodzoagbolan12@gmail.com>
+Date: Wed, 27 Jul 2022 06:37:12 -0700
+Message-ID: <CAHtEYbk1W3HCvJCHTAAuGHVcPoN0eTyQ9j84gPs1ZAN=5_M9iw@mail.gmail.com>
+Subject: 
+To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: hlKyD_5yBzGTE-8AXCI9UIfOgJ7I2E8A
-X-Proofpoint-ORIG-GUID: QnNDmIJl4isKDRb9DTYRVmPjsuwGe6d3
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-26_05,2022-07-26_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 spamscore=0
- mlxscore=0 phishscore=0 lowpriorityscore=0 mlxlogscore=459
- priorityscore=1501 impostorscore=0 malwarescore=0 bulkscore=0
- suspectscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2206140000 definitions=main-2207260069
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,30 +66,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, mjrosato@linux.ibm.com,
- kvm@vger.kernel.org, linux-s390@vger.kernel.org, kwankhede@nvidia.com,
- vneethv@linux.ibm.com, pasic@linux.ibm.com, alex.williamson@redhat.com,
- zhenyuw@linux.intel.com, jgg@nvidia.com, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
+Reply-To: barristerbenjamin221@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 2022-07-26 at 19:48 +0200, Christoph Hellwig wrote:
-> On Tue, Jul 26, 2022 at 05:37:25PM +0200, Eric Farman wrote:
-> > Here's my swipe at a cleanup patch that can be folded in
-> > to this series, to get the mdev stuff in a more proper
-> > location for vfio-ccw.
-> > 
-> > As previously described, the subchannel is a device-agnostic
-> > structure that does/should not need to know about specific
-> > nuances such as mediated devices. This is why things like
-> > struct vfio_ccw_private exist, so move these details there.
-> 
-> Should I resend the series with that folded in?  
+Hello good day.
 
-That would be great. I'll give it another spin and can look over the
-ccw changes without the smattering of fixups I have.
+I am Barrister Amadou Benjamin by name, With due respect dear friend,
+I am contacting you to help get the deposit of 10.5 million Dollars, my
+late client left in his Bank before his sudden death on April 21,
+2007, to avoid confiscation by Lloyds bank. Please write me back
+through this email (barristerbenjamin221@gmail.com) for more
+information about this transaction or send me your private email to
+contact you myself.
 
-> At this point we're
-> probably not talking about 5.20 anyway.
+Sincerely.
+Barrister Amadou Benjamin Esq.
+...........................................................................=
+...................
+Hallo guten Tag.
 
+Ich bin mit Namen Barrister Amadou Benjamin. Mit geb=C3=BChrendem Respekt,
+lieber Freund,
+Ich kontaktiere Sie, um Ihnen zu helfen, die Anzahlung von 10,5
+Millionen Dollar zu erhalten, meine
+Der verstorbene Kunde verlie=C3=9F seine Bank vor seinem pl=C3=B6tzlichen T=
+od am
+21. April.
+2007, um der Beschlagnahme durch die Lloyds Bank zu entgehen. Bitte
+schreib mir zur=C3=BCck
+=C3=BCber diese E-Mail (barristerbenjamin221@gmail.com) f=C3=BCr mehr
+Informationen zu dieser Transaktion oder senden Sie mir Ihre private E-Mail=
+ an
+kontaktiere dich selbst.
+
+Aufrichtig.
+Rechtsanwalt Amadou Benjamin Esq.
