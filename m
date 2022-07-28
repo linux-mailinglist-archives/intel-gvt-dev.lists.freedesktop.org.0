@@ -2,34 +2,59 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3CD1583985
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Jul 2022 09:29:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C0B305839C2
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Jul 2022 09:46:24 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2C5A41128A8;
-	Thu, 28 Jul 2022 07:29:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 72C218D9D1;
+	Thu, 28 Jul 2022 07:46:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 454 seconds by postgrey-1.36 at gabe;
- Thu, 28 Jul 2022 07:29:16 UTC
-Received: from fassmer.sg (www.fassmer.sg [82.165.172.95])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1EA3910F5F3;
- Thu, 28 Jul 2022 07:29:16 +0000 (UTC)
-Received: from s17150085.onlinehome-server.info (localhost.localdomain
- [IPv6:::1]) by www.fassmer.sg (Postfix) with ESMTPSA id B9F1BC43125;
- Thu, 28 Jul 2022 15:21:39 +0800 (+08)
-Received: from [160.155.222.202] ([160.155.222.202]) by webmail.fassmer.sg
- (Horde Framework) with HTTP; Thu, 28 Jul 2022 07:21:39 +0000
-Date: Thu, 28 Jul 2022 07:21:39 +0000
-Message-ID: <20220728072139.Horde.YNdLnUPNuhDy6Gj9D3FMIu5@webmail.fassmer.sg>
-To: 
-Subject: I NEED YOUR ASSISTANCE
-User-Agent: Horde Application Framework 5
-Content-Type: multipart/alternative; boundary="=_fr5RIjoLd2iP9nqmzKX11wk"
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F1EEA90182
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 28 Jul 2022 07:46:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1658994376;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JxD0SjhCn3MzLYFy6Mt2UGeOLFZapeIwuPiohQNsjYI=;
+ b=ZcuRNIejqYlRacGe8ZGcb1nurgmIHQ//qZp0KBKDJio2VIZD86Zd0UcEhU5oQFELU6c/GC
+ 8Mm7sdrZ0RCjoNR3XQwSFsz0Xbp0kO57c3H4QHDctdvH7zUxcuk4u0uQ483EaQnU8KxHm6
+ JXijoK4GZChpfqzzb9UOuHaBw42nmbc=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-223-tU15Gl_zNy21qkwgOyDVpQ-1; Thu, 28 Jul 2022 03:46:11 -0400
+X-MC-Unique: tU15Gl_zNy21qkwgOyDVpQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 44F361C05ABC;
+ Thu, 28 Jul 2022 07:46:10 +0000 (UTC)
+Received: from starship (unknown [10.40.192.46])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6D7C5C27D95;
+ Thu, 28 Jul 2022 07:46:02 +0000 (UTC)
+Message-ID: <7c4cf32dca42ab84bdb427a9e4862dbf5509f961.camel@redhat.com>
+Subject: Re: [RFC PATCH v3 04/19] KVM: x86: mmu: allow to enable write
+ tracking externally
+From: Maxim Levitsky <mlevitsk@redhat.com>
+To: Sean Christopherson <seanjc@google.com>
+Date: Thu, 28 Jul 2022 10:46:01 +0300
+In-Reply-To: <Yt6/9V0S9of7dueW@google.com>
+References: <20220427200314.276673-1-mlevitsk@redhat.com>
+ <20220427200314.276673-5-mlevitsk@redhat.com> <YoZyWOh4NPA0uN5J@google.com>
+ <5ed0d0e5a88bbee2f95d794dbbeb1ad16789f319.camel@redhat.com>
+ <c22a18631c2067871b9ed8a9246ad58fa1ab8947.camel@redhat.com>
+ <Yt6/9V0S9of7dueW@google.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-PPP-Message-ID: <20220728072140.28743.58676@s17150085.onlinehome-server.info>
-From: "Mrs. Patricia Gunnarsson," <fahmi@fassmer.sg>
-X-PPP-Vhost: fassmer.sg
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,63 +67,112 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mrs.patriciagunnarsson90@gmail.com
+Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, "H. Peter Anvin" <hpa@zytor.com>,
+ Brijesh Singh <brijesh.singh@amd.com>, Joerg Roedel <joro@8bytes.org>,
+ x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Tom Lendacky <thomas.lendacky@amd.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
+ intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, linux-kernel@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This message is in MIME format.
+On Mon, 2022-07-25 at 16:08 +0000, Sean Christopherson wrote:
+> On Wed, Jul 20, 2022, Maxim Levitsky wrote:
+> > On Sun, 2022-05-22 at 13:22 +0300, Maxim Levitsky wrote:
+> > > On Thu, 2022-05-19 at 16:37 +0000, Sean Christopherson wrote:
+> > > > On Wed, Apr 27, 2022, Maxim Levitsky wrote:
+> > > > > @@ -5753,6 +5752,10 @@ int kvm_mmu_init_vm(struct kvm *kvm)
+> > Now for nested AVIC, this is what I would like to do:
+> >  
+> > - just like mmu, I prefer to register the write tracking notifier, when the
+> >   VM is created.
+> > 
+> > - just like mmu, write tracking should only be enabled when nested AVIC is
+> >   actually used first time, so that write tracking is not always enabled when
+> >   you just boot a VM with nested avic supported, since the VM might not use
+> >   nested at all.
+> >  
+> > Thus I either need to use the __kvm_page_track_register_notifier too for AVIC
+> > (and thus need to export it) or I need to have a boolean
+> > (nested_avic_was_used_once) and register the write tracking notifier only
+> > when false and do it not on VM creation but on first attempt to use nested
+> > AVIC.
+> >  
+> > Do you think this is worth it? I mean there is some value of registering the
+> > notifier only when needed (this way it is not called for nothing) but it does
+> > complicate things a bit.
+> 
+> Compared to everything else that you're doing in the nested AVIC code, refcounting
+> the shared kvm_page_track_notifier_node object is a trivial amount of complexity.
+Makes sense.
 
---=_fr5RIjoLd2iP9nqmzKX11wk
-Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
-Content-Description: Plaintext Message
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+> 
+> And on that topic, do you have performance numbers to justify using a single
+> shared node?  E.g. if every table instance has its own notifier, then no additional
+> refcounting is needed. 
 
-Hello.
-   
-   
-  My name is Mrs. Patricia Gunnarsson, I am writing this proposal to  
-seek your partnership assistance this day, i have decided to write you  
-this mail to seek your personal assistance after a search that i made
-   
-  I inherited a sum of 3,200,000 Euros left behind by my late husband  
-which he planned to invest before he died.
-   
-  Meanwhile. i am ready to offer you 40% from the total fund if your  
-willing to assist me on this transaction, response back for more details
-   
-   
-  Regards
-   
-  Mrs. Patricia Gunnarsson
+The thing is that KVM goes over the list of notifiers and calls them for every write from the emulator
+in fact even just for mmio write, and when you enable write tracking on a page,
+you just write protect the page and add a mark in the page track array, which is roughly 
 
---=_fr5RIjoLd2iP9nqmzKX11wk
-Content-Type: text/html; charset=utf-8
-Content-Description: HTML Message
-Content-Disposition: inline
+'don't install spte, don't install mmio spte, but just emulate the page fault if it hits this page'
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-"http://www.w3.org/TR/REC-html40/loose.dtd">
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<title></title>
-</head>
-<body style="font-family:Arial;font-size:14px">
-<p>Hello.</p>
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-<div>My name is Mrs. Patricia Gunnarsson, I am writing this proposal to seek your partnership assistance this day, i have decided to write you this mail to seek your personal assistance after a search that i made</div>
-<div>&nbsp;</div>
-<div>I inherited a sum of 3,200,000 Euros left behind by my late husband which he planned to invest before he died.</div>
-<div>&nbsp;</div>
-<div>Meanwhile. i am ready to offer you 40% from the total fund if your willing to assist me on this transaction, response back for more details</div>
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-<div>Regards</div>
-<div>&nbsp;</div>
-<div>Mrs. Patricia Gunnarsson</div>
-</body>
-</html>
---=_fr5RIjoLd2iP9nqmzKX11wk--
+So adding more than a bare minimum to this list, seems just a bit wrong.
+
+
+>  It's not obvious that a shared node will provide better
+> performance, e.g. if there are only a handful of AVIC tables being shadowed, then
+> a linear walk of all nodes is likely fast enough, and doesn't bring the risk of
+> a write potentially being stalled due to having to acquire a VM-scoped mutex.
+
+The thing is that if I register multiple notifiers, they all will be called anyway,
+but yes I can use container_of, and discover which table the notifier belongs to,
+instead of having a hash table where I lookup the GFN of the fault.
+
+The above means practically that all the shadow physid tables will be in a linear
+list of notifiers, so I could indeed avoid per vm mutex on the write tracking,
+however for simplicity I probably will still need it because I do modify the page,
+and having per physid table mutex complicates things.
+
+Currently in my code the locking is very simple and somewhat dumb, but the performance
+is very good because the code isn't executed often, most of the time the AVIC hardware
+works alone without any VM exits.
+
+Once the code is accepted upstream, it's one of the things that can be improved.
+
+
+Note though that I still need a hash table and a mutex because on each VM entry,
+the guest can use a different physid table, so I need to lookup it, and create it,
+if not found, which would require read/write of the hash table and thus a mutex.
+
+
+
+> 
+> > I can also stash this boolean (like 'bool registered;') into the 'struct
+> > kvm_page_track_notifier_node',  and thus allow the
+> > kvm_page_track_register_notifier to be called more that once -  then I can
+> > also get rid of __kvm_page_track_register_notifier. 
+> 
+> No, allowing redundant registration without proper refcounting leads to pain,
+> e.g. X registers, Y registers, X unregisters, kaboom.
+> 
+
+True, but then what about adding a refcount to 'struct kvm_page_track_notifier_node'
+instead of a boolean, and allowing redundant registration? 
+Probably not worth it, in which case I am OK to add a refcount to my avic code.
+
+Or maybe just scrap the whole thing and just leave registration and activation of the
+write tracking as two separate things? Honestly now that looks like the most clean
+solution.
+
+Best regards,
+	Maxim Levitsky
 
