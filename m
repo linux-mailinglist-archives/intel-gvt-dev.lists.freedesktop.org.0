@@ -2,58 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 861ED5827CE
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 Jul 2022 15:37:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3CD1583985
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 28 Jul 2022 09:29:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2CC3911AD8A;
-	Wed, 27 Jul 2022 13:37:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2C5A41128A8;
+	Thu, 28 Jul 2022 07:29:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-oi1-x232.google.com (mail-oi1-x232.google.com
- [IPv6:2607:f8b0:4864:20::232])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ECA3910F9E8
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 27 Jul 2022 13:37:13 +0000 (UTC)
-Received: by mail-oi1-x232.google.com with SMTP id u76so20842887oie.3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 27 Jul 2022 06:37:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=ObIdrx/2+rwrr3Spu0DNQxwWs/W3U8LHCozkhGpRsnM=;
- b=qVT9GmE7NLTd2psKgB0XnVWsQJX+kbmhg3wvO7+/xhFJqZ/DaNR1wog5h2E5q+r07c
- IvnisCiPoXcahNtTXYiBK7ORQnEVLk2Lko7ZIn+SF5uIM6tsPKUMiYWomZ/chvvuhurM
- C/DvH1Myx0hcUjQpXZigwQeGRb9Gl/h3Gao6PyxzkJHKvKnSjjE3ud8r7RvP6cPj5R6A
- QYWnfYWG2YtG7FTIW1E8ARErxOgi9EgqRC0B6ypF9uYMbe43WpwmqU81doDop3yv0/uF
- frzRMz9cNFMklxEXO7ZI9uIA0V+GiEzmDM29PoJmKkY51YE9oMOWXM3WHwpgHDj5xCt5
- nzOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=ObIdrx/2+rwrr3Spu0DNQxwWs/W3U8LHCozkhGpRsnM=;
- b=jJhoK3vHntqYjhCwueFaOR8n4ZSgU9cfQ8RC+L2lbF7SJqqIjuxIWIKsxq6fNTEA/7
- 1UMKjS/kExzLMmzCNTE83lrBZnXJzGoFr/Em61xOwG9O8P7RQBgWiyhmqBf6wxJWTwob
- 0kyeT8TKwTzF7p7yHC3hI93jXQdJ17cXZ32qyfjypU8h6r358+ceuXMPEXcZa4lzQOtg
- 5PRnSiJNY49OZE/TVgrWcg2wtLfK9btOBEos78dDg/TKGrgt6+bhteWfpuTpYgg6eABo
- e3kY18OJiSls63AKHdzNM5fdoU4gCzClrOATgv57tfxd+PtNyms1lA3zfYITSrCRPuCQ
- wn3w==
-X-Gm-Message-State: AJIora9YMU4oTG+TVtNpi8AyuX3FV0uqhVVC7bsfQO+q2j0ZSdrMSwkI
- rtyFPlPaoUfi4itFGj4KuNWajE8dhGitLLBq8Ew=
-X-Google-Smtp-Source: AGRyM1sfnCOim7sOchy9PK1NJ3e/Grb6G2ppsSkULeCk9bAGm5SznREIkx5TQ8QrB+4v7Jx1W0+FIHoNKeLQhWE7EJY=
-X-Received: by 2002:a05:6808:143:b0:33a:d513:1443 with SMTP id
- h3-20020a056808014300b0033ad5131443mr1835083oie.43.1658929032393; Wed, 27 Jul
- 2022 06:37:12 -0700 (PDT)
+X-Greylist: delayed 454 seconds by postgrey-1.36 at gabe;
+ Thu, 28 Jul 2022 07:29:16 UTC
+Received: from fassmer.sg (www.fassmer.sg [82.165.172.95])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1EA3910F5F3;
+ Thu, 28 Jul 2022 07:29:16 +0000 (UTC)
+Received: from s17150085.onlinehome-server.info (localhost.localdomain
+ [IPv6:::1]) by www.fassmer.sg (Postfix) with ESMTPSA id B9F1BC43125;
+ Thu, 28 Jul 2022 15:21:39 +0800 (+08)
+Received: from [160.155.222.202] ([160.155.222.202]) by webmail.fassmer.sg
+ (Horde Framework) with HTTP; Thu, 28 Jul 2022 07:21:39 +0000
+Date: Thu, 28 Jul 2022 07:21:39 +0000
+Message-ID: <20220728072139.Horde.YNdLnUPNuhDy6Gj9D3FMIu5@webmail.fassmer.sg>
+To: 
+Subject: I NEED YOUR ASSISTANCE
+User-Agent: Horde Application Framework 5
+Content-Type: multipart/alternative; boundary="=_fr5RIjoLd2iP9nqmzKX11wk"
 MIME-Version: 1.0
-Received: by 2002:a8a:d94:0:0:0:0:0 with HTTP;
- Wed, 27 Jul 2022 06:37:11 -0700 (PDT)
-From: Attorney Amadou <kodzoagbolan12@gmail.com>
-Date: Wed, 27 Jul 2022 06:37:12 -0700
-Message-ID: <CAHtEYbk1W3HCvJCHTAAuGHVcPoN0eTyQ9j84gPs1ZAN=5_M9iw@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-PPP-Message-ID: <20220728072140.28743.58676@s17150085.onlinehome-server.info>
+From: "Mrs. Patricia Gunnarsson," <fahmi@fassmer.sg>
+X-PPP-Vhost: fassmer.sg
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,39 +42,63 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: barristerbenjamin221@gmail.com
+Reply-To: mrs.patriciagunnarsson90@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hello good day.
+This message is in MIME format.
 
-I am Barrister Amadou Benjamin by name, With due respect dear friend,
-I am contacting you to help get the deposit of 10.5 million Dollars, my
-late client left in his Bank before his sudden death on April 21,
-2007, to avoid confiscation by Lloyds bank. Please write me back
-through this email (barristerbenjamin221@gmail.com) for more
-information about this transaction or send me your private email to
-contact you myself.
+--=_fr5RIjoLd2iP9nqmzKX11wk
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Description: Plaintext Message
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Sincerely.
-Barrister Amadou Benjamin Esq.
-...........................................................................=
-...................
-Hallo guten Tag.
+Hello.
+   
+   
+  My name is Mrs. Patricia Gunnarsson, I am writing this proposal to  
+seek your partnership assistance this day, i have decided to write you  
+this mail to seek your personal assistance after a search that i made
+   
+  I inherited a sum of 3,200,000 Euros left behind by my late husband  
+which he planned to invest before he died.
+   
+  Meanwhile. i am ready to offer you 40% from the total fund if your  
+willing to assist me on this transaction, response back for more details
+   
+   
+  Regards
+   
+  Mrs. Patricia Gunnarsson
 
-Ich bin mit Namen Barrister Amadou Benjamin. Mit geb=C3=BChrendem Respekt,
-lieber Freund,
-Ich kontaktiere Sie, um Ihnen zu helfen, die Anzahlung von 10,5
-Millionen Dollar zu erhalten, meine
-Der verstorbene Kunde verlie=C3=9F seine Bank vor seinem pl=C3=B6tzlichen T=
-od am
-21. April.
-2007, um der Beschlagnahme durch die Lloyds Bank zu entgehen. Bitte
-schreib mir zur=C3=BCck
-=C3=BCber diese E-Mail (barristerbenjamin221@gmail.com) f=C3=BCr mehr
-Informationen zu dieser Transaktion oder senden Sie mir Ihre private E-Mail=
- an
-kontaktiere dich selbst.
+--=_fr5RIjoLd2iP9nqmzKX11wk
+Content-Type: text/html; charset=utf-8
+Content-Description: HTML Message
+Content-Disposition: inline
 
-Aufrichtig.
-Rechtsanwalt Amadou Benjamin Esq.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+"http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title></title>
+</head>
+<body style="font-family:Arial;font-size:14px">
+<p>Hello.</p>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>My name is Mrs. Patricia Gunnarsson, I am writing this proposal to seek your partnership assistance this day, i have decided to write you this mail to seek your personal assistance after a search that i made</div>
+<div>&nbsp;</div>
+<div>I inherited a sum of 3,200,000 Euros left behind by my late husband which he planned to invest before he died.</div>
+<div>&nbsp;</div>
+<div>Meanwhile. i am ready to offer you 40% from the total fund if your willing to assist me on this transaction, response back for more details</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>Regards</div>
+<div>&nbsp;</div>
+<div>Mrs. Patricia Gunnarsson</div>
+</body>
+</html>
+--=_fr5RIjoLd2iP9nqmzKX11wk--
+
