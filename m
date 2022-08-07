@@ -2,66 +2,84 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C2ED58B59A
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 Aug 2022 14:41:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 026FE58BAD8
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  7 Aug 2022 14:39:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7786210E417;
-	Sat,  6 Aug 2022 12:41:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CB375B74D3;
+	Sun,  7 Aug 2022 12:26:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
- [IPv6:2607:f8b0:4864:20::42f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DACB210E0D5;
- Sat,  6 Aug 2022 12:40:52 +0000 (UTC)
-Received: by mail-pf1-x42f.google.com with SMTP id k14so2382774pfh.0;
- Sat, 06 Aug 2022 05:40:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc;
- bh=o6pt3V1ha9yMo8oPh0RhSV7A5lQkFUBOGwSJxIjKq5Y=;
- b=K3zZNGyQzBOJGo9GHJ77B64dvtlpK4HGVReHiflBNDRpOjaH5sqOdA8CSpHY5CKTyf
- jMxciE0uAHt180KJ/Y+huKoZL4LmZDsa6WkKOyCwoxB/ThJX4uVJEg7ZTShFI/az0Ar2
- z7gP6VTnSFHOO3nyj7PfGi5h2pn3jkcI30MOA4gJBLa6ZPkeSr1jNi+ni+/957EXpVKE
- 8cMH0A3oIzRK5Ii74+i2xFTbbdfg/VV4lJGKX03EHlP6Q0ikAumdp8EVEn0EXa//V+ro
- 7vXPHclNzVW+zRBDjtu+d19HsGrRLP2TD974QnRupiahEXDmXn0SLRi8PGivCy1jVQMg
- wXwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
- bh=o6pt3V1ha9yMo8oPh0RhSV7A5lQkFUBOGwSJxIjKq5Y=;
- b=6NTuzYho6NrbPH5Q0W7WbBF8jIF+h/GjUNld7/LnrkNh0ha7HXYG6JYaSaZpnE88lT
- AhqH7KW/Ku+zYUNJaa4o5Dt0YFeKc5pzmozXkOkljm4C5yNdut2tK5Mk7RxAxOspdjyn
- 0mMzUD9bWeB+t53haOcHhkI2QMro+JhLO7VEPZ8ZAqoXHExb2Dh6dWDAITPlN9mx56rC
- o4H/uVqWtSZ73vjd0JlCvtsnQ9te5a+O1BoYauEPhgxAUeqw/y5NL7bjaibl5qes+2o8
- BQYRbJ76BsKhP5fzpF7Hvd+z8tJ3O2lC0WYRpoV/Ya6i1+vVbqHWCIILm2B/GjT284Wc
- 3Utg==
-X-Gm-Message-State: ACgBeo3JjNV2Gxx3TyoYxxCuVbT+s39pMRSxJYnNfcngjvpPV9QNX9sQ
- T5bZnUfULDMZ5+zS+Kif9Wvb87XKQeY=
-X-Google-Smtp-Source: AA6agR4HVXRr5ozE4MZULCJYLmm+yzEtIzOb6rNsc6/YEix1fRqJBoSHmvvrRwFlh1pZPSou+4rtrw==
-X-Received: by 2002:a63:d555:0:b0:41b:ca49:54c3 with SMTP id
- v21-20020a63d555000000b0041bca4954c3mr9091265pgi.360.1659789652285; 
- Sat, 06 Aug 2022 05:40:52 -0700 (PDT)
-Received: from debian.me (subs02-180-214-232-10.three.co.id. [180.214.232.10])
- by smtp.gmail.com with ESMTPSA id
- r19-20020a634413000000b0040c9df2b060sm3072702pga.30.2022.08.06.05.40.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 Aug 2022 05:40:51 -0700 (PDT)
-Received: by debian.me (Postfix, from userid 1000)
- id 80D7A103B77; Sat,  6 Aug 2022 19:40:46 +0700 (WIB)
-Date: Sat, 6 Aug 2022 19:40:46 +0700
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v5 19/33] doc-dyndbg: edit dynamic-debug-howto for
- brevity, audience
-Message-ID: <Yu5hTr6qcLwiPRNp@debian.me>
-References: <20220805215355.3509287-1-jim.cromie@gmail.com>
- <20220805215355.3509287-20-jim.cromie@gmail.com>
+X-Greylist: delayed 19529 seconds by postgrey-1.36 at gabe;
+ Sun, 07 Aug 2022 12:01:26 UTC
+Received: from imsantv71.netvigator.com (imsantv71.netvigator.com
+ [210.87.250.171])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 93326A51A8;
+ Sun,  7 Aug 2022 12:01:10 +0000 (UTC)
+Received: from ybironout4d.netvigator.com (ybironout4d.netvigator.com
+ [210.87.250.43])
+ by imsantv71.netvigator.com (8.14.7/8.14.4) with ESMTP id 2776WMZw012516;
+ Sun, 7 Aug 2022 14:32:22 +0800
+X-IPAS-Result: =?us-ascii?q?A0D//wDlW+9i//oUeHBagRKBSDwDARKDFQo0EhyBFoJki?=
+ =?us-ascii?q?GyCOQ2CUYtBgSKCXIg6BAGCQAECEYYxgXsLAQEBIQEsAQIEAQGBRINiBYRXA?=
+ =?us-ascii?q?RQRSwEGAQEBAQMCAwEBAQEBAQMCBQMCAQcEgQkThXVAARAFAYVjAxAEAQEDF?=
+ =?us-ascii?q?wIPAiABBScCCAIBBgEGAw4GIhcBBBEJEyoKAQICAUqBTQICCEuCbAEBAjICB?=
+ =?us-ascii?q?gGqC4EwGmeEW4IpBR8Ig2OHCEeXcxIBKIIpiDeEZIsPBFIDCQQHBRsRIwsnD?=
+ =?us-ascii?q?jMPFINugRQXNoMbg22CA1+BaURjg0MZgRGBfYFWgWkHCYFCHT0Pmwt/MoFLA?=
+ =?us-ascii?q?QEBhjSKeSGBOY4ZYp4PNgEGAgKDKxoMigSaQoxEhkgDkWK5G22DQYMeDoFZc?=
+ =?us-ascii?q?IFuCYF/Ep04JIEECYViCBIBCgGDR4FCg3YB?=
+IronPort-Data: A9a23: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
+IronPort-HdrOrdr: A9a23:dBMxQ64GmrTlpIBn3wPXwN3XdLJyesId70hD6qkXc31om62j+f
+ xG88526faZslwssRIb9uxoUZPoKU80k6Qf3WB7B9qftXPdyQiVxflZnOnfKmHbakjDH5VmtZ
+ tdTw==
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-AV: E=Sophos;i="5.93,219,1654531200"; 
+ d="scan'208,217";a="292658120"
+Message-Id: <d9181c$8n36u8@ybironout4v1.netvigator.com>
+Received: from unknown (HELO User) ([112.120.20.250])
+ by ybironout4v1.netvigator.com with SMTP; 07 Aug 2022 14:32:08 +0800
+From: "Nikki Fenton"<nikkifen19075@netvigator.com>
+Subject: Please Reply For More Details.
+Date: Sat, 6 Aug 2022 23:32:22 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
- protocol="application/pgp-signature"; boundary="zCnbKQzWNc0slIHJ"
-Content-Disposition: inline
-In-Reply-To: <20220805215355.3509287-20-jim.cromie@gmail.com>
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 1
+X-MSMail-Priority: High
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,70 +92,27 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: robdclark@gmail.com, linux-doc@vger.kernel.org, gregkh@linuxfoundation.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch, jbaron@akamai.com,
- seanpaul@chromium.org, dri-devel@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org
+Reply-To: nikkifenton@citromail.hu
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
---zCnbKQzWNc0slIHJ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Aug 05, 2022 at 03:53:41PM -0600, Jim Cromie wrote:
-> Rework/modernize docs:
->=20
->  - use /proc/dynamic_debug/control in examples
->    its *always* there (when dyndbg is config'd), even when <debugfs> is n=
-ot.
->    drop <debugfs> talk, its a distraction here.
->=20
->  - alias ddcmd=3D'echo $* > /proc/dynamic_debug/control
->    focus on args: declutter, hide boilerplate, make pwd independent.
->=20
->  - swap sections: Viewing before Controlling. control file as Catalog.
->=20
->  - focus on use by a system administrator
->    add an alias to make examples more readable
->    drop grep-101 lessons, admins know this.
->=20
->  - use init/main.c as 1st example, thread it thru doc where useful.
->    everybodys kernel boots, runs these.
->=20
->  - add *prdbg* api section
->    to the bottom of the file, its for developers more than admins.
->    move list of api functions there.
->=20
->  - simplify - drop extra words, phrases, sentences.
->=20
->  - add "decorator" flags line to unify "prefix", trim fmlt descriptions
->=20
-> CC: linux-doc@vger.kernel.org
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
->=20
-
-The documentation LGTM (no new warnings).
-
-Reviewed-by: Bagas Sanjaya <bagasdotme@gmail.com>
-
---=20
-An old man doll... just what I always wanted! - Clara
-
---zCnbKQzWNc0slIHJ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTsebsWCPCpxY9T92n/R0PGQ3AzwAUCYu5hNQAKCRD/R0PGQ3Az
-wGuzAYDy/O8VqIX4dB6ItFwNHJm1rs7Qg4OuYgYbKFvhP69MPdWx64MR4soFNSUx
-y/x/+HABgNTyMUR8QKMtJnT6K443IFX7iqf6bs05/IbT4PqLQjZXkpc+PQBWALvU
-6LjFercp5g==
-=Aeer
------END PGP SIGNATURE-----
-
---zCnbKQzWNc0slIHJ--
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+Hello,</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+I viewed your profile on Linkedin regarding a proposal that has something in common with you, reply for more details via: nikkifenton@citromail.hu</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+<B>Nikki Fenton</B></DIV>
+</FONT>
+</BODY></HTML>
