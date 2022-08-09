@@ -2,78 +2,70 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98F4A58CF18
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Aug 2022 22:27:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B3D558DB9E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Aug 2022 18:07:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 07514112655;
-	Mon,  8 Aug 2022 20:27:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 959CDAB95F;
+	Tue,  9 Aug 2022 16:06:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8FC1411271C
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com
+ [IPv6:2a00:1450:4864:20::444])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2FF742BA93
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Aug 2022 20:27:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1659990437;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0Qp5AM4XVaPe/EBBC2evVCwqqCv3S2jup+FrmZdbJPc=;
- b=AbcmbE9CaXGFMLdLFH2r/iILr3pOtpoHcTpjTSlEtjdumC0uDddScD6RqB228Womv4sL7/
- NPeINIeBHCEhkcncPHZEZcm4ppaKywHzI3BVTJEWAFt6oxawQfyJ4ctEQE7cPRocaviMNh
- nA+3c0uvjdIE0+J2IAgDe49KSg08tak=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-662-W_PioT3cONyRvA1gjo6FQA-1; Mon, 08 Aug 2022 16:27:16 -0400
-X-MC-Unique: W_PioT3cONyRvA1gjo6FQA-1
-Received: by mail-il1-f199.google.com with SMTP id
- i12-20020a056e021d0c00b002df2d676974so7215098ila.5
+ Tue,  9 Aug 2022 16:05:01 +0000 (UTC)
+Received: by mail-wr1-x444.google.com with SMTP id l4so14795798wrm.13
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 08 Aug 2022 13:27:16 -0700 (PDT)
+ Tue, 09 Aug 2022 09:05:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc;
+ bh=R9GTsZP3gf4/RpK3VtRq0TZQfC/aNZxK4ovfMtKphuA=;
+ b=SGfvEGRMEetx+gnKZwEk7qXRZLuhMOjKpjjliFKpt7Xy2uUOl7pVAoL9rERUa8Gr98
+ P3jtdS46DUt7ltK2a9/7ef+yiKKh8DGqciqxMldWT4Q+DAkihZ5w8yto4niP4PH+sx0U
+ nz2QItETRRBoOQOppHURAPzbdArsRUCEyhbVw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc;
- bh=0Qp5AM4XVaPe/EBBC2evVCwqqCv3S2jup+FrmZdbJPc=;
- b=r+oWK0HGmZGMpKv4PsQ1V8OLNyy7ZcEaz0yJip22ZVl2peChBF2oP8/0Od9Lmrfw0o
- k/ZkM9/rJNTpmjQNzBR9npTyMLktN2j7Ya3xh1paMKiO9ff+PoBb2VDZyyZaPOck4S2b
- jStHmJfZOwAfxVOhHsutcUZZCqAaFDY9IY0kA1DmCQxD4v/Qcu7Cvkx99+yWt5eC+3C7
- QABroq0etosyv0ppR/PzmjbPEE7xwNKGQRkQzh8V43oF+OOtVX1qbUmAmAl/kW6ImGJ7
- d8vVj1+Y1aszB13VYdgIhYDyzqe4qTGuMRQWLX5DJGFffme743uRAYKYZ0jx+enOpAa4
- hueA==
-X-Gm-Message-State: ACgBeo12iEHa/HyXKjCW+Ym5LM7bkqxVsxs0AOC3vX5rWXk8tlp/8GZC
- CgbuVxCX2p84gj1ogqbw4GB3I0XBIL+ih7uUNiNZ+5GBPvrhVNPX1H34M3ucm63BM6ZU/LHUM+1
- PCwwnPfwpMq7I2AuI5/hDIXCkrQ4zD55WpA==
-X-Received: by 2002:a05:6e02:1091:b0:2dd:f304:5a50 with SMTP id
- r17-20020a056e02109100b002ddf3045a50mr9034213ilj.146.1659990434672; 
- Mon, 08 Aug 2022 13:27:14 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR4Gaui8ymkiPVLMaq6QF40dDHROTa/RWHRYWbJX4otUgVWItDO99iOsHXAQySvfwQD8L8xi6Q==
-X-Received: by 2002:a05:6e02:1091:b0:2dd:f304:5a50 with SMTP id
- r17-20020a056e02109100b002ddf3045a50mr9034200ilj.146.1659990434384; 
- Mon, 08 Aug 2022 13:27:14 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- m3-20020a02a143000000b0034278894fccsm5517418jah.90.2022.08.08.13.27.13
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc;
+ bh=R9GTsZP3gf4/RpK3VtRq0TZQfC/aNZxK4ovfMtKphuA=;
+ b=L/KZyYdQDizj3wCJ55H6XdhrfXRACfHEid3te5V2oNj82fpXR1eaI2X8252av7DniL
+ WWXyaZhyQtypPu46WjKJP4kD4kKVmQtWHG+QVs35y8V7J/0D/N3pMOq1VmK4XjKWN0q8
+ K3LsasRpdRqNi+Mtn6EQ0rF3x1rO9pw11Vtw7Aid6ucrFKvL4u6UanOm5xuOKrlJboQL
+ k9camclH8th7KKSZR71vE0k5fxx8jx0zzMEzM7iwT2wOKoGfamsLl9n66KT9YXvq9Csz
+ 6CHkSDIpWA6cnAsqGog54x0g6CTZKshBEpT7yg+04yaxBEoWVjO3z8H7NSiYfelg760f
+ cwsA==
+X-Gm-Message-State: ACgBeo1DoQX/XidJ2HY9d1CXK+JG4jZnZj4xAhnRDrmF7R8pb7bVVPlA
+ zjoS5skA5QhHK55Gck7nFsP+lA==
+X-Google-Smtp-Source: AA6agR4sZViGMmWfeljXHTF1LjkIozuvP6lk74A9t0DINg2mcNBOvl1YXtJjxbLAXvgn4OGanJd+ZQ==
+X-Received: by 2002:a5d:434a:0:b0:21d:aa7e:b1bb with SMTP id
+ u10-20020a5d434a000000b0021daa7eb1bbmr15599576wrr.619.1660061098232; 
+ Tue, 09 Aug 2022 09:04:58 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id
+ c6-20020a05600c0a4600b003a308e9a192sm25766542wmq.30.2022.08.09.09.04.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Aug 2022 13:27:14 -0700 (PDT)
-Date: Mon, 8 Aug 2022 14:27:11 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Zhi Wang <zhi.wang.linux@gmail.com>
-Subject: Re: [PATCH v9 1/3] i915/gvt: Separate the MMIO tracking table from
- GVT-g
-Message-ID: <20220808142711.02d16782.alex.williamson@redhat.com>
-In-Reply-To: <20220407071945.72148-2-zhi.a.wang@intel.com>
-References: <20220407071945.72148-1-zhi.a.wang@intel.com>
- <20220407071945.72148-2-zhi.a.wang@intel.com>
-Organization: Red Hat
+ Tue, 09 Aug 2022 09:04:57 -0700 (PDT)
+Date: Tue, 9 Aug 2022 18:04:55 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Jim Cromie <jim.cromie@gmail.com>
+Subject: Re: [PATCH v5 00/33] DYNDBG: opt-in class'd debug for modules, use
+ in drm.
+Message-ID: <YvKFp+9bchLjgCeG@phenom.ffwll.local>
+Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>,
+ linux-kernel@vger.kernel.org, jbaron@akamai.com,
+ gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ seanpaul@chromium.org, robdclark@gmail.com
+References: <20220805215355.3509287-1-jim.cromie@gmail.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220805215355.3509287-1-jim.cromie@gmail.com>
+X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,231 +78,609 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Zhi Wang <zhi.a.wang@gmail.com>, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Jason Gunthorpe <jgg@nvidia.com>, Vivi Rodrigo <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Christoph Hellwig <hch@lst.de>,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: robdclark@gmail.com, gregkh@linuxfoundation.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch, jbaron@akamai.com,
+ seanpaul@chromium.org, dri-devel@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu,  7 Apr 2022 03:19:43 -0400
-Zhi Wang <zhi.wang.linux@gmail.com> wrote:
+[Catching up on mails]
 
-> From: Zhi Wang <zhi.a.wang@gmail.com>
+Did you see the feedback form Steven from tracing side of things? Does
+this version have that taken into account already?
+
+I think once we have that and acks from dyndbg maintainers then I think we
+should just land this and polish from there? Maybe some acks from drm
+drivrer folks (cros people where once interested), but otherwise I'm a bit
+afraid this might be stuck in limbo too much for too long and we just need
+to get going :-/
+-Daniel
+
+
+On Fri, Aug 05, 2022 at 03:53:22PM -0600, Jim Cromie wrote:
+> Hi Jason, Greg, DRM-folk,
 > 
-> To support the new mdev interfaces and the re-factor patches from
-> Christoph, which moves the GVT-g code into a dedicated module, the GVT-g
-> MMIO tracking table needs to be separated from GVT-g.
+> heres V5. Diffs vs V4:
+> 
+>   1st 9 have Jason's Ack
+>   10 is new: simple var cleanup
+>   11 new struct, to contain future addins. touches kernel/module/
+> 
+>   dyndbg-param callbacks moved to last (of dyndbg patches)
+>   they're where the uncertainty is,
+>   and the bulk of the API addition (class keyword is small)
+> 
+>   patches between the move are the guts of the "class foo" feature.
+>   exposure of feature is only via >control, until sysfs parts added
+>   
+>   DRM chunk:
+>   included here to see how patchwork's merge & test proceeds.
+>   categories -> classes re-work is unchanged - feels pretty solid.
+>   nouveau & LEVEL made some progress, still WIP.
+> 
+>   I left out tracefs bits for now.
+> 
+> UNCERTAINTIES / RFC:
+> 
+> 1st is my "sharing" technique, across DRM's multi modules.  Its
+> literally duplicated decls, by each participating module, each adding
+> static data in its own special section.  I didn't try at all to shrink
+> or unify this any further.  There might be a perfect place to add a
+> single decl, but that quest will require a pony.
+> 
+> Sharing by class-names lacks the compiler support that varnames get;
+> "incomplete" enables will probably happen if one of the declarations
+> miss-spells one of the classnames.
+> 
+> That said, see the how-to below: stringifying va-args in the macro
+> would allow direct use of the enum-consts, and cc will insist that
+> those consts are defined, eliminating part of the un-support.
+> 
+> I could split the _BITS,_NUM handling out from _NAMES (ie split
+> drm.debug style patch); theres no user-demand for the _NAMES feature
+> ATM, and theres probably some legit API-bikeshedding to do.
+> 
+> PATCHSET DESCRIPTION
+> 
+> This patchset adds 'typed' "class FOO" support to dynamic-debug, where
+> 'typed' means either DISJOINT_BITS, like drm_dbg(DRM_UT_CORE,..), or
+> LEVEL_NUM (like nouveau debug-levels).  Use it in DRM modules: core,
+> helpers, and in drivers i915, amdgpu, nouveau.
+> 
+> If a module is using class'd prdbgs (pr_debug_class, dev_dbg_class, or
+> adapted drm_dbg_<category>) or similar in its code, it can "opt in" to
+> allow dyndbg to manipulate those class'd prdebugs, by declaring in a
+> c-file:
+> 
+>  DECLARE_DYNDBG_CLASSMAP(drm_debug_classes,
+>   			DD_CLASS_TYPE_DISJOINT_BITS, 0,
+>                         "DRM_UT_CORE",
+>                         "DRM_UT_DRIVER",
+>                         "DRM_UT_KMS",
+>                         "DRM_UT_PRIME",
+>                         "DRM_UT_ATOMIC",
+>                         "DRM_UT_VBL",
+>                         "DRM_UT_STATE",
+>                         "DRM_UT_LEASE",
+>                         "DRM_UT_DP",
+>                         "DRM_UT_DRMRES");
+> 			// how-to stringify __va_args inside the macro ?
+> 
+> By doing this, a module tells dyndbg that it:
+> 
+>    - is using class-ids [0..N] in prdbg callsites
+>      ( 0..N == DRM_UT_CORE..DRM_UT_DRMRES )
+>    - wants to refer to them by class-names [0..N]
+>    - is mapping those names to those class-ids
+>    - expects users to enable them via >control or >parameter/knob
+> 
+> Then, a user can enable the prdbgs by their class:
+> 
+>    :#> echo class DRM_UT_KMS +p > /proc/dynamic_debug/control
+> 
+> And with another 3-line bitmap param decl/init, wrapping the
+> drm_debug_classes var in a module-param-cb:
+> 
+>    :#> echo 0x1 > /sys/module/drm/parameters/debug
+> 
+> and optionally using classnames:
+> 
+>    :#> echo +DRM_UT_CORE,-DRM_UT_KMS \
+> 	> /sys/module/drm/parameters/debug_cats
+> 
+> DYNAMIC_DEBUG gets:
+> 
+> struct _ddebug gets a new .class_id:5 field, big enough to represent
+> drm_debug_category (after squeezing).  It defaults to 31 for all
+> existing prdbgs.  class_id also supports verbose uses.
+> 
+> classmaps (as declared by macro above) are in their own linker
+> section, are loaded by kernel/module, and handled by add_module,
+> which attaches classmaps to their module's ddebug table.
+>      
+> ddebug_change() handles a class FOO query by validating that FOO is
+> known by each module in the loop.  The query is skipped unless the
+> module knows FOO, so no changes are possible w/o a good classname.
+> 
+> Without class FOO in a query/command, only ids=31 can be changed by
+> that query.  This protects all class'd prdbgs from changes by legacy
+> class-less user queries.
+> 
+> With this support, the module opt-in approach means that:
+> 
+>    - modules declare classnames they like, meaningful names: DRM_UT_*
+>      these are numbered [0..N]
+>    - modules call pr_debug_class(N, "fmt..",...)
+>      or drm_dbg(CAT, "fmt..",...) - same form.
+>    - class-id space, while limited:0-30, is private to each module
+>    - "class FOO" is only way to select a class'd prdbg
+>    - unrelated modules use 0..N separately, for different purposes.
+>    - modules "share" classnames by separate decls (uses of macro)
+>      all drm modules reuse the above declaration.
+>      then they respond together to a >control
+> 
+> 4 CLASS_TYPES are defined; they split behavior on 2 factors:
+> 
+>    1. independent bits vs related:(X<Y) bits [0-N]
+>    2. input form: number/hex vs CSV-list: [+-]CLASS_NAMES
+>      
+>    DD_CLASS_TYPE_DISJOINT_BITS	independent bits, 0x1f input is clearest
+>    DD_CLASS_TYPE_LEVEL_NUM	(x<y), input is level, not bitvec
+> 
+>    DD_CLASS_TYPE_DISJOINT_NAMES	csv-list of independent +-CLASS_NAMEs
+>    DD_CLASS_TYPE_LEVEL_NAMES	csv-list of related +-CLASS_NAMEs, only 1 term needed
+> 
+> Splitting up behavior this way is safe, and flexible:
+> 
+>  - no bitmap-vs-level > sysknob ambiguity
+>    as was case when both were accepted on same knob
+>  - narrower interfaces
+>    uint is uint
+>  - can defer DISJOINT_NAMES handling, but keep the enums.
+>    it has no users ...
+>  - can later add 2 more ENUMS allowing both inputs
+>    in separate LEVEL_NUM & DISJOINT_BITS choices
+>    then authors choice if they want to accept mixed input
+>  - can enumerate "wierd" relations if needed
+>    DISJOINT_BITS|LEVEL_NUM should cover everything I can forsee
+>    but theres room for DD_CLASS_TYPE_STOCHASTIC (over the garage)
+> 
+> DISJOINT & LEVEL cover the space; 1st is independent, 2nd is related.
+> The relation could differ from (x<y), but atm I can't think of another
+> that makes any sensible distinction from (x<y).
+> 
+> Quick review of debug logging:
+> 
+> DRM is biggest use-case: 23 macros, issuing 10 exclusive categories of
+> messages, from ~5100 callsites, across core (drm, _*helpers), and 3+
+> drivers (Im working amdgpu, i915, more recently nouveau).  These mostly
+> flow to drm_debug_enabled(category) for a print/no decision.
+> 
+> nouveau has minimum direct use of the DRM.debug macros, but does use
+> pr_debug (in VMM iirc), and drm_debug_enabled() in ~50 places via
+> macros, and another ~50 iirc due to NOUVEAU_DEBUG_MMU=y
+> 
+> What nouveau has most of is log-levels: there are ~800 uses of them;
+> nvkm_(fatal|error|warn|info|debug|trace|spam), they all flow thru
+> nvkm_printk_.  Even excluding some levels as "always-on" and not
+> appropriate for dyndbg's extra resources and complexity, theres ~450
+> callsites.
+> 
+> A reported smattering of raw/adhoc debug code. all but unknown to me.
+> 
+> Like any debug logging, they're mostly off, and should have close to
+> 0-off-cost.  This is what dyndbg (with/on jump-label) was made for.
+> 
+> Bottom line: in order to unify more potential (drm,etc) use-cases,
+> dyndbg needs to support both debug classification schemes:
+> RELATED/LEVEL_NUM and INDEPENDENT/DISJOINT_BITS.
+> 
+> This is rev3. rev2 is here:
+> https://lore.kernel.org/lkml/20220516225640.3102269-1-jim.cromie@gmail.com/
+> 
+> summary of diffs:
+> 
+>  - rebased on 5.19-rc6 to pick up kernel/module changes
+>  - tracfs bits now use __vstring, __vstr_assign, from S.Rostedt
+>  
+>  - 4 class-map-types - as outlined above
+>    now supports LEVEL_NUM semantics, WIP nouveau integration.
+>    v2 became the DISJOINT_BITS use case
+>    Lots of API-ish surface area here *RFC*
+> 
+>  - class-maps now in section("__dyndbg_classes")
+>    class FOO queries are available at earlyboot / module-load
+>    drop (un)?register_classes()
+> 
+>  - test-dynamic-debug module
+>    tests the 4 CLASS-TYPES
+>    good place to bikeshed / paintshop the API
+> 
+>  - nouveau - start poking - WIP
+>    NV_PRINT -> dev_dbg (creates 632 prdbgs, but not class'd)
+>    LEVEL_NUM classes declared to see how they "fit", unused yet.
+> 
+> Summary:
+> 
+>  - plenty of new stuff here.
+>  - plenty of new API surface area.
+>  - exposes CLASSNAMES to user, via control, >symbolic-sysknob
+> 
+> More on LEVEL_NUM:
+> 
+> dyndbg's class scheme is names-based, so even for LEVEL_NUM with
+> numeric input, there must be a "V0" name; a name with which to turn
+> off "V1".  And don't do 'pr_dbg_class(0,..)'.
+> 
+> LEVEL_NUM is an overlay on DISJOINT_BITS; the callback reads the input as a
+> level, and computes and applies the bitmap to enforce it.  Yes it
+> wastes "V0" bit.  That might matter if an author wanted many separate
+> verbose-knobs with a few levels each, but that seems fairly unlikely.
+> 
+> More importantly, it means that relative verbosity is not enforced at
+> the >control input; IOW this is allowed:
+> 
+>    :#> echo class V1 -p > /proc/dynamic_debug/control
+>    :#> echo class V3 +p > /proc/dynamic_debug/control
+> 
+> 2nd line doesn't undo 1st, as it would if changed via sysfs-knob:
+> 
+>    :#> echo 3 > /sys/module/drm/parameters/debug
+> 
+> ISTM this is fine, the "relative" meaning is added at the interface,
+> where it presents to a user.  Doing otherwise means surgery to
+> ddebug_change, which seems unnecessary given an option.
+> 
+> CLASS NAMESPACE and DRM
+> 
+> The class namespace is flat and wide, so "V1" is a poor choice, other
+> than for demonstration (as in test_dynamic_debug module).  If every
+> module had a "V1", turning them all on would issue lots of unrelated
+> noise.
+> 
+> Instead, class DRM_UT_CORE has a name with a specific sub-system wide
+> (ie multi-module) meaning, and can (and should) be responded to by all
+> cooperating modules.
+> 
+> For DRM, this means 4-5 duplicate uses of DEFINE_DYNDBG_CLASSMAP, from
+> multiple drivers' "*_{drm,dev,main}.c" files; all of them agreeing on
+> the classnames, map-type and base.  Though repetitive, and a bit
+> fiddly when multiple classes share the module's id-space, it is
+> simple, and consistent with the "static struct foo = {INIT_expr}"
+> pattern used in the macro.  Im open to simpler ways, initializing an
+> extern sounded like a maze w/o cheese.
+> 
+> For core, drm_print.c has an additional task; it defines and
+> initializes the bitmap sysknob that converts bits to a query:
+> 
+>   static struct ddebug_classes_bitmap_param drm_debug_bitmap = {
+>        .bits = &__drm_debug,
+>        .flags = "p",
+>        .map = &drm_debug_classes,
+>   };
+>   module_param_cb(debug, &param_ops_dyndbg_classes,
+>   		  &drm_debug_bitmap, 0600);
+> 
+> then the callback converts bit-toggles on input into something like:
+> 
+>   :#> echo class DRM_UT_KMS +p > control
+> 
+> which enables all drm_dbg_kms() callsites in all modules that declared
+> that classname as known.
+> 
+> NB: classmaps and classes_bitmap_params are different structs.  this
+> allows the former to be shared by 2 of latter, each toggling 'p' & 'T'
+> flags, to control output to syslog or tracelog independently.
+> 
+> NBB: while "V1" isnt a good classname, "EMERG" and and other
+> KERN-LEVEL names have a legacy.  That said, dyndbg shouldnt be
+> involved in EMERG actions.
+> 
+> NOUVEAU and multiple LEVEL_NUM knobs ?
+> 
+> One thing nouveau has that I havent yet grokked is 2|3 independent
+> verbose levels, in {,cli,sub}->debug (see subdev.h).  But Ive coded
+> them as 2 more macro invocations; using bases 10, 15 to avoid/respect
+> the 0-9 mapping of DRM.debug categories to those class-ids.
+> 
+> With this, the drm subsystem uses 20/31 of its class-id range, perhaps
+> 63 is better, despite the cumbersome 0x-64bit interface.  Note that
+> the sysfs-knobs do not expose the base/offset (its an inward-facing
+> .class_id offset); each sysfs-knob gets its own 0..N bitmap, the base
+> maps it to the 0..30 subrange allocated (manually, via the base arg to
+> macro) for this class-map.
+> 
+> anyway, heres how `modprobe nouveau` goes with dynamic_debug.verbose=3
+> 
+> [86512.693954] dyndbg: class[0]: module:nouveau base:15 len:5 ty:1
+> [86512.693958] dyndbg:  15: 0 NV_SUBDEV_DBG_OFF		# aka V0
+> [86512.693959] dyndbg:  16: 1 NV_SUBDEV_DBG_INFO
+> [86512.693960] dyndbg:  17: 2 NV_SUBDEV_DBG_DEBUG
+> [86512.693960] dyndbg:  18: 3 NV_SUBDEV_DBG_TRACE
+> [86512.693960] dyndbg:  19: 4 NV_SUBDEV_DBG_SPAM
+> [86512.693961] dyndbg: class[1]: module:nouveau base:10 len:5 ty:1
+> [86512.693961] dyndbg:  10: 0 NV_CLI_DBG_OFF
+> [86512.693962] dyndbg:  11: 1 NV_CLI_DBG_INFO
+> [86512.693962] dyndbg:  12: 2 NV_CLI_DBG_DEBUG
+> [86512.693963] dyndbg:  13: 3 NV_CLI_DBG_TRACE
+> [86512.693963] dyndbg:  14: 4 NV_CLI_DBG_SPAM
+> [86512.693963] dyndbg: class[2]: module:nouveau base:0 len:10 ty:0
+> [86512.693964] dyndbg:  0: 0 DRM_UT_CORE
+> [86512.693964] dyndbg:  1: 1 DRM_UT_DRIVER
+> [86512.693965] dyndbg:  2: 2 DRM_UT_KMS
+> [86512.693965] dyndbg:  3: 3 DRM_UT_PRIME
+> [86512.693965] dyndbg:  4: 4 DRM_UT_ATOMIC
+> [86512.693966] dyndbg:  5: 5 DRM_UT_VBL
+> [86512.693966] dyndbg:  6: 6 DRM_UT_STATE
+> [86512.693966] dyndbg:  7: 7 DRM_UT_LEASE
+> [86512.693967] dyndbg:  8: 8 DRM_UT_DP
+> [86512.693967] dyndbg:  9: 9 DRM_UT_DRMRES
+> [86512.693968] dyndbg: module:nouveau attached 3 classes
+> [86512.693968] dyndbg: 632 debug prints in module nouveau
+> 
+> They are not yet wired by class; the nv-printks are using dev_dbg for
+> now, so they can be enabled with standard selections (module, func,
+> etc).
+> 
+> DYNDBG API
+> 
+> I added __pr_debug_cls to make things testable, I wanted to keep it
+> private/un-api, because drm already has drm_dbg_<cat>(cat, fmt..), and
+> that seemed a pretty good model to follow: enums with strong names for
+> class_id constants, and same names for classes.
+> 
+>    ie: __pr_debug_cls(DRM_UT_KMS, "Whats the Matter with KMS: %s\n", reason);
+> 
+> But now nouveau probably wants/needs it, perhaps others too.
+> 
+>   pr_dbg_cls / dev_dbg_cls ?  class or debug spelled out ? 
+> 
+> MORE TESTING with DRM & TRACEFS
+> 
+> Most dev & testing has been on virtme, with test-dynamic-debug module
+> doing an api-validation-demonstration.  The test module proves
+> multiple sysknobs, but cannot prove real multi-module sharing of the
+> class-name space.  The DRM.debug adaptation must (and does) do that.
+> 
+> Now Im running on real gpu/drm hw; on both an amdgpu desktop, and this
+> amdgpu+nouveau laptop.  Its stable enough to type on, browse, build
+> more kernels, etc.
+> 
+> :#> uname -r
+> 5.18.0-f2-00038-g61d300083196
+> :#> wc /proc/dynamic_debug/control 
+> 11554 95556 1442827 /proc/dynamic_debug/control
+> :#> lsmod | grep drm
+> drm_buddy              20480  1 i915
+> drm_ttm_helper         16384  2 amdgpu,nouveau
+> ttm                    86016  4 amdgpu,drm_ttm_helper,i915,nouveau
+> drm_dp_helper         184320  3 amdgpu,i915,nouveau
+> drm_kms_helper        208896  6 drm_dp_helper,amdgpu,i915,nouveau
+> drm                   655360  16 gpu_sched,drm_dp_helper,drm_kms_helper,drm_buddy,amdgpu,drm_ttm_helper,i915,ttm,nouveau
+> cec                    49152  2 drm_dp_helper,i915
+> 
+> I've never turned on DRM.debug in frustration (or curiousity until
+> recently); I dunno what normal traffic looks like.  So I wrote a
+> script to toggle each category: on/off for 1 sec, so I could 'more'
+> thru the output to see the partitioned streams.
+> 
+> Different runs (of '10' sec of active tracing) produce between 330-3500
+> lines of logging, depending upon mousing/screen activity.  Heres a bit
+> of a many-window-select run: `wc trace` gives "size" of the category's stream.
+> 
+> :#> trc_classes 
+> 12 /sys/kernel/tracing/trace
+> doing class DRM_UT_CORE +/- T   1394 13941 141614 /sys/kernel/tracing/trace
+> doing class DRM_UT_DRIVER +/- T   1396 13959 141816 /sys/kernel/tracing/trace
+> doing class DRM_UT_KMS +/- T   1482 14521 148246 /sys/kernel/tracing/trace
+> doing class DRM_UT_PRIME +/- T   1484 14539 148446 /sys/kernel/tracing/trace
+> doing class DRM_UT_ATOMIC +/- T   2984 31658 396064 /sys/kernel/tracing/trace
+> doing class DRM_UT_VBL +/- T   3411 37321 449848 /sys/kernel/tracing/trace
+> doing class DRM_UT_STATE +/- T   3413 37339 450048 /sys/kernel/tracing/trace
+> doing class DRM_UT_LEASE +/- T   3415 37357 450248 /sys/kernel/tracing/trace
+> doing class DRM_UT_DP +/- T   3417 37375 450442 /sys/kernel/tracing/trace
+> doing class DRM_UT_DRMRES +/- T   3419 37393 450644 /sys/kernel/tracing/trace
+> 
+> and some mid-run output from a quiet run, with less repetition.
+> 
+>             bash-96790   [006] ..... 410237.432255: tracing_mark_write: doing class DRM_UT_DRIVER +T
+>             bash-96790   [006] ..... 410238.610319: tracing_mark_write: doing class DRM_UT_DRIVER -T
+>             bash-96790   [006] ..... 410239.776285: tracing_mark_write: doing class DRM_UT_KMS +T
+>      gnome-shell-2101    [003] ..... 410239.923029: drm_debug: [FB:98]
+>   kworker/u32:10-367584  [010] ..... 410239.924627: drm_debug: Allow idle optimizations (MALL): 0
+>    kworker/u32:0-364714  [008] ..... 410239.935126: drm_debug: Allow idle optimizations (MALL): 1
+>      gnome-shell-2101    [003] ..... 410240.527186: drm_debug: [FB:100]
+>    kworker/u32:0-364714  [008] ..... 410240.528686: drm_debug: Allow idle optimizations (MALL): 0
+>   kworker/u32:10-367584  [010] ..... 410240.539378: drm_debug: Allow idle optimizations (MALL): 1
+>             bash-96790   [006] ..... 410240.957921: tracing_mark_write: doing class DRM_UT_KMS -T
+>             bash-96790   [006] ..... 410242.199120: tracing_mark_write: doing class DRM_UT_PRIME +T
+>             bash-96790   [006] ..... 410243.301988: tracing_mark_write: doing class DRM_UT_PRIME -T
+>             bash-96790   [006] ..... 410244.416400: tracing_mark_write: doing class DRM_UT_ATOMIC +T
+>      gnome-shell-2101    [003] ..... 410244.653372: drm_devdbg: cat:4, (0xffff8f26c173de00:0000:06:00.0)[UNSAFE-MEMORY] Allocated atomic state 000000001f1e6cb6
+>      gnome-shell-2101    [003] ..... 410244.653381: drm_devdbg: cat:4, (0xffff8f26c173de00:0000:06:00.0)[UNSAFE-MEMORY] Added [PLANE:55:plane-3] 00000000785ae904 state to 000000001f1e6cb6
+>      gnome-shell-2101    [003] ..... 410244.653384: drm_devdbg: cat:4, (0xffff8f26c173de00:0000:06:00.0)[UNSAFE-MEMORY] Added [CRTC:67:crtc-0] 00000000b06ca618 state to 000000001f1e6cb6
+>      gnome-shell-2101    [003] ..... 410244.653389: drm_devdbg: cat:4, (0xffff8f26c173de00:0000:06:00.0)[UNSAFE-MEMORY] Set [FB:98] for [PLANE:55:plane-3] state 00000000785ae904
+>      gnome-shell-2101    [003] ..... 410244.653392: drm_devdbg: cat:4, (0xffff8f26c173de00:0000:06:00.0)[UNSAFE-MEMORY] checking 000000001f1e6cb6
+>      gnome-shell-2101    [003] ..... 410244.653407: drm_devdbg: cat:4, (0xffff8f26c173de00:0000:06:00.0)[UNSAFE-MEMORY] committing 000000001f1e6cb6 nonblocking
+>    kworker/u32:0-364714  [010] ..... 410244.653729: drm_debug: amdgpu_crtc id:0 crtc_state_flags: enable:1, active:1, planes_changed:1, mode_changed:0,active_changed:0,connectors_changed:0
+>    kworker/u32:0-364714  [010] ..... 410244.654642: drm_debug: plane: id=3 dcc_en=0
+> 
+> a few things to note in the trace output:
+> 
+> . the event-name: drm_(debug|devdbg) is not very informative
+> 
+> . drm_devdbg fmt has cat:%d, it could be the classname, but that should
+>   replace event-name, not supplement it. this pertains to drm_debug too.
+> 
+> . drm_devdbg has lots of (dev-info), that could be optional on a new flag(s)
+> 
+> 
+> If anyone wants to repeat the above with the patchset, the .rc file follows:
+> 
+> events_3() {
+>     local a=$1
+>     local b=$2
+>     local c=$3
+>     echo $a > /sys/kernel/tracing/events/dyndbg/enable
+>     # avoid drm_vblank*, its noisy
+>     echo $b > /sys/kernel/tracing/events/drm/drm_debug/enable
+>     echo $c > /sys/kernel/tracing/events/drm/drm_devdbg/enable
+> }
+> 
+> flags_class() {
+>     local flgs=$1;
+>     local cls=$2;
+>     echo class $cls $flgs > /proc/dynamic_debug/control
+> }
+> 
+> # turn on each DRM_UT_* for 1 second each.
+> # kinda shows relative traffic of each category
+> # separated into blocks to get flavor of each
+> 
+> drm_classes() {
+>     local flgs=$1
+>     [ -z $flgs ] && flgs="p"
+> 
+>     #echo > /sys/kernel/tracing/trace
+>     #wc /sys/kernel/tracing/trace
+> 
+>     for cls in DRM_UT_CORE DRM_UT_DRIVER DRM_UT_KMS DRM_UT_PRIME DRM_UT_ATOMIC \
+> 			   DRM_UT_VBL DRM_UT_STATE DRM_UT_LEASE DRM_UT_DP \
+> 			   DRM_UT_DRMRES;
+>     do
+> 	echo -n doing class $cls "  "
+> 
+> 	echo doing class $cls +$flgs
+> 	sleep .1
+> 	flags_class +$flgs $cls
+> 	sleep 1
+> 	
+> 	echo doing class $cls -$flgs
+> 	sleep .1
+> 	flags_class -$flgs $cls
+> 	sleep 1
+> 	
+> 	#wc /sys/kernel/tracing/trace
+>     done
+> }
+> 
+> # like above but with T flag, and markers, trace/enable
+> trc_classes() {
+>     local flgs=$1
+>     [ -z $flgs ] && flgs="T"
+> 
+>     echo > /sys/kernel/tracing/trace
+>     wc -l /sys/kernel/tracing/trace
+> 
+>     events_3 1 1 1
+>     for cls in DRM_UT_CORE DRM_UT_DRIVER DRM_UT_KMS DRM_UT_PRIME \
+> 			   DRM_UT_ATOMIC \
+> 			   DRM_UT_VBL DRM_UT_STATE DRM_UT_LEASE DRM_UT_DP \
+> 			   DRM_UT_DRMRES;
+>     do
+> 	echo -n doing class $cls +/- $flgs "  "
+> 
+> 	echo doing class $cls +$flgs > /sys/kernel/tracing/trace_marker
+> 	sleep .1
+> 	flags_class +$flgs $cls
+> 	sleep 1
+> 	
+> 	echo doing class $cls -$flgs > /sys/kernel/tracing/trace_marker
+> 	sleep .1
+> 	flags_class -$flgs $cls
+> 	sleep 1
+> 	
+> 	wc /sys/kernel/tracing/trace
+> 
+>     done
+>     events_3 0 0 0
+> }
+> 
+> 
+> Jim Cromie (33):
+> 
+> 1st, a group of "cleanups"
+> 
+>   dyndbg: fix static_branch manipulation
+>   dyndbg: fix module.dyndbg handling
+>   dyndbg: show both old and new in change-info
+>   dyndbg: reverse module walk in cat control
+>   dyndbg: reverse module.callsite walk in cat control
+>   dyndbg: use ESCAPE_SPACE for cat control
+>   dyndbg: let query-modname override actual module name
+>   dyndbg: add test_dynamic_debug module
+>   dyndbg: drop EXPORTed dynamic_debug_exec_queries
+>   dyndbg: cleanup local vars in ddebug_init
+>   dyndbg: create and use struct _ddebug_info
+> 
+> class FOO support  
+> 
+>   dyndbg: add class_id to pr_debug callsites
+>   dyndbg: add __pr_debug_cls for testing
+>   dyndbg: add DECLARE_DYNDBG_CLASSMAP macro
+>   kernel/module: add __dyndbg_classes section
+>   dyndbg: add ddebug_attach_module_classes
+>   dyndbg: validate class FOO by checking with module
+>   doc-dyndbg: describe "class CLASS_NAME" query support
+>   doc-dyndbg: edit dynamic-debug-howto for brevity, audience
+> 
+> add dyndbg-class-param support
+> 
+>   dyndbg: add drm.debug style (drm/parameters/debug) bitmap support
+>   dyndbg: test DECLARE_DYNDBG_CLASSMAP, sysfs nodes
+> 
+> drm.debug adaptation
+> 
+>   drm_print: condense enum drm_debug_category
+>   drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.
+>   drm_print: interpose drm_*dbg with forwarding macros
+>   drm_print: wrap drm_*_dbg in dyndbg descriptor factory macro
+>   drm-print.h: include dyndbg header
+>   drm-print: add drm_dbg_driver to improve namespace symmetry
+>   drm_print: refine drm_debug_enabled for jump-label
+>   drm_print: prefer bare printk KERN_DEBUG on generic fn
+>   drm_print: add _ddebug descriptor to drm_*dbg prototypes
+> 
+> nouveau-LEVEL_NUM integration: WIP/exploratory.
+> 
+>   nouveau: change nvkm_debug/trace to use dev_dbg POC
+>   nouveau: adapt NV_DEBUG, NV_ATOMIC to use DRM.debug
+>   nouveau: WIP add 2 LEVEL_NUM classmaps for CLI, SUBDEV
+> 
+>  .../admin-guide/dynamic-debug-howto.rst       | 246 +++++-----
+>  MAINTAINERS                                   |   2 +
+>  drivers/gpu/drm/Kconfig                       |  12 +
+>  drivers/gpu/drm/Makefile                      |   2 +
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  14 +
+>  drivers/gpu/drm/display/drm_dp_helper.c       |  13 +
+>  drivers/gpu/drm/drm_crtc_helper.c             |  13 +
+>  drivers/gpu/drm/drm_print.c                   |  48 +-
+>  drivers/gpu/drm/i915/i915_params.c            |  12 +
+>  .../gpu/drm/nouveau/include/nvkm/core/debug.h |  16 +
+>  .../drm/nouveau/include/nvkm/core/subdev.h    |  17 +-
+>  drivers/gpu/drm/nouveau/nouveau_drm.c         |  20 +
+>  drivers/gpu/drm/nouveau/nouveau_drv.h         |  16 +-
+>  drivers/gpu/drm/nouveau/nvkm/core/subdev.c    |  23 +
+>  include/asm-generic/vmlinux.lds.h             |   3 +
+>  include/drm/drm_print.h                       |  85 +++-
+>  include/linux/dynamic_debug.h                 | 176 +++++--
+>  kernel/module/internal.h                      |   4 +-
+>  kernel/module/main.c                          |  20 +-
+>  lib/Kconfig.debug                             |  10 +
+>  lib/Makefile                                  |   1 +
+>  lib/dynamic_debug.c                           | 450 +++++++++++++++---
+>  lib/test_dynamic_debug.c                      | 165 +++++++
+>  23 files changed, 1099 insertions(+), 269 deletions(-)
+>  create mode 100644 lib/test_dynamic_debug.c
+> 
+> -- 
+> 2.37.1
 > 
 
-Since this commit I'm unable to make use of GVT-g on a Xeon W-1290 IGD.
-The following in dmesg is the first sign of trouble:
-
-------------[ cut here ]------------
-assign a handler to a non-tracked mmio 4ab8
-WARNING: CPU: 16 PID: 504 at drivers/gpu/drm/i915/gvt/handlers.c:123 setup_mmio_info.constprop.0+0xd1/0xf0 [i915]
-ixgbe 0000:02:00.0: 31.504 Gb/s available PCIe bandwidth (8.0 GT/s PCIe x4 link)
-Modules linked in: nouveau(+) i915(+) mdev vfio_iommu_type1 vfio prime_numbers intel_gtt ast drm_buddy mxm_wmi drm_dp_helper drm_vram_helper drm_ttm_helper drm_kms_helper sd_mod t10_pi syscopyarea sysfillrect sysimgblt sg fb_sys_fops cec ttm crct10dif_pclmul drm ixgbe(+) crc32_pclmul igb crc32c_intel ahci e1000e libahci mdio libata ghash_clmulni_intel i2c_algo_bit dca wmi video pinctrl_cannonlake rndis_host cdc_ether usbnet mii dm_mirror dm_region_hash dm_log dm_mod fuse
-ixgbe 0000:02:00.0: MAC: 4, PHY: 0, PBA No: 020C08-0F8
-CPU: 16 PID: 504 Comm: systemd-udevd Not tainted 5.18.0-rc1+ #16
-ixgbe 0000:02:00.0: 3c:ec:ef:27:ef:0e
-Hardware name: Supermicro Super Server/X12SCZ-F, BIOS 1.0 06/16/2020
-RIP: 0010:setup_mmio_info.constprop.0+0xd1/0xf0 [i915]
-Code: 83 c6 04 81 ef e4 e6 dd 78 39 f5 77 a2 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 d8 c1 07 c1 e8 fe 83 cc c9 <0f> 0b 48 83 c4 08 b8 ed ff ff ff 5b 5d 41 5c 41 5d 41 5e 41 5f c3
-RSP: 0018:ffffa2014090fa28 EFLAGS: 00010282
-RAX: 0000000000000000 RBX: ffff934754a38000 RCX: 0000000000000000
-RDX: ffff9346ce42c740 RSI: ffff9346ce41fca0 RDI: ffff9346ce41fca0
-RBP: 0000000000004abc R08: 0000000000000000 R09: 00000000ffff7fff
-R10: ffffa2014090f868 R11: ffffffff8bfe65e8 R12: 0000000000000000
-R13: 0000000000000000 R14: 0000000000000008 R15: 0000000000000000
-FS:  00007f345634d540(0000) GS:ffff9346ce400000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 0000562eacfa8980 CR3: 0000002058ac0001 CR4: 00000000007706e0
-PKRU: 55555554
-Call Trace:
- <TASK>
- init_skl_mmio_info+0x1532/0x15a0 [i915]
- intel_gvt_setup_mmio_info+0x1aa/0x240 [i915]
- ? gen9_dbuf_ctl_mmio_write+0x40/0x40 [i915]
- intel_gvt_init_device+0x106/0x300 [i915]
- intel_gvt_init+0x41/0xa0 [i915]
- i915_driver_hw_probe+0x2b2/0x340 [i915]
- i915_driver_probe+0x1fd/0x570 [i915]
- ? drm_privacy_screen_get+0x15f/0x190 [drm]
- i915_pci_probe+0x56/0x1e0 [i915]
- local_pci_probe+0x42/0x80
- pci_call_probe+0x56/0x160
- pci_device_probe+0x75/0xf0
- ? driver_sysfs_add+0x6f/0xd0
- really_probe+0x199/0x380
-ixgbe 0000:02:00.0: Intel(R) 10 Gigabit Network Connection
- __driver_probe_device+0xfe/0x180
- driver_probe_device+0x1e/0x90
- __driver_attach+0xc0/0x1c0
- ? __device_attach_driver+0xe0/0xe0
- ? __device_attach_driver+0xe0/0xe0
- bus_for_each_dev+0x75/0xc0
- bus_add_driver+0x149/0x1e0
- driver_register+0x8f/0xe0
- i915_init+0x1d/0x7c [i915]
- ? 0xffffffffc0768000
- do_one_initcall+0x41/0x200
- ? kmem_cache_alloc_trace+0x174/0x2f0
- do_init_module+0x4c/0x250
- __do_sys_finit_module+0xb4/0x120
- do_syscall_64+0x59/0x80
- ? syscall_exit_to_user_mode+0x12/0x30
- ? do_syscall_64+0x69/0x80
- ? do_syscall_64+0x69/0x80
- ? do_syscall_64+0x69/0x80
- ? sysvec_call_function+0x3c/0x90
- entry_SYSCALL_64_after_hwframe+0x44/0xae
-RIP: 0033:0x7f3456e5a3ed
-Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 03 aa 1b 00 f7 d8 64 89 01 48
-RSP: 002b:00007fff4df686b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
-RAX: ffffffffffffffda RBX: 0000562eacf62920 RCX: 00007f3456e5a3ed
-RDX: 0000000000000000 RSI: 0000562eacf886b0 RDI: 000000000000001a
-RBP: 0000000000020000 R08: 0000000000000000 R09: 0000000000000002
-R10: 000000000000001a R11: 0000000000000246 R12: 0000562eacf886b0
-R13: 0000562eacf627c0 R14: 0000000000000000 R15: 0000562eacf8d2d0
- </TASK>
----[ end trace 0000000000000000 ]---
-
-
-> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-> index 520a7e1942f3..9bd3c15bfab6 100644
-> --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-...
-> @@ -3440,7 +2729,6 @@ static int init_skl_mmio_info(struct intel_gvt *gvt)
->  		 NULL, NULL);
->  
->  	MMIO_DFH(GAMT_CHKN_BIT_REG, D_KBL | D_CFL, F_CMD_ACCESS, NULL, NULL);
-> -	MMIO_D(GEN9_CTX_PREEMPT_REG, D_SKL_PLUS & ~D_BXT);
->  	MMIO_DFH(_MMIO(0xe4cc), D_BDW_PLUS, F_CMD_ACCESS, NULL, NULL);
->  
->  	return 0;
-
-I tracked this to the above code segment, where the untouched line
-provides this mmio address:
-
-#define GAMT_CHKN_BIT_REG                       _MMIO(0x4ab8)
-
-If I comment out setup of this register, GVT-g appears to initialize
-and I can list available mdev types.  I haven't tried assignment of the
-resulting device to a VM yet.  I do however get lots of spew about
-unclaimed reads:
-
-i915 0000:00:02.0: Unclaimed read from register 0x7257c
-i915 0000:00:02.0: Unclaimed read from register 0x60110
-i915 0000:00:02.0: Unclaimed read from register 0x6f03c
-i915 0000:00:02.0: Unclaimed read from register 0x6003c
-i915 0000:00:02.0: Unclaimed read from register 0x61038
-i915 0000:00:02.0: Unclaimed read from register 0x45104
-i915 0000:00:02.0: Unclaimed read from register 0x70428
-i915 0000:00:02.0: Unclaimed read from register 0x68884
-i915 0000:00:02.0: Unclaimed read from register 0x7f040
-i915 0000:00:02.0: Unclaimed read from register 0x4510c
-i915 0000:00:02.0: Unclaimed read from register 0x6203c
-i915 0000:00:02.0: Unclaimed read from register 0x70430
-i915 0000:00:02.0: Unclaimed read from register 0x704c0
-i915 0000:00:02.0: Unclaimed read from register 0x7142c
-i915 0000:00:02.0: Unclaimed read from register 0x72428
-i915 0000:00:02.0: Unclaimed read from register 0x6f04c
-i915 0000:00:02.0: Unclaimed read from register 0x6004c
-i915 0000:00:02.0: Unclaimed read from register 0x61048
-i915 0000:00:02.0: Unclaimed read from register 0x68070
-i915 0000:00:02.0: Unclaimed read from register 0x71284
-i915 0000:00:02.0: Unclaimed read from register 0x70438
-i915 0000:00:02.0: Unclaimed read from register 0x71434
-i915 0000:00:02.0: Unclaimed read from register 0x714c4
-i915 0000:00:02.0: Unclaimed read from register 0x72430
-i915 0000:00:02.0: Unclaimed read from register 0x724c0
-i915 0000:00:02.0: Unclaimed read from register 0x6204c
-i915 0000:00:02.0: Unclaimed read from register 0x69074
-i915 0000:00:02.0: Unclaimed read from register 0x64044
-i915 0000:00:02.0: Unclaimed read from register 0x7143c
-i915 0000:00:02.0: Unclaimed read from register 0x72438
-i915 0000:00:02.0: Unclaimed read from register 0x46508
-i915 0000:00:02.0: Unclaimed read from register 0x69270
-i915 0000:00:02.0: Unclaimed read from register 0x45124
-i915 0000:00:02.0: Unclaimed read from register 0x68080
-i915 0000:00:02.0: Unclaimed read from register 0x61208
-i915 0000:00:02.0: Unclaimed read from register 0x45200
-i915 0000:00:02.0: Unclaimed read from register 0x69084
-i915 0000:00:02.0: Unclaimed read from register 0x6f020
-i915 0000:00:02.0: Unclaimed read from register 0x60020
-i915 0000:00:02.0: Unclaimed read from register 0x42020
-i915 0000:00:02.0: Unclaimed read from register 0x69280
-i915 0000:00:02.0: Unclaimed read from register 0x71184
-i915 0000:00:02.0: Unclaimed read from register 0x68090
-i915 0000:00:02.0: Unclaimed read from register 0x7f024
-i915 0000:00:02.0: Unclaimed read from register 0x70024
-i915 0000:00:02.0: Unclaimed read from register 0x70578
-i915 0000:00:02.0: Unclaimed read from register 0x43218
-i915 0000:00:02.0: Unclaimed read from register 0x62020
-i915 0000:00:02.0: Unclaimed read from register 0x68870
-i915 0000:00:02.0: Unclaimed read from register 0x7157c
-i915 0000:00:02.0: Unclaimed read from register 0x72024
-i915 0000:00:02.0: Unclaimed read from register 0x72578
-i915 0000:00:02.0: Unclaimed read from register 0x46020
-i915 0000:00:02.0: Unclaimed read from register 0x6f038
-i915 0000:00:02.0: Unclaimed read from register 0x60038
-i915 0000:00:02.0: Unclaimed read from register 0x45100
-i915 0000:00:02.0: Unclaimed read from register 0x44030
-i915 0000:00:02.0: Unclaimed read from register 0x68880
-i915 0000:00:02.0: Unclaimed read from register 0x61110
-i915 0000:00:02.0: Unclaimed read from register 0x6103c
-i915 0000:00:02.0: Unclaimed read from register 0x45108
-i915 0000:00:02.0: Unclaimed read from register 0x62038
-i915 0000:00:02.0: Unclaimed read from register 0x6e554
-i915 0000:00:02.0: Unclaimed read from register 0x7042c
-i915 0000:00:02.0: Unclaimed read from register 0x71428
-i915 0000:00:02.0: Unclaimed read from register 0x48800
-i915 0000:00:02.0: Unclaimed read from register 0x7f044
-i915 0000:00:02.0: Unclaimed read from register 0x6f048
-i915 0000:00:02.0: Unclaimed read from register 0x60048
-i915 0000:00:02.0: Unclaimed read from register 0x48268
-i915 0000:00:02.0: Unclaimed read from register 0x45110
-i915 0000:00:02.0: Unclaimed read from register 0x70284
-i915 0000:00:02.0: Unclaimed read from register 0x7f000
-i915 0000:00:02.0: Unclaimed read from register 0x70434
-i915 0000:00:02.0: Unclaimed read from register 0x704c4
-i915 0000:00:02.0: Unclaimed read from register 0x71430
-i915 0000:00:02.0: Unclaimed read from register 0x714c0
-i915 0000:00:02.0: Unclaimed read from register 0x44040
-i915 0000:00:02.0: Unclaimed read from register 0x7242c
-i915 0000:00:02.0: Unclaimed read from register 0x68890
-i915 0000:00:02.0: Unclaimed read from register 0x42004
-i915 0000:00:02.0: Unclaimed read from register 0x6104c
-i915 0000:00:02.0: Unclaimed read from register 0x62048
-i915 0000:00:02.0: Unclaimed read from register 0x68074
-i915 0000:00:02.0: Unclaimed read from register 0x69070
-i915 0000:00:02.0: Unclaimed read from register 0x7043c
-i915 0000:00:02.0: Unclaimed read from register 0x72284
-i915 0000:00:02.0: Unclaimed read from register 0x71438
-i915 0000:00:02.0: Unclaimed read from register 0x72434
-i915 0000:00:02.0: Unclaimed read from register 0x724c4
-i915 0000:00:02.0: Unclaimed read from register 0x45120
-i915 0000:00:02.0: Unclaimed read from register 0x7243c
-i915 0000:00:02.0: Unclaimed read from register 0x42014
-i915 0000:00:02.0: Unclaimed read from register 0x69274
-i915 0000:00:02.0: Unclaimed read from register 0x45128
-i915 0000:00:02.0: Unclaimed read from register 0x68084
-i915 0000:00:02.0: Unclaimed read from register 0x6120c
-i915 0000:00:02.0: Unclaimed read from register 0x69080
-i915 0000:00:02.0: Unclaimed read from register 0x70184
-i915 0000:00:02.0: Unclaimed read from register 0x43408
-i915 0000:00:02.0: Unclaimed read from register 0x61020
-i915 0000:00:02.0: Unclaimed read from register 0x72184
-i915 0000:00:02.0: Unclaimed read from register 0x69090
-i915 0000:00:02.0: Unclaimed read from register 0x7057c
-i915 0000:00:02.0: Unclaimed read from register 0x71024
-i915 0000:00:02.0: Unclaimed read from register 0x71578
-i915 0000:00:02.0: Unclaimed read from register 0x68874
-
-This looks like a regression in v5.19 to me.  Thanks,
-
-Alex
-
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
