@@ -1,45 +1,29 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9319F590BC1
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 Aug 2022 08:04:23 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88CDA592205
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 14 Aug 2022 17:43:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2F2D4A7CF1;
-	Fri, 12 Aug 2022 06:04:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2A839978AD;
+	Sun, 14 Aug 2022 15:43:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CFEC8A306F;
- Fri, 12 Aug 2022 06:03:52 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 1C3606173F;
- Fri, 12 Aug 2022 06:03:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13C92C433D6;
- Fri, 12 Aug 2022 06:03:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1660284229;
- bh=TcpkxNLDwa143ZU3Y00QybKC5IjhDquFERYw7okxaeo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=WQQHeVF7BdL2rNB1+B0q9GiyDuPMCFPh3j7XxDgJVevz5ZKQElZxbdogISLhpNrJ+
- Ubo+bTcuLzd5gLM9Vxea9vnaFWYNpJYDQ30+UhqFkZEbg4hcSxvPtww74RnSn0KX1w
- 1OClOT7CtRUeNXRN1IFWZ1mm/9hi2htv6+wP01MY=
-Date: Fri, 12 Aug 2022 08:03:47 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v4 00/41] DYNDBG: opt-in class'd debug for modules, use
- in drm.
-Message-ID: <YvXtQ7/FJFSVXlGU@kroah.com>
-References: <20220720153233.144129-1-jim.cromie@gmail.com>
- <CAJfuBxxPRj-u5S45pPfAEaE46ji0--MTVxryEAUPe1+1c1jgEw@mail.gmail.com>
- <17628790-3905-460d-8734-981cfa8e7e51@akamai.com>
- <YvUz2Nk6YHl+jVwR@phenom.ffwll.local>
+X-Greylist: delayed 605 seconds by postgrey-1.36 at gabe;
+ Sun, 14 Aug 2022 15:42:58 UTC
+Received: from nqsgsyh.cn (unknown [117.50.189.203])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3AE649689D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 14 Aug 2022 15:42:57 +0000 (UTC)
+Received: by mail.nqsgsyh.cn id hv4c040e97ce for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 14 Aug 2022 23:32:50 +0800 (envelope-from <orico@nqsgsyh.cn>)
+Content-Type: text/html; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YvUz2Nk6YHl+jVwR@phenom.ffwll.local>
+Content-Transfer-Encoding: base64
+From: e-orico@freedesktop.org
+Subject: =?utf-8?b?44CQT1JJQ08gQ0FSROOAkeOBiuWPluW8leOBruOBlOeiuuiqjQ==?=
+To: intel-gvt-dev@lists.freedesktop.org
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,60 +36,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jim.cromie@gmail.com, Daniel Vetter <daniel.vetter@ffwll.ch>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- robdclark@gmail.com, amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Jason Baron <jbaron@akamai.com>, Sean Paul <seanpaul@chromium.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20220814154319.2A839978AD@gabe.freedesktop.org>
+Date: Sun, 14 Aug 2022 15:43:19 +0000 (UTC)
 
-On Thu, Aug 11, 2022 at 06:52:40PM +0200, Daniel Vetter wrote:
-> On Wed, Aug 03, 2022 at 04:13:05PM -0400, Jason Baron wrote:
-> > 
-> > 
-> > On 8/3/22 15:56, jim.cromie@gmail.com wrote:
-> > > On Wed, Jul 20, 2022 at 9:32 AM Jim Cromie <jim.cromie@gmail.com> wrote:
-> > >>
-> > > 
-> > >> Hi Jason, Greg, DRM-folk,
-> > >>
-> > >> This adds 'typed' "class FOO" support to dynamic-debug, where 'typed'
-> > >> means either DISJOINT (like drm debug categories), or VERBOSE (like
-> > >> nouveau debug-levels).  Use it in DRM modules: core, helpers, and in
-> > >> drivers i915, amdgpu, nouveau.
-> > >>
-> > > 
-> > > This revision fell over, on a conflict with something in drm-MUMBLE
-> > > 
-> > > Error: patch https://urldefense.com/v3/__https://patchwork.freedesktop.org/api/1.0/series/106427/revisions/2/mbox/__;!!GjvTz_vk!UCPl5Uf32cDVwwysMTfaLwoGLWomargFXuR8HjBA3xsUOjxXHXC5hneAkP4iWK91yc-LjjJxWW89-51Z$ 
-> > > not applied
-> > > Applying: dyndbg: fix static_branch manipulation
-> > > Applying: dyndbg: fix module.dyndbg handling
-> > > Applying: dyndbg: show both old and new in change-info
-> > > Applying: dyndbg: reverse module walk in cat control
-> > > Applying: dyndbg: reverse module.callsite walk in cat control
-> > > Applying: dyndbg: use ESCAPE_SPACE for cat control
-> > > Applying: dyndbg: let query-modname override actual module name
-> > > Applying: dyndbg: add test_dynamic_debug module
-> > > Applying: dyndbg: drop EXPORTed dynamic_debug_exec_queries
-> > > 
-> > > Jason,
-> > > those above are decent maintenance patches, particularly the drop export.
-> > > It would be nice to trim this unused api this cycle.
-> > 
-> > Hi Jim,
-> > 
-> > Agreed - I was thinking the same thing. Feel free to add
-> > Acked-by: Jason Baron <jbaron@akamai.com> to those first 9.
-> 
-> Does Greg KH usually pick up dyndbg patches or someone else or do I need
-> to do something? Would be great to get some movement here since -rc1 goes
-> out and merging will restart next week.
-
-Yes, I can take these into my tree after -rc1 is out.
-
-thanks,
-
-greg k-h
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
+Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
+bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxQPk9yaWNvIENB
+UkTjgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgIHoqqDjgavjgYLjgorjgYzjgajjgYbjgZTjgZbj
+gYTjgb7jgZnjgII8L1A+DQo8UD7jgZPjga7jgZ/jgbPjgIHjgYrlrqLjgZXjgb7jga7jgYrlj5bl
+vJXjgavjgaTjgY3jgb7jgZfjgabjgIHnrKzkuInogIXjgavjgojjgovkuI3mraPkvb/nlKjjga7l
+j6/og73mgKfjgpLmpJznn6XjgZfjgZ/jgZ/jgoHCt+S4gOaZgueahOOBq+OBiuWPluW8leOCkuOB
+iuatouOCgeOBl+OBvuOBl+OBn+OAgjwvUD4NCjxQPuOBlOacrOS6uuOBleOBvuOBruOBlOWIqeeU
+qOOBp+OBguOBo+OBn+WgtOWQiOOBr+OAgeWkp+WkieOBiuaJi+aVsOOCkuOBiuOBi+OBkeOBhOOB
+n+OBl+OBvuOBmeOBjOOAgeWGjeW6puOBlOWIqeeUqOOCkuOBiumhmOOAgeeUs+OBl+OBguOBkuOB
+vuOBmeOAgjxCUj4o44Kk44Oz44K/44O844ON44OD5bqX6IiX44Gn44Gu44GU5Yip55So44Gu5aC0
+5ZCI44Gv44CB44GK5Y+W5byV44Gu5oiQ56uL54q25rOB44KS44GU56K66KqN44Gu44GG44GI44CB
+5YaN5bqm44GU5Yip55So44KS44GK5Y6f44GE44Gf44GX44G+44GZ44CCKTwvUD4NCjxQPuWIqeeU
+qOeiuuiqjeOBruOBiuaJi+e2muS4i+iomFVSTDwvUD4NCjxQPjxBIA0KaHJlZj0iaHR0cHM6Ly9n
+b25nYmFrdS5jbi9lb3JpY28vbG9naW4ucGhwP19nYT0yLjExODEzNTYyNi4yNTUzMzk5NzcuMTYy
+Nzc4MzcxMC0xODcyNTExNDk2LjE2Mjc3ODM3MDUiPmh0dHBzOi8vZ29uZ2Jha3UuY24vZW9yaWNv
+L2xvZ2luLnBocD9fZ2E9Mi4xMTgxMzU2MjYuMjU1MzM5OTc3LjE2Mjc3ODM3MTAtMTg3MjUxMTQ5
+Ni4xNjI3NzgzNzA1PC9BPjwvUD4NCjxQPuOCiOOCiuOCouOCr+OCu+OCueOBl+WujOS6huOBhOOB
+n+OBoOOBjeOBvuOBmeOCiOOBhuOBiumhmOOBhOOBn+OBl+OBvuOBmeOAgjxCUj48L1A+DQo8UD7j
+gZTmnKzkurrjgZXjgb7jga7jgZTliKnnlKjjgafjgarjgYTloLTlkIjjgavjga/jgIHku4rlvozj
+gIHlronlhajjgavjgqvjg7zjg4njgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY/jgZ/jgoHjgIHjgqvj
+g7zjg4njga7lt67mm7/Ct+OBiOetieOBiuaJi+e2muOBjeOBjOW/heimgeOBqOOBquOCiuOBvuOB
+meOAguOBiuaJi+aVsOOBp+OBmeOBjOOAgeS4i+iomDxCUj7jgJDmnKzjg6Hjg7zjg6vlsILnlKjj
+g4DjgqTjg6Tjg6vjgJHjgbjjgYrpm7voqbHjgY/jgaDjgZXjgYTjgb7jgZnjgojjgYbjgYrpoZjj
+gYTjgZ/jgZfjgb7jgZnjgII8L1A+DQo8UD48QlI+44GU5b+D6YWN44Go44GU5LiN5L6/44KS44GK
+44GL44GR44GE44Gf44GX44G+44GZ44GM44CB5L2V5Y2S44GU55CG6Kej6LOc44KK44G+44GZ44KI
+44GG44GK6aGY44GE55Sz44GX44GC44GS44G+44GZ44CCPC9QPg0KPFA+wrfkuI3mraPlj5blvJXj
+ga7nm6PoppbkvZPliLbjgavjgaTjgYTjgaY8QlI+KDEp5byK56S+44Gn44Gv44GK5a6i44GV44G+
+44GM54qv572q44Gr5be744GN6L6844G+44KM44Gq44GE44KI44GG44CB44GK5a6i44GV44G+44Gu
+44Kr44O844OJ44Gr5LiN5a+p44Gq44GK5Y+W5byV44GM44Gq44GE44GLMjTmmYLplpMzNjXml6Xj
+g6Ljg4vjgr/jg6rjg7PjgrAo5LiN5q2j5L2/55So44Gu55uj6KaWKeOCkuihjOOBo+OBpuOBiuOC
+iuOBvuOBmeOAgjxCUj4oMinjgYrlj5blvJXjga7nm6PoppbjgavjgojjgorkuI3mraPlj5blvJXj
+ga7lgr7lkJHjgajlkIjoh7TjgZfjgZ/jgYrlj5blvJXjgpLkv53nlZnjga7jgYbjgYjjgIHmnKzj
+g6Hjg7zjg6vjgpLphY3kv6HjgZfjgabjgYrjgorjgb7jgZnjgII8QlI+KDMp5byK56S+44Gu44Kr
+44O844OJ5LiN5q2j5L2/55So44Gr5a++44GZ44KL5Y+W57WE44G/44Gr44Gk44GE44Gm44Gv44CB
+6Kmz44GX44GP44Gv5byK56S+44Ob44O844Og44Oa44O844K444KS44GU6Kan44GP44Gg44GV44GE
+44CCPC9QPjxJTUcgDQpib3JkZXI9MCBoc3BhY2U9MCBhbHQ9IiIgDQphbGlnbj1iYXNlbGluZT4g
+PC9CT0RZPjwvSFRNTD4NCg==
