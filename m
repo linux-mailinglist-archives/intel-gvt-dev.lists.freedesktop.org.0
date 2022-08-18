@@ -1,60 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C1CA5991EC
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Aug 2022 02:51:39 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7738599396
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 19 Aug 2022 05:39:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3302C10E142;
-	Fri, 19 Aug 2022 00:51:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1D94C10E4CC;
+	Fri, 19 Aug 2022 03:39:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-oa1-x2a.google.com (mail-oa1-x2a.google.com
- [IPv6:2001:4860:4864:20::2a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A4E5110E176
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 19 Aug 2022 00:51:32 +0000 (UTC)
-Received: by mail-oa1-x2a.google.com with SMTP id
- 586e51a60fabf-11c5ee9bf43so3669191fac.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 18 Aug 2022 17:51:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
- :mime-version:from:to:cc;
- bh=ug6ExnDzRuzsLrFkU6ea+tQH1KjjB1to+YG/IeDC5Sg=;
- b=fH7fZi2VhcGJsidD49FCBGQpPQZNJXSEcb0Fpb+zLgdU2IekyxItgKZVd4TDYW2Fw4
- M5/UNXtRY79XgB9ROAPcbcxMhLUrJ8wHzxBXomyrHnzT3Cys2fOD/Dz35A+MfrBfpN50
- oN1z4kY88/XxCyulb75nGEV/er1JBlZCU82lFTeeAcG/uLYWzi4k/WO5SP6JiTZgQFvt
- GV7q/wQDZ2Zw1A5oksRilmskY/p+N7sgp4LfiBaVOZ/+eVaurPw1P1rK/Fn5Ynd+goFV
- SHcjIlbU003ooQ7IBivN8/ICFSpwoolrK61YfOIYCSsAmHzK28SfLz7UhQcFAKEoy+L+
- 6N8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
- :mime-version:x-gm-message-state:from:to:cc;
- bh=ug6ExnDzRuzsLrFkU6ea+tQH1KjjB1to+YG/IeDC5Sg=;
- b=HOpwFM4bvvS4vFHjG1igJS9CsrVOLmr84mDFgpc6XAPifxsoSUSBHPyblpml7gzERl
- sOsr577es18GRDUuBlZ6Ih23iDLrCqAx/bX6XsDyQA01dbkG9VA5dQ9vyxlCC9zKPfHJ
- yJ71y2kfeMjdaSPxj7a7nODK9li2jTnSOZlIq212+XnwnIhjEhJD9M7Ldv7mUn0RVrwr
- K7LmkN/of3ZcsZ9/fjT26+UR74JrgiOX2usjwa07vVE3ueGYem2Y9GszRmUWGIu9EZMM
- bm29tz9DGC2Gx+oOo8X0lsLEEusiAqo1ZNoj4PkHuH7lS24l8b3dPRgvMiZ84pVuifOg
- 2W2g==
-X-Gm-Message-State: ACgBeo1cqcjC5jgB7uRNzWGWgxJQjOhzoI92P1bTLvBJD57AUGdTkdBN
- RBQZybw5oVkTh0kvh22u/8BHNL97XkzjYj6RS+8=
-X-Google-Smtp-Source: AA6agR6bAQ8y5I/FTBo0LbgBItPRYRjCdZOibW5PtX85o0eM4+xX5U1x6EJt2yJVIPLraviMRSPCD0LIvfnErlhC3+g=
-X-Received: by 2002:a05:6870:e0d1:b0:11c:9caf:7535 with SMTP id
- a17-20020a056870e0d100b0011c9caf7535mr2144288oab.34.1660870291484; Thu, 18
- Aug 2022 17:51:31 -0700 (PDT)
+Received: from jss-smtp.jship.co.jp (fs98a57dcc.tkyc007.ap.nuro.jp
+ [152.165.125.204])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6313C10E4CC;
+ Fri, 19 Aug 2022 03:39:18 +0000 (UTC)
+Received: from User (_gateway [192.168.0.1])
+ by jss-smtp.jship.co.jp (Postfix) with SMTP id 722BA4096A2;
+ Fri, 19 Aug 2022 02:28:17 +0900 (JST)
+From: "Patrick Oliviera"<test@nuro.jp>
+Subject: Invest in your project and pay 3% per year - Investieren Sie in Ihr
+ Projekt und zahlen Sie 3% pro Jahr
+Date: Thu, 18 Aug 2022 10:28:20 -0700
 MIME-Version: 1.0
-Received: by 2002:a4a:c598:0:0:0:0:0 with HTTP; Thu, 18 Aug 2022 17:51:31
- -0700 (PDT)
-From: Lisa Robinson <charlesmurege@gmail.com>
-Date: Thu, 18 Aug 2022 17:51:31 -0700
-Message-ID: <CADTGA5LQhuuw8DAx8hOKcfsrifq4d1H6_qp9BV1dpaF7W1d9XA@mail.gmail.com>
-Subject: Spenden Hilfe Fonds
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,12 +40,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: robinsonfoundation255@gmail.com
+Reply-To: dubreuilgmbh@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20220819033922.1D94C10E4CC@gabe.freedesktop.org>
 
---=20
-Hallo Schatz
-Meine Stiftung hat beschlossen, Ihnen 1.200.000 Millionen Dollar f=C3=BCr
-mein laufendes Wohlt=C3=A4tigkeitsprojekt zur Verf=C3=BCgung zu stellen.
-Kontaktieren Sie mich, um das Geschenk zu erhalten.
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+Dear Mr. / Dear Ms.</DIV>
+<DIV>
+I am a professional banker and I am in contact with private investors who want to invest in Germany, Austria, Switzerland or anywhere in the world. Currently, I have investors who can invest from 100,000 euros to 150 million euros, but we want to work with serious partners. If you have very interesting projects where we can invest the money and get an annual return of 3% per year.</DIV>
+<DIV>
+If you have a project to invest in, you will get a 30% commission to prepare your project and you will invest the remaining 70% for the project. If you invest this 70% in your project, you will pay an annual return of 3% per year and during the 20 years of the partnership.</DIV>
+<DIV>
+Please contact us if you have projects in which we can invest the funds, and we will discuss the terms of a joint partnership. I will inform you that the contract is available and as soon as you send us a response, we will send you the contract.</DIV>
+<DIV>
+Info: Please send me your answer only to this email address:&nbsp;&nbsp; patrickolivieragmbh1@outlook.com</DIV>
+<DIV>
+you can call me directly by phone or send me your email address by sms and I will answer you immediately</DIV>
+<DIV>
+Patrick Oliviera</DIV>
+<DIV>
++33780930303</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+Sehr geehrter Herr / Sehr geehrte Frau</DIV>
+<DIV>
+Ich bin ein professioneller Banker und stehe in Kontakt mit privaten Investoren, die in Deutschland, Österreich, der Schweiz oder irgendwo auf der Welt investieren wollen. Derzeit habe ich Investoren, die von 100.000 Euro bis 150 Millionen Euro investieren können, aber wir wollen mit seriösen Partnern arbeiten. Wenn Sie sehr interessante Projekte haben, in die wir das Geld investieren können und eine jährliche Rendite von 3% pro Jahr erhalten.</DIV>
+<DIV>
+Wenn Sie ein Projekt haben, in das Sie investieren möchten, erhalten Sie eine Provision von 30 % für die Vorbereitung Ihres Projekts, und Sie werden die restlichen 70 % in das Projekt investieren. Wenn Sie diese 70% in Ihr Projekt investieren, erhalten Sie eine jährliche Rendite von 3% pro Jahr während der 20 Jahre der Partnerschaft.</DIV>
+<DIV>
+Bitte kontaktieren Sie uns, wenn Sie Projekte haben, in die wir die Mittel investieren können, und wir werden die Bedingungen für eine gemeinsame Partnerschaft besprechen. Ich werde Sie informieren, dass der Vertrag verfügbar ist, und sobald Sie uns eine Antwort schicken, werden wir Ihnen den Vertrag zusenden.</DIV>
+<DIV>
+Info: Bitte senden Sie mir Ihre Antwort nur an diese E-Mail address:&nbsp;&nbsp; patrickolivieragmbh1@outlook.com</DIV>
+<DIV>
+Sie können mich direkt anrufen oder mir Ihre E-Mail-Adresse per SMS schicken und ich werde Ihnen umgehend antworten</DIV>
+<DIV>
+Patrick Oliviera</DIV>
+<DIV>
++33780930303</DIV>
+<DIV>
+&nbsp;</DIV>
+<DIV>
+&nbsp;</DIV>
+</FONT>
+</BODY></HTML>
