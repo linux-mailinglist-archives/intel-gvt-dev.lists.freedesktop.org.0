@@ -1,51 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEFEF59B807
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Aug 2022 05:37:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 245B759B929
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Aug 2022 08:22:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5058312ACF7;
-	Mon, 22 Aug 2022 03:37:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 17F0B97F2D;
+	Mon, 22 Aug 2022 06:22:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 40C1812ACDC;
- Mon, 22 Aug 2022 03:37:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1661139438; x=1692675438;
- h=date:from:to:cc:subject:message-id:reply-to:mime-version;
- bh=vorFodc2ORDr+tz5oBwG7AYUNb4s06FtmXto8psmF5E=;
- b=IgDkjZ0tKl50FR0B4kGTsab9TGtU0JZlMvW7zQcQHFthAUFYyCTlJo1q
- DShRdJOWyViIbmYZG5/9Dc5vEkeABNGM0ttxwSAKJ2caDjjqNds/MssR+
- 8WGIDblhgZiTZ2gF5eNWRuO42XTdIP0NDuKKQUjUc9BsHwXmXxdpPJiWs
- i5JrhR8JgGd4J/oHdezmq5pSMDPggOnqb+6HloH0UvI1fuk0zwHtar4Z1
- 6QY1nwZ/XN/B2wexyUtRg+vE7wgIJmlElOlvC9oBF53SOuQ/8mxBjnb5w
- JgdJ5PbLVOuIoEtSP//zpGdErtnFVw812XdQXZa3CJYOtXCmqAsinBP/F w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10446"; a="294100021"
-X-IronPort-AV: E=Sophos;i="5.93,254,1654585200"; 
- d="asc'?scan'208";a="294100021"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Aug 2022 20:37:17 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,254,1654585200"; 
- d="asc'?scan'208";a="608804185"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by orsmga002.jf.intel.com with ESMTP; 21 Aug 2022 20:37:15 -0700
-Date: Mon, 22 Aug 2022 11:12:15 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-Subject: [PULL] gvt-fixes (resend)
-Message-ID: <20220822031215.GJ1089@zhen-hp.sh.intel.com>
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:3::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BB46A99EBE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 22 Aug 2022 06:22:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=UJklhtPf7Vvs80l7or/jdQ9kJpFAr1l+m9e6LvJrRyY=; b=a+XVNZ5qTAMy/biXUPYxzJcEQT
+ yOPuvNL9tHS/wLEsfMQKPaON+kLRkUYYIcw+qrI4aj8bC5gxLB+LVaXrgcmvUTeD/Hg+8xAaWezGm
+ gLKkVlDbgMMSwRVv9cHmr6viTVw6n/giAcV+ckQpkDqR8FG7f0haVYITsIeRhuLTIvwm7QjpQQ7xo
+ UzkBhKTkGTHEbF4P1s4bYHmZ5w0wWyEh7c2UaydAXjDDPldVo72z6QfxUOJ7ITSwGinBKQoDyRSbd
+ K/XaZ1g9jbQhU6xtbYNibs7fz+xL36mrgbXpX/gAGlt3Swm++orCI2nAVMGvWuKKXz0vB6IWZVctm
+ p4fKGXFw==;
+Received: from [2001:4bb8:198:6528:7eb3:3a42:932d:eeba] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1oQ0p8-005NO9-CH; Mon, 22 Aug 2022 06:22:10 +0000
+From: Christoph Hellwig <hch@lst.de>
+To: Kirti Wankhede <kwankhede@nvidia.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+Subject: simplify the mdev interface v7
+Date: Mon, 22 Aug 2022 08:21:54 +0200
+Message-Id: <20220822062208.152745-1-hch@lst.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="FvF9dqTwB4R3n80B"
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,78 +54,73 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Cc: linux-s390@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ kvm@vger.kernel.org, Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+Hi all,
 
---FvF9dqTwB4R3n80B
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+this series signigicantly simplies the mdev driver interface by following
+the patterns for device model interaction used elsewhere in the kernel.
 
+Changes since v6:
+ - rebased to Linux 6.0-rc2
+ - folded in a patch from Eric Farman to fix the placement of the new
+   embedded mdev structured in the s390 cio driver
 
-(resend after fixing sign-off after rebase)
+Changes since v5:
+ - rebased to the latest vfio/next branch
+ - drop the last patch again
+ - make sure show_available_instances works properly for the internallly
+   tracked case
 
-Hi,
+Changes since v4:
+ - move the kobject_put later in mdev_device_release 
+ - add a Fixes tag for the first patch
+ - add another patch to remove an extra kobject_get/put
 
-Here's one gvt-fixes pull for 6.0-rc. Major one is Cometlake
-regression fix for mmio table rework, and others are left kernel doc
-fixes not pushed yet.
+Changes since v3:
+ - make the sysfs_name and pretty_name fields pointers instead of arrays
+ - add an i915 cleanup to prepare for the above
 
-Thanks!
---
-The following changes since commit a7a47a5dfa9a9692a41764ee9ab4054f12924a42:
+Changes since v2:
+ - rebased to vfio/next
+ - fix a pre-existing memory leak in i915 instead of making it worse
+ - never manipulate if ->available_instances if drv->get_available is
+   provided
+ - keep a parent reference for the mdev_type
+ - keep a few of the sysfs.c helper function around
+ - improve the documentation for the parent device lifetime
+ - minor spellig / formatting fixes
 
-  drm/i915/reset: Add additional steps for Wa_22011802037 for execlist backend (2022-07-25 15:57:54 +0100)
+Changes since v1:
+ - embedd the mdev_parent into a different sub-structure in i916
+ - remove headers now inclued by mdev.h from individual source files
+ - pass an array of mdev_types to mdev_register_parent
+ - add additional patches to implement all attributes on the
+   mdev_type in the core code
 
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux tags/gvt-fixes-2022-08-22
-
-for you to fetch changes up to b75ef35bb57791a5d675699ed4a40c870d1da12f:
-
-  drm/i915/gvt: Fix Comet Lake (2022-08-22 11:33:12 +0800)
-
-----------------------------------------------------------------
-gvt-fixes-2022-08-22
-
-- CometLake regression fix in mmio table rework (Alex)
-- misc kernel doc and typo fixes
-
-----------------------------------------------------------------
-Alex Williamson (1):
-      drm/i915/gvt: Fix Comet Lake
-
-Colin Ian King (1):
-      drm/i915/reg: Fix spelling mistake "Unsupport" -> "Unsupported"
-
-Jiapeng Chong (3):
-      drm/i915/gvt: Fix kernel-doc
-      drm/i915/gvt: Fix kernel-doc
-      drm/i915/gvt: Fix kernel-doc
-
-Julia Lawall (1):
-      drm/i915/gvt: fix typo in comment
-
- drivers/gpu/drm/i915/gvt/aperture_gm.c      | 4 ++--
- drivers/gpu/drm/i915/gvt/gtt.c              | 2 +-
- drivers/gpu/drm/i915/gvt/handlers.c         | 4 ++--
- drivers/gpu/drm/i915/gvt/mmio_context.c     | 2 +-
- drivers/gpu/drm/i915/intel_gvt_mmio_table.c | 3 ++-
- 5 files changed, 8 insertions(+), 7 deletions(-)
-
-
---FvF9dqTwB4R3n80B
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYwL0BQAKCRCxBBozTXgY
-J+WBAJ90VoCMhOIYp7QK7+0NNO4KkzMFRQCfWu0OANNCmGB0AN3RssjYMI/K1L0=
-=opmC
------END PGP SIGNATURE-----
-
---FvF9dqTwB4R3n80B--
+Diffstat:
+ Documentation/driver-api/vfio-mediated-device.rst |   26 +-
+ Documentation/s390/vfio-ap.rst                    |    2 
+ Documentation/s390/vfio-ccw.rst                   |    2 
+ drivers/gpu/drm/i915/gvt/aperture_gm.c            |   20 +-
+ drivers/gpu/drm/i915/gvt/gvt.h                    |   42 ++--
+ drivers/gpu/drm/i915/gvt/kvmgt.c                  |  168 ++++-------------
+ drivers/gpu/drm/i915/gvt/vgpu.c                   |  210 +++++++---------------
+ drivers/s390/cio/cio.h                            |    1 
+ drivers/s390/cio/vfio_ccw_drv.c                   |   12 -
+ drivers/s390/cio/vfio_ccw_ops.c                   |   51 -----
+ drivers/s390/cio/vfio_ccw_private.h               |    6 
+ drivers/s390/crypto/vfio_ap_ops.c                 |   68 +------
+ drivers/s390/crypto/vfio_ap_private.h             |    6 
+ drivers/vfio/mdev/mdev_core.c                     |  190 ++++---------------
+ drivers/vfio/mdev/mdev_driver.c                   |    7 
+ drivers/vfio/mdev/mdev_private.h                  |   32 ---
+ drivers/vfio/mdev/mdev_sysfs.c                    |  189 ++++++++++---------
+ include/linux/mdev.h                              |   77 ++++----
+ samples/vfio-mdev/mbochs.c                        |  103 +++-------
+ samples/vfio-mdev/mdpy.c                          |  115 +++---------
+ samples/vfio-mdev/mtty.c                          |   94 +++------
+ 21 files changed, 464 insertions(+), 957 deletions(-)
