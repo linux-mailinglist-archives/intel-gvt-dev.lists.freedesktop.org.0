@@ -2,31 +2,31 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F6BE59B94C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Aug 2022 08:23:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D61159B94D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 Aug 2022 08:23:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 244EA99EDD;
-	Mon, 22 Aug 2022 06:23:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6D8F199EC4;
+	Mon, 22 Aug 2022 06:23:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 24BE699EC2
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 30A7C99ED8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 Aug 2022 06:22:46 +0000 (UTC)
+ Mon, 22 Aug 2022 06:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=EkfgBB/7l8ULesV9GhqNOJxvQHlRB2r14V885Sicrcs=; b=SoUgzELrxTDilMxgUo1+tdUlVB
- FQ9hdk05hTF8mQbxQcjwc/6e3a79eRxkPAITcjC/Jo3EV14Sz0Mzo8EZGTDypewG5QrpwnYW7YYTH
- 9hT2LUe12qkdiNhWjP9lFD8rIMWbWu1HV2lq1pp/4U2qLMt9q5Hw5HKNv8UruUJOGlrF37AL76mcw
- doBS/rrmHl9XFq/1b8KY4DixMyeY5n8xW+q6lMDMRZ6QQGPIdQt8nrL6N2cK/1e/BKb3mF6+MZPpp
- UuznTeBFU0d3MbcqvuXEGbQ95rUmUA6/JWUG6qzFVlqWlqr0yz/ARE9xqxvpUG69NiMksKw2ZCgvt
- MXRs4t/A==;
+ bh=NtN3rB9SxJiZt/WzQrhwkR7nOVAKm1rrBVbUpGtrh7U=; b=1tzSV39WTdyNG8qqgNtrcIW32L
+ NeTXXbT5jwL0esMyvLZVtTY6gfNm7/OJFeDVCti8L3bFvVVZ4zTmE9ce/v3ZvMLPtFq7wBbGjvs4V
+ 42Dknf4J13Yv7n243yvv9YSQi2fnAn29unSvO+BhpbALRzkdN960Oo2ui3HLpYvK2UqiAHml2Ewzo
+ SNlnS4LVStELCyS/WDVXrPP3M04qF8RQ8zeCHreU8K/KZT1REQdtVJ3uClelzOeVP8pi8nKRebQD7
+ xjWJccTju8qGGwKhiMC8SsZ1IuftzvaXi3RpJB14vXfiH5b0x4uJgbgcEwPv+0xr504TPkGWQObPF
+ 98v2My1Q==;
 Received: from [2001:4bb8:198:6528:7eb3:3a42:932d:eeba] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1oQ0pa-005Nc4-Vt; Mon, 22 Aug 2022 06:22:41 +0000
+ id 1oQ0pj-005Nfh-2A; Mon, 22 Aug 2022 06:22:47 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Kirti Wankhede <kwankhede@nvidia.com>,
  Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
@@ -34,10 +34,10 @@ To: Kirti Wankhede <kwankhede@nvidia.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
-Subject: [PATCH 10/14] vfio/mdev: consolidate all the device_api sysfs into
- the core code
-Date: Mon, 22 Aug 2022 08:22:04 +0200
-Message-Id: <20220822062208.152745-11-hch@lst.de>
+Subject: [PATCH 12/14] vfio/mdev: consolidate all the available_instance sysfs
+ into the core code
+Date: Mon, 22 Aug 2022 08:22:06 +0200
+Message-Id: <20220822062208.152745-13-hch@lst.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220822062208.152745-1-hch@lst.de>
 References: <20220822062208.152745-1-hch@lst.de>
@@ -63,357 +63,428 @@ Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: Jason Gunthorpe <jgg@nvidia.com>
+Every driver just print a number, simply add a method to the mdev_driver
+to return it and provide a standard sysfs show function.
 
-Every driver just emits a static string, simply feed it through the ops
-and provide a standard sysfs show function.
-
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 Reviewed-by: Kevin Tian <kevin.tian@intel.com>
 Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
 ---
- .../driver-api/vfio-mediated-device.rst       |  2 +-
- drivers/gpu/drm/i915/gvt/kvmgt.c              |  9 +----
- drivers/s390/cio/vfio_ccw_ops.c               |  9 +----
- drivers/s390/crypto/vfio_ap_ops.c             | 10 +-----
- drivers/vfio/mdev/mdev_driver.c               |  4 ++-
- drivers/vfio/mdev/mdev_sysfs.c                | 35 +++++++++++++------
- include/linux/mdev.h                          |  7 ++--
- samples/vfio-mdev/mbochs.c                    |  9 +----
- samples/vfio-mdev/mdpy.c                      |  9 +----
- samples/vfio-mdev/mtty.c                      | 10 +-----
- 10 files changed, 37 insertions(+), 67 deletions(-)
+ .../driver-api/vfio-mediated-device.rst       |  3 +-
+ drivers/gpu/drm/i915/gvt/gvt.h                |  1 -
+ drivers/gpu/drm/i915/gvt/kvmgt.c              | 34 +++++++++------
+ drivers/gpu/drm/i915/gvt/vgpu.c               | 41 ++-----------------
+ drivers/s390/cio/vfio_ccw_ops.c               | 14 ++-----
+ drivers/s390/crypto/vfio_ap_ops.c             | 16 ++------
+ drivers/vfio/mdev/mdev_sysfs.c                | 11 +++++
+ include/linux/mdev.h                          |  2 +
+ samples/vfio-mdev/mbochs.c                    | 10 ++---
+ samples/vfio-mdev/mdpy.c                      |  9 ++--
+ samples/vfio-mdev/mtty.c                      | 16 ++------
+ 11 files changed, 55 insertions(+), 102 deletions(-)
 
 diff --git a/Documentation/driver-api/vfio-mediated-device.rst b/Documentation/driver-api/vfio-mediated-device.rst
-index 7b660f3fa2c92..b0c29e37f61b4 100644
+index dcd1231a6fa84..558bd7ebced86 100644
 --- a/Documentation/driver-api/vfio-mediated-device.rst
 +++ b/Documentation/driver-api/vfio-mediated-device.rst
-@@ -202,7 +202,7 @@ Directories and files under the sysfs for Each Physical Device
- 
- * device_api
- 
--  This attribute should show which device API is being created, for example,
-+  This attribute shows which device API is being created, for example,
-   "vfio-pci" for a PCI device.
+@@ -103,6 +103,7 @@ structure to represent a mediated device's driver::
+      struct mdev_driver {
+ 	     int  (*probe)  (struct mdev_device *dev);
+ 	     void (*remove) (struct mdev_device *dev);
++	     unsigned int (*get_available)(struct mdev_type *mtype);
+ 	     const struct attribute * const *types_attrs;
+ 	     struct device_driver    driver;
+      };
+@@ -207,7 +208,7 @@ Directories and files under the sysfs for Each Physical Device
  
  * available_instances
+ 
+-  This attribute should show the number of devices of type <type-id> that can be
++  This attribute shows the number of devices of type <type-id> that can be
+   created.
+ 
+ * [device]
+diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
+index 00a2b2173a96f..529134fa71880 100644
+--- a/drivers/gpu/drm/i915/gvt/gvt.h
++++ b/drivers/gpu/drm/i915/gvt/gvt.h
+@@ -314,7 +314,6 @@ struct intel_vgpu_type {
+ 	struct mdev_type type;
+ 	char name[16];
+ 	const struct intel_vgpu_config *conf;
+-	unsigned int avail_instance;
+ };
+ 
+ struct intel_gvt {
 diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index ef9d114349c3a..1ed99091165a4 100644
+index e24e72527c9aa..7f46e2109af80 100644
 --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
 +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -123,12 +123,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- 	return sprintf(buf, "%u\n", type->avail_instance);
- }
+@@ -113,16 +113,6 @@ static void kvmgt_page_track_flush_slot(struct kvm *kvm,
+ 		struct kvm_memory_slot *slot,
+ 		struct kvm_page_track_notifier_node *node);
  
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
+-static ssize_t available_instances_show(struct mdev_type *mtype,
+-					struct mdev_type_attribute *attr,
+-					char *buf)
 -{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
+-	struct intel_vgpu_type *type =
+-		container_of(mtype, struct intel_vgpu_type, type);
+-
+-	return sprintf(buf, "%u\n", type->avail_instance);
 -}
 -
  static ssize_t description_show(struct mdev_type *mtype,
  				struct mdev_type_attribute *attr, char *buf)
  {
-@@ -151,13 +145,11 @@ static ssize_t name_show(struct mdev_type *mtype,
+@@ -138,11 +128,9 @@ static ssize_t description_show(struct mdev_type *mtype,
+ 		       type->conf->weight);
  }
  
- static MDEV_TYPE_ATTR_RO(available_instances);
--static MDEV_TYPE_ATTR_RO(device_api);
+-static MDEV_TYPE_ATTR_RO(available_instances);
  static MDEV_TYPE_ATTR_RO(description);
- static MDEV_TYPE_ATTR_RO(name);
  
  static const struct attribute *gvt_type_attrs[] = {
- 	&mdev_type_attr_available_instances.attr,
--	&mdev_type_attr_device_api.attr,
+-	&mdev_type_attr_available_instances.attr,
  	&mdev_type_attr_description.attr,
- 	&mdev_type_attr_name.attr,
  	NULL,
-@@ -1531,6 +1523,7 @@ static void intel_vgpu_remove(struct mdev_device *mdev)
+ };
+@@ -1514,6 +1502,27 @@ static void intel_vgpu_remove(struct mdev_device *mdev)
+ 	intel_gvt_destroy_vgpu(vgpu);
  }
  
++static unsigned int intel_vgpu_get_available(struct mdev_type *mtype)
++{
++	struct intel_vgpu_type *type =
++		container_of(mtype, struct intel_vgpu_type, type);
++	struct intel_gvt *gvt = kdev_to_i915(mtype->parent->dev)->gvt;
++	unsigned int low_gm_avail, high_gm_avail, fence_avail;
++
++	mutex_lock(&gvt->lock);
++	low_gm_avail = gvt_aperture_sz(gvt) - HOST_LOW_GM_SIZE -
++		gvt->gm.vgpu_allocated_low_gm_size;
++	high_gm_avail = gvt_hidden_sz(gvt) - HOST_HIGH_GM_SIZE -
++		gvt->gm.vgpu_allocated_high_gm_size;
++	fence_avail = gvt_fence_sz(gvt) - HOST_FENCE -
++		gvt->fence.vgpu_allocated_fence_num;
++	mutex_unlock(&gvt->lock);
++
++	return min3(low_gm_avail / type->conf->low_mm,
++		    high_gm_avail / type->conf->high_mm,
++		    fence_avail / type->conf->fence);
++}
++
  static struct mdev_driver intel_vgpu_mdev_driver = {
-+	.device_api	= VFIO_DEVICE_API_PCI_STRING,
+ 	.device_api	= VFIO_DEVICE_API_PCI_STRING,
  	.driver = {
- 		.name		= "intel_vgpu_mdev",
- 		.owner		= THIS_MODULE,
+@@ -1523,6 +1532,7 @@ static struct mdev_driver intel_vgpu_mdev_driver = {
+ 	},
+ 	.probe		= intel_vgpu_probe,
+ 	.remove		= intel_vgpu_remove,
++	.get_available	= intel_vgpu_get_available,
+ 	.types_attrs	= gvt_type_attrs,
+ };
+ 
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index ff240503d4125..0723bbee7176f 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -129,11 +129,11 @@ int intel_gvt_init_vgpu_types(struct intel_gvt *gvt)
+ 		sprintf(gvt->types[i].name, "GVTg_V%u_%s",
+ 			GRAPHICS_VER(gvt->gt->i915) == 8 ? 4 : 5, conf->name);
+ 		gvt->types->conf = conf;
+-		gvt->types[i].avail_instance = min(low_avail / conf->low_mm,
+-						   high_avail / conf->high_mm);
+ 
+ 		gvt_dbg_core("type[%d]: %s avail %u low %u high %u fence %u weight %u res %s\n",
+-			     i, gvt->types[i].name, gvt->types[i].avail_instance,
++			     i, gvt->types[i].name,
++			     min(low_avail / conf->low_mm,
++				 high_avail / conf->high_mm),
+ 			     conf->low_mm, conf->high_mm, conf->fence,
+ 			     conf->weight, vgpu_edid_str(conf->edid));
+ 
+@@ -157,36 +157,6 @@ void intel_gvt_clean_vgpu_types(struct intel_gvt *gvt)
+ 	kfree(gvt->types);
+ }
+ 
+-static void intel_gvt_update_vgpu_types(struct intel_gvt *gvt)
+-{
+-	int i;
+-	unsigned int low_gm_avail, high_gm_avail, fence_avail;
+-	unsigned int low_gm_min, high_gm_min, fence_min;
+-
+-	/* Need to depend on maxium hw resource size but keep on
+-	 * static config for now.
+-	 */
+-	low_gm_avail = gvt_aperture_sz(gvt) - HOST_LOW_GM_SIZE -
+-		gvt->gm.vgpu_allocated_low_gm_size;
+-	high_gm_avail = gvt_hidden_sz(gvt) - HOST_HIGH_GM_SIZE -
+-		gvt->gm.vgpu_allocated_high_gm_size;
+-	fence_avail = gvt_fence_sz(gvt) - HOST_FENCE -
+-		gvt->fence.vgpu_allocated_fence_num;
+-
+-	for (i = 0; i < gvt->num_types; i++) {
+-		low_gm_min = low_gm_avail / gvt->types[i].conf->low_mm;
+-		high_gm_min = high_gm_avail / gvt->types[i].conf->high_mm;
+-		fence_min = fence_avail / gvt->types[i].conf->fence;
+-		gvt->types[i].avail_instance = min(min(low_gm_min, high_gm_min),
+-						   fence_min);
+-
+-		gvt_dbg_core("update type[%d]: %s avail %u low %u high %u fence %u\n",
+-		       i, gvt->types[i].name,
+-		       gvt->types[i].avail_instance, gvt->types[i].conf->low_mm,
+-		       gvt->types[i].conf->high_mm, gvt->types[i].conf->fence);
+-	}
+-}
+-
+ /**
+  * intel_gvt_active_vgpu - activate a virtual GPU
+  * @vgpu: virtual GPU
+@@ -282,10 +252,6 @@ void intel_gvt_destroy_vgpu(struct intel_vgpu *vgpu)
+ 	intel_vgpu_dmabuf_cleanup(vgpu);
+ 	mutex_unlock(&vgpu->vgpu_lock);
+ 
+-	mutex_lock(&gvt->lock);
+-	intel_gvt_update_vgpu_types(gvt);
+-	mutex_unlock(&gvt->lock);
+-
+ 	vfree(vgpu);
+ }
+ 
+@@ -431,7 +397,6 @@ struct intel_vgpu *intel_gvt_create_vgpu(struct intel_gvt *gvt,
+ 	if (ret)
+ 		goto out_clean_sched_policy;
+ 
+-	intel_gvt_update_vgpu_types(gvt);
+ 	intel_gvt_update_reg_whitelist(vgpu);
+ 	mutex_unlock(&gvt->lock);
+ 	return vgpu;
 diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-index 0ec0e310c91ea..9ced2063720e6 100644
+index 854e0aaefc022..ffbfd1794d83e 100644
 --- a/drivers/s390/cio/vfio_ccw_ops.c
 +++ b/drivers/s390/cio/vfio_ccw_ops.c
-@@ -51,13 +51,6 @@ static ssize_t name_show(struct mdev_type *mtype,
+@@ -44,20 +44,12 @@ static void vfio_ccw_dma_unmap(struct vfio_device *vdev, u64 iova, u64 length)
+ 	vfio_ccw_mdev_reset(private);
  }
- static MDEV_TYPE_ATTR_RO(name);
  
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_CCW_STRING);
--}
--static MDEV_TYPE_ATTR_RO(device_api);
+-static ssize_t available_instances_show(struct mdev_type *mtype,
+-					struct mdev_type_attribute *attr,
+-					char *buf)
++static unsigned int vfio_ccw_get_available(struct mdev_type *mtype)
+ {
+ 	struct vfio_ccw_private *private = dev_get_drvdata(mtype->parent->dev);
+ 
+-	return sprintf(buf, "%d\n", atomic_read(&private->avail));
++	return atomic_read(&private->avail);
+ }
+-static MDEV_TYPE_ATTR_RO(available_instances);
 -
- static ssize_t available_instances_show(struct mdev_type *mtype,
- 					struct mdev_type_attribute *attr,
- 					char *buf)
-@@ -70,7 +63,6 @@ static MDEV_TYPE_ATTR_RO(available_instances);
+-static const struct attribute *mdev_types_attrs[] = {
+-	&mdev_type_attr_available_instances.attr,
+-	NULL,
+-};
  
- static const struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
- 	NULL,
+ static int vfio_ccw_mdev_probe(struct mdev_device *mdev)
+ {
+@@ -582,5 +574,5 @@ struct mdev_driver vfio_ccw_mdev_driver = {
+ 	},
+ 	.probe = vfio_ccw_mdev_probe,
+ 	.remove = vfio_ccw_mdev_remove,
+-	.types_attrs = mdev_types_attrs,
++	.get_available = vfio_ccw_get_available,
  };
-@@ -590,6 +582,7 @@ static const struct vfio_device_ops vfio_ccw_dev_ops = {
- };
- 
- struct mdev_driver vfio_ccw_mdev_driver = {
-+	.device_api = VFIO_DEVICE_API_CCW_STRING,
- 	.driver = {
- 		.name = "vfio_ccw_mdev",
- 		.owner = THIS_MODULE,
 diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-index e74f34589329d..728a0ada4928f 100644
+index 9dedb0db8ee84..7d27ddfe55ae8 100644
 --- a/drivers/s390/crypto/vfio_ap_ops.c
 +++ b/drivers/s390/crypto/vfio_ap_ops.c
-@@ -802,17 +802,8 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- 
- static MDEV_TYPE_ATTR_RO(available_instances);
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_AP_STRING);
--}
--
--static MDEV_TYPE_ATTR_RO(device_api);
--
- static const struct attribute *vfio_ap_mdev_type_attrs[] = {
- 	&mdev_type_attr_name.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
- 	NULL,
- };
-@@ -1791,6 +1782,7 @@ static const struct vfio_device_ops vfio_ap_matrix_dev_ops = {
- };
- 
- static struct mdev_driver vfio_ap_matrix_driver = {
-+	.device_api = VFIO_DEVICE_API_AP_STRING,
- 	.driver = {
- 		.name = "vfio_ap_mdev",
- 		.owner = THIS_MODULE,
-diff --git a/drivers/vfio/mdev/mdev_driver.c b/drivers/vfio/mdev/mdev_driver.c
-index 5b3c94f4fb13d..60e8b9f6474e8 100644
---- a/drivers/vfio/mdev/mdev_driver.c
-+++ b/drivers/vfio/mdev/mdev_driver.c
-@@ -55,8 +55,10 @@ struct bus_type mdev_bus_type = {
-  **/
- int mdev_register_driver(struct mdev_driver *drv)
- {
--	if (!drv->types_attrs)
-+	if (!drv->types_attrs || !drv->device_api)
- 		return -EINVAL;
-+
-+	/* initialize common driver fields */
- 	drv->driver.bus = &mdev_bus_type;
- 	return driver_register(&drv->driver);
+@@ -784,21 +784,11 @@ static void vfio_ap_mdev_remove(struct mdev_device *mdev)
+ 	atomic_inc(&matrix_dev->available_instances);
  }
+ 
+-static ssize_t available_instances_show(struct mdev_type *mtype,
+-					struct mdev_type_attribute *attr,
+-					char *buf)
++static unsigned int vfio_ap_mdev_get_available(struct mdev_type *mtype)
+ {
+-	return sprintf(buf, "%d\n",
+-		       atomic_read(&matrix_dev->available_instances));
++	return atomic_read(&matrix_dev->available_instances);
+ }
+ 
+-static MDEV_TYPE_ATTR_RO(available_instances);
+-
+-static const struct attribute *vfio_ap_mdev_type_attrs[] = {
+-	&mdev_type_attr_available_instances.attr,
+-	NULL,
+-};
+-
+ #define MDEV_SHARING_ERR "Userspace may not re-assign queue %02lx.%04lx " \
+ 			 "already assigned to %s"
+ 
+@@ -1782,7 +1772,7 @@ static struct mdev_driver vfio_ap_matrix_driver = {
+ 	},
+ 	.probe = vfio_ap_mdev_probe,
+ 	.remove = vfio_ap_mdev_remove,
+-	.types_attrs = vfio_ap_mdev_type_attrs,
++	.get_available = vfio_ap_mdev_get_available,
+ };
+ 
+ int vfio_ap_mdev_register(void)
 diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
-index 80b2d546a3d98..89637bc85462a 100644
+index 0f3d0bbf36f75..9238d92738d5b 100644
 --- a/drivers/vfio/mdev/mdev_sysfs.c
 +++ b/drivers/vfio/mdev/mdev_sysfs.c
-@@ -72,9 +72,30 @@ static ssize_t create_store(struct mdev_type *mtype,
+@@ -90,10 +90,21 @@ static ssize_t name_show(struct mdev_type *mtype,
  
- 	return count;
- }
--
- static MDEV_TYPE_ATTR_WO(create);
+ static MDEV_TYPE_ATTR_RO(name);
  
-+static ssize_t device_api_show(struct mdev_type *mtype,
-+			       struct mdev_type_attribute *attr, char *buf)
++static ssize_t available_instances_show(struct mdev_type *mtype,
++					struct mdev_type_attribute *attr,
++					char *buf)
 +{
-+	return sysfs_emit(buf, "%s\n", mtype->parent->mdev_driver->device_api);
++	struct mdev_driver *drv = mtype->parent->mdev_driver;
++
++	return sysfs_emit(buf, "%u\n", drv->get_available(mtype));
 +}
-+static MDEV_TYPE_ATTR_RO(device_api);
++static MDEV_TYPE_ATTR_RO(available_instances);
 +
-+static struct attribute *mdev_types_core_attrs[] = {
-+	&mdev_type_attr_create.attr,
-+	&mdev_type_attr_device_api.attr,
-+	NULL,
-+};
-+
-+static struct attribute_group mdev_type_core_group = {
-+	.attrs = mdev_types_core_attrs,
-+};
-+
-+static const struct attribute_group *mdev_type_groups[] = {
-+	&mdev_type_core_group,
-+	NULL,
-+};
-+
- static void mdev_type_release(struct kobject *kobj)
- {
- 	struct mdev_type *type = to_mdev_type(kobj);
-@@ -86,8 +107,9 @@ static void mdev_type_release(struct kobject *kobj)
- }
- 
- static struct kobj_type mdev_type_ktype = {
--	.sysfs_ops = &mdev_type_sysfs_ops,
--	.release = mdev_type_release,
-+	.sysfs_ops	= &mdev_type_sysfs_ops,
-+	.release	= mdev_type_release,
-+	.default_groups	= mdev_type_groups,
+ static struct attribute *mdev_types_core_attrs[] = {
+ 	&mdev_type_attr_create.attr,
+ 	&mdev_type_attr_device_api.attr,
+ 	&mdev_type_attr_name.attr,
++	&mdev_type_attr_available_instances.attr,
+ 	NULL,
  };
  
- static int mdev_type_add(struct mdev_parent *parent, struct mdev_type *type)
-@@ -107,10 +129,6 @@ static int mdev_type_add(struct mdev_parent *parent, struct mdev_type *type)
- 		return ret;
- 	}
- 
--	ret = sysfs_create_file(&type->kobj, &mdev_type_attr_create.attr);
--	if (ret)
--		goto attr_create_failed;
--
- 	type->devices_kobj = kobject_create_and_add("devices", &type->kobj);
- 	if (!type->devices_kobj) {
- 		ret = -ENOMEM;
-@@ -125,8 +143,6 @@ static int mdev_type_add(struct mdev_parent *parent, struct mdev_type *type)
- attrs_failed:
- 	kobject_put(type->devices_kobj);
- attr_devices_failed:
--	sysfs_remove_file(&type->kobj, &mdev_type_attr_create.attr);
--attr_create_failed:
- 	kobject_del(&type->kobj);
- 	kobject_put(&type->kobj);
- 	return ret;
-@@ -137,7 +153,6 @@ static void mdev_type_remove(struct mdev_type *type)
- 	sysfs_remove_files(&type->kobj, type->parent->mdev_driver->types_attrs);
- 
- 	kobject_put(type->devices_kobj);
--	sysfs_remove_file(&type->kobj, &mdev_type_attr_create.attr);
- 	kobject_del(&type->kobj);
- 	kobject_put(&type->kobj);
- }
 diff --git a/include/linux/mdev.h b/include/linux/mdev.h
-index e445f809ceca3..af1ff0165b8d3 100644
+index 4bb8a58b577b3..d39e08a1824c6 100644
 --- a/include/linux/mdev.h
 +++ b/include/linux/mdev.h
-@@ -61,11 +61,6 @@ struct mdev_type_attribute {
- 			 size_t count);
- };
- 
--#define MDEV_TYPE_ATTR(_name, _mode, _show, _store)		\
--struct mdev_type_attribute mdev_type_attr_##_name =		\
--	__ATTR(_name, _mode, _show, _store)
--#define MDEV_TYPE_ATTR_RW(_name) \
--	struct mdev_type_attribute mdev_type_attr_##_name = __ATTR_RW(_name)
- #define MDEV_TYPE_ATTR_RO(_name) \
- 	struct mdev_type_attribute mdev_type_attr_##_name = __ATTR_RO(_name)
- #define MDEV_TYPE_ATTR_WO(_name) \
-@@ -73,12 +68,14 @@ struct mdev_type_attribute mdev_type_attr_##_name =		\
- 
- /**
-  * struct mdev_driver - Mediated device driver
-+ * @device_api: string to return for the device_api sysfs
+@@ -72,6 +72,7 @@ struct mdev_type_attribute {
+  * @device_api: string to return for the device_api sysfs
   * @probe: called when new device created
   * @remove: called when device removed
++ * @get_available: Return the max number of instances that can be created
   * @types_attrs: attributes to the type kobjects.
   * @driver: device driver structure
   **/
- struct mdev_driver {
-+	const char *device_api;
+@@ -79,6 +80,7 @@ struct mdev_driver {
+ 	const char *device_api;
  	int (*probe)(struct mdev_device *dev);
  	void (*remove)(struct mdev_device *dev);
++	unsigned int (*get_available)(struct mdev_type *mtype);
  	const struct attribute * const *types_attrs;
+ 	struct device_driver driver;
+ };
 diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-index 1069f561cb012..199846f01de92 100644
+index c8271168a96ad..e61be7f8a9863 100644
 --- a/samples/vfio-mdev/mbochs.c
 +++ b/samples/vfio-mdev/mbochs.c
-@@ -1367,17 +1367,9 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
+@@ -1344,21 +1344,16 @@ static ssize_t description_show(struct mdev_type *mtype,
  }
- static MDEV_TYPE_ATTR_RO(available_instances);
+ static MDEV_TYPE_ATTR_RO(description);
  
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
--}
--static MDEV_TYPE_ATTR_RO(device_api);
--
+-static ssize_t available_instances_show(struct mdev_type *mtype,
+-					struct mdev_type_attribute *attr,
+-					char *buf)
++static unsigned int mbochs_get_available(struct mdev_type *mtype)
+ {
+ 	struct mbochs_type *type =
+ 		container_of(mtype, struct mbochs_type, type);
+-	int count = atomic_read(&mbochs_avail_mbytes) / type->mbytes;
+ 
+-	return sprintf(buf, "%d\n", count);
++	return atomic_read(&mbochs_avail_mbytes) / type->mbytes;
+ }
+-static MDEV_TYPE_ATTR_RO(available_instances);
+ 
  static const struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
  	&mdev_type_attr_description.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
+-	&mdev_type_attr_available_instances.attr,
  	NULL,
  };
-@@ -1391,6 +1383,7 @@ static const struct vfio_device_ops mbochs_dev_ops = {
+ 
+@@ -1380,6 +1375,7 @@ static struct mdev_driver mbochs_driver = {
+ 	},
+ 	.probe = mbochs_probe,
+ 	.remove	= mbochs_remove,
++	.get_available = mbochs_get_available,
+ 	.types_attrs = mdev_types_attrs,
  };
  
- static struct mdev_driver mbochs_driver = {
-+	.device_api = VFIO_DEVICE_API_PCI_STRING,
- 	.driver = {
- 		.name = "mbochs",
- 		.owner = THIS_MODULE,
 diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-index 2052cc27b1c6d..b8d6eeff2033d 100644
+index 6091c642ee102..2f59078909c9d 100644
 --- a/samples/vfio-mdev/mdpy.c
 +++ b/samples/vfio-mdev/mdpy.c
-@@ -678,17 +678,9 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
+@@ -660,17 +660,13 @@ static ssize_t description_show(struct mdev_type *mtype,
  }
- static MDEV_TYPE_ATTR_RO(available_instances);
+ static MDEV_TYPE_ATTR_RO(description);
  
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
--}
--static MDEV_TYPE_ATTR_RO(device_api);
--
+-static ssize_t available_instances_show(struct mdev_type *mtype,
+-					struct mdev_type_attribute *attr,
+-					char *buf)
++static unsigned int mdpy_get_available(struct mdev_type *mtype)
+ {
+-	return sprintf(buf, "%d\n", max_devices - mdpy_count);
++	return max_devices - mdpy_count;
+ }
+-static MDEV_TYPE_ATTR_RO(available_instances);
+ 
  static const struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
  	&mdev_type_attr_description.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
+-	&mdev_type_attr_available_instances.attr,
  	NULL,
  };
-@@ -701,6 +693,7 @@ static const struct vfio_device_ops mdpy_dev_ops = {
+ 
+@@ -691,6 +687,7 @@ static struct mdev_driver mdpy_driver = {
+ 	},
+ 	.probe = mdpy_probe,
+ 	.remove	= mdpy_remove,
++	.get_available = mdpy_get_available,
+ 	.types_attrs = mdev_types_attrs,
  };
  
- static struct mdev_driver mdpy_driver = {
-+	.device_api = VFIO_DEVICE_API_PCI_STRING,
- 	.driver = {
- 		.name = "mdpy",
- 		.owner = THIS_MODULE,
 diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
-index 029a19ef8ce7b..2a470424628af 100644
+index b95a4491265c5..f6e8ec8240066 100644
 --- a/samples/vfio-mdev/mtty.c
 +++ b/samples/vfio-mdev/mtty.c
-@@ -1268,17 +1268,8 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- 
- static MDEV_TYPE_ATTR_RO(available_instances);
- 
--static ssize_t device_api_show(struct mdev_type *mtype,
--			       struct mdev_type_attribute *attr, char *buf)
--{
--	return sprintf(buf, "%s\n", VFIO_DEVICE_API_PCI_STRING);
--}
--
--static MDEV_TYPE_ATTR_RO(device_api);
--
- static const struct attribute *mdev_types_attrs[] = {
- 	&mdev_type_attr_name.attr,
--	&mdev_type_attr_device_api.attr,
- 	&mdev_type_attr_available_instances.attr,
+@@ -1247,23 +1247,13 @@ static const struct attribute_group *mdev_dev_groups[] = {
  	NULL,
  };
-@@ -1291,6 +1282,7 @@ static const struct vfio_device_ops mtty_dev_ops = {
+ 
+-static ssize_t available_instances_show(struct mdev_type *mtype,
+-					struct mdev_type_attribute *attr,
+-					char *buf)
++static unsigned int mtty_get_available(struct mdev_type *mtype)
+ {
+ 	struct mtty_type *type = container_of(mtype, struct mtty_type, type);
+ 
+-	return sprintf(buf, "%d\n", atomic_read(&mdev_avail_ports) /
+-			type->nr_ports);
++	return atomic_read(&mdev_avail_ports) / type->nr_ports;
+ }
+ 
+-static MDEV_TYPE_ATTR_RO(available_instances);
+-
+-static const struct attribute *mdev_types_attrs[] = {
+-	&mdev_type_attr_available_instances.attr,
+-	NULL,
+-};
+-
+ static const struct vfio_device_ops mtty_dev_ops = {
+ 	.name = "vfio-mtty",
+ 	.read = mtty_read,
+@@ -1281,7 +1271,7 @@ static struct mdev_driver mtty_driver = {
+ 	},
+ 	.probe = mtty_probe,
+ 	.remove	= mtty_remove,
+-	.types_attrs = mdev_types_attrs,
++	.get_available = mtty_get_available,
  };
  
- static struct mdev_driver mtty_driver = {
-+	.device_api = VFIO_DEVICE_API_PCI_STRING,
- 	.driver = {
- 		.name = "mtty",
- 		.owner = THIS_MODULE,
+ static void mtty_device_release(struct device *dev)
 -- 
 2.30.2
 
