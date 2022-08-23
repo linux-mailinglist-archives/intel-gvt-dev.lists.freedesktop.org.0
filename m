@@ -1,53 +1,150 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67DD159CC70
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Aug 2022 01:47:23 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E18D559D0B9
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Aug 2022 07:53:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E7D55A6C33;
-	Mon, 22 Aug 2022 23:47:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 52B5EAE732;
+	Tue, 23 Aug 2022 05:53:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1283CA6BB7;
- Mon, 22 Aug 2022 23:46:44 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 76B22AE6EC
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 23 Aug 2022 05:53:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1661212005; x=1692748005;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- mime-version:in-reply-to;
- bh=3wply6lLS23NAlxls7wiHXwcJrxsDOjA6HxqGJL3QsQ=;
- b=i0cyQR1w5DMjam7r3B+R/cSqSLLtghwcdvhyKuIXQc5CRfOavIq48Bdj
- qvf+xX7YFgD7lRX4YTvsD3dargsM7r6AYX4EmxxdnlWhEG1r2KRvkmOXm
- oz2rGSFPMqnkBBa93W2/REleGdV8y5mbLbiKEvxcP4rEEYs6Ma3GcuF6b
- vsknIQhghinRKXxPnV4eIOHEXvQtJU3Rkq5ECisJ+y/kUQvng/4CnkCIC
- 0Iez9OnjTnYlIe3C5Hh5zb3fEfLaxqDVUOzJWTgozlF/oQEytctBucNP2
- B5BllUkbsoq9vKFfWSaT+JtYjqZ9AfafPm5Il7uZPXCIzfEs5sgCx+FTW g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10447"; a="280519305"
-X-IronPort-AV: E=Sophos;i="5.93,255,1654585200"; 
- d="asc'?scan'208";a="280519305"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Aug 2022 16:46:44 -0700
+ t=1661233999; x=1692769999;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=l/IUy+nXbvDqXTMzRL/jlZ/lTGUO9kFQMmBLwJjb3zA=;
+ b=kKtUI1RSbBrpfR8zUw5siWrEyRFVsFuhWP2N0iPRkSM/9syVeNVsUmH0
+ XH4xc0iBnPPfGntSFVOgR7d9lp/YSA2R6aM+y2ned0JAPGja0+ALNDlEZ
+ BmNDjDWevj0WinWSiE5UJOfiZ2PxvtVwJX7wknm6ncPbyk9c85j7Gg17R
+ u3TR9kCNVWEPNSh6dLJvvLL0Jt8RGwkPM05qb/vVf7CQZ7xcuXQHmWK7L
+ UKcMcDjtOuqbIAs/d5M8WHAAw0UfAf9HvV23Sjbp/P+OhQ7I849iydhZ/
+ NrZP8ZjXz0f2dHf8SNGGQR7TJWdHQwZYUjHh/fsmECrRIdyeVC/D3CxXh w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10447"; a="319638826"
+X-IronPort-AV: E=Sophos;i="5.93,256,1654585200"; d="scan'208";a="319638826"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Aug 2022 22:53:18 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,255,1654585200"; 
- d="asc'?scan'208";a="669769254"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by fmsmga008.fm.intel.com with ESMTP; 22 Aug 2022 16:46:42 -0700
-Date: Tue, 23 Aug 2022 07:21:40 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [Bug 216388] New: On Host, kernel errors in KVM, on guests, it
- shows CPU stalls
-Message-ID: <20220822232140.GL1089@zhen-hp.sh.intel.com>
-References: <bug-216388-28872@https.bugzilla.kernel.org/>
- <YwPB6W2tVIGWD7kD@google.com>
+X-IronPort-AV: E=Sophos;i="5.93,256,1654585200"; d="scan'208";a="585837194"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orsmga006.jf.intel.com with ESMTP; 22 Aug 2022 22:53:18 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 22 Aug 2022 22:53:18 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 22 Aug 2022 22:53:17 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Mon, 22 Aug 2022 22:53:17 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Mon, 22 Aug 2022 22:53:17 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LcbErUZF8v6H24e5kaVPtsA+RSgWunmw0HZQbQLAWX9kUZjwk1iqRDuS36WEBUuCkoCYQbMc9W1TPkUGefHI6vhplDKwnCkB+j2evD7gxMiH80D+hnl5GnlIeZ5xNRORHLB8oMV9k7nNVq/kvveQC02S1WT7uooxTlhUNR4YpHC7sYEPcFKNNNX9XAaeQp1kTU9QGIZFzdvqDyN/DYd2GuKQKerM/z+ctvoj85pwIsZilgyHu7G6E4sjQ5aaiTAMyKVDUUbRWo41k+ztPPKw55o7Z8sERJ1e1AZQrGBIETieyegHVms8Zp12pP/IrK1jqoK5J6vOrXtnan8hnwNvRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FAfmcg8l4E+TFqb68H3Skr9GwLfiWQzZmHzKu1j008A=;
+ b=VaAlXBr33zL6fms51HmYn4ET2MilqzfR310Xv1p0F0hxSGxRKbaFglHRCMyqlogyy+kjRHr/EegyauRy3jGNq17ZYpkilbFYlIOyLWkdocZUKL1NCx9/+vri+JEVcd3t5xJopF8K2/iwTHU0YiOhkAttKMUCJxIkdQ7HuA8bDchNuv9+qdFnsd3l5S/6CxP7psKM4u5lBDMV6IGB2RrKA9qVyXJ3tnLk5ZYcQfH7RcobhaAnMPXdFt/YaMVf5Dueprm6A95HJrQG4bh5ujpxdiD1no2+/Q7mBkKTS7ha+G5d+uHtKLX33A+8CCxo++9inUKdzhbE7/v86dWIIpKf4g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB5502.namprd11.prod.outlook.com (2603:10b6:5:39e::23)
+ by BYAPR11MB3734.namprd11.prod.outlook.com (2603:10b6:a03:fe::29) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5546.18; Tue, 23 Aug
+ 2022 05:53:09 +0000
+Received: from DM4PR11MB5502.namprd11.prod.outlook.com
+ ([fe80::b002:7084:f022:9152]) by DM4PR11MB5502.namprd11.prod.outlook.com
+ ([fe80::b002:7084:f022:9152%6]) with mapi id 15.20.5546.023; Tue, 23 Aug 2022
+ 05:53:09 +0000
+From: "Zeng, Xin" <xin.zeng@intel.com>
+To: Christoph Hellwig <hch@lst.de>, Kirti Wankhede <kwankhede@nvidia.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Zhenyu Wang
+ <zhenyuw@linux.intel.com>, "Wang, Zhi A" <zhi.a.wang@intel.com>, "Alex
+ Williamson" <alex.williamson@redhat.com>
+Subject: RE: [PATCH 05/14] vfio/mdev: simplify mdev_type handling
+Thread-Topic: [PATCH 05/14] vfio/mdev: simplify mdev_type handling
+Thread-Index: AQHYte/KB7YhzUhsnEyymvWWm3tJoa27ybzw
+Date: Tue, 23 Aug 2022 05:53:09 +0000
+Message-ID: <DM4PR11MB5502308793A102A470A91CF888709@DM4PR11MB5502.namprd11.prod.outlook.com>
+References: <20220822062208.152745-1-hch@lst.de>
+ <20220822062208.152745-6-hch@lst.de>
+In-Reply-To: <20220822062208.152745-6-hch@lst.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.500.17
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 6844108f-895e-4a0c-ba16-08da84cbc226
+x-ms-traffictypediagnostic: BYAPR11MB3734:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: fY4cP5rAFizD+r3oiMthH54d8A/5Sc9O+vIEdcfJ9y5a62vVRQyrP/DWuBEN5sH7WZmPuKomOV1l+0/c4Nm/zHlqQmrqTZYOknBnylYN4iOhxG1YByt5FmzpgCT+EZaP9nDNQVdlv25tKJDs2dERVSXeV0ZjErzgqkPxNhZw0jGN9jrz6++SrdAA45Fl5wgJIcTH0eppJvj1o3RrrlA7tN0mAS5QzXJBECJo1pGjtCdzTCtTViRNWTfXuKYyHQD7yx5r+H+ju/5y4hjKpPg6GsugE+LI6G2yjzzFoIyEFz6coArgjc36DYWYChMCPQmYTh00+LbPi7nyt2ANW7q9QBd2EUKGFZQuxhjzBz71pwwgoCwyjCyNmoUctBvFFyKCvGuwXbOBoO/KptegF/LP5EtL02t2JVkfN1vznCprk5DrBVEVQQHceBSqPyiJUe5nI7cvhP3hnWdjAKUR6niOVWRloUM1oF3IA/L2aAYBfu7frh2HzGnlsZj2p/29bnF9/yhZToIr9dcPbzKNusagcRXPURLcWtAHtXGLgYoR7qfy3ypiUD2EzLzaf1f7ZxQguRti5HoamFryvuhj2kdNa+6/HCGJwQW2ybadBcgSMEOwhDbs8OWql0joGxSFf0aq8bHaU7Ygyq3QNybyy0tqDmlA4E9ieUHXGWP/sg72enr5liLCpAkCsLxm+N7ya8rzYzhuV+x/pCa4BjVR9fh9yK4sSDgU/3AmgB24SwwU3BfcXUm1vWf2VkWXzUKri8T0rCa3Xa+v1mowS6MOLjtug0f2VE85foKxWIpMouXJRjQ=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB5502.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(376002)(346002)(39860400002)(366004)(136003)(396003)(86362001)(82960400001)(921005)(38070700005)(122000001)(38100700002)(316002)(54906003)(110136005)(52536014)(7416002)(5660300002)(66476007)(66556008)(66446008)(76116006)(66946007)(64756008)(4326008)(8676002)(2906002)(186003)(8936002)(55016003)(478600001)(7696005)(26005)(53546011)(9686003)(41300700001)(6506007)(33656002)(71200400001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?oZoEJSypU5QX2Q8c0x9OT4NvaqaSAxGNGHRGi+73k9GXOcVQ4HZyHKkbbMGm?=
+ =?us-ascii?Q?pEJt3wgBkCnqI1UV95Q6JLhFKUdEpy0GI/iLy8xnyqJVmCov+ORGi6rTIp+B?=
+ =?us-ascii?Q?p4Ou5ba+sH+oTOQ0paYVRBSaqnMueJjr1QmkERZXmQieCwLB+dOAwdh1h/bk?=
+ =?us-ascii?Q?Mb79fZNZ6/ZLfEpxCJyufzVnqQQtzKLQyazHI/PhmpMWMTsSi0H8ScnIjQtk?=
+ =?us-ascii?Q?Vuqz97ASolp3z0p9eN811gqDtTiVSRWPVyZbeocoZeULo/4oUR7LcTKCAGyx?=
+ =?us-ascii?Q?OZv+jtYtPj9YzC88zgOAjIUaN7P2PUvX7RIwHcruWqin8MxsHIvCxkCZsLrj?=
+ =?us-ascii?Q?rf+nthLFrug/dvuIupBBUoqFqtJ8+ZKifEosV2Qs2wK1pqzL7LTlVuS+npPa?=
+ =?us-ascii?Q?dy4P+qA6SVh8kRzRzm55sbi+n9HjSDfMzFk8OSrsdqyc8+N7z4v3q/lz1EAg?=
+ =?us-ascii?Q?z3EiC3ySfGvL/sBZwBvabtAdYjew/QE2+p/jOdgtVy4EYPxAIJcQTs8dgASi?=
+ =?us-ascii?Q?pZImPGhJbc6lpo6CRjVtLwItTm/Ll9s0r5dh5oMrUpaEY9eSEqJZNFzMk1XA?=
+ =?us-ascii?Q?7wzz1rUU2A6GaGhJ7jNUzYAqbnY7RqzpfVhfGc6hDuTqODMt/kwYlpWedMBD?=
+ =?us-ascii?Q?oq2LiltU7RY1dqX9aDMazK2VbHSuYAQl7eiqTlMEyFbhvDAQS7deY/lUhmeW?=
+ =?us-ascii?Q?CKIwY+u/p1HxxnG/bhyKkE7oHCKiO5zSqtfFxdJSyvzK/nkzGy/avyWqj1BQ?=
+ =?us-ascii?Q?cw7gLSk/ZaVcNwcthsie/FcoyKvlxtiZIr64AJMGIEc5sMfpby3luWcpyTK5?=
+ =?us-ascii?Q?fo1lYt/cDU97pC4kAGm+3yzAXA0r2GPg+BAYmEwNkx/PWsUF47OrMIPIqSWi?=
+ =?us-ascii?Q?3/nC2d6FfSlE9vc5G2ZfX6b/E1OOY+rluege1Y7bK8Ewy343CpFRt2ZKhUaC?=
+ =?us-ascii?Q?Ebxe+xJ8GXzQR7FGn0PUil5fWJftrY28LT8H5g66UV/0beTsgZ8zgn1QQiPo?=
+ =?us-ascii?Q?5fwnHs8qhUa/adeU1j2NuN4nW1Ee+mlO2SFpacCjRD+i89JHvmVqLZnUern9?=
+ =?us-ascii?Q?Iuayd53YnTovFdINLnkIzd3Kv5rB2dqBDSIqauLmD0ry3Fusv9brwIYxsbB2?=
+ =?us-ascii?Q?uIAM4UoeAmxyVQyOPcpc1rU/H6O/aJxei3/6dUVZlRDwJ4XuG0d7O1l1AYnS?=
+ =?us-ascii?Q?ZR2S/NcxoZaIDYiKQW0jt9T+Bx92QiFdvSbplIUQMtyCYorxAUCkILAnTGGv?=
+ =?us-ascii?Q?DFTcBHSwMTAzKtm9Ugdj7GsT4HDvj/feMKXqdQr52G1MI8u7c1DsrL66eYLe?=
+ =?us-ascii?Q?Tdx0PqcInX5p/FCPwzTG4uHe8SihPPNZubP5Ff1zwSt6AmpqUx4Q5010nuyv?=
+ =?us-ascii?Q?Nqooc0gLQQo5dsLtrjpLBRw5iS67diMDsiUDUuw5HJBEX1tXULATvVzy/HOp?=
+ =?us-ascii?Q?qSlD1W09jDbnMQQV7vWdYDcdIaS3vpVaHk8gw0Poi9YIuP9b1fKtisbcFbv3?=
+ =?us-ascii?Q?3WH4ITVH2d7sI9FDT0QhgcvHA87LtKq244WVkgDIb/MRzZx0eIwvrCHXVN8A?=
+ =?us-ascii?Q?VRL4LF5E4aKRfBzjDaCvJPf69vR6Ou2E9Xv10nG9?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="YGTp3YEHyFTiE1eD"
-Content-Disposition: inline
-In-Reply-To: <YwPB6W2tVIGWD7kD@google.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5502.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6844108f-895e-4a0c-ba16-08da84cbc226
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Aug 2022 05:53:09.6267 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0neLYvl6Xhq6lIJ9PONAlw8mFL/Bsc0zd2BUL0VHd+CQso4yFJ4KXQclBJU5BmF3+/zSpg3FqJcSZHSqgrKAmg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3734
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,178 +157,104 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: kvm@vger.kernel.org, bugzilla-daemon@kernel.org,
- intel-gfx@lists.freedesktop.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
+ Kevin" <kevin.tian@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Monday, August 22, 2022 2:22 PM, Christoph Hellwig <hch@lst.de> wrote:
 
---YGTp3YEHyFTiE1eD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2022.08.22 17:50:33 +0000, Sean Christopherson wrote:
-> +GVT folks
->
-> On Sun, Aug 21, 2022, bugzilla-daemon@kernel.org wrote:
-> > https://bugzilla.kernel.org/show_bug.cgi?id=3D216388
-> >=20
-> >             Bug ID: 216388
-> >            Summary: On Host, kernel errors in KVM, on guests, it shows =
-CPU
-> >                     stalls
-> >            Product: Virtualization
-> >            Version: unspecified
-> >     Kernel Version: 5.19.0 / 5.19.1 / 5.19.2
-> >           Hardware: All
-> >                 OS: Linux
-> >               Tree: Mainline
-> >             Status: NEW
-> >           Severity: high
-> >           Priority: P1
-> >          Component: kvm
-> >           Assignee: virtualization_kvm@kernel-bugs.osdl.org
-> >           Reporter: nanook@eskimo.com
-> >         Regression: No
-> >=20
-> > Created attachment 301614
-> >   --> https://bugzilla.kernel.org/attachment.cgi?id=3D301614&action=3De=
-dit
-> > The configuration file used to Comile this kernel.
-> >=20
-> > This behavior has persisted across 5.19.0, 5.19.1, and 5.19.2.  While t=
-he
-> > kernel I am taking this example from is tainted (owing to using Intel
-> > development drivers for GPU virtualization), it is also occurring on
-> > non-tainted kernels on servers with no development or third party modul=
-es
-> > installed.
-> >=20
-> > INFO: task CPU 2/KVM:2343 blocked for more than 1228 seconds.
-> > [207177.050049]       Tainted: G     U    I       5.19.2 #1
-> > [207177.050050] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disa=
-bles
-> > this message.
-> > [207177.050051] task:CPU 2/KVM       state:D stack:    0 pid: 2343 ppid=
-:     1
-> > flags:0x00000002
-> > [207177.050054] Call Trace:
-> > [207177.050055]  <TASK>
-> > [207177.050056]  __schedule+0x359/0x1400
-> > [207177.050060]  ? kvm_mmu_page_fault+0x1ee/0x980
-> > [207177.050062]  ? kvm_set_msr_common+0x31f/0x1060
-> > [207177.050065]  schedule+0x5f/0x100
-> > [207177.050066]  schedule_preempt_disabled+0x15/0x30
-> > [207177.050068]  __mutex_lock.constprop.0+0x4e2/0x750
-> > [207177.050070]  ? aa_file_perm+0x124/0x4f0
-> > [207177.050071]  __mutex_lock_slowpath+0x13/0x20
-> > [207177.050072]  mutex_lock+0x25/0x30
-> > [207177.050075]  intel_vgpu_emulate_mmio_read+0x5d/0x3b0 [kvmgt]
+>  /*
+>   * Used in mdev_type_attribute sysfs functions to return the parent stru=
+ct
+>   * device
+> @@ -85,6 +65,8 @@ static int mdev_device_remove_cb(struct device *dev,
+> void *data)
+>   * @parent: parent structure registered
+>   * @dev: device structure representing parent device.
+>   * @mdev_driver: Device driver to bind to the newly created mdev
+> + * @types: Array of supported mdev types
+> + * @nr_types: Number of entries in @types
+>   *
+>   * Registers the @parent stucture as a parent for mdev types and thus md=
+ev
+>   * devices.  The caller needs to hold a reference on @dev that must not =
+be
+> @@ -93,20 +75,19 @@ static int mdev_device_remove_cb(struct device
+> *dev, void *data)
+>   * Returns a negative value on error, otherwise 0.
+>   */
+>  int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
+> -		struct mdev_driver *mdev_driver)
+> +		struct mdev_driver *mdev_driver, struct mdev_type
+> **types,
+> +		unsigned int nr_types)
+>  {
+>  	char *env_string =3D "MDEV_STATE=3Dregistered";
+>  	char *envp[] =3D { env_string, NULL };
+>  	int ret;
 >=20
-> This isn't a KVM problem, it's a KVMGT problem (despite the name, KVMGT i=
-s very
-> much not KVM).
+> -	/* check for mandatory ops */
+> -	if (!mdev_driver->supported_type_groups)
+> -		return -EINVAL;
+> -
+>  	memset(parent, 0, sizeof(*parent));
+>  	init_rwsem(&parent->unreg_sem);
+>  	parent->dev =3D dev;
+>  	parent->mdev_driver =3D mdev_driver;
+> +	parent->types =3D types;
+
+This would potentially introduce a bug. Types is passed from the parent and=
+ memory reserved for it is
+managed by the parent driver, while if you are doing so, it will be freed w=
+hen types->kobj is released in=20
+mdev module, i.e. in mdev_type_release, types will be freed as a chunk of m=
+emory in heap.=20
+This will lead to unpredictable behavior and require a fix,  either in here=
+ or in mdev_type_release.
+
+Thanks,
+Xin
+
+> +	parent->nr_types =3D nr_types;
 >=20
-> > [207177.050084]  intel_vgpu_rw+0xb8/0x1c0 [kvmgt]
-> > [207177.050091]  intel_vgpu_read+0x20d/0x250 [kvmgt]
-> > [207177.050097]  vfio_device_fops_read+0x1f/0x40
-> > [207177.050100]  vfs_read+0x9b/0x160
-> > [207177.050102]  __x64_sys_pread64+0x93/0xd0
-> > [207177.050104]  do_syscall_64+0x58/0x80
-> > [207177.050106]  ? kvm_on_user_return+0x84/0xe0
-> > [207177.050107]  ? fire_user_return_notifiers+0x37/0x70
-> > [207177.050109]  ? exit_to_user_mode_prepare+0x41/0x200
-> > [207177.050111]  ? syscall_exit_to_user_mode+0x1b/0x40
-> > [207177.050112]  ? do_syscall_64+0x67/0x80
-> > [207177.050114]  ? irqentry_exit+0x54/0x70
-> > [207177.050115]  ? sysvec_call_function_single+0x4b/0xa0
-> > [207177.050116]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
-> > [207177.050118] RIP: 0033:0x7ff51131293f
-> > [207177.050119] RSP: 002b:00007ff4ddffa260 EFLAGS: 00000293 ORIG_RAX:
-> > 0000000000000011
-> > [207177.050121] RAX: ffffffffffffffda RBX: 00005599a6835420 RCX:
-> > 00007ff51131293f
-> > [207177.050122] RDX: 0000000000000004 RSI: 00007ff4ddffa2a8 RDI:
-> > 0000000000000027
-> > [207177.050123] RBP: 0000000000000004 R08: 0000000000000000 R09:
-> > 00000000ffffffff
-> > [207177.050124] R10: 0000000000065f10 R11: 0000000000000293 R12:
-> > 0000000000065f10
-> > [207177.050124] R13: 00005599a6835330 R14: 0000000000000004 R15:
-> > 0000000000065f10
-> > [207177.050126]  </TASK>
-> >=20
-> >      I am seeing this on Intel i7-6700k, i7-6850k, and i7-9700k platfor=
-ms.
-
-One recent regression fix on Comet Lake is https://patchwork.freedesktop.or=
-g/patch/496987/,
-it's on the way to 6.0-rc and would be pushed to 5.19 stable as well. But l=
-ooks this
-report impacts on more platforms? We'll double check.
-
-Thanks
-
-> >=20
-> >      This did not happen on 5.17 kernels, and 5.18 kernels never ran st=
-able
-> > enough on my platforms to actually run them for more than a few minutes.
-> >=20
-> >      Likewise 6.0-rc1 has not been stable enough to run in production. =
- After
-> > less than three hours running on my workstation it locked hard with eve=
-n the
-> > magic sys-request key being unresponsive and only power cycling the mac=
-hine got
-> > it back.
-> >=20
-> >      The operating system in use for the host on all machines is Ubuntu=
- 22.04.
-> >=20
-> >      Guests vary with Ubuntu 22.04 being the most common but also Mint,=
- Debian,
-> > Manjaro, Centos, Fedora, ScientificLinux, Zorin, and Windows being in u=
-se.
-> >=20
-> >      I see the same issue manifest on platforms running only Ubuntu gue=
-sts as
-> > with guests of varying operating systems. =20
-> >=20
-> >      The configuration file I used to compile this kernel is attached. =
- I
-> > compiled it with gcc 12.1.0.
-> >=20
-> >      This behavior does not manifest itself instantly, typically the ma=
-chine
-> > needs to be running 3-7 days before it does.  Once it does guests keep =
-stalling
-> > and restarting libvirtd does not help.  Only thing that seems to is a h=
-ard
-> > reboot of the physical host.  For this reason I believe the issue lies =
-strictly
-> > with the host and not the guests.
-> >=20
-> >      I have listed it as a severity of high since it is completely serv=
-ice
-> > interrupting.
-> >=20
-> > --=20
-> > You may reply to this email to add a comment.
-> >=20
-> > You are receiving this mail because:
-> > You are watching the assignee of the bug.
-
---YGTp3YEHyFTiE1eD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYwQPegAKCRCxBBozTXgY
-JwVzAJ9AGCbs4pALTV0EbDPc7WMK/2Ig9gCaA86BaIuoLjxNrPIGDl/B97DXroQ=
-=W/db
------END PGP SIGNATURE-----
-
---YGTp3YEHyFTiE1eD--
+>  	if (!mdev_bus_compat_class) {
+>  		mdev_bus_compat_class =3D
+> class_compat_register("mdev_bus");
+> +static int mdev_type_add(struct mdev_parent *parent, struct mdev_type
+> *type)
+>  {
+> -	struct mdev_type *type;
+> -	struct attribute_group *group =3D
+> -		parent->mdev_driver-
+> >supported_type_groups[type_group_id];
+>  	int ret;
+>=20
+> -	if (!group->name) {
+> -		pr_err("%s: Type name empty!\n", __func__);
+> -		return ERR_PTR(-EINVAL);
+> -	}
+> -
+> -	type =3D kzalloc(sizeof(*type), GFP_KERNEL);
+> -	if (!type)
+> -		return ERR_PTR(-ENOMEM);
+> -
+>  	type->kobj.kset =3D parent->mdev_types_kset;
+>  	type->parent =3D parent;
+>  	/* Pairs with the put in mdev_type_release() */
+>  	get_device(parent->dev);
+> -	type->type_group_id =3D type_group_id;
+>=20
+>  	ret =3D kobject_init_and_add(&type->kobj, &mdev_type_ktype, NULL,
+>  				   "%s-%s", dev_driver_string(parent->dev),
+> -				   group->name);
+> +				   type->sysfs_name);
+>  	if (ret) {
+>  		kobject_put(&type->kobj);
+> -		return ERR_PTR(ret);
+> +		return ret;
+>  	}
+>=20
+>  	ret =3D sysfs_create_file(&type->kobj, &mdev_type_attr_create.attr);
