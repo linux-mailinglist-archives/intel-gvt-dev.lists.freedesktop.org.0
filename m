@@ -2,97 +2,94 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67CB659E6F8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Aug 2022 18:23:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 426D159EA78
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Aug 2022 20:03:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2F0D9113201;
-	Tue, 23 Aug 2022 16:23:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C4A7710E039;
+	Tue, 23 Aug 2022 18:03:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
  [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7B325113026
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E5A3810E1C5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 23 Aug 2022 16:23:23 +0000 (UTC)
-Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27NFtXH7015155;
- Tue, 23 Aug 2022 16:23:09 GMT
+ Tue, 23 Aug 2022 18:03:15 +0000 (UTC)
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27NHhY9w007681;
+ Tue, 23 Aug 2022 18:02:11 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=y+D/nptw5cAg0ZpaT4pCciDGydAT/YKp9U9O+u9Tc6g=;
- b=pRWm/NWm7a6s9hPNmE33Gahf3dY5MlGgayetrA+75C7aqBxxCmyapT7IUoo6LVIUm7PM
- 6Bt9RB94XiNsV5/1BomEoOwiE4uTLFWJpi10wFskBtW/JGRFF31AO/vksCZc40jvNx1g
- wG0FjfqqrQDXZLwwhLrYBoZtA/FhK9GEsaPe2wz8DC7G+vK8lrYYsj1xPNo8odjMlRbM
- HXn1I5C7AhZyxL1wZZki+48C0mjkUGqgIQsjmWpVTuvZRCtbj/vXMIM1nzfgTH9C3kez
- 0kc5pxDW19QCyXQo/XK6qNUKW+r2LohHPxZbvkLnn18nkmU1rSUiofibz/YZfpkx595N 0w== 
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=AgNvVG0edT28hv7MtckHKr3I12mN1X1DVyBIWBmN+64=;
+ b=P2bOHPMLBZ0qinqhiYDgQ3XA1V90Bye5C39eepSCqIkVuS9K3ImN2geB9SPq93vLOeWu
+ R8iSFpN009pIcb6gujsqXEKv3SAvrFsETzEg0G0ORP0N8OQyjoeyvliXHLflF3MHZC2l
+ w1Q9I4qo/qt5bPEY6Dtfgb36EZBtgOUkmhKDvlmvbqklElZUDvy0RNyWV9rLy9Tl1Cvs
+ PgCuqlSYcTNmH9Th2w4bNVlfjjAxnt9MCSvnCM4XguLmyQ19eqT16bsJyrpGW2QHOuIk
+ /dgptvCUd7cZP6allweIZeDb2Rwi+8lrR46IKqoxGJ6azroQS0b2/H+Q7HVDxTibovHR Rg== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3j51yb8xkr-1
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3j53hugj86-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 Aug 2022 16:23:08 +0000
-Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 27NFuJC9017430;
- Tue, 23 Aug 2022 16:23:08 GMT
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3j51yb8xkd-1
+ Tue, 23 Aug 2022 18:02:11 +0000
+Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 27NHkJtr017952;
+ Tue, 23 Aug 2022 18:02:11 GMT
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
+ [169.63.214.131])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3j53hugj7n-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 Aug 2022 16:23:08 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 27NG70hV032088;
- Tue, 23 Aug 2022 16:23:07 GMT
+ Tue, 23 Aug 2022 18:02:11 +0000
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+ by ppma01dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 27NHoVPl017411;
+ Tue, 23 Aug 2022 18:02:10 GMT
 Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
- [9.57.198.26]) by ppma04dal.us.ibm.com with ESMTP id 3j2q8a103m-1
+ [9.57.198.26]) by ppma01dal.us.ibm.com with ESMTP id 3j2q8a1kjd-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 Aug 2022 16:23:07 +0000
-Received: from b01ledav001.gho.pok.ibm.com (b01ledav001.gho.pok.ibm.com
- [9.57.199.106])
+ Tue, 23 Aug 2022 18:02:10 +0000
+Received: from b01ledav002.gho.pok.ibm.com (b01ledav002.gho.pok.ibm.com
+ [9.57.199.107])
  by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 27NGN6H312583514
+ 27NI29IH18154254
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 23 Aug 2022 16:23:06 GMT
-Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4D30128059;
- Tue, 23 Aug 2022 16:23:06 +0000 (GMT)
-Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 87E232805A;
- Tue, 23 Aug 2022 16:23:05 +0000 (GMT)
-Received: from [9.160.64.167] (unknown [9.160.64.167])
- by b01ledav001.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue, 23 Aug 2022 16:23:05 +0000 (GMT)
-Message-ID: <51ebcc15-4690-a93d-bf04-93ff9f6da482@linux.ibm.com>
-Date: Tue, 23 Aug 2022 12:23:05 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 11/14] vfio/mdev: consolidate all the name sysfs into the
- core code
-Content-Language: en-US
+ Tue, 23 Aug 2022 18:02:09 GMT
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0AA4C124053;
+ Tue, 23 Aug 2022 18:02:09 +0000 (GMT)
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4B266124052;
+ Tue, 23 Aug 2022 18:02:08 +0000 (GMT)
+Received: from li-479af74c-31f9-11b2-a85c-e4ddee11713b.ibm.com (unknown
+ [9.160.161.42]) by b01ledav002.gho.pok.ibm.com (Postfix) with ESMTP;
+ Tue, 23 Aug 2022 18:02:08 +0000 (GMT)
+Message-ID: <1e9beb36fca72f1dccc217321b2bbbf31c1c1723.camel@linux.ibm.com>
+Subject: Re: [PATCH 03/14] vfio/mdev: make mdev.h standalone includable
+From: Eric Farman <farman@linux.ibm.com>
 To: Christoph Hellwig <hch@lst.de>, Kirti Wankhede <kwankhede@nvidia.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
  Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
+Date: Tue, 23 Aug 2022 14:02:07 -0400
+In-Reply-To: <20220822062208.152745-4-hch@lst.de>
 References: <20220822062208.152745-1-hch@lst.de>
- <20220822062208.152745-12-hch@lst.de>
-From: Anthony Krowiak <akrowiak@linux.ibm.com>
-In-Reply-To: <20220822062208.152745-12-hch@lst.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <20220822062208.152745-4-hch@lst.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4 (3.44.4-1.fc36) 
+MIME-Version: 1.0
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: nrlNwaZsntmuT8-8WETzQLAFab4cfcwn
-X-Proofpoint-ORIG-GUID: ZGMrYkvV20rNu2p6MZExqnOHiZxclSy2
+X-Proofpoint-GUID: vqWB3DDdlpD1oFBTsjI6HEJ1hsxEDs7d
+X-Proofpoint-ORIG-GUID: J_XRo1RCwCmak8PMqElH5G5o9gaVUQkV
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-08-23_07,2022-08-22_02,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- clxscore=1015 phishscore=0 spamscore=0 bulkscore=0 mlxscore=0
- malwarescore=0 mlxlogscore=999 impostorscore=0 priorityscore=1501
- suspectscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2207270000 definitions=main-2208230065
+ clxscore=1015 mlxlogscore=999
+ priorityscore=1501 malwarescore=0 impostorscore=0 lowpriorityscore=0
+ bulkscore=0 adultscore=0 phishscore=0 mlxscore=0 spamscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2207270000 definitions=main-2208230069
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,355 +108,188 @@ Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-
-On 8/22/22 2:22 AM, Christoph Hellwig wrote:
-> Every driver just emits a static string, simply add a field to the
-> mdev_type for the driver to fill out or fall back to the sysfs name and
-> provide a standard sysfs show function.
-
-
-What am I missing? I can not find where the the driver sets the 
-mdev_type.pretty_name field by the vfio_ap device driver.
-
-
->
+On Mon, 2022-08-22 at 08:21 +0200, Christoph Hellwig wrote:
+> Include <linux/device.h> and <linux/uuid.h> so that users of this
+> headers
+> don't need to do that and remove those includes that aren't needed
+> any more.
+>=20
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 > Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
+> Reviewed By: Kirti Wankhede <kwankhede@nvidia.com>
+
+Reviewed-by: Eric Farman <farman@linux.ibm.com>
+
 > ---
->   .../driver-api/vfio-mediated-device.rst       |  2 +-
->   drivers/gpu/drm/i915/gvt/kvmgt.c              |  8 -------
->   drivers/s390/cio/vfio_ccw_drv.c               |  1 +
->   drivers/s390/cio/vfio_ccw_ops.c               |  8 -------
->   drivers/s390/crypto/vfio_ap_ops.c             |  9 --------
->   drivers/vfio/mdev/mdev_sysfs.c                | 10 +++++++++
->   include/linux/mdev.h                          |  1 +
->   samples/vfio-mdev/mbochs.c                    | 20 ++++--------------
->   samples/vfio-mdev/mdpy.c                      | 21 +++++--------------
->   samples/vfio-mdev/mtty.c                      | 18 ++++------------
->   10 files changed, 26 insertions(+), 72 deletions(-)
->
-> diff --git a/Documentation/driver-api/vfio-mediated-device.rst b/Documentation/driver-api/vfio-mediated-device.rst
-> index b0c29e37f61b4..dcd1231a6fa84 100644
-> --- a/Documentation/driver-api/vfio-mediated-device.rst
-> +++ b/Documentation/driver-api/vfio-mediated-device.rst
-> @@ -217,7 +217,7 @@ Directories and files under the sysfs for Each Physical Device
->   
->   * name
->   
-> -  This attribute should show human readable name. This is optional attribute.
-> +  This attribute shows a human readable name.
->   
->   * description
->   
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> index 1ed99091165a4..e24e72527c9aa 100644
+> =C2=A0drivers/gpu/drm/i915/gvt/kvmgt.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 =
+--
+> =C2=A0drivers/s390/cio/vfio_ccw_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ | 1 -
+> =C2=A0drivers/s390/crypto/vfio_ap_private.h | 1 -
+> =C2=A0drivers/vfio/mdev/mdev_core.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 | 2 --
+> =C2=A0drivers/vfio/mdev/mdev_driver.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ | 1 -
+> =C2=A0drivers/vfio/mdev/mdev_sysfs.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 | 2 --
+> =C2=A0include/linux/mdev.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 3 +++
+> =C2=A0samples/vfio-mdev/mbochs.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 1 -
+> =C2=A0samples/vfio-mdev/mdpy.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 1 -
+> =C2=A0samples/vfio-mdev/mtty.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 --
+> =C2=A010 files changed, 3 insertions(+), 13 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> index 91ba675a2fb8c..92bb9e7548b12 100644
 > --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
 > +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -138,20 +138,12 @@ static ssize_t description_show(struct mdev_type *mtype,
->   		       type->conf->weight);
->   }
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	return sprintf(buf, "%s\n", mtype->sysfs_name);
-> -}
-> -
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   static MDEV_TYPE_ATTR_RO(description);
-> -static MDEV_TYPE_ATTR_RO(name);
->   
->   static const struct attribute *gvt_type_attrs[] = {
->   	&mdev_type_attr_available_instances.attr,
->   	&mdev_type_attr_description.attr,
-> -	&mdev_type_attr_name.attr,
->   	NULL,
->   };
->   
-> diff --git a/drivers/s390/cio/vfio_ccw_drv.c b/drivers/s390/cio/vfio_ccw_drv.c
-> index 25a5de08b3902..e5f21c725326b 100644
+> @@ -34,7 +34,6 @@
+> =C2=A0 */
+> =C2=A0
+> =C2=A0#include <linux/init.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/mm.h>
+> =C2=A0#include <linux/kthread.h>
+> =C2=A0#include <linux/sched/mm.h>
+> @@ -43,7 +42,6 @@
+> =C2=A0#include <linux/rbtree.h>
+> =C2=A0#include <linux/spinlock.h>
+> =C2=A0#include <linux/eventfd.h>
+> -#include <linux/uuid.h>
+> =C2=A0#include <linux/mdev.h>
+> =C2=A0#include <linux/debugfs.h>
+> =C2=A0
+> diff --git a/drivers/s390/cio/vfio_ccw_drv.c
+> b/drivers/s390/cio/vfio_ccw_drv.c
+> index 86d9e428357b0..e9985c63dc6bf 100644
 > --- a/drivers/s390/cio/vfio_ccw_drv.c
 > +++ b/drivers/s390/cio/vfio_ccw_drv.c
-> @@ -221,6 +221,7 @@ static int vfio_ccw_sch_probe(struct subchannel *sch)
->   	dev_set_drvdata(&sch->dev, private);
->   
->   	private->mdev_type.sysfs_name = "io";
-> +	private->mdev_type.pretty_name = "I/O subchannel (Non-QDIO)";
->   	private->mdev_types[0] = &private->mdev_type;
->   	ret = mdev_register_parent(&private->parent, &sch->dev,
->   				   &vfio_ccw_mdev_driver,
-> diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-> index 9ced2063720e6..854e0aaefc022 100644
-> --- a/drivers/s390/cio/vfio_ccw_ops.c
-> +++ b/drivers/s390/cio/vfio_ccw_ops.c
-> @@ -44,13 +44,6 @@ static void vfio_ccw_dma_unmap(struct vfio_device *vdev, u64 iova, u64 length)
->   	vfio_ccw_mdev_reset(private);
->   }
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	return sprintf(buf, "I/O subchannel (Non-QDIO)\n");
-> -}
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t available_instances_show(struct mdev_type *mtype,
->   					struct mdev_type_attribute *attr,
->   					char *buf)
-> @@ -62,7 +55,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
->   };
-> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-> index 728a0ada4928f..9dedb0db8ee84 100644
-> --- a/drivers/s390/crypto/vfio_ap_ops.c
-> +++ b/drivers/s390/crypto/vfio_ap_ops.c
-> @@ -784,14 +784,6 @@ static void vfio_ap_mdev_remove(struct mdev_device *mdev)
->   	atomic_inc(&matrix_dev->available_instances);
->   }
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	return sprintf(buf, "%s\n", VFIO_AP_MDEV_NAME_HWVIRT);
-> -}
-> -
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t available_instances_show(struct mdev_type *mtype,
->   					struct mdev_type_attribute *attr,
->   					char *buf)
-> @@ -803,7 +795,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *vfio_ap_mdev_type_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
->   };
-> diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
-> index 89637bc85462a..0f3d0bbf36f75 100644
+> @@ -12,7 +12,6 @@
+> =C2=A0
+> =C2=A0#include <linux/module.h>
+> =C2=A0#include <linux/init.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/slab.h>
+> =C2=A0#include <linux/mdev.h>
+> =C2=A0
+> diff --git a/drivers/s390/crypto/vfio_ap_private.h
+> b/drivers/s390/crypto/vfio_ap_private.h
+> index d782cf463eaba..163eeaaf24cee 100644
+> --- a/drivers/s390/crypto/vfio_ap_private.h
+> +++ b/drivers/s390/crypto/vfio_ap_private.h
+> @@ -13,7 +13,6 @@
+> =C2=A0#define _VFIO_AP_PRIVATE_H_
+> =C2=A0
+> =C2=A0#include <linux/types.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/mdev.h>
+> =C2=A0#include <linux/delay.h>
+> =C2=A0#include <linux/mutex.h>
+> diff --git a/drivers/vfio/mdev/mdev_core.c
+> b/drivers/vfio/mdev/mdev_core.c
+> index b8b9e7911e559..2c32923fbad27 100644
+> --- a/drivers/vfio/mdev/mdev_core.c
+> +++ b/drivers/vfio/mdev/mdev_core.c
+> @@ -8,9 +8,7 @@
+> =C2=A0 */
+> =C2=A0
+> =C2=A0#include <linux/module.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/slab.h>
+> -#include <linux/uuid.h>
+> =C2=A0#include <linux/sysfs.h>
+> =C2=A0#include <linux/mdev.h>
+> =C2=A0
+> diff --git a/drivers/vfio/mdev/mdev_driver.c
+> b/drivers/vfio/mdev/mdev_driver.c
+> index 9c2af59809e2e..7bd4bb9850e81 100644
+> --- a/drivers/vfio/mdev/mdev_driver.c
+> +++ b/drivers/vfio/mdev/mdev_driver.c
+> @@ -7,7 +7,6 @@
+> =C2=A0 *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 Kirti Wankhede <kwankhede@nvidia.com>
+> =C2=A0 */
+> =C2=A0
+> -#include <linux/device.h>
+> =C2=A0#include <linux/iommu.h>
+> =C2=A0#include <linux/mdev.h>
+> =C2=A0
+> diff --git a/drivers/vfio/mdev/mdev_sysfs.c
+> b/drivers/vfio/mdev/mdev_sysfs.c
+> index 0ccfeb3dda245..4bfbf49aaa66a 100644
 > --- a/drivers/vfio/mdev/mdev_sysfs.c
 > +++ b/drivers/vfio/mdev/mdev_sysfs.c
-> @@ -81,9 +81,19 @@ static ssize_t device_api_show(struct mdev_type *mtype,
->   }
->   static MDEV_TYPE_ATTR_RO(device_api);
->   
-> +static ssize_t name_show(struct mdev_type *mtype,
-> +			 struct mdev_type_attribute *attr, char *buf)
-> +{
-> +	return sprintf(buf, "%s\n",
-> +		mtype->pretty_name ? mtype->pretty_name : mtype->sysfs_name);
-> +}
-> +
-> +static MDEV_TYPE_ATTR_RO(name);
-> +
->   static struct attribute *mdev_types_core_attrs[] = {
->   	&mdev_type_attr_create.attr,
->   	&mdev_type_attr_device_api.attr,
-> +	&mdev_type_attr_name.attr,
->   	NULL,
->   };
->   
+> @@ -9,9 +9,7 @@
+> =C2=A0
+> =C2=A0#include <linux/sysfs.h>
+> =C2=A0#include <linux/ctype.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/slab.h>
+> -#include <linux/uuid.h>
+> =C2=A0#include <linux/mdev.h>
+> =C2=A0
+> =C2=A0#include "mdev_private.h"
 > diff --git a/include/linux/mdev.h b/include/linux/mdev.h
-> index af1ff0165b8d3..4bb8a58b577b3 100644
+> index 47ad3b104d9e7..a5d8ae6132a20 100644
 > --- a/include/linux/mdev.h
 > +++ b/include/linux/mdev.h
-> @@ -26,6 +26,7 @@ struct mdev_device {
->   struct mdev_type {
->   	/* set by the driver before calling mdev_register parent: */
->   	const char *sysfs_name;
-> +	const char *pretty_name;
->   
->   	/* set by the core, can be used drivers */
->   	struct mdev_parent *parent;
+> @@ -10,6 +10,9 @@
+> =C2=A0#ifndef MDEV_H
+> =C2=A0#define MDEV_H
+> =C2=A0
+> +#include <linux/device.h>
+> +#include <linux/uuid.h>
+> +
+> =C2=A0struct mdev_type;
+> =C2=A0
+> =C2=A0struct mdev_device {
 > diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-> index 199846f01de92..c8271168a96ad 100644
+> index 344c2901a82bf..d0d1bb7747240 100644
 > --- a/samples/vfio-mdev/mbochs.c
 > +++ b/samples/vfio-mdev/mbochs.c
-> @@ -101,26 +101,25 @@ MODULE_PARM_DESC(mem, "megabytes available to " MBOCHS_NAME " devices");
->   
->   static struct mbochs_type {
->   	struct mdev_type type;
-> -	const char *name;
->   	u32 mbytes;
->   	u32 max_x;
->   	u32 max_y;
->   } mbochs_types[] = {
->   	{
->   		.type.sysfs_name	= MBOCHS_TYPE_1,
-> -		.name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_1,
-> +		.type.pretty_name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_1,
->   		.mbytes = 4,
->   		.max_x  = 800,
->   		.max_y  = 600,
->   	}, {
->   		.type.sysfs_name	= MBOCHS_TYPE_2,
-> -		.name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_2,
-> +		.type.pretty_name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_2,
->   		.mbytes = 16,
->   		.max_x  = 1920,
->   		.max_y  = 1440,
->   	}, {
->   		.type.sysfs_name	= MBOCHS_TYPE_3,
-> -		.name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_3,
-> +		.type.pretty_name	= MBOCHS_CLASS_NAME "-" MBOCHS_TYPE_3,
->   		.mbytes = 64,
->   		.max_x  = 0,
->   		.max_y  = 0,
-> @@ -547,7 +546,7 @@ static int mbochs_probe(struct mdev_device *mdev)
->   		goto err_mem;
->   
->   	dev_info(dev, "%s: %s, %d MB, %ld pages\n", __func__,
-> -		 type->name, type->mbytes, mdev_state->pagecount);
-> +		 type->type.pretty_name, type->mbytes, mdev_state->pagecount);
->   
->   	mutex_init(&mdev_state->ops_lock);
->   	mdev_state->mdev = mdev;
-> @@ -1334,16 +1333,6 @@ static const struct attribute_group *mdev_dev_groups[] = {
->   	NULL,
->   };
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	struct mbochs_type *type =
-> -		container_of(mtype, struct mbochs_type, type);
-> -
-> -	return sprintf(buf, "%s\n", type->name);
-> -}
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t description_show(struct mdev_type *mtype,
->   				struct mdev_type_attribute *attr, char *buf)
->   {
-> @@ -1368,7 +1357,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_description.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
+> @@ -21,7 +21,6 @@
+> =C2=A0 */
+> =C2=A0#include <linux/init.h>
+> =C2=A0#include <linux/module.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/kernel.h>
+> =C2=A0#include <linux/slab.h>
+> =C2=A0#include <linux/vmalloc.h>
 > diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-> index b8d6eeff2033d..6091c642ee102 100644
+> index e8c46eb2e2468..0c4ca1f4be7ed 100644
 > --- a/samples/vfio-mdev/mdpy.c
 > +++ b/samples/vfio-mdev/mdpy.c
-> @@ -53,7 +53,6 @@ MODULE_PARM_DESC(count, "number of " MDPY_NAME " devices");
->   
->   static struct mdpy_type {
->   	struct mdev_type type;
-> -	const char *name;
->   	u32 format;
->   	u32 bytepp;
->   	u32 width;
-> @@ -61,21 +60,21 @@ static struct mdpy_type {
->   } mdpy_types[] = {
->   	{
->   		.type.sysfs_name 	= MDPY_TYPE_1,
-> -		.name	= MDPY_CLASS_NAME "-" MDPY_TYPE_1,
-> +		.type.pretty_name	= MDPY_CLASS_NAME "-" MDPY_TYPE_1,
->   		.format = DRM_FORMAT_XRGB8888,
->   		.bytepp = 4,
->   		.width	= 640,
->   		.height = 480,
->   	}, {
->   		.type.sysfs_name 	= MDPY_TYPE_2,
-> -		.name	= MDPY_CLASS_NAME "-" MDPY_TYPE_2,
-> +		.type.pretty_name	= MDPY_CLASS_NAME "-" MDPY_TYPE_2,
->   		.format = DRM_FORMAT_XRGB8888,
->   		.bytepp = 4,
->   		.width	= 1024,
->   		.height = 768,
->   	}, {
->   		.type.sysfs_name 	= MDPY_TYPE_3,
-> -		.name	= MDPY_CLASS_NAME "-" MDPY_TYPE_3,
-> +		.type.pretty_name	= MDPY_CLASS_NAME "-" MDPY_TYPE_3,
->   		.format = DRM_FORMAT_XRGB8888,
->   		.bytepp = 4,
->   		.width	= 1920,
-> @@ -256,8 +255,8 @@ static int mdpy_probe(struct mdev_device *mdev)
->   		ret = -ENOMEM;
->   		goto err_vconfig;
->   	}
-> -	dev_info(dev, "%s: %s (%dx%d)\n", __func__, type->name, type->width,
-> -		 type->height);
-> +	dev_info(dev, "%s: %s (%dx%d)\n", __func__, type->type.pretty_name,
-> +		 type->width, type->height);
->   
->   	mutex_init(&mdev_state->ops_lock);
->   	mdev_state->mdev = mdev;
-> @@ -651,15 +650,6 @@ static const struct attribute_group *mdev_dev_groups[] = {
->   	NULL,
->   };
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	struct mdpy_type *type = container_of(mtype, struct mdpy_type, type);
-> -
-> -	return sprintf(buf, "%s\n", type->name);
-> -}
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t description_show(struct mdev_type *mtype,
->   				struct mdev_type_attribute *attr, char *buf)
->   {
-> @@ -679,7 +669,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_description.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
+> @@ -17,7 +17,6 @@
+> =C2=A0 */
+> =C2=A0#include <linux/init.h>
+> =C2=A0#include <linux/module.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/kernel.h>
+> =C2=A0#include <linux/slab.h>
+> =C2=A0#include <linux/vmalloc.h>
 > diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
-> index 2a470424628af..b95a4491265c5 100644
+> index f42a59ed2e3fe..4f5a6f2d3629d 100644
 > --- a/samples/vfio-mdev/mtty.c
 > +++ b/samples/vfio-mdev/mtty.c
-> @@ -146,10 +146,11 @@ struct mdev_state {
->   static struct mtty_type {
->   	struct mdev_type type;
->   	int nr_ports;
-> -	const char *name;
->   } mtty_types[2] = {
-> -	{ .nr_ports = 1, .type.sysfs_name = "1", .name = "Single port serial" },
-> -	{ .nr_ports = 2, .type.sysfs_name = "2", .name = "Dual port serial" },
-> +	{ .nr_ports = 1, .type.sysfs_name = "1",
-> +	  .type.pretty_name = "Single port serial" },
-> +	{ .nr_ports = 2, .type.sysfs_name = "2",
-> +	  .type.pretty_name = "Dual port serial" },
->   };
->   
->   static struct mdev_type *mtty_mdev_types[] = {
-> @@ -1246,16 +1247,6 @@ static const struct attribute_group *mdev_dev_groups[] = {
->   	NULL,
->   };
->   
-> -static ssize_t name_show(struct mdev_type *mtype,
-> -			 struct mdev_type_attribute *attr, char *buf)
-> -{
-> -	struct mtty_type *type = container_of(mtype, struct mtty_type, type);
-> -
-> -	return sysfs_emit(buf, "%s\n", type->name);
-> -}
-> -
-> -static MDEV_TYPE_ATTR_RO(name);
-> -
->   static ssize_t available_instances_show(struct mdev_type *mtype,
->   					struct mdev_type_attribute *attr,
->   					char *buf)
-> @@ -1269,7 +1260,6 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
->   static MDEV_TYPE_ATTR_RO(available_instances);
->   
->   static const struct attribute *mdev_types_attrs[] = {
-> -	&mdev_type_attr_name.attr,
->   	&mdev_type_attr_available_instances.attr,
->   	NULL,
->   };
+> @@ -12,7 +12,6 @@
+> =C2=A0
+> =C2=A0#include <linux/init.h>
+> =C2=A0#include <linux/module.h>
+> -#include <linux/device.h>
+> =C2=A0#include <linux/kernel.h>
+> =C2=A0#include <linux/fs.h>
+> =C2=A0#include <linux/poll.h>
+> @@ -20,7 +19,6 @@
+> =C2=A0#include <linux/cdev.h>
+> =C2=A0#include <linux/sched.h>
+> =C2=A0#include <linux/wait.h>
+> -#include <linux/uuid.h>
+> =C2=A0#include <linux/vfio.h>
+> =C2=A0#include <linux/iommu.h>
+> =C2=A0#include <linux/sysfs.h>
+
