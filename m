@@ -1,41 +1,97 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6207D59E508
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Aug 2022 16:19:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DC8A59E5CD
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 Aug 2022 17:15:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E7C8110E656;
-	Tue, 23 Aug 2022 14:19:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D758811BCB2;
+	Tue, 23 Aug 2022 15:15:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from bg5.exmail.qq.com (bg4.exmail.qq.com [43.155.65.254])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7A77D10E656;
- Tue, 23 Aug 2022 14:18:53 +0000 (UTC)
-X-QQ-mid: bizesmtp88t1661264325tb54gilq
-Received: from localhost.localdomain ( [182.148.14.124])
- by bizesmtp.qq.com (ESMTP) with 
- id ; Tue, 23 Aug 2022 22:18:43 +0800 (CST)
-X-QQ-SSF: 0100000000200040B000B00A0000000
-X-QQ-FEAT: ILHsT53NKPgLTuHpE6ccSHE70S/G0EX2mN4fT6dumbwx7YjyhfDhsWAnefi8+
- sf6o3pVtUwhUSCFlIAZARgDB8TvsFn2X3rBV3TbDNQMr1l3g2jhdnCTm1rAfpyn1qI0MAhC
- njWcuSxPK4v7kwhUZzuMYr8s9+BxfZYYoF6GJKsD8ebVcZwSL0A8ffznYyVjUZm9b1c0uuR
- IP3PHz6O7iqmUCKsBEi3s63DSxC18sVY1qXfi/PqQwpgd/P0UQMJwePOFAV05D70EA31FBz
- 3EGHhjbyuV4twtM3sdGvyIE+ZH6AQYtNObJHvE29D80nu9few/S+8STQ2WMKV7FaNF32MVG
- BZ6qHQ3UgJirabWgIEOp+9Ga1prxOP7idbkoo06zR/cgh65DeO7N79Or6iUBw==
-X-QQ-GoodBg: 0
-From: wangjianli <wangjianli@cdjrlc.com>
-To: zhenyuw@linux.intel.com, zhi.a.wang@intel.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, odrigo.vivi@intel.com,
- tvrtko.ursulin@linux.intel.com, airlied@linux.ie, daniel@ffwll.ch
-Subject: [PATCH] i915/gvt: fix repeated words in comments
-Date: Tue, 23 Aug 2022 22:18:36 +0800
-Message-Id: <20220823141836.14176-1-wangjianli@cdjrlc.com>
-X-Mailer: git-send-email 2.36.1
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 37D2A11BCB2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 23 Aug 2022 15:15:29 +0000 (UTC)
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27NFCiIQ004659;
+ Tue, 23 Aug 2022 15:15:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=cC46tiX9BrbTmGrsc9kJBoqbsXbAoGGjhXK85Q9l+YY=;
+ b=bEoZtsgyXJ0kBA3bp/E9BqfsTjKOqrOraaOprFz+5h48gJK5yRvxCbjh+S/JK0UVKvop
+ 1yVB6XFbymq9i0jXB0zg8ECtQLKSnxO8+z8a+eNvju/apiIwOCCwPp7iomp9HqVPZ/AP
+ 67Co2EEteb2ZM47OFHmcqyrc4e+02sEmMTmVb+4ZyKMmwt5gxY/FKk2DqPzALqqxzpwY
+ CLffK+FdtWVk+EekO7+8ytWAQUg2mzW88fvnmg9riIitxaUqapsQm3T4VBCntc7e8A6k
+ m4Tej+DSRv/TYDqVTTHi0Ajdpkd9IQnDJ5i23mmAw5+iUDOnzyLXAwwleQ5w6NMwDq0a Qw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3j51b702b1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Aug 2022 15:15:18 +0000
+Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 27NFEBcq011169;
+ Tue, 23 Aug 2022 15:15:18 GMT
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
+ [169.53.41.122])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3j51b702a3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Aug 2022 15:15:17 +0000
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+ by ppma04dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 27NF99io016926;
+ Tue, 23 Aug 2022 15:15:17 GMT
+Received: from b01cxnp23032.gho.pok.ibm.com (b01cxnp23032.gho.pok.ibm.com
+ [9.57.198.27]) by ppma04dal.us.ibm.com with ESMTP id 3j2q8a0hy5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 23 Aug 2022 15:15:16 +0000
+Received: from b01ledav001.gho.pok.ibm.com (b01ledav001.gho.pok.ibm.com
+ [9.57.199.106])
+ by b01cxnp23032.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 27NFFFc249021202
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 23 Aug 2022 15:15:16 GMT
+Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CF9E92805E;
+ Tue, 23 Aug 2022 15:15:15 +0000 (GMT)
+Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 25B872805A;
+ Tue, 23 Aug 2022 15:15:15 +0000 (GMT)
+Received: from [9.160.64.167] (unknown [9.160.64.167])
+ by b01ledav001.gho.pok.ibm.com (Postfix) with ESMTP;
+ Tue, 23 Aug 2022 15:15:15 +0000 (GMT)
+Message-ID: <02b06bc5-ce85-2266-c14a-dd1b83c16dd1@linux.ibm.com>
+Date: Tue, 23 Aug 2022 11:15:14 -0400
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:cdjrlc.com:qybglogicsvr:qybglogicsvr7
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 03/14] vfio/mdev: make mdev.h standalone includable
+Content-Language: en-US
+To: Christoph Hellwig <hch@lst.de>, Kirti Wankhede <kwankhede@nvidia.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+References: <20220822062208.152745-1-hch@lst.de>
+ <20220822062208.152745-4-hch@lst.de>
+From: Anthony Krowiak <akrowiak@linux.ibm.com>
+In-Reply-To: <20220822062208.152745-4-hch@lst.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: ffx7kv0bjvvh-2SMGqR-NyZYaa6R0DYy
+X-Proofpoint-GUID: 7wV0v7-ig_VwuOxY9S51FaOO8JFHbmvU
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-08-23_05,2022-08-22_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0 clxscore=1011
+ impostorscore=0 malwarescore=0 priorityscore=1501 phishscore=0 mlxscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2207270000 definitions=main-2208230062
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,32 +104,175 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: wangjianli <wangjianli@cdjrlc.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
+Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, kvm@vger.kernel.org,
+ Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
- Delete the redundant word 'the'.
+Reviewed-by: Tony Krowiak <akrowiak@linux.ibm.com>
 
-Signed-off-by: wangjianli <wangjianli@cdjrlc.com>
----
- drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index b4f69364f9a1..62e5f27adca9 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -2786,7 +2786,7 @@ int intel_gvt_init_gtt(struct intel_gvt *gvt)
-  * @gvt: GVT device
-  *
-  * This function is called at the driver unloading stage, to clean up the
-- * the mm components of a GVT device.
-+ * mm components of a GVT device.
-  *
-  */
- void intel_gvt_clean_gtt(struct intel_gvt *gvt)
--- 
-2.36.1
-
+On 8/22/22 2:21 AM, Christoph Hellwig wrote:
+> Include <linux/device.h> and <linux/uuid.h> so that users of this headers
+> don't need to do that and remove those includes that aren't needed
+> any more.
+>
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> Reviewed By: Kirti Wankhede <kwankhede@nvidia.com>
+> ---
+>   drivers/gpu/drm/i915/gvt/kvmgt.c      | 2 --
+>   drivers/s390/cio/vfio_ccw_drv.c       | 1 -
+>   drivers/s390/crypto/vfio_ap_private.h | 1 -
+>   drivers/vfio/mdev/mdev_core.c         | 2 --
+>   drivers/vfio/mdev/mdev_driver.c       | 1 -
+>   drivers/vfio/mdev/mdev_sysfs.c        | 2 --
+>   include/linux/mdev.h                  | 3 +++
+>   samples/vfio-mdev/mbochs.c            | 1 -
+>   samples/vfio-mdev/mdpy.c              | 1 -
+>   samples/vfio-mdev/mtty.c              | 2 --
+>   10 files changed, 3 insertions(+), 13 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> index 91ba675a2fb8c..92bb9e7548b12 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -34,7 +34,6 @@
+>    */
+>   
+>   #include <linux/init.h>
+> -#include <linux/device.h>
+>   #include <linux/mm.h>
+>   #include <linux/kthread.h>
+>   #include <linux/sched/mm.h>
+> @@ -43,7 +42,6 @@
+>   #include <linux/rbtree.h>
+>   #include <linux/spinlock.h>
+>   #include <linux/eventfd.h>
+> -#include <linux/uuid.h>
+>   #include <linux/mdev.h>
+>   #include <linux/debugfs.h>
+>   
+> diff --git a/drivers/s390/cio/vfio_ccw_drv.c b/drivers/s390/cio/vfio_ccw_drv.c
+> index 86d9e428357b0..e9985c63dc6bf 100644
+> --- a/drivers/s390/cio/vfio_ccw_drv.c
+> +++ b/drivers/s390/cio/vfio_ccw_drv.c
+> @@ -12,7 +12,6 @@
+>   
+>   #include <linux/module.h>
+>   #include <linux/init.h>
+> -#include <linux/device.h>
+>   #include <linux/slab.h>
+>   #include <linux/mdev.h>
+>   
+> diff --git a/drivers/s390/crypto/vfio_ap_private.h b/drivers/s390/crypto/vfio_ap_private.h
+> index d782cf463eaba..163eeaaf24cee 100644
+> --- a/drivers/s390/crypto/vfio_ap_private.h
+> +++ b/drivers/s390/crypto/vfio_ap_private.h
+> @@ -13,7 +13,6 @@
+>   #define _VFIO_AP_PRIVATE_H_
+>   
+>   #include <linux/types.h>
+> -#include <linux/device.h>
+>   #include <linux/mdev.h>
+>   #include <linux/delay.h>
+>   #include <linux/mutex.h>
+> diff --git a/drivers/vfio/mdev/mdev_core.c b/drivers/vfio/mdev/mdev_core.c
+> index b8b9e7911e559..2c32923fbad27 100644
+> --- a/drivers/vfio/mdev/mdev_core.c
+> +++ b/drivers/vfio/mdev/mdev_core.c
+> @@ -8,9 +8,7 @@
+>    */
+>   
+>   #include <linux/module.h>
+> -#include <linux/device.h>
+>   #include <linux/slab.h>
+> -#include <linux/uuid.h>
+>   #include <linux/sysfs.h>
+>   #include <linux/mdev.h>
+>   
+> diff --git a/drivers/vfio/mdev/mdev_driver.c b/drivers/vfio/mdev/mdev_driver.c
+> index 9c2af59809e2e..7bd4bb9850e81 100644
+> --- a/drivers/vfio/mdev/mdev_driver.c
+> +++ b/drivers/vfio/mdev/mdev_driver.c
+> @@ -7,7 +7,6 @@
+>    *             Kirti Wankhede <kwankhede@nvidia.com>
+>    */
+>   
+> -#include <linux/device.h>
+>   #include <linux/iommu.h>
+>   #include <linux/mdev.h>
+>   
+> diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
+> index 0ccfeb3dda245..4bfbf49aaa66a 100644
+> --- a/drivers/vfio/mdev/mdev_sysfs.c
+> +++ b/drivers/vfio/mdev/mdev_sysfs.c
+> @@ -9,9 +9,7 @@
+>   
+>   #include <linux/sysfs.h>
+>   #include <linux/ctype.h>
+> -#include <linux/device.h>
+>   #include <linux/slab.h>
+> -#include <linux/uuid.h>
+>   #include <linux/mdev.h>
+>   
+>   #include "mdev_private.h"
+> diff --git a/include/linux/mdev.h b/include/linux/mdev.h
+> index 47ad3b104d9e7..a5d8ae6132a20 100644
+> --- a/include/linux/mdev.h
+> +++ b/include/linux/mdev.h
+> @@ -10,6 +10,9 @@
+>   #ifndef MDEV_H
+>   #define MDEV_H
+>   
+> +#include <linux/device.h>
+> +#include <linux/uuid.h>
+> +
+>   struct mdev_type;
+>   
+>   struct mdev_device {
+> diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
+> index 344c2901a82bf..d0d1bb7747240 100644
+> --- a/samples/vfio-mdev/mbochs.c
+> +++ b/samples/vfio-mdev/mbochs.c
+> @@ -21,7 +21,6 @@
+>    */
+>   #include <linux/init.h>
+>   #include <linux/module.h>
+> -#include <linux/device.h>
+>   #include <linux/kernel.h>
+>   #include <linux/slab.h>
+>   #include <linux/vmalloc.h>
+> diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
+> index e8c46eb2e2468..0c4ca1f4be7ed 100644
+> --- a/samples/vfio-mdev/mdpy.c
+> +++ b/samples/vfio-mdev/mdpy.c
+> @@ -17,7 +17,6 @@
+>    */
+>   #include <linux/init.h>
+>   #include <linux/module.h>
+> -#include <linux/device.h>
+>   #include <linux/kernel.h>
+>   #include <linux/slab.h>
+>   #include <linux/vmalloc.h>
+> diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
+> index f42a59ed2e3fe..4f5a6f2d3629d 100644
+> --- a/samples/vfio-mdev/mtty.c
+> +++ b/samples/vfio-mdev/mtty.c
+> @@ -12,7 +12,6 @@
+>   
+>   #include <linux/init.h>
+>   #include <linux/module.h>
+> -#include <linux/device.h>
+>   #include <linux/kernel.h>
+>   #include <linux/fs.h>
+>   #include <linux/poll.h>
+> @@ -20,7 +19,6 @@
+>   #include <linux/cdev.h>
+>   #include <linux/sched.h>
+>   #include <linux/wait.h>
+> -#include <linux/uuid.h>
+>   #include <linux/vfio.h>
+>   #include <linux/iommu.h>
+>   #include <linux/sysfs.h>
