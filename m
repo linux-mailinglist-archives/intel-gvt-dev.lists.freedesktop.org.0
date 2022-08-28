@@ -2,39 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2016D5A3B65
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 28 Aug 2022 06:15:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 734975A3BFC
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 28 Aug 2022 07:19:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2B96010EDBD;
-	Sun, 28 Aug 2022 04:15:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 06A1710EE56;
+	Sun, 28 Aug 2022 05:19:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mail.cacoal.ro.gov.br (unknown [138.97.97.34])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 496BE10EDB5;
- Sun, 28 Aug 2022 04:15:00 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E917310EE4A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 28 Aug 2022 05:18:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.cacoal.ro.gov.br (Postfix) with ESMTP id AEC7110E43D17;
- Sat, 27 Aug 2022 23:12:56 -0400 (-04)
+ by mail.cacoal.ro.gov.br (Postfix) with ESMTP id 92D671095D6D6;
+ Sun, 28 Aug 2022 00:31:20 -0400 (-04)
 Received: from mail.cacoal.ro.gov.br ([127.0.0.1])
  by localhost (mail.cacoal.ro.gov.br [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id hqq8nuNMai39; Sat, 27 Aug 2022 23:12:56 -0400 (-04)
+ with ESMTP id 4JraXDL4ncGd; Sun, 28 Aug 2022 00:31:20 -0400 (-04)
 Received: from localhost (localhost [127.0.0.1])
- by mail.cacoal.ro.gov.br (Postfix) with ESMTP id 6F3A410E3334D;
- Sat, 27 Aug 2022 23:10:20 -0400 (-04)
+ by mail.cacoal.ro.gov.br (Postfix) with ESMTP id A76B41119890D;
+ Sun, 28 Aug 2022 00:24:04 -0400 (-04)
 X-Virus-Scanned: amavisd-new at cacoal.ro.gov.br
 Received: from mail.cacoal.ro.gov.br ([127.0.0.1])
  by localhost (mail.cacoal.ro.gov.br [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 6r_QFPVR2Emk; Sat, 27 Aug 2022 23:10:20 -0400 (-04)
+ with ESMTP id LjUAtOXHB5tt; Sun, 28 Aug 2022 00:24:04 -0400 (-04)
 Received: from [192.168.8.101] (unknown [197.211.58.12])
- by mail.cacoal.ro.gov.br (Postfix) with ESMTPSA id 2BAA810E24F0C;
- Sat, 27 Aug 2022 23:06:19 -0400 (-04)
-Content-Type: multipart/alternative; boundary="===============0051550464=="
+ by mail.cacoal.ro.gov.br (Postfix) with ESMTPSA id 5CE361119891B;
+ Sun, 28 Aug 2022 00:15:29 -0400 (-04)
+Content-Type: multipart/alternative; boundary="===============1773234148=="
 MIME-Version: 1.0
 Subject: SPENDE
 To: Recipients <semttran@cacoal.ro.gov.br>
 From: semttran@cacoal.ro.gov.br
-Date: Sun, 28 Aug 2022 04:06:11 +0100
-Message-Id: <20220828030620.2BAA810E24F0C@mail.cacoal.ro.gov.br>
+Date: Sun, 28 Aug 2022 05:15:20 +0100
+Message-Id: <20220828041529.5CE361119891B@mail.cacoal.ro.gov.br>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +53,7 @@ Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 You will not see this in a MIME-aware mail reader.
---===============0051550464==
+--===============1773234148==
 Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -65,7 +66,7 @@ t, dan is je e-mail geselecteerd na een spin-ball. Ik heb vrijwillig beslot=
 en om het bedrag van $ 10 miljoen USD aan jou te doneren als een van de ges=
 electeerde 5, om mijn winst te verifi=EBren Vriendelijk antwoord op: mike.w=
 eirsky.foundation003@gmail.com Voor uw claim.
---===============0051550464==
+--===============1773234148==
 Content-Type: text/html; charset="iso-8859-1"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -84,4 +85,4 @@ mijn winst te verifi=EBren
 
   Vriendelijk antwoord op: mike.weirsky.foundation003@gmail.com
  Voor uw claim.</html>
---===============0051550464==--
+--===============1773234148==--
