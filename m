@@ -1,41 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 734975A3BFC
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 28 Aug 2022 07:19:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86EED5A40B4
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Aug 2022 03:35:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 06A1710EE56;
-	Sun, 28 Aug 2022 05:19:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7D7E510F036;
+	Mon, 29 Aug 2022 01:35:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.cacoal.ro.gov.br (unknown [138.97.97.34])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E917310EE4A
+X-Greylist: delayed 654 seconds by postgrey-1.36 at gabe;
+ Mon, 29 Aug 2022 01:35:03 UTC
+Received: from aoljkotl.questairinc.com (unknown [85.217.145.162])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AD0F710F035
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 28 Aug 2022 05:18:56 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.cacoal.ro.gov.br (Postfix) with ESMTP id 92D671095D6D6;
- Sun, 28 Aug 2022 00:31:20 -0400 (-04)
-Received: from mail.cacoal.ro.gov.br ([127.0.0.1])
- by localhost (mail.cacoal.ro.gov.br [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 4JraXDL4ncGd; Sun, 28 Aug 2022 00:31:20 -0400 (-04)
-Received: from localhost (localhost [127.0.0.1])
- by mail.cacoal.ro.gov.br (Postfix) with ESMTP id A76B41119890D;
- Sun, 28 Aug 2022 00:24:04 -0400 (-04)
-X-Virus-Scanned: amavisd-new at cacoal.ro.gov.br
-Received: from mail.cacoal.ro.gov.br ([127.0.0.1])
- by localhost (mail.cacoal.ro.gov.br [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id LjUAtOXHB5tt; Sun, 28 Aug 2022 00:24:04 -0400 (-04)
-Received: from [192.168.8.101] (unknown [197.211.58.12])
- by mail.cacoal.ro.gov.br (Postfix) with ESMTPSA id 5CE361119891B;
- Sun, 28 Aug 2022 00:15:29 -0400 (-04)
-Content-Type: multipart/alternative; boundary="===============1773234148=="
+ Mon, 29 Aug 2022 01:35:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=questairinc.com; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=kit.mat@questairinc.com; bh=DX/K2IIsT+TV6UbBFdhzvVcyW+E=;
+ b=ZM/Wzikolvw12aVtoqU66+/wDgMk/Rxjs/jkBz4skP/IV/WjdfJCT+Q9RVUXWHk1lHN59HG3m+aN
+ BWcCX+/GUUlphaOjOOachIlsB9lXQ8CNWAQd2vAoOKiVXEJxW8GKOBV1ksZd/c79BXP4jP2nmP1z
+ vz3L+T3VdUqhBpucO/JZMoC5hv7rwv5drgosaw3A8b28W3bNukRY1rHbiCFLe7YA8sGL6afysuvn
+ L2pY/cUwleFk6RdirRQDFUsd0dQhVMeaqr2wC0Bi7T+UATlBWhv0QMwp4jX4YbFTPtYo3zx8FA8u
+ /Slte17kgvn+9SrgQNGu/MgjsbShQyncaGD++Q==
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=questairinc.com;
+ b=Joml1lYm66lxq18b650lJqX5jdwnnDj/yt7FE/RiAi19NpBa8Yl3LvphNkxVxC7/Z/uGmIx2iO+4
+ u4Lu/vRbpFkgauuJNPy/QI71RTDSzVgM8jFcScgleE/zIxqcrhCa07BEUy2iAMis5zL9uy9uCpMG
+ IVnbKcx5UcYwA5zjbjJXyDGJfcryhRtTCPAhowgyq/sLJrgctGAOkLY7lJah1nUy0vEjHiQRTQgL
+ dtRIkBHkBsqxnvYAw6N5vpvgfTOBIL381vHF4nCrvtScxTejwzw/Owrt/j/InpPEsYZH9mcySo+z
+ Ic0ymFoMEsY3HZM9ZiPF49eOoin7uemFkPyFnA==;
+From: "Damian Murthy" <kit.mat@questairinc.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Business proposal for intel-gvt-dev@lists.freedesktop.org
+Date: 29 Aug 2022 00:57:46 +0000
+Message-ID: <20220829005746.B209AF5F2A36441E@questairinc.com>
 MIME-Version: 1.0
-Subject: SPENDE
-To: Recipients <semttran@cacoal.ro.gov.br>
-From: semttran@cacoal.ro.gov.br
-Date: Sun, 28 Aug 2022 05:15:20 +0100
-Message-Id: <20220828041529.5CE361119891B@mail.cacoal.ro.gov.br>
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,41 +50,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: mike.weirsky.foundation003@gmail.com
+Reply-To: dmurthy12@yandex.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============1773234148==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
 
-Beste begunstigde, Je hebt een liefdadigheidsdonatie van ($ 10.000.000,00) =
-van Mr. Mike Weirsky, een winnaar van een powerball-jackpotloterij van $ 27=
-3 miljoen. Ik doneer aan 5 willekeurige personen als je deze e-mail ontvang=
-t, dan is je e-mail geselecteerd na een spin-ball. Ik heb vrijwillig beslot=
-en om het bedrag van $ 10 miljoen USD aan jou te doneren als een van de ges=
-electeerde 5, om mijn winst te verifi=EBren Vriendelijk antwoord op: mike.w=
-eirsky.foundation003@gmail.com Voor uw claim.
---===============1773234148==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Diso-8859-1"/></head>Beste begunstigde,
-
- Je hebt een liefdadigheidsdonatie van ($ 10.000.000,00) van Mr. Mike Weirs=
-ky, een winnaar van een powerball-jackpotloterij van $ 273 miljoen.  Ik don=
-eer aan 5 willekeurige personen als je deze e-mail ontvangt, dan is je e-ma=
-il geselecteerd na een spin-ball. Ik heb vrijwillig besloten om het bedrag =
-van $ 10 miljoen USD aan jou te doneren als een van de geselecteerde 5, om =
-mijn winst te verifi=EBren
- =
-
-  Vriendelijk antwoord op: mike.weirsky.foundation003@gmail.com
- Voor uw claim.</html>
---===============1773234148==--
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
+<BODY style=3D"MARGIN: 0.5em">
+<P>Hello intel-gvt-dev,</P>
+<P>I am Damian. I work with a bio-pharmaceutical company here in the United=
+ Kingdom. I have a business proposal for you. I want us to partner in a sup=
+ply business to my employer, where you will represent the seller.</P>
+<P>The profits are worth the efforts and you do not require experience nor =
+expertise to participate in this. If you are interested, kindly respond to =
+this message.</P>
+<P>Kind regards<BR>Damian Murthy</P></BODY></HTML>
