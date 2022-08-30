@@ -2,77 +2,69 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C7A65A7079
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 Aug 2022 00:18:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E49A25A7203
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 Aug 2022 01:53:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7C6B010E28E;
-	Tue, 30 Aug 2022 22:18:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0AFD410E37C;
+	Tue, 30 Aug 2022 23:53:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 31DDA10E28E
+Received: from mail-qt1-x82b.google.com (mail-qt1-x82b.google.com
+ [IPv6:2607:f8b0:4864:20::82b])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9FBB310E37C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 30 Aug 2022 22:18:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661897923;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TSSAWMfY5IhOGMsl4sCR/Sqq+wVCREXXNdNLZqAgz7E=;
- b=SlbKa74lYPJssd8c/BRasmJh/BCMoFRnl+LKFu990Im56H2r9rlfnBx/pOVX2WeyD+cO3o
- FYv9Aq3OVjO0cCeb16LKkwvyDQSzcG9QtFHmy/Qqt2/f0jWBkgt7YcdOlSmwj0HlMHgXb+
- EhLsUhL3sgVDc+T6UkwIx9stxfQlMAg=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-453-dyNkDP3mOWy8V80N4ub8eA-1; Tue, 30 Aug 2022 18:18:42 -0400
-X-MC-Unique: dyNkDP3mOWy8V80N4ub8eA-1
-Received: by mail-io1-f69.google.com with SMTP id
- n23-20020a056602341700b00689fc6dbfd6so7517249ioz.8
+ Tue, 30 Aug 2022 23:53:20 +0000 (UTC)
+Received: by mail-qt1-x82b.google.com with SMTP id j17so9820132qtp.12
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 30 Aug 2022 15:18:41 -0700 (PDT)
+ Tue, 30 Aug 2022 16:53:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc;
+ bh=0L9lzbhkZzftrSeDaWijQDCQO9j3SGBYGuP12lwKrD4=;
+ b=abU+GXUqXS02jbKnf2PRzA2SplEPWEhWBJXpAj1du50snC84YOMDGmANpop4r2D5RI
+ A4U3zwrxmKzP85VmYMfLmMr9d8tg6zzPw06qrOb8xn1+gH+99+F/OqVnG6/Lre9KSBn4
+ zo1W9hlGuorJ3UbplvrCJJ7kZsv0daqDi0GQGmd0ruLNnRpZj56ErHB8VXLg1xOm3LHq
+ maRIgx82QxWYjhHSesGndBYpHaVl6id5aHSVMfdeECEz4kib+EUHa1ZBuE/1RPBUFsgE
+ JcJxShe4TJ5UBGVmwQuxC4y1kwMf2mv/hIY9Ot37rDwVObnAzUnFQD20KAt94BvvUosg
+ gM4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc;
- bh=TSSAWMfY5IhOGMsl4sCR/Sqq+wVCREXXNdNLZqAgz7E=;
- b=fYwe2gQGiMYdye4bZQrxnqKoa0oacKNTJWH3/cIq5DTk/zT1NOQSkW4g7oOcdYstCA
- 9X8UWkoMDFUbrovnnswF6hoCle6WqFbtOdPw2TiWgohr2fwudONiD1MhAJ6Hjh63QtWn
- BzHuYYTlYIhCs5oaerdD1y+rJO/QOke1uorLeYJCerTcN+i/L9RLxLAzWs1TPra8cBpV
- lIS1jjKFqLUKMHDInkkD5jeHrhxC8Mrm8KL5k4yiZ+C92tUFZ8JDyQDc5mw1oBus0+fS
- FyBRkQcK65hkDkTsDGsD2IoM7LLlWDfFJvEYCN2zPvnB0gbpcXlAr2YMtS+LLVJ6vRLN
- X9pw==
-X-Gm-Message-State: ACgBeo1RBYYyIO0LQnJzDSi86WUIanUkDhZIlyxS+Xm0goU44L9lIcZk
- UU2hvrJSOU1rGdgPvNRbuK5A5x6bkpxci7vnNMPa3MNtlihBSzGLUTNEhILOtER9RK1alw9PlIu
- LIv3Fimx9ux0YJYcn5oHhGE9LtCNPGwV3oQ==
-X-Received: by 2002:a05:6602:1c4:b0:689:2db5:ea0f with SMTP id
- w4-20020a05660201c400b006892db5ea0fmr11509847iot.197.1661897921391; 
- Tue, 30 Aug 2022 15:18:41 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR73OWrrAXNYUM7X5f/RFjdmLhOTn+HRSKcgl5cCW81jvTLPZGl1q1ozpKM9lFAFywZRpg27UQ==
-X-Received: by 2002:a05:6602:1c4:b0:689:2db5:ea0f with SMTP id
- w4-20020a05660201c400b006892db5ea0fmr11509822iot.197.1661897921151; 
- Tue, 30 Aug 2022 15:18:41 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- z30-20020a056602081e00b0068b1858c81asm6110858iow.13.2022.08.30.15.18.39
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+ bh=0L9lzbhkZzftrSeDaWijQDCQO9j3SGBYGuP12lwKrD4=;
+ b=A9wcT/OEVEnFRaApXgkjBdvBbDAElvOs6rFnevo6HSfAMCaNUPhaQ/tPMBMA4tJkmE
+ vFC6Af0Mgv8vhHQ3LveUndbC2QfT2lBZlcXEKLxUsXimLT/Nk8cB2rmt05LCdVzxdPH6
+ YsYBU73IbT89DKIzZiTIXT/YnmVyu1ksy6Z3XpZnuKgGyh8DJbjF02UkYptqQaEgklug
+ l0nwX+dT/2LenbIOOyoxRPiV3MgxElVtdRRTwwOb/0QO22EOY9YaTvThv/jEP9e4tak+
+ tuoATo41uSjUSUbGiVMc529xC1sg1CumGYc9TgTFvHXmsgsBy7S+RiltTOfq+DPG2F1v
+ pOcw==
+X-Gm-Message-State: ACgBeo3/tIIY5E7SHzazGpbATbVm8ZSnK1cDavHeP5bXsrA1rrwh4Scb
+ QQYetZshyffx/wM8T/9zcEE93A==
+X-Google-Smtp-Source: AA6agR6SnhQJ6ZIIgoEC6fgDH1kdHhhz4b0pJAYeL3h92b1z66EiWbI66KVBnDlLAl7TgsI8hPuL0g==
+X-Received: by 2002:a05:622a:195:b0:344:5630:dcc with SMTP id
+ s21-20020a05622a019500b0034456300dccmr17037439qtw.598.1661903599526; 
+ Tue, 30 Aug 2022 16:53:19 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-142-162-113-129.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [142.162.113.129]) by smtp.gmail.com with ESMTPSA id
+ q13-20020a05620a0d8d00b006b942f4ffe3sm1800753qkl.18.2022.08.30.16.53.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Aug 2022 15:18:40 -0700 (PDT)
-Date: Tue, 30 Aug 2022 16:18:38 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Kevin Tian <kevin.tian@intel.com>
+ Tue, 30 Aug 2022 16:53:18 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+ (envelope-from <jgg@ziepe.ca>) id 1oTB2j-0040T4-8t;
+ Tue, 30 Aug 2022 20:53:17 -0300
+Date: Tue, 30 Aug 2022 20:53:17 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Alex Williamson <alex.williamson@redhat.com>
 Subject: Re: [PATCH 15/15] vfio: Add struct device to vfio_device
-Message-ID: <20220830161838.4aa47045.alex.williamson@redhat.com>
-In-Reply-To: <20220827171037.30297-16-kevin.tian@intel.com>
+Message-ID: <Yw6i7btDKcUDPADP@ziepe.ca>
 References: <20220827171037.30297-1-kevin.tian@intel.com>
  <20220827171037.30297-16-kevin.tian@intel.com>
-Organization: Red Hat
+ <20220830161838.4aa47045.alex.williamson@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220830161838.4aa47045.alex.williamson@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,17 +79,17 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Kirti Wankhede <kwankhede@nvidia.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
  Diana Craciun <diana.craciun@oss.nxp.com>,
  Alexander Gordeev <agordeev@linux.ibm.com>,
  Longfang Liu <liulongfang@huawei.com>, linux-s390@vger.kernel.org,
  Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
  Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Kevin Tian <kevin.tian@intel.com>,
  Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
  Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
  Harald Freudenberger <freude@linux.ibm.com>,
@@ -112,21 +104,27 @@ Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sun, 28 Aug 2022 01:10:37 +0800
-Kevin Tian <kevin.tian@intel.com> wrote:
-
-> From: Yi Liu <yi.l.liu@intel.com>
+On Tue, Aug 30, 2022 at 04:18:38PM -0600, Alex Williamson wrote:
+> On Sun, 28 Aug 2022 01:10:37 +0800
+> Kevin Tian <kevin.tian@intel.com> wrote:
 > 
-> and replace kref. With it a 'vfio-dev/vfioX' node is created under the
-> sysfs path of the parent, indicating the device is bound to a vfio
-> driver, e.g.:
+> > From: Yi Liu <yi.l.liu@intel.com>
+> > 
+> > and replace kref. With it a 'vfio-dev/vfioX' node is created under the
+> > sysfs path of the parent, indicating the device is bound to a vfio
+> > driver, e.g.:
+> > 
+> > /sys/devices/pci0000\:6f/0000\:6f\:01.0/vfio-dev/vfio0
+> > 
+> > It is also a preparatory step toward adding cdev for supporting future
+> > device-oriented uAPI.
 > 
-> /sys/devices/pci0000\:6f/0000\:6f\:01.0/vfio-dev/vfio0
-> 
-> It is also a preparatory step toward adding cdev for supporting future
-> device-oriented uAPI.
+> Shall we start Documentation/ABI/testing/vfio-dev now?  Thanks.
 
-Shall we start Documentation/ABI/testing/vfio-dev now?  Thanks.
+I always thought that was something to use when adding new custom
+sysfs attributes?
 
-Alex
+Here we are just creating a standard struct device with its standard
+sysfs?
 
+Jason
