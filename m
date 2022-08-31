@@ -1,137 +1,76 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C7A55A7663
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 Aug 2022 08:15:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BF345A7834
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 Aug 2022 09:55:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0EEE910E1E4;
-	Wed, 31 Aug 2022 06:15:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4D55D10E239;
+	Wed, 31 Aug 2022 07:55:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4C54710E1E0;
- Wed, 31 Aug 2022 06:15:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1661926504; x=1693462504;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=/a8NfaXgmgPaEzJAB0o2mVog14TDaPPcLAKcCJVgmOI=;
- b=HHTpl5G87QGn3xgFy96rc47N0YSqosWE8x/CzWuCVG+smLbUSEPlgx/J
- 8nlYi15xevJmNaUCFJpIqMFGLZmCznoNGh0say0laZS6I5xYbzl/sIA0d
- JyM6qTJYdgbhk+ewf3GCcSxf3eEYr7+Q74mwtXb0EmxW8voLC0mlE75p7
- rNyduQKeS7mqyYiQ9RbMU8yX7O1ZKU5Fylgg34m7bfctiZHxnbw0Mr68A
- Pb1PEidC34KeLGJLnXJ4g2fW4rsjYGpZW25pmAQ27C3EfRp/F3aVRMy9H
- nJu+F5v15gxKgPXQNdYljUGUrcJVPGKlGFqqhEt38Kq7wd2hQVHbwRwHw Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10455"; a="275129597"
-X-IronPort-AV: E=Sophos;i="5.93,277,1654585200"; d="scan'208";a="275129597"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Aug 2022 23:15:01 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,277,1654585200"; d="scan'208";a="562931733"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga003.jf.intel.com with ESMTP; 30 Aug 2022 23:15:00 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-Greylist: delayed 1172 seconds by postgrey-1.36 at gabe;
+ Wed, 31 Aug 2022 07:55:38 UTC
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
+ [185.176.79.56])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2A57489089;
+ Wed, 31 Aug 2022 07:55:37 +0000 (UTC)
+Received: from fraeml707-chm.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MHbYs4Xj8z688fw;
+ Wed, 31 Aug 2022 15:35:29 +0800 (CST)
+Received: from lhrpeml500002.china.huawei.com (7.191.160.78) by
+ fraeml707-chm.china.huawei.com (10.206.15.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Tue, 30 Aug 2022 23:14:59 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ 15.1.2375.31; Wed, 31 Aug 2022 09:36:03 +0200
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ lhrpeml500002.china.huawei.com (7.191.160.78) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Tue, 30 Aug 2022 23:14:59 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.106)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Tue, 30 Aug 2022 23:14:59 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RIzHjeszVj/sBzI8ZB9eWKU9I6CZOQtqtWezzs1BKyO0csXQl5C4Rsk//7XsmQVJX8UUGj2QkFOXg8U/J25gAcBdI85tIA1W1/pLq8NWTWQLD3OeiQPxAHKStPQ2C0TS0MFgEVmj0KnTRR9OSCvHn5aLtSGkanS2MvSmrr36JogMWcSxEiS0gaMlDLnI68DrWduQP6+aV/WpVXdyAZV8gmHyKhMGo0XOTlSp3up6SyKl0/olmjbZpco52guJYX69q5Th/2Hk9HLmvCgY7YK6TDTga/z5n8Iid9sOGlseRZuEKZIIY89V6Q2KWXx/SM10w9YaH7UMgPMYAR4Pd0jEjw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SJ26j8Rv0tJv8NYmy9yTq1k3uvxIMMJyomu/D68P3vE=;
- b=YnE3on5I2DRACET/2CFtUF2N2IoicMf1AvzcIXD3kg6OpnR7i2GAaMaD3HhgciQgDdRF5mnkD9WhO2zEmtKZpaJinHXbMVBOE+X+gn0PjtJVMN4ArVw7jFE5mK10f9LlSRA1GELyagizE1X4V4hKGVVuybxqZgotD79CvYH7dcZT/vzlhsaXUpjBvW8ofmb19kDBZ04KxI82kEkX0yCYqV3H9LaOq1UIHymkDpAfZ40KfhDuM7OzTKG1o2WqyWeD1Xma0Y9kj73olx2JcohEAXX4TtSc8NiYEkrFq9Y5uzszf9ebGBgUCXXyMgT7Y39McCyPrj9xRAF9YeyimREK9A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by DM5PR1101MB2233.namprd11.prod.outlook.com (2603:10b6:4:4f::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5566.19; Wed, 31 Aug
- 2022 06:14:57 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::a435:3eff:aa83:73d7]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::a435:3eff:aa83:73d7%5]) with mapi id 15.20.5588.010; Wed, 31 Aug 2022
- 06:14:57 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: RE: [PATCH 00/15] Tidy up vfio_device life cycle
-Thread-Topic: [PATCH 00/15] Tidy up vfio_device life cycle
-Thread-Index: AQHYufpaEERp1jw5Hk6i2eOqrykz5a3ILwAAgABe8kA=
-Date: Wed, 31 Aug 2022 06:14:57 +0000
-Message-ID: <BN9PR11MB5276E554A15E589D364D37268C789@BN9PR11MB5276.namprd11.prod.outlook.com>
+ 15.1.2375.24; Wed, 31 Aug 2022 08:36:02 +0100
+Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
+ lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2375.024; 
+ Wed, 31 Aug 2022 08:36:02 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Kevin Tian <kevin.tian@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>, 
+ Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi
+ <rodrigo.vivi@intel.com>, Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Eric Farman
+ <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Halil Pasic
+ <pasic@linux.ibm.com>, Vineeth Vijayan <vneethv@linux.ibm.com>, "Peter
+ Oberparleiter" <oberpar@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev
+ <agordeev@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Harald Freudenberger
+ <freude@linux.ibm.com>, Diana Craciun <diana.craciun@oss.nxp.com>, "Alex
+ Williamson" <alex.williamson@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ liulongfang <liulongfang@huawei.com>, Jason Gunthorpe <jgg@ziepe.ca>, "Yishai
+ Hadas" <yishaih@nvidia.com>, Eric Auger <eric.auger@redhat.com>, "Kirti
+ Wankhede" <kwankhede@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Abhishek
+ Sahu <abhsahu@nvidia.com>, "intel-gvt-dev@lists.freedesktop.org"
+ <intel-gvt-dev@lists.freedesktop.org>, "intel-gfx@lists.freedesktop.org"
+ <intel-gfx@lists.freedesktop.org>, "dri-devel@lists.freedesktop.org"
+ <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-s390@vger.kernel.org"
+ <linux-s390@vger.kernel.org>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>
+Subject: RE: [PATCH 04/15] vfio/hisi_acc: Use the new device life cycle helpers
+Thread-Topic: [PATCH 04/15] vfio/hisi_acc: Use the new device life cycle
+ helpers
+Thread-Index: AQHYufp2da3qAvP1z0GEpuKhp3q5ba3Io6tw
+Date: Wed, 31 Aug 2022 07:36:02 +0000
+Message-ID: <fcbcc84a6c1148fa943576522cb906ce@huawei.com>
 References: <20220827171037.30297-1-kevin.tian@intel.com>
- <Yw6sqidAP7puXApd@ziepe.ca>
-In-Reply-To: <Yw6sqidAP7puXApd@ziepe.ca>
-Accept-Language: en-US
+ <20220827171037.30297-5-kevin.tian@intel.com>
+In-Reply-To: <20220827171037.30297-5-kevin.tian@intel.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5f804c1e-fb9c-4613-c6f7-08da8b18211c
-x-ms-traffictypediagnostic: DM5PR1101MB2233:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 1IokXJhRSEig/VVcLQhsAFT0oWos4it92/8JLjdkx+B27COI2HSqE7CIhaTnRhG0ZNCB3dqtbcISLRsHC7Uw5bpyJP6BsGOPEvbNxy0DUcYcFdr9Lqc+fLMhZ/jHvjow1kwkjEZkPe91yUjlhUoLeJwFZURhToBf+D7xTQ3epNPPON91DZayPjFkv10cOTSDHVjfTvEm1CMxdE52S5nR0FU81jKKrv0so/2MITLxty1vqH+XlNuFdKVwTbvxAfgxUeCJkbcgfa+tcDQrL5COncPI/Uy1BaN2vdU8ncYgT0nf7tWoVfYVrJ2XmMbefty5VXPvIuSqg5ug7eN4PXVRPUMA+G8Cd5D8Y7508U8AWI5KD4v5iiePZdqJJqPoMhq1DqOKS5dMqc4iKWKy1nMQyT0UGmjPBbjCC2+RfFOnuRCSfbOg/DWgAtIlrTZDj86RRE14xM3w6mIk9UiuLUXZWguONyVkRUa5FZTHtW+Il0jKMH8MDgf6ogMthMo58AfBqkjJPlZiSb6kuTfrDHsAKdnh+AtI9WovSo5eBZLpzq3X2FcZ1wHIDRAhRjaJNh873JXOQ6u9DH2cRaylYL/dQalVV0fYVOwLxsqkaUyU6jAdue0Yx+WpNesQz6UByMnzlu5JGksNZvFUM7JJlaKGzgksye9U0Wsx5glJ5ZjNUOzrFIOstaGYGcQOiG3TndASElBDtcQd6j1TZdEWJSAVRmfu/pkTYVSkuvCtHJAYAIJfP0N97JO1dIsknHfyiz1NDBxHa/q0MKdG1ccvWkzRMw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(366004)(376002)(396003)(346002)(136003)(39860400002)(38070700005)(4326008)(26005)(7696005)(9686003)(41300700001)(86362001)(478600001)(71200400001)(122000001)(6506007)(54906003)(66446008)(82960400001)(186003)(38100700002)(66946007)(5660300002)(7406005)(2906002)(7416002)(76116006)(52536014)(66556008)(8936002)(33656002)(55016003)(6916009)(64756008)(316002)(8676002)(66476007);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?pEWIRCEgrhHsr4f2NZuRo0gMg4T13tPxAns8xUGxieV9T7RkeMHVgq7HOB7x?=
- =?us-ascii?Q?Ko1Dp3d4Ryp95B1FrjBEJ8bb6SfTOkGYE/boHHdpARzs/eM8K1YAFsPK/1bc?=
- =?us-ascii?Q?JYPiQksT7CshKDcNsqxubJW1zIQMc+e+LnAkBtcfO+idyR6IoFDMiClv3bXF?=
- =?us-ascii?Q?Won4UK4mplNqydI2w0DklY5rpREjasgkVY3ryDmr3lLABfZ5R2OhneNiX8UA?=
- =?us-ascii?Q?TelhSvpNPQXVWCwotYA1U7beiFQxRloynCN/9a+uNawsyg67JW7gFOFmU0mS?=
- =?us-ascii?Q?lVtZdbvxmhCwE2Xon1lA3FlTSRCVROeBlcCZYgHI8dYOtPoO+cK/GEFhKpmu?=
- =?us-ascii?Q?ZdSbKmsEkHgED+wAvsJprRe2dog29mmaWj3o0RCo2XB5xun9goROTKnCLFyg?=
- =?us-ascii?Q?GFgYYR6gkJTCDyLt+EkrOkpYB4lz5IjdxjOakbfcWY9ZjLIAHFnrzj7QRYkW?=
- =?us-ascii?Q?oHavoB5dvneERYPJEI72OFh4RA1e/1N+HlzveV8tX96AYNMhx22lpWLZ4r+8?=
- =?us-ascii?Q?I7gODI4AuHTexhRe+ewwo0ltl4L3RXol90yOJWbOVIH9M5K5TcCe8kiDeRU3?=
- =?us-ascii?Q?m0GYDI0hGVe1u0yPlbS6h21JF8fa0lNl5cKZPwo87/L2ZljBnap70o0qz/29?=
- =?us-ascii?Q?dI0a5UyuT7y0WHkmCyEGKWJL5gG8+s+QIOm/EvBRaxgzdBdz4YFBbnOIEPv6?=
- =?us-ascii?Q?Hito8jRlulUH2O4jgXl10ep//Z7MNr716Kehff6iy6DcH2KoSLHgRjhQTSug?=
- =?us-ascii?Q?tF6ydxlTAa9/uzp2kHqPuokmrqe2Vi6EW/jxtQcJTkGKEo+xwddEPN3c3eWy?=
- =?us-ascii?Q?1eskiiVVsTTsomTa3ensWVOCq/pZuWbFh64S0tbTQYeQK4vj3PhcmeDp6wMV?=
- =?us-ascii?Q?GUk673az+W1zE/QlKmlJtRC/lg1Z+xtLF/+riIFk8RaC5mo1gmhpL1EpVpzK?=
- =?us-ascii?Q?p+gth+iLAZxInOpYZ1LnKpu+IIWyJw3lWS/nQJSzhfGzUbC3+rzHcHyVXZdR?=
- =?us-ascii?Q?vAdmVVuSwBpwPAxHg3Hvcg3pC5LghtJjiK3WAyscu2Y/Fwh1E7cJLcHW/Wrr?=
- =?us-ascii?Q?MGB4tzCjj1GcdXEhZMUC62HUHsGTNmZRKMxtnRz0cH7pbrgYC+ecDPka3tp9?=
- =?us-ascii?Q?FYbLadyuF10+YLUHbltC4RD92TEecWSAiHiIkQ85T3TRzZDgAxp7JDk8nNOP?=
- =?us-ascii?Q?POIWEUXZGGntKHVcaYJCKeNckW91OkeeOYB7rir2ZQqo4PUuxhVwm/8OM0AZ?=
- =?us-ascii?Q?O7lkqfq8FZRVqIPrRiC6ZZbRgu8qmE3X3zQ/QSm8B+9exxrzPJF7MaEaUodB?=
- =?us-ascii?Q?3zZoZ4M5uep22Jj+r+SwQQtOaFNThjSsTWPpcAMKiIR2pjLMIL9J3hkSmlzZ?=
- =?us-ascii?Q?a7Mk/T15oOEQJppicZeItMnNZHliy0UCQf4uMdBQez6NdNFtQjVCSOUsy7Je?=
- =?us-ascii?Q?qb0ZK8MFNLvDWGMFA8Bv6w13zpZJ/pNSrvhSeMMmiDxqpM7PAmZRnHUrn3AC?=
- =?us-ascii?Q?BWC2D6CEGtcVHdMe4mM9XhnAJsY1XI4I8hhCdAEbp4if3flOX2b4DSReRN+5?=
- =?us-ascii?Q?O85r92YlcT1wIQkVp29M/MLumIPlbzME+DlDgZDO?=
+x-originating-ip: [10.195.245.177]
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5f804c1e-fb9c-4613-c6f7-08da8b18211c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2022 06:14:57.7201 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: uTrvbfCwhxck7fWLwFET4dMc7FS5aCowdTiVppqyrPcGygv1WoUsGXd3Iive2URt+h5w3ppk0NfEzljW01fh5Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR1101MB2233
-X-OriginatorOrg: intel.com
+X-CFilter-Loop: Reflected
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,65 +83,270 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>, Alex
- Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>, Peter
- Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
+Cc: Yi Liu <yi.l.liu@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Wednesday, August 31, 2022 8:35 AM
->=20
-> On Sun, Aug 28, 2022 at 01:10:22AM +0800, Kevin Tian wrote:
->=20
-> > Kevin Tian (6):
-> >   vfio: Add helpers for unifying vfio_device life cycle
-> >   drm/i915/gvt: Use the new device life cycle helpers
-> >   vfio/platform: Use the new device life cycle helpers
-> >   vfio/amba: Use the new device life cycle helpers
-> >   vfio/ccw: Use the new device life cycle helpers
-> >   vfio: Rename vfio_device_put() and vfio_device_try_get()
-> >
-> > Yi Liu (9):
-> >   vfio/pci: Use the new device life cycle helpers
-> >   vfio/mlx5: Use the new device life cycle helpers
-> >   vfio/hisi_acc: Use the new device life cycle helpers
-> >   vfio/mdpy: Use the new device life cycle helpers
-> >   vfio/mtty: Use the new device life cycle helpers
-> >   vfio/mbochs: Use the new device life cycle helpers
-> >   vfio/ap: Use the new device life cycle helpers
-> >   vfio/fsl-mc: Use the new device life cycle helpers
-> >   vfio: Add struct device to vfio_device
->=20
-> Other than my small remarks this all looked good to me - for every patch:
->=20
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
->=20
 
-Thanks for the review!
+
+> -----Original Message-----
+> From: Kevin Tian [mailto:kevin.tian@intel.com]
+> Sent: 27 August 2022 18:10
+> To: Zhenyu Wang <zhenyuw@linux.intel.com>; Zhi Wang
+> <zhi.a.wang@intel.com>; Jani Nikula <jani.nikula@linux.intel.com>; Joonas
+> Lahtinen <joonas.lahtinen@linux.intel.com>; Rodrigo Vivi
+> <rodrigo.vivi@intel.com>; Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>=
+;
+> David Airlie <airlied@linux.ie>; Daniel Vetter <daniel@ffwll.ch>; Eric Fa=
+rman
+> <farman@linux.ibm.com>; Matthew Rosato <mjrosato@linux.ibm.com>;
+> Halil Pasic <pasic@linux.ibm.com>; Vineeth Vijayan
+> <vneethv@linux.ibm.com>; Peter Oberparleiter <oberpar@linux.ibm.com>;
+> Heiko Carstens <hca@linux.ibm.com>; Vasily Gorbik <gor@linux.ibm.com>;
+> Alexander Gordeev <agordeev@linux.ibm.com>; Christian Borntraeger
+> <borntraeger@linux.ibm.com>; Sven Schnelle <svens@linux.ibm.com>; Tony
+> Krowiak <akrowiak@linux.ibm.com>; Jason Herne <jjherne@linux.ibm.com>;
+> Harald Freudenberger <freude@linux.ibm.com>; Diana Craciun
+> <diana.craciun@oss.nxp.com>; Alex Williamson
+> <alex.williamson@redhat.com>; Cornelia Huck <cohuck@redhat.com>;
+> liulongfang <liulongfang@huawei.com>; Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; Jason Gunthorpe
+> <jgg@ziepe.ca>; Yishai Hadas <yishaih@nvidia.com>; Kevin Tian
+> <kevin.tian@intel.com>; Eric Auger <eric.auger@redhat.com>; Kirti
+> Wankhede <kwankhede@nvidia.com>; Leon Romanovsky <leon@kernel.org>;
+> Abhishek Sahu <abhsahu@nvidia.com>; intel-gvt-dev@lists.freedesktop.org;
+> intel-gfx@lists.freedesktop.org; dri-devel@lists.freedesktop.org;
+> linux-kernel@vger.kernel.org; linux-s390@vger.kernel.org;
+> kvm@vger.kernel.org
+> Cc: Yi Liu <yi.l.liu@intel.com>
+> Subject: [PATCH 04/15] vfio/hisi_acc: Use the new device life cycle helpe=
+rs
+>=20
+> From: Yi Liu <yi.l.liu@intel.com>
+>=20
+> Tidy up @probe so all migration specific initialization logic is moved
+> to migration specific @init callback.
+>=20
+> Remove vfio_pci_core_{un}init_device() given no user now.
+
+This looks fine to me and the probe() is indeed much cleaner now.
+
+Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+
+Thanks,
+Shameer
+=20
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> Signed-off-by: Kevin Tian <kevin.tian@intel.com>
+> ---
+>  .../vfio/pci/hisilicon/hisi_acc_vfio_pci.c    | 80 +++++++++----------
+>  drivers/vfio/pci/vfio_pci_core.c              | 30 -------
+>  include/linux/vfio_pci_core.h                 |  4 -
+>  3 files changed, 37 insertions(+), 77 deletions(-)
+>=20
+> diff --git a/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
+> b/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
+> index ea762e28c1cc..f06f9a799128 100644
+> --- a/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
+> +++ b/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
+> @@ -1213,8 +1213,28 @@ static const struct vfio_migration_ops
+> hisi_acc_vfio_pci_migrn_state_ops =3D {
+>  	.migration_get_state =3D hisi_acc_vfio_pci_get_device_state,
+>  };
+>=20
+> +int hisi_acc_vfio_pci_migrn_init_dev(struct vfio_device *core_vdev)
+> +{
+> +	struct hisi_acc_vf_core_device *hisi_acc_vdev =3D
+> container_of(core_vdev,
+> +			struct hisi_acc_vf_core_device, core_device.vdev);
+> +	struct pci_dev *pdev =3D to_pci_dev(core_vdev->dev);
+> +	struct hisi_qm *pf_qm =3D hisi_acc_get_pf_qm(pdev);
+> +
+> +	hisi_acc_vdev->vf_id =3D pci_iov_vf_id(pdev) + 1;
+> +	hisi_acc_vdev->pf_qm =3D pf_qm;
+> +	hisi_acc_vdev->vf_dev =3D pdev;
+> +	mutex_init(&hisi_acc_vdev->state_mutex);
+> +
+> +	core_vdev->migration_flags =3D VFIO_MIGRATION_STOP_COPY;
+> +	core_vdev->mig_ops =3D &hisi_acc_vfio_pci_migrn_state_ops;
+> +
+> +	return vfio_pci_core_init_dev(core_vdev);
+> +}
+> +
+>  static const struct vfio_device_ops hisi_acc_vfio_pci_migrn_ops =3D {
+>  	.name =3D "hisi-acc-vfio-pci-migration",
+> +	.init =3D hisi_acc_vfio_pci_migrn_init_dev,
+> +	.release =3D vfio_pci_core_release_dev,
+>  	.open_device =3D hisi_acc_vfio_pci_open_device,
+>  	.close_device =3D hisi_acc_vfio_pci_close_device,
+>  	.ioctl =3D hisi_acc_vfio_pci_ioctl,
+> @@ -1228,6 +1248,8 @@ static const struct vfio_device_ops
+> hisi_acc_vfio_pci_migrn_ops =3D {
+>=20
+>  static const struct vfio_device_ops hisi_acc_vfio_pci_ops =3D {
+>  	.name =3D "hisi-acc-vfio-pci",
+> +	.init =3D vfio_pci_core_init_dev,
+> +	.release =3D vfio_pci_core_release_dev,
+>  	.open_device =3D hisi_acc_vfio_pci_open_device,
+>  	.close_device =3D vfio_pci_core_close_device,
+>  	.ioctl =3D vfio_pci_core_ioctl,
+> @@ -1239,63 +1261,36 @@ static const struct vfio_device_ops
+> hisi_acc_vfio_pci_ops =3D {
+>  	.match =3D vfio_pci_core_match,
+>  };
+>=20
+> -static int
+> -hisi_acc_vfio_pci_migrn_init(struct hisi_acc_vf_core_device *hisi_acc_vd=
+ev,
+> -			     struct pci_dev *pdev, struct hisi_qm *pf_qm)
+> -{
+> -	int vf_id;
+> -
+> -	vf_id =3D pci_iov_vf_id(pdev);
+> -	if (vf_id < 0)
+> -		return vf_id;
+> -
+> -	hisi_acc_vdev->vf_id =3D vf_id + 1;
+> -	hisi_acc_vdev->core_device.vdev.migration_flags =3D
+> -					VFIO_MIGRATION_STOP_COPY;
+> -	hisi_acc_vdev->pf_qm =3D pf_qm;
+> -	hisi_acc_vdev->vf_dev =3D pdev;
+> -	mutex_init(&hisi_acc_vdev->state_mutex);
+> -
+> -	return 0;
+> -}
+> -
+>  static int hisi_acc_vfio_pci_probe(struct pci_dev *pdev, const struct
+> pci_device_id *id)
+>  {
+>  	struct hisi_acc_vf_core_device *hisi_acc_vdev;
+> +	const struct vfio_device_ops *ops =3D &hisi_acc_vfio_pci_ops;
+>  	struct hisi_qm *pf_qm;
+> +	int vf_id;
+>  	int ret;
+>=20
+> -	hisi_acc_vdev =3D kzalloc(sizeof(*hisi_acc_vdev), GFP_KERNEL);
+> -	if (!hisi_acc_vdev)
+> -		return -ENOMEM;
+> -
+>  	pf_qm =3D hisi_acc_get_pf_qm(pdev);
+>  	if (pf_qm && pf_qm->ver >=3D QM_HW_V3) {
+> -		ret =3D hisi_acc_vfio_pci_migrn_init(hisi_acc_vdev, pdev, pf_qm);
+> -		if (!ret) {
+> -			vfio_pci_core_init_device(&hisi_acc_vdev->core_device, pdev,
+> -						  &hisi_acc_vfio_pci_migrn_ops);
+> -			hisi_acc_vdev->core_device.vdev.mig_ops =3D
+> -					&hisi_acc_vfio_pci_migrn_state_ops;
+> -		} else {
+> +		vf_id =3D pci_iov_vf_id(pdev);
+> +		if (vf_id >=3D 0)
+> +			ops =3D &hisi_acc_vfio_pci_migrn_ops;
+> +		else
+>  			pci_warn(pdev, "migration support failed, continue with
+> generic interface\n");
+> -			vfio_pci_core_init_device(&hisi_acc_vdev->core_device, pdev,
+> -						  &hisi_acc_vfio_pci_ops);
+> -		}
+> -	} else {
+> -		vfio_pci_core_init_device(&hisi_acc_vdev->core_device, pdev,
+> -					  &hisi_acc_vfio_pci_ops);
+>  	}
+>=20
+> +	hisi_acc_vdev =3D vfio_alloc_device(hisi_acc_vf_core_device,
+> +					  core_device.vdev, &pdev->dev, ops);
+> +	if (IS_ERR(hisi_acc_vdev))
+> +		return PTR_ERR(hisi_acc_vdev);
+> +
+>  	dev_set_drvdata(&pdev->dev, &hisi_acc_vdev->core_device);
+>  	ret =3D vfio_pci_core_register_device(&hisi_acc_vdev->core_device);
+>  	if (ret)
+> -		goto out_free;
+> +		goto out_put_vdev;
+>  	return 0;
+>=20
+> -out_free:
+> -	vfio_pci_core_uninit_device(&hisi_acc_vdev->core_device);
+> -	kfree(hisi_acc_vdev);
+> +out_put_vdev:
+> +	vfio_put_device(&hisi_acc_vdev->core_device.vdev);
+>  	return ret;
+>  }
+>=20
+> @@ -1304,8 +1299,7 @@ static void hisi_acc_vfio_pci_remove(struct
+> pci_dev *pdev)
+>  	struct hisi_acc_vf_core_device *hisi_acc_vdev =3D
+> hssi_acc_drvdata(pdev);
+>=20
+>  	vfio_pci_core_unregister_device(&hisi_acc_vdev->core_device);
+> -	vfio_pci_core_uninit_device(&hisi_acc_vdev->core_device);
+> -	kfree(hisi_acc_vdev);
+> +	vfio_put_device(&hisi_acc_vdev->core_device.vdev);
+>  }
+>=20
+>  static const struct pci_device_id hisi_acc_vfio_pci_table[] =3D {
+> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci=
+_core.c
+> index 708b61d1b364..f29d780e327e 100644
+> --- a/drivers/vfio/pci/vfio_pci_core.c
+> +++ b/drivers/vfio/pci/vfio_pci_core.c
+> @@ -1860,36 +1860,6 @@ void vfio_pci_core_release_dev(struct
+> vfio_device *core_vdev)
+>  }
+>  EXPORT_SYMBOL_GPL(vfio_pci_core_release_dev);
+>=20
+> -void vfio_pci_core_init_device(struct vfio_pci_core_device *vdev,
+> -			       struct pci_dev *pdev,
+> -			       const struct vfio_device_ops *vfio_pci_ops)
+> -{
+> -	vfio_init_group_dev(&vdev->vdev, &pdev->dev, vfio_pci_ops);
+> -	vdev->pdev =3D pdev;
+> -	vdev->irq_type =3D VFIO_PCI_NUM_IRQS;
+> -	mutex_init(&vdev->igate);
+> -	spin_lock_init(&vdev->irqlock);
+> -	mutex_init(&vdev->ioeventfds_lock);
+> -	INIT_LIST_HEAD(&vdev->dummy_resources_list);
+> -	INIT_LIST_HEAD(&vdev->ioeventfds_list);
+> -	mutex_init(&vdev->vma_lock);
+> -	INIT_LIST_HEAD(&vdev->vma_list);
+> -	INIT_LIST_HEAD(&vdev->sriov_pfs_item);
+> -	init_rwsem(&vdev->memory_lock);
+> -}
+> -EXPORT_SYMBOL_GPL(vfio_pci_core_init_device);
+> -
+> -void vfio_pci_core_uninit_device(struct vfio_pci_core_device *vdev)
+> -{
+> -	mutex_destroy(&vdev->igate);
+> -	mutex_destroy(&vdev->ioeventfds_lock);
+> -	mutex_destroy(&vdev->vma_lock);
+> -	vfio_uninit_group_dev(&vdev->vdev);
+> -	kfree(vdev->region);
+> -	kfree(vdev->pm_save);
+> -}
+> -EXPORT_SYMBOL_GPL(vfio_pci_core_uninit_device);
+> -
+>  int vfio_pci_core_register_device(struct vfio_pci_core_device *vdev)
+>  {
+>  	struct pci_dev *pdev =3D vdev->pdev;
+> diff --git a/include/linux/vfio_pci_core.h b/include/linux/vfio_pci_core.=
+h
+> index 98c8c66e2400..9f10ff34b2ba 100644
+> --- a/include/linux/vfio_pci_core.h
+> +++ b/include/linux/vfio_pci_core.h
+> @@ -230,13 +230,9 @@ static inline void vfio_pci_zdev_close_device(struct
+> vfio_pci_core_device *vdev)
+>  void vfio_pci_core_set_params(bool nointxmask, bool is_disable_vga,
+>  			      bool is_disable_idle_d3);
+>  void vfio_pci_core_close_device(struct vfio_device *core_vdev);
+> -void vfio_pci_core_init_device(struct vfio_pci_core_device *vdev,
+> -			       struct pci_dev *pdev,
+> -			       const struct vfio_device_ops *vfio_pci_ops);
+>  int vfio_pci_core_init_dev(struct vfio_device *core_vdev);
+>  void vfio_pci_core_release_dev(struct vfio_device *core_vdev);
+>  int vfio_pci_core_register_device(struct vfio_pci_core_device *vdev);
+> -void vfio_pci_core_uninit_device(struct vfio_pci_core_device *vdev);
+>  void vfio_pci_core_unregister_device(struct vfio_pci_core_device *vdev);
+>  extern const struct pci_error_handlers vfio_pci_core_err_handlers;
+>  int vfio_pci_core_sriov_configure(struct vfio_pci_core_device *vdev,
+> --
+> 2.21.3
+
