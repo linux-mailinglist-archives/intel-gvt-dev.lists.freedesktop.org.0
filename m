@@ -2,75 +2,80 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BF345A7834
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 Aug 2022 09:55:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 233B15A840A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 Aug 2022 19:15:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4D55D10E239;
-	Wed, 31 Aug 2022 07:55:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 42A3210E483;
+	Wed, 31 Aug 2022 17:15:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1172 seconds by postgrey-1.36 at gabe;
- Wed, 31 Aug 2022 07:55:38 UTC
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
- [185.176.79.56])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2A57489089;
- Wed, 31 Aug 2022 07:55:37 +0000 (UTC)
-Received: from fraeml707-chm.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MHbYs4Xj8z688fw;
- Wed, 31 Aug 2022 15:35:29 +0800 (CST)
-Received: from lhrpeml500002.china.huawei.com (7.191.160.78) by
- fraeml707-chm.china.huawei.com (10.206.15.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Wed, 31 Aug 2022 09:36:03 +0200
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- lhrpeml500002.china.huawei.com (7.191.160.78) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Wed, 31 Aug 2022 08:36:02 +0100
-Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
- lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2375.024; 
- Wed, 31 Aug 2022 08:36:02 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Kevin Tian <kevin.tian@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>, 
- Zhi Wang <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi
- <rodrigo.vivi@intel.com>, Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Eric Farman
- <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Halil Pasic
- <pasic@linux.ibm.com>, Vineeth Vijayan <vneethv@linux.ibm.com>, "Peter
- Oberparleiter" <oberpar@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev
- <agordeev@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Jason Herne <jjherne@linux.ibm.com>, Harald Freudenberger
- <freude@linux.ibm.com>, Diana Craciun <diana.craciun@oss.nxp.com>, "Alex
- Williamson" <alex.williamson@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- liulongfang <liulongfang@huawei.com>, Jason Gunthorpe <jgg@ziepe.ca>, "Yishai
- Hadas" <yishaih@nvidia.com>, Eric Auger <eric.auger@redhat.com>, "Kirti
- Wankhede" <kwankhede@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Abhishek
- Sahu <abhsahu@nvidia.com>, "intel-gvt-dev@lists.freedesktop.org"
- <intel-gvt-dev@lists.freedesktop.org>, "intel-gfx@lists.freedesktop.org"
- <intel-gfx@lists.freedesktop.org>, "dri-devel@lists.freedesktop.org"
- <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-s390@vger.kernel.org"
- <linux-s390@vger.kernel.org>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>
-Subject: RE: [PATCH 04/15] vfio/hisi_acc: Use the new device life cycle helpers
-Thread-Topic: [PATCH 04/15] vfio/hisi_acc: Use the new device life cycle
- helpers
-Thread-Index: AQHYufp2da3qAvP1z0GEpuKhp3q5ba3Io6tw
-Date: Wed, 31 Aug 2022 07:36:02 +0000
-Message-ID: <fcbcc84a6c1148fa943576522cb906ce@huawei.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3D1A110E3FA
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 31 Aug 2022 17:15:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1661966116;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3wNDRJb+y9GkEb33I7HiMe0aeP3rl6XFj5xgf5bJFgc=;
+ b=UllZ4waRVbg8pZ5KlSxCroRM9HN1CVkOxwjBKDG9GptMIg5d2xUuYPFnkwOYiWxFhnJGQg
+ pEC4WtF2VO8txYQg2azqhQKF55HcprdpHubqPG4qKt5EFFC3t2tFS0jlgkBIBHrY9uj8ou
+ AedEBEKCreL98OEI6dGKzLQrrR274hg=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-29-3TpPhWTqOIyecRT5K-ZzMQ-1; Wed, 31 Aug 2022 13:15:15 -0400
+X-MC-Unique: 3TpPhWTqOIyecRT5K-ZzMQ-1
+Received: by mail-il1-f200.google.com with SMTP id
+ h5-20020a056e021d8500b002eb09a4f7e6so7177474ila.14
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 31 Aug 2022 10:15:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc;
+ bh=3wNDRJb+y9GkEb33I7HiMe0aeP3rl6XFj5xgf5bJFgc=;
+ b=K5cfawKsFS0rG0SkwUxRTpvuaUHuW52shNK4XbxvDFuA6LXRg1tjfpt2Pb2Z6yeK+6
+ udcgaCew8e+Accw2mmrLX6RMoxgog6DKkGJy2DW5O8+7Aauke/yMS2m910KEeWD7zP73
+ y22CyaETfDP6oPrY5qL+onzW0umd5lWV3zND+mM773FVTsBZni/tN75Z24X3WvrjeaFu
+ vfX0s+uCXjCWRSlULARD10g4GZ1VWfhQnIkVrpnaoQwKU0BQlrCWU2nm3SGG+6jITD2T
+ myuYPa7tR7qyteq6UmnhbNizly/BBDqkkHQ5U/tLpb7DxpPZbSoKDm41GIZJNyWZ7tyd
+ N2rw==
+X-Gm-Message-State: ACgBeo2cWH6YRIV5keBcQcJdjTTjjkCRHArbpy4aaxrMjYALUSImkVWx
+ onTCNKvszM6KkuZK/bJxbYqzoMILwM3NfY7/FyueeLih+L1lEHX44Ni0tpYbm6BcAchMiti7XlU
+ hSWKYdhrDOXbwHhR48aTM6pBEGMLKGAVJRQ==
+X-Received: by 2002:a05:6638:dd4:b0:349:ebfd:e705 with SMTP id
+ m20-20020a0566380dd400b00349ebfde705mr15532682jaj.4.1661966114832; 
+ Wed, 31 Aug 2022 10:15:14 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR7UqftyvxL/mEDNedrHFErMBY8p1pSeatls/DmKqtUta1ABwUYFXwUlUJQ1689Lfg3tEQsWAQ==
+X-Received: by 2002:a05:6638:dd4:b0:349:ebfd:e705 with SMTP id
+ m20-20020a0566380dd400b00349ebfde705mr15532650jaj.4.1661966114600; 
+ Wed, 31 Aug 2022 10:15:14 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ u190-20020a0223c7000000b00343617e8368sm7084182jau.99.2022.08.31.10.15.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 31 Aug 2022 10:15:14 -0700 (PDT)
+Date: Wed, 31 Aug 2022 11:15:12 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH 15/15] vfio: Add struct device to vfio_device
+Message-ID: <20220831111512.4924e152.alex.williamson@redhat.com>
+In-Reply-To: <BN9PR11MB5276BF3B8D65B66DB292CAE58C789@BN9PR11MB5276.namprd11.prod.outlook.com>
 References: <20220827171037.30297-1-kevin.tian@intel.com>
- <20220827171037.30297-5-kevin.tian@intel.com>
-In-Reply-To: <20220827171037.30297-5-kevin.tian@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.195.245.177]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <20220827171037.30297-16-kevin.tian@intel.com>
+ <20220830161838.4aa47045.alex.williamson@redhat.com>
+ <Yw6i7btDKcUDPADP@ziepe.ca>
+ <BN9PR11MB5276BF3B8D65B66DB292CAE58C789@BN9PR11MB5276.namprd11.prod.outlook.com>
+Organization: Red Hat
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,270 +88,102 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yi Liu <yi.l.liu@intel.com>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Longfang Liu <liulongfang@huawei.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Gunthorpe <jgg@ziepe.ca>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ Jason Herne <jjherne@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Wed, 31 Aug 2022 06:10:51 +0000
+"Tian, Kevin" <kevin.tian@intel.com> wrote:
 
+> > From: Jason Gunthorpe <jgg@ziepe.ca>
+> > Sent: Wednesday, August 31, 2022 7:53 AM
+> > 
+> > On Tue, Aug 30, 2022 at 04:18:38PM -0600, Alex Williamson wrote:  
+> > > On Sun, 28 Aug 2022 01:10:37 +0800
+> > > Kevin Tian <kevin.tian@intel.com> wrote:
+> > >  
+> > > > From: Yi Liu <yi.l.liu@intel.com>
+> > > >
+> > > > and replace kref. With it a 'vfio-dev/vfioX' node is created under the
+> > > > sysfs path of the parent, indicating the device is bound to a vfio
+> > > > driver, e.g.:
+> > > >
+> > > > /sys/devices/pci0000\:6f/0000\:6f\:01.0/vfio-dev/vfio0
+> > > >
+> > > > It is also a preparatory step toward adding cdev for supporting future
+> > > > device-oriented uAPI.  
+> > >
+> > > Shall we start Documentation/ABI/testing/vfio-dev now?  Thanks.  
+> > 
+> > I always thought that was something to use when adding new custom
+> > sysfs attributes?
+> > 
+> > Here we are just creating a standard struct device with its standard
+> > sysfs?
+> >   
+> 
+> There is nothing special for vfio-dev/vfioX. But from pci device p.o.v
+> this does introduce a custom node in the directory, which is probably
+> what Alex referred to?
 
-> -----Original Message-----
-> From: Kevin Tian [mailto:kevin.tian@intel.com]
-> Sent: 27 August 2022 18:10
-> To: Zhenyu Wang <zhenyuw@linux.intel.com>; Zhi Wang
-> <zhi.a.wang@intel.com>; Jani Nikula <jani.nikula@linux.intel.com>; Joonas
-> Lahtinen <joonas.lahtinen@linux.intel.com>; Rodrigo Vivi
-> <rodrigo.vivi@intel.com>; Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>=
-;
-> David Airlie <airlied@linux.ie>; Daniel Vetter <daniel@ffwll.ch>; Eric Fa=
-rman
-> <farman@linux.ibm.com>; Matthew Rosato <mjrosato@linux.ibm.com>;
-> Halil Pasic <pasic@linux.ibm.com>; Vineeth Vijayan
-> <vneethv@linux.ibm.com>; Peter Oberparleiter <oberpar@linux.ibm.com>;
-> Heiko Carstens <hca@linux.ibm.com>; Vasily Gorbik <gor@linux.ibm.com>;
-> Alexander Gordeev <agordeev@linux.ibm.com>; Christian Borntraeger
-> <borntraeger@linux.ibm.com>; Sven Schnelle <svens@linux.ibm.com>; Tony
-> Krowiak <akrowiak@linux.ibm.com>; Jason Herne <jjherne@linux.ibm.com>;
-> Harald Freudenberger <freude@linux.ibm.com>; Diana Craciun
-> <diana.craciun@oss.nxp.com>; Alex Williamson
-> <alex.williamson@redhat.com>; Cornelia Huck <cohuck@redhat.com>;
-> liulongfang <liulongfang@huawei.com>; Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; Jason Gunthorpe
-> <jgg@ziepe.ca>; Yishai Hadas <yishaih@nvidia.com>; Kevin Tian
-> <kevin.tian@intel.com>; Eric Auger <eric.auger@redhat.com>; Kirti
-> Wankhede <kwankhede@nvidia.com>; Leon Romanovsky <leon@kernel.org>;
-> Abhishek Sahu <abhsahu@nvidia.com>; intel-gvt-dev@lists.freedesktop.org;
-> intel-gfx@lists.freedesktop.org; dri-devel@lists.freedesktop.org;
-> linux-kernel@vger.kernel.org; linux-s390@vger.kernel.org;
-> kvm@vger.kernel.org
-> Cc: Yi Liu <yi.l.liu@intel.com>
-> Subject: [PATCH 04/15] vfio/hisi_acc: Use the new device life cycle helpe=
-rs
->=20
-> From: Yi Liu <yi.l.liu@intel.com>
->=20
-> Tidy up @probe so all migration specific initialization logic is moved
-> to migration specific @init callback.
->=20
-> Remove vfio_pci_core_{un}init_device() given no user now.
+Yup, but not just for pci, we're adding a node into the device
+directory for any device bound to vfio.
 
-This looks fine to me and the probe() is indeed much cleaner now.
+> Anyway if required following can be introduced:
+> 
+> diff --git a/Documentation/ABI/testing/sysfs-devices-vfio-dev b/Documentation/ABI/testing/sysfs-devices-vfio-dev
+> new file mode 100644
+> index 000000000000..dfe8baaf1ccb
+> --- /dev/null
+> +++ b/Documentation/ABI/testing/sysfs-devices-vfio-dev
+> @@ -0,0 +1,8 @@
+> +What:		 /sys/.../<device>/vfio-dev/vfioX/
+> +Date:		 September 2022
+> +Contact:	 Yi Liu <yi.l.liu@intel.com>
+> +Description:
+> +		 This directory is created when the device is bound to a
+> +		 vfio driver. The layout under this directory matches what
+> +		 exists for a standard 'struct device'. 'X' is a random
+> +		 number marking this device in vfio.
 
-Reviewed-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+It's not really random, it's a unique index.  Seems like a good
+starting point.
 
-Thanks,
-Shameer
-=20
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> Signed-off-by: Kevin Tian <kevin.tian@intel.com>
-> ---
->  .../vfio/pci/hisilicon/hisi_acc_vfio_pci.c    | 80 +++++++++----------
->  drivers/vfio/pci/vfio_pci_core.c              | 30 -------
->  include/linux/vfio_pci_core.h                 |  4 -
->  3 files changed, 37 insertions(+), 77 deletions(-)
->=20
-> diff --git a/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
-> b/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
-> index ea762e28c1cc..f06f9a799128 100644
-> --- a/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
-> +++ b/drivers/vfio/pci/hisilicon/hisi_acc_vfio_pci.c
-> @@ -1213,8 +1213,28 @@ static const struct vfio_migration_ops
-> hisi_acc_vfio_pci_migrn_state_ops =3D {
->  	.migration_get_state =3D hisi_acc_vfio_pci_get_device_state,
->  };
->=20
-> +int hisi_acc_vfio_pci_migrn_init_dev(struct vfio_device *core_vdev)
-> +{
-> +	struct hisi_acc_vf_core_device *hisi_acc_vdev =3D
-> container_of(core_vdev,
-> +			struct hisi_acc_vf_core_device, core_device.vdev);
-> +	struct pci_dev *pdev =3D to_pci_dev(core_vdev->dev);
-> +	struct hisi_qm *pf_qm =3D hisi_acc_get_pf_qm(pdev);
-> +
-> +	hisi_acc_vdev->vf_id =3D pci_iov_vf_id(pdev) + 1;
-> +	hisi_acc_vdev->pf_qm =3D pf_qm;
-> +	hisi_acc_vdev->vf_dev =3D pdev;
-> +	mutex_init(&hisi_acc_vdev->state_mutex);
-> +
-> +	core_vdev->migration_flags =3D VFIO_MIGRATION_STOP_COPY;
-> +	core_vdev->mig_ops =3D &hisi_acc_vfio_pci_migrn_state_ops;
-> +
-> +	return vfio_pci_core_init_dev(core_vdev);
-> +}
-> +
->  static const struct vfio_device_ops hisi_acc_vfio_pci_migrn_ops =3D {
->  	.name =3D "hisi-acc-vfio-pci-migration",
-> +	.init =3D hisi_acc_vfio_pci_migrn_init_dev,
-> +	.release =3D vfio_pci_core_release_dev,
->  	.open_device =3D hisi_acc_vfio_pci_open_device,
->  	.close_device =3D hisi_acc_vfio_pci_close_device,
->  	.ioctl =3D hisi_acc_vfio_pci_ioctl,
-> @@ -1228,6 +1248,8 @@ static const struct vfio_device_ops
-> hisi_acc_vfio_pci_migrn_ops =3D {
->=20
->  static const struct vfio_device_ops hisi_acc_vfio_pci_ops =3D {
->  	.name =3D "hisi-acc-vfio-pci",
-> +	.init =3D vfio_pci_core_init_dev,
-> +	.release =3D vfio_pci_core_release_dev,
->  	.open_device =3D hisi_acc_vfio_pci_open_device,
->  	.close_device =3D vfio_pci_core_close_device,
->  	.ioctl =3D vfio_pci_core_ioctl,
-> @@ -1239,63 +1261,36 @@ static const struct vfio_device_ops
-> hisi_acc_vfio_pci_ops =3D {
->  	.match =3D vfio_pci_core_match,
->  };
->=20
-> -static int
-> -hisi_acc_vfio_pci_migrn_init(struct hisi_acc_vf_core_device *hisi_acc_vd=
-ev,
-> -			     struct pci_dev *pdev, struct hisi_qm *pf_qm)
-> -{
-> -	int vf_id;
-> -
-> -	vf_id =3D pci_iov_vf_id(pdev);
-> -	if (vf_id < 0)
-> -		return vf_id;
-> -
-> -	hisi_acc_vdev->vf_id =3D vf_id + 1;
-> -	hisi_acc_vdev->core_device.vdev.migration_flags =3D
-> -					VFIO_MIGRATION_STOP_COPY;
-> -	hisi_acc_vdev->pf_qm =3D pf_qm;
-> -	hisi_acc_vdev->vf_dev =3D pdev;
-> -	mutex_init(&hisi_acc_vdev->state_mutex);
-> -
-> -	return 0;
-> -}
-> -
->  static int hisi_acc_vfio_pci_probe(struct pci_dev *pdev, const struct
-> pci_device_id *id)
->  {
->  	struct hisi_acc_vf_core_device *hisi_acc_vdev;
-> +	const struct vfio_device_ops *ops =3D &hisi_acc_vfio_pci_ops;
->  	struct hisi_qm *pf_qm;
-> +	int vf_id;
->  	int ret;
->=20
-> -	hisi_acc_vdev =3D kzalloc(sizeof(*hisi_acc_vdev), GFP_KERNEL);
-> -	if (!hisi_acc_vdev)
-> -		return -ENOMEM;
-> -
->  	pf_qm =3D hisi_acc_get_pf_qm(pdev);
->  	if (pf_qm && pf_qm->ver >=3D QM_HW_V3) {
-> -		ret =3D hisi_acc_vfio_pci_migrn_init(hisi_acc_vdev, pdev, pf_qm);
-> -		if (!ret) {
-> -			vfio_pci_core_init_device(&hisi_acc_vdev->core_device, pdev,
-> -						  &hisi_acc_vfio_pci_migrn_ops);
-> -			hisi_acc_vdev->core_device.vdev.mig_ops =3D
-> -					&hisi_acc_vfio_pci_migrn_state_ops;
-> -		} else {
-> +		vf_id =3D pci_iov_vf_id(pdev);
-> +		if (vf_id >=3D 0)
-> +			ops =3D &hisi_acc_vfio_pci_migrn_ops;
-> +		else
->  			pci_warn(pdev, "migration support failed, continue with
-> generic interface\n");
-> -			vfio_pci_core_init_device(&hisi_acc_vdev->core_device, pdev,
-> -						  &hisi_acc_vfio_pci_ops);
-> -		}
-> -	} else {
-> -		vfio_pci_core_init_device(&hisi_acc_vdev->core_device, pdev,
-> -					  &hisi_acc_vfio_pci_ops);
->  	}
->=20
-> +	hisi_acc_vdev =3D vfio_alloc_device(hisi_acc_vf_core_device,
-> +					  core_device.vdev, &pdev->dev, ops);
-> +	if (IS_ERR(hisi_acc_vdev))
-> +		return PTR_ERR(hisi_acc_vdev);
-> +
->  	dev_set_drvdata(&pdev->dev, &hisi_acc_vdev->core_device);
->  	ret =3D vfio_pci_core_register_device(&hisi_acc_vdev->core_device);
->  	if (ret)
-> -		goto out_free;
-> +		goto out_put_vdev;
->  	return 0;
->=20
-> -out_free:
-> -	vfio_pci_core_uninit_device(&hisi_acc_vdev->core_device);
-> -	kfree(hisi_acc_vdev);
-> +out_put_vdev:
-> +	vfio_put_device(&hisi_acc_vdev->core_device.vdev);
->  	return ret;
->  }
->=20
-> @@ -1304,8 +1299,7 @@ static void hisi_acc_vfio_pci_remove(struct
-> pci_dev *pdev)
->  	struct hisi_acc_vf_core_device *hisi_acc_vdev =3D
-> hssi_acc_drvdata(pdev);
->=20
->  	vfio_pci_core_unregister_device(&hisi_acc_vdev->core_device);
-> -	vfio_pci_core_uninit_device(&hisi_acc_vdev->core_device);
-> -	kfree(hisi_acc_vdev);
-> +	vfio_put_device(&hisi_acc_vdev->core_device.vdev);
->  }
->=20
->  static const struct pci_device_id hisi_acc_vfio_pci_table[] =3D {
-> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci=
-_core.c
-> index 708b61d1b364..f29d780e327e 100644
-> --- a/drivers/vfio/pci/vfio_pci_core.c
-> +++ b/drivers/vfio/pci/vfio_pci_core.c
-> @@ -1860,36 +1860,6 @@ void vfio_pci_core_release_dev(struct
-> vfio_device *core_vdev)
->  }
->  EXPORT_SYMBOL_GPL(vfio_pci_core_release_dev);
->=20
-> -void vfio_pci_core_init_device(struct vfio_pci_core_device *vdev,
-> -			       struct pci_dev *pdev,
-> -			       const struct vfio_device_ops *vfio_pci_ops)
-> -{
-> -	vfio_init_group_dev(&vdev->vdev, &pdev->dev, vfio_pci_ops);
-> -	vdev->pdev =3D pdev;
-> -	vdev->irq_type =3D VFIO_PCI_NUM_IRQS;
-> -	mutex_init(&vdev->igate);
-> -	spin_lock_init(&vdev->irqlock);
-> -	mutex_init(&vdev->ioeventfds_lock);
-> -	INIT_LIST_HEAD(&vdev->dummy_resources_list);
-> -	INIT_LIST_HEAD(&vdev->ioeventfds_list);
-> -	mutex_init(&vdev->vma_lock);
-> -	INIT_LIST_HEAD(&vdev->vma_list);
-> -	INIT_LIST_HEAD(&vdev->sriov_pfs_item);
-> -	init_rwsem(&vdev->memory_lock);
-> -}
-> -EXPORT_SYMBOL_GPL(vfio_pci_core_init_device);
-> -
-> -void vfio_pci_core_uninit_device(struct vfio_pci_core_device *vdev)
-> -{
-> -	mutex_destroy(&vdev->igate);
-> -	mutex_destroy(&vdev->ioeventfds_lock);
-> -	mutex_destroy(&vdev->vma_lock);
-> -	vfio_uninit_group_dev(&vdev->vdev);
-> -	kfree(vdev->region);
-> -	kfree(vdev->pm_save);
-> -}
-> -EXPORT_SYMBOL_GPL(vfio_pci_core_uninit_device);
-> -
->  int vfio_pci_core_register_device(struct vfio_pci_core_device *vdev)
->  {
->  	struct pci_dev *pdev =3D vdev->pdev;
-> diff --git a/include/linux/vfio_pci_core.h b/include/linux/vfio_pci_core.=
-h
-> index 98c8c66e2400..9f10ff34b2ba 100644
-> --- a/include/linux/vfio_pci_core.h
-> +++ b/include/linux/vfio_pci_core.h
-> @@ -230,13 +230,9 @@ static inline void vfio_pci_zdev_close_device(struct
-> vfio_pci_core_device *vdev)
->  void vfio_pci_core_set_params(bool nointxmask, bool is_disable_vga,
->  			      bool is_disable_idle_d3);
->  void vfio_pci_core_close_device(struct vfio_device *core_vdev);
-> -void vfio_pci_core_init_device(struct vfio_pci_core_device *vdev,
-> -			       struct pci_dev *pdev,
-> -			       const struct vfio_device_ops *vfio_pci_ops);
->  int vfio_pci_core_init_dev(struct vfio_device *core_vdev);
->  void vfio_pci_core_release_dev(struct vfio_device *core_vdev);
->  int vfio_pci_core_register_device(struct vfio_pci_core_device *vdev);
-> -void vfio_pci_core_uninit_device(struct vfio_pci_core_device *vdev);
->  void vfio_pci_core_unregister_device(struct vfio_pci_core_device *vdev);
->  extern const struct pci_error_handlers vfio_pci_core_err_handlers;
->  int vfio_pci_core_sriov_configure(struct vfio_pci_core_device *vdev,
-> --
-> 2.21.3
+> 
+> At the start I thought it might make more sense to add it into an
+> existing vfio ABI file. But looks it doesn't exist.
+> 
+> Curious why nobody asked for ABI doc for /dev/vfio/vfio, /sys/class/vfio, etc...
+
+Oversight, there should probably be a sysfs-class-vfio file.  Thanks,
+
+Alex
 
