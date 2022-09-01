@@ -2,82 +2,163 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C8B85A8B35
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Sep 2022 04:07:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F1135A906F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Sep 2022 09:37:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EE55A10E06F;
-	Thu,  1 Sep 2022 02:07:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4288B10E60B;
+	Thu,  1 Sep 2022 07:37:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B060410E06F
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  1 Sep 2022 02:07:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1661998020;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Uc9eSniapYBlyChWU+AZI0xqtO1iDX5hC1kW3YMyLk=;
- b=HRhjegm6n7Wya3u0408mPPgk3NupQ93zjlN9QJmAVk7r5o+IEhY6xp8vgxPIN5y67kDVTj
- Vumi5EgfMmvFIMIYzWYcx54c/ULiiKgbRi3cM07d6vKK4iRuiAH22X+/QWe5SaKhZDN9vl
- 3Du29tFYQKR9be6hZVtC8PydOMs0d1M=
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-2-G-z41bf7MFO3D7sByNsuBA-1; Wed, 31 Aug 2022 22:05:56 -0400
-X-MC-Unique: G-z41bf7MFO3D7sByNsuBA-1
-Received: by mail-io1-f70.google.com with SMTP id
- q10-20020a0566022f0a00b00688d703717bso9818468iow.9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 31 Aug 2022 19:05:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc;
- bh=/Uc9eSniapYBlyChWU+AZI0xqtO1iDX5hC1kW3YMyLk=;
- b=qQKM6aSUJljlax86/efV4Xgdg+PRSU/J/+GSBR08KM8JQX/RAakDSVstO9MDppCMlJ
- 8SiPzvUCrIgRWmMXQb9aAKwDpbioAXuf3eFJcLwHA6YG8l/1Dxogc5SR81dgrP1GxTvp
- pL1GXYk6f4ftA2espB7jhlQ9hF/fLkSn/0OIGmYgg0hEM79ooiJlcROOQWs5j7eO3Rw6
- iSAQr8ovHvPAGCerkijdZhlCh0mPOMFO3tYfXZlH4MC2EFyT5zNXRla/u+oG/XTROJZB
- OvGLqR4mNmsTDQhYjC8YLBGOzvpxTDfTdrP+O0DntFWXmL0wFBTqF1CmcqQ9YGWzLKpO
- 1inQ==
-X-Gm-Message-State: ACgBeo3uhuWgq7VROrYSkaHY6DRrVmK451Rx52uYZ0uSoUvWmMTENgMc
- EukzLkDJYfSY3DBGZzEGcY5wRZYrnj4I/ueTlMCO1+if23JLcKa2htucDO6RxunklljxAer8OId
- TVOF80vk54k0GeFfFJi2c30pX5iVeat9qxw==
-X-Received: by 2002:a02:caa6:0:b0:349:bbca:9a90 with SMTP id
- e6-20020a02caa6000000b00349bbca9a90mr16413143jap.203.1661997955771; 
- Wed, 31 Aug 2022 19:05:55 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR69HUeX58FMkYxODUyoKw5kYP6agdJ53j1pRzyBTmGQRYpiiEtOoSguPX68IkBTLGR0Abgyow==
-X-Received: by 2002:a02:caa6:0:b0:349:bbca:9a90 with SMTP id
- e6-20020a02caa6000000b00349bbca9a90mr16413094jap.203.1661997955449; 
- Wed, 31 Aug 2022 19:05:55 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- u7-20020a02b1c7000000b0034293459b44sm7434106jah.142.2022.08.31.19.05.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 31 Aug 2022 19:05:55 -0700 (PDT)
-Date: Wed, 31 Aug 2022 20:05:52 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH 15/15] vfio: Add struct device to vfio_device
-Message-ID: <20220831200552.12169ae3.alex.williamson@redhat.com>
-In-Reply-To: <BN9PR11MB527652B0557897BDA08B5FE38C7B9@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <20220827171037.30297-1-kevin.tian@intel.com>
- <20220827171037.30297-16-kevin.tian@intel.com>
- <20220830161838.4aa47045.alex.williamson@redhat.com>
- <Yw6i7btDKcUDPADP@ziepe.ca>
- <BN9PR11MB5276BF3B8D65B66DB292CAE58C789@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20220831111512.4924e152.alex.williamson@redhat.com>
- <BN9PR11MB527652B0557897BDA08B5FE38C7B9@BN9PR11MB5276.namprd11.prod.outlook.com>
-Organization: Red Hat
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0E1F610E5A9;
+ Thu,  1 Sep 2022 07:37:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1662017830; x=1693553830;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=E0tjURMAVeo957WRs0WKwNwl2PPLitzga8gvJwF55UY=;
+ b=fk/4JKuV+KGp1ilBGEL7TIpJeACQWPxNljbNpPP6VTUGKDH6lzfpCWJI
+ V0C15kbgqkAoS5azcSZbelknvqVQsGDNfqa9ZoN0yiZg8SkjvwVE9B19y
+ ho6vufehOyeibZZ6gkZ/TezhnGFw67HV1LyZOxpN9Pa6PRuMuNEwqh7YN
+ wWxdlpPd1CBxPjqBI2O4vbtIZzcnUWY3cKoSHT5tQcVR5xzHP+pJ2Y8Z5
+ 16FfZq+sPHmzl3j8fOegJMgEstmnfz+dxk4fvGBU2qGsaKHUogHE0hzAw
+ grRZBkuoa8Iv6kUDjOQXSqP7cA6NufML3R/hyxZ0ES2DSjOlst/NpRoQ9 w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10456"; a="282620796"
+X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="282620796"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Sep 2022 00:37:09 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="857736439"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga006.fm.intel.com with ESMTP; 01 Sep 2022 00:37:08 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 1 Sep 2022 00:37:08 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 1 Sep 2022 00:37:07 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Thu, 1 Sep 2022 00:37:07 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.101)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Thu, 1 Sep 2022 00:37:07 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=G5j+gGloIt26NQDRyZfrDNP6h5aGNqeiVeOU1I2qfOOE0w/L+QjpOtrebARe3BIWPSMUgcHyzw1L1xd0tRiQaN96h1hAaKEmLuZ7y+P0H9O1NnTBzSxz9qxtor4xOzElkEJLygZps1HOh9/kvkVd/e+M4emkpyPVqCdXeMbsYZC8rpJMt1ldTnGRO2EA1nPKd/wMVMhcZy1S9uyWr4h19pI9rEVaOYH6syJPhfeP95M39v34tcIrgb3RB/SOqBz7c3pGUAQdcpPrKQYmff02MmecRYfll7yEQH41TYtsI6Ppfmkyx93sA9ZUML3+Ln42kqEYFd29FPohbJBlqY1i9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=E0tjURMAVeo957WRs0WKwNwl2PPLitzga8gvJwF55UY=;
+ b=k74RRWt4Blal0gwr2e0betc4agQw6Xao9BHk0rNQbj9VGoN3EECBSuaQMVS5Mfg1gi0+YW/2RnJ35Ts7yTw2jWglT+u7ceUyAekC2JjFK5e/S9OvpTJQU+GykO0Az3N9CvwAORL7xE2F5NVA01AefF3RpJKW1HQLBndKHK2Xayn/rdwAoEsveM7Vln/X10cvntEFkOlQfMOOpyqtPgnbNxZTYdXEW+DBxm+s9cmM9RwfIH9YEq2Ah0fYkDS8U3zilRTDqQSVKP7ra/F8t5SnzAxrzvHPQzq+GsNt+0ZmaVXAAt89o0tFMArPsO7C0olOl6WRXcTW2ZqE9E+a3uJ8zQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by BN6PR11MB1428.namprd11.prod.outlook.com (2603:10b6:405:a::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5588.10; Thu, 1 Sep
+ 2022 07:37:06 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::a435:3eff:aa83:73d7]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::a435:3eff:aa83:73d7%5]) with mapi id 15.20.5588.010; Thu, 1 Sep 2022
+ 07:37:06 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, "Wang, Zhi A"
+ <zhi.a.wang@intel.com>, Jani Nikula <jani.nikula@linux.intel.com>, "Joonas
+ Lahtinen" <joonas.lahtinen@linux.intel.com>, "Vivi, Rodrigo"
+ <rodrigo.vivi@intel.com>, Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Eric Farman
+ <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Halil Pasic
+ <pasic@linux.ibm.com>, Vineeth Vijayan <vneethv@linux.ibm.com>, "Peter
+ Oberparleiter" <oberpar@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev
+ <agordeev@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Harald Freudenberger
+ <freude@linux.ibm.com>, Diana Craciun <diana.craciun@oss.nxp.com>, "Alex
+ Williamson" <alex.williamson@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Longfang Liu <liulongfang@huawei.com>, Shameer Kolothum
+ <shameerali.kolothum.thodi@huawei.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+ Yishai Hadas <yishaih@nvidia.com>, Eric Auger <eric.auger@redhat.com>, "Kirti
+ Wankhede" <kwankhede@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
+ "Abhishek Sahu" <abhsahu@nvidia.com>, "intel-gvt-dev@lists.freedesktop.org"
+ <intel-gvt-dev@lists.freedesktop.org>, "intel-gfx@lists.freedesktop.org"
+ <intel-gfx@lists.freedesktop.org>, "dri-devel@lists.freedesktop.org"
+ <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-s390@vger.kernel.org"
+ <linux-s390@vger.kernel.org>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>
+Subject: RE: [PATCH v2 12/15] vfio/amba: Use the new device life cycle helpers
+Thread-Topic: [PATCH v2 12/15] vfio/amba: Use the new device life cycle helpers
+Thread-Index: AQHYvdM1bc3iXCaPfUypseokfXt+uq3KL2kA
+Date: Thu, 1 Sep 2022 07:37:05 +0000
+Message-ID: <BN9PR11MB52760EBD9E07701E1C5D651D8C7B9@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20220901143747.32858-1-kevin.tian@intel.com>
+ <20220901143747.32858-13-kevin.tian@intel.com>
+In-Reply-To: <20220901143747.32858-13-kevin.tian@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 63b2371a-9553-4af5-ffd5-08da8becc4e9
+x-ms-traffictypediagnostic: BN6PR11MB1428:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ymBu+g1eutbSWViypK9xrL0zxsPdlOKgvQW7l7bwPJRHUFjhc6dRbXaTCVLXRqJxCpRKOvdEPauVnHXthJMD+Jk8aPol8Xxt2g6HPbti05VKlt3j7TiH25diFQuZa1sLlFObSGMNMCOXCtSMkZJjGgbiuPEckbes4JrUUup4adUqVYg8aE2ibDhBriwHMPI1n5wMi2WiVO15ndylabMogdUGUtViFM87YaJZOty0E0/UT8KpgbrdivIdgLP/XhLct4JWu55sohatJk56CPf+aWKX+IHfTx2VktHYo7g16vODS4l0CAJP8FE9qYfV5tTDyqHNleOQxANFbqZr1S0+ul8B6n4f00ph0MgvlXz8UCeHK1B0fXpJXRg7GTw2F7mSS8urf0UqQtn71KS0nCzjvq/NZnbrqSrt3FUic2n3oV+98AL1xqJaQXu28FN3KqXRD39NwCEizdozA71bcUkr7XhKlxsR9kralDMpjiyeVPqX+xqc5uUbrPvUR0Rp0DFNPOHb+2xZcxokeGgsRINZ/0zQbofXhKZp9cypmieAT9C0IeZxzIQr/iRrFv/P55qktHzKR2JDcMk5fpULkNFurLsxNwlyOJdtdeosDGN/d3eT378lOH9K8H6HfFSkO022g0TfUB+NnxWDQq+NxhKwq4aqGtJpWy2CBaDWXnyuyIK02k87TuIvTM3RDU0zNmaDhPIuRipXYX8aZDet/SwMhK9zuxxu5dGPS9vMoQZbQZCoHR75wNOpoVAjmXVJPea3Oht1bZ4rmiAFN5G+O5ORnIhc1MoXQlhnOZjeICHN2gg=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(376002)(39860400002)(396003)(136003)(346002)(366004)(558084003)(6506007)(7696005)(55016003)(110136005)(316002)(4326008)(8676002)(64756008)(66476007)(76116006)(66946007)(66556008)(38070700005)(52536014)(8936002)(66446008)(33656002)(921005)(478600001)(38100700002)(71200400001)(7416002)(7406005)(122000001)(82960400001)(86362001)(9686003)(2906002)(5660300002)(41300700001)(26005)(186003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Be7RFIdTO0SP6shqnlo47Wxy96SjStKV4AM/jcbVDgAecTT37m8ySty9G5OE?=
+ =?us-ascii?Q?zXOb0FvMlSc33ozlHYnz5UTN7ifi+skE7dONerYlydfrCVaTuzlNgQ3HS/lB?=
+ =?us-ascii?Q?cw+lF3NBuQn1bCx8x4yO2eAP1YUWhu55zaN/yo9GXUs4dKLWN1I70VBmAVi1?=
+ =?us-ascii?Q?idrRZkQNyO+tLbLlYkgSK1Gi3YN6WudE9EwdV+trR2Tyh/hpEPhhhPxQlHPT?=
+ =?us-ascii?Q?/+e4ABEtU/JmWDildjwiH4ar4C/dx8aWyka7vkZBBQzw0Bxj+jycCnmAxOYh?=
+ =?us-ascii?Q?wCQ5+H9CZ7qZXSBxdC539gmdsy4v6sE86njJOeB6YLn4t0Xk3Q+Kvw69tdf2?=
+ =?us-ascii?Q?J8Q8z2VMzEa5rWWneC/Em2VNXZ0FwkzP3xuQ0cclBmAceGdSgpMMLSO6MVeZ?=
+ =?us-ascii?Q?vi/HiuGZhMk5Wuc2aYbvI1Sw8Ucdlg+AM186scUUlm/G7e7H5akWPdD3Osz1?=
+ =?us-ascii?Q?Ktew3eGvlegH0LNW+dD95egECi0aS3/uInkn/D4gpCABVOJ0zsOqAe27Py49?=
+ =?us-ascii?Q?vomEbXQZ0XBtJLZovr+T/qUDZr4gxyGRgmELudFtKbPGalblWwBTuGhw2efL?=
+ =?us-ascii?Q?HL2ar3GYw8BIi8KWXVOpSzkRKBzFSFBiG0svBsJEC1ckmO88ZaDvxD5r56uc?=
+ =?us-ascii?Q?v0ajmas2492m1Twdmq+DQ1y7Z8QjmPHlQdkfO3Q3XzQrxnk6O/A+UdvRPPKJ?=
+ =?us-ascii?Q?y5krKg/UJquBCuQF5m2obONqERZPvJPoiSRBnVegsQ0cfdX37LRhE/+1Vyg+?=
+ =?us-ascii?Q?Bf6Kimn5Esw/O3snVuNEzWH7GnU8u44TAM3RZkEIPtqTtTEUWlE0/xOpPABC?=
+ =?us-ascii?Q?UyYCluVWP31QlBUUC5CIuDXp224DbtDb71MTSQmV+kB+VPvQ5mEYF96uFvF/?=
+ =?us-ascii?Q?GcFnxR63ct1u/8tCii+bCcLUdeGvKe2IZ1cdDpMnD+jTgLwUrqnDv0dkKXMa?=
+ =?us-ascii?Q?G1qyA8cDH/a/Sob10OsFuTLJJwRb29vM9rj30Wi9xKcaFobi4QnDeUXNQfxd?=
+ =?us-ascii?Q?3gdQpxJRxE4yz3X7C20Lzty6bn0qfHGshzW8M3MzPpQr35qTtaTFRN9lPSO1?=
+ =?us-ascii?Q?jFEn423CmXKtWj9JkI0Ru1NwSFVSfcG1kgEEBLhUaj82jfxsNS3qPt5AaOKO?=
+ =?us-ascii?Q?q5Wd0xzwpwK/TLyTPwkkrd2b3oik2tU3EsXJDDvwjDgt3P642CZFuBH6+Qyc?=
+ =?us-ascii?Q?++nUFjMZPLzlofUs+CCuiz49IPX+slHTUArlhj+HLps8uMTk3eZqoQiLMcGl?=
+ =?us-ascii?Q?j415ERtq3kFKgIIbszyZePzhft+LTId5PqVVqHZudeEBs3rg0WhT3ELfO2Lq?=
+ =?us-ascii?Q?/LcM/EeR5HMo1t5oyGFe9NhRIms+p0ksvJxy8hqxt5ENq1G3UyyvP3sNMb8n?=
+ =?us-ascii?Q?8iwma1smFMRBG4aFSLQL6aHZeNLIyFRFD/G7PiV1ZwUtviDUupOCT+8Yy7Bn?=
+ =?us-ascii?Q?pvD6195eZZ+4TufgDYOkijESEZPrYgFZCO9hnj7NYDa2tJRCq69LH5ZhLLci?=
+ =?us-ascii?Q?Dw3IhMFYWtNB7AfvAs0iYFC7ZtHwuXP5klYwdvF6sthIQZUGj3uPmaKYXS94?=
+ =?us-ascii?Q?jVtH4KDBrsOQGZuSFNk98l68skTvFBKuChyo8GyX?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 63b2371a-9553-4af5-ffd5-08da8becc4e9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2022 07:37:05.8245 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zDo1E8A3rFj8efaTFcC55Lw1jW2142olW9b6nrhfFwD6eFdBT07SkHu3H4ksKXnTQ9Q8tqFe63Rn3+pP1DcWyQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1428
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,134 +171,13 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
+Cc: "Liu, Yi L" <yi.l.liu@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 1 Sep 2022 00:46:51 +0000
-"Tian, Kevin" <kevin.tian@intel.com> wrote:
+> From: Tian, Kevin <kevin.tian@intel.com>
+> Sent: Thursday, September 1, 2022 10:38 PM
+>=20
+> +static const struct vfio_device_ops vfio_amba_ops=3D {
 
-> > From: Alex Williamson <alex.williamson@redhat.com>
-> > Sent: Thursday, September 1, 2022 1:15 AM
-> > 
-> > On Wed, 31 Aug 2022 06:10:51 +0000
-> > "Tian, Kevin" <kevin.tian@intel.com> wrote:
-> >   
-> > > > From: Jason Gunthorpe <jgg@ziepe.ca>
-> > > > Sent: Wednesday, August 31, 2022 7:53 AM
-> > > >
-> > > > On Tue, Aug 30, 2022 at 04:18:38PM -0600, Alex Williamson wrote:  
-> > > > > On Sun, 28 Aug 2022 01:10:37 +0800
-> > > > > Kevin Tian <kevin.tian@intel.com> wrote:
-> > > > >  
-> > > > > > From: Yi Liu <yi.l.liu@intel.com>
-> > > > > >
-> > > > > > and replace kref. With it a 'vfio-dev/vfioX' node is created under the
-> > > > > > sysfs path of the parent, indicating the device is bound to a vfio
-> > > > > > driver, e.g.:
-> > > > > >
-> > > > > > /sys/devices/pci0000\:6f/0000\:6f\:01.0/vfio-dev/vfio0
-> > > > > >
-> > > > > > It is also a preparatory step toward adding cdev for supporting future
-> > > > > > device-oriented uAPI.  
-> > > > >
-> > > > > Shall we start Documentation/ABI/testing/vfio-dev now?  Thanks.  
-> > > >
-> > > > I always thought that was something to use when adding new custom
-> > > > sysfs attributes?
-> > > >
-> > > > Here we are just creating a standard struct device with its standard
-> > > > sysfs?
-> > > >  
-> > >
-> > > There is nothing special for vfio-dev/vfioX. But from pci device p.o.v
-> > > this does introduce a custom node in the directory, which is probably
-> > > what Alex referred to?  
-> > 
-> > Yup, but not just for pci, we're adding a node into the device
-> > directory for any device bound to vfio.
-> >   
-> > > Anyway if required following can be introduced:
-> > >
-> > > diff --git a/Documentation/ABI/testing/sysfs-devices-vfio-dev  
-> > b/Documentation/ABI/testing/sysfs-devices-vfio-dev  
-> > > new file mode 100644
-> > > index 000000000000..dfe8baaf1ccb
-> > > --- /dev/null
-> > > +++ b/Documentation/ABI/testing/sysfs-devices-vfio-dev
-> > > @@ -0,0 +1,8 @@
-> > > +What:		 /sys/.../<device>/vfio-dev/vfioX/
-> > > +Date:		 September 2022
-> > > +Contact:	 Yi Liu <yi.l.liu@intel.com>
-> > > +Description:
-> > > +		 This directory is created when the device is bound to a
-> > > +		 vfio driver. The layout under this directory matches what
-> > > +		 exists for a standard 'struct device'. 'X' is a random
-> > > +		 number marking this device in vfio.  
-> > 
-> > It's not really random, it's a unique index.  Seems like a good
-> > starting point.
-> >   
-> > >
-> > > At the start I thought it might make more sense to add it into an
-> > > existing vfio ABI file. But looks it doesn't exist.
-> > >
-> > > Curious why nobody asked for ABI doc for /dev/vfio/vfio, /sys/class/vfio,  
-> > etc...
-> > 
-> > Oversight, there should probably be a sysfs-class-vfio file.  Thanks,
-> >   
-> 
-> I can help add one.
-> 
-> btw I plan to respin v2 tomorrow. Regarding to this ABI thing there are
-> three options:
-> 
-> 1) Just add sysfs-devices-vfio-dev in this series. Later merge to
->    sysfs-class-vfio once the latter is introduced in a separate patch.
-
-This.  Thanks,
-
-Alex
-
-> 
-> 2) Do sysfs-class-vfio in this series, including both existing vfio ABIs and
->    the new vfio-dev.
-> 
-> 3) No ABI file in this series. Handle it in a separate patch with
->    sysfs-class-vfio.
-> 
-> Which one do  you prefer to?
-> 
-> Thanks
-> Kevin
-> 
-
+Above missed a space after vfio_amba_ops.
