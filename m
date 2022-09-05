@@ -1,62 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82D035ACDF8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  5 Sep 2022 10:53:51 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12E7E5AD294
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  5 Sep 2022 14:32:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8E41910E22C;
-	Mon,  5 Sep 2022 08:53:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9E38710E352;
+	Mon,  5 Sep 2022 12:32:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb2a.google.com (mail-yb1-xb2a.google.com
- [IPv6:2607:f8b0:4864:20::b2a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B128E10E221;
- Mon,  5 Sep 2022 08:53:41 +0000 (UTC)
-Received: by mail-yb1-xb2a.google.com with SMTP id 11so11924933ybu.0;
- Mon, 05 Sep 2022 01:53:41 -0700 (PDT)
+Received: from mail-qv1-xf35.google.com (mail-qv1-xf35.google.com
+ [IPv6:2607:f8b0:4864:20::f35])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D33BD10E357
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  5 Sep 2022 12:32:25 +0000 (UTC)
+Received: by mail-qv1-xf35.google.com with SMTP id c6so3945473qvn.6
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 05 Sep 2022 05:32:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date;
- bh=/pV2O0LzRWD83l6/jD0rtHLxlqUObMDm7uvvnSIQmGc=;
- b=JKD28+KNbsLLTDcJUSuELgoPlKu5YIRp5QZSmrEOFawOF6K5/5DChQtAhhxGF8ONCn
- +QRJ7TgPO7CQOHuoeTcAfrnr2OigYoscUzd3BOTJwSVJdttD3w+6V4pkabYRKuQbiu6Y
- WW7VVU/LS8FX76Q3i45nCYnAd3FiYxTLpGEwoZ8GPZD4jXg7s/rl7x2tYCkzjRAhtXgF
- z/CbHtbJYrM8B5PERGv4gQZaJ2lJ9PoTPvPaYwYaDXEBXtg1w6CRbo4XY4+8HGBU4G/N
- UZ/uyEZSDfPrjimlDN9R8dw4mswE59Y7MnANy1BpyQxR9mEpTTeAOPakRIAOqpWD9jLN
- 12Xw==
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date; bh=Mfai+Z/XaCFyuSCRuqjmiPIg5FTpOzYILsQLxW5G+ig=;
+ b=aPL5pu+cKeFXXniSyzWbfnD/DE3w6b4kWF98wIJQjulZ0AN6K94DASnC/SSFl+eCL4
+ SWn9SokNX7/cf0RqKfTuTTpmQWkEbLiJT0u2aLfGjU5zeP9jKe3OZq04kADnfg2/skbZ
+ cbZPu6r9/zfQwUFgSAXjB6vp5AXEzrHv1iq8cfJLJsCJiaye4MW0Upp1GjREW1Kaa6z4
+ t67+fbFBu/yPzFFL+mQ5b55IsiMvPUcA7qHQYZQwjp2IYxyg0dmKlk3gRTMo3dtEIDHb
+ 0qI4iU7tY/zG7z61eK13jP13ZOzF3seeiON0QsNZO4FKOu+cqDl3Txvtp/yTnMbym61y
+ 7rqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date;
- bh=/pV2O0LzRWD83l6/jD0rtHLxlqUObMDm7uvvnSIQmGc=;
- b=mF6yeGI62Yl8kv0TO4xMu/7NWCV4Wjf89aa0poW3FQo8zbyN9MQS7jFTSzHI6VX4PS
- AvIUwWUm0Sf/SwV024eNbnoMGaMCNXAPrXAqpurHgDUL0CTlHYsn6aRIWBkWCywQ2Ins
- 1ja7HK9C6q+0iywWA+OtjbnVyiVpJl9WgChBN4L2Uj5r4U74KPjbuc/p+ePyUJ1GKJeW
- igFaeHYSgPYvl4MnxhiYH6rIyROACK/9brkBEz/d1YLV5Ew2LROhVwnUzuVAmdmwGFNd
- vtLG4sve9LT8ILMDnk2muxInPZecLyC1LsnMGEjsZyxIhXoFYOSgO+kxL5FsIk5Gs1vB
- BZtg==
-X-Gm-Message-State: ACgBeo2SrTbDM4Hq6W1a5Mp07PGDyuTjKddr9PBLu//4ZpfeRF1igex6
- ew04EE3sB2QGgpOYprOTVBVtCbJ41nyqkoixEyw=
-X-Google-Smtp-Source: AA6agR5ZoT8N/kx3Hp+YXfHmKmfG/qcnkF+Mi6m8yvrs5x8843emp7V1dIC4jkLetItugqNAEs6WUpxoVUdeZuRVj2U=
-X-Received: by 2002:a25:d087:0:b0:6a9:1991:d3fb with SMTP id
- h129-20020a25d087000000b006a91991d3fbmr3544564ybg.130.1662368020106; Mon, 05
- Sep 2022 01:53:40 -0700 (PDT)
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=Mfai+Z/XaCFyuSCRuqjmiPIg5FTpOzYILsQLxW5G+ig=;
+ b=tH/X+xvxGMroFQV9XX1LC6035yS3KIu6XXfKLTvwJZD1WveqVEX8nzMCwcwEju6tgU
+ ya7QkImymlSJLZK3NyFCNBmP7khUsoZthPsVo6Wo7hXC74XifoEWJmEsu+Bi/AGR3W34
+ mvO4TwfpVKv96Yf2FAEmUw7rlLXNLVPvO7L3SLNlIfIyW3syf8Am2Tkh48+0t2zcZeVf
+ 6RDv4FgcbpzlPQiOFaMc9AxdGHVvqkKiBqR1KXp5VFxQxFYRzdij2ZOlxbEqt/V51TDp
+ cgzK7zAxwBVr5rq5+38as8UmbrmGZzPafE1POerUdgtmFJ79Jm2BMyP/F0tNulA0WrLO
+ qDOA==
+X-Gm-Message-State: ACgBeo3DPNwOqO/W52AxSONmGGhXl0YyDgtuEEjsc9lCPzmTf3fe4Gkm
+ 2BMgYDJZTDIrA71TdbsbOySPNDJomf18vEFinnk=
+X-Google-Smtp-Source: AA6agR5PBvj+5PHZ2x13STCh+duTkJa+GUXGL4Dow/coFIgKhq28+rtnUDxtd/+dgkk6n/4AOhdN6MHTajs/R1HHMCA=
+X-Received: by 2002:a05:6214:21a2:b0:499:3800:ecb4 with SMTP id
+ t2-20020a05621421a200b004993800ecb4mr15268573qvc.20.1662381144904; Mon, 05
+ Sep 2022 05:32:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
- <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
- <CAJedcCw1eJqjSK+yR7eQMDheNtH3Mjm+viwt00xAhnmrfpq2pw@mail.gmail.com>
- <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
- <YxWtfjfpNsoPUrgh@kroah.com>
-In-Reply-To: <YxWtfjfpNsoPUrgh@kroah.com>
-From: Alex Young <alex000young@gmail.com>
-Date: Mon, 5 Sep 2022 16:53:28 +0800
-Message-ID: <CAFC++j0_11fpgGaAdDsQUyTzCG8KU0cO1ufMYFzACWquJALuZg@mail.gmail.com>
-Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
-To: Greg KH <gregkh@linuxfoundation.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: "Steven Davis Esq." <erug7048@gmail.com>
+Date: Mon, 5 Sep 2022 13:32:08 +0100
+Message-ID: <CAFkteQYs8sRpTiFBN_Zr8Gj7sMGuKD79N-2MEqCFvoRJ-KvkeA@mail.gmail.com>
+Subject: Reply ASAP for more details
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000009f968505e7ed4567"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,76 +62,36 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: tvrtko.ursulin@linux.intel.com, security@kernel.org,
- dri-devel@lists.freedesktop.org, airlied@linux.ie,
- intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
- Zheng Hacker <hackerzheng666@gmail.com>, zhenyuw@linux.intel.com,
- linux-kernel@vger.kernel.org, xmzyshypnc <1002992920@qq.com>,
- jani.nikula@linux.intel.com, daniel@ffwll.ch, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Reply-To: davissteven.esq@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Thanks for your reply.
+--0000000000009f968505e7ed4567
+Content-Type: text/plain; charset="UTF-8"
 
-We think that when intel_gvt_dma_map_guest_page() fails,
-ppgtt_invalidate_spt is called to handle this error.
+Greetings,
 
-If the ppgtt_invalidate_spt is successful to kfree the spt object,
-then in the ppgtt_populate_spt function there  is no need to kfree the
-spt again.
+I am Barrister Steven Davis Esq. Please excuse me for addressing you in
+this manner, but the situation at hand requires the urgent attention of the
+beneficiaries. I have something important to tell you about my late Client
+Martin, a national of your country with the same last name as you, whose
+money was in his bank before his death. I am waiting to hear from you as
+soon as possible for more details.
 
-And if the ppgtt_invalidate_spt failed, then in the ppgtt_populate_spt
-function there is need to kfree the spt for error handling.
+ Best regards,
+Steven Davis Esq.
 
-This is our fix, if it's not right, we are glad to discuss with you.
+--0000000000009f968505e7ed4567
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Greg KH <gregkh@linuxfoundation.org> =E4=BA=8E2022=E5=B9=B49=E6=9C=885=E6=
-=97=A5=E5=91=A8=E4=B8=80 16:04=E5=86=99=E9=81=93=EF=BC=9A
->
-> On Mon, Sep 05, 2022 at 03:46:09PM +0800, Zheng Hacker wrote:
-> > I rewrote the letter. Hope it works.
-> >
-> > There is a double-free security bug in split_2MB_gtt_entry.
-> >
-> > Here is a calling chain :
-> > ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entry.
-> > If intel_gvt_dma_map_guest_page failed, it will call
-> > ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
-> > kfree(spt). But the caller does not notice that, and it will call
-> > ppgtt_free_spt again in error path.
-> >
-> > Fix this by returning the result of ppgtt_invalidate_spt to split_2MB_g=
-tt_entry.
-> >
-> > Signed-off-by: Zheng Wang
-> >
-> > ---
-> >  drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/=
-gtt.c
-> > index ce0eb03709c3..9f14fded8c0c 100644
-> > --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> > @@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_vgpu =
-*vgpu,
-> >                 ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gfn + =
-sub_index,
-> >                                                    PAGE_SIZE, &dma_addr=
-);
-> >                 if (ret) {
-> > -                       ppgtt_invalidate_spt(spt);
-> > +                       ret =3D ppgtt_invalidate_spt(spt);
-> >                         return ret;
->
-> But now you just lost the original error, shouldn't this succeed even if
-> intel_gvt_dma_map_guest_page() failed?
->
-> And how are you causing intel_gvt_dma_map_guest_page() to fail in a real
-> system?
->
-> thanks,
->
-> greg k-h
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif;font-size:large">Greetings,<br><br>I am Barrister Steven Davi=
+s Esq. Please excuse me for addressing you in this manner, but the situatio=
+n at hand requires the urgent attention of the beneficiaries. I have someth=
+ing important to tell you about my late Client Martin, a national of your c=
+ountry with the same last name as you, whose money was in his bank before h=
+is death. I am waiting to hear from you as soon as possible for more detail=
+s.<br><br>=C2=A0Best regards,<br>Steven Davis Esq.</div></div>
+
+--0000000000009f968505e7ed4567--
