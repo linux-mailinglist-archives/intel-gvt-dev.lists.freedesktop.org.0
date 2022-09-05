@@ -1,67 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E79F5AC75D
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  4 Sep 2022 23:46:59 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E974A5AC9A4
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  5 Sep 2022 06:48:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9790910E33F;
-	Sun,  4 Sep 2022 21:43:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8F1D310E034;
+	Mon,  5 Sep 2022 04:48:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd2b.google.com (mail-io1-xd2b.google.com
- [IPv6:2607:f8b0:4864:20::d2b])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 81D4610E2CB;
- Sun,  4 Sep 2022 21:43:05 +0000 (UTC)
-Received: by mail-io1-xd2b.google.com with SMTP id 62so5674429iov.5;
- Sun, 04 Sep 2022 14:43:05 -0700 (PDT)
+Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
+ [IPv6:2a00:1450:4864:20::62d])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 518AD10E034;
+ Mon,  5 Sep 2022 04:48:10 +0000 (UTC)
+Received: by mail-ej1-x62d.google.com with SMTP id nc14so14636553ejc.4;
+ Sun, 04 Sep 2022 21:48:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=gc3CEPtxYjk29+Wh9qd9Uhba+Qcycq/xTeA557V/yJA=;
- b=pjBlhL+ATdSasCB8eiAlDBtg6VQZe3cAxxbzs1dn4fhsTGll1ZJKZVPkMR2mAe6vQD
- +1ZUleBqb9yFLUkLQLuRp4esV7jUMm+9nkPY8LhEgMfb+aZzAVC2mkPJrqbpGbEQhkRo
- beZ5FNifB5rdJxWg7R8D5bcVcnK7tDty4bpm3uL/kbFe0gGnoJy6MFouLJWvzkGtbSFw
- KbDqjScDXUcFQ9R/5Be0XLDU0graPMWJvrt9XQvpuQIZmHQO8jVZA6GPpMTQquJWxpzE
- uymD2AvAzBcc+9sFlbROngihXuT8MzFti5OGgYB/TVQyB52NFye/DNbIZ9Wq82jlh8uk
- kuiw==
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=V84qcp9DlZSlObBKnnLO7DSo4j7RpB5UAIcq4lon1b0=;
+ b=WAWvZqfpx/FUHk/V9RvVXeus18VpEaln451ZEnC5du6MR8RODpagI1k2ce2QPrj8iK
+ lTp0T00ZeBK1zScY1clw225JFKIqo3HROg3cBcLT4E8QcWrtr3KGORcz4AzA0rdnapKZ
+ 1kJRA0XWgBTIfuYPZMVyOrPZkng+qEqEkg+zzNkDRa6yipyWl5PQUa/s5ihANRj8v86Y
+ fuRaaTZwsTgmVgppE0OPKrYnKLr/qJHQMbILBCk+jejYIAamhaJfHM5Z2JtmC+4zYS4B
+ Z0oFzX2Sqyx63t5VaQwUXaF/5KfGjBPWKy9Pud1gV8M9VaOkwtYD1TqtsGMC/4ThCmA0
+ i1rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=gc3CEPtxYjk29+Wh9qd9Uhba+Qcycq/xTeA557V/yJA=;
- b=aDGqCwjdA+bWLEIBtyn+2NjY/j2CF/7TdOJRCEZHdERfGB1Z4A4segeRQ2oj/yeOSU
- k85aROVZZdqzYQ4k0oxHX5QDmTb+vvDOg5gjhTwDhDOkrqZ0ilce6rtU7IFgaRBc3+g6
- T0SgAZ1YdqOny+VsQwbmVrVir/RESYaLWFRfGCE9xYeeTzZ0UEPQSJZabuXwDGeWYQ/s
- BuRPDjXAx3tnFtn0lztTnYlpsmFwpbL6HrUsgFACFRo3HrMcC9FzjliMVF1QbsFYaRA3
- c0PD5G8dUyAb8xyq34R0CXkY8UhvL3ag6Mo5xYSrh3rWF5VhiodwEr7dA4ewyFGwPrN7
- dENg==
-X-Gm-Message-State: ACgBeo3efeaURAKS0u/8VUQMvjU/QZ3jJvddx9dF7mbbZhrjGq6izDQk
- t8w0H6xnZzUhN0I5tIyR9ow=
-X-Google-Smtp-Source: AA6agR62BzXzT17KlWx9uqQOlpAhM116jyafKxT3anpuAMgqBhik1FZ5pmVPGg2GE9QdKZVv5ooKrQ==
-X-Received: by 2002:a05:6638:24c2:b0:346:ce9e:3eff with SMTP id
- y2-20020a05663824c200b00346ce9e3effmr25894336jat.262.1662327784843; 
- Sun, 04 Sep 2022 14:43:04 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- e12-20020a056602044c00b006889ea7be7bsm3727688iov.29.2022.09.04.14.43.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 Sep 2022 14:43:04 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, gregkh@linuxfoundation.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v6 57/57] dyndbg: fiddle with readback value on LEVEL_NAMES
- types
-Date: Sun,  4 Sep 2022 15:41:34 -0600
-Message-Id: <20220904214134.408619-58-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220904214134.408619-1-jim.cromie@gmail.com>
-References: <20220904214134.408619-1-jim.cromie@gmail.com>
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=V84qcp9DlZSlObBKnnLO7DSo4j7RpB5UAIcq4lon1b0=;
+ b=apYAfJuIGBhnXd8+5qIU/4vViNZfiidysX+N/wHJCaz8/A033A9gUz/wyAoATBT6Yh
+ t9+3L9MOomfgZ8IwuY/JuXUEnTSMe9fEXNj3xQBF9Gvyftzwqipv12k5KfZ4ARZpStLy
+ dGfWZaL4quiKrGuKylalEdxDcACtQdFvPHokhZJGDPNocN2jj4hXnTWfdtV5RA2KJk/P
+ 560UaF2hvl5eiKiB/HkNJE5c/jTltxBl7Px18SgIn/s8U+a1pJhFYYYr9gKQveYHdKwI
+ 4Q3l9voqc3GDTfsnpTHbK4LOZYvNXQpJ+G9lACElZRlc0fZ5CjA6BEOy5TERkXrgxH3L
+ rkgA==
+X-Gm-Message-State: ACgBeo3wJqneGsZTepDKu9C9Ep9rZr/MvwoBctRo17qDA3imBnEPyY7j
+ zAMud3aqqOGkPvkxOAoBNFkrq5QtGjrkOT/Lsp0=
+X-Google-Smtp-Source: AA6agR6YKvNJo8UV69kqLZfNJ8Yyz0p+ORxRwzRlHng2f2KrAkfUUplDmEIZovnnZYWz1GqQ1CvAG7Z/Ugmg1NWsiHo=
+X-Received: by 2002:a17:907:9706:b0:741:64ca:ae10 with SMTP id
+ jg6-20020a170907970600b0074164caae10mr25937397ejc.364.1662353288532; Sun, 04
+ Sep 2022 21:48:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
+In-Reply-To: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Mon, 5 Sep 2022 12:47:57 +0800
+Message-ID: <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
+To: xmzyshypnc <1002992920@qq.com>
+Content-Type: multipart/alternative; boundary="0000000000004116c505e7e6c96a"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,38 +63,127 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jim Cromie <jim.cromie@gmail.com>, daniel.vetter@ffwll.ch,
- linux@rasmusvillemoes.dk, robdclark@gmail.com, seanpaul@chromium.org,
- joe@perches.com
+Cc: alex000young@gmail.com, security@kernel.org,
+ dri-devel@lists.freedesktop.org, tvrtko.ursulin@linux.intel.com,
+ airlied@linux.ie, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
+ jani.nikula@linux.intel.com, zhenyuw@linux.intel.com, daniel@ffwll.ch,
+ rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-my test scripts were writing one val, reading back val+1
+--0000000000004116c505e7e6c96a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  echo L3 > p_level_names
-  cat p_level_names
-  L4
+Hello everyone,
 
-fix this w a -1 offset.
+I'm Zheng Wang. I found a potential double-free bug
+in drivers/gpu/drm/i915/gvt/gtt.c. I haven't been replied for a long time.
+So I decided to send it to more relavent supporters and developers to help
+to solve the problem.
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- lib/dynamic_debug.c | 2 ++
- 1 file changed, 2 insertions(+)
+Best regards,
+Zheng Wang.
 
-diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
-index 11fea1f818a7..7d458601a61b 100644
---- a/lib/dynamic_debug.c
-+++ b/lib/dynamic_debug.c
-@@ -830,6 +830,8 @@ int param_get_dyndbg_classes(char *buffer, const struct kernel_param *kp)
- 		return scnprintf(buffer, PAGE_SIZE, "0x%lx\n", *dcp->bits);
- 
- 	case DD_CLASS_TYPE_LEVEL_NAMES:
-+		return scnprintf(buffer, PAGE_SIZE, "%d\n", *dcp->lvl - 1);
-+
- 	case DD_CLASS_TYPE_LEVEL_NUM:
- 		return scnprintf(buffer, PAGE_SIZE, "%d\n", *dcp->lvl);
- 	default:
--- 
-2.37.2
+xmzyshypnc <1002992920@qq.com> =E4=BA=8E2022=E5=B9=B49=E6=9C=884=E6=97=A5=
+=E5=91=A8=E6=97=A5 20:32=E5=86=99=E9=81=93=EF=BC=9A
 
+> There is a double-free security bug in split_2MB_gtt_entry.
+>
+> Here is a calling chain :
+> ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entry. If
+> intel_gvt_dma_map_guest_page failed, it will call  ppgtt_invalidate_spt,
+> which will finally call ppgtt_free_spt and kfree(spt). But the caller doe=
+s
+> not notice that, and it will call ppgtt_free_spt again in error path.
+>
+> Fix this by returning the result of ppgtt_invalidate_spt to
+> split_2MB_gtt_entry.
+>
+> Signed-off-by: Zheng Wang <1002992920@qq.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c
+> b/drivers/gpu/drm/i915/gvt/gtt.c
+> index ce0eb03709c3..9f14fded8c0c 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_vgpu
+> *vgpu,
+>                 ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gfn +
+> sub_index,
+>                                                    PAGE_SIZE, &dma_addr);
+>                 if (ret) {
+> -                       ppgtt_invalidate_spt(spt);
+> +                       ret =3D ppgtt_invalidate_spt(spt);
+>                         return ret;
+>                 }
+>                 sub_se.val64 =3D se->val64;
+> --
+> 2.25.1
+>
+>
+
+--0000000000004116c505e7e6c96a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hello everyone,<div><br><div>I&#39;m Zhen=
+g Wang. I found a potential double-free bug in=C2=A0drivers/gpu/drm/i915/gv=
+t/gtt.c. I haven&#39;t been replied for a long time. So I decided to send i=
+t to more relavent supporters and developers to help to solve=C2=A0the prob=
+lem.</div></div><div><br></div><div>Best regards,</div><div>Zheng Wang.</di=
+v></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr=
+">xmzyshypnc &lt;<a href=3D"mailto:1002992920@qq.com">1002992920@qq.com</a>=
+&gt; =E4=BA=8E2022=E5=B9=B49=E6=9C=884=E6=97=A5=E5=91=A8=E6=97=A5 20:32=E5=
+=86=99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">There is a double-free security bug in split_2MB_gtt_entry.<br>
+<br>
+Here is a calling chain : ppgtt_populate_spt-&gt;ppgtt_populate_shadow_entr=
+y-&gt;split_2MB_gtt_entry. If intel_gvt_dma_map_guest_page failed, it will =
+call=C2=A0 ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and=
+ kfree(spt). But the caller does not notice that, and it will call ppgtt_fr=
+ee_spt again in error path.<br>
+<br>
+Fix this by returning the result of ppgtt_invalidate_spt to split_2MB_gtt_e=
+ntry.<br>
+<br>
+Signed-off-by: Zheng Wang &lt;<a href=3D"mailto:1002992920@qq.com" target=
+=3D"_blank">1002992920@qq.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/gpu/drm/i915/gvt/gtt.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.=
+c<br>
+index ce0eb03709c3..9f14fded8c0c 100644<br>
+--- a/drivers/gpu/drm/i915/gvt/gtt.c<br>
++++ b/drivers/gpu/drm/i915/gvt/gtt.c<br>
+@@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_vgpu *vgp=
+u,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D intel_gvt_d=
+ma_map_guest_page(vgpu, start_gfn + sub_index,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0PAGE_SIZE, &amp;dma_addr);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ret) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0ppgtt_invalidate_spt(spt);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0ret =3D ppgtt_invalidate_spt(spt);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 return ret;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 sub_se.val64 =3D se=
+-&gt;val64;<br>
+-- <br>
+2.25.1<br>
+<br>
+</blockquote></div></div>
+
+--0000000000004116c505e7e6c96a--
