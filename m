@@ -2,61 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 647985AE6B3
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  6 Sep 2022 13:37:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28AC35AE7CC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  6 Sep 2022 14:21:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DE4A610E620;
-	Tue,  6 Sep 2022 11:37:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 72DBE10E62C;
+	Tue,  6 Sep 2022 12:21:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com
- [IPv6:2a00:1450:4864:20::52e])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 735A110E620;
- Tue,  6 Sep 2022 11:37:09 +0000 (UTC)
-Received: by mail-ed1-x52e.google.com with SMTP id b16so14751102edd.4;
- Tue, 06 Sep 2022 04:37:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date;
- bh=M2uKdk7Tp89RSg1nNky+wcqDqkwDzuiMCD1W37dZrH0=;
- b=ZQTLztfGcVGjBsblOMebM+NFagwGsHE86jaN0nn5Ucp+OVvrMMNQeKea7Erer2AZTv
- 8WSgYVetr0SUIrYJZ0+e7yU/SKcRDrTPrm58bXWa26qdTJev+OTiAIpybgolEHth6ER3
- 7SqWSK6DRK/PqWU0dmWaTzvxR4ExDaYuiAPOEC0fxGVOdBtdfGSj5XnM6mi+0s+0pTZs
- udNATEjqtglI137EMLEmHkW7K7Ix/djafa4Y4qjJhPMUq/Thni4rH0q1ZvkDF40LuGto
- rXj9JnAls09vHek6yKWp4go5hBfkz26YX4cC4Zt42WRC2CpFdzGS4kzpB6DZgdXUeCvB
- PPnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date;
- bh=M2uKdk7Tp89RSg1nNky+wcqDqkwDzuiMCD1W37dZrH0=;
- b=3t1F2NWEyec1vT6w98sWbXUwoblR1YdRoqFpaGSxTbAWHEl/jw9+oOyEr5VyCkslDj
- 0P0lo4qHM5gLs1SDZNgYEaMh6XJTiMBqGYcqK/BZuJrNq4XQuc60S/djA6Vs5PXwUu4Q
- 2XlhmZR9k49yoqzcJxMONzCMLt5m0SDZ6cJIkXCLB2Zr9z/YAfO9CmWRj5TBxR4EcBon
- bKToSlp/z5U8R3bqIrchRTSRcCwt8u844BPT1e47FvdF5KMFs348WRv5zz/c/MpFiCQM
- Wt4g5hHPiRB/qUMWePFmCgtmCAkNjhzgpHxj4/7qRbQRAwaTpI7CluZzBHA3nuZOIDtF
- eYCA==
-X-Gm-Message-State: ACgBeo33hmwIiVFx5RfkMrJpzvo0o0Hh6o4zt9sJaOgZCkn7gzIuhORH
- YW1NsAaY86iiuYepe7AZAX0gnvYLymfaTSiub6M=
-X-Google-Smtp-Source: AA6agR7IKf/e9xKyzj81LJcXChDsfXfQhD46/b5OzVDrIs69K0v464O0PVRKlwhKyEF/Q3Jqvn8Le1k13liwXyHRDMw=
-X-Received: by 2002:aa7:df87:0:b0:44e:2851:7e8d with SMTP id
- b7-20020aa7df87000000b0044e28517e8dmr10684584edy.106.1662464227838; Tue, 06
- Sep 2022 04:37:07 -0700 (PDT)
+X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
+ Tue, 06 Sep 2022 12:20:58 UTC
+Received: from mail.growershirtz.click (unknown [172.99.175.177])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7057110E62C
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  6 Sep 2022 12:20:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=growershirtz.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=raquel_vicker@growershirtz.click; 
+ bh=Ga348mbjEbyBDBSN8kGmmeXoBUc=;
+ b=tg5PG/d0hKCETXqV9i2BSR/zhjo2xd+NrBkLM0jv4Bhd64P63g4WUqGsJMd9XvTylZj0bLwJFWd0
+ CwYSFok6pgCkTbxCxC4YElSoPNNib+19J7IFHMQcNYBokBofu7YxdZKq0ADu4U9FJF7wa2RU75AX
+ 0+re7udfUAdlod+JI7k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=growershirtz.click; 
+ b=TrL+JUWghEJ+wCi2RONm97t0iaNbdEi0aXIRN+KUyrY7rmz0bHMnxGqJ1NQJtNWclm87HVrIK9QS
+ 1EXXQTfYkWzptt0E+iOodUZ+VejHBv0AUb19hB2igF6nE7xG2bwsZDrj0m3VUOWhPeDHsWHxz66V
+ rFrAWQPSZmG7AI6Jjfg=;
+Received: by mail.growershirtz.click id h2t86u0001gf for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 6 Sep 2022 09:35:56 -0400 (envelope-from
+ <raquel_vicker-intel+2Dgvt+2Ddev=lists.freedesktop.org@growershirtz.click>)
+Date: Tue, 6 Sep 2022 09:35:56 -0400
+From: Raquel Vicker <raquel_vicker@growershirtz.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: You\'ve been Selected intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
-References: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
- <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
- <CAJedcCw1eJqjSK+yR7eQMDheNtH3Mjm+viwt00xAhnmrfpq2pw@mail.gmail.com>
- <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
- <YxWtfjfpNsoPUrgh@kroah.com>
-In-Reply-To: <YxWtfjfpNsoPUrgh@kroah.com>
-From: Zheng Hacker <hackerzheng666@gmail.com>
-Date: Tue, 6 Sep 2022 19:36:56 +0800
-Message-ID: <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
-Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
-To: Greg KH <gregkh@linuxfoundation.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_43_1896561093.1662465904534"
+Message-ID: <0.0.0.4.1D8C1F598013270.51D806@mail.growershirtz.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,72 +51,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: alex000young@gmail.com, security@kernel.org,
- dri-devel@lists.freedesktop.org, tvrtko.ursulin@linux.intel.com,
- airlied@linux.ie, intel-gfx@lists.freedesktop.org,
- joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
- zhenyuw@linux.intel.com, xmzyshypnc <1002992920@qq.com>,
- jani.nikula@linux.intel.com, daniel@ffwll.ch, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Greg,
+------=_Part_43_1896561093.1662465904534
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Alex has explained how we figured out the patch. We did analyze the
-code and found it possible to reach the vulnerability code. But we
-have no physical device in hand to test the driver. So we'd like to
-discuss with developers to see if the issue exists or not.
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.growershirtz.click/7376GDA2395Sx86M11Y3D50emcd4r36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQM9QRR7WODUK105PqAwD/conjecturing-excavated" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Ace Hardware-Dewalt XTREME Drill Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.growershirtz.click/7376GDA2395Sx86M11Y3D50emcd4r36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQM9QRR7WODUK105PqAwD/conjecturing-excavated" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Begin Here for the Gigantic Ace Dewalt Giveaway" src="http://www.growershirtz.click/Damocles-relabelled/b8e5S239D5A7TaA11gh3510_cd4Z36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQM9QRR6sk10ZN6wTT3wD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></sp
+ an></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Promotion Is Over in 3 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To bring communications to an close, </span><a href="http://www.growershirtz.click/boxcars-cannisters/9cc6I2KS395g8iH611i350sftcd4s36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQM9QRR5VK1N05Sz@wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat- Avenue, Toronto_ ONTARIO M4 K3 K1 CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3803054:2171865</span></span></p>   
+ <img src="http://www.growershirtz.click/seriousness-Rafael/3G06zO239O5Qv85k10H3511tcd4g36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQM9QRR7p10wDSS6Qj@wjD" alt=""/></body>
+</html>
 
-Best regards,
-Zheng Wang.
+------=_Part_43_1896561093.1662465904534--
 
-Greg KH <gregkh@linuxfoundation.org> =E4=BA=8E2022=E5=B9=B49=E6=9C=885=E6=
-=97=A5=E5=91=A8=E4=B8=80 16:04=E5=86=99=E9=81=93=EF=BC=9A
->
-> On Mon, Sep 05, 2022 at 03:46:09PM +0800, Zheng Hacker wrote:
-> > I rewrote the letter. Hope it works.
-> >
-> > There is a double-free security bug in split_2MB_gtt_entry.
-> >
-> > Here is a calling chain :
-> > ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entry.
-> > If intel_gvt_dma_map_guest_page failed, it will call
-> > ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
-> > kfree(spt). But the caller does not notice that, and it will call
-> > ppgtt_free_spt again in error path.
-> >
-> > Fix this by returning the result of ppgtt_invalidate_spt to split_2MB_g=
-tt_entry.
-> >
-> > Signed-off-by: Zheng Wang
-> >
-> > ---
-> >  drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/=
-gtt.c
-> > index ce0eb03709c3..9f14fded8c0c 100644
-> > --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> > @@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_vgpu =
-*vgpu,
-> >                 ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gfn + =
-sub_index,
-> >                                                    PAGE_SIZE, &dma_addr=
-);
-> >                 if (ret) {
-> > -                       ppgtt_invalidate_spt(spt);
-> > +                       ret =3D ppgtt_invalidate_spt(spt);
-> >                         return ret;
->
-> But now you just lost the original error, shouldn't this succeed even if
-> intel_gvt_dma_map_guest_page() failed?
->
-> And how are you causing intel_gvt_dma_map_guest_page() to fail in a real
-> system?
->
-> thanks,
->
-> greg k-h
