@@ -1,44 +1,62 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 052045AE487
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  6 Sep 2022 11:42:18 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 647985AE6B3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  6 Sep 2022 13:37:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 74AEA10E60E;
-	Tue,  6 Sep 2022 09:42:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DE4A610E620;
+	Tue,  6 Sep 2022 11:37:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E174D10E60C;
- Tue,  6 Sep 2022 09:42:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=2qDYpHuHfXVn75WEqJsFoiIv26+1ntYwgiyVPU2xfns=; b=g9OAK4Ewx/kpJOsybV0tqVyLKC
- fXPe1N0g2PyjPi7YcykxQf3qHou7W6XeCXvzfhB1MKz+1xoMQo/1B69aqyYsEgCJdPJ4eFoyRapu9
- 4v9cxK2KLCj31WbbiVWNS75ziRNFuWcExlAlF60lghK5noBzEQUTEPiiBR/K6doR56BNUARdEHX/t
- bHk7W2vMBxX3WGJTnC4vmOkwDkES390sWShqj1MVD2/8IkX09iKEa+jwg4Bh7oSMumi3IWxyCIoST
- rIptoxF8mPudqsREDfFfqylMfpjsg/nakCMCF0YnUahVDGaHM96GY+aVM6/A1ZnWFp48uTpo/Z2tU
- 4pj77kKQ==;
-Received: from hch by bombadil.infradead.org with local (Exim 4.94.2 #2 (Red
- Hat Linux)) id 1oVV5P-00Bz2h-AF; Tue, 06 Sep 2022 09:41:39 +0000
-Date: Tue, 6 Sep 2022 02:41:39 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Kevin Tian <kevin.tian@intel.com>
-Subject: Re: [PATCH v2 01/15] vfio: Add helpers for unifying vfio_device life
- cycle
-Message-ID: <YxcV05AVN4kqdPX6@infradead.org>
-References: <20220901143747.32858-1-kevin.tian@intel.com>
- <20220901143747.32858-2-kevin.tian@intel.com>
+Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com
+ [IPv6:2a00:1450:4864:20::52e])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 735A110E620;
+ Tue,  6 Sep 2022 11:37:09 +0000 (UTC)
+Received: by mail-ed1-x52e.google.com with SMTP id b16so14751102edd.4;
+ Tue, 06 Sep 2022 04:37:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date;
+ bh=M2uKdk7Tp89RSg1nNky+wcqDqkwDzuiMCD1W37dZrH0=;
+ b=ZQTLztfGcVGjBsblOMebM+NFagwGsHE86jaN0nn5Ucp+OVvrMMNQeKea7Erer2AZTv
+ 8WSgYVetr0SUIrYJZ0+e7yU/SKcRDrTPrm58bXWa26qdTJev+OTiAIpybgolEHth6ER3
+ 7SqWSK6DRK/PqWU0dmWaTzvxR4ExDaYuiAPOEC0fxGVOdBtdfGSj5XnM6mi+0s+0pTZs
+ udNATEjqtglI137EMLEmHkW7K7Ix/djafa4Y4qjJhPMUq/Thni4rH0q1ZvkDF40LuGto
+ rXj9JnAls09vHek6yKWp4go5hBfkz26YX4cC4Zt42WRC2CpFdzGS4kzpB6DZgdXUeCvB
+ PPnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=M2uKdk7Tp89RSg1nNky+wcqDqkwDzuiMCD1W37dZrH0=;
+ b=3t1F2NWEyec1vT6w98sWbXUwoblR1YdRoqFpaGSxTbAWHEl/jw9+oOyEr5VyCkslDj
+ 0P0lo4qHM5gLs1SDZNgYEaMh6XJTiMBqGYcqK/BZuJrNq4XQuc60S/djA6Vs5PXwUu4Q
+ 2XlhmZR9k49yoqzcJxMONzCMLt5m0SDZ6cJIkXCLB2Zr9z/YAfO9CmWRj5TBxR4EcBon
+ bKToSlp/z5U8R3bqIrchRTSRcCwt8u844BPT1e47FvdF5KMFs348WRv5zz/c/MpFiCQM
+ Wt4g5hHPiRB/qUMWePFmCgtmCAkNjhzgpHxj4/7qRbQRAwaTpI7CluZzBHA3nuZOIDtF
+ eYCA==
+X-Gm-Message-State: ACgBeo33hmwIiVFx5RfkMrJpzvo0o0Hh6o4zt9sJaOgZCkn7gzIuhORH
+ YW1NsAaY86iiuYepe7AZAX0gnvYLymfaTSiub6M=
+X-Google-Smtp-Source: AA6agR7IKf/e9xKyzj81LJcXChDsfXfQhD46/b5OzVDrIs69K0v464O0PVRKlwhKyEF/Q3Jqvn8Le1k13liwXyHRDMw=
+X-Received: by 2002:aa7:df87:0:b0:44e:2851:7e8d with SMTP id
+ b7-20020aa7df87000000b0044e28517e8dmr10684584edy.106.1662464227838; Tue, 06
+ Sep 2022 04:37:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220901143747.32858-2-kevin.tian@intel.com>
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
+References: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
+ <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
+ <CAJedcCw1eJqjSK+yR7eQMDheNtH3Mjm+viwt00xAhnmrfpq2pw@mail.gmail.com>
+ <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
+ <YxWtfjfpNsoPUrgh@kroah.com>
+In-Reply-To: <YxWtfjfpNsoPUrgh@kroah.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Tue, 6 Sep 2022 19:36:56 +0800
+Message-ID: <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
+To: Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,34 +69,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>, linux-s390@vger.kernel.org,
- Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
+Cc: alex000young@gmail.com, security@kernel.org,
+ dri-devel@lists.freedesktop.org, tvrtko.ursulin@linux.intel.com,
+ airlied@linux.ie, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
+ zhenyuw@linux.intel.com, xmzyshypnc <1002992920@qq.com>,
+ jani.nikula@linux.intel.com, daniel@ffwll.ch, rodrigo.vivi@intel.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-What is the point?  This adds indirect calls, and actually creates
-more boilerplate code in the drivers.  i.g. when using this code there
-is more, and harder to read code.
+Hi Greg,
+
+Alex has explained how we figured out the patch. We did analyze the
+code and found it possible to reach the vulnerability code. But we
+have no physical device in hand to test the driver. So we'd like to
+discuss with developers to see if the issue exists or not.
+
+Best regards,
+Zheng Wang.
+
+Greg KH <gregkh@linuxfoundation.org> =E4=BA=8E2022=E5=B9=B49=E6=9C=885=E6=
+=97=A5=E5=91=A8=E4=B8=80 16:04=E5=86=99=E9=81=93=EF=BC=9A
+>
+> On Mon, Sep 05, 2022 at 03:46:09PM +0800, Zheng Hacker wrote:
+> > I rewrote the letter. Hope it works.
+> >
+> > There is a double-free security bug in split_2MB_gtt_entry.
+> >
+> > Here is a calling chain :
+> > ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entry.
+> > If intel_gvt_dma_map_guest_page failed, it will call
+> > ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
+> > kfree(spt). But the caller does not notice that, and it will call
+> > ppgtt_free_spt again in error path.
+> >
+> > Fix this by returning the result of ppgtt_invalidate_spt to split_2MB_g=
+tt_entry.
+> >
+> > Signed-off-by: Zheng Wang
+> >
+> > ---
+> >  drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/=
+gtt.c
+> > index ce0eb03709c3..9f14fded8c0c 100644
+> > --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> > @@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_vgpu =
+*vgpu,
+> >                 ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gfn + =
+sub_index,
+> >                                                    PAGE_SIZE, &dma_addr=
+);
+> >                 if (ret) {
+> > -                       ppgtt_invalidate_spt(spt);
+> > +                       ret =3D ppgtt_invalidate_spt(spt);
+> >                         return ret;
+>
+> But now you just lost the original error, shouldn't this succeed even if
+> intel_gvt_dma_map_guest_page() failed?
+>
+> And how are you causing intel_gvt_dma_map_guest_page() to fail in a real
+> system?
+>
+> thanks,
+>
+> greg k-h
