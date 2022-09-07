@@ -1,64 +1,70 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 137975AFCCA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 08:48:14 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9581D5AFCF7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 08:59:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2216910E375;
-	Wed,  7 Sep 2022 06:48:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0BE6710E396;
+	Wed,  7 Sep 2022 06:59:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com
- [IPv6:2a00:1450:4864:20::630])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CD1F410E36D;
- Wed,  7 Sep 2022 06:48:07 +0000 (UTC)
-Received: by mail-ej1-x630.google.com with SMTP id y3so28232401ejc.1;
- Tue, 06 Sep 2022 23:48:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date;
- bh=BVuk17Av+bi2jPnkL9wfgDXhvd64IxzBdo6fgEYGs04=;
- b=l+Ix4zgCkeWJQbwso5ymf9RKOOdyJP++7E7Hn7qNe8++KSvt+whxkZnLOMrQDs0DOx
- 8Bnxfj3DRwnWqEyzdSyphQxdWMFT3V9Qs7b/tDHbUlIorwV6gri3bErqpuPWekLHhOlc
- 95QccTtWJAE1QfDqOjrgxBl7o3tHfz3Xov6eefmcjs15qr03X6yCbHQUZzOjBwtnJ2Ce
- v3MSn5FI8PTpUV7LwrFWYTCWsHEzEAT0OYOVxybHCEP0lYHSssUuWNBoYyY5Iuisb3F8
- v4ZMnm1GSBiSXQSM4x8txzQJ+vXfmqGl5JiI3TvxUzzycXJ69jn0CXTzpi52Mui/bNAT
- qL5g==
+Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
+ [IPv6:2a00:1450:4864:20::532])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D34EB10E397
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  7 Sep 2022 06:59:51 +0000 (UTC)
+Received: by mail-ed1-x532.google.com with SMTP id a70so2130101edf.10
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 06 Sep 2022 23:59:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date; bh=qvR1N7BkwDYnsAvrsfaIO11nwQpKCU3X2O+a+Y27DUY=;
+ b=JboZiw5UMpW3fLQ7FupCjwd6aK+mUdgjr5hh3TDItIM8ud3MPqItdIZvSBy6At4SrH
+ PwHoYA4AU7ZjeZqaYWaA3JMJIRefSwml0t4qwc+ktxSSMu3EjO0DighbDKTn3xqOODKU
+ 8aA5FL4HALl1QQW2k4T0rKr+B9yknpX5DSbnQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date;
- bh=BVuk17Av+bi2jPnkL9wfgDXhvd64IxzBdo6fgEYGs04=;
- b=DqR3UPlSu/sIgY8//WzwsQOA6chppVmmmP1KmzrmRaknkFW4pS9flIwCR4WEHMhuAQ
- JEtsX61oMPUy286E/vquHZd88QrWTt4pZp7Z7SgnWlhYdGTYrbO9QjcOJ5nh3LolQepM
- tZieL0qdjvPa/JZRTgMws5EvwZVy4pD/3PlJYCJv+GYUkU6bzJ8uFJ+d8IoxPc+xahGf
- Uh4gso6XfeLSW5lGfXA7P8obfMOvqVpY0m4nAX9mQBLRijJDL673B2uv5s0iDqE2Dkd2
- pUxtj7JTOTY7cw0xLwCLyP2v1vq31ifLwWF8XDLfOHt7SYK/9koz90VuS3ehG9ruXhal
- tCZQ==
-X-Gm-Message-State: ACgBeo2r1VLlCUNbN5F05A1mZr8ctEJMXGNwwJ1IBX5FywiCzHgaaVzJ
- IfX+BKfux/VIriIH8AVqzxudk7vylSlmVH2jPHE=
-X-Google-Smtp-Source: AA6agR5oNcJ4xiLosx9c+PBGIQP4JwyWHajAGIDrk+o8018ZQ2ZLnOx2wULEGsptfZkH/pKAB98ijFHADY5kXzED1SI=
-X-Received: by 2002:a17:907:6d16:b0:731:17b5:699 with SMTP id
- sa22-20020a1709076d1600b0073117b50699mr1428930ejc.23.1662533286189; Tue, 06
- Sep 2022 23:48:06 -0700 (PDT)
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date;
+ bh=qvR1N7BkwDYnsAvrsfaIO11nwQpKCU3X2O+a+Y27DUY=;
+ b=7HEjQvA/CKXco6kFdXKs59LRHhztQjjt34GNdof6/nsn2Uud09ME4YxP4/k195J7si
+ VjBH7Soq+eWSNCAGg4MIcHmcSi9f9UVNMkslmHHzVU1KhI36Gg0U6apwH4sCMDRRkV9L
+ Ta/tzCD2Pup3y4OTzGL/YbyMnf5voN1WdELjeyZSQf34wRtY2TgGyDXPnPG3q/VRU6nN
+ sfd/PuPCpmyhFB+lzIdz4IaJFbT8sHGHt9G3BKecmsHnI6Ah6+IuF7iI88WySkfn5gAp
+ fmc1z0EZB9GjmoKYLJdVBippVPAjc5aawTj6VOgKzbHVY7LO7HqsQv9O1DRBVTxY6kwa
+ wizw==
+X-Gm-Message-State: ACgBeo30F0KSX96Jmc5HIL5xOxX+AXKfSxu+8ZE1tVwglba3Uoy1VEmJ
+ 3MSMB4yk9uIxuLZTlLIarXXUpg==
+X-Google-Smtp-Source: AA6agR5JW86JYwYYzN91pflVev5axL6S1Bv3lsKRf4XqvatlwpwQmUIlpWFZiPfqhA85TeaL1Xn6kg==
+X-Received: by 2002:a05:6402:5cd:b0:446:5965:f4af with SMTP id
+ n13-20020a05640205cd00b004465965f4afmr1916771edx.12.1662533990421; 
+ Tue, 06 Sep 2022 23:59:50 -0700 (PDT)
+Received: from phenom.ffwll.local (212-51-149-33.fiber7.init7.net.
+ [212.51.149.33]) by smtp.gmail.com with ESMTPSA id
+ s25-20020a170906bc5900b007081282cbd8sm7824571ejv.76.2022.09.06.23.59.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Sep 2022 23:59:49 -0700 (PDT)
+Date: Wed, 7 Sep 2022 08:59:48 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Jim Cromie <jim.cromie@gmail.com>
+Subject: Re: [PATCH v6 39/57] dyndbg/drm: POC add tracebits sysfs-knob
+Message-ID: <YxhBZLAasKaBPEDT@phenom.ffwll.local>
+Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com,
+ gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ seanpaul@chromium.org, robdclark@gmail.com,
+ linux@rasmusvillemoes.dk, joe@perches.com
+References: <20220904214134.408619-1-jim.cromie@gmail.com>
+ <20220904214134.408619-40-jim.cromie@gmail.com>
 MIME-Version: 1.0
-References: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
- <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
- <CAJedcCw1eJqjSK+yR7eQMDheNtH3Mjm+viwt00xAhnmrfpq2pw@mail.gmail.com>
- <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
- <YxWtfjfpNsoPUrgh@kroah.com>
- <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
- <20220907030754.GU1089@zhen-hp.sh.intel.com>
-In-Reply-To: <20220907030754.GU1089@zhen-hp.sh.intel.com>
-From: Zheng Hacker <hackerzheng666@gmail.com>
-Date: Wed, 7 Sep 2022 14:47:54 +0800
-Message-ID: <CAJedcCwPKT8Zj8aPmXz=M3zG+xvCzyo4OspaPp4-LY+DgTfteA@mail.gmail.com>
-Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220904214134.408619-40-jim.cromie@gmail.com>
+X-Operating-System: Linux phenom 5.18.0-4-amd64 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,116 +77,76 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: tvrtko.ursulin@linux.intel.com, security@kernel.org, alex000young@gmail.com,
- airlied@linux.ie, Greg KH <gregkh@linuxfoundation.org>,
- intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- xmzyshypnc <1002992920@qq.com>, jani.nikula@linux.intel.com, daniel@ffwll.ch,
- rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
+Cc: robdclark@gmail.com, gregkh@linuxfoundation.org,
+ intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
+ linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, jbaron@akamai.com,
+ seanpaul@chromium.org, dri-devel@lists.freedesktop.org, daniel.vetter@ffwll.ch,
+ joe@perches.com, intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Zhenyu,
+On Sun, Sep 04, 2022 at 03:41:16PM -0600, Jim Cromie wrote:
+> clone DRM.debug interface to DRM.tracebits: ie map bits to
+> drm-debug-categories, except this interface enables messages to
+> tracefs, not to syslog.
+> 
+> 1- we reuse the class-map added previously.
+>    this reflects the single source of both syslog/trace events
+> 
+> 2- add a 2nd struct ddebug_classes_bitmap_param
+>    refs 1, reusing it.
+>    flags = "T", to enable trace-events on this callsite.
+> 
+> 3- module_param_cb([2]) - does the sysfs part
+> 
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 
-Very glad for your reply. I agree that the bug is hard to trigger in
-userspace. But it is possible to happen in some specific scene. For
-example, if calling pfn_valid failed, the bug will be triggered. And
-it did happened as the [1] commit description illustrates.
+All the drm patches (excluding nouveau) I haven't commented on:
 
-As for the patch, I think your plan is the best. We need to free the
-spt only in bad case.
+Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
 
-[1] https://github.com/torvalds/linux/commit/39b4cbadb9a95bf3f13ea102d6ec84=
-1940916ee2
+I think nouveau I'll leave up to nouveau folks.
+-Daniel
 
-Regards,
-Zheng Wang
 
-Zhenyu Wang <zhenyuw@linux.intel.com> =E4=BA=8E2022=E5=B9=B49=E6=9C=887=E6=
-=97=A5=E5=91=A8=E4=B8=89 11:33=E5=86=99=E9=81=93=EF=BC=9A
 
->
-> On 2022.09.06 19:36:56 +0800, Zheng Hacker wrote:
-> > Hi Greg,
-> >
-> > Alex has explained how we figured out the patch. We did analyze the
-> > code and found it possible to reach the vulnerability code. But we
-> > have no physical device in hand to test the driver. So we'd like to
-> > discuss with developers to see if the issue exists or not.
-> >
-> > Best regards,
-> > Zheng Wang.
-> >
-> > Greg KH <gregkh@linuxfoundation.org> ???2022???9???5????????? 16:04????=
-?????
-> > >
-> > > On Mon, Sep 05, 2022 at 03:46:09PM +0800, Zheng Hacker wrote:
-> > > > I rewrote the letter. Hope it works.
-> > > >
-> > > > There is a double-free security bug in split_2MB_gtt_entry.
-> > > >
-> > > > Here is a calling chain :
-> > > > ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entr=
-y.
-> > > > If intel_gvt_dma_map_guest_page failed, it will call
-> > > > ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
-> > > > kfree(spt). But the caller does not notice that, and it will call
-> > > > ppgtt_free_spt again in error path.
-> > > >
->
-> It's a little mess in code so in theory it might be possible but
-> intel_gvt_dma_map_guest_page won't fail in practise...
->
-> > > > Fix this by returning the result of ppgtt_invalidate_spt to split_2=
-MB_gtt_entry.
-> > > >
->
-> I don't see why changing ret value can fix this issue, as it doesn't chan=
-ge
-> any behavior e.g caller of ppgtt_populate_spt to handle possible differen=
-t error return.
->
-> As current code looks assuming that ppgtt_invalidate_spt would free spt i=
-n good case,
-> I think the real cleanup should split that assumption and handle free in =
-error case properly.
->
-> > > > Signed-off-by: Zheng Wang
->
-> This misses proper email address.
->
-> thanks
->
-> > > >
-> > > > ---
-> > > >  drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
-> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > >
-> > > > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/=
-gvt/gtt.c
-> > > > index ce0eb03709c3..9f14fded8c0c 100644
-> > > > --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> > > > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> > > > @@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_v=
-gpu *vgpu,
-> > > >                 ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gf=
-n + sub_index,
-> > > >                                                    PAGE_SIZE, &dma_=
-addr);
-> > > >                 if (ret) {
-> > > > -                       ppgtt_invalidate_spt(spt);
-> > > > +                       ret =3D ppgtt_invalidate_spt(spt);
-> > > >                         return ret;
-> > >
-> > > But now you just lost the original error, shouldn't this succeed even=
- if
-> > > intel_gvt_dma_map_guest_page() failed?
-> > >
-> > > And how are you causing intel_gvt_dma_map_guest_page() to fail in a r=
-eal
-> > > system?
-> > >
-> > > thanks,
-> > >
-> > > greg k-h
+> ---
+>  drivers/gpu/drm/drm_print.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
+> index c50edbf443d3..75d0cecd7e86 100644
+> --- a/drivers/gpu/drm/drm_print.c
+> +++ b/drivers/gpu/drm/drm_print.c
+> @@ -45,6 +45,9 @@
+>  unsigned long __drm_debug;
+>  EXPORT_SYMBOL(__drm_debug);
+>  
+> +unsigned long __drm_trace;
+> +EXPORT_SYMBOL(__drm_trace);
+> +
+>  MODULE_PARM_DESC(debug, "Enable debug output, where each bit enables a debug category.\n"
+>  "\t\tBit 0 (0x01)  will enable CORE messages (drm core code)\n"
+>  "\t\tBit 1 (0x02)  will enable DRIVER messages (drm controller code)\n"
+> @@ -77,6 +80,13 @@ static struct ddebug_class_param drm_debug_bitmap = {
+>  	.map = &drm_debug_classes,
+>  };
+>  module_param_cb(debug, &param_ops_dyndbg_classes, &drm_debug_bitmap, 0600);
+> +
+> +static struct ddebug_class_param drm_trace_bitmap = {
+> +	.bits = &__drm_trace,
+> +	.flags = "T",
+> +	.map = &drm_debug_classes,
+> +};
+> +module_param_cb(tracecats, &param_ops_dyndbg_classes, &drm_trace_bitmap, 0600);
+>  #endif
+>  
+>  void __drm_puts_coredump(struct drm_printer *p, const char *str)
+> -- 
+> 2.37.2
+> 
+
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
