@@ -1,73 +1,84 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E95A5B03AB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 14:11:42 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC04C5B066B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 16:23:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 11C2910E746;
-	Wed,  7 Sep 2022 12:11:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 24B7410E783;
+	Wed,  7 Sep 2022 14:23:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qk1-x735.google.com (mail-qk1-x735.google.com
- [IPv6:2607:f8b0:4864:20::735])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B591310E746
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  7 Sep 2022 12:11:36 +0000 (UTC)
-Received: by mail-qk1-x735.google.com with SMTP id b2so10233517qkh.12
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 07 Sep 2022 05:11:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=WIB8a4RMKIbsQgzbAFRigZUlzKpMzaK/mPjLu18jivg=;
- b=HP3rDaJjD8dZmYIHrjdNkoDnmUw7g9uCc4vHBTmXsOrDzTaDzvVkGROQU4JiMIG6SF
- qudhCqJZhmdnGxt9Qchu2u/Kb1AzirulrNQKlif2VVN775xzycYMvQlIejXeuRl9FUCV
- B3sY2DzX6HPglZ4Tt6xcS2UP6H2y+QTtsv8hPxcu7qACinqcAbBEosQlGwToao3GbIXm
- 9n3zqjh8c5lL3+Pt3dwF6hwztXdonsbyY8QaXeKX/rwCr1nuqyp6n1gg8cgYPm+00Q2X
- HA4OSsdsbupGMsvkpLpJhuXakDbiiPMBOk6rzxqSUV5A1n0+hK7OQ2N2NVdOzCqW+cgi
- GP2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=WIB8a4RMKIbsQgzbAFRigZUlzKpMzaK/mPjLu18jivg=;
- b=YQ308xvxVnU+EvzytASNqzzhjwDAdCK1idqOYkwK7F/XpDMyKtv64iwR4K+0B0k00V
- 60Tk+WjqnsrI1UIl3wzaep5TA2izoA4EkvEzqXeWX65uSHqiJJwVoMFijD/n0Qft5EBj
- OKUmjNTW4ANKKJreNZcnV3e0JEO0Z0pTzn+nb469L9XY0au9I4n7YsbZ1M5z/kXeRcXo
- po/BlwOTM4uIyAoed4ADx8wQuRbvvyevBpnX+Z6t+0fCL8uYzJZ3Y7q1xFanTYkKajGE
- Qsn1n703vHMjxRPieHvEk4qX77vlh5XTDR1beJcEe0Svc81hhxWIUXodZUooaUZpe8ia
- YsMw==
-X-Gm-Message-State: ACgBeo1Jdp89btXUEmqGNP7E3z5zWRg6pkxR518NqKQJeh4SHqll8Pyg
- y6qmjjq0t0n8vavmn48Q4jhapA==
-X-Google-Smtp-Source: AA6agR6Aqb9OjhZTxuJwTHCrpwMtc8lM+if3ZhE4tHVst9Nj0UDP4AirE5WpW+co8I96BvAuRRT3Qw==
-X-Received: by 2002:a05:620a:1402:b0:6bc:2055:6da0 with SMTP id
- d2-20020a05620a140200b006bc20556da0mr2302837qkj.534.1662552695680; 
- Wed, 07 Sep 2022 05:11:35 -0700 (PDT)
-Received: from ziepe.ca
- (hlfxns017vw-142-162-113-129.dhcp-dynamic.fibreop.ns.bellaliant.net.
- [142.162.113.129]) by smtp.gmail.com with ESMTPSA id
- n3-20020a05620a294300b006b953a7929csm14765165qkp.73.2022.09.07.05.11.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Sep 2022 05:11:34 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
- (envelope-from <jgg@ziepe.ca>) id 1oVtu2-008YHj-0u;
- Wed, 07 Sep 2022 09:11:34 -0300
-Date: Wed, 7 Sep 2022 09:11:34 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v2 01/15] vfio: Add helpers for unifying vfio_device life
- cycle
-Message-ID: <YxiKdh6EDBZnTAGH@ziepe.ca>
-References: <20220901143747.32858-1-kevin.tian@intel.com>
- <20220901143747.32858-2-kevin.tian@intel.com>
- <YxcV05AVN4kqdPX6@infradead.org>
- <BN9PR11MB5276EE6209C1E3D4662368DC8C419@BN9PR11MB5276.namprd11.prod.outlook.com>
- <YxiGpryRNrxvEoiY@infradead.org>
+X-Greylist: delayed 786 seconds by postgrey-1.36 at gabe;
+ Wed, 07 Sep 2022 14:23:33 UTC
+Received: from mx0b-00190b01.pphosted.com (mx0b-00190b01.pphosted.com
+ [IPv6:2620:100:9005:57f::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0092610E781;
+ Wed,  7 Sep 2022 14:23:33 +0000 (UTC)
+Received: from pps.filterd (m0122331.ppops.net [127.0.0.1])
+ by mx0b-00190b01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 287Ae2DX004867;
+ Wed, 7 Sep 2022 15:10:24 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=jan2016.eng;
+ bh=dTrQ7MrhUOBXmD1FAoFV49SHQ23WQ+8G8Ues2Ac95vs=;
+ b=JrTmxYf8FWbfxHDr5DJ5YHcUij8SHTIOJDAFlUrfwypriOmW2XL0P6e3wf45O9BK2fpG
+ Y5vF+kcnO9Vgff0crQGjxBn/hc5m/tGtl8147D/Ym+8kCX7CtBASFizUECnyAVh77Wyl
+ nFizkgO/bj/7zwhRIUS/KxL9iUIazsB9ndUM1v+hUCLq4sSASSNP1hl7FTI9L8Fx2aSq
+ LRn/7iAZq/fNajbU+51Q/1d8BL+BZgUMGF+yCZ2r+mWjwbkhTcdJ7LlppuonlfcKzTMS
+ hb+jbhdLZigm7yYKA8SGm4R7N3xjf9kU2UjaSCDEzpL03o8teUMeil0jg2hlEi2Z2QeR EQ== 
+Received: from prod-mail-ppoint7
+ (a72-247-45-33.deploy.static.akamaitechnologies.com [72.247.45.33] (may be
+ forged))
+ by mx0b-00190b01.pphosted.com (PPS) with ESMTPS id 3je9sdyb4q-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 07 Sep 2022 15:10:24 +0100
+Received: from pps.filterd (prod-mail-ppoint7.akamai.com [127.0.0.1])
+ by prod-mail-ppoint7.akamai.com (8.17.1.5/8.17.1.5) with ESMTP id
+ 287BTrkx021728; Wed, 7 Sep 2022 10:10:07 -0400
+Received: from prod-mail-relay18.dfw02.corp.akamai.com ([172.27.165.172])
+ by prod-mail-ppoint7.akamai.com (PPS) with ESMTP id 3jc28xwut6-1;
+ Wed, 07 Sep 2022 10:10:07 -0400
+Received: from [0.0.0.0] (unknown [172.27.119.138])
+ by prod-mail-relay18.dfw02.corp.akamai.com (Postfix) with ESMTP id 5EA52118;
+ Wed,  7 Sep 2022 14:10:06 +0000 (GMT)
+Message-ID: <92e3c2c4-4384-04ae-2016-ad9be8a3fc9b@akamai.com>
+Date: Wed, 7 Sep 2022 10:10:05 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YxiGpryRNrxvEoiY@infradead.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v6 10/57] dyndbg: cleanup auto vars in dynamic_debug_init
+Content-Language: en-US
+To: Jim Cromie <jim.cromie@gmail.com>, gregkh@linuxfoundation.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+References: <20220904214134.408619-1-jim.cromie@gmail.com>
+ <20220904214134.408619-11-jim.cromie@gmail.com>
+From: Jason Baron <jbaron@akamai.com>
+In-Reply-To: <20220904214134.408619-11-jim.cromie@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-09-07_08,2022-09-07_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ mlxlogscore=999 phishscore=0 suspectscore=0 adultscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2207270000
+ definitions=main-2209070055
+X-Proofpoint-GUID: pQRCw3hmNV4Dnf3MrVmGF2JyV-FKuiJr
+X-Proofpoint-ORIG-GUID: pQRCw3hmNV4Dnf3MrVmGF2JyV-FKuiJr
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-09-07_08,2022-09-07_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 adultscore=0
+ impostorscore=0 bulkscore=0 mlxlogscore=999 clxscore=1011 phishscore=0
+ lowpriorityscore=0 suspectscore=0 mlxscore=0 spamscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2207270000
+ definitions=main-2209070056
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,87 +91,102 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Eric Farman <farman@linux.ibm.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, "Wang, Zhi A" <zhi.a.wang@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, "Tian, Kevin" <kevin.tian@intel.com>,
- Vasily Gorbik <gor@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
+Cc: joe@perches.com, daniel.vetter@ffwll.ch, robdclark@gmail.com,
+ seanpaul@chromium.org, linux@rasmusvillemoes.dk
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Sep 07, 2022 at 04:55:18AM -0700, Christoph Hellwig wrote:
-> On Wed, Sep 07, 2022 at 12:43:30AM +0000, Tian, Kevin wrote:
-> > > From: Christoph Hellwig
-> > > Sent: Tuesday, September 6, 2022 5:42 PM
-> > > 
-> > > What is the point?  This adds indirect calls, and actually creates
-> > > more boilerplate code in the drivers.  i.g. when using this code there
-> > > is more, and harder to read code.
-> > 
-> > The point is to align with struct device life cycle when it's introduced
-> > to vfio_device. The object is released via put_device() then what would
-> > be the alternative if the driver doesn't provide a @release callback?
-> > 
-> > and with @release then naturally @init is also expected.
+
+
+On 9/4/22 17:40, Jim Cromie wrote:
+> rework var-names for clarity, regularity
+> rename variables
+>   - n to mod_sites - it counts sites-per-module
+>   - entries to i - display only
+>   - iter_start to iter_mod_start - marks start of each module's subrange
+>   - modct to mod_ct - stylistic
 > 
-> No, with a release no @init is expected.  The init method is one
-> of the major obsfucations here, only topped by the weird
-> vfio_alloc_device macro.  Yes, that saves about 4 lines of code
-> in every driver, but places a burden on the struct layout and
-> very much obsfucated things.  Without vfio_alloc_device and
-> the init method I think much of this would make a lot more sense.
+> new iterator var:
+>   - site - cursor parallel to iter
+>     1st step towards 'demotion' of iter->site, for removal later
 > 
-> See the patch below that goes on top of this series to show how
-> undoing these two would look on mbochs.  It it a slight reduction
-> lines of code, but more readable and much less churn compared
-> to the status before this series.
+> treat vars as iters:
+>   - drop init at top
+>     init just above for-loop, in a textual block
+> 
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+>  lib/dynamic_debug.c | 33 +++++++++++++++++----------------
+>  1 file changed, 17 insertions(+), 16 deletions(-)
+> 
+> diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
+> index e96dc216463b..2e8ebef3bd0d 100644
+> --- a/lib/dynamic_debug.c
+> +++ b/lib/dynamic_debug.c
+> @@ -1059,11 +1059,10 @@ static int __init dynamic_debug_init_control(void)
+>  
+>  static int __init dynamic_debug_init(void)
+>  {
+> -	struct _ddebug *iter, *iter_start;
+> -	const char *modname = NULL;
+> +	struct _ddebug *iter, *iter_mod_start;
+> +	int ret, i, mod_sites, mod_ct;
+> +	const char *modname;
+>  	char *cmdline;
+> -	int ret = 0;
+> -	int n = 0, entries = 0, modct = 0;
+>  
+>  	if (&__start___dyndbg == &__stop___dyndbg) {
+>  		if (IS_ENABLED(CONFIG_DYNAMIC_DEBUG)) {
+> @@ -1074,30 +1073,32 @@ static int __init dynamic_debug_init(void)
+>  		ddebug_init_success = 1;
+>  		return 0;
+>  	}
+> -	iter = __start___dyndbg;
+> +
+> +	iter = iter_mod_start = __start___dyndbg;
+>  	modname = iter->modname;
+> -	iter_start = iter;
+> -	for (; iter < __stop___dyndbg; iter++) {
+> -		entries++;
+> +	i = mod_sites = mod_ct = 0;
+> +
+> +	for (; iter < __stop___dyndbg; iter++, i++, mod_sites++) {
+> +
 
-I've seen alot of error handling bugs caused by open-coding patterns
-like this. People get confused about what the lifecycle is and botch
-the error unwinds, almost 100% of the time :\ They call kfree when
-they should call put_device, they call put_device before initing
-enough stuff that the release callback doesn't crash, double free
-stuff by calling put_device at the wrong point, and so on.
+Just a small nit here - not sure why there's an extra blank line here?
+But either way:
 
-The advantage of init/release is the strict pairing and the core code
-helping get the error unwind right, by not calling release until init
-succeeds.
+Acked-by: Jason Baron <jbaron@akamai.com>
 
-The advantage of the vfio_alloc_device() is not saving 4 lines, it is
-giving the drivers a simple/sane error handling strategy. Goto unwind
-inside init, release undoes everything init does and the probe path
-only calls put_device(). It is simple and logical to implement and
-hard to make subtle bugs.
 
-Specifically it eliminates the open coded transition of kfree to
-put_device that seems so difficult for people to get right.
-
-netdev has done a version of this, so has rdma, and it works well.
-
-Jason
+>  		if (strcmp(modname, iter->modname)) {
+> -			modct++;
+> -			ret = ddebug_add_module(iter_start, n, modname);
+> +			mod_ct++;
+> +			ret = ddebug_add_module(iter_mod_start, mod_sites, modname);
+>  			if (ret)
+>  				goto out_err;
+> -			n = 0;
+> +
+> +			mod_sites = 0;
+>  			modname = iter->modname;
+> -			iter_start = iter;
+> +			iter_mod_start = iter;
+>  		}
+> -		n++;
+>  	}
+> -	ret = ddebug_add_module(iter_start, n, modname);
+> +	ret = ddebug_add_module(iter_mod_start, mod_sites, modname);
+>  	if (ret)
+>  		goto out_err;
+>  
+>  	ddebug_init_success = 1;
+>  	vpr_info("%d prdebugs in %d modules, %d KiB in ddebug tables, %d kiB in __dyndbg section\n",
+> -		 entries, modct, (int)((modct * sizeof(struct ddebug_table)) >> 10),
+> -		 (int)((entries * sizeof(struct _ddebug)) >> 10));
+> +		 i, mod_ct, (int)((mod_ct * sizeof(struct ddebug_table)) >> 10),
+> +		 (int)((i * sizeof(struct _ddebug)) >> 10));
+>  
+>  	/* now that ddebug tables are loaded, process all boot args
+>  	 * again to find and activate queries given in dyndbg params.
