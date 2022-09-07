@@ -2,57 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC1A95AFC34
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 08:13:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E1B35AFCA9
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 08:40:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C81E10E33C;
-	Wed,  7 Sep 2022 06:13:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7FF1C10E36D;
+	Wed,  7 Sep 2022 06:40:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x535.google.com (mail-ed1-x535.google.com
- [IPv6:2a00:1450:4864:20::535])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 21DDE10E336
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com
+ [IPv6:2a00:1450:4864:20::52a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DD12210E36A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  7 Sep 2022 06:13:07 +0000 (UTC)
-Received: by mail-ed1-x535.google.com with SMTP id e17so10535847edc.5
+ Wed,  7 Sep 2022 06:40:46 +0000 (UTC)
+Received: by mail-ed1-x52a.google.com with SMTP id 29so13138856edv.2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 06 Sep 2022 23:13:07 -0700 (PDT)
+ Tue, 06 Sep 2022 23:40:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
  h=in-reply-to:content-disposition:mime-version:references
  :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date; bh=654Mx5KNflErskpZWsH78GwciP3JIpFtIohp9Xrffk8=;
- b=kTVxUA3e9XBedEkDMGUk5JWQTnlJeSjnLmlcU4pG1ZFUTA8PEjcLC2U6LgGg5ayxqm
- Zgz1xqYKHghLFxYUSQU/hJzNPVChEdbcp9aR9WcLZjA4/4dQYwSGSW6NVmg8GwpJgZiX
- NUpxPYYLtJzbT8z5kLMYvf8Iw/hk/fojCH37A=
+ :subject:date; bh=XaRjxOyW2MEx2tct3s/cWA1lvtbzxTStc/wVzUlH2uc=;
+ b=eJz5MxKi7mTMm27o1zpVdo60zEiEVoggVNSQwDnTq4bJZ7gHO3YNiu08p+PQ2rcmSb
+ 3QSyS4dX+Q5bzpsYXbcOwTNfKOO11SM/M0ZEG8S6e1vMQdkzyubH7JDOuLegIbn+/PVw
+ wAzNRlVnOnDnNxYNB5FtBmZ18lDBwqCdT89Vc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references
  :mail-followup-to:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date;
- bh=654Mx5KNflErskpZWsH78GwciP3JIpFtIohp9Xrffk8=;
- b=KUC+LNZq0kXdK07f+1oSZc6qq9d6ooW8cKxygcV3546x3LyzLOxmKp9r9kP1j+vCsY
- AnfyVVgICs8t1pzu7nkUlL9UIgWPthhomnAGdgoS76Noe2VfCsi3lX0GLzto4ekfgEcI
- GcLI1ZjAfvb7djQ12OJy41k/5nHgtqTW2FKq+PVQpioPF/kEqi1wmw3QDT8UsqPjUsOL
- hZ74qK7nB4fNqAvwDE59ft4S6+luRIUDTLGxf6dV64ws/rLHIylHchmMI1pWhRsqc5e/
- 9Qo8zgQMerboJKMSiIGq7JNq83UjMOJvQz1abEfB0+f8Wqccc5UoNLDYvfz2TENtbFX4
- /FJQ==
-X-Gm-Message-State: ACgBeo2pqXHTFpQPi02bygWEw/AluIJ86DslurQDvXl7B/wrnNu/rSzx
- EqMqbVZ0VY8VjVpkUhlC/alDUg==
-X-Google-Smtp-Source: AA6agR7EC4O8cL4v8Kr/JZ/weO0LUmT/WoVmEM5JZHGy6WvE2zVf2us/qRdDMvqkQPCJFFq2EBqEtg==
-X-Received: by 2002:a05:6402:3507:b0:448:b672:55ee with SMTP id
- b7-20020a056402350700b00448b67255eemr1752029edd.107.1662531185647; 
- Tue, 06 Sep 2022 23:13:05 -0700 (PDT)
+ bh=XaRjxOyW2MEx2tct3s/cWA1lvtbzxTStc/wVzUlH2uc=;
+ b=GjEnWg4efm/Fzk/VyhUh+ClbaGJeir5k0883GNU2s8iK0laJQoIz80JCyp21WftkzY
+ 51xDIxAPyP3geQorV95188XxLDoCTANeIUHwj+W9UyxcOpXX+O1oJEcxFCR623ygQiDC
+ ugy1t+KHQrS58rjqO+RG/XHYcOaqLD+bWoapcFTEBjb3NkSJ0qluM4LpNiPkYuzMpLdD
+ LT0IHsEoJHyHh9s/cBN30qrGG2aUkqf3r0C5A7lmQkRpJllHvROjCcAeDzOKAFPJ3bJE
+ BKaJRzeMp1pyVAe+8xwMIBC4wwAbrstaDaijzu9OlAyW11DKdP/5vKedlMtyHum6zCgm
+ zZsQ==
+X-Gm-Message-State: ACgBeo0S0P8Q0G5l8uBogooOJnrwOBiNj7eJRjvB8mp2lsQIR3TP3qeY
+ PotbztWjzaBmRg6efR3e8yNUIEsnqR08LQ==
+X-Google-Smtp-Source: AA6agR7t8WtxiKGx/Qj9ZS3dD1CibtlbUMNB2bkccrOnKkFnoUMq4IeXkhEM/WViLTh7ZuX1kUdDvg==
+X-Received: by 2002:a05:6402:33c5:b0:447:e4a3:c930 with SMTP id
+ a5-20020a05640233c500b00447e4a3c930mr1825745edc.401.1662532845316; 
+ Tue, 06 Sep 2022 23:40:45 -0700 (PDT)
 Received: from phenom.ffwll.local (212-51-149-33.fiber7.init7.net.
  [212.51.149.33]) by smtp.gmail.com with ESMTPSA id
- kz16-20020a17090777d000b0073c8d4c9f38sm7935402ejc.177.2022.09.06.23.13.04
+ a26-20020aa7d91a000000b0044ee18e5f79sm2424487edr.28.2022.09.06.23.40.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 23:13:05 -0700 (PDT)
-Date: Wed, 7 Sep 2022 08:13:03 +0200
+ Tue, 06 Sep 2022 23:40:44 -0700 (PDT)
+Date: Wed, 7 Sep 2022 08:40:42 +0200
 From: Daniel Vetter <daniel@ffwll.ch>
 To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v6 23/57] drm: POC drm on dyndbg - use in core, 2
- helpers, 3 drivers.
-Message-ID: <Yxg2b2stA27B6B0t@phenom.ffwll.local>
+Subject: Re: [PATCH v6 28/57] drm_print: refine drm_debug_enabled for
+ jump-label
+Message-ID: <Yxg86v7UsB8jtyYi@phenom.ffwll.local>
 Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com,
  gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
  amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
@@ -60,11 +60,11 @@ Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com,
  seanpaul@chromium.org, robdclark@gmail.com,
  linux@rasmusvillemoes.dk, joe@perches.com
 References: <20220904214134.408619-1-jim.cromie@gmail.com>
- <20220904214134.408619-24-jim.cromie@gmail.com>
+ <20220904214134.408619-29-jim.cromie@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220904214134.408619-24-jim.cromie@gmail.com>
+In-Reply-To: <20220904214134.408619-29-jim.cromie@gmail.com>
 X-Operating-System: Linux phenom 5.18.0-4-amd64 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -86,285 +86,115 @@ Cc: robdclark@gmail.com, gregkh@linuxfoundation.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sun, Sep 04, 2022 at 03:41:00PM -0600, Jim Cromie wrote:
-> Use DECLARE_DYNDBG_CLASSMAP across DRM:
+On Sun, Sep 04, 2022 at 03:41:05PM -0600, Jim Cromie wrote:
+> In order to use dynamic-debug's jump-label optimization in drm-debug,
+> its clarifying to refine drm_debug_enabled into 3 uses:
 > 
->  - in .c files, since macro defines/initializes a record
+> 1.   drm_debug_enabled - legacy, public
+> 2. __drm_debug_enabled - optimized for dyndbg jump-label enablement.
+> 3.  _drm_debug_enabled - pr_debug instrumented, observable
 > 
->  - in drivers, $mod_{drv,drm,param}.c
->    ie where param setup is done, since a classmap is param related
+> 1. The legacy version always checks the bits.
 > 
->  - in drm/drm_print.c
->    since existing __drm_debug param is defined there,
->    and we ifdef it, and provide an elaborated alternative.
+> 2. is privileged, for use by __drm_dbg(), __drm_dev_dbg(), which do an
+> early return unless the category is enabled.  For dyndbg builds, debug
+> callsites are selectively "pre-enabled", so __drm_debug_enabled()
+> short-circuits to true there.  Remaining callers of 1 may be able to
+> use 2, case by case.
 > 
->  - in drm_*_helper modules:
->    dp/drm_dp - 1st item in makefile target
->    drivers/gpu/drm/drm_crtc_helper.c - random pick iirc.
+> 3. is 1st wrapped in a macro, with a pr_debug, which reports each
+> usage in /proc/dynamic_debug/control, making it observable in the
+> logs.  The macro lets the pr_debug see the real caller, not an inline
+> function.
 > 
-> Since these modules all use identical CLASSMAP declarations (ie: names
-> and .class_id's) they will all respond together to "class DRM_UT_*"
-> query-commands:
-> 
->   :#> echo class DRM_UT_KMS +p > /proc/dynamic_debug/control
-> 
-> NOTES:
-> 
-> This changes __drm_debug from int to ulong, so BIT() is usable on it.
-> 
-> DRM's enum drm_debug_category values need to sync with the index of
-> their respective class-names here.  Then .class_id == category, and
-> dyndbg's class FOO mechanisms will enable drm_dbg(DRM_UT_KMS, ...).
-> 
-> Though DRM needs consistent categories across all modules, thats not
-> generally needed; modules X and Y could define FOO differently (ie a
-> different NAME => class_id mapping), changes are made according to
-> each module's private class-map.
-> 
-> No callsites are actually selected by this patch, since none are
-> class'd yet.
+> When plugged into 1, 3 identified ~10 remaining callers of the
+> function, leading to the follow-on cleanup patch, and would allow
+> activating the pr_debugs, estimating the callrate, and the potential
+> savings by using the wrapper macro.  It is unused ATM, but it fills
+> out the picture.
 > 
 > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 
-So maybe I should just try, but what happens if a drm module doesn't have
-these classbits declared? You simply have to use the raw number instead?
+So instead of having 3 here as a "you need to hack it in to see what
+should be converted" I have a bit a different idea: Could we make the
+public version also a dyndbg callsite (like the printing wrappers), but
+instead of a dynamic call we'd have a dynamically fixed value we get out?
+I think that would take care of everything you have here as an open.
 
-> ---
->  drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c | 14 +++++++++++++
->  drivers/gpu/drm/display/drm_dp_helper.c | 13 ++++++++++++
->  drivers/gpu/drm/drm_crtc_helper.c       | 13 ++++++++++++
->  drivers/gpu/drm/drm_print.c             | 27 +++++++++++++++++++++++--
->  drivers/gpu/drm/i915/i915_params.c      | 12 +++++++++++
->  drivers/gpu/drm/nouveau/nouveau_drm.c   | 13 ++++++++++++
->  include/drm/drm_print.h                 |  3 ++-
->  7 files changed, 92 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-> index de7144b06e93..97e184f44a52 100644
-> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-> @@ -38,6 +38,8 @@
->  #include <linux/mmu_notifier.h>
->  #include <linux/suspend.h>
->  #include <linux/cc_platform.h>
-> +#include <linux/fb.h>
-> +#include <linux/dynamic_debug.h>
->  
->  #include "amdgpu.h"
->  #include "amdgpu_irq.h"
-> @@ -185,6 +187,18 @@ int amdgpu_vcnfw_log;
->  
->  static void amdgpu_drv_delayed_reset_work_handler(struct work_struct *work);
->  
-> +DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, DD_CLASS_TYPE_DISJOINT_BITS, 0,
-
-Iirc we've talked about maybe some kbuild trickery so that any module
-under drivers/gpu/drm gets these by default. I don't think we need to have
-this for the first cut, but a macro to avoid the copypaste mistakes would
-be really good here.
-
-> +			"DRM_UT_CORE",
-> +			"DRM_UT_DRIVER",
-> +			"DRM_UT_KMS",
-> +			"DRM_UT_PRIME",
-> +			"DRM_UT_ATOMIC",
-> +			"DRM_UT_VBL",
-> +			"DRM_UT_STATE",
-> +			"DRM_UT_LEASE",
-> +			"DRM_UT_DP",
-> +			"DRM_UT_DRMRES");
-> +
->  struct amdgpu_mgpu_info mgpu_info = {
->  	.mutex = __MUTEX_INITIALIZER(mgpu_info.mutex),
->  	.delayed_reset_work = __DELAYED_WORK_INITIALIZER(
-> diff --git a/drivers/gpu/drm/display/drm_dp_helper.c b/drivers/gpu/drm/display/drm_dp_helper.c
-> index 92990a3d577a..cbb9c4d6d8f2 100644
-> --- a/drivers/gpu/drm/display/drm_dp_helper.c
-> +++ b/drivers/gpu/drm/display/drm_dp_helper.c
-> @@ -30,6 +30,7 @@
->  #include <linux/sched.h>
->  #include <linux/seq_file.h>
->  #include <linux/string_helpers.h>
-> +#include <linux/dynamic_debug.h>
->  
->  #include <drm/display/drm_dp_helper.h>
->  #include <drm/display/drm_dp_mst_helper.h>
-> @@ -40,6 +41,18 @@
->  
->  #include "drm_dp_helper_internal.h"
->  
-> +DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, DD_CLASS_TYPE_DISJOINT_BITS, 0,
-> +			"DRM_UT_CORE",
-> +			"DRM_UT_DRIVER",
-> +			"DRM_UT_KMS",
-> +			"DRM_UT_PRIME",
-> +			"DRM_UT_ATOMIC",
-> +			"DRM_UT_VBL",
-> +			"DRM_UT_STATE",
-> +			"DRM_UT_LEASE",
-> +			"DRM_UT_DP",
-> +			"DRM_UT_DRMRES");
-> +
->  struct dp_aux_backlight {
->  	struct backlight_device *base;
->  	struct drm_dp_aux *aux;
-> diff --git a/drivers/gpu/drm/drm_crtc_helper.c b/drivers/gpu/drm/drm_crtc_helper.c
-> index 457448cc60f7..7d86020b5244 100644
-> --- a/drivers/gpu/drm/drm_crtc_helper.c
-> +++ b/drivers/gpu/drm/drm_crtc_helper.c
-> @@ -32,6 +32,7 @@
->  #include <linux/export.h>
->  #include <linux/kernel.h>
->  #include <linux/moduleparam.h>
-> +#include <linux/dynamic_debug.h>
->  
->  #include <drm/drm_atomic.h>
->  #include <drm/drm_atomic_helper.h>
-> @@ -50,6 +51,18 @@
->  
->  #include "drm_crtc_helper_internal.h"
->  
-> +DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, DD_CLASS_TYPE_DISJOINT_BITS, 0,
-> +			"DRM_UT_CORE",
-> +			"DRM_UT_DRIVER",
-> +			"DRM_UT_KMS",
-> +			"DRM_UT_PRIME",
-> +			"DRM_UT_ATOMIC",
-> +			"DRM_UT_VBL",
-> +			"DRM_UT_STATE",
-> +			"DRM_UT_LEASE",
-> +			"DRM_UT_DP",
-> +			"DRM_UT_DRMRES");
-> +
->  /**
->   * DOC: overview
->   *
-> diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-> index f783d4963d4b..ec32df35a3e3 100644
-> --- a/drivers/gpu/drm/drm_print.c
-> +++ b/drivers/gpu/drm/drm_print.c
-> @@ -40,7 +40,7 @@
->   * __drm_debug: Enable debug output.
->   * Bitmask of DRM_UT_x. See include/drm/drm_print.h for details.
->   */
-> -unsigned int __drm_debug;
-> +unsigned long __drm_debug;
->  EXPORT_SYMBOL(__drm_debug);
->  
->  MODULE_PARM_DESC(debug, "Enable debug output, where each bit enables a debug category.\n"
-> @@ -52,7 +52,30 @@ MODULE_PARM_DESC(debug, "Enable debug output, where each bit enables a debug cat
->  "\t\tBit 5 (0x20)  will enable VBL messages (vblank code)\n"
->  "\t\tBit 7 (0x80)  will enable LEASE messages (leasing code)\n"
->  "\t\tBit 8 (0x100) will enable DP messages (displayport code)");
-> -module_param_named(debug, __drm_debug, int, 0600);
-> +
-> +#if !defined(CONFIG_DRM_USE_DYNAMIC_DEBUG)
-> +module_param_named(debug, __drm_debug, ulong, 0600);
-> +#else
-> +/* classnames must match vals of enum drm_debug_category */
-> +DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, DD_CLASS_TYPE_DISJOINT_BITS, 0,
-> +			"DRM_UT_CORE",
-> +			"DRM_UT_DRIVER",
-> +			"DRM_UT_KMS",
-> +			"DRM_UT_PRIME",
-> +			"DRM_UT_ATOMIC",
-> +			"DRM_UT_VBL",
-> +			"DRM_UT_STATE",
-> +			"DRM_UT_LEASE",
-> +			"DRM_UT_DP",
-> +			"DRM_UT_DRMRES");
-> +
-> +static struct ddebug_class_param drm_debug_bitmap = {
-> +	.bits = &__drm_debug,
-> +	.flags = "p",
-> +	.map = &drm_debug_classes,
-> +};
-> +module_param_cb(debug, &param_ops_dyndbg_classes, &drm_debug_bitmap, 0600);
-> +#endif
->  
->  void __drm_puts_coredump(struct drm_printer *p, const char *str)
->  {
-> diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
-> index 6fc475a5db61..d1e4d528cb17 100644
-> --- a/drivers/gpu/drm/i915/i915_params.c
-> +++ b/drivers/gpu/drm/i915/i915_params.c
-> @@ -29,6 +29,18 @@
->  #include "i915_params.h"
->  #include "i915_drv.h"
->  
-> +DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, DD_CLASS_TYPE_DISJOINT_BITS, 0,
-> +			"DRM_UT_CORE",
-> +			"DRM_UT_DRIVER",
-> +			"DRM_UT_KMS",
-> +			"DRM_UT_PRIME",
-> +			"DRM_UT_ATOMIC",
-> +			"DRM_UT_VBL",
-> +			"DRM_UT_STATE",
-> +			"DRM_UT_LEASE",
-> +			"DRM_UT_DP",
-> +			"DRM_UT_DRMRES");
-> +
->  #define i915_param_named(name, T, perm, desc) \
->  	module_param_named(name, i915_modparams.name, T, perm); \
->  	MODULE_PARM_DESC(name, desc)
-> diff --git a/drivers/gpu/drm/nouveau/nouveau_drm.c b/drivers/gpu/drm/nouveau/nouveau_drm.c
-> index 561309d447e0..fd99ec0f4257 100644
-> --- a/drivers/gpu/drm/nouveau/nouveau_drm.c
-> +++ b/drivers/gpu/drm/nouveau/nouveau_drm.c
-> @@ -28,6 +28,7 @@
->  #include <linux/pm_runtime.h>
->  #include <linux/vga_switcheroo.h>
->  #include <linux/mmu_notifier.h>
-> +#include <linux/dynamic_debug.h>
->  
->  #include <drm/drm_aperture.h>
->  #include <drm/drm_crtc_helper.h>
-> @@ -70,6 +71,18 @@
->  #include "nouveau_svm.h"
->  #include "nouveau_dmem.h"
->  
-> +DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, DD_CLASS_TYPE_DISJOINT_BITS, 0,
-> +			"DRM_UT_CORE",
-> +			"DRM_UT_DRIVER",
-> +			"DRM_UT_KMS",
-> +			"DRM_UT_PRIME",
-> +			"DRM_UT_ATOMIC",
-> +			"DRM_UT_VBL",
-> +			"DRM_UT_STATE",
-> +			"DRM_UT_LEASE",
-> +			"DRM_UT_DP",
-> +			"DRM_UT_DRMRES");
-> +
->  MODULE_PARM_DESC(config, "option string to pass to driver core");
->  static char *nouveau_config;
->  module_param_named(config, nouveau_config, charp, 0400);
-> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
-> index b3b470440e46..668273e36c2c 100644
-> --- a/include/drm/drm_print.h
-> +++ b/include/drm/drm_print.h
-> @@ -35,7 +35,7 @@
->  #include <drm/drm.h>
->  
->  /* Do *not* use outside of drm_print.[ch]! */
-> -extern unsigned int __drm_debug;
-> +extern unsigned long __drm_debug;
->  
->  /**
->   * DOC: print
-> @@ -275,6 +275,7 @@ static inline struct drm_printer drm_err_printer(const char *prefix)
->   *
->   */
->  enum drm_debug_category {
-> +	/* These names must match those in DYNAMIC_DEBUG_CLASSBITS */
-
-I'd just put this into the kerneldoc, then you can also link to the
-DRM_PRINT_DECLARE_DEBUG_CLASSBITS macro or whatever you'll call the thing
-so drivers don't have to copypaste it all.
+Otherwise I'd just drop 3 for the series we're going to merge.
 -Daniel
 
->  	/**
->  	 * @DRM_UT_CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c,
->  	 * drm_memory.c, ...
+> ---
+>  drivers/gpu/drm/drm_print.c |  4 ++--
+>  include/drm/drm_print.h     | 28 ++++++++++++++++++++++++++++
+>  2 files changed, 30 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
+> index 29a29949ad0b..cb203d63b286 100644
+> --- a/drivers/gpu/drm/drm_print.c
+> +++ b/drivers/gpu/drm/drm_print.c
+> @@ -285,7 +285,7 @@ void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
+>  	struct va_format vaf;
+>  	va_list args;
+>  
+> -	if (!drm_debug_enabled(category))
+> +	if (!__drm_debug_enabled(category))
+>  		return;
+>  
+>  	va_start(args, format);
+> @@ -308,7 +308,7 @@ void ___drm_dbg(enum drm_debug_category category, const char *format, ...)
+>  	struct va_format vaf;
+>  	va_list args;
+>  
+> -	if (!drm_debug_enabled(category))
+> +	if (!__drm_debug_enabled(category))
+>  		return;
+>  
+>  	va_start(args, format);
+> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
+> index dfdd81c3287c..7631b5fb669e 100644
+> --- a/include/drm/drm_print.h
+> +++ b/include/drm/drm_print.h
+> @@ -321,11 +321,39 @@ enum drm_debug_category {
+>  	DRM_UT_DRMRES
+>  };
+>  
+> +/*
+> + * 3 name flavors of drm_debug_enabled:
+> + *   drm_debug_enabled - public/legacy, always checks bits
+> + *  _drm_debug_enabled - instrumented to observe call-rates, est overheads.
+> + * __drm_debug_enabled - privileged - knows jump-label state, can short-circuit
+> + */
+>  static inline bool drm_debug_enabled(enum drm_debug_category category)
+>  {
+>  	return unlikely(__drm_debug & BIT(category));
+>  }
+>  
+> +/*
+> + * Wrap fn in macro, so that the pr_debug sees the actual caller, not
+> + * the inline fn.  Using this name creates a callsite entry / control
+> + * point in /proc/dynamic_debug/control.
+> + */
+> +#define _drm_debug_enabled(category)				\
+> +	({							\
+> +		pr_debug("todo: maybe avoid via dyndbg\n");     \
+> +		drm_debug_enabled(category);			\
+> +	})
+> +
+> +#if defined(CONFIG_DRM_USE_DYNAMIC_DEBUG)
+> +/*
+> + * dyndbg is wrapping the drm.debug API, so as to avoid the runtime
+> + * bit-test overheads of drm_debug_enabled() in those api calls.
+> + * In this case, executed callsites are known enabled, so true.
+> + */
+> +#define __drm_debug_enabled(category)	true
+> +#else
+> +#define __drm_debug_enabled(category)	drm_debug_enabled(category)
+> +#endif
+> +
+>  /*
+>   * struct device based logging
+>   *
 > -- 
 > 2.37.2
 > 
