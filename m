@@ -2,70 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E1B35AFCA9
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 08:40:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 137975AFCCA
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 08:48:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7FF1C10E36D;
-	Wed,  7 Sep 2022 06:40:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2216910E375;
+	Wed,  7 Sep 2022 06:48:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com
- [IPv6:2a00:1450:4864:20::52a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DD12210E36A
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  7 Sep 2022 06:40:46 +0000 (UTC)
-Received: by mail-ed1-x52a.google.com with SMTP id 29so13138856edv.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 06 Sep 2022 23:40:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date; bh=XaRjxOyW2MEx2tct3s/cWA1lvtbzxTStc/wVzUlH2uc=;
- b=eJz5MxKi7mTMm27o1zpVdo60zEiEVoggVNSQwDnTq4bJZ7gHO3YNiu08p+PQ2rcmSb
- 3QSyS4dX+Q5bzpsYXbcOwTNfKOO11SM/M0ZEG8S6e1vMQdkzyubH7JDOuLegIbn+/PVw
- wAzNRlVnOnDnNxYNB5FtBmZ18lDBwqCdT89Vc=
+Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com
+ [IPv6:2a00:1450:4864:20::630])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CD1F410E36D;
+ Wed,  7 Sep 2022 06:48:07 +0000 (UTC)
+Received: by mail-ej1-x630.google.com with SMTP id y3so28232401ejc.1;
+ Tue, 06 Sep 2022 23:48:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date;
+ bh=BVuk17Av+bi2jPnkL9wfgDXhvd64IxzBdo6fgEYGs04=;
+ b=l+Ix4zgCkeWJQbwso5ymf9RKOOdyJP++7E7Hn7qNe8++KSvt+whxkZnLOMrQDs0DOx
+ 8Bnxfj3DRwnWqEyzdSyphQxdWMFT3V9Qs7b/tDHbUlIorwV6gri3bErqpuPWekLHhOlc
+ 95QccTtWJAE1QfDqOjrgxBl7o3tHfz3Xov6eefmcjs15qr03X6yCbHQUZzOjBwtnJ2Ce
+ v3MSn5FI8PTpUV7LwrFWYTCWsHEzEAT0OYOVxybHCEP0lYHSssUuWNBoYyY5Iuisb3F8
+ v4ZMnm1GSBiSXQSM4x8txzQJ+vXfmqGl5JiI3TvxUzzycXJ69jn0CXTzpi52Mui/bNAT
+ qL5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date;
- bh=XaRjxOyW2MEx2tct3s/cWA1lvtbzxTStc/wVzUlH2uc=;
- b=GjEnWg4efm/Fzk/VyhUh+ClbaGJeir5k0883GNU2s8iK0laJQoIz80JCyp21WftkzY
- 51xDIxAPyP3geQorV95188XxLDoCTANeIUHwj+W9UyxcOpXX+O1oJEcxFCR623ygQiDC
- ugy1t+KHQrS58rjqO+RG/XHYcOaqLD+bWoapcFTEBjb3NkSJ0qluM4LpNiPkYuzMpLdD
- LT0IHsEoJHyHh9s/cBN30qrGG2aUkqf3r0C5A7lmQkRpJllHvROjCcAeDzOKAFPJ3bJE
- BKaJRzeMp1pyVAe+8xwMIBC4wwAbrstaDaijzu9OlAyW11DKdP/5vKedlMtyHum6zCgm
- zZsQ==
-X-Gm-Message-State: ACgBeo0S0P8Q0G5l8uBogooOJnrwOBiNj7eJRjvB8mp2lsQIR3TP3qeY
- PotbztWjzaBmRg6efR3e8yNUIEsnqR08LQ==
-X-Google-Smtp-Source: AA6agR7t8WtxiKGx/Qj9ZS3dD1CibtlbUMNB2bkccrOnKkFnoUMq4IeXkhEM/WViLTh7ZuX1kUdDvg==
-X-Received: by 2002:a05:6402:33c5:b0:447:e4a3:c930 with SMTP id
- a5-20020a05640233c500b00447e4a3c930mr1825745edc.401.1662532845316; 
- Tue, 06 Sep 2022 23:40:45 -0700 (PDT)
-Received: from phenom.ffwll.local (212-51-149-33.fiber7.init7.net.
- [212.51.149.33]) by smtp.gmail.com with ESMTPSA id
- a26-20020aa7d91a000000b0044ee18e5f79sm2424487edr.28.2022.09.06.23.40.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 23:40:44 -0700 (PDT)
-Date: Wed, 7 Sep 2022 08:40:42 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v6 28/57] drm_print: refine drm_debug_enabled for
- jump-label
-Message-ID: <Yxg86v7UsB8jtyYi@phenom.ffwll.local>
-Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com,
- gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- seanpaul@chromium.org, robdclark@gmail.com,
- linux@rasmusvillemoes.dk, joe@perches.com
-References: <20220904214134.408619-1-jim.cromie@gmail.com>
- <20220904214134.408619-29-jim.cromie@gmail.com>
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=BVuk17Av+bi2jPnkL9wfgDXhvd64IxzBdo6fgEYGs04=;
+ b=DqR3UPlSu/sIgY8//WzwsQOA6chppVmmmP1KmzrmRaknkFW4pS9flIwCR4WEHMhuAQ
+ JEtsX61oMPUy286E/vquHZd88QrWTt4pZp7Z7SgnWlhYdGTYrbO9QjcOJ5nh3LolQepM
+ tZieL0qdjvPa/JZRTgMws5EvwZVy4pD/3PlJYCJv+GYUkU6bzJ8uFJ+d8IoxPc+xahGf
+ Uh4gso6XfeLSW5lGfXA7P8obfMOvqVpY0m4nAX9mQBLRijJDL673B2uv5s0iDqE2Dkd2
+ pUxtj7JTOTY7cw0xLwCLyP2v1vq31ifLwWF8XDLfOHt7SYK/9koz90VuS3ehG9ruXhal
+ tCZQ==
+X-Gm-Message-State: ACgBeo2r1VLlCUNbN5F05A1mZr8ctEJMXGNwwJ1IBX5FywiCzHgaaVzJ
+ IfX+BKfux/VIriIH8AVqzxudk7vylSlmVH2jPHE=
+X-Google-Smtp-Source: AA6agR5oNcJ4xiLosx9c+PBGIQP4JwyWHajAGIDrk+o8018ZQ2ZLnOx2wULEGsptfZkH/pKAB98ijFHADY5kXzED1SI=
+X-Received: by 2002:a17:907:6d16:b0:731:17b5:699 with SMTP id
+ sa22-20020a1709076d1600b0073117b50699mr1428930ejc.23.1662533286189; Tue, 06
+ Sep 2022 23:48:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220904214134.408619-29-jim.cromie@gmail.com>
-X-Operating-System: Linux phenom 5.18.0-4-amd64 
+References: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
+ <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
+ <CAJedcCw1eJqjSK+yR7eQMDheNtH3Mjm+viwt00xAhnmrfpq2pw@mail.gmail.com>
+ <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
+ <YxWtfjfpNsoPUrgh@kroah.com>
+ <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
+ <20220907030754.GU1089@zhen-hp.sh.intel.com>
+In-Reply-To: <20220907030754.GU1089@zhen-hp.sh.intel.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Wed, 7 Sep 2022 14:47:54 +0800
+Message-ID: <CAJedcCwPKT8Zj8aPmXz=M3zG+xvCzyo4OspaPp4-LY+DgTfteA@mail.gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,128 +71,116 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: robdclark@gmail.com, gregkh@linuxfoundation.org,
- intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
- linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, jbaron@akamai.com,
- seanpaul@chromium.org, dri-devel@lists.freedesktop.org, daniel.vetter@ffwll.ch,
- joe@perches.com, intel-gvt-dev@lists.freedesktop.org
+Cc: tvrtko.ursulin@linux.intel.com, security@kernel.org, alex000young@gmail.com,
+ airlied@linux.ie, Greg KH <gregkh@linuxfoundation.org>,
+ intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ xmzyshypnc <1002992920@qq.com>, jani.nikula@linux.intel.com, daniel@ffwll.ch,
+ rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sun, Sep 04, 2022 at 03:41:05PM -0600, Jim Cromie wrote:
-> In order to use dynamic-debug's jump-label optimization in drm-debug,
-> its clarifying to refine drm_debug_enabled into 3 uses:
-> 
-> 1.   drm_debug_enabled - legacy, public
-> 2. __drm_debug_enabled - optimized for dyndbg jump-label enablement.
-> 3.  _drm_debug_enabled - pr_debug instrumented, observable
-> 
-> 1. The legacy version always checks the bits.
-> 
-> 2. is privileged, for use by __drm_dbg(), __drm_dev_dbg(), which do an
-> early return unless the category is enabled.  For dyndbg builds, debug
-> callsites are selectively "pre-enabled", so __drm_debug_enabled()
-> short-circuits to true there.  Remaining callers of 1 may be able to
-> use 2, case by case.
-> 
-> 3. is 1st wrapped in a macro, with a pr_debug, which reports each
-> usage in /proc/dynamic_debug/control, making it observable in the
-> logs.  The macro lets the pr_debug see the real caller, not an inline
-> function.
-> 
-> When plugged into 1, 3 identified ~10 remaining callers of the
-> function, leading to the follow-on cleanup patch, and would allow
-> activating the pr_debugs, estimating the callrate, and the potential
-> savings by using the wrapper macro.  It is unused ATM, but it fills
-> out the picture.
-> 
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+Hi Zhenyu,
 
-So instead of having 3 here as a "you need to hack it in to see what
-should be converted" I have a bit a different idea: Could we make the
-public version also a dyndbg callsite (like the printing wrappers), but
-instead of a dynamic call we'd have a dynamically fixed value we get out?
-I think that would take care of everything you have here as an open.
+Very glad for your reply. I agree that the bug is hard to trigger in
+userspace. But it is possible to happen in some specific scene. For
+example, if calling pfn_valid failed, the bug will be triggered. And
+it did happened as the [1] commit description illustrates.
 
-Otherwise I'd just drop 3 for the series we're going to merge.
--Daniel
+As for the patch, I think your plan is the best. We need to free the
+spt only in bad case.
 
-> ---
->  drivers/gpu/drm/drm_print.c |  4 ++--
->  include/drm/drm_print.h     | 28 ++++++++++++++++++++++++++++
->  2 files changed, 30 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-> index 29a29949ad0b..cb203d63b286 100644
-> --- a/drivers/gpu/drm/drm_print.c
-> +++ b/drivers/gpu/drm/drm_print.c
-> @@ -285,7 +285,7 @@ void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
->  	struct va_format vaf;
->  	va_list args;
->  
-> -	if (!drm_debug_enabled(category))
-> +	if (!__drm_debug_enabled(category))
->  		return;
->  
->  	va_start(args, format);
-> @@ -308,7 +308,7 @@ void ___drm_dbg(enum drm_debug_category category, const char *format, ...)
->  	struct va_format vaf;
->  	va_list args;
->  
-> -	if (!drm_debug_enabled(category))
-> +	if (!__drm_debug_enabled(category))
->  		return;
->  
->  	va_start(args, format);
-> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
-> index dfdd81c3287c..7631b5fb669e 100644
-> --- a/include/drm/drm_print.h
-> +++ b/include/drm/drm_print.h
-> @@ -321,11 +321,39 @@ enum drm_debug_category {
->  	DRM_UT_DRMRES
->  };
->  
-> +/*
-> + * 3 name flavors of drm_debug_enabled:
-> + *   drm_debug_enabled - public/legacy, always checks bits
-> + *  _drm_debug_enabled - instrumented to observe call-rates, est overheads.
-> + * __drm_debug_enabled - privileged - knows jump-label state, can short-circuit
-> + */
->  static inline bool drm_debug_enabled(enum drm_debug_category category)
->  {
->  	return unlikely(__drm_debug & BIT(category));
->  }
->  
-> +/*
-> + * Wrap fn in macro, so that the pr_debug sees the actual caller, not
-> + * the inline fn.  Using this name creates a callsite entry / control
-> + * point in /proc/dynamic_debug/control.
-> + */
-> +#define _drm_debug_enabled(category)				\
-> +	({							\
-> +		pr_debug("todo: maybe avoid via dyndbg\n");     \
-> +		drm_debug_enabled(category);			\
-> +	})
-> +
-> +#if defined(CONFIG_DRM_USE_DYNAMIC_DEBUG)
-> +/*
-> + * dyndbg is wrapping the drm.debug API, so as to avoid the runtime
-> + * bit-test overheads of drm_debug_enabled() in those api calls.
-> + * In this case, executed callsites are known enabled, so true.
-> + */
-> +#define __drm_debug_enabled(category)	true
-> +#else
-> +#define __drm_debug_enabled(category)	drm_debug_enabled(category)
-> +#endif
-> +
->  /*
->   * struct device based logging
->   *
-> -- 
-> 2.37.2
-> 
+[1] https://github.com/torvalds/linux/commit/39b4cbadb9a95bf3f13ea102d6ec84=
+1940916ee2
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Regards,
+Zheng Wang
+
+Zhenyu Wang <zhenyuw@linux.intel.com> =E4=BA=8E2022=E5=B9=B49=E6=9C=887=E6=
+=97=A5=E5=91=A8=E4=B8=89 11:33=E5=86=99=E9=81=93=EF=BC=9A
+
+>
+> On 2022.09.06 19:36:56 +0800, Zheng Hacker wrote:
+> > Hi Greg,
+> >
+> > Alex has explained how we figured out the patch. We did analyze the
+> > code and found it possible to reach the vulnerability code. But we
+> > have no physical device in hand to test the driver. So we'd like to
+> > discuss with developers to see if the issue exists or not.
+> >
+> > Best regards,
+> > Zheng Wang.
+> >
+> > Greg KH <gregkh@linuxfoundation.org> ???2022???9???5????????? 16:04????=
+?????
+> > >
+> > > On Mon, Sep 05, 2022 at 03:46:09PM +0800, Zheng Hacker wrote:
+> > > > I rewrote the letter. Hope it works.
+> > > >
+> > > > There is a double-free security bug in split_2MB_gtt_entry.
+> > > >
+> > > > Here is a calling chain :
+> > > > ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entr=
+y.
+> > > > If intel_gvt_dma_map_guest_page failed, it will call
+> > > > ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
+> > > > kfree(spt). But the caller does not notice that, and it will call
+> > > > ppgtt_free_spt again in error path.
+> > > >
+>
+> It's a little mess in code so in theory it might be possible but
+> intel_gvt_dma_map_guest_page won't fail in practise...
+>
+> > > > Fix this by returning the result of ppgtt_invalidate_spt to split_2=
+MB_gtt_entry.
+> > > >
+>
+> I don't see why changing ret value can fix this issue, as it doesn't chan=
+ge
+> any behavior e.g caller of ppgtt_populate_spt to handle possible differen=
+t error return.
+>
+> As current code looks assuming that ppgtt_invalidate_spt would free spt i=
+n good case,
+> I think the real cleanup should split that assumption and handle free in =
+error case properly.
+>
+> > > > Signed-off-by: Zheng Wang
+>
+> This misses proper email address.
+>
+> thanks
+>
+> > > >
+> > > > ---
+> > > >  drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/=
+gvt/gtt.c
+> > > > index ce0eb03709c3..9f14fded8c0c 100644
+> > > > --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> > > > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> > > > @@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_v=
+gpu *vgpu,
+> > > >                 ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gf=
+n + sub_index,
+> > > >                                                    PAGE_SIZE, &dma_=
+addr);
+> > > >                 if (ret) {
+> > > > -                       ppgtt_invalidate_spt(spt);
+> > > > +                       ret =3D ppgtt_invalidate_spt(spt);
+> > > >                         return ret;
+> > >
+> > > But now you just lost the original error, shouldn't this succeed even=
+ if
+> > > intel_gvt_dma_map_guest_page() failed?
+> > >
+> > > And how are you causing intel_gvt_dma_map_guest_page() to fail in a r=
+eal
+> > > system?
+> > >
+> > > thanks,
+> > >
+> > > greg k-h
