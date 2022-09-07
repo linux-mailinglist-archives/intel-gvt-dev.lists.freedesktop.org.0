@@ -1,70 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9581D5AFCF7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 08:59:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 068FD5B0372
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 13:55:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0BE6710E396;
-	Wed,  7 Sep 2022 06:59:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1A23310E61C;
+	Wed,  7 Sep 2022 11:55:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
- [IPv6:2a00:1450:4864:20::532])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D34EB10E397
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  7 Sep 2022 06:59:51 +0000 (UTC)
-Received: by mail-ed1-x532.google.com with SMTP id a70so2130101edf.10
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 06 Sep 2022 23:59:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date; bh=qvR1N7BkwDYnsAvrsfaIO11nwQpKCU3X2O+a+Y27DUY=;
- b=JboZiw5UMpW3fLQ7FupCjwd6aK+mUdgjr5hh3TDItIM8ud3MPqItdIZvSBy6At4SrH
- PwHoYA4AU7ZjeZqaYWaA3JMJIRefSwml0t4qwc+ktxSSMu3EjO0DighbDKTn3xqOODKU
- 8aA5FL4HALl1QQW2k4T0rKr+B9yknpX5DSbnQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date;
- bh=qvR1N7BkwDYnsAvrsfaIO11nwQpKCU3X2O+a+Y27DUY=;
- b=7HEjQvA/CKXco6kFdXKs59LRHhztQjjt34GNdof6/nsn2Uud09ME4YxP4/k195J7si
- VjBH7Soq+eWSNCAGg4MIcHmcSi9f9UVNMkslmHHzVU1KhI36Gg0U6apwH4sCMDRRkV9L
- Ta/tzCD2Pup3y4OTzGL/YbyMnf5voN1WdELjeyZSQf34wRtY2TgGyDXPnPG3q/VRU6nN
- sfd/PuPCpmyhFB+lzIdz4IaJFbT8sHGHt9G3BKecmsHnI6Ah6+IuF7iI88WySkfn5gAp
- fmc1z0EZB9GjmoKYLJdVBippVPAjc5aawTj6VOgKzbHVY7LO7HqsQv9O1DRBVTxY6kwa
- wizw==
-X-Gm-Message-State: ACgBeo30F0KSX96Jmc5HIL5xOxX+AXKfSxu+8ZE1tVwglba3Uoy1VEmJ
- 3MSMB4yk9uIxuLZTlLIarXXUpg==
-X-Google-Smtp-Source: AA6agR5JW86JYwYYzN91pflVev5axL6S1Bv3lsKRf4XqvatlwpwQmUIlpWFZiPfqhA85TeaL1Xn6kg==
-X-Received: by 2002:a05:6402:5cd:b0:446:5965:f4af with SMTP id
- n13-20020a05640205cd00b004465965f4afmr1916771edx.12.1662533990421; 
- Tue, 06 Sep 2022 23:59:50 -0700 (PDT)
-Received: from phenom.ffwll.local (212-51-149-33.fiber7.init7.net.
- [212.51.149.33]) by smtp.gmail.com with ESMTPSA id
- s25-20020a170906bc5900b007081282cbd8sm7824571ejv.76.2022.09.06.23.59.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 23:59:49 -0700 (PDT)
-Date: Wed, 7 Sep 2022 08:59:48 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v6 39/57] dyndbg/drm: POC add tracebits sysfs-knob
-Message-ID: <YxhBZLAasKaBPEDT@phenom.ffwll.local>
-Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com,
- gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- seanpaul@chromium.org, robdclark@gmail.com,
- linux@rasmusvillemoes.dk, joe@perches.com
-References: <20220904214134.408619-1-jim.cromie@gmail.com>
- <20220904214134.408619-40-jim.cromie@gmail.com>
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:3::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5A41C10E61C;
+ Wed,  7 Sep 2022 11:55:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=BM2xHrfmxe+STDKKXSowY9hGQLIOtaAF8m9cL5/wDWk=; b=h/UQBtGd2bbjkcASv3lH0arQWz
+ thvfSm6sN9MwBmusPTiYDemn1x33oURDjpuH0ws/E3qX991rVKb/fSZ0S3xgvv6AfeccKlZhSkohy
+ sU8eMVJzi86CP1ZxSnQR6y44HjkvYXg53BVbW7b6E0TO5KzwFS9WkRg1d8F7hs9m6UTWf8YOttaRQ
+ 9u3bwIfEwALBVaKutcRK5+OM37JbbVXD/yScf1SxlJMwaz7adoPlUIziChtiYWq2v7MQCGS1e8/xs
+ iPFO8ZuHB0w20MuW3hCwKJ/CEPXibmys5p+gFYGxPK1TK1F6EqsOzSuIGA9Fk83XXmpv6sPUSx0MA
+ CUOG073Q==;
+Received: from hch by bombadil.infradead.org with local (Exim 4.94.2 #2 (Red
+ Hat Linux)) id 1oVteI-005sv8-Au; Wed, 07 Sep 2022 11:55:18 +0000
+Date: Wed, 7 Sep 2022 04:55:18 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH v2 01/15] vfio: Add helpers for unifying vfio_device life
+ cycle
+Message-ID: <YxiGpryRNrxvEoiY@infradead.org>
+References: <20220901143747.32858-1-kevin.tian@intel.com>
+ <20220901143747.32858-2-kevin.tian@intel.com>
+ <YxcV05AVN4kqdPX6@infradead.org>
+ <BN9PR11MB5276EE6209C1E3D4662368DC8C419@BN9PR11MB5276.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220904214134.408619-40-jim.cromie@gmail.com>
-X-Operating-System: Linux phenom 5.18.0-4-amd64 
+In-Reply-To: <BN9PR11MB5276EE6209C1E3D4662368DC8C419@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,76 +53,174 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: robdclark@gmail.com, gregkh@linuxfoundation.org,
- intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
- linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, jbaron@akamai.com,
- seanpaul@chromium.org, dri-devel@lists.freedesktop.org, daniel.vetter@ffwll.ch,
- joe@perches.com, intel-gvt-dev@lists.freedesktop.org
+Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Longfang Liu <liulongfang@huawei.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Gunthorpe <jgg@ziepe.ca>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, "Wang, Zhi A" <zhi.a.wang@intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sun, Sep 04, 2022 at 03:41:16PM -0600, Jim Cromie wrote:
-> clone DRM.debug interface to DRM.tracebits: ie map bits to
-> drm-debug-categories, except this interface enables messages to
-> tracefs, not to syslog.
+On Wed, Sep 07, 2022 at 12:43:30AM +0000, Tian, Kevin wrote:
+> > From: Christoph Hellwig
+> > Sent: Tuesday, September 6, 2022 5:42 PM
+> > 
+> > What is the point?  This adds indirect calls, and actually creates
+> > more boilerplate code in the drivers.  i.g. when using this code there
+> > is more, and harder to read code.
 > 
-> 1- we reuse the class-map added previously.
->    this reflects the single source of both syslog/trace events
+> The point is to align with struct device life cycle when it's introduced
+> to vfio_device. The object is released via put_device() then what would
+> be the alternative if the driver doesn't provide a @release callback?
 > 
-> 2- add a 2nd struct ddebug_classes_bitmap_param
->    refs 1, reusing it.
->    flags = "T", to enable trace-events on this callsite.
-> 
-> 3- module_param_cb([2]) - does the sysfs part
-> 
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> and with @release then naturally @init is also expected.
 
-All the drm patches (excluding nouveau) I haven't commented on:
+No, with a release no @init is expected.  The init method is one
+of the major obsfucations here, only topped by the weird
+vfio_alloc_device macro.  Yes, that saves about 4 lines of code
+in every driver, but places a burden on the struct layout and
+very much obsfucated things.  Without vfio_alloc_device and
+the init method I think much of this would make a lot more sense.
 
-Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+See the patch below that goes on top of this series to show how
+undoing these two would look on mbochs.  It it a slight reduction
+lines of code, but more readable and much less churn compared
+to the status before this series.
 
-I think nouveau I'll leave up to nouveau folks.
--Daniel
-
-
-
-> ---
->  drivers/gpu/drm/drm_print.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-> index c50edbf443d3..75d0cecd7e86 100644
-> --- a/drivers/gpu/drm/drm_print.c
-> +++ b/drivers/gpu/drm/drm_print.c
-> @@ -45,6 +45,9 @@
->  unsigned long __drm_debug;
->  EXPORT_SYMBOL(__drm_debug);
->  
-> +unsigned long __drm_trace;
-> +EXPORT_SYMBOL(__drm_trace);
-> +
->  MODULE_PARM_DESC(debug, "Enable debug output, where each bit enables a debug category.\n"
->  "\t\tBit 0 (0x01)  will enable CORE messages (drm core code)\n"
->  "\t\tBit 1 (0x02)  will enable DRIVER messages (drm controller code)\n"
-> @@ -77,6 +80,13 @@ static struct ddebug_class_param drm_debug_bitmap = {
->  	.map = &drm_debug_classes,
->  };
->  module_param_cb(debug, &param_ops_dyndbg_classes, &drm_debug_bitmap, 0600);
-> +
-> +static struct ddebug_class_param drm_trace_bitmap = {
-> +	.bits = &__drm_trace,
-> +	.flags = "T",
-> +	.map = &drm_debug_classes,
-> +};
-> +module_param_cb(tracecats, &param_ops_dyndbg_classes, &drm_trace_bitmap, 0600);
->  #endif
->  
->  void __drm_puts_coredump(struct drm_printer *p, const char *str)
-> -- 
-> 2.37.2
-> 
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
+index df95f25fbc0ede..7f01b335fd4dbd 100644
+--- a/samples/vfio-mdev/mbochs.c
++++ b/samples/vfio-mdev/mbochs.c
+@@ -505,14 +505,12 @@ static int mbochs_reset(struct mdev_state *mdev_state)
+ 	return 0;
+ }
+ 
+-static int mbochs_init_dev(struct vfio_device *vdev)
++static int mbochs_probe(struct mdev_device *mdev)
+ {
+-	struct mdev_state *mdev_state =
+-		container_of(vdev, struct mdev_state, vdev);
+-	struct mdev_device *mdev = to_mdev_device(vdev->dev);
++	int avail_mbytes = atomic_read(&mbochs_avail_mbytes);
+ 	const struct mbochs_type *type =
+ 		&mbochs_types[mdev_get_type_group_id(mdev)];
+-	int avail_mbytes = atomic_read(&mbochs_avail_mbytes);
++	struct mdev_state *mdev_state;
+ 	int ret = -ENOMEM;
+ 
+ 	do {
+@@ -521,10 +519,14 @@ static int mbochs_init_dev(struct vfio_device *vdev)
+ 	} while (!atomic_try_cmpxchg(&mbochs_avail_mbytes, &avail_mbytes,
+ 				     avail_mbytes - type->mbytes));
+ 
+-	mdev_state->vconfig = kzalloc(MBOCHS_CONFIG_SPACE_SIZE, GFP_KERNEL);
+-	if (!mdev_state->vconfig)
++	mdev_state = kzalloc(sizeof(struct mdev_state), GFP_KERNEL);
++	if (mdev_state == NULL)
+ 		goto err_avail;
+ 
++	mdev_state->vconfig = kzalloc(MBOCHS_CONFIG_SPACE_SIZE, GFP_KERNEL);
++	if (mdev_state->vconfig == NULL)
++		goto err_state;
++
+ 	mdev_state->memsize = type->mbytes * 1024 * 1024;
+ 	mdev_state->pagecount = mdev_state->memsize >> PAGE_SHIFT;
+ 	mdev_state->pages = kcalloc(mdev_state->pagecount,
+@@ -546,38 +548,33 @@ static int mbochs_init_dev(struct vfio_device *vdev)
+ 	mbochs_create_config_space(mdev_state);
+ 	mbochs_reset(mdev_state);
+ 
++	ret = vfio_init_device(&mdev_state->vdev, &mdev->dev, &mbochs_dev_ops);
++	if (ret)
++		goto err_mem;
++
++	ret = vfio_register_emulated_iommu_dev(&mdev_state->vdev);
++	if (ret) {
++		vfio_put_device(&mdev_state->vdev);
++		return ret;
++	}
++
+ 	dev_info(vdev->dev, "%s: %s, %d MB, %ld pages\n", __func__,
+ 		 type->name, type->mbytes, mdev_state->pagecount);
++
++	dev_set_drvdata(&mdev->dev, mdev_state);
+ 	return 0;
+ 
++err_mem:
++	kfree(mdev_state->pages);
+ err_vconfig:
+ 	kfree(mdev_state->vconfig);
++err_state:
++	kfree(mdev_state);
+ err_avail:
+ 	atomic_add(type->mbytes, &mbochs_avail_mbytes);
+ 	return ret;
+ }
+ 
+-static int mbochs_probe(struct mdev_device *mdev)
+-{
+-	struct mdev_state *mdev_state;
+-	int ret = -ENOMEM;
+-
+-	mdev_state = vfio_alloc_device(mdev_state, vdev, &mdev->dev,
+-				       &mbochs_dev_ops);
+-	if (IS_ERR(mdev_state))
+-		return PTR_ERR(mdev_state);
+-
+-	ret = vfio_register_emulated_iommu_dev(&mdev_state->vdev);
+-	if (ret)
+-		goto err_put_vdev;
+-	dev_set_drvdata(&mdev->dev, mdev_state);
+-	return 0;
+-
+-err_put_vdev:
+-	vfio_put_device(&mdev_state->vdev);
+-	return ret;
+-}
+-
+ static void mbochs_release_dev(struct vfio_device *vdev)
+ {
+ 	struct mdev_state *mdev_state =
+@@ -585,7 +582,7 @@ static void mbochs_release_dev(struct vfio_device *vdev)
+ 
+ 	kfree(mdev_state->pages);
+ 	kfree(mdev_state->vconfig);
+-	vfio_free_device(vdev);
++	kfree(vdev);
+ 	atomic_add(mdev_state->type->mbytes, &mbochs_avail_mbytes);
+ }
+ 
+@@ -1414,7 +1411,6 @@ static struct attribute_group *mdev_type_groups[] = {
+ 
+ static const struct vfio_device_ops mbochs_dev_ops = {
+ 	.close_device = mbochs_close_device,
+-	.init = mbochs_init_dev,
+ 	.release = mbochs_release_dev,
+ 	.read = mbochs_read,
+ 	.write = mbochs_write,
