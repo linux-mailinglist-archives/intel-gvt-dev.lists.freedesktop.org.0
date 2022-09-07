@@ -2,56 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 038C95B06CC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 16:32:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 13C055B0795
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 16:54:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5889310E786;
-	Wed,  7 Sep 2022 14:32:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC6F610E790;
+	Wed,  7 Sep 2022 14:54:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x542.google.com (mail-ed1-x542.google.com
- [IPv6:2a00:1450:4864:20::542])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 19F3410E78B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  7 Sep 2022 14:32:27 +0000 (UTC)
-Received: by mail-ed1-x542.google.com with SMTP id b16so20033422edd.4
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 07 Sep 2022 07:32:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date; bh=UTPjlhWN0j/3cl0uibj9IdU3K9tIHCNTd74bAPWV+BQ=;
- b=UtFlTSGHQz81OSpK49QGakNczTrN7BvVDcdecb2PlQLSH6U6g6YnfIOwEhF4HyopVw
- xF3rEa1JazWxVmoA4IZ4APHTWslJfRg5yYhTgDCuueeGynL8ZQ8rlmQ1XFto97Lt71ZJ
- j3Ra7mPDPEuM/14t68TI6JbC26x0Okvn0tFLgQTeFpImczwoq6TYczyXFG/k8mY/UwUL
- n4rphtthc3JujA/DBbZnDH2NqlI3e1mX42kS7zoBsDbrZwgnwP4UWzhHEqiLlccbumw3
- Wu+X+CCk1Fp6KNp6XYfEMT802FX63wwwnC1iqf8dYPeJE0BVyNRj/Y77DpMb+lFAEfsS
- NjnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date;
- bh=UTPjlhWN0j/3cl0uibj9IdU3K9tIHCNTd74bAPWV+BQ=;
- b=AUv7Mqx8h/10KUTtRBRdUn6Zlimf49FWGEP5yk8diR+0BoErUax1zDEqsEALMS+vq3
- TOHwMjFF3RM96jUmAcjn3SxMbOdn0LuipJirT5zqLMHE83BmfOlqVwq281oPWOx9kVtK
- J98JAIGpla5Bdhv1VdhqfEYXJnmjWBlHuEoibL0fyMS1ivbOYDQ9IJIBfHC7XpNoK3fO
- KTP8MgrziPhu5998Q3h5NAljsiJItrznwWFQvJswa2QBvRM1aeTXJy5XSif4loZh+WM8
- gGmIY/gNmf7nTfQdyZtArJapNI65xlg5+I0R928edm+HXyk0N1XwUSYIUd5CaYjiQ4BW
- ldXQ==
-X-Gm-Message-State: ACgBeo2FB2ResgXwRoQukpAVontJnrgMkLv6ZlZ+dvrW8sEeFtslzTT3
- yp73wpNH8Qpc5ZK1vO9eev2JIkHZDSbnk+q0Bzs=
-X-Google-Smtp-Source: AA6agR4u/dbCsJbsVZIBLL6h1UPerJ2TE45jgxUgoCjVrPyl8+wsl025ctgdSe/t/2vkl2wcEplmUnwM80u8Z9eZepA=
-X-Received: by 2002:a05:6402:51d1:b0:44b:ea34:6c0a with SMTP id
- r17-20020a05640251d100b0044bea346c0amr3314952edd.369.1662561145430; Wed, 07
- Sep 2022 07:32:25 -0700 (PDT)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6DFFA10E786;
+ Wed,  7 Sep 2022 14:54:04 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id DB1936194E;
+ Wed,  7 Sep 2022 14:54:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C091DC433D6;
+ Wed,  7 Sep 2022 14:54:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1662562443;
+ bh=FnTuP15XLzFNLiYzDllSBtNOTSW5KL/gP6XWVJ3ejpw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Ohdn/uVYqN+mXpJ77/NZg/rgPYe7ewGTDztOmZITM6VaNb8GEYm9/cGMFt2/tN2di
+ 2kYrgbXRjDM1SlGRmyajY20ani3Fxqdl2BpREJzjos+HupAJGq+F8Wr1EvJ9qVLgL3
+ /7Cvj2/vodNIOTEG60Q+aoMEXKhAQJBKdzBeDPPs=
+Date: Wed, 7 Sep 2022 16:54:00 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jim Cromie <jim.cromie@gmail.com>
+Subject: Re: [PATCH v6 21/57] dyndbg: test DECLARE_DYNDBG_CLASSMAP, sysfs nodes
+Message-ID: <YxiwiO+Ni/CvAO5Q@kroah.com>
+References: <20220904214134.408619-1-jim.cromie@gmail.com>
+ <20220904214134.408619-22-jim.cromie@gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a54:3fc4:0:0:0:0:0 with HTTP;
- Wed, 7 Sep 2022 07:32:24 -0700 (PDT)
-From: LUMAR CASEY <miriankushrat@gmail.com>
-Date: Wed, 7 Sep 2022 16:32:24 +0200
-Message-ID: <CAO4StN1OR4tXWWJAZ10p+-rJJ7qOsU8FxVS9cWv=PiegDVtnsA@mail.gmail.com>
-Subject: ATTENTION/PROPOSAL
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220904214134.408619-22-jim.cromie@gmail.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,25 +50,46 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: lumar.casey@outlook.com
+Cc: robdclark@gmail.com, daniel.vetter@ffwll.ch,
+ intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
+ linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, jbaron@akamai.com,
+ seanpaul@chromium.org, dri-devel@lists.freedesktop.org, joe@perches.com,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-ATTENTION
+On Sun, Sep 04, 2022 at 03:40:58PM -0600, Jim Cromie wrote:
+> Demonstrate use of DECLARE_DYNDBG_CLASSMAP macro, and expose them as
+> sysfs-nodes for testing.
 
-BUSINESS PARTNER,
+Wait, why sysfs?
 
-I AM LUMAR CASEY WORKING WITH AN INSURANCE FINANCIAL INSTITUTE, WITH
-MY POSITION AND PRIVILEGES I WAS ABLE TO SOURCE OUT AN OVER DUE
-PAYMENT OF 12.8 MILLION POUNDS THAT IS NOW SECURED WITH A SHIPPING
-DIPLOMATIC OUTLET.
+sysfs isn't for testing, why not use debugfs?
 
-I AM SEEKING YOUR PARTNERSHIP TO RECEIVE THIS CONSIGNMENT AS AS MY
-PARTNER TO INVEST THIS FUND INTO A PROSPEROUS INVESTMENT VENTURE IN
-YOUR COUNTRY.
 
-I AWAIT YOUR REPLY TO ENABLE US PROCEED WITH THIS BUSINESS PARTNERSHIP TOGETHER.
+> 
+> For each of the 4 class-map-types:
+> 
+>   - declare a class-map of that type,
+>   - declare the enum corresponding to those class-names
+>   - share _base across 0..30 range
+>   - add a __pr_debug_cls() call for each class-name
+>   - declare 2 sysnodes for each class-map
+>     for 'p' flag, and future 'T' flag
+> 
+> These declarations create the following sysfs parameter interface:
+> 
+>   :#> pwd
+>   /sys/module/test_dynamic_debug/parameters
+>   :#> ls
+>   T_disjoint_bits  T_disjoint_names  T_level_names  T_level_num  do_prints
+>   p_disjoint_bits  p_disjoint_names  p_level_names  p_level_num
 
-REGARDS,
+What is in these files?
 
-LUMAR CASEY
+For sysfs stuff, you need Documentation/ABI entries so that you can't
+abuse sysfs.  With debugfs, you can do anything you want :)
+
+thanks,
+
+greg k-h
