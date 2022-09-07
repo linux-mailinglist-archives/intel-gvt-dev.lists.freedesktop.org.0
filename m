@@ -1,66 +1,144 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C100B5AF451
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  6 Sep 2022 21:18:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC0B15AF90F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 02:43:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B043310E8B2;
-	Tue,  6 Sep 2022 19:18:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C3A4710E05F;
+	Wed,  7 Sep 2022 00:43:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wr1-x434.google.com (mail-wr1-x434.google.com
- [IPv6:2a00:1450:4864:20::434])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6048710E8B2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  6 Sep 2022 19:18:13 +0000 (UTC)
-Received: by mail-wr1-x434.google.com with SMTP id e13so16928039wrm.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 06 Sep 2022 12:18:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=ldW0aueJLSvFBgFoP+jVpya8KF5NDDRSTKWLEKQB0Mg=;
- b=UfB5K2IGJ3KmpZjfe/zyCnJmZ5c3Kq9j3d+0Rv76CZxF3H96scfi3BURNTLXDCp8NZ
- hD/ENVoNsH9mTdc8HeffjfefDZYsneYwEiy7VA2JNg6h7d2JdxWyHUXiPlQLdz4EP5rw
- 3mVD3HHGkOyrGMvtVhHpOPu/wTHimVHE+ZnGY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=ldW0aueJLSvFBgFoP+jVpya8KF5NDDRSTKWLEKQB0Mg=;
- b=cb3Kqfxqex0Sg1U0yhLJck5QHDRcw6G0OMhnmkQLkJ5oChfqPcrTMAe8ZBAEXruNvt
- xqIKCe7F07RviHe1+pbjdkJo/StVuY/5m6omkiWE+MZ9L9ho5XCId+GbXhjxwC+SpmKD
- fmZGvf12L0z00l2Eh462xnnBEPzjkL9MzvjLyvM2dHXkILXhgrn/GPfWAQtmAY7ajq1R
- 12YZreFhCS2TQ0erZCUyY8WkCiAXSdV7Csz98FNpslprkEjPzeK4/+qv36VaePuqBq28
- 5GrOFvlTMTfEgowKUmUHh5KTPLgBYIG5jTpEAoBkSiaFxNoC1D6H18vLIuGC1dd85cmg
- oM0w==
-X-Gm-Message-State: ACgBeo0oJ2O/rNFq9XXN0vP1fvecGXzZTucY/2ac7IEJ9j7Vp26kI341
- 0BrMtmLNQgz5ls4N0xZMAq1WEQ==
-X-Google-Smtp-Source: AA6agR7/xGFspJWbW+/38yyVTrYmpvw1aq1F4ekVwGK63qBo1VvKHy6ltg3qtJAHeQrqYUJh87qgVg==
-X-Received: by 2002:a5d:6d8f:0:b0:225:6285:47fb with SMTP id
- l15-20020a5d6d8f000000b00225628547fbmr29375256wrs.211.1662491891887; 
- Tue, 06 Sep 2022 12:18:11 -0700 (PDT)
-Received: from phenom.ffwll.local (212-51-149-33.fiber7.init7.net.
- [212.51.149.33]) by smtp.gmail.com with ESMTPSA id
- bd7-20020a05600c1f0700b003a331c6bffdsm15569682wmb.47.2022.09.06.12.18.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Sep 2022 12:18:11 -0700 (PDT)
-Date: Tue, 6 Sep 2022 21:18:09 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v4 00/41] DYNDBG: opt-in class'd debug for modules, use
- in drm.
-Message-ID: <Yxec8VRCQT5fJdqk@phenom.ffwll.local>
-References: <20220720153233.144129-1-jim.cromie@gmail.com>
- <CAJfuBxxPRj-u5S45pPfAEaE46ji0--MTVxryEAUPe1+1c1jgEw@mail.gmail.com>
- <17628790-3905-460d-8734-981cfa8e7e51@akamai.com>
- <YvUz2Nk6YHl+jVwR@phenom.ffwll.local> <YvXtQ7/FJFSVXlGU@kroah.com>
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 66B6D10E023;
+ Wed,  7 Sep 2022 00:43:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1662511428; x=1694047428;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=u04aqMdnOB94il4dLinvsH8yANhdwgUr0G6Yi4qKvwQ=;
+ b=OBBGkluRefDG0a6vseIu+X9LhgnqdzYqtcZ0KZZA7FH5PXM60ustLKRQ
+ bzFZOk8pyyZaFMZFfu+F7F68AZwtq8T/gQ1Og1ByklAHO94QUsCn1irig
+ HntKEoitOL7pMRZzBZGhGDIkaOjA1LnDnYAVnOnsEUDeJFa2vnVGl5ZSa
+ rbTutskH9kHci4lNRrUMhbxIGD+Ssgth503WkPEHGCfUhNJg9t0YrC8jm
+ grBAMgeqFLLcHMmho6JzY4kZqmOL0dVwUmXy8FUglr0UrKd9yqNp+ETaw
+ uLIqnVChV51rhAfs/3QX5t4J+CjvDpGIAhwtWValwv9XCZw/Rb341mTQO g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="295479687"
+X-IronPort-AV: E=Sophos;i="5.93,295,1654585200"; d="scan'208";a="295479687"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Sep 2022 17:43:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,295,1654585200"; d="scan'208";a="717922857"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga002.fm.intel.com with ESMTP; 06 Sep 2022 17:43:46 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Tue, 6 Sep 2022 17:43:46 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Tue, 6 Sep 2022 17:43:45 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Tue, 6 Sep 2022 17:43:45 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Tue, 6 Sep 2022 17:43:45 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A1sXhWmvgUiP2Mmn60X87ojTzkrX/aq0DFV3oiSGVpO36NLhaxaTpVdD9k3nXFY2xEVa9opN+oJnp4Mw7x4V6641S2rEt3KuGSuBG8SGmBeFz/y+o4fBzyKC5LdOZydd8iJRXIQH6rKi9EPjMnBPWlsn9cUdcR9Xbtz5hKnNfH3Didin+BylkyrT3Rf4EfQaKTEF5/FW2rPRgfquMXMwUEm+tr4nFMq0Bgjtlqgn8CZd1dKTAFY0LH9e4AoNvJ/Cc3+FhftdeGfk+U2rJ+veAwZh/Caz/5h3vXaNAOZB+MOnpoGu/U+eJ9xT/s3fT9/mX2dpJ+DSwxeg6g/fz8mrvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=M0YjOaPJoJbEx/hzu/ioO/3e5KVgLK6XcPsMTO1Fi+w=;
+ b=To7wBMSV3Bt+xneEW/xFZsERuQvO0NXx8Yjwno2jUyOXPVPaCi83A/PJif6XmgOq1c+16kQfb6SoXcQotWQ51CDn2vmFOq3sp+V04H6aws7YiXcwLrzjaptvE7tDt8BuT0aLafVO0r+SjcyGmCwj6B6LDIFPL3v841La4z5hD0byQZUFfQKaLGPuwMYjfkBf4jVl1s6vKNET2730D/a1LASMx4TogLRG5LDrAFONbrXSqXquwZl8egpQ5hPRe8JE7Rij8Cdnivm4MYLhYkCrQ/ulTuHK1NP/HZpsSLkL3sycuzujfrPhqZYJnHCKlKRGm2xTppMprYLTC9OZ9uAF1Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by BN7PR11MB2674.namprd11.prod.outlook.com (2603:10b6:406:b2::29)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5588.18; Wed, 7 Sep
+ 2022 00:43:30 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::a435:3eff:aa83:73d7]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::a435:3eff:aa83:73d7%5]) with mapi id 15.20.5588.018; Wed, 7 Sep 2022
+ 00:43:30 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: RE: [PATCH v2 01/15] vfio: Add helpers for unifying vfio_device life
+ cycle
+Thread-Topic: [PATCH v2 01/15] vfio: Add helpers for unifying vfio_device life
+ cycle
+Thread-Index: AQHYvdLyg4z9as64RUeGfBAXbmJkJK3SLhOAgAD5fBA=
+Date: Wed, 7 Sep 2022 00:43:30 +0000
+Message-ID: <BN9PR11MB5276EE6209C1E3D4662368DC8C419@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20220901143747.32858-1-kevin.tian@intel.com>
+ <20220901143747.32858-2-kevin.tian@intel.com>
+ <YxcV05AVN4kqdPX6@infradead.org>
+In-Reply-To: <YxcV05AVN4kqdPX6@infradead.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: cbf490c5-876c-4079-c770-08da9069fc1f
+x-ms-traffictypediagnostic: BN7PR11MB2674:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 2ElGJf81cUtu+lOPMCOYEnzfh71krAvwAjX+twh93HMHq4Q7XHcUjDV1EqeAt/n4h0Ln4OYnlV0wN/0R0qMC2ks2YystrO7PPANABle2eAd8BzMNn8Nxg1z4a0BxJkqKNuOmO1Gvc7so2zB5fvGZ5hPMoZopQVij471wN4cS7S+i494FntbF7ESR8Pbsc6JZ2C91n+e1sIhK566SewVEiPLJZ0TxYK9dE/eb6K02wBRgbgao8j3ueLCMgr8gijzJLxEdsbevhuQBplDH8G9es8o+lfUS58Y4G7DKWD+MgU9lM1KIYUoaMid8xpmNDxeSBMKdNgYtaLdXoSbbROgTFBQCr21s7/JZNq8xD3jY9kWncqfoyuClsSYtBGymFtn/IVCNs76oBnC1oaUcichbdqiErY2O8RJnsGwTTR1ZYQ0h70dKUKaAlBCY33hGTXjlUXZoPaqtqx88DkEPFb65mttXgQUffmOUZ/OA+2+kAtGo76Qhu0303qS4LmSQ3k3fMiNisVZjAWVucN2yR59CipgPWf5aarLC0RCgLwCGpVLu8ewi8yJaVPDQ4T9r0GwpOmVcJ+u2jpymqn2hdNQTeE9T5TVGd0x8lasiXn8VtyLY7hPW07vLwABQQ1g1uLhmfWg9EXYawx93utqJHi/Z2RgPxpr4AyMUsEI6IfvptYMKX0rhKYwYhp57PUHso73+vYeSHQsxsv3soBnkmFCV5j6UNQcpHTcxxcx5CVdHanTrort/zsi5CkK+FDOx3gfodqMAFTasihLpNFztkLSSNQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(366004)(346002)(376002)(396003)(136003)(39860400002)(122000001)(76116006)(8676002)(66556008)(82960400001)(64756008)(66476007)(4326008)(66946007)(38100700002)(186003)(66446008)(71200400001)(41300700001)(316002)(6506007)(54906003)(7696005)(9686003)(6916009)(26005)(8936002)(33656002)(86362001)(478600001)(5660300002)(2906002)(7406005)(7416002)(52536014)(4744005)(55016003)(38070700005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?GTtuYcC0DGbWzmDsHx90EAwc0EuPh13aM9ZW6JY2QlSBauOac0FpGjuCGlc1?=
+ =?us-ascii?Q?Ly0YkXE8RhZJmFzk8X0SnqIa3EnGIcQQsrC0M5TFX8fW6T9pldyzMYip6cMt?=
+ =?us-ascii?Q?4RI+6G+QYR6WUr/5K8ha5DpT/GCWq5j9B68zTyAJpu0eQv0wno21zCjP7M9i?=
+ =?us-ascii?Q?++n6Pk16OiGca4cTtLdsTQcmIKq7w0ioxBiXNzthpefACiqOlNmsUIEzimzS?=
+ =?us-ascii?Q?4x+ZPVnCYxTcNRKuDsmsL743CJHtJu3oiTBmYj6jtXRNsG2n1Cs3rqTiuP7V?=
+ =?us-ascii?Q?3Qs6g66xcR1gdcPhbtJ05DV8nIUP2V/MrkeKgUmRI+OHEsEIx7OnOP+DJQU0?=
+ =?us-ascii?Q?wOvk1L2ox9fRbNWQSVs5TMFAlw6qCxzDxbIZx0TH4lBaWnzYrxLORCLAkDi8?=
+ =?us-ascii?Q?Esr9M0wBLwFH4oATQZ2kx0SGFRpza+DfoQCj7xjaqYS9nv4MFPOlKZeIY6Zr?=
+ =?us-ascii?Q?5QkFRk5cZnKDjsBjhvDfrLnl/41J6B1wBL6Wz4yIK4MrHdlD6jRtmmNobwUu?=
+ =?us-ascii?Q?hQxlnpTkNkzs7MqW3dgnoOOUP85qWU/aH/eD4FHB0zFpDr3Yu06n/HhQGxw3?=
+ =?us-ascii?Q?ssHzdt05Y5pXfzDmdu4yUiDpzTM+w2b+/FaXjzoKXX/LvZHILOs0L6Kdjssn?=
+ =?us-ascii?Q?Cz/Z2a000WYA3d6v/DCDECGr2rE1i2XODyK78ENiTInAWx0796oNsf8Tdomr?=
+ =?us-ascii?Q?X5oMCygw2JfLOGd0lNoTGq0Mo5gZ15jCOUaKY/qz4llTNBdRZ52Q3d5K2Avx?=
+ =?us-ascii?Q?tD19pKxxZTCUSJ7BFqMj12ZtkMRIOH3f+vHlk+GmrLRCyIXO2sgFlKp5uHnR?=
+ =?us-ascii?Q?SBbMoRlVTyDAGXjj9t8i4ONRGQi1MgaH00hTEW033yh7g3t2E6yhiesk0lXG?=
+ =?us-ascii?Q?d4uQmJxJiWIQRtvVQ9fzka+BxF47QsREn4Xqn3A3BF/NVsg0f6mlpMOS05JR?=
+ =?us-ascii?Q?2nVxsGx4nfHqrU8yCmlbCNbBwiLWaxqQaiygr4mgvFWYtlwwX2EJRsGrLuQG?=
+ =?us-ascii?Q?IggzNAxBG0gfW7fw/klaOKCzJKpuOmTR/Gl3xk8SISG0aWjSZxBba6bra+9S?=
+ =?us-ascii?Q?FlmlBB8llI9lwkrlZRtgsd0IR8ybZIN92TMUlAKE2EtdAqVYExj4MVjqCV6D?=
+ =?us-ascii?Q?m66QLheNnUGG4DgT7mA+sMPblfwAQ5xx+1IS5rzM8cLB7+fcsrgTzN/8RAiP?=
+ =?us-ascii?Q?m9net5dILAbViu6m2DcWaLcrCbHEc5TydASrjT46fR4vtQvCuhLq2cxFbZPZ?=
+ =?us-ascii?Q?e/Pet51Q5WOKRfc6AC2NevEHzJFjbMiugLIhC7hsYTQ4chuXfqFk6tDO88MK?=
+ =?us-ascii?Q?sWqEIpE027vwcPH68Y0Y5X9R+BijX0wWXgtNl/OKKQkvz+fgkJxKLB+IpP1I?=
+ =?us-ascii?Q?PScvvSBK/Q0hBF+xONGp4N8WcKj4X6hGcXzeKtUNU7/4X35+VQmTSQdqRgzS?=
+ =?us-ascii?Q?94PGOFc7cQByNMxRwhNQpflZrrCb6F7IQF8zIaETVlrR6i/tudZE/nLTh/MO?=
+ =?us-ascii?Q?uXwUUZlpd0X+8G8el71sgmNHpYmun6J4DA/Wfl7ygDEpN2Xz2GsTQGWQ5p6a?=
+ =?us-ascii?Q?VaSEdK0+EM6SBk4WeccyJXlUtV3VbWkAYm3fGT8r?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YvXtQ7/FJFSVXlGU@kroah.com>
-X-Operating-System: Linux phenom 5.18.0-4-amd64 
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cbf490c5-876c-4079-c770-08da9069fc1f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Sep 2022 00:43:30.2097 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: O8iSCugMjw6X4cze8kIKrHk7hUSSKW/+Wy1T8Yc5UlgBmLYdgT1hoeZ4xEGXFwjqs8QLIMrVIqHCQQRFNbwOlw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR11MB2674
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,67 +151,59 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jim.cromie@gmail.com, Daniel Vetter <daniel.vetter@ffwll.ch>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- robdclark@gmail.com, amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Jason Baron <jbaron@akamai.com>, Sean Paul <seanpaul@chromium.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel@ffwll.ch>,
- intel-gvt-dev@lists.freedesktop.org
+Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Peter
+ Oberparleiter <oberpar@linux.ibm.com>, Kirti Wankhede <kwankhede@nvidia.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>, Diana
+ Craciun <diana.craciun@oss.nxp.com>, Alexander Gordeev <agordeev@linux.ibm.com>,
+ Longfang Liu <liulongfang@huawei.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Leon
+ Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>, Jason
+ Gunthorpe <jgg@ziepe.ca>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>, Jason Herne <jjherne@linux.ibm.com>, Eric
+ Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Aug 12, 2022 at 08:03:47AM +0200, Greg KH wrote:
-> On Thu, Aug 11, 2022 at 06:52:40PM +0200, Daniel Vetter wrote:
-> > On Wed, Aug 03, 2022 at 04:13:05PM -0400, Jason Baron wrote:
-> > > 
-> > > 
-> > > On 8/3/22 15:56, jim.cromie@gmail.com wrote:
-> > > > On Wed, Jul 20, 2022 at 9:32 AM Jim Cromie <jim.cromie@gmail.com> wrote:
-> > > >>
-> > > > 
-> > > >> Hi Jason, Greg, DRM-folk,
-> > > >>
-> > > >> This adds 'typed' "class FOO" support to dynamic-debug, where 'typed'
-> > > >> means either DISJOINT (like drm debug categories), or VERBOSE (like
-> > > >> nouveau debug-levels).  Use it in DRM modules: core, helpers, and in
-> > > >> drivers i915, amdgpu, nouveau.
-> > > >>
-> > > > 
-> > > > This revision fell over, on a conflict with something in drm-MUMBLE
-> > > > 
-> > > > Error: patch https://urldefense.com/v3/__https://patchwork.freedesktop.org/api/1.0/series/106427/revisions/2/mbox/__;!!GjvTz_vk!UCPl5Uf32cDVwwysMTfaLwoGLWomargFXuR8HjBA3xsUOjxXHXC5hneAkP4iWK91yc-LjjJxWW89-51Z$ 
-> > > > not applied
-> > > > Applying: dyndbg: fix static_branch manipulation
-> > > > Applying: dyndbg: fix module.dyndbg handling
-> > > > Applying: dyndbg: show both old and new in change-info
-> > > > Applying: dyndbg: reverse module walk in cat control
-> > > > Applying: dyndbg: reverse module.callsite walk in cat control
-> > > > Applying: dyndbg: use ESCAPE_SPACE for cat control
-> > > > Applying: dyndbg: let query-modname override actual module name
-> > > > Applying: dyndbg: add test_dynamic_debug module
-> > > > Applying: dyndbg: drop EXPORTed dynamic_debug_exec_queries
-> > > > 
-> > > > Jason,
-> > > > those above are decent maintenance patches, particularly the drop export.
-> > > > It would be nice to trim this unused api this cycle.
-> > > 
-> > > Hi Jim,
-> > > 
-> > > Agreed - I was thinking the same thing. Feel free to add
-> > > Acked-by: Jason Baron <jbaron@akamai.com> to those first 9.
-> > 
-> > Does Greg KH usually pick up dyndbg patches or someone else or do I need
-> > to do something? Would be great to get some movement here since -rc1 goes
-> > out and merging will restart next week.
-> 
-> Yes, I can take these into my tree after -rc1 is out.
+> From: Christoph Hellwig
+> Sent: Tuesday, September 6, 2022 5:42 PM
+>=20
+> What is the point?  This adds indirect calls, and actually creates
+> more boilerplate code in the drivers.  i.g. when using this code there
+> is more, and harder to read code.
 
-[uncovering from an absolutely impressive cascade of holes :-(]
+The point is to align with struct device life cycle when it's introduced
+to vfio_device. The object is released via put_device() then what would
+be the alternative if the driver doesn't provide a @release callback?
 
-Did this happen and I can stop worrying here? I'd like to make sure these
-drm debug infra improvements keep moving.
--Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+and with @release then naturally @init is also expected.
+
+Most added code is in patch1 for implementing new helpers and
+patch15 for introducing struct device.
+
+Remaining addition is relatively small when scattered in each driver
+and most is due to creating new functions hence new local variables.
+
+and IMHO the readability is improved as it clearly contains the
+init/release logic around the device object.
+
+Thanks
+Kevin
