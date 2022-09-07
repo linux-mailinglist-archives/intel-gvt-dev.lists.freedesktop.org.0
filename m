@@ -1,144 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC0B15AF90F
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 02:43:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 128255AFAAA
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Sep 2022 05:33:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C3A4710E05F;
-	Wed,  7 Sep 2022 00:43:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3ADEE10E0C7;
+	Wed,  7 Sep 2022 03:33:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 66B6D10E023;
- Wed,  7 Sep 2022 00:43:48 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4F27210E0C7;
+ Wed,  7 Sep 2022 03:33:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1662511428; x=1694047428;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=u04aqMdnOB94il4dLinvsH8yANhdwgUr0G6Yi4qKvwQ=;
- b=OBBGkluRefDG0a6vseIu+X9LhgnqdzYqtcZ0KZZA7FH5PXM60ustLKRQ
- bzFZOk8pyyZaFMZFfu+F7F68AZwtq8T/gQ1Og1ByklAHO94QUsCn1irig
- HntKEoitOL7pMRZzBZGhGDIkaOjA1LnDnYAVnOnsEUDeJFa2vnVGl5ZSa
- rbTutskH9kHci4lNRrUMhbxIGD+Ssgth503WkPEHGCfUhNJg9t0YrC8jm
- grBAMgeqFLLcHMmho6JzY4kZqmOL0dVwUmXy8FUglr0UrKd9yqNp+ETaw
- uLIqnVChV51rhAfs/3QX5t4J+CjvDpGIAhwtWValwv9XCZw/Rb341mTQO g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="295479687"
-X-IronPort-AV: E=Sophos;i="5.93,295,1654585200"; d="scan'208";a="295479687"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ t=1662521616; x=1694057616;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=SfejAOY8Vh2jAUqBZ0f9V/aBunIXhhUCDsNMgGKnSt4=;
+ b=ZkqWHOHQ8twSwK/Lp5Eiloib1aWA3cMd4v6EOVv8pPIaXBIt77w5IG/5
+ b/gOSVM0myjuWjskiyhAXJnARlB9xIZW6YP6O64YEdHUSt9Pkj4ggcifd
+ hH6zmsXY5LWIeZSe8nF51njH6gn7bTpraMsBMS19lC0kQ67d+ys2xYE7w
+ igknLeUy59aWEq0DRdVKkivGePP3SWO3IuEt21MAt5PyN3CSKrIvBz6nK
+ Ax0Ztpwa60Os4mp+rnm5SP1w9O5Esh/vqyl4DCfv2++Z9Eju+d5iY2Y/A
+ CjeZ/NdjkYxxgbXEOGaiLCx9p0xkiE+mWlYTKfUQwsyX6RsUM/912524D A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="295503968"
+X-IronPort-AV: E=Sophos;i="5.93,295,1654585200"; 
+ d="asc'?scan'208";a="295503968"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Sep 2022 17:43:47 -0700
+ 06 Sep 2022 20:33:35 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,295,1654585200"; d="scan'208";a="717922857"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga002.fm.intel.com with ESMTP; 06 Sep 2022 17:43:46 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Tue, 6 Sep 2022 17:43:46 -0700
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Tue, 6 Sep 2022 17:43:45 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Tue, 6 Sep 2022 17:43:45 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Tue, 6 Sep 2022 17:43:45 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A1sXhWmvgUiP2Mmn60X87ojTzkrX/aq0DFV3oiSGVpO36NLhaxaTpVdD9k3nXFY2xEVa9opN+oJnp4Mw7x4V6641S2rEt3KuGSuBG8SGmBeFz/y+o4fBzyKC5LdOZydd8iJRXIQH6rKi9EPjMnBPWlsn9cUdcR9Xbtz5hKnNfH3Didin+BylkyrT3Rf4EfQaKTEF5/FW2rPRgfquMXMwUEm+tr4nFMq0Bgjtlqgn8CZd1dKTAFY0LH9e4AoNvJ/Cc3+FhftdeGfk+U2rJ+veAwZh/Caz/5h3vXaNAOZB+MOnpoGu/U+eJ9xT/s3fT9/mX2dpJ+DSwxeg6g/fz8mrvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=M0YjOaPJoJbEx/hzu/ioO/3e5KVgLK6XcPsMTO1Fi+w=;
- b=To7wBMSV3Bt+xneEW/xFZsERuQvO0NXx8Yjwno2jUyOXPVPaCi83A/PJif6XmgOq1c+16kQfb6SoXcQotWQ51CDn2vmFOq3sp+V04H6aws7YiXcwLrzjaptvE7tDt8BuT0aLafVO0r+SjcyGmCwj6B6LDIFPL3v841La4z5hD0byQZUFfQKaLGPuwMYjfkBf4jVl1s6vKNET2730D/a1LASMx4TogLRG5LDrAFONbrXSqXquwZl8egpQ5hPRe8JE7Rij8Cdnivm4MYLhYkCrQ/ulTuHK1NP/HZpsSLkL3sycuzujfrPhqZYJnHCKlKRGm2xTppMprYLTC9OZ9uAF1Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by BN7PR11MB2674.namprd11.prod.outlook.com (2603:10b6:406:b2::29)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5588.18; Wed, 7 Sep
- 2022 00:43:30 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::a435:3eff:aa83:73d7]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::a435:3eff:aa83:73d7%5]) with mapi id 15.20.5588.018; Wed, 7 Sep 2022
- 00:43:30 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: RE: [PATCH v2 01/15] vfio: Add helpers for unifying vfio_device life
- cycle
-Thread-Topic: [PATCH v2 01/15] vfio: Add helpers for unifying vfio_device life
- cycle
-Thread-Index: AQHYvdLyg4z9as64RUeGfBAXbmJkJK3SLhOAgAD5fBA=
-Date: Wed, 7 Sep 2022 00:43:30 +0000
-Message-ID: <BN9PR11MB5276EE6209C1E3D4662368DC8C419@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <20220901143747.32858-1-kevin.tian@intel.com>
- <20220901143747.32858-2-kevin.tian@intel.com>
- <YxcV05AVN4kqdPX6@infradead.org>
-In-Reply-To: <YxcV05AVN4kqdPX6@infradead.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: cbf490c5-876c-4079-c770-08da9069fc1f
-x-ms-traffictypediagnostic: BN7PR11MB2674:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 2ElGJf81cUtu+lOPMCOYEnzfh71krAvwAjX+twh93HMHq4Q7XHcUjDV1EqeAt/n4h0Ln4OYnlV0wN/0R0qMC2ks2YystrO7PPANABle2eAd8BzMNn8Nxg1z4a0BxJkqKNuOmO1Gvc7so2zB5fvGZ5hPMoZopQVij471wN4cS7S+i494FntbF7ESR8Pbsc6JZ2C91n+e1sIhK566SewVEiPLJZ0TxYK9dE/eb6K02wBRgbgao8j3ueLCMgr8gijzJLxEdsbevhuQBplDH8G9es8o+lfUS58Y4G7DKWD+MgU9lM1KIYUoaMid8xpmNDxeSBMKdNgYtaLdXoSbbROgTFBQCr21s7/JZNq8xD3jY9kWncqfoyuClsSYtBGymFtn/IVCNs76oBnC1oaUcichbdqiErY2O8RJnsGwTTR1ZYQ0h70dKUKaAlBCY33hGTXjlUXZoPaqtqx88DkEPFb65mttXgQUffmOUZ/OA+2+kAtGo76Qhu0303qS4LmSQ3k3fMiNisVZjAWVucN2yR59CipgPWf5aarLC0RCgLwCGpVLu8ewi8yJaVPDQ4T9r0GwpOmVcJ+u2jpymqn2hdNQTeE9T5TVGd0x8lasiXn8VtyLY7hPW07vLwABQQ1g1uLhmfWg9EXYawx93utqJHi/Z2RgPxpr4AyMUsEI6IfvptYMKX0rhKYwYhp57PUHso73+vYeSHQsxsv3soBnkmFCV5j6UNQcpHTcxxcx5CVdHanTrort/zsi5CkK+FDOx3gfodqMAFTasihLpNFztkLSSNQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(366004)(346002)(376002)(396003)(136003)(39860400002)(122000001)(76116006)(8676002)(66556008)(82960400001)(64756008)(66476007)(4326008)(66946007)(38100700002)(186003)(66446008)(71200400001)(41300700001)(316002)(6506007)(54906003)(7696005)(9686003)(6916009)(26005)(8936002)(33656002)(86362001)(478600001)(5660300002)(2906002)(7406005)(7416002)(52536014)(4744005)(55016003)(38070700005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?GTtuYcC0DGbWzmDsHx90EAwc0EuPh13aM9ZW6JY2QlSBauOac0FpGjuCGlc1?=
- =?us-ascii?Q?Ly0YkXE8RhZJmFzk8X0SnqIa3EnGIcQQsrC0M5TFX8fW6T9pldyzMYip6cMt?=
- =?us-ascii?Q?4RI+6G+QYR6WUr/5K8ha5DpT/GCWq5j9B68zTyAJpu0eQv0wno21zCjP7M9i?=
- =?us-ascii?Q?++n6Pk16OiGca4cTtLdsTQcmIKq7w0ioxBiXNzthpefACiqOlNmsUIEzimzS?=
- =?us-ascii?Q?4x+ZPVnCYxTcNRKuDsmsL743CJHtJu3oiTBmYj6jtXRNsG2n1Cs3rqTiuP7V?=
- =?us-ascii?Q?3Qs6g66xcR1gdcPhbtJ05DV8nIUP2V/MrkeKgUmRI+OHEsEIx7OnOP+DJQU0?=
- =?us-ascii?Q?wOvk1L2ox9fRbNWQSVs5TMFAlw6qCxzDxbIZx0TH4lBaWnzYrxLORCLAkDi8?=
- =?us-ascii?Q?Esr9M0wBLwFH4oATQZ2kx0SGFRpza+DfoQCj7xjaqYS9nv4MFPOlKZeIY6Zr?=
- =?us-ascii?Q?5QkFRk5cZnKDjsBjhvDfrLnl/41J6B1wBL6Wz4yIK4MrHdlD6jRtmmNobwUu?=
- =?us-ascii?Q?hQxlnpTkNkzs7MqW3dgnoOOUP85qWU/aH/eD4FHB0zFpDr3Yu06n/HhQGxw3?=
- =?us-ascii?Q?ssHzdt05Y5pXfzDmdu4yUiDpzTM+w2b+/FaXjzoKXX/LvZHILOs0L6Kdjssn?=
- =?us-ascii?Q?Cz/Z2a000WYA3d6v/DCDECGr2rE1i2XODyK78ENiTInAWx0796oNsf8Tdomr?=
- =?us-ascii?Q?X5oMCygw2JfLOGd0lNoTGq0Mo5gZ15jCOUaKY/qz4llTNBdRZ52Q3d5K2Avx?=
- =?us-ascii?Q?tD19pKxxZTCUSJ7BFqMj12ZtkMRIOH3f+vHlk+GmrLRCyIXO2sgFlKp5uHnR?=
- =?us-ascii?Q?SBbMoRlVTyDAGXjj9t8i4ONRGQi1MgaH00hTEW033yh7g3t2E6yhiesk0lXG?=
- =?us-ascii?Q?d4uQmJxJiWIQRtvVQ9fzka+BxF47QsREn4Xqn3A3BF/NVsg0f6mlpMOS05JR?=
- =?us-ascii?Q?2nVxsGx4nfHqrU8yCmlbCNbBwiLWaxqQaiygr4mgvFWYtlwwX2EJRsGrLuQG?=
- =?us-ascii?Q?IggzNAxBG0gfW7fw/klaOKCzJKpuOmTR/Gl3xk8SISG0aWjSZxBba6bra+9S?=
- =?us-ascii?Q?FlmlBB8llI9lwkrlZRtgsd0IR8ybZIN92TMUlAKE2EtdAqVYExj4MVjqCV6D?=
- =?us-ascii?Q?m66QLheNnUGG4DgT7mA+sMPblfwAQ5xx+1IS5rzM8cLB7+fcsrgTzN/8RAiP?=
- =?us-ascii?Q?m9net5dILAbViu6m2DcWaLcrCbHEc5TydASrjT46fR4vtQvCuhLq2cxFbZPZ?=
- =?us-ascii?Q?e/Pet51Q5WOKRfc6AC2NevEHzJFjbMiugLIhC7hsYTQ4chuXfqFk6tDO88MK?=
- =?us-ascii?Q?sWqEIpE027vwcPH68Y0Y5X9R+BijX0wWXgtNl/OKKQkvz+fgkJxKLB+IpP1I?=
- =?us-ascii?Q?PScvvSBK/Q0hBF+xONGp4N8WcKj4X6hGcXzeKtUNU7/4X35+VQmTSQdqRgzS?=
- =?us-ascii?Q?94PGOFc7cQByNMxRwhNQpflZrrCb6F7IQF8zIaETVlrR6i/tudZE/nLTh/MO?=
- =?us-ascii?Q?uXwUUZlpd0X+8G8el71sgmNHpYmun6J4DA/Wfl7ygDEpN2Xz2GsTQGWQ5p6a?=
- =?us-ascii?Q?VaSEdK0+EM6SBk4WeccyJXlUtV3VbWkAYm3fGT8r?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="5.93,295,1654585200"; 
+ d="asc'?scan'208";a="591521197"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
+ by orsmga006.jf.intel.com with ESMTP; 06 Sep 2022 20:33:31 -0700
+Date: Wed, 7 Sep 2022 11:07:54 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Zheng Hacker <hackerzheng666@gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
+Message-ID: <20220907030754.GU1089@zhen-hp.sh.intel.com>
+References: <tencent_E1BBF05904DFB73C478DCD592740AAE0780A@qq.com>
+ <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
+ <CAJedcCw1eJqjSK+yR7eQMDheNtH3Mjm+viwt00xAhnmrfpq2pw@mail.gmail.com>
+ <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
+ <YxWtfjfpNsoPUrgh@kroah.com>
+ <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cbf490c5-876c-4079-c770-08da9069fc1f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Sep 2022 00:43:30.2097 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: O8iSCugMjw6X4cze8kIKrHk7hUSSKW/+Wy1T8Yc5UlgBmLYdgT1hoeZ4xEGXFwjqs8QLIMrVIqHCQQRFNbwOlw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR11MB2674
-X-OriginatorOrg: intel.com
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="kGQlNN4Ir6FkfZg7"
+Content-Disposition: inline
+In-Reply-To: <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -151,59 +63,111 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Peter
- Oberparleiter <oberpar@linux.ibm.com>, Kirti Wankhede <kwankhede@nvidia.com>,
- Vineeth Vijayan <vneethv@linux.ibm.com>, Diana
- Craciun <diana.craciun@oss.nxp.com>, Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Leon
- Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>, Jason
- Gunthorpe <jgg@ziepe.ca>, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, Jason Herne <jjherne@linux.ibm.com>, Eric
- Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: jani.nikula@linux.intel.com, tvrtko.ursulin@linux.intel.com,
+ security@kernel.org, alex000young@gmail.com, airlied@linux.ie,
+ Greg KH <gregkh@linuxfoundation.org>, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, xmzyshypnc <1002992920@qq.com>,
+ zhenyuw@linux.intel.com, daniel@ffwll.ch, rodrigo.vivi@intel.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Christoph Hellwig
-> Sent: Tuesday, September 6, 2022 5:42 PM
+
+--kGQlNN4Ir6FkfZg7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2022.09.06 19:36:56 +0800, Zheng Hacker wrote:
+> Hi Greg,
 >=20
-> What is the point?  This adds indirect calls, and actually creates
-> more boilerplate code in the drivers.  i.g. when using this code there
-> is more, and harder to read code.
+> Alex has explained how we figured out the patch. We did analyze the
+> code and found it possible to reach the vulnerability code. But we
+> have no physical device in hand to test the driver. So we'd like to
+> discuss with developers to see if the issue exists or not.
+>=20
+> Best regards,
+> Zheng Wang.
+>=20
+> Greg KH <gregkh@linuxfoundation.org> ???2022???9???5????????? 16:04??????=
+???
+> >
+> > On Mon, Sep 05, 2022 at 03:46:09PM +0800, Zheng Hacker wrote:
+> > > I rewrote the letter. Hope it works.
+> > >
+> > > There is a double-free security bug in split_2MB_gtt_entry.
+> > >
+> > > Here is a calling chain :
+> > > ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entry.
+> > > If intel_gvt_dma_map_guest_page failed, it will call
+> > > ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
+> > > kfree(spt). But the caller does not notice that, and it will call
+> > > ppgtt_free_spt again in error path.
+> > >
 
-The point is to align with struct device life cycle when it's introduced
-to vfio_device. The object is released via put_device() then what would
-be the alternative if the driver doesn't provide a @release callback?
+It's a little mess in code so in theory it might be possible but
+intel_gvt_dma_map_guest_page won't fail in practise...
 
-and with @release then naturally @init is also expected.
+> > > Fix this by returning the result of ppgtt_invalidate_spt to split_2MB=
+_gtt_entry.
+> > >
 
-Most added code is in patch1 for implementing new helpers and
-patch15 for introducing struct device.
+I don't see why changing ret value can fix this issue, as it doesn't change
+any behavior e.g caller of ppgtt_populate_spt to handle possible different =
+error return.
 
-Remaining addition is relatively small when scattered in each driver
-and most is due to creating new functions hence new local variables.
+As current code looks assuming that ppgtt_invalidate_spt would free spt in =
+good case,
+I think the real cleanup should split that assumption and handle free in er=
+ror case properly.
 
-and IMHO the readability is improved as it clearly contains the
-init/release logic around the device object.
+> > > Signed-off-by: Zheng Wang
 
-Thanks
-Kevin
+This misses proper email address.
+
+thanks
+
+> > >
+> > > ---
+> > >  drivers/gpu/drm/i915/gvt/gtt.c | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gv=
+t/gtt.c
+> > > index ce0eb03709c3..9f14fded8c0c 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> > > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> > > @@ -1215,7 +1215,7 @@ static int split_2MB_gtt_entry(struct intel_vgp=
+u *vgpu,
+> > >                 ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gfn =
++ sub_index,
+> > >                                                    PAGE_SIZE, &dma_ad=
+dr);
+> > >                 if (ret) {
+> > > -                       ppgtt_invalidate_spt(spt);
+> > > +                       ret =3D ppgtt_invalidate_spt(spt);
+> > >                         return ret;
+> >
+> > But now you just lost the original error, shouldn't this succeed even if
+> > intel_gvt_dma_map_guest_page() failed?
+> >
+> > And how are you causing intel_gvt_dma_map_guest_page() to fail in a real
+> > system?
+> >
+> > thanks,
+> >
+> > greg k-h
+
+--kGQlNN4Ir6FkfZg7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCYxgK9QAKCRCxBBozTXgY
+J1DZAJsH9UU2cPdrsdx4hf7SuJorjWTN/gCeKxA/bnVUbWogMgtUPWYV8HOG9+8=
+=3CHX
+-----END PGP SIGNATURE-----
+
+--kGQlNN4Ir6FkfZg7--
