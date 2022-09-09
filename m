@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0E425B3DF6
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Sep 2022 19:29:46 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A5245B3EC3
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Sep 2022 20:23:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5A29110ED51;
-	Fri,  9 Sep 2022 17:29:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 77DB510ED87;
+	Fri,  9 Sep 2022 18:23:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
- Fri, 09 Sep 2022 17:29:19 UTC
-Received: from mail.hugebun.click (unknown [213.209.159.191])
- by gabe.freedesktop.org (Postfix) with ESMTP id 81F5410ED46
+X-Greylist: delayed 323 seconds by postgrey-1.36 at gabe;
+ Fri, 09 Sep 2022 18:21:06 UTC
+Received: from mail.laphuge.click (rr185.tk [64.64.109.147])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3AAC010ED7E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  9 Sep 2022 17:29:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hugebun.click;
+ Fri,  9 Sep 2022 18:21:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=laphuge.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=trina_scheitlin@hugebun.click; 
- bh=sJdIn5ENX22PlckHjri8UnTJQt8=;
- b=nBIojqF/z7QBvEMsbKQs5TIbo/a1FjgHOTJR2OsZN9Q9z33E0zDAN/8ICchvrwBDGx0mhrAOmu5T
- /7j++AZPXWX1FJGyCs5DwV8TX67r3LVf9KQ0BjJSvuLj7ZwRboEktU9Yp9mwMF31DNC+sEp2nxDy
- pzoRNHODwW1Pd3bWmiQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hugebun.click;
- b=CnOKPdO36Wubz4B735FPr/4PLWh9uwhhXs5Gj4Sq74dN5hKcCcKZkL5pHwgpE89tsIi3TsOma8xC
- kOzo5lyFeR6Fg6ZL7lmAvmuNc559adrfKy9XFK+W1rV5A0SVHTT27kNALt0ZB28HmVFQqBOD7KaN
- KeEbHt6fQ2fnKk9pOx8=;
-Received: by mail.hugebun.click id h3druu0001gl for
+ i=marylou.gundlach@laphuge.click; 
+ bh=P09eWpdZY1Q/UHcdVESV8thKfmk=;
+ b=bdnT0yuCY/sv6twReVtwBPrW+6LDhR+Z3xQEb2QN8PCsN4D1b8ea5RoQFawT2p+J0dECcJ4H5ZFs
+ hwgymUonrep2BZU6F7yNcooZEEKfzHEzaMKcsmKX0h2CcnkzK9FLiF/a+KxeRjl0wJAlXWMHgiEL
+ lGmy+NEsjceqhK0ppd0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=laphuge.click;
+ b=0866IhV1cFtcv71mtedkiia2MTv1ym63RvDU5RyH/PZK0jo93uFunwxhJ7PAdnELX7a0KWNMoXSk
+ ZJ17Yn5/aEw02Qtd6KOGjCKv93yb7DyBxOhqmCa3ljerMZ7Cpj8rJ2WnCYD3ZTCRn/DhnkTyCWUS
+ WVJmnhCX19rlkrG0Who=;
+Received: by mail.laphuge.click id h3e2140001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 9 Sep 2022 13:10:47 -0400 (envelope-from
- <trina_scheitlin-intel+2Dgvt+2Ddev=lists.freedesktop.org@hugebun.click>)
-Date: Fri, 9 Sep 2022 13:10:47 -0400
-From: Trina Scheitlin <trina_scheitlin@hugebun.click>
+ Fri, 9 Sep 2022 14:06:48 -0400 (envelope-from
+ <marylou.gundlach-intel+2Dgvt+2Ddev=lists.freedesktop.org@laphuge.click>)
+Date: Fri, 9 Sep 2022 14:06:48 -0400
+From: Marylou Gundlach <marylou.gundlach@laphuge.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Receive a Mikita Drill Kit from Home Depot
+Subject: Home Depot Customer, Claim Your Exclusive Offer
  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_922_1981495058.1662743425096"
-Message-ID: <0.0.0.66.1D8C46F1AD3B882.2801C1@mail.hugebun.click>
+ boundary="----=_Part_325_1387965125.1662746802821"
+Message-ID: <0.0.0.23.1D8C476EDAAEAE4.3EE6ED@mail.laphuge.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_922_1981495058.1662743425096
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Receive a Mikita Drill Kit from Home Depot 
-
-Visit Here to give your opinion about HomeDepot_http://www.hugebun.click/3b34A2395VZ8p611M3U617wd15P36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQt9Rdm7t1mCJ0I5V2@wD/haphazardly-amendment
-
-
-
-
-I15- EAST  23RD St NewYork NY.  10010- USA 
-
-62740420,13878295
-
-To end notices, Go.This.Way_http://www.hugebun.click/7555w2i395P86hC12c36U18Jyd15_36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQt9Rdm5nX1O06Aj3@wD/repulsed-preassigned
-
-This email message was intended for intel-gvt-dev@lists.freedesktop.org
-
-------=_Part_922_1981495058.1662743425096
+------=_Part_325_1387965125.1662746802821
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,21 +63,22 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-05b69a52-7fff-9ce7-bd01-eea9c556be20"><a href="http://www.hugebun.click/doorsteps-delicatessen/9cc6km23L95G86Mo11a3n617ud15n36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQt9Rdm6z_Q1I06YAwD2P" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to give your opinion about HomeDepot</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-05b69a52-7fff-9ce7-bd01-eea9c556be20"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:595px;height:543px;"><a href="http://www.hugebun.click/doorsteps-delicatessen/9cc6km23L95G86Mo11a3n617ud15n36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQt9Rdm6z_Q1I06YAwD2P"><img alt="Go Here for a Chance to Claim a Mikita Drill" src="http://www.hugebun.click/cd76W2I3R95P7akv12D361Tq9id15C36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQt9Rdm5h1R0N5Vz2wD/despoil-crankily" style="margin-left: 0px; margin-top: 0px; width: 595px; height: 543px;" /></a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.laphuge.click/inspiring-obliging/abc4N2395zp8n610k361bYd16r36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQI9Rdn5k1Jr06oAw0lD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the HomeDepot-Mikita Drill Kit Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.laphuge.click/inspiring-obliging/abc4N2395zp8n610k361bYd16r36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQI9Rdn5k1Jr06oAw0lD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:595px;height:543px;"><img alt="Tap Here for the HomeDepot Drill Giveaway" src="http://www.laphuge.click/5936IV2L395I7kJa10X361dId16N36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQI9Rdn7qzyy10M6nMNwBD/dequeuing-aspirants" style="margin-left: 0px; margin-top: 0px; width: 595px; height: 543px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lose No Time! LImited Offer Closes in 4 Days.</span></span></p> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-05b69a52-7fff-9ce7-bd01-eea9c556be20"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Step On It! LImited Offer Comes to a Close in 1 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-05b69a52-7fff-9ce7-bd01-eea9c556be20"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l15- E.&nbsp; 23rd St. NewYork NEW YORK 1OO1O' USA&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-05b69a52-7fff-9ce7-bd01-eea9c556be20"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">62740420.13878295</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-05b69a52-7fff-9ce7-bd01-eea9c556be20"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To end notices, </span><a href="http://www.hugebun.click/d6d6h2u39K5r86YW11S3618DLd15Z36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQt9Rdm5e1Rp05Xy0wD/doorsteps-delicatessen" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go.This.Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-05b69a52-7fff-9ce7-bd01-eea9c556be20"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p>   
- <img src="http://www.hugebun.click/40d6a2A3P95o8R5S11S361aISd15V36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQt9Rdm5azw105RLywD/pressure-drumhead" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT. Avenue, Toronto_ Ont M4K 3KI CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9243311-47836353</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your email elections, </span><a href="http://www.laphuge.click/dequeuing-aspirants/3004G2395tmD8610u361csd16l36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQI9Rdn7LLv1w0g5sOwDU" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go.Over.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p>   
+ <img src="http://www.laphuge.click/dequeuing-aspirants/e226E23J9X5A8oR511C36k1eMd16U36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQI9Rdn7Rwn1Q0G6GlywDl" alt=""/></body>
 </html>
 
-------=_Part_922_1981495058.1662743425096--
+------=_Part_325_1387965125.1662746802821--
 
