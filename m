@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B046F5B2FE1
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Sep 2022 09:35:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CD625B2FDE
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Sep 2022 09:35:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7384210EBF3;
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4DD4910EBF7;
 	Fri,  9 Sep 2022 07:35:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 903CE10EBEA;
- Fri,  9 Sep 2022 07:34:55 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DB16710EBEB;
+ Fri,  9 Sep 2022 07:34:54 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 03F7661EDD;
- Fri,  9 Sep 2022 07:34:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A72E9C433D6;
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 66D8A61ECF;
+ Fri,  9 Sep 2022 07:34:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5A1FC4347C;
  Fri,  9 Sep 2022 07:34:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1662708893;
- bh=LO1q9PXt1LPU8ZYul1ZA2HViOhmbcId7c05/mP4h0Ys=;
- h=From:To:Cc:Subject:Date:From;
- b=KWVOVKlF3jUS0SvDd7DTWPM0+/rl08mOO3SwB1VIgFHJz83GfYC71j4P6skDsl1oe
- AAGcZDsUmdzyrTA2nC479IgtknRfU3rB88Uie3ET9AU53c3eQz6OCFgA08iZucQkMl
- xUrHPYpOBuUQhixkPFTvoE1tG+cGL3X2O9TDtUO1D+0r29Os/QNa2FVxTsF+Rw8/V7
- f2fvcFkOvKI3wb7Ta6c7C1WA7q+gksTR/6lK9ZFqYgYOXo46Ok7PyTxFmz10reZ9Ub
- E7Rxg0X59gj4reUogVeO3fEkfwPiEWRcxlgnU2kk3X8A95UdpV17bOG/RSOZ3qOOPG
- Zjxsa2idI7ydg==
+ bh=OVhAFAM3HeidK308tBpLLj7idBQH4syk5b7A2gVPV+s=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=qgJBSj3j7Ze3dOviLzmru65HFFnjYzvG2p9xtUoKRuYbBg1ipeIJ6QhUeCjYAfH8/
+ xpGOOA+BhLpgdyTajn7LFPZn9UY7sYDnRpzMp0bfmwYMJVQBrqoXYXtCxLtQymTMHD
+ Enn/6ZjauHVLoYBTTeFdMxrjkThXx8fyzVChLvFTxFof4Hc/EOIfXadZBbvekvB5lQ
+ BUS6bP3Wo+8EM90fprHN25OfSX0Pqp4gJxy7DTnKPoTQPJgKJx69zMstMq+tJbcw5o
+ auAMJCUTr69B8s65Y8HDQVE3CfAsRrb4X/iZLWnKWeFx7J+K0NUs95kxhdb4cerJZ+
+ kwp+1JJ+ZggPw==
 Received: from mchehab by mail.kernel.org with local (Exim 4.95)
- (envelope-from <mchehab@kernel.org>) id 1oWYXF-007FFc-Ho;
+ (envelope-from <mchehab@kernel.org>) id 1oWYXF-007FFr-OO;
  Fri, 09 Sep 2022 09:34:45 +0200
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: 
-Subject: [PATCH v3 00/37] drm/i915: fix kernel-doc issues
-Date: Fri,  9 Sep 2022 09:34:07 +0200
-Message-Id: <cover.1662708705.git.mchehab@kernel.org>
+Subject: [PATCH v3 04/37] drm/i915: gvt: fix kernel-doc trivial warnings
+Date: Fri,  9 Sep 2022 09:34:11 +0200
+Message-Id: <b9ba388f22b4e7bf0d463b1d3508228ae31b1a15.1662708705.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.37.3
+In-Reply-To: <cover.1662708705.git.mchehab@kernel.org>
+References: <cover.1662708705.git.mchehab@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -53,186 +54,123 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>,
- David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
- linux-doc@vger.kernel.org,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- intel-gvt-dev@lists.freedesktop.org
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-There are several kernel-doc markups along the i915 driver that aren't part
-of the i915.rst file, nor are included on any other file under Documentation.
-Maybe due to that, there are several kernel-doc markups that report problems
-when checked with scripts/kernel-doc. More than that, some of them also
-have problems when actually integrated at the building system, as reported
-by Sphinx.
+Some functions seem to have been renamed without updating the kernel-doc
+markup causing warnings. Also, struct intel_vgpu_dmabuf_obj is not
+properly documented, but has a kerneld-doc markup.
 
-Along the issues we have:
+Fix those warnings:
+	drivers/gpu/drm/i915/gvt/aperture_gm.c:308: warning: expecting prototype for inte_gvt_free_vgpu_resource(). Prototype was for intel_vgpu_free_resource() instead
+	drivers/gpu/drm/i915/gvt/aperture_gm.c:344: warning: expecting prototype for intel_alloc_vgpu_resource(). Prototype was for intel_vgpu_alloc_resource() instead
+	drivers/gpu/drm/i915/gvt/cfg_space.c:257: warning: expecting prototype for intel_vgpu_emulate_cfg_read(). Prototype was for intel_vgpu_emulate_cfg_write() instead
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'vgpu' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'info' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'dmabuf_id' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'kref' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'initref' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/dmabuf.h:61: warning: Function parameter or member 'list' not described in 'intel_vgpu_dmabuf_obj'
+	drivers/gpu/drm/i915/gvt/handlers.c:3066: warning: expecting prototype for intel_t_default_mmio_write(). Prototype was for intel_vgpu_default_mmio_write() instead
+	drivers/gpu/drm/i915/gvt/mmio_context.c:560: warning: expecting prototype for intel_gvt_switch_render_mmio(). Prototype was for intel_gvt_switch_mmio() instead
+	drivers/gpu/drm/i915/gvt/page_track.c:131: warning: expecting prototype for intel_vgpu_enable_page_track(). Prototype was for intel_vgpu_disable_page_track() instead
+	drivers/gpu/drm/i915/gvt/vgpu.c:215: warning: expecting prototype for intel_gvt_active_vgpu(). Prototype was for intel_gvt_activate_vgpu() instead
+	drivers/gpu/drm/i915/gvt/vgpu.c:230: warning: expecting prototype for intel_gvt_deactive_vgpu(). Prototype was for intel_gvt_deactivate_vgpu() instead
+	drivers/gpu/drm/i915/gvt/vgpu.c:358: warning: expecting prototype for intel_gvt_destroy_vgpu(). Prototype was for intel_gvt_destroy_idle_vgpu() instead
 
-- renamed symbols where the prototype doesn't match the kernel-doc name;
-- some markups doesn't have the symbol name on it;
-- typos when defining parameter;
-- some parameters are missing;
-- some ascii artwork aren't properly displayed after parsed by Sphinx;
-- some other tags produce bad results and warnings after parsed by html build;
-- some "/**" patterns exist on places that aren't kernel-doc markups.
-
-This series, against drm-tip, fix all the above issues and all all such files to
-i915.rst. This way, it will be easier to avoid other problems to be introduced.
-
-While here, I also added SPDX on two display files. Besides being the current
-way to indicate the license, it also makes easier to find all files with kernel-doc
-markups, as all it is needed is to search for "/**" at i915 files to know what of
-them have embedded documentation.
-
-PS.: my end goal here is to ensure that the TLB patch series I'm about to
-send will be properly documented. For that to happen, let's first fix all
-warnings when building the documentation ;-)
-
+Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
 
-v3:
-- Dropped patches with issues already fixed;
-- Addressed Rodrigo's comments.
+To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
+See [PATCH v3 00/37] at: https://lore.kernel.org/all/cover.1662708705.git.mchehab@kernel.org/
 
-v2:
-- Added 3 already-existing patches form other PRs addressing some of the
-  issues. The subjects were renamed, in order to describe what they're
-  doing.
-- Fixed checkpatch warnings;
-- Added 4 additional patches at the end, documenting some structs
-  at i915_gem_object_types.h and  intel_gt_pm.h, plus adding 
-  intel-guc.c internal functions to the generated documentation.
+ drivers/gpu/drm/i915/gvt/cfg_space.c  | 2 +-
+ drivers/gpu/drm/i915/gvt/dmabuf.h     | 2 +-
+ drivers/gpu/drm/i915/gvt/page_track.c | 2 +-
+ drivers/gpu/drm/i915/gvt/vgpu.c       | 6 +++---
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-Mauro Carvalho Chehab (37):
-  drm/i915: fix kernel-doc trivial warnings on i915/*.[ch] files
-  drm/i915: display: fix kernel-doc markup warnings
-  drm/i915: gt: fix some Kernel-doc issues
-  drm/i915: gvt: fix kernel-doc trivial warnings
-  drm/i915: gem: fix some Kernel-doc issues
-  drm/i915: intel_wakeref.h: fix some kernel-doc markups
-  drm/i915: i915_gem_ttm: fix a kernel-doc markup
-  drm/i915: i915_gem_ttm_pm.c: fix kernel-doc markups
-  drm/i915: gem: add kernel-doc description for some function parameters
-  drm/i915: i915_gpu_error.c: document dump_flags
-  drm/i915: document kernel-doc trivial issues
-  drm/i915: intel_dp_link_training.c: fix kernel-doc markup
-  drm/i915: intel_fb: fix a kernel-doc issue with Sphinx
-  drm/i915: skl_scaler: fix return value kernel-doc markup
-  drm/i915: intel_pm.c: fix some ascii artwork at kernel-doc
-  drm/i915: i915_gem_region.h: fix i915_gem_apply_to_region_ops doc
-  drm/i915: i915_gem_wait.c: fix a kernel-doc markup
-  drm/i915: fix i915_gem_ttm_move.c DOC: markup
-  drm/i915: stop using kernel-doc markups for something else
-  drm/i915: dvo_ch7xxx.c: use SPDX header
-  drm/i915: dvo_sil164.c: use SPDX header
-  drm/i915: i915_vma_resource.c: fix some kernel-doc markups
-  drm/i915: i915_gem.c fix a kernel-doc issue
-  drm/i915: i915_scatterlist.h: fix some kernel-doc markups
-  drm/i915: i915_deps: use a shorter title markup
-  docs: gpu: i915.rst: display: add kernel-doc markups
-  docs: gpu: i915.rst: gt: add more kernel-doc markups
-  docs: gpu: i915.rst: GuC: add more kernel-doc markups
-  docs: gpu: i915.rst: GVT: add more kernel-doc markups
-  docs: gpu: i915.rst: PM: add more kernel-doc markups
-  docs: gpu: i915.rst: GEM/TTM: add more kernel-doc markups
-  docs: gpu: i915.rst: add the remaining kernel-doc markup files
-  drm/i915 i915_gem_object_types.h: document struct i915_lut_handle
-  drm/i915: document struct drm_i915_gem_object
-  drm/i915: add descriptions for some RPM macros at intel_gt_pm.h
-  drm/i915: add GuC functions to the documentation
-  drm/i915: be consistent with kernel-doc function declaration
-
- Documentation/gpu/i915.rst                    | 283 +++++++++++++++++-
- drivers/gpu/drm/i915/display/dvo_ch7017.c     |  26 +-
- drivers/gpu/drm/i915/display/dvo_ch7xxx.c     |  39 +--
- drivers/gpu/drm/i915/display/dvo_sil164.c     |  32 +-
- drivers/gpu/drm/i915/display/intel_atomic.c   |   2 +-
- drivers/gpu/drm/i915/display/intel_audio.c    |   4 +-
- drivers/gpu/drm/i915/display/intel_crtc.c     |   4 +-
- .../drm/i915/display/intel_display_debugfs.c  |   2 +-
- .../drm/i915/display/intel_display_power.c    |   2 +-
- .../drm/i915/display/intel_display_types.h    |   2 +-
- drivers/gpu/drm/i915/display/intel_dmc.c      |  10 +-
- .../drm/i915/display/intel_dp_link_training.c |   2 +
- drivers/gpu/drm/i915/display/intel_dsb.c      |  10 +-
- drivers/gpu/drm/i915/display/intel_dvo_dev.h  |   6 +-
- drivers/gpu/drm/i915/display/intel_fb.c       |   2 +-
- .../gpu/drm/i915/display/intel_lpe_audio.c    |   8 +-
- drivers/gpu/drm/i915/display/intel_sdvo.c     |   4 +-
- drivers/gpu/drm/i915/display/intel_tc.c       |   2 +-
- drivers/gpu/drm/i915/display/intel_tv.c       |   2 +-
- drivers/gpu/drm/i915/display/skl_scaler.c     |   6 +-
- drivers/gpu/drm/i915/gem/i915_gem_create.c    |   8 +-
- drivers/gpu/drm/i915/gem/i915_gem_domain.c    |  17 +-
- drivers/gpu/drm/i915/gem/i915_gem_object.c    |   2 +
- drivers/gpu/drm/i915/gem/i915_gem_object.h    |   2 +-
- .../gpu/drm/i915/gem/i915_gem_object_types.h  | 212 ++++++++++---
- drivers/gpu/drm/i915/gem/i915_gem_region.h    |   8 +-
- drivers/gpu/drm/i915/gem/i915_gem_ttm.c       |   2 +
- drivers/gpu/drm/i915/gem/i915_gem_ttm.h       |   1 +
- drivers/gpu/drm/i915/gem/i915_gem_ttm_move.c  |   4 +-
- drivers/gpu/drm/i915/gem/i915_gem_ttm_pm.c    |   8 +-
- drivers/gpu/drm/i915/gem/i915_gem_wait.c      |  26 +-
- drivers/gpu/drm/i915/gt/intel_context.h       |   6 +-
- drivers/gpu/drm/i915/gt/intel_context_types.h |  69 +++--
- drivers/gpu/drm/i915/gt/intel_engine_cs.c     |  14 +-
- drivers/gpu/drm/i915/gt/intel_engine_types.h  |   1 +
- drivers/gpu/drm/i915/gt/intel_ggtt_fencing.h  |   2 +-
- drivers/gpu/drm/i915/gt/intel_gt_pm.h         |  51 ++++
- drivers/gpu/drm/i915/gt/intel_gt_types.h      |  12 +-
- drivers/gpu/drm/i915/gt/intel_gtt.h           |   6 +-
- drivers/gpu/drm/i915/gt/intel_reset_types.h   |   4 +-
- drivers/gpu/drm/i915/gt/intel_rps.c           |   4 +-
- .../gpu/drm/i915/gt/intel_timeline_types.h    |   6 +-
- .../drm/i915/gt/shaders/clear_kernel/hsw.asm  |   4 +-
- .../drm/i915/gt/shaders/clear_kernel/ivb.asm  |   4 +-
- drivers/gpu/drm/i915/gt/uc/guc_capture_fwif.h |  24 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc.c        |  10 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc.h        |   2 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc_ads.c    |   4 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc_fw.c     |   2 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc_fwif.h   |   2 +-
- .../gpu/drm/i915/gt/uc/intel_guc_hwconfig.c   |   5 +-
- drivers/gpu/drm/i915/gt/uc/intel_guc_slpc.c   |   8 +-
- drivers/gpu/drm/i915/gt/uc/intel_huc.c        |   4 +-
- drivers/gpu/drm/i915/gt/uc/intel_huc_fw.c     |   2 +-
- drivers/gpu/drm/i915/gt/uc/intel_uc_fw.h      |   2 +-
- drivers/gpu/drm/i915/gvt/cfg_space.c          |   2 +-
- drivers/gpu/drm/i915/gvt/dmabuf.h             |   2 +-
- drivers/gpu/drm/i915/gvt/page_track.c         |   2 +-
- drivers/gpu/drm/i915/gvt/vgpu.c               |   6 +-
- drivers/gpu/drm/i915/i915_active.h            |  14 +-
- drivers/gpu/drm/i915/i915_cmd_parser.c        |   8 +-
- drivers/gpu/drm/i915/i915_deps.c              |   4 +-
- drivers/gpu/drm/i915/i915_drm_client.h        |   2 +-
- drivers/gpu/drm/i915/i915_drv.h               |  24 +-
- drivers/gpu/drm/i915/i915_file_private.h      |   8 +-
- drivers/gpu/drm/i915/i915_gem.c               |  12 +-
- drivers/gpu/drm/i915/i915_gpu_error.c         |   3 +-
- drivers/gpu/drm/i915/i915_gpu_error.h         |   4 +-
- drivers/gpu/drm/i915/i915_pmu.h               |  38 +--
- drivers/gpu/drm/i915/i915_reg_defs.h          |  12 +-
- drivers/gpu/drm/i915/i915_request.h           |   4 +-
- drivers/gpu/drm/i915/i915_scatterlist.c       |   2 +-
- drivers/gpu/drm/i915/i915_scatterlist.h       |  12 +-
- drivers/gpu/drm/i915/i915_utils.h             |   2 +-
- drivers/gpu/drm/i915/i915_vma.c               |   2 +
- drivers/gpu/drm/i915/i915_vma_resource.c      |   4 +-
- drivers/gpu/drm/i915/i915_vma_resource.h      |   3 +-
- drivers/gpu/drm/i915/intel_pm.c               |  33 +-
- drivers/gpu/drm/i915/intel_region_ttm.c       |   3 +-
- drivers/gpu/drm/i915/intel_uncore.h           |   4 +-
- drivers/gpu/drm/i915/intel_wakeref.h          |   4 +-
- drivers/gpu/drm/i915/intel_wopcm.c            |   4 +-
- 82 files changed, 826 insertions(+), 378 deletions(-)
-
+diff --git a/drivers/gpu/drm/i915/gvt/cfg_space.c b/drivers/gpu/drm/i915/gvt/cfg_space.c
+index eef3bba8a41b..bff63babacd5 100644
+--- a/drivers/gpu/drm/i915/gvt/cfg_space.c
++++ b/drivers/gpu/drm/i915/gvt/cfg_space.c
+@@ -244,7 +244,7 @@ static void emulate_pci_bar_write(struct intel_vgpu *vgpu, unsigned int offset,
+ }
+ 
+ /**
+- * intel_vgpu_emulate_cfg_read - emulate vGPU configuration space write
++ * intel_vgpu_emulate_cfg_write - emulate vGPU configuration space write
+  * @vgpu: target vgpu
+  * @offset: offset
+  * @p_data: write data ptr
+diff --git a/drivers/gpu/drm/i915/gvt/dmabuf.h b/drivers/gpu/drm/i915/gvt/dmabuf.h
+index 5f8f03fb1d1b..3dcdb6570eda 100644
+--- a/drivers/gpu/drm/i915/gvt/dmabuf.h
++++ b/drivers/gpu/drm/i915/gvt/dmabuf.h
+@@ -48,7 +48,7 @@ struct intel_vgpu_fb_info {
+ 	struct intel_vgpu_dmabuf_obj *obj;
+ };
+ 
+-/**
++/*
+  * struct intel_vgpu_dmabuf_obj- Intel vGPU device buffer object
+  */
+ struct intel_vgpu_dmabuf_obj {
+diff --git a/drivers/gpu/drm/i915/gvt/page_track.c b/drivers/gpu/drm/i915/gvt/page_track.c
+index 3375b51c75f1..df34e73cba41 100644
+--- a/drivers/gpu/drm/i915/gvt/page_track.c
++++ b/drivers/gpu/drm/i915/gvt/page_track.c
+@@ -120,7 +120,7 @@ int intel_vgpu_enable_page_track(struct intel_vgpu *vgpu, unsigned long gfn)
+ }
+ 
+ /**
+- * intel_vgpu_enable_page_track - cancel write-protection on guest page
++ * intel_vgpu_disable_page_track - cancel write-protection on guest page
+  * @vgpu: a vGPU
+  * @gfn: the gfn of guest page
+  *
+diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
+index 46da19b3225d..8e71cda19995 100644
+--- a/drivers/gpu/drm/i915/gvt/vgpu.c
++++ b/drivers/gpu/drm/i915/gvt/vgpu.c
+@@ -205,7 +205,7 @@ static void intel_gvt_update_vgpu_types(struct intel_gvt *gvt)
+ }
+ 
+ /**
+- * intel_gvt_active_vgpu - activate a virtual GPU
++ * intel_gvt_activate_vgpu - activate a virtual GPU
+  * @vgpu: virtual GPU
+  *
+  * This function is called when user wants to activate a virtual GPU.
+@@ -219,7 +219,7 @@ void intel_gvt_activate_vgpu(struct intel_vgpu *vgpu)
+ }
+ 
+ /**
+- * intel_gvt_deactive_vgpu - deactivate a virtual GPU
++ * intel_gvt_deactivate_vgpu - deactivate a virtual GPU
+  * @vgpu: virtual GPU
+  *
+  * This function is called when user wants to deactivate a virtual GPU.
+@@ -348,7 +348,7 @@ struct intel_vgpu *intel_gvt_create_idle_vgpu(struct intel_gvt *gvt)
+ }
+ 
+ /**
+- * intel_gvt_destroy_vgpu - destroy an idle virtual GPU
++ * intel_gvt_destroy_idle_vgpu - destroy an idle virtual GPU
+  * @vgpu: virtual GPU
+  *
+  * This function is called when user wants to destroy an idle virtual GPU.
 -- 
 2.37.3
-
 
