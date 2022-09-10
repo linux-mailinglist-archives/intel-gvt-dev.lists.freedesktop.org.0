@@ -2,71 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 876EA5B433B
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 10 Sep 2022 01:53:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9C775B4306
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 10 Sep 2022 01:22:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D863D10E1C2;
-	Fri,  9 Sep 2022 23:53:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5DE8710E152;
+	Fri,  9 Sep 2022 23:22:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qv1-xf33.google.com (mail-qv1-xf33.google.com
- [IPv6:2607:f8b0:4864:20::f33])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5066B10E1C2
+X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
+ Fri, 09 Sep 2022 23:22:05 UTC
+Received: from mail.methuge.click (unknown [192.119.166.123])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CFAAD10E152
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  9 Sep 2022 23:53:14 +0000 (UTC)
-Received: by mail-qv1-xf33.google.com with SMTP id w4so2457715qvp.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 09 Sep 2022 16:53:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=I7AGr5kxvD7L8BGImkaiYYIcWYTyuHALX3Uwn5SFGes=;
- b=dABIJEmzczJA9TeUEwB/vqlw1on+BNexewwg9hQHdtE1Pf+5Eir7ZuRo5Ra74CBI2Y
- mcA+UH3eeO9aAd0QqE0L7SFCTjpphtpc0ELtMYBKyyRw1a/HWDzHyUcOactrzkgR2sl3
- L0nOmencTRW6FHXiEoY9iZZ+c/WYo/U0AzzN4UAFPlTI1iRVRUWqtRTHaf8sCXXZzJnf
- NJL3l99mu6NE5Asx87J+/QD6IeeyB3qXivdFsvkAKE6TbTRWix12Dqc9T+JmjOGbnts9
- 4TFjGIVIDOrRXIamT7vOV1TzgaehJPaax4ZVZ8nlHpjlkRagg2W3Kahrivj4XNmSdY7D
- YIBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=I7AGr5kxvD7L8BGImkaiYYIcWYTyuHALX3Uwn5SFGes=;
- b=36wfv6Er1jbfvqcabCIapxRkWURqueqeKQEf1xb+WRPP+MWJ9FxCHPJRKomqFtr3CX
- KTvxYvYLEFqEltAm7c896QxQ5S9v9rVTilYIReFai+MzUjYk+749P1QwRP8Z+jXOVJQ5
- hxElgnyESegSg1FB7WAG+uwhCfi8Iab9ItFt/hj7Ivb5SD1WGDJAkJcRSFByDLY5dqy+
- sKGaLC8KgVxxMI+v7n1TvLETrfwCeHQXSKCpq5boDXOGx1E5GWxNzATjlk8j6HkGxCyM
- dwwaQAkvcGZRnOKymIC9d6fcn336gv3ZXE+iJA5V6/e953FmGa1huz21uxcowpg61bkR
- bhgA==
-X-Gm-Message-State: ACgBeo2/EOhI/UZMoUTi/hSZA2lHm7ee4s3Q9hHSKWbCEEL/Mmx6cxk2
- yQkGwYermMb8UAbXtjtUGcEcjw==
-X-Google-Smtp-Source: AA6agR5hWM2GJ5zXaAdZz8/5jyfYnTB6f4lRkH4YbMaWcByENpIrNcfVlyo+HaeUh7LK3d+xbRkfaQ==
-X-Received: by 2002:a0c:f445:0:b0:4a6:9f4a:9a66 with SMTP id
- h5-20020a0cf445000000b004a69f4a9a66mr14581963qvm.65.1662767593396; 
- Fri, 09 Sep 2022 16:53:13 -0700 (PDT)
-Received: from ziepe.ca
- (hlfxns017vw-142-162-113-129.dhcp-dynamic.fibreop.ns.bellaliant.net.
- [142.162.113.129]) by smtp.gmail.com with ESMTPSA id
- fz16-20020a05622a5a9000b00342fc6a8e25sm1348798qtb.50.2022.09.09.16.53.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Sep 2022 16:53:12 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
- (envelope-from <jgg@ziepe.ca>) id 1oWno8-00A0GS-4S;
- Fri, 09 Sep 2022 20:53:12 -0300
-Date: Fri, 9 Sep 2022 20:53:12 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH v3 01/15] vfio: Add helpers for unifying vfio_device life
- cycle
-Message-ID: <YxvR6PHywJCTgp3z@ziepe.ca>
-References: <20220909102247.67324-1-kevin.tian@intel.com>
- <20220909102247.67324-2-kevin.tian@intel.com>
- <acbaf0f2-91d4-3eae-5716-244893ca34c7@linux.intel.com>
- <BN9PR11MB5276E41114EEE687975C698F8C439@BN9PR11MB5276.namprd11.prod.outlook.com>
+ Fri,  9 Sep 2022 23:22:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=methuge.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=holly.brackley@methuge.click; 
+ bh=0YjR+bkMztYELGPo3P+zRjsssYI=;
+ b=bkSHll3Wgi5gr67i6PBxD8Y5rtgRY0GB67/HCJEfg6QMJ3ziieLbt+pERjeZviLTCm2CTNyPIEhz
+ aaofunqiY7bF2AJhHzv4eeo0H1OMzuSgikY/gJKu7Nxs1oa7+BiypECts9lhFLYv64B8AH8rMx7y
+ Z7V1BUbsRWzN80s/yG8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=methuge.click;
+ b=VEawQ/a8Htne5b/lF5V8+5Q/KlFBtzgxB5OR5FzxZBwNLT6hdAWXcCVX7qXYDOHOHUAvCxFaQ9WY
+ yPkLPTz7Wwt/8yiiA9lilWVyP+6zfp76gMn9HOZR4Epmz4g6K7366/RPw8mr4q5yAeFrd6CmTkaa
+ n2ZePl7u3Fue3HG2Mp0=;
+Received: by mail.methuge.click id h3ffto0001g6 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 9 Sep 2022 20:35:38 -0400 (envelope-from
+ <holly.brackley-intel+2Dgvt+2Ddev=lists.freedesktop.org@methuge.click>)
+Date: Fri, 9 Sep 2022 20:35:38 -0400
+From: Holly Brackley <holly.brackley@methuge.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Ace is giving away Dewalt Drills intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <BN9PR11MB5276E41114EEE687975C698F8C439@BN9PR11MB5276.namprd11.prod.outlook.com>
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_25_1216946020.1662764674658"
+Message-ID: <0.0.0.3.1D8C4AD3FB115A8.24355D@mail.methuge.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,49 +50,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>, Christoph Hellwig <hch@infradead.org>,
- "Liu, Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Ethan Zhao <haifeng.zhao@linux.intel.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, Tony Krowiak <akrowiak@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
- Rodrigo" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Sep 09, 2022 at 08:42:25AM +0000, Tian, Kevin wrote:
+------=_Part_25_1216946020.1662764674658
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-> I think it's quite common to have an alloc() helper initialize refcount, e.g.
-> vfio_group_alloc() both initialize its user refcount and also call
-> device_initialize()  to gets kref initialized. Similar example in
-> ib_alloc_device(), etc.
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.methuge.click/inheres-anyplace/80a6SgV2395l86Pg12UP363D0gd1bi36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQy9RdR6i1PLi06PLLwDl" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Claim a Dewalt EXTREME Drill from Ace Hardware</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.methuge.click/inheres-anyplace/80a6SgV2395l86Pg12UP363D0gd1bi36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQy9RdR6i1PLi06PLLwDl" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Start Here for the Ace Hardware-Dewalt Giveaway" src="http://www.methuge.click/sector-dieters/8824n2395mp7ah11Y3T632Jd1by36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQy9RdR7QYI1RS05zLwDU" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span></p> &n
+ bsp; 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lose No Time! Deal Is Done in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on communication, </span><a href="http://www.methuge.click/functors-Westport/d324N2395St8O612K3t6m31Id1bh36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQy9RdR7IN10IGV5XN2wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">BeginHere</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 Mowat. Avenue, Toronto- Ont M4K3Kl CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7160699-4499063</span></span></p>   
+ <img src="http://www.methuge.click/8k95l2V395AQn8511I3M633Kd1bT36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQy9RdR7k1n0uis6rT2BwD/episode-daytime" alt=""/></body>
+</html>
 
-Right, it is quite a good/common pattern to have an allocation function
-return a refcount to the caller.
+------=_Part_25_1216946020.1662764674658--
 
-I don't know of any naming standard for this however.
-
-Jason
