@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CCAE5B508A
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 11 Sep 2022 20:21:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44F4B5B51D8
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 01:18:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BF13510E189;
-	Sun, 11 Sep 2022 18:20:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 390E310E554;
+	Sun, 11 Sep 2022 23:18:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Sun, 11 Sep 2022 18:20:46 UTC
-Received: from mail.ladpetit.click (unknown [172.99.175.28])
- by gabe.freedesktop.org (Postfix) with ESMTP id 75F7310E097
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sun, 11 Sep 2022 23:18:23 UTC
+Received: from mail.petitolm.click (unknown [185.104.151.209])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6004710E543
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 11 Sep 2022 18:20:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ladpetit.click; 
+ Sun, 11 Sep 2022 23:18:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=petitolm.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=audrey-deines@ladpetit.click; 
- bh=HifmNaRGs3BpH1lalvqWiHfL3tQ=;
- b=jkTACvAkR30EAYcsN7QY/Micfj6jPAZB7r2ak1Ch8FYr4wUgOsZJ830MhOv1W0MayGKTuRhGHfcl
- aqKkenJbJOwwzF8yCqGwcQbw2WRpKvY0elbxaohcp6HOu4jDaSENocesmmIHe1C/1TunSkf6Y1kE
- mZvFPW7Oww2hRcgpl68=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ladpetit.click;
- b=VACa1muo3Atr1rnX3AdlN3hEAXZZEvE2ClmoFbHyd535wIvOFOVJqhlsuW0V97SJD6CGwrenI96p
- u2siV7/GW9GqSSpQt3N3BK8CEteSSFlKvc8EQMapmslOihiYVpuQqHxRQlrYv2+Fkrqs+ujY1S0F
- muyDS7Nu6snu2c0n4+Q=;
-Received: by mail.ladpetit.click id h3ojfu0001gp for
+ i=hegland_rhonda@petitolm.click; 
+ bh=4/ZFWrgPEmdSw2e7JILcguLQ0iM=;
+ b=uQ3h6HhaidwMq1ietZmIzN8INlxWn1Y9KrvL5pMB0TXeUemj3QsyxACDLn5MrLgMtnFgCQ23vVpe
+ AzK9NVIojNGEgW7K93MG8Eszuao9OZLFs0QG6zVw1uz0IVHzK06V3tCEQNB+zb5bIHhro/bHcv+8
+ jV9AyFRuNL7VLvDun94=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=petitolm.click;
+ b=EZidfugrvqPZ1ukR2ROtpZTH93tk+JpTmGX6gqNLBZPZFyxW2vuRVqOqu06eioYDn8I4txcmgnGG
+ SSQ5CvbvHESRuejaDhH3emdkyRKTF7zCAkkUD7Y2LcQda+KExMQ2hXu3v+gpESqZHX3vPqGGJTQb
+ 92PHeTWSRVuI1jMQxik=;
+Received: by mail.petitolm.click id h3pmbu0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 11 Sep 2022 14:11:25 -0400 (envelope-from
- <audrey-deines-intel+2Dgvt+2Ddev=lists.freedesktop.org@ladpetit.click>)
-Date: Sun, 11 Sep 2022 14:11:25 -0400
-From: Audrey Deines <audrey-deines@ladpetit.click>
+ Sun, 11 Sep 2022 19:04:57 -0400 (envelope-from
+ <hegland_rhonda-intel+2Dgvt+2Ddev=lists.freedesktop.org@petitolm.click>)
+Date: Sun, 11 Sep 2022 19:04:57 -0400
+From: Rhonda Hegland <hegland_rhonda@petitolm.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Home Depot Shopper, Claim Your Dyson Vacuum
+Subject: Congratulations from Ace Hardware intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_1099_1549109282.1662919872986"
-Message-ID: <0.0.0.7B.1D8C609E7EAB262.5BAF14@mail.ladpetit.click>
+ boundary="----=_Part_67_1373973501.1662937483850"
+Message-ID: <0.0.0.7.1D8C632E967BF94.381430@mail.petitolm.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_1099_1549109282.1662919872986
+------=_Part_67_1373973501.1662937483850
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,19 +62,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><a href="http://www.ladpetit.click/bab6Q239IS5C8YN610o369dQd35Z36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQL9RSo5o1C0i6KNMwzD/shipments-initiative" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here if you want a Dyson Vacuum</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><a href="http://www.ladpetit.click/bab6Q239IS5C8YN610o369dQd35Z36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQL9RSo5o1C0i6KNMwzD/shipments-initiative" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:310px;"><img alt="Tap Here to give your input about Home Depot" src="http://www.ladpetit.click/6834V2395g7agJ11V36u9fNd35y36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQL9RSo5r10Sk5L2XwD/comprehending-destroyed" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 310px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Sale Goes Away in 3 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.petitolm.click/hornet-photocopiers/cf65O23C95iRv8610i36b2Td3at36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQW9RSS6I1ynx06ApywPD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for the Ace Hardware Dewalt Drill Giveaway</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.petitolm.click/hornet-photocopiers/cf65O23C95iRv8610i36b2Td3at36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQW9RSS6I1ynx06ApywPD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Tap Here for the Ace Offer" src="http://www.petitolm.click/cd75S239z5y7aGy12a36Kbi4ud3aD36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQW9RSS6b_L1K05kAUwD/abolitionists-unlawful" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Step On It! Deal Runs Out in 3 Days.</span></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. MOWAT Ave., Toronto' Ont M4K3Kl CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on notifications, </span><a href="http://www.ladpetit.click/af76v23xJ95y8w6T11w36y9ehd35j36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQL9RSo6dxp10n5EJAwD/clambering-swinging" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit-This-Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1442379,7409860</span></span></p>   
- <img src="http://www.ladpetit.click/bab4A2395K8S5F10k36a0Md35p36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQL9RSo6d1Zov05Y@wDj/wardrobe-sportingly" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your message preferences, </span><a href="http://www.petitolm.click/Miltonism-analyticities/9726eW239X5Y8Yw612u3MT6b3Ud3ai36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQW9RSS5K_1B05r2JwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT- Avenue, Toronto- Ontario M4 K3 K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">51197095.74082229</span></span></p>   
+ <img src="http://www.petitolm.click/8db5M2H395VX8H511vi36b5Md3ag36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQW9RSS6jI1m0i6FLO2wD/uncleanly-romancer" alt=""/></body>
 </html>
 
-------=_Part_1099_1549109282.1662919872986--
+------=_Part_67_1373973501.1662937483850--
 
