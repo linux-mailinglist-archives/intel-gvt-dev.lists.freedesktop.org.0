@@ -1,43 +1,63 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D06C65B52A9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 04:25:04 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 96F0D5B5364
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 07:29:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F9AA10E569;
-	Mon, 12 Sep 2022 02:24:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7619910E0B4;
+	Mon, 12 Sep 2022 05:29:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
- Mon, 12 Sep 2022 02:24:34 UTC
-Received: from mail.outpetit.icu (unknown [192.119.166.113])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9EECB10E569
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 12 Sep 2022 02:24:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outpetit.icu;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=misty.radics@outpetit.icu; bh=7y6NQTXAZxTv+3itxv+xMADcTiY=;
- b=TANVjFFvz5e/Jal0y0XdKZxmXjPx2vCawxCuawhKfc1AzGhl9dpIgRuRvip/osRtiR3j7Cxi4qow
- nrnkZjvUgglhHWzfP0kY3eiB7IlltZXy7tJvnVu9R2a9bOIzpwMJj1f6Zxp5LlJDFPym2wDveB3U
- Dtd5lU/Kbe+ztaVw4kk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outpetit.icu;
- b=YuZ/eCTW6TW0c0StqyDwDMXtJFQbrTl+mVukrqHz0ck5tigmlDaaUXBpfMpekaj0f6b9PhxwY8CB
- rfNKgZGVepA2F7MnUd5fgkOiBLyF0gGbdGzRWHe3WP0eD3jgjt8ep0hOegFsYCNhp4RJOcHqvuhb
- /Emj5581W6hFK0DByLM=;
-Received: by mail.outpetit.icu id h3qc640001gn for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 11 Sep 2022 22:05:57 -0400 (envelope-from
- <misty.radics-intel+2Dgvt+2Ddev=lists.freedesktop.org@outpetit.icu>)
-Date: Sun, 11 Sep 2022 22:05:57 -0400
-From: Misty Radics <misty.radics@outpetit.icu>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Kudos, Claim your Home Depot Mikita Drill Kit
- intel-gvt-dev@lists.freedesktop.org
+Received: from mail-il1-x12b.google.com (mail-il1-x12b.google.com
+ [IPv6:2607:f8b0:4864:20::12b])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E98D310E091;
+ Mon, 12 Sep 2022 05:29:05 +0000 (UTC)
+Received: by mail-il1-x12b.google.com with SMTP id y15so3995821ilq.4;
+ Sun, 11 Sep 2022 22:29:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=qg9to7hIZo/tNgDGQnKxNsyMgfHTsJfmQeKWAWjBM3Y=;
+ b=fwweiZkkxgOj9IkckstUmzr3+NSlljXdQmamHEHFjSjjln6iHltmY3l7o+HzWFaYEG
+ Lb5aJYHZeN3aVoSi0wv3JIexy4kqaX0r9ZoBwqGwD5QLF3qY0rqLGqYOQyH3nVTiw+jF
+ Be9qUsrDDXn1SiWxtQzMbaXkRHkJz3b/oTcbxzPQl6uSFoqPbb+tuxVlAhaVwUhrf6qK
+ ObYNR0eEdla8tydXUacWQ5EkvI7UvdcDElX3vsKx7xKZJyG7qZ4snHR4GxLhd2RkzRR9
+ K8H7GHVGPDwTyMox6Wzdb9p2n5WnKC6KpDb4FIQ/leaQbmFI7jFryPR65ncRBxpm5S5I
+ eGvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=qg9to7hIZo/tNgDGQnKxNsyMgfHTsJfmQeKWAWjBM3Y=;
+ b=S8Pc1WiV2TKEcIOyOZJfLYBOuQ3sdKiCv1qrt1Qmo3cpLVDTr2nTFnBN0Y41LLJnaC
+ V7X8F95tXClqhAJINtbg7If3ikrR/E79b8Azk1jye+wWLLqWrPqePMcxEVUziT6CmM4Y
+ w6fJp1qyJUUkU+hP7XWdMgI0eluLkxDEw6u8PVwSmaBtXYEoy+C38lehh5+ex0CGC9G2
+ xtbJJ0TGQvTb+0ZlEeKLDnP6rD53dogDaZLIUOqCkr1OoxuyLqkDIZGSpW0wkJhipDrC
+ iuT+aRZwJna8Tl9qBsyfn4qGIbUxVBof1QB9wU8aqd5YeOhqnzTymiu96+hYR15PFa3X
+ AJsQ==
+X-Gm-Message-State: ACgBeo3yxdnRf5fiyR8brTONyIIr80AUaXNdljQNt9QsB0984iDZBte/
+ 5FiyXwgGEQxZrLPhqPOqQvI=
+X-Google-Smtp-Source: AA6agR6PqOG3cAeMUhS/dA7RYLxwnEszf0aSW5+mVVBkyci+q1M/IQ4stFHaBuDia3OjYj44LDJH6A==
+X-Received: by 2002:a05:6e02:168e:b0:2f3:33d5:19bd with SMTP id
+ f14-20020a056e02168e00b002f333d519bdmr8684638ila.112.1662960545031; 
+ Sun, 11 Sep 2022 22:29:05 -0700 (PDT)
+Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
+ by smtp.googlemail.com with ESMTPSA id
+ q16-20020a056e02079000b002eb75fb01dbsm3006057ils.28.2022.09.11.22.29.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 11 Sep 2022 22:29:04 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: jbaron@akamai.com, gregkh@linuxfoundation.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v7 0/9] dyndbg: drm.debug adaptation
+Date: Sun, 11 Sep 2022 23:28:43 -0600
+Message-Id: <20220912052852.1123868-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_226_1342290421.1662948354347"
-Message-ID: <0.0.0.19.1D8C64C32CA3EE6.52948C@mail.outpetit.icu>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,35 +70,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Jim Cromie <jim.cromie@gmail.com>, daniel.vetter@ffwll.ch,
+ linux@rasmusvillemoes.dk, robdclark@gmail.com, seanpaul@chromium.org,
+ joe@perches.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_226_1342290421.1662948354347
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+hi Greg, Dan, Jason, DRM-folk,
 
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.outpetit.icu/whippings-analogous/d145t23X95Hz8T611a36bfhkd3dv36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQa9Rem5pS1F05SM0wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Claim a Cordless Mikita Drill Kit from HomeDepot</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.outpetit.icu/whippings-analogous/d145t23X95Hz8T611a36bfhkd3dv36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQa9Rem5pS1F05SM0wD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:595px;height:543px;"><img alt="Visit Here to Claim a Mikita Drill Kit from HomeDepot" src="http://www.outpetit.icu/a254F2395zQU7a12nM36c1JVd3dJ36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQa9Rem7Rsq10CD6P0kwjD/hoarseness-despising" style="margin-left: 0px; margin-top: 0px; width: 595px; height: 543px;" /></span></span></a></s
- pan></p> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Special Offer Is Over in 4 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat Ave., Toronto' Ont. M4K3K1 Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4549982~1352188</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your notification choices, </span><a href="http://www.outpetit.icu/fortier-modularized/abc4X2395R8GW612N3FN6c0qd3dv36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQa9Rem7yF10HPy5RBMwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Right Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This content was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p>   
- <img src="http://www.outpetit.icu/cf55c239l5k8u5u11Xh36c2Xd3dN36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQa9Rem5B1ZP06vW0wDW/Gaithersburg-concerts" alt=""/></body>
-</html>
+heres follow-up to V6:
+  rebased on driver-core/driver-core-next for -v6 applied bits (thanks)
+  rework drm_debug_enabled{_raw,_instrumented,} per Dan.
 
-------=_Part_226_1342290421.1662948354347--
+It excludes:
+  nouveau parts (immature)
+  tracefs parts (I missed --to=Steve on v6)
+  split _ddebug_site and de-duplicate experiment (way unready)
+
+IOW, its the remaining commits of V6 on which Dan gave his Reviewed-by.
+
+If these are good to apply, I'll rebase and repost the rest separately.
+
+These are also available at:
+https://github.com/jimc/linux/releases/tag/dyndbg%2Fdd-drm-class-911
+
+RFC:
+
+DECLARE_DYNDBG_CLASSMAP's interface can be improved: class-names are
+currently strings, like "DRM_UT_CORE", which must have corresponding
+ENUM symbols defined.  It would be better to just pass DRM_UT_CORE,
+etc, and stringify the va-args inside the macro while initializing
+classnames member.  But how ?
+
+
+Jim Cromie (9):
+  drm_print: condense enum drm_debug_category
+  drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.
+  drm_print: interpose drm_*dbg with forwarding macros
+  drm_print: wrap drm_*_dbg in dyndbg descriptor factory macro
+  drm-print.h: include dyndbg header
+  drm-print: add drm_dbg_driver to improve namespace symmetry
+  drm_print: optimize drm_debug_enabled for jump-label
+  drm_print: prefer bare printk KERN_DEBUG on generic fn
+  drm_print: add _ddebug descriptor to drm_*dbg prototypes
+
+ drivers/gpu/drm/Kconfig                 | 12 ++++
+ drivers/gpu/drm/Makefile                |  2 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c | 14 +++++
+ drivers/gpu/drm/display/drm_dp_helper.c | 13 +++++
+ drivers/gpu/drm/drm_crtc_helper.c       | 13 +++++
+ drivers/gpu/drm/drm_print.c             | 48 +++++++++++----
+ drivers/gpu/drm/i915/i915_params.c      | 12 ++++
+ drivers/gpu/drm/nouveau/nouveau_drm.c   | 13 +++++
+ include/drm/drm_print.h                 | 78 +++++++++++++++++++------
+ 9 files changed, 174 insertions(+), 31 deletions(-)
+
+-- 
+2.37.3
 
