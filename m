@@ -2,81 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A810B5B6210
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 22:17:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 555515B628A
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 23:11:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BFAE810E228;
-	Mon, 12 Sep 2022 20:17:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5CB4410E2ED;
+	Mon, 12 Sep 2022 21:11:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-00190b01.pphosted.com (mx0a-00190b01.pphosted.com
- [IPv6:2620:100:9001:583::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7219210E172;
- Mon, 12 Sep 2022 20:17:12 +0000 (UTC)
-Received: from pps.filterd (m0050095.ppops.net [127.0.0.1])
- by m0050095.ppops.net-00190b01. (8.17.1.5/8.17.1.5) with ESMTP id
- 28CGn0s1000316; Mon, 12 Sep 2022 21:17:03 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=jan2016.eng;
- bh=PPtZHmCIQVuM9YXzLPNtRwdGAqaP/tT/4KH6zim4BTk=;
- b=J0a0BInST46lwTEIr0aqv3RDPnHNzZzbc/gn++frBD8awWms+RF0UxiEe2dSINuE/0Ul
- xA9klHjTwJu/NOFKI+q3hwjlk4r+pWtVammua4QSu6FgXqxvSki5PX/gtYg0laUE5tFw
- RKhQwNGCyyow5pczu6GvQEPB22usQC9T+vn0YgSKPSSRumn/GeHDmTzZ+Mg5ykATKjDs
- WPHJa4fC/c/4CyQsb8BbVntxkB/D9yqcFmH40HSv6v4g5419glK47rJrmlZeozCs8pnr
- 1S9MN1H9Kj3IqyHtQLeEUkp7/4Zgi4dVE4F21z9UqOnJMy5Xu/9/DU/fyFlasyPi8Zjm Zg== 
-Received: from prod-mail-ppoint7
- (a72-247-45-33.deploy.static.akamaitechnologies.com [72.247.45.33] (may be
- forged))
- by m0050095.ppops.net-00190b01. (PPS) with ESMTPS id 3jgk46s9gq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 12 Sep 2022 21:17:03 +0100
-Received: from pps.filterd (prod-mail-ppoint7.akamai.com [127.0.0.1])
- by prod-mail-ppoint7.akamai.com (8.17.1.5/8.17.1.5) with ESMTP id
- 28CIUslV017697; Mon, 12 Sep 2022 16:17:02 -0400
-Received: from prod-mail-relay18.dfw02.corp.akamai.com ([172.27.165.172])
- by prod-mail-ppoint7.akamai.com (PPS) with ESMTP id 3jgnxvdfbx-1;
- Mon, 12 Sep 2022 16:17:02 -0400
-Received: from [0.0.0.0] (unknown [172.27.119.138])
- by prod-mail-relay18.dfw02.corp.akamai.com (Postfix) with ESMTP id 38EF1FA;
- Mon, 12 Sep 2022 20:17:01 +0000 (GMT)
-Message-ID: <0d9f644f-3d60-02c3-7ce0-01296757e181@akamai.com>
-Date: Mon, 12 Sep 2022 16:17:00 -0400
+Received: from mail-vs1-xe2d.google.com (mail-vs1-xe2d.google.com
+ [IPv6:2607:f8b0:4864:20::e2d])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2A5DC10E2ED;
+ Mon, 12 Sep 2022 21:11:33 +0000 (UTC)
+Received: by mail-vs1-xe2d.google.com with SMTP id o123so10362591vsc.3;
+ Mon, 12 Sep 2022 14:11:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=0y5HDghcAY9sylQGFFzoaSf/fyhWZ2sBWfqcl39LrAY=;
+ b=mxC/08asEEoQwpJK7YyrNORboVPuR1mQ9pckLYXNFM9ItzfU4KAedKMQxXi+Ppdh4t
+ v0Z7Zxg+FPrE4QWEkn3h2vRE2QSxRJ0KA9uGF3tCoeY4rRltXbSYzIcixWkksNF9t9wO
+ o/Lldc8HyGnQ/TfoPY4NVvRvTjwUSJv6LYnbbdm+CZDBg4SxDRWhnzoAZXExfNnWqjl3
+ VKk+DmQ57LYXuxE3Gn8Z8PZhuSKCPAh7obwz8x90stW22FYdXekkH/8340+EcuAMqBB/
+ E9dZa3mrQQROKHo+3gvj0DQYDL1uQDqK1BDwYySeYl6pZ3WO1qwYVKsgOpXdoDHSQRvt
+ YMOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=0y5HDghcAY9sylQGFFzoaSf/fyhWZ2sBWfqcl39LrAY=;
+ b=5tG8gRpe1xsUUz83YQPLca1A9vGOblFIIXgcH9QQzoky3ftZwfHRtEnkaPkkiZLcpX
+ 8jHgjITVQUv7TQu/oIiOJdXyUYoahfTnk77m23uY6XZw1XkUYo+mtlX6FAq05eubFTzf
+ eyV4ew7D/NwNZuqbNgqIrklFF/AO6MMHrq2Bp6iL2wJUI21FzruBD9uGRH08PNY1/ysR
+ c38pu6ecVM6BN7aaXfi4g6FZO1JFpX5I/HFbTUWNL22hsQTFzkkLCR2JVVmAWidt955X
+ jX3tF+r/a6sNIbGmFOIS7ka3F7SNpUhytY8XC0c6pZYTni/z/A2b6LpNwE2rMOfPnkDt
+ a/ow==
+X-Gm-Message-State: ACgBeo3h0nKRcx5ospDVV8PlXrFbHw7b1OdxlFe0H74P7H5/zmUmJw78
+ lqBZOYn5xRDWhyijaSttHyAcL1l/O4ZWThZOhck=
+X-Google-Smtp-Source: AA6agR5pilGGCrxIlDXL0vtrXfNYU1+8LLhhj8vm590FXQ+SqLj90vzQQRbHzbzkwJG/WG/xxQzVbLbSR7rfddViAoo=
+X-Received: by 2002:a05:6102:3a4c:b0:398:3098:a301 with SMTP id
+ c12-20020a0561023a4c00b003983098a301mr7548545vsu.74.1663017092101; Mon, 12
+ Sep 2022 14:11:32 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v6 17/57] dyndbg: validate class FOO by checking with
- module
-Content-Language: en-US
-To: jim.cromie@gmail.com
-References: <20220904214134.408619-1-jim.cromie@gmail.com>
- <20220904214134.408619-18-jim.cromie@gmail.com>
- <2d3846cb-ff9a-3484-61a8-973799727d8f@akamai.com>
- <CAJfuBxzM=KKPbcks-aQLAJM0QVd5sjL-CucYbyFbeG5sgoCVjg@mail.gmail.com>
-From: Jason Baron <jbaron@akamai.com>
-In-Reply-To: <CAJfuBxzM=KKPbcks-aQLAJM0QVd5sjL-CucYbyFbeG5sgoCVjg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
- definitions=2022-09-12_14,2022-09-12_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- malwarescore=0 adultscore=0
- phishscore=0 bulkscore=0 mlxscore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2207270000
- definitions=main-2209120067
-X-Proofpoint-ORIG-GUID: NWqNNT8JvyIz1ZmPTHNe_ca5jdhHGLod
-X-Proofpoint-GUID: NWqNNT8JvyIz1ZmPTHNe_ca5jdhHGLod
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
- definitions=2022-09-12_14,2022-09-12_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 bulkscore=0
- phishscore=0 mlxlogscore=999 spamscore=0 priorityscore=1501 suspectscore=0
- mlxscore=0 impostorscore=0 adultscore=0 clxscore=1015 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2207270000
- definitions=main-2209120068
+References: <20220912052852.1123868-1-jim.cromie@gmail.com>
+ <20220912052852.1123868-3-jim.cromie@gmail.com> <87pmg06g2x.fsf@intel.com>
+In-Reply-To: <87pmg06g2x.fsf@intel.com>
+From: jim.cromie@gmail.com
+Date: Mon, 12 Sep 2022 15:11:05 -0600
+Message-ID: <CAJfuBxy5E0xPFH=bxaaXy2Q8LojBrqgr+su8wGq7rsv3m7_d_g@mail.gmail.com>
+Subject: Re: [PATCH v7 2/9] drm: POC drm on dyndbg - use in core, 2 helpers,
+ 3 drivers.
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,273 +69,129 @@ Cc: Greg KH <gregkh@linuxfoundation.org>,
  Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
  Rasmus Villemoes <linux@rasmusvillemoes.dk>,
  LKML <linux-kernel@vger.kernel.org>,
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>, robdclark@gmail.com,
- Sean Paul <seanpaul@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>,
+ amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
+ Jason Baron <jbaron@akamai.com>, Sean Paul <seanpaul@chromium.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
  Daniel Vetter <daniel.vetter@ffwll.ch>, Joe Perches <joe@perches.com>,
  intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Mon, Sep 12, 2022 at 4:29 AM Jani Nikula <jani.nikula@linux.intel.com> wrote:
+>
+> On Sun, 11 Sep 2022, Jim Cromie <jim.cromie@gmail.com> wrote:
+> > Use DECLARE_DYNDBG_CLASSMAP across DRM:
+> >
+> >  - in .c files, since macro defines/initializes a record
+> >
+> >  - in drivers, $mod_{drv,drm,param}.c
+> >    ie where param setup is done, since a classmap is param related
+> >
+> >  - in drm/drm_print.c
+> >    since existing __drm_debug param is defined there,
+> >    and we ifdef it, and provide an elaborated alternative.
+> >
+> >  - in drm_*_helper modules:
+> >    dp/drm_dp - 1st item in makefile target
+> >    drivers/gpu/drm/drm_crtc_helper.c - random pick iirc.
+> >
+> > Since these modules all use identical CLASSMAP declarations (ie: names
+> > and .class_id's) they will all respond together to "class DRM_UT_*"
+> > query-commands:
 
 
-On 9/9/22 16:44, jim.cromie@gmail.com wrote:
-> On Wed, Sep 7, 2022 at 12:19 PM Jason Baron <jbaron@akamai.com> wrote:
->>
->>
->>
->> On 9/4/22 17:40, Jim Cromie wrote:
->>> Add module-to-class validation:
->>>
->>>   #> echo class DRM_UT_KMS +p > /proc/dynamic_debug/control
->>>
->>> If a query has "class FOO", then ddebug_find_valid_class(), called
->>> from ddebug_change(), requires that FOO is known to module X,
->>> otherwize the query is skipped entirely for X.  This protects each
->>> module's class-space, other than the default:31.
->>>
->>> The authors' choice of FOO is highly selective, giving isolation
->>> and/or coordinated sharing of FOOs.  For example, only DRM modules
->>> should know and respond to DRM_UT_KMS.
->>>
->>> So this, combined with module's opt-in declaration of known classes,
->>> effectively privatizes the .class_id space for each module (or
->>> coordinated set of modules).
->>>
->>> Notes:
->>>
->>> For all "class FOO" queries, ddebug_find_valid_class() is called, it
->>> returns the map matching the query, and sets valid_class via an
->>> *outvar).
->>>
->>> If no "class FOO" is supplied, valid_class = _CLASS_DFLT.  This
->>> insures that legacy queries do not trample on new class'd callsites,
->>> as they get added.
->>
->>
->> Hi Jim,
->>
->> I'm wondering about the case where we have a callsite which is marked
->> as 'class foo', but the query string is done by say module and file, so:
->>
->> # echo "module bar file foo.c +p" > /proc/dynamic_debug_control
->>
->> With the proposed code, I think this ends up not enabling anything right?
-> 
-> correct - the only way to enable :    pr_debug_cls(CL_FOO, " ...")
-> is
->    echo class CL_FOO +p > control
-> 
-> 1st, existing dyndbg query uses, whether ad-hoc or scripted,
-> were not written in anticipation of new / classified subsystems.
-> 
-> 2nd, new class users dont want to sit in coach. no damn legroom.
-> 
-> 3rd, consider DRM, which already has drm.debug
-> ie:  /sys/module/drm/parameters/debug
-> and prefers it, at least by inertia.
-> protecting these new class'd callsites (3-5k of them)
-> from casual (unintended) manipulations of the kernel-wide
-> dyndbg state seems prudent, and a usability win.
-> 
-> Not everyone will use module bar, requiring "class foo"
-> guarantees that changes are intentional.
-> 
+>
+> The commit message could start off by saying each module needs to define
+> DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, ...). That is, IIUC.
+>
 
-I sort of get that your trying to protect these from unintended toggling,
-but I would say it's that's not really new with these statements,
-prr_debug() come and go before and I'm not aware of this is an issue.
-And in any case, a query can be modified.
+Yes, I see your point.
+All the explanations missing here are in preceding commits,
+now in GregKHs  driver-core/driver-core-next tree,
+so I didnt resend them.
 
-I think what bugs me is now query stuff works differently. Previously,
-all the query strings - 'module', 'file', 'line', 'format', were
-used as additional selectors, but now we have this new one 'class'
-that works differently as it's requited for pr_debug_cls() statements.
 
-> 
-> 
->> Because valid class is set to _DPRINTK_CLASS_DFLT and then:
->> 'dp->class_id != valid_class' is true?
->>
->> This seems confusing to me as a user as this doesn't work like the
->> other queries....so maybe we should only do the
->> 'dp->class_id != valid_class' check *if* query->class_string is set,
->> see below.
->>
-> 
-> Could you clarify whether you think this is a logic error
-> or a frame-of-reference difference as elaborated above ?
+> Where's DECLARE_DYNDBG_CLASSMAP defined? linux-next? What's it do? What
+> if multiple modules with that are actually builtin?
 
-'frame-of-reference' I'm questioning the how 'class' works as mentioned
-above not the implementation.
+The commit that adds the macro is at
+https://lore.kernel.org/lkml/20220904214134.408619-15-jim.cromie@gmail.com/
 
-Thanks,
+there are many combos of builtin, Ive done at least several:
+with caveat that >98% of testing is on virtme (thanks for that tool)
 
--Jason
+- test_dynamic_debug as module, and builtin.
+it has multiple macro uses, showing 1 kind of sharing
 
-> 
-> ISTM theres a place for a well-worded paragraph in doc
-> about the class distinction, perhaps a whole for-authors section.
-> 
-> 
-> 
->>
->>
->>>
->>> Also add a new column to control-file output, displaying non-default
->>> class-name (when found) or the "unknown _id:", if it has not been
->>> (correctly) declared with one of the declarator macros.
->>>
->>> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
->>> ---
->>>  lib/dynamic_debug.c | 76 ++++++++++++++++++++++++++++++++++++++++-----
->>>  1 file changed, 68 insertions(+), 8 deletions(-)
->>>
->>> diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
->>> index b71efd0b491d..db96ded78c3f 100644
->>> --- a/lib/dynamic_debug.c
->>> +++ b/lib/dynamic_debug.c
->>> @@ -56,6 +56,7 @@ struct ddebug_query {
->>>       const char *module;
->>>       const char *function;
->>>       const char *format;
->>> +     const char *class_string;
->>>       unsigned int first_lineno, last_lineno;
->>>  };
->>>
->>> @@ -136,15 +137,33 @@ static void vpr_info_dq(const struct ddebug_query *query, const char *msg)
->>>                       fmtlen--;
->>>       }
->>>
->>> -     v3pr_info("%s: func=\"%s\" file=\"%s\" module=\"%s\" format=\"%.*s\" lineno=%u-%u\n",
->>> -              msg,
->>> -              query->function ?: "",
->>> -              query->filename ?: "",
->>> -              query->module ?: "",
->>> -              fmtlen, query->format ?: "",
->>> -              query->first_lineno, query->last_lineno);
->>> +     v3pr_info("%s: func=\"%s\" file=\"%s\" module=\"%s\" format=\"%.*s\" lineno=%u-%u class=%s\n",
->>> +               msg,
->>> +               query->function ?: "",
->>> +               query->filename ?: "",
->>> +               query->module ?: "",
->>> +               fmtlen, query->format ?: "",
->>> +               query->first_lineno, query->last_lineno, query->class_string);
->>>  }
->>>
->>> +static struct ddebug_class_map *ddebug_find_valid_class(struct ddebug_table const *dt,
->>> +                                                       const char *class_string, int *class_id)
->>> +{
->>> +     struct ddebug_class_map *map;
->>> +     int idx;
->>> +
->>> +     list_for_each_entry(map, &dt->maps, link) {
->>> +             idx = match_string(map->class_names, map->length, class_string);
->>> +             if (idx >= 0) {
->>> +                     *class_id = idx + map->base;
->>> +                     return map;
->>> +             }
->>> +     }
->>> +     *class_id = -ENOENT;
->>> +     return NULL;
->>> +}
->>> +
->>> +#define __outvar /* filled by callee */
->>>  /*
->>>   * Search the tables for _ddebug's which match the given `query' and
->>>   * apply the `flags' and `mask' to them.  Returns number of matching
->>> @@ -159,6 +178,8 @@ static int ddebug_change(const struct ddebug_query *query,
->>>       unsigned int newflags;
->>>       unsigned int nfound = 0;
->>>       struct flagsbuf fbuf, nbuf;
->>> +     struct ddebug_class_map *map = NULL;
->>> +     int __outvar valid_class;
->>>
->>>       /* search for matching ddebugs */
->>>       mutex_lock(&ddebug_lock);
->>> @@ -169,9 +190,22 @@ static int ddebug_change(const struct ddebug_query *query,
->>>                   !match_wildcard(query->module, dt->mod_name))
->>>                       continue;
->>>
->>> +             if (query->class_string) {
->>> +                     map = ddebug_find_valid_class(dt, query->class_string, &valid_class);
->>> +                     if (!map)
->>> +                             continue;
->>
->> So remove the else here.
->>
->>> +             } else {
->>> +                     /* constrain query, do not touch class'd callsites */
->>> +                     valid_class = _DPRINTK_CLASS_DFLT;
->>> +             }
->>> +
->>>               for (i = 0; i < dt->num_ddebugs; i++) {
->>>                       struct _ddebug *dp = &dt->ddebugs[i];
->>>
->>> +                     /* match site against query-class */
->>> +                     if (dp->class_id != valid_class)
->>
->> And then make this: if (query->class_string && (dp->class_id != valid_class))
->>
->> thoughts?
->>
->>
->>> +                             continue;
->>> +>                    /* match against the source filename */
->>>                       if (query->filename &&
->>>                           !match_wildcard(query->filename, dp->filename) &&
->>> @@ -420,6 +454,8 @@ static int ddebug_parse_query(char *words[], int nwords,
->>>               } else if (!strcmp(keyword, "line")) {
->>>                       if (parse_linerange(query, arg))
->>>                               return -EINVAL;
->>> +             } else if (!strcmp(keyword, "class")) {
->>> +                     rc = check_set(&query->class_string, arg, "class");
->>>               } else {
->>>                       pr_err("unknown keyword \"%s\"\n", keyword);
->>>                       return -EINVAL;
->>> @@ -854,6 +890,20 @@ static void *ddebug_proc_next(struct seq_file *m, void *p, loff_t *pos)
->>>       return dp;
->>>  }
->>>
->>> +#define class_in_range(class_id, map)                                        \
->>> +     (class_id >= map->base && class_id < map->base + map->length)
->>> +
->>> +static const char *ddebug_class_name(struct ddebug_iter *iter, struct _ddebug *dp)
->>> +{
->>> +     struct ddebug_class_map *map;
->>> +
->>> +     list_for_each_entry(map, &iter->table->maps, link)
->>> +             if (class_in_range(dp->class_id, map))
->>> +                     return map->class_names[dp->class_id - map->base];
->>> +
->>> +     return NULL;
->>> +}
->>> +
->>>  /*
->>>   * Seq_ops show method.  Called several times within a read()
->>>   * call from userspace, with ddebug_lock held.  Formats the
->>> @@ -865,6 +915,7 @@ static int ddebug_proc_show(struct seq_file *m, void *p)
->>>       struct ddebug_iter *iter = m->private;
->>>       struct _ddebug *dp = p;
->>>       struct flagsbuf flags;
->>> +     char const *class;
->>>
->>>       if (p == SEQ_START_TOKEN) {
->>>               seq_puts(m,
->>> @@ -877,7 +928,16 @@ static int ddebug_proc_show(struct seq_file *m, void *p)
->>>                  iter->table->mod_name, dp->function,
->>>                  ddebug_describe_flags(dp->flags, &flags));
->>>       seq_escape_str(m, dp->format, ESCAPE_SPACE, "\t\r\n\"");
->>> -     seq_puts(m, "\"\n");
->>> +     seq_puts(m, "\"");
->>> +
->>> +     if (dp->class_id != _DPRINTK_CLASS_DFLT) {
->>> +             class = ddebug_class_name(iter, dp);
->>> +             if (class)
->>> +                     seq_printf(m, " class:%s", class);
->>> +             else
->>> +                     seq_printf(m, " class unknown, _id:%d", dp->class_id);
->>> +     }
->>> +     seq_puts(m, "\n");
->>>
->>>       return 0;
->>>  }
+- drm as builtin, drivers as modules
+that surely pulled in other drm-helpers as builtins
+
+- all loadable modules mostly.
+
+
+>
+> The duplication and requirement that they're identical seems like an
+> error prone combo.
+
+I freely acknowledge(d) this is sub-optimal.
+There might be a best place for a single declaration that is in-scope
+across multiple modules, but I dont know the drm core/driver lifetime
+well enough to just drop this into that place.
+
+I may have complicated things by starting with a static struct holding
+the classmap, that choice was driven by:
+
+- static declaration into a section solved a problem where the class
+definitions
+were "registered" (term used in patchset, -v2-3?) too late to be available for
+     modprobe i915 dyndbg='class DRM_UT_CORE +p'
+but worked afterwards
+(also true for builtins and boot-time $mod.dyndbg='class notworking +p')
+
+Another subtlety - the "sharing" is due more to: drm_dbg(DRM_UT_*, "")
+Im not sure precisely how this might matter.
+
+I also had an "incompleteness" argument circling in my head - something like;
+you cant simultaneously allow a drm-wanna-be module to declare "DRM_UT_CORE"
+but disallow "DRM_UT_ILL_CONSIDERED".   I kind-of stopped there.
+
+Theres also an issue where multiple declarations in a module must
+avoid range overlap.
+I had no idea how to put that into a BUILD_BUG_ON.
+Its done manually, with commentary, in test-dynamic-debug.
+
+Maybe both issues can be improved somewhat by changing the macro
+to expect real ENUM symbols, (and stringify _VA_ARGS_ to init the classnames),
+not the quoted "DRM_UT_*"s it gets now.  That would also obsolete the _base,
+since its the value of DRM_UT_CORE (the 1st enum val).
+But that still leaves the enum vals enumerated, with possibility of
+omission or mixup,
+which unlike a spelling error wouldnt get caught, and would be wrong.
+
+I fiddled with the 1st part of that for a while, I lack the macro-fu,
+and punted.
+
+Im happy to try an alternative approach, particularly with elaborated
+suggestions.
+
+
+>
+> Finally, the choice of placement in e.g. i915_params.c seems completely
+> arbitrary, and makes you wonder "what here requires this, nothing?".
+
+acknowledged - I put it there because the access to it is via a parameter,
+namely one that already affects it from a distance:
+   /sys/module/drm/parameters/debug - ie drm.dbg
+
+And its not even i915's parameter.
+
+>
+> BR,
+> Jani.
+>
+
+thanks,
+
+>
+> >
+> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
