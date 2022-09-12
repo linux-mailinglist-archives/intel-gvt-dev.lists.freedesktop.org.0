@@ -2,66 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 933D25B5377
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 07:29:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D166C5B5804
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 12:17:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 076BD10E192;
-	Mon, 12 Sep 2022 05:29:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ACE5D10E36B;
+	Mon, 12 Sep 2022 10:17:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x129.google.com (mail-il1-x129.google.com
- [IPv6:2607:f8b0:4864:20::129])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C1F8110E1B4;
- Mon, 12 Sep 2022 05:29:15 +0000 (UTC)
-Received: by mail-il1-x129.google.com with SMTP id k13so2304196ilc.11;
- Sun, 11 Sep 2022 22:29:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=mSClBv+YMHjCelLo1EhsewE6hP3wTbgC0DRNv0VPhHs=;
- b=StDGxERICaNtO/MWOKOgGPpN0K/uy13ONokxOkqYAaZjX4KHAFnRfhTBCc8bQhit2y
- gZ3Ur1wskb70k9V1X9Ri0sdLVe5gMaVvXggpW/8GLtLDasXI3SwKAh9hsDCAiGf9etTX
- VKoftvlSsWhFNzRgf6bemRyfW4xndlHtY2NeTaav7UHg/DS296GlPC+y9dgRFppIDy2N
- S4ica+O5t6X0MzR0pVGPNyA6AHxlFkKlLWnTV0d+xhCXTrQPCy2KtUCPBkLDFGGvxXBi
- 4hYd5j6zidurXvxchTCxDDr/jsVm2aDJvfe8y6mB3bozzLYGhNkpdaRhdFxmcwDcfocy
- cjxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date;
- bh=mSClBv+YMHjCelLo1EhsewE6hP3wTbgC0DRNv0VPhHs=;
- b=SDZw3PwdvXzvXY8YhcDLxi/4hQtRQRXxhL5FImhQPiZ8QXkhkc1NBjcQCtzyhiNcnA
- 3xbHrhdWTTwoiVGv8krAcJtlKjJdt3/TD1ze+yc0BWE0cAfpNYYbSggs5ZZTi+NXfSj3
- IXRYFOmESHqyFnGuVRNmlIfSDTv+sOMcQDudm0k5VkxmmM+fMtIfpLuEgUsrcjgCqhkM
- d6xMUJxuEL5Q+ubNMv9NQCBbUMYSWET9DVOUkEMKXXGu/nKjE0iqR/6GjZwDm1V2s9aW
- IbDgn3qYH+MCarklW7B6pjtRYDhb3GFj6be9YmKm8E1B/Wf6eZDQbUXgsOU6bArXM3hT
- b4nw==
-X-Gm-Message-State: ACgBeo1SNS0lIuSR1PdTUNdQjLD4oSOq+2ZB3oUZTbJwkLV+umFUBVcS
- T2WscSp9q/gJfW5r3HVxd9s=
-X-Google-Smtp-Source: AA6agR6WOElTbvZcWBDLNgRT1L6h9WJGhihQJW5zGPjIJBCSEhK0r/DX6Fq17h9F3h/cF/FQ/QryDw==
-X-Received: by 2002:a05:6e02:214f:b0:2f1:87fb:783b with SMTP id
- d15-20020a056e02214f00b002f187fb783bmr9708111ilv.161.1662960554820; 
- Sun, 11 Sep 2022 22:29:14 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- q16-20020a056e02079000b002eb75fb01dbsm3006057ils.28.2022.09.11.22.29.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Sep 2022 22:29:14 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, gregkh@linuxfoundation.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v7 9/9] drm_print: add _ddebug descriptor to drm_*dbg
- prototypes
-Date: Sun, 11 Sep 2022 23:28:52 -0600
-Message-Id: <20220912052852.1123868-10-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220912052852.1123868-1-jim.cromie@gmail.com>
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5691310E362;
+ Mon, 12 Sep 2022 10:17:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1662977866; x=1694513866;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=/MPCcJ4MpKdwDYHL+WW5d/8BsMLAxp/XjAo0FswLV4I=;
+ b=GXaxZYsdpNh9/rl4L2bO3erDsU6Hq/GkXLTrySMF8Ux1mwp3mNYFl0K/
+ DVEMN1KIEgQFN12ZcbGny4t51JPpg3hELhPFRBbZuAl0/cjl/NomGzscm
+ zKPhnEFQ5Jem0TNkiIc1kdKC/xuYXk0LkfLmTdBtqYvafB36qvOFl31XO
+ YFBzuMbm3dMBqAHttrA/mZawcivrE2qFgoeYY/0N9lLHqZ+vFHxEQ2jtp
+ t5ofRHLZYOxYTZMIXxJvDtvW5CgqsBVtLKCEOmyFS5Ryb3bvhSPbRPpU0
+ eyrXZAs2TCFLWfx6dRGsxAhelI4VJxO7rG2Wb+WgSSP6pnHZD4BwbJAs/ w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10467"; a="359555325"
+X-IronPort-AV: E=Sophos;i="5.93,310,1654585200"; d="scan'208";a="359555325"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Sep 2022 03:17:45 -0700
+X-IronPort-AV: E=Sophos;i="5.93,310,1654585200"; d="scan'208";a="678028256"
+Received: from abijaz-mobl.ger.corp.intel.com (HELO localhost)
+ ([10.252.58.140])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Sep 2022 03:17:41 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com,
+ gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v7 1/9] drm_print: condense enum drm_debug_category
+In-Reply-To: <20220912052852.1123868-2-jim.cromie@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 References: <20220912052852.1123868-1-jim.cromie@gmail.com>
+ <20220912052852.1123868-2-jim.cromie@gmail.com>
+Date: Mon, 12 Sep 2022 13:17:34 +0300
+Message-ID: <87sfkw6gn5.fsf@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,136 +60,114 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jim Cromie <jim.cromie@gmail.com>, daniel.vetter@ffwll.ch,
- linux@rasmusvillemoes.dk, robdclark@gmail.com, seanpaul@chromium.org,
- joe@perches.com
+Cc: seanpaul@chromium.org, daniel.vetter@ffwll.ch, joe@perches.com,
+ linux@rasmusvillemoes.dk
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-upgrade the callchain to drm_dbg() and drm_dev_dbg(); add a struct
-_ddebug ptr parameter to them, and supply that additional param by
-replacing the '_no_desc' flavor of dyndbg Factory macro currently used
-with the flavor that supplies the descriptor.
+On Sun, 11 Sep 2022, Jim Cromie <jim.cromie@gmail.com> wrote:
+> enum drm_debug_category has 10 categories, but is initialized with
+> bitmasks which require 10 bits of underlying storage.  By using
+> natural enumeration, and moving the BIT(cat) into drm_debug_enabled(),
+> the enum fits in 4 bits, allowing the category to be represented
+> directly in pr_debug callsites, via the ddebug.class_id field.
+>
+> While this slightly pessimizes the bit-test in drm_debug_enabled(),
+> using dyndbg with JUMP_LABEL will avoid the function entirely.
+>
+> NOTE: this change forecloses the possibility of doing:
+>
+>   drm_dbg(DRM_UT_CORE|DRM_UT_KMS, "weird 2-cat experiment")
+>
+> but thats already strongly implied by the use of the enum itself; its
+> not a normal enum if it can be 2 values simultaneously.
 
-NOTES:
+The drm.debug module parameter values are, arguably, ABI. There are tons
+of people, scripts, test environments, documentation, bug reports, etc,
+etc, referring to specific drm.debug module parameter values to enable
+specific drm debug logging categories.
 
-The descriptor gives these fns access to the decorator flags, but they
-do none of the dynamic-prefixing done by dynamic_emit_prefix(), which
-is currently static.
+AFAICT you're not changing any of the values here, but having an enum
+without the hard coded values makes it more likely to accidentally
+change the category to bit mapping. At the very least deserves a
+comment.
 
-DRM already has conventions for logging/messaging; just tossing
-optional decorations on top probably wouldn't help.  Instead, existing
-flags (or new ones, perhaps 'sd' ala lspci) can be used to make
-current message conventions optional.  This suggests a new
-drmdbg_prefix_emit() to handle prefixing locally.
 
-For CONFIG_DRM_USE_DYNAMIC_DEBUG=N, just pass null descriptor.
+BR,
+Jani.
 
-desc->class_id is redundant with category parameter, but its
-availability is dependent on desc.
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/gpu/drm/drm_print.c |  8 +++++---
- include/drm/drm_print.h     | 23 ++++++++++++-----------
- 2 files changed, 17 insertions(+), 14 deletions(-)
+>
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+>  include/drm/drm_print.h | 22 +++++++++++-----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
+>
+> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
+> index 22fabdeed297..b3b470440e46 100644
+> --- a/include/drm/drm_print.h
+> +++ b/include/drm/drm_print.h
+> @@ -279,49 +279,49 @@ enum drm_debug_category {
+>  	 * @DRM_UT_CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c,
+>  	 * drm_memory.c, ...
+>  	 */
+> -	DRM_UT_CORE		= 0x01,
+> +	DRM_UT_CORE,
+>  	/**
+>  	 * @DRM_UT_DRIVER: Used in the vendor specific part of the driver: i915,
+>  	 * radeon, ... macro.
+>  	 */
+> -	DRM_UT_DRIVER		= 0x02,
+> +	DRM_UT_DRIVER,
+>  	/**
+>  	 * @DRM_UT_KMS: Used in the modesetting code.
+>  	 */
+> -	DRM_UT_KMS		= 0x04,
+> +	DRM_UT_KMS,
+>  	/**
+>  	 * @DRM_UT_PRIME: Used in the prime code.
+>  	 */
+> -	DRM_UT_PRIME		= 0x08,
+> +	DRM_UT_PRIME,
+>  	/**
+>  	 * @DRM_UT_ATOMIC: Used in the atomic code.
+>  	 */
+> -	DRM_UT_ATOMIC		= 0x10,
+> +	DRM_UT_ATOMIC,
+>  	/**
+>  	 * @DRM_UT_VBL: Used for verbose debug message in the vblank code.
+>  	 */
+> -	DRM_UT_VBL		= 0x20,
+> +	DRM_UT_VBL,
+>  	/**
+>  	 * @DRM_UT_STATE: Used for verbose atomic state debugging.
+>  	 */
+> -	DRM_UT_STATE		= 0x40,
+> +	DRM_UT_STATE,
+>  	/**
+>  	 * @DRM_UT_LEASE: Used in the lease code.
+>  	 */
+> -	DRM_UT_LEASE		= 0x80,
+> +	DRM_UT_LEASE,
+>  	/**
+>  	 * @DRM_UT_DP: Used in the DP code.
+>  	 */
+> -	DRM_UT_DP		= 0x100,
+> +	DRM_UT_DP,
+>  	/**
+>  	 * @DRM_UT_DRMRES: Used in the drm managed resources code.
+>  	 */
+> -	DRM_UT_DRMRES		= 0x200,
+> +	DRM_UT_DRMRES
+>  };
+>  
+>  static inline bool drm_debug_enabled(enum drm_debug_category category)
+>  {
+> -	return unlikely(__drm_debug & category);
+> +	return unlikely(__drm_debug & BIT(category));
+>  }
+>  
+>  /*
 
-diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-index ec477c44a784..5b93c11895bb 100644
---- a/drivers/gpu/drm/drm_print.c
-+++ b/drivers/gpu/drm/drm_print.c
-@@ -29,6 +29,7 @@
- #include <linux/moduleparam.h>
- #include <linux/seq_file.h>
- #include <linux/slab.h>
-+#include <linux/dynamic_debug.h>
- 
- #include <drm/drm.h>
- #include <drm/drm_drv.h>
-@@ -278,8 +279,8 @@ void drm_dev_printk(const struct device *dev, const char *level,
- }
- EXPORT_SYMBOL(drm_dev_printk);
- 
--void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
--		   const char *format, ...)
-+void __drm_dev_dbg(struct _ddebug *desc, const struct device *dev,
-+		   enum drm_debug_category category, const char *format, ...)
- {
- 	struct va_format vaf;
- 	va_list args;
-@@ -287,6 +288,7 @@ void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
- 	if (!__drm_debug_enabled(category))
- 		return;
- 
-+	/* we know we are printing for either syslog, tracefs, or both */
- 	va_start(args, format);
- 	vaf.fmt = format;
- 	vaf.va = &args;
-@@ -302,7 +304,7 @@ void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
- }
- EXPORT_SYMBOL(__drm_dev_dbg);
- 
--void ___drm_dbg(enum drm_debug_category category, const char *format, ...)
-+void ___drm_dbg(struct _ddebug *desc, enum drm_debug_category category, const char *format, ...)
- {
- 	struct va_format vaf;
- 	va_list args;
-diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
-index 9af57d3df259..a44fb7ef257f 100644
---- a/include/drm/drm_print.h
-+++ b/include/drm/drm_print.h
-@@ -354,9 +354,10 @@ static inline bool drm_debug_enabled_raw(enum drm_debug_category category)
- __printf(3, 4)
- void drm_dev_printk(const struct device *dev, const char *level,
- 		    const char *format, ...);
--__printf(3, 4)
--void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
--		 const char *format, ...);
-+struct _ddebug;
-+__printf(4, 5)
-+void __drm_dev_dbg(struct _ddebug *desc, const struct device *dev,
-+		   enum drm_debug_category category, const char *format, ...);
- 
- /**
-  * DRM_DEV_ERROR() - Error output.
-@@ -406,11 +407,11 @@ void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
- 
- #if !defined(CONFIG_DRM_USE_DYNAMIC_DEBUG)
- #define drm_dev_dbg(dev, cat, fmt, ...)				\
--	__drm_dev_dbg(dev, cat, fmt, ##__VA_ARGS__)
-+	__drm_dev_dbg(NULL, dev, cat, fmt, ##__VA_ARGS__)
- #else
- #define drm_dev_dbg(dev, cat, fmt, ...)				\
--	_dynamic_func_call_no_desc(fmt, __drm_dev_dbg,			\
--				   dev, cat, fmt, ##__VA_ARGS__)
-+	_dynamic_func_call_cls(cat, fmt, __drm_dev_dbg,		\
-+			       dev, cat, fmt, ##__VA_ARGS__)
- #endif
- 
- /**
-@@ -514,17 +515,17 @@ void __drm_dev_dbg(const struct device *dev, enum drm_debug_category category,
-  * Prefer drm_device based logging over device or prink based logging.
-  */
- 
--__printf(2, 3)
--void ___drm_dbg(enum drm_debug_category category, const char *format, ...);
-+__printf(3, 4)
-+void ___drm_dbg(struct _ddebug *desc, enum drm_debug_category category, const char *format, ...);
- __printf(1, 2)
- void __drm_err(const char *format, ...);
- 
- #if !defined(CONFIG_DRM_USE_DYNAMIC_DEBUG)
--#define __drm_dbg(fmt, ...)		___drm_dbg(fmt, ##__VA_ARGS__)
-+#define __drm_dbg(fmt, ...)		___drm_dbg(NULL, fmt, ##__VA_ARGS__)
- #else
- #define __drm_dbg(cat, fmt, ...)					\
--	_dynamic_func_call_no_desc(fmt, ___drm_dbg,			\
--				   cat, fmt, ##__VA_ARGS__)
-+	_dynamic_func_call_cls(cat, fmt, ___drm_dbg,			\
-+			       cat, fmt, ##__VA_ARGS__)
- #endif
- 
- /* Macros to make printk easier */
 -- 
-2.37.3
-
+Jani Nikula, Intel Open Source Graphics Center
