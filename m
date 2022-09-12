@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44F4B5B51D8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 01:18:34 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D06C65B52A9
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 04:25:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 390E310E554;
-	Sun, 11 Sep 2022 23:18:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F9AA10E569;
+	Mon, 12 Sep 2022 02:24:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Sun, 11 Sep 2022 23:18:23 UTC
-Received: from mail.petitolm.click (unknown [185.104.151.209])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6004710E543
+X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
+ Mon, 12 Sep 2022 02:24:34 UTC
+Received: from mail.outpetit.icu (unknown [192.119.166.113])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9EECB10E569
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 11 Sep 2022 23:18:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=petitolm.click; 
+ Mon, 12 Sep 2022 02:24:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outpetit.icu;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hegland_rhonda@petitolm.click; 
- bh=4/ZFWrgPEmdSw2e7JILcguLQ0iM=;
- b=uQ3h6HhaidwMq1ietZmIzN8INlxWn1Y9KrvL5pMB0TXeUemj3QsyxACDLn5MrLgMtnFgCQ23vVpe
- AzK9NVIojNGEgW7K93MG8Eszuao9OZLFs0QG6zVw1uz0IVHzK06V3tCEQNB+zb5bIHhro/bHcv+8
- jV9AyFRuNL7VLvDun94=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=petitolm.click;
- b=EZidfugrvqPZ1ukR2ROtpZTH93tk+JpTmGX6gqNLBZPZFyxW2vuRVqOqu06eioYDn8I4txcmgnGG
- SSQ5CvbvHESRuejaDhH3emdkyRKTF7zCAkkUD7Y2LcQda+KExMQ2hXu3v+gpESqZHX3vPqGGJTQb
- 92PHeTWSRVuI1jMQxik=;
-Received: by mail.petitolm.click id h3pmbu0001gp for
+ i=misty.radics@outpetit.icu; bh=7y6NQTXAZxTv+3itxv+xMADcTiY=;
+ b=TANVjFFvz5e/Jal0y0XdKZxmXjPx2vCawxCuawhKfc1AzGhl9dpIgRuRvip/osRtiR3j7Cxi4qow
+ nrnkZjvUgglhHWzfP0kY3eiB7IlltZXy7tJvnVu9R2a9bOIzpwMJj1f6Zxp5LlJDFPym2wDveB3U
+ Dtd5lU/Kbe+ztaVw4kk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outpetit.icu;
+ b=YuZ/eCTW6TW0c0StqyDwDMXtJFQbrTl+mVukrqHz0ck5tigmlDaaUXBpfMpekaj0f6b9PhxwY8CB
+ rfNKgZGVepA2F7MnUd5fgkOiBLyF0gGbdGzRWHe3WP0eD3jgjt8ep0hOegFsYCNhp4RJOcHqvuhb
+ /Emj5581W6hFK0DByLM=;
+Received: by mail.outpetit.icu id h3qc640001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 11 Sep 2022 19:04:57 -0400 (envelope-from
- <hegland_rhonda-intel+2Dgvt+2Ddev=lists.freedesktop.org@petitolm.click>)
-Date: Sun, 11 Sep 2022 19:04:57 -0400
-From: Rhonda Hegland <hegland_rhonda@petitolm.click>
+ Sun, 11 Sep 2022 22:05:57 -0400 (envelope-from
+ <misty.radics-intel+2Dgvt+2Ddev=lists.freedesktop.org@outpetit.icu>)
+Date: Sun, 11 Sep 2022 22:05:57 -0400
+From: Misty Radics <misty.radics@outpetit.icu>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations from Ace Hardware intel-gvt-dev@lists.freedesktop.org
+Subject: Kudos, Claim your Home Depot Mikita Drill Kit
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_67_1373973501.1662937483850"
-Message-ID: <0.0.0.7.1D8C632E967BF94.381430@mail.petitolm.click>
+ boundary="----=_Part_226_1342290421.1662948354347"
+Message-ID: <0.0.0.19.1D8C64C32CA3EE6.52948C@mail.outpetit.icu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_67_1373973501.1662937483850
+------=_Part_226_1342290421.1662948354347
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,20 +62,23 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.petitolm.click/hornet-photocopiers/cf65O23C95iRv8610i36b2Td3at36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQW9RSS6I1ynx06ApywPD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for the Ace Hardware Dewalt Drill Giveaway</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.petitolm.click/hornet-photocopiers/cf65O23C95iRv8610i36b2Td3at36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQW9RSS6I1ynx06ApywPD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Tap Here for the Ace Offer" src="http://www.petitolm.click/cd75S239z5y7aGy12a36Kbi4ud3aD36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQW9RSS6b_L1K05kAUwD/abolitionists-unlawful" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Step On It! Deal Runs Out in 3 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.outpetit.icu/whippings-analogous/d145t23X95Hz8T611a36bfhkd3dv36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQa9Rem5pS1F05SM0wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Claim a Cordless Mikita Drill Kit from HomeDepot</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.outpetit.icu/whippings-analogous/d145t23X95Hz8T611a36bfhkd3dv36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQa9Rem5pS1F05SM0wD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:595px;height:543px;"><img alt="Visit Here to Claim a Mikita Drill Kit from HomeDepot" src="http://www.outpetit.icu/a254F2395zQU7a12nM36c1JVd3dJ36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQa9Rem7Rsq10CD6P0kwjD/hoarseness-despising" style="margin-left: 0px; margin-top: 0px; width: 595px; height: 543px;" /></span></span></a></s
+ pan></p> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Special Offer Is Over in 4 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your message preferences, </span><a href="http://www.petitolm.click/Miltonism-analyticities/9726eW239X5Y8Yw612u3MT6b3Ud3ai36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQW9RSS5K_1B05r2JwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click_Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT- Avenue, Toronto- Ontario M4 K3 K1 CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">51197095.74082229</span></span></p>   
- <img src="http://www.petitolm.click/8db5M2H395VX8H511vi36b5Md3ag36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQW9RSS6jI1m0i6FLO2wD/uncleanly-romancer" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat Ave., Toronto' Ont. M4K3K1 Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4549982~1352188</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your notification choices, </span><a href="http://www.outpetit.icu/fortier-modularized/abc4X2395R8GW612N3FN6c0qd3dv36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQa9Rem7yF10HPy5RBMwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Right Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This content was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p>   
+ <img src="http://www.outpetit.icu/cf55c239l5k8u5u11Xh36c2Xd3dN36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQa9Rem5B1ZP06vW0wDW/Gaithersburg-concerts" alt=""/></body>
 </html>
 
-------=_Part_67_1373973501.1662937483850--
+------=_Part_226_1342290421.1662948354347--
 
