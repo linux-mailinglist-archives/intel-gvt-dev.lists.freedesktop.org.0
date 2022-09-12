@@ -2,57 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 555515B628A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 23:11:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 307B65B6217
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Sep 2022 22:20:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5CB4410E2ED;
-	Mon, 12 Sep 2022 21:11:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F10110E2A9;
+	Mon, 12 Sep 2022 20:20:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe2d.google.com (mail-vs1-xe2d.google.com
- [IPv6:2607:f8b0:4864:20::e2d])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2A5DC10E2ED;
- Mon, 12 Sep 2022 21:11:33 +0000 (UTC)
-Received: by mail-vs1-xe2d.google.com with SMTP id o123so10362591vsc.3;
- Mon, 12 Sep 2022 14:11:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=0y5HDghcAY9sylQGFFzoaSf/fyhWZ2sBWfqcl39LrAY=;
- b=mxC/08asEEoQwpJK7YyrNORboVPuR1mQ9pckLYXNFM9ItzfU4KAedKMQxXi+Ppdh4t
- v0Z7Zxg+FPrE4QWEkn3h2vRE2QSxRJ0KA9uGF3tCoeY4rRltXbSYzIcixWkksNF9t9wO
- o/Lldc8HyGnQ/TfoPY4NVvRvTjwUSJv6LYnbbdm+CZDBg4SxDRWhnzoAZXExfNnWqjl3
- VKk+DmQ57LYXuxE3Gn8Z8PZhuSKCPAh7obwz8x90stW22FYdXekkH/8340+EcuAMqBB/
- E9dZa3mrQQROKHo+3gvj0DQYDL1uQDqK1BDwYySeYl6pZ3WO1qwYVKsgOpXdoDHSQRvt
- YMOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=0y5HDghcAY9sylQGFFzoaSf/fyhWZ2sBWfqcl39LrAY=;
- b=5tG8gRpe1xsUUz83YQPLca1A9vGOblFIIXgcH9QQzoky3ftZwfHRtEnkaPkkiZLcpX
- 8jHgjITVQUv7TQu/oIiOJdXyUYoahfTnk77m23uY6XZw1XkUYo+mtlX6FAq05eubFTzf
- eyV4ew7D/NwNZuqbNgqIrklFF/AO6MMHrq2Bp6iL2wJUI21FzruBD9uGRH08PNY1/ysR
- c38pu6ecVM6BN7aaXfi4g6FZO1JFpX5I/HFbTUWNL22hsQTFzkkLCR2JVVmAWidt955X
- jX3tF+r/a6sNIbGmFOIS7ka3F7SNpUhytY8XC0c6pZYTni/z/A2b6LpNwE2rMOfPnkDt
- a/ow==
-X-Gm-Message-State: ACgBeo3h0nKRcx5ospDVV8PlXrFbHw7b1OdxlFe0H74P7H5/zmUmJw78
- lqBZOYn5xRDWhyijaSttHyAcL1l/O4ZWThZOhck=
-X-Google-Smtp-Source: AA6agR5pilGGCrxIlDXL0vtrXfNYU1+8LLhhj8vm590FXQ+SqLj90vzQQRbHzbzkwJG/WG/xxQzVbLbSR7rfddViAoo=
-X-Received: by 2002:a05:6102:3a4c:b0:398:3098:a301 with SMTP id
- c12-20020a0561023a4c00b003983098a301mr7548545vsu.74.1663017092101; Mon, 12
- Sep 2022 14:11:32 -0700 (PDT)
+X-Greylist: delayed 332 seconds by postgrey-1.36 at gabe;
+ Mon, 12 Sep 2022 20:20:10 UTC
+Received: from mail.simtag.click (unknown [38.92.178.95])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2894C10E292
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 12 Sep 2022 20:20:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=simtag.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=kate.schlarb@simtag.click; bh=IgzhzpfjkhyVyM61QDR7fsvgSTY=;
+ b=Qrdj/3qsauqjVIkGRa7pN2FQh2OkmagA+pDpKs+ptouu2SE8ulQpM1VxZ0phLavPHI0uozQaHI4X
+ R8zdMBo2X3zT5ZIOz2LqlWyPNbkjZydFbj8UhTB/V50SD+R2cwji90zmZlcf2O5Ov7S88NsH1M6h
+ cUKa3u+Y0oBclvZ62fQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=simtag.click;
+ b=M0RLy2gdribGqCBMYRm/ATWXC2Jji16v1aQ2w/cWql/HNml/v6uVhhJDKVCe3DjVwA9wrYnYhxlO
+ ov6SLwC65PkkKVT0yvX3LW3vGruzGtIHhb19PAsbxyrx1GBhNfclY1shucV4fiLoF6tVonn7spAE
+ 0eB/YrZN0O/vAtwMwpk=;
+Received: by mail.simtag.click id h3ukr60001gk for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 12 Sep 2022 17:37:28 -0400 (envelope-from
+ <kate.schlarb-intel+2Dgvt+2Ddev=lists.freedesktop.org@simtag.click>)
+Date: Mon, 12 Sep 2022 17:37:28 -0400
+From: Kate Schlarb <kate.schlarb@simtag.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: For Gadget Fans Only. You'll Love This
 MIME-Version: 1.0
-References: <20220912052852.1123868-1-jim.cromie@gmail.com>
- <20220912052852.1123868-3-jim.cromie@gmail.com> <87pmg06g2x.fsf@intel.com>
-In-Reply-To: <87pmg06g2x.fsf@intel.com>
-From: jim.cromie@gmail.com
-Date: Mon, 12 Sep 2022 15:11:05 -0600
-Message-ID: <CAJfuBxy5E0xPFH=bxaaXy2Q8LojBrqgr+su8wGq7rsv3m7_d_g@mail.gmail.com>
-Subject: Re: [PATCH v7 2/9] drm: POC drm on dyndbg - use in core, 2 helpers,
- 3 drivers.
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_403_1151675184.1663013210232"
+Message-ID: <0.0.0.2C.1D8C6EFDB351C92.3B4EB9@mail.simtag.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,133 +49,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Greg KH <gregkh@linuxfoundation.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- LKML <linux-kernel@vger.kernel.org>,
- amd-gfx mailing list <amd-gfx@lists.freedesktop.org>,
- Jason Baron <jbaron@akamai.com>, Sean Paul <seanpaul@chromium.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Daniel Vetter <daniel.vetter@ffwll.ch>, Joe Perches <joe@perches.com>,
- intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Sep 12, 2022 at 4:29 AM Jani Nikula <jani.nikula@linux.intel.com> wrote:
->
-> On Sun, 11 Sep 2022, Jim Cromie <jim.cromie@gmail.com> wrote:
-> > Use DECLARE_DYNDBG_CLASSMAP across DRM:
-> >
-> >  - in .c files, since macro defines/initializes a record
-> >
-> >  - in drivers, $mod_{drv,drm,param}.c
-> >    ie where param setup is done, since a classmap is param related
-> >
-> >  - in drm/drm_print.c
-> >    since existing __drm_debug param is defined there,
-> >    and we ifdef it, and provide an elaborated alternative.
-> >
-> >  - in drm_*_helper modules:
-> >    dp/drm_dp - 1st item in makefile target
-> >    drivers/gpu/drm/drm_crtc_helper.c - random pick iirc.
-> >
-> > Since these modules all use identical CLASSMAP declarations (ie: names
-> > and .class_id's) they will all respond together to "class DRM_UT_*"
-> > query-commands:
+------=_Part_403_1151675184.1663013210232
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+For Gadget-Heads Only. You'll Love This
+
+For Gadget Fans Only. You'll Love This. http://www.simtag.click/5b16QR23z95U8v6N12q3i6e3Qtd46G36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQT9ReK7SlVV1P06MU2wDz/cogitated-nocturnally
 
 
->
-> The commit message could start off by saying each module needs to define
-> DECLARE_DYNDBG_CLASSMAP(drm_debug_classes, ...). That is, IIUC.
->
+To drop notifications, Begin-Here-Now. http://www.simtag.click/cogitated-nocturnally/ada5r239B5d8Y6X11E36eF6Pd46y36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQT9ReK6q1v0Ys5k3wjD
 
-Yes, I see your point.
-All the explanations missing here are in preceding commits,
-now in GregKHs  driver-core/driver-core-next tree,
-so I didnt resend them.
+Our notice was sent to intel-gvt-dev@lists.freedesktop.org
 
+18O34.  Ventura- Boulevard NO 169.  ENClNO CA 91316- UNITED STATES
 
-> Where's DECLARE_DYNDBG_CLASSMAP defined? linux-next? What's it do? What
-> if multiple modules with that are actually builtin?
+8600751. 3932345
 
-The commit that adds the macro is at
-https://lore.kernel.org/lkml/20220904214134.408619-15-jim.cromie@gmail.com/
+------=_Part_403_1151675184.1663013210232
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-there are many combos of builtin, Ive done at least several:
-with caveat that >98% of testing is on virtme (thanks for that tool)
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><a href="http://www.simtag.click/ratings-reaper/5b24l2395R8g6y12Q36tek3hd46t36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQT9ReK6I1j0qH6o1MTwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">For Gadget Fans Only. You'll Love This</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1315px;"><a href="http://www.simtag.click/ratings-reaper/5b24l2395R8g6y12Q36tek3hd46t36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQT9ReK6I1j0qH6o1MTwD"><img alt="See the Top Rated Gadgets of 2022" src="http://www.simtag.click/c5r6Hj239x5S7azr12vp36Te5Ad46g36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQT9ReK6tvQ10g5VjTwD/cogitated-nocturnally" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1315px;" /></a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; color: rgb(153, 0, 0); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Supplies are Limited.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To drop notifications,<a href="http://www.simtag.click/8095z2Q395AZ86B11M36e4jBd46q36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQT9ReK5RT1W05OXwBD/deniable-bicycling"> Begin-Here-Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notice was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18O34_ Ventura_ BouIevard # l69' Encino CA 91316. United States</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8441632-3932345</span></span></p>   
+ <img src="http://www.simtag.click/interesting-Ruanda/5585P23w95t8uY511OM36e7Wd46R36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQT9ReK7A1K0Gxh6wkXwXD" alt=""/></body>
+</html>
 
-- test_dynamic_debug as module, and builtin.
-it has multiple macro uses, showing 1 kind of sharing
+------=_Part_403_1151675184.1663013210232--
 
-- drm as builtin, drivers as modules
-that surely pulled in other drm-helpers as builtins
-
-- all loadable modules mostly.
-
-
->
-> The duplication and requirement that they're identical seems like an
-> error prone combo.
-
-I freely acknowledge(d) this is sub-optimal.
-There might be a best place for a single declaration that is in-scope
-across multiple modules, but I dont know the drm core/driver lifetime
-well enough to just drop this into that place.
-
-I may have complicated things by starting with a static struct holding
-the classmap, that choice was driven by:
-
-- static declaration into a section solved a problem where the class
-definitions
-were "registered" (term used in patchset, -v2-3?) too late to be available for
-     modprobe i915 dyndbg='class DRM_UT_CORE +p'
-but worked afterwards
-(also true for builtins and boot-time $mod.dyndbg='class notworking +p')
-
-Another subtlety - the "sharing" is due more to: drm_dbg(DRM_UT_*, "")
-Im not sure precisely how this might matter.
-
-I also had an "incompleteness" argument circling in my head - something like;
-you cant simultaneously allow a drm-wanna-be module to declare "DRM_UT_CORE"
-but disallow "DRM_UT_ILL_CONSIDERED".   I kind-of stopped there.
-
-Theres also an issue where multiple declarations in a module must
-avoid range overlap.
-I had no idea how to put that into a BUILD_BUG_ON.
-Its done manually, with commentary, in test-dynamic-debug.
-
-Maybe both issues can be improved somewhat by changing the macro
-to expect real ENUM symbols, (and stringify _VA_ARGS_ to init the classnames),
-not the quoted "DRM_UT_*"s it gets now.  That would also obsolete the _base,
-since its the value of DRM_UT_CORE (the 1st enum val).
-But that still leaves the enum vals enumerated, with possibility of
-omission or mixup,
-which unlike a spelling error wouldnt get caught, and would be wrong.
-
-I fiddled with the 1st part of that for a while, I lack the macro-fu,
-and punted.
-
-Im happy to try an alternative approach, particularly with elaborated
-suggestions.
-
-
->
-> Finally, the choice of placement in e.g. i915_params.c seems completely
-> arbitrary, and makes you wonder "what here requires this, nothing?".
-
-acknowledged - I put it there because the access to it is via a parameter,
-namely one that already affects it from a distance:
-   /sys/module/drm/parameters/debug - ie drm.dbg
-
-And its not even i915's parameter.
-
->
-> BR,
-> Jani.
->
-
-thanks,
-
->
-> >
-> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
