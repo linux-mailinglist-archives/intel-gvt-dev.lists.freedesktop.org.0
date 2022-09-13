@@ -2,42 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5119C5B6759
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Sep 2022 07:28:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE8575B6767
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Sep 2022 07:35:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9423510E613;
-	Tue, 13 Sep 2022 05:28:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3141F10E612;
+	Tue, 13 Sep 2022 05:35:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Tue, 13 Sep 2022 05:28:36 UTC
-Received: from mail.apiguide.lol (unknown [213.209.159.192])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4E6AF10E610
+X-Greylist: delayed 315 seconds by postgrey-1.36 at gabe;
+ Tue, 13 Sep 2022 05:35:29 UTC
+Received: from lorax.hhof.com (lorax.hhof.com [206.223.177.59])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F01E110E612
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 13 Sep 2022 05:28:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=apiguide.lol;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sharron-brannick@apiguide.lol; 
- bh=emIN6kV0bemsHRk4r8pOBS4tBzI=;
- b=iI6PK0tuD9/JQN9dHIbrN/O5Y3gleXg1MDzPUlTY7TrRgmaLhFK2fzFe0wgo203cOxraF+HflSxN
- ecIgwfdG379qZBzHCqV0aBP8Ks/03IaqJLOUCOHoiXle5KDAhA6Uil9aIe0H2liV2NFRE8AhRiH0
- V8pU5rxMxhvVoaY0U1k=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=apiguide.lol;
- b=lt5AZYlAABuW836U+fssdb/9Juvi+Y9MmUNKn7H7wKZ9M2/UGMFYO4k7pAByzGYcGYJ+57LShEKw
- 99Bwi8xz5xzxwQG+7KRkx9cBrASmqUrauHWO6BRCxsVwdsQkO0Uyf+q7Pl1dugGrhyFzRvlDBuwH
- BpWMHJDb5bVjiG7D7oY=;
-Received: by mail.apiguide.lol id h40ag80001gm for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 13 Sep 2022 01:18:42 -0400 (envelope-from
- <sharron-brannick-intel+2Dgvt+2Ddev=lists.freedesktop.org@apiguide.lol>)
-Date: Tue, 13 Sep 2022 01:18:42 -0400
-From: Sharron Brannick <sharron-brannick@apiguide.lol>
+ Tue, 13 Sep 2022 05:35:29 +0000 (UTC)
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+DKIM-Signature: v=1; a=rsa-sha256; d=hhof.com; s=key1; c=simple/simple;
+ t=1663047013; h=from:subject:to:date:message-id;
+ bh=XBX9jQiFOhhiVkWZOeD8uoUCdo1yUHM/ZB/osfkyOsg=;
+ b=VKUmbdPsqghTgLP/FXYz+hM87hiO5/mqG0jUbX+cs/f0FqIYX97EMs1/YdmYKQGYEcD2lzLfwwU
+ O2v0WLbANs9EKsdgdEoq0PCLnc0k2iGp+us6+BXlsm2p6r3PWpdAamSfBd4Sjy/ATCAxRFyf6LMmc
+ 4L2nHzjshFXVuGDE9W4+t+ABaJdO5QSi5i0az8V3aOVbPMcd2FSVql67zYO6VduaujzkbYqvvALZ3
+ gADAeP/mW05M9KOIKCnNfqTYnRBMHo1H0s1c0PYtATCsSPvd+0bFa2qvPLGlwbH+MSo2WxoWAtKDS
+ vj0ddDyPpq1HEwHavsn9goW+XjW+/6lk1cng==
+Received: from hhof.com (91.103.252.75) by LORAX.hhof.com (32.69.92.6) with
+ Microsoft SMTP Server (TLS) id 14.3.498.0; Tue, 13 Sep 2022 01:30:11 -0400
+From: Debbie Levin <mascot@hhof.com>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Canvas Prints Made in the USA. 86% Off
+Subject: Good Day
+Date: Mon, 12 Sep 2022 22:30:12 -0700
+Message-ID: <20220912223010.F852D75D406A83A3@hhof.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_931_1520120526.1663046006831"
-Message-ID: <0.0.0.67.1D8C7304A1B8110.4DCE@mail.apiguide.lol>
+X-Originating-IP: [91.103.252.75]
+X-C2ProcessedOrg: 2c7317e1-996c-496d-8a55-d2776711a26e
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,55 +47,41 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: mrsdebbielevin@firemail.de
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_931_1520120526.1663046006831
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
 
-Canvas Prints Made in the USA. 86% Off 
-
-Go here for 86% Off Photo Canvas Prints http://www.apiguide.lol/interim-inclusively/f124r2395on8T611P3708JTd4fR36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQX9RKe5f1N0V6JOw2Dp
-
-
-
-
-11525'A Stonehollow Drv.  SUlTE IOO. , AUSTlN Tx.  78758'
-To abandon communication, Begin Here Now http://www.apiguide.lol/2ff6C239ji5LHY8610z3709Yd4fB36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQX9RKe6LoZ1Q05H@wDl/spitefully-sweethearts
-Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org
-9926262 4446449
-
-
-
-------=_Part_931_1520120526.1663046006831
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-48a12a25-7fff-8d28-70c1-bee563726ca9"><a href="http://www.apiguide.lol/a076v2jV395UIT8611a370K8Rd4fn36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQX9RKe7nFDF10y5DMMwD/justifiably-procrastination" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go here for 86% Off Photo Canvas Prints</span></a></span><br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.apiguide.lol/a076v2jV395UIT8611a370K8Rd4fn36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQX9RKe7nFDF10y5DMMwD/justifiably-procrastination"><img alt="Visit Here for 90% Off Canvas Photo Prints" src="http://www.apiguide.lol/Schuman-advocates/5585u239y5MGD7a12Y37K0jaKd4fk36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQX9RKe6z10UjQ6U13wlD" style="width: 600px; height: 705px;" /></a></p> 
-  <div style="text-align: center;">
-   <br /> 
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Hurry! Sale Comes to an End in 48 Hours.</span></span>
-  </div> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-48a12a25-7fff-8d28-70c1-bee563726ca9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">11525'A STONEHOLLOW DR Suite 1OO-, AUSTIN TEXAS 78758'</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-48a12a25-7fff-8d28-70c1-bee563726ca9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To abandon communication, </span><a href="http://www.apiguide.lol/obliges-nursery/e7c5XA2395gNW8610L3709kd4fL36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQX9RKe7B1oJDR06uT2wlD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-48a12a25-7fff-8d28-70c1-bee563726ca9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-48a12a25-7fff-8d28-70c1-bee563726ca9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9926262 4446449</span></span></p>   
- <img src="http://www.apiguide.lol/3d16li2P395W8D5w12A37jD0bUd4fy36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQX9RKe5Q1Vv05cNwkD/justifiably-procrastination" alt=""/></body>
-</html>
-
-------=_Part_931_1520120526.1663046006831--
-
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
+<body style=3D"MARGIN: 0.5em">
+<P>Hi,</P>
+<P>My name is Debbie Levin of Ukraine, I am married to late Max Levin who p=
+assed away as a result of the ongoing crisis (WAR) in Ukraine, He disappear=
+ed on March 13 and was found killed because of two shots from Russian occup=
+iers. Before his death we have a joint asset which the estimated value is $=
+11.7 million (USD) dollars in a security vault located in Dublin Ireland.</=
+P>
+<P>
+I'm Taking refuge in a polish hospital due to my health issues, we never ha=
+d any child, I am 39 years old and my doctor told me i'm limited to travel =
+due to my kidney and liver failure disease and I have few more months ahead=
+=2E I am not afraid of death hence I know where I am going. Before the deat=
+h of my late husband we agreed to donate the funds to a God fearing person =
+who will assure me that he/she will use this fund to help the Motherless ba=
+bies homes, Orphanages and Charity organizations,=20
+less privileged, Propagating the word of God and assist in the fight agains=
+t Russian rebels in Ukraine.</P>
+<P>We took this decision because I don't have any child that will inherit t=
+his money and I want to keep to my promise which we booth made together tha=
+t we will donate the fund to an unknown as God directed. As soon as I recei=
+ve your reply I shall proceed with immediate release of the fund to you thr=
+ough my Lawyer. I want you to always pray for me because I don?t have more =
+days to live.</P>
+<P>Kindly reply me privately at <A href=3D"mailto:mrsdebbielevin@firemail.e=
+u">mrsdebbielevin@firemail.eu</A></P>
+<P>Please stay safe<BR>Yours in the lord<BR>Debbie Levin<BR>Emil: <A href=
+=3D"mailto:mrsdebbielevin@firemail.eu">mrsdebbielevin@firemail.eu</A></P></=
+BODY></HTML>
