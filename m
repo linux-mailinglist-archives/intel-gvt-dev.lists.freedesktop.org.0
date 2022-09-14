@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AE485B817E
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 08:24:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FC815B81EF
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 09:19:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C294D10E874;
-	Wed, 14 Sep 2022 06:24:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0516410E88D;
+	Wed, 14 Sep 2022 07:19:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Wed, 14 Sep 2022 06:24:09 UTC
-Received: from mail.verbugs.autos (unknown [213.209.159.203])
- by gabe.freedesktop.org (Postfix) with ESMTP id 524B610E874
+X-Greylist: delayed 331 seconds by postgrey-1.36 at gabe;
+ Wed, 14 Sep 2022 07:19:02 UTC
+Received: from mail.barbugs.icu (unknown [38.92.178.206])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 879E210E88D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 06:24:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=verbugs.autos;
+ Wed, 14 Sep 2022 07:19:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=barbugs.icu;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tongate.meredith@verbugs.autos; 
- bh=sU4Bfzb3rFuof6xxfOd4aeuXQHc=;
- b=kULObwycOLTsxZ2Rb9G2NHmi16WNOvmSzFOL++hlJ+BkqH2ot832V5j1CxLJn1One4GIXXgumeB6
- ODR9qUhsdrJo3B/RkFmj6s/A0Hz+myxw1qG2HXw6gdDFnF8KzQyPtWpYB1xWKLZ0vSpenvDGyKkr
- sUkj24Or0E4dEs0CL5c=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=verbugs.autos;
- b=SWI4F+hctLXYiIppps9GToheSTQ2yutBRBJUHSB27mBT16lAB4NMK6TSYIkJ6FJ0bM2MhSQFtdWM
- soMFYXfUhKCKLMjbkSfM8a9SGrSM0NA8wXH3uF2nYdPx/hDZ0J62JB88rmC7Pnmsz+BJIYiawPE4
- fVwCIgWsKbLf9pAiCOI=;
-Received: by mail.verbugs.autos id h45poi0001gi for
+ i=heather_hilman@barbugs.icu; bh=iE7JV4TPpcmpViLLY8kpSlcJeRQ=;
+ b=WQGYevL7G6tFhgfjOdxlZG1WZXshPhfUHaYFnM+RaiGs1d78SB7UpHpQ9DSSF/hP7n9stMUJKLHn
+ nqhAZ9om4sq5L+GgePoQVflMUu0ScO3usrc4U0T/4mHuB3jaYISIaoSHhYC2TqMwKdMDxfZHbsrO
+ GIAEek3hMR/az2qPiIk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=barbugs.icu;
+ b=kih3i8y3UtMOrlC2fk7uAruRDnUfwjR7l4g2RgDZTMx03WJhI9sYDW77TSU1PzlX5gEUcaWb7RBb
+ vwv2GXqvTvFGTY3b7U6rHPGN8ddsh2JccyX31n/SkZcSkJCldUiE8Erry2+tq8j2WT6Tx337GR8B
+ K1cnvOMe6g3LlnrCGFs=;
+Received: by mail.barbugs.icu id h4606c0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 02:05:40 -0400 (envelope-from
- <tongate.meredith-intel+2Dgvt+2Ddev=lists.freedesktop.org@verbugs.autos>)
-Date: Wed, 14 Sep 2022 02:05:40 -0400
-From: Meredith Tongate <tongate.meredith@verbugs.autos>
+ Wed, 14 Sep 2022 03:08:08 -0400 (envelope-from
+ <heather_hilman-intel+2Dgvt+2Ddev=lists.freedesktop.org@barbugs.icu>)
+Date: Wed, 14 Sep 2022 03:08:08 -0400
+From: Heather Hilman <heather_hilman@barbugs.icu>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations you've been selected for a special offer from Lowes
+Subject: Decrease blood pressure without a prescription
  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_106_1876476635.1663135516317"
-Message-ID: <0.0.0.C.1D8C8000446EC80.9F612@mail.verbugs.autos>
+ boundary="----=_Part_652_2053827903.1663139276343"
+Message-ID: <0.0.0.48.1D8C808BE214788.6527D1@mail.barbugs.icu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_106_1876476635.1663135516317
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Congratulations you've been selected for a special offer from Lowes  intel-gvt-dev@lists.freedesktop.org
-
-Click Here to give your feedback about Lowes:http://www.verbugs.autos/titters-menials/3966bI23z95E8N6x11Q3s763ud65t36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQa9SnK6kO1F0Z6ry2WwD
-
-
-
-
-. 96 Mowat.  AVE, Toronto_ ON M4K3KI CN
-
-To change your notification preferences, Get.Going.Here:http://www.verbugs.autos/6fb4w2395Sr8r611d3764Gjd65S36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQa9SnK5bys106dXw00D/Godwin-forsake
-
-Our communication was sent to intel-gvt-dev@lists.freedesktop.org
-
-5711224 80194175
-
-------=_Part_106_1876476635.1663135516317
+------=_Part_652_2053827903.1663139276343
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +62,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.verbugs.autos/integers-suburbs/c064g2395ETU8612J3763KDsd65o36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQa9SnK5m1A0k6hTApwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Gigantic Lowes Stanley Tool Set Giveaway</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.verbugs.autos/integers-suburbs/c064g2395ETU8612J3763KDsd65o36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQa9SnK5m1A0k6hTApwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Click Here to give your feedback about Lowes" src="http://www.verbugs.autos/20f5a2i395R7MBa11u37X65od65T36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQa9SnK5k1Ro06P@JXwD/accessory-innovate" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hustle! Deal Goes Away in 2 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5d59a68a-7fff-3978-a419-5f82cdb6233b"><a href="http://www.barbugs.icu/deliberateness-residents/ada4w2395z8N6p11S37y67Yd66D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQG9Som7IwO10Uj5XTwDP" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start here to Cut blood sugar level without a prescription</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5d59a68a-7fff-3978-a419-5f82cdb6233b"><a href="http://www.barbugs.icu/deliberateness-residents/ada4w2395z8N6p11S37y67Yd66D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQG9Som7IwO10Uj5XTwDP" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:605px;height:688px;"><img alt="Start here to Regulate Glucose Levels" src="http://www.barbugs.icu/pencil-scheduler/e405O2u395z7paC12OU3769MCd66C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQG9Som5nVN106zLwjDA" style="margin-left: 0px; margin-top: 0px; width: 605px; height: 688px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5d59a68a-7fff-3978-a419-5f82cdb6233b"><span style="font-size: 16pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make Haste! Sale Goes Away in 4 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 Mowat- AV, Toronto- Ont. M4 K3 K1 CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your notification preferences, <a href="http://www.verbugs.autos/integers-suburbs/1025gJ2395W8w6V11vZ3764hd65h36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQa9SnK5FDu105mXwAD">Get.Going.Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7106180 80194175</span></span></p>   
- <img src="http://www.verbugs.autos/accessory-innovate/d324D2395r8T5w11j376T6Id65y36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQa9SnK7ypO10qN6yTwplD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5d59a68a-7fff-3978-a419-5f82cdb6233b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7015368~5888100</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5d59a68a-7fff-3978-a419-5f82cdb6233b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To halt communications, <a href="http://www.barbugs.icu/5ed4z2395z8s6W10e3768Wd66G36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQG9Som6w1n0ui6O@wDX1/deathly-consented">Start-Ahead-Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5d59a68a-7fff-3978-a419-5f82cdb6233b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7I45' Bermuda ROAD., LAS VEGAS, Nv<br /> 89II9_</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5d59a68a-7fff-3978-a419-5f82cdb6233b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p>   
+ <img src="http://www.barbugs.icu/ad96h239_x5Cv8j510I376aFd66u36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQG9Som6fU10rU6sTP0wD/shivers-impudent" alt=""/></body>
 </html>
 
-------=_Part_106_1876476635.1663135516317--
+------=_Part_652_2053827903.1663139276343--
 
