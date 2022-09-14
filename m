@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC54B5B8FA3
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 22:21:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EFA8E5B901D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 23:32:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A448910E9FC;
-	Wed, 14 Sep 2022 20:21:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 11DF910E9FF;
+	Wed, 14 Sep 2022 21:32:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Wed, 14 Sep 2022 20:21:45 UTC
-Received: from mail.dustpanz.click (unknown [213.209.159.160])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4DEDA10E9F2
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Wed, 14 Sep 2022 21:32:50 UTC
+Received: from mail.ionpan.click (dprd764.tk [64.64.109.17])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CF36510EA07
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 20:21:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dustpanz.click; 
+ Wed, 14 Sep 2022 21:32:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ionpan.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lynette.rippeon@dustpanz.click; 
- bh=qEuIAQ9ips1s094gP7wsozHiS+g=;
- b=VUZ0YQP7GJyA0VVIz4OHbwc2BM2iH2FjZzcDrE54ewQ9S2MFDl2HZfe5fdCkVCT+CGqRdRb5/751
- 5cArGYSp+C4Y2Pgm9yNqexuZJm4MFXBW0RJuVlU53znhKahhIS5dZFjeVQngir01mM7pu25h7G/m
- ZUM7R4jKVEwycLQ8h6I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dustpanz.click;
- b=pLQ0iAmeCmTC6JpJk8fiLhqAER2+NnWzFz7pJS7emEjPbTBQi2eiJzvA6/+b3C2ebpJ/M/PBdzIF
- IPqK2wLYjHERWvKK4Botduaq4o7g0A5IQQTo4P0Cp9QTBklChqjphwmFnLl7yg9XEtkEvIiBt71i
- IZORQN3WYid98zl7thc=;
-Received: by mail.dustpanz.click id h48rti0001go for
+ i=francine_sanon@ionpan.click; 
+ bh=mGJeF/CfLikYI89iBQ82UznkzCo=;
+ b=WgBvWwJKG245EaV2It0TtQY8LbDo3fiSC+ozdmlxtJtXonDFu9apoow/toRLRruG0aTpCc/TSrZ3
+ ayZWJyG4RcM6WygUIveaLoDVtYuvA/2Df9yIdtbhWmlFfhD4Ba3DjmKqyt55owXp92qfqVc5zL44
+ 2kbC3LIwuODR0r3lz9g=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ionpan.click;
+ b=xJOpWnwa4GgEpHW3ULvehqHieobF/7nTa3tJ5nBD3L+ZvccY3kofqu1XCixUhDZMMrc49gOvqFYx
+ KtkoJ3CPYHjIoNv9JTqogdCuYFfyvdPJjjH00BZtsukFpa2X89MH87PSpbHozVRLXeNrW8iStxQD
+ QOlXzX8eCSy8mZBEQ2A=;
+Received: by mail.ionpan.click id h494840001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 16:07:44 -0400 (envelope-from
- <lynette.rippeon-intel+2Dgvt+2Ddev=lists.freedesktop.org@dustpanz.click>)
-Date: Wed, 14 Sep 2022 16:07:44 -0400
-From: Lynette Rippeon <lynette.rippeon@dustpanz.click>
+ Wed, 14 Sep 2022 17:04:35 -0400 (envelope-from
+ <francine_sanon-intel+2Dgvt+2Ddev=lists.freedesktop.org@ionpan.click>)
+Date: Wed, 14 Sep 2022 17:04:35 -0400
+From: Francine Sanon <francine_sanon@ionpan.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Lowes wants you to have a Stanley Tool Kit
- intel-gvt-dev@lists.freedesktop.org
+Subject: You've been Selected by Home Depot intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_523_1723767518.1663186059176"
-Message-ID: <0.0.0.3A.1D8C875A71622E4.865162@mail.dustpanz.click>
+ boundary="----=_Part_46_1757472225.1663189463094"
+Message-ID: <0.0.0.5.1D8C87D98245E10.6A4907@mail.ionpan.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_523_1723767518.1663186059176
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Lowes wants you to have a Stanley Tool Kit  intel-gvt-dev@lists.freedesktop.org
-
-You've Been Chosen, Begin Here:http://www.dustpanz.click/2c34E2395IU8D611F378Ccvd6fh36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQj9S9m5FkB106fPLwDP/pedestrian-discordant
-
-
-
-
-96_ Mowat- Av. , Toronto' ONT M4K3K1 Canada
-
-To do away with notifications, Click-Over-Here:http://www.dustpanz.click/pedestrian-discordant/6c04G2395L86Ar11m378Bdmd6fU36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQj9S9m5Q1_g05HlUwD
-
-Our e-mail was delivered to intel-gvt-dev@lists.freedesktop.org
-
-5782283,76384401
-
-------=_Part_523_1723767518.1663186059176
+------=_Part_46_1757472225.1663189463094
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +62,23 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.dustpanz.click/pedestrian-discordant/9186dt239H5u8rJ612d3IF78cUd6fH36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQj9S9m5pM10s6m@qwzD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here, You've been Selected by Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.dustpanz.click/pedestrian-discordant/9186dt239H5u8rJ612d3IF78cUd6fH36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQj9S9m5pM10s6m@qwzD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="You've Been Chosen, Begin Here" src="http://www.dustpanz.click/hatched-wrought/bac5V239S5l7aiH10W378esd6fm36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQj9S9m6y1SU0x6J@wDOP" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Be Quick! Promotion Comes to a Close in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.ionpan.click/cornerstones-wonderfully/d326N239HA5VOg8611l379A0Ad70q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQZ9S9n6MA1xR05nBwND" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for the HomeDepot Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><a href="http://www.ionpan.click/cornerstones-wonderfully/d326N239HA5VOg8611l379A0Ad70q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQZ9S9n6MA1xR05nBwND" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:595px;height:543px;"><img alt="Start Here for the HomeDepot-Mikita Promotion" src="http://www.ionpan.click/e3f4F2395FuK7a12dp3792Gpd70_36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQZ9S9n5S1gw05vUwDq/repented-soothing" style="margin-left: 0px; margin-top: 0px; width: 595px; height: 543px;" /></span></span></a></span></p
+ > 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Step On It! Promotion Closes in 2 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT- Av, Toronto' ONT M4K 3Kl CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To do away with notifications, <a href="http://www.dustpanz.click/9cb6Szu2395p8Wl610D378dJd6fS36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQj9S9m5kZK106sN@wTD/conciliate-extrinsic">Click-Over-Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7196240 76384401</span></span></p>   
- <img src="http://www.dustpanz.click/2a55JW2395j8X5w10B378fjd6fz36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQj9S9m7tyR10IQ6vBB@wD/resetting-slanderous" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- MOWAT AVE, Toronto. ONT. M4K 3KI CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4567960~5171946</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive communication from us?, </span><a href="http://www.ionpan.click/1d34s2395S86iG12z3s7z91Td70A36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZ9S9n6nR10AC6HLwBND/stagnation-idealism" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin_Ahead_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-30290c9d-7fff-9178-8673-2965570d1f2d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p>   
+ <img src="http://www.ionpan.click/named-barbecue/8fa5R239r5R8D5z10l3793Gd70B36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQZ9S9n6AOiQ106gWlw1D" alt=""/></body>
 </html>
 
-------=_Part_523_1723767518.1663186059176--
+------=_Part_46_1757472225.1663189463094--
 
