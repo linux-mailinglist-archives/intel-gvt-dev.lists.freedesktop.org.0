@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76DAF5B8CB1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 18:19:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EFD5C5B8E03
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 19:18:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D366210E975;
-	Wed, 14 Sep 2022 16:19:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C588F10E99E;
+	Wed, 14 Sep 2022 17:18:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Wed, 14 Sep 2022 16:19:03 UTC
-Received: from mail.earnpan.click (unknown [213.209.159.195])
- by gabe.freedesktop.org (Postfix) with ESMTP id 08DB110E976
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Wed, 14 Sep 2022 17:18:37 UTC
+Received: from mail.rippan.click (unknown [38.92.178.96])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A9DF610E99D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 16:19:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=earnpan.click;
+ Wed, 14 Sep 2022 17:18:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=rippan.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=zambarano_jeannine@earnpan.click; 
- bh=HG/LbZjQV0jLHc/ynXaJ9FidpCc=;
- b=fhRsjSX5207yJCOwotphoajGKADaxjiKme9bnHC/hVgh/j67oRCgcD6qTT8ol8qE1NVnU4SWYzfI
- TQKECJUtMvd9f/0oMfUHkDcMfKt2kbsxBQW8fADQXyv2jHu5a+OmEy1TNcb0NOkUARbxVtTXsA5u
- nuUQcOdBuPr4Jen30zM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=earnpan.click;
- b=E9tbsfltt0ySquQELuIcpGJA8nvMhd3uL1oXWR+TDruLbMF/lQFOreTWjXc10EITYpZOPmUR7jaE
- 26JWG/jz9BYqXjMgLzjrP+bGWXknAAW+rc3arc/TamDCJOlNC5mo+O5rrv8rUdyKrjcMo5q5mBYR
- VU64UkGHwyRQ2/FBTaA=;
-Received: by mail.earnpan.click id h47vfe0001gt for
+ i=joanna.sunder@rippan.click; bh=1SB1sI4OajMwSwTyfLFOTQNxzXw=;
+ b=BaMU37VUYFUGOVNaTFADj2ZTFxdwaL1wrLK2GSg5R+ePq8P2hNZzoClZpKjm9atOFWhq0lc+2Ogc
+ W86uGcO396en+3AddEQDOz6r4mewC7rapVXGjdwcVcjDXV2ojZ33LPzgsImumeH33TZ/EcpFFdjc
+ uceIlYLIXLmFdlXQV0k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rippan.click;
+ b=FLI9mh223aqd1dy6JpFhZL25qrfpjLkShlqCniShQxOkqYaZSUXj9G+tmV2Z6oObGMk1q5sQ0h77
+ lyseJdTBfds+2wBqZBZqOjgzgpCphuMxw9XBTdzCtKKM3JTzNIz6Mp9Tuyiw9+ifSTIx6Bnp4IiH
+ x5c21t+NGik6LDh0i64=;
+Received: by mail.rippan.click id h486eq0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 12:08:57 -0400 (envelope-from
- <zambarano_jeannine-intel+2Dgvt+2Ddev=lists.freedesktop.org@earnpan.click>)
-Date: Wed, 14 Sep 2022 12:08:57 -0400
-From: Jeannine Zambarano <zambarano_jeannine@earnpan.click>
+ Wed, 14 Sep 2022 13:07:53 -0400 (envelope-from
+ <joanna.sunder-intel+2Dgvt+2Ddev=lists.freedesktop.org@rippan.click>)
+Date: Wed, 14 Sep 2022 13:07:53 -0400
+From: Joanna Sunder <joanna.sunder@rippan.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Never Clean Your Gutters Again. LeafFilter 10% Off
+Subject: Compare Local Gutter-Guard Choices in your area
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_658_808282786.1663171725596"
-Message-ID: <0.0.0.48.1D8C8544B4A0870.20DC54@mail.earnpan.click>
+ boundary="----=_Part_490_76137295.1663175258085"
+Message-ID: <0.0.0.36.1D8C85C86BC497E.411FC9@mail.rippan.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +52,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_658_808282786.1663171725596
+------=_Part_490_76137295.1663175258085
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Never Clean Your Gutters Again. LeafFilter 10% Off
+[mm_gutter_guard_subjects]
 
-
-Visit Here to Prevent Gutter Debris- 
- http://www.earnpan.click/billboards-willows/7746r239SA5V8JP611D377Nbqd6bh36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQx9SoR6htJ1l05klwDT
-
+Start Here to Compare Gutter Guard Quotes .  http://www.rippan.click/hustled-Millard/b165Q2w395F8OD610K3780Gd6ch36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQi9SoS7Cg1PS0t5z3NwD
 
 
 
 
+2222.  Michelson DRV NO.  222:112, lrvine, CA 926l2-
 
-No longer want to receive email notifications?, Start.Ahead.Here- http://www.earnpan.click/subparts-flushed/3b44f2395G8z6p11N3y77eKd6bq36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQx9SoR5w10xO6u0jwDj
-Our email was intended for intel-gvt-dev@lists.freedesktop.org
-TWO Depot Plz, NO 401. , Bedford_Hill_, NY.  1O5O7_
-7387020-4764952
+To shut off email, Click Ahead Here http://www.rippan.click/4855SK2395wN86_10X3781md6cg36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQi9SoS5u1Bo06bzwkDl/ignition-groped
 
-------=_Part_658_808282786.1663171725596
+This notice was chosen for intel-gvt-dev@lists.freedesktop.org
+
+ 
+7075467 6849684
+
+
+
+
+
+
+------=_Part_490_76137295.1663175258085
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,21 +86,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.earnpan.click/ef34R2395UV86Q12M37BX7bsd6bD36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQx9SoR6IBNU105F1wOD/billboards-willows" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Prevent Gutter Debris</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.earnpan.click/ef34R2395UV86Q12M37BX7bsd6bD36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQx9SoR6IBNU105F1wOD/billboards-willows" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.earnpan.click/Osgood-brighteners/1f24V2395NN7ak11h37F7d_d6bX36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQx9SoR6QFZ1y06mMBw3D" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Shake a Leg! Exclusive Offer Comes To An End in 2 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.rippan.click/v116f2N3I95w8D6O11Q378P0Xd6cX36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQi9SoS5S10CZ6ILPLwD/Hegelianizes-radial" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to Compare Gutter Guard Quotes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.rippan.click/v116f2N3I95w8D6O11Q378P0Xd6cX36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQi9SoS5S10CZ6ILPLwD/Hegelianizes-radial"><img alt="Find Affordable Gutter Guards Here" src="http://www.rippan.click/4fd5VX2395tNy7a11l3782xBd6cO36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQi9SoS7N10GrnK5VWAwD/ignition-groped" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email notifications?,</span><a href="http://www.earnpan.click/solidness-beaches/e405q23T95a86RM10r377cQd6by36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQx9SoR5g_M105lqwlD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Start.Ahead.Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2 DEP0T Plz, Ste 401, Bedford_Hill_, NY. 10507-</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7387020~4764952</span></span></p>   
- <img src="http://www.earnpan.click/solidness-beaches/26a4E2395i85MH11o377fqwd6bA36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQx9SoR6HJ1K0D5GqPwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222_ Michelson Dr Suite 222:II2, lRVlNE, California 926l2.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut off email, <a href="http://www.rippan.click/hustled-Millard/3966P2hv395Nx86r12f37L8i1Nd6c_36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQi9SoS6sT1Vv06dzwNDU">Click Ahead Here</a> </span></span>{{{https://www.phiturtip.com/0qczeT7hwiycUc9a7ZlxG6qRLe9zo806wpukFzZj_Lc8VZMoOe991csJDKtfPKRz0g7pYsBbQPzjMomX0Z2Qkg~~</p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7075467,6849684</span></span></p>   
+ <img src="http://www.rippan.click/Caviness-Gregorian/a805C2S395Y8Q5U12a378y3rrd6cu36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQi9SoS6Jj10Pl6jPNw@D" alt=""/></body>
 </html>
 
-------=_Part_658_808282786.1663171725596--
+------=_Part_490_76137295.1663175258085--
 
