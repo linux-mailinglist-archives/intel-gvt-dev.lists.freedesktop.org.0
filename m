@@ -2,43 +2,39 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 218D95B8ED1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 20:22:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4ECAF5B8F3F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 21:25:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 95B0C10E9CC;
-	Wed, 14 Sep 2022 18:22:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4E96410E9E8;
+	Wed, 14 Sep 2022 19:25:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Wed, 14 Sep 2022 18:21:54 UTC
-Received: from mail.pantan.click (unknown [185.104.151.207])
- by gabe.freedesktop.org (Postfix) with ESMTP id C0D9C10E9C8
+Received: from mail.yinpan.click (unknown [38.92.178.199])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6FD8D10E9E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 18:21:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pantan.click;
+ Wed, 14 Sep 2022 19:25:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yinpan.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=roberta.mckisson@pantan.click; 
- bh=pXzK2CrzyBOJ3NqlZhqXeAvek1o=;
- b=fOFGhi9LWZ9vJb0T+FdgXzCda9OCLThdjbfg5x8YwiRjcvwOuB9Jgoe1GyZj74TLVE3OHtbmXfw/
- 0NjPVEKGd9T6obVaRMtFFQeVhqx0P/YigWPjHvUZVneaMrZJfo4DdXBolikHp8AeM66RLrYqKD4w
- jaXTySJaMEkxM1c2Ax4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pantan.click;
- b=Y5DPjEfGzrmtFfJWydpZTZi4rgf3CmDUnPVEdQB2ihVxBrG/QaY173guTIN8mnxgdoLklqW4rLlX
- QrnxTgK/G8uq616SVpt5hDb5+5QIje35RXQwL3htARRdKK9wMOdvDdA5FtyDetswfAfkQVT6qNv5
- h5rBq3dVEn3hCWni7T8=;
-Received: by mail.pantan.click id h48ds60001gr for
+ i=olivia-vessel@yinpan.click; bh=Gnasi9qOrIpjEPdq4XbPQHqN6Oc=;
+ b=fbBB4JXhzGRqtSFJzLa7f/nWhwGU77wExofIoSPCN9ADM5u6NXNVNATWIn218OFzi2hzMH1hoIh/
+ jSocKHgVKu+MSlg0Vonbse+a4fp6nT2kmCPr8soc5nNwE4WH3/Y4zSalYhwt35NKyJcOdTd6i1fF
+ YvPTfFDlvQrQ6wlqHuY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yinpan.click;
+ b=CcB+AgPkuaqblZixKAj/LAKweFLrmJwLlJD2gMpJOoThl2N+Yxurzn4a8HtSdhlZFFkhm4dc3q2h
+ BQX7vVQUCYgge8Cy/ZyVCGzUVGC4HIXw8mJPBhgsOxpTx2XKzX24G2Ga+hdHthWv+g0ENwnYaM+s
+ Z6U8eMxeJaaVwxZOm/4=;
+Received: by mail.yinpan.click id h48lb40001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 14:11:50 -0400 (envelope-from
- <roberta.mckisson-intel+2Dgvt+2Ddev=lists.freedesktop.org@pantan.click>)
-Date: Wed, 14 Sep 2022 14:11:50 -0400
-From: Roberta Mckisson <roberta.mckisson@pantan.click>
+ Wed, 14 Sep 2022 15:05:52 -0400 (envelope-from
+ <olivia-vessel-intel+2Dgvt+2Ddev=lists.freedesktop.org@yinpan.click>)
+Date: Wed, 14 Sep 2022 15:05:52 -0400
+From: Olivia Vessel <olivia-vessel@yinpan.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Give your Opinion of Lowes for a Stanley 170 pc Tool Kit
- intel-gvt-dev@lists.freedesktop.org
+Subject: TrueValue BIG Craftsman Giveaway intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_940_1101519132.1663179095001"
-Message-ID: <0.0.0.68.1D8C86575ECB896.33BF68@mail.pantan.click>
+ boundary="----=_Part_148_722399783.1663182337439"
+Message-ID: <0.0.0.10.1D8C86D029BDA7C.1344A4@mail.yinpan.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +50,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_940_1101519132.1663179095001
+------=_Part_148_722399783.1663182337439
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Give your Opinion of Lowes for a Stanley 170 pc Tool Kit  intel-gvt-dev@lists.freedesktop.org
-
-Start Here for the Lowes Survey Giveaway~http://www.pantan.click/be74i2395LW86z10J3784jd6dU36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQT9Soe5jW10J6FWw0DJ/emanate-notables
+TrueValue BIG Craftsman Giveaway intel-gvt-dev@lists.freedesktop.org
 
 
+Congratulations, Start Here. http://www.yinpan.click/b6f4B2395qX8O611o3F788td6eN36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ49SoK5SBt106CkkwPD/secondhand-vaulted
 
 
-. 96 MOWAT.  Av. , T0R0NT0 Ont.  M4K 3KI CN
 
-To shut off e-mail, Continue Here~http://www.pantan.click/3b35n23Z95hW8X611G378D5Rd6dX36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQT9Soe7kDZs10D6G11wDp/diversion-applicator
+No longer want to receive communication?, Continue-Here. http://www.yinpan.click/8636v2q39J5Mo86I10i3789kd6eD36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ49SoK6Puv10g5HT2wD/Pfizer-architects
 
-This communication was selected for intel-gvt-dev@lists.freedesktop.org
+Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org
 
-1605285 7213851
+96_ Mowat_ Ave, TORONTO ON M4K3KI CN
 
-------=_Part_940_1101519132.1663179095001
+3174593:48824851
+
+------=_Part_148_722399783.1663182337439
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,21 +77,22 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.pantan.click/d316Q2u39m5l86jB11z3M784Hd6d_36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQT9Soe7K1OLV0H5d1qwD/alphabetically-notification" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Lowes-Stanley Tool Set Giveaway</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.pantan.click/d316Q2u39m5l86jB11z3M784Hd6d_36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQT9Soe7K1OLV0H5d1qwD/alphabetically-notification" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Start Here for the Lowes Survey Giveaway" src="http://www.pantan.click/councilwomen-Indonesian/3l04f2395s7yOa12u37k86Rxd6dq36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQT9Soe5E1hF05MPwOD" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make It Snappy! Offer Becomes Void in 5 Days.</span></span></p> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:309px;"><a href="http://www.yinpan.click/sounding-chef/2c45H23Q95Lr8I611l37U88xd6er36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ49SoK7O1BQ0yX5JpwXD"><img alt="Begin the 30-Second Survey Here" src="http://www.yinpan.click/2876UN239A5E7PaO10p378and6eU36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ49SoK5UJ10M6XkJw@D/embargo-supersets" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 309px;" /></a></span></span></span></p> &nbsp; 
+  <div style="text-align: center;">
+   <a href="http://www.yinpan.click/sounding-chef/2c45H23Q95Lr8I611l37U88xd6er36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ49SoK7O1BQ0yX5JpwXD"><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Congratulations, Start Here</span></span></a>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat. Av, Toronto ONT. M4K 3K1 CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut off e-mail, <a href="http://www.pantan.click/both-lamplight/15c6o2H3D95Uq8Z610m3785Ad6dz36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQT9Soe7XG10HpD5KBXwD">Continue Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5140281 7213851</span></span></p>   
- <img src="http://www.pantan.click/f115f239P5VGr8511Yw3787sd6dj36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQT9Soe7g1V0NYA6Q2PLwD/alphabetically-notification" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive communication?, <a href="http://www.yinpan.click/9cb5R2r395YlO8612VD37y89pd6eB36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ49SoK5l10qw6EyTwDj/sounding-chef">Continue-Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT. AVE, Toronto. Ont. M4K 3K1 CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3174593.48824851</span></span></p>   
+ <img src="http://www.yinpan.click/8f96G2T39j5AL8m511u378jbkd6eZ36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ49SoK7izK1VZ05yjXwD/embargo-supersets" alt=""/></body>
 </html>
 
-------=_Part_940_1101519132.1663179095001--
+------=_Part_148_722399783.1663182337439--
 
