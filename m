@@ -1,40 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4ECAF5B8F3F
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 21:25:45 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC54B5B8FA3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Sep 2022 22:21:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4E96410E9E8;
-	Wed, 14 Sep 2022 19:25:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A448910E9FC;
+	Wed, 14 Sep 2022 20:21:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.yinpan.click (unknown [38.92.178.199])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6FD8D10E9E8
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Wed, 14 Sep 2022 20:21:45 UTC
+Received: from mail.dustpanz.click (unknown [213.209.159.160])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4DEDA10E9F2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 19:25:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yinpan.click;
+ Wed, 14 Sep 2022 20:21:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dustpanz.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=olivia-vessel@yinpan.click; bh=Gnasi9qOrIpjEPdq4XbPQHqN6Oc=;
- b=fbBB4JXhzGRqtSFJzLa7f/nWhwGU77wExofIoSPCN9ADM5u6NXNVNATWIn218OFzi2hzMH1hoIh/
- jSocKHgVKu+MSlg0Vonbse+a4fp6nT2kmCPr8soc5nNwE4WH3/Y4zSalYhwt35NKyJcOdTd6i1fF
- YvPTfFDlvQrQ6wlqHuY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yinpan.click;
- b=CcB+AgPkuaqblZixKAj/LAKweFLrmJwLlJD2gMpJOoThl2N+Yxurzn4a8HtSdhlZFFkhm4dc3q2h
- BQX7vVQUCYgge8Cy/ZyVCGzUVGC4HIXw8mJPBhgsOxpTx2XKzX24G2Ga+hdHthWv+g0ENwnYaM+s
- Z6U8eMxeJaaVwxZOm/4=;
-Received: by mail.yinpan.click id h48lb40001gm for
+ i=lynette.rippeon@dustpanz.click; 
+ bh=qEuIAQ9ips1s094gP7wsozHiS+g=;
+ b=VUZ0YQP7GJyA0VVIz4OHbwc2BM2iH2FjZzcDrE54ewQ9S2MFDl2HZfe5fdCkVCT+CGqRdRb5/751
+ 5cArGYSp+C4Y2Pgm9yNqexuZJm4MFXBW0RJuVlU53znhKahhIS5dZFjeVQngir01mM7pu25h7G/m
+ ZUM7R4jKVEwycLQ8h6I=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dustpanz.click;
+ b=pLQ0iAmeCmTC6JpJk8fiLhqAER2+NnWzFz7pJS7emEjPbTBQi2eiJzvA6/+b3C2ebpJ/M/PBdzIF
+ IPqK2wLYjHERWvKK4Botduaq4o7g0A5IQQTo4P0Cp9QTBklChqjphwmFnLl7yg9XEtkEvIiBt71i
+ IZORQN3WYid98zl7thc=;
+Received: by mail.dustpanz.click id h48rti0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 15:05:52 -0400 (envelope-from
- <olivia-vessel-intel+2Dgvt+2Ddev=lists.freedesktop.org@yinpan.click>)
-Date: Wed, 14 Sep 2022 15:05:52 -0400
-From: Olivia Vessel <olivia-vessel@yinpan.click>
+ Wed, 14 Sep 2022 16:07:44 -0400 (envelope-from
+ <lynette.rippeon-intel+2Dgvt+2Ddev=lists.freedesktop.org@dustpanz.click>)
+Date: Wed, 14 Sep 2022 16:07:44 -0400
+From: Lynette Rippeon <lynette.rippeon@dustpanz.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: TrueValue BIG Craftsman Giveaway intel-gvt-dev@lists.freedesktop.org
+Subject: Lowes wants you to have a Stanley Tool Kit
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_148_722399783.1663182337439"
-Message-ID: <0.0.0.10.1D8C86D029BDA7C.1344A4@mail.yinpan.click>
+ boundary="----=_Part_523_1723767518.1663186059176"
+Message-ID: <0.0.0.3A.1D8C875A71622E4.865162@mail.dustpanz.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,26 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_148_722399783.1663182337439
+------=_Part_523_1723767518.1663186059176
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-TrueValue BIG Craftsman Giveaway intel-gvt-dev@lists.freedesktop.org
+Lowes wants you to have a Stanley Tool Kit  intel-gvt-dev@lists.freedesktop.org
+
+You've Been Chosen, Begin Here:http://www.dustpanz.click/2c34E2395IU8D611F378Ccvd6fh36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQj9S9m5FkB106fPLwDP/pedestrian-discordant
 
 
-Congratulations, Start Here. http://www.yinpan.click/b6f4B2395qX8O611o3F788td6eN36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ49SoK5SBt106CkkwPD/secondhand-vaulted
 
 
+96_ Mowat- Av. , Toronto' ONT M4K3K1 Canada
 
-No longer want to receive communication?, Continue-Here. http://www.yinpan.click/8636v2q39J5Mo86I10i3789kd6eD36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ49SoK6Puv10g5HT2wD/Pfizer-architects
+To do away with notifications, Click-Over-Here:http://www.dustpanz.click/pedestrian-discordant/6c04G2395L86Ar11m378Bdmd6fU36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQj9S9m5Q1_g05HlUwD
 
-Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org
+Our e-mail was delivered to intel-gvt-dev@lists.freedesktop.org
 
-96_ Mowat_ Ave, TORONTO ON M4K3KI CN
+5782283,76384401
 
-3174593:48824851
-
-------=_Part_148_722399783.1663182337439
+------=_Part_523_1723767518.1663186059176
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -77,22 +81,21 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:309px;"><a href="http://www.yinpan.click/sounding-chef/2c45H23Q95Lr8I611l37U88xd6er36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ49SoK7O1BQ0yX5JpwXD"><img alt="Begin the 30-Second Survey Here" src="http://www.yinpan.click/2876UN239A5E7PaO10p378and6eU36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ49SoK5UJ10M6XkJw@D/embargo-supersets" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 309px;" /></a></span></span></span></p> &nbsp; 
-  <div style="text-align: center;">
-   <a href="http://www.yinpan.click/sounding-chef/2c45H23Q95Lr8I611l37U88xd6er36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ49SoK7O1BQ0yX5JpwXD"><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Congratulations, Start Here</span></span></a>
-  </div> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.dustpanz.click/pedestrian-discordant/9186dt239H5u8rJ612d3IF78cUd6fH36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQj9S9m5pM10s6m@qwzD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here, You've been Selected by Lowes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.dustpanz.click/pedestrian-discordant/9186dt239H5u8rJ612d3IF78cUd6fH36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQj9S9m5pM10s6m@qwzD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="You've Been Chosen, Begin Here" src="http://www.dustpanz.click/hatched-wrought/bac5V239S5l7aiH10W378esd6fm36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQj9S9m6y1SU0x6J@wDOP" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Be Quick! Promotion Comes to a Close in 5 Days.</span></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive communication?, <a href="http://www.yinpan.click/9cb5R2r395YlO8612VD37y89pd6eB36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ49SoK5l10qw6EyTwDj/sounding-chef">Continue-Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT. AVE, Toronto. Ont. M4K 3K1 CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3174593.48824851</span></span></p>   
- <img src="http://www.yinpan.click/8f96G2T39j5AL8m511u378jbkd6eZ36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ49SoK7izK1VZ05yjXwD/embargo-supersets" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT- Av, Toronto' ONT M4K 3Kl CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To do away with notifications, <a href="http://www.dustpanz.click/9cb6Szu2395p8Wl610D378dJd6fS36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQj9S9m5kZK106sN@wTD/conciliate-extrinsic">Click-Over-Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7196240 76384401</span></span></p>   
+ <img src="http://www.dustpanz.click/2a55JW2395j8X5w10B378fjd6fz36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQj9S9m7tyR10IQ6vBB@wD/resetting-slanderous" alt=""/></body>
 </html>
 
-------=_Part_148_722399783.1663182337439--
+------=_Part_523_1723767518.1663186059176--
 
