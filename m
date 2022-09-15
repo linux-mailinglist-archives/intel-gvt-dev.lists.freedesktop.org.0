@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94DC55B90F4
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 01:20:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 62BB55B9193
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 02:20:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C784410EA22;
-	Wed, 14 Sep 2022 23:20:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2F1AB10E1C5;
+	Thu, 15 Sep 2022 00:20:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 14 Sep 2022 23:20:48 UTC
-Received: from mail.panpon.click (unknown [185.104.151.13])
- by gabe.freedesktop.org (Postfix) with ESMTP id C929010EA25
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Thu, 15 Sep 2022 00:20:13 UTC
+Received: from mail.ashespan.click (unknown [213.209.159.142])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2EA9110E1BA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 23:20:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=panpon.click;
+ Thu, 15 Sep 2022 00:20:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ashespan.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sabrina-yovanovich@panpon.click; 
- bh=JBn+iBGEEtPUXvr8fYJxBt/cKjU=;
- b=Zt8C+4/8GeHpAqAMP8RWr81FRjZdF5wu7flAOkVijgRZ0fmQUjichXdPzzpm/JTKJk81m9Y+YIgX
- iL2+eSyIsS/tkMWBj5eYD+FsL4SRaqdMFqjentjJ28uN/cR6GtqIhmVAqmC1FUTZfPljHyYHzJzP
- umZfxoIvJ2A/WAqiCPo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=panpon.click;
- b=oXSo/C5cXSlK87g0m5hsyRxTwAulUsrQVBnguuaiD7eLYymZzXMVILMk/E4UTsJlJNanRf8ouIxi
- gFo6GFhjcYKQ97kBm04xyK+YobVKfzNSAsy3S6CwoCuPHquexSzVS/tinxzN0USFc0XSgEfKnc8h
- BObJYsBWDP7hIf6QONM=;
-Received: by mail.panpon.click id h49gt20001g2 for
+ i=lorena_konowal@ashespan.click; 
+ bh=RV2dQJrgaEjKCFYctlkkc7ujjyo=;
+ b=pbwOUQvD3+etwgcbWb3qi30eNbDEV/tpxImJxAv3R3+VSl7utux1/iHosWMEBaLSKtTSIa0mC/eJ
+ nj4kVyV6w59ndh1NQZcISpfCxyAXzA2FPqB6xsGsj9pkGd4GqU9ylUdTztJvGaC9rnrC6TJvsNTh
+ Oq9tjaw+cnVreHqpsaw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ashespan.click;
+ b=kPihF4ZBnYQ+Sw8qti3PaeVd0LZpz2Z9rBThI8liU7rwiO0KLpQ9V6dmsursM3z7dxXdrRkNZM8l
+ PYNSrY7onPeRjSgh61N7bytvawdro/p9mbusZC3UizbkzcWUws56eCGHDEXNLxtalzk2xFQPTUhE
+ oWeT0sQSciUp/tvrjv4=;
+Received: by mail.ashespan.click id h49nrq0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Sep 2022 19:09:18 -0400 (envelope-from
- <sabrina-yovanovich-intel+2Dgvt+2Ddev=lists.freedesktop.org@panpon.click>)
-Date: Wed, 14 Sep 2022 19:09:18 -0400
-From: Sabrina Yovanovich <sabrina-yovanovich@panpon.click>
+ Wed, 14 Sep 2022 20:09:00 -0400 (envelope-from
+ <lorena_konowal-intel+2Dgvt+2Ddev=lists.freedesktop.org@ashespan.click>)
+Date: Wed, 14 Sep 2022 20:09:00 -0400
+From: Lorena Konowal <lorena_konowal@ashespan.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Ace Customer,
- Your Dewalt Drill from Ace intel-gvt-dev@lists.freedesktop.org
+Subject: Apply for your CCW Permit Online 50% Off
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_865_853142502.1663196940899"
-Message-ID: <0.0.0.60.1D8C88F0453D7F8.5D12F3@mail.panpon.click>
+ boundary="----=_Part_766_935920100.1663200532278"
+Message-ID: <0.0.0.54.1D8C8975B460C04.65EF9C@mail.ashespan.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_865_853142502.1663196940899
+------=_Part_766_935920100.1663200532278
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Apply for your CCW Permit Online 50% Off
+
+
+Click Here for your Right to Defend Yourself,http://www.ashespan.click/8db5SM2395h8C6_11MC379eZd73G36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQp9S9d6a1UJz06GWywkD/stodgy-remedy
+
+Hustle! Price Reduction Runs Out in 4 Days. 
+
+
+
+
+11201' N TATUM- B0ULEVARD SUITE 300' NO.  68200_, PHOENIX_ ARIZ  85028_
+No longer want to receive messages from us?, Follow This Way,http://www.ashespan.click/2fw4s2395P86Bt10k379cvd73j36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQp9S9d5cy1Y05IXAwD/bistable-palfrey
+Our message was delivered to intel-gvt-dev@lists.freedesktop.org
+7186169,4953436
+
+------=_Part_766_935920100.1663200532278
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,21 +81,17 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.panpon.click/7cd6PC2U395X8K6y12fJ37X97hd72q36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQP9S995S1FB06M1wDOk/McClain-alter" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the Ace-Dewalt Giveaway</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.panpon.click/7cd6PC2U395X8K6y12fJ37X97hd72q36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQP9S995S1FB06M1wDOk/McClain-alter" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Begin Here for the Gigantic Ace XTREME Drill Giveaway" src="http://www.panpon.click/halts-accesses/a086Vu2J395BM7aB11S3799sSd72T36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQP9S996zk1As05PWwAD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span></p> &
- nbsp; 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Shake a Leg! Special Offer Ends in 5 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><a href="http://www.ashespan.click/rebutting-Kuwait/a085W239M5S86rM12U37Qv9bAd73L36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQp9S9d7AN1o_S06mJMw@D" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for your Right to Defend Yourself</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:660px;"><a href="http://www.ashespan.click/rebutting-Kuwait/a085W239M5S86rM12U37Qv9bAd73L36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQp9S9d7AN1o_S06mJMw@D"><img alt="Click Here for your CCW Permit Online Now 50% Off" src="http://www.ashespan.click/20f6G2y3o95M7raJ10j379dld73j36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQp9S9d6SB10Pi6C0wz3D/descending-enduring" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 660px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-family: Arial; font-size: 18.6667px; font-weight: 700; white-space: pre-wrap;">Lose No Time! 50% Off Expires in 4 Days.</span></p> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut notifications, </span><a href="http://www.panpon.click/9e94X2395z8Q_611Q3G798Zd72C36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQP9S995Y1P0I6zWMywD/antithyroid-vexing" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin_Over_Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 MOWAT- Ave, Toronto. Ont M4K 3Kl CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email content was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">90029658.6535907</span></span></p>   
- <img src="http://www.panpon.click/importer-duplicate/3786d2n39Y5Q8Uk510c379aNd72w36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQP9S995D1W0i6pUABwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:14px;">11201' No Tatum. BouIevard NO. 3OO' # 68200-, PHOENIX' Ariz&nbsp; 85028</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive messages from us?,<a href="http://www.ashespan.click/5395N239V5S8T6_12AI379Qcld73Z36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQp9S9d5jm1y05ST3wD/trustworthiness-glovers"> Follow This Way</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7186169,4953436</span></span></p>   
+ <img src="http://www.ashespan.click/cf56JM239V5nYK8511y379fjHd73L36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQp9S9d5d1C0g6rUXUwD/sorcery-iteratively" alt=""/></body>
 </html>
 
-------=_Part_865_853142502.1663196940899--
+------=_Part_766_935920100.1663200532278--
 
