@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CBA65B9CCE
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 16:19:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 237B35BA056
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 19:23:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BD19410EB34;
-	Thu, 15 Sep 2022 14:19:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9F8BB10EBA1;
+	Thu, 15 Sep 2022 17:23:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 15 Sep 2022 14:19:05 UTC
-Received: from mail.sixpad.click (unknown [38.92.178.204])
- by gabe.freedesktop.org (Postfix) with ESMTP id 878B410EB34
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 15 Sep 2022 17:23:30 UTC
+Received: from mail.sixdam.click (unknown [185.104.151.172])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4975710EBA1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 14:19:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sixpad.click;
+ Thu, 15 Sep 2022 17:23:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sixdam.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=dena_ubence@sixpad.click; bh=+cW7Z1rOHwXdBP3y0Danm39H6XM=;
- b=Z/jAsrbOor+7GGBBxCLXkRtnr3vjuKhAPiroZsH16tdvmuasbujMpypwcDHshNi5ir9xi30BCkX+
- 7kLDsxQDykScl9DZei6kwgtu1qyr1TxOucaYeRd8COZxDhdxje/FXmrS//8nERjHsKRTJqZEIxl+
- A9qH4k7WmFl3iCdTGnQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sixpad.click;
- b=VfgL8YE07djOjiznhfoDU6VFFSmRMI1LfjnsMelHr6g+uE5PvI3Yu7Wd5aH7GnUX1oKXGkmQvtIC
- hctm6zpj0h3/6AJy/YyF93OgXTX42Mi/yQZazY7C6LJCvjLdGL9i4AUkKdU6iL7AmnZVIDPD3pjg
- OcBsfTnj3mH+KK0wBVs=;
-Received: by mail.sixpad.click id h4cq5i0001g5 for
+ i=jocelyn-broun@sixdam.click; bh=151JNYstZzcTsl/Sh4dLS2KmsnM=;
+ b=mJSgPerhzYkPrb5OCpXVxXS2OCJGiy51RJNC5asWs2N0euR8WRHnENO9JT2Mdp2lbU1PJc5po/eK
+ 95BqZjoF20pxM3mJzqNh1Wo/Rf51LsPAEKEdw6qZwMO2v1j6l5Hiy2Q49aCggRoiYzWMxAHr5S4e
+ 4NLoG/RVwZFQb07uprY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sixdam.click;
+ b=Hbu8+Pfe9K/o1PImh5t7D82ZqV9q6920VNxz9/uh6own7d0auhcF8ax4ClSb4cw0meK0CQjj+wj0
+ iDcmDg8nK/VNIrFyW7NwBo5cYYUZD40Jr+irLWTjhL+GBxgDYn5w0x5eXEXKpnQQA5kNfaBCrRsw
+ JWCfB+Wq5ohNB26X40M=;
+Received: by mail.sixdam.click id h4dfp40001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 10:08:25 -0400 (envelope-from
- <dena_ubence-intel+2Dgvt+2Ddev=lists.freedesktop.org@sixpad.click>)
-Date: Thu, 15 Sep 2022 10:08:25 -0400
-From: Dena Ubence <dena_ubence@sixpad.click>
+ Thu, 15 Sep 2022 13:08:22 -0400 (envelope-from
+ <jocelyn-broun-intel+2Dgvt+2Ddev=lists.freedesktop.org@sixdam.click>)
+Date: Thu, 15 Sep 2022 13:08:22 -0400
+From: Jocelyn Broun <jocelyn-broun@sixdam.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: New Transmission $3175. With Endurance Warranty $0
+Subject: Gigantic Lowes Craftsman Lawn Tractor Giveaway
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_649_23060244.1663250893428"
-Message-ID: <0.0.0.48.1D8C90C9F7526CE.51C54D@mail.sixpad.click>
+ boundary="----=_Part_598_776075575.1663261693055"
+Message-ID: <0.0.0.42.1D8C925C29F3CE8.128C03@mail.sixdam.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_649_23060244.1663250893428
+------=_Part_598_776075575.1663261693055
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Gigantic Lowes Craftsman Lawn Tractor Giveaway  intel-gvt-dev@lists.freedesktop.org
+
+
+You've Been Selected, Begin Here:http://www.sixdam.click/ceaseless-interposed/5ee4u2395M8wV612e37cQvfAd80q36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQF9SdS6YD1k0h6EkTwDU
+
+
+
+
+
+
+To pull the plug on communication, Continue_Ahead:http://www.sixdam.click/unacceptability-clasped/4fe4z2395ko8U612p37JdS0vd80k36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQF9SdS7q1kA0li6JjwD3M
+
+Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org
+
+_96 MOWAT_ AVE, Toronto.  ONT.  M4K3Kl CA
+
+86276671-6960102
+
+------=_Part_598_776075575.1663261693055
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -60,20 +83,19 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><a href="http://www.sixpad.click/cd75F239A5L8ZM612tA3S7c4ud7du36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQO9Sdd5q1y0Y5mLwkD/inconsiderate-chaotic" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">To Save Up to 6O% on an Extended Service Contract Click Here</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><a href="http://www.sixpad.click/cd75F239A5L8ZM612tA3S7c4ud7du36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQO9Sdd5q1y0Y5mLwkD/inconsiderate-chaotic" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:592px;height:2048px;"><img alt="To Save Up to 6O% on a Vehicle Protection Plan Tap Here" src="http://www.sixpad.click/3595W2g395Dw7aw10H37c6ud7dr36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQO9Sdd6hti1y05F@wOD/Frisbee-Barnabas" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 2077px;" /></span></span></a></span></p> 
-  <br /> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.sixdam.click/mispronunciation-possibly/3h05X2n395FBL8611d3G7cfmd80B36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQF9SdS7y1X0wos6El@wlD"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.sixdam.click/5575W239l5y7aHP12dY3T7d1wd80I36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQF9SdS7MNUN1q06Ol@MwD/analogues-lazier" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.sixdam.click/mispronunciation-possibly/3h05X2n395FBL8611d3G7cfmd80B36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQF9SdS7y1X0wos6El@wlD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Selected, Begin Here</span></a></span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive messages from us?, </span><a href="http://www.sixpad.click/understandable-instituting/6de6M2R39A5K86uU10m37c5yd7dY36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQO9Sdd6t_Oy105yOwyD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue.Over.Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4OO' Skokie Boulevard Ste. 1O5 North_Brook IIIinois<br /> 60062-</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4628492-6981293</span></span></p>   
- <img src="http://www.sixpad.click/c5f6E2zz395Ik8H510n37c7Cd7du36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQO9Sdd5u1Rj05mMXwD/Frisbee-Barnabas" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on communication, <a href="http://www.sixdam.click/33b6m23Y9w5X_86_10J37d0wd80G36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQF9SdS7MFs1xm05S2wJD/Tallahatchie-tipper">Continue_Ahead</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT AV, Toronto_ ONT M4K 3K1 CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">86276671.6960102</span></span></p>   
+ <img src="http://www.sixdam.click/unacceptability-clasped/a444p2395Q8Ps511C37d2yid80F36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQF9SdS7Q10QCyt6fBTywD" alt=""/></body>
 </html>
 
-------=_Part_649_23060244.1663250893428--
+------=_Part_598_776075575.1663261693055--
 
