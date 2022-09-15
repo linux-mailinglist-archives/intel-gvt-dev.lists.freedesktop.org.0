@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 237B35BA056
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 19:23:34 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 842E85BA0CD
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 20:21:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9F8BB10EBA1;
-	Thu, 15 Sep 2022 17:23:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 41AEC10E223;
+	Thu, 15 Sep 2022 18:21:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Thu, 15 Sep 2022 17:23:30 UTC
-Received: from mail.sixdam.click (unknown [185.104.151.172])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4975710EBA1
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Thu, 15 Sep 2022 18:21:09 UTC
+Received: from mail.pinsix.click (unknown [192.119.166.225])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E446B10EBAF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 17:23:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sixdam.click;
+ Thu, 15 Sep 2022 18:21:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pinsix.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jocelyn-broun@sixdam.click; bh=151JNYstZzcTsl/Sh4dLS2KmsnM=;
- b=mJSgPerhzYkPrb5OCpXVxXS2OCJGiy51RJNC5asWs2N0euR8WRHnENO9JT2Mdp2lbU1PJc5po/eK
- 95BqZjoF20pxM3mJzqNh1Wo/Rf51LsPAEKEdw6qZwMO2v1j6l5Hiy2Q49aCggRoiYzWMxAHr5S4e
- 4NLoG/RVwZFQb07uprY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sixdam.click;
- b=Hbu8+Pfe9K/o1PImh5t7D82ZqV9q6920VNxz9/uh6own7d0auhcF8ax4ClSb4cw0meK0CQjj+wj0
- iDcmDg8nK/VNIrFyW7NwBo5cYYUZD40Jr+irLWTjhL+GBxgDYn5w0x5eXEXKpnQQA5kNfaBCrRsw
- JWCfB+Wq5ohNB26X40M=;
-Received: by mail.sixdam.click id h4dfp40001gr for
+ i=vickie_snipes@pinsix.click; bh=e2RwRurr1drHXlgIoCvAqgOXgMU=;
+ b=YOAIaRzAsg8kLwIsNYLFRVcW26PjLzfxzRKTGJ/8GEUMPnZurZt6unfXmZ7EFpI5hCPf4kWM5thL
+ twb7wZUYgO3fUcFc+NV6zuyaa2DCF40SsoOOcRNF0wAdQqPHd2g0XQT77Y47jmjiA6hEW6jIm3xU
+ mPP/I19amsAIJO6ZJ3s=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pinsix.click;
+ b=vNRV7GlJ1OmSUJTHtzOu+OACfDMRhfZcbSjlHrAEtOcj2VpnpC+XLaOMt6NlTBvFNoBeWbBO9qDm
+ Ur6oYfis/9aa5X5GdXaQ1Z1QZh9RZRuogYMrsJJT59eh2VHPkwauOw5VCrEImfIt/T5xeJh+snBA
+ BPYa/UeP8j3nKOgZdgo=;
+Received: by mail.pinsix.click id h4e14i0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 13:08:22 -0400 (envelope-from
- <jocelyn-broun-intel+2Dgvt+2Ddev=lists.freedesktop.org@sixdam.click>)
-Date: Thu, 15 Sep 2022 13:08:22 -0400
-From: Jocelyn Broun <jocelyn-broun@sixdam.click>
+ Thu, 15 Sep 2022 15:39:43 -0400 (envelope-from
+ <vickie_snipes-intel+2Dgvt+2Ddev=lists.freedesktop.org@pinsix.click>)
+Date: Thu, 15 Sep 2022 15:39:43 -0400
+From: Vickie Snipes <vickie_snipes@pinsix.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Gigantic Lowes Craftsman Lawn Tractor Giveaway
- intel-gvt-dev@lists.freedesktop.org
+Subject: Protect your budget with an Auto Service Contract. $300 Off
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_598_776075575.1663261693055"
-Message-ID: <0.0.0.42.1D8C925C29F3CE8.128C03@mail.sixdam.click>
+ boundary="----=_Part_727_1344989933.1663265338196"
+Message-ID: <0.0.0.50.1D8C93AE75C9BF6.24C132@mail.pinsix.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,29 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_598_776075575.1663261693055
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Gigantic Lowes Craftsman Lawn Tractor Giveaway  intel-gvt-dev@lists.freedesktop.org
-
-
-You've Been Selected, Begin Here:http://www.sixdam.click/ceaseless-interposed/5ee4u2395M8wV612e37cQvfAd80q36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQF9SdS6YD1k0h6EkTwDU
-
-
-
-
-
-
-To pull the plug on communication, Continue_Ahead:http://www.sixdam.click/unacceptability-clasped/4fe4z2395ko8U612p37JdS0vd80k36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQF9SdS7q1kA0li6JjwD3M
-
-Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org
-
-_96 MOWAT_ AVE, Toronto.  ONT.  M4K3Kl CA
-
-86276671-6960102
-
-------=_Part_598_776075575.1663261693055
+------=_Part_727_1344989933.1663265338196
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,19 +60,20 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.sixdam.click/mispronunciation-possibly/3h05X2n395FBL8611d3G7cfmd80B36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQF9SdS7y1X0wos6El@wlD"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.sixdam.click/5575W239l5y7aHP12dY3T7d1wd80I36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQF9SdS7MNUN1q06Ol@MwD/analogues-lazier" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.sixdam.click/mispronunciation-possibly/3h05X2n395FBL8611d3G7cfmd80B36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQF9SdS7y1X0wos6El@wlD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Selected, Begin Here</span></a></span></span></p> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><a href="http://www.pinsix.click/accesses-inquest/b706Y23o9i5oU8D612Lp37Id3xd81O36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQw9Sde5t1QD06IlwDLA" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Save Hundreds on an Extended Auto Warranty</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><a href="http://www.pinsix.click/accesses-inquest/b706Y23o9i5oU8D612Lp37Id3xd81O36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQw9Sde5t1QD06IlwDLA" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:592px;height:2048px;"><img alt="Visit Here Save Up to 6O% on an Auto Protection Plan" src="http://www.pinsix.click/7cd6zM2q395k7Aya12I37diW5rd81u36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQw9Sde7jw1YVz05SlwDz/accesses-inquest" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 2077px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on communication, <a href="http://www.sixdam.click/33b6m23Y9w5X_86_10J37d0wd80G36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQF9SdS7MFs1xm05S2wJD/Tallahatchie-tipper">Continue_Ahead</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT AV, Toronto_ ONT M4K 3K1 CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">86276671.6960102</span></span></p>   
- <img src="http://www.sixdam.click/unacceptability-clasped/a444p2395Q8Ps511C37d2yid80F36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQF9SdS7Q10QCyt6fBTywD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your email elections, </span><a href="http://www.pinsix.click/9714N2395iI8o611M37d4xod81x36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQw9Sde5SsW106t0wOD2/variances-shrewdness" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Over Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4OO SK0KIE Blvd STE 1O5- NORTH-BROOK Illinois<br /> 60062'</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2c2cbb18-7fff-5e28-d054-3a817a613d69"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9729270~6494404</span></span></p>   
+ <img src="http://www.pinsix.click/accesses-inquest/42c6t2HT395Bn8j511t3u7d6Id81j36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQw9Sde5LDX105H3jwD" alt=""/></body>
 </html>
 
-------=_Part_598_776075575.1663261693055--
+------=_Part_727_1344989933.1663265338196--
 
