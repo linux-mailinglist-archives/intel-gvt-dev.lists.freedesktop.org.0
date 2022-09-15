@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 812CB5BA246
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 23:19:03 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AB995BA1C5
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Sep 2022 22:20:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8DD1F10EBEF;
-	Thu, 15 Sep 2022 21:19:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1F8B110E2A6;
+	Thu, 15 Sep 2022 20:20:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 15 Sep 2022 21:18:57 UTC
-Received: from mail.nicesix.click (unknown [192.119.166.137])
- by gabe.freedesktop.org (Postfix) with ESMTP id EAE5E10EBEF
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Thu, 15 Sep 2022 20:20:15 UTC
+Received: from mail.sixbarn.click (unknown [185.104.151.148])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EE59A10E2A5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 21:18:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nicesix.click;
+ Thu, 15 Sep 2022 20:20:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sixbarn.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ruezga.kay@nicesix.click; bh=ccEizrcMkkkRUj+DyXnQUZ+/ZBc=;
- b=G1insDh7Po6DTlxn5STTE3MXPk152CHnLQ5olC3wAKlgZDeQWJTNyjBvgVN4wWmlIgd+L4PWXWmK
- 09pTl4xs6aLq38NUiGHbLPy82OE3ZVSTfghBWPi3DMT8/c/ufN5KSFmdmnf4G5qOB8ewC+pLZBg6
- MR/09sunV/cb+qpXJME=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nicesix.click;
- b=pCmYrRly0fuj1O8hrsd6npFBA7k/9ZTC4D7XpguJpy1spw5kdd0W/giG60pYtOqmPbQPjYQNUHnN
- 8n36q3LHUKQhMy+tr5qkL2A9DgLRVEBgyW0etnmvgcGTN+xGNJobjo8vwZbhDjYtZoye0CKFioBc
- GOoNzC1ASFLUp8saANY=;
-Received: by mail.nicesix.click id h4ebc20001gf for
+ i=sallie_marz@sixbarn.click; bh=ZTIetANRCNT19bJW1jt2kYeE2EU=;
+ b=oMI/tDui+d5urGmp5d/x60kavqyALi1jA0ga1ysi+mFtF1UnJaguSlxwEVGXuzqeK/gvhnDxyfpq
+ QJI2cdH4Zq+qjvt16m1OzSejk+00b5ky9hQgU3nN1hhcXPaSfLS8N42nA9n/ZouaiffJ8ZngQFJE
+ uledkBvgUgPo08lfpcQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sixbarn.click;
+ b=OcYAvTM2ZDHLTI5+CYG6mu/+EAfKDZCH6aeAK55pMis97LDZvgkmv9AACzIlVW5WKWwYBXp2FBGt
+ oSyJSvxoRQGzUEe0uqCJ8VGQ6zK7Y9OXOB9B5OtXNSJtRaf+A0mAYT13S5EeJ6yyrPGZa46vYGkA
+ VWki1ZOBjfhDo5Gba0M=;
+Received: by mail.sixbarn.click id h4ef360001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 17:08:41 -0400 (envelope-from
- <ruezga.kay-intel+2Dgvt+2Ddev=lists.freedesktop.org@nicesix.click>)
-Date: Thu, 15 Sep 2022 17:08:41 -0400
-From: Kay Ruezga <ruezga.kay@nicesix.click>
+ Thu, 15 Sep 2022 17:40:44 -0400 (envelope-from
+ <sallie_marz-intel+2Dgvt+2Ddev=lists.freedesktop.org@sixbarn.click>)
+Date: Thu, 15 Sep 2022 17:40:44 -0400
+From: Sallie Marz <sallie_marz@sixbarn.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You've been Chosen
+Subject: Your New Stanley 170 pc Tool Set from Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_733_1048271870.1663276103157"
-Message-ID: <0.0.0.52.1D8C94755296964.258C85@mail.nicesix.click>
+ boundary="----=_Part_871_203528458.1663272600744"
+Message-ID: <0.0.0.60.1D8C94BCF1418D8.1D0C9C@mail.sixbarn.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +53,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_733_1048271870.1663276103157
+------=_Part_871_203528458.1663272600744
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Your New Stanley 170 pc Tool Set from Lowes  intel-gvt-dev@lists.freedesktop.org
+
+Go Here for the Lowes-Stanley Promotion. http://www.sixbarn.click/jittery-sterilization/3964G2395l86Dr10p37dbKd83I36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQg9SQm6a1p0KQ6K@2MwD
+
+
+
+
+'96 Mowat_ AV, Toronto' Ontario M4K3KI CANADA
+
+To bring email to an halt, Visit_Here. http://www.sixbarn.click/jumpy-depends/b525i2j395I8DN611h37PdcSd83w36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQg9SQm6EHX10F6jplwDA
+
+Our e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org
+
+29167236,4905986
+
+------=_Part_871_203528458.1663272600744
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -61,20 +81,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><a href="http://www.nicesix.click/existentialists-cattlemen/8dc5hm2395Bz8s612fi37dzfId84l36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ09SQn6QPO1T06VAMAwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Home Depot Survey</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><a href="http://www.nicesix.click/existentialists-cattlemen/8dc5hm2395Bz8s612fi37dzfId84l36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ09SQn6QPO1T06VAMAwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:310px;"><img alt="Tap Here to Claim a Dyson Vacuum from Home Depot" src="http://www.nicesix.click/existentialists-cattlemen/c9c5OM2395pC7ar10K37e1Ud84h36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ09SQn6z1r0kJ5MUw0D" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 310px;" /></span></span></a></span></p> &
- nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Discount Ends in 6 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.sixbarn.click/9cb4g2395wq86A12Bj37dqbTd83w36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQg9SQm6HjZL105wTlwD/vectorization-sleepiness" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Claim a Stanley Tool Kit from Lowes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.sixbarn.click/9cb4g2395wq86A12Bj37dqbTd83w36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQg9SQm6HjZL105wTlwD/vectorization-sleepiness" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Go Here for the Lowes-Stanley Promotion" src="http://www.sixbarn.click/1015z239n5zR7aK12Kt37dgdqd83Y36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQg9SQm7lV1D0np5f@2wD/diagrammatic-duplicate" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hustle! Promotion Runs Out in 3 Days.</span></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT_ Ave, Toronto. Ont M4 K3 K1 CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To halt email, </span><a href="http://www.nicesix.click/Racine-hectic/a9e4f2395q8u6x11X3N7e0pd84K36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ09SQn7sH1j0Xt6hp3XwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start-Right-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8999728-9812628</span></span></p>   
- <img src="http://www.nicesix.click/carnage-grapefruit/b8e5w2A395WWt8510o37e2td84u36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ09SQn7hRL1Jk06AjTwXD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT. Av, TORONTO ONTARIO M4K 3K1 CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To bring email to an halt, <a href="http://www.sixbarn.click/5cf6ytr2395CN8T611h37dJc_d83Q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQg9SQm6VO1zY06OMwUD@/vectorization-sleepiness">Visit_Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3116213~4905986</span></span></p>   
+ <img src="http://www.sixbarn.click/5934w2395V85tD11J3H7de_d83_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQg9SQm5Q1T0h6SlUwTD/godfather-disk" alt=""/></body>
 </html>
 
-------=_Part_733_1048271870.1663276103157--
+------=_Part_871_203528458.1663272600744--
 
