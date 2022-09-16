@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A9925BA31A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 01:22:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F5C35BA373
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 02:18:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 46DE210EBF8;
-	Thu, 15 Sep 2022 23:22:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3932A10E338;
+	Fri, 16 Sep 2022 00:18:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Thu, 15 Sep 2022 23:22:35 UTC
-Received: from mail.simton.click (unknown [185.104.151.111])
- by gabe.freedesktop.org (Postfix) with ESMTP id 23DC310E2BC
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 16 Sep 2022 00:18:46 UTC
+Received: from mail.zacsim.click (unknown [38.92.178.248])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8476210EC25
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 23:22:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=simton.click;
+ Fri, 16 Sep 2022 00:18:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=zacsim.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hagenbrok-eva@simton.click; bh=+HdlO5RwYK7i7NQ8HVlMpC0ReMo=;
- b=fFwH2tMvxzMpw+5uHLFYsYI5fL7n/82n4GjAVZ7JxH7dbsFNg/I/TjPRLPpTFUyRqmEGJkXUlk3l
- wMYnVke3gUOOkqRfsvb8c9fnkE/zC+hQxsrXpfeOVuoRs2TNcF1buESniCnZiDmcGKkfM0TTN1Zl
- S0DpP9CTzmFvYkfilCA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=simton.click;
- b=UVOV0MuAuOPvjKNoA6zg3qCcdWPRZ+OIcqzvMvWU2vZF6U4Iv8zeJj6BV+umMZwxvDEIKsgRWlSc
- B4s5bIwXM7OtJkiJTjP9Tp2KXv4r1/tmFT2XgooijpcwLw3guLJnC1j6HIv0adKfcndD6hPDNYYz
- S/dRI+QCOJIq+aP8HSk=;
-Received: by mail.simton.click id h4eprm0001gu for
+ i=keri_fersner@zacsim.click; bh=Tc0hAqXzh4K9v/Qw7/T9+SgNVy0=;
+ b=CBIz/TsXOTKyRS2QNymReFy/oiGg+d/n4MK+iYn4SAP7BARsiY4dtLOBFedKlgTKwQN3d9PPi5t6
+ MTUFnc5U1RYTYTt4S7OgGcj8y3BSMSMpCP5TUAg25lq5B9WsUHy3vrgvXAJh3cFKcwRijnPYRpKm
+ nhENkmIc0MCgtBHOLy8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=zacsim.click;
+ b=YwhktCN3Xhd6Gzh2CvW1Ic+okkKlKQgBItejGP5KqjS7CEOduEfe9XJRNQPLqXJtbL4ETyo5UwN+
+ fo567Bej7ZdZKGT/ev+NFkZAYo9XH+czcu1Tp9ACGHTIlz4EjoqoKkUhPv98ZHAxyE0Sx3ByGKCl
+ yYi/2i8rMe9F0gKZoi8=;
+Received: by mail.zacsim.click id h4f0ec0001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 19:08:48 -0400 (envelope-from
- <hagenbrok-eva-intel+2Dgvt+2Ddev=lists.freedesktop.org@simton.click>)
-Date: Thu, 15 Sep 2022 19:08:48 -0400
-From: Eva Hagenbrok <hagenbrok-eva@simton.click>
+ Thu, 15 Sep 2022 20:09:19 -0400 (envelope-from
+ <keri_fersner-intel+2Dgvt+2Ddev=lists.freedesktop.org@zacsim.click>)
+Date: Thu, 15 Sep 2022 20:09:19 -0400
+From: Keri Fersner <keri_fersner@zacsim.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Ace Customer,
- Claim your Ace Dewalt Drill intel-gvt-dev@lists.freedesktop.org
+Subject: No Waiting. CCW Permit in 15 minutes 50% Off
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_769_37278946.1663283310921"
-Message-ID: <0.0.0.55.1D8C9581CE32A3E.2F70F4@mail.simton.click>
+ boundary="----=_Part_883_249012865.1663286942865"
+Message-ID: <0.0.0.62.1D8C9609113FB06.2A0DFB@mail.zacsim.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_769_37278946.1663283310921
+------=_Part_883_249012865.1663286942865
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,21 +61,18 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.simton.click/b154d2395GK8H611F37eN7Wd86C36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQZ9SQ95Rj1S05R3qwD/conductor-technologies" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for the Ace-Dewalt XTREME Drill Promotion</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.simton.click/b154d2395GK8H611F37eN7Wd86C36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQZ9SQ95Rj1S05R3qwD/conductor-technologies" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Visit Here to give your feedback about Ace" src="http://www.simton.click/5936gg239j5I7AYa10i37e9pd86i36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQZ9SQ97f1yi0ok5K@wDq/comparators-zealousness" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span></p
- > &nbsp; 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lose No Time! Special Offer Is Done in 2 Days.</span></span></p> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><a href="http://www.zacsim.click/6fb4q2395VFw8611IP37ebzd87S36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQH9SQd7z1GHR0g5SJUwD/permissions-stimulation" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for CCW with No Range Time required</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:605px;height:688px;"><a href="http://www.zacsim.click/6fb4q2395VFw8611IP37ebzd87S36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQH9SQd7z1GHR0g5SJUwD/permissions-stimulation"><img alt="Go Here for your Right to Defend Yourself" src="http://www.zacsim.click/alleviation-twinkles/7386k2ZR395J7gwa10l37edid87w36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQH9SQd5aT10o6i@MwDU" style="margin-left: 0px; margin-top: 0px; width: 605px; height: 688px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Going! Offer Is Over in 5 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease messages, </span><a href="http://www.simton.click/ef36g2A39F5Mmj8612vv37Fe8Td86j36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQZ9SQ96iZ1U0i6KNTJwD/conductor-technologies" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin.Over.Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT_ Av., Toronto- Ont M4K3Kl CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3043248.3150277</span></span></p>   
- <img src="http://www.simton.click/eb74z2395c8I5I11q37eatBd86U36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQZ9SQ96M10CrV6EAwDpJ/multicasting-inherent" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">112O1' No Tatum_ BOULEVARD Unit 3OO- # 682OO-, PHOENIX AZ&nbsp; 85O28_</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive email information?, </span><a href="http://www.zacsim.click/retiree-siblings/f306U2N3r95PR86x12Ui37ekcQd87Y36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQH9SQd7RF10MLC5LlNwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9888249:7245465</span></span></p>   
+ <img src="http://www.zacsim.click/8814R2395A85Tr10b37ee_d87s36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQH9SQd7JjkG10W6zl3wD1/Macadamia-loudspeaker" alt=""/></body>
 </html>
 
-------=_Part_769_37278946.1663283310921--
+------=_Part_883_249012865.1663286942865--
 
