@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9159D5BB2BA
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 21:19:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55D4C5BB3FD
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 23:38:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D430D10E51B;
-	Fri, 16 Sep 2022 19:19:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A3FEC10E35F;
+	Fri, 16 Sep 2022 21:38:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
- Fri, 16 Sep 2022 19:19:04 UTC
-Received: from mail.oustson.click (unknown [64.64.109.197])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4174910E51B
+X-Greylist: delayed 433 seconds by postgrey-1.36 at gabe;
+ Fri, 16 Sep 2022 21:37:57 UTC
+Received: from mail.artsons.click (unknown [213.209.159.173])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CC66D10E22A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 19:19:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=oustson.click;
+ Fri, 16 Sep 2022 21:37:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=artsons.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=shawn-frizell@oustson.click; 
- bh=mdJZP2MTqlwqHU+MYijF0nIvmKI=;
- b=VGp+5gA2L7bBtLpqspTyxQTVPS3nwj+6ypFIGRmUWk6o4A/rhnUpL0xmfUCgIBSlHRhMjKmliO7O
- ghikGemfPNhbnGbabNPJmpj64BlmvUm2hvMCw3hvxyIyDVAgHPKRLS8DEfZz8Vv9DnT6XX0XK+8o
- vUF7pLCTf56WjZqLfnU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=oustson.click;
- b=YXsxALaDGARdDSvAiPASuZzaLg8NFVgSnjIzs5czBQXmy+g7F4w65Mk/XOalwhOJY3T1PtT3oucY
- 0ZGpXIa28+Bkjn1RtmFeE02/cLsvptuBHYkmms2/frv2LESwEx4hOgDyTovrqSlBTfOTYCQyQvfn
- o+PgvNOXffWCgcTaRyU=;
-Received: by mail.oustson.click id h4jglk0001g6 for
+ i=jodi-dangelis@artsons.click; 
+ bh=Gi6byJip5lf+gbopsUje3C1+/M8=;
+ b=dR9PlAPkIvKfVpI0mikOZ5CPlS8C7EAZWborELTyiqc6TfOLHf4bMwzF0gmcO2J7QRdgMDoN0r0B
+ R31wLlrVdOd+5tW5WsvUMXcerc//UKyfH/4Htg4CgGCVqw8KVuMKWmbJMRvAnWdd3tV0/vpC3SGW
+ zyrGrpIsVoaOo/JQzLc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=artsons.click;
+ b=MwnK787t5RHleM9iwD7WnDhm05O0qpaxDD5cWwcZbKDjY9wH6/mUU3kLV8g7sWTPBcEwJMD0Zf2g
+ fkIZhzUHhS+aboh/WbdgTjmp+77SJ4WHKTyGwdt/VkdQjEuazs7vtUo6GMC9Ml7sqhhpCWOb8ViP
+ TzH1fAE5l9hFUKhtJQw=;
+Received: by mail.artsons.click id h4jmbc0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 16:34:58 -0400 (envelope-from
- <shawn-frizell-intel+2Dgvt+2Ddev=lists.freedesktop.org@oustson.click>)
-Date: Fri, 16 Sep 2022 16:34:58 -0400
-From: Shawn Frizell <shawn-frizell@oustson.click>
+ Fri, 16 Sep 2022 17:07:38 -0400 (envelope-from
+ <jodi-dangelis-intel+2Dgvt+2Ddev=lists.freedesktop.org@artsons.click>)
+Date: Fri, 16 Sep 2022 17:07:38 -0400
+From: Jodi Dangelis <jodi-dangelis@artsons.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: TrueValue Craftsman gas generator Offer
- intel-gvt-dev@lists.freedesktop.org
+Subject: Empire $5O/Room* End-of-Summer Flooring  Sale
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_16_1631874183.1663355069052"
-Message-ID: <0.0.0.1.1D8CA0BC9777238.21E056@mail.oustson.click>
+ boundary="----=_Part_373_1920225114.1663362445027"
+Message-ID: <0.0.0.29.1D8CA105A21BCCC.59E0DD@mail.artsons.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +53,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_16_1631874183.1663355069052
+------=_Part_373_1920225114.1663362445027
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-TrueValue Craftsman gas generator Offer intel-gvt-dev@lists.freedesktop.org
+Empire $5O/Room* End-of-Summer Flooring  Sale
+
+Go Here for Installation as soon as Tomorrow:www. phiturtip. com/kN9JLH9HKjLYykCGGxmXzEx-fkIAvrNlpXldlt4Ja7de0eum4nFKlV3DFJr4ecWUBIujfPQmTelCTZps41_60w~~/GNMM
 
 
-You've Been Chosen, Visit Here-http://www.oustson.click/1f16h2u3B95R8G6L12EO3P81exd94F36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQW9SRK6KKL10D6W33wDW/regenerative-pumped
 
 
 
-No longer wish to receive communication from us?, Continue_Over_Here-http://www.oustson.click/5396FPp2395H8M6g12b381ofrPd94w36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQW9SRK6oB1hj05Kpw@D/penetrations-opossum
 
-Our communication was directed to intel-gvt-dev@lists.freedesktop.org
+To cut off messages, Go Here Now:http://www.artsons.click/20f4Q2395N8v6h12X38Oq27Kd96j36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQW9SSn7S10FVNU6GyywDl/renounce-character
+Our email communication was selected for intel-gvt-dev@lists.freedesktop.org
+223' WEST 38TH' Ste.  68' NEW YORK NY lOOOl8:9998- United States
+7608035. 6901449
 
-96' Mowat_ AVENUE, TORONTO ONTARIO M4K 3KI CANADA
-
-46215783~1293726
-
-------=_Part_16_1631874183.1663355069052
+------=_Part_373_1920225114.1663362445027
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,22 +79,20 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:309px;"><a href="http://www.oustson.click/unguarded-irked/c9c4V2395zW8v611is381eNd94m36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQW9SRK7ch10kPi6yLkwDL"><img alt="Begin the 30-Second Survey Here" src="http://www.oustson.click/Polynesian-calmly/b524z2395cl7aj11fA3820md94r36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQW9SRK5F1s0h5F1wXD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 309px;" /></a></span></span></span></p> &nbsp; 
-  <div style="text-align: center;">
-   <a href="http://www.oustson.click/unguarded-irked/c9c4V2395zW8v611is381eNd94m36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQW9SRK7ch10kPi6yLkwDL"><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">You've Been Chosen, Visit Here</span></span></a>
-  </div> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-67711884-7fff-923a-9106-a83f6fc258ae"><a href="http://www.artsons.click/Mobil-synopsis/c244j2395P8C6X12P3826vCFd96o36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQW9SSn6SJ1xF06vk@WwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for Installation as soon as Tomorrow</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-67711884-7fff-923a-9106-a83f6fc258ae"><a href="http://www.artsons.click/Mobil-synopsis/c244j2395P8C6X12P3826vCFd96o36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQW9SSn6SJ1xF06vk@WwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:1584px;"><img alt="Empire Room Sale" src="http://www.artsons.click/5574X2395wh7aJ10V3828ud96g36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQW9SSn5M10UG5LzwDj/swirling-letters" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1522px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-67711884-7fff-923a-9106-a83f6fc258ae"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Fast! Deal Comes To An End Soon.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive communication from us?, <a href="http://www.oustson.click/d135F239N5eq86_10j381fRd94u36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQW9SRK5rm1y05UAwLD/Polynesian-calmly">Continue_Over_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT AVE, Toronto ONT. M4K 3KI Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">46215783-1293726</span></span></p>   
- <img src="http://www.oustson.click/89f5a2X395ey85B12v38M21GBd94s36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQW9SRK7R1Xwu0X6RTqXwD/penetrations-opossum" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-67711884-7fff-923a-9106-a83f6fc258ae"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut off messages, </span><a href="http://www.artsons.click/5574b2395fp8J610w3827Td96S36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQW9SSn7qZ1Cm0V6bXqwWD/renounce-character" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-67711884-7fff-923a-9106-a83f6fc258ae"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-67711884-7fff-923a-9106-a83f6fc258ae"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">223. W 38TH' STE 68_ New York New_York 100018_9998- U.S.A.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-67711884-7fff-923a-9106-a83f6fc258ae"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7608035 6901449</span></span></p>   
+ <img src="http://www.artsons.click/shelved-trademark/c6k6D2v39i5aL8B511BM3829Jd96Y36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQW9SSn7m10NDSy5nPwLD" alt=""/></body>
 </html>
 
-------=_Part_16_1631874183.1663355069052--
+------=_Part_373_1920225114.1663362445027--
 
