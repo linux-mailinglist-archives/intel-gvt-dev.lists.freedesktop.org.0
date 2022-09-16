@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FFA05BA3F3
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 03:20:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F9885BA526
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 05:34:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA61B10E360;
-	Fri, 16 Sep 2022 01:20:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 266AC10EC6D;
+	Fri, 16 Sep 2022 03:34:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 16 Sep 2022 01:20:00 UTC
-Received: from mail.yetsim.click (unknown [38.92.178.5])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1DCB810E357
+ Fri, 16 Sep 2022 03:34:38 UTC
+Received: from mail.kinsim.lol (dcp28.tk [64.64.109.171])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BF00610EC6D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 01:20:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yetsim.click;
+ Fri, 16 Sep 2022 03:34:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kinsim.lol;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=emma_hunsperger@yetsim.click; 
- bh=nPAWygO9qC7AxkcJDW8pE5XvFME=;
- b=JVvy4SHWLqYx6fXc22E4MIhtS503evhDQ5eyCvGazobJ7S/s576ovshh0lGxG0lY8PQZe9hSUdgN
- eFa34JipCmS6asgjVq2AqV3c8iWTPlnM1A5GjtJuKB/tiEoTE1Forzhpq7VuQfw/cf4Ky7zr7c07
- fwzsX8ISOMkgqiPYX2E=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yetsim.click;
- b=TLo+WgokO/NdU4+S4IRrHtSL9xfnLwTAs6VcMQ0AtCPQA5/V/TB/A4gno+ClcOZo9Bt6KCcosMxv
- sK65U5p5BKNANeDRSQksmDG/zoUwnH/iIkQfJSpaOaKIzJKedOXZsczNxJtLTQrue78MCL3hOuQn
- fLIvD5D5M85ETkqhZK4=;
-Received: by mail.yetsim.click id h4fi760001go for
+ i=cherie-phernetton@kinsim.lol; 
+ bh=v4vKDmoUEZv9vYi3aRX5mI3xsD0=;
+ b=nOT7RHjNP8zlBrKhX0rE+1GJmMZcYU7PvUAkKcf9iReRFjwSWeZWjpnZApFJ2u+iql+ZLsQ4A3iw
+ rlEkp10PUDcckkji2xyqpR9fNT4bW68mVvmEDJhcnY/cr3GbvB3nFu46g15QvblxUFUYo6EhQfJy
+ LVqcRWE5Q1vUJsfhv/o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kinsim.lol;
+ b=CytoxeVrLTWUjpnReFVk2QXC+h8x2Re/mTQwsv9ct+VsfE15vJLihz0A49Cg5oOE4GnwObWW8h22
+ Q78TpK9DBscow3pMcJIIJDGKh/87ImjwuPeytKkAv0EyBhQBkzDMWMUG6Kjuy9OfYsRtbcIUzTpc
+ +DqwrC7ohgQ1O7e655g=;
+Received: by mail.kinsim.lol id h4fncs0001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Sep 2022 22:35:19 -0400 (envelope-from
- <emma_hunsperger-intel+2Dgvt+2Ddev=lists.freedesktop.org@yetsim.click>)
-Date: Thu, 15 Sep 2022 22:35:19 -0400
-From: Emma Hunsperger <emma_hunsperger@yetsim.click>
+ Thu, 15 Sep 2022 23:05:11 -0400 (envelope-from
+ <cherie-phernetton-intel+2Dgvt+2Ddev=lists.freedesktop.org@kinsim.lol>)
+Date: Thu, 15 Sep 2022 23:05:11 -0400
+From: Cherie Phernetton <cherie-phernetton@kinsim.lol>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations! You've won the Lowes Craftsman Lawn Tractor Giveaway
+Subject: Give your Review of BB&B for a New Ninja Blender
  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_97_1562991705.1663290281890"
-Message-ID: <0.0.0.A.1D8C974F66B3A8C.72A534@mail.yetsim.click>
+ boundary="----=_Part_49_445432762.1663297498863"
+Message-ID: <0.0.0.5.1D8C9792276C1D8.5C25C@mail.kinsim.lol>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,29 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_97_1562991705.1663290281890
+------=_Part_49_445432762.1663297498863
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations! You've won the Lowes Craftsman Lawn Tractor Giveaway  intel-gvt-dev@lists.freedesktop.org
+Give your Review of BB&B for a New Ninja Blender  intel-gvt-dev@lists.freedesktop.org
 
-
-Visit Here to give your feedback about Lowes_http://www.yetsim.click/1d34G2395jx8L611vm37efnd88Q36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQG9SQQ6a10Ltv5nMwDq/claimed-interlinks
-
-
+Visit Here for the 1,000,000 Ninja Blender Giveaway from BB&B-http://www.kinsim.lol/ranched-forbids/9185H239B5w8MU610z37f7Sd8av36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQk9SQS6wsN10r6KNPwPD
 
 
 
 
-To stop communications, Visit-This-Way_http://www.yetsim.click/sketchpad-contagiously/1b64g2395vmU8612h37fnS0Fd88M36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQG9SQQ6Bk1o0T5z@wD@
+_96 Mowat.  AVE, Toronto' Ont M4K3Kl CA
 
-This communication was designated for intel-gvt-dev@lists.freedesktop.org
+To put an end to communication, Click.Here.Now-http://www.kinsim.lol/e035C239g5Q8Tw612Oz37fM8kd8aK36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQk9SQS6hgiJ106FX0wyD/paper-pushed
 
-96 MOWAT- Avenue, Toronto_ ONT.  M4K 3K1 CA
+Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org
 
-7129748~24660114
+6252259~1691520
 
-------=_Part_97_1562991705.1663290281890
+------=_Part_49_445432762.1663297498863
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -84,19 +81,21 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.yetsim.click/e3f4d2395V8s6k12b37S_efRd88K36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQG9SQQ5b1H0v6Rlyw0D/quakers-taproots"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.yetsim.click/escorting-confident/daa5C2M395O7sSa10S37f1vd88F36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQG9SQQ5p10VY6SOMWwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.yetsim.click/e3f4d2395V8s6k12b37S_efRd88K36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQG9SQQ5b1H0v6Rlyw0D/quakers-taproots" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to give your feedback about Lowes</span></a></span></span></p> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><a href="http://www.kinsim.lol/pitifully-experimentation/cf64v2395i8tz611uj37f7Vd8aW36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQk9SQS6Bv1_0j5SBwDN" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the BB&B Survey</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:602px;height:470px;"><a href="http://www.kinsim.lol/pitifully-experimentation/cf64v2395i8tz611uj37f7Vd8aW36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQk9SQS6Bv1_0j5SBwDN"><img alt="Visit Here for the 1,000,000 Ninja Blender Giveaway from BB&B" src="http://www.kinsim.lol/51b5W2Q395q7haH11hK37f9_d8aL36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQk9SQS5E10Ty5tXPwD/pitifully-experimentation" style="margin-left: 0px; margin-top: 0px; width: 602px; height: 470px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Promotion Is Done in 3 Days.</span></span></p> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To stop communications, <a href="http://www.yetsim.click/sketchpad-contagiously/af84D2395K86Kr12R3X7f0UBd88W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQG9SQQ7nu1h0_l6IjwDLM">Visit-This-Way</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. MOWAT' AV, TORONTO ONT M4K3Kl Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7129748 24660114</span></span></p>   
- <img src="http://www.yetsim.click/interfacer-switchings/60c4H2395kB8t512au37f2mid88l36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQG9SQQ6jI1hr06MPw2DM" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 Mowat. AV, Toronto_ Ont M4K 3K1 CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put an end to communication, <a href="http://www.kinsim.lol/7915F2y395up8I611VM37f8Bd8ai36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQk9SQS7Vm1r0lu6W0lwDX/pitifully-experimentation">Click.Here.Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6784650.1691520</span></span></p>   
+ <img src="http://www.kinsim.lol/pitifully-experimentation/d8c4J2395g8wT512g37qfaBPd8ay36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQk9SQS7D1qjRT06P@UwDJ" alt=""/></body>
 </html>
 
-------=_Part_97_1562991705.1663290281890--
+------=_Part_49_445432762.1663297498863--
 
