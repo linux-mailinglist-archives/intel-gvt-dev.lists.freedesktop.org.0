@@ -2,41 +2,65 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5551A5BAF16
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 16:18:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 045755BB093
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Sep 2022 17:55:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2C76F10ED4E;
-	Fri, 16 Sep 2022 14:18:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E61DD10E4A9;
+	Fri, 16 Sep 2022 15:54:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Fri, 16 Sep 2022 14:18:19 UTC
-Received: from mail.sonlid.lol (unknown [185.104.151.117])
- by gabe.freedesktop.org (Postfix) with ESMTP id E9DA010ED41
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 14:18:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sonlid.lol;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=marilyn-stefka@sonlid.lol; bh=VL9ngbnUh9OfrEbgKF74+q7bDOo=;
- b=mVpaBuDZe4DmlTWLahSPjEBo7rs9RQv9HdC3QAJeCCqbUkqJOjLElrDjanNr+jlERCev7X0g605e
- pUsDQo/Toode6+O5yl5cQnyugeC+G4080rJWf/tDEu0Asebr3VMXCIbMqKcCr0uDbDOTTP2fNaAr
- MtzWyCQl2kmWdjdz/+c=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sonlid.lol;
- b=opTivVZEIM1MNiSJsD8fikTBvS2ND1o5gO89tIBrTxQZ2Q+odDyHsYY5mYcMiJFWFZrv70rCFNoz
- NmvJ+4j0uPicKA2/yBDRW8ZcDPDOKOoC3WHUb8l4VPpQ6vhinZvtZkr41Ds/GM3lpDV0iVWemyFX
- JXNdPkPZSSL0vpS2Xgw=;
-Received: by mail.sonlid.lol id h4idds0001ga for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 11:38:58 -0400 (envelope-from
- <marilyn-stefka-intel+2Dgvt+2Ddev=lists.freedesktop.org@sonlid.lol>)
-Date: Fri, 16 Sep 2022 11:38:58 -0400
-From: Marilyn Stefka <marilyn-stefka@sonlid.lol>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: See Results near you:  (35)
+Received: from mail-ej1-x62f.google.com (mail-ej1-x62f.google.com
+ [IPv6:2a00:1450:4864:20::62f])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 04BBF10E3FF;
+ Fri, 16 Sep 2022 15:54:56 +0000 (UTC)
+Received: by mail-ej1-x62f.google.com with SMTP id bj12so50294872ejb.13;
+ Fri, 16 Sep 2022 08:54:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date;
+ bh=EuWFWN26twjl6pnBL7u1oZiY5YRuiq7q1++u96G3pgY=;
+ b=EoQJiVAYTrd4M3+DKqSvM9nCwEIljCqrB31LX/Mf3YTd9IN1mXiqpwdfmYb1HmzhSF
+ hBXK9YQ4RNqyZzeDWzGuAExSL8cI7LfiyjoHgtvsnZmoTCP0xOrpNd+c46PDGFtKDrft
+ arPkvo2nWfkQBevvVRQORFApZ7E1ncEhBKau6WEfbADES93CreFsNJaTUq2Cb3uUhb1G
+ MoF0+YsZKJ04z84ZAfyGHcwhZIYZEMzvjx+l2SfhjkDO4OLQpIXjsNG684fnZ9HP5Y2z
+ PBq0MP9cq0SS8L/cQGrLrtmJHJZCn04wDe3dVYkHhYn68gk8mi9PfgIMl7NNv8ut9uTM
+ jIzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date;
+ bh=EuWFWN26twjl6pnBL7u1oZiY5YRuiq7q1++u96G3pgY=;
+ b=HcXQpTwiHBqNTnMrXCjjuDw9e+nX3KykB/IxW0pAnODYhlqcEUmTWiEeXt7/XIJeXw
+ cQA/gX9uZyrzxj5NVUTkpoMAS/Fc3F0SC1bLN6dE5ynt+Q1C7E+ZC2ZKs/okPRg5zRej
+ FsZaXXH26tMVjTSUrEIXoZ3fI9nkkfI33t3pjXhVKGlPXiZzsKhuKR90LdqCK+eL+iGj
+ KRVFhsdh1ST9tFnr0KwhA20H7kkdweGRyKMVbF3gbWAO+OO/qffcpLCElIbt5QWZJWAw
+ LfRIBeMAl3NXVGJb6QxhU8unSHF1h48G1wvSKnngeS8ZDUyjT1Vz3ssw/Uqj6Kj3xpfL
+ ax6Q==
+X-Gm-Message-State: ACrzQf2Oc3xat3DRYbnOE76F7g5MtFVmX7zktPKDSfqEILXYP9kXSXcM
+ n5B17LvfS1o4sL/sQg1g8UfRDyT0ryutbMdrYjspTHxfJsv1oDz0
+X-Google-Smtp-Source: AMsMyM5S2RFtr9n8n8rdNH6foyfaJk78kYuOTBmn+L2hXS5/Y0XV9NEVfOYZSy1QOWTfM/qwcuFWq3lkxQaCptutRsM=
+X-Received: by 2002:a17:906:8a77:b0:780:a02d:ca4a with SMTP id
+ hy23-20020a1709068a7700b00780a02dca4amr2848192ejc.488.1663343694459; Fri, 16
+ Sep 2022 08:54:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_709_2134119327.1663337307290"
-Message-ID: <0.0.0.4D.1D8C9E26FB4AFBE.92441@mail.sonlid.lol>
+References: <CAJedcCxVW++iH49UFZp9ruUuTcNubWCH6Wsqe11K4COB3E8msg@mail.gmail.com>
+ <CAJedcCw1eJqjSK+yR7eQMDheNtH3Mjm+viwt00xAhnmrfpq2pw@mail.gmail.com>
+ <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
+ <YxWtfjfpNsoPUrgh@kroah.com>
+ <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
+ <20220907030754.GU1089@zhen-hp.sh.intel.com>
+ <CAJedcCxO_Rq0qMeLiHtY5+FuN1A1pDGsZd3gMtvUpm1xbAK3aA@mail.gmail.com>
+ <Yxmzj2nCoTKurCY8@kroah.com>
+ <CAJedcCwVC6Rg+wF7h6GhFvL6BGkKV=DS9Mo9fOf-gfDAk9VqPg@mail.gmail.com>
+ <CAJedcCxRQ4h-ChNsD4OWpDMUJd3JNaQrvD=uVKxMpYONGFUgzA@mail.gmail.com>
+ <YyQzDlM5n7mOLh5Q@kroah.com>
+In-Reply-To: <YyQzDlM5n7mOLh5Q@kroah.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Fri, 16 Sep 2022 23:54:42 +0800
+Message-ID: <CAJedcCzt_1ZRV5egMLdoFVZ4hBDE+nDu9fLkBuGY0A=uYicvQA@mail.gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
+To: Greg KH <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,105 +73,113 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "alex000young@gmail.com" <alex000young@gmail.com>,
+ "security@kernel.org" <security@kernel.org>,
+ "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
+ "airlied@linux.ie" <airlied@linux.ie>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ xmzyshypnc <1002992920@qq.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_709_2134119327.1663337307290
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+From afe79848cb74cc8e45ab426d13fa2394c87e0422 Mon Sep 17 00:00:00 2001
+From: xmzyshypnc <1002992920@qq.com>
+Date: Fri, 16 Sep 2022 23:48:23 +0800
+Subject: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry
 
-<html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0=
-pt; "><span style=3D"font-size:18px; "><span style=3D"font-family:arial,hel=
-vetica,sans-serif; "><span style=3D"white-space: pre-wrap; ">=
-intel-gvt-dev@lists.freedesktop.org, </span></span></span><br /> <br /> <span><span style=3D"font-s=
-ize: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-e=
-ast-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">Why R=
-ent when you can Rent-to-Own?</span></span><br /> &Acirc;&nbsp; </p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0=
-pt; "><a href=3D"http://www.sonlid.lol/1976Y2X3j95Qv8X612bA381n3kd91X36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQg9SRd5Hmi105J1UwD/sourdough-parameters"><b style=3D"font-family: Arial; font-size: 18.=
-6667px; white-space: pre-wrap; ">Start Here to View Rent-to-Own Listings near you</b></a></p> &Acir=
-c;&nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0=
-pt; "><span style=3D"font-size:18px; "><span style=3D"font-family:arial,hel=
-vetica,sans-serif; ">Danny P. rents to own a 2 BD, 1 BA, </span></span><span st=
-yle=3D"font-family: arial, helvetica, sans-serif; font-size: 18px; ">=
-1198</span><span><span style=3D"font-size: 14pt; font-family: Arial; font-vari=
-ant-numeric: normal; font-variant-east-asian: normal; vertical-align: basel=
-ine; white-space: pre-wrap; "> Sqft. home </span></span><span style=
-=3D"font-size:18px; "><span style=3D"font-family: Arial; font-variant-numer=
-ic: normal; font-variant-east-asian: normal; vertical-align: baseline; whit=
-e-space: pre-wrap; "><span style=3D"font-family:arial,helvetica,sans-serif;=
- ">for&Acirc;&nbsp; $</span></span><span style=3D"font-family:arial,helveti=
-ca,sans-serif; ">1148</span><span style=3D"font-family: Arial; font-vari=
-ant-numeric: normal; font-variant-east-asian: normal; vertical-align: basel=
-ine; white-space: pre-wrap; ">/mo</span></span></p> &Acirc;&nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0=
-pt; "><span style=3D"font-family:arial,helvetica,sans-serif; "><span style=
-=3D"font-size:18px; ">Treyton L. is investing in a 2 BD, 2 BA, </span></span><spa=
-n style=3D"font-size:18px; "><span style=3D"font-family:arial,helvetica,san=
-s-serif; ">1198</span></span><span><span style=3D"font-size: 14pt; font-=
-family: Arial; font-variant-numeric: normal; font-variant-east-asian: norma=
-l; vertical-align: baseline; white-space: pre-wrap; "> Sqft. home for $<=
-/span></span><span style=3D"font-size:18px; "><span style=3D"font-family:ar=
-ial,helvetica,sans-serif; "> 1216</span></span><span><span style=3D"font=
--size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant=
--east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">/=
-mo&Acirc;&nbsp; </span></span></p> &Acirc;&nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0=
-pt; "><span style=3D"font-size:18px; "><span style=3D"font-family:arial,hel=
-vetica,sans-serif; ">Shiann K. has a zero down, 3BD, 2BA, </span></span><spa=
-n style=3D"font-size:18px; "><span style=3D"font-family:arial,helvetica,san=
-s-serif; ">1311</span></span><span><span style=3D"font-size: 14pt; font=
--family: Arial; font-variant-numeric: normal; font-variant-east-asian: norm=
-al; vertical-align: baseline; white-space: pre-wrap; "> Sqft. home for $=
-</span></span><span style=3D"font-size:18px; "><span style=3D"font-family:a=
-rial,helvetica,sans-serif; ">1396/</span></span><span><span style=3D"fo=
-nt-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-varia=
-nt-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">=
-mo</span></span></p> &Acirc;&nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38; margin-top:0pt; margin-bottom:0=
-pt; "><a href=3D"http://www.sonlid.lol/1976Y2X3j95Qv8X612bA381n3kd91X36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQg9SRd5Hmi105J1UwD/sourdough-parameters"><font face=3D"Arial"><span style=3D"font-size:=
- 18.6667px; white-space: pre-wrap; "><b>Go Here to Locate 1000s of Rent to Own Homes</b></span></font>=
-</a></p>=20
-  <br />=20
-  <br /> &Acirc;&nbsp;=20
-  <p>&Acirc;&nbsp; </p>=20
-  <p>&Acirc;&nbsp; </p>=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; "><span style=3D"font-size:11px; "><span id=3D"docs-internal-guid-29=
-514aec-7fff-1812-1047-dd927cec213e"><span style=3D"font-family: Arial; font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap; ">P.O. Box. 4120_ Portlans'  =
-0REG0N 972O8- 4120_&Acirc;&nbsp; </span></span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; "><span style=3D"font-size:11px; "><span id=3D"docs-internal-guid-29=
-514aec-7fff-1812-1047-dd927cec213e"><span style=3D"font-family: Arial; font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap; ">To do away with notifications, </span><a href=3D"=
-http://www.sonlid.lol/e5d5k2R395qT8_612JAU3814Vd91h36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQg9SRd7l1JFm0r6AOqwlD/rumpled-baud" style=3D"text-decoration-line: none; "><span style=3D"font-family: Aria=
-l; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east=
--asian: normal; text-decoration-line: underline; text-decoration-skip-ink: =
-none; vertical-align: baseline; white-space: pre-wrap; ">Go Ahead Here</span=
-></a></span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; "><span style=3D"font-size:11px; "><span id=3D"docs-internal-guid-29=
-514aec-7fff-1812-1047-dd927cec213e"><span style=3D"font-family: Arial; font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap; ">Our message was meant for =
-intel-gvt-dev@lists.freedesktop.org</span></span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; "><span style=3D"font-size:11px; "><span id=3D"docs-internal-guid-29=
-514aec-7fff-1812-1047-dd927cec213e"><span style=3D"font-family: Arial; font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap; ">9298030:4762467</s=
-pan></span></span></p>  =20
- <img src=3D"http://www.sonlid.lol/Belgian-Cranford/c7e6R23pU95v8_5m12wq38x15Fd91w36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQg9SRd7dKsO1z06PNwUDq" alt=3D""/></body>
-</html>
+There is a double-free security bug in split_2MB_gtt_entry.
 
-------=_Part_709_2134119327.1663337307290--
+Here is a calling chain :
+ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entry.
 
+If intel_gvt_dma_map_guest_page failed, it will call
+ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
+kfree(spt). But the caller does not notice that, and it will call
+ppgtt_free_spt again in error path.
+
+Fix this by only freeing spt in ppgtt_invalidate_spt in good case.
+
+Signed-off-by: Zheng Wang <hackerzheng666@gmail.com>
+---
+ drivers/gpu/drm/i915/gvt/gtt.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index ce0eb03709c3..550519f0acca 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -959,7 +959,7 @@ static inline int ppgtt_put_spt(struct
+intel_vgpu_ppgtt_spt *spt)
+    return atomic_dec_return(&spt->refcount);
+ }
+
+-static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);
++static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt, int
+is_error);
+
+ static int ppgtt_invalidate_spt_by_shadow_entry(struct intel_vgpu *vgpu,
+        struct intel_gvt_gtt_entry *e)
+@@ -995,7 +995,7 @@ static int
+ppgtt_invalidate_spt_by_shadow_entry(struct intel_vgpu *vgpu,
+                ops->get_pfn(e));
+        return -ENXIO;
+    }
+-   return ppgtt_invalidate_spt(s);
++   return ppgtt_invalidate_spt(s, 0);
+ }
+
+ static inline void ppgtt_invalidate_pte(struct intel_vgpu_ppgtt_spt *spt,
+@@ -1016,7 +1016,7 @@ static inline void ppgtt_invalidate_pte(struct
+intel_vgpu_ppgtt_spt *spt,
+    intel_gvt_dma_unmap_guest_page(vgpu, pfn << PAGE_SHIFT);
+ }
+
+-static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt)
++static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt, int is_error)
+ {
+    struct intel_vgpu *vgpu = spt->vgpu;
+    struct intel_gvt_gtt_entry e;
+@@ -1059,9 +1059,11 @@ static int ppgtt_invalidate_spt(struct
+intel_vgpu_ppgtt_spt *spt)
+        }
+    }
+
+-   trace_spt_change(spt->vgpu->id, "release", spt,
++   if (!is_error) {
++       trace_spt_change(spt->vgpu->id, "release", spt,
+             spt->guest_page.gfn, spt->shadow_page.type);
+-   ppgtt_free_spt(spt);
++       ppgtt_free_spt(spt);
++   }
+    return 0;
+ fail:
+    gvt_vgpu_err("fail: shadow page %p shadow entry 0x%llx type %d\n",
+@@ -1215,7 +1217,7 @@ static int split_2MB_gtt_entry(struct intel_vgpu *vgpu,
+        ret = intel_gvt_dma_map_guest_page(vgpu, start_gfn + sub_index,
+                           PAGE_SIZE, &dma_addr);
+        if (ret) {
+-           ppgtt_invalidate_spt(spt);
++           ppgtt_invalidate_spt(spt, 1);
+            return ret;
+        }
+        sub_se.val64 = se->val64;
+@@ -1393,7 +1395,7 @@ static int
+ppgtt_handle_guest_entry_removal(struct intel_vgpu_ppgtt_spt *spt,
+            ret = -ENXIO;
+            goto fail;
+        }
+-       ret = ppgtt_invalidate_spt(s);
++       ret = ppgtt_invalidate_spt(s, 0);
+        if (ret)
+            goto fail;
+    } else {
+-- 
+2.25.1
