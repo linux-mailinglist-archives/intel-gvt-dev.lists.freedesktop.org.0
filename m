@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F22385BB548
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 03:17:12 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F9595BB4EE
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 02:18:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C591610E0AE;
-	Sat, 17 Sep 2022 01:17:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5BB0D10EDC1;
+	Sat, 17 Sep 2022 00:18:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Sat, 17 Sep 2022 01:17:01 UTC
-Received: from mail.fairson.click (unknown [172.99.175.126])
- by gabe.freedesktop.org (Postfix) with ESMTP id 48F3410E0AE
+X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
+ Sat, 17 Sep 2022 00:18:46 UTC
+Received: from mail.dimson.click (unknown [213.209.159.210])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D361110E027
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 17 Sep 2022 01:17:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fairson.click;
+ Sat, 17 Sep 2022 00:18:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dimson.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sue_agreda@fairson.click; bh=67L+3YY+gSInY/xGh2wUHYenolE=;
- b=FSsOUmn0SG6kXXk52lWhfsDnjms4WfoYfh3Iwzv9GbpUvxA7X1STG6gZqlqgaxmUY8LaG8sAi9Lw
- l6gMNwaX8h7zdBaAA8PiCT0VlkaVHfrnLD/3MNfGZHNBlm2VgHgoILDSBCATUGs1OCIHBuWMy6O0
- xUdBViy9vsZsAzaqMYQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fairson.click;
- b=vwWnXq9ASFveszUU0BBBluVP+dAmxWNeh9bcaKYlMm8xrH4SqEj1Q5I9eeY49fgCv2j7s1KwibQa
- JGXQR2p/wei8UuYXzq/RQJROc8ApksPj2v+hFHKxHZuCPcf83y4z3WryLu8YExzqW11lN92VQql1
- OX27jPyRotSBEFzbFp4=;
-Received: by mail.fairson.click id h4kg140001g5 for
+ i=gutiennez_nikki@dimson.click; 
+ bh=QsJTXdJxg+6gLuohymdQtATpLRE=;
+ b=Fzrvi9aSlwcx+hgyqWWaR1gbpvxg7fLKnrsnFHVgGWQ/rebBaH6uFJ1w1zDvwahiJdnsVyHeApmZ
+ 4e0CArS9H9p1XT+pBsHbKhIf94XF+0q87hDtH+CWiVSBzTuiNzYK5yilIKJKobI7y3N5FshES13w
+ 2Si4AOSfTsecnjYxnAc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dimson.click;
+ b=h+q1wV+OE27B+4Yz0n6Q1C2puFyCBSoDuh9FAr+rxFw2gJcZLO1M52a4UwyG/Mpihwpw+vzDBpxm
+ 8OQjaobqKOra9bqMFnhXGiu4xEVJVNag8DY/7Dv3xm3JVpB58Oz2696Xy6/g8uV+ngctB9mbfdeg
+ mNtj28Hk3YIVaeWLaqA=;
+Received: by mail.dimson.click id h4kjpg0001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 21:07:06 -0400 (envelope-from
- <sue_agreda-intel+2Dgvt+2Ddev=lists.freedesktop.org@fairson.click>)
-Date: Fri, 16 Sep 2022 21:07:06 -0400
-From: Sue Agreda <sue_agreda@fairson.click>
+ Fri, 16 Sep 2022 21:36:11 -0400 (envelope-from
+ <gutiennez_nikki-intel+2Dgvt+2Ddev=lists.freedesktop.org@dimson.click>)
+Date: Fri, 16 Sep 2022 21:36:11 -0400
+From: Nikki Gutiennez <gutiennez_nikki@dimson.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Lowes Shopper, You've been Selected
- intel-gvt-dev@lists.freedesktop.org
+Subject: Rush your CCW Permit in 15 minutes 50% Off
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_478_1329670080.1663376816686"
-Message-ID: <0.0.0.35.1D8CA31CDC9817A.4CE802@mail.fairson.click>
+ boundary="----=_Part_205_135716487.1663373137590"
+Message-ID: <0.0.0.16.1D8CA35DE4749F2.3F9438@mail.dimson.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,29 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_478_1329670080.1663376816686
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Congratulations Lowes Shopper, You've been Selected  intel-gvt-dev@lists.freedesktop.org
-
-
-Visit Here for the Lowes Promotion_http://www.fairson.click/archipelago-resources/e7c5h2H395K8X6J11s383v7Wd9aD36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQy9SSQ5HNt105pBwOD
-
-
-
-
-
-
-To dispense with messages, Visit.Over.Here_http://www.fairson.click/cemetery-guttural/f306r23i9M5uZ8k611D3838ATd9aS36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQy9SSQ7uN1yKv06aqwBzD
-
-Our notification was intended for intel-gvt-dev@lists.freedesktop.org
-
--96 MOWAT_ AVENUE, Toronto_ ONT M4K 3Kl CA
-
-2455565:24660114
-
-------=_Part_478_1329670080.1663376816686
+------=_Part_205_135716487.1663373137590
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,19 +61,19 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.fairson.click/Americas-Battelle/2c45s239P5S8hm611N3837YRd9al36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQy9SSQ6mtz10u5vMwDA"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.fairson.click/a615aG2395w7tua11X3S839Ad9aU36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQy9SSQ7hhxm1n05N0wPD/grownup-Oedipally" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.fairson.click/Americas-Battelle/2c45s239P5S8hm611N3837YRd9al36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQy9SSQ6mtz10u5vMwDA" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Lowes Promotion</span></a></span></span></p> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><a href="http://www.dimson.click/5576eh239l5JL86O10e3833rd99C36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQM9SSd7mVR10Bp5tWLwD/redness-Corvallis" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Right to Defend Yourself</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:605px;height:688px;"><a href="http://www.dimson.click/5576eh239l5JL86O10e3833rd99C36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQM9SSd7mVR10Bp5tWLwD/redness-Corvallis"><img alt="Begin Here for your Right to Bear Arms" src="http://www.dimson.click/8814D2395q7aIA11q383j5Qd99n36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQM9SSd7uS10mFN5aJwDB/depicting-espionage" style="margin-left: 0px; margin-top: 0px; width: 605px; height: 688px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Act Now! Deal Becomes Void in 4 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To dispense with messages, <a href="http://www.fairson.click/grammatic-readers/4xe6PS23B95z86O_12Si3838MQd9aG36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQy9SSQ6NVM10O5pBwDN">Visit.Over.Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT AVENUE, TORONTO Ont. M4K 3K1 Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2455565~24660114</span></span></p>   
- <img src="http://www.fairson.click/Deere-exceeds/6c06IA239S5knz8511A383aynd9aB36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQy9SSQ5jzv105ckXwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">11201- N. Tatum BOULEVARD NO 300 NO. 682OO_, PHOENIX' AZ&nbsp; 85028.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut communication, </span><a href="http://www.dimson.click/renewer-conciliatory/8286MM23W95Qx86G11S383C4wd99O36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQM9SSd7dL10FYj6STwX@D" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go_Right_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4701843~98140644</span></span></p>   
+ <img src="http://www.dimson.click/depicting-espionage/1025I239v5UC8B511b38F36jd99h36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQM9SSd5Sh1W05UpwDL" alt=""/></body>
 </html>
 
-------=_Part_478_1329670080.1663376816686--
+------=_Part_205_135716487.1663373137590--
 
