@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 312315BB4C3
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 01:18:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F22385BB548
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 03:17:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6F3B510EDBE;
-	Fri, 16 Sep 2022 23:18:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C591610E0AE;
+	Sat, 17 Sep 2022 01:17:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Fri, 16 Sep 2022 23:18:34 UTC
-Received: from mail.sonkit.click (unknown [192.119.166.198])
- by gabe.freedesktop.org (Postfix) with ESMTP id 77E0E10EDC1
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Sat, 17 Sep 2022 01:17:01 UTC
+Received: from mail.fairson.click (unknown [172.99.175.126])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 48F3410E0AE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 23:18:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sonkit.click;
+ Sat, 17 Sep 2022 01:17:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fairson.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=petka.kelli@sonkit.click; bh=jHCw+rl6S6yWQGHwXPPMBI2FzmY=;
- b=CtPJnost1mKcjI89o4VqiItkuGpsnVH0MJ4Lpuzz4Wd7Pk/mdyqUHglXmX48gA4+3liqljifbioA
- FcIF6vtbYeV1ctwP3mntbFiVn9UENnYUohkEJfZ4+uu0nAb3CQNFDLvYlwvGZj2Yj9lrUVvAlPfx
- Pwvav0zSxzgWkT3ep5s=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sonkit.click;
- b=HQz3HiDfhgHi8vynlBbN14ngl07QP/rroL+2waI2k4f26Uzk2PNsw8k4JbMBJPInhUOQlg3ZvM5P
- GgzLfrHi5DZKZXRzouckQkVAdAsxX9rKGpqSkmshxE3UKPk8/vYAH0/5iKpv3A1FCf4aX6SYuGWK
- BnxW9PrCG30ux4oa/Is=;
-Received: by mail.sonkit.click id h4kcno0001gj for
+ i=sue_agreda@fairson.click; bh=67L+3YY+gSInY/xGh2wUHYenolE=;
+ b=FSsOUmn0SG6kXXk52lWhfsDnjms4WfoYfh3Iwzv9GbpUvxA7X1STG6gZqlqgaxmUY8LaG8sAi9Lw
+ l6gMNwaX8h7zdBaAA8PiCT0VlkaVHfrnLD/3MNfGZHNBlm2VgHgoILDSBCATUGs1OCIHBuWMy6O0
+ xUdBViy9vsZsAzaqMYQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fairson.click;
+ b=vwWnXq9ASFveszUU0BBBluVP+dAmxWNeh9bcaKYlMm8xrH4SqEj1Q5I9eeY49fgCv2j7s1KwibQa
+ JGXQR2p/wei8UuYXzq/RQJROc8ApksPj2v+hFHKxHZuCPcf83y4z3WryLu8YExzqW11lN92VQql1
+ OX27jPyRotSBEFzbFp4=;
+Received: by mail.fairson.click id h4kg140001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Sep 2022 20:36:06 -0400 (envelope-from
- <petka.kelli-intel+2Dgvt+2Ddev=lists.freedesktop.org@sonkit.click>)
-Date: Fri, 16 Sep 2022 20:36:06 -0400
-From: Kelli Petka <petka.kelli@sonkit.click>
+ Fri, 16 Sep 2022 21:07:06 -0400 (envelope-from
+ <sue_agreda-intel+2Dgvt+2Ddev=lists.freedesktop.org@fairson.click>)
+Date: Fri, 16 Sep 2022 21:07:06 -0400
+From: Sue Agreda <sue_agreda@fairson.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: View the Best Deals on Used Cars near you  8995312
+Subject: Congratulations Lowes Shopper, You've been Selected
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_160_1987985724.1663369534868"
-Message-ID: <0.0.0.11.1D8CA2D792656EC.14F825@mail.sonkit.click>
+ boundary="----=_Part_478_1329670080.1663376816686"
+Message-ID: <0.0.0.35.1D8CA31CDC9817A.4CE802@mail.fairson.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,132 +53,49 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_160_1987985724.1663369534868
+------=_Part_478_1329670080.1663376816686
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-View the Best Deals on Used Cars near you  8161822
-
-Begin Here to Search for the Best Deals on Cars Online. http://www.sonkit.click/frustrate-beatably/ada5V23j95g8D6i12k3o82egZd98U36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQY9SS96XLBZ105Gq@wD
+Congratulations Lowes Shopper, You've been Selected  intel-gvt-dev@lists.freedesktop.org
 
 
-
+Visit Here for the Lowes Promotion_http://www.fairson.click/archipelago-resources/e7c5h2H395K8X6J11s383v7Wd9aD36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQy9SSQ5HNt105pBwOD
 
 
 
 
-No longer want to receive email?, from CarDealFinder. 1800CarShow. com, 
 
-Start_Here_Now. http://www.sonkit.click/c5f4j2395gjI8612M3W83i0Ld98m36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQY9SS95KQ10N5WWkwD/oscillator-Asiatics
- or mail us at: 6O1_ W.  F0RT ST, Detroit MI 48226.  
-US
 
-This e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org
+To dispense with messages, Visit.Over.Here_http://www.fairson.click/cemetery-guttural/f306r23i9M5uZ8k611D3838ATd9aS36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQy9SSQ7uN1yKv06aqwBzD
 
-49623838-8995312
+Our notification was intended for intel-gvt-dev@lists.freedesktop.org
 
-------=_Part_160_1987985724.1663369534868
+-96 MOWAT_ AVENUE, Toronto_ ONT M4K 3Kl CA
+
+2455565:24660114
+
+------=_Part_478_1329670080.1663376816686
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9528bac7-7fff-d7f8-5a3=
-9-7e00c9b3ddf3"><span style=3D"font-size: 9pt; font-family: Arial; color: r=
-gb(78, 127, 175); background-color: rgb(164, 194, 244); font-variant-numeri=
-c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
--space: pre-wrap;">&nbsp;</span><span style=3D"font-size: 9pt; font-family:=
- Arial; color: rgb(255, 255, 255); background-color: rgb(164, 194, 244); fo=
-nt-variant-numeric: normal; font-variant-east-asian: normal; vertical-align=
-: baseline; white-space: pre-wrap;">&nbsp;&nbsp;&nbsp;</span><span style=3D=
-"font-size: 9pt; font-family: Arial; color: rgb(17, 85, 204); background-co=
-lor: rgb(164, 194, 244); font-variant-numeric: normal; font-variant-east-as=
-ian: normal; vertical-align: baseline; white-space: pre-wrap;">Having troub=
-le viewing this email? </span><span style=3D"font-size: 9pt; font-family: A=
-rial; color: rgb(255, 255, 255); background-color: rgb(164, 194, 244); font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap;">&nbsp;</span><a href=3D"http://www.sonkit.click/frustrate-beatably/8dc5M239P5WQ86U11Lw382eKd98U36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQY9SS96n1D0pI6z2Uw@D" style=
-=3D"text-decoration-line: none;"><span style=3D"font-size: 9pt; font-family=
-: Arial; color: rgb(17, 85, 204); background-color: rgb(164, 194, 244); fon=
-t-variant-numeric: normal; font-variant-east-asian: normal; text-decoration=
--line: underline; text-decoration-skip-ink: none; vertical-align: baseline;=
- white-space: pre-wrap;">View it Here in a browser</span></a><span style=3D=
-"font-size: 9pt; font-family: Arial; color: rgb(17, 85, 204); background-co=
-lor: rgb(164, 194, 244); font-variant-numeric: normal; font-variant-east-as=
-ian: normal; vertical-align: baseline; white-space: pre-wrap;"> |</span><sp=
-an style=3D"font-size: 9pt; font-family: Arial; color: rgb(255, 255, 255); =
-background-color: rgb(164, 194, 244); font-variant-numeric: normal; font-va=
-riant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"=
-> </span><a href=3D"http://www.sonkit.click/Oceania-generated/60c5z23W95K8G6h12s382fWvpd98X36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQY9SS95X1C0J5S0BwD" style=3D"text-decoration-line: none;"><span=
- style=3D"font-size: 9pt; font-family: Arial; color: rgb(17, 85, 204); back=
-ground-color: rgb(164, 194, 244); font-variant-numeric: normal; font-varian=
-t-east-asian: normal; text-decoration-line: underline; text-decoration-skip=
--ink: none; vertical-align: baseline; white-space: pre-wrap;">Unsubscribe f=
-rom this email list</span></a><span style=3D"font-size: 9pt; font-family: A=
-rial; color: rgb(164, 194, 244); background-color: rgb(164, 194, 244); font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap;">xxx</span><span style=3D"font-size: 9pt; =
-font-family: Arial; color: rgb(255, 255, 255); background-color: rgb(164, 1=
-94, 244); font-variant-numeric: normal; font-variant-east-asian: normal; ve=
-rtical-align: baseline; white-space: pre-wrap;">&nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></span></p>=20
-  <div style=3D"text-align: center;">
-   <span id=3D"docs-internal-guid-e318a6d1-7fff-7e58-df7a-a0075f257cc5"><a =
-href=3D"http://www.sonkit.click/frustrate-beatably/8dc5M239P5WQ86U11Lw382eKd98U36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQY9SS96n1D0pI6z2Uw@D" style=3D"text-decoration-line: none;"><span style=3D"fo=
-nt-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
-meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
-line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
-: pre-wrap;"><span style=3D"border:none;display:inline-block;overflow:hidde=
-n;width:534px;height:2048px;"><img height=3D"2048" src=3D"http://www.sonkit.click/98f6mu2k395V7waQ10a3831kd98C36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQY9SS96nXML105F03wD/frustrate-beatably" styl=
-e=3D"margin-left:0px;margin-top:0px;" width=3D"534" /></span></span></a></s=
-pan>
-   <br />=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <span id=3D"docs-internal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;"><strong><span style=3D"font-size:18px;"><a href=3D"http://www.sonkit.click/frustrate-beatably/8dc5M239P5WQ86U11Lw382eKd98U36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQY9SS96n1D0pI6z2Uw@D">=
-Begin Here to Search for the Best Deals on Cars Online</a></span></strong><br /> <br /> <br /> <br /> <br=
- /> <br /> <br /> <br /> <span style=3D"font-size:10px;">This is an Adverti=
-sement.</span></span></span>
-  </div>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
-rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><span style=3D"font-family:=
- Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
-ical-align: baseline; white-space: pre-wrap;">No longer want to receive email?, from CarDealFin=
-der.1800CarShow.com,&nbsp;</span></span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
-rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><a href=3D"http://www.sonkit.click/oscillator-Asiatics/2e25a23l95z8tl612V3s83k0ud98V36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQY9SS95eFR105LzNwD" styl=
-e=3D"text-decoration-line: none;"><span style=3D"font-family: Arial; color:=
- rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: n=
-ormal; text-decoration-line: underline; text-decoration-skip-ink: none; ver=
-tical-align: baseline; white-space: pre-wrap;">Start_Here_Now</span></a><span=
- style=3D"font-family: Arial; font-variant-numeric: normal; font-variant-ea=
-st-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> or mai=
-l us at: 601_ W Fort STREET, DETROIT MI. 48226-<br /> =
-UNITED STATES</span></span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
-rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><span style=3D"font-family:=
- Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
-ical-align: baseline; white-space: pre-wrap;">This e-mail message was delivered to =
-intel-gvt-dev@lists.freedesktop.org</span></span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
-rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><span style=3D"font-family:=
- Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
-ical-align: baseline; white-space: pre-wrap;">8161822 =
-8995312</span></span></span></p>  =20
- <img src=3D"http://www.sonkit.click/mechanically-bottlenecks/1f26Qk23o95Jyz8511g3832rAd98r36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQY9SS97lq1Lgg05XWwDB" alt=3D""/></body>
+ <head> 
+  <title></title> 
+ </head> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.fairson.click/Americas-Battelle/2c45s239P5S8hm611N3837YRd9al36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQy9SSQ6mtz10u5vMwDA"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.fairson.click/a615aG2395w7tua11X3S839Ad9aU36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQy9SSQ7hhxm1n05N0wPD/grownup-Oedipally" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.fairson.click/Americas-Battelle/2c45s239P5S8hm611N3837YRd9al36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQy9SSQ6mtz10u5vMwDA" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Lowes Promotion</span></a></span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To dispense with messages, <a href="http://www.fairson.click/grammatic-readers/4xe6PS23B95z86O_12Si3838MQd9aG36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQy9SSQ6NVM10O5pBwDN">Visit.Over.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT AVENUE, TORONTO Ont. M4K 3K1 Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2455565~24660114</span></span></p>   
+ <img src="http://www.fairson.click/Deere-exceeds/6c06IA239S5knz8511A383aynd9aB36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQy9SSQ5jzv105ckXwD" alt=""/></body>
 </html>
 
-------=_Part_160_1987985724.1663369534868--
+------=_Part_478_1329670080.1663376816686--
 
