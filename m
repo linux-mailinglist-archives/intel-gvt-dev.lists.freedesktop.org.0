@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E8BE5BB90F
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 17:22:34 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 348345BB952
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 18:19:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9C18210E3F4;
-	Sat, 17 Sep 2022 15:22:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3265F10E41F;
+	Sat, 17 Sep 2022 16:19:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sat, 17 Sep 2022 15:22:09 UTC
-Received: from mail.begdim.lol (unknown [213.209.159.175])
- by gabe.freedesktop.org (Postfix) with ESMTP id A483E10E3D6
+ Sat, 17 Sep 2022 16:19:35 UTC
+Received: from mail.sambeg.icu (unknown [185.104.151.142])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 44DDD10E41F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 17 Sep 2022 15:22:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=begdim.lol;
+ Sat, 17 Sep 2022 16:19:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sambeg.icu;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=goodrum.rena@begdim.lol; bh=z3B4C6Y7/Iw6d4Gy4gjBMu8OUfM=;
- b=WN+XbJUDZHxtuGcyrmOM6CufrV9d8I7IDrNjnjZYZgCsbtUKecbW5pahpNt4sSBTCEe3Gf0ddVc4
- ak8N97w6RXWnSoVzTzyJ+NKAoDdSLRBOfmbo79olZDbxn/cmAA2YNFw1pnnwVMx7Uyym7w1uOrbi
- bgJTd/7pzMTb5qH48SI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=begdim.lol;
- b=yXAvhtpRolugC+3FLC+Kagk3/M1zvgwMITBJSZbNrvzhsepHErHDstiRvgsu3CBR8TRH/CvXlqM7
- Ti52H3pNHOiZnhJBtiZ+Q0j0JnduS0OOb7PB5mX2eKlnYV51xGxLW8/l44aZ8Cts0U6v01qRT+5L
- rYbAXDTe/MwZH+7NxNQ=;
-Received: by mail.begdim.lol id h4nj220001g0 for
+ i=jennifer-navarrate@sambeg.icu; 
+ bh=8z3/7s9nHQ0mKSHuCOikxQlAazI=;
+ b=ZlVJs8ICIlLRla1ySgABOo2q/WE1BQpZrxw4zkR4oRiKvLHn0QR0R7kQoqEsF8PeofLg0yhUompx
+ w2GLJ/T3gA5emNTiM0izrEfwC1P8MYQhPoWRZAHBs1/BNuvQHQ/uBX5qpRjuMVYJoSZ7okvEbese
+ 7GBQbRTbf6pP5Zg0GmI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sambeg.icu;
+ b=NsjEyd8G5dC3ADZljT57o9C5vA4o3pzoIk5LWUpGrgWWfMdrBtk8aQYAtu8eq1uGWCNavWNsZfc9
+ ordqwE+LmAiXx31v4HMiRa18ugpnDPVYl0M/EQwPYDwydd/IHYQX27c6zS6YCbv4Zp3C+djUoCZB
+ 8Jr0CDSn5Ex7CsbNwAQ=;
+Received: by mail.sambeg.icu id h4nppe0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 17 Sep 2022 11:10:16 -0400 (envelope-from
- <goodrum.rena-intel+2Dgvt+2Ddev=lists.freedesktop.org@begdim.lol>)
-Date: Sat, 17 Sep 2022 11:10:16 -0400
-From: Rena Goodrum <goodrum.rena@begdim.lol>
+ Sat, 17 Sep 2022 12:06:23 -0400 (envelope-from
+ <jennifer-navarrate-intel+2Dgvt+2Ddev=lists.freedesktop.org@sambeg.icu>)
+Date: Sat, 17 Sep 2022 12:06:23 -0400
+From: Jennifer Navarrate <jennifer-navarrate@sambeg.icu>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Camp Lejeune Toxic Water Settlement
+Subject: Get Window Quotes from Brand Name Windows  #96224
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_679_700066792.1663427399553"
-Message-ID: <0.0.0.4B.1D8CAA79825EA24.182003@mail.begdim.lol>
+ boundary="----=_Part_136_200882642.1663430778708"
+Message-ID: <0.0.0.F.1D8CAAF6E9205BE.23D5EE@mail.sambeg.icu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,26 +53,24 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_679_700066792.1663427399553
+------=_Part_136_200882642.1663430778708
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Camp Lejeune Toxic Water Settlement
+Get Window Quotes from Brand Name Windows  #96224
 
-Begin Here for Settlement Information~http://www.begdim.lol/favorer-Jesuitize/9cc6I23j9J5ik8O611Y38P67Nda6h36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQY9SKn7ok10DKP6bBMywD
-
-Don't Delay! 
-File Instantly Online Before the Review Period Comes to an End. 
+Begin Here to get Quotes from Top Contractors. http://www.sambeg.icu/9e95Q23_95Y86gO11A386jeSda7G36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQO9SKo7rhrP10J5QjwyD/hounded-Midwesterners
 
 
 
+To drop communications, Continue This Way. http://www.sambeg.icu/hounded-Midwesterners/R304E2395tV86p12zN386cQQda7j36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQO9SKo5S10gh5g0wlD
+Our email was delivered to intel-gvt-dev@lists.freedesktop.org
+950- Tower LN, 
+Foster. , California 
+94404_ US. 
+8547548. 7599841
 
-30_ North GOULD St. , Ste N, Sheridan, WYO.  828O1 USA
-To halt notifications, Begin-Over-Here~http://www.begdim.lol/Toulouse-Atchison/ef46dl2S395V8l6x12P3n8J68hda6K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQY9SKn6z1qw0P6qW1w3D
-Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org
-8998443~6429404
-
-------=_Part_679_700066792.1663427399553
+------=_Part_136_200882642.1663430778708
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,21 +79,24 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><a href="http://www.begdim.lol/Evensen-clamoring/ef45f23r95E8Mi612kX3O867Hda6R36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQY9SKn5bhN106LBOwDz" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for Settlement Information</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:570px;height:686px;"><a href="http://www.begdim.lol/Evensen-clamoring/ef45f23r95E8Mi612kX3O867Hda6R36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQY9SKn5bhN106LBOwDz"><img alt="Click Here to File Your Compensation Claim" src="http://www.begdim.lol/ad95i239z5Ev7aS10s3869Nda6G36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQY9SKn5oMm106DywD@l/deceived-Serbian" style="margin-left: 0px; margin-top: 0px; width: 570px; height: 686px;" /></a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.sambeg.icu/ef36AG239S5HVF8612K3O8J6bxda7y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQO9SKo7r1Uys0J6Sz0PwD/hounded-Midwesterners" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to get Quotes from Top Contractors</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.sambeg.icu/ef36AG239S5HVF8612K3O8J6bxda7y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQO9SKo7r1Uys0J6Sz0PwD/hounded-Midwesterners" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:608px;height:1024px;"><img alt="Compare Windows to Save" src="http://www.sambeg.icu/Francine-boilerplate/31e4S2395c7XSa12e38zX6dTda7Y36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQO9SKo7EtUF10w6GXjwPD" style="margin-left: 0px; margin-top: 0px; width: 608px; height: 1024px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lose No Time!&nbsp;</span></span><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Your Case Review Now Before the Claim Period&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Expires.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;">30' No. GOULD ST., SUlTE N, SHERIDAN, Wyoming 82801 US</span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To halt notifications, <a href="http://www.begdim.lol/7af5fP2395g86rU11z38S68Mda6T36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQY9SKn7uHI10YO5fJwDj/Evensen-clamoring">Begin-Over-Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8998443.6429404</span></span></p>   
- <img src="http://www.begdim.lol/dc75g2J395Mk8r512C386aATPda6O36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQY9SKn7aRJv1m06c1y0wD/sordidness-recaptures" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To drop communications, </span><a href="http://www.sambeg.icu/hounded-Midwesterners/c7e4i2395o86lz10H386cYda7K36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQO9SKo5NX10m5fTkwD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue This Way</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">950_ T0WER LN.,<br /> City, California<br /> 944O4&nbsp;</span></span><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">U.S.A.</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8547548,7599841</span></span></p>   
+ <img src="http://www.sambeg.icu/1b55co2395e8DZ512Lms386fxda7L36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQO9SKo6z1QX0p5kTUwD/analyses-unsafe" alt=""/></body>
 </html>
 
-------=_Part_679_700066792.1663427399553--
+------=_Part_136_200882642.1663430778708--
 
