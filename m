@@ -1,68 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 782D95BB772
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 11:10:54 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E19E5BB783
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 17 Sep 2022 11:19:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EA57D10E091;
-	Sat, 17 Sep 2022 09:10:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B143210E20D;
+	Sat, 17 Sep 2022 09:19:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com
- [IPv6:2a00:1450:4864:20::631])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5BF1210E091;
- Sat, 17 Sep 2022 09:10:51 +0000 (UTC)
-Received: by mail-ej1-x631.google.com with SMTP id y3so54340910ejc.1;
- Sat, 17 Sep 2022 02:10:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:references:in-reply-to
- :mime-version:from:to:cc:subject:date;
- bh=6BmZWNHNRAFA4nZ1cTU+8HeQ7szXmk4GSNQVBlr0NCA=;
- b=OP81KsMeT4qChPXn0xXQM6JGhpK21K4hSJNqwE64ayfHum0H7+2/zWCqlczsa5xiNz
- Ui+GsmnioW1QkXvnZIDZKLG+aAoj25zhFk93QWMizWaQG5yrWG4v1P7ywNx+pQBl/2pd
- pl5ZgIw8K2L7IhuQIM4O7RtSJHxp5UGp5+AnYL845vsE71n2e9egpQt27dRiUMxxTlIw
- jDdklfujKtaKWOAwvO54CVkqijdjP0wSaTw15zuuduaKvnKCLM1v1gQ/WQxt0F1+JBiA
- RNTWtqyz56CkcvaXH+GdfmSYkHNe6ercWvIVlXxBkvYDWkiR8L8rBw3DGWZfrVBKl7RH
- UZEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:references:in-reply-to
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=6BmZWNHNRAFA4nZ1cTU+8HeQ7szXmk4GSNQVBlr0NCA=;
- b=GRs90H6565anwNgZfCA3CdlzFpkoUCjAbO4LbIHCvwWSFU9x9XFk1tHs9d/PvBqv1w
- 0IcFvyB766KfAWJiL5DnKohg5q+zALgn4yJlOMR0G6O69sOE3ylsbjcrGGzwmO7gxBce
- o1LetLRtNshmo4YTLXoRzb4YDCkIJBCtYLmnLqLByFo+kYEjfXRgXbwLzGO6fnOrCKZI
- F0y/1NrI/R+/mbTxwHSc/oEDeb6WuAXKwA8Zu92w0WNAeXa59Gof35AmPdkAG14F0fOG
- +z2fxn1+OwJrB4ezZy2gJUyfixUkvc+r8K0oJQK1d8IAH+2I8TLXnz+ZrF3frMUNNMpA
- quEQ==
-X-Gm-Message-State: ACrzQf0XUqNs4EBXTWBeybfSNok6ljUgf3y0KmkHWnJRsyu1KH5wAil9
- NMna/RJgNr1UWMJIz+I4776BzbfNSjRY3nhXVyw=
-X-Google-Smtp-Source: AMsMyM5Wsz8Z3ineZGIH9XLZNikq2KBaDk+d1T0S8UKeytPSk45qo7NxR+4zLGy22HJ+uc5/Q7arS0XlqgP8iJWXu+s=
-X-Received: by 2002:a17:907:16a6:b0:780:4a3c:d179 with SMTP id
- hc38-20020a17090716a600b007804a3cd179mr6305850ejc.289.1663405849634; Sat, 17
- Sep 2022 02:10:49 -0700 (PDT)
+X-Greylist: delayed 365 seconds by postgrey-1.36 at gabe;
+ Sat, 17 Sep 2022 09:19:04 UTC
+Received: from mail.zacson.lol (unknown [185.104.151.157])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CBF9A10E14B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 17 Sep 2022 09:19:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=zacson.lol;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=glenda-tuppen@zacson.lol; bh=ludHl2xuIlvjSdHoDhbPkK/ngO0=;
+ b=CacWIENc5r52m8SHBe0VlivJ3myvz3vpv+qj0gdWKHmoUC8Ex0R22wLQQJte/cKIPtZiDPfXPTO9
+ OkKteroSLQVoTZF6uvhc9Q0op2HhBQAoWSe8Faa1YxtSJTBBe2txL4jjz1TtmOxaN3MwEN/xJAZ6
+ Kk5c//QuAK5sg/XB6vw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=zacson.lol;
+ b=htXuK+QL0Cnt25Iw/o5Dchv/jB3tP89Nae4c2bPlrd+dhCQ1yYeOSOjOqs/6qn4dstnrq+QIz9kj
+ vCEkYpiKgTa9Yz9jAMHuIp1SZ3+NN9b//liSYqXvklgM82m9DDmmb18asZCaFYb1UNlyso4o27kv
+ 9YD1XzqSQWisDu95SeE=;
+Received: by mail.zacson.lol id h4mj3i0001gg for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 17 Sep 2022 06:36:51 -0400 (envelope-from
+ <glenda-tuppen-intel+2Dgvt+2Ddev=lists.freedesktop.org@zacson.lol>)
+Date: Sat, 17 Sep 2022 06:36:51 -0400
+From: Glenda Tuppen <glenda-tuppen@zacson.lol>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Camp Lejeune Victims entitled to Significant Compensation
 MIME-Version: 1.0
-Received: by 2002:a05:6400:5598:0:0:0:0 with HTTP; Sat, 17 Sep 2022 02:10:48
- -0700 (PDT)
-In-Reply-To: <YyWOh+jGvmSdrHqz@kroah.com>
-References: <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
- <YxWtfjfpNsoPUrgh@kroah.com>
- <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
- <20220907030754.GU1089@zhen-hp.sh.intel.com>
- <CAJedcCxO_Rq0qMeLiHtY5+FuN1A1pDGsZd3gMtvUpm1xbAK3aA@mail.gmail.com>
- <Yxmzj2nCoTKurCY8@kroah.com>
- <CAJedcCwVC6Rg+wF7h6GhFvL6BGkKV=DS9Mo9fOf-gfDAk9VqPg@mail.gmail.com>
- <CAJedcCxRQ4h-ChNsD4OWpDMUJd3JNaQrvD=uVKxMpYONGFUgzA@mail.gmail.com>
- <YyQzDlM5n7mOLh5Q@kroah.com>
- <CAJedcCzt_1ZRV5egMLdoFVZ4hBDE+nDu9fLkBuGY0A=uYicvQA@mail.gmail.com>
- <YyWOh+jGvmSdrHqz@kroah.com>
-From: Zheng Hacker <hackerzheng666@gmail.com>
-Date: Sat, 17 Sep 2022 17:10:48 +0800
-Message-ID: <CAJedcCyx+qYpPd-_vqg0vQO9nQVrwBXARv3Lzi+FJ4HrBN0AGQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
-To: Greg KH <gregkh@linuxfoundation.org>
-Content-Type: multipart/alternative; boundary="000000000000c8ec4105e8dbdacc"
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_241_573965612.1663405569884"
+Message-ID: <0.0.0.1A.1D8CA8165C1D1B8.7F0A0E@mail.zacson.lol>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,148 +49,52 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- "alex000young@gmail.com" <alex000young@gmail.com>,
- "security@kernel.org" <security@kernel.org>,
- "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
- "airlied@linux.ie" <airlied@linux.ie>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- xmzyshypnc <1002992920@qq.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000c8ec4105e8dbdacc
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+------=_Part_241_573965612.1663405569884
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Hi Greg,
+Camp Lejeune Victims entitled to Significant Compensation
 
-Sorry for that. I=E2=80=99ll write another one.
+Click Here for Lawsuit Claim Information-http://www.zacson.lol/d136QP239F5vK8h612b385v7Kyda2r36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQb9SeS7AhsZ1W06tlwUDz/tempering-Calder
 
-Regards,
-Zheng Wang
+Hurry! 
+See if You're Eligible Here Today Before the Compensation Period Closes. 
 
-=E5=9C=A8 2022=E5=B9=B49=E6=9C=8817=E6=97=A5=E6=98=9F=E6=9C=9F=E5=85=AD=EF=
-=BC=8CGreg KH <gregkh@linuxfoundation.org> =E5=86=99=E9=81=93=EF=BC=9A
 
-> On Fri, Sep 16, 2022 at 11:54:42PM +0800, Zheng Hacker wrote:
-> > >From afe79848cb74cc8e45ab426d13fa2394c87e0422 Mon Sep 17 00:00:00 2001
-> > From: xmzyshypnc <1002992920@qq.com>
-> > Date: Fri, 16 Sep 2022 23:48:23 +0800
-> > Subject: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_ent=
-ry
-> >
-> > There is a double-free security bug in split_2MB_gtt_entry.
-> >
-> > Here is a calling chain :
-> > ppgtt_populate_spt->ppgtt_populate_shadow_entry->split_2MB_gtt_entry.
-> >
-> > If intel_gvt_dma_map_guest_page failed, it will call
-> > ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and
-> > kfree(spt). But the caller does not notice that, and it will call
-> > ppgtt_free_spt again in error path.
-> >
-> > Fix this by only freeing spt in ppgtt_invalidate_spt in good case.
-> >
-> > Signed-off-by: Zheng Wang <hackerzheng666@gmail.com>
-> > ---
-> >  drivers/gpu/drm/i915/gvt/gtt.c | 16 +++++++++-------
-> >  1 file changed, 9 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/
-> gtt.c
-> > index ce0eb03709c3..550519f0acca 100644
-> > --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> > +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> > @@ -959,7 +959,7 @@ static inline int ppgtt_put_spt(struct
-> > intel_vgpu_ppgtt_spt *spt)
-> >     return atomic_dec_return(&spt->refcount);
-> >  }
-> >
-> > -static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);
-> > +static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt, int
-> > is_error);
-> >
-> >  static int ppgtt_invalidate_spt_by_shadow_entry(struct intel_vgpu
-> *vgpu,
-> >         struct intel_gvt_gtt_entry *e)
-> > @@ -995,7 +995,7 @@ static int
-> > ppgtt_invalidate_spt_by_shadow_entry(struct intel_vgpu *vgpu,
->
-> Still line-wrapped and whitespace broken :(
->
->
 
---000000000000c8ec4105e8dbdacc
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi Greg,<div><br></div><div>Sorry for that. I=E2=80=99ll write another one.=
-</div><div><br></div><div>Regards,</div><div>Zheng Wang<br><br>=E5=9C=A8 20=
-22=E5=B9=B49=E6=9C=8817=E6=97=A5=E6=98=9F=E6=9C=9F=E5=85=AD=EF=BC=8CGreg KH=
- &lt;<a href=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.o=
-rg</a>&gt; =E5=86=99=E9=81=93=EF=BC=9A<br><blockquote class=3D"gmail_quote"=
- style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On=
- Fri, Sep 16, 2022 at 11:54:42PM +0800, Zheng Hacker wrote:<br>
-&gt; &gt;From afe79848cb74cc8e45ab426d13fa23<wbr>94c87e0422 Mon Sep 17 00:0=
-0:00 2001<br>
-&gt; From: xmzyshypnc &lt;<a href=3D"mailto:1002992920@qq.com">1002992920@q=
-q.com</a>&gt;<br>
-&gt; Date: Fri, 16 Sep 2022 23:48:23 +0800<br>
-&gt; Subject: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_en=
-try<br>
-&gt; <br>
-&gt; There is a double-free security bug in split_2MB_gtt_entry.<br>
-&gt; <br>
-&gt; Here is a calling chain :<br>
-&gt; ppgtt_populate_spt-&gt;ppgtt_<wbr>populate_shadow_entry-&gt;split_<wbr=
->2MB_gtt_entry.<br>
-&gt; <br>
-&gt; If intel_gvt_dma_map_guest_page failed, it will call<br>
-&gt; ppgtt_invalidate_spt, which will finally call ppgtt_free_spt and<br>
-&gt; kfree(spt). But the caller does not notice that, and it will call<br>
-&gt; ppgtt_free_spt again in error path.<br>
-&gt; <br>
-&gt; Fix this by only freeing spt in ppgtt_invalidate_spt in good case.<br>
-&gt; <br>
-&gt; Signed-off-by: Zheng Wang &lt;<a href=3D"mailto:hackerzheng666@gmail.c=
-om">hackerzheng666@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/gpu/drm/i915/gvt/gtt.c | 16 +++++++++-------<br>
-&gt;=C2=A0 1 file changed, 9 insertions(+), 7 deletions(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/gpu/drm/i915/gvt/<wbr>gtt.c b/drivers/gpu/drm/i91=
-5/gvt/<wbr>gtt.c<br>
-&gt; index ce0eb03709c3..550519f0acca 100644<br>
-&gt; --- a/drivers/gpu/drm/i915/gvt/<wbr>gtt.c<br>
-&gt; +++ b/drivers/gpu/drm/i915/gvt/<wbr>gtt.c<br>
-&gt; @@ -959,7 +959,7 @@ static inline int ppgtt_put_spt(struct<br>
-&gt; intel_vgpu_ppgtt_spt *spt)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0return atomic_dec_return(&amp;spt-&gt;<wbr>refcount=
-);<br>
-&gt;=C2=A0 }<br>
-&gt; <br>
-&gt; -static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt);<br=
->
-&gt; +static int ppgtt_invalidate_spt(struct intel_vgpu_ppgtt_spt *spt, int=
-<br>
-&gt; is_error);<br>
-&gt; <br>
-&gt;=C2=A0 static int ppgtt_invalidate_spt_by_<wbr>shadow_entry(struct inte=
-l_vgpu *vgpu,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0struct intel_gvt_gtt_entry *e)<br>
-&gt; @@ -995,7 +995,7 @@ static int<br>
-&gt; ppgtt_invalidate_spt_by_<wbr>shadow_entry(struct intel_vgpu *vgpu,<br>
-<br>
-Still line-wrapped and whitespace broken :(<br>
-<br>
-</blockquote></div>
+3O.  No.  G0ULD ST, NO N, Sheridan. , WY 828O1_ USA
+To get rid of notifications, Get.Going.Here-http://www.zacson.lol/6bf5t239g5z8V6Q11qz3858Sda2n36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQb9SeS7o1RD0GM6w3wDW0/achiever-concatenates
+Our email was sent to intel-gvt-dev@lists.freedesktop.org
+93135917-16369137
 
---000000000000c8ec4105e8dbdacc--
+------=_Part_241_573965612.1663405569884
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><a href="http://www.zacson.lol/achiever-concatenates/cf64f2395K8ug610U3857Hda2A36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQb9SeS6z1Xi0J5NkNwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for Lawsuit Claim Information</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:570px;height:686px;"><a href="http://www.zacson.lol/achiever-concatenates/cf64f2395K8ug610U3857Hda2A36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQb9SeS6z1Xi0J5NkNwD"><img alt="Click Here to File Your Compensation Claim" src="http://www.zacson.lol/8095NH2395XR7Pa11r38w59Jda2I36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQb9SeS6Jg10CY6HUkwPD/ivies-killingly" style="margin-left: 0px; margin-top: 0px; width: 570px; height: 686px;" /></a></span></span></span></p> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make Haste!&nbsp;</span></span><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Have Your Case Reviewed Online Today Before the Review Period&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Expires.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;">3O. No. G0ULD ST, Unit N, SHERIDAN, WY. 82801_ USA</span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To get rid of notifications, <a href="http://www.zacson.lol/22d6oo2r395r8o6T10F3858yda2N36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQb9SeS7K10DKJj6zjTlwD/slowed-perhaps">Get.Going.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1deb0fdf-7fff-f1e6-f530-52619712b952"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">93135917-16369137</span></span></p>   
+ <img src="http://www.zacson.lol/slowed-perhaps/7924i2395NJr8510p385aIda2o36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQb9SeS7NxU10nj6j0wD0k" alt=""/></body>
+</html>
+
+------=_Part_241_573965612.1663405569884--
+
