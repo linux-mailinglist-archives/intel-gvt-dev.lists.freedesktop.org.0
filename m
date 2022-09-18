@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B046C5BBEEE
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Sep 2022 18:20:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D67995BBF16
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Sep 2022 19:19:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E6F6910E5AC;
-	Sun, 18 Sep 2022 16:20:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1E90110E5C8;
+	Sun, 18 Sep 2022 17:19:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Sun, 18 Sep 2022 16:20:18 UTC
-Received: from mail.beersmets.icu (unknown [213.209.159.189])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9167D10E533
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sun, 18 Sep 2022 17:18:56 UTC
+Received: from mail.wetmet.click (unknown [185.104.151.215])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 46B3C10E5CE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Sep 2022 16:20:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=beersmets.icu;
+ Sun, 18 Sep 2022 17:18:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wetmet.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=leslie.kuchenbecker@beersmets.icu; 
- bh=cDs4H8jHQzoPwglk5EXG8Tvhx9o=;
- b=MlQCoHr196uqndaa1zHI8/sXnTcyUHV3kumEEwWBBA+zFYhUPpRPiyyorUeAFWO9BQDGEVG3QRZa
- 0wLnFBeP/JiuRlWueIMj5VLKXO5qHTpSYHUbv3g5xd27rXc8x7eKwPkaLiR3cwszwzAhW1kXFEfG
- f6PTxyQ2P4Dj8lnaddo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=beersmets.icu;
- b=OrJOHiv8AbJbB7p8wWXxMps9Vn9qsRCQE9keCZywh6P8mMUeErSBRz9eYRN30a2gzd/GUtrQxn38
- yQ3hZuQ8LyhYvkNFyuv2S10TV+iFBx1Qb9HtMWqBDAp3oDcoP9urkRrEczb/5thXpZx16ga+oPHT
- +SgeBB2hsdx6i5Ajl3Q=;
-Received: by mail.beersmets.icu id h4t2k40001gb for
+ i=bridget_burry@wetmet.click; bh=5QwVK3ZWDojRrYRIAs+M0AU16q4=;
+ b=T0LxisZ5KLuKudSuluBjZgnwbE2Qm9oLND9OIUBnTnv4f8Xl+8Klw1cx7py78hC/KhOF/jqNRcyR
+ APGlHWBb/FJjmiBxeFzaq5wp4AgUb/7sNfmW+cWofqgoQ+AuvjYyKk+d3QivvJEC+Hq5ctNfWjGc
+ 7F9SvGK6Fl+K/9qOGG8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wetmet.click;
+ b=TgR4JnOxZFhX+v0tXS2OQXF5RiVDw7426i/IaACtb0OzSHtDYx+GiSGWQFVE9xFW0Cz7oan2uDKl
+ dD6aLnoqtdOp30oTizyF/ZOZxVV0h7ATq70/lUJS/oaBsDHfXnoyuuaCtav5LegW8W2mEKRl8eaO
+ 4dLR8fW+vwvFcXmtPh4=;
+Received: by mail.wetmet.click id h4t9g00001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Sep 2022 12:06:50 -0400 (envelope-from
- <leslie.kuchenbecker-intel+2Dgvt+2Ddev=lists.freedesktop.org@beersmets.icu>)
-Date: Sun, 18 Sep 2022 12:06:50 -0400
-From: Leslie Kuchenbecker <leslie.kuchenbecker@beersmets.icu>
+ Sun, 18 Sep 2022 13:06:44 -0400 (envelope-from
+ <bridget_burry-intel+2Dgvt+2Ddev=lists.freedesktop.org@wetmet.click>)
+Date: Sun, 18 Sep 2022 13:06:44 -0400
+From: Bridget Burry <bridget_burry@wetmet.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Personal Funds for any expense up to $50K
+Subject: The Lowes - Craftsman Lawn Tractor Giveaway Ends Soon
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_22_232284312.1663517204553"
-Message-ID: <0.0.0.2.1D8CB78A91EC63A.1655DB@mail.beersmets.icu>
+ boundary="----=_Part_418_855971647.1663520788977"
+Message-ID: <0.0.0.2E.1D8CB81079E570E.6AEF6C@mail.wetmet.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_22_232284312.1663517204553
+------=_Part_418_855971647.1663520788977
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+The Lowes - Craftsman Lawn Tractor Giveaway Ends Soon  intel-gvt-dev@lists.freedesktop.org
+
+
+Begin Here, You've been Randomly Selected by Lowes-http://www.wetmet.click/e994X2395NB8w611ur38c2ndbcD36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQr9end6nx10tv6mllwDL/communicates-Alastair
+
+
+
+
+
+
+To dispense with notices, Begin.Over.Here-http://www.wetmet.click/authenticates-mailman/33c4t2395X8L6j12h3O8c3IHdbcT36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQr9end5Y1R0u5yp@wD
+
+This notice was intended for intel-gvt-dev@lists.freedesktop.org
+
+96 MOWAT' Avenue, Toronto Ont M4K 3Kl Canada
+
+4286006~2503801
+
+------=_Part_418_855971647.1663520788977
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -61,21 +83,19 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><a href="http://www.beersmets.icu/precluded-manors/6664W2395P86js11v38bQeydbby36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQb9en97o1Z0sCn5wp1wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for Funds up to $50,000 next day</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><a href="http://www.beersmets.icu/precluded-manors/6664W2395P86js11v38bQeydbby36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQb9en97o1Z0sCn5wp1wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:549px;height:2048px;"><img alt="Borrow up to $5OK at as low as 5.4%" src="http://www.beersmets.icu/f2f4A2395Pr7Fa11M38cJ0Udbbu36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQb9en95KD10D5c3w@D/reverent-dragon" style="margin-left: 0px; margin-top: 0px; width: 641px; height: 2391px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 16pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Quickly! Shop &amp; Save Today Before lnterest Rise.</span></span></p> 
-  <br /> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.wetmet.click/7cd5o23m95p8_k610E38c2Cdbcj36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQr9end5f10hS5B@wWD/communicates-Alastair"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.wetmet.click/overheads-countably/8a05a23P95Eg7Sa10f38c4pdbcw36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQr9end6rD10KT6yjwkJD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.wetmet.click/7cd5o23m95p8_k610E38c2Cdbcj36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQr9end5f10hS5B@wWD/communicates-Alastair" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here, You've been Randomly Selected by Lowes</span></a></span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cancel e-mail, </span><a href="http://www.beersmets.icu/3ef6z2B39u5e8sW610S38bfjdbbh36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQb9en97VW1AjD05d3WwD/spectacles-wonderingly" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start-Here-Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">55_ Hawthorn' ST 11th FIoor San Francisco&nbsp; CA. 941O5</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">70391430 1729856</span></span></p>   
- <img src="http://www.beersmets.icu/flannel-swooped/1f24a2395K8Yg512v38cMR1hdbbj36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQb9en95i1P0Z6mz3wD3" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To dispense with notices, <a href="http://www.wetmet.click/a254Q2395qn86v11K38mc3mdbcF36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQr9end7o1KRA0U6fkXwBD/overheads-countably">Begin.Over.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat_ Ave., Toronto_ ON M4K 3Kl CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4286006 2503801</span></span></p>   
+ <img src="http://www.wetmet.click/overheads-countably/24c6wD239Q5t8S5W10Y38c5xdbcn36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQr9end6qRTo106JAwpTD" alt=""/></body>
 </html>
 
-------=_Part_22_232284312.1663517204553--
+------=_Part_418_855971647.1663520788977--
 
