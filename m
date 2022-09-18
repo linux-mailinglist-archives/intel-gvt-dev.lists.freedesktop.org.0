@@ -2,42 +2,72 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D67995BBF16
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Sep 2022 19:19:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 036445BBF0F
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Sep 2022 19:16:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1E90110E5C8;
-	Sun, 18 Sep 2022 17:19:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 55D1910E5BC;
+	Sun, 18 Sep 2022 17:16:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sun, 18 Sep 2022 17:18:56 UTC
-Received: from mail.wetmet.click (unknown [185.104.151.215])
- by gabe.freedesktop.org (Postfix) with ESMTP id 46B3C10E5CE
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Sep 2022 17:18:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wetmet.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=bridget_burry@wetmet.click; bh=5QwVK3ZWDojRrYRIAs+M0AU16q4=;
- b=T0LxisZ5KLuKudSuluBjZgnwbE2Qm9oLND9OIUBnTnv4f8Xl+8Klw1cx7py78hC/KhOF/jqNRcyR
- APGlHWBb/FJjmiBxeFzaq5wp4AgUb/7sNfmW+cWofqgoQ+AuvjYyKk+d3QivvJEC+Hq5ctNfWjGc
- 7F9SvGK6Fl+K/9qOGG8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wetmet.click;
- b=TgR4JnOxZFhX+v0tXS2OQXF5RiVDw7426i/IaACtb0OzSHtDYx+GiSGWQFVE9xFW0Cz7oan2uDKl
- dD6aLnoqtdOp30oTizyF/ZOZxVV0h7ATq70/lUJS/oaBsDHfXnoyuuaCtav5LegW8W2mEKRl8eaO
- 4dLR8fW+vwvFcXmtPh4=;
-Received: by mail.wetmet.click id h4t9g00001g0 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Sep 2022 13:06:44 -0400 (envelope-from
- <bridget_burry-intel+2Dgvt+2Ddev=lists.freedesktop.org@wetmet.click>)
-Date: Sun, 18 Sep 2022 13:06:44 -0400
-From: Bridget Burry <bridget_burry@wetmet.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The Lowes - Craftsman Lawn Tractor Giveaway Ends Soon
- intel-gvt-dev@lists.freedesktop.org
-MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_418_855971647.1663520788977"
-Message-ID: <0.0.0.2E.1D8CB81079E570E.6AEF6C@mail.wetmet.click>
+X-Greylist: delayed 368 seconds by postgrey-1.36 at gabe;
+ Sun, 18 Sep 2022 17:16:08 UTC
+Received: from out162-62-57-49.mail.qq.com (out162-62-57-49.mail.qq.com
+ [162.62.57.49])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 13B0A10E5BE;
+ Sun, 18 Sep 2022 17:16:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+ t=1663521364; bh=dEAf6yNmWJKwq20++XNOsYNIfeZ+EWFczEkClbSCGHI=;
+ h=In-Reply-To:References:From:To:Cc:Subject:Date;
+ b=N4EyLuodpcsUkXkVboaM5mlBrEwkFDD0o3BT28XzxF1Kdn4j7hEaI5ff++XptpffK
+ cwusYJ4xhSQeDKzjHO7pzq+mU1S6M+h0qUMuENuTESHDmBVdUCdEH7L8Ku6/DxwJtO
+ IotGqv2KIVE0dERGXmkXNQ/vym8zAENvE8WNgWbU=
+X-QQ-FEAT: oHWrrGTW1dCGJEu1CuC8+nIWkvSYK6n9
+X-QQ-SSF: 00000000000000F0000000000000
+X-QQ-XMAILINFO: OW5zxOp0HHYw+UwB0vls+WkchsAZAy70/n2fIJTFUZGzUjUou4lyh/Ca5hLvhT
+ l6dQxfJp4vRtLy+CXAyczXhvGHLDBp/nQ3gOhxxUninx7fI6TdKVCCIwMae+12wkLUH0IrgSc42kk
+ rjnqRxSjkoyPwHLh1f4xquvQXrjODTqZS6Ep4iiiP5yFgXDz2EftlOHlmMnfuWFEi/8LhnewESxGP
+ 56dsfuRLP8d1A8/liuaoC6QUZSGkJ61jAoc3X1CjszT7ZsE1FsCIgtKfwIudrsGIY7jbbNbNRHMfe
+ JIVqjTI3Ehqx93kJc/h1bJgJg7dxVinA225fQYjVX+GAmxkVXUpANXgWfkjKtwQS/mzM8UciYAQc3
+ 8foP61gNKLJ6uesx6R5Jj/l5NRK/B48SxDmpgkxu2UNape1CZlJbvbZvdcjlzxA2K14M1Rx9cDsnJ
+ YHMTce7eZ1IoqYQQOT+EqPhiWUEcu25/zeWlCzYpx1Sa6oSbvB+Ocfmst5C6rGQ5eWmepATR/uJ86
+ 9ojcWOflIjgCdDSx4KphCz8IJiyjEzr8pPHg70N2f9zmHUYhbbsepgWuZhBKH4h2c0L1Ttr25fSb1
+ qT/ob5ibcJjTcSiN6sNejouXr7qfMxWTo6836utbCXSS9Cwb6AtyqlqDTwWMhT2OT7uwJOBW6+os5
+ 3pROdDZFNEl8kOzN2IMHftITxlUsRUICO3JY8PHvNgkXHUdzFQfiLdQgS7QG/bptl2fXHh83UkGJJ
+ U9b0aruI4J4GnvkdW35LYk0eQCMkWJTw81KXyyM5o/zGUjLy2wffQ8seU0v2ZbHA7hxk41/0Q8YOL
+ eKLCKG8M8yKY5NDoWejpUafOCbEe8mCfnSqSOBkpP0LHb/7fVuU0Dl8msm8fafTXvVyfieSxnOjP4
+ wM+PNyhQM6hvu8CrX+8ZwKOowTVOvXEgqcQruZjNlinP/mEnpz3CeEkv3Xr8FT17ealAid+ATNG0k
+ kms1bSqQ==
+X-HAS-ATTACH: no
+X-QQ-BUSINESS-ORIGIN: 2
+X-Originating-IP: 114.249.151.134
+In-Reply-To: <YyWOh+jGvmSdrHqz@kroah.com>
+References: <CAJedcCweHjD78F7iydiq6Xc2iH=t_3m=H9JKnaCooToUk32FvQ@mail.gmail.com>
+ <YxWtfjfpNsoPUrgh@kroah.com>
+ <CAJedcCzMo51aiy=Dv7zn7VmL3gwkw7JgzwAPAB2Z27C9CnhoYA@mail.gmail.com>
+ <20220907030754.GU1089@zhen-hp.sh.intel.com>
+ <CAJedcCxO_Rq0qMeLiHtY5+FuN1A1pDGsZd3gMtvUpm1xbAK3aA@mail.gmail.com>
+ <Yxmzj2nCoTKurCY8@kroah.com>
+ <CAJedcCwVC6Rg+wF7h6GhFvL6BGkKV=DS9Mo9fOf-gfDAk9VqPg@mail.gmail.com>
+ <CAJedcCxRQ4h-ChNsD4OWpDMUJd3JNaQrvD=uVKxMpYONGFUgzA@mail.gmail.com>
+ <YyQzDlM5n7mOLh5Q@kroah.com>
+ <CAJedcCzt_1ZRV5egMLdoFVZ4hBDE+nDu9fLkBuGY0A=uYicvQA@mail.gmail.com>
+ <YyWOh+jGvmSdrHqz@kroah.com>
+X-QQ-STYLE: 
+X-QQ-mid: webmail646t1663520924t6827357
+From: "=?gb18030?B?s68=?=" <1002992920@qq.com>
+To: "=?gb18030?B?R3JlZyBLSA==?=" <gregkh@linuxfoundation.org>,
+ "=?gb18030?B?WmhlbmcgSGFja2Vy?=" <hackerzheng666@gmail.com>
+Subject: Re: [PATCH] drm/i915/gvt: fix double-free bug in split_2MB_gtt_entry.
+Mime-Version: 1.0
+Content-Type: text/plain;
+	charset="gb18030"
+Content-Transfer-Encoding: base64
+Date: Mon, 19 Sep 2022 01:08:44 +0800
+X-Priority: 3
+Message-ID: <tencent_36196E8CD75A09D21A47CE65C842E97EF805@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,52 +80,86 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: =?gb18030?B?amFuaS5uaWt1bGFAbGludXguaW50ZWwuY29t?=
+ <jani.nikula@linux.intel.com>,
+ =?gb18030?B?YWxleDAwMHlvdW5nQGdtYWlsLmNvbQ==?= <alex000young@gmail.com>,
+ =?gb18030?B?c2VjdXJpdHlAa2VybmVsLm9yZw==?= <security@kernel.org>,
+ =?gb18030?B?dHZydGtvLnVyc3VsaW5AbGludXguaW50ZWwuY29t?=
+ <tvrtko.ursulin@linux.intel.com>,
+ =?gb18030?B?YWlybGllZEBsaW51eC5pZQ==?= <airlied@linux.ie>,
+ =?gb18030?B?aW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZw==?=
+ <intel-gfx@lists.freedesktop.org>,
+ =?gb18030?B?am9vbmFzLmxhaHRpbmVuQGxpbnV4LmludGVsLmNvbQ==?=
+ <joonas.lahtinen@linux.intel.com>,
+ =?gb18030?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?=
+ <linux-kernel@vger.kernel.org>,
+ =?gb18030?B?ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZw==?=
+ <dri-devel@lists.freedesktop.org>,
+ =?gb18030?B?Wmhlbnl1IFdhbmc=?= <zhenyuw@linux.intel.com>,
+ =?gb18030?B?ZGFuaWVsQGZmd2xsLmNo?= <daniel@ffwll.ch>,
+ =?gb18030?B?cm9kcmlnby52aXZpQGludGVsLmNvbQ==?= <rodrigo.vivi@intel.com>,
+ =?gb18030?B?aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc=?=
+ <intel-gvt-dev@lists.freedesktop.org>,
+ =?gb18030?B?emhpLmEud2FuZ0BpbnRlbC5jb20=?= <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_418_855971647.1663520788977
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-The Lowes - Craftsman Lawn Tractor Giveaway Ends Soon  intel-gvt-dev@lists.freedesktop.org
-
-
-Begin Here, You've been Randomly Selected by Lowes-http://www.wetmet.click/e994X2395NB8w611ur38c2ndbcD36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQr9end6nx10tv6mllwDL/communicates-Alastair
-
-
-
-
-
-
-To dispense with notices, Begin.Over.Here-http://www.wetmet.click/authenticates-mailman/33c4t2395X8L6j12h3O8c3IHdbcT36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQr9end5Y1R0u5yp@wD
-
-This notice was intended for intel-gvt-dev@lists.freedesktop.org
-
-96 MOWAT' Avenue, Toronto Ont M4K 3Kl Canada
-
-4286006~2503801
-
-------=_Part_418_855971647.1663520788977
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.wetmet.click/7cd5o23m95p8_k610E38c2Cdbcj36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQr9end5f10hS5B@wWD/communicates-Alastair"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.wetmet.click/overheads-countably/8a05a23P95Eg7Sa10f38c4pdbcw36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQr9end6rD10KT6yjwkJD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.wetmet.click/7cd5o23m95p8_k610E38c2Cdbcj36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQr9end5f10hS5B@wWD/communicates-Alastair" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here, You've been Randomly Selected by Lowes</span></a></span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To dispense with notices, <a href="http://www.wetmet.click/a254Q2395qn86v11K38mc3mdbcF36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQr9end7o1KRA0U6fkXwBD/overheads-countably">Begin.Over.Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat_ Ave., Toronto_ ON M4K 3Kl CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4286006 2503801</span></span></p>   
- <img src="http://www.wetmet.click/overheads-countably/24c6wD239Q5t8S5W10Y38c5xdbcn36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQr9end6qRTo106JAwpTD" alt=""/></body>
-</html>
-
-------=_Part_418_855971647.1663520788977--
-
+RnJvbSBhZmU3OTg0OGNiNzRjYzhlNDVhYjQyNmQxM2ZhMjM5NGM4N2UwNDIyIE1vbiBTZXAg
+MTcgMDA6MDA6MDAgMjAwMQpGcm9tOiB4bXp5c2h5cG5jICZsdDsxMDAyOTkyOTIwQHFxLmNv
+bSZndDsKRGF0ZTogRnJpLCAxNiBTZXAgMjAyMiAyMzo0ODoyMyArMDgwMApTdWJqZWN0OiBb
+UEFUQ0hdIGRybS9pOTE1L2d2dDogZml4IGRvdWJsZS1mcmVlIGJ1ZyBpbiBzcGxpdF8yTUJf
+Z3R0X2VudHJ5CgpUaGVyZSBpcyBhIGRvdWJsZS1mcmVlIHNlY3VyaXR5IGJ1ZyBpbiBzcGxp
+dF8yTUJfZ3R0X2VudHJ5LgoKSGVyZSBpcyBhIGNhbGxpbmcgY2hhaW4gOgpwcGd0dF9wb3B1
+bGF0ZV9zcHQtJmd0O3BwZ3R0X3BvcHVsYXRlX3NoYWRvd19lbnRyeS0mZ3Q7c3BsaXRfMk1C
+X2d0dF9lbnRyeS4KCklmIGludGVsX2d2dF9kbWFfbWFwX2d1ZXN0X3BhZ2UgZmFpbGVkLCBp
+dCB3aWxsIGNhbGwKcHBndHRfaW52YWxpZGF0ZV9zcHQsIHdoaWNoIHdpbGwgZmluYWxseSBj
+YWxsIHBwZ3R0X2ZyZWVfc3B0IGFuZAprZnJlZShzcHQpLiBCdXQgdGhlIGNhbGxlciBkb2Vz
+IG5vdCBub3RpY2UgdGhhdCwgYW5kIGl0IHdpbGwgY2FsbApwcGd0dF9mcmVlX3NwdCBhZ2Fp
+biBpbiBlcnJvciBwYXRoLgoKRml4IHRoaXMgYnkgb25seSBmcmVlaW5nIHNwdCBpbiBwcGd0
+dF9pbnZhbGlkYXRlX3NwdCBpbiBnb29kIGNhc2UuCgpTaWduZWQtb2ZmLWJ5OiB4bXp5c2h5
+cG5jICZsdDsxMDAyOTkyOTIwQHFxLmNvbSZndDsKLS0tCiBkcml2ZXJzL2dwdS9kcm0vaTkx
+NS9ndnQvZ3R0LmMgfCAxNiArKysrKysrKystLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgOSBp
+bnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9pOTE1L2d2dC9ndHQuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9ndHQuYwpp
+bmRleCBjZTBlYjAzNzA5YzMuLjU1MDUxOWYwYWNjYSAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL2k5MTUvZ3Z0L2d0dC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9n
+dHQuYwpAQCAtOTU5LDcgKzk1OSw3IEBAIHN0YXRpYyBpbmxpbmUgaW50IHBwZ3R0X3B1dF9z
+cHQoc3RydWN0IGludGVsX3ZncHVfcHBndHRfc3B0ICpzcHQpCiAJcmV0dXJuIGF0b21pY19k
+ZWNfcmV0dXJuKCZhbXA7c3B0LSZndDtyZWZjb3VudCk7CiB9CiAKLXN0YXRpYyBpbnQgcHBn
+dHRfaW52YWxpZGF0ZV9zcHQoc3RydWN0IGludGVsX3ZncHVfcHBndHRfc3B0ICpzcHQpOwor
+c3RhdGljIGludCBwcGd0dF9pbnZhbGlkYXRlX3NwdChzdHJ1Y3QgaW50ZWxfdmdwdV9wcGd0
+dF9zcHQgKnNwdCwgaW50IGlzX2Vycm9yKTsKIAogc3RhdGljIGludCBwcGd0dF9pbnZhbGlk
+YXRlX3NwdF9ieV9zaGFkb3dfZW50cnkoc3RydWN0IGludGVsX3ZncHUgKnZncHUsCiAJCXN0
+cnVjdCBpbnRlbF9ndnRfZ3R0X2VudHJ5ICplKQpAQCAtOTk1LDcgKzk5NSw3IEBAIHN0YXRp
+YyBpbnQgcHBndHRfaW52YWxpZGF0ZV9zcHRfYnlfc2hhZG93X2VudHJ5KHN0cnVjdCBpbnRl
+bF92Z3B1ICp2Z3B1LAogCQkJCW9wcy0mZ3Q7Z2V0X3BmbihlKSk7CiAJCXJldHVybiAtRU5Y
+SU87CiAJfQotCXJldHVybiBwcGd0dF9pbnZhbGlkYXRlX3NwdChzKTsKKwlyZXR1cm4gcHBn
+dHRfaW52YWxpZGF0ZV9zcHQocywgMCk7CiB9CiAKIHN0YXRpYyBpbmxpbmUgdm9pZCBwcGd0
+dF9pbnZhbGlkYXRlX3B0ZShzdHJ1Y3QgaW50ZWxfdmdwdV9wcGd0dF9zcHQgKnNwdCwKQEAg
+LTEwMTYsNyArMTAxNiw3IEBAIHN0YXRpYyBpbmxpbmUgdm9pZCBwcGd0dF9pbnZhbGlkYXRl
+X3B0ZShzdHJ1Y3QgaW50ZWxfdmdwdV9wcGd0dF9zcHQgKnNwdCwKIAlpbnRlbF9ndnRfZG1h
+X3VubWFwX2d1ZXN0X3BhZ2UodmdwdSwgcGZuICZsdDsmbHQ7IFBBR0VfU0hJRlQpOwogfQog
+Ci1zdGF0aWMgaW50IHBwZ3R0X2ludmFsaWRhdGVfc3B0KHN0cnVjdCBpbnRlbF92Z3B1X3Bw
+Z3R0X3NwdCAqc3B0KQorc3RhdGljIGludCBwcGd0dF9pbnZhbGlkYXRlX3NwdChzdHJ1Y3Qg
+aW50ZWxfdmdwdV9wcGd0dF9zcHQgKnNwdCwgaW50IGlzX2Vycm9yKQogewogCXN0cnVjdCBp
+bnRlbF92Z3B1ICp2Z3B1ID0gc3B0LSZndDt2Z3B1OwogCXN0cnVjdCBpbnRlbF9ndnRfZ3R0
+X2VudHJ5IGU7CkBAIC0xMDU5LDkgKzEwNTksMTEgQEAgc3RhdGljIGludCBwcGd0dF9pbnZh
+bGlkYXRlX3NwdChzdHJ1Y3QgaW50ZWxfdmdwdV9wcGd0dF9zcHQgKnNwdCkKIAkJfQogCX0K
+IAotCXRyYWNlX3NwdF9jaGFuZ2Uoc3B0LSZndDt2Z3B1LSZndDtpZCwgInJlbGVhc2UiLCBz
+cHQsCisJaWYgKCFpc19lcnJvcikgeworCQl0cmFjZV9zcHRfY2hhbmdlKHNwdC0mZ3Q7dmdw
+dS0mZ3Q7aWQsICJyZWxlYXNlIiwgc3B0LAogCQkJIHNwdC0mZ3Q7Z3Vlc3RfcGFnZS5nZm4s
+IHNwdC0mZ3Q7c2hhZG93X3BhZ2UudHlwZSk7Ci0JcHBndHRfZnJlZV9zcHQoc3B0KTsKKwkJ
+cHBndHRfZnJlZV9zcHQoc3B0KTsKKwl9CiAJcmV0dXJuIDA7CiBmYWlsOgogCWd2dF92Z3B1
+X2VycigiZmFpbDogc2hhZG93IHBhZ2UgJXAgc2hhZG93IGVudHJ5IDB4JWxseCB0eXBlICVk
+XG4iLApAQCAtMTIxNSw3ICsxMjE3LDcgQEAgc3RhdGljIGludCBzcGxpdF8yTUJfZ3R0X2Vu
+dHJ5KHN0cnVjdCBpbnRlbF92Z3B1ICp2Z3B1LAogCQlyZXQgPSBpbnRlbF9ndnRfZG1hX21h
+cF9ndWVzdF9wYWdlKHZncHUsIHN0YXJ0X2dmbiArIHN1Yl9pbmRleCwKIAkJCQkJCSAgIFBB
+R0VfU0laRSwgJmFtcDtkbWFfYWRkcik7CiAJCWlmIChyZXQpIHsKLQkJCXBwZ3R0X2ludmFs
+aWRhdGVfc3B0KHNwdCk7CisJCQlwcGd0dF9pbnZhbGlkYXRlX3NwdChzcHQsIDEpOwogCQkJ
+cmV0dXJuIHJldDsKIAkJfQogCQlzdWJfc2UudmFsNjQgPSBzZS0mZ3Q7dmFsNjQ7CkBAIC0x
+MzkzLDcgKzEzOTUsNyBAQCBzdGF0aWMgaW50IHBwZ3R0X2hhbmRsZV9ndWVzdF9lbnRyeV9y
+ZW1vdmFsKHN0cnVjdCBpbnRlbF92Z3B1X3BwZ3R0X3NwdCAqc3B0LAogCQkJcmV0ID0gLUVO
+WElPOwogCQkJZ290byBmYWlsOwogCQl9Ci0JCXJldCA9IHBwZ3R0X2ludmFsaWRhdGVfc3B0
+KHMpOworCQlyZXQgPSBwcGd0dF9pbnZhbGlkYXRlX3NwdChzLCAwKTsKIAkJaWYgKHJldCkK
+IAkJCWdvdG8gZmFpbDsKIAl9IGVsc2UgewotLSAKMi4yNS4x
+ù
