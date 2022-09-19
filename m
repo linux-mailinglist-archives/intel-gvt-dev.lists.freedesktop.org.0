@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7185A5BD5A0
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Sep 2022 22:19:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E4DB5BD834
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 01:23:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EED5310E11F;
-	Mon, 19 Sep 2022 20:19:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8134710E202;
+	Mon, 19 Sep 2022 23:23:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 19 Sep 2022 20:19:32 UTC
-Received: from mail.tiedsfat.click (unknown [209.142.103.235])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7E41E10E117
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Mon, 19 Sep 2022 23:23:37 UTC
+Received: from mail.insfats.click (unknown [185.104.151.128])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DA0E610E1FB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Sep 2022 20:19:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tiedsfat.click; 
+ Mon, 19 Sep 2022 23:23:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=insfats.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=suzanne_hu@tiedsfat.click; bh=GhYjV7pauDVl6nhFTTOXD76Actw=;
- b=eR3X67Gs0BBTX1xQGVawTIvm5OqUgfaZLDWCVjXOtbnNDKfgspUOqaf/x+zXDWBqI0mTyn99bb4K
- BRgZ/c4dQc3vDSiyARrKdXkyfbE7Gs0u+8YnBAmY4JLAE+Wlv1ppIowEcm1sqhc+hpxJjN2y5bfN
- +uQ56IIpDFmLHKRhqdg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tiedsfat.click;
- b=Xv7NK6MLwDMZ4rBl9eakgWf3nRadZVvIk8T5GBDewSbB0CSNtibfUBirXsnjmpJTlCJteRK7c65O
- ybEQgzQWhNvy77dYzTp7H6J1jjNVZH+kZ/iUtt/7ibZy1FNiBKAJc/t3L7SRuUYfglqh+B+FuzDq
- ONzsZ2A7tDrSExGxX0M=;
-Received: by mail.tiedsfat.click id h53i020001gm for
+ i=paula.colombo@insfats.click; 
+ bh=TCfpTsw/7HBh4Y7CB7Y8ifGzKxI=;
+ b=JB/qa+wUkQ4J1nh6P1ENMDrdchFi3K4UlXoDkpfuk05S2GsM4tdhYnqcQtwiH00MsUUihuQVPoe7
+ 0x5ec+o/nrFT7kKz/0vdZCRVO6tyIsBAFcnJPC2yAPhDyPWARS0cAXn4lj63ZbUhEqVv/nu3IqvI
+ QA+c66jhhSP0+A+oiTw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=insfats.click;
+ b=nRBBXj1vSlz4gPdmFFoXL6VqFhNvZTf40FRkeWGkrvabnsaShZEYFqmkel3LNL+S7ThAQ5TwXDgo
+ CiYuP9W6lc05FaG/YELzef10caCd0olv3b45WEfksMnv8EN65s0xG2dPlIgMZq9TosDeF6gRdkvo
+ VO1C8smILODTKjY80nE=;
+Received: by mail.insfats.click id h53svk0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Sep 2022 17:38:11 -0400 (envelope-from
- <suzanne_hu-intel+2Dgvt+2Ddev=lists.freedesktop.org@tiedsfat.click>)
-Date: Mon, 19 Sep 2022 17:38:11 -0400
-From: Suzanne Hu <suzanne_hu@tiedsfat.click>
+ Mon, 19 Sep 2022 19:08:29 -0400 (envelope-from
+ <paula.colombo-intel+2Dgvt+2Ddev=lists.freedesktop.org@insfats.click>)
+Date: Mon, 19 Sep 2022 19:08:29 -0400
+From: Paula Colombo <paula.colombo@insfats.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Give your Home Depot Review for a New Mikita Drill Kit
- intel-gvt-dev@lists.freedesktop.org
+Subject: Congratulations Home Depot Shopper, Claim your Home Depot Dyson Vacuum
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_673_968727404.1663618061758"
-Message-ID: <0.0.0.4A.1D8CC701DD1A89C.1AC4A9@mail.tiedsfat.click>
+ boundary="----=_Part_796_2093367310.1663628890780"
+Message-ID: <0.0.0.58.1D8CC7CBAEB9BE0.39F8A2@mail.insfats.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,28 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_673_968727404.1663618061758
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Give your Home Depot Review for a New Mikita Drill Kit  intel-gvt-dev@lists.freedesktop.org
-
-Go Here if you want a Cordless Mikita Drill Kit:http://www.tiedsfat.click/rinse-casserole/a804A2395uW86_11Y390gdudcen36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQW9e9o5bOW105kNwDj
-
-
-
-
-96 Mowat_ AVE, Toronto.  ON M4K 3K1 CA
-
-7396569:61927067
-
-To cut off communications, Go.This.Way:http://www.tiedsfat.click/unkind-medicinal/24c6P2Jk395KO86j11E390PeYdcej36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQW9e9o6owI_106m12jwD
-
-Our e-mail was selected for intel-gvt-dev@lists.freedesktop.org
-
-
-
-------=_Part_673_968727404.1663618061758
+------=_Part_796_2093367310.1663628890780
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,20 +62,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><a href="http://www.tiedsfat.click/9714z2395YlR8611i390dZudceD36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQW9e9o7Rg1tH0R6dXwPMD/mantel-totaller" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here if you want a Cordless Mikita Drill Kit</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-40f5671f-7fff-11c3-137e-605bb662134c"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:541px;"><a href="http://www.tiedsfat.click/9714z2395YlR8611i390dZudceD36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQW9e9o7Rg1tH0R6dXwPMD/mantel-totaller"><img alt="Go Here for your HomeDepot Bonus" src="http://www.tiedsfat.click/forklift-cask/a265n23H95VL7ah11d3_90fFdcev36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQW9e9o6PwD10x6iAjTwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 541px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Be Quick About It! Special Offer Is Done in 2 Days.</span></span></p> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><a href="http://www.insfats.click/discrepancies-caverns/a264n2395en8H610W3919ldd1k36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQY9e9Q6S1Z0Th6g0wOOD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Home Depot Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><a href="http://www.insfats.click/discrepancies-caverns/a264n2395en8H610W3919ldd1k36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQY9e9Q6S1Z0Th6g0wOOD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:310px;"><img alt="Begin Here to Answer a Few Questions" src="http://www.insfats.click/discrepancies-caverns/8286fGm2395l7kVa11L39U1bGdd1H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQY9e9Q7G1Lr0CT6ENTJwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 310px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Step On It! Price Reduction Ends in 3 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT Avenue, TORONTO ONT. M4K 3KI CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7396569:61927067</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut off communications, </span><a href="http://www.tiedsfat.click/dc76o23mR95cm86z11RI390eWdceD36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQW9e9o6H1KJx05zlNwD/intercepts-retreats" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go.This.Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p>   
- <img src="http://www.tiedsfat.click/intercepts-retreats/ada5V23p95y85SL11B3L910xdceA36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQW9e9o5t1Oz06DXAUwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. MOWAT. AVE, Toronto. ONT. M4K 3KI Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To do away with e-mail, </span><a href="http://www.insfats.click/discrepancies-caverns/8646q2n39t5Y8r6B10X391aQdd1q36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQY9e9Q6iBU1K06oJlwD1" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Over Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our message was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-92c98928-7fff-d2a7-bb20-593fcfce8714"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6614687.84583911</span></span></p>   
+ <img src="http://www.insfats.click/kilograms-compromises/dc84G2395j85UR11u3A91cNdd1u36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQY9e9Q7aH1X0Oh5l0w0D" alt=""/></body>
 </html>
 
-------=_Part_673_968727404.1663618061758--
+------=_Part_796_2093367310.1663628890780--
 
