@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42B3B5BC009
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Sep 2022 23:23:51 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCAD15BC084
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Sep 2022 01:18:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C584210E24D;
-	Sun, 18 Sep 2022 21:23:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A4ADA10E368;
+	Sun, 18 Sep 2022 23:18:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Sun, 18 Sep 2022 21:23:24 UTC
-Received: from mail.yamsmet.click (unknown [185.104.151.249])
- by gabe.freedesktop.org (Postfix) with ESMTP id 30F1E10E064
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sun, 18 Sep 2022 23:18:25 UTC
+Received: from mail.incore.click (unknown [213.209.159.25])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F333410E368
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Sep 2022 21:23:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yamsmet.click;
+ Sun, 18 Sep 2022 23:18:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=incore.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=halterman_ericka@yamsmet.click; 
- bh=PQ2xbafxkzJjtbCEMQNQnY2SRzE=;
- b=BEckCraWrn5sAI5NRgSOzbFYjSi9X6Pe4DfATiFtWaUeQjHEkN8B8qodHdBn1b6OWPqHGemL6YX8
- qf5V0NMy0OTZ8gn8pIAuusiMT08CdwoRS2EON9s38gZI6pC4P4ELacTODPdOWd1ha/4dFPAr2Vjw
- LfxUPO1KZYs09Fx4JLs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yamsmet.click;
- b=hoaczTiHBqU9v16Dt4H9omdG7f2tdRE9mZEymcMKfeIsOA/heyd4iQn4ptadmG6RAeyHC62aKZx8
- sKs3ZascXRdn7s1Hn+pcLNsNI1rueGmTPkzWSTM7pM63qPZJgh4N44SZojoJUn5BY6vnCIYS2OZY
- r0XGw7tNy8SILMCXa+Y=;
-Received: by mail.yamsmet.click id h4ugnk0001g9 for
+ i=osol.rosalie@incore.click; bh=+vcJmS+OaJYVzAmTI9ZgmCEAW6o=;
+ b=VemX7vtBaWL4bsydbJ777mPuZzLaMXPYJUXmIeR0X+PeG7v0YeRLNmBPGFsQnSkvm1yJ724vR6yp
+ gs1bck7BJp2HSQu2Oz74nIDlDrvle1S8Z3dK2FF9Zfv4XbxpqgN/LV/QMr7B5J7VsAdPtg2r5T/9
+ +wzZMi+1b0cTBafZVv4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=incore.click;
+ b=qWhhjiZbUiGTFYZ/OlxGvlp3QRrhzHgqdfbTwDEqlc5lttMUlCeW1FZZ154J9xYKuKYvYo1wrihf
+ shGpAZKB54ssTQTrBZfx1A3xhkLMK4YbHF911bM5uMi8dGSxZAAnm7uappXGcTw5UFj0mRMwcIas
+ juBgbYzobVjfHJwhJXM=;
+Received: by mail.incore.click id h4uu700001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Sep 2022 18:37:19 -0400 (envelope-from
- <halterman_ericka-intel+2Dgvt+2Ddev=lists.freedesktop.org@yamsmet.click>)
-Date: Sun, 18 Sep 2022 18:37:19 -0400
-From: Ericka Halterman <halterman_ericka@yamsmet.click>
+ Sun, 18 Sep 2022 20:38:39 -0400 (envelope-from
+ <osol.rosalie-intel+2Dgvt+2Ddev=lists.freedesktop.org@incore.click>)
+Date: Sun, 18 Sep 2022 20:38:39 -0400
+From: Rosalie Osol <osol.rosalie@incore.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Receive a Ninja Blender from BB&B intel-gvt-dev@lists.freedesktop.org
+Subject: The Right to Protect Your Freedom. Get your CCW Today
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_349_1386399374.1663535210687"
-Message-ID: <0.0.0.26.1D8CBAF36214DBA.2E81A9@mail.yamsmet.click>
+ boundary="----=_Part_637_610670851.1663542489182"
+Message-ID: <0.0.0.45.1D8CBC029346E1E.4FEDF0@mail.incore.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_349_1386399374.1663535210687
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Receive a Ninja Blender from BB&B  intel-gvt-dev@lists.freedesktop.org
-
-Go Here for a Ninja Blenderl from BB&B:http://www.yamsmet.click/8274f2395Dyq8611j38od3Idc0q36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQX9ene5Vr10V6g@kzwD/interconnections-ingrown
-
-
-
-
-'96 MOWAT Av, T0R0NT0 ONT M4K3Kl CA
-
-No longer want to receive email communications?, Click.This:http://www.yamsmet.click/8db5Yt2395vQG8610I38d4pdc0q36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQX9ene6Q1z0JL5E@wpD/clumsily-reviewed
-
-This email communication was meant for intel-gvt-dev@lists.freedesktop.org
-
-1771855 39683386
-
-------=_Part_349_1386399374.1663535210687
+------=_Part_637_610670851.1663542489182
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,20 +61,18 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><a href="http://www.yamsmet.click/15b5p239J5GX86s10G38d3mdc0k36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQX9ene6A10pi_6oLwTDB/aureole-counterfeiter" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for a Ninja Blender from BB&B</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:602px;height:470px;"><a href="http://www.yamsmet.click/15b5p239J5GX86s10G38d3mdc0k36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQX9ene6A10pi_6oLwTDB/aureole-counterfeiter"><img alt="Go Here for a Ninja Blenderl from BB&B" src="http://www.yamsmet.click/4495JZ2395GWU7a10O38d5gdc0U36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQX9ene6m_1r0x6y2wXXD/aureole-counterfeiter" style="margin-left: 0px; margin-top: 0px; width: 602px; height: 470px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Be Quick About It! Promotion Comes To An End in 3 Days.</span></span></p> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><a href="http://www.incore.click/3776I2VP395Su86l11vF38dbLdc2j36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQI9eom5HzJ106zjwlD0/smartly-stationery" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for the Highest Chance of Approval</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:605px;height:688px;"><a href="http://www.incore.click/3776I2VP395Su86l11vF38dbLdc2j36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQI9eom5HzJ106zjwlD0/smartly-stationery"><img alt="Go Here for your CCW Certificate from Home" src="http://www.incore.click/smartly-stationery/24c4J2395z7JHa12hQ38ddhOdc2g36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQI9eom5qv10l6pl@pwD" style="margin-left: 0px; margin-top: 0px; width: 605px; height: 688px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Shake a Leg! Price Reduction Stops in 5 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT' AV, Toronto- Ontario M4K 3KI CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email communications?, <a href="http://www.yamsmet.click/clumsily-reviewed/a445s239T5n86Do12yo3D8d4odc0Q36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQX9ene5SuO106Hj@wDJ">Click.This</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email communication was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7773247~39683386</span></span></p>   
- <img src="http://www.yamsmet.click/5395G2A395Hl8A511H38d6MHdc0n36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQX9ene6wZU1t05DMw2D/clumsily-reviewed" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">112O1' N Tatum. BLVD NO. 3OO' # 68200-, Phoenix- Arizona&nbsp; 85028</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To stop communication, </span><a href="http://www.incore.click/smartly-stationery/3965zz2395Q86Iv10C38dcGdc2l36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQI9eom5kQm105eAqwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin_Ahead_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1e156a26-7fff-5109-dabe-7026d3a2ad9a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3266812~73056569</span></span></p>   
+ <img src="http://www.incore.click/commandingly-appeases/9725t239u5P8SB511j38dmeldc2L36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQI9eom7avUiN106q2l3wD" alt=""/></body>
 </html>
 
-------=_Part_349_1386399374.1663535210687--
+------=_Part_637_610670851.1663542489182--
 
