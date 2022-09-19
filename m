@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 904FC5BD0DF
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Sep 2022 17:27:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F52B5BD382
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Sep 2022 19:19:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DD7D110E678;
-	Mon, 19 Sep 2022 15:27:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0D5DF10E04F;
+	Mon, 19 Sep 2022 17:19:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Mon, 19 Sep 2022 15:27:26 UTC
-Received: from mail.nukefats.lol (unknown [185.104.151.213])
- by gabe.freedesktop.org (Postfix) with ESMTP id 923A010E675
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Mon, 19 Sep 2022 17:19:33 UTC
+Received: from mail.quickfat.click (unknown [185.104.151.93])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6908E10E04F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Sep 2022 15:27:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nukefats.lol;
+ Mon, 19 Sep 2022 17:19:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=quickfat.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=helen.skubik@nukefats.lol; bh=53+S4duuT7bmXffb2mEoe0yyx+I=;
- b=TwXIJuDKC/8LpFhLG0T60Z5vVrYTvgMJ7YadP0Jw1hb/ZmduucNvQSDyQC7E3dMlzwBSJo4b2Nzz
- GIgo2spB8aShqF6ICAj8TuOaNY6p8bDOsLdZdH9e4QK01NXZFgvKBvIJal0zZWGuiKOXTRJpIUr2
- K2jYUE4EvPeArkzOkv4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nukefats.lol;
- b=OV/J+IE+dbAS0oTW2EcCMOz0jtwVK3HeAKu8o6t/gc8bfcu46lxx0uzbJKux7Sl0h3CxYwHBVDW4
- R3Pd8oD9kUHl8rJsn86xeCS68skVKbpMHfUOfnv5lmDrDyaRhtaY8YV8tAblOrZlgMz7zQqWkrka
- 804NkCdnG46kG8tzaO4=;
-Received: by mail.nukefats.lol id h52fom0001g6 for
+ i=regina.bewig@quickfat.click; 
+ bh=MVJps4AXRXxNBMEsPXritSxQr3M=;
+ b=GEeo5sopvkctnVO0gkECJfS6sDuMxQBkLuzKQNT+IZIv00Pya50YXirU3jrtdL3QZ2PiZ0d+ZRfT
+ 9IPTYl2zloFFeCh/lvm+RfXRwI+QmUwI2wZFofqpMFKSfDSd1m8FWhoAo+2FraO1bwb04YCNSfKd
+ 2n20sWZMlRfjtXJiiaM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=quickfat.click;
+ b=chGUEbT9TroK40dvAzzg9vRPl758c0mgsCbA1zyzlAOI1YCPgfKNkoyAqE2eWNn00gpLkrgna/Z8
+ b+X2azGdVzik7ZbCVAVI8IrOMM+QckHZ+BzcdWZNM99NER2Aetfs06ClxdUU/5djwBocE6Y0xIT/
+ j+cDHO9cDw/CvCU5vYE=;
+Received: by mail.quickfat.click id h52iaa0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Sep 2022 12:44:01 -0400 (envelope-from
- <helen.skubik-intel+2Dgvt+2Ddev=lists.freedesktop.org@nukefats.lol>)
-Date: Mon, 19 Sep 2022 12:44:01 -0400
-From: Helen Skubik <helen.skubik@nukefats.lol>
+ Mon, 19 Sep 2022 13:08:31 -0400 (envelope-from
+ <regina.bewig-intel+2Dgvt+2Ddev=lists.freedesktop.org@quickfat.click>)
+Date: Mon, 19 Sep 2022 13:08:31 -0400
+From: Regina Bewig <regina.bewig@quickfat.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get Multiple Window Prices from Marvin, Pella & more  #94329
+Subject: Buy Andersen replacement windows BOGO 40%      #2951608
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_106_1484585237.1663600394186"
-Message-ID: <0.0.0.B.1D8CC470564768C.102674@mail.nukefats.lol>
+ boundary="----=_Part_460_200024586.1663607295377"
+Message-ID: <0.0.0.33.1D8CC4A7195AADA.553E9A@mail.quickfat.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,24 +53,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_106_1484585237.1663600394186
+------=_Part_460_200024586.1663607295377
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Get Multiple Window Prices from Marvin, Pella & more  #94329
+Buy Andersen replacement windows BOGO 40% 
 
-Begin Here to get Window Quotes from Pella & more~http://www.nukefats.lol/hermetic-briny/d145zu2395CJ8X611A38ufaydc9i36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQB9eoS5zLx105JXXwD
+Begin here for Renewal by Andersen windows BOGO 40% off-http://www.quickfat.click/stimulates-Chomsky/cba6C2T3j95o8p6s11t39I01ndcbw36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQc9eoK7H10qWgr5B2wXD
 
 
 
-To discontinue communication, Follow Here~http://www.nukefats.lol/1b54A2395z8KK612r3U8fQ8Cdc9J36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQB9eoS6Sv1y0Q6SM3JwD/aberration-sailor
-This email message was selected for intel-gvt-dev@lists.freedesktop.org
-95O_ TOWER Ln. , 
-City, California 
-94404 United States
-9965083~63164413
 
-------=_Part_106_1484585237.1663600394186
+
+
+
+2040.  Merick 
+ROAD, Ste.  408 Merick, 
+New~York 11566.  
+USA
+
+To quit notices, Begin_Ahead_Here-http://www.quickfat.click/Georgians-baleful/6486jYJ2395E86Jg10f3902mdcbK36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQc9eoK6sQm10P5jMwlD
+
+This communication was sent to intel-gvt-dev@lists.freedesktop.org
+
+86176649:2951608
+
+------=_Part_460_200024586.1663607295377
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -78,24 +87,22 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.nukefats.lol/a074B2395Hx8U610a38f7Mdc9F36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQB9eoS6u1h0WF6kMUUwD/shotguns-muddy" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to get Window Quotes from Pella & more</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.nukefats.lol/a074B2395Hx8U610a38f7Mdc9F36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQB9eoS6u1h0WF6kMUUwD/shotguns-muddy" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:608px;height:1024px;"><img alt="Compare Windows to Save" src="http://www.nukefats.lol/skillfully-busiest/1204b2395R7Tas10l38f9rdc9q36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQB9eoS5s1P0D6DkW@wD" style="margin-left: 0px; margin-top: 0px; width: 608px; height: 1024px;" /></span></span></a></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><a href="http://www.quickfat.click/burgess-grandfather/cba6z23l9R5S86YV11SZ3900UdcbW36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQc9eoK5M10QN5CXlwD">Go here to BOGO 4O% Off Now</a></span></span><br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><a href="http://www.quickfat.click/minutemen-anxieties/6485SL2395K8m6D11N390g1Pdcbo36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQc9eoK5htA105i@MwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:475px;height:2048px;"><img height="2048" src="http://www.quickfat.click/15b5Ig2395z7aZm10p3903gdcbY36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQc9eoK7lGKmw106kJPjwD/preassigns-proliferates" style="margin-left:0px;margin-top:0px;" title="Fall Window Special BOGO 40 + 200 " width="475" /></span></span></a></span></p> 
+  <div style="text-align: center;">
+   <a href="http://www.quickfat.click/minutemen-anxieties/6485SL2395K8m6D11N390g1Pdcbo36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQc9eoK5htA105i@MwD" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin here for Renewal by Andersen windows BOGO 40% off</span></a>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To discontinue communication, </span><a href="http://www.nukefats.lol/bladder-docket/7924I2395fP86i12JD38f8tKdc9j36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQB9eoS5b10VS5rMwLD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Follow Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">95O- T0WER LANE,<br /> Foster City, Calif.<br /> 94404-&nbsp;</span></span><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">UNITED STATES</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9965083:63164413</span></span></p>   
- <img src="http://www.nukefats.lol/bladder-docket/30I4F2395RG85F10X38fbwdc9k36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQB9eoS5X1XZ06qTlLwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2O4O. Merrick<br /> ROAD, Ste.<br /> 408_ Merrick, NY<br /> II566'&nbsp;</span></span><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">UNITED STATES</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To quit notices,</span><a href="http://www.quickfat.click/preassigns-proliferates/bac5e239t5Evv8611m39U02ZdcbC36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQc9eoK7pBA10gW6yq3kwD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Begin_Ahead_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4935081 2951608</span></span></p>   
+ <img src="http://www.quickfat.click/chanting-discriminated/a266B239wD5p8Q5v11y39m04kdcbg36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQc9eoK5cqZ106YzjwDL" alt=""/></body>
 </html>
 
-------=_Part_106_1484585237.1663600394186--
+------=_Part_460_200024586.1663607295377--
 
