@@ -1,44 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B1505BCE63
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Sep 2022 16:20:53 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 904FC5BD0DF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Sep 2022 17:27:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D53A210E65B;
-	Mon, 19 Sep 2022 14:20:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DD7D110E678;
+	Mon, 19 Sep 2022 15:27:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Mon, 19 Sep 2022 14:20:47 UTC
-Received: from mail.fatminds.lol (unknown [213.209.159.97])
- by gabe.freedesktop.org (Postfix) with ESMTP id BFFA210E65B
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Mon, 19 Sep 2022 15:27:26 UTC
+Received: from mail.nukefats.lol (unknown [185.104.151.213])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 923A010E675
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Sep 2022 14:20:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fatminds.lol;
+ Mon, 19 Sep 2022 15:27:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nukefats.lol;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=reichelt.natalie@fatminds.lol; 
- bh=TGsL2xY7lzDnIf7i8PnI1CdzpZU=;
- b=UsrcMqmAsnXslztRfdlpyKHVVgO5brhI5FxY/6hzxpfDIVfkuYhxvhDlyic/1h3781G9SBKw6gpt
- LnP68emp9VgM49xjv98jthAFEzLG6q2FOXMphrVjyCrvY7Cea4ycNqkzONwV4NmFJCUzCNz3TOu6
- Dtr4owpgKWq0AqeTvYI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fatminds.lol;
- b=kphyoVR7RCzpvsNGnsvgOs0kMkQcXobAb8/CVRUhoYT4R6//+qD6IlulMvqyFkVOATqe2neK44d5
- rGey7owbW02j5QZdT6YmfmGSkmab6hIjYJ9d5Ree6stg2wzl13fqcZn7sAO15LCVawKLsNPo8Nue
- wqYCeRI4p0uH3RHqPxI=;
-Received: by mail.fatminds.lol id h527uo0001g6 for
+ i=helen.skubik@nukefats.lol; bh=53+S4duuT7bmXffb2mEoe0yyx+I=;
+ b=TwXIJuDKC/8LpFhLG0T60Z5vVrYTvgMJ7YadP0Jw1hb/ZmduucNvQSDyQC7E3dMlzwBSJo4b2Nzz
+ GIgo2spB8aShqF6ICAj8TuOaNY6p8bDOsLdZdH9e4QK01NXZFgvKBvIJal0zZWGuiKOXTRJpIUr2
+ K2jYUE4EvPeArkzOkv4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nukefats.lol;
+ b=OV/J+IE+dbAS0oTW2EcCMOz0jtwVK3HeAKu8o6t/gc8bfcu46lxx0uzbJKux7Sl0h3CxYwHBVDW4
+ R3Pd8oD9kUHl8rJsn86xeCS68skVKbpMHfUOfnv5lmDrDyaRhtaY8YV8tAblOrZlgMz7zQqWkrka
+ 804NkCdnG46kG8tzaO4=;
+Received: by mail.nukefats.lol id h52fom0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 19 Sep 2022 11:41:52 -0400 (envelope-from
- <reichelt.natalie-intel+2Dgvt+2Ddev=lists.freedesktop.org@fatminds.lol>)
-Date: Mon, 19 Sep 2022 11:41:52 -0400
-From: Natalie Reichelt <reichelt.natalie@fatminds.lol>
+ Mon, 19 Sep 2022 12:44:01 -0400 (envelope-from
+ <helen.skubik-intel+2Dgvt+2Ddev=lists.freedesktop.org@nukefats.lol>)
+Date: Mon, 19 Sep 2022 12:44:01 -0400
+From: Helen Skubik <helen.skubik@nukefats.lol>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Lowes is Giving Away a Stanley Tool Set.
- intel-gvt-dev@lists.freedesktop.org
+Subject: Get Multiple Window Prices from Marvin, Pella & more  #94329
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_898_846066116.1663596665257"
-Message-ID: <0.0.0.64.1D8CC3E56F202CA.4213F@mail.fatminds.lol>
+ boundary="----=_Part_106_1484585237.1663600394186"
+Message-ID: <0.0.0.B.1D8CC470564768C.102674@mail.nukefats.lol>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +52,24 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_898_846066116.1663596665257
+------=_Part_106_1484585237.1663600394186
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Lowes is Giving Away a Stanley Tool Set.  intel-gvt-dev@lists.freedesktop.org
+Get Multiple Window Prices from Marvin, Pella & more  #94329
 
-Begin Here for the 1,000,000 Stanley Tool Kit Giveaway from Lowes:http://www.fatminds.lol/af76lg239o5DT8J610y38f3Zdc8_36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQD9eoR7KY1R0_x5WqwWD/started-ballerinas
-
-
+Begin Here to get Window Quotes from Pella & more~http://www.nukefats.lol/hermetic-briny/d145zu2395CJ8X611A38ufaydc9i36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQB9eoS5zLx105JXXwD
 
 
-96.  MOWAT_ AVENUE, TORONTO Ont.  M4K3Kl Canada
 
-To withdraw from notices, Visit.Ahead.Here:http://www.fatminds.lol/embellish-Lemuel/1f24R2395coM8612RD38fW4vdc8u36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQD9eoR7g1Q0BOk6L13NwD
+To discontinue communication, Follow Here~http://www.nukefats.lol/1b54A2395z8KK612r3U8fQ8Cdc9J36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQB9eoS6Sv1y0Q6SM3JwD/aberration-sailor
+This email message was selected for intel-gvt-dev@lists.freedesktop.org
+95O_ TOWER Ln. , 
+City, California 
+94404 United States
+9965083~63164413
 
-This e-mail message was directed to intel-gvt-dev@lists.freedesktop.org
-
-13739048 6299831
-
-------=_Part_898_846066116.1663596665257
+------=_Part_106_1484585237.1663600394186
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,21 +78,24 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.fatminds.lol/4c15U2l395B8jP610l38f3Vdc8Y36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQD9eoR7lV1XzY06D20lwD/Lares-swallowing" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Claim a Stanley Tool Set from Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.fatminds.lol/4c15U2l395B8jP610l38f3Vdc8Y36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQD9eoR7lV1XzY06D20lwD/Lares-swallowing" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Begin Here for the 1,000,000 Stanley Tool Kit Giveaway from Lowes" src="http://www.fatminds.lol/a9d5w239D5B7Zar10E38f5Kdc8U36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQD9eoR5tKq105jUWwD/Nietzsche-debugger" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbs
- p; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Don't Wait! Exclusive Offer Is Gone in 4 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.nukefats.lol/a074B2395Hx8U610a38f7Mdc9F36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQB9eoS6u1h0WF6kMUUwD/shotguns-muddy" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to get Window Quotes from Pella & more</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.nukefats.lol/a074B2395Hx8U610a38f7Mdc9F36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQB9eoS6u1h0WF6kMUUwD/shotguns-muddy" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:608px;height:1024px;"><img alt="Compare Windows to Save" src="http://www.nukefats.lol/skillfully-busiest/1204b2395R7Tas10l38f9rdc9q36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQB9eoS5s1P0D6DkW@wD" style="margin-left: 0px; margin-top: 0px; width: 608px; height: 1024px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT- Avenue, Toronto ONTARIO M4K 3Kl CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To withdraw from notices, <a href="http://www.fatminds.lol/8db5d23N95b86zC12f3j8f4pQdc8P36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQD9eoR6y10hRt5HlwND/Uruguay-centrifuge">Visit.Ahead.Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4446449 6299831</span></span></p>   
- <img src="http://www.fatminds.lol/31d6UL2D395Ozp8512O38Bwf6Ydc8z36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQD9eoR5Y1tQ05m3BwD/trance-Norton" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To discontinue communication, </span><a href="http://www.nukefats.lol/bladder-docket/7924I2395fP86i12JD38f8tKdc9j36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQB9eoS5b10VS5rMwLD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Follow Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">95O- T0WER LANE,<br /> Foster City, Calif.<br /> 94404-&nbsp;</span></span><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">UNITED STATES</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9965083:63164413</span></span></p>   
+ <img src="http://www.nukefats.lol/bladder-docket/30I4F2395RG85F10X38fbwdc9k36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQB9eoS5X1XZ06qTlLwD" alt=""/></body>
 </html>
 
-------=_Part_898_846066116.1663596665257--
+------=_Part_106_1484585237.1663600394186--
 
