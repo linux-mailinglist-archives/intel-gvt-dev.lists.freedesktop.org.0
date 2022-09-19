@@ -1,78 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C12965BED74
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 21:17:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E54AD5BEF71
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 23:54:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5D5C08933E;
-	Tue, 20 Sep 2022 19:17:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 77BDB10E2C8;
+	Tue, 20 Sep 2022 21:54:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AFBDE10E760
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 19:17:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663701456;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=48Tp1la85hsdqkGfG0YxmrPZH84TL2fOAb8LsP1PYSg=;
- b=Av7MqM/4oHonE62bEhj4hXvAWyJ+SUTuWU0IXT7x45sJ8GWXO7v27G+PDovyfYKL8C6IxP
- edz7jdm0tOOl3s3ne5a6LGuPnQBoExlmZ/MiwDZWRkQLj7RjQ3mQ2dRFcp0I3AdgLZcpJ7
- aekeVO+JF+l8kypUKEG+oC8JWHE2P8Y=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-503-CTx5-W3CPM6zBm4EkTXyyg-1; Tue, 20 Sep 2022 15:17:27 -0400
-X-MC-Unique: CTx5-W3CPM6zBm4EkTXyyg-1
-Received: by mail-il1-f199.google.com with SMTP id
- d6-20020a056e020be600b002dcc7977592so2164610ilu.17
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 12:17:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date;
- bh=48Tp1la85hsdqkGfG0YxmrPZH84TL2fOAb8LsP1PYSg=;
- b=2OuOmZ+NbHcLSLjmo6MIDX0nTuUalyP2q9Cga9rTc12zfeS1zEXMVYeQqMg7pCi8KS
- e+Y3x1Eu2FedOtQDhMMTuRAlYsJMl/hb/VL3ksbFzOK8GzgEkPnGlbgSlvvlCk5s8dd7
- 9GWBpJUaIWzvKGpiWg9A49vZP9n6Ww9UVhyqwr2Qlp1n1bZamrAotIrXfrkxwWfS04gW
- I9Cq3RPnuyNZAP6DidYxxOIt+pjkDWf+IlVeNR/PQ1hbZsQ7n2H+pj1+8sMKfk1fbM9D
- No4AQnLSImYow5Npc/sLAJumzkKTKdtXKrnD1ewZ38c+Pvbhy1IW5Bv9lCq+VzsucHTH
- sMYg==
-X-Gm-Message-State: ACrzQf0Jxgx5fYZ/i0eQywh49hhuv806cfOZDIgPOUvZVWM0QTsgkkXn
- DSEyorh4mRUkXBWY5Aza6gwoU9zdvxBy6cUxn8BOJUP6RahN+sR+Rz9wAIOFvf98CFu8BDMqNHx
- lO1nZfVyXMCnthjR4P7SLtojbb1D2yLzkZw==
-X-Received: by 2002:a6b:670e:0:b0:6a0:cffe:5c44 with SMTP id
- b14-20020a6b670e000000b006a0cffe5c44mr9830981ioc.74.1663701447173; 
- Tue, 20 Sep 2022 12:17:27 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM5Jz+PJQhyf25QQiv7P7Dcvr+B3WKZW0Zx0uCADBWPkyugzHyErwfotGdnRZ3kL/bsX2pQ9HA==
-X-Received: by 2002:a6b:670e:0:b0:6a0:cffe:5c44 with SMTP id
- b14-20020a6b670e000000b006a0cffe5c44mr9830947ioc.74.1663701446917; 
- Tue, 20 Sep 2022 12:17:26 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- b27-20020a026f5b000000b00349d4ee2a4asm215964jae.91.2022.09.20.12.17.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Sep 2022 12:17:26 -0700 (PDT)
-Date: Tue, 20 Sep 2022 13:17:23 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Kevin Tian <kevin.tian@intel.com>
-Subject: Re: [PATCH v3 06/15] vfio/mtty: Use the new device life cycle helpers
-Message-ID: <20220920131723.2541b7e8.alex.williamson@redhat.com>
-In-Reply-To: <20220909102247.67324-7-kevin.tian@intel.com>
-References: <20220909102247.67324-1-kevin.tian@intel.com>
- <20220909102247.67324-7-kevin.tian@intel.com>
-Organization: Red Hat
+X-Greylist: delayed 30595 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Sep 2022 21:54:28 UTC
+Received: from vndcfmkw.scottgallup.com (vndcfmkw.scottgallup.com
+ [194.87.231.105])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2C24C10E2C8;
+ Tue, 20 Sep 2022 21:54:28 +0000 (UTC)
+Received: from [129.205.124.228] (helo=[192.168.1.104])
+ by vndcfmkw.scottgallup.com with esmtpa (Exim 4.92.3)
+ (envelope-from <salesbaitwood@hotmail.com>)
+ id 1oaPh5-0004ev-15; Mon, 19 Sep 2022 22:56:51 +0000
+Content-Type: multipart/alternative; boundary="===============0997282291=="
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Subject: WOOD manufacturer in China
+To: Recipients <salesbaitwood@hotmail.com>
+From: "Linda Baitwood" <salesbaitwood@hotmail.com>
+Date: Mon, 19 Sep 2022 23:55:55 +0100
+Message-Id: <E1oaPh5-0004ev-15@vndcfmkw.scottgallup.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,99 +38,206 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>, Christoph Hellwig <hch@infradead.org>,
- Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, linux-s390@vger.kernel.org,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
+Reply-To: salesbaitwood@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri,  9 Sep 2022 18:22:38 +0800
-Kevin Tian <kevin.tian@intel.com> wrote:
+You will not see this in a MIME-aware mail reader.
+--===============0997282291==
+Content-Type: text/plain; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-> From: Yi Liu <yi.l.liu@intel.com>
-> 
-> and manage available ports inside @init/@release.
-> 
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> Signed-off-by: Kevin Tian <kevin.tian@intel.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  samples/vfio-mdev/mtty.c | 67 +++++++++++++++++++++++-----------------
->  1 file changed, 39 insertions(+), 28 deletions(-)
-> 
-> diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
-> index f42a59ed2e3f..41301d50b247 100644
-> --- a/samples/vfio-mdev/mtty.c
-> +++ b/samples/vfio-mdev/mtty.c
-...
-> +static int mtty_probe(struct mdev_device *mdev)
-> +{
-> +	struct mdev_state *mdev_state;
-> +	int ret;
-> +
-> +	mdev_state = vfio_alloc_device(mdev_state, vdev, &mdev->dev,
-> +				       &mtty_dev_ops);
-> +	if (IS_ERR(mdev_state))
-> +		return PTR_ERR(mdev_state);
->  
->  	ret = vfio_register_emulated_iommu_dev(&mdev_state->vdev);
->  	if (ret)
-> -		goto err_vconfig;
-> +		goto err_put_vdev;
->  	dev_set_drvdata(&mdev->dev, mdev_state);
->  	return 0;
->  
-> -err_vconfig:
-> -	kfree(mdev_state->vconfig);
-> -err_state:
-> -	vfio_uninit_group_dev(&mdev_state->vdev);
-> -	kfree(mdev_state);
-> -err_nr_ports:
-> -	atomic_add(nr_ports, &mdev_avail_ports);
-> +err_put_vdev:
-> +	vfio_put_device(&mdev_state->vdev);
->  	return ret;
->  }
->  
-> +static void mtty_release_dev(struct vfio_device *vdev)
-> +{
-> +	struct mdev_state *mdev_state =
-> +		container_of(vdev, struct mdev_state, vdev);
-> +
-> +	kfree(mdev_state->vconfig);
-> +	vfio_free_device(vdev);
-> +	atomic_add(mdev_state->nr_ports, &mdev_avail_ports);
+Good day , friend    I am Linda from Linyi Bait Wood China,  Our company (L=
+inyi Bait Wood Industry Co., Ltd) is WOOD manufacturer in China,  =
 
-I must be missing something, isn't this a use-after-free?
+   We are supplying Wood Veneer, OSB, MDF, WPC Form Board, Wood Sawn Timber=
+, Wall Panel, Knife, Forklift, Furniture Plywood, Commercial Plywood, Film =
+Faced Plywood, Melamine Plywood, Fancy Plywood, Flexi Plywood, Gabon Okoume=
+ Plywood =
 
-mdev_state is allocated via vfio_alloc_device(), where vdev is the
-first entry in that structure, so this is equivalent to
-kvfree(mdev_state).  mbochs has the same issue.  mdpy and vfio-ap
-adjust global counters after vfio_free_device(), which I think muddies
-the situation.  Shouldn't we look suspiciously at any .release callback
-where vfio_free_device() isn't the last thing executed?  Thanks,
+ If you need any type , pls feel free to contact me =
 
-Alex
+ =
 
+ =
+
+Best regards Linda
+        Sales manager Linyi Bait Wood Industry Co., Ltd. Add:1203-147, NO. =
+100, Lingong road, Comprehensive free trade zone , Linyi city , Shandong Pr=
+ovince , China
+   WhatsApp+86 171 7003 1856
+ Tel:+86-539-8618719 Fax:+86-15168991777website:www.baitwood.com
+=20
+
+--===============0997282291==
+Content-Type: text/html; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Diso-8859-1"/></head><BODY><DIV class=3DelementToProof style=3D"FONT-SIZE=
+: 12pt; BORDER-TOP: 0px; FONT-FAMILY: Calibri, Arial, Helvetica, sans-serif=
+; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: r=
+gb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER=
+-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN s=
+tyle=3D"FONT-SIZE: 12pt; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGH=
+T: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTT=
+OM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px=
+; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); font-stretch: inh=
+erit"><SPAN style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: ba=
+seline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px;=
+ PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Good=
+ day , friend</SPAN></SPAN><SPAN style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0p=
+x; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0=
+px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DIS=
+PLAY: inline !important; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,=
+255)"></SPAN>
+<DIV style=3D"FONT-SIZE: 12pt; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDE=
+R-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDIN=
+G-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGI=
+N: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); font-stretc=
+h: inherit">
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">I am Linda =
+from Linyi Bait Wood China,&nbsp;</DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN style=
+=3D"FONT-SIZE: 12pt; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0=
+px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: =
+0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PA=
+DDING-RIGHT: 0px; font-stretch: inherit">Our company (Linyi Bait Wood Indus=
+try Co., Ltd) is WOOD manufacturer in China,&nbsp;</SPAN></DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN style=
+=3D"FONT-SIZE: 12pt; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0=
+px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: =
+0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PA=
+DDING-RIGHT: 0px; font-stretch: inherit"><BR></SPAN></DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<DIV style=3D"FONT-SIZE: 12pt; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDE=
+R-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDIN=
+G-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGI=
+N: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">We are supp=
+lying&nbsp;Wood Veneer, OSB, MDF, WPC Form Board, Wood Sawn Timber, Wall Pa=
+nel, Knife, Forklift, Furniture Plywood, Commercial Plywood, Film Faced Ply=
+wood, Melamine Plywood, Fancy Plywood, Flexi Plywood, Gabon Okoume Plywood<=
+/DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">If you need=
+ any type , pls feel free to contact me</DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></DIV><=
+/DIV></DIV><SPAN style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIG=
+N: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP:=
+ 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0=
+px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR>&nbsp;<BR>Best r=
+egards</DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0=
+px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Linda</SPAN><EM><BR>=
+&nbsp;</EM></DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<DIV style=3D'BORDER-TOP: 0px; FONT-FAMILY: PingFang, "Source Han Sans", sa=
+ns-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; =
+COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-L=
+EFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit'>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radi=
+us: 50%"><IMG style=3D"BORDER-TOP: 0px; HEIGHT: 40px; BORDER-RIGHT: 0px; WI=
+DTH: 40px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-B=
+OTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: =
+0px; PADDING-RIGHT: 0px; border-radius: 50%; object-fit: cover" src=3D"http=
+s://ci6.googleusercontent.com/proxy/YAD7lKZlN-YeUcFhXTSGAcUoTYFTiq4O25khwiS=
+q3WdDDb0cP6ltpthaq49TRVVeY8hJRYi9nrzwGo5VqGZ4yXZdwlmlkUg3uHLi6rFkis7D0ZTFdf=
+ihKfcNJHSTe00HEVGyDO95zyz0_8KDZPmOAU_Hk_K0lyMN=3Ds0-d-e1-ft#https://cowork-=
+storage-public-cdn.lx.netease.com/sign/2022/07/22/9d9eb880c81a4432b5c16fb69=
+a5a5cc6.png" data-bit=3D"iit" data-imagetype=3D"External"></DIV>
+<DIV style=3D"BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 14px; FONT-FAMILY: inherit=
+; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: baseline; BO=
+RDER-BOTTOM: rgb(225,230,237) 1px solid; WORD-BREAK: break-all; BORDER-LEFT=
+-COLOR: ; COLOR: ; PADDING-BOTTOM: 4px; PADDING-TOP: 16px; PADDING-LEFT: 0p=
+x; MARGIN: 0px 0px 0px 52px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 16px; PADDI=
+NG-RIGHT: 16px; BORDER-TOP-WIDTH: 0px; font-stretch: inherit; border-image:=
+ initial">
+<DIV style=3D"FONT-SIZE: 16px; OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 1=
+7px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BOR=
+DER-BOTTOM: 0px; FONT-WEIGHT: bolder; COLOR: ; PADDING-BOTTOM: 0px; PADDING=
+-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 4px; LINE-H=
+EIGHT: 17px; PADDING-RIGHT: 0px; font-stretch: inherit"></DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px">Sal=
+es manager</DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px">Lin=
+yi Bait Wood Industry Co., Ltd.</DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px">Add=
+:1203-147, NO. 100, Lingong road, Comprehensive free trade zone , Linyi cit=
+y , Shandong Province , China<BR></DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px"></D=
+IV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px"></D=
+IV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px">Wha=
+tsApp+86 171 7003 1856<BR></DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px">Tel=
+:+86-539-8618719</DIV>
+<DIV style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline;=
+ BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDIN=
+G-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px">Fax=
+:+86-15168991777</DIV><SPAN style=3D"BORDER-TOP: 0px; BORDER-RIGHT: 0px; VE=
+RTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 0px; P=
+ADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 8px; =
+PADDING-RIGHT: 0px">website:www.baitwood.com</SPAN></DIV></DIV></DIV></DIV>=
+</DIV><BR></DIV>
+<DIV class=3DelementToProof style=3D"FONT-SIZE: 12pt; BORDER-TOP: 0px; FONT=
+-FAMILY: Calibri, Arial, Helvetica, sans-serif; BORDER-RIGHT: 0px; VERTICAL=
+-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0p=
+x; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADD=
+ING-RIGHT: 0px; font-stretch: inherit"><BR style=3D"FONT-SIZE: 16px; FONT-F=
+AMILY: Calibri, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPA=
+CING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-=
+STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-CO=
+LOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; fo=
+nt-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-th=
+ickness: initial; text-decoration-style: initial; text-decoration-color: in=
+itial"></DIV></BODY></HTML>
+--===============0997282291==--
