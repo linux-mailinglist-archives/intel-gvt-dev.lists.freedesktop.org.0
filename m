@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68B9A5BDC5E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 07:24:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8653F5BDE04
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 09:19:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9C4AC10E28E;
-	Tue, 20 Sep 2022 05:24:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 055CA10E306;
+	Tue, 20 Sep 2022 07:19:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 20 Sep 2022 05:24:47 UTC
-Received: from mail.grabfat.click (unknown [185.104.151.134])
- by gabe.freedesktop.org (Postfix) with ESMTP id E566210E286
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Sep 2022 07:19:48 UTC
+Received: from mail.fatdream.click (unknown [213.209.159.65])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9FC4410E301
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 05:24:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=grabfat.click;
+ Tue, 20 Sep 2022 07:19:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fatdream.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=desautel.may@grabfat.click; bh=TjVgtn4ZN/DxFRn1t4AtYQPxTII=;
- b=b2Q3dODW3ZGAWM7u3bEdYTKEDR4xAZK2wIZOTxZHPt22W+WkxpBdgdTCwWDmIPfT9P8t/Ctvjmvc
- eHqe7O4L9yvy6FmYXH9Jl2budT0JNl8AwRPAyLmVKcKFj7X7FamwTnp9zjFSc32ANyRwnTJ4Dyyu
- slGTUaZ7RRnJ5kueeNQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=grabfat.click;
- b=LY/yw/4uBD3gouSABDpUpUd/jtrqIaRrj2a90HDTqIZ3aG8BTTcrCm7s6InKV25kZh4xY/jOeN5Q
- z5I7rgHN8e5xEOvz4J9OncsgcKBU3isEh+LMvcgkqBeCO89G+W10dehh2l7wZkqsVEKLzD3gW8Ff
- MPPuyv1wgV1Bk4FxoaQ=;
-Received: by mail.grabfat.click id h557a00001gd for
+ i=sallie-zwinger@fatdream.click; 
+ bh=gEjeXopy4EGM3m7iK2fQLL0k/JQ=;
+ b=qApHy3ZWw2juRp3A2Qkjrs2KJhuBVpWvvZNRSL61W51WUCfj1AMLpEibcvIuGRl9Q/6p5C13AvRb
+ HopAKJIDrpdxU4674ymz5CCoCpCDfUf6OUYz8p4Gowqs34COdvFnTfqxJI1R5DebFdnm4654BwrI
+ 0okGKMimWrZ5HfqdX58=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fatdream.click;
+ b=FHzGXYhlN+PgaYz1OzuHwBnQhz1boxFdO84IktUFriLiZzxCmjwhrO3tHR9XxrXy8YnN4qykz5lX
+ PgwZp5Pv5ouO/2J8XpjHEfSP9lnQPwgSL27aT20E9KcVRz9km/hpm5QxMVpLNYfJ+hNyoaztFkAe
+ Eqibb9GIASXBQfpziWU=;
+Received: by mail.fatdream.click id h55vc00001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 01:11:14 -0400 (envelope-from
- <desautel.may-intel+2Dgvt+2Ddev=lists.freedesktop.org@grabfat.click>)
-Date: Tue, 20 Sep 2022 01:11:14 -0400
-From: May Desautel <desautel.may@grabfat.click>
+ Tue, 20 Sep 2022 04:36:57 -0400 (envelope-from
+ <sallie-zwinger-intel+2Dgvt+2Ddev=lists.freedesktop.org@fatdream.click>)
+Date: Tue, 20 Sep 2022 04:36:57 -0400
+From: Sallie Zwinger <sallie-zwinger@fatdream.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Gigantic Lowes Stanley Tool Set Giveaway
- intel-gvt-dev@lists.freedesktop.org
+Subject: Congratulations,
+ Claim Your Ace Bonus intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_598_1498708681.1663650643629"
-Message-ID: <0.0.0.42.1D8CCAF682355C8.6FCC2E@mail.grabfat.click>
+ boundary="----=_Part_385_222960593.1663657590885"
+Message-ID: <0.0.0.2A.1D8CCCC25036644.AB7F1@mail.fatdream.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_598_1498708681.1663650643629
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Gigantic Lowes Stanley Tool Set Giveaway  intel-gvt-dev@lists.freedesktop.org
-
-Tap Here for the Lowes-Stanley Tool Kit Offer-http://www.grabfat.click/simmered-boastfully/1024m2395wN8y610f3930wdd7X36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQz9edn7Q1SFun06nq@MwD
-
-
-
-
--96 Mowat.  AV, Toronto' ONTARIO M4K 3KI Canada
-
-To pull the plug on email, Click_Over_Here-http://www.grabfat.click/simmered-boastfully/2104m2395U86kN10H3931Wdd7p36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQz9edn5C10CD6qqUlwD
-
-This message was chosen for intel-gvt-dev@lists.freedesktop.org
-
-1669161~9617840
-
-------=_Part_598_1498708681.1663650643629
+------=_Part_385_222960593.1663657590885
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,20 +63,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.grabfat.click/9714X2395z8ps611z3930Tvdd7T36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQz9edn7Gq1tNF05DAwND/altruist-parcels" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here, You've been Chosen by Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.grabfat.click/9714X2395z8ps611z3930Tvdd7T36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQz9edn7Gq1tNF05DAwND/altruist-parcels" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Tap Here for the Lowes-Stanley Tool Kit Offer" src="http://www.grabfat.click/8bd6t23TZ95X7gaA10l3932Bdd7_36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQz9edn6Yz1qQ06zXwMBD/altruist-parcels" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Snap It Up! Special Offer Is Gone in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.fatdream.click/Naomi-registry/4865YN2395r8DN612D3j93C8idd9V36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQV9ed97JiMv1Z06m@2wDL" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the Ace Hardware Questionnaire</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.fatdream.click/Naomi-registry/4865YN2395r8DN612D3j93C8idd9V36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQV9ed97JiMv1Z06m@2wDL" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Start Here, You've been Selected by Ace Hardware" src="http://www.fatdream.click/deliberate-phenomenon/9cc4g2395Jg7aS12bS393FaQdd9C36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQV9ed96B10IKt5U@wXD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span
+ ></p> &nbsp; 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry Up! Special Offer Expires in 5 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT Ave, Toronto_ Ont M4K 3KI CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on email, <a href="http://www.grabfat.click/6dd5Q2n395vF86t12y3A93Y1mdd7V36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQz9edn5I1k0A6zlklwD/simmered-boastfully">Click_Over_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This message was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6860257.9617840</span></span></p>   
- <img src="http://www.grabfat.click/7376v23VF95bj85V11Q_3933vdd7o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQz9edn5m1A0C5zAw2D/Benedictine-surfaces" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut out notices, </span><a href="http://www.fatdream.click/8f94w2395Q86F_10P3939Rdd9I36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQV9ed96Q1X0IJ5I2zwD/inverted-withheld" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start-Here-Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT. AV, Toronto' ON M4K 3Kl Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1293726.2245823</span></span></p>   
+ <img src="http://www.fatdream.click/4fd6f2r3U95Fh8i510R393bZdd9T36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQV9ed96U10zSj5JBw1D/martyr-sacrificed" alt=""/></body>
 </html>
 
-------=_Part_598_1498708681.1663650643629--
+------=_Part_385_222960593.1663657590885--
 
