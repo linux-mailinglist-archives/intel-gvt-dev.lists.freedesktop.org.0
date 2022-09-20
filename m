@@ -2,43 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88EBD5BE6F5
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 15:23:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 410B35BE8A2
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 16:20:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AD9F310E6B5;
-	Tue, 20 Sep 2022 13:23:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A36BA10E6DB;
+	Tue, 20 Sep 2022 14:20:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 20 Sep 2022 13:23:31 UTC
-Received: from mail.finheeds.quest (unknown [213.209.159.225])
- by gabe.freedesktop.org (Postfix) with ESMTP id C8F2A10E1D9
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Sep 2022 14:20:43 UTC
+Received: from mail.gutsfin.mom (unknown [192.119.166.28])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 376B310E6DA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 13:23:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=finheeds.quest; 
+ Tue, 20 Sep 2022 14:20:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gutsfin.mom;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=asley-johanna@finheeds.quest; 
- bh=vLLhXBMlmcPtPz+B4cj1RxFPpuI=;
- b=1hHwE7fEo9UkO5dhKqpZRxg0dCkL72gXqrICVIYaHcZ1dgeY9TPUtXwOYV/otpShCl69VRJkor5K
- kV8DRfdzBc5WSwbPASqTgHJlM1GMWH9wOBI9lOJYUZSiqBOZpqS1cReO6vlCjPa+qGFuflc6OoMP
- LSbFjKsN1CPJeumC674=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=finheeds.quest;
- b=M1lmM+9bhs7PHR/qV9vZXVXWDVURFOf0I4jvNmTmieG996mAqEV2IlGSFndjOpJE2qTOg2O1q8Kq
- DgIKmutdcfCR//0qtH7dBj+UfZrIq1GcQLLDvzV0E76mz6Mn1fi+RVT18tAgCmMJWdNgXn3W2a1Q
- ef63k1N68GKAjL8CUQw=;
-Received: by mail.finheeds.quest id h579vu0001ga for
+ i=margo-dagon@gutsfin.mom; bh=6YBVPmaLCI19AF6P6XJLmKINesQ=;
+ b=NLb28idFMUIhcRVjhHgugOOw8Gom/7Y1214Mi11iLMJqOGXEMyfxltyFeLaNKAgPCJEVhWJ3Rivx
+ Ez3b78t14ckwcv2CsdrGIlA6HSnvRR29F1ioGWcq+iVslh2o6oxfC8mqBnUa726R+RKQ9S9GcYq5
+ Cq6Kh8NU+0lMqT2NYYQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gutsfin.mom;
+ b=gemmHkAam0pcrsuaItDLv3E+yA5za6xvgWJrTRQmkK9fm7vW/wTT8DQLjDdAg2FQqVCm4/Y8xmJC
+ N21yoeO/Cd6+MYm+m9IVn8Ofa+W4mWbgqwv5D87pSzZiyVKUduhB2MnyjZRk9qjxPOHy+G6uPz7i
+ l1HZjR/J/D2BfdG+VXk=;
+Received: by mail.gutsfin.mom id h5763m0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 10:36:58 -0400 (envelope-from
- <asley-johanna-intel+2Dgvt+2Ddev=lists.freedesktop.org@finheeds.quest>)
-Date: Tue, 20 Sep 2022 10:36:58 -0400
-From: Johanna Asley <asley-johanna@finheeds.quest>
+ Tue, 20 Sep 2022 10:06:06 -0400 (envelope-from
+ <margo-dagon-intel+2Dgvt+2Ddev=lists.freedesktop.org@gutsfin.mom>)
+Date: Tue, 20 Sep 2022 10:06:06 -0400
+From: Margo Dagon <margo-dagon@gutsfin.mom>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You have been selected for a special offer from Lowes
- intel-gvt-dev@lists.freedesktop.org
+Subject: Lowes Stanley Tool Set Promotion intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_115_606861698.1663679194292"
-Message-ID: <0.0.0.C.1D8CCFE706B5B3C.3879DD@mail.finheeds.quest>
+ boundary="----=_Part_64_1255221015.1663682756527"
+Message-ID: <0.0.0.7.1D8CCFA2097B046.18388C@mail.gutsfin.mom>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,29 +52,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_115_606861698.1663679194292
+------=_Part_64_1255221015.1663682756527
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-You have been selected for a special offer from Lowes  intel-gvt-dev@lists.freedesktop.org
+Lowes Stanley Tool Set Promotion  intel-gvt-dev@lists.freedesktop.org
 
-
-Click Here for the Lowes-Craftsman Giveaway:http://www.finheeds.quest/9e95c239p5dnF8611zM3945ZddcU36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQy9edQ7S10QlHp5J0AwD/hazard-Deere
-
-
+Begin Here for the 1,OOO,OOO Stanley Tool Set Giveaway from Lowes~http://www.gutsfin.mom/portmanteau-Stefan/9544t2395V8Lm610d3949mdddg36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQB9edR7P1QI0NU6wjwBDJ
 
 
 
 
-To cease notifications, Start-Over-Here:http://www.finheeds.quest/8276w239Bu5h8D6q11Wy3946Uddcn36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQy9edQ7S1lgI0p6FMwTDM/pickets-nailing
+'96 Mowat- Ave, Toronto' ONTARIO M4K3Kl CANADA
 
-This e-mail message was designated for intel-gvt-dev@lists.freedesktop.org
+To change your notification choices, Start_Ahead_Here~http://www.gutsfin.mom/6bf6LT23h95qI8F612OL394CaQdddP36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQB9edR6Khz1x05JAjwD/pound-lotus
 
-96- MOWAT.  AVENUE, TORONTO ONTARIO M4K3K1 CA
+This e-mail was selected for intel-gvt-dev@lists.freedesktop.org
 
-8162350~2843157
+2110561 5534456
 
-------=_Part_115_606861698.1663679194292
+------=_Part_64_1255221015.1663682756527
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -84,19 +79,21 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.finheeds.quest/spacers-wrapping/53a6Khy2395d8jT611r3w945nddct36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQy9edQ5AI10u6u@TBwD"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.finheeds.quest/9ad5QO2395nl7Xa11E3J947Addcj36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQy9edQ6XNnm105yjwDp/Augustus-zealously" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.finheeds.quest/spacers-wrapping/53a6Khy2395d8jT611r3w945nddct36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQy9edQ5AI10u6u@TBwD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the Lowes-Craftsman Giveaway</span></a></span></span></p> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.gutsfin.mom/9354w2395OKz8611g394s9Fdddm36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQB9edR5e1X0J6vU0wDL/reinserted-reactions" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes-Stanley Offer</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.gutsfin.mom/9354w2395OKz8611g394s9Fdddm36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQB9edR5e1X0J6vU0wDL/reinserted-reactions" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Begin Here for the 1,OOO,OOO Stanley Tool Set Giveaway from Lowes" src="http://www.gutsfin.mom/d8b4B2395q7ORa10K394bodddi36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQB9edR6Jxq10z6PLTwDL/drought-sounds" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Exclusive Offer Ends in 4 Days.</span></span></p> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease notifications, <a href="http://www.finheeds.quest/bluebonnet-prudence/4865as2395A8H6V11q3946BHddcw36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQy9edQ6U1lj0j6cUMwXD">Start-Over-Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 Mowat_ Avenue, Toronto. ONT. M4K 3K1 Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8162350.2843157</span></span></p>   
- <img src="http://www.finheeds.quest/5756p2o39O5hoC8511v3948zwddcR36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQy9edQ5GW10x6W@wNND/spacers-wrapping" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 Mowat. Ave., Toronto. ON M4K 3KI CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your notification choices, <a href="http://www.gutsfin.mom/portmanteau-Stefan/4a45X2z395q8ID612E3C94aCOdddK36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQB9edR5zj1j05STwDq">Start_Ahead_Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2557316,5534456</span></span></p>   
+ <img src="http://www.gutsfin.mom/8814r2395SFv8511o394cskdddZ36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQB9edR6hFzR106ePjBwD/slamming-bounding" alt=""/></body>
 </html>
 
-------=_Part_115_606861698.1663679194292--
+------=_Part_64_1255221015.1663682756527--
 
