@@ -2,43 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8653F5BDE04
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 09:19:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25D1E5BE459
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 13:25:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 055CA10E306;
-	Tue, 20 Sep 2022 07:19:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AAD8D10E4DB;
+	Tue, 20 Sep 2022 11:25:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Tue, 20 Sep 2022 07:19:48 UTC
-Received: from mail.fatdream.click (unknown [213.209.159.65])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9FC4410E301
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Sep 2022 11:25:40 UTC
+Received: from mail.oilfats.click (unknown [185.104.151.32])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 87E3D10E4DB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 07:19:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fatdream.click; 
+ Tue, 20 Sep 2022 11:25:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=oilfats.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sallie-zwinger@fatdream.click; 
- bh=gEjeXopy4EGM3m7iK2fQLL0k/JQ=;
- b=qApHy3ZWw2juRp3A2Qkjrs2KJhuBVpWvvZNRSL61W51WUCfj1AMLpEibcvIuGRl9Q/6p5C13AvRb
- HopAKJIDrpdxU4674ymz5CCoCpCDfUf6OUYz8p4Gowqs34COdvFnTfqxJI1R5DebFdnm4654BwrI
- 0okGKMimWrZ5HfqdX58=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fatdream.click;
- b=FHzGXYhlN+PgaYz1OzuHwBnQhz1boxFdO84IktUFriLiZzxCmjwhrO3tHR9XxrXy8YnN4qykz5lX
- PgwZp5Pv5ouO/2J8XpjHEfSP9lnQPwgSL27aT20E9KcVRz9km/hpm5QxMVpLNYfJ+hNyoaztFkAe
- Eqibb9GIASXBQfpziWU=;
-Received: by mail.fatdream.click id h55vc00001gj for
+ i=ferro_lana@oilfats.click; bh=vFs8n87GhJls9+WM8NgOE4rejgs=;
+ b=QjZjNtnmbSrGfxdWEv01F6Nurvd4jFgwhfHEF0Rf8hsx+bZWUBfJJAe0OiNzMHBmxkSlR58l3CXv
+ 7JLUa6eYw+4EmtgEoWTy37rdJE2v/bb//Lok7vJk968IrdY6D7LzbaBUQ9pn4DSesW2Ks0fabvwp
+ 1NhIxWu7A23CjrEmflY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=oilfats.click;
+ b=mB9sYl0VTd76KIviT0ffV+VH/CJJ/a50vn0pf+Lj04kiqDaOV9Hni/6ILLCeX5E8QmoeDamDiCyT
+ 7XTnPYFbEmkqTSooDKUqsX9EZGdhFagLaWogfx/YnIwetkqAAkUVYO/6tsxhredeWIijp6dr8Rbv
+ hjCCiqBMUqtGUagjcR0=;
+Received: by mail.oilfats.click id h56hj80001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 04:36:57 -0400 (envelope-from
- <sallie-zwinger-intel+2Dgvt+2Ddev=lists.freedesktop.org@fatdream.click>)
-Date: Tue, 20 Sep 2022 04:36:57 -0400
-From: Sallie Zwinger <sallie-zwinger@fatdream.click>
+ Tue, 20 Sep 2022 07:07:31 -0400 (envelope-from
+ <ferro_lana-intel+2Dgvt+2Ddev=lists.freedesktop.org@oilfats.click>)
+Date: Tue, 20 Sep 2022 07:07:31 -0400
+From: Lana Ferro <ferro_lana@oilfats.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations,
- Claim Your Ace Bonus intel-gvt-dev@lists.freedesktop.org
+Subject: Renewal-by-Andersen windows BOGO 4O% sale      #7909134
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_385_222960593.1663657590885"
-Message-ID: <0.0.0.2A.1D8CCCC25036644.AB7F1@mail.fatdream.click>
+ boundary="----=_Part_94_152830802.1663672035180"
+Message-ID: <0.0.0.A.1D8CCE12D796B2E.853AFE@mail.oilfats.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +52,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_385_222960593.1663657590885
+------=_Part_94_152830802.1663672035180
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Renewal-by-Andersen windows BOGO 4O% sale 
+
+Go here to BOGO 4O% Off Now. http://www.oilfats.click/6a15SF2395ex86l10V393dTddaC36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ29eRQ5ho1N06kBLjwD/hammock-innermost
+
+
+
+
+
+
+
+2O4O Merick 
+Road-, # 408_ Merick, 
+New~York II566- 
+U. S. A. 
+
+To shut down messages, Click_Over_Here. http://www.oilfats.click/benefits-binocular/6486I2n3h95l_X8611m39l3eBddah36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ29eRQ6Ug10nM5o@wDJ
+
+This e-mail message was meant for intel-gvt-dev@lists.freedesktop.org
+
+55124082 7909134
+
+------=_Part_94_152830802.1663672035180
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,21 +86,22 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.fatdream.click/Naomi-registry/4865YN2395r8DN612D3j93C8idd9V36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQV9ed97JiMv1Z06m@2wDL" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the Ace Hardware Questionnaire</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.fatdream.click/Naomi-registry/4865YN2395r8DN612D3j93C8idd9V36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQV9ed97JiMv1Z06m@2wDL" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Start Here, You've been Selected by Ace Hardware" src="http://www.fatdream.click/deliberate-phenomenon/9cc4g2395Jg7aS12bS393FaQdd9C36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQV9ed96B10IKt5U@wXD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span
- ></p> &nbsp; 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry Up! Special Offer Expires in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><a href="http://www.oilfats.click/quitter-saucers/e404j2395zrY8612A3n9l3cvddan36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ29eRQ6yw1m0g6JLwDLy">Click here to Buy One, Get One 4O% Off Now</a></span></span><br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><a href="http://www.oilfats.click/3776C2p3O95fK86x11Q3R93dBddax36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ29eRQ5J1h0Y5OpwND/benefits-binocular" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:475px;height:2048px;"><img height="2048" src="http://www.oilfats.click/2695N2B395fP7aU10q393fxddak36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ29eRQ5r1h0R6e2XMwD/Hippocratic-pornographic" style="margin-left:0px;margin-top:0px;" title="Fall Window Special BOGO 40 + 200 " width="475" /></span></span></a></span></p> 
+  <div style="text-align: center;">
+   <a href="http://www.oilfats.click/3776C2p3O95fK86x11Q3R93dBddax36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ29eRQ5J1h0Y5OpwND/benefits-binocular" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go here to BOGO 4O% Off Now</span></a>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut out notices, </span><a href="http://www.fatdream.click/8f94w2395Q86F_10P3939Rdd9I36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQV9ed96Q1X0IJ5I2zwD/inverted-withheld" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start-Here-Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT. AV, Toronto' ON M4K 3Kl Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1293726.2245823</span></span></p>   
- <img src="http://www.fatdream.click/4fd6f2r3U95Fh8i510R393bZdd9T36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQV9ed96U10zSj5JBw1D/martyr-sacrificed" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2040 MERRICK<br /> RD, No.<br /> 408_ MERRICK, NY<br /> II566'&nbsp;</span></span><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">U.S.A.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut down messages,</span><a href="http://www.oilfats.click/ellipsoidal-reveler/d325kQ2395nnj8612Yq393eRVddav36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ29eRQ6OA10Ji5PlwDM" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click_Over_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3561213.7909134</span></span></p>   
+ <img src="http://www.oilfats.click/9355e23J95fim8512X394Ti0Sddat36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ29eRQ5M10iX5SkLwD/liaisons-luxury" alt=""/></body>
 </html>
 
-------=_Part_385_222960593.1663657590885--
+------=_Part_94_152830802.1663672035180--
 
