@@ -1,78 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11E3C5BEE89
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 22:27:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 14E725BEF11
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Sep 2022 23:20:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 31E0110E78E;
-	Tue, 20 Sep 2022 20:26:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8261310E797;
+	Tue, 20 Sep 2022 21:20:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3B72A10E21A
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Sep 2022 21:20:48 UTC
+Received: from mail.quifins.click (unknown [185.104.151.178])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 43F5910E797
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 20:26:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663705604;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kTuYdzoZrrSVtqbKAPsta2mJ6sY3BJrx+736wsbe0TI=;
- b=KqyzTmh2p+Fl4jAsI0AWT/yGcpPUF7RAgyzCI4x570HItzzMTp/aCdZjdDJoWkgjmtPkRd
- snqtvnCfqK6+rx6jiIt2SGD7POlbIHbdB0/4iZoYlz/XotGGXXWA29dFREgyu5z/ztTXa8
- o/gbCKHDgtPeGDc8w7yxLHKMQt5Nf3Y=
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-553-K14UYfrCMxqwwSMYeHVAXQ-1; Tue, 20 Sep 2022 16:26:43 -0400
-X-MC-Unique: K14UYfrCMxqwwSMYeHVAXQ-1
-Received: by mail-io1-f70.google.com with SMTP id
- v4-20020a5ec204000000b006a32e713217so2049417iop.15
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Sep 2022 13:26:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date;
- bh=kTuYdzoZrrSVtqbKAPsta2mJ6sY3BJrx+736wsbe0TI=;
- b=bL5Hi6AQPmjj/rvSwjEmt3NeVN91ZWz0IgzbJ1Vw79KyY7GAfxzbpVJIWK9HKX3+n9
- DuoqN69CaNwqfUpp0lKIF2lQh5toS4MEG8WJ7XNPE7aggwcStduD07lpEpG+vGpIotev
- MLDdKdlv4ko+Yv5LCvpdKmb9KCJGYXzZl4wJ/TpniyY7G/oT1qpc3eLIu9bj7y0Ey0UK
- qMoMTS+k3p9ex5wrCZiHv5FmER1TC1B81tOieDbUXBw9CT4+jqUySexGZ+Bx8YBTNTt0
- TEQyUypko1lIcpIxr7TTzwrTmAYC8b3ir0B//ogpHHsC4c3o4frYmwxzsHVcLtOXJHQg
- s2WQ==
-X-Gm-Message-State: ACrzQf3g5j+DZxvCgWh/ZOXgWchbZ7v2r/Zy3wnGqNMnmmXLEkcmEwaj
- o20j26nZgWTWYoVNIRDpxazeFZVKGPtCKoCBFwMuNC+waUfyNwn7Mv+x6ZiHNBrzbADyycm77Y4
- IwSuU7FK7qP9v5KOR0wmPe2tmxmome1Fagg==
-X-Received: by 2002:a05:6638:379e:b0:35a:6503:453c with SMTP id
- w30-20020a056638379e00b0035a6503453cmr11604721jal.118.1663705602742; 
- Tue, 20 Sep 2022 13:26:42 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7Wn3n/ipGU1Lsd59DpS6zB424nUgnSwe6A3PA6dfJBFxnu4Ya4+9pvipnOK8j87C89TfNNcQ==
-X-Received: by 2002:a05:6638:379e:b0:35a:6503:453c with SMTP id
- w30-20020a056638379e00b0035a6503453cmr11604691jal.118.1663705602488; 
- Tue, 20 Sep 2022 13:26:42 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- z18-20020a05663822b200b00359fbe10489sm269899jas.103.2022.09.20.13.26.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Sep 2022 13:26:42 -0700 (PDT)
-Date: Tue, 20 Sep 2022 14:26:39 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Kevin Tian <kevin.tian@intel.com>
-Subject: Re: [PATCH v3 15/15] vfio: Add struct device to vfio_device
-Message-ID: <20220920142639.29b1bdc2.alex.williamson@redhat.com>
-In-Reply-To: <20220909102247.67324-16-kevin.tian@intel.com>
-References: <20220909102247.67324-1-kevin.tian@intel.com>
- <20220909102247.67324-16-kevin.tian@intel.com>
-Organization: Red Hat
+ Tue, 20 Sep 2022 21:20:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=quifins.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=josephine_philavong@quifins.click; 
+ bh=xqJtkO9ecAYTACjPjbY9CFFCT/g=;
+ b=E0Rz+5AyCjY6gNuhZZjiHs2ydfEig5gVednkDl0UbJmFsNuP22qWOcsFQHygS681QFfdXygE9Pq7
+ XkdGULbLhM3/ja59uU9zy4Mz9z25C49AqXXzxE8ZtHWlFLlW/1tI2Opvb6bl0hyWuMb7AyyGapIX
+ 3rvp882a0JA2O4c93XA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=quifins.click;
+ b=Hdot6k61fCsD4PG3h/MceGf2rZ3Sil1adRiusfFO/PVLYNSbtuWH42Gt5TNPeEjG1LiHhNSTT17Z
+ uv2MiaYtSldsWRjGALe/qkdm+ObHaHjKJdfKsq2R6r47mgdYMpEphD68Uuus+C3mVTkSD7Ytitsn
+ r0NLf3oP0Mrhu5xBM7I=;
+Received: by mail.quifins.click id h58nb00001gh for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 20 Sep 2022 17:05:33 -0400 (envelope-from
+ <josephine_philavong-intel+2Dgvt+2Ddev=lists.freedesktop.org@quifins.click>)
+Date: Tue, 20 Sep 2022 17:05:33 -0400
+From: Josephine Philavong <josephine_philavong@quifins.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Lowes Stanley Offer  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_136_39607150.1663707919542"
+Message-ID: <0.0.0.F.1D8CD34B96467DA.B699E@mail.quifins.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,57 +50,50 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>, Christoph Hellwig <hch@infradead.org>,
- Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, linux-s390@vger.kernel.org,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri,  9 Sep 2022 18:22:47 +0800
-Kevin Tian <kevin.tian@intel.com> wrote:
+------=_Part_136_39607150.1663707919542
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-> From: Yi Liu <yi.l.liu@intel.com>
-> 
-> and replace kref. With it a 'vfio-dev/vfioX' node is created under the
-> sysfs path of the parent, indicating the device is bound to a vfio
-> driver, e.g.:
-> 
-> /sys/devices/pci0000\:6f/0000\:6f\:01.0/vfio-dev/vfio0
-> 
-> It is also a preparatory step toward adding cdev for supporting future
-> device-oriented uAPI.
-> 
-> Add Documentation/ABI/testing/sysfs-devices-vfio-dev.
-> 
-> Also take this chance to rename chardev 'vfio' to 'vfio-group' in
-> /proc/devices.
+Lowes Stanley Offer  intel-gvt-dev@lists.freedesktop.org
 
-What's the risk/reward here, is this just more aesthetically pleasing
-symmetry vs 'vfio-dev'?  The char major number to name association in
-/proc/devices seems pretty obscure, but what due diligence have we done
-to make sure this doesn't break anyone?  Thanks,
+Click Here for the Lowes-Stanley Offer-http://www.quifins.click/2875gL2395cC8n611D396N7Ude4r36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQV9eQ97s1M0smu5NjJwD/determinant-benefactors
 
-Alex
+
+
+96' MOWAT_ Ave. , Toronto_ ONTARIO M4 K3 K1 CN
+
+To bring e-mail to an close, Begin.Here.Now-http://www.quifins.click/4676t2A3I95U8y6L11E396i8xde4J36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQV9eQ95D10Tz6YllwDp/downturn-fiftieth
+
+Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org
+
+5846818:6547714
+
+------=_Part_136_39607150.1663707919542
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.quifins.click/6fb5kg2395Qo8K610q3967gde4s36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQV9eQ96SOL1D05hqWwD/downturn-fiftieth" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the Lowes-Stanley Offer</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.quifins.click/6fb5kg2395Qo8K610q3967gde4s36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQV9eQ96SOL1D05hqWwD/downturn-fiftieth" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.quifins.click/pinscher-disgust/6a24w2395S7QaB12z3l96H9Bde4I36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQV9eQ95Ag10I5tBwD1" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Deal Comes To An End in 3 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT' Avenue, TORONTO ONT. M4K 3K1 CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To bring e-mail to an close,<a href="http://www.quifins.click/prohibitory-disclosed/15c5j23u95z8R6R11s39o68zde4_36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQV9eQ97K1kYJ0v5wOwBD"> Begin.Here.Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5846818 6547714</span></span></p>   
+ <img src="http://www.quifins.click/a075SA2395U85IK12O39pC6atde4v36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQV9eQ96Yq1ir05O0wzD/Kensington-rotunda" alt=""/></body>
+</html>
+
+------=_Part_136_39607150.1663707919542--
 
