@@ -1,44 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 395DC5C01A1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 17:31:47 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A6FB5BFFBF
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 16:20:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 846C810E92D;
-	Wed, 21 Sep 2022 15:31:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E7BB710E977;
+	Wed, 21 Sep 2022 14:20:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 21 Sep 2022 15:31:39 UTC
-Received: from mail.finstri.click (unknown [172.99.175.169])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3108910E92D
+ Wed, 21 Sep 2022 14:20:36 UTC
+Received: from mail.outstri.icu (esf369.tk [64.64.109.153])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 606E110E98A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 15:31:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=finstri.click;
+ Wed, 21 Sep 2022 14:20:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outstri.icu;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=loretta-mcgeachy@finstri.click; 
- bh=/krOh2sMbL9z4TaZad3kSTVdDZo=;
- b=BsnyRWytnuxMEzk3uM1FhcIopb09M0GouywjJMOBgew03Tm69dJ2umOiNZNPAS+C9nQGU3FmWJwr
- fefcDhnxHehf+pnyVFz03Wu/4P5I9CAEjeXzszOUHTkFy5XItOcAFIZojLXy0R29cRHDpQSmArE3
- 6jF1YY1okyXgm2chpiU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=finstri.click;
- b=KNpdZeH36QnYxi3Xwv/clrd4pfl+Zw+XkWW4VSVG2eHG0oe7HXJJEusTOp0vbm3yBb91lC9+fBS+
- PMRQ8Ldjr5DmEO2fKOL2etdU24/L7kW4DjYmX7s4pTZfAr6HhY8Vh18zKNfcW1I0sO0IipVHj4ar
- 6EMCJxDYOwrmxxgI/KI=;
-Received: by mail.finstri.click id h5cn5m0001gd for
+ i=dianne_desimas@outstri.icu; bh=QZh8wbilCG8DFyytHew5nbksEYM=;
+ b=BOUM60H/w7Uo36mMWUgoYQz60Pubw257MFD1CM+antP2VIm8jA6EGrlDNNtqIhNkLcFjEXbn8QaG
+ zn85eWPQmSsdEBUJeiYpOWynpE0S1Orp6iyU1/OvftGZzh0YWSKEvs/yDEa+1428dE4nOXVySlKg
+ GqilG9jE04bqhliDReM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outstri.icu;
+ b=rg3RE7mXCwpXapmqIfkepT5eA1U7T0b1CgFa43jlp9/056owAl6zRBrV51tcT4j9MJ1rWrsyeB7l
+ F/NoFFlX6eox5pmoZr+UIf0qJmfbgay+Ot9E/2VwzVYevn13QXZplEPYLoemQFOt23WU6oOQcIgq
+ gdRk3UzTEBDOs04FN4U=;
+Received: by mail.outstri.icu id h5cpdq0001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 11:11:49 -0400 (envelope-from
- <loretta-mcgeachy-intel+2Dgvt+2Ddev=lists.freedesktop.org@finstri.click>)
-Date: Wed, 21 Sep 2022 11:11:49 -0400
-From: Loretta Mcgeachy <loretta-mcgeachy@finstri.click>
+ Wed, 21 Sep 2022 11:40:12 -0400 (envelope-from
+ <dianne_desimas-intel+2Dgvt+2Ddev=lists.freedesktop.org@outstri.icu>)
+Date: Wed, 21 Sep 2022 11:40:12 -0400
+From: Dianne Desimas <dianne_desimas@outstri.icu>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations you've been chosen for a exclusive offer from Lowes
- intel-gvt-dev@lists.freedesktop.org
+Subject: Andersen Renewal buy one window, get one 4O% off      #43573577
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_280_1552323044.1663773095054"
-Message-ID: <0.0.0.1E.1D8CDCC79473D6A.2947B5@mail.finstri.click>
+ boundary="----=_Part_646_159244918.1663769385399"
+Message-ID: <0.0.0.47.1D8CDD0700DB2F2.701116@mail.outstri.icu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +52,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_280_1552323044.1663773095054
+------=_Part_646_159244918.1663769385399
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations you've been chosen for a exclusive offer from Lowes  intel-gvt-dev@lists.freedesktop.org
+Andersen Renewal buy one window, get one 4O% off 
 
-Begin Here if you want a 170 pc Stanley Tool Set~http://www.finstri.click/9715ol2395i8J6s10P39a6wdf3M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQX9eSn5K10ZH6dTwkDP/brutalize-pearly
-
-
+Start here for new Renewal by Andersen windows_http://www.outstri.icu/dells-conditioning/a804h2395Mm8T610U39a2kdf2t36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQC9eSm7A1JsWk05qTjwD
 
 
-'96 Mowat- Ave. , Toronto- ONT M4K3KI CA
 
-To modify your email options, Continue-Here~http://www.finstri.click/holds-instinctive/8a05J239I5nA86V11q39ga7Vdf3z36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQX9eSn5n10rw5Q@@wD
 
-This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org
 
-65764848~55205846
 
-------=_Part_280_1552323044.1663773095054
+
+2O4O_ MERRICK 
+ROAD, Ste.  408 MERRICK, 
+NEW YORK II566- 
+USA
+
+To edit your notification options, Click.Right.Here_http://www.outstri.icu/1f16W23q9T5ohD8612E39a3Qgzdf2J36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQC9eSm5gpg105F1wD0/reconnection-wholehearted
+
+Our email content was intended for intel-gvt-dev@lists.freedesktop.org
+
+16529303-43573577
+
+------=_Part_646_159244918.1663769385399
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +86,22 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.finstri.click/reforestation-butyrate/6664z2395Iz86N12C39aoN6Adf3l36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQX9eSn6d1r0WN6RqwD33" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes-Stanley Promotion</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.finstri.click/reforestation-butyrate/6664z2395Iz86N12C39aoN6Adf3l36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQX9eSn6d1r0WN6RqwD33" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Begin Here if you want a 170 pc Stanley Tool Set" src="http://www.finstri.click/4c14z2395HY7aK10i39a8Hdf3g36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQX9eSn6Sq10UR5pPwUD/brutalize-pearly" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Be Quick! Special Offer Closes in 4 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><a href="http://www.outstri.icu/4Td6SI2O395Hs8p610b39a1Ndf2u36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQC9eSm5Vy1R06GlpLwD/eelgrass-hashing">Visit here for your Renewal by Andersen windows</a></span></span><br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><a href="http://www.outstri.icu/5396YjO2395S8B6Q11j39a2zvdf2r36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQC9eSm5vl1H05Ilw@D/jousting-coronet" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:475px;height:2048px;"><img height="2048" src="http://www.outstri.icu/scriptures-robot/22e4G2395E7asi12g3Y9a4kgdf2T36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQC9eSm6l1wuX05kpwDz" style="margin-left:0px;margin-top:0px;" title="Fall Window Special BOGO 40 + 200 " width="475" /></span></span></a></span></p> 
+  <div style="text-align: center;">
+   <a href="http://www.outstri.icu/5396YjO2395S8B6Q11j39a2zvdf2r36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQC9eSm5vl1H05Ilw@D/jousting-coronet" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start here for new Renewal by Andersen windows</span></a>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT- Ave., TORONTO ON M4K3K1 CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your email options, <a href="http://www.finstri.click/inventive-Rubaiyat/a445zF2395H86yR12GUz39a7_df3m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQX9eSn7VJo1U0D5NLPwD">Continue-Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3508413-55205846</span></span></p>   
- <img src="http://www.finstri.click/reforestation-butyrate/6665n23I95U85Lu10B39a9mdf3A36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQX9eSn7sTL10lV6C@wJ3D" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2040_ Merrick<br /> ROAD_, #<br /> 408- Merrick, New_York<br /> 11566.&nbsp;</span></span><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">USA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your notification options,</span><a href="http://www.outstri.icu/a076K23Wu95Uih8612N39aQp3Fdf2F36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQC9eSm6eY1CV06g2BwDU/jousting-coronet" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click.Right.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2028152:43573577</span></span></p>   
+ <img src="http://www.outstri.icu/7eb4m2395Y85Sn11y39Sa5rdf2M36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQC9eSm6lW10_I6SpkwD0/jousting-coronet" alt=""/></body>
 </html>
 
-------=_Part_280_1552323044.1663773095054--
+------=_Part_646_159244918.1663769385399--
 
