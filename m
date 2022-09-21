@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5E995BFC40
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 12:23:55 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B03625BFCE7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 13:24:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D850310E915;
-	Wed, 21 Sep 2022 10:23:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1075B10E3EF;
+	Wed, 21 Sep 2022 11:24:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 21 Sep 2022 10:23:50 UTC
-Received: from mail.techtri.quest (unknown [64.64.109.196])
- by gabe.freedesktop.org (Postfix) with ESMTP id 585AF10E3BF
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 21 Sep 2022 11:24:31 UTC
+Received: from mail.yecktri.site (unknown [209.142.103.138])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 30BA210E3B4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 10:23:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=techtri.quest;
+ Wed, 21 Sep 2022 11:24:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yecktri.site;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=emma_pesterfield@techtri.quest; 
- bh=fKtRNT388af7Ch4SdgEfFJ4IIKw=;
- b=ogXbwzygow96kOFgRhziAGt6G1aSq13tS6XZqsud3kHyjOnTB1IyMUGDTT8bU7TeHSj1lR/sjlEb
- meYthDzdw2zPiSGW7wnZqljTV92iIVjKcLYRuTB5ruOVpNugFyYgM9tQ2NJdCJVoY2QnaVq1POg3
- tdnktEIT7jEmogUSbo4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=techtri.quest;
- b=babx3rWqth8Q3RoKASVPLcuuPtu4ZQDx4EFwhh+L96tIqdW6H2cz8c+FbWBhJnjBETXMloBS6GxG
- IIJtw6vj9j6xv5uX/cVl4TcebGEdDVVxUoHjh8Grnt9VUbhGSwDof07yBQh8ZlZu3Phw91mmMF7s
- 1VDmusd7lo3KfFQfF/Q=;
-Received: by mail.techtri.quest id h5bj3c0001gi for
+ i=monica.beauprez@yecktri.site; 
+ bh=7HsmX9CBlWFnNc/AoF8B2MMGEbw=;
+ b=M7A9p1MMQpbLrejyaxjmULWcP8YdXo5tbh4C9Eysy08QwMbUSJLwmJZrJN91GjlINPLFYZN1T8f9
+ y+2Yk9jhnC3SZy6ROfMXq1Eq6LQrQPot7U1JTX3VhTGqIkCfUwwWC9bsYvA3zzmUNp3xbeKVhx8i
+ 7sRZ6V376/RXGqGux00=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yecktri.site;
+ b=HqedCcxbUJIO/YaBgnZg+YDLMtZaBqiDryc5csNogT9gdZmqK8gI9wYW7xy7IHjE8IGUlYKH8xz5
+ 6IVCydBcYE0JXbwk0CpshienBV0/jSUK2zjebmjOAehAaLBGPI1SVWbM6sL/FKUfAHKz6z+oyWh4
+ 2uX0QvkGVmslyM2MWTg=;
+Received: by mail.yecktri.site id h5bq6u0001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 06:06:20 -0400 (envelope-from
- <emma_pesterfield-intel+2Dgvt+2Ddev=lists.freedesktop.org@techtri.quest>)
-Date: Wed, 21 Sep 2022 06:06:20 -0400
-From: Emma Pesterfield <emma_pesterfield@techtri.quest>
+ Wed, 21 Sep 2022 07:09:55 -0400 (envelope-from
+ <monica.beauprez-intel+2Dgvt+2Ddev=lists.freedesktop.org@yecktri.site>)
+Date: Wed, 21 Sep 2022 07:09:55 -0400
+From: Monica Beauprez <monica.beauprez@yecktri.site>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Compare Window Prices from Jeld-Wen, Andersen & more  #470517
+Subject: America's best home warranty  #5796402
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_166_335440255.1663754774868"
-Message-ID: <0.0.0.12.1D8CDA1CC5C853A.248641@mail.techtri.quest>
+ boundary="----=_Part_298_819446202.1663758573629"
+Message-ID: <0.0.0.21.1D8CDAAADFD02DC.6A1FF2@mail.yecktri.site>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,24 +53,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_166_335440255.1663754774868
+------=_Part_298_819446202.1663758573629
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Compare Window Prices from Jeld-Wen, Andersen & more  #470517
+America's best home warranty  #18717121
 
-Begin Here to get Several Window Estimates:http://www.techtri.quest/f115d239g5nS86x12Q39T9j1odeeX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQI9eRR5IL10R5n3ywD/shipyard-physicalness
+Go here for your home warranty quote-
+http://www.yecktri.site/trenches-mightily/8fa4I2395vpW8612Qh399_3sdefk36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQu9eRS6H1WSX05Wpw@D
 
 
+96- Craig STREET, # 
+325. , ELLIJAY, GEORGIA 30540 US
 
-No longer want to receive e-mail?, Continue.This.Way:http://www.techtri.quest/Dc55n23j95Pgh8610e398fMdeeu36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQI9eRR5hZ1W05z3wpD/disclosing-Formica
-Our email message was delivered to intel-gvt-dev@lists.freedesktop.org
-95O' T0wer LN, 
-Foster_City, California 
-944O4.  US. 
-84288376:5336677
+To update your subscription options, Go.Right.Here-
+http://www.yecktri.site/4494C2395vx8o611Y_3994Ydefy36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQu9eRS5GLk105zywJD/moreover-haircut
+Our notification was delivered to intel-gvt-dev@lists.freedesktop.org
 
-------=_Part_166_335440255.1663754774868
+55129738 5796402
+
+------=_Part_298_819446202.1663758573629
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -79,9 +81,8 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.techtri.quest/31d4r2395EuG8611i398GeOdeeq36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQI9eRR7vZAC1K05H1UwD/peddle-Sonenberg" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to get Several Window Estimates</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><a href="http://www.techtri.quest/31d4r2395EuG8611i398GeOdeeq36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQI9eRR7vZAC1K05H1UwD/peddle-Sonenberg" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:608px;height:1024px;"><img alt="Compare Windows to Save" src="http://www.techtri.quest/c7d6P23wX95aj7aG11m3S990hdeep36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQI9eRR6uYq1V05Ql@wD/evasive-discharges" style="margin-left: 0px; margin-top: 0px; width: 608px; height: 1024px;" /></span></span></a></span></p> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><a href="http://www.yecktri.site/c234f2395v86RP12Q3U9i93hdefm36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQu9eRS5QX10w6X0Bw0D/trenches-mightily" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go here for your home warranty quote</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><a href="http://www.yecktri.site/c234f2395v86RP12Q3U9i93hdefm36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQu9eRS5QX10w6X0Bw0D/trenches-mightily" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1560px;"><img alt="Nationwide can help with Unexpected Breakdowns" src="http://www.yecktri.site/swapped-secretions/1985v2F395zrS7a10a3995Adefj36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQu9eRS6yBH1k06LLwqMD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1560px;" /></span></span></a></span></p> 
   <br /> 
   <br /> 
   <br /> 
@@ -91,12 +92,12 @@ Content-Transfer-Encoding: 7bit
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive e-mail?, </span><a href="http://www.techtri.quest/privileged-baths/eb84b2395U86Qk12MD398fUPdeew36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQI9eRR5tQX105fqLwD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue.This.Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">95O- T0wer Ln,<br /> Foster~City, California<br /> 94404'&nbsp;</span></span><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">US.</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-55cdad9d-7fff-5b57-54e9-5515eb5b19e7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">84288376-5336677</span></span></p>   
- <img src="http://www.techtri.quest/shipyard-physicalness/a8h6kO2F395a8wK510d3992sdeej36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQI9eRR7ss1sg0V5lOzwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. CRAlG ST, No. 325, ELLIJAY, Ga 30540' United States</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your subscription options, </span><a href="http://www.yecktri.site/6295B23G95WC8Z612h39uW94Qdefw36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQu9eRS5v1TT06rMkwDM/autocracy-Trevelyan" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go.Right.Here</span></a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18717121 5796402</span></span></span></p>   
+ <img src="http://www.yecktri.site/Olympic-muddy/a444L2395Qo85W10k3996HdefU36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQu9eRS5N10iS6L0WwDz" alt=""/></body>
 </html>
 
-------=_Part_166_335440255.1663754774868--
+------=_Part_298_819446202.1663758573629--
 
