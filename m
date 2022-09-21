@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B03625BFCE7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 13:24:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 395DC5C01A1
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 17:31:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1075B10E3EF;
-	Wed, 21 Sep 2022 11:24:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 846C810E92D;
+	Wed, 21 Sep 2022 15:31:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Wed, 21 Sep 2022 11:24:31 UTC
-Received: from mail.yecktri.site (unknown [209.142.103.138])
- by gabe.freedesktop.org (Postfix) with ESMTP id 30BA210E3B4
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 21 Sep 2022 15:31:39 UTC
+Received: from mail.finstri.click (unknown [172.99.175.169])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3108910E92D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 11:24:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yecktri.site;
+ Wed, 21 Sep 2022 15:31:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=finstri.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=monica.beauprez@yecktri.site; 
- bh=7HsmX9CBlWFnNc/AoF8B2MMGEbw=;
- b=M7A9p1MMQpbLrejyaxjmULWcP8YdXo5tbh4C9Eysy08QwMbUSJLwmJZrJN91GjlINPLFYZN1T8f9
- y+2Yk9jhnC3SZy6ROfMXq1Eq6LQrQPot7U1JTX3VhTGqIkCfUwwWC9bsYvA3zzmUNp3xbeKVhx8i
- 7sRZ6V376/RXGqGux00=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yecktri.site;
- b=HqedCcxbUJIO/YaBgnZg+YDLMtZaBqiDryc5csNogT9gdZmqK8gI9wYW7xy7IHjE8IGUlYKH8xz5
- 6IVCydBcYE0JXbwk0CpshienBV0/jSUK2zjebmjOAehAaLBGPI1SVWbM6sL/FKUfAHKz6z+oyWh4
- 2uX0QvkGVmslyM2MWTg=;
-Received: by mail.yecktri.site id h5bq6u0001gc for
+ i=loretta-mcgeachy@finstri.click; 
+ bh=/krOh2sMbL9z4TaZad3kSTVdDZo=;
+ b=BsnyRWytnuxMEzk3uM1FhcIopb09M0GouywjJMOBgew03Tm69dJ2umOiNZNPAS+C9nQGU3FmWJwr
+ fefcDhnxHehf+pnyVFz03Wu/4P5I9CAEjeXzszOUHTkFy5XItOcAFIZojLXy0R29cRHDpQSmArE3
+ 6jF1YY1okyXgm2chpiU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=finstri.click;
+ b=KNpdZeH36QnYxi3Xwv/clrd4pfl+Zw+XkWW4VSVG2eHG0oe7HXJJEusTOp0vbm3yBb91lC9+fBS+
+ PMRQ8Ldjr5DmEO2fKOL2etdU24/L7kW4DjYmX7s4pTZfAr6HhY8Vh18zKNfcW1I0sO0IipVHj4ar
+ 6EMCJxDYOwrmxxgI/KI=;
+Received: by mail.finstri.click id h5cn5m0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 07:09:55 -0400 (envelope-from
- <monica.beauprez-intel+2Dgvt+2Ddev=lists.freedesktop.org@yecktri.site>)
-Date: Wed, 21 Sep 2022 07:09:55 -0400
-From: Monica Beauprez <monica.beauprez@yecktri.site>
+ Wed, 21 Sep 2022 11:11:49 -0400 (envelope-from
+ <loretta-mcgeachy-intel+2Dgvt+2Ddev=lists.freedesktop.org@finstri.click>)
+Date: Wed, 21 Sep 2022 11:11:49 -0400
+From: Loretta Mcgeachy <loretta-mcgeachy@finstri.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: America's best home warranty  #5796402
+Subject: Congratulations you've been chosen for a exclusive offer from Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_298_819446202.1663758573629"
-Message-ID: <0.0.0.21.1D8CDAAADFD02DC.6A1FF2@mail.yecktri.site>
+ boundary="----=_Part_280_1552323044.1663773095054"
+Message-ID: <0.0.0.1E.1D8CDCC79473D6A.2947B5@mail.finstri.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_298_819446202.1663758573629
+------=_Part_280_1552323044.1663773095054
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-America's best home warranty  #18717121
+Congratulations you've been chosen for a exclusive offer from Lowes  intel-gvt-dev@lists.freedesktop.org
 
-Go here for your home warranty quote-
-http://www.yecktri.site/trenches-mightily/8fa4I2395vpW8612Qh399_3sdefk36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQu9eRS6H1WSX05Wpw@D
+Begin Here if you want a 170 pc Stanley Tool Set~http://www.finstri.click/9715ol2395i8J6s10P39a6wdf3M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQX9eSn5K10ZH6dTwkDP/brutalize-pearly
 
 
-96- Craig STREET, # 
-325. , ELLIJAY, GEORGIA 30540 US
 
-To update your subscription options, Go.Right.Here-
-http://www.yecktri.site/4494C2395vx8o611Y_3994Ydefy36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQu9eRS5GLk105zywJD/moreover-haircut
-Our notification was delivered to intel-gvt-dev@lists.freedesktop.org
 
-55129738 5796402
+'96 Mowat- Ave. , Toronto- ONT M4K3KI CA
 
-------=_Part_298_819446202.1663758573629
+To modify your email options, Continue-Here~http://www.finstri.click/holds-instinctive/8a05J239I5nA86V11q39ga7Vdf3z36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQX9eSn5n10rw5Q@@wD
+
+This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org
+
+65764848~55205846
+
+------=_Part_280_1552323044.1663773095054
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,23 +82,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><a href="http://www.yecktri.site/c234f2395v86RP12Q3U9i93hdefm36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQu9eRS5QX10w6X0Bw0D/trenches-mightily" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go here for your home warranty quote</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><a href="http://www.yecktri.site/c234f2395v86RP12Q3U9i93hdefm36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQu9eRS5QX10w6X0Bw0D/trenches-mightily" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1560px;"><img alt="Nationwide can help with Unexpected Breakdowns" src="http://www.yecktri.site/swapped-secretions/1985v2F395zrS7a10a3995Adefj36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQu9eRS6yBH1k06LLwqMD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1560px;" /></span></span></a></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.finstri.click/reforestation-butyrate/6664z2395Iz86N12C39aoN6Adf3l36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQX9eSn6d1r0WN6RqwD33" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes-Stanley Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.finstri.click/reforestation-butyrate/6664z2395Iz86N12C39aoN6Adf3l36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQX9eSn6d1r0WN6RqwD33" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Begin Here if you want a 170 pc Stanley Tool Set" src="http://www.finstri.click/4c14z2395HY7aK10i39a8Hdf3g36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQX9eSn6Sq10UR5pPwUD/brutalize-pearly" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Be Quick! Special Offer Closes in 4 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. CRAlG ST, No. 325, ELLIJAY, Ga 30540' United States</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your subscription options, </span><a href="http://www.yecktri.site/6295B23G95WC8Z612h39uW94Qdefw36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQu9eRS5v1TT06rMkwDM/autocracy-Trevelyan" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go.Right.Here</span></a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-591978e4-7fff-0f2d-9b4d-957649f61b5e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18717121 5796402</span></span></span></p>   
- <img src="http://www.yecktri.site/Olympic-muddy/a444L2395Qo85W10k3996HdefU36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQu9eRS5N10iS6L0WwDz" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT- Ave., TORONTO ON M4K3K1 CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your email options, <a href="http://www.finstri.click/inventive-Rubaiyat/a445zF2395H86yR12GUz39a7_df3m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQX9eSn7VJo1U0D5NLPwD">Continue-Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3508413-55205846</span></span></p>   
+ <img src="http://www.finstri.click/reforestation-butyrate/6665n23I95U85Lu10B39a9mdf3A36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQX9eSn7sTL10lV6C@wJ3D" alt=""/></body>
 </html>
 
-------=_Part_298_819446202.1663758573629--
+------=_Part_280_1552323044.1663773095054--
 
