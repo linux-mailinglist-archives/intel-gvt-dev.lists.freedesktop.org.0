@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7BF85BF5DF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 07:23:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38F075BF63B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Sep 2022 08:24:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 45EA010E830;
-	Wed, 21 Sep 2022 05:23:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0668D10E84C;
+	Wed, 21 Sep 2022 06:24:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Wed, 21 Sep 2022 05:23:00 UTC
-Received: from mail.onesfins.click (unknown [185.104.151.140])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6473110E831
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 21 Sep 2022 06:24:40 UTC
+Received: from mail.pinkfins.click (unknown [185.104.151.161])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B6D0D10E846
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 05:23:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=onesfins.click; 
+ Wed, 21 Sep 2022 06:24:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pinkfins.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=abby_padiong@onesfins.click; 
- bh=rVuXUagaxB0qWGBK0VHn/qtgPLU=;
- b=o2NZwU7S4EDkobeJRtvjMtEZ6EBMB3sKqfrwtasW5i63HhRUObQ472gFPPD9meYwXOcrrbffd5Xw
- JUqYzCIhqPbD/5TyGTaSM3A1MQNT7NDwnALDiUHmi1BJZ3ot/ooG5hcSVFOCXoym5GIyIlFPC6bU
- 8F0y8PNNPBYAEb4IZS8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=onesfins.click;
- b=lOTbiK3n02fx+dAGW73ifbJWwPagRbbZt4W1amQ/QCtZMwq3h7ifzUTYob6VoD+7URRn37gC96iZ
- vK/B87oRUmnpWbEkmfAhKMRhAeqz+t9NpJ8X7B8ZT8NeqiVM6aCoFLerMicT/+JpoWwsbuLHN44C
- /FoawwoQvBytd+36GOk=;
-Received: by mail.onesfins.click id h5afr80001gj for
+ i=cheri.groleau@pinkfins.click; 
+ bh=6NqZcPG0Tnpk2nS0ZzRliqgjbgA=;
+ b=pJciAGlg5DDeFsb9EJauXMj7ROB2HJBDPUDJ25CaduhBtIMzDCJGZhRQ38nElcFk2e5ECqjJddA3
+ GDK9WPVbTgXP+vpVotBehKYmTL2eHsSBO5XFqXoNO8EeEfh++MEIrErUZjaUk0OpJATux4DuL2pA
+ OJviU1Kx5lygJopOJVU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pinkfins.click;
+ b=tu+DoGBgV2BUP6fMR1itoQMS4DgZDBfCboUu2+Dc+UdWLG3WMpKylShp0mP3MZZaaxCCDpOtHxyC
+ X3KsjK6qel7qV+8EM8wjm9nJ/EwEtcSyBt0AJ/A5vz8THi4g/q06hHWnp9Zm+kFQD1nN3eqgjMPc
+ PDQAiZ+u3LolHgl6DRg=;
+Received: by mail.pinkfins.click id h5an2i0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 01:07:02 -0400 (envelope-from
- <abby_padiong-intel+2Dgvt+2Ddev=lists.freedesktop.org@onesfins.click>)
-Date: Wed, 21 Sep 2022 01:07:02 -0400
-From: Abby Padiong <abby_padiong@onesfins.click>
+ Wed, 21 Sep 2022 02:12:44 -0400 (envelope-from
+ <cheri.groleau-intel+2Dgvt+2Ddev=lists.freedesktop.org@pinkfins.click>)
+Date: Wed, 21 Sep 2022 02:12:44 -0400
+From: Cheri Groleau <cheri.groleau@pinkfins.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Give your Opinion of Lowes for a Stanley Tool Kit
- intel-gvt-dev@lists.freedesktop.org
+Subject: Check out Our List of the Hottest Gadgets Here
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_184_1207935724.1663736805279"
-Message-ID: <0.0.0.14.1D8CD77FC46AB92.16210@mail.onesfins.click>
+ boundary="----=_Part_553_1176751496.1663740726980"
+Message-ID: <0.0.0.3D.1D8CD812A16A0DC.409879@mail.pinkfins.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +53,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_184_1207935724.1663736805279
+------=_Part_553_1176751496.1663740726980
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Give your Opinion of Lowes for a Stanley Tool Kit  intel-gvt-dev@lists.freedesktop.org
+Check out Our New List of the Coolest Gadgets Here
 
-Go Here if you want a Stanley 170 pc Tool Kit-http://www.onesfins.click/parliamentarian-wetness/62a4X2395KHD8610F3982CdebH36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQi9eRn6pY10oD6P1lOwD
-
-
+Check out Our List of the Hottest Gadgets Here:http://www.pinkfins.click/chromosphere-materials/60c4B2395uhF8612Pv3986ikdecZ36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQC9eRo5C1w0x5KlMwD
 
 
--96 MOWAT- Av. , Toronto ONTARIO M4K3K1 CN
+No longer want to receive email notifications from us?, Start.Ahead.Here:http://www.pinkfins.click/bc96l2u39O5P8w6j12Qz3987JDdecQ36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQC9eRo7MO1Djw05AkOwD/Fredericksburg-channellers
+This email communication was chosen for intel-gvt-dev@lists.freedesktop.org
 
-To dispense with e-mail, Start_Here-http://www.onesfins.click/inverting-bowline/c604N2395oV8A612Q39p83jKdebn36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQi9eRn7cFL1B0y5WzWwD
+18O34.  Ventura- B0ULEVARD Suite l69 ENCINO Ca 91316 USA
 
-This message was sent to intel-gvt-dev@lists.freedesktop.org
+4531206 18119710
 
-77823210 69604963
-
-------=_Part_184_1207935724.1663736805279
+------=_Part_553_1176751496.1663740726980
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +78,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.onesfins.click/5b16STI2395t8Bv611FR3982odebM36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQi9eRn5W1p0p6RjwqDP/curries-suffixer" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the Gigantic Lowes Stanley Tool Kit Giveaway</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.onesfins.click/5b16STI2395t8Bv611FR3982odebM36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQi9eRn5W1p0p6RjwqDP/curries-suffixer" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Go Here if you want a Stanley 170 pc Tool Kit" src="http://www.onesfins.click/e5d6e23o9O5j7aLk12Yy3984LRdebQ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQi9eRn5h1Zh06nNz1wD/adulterates-stigmata" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Step On It! Offer Comes to a Close in 3 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><a href="http://www.pinkfins.click/turban-invaluable/ada4U2395A8oK611Y3986pRdeck36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQC9eRo5E1Hr06skWwWD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Check out Our List of the Hottest Gadgets Here</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1315px;"><a href="http://www.pinkfins.click/turban-invaluable/ada4U2395A8oK611Y3986pRdeck36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQC9eRo5E1Hr06skWwWD"><img alt="See the Top Rated Gadgets of 2022" src="http://www.pinkfins.click/Huston-Garfield/6c06vh23H95y7aIk11th3988pdeci36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQC9eRo6uvq1m05UlwDz" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1315px;" /></a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; color: rgb(153, 0, 0); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">While Supplies Last.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT' Avenue, Toronto- ONT. M4K 3K1 CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To dispense with e-mail, <a href="http://www.onesfins.click/24b6R239tv5vg86M10y3983xdebD36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQi9eRn6LRw10p5gAwDM/submultiplexed-jeweler">Start_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2742183-69604963</span></span></p>   
- <img src="http://www.onesfins.click/referential-rabid/8825E23u95HqS8512Uk39y85xdeby36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQi9eRn5Fy10L5zJwDP" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email notifications from us?,<a href="http://www.pinkfins.click/Huston-Garfield/dc84M2395FR86m11B39Y87ndecm36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQC9eRo5V1n0j5aWkwD"> Start.Ahead.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18034_ Ventura. Blvd # 169' Encino CALIFORNIA 91316. US</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4628492.18119710</span></span></p>   
+ <img src="http://www.pinkfins.click/c7d5J23q95phR8511H398M9Idecj36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQC9eRo5K1M0u6JNBwDJ/resident-interpersonal" alt=""/></body>
 </html>
 
-------=_Part_184_1207935724.1663736805279--
+------=_Part_553_1176751496.1663740726980--
 
