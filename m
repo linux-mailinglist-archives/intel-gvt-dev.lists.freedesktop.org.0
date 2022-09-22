@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F36365E5633
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 00:20:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98F845E56A3
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 01:17:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B14AC10E931;
-	Wed, 21 Sep 2022 22:20:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 885A810E96E;
+	Wed, 21 Sep 2022 23:17:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Wed, 21 Sep 2022 22:20:13 UTC
-Received: from mail.viletri.click (unknown [209.142.103.187])
- by gabe.freedesktop.org (Postfix) with ESMTP id EFCA810E92E
+ Wed, 21 Sep 2022 23:17:09 UTC
+Received: from mail.trubucks.click (unknown [185.104.151.221])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 718C010E954
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 22:20:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=viletri.click;
+ Wed, 21 Sep 2022 23:17:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=trubucks.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=laurie_polite@viletri.click; 
- bh=iWHL0Q2vUQK3W7P/drH/irAKKF8=;
- b=cvNaMTaknHZqKb+aXS5+5JEjf8nABKVlgXtWjedW9j1Ccy13j/nSqcCKzVg938D3HvF1SPShNJDg
- io7ao0ClNdTbcWXMvmup+chRIHQ63mPfSHFBFVeCL6GXJGdghAj1fj2zaCJoZnIKg3PNuMBJ+jDf
- OQ8pw1ClM+IZr/uBllE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=viletri.click;
- b=Wm84VAf4JSOljBh2iXy0Q1ilzjXFK4I43fwojHGqlcGbRB5rT/Me7KuKMMZd2Fs9JB+mm660nNSt
- S5LpKMUWol8UGTTI04Y2W8B4LvqeOb5ekyz3MYIm7pBcg1rTyjV9gG378Sp4t7wk3uP8Bv+nIr4J
- HikZVFt9diPXUKyE1Qg=;
-Received: by mail.viletri.click id h5ehkc0001g2 for
+ i=losado_florence@trubucks.click; 
+ bh=ce4qpXILpmi4aV7Pa+9BWpsovdM=;
+ b=KwA2M5cIgNUTJhXFhBN7tzukL+Ok8fmD/tqeuTqTFpGD8m7iQTZz+Ta1A78jJhqmgIQRQbiCrT3M
+ dupq2KPzwDYD9rsOFG8VQwkwAVqZVCWrOWO/vzSrgVScoMy9fWmDlSupTiBFtHcgQUqVChRYFwhT
+ dFymsng/m+yfcr59Xt8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=trubucks.click;
+ b=RUMETF9QWGPLnr4IstnpuDNnJ1i16ujj+hOITg76t9sqZCoFGLUuprkxRNsyMqOaQvre6KSm8zsP
+ f9Nezgmkl/IRDZWgP1ge2Fw8fdSH6ZNXvjVcRkRsIpkp1v/KrCtxviBrDdf+MBoUhzQPOsfEhApY
+ gmIv+H783i598+mkDEs=;
+Received: by mail.trubucks.click id h5eo9s0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 19:39:32 -0400 (envelope-from
- <laurie_polite-intel+2Dgvt+2Ddev=lists.freedesktop.org@viletri.click>)
-Date: Wed, 21 Sep 2022 19:39:32 -0400
-From: Laurie Polite <laurie_polite@viletri.click>
+ Wed, 21 Sep 2022 20:36:58 -0400 (envelope-from
+ <losado_florence-intel+2Dgvt+2Ddev=lists.freedesktop.org@trubucks.click>)
+Date: Wed, 21 Sep 2022 20:36:58 -0400
+From: Florence Losado <losado_florence@trubucks.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Ladder-Free gutter cleaning. LeafFilter 10%  Off
+Subject: Explore Rent-to-Own Properties near you:  (47)
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_664_1941238594.1663798140350"
-Message-ID: <0.0.0.49.1D8CE1366273018.4B6F53@mail.viletri.click>
+ boundary="----=_Part_376_444969302.1663801584982"
+Message-ID: <0.0.0.29.1D8CE1B6C359352.1FCBDE@mail.trubucks.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_664_1941238594.1663798140350
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Ladder-Free gutter cleaning. LeafFilter 10%  Off
-
-
-Visit Here to Prevent Gutter Debris : 
- http://www.viletri.click/tilts-ballparks/d6e6Is2W395l8pW611I39pc2Qdfal36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQL9eSe5CP10y6BPwPDA
-
-
-
-
-
-
-To discontinue your subscription, Do This : http://www.viletri.click/harvesting-southern/80a6lj23i95W8gC612D39cRB3Wdfay36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQL9eSe6os10AA5LWwDW
-This email communication was chosen for intel-gvt-dev@lists.freedesktop.org
-2 DEPOT Plaza, Suite 401, Bedford_Hill_, NY 1O5O7'
-4393934. 65870326
-
-------=_Part_664_1941238594.1663798140350
+------=_Part_376_444969302.1663801584982
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,21 +62,30 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.viletri.click/9355p23D95QZ86A11E39qc2ydfaT36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQL9eSe5Hkg105LXAwD/quantitatively-sayings" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Prevent Gutter Debris</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.viletri.click/9355p23D95QZ86A11E39qc2ydfaT36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQL9eSe5Hkg105LXAwD/quantitatively-sayings" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.viletri.click/persuades-interactivity/6845HQ2395j7aOh10O39c4MdfaK36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQL9eSe7Pzm_l105KP1wD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Shake a Leg! Pre-Fall Special Expires in 4 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, &quot;Trebuchet MS&quot;; font-size: 13px; line-height: 1.656; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 36px;"><strong><span style="color: rgb(51, 102, 102);">rent</span><span style="color: rgb(153, 255, 0);">to</span><span style="color: rgb(255, 255, 255);"><span style="background-color: rgb(51, 102, 102);">own</span>&nbsp;</span></strong></span><span style="font-size: 20px;">LISTINGZ</span></p> 
+  <div>
+   <br /> 
+   <br /> 
+   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"><span style="white-space: pre-wrap;">intel-gvt-dev@lists.freedesktop.org, </span></span></span>
+   <br /> 
+   <br /> 
+   <span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Why Rent when you can Rent-to-Own?</span></span>
+  </div> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.trubucks.click/Aa76j2ON395B8Vj612Xj39cF6Wdfbs36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQx9eSK6ntO10h5AUlwD/stationery-fetching"><b style="font-family: Arial; font-size: 18.6667px; white-space: pre-wrap;">Tap Here to Locate 1000s of Rent-to-Own Listings</b></a></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Jayla W. rents to own a 2 Bed, 1.5 Bath, </span></span><span style="font-family: arial, helvetica, sans-serif; font-size: 18px;">1249</span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home </span></span><span style="font-size:18px;"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family:arial,helvetica,sans-serif;">for&nbsp;$</span></span><span style="font-family:arial,helvetica,sans-serif;">1132</span><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:18px;">Noel A. is investing in a l3 Bed, 1.5 Bath, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1249</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"> 1214</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo&nbsp;</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Shemar W. has a zero down, 3BD, 2BA, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1465</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1383/</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">mo</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.trubucks.click/Aa76j2ON395B8Vj612Xj39cF6Wdfbs36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQx9eSK6ntO10h5AUlwD/stationery-fetching"><font face="Arial"><span style="font-size: 18.6667px; white-space: pre-wrap;"><b>Go Here to Locate Rent-to-Own Listings Online</b></span></font></a></p> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To discontinue your subscription,</span><a href="http://www.viletri.click/9535g239n5H86KP12K39tcD3sdfau36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQL9eSe5G1t0k6K20wD@/axes-lighten" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Do This</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2 DEPOT Plz, NO 401', Bedford~Hills, NY 10507-</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4393934:65870326</span></span></p>   
- <img src="http://www.viletri.click/servants-inside/b166er2D395P8S5M11Y39ci5YdfaK36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQL9eSe7QA1St0_5m@3wD" alt=""/></body>
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P.O. Box' 4l20' PortIand OR 97208- 4l20'&nbsp;</span></span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To discontinue e-mail, </span><a href="http://www.trubucks.click/d135v2N395DD8P611s39Dc7Qdfby36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQx9eSK6Igt10U6w0w2Dz/stationery-fetching" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go-On-Here</span></a></span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was intended for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">61927067.9154789</span></span></span></p>   
+ <img src="http://www.trubucks.click/reselecting-hellfire/35a5X2q395mDF8512O39ci8KhdfbN36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQx9eSK7c1ZKD0R6cWwBqD" alt=""/></body>
 </html>
 
-------=_Part_664_1941238594.1663798140350--
+------=_Part_376_444969302.1663801584982--
 
