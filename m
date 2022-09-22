@@ -1,42 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CF0D5E6396
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 15:29:08 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77F265E654A
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 16:27:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 29F1A10EB1D;
-	Thu, 22 Sep 2022 13:29:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3719110EB7A;
+	Thu, 22 Sep 2022 14:27:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
- Thu, 22 Sep 2022 13:29:04 UTC
-Received: from mail.jimryes.mom (unknown [172.99.175.224])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5BC0010EB13
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Thu, 22 Sep 2022 14:27:08 UTC
+Received: from mail.kiteryes.icu (unknown [172.99.175.46])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D4ECF10EB7A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 13:29:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jimryes.mom;
+ Thu, 22 Sep 2022 14:27:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kiteryes.icu;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=julia-furch@jimryes.mom; bh=fVqquO14vXrpa/UoTjQUTCvbYao=;
- b=z6DfkYIFf4O53g/r9fJjEEDlv9hef4QmDJqItEA9GKkSaxopTeoILI8YmxL+ERmLnI6GyxocLwlM
- ZZp8t8LiLY2yF+Dtdha+p9J6Z6BaT4uqCaLyAniKCnCNHGP+oAsJFvLecWPXRNU++NfVdVcNxQvy
- DGkowfBoUwjbzUTmU6w=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jimryes.mom;
- b=FKucy8hYqQGBCChWmFWnmsNZfEtubaIW70r/tL/ZGz/ZYzvmMhPsfY9SmyPiLJvycJ1V6KKsCbqk
- 4q1jFrkrVNZAP9Y43ek7tLAheHGsb8OsxAGteRb+DHgS1eAnT6bhpD6GuJjmDTyGLbJn6ZmWYb0K
- SyEdiW3hfYEL84cl6JE=;
-Received: by mail.jimryes.mom id h5hhi00001gn for
+ i=serens_ann@kiteryes.icu; bh=SA/cI5tOaQJskJhPiFObC56rO3Y=;
+ b=pTqytid1IvblGGxIMrmAjgzMBNIsx7bcY5ygOzuo+VlKrc8ojg1zu3UxycTJVDR0grs7aqWukAlv
+ FnSE2vgCmUaQjhUkJXLfGidu0T8RyNqhZlZPAPEHC6YIdHE7plTGlr0cXDlsSWJzxUVusrKAT/7i
+ Wc8H6zSFq0rtZL7FaXw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kiteryes.icu;
+ b=boXD70JUvAirJq4eMpxyJ3U85A9/7FcBFh7yWA3Q2k4WodCop9XRRQLE/4suyJw0bAF1pukmjlf8
+ Og1jjvKcgq7n7YwHm8T+AvOvMLkB4Q377SBMl+NiRthet80TsIyLxg5AK5Cyn1c5nde/8XrQAokF
+ TYWbbIxhZB+yzgyQSx8=;
+Received: by mail.kiteryes.icu id h5hobo0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 09:12:44 -0400 (envelope-from
- <julia-furch-intel+2Dgvt+2Ddev=lists.freedesktop.org@jimryes.mom>)
-Date: Thu, 22 Sep 2022 09:12:44 -0400
-From: Julia Furch <julia-furch@jimryes.mom>
+ Thu, 22 Sep 2022 10:07:00 -0400 (envelope-from
+ <serens_ann-intel+2Dgvt+2Ddev=lists.freedesktop.org@kiteryes.icu>)
+Date: Thu, 22 Sep 2022 10:07:00 -0400
+From: Ann Serens <serens_ann@kiteryes.icu>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Easily Find the Gutter-Guard Right for You
+Subject: Fall SALE on Andersen-replacement windows      #4951021
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_373_1558964063.1663852335924"
-Message-ID: <0.0.0.29.1D8CE8500D1AFD2.84C24@mail.jimryes.mom>
+ boundary="----=_Part_217_1520745879.1663855607040"
+Message-ID: <0.0.0.18.1D8CE8C9569B1CE.7726B7@mail.kiteryes.icu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,31 +52,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_373_1558964063.1663852335924
+------=_Part_217_1520745879.1663855607040
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-[mm_gutter_guard_subjects]
+Fall SALE on Andersen-replacement windows 
 
-Visit Here to Find Gutter Guard Options Online .  http://www.jimryes.mom/c7d6zlg2395z8UP611d3T9f1Qe06K36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ.9eeK5F1A0z6jXwkMD/lasts-terrorized
-
-
-
-
-2222 Michelson DR.  NO.  222 _112, lRVlNE, CALIF 92612
-
-To get rid of your subscription, Begin.Right.Here - http://www.jimryes.mom/20f4z2395kQ86R11V39f2Qqe06L36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.9eeK6s1IA0J6QXjwlD/groupings-missile
-This email content was designated for intel-gvt-dev@lists.freedesktop.org
-
- 
-65457554-46184330
+Start here for the BOGO 40% Off Now. http://www.kiteryes.icu/7735Oq2395CP8o612H39fTV6te07m36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQV9eKm5Ci1D06SykTwD/typicalness-robin
 
 
 
 
 
 
-------=_Part_373_1558964063.1663852335924
+
+2O4O.  Merick 
+RD. , # 4408.  Merick, 
+New. York II566.  
+UNITED STATES
+
+To bring email to an end, Start.Here.Now. http://www.kiteryes.icu/aqua-Pompeii/d8c4I2395g8g6Z11n3s9f7Ne07r36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQV9eKm7fMRU1Y05z@wlD
+
+Our email communication was chosen for intel-gvt-dev@lists.freedesktop.org
+
+96330725-4951021
+
+------=_Part_217_1520745879.1663855607040
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -85,20 +86,22 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.jimryes.mom/greenware-annexation/6a26SD239P5I8P6C12L3J9f1goe06l36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ.9eeK5w1q0X6H@lwLD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Find Gutter Guard Options Online</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.jimryes.mom/greenware-annexation/6a26SD239P5I8P6C12L3J9f1goe06l36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ.9eeK5w1q0X6H@lwLD"><img alt="Find Affordable Gutter Guards Here" src="http://www.jimryes.mom/brevets-phony/4e06wr2p395w7O_a10s39f3me06R36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.9eeK5Gnm106SUwDqN" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><a href="http://www.kiteryes.icu/spinoff-interruptive/8645yk2395z86yA12Ft39fw5he07g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQV9eKm6P1PZG05GzwJD">Go here to save on Andersen Renewal windows</a></span></span><br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><a href="http://www.kiteryes.icu/40d6W2h39A5sO8F612D3t9f6yDe07D36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQV9eKm6vtw1S05rzLwD/spinoff-interruptive" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:475px;height:2048px;"><img height="2048" src="http://www.kiteryes.icu/bodyguards-descriptives/3004I2395pM7Ya11b39Kf8Ue07y36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQV9eKm7Eq10qUO5rPw@D" style="margin-left:0px;margin-top:0px;" title="Fall Window Special BOGO 40 + 200 " width="475" /></span></span></a></span></p> 
+  <div style="text-align: center;">
+   <a href="http://www.kiteryes.icu/40d6W2h39A5sO8F612D3t9f6yDe07D36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQV9eKm6vtw1S05rzLwD/spinoff-interruptive" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start here for the BOGO 40% Off Now</span></a>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222_ MICHELSON Dr. NO 222-II2, IRVINE, California 92612.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To get rid of your subscription, <a href="http://www.jimryes.mom/8814J2395N8Nj612E39fY2PKe06T36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.9eeK6j1mU0j5Sl3wD/essentials-crested">Begin.Right.Here</a> </span></span>{{{http://www.jimryes.mom/8814J2395N8Nj612E39fY2PKe06T36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.9eeK6j1mU0j5Sl3wD/essentials-crested</p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email content was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">65457554 46184330</span></span></p>   
- <img src="http://www.jimryes.mom/essentials-crested/d145n23K95K8A5g11R39fg4Oe06P36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ.9eeK6GPBJ105LBXwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2040- Merick<br /> RD, SUlTE<br /> 408_ Merick, New~York<br /> II566.&nbsp;</span></span><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">UNITED STATES</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To bring email to an end,</span><a href="http://www.kiteryes.icu/8L95g23i95d86JW10v39f7Ye07H36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQV9eKm6YSw1W06V@jwDP/bodyguards-descriptives" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Start.Here.Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2398558~4951021</span></span></p>   
+ <img src="http://www.kiteryes.icu/c056KZ2H395E8Oh512t39fi9Aie07l36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQV9eKm7pD1Nw0R5bkywD/bodyguards-descriptives" alt=""/></body>
 </html>
 
-------=_Part_373_1558964063.1663852335924--
+------=_Part_217_1520745879.1663855607040--
 
