@@ -2,76 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A9B95E6A19
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 19:58:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 580E15E697B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 19:19:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 43B1910E113;
-	Thu, 22 Sep 2022 17:58:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E8F0310E11F;
+	Thu, 22 Sep 2022 17:19:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D2B8510E0F9
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Thu, 22 Sep 2022 17:19:04 UTC
+Received: from mail.ryetris.click (unknown [185.104.151.58])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6938E10E118
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 17:58:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1663869504;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=g4NUGUXkPyLpfZsihmjyO9VtgQj5aWbqHvYtbi+s6OQ=;
- b=QRTp4VGsmIF6wFgOpwcacy5nlVLDFxUsTzcTWMkPL5sHeJ/UsLJvQLeuGES77VMKLt+7Nw
- ma1oxU0QC3YYBDZWOjchtk3Emo94AsaxjlzRwPKSy93ikI83wsP0bNSa4F67WQ08T/5f8e
- lDsBnvMst131nUzb/NLhd+JRsy4hZuw=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-611-6a-brmEbNwWGxeLeOOKi0w-1; Thu, 22 Sep 2022 13:58:24 -0400
-X-MC-Unique: 6a-brmEbNwWGxeLeOOKi0w-1
-Received: by mail-il1-f199.google.com with SMTP id
- h9-20020a056e021b8900b002f19c2a1836so6146443ili.23
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 10:58:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date;
- bh=g4NUGUXkPyLpfZsihmjyO9VtgQj5aWbqHvYtbi+s6OQ=;
- b=QVbQnSoKFT/i2f8OtN62+HJVK0j4B6Yq/Uj8HyODssSMUflcWYLTlqLOxcqMA8q9Gj
- L2BQFzw25hc0Szsbae+dPbY7DD9eBcH2c3rP1BfrS4wX6WDNQUKlUyOLhxyE3+S6zpRb
- Ey3q02bmItCRFGSce31SIriDLHuZzpJpKufp7pNKVwWdoDoC3ngxg2fUrY0ACh7nmkox
- reOBTXhgF1xuTjxc7amTTilbsH1ipkEK/IL+KOEYG6EsZS1VXcaZXg8qOq4bJCQAn443
- Og0XqVxqAMvqnc+4ymfd/2opEXfN4sOpPOA3B96+XH932dz9CYoy1JmPYCP6BMUGvZfN
- +n7w==
-X-Gm-Message-State: ACrzQf2QjufpU3hpT4/pnoZ29wRyy8Ry/COcP/FJfZ3DJjuik8x1bk6J
- 1zI8hdx2y2dbBuoOFTviX48gx9QCTM5d6iLIfh/iHTxAULk1t+wv9hp01HOef6cp8rQ297Duht3
- zVgNP04qGHBE7SywYz7q+7nFsSuT2meBOQg==
-X-Received: by 2002:a05:6638:1305:b0:35a:6a4e:9e57 with SMTP id
- r5-20020a056638130500b0035a6a4e9e57mr2680876jad.126.1663869503055; 
- Thu, 22 Sep 2022 10:58:23 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM530vCbzgK3QTaLWq3W4wuBNaUAkWaoYeBZZnU7wvG9GWi4I/K5zklV/6TeHh+w/3LQU5zx2g==
-X-Received: by 2002:a05:6638:1305:b0:35a:6a4e:9e57 with SMTP id
- r5-20020a056638130500b0035a6a4e9e57mr2680865jad.126.1663869502854; 
- Thu, 22 Sep 2022 10:58:22 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- p5-20020a056638216500b0035a498d222asm2456730jak.35.2022.09.22.10.58.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Sep 2022 10:58:22 -0700 (PDT)
-Date: Thu, 22 Sep 2022 11:58:20 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Kevin Tian <kevin.tian@intel.com>
-Subject: Re: [PATCH v4 00/15] Tidy up vfio_device life cycle
-Message-ID: <20220922115820.5ac023ab.alex.williamson@redhat.com>
-In-Reply-To: <20220921104401.38898-1-kevin.tian@intel.com>
-References: <20220921104401.38898-1-kevin.tian@intel.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
+ Thu, 22 Sep 2022 17:19:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ryetris.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=roberta-orouke@ryetris.click; 
+ bh=q/XRcx42l+4T/wZwgzLkkawoS8E=;
+ b=jaA7+8fqclBa6T6npGIoC148RZyxHImuu0Oke0o2XSUPka4YWCuMtb9fzl2wH8bkrBMyRLj5QbaI
+ t1gfIscpjiakRc/xz2aJuxJubLNOpe2d3TNK3ER0wI0rsnMEKY+l0ZtkYZqTxEu5InOzozwzDdAC
+ 0MWUbTVWAcbNED3j7IY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ryetris.click;
+ b=mWuaiGyYmhKacX4ylxHeMS3RofKtJ0AqYXvTP/THmQ1SbTZvDacfki6uv47/+IXetHREh9VNozt2
+ yLQe/b03Uf3wF07BzDFd+Z5ygAS45C4RDXFUBz1xlwHXaMe932bELyfpkik1l5Wi50VIHpZyt5R3
+ tUAxH19VPQPEv1q0aEs=;
+Received: by mail.ryetris.click id h5in2u0001gs for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 22 Sep 2022 14:35:21 -0400 (envelope-from
+ <roberta-orouke-intel+2Dgvt+2Ddev=lists.freedesktop.org@ryetris.click>)
+Date: Thu, 22 Sep 2022 14:35:21 -0400
+From: Roberta Orouke <roberta-orouke@ryetris.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: TrueValue Customer, Claim Your TrueValue Bonus
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_34_549493906.1663866302974"
+Message-ID: <0.0.0.3.1D8CEB2126CB8EA.5BBFE1@mail.ryetris.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,84 +51,52 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Longfang Liu <liulongfang@huawei.com>, Christoph Hellwig <hch@infradead.org>,
- Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
- Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, linux-s390@vger.kernel.org,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 21 Sep 2022 18:43:46 +0800
-Kevin Tian <kevin.tian@intel.com> wrote:
+------=_Part_34_549493906.1663866302974
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-> The idea is to let vfio core manage the vfio_device life cycle instead
-> of duplicating the logic cross drivers. Besides cleaner code in driver
-> side this also allows adding struct device to vfio_device as the first
-> step toward adding cdev uAPI in the future. Another benefit is that
-> user can now look at sysfs to decide whether a device is bound to
-> vfio [1], e.g.:
-> 
-> 	/sys/devices/pci0000\:6f/0000\:6f\:01.0/vfio-dev/vfio0
-> 
-> Though most drivers can fit the new model naturally:
-> 
->  - vfio_alloc_device() to allocate and initialize vfio_device
->  - vfio_put_device() to release vfio_device
->  - dev_ops->init() for driver private initialization
->  - dev_ops->release() for driver private cleanup
-> 
-> vfio-ccw is the only exception due to a life cycle mess that its private
-> structure mixes both parent and mdev info hence must be alloc/freed
-> outside of the life cycle of vfio device.
-> 
-> Per prior discussions this won't be fixed in short term by IBM folks [2].
-> 
-> Instead of waiting this series introduces a few tricks to move forward:
-> 
->  - vfio_init_device() to initialize a pre-allocated device structure;
-> 
->  - require *EVERY* driver to implement @release and free vfio_device
->    inside. Then vfio-ccw can use a completion mechanism to delay the
->    free to css driver;
-> 
-> The second trick is not a real burden to other drivers because they
-> all require a @release for private cleanup anyway. Later once the ccw
-> mess is fixed a simple cleanup can be done by moving free from @release
-> to vfio core.
-> 
-> Thanks
-> Kevin
-> 
-> [1] https://listman.redhat.com/archives/libvir-list/2022-August/233482.html
-> [2] https://lore.kernel.org/all/0ee29bd6583f17f0ee4ec0769fa50e8ea6703623.camel@linux.ibm.com/
-> 
-> v4:
->  - fix use-after-free issue in @release of mtty/mbochs and also change
->    mdpy/ap to free vfio-device as the last thing in @release (Alex)
->  - revert the rename from 'vfio' to 'vfio_group' in procfs (Alex) 
+TrueValue Customer, Claim Your TrueValue Bonus intel-gvt-dev@lists.freedesktop.org
 
-Applied to vfio next branch for v6.1.  Thanks,
 
-Alex
+Start Here for the TrueValue Craftsman generator Giveaway-http://www.ryetris.click/generations-starry/1f26D239vJ5a86Xv11y3za02re0aS36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQp9eK97Q1JF0WJ5IyOwD
+
+
+
+To conclude email, Visit Here Now-http://www.ryetris.click/raising-detachment/eu45tk2395zG8_611cV3a03Ye0aS36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQp9eK97X10pgDp5G2JwD
+
+This content was delivered to intel-gvt-dev@lists.freedesktop.org
+
+-96 Mowat.  AVENUE, TORONTO Ontario M4K3K1 CANADA
+
+1304304 9356966
+
+------=_Part_34_549493906.1663866302974
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:309px;"><a href="http://www.ryetris.click/bab5XY2395Qwi8611l3aT02Fe0aJ36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQp9eK95tg10M5Sk2wD/humiliates-existent"><img alt="Begin the 30-Second Survey Here" src="http://www.ryetris.click/indelible-prescriptive/6665S2Q395JK7a_12J3aI04gze0ay36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQp9eK96v1wI0l5h0wyD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 309px;" /></a></span></span></span></p> &nbsp; 
+  <div style="text-align: center;">
+   <a href="http://www.ryetris.click/bab5XY2395Qwi8611l3aT02Fe0aJ36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQp9eK95tg10M5Sk2wD/humiliates-existent"><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Start Here for the TrueValue Craftsman generator Giveaway</span></span></a>
+  </div> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To conclude email, <a href="http://www.ryetris.click/marvel-beginning/60c5S23N95B86kv10P3a03Be0ah36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQp9eK95w1M0J6wNkwDl">Visit Here Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This content was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- MOWAT' Av, T0R0NT0 Ontario M4K 3Kl CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1304304 9356966</span></span></p>   
+ <img src="http://www.ryetris.click/3775v2T395Qv8N510b3a05Re0a_36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQp9eK96D1lG0H5C2pwD/indelible-prescriptive" alt=""/></body>
+</html>
+
+------=_Part_34_549493906.1663866302974--
 
