@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98F845E56A3
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 01:17:18 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 25EB25E5800
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 03:29:11 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 885A810E96E;
-	Wed, 21 Sep 2022 23:17:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D671F10EA24;
+	Thu, 22 Sep 2022 01:29:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Wed, 21 Sep 2022 23:17:09 UTC
-Received: from mail.trubucks.click (unknown [185.104.151.221])
- by gabe.freedesktop.org (Postfix) with ESMTP id 718C010E954
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 22 Sep 2022 01:29:06 UTC
+Received: from mail.mildtri.click (unknown [172.99.175.86])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5DE0710EA24
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 23:17:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=trubucks.click; 
+ Thu, 22 Sep 2022 01:29:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mildtri.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=losado_florence@trubucks.click; 
- bh=ce4qpXILpmi4aV7Pa+9BWpsovdM=;
- b=KwA2M5cIgNUTJhXFhBN7tzukL+Ok8fmD/tqeuTqTFpGD8m7iQTZz+Ta1A78jJhqmgIQRQbiCrT3M
- dupq2KPzwDYD9rsOFG8VQwkwAVqZVCWrOWO/vzSrgVScoMy9fWmDlSupTiBFtHcgQUqVChRYFwhT
- dFymsng/m+yfcr59Xt8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=trubucks.click;
- b=RUMETF9QWGPLnr4IstnpuDNnJ1i16ujj+hOITg76t9sqZCoFGLUuprkxRNsyMqOaQvre6KSm8zsP
- f9Nezgmkl/IRDZWgP1ge2Fw8fdSH6ZNXvjVcRkRsIpkp1v/KrCtxviBrDdf+MBoUhzQPOsfEhApY
- gmIv+H783i598+mkDEs=;
-Received: by mail.trubucks.click id h5eo9s0001g6 for
+ i=stolle-veronica@mildtri.click; 
+ bh=9Zo+xWR4AYPHXI6BwWX95vdnskU=;
+ b=Wqb4FHKbeO7GmzIXVFO0nSlRwIYhj9XLGGOGj75uBK+J46vd0hxIJtDTgBqSkdhvJa/HqDoXOpZO
+ 8S79TKAZdV/5OyX1MIqo4txSWYr69knmovQaqs6Q7fj4UtKbU6sdVfu/asyq6QjjTl+v2JK9HjR/
+ v3q6PK8i2Bdo3KQ3/x0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mildtri.click;
+ b=T0FHZjUjJmF4jSNrk9DaXCqYqgI3AO3Vm3nADMTCHAAWxUPG2likXBB7twphnA538zr8MnAldiQq
+ n9ch6S4MPPb8hxHz9bWramiRjF885uGE7RUsnuWMJ5VBFAVdkVTWfBi32FlUM3Ca3GZnpJkI3qhA
+ YsEZHKYkD3FP/T9WGVk=;
+Received: by mail.mildtri.click id h5et640001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Sep 2022 20:36:58 -0400 (envelope-from
- <losado_florence-intel+2Dgvt+2Ddev=lists.freedesktop.org@trubucks.click>)
-Date: Wed, 21 Sep 2022 20:36:58 -0400
-From: Florence Losado <losado_florence@trubucks.click>
+ Wed, 21 Sep 2022 21:05:18 -0400 (envelope-from
+ <stolle-veronica-intel+2Dgvt+2Ddev=lists.freedesktop.org@mildtri.click>)
+Date: Wed, 21 Sep 2022 21:05:18 -0400
+From: Veronica Stolle <stolle-veronica@mildtri.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Explore Rent-to-Own Properties near you:  (47)
+Subject: Lowes Craftsman Riding Mower Offer intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_376_444969302.1663801584982"
-Message-ID: <0.0.0.29.1D8CE1B6C359352.1FCBDE@mail.trubucks.click>
+ boundary="----=_Part_103_1368645679.1663808691353"
+Message-ID: <0.0.0.B.1D8CE1F616D8886.48811A@mail.mildtri.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_376_444969302.1663801584982
+------=_Part_103_1368645679.1663808691353
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Lowes Craftsman Riding Mower Offer  intel-gvt-dev@lists.freedesktop.org
+
+
+Visit Here for a Craftsman Riding Mower from Lowes. http://www.mildtri.click/methods-medallion/e7c5y23u95qD8k610n39cdRdfdm36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQz9een7XHkTr106a1zAwD
+
+
+
+
+
+
+To shut down notices, Go This Way. http://www.mildtri.click/8454h2395i8xP610o39cendfds36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQz9een6h1roH05izw0D/dissents-enactment
+
+This email was chosen for intel-gvt-dev@lists.freedesktop.org
+
+96 MOWAT- Avenue, T0R0NT0 Ont.  M4K3Kl CA
+
+2186443,6609014
+
+------=_Part_103_1368645679.1663808691353
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -61,31 +83,19 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, &quot;Trebuchet MS&quot;; font-size: 13px; line-height: 1.656; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 36px;"><strong><span style="color: rgb(51, 102, 102);">rent</span><span style="color: rgb(153, 255, 0);">to</span><span style="color: rgb(255, 255, 255);"><span style="background-color: rgb(51, 102, 102);">own</span>&nbsp;</span></strong></span><span style="font-size: 20px;">LISTINGZ</span></p> 
-  <div>
-   <br /> 
-   <br /> 
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"><span style="white-space: pre-wrap;">intel-gvt-dev@lists.freedesktop.org, </span></span></span>
-   <br /> 
-   <br /> 
-   <span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Why Rent when you can Rent-to-Own?</span></span>
-  </div> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.trubucks.click/Aa76j2ON395B8Vj612Xj39cF6Wdfbs36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQx9eSK6ntO10h5AUlwD/stationery-fetching"><b style="font-family: Arial; font-size: 18.6667px; white-space: pre-wrap;">Tap Here to Locate 1000s of Rent-to-Own Listings</b></a></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Jayla W. rents to own a 2 Bed, 1.5 Bath, </span></span><span style="font-family: arial, helvetica, sans-serif; font-size: 18px;">1249</span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home </span></span><span style="font-size:18px;"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family:arial,helvetica,sans-serif;">for&nbsp;$</span></span><span style="font-family:arial,helvetica,sans-serif;">1132</span><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:18px;">Noel A. is investing in a l3 Bed, 1.5 Bath, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1249</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"> 1214</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo&nbsp;</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Shemar W. has a zero down, 3BD, 2BA, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1465</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1383/</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">mo</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.trubucks.click/Aa76j2ON395B8Vj612Xj39cF6Wdfbs36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQx9eSK6ntO10h5AUlwD/stationery-fetching"><font face="Arial"><span style="font-size: 18.6667px; white-space: pre-wrap;"><b>Go Here to Locate Rent-to-Own Listings Online</b></span></font></a></p> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.mildtri.click/4a34q2395pr86Y10K39cdMdfdM36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQz9een5lkm105RAlwD/moves-interrelating"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.mildtri.click/7cd5R239S5P7xaS12H39BocfudfdS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQz9een6h1C0rt6yqwJOD/dissents-enactment" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.mildtri.click/4a34q2395pr86Y10K39cdMdfdM36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQz9een5lkm105RAlwD/moves-interrelating" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for a Craftsman Riding Mower from Lowes</span></a></span></span></p> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p>&nbsp;</p> 
-  <p>&nbsp;</p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P.O. Box' 4l20' PortIand OR 97208- 4l20'&nbsp;</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To discontinue e-mail, </span><a href="http://www.trubucks.click/d135v2N395DD8P611s39Dc7Qdfby36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQx9eSK6Igt10U6w0w2Dz/stationery-fetching" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go-On-Here</span></a></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was intended for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">61927067.9154789</span></span></span></p>   
- <img src="http://www.trubucks.click/reselecting-hellfire/35a5X2q395mDF8512O39ci8KhdfbN36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQx9eSK7c1ZKD0R6cWwBqD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut down notices, <a href="http://www.mildtri.click/congregated-statutoriness/3b46P23Oz95P8CQ610D39cekdfdD36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQz9een5E1L0g6IJwyDN">Go This Way</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. Mowat- AV, T0R0NT0 Ont. M4K 3K1 Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2186443:6609014</span></span></p>   
+ <img src="http://www.mildtri.click/acquitted-redresses/33c4t2395uTt8512wm39Fd0ndfdT36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQz9een7SHJKn106dPPw3D" alt=""/></body>
 </html>
 
-------=_Part_376_444969302.1663801584982--
+------=_Part_103_1368645679.1663808691353--
 
