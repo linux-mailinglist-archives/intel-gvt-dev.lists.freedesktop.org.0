@@ -1,42 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3FBE5E6E4F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 22 Sep 2022 23:19:24 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5B905E6F83
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 00:18:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B64FB10E13C;
-	Thu, 22 Sep 2022 21:19:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7D8AC10E16D;
+	Thu, 22 Sep 2022 22:18:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Thu, 22 Sep 2022 21:19:18 UTC
-Received: from mail.tierye.click (unknown [185.104.151.59])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0F5A210E13C
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 22 Sep 2022 22:18:13 UTC
+Received: from mail.yetrye.click (unknown [209.142.103.22])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B61B610E16D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 21:19:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tierye.click;
+ Thu, 22 Sep 2022 22:18:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yetrye.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=dumont.elaine@tierye.click; bh=B08woJ3RgjNN4cPcHP69svUzbPw=;
- b=s4pc8MMPnhK2wGgwveSMUDE2E7HB5yiiKeZIHkMRDk7K9nirCUYdA/GZjL0X+1JejnJwg/KeZR9q
- Z4Lukgy6QJSsPnVs752S+jK4PTTxCJ9UFRr6vwEQ91jM1elLtUObLrc7np++kLKrccoHQ1DoP13E
- ybIr3GO0O7MHyGkdIYQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tierye.click;
- b=JdbIq0id9Kg7YKthMT5ZYCjZDuddqwrHkImxElEcYp6hETqHYHPt1g+AaPUAho69HHjKAD252Tvw
- IbvSenNU1bg23SGqNEHSMg2rzrVPc/Z+aWhH1H+DcjyJUe2eMH3ovwvjs3gJq9Uu+2CV8bvTRtDR
- /QcE7QL4SJVwVyh74Q4=;
-Received: by mail.tierye.click id h5j8lc0001g7 for
+ i=lindsay_sircy@yetrye.click; bh=mT2wJPGjBXWtVv8N5Ur+TjMM9aM=;
+ b=Uer+baK0k1rsTsIr8+CZZV6v4Cy1b8EV5hWUSN+63zfolV6pMKrsxZyKJc/MXaacHsdEgGr3nf5J
+ JyFned+jfO5uFIkhwIdRE2Ax1IZ53PDNZpxH1qyt9/sg6gQeFNkX+ivy1nUTTYfcRwYBnIzffmTS
+ 94qWB/IgF38ovE8KglI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yetrye.click;
+ b=Ft0uR//+3vigoSNqJXOu9myOzY1/iPjuPzapnQUh4WFAbc7sIhBMRAUaNxXS6TZkq125vyS8LHlM
+ tj4DZknVZo0qPPRch6boB0TiPeAfC6FNg/UK0fo+KGMJHtIaZoUR8QVZ6qDRUKIv9ELhfIhFKqzq
+ gJbIE9BR1BkU3HDyHxA=;
+Received: by mail.yetrye.click id h5jfia0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 17:07:14 -0400 (envelope-from
- <dumont.elaine-intel+2Dgvt+2Ddev=lists.freedesktop.org@tierye.click>)
-Date: Thu, 22 Sep 2022 17:07:14 -0400
-From: Elaine Dumont <dumont.elaine@tierye.click>
+ Thu, 22 Sep 2022 18:04:56 -0400 (envelope-from
+ <lindsay_sircy-intel+2Dgvt+2Ddev=lists.freedesktop.org@yetrye.click>)
+Date: Thu, 22 Sep 2022 18:04:56 -0400
+From: Lindsay Sircy <lindsay_sircy@yetrye.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Lowes Consumer, Your Bonus up to $1OO Inside >>  #20201693
+Subject: Kohler Walk-In Baths. New Hydrotherapy Benefits  #34244
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_118_161678291.1663880803557"
-Message-ID: <0.0.0.E.1D8CEC74A492856.3CA3E5@mail.tierye.click>
+ boundary="----=_Part_31_1601108929.1663884281692"
+Message-ID: <0.0.0.4.1D8CECF59C329B4.28BA6B@mail.yetrye.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,25 +52,34 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_118_161678291.1663880803557
+------=_Part_31_1601108929.1663884281692
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Lowes Consumer, Your Bonus up to $1OO Inside >>  #47836353
+Kohler Walk-In Baths. New Hydrotherapy Benefits  #34244
 
-Begin Here to provide feedback & claim your Bonus,http://www.tierye.click/editors-divisor/1f26P23X9A5I8Z6r11J3aR13Pe0eR36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQu9eKS7AL1k0mw5rMwDB
-
-Act Now! Sale is Over in 48 Hours.
+Go Here to Find Your Tub~http://www.yetrye.click/disabling-narration/2c45o2X395Vi8M612S3a1h7tte0fO36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQv9eKe5GX10X6LNwLDM
 
 
 
 
-This email communication was directed to intel-gvt-dev@lists.freedesktop.org
-96_ Mowat- Avenue, Toronto- Ont M4K3KI CA
-To edit your subscription elections, Go Over Here,http://www.tierye.click/editors-divisor/a444y2395SrW8612g3VQa14se0ep36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQu9eKS5Dh10j6JBLBwD
-13691654,20201693
 
-------=_Part_118_161678291.1663880803557
+
+I93I_ 
+Cordova_ 
+Road # 
+1038, 
+Ft.  Lauderdale, Florida 
+333l6-
+
+To shut down communication, Go Right Here~http://www.yetrye.click/1976u23gh95W8SQ612Xz3a1t8Me0fg36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQv9eKe5E_i106nzywDU/soldiers-contractual
+
+This e-mail was meant for intel-gvt-dev@lists.freedesktop.org
+
+
+8999728~65463090
+
+------=_Part_31_1601108929.1663884281692
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -79,13 +88,13 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b5016311-7fff-1e98-be94-6e4827c65dac"><a href="http://www.tierye.click/6fb6PN239L5Y8Z6V11rA3a13Pe0ek36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQu9eKS7oXXo1P05KllwD/chargers-augments" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to provide feedback & claim your Bonus</span></a></span><br /> &nbsp;</p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b5016311-7fff-1e98-be94-6e4827c65dac"><a href="http://www.tierye.click/6fb6PN239L5Y8Z6V11rA3a13Pe0ek36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQu9eKS7oXXo1P05KllwD/chargers-augments" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:950px;"><img alt="Claim Your Lowes Reward up to $1OO Here" src="http://www.tierye.click/editors-divisor/8824l2395lHH7a12eF3Aa15Ye0eg36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQu9eKS7ix1SUH06okwlpD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 950px;" /></span></span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><br /> <span id="docs-internal-guid-b5016311-7fff-1e98-be94-6e4827c65dac"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-size:20px;">Act Now! Sale is Over in 48 Hours.</span><br /> <br /> <br /> This email communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b5016311-7fff-1e98-be94-6e4827c65dac"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ Mowat. Ave, Toronto Ont. M4K3K1 CA</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b5016311-7fff-1e98-be94-6e4827c65dac"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your subscription elections, </span><a href="http://www.tierye.click/contumacious-clarify/60c4c2395F8j6Z12Ri3a1p4le0eR36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQu9eKS5V1X0V5ly@wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Over Here</span></a></span><br /> 47836353-20201693</p>   
- <img src="http://www.tierye.click/advisable-Parrish/5584J2395jSx8512h3LCa16Ze0eW36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQu9eKS7k1OYC0q5upkwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1174e4e7-7fff-76e7-6a00-392c9844f9c0"><a href="http://www.yetrye.click/4fd4X2395cwB8612Sw3a17poe0fG36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQv9eKe7P10oZtv6j@y3wD/abolishing-circling" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Find Your Tub<br /> <br /> <img alt="View Kohler Walk-in Tubs Here" src="http://www.yetrye.click/2ff4g2395dw7aV12w3aV1g9Me0fr36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQv9eKe7hQ1_Xs05V@wD@/drawbridge-lifetime" style="width: 600px; height: 3000px;" /></span></a></span><br /> <br /> <br /> <br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ea6e3c69-7fff-e3a1-480c-d0d019835106"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1931<br /> CORDOVA_<br /> Road' #<br /> 1O38-,<br /> Fort Lauderdale, FLORIDA<br /> 333I6-</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ea6e3c69-7fff-e3a1-480c-d0d019835106"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut down communication,</span><a href="http://www.yetrye.click/5755H239K5Y_86v10u3a18Qe0fK36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQv9eKe5u1o0A5X0PwD/rapidly-languidly" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Go Right Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ea6e3c69-7fff-e3a1-480c-d0d019835106"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ea6e3c69-7fff-e3a1-480c-d0d019835106"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8999728.65463090</span></span></p>   
+ <img src="http://www.yetrye.click/e7b6u2v3Q95H85lX10d3a1ape0fi36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQv9eKe7pkj1_m06VOj2wD/purpler-kilovolt" alt=""/></body>
 </html>
 
-------=_Part_118_161678291.1663880803557--
+------=_Part_31_1601108929.1663884281692--
 
