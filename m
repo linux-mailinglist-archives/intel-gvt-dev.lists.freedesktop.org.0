@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86FD15E7828
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 12:22:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C72A35E7985
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 13:25:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3AD6B10E835;
-	Fri, 23 Sep 2022 10:22:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8DD4610E8A8;
+	Fri, 23 Sep 2022 11:25:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 23 Sep 2022 10:22:13 UTC
-Received: from mail.underpies.quest (unknown [209.142.103.65])
- by gabe.freedesktop.org (Postfix) with ESMTP id CB19010E829
+ Fri, 23 Sep 2022 11:25:10 UTC
+Received: from mail.kimslie.click (unknown [209.142.103.216])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 29CC610E8B9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 10:22:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=underpies.quest; 
+ Fri, 23 Sep 2022 11:25:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kimslie.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=donna-steeley@underpies.quest; 
- bh=EIW++Qp74M5Z6I1UvnUsNre5vwg=;
- b=iq7W0+VFcRy63GNgqt5VHx46tEMuKM4u2x6CmFXjm2su/nEn24JbwHiKJvqpwdqm2/reCAJRCZ1i
- Qu1337oFtlZukDd5jtYRRCfvSGujjQlFbevC8XFfAD2rF/cg78DfN0GjGKSwaS9WT5LMzumY4TQ9
- 3lYIegBuM8LCyXllyNU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=underpies.quest;
- b=A0Y1Jh40+Y2eQIL2eqP2/1rGB+TIehhQqrN6Onnb3qCpjhWh1z0Yo16nbaF2y5NyDDmq2Whrz455
- /bIosi+EiF3DxlHWywp/cZ8oR73bBXOqdiTmY5FeOCCkdpBODINqORtJvEqGfiP/TXzG9b1FUZ4w
- cIA8EAH0M3tVCJ7NuQ4=;
-Received: by mail.underpies.quest id h5m4dc0001gm for
+ i=lenore_wiesen@kimslie.click; 
+ bh=LNHZZHp/m7JrlsHja1bMO7TrR8k=;
+ b=URVwmyNrf/0sFqdTZ5OKUNkThTcxr0T2liJwRSYfRkvssE0JtgG/2dDqEu5J4Tr1J9CUn94vXJT+
+ hB2UOAELxWFzWhuu3iPRbA3OpL4d0qOXjHdntwyV9Qm7MTaL/efLQhfUKDq3bQta5NL8bc7iEBU9
+ u5Legtrm51fUj5BSoDk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kimslie.click;
+ b=u0wGgfScE2zdF3IlDLBCLDWF7uyBOaItrRiVg63ZplNKpYYcqB1aVT+znFiAkt+xMIkvg5d1vVRU
+ T6mu6YGg+nd0iO1QaKbp2KMAsaMnlWRSufD8WwTCORL5QO94PHsn6Yb9jdWnbCRipyrkmm59P627
+ e7wVV0D3qHUgr/jKS0A=;
+Received: by mail.kimslie.click id h5mmbo0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 06:09:06 -0400 (envelope-from
- <donna-steeley-intel+2Dgvt+2Ddev=lists.freedesktop.org@underpies.quest>)
-Date: Fri, 23 Sep 2022 06:09:06 -0400
-From: Donna Steeley <donna-steeley@underpies.quest>
+ Fri, 23 Sep 2022 08:40:57 -0400 (envelope-from
+ <lenore_wiesen-intel+2Dgvt+2Ddev=lists.freedesktop.org@kimslie.click>)
+Date: Fri, 23 Sep 2022 08:40:57 -0400
+From: Lenore Wiesen <lenore_wiesen@kimslie.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Finally, an Easy Way to Sanitize Your CPAP
+Subject: Leaf~Filter rated #1 Gutter Protection System
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_445_1627878333.1663927741034"
-Message-ID: <0.0.0.31.1D8CF3483D04D80.614514@mail.underpies.quest>
+ boundary="----=_Part_187_413887675.1663931421564"
+Message-ID: <0.0.0.14.1D8CF49BA79C0A4.3B9F3B@mail.kimslie.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +53,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_445_1627878333.1663927741034
+------=_Part_187_413887675.1663931421564
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-The Easy Way to Clean Your CPAP
+Leaf~Filter rated #1 Gutter Protection System
 
 
-Finally, an Easy Way to Sanitize Your CPAPClick_On_Here-http://www.underpies.quest/7915M2l395r8sl612gZ3a37TVe17G36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ59KmS5WR10N6qLAPwD/Chapman-merit
+Start Here to End Gutter Debris Forever : 
+ http://www.kimslie.click/af76m2g3x95V8U6i10k3a3bwe18O36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQj9Kne7z1CMMk06U0wDW@/Mercator-capturing
 
 
 
 
-To do away with email, Follow Here-http://www.underpies.quest/c7d6kr239u5I8Kq611l3ar38Ae17C36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ59KmS7NRR10tk6qBlw3D/depletes-confuse
 
-PO Box_ # 4077' Broadlands VA 2O148- US. 
 
-Our notification was directed to intel-gvt-dev@lists.freedesktop.org
+To suspend your subscription, Click.This : http://www.kimslie.click/minted-ale/e044g2395Bv8U611X3a3cKMe18X36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQj9Kne6U1SK0g5sk1wD
+Our notice was selected for intel-gvt-dev@lists.freedesktop.org
+Two DEP0T PLZ. , STE.  401', Bedford-Hills, New~York 10507_
+6718033 24800817
 
-7863414-39836530
-
-------=_Part_445_1627878333.1663927741034
+------=_Part_187_413887675.1663931421564
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,24 +82,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <div style="text-align: center;">
-   <br /> 
-   <a href="http://www.underpies.quest/8815y2k395C8lU610Y3a37we17m36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ59KmS6mVou105oUwDj/Celeste-abridged"><img alt="Sanitize Your CPAP in 30 minutes" src="http://www.underpies.quest/6834s2395dl7aK12mW3Ha39Me17x36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ59KmS6Ik1z0Y6nJyBwD/Celeste-abridged" style="width: 450px; height: 1139px;" /></a>
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To do away with email, <a href="http://www.underpies.quest/Celeste-abridged/cba5L239A5aW8Z611I3aB38qe17K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ59KmS5h_Z106yUJwAD">Follow Here</a></span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P0 Box_ No. 4077 Broad.lands VIRGINlA 20148_ United States</span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4950636:39836530</span></span></p> 
-  </div>   
- <img src="http://www.underpies.quest/a074O2395a8UU510l3a3aWe17T36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ59KmS6ph10Mz5I@3wD/squeak-redesigns" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.kimslie.click/8634S2395gw8P612Hu3a3ibFe18x36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQj9Kne6By1xv05MzqwD/minted-ale" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to End Gutter Debris Forever</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.kimslie.click/8634S2395gw8P612Hu3a3ibFe18x36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQj9Kne6By1xv05MzqwD/minted-ale" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.kimslie.click/anatomical-tested/71a5XU2395DY7Qa12a3Ta3HdOe18g36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQj9Kne7kH1LoP06FJw@DL" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Snap It Up! Fall Special Is Over in 5 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To suspend your subscription,</span><a href="http://www.kimslie.click/noticing-Domesday/4fe6D239oU5IMx8612G3ga3chWe18_36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQj9Kne5Qs10n6AW2lwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click.This</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notice was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2 DEPOT Plaza, NO. 401, Bedford Hills, New-York 1O5O7-</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6718033.24800817</span></span></p>   
+ <img src="http://www.kimslie.click/cf55f23j95Q85wg11G3a3leZe18m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQj9Kne6SU1Wn06h0zOwD/Mercator-capturing" alt=""/></body>
 </html>
 
-------=_Part_445_1627878333.1663927741034--
+------=_Part_187_413887675.1663931421564--
 
