@@ -2,41 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91E5D5E735A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 07:27:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AC325E7711
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 11:28:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 12DF210E325;
-	Fri, 23 Sep 2022 05:27:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1C40710E7F8;
+	Fri, 23 Sep 2022 09:28:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
- Fri, 23 Sep 2022 05:27:30 UTC
-Received: from mail.ryedimp.click (unknown [192.119.166.61])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6A9E989755
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:3::133])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EBC4210E7F6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 05:27:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ryedimp.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=adele.fortun@ryedimp.click; bh=4wDD86ak6KN29oJsvNUQaeskNWE=;
- b=dRJrdBsjpfw0lETpmV+SHZLjzSWOcxJ+BNkDEDWnTaNy9y9F+5veUnaGs28feQMbBuk0agGe4rCD
- qdBnwSHTw8W7g4L3KQ/xFrYQtHvG5lBlOj4UcW1MP5HYk7lbfo8JNQh7x73AolFGo8kmmThqulAR
- XgWL/nuJwPuDJpBC7Lc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ryedimp.click;
- b=gIlxsKABGUJq9ymsY1WZChpd7PIukuQ4jybm3hvvG1101hwiUW9k7/YovOoy7pkBs2xRM5AHjHdM
- VxKcBMI1XkKoAFoFDA46fP59o6GE4CSKoBKS2VX3jLBtVxQqmiHlVLEnRJKdQkr6p8AGAsSxuJvn
- 8MnsmQGCs4FulA4i058=;
-Received: by mail.ryedimp.click id h5l1s40001g9 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 01:16:03 -0400 (envelope-from
- <adele.fortun-intel+2Dgvt+2Ddev=lists.freedesktop.org@ryedimp.click>)
-Date: Fri, 23 Sep 2022 01:16:03 -0400
-From: Adele Fortun <adele.fortun@ryedimp.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Give your input about Southwest for up to $1OO Bonus 35313
+ Fri, 23 Sep 2022 09:27:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=CoUw4thW9ufTem91w3lWVNAkfwZXyINk29SvpieilW4=; b=n/TzYmCPrsheitSnJKSvN1lOnx
+ OW+6TwU3Secx2oyZd3yujIcMnW0Nn34Re3TLuxrhLzsXTQ1+CHHFXzZoj5iDgk/asXroRyz/nyOEU
+ n6sRMk1pdYCrqBmmAsp9Ff3iWheISVdSFGN04NR/8YTyeZQadMASXbjZsP5UFiaiXpc8g3PdQtKUa
+ FcUqtT2m1wjKiPTSSzfllf6aIbDlTayfxacJ4XzBvxKLMqyFDwdEfCecgsmPM1QtTLcol+hHjiwek
+ jJSZYPVNH1O2lDKkyEbceXqpa1qT0jDrjXhc3aZTj4W5Kbed6N4n1UqeXEMSkAplVVrh0qybaoMms
+ sEloIlFw==;
+Received: from ip4d15bec4.dynamic.kabel-deutschland.de ([77.21.190.196]
+ helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1obexS-003JeO-Gs; Fri, 23 Sep 2022 09:26:55 +0000
+From: Christoph Hellwig <hch@lst.de>
+To: Kirti Wankhede <kwankhede@nvidia.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+Subject: simplify the mdev interface v8
+Date: Fri, 23 Sep 2022 11:26:38 +0200
+Message-Id: <20220923092652.100656-1-hch@lst.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_469_905592818.1663910149025"
-Message-ID: <0.0.0.34.1D8CF0B93AAA094.6AEC0C@mail.ryedimp.click>
+Content-Transfer-Encoding: 8bit
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,48 +55,81 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: linux-s390@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ kvm@vger.kernel.org, Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_469_905592818.1663910149025
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Hi all,
 
-Give your input about Southwest for up to $1OO Bonus 35313
+this series significantly simplifies the mdev driver interface by
+following the patterns for device model interaction used elsewhere in
+the kernel.
 
-Click Here for up to $1OO Reward for your feedback. http://www.ryedimp.click/42b5hu2395tA86p10g3a33Le16A36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQO9KmQ5q1w0l6QzLTwD/napkins-shuddered
+Changes since v7:
+ - rebased to the latests vfio/next branch
+ - move the mdev.h include from cio.h to vfio_ccw_private.h
+ - don't free the parent in mdev_type_release
+ - set the pretty_name for vfio_ap
+ - fix the available_instances check in mdev_device_create
 
-Lose No Time! Offer Becomes Void in 24 Hours.
+Changes since v6:
+ - rebased to Linux 6.0-rc2
+ - folded in a patch from Eric Farman to fix the placement of the new
+   embedded mdev structured in the s390 cio driver
 
+Changes since v5:
+ - rebased to the latest vfio/next branch
+ - drop the last patch again
+ - make sure show_available_instances works properly for the internallly
+   tracked case
 
-To edit your email choices, Get-Going-Here. http://www.ryedimp.click/adopters-languid/60c5v239u5CY86K12B3za3B4qe16V36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQO9KmQ6Fm1yl06KOywDp
-Our e-mail message was directed to intel-gvt-dev@lists.freedesktop.org
-96 MOWAT Ave, Toronto' Ont M4K 3Kl CA
-5694722. 8285949
+Changes since v4:
+ - move the kobject_put later in mdev_device_release 
+ - add a Fixes tag for the first patch
+ - add another patch to remove an extra kobject_get/put
 
-------=_Part_469_905592818.1663910149025
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Changes since v3:
+ - make the sysfs_name and pretty_name fields pointers instead of arrays
+ - add an i915 cleanup to prepare for the above
 
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><a href="http://www.ryedimp.click/e214g2395A8n6W11y3a3B3he16O36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQO9KmQ5K1W0B6Ek3wDL/Hanoi-eavesdropped" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for up to $1OO Reward for your feedback</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:636px;"><a href="http://www.ryedimp.click/e214g2395A8n6W11y3a3B3he16O36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQO9KmQ5K1W0B6Ek3wDL/Hanoi-eavesdropped"><img alt="Visit here to take the Southwest survey &amp; claim your reward" src="http://www.ryedimp.click/Z896VhR2395PF7aO11gK3a35me16j36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQO9KmQ5Mx10A6S0w2Dy/typifies-Wagnerian" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 636px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 18pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lose No Time! Offer Becomes Void in 24 Hours.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your email choices, </span><a href="http://www.ryedimp.click/1d34U2395X8Uj610m3a34Ze16w36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQO9KmQ6sR1j0o6QlUwD3/adopters-languid" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Get-Going-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT- Ave, T0R0NT0 Ontario M4K3K1 Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5694722-8285949</span></span></p>   
- <img src="http://www.ryedimp.click/d135k2m395AR85x12NX3a36wHe16w36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQO9KmQ5X10IN6iOwWDX/passionately-primrose" alt=""/></body>
-</html>
+Changes since v2:
+ - rebased to vfio/next
+ - fix a pre-existing memory leak in i915 instead of making it worse
+ - never manipulate if ->available_instances if drv->get_available is
+   provided
+ - keep a parent reference for the mdev_type
+ - keep a few of the sysfs.c helper function around
+ - improve the documentation for the parent device lifetime
+ - minor spellig / formatting fixes
 
-------=_Part_469_905592818.1663910149025--
+Changes since v1:
+ - embedd the mdev_parent into a different sub-structure in i916
+ - remove headers now inclued by mdev.h from individual source files
+ - pass an array of mdev_types to mdev_register_parent
+ - add additional patches to implement all attributes on the
+   mdev_type in the core code
 
+Diffstat:
+ Documentation/driver-api/vfio-mediated-device.rst |   26 +-
+ Documentation/s390/vfio-ap.rst                    |    2 
+ Documentation/s390/vfio-ccw.rst                   |    2 
+ drivers/gpu/drm/i915/gvt/aperture_gm.c            |   20 +-
+ drivers/gpu/drm/i915/gvt/gvt.h                    |   42 ++--
+ drivers/gpu/drm/i915/gvt/kvmgt.c                  |  168 ++++-------------
+ drivers/gpu/drm/i915/gvt/vgpu.c                   |  210 +++++++---------------
+ drivers/s390/cio/cio.h                            |    1 
+ drivers/s390/cio/vfio_ccw_drv.c                   |   12 -
+ drivers/s390/cio/vfio_ccw_ops.c                   |   51 -----
+ drivers/s390/cio/vfio_ccw_private.h               |    6 
+ drivers/s390/crypto/vfio_ap_ops.c                 |   68 +------
+ drivers/s390/crypto/vfio_ap_private.h             |    6 
+ drivers/vfio/mdev/mdev_core.c                     |  190 ++++---------------
+ drivers/vfio/mdev/mdev_driver.c                   |    7 
+ drivers/vfio/mdev/mdev_private.h                  |   32 ---
+ drivers/vfio/mdev/mdev_sysfs.c                    |  189 ++++++++++---------
+ include/linux/mdev.h                              |   77 ++++----
+ samples/vfio-mdev/mbochs.c                        |  103 +++-------
+ samples/vfio-mdev/mdpy.c                          |  115 +++---------
+ samples/vfio-mdev/mtty.c                          |   94 +++------
+ 21 files changed, 464 insertions(+), 957 deletions(-)
