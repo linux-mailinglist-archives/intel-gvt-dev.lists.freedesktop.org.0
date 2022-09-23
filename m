@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A2B85E81B2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 20:21:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7D435E8270
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 21:18:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C1C1610E5C6;
-	Fri, 23 Sep 2022 18:21:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B114810E094;
+	Fri, 23 Sep 2022 19:18:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 316 seconds by postgrey-1.36 at gabe;
- Fri, 23 Sep 2022 18:21:49 UTC
-Received: from mail.nukepie.click (vwm70.tk [64.64.109.97])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0CB9610E5C6
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Fri, 23 Sep 2022 19:18:27 UTC
+Received: from mail.butpies.click (unknown [213.209.159.198])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5B3B010E00E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 18:21:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nukepie.click;
+ Fri, 23 Sep 2022 19:18:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=butpies.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kate.bohon@nukepie.click; bh=olThzidVjXE3k60vQrRwSMU19xw=;
- b=rJOCT63+7Aks6M6Qn0ATKqqofgqH85bs4Ehdrg0i7YXwN/yOLsi2LY9DSLoG6fhJ3TbFVi0NW8a0
- ZNa1z1Ieq0hFaVSwFVRX67L2/Hyq20L6QcGu+/SH4PF5Fq0jf8/vYClq1K6+122h0ks95xkpDD11
- EfbKDs6FzV/3r4no6wE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nukepie.click;
- b=HO2oz+1A4RifokeJDYiFNWrLe85NvqyPJ1tkUwlkf8aUn0vE1UcjADg59vk71RMDbhKf/oooUsuL
- 6wPBmAmDpoUKdjnDwjQ323HQ5Hh2CrFAdvOLCzTENQXs3bfjVnYf3O4/3gJ1ySP/2ds6n/bo3hAo
- ceW5md3L3yhD+Ih2vdc=;
-Received: by mail.nukepie.click id h5nsjq0001g7 for
+ i=ella.wreede@butpies.click; bh=OMxWa2w61KCuMmqh68DNFzZTf18=;
+ b=5ZNGb7BPwrLKNLipRg5ytnCUamx+ZcwcxHJ5EWYfbFAgNsrsKfbl9hovlf3BZJBSBeDekvYIXj8p
+ Yr1Ew9dS8Dn84COvl3cdYU/m2NbvoeJknAWfPuBSphgniikoENccnoY5FLqCNrQ+Qoau1K+cOU3v
+ Z06X6bkg0V2w/yIMQPw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=butpies.click;
+ b=XkJEK4UDb9G0EqENZJecd29POwjbsJiJSOWUQYtnH7CW2I6TgMQ/ZY58w79wSA52sTDjEAnNEbHk
+ gIOhmuRCvKSYdpjjYYEsACEP4G8N8+Pf7TAs1MRD1+FAa6bbwfjhksNxokEzAC+toQ13Dypp5ykL
+ m43es7cDO/9IxHHPoNQ=;
+Received: by mail.butpies.click id h5o3860001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 14:06:59 -0400 (envelope-from
- <kate.bohon-intel+2Dgvt+2Ddev=lists.freedesktop.org@nukepie.click>)
-Date: Fri, 23 Sep 2022 14:06:59 -0400
-From: Kate Bohon <kate.bohon@nukepie.click>
+ Fri, 23 Sep 2022 15:05:59 -0400 (envelope-from
+ <ella.wreede-intel+2Dgvt+2Ddev=lists.freedesktop.org@butpies.click>)
+Date: Fri, 23 Sep 2022 15:05:59 -0400
+From: Ella Wreede <ella.wreede@butpies.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: There's a safer way to keep you gutters clean
+Subject: Lowes is giving away a Stanley 170 pc. Tool Kit
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_265_485547701.1663956409190"
-Message-ID: <0.0.0.1D.1D8CF77464F38C0.12B029@mail.nukepie.click>
+ boundary="----=_Part_226_1358380723.1663959948191"
+Message-ID: <0.0.0.19.1D8CF7F84640AE8.207999@mail.butpies.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,31 +53,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_265_485547701.1663956409190
+------=_Part_226_1358380723.1663959948191
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-[mm_gutter_guard_subjects]
+Lowes is giving away a Stanley 170 pc. Tool Kit  intel-gvt-dev@lists.freedesktop.org
 
-Click Here to Check Out Gutter Guards .  http://www.nukepie.click/7cd5U239g5h86xk12j3Pa58SSe1fD36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQj9Knd5L1Yk05EpwDA/easternmost-statistically
-
-
-
-
-2222 MlCHELSON DRV STE.  222. II2, lRVlNE, California 926l2_
-
-To drop communication, ContinueHere .  http://www.nukepie.click/preemptor-Jennifer/a625qW2395uW8N610s3a59ze1f_36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQj9Knd5R1Cm05n@XwD
-Our notification was directed to intel-gvt-dev@lists.freedesktop.org
-
- 
-9242376. 6784650
+You've Been Randomly Chosen, Go Here~http://www.butpies.click/5ed4D2395w8p6P11v3a5IcIe20N36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQN9KnQ7gNnk1p06K@wDkB/gravitational-fugitives
 
 
 
+96- Mowat_ AVE, Toronto' ON M4K3K1 CANADA
 
+To cancel e-mail, Start_Ahead_Here~http://www.butpies.click/60b5v23A95k8F6C12VF3a5QdKe20I36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQN9KnQ6A1oir06pM0LwD/truths-wastefully
 
+Our communication was chosen for intel-gvt-dev@lists.freedesktop.org
 
-------=_Part_265_485547701.1663956409190
+4097820,2273649
+
+------=_Part_226_1358380723.1663959948191
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -85,20 +80,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.nukepie.click/b334L2395znD8611P3Ca58ke1fQ36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQj9Knd5Ky10y5YqPwD/disposal-Manama" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here to Check Out Gutter Guards</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.nukepie.click/b334L2395znD8611P3Ca58ke1fQ36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQj9Knd5Ky10y5YqPwD/disposal-Manama"><img alt="Find Affordable Gutter Guards Here" src="http://www.nukepie.click/disposal-Manama/42c6C23SB95NC7va12W3aLW5aIe1fK36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQj9Knd6q1Ry0F6MpWwyD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.butpies.click/d4f4c2395MWr8610B3a5cPe20n36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQN9KnQ7X1oKo0O6sOwDT@/skinning-orchestras" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Randomly Chosen, Go Here</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.butpies.click/d4f4c2395MWr8610B3a5cPe20n36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQN9KnQ7X1oKo0O6sOwDT@/skinning-orchestras" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.butpies.click/da96XI2W395zV7az10A3a5eIe20M36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQN9KnQ6u1QD0L6YqAwBD/scrolling-placement" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Offer Is Done in 2 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222. MICHELSON DRV. STE. 222:II2, Irvine, CA 926l2</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To drop communication, <a href="http://www.nukepie.click/6294z2395gX8j611RW3a59xe1fj36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQj9Knd5Gyu105kPwDO/depositor-bereave">ContinueHere</a> </span></span>{{{http://www.nukepie.click/6294z2395gX8j611RW3a59xe1fj36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQj9Knd5Gyu105kPwDO/depositor-bereave</p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9242376.6784650</span></span></p>   
- <img src="http://www.nukepie.click/89f5m239z5Yq8L511C3ua5bZe1fG36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQj9Knd5ClD105qzwOD/disposal-Manama" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT AVENUE, Toronto. Ont. M4K 3KI CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cancel e-mail,<a href="http://www.butpies.click/5935G2W395Np86k11n3a5JdZe20x36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQN9KnQ5rqQ105nUUwD/Ramsey-Siciliana"> Start_Ahead_Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4097820:2273649</span></span></p>   
+ <img src="http://www.butpies.click/Kikuyu-excavate/4685n239N5gG8Z511IS3a5fYe20g36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQN9KnQ7PQz10AX6nTw@MD" alt=""/></body>
 </html>
 
-------=_Part_265_485547701.1663956409190--
+------=_Part_226_1358380723.1663959948191--
 
