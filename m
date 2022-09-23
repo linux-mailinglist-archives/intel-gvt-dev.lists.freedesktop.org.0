@@ -1,51 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C81BE5E770C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 11:27:46 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86FD15E7828
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 12:22:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 96BF310E7EC;
-	Fri, 23 Sep 2022 09:27:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3AD6B10E835;
+	Fri, 23 Sep 2022 10:22:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2977410E7EE
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 23 Sep 2022 10:22:13 UTC
+Received: from mail.underpies.quest (unknown [209.142.103.65])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CB19010E829
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 09:27:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=qpAI9lJpdDF9HWWBLsg6Mwha9epSJ6GbEs45TDgguZk=; b=mNnDkHhfw/OkvjXieZ+D1CEoER
- eR1r7pIeTtNxLMCQPc/QWfCkdXBsp/3Jkmu4Ge/Y6DkUsVoq8hPAeoTGsP5YiBli2r8qgAj6aavoN
- uPlqqfd8c5hOp7r+DmBeUHDUPho870TQV3Fy9T638fewVRMpIgVWZEv9YqMsT/N+wmuigkkjIdP6g
- vmw/UP5fcFOd0X+NVpsQcbN6Cg9gUueJMIyvBYzxX2JBscpDFeo2oPgDnkYnYp4dMBHr846oDAI5Z
- d0YB/uGxBKZ1gU955Kk8iTnaxqIEzaQu7c5/bHk8bK0+fmpo1/++yQvOlYmboVGWAetRj9AAiK9zt
- +Ddgac+Q==;
-Received: from ip4d15bec4.dynamic.kabel-deutschland.de ([77.21.190.196]
- helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1obey2-003Jz8-Pg; Fri, 23 Sep 2022 09:27:31 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: Kirti Wankhede <kwankhede@nvidia.com>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>
-Subject: [PATCH 14/14] vfio/mdev: add mdev available instance checking to the
- core
-Date: Fri, 23 Sep 2022 11:26:52 +0200
-Message-Id: <20220923092652.100656-15-hch@lst.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220923092652.100656-1-hch@lst.de>
-References: <20220923092652.100656-1-hch@lst.de>
+ Fri, 23 Sep 2022 10:22:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=underpies.quest; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=donna-steeley@underpies.quest; 
+ bh=EIW++Qp74M5Z6I1UvnUsNre5vwg=;
+ b=iq7W0+VFcRy63GNgqt5VHx46tEMuKM4u2x6CmFXjm2su/nEn24JbwHiKJvqpwdqm2/reCAJRCZ1i
+ Qu1337oFtlZukDd5jtYRRCfvSGujjQlFbevC8XFfAD2rF/cg78DfN0GjGKSwaS9WT5LMzumY4TQ9
+ 3lYIegBuM8LCyXllyNU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=underpies.quest;
+ b=A0Y1Jh40+Y2eQIL2eqP2/1rGB+TIehhQqrN6Onnb3qCpjhWh1z0Yo16nbaF2y5NyDDmq2Whrz455
+ /bIosi+EiF3DxlHWywp/cZ8oR73bBXOqdiTmY5FeOCCkdpBODINqORtJvEqGfiP/TXzG9b1FUZ4w
+ cIA8EAH0M3tVCJ7NuQ4=;
+Received: by mail.underpies.quest id h5m4dc0001gm for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 23 Sep 2022 06:09:06 -0400 (envelope-from
+ <donna-steeley-intel+2Dgvt+2Ddev=lists.freedesktop.org@underpies.quest>)
+Date: Fri, 23 Sep 2022 06:09:06 -0400
+From: Donna Steeley <donna-steeley@underpies.quest>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Finally, an Easy Way to Sanitize Your CPAP
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
- bombadil.infradead.org. See http://www.infradead.org/rpr.html
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_445_1627878333.1663927741034"
+Message-ID: <0.0.0.31.1D8CF3483D04D80.614514@mail.underpies.quest>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,393 +50,56 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, Kevin Tian <kevin.tian@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, kvm@vger.kernel.org,
- Jason Gunthorpe <jgg@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: Jason Gunthorpe <jgg@nvidia.com>
+------=_Part_445_1627878333.1663927741034
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Many of the mdev drivers use a simple counter for keeping track of the
-available instances. Move this code to the core code and store the counter
-in the mdev_parent. Implement it using correct locking, fixing mdpy.
+The Easy Way to Clean Your CPAP
 
-Drivers just provide the value in the mdev_driver at registration time
-and the core code takes care of maintaining it and exposing the value in
-sysfs.
 
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-[hch: count instances per-parent instead of per-type, use an atomic_t
- to avoid taking mdev_list_lock in the show method]
-Signed-off-by: Christoph Hellwig <hch@lst.de>
-Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
----
- drivers/s390/cio/vfio_ccw_drv.c       |  1 -
- drivers/s390/cio/vfio_ccw_ops.c       | 15 +--------------
- drivers/s390/cio/vfio_ccw_private.h   |  2 --
- drivers/s390/crypto/vfio_ap_ops.c     | 13 +------------
- drivers/s390/crypto/vfio_ap_private.h |  2 --
- drivers/vfio/mdev/mdev_core.c         | 22 +++++++++++++++++++---
- drivers/vfio/mdev/mdev_sysfs.c        |  5 ++++-
- include/linux/mdev.h                  |  3 +++
- samples/vfio-mdev/mdpy.c              | 22 ++++------------------
- 9 files changed, 32 insertions(+), 53 deletions(-)
+Finally, an Easy Way to Sanitize Your CPAPClick_On_Here-http://www.underpies.quest/7915M2l395r8sl612gZ3a37TVe17G36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ59KmS5WR10N6qLAPwD/Chapman-merit
 
-diff --git a/drivers/s390/cio/vfio_ccw_drv.c b/drivers/s390/cio/vfio_ccw_drv.c
-index e5f21c725326b..7f5402fe857a2 100644
---- a/drivers/s390/cio/vfio_ccw_drv.c
-+++ b/drivers/s390/cio/vfio_ccw_drv.c
-@@ -141,7 +141,6 @@ static struct vfio_ccw_private *vfio_ccw_alloc_private(struct subchannel *sch)
- 	INIT_LIST_HEAD(&private->crw);
- 	INIT_WORK(&private->io_work, vfio_ccw_sch_io_todo);
- 	INIT_WORK(&private->crw_work, vfio_ccw_crw_todo);
--	atomic_set(&private->avail, 1);
- 
- 	private->cp.guest_cp = kcalloc(CCWCHAIN_LEN_MAX, sizeof(struct ccw1),
- 				       GFP_KERNEL);
-diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-index 559ca18055928..6ae4d012d8008 100644
---- a/drivers/s390/cio/vfio_ccw_ops.c
-+++ b/drivers/s390/cio/vfio_ccw_ops.c
-@@ -44,13 +44,6 @@ static void vfio_ccw_dma_unmap(struct vfio_device *vdev, u64 iova, u64 length)
- 	vfio_ccw_mdev_reset(private);
- }
- 
--static unsigned int vfio_ccw_get_available(struct mdev_type *mtype)
--{
--	struct vfio_ccw_private *private = dev_get_drvdata(mtype->parent->dev);
--
--	return atomic_read(&private->avail);
--}
--
- static int vfio_ccw_mdev_init_dev(struct vfio_device *vdev)
- {
- 	struct vfio_ccw_private *private =
-@@ -68,9 +61,6 @@ static int vfio_ccw_mdev_probe(struct mdev_device *mdev)
- 	if (private->state == VFIO_CCW_STATE_NOT_OPER)
- 		return -ENODEV;
- 
--	if (atomic_dec_if_positive(&private->avail) < 0)
--		return -EPERM;
--
- 	ret = vfio_init_device(&private->vdev, &mdev->dev, &vfio_ccw_dev_ops);
- 	if (ret)
- 		return ret;
-@@ -88,7 +78,6 @@ static int vfio_ccw_mdev_probe(struct mdev_device *mdev)
- 
- err_put_vdev:
- 	vfio_put_device(&private->vdev);
--	atomic_inc(&private->avail);
- 	return ret;
- }
- 
-@@ -130,8 +119,6 @@ static void vfio_ccw_mdev_remove(struct mdev_device *mdev)
- 	 * cycle.
- 	 */
- 	wait_for_completion(&private->release_comp);
--
--	atomic_inc(&private->avail);
- }
- 
- static int vfio_ccw_mdev_open_device(struct vfio_device *vdev)
-@@ -605,6 +592,7 @@ static const struct vfio_device_ops vfio_ccw_dev_ops = {
- 
- struct mdev_driver vfio_ccw_mdev_driver = {
- 	.device_api = VFIO_DEVICE_API_CCW_STRING,
-+	.max_instances = 1,
- 	.driver = {
- 		.name = "vfio_ccw_mdev",
- 		.owner = THIS_MODULE,
-@@ -612,5 +600,4 @@ struct mdev_driver vfio_ccw_mdev_driver = {
- 	},
- 	.probe = vfio_ccw_mdev_probe,
- 	.remove = vfio_ccw_mdev_remove,
--	.get_available = vfio_ccw_get_available,
- };
-diff --git a/drivers/s390/cio/vfio_ccw_private.h b/drivers/s390/cio/vfio_ccw_private.h
-index 52caa721ec06c..bd5fb81456af8 100644
---- a/drivers/s390/cio/vfio_ccw_private.h
-+++ b/drivers/s390/cio/vfio_ccw_private.h
-@@ -73,7 +73,6 @@ struct vfio_ccw_crw {
-  * @sch: pointer to the subchannel
-  * @state: internal state of the device
-  * @completion: synchronization helper of the I/O completion
-- * @avail: available for creating a mediated device
-  * @io_region: MMIO region to input/output I/O arguments/results
-  * @io_mutex: protect against concurrent update of I/O regions
-  * @region: additional regions for other subchannel operations
-@@ -97,7 +96,6 @@ struct vfio_ccw_private {
- 	struct subchannel	*sch;
- 	int			state;
- 	struct completion	*completion;
--	atomic_t		avail;
- 	struct ccw_io_region	*io_region;
- 	struct mutex		io_mutex;
- 	struct vfio_ccw_region *region;
-diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-index 8606f5d75188c..2884189f38771 100644
---- a/drivers/s390/crypto/vfio_ap_ops.c
-+++ b/drivers/s390/crypto/vfio_ap_ops.c
-@@ -689,9 +689,6 @@ static int vfio_ap_mdev_init_dev(struct vfio_device *vdev)
- 	struct ap_matrix_mdev *matrix_mdev =
- 		container_of(vdev, struct ap_matrix_mdev, vdev);
- 
--	if ((atomic_dec_if_positive(&matrix_dev->available_instances) < 0))
--		return -EPERM;
--
- 	matrix_mdev->mdev = to_mdev_device(vdev->dev);
- 	vfio_ap_matrix_init(&matrix_dev->info, &matrix_mdev->matrix);
- 	matrix_mdev->pqap_hook = handle_pqap;
-@@ -770,7 +767,6 @@ static void vfio_ap_mdev_unlink_fr_queues(struct ap_matrix_mdev *matrix_mdev)
- 
- static void vfio_ap_mdev_release_dev(struct vfio_device *vdev)
- {
--	atomic_inc(&matrix_dev->available_instances);
- 	vfio_free_device(vdev);
- }
- 
-@@ -790,11 +786,6 @@ static void vfio_ap_mdev_remove(struct mdev_device *mdev)
- 	vfio_put_device(&matrix_mdev->vdev);
- }
- 
--static unsigned int vfio_ap_mdev_get_available(struct mdev_type *mtype)
--{
--	return atomic_read(&matrix_dev->available_instances);
--}
--
- #define MDEV_SHARING_ERR "Userspace may not re-assign queue %02lx.%04lx " \
- 			 "already assigned to %s"
- 
-@@ -1772,6 +1763,7 @@ static const struct vfio_device_ops vfio_ap_matrix_dev_ops = {
- 
- static struct mdev_driver vfio_ap_matrix_driver = {
- 	.device_api = VFIO_DEVICE_API_AP_STRING,
-+	.max_instances = MAX_ZDEV_ENTRIES_EXT,
- 	.driver = {
- 		.name = "vfio_ap_mdev",
- 		.owner = THIS_MODULE,
-@@ -1780,15 +1772,12 @@ static struct mdev_driver vfio_ap_matrix_driver = {
- 	},
- 	.probe = vfio_ap_mdev_probe,
- 	.remove = vfio_ap_mdev_remove,
--	.get_available = vfio_ap_mdev_get_available,
- };
- 
- int vfio_ap_mdev_register(void)
- {
- 	int ret;
- 
--	atomic_set(&matrix_dev->available_instances, MAX_ZDEV_ENTRIES_EXT);
--
- 	ret = mdev_register_driver(&vfio_ap_matrix_driver);
- 	if (ret)
- 		return ret;
-diff --git a/drivers/s390/crypto/vfio_ap_private.h b/drivers/s390/crypto/vfio_ap_private.h
-index 441dc8dda380b..2eddd5f34ed34 100644
---- a/drivers/s390/crypto/vfio_ap_private.h
-+++ b/drivers/s390/crypto/vfio_ap_private.h
-@@ -29,7 +29,6 @@
-  * struct ap_matrix_dev - Contains the data for the matrix device.
-  *
-  * @device:	generic device structure associated with the AP matrix device
-- * @available_instances: number of mediated matrix devices that can be created
-  * @info:	the struct containing the output from the PQAP(QCI) instruction
-  * @mdev_list:	the list of mediated matrix devices created
-  * @mdevs_lock: mutex for locking the AP matrix device. This lock will be
-@@ -46,7 +45,6 @@
-  */
- struct ap_matrix_dev {
- 	struct device device;
--	atomic_t available_instances;
- 	struct ap_config_info info;
- 	struct list_head mdev_list;
- 	struct mutex mdevs_lock; /* serializes access to each ap_matrix_mdev */
-diff --git a/drivers/vfio/mdev/mdev_core.c b/drivers/vfio/mdev/mdev_core.c
-index 93f8caf2e5f77..58f91b3bd670c 100644
---- a/drivers/vfio/mdev/mdev_core.c
-+++ b/drivers/vfio/mdev/mdev_core.c
-@@ -70,6 +70,7 @@ int mdev_register_parent(struct mdev_parent *parent, struct device *dev,
- 	parent->mdev_driver = mdev_driver;
- 	parent->types = types;
- 	parent->nr_types = nr_types;
-+	atomic_set(&parent->available_instances, mdev_driver->max_instances);
- 
- 	if (!mdev_bus_compat_class) {
- 		mdev_bus_compat_class = class_compat_register("mdev_bus");
-@@ -115,14 +116,17 @@ EXPORT_SYMBOL(mdev_unregister_parent);
- static void mdev_device_release(struct device *dev)
- {
- 	struct mdev_device *mdev = to_mdev_device(dev);
--
--	/* Pairs with the get in mdev_device_create() */
--	kobject_put(&mdev->type->kobj);
-+	struct mdev_parent *parent = mdev->type->parent;
- 
- 	mutex_lock(&mdev_list_lock);
- 	list_del(&mdev->next);
-+	if (!parent->mdev_driver->get_available)
-+		atomic_inc(&parent->available_instances);
- 	mutex_unlock(&mdev_list_lock);
- 
-+	/* Pairs with the get in mdev_device_create() */
-+	kobject_put(&mdev->type->kobj);
-+
- 	dev_dbg(&mdev->dev, "MDEV: destroying\n");
- 	kfree(mdev);
- }
-@@ -144,6 +148,18 @@ int mdev_device_create(struct mdev_type *type, const guid_t *uuid)
- 		}
- 	}
- 
-+	if (!drv->get_available) {
-+		/*
-+		 * Note: that non-atomic read and dec is fine here because
-+		 * all modifications are under mdev_list_lock.
-+		 */
-+		if (!atomic_read(&parent->available_instances)) {
-+			mutex_unlock(&mdev_list_lock);
-+			return -EUSERS;
-+		}
-+		atomic_dec(&parent->available_instances);
-+	}
-+
- 	mdev = kzalloc(sizeof(*mdev), GFP_KERNEL);
- 	if (!mdev) {
- 		mutex_unlock(&mdev_list_lock);
-diff --git a/drivers/vfio/mdev/mdev_sysfs.c b/drivers/vfio/mdev/mdev_sysfs.c
-index 658b3bf5ed0bf..abe3359dd477f 100644
---- a/drivers/vfio/mdev/mdev_sysfs.c
-+++ b/drivers/vfio/mdev/mdev_sysfs.c
-@@ -108,7 +108,10 @@ static ssize_t available_instances_show(struct mdev_type *mtype,
- {
- 	struct mdev_driver *drv = mtype->parent->mdev_driver;
- 
--	return sysfs_emit(buf, "%u\n", drv->get_available(mtype));
-+	if (drv->get_available)
-+		return sysfs_emit(buf, "%u\n", drv->get_available(mtype));
-+	return sysfs_emit(buf, "%u\n",
-+			  atomic_read(&mtype->parent->available_instances));
- }
- static MDEV_TYPE_ATTR_RO(available_instances);
- 
-diff --git a/include/linux/mdev.h b/include/linux/mdev.h
-index 33674cb5ed5d4..139d05b26f820 100644
---- a/include/linux/mdev.h
-+++ b/include/linux/mdev.h
-@@ -45,6 +45,7 @@ struct mdev_parent {
- 	struct rw_semaphore unreg_sem;
- 	struct mdev_type **types;
- 	unsigned int nr_types;
-+	atomic_t available_instances;
- };
- 
- static inline struct mdev_device *to_mdev_device(struct device *dev)
-@@ -55,6 +56,7 @@ static inline struct mdev_device *to_mdev_device(struct device *dev)
- /**
-  * struct mdev_driver - Mediated device driver
-  * @device_api: string to return for the device_api sysfs
-+ * @max_instances: maximum number of instances supported (optional)
-  * @probe: called when new device created
-  * @remove: called when device removed
-  * @get_available: Return the max number of instances that can be created
-@@ -63,6 +65,7 @@ static inline struct mdev_device *to_mdev_device(struct device *dev)
-  **/
- struct mdev_driver {
- 	const char *device_api;
-+	unsigned int max_instances;
- 	int (*probe)(struct mdev_device *dev);
- 	void (*remove)(struct mdev_device *dev);
- 	unsigned int (*get_available)(struct mdev_type *mtype);
-diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-index a7cf59246ddd0..946e8cfde6fdd 100644
---- a/samples/vfio-mdev/mdpy.c
-+++ b/samples/vfio-mdev/mdpy.c
-@@ -42,11 +42,6 @@
- 
- MODULE_LICENSE("GPL v2");
- 
--static int max_devices = 4;
--module_param_named(count, max_devices, int, 0444);
--MODULE_PARM_DESC(count, "number of " MDPY_NAME " devices");
--
--
- #define MDPY_TYPE_1 "vga"
- #define MDPY_TYPE_2 "xga"
- #define MDPY_TYPE_3 "hd"
-@@ -93,7 +88,6 @@ static struct class	*mdpy_class;
- static struct cdev	mdpy_cdev;
- static struct device	mdpy_dev;
- static struct mdev_parent mdpy_parent;
--static u32		mdpy_count;
- static const struct vfio_device_ops mdpy_dev_ops;
- 
- /* State of each mdev device */
-@@ -235,9 +229,6 @@ static int mdpy_init_dev(struct vfio_device *vdev)
- 	u32 fbsize;
- 	int ret = -ENOMEM;
- 
--	if (mdpy_count >= max_devices)
--		return ret;
--
- 	mdev_state->vconfig = kzalloc(MDPY_CONFIG_SPACE_SIZE, GFP_KERNEL);
- 	if (!mdev_state->vconfig)
- 		return ret;
-@@ -257,8 +248,6 @@ static int mdpy_init_dev(struct vfio_device *vdev)
- 
- 	dev_info(vdev->dev, "%s: %s (%dx%d)\n", __func__, type->type.pretty_name,
- 		 type->width, type->height);
--
--	mdpy_count++;
- 	return 0;
- 
- out_vconfig:
-@@ -292,7 +281,6 @@ static void mdpy_release_dev(struct vfio_device *vdev)
- 	struct mdev_state *mdev_state =
- 		container_of(vdev, struct mdev_state, vdev);
- 
--	mdpy_count--;
- 	vfree(mdev_state->memblk);
- 	kfree(mdev_state->vconfig);
- 	vfio_free_device(vdev);
-@@ -669,11 +657,6 @@ static ssize_t mdpy_show_description(struct mdev_type *mtype, char *buf)
- 		       type->width, type->height);
- }
- 
--static unsigned int mdpy_get_available(struct mdev_type *mtype)
--{
--	return max_devices - mdpy_count;
--}
--
- static const struct vfio_device_ops mdpy_dev_ops = {
- 	.init = mdpy_init_dev,
- 	.release = mdpy_release_dev,
-@@ -685,6 +668,7 @@ static const struct vfio_device_ops mdpy_dev_ops = {
- 
- static struct mdev_driver mdpy_driver = {
- 	.device_api = VFIO_DEVICE_API_PCI_STRING,
-+	.max_instances = 4,
- 	.driver = {
- 		.name = "mdpy",
- 		.owner = THIS_MODULE,
-@@ -693,7 +677,6 @@ static struct mdev_driver mdpy_driver = {
- 	},
- 	.probe = mdpy_probe,
- 	.remove	= mdpy_remove,
--	.get_available = mdpy_get_available,
- 	.show_description = mdpy_show_description,
- };
- 
-@@ -770,5 +753,8 @@ static void __exit mdpy_dev_exit(void)
- 	mdpy_class = NULL;
- }
- 
-+module_param_named(count, mdpy_driver.max_instances, int, 0444);
-+MODULE_PARM_DESC(count, "number of " MDPY_NAME " devices");
-+
- module_init(mdpy_dev_init)
- module_exit(mdpy_dev_exit)
--- 
-2.30.2
+
+
+
+To do away with email, Follow Here-http://www.underpies.quest/c7d6kr239u5I8Kq611l3ar38Ae17C36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ59KmS7NRR10tk6qBlw3D/depletes-confuse
+
+PO Box_ # 4077' Broadlands VA 2O148- US. 
+
+Our notification was directed to intel-gvt-dev@lists.freedesktop.org
+
+7863414-39836530
+
+------=_Part_445_1627878333.1663927741034
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <div style="text-align: center;">
+   <br /> 
+   <a href="http://www.underpies.quest/8815y2k395C8lU610Y3a37we17m36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ59KmS6mVou105oUwDj/Celeste-abridged"><img alt="Sanitize Your CPAP in 30 minutes" src="http://www.underpies.quest/6834s2395dl7aK12mW3Ha39Me17x36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ59KmS6Ik1z0Y6nJyBwD/Celeste-abridged" style="width: 450px; height: 1139px;" /></a>
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To do away with email, <a href="http://www.underpies.quest/Celeste-abridged/cba5L239A5aW8Z611I3aB38qe17K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ59KmS5h_Z106yUJwAD">Follow Here</a></span></span></p> 
+   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P0 Box_ No. 4077 Broad.lands VIRGINlA 20148_ United States</span></span></p> 
+   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4950636:39836530</span></span></p> 
+  </div>   
+ <img src="http://www.underpies.quest/a074O2395a8UU510l3a3aWe17T36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ59KmS6ph10Mz5I@3wD/squeak-redesigns" alt=""/></body>
+</html>
+
+------=_Part_445_1627878333.1663927741034--
 
