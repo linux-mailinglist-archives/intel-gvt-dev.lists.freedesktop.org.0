@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A55395E702F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 01:20:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9D2A5E715A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 03:23:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 709BB10E7A0;
-	Thu, 22 Sep 2022 23:20:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8190810E152;
+	Fri, 23 Sep 2022 01:23:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Thu, 22 Sep 2022 23:20:02 UTC
-Received: from mail.ryeuric.click (unknown [209.142.103.39])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8746D10E78A
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 23 Sep 2022 01:23:05 UTC
+Received: from mail.outryes.click (s2g7d6.tk [64.64.109.134])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3E63510E119
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 23:20:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ryeuric.click;
+ Fri, 23 Sep 2022 01:23:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outryes.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hughston_dorthy@ryeuric.click; 
- bh=wQssM1fMniUdPTQW9/EuEXiYwJU=;
- b=rMWkffL+LgFeO+DY17nO/uf8oiKqwUWtcbcjj6/OQpwCFL4zDLo6xzvprVBtg5XOl/m5LTUJAeZu
- yqSwRpqxA0Y3chs/7AA9ILG9G6G8ZtOlv7JNdP6A55P3vW+aZZVy+ca0Op/Ikwyg9LFATr3j81YE
- fBfUdlVoKc001Aal008=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ryeuric.click;
- b=eytFG+n0i5kNMKYlRjuXFrx739HfG08qZ+/Uk0a+BpUZQXdsZBX3TuafFcu2b3AMT3vhybUGdC6s
- y0c9haSwoDfpXZ6IeNR0n6FhFqsblBj1J7cLH4+4QQ8Nhzfcww1psWywgrazem3oxvmeepKdpxQ5
- ex10eZ0jVzFnP0Jej4I=;
-Received: by mail.ryeuric.click id h5k1ci0001ge for
+ i=lillie.konishi@outryes.click; 
+ bh=tvX0iJfEwQBXU97uSpMOzvJjHW4=;
+ b=xizhVVPiAaUOfdDAPiI3ncS9GD5/DoFFKBApcm5yEkbGXx5EX0WIBiFwQyso7Y+dqXU0HiJZMJ+r
+ nYvjYpShQCKBqwIrt0zEuZjW8/RUBJmZBQ4IW/CRB2er7VjP+v5AM4FpA1ZUU95Yd3xnn49SC4jH
+ DPYeESE8uokcR9xaLgI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outryes.click;
+ b=uH1hfcc1z9rQDs6Zw7Pbw0lYtSi3687RQpZpnVB/Tovipm2/QnXrCKFbseZ4QA6OkY1UXpFySE9J
+ 3shYjadzxSKDzDXMThZwjgIyqb6CivsRzJ+9SBlmD1shx6Q3b6rHnblgm1Y3M6KbNZj0gyXa9/98
+ s/NONULItXgbSH7+1JM=;
+Received: by mail.outryes.click id h5k57i0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Sep 2022 20:38:53 -0400 (envelope-from
- <hughston_dorthy-intel+2Dgvt+2Ddev=lists.freedesktop.org@ryeuric.click>)
-Date: Thu, 22 Sep 2022 20:38:53 -0400
-From: Dorthy Hughston <hughston_dorthy@ryeuric.click>
+ Thu, 22 Sep 2022 21:07:47 -0400 (envelope-from
+ <lillie.konishi-intel+2Dgvt+2Ddev=lists.freedesktop.org@outryes.click>)
+Date: Thu, 22 Sep 2022 21:07:47 -0400
+From: Lillie Konishi <lillie.konishi@outryes.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Leaf-Filter. Keep Your Gutters Flowing. Save 10%
+Subject: Lowes Customer, Claim Your Special Offer
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_511_1544851525.1663888102762"
-Message-ID: <0.0.0.38.1D8CEE4DB4ECAFA.131AB2@mail.ryeuric.click>
+ boundary="----=_Part_577_1333084349.1663895252942"
+Message-ID: <0.0.0.40.1D8CEE8E51695A0.1092DE@mail.outryes.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +54,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_511_1544851525.1663888102762
+------=_Part_577_1333084349.1663895252942
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Leaf-Filter. Keep Your Gutters Flowing. Save 10%
+Lowes Customer, Claim Your Special Offer  intel-gvt-dev@lists.freedesktop.org
 
 
-Begin Here for LeafFilter Fall Discount : 
- http://www.ryeuric.click/2ff6Y_2G395N8NY612qJ3aT1bTe10l36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQP9eKK5Xk10i5rPw3D/recesses-Mendelize
-
-
+You've Been Chosen, Click Here_http://www.outryes.click/grins-utilization/6c05W2S395g8l6D12dzl3a23He12P36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQy9Kmn7Gz10Xhk6FOjpwD
 
 
 
 
-No longer wish to receive email communications from us?, Click.Here.Now : http://www.ryeuric.click/bleakly-unexcused/a624e2395V86KI10j3a1cye10R36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQP9eKK7U1kRt0H5Eqw0D
-This e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org
-TWO Depot PLZ. , # 401-, Bedford Hills, NEW YORK 10507. 
-4208747. 1703337
 
-------=_Part_511_1544851525.1663888102762
+
+To modify your email options, VisitHere_http://www.outryes.click/grins-utilization/5584J2395KqO8611b3a2J4ye12k36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQy9Kmn6VvNv105wJ3wD
+
+This e-mail content was intended for intel-gvt-dev@lists.freedesktop.org
+
+-96 MOWAT- Avenue, Toronto' Ont M4 K3 K1 Canada
+
+76855821. 18361686
+
+------=_Part_577_1333084349.1663895252942
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,22 +84,19 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.ryeuric.click/d4f5Sh2395G86Au12Mo3a1Wbje10B36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQP9eKK7iGUi1T05UzlwD/lumbering-carport" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for LeafFilter Fall Discount</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.ryeuric.click/d4f5Sh2395G86Au12Mo3a1Wbje10B36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQP9eKK7iGUi1T05UzlwD/lumbering-carport" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.ryeuric.click/sector-baud/e5e4Q2395bX7ia11Rt3a1dHe10u36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQP9eKK5hY1G06HTwJND" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Fast! Deal Is Gone in 2 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.outryes.click/cd75z239s5qH8G611e3am23Ne12H36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQy9Kmn7l1OlnT06iLwAAD/rhymed-steamships"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.outryes.click/33b6b2_39p5B7waj10H3a25Ze12t36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQy9Kmn5Dhx106VT1XwD/disposer-handled" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.outryes.click/cd75z239s5qH8G611e3am23Ne12H36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQy9Kmn7l1OlnT06iLwAAD/rhymed-steamships" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Chosen, Click Here</span></a></span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive email communications from us?,</span><a href="http://www.ryeuric.click/lumbering-carport/8646K23mJ95h86kW11SA3a1cGe10k36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQP9eKK7oVOZ10x6W@zAwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click.Here.Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2 DEPOT Plz, # 401_, Bedford~Hills, NEW YORK 1O5O7.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4208747,1703337</span></span></p>   
- <img src="http://www.ryeuric.click/descends-potbelly/80a4u2395ov8g512M3za1UeNe10C36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQP9eKK5BOM106HTwTlD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your email options, <a href="http://www.outryes.click/grins-utilization/8be4h2395L8wU611y3aD24Qe12o36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQy9Kmn6PoOl106v@yUwD">VisitHere</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat_ Avenue, Toronto' Ont. M4K3KI CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">76855821 18361686</span></span></p>   
+ <img src="http://www.outryes.click/physic-detailing/9544R2395B8zy511g3a26KJe12g36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQy9Kmn6ouI10I6zkwNDq" alt=""/></body>
 </html>
 
-------=_Part_511_1544851525.1663888102762--
+------=_Part_577_1333084349.1663895252942--
 
