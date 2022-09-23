@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7D435E8270
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Sep 2022 21:18:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CEDC5E85BB
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 00:18:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B114810E094;
-	Fri, 23 Sep 2022 19:18:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C684910EAEC;
+	Fri, 23 Sep 2022 22:18:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Fri, 23 Sep 2022 19:18:27 UTC
-Received: from mail.butpies.click (unknown [213.209.159.198])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5B3B010E00E
+X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
+ Fri, 23 Sep 2022 22:18:50 UTC
+Received: from mail.xinpie.click (unknown [209.142.103.35])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3517610EB00
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 19:18:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=butpies.click;
+ Fri, 23 Sep 2022 22:18:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=xinpie.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ella.wreede@butpies.click; bh=OMxWa2w61KCuMmqh68DNFzZTf18=;
- b=5ZNGb7BPwrLKNLipRg5ytnCUamx+ZcwcxHJ5EWYfbFAgNsrsKfbl9hovlf3BZJBSBeDekvYIXj8p
- Yr1Ew9dS8Dn84COvl3cdYU/m2NbvoeJknAWfPuBSphgniikoENccnoY5FLqCNrQ+Qoau1K+cOU3v
- Z06X6bkg0V2w/yIMQPw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=butpies.click;
- b=XkJEK4UDb9G0EqENZJecd29POwjbsJiJSOWUQYtnH7CW2I6TgMQ/ZY58w79wSA52sTDjEAnNEbHk
- gIOhmuRCvKSYdpjjYYEsACEP4G8N8+Pf7TAs1MRD1+FAa6bbwfjhksNxokEzAC+toQ13Dypp5ykL
- m43es7cDO/9IxHHPoNQ=;
-Received: by mail.butpies.click id h5o3860001gg for
+ i=kathryn.bigda@xinpie.click; bh=cDritDYv3XTSqmGmYXSw+wPbkDI=;
+ b=HKo3klT65qYhee3GkteddOFd2gvn+EIequ5is9jPKGyRhF9KMxrkfftzb0iovq6w5CoYqUDdoLeU
+ c9GlPWS4gNJHXJUhMiInnB1o5xUa73J5iGEdJuEE5ee3FrKebZyr1o+anRUCvMMXXwazilygrBW9
+ vRrtDHFjYY1CpN+PfZY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=xinpie.click;
+ b=yX01T/3qE2wyuY/rY/lzKDv2/5FyNE1O9Epmhiam3t1Jkv1JWmyK0mqHvnfVPCDu5UuCW1Ofb3bg
+ fUd1uGuRISH8p6QQDF/GYoHMf9wvLDjt1QTM4w0yDCUJV1A6+5a9ZqRRQwGyuRtzWXr6Vhg+7B6L
+ GwGUzPGPBlxKq5x6ABE=;
+Received: by mail.xinpie.click id h5oock0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 15:05:59 -0400 (envelope-from
- <ella.wreede-intel+2Dgvt+2Ddev=lists.freedesktop.org@butpies.click>)
-Date: Fri, 23 Sep 2022 15:05:59 -0400
-From: Ella Wreede <ella.wreede@butpies.click>
+ Fri, 23 Sep 2022 18:05:53 -0400 (envelope-from
+ <kathryn.bigda-intel+2Dgvt+2Ddev=lists.freedesktop.org@xinpie.click>)
+Date: Fri, 23 Sep 2022 18:05:53 -0400
+From: Kathryn Bigda <kathryn.bigda@xinpie.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Lowes is giving away a Stanley 170 pc. Tool Kit
- intel-gvt-dev@lists.freedesktop.org
+Subject: Take the 1 minute Survey for a chance at a PS5  #92055
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_226_1358380723.1663959948191"
-Message-ID: <0.0.0.19.1D8CF7F84640AE8.207999@mail.butpies.click>
+ boundary="----=_Part_238_624538334.1663970745319"
+Message-ID: <0.0.0.1B.1D8CF98A64BF436.3A3D71@mail.xinpie.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,25 +52,30 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_226_1358380723.1663959948191
+------=_Part_238_624538334.1663970745319
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Lowes is giving away a Stanley 170 pc. Tool Kit  intel-gvt-dev@lists.freedesktop.org
+Take the 1 minute Survey for a chance at a PS5  #92055
 
-You've Been Randomly Chosen, Go Here~http://www.butpies.click/5ed4D2395w8p6P11v3a5IcIe20N36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQN9KnQ7gNnk1p06K@wDkB/gravitational-fugitives
+Visit Here for the online Survey http://www.xinpie.click/Nicholas-regulatory/22e6Q2P39g5FT8u612n_3ak68le23q36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQM9KnK5aqI105HW@wD
 
 
 
-96- Mowat_ AVE, Toronto' ON M4K3K1 CANADA
 
-To cancel e-mail, Start_Ahead_Here~http://www.butpies.click/60b5v23A95k8F6C12VF3a5QdKe20I36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQN9KnQ6A1oir06pM0LwD/truths-wastefully
 
-Our communication was chosen for intel-gvt-dev@lists.freedesktop.org
 
-4097820,2273649
 
-------=_Part_226_1358380723.1663959948191
+'96 MOWAT_ Av. , T0R0NT0 Ont M4K3Kl Canada
+
+To update your email preferences, Begin_Here_Now http://www.xinpie.click/Nicholas-regulatory/1f26a23ZI95XF86C11u3Ka69oe23T36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQM9KnK6w1FJ0K5KXwjD
+
+
+This e-mail content was delivered to intel-gvt-dev@lists.freedesktop.org
+
+9184003 37737910
+
+------=_Part_238_624538334.1663970745319
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,20 +84,24 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.butpies.click/d4f4c2395MWr8610B3a5cPe20n36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQN9KnQ7X1oKo0O6sOwDT@/skinning-orchestras" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Randomly Chosen, Go Here</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.butpies.click/d4f4c2395MWr8610B3a5cPe20n36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQN9KnQ7X1oKo0O6sOwDT@/skinning-orchestras" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.butpies.click/da96XI2W395zV7az10A3a5eIe20M36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQN9KnQ6u1QD0L6YqAwBD/scrolling-placement" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Offer Is Done in 2 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-345a10dd-7fff-c69d-3d8f-0eba843be5f8"><a href="http://www.xinpie.click/hitching-blistering/6c06O23hG95DTn8610Q3a68xe23m36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQM9KnK7aFZXz105Q0OwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the online Survey</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-345a10dd-7fff-c69d-3d8f-0eba843be5f8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:848px;"><a href="http://www.xinpie.click/hitching-blistering/6c06O23hG95DTn8610Q3a68xe23m36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQM9KnK7aFZXz105Q0OwD"><img alt="Go Here for a chance at a PlayStation 5" src="http://www.xinpie.click/8db6G2I39F5fy7Da10g3a6axe23_36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQM9KnK6n10YrJ5FOLwD/launder-biostatistic" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 848px;" /></a></span></span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT AVENUE, Toronto. Ont. M4K 3KI CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cancel e-mail,<a href="http://www.butpies.click/5935G2W395Np86k11n3a5JdZe20x36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQN9KnQ5rqQ105nUUwD/Ramsey-Siciliana"> Start_Ahead_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4097820:2273649</span></span></p>   
- <img src="http://www.butpies.click/Kikuyu-excavate/4685n239N5gG8Z511IS3a5fYe20g36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQN9KnQ7PQz10AX6nTw@MD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-345a10dd-7fff-c69d-3d8f-0eba843be5f8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. Mowat_ Avenue, Toronto_ Ont. M4K 3Kl CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-345a10dd-7fff-c69d-3d8f-0eba843be5f8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your email preferences, </span><a href="http://www.xinpie.click/Nicholas-regulatory/3b46R2A3T95j86kB12v3aT6C9qe23l36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQM9KnK7ih1khD06XU@3wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin_Here_Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-345a10dd-7fff-c69d-3d8f-0eba843be5f8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-345a10dd-7fff-c69d-3d8f-0eba843be5f8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9184003.37737910</span></span></p>   
+ <img src="http://www.xinpie.click/5934H2395G85FI10h3a6bCe23C36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQM9KnK7zL1gju06a@OLwD/launder-biostatistic" alt=""/></body>
 </html>
 
-------=_Part_226_1358380723.1663959948191--
+------=_Part_238_624538334.1663970745319--
 
