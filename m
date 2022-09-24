@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 290F35E8CEF
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 15:02:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 227885E8D21
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 15:34:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F151810E295;
-	Sat, 24 Sep 2022 13:02:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DF39A10E2B7;
+	Sat, 24 Sep 2022 13:34:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3D14E10E295;
- Sat, 24 Sep 2022 13:02:40 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 6F9CDB80D6F;
- Sat, 24 Sep 2022 13:02:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB5B9C433C1;
- Sat, 24 Sep 2022 13:02:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1664024557;
- bh=f9TI+zLW1k/oFp4jM/JMZaUsym4/RFdsc3oPkp8gl1A=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=vITOSzQTGC/YMameL61MhoY34yQPY9hA/15BiGXn3DaQb0P/4ieDqrLxOzgFJD/EC
- OaJ5R8dLDwURtAdRo2n3a07T27JXSXU6D94vXm+uPBGbELv+Mk6Qeh0ckggaTKWgi3
- NCAIw6POslOurSMVto1kITZtI4YmGXRMz+l4pFeQ=
-Date: Sat, 24 Sep 2022 15:02:34 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v7 0/9] dyndbg: drm.debug adaptation
-Message-ID: <Yy7/6oTBW2lqVSK1@kroah.com>
-References: <20220912052852.1123868-1-jim.cromie@gmail.com>
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 24 Sep 2022 13:34:02 UTC
+Received: from mail.inklies.lol (unknown [172.99.175.131])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C883210E2B7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 24 Sep 2022 13:34:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=inklies.lol;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=diulio_francine@inklies.lol; 
+ bh=FXnRngjjRIJxrWdhLMsgwpMFB9Q=;
+ b=KJ6sKO09tTvrvA7x1c2bokSxYYA7PgmkX37Rmo5GoBE+AdmoxcVefQAqF+eqQ2zJcKJ03ad/jJWo
+ gq+sdIy/FU8vst99b3oD/tvHuHDw2hK7thxPmi9p/eGWeGQsU8Vof77IwuEr9Otmai7s8rgkrhEc
+ vBU8+EWKxNQFnXgRY0E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=inklies.lol;
+ b=Te/hl94AdAcWSETqBbSZ9/tXTRUQl2MbbOp8m10rsNvcDFcYQ8G8zoT8dXl3HddZFjMhZL5EQbM0
+ G6cL+pfUc/LIvNSgcMwah9V6Fs+k7Ceyz3tTO9tMy5eCVj1Yf3V9O7pyxtrRO3m40Bot2MwfHRaJ
+ ScQaIeR/pshw2fNRKy0=;
+Received: by mail.inklies.lol id h5s3kk0001gq for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 24 Sep 2022 09:21:22 -0400 (envelope-from
+ <diulio_francine-intel+2Dgvt+2Ddev=lists.freedesktop.org@inklies.lol>)
+Date: Sat, 24 Sep 2022 09:21:22 -0400
+From: Francine Diulio <diulio_francine@inklies.lol>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Here's Your Bonus up to $1OO for being an Ace Shopper  7667786
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220912052852.1123868-1-jim.cromie@gmail.com>
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_280_767473788.1664025630833"
+Message-ID: <0.0.0.1D.1D8D0188A0CD512.14D89B@mail.inklies.lol>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,30 +50,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: robdclark@gmail.com, daniel.vetter@ffwll.ch,
- intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
- linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, jbaron@akamai.com,
- seanpaul@chromium.org, dri-devel@lists.freedesktop.org, joe@perches.com,
- intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sun, Sep 11, 2022 at 11:28:43PM -0600, Jim Cromie wrote:
-> hi Greg, Dan, Jason, DRM-folk,
-> 
-> heres follow-up to V6:
->   rebased on driver-core/driver-core-next for -v6 applied bits (thanks)
->   rework drm_debug_enabled{_raw,_instrumented,} per Dan.
-> 
-> It excludes:
->   nouveau parts (immature)
->   tracefs parts (I missed --to=Steve on v6)
->   split _ddebug_site and de-duplicate experiment (way unready)
-> 
-> IOW, its the remaining commits of V6 on which Dan gave his Reviewed-by.
-> 
-> If these are good to apply, I'll rebase and repost the rest separately.
+------=_Part_280_767473788.1664025630833
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-All now queued up, thanks.
+Here's Your Bonus up to $1OO for being an Ace Shopper
 
-greg k-h
+Go Here to take the Survey & Claim your Bonus: http://www.inklies.lol/a9d5el2395r86DH12gg3a9u8Ve2eT36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQy9K9m5a1qJ06PXzw@D/lanes-expansive
+
+Hurry! Deal Expires in 48 Hours.
+
+
+
+96- Mowat- Av. , Toronto.  Ontario M4K3KI CN
+No longer want to receive notices?: http://www.inklies.lol/abb5B23S95v8UJ610d3a96Se2eL36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQy9K9m7pzk1Qz06oq@@wD/lanes-expansive
+94936899:7667786
+
+------=_Part_280_767473788.1664025630833
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><a href="http://www.inklies.lol/5395F239P5WF8L611E3Wa94Le2eH36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQy9K9m7B1U0qVK5DWzwD/tenth-opthalmic" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to take the Survey & Claim your Bonus</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:657px;"><a href="http://www.inklies.lol/Britten-stupidly/ada4B2395N8x6z10n3a95Je2ev36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQy9K9m6gAp1Q06Q@wLD3"><img src="http://www.inklies.lol/tenth-opthalmic/3f05S239S5Q7WaB12m3axL97Ne2eD36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQy9K9m5tY1L06zNU2wD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 657px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Deal Expires in 48 Hours.</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT' Ave., TORONTO ONT M4 K3 K1 CN&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive notices?, </span><a href="http://www.inklies.lol/harmonics-deliberateness/7b06z239oT5Ox8M611w3Ja96ue2eT36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQy9K9m5dZ1h05nBwDy" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start.Here.Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notice was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">94936899:7667786</span></span></p>   
+ <img src="http://www.inklies.lol/3955Dv2395Kwj8512y3maA99xe2ep36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQy9K9m7aN1lW0M6bMwAJD/harmonics-deliberateness" alt=""/></body>
+</html>
+
+------=_Part_280_767473788.1664025630833--
+
