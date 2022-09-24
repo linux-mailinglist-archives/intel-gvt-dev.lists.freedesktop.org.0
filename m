@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 227885E8D21
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 15:34:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1C495E8D43
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 16:22:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DF39A10E2B7;
-	Sat, 24 Sep 2022 13:34:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3E14910E5E8;
+	Sat, 24 Sep 2022 14:22:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sat, 24 Sep 2022 13:34:02 UTC
-Received: from mail.inklies.lol (unknown [172.99.175.131])
- by gabe.freedesktop.org (Postfix) with ESMTP id C883210E2B7
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sat, 24 Sep 2022 14:22:06 UTC
+Received: from mail.untillie.icu (unknown [185.104.151.222])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C74C410E056
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 24 Sep 2022 13:34:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=inklies.lol;
+ Sat, 24 Sep 2022 14:22:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=untillie.icu;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=diulio_francine@inklies.lol; 
- bh=FXnRngjjRIJxrWdhLMsgwpMFB9Q=;
- b=KJ6sKO09tTvrvA7x1c2bokSxYYA7PgmkX37Rmo5GoBE+AdmoxcVefQAqF+eqQ2zJcKJ03ad/jJWo
- gq+sdIy/FU8vst99b3oD/tvHuHDw2hK7thxPmi9p/eGWeGQsU8Vof77IwuEr9Otmai7s8rgkrhEc
- vBU8+EWKxNQFnXgRY0E=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=inklies.lol;
- b=Te/hl94AdAcWSETqBbSZ9/tXTRUQl2MbbOp8m10rsNvcDFcYQ8G8zoT8dXl3HddZFjMhZL5EQbM0
- G6cL+pfUc/LIvNSgcMwah9V6Fs+k7Ceyz3tTO9tMy5eCVj1Yf3V9O7pyxtrRO3m40Bot2MwfHRaJ
- ScQaIeR/pshw2fNRKy0=;
-Received: by mail.inklies.lol id h5s3kk0001gq for
+ i=adele.lenters@untillie.icu; bh=6Dr72IF+8w8QNE98kz/xMIrRoBs=;
+ b=y7Ag0Pf42JnMbA/lbY3YZmgBGwGoegxm/0pa6Ds6FYeHhLj9zqZ7EHgv1hkvITQ36f72UEFLUPsV
+ HgML8SGE4B7aqi22sKZAxe8+wSxGDHHn7XUo19eZsuTm4tjKSbw/lLoIBAaKdbLQgaSaI78l2xCq
+ 7tGVAclkbNg8Gf67geY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=untillie.icu;
+ b=Jso2YesC6aDNoW3o9X4586g5xc36GhRtZdiJ/C5G83g7t5zHsLZ2f7bMtNaRcVrdCeAQoEjb8C1V
+ ioHYpdb0M4+uIaC/2C5LQHFA/IbXpFsvTAiwSSQurTH+bss8AxXg9Jm+YOS4PfjCf5Q4Lg+99PEl
+ lQu1jRQhrp6xscqwTgc=;
+Received: by mail.untillie.icu id h5s98u0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 24 Sep 2022 09:21:22 -0400 (envelope-from
- <diulio_francine-intel+2Dgvt+2Ddev=lists.freedesktop.org@inklies.lol>)
-Date: Sat, 24 Sep 2022 09:21:22 -0400
-From: Francine Diulio <diulio_francine@inklies.lol>
+ Sat, 24 Sep 2022 10:12:10 -0400 (envelope-from
+ <adele.lenters-intel+2Dgvt+2Ddev=lists.freedesktop.org@untillie.icu>)
+Date: Sat, 24 Sep 2022 10:12:10 -0400
+From: Adele Lenters <adele.lenters@untillie.icu>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Here's Your Bonus up to $1OO for being an Ace Shopper  7667786
+Subject: Do you want a Craftsman Riding Mower from Lowes?
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_280_767473788.1664025630833"
-Message-ID: <0.0.0.1D.1D8D0188A0CD512.14D89B@mail.inklies.lol>
+ boundary="----=_Part_775_832287444.1664028706949"
+Message-ID: <0.0.0.57.1D8D01FA2EAB9C6.17E8D5@mail.untillie.icu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,23 +53,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_280_767473788.1664025630833
+------=_Part_775_832287444.1664028706949
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Here's Your Bonus up to $1OO for being an Ace Shopper
+Do you want a Craftsman Riding Mower from Lowes?  intel-gvt-dev@lists.freedesktop.org
 
-Go Here to take the Survey & Claim your Bonus: http://www.inklies.lol/a9d5el2395r86DH12gg3a9u8Ve2eT36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQy9K9m5a1qJ06PXzw@D/lanes-expansive
-
-Hurry! Deal Expires in 48 Hours.
+Visit Here for the Gigantic Lowes Craftsman Lawn Tractor Giveaway-http://www.untillie.icu/b8d5Mq2395Bs8U611qD3a9aGe2fS36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQt9K9n5m10TS5CUwDL/mechanize-subdues
 
 
 
-96- Mowat- Av. , Toronto.  Ontario M4K3KI CN
-No longer want to receive notices?: http://www.inklies.lol/abb5B23S95v8UJ610d3a96Se2eL36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQy9K9m7pzk1Qz06oq@@wD/lanes-expansive
-94936899:7667786
 
-------=_Part_280_767473788.1664025630833
+
+To halt email, Continue_Here-http://www.untillie.icu/d8b6l2O3Q95s8k6W10g3a9cNe2fn36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQt9K9n5g1Av06Vqw@MD/overwhelmingly-sociologists
+
+Our message was chosen for intel-gvt-dev@lists.freedesktop.org
+
+96 Mowat- AVE, Toronto_ ONT M4 K3 K1 Canada
+
+8922794-1246621
+
+------=_Part_775_832287444.1664028706949
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -78,15 +82,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><a href="http://www.inklies.lol/5395F239P5WF8L611E3Wa94Le2eH36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQy9K9m7B1U0qVK5DWzwD/tenth-opthalmic" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to take the Survey & Claim your Bonus</span></a></span><br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:657px;"><a href="http://www.inklies.lol/Britten-stupidly/ada4B2395N8x6z10n3a95Je2ev36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQy9K9m6gAp1Q06Q@wLD3"><img src="http://www.inklies.lol/tenth-opthalmic/3f05S239S5Q7WaB12m3axL97Ne2eD36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQy9K9m5tY1L06zNU2wD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 657px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Deal Expires in 48 Hours.</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT' Ave., TORONTO ONT M4 K3 K1 CN&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive notices?, </span><a href="http://www.inklies.lol/harmonics-deliberateness/7b06z239oT5Ox8M611w3Ja96ue2eT36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQy9K9m5dZ1h05nBwDy" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start.Here.Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notice was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">94936899:7667786</span></span></p>   
- <img src="http://www.inklies.lol/3955Dv2395Kwj8512y3maA99xe2ep36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQy9K9m7aN1lW0M6bMwAJD/harmonics-deliberateness" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.untillie.icu/endorsed-quiets/c7e5k23Z95e8gF611f3a9PaNe2fO36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQt9K9n5zpT106qlwLJD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="Take the 30-second Survey" src="http://www.untillie.icu/Me34v2395g7oay12jo3a9bSDe2fx36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQt9K9n6yH10MD6BMwy2D/endorsed-quiets" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.untillie.icu/endorsed-quiets/c7e5k23Z95e8gF611f3a9PaNe2fO36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQt9K9n5zpT106qlwLJD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Gigantic Lowes Craftsman Lawn Tractor Giveaway</span></a></span></p> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To halt email, Continue_Here</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our message was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT- AVE, Toronto_ Ont M4K 3K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8922794~1246621</span></span></p>   
+ <img src="http://www.untillie.icu/majors-quakes/7ce6Y23o9n5D8WR510H3a9dze2fs36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQt9K9n6LG10gM6H1wXDB" alt=""/></body>
 </html>
 
-------=_Part_280_767473788.1664025630833--
+------=_Part_775_832287444.1664028706949--
 
