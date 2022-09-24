@@ -1,44 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E2035E87E2
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 05:19:15 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 517255E8833
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 06:17:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7111510E43D;
-	Sat, 24 Sep 2022 03:19:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 592A210E517;
+	Sat, 24 Sep 2022 04:17:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sat, 24 Sep 2022 03:19:06 UTC
-Received: from mail.ritepies.click (unknown [209.142.103.83])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4D04310E43D
+ Sat, 24 Sep 2022 04:17:37 UTC
+Received: from mail.tidepie.click (unknown [185.104.151.94])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3CD6110E4E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 24 Sep 2022 03:19:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ritepies.click; 
+ Sat, 24 Sep 2022 04:17:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tidepie.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=elena.namauu@ritepies.click; 
- bh=xgZRhuuyuZ7We8eabTs/+PKEj40=;
- b=ZPWERYrVO8jntapF/RuzevY4FzApciIHGAEP+oYQXfJfYnBGRxhd9tUnHFA25UyUq9xenVtOipjF
- jdUVZei/OqvykyCcP3iXT5wLeePSByTbtdtJP0FNcEAgwaJY6vg5W5MgZgTEraswMz4wPRfg773/
- TdOI+7DAdMBWI4mQ31I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ritepies.click;
- b=IugbinEELd5a6/ypGrP/3IodlxHHhCRSE3zexS5R1z8JDsQtpANR33tUoETNCROhYhQ2Xe+klm/9
- csQHUKfl2yvJfPFhlEL/QtJK+Yj5lcM1n4PSJcJyRWnU8+qu0A93hJFgs5HehSACM/yammM51Km5
- IIS2hFusMamdwgCdW6k=;
-Received: by mail.ritepies.click id h5prik0001g1 for
+ i=isacs_trina@tidepie.click; bh=EwLer3WHdiNA9z3GHIfS2kjupNQ=;
+ b=VskVzWEqtTWEzFyIOBZLjn4DWnLW/0FkT4gNzTCyOgWkhqJF0h2TwabxYE/3NVuRxOVfBlUtlrdD
+ W57iV/sNbGb/uyUqtxKGq+1QBPJRX4H8PuaxasvgLvT+dnz+/RgjIeCXE/QCd2e41ObqIrhzQpxH
+ 2zyJQTAbar3IeTDUPeM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tidepie.click;
+ b=GTbn9R2YW8UC2ra0V7MVZ2p1vQvTV0uGp+nEB2p1/ZzpLLFpreBjcLdtLTqg5cDJkTewgQckWHhf
+ iP3Rgf0gKaCNagz9wSlYnVFY59uu2zg8vSA7fNXcRL20DfBvL5ixl2z9ehQ1lXQaecO1asZkkvw/
+ VSqcTfqYxshDoEJUve0=;
+Received: by mail.tidepie.click id h5q2e20001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 23:07:37 -0400 (envelope-from
- <elena.namauu-intel+2Dgvt+2Ddev=lists.freedesktop.org@ritepies.click>)
-Date: Fri, 23 Sep 2022 23:07:37 -0400
-From: Elena Namauu <elena.namauu@ritepies.click>
+ Sat, 24 Sep 2022 00:06:36 -0400 (envelope-from
+ <isacs_trina-intel+2Dgvt+2Ddev=lists.freedesktop.org@tidepie.click>)
+Date: Sat, 24 Sep 2022 00:06:36 -0400
+From: Trina Isacs <isacs_trina@tidepie.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your chance for a Stanley 170 pc Tool Kit from Lowes
- intel-gvt-dev@lists.freedesktop.org
+Subject: Free-Service Finds the Lowest Used Car Deals
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_451_1614209569.1663988847161"
-Message-ID: <0.0.0.32.1D8CFC2CCEC35A4.4681E4@mail.ritepies.click>
+ boundary="----=_Part_262_503079294.1663992381017"
+Message-ID: <0.0.0.1D.1D8CFCB0A25FA38.7724D0@mail.tidepie.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +52,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_451_1614209569.1663988847161
+------=_Part_262_503079294.1663992381017
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Your chance for a Stanley 170 pc Tool Kit from Lowes  intel-gvt-dev@lists.freedesktop.org
+[mm_ez_used_cars_subjects]
 
-Go Here to give your review of Lowes_http://www.ritepies.click/Orestes-inheritrices/c9c6bl2t395cTt8610R3a7cQe28n36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQi9Kod5cj10N6NMkw@D
-
-
+[mm_ez_used_cars_cta]-http://www.tidepie.click/20f6t2N3A95Kz8k611p3Na80ze29X36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ69KoQ6uzW10N6HLBwOD/grandiose-supplement
 
 
--96 Mowat_ AVE, Toronto_ Ont.  M4K3KI CN
 
-To get rid of email, Visit-Here-Now_http://www.ritepies.click/8bd5n239x5CiI8612Lo3ap7dCe28N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQi9Kod5J1k0N6JqJ@wD/invested-freighters
 
-This email communication was designated for intel-gvt-dev@lists.freedesktop.org
+No longer want to receive communication?, Get Started Here-http://www.tidepie.click/1016V23Hr95pr86i12Q3Da8N1Ge29D36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ69KoQ7Fs1j0_w5b1wDy/dims-sometimes
+Our content was intended for intel-gvt-dev@lists.freedesktop.org
 
-3470351-7777842
+670' So Old Woodward,Birmingham, MI 48009 USA
 
-------=_Part_451_1614209569.1663988847161
+7936515~13878295
+
+------=_Part_262_503079294.1663992381017
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +79,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.ritepies.click/underwriting-refused/1205j23r95I8Q6u12u3oWa7cBe28v36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQi9Kod5U10xB6sAXwDy" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the Lowes Survey Giveaway</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.ritepies.click/underwriting-refused/1205j23r95I8Q6u12u3oWa7cBe28v36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQi9Kod5U10xB6sAXwDy" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Go Here to give your review of Lowes" src="http://www.ritepies.click/cb94W2395z_P7a11f3an7eke28K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQi9Kod7gYBwl106vqwDX0/centrally-carton" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Shake a Leg! Offer Ends in 4 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39bd58e7-7fff-8e4a-20b0-b3f0510a81ef"><a href="http://www.tidepie.click/31d6y_2_395pxG8610V3a80ne29W36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ69KoQ5S10Tu5d2wD3/dewy-panorama" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for No Stress. Just Used Car Deals</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39bd58e7-7fff-8e4a-20b0-b3f0510a81ef"><a href="http://www.tidepie.click/31d6y_2_395pxG8610V3a80ne29W36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ69KoQ5S10Tu5d2wD3/dewy-panorama" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:729px;"><img alt="Find the Best Ised Car Deals Here" src="http://www.tidepie.click/bab4z2395M7ayH10w3a82me29P36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ69KoQ6qky10M6akMwlD/scorned-linkage" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 700px;" /></span></span></a></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. Mowat_ Ave, Toronto. ONT. M4K3KI CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To get rid of email, <a href="http://www.ritepies.click/a614Y2395k8W6G12rg3a7dDLe28A36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQi9Kod5z1T0l5C3qwD/centrally-carton">Visit-Here-Now</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">90386148:7777842</span></span></p>   
- <img src="http://www.ritepies.click/3594S2395L85WI12Uq3an7fDe28F36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQi9Kod5z10AQ5p0@wD/rafters-tinkling" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39bd58e7-7fff-8e4a-20b0-b3f0510a81ef"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive communication?, </span><a href="http://www.tidepie.click/grandiose-supplement/e224b2395f8u6M10u3a81Ke29T36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ69KoQ6CAhZ105hLw@D" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Get Started Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39bd58e7-7fff-8e4a-20b0-b3f0510a81ef"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39bd58e7-7fff-8e4a-20b0-b3f0510a81ef"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">670. S0UTH Old.Woodward,Birmingham, Mich. 48009- USA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39bd58e7-7fff-8e4a-20b0-b3f0510a81ef"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7936515-13878295</span></span></p>   
+ <img src="http://www.tidepie.click/4675f23J95rUP8511rR3a83ke29Y36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ69KoQ6XL1s0F5Ql3wD/typesetter-Parsifal" alt=""/></body>
 </html>
 
-------=_Part_451_1614209569.1663988847161--
+------=_Part_262_503079294.1663992381017--
 
