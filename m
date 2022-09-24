@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5542A5E8641
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 01:17:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3A985E86FC
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Sep 2022 03:27:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B42DC10EB31;
-	Fri, 23 Sep 2022 23:17:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DE4E510EB71;
+	Sat, 24 Sep 2022 01:27:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 23 Sep 2022 23:17:14 UTC
-Received: from mail.piezen.click (unknown [185.104.151.227])
- by gabe.freedesktop.org (Postfix) with ESMTP id E655010EB31
+X-Greylist: delayed 315 seconds by postgrey-1.36 at gabe;
+ Sat, 24 Sep 2022 01:27:12 UTC
+Received: from mail.widepie.click (unknown [209.142.103.52])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DDE2D10EB64
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 23:17:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=piezen.click;
+ Sat, 24 Sep 2022 01:27:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=widepie.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=josephine-wooleyhan@piezen.click; 
- bh=Ln3oNBXUPVtr52pPqYhSieTxzdQ=;
- b=kPAUbRbBFBGSUjHwAySePmFtqiyGJw3BsP5B8/75KvkysGuOt8tm0RPMR5gEb1ApIRetK2pU6gTE
- ehPBtHpntHuCUa/w4BTP+tczo+/VVDvVozOKL2CWHWt1XKAoLHmhcn1BmrTdtOE1DA378xVlZAwx
- x4soND4LYoNod2miSF4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=piezen.click;
- b=aQyRn2lhb1Rkwki7jTsou3QNEUlRJ5OSTFnvhsqriWu0pdjFIhASE8/QnER6Koi3Qkb5GzuDUdz3
- 0TTK94vk8OUSiH//26Cwj74tDfhGf5ezocf9MoWhI7FRqS3PGi7+bzgzIhI7R7b4dlGScXHcp6sB
- 1L7SOWqHNKv5b0RyAk8=;
-Received: by mail.piezen.click id h5ov7m0001gj for
+ i=barbara.carberry@widepie.click; 
+ bh=6oNnAO27hxaQuHv0HcTx1hkJbsQ=;
+ b=rvjH1UX9gT0/QUXMcQ4SMAJV0NtbgxTzIpM4DzuqZYrTeDEFXdOzOZ9QIL+vXiBpHLgDLJJJnBTh
+ TxR3UD+BixBC/IyEUeGQ9lCmZobrW9JeCDx4q3oa6dUmvzz4An5iNzFXdNX52j/mdXqhNUSqqjwn
+ PITdjMvxwz0NyppL3kw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=widepie.click;
+ b=VyEzoeez2mfEW1EufnWSEFBFiTgZHpnIPr7ue+Ma3T9SmZ4vveT2vJUu0EYjyW3m2axdXGz1QzV0
+ DQrjj/q1SnE/OVtO/SmMHWsoGvVaFKFu7HXuTwfsL+HNICbZaUnljxoTb/dyViO147KIpp9ig78l
+ oxpEHNsXWQ3OuUa2OVQ=;
+Received: by mail.widepie.click id h5pef20001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Sep 2022 19:05:36 -0400 (envelope-from
- <josephine-wooleyhan-intel+2Dgvt+2Ddev=lists.freedesktop.org@piezen.click>)
-Date: Fri, 23 Sep 2022 19:05:36 -0400
-From: Josephine Wooleyhan <josephine-wooleyhan@piezen.click>
+ Fri, 23 Sep 2022 21:07:59 -0400 (envelope-from
+ <barbara.carberry-intel+2Dgvt+2Ddev=lists.freedesktop.org@widepie.click>)
+Date: Fri, 23 Sep 2022 21:07:59 -0400
+From: Barbara Carberry <barbara.carberry@widepie.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Complete the Feedback Survey for a chance at iPhone13  #30539
+Subject: Give your Input about Lowes for a Craftsman Lawn Tractor
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_172_1189224644.1663974320620"
-Message-ID: <0.0.0.13.1D8CFA0FDA90748.275234@mail.piezen.click>
+ boundary="----=_Part_670_213717444.1663981671919"
+Message-ID: <0.0.0.4B.1D8CFB216BACA6C.1B5BF8@mail.widepie.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,29 +54,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_172_1189224644.1663974320620
+------=_Part_670_213717444.1663981671919
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Complete the Feedback Survey for a chance at iPhone13  #30539
-
-Go Here for the Marketing 60-second Survey-http://www.piezen.click/b514n2395wu86i12X3avV6che24O36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQL9Kom6f10ppA5w@wDl/cork-compulsions
+Give your Input about Lowes for a Craftsman Lawn Tractor  intel-gvt-dev@lists.freedesktop.org
 
 
+Tap Here for the Lowes Craftsman Tool Promotion. http://www.widepie.click/2696B2sK395s86Ll10p3a74ie26B36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQi9Koo5p1Ws05Yl3wD/anthropologist-audiologist
 
 
 
-96- MOWAT_ AV, Toronto.  ONTARIO M4K 3Kl CA
 
 
-To break off notices, Begin-Right-Here-http://www.piezen.click/8455zk2395U8Y6Z11t3aX6dle24Q36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQL9Kom7yU10gXL6eNUwD3/cork-compulsions
 
-Our e-mail communication was selected for intel-gvt-dev@lists.freedesktop.org
+No longer wish to receive notices?, Get.Going.Here. http://www.widepie.click/8815l2r395W86vq10C3a75je26S36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQi9Koo6M1OiZ06rlwDzL/anthropologist-audiologist
 
+Our email message was delivered to intel-gvt-dev@lists.freedesktop.org
 
-3181020-1691520
+96' MOWAT_ AVENUE, Toronto Ontario M4K3K1 CN
 
-------=_Part_172_1189224644.1663974320620
+5888100-3297799
+
+------=_Part_670_213717444.1663981671919
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,25 +84,19 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><a href="http://www.piezen.click/c5f6L2D39z5nGX8611Wj3a6cDe24U36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQL9Kom6GAP1y06PXwMkD/voicing-engendering" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for the Marketing 60-second Survey</span></a></span><br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><a href="http://www.piezen.click/c5f6L2D39z5nGX8611Wj3a6cDe24U36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQL9Kom6GAP1y06PXwMkD/voicing-engendering" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:856px;"><img alt="Your Chance for an iPhone 13" src="http://www.piezen.click/4496DT23k95lr7Ya11aj3a6eJe24l36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQL9Kom7m1PqK0I5bqwD2/Lockian-quizzed" style="margin-left: 0px; margin-top: 0px; width: 640px; height: 878px;" /></span></span></a></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.widepie.click/metalanguage-countering/8465Op2395V8T6N11J3a7v4Xe26h36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQi9Koo7lN1tp0S5qO@wD"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.widepie.click/startle-attempts/3f04V2395v7Dam12b3aTz76He26h36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQi9Koo7aiU1p0n6QJwBDl" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.widepie.click/metalanguage-countering/8465Op2395V8T6N11J3a7v4Xe26h36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQi9Koo7lN1tp0S5qO@wD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes Craftsman Tool Promotion</span></a></span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ Mowat- AV, Toronto' ONTARIO M4K 3KI CANADA</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To break off notices, </span><a href="http://www.piezen.click/servicemen-tribes/4fe6UDW2395vm86W10U3a6dpe24Q36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQL9Kom6LL10pI5z@zwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin-Right-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3181020.1691520</span></span></p>   
- <img src="http://www.piezen.click/voicing-engendering/3785j2j395cC8M512R3Da6ftoe24r36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQL9Kom6hD1A0t6Klw0D0" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive notices?, <a href="http://www.widepie.click/d136F239uP5KC8y612Uy3a7B5je26B36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQi9Koo6Q1mH0U5i@MwD/persuasions-annihilates">Get.Going.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT. Ave., Toronto- Ontario M4K3KI CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5888100.3297799</span></span></p>   
+ <img src="http://www.widepie.click/condescend-Canadianizations/3786C2k39I5UD8Z511G3a77pqe26k36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQi9Koo5gT10L6j2wWlD" alt=""/></body>
 </html>
 
-------=_Part_172_1189224644.1663974320620--
+------=_Part_670_213717444.1663981671919--
 
