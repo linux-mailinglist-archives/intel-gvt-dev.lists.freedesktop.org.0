@@ -1,44 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41E2B5E9207
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 25 Sep 2022 12:19:37 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DBD85E92B3
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 25 Sep 2022 13:22:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6BBE810E1C3;
-	Sun, 25 Sep 2022 10:19:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 102D610E20C;
+	Sun, 25 Sep 2022 11:22:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Sun, 25 Sep 2022 10:19:30 UTC
-Received: from mail.creamlies.click (unknown [213.209.159.220])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0D05A10E1C9
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Sun, 25 Sep 2022 11:22:15 UTC
+Received: from mail.donemix.click (unknown [213.209.159.63])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0465810E20C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 25 Sep 2022 10:19:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=creamlies.click; 
+ Sun, 25 Sep 2022 11:22:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=donemix.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=silvia-varnum@creamlies.click; 
- bh=ISYfgYvIY/088eTF+GylnFxIb/8=;
- b=A7C2shX8Q6PtMDBZKBv6NL0No2+BSwFd3a/Gi33la5FTGvMzL9NnY6tz0KrwuL426nagQd80cSH2
- y8S44sPN0diWZ6Sijqbxhzcrp9wlW0CA2jpXkz6TrcLcpV0EZ/0HMd/+BJ98ZXQBK5vtgINJPLUx
- w5PmgMfjGFKdMtituuo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=creamlies.click;
- b=SzR6Xr0rftV/q/9Jmww4Nn21HgTAwJUXnaC4if95mGuBDs1sljRHFbuz9eIKQpIG+uXxJHfj3ucF
- nygMM8qiYX3EDmPhBIye/Mct9rMaxh4PLbK31vrhceN7XeBC+hBic6S+Mp3Dz9Nb2EUUXWrVzM8N
- z8CdZ1ADWdyUWuZfZoA=;
-Received: by mail.creamlies.click id h60lj40001g4 for
+ i=ginger-vogds@donemix.click; bh=FBRzUoiEeEay2nJPmH6WAtd52to=;
+ b=vm596zx/CbZiZRyKbLbvQNRqaB8J0axrIOXH77WPN1a2VX4LcOCZ5fcCZBx3v1+MkqS/cszFSFFt
+ VsoBkwETUhdKjj3yY8HSp46ngBMTjJAS8WLeDPIhVNB11vOGMfKZzTf6f+sk5SHwqF/qkcGmjsiS
+ EcW8fcJMPi3QLDTKoIk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=donemix.click;
+ b=igHtn2s9wwxPg0B8rEUN8ePxWG5Aa6ISVmbnCjvCa6Z6o79vOiUoZBBFmBGg15FXmwd1QnrbGEad
+ nTY0SmMRSSEKkPaYA+x1R/AgOZ9CEFYuj+qgQtHc3OIhe+OhhbWMeA/rwwmW/rSOx1Cc9m5X3SWJ
+ DKDSwxvTjzJ1AfyjH+w=;
+Received: by mail.donemix.click id h60sue0001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 25 Sep 2022 06:05:50 -0400 (envelope-from
- <silvia-varnum-intel+2Dgvt+2Ddev=lists.freedesktop.org@creamlies.click>)
-Date: Sun, 25 Sep 2022 06:05:50 -0400
-From: Silvia Varnum <silvia-varnum@creamlies.click>
+ Sun, 25 Sep 2022 07:11:19 -0400 (envelope-from
+ <ginger-vogds-intel+2Dgvt+2Ddev=lists.freedesktop.org@donemix.click>)
+Date: Sun, 25 Sep 2022 07:11:19 -0400
+From: Ginger Vogds <ginger-vogds@donemix.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Lowes Customer,
- Claim Your Lowes Bonus  intel-gvt-dev@lists.freedesktop.org
+Subject: Never Clean Your Gutters Again. LeafFilter 10% Off
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_148_1090226364.1664100343262"
-Message-ID: <0.0.0.10.1D8D0C663988A1C.101929@mail.creamlies.click>
+ boundary="----=_Part_307_1884521943.1664104248676"
+Message-ID: <0.0.0.21.1D8D0CF89FC3434.4E515@mail.donemix.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +52,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_148_1090226364.1664100343262
+------=_Part_307_1884521943.1664104248676
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations Lowes Customer, Claim Your Lowes Bonus  intel-gvt-dev@lists.freedesktop.org
-
-You've Been Chosen, Click Here-http://www.creamlies.click/freeing-horror/a444S2395W8z6N11f3ac6nHe3aJ36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQk9Kdo6AW10ks6qkwNDT
+Never Clean Your Gutters Again. LeafFilter 10% Off
 
 
+Tap Here to Prevent Gutter Debris.  
+ http://www.donemix.click/9cb4Y2395o86gX10p3acage3bm36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQP9Kd95Y1A0q5y@wDl/jerkiness-ascended
 
 
-96- Mowat.  Av, Toronto' ONTARIO M4K3KI CN
 
-To dispense with notifications, Go.Here-http://www.creamlies.click/sectarian-cypress/j124l2395JFS8612z3RaXc7te3aq36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQk9Kdo6r_1Sp06CAq@wD
 
-This email was directed to intel-gvt-dev@lists.freedesktop.org
 
-8927819-4503337
 
-------=_Part_148_1090226364.1664100343262
+To cancel email, Click.Over.Here.  http://www.donemix.click/3ef6zQ2j395ts86l12A3acbqCte3bW36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQP9Kd96N1B_K05zTkwD/jerkiness-ascended
+Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org
+2 DEP0T PLZ. , Unit 401_, Bedford-Hills, New~York 1O5O7. 
+1991055:1834258
+
+------=_Part_307_1884521943.1664104248676
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +81,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.creamlies.click/60b5K239_5bni8611O3aDc6Se3ao36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQk9Kdo7wUoZT106vALqwD/freeing-horror" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Selected, Tap Here</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.creamlies.click/60b5K239_5bni8611O3aDc6Se3ao36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQk9Kdo7wUoZT106vALqwD/freeing-horror" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="You've Been Chosen, Click Here" src="http://www.creamlies.click/c235B239v5smM7a10d3ac8Ne3ag36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQk9Kdo6X1X0lF6HjwW2D/inversions-conclusive" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Step On It! Offer Becomes Void in 4 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.donemix.click/swiftness-bourgeois/6c04W2395Qj8u610R3acaNe3bZ36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQP9Kd95sg10N5gk@wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Prevent Gutter Debris</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.donemix.click/swiftness-bourgeois/6c04W2395Qj8u610R3acaNe3bZ36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQP9Kd95sg10N5gk@wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.donemix.click/correlation-timed/13e5N239_5B7HaY12n3aDPcche3by36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQP9Kd96QSv1Y05JXXwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Special Offer Runs Out in 3 Days.</span></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat_ AV, T0R0NT0 ONTARIO M4K3K1 CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To dispense with notifications, <a href="http://www.creamlies.click/11f5E239X5hI86G12h3oacw7ge3aN36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQk9Kdo6EDhq106Yk2w2D/insanity-temptations">Go.Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">33676015 4503337</span></span></p>   
- <img src="http://www.creamlies.click/sectarian-cypress/2105RV2395vJ8B511d3ac9VUe3ay36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQk9Kdo5YZ10s6JqqwDM" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cancel email,</span><a href="http://www.donemix.click/garland-feature/d144c2395wL86i10D3acbQe3bZ36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQP9Kd95q_1T05j1w0D" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click.Over.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">TWO Depot Plaza, NO 401, Bedford Hills, New_York 1O5O7.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1991055 1834258</span></span></p>   
+ <img src="http://www.donemix.click/waiverable-giggles/4fe4F2395v8D5F10A3acdPe3bi36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQP9Kd96Q1vG0I6SAWTwD" alt=""/></body>
 </html>
 
-------=_Part_148_1090226364.1664100343262--
+------=_Part_307_1884521943.1664104248676--
 
