@@ -2,41 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DBD85E92B3
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 25 Sep 2022 13:22:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 95BB95E9306
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 25 Sep 2022 14:21:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 102D610E20C;
-	Sun, 25 Sep 2022 11:22:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A672810E24C;
+	Sun, 25 Sep 2022 12:21:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sun, 25 Sep 2022 11:22:15 UTC
-Received: from mail.donemix.click (unknown [213.209.159.63])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0465810E20C
+X-Greylist: delayed 321 seconds by postgrey-1.36 at gabe;
+ Sun, 25 Sep 2022 12:21:15 UTC
+Received: from mail.yamlies.click (wdf781.tk [64.64.109.84])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B0F0610E248
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 25 Sep 2022 11:22:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=donemix.click;
+ Sun, 25 Sep 2022 12:21:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yamlies.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ginger-vogds@donemix.click; bh=FBRzUoiEeEay2nJPmH6WAtd52to=;
- b=vm596zx/CbZiZRyKbLbvQNRqaB8J0axrIOXH77WPN1a2VX4LcOCZ5fcCZBx3v1+MkqS/cszFSFFt
- VsoBkwETUhdKjj3yY8HSp46ngBMTjJAS8WLeDPIhVNB11vOGMfKZzTf6f+sk5SHwqF/qkcGmjsiS
- EcW8fcJMPi3QLDTKoIk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=donemix.click;
- b=igHtn2s9wwxPg0B8rEUN8ePxWG5Aa6ISVmbnCjvCa6Z6o79vOiUoZBBFmBGg15FXmwd1QnrbGEad
- nTY0SmMRSSEKkPaYA+x1R/AgOZ9CEFYuj+qgQtHc3OIhe+OhhbWMeA/rwwmW/rSOx1Cc9m5X3SWJ
- DKDSwxvTjzJ1AfyjH+w=;
-Received: by mail.donemix.click id h60sue0001ga for
+ i=koong.jayne@yamlies.click; bh=Jq0b0hoX1+Ez3BM13o88dQq+3HA=;
+ b=lnbnMSJH6/wAhT7E03orReHOuFrqNSVsQta46ug2QGOFWI9p3b7Y0z+mwLlH9QCljYr2HVlg+HI1
+ ZLPO+dwWvI53aYmssDNXCCEPPdo/QmfU4o+H6/TIzWrgiNQ4uXgrtQf6FSBLY5NssHL2rNO5a12Z
+ 4fL8FFTMnCCchldTMEc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yamlies.click;
+ b=swBD/pjo9tNan+dpxQmXRJxJSf7XbSbsnNzQyYULQwpbNbf3n1RHatIPqaaKoKqg6BYFzu+BLKIU
+ nxP1/NT5txlUQZRCFbixjs5ssZudB4qj7GsycST3H1MmodZYmTM98Fi+MF7ReIe9T0VMFDxyXKlm
+ 5unDNMCm0w6XiFKTFeA=;
+Received: by mail.yamlies.click id h613rm0001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 25 Sep 2022 07:11:19 -0400 (envelope-from
- <ginger-vogds-intel+2Dgvt+2Ddev=lists.freedesktop.org@donemix.click>)
-Date: Sun, 25 Sep 2022 07:11:19 -0400
-From: Ginger Vogds <ginger-vogds@donemix.click>
+ Sun, 25 Sep 2022 08:10:44 -0400 (envelope-from
+ <koong.jayne-intel+2Dgvt+2Ddev=lists.freedesktop.org@yamlies.click>)
+Date: Sun, 25 Sep 2022 08:10:44 -0400
+From: Jayne Koong <koong.jayne@yamlies.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Never Clean Your Gutters Again. LeafFilter 10% Off
+Subject: Fill Out the 1 minute Customer Survey for a chance at iPhone13 #95347
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_307_1884521943.1664104248676"
-Message-ID: <0.0.0.21.1D8D0CF89FC3434.4E515@mail.donemix.click>
+ boundary="----=_Part_667_1150126076.1664107839561"
+Message-ID: <0.0.0.49.1D8D0D7D6A05F1A.4F3ED4@mail.yamlies.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,27 +52,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_307_1884521943.1664104248676
+------=_Part_667_1150126076.1664107839561
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Never Clean Your Gutters Again. LeafFilter 10% Off
+Fill Out the 1 minute Customer Survey for a chance at iPhone13  #95347
 
-
-Tap Here to Prevent Gutter Debris.  
- http://www.donemix.click/9cb4Y2395o86gX10p3acage3bm36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQP9Kd95Y1A0q5y@wDl/jerkiness-ascended
-
+Tap Here to Fill Out our Survey~http://www.yamlies.click/hither-Oresteia/c245a2J395S86kj11Sn3aceOe3cr36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQX9Kdd6W1W0nh5ppBwD
 
 
 
 
 
-To cancel email, Click.Over.Here.  http://www.donemix.click/3ef6zQ2j395ts86l12A3acbqCte3bW36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQP9Kd96N1B_K05zTkwD/jerkiness-ascended
-Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org
-2 DEP0T PLZ. , Unit 401_, Bedford-Hills, New~York 1O5O7. 
-1991055:1834258
+96' Mowat.  Av, Toronto Ont M4K3K1 CN
 
-------=_Part_307_1884521943.1664104248676
+
+To cut out communications, Continue This Way~http://www.yamlies.click/actinium-unrestrictive/1985zU2395Aj86t11M3acfFBe3cv36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQX9Kdd7w1Jnh0S5gLwlD
+
+This email communication was selected for intel-gvt-dev@lists.freedesktop.org
+
+
+92620350~5714955
+
+------=_Part_667_1150126076.1664107839561
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,21 +83,24 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.donemix.click/swiftness-bourgeois/6c04W2395Qj8u610R3acaNe3bZ36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQP9Kd95sg10N5gk@wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Prevent Gutter Debris</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.donemix.click/swiftness-bourgeois/6c04W2395Qj8u610R3acaNe3bZ36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQP9Kd95sg10N5gk@wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.donemix.click/correlation-timed/13e5N239_5B7HaY12n3aDPcche3by36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQP9Kd96QSv1Y05JXXwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Special Offer Runs Out in 3 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><a href="http://www.yamlies.click/ed54k2395w8FR610D3aceDe3co36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQX9Kdd6So10On6S@wAAD/subsidizes-subgraphs" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Fill Out our Survey</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><a href="http://www.yamlies.click/ed54k2395w8FR610D3aceDe3co36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQX9Kdd6So10On6S@wAAD/subsidizes-subgraphs" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:856px;"><img alt="Your Chance for an iPhone 13" src="http://www.yamlies.click/e5d5z239S5wQ7aI12v3iad0Yke3cY36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQX9Kdd5M1Vx06DJwDXj/subsidizes-subgraphs" style="margin-left: 0px; margin-top: 0px; width: 640px; height: 878px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cancel email,</span><a href="http://www.donemix.click/garland-feature/d144c2395wL86i10D3acbQe3bZ36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQP9Kd95q_1T05j1w0D" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click.Over.Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">TWO Depot Plaza, NO 401, Bedford Hills, New_York 1O5O7.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1991055 1834258</span></span></p>   
- <img src="http://www.donemix.click/waiverable-giggles/4fe4F2395v8D5F10A3acdPe3bi36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQP9Kd96Q1vG0I6SAWTwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT Av, Toronto- Ontario M4 K3 K1 CN</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut out communications, </span><a href="http://www.yamlies.click/a7f5O2u395j8M6M10l3acfqe3cN36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQX9Kdd5S1ZP05KPwDz/straits-rotunda" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue This Way</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email communication was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-fad9b380-7fff-ba41-30e8-acca5dfcf013"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">92620350,5714955</span></span></p>   
+ <img src="http://www.yamlies.click/dramatically-repeated/a805H23g95XLJ8510n3ad1Ce3ck36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQX9Kdd6IX1h0X5mNwDM" alt=""/></body>
 </html>
 
-------=_Part_307_1884521943.1664104248676--
+------=_Part_667_1150126076.1664107839561--
 
