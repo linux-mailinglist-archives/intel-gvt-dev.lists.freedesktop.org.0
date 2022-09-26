@@ -1,35 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A44175E99BB
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 08:41:12 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6F2E5EA356
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 13:24:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 221A110E54C;
-	Mon, 26 Sep 2022 06:41:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9B74510E358;
+	Mon, 26 Sep 2022 11:24:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from out30-133.freemail.mail.aliyun.com
- (out30-133.freemail.mail.aliyun.com [115.124.30.133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ACA5210E53E;
- Mon, 26 Sep 2022 06:41:06 +0000 (UTC)
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R121e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=ay29a033018045168;
- MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=14; SR=0;
- TI=SMTPD_---0VQh1.pv_1664174457; 
-Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com
- fp:SMTPD_---0VQh1.pv_1664174457) by smtp.aliyun-inc.com;
- Mon, 26 Sep 2022 14:41:02 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: zhenyuw@linux.intel.com
-Subject: [PATCH 1/2] drm/i915/gvt: Fix kernel-doc
-Date: Mon, 26 Sep 2022 14:40:44 +0800
-Message-Id: <20220926064044.53016-2-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
-In-Reply-To: <20220926064044.53016-1-jiapeng.chong@linux.alibaba.com>
-References: <20220926064044.53016-1-jiapeng.chong@linux.alibaba.com>
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Mon, 26 Sep 2022 11:24:27 UTC
+Received: from mail.outsdie.click (unknown [64.64.109.49])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A1FF910E67C
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 26 Sep 2022 11:24:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outsdie.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=ruth.eadie@outsdie.click; bh=L5O0N4nbQO9OHYVLiuRKO06k/D4=;
+ b=iCUGO0I84yxvsoKfeCWVhdO4NJW2PSZwhO0AeVf3ofJcFdlc/S3NNNK6RiIbYlOgNosjwTg8xE7s
+ EzZ3W5aq+HTF45WTXR3zyDz7GmI5BpeaYo8dyi1pDpiEfCEyPBZhqR9pO3gK03rE4EzZSQV6ynC9
+ GTA9I57GXTm6GpX6M/8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outsdie.click;
+ b=KkWCIsnaHXrU1aJmXB4ZZgIH16FbG6HSZ2yfDeswVso1Lno+PEmxE7hkSWzd6ZDwiVkvh6Mmosu3
+ o61HZ0sne7HrAk6QAWoduc5WHXMr9NiBdpdjQsU5gB1pmraKS1tiu+xLwEOEhlagtHwp50/6oOGt
+ Ti0P0R2FcBRtHdpRX+4=;
+Received: by mail.outsdie.click id h665um0001gd for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 26 Sep 2022 07:12:52 -0400 (envelope-from
+ <ruth.eadie-intel+2Dgvt+2Ddev=lists.freedesktop.org@outsdie.click>)
+Date: Mon, 26 Sep 2022 07:12:52 -0400
+From: Ruth Eadie <ruth.eadie@outsdie.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Request Your Free Leaf-Filter Estimate. Save 10%
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_652_51898531.1664190751053"
+Message-ID: <0.0.0.49.1D8D198EBC7419E.65A7A9@mail.outsdie.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,38 +49,53 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: tvrtko.ursulin@linux.intel.com,
- Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, airlied@linux.ie,
- intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
- Abaci Robot <abaci@linux.alibaba.com>, linux-kernel@vger.kernel.org,
- jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, daniel@ffwll.ch,
- rodrigo.vivi@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-drivers/gpu/drm/i915/gvt/vgpu.c:356: warning: expecting prototype for intel_gvt_destroy_vgpu(). Prototype was for intel_gvt_destroy_idle_vgpu() instead.
+------=_Part_652_51898531.1664190751053
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Link: https://bugzilla.openanolis.cn/show_bug.cgi?id=2276
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
- drivers/gpu/drm/i915/gvt/vgpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Request Your Free Leaf-Filter Estimate. Save 10%
 
-diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-index 5c533fbc2c8d..e081027761d5 100644
---- a/drivers/gpu/drm/i915/gvt/vgpu.c
-+++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-@@ -346,7 +346,7 @@ struct intel_vgpu *intel_gvt_create_idle_vgpu(struct intel_gvt *gvt)
- }
- 
- /**
-- * intel_gvt_destroy_vgpu - destroy an idle virtual GPU
-+ * intel_gvt_destroy_idle_vgpu() - destroy an idle virtual GPU
-  * @vgpu: virtual GPU
-  *
-  * This function is called when user wants to destroy an idle virtual GPU.
--- 
-2.20.1.7.g153144c
+
+Start Here & Never Clean Your Gutters Again : 
+ http://www.outsdie.click/Dadaist-blissful/44a5N23j95a86Pg11J3b06RYe4aq36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQB9KQe7iMOQ10p5v@wlD
+
+
+
+
+
+
+No longer wish to receive email notices from us?, Go.Here.Now : http://www.outsdie.click/11f6NmT2395l8Ji611d3b0p7De4ah36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQB9KQe5io10J5CBwDk/abatements-rawest
+Our notification was designated for intel-gvt-dev@lists.freedesktop.org
+2 Depot PIaza, Suite 401', Bedford_Hill_, New-York 1O5O7-
+2664912:7015368
+
+------=_Part_652_51898531.1664190751053
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.outsdie.click/Celebes-concede/a264l2395FA8l610u3b06Ue4aP36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQB9KQe7yoQ1h0m6K1wDJk" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here & Never Clean Your Gutters Again</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.outsdie.click/Celebes-concede/a264l2395FA8l610u3b06Ue4aP36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQB9KQe7yoQ1h0m6K1wDJk" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.outsdie.click/a614Y2395y7Xar10f3b08Ve4au36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQB9KQe7UBk1y0n5F2wPD/embezzle-videotapes" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make Haste! Promotion Ends in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive email notices from us?,</span><a href="http://www.outsdie.click/astrology-hierarchy/8284v2395W8Aj612vl3b07Ike4ai36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQB9KQe7uvg1RB06Y13w2D" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Go.Here.Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">TWO Depot PLAZA, Ste 4O1, Bedford.Hills, NY 1O5O7</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2664912~7015368</span></span></p>   
+ <img src="http://www.outsdie.click/4854b2395eP8H510v3b09me4aA36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQB9KQe6zY1UJ06bzJ@wD/astrology-hierarchy" alt=""/></body>
+</html>
+
+------=_Part_652_51898531.1664190751053--
 
