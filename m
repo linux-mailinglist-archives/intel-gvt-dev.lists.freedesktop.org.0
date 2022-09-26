@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AE8C5EA5D4
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 14:21:29 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DCF95EA705
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 15:22:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3EC0A10E694;
-	Mon, 26 Sep 2022 12:21:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AC6C610E6A5;
+	Mon, 26 Sep 2022 13:22:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
- Mon, 26 Sep 2022 12:21:25 UTC
-Received: from mail.winksdie.click (unknown [209.142.103.43])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0CE2910E694
+X-Greylist: delayed 343 seconds by postgrey-1.36 at gabe;
+ Mon, 26 Sep 2022 13:22:52 UTC
+Received: from mail.dietries.click (km236.tk [64.64.109.124])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 97EA810E6A3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 12:21:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=winksdie.click; 
+ Mon, 26 Sep 2022 13:22:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dietries.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paula.korgie@winksdie.click; 
- bh=0RXZcw+Zq/A3QL7DO9pCIUFYQ8I=;
- b=KbqtM8OIXhrRDCgMqxg0nbYdp3LF07WiEhmbFMgpbKyc0LRZHEhzGbmOAxF4iedgCLlVEYhKuXsS
- TC+oguiKAPPczX39jnRXfmMre1DORymkAxLUQVvM6GzPiF1M3sFOsg6rQuBwLhsPv31eC49HRIsK
- oOZ7zNeLafNq+Tu+UZk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=winksdie.click;
- b=MVwGZvxse891b/dUnttfuSNzZ1aZJl1Dr0xMrCTY6TgmqNTQ7ebhmj3ltioQk1ct/UeVbCutsOG1
- wzeJQsMs0g8bEPpMFRt3NnYM6XiAkaukuyyNvG1uf1GFrN+W1E5PIVSI+LqGOTFZ5iQEjjvWk7FW
- +/ZaJI5Tkgcx2CNX5B0=;
-Received: by mail.winksdie.click id h66cka0001gi for
+ i=helena_dettmering@dietries.click; 
+ bh=uL3WQEImhV0WrroBkWjxMw6Qo7s=;
+ b=TolJoWjR+RRmZqppsZOYiSxg6/b45WLZlAtDnXw3iEu0ScZt3XmHo4wCIjn5MFPovKvVlZL/blAV
+ b1M2DZsa3HXlQAWbDAldvn6aAQFNlPm5ev6CPka63MNDTUZs8Zy+mrC4LAZOtoVuqUbsoMZQ0S3I
+ 2ufJQ3sd2Kg66HRbwpI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dietries.click;
+ b=GYRFsBapBzdnmwjzV84qAcSK7ETKV7CdNWNchFtKNb35uO04SUM8AR5R7r6anX/Y8KGDvRCVA7AE
+ Axy4kKAZWSezcyOZo1MqsFIic3ymjbrY/WMWPu8NVhQ3cZv8CT7CUmUoiE9NQxa9qIH9583nJl8U
+ tmkGC1duWX6jsXMTYhE=;
+Received: by mail.dietries.click id h66jqo0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 08:08:23 -0400 (envelope-from
- <paula.korgie-intel+2Dgvt+2Ddev=lists.freedesktop.org@winksdie.click>)
-Date: Mon, 26 Sep 2022 08:08:23 -0400
-From: Paula Korgie <paula.korgie@winksdie.click>
+ Mon, 26 Sep 2022 09:09:19 -0400 (envelope-from
+ <helena_dettmering-intel+2Dgvt+2Ddev=lists.freedesktop.org@dietries.click>)
+Date: Mon, 26 Sep 2022 09:09:19 -0400
+From: Helena Dettmering <helena_dettmering@dietries.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Compare Life lnsurance Coverage Easily Online  #271125
+Subject: Your Online Gutter Guard Choices
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_217_299734038.1664194078034"
-Message-ID: <0.0.0.17.1D8D1A0ACB70E00.289F6E@mail.winksdie.click>
+ boundary="----=_Part_181_1293579037.1664197700427"
+Message-ID: <0.0.0.25.1D8D1A93037ED3C.178787@mail.dietries.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,35 +53,31 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_217_299734038.1664194078034
+------=_Part_181_1293579037.1664197700427
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Compare Life lnsurance Coverage Easily Online  #271125
+[mm_gutter_guard_subjects]
 
-Visit Here to Pick Your Coverage. http://www.winksdie.click/anhydrously-coprocessor/8aq4z2395K8BJ610w3b0ave4bk36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ.9KQK6ksY10Q6ROJWwD
-
-
-
-
-
-Compare Online Here Before Fees Rise
+Visit Here to Compare Gutter Guard Quotes - http://www.dietries.click/20f6nh23W95ID8o612r3b0veNYe4cs36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQt9KRm5P1xu05i3jwD/prices-Popsicles
 
 
 
 
+2222' MICHELSON DR NO 222 _112, Irvine, CA.  92612
+
+To halt messages, Begin-Ahead-Here - http://www.dietries.click/e034t2395kP8h612S3obW0fLe4ct36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQt9KRm5tu10T6o1TwDJ/cleverness-respective
+Our email communication was designated for intel-gvt-dev@lists.freedesktop.org
+
+ 
+5844800-83114035
 
 
-To cease messages, Click.Here.Now. http://www.winksdie.click/dare-tribes/3f05u2A395dZ86W11y3bo0bse4bZ36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ.9KQK7jZ1p0Lj5rWwDU
 
-This email content was delivered to intel-gvt-dev@lists.freedesktop.org
 
-Kalkofnnsvegur TWO Reykjavic, 
-CapitalRegion  1O1  Iselland
 
-5540613. 4384450
 
-------=_Part_217_299734038.1664194078034
+------=_Part_181_1293579037.1664197700427
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -90,31 +86,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <div style="text-align: center;">
-   <a href="http://www.winksdie.click/b155Sr2395Uy8Z611I3b0alpe4bk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.9KQK6QW1A0k5eNjwD/laugh-upgrade" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Pick Your Coverage</span></a>
-   <br /> &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><a href="http://www.winksdie.click/b155Sr2395Uy8Z611I3b0alpe4bk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.9KQK6QW1A0k5eNjwD/laugh-upgrade" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:540px;height:695px;"><img alt="Protect Your FamiIy's Future" src="http://www.winksdie.click/b336yt239B5m7aRr11BQ3b0che4bL36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ.9KQK7sxV1x0s6SWwljD/anhydrously-coprocessor" style="margin-left: 0px; margin-top: 0px; width: 540px; height: 695px;" /></span></span></a></span></p> 
-  <div style="text-align: center;">
-   &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;">&nbsp;</p> 
-  <div style="text-align: center;">
-   <br /> 
-   <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:14px;"><a href="http://www.winksdie.click/b155Sr2395Uy8Z611I3b0alpe4bk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.9KQK6QW1A0k5eNjwD/laugh-upgrade"><strong><span style="font-size:16px;">Save Online Here Before Cost Increase</span></strong></a></span></span>
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease messages,</span><a href="http://www.winksdie.click/laugh-upgrade/cf65t239G5N8R6_12Bg3b0bSre4bY36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ.9KQK7l10wUVr5qlOwD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click.Here.Now</span></a></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email content was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Kalkophnsvegur TWO Reykjavic,<br /> Capital-Region&nbsp; I0I&nbsp; IS</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5540613 4384450</span></span></span></p>   
- <img src="http://www.winksdie.click/eb74N2395N8y5D12m3b0dyRre4bF36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ.9KQK5P1w0R5n1wDj/laugh-upgrade" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.dietries.click/mentioning-Bourbaki/3784F2395k86HT10b3b0ege4cR36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQt9KRm5tO1q05zMwDk" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Compare Gutter Guard Quotes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.dietries.click/mentioning-Bourbaki/3784F2395k86HT10b3b0ege4cR36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQt9KRm5tO1q05zMwDk"><img alt="Find Affordable Gutter Guards Here" src="http://www.dietries.click/e035X23r95e7u_a11j3Vb10Ce4cO36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQt9KRm6A1gsK05dzOwD/cleverness-respective" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222_ Michelson Dr. Unit 222:ll2, lRVlNE, CaIifornia 926l2</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To halt messages, <a href="http://www.dietries.click/cleverness-respective/daa5v23i95miV8612Cr3b0fYve4cO36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQt9KRm5I1x0n6M0wMOD">Begin-Ahead-Here</a> </span></span>{{{http://www.dietries.click/cleverness-respective/daa5v23i95miV8612Cr3b0fYve4cO36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQt9KRm5I1x0n6M0wMOD</p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5844800,83114035</span></span></p>   
+ <img src="http://www.dietries.click/mentioning-Bourbaki/de64S2395Q85VJ11Y3bm11re4cn36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQt9KRm7O1RK0DX5rBw3D" alt=""/></body>
 </html>
 
-------=_Part_217_299734038.1664194078034--
+------=_Part_181_1293579037.1664197700427--
 
