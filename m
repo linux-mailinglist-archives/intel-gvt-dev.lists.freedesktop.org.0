@@ -2,41 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E6F2E5EA356
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 13:24:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1E535E9F0C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 12:18:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9B74510E358;
-	Mon, 26 Sep 2022 11:24:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4F8CE10E3DA;
+	Mon, 26 Sep 2022 10:18:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Mon, 26 Sep 2022 11:24:27 UTC
-Received: from mail.outsdie.click (unknown [64.64.109.49])
- by gabe.freedesktop.org (Postfix) with ESMTP id A1FF910E67C
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Mon, 26 Sep 2022 10:18:46 UTC
+Received: from mail.grantdies.monster (unknown [185.104.151.149])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3542510E3DA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 11:24:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outsdie.click;
+ Mon, 26 Sep 2022 10:18:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=grantdies.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ruth.eadie@outsdie.click; bh=L5O0N4nbQO9OHYVLiuRKO06k/D4=;
- b=iCUGO0I84yxvsoKfeCWVhdO4NJW2PSZwhO0AeVf3ofJcFdlc/S3NNNK6RiIbYlOgNosjwTg8xE7s
- EzZ3W5aq+HTF45WTXR3zyDz7GmI5BpeaYo8dyi1pDpiEfCEyPBZhqR9pO3gK03rE4EzZSQV6ynC9
- GTA9I57GXTm6GpX6M/8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outsdie.click;
- b=KkWCIsnaHXrU1aJmXB4ZZgIH16FbG6HSZ2yfDeswVso1Lno+PEmxE7hkSWzd6ZDwiVkvh6Mmosu3
- o61HZ0sne7HrAk6QAWoduc5WHXMr9NiBdpdjQsU5gB1pmraKS1tiu+xLwEOEhlagtHwp50/6oOGt
- Ti0P0R2FcBRtHdpRX+4=;
-Received: by mail.outsdie.click id h665um0001gd for
+ i=edna_beumer@grantdies.monster; 
+ bh=+05c6sDOknV/AnJwmq9WwR5AA9E=;
+ b=cYzGdErVTP2oJE9QcZDWx0w//PfNZ6O7SUy1Oib3it3/2Nc9cwojXF2MyMKHljwyb8rsb5erEpMa
+ DWcwDVJ3m6TiFUf0+B9igOLSuB4goIJtTxxPL5Ns15hdWkDPSNOYIlRl7Ajz74yvb8CVykaovyDA
+ L902SA8bYkDIBlpw3AE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=grantdies.monster; 
+ b=Oqaj8jiZgJZ7Uy3cnJpELVf0DoSXZ2FtZ81kuu/nWc1Lc/EOlycJ/B16k7kqWfbO8ZANfugSFfQ3
+ HuCMuGa8M8m0N1ztqRIRRsg4zZirNAgpuJBHj1IOEY1qis5ELBXMnZ0ueWgiHOE0diogurZdqgAv
+ t6qkYVJmo080VL7sZkE=;
+Received: by mail.grantdies.monster id h668qc0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 07:12:52 -0400 (envelope-from
- <ruth.eadie-intel+2Dgvt+2Ddev=lists.freedesktop.org@outsdie.click>)
-Date: Mon, 26 Sep 2022 07:12:52 -0400
-From: Ruth Eadie <ruth.eadie@outsdie.click>
+ Mon, 26 Sep 2022 07:36:51 -0400 (envelope-from
+ <edna_beumer-intel+2Dgvt+2Ddev=lists.freedesktop.org@grantdies.monster>)
+Date: Mon, 26 Sep 2022 07:36:51 -0400
+From: Edna Beumer <edna_beumer@grantdies.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Request Your Free Leaf-Filter Estimate. Save 10%
+Subject: Congratulations! You've won the Lowes Stanley Tool Set Giveaway
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_652_51898531.1664190751053"
-Message-ID: <0.0.0.49.1D8D198EBC7419E.65A7A9@mail.outsdie.click>
+ boundary="----=_Part_232_1111148774.1664186790457"
+Message-ID: <0.0.0.19.1D8D19C453F86FC.119361@mail.grantdies.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,27 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_652_51898531.1664190751053
+------=_Part_232_1111148774.1664186790457
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Request Your Free Leaf-Filter Estimate. Save 10%
+Congratulations! You've won the Lowes Stanley Tool Set Giveaway  intel-gvt-dev@lists.freedesktop.org
 
-
-Start Here & Never Clean Your Gutters Again : 
- http://www.outsdie.click/Dadaist-blissful/44a5N23j95a86Pg11J3b06RYe4aq36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQB9KQe7iMOQ10p5v@wlD
-
+Tap Here for the Lowes Stanley Tool Set Promotion-http://www.grantdies.monster/7cd5OL2395q8_6O12z3b0A2oQe49L36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQi9KQS7L1kCg0y5VPwDL/boustrophedonic-drifters
 
 
 
 
+96.  Mowat Avenue, Toronto.  ONT M4 K3 K1 Canada
 
-No longer wish to receive email notices from us?, Go.Here.Now : http://www.outsdie.click/11f6NmT2395l8Ji611d3b0p7De4ah36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQB9KQe5io10J5CBwDk/abatements-rawest
-Our notification was designated for intel-gvt-dev@lists.freedesktop.org
-2 Depot PIaza, Suite 401', Bedford_Hill_, New-York 1O5O7-
-2664912:7015368
+To put a stop to messages, Begin Here Now-http://www.grantdies.monster/conflicting-transit/e5e5P23g95W8w6l10H3b03Je49K36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQi9KQS7uy10wGw5QT3wD
 
-------=_Part_652_51898531.1664190751053
+Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org
+
+9710057,2173064
+
+------=_Part_232_1111148774.1664186790457
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,21 +82,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.outsdie.click/Celebes-concede/a264l2395FA8l610u3b06Ue4aP36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQB9KQe7yoQ1h0m6K1wDJk" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here & Never Clean Your Gutters Again</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><a href="http://www.outsdie.click/Celebes-concede/a264l2395FA8l610u3b06Ue4aP36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQB9KQe7yoQ1h0m6K1wDJk" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1316px;"><img alt="Tap Here for 10% plus $275 Off LeafFilter" src="http://www.outsdie.click/a614Y2395y7Xar10f3b08Ve4au36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQB9KQe7UBk1y0n5F2wPD/embezzle-videotapes" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1316px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make Haste! Promotion Ends in 2 Days.</span></span></p> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.grantdies.monster/c235t239V5w86CM12z3b0K2Mje49m36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQi9KQS7IH1r0gr5Kk3wD/recomputes-creaked" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Chosen, Tap Here</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.grantdies.monster/c235t239V5w86CM12z3b0K2Mje49m36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQi9KQS7IH1r0gr5Kk3wD/recomputes-creaked" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Tap Here for the Lowes Stanley Tool Set Promotion" src="http://www.grantdies.monster/8274i2395G7vaR10J3b04ge49H36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQi9KQS5Qvq105b@2wD/intemperate-colored" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Act Now! Promotion Comes to a Close in 5 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive email notices from us?,</span><a href="http://www.outsdie.click/astrology-hierarchy/8284v2395W8Aj612vl3b07Ike4ai36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQB9KQe7uvg1RB06Y13w2D" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Go.Here.Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">TWO Depot PLAZA, Ste 4O1, Bedford.Hills, NY 1O5O7</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-7da9ba59-7fff-11c7-c7fe-421b26678cc0"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2664912~7015368</span></span></p>   
- <img src="http://www.outsdie.click/4854b2395eP8H510v3b09me4aA36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQB9KQe6zY1UJ06bzJ@wD/astrology-hierarchy" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat_ AV, T0R0NT0 Ontario M4K 3KI CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put a stop to messages, <a href="http://www.grantdies.monster/alternates-absentee/e224S2395hw8i610a3b03oe49_36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQi9KQS7ESMqO106Y@@wkD">Begin Here Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6001775,2173064</span></span></p>   
+ <img src="http://www.grantdies.monster/6a16Mv239q5pO85V10H3b05ie49y36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQi9KQS5to1C06FLTUwD/enhancement-ragged" alt=""/></body>
 </html>
 
-------=_Part_652_51898531.1664190751053--
+------=_Part_232_1111148774.1664186790457--
 
