@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1E535E9F0C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 12:18:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AE8C5EA5D4
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Sep 2022 14:21:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4F8CE10E3DA;
-	Mon, 26 Sep 2022 10:18:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3EC0A10E694;
+	Mon, 26 Sep 2022 12:21:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Mon, 26 Sep 2022 10:18:46 UTC
-Received: from mail.grantdies.monster (unknown [185.104.151.149])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3542510E3DA
+X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
+ Mon, 26 Sep 2022 12:21:25 UTC
+Received: from mail.winksdie.click (unknown [209.142.103.43])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0CE2910E694
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 10:18:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=grantdies.monster;
+ Mon, 26 Sep 2022 12:21:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=winksdie.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=edna_beumer@grantdies.monster; 
- bh=+05c6sDOknV/AnJwmq9WwR5AA9E=;
- b=cYzGdErVTP2oJE9QcZDWx0w//PfNZ6O7SUy1Oib3it3/2Nc9cwojXF2MyMKHljwyb8rsb5erEpMa
- DWcwDVJ3m6TiFUf0+B9igOLSuB4goIJtTxxPL5Ns15hdWkDPSNOYIlRl7Ajz74yvb8CVykaovyDA
- L902SA8bYkDIBlpw3AE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=grantdies.monster; 
- b=Oqaj8jiZgJZ7Uy3cnJpELVf0DoSXZ2FtZ81kuu/nWc1Lc/EOlycJ/B16k7kqWfbO8ZANfugSFfQ3
- HuCMuGa8M8m0N1ztqRIRRsg4zZirNAgpuJBHj1IOEY1qis5ELBXMnZ0ueWgiHOE0diogurZdqgAv
- t6qkYVJmo080VL7sZkE=;
-Received: by mail.grantdies.monster id h668qc0001gu for
+ i=paula.korgie@winksdie.click; 
+ bh=0RXZcw+Zq/A3QL7DO9pCIUFYQ8I=;
+ b=KbqtM8OIXhrRDCgMqxg0nbYdp3LF07WiEhmbFMgpbKyc0LRZHEhzGbmOAxF4iedgCLlVEYhKuXsS
+ TC+oguiKAPPczX39jnRXfmMre1DORymkAxLUQVvM6GzPiF1M3sFOsg6rQuBwLhsPv31eC49HRIsK
+ oOZ7zNeLafNq+Tu+UZk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=winksdie.click;
+ b=MVwGZvxse891b/dUnttfuSNzZ1aZJl1Dr0xMrCTY6TgmqNTQ7ebhmj3ltioQk1ct/UeVbCutsOG1
+ wzeJQsMs0g8bEPpMFRt3NnYM6XiAkaukuyyNvG1uf1GFrN+W1E5PIVSI+LqGOTFZ5iQEjjvWk7FW
+ +/ZaJI5Tkgcx2CNX5B0=;
+Received: by mail.winksdie.click id h66cka0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 07:36:51 -0400 (envelope-from
- <edna_beumer-intel+2Dgvt+2Ddev=lists.freedesktop.org@grantdies.monster>)
-Date: Mon, 26 Sep 2022 07:36:51 -0400
-From: Edna Beumer <edna_beumer@grantdies.monster>
+ Mon, 26 Sep 2022 08:08:23 -0400 (envelope-from
+ <paula.korgie-intel+2Dgvt+2Ddev=lists.freedesktop.org@winksdie.click>)
+Date: Mon, 26 Sep 2022 08:08:23 -0400
+From: Paula Korgie <paula.korgie@winksdie.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations! You've won the Lowes Stanley Tool Set Giveaway
- intel-gvt-dev@lists.freedesktop.org
+Subject: Compare Life lnsurance Coverage Easily Online  #271125
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_232_1111148774.1664186790457"
-Message-ID: <0.0.0.19.1D8D19C453F86FC.119361@mail.grantdies.monster>
+ boundary="----=_Part_217_299734038.1664194078034"
+Message-ID: <0.0.0.17.1D8D1A0ACB70E00.289F6E@mail.winksdie.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +53,35 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_232_1111148774.1664186790457
+------=_Part_217_299734038.1664194078034
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations! You've won the Lowes Stanley Tool Set Giveaway  intel-gvt-dev@lists.freedesktop.org
+Compare Life lnsurance Coverage Easily Online  #271125
 
-Tap Here for the Lowes Stanley Tool Set Promotion-http://www.grantdies.monster/7cd5OL2395q8_6O12z3b0A2oQe49L36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQi9KQS7L1kCg0y5VPwDL/boustrophedonic-drifters
-
-
+Visit Here to Pick Your Coverage. http://www.winksdie.click/anhydrously-coprocessor/8aq4z2395K8BJ610w3b0ave4bk36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ.9KQK6ksY10Q6ROJWwD
 
 
-96.  Mowat Avenue, Toronto.  ONT M4 K3 K1 Canada
 
-To put a stop to messages, Begin Here Now-http://www.grantdies.monster/conflicting-transit/e5e5P23g95W8w6l10H3b03Je49K36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQi9KQS7uy10wGw5QT3wD
 
-Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org
 
-9710057,2173064
+Compare Online Here Before Fees Rise
 
-------=_Part_232_1111148774.1664186790457
+
+
+
+
+
+To cease messages, Click.Here.Now. http://www.winksdie.click/dare-tribes/3f05u2A395dZ86W11y3bo0bse4bZ36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ.9KQK7jZ1p0Lj5rWwDU
+
+This email content was delivered to intel-gvt-dev@lists.freedesktop.org
+
+Kalkofnnsvegur TWO Reykjavic, 
+CapitalRegion  1O1  Iselland
+
+5540613. 4384450
+
+------=_Part_217_299734038.1664194078034
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +90,31 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.grantdies.monster/c235t239V5w86CM12z3b0K2Mje49m36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQi9KQS7IH1r0gr5Kk3wD/recomputes-creaked" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Chosen, Tap Here</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.grantdies.monster/c235t239V5w86CM12z3b0K2Mje49m36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQi9KQS7IH1r0gr5Kk3wD/recomputes-creaked" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Tap Here for the Lowes Stanley Tool Set Promotion" src="http://www.grantdies.monster/8274i2395G7vaR10J3b04ge49H36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQi9KQS5Qvq105b@2wD/intemperate-colored" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Act Now! Promotion Comes to a Close in 5 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat_ AV, T0R0NT0 Ontario M4K 3KI CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put a stop to messages, <a href="http://www.grantdies.monster/alternates-absentee/e224S2395hw8i610a3b03oe49_36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQi9KQS7ESMqO106Y@@wkD">Begin Here Now</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6001775,2173064</span></span></p>   
- <img src="http://www.grantdies.monster/6a16Mv239q5pO85V10H3b05ie49y36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQi9KQS5to1C06FLTUwD/enhancement-ragged" alt=""/></body>
+  <div style="text-align: center;">
+   <a href="http://www.winksdie.click/b155Sr2395Uy8Z611I3b0alpe4bk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.9KQK6QW1A0k5eNjwD/laugh-upgrade" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Pick Your Coverage</span></a>
+   <br /> &nbsp;
+  </div> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><a href="http://www.winksdie.click/b155Sr2395Uy8Z611I3b0alpe4bk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.9KQK6QW1A0k5eNjwD/laugh-upgrade" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:540px;height:695px;"><img alt="Protect Your FamiIy's Future" src="http://www.winksdie.click/b336yt239B5m7aRr11BQ3b0che4bL36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ.9KQK7sxV1x0s6SWwljD/anhydrously-coprocessor" style="margin-left: 0px; margin-top: 0px; width: 540px; height: 695px;" /></span></span></a></span></p> 
+  <div style="text-align: center;">
+   &nbsp;
+  </div> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;">&nbsp;</p> 
+  <div style="text-align: center;">
+   <br /> 
+   <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:14px;"><a href="http://www.winksdie.click/b155Sr2395Uy8Z611I3b0alpe4bk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.9KQK6QW1A0k5eNjwD/laugh-upgrade"><strong><span style="font-size:16px;">Save Online Here Before Cost Increase</span></strong></a></span></span>
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp;
+  </div> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease messages,</span><a href="http://www.winksdie.click/laugh-upgrade/cf65t239G5N8R6_12Bg3b0bSre4bY36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ.9KQK7l10wUVr5qlOwD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click.Here.Now</span></a></span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email content was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Kalkophnsvegur TWO Reykjavic,<br /> Capital-Region&nbsp; I0I&nbsp; IS</span></span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5540613 4384450</span></span></span></p>   
+ <img src="http://www.winksdie.click/eb74N2395N8y5D12m3b0dyRre4bF36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ.9KQK5P1w0R5n1wDj/laugh-upgrade" alt=""/></body>
 </html>
 
-------=_Part_232_1111148774.1664186790457--
+------=_Part_217_299734038.1664194078034--
 
