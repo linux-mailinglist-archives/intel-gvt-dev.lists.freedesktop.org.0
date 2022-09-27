@@ -1,93 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 673195ECC30
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 20:35:01 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EFD545ECCC3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 21:19:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 29E0410E079;
-	Tue, 27 Sep 2022 18:34:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B9ABE10E067;
+	Tue, 27 Sep 2022 19:19:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 428 seconds by postgrey-1.36 at gabe;
- Tue, 27 Sep 2022 18:34:37 UTC
-Received: from esa.nitc.gov.np (mx1.nepal.gov.np [202.45.146.101])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4EB2010E079
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Tue, 27 Sep 2022 19:19:04 UTC
+Received: from mail.baresgroshes.click (unknown [213.209.159.48])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2C0F210E02B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 18:34:36 +0000 (UTC)
-IronPort-Data: A9a23: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
- XlhfjI6MIMpcYvai1zkpqQ=
-IronPort-HdrOrdr: A9a23:FIawL648IDiychA1bQPXwPjXdLJyesId70hD6qkRc20yTiT7//
- rCoB1/73PJYVkqOE3I9erwW5VoIkmskqKdg7NhWItKNTOO0ADDQuBfBO3Zsl/d8kbFh4pgPN
- JbAtND4arLfCJHZL7BkXGF+oEbsaC6GX+T6tvj8w==
-X-IronPort-AV: E=Sophos;i="5.93,350,1654539300"; d="scan'208,217";a="385335"
-X-IronPort-Outbreak-Status: No, level 0, Unknown - Unknown
-Received: from unknown (HELO mta1.nitc.local) ([10.5.24.15])
- by esa.nitc.gov.np with ESMTP; 28 Sep 2022 00:12:27 +0545
-Received: from mta1.nitc.local (localhost [127.0.0.1])
- by mta1.nitc.local (Postfix) with ESMTPS id 3EBEF421DFF3;
- Wed, 28 Sep 2022 00:12:26 +0545 (+0545)
-Received: from localhost (localhost [127.0.0.1])
- by mta1.nitc.local (Postfix) with ESMTP id 541A042266F6;
- Wed, 28 Sep 2022 00:12:25 +0545 (+0545)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mta1.nitc.local 541A042266F6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=moha.gov.np;
- s=smtp25; t=1664303245;
- bh=yWuwQ4U+izCl33y55wxHsbENksAI4ztovB6g2u8qaeE=;
- h=Date:From:Message-ID:MIME-Version;
- b=M5tye617D4lJ6qVoPb1dXRZ4fZF+xHdUDLVNRTI/m7C3uBr5wzL7YbtqUgFB4oUS+
- KqUrEZv0eXU44Vxm7N8chBUphvXRhynWGwBQYVS8Gf0zRlkuK4GvoAGIcB6tf6xrmB
- xzlzqCkXP08toy3T7V3OhuTS2NYEMkNDorI1JSnpVPwqawLfZ9/niQQ/X/+lE04WFf
- QP001bOqqKkb85z349zoBiSm3nBxL6u/N6UAQV4rCS12kUFAoX8++PQnfpimOwTO0i
- 5LCd1t9UYsbf5EfSmC+y81UyvJpLBB1tf68IITRwDYIuG/0g8klhRYQJAzptJVR+d/
- C05UeiAJzGqGg==
-X-Virus-Scanned: amavisd-new at mta1.nitc.local
-Received: from mta1.nitc.local ([127.0.0.1])
- by localhost (mta1.nitc.local [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id uidhDjrZCf7R; Wed, 28 Sep 2022 00:12:25 +0545 (+0545)
-Received: from store2.nitc.local (store2.nitc.local [10.5.24.20])
- by mta1.nitc.local (Postfix) with ESMTP id C0414421DFF1;
- Wed, 28 Sep 2022 00:12:21 +0545 (+0545)
-Date: Wed, 28 Sep 2022 00:12:20 +0545 (NPT)
-From: Rowell Hambrick <daosurkhet@moha.gov.np>
-Message-ID: <1756949283.943272.1664303240899.JavaMail.zimbra@moha.gov.np>
-Subject: 
+ Tue, 27 Sep 2022 19:19:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=baresgroshes.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=kathleen-dragoo@baresgroshes.click; 
+ bh=qu9jHAZ5J0iSj3XS2hatkUNoVxc=;
+ b=zcO3+yhMKq0PzIfv+GlgPDAOe7GR+0QHE5ovKm8aeK5JIOrUgvgY2lLXmAZn75RJ48+P/lJGq5cb
+ VJ9QI0MNbjRa/SOjZoTIllc7AYW5PJBjTUGxBH9eC5kfZk8WlU4t2X8EXmVqv+uH0NH0YnFv6JqE
+ x4hHhNQq2wZ1dHqwa3k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=baresgroshes.click; 
+ b=DdEowZb/8voXSbKQ67wSEx1Y5aGe0AUlX5Q3GfCHnyF52JzOqIB3A1SeMTlAcUsg5CN5Sc55qowj
+ UOHZqxPbMAjmP13MDn5EAcZHQpIXxv0rzCDinHIR9wHHQduvqvgmGWhkbURT7L+Alj8VhNlhyoiF
+ 1BJwKiKiCzpxYpYo15g=;
+Received: by mail.baresgroshes.click id h6dgsc0001gb for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 27 Sep 2022 16:38:23 -0400 (envelope-from
+ <kathleen-dragoo-intel+2Dgvt+2Ddev=lists.freedesktop.org@baresgroshes.click>)
+Date: Tue, 27 Sep 2022 16:38:23 -0400
+From: Kathleen Dragoo <kathleen-dragoo@baresgroshes.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Fall SAVINGS on Andersen.replacement windows      #92789409
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="=_85e4364c-7dfd-41c5-8710-d29b6d8deb8b"
-X-Originating-IP: [110.34.3.229]
-X-Mailer: Zimbra 8.8.15_GA_4372 (zclient/8.8.15_GA_4372)
-Thread-Index: 5u/UZeQzY/HJZIe4R2DSunNVE4JhDQ==
-Thread-Topic: 
+ boundary="----=_Part_511_1997403185.1664305690563"
+Message-ID: <0.0.0.38.1D8D2B116588184.8B8769@mail.baresgroshes.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,36 +51,60 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: rowellha0942@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=_85e4364c-7dfd-41c5-8710-d29b6d8deb8b
+------=_Part_511_1997403185.1664305690563
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Did you get my project
---=_85e4364c-7dfd-41c5-8710-d29b6d8deb8b
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Fall SAVINGS on Andersen.replacement windows 
 
-<html><head><style> body {height: 100%; color:#000000; font-size:12pt; font=
--family:arial, helvetica, sans-serif;}</style></head><body><div><div><div><=
-div><div><div><div><div><div><div><span style=3D"color: #000000; font-famil=
-y: arial, helvetica, sans-serif; font-size: 16px; font-style: normal; font-=
-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; let=
-ter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-=
-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit=
--text-stroke-width: 0px; background-color: #ffffff; text-decoration-thickne=
-ss: initial; text-decoration-style: initial; text-decoration-color: initial=
-; display: inline !important; float: none;" data-mce-style=3D"color: #00000=
-0; font-family: arial, helvetica, sans-serif; font-size: 16px; font-style: =
-normal; font-variant-ligatures: normal; font-variant-caps: normal; font-wei=
-ght: 400; letter-spacing: normal; orphans: 2; text-align: start; text-inden=
-t: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing:=
- 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decor=
-ation-thickness: initial; text-decoration-style: initial; text-decoration-c=
-olor: initial; display: inline !important; float: none;">Did you get my pro=
-ject</span></div></div></div></div></div></div></div></div></div></div></bo=
-dy></html>
---=_85e4364c-7dfd-41c5-8710-d29b6d8deb8b--
+Begin here for your window quote. http://www.baresgroshes.click/comparably-uncontrollability/Va84L2395Vy86L12UX3rb7aYe66B36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQT9KeR6eO1oM06G@2wlD
+
+
+
+
+
+
+
+2O4O_ Merick 
+RD. , # 4408.  Merick, 
+NEW YORK II566 
+U. S. A. 
+
+To sever email, Begin.Here.Now. http://www.baresgroshes.click/4a36J2W39N5hFU8612F3bq7Dbhe66M36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQT9KeR7Cw1m0HJ6pMPzwD/berries-Appalachia
+
+This notice was sent to intel-gvt-dev@lists.freedesktop.org
+
+9546976. 92789409
+
+------=_Part_511_1997403185.1664305690563
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span style="font-family:arial,helvetica,sans-serif; "><span style="font-size:16px; "><a href="http://www.baresgroshes.click/7734p2395GD86M10H3b79pe66l36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQT9KeR6ySDh106wjNPwD/bluff-invasions">Click here for Renewal by Andersen windows</a></span></span><br /> <br /> &Acirc;&nbsp; </p> 
+  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><a href="http://www.baresgroshes.click/3594f2395er86Y11X3Nb7aSe66X36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQT9KeR6t10SwK6FljwAD/roadside-Hiatt" style="text-decoration-line: none; "><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; "><span style="border:none; display:inline-block; overflow:hidden; width:475px; height:2048px; "><img alt="Affordable Renewal by Andersen Windows" src="http://www.baresgroshes.click/3d14O2395C7val12S3Xbw7cYe66w36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQT9KeR6HXN10Y6C0@wD0/berries-Appalachia" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 2589px; " title="Fall Window Special BOGO 40 + 
+ 200 " /></span></span></a></span></p> 
+  <div style="text-align: center; ">
+   <a href="http://www.baresgroshes.click/3594f2395er86Y11X3Nb7aSe66X36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQT9KeR6t10SwK6FljwAD/roadside-Hiatt" style="text-align: center; text-decoration-line: none; "><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; ">Begin here for your window quote</span></a>
+  </div> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &Acirc;&nbsp; 
+  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">2040'  Merick<br /> ROAD-, No.<br /> 408- Merick, NY.<br /> 11566&Acirc;&nbsp; </span></span><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">US</span></span></p> 
+  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">To sever email,</span><a href="http://www.baresgroshes.click/roadside-Hiatt/13e5y23y95Y86tq11RM3b7bIe66P36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQT9KeR6WIY1K06slwDWO" style="text-decoration-line: none; "><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; "> Begin.Here.Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">This notice was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">2766254 92789409</span></span></p>   
+ <img src="http://www.baresgroshes.click/4a34F2395hO85K12IO3b7tdOe66x36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQT9KeR7wz1B0MT5w1wlD/Ratfor-assonance" alt=""/></body>
+</html>
+
+------=_Part_511_1997403185.1664305690563--
+
