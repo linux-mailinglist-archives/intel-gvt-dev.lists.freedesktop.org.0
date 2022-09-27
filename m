@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A2A45EB55C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 01:17:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D2E75EB6C5
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 03:23:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E9A9710E81D;
-	Mon, 26 Sep 2022 23:17:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8423510E880;
+	Tue, 27 Sep 2022 01:23:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 26 Sep 2022 23:17:49 UTC
-Received: from mail.dieprints.click (unknown [213.209.159.30])
- by gabe.freedesktop.org (Postfix) with ESMTP id AC5AE10E817
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Tue, 27 Sep 2022 01:23:14 UTC
+Received: from mail.nimedies.click (unknown [172.99.175.221])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 273ED10E881
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 23:17:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dieprints.click; 
+ Tue, 27 Sep 2022 01:23:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nimedies.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=loretta-laude@dieprints.click; 
- bh=g3YAK3L/d+AWLIaoYH1CprlGJrY=;
- b=SoZveoU1y0coaDgqbgDDf7nqVW21xTN4ZPZETP5tVkbnbYXPxn9z3Am629p3ke74+EFCiyrgfDeG
- E98eKb2X86AmjCP8FGpQYPd/nsRLTaaCCWh5dWz8hxsW86GuewlcudC+ZJVkpqynZFtwkFczmog8
- 9jOMDDj0KPAnIqCy8KE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dieprints.click;
- b=KzVNtRaBFrdfGRzlxUIm/VXazdad5KTgsi+C1BbQnQm4RjgOf9VRITMjdjRYzekppjvjjitGYkgj
- 2jLt6X1+B5wjA0ga93gYhwc1s4LkGxKtpDoGzLYFe2F0AZk0sjMivoiZnBwoeZd8uzhIt+gC395c
- Qv78ODH6q4UZ+bL09NY=;
-Received: by mail.dieprints.click id h68phq0001gs for
+ i=ruth.thatch@nimedies.click; bh=bg/rl0iIPKHlymeWh++9pyF8gBM=;
+ b=RmGSptS2VQyjonMRClQ/FoYBK0Yz08ba2IDPgEp/zc0h1emh1GezQNw5deDM2dfdY7IGCZ+6oOra
+ Yjcy0jgzjGRUR6cuBQO1Mh97wCO3/YXdO5lcqnCEpUT5EnjD87XINTgE2kDbkTm/xo57wWknYMwO
+ fVKV64GY6pBqt35IE08=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nimedies.click;
+ b=sEEZ48V9r087qafPBJGOG1xX8llgvO1ojjIjOeCuagnbzIcJvA/aFIRlvIGk5rvRJPO9RKfYVrbc
+ K4wyscGzBGNQO5jdakcsXG1euu/xhBeb45n9BOSn4i8KdW4ouH4IFAkX8xmv572Q0qxcdPJrFZ/4
+ WfrsOag/pYhA5QsIHSQ=;
+Received: by mail.nimedies.click id h698840001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Sep 2022 19:07:53 -0400 (envelope-from
- <loretta-laude-intel+2Dgvt+2Ddev=lists.freedesktop.org@dieprints.click>)
-Date: Mon, 26 Sep 2022 19:07:53 -0400
-From: Loretta Laude <loretta-laude@dieprints.click>
+ Mon, 26 Sep 2022 21:09:09 -0400 (envelope-from
+ <ruth.thatch-intel+2Dgvt+2Ddev=lists.freedesktop.org@nimedies.click>)
+Date: Mon, 26 Sep 2022 21:09:09 -0400
+From: Ruth Thatch <ruth.thatch@nimedies.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don' let anyone take away your rights. Get your CCW Now
+Subject: Stanley 170 pc Tool Set Giveaway sponsored by Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_532_2087206183.1664233659281"
-Message-ID: <0.0.0.3B.1D8D1FCCE658FCA.22EEBB@mail.dieprints.click>
+ boundary="----=_Part_328_737495274.1664240940040"
+Message-ID: <0.0.0.25.1D8D20DBF3BF514.6C861E@mail.nimedies.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +53,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_532_2087206183.1664233659281
+------=_Part_328_737495274.1664240940040
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Don' let anyone take away your rights. Get your CCW Now
+Stanley 170 pc Tool Set Giveaway sponsored by Lowes  intel-gvt-dev@lists.freedesktop.org
 
-
-Click Here for your CCW Permit Online 50% Off:http://www.dieprints.click/b336Yzp2395K86Fl12C3PIb3ble56C36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQV9KSm5P10IC5jA@wD/transfers-daughterly
-
-Make It Snappy! Deal Goes Away in 5 Days. 
+Go Here to give your input about Lowes. http://www.nimedies.click/cd74b2395uYx8610g3b40Qe58q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQX9KSd7IHwV1U05CAwDp/preeminence-follies
 
 
 
 
-112O1 NO.  TATUM BLVD.  No.  3OO- # 68200-, Phoenix- ARIZ0NA  85O28'
-To refrain from messages, Get.Started.Here:http://www.dieprints.click/transfers-daughterly/7566R2lU395hj86J12u3UPb39ke56O36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQV9KSm5qW1D05EllwD
-This e-mail was designated for intel-gvt-dev@lists.freedesktop.org
-8694401:86417897
+96.  MOWAT' Av. , T0R0NT0 Ontario M4K 3Kl Canada
 
-------=_Part_532_2087206183.1664233659281
+To get rid of notifications, Continue_Over_Here. http://www.nimedies.click/periscope-Halstead/f306AZ23X95B8OY610s3b41xe58z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQX9KSd6S1YhO05zXBwD
+
+Our e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org
+
+56631596~1352188
+
+------=_Part_328_737495274.1664240940040
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,17 +81,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><a href="http://www.dieprints.click/epitaphs-protesting/b524G2395tJ86N10m3b38te56A36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQV9KSm6h1BrN06lMpwDT" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for your CCW Permit Online 50% Off</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:660px;"><a href="http://www.dieprints.click/epitaphs-protesting/b524G2395tJ86N10m3b38te56A36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQV9KSm6h1BrN06lMpwDT"><img alt="Click Here for your CCW Permit Online Now 50% Off" src="http://www.dieprints.click/transfers-daughterly/c6k4W2395i7FJa10p3b3aAe56v36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQV9KSm7EY1S0VR6pPw1pD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 660px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-family: Arial; font-size: 18.6667px; font-weight: 700; white-space: pre-wrap;">Move Quickly! 50% Price Reduction Is Over in 5 Days.</span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.nimedies.click/4a35I23n95Sk8g610z3b40qe58j36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQX9KSd5U10Wp5b20wD/metaphorical-switchblade" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to give your review of Lowes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.nimedies.click/4a35I23n95Sk8g610z3b40qe58j36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQX9KSd5U10Wp5b20wD/metaphorical-switchblade" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Go Here to give your input about Lowes" src="http://www.nimedies.click/8454m2395f7aWq11t3b42Pme58i36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQX9KSd5d10Op6cMllwD/metaphorical-switchblade" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hustle! Deal Runs Out in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:14px;">112O1. N TATUM- BLVD. SUITE 300. No. 682OO, Phoenix_ ARIZ0NA&nbsp; 85O28.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To refrain from messages,<a href="http://www.dieprints.click/5b14J2395hr8N610E3b39qe56o36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQV9KSm6SJUm105Q@jwD/Bienville-chemists"> Get.Started.Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-baab637d-7fff-1b10-e035-ac470e39d95d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8694401-86417897</span></span></p>   
- <img src="http://www.dieprints.click/b514z2395s85su11Y3b3vcVe56M36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQV9KSm6IZ1S0r6J@wlBD/transfers-daughterly" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat_ AVE, Toronto_ ONT. M4 K3 K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To get rid of notifications, <a href="http://www.nimedies.click/9176zk23w95G86hG12K3Ab41hhe58r36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQX9KSd7MpFH10p5olwD2/nasty-trudged">Continue_Over_Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">24199041~1352188</span></span></p>   
+ <img src="http://www.nimedies.click/metaphorical-switchblade/7b04S2395Gou8512gw3bD43Me58X36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQX9KSd7Ozq10IN6FWOwDW" alt=""/></body>
 </html>
 
-------=_Part_532_2087206183.1664233659281--
+------=_Part_328_737495274.1664240940040--
 
