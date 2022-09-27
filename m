@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6358D5EB929
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 06:22:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7919F5EB985
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 07:22:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6CB3510E8BE;
-	Tue, 27 Sep 2022 04:22:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2F43310E433;
+	Tue, 27 Sep 2022 05:22:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Tue, 27 Sep 2022 04:22:35 UTC
-Received: from mail.earndies.click (p2s5p6.tk [64.64.109.164])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8196E10E8B5
+X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
+ Tue, 27 Sep 2022 05:22:05 UTC
+Received: from mail.yeardie.click (unknown [209.142.103.248])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DF9A410E41D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 04:22:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=earndies.click; 
+ Tue, 27 Sep 2022 05:22:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yeardie.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=denoble_alisha@earndies.click; 
- bh=1dDT0h+izmqJfv+xNpZyzO/t1m0=;
- b=qcXhVdMVOthhuuAeTbrSnjai+vJDCNXIl3UyiRJBc+C7vCZZQqb5assBLvQwPjx6Qyku0zoUk3xY
- P4CH2ekP5KTMBnkkJciDT4uzXfX6j5xABZUKYlzcc3rwPWHdrT1l3//GkN3E5mAaaeLaNbrmnHnn
- RZLJ/vfoO5jloEjKQYE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=earndies.click;
- b=fbJsFoCCm1qs5ESQpvNjcFqn4Fkd3ifIDVuxF0OWABWSIKDgT1aW4bzu5obO8JCTIQx4P4dMLl0D
- MdT5Zo1+AIihGo3vwjhLLrLuyfQIYbdMatPvbzPY+hD8/SQCGjvRELwH2+JRUZThfLw4eE61X4j6
- o0v5RF9tOqgHY64J+G0=;
-Received: by mail.earndies.click id h69t8m0001gc for
+ i=alexandria-amy@yeardie.click; 
+ bh=+f1A9VWHq8hBN+Mj8hdQnWXG35A=;
+ b=ftLjVKMlVs/3w6hHXNoKTsbAVn8VVMBZ/zgmXC7/4lO2x83Tj8ffaTUtLwMaj0UZLtquzRGRmHrN
+ LAQ/lFtg/s4y3FgPcYN7f3y/5v8BCWbGh015FcSqRQlqN2QJNq6Ms1W9anC9Gqh7oXvMKIM2yDyb
+ 1a3iPO6igYj1ZIisp5M=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yeardie.click;
+ b=snzBiEw4CplINTX1cw/KjtDvXGlANIU/P0gXuSfeghe4J01UvS7f3siDa0frRXPrLH4hqRkrlTgU
+ A0cbI4S4GwbFV2z7/fwRIQm9AAUlFuZmb3LNElQVEHKQJAyc9iiYMPUYuZ9u5YfRmc9RykVaTG4d
+ 9v4QhBYSk3BzM8Oexbs=;
+Received: by mail.yeardie.click id h6aepo0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 00:11:15 -0400 (envelope-from
- <denoble_alisha-intel+2Dgvt+2Ddev=lists.freedesktop.org@earndies.click>)
-Date: Tue, 27 Sep 2022 00:11:15 -0400
-From: Alisha Denoble <denoble_alisha@earndies.click>
+ Tue, 27 Sep 2022 02:39:23 -0400 (envelope-from
+ <alexandria-amy-intel+2Dgvt+2Ddev=lists.freedesktop.org@yeardie.click>)
+Date: Tue, 27 Sep 2022 02:39:23 -0400
+From: Alexandria Amy <alexandria-amy@yeardie.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The Simple Way to Clean Your CPAP in 30 min
+Subject: You may receive Lowes Rewards up to $100  #23290610
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_487_322501044.1664251865043"
-Message-ID: <0.0.0.36.1D8D2273017D956.7E4A3F@mail.earndies.click>
+ boundary="----=_Part_313_847419044.1664255336430"
+Message-ID: <0.0.0.22.1D8D23BE17E7B32.63734B@mail.yeardie.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_487_322501044.1664251865043
+------=_Part_313_847419044.1664255336430
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-The Easy Way to Clean Your CPAP with 1 Button
+You may receive Lowes Rewards up to $100 
+
+Visit Here to Take the Input Survey .  www. rg5dxbl. com/4J58SX/S44MXX/?sub1=GNCB
+
+Lose No Time! Sale Ends in 2 Days.
 
 
-The Simple Way to Clean Your CPAP in 30 minBegin_Here http://www.earndies.click/31d6FI2t395Q8V6U12q3Nb4obse5bT36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQF9KSQ6S1F0So5uW@wD/showcase-Saigon
 
 
 
+This e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org
 
-To change your subscription options, Come Here http://www.earndies.click/6474v2395R8tG612eq3b4cYSe5bO36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQF9KSQ6nxU1t06z1wDOy/scheduler-integrations
+126' East  23rd ST NEW-YORK New York IOOIO US.  
 
-POST OFFICE Box No.  4077.  BROADLANDS Virginia 2O148' US
+No longer want to receive communication?, Get.Started.Here .  http://www.yeardie.click/instructors-sympathy/7566MHV2395C86pN11t3b5Q0je5cF36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQF9KSR7aB1Cj0x5WMwDB
 
-Our communication was directed to intel-gvt-dev@lists.freedesktop.org
+59950962. 23290610
 
-9511936 9897760
-
-------=_Part_487_322501044.1664251865043
+------=_Part_313_847419044.1664255336430
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,24 +84,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><a href="http://www.yeardie.click/22d6y2w39i5NC8t612Po3bn4fKe5cF36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQF9KSR7BlLU10S5g@w1D/reliever-legend" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for your Ace vs Home Depot Reward</span></a></span><br /> &nbsp;</p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><a href="http://www.yeardie.click/22d6y2w39i5NC8t612Po3bn4fKe5cF36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQF9KSR7BlLU10S5g@w1D/reliever-legend" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:950px;"><img alt="Visit Here to Take the Input Survey" src="http://www.yeardie.click/interdependencies-Mouthe/b166r239SK5H7OaW12Q3ob5O1Te5cH36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQF9KSR6D1mp0L5pOwUD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 950px;" /></span></span></a></span></p> 
   <div style="text-align: center;">
-   <br /> 
-   <a href="http://www.earndies.click/6bf5t23K95Rwh8610r3b4bne5bK36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQF9KSQ6Sh10Cv6m2XwDL/surmounted-redressing"><img alt="Sanitize Your CPAP in 30 minutes" src="http://www.earndies.click/8bd4g2395Mk7Aa11X3bC4dIe5bk36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQF9KSQ6iOj10H6NNXwyD/showcase-Saigon" style="width: 450px; height: 1139px;" /></a>
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your subscription options, <a href="http://www.earndies.click/surmounted-redressing/3966F2W39Y5H86Ji10w3b4cWe5bB36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQF9KSQ5SX1g05h1wXD">Come Here</a></span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P.O. Box NO. 4077. BROADLANDS VlRGINIA 20148' USA</span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3564727.9897760</span></span></p> 
-  </div>   
- <img src="http://www.earndies.click/ed55Q2S395F_85I11n3bp4eCe5bA36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQF9KSQ5Lj10V6STzwlD/replicated-confinements" alt=""/></body>
+   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Lose No Time! Sale Ends in 2 Days.</span></span>
+  </div> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l26' EAST&nbsp; 23RD Street NEW.YORK NY. 10010 U.S.A.&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive communication?, </span><a href="http://www.yeardie.click/instructors-sympathy/12N6GZ239x5wFG8611W3Bb50De5cl36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQF9KSR5zZD105m01wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Get.Started.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3634009~23290610</span></span></p>   
+ <img src="http://www.yeardie.click/reliever-legend/d8c5k2Z395W85iz12Au3ob52me5cA36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQF9KSR5fj10O5z@0wD" alt=""/></body>
 </html>
 
-------=_Part_487_322501044.1664251865043--
+------=_Part_313_847419044.1664255336430--
 
