@@ -1,43 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7919F5EB985
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 07:22:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E941E5EBFA4
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Sep 2022 12:23:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2F43310E433;
-	Tue, 27 Sep 2022 05:22:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B874910E8D6;
+	Tue, 27 Sep 2022 10:23:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
- Tue, 27 Sep 2022 05:22:05 UTC
-Received: from mail.yeardie.click (unknown [209.142.103.248])
- by gabe.freedesktop.org (Postfix) with ESMTP id DF9A410E41D
+X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
+ Tue, 27 Sep 2022 10:23:29 UTC
+Received: from mail.capzshirts.monster (vkw46.tk [64.64.109.123])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 37BE710E3E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 05:22:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yeardie.click;
+ Tue, 27 Sep 2022 10:23:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=capzshirts.monster; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=alexandria-amy@yeardie.click; 
- bh=+f1A9VWHq8hBN+Mj8hdQnWXG35A=;
- b=ftLjVKMlVs/3w6hHXNoKTsbAVn8VVMBZ/zgmXC7/4lO2x83Tj8ffaTUtLwMaj0UZLtquzRGRmHrN
- LAQ/lFtg/s4y3FgPcYN7f3y/5v8BCWbGh015FcSqRQlqN2QJNq6Ms1W9anC9Gqh7oXvMKIM2yDyb
- 1a3iPO6igYj1ZIisp5M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yeardie.click;
- b=snzBiEw4CplINTX1cw/KjtDvXGlANIU/P0gXuSfeghe4J01UvS7f3siDa0frRXPrLH4hqRkrlTgU
- A0cbI4S4GwbFV2z7/fwRIQm9AAUlFuZmb3LNElQVEHKQJAyc9iiYMPUYuZ9u5YfRmc9RykVaTG4d
- 9v4QhBYSk3BzM8Oexbs=;
-Received: by mail.yeardie.click id h6aepo0001g3 for
+ i=staenglen_angelina@capzshirts.monster; 
+ bh=mgQ/yTuEsCyvPd4F4CBYP5ArrjU=;
+ b=V4kLEYCbiUHIwRMm+CFpSJZw9h2WRDThQn7Y3LwrLQZlYTfcP5H0E+HMrkpMTGTyjoDinmoDo/Pp
+ 1Agc4SvkYt+Bkqj6EaMG+n9RxT63eBLr3GD5ozgvIrouNCjpxqj0TAeiSAVENtTQc/xVMK+6jC3O
+ 7XcKnjkHg5ijsQPyM/U=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=capzshirts.monster; 
+ b=xF/72x1+aEe4tuOX52KvquBW6e4frtJHvrI3gKzyjlwjm/tmQnBTQLmrSDEDE41eHqySdpuZPNgw
+ qz/+NVRuDgLKeryhdES+mEpr3JP85HVE+wqqyCdA7XsnYxsHXJ+/hLXcGFxblkgB6odVU7ax3SDL
+ htDd3HszAp+L++Loc2Y=;
+Received: by mail.capzshirts.monster id h6b7i20001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 02:39:23 -0400 (envelope-from
- <alexandria-amy-intel+2Dgvt+2Ddev=lists.freedesktop.org@yeardie.click>)
-Date: Tue, 27 Sep 2022 02:39:23 -0400
-From: Alexandria Amy <alexandria-amy@yeardie.click>
+ Tue, 27 Sep 2022 06:13:03 -0400 (envelope-from
+ <staenglen_angelina-intel+2Dgvt+2Ddev=lists.freedesktop.org@capzshirts.monster>)
+Date: Tue, 27 Sep 2022 06:13:03 -0400
+From: Angelina Staenglen <staenglen_angelina@capzshirts.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You may receive Lowes Rewards up to $100  #23290610
+Subject: Congratulations,
+ You've been Chosen  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_313_847419044.1664255336430"
-Message-ID: <0.0.0.22.1D8D23BE17E7B32.63734B@mail.yeardie.click>
+ boundary="----=_Part_703_650174707.1664273570339"
+Message-ID: <0.0.0.4E.1D8D259BADC8578.6AE614@mail.capzshirts.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,29 +55,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_313_847419044.1664255336430
+------=_Part_703_650174707.1664273570339
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-You may receive Lowes Rewards up to $100 
+Congratulations, You've been Chosen  intel-gvt-dev@lists.freedesktop.org
 
-Visit Here to Take the Input Survey .  www. rg5dxbl. com/4J58SX/S44MXX/?sub1=GNCB
-
-Lose No Time! Sale Ends in 2 Days.
+Begin Here for a Stanley 170 pc Tool Set from Lowes_http://www.capzshirts.monster/incomparably-pusher/1984i2395fl8Z610H3b53ke5dp36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQI9KSS7r10DiIA6NAw0lD
 
 
 
 
+-96 Mowat AV, Toronto.  Ontario M4K 3KI CA
 
-This e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org
+To modify your subscription preferences, Begin Here Now_http://www.capzshirts.monster/postdoctoral-Gemma/2a64u2395X86DD12O3b5m4wxe5di36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQI9KSS5rR10K5gNwXD
 
-126' East  23rd ST NEW-YORK New York IOOIO US.  
+Our e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org
 
-No longer want to receive communication?, Get.Started.Here .  http://www.yeardie.click/instructors-sympathy/7566MHV2395C86pN11t3b5Q0je5cF36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQF9KSR7aB1Cj0x5WMwDB
+7976038-16369137
 
-59950962. 23290610
-
-------=_Part_313_847419044.1664255336430
+------=_Part_703_650174707.1664273570339
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -84,19 +83,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><a href="http://www.yeardie.click/22d6y2w39i5NC8t612Po3bn4fKe5cF36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQF9KSR7BlLU10S5g@w1D/reliever-legend" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for your Ace vs Home Depot Reward</span></a></span><br /> &nbsp;</p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><a href="http://www.yeardie.click/22d6y2w39i5NC8t612Po3bn4fKe5cF36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQF9KSR7BlLU10S5g@w1D/reliever-legend" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:950px;"><img alt="Visit Here to Take the Input Survey" src="http://www.yeardie.click/interdependencies-Mouthe/b166r239SK5H7OaW12Q3ob5O1Te5cH36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQF9KSR6D1mp0L5pOwUD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 950px;" /></span></span></a></span></p> 
-  <div style="text-align: center;">
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Lose No Time! Sale Ends in 2 Days.</span></span>
-  </div> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.capzshirts.monster/1d36Q2A3J95wDU8611G3Cb53ve5dy36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQI9KSS6zS10qp6n2yAwD/regression-muster" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the Lowes Offer</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.capzshirts.monster/1d36Q2A3J95wDU8611G3Cb53ve5dy36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQI9KSS6zS10qp6n2yAwD/regression-muster" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Begin Here for a Stanley 170 pc Tool Set from Lowes" src="http://www.capzshirts.monster/3595d239Y5cYF7a11ry3b55Ae5dm36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQI9KSS7m1AMp0j5OqwDP/mental-caps" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Don't Wait! Exclusive Offer Comes to a Close in 5 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l26' EAST&nbsp; 23RD Street NEW.YORK NY. 10010 U.S.A.&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive communication?, </span><a href="http://www.yeardie.click/instructors-sympathy/12N6GZ239x5wFG8611W3Bb50De5cl36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQF9KSR5zZD105m01wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Get.Started.Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b4bb5104-7fff-904c-e013-ed1c6ba07025"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3634009~23290610</span></span></p>   
- <img src="http://www.yeardie.click/reliever-legend/d8c5k2Z395W85iz12Au3ob52me5cA36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQF9KSR5fj10O5z@0wD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat- Av, Toronto' Ont M4K3K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your subscription preferences, <a href="http://www.capzshirts.monster/3d15s2G395JUn8611l3b_54Oe5dO36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQI9KSS5r10iI6uAwDly/postdoctoral-Gemma">Begin Here Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8577271~16369137</span></span></p>   
+ <img src="http://www.capzshirts.monster/7af6Ml23_95S8m5M12W3by56zPe5dm36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQI9KSS6JKnF105EWwPD/decks-leakages" alt=""/></body>
 </html>
 
-------=_Part_313_847419044.1664255336430--
+------=_Part_703_650174707.1664273570339--
 
