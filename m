@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98BC95ED0E3
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 01:16:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED2B15ED196
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 02:18:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 273EE10E17D;
-	Tue, 27 Sep 2022 23:16:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A364D10E1E5;
+	Wed, 28 Sep 2022 00:18:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 27 Sep 2022 23:16:47 UTC
-Received: from mail.baredgrunt.click (unknown [213.209.159.247])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1982C10E17D
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 28 Sep 2022 00:18:25 UTC
+Received: from mail.outerbulbz.click (unknown [209.142.103.163])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4831B10E1EB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 23:16:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=baredgrunt.click;
+ Wed, 28 Sep 2022 00:18:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outerbulbz.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=josephine.maben@baredgrunt.click; 
- bh=76ZCE9JgZWur+LwsmZ3nGci9d9s=;
- b=Ntr0bAeWbtWOnQTQkfyA3eRe3qUysknZtPD8DnDqtE9RMfxF1nOid1Tw1Uk8HQvM5HnfSKgVf3sD
- dRBYkdXMo2AfVpg/0L2oDzksEw1NZ35HUjI60S2EBqlWaH3OVboHt3kUbZw4Fw1km+4FtgBsEcNM
- GIqjDBX1YstCdlrkKAo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=baredgrunt.click;
- b=hsFQ60w/aY88V1dROscrg4Y/dBwR9ek2ZwATR1bP1YraJhFlpTI9LJAcHytil7hnXtTge68NK2+M
- PHZfbXvieYSoTigKpDlH3/8wNEZKHPp+LoDcO6z0UrEwQN4XSXrGP+hgZ4UTTz9NmjVg+RYIOF4V
- nVScYS/s36Hhd8ETvfQ=;
-Received: by mail.baredgrunt.click id h6e25u0001gh for
+ i=megan.buron@outerbulbz.click; 
+ bh=xYzEQW4gUh2mBf9OfmRRB968Lxo=;
+ b=Twl+hP/sITgSdk11rhE0k1cIH2m0qWfYv+WDDbunRJammKFNxF1+gHvy2UNQu7ex/2cxqxXtzfO9
+ S7HcPljrUdVHAbvDhAaQgesx++VNu0uDRr1YNgdtE9SVpTYFSQvly/20wYrfQEatgd7sPqOyvs18
+ QRulHmIrBp0PH92OUdg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outerbulbz.click;
+ b=jOoN/tEojX0jxHfqhR4nRZiR52p0B4CrMz77qe1ywFqVY901rw97hRq6afJyuA7Js76Q3DfjOEQn
+ snu2+Koi5xOGE/d2jtgG8XWkH23x09SG5Xd5BANJr4NWVm/BWhYZ+XreYsoJYZjTyaleVunJIbvC
+ h8Zv2ipvRVX0wGGh6c0=;
+Received: by mail.outerbulbz.click id h6e9d20001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 19:05:22 -0400 (envelope-from
- <josephine.maben-intel+2Dgvt+2Ddev=lists.freedesktop.org@baredgrunt.click>)
-Date: Tue, 27 Sep 2022 19:05:22 -0400
-From: Josephine Maben <josephine.maben@baredgrunt.click>
+ Tue, 27 Sep 2022 20:07:18 -0400 (envelope-from
+ <megan.buron-intel+2Dgvt+2Ddev=lists.freedesktop.org@outerbulbz.click>)
+Date: Tue, 27 Sep 2022 20:07:18 -0400
+From: Megan Buron <megan.buron@outerbulbz.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We want your feedback. Home Depot intel-gvt-dev@lists.freedesktop.org
+Subject: Complete your bathroom remodel before the holidays  #408567
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_172_1530157952.1664319911837"
-Message-ID: <0.0.0.13.1D8D2C59EB267B6.721E3@mail.baredgrunt.click>
+ boundary="----=_Part_535_1198931288.1664323632874"
+Message-ID: <0.0.0.3A.1D8D2CE45B0EDDC.433852@mail.outerbulbz.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,28 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_172_1530157952.1664319911837
+------=_Part_535_1198931288.1664323632874
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-We want your feedback. Home Depot  intel-gvt-dev@lists.freedesktop.org
+Complete your bathroom remodel before the holidays  #633072
 
-Begin Here to Start the Reward Survey:http://www.baredgrunt.click/ticklish-structural/8aM5j239N5k8v6H10Q3b8age6aV36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQI9KKm5M1s0y5a@jwD
-
-Hurry Up! Offer Becomes Void in 4 Days. 
+Start Here to find Top-Rated Remodelers near you Now. http://www.outerbulbz.click/paleness-fighter/7385Qr2395zj86N12L3b8YjePe6bm36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQy9KKn7E1yq0Ux6f@w@DU
 
 
 
 
 
+No longer wish to receive messages?, Go Ahead Here. http://www.outerbulbz.click/8634b2395IPk8611C3b8Jfve6bk36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQy9KKn5u1A0o5QpqwD/greenery-reference
 
-To put a stop to your subscription, Continue This Way:http://www.baredgrunt.click/d314L2395wX86q12q3bi8ybNe6aC36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQI9KKm5G1F0q5cJwkD/Maryland-cutaneous
-Our email message was delivered to intel-gvt-dev@lists.freedesktop.org
-96 Mowat AV, Toronto_ Ont 
-M4K3KI CANADA
-43573577:1174111
+This e-mail content was delivered to intel-gvt-dev@lists.freedesktop.org
 
-------=_Part_172_1530157952.1664319911837
+547755. 408567
+
+I6I92- Coastal' Highway', 
+Lewes', Del.  19958'
+{{US|USA|US. |U. S. A. |UNITED STATES|United States}
+
+------=_Part_535_1198931288.1664323632874
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,10 +84,10 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><a href="http://www.baredgrunt.click/mantle-personages/9185t2K395u8Um611NA3b8aYe6au36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQI9KKm6I10mAx5tMwpD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Start the Reward Survey</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><a href="http://www.baredgrunt.click/mantle-personages/9185t2K395u8Um611NA3b8aYe6au36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQI9KKm6I10mAx5tMwpD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:901px;"><img alt="Your Chance for a Craftsman Tool Cabinet Here" src="http://www.baredgrunt.click/e3f5Q23L95t_M7a11Xp3b8cNe6ao36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQI9KKm6I1M0qN6SAlXwD/packets-Virgil" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 901px;" /></span></span></a></span><br /> <br /> &nbsp;</
- p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><a href="http://www.baredgrunt.click/mantle-personages/9185t2K395u8Um611NA3b8aYe6au36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQI9KKm6I10mAx5tMwpD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Shake a Leg! Exclusive Offer Expires in 4 Days.</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><a href="http://www.outerbulbz.click/c236l2V39l5UMV8610f3b8eqe6bA36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQy9KKn7Czh10KM5KXwzD/beautifully-escapees" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to find Top-Rated Remodelers near you Now</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><a href="http://www.outerbulbz.click/c236l2V39l5UMV8610f3b8eqe6bA36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQy9KKn7Czh10KM5KXwzD/beautifully-escapees" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:595px;height:910px;"><img alt="What will your new bathroom look like?" src="http://www.outerbulbz.click/abb4A2395bR7Oa10k3b90We6bp36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQy9KKn5e1W0N5F@wzD/heterogeneity-eyer" style="margin-left: 0px; margin-top: 0px; width: 595px; height: 910px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
@@ -95,12 +96,13 @@ Content-Transfer-Encoding: 7bit
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put a stop to your subscription, </span><a href="http://www.baredgrunt.click/Melissa-cathode/6484c2395OuA8612K3Ob8Rbxe6aq36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQI9KKm5zQH105Q3wAD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue This Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat. Av., T0R0NT0 Ont.<br /> M4K3KI Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">43573577~1174111</span></span></p>   
- <img src="http://www.baredgrunt.click/blasters-postulate/f304Q2395p85hT10X3b8d_e6av36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQI9KKm5F10VP6j@zwDk" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive messages?, </span><a href="http://www.outerbulbz.click/discounts-thoughtfully/bca4H2395yrz8612Xn3bD8fRe6bs36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQy9KKn6DnX10V5c0wD@" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Ahead Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">633072:408567</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I6I92' Coastal_ HIGHWAY, Lewes', Del 19958_</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">{{US|USA|US.|U.S.A.|UNITED STATES|United States}</span></span></p>   
+ <img src="http://www.outerbulbz.click/ushered-densely/ada6U23S9O5H8l5_11z3b9g1qe6bQ36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQy9KKn5DL1y06J@wDNk" alt=""/></body>
 </html>
 
-------=_Part_172_1530157952.1664319911837--
+------=_Part_535_1198931288.1664323632874--
 
