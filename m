@@ -2,41 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0B135EDD9C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 15:23:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 030315EDEA9
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 16:21:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6480F10E791;
-	Wed, 28 Sep 2022 13:23:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3074210E859;
+	Wed, 28 Sep 2022 14:21:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Wed, 28 Sep 2022 13:23:02 UTC
-Received: from mail.satearl.click (rtms044.tk [64.64.109.63])
- by gabe.freedesktop.org (Postfix) with ESMTP id 701DA10E78B
+X-Greylist: delayed 433 seconds by postgrey-1.36 at gabe;
+ Wed, 28 Sep 2022 14:21:49 UTC
+Received: from mail.ratesats.click (sr126.tk [64.64.109.243])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4D7CA10E859
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 13:23:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=satearl.click;
+ Wed, 28 Sep 2022 14:21:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ratesats.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lynne_koppel@satearl.click; bh=lvO3kqGtWwyqbIbAi7INuR+f33k=;
- b=J0Zph65VZ+ZF96o6d8JqgJmZtAOeK2K2N5oeG1fA+yeQu/6F3uAzDkZ03OUtcZb0NbxrnI5NFtCF
- fOGHLZFffLZXEw1wxIvv6IeIAI4EQUdM/kZMRgfPu4l5EtS4arY3Zn5wx/94e8NmEhiuYvHlr9VT
- GPwyvePw+/4HGH/A8B4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=satearl.click;
- b=ba4VAlZ7pelV8U811ItARkbpf+0TenlLu8wrhiaV+Y+zuL+XWRN+EI/YhbCWaMIYfUdXMk/aoiK+
- mok0xGHhT67+tR3+XD3rkz8WWoiyU3yrIOuy6pz8LPQpnplOAMzzL5vf6EknIkWC17DFvo2v+3hk
- 6NEeYIvJrp5Qw8BwCLg=;
-Received: by mail.satearl.click id h6hft40001g1 for
+ i=berber_jeanette@ratesats.click; 
+ bh=6OGgBDR7diOXzCpKOih+j2jQ7Bk=;
+ b=pblpx2+n2kak4+0FtODYktxR5eNM9LNvcmjTNXgCulXZqFaviQx/qA2IeO926DwcsRDQ9qF16QH6
+ c5L+Qw6yXcqo+yK1cMUh3NPbjDe80V2lArlXCYgRKn/CoWAwor2OA0+0NNau75KOr7+ZYK3++Sot
+ GXpHQ+Wy7eb1mSPgV8c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ratesats.click;
+ b=ni/1wmvZWT8Y9TIxGAVyGhcsG8n3eXFmL+Fh8DhLQrOp6+TLH/PhkJ67GSk+iXDVX0lmbH1sCZze
+ nJxl5TgCG0JrGfQdRVsEQe9DuKQSA5XkuiotJTamvJSfBMzz7Wur/ssZDetDS+IRrlDr9bOpAI5M
+ I+VwDMIpE4raomUEe74=;
+Received: by mail.ratesats.click id h6hc7q0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 10:42:24 -0400 (envelope-from
- <lynne_koppel-intel+2Dgvt+2Ddev=lists.freedesktop.org@satearl.click>)
-Date: Wed, 28 Sep 2022 10:42:24 -0400
-From: Lynne Koppel <lynne_koppel@satearl.click>
+ Wed, 28 Sep 2022 10:07:41 -0400 (envelope-from
+ <berber_jeanette-intel+2Dgvt+2Ddev=lists.freedesktop.org@ratesats.click>)
+Date: Wed, 28 Sep 2022 10:07:41 -0400
+From: Jeanette Berber <berber_jeanette@ratesats.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Compare Life lnsurance Coverage Easily Online  #565501
+Subject: Congratulations you've been chosen for a exclusive offer from Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_547_118193312.1664370721883"
-Message-ID: <0.0.0.3C.1D8D348859D4C2C.3FDC0A@mail.satearl.click>
+ boundary="----=_Part_454_1099151860.1664374058874"
+Message-ID: <0.0.0.32.1D8D343AC2FE64C.4E401@mail.ratesats.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,35 +54,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_547_118193312.1664370721883
+------=_Part_454_1099151860.1664374058874
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Compare Life lnsurance Coverage Easily Online  #565501
+Congratulations you've been chosen for a exclusive offer from Lowes  intel-gvt-dev@lists.freedesktop.org
 
-Tap Here to Pick Your Coverage. http://www.satearl.click/infinitely-recompense/cf64s2395m86uX11D3bhb1qe74R36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQtdmmm6Erl10u6mlq2wD
-
-
+Begin Here for the Lowes Stanley Tool Kit Giveaway_http://www.ratesats.click/incongruous-Debra/e5e6t2j39J5R86jZ10v3bb5ze75k36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQvdmmn7vQwor105jTAwD
 
 
 
-Compare & Save Today Before Fees Rise
+-96 MOWAT.  Av, Toronto ON M4K 3K1 CA
 
+To suspend notices, Go.Over.Here_http://www.ratesats.click/problems-carefulness/e5e4Y2395p8TR612b3ubbq6Me75N36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQvdmmn7qFy10PU5FNpwD
 
+This email message was chosen for intel-gvt-dev@lists.freedesktop.org
 
+8999728~6535907
 
-
-
-To edit your message elections, Go_On_Here. http://www.satearl.click/occult-meters/b165v2r395mv8T611fV3bb2He74p36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQtdmmm5W1Jx05WWkwD
-
-This email was chosen for intel-gvt-dev@lists.freedesktop.org
-
-Kallkofnsvegur Two Reykjavyc, 
-Capital-Region  l0l  Iselland
-
-6172554. 5531672
-
-------=_Part_547_118193312.1664370721883
+------=_Part_454_1099151860.1664374058874
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -89,31 +81,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <div style="text-align: center;">
-   <a href="http://www.satearl.click/9cb6I239XV5F8C6_10e3bb1Ye74G36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQtdmmm5k1to05DM@wD/Guardia-devised" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Pick Your Coverage</span></a>
-   <br /> &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><a href="http://www.satearl.click/9cb6I239XV5F8C6_10e3bb1Ye74G36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQtdmmm5k1to05DM@wD/Guardia-devised" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:540px;height:695px;"><img alt="Protect Your FamiIy's Future" src="http://www.satearl.click/8db5o23l95N7BMa12Drv3bb3Ge74J36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQtdmmm5r1y0U6p@lkwD/elephant-capriciousness" style="margin-left: 0px; margin-top: 0px; width: 540px; height: 695px;" /></span></span></a></span></p> 
-  <div style="text-align: center;">
-   &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;">&nbsp;</p> 
-  <div style="text-align: center;">
-   <br /> 
-   <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:14px;"><a href="http://www.satearl.click/9cb6I239XV5F8C6_10e3bb1Ye74G36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQtdmmm5k1to05DM@wD/Guardia-devised"><strong><span style="font-size:16px;">Shop &amp; Save Instantly Online Before Cost Rise</span></strong></a></span></span>
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your message elections,</span><a href="http://www.satearl.click/Slavonicize-resurrections/9ae5Q239K5y8KW610z3bb2je74F36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQtdmmm7R1ntR0o6SOwlJD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Go_On_Here</span></a></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Kallkophnsvegur 2 Reykjavyk,<br /> Capital_Region&nbsp; I0I&nbsp; Iselannd</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span style="font-size:10px;"><span id="docs-internal-guid-1342adf0-7fff-534f-d2ab-3fd6fee9f61a"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6172554 5531672</span></span></span></p>   
- <img src="http://www.satearl.click/89f5iY2395iW8P510l3bb4ve74X36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQtdmmm6Dp1t0A5l2AwD/dilating-atoll" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.ratesats.click/electrophorus-reside/9365C239P5zm8F610t3bb5Te75q36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQvdmmn6DtVz105lA3wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the Lowes Stanley Tool Kit Giveaway</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.ratesats.click/electrophorus-reside/9365C239P5zm8F610t3bb5Te75q36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQvdmmn6DtVz105lA3wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.ratesats.click/Willisson-surveying/22e6rK239_5RL7ar10B3bb7se75X36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQvdmmn7Vu10VZr5SX3wD" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Exclusive Offer Is Over in 3 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' Mowat- Ave., Toronto Ont. M4K3Kl Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To suspend notices,<a href="http://www.ratesats.click/repose-scratched/9544V2395r8B6I10z3bb6Se75K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQvdmmn5p1sr05QOwPD"> Go.Over.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8999728~6535907</span></span></p>   
+ <img src="http://www.ratesats.click/panelist-marmot/8826r23n9p5dJ8P510B3bb8Re75Y36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQvdmmn5p10Qx6m0wLDl" alt=""/></body>
 </html>
 
-------=_Part_547_118193312.1664370721883--
+------=_Part_454_1099151860.1664374058874--
 
