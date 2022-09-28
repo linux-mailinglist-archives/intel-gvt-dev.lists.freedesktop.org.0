@@ -1,44 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E50535EE83C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 23:23:01 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67AA75EE944
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Sep 2022 00:18:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9DEAF10E130;
-	Wed, 28 Sep 2022 21:23:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 15FA810E595;
+	Wed, 28 Sep 2022 22:18:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Wed, 28 Sep 2022 21:22:58 UTC
-Received: from mail.altersats.click (unknown [192.119.170.2])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5A88310E130
+X-Greylist: delayed 316 seconds by postgrey-1.36 at gabe;
+ Wed, 28 Sep 2022 22:17:57 UTC
+Received: from mail.satsides.click (unknown [45.88.91.202])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5E1C610E1C4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 21:22:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=altersats.click; 
+ Wed, 28 Sep 2022 22:17:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=satsides.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=staci.deter@altersats.click; 
- bh=CPWXdZaK4ChhfYCant+OSPBs4Pw=;
- b=DcjaE2oK1qhVLFVhfPzoVKu/867GiJo5EJsT4HPmthpv8zYK0bmNY9PfXYZgs7G93LE1HJRUlDGV
- qJ0RdexGdQIv7JNRv9mAwF/zSSP0JTNcxppbNSYVN407lWdO1lekXxAf8MQsGFWvztX9U01dhMA3
- /RfXJluNO7XQaah/yLc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=altersats.click;
- b=wIELNMrVcZKdePxcYSbs03WnWpMjdK8+MW/fKPu6185rUVwLkprgvwbHDtbd2yzsc18+khqyYJkY
- nouQHRBt+h00RLa0BkwL8+UEKBBeHS5MaQ69UGaCUBShtmGVHtGL+3f3OKmUl16iQr84p6kq+KIc
- 1EOzFfy7ODMfLHDDweg=;
-Received: by mail.altersats.click id h6itj40001gu for
+ i=jamie.dagle@satsides.click; bh=GTFqpnYNNeHB3lcAb5TVSIjrZBs=;
+ b=bU26ADNosKTzyBhOYnX5C9up/rnmDmNuSW8nKiFYa1le0LpNaSj7dwms9KXm4uijm2hb/8eCvK/l
+ QSve3G+V0D+psFiqcR4jBAfbCO+nJ4idnCy9PaFoksaXc6ExQ0hfXfFP2cr+coVV/wOFkU9OPYm8
+ 1EjXTk6Dxri/8vQXPyg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=satsides.click;
+ b=skJypDSlbSUuIrGMIquQF4qcxWZBTuuzjvoNlv/d8d6z/GPJc/0+xcmPT1Zg3C/tjIK1+mIUHDuu
+ GxqT5nMANYrP6Q5BNRXTSKyHGOVssQyX/1IIlh8BbM345tw66Na4EXNdeIU118gbTZdHmxVXgQLg
+ xZoMgeH2G52LzA4yl6A=;
+Received: by mail.satsides.click id h6jej20001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 17:05:07 -0400 (envelope-from
- <staci.deter-intel+2Dgvt+2Ddev=lists.freedesktop.org@altersats.click>)
-Date: Wed, 28 Sep 2022 17:05:07 -0400
-From: Staci Deter <staci.deter@altersats.click>
+ Wed, 28 Sep 2022 19:36:07 -0400 (envelope-from
+ <jamie.dagle-intel+2Dgvt+2Ddev=lists.freedesktop.org@satsides.click>)
+Date: Wed, 28 Sep 2022 19:36:07 -0400
+From: Jamie Dagle <jamie.dagle@satsides.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: TrueValue Shopper, Claim Your Craftsman generator
- intel-gvt-dev@lists.freedesktop.org
+Subject: Protect Your Home in 60 seconds
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_121_99017559.1664399087910"
-Message-ID: <0.0.0.E.1D8D37DFD26CDB0.661DB3@mail.altersats.click>
+ boundary="----=_Part_295_1705448703.1664402751298"
+Message-ID: <0.0.0.20.1D8D393151AEC8E.73ED5F@mail.satsides.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +52,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_121_99017559.1664399087910
+------=_Part_295_1705448703.1664402751298
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-TrueValue Shopper, Claim Your Craftsman generator intel-gvt-dev@lists.freedesktop.org
+Protect Your Home in 60 seconds   #212819
+
+Begin here for Home Protection with no Cloud storage fee-http://www.satsides.click/89f6U2Q39w5L8U6Q11Qr3bd6Ne7dh36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQudmme7F1OlZJ05mAkwD/Peiping-coordinator
 
 
-Congratulations from TrueValue , Click Here. http://www.altersats.click/6fb6D2KG395P8hQ610v3bd2Re7ch36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQPdmnS6Ui1CO05Ql@wD/vultures-loveliness
 
 
 
-To change your notification preferences, Begin-Ahead-Here. http://www.altersats.click/ante-Candlewick/c246S_2F395RI86C10U3bd3oe7cF36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQPdmnS6Mir10v5nzzwD
+To suspend communications, Continue.Here-http://www.satsides.click/31d5u239U5Uy86V12z3vobd7Re7dF36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQudmme6YqB10D5J0wDM/diverging-bachelors
 
-This email was selected for intel-gvt-dev@lists.freedesktop.org
+Our e-mail content was meant for intel-gvt-dev@lists.freedesktop.org
 
-_96 Mowat AVENUE, Toronto.  Ont M4K 3KI Canada
+4122_ Keaton. Crossing , Boulevard SUlTE 104' OFallon, MO 63368-
 
-5863254. 8380736
+46215783-71607779
 
-------=_Part_121_99017559.1664399087910
+------=_Part_295_1705448703.1664402751298
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,22 +80,23 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:309px;"><a href="http://www.altersats.click/romancing-illusive/d325H_2395U8H6P12A3bkd2woe7cS36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQPdmnS5e_10A5f1LwD"><img alt="Begin the 30-Second Survey Here" src="http://www.altersats.click/ante-Candlewick/a625vZ2395Q7qYa10O3bd4_e7ch36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQPdmnS7g1U0tXZ6q0wkMD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 309px;" /></a></span></span></span></p> &nbsp; 
-  <div style="text-align: center;">
-   <a href="http://www.altersats.click/romancing-illusive/d325H_2395U8H6P12A3bkd2woe7cS36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQPdmnS5e_10A5f1LwD"><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Congratulations from TrueValue , Click Here</span></span></a>
-  </div> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f0640013-7fff-982c-d98c-1e65da17dace"><a href="http://www.satsides.click/c414b2395eP8v610U3bd6Pe7dU36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQudmme5w10LZ5VXWwD/diverging-bachelors" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin here for Home Protection with no Cloud storage fee</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f0640013-7fff-982c-d98c-1e65da17dace"><a href="http://www.satsides.click/c414b2395eP8v610U3bd6Pe7dU36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQudmme5w10LZ5VXWwD/diverging-bachelors" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:829px;"><img alt="Go Here for a Safer Home" src="http://www.satsides.click/Peiping-coordinator/24c5A239h5E7Gau12u3bd8Usme7dT36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQudmme5Qs1W05ALwjD" style="margin-left: 0px; margin-top: 0px; width: 630px; height: 837px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your notification preferences, <a href="http://www.altersats.click/6476Vg23y95Q8A6S10z3bd3He7cw36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQPdmnS7G10ANkZ6QPpwDU/vultures-loveliness">Begin-Ahead-Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 Mowat_ Av, T0R0NT0 Ont M4K3KI CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5863254.8380736</span></span></p>   
- <img src="http://www.altersats.click/romancing-illusive/7386e2A3L95S85_m12d3gbdz5ge7cL36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQPdmnS7l10mIgm5OWwD@" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f0640013-7fff-982c-d98c-1e65da17dace"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To suspend communications,</span><a href="http://www.satsides.click/Hetman-epithets/53a6zN23H95ID8X611H3bd7uXe7dD36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQudmme5J1HW05rlUwD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Continue.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f0640013-7fff-982c-d98c-1e65da17dace"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f0640013-7fff-982c-d98c-1e65da17dace"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4122' Keaton~Crossing , BLVD. Unit 1O4. OFallon, MISSOURI 63368.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f0640013-7fff-982c-d98c-1e65da17dace"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">46215783-71607779</span></span></p>   
+ <img src="http://www.satsides.click/c415lX2395m85hO12w3bTtd9ge7dA36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQudmme6PK1LH06HUwljD/trustworthy-commodities" alt=""/></body>
 </html>
 
-------=_Part_121_99017559.1664399087910--
+------=_Part_295_1705448703.1664402751298--
 
