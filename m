@@ -2,44 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 275465ED291
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 03:17:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 910845ED361
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 05:17:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 97A2B10E0E7;
-	Wed, 28 Sep 2022 01:17:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BBF7810E245;
+	Wed, 28 Sep 2022 03:16:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 28 Sep 2022 01:17:52 UTC
-Received: from mail.shirtsfrieds.click (unknown [209.142.103.42])
- by gabe.freedesktop.org (Postfix) with ESMTP id AE1FF10E0E7
+X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
+ Wed, 28 Sep 2022 03:16:55 UTC
+Received: from mail.bulbstechs.click (unknown [213.209.159.98])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5AC8010E243
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 01:17:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=shirtsfrieds.click; 
+ Wed, 28 Sep 2022 03:16:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bulbstechs.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=furgison_suzanne@shirtsfrieds.click; 
- bh=b4eGU4r9xoPHCD7EKRjOOMhk87s=;
- b=iSwcXL2xCh+3bVSVAjayh0WJ220nGyAW4LYUdfiB2U4jTrYeUezh6JJA7+aE3A29jI9ILgbpzWrN
- iHwupy1t4OIYqWW4sEMUJC4LbINimWsM1PC8MA/3IvuHbc+fIc35zYRE/z5mStYZzaiI8VBCPNIy
- MaEumO7twgY0yd6kSDw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shirtsfrieds.click; 
- b=pKkpw9BVieHGU54DpZgnmNAz7Kvow9WoHbeQjeNQx7E6cyiFGSBLjAkSkvCDTAud1wrhrZhbp3VZ
- 53OW/oC4kqr53JJ5YRzJfXyDdJQ7PD4m4SP8ZfPz8L4V0lSQcbjqykSaK4OBkW5k7z9AxQD2rOTz
- DzR4L8gl/R4pAYXelAQ=;
-Received: by mail.shirtsfrieds.click id h6egc00001gk for
+ i=dina-imel@bulbstechs.click; bh=Ym8UjGUNHKvDEBkjRqn82ANkqXY=;
+ b=N/SZ1NEIxZRbOeKG1dZ9duxWqNc81FEMDmdZ69am6G+Bv2lbZt8aVA4jh169q1PKnCyJp3SjM85l
+ zmGCQPwYFy+Fs/jlwklpdpzJ5iIwFrbm7AUt1yFbp0lm70OhQZNqKOAbekIs4bqISjHmbDhI8Uxn
+ 5/yMt6TN6ZlPJwcr0b0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bulbstechs.click;
+ b=OPWxpKDujW06uYY4IhcMgF9lagt6CPSZFSNTIaD5Ua8Tx6FlafZrVcRvwGL0ELC1hJSKh6ysgb15
+ W9JtwFPGBVT/FDrEdsVCJvedhSmEi6sr5QBH+T7y6WPj9d+g5w8754WwubaRtTJWpINSHFewLSpS
+ 0YvMHqsklUnqwG+FHtU=;
+Received: by mail.bulbstechs.click id h6euae0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Sep 2022 21:04:49 -0400 (envelope-from
- <furgison_suzanne-intel+2Dgvt+2Ddev=lists.freedesktop.org@shirtsfrieds.click>)
-Date: Tue, 27 Sep 2022 21:04:49 -0400
-From: Suzanne Furgison <furgison_suzanne@shirtsfrieds.click>
+ Tue, 27 Sep 2022 23:05:20 -0400 (envelope-from
+ <dina-imel-intel+2Dgvt+2Ddev=lists.freedesktop.org@bulbstechs.click>)
+Date: Tue, 27 Sep 2022 23:05:20 -0400
+From: Dina Imel <dina-imel@bulbstechs.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Lowes Shopper,
- Your Stanley Tool Set from Lowes intel-gvt-dev@lists.freedesktop.org
+Subject: Request up to 10k in less than 2 minutes  #825113
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_46_41614265.1664327080865"
-Message-ID: <0.0.0.5.1D8D2D64E92661C.32C588@mail.shirtsfrieds.click>
+ boundary="----=_Part_199_1615258991.1664334313624"
+Message-ID: <0.0.0.16.1D8D2E7251D74DC.25B9F1@mail.bulbstechs.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,26 +52,28 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_46_41614265.1664327080865
+------=_Part_199_1615258991.1664334313624
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Lowes Shopper, Your Stanley Tool Set from Lowes  intel-gvt-dev@lists.freedesktop.org
+Request up to 10k in less than 2 minutes  #825113
 
-Visit Here to Claim a Stanley Tool Kit from Lowes-http://www.shirtsfrieds.click/functions-stated/3005YM2395n86JJ12F3bz92tTe6cM36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQF9KKo7UkI1O0J6UO@MwD
-
-
+Help with Medical Bills up to 10K. Start Here~http://www.bulbstechs.click/b515w23L95cC8s610h3b99Ke6eH36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ69KKd5kv10D5AlOwD/antihistorical-dealership
 
 
-96- Mowat_ Avenue, Toronto- ONTARIO M4K 3Kl Canada
 
-To halt communication, Go.Here-http://www.shirtsfrieds.click/logarithmically-dissipating/d145QX2395j8qr611U3bT93We6cR36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQF9KKo6tUk1j06Aqw2PD
 
-This notification was sent to intel-gvt-dev@lists.freedesktop.org
 
-7362025~7015368
+To put a stop to your subscription, Start.This.Way~http://www.bulbstechs.click/sinusoidal-counterpart/4eR6E2v3A95lv86O11dK3b9aXe6ek36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ69KKd7U10DhZu6uJwjAD
 
-------=_Part_46_41614265.1664327080865
+Our content was meant for intel-gvt-dev@lists.freedesktop.org
+
+21781_Ventura.  #10043- WoodIand HiIIs Calif 91364- US
+
+
+2738588~83394696
+
+------=_Part_199_1615258991.1664334313624
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,21 +82,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.shirtsfrieds.click/e5d5RZ2395B_8A611c3ob92Ie6cy36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQF9KKo5a1X0r6kBwDAB/minuend-attachment" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the Lowes Stanley Tool Offer</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.shirtsfrieds.click/e5d5RZ2395B_8A611c3ob92Ie6cy36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQF9KKo5a1X0r6kBwDAB/minuend-attachment" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Visit Here to Claim a Stanley Tool Kit from Lowes" src="http://www.shirtsfrieds.click/da96b2J39C5K7Iax12X3Fb94Zle6ch36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQF9KKo6u10KQx6bLjwD0/manger-protrudes" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbs
- p; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Shake a Leg! Promotion Becomes Void in 2 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-14d73b74-7fff-612d-d3cd-f3cebe15041c"><a href="http://www.bulbstechs.click/optical-Bloomfield/d326Oy239z5IH8r611I3b9A9Ke6ek36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ69KKd6mOM10k6rPqTwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Help with Medical Bills up to 10K. Start Here</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-14d73b74-7fff-612d-d3cd-f3cebe15041c"><a href="http://www.bulbstechs.click/optical-Bloomfield/d326Oy239z5IH8r611I3b9A9Ke6ek36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ69KKd6mOM10k6rPqTwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:766px;"><img alt="Go Here for Funds up to 40K" src="http://www.bulbstechs.click/a435v239x5bj7ha10W3b9bke6eP36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ69KKd5fm10D6eXwD1q/sinusoidal-counterpart" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 766px;" /></span></span></a></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 Mowat- Ave, T0R0NT0 Ont. M4K3Kl CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To halt communication, <a href="http://www.shirtsfrieds.click/60b5e23Z95bX8n610R3b93Ue6cl36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQF9KKo6i10hzs6L@wDBA/tradesman-factorial">Go.Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notification was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7768109~7015368</span></span></p>   
- <img src="http://www.shirtsfrieds.click/d136Oj23M95f8jj510X3b95me6cp36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQF9KKo6YRs1j05LPkwD/benchmarking-choosing" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-14d73b74-7fff-612d-d3cd-f3cebe15041c"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put a stop to your subscription,</span><a href="http://www.bulbstechs.click/bab5S23Q95ViP8610c3b9ahe6eJ36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ69KKd6IARi105epywD/bumbled-stockade" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Start.This.Way</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-14d73b74-7fff-612d-d3cd-f3cebe15041c"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-14d73b74-7fff-612d-d3cd-f3cebe15041c"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">21781_Ventura_ #10043_ Woodland~Hills Calif. 91364' UNITED STATES</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-14d73b74-7fff-612d-d3cd-f3cebe15041c"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2738588,83394696</span></span></p>   
+ <img src="http://www.bulbstechs.click/bumbled-stockade/c426e23mV95K8tT510h3b9cse6eQ36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ69KKd6oUYR105llkwD" alt=""/></body>
 </html>
 
-------=_Part_46_41614265.1664327080865--
+------=_Part_199_1615258991.1664334313624--
 
