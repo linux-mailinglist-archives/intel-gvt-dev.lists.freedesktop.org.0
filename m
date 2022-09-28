@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCBB85ED3D2
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 06:19:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BBA15ED42F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 07:21:24 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 08A5A10E242;
-	Wed, 28 Sep 2022 04:19:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ACC1E10E25F;
+	Wed, 28 Sep 2022 05:21:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Wed, 28 Sep 2022 04:19:31 UTC
-Received: from mail.shirtbagz.click (unknown [209.142.103.77])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6905F10E225
+ Wed, 28 Sep 2022 05:21:18 UTC
+Received: from mail.airshirtz.click (unknown [213.209.159.188])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0A00110E261
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 04:19:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shirtbagz.click; 
+ Wed, 28 Sep 2022 05:21:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=airshirtz.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=holzheimer-nora@shirtbagz.click; 
- bh=VlwPZQ3SBm9FOrIF0E3D0AqgHhQ=;
- b=qQpp3AfeGRbERv20OnBEq0nJGtYuYXCoP9NZoVziJfG6eRbnbw8rK+HQ3JVVC+Ad2spiW1kA9dj/
- rF/2+IG4YFCCxmPSLiVSYWza0e5taqaXW909oilrfO8Gz4+NiRCbuGBEIkb0gWd2HDRIKX9xd+y4
- pFhFkaSs/h3pEyhZ73I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shirtbagz.click;
- b=NAoiXFZwgP+jc3rGl0lYy5KU+Qz7CpueuJ/gAPw6h0HHh3KyZMtrS+aEPVQJF9dO7B5V1Zt1aBqK
- Iteb4sXV95eH3KgZr/zDXzszWC5UjWdZ2L6Fezn4BAWgBrR9VtkEpaxMlRpZt44Jvz1jlVsX76f1
- 3fjy6cp8ysqG/BJJ2qo=;
-Received: by mail.shirtbagz.click id h6f5l60001gv for
+ i=patrica_zachery@airshirtz.click; 
+ bh=ujeub6Rcf0cYm2hFBbELnjX3PTo=;
+ b=D7wMx9iNYC8O8fK/SJkM+/Ori5jJglRrcFqflJ0Tk3ycBoMPIISDO7x6GnwyofahIVj+TKxSzXvA
+ UnSAQSi1WmAGKkRnSyJEi9VsBjHgkk1AwkUnCvEFgs4MuZCWCsvLYZ3fotdg5r7gfkqQ2ksUaZbo
+ 6E7r90a7krZvGng3+1Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=airshirtz.click;
+ b=c1oVPo1QODEyKAD6GYMq4YD0H90X3mditdiPFDRh1d+xJ06c/bVTS6aK4IWp26gEm7DjXkZ1pTz5
+ wbg5TGtXBAVAh/Z2q+ttyah837CimtO7eAPyrrBBONgxF9ey5AyEIsgg2M0IoxcCr8w4wUb3xrBx
+ 8xSOwJtqC0DgMCw2ryc=;
+Received: by mail.airshirtz.click id h6fcss0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 00:09:46 -0400 (envelope-from
- <holzheimer-nora-intel+2Dgvt+2Ddev=lists.freedesktop.org@shirtbagz.click>)
-Date: Wed, 28 Sep 2022 00:09:46 -0400
-From: Nora Holzheimer <holzheimer-nora@shirtbagz.click>
+ Wed, 28 Sep 2022 01:09:23 -0400 (envelope-from
+ <patrica_zachery-intel+2Dgvt+2Ddev=lists.freedesktop.org@airshirtz.click>)
+Date: Wed, 28 Sep 2022 01:09:23 -0400
+From: Patrica Zachery <patrica_zachery@airshirtz.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Easily Destroy 99% Bacteria Cleaning CPAP
+Subject: Thank you for your input . The Depot
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_544_570159399.1664338170105"
-Message-ID: <0.0.0.3C.1D8D2F024FE67BE.2EA6FE@mail.shirtbagz.click>
+ boundary="----=_Part_487_966089566.1664341728839"
+Message-ID: <0.0.0.36.1D8D2F878FAE9E8.42AB80@mail.airshirtz.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +54,28 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_544_570159399.1664338170105
+------=_Part_487_966089566.1664341728839
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Clean Your CPAP the Convenient Way in 30 min
+Thank you for your input . The Depot  intel-gvt-dev@lists.freedesktop.org
+
+Tap Here for your Customer Reward-http://www.airshirtz.click/8275hN2395q8h6h12VA3pba1se70j36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQv9KKR5UP10Z5NlwJD/airlifts-tapings
+
+Lose No Time! Exclusive Offer Becomes Void in 5 Days. 
 
 
-Easily Destroy 99% Bacteria Cleaning CPAPBegin.Over.Here:http://www.shirtbagz.click/Grimes-liens/35a5W239G5d86pJ12h3bjp9dDe6fz36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQN9KKQ5Qp1g05NpOwD
 
 
 
 
-To put an end to messages, Start Right Here:http://www.shirtbagz.click/traversal-Jungian/_c66UW23k95i8yk612K3Sb9leve6fB36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQN9KKQ5L10Dx6E3w0LD
+To shut down communications, Go_On_Here-http://www.airshirtz.click/enterprising-barflies/be86f2Xy395Q8qP611y3baD2Me70t36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQv9KKR5pm1T06EPwDq3
+This content was meant for intel-gvt-dev@lists.freedesktop.org
+96_ MOWAT' AVE, Toronto ONTARIO 
+M4K3Kl CA
+81740376-46215783
 
-PO Box- # 4O77 BroadIands Va.  20148 U. S. A. 
-
-Our email content was selected for intel-gvt-dev@lists.freedesktop.org
-
-65067730:3359089
-
-------=_Part_544_570159399.1664338170105
+------=_Part_487_966089566.1664341728839
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,24 +84,23 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <div style="text-align: center;">
-   <br /> 
-   <a href="http://www.shirtbagz.click/7cd5z23P95vY8w612N3bU9dTTe6fN36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQN9KKQ7qyC10OG5LzpwD/housewife-accelerations"><img alt="Sanitize Your CPAP in 30 minutes" src="http://www.shirtbagz.click/amiss-queuer/8be6R23X9D5S7aNi12JV3b9fwue6fs36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQN9KKQ5jw10p6tAlw@D" style="width: 450px; height: 1139px;" /></a>
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put an end to messages, <a href="http://www.shirtbagz.click/housewife-accelerations/a445z23t95Gv86S10m3b9ere6fk36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQN9KKQ7VLmJ10X5rBOwD">Start Right Here</a></span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Post Office B0X No. 4O77 BROADLANDS VA. 20148_ United States</span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email content was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-   <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a792447f-7fff-266a-a07b-3f82ea1af6dd"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4549982,3359089</span></span></p> 
-  </div>   
- <img src="http://www.shirtbagz.click/Grimes-liens/4c26w239BJ5Hon8512j3ba0nJle6fG36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQN9KKQ5b1gu06QBJXwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><a href="http://www.airshirtz.click/airlifts-tapings/3965r2v395QW86q10r3ba1ye70N36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQv9KKR6C1OMP05ajTwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for your Customer Reward</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><a href="http://www.airshirtz.click/airlifts-tapings/3965r2v395QW86q10r3ba1ye70N36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQv9KKR6C1OMP05ajTwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:901px;"><img alt="Your Chance for a Craftsman Tool Cabinet Here" src="http://www.airshirtz.click/imperil-custard/1204b2395w7GRa12j3bQUa3he70M36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQv9KKR6Y1JzV05SMlwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 901px;" /></span></span></a></span><br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><a href="http://www.airshirtz.click/airlifts-tapings/3965r2v395QW86q10r3ba1ye70N36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQv9KKR6C1OMP05ajTwD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Act Now! Bonus Runs Out in 5 Days.</span></a></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut down communications, </span><a href="http://www.airshirtz.click/3954Y2395kZ8I610H3ba2Me70W36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQv9KKR5S1Vs05zO@wD/airlifts-tapings" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go_On_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT' Ave, Toronto- ONT.<br /> M4K 3Kl CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-728ed8b5-7fff-fcbe-d504-ca967ddc8248"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">81740376.46215783</span></span></p>   
+ <img src="http://www.airshirtz.click/1d36C2g3_95wuN8512z3byaj4xe70n36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQv9KKR5oIC106I2zwDX/indicative-construe" alt=""/></body>
 </html>
 
-------=_Part_544_570159399.1664338170105--
+------=_Part_487_966089566.1664341728839--
 
