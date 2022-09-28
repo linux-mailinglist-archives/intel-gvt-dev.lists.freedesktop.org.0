@@ -1,43 +1,80 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3393A5EE443
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 20:24:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B35625EE4AC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Sep 2022 20:57:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E50EA10E629;
-	Wed, 28 Sep 2022 18:24:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 653A610E4A5;
+	Wed, 28 Sep 2022 18:57:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 530 seconds by postgrey-1.36 at gabe;
- Wed, 28 Sep 2022 18:24:18 UTC
-Received: from mail.pintelsats.click (unknown [64.64.109.192])
- by gabe.freedesktop.org (Postfix) with ESMTP id AA98110E630
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E326610E4A5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 18:24:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pintelsats.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jaclyn_yard@pintelsats.click; 
- bh=HpKlhfj9XFTQ4+yOHCRreYu8mfo=;
- b=B55m9u6uGEWogCczO364SeIghEEt3u+3F239mCcC9Jflyt0T8ZTQb6+1Y5RtfWcsk/7Wysh/N+Qn
- Jl6P9tdB2HJDBbdUS6C7C68EIy4ztSKjW5PKnoFihMJlLdgNZq6TNm8DUf1f88TMKyJhkqlQqIHs
- NgXNG8N0vU8jfMdlcA0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pintelsats.click;
- b=BsEyN6abzxt9wVezoGr0bLwRWgrAFscDDXi9u+zmMnecJqP2RzBm2HIre22sHARizj8jkmjJeHph
- 6diStpuEm+WnP13zp+rOTZokHXg3p/GfzC4FuSpV4ONsWErLLfwAiZkSYabl+PKNoI8QcOORgI2b
- SPCxzfH3gDh3ttO9dew=;
-Received: by mail.pintelsats.click id h6i8l40001gd for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 28 Sep 2022 14:06:04 -0400 (envelope-from
- <jaclyn_yard-intel+2Dgvt+2Ddev=lists.freedesktop.org@pintelsats.click>)
-Date: Wed, 28 Sep 2022 14:06:04 -0400
-From: Jaclyn Yard <jaclyn_yard@pintelsats.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Ace Authentication Number  5678797
+ Wed, 28 Sep 2022 18:56:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1664391415;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/G4Vq697fdL4v+7M0FMtvwUHBXoZlZMDykWA34n1ZXM=;
+ b=QjOiwsY7FAGk480aT0I7rnS+eZ7MhYDFLwlrkFkcuFRQQ/nn5qHEGhrbXNYQPDWukGwB7e
+ V8tql7YCJJ9iaTYYYe6pra3kg5K1a7K7rei67DJnaG0K8/j1HawEm+8FJ7mujMZ+iZ3my4
+ sxjk28F5QCi2MO6KfZGRCjg3GLg9Stg=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-500-m6p__DiuMWSeBFMqhCwfXg-1; Wed, 28 Sep 2022 14:56:54 -0400
+X-MC-Unique: m6p__DiuMWSeBFMqhCwfXg-1
+Received: by mail-il1-f200.google.com with SMTP id
+ x6-20020a056e021bc600b002f8c7ccd2c4so4102365ilv.17
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 28 Sep 2022 11:56:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date;
+ bh=/G4Vq697fdL4v+7M0FMtvwUHBXoZlZMDykWA34n1ZXM=;
+ b=ypMNxwqmTv4HMfGFq8nmcanxNZTWfbc5b5aSLeA/Y/3VRm7xl9zXCeOKk7hljJlWTb
+ WP0GaXEIJSXhFwSXCmc9RfAO4sgBrOcYRAxmqz132nbAVF/ONXAkvuVFtGowyHgMoNJt
+ v6oQfFxHOus+aMzDVb06JMkUP+s6ldnwhTEtOYB/H5t5aP/bp+vWpPDIBXRBVYnqgAmu
+ kMCSnijPyrAvvOdrwDafS7ZVnEEkwg8fm3DI3cjvX8jGxst1jLHB0lQK7leyCYSQVI4M
+ DYQrVvPtuDZG3EJUobrN+cz027lopntRoPvxkHbe7ML4dWzKa15+xWIZ1CNcZz0oh7jP
+ d2ew==
+X-Gm-Message-State: ACrzQf0bIN+N3honjjOzbtSgGkkBkyA89gizbnpXLzCxuN+WzEBu75x9
+ mgHMjGrFl1Hqwa4Q0zw1+BgK4X5A3lM5xtJvyRpTD7lj816KUinTycq5tOHbMML01oz6neVsely
+ 86D1kxJqmNOPIOq/0R2mYbVy1zf1s64CzKQ==
+X-Received: by 2002:a05:6e02:1a6f:b0:2f9:1b98:9412 with SMTP id
+ w15-20020a056e021a6f00b002f91b989412mr225950ilv.204.1664391413859; 
+ Wed, 28 Sep 2022 11:56:53 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4+rrxfEBEydSabU2v5S3BOdqrNy/3aSdw+xUzsmxEdtmSd7NFDLxd30KRxn4ox+Ehtolvebw==
+X-Received: by 2002:a05:6e02:1a6f:b0:2f9:1b98:9412 with SMTP id
+ w15-20020a056e021a6f00b002f91b989412mr225931ilv.204.1664391413632; 
+ Wed, 28 Sep 2022 11:56:53 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ g6-20020a05663810e600b00349fb9b1abesm2084847jae.106.2022.09.28.11.56.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Sep 2022 11:56:52 -0700 (PDT)
+Date: Wed, 28 Sep 2022 12:56:50 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: simplify the mdev interface v8
+Message-ID: <20220928125650.0a2ea297.alex.williamson@redhat.com>
+In-Reply-To: <20220928121110.GA30738@lst.de>
+References: <20220923092652.100656-1-hch@lst.de>
+ <20220927140737.0b4c9a54.alex.williamson@redhat.com>
+ <20220927155426.23f4b8e9.alex.williamson@redhat.com>
+ <20220928121110.GA30738@lst.de>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_181_1409858085.1664388354373"
-Message-ID: <0.0.0.14.1D8D364F94F93CA.2E8CD2@mail.pintelsats.click>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,203 +87,74 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Tony Krowiak <akrowiak@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, kvm@vger.kernel.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_181_1409858085.1664388354373
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On Wed, 28 Sep 2022 14:11:10 +0200
+Christoph Hellwig <hch@lst.de> wrote:
 
-Dear ACE Consumer,
+> On Tue, Sep 27, 2022 at 03:54:26PM -0600, Alex Williamson wrote:
+> > Oops, I had to drop this, I get a null pointer from gvt-g code:  
+> 
+> Ok, this is a stupid bug in the second patch in the series.  I did not
+> hit it in my mdev testing as my script just uses the first type and
+> thus never hits these, but as your trace showed mdevctl and once I
+> used that I could reproduce it.  The fix for patch 2 is below, and
+> the git tree at:
+> 
+>    git://git.infradead.org/users/hch/misc.git mvdev-lifetime
+> 
+> has been updated with that folded in and the recent reviews.
 
-ACE Hardware=E2=80=99s vision is To be the best, most helpful hardware stor=
-es on the planet.=20
+That fixes the crash, but available_instances isn't working:
 
-In order for ACE Hardware to persistently enhance our customer service & products, we would like you=
-r feedback.=20
+[root@nuc ~]# cd /sys/class/mdev_bus/0000\:00\:02.0/mdev_supported_types/
+[root@nuc mdev_supported_types]# ls */devices/
+i915-GVTg_V4_1/devices/:
 
-Begin Here to provide your opinion & claim a Bonus,http://www.pintelsats.click/crotchety-renegotiable/35a6S23l9_5K8tu610q3bc8xe79j36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQXdmmd5k10rI6XOwD@X
+i915-GVTg_V4_2/devices/:
 
-Please take the {{short|brief|quick} survey about ACE Hardware then sele=
-ct your promotional bonus of up to $1OO. oo value.=20
+i915-GVTg_V4_4/devices/:
 
-Go Here to Claim your Ace Bonus up to $1OO,http://www.pintelsats.click/crotchety-renegotiable/35a6S23l9_5K8tu610q3bc8xe79j36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQXdmmd5k10rI6XOwD@X
+i915-GVTg_V4_8/devices/:
+[root@nuc mdev_supported_types]# grep . */available_instances
+i915-GVTg_V4_1/available_instances:1
+i915-GVTg_V4_2/available_instances:2
+i915-GVTg_V4_4/available_instances:5
+i915-GVTg_V4_8/available_instances:7
+[root@nuc mdev_supported_types]# uuidgen > i915-GVTg_V4_1/create
+[root@nuc mdev_supported_types]# ls */devices/
+i915-GVTg_V4_1/devices/:
+669d83b1-81d8-4fd4-8d8b-7f972721c83f
 
-Move Faster! Offer Stops in 2 Days.
+i915-GVTg_V4_2/devices/:
 
-We appreciate your help and assistance.=20
+i915-GVTg_V4_4/devices/:
 
+i915-GVTg_V4_8/devices/:
+[root@nuc mdev_supported_types]# grep . */available_instances
+i915-GVTg_V4_1/available_instances:0
+i915-GVTg_V4_2/available_instances:0
+i915-GVTg_V4_4/available_instances:1
+i915-GVTg_V4_8/available_instances:1
+[root@nuc mdev_supported_types]# echo 1 > i915-GVTg_V4_1/devices/669d83b1-81d8-4fd4-8d8b-7f972721c83f/remove 
+[root@nuc mdev_supported_types]# ls */devices/
+i915-GVTg_V4_1/devices/:
 
+i915-GVTg_V4_2/devices/:
 
+i915-GVTg_V4_4/devices/:
 
-Our notification was directed to intel-gvt-dev@lists.freedesktop.org
-To stop notices, Begin.Here.Now,http://www.pintelsats.click/8db5z2F395IDN8611p3bcG7Le79x36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQXdmmd5z1vr06S0wDzB/bequeathal-complemented
-115- E.   Twenty-Third Street NewYork NEW YORK I00I0.  US. =20
-8882654,5678797
-
-------=_Part_181_1409858085.1664388354373
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-
-<html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 14pt; font-family: Georgia; color: rgb(32, 33, 36); =
-background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-va=
-riant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"=
->ACE</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); fo=
-nt-variant-numeric: normal; font-variant-east-asian: normal; vertical-align=
-: baseline; white-space: pre-wrap;">Dear Customer,</span></span></p> &nbsp;=
-=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Georgia; color: rgb(32, 33, 36); =
-background-color: rgb(255, 255, 255); font-weight: 700; font-style: italic;=
- font-variant-numeric: normal; font-variant-east-asian: normal; vertical-al=
-ign: baseline; white-space: pre-wrap;">ACE</span><span style=3D"font-size: =
-12pt; font-family: Arial; color: rgb(32, 33, 36); background-color: rgb(255=
-, 255, 255); font-weight: 700; font-style: italic; font-variant-numeric: no=
-rmal; font-variant-east-asian: normal; vertical-align: baseline; white-spac=
-e: pre-wrap;"> </span><span style=3D"font-size: 12pt; font-family: &quot;Fr=
-anklin Gothic&quot;, sans-serif; color: rgb(32, 33, 36); background-color: =
-rgb(255, 255, 255); font-weight: 700; font-style: italic; font-variant-nume=
-ric: normal; font-variant-east-asian: normal; vertical-align: baseline; whi=
-te-space: pre-wrap;">Hardware</span><span style=3D"font-size: 12pt; font-fa=
-mily: &quot;Franklin Gothic&quot;, sans-serif; color: rgb(32, 33, 36); back=
-ground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-varian=
-t-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'s =
-vision is </span><span style=3D"font-size: 12pt; font-family: Roboto, sans-=
-serif; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-w=
-eight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; =
-vertical-align: baseline; white-space: pre-wrap;">To be the best, most help=
-ful hardware stores on the planet.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I=
-n order for </span><span style=3D"font-size: 12pt; font-family: Georgia; co=
-lor: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-weight: 70=
-0; font-style: italic; font-variant-numeric: normal; font-variant-east-asia=
-n: normal; vertical-align: baseline; white-space: pre-wrap;">ACE </span><sp=
-an style=3D"font-size: 12pt; font-family: &quot;Franklin Gothic&quot;, sans=
--serif; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-=
-weight: 700; font-style: italic; font-variant-numeric: normal; font-variant=
--east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hard=
-ware</span><span style=3D"font-size: 12pt; font-family: &quot;Franklin Goth=
-ic&quot;, sans-serif; color: rgb(32, 33, 36); background-color: rgb(255, 25=
-5, 255); font-variant-numeric: normal; font-variant-east-asian: normal; ver=
-tical-align: baseline; white-space: pre-wrap;"> </span><span style=3D"font-=
-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); background-color: r=
-gb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: n=
-ormal; vertical-align: baseline; white-space: pre-wrap;">to persistently improve=
- our products &amp; service, we would like your input.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric:=
- normal; font-variant-east-asian: normal; text-decoration-line: underline; =
-text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-=
-wrap;">Begin Here to provide your opinion & claim a Bonus</span><span style=3D"font-size: 12pt; font-family: =
-Arial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-w=
-eight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; =
-vertical-align: baseline; white-space: pre-wrap;">:https://www.rg5dx=
-bl.com/4J58SX/QB4TG3/?sub1=3DGNCB</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P=
-lease take the quick survey about </span><span style=3D"font-size: 12p=
-t; font-family: Georgia; color: rgb(32, 33, 36); background-color: rgb(255,=
- 255, 255); font-weight: 700; font-style: italic; font-variant-numeric: nor=
-mal; font-variant-east-asian: normal; vertical-align: baseline; white-space=
-: pre-wrap;">ACE</span><span style=3D"font-size: 12pt; font-family: Arial; =
-color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-weight: =
-700; font-style: italic; font-variant-numeric: normal; font-variant-east-as=
-ian: normal; vertical-align: baseline; white-space: pre-wrap;"> </span><spa=
-n style=3D"font-size: 12pt; font-family: &quot;Franklin Gothic&quot;, sans-=
-serif; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-w=
-eight: 700; font-style: italic; font-variant-numeric: normal; font-variant-=
-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hardw=
-are</span><span style=3D"font-size: 12pt; font-family: &quot;Franklin Gothi=
-c&quot;, sans-serif; color: rgb(32, 33, 36); background-color: rgb(255, 255=
-, 255); font-variant-numeric: normal; font-variant-east-asian: normal; vert=
-ical-align: baseline; white-space: pre-wrap;"> </span><span style=3D"font-s=
-ize: 12pt; font-family: Arial; color: rgb(32, 33, 36); background-color: rg=
-b(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: no=
-rmal; vertical-align: baseline; white-space: pre-wrap;">then select your =
-survey bonus of up to </span><span style=3D"font-size: 12pt; font-family: Arial; c=
-olor: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-weight: 7=
-00; font-variant-numeric: normal; font-variant-east-asian: normal; vertical=
--align: baseline; white-space: pre-wrap;">$100.00</span><span style=3D"fon=
-t-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); background-color:=
- rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian:=
- normal; vertical-align: baseline; white-space: pre-wrap;"> value.</span></=
-span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric:=
- normal; font-variant-east-asian: normal; text-decoration-line: underline; =
-text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-=
-wrap;">Go Here to Claim your Ace Bonus up to $1OO</span><span style=3D"font-size: 12pt; font-family: Arial; =
-color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-weight: =
-700; font-variant-numeric: normal; font-variant-east-asian: normal; vertica=
-l-align: baseline; white-space: pre-wrap;">:https://www.rg5dxbl.com/=
-4J58SX/QB4TG3/?sub1=3DGNCB</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric:=
- normal; font-variant-east-asian: normal; vertical-align: baseline; white-s=
-pace: pre-wrap;">Move Faster! Offer Stops in 2 Days.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">=
-We appreciate your time and input.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; color: rgb(32, 33, 36); fo=
-nt-variant-numeric: normal; font-variant-east-asian: normal; vertical-align=
-: baseline; white-space: pre-wrap;">Our notification was directed to =
-intel-gvt-dev@lists.freedesktop.org</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; color: rgb(32, 33, 36); fo=
-nt-variant-numeric: normal; font-variant-east-asian: normal; vertical-align=
-: baseline; white-space: pre-wrap;">To stop notices, </span><a href=3D"=
-http://www.pintelsats.click/households-articles/e7c6h239_D5N86zk12Rm3bcM7ve79k36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQXdmmd5lO10w6BUwDMz" style=3D"text-decoration-line: none;"><span style=3D"font-size: 10pt; =
-font-family: Arial; color: rgb(32, 33, 36); font-variant-numeric: normal; f=
-ont-variant-east-asian: normal; text-decoration-line: underline; text-decor=
-ation-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">=
-Begin.Here.Now</span></a><span style=3D"font-size: 10.5pt; font-family: Arial; c=
-olor: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-variant-n=
-umeric: normal; font-variant-east-asian: normal; vertical-align: baseline; =
-white-space: pre-wrap;">:http://www.pintelsats.click/households-articles/e7c6h239_D5N86zk12Rm3bcM7ve79k36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQXdmmd5lO10w6BUwDMz</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; color: rgb(32, 33, 36); fo=
-nt-variant-numeric: normal; font-variant-east-asian: normal; vertical-align=
-: baseline; white-space: pre-wrap;">115. E&nbsp; 23rd =
-ST. NewYork NY. 10010' UNITED STATES&nbsp;</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-51f36514-7fff-6287-0132-6f7a0fa84a6c"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; color: rgb(32, 33, 36); fo=
-nt-variant-numeric: normal; font-variant-east-asian: normal; vertical-align=
-: baseline; white-space: pre-wrap;">8882654:5678797</=
-span></span></p>  =20
- <img src=3D"http://www.pintelsats.click/crotchety-renegotiable/d6e5H2i395g8sh510E3bc9ke79W36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQXdmmd6X_x10L6hkJJwD" alt=3D""/></body>
-</html>
-
-------=_Part_181_1409858085.1664388354373--
+i915-GVTg_V4_8/devices/:
+[root@nuc mdev_supported_types]# grep . */available_instances
+i915-GVTg_V4_1/available_instances:0
+i915-GVTg_V4_2/available_instances:0
+i915-GVTg_V4_4/available_instances:1
+i915-GVTg_V4_8/available_instances:1
 
