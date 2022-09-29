@@ -2,42 +2,72 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A28A5EFFFD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Sep 2022 00:19:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 58D0A5F00C8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Sep 2022 00:38:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B839410E069;
-	Thu, 29 Sep 2022 22:19:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2046E10E18D;
+	Thu, 29 Sep 2022 22:38:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Thu, 29 Sep 2022 22:19:07 UTC
-Received: from mail.zencats.click (unknown [192.119.170.171])
- by gabe.freedesktop.org (Postfix) with ESMTP id EF8AA10E101
+Received: from mail-pj1-x1032.google.com (mail-pj1-x1032.google.com
+ [IPv6:2607:f8b0:4864:20::1032])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BCB2D10E146
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Sep 2022 22:19:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=zencats.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=bridget_heimburger@zencats.click; 
- bh=i+mUg9kaDPXpuFnUmW6tvHSaLE8=;
- b=qKcuqzbc41NyiASZTjdTZBF8hBWTjYw4AU7Y+1yoQ9ShyJc/l2+ehnWblRhLzW28+HYGh3o2uV4D
- C6EN34Gbe7Dzl314XZpQYDCulDtPXGT7d3gQCUzbdOh2Oqs/YKkHjr/52eRWG4KEFsEnYTm9mrgh
- DTV0gpakgtELa3w3lnY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=zencats.click;
- b=PPmmdoCJrVfGXNIiVwNhRyOGHKPSnoU6qIldc0804hcwOQOmZMlathfujcGCmye3vJm/R5+ELgA5
- mB/p/oe97h+2wyZQG6n2C5Eo1/v7A73XrUqcl8410vg9ku+fvEorygz7e//WiiWs04SLBHYYvMEW
- 8if261AHF+e5GnSBik8=;
-Received: by mail.zencats.click id h6octo0001gn for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Sep 2022 18:05:30 -0400 (envelope-from
- <bridget_heimburger-intel+2Dgvt+2Ddev=lists.freedesktop.org@zencats.click>)
-Date: Thu, 29 Sep 2022 18:05:30 -0400
-From: Bridget Heimburger <bridget_heimburger@zencats.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: 19 Senior Discounts You're Entitled To
+ Thu, 29 Sep 2022 22:38:09 +0000 (UTC)
+Received: by mail-pj1-x1032.google.com with SMTP id gf8so79370pjb.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 29 Sep 2022 15:38:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=uRYofiYnG47hAF2aDgziR8isJuYRbsZpgovud56j32A=;
+ b=JZPVhVcSMWJOlPWPeuO7TIk2QE8xzCYuAuPJMIvNL9e/7DEG7nT1s/j0a++TuIXoJt
+ W5tOkUQ3APGpHGPx2aDs0EQFmPuIgBA+4T0avm1Lg0UJhYZ3xUC1RzFzgaGhbslD+zEA
+ 8NgZgevTkenFB0f0XOWYHbeCZsUerfUuHJ0MRFMwXM5XuUFT0t5SADRdJ0rMU3iZnQpx
+ iMve53x366pyZVcyz/wlrlsM3/1JBISjrdscSFwoyHMKAyPnzbLjIdZA8bJqQmwrTVBh
+ qX5XlvQpPaLRv1P2ont+Bp7rvzNsL9me5BwcB/JytVGVWSrVmlRW7tys/zv1TCWNsOeo
+ isHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=uRYofiYnG47hAF2aDgziR8isJuYRbsZpgovud56j32A=;
+ b=7IB7z75RiQ0Zn1dLS5GvLiSDibq2P7jVKqpKbU0OOb3rPIsWkMBvMWIjlS8lnTnGfi
+ Jcfd31tiMmetktZm/7BM2WxdkEpjuohd9LisdpyOVw9KFso81p1Xhd9h7v+QDEEcg5sP
+ XwU0saQz0sNriK9fsKXFKS7D8GlvfCSwvzD+wgMS4IofXc2aVu6vp2uIMFmh/t8nmLFb
+ 1vUgklU0tavSrAl81GJn8RB0tOHPxYsLkPT7/ihv5f+8To3CxQ0/32G31CCKVQ1d6oH/
+ K8n2tq2j5DlQQQJ082KUuaJx+iKUVthU+cFmVE4uajTXFwBzX9QOsQRhFmp4moj4h6Eh
+ +VIQ==
+X-Gm-Message-State: ACrzQf3TRRpPlSCdzQfAqzos6/Olvof5NYe/izXlJ2mROQkKrHscKdhq
+ 7b2FdsBa+vxkceBbPBsSWS3Ktg==
+X-Google-Smtp-Source: AMsMyM6yC6NkaBuBd+HCYZGGqRfzh1aqwwfKXWPEPMxkZ/E1X0XuzRLSKCq/ziAdT/GnArgh0pqgvg==
+X-Received: by 2002:a17:903:441:b0:179:f1cc:ba89 with SMTP id
+ iw1-20020a170903044100b00179f1ccba89mr5683259plb.146.1664491089036; 
+ Thu, 29 Sep 2022 15:38:09 -0700 (PDT)
+Received: from google.com (7.104.168.34.bc.googleusercontent.com.
+ [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
+ w2-20020a170902e88200b0017829a3df46sm384797plg.204.2022.09.29.15.38.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Sep 2022 15:38:08 -0700 (PDT)
+Date: Thu, 29 Sep 2022 22:38:04 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Maxim Levitsky <mlevitsk@redhat.com>
+Subject: Re: Nested AVIC design (was:Re: [RFC PATCH v3 04/19] KVM: x86: mmu:
+ allow to enable write tracking externally)
+Message-ID: <YzYeTCsNfQWccKJ9@google.com>
+References: <20220427200314.276673-1-mlevitsk@redhat.com>
+ <20220427200314.276673-5-mlevitsk@redhat.com>
+ <YoZyWOh4NPA0uN5J@google.com>
+ <5ed0d0e5a88bbee2f95d794dbbeb1ad16789f319.camel@redhat.com>
+ <c22a18631c2067871b9ed8a9246ad58fa1ab8947.camel@redhat.com>
+ <Yt6/9V0S9of7dueW@google.com>
+ <7c4cf32dca42ab84bdb427a9e4862dbf5509f961.camel@redhat.com>
+ <YugLc5LLPJkt89z6@google.com>
+ <fe76ea902a38a10e2d8078fd9e5a71a0c7724d84.camel@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_253_1944313684.1664489121258"
-Message-ID: <0.0.0.1B.1D8D44F96B8C2FE.1B8981@mail.zencats.click>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <fe76ea902a38a10e2d8078fd9e5a71a0c7724d84.camel@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,130 +80,46 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Wanpeng Li <wanpengli@tencent.com>, kvm@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, "H. Peter Anvin" <hpa@zytor.com>,
+ Brijesh Singh <brijesh.singh@amd.com>, Joerg Roedel <joro@8bytes.org>,
+ x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Zhi Wang <zhi.a.wang@intel.com>, Tom Lendacky <thomas.lendacky@amd.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Borislav Petkov <bp@alien8.de>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
+ intel-gvt-dev@lists.freedesktop.org, Jim Mattson <jmattson@google.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, linux-kernel@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, Paolo Bonzini <pbonzini@redhat.com>,
+ Vitaly Kuznetsov <vkuznets@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_253_1944313684.1664489121258
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+On Mon, Aug 08, 2022, Maxim Levitsky wrote:
+> Hi Sean, Paolo, and everyone else who wants to review my nested AVIC work.
 
-SeniorPerks
+Before we dive deep into design details, I think we should first decide whether
+or not nested AVIC is worth pursing/supporting.
 
-19 Senior Discounts You're Entitled To
+  - Rome has a ucode/silicon bug with no known workaround and no anticipated fix[*];
+    AMD's recommended "workaround" is to disable AVIC.
+  - AVIC is not available in Milan, which may or may not be related to the
+    aforementioned bug.
+  - AVIC is making a comeback on Zen4, but Zen4 comes with x2AVIC.
+  - x2APIC is likely going to become ubiquitous, e.g. Intel is effectively
+    requiring x2APIC to fudge around xAPIC bugs.
+  - It's actually quite realistic to effectively force the guest to use x2APIC,
+    at least if it's a Linux guest.  E.g. turn x2APIC on in BIOS, which is often
+    (always?) controlled by the host, and Linux will use x2APIC.
 
- Did you know a lot of seniors unknowingly overpay for everything?  From auto insurance to medications to groceries, you're probably spending more than you should.  But how would you know if they don't tell you!
- 
-The reality is, most companies offer secret discounts to seniors, all you have to do is ask.  To stop you from spending more than you should, we've put together the Ultimate List of 19 Senior Offers.  Remember, if you want to save, you have to ask. 
+In other words, given that AVIC is well on its way to becoming a "legacy" feature,
+IMO there needs to be a fairly strong use case to justify taking on this much code
+and complexity.  ~1500 lines of code to support a feature that has historically
+been buggy _without_ nested support is going to require a non-trivial amount of
+effort to review, stabilize, and maintain.
 
-Begin Here for The Guide to Senior Discounts, www. cahjsj3b2k. com/4J58SX/W52W4S/?sub1=GNCBtxt
-
- Make It Snappy! Offers can End anytime. 
-
-
-
-
-
-To cut off your subscription, Continue_Over_Here,http://www.zencats.click/3b34J2395fQR8610d3c27Ze91s36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ0dm9Q5YM10S6EB@wqD/tatter-realm
-302.  WASHlNGTON Street STE.  150_7835', SAN DIEGO, CALIFORNIA 921O3. 
-Our email content was directed to intel-gvt-dev@lists.freedesktop.org
-56853298,3254094
-
-------=_Part_253_1944313684.1664489121258
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-
-<html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 18pt; font-family: &quot;Archivo Black&quot;, sans-s=
-erif; color: rgb(0, 0, 255); font-weight: 700; font-variant-numeric: normal=
-; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
-re-wrap;">SeniorPerks</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 18pt; font-family: Arial; font-weight: 700; font-var=
-iant-numeric: normal; font-variant-east-asian: normal; vertical-align: base=
-line; white-space: pre-wrap;">19 Senior Discounts You're Entitled To</span></span></p> =
-&nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 14pt; font-family: Arial; font-weight: 700; font-var=
-iant-numeric: normal; font-variant-east-asian: normal; vertical-align: base=
-line; white-space: pre-wrap;">Did you know most seniors unwittingly overpay for e=
-verything?</span><span style=3D"font-size: 14pt; font-family: Arial; font-v=
-ariant-numeric: normal; font-variant-east-asian: normal; vertical-align: ba=
-seline; white-space: pre-wrap;">&nbsp; From auto insurance to prescription medications to gr=
-oceries, you're arguable spending more than you should. But how would you kn=
-ow if they don't tell you!</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 14pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">The reality is, most sellers offer </span><span style=3D"font-s=
-ize: 14pt; font-family: Arial; font-style: italic; font-variant-numeric: no=
-rmal; font-variant-east-asian: normal; vertical-align: baseline; white-spac=
-e: pre-wrap;">secret</span><span style=3D"font-size: 14pt; font-family: Ari=
-al; font-variant-numeric: normal; font-variant-east-asian: normal; vertical=
--align: baseline; white-space: pre-wrap;"> discounts to seniors, all you ha=
-ve to do is ask. To stop you from spending more than you should, we've put =
-together the </span><a href=3D"http://www.zencats.click/1975D23j95h8Iw610a3c26le91l36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ0dm9Q6vI1X0z5JkNwD/outlives-Griffith"><span style=3D"font-size: 14pt; =
-font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-va=
-riant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"=
->Ultimate List of 19 Senior Deals</span></a><span style=3D"font-size: 14p=
-t; font-family: Arial; font-variant-numeric: normal; font-variant-east-asia=
-n: normal; vertical-align: baseline; white-space: pre-wrap;">. Remember, if=
- you want to save, you have to ask.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545=
-d-aeccc66482df"><a href=3D"http://www.zencats.click/1975D23j95h8Iw610a3c26le91l36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ0dm9Q6vI1X0z5JkNwD/outlives-Griffith" style=3D"text-decoration-line: none;=
-"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
-4); font-variant-numeric: normal; font-variant-east-asian: normal; text-dec=
-oration-line: underline; text-decoration-skip-ink: none; vertical-align: ba=
-seline; white-space: pre-wrap;">Begin Here for The Guide to Senior Discounts</span></a></span></p>=
- &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545=
-d-aeccc66482df"><span style=3D"font-size: 14pt; font-family: Arial; font-we=
-ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
-ertical-align: baseline; white-space: pre-wrap;">Step On It! Promotions can =
-Comes To An End anytime.</span></span></p>=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br /> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">To cut off your subscription, </span><a href=3D"http://www.zencats.click/artichokes-eviller/6fc5S239n5K8HC612R3chk27se91u36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ0dm9Q5X10_O6slpwBD" style=3D"text-decor=
-ation-line: none;"><span style=3D"font-size: 11pt; font-family: Arial; colo=
-r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
- normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
-ertical-align: baseline; white-space: pre-wrap;">Continue_Over_Here</span></a></s=
-pan></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">3O2' WASHlNGTON St. NO 150:7835., =
-SAN DlEGO, CA 92IO3</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">Our email content was directed to intel-gvt-dev@lists.freedesktop.org</span></span>=
-</p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-0f5e8443-7fff-a884-545d-aeccc66482df"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">56853298-3254094</span></span></p>  =20
- <img src=3D"http://www.zencats.click/tranquility-Truckee/80a5O23P95Q85UK11d3_c28Ye91K36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ0dm9Q6uMhl105OjwDj" alt=3D""/></body>
-</html>
-
-------=_Part_253_1944313684.1664489121258--
-
+[*] 1235 "Guest With AVIC (Advanced Virtual Interrupt Controller) Enabled May Fail
+    to Process IPI (Inter-Processor Interrupt) Until Guest Is Re-Scheduled" in
+    https://www.amd.com/system/files/TechDocs/56323-PUB_1.00.pdf
