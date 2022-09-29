@@ -1,43 +1,80 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFDE25EFCFF
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Sep 2022 20:25:30 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70DD75EFCF8
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Sep 2022 20:24:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BE00510EBF2;
-	Thu, 29 Sep 2022 18:25:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1E68610EBE2;
+	Thu, 29 Sep 2022 18:24:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Thu, 29 Sep 2022 18:25:18 UTC
-Received: from mail.binsats.click (unknown [64.64.109.208])
- by gabe.freedesktop.org (Postfix) with ESMTP id 209E010EBEA
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7547510EBE5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Sep 2022 18:25:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=binsats.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=bettie-govoni@binsats.click; 
- bh=Ev+NZH+UJXnuVZ3s3pbxwInVf6w=;
- b=i1XA99pg7V3cEMdp+jeX8vlZLgcVIeQ9bmzQAMZTeU5riU0Vc1B9lfKuEi+hytBbncjp5gozhz7U
- ExVGyyQtC21X37y9ISSLMOfN9POC9cK/XnjW8kxYToCagtvaDq8M46VmoqJ0E42KadtscsXb+ZA7
- 5crnf+pPIxkrGCmUNJw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=binsats.click;
- b=Xl/Srww/YTg4/2GO+TmKOK82oWl5MvCZwc2dNY04efpsw0/iDpJ95gw/vtR7vsaKFFkG72aUT6cx
- 9azc7XmRyXA4AP930+wLmYiHwvEBsR47rwox9jeJYeKphMaxPk2BJFz1p9DcU8wiWv93Zp+YwF5n
- UAUGsLe8dWEZIWCScbs=;
-Received: by mail.binsats.click id h6nhgs0001gc for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Sep 2022 14:09:43 -0400 (envelope-from
- <bettie-govoni-intel+2Dgvt+2Ddev=lists.freedesktop.org@binsats.click>)
-Date: Thu, 29 Sep 2022 14:09:43 -0400
-From: Bettie Govoni <bettie-govoni@binsats.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Check out Our New List of the Coolest Gadgets Here
+ Thu, 29 Sep 2022 18:24:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1664475874;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BoITIusWH1pgiQYYyYgg2aTCkDBnXRgVNx9UWZzrGmA=;
+ b=OqcMvHd+HH89EI8UXhMCTpgc95JY4q2oPDPDMHN+rG+xKoIKL6KQo3Q1ABrYRtnFvu41+l
+ JiJvhpYBHgd7ITHa6cpubjXPTQdb3dxfutlcJURTUvmseF9waOP0/Zdcov0RCPcG3FaM2e
+ gjF7RIegpRW3AWLNPVEbMpYzSyCj2xY=
+Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
+ [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-263-mJ1Fhlm7PjWhvHD_tHO5Ew-1; Thu, 29 Sep 2022 14:24:33 -0400
+X-MC-Unique: mJ1Fhlm7PjWhvHD_tHO5Ew-1
+Received: by mail-il1-f198.google.com with SMTP id
+ a8-20020a92c548000000b002f6440ff96bso1721238ilj.22
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 29 Sep 2022 11:24:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date;
+ bh=BoITIusWH1pgiQYYyYgg2aTCkDBnXRgVNx9UWZzrGmA=;
+ b=pkTyeSbBVAbdEXJqv2q7dQDzq/rS98iVf2uuxbB5uiwNbPHoS4hZjKO2nRCq8WB2bP
+ 5Jv0581WaXTrbKufGcKvZfvsoxSIRwBMQ5eGCHLk7TVfhqhp+QT92iwyWAVcAwDAus3B
+ 5OVlTXMkaRqkhgdYpcx7T5McV5J3CUtHz6qA0goYyrDNjUb1tc87pOcuovyrDYKTVrSb
+ Xq98qYpOFhLmaQ2f1APFI+Tn8i+FvNkLXb6N5R/jZwsBf6zLA/gTWj8LRSyydd3IuBVX
+ Hx+Tlvd60vBXqGApHeHIXYsgkh8dfgxA4j5v4Tkm5bkkHhvJl5TWQS9C5kUrWni/0zBI
+ MO4A==
+X-Gm-Message-State: ACrzQf0aeGZMorqzO8H0zYUr0i94pReJxOEdmnkCChKwtVyxWsgPq1LT
+ Tl0EbTq3J/pbcL+qtzOm+ei+9JGEiIRc70ndIZLOvNzt4TPK3Pl5//p/D1Pj0JMzCktWnP7jUwd
+ tFTnFmGk2uX+8X24kOHh0usaEtY8By/lJLA==
+X-Received: by 2002:a05:6e02:19ce:b0:2f1:68a6:3bec with SMTP id
+ r14-20020a056e0219ce00b002f168a63becmr2392109ill.78.1664475872963; 
+ Thu, 29 Sep 2022 11:24:32 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7KUOQo8AbbarGobEgnbxdcS5bS2mn744LEcpjpU+rvkCIe35jyhAfEJ5Pm5FWlRH0iLBHEPg==
+X-Received: by 2002:a05:6e02:19ce:b0:2f1:68a6:3bec with SMTP id
+ r14-20020a056e0219ce00b002f168a63becmr2392060ill.78.1664475872712; 
+ Thu, 29 Sep 2022 11:24:32 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ f13-20020a05660215cd00b006a1fed36549sm96051iow.10.2022.09.29.11.24.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Sep 2022 11:24:31 -0700 (PDT)
+Date: Thu, 29 Sep 2022 12:24:27 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>
+Subject: Re: [PATCH v4 15/15] vfio: Add struct device to vfio_device
+Message-ID: <20220929122427.3a3bca9a.alex.williamson@redhat.com>
+In-Reply-To: <YzXaxPpkc+90Xx+T@ziepe.ca>
+References: <20220921104401.38898-1-kevin.tian@intel.com>
+ <20220921104401.38898-16-kevin.tian@intel.com>
+ <20220929105519.5c9ae1d8.alex.williamson@redhat.com>
+ <YzXaxPpkc+90Xx+T@ziepe.ca>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_658_1999440071.1664474972549"
-Message-ID: <0.0.0.49.1D8D42EA6506382.273F80@mail.binsats.click>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,48 +87,54 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Eric Farman <farman@linux.ibm.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Kirti Wankhede <kwankhede@nvidia.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Longfang Liu <liulongfang@huawei.com>, Christoph Hellwig <hch@infradead.org>,
+ Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
+ Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Kevin Tian <kevin.tian@intel.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_658_1999440071.1664474972549
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+On Thu, 29 Sep 2022 14:49:56 -0300
+Jason Gunthorpe <jgg@ziepe.ca> wrote:
 
-Browse Our New List of the Latest Gadgets Here
+> On Thu, Sep 29, 2022 at 10:55:19AM -0600, Alex Williamson wrote:
+> > Hi Kevin,
+> > 
+> > This introduced the regression discovered here:
+> > 
+> > https://lore.kernel.org/all/20220928125650.0a2ea297.alex.williamson@redhat.com/
+> > 
+> > Seems we're not releasing the resources when removing an mdev.  This is
+> > a regression, so it needs to be fixed or reverted before the merge
+> > window.  Thanks,  
+> 
+> My guess at the fix for this:
+> 
+> https://lore.kernel.org/r/0-v1-013609965fe8+9d-vfio_gvt_unregister_jgg@nvidia.com
 
-Check out Our New List of the Coolest Gadgets Here:http://www.binsats.click/e7b4A2395f8uV611S3c16nne8dH36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQpdm9n6arph105GXwDq/offspring-Siemens
+Indeed this seems to work  I'll look for acks and further reviews from
+Intel folks. Thanks!
 
-
-To quit notifications, Start-Here-Now:http://www.binsats.click/overflowing-provident/9cc6NP239_5R8zs612lw3c17uMe8dD36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQpdm9n7upJl1m06H@3lwD
-This e-mail was designated for intel-gvt-dev@lists.freedesktop.org
-
-18O34' Ventura' Blvd.  STE l69' ENCIN0 CALIFORNIA 91316_ US
-
-1244388:8075890
-
-------=_Part_658_1999440071.1664474972549
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><a href="http://www.binsats.click/squeaks-surfacing/f304j2395XNy8612Sh3Fc16Ge8dU36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQpdm9n5St1V06hA@w@D" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Check out Our New List of the Coolest Gadgets Here</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1315px;"><a href="http://www.binsats.click/squeaks-surfacing/f304j2395XNy8612Sh3Fc16Ge8dU36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQpdm9n5St1V06hA@w@D"><img alt="See the Top Rated Gadgets of 2022" src="http://www.binsats.click/cb94L2395oA7aP12MD3cN18Je8dx36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQpdm9n5u_10g6BzlwDk/reposed-Nietzsche" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1315px;" /></a></span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; color: rgb(153, 0, 0); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Supplies are Limited.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To quit notifications,<a href="http://www.binsats.click/squeaks-surfacing/f304c2395bN8J612ls3Vc17Le8dp36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQpdm9n5oFL106zLwJDU"> Start-Here-Now</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18O34- Ventura' B0ULEVARD Unit l69_ ENClN0 CA 91316' UNITED STATES</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7777842.8075890</span></span></p>   
- <img src="http://www.binsats.click/be74s2395O85il10X3c19we8di36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQpdm9n6q1l0RL6AUJBwD/bibliography-calm" alt=""/></body>
-</html>
-
-------=_Part_658_1999440071.1664474972549--
+Alex
 
