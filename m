@@ -2,110 +2,69 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 510F95EFC37
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Sep 2022 19:48:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BFE0B5EFC3D
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Sep 2022 19:50:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 340D410EB9E;
-	Thu, 29 Sep 2022 17:48:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 851F710EB9F;
+	Thu, 29 Sep 2022 17:50:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2063.outbound.protection.outlook.com [40.107.243.63])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 51F5310EB99;
- Thu, 29 Sep 2022 17:48:39 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jniwYJql96CHuO/dxBHnVTE8NZ6cuAMmUUuNcnEzGai3EVU1KXkJpAWvFNrfiykLaksU7xcUkXVbsjGWsW9UUI6wDTxY/4t21bAcWYSaGuWPxjiks79EVYmi7PraF6hcqBdmBQ1IqoG2IH0Kme4hxz9EU9OaEqganPWumAmjJ8cehzcOUBgNBI1MojYFEcoRP9TTAnngbXUi5pUvgccYWbCcqlePxbS8Cxl7pO5/WNBJobPwSKmjeB9j3KRlxX3IvZWSez9VUFS/Pdj5Q8mg16PVeQqaFykKk+GdJwk+1lrr4Ev2rGrxk4WvqzbKgPS+sNdR0UhYX6AZY9Ytn+GODg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4NZ49kMbkx9+7MvDNXJLfcwMJ8RO/oZuHo9ve8U1phQ=;
- b=d5tMrAqHAD2Zz1YetlsHnmwhpb+Y5r74fSEOJFAgTNwIM9x9dEJQS0eRFJXI5CLr+wD1SIATEwQEdOBjcyyvk6dzEPZ3jaHZ88+N2am+Hb3CKUvBrrezPvJsyc4DnZ8U5Cy64vnBJbFH1Pc3Eo7Q4JGhT1NlY3vXrQMAh+iftVMe5fEFYNoVlwBP0kRzJOg8lhl3omRv9G1O9we3I+zORrsmFZg/G2qrK5zzrkxlrVK7DWiIXl8jdu1Q+kF1RiKFqyyc0IWsex64kGu4lYfEPXl7yL4+/C6QqCL5BxNgcKlqBa/OmdlvUe3PTLmfW9NNKCreLNz3leWTWuYy7Iy0Dg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4NZ49kMbkx9+7MvDNXJLfcwMJ8RO/oZuHo9ve8U1phQ=;
- b=RDR1H9TAKcnuXEqsgBmYKn/aD9ElFV31mn/WigKIfXCNdv+HXnK4SLjUZByMQvel8hqmyW6crCXpUVLzAxGiYSdaFUTDoYXujQjs/ZvC4TCLi3+MtqVQUd5kUfHaBjmQxSkb45kzRbNTJk6b8JTfOZv8bb3XNR+C2OH12XJei93A/R99vZJd1WZyu7FDnGz7YiMaL5EwGc4xN9UI8zFP9DJa+h2mSGY5XG/qpeqOecX70xeQpEhloKZ1OfzkqupsyOnlUNhtMqYJXBZiZEu8G4SgXtK+MJ9QjKwbbatmngo9REnd5blIrLhSVqsK033eKxkw1stgvsZurC4UTN/Njg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by BY5PR12MB4917.namprd12.prod.outlook.com (2603:10b6:a03:1d1::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.22; Thu, 29 Sep
- 2022 17:48:36 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::f0c0:3a28:55e9:e99c]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::f0c0:3a28:55e9:e99c%5]) with mapi id 15.20.5676.019; Thu, 29 Sep 2022
- 17:48:36 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [PATCH] drm/i915/gvt: Add missing vfio_unregister_group_dev() call
-Date: Thu, 29 Sep 2022 14:48:35 -0300
-Message-Id: <0-v1-013609965fe8+9d-vfio_gvt_unregister_jgg@nvidia.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: MN2PR08CA0022.namprd08.prod.outlook.com
- (2603:10b6:208:239::27) To MN2PR12MB4192.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::15)
+Received: from mail-qv1-xf36.google.com (mail-qv1-xf36.google.com
+ [IPv6:2607:f8b0:4864:20::f36])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CBB0410EBA5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 29 Sep 2022 17:49:59 +0000 (UTC)
+Received: by mail-qv1-xf36.google.com with SMTP id jy22so817654qvb.4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 29 Sep 2022 10:49:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=xa8hoH9SnDPlJIeXGYh843CRJD1tjWdMf/dTq8TipPM=;
+ b=TTqX1qhbwY8oXLjTYWELHEsRERRC+tYA4I14qRpviPTnMPxxd/vPEPS/znbsofO0+c
+ 4bwTdW8+z/pWbH07euOuLtVPnrXYN4FM3+Cx3+6df9BnwzMRVSyQ1vC15hIyhMjMipuQ
+ qlzZ7Fu4h7IQcnc4aD13PnswpHL+dCBN4e0DgSfgytTo+Borsg650FpgD3ZVlkkzogU1
+ opPTvDdjbXUTLZKa0F4b83jrDhZt81cEI/hRhpm0Bun+0Wq7SRl0wOcvarlvT3D7N0e1
+ b7XskLXtlA/O+SKSR/BQgRPL969bnpg4P6x3JIZubcOO7fHzsFTljemfyNnz/GZSpyiX
+ iL9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=xa8hoH9SnDPlJIeXGYh843CRJD1tjWdMf/dTq8TipPM=;
+ b=PpiUHqoTVqidU7ZWG3hLvX0vv3RV7TClkd0pEbNnUFp/j88Z6Ta1OYOI+lx//VxG1N
+ mW8/hha0nzarIiA/kZC0sLZ55v3y5PS1eG84mOwLHJa/qSlnhdJskx+T01vvAz0bK1QW
+ fc6F0kxAlcSxvEm3Oi2d6I6bJ5OIqRXknHlx2LchM1c1qTBJ9Py23bVBxG1l03Dr+UUA
+ KJId1yolyvWPA3LeF7x97ivqVSDqWRdU88TLSWzsWyw8yrbcn8G9tgAaw7fWLJR+a6KX
+ VB9I2l+47vptsaLnZcoljn0M5VmcIyaVhAVb+PdM8wROBErxyF/bQ1q6eQSGZh2/GXo/
+ 1Q5Q==
+X-Gm-Message-State: ACrzQf1QFCQ7e1KKgugdcFsL7aW1AVKdfUuF8t3Ju9sYUj53L876zS3c
+ x++Vihv6SfZSXQnSpoGwXpLxOg==
+X-Google-Smtp-Source: AMsMyM7Xarezc23TZVeEEbR3Uk9puQBAc1mIn47qgL8JGhJP31afpTjPWuOiERJgd9lOx+IPbEN2Vg==
+X-Received: by 2002:a05:6214:3006:b0:496:ad87:6784 with SMTP id
+ ke6-20020a056214300600b00496ad876784mr3557984qvb.7.1664473798680; 
+ Thu, 29 Sep 2022 10:49:58 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-47-55-122-23.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [47.55.122.23]) by smtp.gmail.com with ESMTPSA id
+ 85-20020a370758000000b006ceb8f36302sm6929qkh.71.2022.09.29.10.49.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Sep 2022 10:49:57 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+ (envelope-from <jgg@ziepe.ca>) id 1odxfY-003fcM-BW;
+ Thu, 29 Sep 2022 14:49:56 -0300
+Date: Thu, 29 Sep 2022 14:49:56 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH v4 15/15] vfio: Add struct device to vfio_device
+Message-ID: <YzXaxPpkc+90Xx+T@ziepe.ca>
+References: <20220921104401.38898-1-kevin.tian@intel.com>
+ <20220921104401.38898-16-kevin.tian@intel.com>
+ <20220929105519.5c9ae1d8.alex.williamson@redhat.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN2PR12MB4192:EE_|BY5PR12MB4917:EE_
-X-MS-Office365-Filtering-Correlation-Id: 27d28af9-3c15-4a81-2b7a-08daa242d5c8
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 9ELWvopIyPN8DfwltgwiAtdmPuXK+EqlTl7rKl4+6ird4van3WOxekZbat54gbLFslVRln8amq5am9LkwuI+sx07uXMTTqnr7UPJzMbR4FGRlgYCansZ0EofXUL5jRtnJp2UQTtkHYLhzyl9rQtPOEDlYNlSjCawwPFYkQGiX26mi5+EojX4x2j8f5PXN9YeRNBXOUBfxx+6WcQhkDKncvq6rd3M6eeLvBDjzEffwjW0LWvWrSZ38uec+iX7fh6CNNxB2KFQogtf4B6ZGHnPVv/8d6fnO/Br3OaeYuDK1l75NAGJvmo+Sk5Ciw5kJ3KOFd9CJ/0SByO1C03n+6AM+eZIroZzgPnuuIlNXbV4gc5WooIchnKV+P4aO5tuq3NM6YQ9UPHZdh42wdO9FDoSR6RemiTQ59qXFIuk2+QcoA4aQIA6jWCDmnfn6xMMef1PEi5S94oiSZWJ3JDn88Zck6xNXMQ/5Y1zmYeg1TLUw4M5GUxfoAkNNhYaCURxi5YqqGKxsCbjvfaNGl9cGvEMxb+5T0OJcr8+1/SUXa9DjOZTDjZg4oDDDamlEfB/UZDalHsRxRgmc7AyXxF5/KHtHSpL/SyCZKknwqBj3qJFc7zVXPUiAwYNihNes177AsDNBdCCScN5+Z56kxwZqrlj3wbQw2G8SLVwK1fBTrkqZeaq9XP5WU4pdeltf53RxOPXzdKSCwxraSCNC4QgjUydaGbGQNGn3hcytAjx9ogLCQVVGVWcqP0+Lk2eupgEdb85Z9JTAyHBp9BeC/ZNR2to0w==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB4192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(4636009)(136003)(39860400002)(376002)(346002)(396003)(366004)(451199015)(6506007)(26005)(186003)(2616005)(6512007)(66476007)(66556008)(66946007)(8676002)(6486002)(36756003)(5660300002)(4326008)(478600001)(38100700002)(7416002)(41300700001)(921005)(86362001)(8936002)(2906002)(110136005)(54906003)(316002)(4216001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FAqrU4fV0dy6fFhF9xj1YrhoouzBknw2+vQ4KxdgKwbwVmvxVsDp6+vKlkN8?=
- =?us-ascii?Q?r5LMdJnjIpY/TaKGUb7gXOxCMJ/3U9lMN84OIvTQdxscAgMPxDHYYj+tXwdh?=
- =?us-ascii?Q?kHcNVsmZBGeAsBV0H5IkImMtNaAW2/zBOPA9WsyeNRy1Y3bhqcCnN3qbh18H?=
- =?us-ascii?Q?STYUrfwmbN/rH4HXRPITi0dttCsjvcKRs0vj2OvPVsv3epfVdyVLrGUJu4KE?=
- =?us-ascii?Q?jNnoY3KQxnS5qBV4Ph6k3tm1njV2FrrDN3Gl4SxfTYXCL7APpYaRGhbtZ0zA?=
- =?us-ascii?Q?yPN47EO+DK52fPrTFNGi8zkbmu2tLY05AXCTncC6fD87ceWJruKaIGQ6+G5v?=
- =?us-ascii?Q?qqq3dIaxM3z8hsm3gI7MXfu8QApLTQShe563zHyPJzWNs9GXZCLCsjeOTBmJ?=
- =?us-ascii?Q?usc/Dg8hIkRYP2Os8Z2C8dF3Gsx+Zq4ssQXM4GCVaKzoNI83iCJItZ5bbWzV?=
- =?us-ascii?Q?19IEUsLaKoR+KxDNYdS/Jhfb3W5ESe/HIBGqDMQXSmGdf43fPRYJPv8HhLyY?=
- =?us-ascii?Q?/MKOjeF44QsRQo/yK4GaaeopvNYdtKEsGEYc6IVEVA+Xg7EUuu7UH2jnJ/SP?=
- =?us-ascii?Q?dUDzjenl6tRTH0O6p50N6qtsFFwt3yHP/HoCidCRpAs+aBYmxKcMepXxcWzc?=
- =?us-ascii?Q?lSJzQ6wYZfy8Tbaxa2LBvswLFgJEWosn3TrbE5qry1C58cj+vjVL7gAkh0Ll?=
- =?us-ascii?Q?3yX2ftnFCjIgLKJYYNK4Y40KKZdjEe6kHUoCQ/XyMKJO+I3ZixvAUPt3oxQV?=
- =?us-ascii?Q?UJcYZzqvRAVdR4VEiAnCjRSHrBAT9qFgST8h02ccmOpo12BT6UGN0I+NRvkq?=
- =?us-ascii?Q?2M4pIDzeRhHYjtWUgBeUykq9rDt7HJ7yvc+8rLBpj/IOEiAzuAywOwheBgEi?=
- =?us-ascii?Q?vp0XVKqpxgFSoobRR95aXF9mndZaP0EeKy8bSQyDm06PPClIAtJ9ZjwJ5BgZ?=
- =?us-ascii?Q?1hARrC2ezAOb7rW0oDj/VAdGCbcI19eKI6qOvu10CRNcaDE53nIU+Z4l5Kk8?=
- =?us-ascii?Q?vtC9L8+9DV1kqvtoP0dnvtADEiVK4DZEI3OcSa8ZDbMIRdjBIgEOuzbzK4zX?=
- =?us-ascii?Q?yVXdI0Y2T1umQSInx36T43cCGmHqGGTg0XZP5EHXTraS27z7hZkRUteuz0ej?=
- =?us-ascii?Q?K+fBK3muv0BZGHREq9kd0VTLYv2o0Sr4wLWmpSe3ZqhDYYPrzZc1CB7PFCdU?=
- =?us-ascii?Q?myQk5PAiryisCFB0VKrwwYnHfOn6Onqz3ZoRXZkgh7PZf1ti+Lp7nJMO/9i2?=
- =?us-ascii?Q?/wgLOcvm1AcUDuwx8kFpe0pOGJLVP23WPt/7Msg48kq3OIYoHHv2dbe9A8cw?=
- =?us-ascii?Q?FHv+b7BGjMPy0U1atnPj8IY6e2bC1+8cCiiQTNekxTKTmlDkynIDI/CFfbEl?=
- =?us-ascii?Q?IylXgj8rUe/wrOvDjwodI61Iv0YG1wN5aWwXSlL5kDrml6Qe5wMyTicGdoxt?=
- =?us-ascii?Q?QwP4LG+RyLyYPvhy9Iu9hEJ9MAnHjQtC7Ll4f5w+rI8ymapTFwCDw+Py8MoV?=
- =?us-ascii?Q?iopOgpf+rWmRDSR6YcBp/sJtAWKW+3RmNdKRoFHO0el7SA1w53+4Ps0Dmdhj?=
- =?us-ascii?Q?63NX5nfiShGZE4TvwzM=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 27d28af9-3c15-4a81-2b7a-08daa242d5c8
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2022 17:48:36.6440 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: X/A6oL0+MT/1ztscqHivnhcw43uJBeAPXgTRVzaYRA0/pPILcQdwrFy/fj9yCsMj
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4917
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220929105519.5c9ae1d8.alex.williamson@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,42 +77,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Alex Williamson <alex.williamson@redhat.com>,
- Zhi Wang <zhi.a.wang@intel.com>, Christoph Hellwig <hch@lst.de>,
- stable@vger.kernel.org
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Eric Farman <farman@linux.ibm.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Kirti Wankhede <kwankhede@nvidia.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Longfang Liu <liulongfang@huawei.com>, Christoph Hellwig <hch@infradead.org>,
+ Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
+ Leon Romanovsky <leon@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Kevin Tian <kevin.tian@intel.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-When converting to directly create the vfio_device the mdev driver has to
-put a vfio_register_emulated_iommu_dev() in the probe() and a pairing
-vfio_unregister_group_dev() in the remove.
+On Thu, Sep 29, 2022 at 10:55:19AM -0600, Alex Williamson wrote:
+> Hi Kevin,
+> 
+> This introduced the regression discovered here:
+> 
+> https://lore.kernel.org/all/20220928125650.0a2ea297.alex.williamson@redhat.com/
+> 
+> Seems we're not releasing the resources when removing an mdev.  This is
+> a regression, so it needs to be fixed or reverted before the merge
+> window.  Thanks,
 
-This was missed for gvt, add it.
+My guess at the fix for this:
 
-Cc: stable@vger.kernel.org
-Fixes: 978cf586ac35 ("drm/i915/gvt: convert to use vfio_register_emulated_iommu_dev")
-Reported-by: Alex Williamson <alex.williamson@redhat.com>
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
----
- drivers/gpu/drm/i915/gvt/kvmgt.c | 1 +
- 1 file changed, 1 insertion(+)
+https://lore.kernel.org/r/0-v1-013609965fe8+9d-vfio_gvt_unregister_jgg@nvidia.com
 
-Should go through Alex's tree.
-
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 41bba40feef8f4..9003145adb5a93 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1615,6 +1615,7 @@ static void intel_vgpu_remove(struct mdev_device *mdev)
- 	if (WARN_ON_ONCE(vgpu->attached))
- 		return;
- 
-+	vfio_unregister_group_dev(&vgpu->vfio_device);
- 	vfio_put_device(&vgpu->vfio_device);
- }
- 
-
-base-commit: c72e0034e6d4c36322d958b997d11d2627c6056c
--- 
-2.37.3
-
+Jason
