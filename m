@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D2AC5EFDE1
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Sep 2022 21:24:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3CE375EFF37
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 29 Sep 2022 23:21:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AF1BF10E075;
-	Thu, 29 Sep 2022 19:24:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 63EC310E624;
+	Thu, 29 Sep 2022 21:21:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
- Thu, 29 Sep 2022 19:24:34 UTC
-Received: from mail.vielsats.click (unknown [45.88.91.61])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7BF2010E075
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Thu, 29 Sep 2022 21:21:48 UTC
+Received: from mail.xincats.click (unknown [192.119.170.19])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9EEAE10E62B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Sep 2022 19:24:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vielsats.click; 
+ Thu, 29 Sep 2022 21:21:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=xincats.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jessie_campusano@vielsats.click; 
- bh=msvP2BqA2GJFvjVmDyTCfRjvLsI=;
- b=myo/PWI7VPLE2H9i6mBu0OgnY0UL85oU8VanGlnazQr4WkERu5WJwMFMDqAd8luIgwC7ZwYRsvQv
- CYAszQ3W8A/zB0zj8WDwdVAzRocFkJd5MsjOWiGHcPEaPbeJwEht4NFsogYQUAaVfkg8rG6mA6iU
- VgGDIdDtMpY04yX2ZLI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vielsats.click;
- b=GdcTedIVgdWYKvIOyo+E/VQk7yeVhj0fwNlobVJ0JMj0iH6LUZ+QT+9Y+f3iCW9a3L3DGVac3F9x
- 5EoAIKTULcr3xRfHpcQxExlP7HE24oP9X5UIgsBUBCoaoYVyzD4ApFjt8fpGRqPyj3m8nWhgexoi
- IsL9E8kT2s5EoaXWedQ=;
-Received: by mail.vielsats.click id h6nof40001g2 for
+ i=alice-mcroberts@xincats.click; 
+ bh=J7PQWjfnS2dautedjYqht0GBoeo=;
+ b=GcMjvxnyIY6zzJEfFbfdl9QpqazYm+2xulE0qEWEqcXs3h1qtsXLk9AkL2SDYAEc/6xrK+clFhNC
+ g4vUfSjDzsCJAs3zRvrrnZxkve2VH+8dbj+po4RlVMAVSA/SWX0PEcLhBG6l19MZJupqdGyOPmwF
+ xaXYk48esNBxtE42x5k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=xincats.click;
+ b=jLF+YOYW7dEkf5q558T5IeQo2AS0BYLQMvZC7ibrLj68pP6VY+JkxB+bgwKWDG50z/UWLIsN4xUy
+ f/H9EaOGU0tGoTv54bH4/qYwKHLD9Yy6tP9LhUMPzEjHh80lTgsi/vkAiIf7wFnKZyNc96+hDxm6
+ ksWaIRz6Sg6Pzd2q/K4=;
+Received: by mail.xincats.click id h6ogoc0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 29 Sep 2022 15:06:51 -0400 (envelope-from
- <jessie_campusano-intel+2Dgvt+2Ddev=lists.freedesktop.org@vielsats.click>)
-Date: Thu, 29 Sep 2022 15:06:51 -0400
-From: Jessie Campusano <jessie_campusano@vielsats.click>
+ Thu, 29 Sep 2022 18:35:10 -0400 (envelope-from
+ <alice-mcroberts-intel+2Dgvt+2Ddev=lists.freedesktop.org@xincats.click>)
+Date: Thu, 29 Sep 2022 18:35:10 -0400
+From: Alice Mcroberts <alice-mcroberts@xincats.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Receive 4 estimates for your home repair project
+Subject: Do you want a Craftsman gas generator from TrueValue?
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_373_1546930464.1664478404519"
-Message-ID: <0.0.0.29.1D8D436A1DC98CC.2C5271@mail.vielsats.click>
+ boundary="----=_Part_115_1475317372.1664485482288"
+Message-ID: <0.0.0.C.1D8D453BB8FA3E6.D08E0@mail.xincats.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,25 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_373_1546930464.1664478404519
+------=_Part_115_1475317372.1664485482288
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Receive 4 estimates for your home repair project
+Do you want a Craftsman gas generator from TrueValue? intel-gvt-dev@lists.freedesktop.org
 
-Tap Here to Get Competitive Quotes on Your Project Here ,http://www.vielsats.click/decay-engineers/4c24M2395VC8I612JI3Ac1aFe8ek36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ.dm9o5CN10L6l3MMwD
 
-Hurry!  Find a Pro Then Find Costs and Get Your Project Started This Month. 
-
+Go Here to Claim a Craftsman gas generator from TrueValue~http://www.xincats.click/defaults-counsel/22e4C2395I8Jj612F3uc22sTe90K36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQidm9d6b10MTt6pNyOwD
 
 
 
-I2I6- Broadway,  FL00R TWO, NEWYORK, New. York 1OOO1. 
-To change your email choices, Click_On_Here,http://www.vielsats.click/bewitching-wavefronts/1d44t2395Y8W6q10q3c1bje8ey36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ.dm9o7eN10Fjs5S1@wD
-Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org
-8847815,8879433
+To change your message preferences, Go-Here-Now~http://www.xincats.click/8db4V2395bm8B611B3c2X3oe90T36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQidm9d5rH1K06FpwD0M/rentals-printer
 
-------=_Part_373_1546930464.1664478404519
+Our notification was delivered to intel-gvt-dev@lists.freedesktop.org
+
+. 96 MOWAT- Ave. , Toronto ON M4K3K1 CN
+
+19367871 83838541
+
+------=_Part_115_1475317372.1664485482288
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -79,22 +81,22 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><a href="http://www.vielsats.click/d6d5C23y95p8X6u12W3pc1zaye8eg36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.dm9o7dC10qHN5SBwOD/Ziegler-berkelium" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Get Competitive Quotes on Your Project</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:604px;height:1429px;"><a href="http://www.vielsats.click/d6d5C23y95p8X6u12W3pc1zaye8eg36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.dm9o7dC10qHN5SBwOD/Ziegler-berkelium"><img alt="Compare Project Pros to Save" src="http://www.vielsats.click/continue-conceal/9ae5j239L5b7Yar10S3c1cSe8eq36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.dm9o5bF1N05QUlwD" style="margin-left: 0px; margin-top: 0px; width: 604px; height: 1429px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">&nbsp;Search for Pros, Get Prices and Get You Project Underway As Soon As Possible.</span></span></p> 
-  <br /> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:309px;"><a href="http://www.xincats.click/f2f4e2395Xg_8610P3c22oe90Y36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQidm9d6mT1CX06KpwD31/probative-deserters"><img alt="Begin the 30-Second Survey Here" src="http://www.xincats.click/recounting-adequately/8fa4A2395a7ayL11G3c2Q4ye90V36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQidm9d7Jr1r0sm6Mp@wDM" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 309px;" /></a></span></span></span></p> &nbsp; 
+  <div style="text-align: center;">
+   <a href="http://www.xincats.click/f2f4e2395Xg_8610P3c22oe90Y36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQidm9d6mT1CX06KpwD31/probative-deserters"><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Go Here to Claim a Craftsman gas generator from TrueValue</span></span></a>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I2I6- Broadway,&nbsp; Floor Two, New York, NY. 10001.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your email choices, <a href="http://www.vielsats.click/40d5S23U95KRu8612b3cU1ZbNe8eC36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.dm9o7qJ1pin06Ak@zwD/Ziegler-berkelium">Click_On_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8847815 8879433</span></span></p>   
- <img src="http://www.vielsats.click/5934c2395oQ8i511a3c1dpFe8el36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ.dm9o6w1ij0x6n2pJwD/surprising-saddened" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your message preferences, <a href="http://www.xincats.click/defaults-counsel/1f26N2MK395fww8612g3cj23yye90P36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQidm9d5SP1p05FkwDl">Go-Here-Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 MOWAT. AVE, TORONTO ON M4K3K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">19367871:83838541</span></span></p>   
+ <img src="http://www.xincats.click/7735QB2395z8Py511QM3c25ie90o36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQidm9d6A10FAJ5q02wD/timing-servicing" alt=""/></body>
 </html>
 
-------=_Part_373_1546930464.1664478404519--
+------=_Part_115_1475317372.1664485482288--
 
