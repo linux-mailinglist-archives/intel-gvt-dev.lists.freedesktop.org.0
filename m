@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E05C55F088B
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Sep 2022 12:21:03 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A4275F09E7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Sep 2022 13:20:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 17E9810EC3F;
-	Fri, 30 Sep 2022 10:21:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7FA4D10EC87;
+	Fri, 30 Sep 2022 11:20:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 30 Sep 2022 10:20:58 UTC
-Received: from mail.finlaps.quest (unknown [77.90.188.164])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5896D10EC3F
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Fri, 30 Sep 2022 11:20:18 UTC
+Received: from mail.dinelaps.icu (unknown [77.90.188.120])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1636210EC86
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 30 Sep 2022 10:20:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=finlaps.quest;
+ Fri, 30 Sep 2022 11:20:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dinelaps.icu;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jennifer-frazier@finlaps.quest; 
- bh=vRMXagBXBCCAg7Zx1R+onObxyrQ=;
- b=b72AfFif+OvoviiG6T/cC9Z9RlvZSPJnQ49XHhmsWyQhZSDJVx83nHhSeJadPCxZErKE011aJhQl
- K5WszMNeDm1zvQiiHcwyd6NHnZ2cIRx4jcrOI0VcpKwOfPihg/fHTl7y4JmThu+R70M5PwXMY6VB
- 1TtabsxcIR5lm5R3Epg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=finlaps.quest;
- b=h1I0V/i+KVC5ClzpnTvM5NrjcOssio9BbSflOXy6ycbNpUAPqFOUGyxDHdTbPsRaT24JP1duLGAo
- 73sFb4hPzZdnBLhQdu14I5tq8phFL8VmJrs1XmAqYbghRHwCzqFAfVMkpjhe979D0TT7A8UM0h+q
- T6cARodlUu0CitZKOGI=;
-Received: by mail.finlaps.quest id h6r1gk0001go for
+ i=litzinger-jane@dinelaps.icu; 
+ bh=XRbFb7vf5rg0aUcVS/K+HjMd2ik=;
+ b=OmE/KrAv175p3pZZdXxM0cAqUZHbwIIBngJCV/mNyGIFJnQhNvcvZr7rNeUYJ8u6lPjvWN2bwi9o
+ rd4C1PIBxkeDdfV63sGp9/9L0MRUA9peJEmm7GQIBPU5mw94ojZzIegM2sSl7EfCbVjNK5q2P+rG
+ GeV2iKQw5b+XcjpvUXE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dinelaps.icu;
+ b=Ebh8gCOkrQbmBe+h3USrB62iEjTARlGLDiOyAG+9uM9t3n2bbQPlqi4bUrLkmOU6/gw55uOrVUNC
+ ddf/ed1IY6ogPJ5t/4LGLlltOBhbZM4oXA2shxyybnm6M183RA7M7vYBZA3XRHv3XVBHzmka+z9I
+ UEQ7SBD11Io7Je2bMLE=;
+Received: by mail.dinelaps.icu id h6rj0m0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 30 Sep 2022 06:07:24 -0400 (envelope-from
- <jennifer-frazier-intel+2Dgvt+2Ddev=lists.freedesktop.org@finlaps.quest>)
-Date: Fri, 30 Sep 2022 06:07:24 -0400
-From: Jennifer Frazier <jennifer-frazier@finlaps.quest>
+ Fri, 30 Sep 2022 08:39:25 -0400 (envelope-from
+ <litzinger-jane-intel+2Dgvt+2Ddev=lists.freedesktop.org@dinelaps.icu>)
+Date: Fri, 30 Sep 2022 08:39:25 -0400
+From: Jane Litzinger <litzinger-jane@dinelaps.icu>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations,
- Your Stanley Tool Kit from Lowes intel-gvt-dev@lists.freedesktop.org
+Subject: How to complete your bathroom update by the holidays  #99911
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_334_157889199.1664532440539"
-Message-ID: <0.0.0.25.1D8D4B46FC40F04.123155@mail.finlaps.quest>
+ boundary="----=_Part_547_170914428.1664536151294"
+Message-ID: <0.0.0.3C.1D8D4C9AC4E26DE.38DDAB@mail.dinelaps.icu>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_334_157889199.1664532440539
+------=_Part_547_170914428.1664536151294
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations, Your Stanley Tool Kit from Lowes  intel-gvt-dev@lists.freedesktop.org
+How to complete your bathroom update by the holidays  #54299
 
-Click Here for the Lowes Stanley Tool Offer-http://www.finlaps.quest/e7b5ki2395Hl8A612S3cz44n_e99C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQcdmd96M1O0FS5eTywD/stagnate-orbiting
-
-
+Go Here to Easily Compare Remodeler Bids:http://www.dinelaps.icu/2ff5V23h95DU86K10n3c48me9aD36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQtdmdd5Kvy106NMwpOD/capacious-abreactions
 
 
-. 96 Mowat.  Ave. , Toronto.  Ontario M4K 3KI CN
 
-To edit your subscription choices, Start Right Here-http://www.finlaps.quest/af75b2T395R86Il10S3c45Ae99W36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQcdmd95zr10v5Py0wD/pioneering-later
 
-This notice was selected for intel-gvt-dev@lists.freedesktop.org
 
-2096197. 5171946
+To update your subscription choices, Start Here Now:http://www.dinelaps.icu/eo34Y2395y8m6D10s3c49Fe9aZ36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQtdmdd6a1BDD06YlwDj@/growing-portal
 
-------=_Part_334_157889199.1664532440539
+Our email communication was intended for intel-gvt-dev@lists.freedesktop.org
+
+49784:99911
+
+l6l92.  Coastal_ Hwy. , 
+Lewes-, DELAWARE 19958_
+US. 
+
+------=_Part_547_170914428.1664536151294
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +84,25 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.finlaps.quest/venturings-mingle/8826wF23_95lGy8612MY3cI44le99h36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcdmd95P1i0x6U0TqwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here if you want a Stanley Tool Set</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.finlaps.quest/venturings-mingle/8826wF23_95lGy8612MY3cI44le99h36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcdmd95P1i0x6U0TqwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Click Here for the Lowes Stanley Tool Offer" src="http://www.finlaps.quest/pontiff-uniprocessor/4865a239p5H7zaD12p3ic46TNe99Y36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQcdmd95uO1Y06BzpTwD" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make Haste! Offer Becomes Void in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><a href="http://www.dinelaps.icu/assessors-governed/2c45b2t395L86Hg10E3c48te9aw36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQtdmdd7bT1Vx0Y6YN2MwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Easily Compare Remodeler Bids</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><a href="http://www.dinelaps.icu/assessors-governed/2c45b2t395L86Hg10E3c48te9aw36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQtdmdd7bT1Vx0Y6YN2MwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:595px;height:910px;"><img alt="What will your new bathroom look like?" src="http://www.dinelaps.icu/undivided-affiliating/6c_5NC2395u7Gxa11q3c4ajZe9aY36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQtdmdd6iX10UG5yMwlD" style="margin-left: 0px; margin-top: 0px; width: 595px; height: 910px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. Mowat AVE, Toronto ONTARIO M4 K3 K1 CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your subscription choices, <a href="http://www.finlaps.quest/4fd5W2U395diA8611N3c45Y_e99q36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQcdmd96oPZ1n06AJOBwD/pioneering-later">Start Right Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1992531.5171946</span></span></p>   
- <img src="http://www.finlaps.quest/6dd5gT2395siT8511Gu3c47qe99D36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQcdmd96eF1FX05IkwDz/stagnate-orbiting" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your subscription choices, </span><a href="http://www.dinelaps.icu/40d4Q2395k86TV11c3ch49ue9ap36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQtdmdd6b1QU0S5FlwDy/piles-conforms" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">54299,99911</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I6I92. CoastaI Highway_, LEWES', Delaware I9958</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-0498115e-7fff-f8e7-6fa7-a078000147dc"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">U.S.A.</span></span></p>   
+ <img src="http://www.dinelaps.icu/8bd5U2V395r_T8511o3hc4bKe9aS36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQtdmdd6RZT10s5N0wDp/Minnesota-Knoxville" alt=""/></body>
 </html>
 
-------=_Part_334_157889199.1664532440539--
+------=_Part_547_170914428.1664536151294--
 
