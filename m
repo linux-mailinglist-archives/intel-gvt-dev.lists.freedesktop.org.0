@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D9B45F183F
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Oct 2022 03:17:35 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F9925F195F
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Oct 2022 05:19:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D45F410E2FD;
-	Sat,  1 Oct 2022 01:17:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DB70310EE22;
+	Sat,  1 Oct 2022 03:19:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Sat, 01 Oct 2022 01:17:29 UTC
-Received: from mail.linklaps.click (unknown [45.88.91.198])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0951210E4AF
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sat, 01 Oct 2022 03:19:12 UTC
+Received: from mail.jeeplaps.click (unknown [185.104.151.144])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6690B10EE1B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  1 Oct 2022 01:17:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=linklaps.click; 
+ Sat,  1 Oct 2022 03:19:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jeeplaps.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kuehl_rachel@linklaps.click; 
- bh=Nc8ibUGcDp5ANLnog5qRTvKwJDU=;
- b=uUIMKjwLO3D/QBI2Ozzq1pqq/8M2RwQ+XmtmDCr0ZS2v3igZpStzm0VKv4IMm7mTy0ZAI8oU/FO8
- Vr8SnjlTaT7EgzuXP6UfDKbYsYhPAuSzGhKhVYaHjqLt8UMNnWwn4uZD/h1B0DPPfl+A/Xh3Qxvh
- JbJibz5Z5c7kuCsF5Tc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=linklaps.click;
- b=vfV8pUG7YjCmYOYhOE1mGaDtuHYsJ564zh+qpNr0vvs/nEBrAEkQbeKoiNH5symd5g5S9D0KhHFI
- fk1gIJRdgORrwQRtGNJ5g/qeuJkdI4m9S8lwcAeo0QChD4QROPKRMyZGPQ7uoJrZfw7DcQO+GzW7
- EEESSkls9tCdm2/rtKM=;
-Received: by mail.linklaps.click id h6uaii0001gi for
+ i=gardiner_mollie@jeeplaps.click; 
+ bh=qAsIMEf1OsfWf2muB2UORQGzKP0=;
+ b=xDilXOihB5bBlISpA+3wCKyyDO+TQLTecu58Gdk/5p7WhQA8PUndcQZcAprz3hGLD4iZ15aMF06h
+ 1XKfHFoewqaWMbE3UemQyDbCjQPgLVauef1XhDGpfOtLVzhPCeP9BH6vyWa06MzwX0hxGKWInPlZ
+ nz1zus9/Pax6s/Eg2VE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jeeplaps.click;
+ b=vz113qEuH3G/fsi6MD02nmuIa9pIWTDgI7qo3Zf8mHwwgoUuMDfld6RuHur2EkjjFuYUdjxDEQ4o
+ LAYxmj/3UeszYt0uPXQA9Brm6kgPOH/oJhZeRDMbWTBg/YmJQbjWUBja/wXRn3q4pWbuWLhGhJCV
+ dFofTfGNMPqFe9RFAHw=;
+Received: by mail.jeeplaps.click id h6uor00001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 30 Sep 2022 21:08:13 -0400 (envelope-from
- <kuehl_rachel-intel+2Dgvt+2Ddev=lists.freedesktop.org@linklaps.click>)
-Date: Fri, 30 Sep 2022 21:08:13 -0400
-From: Rachel Kuehl <kuehl_rachel@linklaps.click>
+ Fri, 30 Sep 2022 23:04:46 -0400 (envelope-from
+ <gardiner_mollie-intel+2Dgvt+2Ddev=lists.freedesktop.org@jeeplaps.click>)
+Date: Fri, 30 Sep 2022 23:04:46 -0400
+From: Mollie Gardiner <gardiner_mollie@jeeplaps.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Lowes Customer,
- Your Stanley Tool Kit from Lowes intel-gvt-dev@lists.freedesktop.org
+Subject: Your input about Ace gets you a Bonus up to $100  37318578
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_649_349240611.1664586478954"
-Message-ID: <0.0.0.47.1D8D53247EC68EA.2EC126@mail.linklaps.click>
+ boundary="----=_Part_109_1564636486.1664593471800"
+Message-ID: <0.0.0.B.1D8D5428FAB0884.7D7EF8@mail.jeeplaps.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +53,22 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_649_349240611.1664586478954
+------=_Part_109_1564636486.1664593471800
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations Lowes Customer, Your Stanley Tool Kit from Lowes  intel-gvt-dev@lists.freedesktop.org
+Your input about Ace gets you a Bonus up to $100
 
-Begin Here for the Lowes-Stanley Tool Kit Offer:http://www.linklaps.click/repercussion-glorious/2c46XW23q95Eyx8611s3c7heNea7O36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQLdmQe7iDlM10s5r1TwD
+Go Here to Pick Up To $100 Reward, http://www.jeeplaps.click/11f4f2395Dg8w611K3c86rRea9D36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ8dmRm7a_1X0jX6QB@WwD/Liman-handwriting
 
+Go! Sale Becomes Void in 2 Days.
 
+I26- East  Twenty-Third STREET NEW. YORK New. York IooIo' U. S. A.  
+To edit your subscription elections, http://www.jeeplaps.click/6474e2395H86uD11v3c87loea9j36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ8dmRm5NT1m06wqWwTD/forcibly-consoling
+Our notification was delivered to intel-gvt-dev@lists.freedesktop.org
+28469151,37318578
 
-
-96 Mowat- AVE, Toronto ONT M4 K3 K1 Canada
-
-To update your notification elections, Continue Over Here:http://www.linklaps.click/3b36Q_23k95SoJ8611V3zc7fyea7u36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQLdmQe7SNu10Ju5iqwkD/repercussion-glorious
-
-Our e-mail content was selected for intel-gvt-dev@lists.freedesktop.org
-
-7776640~6093638
-
-------=_Part_649_349240611.1664586478954
+------=_Part_109_1564636486.1664593471800
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,20 +77,16 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.linklaps.click/89f6v23l9W5QnH8612N3wcV7eBea7l36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQLdmQe6d10J_M5NOwDl/repercussion-glorious" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the Lowes Customer Questionnaire</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.linklaps.click/89f6v23l9W5QnH8612N3wcV7eBea7l36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQLdmQe6d10J_M5NOwDl/repercussion-glorious" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Begin Here for the Lowes-Stanley Tool Kit Offer" src="http://www.linklaps.click/Harveyize-southerner/22e4B2395C7NaA12bw3cK80gea7n36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQLdmQe5gp1n05s20wD" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lose No Time! Deal Comes To An End in 4 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT' AVENUE, Toronto_ Ont M4K3Kl CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your notification elections, <a href="http://www.linklaps.click/fanfold-shipyard/daa5wi2395S8PG611E3c7rfJea7z36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQLdmQe7V1Mi0lW5BlwD2">Continue Over Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7931262,6093638</span></span></p>   
- <img src="http://www.linklaps.click/J2f5zR2395Dq8P512eSs3c81Pea7S36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQLdmQe5FHO106Y@lOwD/fanfold-shipyard" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-cbb3ec30-7fff-bd1f-7719-0d858f17d9b7"><a href="http://www.jeeplaps.click/be76c2KR395fk86Z11t3c8W6Kea9m36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ8dmRm6G10Vrt6aXUwD@/glimpses-axers" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here to get up to $100 for your opinion</span></a></span><br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-cbb3ec30-7fff-bd1f-7719-0d858f17d9b7"><a href="http://www.jeeplaps.click/be76c2KR395fk86Z11t3c8W6Kea9m36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ8dmRm6G10Vrt6aXUwD@/glimpses-axers" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:657px;"><img alt="Go Here to Pick Up To $100 Reward" src="http://www.jeeplaps.click/Fitzroy-overtly/9906s2h3v95zCN7a11N3c88XFea9i36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ8dmRm5X1CV05Ykw0D" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 657px;" /></span></span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Go! Sale Becomes Void in 2 Days.</span></span><br /> &nbsp;</p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-cbb3ec30-7fff-bd1f-7719-0d858f17d9b7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">126. E&nbsp; 23RD St. NEW.YORK NY. IooIo US.&nbsp;</span></span></p> 
+  <span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your subscription elections, </span>
+  <a href="http://www.jeeplaps.click/Liman-handwriting/2a65t239Q5nA8V612YK3c8r7uea9p36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ8dmRm7Nm10VyC5rTlwD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here Now</span></a> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-cbb3ec30-7fff-bd1f-7719-0d858f17d9b7"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp;&nbsp;
+  <span style="font-family: Arial; font-size: 10pt; white-space: pre-wrap;">2171865~37318578</span>  
+ <img src="http://www.jeeplaps.click/8634d2395Xz8T510Q3c89Dea9D36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ8dmRm5IG10G6uJ@wDL/Fitzroy-overtly" alt=""/></body>
 </html>
 
-------=_Part_649_349240611.1664586478954--
+------=_Part_109_1564636486.1664593471800--
 
