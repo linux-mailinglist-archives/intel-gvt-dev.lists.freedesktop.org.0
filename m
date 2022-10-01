@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 638F85F1E65
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Oct 2022 19:21:11 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CCA6C5F1E91
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Oct 2022 20:21:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 920C510E4CF;
-	Sat,  1 Oct 2022 17:21:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EC7C510E3E5;
+	Sat,  1 Oct 2022 18:21:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
- Sat, 01 Oct 2022 17:20:58 UTC
-Received: from mail.zaclips.click (unknown [45.88.91.93])
- by gabe.freedesktop.org (Postfix) with ESMTP id F0F8410E4CF
+X-Greylist: delayed 354 seconds by postgrey-1.36 at gabe;
+ Sat, 01 Oct 2022 18:21:42 UTC
+Received: from mail.xenslip.click (unknown [45.88.91.79])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E448B10E475
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  1 Oct 2022 17:20:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=zaclips.click;
+ Sat,  1 Oct 2022 18:21:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=xenslip.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=behlmer.therese@zaclips.click; 
- bh=OJo8CBzyMfq1XqyFdU6ZQNdSfuE=;
- b=GWiRBycFjdDF4xZEeyd5/0T2hUhSvKjPx9MWSqa7T5wRodza5brQLllkoAzFiWoDjER8XbzDmu89
- KnTiBVYi5gC2D3DBwmY9gSGQJxA80V/HbG2h9++RQKRYgu3kCB0ssM8KikE4Mo3/JHFTaOs9Chk5
- NmSRK6ucNhuKwmTopEk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=zaclips.click;
- b=T0b4QYwi864XvwGkbP5KKf4zRSMxFiqF8V2Qcc3pHTUhzUkA7VdkBdBmc7RHbzWriwY8ALupJVQN
- UN+Mpjyn/SXANHOh/4FN4DuFwWg7Qug8GPCjXWp8PJmhXU5jfc1ZKvALLO8QGJSysIaFC82DXm5j
- IufKycV8V8p2l2H6w88=;
-Received: by mail.zaclips.click id h71rfm0001g4 for
+ i=sandra-baransky@xenslip.click; 
+ bh=bx5Zcs5w2hFEaoOk4a+3qZyNs10=;
+ b=U/cp86diTJzV7DUqgI3E1wZ03dmJ9cbOUMP0v2dTjfsFRPsQKFeFf3+iC8bDXrBG4rM8b10cEEq8
+ 2FfqM4eJftEUtTeHXggaZJqijdRNSq6Qqe49GOO10ztooIA9vfQFvOzE4xG+cSUUto+z4ogrhlbi
+ KVg5Cs5tDNIZgmkQi6I=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=xenslip.click;
+ b=kvEBBg27+9cBVM/uOXj+i8klMzCh4rGFvJmWaP2uVsVJcnWDLhixHMWAh/Z7Zb66JHxHMVhrn3HQ
+ Bx85vR29NMWZN6fglIpkGbCn7847Nss+U4phAvAJtmQmwWPB73UroJIAk0ZWVRLmDqS2zcY64t0E
+ j47R7h/sxxVWa82WBf8=;
+Received: by mail.xenslip.click id h722je0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 1 Oct 2022 13:05:00 -0400 (envelope-from
- <behlmer.therese-intel+2Dgvt+2Ddev=lists.freedesktop.org@zaclips.click>)
-Date: Sat, 1 Oct 2022 13:05:00 -0400
-From: Therese Behlmer <behlmer.therese@zaclips.click>
+ Sat, 1 Oct 2022 14:05:32 -0400 (envelope-from
+ <sandra-baransky-intel+2Dgvt+2Ddev=lists.freedesktop.org@xenslip.click>)
+Date: Sat, 1 Oct 2022 14:05:32 -0400
+From: Sandra Baransky <sandra-baransky@xenslip.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations from Ace Hardware intel-gvt-dev@lists.freedesktop.org
+Subject: Craftsman Riding Mower Giveaway sponsored by Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_85_478715873.1664643883842"
-Message-ID: <0.0.0.9.1D8D5B7F1009156.3344D7@mail.zaclips.click>
+ boundary="----=_Part_220_1667441612.1664647518752"
+Message-ID: <0.0.0.18.1D8D5C06588D940.7947F@mail.xenslip.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_85_478715873.1664643883842
+------=_Part_220_1667441612.1664647518752
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Craftsman Riding Mower Giveaway sponsored by Lowes  intel-gvt-dev@lists.freedesktop.org
+
+
+Begin Here for the Lowes Customer Questionnaire-http://www.xenslip.click/1015BT2395pS8i611B3cardWeb3S36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ.dmSR5q1_U05HOwOD/speckle-screeching
+
+
+
+
+
+
+To pull the plug on e-mail, Start Here Now-http://www.xenslip.click/echoing-Bergsten/b8e6a2Z3k95S8YC611g3Tcaeweb3G36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.dmSR6X1TvM05rAwDB
+
+This e-mail communication was chosen for intel-gvt-dev@lists.freedesktop.org
+
+-96 Mowat- AVE, Toronto' ON M4K3KI CANADA
+
+8227436-3701067
+
+------=_Part_220_1667441612.1664647518752
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -61,22 +84,19 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.zaclips.click/articulator-stutter/7566Pn2_395e86tA12M3CcaH9Seb2A36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQudmSQ7RzsV1J05MUwPD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for the Ace-Dewalt Promotion</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.zaclips.click/articulator-stutter/7566Pn2_395e86tA12M3CcaH9Seb2A36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQudmSQ7RzsV1J05MUwPD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Click Here for the Ace Hardware Survey" src="http://www.zaclips.click/3d14z2395M7Yra10D3cabgeb2i36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQudmSQ7pg1G0Yv5QW3wD/gangling-discontinuity" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span></p> &
- nbsp; 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry Up! Deal Is Over in 2 Days.</span></span></p> 
-  <br /> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href="http://www.xenslip.click/natural-plotters/ed66bGq2395OD86A10p3cadneb3U36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ.dmSR7r10lxWJ5Vq@wD"><img alt="Your Feedback for a Chance at a Craftsman Mower" src="http://www.xenslip.click/packer-Irving/2a64y2395rR7Da10S3cafBeb3o36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ.dmSR7MQB1UQ06dXwDyB" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:16px;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><a href="http://www.xenslip.click/natural-plotters/ed66bGq2395OD86A10p3cadneb3U36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ.dmSR7r10lxWJ5Vq@wD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the Lowes Customer Questionnaire</span></a></span></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your message preferences, </span><a href="http://www.zaclips.click/4c16A_239n5mhy8612p3cWyaaFeb2l36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQudmSQ6jzUy106mlwDTj/dedication-glaucoma" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat- Av, T0R0NT0 Ontario M4K 3K1 CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6003951~4781048</span></span></p>   
- <img src="http://www.zaclips.click/authenticated-signatures/ada5H239K5jlH8511u3cachOeb2Z36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQudmSQ6h10Lms5rylwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on e-mail, <a href="http://www.xenslip.click/a074s2395ei86z10H3caePeb3L36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.dmSR6HMH1y06f3UwDT/echoing-Bergsten">Start Here Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT' Ave., Toronto' ONTARIO M4K3Kl Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-39e41d1d-7fff-831a-a110-97fe9447c119"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8227436:3701067</span></span></p>   
+ <img src="http://www.xenslip.click/mildest-inclusiveness/e404X2395H85hZ12SV3ctb0Web3_36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ.dmSR6MVOG106SU@lwD" alt=""/></body>
 </html>
 
-------=_Part_85_478715873.1664643883842--
+------=_Part_220_1667441612.1664647518752--
 
