@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB1F55F1C29
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Oct 2022 14:23:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C8D55F1D2E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Oct 2022 17:26:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2683910E3BD;
-	Sat,  1 Oct 2022 12:23:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4D9ED10E40A;
+	Sat,  1 Oct 2022 15:26:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Sat, 01 Oct 2022 12:23:14 UTC
-Received: from mail.gutslip.art (unknown [77.90.188.16])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6BA9310E2CE
+X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
+ Sat, 01 Oct 2022 15:26:45 UTC
+Received: from mail.sailslip.monster (unknown [45.88.91.146])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C1AF410E40A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  1 Oct 2022 12:23:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gutslip.art;
+ Sat,  1 Oct 2022 15:26:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sailslip.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=raquel_fedalen@gutslip.art; bh=Zf/sIKIDONGfNJU+Kw29ifA2cd8=;
- b=Bqs9/uJ/hN10mBVlVO6p2SeJZcjP+wNPcJ7J3K+E3Mb1O17r3IvpWsQhTzs3kq07X91qwu/z6qHf
- y6EX+hW2PNzidRt6SCGCP7mM6hNujpH3JI3X+eMdTIQMZLPU2416rRxzqehBU3zfC6oSsM3WLud4
- +QslheU92nZGc4mhmEc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gutslip.art;
- b=o97vBCDVPWAVAyPdXmSsrGqJ1G3n8+AADfL3/1uNM/lm9oZJEITD7uNEXkDXI1REAEQnw5tj2cac
- hf618ReW2JNRfGsbM6JmeMmq2Ba/PsvXEUiJj+PGveFrSzFV//zD9oJ7blgcPjSxSvn8sSORJagB
- SymhFaMfC6ndTdUr7Sk=;
-Received: by mail.gutslip.art id h7134i0001gj for
+ i=helen.hoos@sailslip.monster; 
+ bh=tcNHzzzHdZlbTzicANswWk5oaOk=;
+ b=swiA4NXjEFzcJAHXx1JE5ums7ro5e3nDyeRz5nufjzSvmtvkjW8ixjQM4f7EjnntdgPckUveP3yJ
+ HPLlvKc49wMv3oQ1h/pgscDRPWpIPR6290PjDQsRVe176SV4+aCNio7xunmWb09Fe/wRQ9z9ACcc
+ 0fmvhzq+hHdKInz1PgY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sailslip.monster;
+ b=vx3+w4z5wiWV41L8vjEJ0R56l0mpoWQ02mv4PI8DYwkVoBYjPPachspoe6ip4bgmaQWgIJKpGqWY
+ SKoRlCC05UBxDuCy72FLT3QP6x3ngbODf7Ar5ie21v/dj2K3wNIq1WFKsfGE2kyAOOi53h+M2eKj
+ 5tFh3r18vlesZ6h58AU=;
+Received: by mail.sailslip.monster id h71e3a0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 1 Oct 2022 09:36:37 -0400 (envelope-from
- <raquel_fedalen-intel+2Dgvt+2Ddev=lists.freedesktop.org@gutslip.art>)
-Date: Sat, 1 Oct 2022 09:36:37 -0400
-From: Raquel Fedalen <raquel_fedalen@gutslip.art>
+ Sat, 1 Oct 2022 11:16:14 -0400 (envelope-from
+ <helen.hoos-intel+2Dgvt+2Ddev=lists.freedesktop.org@sailslip.monster>)
+Date: Sat, 1 Oct 2022 11:16:14 -0400
+From: Helen Hoos <helen.hoos@sailslip.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The Lowes - Stanley Tool Kit Giveaway Ends Soon
- intel-gvt-dev@lists.freedesktop.org
+Subject: Check out Our New List of the Hottest Gadgets
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_79_1128348180.1664625984882"
-Message-ID: <0.0.0.8.1D8D59AD4892866.6EE034@mail.gutslip.art>
+ boundary="----=_Part_703_391981186.1664637343484"
+Message-ID: <0.0.0.4D.1D8D5A8BF46815C.395CA7@mail.sailslip.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +53,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_79_1128348180.1664625984882
+------=_Part_703_391981186.1664637343484
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-The Lowes - Stanley Tool Kit Giveaway Ends Soon  intel-gvt-dev@lists.freedesktop.org
+Check out Our List of the Coolest Gadgets Now
 
-Go Here to Qualify~http://www.gutslip.art/profane-mileage/ef44g2395z86wQ10i3c95teadP36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQMdmSm5z1z0V6PqNwJD
-
-
+Check out Our New List of the Hottest Gadgets. http://www.sailslip.monster/morbidly-knees/cba6o23so95am8g611V3cZa1Ieb0P36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQidmS97QRtV1m06fqLwjD
 
 
--96 Mowat.  Ave, Toronto- ON M4 K3 K1 CN
+To modify your subscription preferences, Start-Here-Now. http://www.sailslip.monster/7af5rS2395c8Qy612L3jcaX2heb0y36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQidmS97QxC10GL6OlwpDP/things-dwelled
+Our email message was selected for intel-gvt-dev@lists.freedesktop.org
 
-No longer want to receive information?, Begin_Ahead_Here~http://www.gutslip.art/Kirkpatrick-ornery/c424k2395iv86o12c3c9tY6headi36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQMdmSm6ElC10H6MlwUpD
+18O34_ Ventura.  Blvd.  STE l69.  ENCIN0 California 91316, USA
 
-Our email was sent to intel-gvt-dev@lists.freedesktop.org
+6919516~1724941
 
-5704164. 5795250
-
-------=_Part_79_1128348180.1664625984882
+------=_Part_703_391981186.1664637343484
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,20 +78,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.gutslip.art/e216e239FG5k8pT610G3c95zeadJ36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQMdmSm7zUm10Po5BzwDy/clotting-disordered" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to give your input about Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.gutslip.art/e216e239FG5k8pT610G3c95zeadJ36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQMdmSm7zUm10Po5BzwDy/clotting-disordered" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Go Here to Qualify" src="http://www.gutslip.art/6a14f2395QLz7a11c_3c97meadi36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQMdmSm5f1CI05m2wDW/personalizes-subsumed" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Quickly! Exclusive Offer Becomes Void in 4 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><a href="http://www.sailslip.monster/things-dwelled/9ae4A2395SkC8610Y3ca1Ieb0U36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQidmS95L1uu05m2wDP" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Check out Our New List of the Hottest Gadgets</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1315px;"><a href="http://www.sailslip.monster/things-dwelled/9ae4A2395SkC8610Y3ca1Ieb0U36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQidmS95L1uu05m2wDP"><img alt="See the Top Rated Gadgets of 2022" src="http://www.sailslip.monster/things-dwelled/60c5er2395a7uKa11I3cNa3qeb0K36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQidmS96wA1mk06ETAwD3" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1315px;" /></a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; color: rgb(153, 0, 0); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Limited Availability.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- MOWAT AVE, Toronto' Ont M4K 3K1 CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive information?, <a href="http://www.gutslip.art/9e94Y2395vs8W611om3c96neadG36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQMdmSm5N10GV5CX@wD/recursing-examination">Begin_Ahead_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9624318,5795250</span></span></p>   
- <img src="http://www.gutslip.art/ef34U2395h85H_12Aq3c98UReadx36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdmSm7K1CrTm06llwNPD/recommending-provisional" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your subscription preferences,<a href="http://www.sailslip.monster/sprinkle-ingratiate/ada4S2395XYz8611N3cXa2Oeb0u36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQidmS95s1h0Q6lylwD@"> Start-Here-Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18O34. Ventura' B0ULEVARD Suite 169' ENClN0 CA. 91316 US</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8598870 1724941</span></span></p>   
+ <img src="http://www.sailslip.monster/taxed-flourishes/b705u239j5m85HA11h3ca_4Teb0q36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQidmS95j10Xi6M2MTwD" alt=""/></body>
 </html>
 
-------=_Part_79_1128348180.1664625984882--
+------=_Part_703_391981186.1664637343484--
 
