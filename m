@@ -1,44 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C209D5F243F
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  2 Oct 2022 19:21:22 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4EB45F248C
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  2 Oct 2022 20:19:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8033410E103;
-	Sun,  2 Oct 2022 17:21:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6159210E04C;
+	Sun,  2 Oct 2022 18:19:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
- Sun, 02 Oct 2022 17:21:16 UTC
-Received: from mail.qinswit.monster (unknown [185.104.151.5])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3027310E12E
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Sun, 02 Oct 2022 18:19:16 UTC
+Received: from mail.pinswit.click (unknown [185.104.151.233])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4796D10E032
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  2 Oct 2022 17:21:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=qinswit.monster; 
+ Sun,  2 Oct 2022 18:19:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pinswit.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lidia-montiel@qinswit.monster; 
- bh=vR+Vzq7nEMn6+zrNuxRCYZky/v0=;
- b=OifGmWRlrYiO5s47Rs3l+ixtrUf0WvxqRlbWFFahAh6sS3JV0w3Dzl5pT/lxtVmnKwo38fZYC8vr
- YTtvhYEvf8CGQnFKr+fJ014rHqBE6RkpxPGn+FRESMdnxzFsyJQbAyhy3z9DGDay7Xu88aGgiX2H
- 6Q4W1abX8sTPWZFX7C8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=qinswit.monster;
- b=e0bJn8VKXJsZF27TXWkLVch+JZBJNFFqt3534wyqEORT/0VnD2Or8W+NnS+w97FRYcHTw7/5F0G4
- sqh1ySF3RtoqMfV08/Fvu+ouG/NhGPbr6TL7gyFXI45Ca1RC/8jumZprZT2pTXUhRZqr8LJpTBXl
- Aaxo6saB/64QEbSVZg0=;
-Received: by mail.qinswit.monster id h77eq20001gm for
+ i=mieth.eliza@pinswit.click; bh=Wnqo7Dk4DZu8YvMK6sqMiqPLkWk=;
+ b=Fm5G2HhlFrGUKp7/wzOGbLCyMuD0psHOC3uLGey5Hos1J4XorM5NEicTNIIMHBGAeRnLJzFyi45g
+ 1gZHDVkqh6BtQSDhq3r9A11sbONezCnRGceHHvdVM75RKyzbj5mtBkmwjo5BvM+0fFB4yWrG/p+9
+ CiJysWGnj4rDctHNjos=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pinswit.click;
+ b=D24aAtnx50RAnGzLR/qqXVXx0O9UinJR/wjZ7wOoKcATB1r7y/BInGfoznWDRI5ZWOlyym6FDNw3
+ vXDZIheKFD3iM9fXIKK/g73WXZXbznHw4pA4+KObDRd7Dt7BKPpHPjb7K9orsxfApQBzHqSOqpla
+ qLgWCNNh3LXlzQCtgK4=;
+Received: by mail.pinswit.click id h77b280001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 2 Oct 2022 14:36:59 -0400 (envelope-from
- <lidia-montiel-intel+2Dgvt+2Ddev=lists.freedesktop.org@qinswit.monster>)
-Date: Sun, 2 Oct 2022 14:36:59 -0400
-From: Lidia Montiel <lidia-montiel@qinswit.monster>
+ Sun, 2 Oct 2022 14:07:35 -0400 (envelope-from
+ <mieth.eliza-intel+2Dgvt+2Ddev=lists.freedesktop.org@pinswit.click>)
+Date: Sun, 2 Oct 2022 14:07:35 -0400
+From: Eliza Mieth <mieth.eliza@pinswit.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Ace Shopper,
- You've been Chosen intel-gvt-dev@lists.freedesktop.org
+Subject: View the Best Deals on Used Cars Online Today  8443616
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_511_341129413.1664730411631"
-Message-ID: <0.0.0.38.1D8D68DF4CE7F24.399DAC@mail.qinswit.monster>
+ boundary="----=_Part_388_1861344585.1664734040417"
+Message-ID: <0.0.0.2B.1D8D689D9A91CBC.6981DF@mail.pinswit.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,29 +52,132 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_511_341129413.1664730411631
-Content-Type: text/html; charset=us-ascii
+------=_Part_388_1861344585.1664734040417
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
+View the Best Deals on Used Cars Online Today  5095206
+
+Click Here to Online Quotes on the Best Used Car Deals. http://www.pinswit.click/d134Q2395O8Q6x10G3ce5Qec1Z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQgdmKn6FMC10H6gz0wDW/abstractly-reassembling
+
+
+
+
+
+
+
+To break off your subscription, from CarDealFinder. 1800CarShow. com, 
+
+Continue_Over_Here. http://www.pinswit.click/possum-buzzword/2a65dB2395Ym86N11d3vce6Yec1m36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQgdmKn6kQ10W_6q20OwD
+ or mail us at: 6O1.  W F0RT Street, Detroit MICHIGAN 48226 
+U. S. A. 
+
+This communication was intended for intel-gvt-dev@lists.freedesktop.org
+
+4446251. 8443616
+
+------=_Part_388_1861344585.1664734040417
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.qinswit.monster/property-pitiers/af85S23t95b8CG610w3ce1mec0u36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQvdmKm6v10NPO6Vj1wDq" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the Ace-Dewalt Offer</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.qinswit.monster/property-pitiers/af85S23t95b8CG610w3ce1mec0u36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQvdmKm6v10NPO6Vj1wDq" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Tap Here to give your opinion about Ace" src="http://www.qinswit.monster/42b4l2395rO7xa12iR3nce3sec0p36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQvdmKm6O1gw0M5X@wDP/Rockies-plunders" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Don't Wait! Deal Goes Away in 3 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your email choices, </span><a href="http://www.qinswit.monster/Rockies-plunders/9185CF2395S8C6y12du3cVe2mec0h36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQvdmKm7ogL1I0X6NBqNwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT- Ave., Toronto ONT M4K3K1 CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">98140644,2600450</span></span></p>   
- <img src="http://www.qinswit.monster/Rockies-plunders/6fc4l2395jA85R12I3Xce4WDec0D36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQvdmKm7SZl1Dx05Q@WwD" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9528bac7-7fff-d7f8-5a3=
+9-7e00c9b3ddf3"><span style=3D"font-size: 9pt; font-family: Arial; color: r=
+gb(78, 127, 175); background-color: rgb(164, 194, 244); font-variant-numeri=
+c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
+-space: pre-wrap;">&nbsp;</span><span style=3D"font-size: 9pt; font-family:=
+ Arial; color: rgb(255, 255, 255); background-color: rgb(164, 194, 244); fo=
+nt-variant-numeric: normal; font-variant-east-asian: normal; vertical-align=
+: baseline; white-space: pre-wrap;">&nbsp;&nbsp;&nbsp;</span><span style=3D=
+"font-size: 9pt; font-family: Arial; color: rgb(17, 85, 204); background-co=
+lor: rgb(164, 194, 244); font-variant-numeric: normal; font-variant-east-as=
+ian: normal; vertical-align: baseline; white-space: pre-wrap;">Having troub=
+le viewing this email? </span><span style=3D"font-size: 9pt; font-family: A=
+rial; color: rgb(255, 255, 255); background-color: rgb(164, 194, 244); font=
+-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
+baseline; white-space: pre-wrap;">&nbsp;</span><a href=3D"http://www.pinswit.click/Jakes-flinches/31e4S2395j8t6h12P3cez5WBec1N36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQgdmKn6z1D0oF6qyTBwD" style=
+=3D"text-decoration-line: none;"><span style=3D"font-size: 9pt; font-family=
+: Arial; color: rgb(17, 85, 204); background-color: rgb(164, 194, 244); fon=
+t-variant-numeric: normal; font-variant-east-asian: normal; text-decoration=
+-line: underline; text-decoration-skip-ink: none; vertical-align: baseline;=
+ white-space: pre-wrap;">View it Here in a browser</span></a><span style=3D=
+"font-size: 9pt; font-family: Arial; color: rgb(17, 85, 204); background-co=
+lor: rgb(164, 194, 244); font-variant-numeric: normal; font-variant-east-as=
+ian: normal; vertical-align: baseline; white-space: pre-wrap;"> |</span><sp=
+an style=3D"font-size: 9pt; font-family: Arial; color: rgb(255, 255, 255); =
+background-color: rgb(164, 194, 244); font-variant-numeric: normal; font-va=
+riant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"=
+> </span><a href=3D"http://www.pinswit.click/60b5Mr2395mmo8612a3cel6lNec1C36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQgdmKn5uQG105WMwDW/reformers-plebeian" style=3D"text-decoration-line: none;"><span=
+ style=3D"font-size: 9pt; font-family: Arial; color: rgb(17, 85, 204); back=
+ground-color: rgb(164, 194, 244); font-variant-numeric: normal; font-varian=
+t-east-asian: normal; text-decoration-line: underline; text-decoration-skip=
+-ink: none; vertical-align: baseline; white-space: pre-wrap;">Unsubscribe f=
+rom this email list</span></a><span style=3D"font-size: 9pt; font-family: A=
+rial; color: rgb(164, 194, 244); background-color: rgb(164, 194, 244); font=
+-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
+baseline; white-space: pre-wrap;">xxx</span><span style=3D"font-size: 9pt; =
+font-family: Arial; color: rgb(255, 255, 255); background-color: rgb(164, 1=
+94, 244); font-variant-numeric: normal; font-variant-east-asian: normal; ve=
+rtical-align: baseline; white-space: pre-wrap;">&nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></span></p>=20
+  <div style=3D"text-align: center;">
+   <span id=3D"docs-internal-guid-e318a6d1-7fff-7e58-df7a-a0075f257cc5"><a =
+href=3D"http://www.pinswit.click/Jakes-flinches/31e4S2395j8t6h12P3cez5WBec1N36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQgdmKn6z1D0oF6qyTBwD" style=3D"text-decoration-line: none;"><span style=3D"fo=
+nt-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
+meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
+line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
+: pre-wrap;"><span style=3D"border:none;display:inline-block;overflow:hidde=
+n;width:534px;height:2048px;"><img height=3D"2048" src=3D"http://www.pinswit.click/rabbit-liable/7ce4Q2395zO7Da10K3ce7Aec1n36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQgdmKn5b10CJ5CMNwD" styl=
+e=3D"margin-left:0px;margin-top:0px;" width=3D"534" /></span></span></a></s=
+pan>
+   <br />=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <span id=3D"docs-internal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;"><strong><span style=3D"font-size:18px;"><a href=3D"http://www.pinswit.click/Jakes-flinches/31e4S2395j8t6h12P3cez5WBec1N36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQgdmKn6z1D0oF6qyTBwD">=
+Click Here to Online Quotes on the Best Used Car Deals</a></span></strong><br /> <br /> <br /> <br /> <br=
+ /> <br /> <br /> <br /> <span style=3D"font-size:10px;">This is an Adverti=
+sement.</span></span></span>
+  </div>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
+rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><span style=3D"font-family:=
+ Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
+ical-align: baseline; white-space: pre-wrap;">To break off your subscription, from CarDealFin=
+der.1800CarShow.com,&nbsp;</span></span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
+rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><a href=3D"http://www.pinswit.click/60b5Mr2395mmo8612a3cel6lNec1C36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQgdmKn5uQG105WMwDW/reformers-plebeian" styl=
+e=3D"text-decoration-line: none;"><span style=3D"font-family: Arial; color:=
+ rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: n=
+ormal; text-decoration-line: underline; text-decoration-skip-ink: none; ver=
+tical-align: baseline; white-space: pre-wrap;">Continue_Over_Here</span></a><span=
+ style=3D"font-family: Arial; font-variant-numeric: normal; font-variant-ea=
+st-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> or mai=
+l us at: 6O1. W F0RT ST., DETROlT Mich 48226.<br /> =
+UNITED STATES</span></span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
+rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><span style=3D"font-family:=
+ Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
+ical-align: baseline; white-space: pre-wrap;">This communication was intended for =
+intel-gvt-dev@lists.freedesktop.org</span></span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span style=3D"font-size:10px;"><span id=3D"docs-inte=
+rnal-guid-9528bac7-7fff-d7f8-5a39-7e00c9b3ddf3"><span style=3D"font-family:=
+ Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
+ical-align: baseline; white-space: pre-wrap;">5095206 =
+8443616</span></span></span></p>  =20
+ <img src=3D"http://www.pinswit.click/6655dy2395Hu8l512z3Tcer8Nec1g36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQgdmKn5M1r0i5slTwD/abstractly-reassembling" alt=3D""/></body>
 </html>
 
-------=_Part_511_341129413.1664730411631--
+------=_Part_388_1861344585.1664734040417--
 
