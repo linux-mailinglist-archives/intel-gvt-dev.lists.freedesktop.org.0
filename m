@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D8AC5F20D0
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  2 Oct 2022 03:18:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B8ED65F2103
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  2 Oct 2022 04:21:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0A11310E6BE;
-	Sun,  2 Oct 2022 01:18:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 41A7810E6E3;
+	Sun,  2 Oct 2022 02:21:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sun, 02 Oct 2022 01:18:15 UTC
-Received: from mail.jugslip.click (unknown [185.104.151.113])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0698A10E6BE
+X-Greylist: delayed 320 seconds by postgrey-1.36 at gabe;
+ Sun, 02 Oct 2022 02:21:17 UTC
+Received: from mail.liphats.click (unknown [209.142.103.175])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7478710E6E0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  2 Oct 2022 01:18:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jugslip.click;
+ Sun,  2 Oct 2022 02:21:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=liphats.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=connie.valley@jugslip.click; 
- bh=+EXkJBHvUv/t/5hjTgenTR6Gzi4=;
- b=KzBOyvyWk6jiSbZCf6cQ7iKEUuPHlOniYqGF81sXmMVHS+OBlYmpOtCMONRSNZy/57GNJPIFvCJ3
- CV6jhidp+7EsfbuA0gUkjCW1olr/gxhbGVhhNMI+VZ9teTKG6RaDnWSeISBwpWAS3JoZ2SZKVLhW
- 381Y+fT68gDEYKERGuU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jugslip.click;
- b=LkH2VndNDppkhZJrl4UftXEnhBI7uq3GQ6Leaqm4FK5WjSnRdvH6pwsE9ogW6UAr+v//O1u4SkqE
- EblQDiqP6qJh1uADpprPo7/Zap/8pnhh/tbgsJDVl6aXRqZTlq9IW00F2NR2XdQBV20MgigCyo0v
- 4+aVm/ymmotWBfwUKI0=;
-Received: by mail.jugslip.click id h73jde0001gk for
+ i=gilkison-morgan@liphats.click; 
+ bh=lhBHtc915xuIbm9bHqoDOWWw7kM=;
+ b=TdFeaQZlospN6uXxPSfbBy7rtw5cVTuUkS5C5A2Zmo7wut1l1MWpqQ/8x5pp6i7z5pk7Iam9Bmt6
+ cV/r7wlRhzb47EB9FaQUdv9JUKJ9hIyJSW4k5THzr1ErQbCrQ2bsaWNsXr057+XcsE0pLW4SOM9P
+ 2ShHbNryC3LpH21s6rM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=liphats.click;
+ b=EqApsZyVpqFiWEcGFOnlqW+IGhVT2n8Ep3qYmYGh5VNmj31JxrTItSC2pc4puj+8gVBFDIJ2yfuL
+ k7Pyf6hyBLgPqf4LLO7QpgGZSI1c3wfy67ZCmMftF3+X1Fpb6+H6yeUVWU52vtbTMaNcTwl00zGe
+ SPOpy67CmU3upiNmGUs=;
+Received: by mail.liphats.click id h73qpq0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 1 Oct 2022 21:08:57 -0400 (envelope-from
- <connie.valley-intel+2Dgvt+2Ddev=lists.freedesktop.org@jugslip.click>)
-Date: Sat, 1 Oct 2022 21:08:57 -0400
-From: Connie Valley <connie.valley@jugslip.click>
+ Sat, 1 Oct 2022 22:06:23 -0400 (envelope-from
+ <gilkison-morgan-intel+2Dgvt+2Ddev=lists.freedesktop.org@liphats.click>)
+Date: Sat, 1 Oct 2022 22:06:23 -0400
+From: Morgan Gilkison <gilkison-morgan@liphats.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Lowes Shopper,
- Claim Your Stanley Tool Set  intel-gvt-dev@lists.freedesktop.org
+Subject: TrueValue_Loyalty Giveaway
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_703_1729523280.1664672921765"
-Message-ID: <0.0.0.4E.1D8D5FB8C5C31B2.3EDA6B@mail.jugslip.click>
+ boundary="----=_Part_364_2052888458.1664676366354"
+Message-ID: <0.0.0.28.1D8D6039216402C.1E08F2@mail.liphats.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,26 +54,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_703_1729523280.1664672921765
+------=_Part_364_2052888458.1664676366354
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations Lowes Shopper, Claim Your Stanley Tool Set  intel-gvt-dev@lists.freedesktop.org
+TrueValue_Loyalty Giveaway intel-gvt-dev@lists.freedesktop.org
 
-Click Here for the Lowes Customer Questionnaire. http://www.jugslip.click/gopher-menarche/b8e6q2m3N95J8NO611q3cc9XFebaQ36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQPdme96wn1k0o5MyjwD
-
-
+Begin Here for the TrueValue:Loyalty Giveaway. http://www.liphats.click/6Zb6j23P9w5rCW8612L3cxcdYrebbr36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQLdmed6Ki1VA06kOJwDM/leathered-maladies
 
 
-96' MOWAT.  Avenue, Toronto_ ONT.  M4K 3K1 CANADA
 
-To change your subscription options, Continue_This_Way. http://www.jugslip.click/7eb6B2L3i95i86qX11sP3ccaiebaY36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQPdme96j1m0jt6s3wMTD/shortcut-Ghanian
 
-This content was meant for intel-gvt-dev@lists.freedesktop.org
 
-4575428,43670732
+To discontinue communication, Go_Here_Now. http://www.liphats.click/honeymooning-Kauffman/5d04c2395aP86z10N3ccegebbF36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQLdmed5CC10r6dN1wLD
 
-------=_Part_703_1729523280.1664672921765
+This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org
+
+96' MOWAT_ AVE, T0R0NT0 ONTARIO M4K3K1 CN
+
+3609920. 4644597
+
+------=_Part_364_2052888458.1664676366354
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,21 +82,22 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.jugslip.click/1976q239DL5nn86P12tY3cc9CvebaI36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPdme96hsu10p5ANwDy/argue-graft" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Claim a Stanley 170 pc Tool Set from Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.jugslip.click/1976q239DL5nn86P12tY3cc9CvebaI36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPdme96hsu10p5ANwDy/argue-graft" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Click Here for the Lowes Customer Questionnaire" src="http://www.jugslip.click/dc76q23zn95LN7Ha11k3cocbBebax36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQPdme95pHS106z@qwD3/duct-Marlborough" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Deal Comes to a Close in 5 Days.</span></span></p> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><a href="http://www.liphats.click/imitates-editors/3965d2Q395jF86U10K3ccdTebbk36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQLdmed6Y1io0u6FJwBUD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="TrueValue Craftsman Generator Giveaway" src="http://www.liphats.click/6fb6l2Kw395U7qap11Kq3ccfAebbL36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQLdmed6YQr1J05BlwDL/photogenic-hastening" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><a href="http://www.liphats.click/imitates-editors/3965d2Q395jF86U10K3ccdTebbk36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQLdmed6Y1io0u6FJwBUD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the TrueValue:Loyalty Giveaway</span></a></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' Mowat_ AVENUE, T0R0NT0 ON M4K 3KI CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your subscription options, <a href="http://www.jugslip.click/ef35B239D5Q86hS10U3ccaOebao36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQPdme95DHX106U0wMDz/gopher-menarche">Continue_This_Way</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8955932 43670732</span></span></p>   
- <img src="http://www.jugslip.click/mingled-slacks/e044I2395k8H5V10z3cccBebaZ36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQPdme96c1NA0k6Fl@wDT" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To discontinue communication, </span><a href="http://www.liphats.click/3775g239o5f8V6h11f3cceyvebbF36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQLdmed7BW1V0ki5EOLwD/sirens-Oderberg" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go_Here_Now</span></a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 Mowat- Avenue, Toronto. ONT M4K 3Kl CANADA</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3609920 4644597</span></span></span></p>   
+ <img src="http://www.liphats.click/cf54u2395D8V5n10D3cd0zebbJ36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQLdmed7K1pRr0z5SUlwD/governments-revolter" alt=""/></body>
 </html>
 
-------=_Part_703_1729523280.1664672921765--
+------=_Part_364_2052888458.1664676366354--
 
