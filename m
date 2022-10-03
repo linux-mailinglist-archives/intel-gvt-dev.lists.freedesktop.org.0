@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A73D5F3369
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Oct 2022 18:23:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 271CE5F3476
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Oct 2022 19:26:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C958410E420;
-	Mon,  3 Oct 2022 16:23:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E5C9510E450;
+	Mon,  3 Oct 2022 17:26:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 03 Oct 2022 16:23:32 UTC
-Received: from mail.qeersews.click (unknown [185.104.151.229])
- by gabe.freedesktop.org (Postfix) with ESMTP id A30FD10E41D
+ Mon, 03 Oct 2022 17:26:10 UTC
+Received: from mail.windsew.click (unknown [45.88.91.76])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4C92710E450
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  3 Oct 2022 16:23:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=qeersews.click; 
+ Mon,  3 Oct 2022 17:26:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=windsew.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lynda-mangone@qeersews.click; 
- bh=89ONgGXcn9PYYSZdUFbwd/pxAHk=;
- b=tB/U3lPMfgRH4nKCiVBcx8Z7xp0A65XLLabpPCNy2PmT18NGGJc5LIOnCfbpm6m97VUSFfdyZicy
- EOuZ4LkQa204mbCrIsfuhe8Sk8AyQfzu5w3Z0Nd0nrNxV+7/BXOe0sCpVTIoZ4z51/M+4CfJOaOC
- HSkxXZaIgZZwQS1lZEw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=qeersews.click;
- b=wi6T/P+Bvwk0WiCybYnYuAqEn28BachGHGqg2uErmFFZ7AHhZ3D6zqv6L31UNXmqYdZ3ou1gl5/R
- jpJgEOC0PZ+JVtVKpvdzB9Zkgcu0QJ2UoFPYfxDq5xX2YPRfmvdJtKbIF1piW6Fhdx2srTc4ngia
- NvVCeqegI0QDOC3gZgE=;
-Received: by mail.qeersews.click id h7c6880001gd for
+ i=theresa-mccary@windsew.click; 
+ bh=S8dzyINySwmzrdNaUrqZecCjycI=;
+ b=Xp2n91oZjzTxsqWSpNPi3I9p6YOp7cPdOgfXgiAVI8cndUBMXOvou6NSztUdOxh6ZMOEWvI8hH9m
+ n+/LNex+k3MurMk2onxxMGDJR/Dff3dmj5QRXP35nde553VpyID4jqF6DHuvNpOaTTLVtEVVWFUl
+ yadjdMOgelUl1zz+qKQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=windsew.click;
+ b=Nt/2Z0561Ow+D0Oegsxy7W//0v1zdjy6MSsXdoC/fu4m0vPSn0gx7b8v20plTUaiWgJ9tzkm1qb4
+ /DohFq6TNH3FuByQXQP/nRtc+hKvopnbVq5F6/ZnvS55GhU/v2+HaaMMBeNgmye+OlrWsDU7M+db
+ ippPB5TOylD43mUzRWc=;
+Received: by mail.windsew.click id h7cdj40001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 3 Oct 2022 12:13:31 -0400 (envelope-from
- <lynda-mangone-intel+2Dgvt+2Ddev=lists.freedesktop.org@qeersews.click>)
-Date: Mon, 3 Oct 2022 12:13:31 -0400
-From: Lynda Mangone <lynda-mangone@qeersews.click>
+ Mon, 3 Oct 2022 13:06:55 -0400 (envelope-from
+ <theresa-mccary-intel+2Dgvt+2Ddev=lists.freedesktop.org@windsew.click>)
+Date: Mon, 3 Oct 2022 13:06:55 -0400
+From: Theresa Mccary <theresa-mccary@windsew.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Looking For A Quick And Easy Way To Get Life lnsurance
+Subject: Congratulations BB&B Shopper,
+ Claim Your BB&B Reward  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_739_1313152374.1664813601742"
-Message-ID: <0.0.0.52.1D8D7431494C59C.F7E01@mail.qeersews.click>
+ boundary="----=_Part_64_585299069.1664816808675"
+Message-ID: <0.0.0.7.1D8D74A8A35E8CE.1124FD@mail.windsew.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,52 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_739_1313152374.1664813601742
+------=_Part_64_585299069.1664816808675
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
-Looking For A Quick And Easy Way To Get Life lnsurance~
-http://www.qeersews.click/abb4Q2395m8Q6D10O3d29Ued2m36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQvdnnm7FuR1n0r5z2BwD/politest-maritime
+Congratulations BB&B Shopper, Claim Your BB&B Reward  intel-gvt-dev@lists.freedesktop.org
 
-
-
+Visit Here for the BB&B Promotion-http://www.windsew.click/15b5P2h395E8U6B10o3d2fjed3U36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdnnn7pr10Vry5MWAwD/drafter-combings
 
 
 
-Copyright =C2=A9 SelectQuote | All Rights Reserved 2022 | Advertising Discl=
-aimers~
-http://www.qeersews.click/eb74i2395Q8Ro612bN3d2ydJed2u36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQvdnnm7mLA1Rg05f@wXD/conquests-cancels
 
+96 Mowat- AVENUE, TORONTO ON M4 K3 K1 CANADA
 
-SelectQuote Insurance Services offers insurance products and services throu=
-gh its licensed insurance agency, SelectQuote Insurance Services, LLC.  Sel=
-ectQuote Insurance Services is not an insurance company.  We represent trus=
-ted insurance companies, and receive commissions =E2=80=93 and possibly oth=
-er performance-based compensation =E2=80=93 for our services.  Products and=
- services are not available in all states.=20
+To cease communication, Click.Here-http://www.windsew.click/a614y2395F8J6u11F3Gd30qed3k36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQBdnnn5V1t0g5GzBwD/fixating-disallow
 
+This e-mail content was sent to intel-gvt-dev@lists.freedesktop.org
 
-SelectQuote Insurance Services Corporate Office: 6800_ W 115'=
-TH St, Ste.  2511. , Overland Park Ks 66211_  US
+3843470:7777842
 
-
-This email was sent to intel-gvt-dev@lists.freedesktop.org on behalf of SelectQuote b=
-y a third-party marketing company.  You are receiving email from this third=
--party marketing company because you have expressed your interest in receiv=
-ing commercial email through a site or sites associated with them.=20
-
-
-This email contains information regarding products and services offered by =
-SelectQuote.  If you do not wish to receive email messages from SelectQuote=
- that are advertising or promotional in nature, please Visit This Way. =
-~http://www.qeersews.click/politest-maritime/3005P239X5H8n6u10g3d2bjed2K36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQvdnnm5VSH106hMwTD1
-
-
-This is an Advertisement.=20
-
-2182820~23302516
-
-------=_Part_739_1313152374.1664813601742
+------=_Part_64_585299069.1664816808675
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -107,27 +82,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5db0cf55-7fff-dd10-7810-1be764bf46f2"><a href="http://www.qeersews.click/conquests-cancels/e9a4F2395y8Ku610s3d29Sed2_36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQvdnnm6azUH105ykMwD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1408px;"><img alt="Term Life as Low as 1.oo/Day" src="http://www.qeersews.click/nominating-undress/9185L2X395D7gQa12o3dWt2cOed2A36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQvdnnm5Rwn106tAlOwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1408px;" /></span></span></a></span></p> &nbsp;
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><a href="http://www.windsew.click/monarch-psychopath/b344i2395O8A6X12o3d2fCFwed3T36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQBdnnn5NG10L6jlXNwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for the BB&B-Ninja Giveaway</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:602px;height:470px;"><a href="http://www.windsew.click/monarch-psychopath/b344i2395O8A6X12o3d2fCFwed3T36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQBdnnn5NG10L6jlXNwD"><img alt="Visit Here for the BB&B Promotion" src="http://www.windsew.click/spandrel-peals/4a45KH2395k7aAy12Q3dM3h1yed3V36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQBdnnn5O1IA06k1@w@D" style="margin-left: 0px; margin-top: 0px; width: 602px; height: 470px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry Up! Exclusive Offer Goes Away in 5 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-5db0cf55-7fff-dd10-7810-1be764bf46f2"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Copyright &copy; SelectQuote | All Rights Reserved 2022 | </span><a href="http://www.qeersews.click/Gannett-swearer/d8c5hZ2395asX8612P3d2siaVed2t36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQvdnnm5qB10H5p3wDj" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Advertising Disclaimers</span></a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-5db0cf55-7fff-dd10-7810-1be764bf46f2"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">SelectQuote Insurance Services offers insurance products and services through its licensed insurance agency, SelectQuote Insurance Services, LLC. SelectQuote Insurance Services is not an insurance company. We represent trusted insurance companies, and receive commissions ? and possibly other performance-based compensation ? for our services. Products and services are not available in all states.</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-5db0cf55-7fff-dd10-7810-1be764bf46f2"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">SelectQuote Insurance Services Corporate Office: 6800_ West 115.Th St., STE 2511, Overland_Park Ks. 66211.&nbsp; US.</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-5db0cf55-7fff-dd10-7810-1be764bf46f2"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was sent to intel-gvt-dev@lists.freedesktop.org on behalf of SelectQuote by a third-party marketing company. You are receiving email from this third-party marketing company because you have expressed your interest in receiving commercial email through a site or sites associated with them.</span></span></span></p> 
-  <span style="font-size:10px;">&nbsp;T</span>
-  <span style="font-size: 10px; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">his email contains information regarding products and services offered by SelectQuote. If you do not wish to receive email messages from SelectQuote that are advertising or promotional in nature, please </span>
-  <a href="http://www.qeersews.click/c234F2395IJF8610V3d2byed2T36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQvdnnm5r10HN5dBMwD/preconceived-drained" style="font-size: 10px; text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit This Way.</span></a>
-  <br /> 
-  <span style="font-family: Arial; white-space: pre-wrap; font-size: 10px;">This is an Advertisement.</span> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-5db0cf55-7fff-dd10-7810-1be764bf46f2"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2182820:23302516</span></span></span></p>   
- <img src="http://www.qeersews.click/preconceived-drained/a445a2T395YDQ8512s3d2ejnVed2h36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQvdnnm5k1oT05BlMwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT Av., Toronto- Ontario M4 K3 K1 CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease communication, <a href="http://www.windsew.click/monarch-psychopath/e4i5Sq2395HV8i612AW3dk30Ged3z36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQBdnnn5thU106M2pwOD">Click.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-009b5396-7fff-3d52-d253-e3e386a328b9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3077975~7777842</span></span></p>   
+ <img src="http://www.windsew.click/a074W2395p8rQ511l3dU32hed3Z36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQBdnnn5S1i0g5R2lwD/Hokan-ante" alt=""/></body>
 </html>
 
-------=_Part_739_1313152374.1664813601742--
+------=_Part_64_585299069.1664816808675--
 
