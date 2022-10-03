@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBBC45F363C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Oct 2022 21:21:29 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED5455F36E9
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  3 Oct 2022 22:19:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ADF0110E49B;
-	Mon,  3 Oct 2022 19:21:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AE5F110E4CC;
+	Mon,  3 Oct 2022 20:19:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 338 seconds by postgrey-1.36 at gabe;
- Mon, 03 Oct 2022 19:21:27 UTC
-Received: from mail.ripesew.click (unknown [185.104.151.253])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0D1EE10E48E
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Mon, 03 Oct 2022 20:19:34 UTC
+Received: from mail.tearsew.click (unknown [45.88.91.251])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 82A1110E4CD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  3 Oct 2022 19:21:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ripesew.click;
+ Mon,  3 Oct 2022 20:19:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tearsew.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=isabelle_nykiel@ripesew.click; 
- bh=kFt2GlDjfj5PJqji/+2WTJ1OZYg=;
- b=M63AKhLafdNVx5AVBpgk18GS8nrg9iSScGUwaulm8k+qv8IBbJFUYy4kzW4kAg1Jn1fytmOAcOsp
- e7NOyN1p2tQ6lcN1f0KbfR3Le06FSqbRU08SOisXA4wOrikZvKdMifxI+gGjFtZwcWhl6f6cPYOQ
- FVbHAJKdMxz9IK6+MKQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ripesew.click;
- b=GDmpwUyDYRPQWhh9JrmWpIT/X/j9NPXv4ZHlP3liIko2ZKAkk/Ug7xY0znNyzY1TXWNuElkkCVfv
- 723F879rBnASe+JPAEm5IIRGOOIorrprKKrOzJpmzO0o8rS5p63/qn8MNTzyGtxeP/0ZwkGPybY3
- x3VEcgiaXjGY4YZx0UA=;
-Received: by mail.ripesew.click id h7d5kk0001gf for
+ i=hidrogo-lilly@tearsew.click; 
+ bh=Lpvao1wHpmXGCmAj7gMrGTL9swo=;
+ b=cVMCVxPpgpYWgyuGN7wc1RARqoPYCVDZU56C1T8azPSMQyZ543/6nQjjRcz2MynO+ydMQTfX922S
+ GT0yphRv1m5gX0XzhTqmD489YDT9zSwGjQEgNEe2nKhdBuy3/McXr/Jn+X6CmWHgAAJ+MxdFD1ud
+ ESs5wAKIVCeuGW0EJ3o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tearsew.click;
+ b=OtMkR9NTLHjAqcza+O9FW6bEVCGMqLp53VsUqc+J1DK/zMiqdZLVAEi7+Q0QDJFAolwvtjrW74/m
+ 7kAF26TG3HPtiIbJViyB/Qj1pf/GHWx9WQwAhzGdU+YImFZxv3PGviotoro+sVJyFYFVrKiyRBPl
+ rWcm3yp/iKXUItiUwQY=;
+Received: by mail.tearsew.click id h7d1tc0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 3 Oct 2022 16:39:17 -0400 (envelope-from
- <isabelle_nykiel-intel+2Dgvt+2Ddev=lists.freedesktop.org@ripesew.click>)
-Date: Mon, 3 Oct 2022 16:39:17 -0400
-From: Isabelle Nykiel <isabelle_nykiel@ripesew.click>
+ Mon, 3 Oct 2022 16:08:46 -0400 (envelope-from
+ <hidrogo-lilly-intel+2Dgvt+2Ddev=lists.freedesktop.org@tearsew.click>)
+Date: Mon, 3 Oct 2022 16:08:46 -0400
+From: Lilly Hidrogo <hidrogo-lilly@tearsew.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get offers from top local bath professionals   #24098501
+Subject: Your Craftsman Lawn Tractor Awaits intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_556_391910363.1664824151180"
-Message-ID: <0.0.0.3D.1D8D768353AF300.42C774@mail.ripesew.click>
+ boundary="----=_Part_442_2121699046.1664827704088"
+Message-ID: <0.0.0.31.1D8D763F18DE6D4.308DEA@mail.tearsew.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +53,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_556_391910363.1664824151180
+------=_Part_442_2121699046.1664827704088
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-qs_bath_subjects]   
+Your Craftsman Lawn Tractor Awaits  intel-gvt-dev@lists.freedesktop.org
 
-Search for Affordable Bath Professionals Here. http://www.ripesew.click/f114Q2395qmA8610j3d37zed5W36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ.dnn96H1h0TO5CUAwD/invading-exponentiate
-
-
+Begin Here to Claim a Craftsman Riding Mower from Lowes http://www.tearsew.click/roper-Indochina/8464k2395sMM8612N3d3CbjHed6H36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQHdnnd7XQSh1G06C@UwWD
 
 
-To cancel your subscription, Go Here. http://www.ripesew.click/exceeding-breathy/71a4G2395N8Sr611FM3d38red5W36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.dnn95h10TM5zOwDp
 
-Our e-mail was directed to intel-gvt-dev@lists.freedesktop.org
 
-95O Tower LN, City, California 
-944O4.  US. 
 
-1290352. 24098501
+To update your email options, Start Ahead Here http://www.tearsew.click/6a16VR239V5R8M6N12Yi3nd3dped6r36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQHdnnd7MLt1mS06SMwDlB/reprover-inheritance
 
-------=_Part_556_391910363.1664824151180
+Our notification was selected for intel-gvt-dev@lists.freedesktop.org
+
+. 96 MOWAT.  Avenue, TORONTO Ontario M4K 3K1 CA
+
+8174550 6879796
+
+------=_Part_442_2121699046.1664827704088
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,17 +82,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><a href="http://www.ripesew.click/bromine-Knossos/3d25wC2395M8N6J11K3d37uped5u36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ.dnn97H1j0NTv5A@2wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Search for Affordable Bath Professionals Here</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 18pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:865px;"><a href="http://www.ripesew.click/bromine-Knossos/3d25wC2395M8N6J11K3d37uped5u36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ.dnn97H1j0NTv5A@2wD"><img alt="Find Affordable Bath Contractors Here" src="http://www.ripesew.click/foreboding-malformed/6845cR2395t7raD12V3dY_39oed5M36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ.dnn97VqgB10C6QlwDjq" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 832px;" /></a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.tearsew.click/6655O23J95Mos8612M3d3zSbWed6l36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQHdnnd7M1_hsK06lU1UwD/mistrust-victims" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="Take the 30-second Survey" src="http://www.tearsew.click/a254c2395yIH7a10U3d3cwed6B36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQHdnnd5n1JN06WLwDpB/splinters-Mavis" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.tearsew.click/6655O23J95Mos8612M3d3zSbWed6l36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQHdnnd7M1_hsK06lU1UwD/mistrust-victims" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Claim a Craftsman Riding Mower from Lowes</span></a></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cancel your subscription, </span><a href="http://www.ripesew.click/15b5S23V95Rp8S610X3d38Ped5A36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ.dnn96kz1VD06JTw@Dz/Minnesota-incoming" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">95O TOWER LANE, Foster City, California<br /> 944O4' UNITED STATES</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1290352:24098501</span></span></p>   
- <img src="http://www.ripesew.click/c414Q2395zP85O12gSI3d3aLed5D36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ.dnn96v1ql0l5a2wDL/bromine-Knossos" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your email options, Start Ahead Here</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT_ Ave., Toronto_ Ont M4K 3KI CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8174550 6879796</span></span></p>   
+ <img src="http://www.tearsew.click/mistrust-victims/31e6rPG2395uR8O512UO3dv3eIed6o36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQHdnnd6M1hwS05I1wOD" alt=""/></body>
 </html>
 
-------=_Part_556_391910363.1664824151180--
+------=_Part_442_2121699046.1664827704088--
 
