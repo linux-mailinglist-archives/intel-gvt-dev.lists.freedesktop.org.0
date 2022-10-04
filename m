@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2F6C5F3A78
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Oct 2022 02:18:53 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 378B45F3AF7
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Oct 2022 03:19:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B6C2610E4A5;
-	Tue,  4 Oct 2022 00:18:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5B21810E517;
+	Tue,  4 Oct 2022 01:19:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Tue, 04 Oct 2022 00:18:29 UTC
-Received: from mail.sewouts.click (unknown [45.88.91.127])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4A4F010E1C4
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 04 Oct 2022 01:19:45 UTC
+Received: from mail.pairsews.click (unknown [98.159.43.184])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 64F5A10E517
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  4 Oct 2022 00:18:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sewouts.click;
+ Tue,  4 Oct 2022 01:19:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pairsews.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=gracie_zanco@sewouts.click; bh=md8xk9mwvrSC7fLdohk0pVHXI18=;
- b=KtxqKr6Fok9vWeumd9rpopZrQ8ZD7/LiRdhY9ZGc7a5UmUgkt13hLg7Q2pkVJHS7bxfMxVofekGx
- kd95hVRdXF39umHXqpduYcwDzNUB6ACKEQ4g8jh9nOtnkRJXdBJfRE1snBS8z9BKky4wdVkzZG9B
- +4MN4BltfENkdwPpfDo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sewouts.click;
- b=PG9IYe9BceQMfiT5sAE8yff8VmMVqf+bl30FKxoGVdwwXf5rOr+B5wGPpuq7CvDiN8WBFM4HQxTR
- KTRRKeSDCrwTHx/iqM4Lk94TeIm39lU1LQ6WW11AUtKo38+MQk5OiXdbXyV1WojPt3hwbqrFKqug
- h8gg2P0FHe9LnOgYZr8=;
-Received: by mail.sewouts.click id h7dtta0001g0 for
+ i=april-miniard@pairsews.click; 
+ bh=a6xEcWe8DnEA8hL/v1z7ocVEG9c=;
+ b=hAxRXS/bLn1mr+3/NB1k5qp6ygjCV6QhbBYGu3qrw/PgLtNVEUpqG0mRtVu27NoBivdq1e8dxnIh
+ +aT7cMkY/TFLNEPxypDK9Lcqa5oU6l0qGCfUudyx7nUoWnDZKp/40GuBbks+/lrVjukPXLqPla8b
+ uHhvzeIXoht6I7sXN3s=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pairsews.click;
+ b=jacj/8YXf1rma6/UcNPLZyKFDj6nWOSTnWjE0aZc1mfPRC2KZtOrZyoYmMPILE+UHa92YMCv04jO
+ EPZJKpIxAfO/1PQb8C6EPe90NBa/GEhVW+QB1E7yWj2g71syaF0LqKQEtN0jEBS5lAG67v8JME3M
+ kZm8ws3XQsu1ofi1Uug=;
+Received: by mail.pairsews.click id h7e5320001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 3 Oct 2022 20:09:12 -0400 (envelope-from
- <gracie_zanco-intel+2Dgvt+2Ddev=lists.freedesktop.org@sewouts.click>)
-Date: Mon, 3 Oct 2022 20:09:12 -0400
-From: Gracie Zanco <gracie_zanco@sewouts.click>
+ Mon, 3 Oct 2022 21:05:03 -0400 (envelope-from
+ <april-miniard-intel+2Dgvt+2Ddev=lists.freedesktop.org@pairsews.click>)
+Date: Mon, 3 Oct 2022 21:05:03 -0400
+From: April Miniard <april-miniard@pairsews.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You've Been Picked by TrueValue
+Subject: Lowes wants to give you a Stanley Tool Kit
  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_847_959425865.1664842140288"
-Message-ID: <0.0.0.5E.1D8D785884FCCB0.432DC@mail.sewouts.click>
+ boundary="----=_Part_103_639532055.1664845480392"
+Message-ID: <0.0.0.B.1D8D78D55A6E6D8.30CE6C@mail.pairsews.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_847_959425865.1664842140288
+------=_Part_103_639532055.1664845480392
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-You've Been Picked by TrueValue intel-gvt-dev@lists.freedesktop.org
+Lowes wants to give you a Stanley Tool Kit  intel-gvt-dev@lists.freedesktop.org
 
-Begin Here to Claim Your TrueValue Bonus-http://www.sewouts.click/drafters-Kansas/53a6D23Bw95B8s6y10F3d47Ded9C36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQFdnne6wk1v0l6PWNwD3
-
-
+Tap Here if you want a 170 pc Stanley Tool Set_http://www.pairsews.click/a615Dk2395c86FV11z3d4bVXedaK36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQxdnoK7bg1O0jz5V1TwD/medallions-halted
 
 
 
-To get rid of e-mail, Click.This-http://www.sewouts.click/drafters-Kansas/c425y239J5f86qN12SK3d4i8hed9R36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQFdnne5n1ug05bNwD@
 
-This e-mail communication was meant for intel-gvt-dev@lists.freedesktop.org
+-96 Mowat.  Av. , Toronto.  Ont M4K3Kl Canada
 
-96- MOWAT_ AVENUE, Toronto ON M4K3K1 CANADA
+To refrain from notifications, Start-Here_http://www.pairsews.click/undoings-avian/9ae6f2Q39Q5eq8h610M3d4ckedaY36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQxdnoK7SkgJ1q05iyywD
 
-7964472-6849684
+This communication was designated for intel-gvt-dev@lists.freedesktop.org
 
-------=_Part_847_959425865.1664842140288
+2360045,7758149
+
+------=_Part_103_639532055.1664845480392
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,22 +81,21 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body>
-  &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><a href="http://www.sewouts.click/accepters-clergyman/2106P2O39_5yQ8H612QU3_d47xed9i36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFdnne7BpMH10C5qyMwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="TrueValue Craftsman Generator Giveaway" src="http://www.sewouts.click/crankier-unabbreviated/6486SY23g95Fig7a10D3d49jed9G36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQFdnne5Ex1y05aywXD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><a href="http://www.sewouts.click/accepters-clergyman/2106P2O39_5yQ8H612QU3_d47xed9i36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFdnne7BpMH10C5qyMwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Claim Your TrueValue Bonus</span></a></span></p> 
-  <br /> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.pairsews.click/af75QB2395o8NF612G3Ad4bDBedaH36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQxdnoK6M1jSN06F0TwUD/medallions-halted" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Lowes-Stanley Tool Set Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.pairsews.click/af75QB2395o8NF612G3Ad4bDBedaH36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQxdnoK6M1jSN06F0TwUD/medallions-halted" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Tap Here if you want a 170 pc Stanley Tool Set" src="http://www.pairsews.click/quadruple-Melinda/26a6It239p5G7aCA11b3d4tdgedaB36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQxdnoK5S10OL6oTwyDl" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Quickly! Special Offer Is Over in 5 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To get rid of e-mail, </span><a href="http://www.sewouts.click/boatsmen-throttles/8dc4w2395D8_U610y3d48Ued9W36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQFdnne6uwk1i05WP2wD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click.This</span></a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was meant for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT' Ave, Toronto_ ON M4K 3KI CANADA</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7964472-6849684</span></span></span></p>   
- <img src="http://www.sewouts.click/9534W2395Xo85T12Gr3d4SaYed9M36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQFdnne7ls_10yg5kWMwD/memoir-Minoan" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- MOWAT- Av, Toronto. ONT M4K3KI Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To refrain from notifications, <a href="http://www.pairsews.click/c5P4d2395SZ86u10X3d4cGedaI36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQxdnoK6qn1zG06a1@wBD/opaquely-pleasant">Start-Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7918662.7758149</span></span></p>   
+ <img src="http://www.pairsews.click/4c15jP2395j8D5K11S3dq4eiedaA36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQxdnoK6p10IHX5WqwDO/felicity-harry" alt=""/></body>
 </html>
 
-------=_Part_847_959425865.1664842140288--
+------=_Part_103_639532055.1664845480392--
 
