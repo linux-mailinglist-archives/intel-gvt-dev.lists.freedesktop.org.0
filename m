@@ -2,41 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 308BA5F4929
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Oct 2022 20:19:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C26B5F49B2
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Oct 2022 21:25:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 941D910E07A;
-	Tue,  4 Oct 2022 18:19:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D75C810E0CC;
+	Tue,  4 Oct 2022 19:25:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 04 Oct 2022 18:19:23 UTC
-Received: from mail.motyell.click (unknown [77.90.188.9])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2B84C10E079
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Tue, 04 Oct 2022 19:25:20 UTC
+Received: from mail.oustmot.click (unknown [77.90.188.191])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 40F1B10E0B6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  4 Oct 2022 18:19:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=motyell.click;
+ Tue,  4 Oct 2022 19:25:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=oustmot.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sondra.ronn@motyell.click; bh=zlHr5PIuOZB7/1dQf+0a72lRDyA=;
- b=wCqsIFkC+Q2iYhj9peW5VQpRhZkVE+C3TLiw/jJT3ev8JZfAY2E/A9vNyPrsyMelTbWpLe3DuNh5
- ZuRM/QI5KW0GMYzrOniyh/3dw5NPrp6VZ5VYl7FmPyBn+Cp9FR1YOCF3gDO5PPHKOMW9rLxL7lQc
- P0sf77tvjJ9l2QKyxiI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=motyell.click;
- b=plCYlCnoL/SHknvXJrUserP9vIb2XOTLQr6Dwrm5glWaDjPW1dec91IlVFZKKy2UIbQBOqnptPN5
- QK86IP/W85NHa5l2+OT1Np4MhWeByulJY3cWFC2pjJ2Ni+xDiLG28K0iOxqiSnNZBIdaDpAT8QZX
- FTV0CgdMHmpQrm5/gZg=;
-Received: by mail.motyell.click id h7hsim0001ge for
+ i=real.kellie@oustmot.click; bh=4VznylmldSj+G75FWeT9+9f034k=;
+ b=m3PcbqCzgzSIOK1U94zFWzONHMoMpX7OLaaK5TewmJgeK7lOuWkARm4Y36f5tTfAcUOWnp03d5k5
+ 9HoSbtn+hvPeKnved0i9XvXzWBGJllO8nkPok9j4j1M/WZBIhLqjszS3WCXhEsAPxnmcYjrs+lP4
+ TbgqRI0shKDzihaENQ0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=oustmot.click;
+ b=h7oiURpzvvHA67pzkZYlTn581CKDf5LwaGuMLnPdX3OG38FroJI9ufWqF8LrCVUp+1LJ6GL26Qy7
+ 5QAfAVnIdfMkqnZeN40b2HXSVFtH0jYeZXKnDV53Cy8XI6ccoVGLixoTQWuPY60zO2qD9hk3CgaD
+ mpBeLYLR2kVgJPpjl1E=;
+Received: by mail.oustmot.click id h7i4a00001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 4 Oct 2022 14:07:12 -0400 (envelope-from
- <sondra.ronn-intel+2Dgvt+2Ddev=lists.freedesktop.org@motyell.click>)
-Date: Tue, 4 Oct 2022 14:07:12 -0400
-From: Sondra Ronn <sondra.ronn@motyell.click>
+ Tue, 4 Oct 2022 15:09:37 -0400 (envelope-from
+ <real.kellie-intel+2Dgvt+2Ddev=lists.freedesktop.org@oustmot.click>)
+Date: Tue, 4 Oct 2022 15:09:37 -0400
+From: Kellie Real <real.kellie@oustmot.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Sam's Invitation #  7474396
+Subject: Up to $1OO Bonus for your opinion about T-Mobile  13581587
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_109_2027325203.1664906811897"
-Message-ID: <0.0.0.C.1D8D81C207F1AA4.5967B6@mail.motyell.click>
+ boundary="----=_Part_571_1900853297.1664910558365"
+Message-ID: <0.0.0.3F.1D8D824D9150670.734C05@mail.oustmot.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,33 +52,35 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_109_2027325203.1664906811897
+------=_Part_571_1900853297.1664910558365
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Sam's Invitation #  6138745
+Up to $1OO Bonus for your opinion about T-Mobile  1737642
 
-Sam's Club Member Survey
+Dear Consumer,
+ 
+T-Mobile's mission statement says Redefining the way consumers and businesses buy wireless services through leading product and service innovation. 
 
-Begin Here For The Survey & Pick Your Bonus. http://www.motyell.click/bushwhacking-insult/d145G2H395AUm8611V3d7envee7L36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQAdn9o7HUZW1v06p2LwTD
+ In order for T-Mobile to continuously enhance our products & service, we would like your feedback. 
 
- You have been picked to take part in our anonymous opinion survey about Sam's Club. 
+ Complete the short survey about T-Mobile to select your promotional reward of up to $1OO. oo value. 
 
- Take this 1minute poll and we'll offer you an Exclusive Bonus worth up to $100. 
+Begin Here for up to $1OO Reward for your opinion~http://www.oustmot.click/3ef4o2395w8x6u11M3Vd82Nee8F36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQtdn996V10qTj5M3wD@/sociology-automobile
+ 
+We appreciate your time and cooperation. 
 
-Visit Here for your Bonus. http://www.motyell.click/bushwhacking-insult/d145G2H395AUm8611V3d7envee7L36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQAdn9o7HUZW1v06p2LwTD
-
-
-
-
+Be Quick About It! Sale Stops in 48 Hours.
 
 
-To get rid of communication, Continue-This-Way. http://www.motyell.click/4fd6Y2h39M5O86hQ10r3d7fTee7P36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQAdn9o7Bm1KC0J6WB0wDL/Nicholls-resumption
-This notification was selected for intel-gvt-dev@lists.freedesktop.org
-96_ MOWAT' Avenue, Toronto.  Ontario M4K3K1 Canada
-2675058. 7474396
 
-------=_Part_109_2027325203.1664906811897
+
+Our e-mail was selected for intel-gvt-dev@lists.freedesktop.org
+To change your subscription options, Begin_Right_Here~http://www.oustmot.click/9714K2395Syj8611l3d8I3Cee8i36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQtdn996fnCw106KJlwWD/horrifying-interactivity
+. 96 MOWAT Avenue, Toronto' ONTARIO M4 K3 K1 Canada
+90479282~13581587
+
+------=_Part_571_1900853297.1664910558365
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 
@@ -87,115 +89,111 @@ Content-Transfer-Encoding: quoted-printable
   <title></title>=20
  </head>=20
  <body>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
-f-9bdad72ae7ac"><span style=3D"font-size: 30pt; font-family: Merriweather, =
-serif; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: nor=
-mal; font-variant-east-asian: normal; vertical-align: baseline; white-space=
-: pre-wrap;">Sam's</span><span style=3D"font-size: 30pt; font-family: Arial=
-; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; =
-font-variant-east-asian: normal; vertical-align: baseline; white-space: pre=
--wrap;"> Club</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
-f-9bdad72ae7ac"><span style=3D"font-size: 18pt; font-family: Arial; font-we=
-ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
-ertical-align: baseline; white-space: pre-wrap;">Consumer Survey</span></spa=
-n></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
-f-9bdad72ae7ac"><a href=3D"http://www.motyell.click/7555d2S395EL8r612Q3od7reoee7M36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQAdn9o6dZ1j0p6QMMAwD/order-denotative" style=3D"text-decoration-line: none;=
-"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
-4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
-: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
-vertical-align: baseline; white-space: pre-wrap;">Begin Here For The Survey & Pick Your Bonus<=
-/span></a></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
-f-9bdad72ae7ac"><a href=3D"http://www.motyell.click/7555d2S395EL8r612Q3od7reoee7M36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQAdn9o6dZ1j0p6QMMAwD/order-denotative" style=3D"text-decoration-line: none;=
-"><span style=3D"font-size: 14pt; font-family: Arial; color: rgb(17, 85, 20=
-4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
-: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
-vertical-align: baseline; white-space: pre-wrap;"><span style=3D"border:non=
-e;display:inline-block;overflow:hidden;width:600px;height:354px;"><img alt=
-=3D"Start Here to give your Sam's vs Costco Feedback" src=3D"http://www.motyell.click/6dd4Q2395c7PWa11I3dZ80zee7g36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQAdn9o6d1jjo06I@32wD/impoverish-reporting" style=3D"margin-left: 0px=
-; margin-top: 0px; width: 600px; height: 354px;" /></span></span></a></span=
-></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; text-align: center;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-87=
-19-880f-9bdad72ae7ac"><span style=3D"font-size: 16pt; font-family: Arial; f=
-ont-variant-numeric: normal; font-variant-east-asian: normal; vertical-alig=
-n: baseline; white-space: pre-wrap;">You have been chosen to participate in ou=
-r confidential opinion survey about </span><span style=3D"font-size: 16pt; font-=
-family: Merriweather, serif; color: rgb(17, 85, 204); font-weight: 700; fon=
-t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
- baseline; white-space: pre-wrap;">Sam's</span><span style=3D"font-size: 16=
-pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-var=
-iant-numeric: normal; font-variant-east-asian: normal; vertical-align: base=
-line; white-space: pre-wrap;"> Club</span><span style=3D"font-size: 16pt; f=
-ont-family: Arial; font-variant-numeric: normal; font-variant-east-asian: n=
-ormal; vertical-align: baseline; white-space: pre-wrap;">.</span></span></p=
->=20
-  <div style=3D"text-align: center;">
-   &nbsp;
-  </div>=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; text-align: center;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-87=
-19-880f-9bdad72ae7ac"><span style=3D"font-size: 16pt; font-family: Arial; f=
-ont-variant-numeric: normal; font-variant-east-asian: normal; vertical-alig=
-n: baseline; white-space: pre-wrap;">Finish this 1minute questionnaire and we'll=
- offer you an </span><span style=3D"font-size: 16pt; font-family: Arial; fo=
-nt-weight: 700; font-variant-numeric: normal; font-variant-east-asian: norm=
-al; vertical-align: baseline; white-space: pre-wrap;">Exclusive Reward</sp=
-an><span style=3D"font-size: 16pt; font-family: Arial; font-variant-numeric=
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 36pt; font-family: &quot;Courier New&quot;; color: r=
+gb(255, 255, 255); background-color: rgb(255, 0, 255); font-variant-numeric=
 : normal; font-variant-east-asian: normal; vertical-align: baseline; white-=
-space: pre-wrap;"> worth up to </span><span style=3D"font-size: 16pt; font-=
-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant=
--east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">$=
-100</span><span style=3D"font-size: 16pt; font-family: Arial; font-variant=
+space: pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=3D=
+"font-size: 36pt; font-family: Georgia; color: rgb(255, 255, 255); backgrou=
+nd-color: rgb(255, 0, 255); font-variant-numeric: normal; font-variant-east=
+-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-T-Mobile=
+</span><span style=3D"font-size: 36pt; font-family: &quot;Courier New&quot;=
+; color: rgb(255, 0, 255); background-color: rgb(255, 0, 255); font-variant=
 -numeric: normal; font-variant-east-asian: normal; vertical-align: baseline=
-; white-space: pre-wrap;">.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
-f-9bdad72ae7ac"><a href=3D"http://www.motyell.click/7555d2S395EL8r612Q3od7reoee7M36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQAdn9o6dZ1j0p6QMMAwD/order-denotative" style=3D"text-decoration-line: none;=
-"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
-4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
-: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
-vertical-align: baseline; white-space: pre-wrap;">Visit Here for your Bonus</span><=
-/a></span></p>=20
+; white-space: pre-wrap;">xxxxxx</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">Dear Consumer,</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Georgia; color: rgb(32, 33, 36); =
+background-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeri=
+c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
+-space: pre-wrap;">T-Mobile's</span><span style=3D"font-size: 11pt; font-fa=
+mily: Arial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); =
+font-variant-numeric: normal; font-variant-east-asian: normal; vertical-ali=
+gn: baseline; white-space: pre-wrap;"> mission statement says Redefining th=
+e way consumers and businesses buy wireless services through leading produc=
+t and service innovation.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; color: rgb(32, 33, 36); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I=
+n order for </span><span style=3D"font-size: 11pt; font-family: Georgia; co=
+lor: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-weight: 70=
+0; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-=
+align: baseline; white-space: pre-wrap;">T-Mobile</span><span style=3D"font=
+-size: 11pt; font-family: Arial; color: rgb(32, 33, 36); background-color: =
+rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: =
+normal; vertical-align: baseline; white-space: pre-wrap;"> to persistently =
+enrich our customer service &amp; products, we would like your opinion.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">C=
+omplete the short survey about </span><span style=3D"font-size: 11pt; font-=
+family: Georgia; color: rgb(51, 51, 51); background-color: rgb(255, 255, 25=
+5); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; vertical-align: baseline; white-space: pre-wrap;">T-Mobile</span>=
+<span style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51);=
+ background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-v=
+ariant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;=
+"> to select your promotional bonus of up to </span><span style=3D"font-size: 11pt; f=
+ont-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, =
+255); font-weight: 700; font-variant-numeric: normal; font-variant-east-asi=
+an: normal; vertical-align: baseline; white-space: pre-wrap;">$100</spa=
+n><span style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51=
+); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font=
+-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wra=
+p;"> value.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><a =
+href=3D"http://www.oustmot.click/9716n2p39Z5du_8610w3d82vee8l36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQtdn995aN10L6S@PwD0/conversant-bulling" style=3D"text-decoration-line: none;"><span style=3D"fo=
+nt-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); background-colo=
+r: rgb(255, 255, 255); font-weight: 700; font-variant-numeric: normal; font=
+-variant-east-asian: normal; text-decoration-line: underline; text-decorati=
+on-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">=
+Begin Here for up to $1OO Reward for your opinion</span></a></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">W=
+e appreciate your time and assistance.</span></span></p>=20
   <br />=20
-  <br />=20
-  <br />=20
+  <span style=3D"font-size:16px;"><span style=3D"font-family:arial,helvetic=
+a,sans-serif;">Be Quick About It! Sale Stops in 48 Hours.</span></span>
   <br /> &nbsp;=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">To get rid of communication, </span><a href=3D"http://www.motyell.click/Texans-Caltech/13e6wJ23W95XOl8612p3dSZ7fGee7W36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQAdn9o7dtRjY106HXyJwD" style=3D"text-decor=
-ation-line: none;"><span style=3D"font-size: 11pt; font-family: Arial; colo=
-r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
- normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
-ertical-align: baseline; white-space: pre-wrap;">Continue-This-Way</span></a></s=
-pan></p>=20
+;">96 MOWAT AVENUE, Toronto_ ONT M4K3KI CA</p>=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
 al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">This notification was selected for intel-gvt-dev@lists.freedesktop.org</span></span>=
+ pre-wrap;">Our e-mail was selected for intel-gvt-dev@lists.freedesktop.org</span></span>=
 </p>=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
 al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">'96 MOWAT' Ave, T0R0NT0 ON M4K 3K1 CANADA=
-</span></span></p>=20
+ pre-wrap;">To change your subscription options, </span><a href=3D"http://www.oustmot.click/horrifying-interactivity/abc4J2395M8sF611S3dp83iee8T36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQtdn997SLgx1M06AOwXJD" style=3D"text-decor=
+ation-line: none;"><span style=3D"font-size: 10pt; font-family: Arial; colo=
+r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
+ normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
+ertical-align: baseline; white-space: pre-wrap;">Begin_Right_Here</span></a></s=
+pan></p> &nbsp;=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
-an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
 al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">2675058~7474396</span></span></p>  =20
- <img src=3D"http://www.motyell.click/5936dn23J95n85WL11S3d81lxee7k36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQAdn9o7QPS1X0g6M1W1wD/impoverish-reporting" alt=3D""/></body>
+ pre-wrap;">1737642.13581587</span></span></p>  =20
+ <img src=3D"http://www.oustmot.click/agitating-beige/5765J239u5j85qo12w3dq84jiee8h36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQtdn995W1Pz06Y@wjpD" alt=3D""/></body>
 </html>
 
-------=_Part_109_2027325203.1664906811897--
+------=_Part_571_1900853297.1664910558365--
 
