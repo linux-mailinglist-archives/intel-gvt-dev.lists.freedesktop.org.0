@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABDD85F4559
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Oct 2022 16:21:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 41BAD5F4695
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Oct 2022 17:24:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D4B3A10E61E;
-	Tue,  4 Oct 2022 14:21:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6750E10E710;
+	Tue,  4 Oct 2022 15:24:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Tue, 04 Oct 2022 14:21:43 UTC
-Received: from mail.gramsmot.monster (unknown [77.90.188.209])
- by gabe.freedesktop.org (Postfix) with ESMTP id CCD7610E53C
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 04 Oct 2022 15:24:05 UTC
+Received: from mail.motdrys.monster (unknown [98.159.43.134])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A65F410E71D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  4 Oct 2022 14:21:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gramsmot.monster;
+ Tue,  4 Oct 2022 15:24:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=motdrys.monster; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=charlotte.uyeno@gramsmot.monster; 
- bh=ERZ2ZaxHELvqOvj+652adqhSN6Q=;
- b=esZFiaO0MhbMv1yFRpKpnPfC8ELgyMrjOVH7pCU5yITcion6kUqhvZeiLes2kUokAFl6k7ZLR8lO
- tqQ0KB9mD42uXU+PxYjmRpNJb76Ed4nJ6Os+RsLuaVAa8O16u1KNjYE9I38+m8iIbrpzoGm7bB1V
- zZ8fr+l/mxvPnu6fsGQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gramsmot.monster;
- b=KLNeqMe2kgUmkyL4LxsFxH7oDSWBF6gbTEJlwhBC3GnF3Y/4OSDIlKodjgkb2RFzmINUDKDTW7Uq
- L11dCytDncLXHGXDOKgYOKDaZ9KiA5c1FOrN1ejPhvJ2xST4h823avck1geBVhYXAJe5Odd+2mAs
- UjjCX11Z6P4LCooGO7I=;
-Received: by mail.gramsmot.monster id h7hb8i0001g7 for
+ i=marisa-canatella@motdrys.monster; 
+ bh=gGlXJufRNFw5TUcNtw5hpveIBlc=;
+ b=b836ap9k4dUmReNRYZBZpjTEriQ/qpzWRfl9MQwz6euH+e7e91XhtDS5nYfmg0iOe+MeyAFrgmVj
+ XvNSoBfR+XJ6ss75GlWuM7fPAaty2BFQFsdPamWiL8kYvTc/ZUlOBw4bdmu10zN/ZdJsjc49QPKr
+ 3oTO/hxFo+/0d/rptd8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=motdrys.monster;
+ b=dE6islJo29bupCt2kbaXTQTB2jX5ZuCMNkzm6LlnULudIqCYqkJc1Lpw3/ls3qBcwtNx/jWVSis7
+ 6rdDVNd18krpbG0KNuB1yNU7sKIE9M4aIIkI+y6TW6dDdPkRpMAqyQamYYzBuKbxgSyUom5mQmVa
+ /4IslMJ2NZfgHvu1aAQ=;
+Received: by mail.motdrys.monster id h7hiic0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 4 Oct 2022 11:36:15 -0400 (envelope-from
- <charlotte.uyeno-intel+2Dgvt+2Ddev=lists.freedesktop.org@gramsmot.monster>)
-Date: Tue, 4 Oct 2022 11:36:15 -0400
-From: Charlotte Uyeno <charlotte.uyeno@gramsmot.monster>
+ Tue, 4 Oct 2022 12:43:42 -0400 (envelope-from
+ <marisa-canatella-intel+2Dgvt+2Ddev=lists.freedesktop.org@motdrys.monster>)
+Date: Tue, 4 Oct 2022 12:43:42 -0400
+From: Marisa Canatella <marisa-canatella@motdrys.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Lowes-Stanley Tool Kit Promotion intel-gvt-dev@lists.freedesktop.org
+Subject: Home Depot Mikita Giveaway
+  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_205_1541179497.1664892357087"
-Message-ID: <0.0.0.16.1D8D80709EDD70E.138392@mail.gramsmot.monster>
+ boundary="----=_Part_421_124778897.1664896376147"
+Message-ID: <0.0.0.2D.1D8D81076416232.443815@mail.motdrys.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,163 +54,50 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_205_1541179497.1664892357087
+------=_Part_421_124778897.1664896376147
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
-Lowes-Stanley Tool Kit Promotion =20
+Home Depot Mikita Giveaway  intel-gvt-dev@lists.freedesktop.org
 
-LOWES
-
-Dear Lowe's Consumer,  intel-gvt-dev@lists.freedesktop.org
-
- We would like to offer you a extraordinary opportunity to receive a new STANLEY=
-=C2=AE 170 piece Mixed Tool Set! To claim your bonus, simply finish the =
-{{short|brief|quick} survey about your experience with LOWES.=20
-
- Begin Here to give your input about Lowes,http://www.gramsmot.monster/e3f6P2u39G5b8k6D10s3d70See3l36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQkdnoR7b1RX0sZ6RpwDO0/racetrack-unwelcome
-
-Attention! The Deal Comes To An End in 2 Days.=20
-
-=20
-
-Our notice was selected for intel-gvt-dev@lists.freedesktop.org
+Visit Here to Answer a Few Questions about HomeDepot_http://www.motdrys.monster/idlest-cursive/f305OB2395f8r6X11X3Xd73Tee4G36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQrdnoe6j1jK0Z6FzwzDJ
 
 
 
 
+96' Mowat_ Av, TORONTO Ont M4K 3Kl CN
+
+4976940 9948156
+
+To cease email, Start.This.Way_http://www.motdrys.monster/Venezuelan-Loyola/30R4G2395C8rK612H3dj7n4oee4p36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQrdnoe5X1X0W5Q0pwD
+
+Our email communication was directed to intel-gvt-dev@lists.freedesktop.org
 
 
 
-96.  Mowat.  Av. , T0R0NT0 ON M4K 3K1 CN
-
-To cease messages, Go.Over.Here,http://www.gramsmot.monster/a7f5GC2395mq8l611k3Xd71tee3v36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQkdnoR7a1BGHU05NA@wD/racetrack-unwelcome
-
-20540136,20478894
-
-------=_Part_205_1541179497.1664892357087
+------=_Part_421_124778897.1664896376147
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>
-  &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; text-align: center;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 36pt; font-family: Georgia;=
- color: rgb(0, 0, 255); background-color: rgb(0, 0, 255); font-variant-nume=
-ric: normal; font-variant-east-asian: normal; vertical-align: baseline; whi=
-te-space: pre-wrap;">20540136</span><span style=3D"font-size: 36p=
-t; font-family: Impact; color: rgb(255, 255, 255); background-color: rgb(0,=
- 0, 255); font-variant-numeric: normal; font-variant-east-asian: normal; ve=
-rtical-align: baseline; white-space: pre-wrap;">LOWES</span><span style=3D"=
-font-size: 36pt; font-family: Georgia; color: rgb(0, 0, 255); background-co=
-lor: rgb(0, 0, 255); font-variant-numeric: normal; font-variant-east-asian:=
- normal; vertical-align: baseline; white-space: pre-wrap;">=
-6759215</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
-olor: rgb(36, 36, 36); background-color: transparent; font-weight: 700; fon=
-t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
- baseline; white-space: pre-wrap;">Dear Lowe's Shopper,</span></span></p>=
-=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 13.5pt; font-family: Arial;=
- color: rgb(48, 48, 48); background-color: transparent; font-variant-numeri=
-c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
--space: pre-wrap;">We would like to offer you a exclusive possibility to receive =
-a brand-new </span><span style=3D"font-size: 13.5pt; font-family: Arial; colo=
-r: rgb(36, 36, 36); background-color: transparent; font-weight: 700; font-v=
-ariant-numeric: normal; font-variant-east-asian: normal; vertical-align: ba=
-seline; white-space: pre-wrap;">STANLEY&reg; 170 piece Mixed Tool Set!</spa=
-n><span style=3D"font-size: 13.5pt; font-family: Arial; color: rgb(48, 48, =
-48); background-color: transparent; font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> =
-To claim your gift, simply </span><span style=3D"font-size: 13.5pt; font=
--family: Arial; color: rgb(32, 33, 36); font-variant-numeric: normal; font-=
-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap=
-;">take the {{short|brief|quick} survey about</span><span style=3D"font-=
-size: 13.5pt; font-family: Arial; color: rgb(48, 48, 48); background-color:=
- transparent; font-variant-numeric: normal; font-variant-east-asian: normal=
-; vertical-align: baseline; white-space: pre-wrap;"> your experience with <=
-/span><span style=3D"font-size: 18pt; font-family: Impact; color: rgb(0, 0,=
- 255); font-variant-numeric: normal; font-variant-east-asian: normal; verti=
-cal-align: baseline; white-space: pre-wrap;">LOWES.</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
-href=3D"http://www.gramsmot.monster/6654d2395B8u6n12z3d70SxPee3F36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkdnoR7kDSK10_6QzwJDX/glaringly-often" style=3D"text-decoration-line: none;"><span style=3D"co=
-lor:#FFFFFF;"><span style=3D"font-size: 18pt; font-family: Arial; font-vari=
-ant-numeric: normal; font-variant-east-asian: normal; text-decoration-line:=
- underline; text-decoration-skip-ink: none; vertical-align: baseline; white=
--space: pre-wrap;"><span style=3D"background-color:#0000FF;">=
-Begin Here to give your input about Lowes</span></span></span></a></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
-olor: rgb(235, 0, 0); background-color: transparent; font-weight: 700; font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap;">Attention!</span><span style=3D"font-size=
-: 18pt; font-family: Arial; color: rgb(36, 36, 36); background-color: trans=
-parent; font-weight: 700; font-variant-numeric: normal; font-variant-east-a=
-sian: normal; vertical-align: baseline; white-space: pre-wrap;"> </span><sp=
-an style=3D"font-size: 14pt; font-family: Arial; color: rgb(36, 36, 36); ba=
-ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
-; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
-re-wrap;">The </span><span style=3D"font-size: 14pt; font-family: Arial; ba=
-ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
-; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
-re-wrap;">Offer Goes Away in 2 Days.</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 14pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">Our notice was selected for intel-gvt-dev@lists.freedesktop.org</span></span>=
-</p>=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br /> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">_96 MOWAT_ AVENUE, TORONTO ONTARIO M4 K3 K1 CA<=
-/span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
-href=3D"http://www.gramsmot.monster/4494j2395I86CG11c3d7L1Lee3K36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkdnoR5r10RC6IMPwWD/Palestine-specious" style=3D"text-decoration-line: none;"><span style=3D"fo=
-nt-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
-meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
-line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
-: pre-wrap;">To cease messages,</span></a><span style=3D"font-size: 10pt; font-f=
-amily: Arial; font-variant-numeric: normal; font-variant-east-asian: normal=
-; vertical-align: baseline; white-space: pre-wrap;"> Go.Over.Here</span></s=
-pan></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">9745768-20478894</span></span></p>  =20
- <img src=3D"http://www.gramsmot.monster/glaringly-often/bac5N239W5M85ML11R3d72lnee3Y36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQkdnoR7aT1Kl0J6gLwp3D" alt=3D""/></body>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><a href="http://www.motdrys.monster/9cb6mG2t395n8p6T11R3d7l3Xee4N36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQrdnoe7D10WOAZ5b@pwD/Venezuelan-Loyola" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Answer a Few Questions about HomeDepot</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-40f5671f-7fff-11c3-137e-605bb662134c"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:541px;"><a href="http://www.motdrys.monster/9cb6mG2t395n8p6T11R3d7l3Xee4N36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQrdnoe7D10WOAZ5b@pwD/Venezuelan-Loyola"><img alt="Go Here for your HomeDepot Bonus" src="http://www.motdrys.monster/headlining-coattail/4684s2395A7apJ11Sx3d75Lee4q36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQrdnoe6mzY10i6OO@wDl" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 541px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hustle! Special Promotion Ends in 4 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT- AVE, Toronto. ONTARIO M4K3KI CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4976940.9948156</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease email, </span><a href="http://www.motdrys.monster/2fI4z2395s86tG10z3d74Hee4v36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQrdnoe6OZ10zq5S1lwD/doings-gripes" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start.This.Way</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-3de094a9-7fff-9c65-4b7b-1f9b61cb118a"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p>   
+ <img src="http://www.motdrys.monster/c5f6r2I3R95dsm8511C3d76JDee4G36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQrdnoe6hv1o0h5Xj2wD/motioning-sparrows" alt=""/></body>
 </html>
 
-------=_Part_205_1541179497.1664892357087--
+------=_Part_421_124778897.1664896376147--
 
