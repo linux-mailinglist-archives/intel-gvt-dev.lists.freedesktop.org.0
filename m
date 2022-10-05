@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 171735F583E
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Oct 2022 18:24:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 297535F5906
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Oct 2022 19:20:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 41AA710E6DC;
-	Wed,  5 Oct 2022 16:24:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC33310E722;
+	Wed,  5 Oct 2022 17:20:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 337 seconds by postgrey-1.36 at gabe;
- Wed, 05 Oct 2022 16:24:49 UTC
-Received: from mail.vipvanes.click (unknown [173.244.43.110])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5BA6210E6DD
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Wed, 05 Oct 2022 17:20:29 UTC
+Received: from mail.caresvip.click (unknown [77.90.188.110])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 52A0910E722
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Oct 2022 16:24:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vipvanes.click; 
+ Wed,  5 Oct 2022 17:20:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=caresvip.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=debbie_pflug@vipvanes.click; 
- bh=lyaUivuWFZ03kNSXlOY+hZ2n4TM=;
- b=CwnS141P00cwi9uzVejj/YGQ1gsu6+qjf0Htvn1KHTjIByoE+n+XSCNqlC8h/sc5j2QiZqEJ0+HN
- uwnvMbCVKnDEe9I+W92wGmYh5gqhTQ2ZgGBCEa49BXQObGo6af09EF9K7Y0jnWZBspS6ApHUIhCo
- NrfjIvNmnU9yTxMQoX0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vipvanes.click;
- b=FsLZ4vdEm0mo54kPas2S8bIfTJmZKN1kE9RgzkZ34Mrj9LjbNuq07wRagwBl6u8mOVFLYzbg0YeM
- FENckLFgcF4svSu9GISEsuTiC0tKwHgYOx6JSI4/rGq+jZNOnHY0OMxhZ7uxvlgZSlppEIwvpIfE
- UKVaGfNFbZk9k6MaJOM=;
-Received: by mail.vipvanes.click id h7mnt20001gp for
+ i=helen-sisk@caresvip.click; bh=9h4WhopmZEY934ItcddEe+bcT90=;
+ b=WEDI1/h2MVw68CK/vb6S5QFyH0ECHqBfcF33oVWmaEf66ox3OWl8XY9lVI8CRxgTS1PtK/UyrU5N
+ t91xl3uQfqbmXBvSGsb++hU4C+3VjWFjjFX9qJXOdKZqc4NMwZcx5MEzcjszAkEK74CtIQqCMamH
+ U3e/4emqX+Hqd4M3NF0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=caresvip.click;
+ b=AYhmeZ7z+hBLylD8IKQTOU8aSgrcpRtozK7FKV4CiycS18WRaP2ODLWMQwlXjDs3d5X+Mug/MAES
+ aJb2bNV5aMfSx+GjgI6t20eDo9YUWGdfobH7Rs2pBSEiBO5XQr5DvlGsYUjlK3IQ6K36+NQ+NiRx
+ ZfLzZFFvZrq2x22F9Pg=;
+Received: by mail.caresvip.click id h7mudq0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 5 Oct 2022 12:10:16 -0400 (envelope-from
- <debbie_pflug-intel+2Dgvt+2Ddev=lists.freedesktop.org@vipvanes.click>)
-Date: Wed, 5 Oct 2022 12:10:16 -0400
-From: Debbie Pflug <debbie_pflug@vipvanes.click>
+ Wed, 5 Oct 2022 13:04:54 -0400 (envelope-from
+ <helen-sisk-intel+2Dgvt+2Ddev=lists.freedesktop.org@caresvip.click>)
+Date: Wed, 5 Oct 2022 13:04:54 -0400
+From: Helen Sisk <helen-sisk@caresvip.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Up to $100 Reward for your feedback about Southwest 199135
+Subject: Congratulations Lowes Customer,
+ Your Stanley Tool Set  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_481_153321023.1664986194249"
-Message-ID: <0.0.0.35.1D8D8D4F4F72C5A.5990E4@mail.vipvanes.click>
+ boundary="----=_Part_67_481253497.1664989484283"
+Message-ID: <0.0.0.7.1D8D8DC96DD7752.177AE6@mail.caresvip.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,23 +53,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_481_153321023.1664986194249
+------=_Part_67_481253497.1664989484283
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Up to $100 Reward for your feedback about Southwest 199135
+Congratulations Lowes Customer, Your Stanley Tool Set  intel-gvt-dev@lists.freedesktop.org
 
-Start Here for up to $1OO Reward for your opinion~http://www.vipvanes.click/exposers-purple/1026ato2395zT86H12h3Sldb3zef4z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQydnde5Yu1j05bkwDp
-
-Fast! Sale Goes Away in 48 Hours.
+Visit Here for the 1,000,000 Stanley Tool Set Giveaway from Lowes~http://www.caresvip.click/inclinations-applicants/22e5g239z5Uh8V610I3db7lef5D36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQadndK6v1B0nH5OpwDO
 
 
-To cease communication, Continue.Here~http://www.vipvanes.click/exposers-purple/5584i2395G8l6Y10y3db4gef4B36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQydnde6yD1J0s5VlwzD
-This e-mail content was intended for intel-gvt-dev@lists.freedesktop.org
--96 MOWAT.  Av, Toronto- Ont M4K3K1 CA
-3199785~5794809
 
-------=_Part_481_153321023.1664986194249
+
+'96 MOWAT_ Ave. , Toronto- ONT.  M4K 3KI Canada
+
+To cut out communication, Continue-Here-Now~http://www.caresvip.click/insensitively-peruser/9cc4W2395ER8u611IF3db8Aef5D36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQadndK7lZ10ZZB6Gj32wD
+
+This email message was meant for intel-gvt-dev@lists.freedesktop.org
+
+50013701:13361365
+
+------=_Part_67_481253497.1664989484283
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -78,20 +81,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><a href="http://www.vipvanes.click/bitters-bisectors/9cc5i23k95I8z6N10z3db3Yef4O36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQydnde5G1uM06mTwDOj" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for up to $1OO Reward for your opinion</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:636px;"><a href="http://www.vipvanes.click/bitters-bisectors/9cc5i23k95I8z6N10z3db3Yef4O36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQydnde5G1uM06mTwDOj"><img alt="Visit here to take the Southwest survey &amp; claim your reward" src="http://www.vipvanes.click/c416cI23F95d7yMa11Q3Sdb5Fef4q36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQydnde7Dpk1X0J5IkwDk/outvotes-deadlocked" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 636px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 18pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Fast! Sale Goes Away in 48 Hours.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.caresvip.click/2a55j23x95j86IU12CBj3db7Vef5t36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQadndK5c10OP6JLBwDW/bromides-fibrosity" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Claim a Stanley 170 pc Tool Kit from Lowes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.caresvip.click/2a55j23x95j86IU12CBj3db7Vef5t36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQadndK5c10OP6JLBwDW/bromides-fibrosity" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Visit Here for the 1,000,000 Stanley Tool Set Giveaway from Lowes" src="http://www.caresvip.click/Julie-tidiness/b345J2z395DlS7a10P3db9Xef5h36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQadndK6Yy1r0J6ayy2wD" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> 
+ &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hustle! Special Offer Comes To An End in 5 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease communication, </span><a href="http://www.vipvanes.click/6bf4C2395G8p6n10b3db4vef4n36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQydnde7ttO10gK6GTMlwD/bitters-bisectors" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue.Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. MOWAT_ AVENUE, Toronto Ontario M4K3Kl CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3199785.5794809</span></span></p>   
- <img src="http://www.vipvanes.click/5cf6d2r39v5z85MK11iK3db6Vef4D36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQydnde6D1P0NZ6zBPw3D/irate-genre" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- MOWAT' Avenue, Toronto' ON M4 K3 K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut out communication, <a href="http://www.caresvip.click/d4f5LV2395kD86P10U3db8Ref5h36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQadndK6pt1PS06n@wD@W/insensitively-peruser">Continue-Here-Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">12733324 13361365</span></span></p>   
+ <img src="http://www.caresvip.click/2694v2395suM8510h3dbaFef5y36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQadndK7Uk1BX0X5J@wXD/inclinations-applicants" alt=""/></body>
 </html>
 
-------=_Part_481_153321023.1664986194249--
+------=_Part_67_481253497.1664989484283--
 
