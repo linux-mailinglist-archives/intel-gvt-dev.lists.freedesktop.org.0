@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 638655F4CFB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Oct 2022 02:18:02 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C2A7B5F4D4C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Oct 2022 03:17:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5B85110E391;
-	Wed,  5 Oct 2022 00:17:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 083AF10E431;
+	Wed,  5 Oct 2022 01:17:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 05 Oct 2022 00:17:48 UTC
-Received: from mail.motqeer.click (unknown [98.159.43.182])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6B5E210E3E2
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Wed, 05 Oct 2022 01:17:25 UTC
+Received: from mail.likesmot.click (unknown [77.90.188.79])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D434910E421
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Oct 2022 00:17:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=motqeer.click;
+ Wed,  5 Oct 2022 01:17:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=likesmot.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=rivest.ana@motqeer.click; bh=TOdC5h3iht/hyEG4GSQezLJQb6U=;
- b=jYNS8Y0Eis15RAnoI4r9uLT8B3Xn+XBasJZ0DH+l7e6lmd+ad9dcVXD1YoRF6o694wFIwitdhEsz
- g95M3YKby264bleI/WLzHp67S3VzfAqc4OqPoAXdsSYamMzIqnjgyvlq/7L8oU9MgryjMNNezP4m
- 1W8WP9PtuECMpZ+yfvs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=motqeer.click;
- b=JzHv1NBuTbsMybZlcG9DEik/uKdG0hBAYMBabhGQuDBhLfRWiJddl+9otAb7/YegXRR+uQY3aepi
- 2diMhEJ30EkRgZrwYDyCgCln1vhycLjwt/2mTPf3jcVMpko7DM/F9muifqs77CuwMWb6A/rOnu7b
- dIfGaxKxwPs7tnjjQyE=;
-Received: by mail.motqeer.click id h7jh3o0001gu for
+ i=margo_anderholm@likesmot.click; 
+ bh=kHRc7Nj0VZ06TOtc0RDlt+VZKWk=;
+ b=nl2AHxltgjSQk1okwLwczafL2tny266f+HmoH90mnYP+HEeLL6Q8WQxBnflNDo9BbdeE28KjhIAH
+ tblR5gCeM2IA46JtlXX2s/dR4eTYG5HM6nb3A4ktDAQ3NzTUsm7RiQI0wnBTU60wPFO5PqTxzIxh
+ 5B/nhLYhGNyYXc4psp8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=likesmot.click;
+ b=WHqKILy80VcVwTL/ejh9K4uaTWv78V+76GVL7/G3RHvcn8fx+FsI5sWk0mFDlZtjlaA+gk4sPUA6
+ fBna9DfF9XkmF5mzzfRX5CDQS3OSE8/dipisROMgPX5yCwY9UPew7uPytgZXgnoyFtMc6YxyyzyC
+ RUAs2hqSwwmp300v7Hk=;
+Received: by mail.likesmot.click id h7jo3c0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 4 Oct 2022 21:37:53 -0400 (envelope-from
- <rivest.ana-intel+2Dgvt+2Ddev=lists.freedesktop.org@motqeer.click>)
-Date: Tue, 4 Oct 2022 21:37:53 -0400
-From: Ana Rivest <rivest.ana@motqeer.click>
+ Tue, 4 Oct 2022 22:37:35 -0400 (envelope-from
+ <margo_anderholm-intel+2Dgvt+2Ddev=lists.freedesktop.org@likesmot.click>)
+Date: Tue, 4 Oct 2022 22:37:35 -0400
+From: Margo Anderholm <margo_anderholm@likesmot.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Lowes Customer,
- Claim Your Stanley Tool Set  intel-gvt-dev@lists.freedesktop.org
+Subject: TrueValue Loyal Shopper Giveaway intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_529_1117575166.1664928467982"
-Message-ID: <0.0.0.3A.1D8D85B16003D8A.94F3BB@mail.motqeer.click>
+ boundary="----=_Part_619_1902592852.1664932050878"
+Message-ID: <0.0.0.45.1D8D8636D483176.732B6A@mail.likesmot.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +53,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_529_1117575166.1664928467982
+------=_Part_619_1902592852.1664932050878
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations Lowes Customer, Claim Your Stanley Tool Set  intel-gvt-dev@lists.freedesktop.org
+TrueValue Loyal Shopper Giveaway intel-gvt-dev@lists.freedesktop.org
 
-You've Been Chosen, Visit Here. http://www.motqeer.click/Hanoverize-overdue/bac6V2R39N5qGN8611v3d95sNeedI36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQGdn9e7VG1lVK06MjUwDl
-
-
+Start Here to Claim your Shopper Reward http://www.likesmot.click/abb6j23M9l5K8C_612M3d9U9rmeeem36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ.dn9K7m1FQUV05gT2wD/stuffed-tabled
 
 
--96 Mowat.  Avenue, Toronto' Ont.  M4 K3 K1 Canada
 
-To withdraw from communication, Click Ahead Here. http://www.motqeer.click/1975t23R95C8YB611m3Ud96reedN36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQGdn9e7pq1W0hP6aXwDPJ/ingeniousness-dungeon
 
-Our e-mail content was selected for intel-gvt-dev@lists.freedesktop.org
 
-69900196~2381269
+To modify your notification options, Do This Now http://www.likesmot.click/1015z2K395j8NK612v3d9IaFHeeeD36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ.dn9K7loW1sw06Bk1wkD/benders-quilts
 
-------=_Part_529_1117575166.1664928467982
+Our e-mail message was intended for intel-gvt-dev@lists.freedesktop.org
+
+_96 MOWAT- Avenue, Toronto Ont M4K 3K1 CANADA
+
+1857543 2360045
+
+------=_Part_619_1902592852.1664932050878
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,21 +81,22 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.motqeer.click/ingeniousness-dungeon/51c6uJ239o5sU86U12N_3dQ95ieedu36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQGdn9e7B1pRx0X6QXwq1D" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for the Lowes Giveaway</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.motqeer.click/ingeniousness-dungeon/51c6uJ239o5sU86U12N_3dQ95ieedu36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQGdn9e7B1pRx0X6QXwq1D" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="You've Been Chosen, Visit Here" src="http://www.motqeer.click/Hanoverize-overdue/a9e6m23N9m5zn7La10e3d97keedF36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQGdn9e6M1lSy05O@w1D" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Be Quick! Promotion Comes To An End in 5 Days.</span></span></p> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><a href="http://www.likesmot.click/g6b6K23pS95SpW8610Y3d99LeeeK36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.dn9K7v1VG0BZ6G3zwWD/consoling-designers" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="TrueValue Craftsman Generator Giveaway" src="http://www.likesmot.click/matures-orthant/3d24b2395n7Pwa10B3d9bXeeeh36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.dn9K5e1uT05YlPwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><a href="http://www.likesmot.click/g6b6K23pS95SpW8610Y3d99LeeeK36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.dn9K7v1VG0BZ6G3zwWD/consoling-designers" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to Claim your Shopper Reward</span></a></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT' Avenue, Toronto' ONT. M4 K3 K1 CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To withdraw from communication, <a href="http://www.motqeer.click/coalescing-Machiavelli/1025nR2395p86QB12N3wd96iDeedq36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQGdn9e7kCAM1m06QUyMwD">Click Ahead Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7976038.2381269</span></span></p>   
- <img src="http://www.motqeer.click/Hanoverize-overdue/7385i23n95d8AJ510l3d98seedI36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQGdn9e5k1X0P6VlwDAA" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your notification options, </span><a href="http://www.likesmot.click/monetary-unblock/80a5OO2395Kj8S610p3d9aHeeeU36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ.dn9K7G1ujgz05tWJwD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Do This Now</span></a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was intended for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 Mowat. Av, TORONTO ONT. M4K3K1 Canada</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-973bbf62-7fff-07f5-457f-5a7e85668e1b"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1857543-2360045</span></span></span></p>   
+ <img src="http://www.likesmot.click/a7f5nR2395AH85t10o3d9cXeeet36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ.dn9K5e10vI6e3wBBD/benders-quilts" alt=""/></body>
 </html>
 
-------=_Part_529_1117575166.1664928467982--
+------=_Part_619_1902592852.1664932050878--
 
