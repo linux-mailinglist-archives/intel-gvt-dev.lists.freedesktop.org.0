@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 497695F575E
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Oct 2022 17:22:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54A355F5653
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Oct 2022 16:24:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 74DBC10E6A5;
-	Wed,  5 Oct 2022 15:22:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1805F10E688;
+	Wed,  5 Oct 2022 14:24:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 05 Oct 2022 15:22:13 UTC
-Received: from mail.ontovip.monster (unknown [185.104.151.198])
- by gabe.freedesktop.org (Postfix) with ESMTP id D613C10E6A4
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Wed, 05 Oct 2022 14:24:11 UTC
+Received: from mail.partsvip.monster (unknown [185.104.151.219])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7096E10E67A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Oct 2022 15:22:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ontovip.monster; 
+ Wed,  5 Oct 2022 14:24:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=partsvip.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=mentkowski_jasmine@ontovip.monster; 
- bh=0f2Q1CLPSY/J5jYUM2zlemmbzVg=;
- b=HmijPvZ87HUrokJ3eWdCvI4utPeqykM4F+nx12OERcGg5/gsE6I3ukW/qFhE05g6mhv3CxkaTcor
- iNr+ao809fL2UrZ1+D5GQDw4dq3eGYOYuqO3gwguqlbFxwUwFMiGuy6BUtGiFvLXgKNOSqPtd6rc
- tcKh/Nn5gUvqHXjAKbA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ontovip.monster;
- b=TloslyPViPUOtP6N5SoM7XC+ZvR/1iX1V6LU2RB5I16SyeKt0ukRozwzTvQhG+Ha0G159ZAi+N2o
- vkWg0fWCF/923HeS+Ct7ueYsVrAuI+avo+YPodiCisa/KOjW7TxweXAR8SMEiueESjJGRAouk26A
- RUug/y5J6HTGbnxVPhs=;
-Received: by mail.ontovip.monster id h7mgic0001gv for
+ i=beausoleil.yvette@partsvip.monster; 
+ bh=N2OrZe2sQ3P+ite1g7DuOALRYbM=;
+ b=hRaV7pI+/QNx+CCNDWuttUiJbCuwBLpvzLdNyUqOrfPkIzDZi6Ev+Ea0tWO93a+S0BdZvBUoKYww
+ e48b05X3YTHYXRngU1m9yhRR9BR++rgUA8D888hs/RjlKLycB7c8GnpXPP1JuAzZVR836NbM25g9
+ LsbrlCcKSxIxcL51fs4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=partsvip.monster;
+ b=JIGuEmVzXUzFjq4sxSl/oi6eqIO+IB8cxYdlNuEem7L/n6Fn/iXdjks59KuSqj8J+2tUkald9zD+
+ GOAebStSDT0NJVwC9lDY0GRQOWLkKQh2i2+ngE2QXAsBcq1isclz6nUtexkgQWJpG0I08qeXu2Si
+ uBO+khoF3DTYmvB5AHY=;
+Received: by mail.partsvip.monster id h7mk9m0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 5 Oct 2022 11:13:03 -0400 (envelope-from
- <mentkowski_jasmine-intel+2Dgvt+2Ddev=lists.freedesktop.org@ontovip.monster>)
-Date: Wed, 5 Oct 2022 11:13:03 -0400
-From: Jasmine Mentkowski <mentkowski_jasmine@ontovip.monster>
+ Wed, 5 Oct 2022 11:40:37 -0400 (envelope-from
+ <beausoleil.yvette-intel+2Dgvt+2Ddev=lists.freedesktop.org@partsvip.monster>)
+Date: Wed, 5 Oct 2022 11:40:37 -0400
+From: Yvette Beausoleil <beausoleil.yvette@partsvip.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your Ace Hardware Confirmation Code  1204732
+Subject: Give your Opinion of Lowes for a New Stanley Tool Set
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_460_677865774.1664982763924"
-Message-ID: <0.0.0.33.1D8D8CCF6AB3E04.22A08B@mail.ontovip.monster>
+ boundary="----=_Part_601_2002275007.1664979010788"
+Message-ID: <0.0.0.42.1D8D8D0D1026570.4FD0E0@mail.partsvip.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,23 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_460_677865774.1664982763924
+------=_Part_601_2002275007.1664979010788
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Your Ace Hardware Confirmation Code
+Give your Opinion of Lowes for a New Stanley Tool Set  intel-gvt-dev@lists.freedesktop.org
 
-Begin Here to get up to $1OO for your input: http://www.ontovip.monster/brutish-longed/a444u2395ryr8611dJ3db1sef3h36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ5dndS6D1HGk06iXTwzD
-
-Get Going! Deal Goes Away in 3 Days.
+Visit Here to give your feedback about Lowes-http://www.partsvip.monster/condones-disappointments/17a6qRK2395qA8g610l3da9oef2F36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2dndR5tn1_05nBw0D
 
 
 
-. 96 Mowat_ Av, Toronto_ ONT.  M4K 3K1 CANADA
-No longer want to receive email information?: http://www.ontovip.monster/disjunctions-predicts/a9e6hK2o395L8LL612v3dazLfHef3q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ5dndS7Yr1p0HL6CL@wDB
-47117911:1204732
 
-------=_Part_460_677865774.1664982763924
+. 96 Mowat- Ave. , Toronto ONT.  M4K 3KI CANADA
+
+To halt notices, Start Ahead Here-http://www.partsvip.monster/60b6S2u3i95Gg86i11n3daMauef2J36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ2dndR6qsHC106eMwDXz/interpose-supplying
+
+Our email content was designated for intel-gvt-dev@lists.freedesktop.org
+
+7106180-3484015
+
+------=_Part_601_2002275007.1664979010788
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -78,15 +82,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><a href="http://www.ontovip.monster/4df4v2395zvV8610p3dadFef3C36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ5dndS6ulH1q06LJwkDl/disjunctions-predicts" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to get up to $1OO for your input</span></a></span><br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:657px;"><a href="http://www.ontovip.monster/5ed4Q2395J8yj610z3daeCef3l36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ5dndS7S10qGBI5yjPwD/idiosyncrasy-extenuation"><img src="http://www.ontovip.monster/8816w2D3x95FG7pa12k3du_b0yef3Z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5dndS5S1R0h5iA2wD/disjunctions-predicts" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 657px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Going! Deal Goes Away in 3 Days.</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT. Ave, Toronto. ONTARIO M4K3Kl CANADA&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email information?, </span><a href="http://www.ontovip.monster/42b6s2g3G95oSQ8611p3daCfuef3L36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5dndS7b10pHXV6OzTwMD/disjunctions-predicts" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue Over Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">47117911-1204732</span></span></p>   
- <img src="http://www.ontovip.monster/idiosyncrasy-extenuation/d326A23ZI95yLL8510k3db2Fef3V36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ5dndS6QPlJ105Ej3wD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.partsvip.monster/15b5q23n95pF8z612O3tdas9Yef2y36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ2dndR6RO10wt5S@MwD/interpose-supplying" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Randomly Chosen, Tap Here</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.partsvip.monster/15b5q23n95pF8z612O3tdas9Yef2y36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ2dndR6RO10wt5S@MwD/interpose-supplying" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Visit Here to give your feedback about Lowes" src="http://www.partsvip.monster/7eb5Fo2395y7akO10q3dabief2K36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ2dndR6uA10Dz5Vy0wD/condones-disappointments" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Going! Deal Expires in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' Mowat. Ave., Toronto. Ont. M4K 3K1 CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To halt notices, <a href="http://www.partsvip.monster/gutting-adjustments/af86z2m3A95h8P6F10e3daauef2i36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ2dndR5C1HA05pN3wD">Start Ahead Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email content was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2305104~3484015</span></span></p>   
+ <img src="http://www.partsvip.monster/Conakry-inappropriateness/80a4e2395sI85Z10G3dacTef2O36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ2dndR6G10HHP5uMNwD" alt=""/></body>
 </html>
 
-------=_Part_460_677865774.1664982763924--
+------=_Part_601_2002275007.1664979010788--
 
