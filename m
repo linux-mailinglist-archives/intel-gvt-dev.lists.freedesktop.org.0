@@ -1,42 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 070E65F5E68
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 03:29:14 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 484565F6514
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 13:15:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 59E1E10E494;
-	Thu,  6 Oct 2022 01:29:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 76AB910E0A3;
+	Thu,  6 Oct 2022 11:15:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Thu, 06 Oct 2022 01:29:02 UTC
-Received: from mail.vipfires.click (unknown [185.104.151.81])
- by gabe.freedesktop.org (Postfix) with ESMTP id 39DB310E494
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Oct 2022 01:29:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vipfires.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kari_namm@vipfires.click; bh=qFhY2XJrIY8hgFTsAvsCoxJSRCg=;
- b=AmrcZpCj5Ed7uOYyT6HcRnRuslysBmiXd7NL6Af+i12RE7JvTmqEl+7bcnY7E2GAlUQQYFZRJ68/
- zCiCRYXgbMjRqrydX7bS0nOnyFajdV3t9Gpu7XkojLijqrnCyFCaZ7oEgf4VWkLictZDH6nxHhaF
- Brg5nv5pm667XpXf4DM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vipfires.click;
- b=qvLLT+3ot9YNbaWtxKXMEB+lnWV6aUEL44hAbiAt0MU9a7/QknXF8ZDDjMedNfrYDX4W9bvztZ75
- KU8g9exc1Iz06Y5E7tasagNnXOtLos1PbqZD7UWuazJ20xfMsXbyQtT/3pFHcUtFASPHFPno3A5n
- n4OCz4h3xRqvHW9n1mk=;
-Received: by mail.vipfires.click id h7onls0001g1 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 5 Oct 2022 21:07:27 -0400 (envelope-from
- <kari_namm-intel+2Dgvt+2Ddev=lists.freedesktop.org@vipfires.click>)
-Date: Wed, 5 Oct 2022 21:07:27 -0400
-From: Kari Namm <kari_namm@vipfires.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Receive your Reward for you feedback on Starbucks
+X-Greylist: delayed 10428 seconds by postgrey-1.36 at gabe;
+ Thu, 06 Oct 2022 11:15:51 UTC
+Received: from pmu4.uberaba.mg.gov.br (unknown [201.62.58.19])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8E9B610E0A3;
+ Thu,  6 Oct 2022 11:15:50 +0000 (UTC)
+Received: by pmu4.uberaba.mg.gov.br (Postfix, from userid 5001)
+ id 12865E925DE; Thu,  6 Oct 2022 05:02:47 -0300 (-03)
+X-Spam-Checker-Version: SpamAssassin 3.3.2 (2011-06-06) on
+ pmu4.uberaba.mg.gov.br
+X-Spam-Level: 
+X-Spam-Status: No, score=-0.4 required=5.0 tests=ALL_TRUSTED,BAD_CREDIT,
+ BAYES_40,HTML_MESSAGE,LOTS_OF_MONEY,MISSING_MID,URIBL_BLOCKED autolearn=no
+ version=3.3.2
+Received: from [192.168.0.195] (unknown [103.103.59.228])
+ by pmu4.uberaba.mg.gov.br (Postfix) with ESMTPSA id 0A975E925DE;
+ Wed,  5 Oct 2022 22:56:38 -0300 (-03)
+Content-Type: multipart/alternative; boundary="===============1420523329=="
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_184_2092879238.1665018428067"
-Message-ID: <0.0.0.15.1D8D920005DCE96.7B61A1@mail.vipfires.click>
+Subject: Very genuine loan at 3% rate 05-10-2022
+To: Recipients <infofinance@uberaba.mg.gov.br>
+From: "PVR FINANCE FIRM" <infofinance@uberaba.mg.gov.br>
+Date: Thu, 06 Oct 2022 07:25:43 +0530
+Message-Id: <20221006080248.12865E925DE@pmu4.uberaba.mg.gov.br>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,51 +44,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: pvrfinancoffie09@outlook.co.th
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_184_2092879238.1665018428067
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+You will not see this in a MIME-aware mail reader.
+--===============1420523329==
+Content-Type: text/plain; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-Receive your Reward for you feedback on Starbucks
+Are you looking for a very genuine loan at an affordable interest rate of 3=
+% process and approved within 72 hrs? Have you been turned down Constantly =
+by your Banks and other financial institutions because of bad credit? Loans=
+ ranging from $5000 USD to $50,000, 000 USD maximum LOANS for Developing bu=
+siness a competitive edge / business expansion. We are certified, trustwort=
+hy, reliable, efficient, Fast and dynamic for real estate and any kinds of =
+business financing. Contact us for more details and information.
+Thanks & Regard
+ Finance Pvt Ltd
+pvrfinancoffie09@outlook.co.th
 
-Begin Here to get your Starbucks Bonus~http://www.vipfires.click/cb95w23T95lQ8S612v3Wddu6AefdW36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQtdnQS7hm1Htw06I@wUWD/convincing-likelier
+--===============1420523329==
+Content-Type: text/html; charset="iso-8859-1"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
 
-
-
-
-To break off messages, Begin.This.Way~http://www.vipfires.click/7194h2395j8R6Z11X3dFd7VefdZ36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQtdnQS7l1Lnki06oJTlwD/assistantships-huskiness
-Our email message was intended for intel-gvt-dev@lists.freedesktop.org
-8331768~5439918
-96 Mowat.  AVE, Toronto' ONTARIO M4K3KI Canada
-
-------=_Part_184_2092879238.1665018428067
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><a href="http://www.vipfires.click/assistantships-huskiness/6666e23w9j5QT86L11L3dhd6Jefdn36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQtdnQS7PnY1m0Z5S@@wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to get your Starbucks Bonus</span></a></span></p> 
-  <div style="text-align: center;">
-   &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><a href="http://www.vipfires.click/assistantships-huskiness/6666e23w9j5QT86L11L3dhd6Jefdn36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQtdnQS7PnY1m0Z5S@@wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:889px;"><img alt="Start Here to earn a Starbucks Reward up to $100" src="http://www.vipfires.click/2a54Y2395wTw7a10U3dd8AefdF36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtdnQS6D1hgr06wzwlPD/assistantships-huskiness" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 889px;" /></span></span></a></span>
- </p> 
-  <div style="text-align: center;">
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Don't Wait! Deal Expires in 3 Days.</span></span>
-   <br /> 
-   <br /> &nbsp;
-  </div> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To break off messages, </span><a href="http://www.vipfires.click/assistantships-huskiness/24c4g2395c86kI10R3dd7SefdU36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQtdnQS7w1W_ki06lNPwDT" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin.This.Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8331768,5439918</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 Mowat_ Av, T0R0NT0 Ont. M4K3KI CA</span></span></p>   
- <img src="http://www.vipfires.click/60b6k23V9W5R8Y5o10e3dd9gefdT36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQtdnQS7RylT1F06oTw@JD/supergroup-springiest" alt=""/></body>
-</html>
-
-------=_Part_184_2092879238.1665018428067--
-
+<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Diso-8859-1"/></head><BODY><P>Are you looking for a very genuine loan at =
+an affordable interest rate of 3% process and approved within 72 hrs? Have =
+you been turned down Constantly by your Banks and other financial instituti=
+ons because of bad credit? Loans ranging from $5000 USD to $50,000, 000 USD=
+ maximum LOANS for Developing business a competitive edge / business expans=
+ion. We are certified, trustworthy, reliable, efficient, Fast and dynamic f=
+or real estate and any kinds of business financing. Contact us for more det=
+ails and information.<BR>Thanks &amp; Regard</P>
+<P>Finance Pvt Ltd<BR><A href=3D"mailto:pvrfinancoffie09@outlook.co.th">pvr=
+financoffie09@outlook.co.th</A></P></BODY></HTML>
+--===============1420523329==--
