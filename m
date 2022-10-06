@@ -1,44 +1,107 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 849735F652D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 13:25:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AB4D5F6541
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 13:35:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6354310E523;
-	Thu,  6 Oct 2022 11:25:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D659D10E374;
+	Thu,  6 Oct 2022 11:35:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
- Thu, 06 Oct 2022 11:25:10 UTC
-Received: from mail.vernstip.monster (unknown [5.42.214.94])
- by gabe.freedesktop.org (Postfix) with ESMTP id 54D8310E2D5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Oct 2022 11:25:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vernstip.monster;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sherrie-pefanis@vernstip.monster; 
- bh=UUXdzAxmYN1+yk6NH3xfZP8IFjA=;
- b=h4AFSQdAIch3LfKSHkIV33pEI86egd4225Q9W4/1S31UJlGE6/LIJH8M4uRvArByfjaDKeQVPVYr
- A+r5Je+Rsped1uFIhG3JN87PauhH7gfwkNzGwgw5MiCEAEQUJQo3HTFWPHVlneZdwjHK8P3LHvH7
- cZcBlSLmJQ6lBNo8Awc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vernstip.monster;
- b=JObhsplEo+TClCjmND4xaX6P4EWixQjZPj2plppdM9wEDKspBltaFU424ILXt3u9ZvbTF7/3IafX
- SCrtEOBJAmX8Kz7gQ7JJiS9jZw6t6LnnDgMTWtu4iggV5xURwQjPNvFsDHrA4bNp16UEEi+H9xgN
- Z5K7GHdZRXCm+Ylb65M=;
-Received: by mail.vernstip.monster id h7qthc0001gt for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 6 Oct 2022 07:11:00 -0400 (envelope-from
- <sherrie-pefanis-intel+2Dgvt+2Ddev=lists.freedesktop.org@vernstip.monster>)
-Date: Thu, 6 Oct 2022 07:11:00 -0400
-From: Sherrie Pefanis <sherrie-pefanis@vernstip.monster>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations you've been selected for a exclusive offer from Lowes
- intel-gvt-dev@lists.freedesktop.org
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2055.outbound.protection.outlook.com [40.107.223.55])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4E2BD10E374;
+ Thu,  6 Oct 2022 11:35:09 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AOy62DkGwjD5YSvTc7xEarTXfcIbsLaQYhU9D6x0R2g+JriHu3mvbqpcDhNsTCSi8Q0Y1ZTMBg7iI60MNLlvM7zTNsNvCu0EiPV3gfjKAk7Y9i4mbX3JJ27nhZ5RyNHH1THRbyhd6v+YYb2Yu1IJw7WOb8In20eXgTBebIYEO/WIoHDphQ73k85Ajv84dxgsMkpoRXicrGXQ0v7dxjKx6u1G3vGQVco9+RbUsYcSpx1m23ekRGY18exQfBh6urNCXx5+Lo5LKbbe8xV51oBklGl9iQD5Jv5gbLH7E0sHhxVWq70UWCqZvWLc/6VFHBLzR3ruxPS4u5bzZEoHNwTadg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fcfIM00QPfTRhYTaM9uLJRgY6P/dRoibROfUI2DuIeA=;
+ b=VLVVNIf0lXXItOE8GJOZDEBxZpH/2xvEY83dJmlubUGBieQhV77h9sSmddavNh4YWxMGOUkBSijZrlbekTjqPbbpqFlGuwGS8Nzky3GLr6eYcgCTbeKQVC91KJNv1cuiOnccWL6qmtEY6CSijsFWL7byxlG+kHUVbJXRLrxwUS/k7rG4548uRrI2+MRPBFOReZGZucQ+bfPjIguKLymn/3bfG1EWo6+vTbKZMyeJmbZeEbOLVitkb5vtn1wPR8iJonfkSXDdO99+RjtWH7UkunOrY8S2sdAg6GOvi0X65DHi5XPuehZZjFvcQ0Iqj0P71TdAak1CGS5y4aeWxwwKog==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fcfIM00QPfTRhYTaM9uLJRgY6P/dRoibROfUI2DuIeA=;
+ b=q4PjWk3NpdWUHy4wr0W9TA4rpRo5SY+RtDw4rkAaWBgxqCLWxGX5SB0BIxM1V/Xri2yuMZwexXKwyDMOUucwEQ+YVUDLq+oJampCcis2Pg5qkMiP7VDcpoIcqjhn7GMwROU/w5H+c7wxJ6JbrH1ICWHh322Htt/MKzq6pRim6ad6Tgg8B5yM4aZHWeqQURm7QO3TeMjGOU4dY9RYlBMhGGZbx87V//T4ng098LmD86PA+axeDUZDKoi/dUnJg+MMWDm8MoAZ6SQAn4CpKHkgSIZ9Zh7YITvtMXgzKJ7mTyzOMaJMJJvb19RJiekjMG37m1siu6g0XDV+WD/iV6+gWw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by CY5PR12MB6082.namprd12.prod.outlook.com (2603:10b6:930:2a::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.28; Thu, 6 Oct
+ 2022 11:35:07 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::7a81:a4e4:bb9c:d1de]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::7a81:a4e4:bb9c:d1de%5]) with mapi id 15.20.5676.032; Thu, 6 Oct 2022
+ 11:35:07 +0000
+Date: Thu, 6 Oct 2022 08:35:06 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH] drm/i915/gvt: Add missing vfio_unregister_group_dev() call
+Message-ID: <Yz69amRXgm5ZTKrg@nvidia.com>
+References: <0-v1-013609965fe8+9d-vfio_gvt_unregister_jgg@nvidia.com>
+ <20221005141717.234c215e.alex.williamson@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221005141717.234c215e.alex.williamson@redhat.com>
+X-ClientProxiedBy: MN2PR15CA0065.namprd15.prod.outlook.com
+ (2603:10b6:208:237::34) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_472_20589799.1665054645695"
-Message-ID: <0.0.0.34.1D8D97450C27478.4B3FD1@mail.vernstip.monster>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|CY5PR12MB6082:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7c2b02d2-8a38-4293-47a4-08daa78ed1b5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: +CDfdrc1TsouWCl4WGOuaEWS1GJF61X0Ktw5CRUfqqQ6ZgRHlAt1/swHFAZ/c7y22liKqZl27USv7Yw8IG4l6GLcgH3X0QH5zZBazUOoqe/geMvlp5X/RHLoZ9/vanyj5JoEhBcXU3ZcztSkC/MWEMkziakipz4I58SAcYXS4bMmo6+QiOgErFnkWSbAtICaSi7TN3iGBY6lU1xCdgYIWqcAputuS1clP1rEqftj8GqTcuBzMIExWSegElNEfo3pRYcGTlUk+9hapAGrqni6fa5awikUYtpGOjUCeBArREcgEcyP7cqz4Ie/VinxO1sg+bOP+qGcTQEYHO1ao30nwvaFiJ9g+my4xP0n3yf9qa4v1PQ9PKXcQgS9GdspaAHfQBVwyEQ+fXfh2B4aUuwhJ4k1NvQeL5vQCqKNY+9405MK+6wjNHwlAANNYtFVS38f5xEMdCYHsQ56Vg5doYW9zNInXKzNYEA8vISPfmly1q6QRLUc5P4pV0uc8zfmeqEFoPp0/hHe/Jl918UWl2iC8oOJDev7u4ysjAPBdq/qM7ylhTsmZAD6AO4xRwF+dMJFctjTci+Mo95H2XAuHH1FXia2Jr+OJUGUHP9GoS/OoS4/MZiINdR0fE4Zo6RfKzNgkso/G8xtA/t+y55sKjWLssxlOPkiPluCZyq358x1L3j8rVrmIQy5zZDe7gvtOBfPAPknyyen0mZzadKlOhgvSA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(4636009)(136003)(366004)(376002)(396003)(39860400002)(346002)(451199015)(54906003)(66556008)(6916009)(6486002)(86362001)(4744005)(41300700001)(7416002)(36756003)(316002)(478600001)(5660300002)(4326008)(66476007)(8936002)(8676002)(66946007)(186003)(38100700002)(2616005)(6506007)(6512007)(26005)(2906002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KwgGvUpw9wnJ+5aDaBDFa7NLLZcrno3nMKW8mGtmhoQef6R6PriVtiohFcDz?=
+ =?us-ascii?Q?9WloxLW6sidT1hDPU46oINHiCsEAn6Y94dhI5h4Ku6JBWV8l33U+Rv9OqJpr?=
+ =?us-ascii?Q?kEi2NCzRJGXnqb6DjWDS/spjgAJkMnX6C15DOwCymvBR4+UooRJ9jx3i69l3?=
+ =?us-ascii?Q?3OjyPL9XeQBkHLfw4LO21kkvWSoWqe2lSeGvg9EHHY7TyIWDbTxuOe6SE2uh?=
+ =?us-ascii?Q?/chQmzaJqpqFvjr6/hzgQTQC2yh29vjlnXEckF38ciAB8vCtLWN5dUH1gEy0?=
+ =?us-ascii?Q?+/5Md3BBpz4bH1yKFV0wMpcdagaB8jW12z7BlF1Jf2DWvRjESCOg9QlS5uKi?=
+ =?us-ascii?Q?qvCTrLWiBLTCZbwGIaLDJ+gm0WwIv8RRNrM+q6DDgndwhe1PK3OZ1It47V72?=
+ =?us-ascii?Q?ogI+Mq1BHPztetlcXOkQ1QcFmtJTsl06rMaTHY9JBdtqc/R+MkeKiQtRNrzP?=
+ =?us-ascii?Q?KHAvU8C/IgfE9kVPPxBsuOWIt5R6J7vHkCTvWDlUUtQRmzQW/NChbQ+QZDC2?=
+ =?us-ascii?Q?5/Q4fTbUoWUKVtdD6/FSGh2GVV/k4YOw1QhFsZcOzwjAA1VyUKBzqetuQQOW?=
+ =?us-ascii?Q?TopeHClMtEx/Oxcn6t4ZWvkd0JQJLPxnWKt5vD7DIpbCfUtzes/1VS8Qn0Mh?=
+ =?us-ascii?Q?fGksv30YPsPfzI1LFNMJOuPmV1dKoBaP6+V/FdHt7nMPp2W+8dWFihfg9j6J?=
+ =?us-ascii?Q?1HyYxmabtBqNEsBjS6pIeu2j6pUgm4v6sQyf3yLoGoZNqqRSvBY/8HxLe4zv?=
+ =?us-ascii?Q?vrXVe4ViYGoEDVd8DIptGehFKaF2gc3c3gKux28TPvEQAO1dowKtufo8m4Dp?=
+ =?us-ascii?Q?uPRpcR2KSxzKOLAsKp4q4kJ3RiKgXt1xPFAJ9IFjkDAS3nAeqAHO+TO/10UC?=
+ =?us-ascii?Q?nRvI/L/RC58bzYyMi+eAqj4Xf27ESMotRfASSh6BrVun6xM7mKyl2HX1HQDT?=
+ =?us-ascii?Q?3x/eivfsQvSZeXIaBfvwgp4h/OfNW4kbwWNF/443SN3z8kYXgQ9xG1qkw0ek?=
+ =?us-ascii?Q?pPT1sdtGX4DzOPrQOUfbBQ7JyksYoA79ckxa0+15N2O6ogtfwh/9vGFbYdJD?=
+ =?us-ascii?Q?m40VQPYGYpiYmcrPcWD80llXrhcElHnFPjnjqHRrTFvVxaS1yn+Mp8yCJs0H?=
+ =?us-ascii?Q?wIwBOabWIQktczqp4CMC6jKXhC9WRjcEpZW9F+sHHxvVtoriMxkTHBUCHYN2?=
+ =?us-ascii?Q?8gstfXoZNAfqh/OSoQzcFk8PSIWf56LGoK3taoGltMHTIMbLiM7lRxbuYR6a?=
+ =?us-ascii?Q?rm9U3buL+u9/AhJ/9MIw5KCEMaBj15T/NONS9ECShay5BwxGS/RZbtBAv8jV?=
+ =?us-ascii?Q?NkOoPmM0tDZVXHtTgoNw4N5aEWZbXDQEeZ1dAWIxgTPJEUtfmdE3NaeIJ4CO?=
+ =?us-ascii?Q?BSoUwvOctPWXCYlFuUeXl4/0ADV5jRT30tbd50H7rtTemDLmZjtsyUd+EmHC?=
+ =?us-ascii?Q?T+ENczTM0mldjdTkOW6ebWB6BHKmeiAzgpIH+7VGNgTAw9zpude2jEYFMCek?=
+ =?us-ascii?Q?ZtknPl56FJe7mm5DEqblhx/ESgDO/2QbBuOreRUjapD+O1RG7DI9NRNBYpnX?=
+ =?us-ascii?Q?X9CiYX53dvl5hsarcjI=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7c2b02d2-8a38-4293-47a4-08daa78ed1b5
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Oct 2022 11:35:07.2953 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: QVDHQGKykT1VdO1j7Rd0rlCvUwQNikWxJNJFaTiv9vgAOvFqqBYuj7/vqOpnjr9j
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6082
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,166 +114,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ stable@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ Christoph Hellwig <hch@lst.de>, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_472_20589799.1665054645695
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On Wed, Oct 05, 2022 at 02:17:17PM -0600, Alex Williamson wrote:
 
-Congratulations you've been selected for a exclusive offer from Lowes =20
+> > diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > index 41bba40feef8f4..9003145adb5a93 100644
+> > --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > @@ -1615,6 +1615,7 @@ static void intel_vgpu_remove(struct mdev_device *mdev)
+> >  	if (WARN_ON_ONCE(vgpu->attached))
+> >  		return;
+> >  
+> > +	vfio_unregister_group_dev(&vgpu->vfio_device);
+> >  	vfio_put_device(&vgpu->vfio_device);
+> >  }
+> >  
+> > 
+> > base-commit: c72e0034e6d4c36322d958b997d11d2627c6056c
+> 
+> This is marked for stable, but I think the stable backport for
+> existing kernels is actually:
 
-LOWES
+Yes probably, this patch won't apply so if anyone wants to see it in
+the stable series they need to follow the process to send the reworked
+version.
 
-Dear Lowe's Shopper,  intel-gvt-dev@lists.freedesktop.org
-
- We would like to offer you a extraordinary chance to receive a brand-new STANLEY=
-=C2=AE 170 piece Mixed Tool Set! To claim your bonus, simply finish the =
-{{short|brief|quick} survey about your experience with LOWES.=20
-
- Click Here to give your input about Lowes http://www.vernstip.monster/6295t23_95IzK8610O3ddaqefeU36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQPdnQe7M1OvRk06ABXAwD/corkscrew-focussed
-
-Attention! The Promotion Goes Away in 3 Days.=20
-
-=20
-
-This content was delivered to intel-gvt-dev@lists.freedesktop.org
-
-
-
-
-
-
-
-96' MOWAT.  Av. , Toronto- ONT.  M4K3Kl Canada
-
-No longer wish to receive email messages?, GoHere http://www.vernstip.monster/6656Q2k39w5o8MF610d3ddbjefew36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQPdnQe6b10Cxt5dNwDW/whaling-germinating
-
-4286006 1442379
-
-------=_Part_472_20589799.1665054645695
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-
-<html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>
-  &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; text-align: center;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 36pt; font-family: Georgia;=
- color: rgb(0, 0, 255); background-color: rgb(0, 0, 255); font-variant-nume=
-ric: normal; font-variant-east-asian: normal; vertical-align: baseline; whi=
-te-space: pre-wrap;">4286006</span><span style=3D"font-size: 36p=
-t; font-family: Impact; color: rgb(255, 255, 255); background-color: rgb(0,=
- 0, 255); font-variant-numeric: normal; font-variant-east-asian: normal; ve=
-rtical-align: baseline; white-space: pre-wrap;">LOWES</span><span style=3D"=
-font-size: 36pt; font-family: Georgia; color: rgb(0, 0, 255); background-co=
-lor: rgb(0, 0, 255); font-variant-numeric: normal; font-variant-east-asian:=
- normal; vertical-align: baseline; white-space: pre-wrap;">=
-69024834</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
-olor: rgb(36, 36, 36); background-color: transparent; font-weight: 700; fon=
-t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
- baseline; white-space: pre-wrap;">Dear Lowe's Shopper,</span></span></p>=
-=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 13.5pt; font-family: Arial;=
- color: rgb(48, 48, 48); background-color: transparent; font-variant-numeri=
-c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
--space: pre-wrap;">We would like to offer you a extraordinary possibility to receive =
-a brand new </span><span style=3D"font-size: 13.5pt; font-family: Arial; colo=
-r: rgb(36, 36, 36); background-color: transparent; font-weight: 700; font-v=
-ariant-numeric: normal; font-variant-east-asian: normal; vertical-align: ba=
-seline; white-space: pre-wrap;">STANLEY&reg; 170 piece Mixed Tool Set!</spa=
-n><span style=3D"font-size: 13.5pt; font-family: Arial; color: rgb(48, 48, =
-48); background-color: transparent; font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> =
-To claim your gift, simply </span><span style=3D"font-size: 13.5pt; font=
--family: Arial; color: rgb(32, 33, 36); font-variant-numeric: normal; font-=
-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap=
-;">complete the {{short|brief|quick} survey about</span><span style=3D"font-=
-size: 13.5pt; font-family: Arial; color: rgb(48, 48, 48); background-color:=
- transparent; font-variant-numeric: normal; font-variant-east-asian: normal=
-; vertical-align: baseline; white-space: pre-wrap;"> your experience with <=
-/span><span style=3D"font-size: 18pt; font-family: Impact; color: rgb(0, 0,=
- 255); font-variant-numeric: normal; font-variant-east-asian: normal; verti=
-cal-align: baseline; white-space: pre-wrap;">LOWES.</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
-href=3D"http://www.vernstip.monster/whaling-germinating/62a4Y2395mK86T10l3ddaWefeV36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQPdnQe6uSOm105LW2wD" style=3D"text-decoration-line: none;"><span style=3D"co=
-lor:#FFFFFF;"><span style=3D"font-size: 18pt; font-family: Arial; font-vari=
-ant-numeric: normal; font-variant-east-asian: normal; text-decoration-line:=
- underline; text-decoration-skip-ink: none; vertical-align: baseline; white=
--space: pre-wrap;"><span style=3D"background-color:#0000FF;">=
-Click Here to give your input about Lowes</span></span></span></a></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
-olor: rgb(235, 0, 0); background-color: transparent; font-weight: 700; font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap;">Attention!</span><span style=3D"font-size=
-: 18pt; font-family: Arial; color: rgb(36, 36, 36); background-color: trans=
-parent; font-weight: 700; font-variant-numeric: normal; font-variant-east-a=
-sian: normal; vertical-align: baseline; white-space: pre-wrap;"> </span><sp=
-an style=3D"font-size: 14pt; font-family: Arial; color: rgb(36, 36, 36); ba=
-ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
-; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
-re-wrap;">The </span><span style=3D"font-size: 14pt; font-family: Arial; ba=
-ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
-; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
-re-wrap;">Deal Expires in 4 Days.</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 14pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">This content was delivered to intel-gvt-dev@lists.freedesktop.org</span></span>=
-</p>=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br /> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">'96 Mowat_ Av., T0R0NT0 Ont M4K 3Kl CANADA<=
-/span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
-href=3D"http://www.vernstip.monster/abb6JRi2395du8T611GB3ddbqefej36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQPdnQe5o1k0C5y0w@D/diacritical-greedy" style=3D"text-decoration-line: none;"><span style=3D"fo=
-nt-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
-meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
-line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
-: pre-wrap;">No longer wish to receive email messages?,</span></a><span style=3D"font-size: 10pt; font-f=
-amily: Arial; font-variant-numeric: normal; font-variant-east-asian: normal=
-; vertical-align: baseline; white-space: pre-wrap;"> GoHere</span></s=
-pan></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">5254938,1442379</span></span></p>  =20
- <img src=3D"http://www.vernstip.monster/24b4m2395WjF8511o3QddcGefeX36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQPdnQe6jPj1u05z13wD/corkscrew-focussed" alt=3D""/></body>
-</html>
-
-------=_Part_472_20589799.1665054645695--
-
+Jason
