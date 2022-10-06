@@ -2,80 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0356A5F6D81
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 20:31:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 669DA5F6E12
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 21:20:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8FD3510E85D;
-	Thu,  6 Oct 2022 18:31:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B444010E87D;
+	Thu,  6 Oct 2022 19:20:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5868410E667
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 06 Oct 2022 19:20:27 UTC
+Received: from mail.madestip.click (unknown [185.104.151.51])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4A67E10E87C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Oct 2022 18:31:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1665081085;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=D/EnO+t9YxsYbYukQoQ5MDLGm5W9hFbMKzmQnM2kN40=;
- b=KMh9aNe8iCq05t8fHDKPHAgH97jT4WmYN2KzB1udF10MAHVMQbeGwmBfkSBAWdU8X62bzT
- NSG85IbptJzhzVCbX3ui0haqzx9t6ST/m/mh5/qB8GZ2gYxlHSvLdQZd4BfckffdBtliCx
- fTv0/eSVT2w8Al76S4QXTLvOfwOh1is=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-421-VYJ4ttUrOVCT3rGKJS900g-1; Thu, 06 Oct 2022 14:31:24 -0400
-X-MC-Unique: VYJ4ttUrOVCT3rGKJS900g-1
-Received: by mail-io1-f69.google.com with SMTP id
- n23-20020a056602341700b00689fc6dbfd6so1679417ioz.8
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 06 Oct 2022 11:31:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=D/EnO+t9YxsYbYukQoQ5MDLGm5W9hFbMKzmQnM2kN40=;
- b=3E1F9jfK9YPSHZXvQN0JNokdy19XEzrJh+ei2wJl+OcwzdlA6Q+o3AO2nST1bI+sI9
- Tej9+RpTf606TOGGdE5SX21OFyOyICzBozoJ91ohpvd8VJ9RbX0WVn1zqexQpG7bP9fk
- Zf/S+DN5Km9ZsN65pi/suMuIMyH0CgNgp5UE0a1XTTWjRsXsiTPagBtzEWCttETG1Fp6
- PeOdoItgSbqUbgTctIW3HRa4KMxJBP9FxainfA+q/MAJuAyvsjoj2Co2Z1ac5tOU1OiC
- 6FctsD6pk/DntpqFTKKGsgZKkd50rTC3dJxmU5hiiFb4q+2EF0UJBLgYqjCZYsGLIXEi
- EOzg==
-X-Gm-Message-State: ACrzQf1uoTEdPV1F8okyGiwQFgJEbGvfXC16rzCoCdktKWfdOf0RwG7C
- tg4HphHiilIBdYSzxZxDE4au6yW5upNDJZu6+Kwtma2d9GcWU6rAK//uKIfKBinCocaB5m3pa9e
- gaQP9pw5WdBm1zjdJCQEm3hwq8lHuDdsfJw==
-X-Received: by 2002:a6b:c3c1:0:b0:6a8:3ca0:dabf with SMTP id
- t184-20020a6bc3c1000000b006a83ca0dabfmr539231iof.0.1665081083575; 
- Thu, 06 Oct 2022 11:31:23 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM7pXlhLelqt1wt/DC14P6+x2KJSzkrMLAIfpeD1/B//Vj/lBsUWd5ZxsZxZUGk5To+kMEPI+w==
-X-Received: by 2002:a6b:c3c1:0:b0:6a8:3ca0:dabf with SMTP id
- t184-20020a6bc3c1000000b006a83ca0dabfmr539223iof.0.1665081083396; 
- Thu, 06 Oct 2022 11:31:23 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- p2-20020a056638216200b003636e5c4612sm52644jak.33.2022.10.06.11.31.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Oct 2022 11:31:22 -0700 (PDT)
-Date: Thu, 6 Oct 2022 12:31:22 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH] drm/i915/gvt: Add missing vfio_unregister_group_dev() call
-Message-ID: <20221006123122.524c75c9.alex.williamson@redhat.com>
-In-Reply-To: <Yz695fy8hm0N9DvS@nvidia.com>
-References: <0-v1-013609965fe8+9d-vfio_gvt_unregister_jgg@nvidia.com>
- <20221005141717.234c215e.alex.williamson@redhat.com>
- <20221005160356.52d6428c.alex.williamson@redhat.com>
- <Yz695fy8hm0N9DvS@nvidia.com>
-Organization: Red Hat
+ Thu,  6 Oct 2022 19:20:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=madestip.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=cobian-florence@madestip.click; 
+ bh=pN0YIf+VFgzRGhSfRFR9ECZelDA=;
+ b=Eb5q0e58pwILzjkVXiUZXTYzKK46UFg4AJTwseAhh4QRBXp7vJHjunTdCqkivELL9TPGMF9KPmAf
+ aBQeaIRi4bpIYDbx1O5CNbaoti03ijvdgC/7lRm0RQCbFkCTGhThixTKDhWVe69JPL0paPBz63qA
+ UHqvBIR9qiHk++pGXnQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=madestip.click;
+ b=QuFOyK2dAbgAOYzttPNNE3r5qx8lqi2lY6f89/CmevrF9Ys6u6fWl5QzD/Hm+yr4hPsXle5L3E6R
+ LwMbuz1Zcn653vs9SZjL+4Vt3J+POWaK7KOjhbANfMvxby2NGRt04H2q4Oj1FKB2mFafGQyvOvHn
+ mydW686JkDJ1MkQiGeA=;
+Received: by mail.madestip.click id h7sl7m0001gv for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 6 Oct 2022 15:08:44 -0400 (envelope-from
+ <cobian-florence-intel+2Dgvt+2Ddev=lists.freedesktop.org@madestip.click>)
+Date: Thu, 6 Oct 2022 15:08:44 -0400
+From: Florence Cobian <cobian-florence@madestip.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: The Fox News Opinion Survey reward up to $100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_418_1900109164.1665083314061"
+Message-ID: <0.0.0.2F.1D8D9B70E142EE4.380C5D@mail.madestip.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,43 +50,46 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Jason Gunthorpe <jgg@nvidia.com>, David Airlie <airlied@linux.ie>,
- intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- stable@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
- Christoph Hellwig <hch@lst.de>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 6 Oct 2022 08:37:09 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
+------=_Part_418_1900109164.1665083314061
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-> On Wed, Oct 05, 2022 at 04:03:56PM -0600, Alex Williamson wrote:
-> > We can't have a .remove callback that does nothing, this breaks
-> > removing the device while it's in use.  Once we have the
-> > vfio_unregister_group_dev() fix below, we'll block until the device is
-> > unused, at which point vgpu->attached becomes false.  Unless I'm
-> > missing something, I think we should also follow-up with a patch to
-> > remove that bogus warn-on branch, right?  Thanks,  
-> 
-> Yes, looks right to me.
-> 
-> I question all the logical arround attached, where is the locking?
+The Fox News Opinion Survey reward up to $100
 
-Zhenyu, Zhi, Kevin,
+Visit Here for an Fox Input Survey Bonus upto $1OO~http://www.madestip.click/conductivity-denunciation/b8e4M2395AB86U11Si3dfbIf06z36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQjdnRQ7Ww1yn0t5slwDJ
 
-Could someone please take a look at use of vgpu->attached in the GVT-g
-driver?  It's use in intel_vgpu_remove() is bogus, the .release
-callback needs to use vfio_unregister_group_dev() to wait for the
-device to be unused.  The WARN_ON/return here breaks all future use of
-the device.  I assume @attached has something to do with the page table
-interface with KVM, but it all looks racy anyway.
 
-Also, whatever purpose vgpu->released served looks unnecessary now.
-Thanks,
 
-Alex
+
+'96 MOWAT- Avenue, Toronto' ONT M4K3KI Canada
+To update your subscription preferences, Start.Here.Now~http://www.madestip.click/b8d4C2395i8Bp611K3hdfcjf06u36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQjdnRQ7InS10PF5oO2wD/conductivity-denunciation
+This notification was chosen for intel-gvt-dev@lists.freedesktop.org
+4637783~3803426
+
+------=_Part_418_1900109164.1665083314061
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<html>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-09b0ffe0-7fff-9b42-9aea-a4feec26ef0c"><a href="http://www.madestip.click/petitioner-burglary/cba4q2395F8p6w11l3JdfbDf06Z36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQjdnRQ5FV10I5j@TwD" style="text-decoration-line: none;"><span style="font-size: 16pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for an Fox Input Survey Bonus upto $1OO</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-09b0ffe0-7fff-9b42-9aea-a4feec26ef0c"><a href="http://www.madestip.click/petitioner-burglary/cba4q2395F8p6w11l3JdfbDf06Z36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQjdnRQ5FV10I5j@TwD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:594px;"><img alt="Start Here to provide feedback &amp; claim your Bonus" src="http://www.madestip.click/diplomas-deterministic/f124E2395s7JaV11W3dfZdCf06W36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQjdnRQ6i10K_X6EywNDp" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 594px;" /></span></span></a>
+ </span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-09b0ffe0-7fff-9b42-9aea-a4feec26ef0c"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make It Snappy! Deal Goes Away in 48 Hours.</span></span></p> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-09b0ffe0-7fff-9b42-9aea-a4feec26ef0c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 MOWAT_ Ave., Toronto ONT M4K3Kl CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-09b0ffe0-7fff-9b42-9aea-a4feec26ef0c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your subscription preferences,</span><a href="http://www.madestip.click/beneficence-omniscient/b166WF239x5t8_T611b3dfcHHf06m36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQjdnRQ6yL1NW05e@LwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Start.Here.Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-09b0ffe0-7fff-9b42-9aea-a4feec26ef0c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notification was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-09b0ffe0-7fff-9b42-9aea-a4feec26ef0c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4637783 3803426</span></span></p>   
+ <img src="http://www.madestip.click/24b5w2P395EQ8s512I3mdUfeQf06g36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjdnRQ5z_k105dAwDJ/tautologies-Bonaventure" alt=""/></body>
+</html>
+
+------=_Part_418_1900109164.1665083314061--
 
