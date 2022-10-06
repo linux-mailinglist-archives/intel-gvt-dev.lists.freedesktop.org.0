@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E8B55F6CA4
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 19:21:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3074C5F6D72
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Oct 2022 20:23:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 15B9A10E846;
-	Thu,  6 Oct 2022 17:21:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F390110E86D;
+	Thu,  6 Oct 2022 18:22:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Thu, 06 Oct 2022 17:21:08 UTC
-Received: from mail.livestip.click (unknown [185.104.151.37])
- by gabe.freedesktop.org (Postfix) with ESMTP id 52AEB10E83F
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 06 Oct 2022 18:22:55 UTC
+Received: from mail.tipspride.click (unknown [173.244.43.192])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BB14510E852
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Oct 2022 17:21:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=livestip.click; 
+ Thu,  6 Oct 2022 18:22:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tipspride.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=monique-sonoski@livestip.click; 
- bh=VcDK5q4fG/sMk47hqtxjn6P2t2w=;
- b=TA6zxjqNMqMpa+wLaqDtSGcapzBU1O1/9c+I7SHgCWIpcUgmtx11ZijyyHSCFIwGy4wAP7jGtTvf
- TkyqRFBTDEoRIF+/tgkQv00XSo53DyvH1j/T9uOrsoL2GU9FbTzE0jAbsExwqQm9fzDQd1fhB5b1
- GpfZPvBQaUeP0CC9lHE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=livestip.click;
- b=kdKQsbuU2C0BR2MT7M+SZX1HMJQL5EQQx57t+9jsgCm73Q2giAamO3pAGopRPdOg4W40BlZE9UME
- OPSLcrJqc3/Gjs9OK+NRvFSFi9k9ypcATf+4VK0dc4Nrhbk+r/qXYfi+FygvycYv2tQn1pQNOqH6
- cFtuqZqmE/f2oDYr73M=;
-Received: by mail.livestip.click id h7s7880001gs for
+ i=loriea_dove@tipspride.click; 
+ bh=J0cGMvMOZZUTX7f9FUmOcDm05Q4=;
+ b=zLlKUta8m0qa6vQvuNdYq4art9721GqvClS3/HR73h82pf8dtY2Wo1s96BvuIugjcnkxsdv0Tjx2
+ RoTtNQVQchBRwLh1984Yxxyb170gakfiy9mVBfWt+Q2BAiJ5UsOy4jA8wBWqzvzHBmahfO4qLa+y
+ 6saS0poCsGk1bIzitls=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tipspride.click;
+ b=XgKbkub8LZMZT57kHH036PSKVn1IIELcMnnMywzxZJW2Q4A26PYeImgpTYF+zwbWXdafJYATVpPU
+ 8yAWldZEdOiYTsV60VN33ehT5qrs65LojWbS9r7GhozGXGA735mAaggnmu5UNx7ZBF3JZm1FRIVm
+ tvE48k5k/sahNRzjq9M=;
+Received: by mail.tipspride.click id h7sefu0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 6 Oct 2022 13:12:08 -0400 (envelope-from
- <monique-sonoski-intel+2Dgvt+2Ddev=lists.freedesktop.org@livestip.click>)
-Date: Thu, 6 Oct 2022 13:12:08 -0400
-From: Monique Sonoski <monique-sonoski@livestip.click>
+ Thu, 6 Oct 2022 14:13:03 -0400 (envelope-from
+ <loriea_dove-intel+2Dgvt+2Ddev=lists.freedesktop.org@tipspride.click>)
+Date: Thu, 6 Oct 2022 14:13:03 -0400
+From: Loriea Dove <loriea_dove@tipspride.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You've been selected to receive a Stanley Tool Set from Lowes
- intel-gvt-dev@lists.freedesktop.org
+Subject: Kudos Sam's Club Consumer. Get up to $1OO Bonus  29938991
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_739_701977468.1665076251040"
-Message-ID: <0.0.0.7C.1D8D9A6C4415428.5C115A@mail.livestip.click>
+ boundary="----=_Part_481_219614127.1665079945022"
+Message-ID: <0.0.0.54.1D8D9AF4671D50A.6C60AF@mail.tipspride.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,48 +53,150 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_739_701977468.1665076251040
+------=_Part_481_219614127.1665079945022
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-You've been selected to receive a Stanley Tool Set from Lowes  intel-gvt-dev@lists.freedesktop.org
+Kudos Sam's Club Consumer. Get up to $1OO Bonus  6429404
 
-Visit Here for the Lowes Shopper Questionnaire-http://www.livestip.click/internals-reenter/7ec6u2Y39_5t8RL611yR3df3vf04V36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdnR97SwB1h0O5v2wD2
+Sam's Club Shopper Survey
+
+Go Here to Tell Us What You Think http://www.tipspride.click/6fb6dv239u5z86zB10K3df7Rf05T36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ8dnRd5U10uG5ClUwD/minutes-woodchuck
+
+ You have been picked to take part in our anonymous marketing survey about Sam's Club. 
+
+ Complete this 30-second poll and we'll offer you an Exclusive Gift worth up to $1OO. 
+
+Tap Here to give your Sam's vs Costco Views http://www.tipspride.click/6fb6dv239u5z86zB10K3df7Rf05T36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ8dnRd5U10uG5ClUwD/minutes-woodchuck
 
 
 
 
-'96 Mowat.  Ave, TORONTO ONT M4 K3 K1 Canada
 
-To withdraw from notifications, Go On Here-http://www.livestip.click/internals-reenter/2a65jz2395z86ur10m3df4nf04Q36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQVdnR96f1UA0W5LJ2wD
 
-Our e-mail communication was meant for intel-gvt-dev@lists.freedesktop.org
+To cut off notifications, Go Right Here http://www.tipspride.click/undertakers-feebleness/6666s23Go95W86PV12u3df8nyFf05h36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ8dnRd5Fg1N06ykwj2D
+This notification was intended for intel-gvt-dev@lists.freedesktop.org
+. 96 MOWAT' Av. , Toronto Ont M4 K3 K1 CANADA
+2347555 29938991
 
-3561213 3043654
-
-------=_Part_739_701977468.1665076251040
+------=_Part_481_219614127.1665079945022
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.livestip.click/eternity-sliver/26a5f2V395V86vx12sI3dAf3Zf04K36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVdnR96Llj1t06r0LJwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here, You've been Chosen by Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.livestip.click/eternity-sliver/26a5f2V395V86vx12sI3dAf3Zf04K36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVdnR96Llj1t06r0LJwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Visit Here for the Lowes Shopper Questionnaire" src="http://www.livestip.click/Harveyizes-Redford/dc85e2K395s7Qap10J3df5yf04A36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQVdnR95Y1X0w5u0wjD" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Fast! Promotion Comes to a Close in 4 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT Av, Toronto' ONT. M4K3K1 CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To withdraw from notifications, <a href="http://www.livestip.click/eternity-sliver/b704O2395W86BZ11w3Kdf4Gf04B36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdnR97E10JtXN6DXBjwD">Go On Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5694722-3043654</span></span></p>   
- <img src="http://www.livestip.click/9356a23h9K5cP85p10Q3df6Sf04v36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQVdnR96X1J0PK6VBwP0D/earlier-chapels" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
+f-9bdad72ae7ac"><span style=3D"font-size: 30pt; font-family: Merriweather, =
+serif; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: nor=
+mal; font-variant-east-asian: normal; vertical-align: baseline; white-space=
+: pre-wrap;">Sam's</span><span style=3D"font-size: 30pt; font-family: Arial=
+; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; =
+font-variant-east-asian: normal; vertical-align: baseline; white-space: pre=
+-wrap;"> Club</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
+f-9bdad72ae7ac"><span style=3D"font-size: 18pt; font-family: Arial; font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;">Shopper Survey</span></spa=
+n></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
+f-9bdad72ae7ac"><a href=3D"http://www.tipspride.click/permissible-Bellamy/m8a5K239U5Ns8j610j3df7Lf05U36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ8dnRd5kNA105wp2wD" style=3D"text-decoration-line: none;=
+"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
+4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
+vertical-align: baseline; white-space: pre-wrap;">Go Here to Tell Us What You Think<=
+/span></a></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
+f-9bdad72ae7ac"><a href=3D"http://www.tipspride.click/permissible-Bellamy/m8a5K239U5Ns8j610j3df7Lf05U36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ8dnRd5kNA105wp2wD" style=3D"text-decoration-line: none;=
+"><span style=3D"font-size: 14pt; font-family: Arial; color: rgb(17, 85, 20=
+4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
+vertical-align: baseline; white-space: pre-wrap;"><span style=3D"border:non=
+e;display:inline-block;overflow:hidden;width:600px;height:354px;"><img alt=
+=3D"Start Here to Give Your Opinion" src=3D"http://www.tipspride.click/permissible-Bellamy/c066jrq2395L7ahr11O3dfz9_f05m36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ8dnRd6b10SSh5RJWwD" style=3D"margin-left: 0px=
+; margin-top: 0px; width: 600px; height: 354px;" /></span></span></a></span=
+></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
+: 0pt; text-align: center;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-87=
+19-880f-9bdad72ae7ac"><span style=3D"font-size: 16pt; font-family: Arial; f=
+ont-variant-numeric: normal; font-variant-east-asian: normal; vertical-alig=
+n: baseline; white-space: pre-wrap;">You have been picked to participate in ou=
+r anonymous marketing survey about </span><span style=3D"font-size: 16pt; font-=
+family: Merriweather, serif; color: rgb(17, 85, 204); font-weight: 700; fon=
+t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
+ baseline; white-space: pre-wrap;">Sam's</span><span style=3D"font-size: 16=
+pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-var=
+iant-numeric: normal; font-variant-east-asian: normal; vertical-align: base=
+line; white-space: pre-wrap;"> Club</span><span style=3D"font-size: 16pt; f=
+ont-family: Arial; font-variant-numeric: normal; font-variant-east-asian: n=
+ormal; vertical-align: baseline; white-space: pre-wrap;">.</span></span></p=
+>=20
+  <div style=3D"text-align: center;">
+   &nbsp;
+  </div>=20
+  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
+: 0pt; text-align: center;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-87=
+19-880f-9bdad72ae7ac"><span style=3D"font-size: 16pt; font-family: Arial; f=
+ont-variant-numeric: normal; font-variant-east-asian: normal; vertical-alig=
+n: baseline; white-space: pre-wrap;">Take this 30 second survey and we'll=
+ offer you an </span><span style=3D"font-size: 16pt; font-family: Arial; fo=
+nt-weight: 700; font-variant-numeric: normal; font-variant-east-asian: norm=
+al; vertical-align: baseline; white-space: pre-wrap;">Exclusive Bonus</sp=
+an><span style=3D"font-size: 16pt; font-family: Arial; font-variant-numeric=
+: normal; font-variant-east-asian: normal; vertical-align: baseline; white-=
+space: pre-wrap;"> worth up to </span><span style=3D"font-size: 16pt; font-=
+family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant=
+-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">$=
+1OO</span><span style=3D"font-size: 16pt; font-family: Arial; font-variant=
+-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline=
+; white-space: pre-wrap;">.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880=
+f-9bdad72ae7ac"><a href=3D"http://www.tipspride.click/permissible-Bellamy/m8a5K239U5Ns8j610j3df7Lf05U36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ8dnRd5kNA105wp2wD" style=3D"text-decoration-line: none;=
+"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
+4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
+vertical-align: baseline; white-space: pre-wrap;">Tap Here to give your Sam's vs Costco Views</span><=
+/a></span></p>=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br /> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">To cut off notifications, </span><a href=3D"http://www.tipspride.click/permissible-Bellamy/S8a6k23ZJ95zs86s10N3df8mf05P36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ8dnRd7e_UG1z06ylwUTD" style=3D"text-decor=
+ation-line: none;"><span style=3D"font-size: 11pt; font-family: Arial; colo=
+r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
+ normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
+ertical-align: baseline; white-space: pre-wrap;">Go Right Here</span></a></s=
+pan></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">This notification was intended for intel-gvt-dev@lists.freedesktop.org</span></span>=
+</p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">'96 MOWAT' Av., Toronto' ON M4K 3Kl CANADA=
+</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7ed0d36f-7fff-8719-880f-9bdad72ae7ac"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">2347555-29938991</span></span></p>  =20
+ <img src=3D"http://www.tipspride.click/42b4r2395a8pp510e3dfaNf05V36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ8dnRd5ap1Y06mlwqJD/icicle-franchises" alt=3D""/></body>
 </html>
 
-------=_Part_739_701977468.1665076251040--
+------=_Part_481_219614127.1665079945022--
 
