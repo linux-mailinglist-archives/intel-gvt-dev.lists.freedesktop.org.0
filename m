@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 860775F7237
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Oct 2022 02:19:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 508FC5F7281
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Oct 2022 03:17:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3E03310E8EF;
-	Fri,  7 Oct 2022 00:19:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D6AE910E8F4;
+	Fri,  7 Oct 2022 01:17:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 361 seconds by postgrey-1.36 at gabe;
- Fri, 07 Oct 2022 00:19:08 UTC
-Received: from mail.tipyells.click (unknown [5.42.214.148])
- by gabe.freedesktop.org (Postfix) with ESMTP id D1C1D10E8E8
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 07 Oct 2022 01:17:50 UTC
+Received: from mail.tipouts.click (unknown [173.244.43.104])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 618A510E8F4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  7 Oct 2022 00:19:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tipyells.click; 
+ Fri,  7 Oct 2022 01:17:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tipouts.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=brumm_rose@tipyells.click; bh=ZFs4An1ic+9UhzC6/4qrjS28Zc0=;
- b=dH8IOmScPGkYpaXZxqoMTTfOpH4ENSgJfegPnyyHUw03KaO+s9A9AIkpq+ROv7Gd7LVAh1YUX2kI
- ybYuEuaRkzpe/ztYe3pznIm115b0NaZLGLJho3eU6W4JS7ytKIGjTtX8RJGQgLhGOhTH0tnfLViK
- VC0WuEpSFDMmXpebtQ4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tipyells.click;
- b=zaKCmvq+kAgkHFGwmzgKNJoKJ6LhW2msXWsM1JJ/aAXGFbqVYXkqFBTF+eXNWQ9UTUK5f6fZDOB6
- yvEgvU0wuU815/gsY+ARAfWr8gm9HBHthvMH5MBuE+RjIxPCu54XXCnO+rzFikVrpOWN6/PWL3YQ
- Nv1fWwNd6yzPgkq7Q8w=;
-Received: by mail.tipyells.click id h7to7q0001gv for
+ i=urata.carmela@tipouts.click; 
+ bh=eisMXtVWp0tRHArz32RU1Iwm3yU=;
+ b=Iqncy8PWnwEbVgnxl3E+AW2E7WUD305diP/Rvr6iBfpVG11twTURcI4uqF9dDV7nvhjzDXGSranF
+ uJOEynkqmkq7xvXB01VyCm0B1bL1LPbFbsHtMyMEpyiVTv9LCa0OlnTpOniy2g+tlN34Dcd7wqeI
+ dAhhOgpZLNpDtjA2ZgI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tipouts.click;
+ b=KrP57h0rhj0KvPzpHzESyEQ9ASmg0xnLhEQf/TbTA/8Xcg1L7sfv5JyCiYYPH8xeRWA9JAUnHPfj
+ 6oRz0P3M26mOpf7kT5wOzTx7HQKXwNuYkIJtsVm+T0f5OxQtg3DAijS7dge+K8roUyPIi1S7cExV
+ hVVBfbY0pLu9GbXVYe8=;
+Received: by mail.tipouts.click id h7tv3s0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 6 Oct 2022 20:06:45 -0400 (envelope-from
- <brumm_rose-intel+2Dgvt+2Ddev=lists.freedesktop.org@tipyells.click>)
-Date: Thu, 6 Oct 2022 20:06:45 -0400
-From: Rose Brumm <brumm_rose@tipyells.click>
+ Thu, 6 Oct 2022 21:06:29 -0400 (envelope-from
+ <urata.carmela-intel+2Dgvt+2Ddev=lists.freedesktop.org@tipouts.click>)
+Date: Thu, 6 Oct 2022 21:06:29 -0400
+From: Carmela Urata <urata.carmela@tipouts.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You've been Selected  intel-gvt-dev@lists.freedesktop.org
+Subject: Claim a Starbucks Bonus for your opinion
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_415_172348899.1665101202258"
-Message-ID: <0.0.0.2E.1D8D9E0B01BE708.4397CF@mail.tipyells.click>
+ boundary="----=_Part_82_285513182.1665104772543"
+Message-ID: <0.0.0.9.1D8D9E9081FD43E.174F65@mail.tipouts.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,26 +53,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_415_172348899.1665101202258
+------=_Part_82_285513182.1665104772543
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-You've been Selected  intel-gvt-dev@lists.freedesktop.org
+Claim a Starbucks Bonus for your opinion
 
-You've Been Selected, Begin Here:http://www.tipyells.click/40d4u2395cSw8612Q3eX0fMRf0bJ36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ3dnSn5V10zL5MPOwD/satchels-shorthand
-
-
+Start Here to receive your Starbucks Bonus. http://www.tipouts.click/9535k239m5g86Qq10e3e13Af0cw36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQFdnSo5p1Qg06ilwpDl/societal-blackboards
 
 
-_96 Mowat.  Av. , TORONTO ONTARIO M4K3K1 CA
 
-To shut off notices, Follow This Way:http://www.tipyells.click/ax-instant/6846IB239Z5o86MA12H3e10JqZf0bS36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ3dnSn7nJ1Uuo06lPPwND
 
-Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org
+To dispense with communications, Go This Way. http://www.tipouts.click/caravan-electrolyte/7926u2k39V5u86ZP12dP3e14Tzf0cy36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQFdnSo7wYTh10G5A3w1D
+This communication was sent to intel-gvt-dev@lists.freedesktop.org
+65348624. 71607779
+96- MOWAT- AVE, Toronto- Ontario M4K 3KI CANADA
 
-6431845 3297799
-
-------=_Part_415_172348899.1665101202258
+------=_Part_82_285513182.1665104772543
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,20 +78,22 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.tipyells.click/untold-schemata/7566EZy2395kg86V11ql3e0fYf0bv36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ3dnSn6AR10Iq5UAywD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes Stanley Tool Promotion</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.tipyells.click/untold-schemata/7566EZy2395kg86V11ql3e0fYf0bv36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ3dnSn6AR10Iq5UAywD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="You've Been Selected, Begin Here" src="http://www.tipyells.click/a255L239X5v7wma11u3eL11nf0bm36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ3dnSn7gjg10NN5o1lwD/satchels-shorthand" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Going! Exclusive Offer Is Gone in 2 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT- AVENUE, Toronto- Ont M4K3KI CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut off notices, <a href="http://www.tipyells.click/forgets-distinctiveness/f306A2Q3x95K_G8612Mn3e10VUf0bz36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ3dnSn5w1WK06mywqpD">Follow This Way</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5888100-3297799</span></span></p>   
- <img src="http://www.tipyells.click/1b56q23Gy95W8IC512i3e12Wogf0bX36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ3dnSn6S10XKX6eXwNDl/hesitantly-stretchers" alt=""/></body>
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><a href="http://www.tipouts.click/belligerently-clipboard/3b46MU2y395Ixr8611n3e13RHf0co36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFdnSo5F1Fn05A@wDj" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to receive your Starbucks Bonus</span></a></span></p> 
+  <div style="text-align: center;">
+   &nbsp;
+  </div> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><a href="http://www.tipouts.click/belligerently-clipboard/3b46MU2y395Ixr8611n3e13RHf0co36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFdnSo5F1Fn05A@wDj" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:889px;"><img alt="Start Here to earn a Starbucks Reward up to $100" src="http://www.tipouts.click/societal-blackboards/8a05C239W5Sq7ha12sK3e1Z5Xf0cJ36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQFdnSo6KTRM105mLJwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 889px;" /></span></span></a></span></p> 
+  <div style="text-align: center;">
+   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Snap It Up! Deal Stops in 2 Days.</span></span>
+   <br /> 
+   <br /> &nbsp;
+  </div> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To dispense with communications, </span><a href="http://www.tipouts.click/31d4H2395oq86J12m3e1y4SKf0cN36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQFdnSo7e10ugoq5D3wD2/caravan-electrolyte" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go This Way</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">65348624~71607779</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. MOWAT- Avenue, Toronto. ON M4K 3KI CANADA</span></span></p>   
+ <img src="http://www.tipouts.click/Oceania-advisors/cba6Q2mH395bJ85H12vu3e16rMf0cg36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQFdnSo5O1IR05IApwD" alt=""/></body>
 </html>
 
-------=_Part_415_172348899.1665101202258--
+------=_Part_82_285513182.1665104772543--
 
