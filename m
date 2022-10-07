@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4265F5F7FE3
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Oct 2022 23:27:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D40515F8112
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  8 Oct 2022 01:17:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4D7C610E362;
-	Fri,  7 Oct 2022 21:27:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 34CC010E10A;
+	Fri,  7 Oct 2022 23:17:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 330 seconds by postgrey-1.36 at gabe;
- Fri, 07 Oct 2022 21:27:06 UTC
-Received: from mail.uptoeels.click (unknown [173.244.43.239])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9B9FF10E35E
+X-Greylist: delayed 336 seconds by postgrey-1.36 at gabe;
+ Fri, 07 Oct 2022 23:17:18 UTC
+Received: from mail.heartseel.click (unknown [173.244.43.133])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E6A4C10E0FB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  7 Oct 2022 21:27:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=uptoeels.click; 
+ Fri,  7 Oct 2022 23:17:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=heartseel.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=beverly.levinson@uptoeels.click; 
- bh=rz47bBNQPmm38q0vfNMMRMeTRfo=;
- b=H+PjrE42cCXV0nAtraMHRxe6G/2m9BbCy8czj7DVfFflsrobJg+CIWU5DMzS9Fsry2KgEi3EiL2J
- f4d+CAfo/yjXLqXtJdUTHjfzhDGgIx8N7FGJ3PIAeBZ9Wf7jgQ5wxGZISMyv7vp8TeumBPWOOXgx
- AwFfsyyfqivVCKXcWlM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=uptoeels.click;
- b=RpCkuomJ+lt7NUbmJJdEidmhKzWTMFMeiWB5N3rzyQWNMIt1l2aoOvsA9W4z3um+jBJr5NQxaw/Q
- JxjLzf6fCuztKmJF+S7jaINhE9fIJU86kusm23+D2AuCCuu51osBk2PFMDACH7ASVSJ7VlbciByw
- B1ni/6cu04bbqBswKnc=;
-Received: by mail.uptoeels.click id h82cqk0001g8 for
+ i=paula-kister@heartseel.click; 
+ bh=snSlLrDtl2RcOndUZ1wJqVarGFw=;
+ b=T5yRwoAUU5mI9QtX37hPF47JZ8nFgfNffGaI92W6KkYI6K0imdX5xwzZblU44/7fE1LzjKK5VxZW
+ 8ciu1/9kZv36tqCtMUrHY1dHpG8yC05JFkw+ferrAvk0/KVoXdC1ggSaralteKWdiaESTRsSMR1p
+ sZmcrF1Bu/QyrA8wtbI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=heartseel.click;
+ b=b1XTFjqaR4eNLy2V/oM6wh4sWMjMMWhBSW/stOI/cJfJsJaqzHYNmpAMbbv2KswflovZGvXGxgqC
+ ffV1G0FckIv4RLIKaOe/sJDklFxPI4kzfZsdM861o/QyPhgPFTrb6nY+PnEyTLgboW0zWyVi31sf
+ X2C4n8omNCI0FKhaIXU=;
+Received: by mail.heartseel.click id h82pnu0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 7 Oct 2022 17:06:56 -0400 (envelope-from
- <beverly.levinson-intel+2Dgvt+2Ddev=lists.freedesktop.org@uptoeels.click>)
-Date: Fri, 7 Oct 2022 17:06:56 -0400
-From: Beverly Levinson <beverly.levinson@uptoeels.click>
+ Fri, 7 Oct 2022 19:06:49 -0400 (envelope-from
+ <paula-kister-intel+2Dgvt+2Ddev=lists.freedesktop.org@heartseel.click>)
+Date: Fri, 7 Oct 2022 19:06:49 -0400
+From: Paula Kister <paula-kister@heartseel.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Lowes Shopper, Claim Your Craftsman Riding Mower
- intel-gvt-dev@lists.freedesktop.org
+Subject: Claim Your Ace Bonus intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_544_77039584.1665176807895"
-Message-ID: <0.0.0.3C.1D8DA90BBB93402.4363CE@mail.uptoeels.click>
+ boundary="----=_Part_433_1335143073.1665183990747"
+Message-ID: <0.0.0.31.1D8DAA17ADDC432.1E5CF4@mail.heartseel.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,27 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_544_77039584.1665176807895
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Lowes Shopper, Claim Your Craftsman Riding Mower  intel-gvt-dev@lists.freedesktop.org
-
-Visit Here for the Lowes Giveaway http://www.uptoeels.click/Patterson-stallings/1d44f2395UF86L11b3eW45tf18x36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJdned5STI105BTwD@
-
-
-
-
-
-To cut off email, Start_Here_Now http://www.uptoeels.click/33b6FCl2395qlh8611NB3e47Tf18R36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQJdned6f1sM0r6LPwUDj/editions-sundown
-
-This e-mail content was directed to intel-gvt-dev@lists.freedesktop.org
-
-. 96 MOWAT Av. , TORONTO Ont.  M4K3KI Canada
-
-3280683 1910922
-
-------=_Part_544_77039584.1665176807895
+------=_Part_433_1335143073.1665183990747
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,19 +62,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.uptoeels.click/a254F2395L86Wl10c3e45sf18t36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQJdned5s1x0x6QJNw@D/encoding-diversities" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="Take the 30-second Survey" src="http://www.uptoeels.click/editions-sundown/a084b2395iK_7a10C3e46Tf18w36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQJdned5z_v105UzywD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.heartseel.click/timbered-quickens/ada6QVw2395w8C6y12s3ehA4dQf1aw36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQXdneQ7s1nYi0X5H@@wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for the Ace Survey</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><a href="http://www.heartseel.click/timbered-quickens/ada6QVw2395w8C6y12s3ehA4dQf1aw36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQXdneQ7s1nYi0X5H@@wD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:991px;"><img alt="Visit Here, You've been Chosen by Ace Hardware" src="http://www.heartseel.click/c055A239F5z7jMa12UT3e4fDMf1al36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQXdneQ6E10Vwx6q@wDBM/rejoiced-bricklayers" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 991px;" /></span></span></a></
+ span></p> &nbsp; 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lose No Time! Promotion Comes To An End in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.uptoeels.click/a254F2395L86Wl10c3e45sf18t36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQJdned5s1x0x6QJNw@D/encoding-diversities" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Lowes Giveaway</span></a></span></p> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut off email, Start_Here_Now</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT AVE, Toronto. ONT M4K 3K1 CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3280683~1910922</span></span></p>   
- <img src="http://www.uptoeels.click/7376hj23P95aKZ8511l3e48wrf18S36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQJdned7HJ1Or0r6EMwWDP/Patterson-stallings" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To suspend email, </span><a href="http://www.heartseel.click/7555y2w395HU86S11tU3e4eFf1aO36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXdneQ6n1lLm05RJkwD/extracurricular-metropolitan" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start-Here-Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 Mowat- AVE, Toronto' ON M4K 3KI CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notice was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-1959f88a-7fff-a619-5a9f-ca21f5ac2efe"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9242376:2186443</span></span></p>   
+ <img src="http://www.heartseel.click/8f95W23u95Q85tw10C3e50Hf1aQ36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQXdneQ6b1_QD05SBwTD/commutes-preparations" alt=""/></body>
 </html>
 
-------=_Part_544_77039584.1665176807895--
+------=_Part_433_1335143073.1665183990747--
 
