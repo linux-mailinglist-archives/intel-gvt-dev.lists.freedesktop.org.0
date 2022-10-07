@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFFB65F710C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Oct 2022 00:19:39 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 860775F7237
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Oct 2022 02:19:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 805B210E8D4;
-	Thu,  6 Oct 2022 22:19:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3E03310E8EF;
+	Fri,  7 Oct 2022 00:19:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Thu, 06 Oct 2022 22:19:34 UTC
-Received: from mail.sweetstip.click (unknown [185.104.151.82])
- by gabe.freedesktop.org (Postfix) with ESMTP id CB02E10E8D4
+X-Greylist: delayed 361 seconds by postgrey-1.36 at gabe;
+ Fri, 07 Oct 2022 00:19:08 UTC
+Received: from mail.tipyells.click (unknown [5.42.214.148])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D1C1D10E8E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Oct 2022 22:19:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sweetstip.click; 
+ Fri,  7 Oct 2022 00:19:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tipyells.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=furnia-eileen@sweetstip.click; 
- bh=iPF0V6z06uuM7NWh/kZPu1jzfto=;
- b=P3415ui/+RC/Wty03T7fkyonW2rTUFPrGgDBEeOmcxGJLnaYdHgiF+cl7/9uYYg/SO+NKmkGHHit
- 0uTupH/q+ihrKweughpPIj9xigL8+JGrQmE5DcseHBzBXyV1Js+MPXij5woSrMnhb8IOUZof1E5X
- b2etNj6PNBlmUTsCKJ8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sweetstip.click;
- b=ZdUwVuiWjKnD/oKvx1s35SC4yLPQCZMxLrqRrHlxdCTGBBfGAiEXA1G1vEr59/wnh/ebBTVjtT6U
- eTH9uMtNFnubOs+wWMRA9d4bshuyifI948/ETfsxv41K5aiiwz/qWUku4OB3mTujcBwkjTOlakUK
- 4yscPeqZ52Aw2MSsHK0=;
-Received: by mail.sweetstip.click id h7tko60001gg for
+ i=brumm_rose@tipyells.click; bh=ZFs4An1ic+9UhzC6/4qrjS28Zc0=;
+ b=dH8IOmScPGkYpaXZxqoMTTfOpH4ENSgJfegPnyyHUw03KaO+s9A9AIkpq+ROv7Gd7LVAh1YUX2kI
+ ybYuEuaRkzpe/ztYe3pznIm115b0NaZLGLJho3eU6W4JS7ytKIGjTtX8RJGQgLhGOhTH0tnfLViK
+ VC0WuEpSFDMmXpebtQ4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tipyells.click;
+ b=zaKCmvq+kAgkHFGwmzgKNJoKJ6LhW2msXWsM1JJ/aAXGFbqVYXkqFBTF+eXNWQ9UTUK5f6fZDOB6
+ yvEgvU0wuU815/gsY+ARAfWr8gm9HBHthvMH5MBuE+RjIxPCu54XXCnO+rzFikVrpOWN6/PWL3YQ
+ Nv1fWwNd6yzPgkq7Q8w=;
+Received: by mail.tipyells.click id h7to7q0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 6 Oct 2022 19:37:50 -0400 (envelope-from
- <furnia-eileen-intel+2Dgvt+2Ddev=lists.freedesktop.org@sweetstip.click>)
-Date: Thu, 6 Oct 2022 19:37:50 -0400
-From: Eileen Furnia <furnia-eileen@sweetstip.click>
+ Thu, 6 Oct 2022 20:06:45 -0400 (envelope-from
+ <brumm_rose-intel+2Dgvt+2Ddev=lists.freedesktop.org@tipyells.click>)
+Date: Thu, 6 Oct 2022 20:06:45 -0400
+From: Rose Brumm <brumm_rose@tipyells.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your Petsmart Reward Opportunity
+Subject: You've been Selected  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_313_1193451229.1665094060801"
-Message-ID: <0.0.0.22.1D8D9DCA5B672DC.809912@mail.sweetstip.click>
+ boundary="----=_Part_415_172348899.1665101202258"
+Message-ID: <0.0.0.2E.1D8D9E0B01BE708.4397CF@mail.tipyells.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,24 +52,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_313_1193451229.1665094060801
+------=_Part_415_172348899.1665101202258
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Your Petsmart Reward Opportunity
+You've been Selected  intel-gvt-dev@lists.freedesktop.org
 
-Go Here to give your review of PetSmart:http://www.sweetstip.click/commonly-lasers/af86Rqq2395NU8k610H3e07hf09g36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkdnRe5I1H0I6XWwNDl
-
-Get Going! Deal is Over in 24 Hours.
+You've Been Selected, Begin Here:http://www.tipyells.click/40d4u2395cSw8612Q3eX0fMRf0bJ36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ3dnSn5V10zL5MPOwD/satchels-shorthand
 
 
 
-To put a stop to notifications, Visit Ahead Here:http://www.sweetstip.click/repulsed-serviced/2106BM23D95M86rD11lO3e08rf09Y36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkdnRe6GP10Nr5Nk1wD
--96 Mowat AV, TORONTO ON M4K3K1 CN
-This e-mail content was selected for intel-gvt-dev@lists.freedesktop.org
-3503383:5208748
 
-------=_Part_313_1193451229.1665094060801
+_96 Mowat.  Av. , TORONTO ONTARIO M4K3K1 CA
+
+To shut off notices, Follow This Way:http://www.tipyells.click/ax-instant/6846IB239Z5o86MA12H3e10JqZf0bS36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ3dnSn7nJ1Uuo06lPPwND
+
+Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org
+
+6431845 3297799
+
+------=_Part_415_172348899.1665101202258
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -79,18 +80,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.sweetstip.click/be75c239K5V86Ns10F3e07Of09J36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQkdnRe6wK10sz5kywDJ/prosodics-admonish" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to give your review of PetSmart</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.sweetstip.click/be75c239K5V86Ns10F3e07Of09J36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQkdnRe6wK10sz5kywDJ/prosodics-admonish" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:680px;"><img alt="Begin Here to qualify for a $50 Petsmart bonus" src="http://www.sweetstip.click/limited-drivers/d6e6p2yF395g7XSa10Y3e09Yf09k36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQkdnRe7zWMO1g06UNypwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 680px;" /></span></span></a></span></p
- > &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 18pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Going! Deal is Over in 24 Hours.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.tipyells.click/untold-schemata/7566EZy2395kg86V11ql3e0fYf0bv36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ3dnSn6AR10Iq5UAywD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes Stanley Tool Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.tipyells.click/untold-schemata/7566EZy2395kg86V11ql3e0fYf0bv36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ3dnSn6AR10Iq5UAywD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="You've Been Selected, Begin Here" src="http://www.tipyells.click/a255L239X5v7wma11u3eL11nf0bm36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ3dnSn7gjg10NN5o1lwD/satchels-shorthand" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Going! Exclusive Offer Is Gone in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put a stop to notifications, </span><a href="http://www.sweetstip.click/transferability-enumerates/3785Yr2395F86hw10Q3e08Lf09k36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQkdnRe5KCz105DBwDL" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Ahead Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 Mowat- Avenue, Toronto_ ONT M4K 3KI CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3503383.5208748</span></span></p>   
- <img src="http://www.sweetstip.click/otters-bedsteads/5d05us2395SR85x12jT3eD0aKf09B36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQkdnRe7hTy1Wv05I2qwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT- AVENUE, Toronto- Ont M4K3KI CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut off notices, <a href="http://www.tipyells.click/forgets-distinctiveness/f306A2Q3x95K_G8612Mn3e10VUf0bz36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ3dnSn5w1WK06mywqpD">Follow This Way</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5888100-3297799</span></span></p>   
+ <img src="http://www.tipyells.click/1b56q23Gy95W8IC512i3e12Wogf0bX36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ3dnSn6S10XKX6eXwNDl/hesitantly-stretchers" alt=""/></body>
 </html>
 
-------=_Part_313_1193451229.1665094060801--
+------=_Part_415_172348899.1665101202258--
 
