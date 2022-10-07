@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 573D95F7A85
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Oct 2022 17:28:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F1F25F7B5B
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Oct 2022 18:24:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4A4D610E34D;
-	Fri,  7 Oct 2022 15:28:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F1E2810E966;
+	Fri,  7 Oct 2022 16:23:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Fri, 07 Oct 2022 15:28:09 UTC
-Received: from mail.zaxeels.monster (unknown [173.244.43.205])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1B73D10E34D
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 07 Oct 2022 16:23:55 UTC
+Received: from mail.eelcranes.click (unknown [77.90.188.132])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 40EB810E972
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  7 Oct 2022 15:28:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=zaxeels.monster; 
+ Fri,  7 Oct 2022 16:23:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=eelcranes.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=justine_reidel@zaxeels.monster; 
- bh=JTTLLH6oaV7YbtR8lAFESpANtEg=;
- b=w4+1+scfQuFlignbuYiGKA4YzGV8uTsi2PQHRWUTbhfC26X58lo3PNrNA2K7cyjZH82GPeKxlXP8
- txzHmV+75x++FwQHFPu5kRP6VmcZ1zW2n3JA6VCs9EUviO/bhzW0lZaig2cLQWi4XUH4YrlDJa26
- WrWOP0TPEugrp9Dmb7k=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=zaxeels.monster;
- b=Jy/fCgvxNugT16GzPbisCqQeTwF4ERpHIKryeH3qq0tiiAEFfoPltiGN17c0Wdg0lNq37K9/hojM
- Zbg6+BGnt9cnvbPqVBD/RiBgCoHinyzSNRci0LAJi6LmO7029GIZsI+Tu0OvIcen2l5+jZ+NKJzL
- FiVKeHvC8SEIHF9QYQc=;
-Received: by mail.zaxeels.monster id h81d980001g5 for
+ i=camille.tousley@eelcranes.click; 
+ bh=SFbFV4VVNx2MCSxDy4ewbDF2tj8=;
+ b=axXs0fFeMvLexyuuRa4ZUPL2J5L4WUrI1JUjClEXD13nOaK29v+XuuFy9+z1A51hkyUFXBTDaVID
+ 4oDMgnomE2zIvtEVZZNwuwRyS7y2xO9etGXwyMjON+9nsGusLEydUXwiayR31a6OOhYhIBsqky2C
+ HevVBLY/XtiCRVk7+zM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=eelcranes.click;
+ b=INy/EjWyfkMxGKqyHiZdFVmSya+jQw7/f2K93Hsjcw2UzhoI1sVUM3nCnargFJJ91VhpnWkU9fi7
+ xLKULEDy7C0TeW78E5DE20mgJbjLHXmyZWKvlNjroNYYYac7sAJ2aY9Y60mAdz2NTIjb/zmNamfL
+ CS7l8L7Hrfhmgvwzgyg=;
+Received: by mail.eelcranes.click id h8199m0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 7 Oct 2022 12:44:53 -0400 (envelope-from
- <justine_reidel-intel+2Dgvt+2Ddev=lists.freedesktop.org@zaxeels.monster>)
-Date: Fri, 7 Oct 2022 12:44:53 -0400
-From: Justine Reidel <justine_reidel@zaxeels.monster>
+ Fri, 7 Oct 2022 12:11:14 -0400 (envelope-from
+ <camille.tousley-intel+2Dgvt+2Ddev=lists.freedesktop.org@eelcranes.click>)
+Date: Fri, 7 Oct 2022 12:11:14 -0400
+From: Camille Tousley <camille.tousley@eelcranes.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Ace vs Home Depot. Claim to $100 for your response  6030829
+Subject: Your Reward # 44675
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_322_924804935.1665155695121"
-Message-ID: <0.0.0.22.1D8DA6C2034AABC.84ABE4@mail.zaxeels.monster>
+ boundary="----=_Part_328_1008960434.1665159059964"
+Message-ID: <0.0.0.24.1D8DA676CB85D20.28109A@mail.eelcranes.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,23 +53,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_322_924804935.1665155695121
+------=_Part_328_1008960434.1665159059964
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Ace vs Home Depot. Claim to $100 for your response
+Your Reward # 44675
 
-Begin Here to Claim up to $1OO for your input  http://www.zaxeels.monster/precipitately-besieged/9ae5I23Z95S86KS11K3ek2bsf11T36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQudnSR5vx10I5GTwDO
+Visit Here for up to $1OO Bonus for your opinion-http://www.eelcranes.click/bystanders-breathers/9cc5sQ2395QnX8612G3ex2hdXf12L36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ4dnSe7iRi1Tx06SUMwDL
 
-Make It Snappy! Offer Goes Away in 2 Days.
+Hurry Up! Deal Stops in 3 Days.
 
 
+To change your communication elections, Come Over Here-http://www.eelcranes.click/Warnock-calibers/c426c239CN5Lq8u612z3QIe2eOf12u36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ4dnSe5NQ10m5zTwDJ
+This email was chosen for intel-gvt-dev@lists.freedesktop.org
+_96 MOWAT- AVENUE, Toronto' ONT.  M4K3K1 CN
+8834696-8444779
 
-96' MOWAT' Av. , Toronto ONTARIO M4 K3 K1 CANADA
-To cease messages  http://www.zaxeels.monster/calculator-Khmer/3786s2w3u95P86Zq11d3e29wlf11v36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQudnSR7IHY10qo5EJwDp
-8632607 6030829
-
-------=_Part_322_924804935.1665155695121
+------=_Part_328_1008960434.1665159059964
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -78,15 +78,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><a href="http://www.zaxeels.monster/a616U23Pj95z86Bq10S3e27qf11B36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQudnSR7ABXV10q6FLwD@@/arrestor-taxis" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Claim up to $1OO for your input</span></a></span><br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:657px;"><a href="http://www.zaxeels.monster/60b4q2395D_86z12nB3el28Wf11z36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQudnSR5Q10iZ5E@WwD/reverberate-Caldwell"><img src="http://www.zaxeels.monster/rivaled-suntanned/15c4b2395g7a_m11E3e2Uamf11x36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQudnSR6vzN1j05fz@wD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 657px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make It Snappy! Offer Goes Away in 2 Days.</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 MOWAT- Ave, Toronto- Ont M4K 3K1 Canada&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease messages, </span><a href="http://www.zaxeels.monster/spooled-Galapagos/c9c6jG2n395c86Yo11PO3e29Ff11t36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQudnSR7d1PJU0x6EAqwyD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit_Over_Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-78ccef08-7fff-7557-a677-bfafb7c7a2b8"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8632607 6030829</span></span></p>   
- <img src="http://www.zaxeels.monster/hoodwink-dishonoring/26a6V2X39L5NS85g12P3eZ2RcFf11K36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQudnSR7WzNn1i06L3WkwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><a href="http://www.eelcranes.click/scalps-speaks/a446GF23O95lo8N611F3eO2dSf12T36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ4dnSe7J1m0UkB5mllwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for up to $1OO Bonus for your opinion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:636px;"><a href="http://www.eelcranes.click/scalps-speaks/a446GF23O95lo8N611F3eO2dSf12T36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ4dnSe7J1m0UkB5mllwD"><img alt="Visit here to take the Southwest survey &amp; claim your reward" src="http://www.eelcranes.click/blasphemes-celebrity/ada5Ew2395U7XaP12SK3eM2fif12K36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ4dnSe5FDN105w@UwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 636px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 18pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry Up! Deal Stops in 3 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your communication elections, </span><a href="http://www.eelcranes.click/3d15m23O95A8p6r10p3e2eTf12I36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ4dnSe6FZ1U0S6A3wDpN/Warnock-calibers" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Come Over Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' Mowat- Avenue, Toronto_ ONTARIO M4K 3KI Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8834696 8444779</span></span></p>   
+ <img src="http://www.eelcranes.click/snobbery-paralyze/4fe5km2395v8j5S12Ru3ey30Sf12H36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ4dnSe5WHX105U@wlD" alt=""/></body>
 </html>
 
-------=_Part_322_924804935.1665155695121--
+------=_Part_328_1008960434.1665159059964--
 
