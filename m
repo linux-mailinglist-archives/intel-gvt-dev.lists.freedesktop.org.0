@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 989F15F8534
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  8 Oct 2022 14:25:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB6535F8595
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  8 Oct 2022 16:24:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F16D410E233;
-	Sat,  8 Oct 2022 12:25:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1EB5E10E27E;
+	Sat,  8 Oct 2022 14:24:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sat, 08 Oct 2022 12:25:29 UTC
-Received: from mail.buthales.monster (unknown [209.142.103.114])
- by gabe.freedesktop.org (Postfix) with ESMTP id B0E1310E230
+ Sat, 08 Oct 2022 14:24:45 UTC
+Received: from mail.darkbuts.monster (unknown [77.90.188.86])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A1DDE10E27E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  8 Oct 2022 12:25:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=buthales.monster;
+ Sat,  8 Oct 2022 14:24:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=darkbuts.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=christie_bendickson@buthales.monster; 
- bh=ISZ8ipU3SdM/M7EP3phanaahMaA=;
- b=t+lIKqXORxyZjcvhEM4jVRk4OwQaX4OD7OTUn4jx0z1Nk7JGITCZKfdHCxxuyG4MjUXwdhK7dyCT
- cvsh2r3qz6gUOLIyTmlJhcF0kFHGVE5fmo4w9Z1R/EOiu8Mrb9GRBq9UFSNgAj8+kKBRZJwFy8Wn
- UW1KMjoDwnJD7yUmbrA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=buthales.monster;
- b=JWHuDkZMXMbQaI6QaavCC+rSELl8/nY9X3vH5NgQKNLCc//uJTc+IhFxM7x/v5bWZUPIGanXiBTL
- 6OzoS9Z5T4h5nuUwQilz+e9yoTDMuECrnVCKJgKMYGcQGyi93nb0wKktCEuGNvzOJgZ6R/UzjmyG
- WDY4S3Z5Oz2k+ty9++0=;
-Received: by mail.buthales.monster id h860k60001gs for
+ i=olerud-rachel@darkbuts.monster; 
+ bh=tbMPVfR92V0eS62BlVWhiDwTFpQ=;
+ b=qYSpMsjt1UrMUnt1iI8UJLGPntg6lk1SHT4ThAkXleppvHTWZ1iHXkui3Z4CTISuaGClNYFGWKGh
+ CuGB0AulnCdwNTZg6CJw17iOhrXzmGF0LHV+o+aSpxOqj/mc/B4+Yfzy1aer0mQgW3fGr3oYHDoh
+ iZdujF1U3bQEIBSdZ20=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=darkbuts.monster;
+ b=m1frSruGVAtfm+LqNlECdmjgn/m+XrcGSVRLPUFNoJM6AqUB8RgM059jL8e9tE0prBY4AZM9wNXI
+ WntO365belri1YLTL9qS+z07Lll0uy+ScnmvSdbGXjIVPtTwM7B6bIK5Egn/0FllYHsbbRzuxnLs
+ CbjkoL3rjC8Nw1cnZO0=;
+Received: by mail.darkbuts.monster id h86eje0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 8 Oct 2022 09:41:47 -0400 (envelope-from
- <christie_bendickson-intel+2Dgvt+2Ddev=lists.freedesktop.org@buthales.monster>)
-Date: Sat, 8 Oct 2022 09:41:47 -0400
-From: Christie Bendickson <christie_bendickson@buthales.monster>
+ Sat, 8 Oct 2022 11:39:52 -0400 (envelope-from
+ <olerud-rachel-intel+2Dgvt+2Ddev=lists.freedesktop.org@darkbuts.monster>)
+Date: Sat, 8 Oct 2022 11:39:52 -0400
+From: Rachel Olerud <olerud-rachel@darkbuts.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Kudos Home Depot Customer. Get up to $100 Reward  2334882
+Subject: Kudos CVS Shopper. Pick a $1OO Bonus #9623203
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_457_33352686.1665231095811"
-Message-ID: <0.0.0.32.1D8DB1BB60A189C.C0D7F@mail.buthales.monster>
+ boundary="----=_Part_106_1182731684.1665238173347"
+Message-ID: <0.0.0.B.1D8DB2C3549BF44.5BF35C@mail.darkbuts.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_457_33352686.1665231095811
+------=_Part_106_1182731684.1665238173347
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Kudos Home Depot Customer. Get up to $100 Reward  7778247
+Kudos CVS Shopper. Pick a $1OO Bonus Go Right Here  http://www.darkbuts.monster/rescuer-nooks/3f05F2K395m8So611z3e6P7rf20k36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQMdnKn6S1Ax0R5dWwUD
 
-Start Here For The Survey & Get Up To $100 Reward http://www.buthales.monster/Descartes-quote/d6e5RC2395Cwz8610B3e5cVf1eK36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQJdneK5LC10Q6SWwDNN
+Frequent Shopper intel-gvt-dev@lists.freedesktop.org,
+You've been chosen to get a gift valued at $9O
+Simply complete a 30-second feedback questionnaire about your experiences with CVS. 
 
-Act Now! Discount Becomes Void in 2 Days.
+Go Here for the survey & pick your bonus  http://www.darkbuts.monster/rescuer-nooks/3f05F2K395m8So611z3e6P7rf20k36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQMdnKn6S1Ax0R5dWwUD
+
+Make Haste! Offer Goes Away in 2 Days.
 
 
 
 
--96 Mowat- Av, TORONTO Ont.  M4K3Kl CN
-Our email content was intended for intel-gvt-dev@lists.freedesktop.org
-No longer wish to receive email?, Continue.Over.Here http://www.buthales.monster/shakedown-drapes/b706r23FA95zV86q12y3esV5dZf1ew36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQJdneK7zN1M0hF6OAqNwD
+M22742183 9623203
+Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org
+To cancel communication, Click.On.Here: http://www.darkbuts.monster/rescuer-nooks/8a04M2395S8L6o11G3re65pf20i36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQMdnKn6u1LW_06l1wqAD
+. 96 Mowat_ Av, TORONTO Ont.  M4K3K1 CANADA
 
-2334882
-
-------=_Part_457_33352686.1665231095811
+------=_Part_106_1182731684.1665238173347
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,19 +84,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2555eef0-7fff-5bf3-2c55-e7b422d1f6a8"><a href="http://www.buthales.monster/cd76o23g9p5g8xJ612K3eTk5cJf1ei36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJdneK5D1Pv05kTwLD/subsist-Haddad" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here For The Survey & Get Up To $100 Reward</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2555eef0-7fff-5bf3-2c55-e7b422d1f6a8"><a href="http://www.buthales.monster/cd76o23g9p5g8xJ612K3eTk5cJf1ei36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJdneK5D1Pv05kTwLD/subsist-Haddad" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:752px;"><img alt="Take the Survey &amp; Get Your Reward Here" src="http://www.buthales.monster/subsist-Haddad/53a5b2L395Y7hSa11Cr3e5egf1eR36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQJdneK6nq1xg06tOlWwD" style="margin-left: 0px; margin-top: 0px; width: 700px; height: 844px;" /></span></span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-69b67c67-7fff-5a13-4de6-1799a4399dad"><a href="http://www.darkbuts.monster/d314i2395Q86Aq10O3e64Bf20j36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQMdnKn6f1jQr05g0wlD/throne-oceanic" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for the survey & pick your bonus</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-69b67c67-7fff-5a13-4de6-1799a4399dad"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:657px;"><a href="http://www.darkbuts.monster/d314i2395Q86Aq10O3e64Bf20j36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQMdnKn6f1jQr05g0wlD/throne-oceanic"><img alt="Visit Here for Your CVS Reward" src="http://www.darkbuts.monster/notifiers-gratuitousness/51c6iBu2395c7aoL10w3e66Lf20C36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQMdnKn7m10ISQv6KTOzwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 657px;" /></a></span></span></span></p> 
   <div style="text-align: center;">
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Act Now! Discount Becomes Void in 2 Days.</span></span>
+   <br /> 
+   <span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Make Haste! Offer Goes Away in 2 Days.</span></span>
+   <br /> &nbsp;
   </div> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2555eef0-7fff-5bf3-2c55-e7b422d1f6a8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'96 Mowat_ Ave., Toronto Ont. M4K3KI CA</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2555eef0-7fff-5bf3-2c55-e7b422d1f6a8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2555eef0-7fff-5bf3-2c55-e7b422d1f6a8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive email?, </span><a href="http://www.buthales.monster/hempen-nicked/31e4U2395y8l6W10G3e5dlf1ey36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQJdneK6Y1JGg05pl3wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue.Over.Here</span></a></span></p> 
-  <div>
-   2334882
-  </div>   
- <img src="http://www.buthales.monster/2696u23L9G5G8is510Y3e5fUf1eg36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQJdneK5P1lp06yOwD@p/Descartes-quote" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-69b67c67-7fff-5a13-4de6-1799a4399dad"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-69b67c67-7fff-5a13-4de6-1799a4399dad"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- MOWAT' Ave., TORONTO Ontario M4K3K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-69b67c67-7fff-5a13-4de6-1799a4399dad"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cancel communication, <a href="http://www.darkbuts.monster/f2f6Xrw2395FB86B12c3e65IPrf20L36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQMdnKn6Vmmh105ip@wD/smithereens-cookery">Click.On.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-69b67c67-7fff-5a13-4de6-1799a4399dad"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">M22742183:9623203</span></span></p>   
+ <img src="http://www.darkbuts.monster/throne-oceanic/2104G2395N8ZW511l3ey68Cf20k36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQMdnKn5P10ZF6z1wDJj" alt=""/></body>
 </html>
 
-------=_Part_457_33352686.1665231095811--
+------=_Part_106_1182731684.1665238173347--
 
