@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 871BB5FA29F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 19:19:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C2AA15FA412
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 21:21:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 31A0810E699;
-	Mon, 10 Oct 2022 17:19:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 766B810E6D9;
+	Mon, 10 Oct 2022 19:21:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 10 Oct 2022 17:19:11 UTC
-Received: from mail.quitbams.monster (unknown [173.244.43.7])
- by gabe.freedesktop.org (Postfix) with ESMTP id 674DF10E69D
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Mon, 10 Oct 2022 19:21:14 UTC
+Received: from mail.earnbams.monster (unknown [66.63.186.249])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 026D110E700
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 17:19:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=quitbams.monster;
+ Mon, 10 Oct 2022 19:21:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=earnbams.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=melquist.jolene@quitbams.monster; 
- bh=HdbO70BhUl34yJfCmnrxNj6ExsU=;
- b=WgAZxKYVLFMi/8YDt0prFcaXzlYvcg68QHdVRNKclNs+VLOO4p00HRGMAr8UZUOW6PxMqueBQMWP
- xNu/POzeyo0IFsrMj00qOsnP2tIE4jHQuJNwtN8pYisNzJuT+OvA/Envb+Sz5sVCXtH3JMmCpxjg
- SNKgmKhggo4VPQovZbE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=quitbams.monster;
- b=IXnVZ5hJssq2vdUjX8NcIVPJkTSPXX313Kfov2LCM6yAjgQx0t3lYOEO6BqrePnGXpZLgRoc9ksq
- cEzLjhIcVixtvHG+bOBv1MOe+/Jm3/Wn/J3rab2rmwUONpo15LZn7mCq9C5dn180a1EkSCq54cTJ
- oh0NIu1rNIuTs0ZdyQA=;
-Received: by mail.quitbams.monster id h8hkha0001gm for
+ i=aimee.appelgate@earnbams.monster; 
+ bh=46i0Rc0vN0EFriSAs00rlJ7cErY=;
+ b=Zy1hg2LFJ6bbEgYR77Sch38uH0vPrb6SRstmOZNJ7WFew3p/Cac5IAPv/EpB7UTzFvKdJKr8YFX5
+ juUKLUqGrVtaK6FILifZYGVcGm+QBczECVWcETur/G8ROc0Ug+aOMDecltfaDyHCMFzhBR2VsgP/
+ uiX/G0aSyXvlcMR2VeM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=earnbams.monster;
+ b=Io7iJwdnrSY1auRNDFlzHywI67qWMSnOrkTaczbyIGoyZAZlUcdNiYwjw14pwruP4+zIU93ZL2x1
+ YtZlf1F/Lnm4R6UtG/GxMYSQExtwQFBQe0MCgYmPMIam6q2WFF/Q8RHAEWTI3bhav/7llnF5N05a
+ hEirZ07d/Mt++evFvos=;
+Received: by mail.earnbams.monster id h8hoak0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 14:35:57 -0400 (envelope-from
- <melquist.jolene-intel+2Dgvt+2Ddev=lists.freedesktop.org@quitbams.monster>)
-Date: Mon, 10 Oct 2022 14:35:57 -0400
-From: Jolene Melquist <melquist.jolene@quitbams.monster>
+ Mon, 10 Oct 2022 15:07:08 -0400 (envelope-from
+ <aimee.appelgate-intel+2Dgvt+2Ddev=lists.freedesktop.org@earnbams.monster>)
+Date: Mon, 10 Oct 2022 15:07:08 -0400
+From: Aimee Appelgate <aimee.appelgate@earnbams.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Inflation busting your budget? Funds from up to $50K
+Subject: Affordable Window Quotes from Andersen, Pella & more
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_142_1986701933.1665421563327"
-Message-ID: <0.0.0.F.1D8DCD723850BFE.2E28E2@mail.quitbams.monster>
+ boundary="----=_Part_562_848592650.1665428793307"
+Message-ID: <0.0.0.3F.1D8DCDB7E74FEEE.4EA2A5@mail.earnbams.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_142_1986701933.1665421563327
+------=_Part_562_848592650.1665428793307
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,20 +62,22 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><a href="http://www.quitbams.monster/9534y2395P86gu12m3eQecKjf41C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQcdooQ5L10rq6W3lwAD/firebug-falsifies" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for multiple Ioan offers</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><a href="http://www.quitbams.monster/9534y2395P86gu12m3eQecKjf41C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQcdooQ5L10rq6W3lwAD/firebug-falsifies" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:549px;height:2048px;"><img alt="Borrow up to $5OK at as low as 5.4%" src="http://www.quitbams.monster/humorousness-advantageously/a445q2G395F7iqa12ok3eeesvf41n36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQcdooQ5X1r0C5KTwqD" style="margin-left: 0px; margin-top: 0px; width: 641px; height: 2391px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 16pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Don't Wait! Compare Instantly Online Before lnterest Rise.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><a href="http://www.earnbams.monster/Shepard-Arlen/abc6u2K3T95Q86OZ11o3ef4UUf43C36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQUdooS6AL1DO05yLNwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to get Estimates from Top Installers</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.earnbams.monster/Shepard-Arlen/abc6u2K3T95Q86OZ11o3ef4UUf43C36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQUdooS6AL1DO05yLNwD"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1015px;"><img alt="Go here to get Affordable Window Quotes" src="http://www.earnbams.monster/Shepard-Arlen/c9c5w23s95cS7aQ11k3eAf6hf43m36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQUdooS7yYl1j0T5myXwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1015px;" /></span></span></span></a></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To sever e-mail, </span><a href="http://www.quitbams.monster/33b4u2395wpx8611B3ReedRf41W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQcdooQ6t1lF0P6Kl1wD0/refill-uttermost" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Right Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">55' HAWTHORNE Street 11TH. FIoor San-Francisco&nbsp; Ca 94105-</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9356966~51197095</span></span></p>   
- <img src="http://www.quitbams.monster/refill-uttermost/3b44S2395D8x5r10E3eefyf41z36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdooQ7zxY1wZ06BNlWwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To quit email, </span><a href="http://www.earnbams.monster/Waldensian-streetcars/8644z2395OWR8611M3ef5Skf43M36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQUdooS6hw1Dw06VlwADJ" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Get Started Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">950' Tower Ln, Foster-City, CALIFORNIA 94404. US.</span></span></p> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3297155 90648469</span></span></p>   
+ <img src="http://www.earnbams.monster/6a16fY239r5f85Zh11J3efr7gf43r36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQUdooS6i1C0kn6hpwjpD/shaping-remain" alt=""/></body>
 </html>
 
-------=_Part_142_1986701933.1665421563327--
+------=_Part_562_848592650.1665428793307--
 
