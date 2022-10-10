@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 904EB5FA1CF
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 18:23:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 871BB5FA29F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 19:19:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6027C10E687;
-	Mon, 10 Oct 2022 16:23:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 31A0810E699;
+	Mon, 10 Oct 2022 17:19:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 10 Oct 2022 16:23:02 UTC
-Received: from mail.trainsbam.monster (unknown [66.63.186.123])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4F1E410E679
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Mon, 10 Oct 2022 17:19:11 UTC
+Received: from mail.quitbams.monster (unknown [173.244.43.7])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 674DF10E69D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 16:23:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=trainsbam.monster;
+ Mon, 10 Oct 2022 17:19:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=quitbams.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jill.kelsey@trainsbam.monster; 
- bh=RPQ9Xv6/ZDXmms8XgSChOO8BUT8=;
- b=xkLojm8AAJSQkW/Jv07NH3dGc1CLx+areWCy24Ey2GvqFraJay64X9IKci4HbUnZCs4lS5N710TI
- rud29/dTRX2ipW6wg2bP2QvEyQ1z6IQzNdy7qmrSIcq5JqUi+v38JRgDaYj2Z8v/xue+I0uensJD
- mLmFMuFMejTM8vqzwao=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=trainsbam.monster; 
- b=S1sWPZ4zHbkWi8fXZGwKKhXs2YyOMRD0FgH2saXqK/JzlPmGy12EIoW+azuNUc4U9JiDjJeAissE
- SQXnxcDZ1wKs93uA2uPjNdaFD1jZxcU+melZTlVOOFPMmnCRQ2dCL3B9XtA0iZZ69GJktJariXs/
- FEoxLlFXoLlWqLNrIjM=;
-Received: by mail.trainsbam.monster id h8h3ec0001go for
+ i=melquist.jolene@quitbams.monster; 
+ bh=HdbO70BhUl34yJfCmnrxNj6ExsU=;
+ b=WgAZxKYVLFMi/8YDt0prFcaXzlYvcg68QHdVRNKclNs+VLOO4p00HRGMAr8UZUOW6PxMqueBQMWP
+ xNu/POzeyo0IFsrMj00qOsnP2tIE4jHQuJNwtN8pYisNzJuT+OvA/Envb+Sz5sVCXtH3JMmCpxjg
+ SNKgmKhggo4VPQovZbE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=quitbams.monster;
+ b=IXnVZ5hJssq2vdUjX8NcIVPJkTSPXX313Kfov2LCM6yAjgQx0t3lYOEO6BqrePnGXpZLgRoc9ksq
+ cEzLjhIcVixtvHG+bOBv1MOe+/Jm3/Wn/J3rab2rmwUONpo15LZn7mCq9C5dn180a1EkSCq54cTJ
+ oh0NIu1rNIuTs0ZdyQA=;
+Received: by mail.quitbams.monster id h8hkha0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 12:06:04 -0400 (envelope-from
- <jill.kelsey-intel+2Dgvt+2Ddev=lists.freedesktop.org@trainsbam.monster>)
-Date: Mon, 10 Oct 2022 12:06:04 -0400
-From: Jill Kelsey <jill.kelsey@trainsbam.monster>
+ Mon, 10 Oct 2022 14:35:57 -0400 (envelope-from
+ <melquist.jolene-intel+2Dgvt+2Ddev=lists.freedesktop.org@quitbams.monster>)
+Date: Mon, 10 Oct 2022 14:35:57 -0400
+From: Jolene Melquist <melquist.jolene@quitbams.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Give your Review of Lowes for a Stanley 170 pc. Tool Kit
- intel-gvt-dev@lists.freedesktop.org
+Subject: Inflation busting your budget? Funds from up to $50K
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_103_1360225709.1665417949030"
-Message-ID: <0.0.0.B.1D8DCC23309AD88.7D418E@mail.trainsbam.monster>
+ boundary="----=_Part_142_1986701933.1665421563327"
+Message-ID: <0.0.0.F.1D8DCD723850BFE.2E28E2@mail.quitbams.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,25 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_103_1360225709.1665417949030
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Give your Review of Lowes for a Stanley 170 pc. Tool Kit  intel-gvt-dev@lists.freedesktop.org
-
-Start Here, You've been Chosen by Lowes:http://www.trainsbam.monster/diehard-fiftieth/9544b2395RP86u12v3exe8_Wf40_36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ1dood5S10ql5bLlwD
-
-
-
-96- MOWAT.  Av, Toronto' ONTARIO M4K 3KI CN
-
-To quit e-mail, Begin Right Here:http://www.trainsbam.monster/diehard-fiftieth/bac4f2395ai8_612Q3eGem9hf40v36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ1dood5Ih10P5D10wD
-
-This notice was selected for intel-gvt-dev@lists.freedesktop.org
-
-7491925~4682580
-
-------=_Part_103_1360225709.1665417949030
+------=_Part_142_1986701933.1665421563327
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,20 +62,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.trainsbam.monster/ad96fs23V95eH86o11M3eKe8Wf40j36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ1dood7zvigq106qPyWwD/contiguous-assistants" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here, You've been Chosen by Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.trainsbam.monster/ad96fs23V95eH86o11M3eKe8Wf40j36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ1dood7zvigq106qPyWwD/contiguous-assistants" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.trainsbam.monster/4c14N2395iN7wa10d3eeazf40A36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ1dood7w1o0JYS5iqBwD/annoying-relishes" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Offer Goes Away in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><a href="http://www.quitbams.monster/9534y2395P86gu12m3eQecKjf41C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQcdooQ5L10rq6W3lwAD/firebug-falsifies" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here for multiple Ioan offers</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><a href="http://www.quitbams.monster/9534y2395P86gu12m3eQecKjf41C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQcdooQ5L10rq6W3lwAD/firebug-falsifies" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:549px;height:2048px;"><img alt="Borrow up to $5OK at as low as 5.4%" src="http://www.quitbams.monster/humorousness-advantageously/a445q2G395F7iqa12ok3eeesvf41n36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQcdooQ5X1r0C5KTwqD" style="margin-left: 0px; margin-top: 0px; width: 641px; height: 2391px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 16pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Don't Wait! Compare Instantly Online Before lnterest Rise.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT' Ave, Toronto' Ontario M4K3Kl CANADA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To quit e-mail,<a href="http://www.trainsbam.monster/examines-tranquilly/af85F239X5Q8p6T12U3eGem9Pf40V36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ1dood7FWixS105SXPwD"> Begin Right Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7491925:4682580</span></span></p>   
- <img src="http://www.trainsbam.monster/e216j2g3S95zP8j511tL3eebqf40H36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ1dood7E1D0Smu5alwDB/chamberlain-hounds" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To sever e-mail, </span><a href="http://www.quitbams.monster/33b4u2395wpx8611B3ReedRf41W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQcdooQ6t1lF0P6Kl1wD0/refill-uttermost" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Right Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">55' HAWTHORNE Street 11TH. FIoor San-Francisco&nbsp; Ca 94105-</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-64b918c5-7fff-4d7e-289c-9e9a1d8d91b8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9356966~51197095</span></span></p>   
+ <img src="http://www.quitbams.monster/refill-uttermost/3b44S2395D8x5r10E3eefyf41z36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdooQ7zxY1wZ06BNlWwD" alt=""/></body>
 </html>
 
-------=_Part_103_1360225709.1665417949030--
+------=_Part_142_1986701933.1665421563327--
 
