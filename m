@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3982F5FA700
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 23:31:26 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B98835FA5F1
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 22:19:36 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F005910E72B;
-	Mon, 10 Oct 2022 21:31:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 70F5710E70C;
+	Mon, 10 Oct 2022 20:19:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 518 seconds by postgrey-1.36 at gabe;
- Mon, 10 Oct 2022 21:31:00 UTC
-Received: from mail.bamtires.click (unknown [213.209.129.103])
- by gabe.freedesktop.org (Postfix) with ESMTP id D3FD110E726
+X-Greylist: delayed 336 seconds by postgrey-1.36 at gabe;
+ Mon, 10 Oct 2022 20:19:31 UTC
+Received: from mail.roadsbam.monster (unknown [98.159.43.175])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3B3DF10E70E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 21:31:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bamtires.click; 
+ Mon, 10 Oct 2022 20:19:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=roadsbam.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=auna_julie@bamtires.click; bh=2nbTUfM5NIrwn5JYPCmtVxeil0k=;
- b=b0hQAr2V8RetL30BZ/R15vS19zWIiC7a2Cpxjy+QaCdEmOb8+GY7CDdYrnOEH6ZiSNwVaY14848N
- Rys70I0Yhj9R05G0FPmKUMKKDY9Wf85nyO6qyTS8DqyjJ8cTLkAvXl7V1NtZ9kfS/Q6HbHGRljRO
- 3NybDrJfwqDmiYR15oA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bamtires.click;
- b=EA4ETBqnTskEJEwzKH7D8KH7+iO7AukT08n5JkjJkwR3zPOL9SfsLB3VcGBeuEP3WEJViU2+/Sgw
- Ae3MuSwc+eUflvdiboPSxNw/COQdY5c4IaO9yeXbV18nefz3H/bACzGeJ2FW+fcu6ZJVBjNO8phi
- hbtW/NpO+IWqstq6FbI=;
-Received: by mail.bamtires.click id h8i7ha0001g6 for
+ i=cava-april@roadsbam.monster; 
+ bh=/CZ4Wo+MMUDlZjh/lp89GLbLYig=;
+ b=KVEfSIZGJxmnTkm2d/F8+YUJOc8R/1D3V6Hj5ykDB+pqAOjpRHWMlZDZAMLeKzjXYo4uXbPwEHsM
+ IKqbWPiSuLdSy5EurTRcd7OHMqzpwpaAanX6dn1QCb0jKpTejMh6zTg+kxFmaWsFLkBrDTzzwQZc
+ /MiUWzhXOH1Qv32BxiY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=roadsbam.monster;
+ b=jo0hc+b34zhVYznKvz6oDX/1EiUmiBQ8kMKQpw2bAGWJOoVZl9Ao1iOwW574vqTT2sDSbhJFfB4t
+ yDpMcdv8AGsa/u5PDBH+kKD80ROIBI3CoESZH7SYdzdvLTYS/NeMoTGMjMdYYOnpbkD6cXpVL4ig
+ CQ7sBPBCKmIUWJlVy1w=;
+Received: by mail.roadsbam.monster id h8i9lg0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 17:07:52 -0400 (envelope-from
- <auna_julie-intel+2Dgvt+2Ddev=lists.freedesktop.org@bamtires.click>)
-Date: Mon, 10 Oct 2022 17:07:52 -0400
-From: Julie Auna <auna_julie@bamtires.click>
+ Mon, 10 Oct 2022 17:36:13 -0400 (envelope-from
+ <cava-april-intel+2Dgvt+2Ddev=lists.freedesktop.org@roadsbam.monster>)
+Date: Mon, 10 Oct 2022 17:36:13 -0400
+From: April Cava <cava-april@roadsbam.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Void Your Timeshare Contract 100% Guaranteed
+Subject: How to find the top rated renovation specialists in your town
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_553_477370813.1665436059410"
-Message-ID: <0.0.0.3C.1D8DCEC5BFC0B3A.480C38@mail.bamtires.click>
+ boundary="----=_Part_376_191975073.1665432373407"
+Message-ID: <0.0.0.29.1D8DCF05217FE40.AF988@mail.roadsbam.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,25 +53,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_553_477370813.1665436059410
+------=_Part_376_191975073.1665432373407
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Void Your Timeshare Contract 100% Guaranteed 
+How to find the top rated renovation specialists in your town
 
-Click Here for your 100% Legal Exit Strategy-http://www.bamtires.click/patriot-bitterness/be86S239Rz5g8Pu611w3YefcLf45Q36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQIdooK5I10UZ5O1XwD
+Click Here to Get Quotes on Your Job in Minutes Here -http://www.roadsbam.monster/attendees-Shanghaiing/40e6P2O3G95I8Rs611Xt3ef8qf44n36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQGdooe5GO1r05fkwlD
+
+Act Now!  Find A Professional Then Get Estimates and Get Your Project Started This Summer. 
 
 
 
-To change your communication preferences, Click-Over-Here-http://www.bamtires.click/scheme-dentists/42c4X2395js86Q12N3ehfpdvf45Z36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQIdooK6B1Fz0u5EJwyD
 
-This notice was sent to intel-gvt-dev@lists.freedesktop.org
+I2I6_ Broadway,  FL00R 2, NEW YORK CITY, NEW YORK 10001. 
+To abandon your subscription, Start-Over-Here-http://www.roadsbam.monster/chancery-Lufthansa/2105O2U395z86QP11z3eUf9Cf44B36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQGdooe5a1o0Y6QNwDlM
+Our email content was intended for intel-gvt-dev@lists.freedesktop.org
+3996114-5943164
 
-1060.  WOODCOCK Rd, SUlTE 62867_, ORLANDO, Fla 328o3-36O7
-
-5439918-3542394
-
-------=_Part_553_477370813.1665436059410
+------=_Part_376_191975073.1665432373407
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -79,19 +80,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><a href="http://www.bamtires.click/angriest-anticipate/9184z2395FL86g11C3PefcNf45D36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQIdooK5Y1T0G6e@LTwD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family:arial,helvetica,sans-serif;">Click Here for your 100% Legal Exit Strategy</span></span></a></span></span><br /> <br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><a href="http://www.bamtires.click/angriest-anticipate/9184z2395FL86g11C3PefcNf45D36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQIdooK5Y1T0G6e@LTwD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1387px;"><img alt="Visit Here to Get out of your Timeshare - Guaranteed" src="http://www.bamtires.click/a435Uk2395qV7Za12jK3efeTlf45O36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQIdooK6WKj10K6nP3wDJ/Dahl-disadvantage" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1387px;" /></span></span></a><
- /span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><a href="http://www.roadsbam.monster/tracing-Jaime/1026Pws2395t8KK612F3ef8snXf44I36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQGdooe6Hr1j0D6o0TMwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here to Get Quotes on Your Job in Minutes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:604px;height:1429px;"><a href="http://www.roadsbam.monster/tracing-Jaime/1026Pws2395t8KK612F3ef8snXf44I36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQGdooe6Hr1j0D6o0TMwD"><img alt="Compare Project Pros to Save" src="http://www.roadsbam.monster/punching-swimmers/9726aJh2395U7vaS12J3hefahNf44T36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQGdooe5XSm106h0UpwD" style="margin-left: 0px; margin-top: 0px; width: 604px; height: 1429px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">&nbsp;Find A Professional, Get Pricing and Get You Project Underway Now.</span></span></p> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your communication preferences,</span><a href="http://www.bamtires.click/patriot-bitterness/w125z239J5L86Jn11V3DefdBf45h36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQIdooK7rL10mSn5w1PwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Click-Over-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1060' W00DC0CK ROad, SUITE 62867_, 0RLAND0, FLA. 32803.3607</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5439918.3542394</span></span></p>   
- <img src="http://www.bamtires.click/af76c2yV395O85vu12Q3TefrfNf45Y36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQIdooK7ihK10rO5zXwDX/scheme-dentists" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1216 BR0ADWAY,&nbsp; FL00R Two, NEW YORK CITY, New-York 10001-</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To abandon your subscription, <a href="http://www.roadsbam.monster/4674D2395bVy8611v3ef9jVf44H36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQGdooe5f1O0v5bpAwD/chancery-Lufthansa">Start-Over-Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3996114-5943164</span></span></p>   
+ <img src="http://www.roadsbam.monster/we35J239S5AQ85L10r3efbNf44C36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQGdooe6G1ug0g5QBUwD/Hausa-satellites" alt=""/></body>
 </html>
 
-------=_Part_553_477370813.1665436059410--
+------=_Part_376_191975073.1665432373407--
 
