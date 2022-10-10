@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 427BF5FA02C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 16:25:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0600F5FA12B
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Oct 2022 17:35:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F38F10E611;
-	Mon, 10 Oct 2022 14:25:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2D7CF10E62B;
+	Mon, 10 Oct 2022 15:34:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 10 Oct 2022 14:25:02 UTC
-Received: from mail.dietbamc.monster (unknown [66.63.186.137])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6E87C10E60B
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Mon, 10 Oct 2022 15:34:37 UTC
+Received: from mail.aidsbam.monster (unknown [77.90.188.114])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DA90410E1D4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 14:25:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dietbamc.monster;
+ Mon, 10 Oct 2022 15:34:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=aidsbam.monster; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=judy-jeleniewski@dietbamc.monster; 
- bh=+LVj48pQwRbMMZInNpGo25STGoI=;
- b=Z57qtfy1As/TjXBbx6eygZyGIoqn/A2sWz6el+P8furBKVGvSf1twTGwCYVoiXOT0jR/V3bj7SOy
- r8spGMKlBKQRTGvJJgMeXrmsGX1ssh34pdcYIqDgSwtZ3m62Y6HwVpq1vbSsodC8OVNtgb887iBg
- 9AjMudZyYcODzX45ZtU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dietbamc.monster;
- b=fqAqcgL5bT+Gz+QkZnEGO/bFABAjjMnTZapwRFJ/E41IAf9lxdMJxl1KjPxeDgX/PV/GtLQyFVBh
- AmrO+tDrT0uqgzUTIikYGK7chutODnZZ6RZlyWRHWl5J9ycnkyOhS76QCFH3QNb9eKNVU5XDg9hp
- A6moXozumJI7hoppjao=;
-Received: by mail.dietbamc.monster id h8gljs0001g2 for
+ i=courtney-bubolz@aidsbam.monster; 
+ bh=ZuA0XwEp35DZQzqhQpUxwM2tjwA=;
+ b=oRrXpGrtU/2It8dmO5EZcTwxewtkxjKbmlv3joPeMXoJUIcAFgTOgL3e2krbpTm0zHlVPNj0XDyh
+ 1sJ1Cn3Tpox6tdan0o9lwx7SlQr2JXTSiO1EHcEo2d5KtGv5b1VAvKeTf5wBqLNztkh+Oa9PbWMt
+ 38vcT0eKNO4LjdzPNY0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=aidsbam.monster;
+ b=mNV6LYyBcFPF6tgyeMlMVmROk2C4Hlu4Ej6e4BftcMIZqoAuTgUlow/uR3EuIcDXJxfiwoTsN/z2
+ Tr7uTceEFILGOU338RX6rxCX+hrz92qgaDjwlv88MVNuwzq52bqBPBC1UbmY3HfkUE0g/Txkcz33
+ LgkLUKI7z4eS82zi+Oo=;
+Received: by mail.aidsbam.monster id h8gtos0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 10:12:46 -0400 (envelope-from
- <judy-jeleniewski-intel+2Dgvt+2Ddev=lists.freedesktop.org@dietbamc.monster>)
-Date: Mon, 10 Oct 2022 10:12:46 -0400
-From: Judy Jeleniewski <judy-jeleniewski@dietbamc.monster>
+ Mon, 10 Oct 2022 11:22:01 -0400 (envelope-from
+ <courtney-bubolz-intel+2Dgvt+2Ddev=lists.freedesktop.org@aidsbam.monster>)
+Date: Mon, 10 Oct 2022 11:22:01 -0400
+From: Courtney Bubolz <courtney-bubolz@aidsbam.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: See Results for Your Area:  (38)
+Subject: Do you qualify for a $17OO MedicareAdvantage refund? #569914
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_580_1371558823.1665411085947"
-Message-ID: <0.0.0.40.1D8DCB25F2624BA.A6CC2@mail.dietbamc.monster>
+ boundary="----=_Part_271_799369348.1665415286171"
+Message-ID: <0.0.0.1D.1D8DCBC0B8C9136.1A4F@mail.aidsbam.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_580_1371558823.1665411085947
+------=_Part_271_799369348.1665415286171
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,30 +62,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, &quot;Trebuchet MS&quot;; font-size: 13px; line-height: 1.656; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 36px;"><strong><span style="color: rgb(51, 102, 102);">rent</span><span style="color: rgb(153, 255, 0);">to</span><span style="color: rgb(255, 255, 255);"><span style="background-color: rgb(51, 102, 102);">own</span>&nbsp;</span></strong></span><span style="font-size: 20px;">LISTINGZ</span></p> 
-  <div>
-   <br /> 
-   <br /> 
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"><span style="white-space: pre-wrap;">intel-gvt-dev@lists.freedesktop.org, </span></span></span>
-   <br /> 
-   <br /> 
-   <span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Why Rent when you can Rent-to-Own?</span></span>
-  </div> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.dietbamc.monster/pulling-appendages/f306z23w9X5gl86Z12oS3ee1xDf3en36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ6dooo5WL1u05mzWwD"><b style="font-family: Arial; font-size: 18.6667px; white-space: pre-wrap;">Visit Here to Find Rent-to-Own Listings near you</b></a></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Jericho M. rents to own a 2 BD, 1 BA, </span></span><span style="font-family: arial, helvetica, sans-serif; font-size: 18px;">1237</span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft. home </span></span><span style="font-size:18px;"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family:arial,helvetica,sans-serif;">for&nbsp;$</span></span><span style="font-family:arial,helvetica,sans-serif;">1081</span><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:18px;">Kaia W. is investing in a 3 BD, 1.5 BA, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1237</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft. home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"> 1232</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo&nbsp;</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Makaila T. has a zero down, 3 BD, 2.5 BA, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1318</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft. home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1479/</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">mo</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.dietbamc.monster/pulling-appendages/f306z23w9X5gl86Z12oS3ee1xDf3en36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ6dooo5WL1u05mzWwD"><font face="Arial"><span style="font-size: 18.6667px; white-space: pre-wrap;"><b>Begin Here to Search Rent-to-Own Houses Online</b></span></font></a></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-210be573-7fff-425e-92d7-81d246bc8633"><a href="http://www.aidsbam.monster/threaders-compression/bac5B23G95ov8Q611kU3ee4Sf3fz36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQrdoo97vUR10Nm5NzwDN" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">To Untangle Medicare Choices. Click Here</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-210be573-7fff-425e-92d7-81d246bc8633"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:520px;"><a href="http://www.aidsbam.monster/threaders-compression/bac5B23G95ov8Q611kU3ee4Sf3fz36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQrdoo97vUR10Nm5NzwDN"><img alt="Go Here to Find your Medicare Plans" src="http://www.aidsbam.monster/shaped-ejected/6c05o2m395v7rah10y3ee6Yf3fr36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQrdoo96JW10GO5qAwXD" style="margin-left: 0px; margin-top: 0px; width: 784px; height: 653px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-210be573-7fff-425e-92d7-81d246bc8633"><a href="http://www.aidsbam.monster/threaders-compression/bac5B23G95ov8Q611kU3ee4Sf3fz36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQrdoo97vUR10Nm5NzwDN" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Turning 65? Go Here to make it Simple</span></a></span></p> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p>&nbsp;</p> 
-  <p>&nbsp;</p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P.0. Box_ 412O Portland- 0REG0N 972O8- 412O&nbsp;</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To break off communication, </span><a href="http://www.dietbamc.monster/9716F2L3v95N8t6q12G3Xeez2jf3eZ36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ6dooo6j1T0hr5jNwWD/tortures-retinue" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go_Here</span></a></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our notification was meant for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">66066205 9529155</span></span></span></p>   
- <img src="http://www.dietbamc.monster/ammoniac-hashing/c9c5A2J395Dy85u12b3eet3Yxf3en36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ6dooo7jt1X0ng5ClXwD" alt=""/></body>
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span id="docs-internal-guid-210be573-7fff-425e-92d7-81d246bc8633"><span style="font-size: 10pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">We are not an insurance carrier, agent, or broker and are not affiliated with any plan, or endorsed by any government entity or agency. We connect consumers with insurance carriers and their affiliates.</span></span><br /> <br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To quit notices,</span><a href="http://www.aidsbam.monster/cd74h2395qM86N12Q3eCe5tqf3fH36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQrdoo96EOS1w06clOwDl/balalaika-overnighters" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Go This Way</span></a></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span id="docs-internal-guid-4428efb4-7fff-5650-e2a9-6de2d4728cc8"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was delivered to intel-gvt-dev@lists.freedesktop.org</span></span><br /> <span style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); font-family: Arial; font-size: 10pt; white-space: pre-wrap;">513. Main' Street, SUlTE 9o2,</span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span id="docs-internal-guid-210be573-7fff-425e-92d7-81d246bc8633"><span style="font-size: 10pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">EL-SEGUNDO, CA 9o245_</span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span id="docs-internal-guid-210be573-7fff-425e-92d7-81d246bc8633"><span style="font-size: 10pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5509680 </span></span></p>   
+ <img src="http://www.aidsbam.monster/balalaika-overnighters/abc5C23y95Umz8510b3ee7of3fg36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrdoo95IL10A6Kjw@Dl" alt=""/></body>
 </html>
 
-------=_Part_580_1371558823.1665411085947--
+------=_Part_271_799369348.1665415286171--
 
