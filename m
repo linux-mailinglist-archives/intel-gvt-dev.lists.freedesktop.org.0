@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0C4E5FAA8C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Oct 2022 04:19:03 +0200 (CEST)
+Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 21E715FAB98
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Oct 2022 06:19:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 96FA610E782;
-	Tue, 11 Oct 2022 02:19:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D7F8B10E7A6;
+	Tue, 11 Oct 2022 04:18:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 11 Oct 2022 02:18:58 UTC
-Received: from mail.printbams.click (unknown [173.244.43.242])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8307510E782
+ Tue, 11 Oct 2022 04:18:44 UTC
+Received: from mail.kinksbam.click (unknown [173.244.43.119])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 715CF10E7A6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 11 Oct 2022 02:18:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=printbams.click; 
+ Tue, 11 Oct 2022 04:18:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kinksbam.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=alice.severns@printbams.click; 
- bh=Syi46pWytMGq5AuYwGNWCW+om0A=;
- b=W0E0qeiktuLUDk76OIOrAEPuxhvzH/jlvtdq/IM6+0Cn4uJpUihdskO6Pqw7N51ujZ4m8GdSc2Bt
- usI7pTRBi0oiKAlXWJ8uHAw6TeSZtJJ6qE0wlRhg5Vg1PNCu7Ue4IPVN15PJbPeHwKtjP2Gpgl1O
- UdcNXcqgnhK+8lhcGJg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=printbams.click;
- b=Tr6HVJLXLpblElLCYorQhcqEGcpA8WOPTC+dMg7dNaH0EXfZk08iCJYakdvbtMHgUaM1mTwCsC+G
- eVtDD1JYWeje0YNzoBwbAxFvyBfJidrBUjLDSPOYxB4eWAPTfwtcQlek0f4T9pa0g/Y7I+lOFP0+
- lGlRPRtwRXOMClJZSn8=;
-Received: by mail.printbams.click id h8jjpe0001gv for
+ i=kristi-garlinger@kinksbam.click; 
+ bh=FDUxThO+Bbz3xvmDI4HSo/Yq3cA=;
+ b=PY/rcem+zD6wr94qtcWFLEGY925iTP3jqqs3VEftMqKYXIMdRA/hAR+aZskOQBohderAZbWzgtfs
+ KMHsQKEy5lWVA0/ZsXuRVDDyJr5JrdbAy0z96VTVPE0J66kaq/J8yCPZOM7d/Yrq+08Ysq3B1JUE
+ EBhzO/4I0zetLGZv2JI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kinksbam.click;
+ b=Abnr5hbi2oAzHFoSUZlnEMk+gYYVHg3nl18NyYFFkCwKXuPhcffCQoOX33p0Yd8Cy5RphXwEdZVi
+ tuCGOPUYoejheQcLLPxQyEzzRj6mH+/pWGIlVnOUh8uxgOo8C12D1Ip5YZVrOoNcmmjaGFXKiE6U
+ tMFD77iImlH7jeM/g3s=;
+Received: by mail.kinksbam.click id h8jna80001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 23:34:52 -0400 (envelope-from
- <alice.severns-intel+2Dgvt+2Ddev=lists.freedesktop.org@printbams.click>)
-Date: Mon, 10 Oct 2022 23:34:52 -0400
-From: Alice Severns <alice.severns@printbams.click>
+ Tue, 11 Oct 2022 00:06:13 -0400 (envelope-from
+ <kristi-garlinger-intel+2Dgvt+2Ddev=lists.freedesktop.org@kinksbam.click>)
+Date: Tue, 11 Oct 2022 00:06:13 -0400
+From: Kristi Garlinger <kristi-garlinger@kinksbam.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Sam's Club Customer Your Feedback Matters up to $1OO Reward  2606896
+Subject: Try this for nerve pain  1321
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_160_187965576.1665453905874"
-Message-ID: <0.0.0.11.1D8DD226CABE6B8.66C9B2@mail.printbams.click>
+ boundary="----=_Part_292_891514800.1665461162656"
+Message-ID: <0.0.0.20.1D8DD26CDB1AEC6.1A96C2@mail.kinksbam.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,25 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_160_187965576.1665453905874
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Sam's Club Customer Your Feedback Matters up to $1OO Reward
-
-Start Here to Take the Shopper Survey,http://www.printbams.click/sequencing-receivers/e045j239F5Rp86W10M3f10Uf4aW36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ.do9d7h1HOh0o6tNwDjW
-
-Lose No Time! Sale Comes to an End in 48 Hours.
-
-
-
-
-126 E.   23RD STREET NewYork NEW YORK 1OO1O' USA 
-Our message was intended for intel-gvt-dev@lists.freedesktop.org
-To cease e-mail, Continue.Here.Now,http://www.printbams.click/maintenances-briskness/a446k23SZ95M8S6O10D3f11If4aH36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ.do9d5SvC106yLPBwD
-1833205,2606896
-
-------=_Part_160_187965576.1665453905874
+------=_Part_292_891514800.1665461162656
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,24 +62,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><a href="http://www.printbams.click/historic-vestige/d326t239FQ5Aq86x10h3f10Gf4aG36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.do9d5hi10r5ElLwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to Take the Shopper Survey</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><a href="http://www.printbams.click/historic-vestige/d326t239FQ5Aq86x10h3f10Gf4aG36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.do9d5hi10r5ElLwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:555px;height:629px;"><img alt="Take the Sam's Survey for a Reward up to $100" src="http://www.printbams.click/c5m4S2395Rt7la12Et3of12sf4aK36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.do9d7SOA1zZ06Q@MpwD/impeding-implacable" style="margin-left: 0px; margin-top: 0px; width: 555px; height: 629px;" /></span></span></a></span></p> 
-  <div style="text-align: center;">
-   <br /> 
-   <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:18px;">Lose No Time! Sale Comes to an End in 48 Hours.</span></span>
-  </div> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-27b9085c-7fff-bd71-8b2a-364627751726"><a href="http://www.kinksbam.click/8636wKR2395SQZ8612G3Uf1O8Vf4cC36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQJdo9R5dgQ106QLwDp1/unwitting-aggrieve" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin here to treat nerve pain</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-27b9085c-7fff-bd71-8b2a-364627751726"><a href="http://www.kinksbam.click/8636wKR2395SQZ8612G3Uf1O8Vf4cC36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQJdo9R5dgQ106QLwDp1/unwitting-aggrieve" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:710px;"><img alt="Go here for a no-drug nerve pain treatment" src="http://www.kinksbam.click/de54B2395c7iam10q3f1azf4cw36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJdo9R5n10Z_6kkwDl2/Flemishing-bidders" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 710px;" /></span></span></a></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l26. E.&nbsp; 23rd ST NEW.YORK New York IOOIO' US.&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our message was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-size: 11pt; font-family: Arial; vertical-align: baseline; white-space: pre-wrap;">To cease e-mail, </span>
-  <a href="http://www.printbams.click/af74C2395MZ8h611m3f1J1if4aU36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ.do9d6G1gC0Z5HTjwD/sequencing-receivers" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Continue.Here.Now</span></a>
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1833205-2606896</span></span></p>   
- <img src="http://www.printbams.click/1014H2395W8Z5L11nD3f13Tf4a_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ.do9d7RyN10_w5ojUwD/accessed-worldliness" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-27b9085c-7fff-bd71-8b2a-364627751726"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on communication, </span><a href="http://www.kinksbam.click/a435SC2395m8i6T12zo3ft19Ff4cv36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQJdo9R7mhu10IQ5pT2wD/resurrector-outcry" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin-Ahead-Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-27b9085c-7fff-bd71-8b2a-364627751726"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-27b9085c-7fff-bd71-8b2a-364627751726"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l732_ 1st' Avenue Ste. 28568, NewYork New-York 10128_</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-27b9085c-7fff-bd71-8b2a-364627751726"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">9255450,5549700</span></span></p>   
+ <img src="http://www.kinksbam.click/apposite-inhabitant/de66q2K3v95A85in12A3fH1sbXf4cg36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQJdo9R5l1SK06Mqp2wD" alt=""/></body>
 </html>
 
-------=_Part_160_187965576.1665453905874--
+------=_Part_292_891514800.1665461162656--
 
