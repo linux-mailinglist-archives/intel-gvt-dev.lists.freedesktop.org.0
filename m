@@ -2,45 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9FB75FBB3A
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Oct 2022 21:18:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA9D45FBB5F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Oct 2022 21:32:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F098910E86D;
-	Tue, 11 Oct 2022 19:18:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2BC6F10E87A;
+	Tue, 11 Oct 2022 19:32:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 11 Oct 2022 19:18:30 UTC
-Received: from mail.ventemay.monster (unknown [66.63.186.143])
- by gabe.freedesktop.org (Postfix) with ESMTP id 698F510E86D
+X-Greylist: delayed 663 seconds by postgrey-1.36 at gabe;
+ Tue, 11 Oct 2022 19:31:56 UTC
+Received: from o61.p38.mailjet.com (o61.p38.mailjet.com [185.250.237.61])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8843610E87A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 11 Oct 2022 19:18:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ventemay.monster;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=dora-ohlendorf@ventemay.monster; 
- bh=QeBm6KEF4203NroaTcMGMTgDDtY=;
- b=iNHfK4kp4vp+tK5k8sW4GUx9W2ZtHd/L72jnUbldZEbV9og9uZiZRy30aTCBsf2ynantpIdn9xi2
- RHCU0GP56GdOBansSVwNGkZdPDjyVjBK2L1YoafQUVLZMGJV1JLtZaUdI6q5KaF4sdAHg8u/SN+U
- AYHUkn719JBSOP8fspw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ventemay.monster;
- b=J1t0vrRaKmg2SCwxqnQLBHMwDrfrJa2FH7Ep5k6UwJ+TIf9Vj2b4UjbVs8XQA9kNRYpwHHSFuq1V
- uUJDqo5ANL769jQAseK057DRsS0+ZrOZTfF5sEXdbMZjSrAt3FrAxh3jjy6IW9gSMA84S9gowJSS
- 0WDiKImCPdeMgmEqZN8=;
-Received: by mail.ventemay.monster id h8n0oc0001gb for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 11 Oct 2022 15:05:51 -0400 (envelope-from
- <dora-ohlendorf-intel+2Dgvt+2Ddev=lists.freedesktop.org@ventemay.monster>)
-Date: Tue, 11 Oct 2022 15:05:51 -0400
-From: Dora Ohlendorf <dora-ohlendorf@ventemay.monster>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Find Affordable Bathroom Remodeling Options   #8632607
+ Tue, 11 Oct 2022 19:31:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+ d=bnc3.mailjet.com; i=jesse=3Dcypress-tech.com@a1189921.bnc3.mailjet.com;
+ s=mailjet2; 
+ h=message-id:mime-version:from:from:to:to:subject:subject:date:date:list-id:list-unsubscribe:
+ list-unsubscribe-post:feedback-id:precedence:x-campaignid:x-csa-complaints:
+ x-mj-mid:x-mj-smtpguid:x-report-abuse-to:content-type;
+ bh=TIKBoKZbp9fF50rF/WxjhpzdbT0ZJSkn2yGNWMczT4g=;
+ b=RLZtBr+c5LyIXfvOn82nlOx1IPKUM1RS38gM/la8t3J9cZy5Tp5sjt8s3
+ BqWyCvxYadErO4TGk+hGXaJs2r9jEBWpkVHLBIZcx+nRLsDhh5hqns7BfD92
+ qthBRlcHqydfZAtjoEVAqC5Hx77r2rwfJ/P/6z8NI5iKJ/cOlJSIyk=
+Message-Id: <9498ed31.AXUAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzIAnGIiABIoIQBjRcIS@mailjet.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_154_1083859927.1665515107695"
-Message-ID: <0.0.0.11.1D8DDA47AE3296C.26F508@mail.ventemay.monster>
+From: Jesse Dougherty <jesse@cypress-tech.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: HP PA-RISC / IA64 hardware platform for Linux Debian, Gentoo,
+ NetBSD, OpenBSD and HP-UX Unix
+Date: Tue, 11 Oct 2022 19:20:50 +0000 (UTC)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-Id: 42.1189921.1191387:MJ
+Precedence: bulk
+X-CampaignID: 7663542710
+X-CSA-Complaints: csa-complaints@eco.de
+X-MJ-Mid: AXUAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzIAnGIiABIoIQBjRcIS1AHO03IkSxq1YJfn6AqMjgASLds
+X-MJ-SMTPGUID: d401ced3-7224-4b1a-b560-97e7e80a8c8e
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+ abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative; boundary="=-xsdjpNxWuY6X1oK9ZO3h"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: "Intel GVT \(Graphics Virtualization\) development list"
  <intel-gvt-dev.lists.freedesktop.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gvt-dev>, 
@@ -53,46 +56,184 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_154_1083859927.1665515107695
+--=-xsdjpNxWuY6X1oK9ZO3h
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-qs_bath_subjects]   
+Hi, I'm Jesse at Cypress Technology Inc. We at Cypress sell HP hardware. Be=
+low are some links to HP PA-RISC and IA64 boxes that support the Linux Debi=
+an, Gentoo, NetBSD, OpenBSD Linux and HP-UX Unix platforms. If you are in n=
+eed of systems, feel free to email back with any question or requests. We a=
+lso sell / buy all boxes and parts that HP made for the HP-UX / Unix (PA-RI=
+SC & ia64) line.
 
-Start your Bathroom Remodel  Here. http://www.ventemay.monster/be74D2395Ul86F11fu3f49If58p36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQFdodS6fC1uB05z@1wD/Elizabethan-moderates
+PA-RISC
+www.ebay.com/itm/385130495455
+www.ebay.com/itm/384211227917
 
+IA64
+www.ebay.com/itm/384272059488
+www.ebay.com/itm/384211228177
 
+IA64 - For Telco / Data Center users / 48v DC
+www.ebay.com/itm/384966825704
 
+Thanks
+Jesse Dougherty
+Resellers of HP hardware
+Jesse@cypress-tech.com
+www.cypress-tech.com=
 
-To put an end to communication, Begin.Ahead.Here. http://www.ventemay.monster/scriptures-severer/44a6H2X39R5c86SL12z3iLf4aGf58o36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQFdodS7YAPQR105zPPwD
+--=-xsdjpNxWuY6X1oK9ZO3h
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Our email was delivered to intel-gvt-dev@lists.freedesktop.org
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title>HP PA-RISC / IA64 hardware platform for Linux Debian, Gent=
+oo, NetBSD, OpenBSD and HP-UX Unix</title><!--[if !mso]><!--><meta http-equ=
+iv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><!--<![endif]--><meta http-equ=
+iv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"><meta name=3D"vi=
+ewport" content=3D"width=3Ddevice-width,initial-scale=3D1"><style type=3D"t=
+ext/css">#outlook a { padding:0; }
+          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-=
+size-adjust:100%; }
+          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt; }
+          img { border:0;height:auto;line-height:100%; outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic; }
+          p { display:block;margin:13px 0; }</style><!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]--><!--[if lte mso 11]>
+        <style type=3D"text/css">
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]--><style type=3D"text/css">@media only screen and (min-wi=
+dth:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+      }</style><style media=3D"screen and (min-width:480px)">.moz-text-html=
+ .mj-column-per-100 { width:100% !important; max-width: 100%; }</style><sty=
+le type=3D"text/css">[owa] .mj-column-per-100 { width:100% !important; max-=
+width: 100%; }</style><style type=3D"text/css"></style></head><body style=
+=3D"word-spacing:normal;background-color:#F4F4F4;"><div style=3D"background=
+-color:#F4F4F4;"><!--[if mso | IE]><table align=3D"center" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"=
+width:600px;" width=3D"600" bgcolor=3D"#ffffff" ><tr><td style=3D"line-heig=
+ht:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=
+=3D"background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:6=
+00px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"background:#ffffff;background-color:#=
+ffffff;width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;pad=
+ding:20px 0px 20px 0px;text-align:center;"><!--[if mso | IE]><table role=3D=
+"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td cla=
+ss=3D"" style=3D"vertical-align:top;width:600px;" ><![endif]--><div class=
+=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-ali=
+gn:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"vertical-align:top;" width=3D"100%"><tbody><tr><td align=3D"lef=
+t" style=3D"font-size:0px;padding:0px 25px 0px 25px;padding-top:0px;padding=
+-bottom:0px;word-break:break-word;"><div style=3D"font-family:Arial, sans-s=
+erif;font-size:13px;letter-spacing:normal;line-height:1;text-align:left;col=
+or:#000000;"><h1 class=3D"text-build-content" data-testid=3D"Jz34KW14Tt" st=
+yle=3D"margin-top: 10px; margin-bottom: 10px; font-weight: normal;"><span s=
+tyle=3D"color:#55575d;font-family:Arial;font-size:20px;line-height:22px;"><=
+b>HP PA-RISC / IA64 hardware platform for Linux Debian, Gentoo, NetBSD, Ope=
+nBSD and HP-UX Unix</b></span></h1></div></td></tr><tr><td align=3D"left" s=
+tyle=3D"font-size:0px;padding:0px 25px 0px 25px;padding-top:0px;padding-bot=
+tom:0px;word-break:break-word;"><div style=3D"font-family:Arial, sans-serif=
+;font-size:14px;letter-spacing:normal;line-height:1;text-align:left;color:#=
+000000;"><p class=3D"text-build-content" data-testid=3D"xnDQWx__cn" style=
+=3D"margin: 10px 0; margin-top: 10px;"><span style=3D"color:#55575d;font-fa=
+mily:Arial;font-size:14px;line-height:22px;">Hi, I'm Jesse at Cypress Techn=
+ology Inc. We at Cypress sell and purchase HP hardware. Below are some link=
+s to HP PA-RISC and IA64 boxes that support the Linux Debian, Gentoo, NetBS=
+D, OpenBSD Linux and HP-UX Unix platforms. If you are in need of systems, f=
+eel free to email back with any question or requests. We also sell / buy al=
+l boxes and parts that HP made for the HP-UX / Unix (PA-RISC &amp; ia64) li=
+ne.</span></p><p class=3D"text-build-content" data-testid=3D"xnDQWx__cn" st=
+yle=3D"margin: 10px 0;"><span style=3D"color:#55575d;font-family:Arial;font=
+-size:14px;line-height:22px;"><b>PA-RISC</b></span></p><ul><li><a class=3D"=
+link-build-content" style=3D"color:inherit;; text-decoration: none;" target=
+=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AXUAAACMlygAAcjIYbYAAM5Ee0IAAYC=
+rYzIAnGIiABIoIQBjRcIS1AHO03IkSxq1YJfn6AqMjgASLds/1/6JsDDireJAF9Ev3b1I27Lg/a=
+HR0cDovL3d3dy5lYmF5LmNvbS9pdG0vMzg1MTMwNDk1NDU1"><span style=3D"color:#5557=
+5d;font-family:Arial;font-size:14px;line-height:22px;"><u>www.ebay.com/itm/=
+385130495455</u></span></a></li><li><a class=3D"link-build-content" style=
+=3D"color:inherit;; text-decoration: none;" target=3D"_blank" href=3D"http:=
+//xz01x.mjt.lu/lnk/AXUAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzIAnGIiABIoIQBjRcIS1AHO=
+03IkSxq1YJfn6AqMjgASLds/2/WUiBR43BJ6YD_y1cNsbLtQ/aHR0cDovL3d3dy5lYmF5LmNvbS=
+9pdG0vMzg0MjExMjI3OTE3"><span style=3D"color:#55575d;font-family:Arial;font=
+-size:14px;line-height:22px;"><u>www.ebay.com/itm/384211227917</u></span></=
+a></li></ul><p class=3D"text-build-content" data-testid=3D"xnDQWx__cn" styl=
+e=3D"margin: 10px 0;"><span style=3D"color:#55575d;font-family:Arial;font-s=
+ize:14px;line-height:22px;"><b>IA64</b></span></p><ul><li><a class=3D"link-=
+build-content" style=3D"color:inherit;; text-decoration: none;" target=3D"_=
+blank" href=3D"http://xz01x.mjt.lu/lnk/AXUAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzIA=
+nGIiABIoIQBjRcIS1AHO03IkSxq1YJfn6AqMjgASLds/3/cuwutrrisKvibDTljCzgfQ/aHR0cD=
+ovL3d3dy5lYmF5LmNvbS9pdG0vMzg0MjcyMDU5NDg4"><span style=3D"color:#55575d;fo=
+nt-family:Arial;font-size:14px;line-height:22px;"><u>www.ebay.com/itm/38427=
+2059488</u></span></a></li><li><a class=3D"link-build-content" style=3D"col=
+or:inherit;; text-decoration: none;" target=3D"_blank" href=3D"http://xz01x=
+.mjt.lu/lnk/AXUAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzIAnGIiABIoIQBjRcIS1AHO03IkSxq=
+1YJfn6AqMjgASLds/4/vOChyR838yxT2hkicyyQug/aHR0cDovL3d3dy5lYmF5LmNvbS9pdG0vM=
+zg0MjExMjI4MTc3"><span style=3D"color:#55575d;font-family:Arial;font-size:1=
+4px;line-height:22px;"><u>www.ebay.com/itm/384211228177</u></span></a></li>=
+</ul><p class=3D"text-build-content" data-testid=3D"xnDQWx__cn" style=3D"ma=
+rgin: 10px 0;"><span style=3D"color:#55575d;font-family:Arial;font-size:14p=
+x;line-height:22px;"><b>IA64 - For Telco </b>/ Data Center users / 48v DC</=
+span></p><ul><li><a class=3D"link-build-content" style=3D"color:inherit;; t=
+ext-decoration: none;" target=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AX=
+UAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzIAnGIiABIoIQBjRcIS1AHO03IkSxq1YJfn6AqMjgASL=
+ds/5/FbHLd9iU9lCNn8tNhHbbew/aHR0cDovL3d3dy5lYmF5LmNvbS9pdG0vMzg0OTY2ODI1NzA=
+0"><span style=3D"color:#55575d;font-family:Arial;font-size:14px;line-heigh=
+t:22px;"><u>www.ebay.com/itm/384966825704</u></span></a></li></ul><p class=
+=3D"text-build-content" data-testid=3D"xnDQWx__cn" style=3D"margin: 10px 0;=
+">&nbsp;</p><p class=3D"text-build-content" data-testid=3D"xnDQWx__cn" styl=
+e=3D"margin: 10px 0;"><span style=3D"color:#55575d;font-family:Arial;font-s=
+ize:14px;line-height:22px;">Thanks&nbsp;</span></p><p class=3D"text-build-c=
+ontent" data-testid=3D"xnDQWx__cn" style=3D"margin: 10px 0; margin-bottom: =
+10px;"><span style=3D"color:#55575d;font-family:Arial;font-size:14px;line-h=
+eight:22px;">Jesse Dougherty / Jesse@Cypress-Tech.com</span></p></div></td>=
+</tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->=
+</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><table =
+align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"=
+" role=3D"presentation" style=3D"width:600px;" width=3D"600" ><tr><td style=
+=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-=
+-><div style=3D"margin:0px auto;max-width:600px;"><table align=3D"center" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;paddin=
+g:20px 0px 20px 0px;text-align:center;"><!--[if mso | IE]><table role=3D"pr=
+esentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=
+=3D"" style=3D"vertical-align:top;width:600px;" ><![endif]--><div class=3D"=
+mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:l=
+eft;direction:ltr;display:inline-block;vertical-align:top;width:100%;"><tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"vertical-align:top;" width=3D"100%"><tbody><tr><td align=3D"left" s=
+tyle=3D"font-size:0px;padding:0px 20px 0px 20px;padding-top:0px;padding-bot=
+tom:0px;word-break:break-word;"><div style=3D"font-family:Arial, sans-serif=
+;font-size:13px;letter-spacing:normal;line-height:1;text-align:left;color:#=
+000000;"><p style=3D"text-align: center; margin: 10px 0; margin-top: 10px; =
+margin-bottom: 10px;"><span style=3D"line-height:22px;font-family:Arial;col=
+or:#55575d;text-align:center;font-size:13px;">This e-mail has been sent to =
+intel-gvt-dev@lists.freedesktop.org, <a href=3D"http://xz01x.mjt.lu/unsub2?=
+hl=3Den&amp;m=3DAXUAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzIAnGIiABIoIQBjRcIS1AHO03I=
+kSxq1YJfn6AqMjgASLds&amp;b=3D9498ed31&amp;e=3D779ec725&amp;x=3DT9ZTD0d7I8nW=
+exNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf9rVFgDeeiePdwrslDcy" style=3D"color:inheri=
+t;text-decoration:none;" target=3D"_blank">click here to unsubscribe</a>.</=
+span></p></div></td></tr></tbody></table></div><!--[if mso | IE]></td></tr>=
+</table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td>=
+</tr></table><![endif]--></div>
+<br/><img src=3D"http://xz01x.mjt.lu/oo/AXUAAACMlygAAcjIYbYAAM5Ee0IAAYCrYzI=
+AnGIiABIoIQBjRcIS1AHO03IkSxq1YJfn6AqMjgASLds/518bdcce/e.gif" height=3D"1" w=
+idth=3D"1" alt=3D"" border=3D"0" style=3D"height:1px;width:1px;border:0;"/>
+</body></html>=
 
-95O_ T0wer Ln. , Foster_City, California 
-944O4' U. S. A. 
-
-5533937. 8632607
-
-------=_Part_154_1083859927.1665515107695
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><a href="http://www.ventemay.monster/be74N2395wWQ8610L3f49Lf58D36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQFdodS7eGC1j0F5oT3wD/tailors-capacious" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start your Bathroom Remodel  Here</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 18pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:624px;height:865px;"><a href="http://www.ventemay.monster/be74N2395wWQ8610L3f49Lf58D36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQFdodS7eGC1j0F5oT3wD/tailors-capacious"><img alt="Find Affordable Bath Contractors Here" src="http://www.ventemay.monster/6836E2Hz395U7BaR12a3Gf4jbLf58T36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQFdodS7SoQ1AY05B2wDX/skidding-Mouton" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 832px;" /></a></span></span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put an end to communication, </span><a href="http://www.ventemay.monster/skidding-Mouton/9365e23M95BW8m610W3f4aLf58g36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQFdodS6CN10GT6ePp3wD" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin.Ahead.Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">95O TOWER LANE, Foster City, Calif<br /> 94404- US.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ece93b33-7fff-0e1c-8de3-1d3b37d4e783"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5533937-8632607</span></span></p>   
- <img src="http://www.ventemay.monster/Richland-Chesapeake/33c6g23FU95h85IJ12JM3Nf4cWf58v36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQFdodS7SjX10mY6nP1JwD" alt=""/></body>
-</html>
-
-------=_Part_154_1083859927.1665515107695--
+--=-xsdjpNxWuY6X1oK9ZO3h--
 
