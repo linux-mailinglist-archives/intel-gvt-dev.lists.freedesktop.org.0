@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD7555FA939
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Oct 2022 02:19:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 862C25FA9EA
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Oct 2022 03:21:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A35E510E75D;
-	Tue, 11 Oct 2022 00:19:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5005210E76E;
+	Tue, 11 Oct 2022 01:20:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 11 Oct 2022 00:19:13 UTC
-Received: from mail.baminks.click (unknown [77.90.188.151])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1918410E756
+X-Greylist: delayed 354 seconds by postgrey-1.36 at gabe;
+ Tue, 11 Oct 2022 01:20:35 UTC
+Received: from mail.outsbam.click (unknown [173.244.43.162])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 640B110E76E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 11 Oct 2022 00:19:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=baminks.click;
+ Tue, 11 Oct 2022 01:20:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=outsbam.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=mayra-lybert@baminks.click; bh=erXUjqrlTmDZ1nMJyK32iku7HGU=;
- b=Rtjy0OMBDviNqnDWiranaqa463OZAjKEbG2X5V/RBleURoODRWW92Jh7TjiH3RtGufzwPWz3QznM
- WZSk/6OCfN6OMf2UgZ/6laM7oH6rSywjMA0ZjmjeH3WgWyT9cIFf/dGROV9x+Yggofd65TJ07h5q
- qFEV3kqEMKf36ZJblJ8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=baminks.click;
- b=K7X99WLzJRzFDYg2hqR8MfMP7xmOB3B16jDq5QoCbUhzgzAXbi4NSSRIwksO+onBZ9K+PXMsqKIl
- Y/a/4F3Bs5Y56nuuw9PR8+oIQuRiw+EJYfVmenAchUiQ1+mxWe7gzqmvW6NxrnCSoBPC8yKrUhVa
- M8YKoLWnhGhbxJ1qGNQ=;
-Received: by mail.baminks.click id h8j5oc0001ga for
+ i=leticia-partin@outsbam.click; 
+ bh=6klWkEkIO3kAxK1TPZlCzAFIyuE=;
+ b=bv7RMarHLziEsS7IU3dx2Y3Bg/m0vCS090l2UcBiJiaMnx1ll0JqlAa7MZ4EC4sOOT3x57lyu5e3
+ DAaFNI6o93wH/yriETtfBxtBVlj0Ncw2IRTJei4+wJ/SPFNIwtWHjQOFwboHxo9lihP+Z0YaAD33
+ d3sYukbZ5kCpE8g1z8k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=outsbam.click;
+ b=q/L4EXiRDxolDvbfhroylpSQkKVBC2C7LTGZRZFzktVKIPg5L89p8kpSwKnDaB1bqPeeS+4GX9Wg
+ SJFxP9wn/za24FbqfMvQ7+pe0Clo8hySXga6ZOoruGj368HJyohYpGGRVKhrB7kf73p5ZnwF0ZJk
+ TxgxuYqTa6ewASLsCWM=;
+Received: by mail.outsbam.click id h8jcug0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 10 Oct 2022 21:39:06 -0400 (envelope-from
- <mayra-lybert-intel+2Dgvt+2Ddev=lists.freedesktop.org@baminks.click>)
-Date: Mon, 10 Oct 2022 21:39:06 -0400
-From: Mayra Lybert <mayra-lybert@baminks.click>
+ Mon, 10 Oct 2022 22:37:23 -0400 (envelope-from
+ <leticia-partin-intel+2Dgvt+2Ddev=lists.freedesktop.org@outsbam.click>)
+Date: Mon, 10 Oct 2022 22:37:23 -0400
+From: Leticia Partin <leticia-partin@outsbam.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Lowes Customer,
- Claim Your Lowes Bonus  intel-gvt-dev@lists.freedesktop.org
+Subject: Take the Lowes Survey. Select a Bonus up to $100  #3208154
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_736_184352057.1665446943896"
-Message-ID: <0.0.0.51.1D8DD124051E6D6.3E6739@mail.baminks.click>
+ boundary="----=_Part_466_1175592753.1665450448608"
+Message-ID: <0.0.0.32.1D8DD1A64A0F0B0.7AD178@mail.outsbam.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,41 +53,34 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_736_184352057.1665446943896
+------=_Part_466_1175592753.1665450448608
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
-Congratulations Lowes Customer, Claim Your Lowes Bonus =20
+Take the Lowes Survey. Select a Bonus up to $100  #5566521
 
-LOWES
+LOWES Customer Survey
 
-Dear Lowe's Shopper,  intel-gvt-dev@lists.freedesktop.org
+Begin Here to Claim your Lowes Rewards up to $100~http://www.outsbam.click/de56Op239W5w8KC612or3fG0e_f49w36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQcdo997Dssn10F6H0@wDX/bombarded-angel
 
- We would like to offer you a exclusive opportunity to receive a brand-new STANLEY=
-=C2=AE 170 piece Mixed Tool Set! To claim your gift, simply complete the =
-{{short|brief|quick} survey about your experience with LOWES.=20
+You have been picked to contribute to our confidential marketing survey about LOWES. 
+ 
+Take this 1minute questionnaire and we'll offer you an Exclusive Bonus worth up to $1OO. oo. 
 
- Begin Here to Answer a Few Questions about Lowes,http://www.baminks.click/exempted-cheapens/5ee5Nq2395jI86I11p3f0N8if48u36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQxdo9o5v1Hx06NJwyDA
+Click Here for Your Lowes Bonus up to $100~http://www.outsbam.click/de56Op239W5w8KC612or3fG0e_f49w36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQcdo997Dssn10F6H0@wDX/bombarded-angel
 
-Attention! The Promotion Closes in 2 Days.=20
-
-=20
-
-This e-mail was delivered to intel-gvt-dev@lists.freedesktop.org
+Hustle! Offer Expires in 2 Days.
 
 
 
 
 
+Our e-mail content was sent to intel-gvt-dev@lists.freedesktop.org
+126.  E.   23rd ST.  New York NY.  1oo1o.  USA 
+To break off communication, Continue.Ahead~http://www.outsbam.click/guesswork-markets/e045j23B95O86Nt11F3fx0cXf49K36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQcdo997e10LpVX6cM@wDO
+2514023~3208154
 
-
-_96 Mowat_ Av, T0R0NT0 ONT.  M4K3Kl CN
-
-To edit your communication elections, Go_Over_Here,http://www.baminks.click/eb74V2395wAx8611L3fv09tf48T36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQxdo9o5K10FD6Ml1qwD/Francesca-broadness
-
-3701067,67034528
-
-------=_Part_736_184352057.1665446943896
+------=_Part_466_1175592753.1665450448608
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 
@@ -95,121 +88,114 @@ Content-Transfer-Encoding: quoted-printable
  <head>=20
   <title></title>=20
  </head>=20
- <body>
-  &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt; text-align: center;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 36pt; font-family: Georgia;=
- color: rgb(0, 0, 255); background-color: rgb(0, 0, 255); font-variant-nume=
-ric: normal; font-variant-east-asian: normal; vertical-align: baseline; whi=
-te-space: pre-wrap;">3701067</span><span style=3D"font-size: 36p=
-t; font-family: Impact; color: rgb(255, 255, 255); background-color: rgb(0,=
- 0, 255); font-variant-numeric: normal; font-variant-east-asian: normal; ve=
-rtical-align: baseline; white-space: pre-wrap;">LOWES</span><span style=3D"=
-font-size: 36pt; font-family: Georgia; color: rgb(0, 0, 255); background-co=
-lor: rgb(0, 0, 255); font-variant-numeric: normal; font-variant-east-asian:=
- normal; vertical-align: baseline; white-space: pre-wrap;">=
-7599841</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
-olor: rgb(36, 36, 36); background-color: transparent; font-weight: 700; fon=
-t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
- baseline; white-space: pre-wrap;">Dear Lowe's Shopper,</span></span></p>=
-=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 13.5pt; font-family: Arial;=
- color: rgb(48, 48, 48); background-color: transparent; font-variant-numeri=
-c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
--space: pre-wrap;">We would like to offer you a extraordinary opportunity to receive =
-a new </span><span style=3D"font-size: 13.5pt; font-family: Arial; colo=
-r: rgb(36, 36, 36); background-color: transparent; font-weight: 700; font-v=
-ariant-numeric: normal; font-variant-east-asian: normal; vertical-align: ba=
-seline; white-space: pre-wrap;">STANLEY&reg; 170 piece Mixed Tool Set!</spa=
-n><span style=3D"font-size: 13.5pt; font-family: Arial; color: rgb(48, 48, =
-48); background-color: transparent; font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> =
-To claim your prize, simply </span><span style=3D"font-size: 13.5pt; font=
--family: Arial; color: rgb(32, 33, 36); font-variant-numeric: normal; font-=
-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap=
-;">finish the {{short|brief|quick} survey about</span><span style=3D"font-=
-size: 13.5pt; font-family: Arial; color: rgb(48, 48, 48); background-color:=
- transparent; font-variant-numeric: normal; font-variant-east-asian: normal=
-; vertical-align: baseline; white-space: pre-wrap;"> your experience with <=
-/span><span style=3D"font-size: 18pt; font-family: Impact; color: rgb(0, 0,=
- 255); font-variant-numeric: normal; font-variant-east-asian: normal; verti=
-cal-align: baseline; white-space: pre-wrap;">LOWES.</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
+ <body>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 30pt; font-family: &quot;Archivo =
+Black&quot;, sans-serif; color: rgb(17, 85, 204); font-weight: 700; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;">LOWES</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 18pt; font-family: Arial; font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;">Shopper Survey</span></spa=
+n></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><a href=3D"http://www.outsbam.click/Fairchild-questionable/5944K2395lgJ8612GXQ3f0bUf49w36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQcdo995p1_0K5d0wD0" style=3D"text-decoration-line: none;=
+"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
+4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
+vertical-align: baseline; white-space: pre-wrap;">Begin Here to Claim your Lowes Rewards up to $100</span>=
+</a></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 18pt; font-family: Arial; font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;"><span style=3D"border:none=
+;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href=3D=
+"http://www.outsbam.click/Fairchild-questionable/5944K2395lgJ8612GXQ3f0bUf49w36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQcdo995p1_0K5d0wD0"><img alt=3D"[lowes_cta}" src=3D"http://www.outsbam.click/threading-resolved/e224y2395zD7al12Y3f0dODHf49g36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQcdo997rlC10JT6bX2@wD" style=3D"margin-l=
+eft: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></spa=
+n></span></p> &nbsp;=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
-href=3D"http://www.baminks.click/Englishizes-Antietam/abc6w2z3q95nR86K10d3f08zf48H36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQxdo9o7ICzS10B6QAJwD1" style=3D"text-decoration-line: none;"><span style=3D"co=
-lor:#FFFFFF;"><span style=3D"font-size: 18pt; font-family: Arial; font-vari=
-ant-numeric: normal; font-variant-east-asian: normal; text-decoration-line:=
- underline; text-decoration-skip-ink: none; vertical-align: baseline; white=
--space: pre-wrap;"><span style=3D"background-color:#0000FF;">=
-Begin Here to Answer a Few Questions about Lowes</span></span></span></a></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
-olor: rgb(235, 0, 0); background-color: transparent; font-weight: 700; font=
--variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
-baseline; white-space: pre-wrap;">Attention!</span><span style=3D"font-size=
-: 18pt; font-family: Arial; color: rgb(36, 36, 36); background-color: trans=
-parent; font-weight: 700; font-variant-numeric: normal; font-variant-east-a=
-sian: normal; vertical-align: baseline; white-space: pre-wrap;"> </span><sp=
-an style=3D"font-size: 14pt; font-family: Arial; color: rgb(36, 36, 36); ba=
-ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
-; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
-re-wrap;">The </span><span style=3D"font-size: 14pt; font-family: Arial; ba=
-ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
-; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
-re-wrap;">Special Offer Goes Away in 3 Days.</span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
-top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
-0a-9e87-81fc486fd163">&nbsp;</span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 14pt; font-family: Arial; font-variant-numeric: norm=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 16pt; font-family: Arial; font-variant-numeric: norm=
 al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">This e-mail was delivered to intel-gvt-dev@lists.freedesktop.org</span></span>=
-</p>=20
+ pre-wrap;">You have been picked to take part in our confidential opinion survey abo=
+ut </span><span style=3D"font-size: 16pt; font-family: &quot;Archivo Black&=
+quot;, sans-serif; color: rgb(17, 85, 204); font-weight: 700; font-variant-=
+numeric: normal; font-variant-east-asian: normal; vertical-align: baseline;=
+ white-space: pre-wrap;">LOWES</span><span style=3D"font-size: 16pt; font-f=
+amily: Arial; font-variant-numeric: normal; font-variant-east-asian: normal=
+; vertical-align: baseline; white-space: pre-wrap;">.</span></span></p> &nb=
+sp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 16pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">Take this 1minute survey and we'll offer you an </span><spa=
+n style=3D"font-size: 16pt; font-family: Arial; font-weight: 700; font-vari=
+ant-numeric: normal; font-variant-east-asian: normal; vertical-align: basel=
+ine; white-space: pre-wrap;">Exclusive Bonus</span><span style=3D"font-si=
+ze: 16pt; font-family: Arial; font-variant-numeric: normal; font-variant-ea=
+st-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> worth =
+up to </span><span style=3D"font-size: 16pt; font-family: Arial; font-weigh=
+t: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
+ical-align: baseline; white-space: pre-wrap;">$1OO.oo</span><span style=3D=
+"font-size: 16pt; font-family: Arial; font-variant-numeric: normal; font-va=
+riant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"=
+>.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><a href=3D"http://www.outsbam.click/Fairchild-questionable/5944K2395lgJ8612GXQ3f0bUf49w36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQcdo995p1_0K5d0wD0" style=3D"text-decoration-line: none;=
+"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
+4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
+vertical-align: baseline; white-space: pre-wrap;">Click Here for Your Lowes Bonus up to $100</span></a></s=
+pan></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 14pt; font-family: Arial; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;">Hustle! Offer Expires in 2 Days.</span></span></p>=20
+  <br />=20
+  <br />=20
+  <br />=20
   <br />=20
   <br />=20
   <br />=20
   <br />=20
   <br /> &nbsp;=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
 al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">96- Mowat_ AV, Toronto_ ON M4K3K1 CA<=
-/span></span></p>=20
+ pre-wrap;">Our e-mail content was sent to intel-gvt-dev@lists.freedesktop.org</span></span>=
+</p>=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
-href=3D"http://www.baminks.click/decimation-Proust/d146G2A39P5s8mB611A3f09WHf48Q36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQxdo9o6y1Jmp06XlTwDz" style=3D"text-decoration-line: none;"><span style=3D"fo=
-nt-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
-meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
-line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
-: pre-wrap;">To edit your communication elections,</span></a><span style=3D"font-size: 10pt; font-f=
-amily: Arial; font-variant-numeric: normal; font-variant-east-asian: normal=
-; vertical-align: baseline; white-space: pre-wrap;"> Go_Over_Here</span></s=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">I26- EAST&nbsp; 23rd Street New-York NY. =
+IOOIO' US.&nbsp;</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">To break off communication, </span><a href=3D"http://www.outsbam.click/loosened-Sukarno/35a6ixj2395aRB8612r3tlf0cjf49p36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQcdo997G1k0mUs6ujwDL3" style=3D"text-decor=
+ation-line: none;"><span style=3D"font-size: 11pt; font-family: Arial; colo=
+r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
+ normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
+ertical-align: baseline; white-space: pre-wrap;">Continue.Ahead</span></a></s=
 pan></p>=20
   <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
 al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">5102248:67034528</span></span></p>  =20
- <img src=3D"http://www.baminks.click/b6f4N2395KlA8512z3f0qaoOf48T36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQxdo9o7jX10KxM5mJOwD/crisscross-ayes" alt=3D""/></body>
+ pre-wrap;">5566521.3208154</span></span></p>  =20
+ <img src=3D"http://www.outsbam.click/infringing-medallion/13e5Hx2395E85Gw10C3f0fnf49C36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQcdo996R10tKl6dAwODB" alt=3D""/></body>
 </html>
 
-------=_Part_736_184352057.1665446943896--
+------=_Part_466_1175592753.1665450448608--
 
