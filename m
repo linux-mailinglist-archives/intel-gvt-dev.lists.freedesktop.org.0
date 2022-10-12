@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 614725FC9CB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Oct 2022 19:19:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 816555FC904
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Oct 2022 18:19:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 25F0010E6F6;
-	Wed, 12 Oct 2022 17:19:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 47CE310E682;
+	Wed, 12 Oct 2022 16:19:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 12 Oct 2022 17:19:02 UTC
-Received: from mail.groundsfar.monster (unknown [173.244.43.70])
- by gabe.freedesktop.org (Postfix) with ESMTP id D06E010E6E3
+ Wed, 12 Oct 2022 16:19:21 UTC
+Received: from mail.fetalfar.monster (unknown [173.244.43.29])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6538A10E682
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 17:19:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=groundsfar.monster; 
+ Wed, 12 Oct 2022 16:19:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fetalfar.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=buote_camille@groundsfar.monster; 
- bh=+9GqpvWjMJT0GU4zzgim5Ive12U=;
- b=SyiD0+T+YkvlhEB0Tt+GiY9FSB6zS1SxwYbe4X5vfobiT1p26lSQLi6xH8OgBDzbnBB9wHiz91I3
- 4g+/BKp8yxEwFhrvGCXKjFo5zMNPegOgaqaQrP0L5/w2d7OsTi5ydrQKg8G5SXqXLyMVoP7BjoIL
- aKXGHTw+P9IY4vWXrGE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=groundsfar.monster; 
- b=OFgwmm5C9gYhbz9nc+5VnfQ3xHRzxKmOkrifvX7L7y4waxGUUTnrjEHyLIBhl8UTKAT5CO9+83Hd
- V14wQnnWfRNUdqRzUr8uwmRButsS3XlqODBw4kwuYEY8B2u+9gegcUr+11gGE01sUBleEziemHWx
- 337MeO9w/4O1b7XKdbs=;
-Received: by mail.groundsfar.monster id h8rrgc0001gk for
+ i=marissa_burgett@fetalfar.monster; 
+ bh=EEkMxCghisk7L43oxLi1j/iVfbk=;
+ b=ozbw9l6RWGQX8ndjzDND+9uPIC/kgO05Ngyh6UkIeLGDjbwGVbcVsYIS2TIzyDmCaDXkEk5m4x4t
+ ZxbD73iHPbDkU5LXJWmSyFn0Swx/5F6QCsxB5gp3n4MVkxf9l7h3DnKHBtZxXDsYQ3c3BYaTi6kV
+ Smxt7Y2K8NtPf9VeeHc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fetalfar.monster;
+ b=gmh1IieqDQM5j9Ml16lQrzzGJyCBwMQWkyUPE5ExyCCo0S60urzwrkJiPT3w+Swd6TmtW0ACJXg9
+ CsmvcPqdrpCgHuz4dicyCwb5Qp4kh+APp6W1MzjeSyC91cQZbZfLuIslrrDvysw78UqLTIWpPY6N
+ CbWd2wlVeH8ZIFMFMB0=;
+Received: by mail.fetalfar.monster id h8rv0m0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 13:08:34 -0400 (envelope-from
- <buote_camille-intel+2Dgvt+2Ddev=lists.freedesktop.org@groundsfar.monster>)
-Date: Wed, 12 Oct 2022 13:08:34 -0400
-From: Camille Buote <buote_camille@groundsfar.monster>
+ Wed, 12 Oct 2022 13:38:30 -0400 (envelope-from
+ <marissa_burgett-intel+2Dgvt+2Ddev=lists.freedesktop.org@fetalfar.monster>)
+Date: Wed, 12 Oct 2022 13:38:30 -0400
+From: Marissa Burgett <marissa_burgett@fetalfar.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Top home project pros compete for your job
+Subject: Lowes Customer,
+ Your Stanley Tool Kit from Lowes intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_661_1673216041.1665594505509"
-Message-ID: <0.0.0.49.1D8DE5D43402898.43A8FE@mail.groundsfar.monster>
+ boundary="----=_Part_700_75291618.1665590900416"
+Message-ID: <0.0.0.4D.1D8DE6171997CE0.6DC480@mail.fetalfar.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,27 +54,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_661_1673216041.1665594505509
+------=_Part_700_75291618.1665590900416
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Top home project pros compete for your job
+Lowes Customer, Your Stanley Tool Kit from Lowes  intel-gvt-dev@lists.freedesktop.org
 
-Go Here to Get Multiple Quotes on Your Job:http://www.groundsfar.monster/1974E2395or8_610G3f92nf6aI36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkdoRR6A1yV0h6YOP@wD/nuclide-evading
-
-Search for Pros Then Get Quotes and Start your Project This Summer. 
+Tap Here to Claim a Stanley Tool Set from Lowes:http://www.fetalfar.monster/purring-keels/8826GL23W95dm8q612B3foW8eUf69M36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQTdoRQ5U1M0y5hzwDq
 
 
 
+-96 Mowat.  Ave, Toronto' ONT.  M4K 3K1 CANADA
 
-I2I6 BR0ADWAY,  FL00R 2, 
-NewYork, NEW YORK 
-10001_
-To cease messages, Start_Here:http://www.groundsfar.monster/commoners-sizing/de65wk2395B8R6u12V3f93ASrf6aX36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkdoRR7WRUj10U6dlwLDP
-Our email was directed to intel-gvt-dev@lists.freedesktop.org
-4313815:13739048
+To edit your communication options, Go.This.Way:http://www.fetalfar.monster/contributory-innovations/4a44s2395MJ86R11Mq3f8fhf69J36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQTdoRQ5j10PZ6QNA1wD
 
-------=_Part_661_1673216041.1665594505509
+This notification was sent to intel-gvt-dev@lists.freedesktop.org
+
+5171971,74327901
+
+------=_Part_700_75291618.1665590900416
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -83,21 +81,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><a href="http://www.groundsfar.monster/headway-voyaging/8826lqp2395q86sF11gj3f92Jf6aQ36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkdoRR5C10tO6w10pwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Get Multiple Quotes on Your Job</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:795px;"><a href="http://www.groundsfar.monster/headway-voyaging/8826lqp2395q86sF11gj3f92Jf6aQ36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkdoRR5C10tO6w10pwD"><img alt="Compare Angi's Project Pros to Save" src="http://www.groundsfar.monster/4df6z2p39n5ng7Ra11k3Lf94Kf6aI36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQkdoRR7Joi10hK5B21wD/commoners-sizing" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 795px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Find a Pro Then Get Prices and Get Your Project Started This Month.</span></span></p> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.fetalfar.monster/31d4g2395k8B6W10V3f8eqf69o36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQTdoRQ7liM_G106qqwlDU/repasts-Dorset" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Claim a Stanley Tool Set from Lowes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.fetalfar.monster/31d4g2395k8B6W10V3f8eqf69o36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQTdoRQ7liM_G106qqwlDU/repasts-Dorset" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.fetalfar.monster/5935Iy2395L7anO11q3fF90jf69x36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQTdoRQ5a1kJ06STXw2D/press-cottager" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Exclusive Offer Is Done in 2 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I2I6' Broadway,&nbsp; FL00R TWO,<br /> NewYork, NEW YORK 1OOO1'</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease messages,<a href="http://www.groundsfar.monster/1014p2395AAK8610e3f93Nf6aL36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQkdoRR7l1YgsM05ppwJD/reset-buggers"> Start_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4313815.13739048</span></span></p>   
- <img src="http://www.groundsfar.monster/c235Y2C395r8l5A11jI3f95gf6ar36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkdoRR6uyO1L06AqwMAD/commoners-sizing" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96. MOWAT' Ave., Toronto- Ontario M4K3K1 CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To edit your communication options,<a href="http://www.fetalfar.monster/5cf5jm2395d86Li12g3fI8fMLf69J36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQTdoRQ6Fpl1_05d@wDL/repasts-Dorset"> Go.This.Way</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notification was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5171971.74327901</span></span></p>   
+ <img src="http://www.fetalfar.monster/sanctioned-pretension/6c05S239_5hjK8511P3f91lVf69k36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQTdoRQ7u1xCj0J5BjwLD" alt=""/></body>
 </html>
 
-------=_Part_661_1673216041.1665594505509--
+------=_Part_700_75291618.1665590900416--
 
