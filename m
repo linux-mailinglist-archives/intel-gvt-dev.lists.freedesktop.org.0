@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7432E5FBF7C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Oct 2022 05:22:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A9BE5FBFD9
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Oct 2022 06:19:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2149B10E299;
-	Wed, 12 Oct 2022 03:22:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 282E110E2C9;
+	Wed, 12 Oct 2022 04:19:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 12 Oct 2022 03:22:06 UTC
-Received: from mail.maygrants.click (unknown [173.244.43.93])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9356910E299
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Wed, 12 Oct 2022 04:18:55 UTC
+Received: from mail.fearsmay.click (unknown [77.90.188.94])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 66DB510E2EE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 03:22:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=maygrants.click; 
+ Wed, 12 Oct 2022 04:18:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fearsmay.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=marcia.langarica@maygrants.click; 
- bh=Q1CzlrFqwr5LDWApLvUXQfn5EKs=;
- b=o/l/XEByUvC2N5xYB8fwYIUWT6Fca+ahRF8WjcgD1AhiRZqWxLlaLMHVKiXKni0li07tdpl06oMd
- Q4rpdJeI8XM/hqU7yc13ItK4vioG2Dh+1BN1jmVosHU0NGMws4F/ElOCBxEelNY6PjcyWPcWdxi6
- k9Hq33b/4pMr8L1r8cY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maygrants.click;
- b=RjRsBJIBQx7WLjlthB/hoSBfyJSvfDsRUpIT3mYoT5AeLxdcU45/meAQv3VTaIe9IZPn+688BeZa
- im9s/NKw4d2dawNIiTYIKgxKtp1y4dvj3dKNnnoC5kzzsJ7wkBtB7oBvnMJxDVkoaQ2hQVAdTawZ
- +JIBdaE8TNub6yxkFgg=;
-Received: by mail.maygrants.click id h8opds0001go for
+ i=marisa_bijan@fearsmay.click; 
+ bh=jyfffAagzFpnPEd9cpyhn1xLYvo=;
+ b=BgEuXD/WDuCt39qSkqPBz+k/hWZ7rPgsC9s4YEAN7WyvmOLOfuFMIRpt02qR0fZm1aphkYVJudtR
+ obXFu8nzueTW2OgDZreJwd8HX/0rHtCd8US2pUY831ng9yPP+Kjucw9S/qUarxqu+DreH6ENbHpS
+ iZZcjZ35wGFy1CVDnN0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fearsmay.click;
+ b=JPU6DWLGq+yEshe+1/wKRk3v5oHJFo1ZuTzxHHqFdrggMhX9gZIhLYXfHpZPRkrrOVS5MB8ufP/W
+ sS3eNJPlURCWAp3DYHyu1zOSs2doav4g/tpAXzIajCmdeZLiVpYxlwUgB00FBptU5lCOOJZm0MCg
+ nyarneItKWuSj0T/+FE=;
+Received: by mail.fearsmay.click id h8p02u0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 11 Oct 2022 23:04:20 -0400 (envelope-from
- <marcia.langarica-intel+2Dgvt+2Ddev=lists.freedesktop.org@maygrants.click>)
-Date: Tue, 11 Oct 2022 23:04:20 -0400
-From: Marcia Langarica <marcia.langarica@maygrants.click>
+ Wed, 12 Oct 2022 00:05:56 -0400 (envelope-from
+ <marisa_bijan-intel+2Dgvt+2Ddev=lists.freedesktop.org@fearsmay.click>)
+Date: Wed, 12 Oct 2022 00:05:56 -0400
+From: Marisa Bijan <marisa_bijan@fearsmay.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get Up to $100 Bonus for your feedback about Kroger
+Subject: The Lowes Opinion Survey Bonus up to $1OO  #2532303
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_49_1113151981.1665543853360"
-Message-ID: <0.0.0.5.1D8DDE752B69ABC.5813F5@mail.maygrants.click>
+ boundary="----=_Part_217_1610307172.1665547540784"
+Message-ID: <0.0.0.18.1D8DDEFEDDDF000.1DBB7B@mail.fearsmay.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,47 +53,149 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_49_1113151981.1665543853360
+------=_Part_217_1610307172.1665547540784
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Get Up to $100 Bonus for your feedback about Kroger
+The Lowes Opinion Survey Bonus up to $1OO  #24383696
 
-Start Here to Claim your Kroger Rewards up to $1OO,http://www.maygrants.click/9e96U239tP5J86Wq11rW3f69Of60L36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQvdoQQ7Q1kBuj06KNlWwD/scenic-slater
+LOWES Member Survey
+
+Start Here to Get Up To $100 Reward,http://www.fearsmay.click/6dd6s2G3l95Rs8A610Y3f70of61F36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQhdoQR5FBI105DPwUD/skirmisher-immaturity
+
+You have been selected to contribute to our anonymous promotional survey about LOWES. 
+ 
+Take this 1minute poll and we'll offer you an Exclusive Bonus worth up to $100. 
+
+Visit Here to take the survey & Claim a Reward,http://www.fearsmay.click/6dd6s2G3l95Rs8A610Y3f70of61F36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQhdoQR5FBI105DPwUD/skirmisher-immaturity
+
+Be Quick! Offer Goes Away in 2 Days.
 
 
 
 
-I15 EAST  Twenty-Third STREET New York New York 10010- U. S. A.  
 
-To stop e-mail, Visit.Here.Now,http://www.maygrants.click/2ff5u239A5Q86ln10z3f6awf60S36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQvdoQQ7n1m_P0G5pBwOD/Perth-graduation
+This email was delivered to intel-gvt-dev@lists.freedesktop.org
+I26- E  23rd ST.  NewYork New. York lOOlO' US.  
+To end communication, Continue.Ahead,http://www.fearsmay.click/weasels-canonically/6zc4K2395S8I6k12r3of6eWwf61A36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhdoQR6jgT1_05dWJwD
+4503337,2532303
 
-This notification was designated for intel-gvt-dev@lists.freedesktop.org
-
-6577149,69629732
-
-------=_Part_49_1113151981.1665543853360
+------=_Part_217_1610307172.1665547540784
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.maygrants.click/Saxons-Carlyle/2885i239w5e8_6Z10t3f69yf60P36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQvdoQQ5C_10u5bOzwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to Claim your Kroger Rewards up to $1OO</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.maygrants.click/Saxons-Carlyle/2885i239w5e8_6Z10t3f69yf60P36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQvdoQQ5C_10u5bOzwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:326px;"><img alt="Click Here to Take the Consumer Survey" src="http://www.maygrants.click/6834v2395Iy7aZ10g3f6bif60D36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQvdoQQ6gsQ1H05gqwOD/Perth-graduation" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 326px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Bonus Is Done in 3 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I15. East&nbsp; Twenty-Third ST. NEW-YORK NY. 1OO1O US&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To stop e-mail, </span><a href="http://www.maygrants.click/1015sK2395k86MK12mNK3f6aDf60Y36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQvdoQQ7POiCL106NLw@LD/scenic-slater" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit.Here.Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notification was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6577149:69629732</span></span></p>   
- <img src="http://www.maygrants.click/Paula-hauls/ada6B2VW395B8Z5S10q3f6chf60V36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQvdoQQ7H1S0rmm6OP@UwD" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 30pt; font-family: &quot;Archivo =
+Black&quot;, sans-serif; color: rgb(17, 85, 204); font-weight: 700; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;">LOWES</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 18pt; font-family: Arial; font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;">Shopper Survey</span></spa=
+n></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><a href=3D"http://www.fearsmay.click/resented-disjoint/f125dh2395F8HK610m3f6dzf61R36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQhdoQR5oB10m5n0@wD" style=3D"text-decoration-line: none;=
+"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
+4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
+vertical-align: baseline; white-space: pre-wrap;">Start Here to Get Up To $100 Reward</span>=
+</a></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 18pt; font-family: Arial; font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;"><span style=3D"border:none=
+;display:inline-block;overflow:hidden;width:600px;height:333px;"><a href=3D=
+"http://www.fearsmay.click/resented-disjoint/f125dh2395F8HK610m3f6dzf61R36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQhdoQR5oB10m5n0@wD"><img alt=3D"[lowes_cta}" src=3D"http://www.fearsmay.click/6295o239I5D7MXa10G3f6ftf61x36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQhdoQR7GDwC1z05Y3wDq/dizziness-jolts" style=3D"margin-l=
+eft: 0px; margin-top: 0px; width: 600px; height: 333px;" /></a></span></spa=
+n></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 16pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">You have been picked to participate in our incognito opinion survey abo=
+ut </span><span style=3D"font-size: 16pt; font-family: &quot;Archivo Black&=
+quot;, sans-serif; color: rgb(17, 85, 204); font-weight: 700; font-variant-=
+numeric: normal; font-variant-east-asian: normal; vertical-align: baseline;=
+ white-space: pre-wrap;">LOWES</span><span style=3D"font-size: 16pt; font-f=
+amily: Arial; font-variant-numeric: normal; font-variant-east-asian: normal=
+; vertical-align: baseline; white-space: pre-wrap;">.</span></span></p> &nb=
+sp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 16pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">Finish this 30 second poll and we'll offer you an </span><spa=
+n style=3D"font-size: 16pt; font-family: Arial; font-weight: 700; font-vari=
+ant-numeric: normal; font-variant-east-asian: normal; vertical-align: basel=
+ine; white-space: pre-wrap;">Exclusive Gift</span><span style=3D"font-si=
+ze: 16pt; font-family: Arial; font-variant-numeric: normal; font-variant-ea=
+st-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> worth =
+up to </span><span style=3D"font-size: 16pt; font-family: Arial; font-weigh=
+t: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vert=
+ical-align: baseline; white-space: pre-wrap;">$1OO</span><span style=3D=
+"font-size: 16pt; font-family: Arial; font-variant-numeric: normal; font-va=
+riant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"=
+>.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><a href=3D"http://www.fearsmay.click/resented-disjoint/f125dh2395F8HK610m3f6dzf61R36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQhdoQR5oB10m5n0@wD" style=3D"text-decoration-line: none;=
+"><span style=3D"font-size: 18pt; font-family: Arial; color: rgb(17, 85, 20=
+4); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; text-decoration-line: underline; text-decoration-skip-ink: none; =
+vertical-align: baseline; white-space: pre-wrap;">Visit Here to take the survey & Claim a Reward</span></a></s=
+pan></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976=
+c-2db51f6839b8"><span style=3D"font-size: 14pt; font-family: Arial; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;">Be Quick! Offer Goes Away in 2 Days.</span></span></p>=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br /> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">This email was delivered to intel-gvt-dev@lists.freedesktop.org</span></span>=
+</p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">126. E.&nbsp; TWENTY-THIRD St. NEW.YORK New York =
+1oo1o United States&nbsp;</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">To end communication, </span><a href=3D"http://www.fearsmay.click/Whiteleaf-belie/5ee4Q2395Wg8u612Xo3fg6eWf61Q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQhdoQR7R1UgMm06MWMwD@" style=3D"text-decor=
+ation-line: none;"><span style=3D"font-size: 11pt; font-family: Arial; colo=
+r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
+ normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
+ertical-align: baseline; white-space: pre-wrap;">Continue.Ahead</span></a></s=
+pan></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-06d3527b-7fff-792e-976c-2db51f6839b8"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">24383696.2532303</span></span></p>  =20
+ <img src=3D"http://www.fearsmay.click/pulsed-puzzling/J124m2395fGX8512aP3fy71Df61x36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQhdoQR5E10Ql5v@wDl" alt=3D""/></body>
 </html>
 
-------=_Part_49_1113151981.1665543853360--
+------=_Part_217_1610307172.1665547540784--
 
