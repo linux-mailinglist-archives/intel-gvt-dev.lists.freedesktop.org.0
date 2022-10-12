@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3570C5FC725
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Oct 2022 16:21:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 614725FC9CB
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 12 Oct 2022 19:19:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CA9B810E2D0;
-	Wed, 12 Oct 2022 14:21:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 25F0010E6F6;
+	Wed, 12 Oct 2022 17:19:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Wed, 12 Oct 2022 14:21:49 UTC
-Received: from mail.swungsfar.monster (unknown [66.63.186.32])
- by gabe.freedesktop.org (Postfix) with ESMTP id 40A7710E2C8
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 12 Oct 2022 17:19:02 UTC
+Received: from mail.groundsfar.monster (unknown [173.244.43.70])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D06E010E6E3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 14:21:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=swungsfar.monster;
+ Wed, 12 Oct 2022 17:19:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=groundsfar.monster; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lucinda_arbogast@swungsfar.monster; 
- bh=XlwLUgYWq8C21FKQo4XNIviP2GI=;
- b=ucthxiYSOU6SOVF3HF1yF2VGDAT9yUoqZ/hX4uNuNzY1Mct28kNyaNb2PTjQR0j2uRruFxUSJ8yv
- Ok9EDWRZmNH131lHfsA7Kr6UfxsLQvr671n4y8jWQ4DPiWawuxu9OYPbXUzx3jT+rncbpkRFkB6i
- NGtx38XKuwfQl6n9aik=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=swungsfar.monster; 
- b=WrX7TMj1l2e+AAhV+Ldx3SVYM7H6AnJb7K7JcUMr4si7FZ8tk/YSXNHytuuFE7EO96LyHJJBO1dC
- UURnWEeSAJE99WZbOadjwuaZZlQyC4tCWwJDY8oPOX2iyrzzF6I+4Uw6kbHRLboGj8kl2co92+5B
- 0qBiLPx65MeD2U8AIeA=;
-Received: by mail.swungsfar.monster id h8rh7u0001gr for
+ i=buote_camille@groundsfar.monster; 
+ bh=+9GqpvWjMJT0GU4zzgim5Ive12U=;
+ b=SyiD0+T+YkvlhEB0Tt+GiY9FSB6zS1SxwYbe4X5vfobiT1p26lSQLi6xH8OgBDzbnBB9wHiz91I3
+ 4g+/BKp8yxEwFhrvGCXKjFo5zMNPegOgaqaQrP0L5/w2d7OsTi5ydrQKg8G5SXqXLyMVoP7BjoIL
+ aKXGHTw+P9IY4vWXrGE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=groundsfar.monster; 
+ b=OFgwmm5C9gYhbz9nc+5VnfQ3xHRzxKmOkrifvX7L7y4waxGUUTnrjEHyLIBhl8UTKAT5CO9+83Hd
+ V14wQnnWfRNUdqRzUr8uwmRButsS3XlqODBw4kwuYEY8B2u+9gegcUr+11gGE01sUBleEziemHWx
+ 337MeO9w/4O1b7XKdbs=;
+Received: by mail.groundsfar.monster id h8rrgc0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 11:38:57 -0400 (envelope-from
- <lucinda_arbogast-intel+2Dgvt+2Ddev=lists.freedesktop.org@swungsfar.monster>)
-Date: Wed, 12 Oct 2022 11:38:57 -0400
-From: Lucinda Arbogast <lucinda_arbogast@swungsfar.monster>
+ Wed, 12 Oct 2022 13:08:34 -0400 (envelope-from
+ <buote_camille-intel+2Dgvt+2Ddev=lists.freedesktop.org@groundsfar.monster>)
+Date: Wed, 12 Oct 2022 13:08:34 -0400
+From: Camille Buote <buote_camille@groundsfar.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Results for Your Area:  (41)
+Subject: Top home project pros compete for your job
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_475_1393844071.1665583722328"
-Message-ID: <0.0.0.34.1D8DE50BE5CDD1C.263DD6@mail.swungsfar.monster>
+ boundary="----=_Part_661_1673216041.1665594505509"
+Message-ID: <0.0.0.49.1D8DE5D43402898.43A8FE@mail.groundsfar.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_475_1393844071.1665583722328
+------=_Part_661_1673216041.1665594505509
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Top home project pros compete for your job
+
+Go Here to Get Multiple Quotes on Your Job:http://www.groundsfar.monster/1974E2395or8_610G3f92nf6aI36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkdoRR6A1yV0h6YOP@wD/nuclide-evading
+
+Search for Pros Then Get Quotes and Start your Project This Summer. 
+
+
+
+
+I2I6 BR0ADWAY,  FL00R 2, 
+NewYork, NEW YORK 
+10001_
+To cease messages, Start_Here:http://www.groundsfar.monster/commoners-sizing/de65wk2395B8R6u12V3f93ASrf6aX36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkdoRR7WRUj10U6dlwLDP
+Our email was directed to intel-gvt-dev@lists.freedesktop.org
+4313815:13739048
+
+------=_Part_661_1673216041.1665594505509
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,30 +83,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, &quot;Trebuchet MS&quot;; font-size: 13px; line-height: 1.656; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 36px;"><strong><span style="color: rgb(51, 102, 102);">rent</span><span style="color: rgb(153, 255, 0);">to</span><span style="color: rgb(255, 255, 255);"><span style="background-color: rgb(51, 102, 102);">own</span>&nbsp;</span></strong></span><span style="font-size: 20px;">LISTINGZ</span></p> 
-  <div>
-   <br /> 
-   <br /> 
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"><span style="white-space: pre-wrap;">intel-gvt-dev@lists.freedesktop.org, </span></span></span>
-   <br /> 
-   <br /> 
-   <span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Why Rent when you can Rent-to-Own?</span></span>
-  </div> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.swungsfar.monster/6656g2Q3I95iQ8y611V3Wf87Qf67M36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqdoR95V1vm05CplwD/uttering-dependable"><b style="font-family: Arial; font-size: 18.6667px; white-space: pre-wrap;">Visit Here to Search Rent-to-Own Listings Online</b></a></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Hans F. rents to own a 2 BD, 1 BA, </span></span><span style="font-family: arial, helvetica, sans-serif; font-size: 18px;">1234</span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft house </span></span><span style="font-size:18px;"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family:arial,helvetica,sans-serif;">for&nbsp;$</span></span><span style="font-family:arial,helvetica,sans-serif;">1092</span><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo.</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:18px;">Samir G. is investing in a 3 BD, 1.5 BA, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1234</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"> 1194</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/mo.&nbsp;</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"></span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Lance R. has a zero down, 3 BD, 2.5 BA, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1459</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1460/</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">mo.</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.swungsfar.monster/6656g2Q3I95iQ8y611V3Wf87Qf67M36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqdoR95V1vm05CplwD/uttering-dependable"><font face="Arial"><span style="font-size: 18.6667px; white-space: pre-wrap;"><b>Go Here to Own Your Home</b></span></font></a></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><a href="http://www.groundsfar.monster/headway-voyaging/8826lqp2395q86sF11gj3f92Jf6aQ36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkdoRR5C10tO6w10pwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Get Multiple Quotes on Your Job</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:795px;"><a href="http://www.groundsfar.monster/headway-voyaging/8826lqp2395q86sF11gj3f92Jf6aQ36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkdoRR5C10tO6w10pwD"><img alt="Compare Angi's Project Pros to Save" src="http://www.groundsfar.monster/4df6z2p39n5ng7Ra11k3Lf94Kf6aI36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQkdoRR7Joi10hK5B21wD/commoners-sizing" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 795px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Find a Pro Then Get Prices and Get Your Project Started This Month.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p>&nbsp;</p> 
-  <p>&nbsp;</p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P.0. BOX 4120. Portland. OREGON 972O8. 4120.&nbsp;</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To end email, </span><a href="http://www.swungsfar.monster/deer-rightmost/c9c5K_2395a86Ap12bu3fQ88If67m36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQqdoR96mk1J0o5G3wPD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go-Here-Now</span></a></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">20517226 1591571</span></span></span></p>   
- <img src="http://www.swungsfar.monster/culmination-presenting/3f06cZ2s395tD8y510m3f89Rf67l36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQqdoR97Nn1q0Qj5slzwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I2I6' Broadway,&nbsp; FL00R TWO,<br /> NewYork, NEW YORK 1OOO1'</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease messages,<a href="http://www.groundsfar.monster/1014p2395AAK8610e3f93Nf6aL36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQkdoRR7l1YgsM05ppwJD/reset-buggers"> Start_Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4313815.13739048</span></span></p>   
+ <img src="http://www.groundsfar.monster/c235Y2C395r8l5A11jI3f95gf6ar36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkdoRR6uyO1L06AqwMAD/commoners-sizing" alt=""/></body>
 </html>
 
-------=_Part_475_1393844071.1665583722328--
+------=_Part_661_1673216041.1665594505509--
 
