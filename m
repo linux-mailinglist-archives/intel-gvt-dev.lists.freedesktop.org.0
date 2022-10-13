@@ -1,42 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D366F5FCEC7
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 01:15:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59F9B5FCF83
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 02:18:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 88AC010E0D9;
-	Wed, 12 Oct 2022 23:15:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 13ED610E2EF;
+	Thu, 13 Oct 2022 00:18:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 12 Oct 2022 23:15:14 UTC
-Received: from mail.fareves.click (unknown [213.209.129.108])
- by gabe.freedesktop.org (Postfix) with ESMTP id 89D0210E221
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Thu, 13 Oct 2022 00:18:46 UTC
+Received: from mail.winksfar.click (unknown [66.63.186.211])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C3CB210E2EF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 23:15:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fareves.click;
+ Thu, 13 Oct 2022 00:18:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=winksfar.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=rene-stepler@fareves.click; bh=kCPxGTXvPVoXvH6778Yin80NBmc=;
- b=icp/Dyuv0Yd7t/Vg+byHenshDQNBGfORR5o9fFI7QJyPrgXn2cpg5kUWbvFhKQTpW8Xxywt0aBvx
- 0yqMdYE1F7v1Od8iOvW5gOsN005/7TJ6+G3Anmcairi0YgqfziOJIxTtH8b+YOk8Px4uKUwPTUJi
- UyyWYV9PoJPEE1zG938=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fareves.click;
- b=TjrsI/U6JuiX3LVRWOkWPPNI+1A8BrYIa7XNdC6y6hhDiKJcWpRJBmuLw57AsqSFWiquayoYkcn8
- OrexDB2CeuZHqCWrseAj1dVz87XrRu9x9xMm8CcsdumFLQD01T+n2Vqe3ErrTwBDv0nPfmcYBYY4
- rjnAQbq//h+ZKYRAGyA=;
-Received: by mail.fareves.click id h8tfo80001ga for
+ i=christina_virts@winksfar.click; 
+ bh=+YWshJnqZXfMJHFQxl6equ/XVPg=;
+ b=7PGMwnPCge+K14uVwg11GpbXoUF9g7ASQvyKqopEW1ApYelZbdRZx+Agd4Pr2v0mgh23hLCodLs4
+ pcADF6cM2gXv8fH/loQKx6kyDUO3UDA3Z6FybUyOal4tk0Df3fNEAFmwhz6L9IEzjg2KFDUK3Uem
+ 2ygvvkllnMj5e5qtOI0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=winksfar.click;
+ b=JQoAaEt8+ClWJic7WdNY5bLj+XZfMH8ZAawLIB2vFEgVphCuggZkIwL8TRJ8GnsH/gfsweKQs9dc
+ oZhE++fLks+JGEvmKYTfBKVaLb+zUCnAHoXpcbAavN0qS3m3g8AP7qD2cfBvV6Wcqa2EPdp+bgxt
+ /gGfOpdr5EYiR5pgcJM=;
+Received: by mail.winksfar.click id h8tcmc0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 20:35:24 -0400 (envelope-from
- <rene-stepler-intel+2Dgvt+2Ddev=lists.freedesktop.org@fareves.click>)
-Date: Wed, 12 Oct 2022 20:35:24 -0400
-From: Rene Stepler <rene-stepler@fareves.click>
+ Wed, 12 Oct 2022 20:05:17 -0400 (envelope-from
+ <christina_virts-intel+2Dgvt+2Ddev=lists.freedesktop.org@winksfar.click>)
+Date: Wed, 12 Oct 2022 20:05:17 -0400
+From: Christina Virts <christina_virts@winksfar.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: 19 Discounts That Seniors Don't Know
+Subject: Congratulations you've been chosen for a exclusive offer from Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_268_1169127143.1665615929888"
-Message-ID: <0.0.0.1D.1D8DE9BAF3A74B6.F578@mail.fareves.click>
+ boundary="----=_Part_103_1778512686.1665619486171"
+Message-ID: <0.0.0.A.1D8DE9779A97FBC.435789@mail.winksfar.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,47 +54,163 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_268_1169127143.1665615929888
+------=_Part_103_1778512686.1665619486171
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-19 Discounts That Seniors Don't Know
+Congratulations you've been chosen for a exclusive offer from Lowes =20
 
-Visit Here for The Guide to Senior Discounts. http://www.fareves.click/remark-slipped/c425U239s5q86_N10X3faaJf70T36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhdoSo7Y1v0Cqv6dqw2D1
+LOWES
 
-Make Haste! Discount Becomes Void in 48 Hours.
+Dear Lowe's Customer,  intel-gvt-dev@lists.freedesktop.org
+
+ We would like to offer you a extraordinary chance to receive a brand new STANLEY=
+=C2=AE 170 piece Mixed Tool Set! To claim your prize, simply finish the =
+{{short|brief|quick} survey about your experience with LOWES.=20
+
+ Start Here to give your feedback about Lowes:http://www.winksfar.click/stumbling-Steiner/a444B2395S86GW12h3foa_erf71Q36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQUdoS97X1nlWB06e0qLwD
+
+Attention! The Special Offer Comes to a Close in 4 Days.=20
+
+=20
+
+This e-mail was meant for intel-gvt-dev@lists.freedesktop.org
 
 
 
-To withdraw from email, Continue Ahead. http://www.fareves.click/inadequacies-Flemish/b344s2395Igh8610d3fabyf70D36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQhdoSo5g1G0x5STwDO
-302.  WASHlNGTON ST.  # 15O~7835. , 
-San-Diego, CA.  921O3. 
-This email content was delivered to intel-gvt-dev@lists.freedesktop.org
-8927819. 57055421
 
-------=_Part_268_1169127143.1665615929888
+
+
+
+_96 Mowat_ Av. , Toronto' ONTARIO M4 K3 K1 CN
+
+To do away with e-mail, Go.Here.Now:http://www.winksfar.click/13d5p239k5sV8H612gqu3fafVf71O36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQUdoS97D1L0TIF6C202wD/motorizing-ejaculations
+
+5423698:78899463
+
+------=_Part_103_1778512686.1665619486171
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><a href="http://www.fareves.click/1975L239F5AIY8610w3faagf70G36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhdoSo7uR1z0ID6GW@wDX/remark-slipped" style="text-decoration-line: none; "><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; ">Visit Here for The Guide to Senior Discounts</span></a></span></p> &Acirc;&nbsp; 
-  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><a href="http://www.fareves.click/1975L239F5AIY8610w3faagf70G36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhdoSo7uR1z0ID6GW@wDX/remark-slipped" style="text-decoration-line: none; "><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; "><span style="border:none; display:inline-block; overflow:hidden; width:559px; height:913px; "><img alt="Go Here for the 19 Best Senior Discount Offers" src="http://www.fareves.click/interframe-cables/bca5AL2395l7auD12rW3factFf70H36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQhdoSo5awq106YL0wD@" style="margin-left: 0px; margin-top: 0px; width: 559px; height: 913px; " /></span></span></a></s
- pan></p> &Acirc;&nbsp; 
-  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">Make Haste! Discount Becomes Void in 48 Hours.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &Acirc;&nbsp; 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">To withdraw from email, </span><a href="http://www.fareves.click/3b35L2G395Fm8u610p3fabxf70t36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhdoSo5io10u5lUwDO/domino-Louise" style="text-decoration-line: none; "><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; ">Continue Ahead</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">3O2 WASHlNGTON St Ste. 15O.7835.,<br /> San_Diego, Ca 921O3.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">This email content was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">8927819.57055421</span></span></p>   
- <img src="http://www.fareves.click/dinginess-blissful/24c6mM239o5B85wJ12c3fXahdhf70D36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQhdoSo6L1pWm05GT0wD" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>
+  &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
+: 0pt; text-align: center;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163"><span style=3D"font-size: 36pt; font-family: Georgia;=
+ color: rgb(0, 0, 255); background-color: rgb(0, 0, 255); font-variant-nume=
+ric: normal; font-variant-east-asian: normal; vertical-align: baseline; whi=
+te-space: pre-wrap;">5423698</span><span style=3D"font-size: 36p=
+t; font-family: Impact; color: rgb(255, 255, 255); background-color: rgb(0,=
+ 0, 255); font-variant-numeric: normal; font-variant-east-asian: normal; ve=
+rtical-align: baseline; white-space: pre-wrap;">LOWES</span><span style=3D"=
+font-size: 36pt; font-family: Georgia; color: rgb(0, 0, 255); background-co=
+lor: rgb(0, 0, 255); font-variant-numeric: normal; font-variant-east-asian:=
+ normal; vertical-align: baseline; white-space: pre-wrap;">=
+7701567</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
+top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
+olor: rgb(36, 36, 36); background-color: transparent; font-weight: 700; fon=
+t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
+ baseline; white-space: pre-wrap;">Dear Lowe's Customer,</span></span></p>=
+=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
+top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163">&nbsp;</span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
+top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163"><span style=3D"font-size: 13.5pt; font-family: Arial;=
+ color: rgb(48, 48, 48); background-color: transparent; font-variant-numeri=
+c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
+-space: pre-wrap;">We would like to offer you a exclusive possibility to receive =
+a brand new </span><span style=3D"font-size: 13.5pt; font-family: Arial; colo=
+r: rgb(36, 36, 36); background-color: transparent; font-weight: 700; font-v=
+ariant-numeric: normal; font-variant-east-asian: normal; vertical-align: ba=
+seline; white-space: pre-wrap;">STANLEY&reg; 170 piece Mixed Tool Set!</spa=
+n><span style=3D"font-size: 13.5pt; font-family: Arial; color: rgb(48, 48, =
+48); background-color: transparent; font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> =
+To claim your bonus, simply </span><span style=3D"font-size: 13.5pt; font=
+-family: Arial; color: rgb(32, 33, 36); font-variant-numeric: normal; font-=
+variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap=
+;">take the {{short|brief|quick} survey about</span><span style=3D"font-=
+size: 13.5pt; font-family: Arial; color: rgb(48, 48, 48); background-color:=
+ transparent; font-variant-numeric: normal; font-variant-east-asian: normal=
+; vertical-align: baseline; white-space: pre-wrap;"> your experience with <=
+/span><span style=3D"font-size: 18pt; font-family: Impact; color: rgb(0, 0,=
+ 255); font-variant-numeric: normal; font-variant-east-asian: normal; verti=
+cal-align: baseline; white-space: pre-wrap;">LOWES.</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
+top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163">&nbsp;</span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
+href=3D"http://www.winksfar.click/3ef4X2395i8Ip611u3faKeOf71j36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQUdoS97D10Lihr6F3wpUD/rejoining-subdues" style=3D"text-decoration-line: none;"><span style=3D"co=
+lor:#FFFFFF;"><span style=3D"font-size: 18pt; font-family: Arial; font-vari=
+ant-numeric: normal; font-variant-east-asian: normal; text-decoration-line:=
+ underline; text-decoration-skip-ink: none; vertical-align: baseline; white=
+-space: pre-wrap;"><span style=3D"background-color:#0000FF;">=
+Start Here to give your feedback about Lowes</span></span></span></a></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
+top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163"><span style=3D"font-size: 16pt; font-family: Arial; c=
+olor: rgb(235, 0, 0); background-color: transparent; font-weight: 700; font=
+-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: =
+baseline; white-space: pre-wrap;">Attention!</span><span style=3D"font-size=
+: 18pt; font-family: Arial; color: rgb(36, 36, 36); background-color: trans=
+parent; font-weight: 700; font-variant-numeric: normal; font-variant-east-a=
+sian: normal; vertical-align: baseline; white-space: pre-wrap;"> </span><sp=
+an style=3D"font-size: 14pt; font-family: Arial; color: rgb(36, 36, 36); ba=
+ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
+; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
+re-wrap;">The </span><span style=3D"font-size: 14pt; font-family: Arial; ba=
+ckground-color: transparent; font-weight: 700; font-variant-numeric: normal=
+; font-variant-east-asian: normal; vertical-align: baseline; white-space: p=
+re-wrap;">Offer Expires in 3 Days.</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
+top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163">&nbsp;</span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;background-color:#ffffff;margin-=
+top:0pt;margin-bottom:0pt;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d=
+0a-9e87-81fc486fd163">&nbsp;</span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
+an style=3D"font-size: 14pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">This e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span>=
+</p>=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br />=20
+  <br /> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">96_ MOWAT- Avenue, Toronto- ONTARIO M4 K3 K1 CN<=
+/span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><a =
+href=3D"http://www.winksfar.click/stumbling-Steiner/5765M239P5QQ86N11SZ3fafgf71I36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQUdoS97vZXv10s6M2wlDz" style=3D"text-decoration-line: none;"><span style=3D"fo=
+nt-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
+meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
+line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
+: pre-wrap;">To do away with e-mail,</span></a><span style=3D"font-size: 10pt; font-f=
+amily: Arial; font-variant-numeric: normal; font-variant-east-asian: normal=
+; vertical-align: baseline; white-space: pre-wrap;"> Go.Here.Now</span></s=
+pan></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-fe94a25a-7fff-0d0a-9e87-81fc486fd163"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">2742183:78899463</span></span></p>  =20
+ <img src=3D"http://www.winksfar.click/throng-assessed/9364d2395iY8h512HW3fb0oGf71r36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQUdoS96Q10mFX6jjLjwD" alt=3D""/></body>
 </html>
 
-------=_Part_268_1169127143.1665615929888--
+------=_Part_103_1778512686.1665619486171--
 
