@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61B155FE41B
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 23:18:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 046E65FE32D
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 22:20:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B185D10E96B;
-	Thu, 13 Oct 2022 21:18:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AEE3A10E956;
+	Thu, 13 Oct 2022 20:20:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 13 Oct 2022 21:18:43 UTC
-Received: from mail.wailfam.click (unknown [66.63.186.145])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9AA6E10E96B
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 13 Oct 2022 20:20:42 UTC
+Received: from mail.drumsfam.monster (unknown [77.90.188.195])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EA0DC10E950
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 13 Oct 2022 21:18:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wailfam.click;
+ Thu, 13 Oct 2022 20:20:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=drumsfam.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=belland-rebekah@wailfam.click; 
- bh=XGUkHhDsCPQafKLg6d2yQ0P0o0w=;
- b=ChgUy+GQ6rMEYz6ZBkbngweAG5rOBlXbLwDXu2SJD1dSlYMonFPzfDx10F1Ndo2C1YbW8klMKcTx
- 9GGWwjbc/BERY5nhA/kWguwfcCEaTPFgez2pFybELFWpwAzsnKuthChkBPk8wYVqasmhLxDB1u2S
- Oq+Tnbu3/ahfKDCqsY4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wailfam.click;
- b=EJr943oCrS5phVjsEw7/3i1Pu5SBV9sT33DHEus1O8NpZrsp5BwDFkq0wH792DEtxmR0x3p3GhTz
- oCue6PiHJe7jgxlif6onHAcIrQG4N89JtMTiDiHobOikvSRz0nUFvBNTonVeoDQ98DPLHcP/USSf
- jMILNR769QpvloCEFmI=;
-Received: by mail.wailfam.click id h920b60001g6 for
+ i=eleanor.bomberger@drumsfam.monster; 
+ bh=8kWOiX7dBE0g/5iVxyoEQIMJmLk=;
+ b=NJ1MQq3Np0k5mi3hZEh8og1FzZBKBXXMVT63mk3YabBFO92dLrINtOGjT8fnioSAW0pn82gikEsq
+ X+LNgbNnJpZp4wJ4lFNdaoAzrWWXHCXkyV8ML3UbM6eJHTMNsaBZg4Ys9xs7wf5Ou3xQO9+W1Jb/
+ H/hKZhk0EeCN+k5icL4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=drumsfam.monster;
+ b=sk9wzSlC2xuYRbuuZYFoAP0Bm8MFZVx2Zl+z58MfWWbHcO11IAWWq4aek6xQZl3Ls0yzKd1CrBqQ
+ hHJVj5mpwNYgvTSrRcE+r+O7Fo+ZKMiHM0yvl6YQXCXY8IPdpqMQstqWBdnZ5w4B/oAZUS0ql6+u
+ 58vkr3W6hyIdj1jJT6I=;
+Received: by mail.drumsfam.monster id h9241m0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 13 Oct 2022 17:05:36 -0400 (envelope-from
- <belland-rebekah-intel+2Dgvt+2Ddev=lists.freedesktop.org@wailfam.click>)
-Date: Thu, 13 Oct 2022 17:05:36 -0400
-From: Rebekah Belland <belland-rebekah@wailfam.click>
+ Thu, 13 Oct 2022 17:39:29 -0400 (envelope-from
+ <eleanor.bomberger-intel+2Dgvt+2Ddev=lists.freedesktop.org@drumsfam.monster>)
+Date: Thu, 13 Oct 2022 17:39:29 -0400
+From: Eleanor Bomberger <eleanor.bomberger@drumsfam.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: This supplement works to improve vision
+Subject: Here's Your Reward for Being a CVS Preferred Shopper   #8075890
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_184_602373594.1665695121246"
-Message-ID: <0.0.0.14.1D8DF478A2B8AC8.711F49@mail.wailfam.click>
+ boundary="----=_Part_520_1304273674.1665691778403"
+Message-ID: <0.0.0.39.1D8DF4C45FA0BC2.69A3F8@mail.drumsfam.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,25 +53,28 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_184_602373594.1665695121246
+------=_Part_520_1304273674.1665691778403
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-This supplement works to improve vision
-
-Begin  Here to Protect Vision Health :http://www.wailfam.click/inactivate-confinements/bac5E239o5i8iQ611V3ffH2yf82n36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQAdoKm6D1KHS05yNwDk
+Here's Your Reward for Being a CVS Preferred Shopper Visit-Here- http://www.drumsfam.monster/rumor-shelve/c244n2395y86jN11M3pff0Hf81u36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQkdoeK6FW10qm6Ql0pwD
 
 
+Frequent Shopper intel-gvt-dev@lists.freedesktop.org,
+You've been randomly selected to to be awarded an offer valued at $9O
+Simply complete a 1 minute questionnaire about your experiences with CVS. 
+
+
+Click Here for the survey & choose your reward- http://www.drumsfam.monster/rumor-shelve/c244n2395y86jN11M3pff0Hf81u36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQkdoeK6FW10qm6Ql0pwD
 
 
 
+M1-65084356-8075890
+This email content was meant for intel-gvt-dev@lists.freedesktop.org
+To drop e-mail, Continue_Ahead- http://www.drumsfam.monster/7736SOO2395M8Pn612r3vfeevkf81S36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQkdoeK7avKm10C6LJTwDq/Gifford-gestured
+96' Mowat_ Av. , Toronto.  ONT M4K3KI Canada
 
-No longer wish to receive messages from us?, Get Going Here:http://www.wailfam.click/b154O2395k8xx611X3Nff3Rf82y36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQAdoKm6iR10vh6nPJwMD/circuitously-enchantment
-Or write 225_ UNlON Blvd. , STE 150, Lakewood, Co.  8O228_ U. S. A. 
-Our e-mail content was meant for intel-gvt-dev@lists.freedesktop.org
-4976940:3996114
-
-------=_Part_184_602373594.1665695121246
+------=_Part_520_1304273674.1665691778403
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,23 +83,27 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-43a2b4c2-7fff-4059-590e-1b56e81d6b11"><a href="http://www.wailfam.click/6834u2395STQ8611in3ff2rf82s36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQAdoKm7j1lYB0x6WUM2wD/boatyards-Livingston" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin  Here to Protect Vision Health</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-43a2b4c2-7fff-4059-590e-1b56e81d6b11"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:600px;"><a href="http://www.wailfam.click/6834u2395STQ8611in3ff2rf82s36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQAdoKm7j1lYB0x6WUM2wD/boatyards-Livingston"><img alt="Begin Here to Prevent Vision Decline" src="http://www.wailfam.click/2qf6W23JP95z7Dar11S3ffj4xf82Q36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQAdoKm7GQ1U0HN6OlOwkD/pilots-nectar" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 600px;" /></a></span></span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-43a2b4c2-7fff-4059-590e-1b56e81d6b11"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive messages from us?, <a href="http://www.wailfam.click/a616Uw2S395a8p6J12bCR3ff3kf82I36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQAdoKm5ooj106sXM2wD/inactivate-confinements">Get Going Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-43a2b4c2-7fff-4059-590e-1b56e81d6b11"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Or write 225- UNION BouIevard, No. I50, LAKEWOOD, CO. 80228. USA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-43a2b4c2-7fff-4059-590e-1b56e81d6b11"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-43a2b4c2-7fff-4059-590e-1b56e81d6b11"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4976940.3996114</span></span></p>   
- <img src="http://www.wailfam.click/inactivate-confinements/7744e2395IT85T10P3ff5sf82K36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQAdoKm7XXw1to05EPywD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e54f944b-7fff-65e4-f61a-2cdc9409c098"><a href="http://www.drumsfam.monster/X6b4Q2395VPp8610O3fedDf81w36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQkdoeK5zR1S06rByWwD/audiograms-gardened" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for the survey & choose your reward</span></a></span></p> 
+  <div style="text-align: center;">
+   &nbsp;
+  </div> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e54f944b-7fff-65e4-f61a-2cdc9409c098"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:601px;height:802px;"><a href="http://www.drumsfam.monster/X6b4Q2395VPp8610O3fedDf81w36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQkdoeK5zR1S06rByWwD/audiograms-gardened"><img alt="Take the CVS Survey. Claim Your Reward." src="http://www.drumsfam.monster/d4f5Yu2395e7VWa12b3fQzefUf81n36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQkdoeK7kVJM1k05tpwDW/rumor-shelve" style="margin-left: 0px; margin-top: 0px; width: 601px; height: 802px;" /></a><br /> <br /> <span style="font-size:18px;">Be Quick About It! Deal Ends in 2 Days.</span></span></span></span></p> 
+  <div style="text-align: center;">
+   <br /> 
+   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Make It Snappy! Deal Goes Away in 5 Days.</span></span>
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp;
+  </div> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e54f944b-7fff-65e4-f61a-2cdc9409c098"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email content was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e54f944b-7fff-65e4-f61a-2cdc9409c098"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ Mowat AVENUE, Toronto ONT. M4K 3K1 Canada</span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e54f944b-7fff-65e4-f61a-2cdc9409c098"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">M1-65084356,8075890</span></span></p> 
+  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e54f944b-7fff-65e4-f61a-2cdc9409c098"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To drop e-mail,<a href="http://www.drumsfam.monster/audiograms-gardened/7ce5i2l395cZ8z612z3QfeevUf81X36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQkdoeK7QSQmr106Q2wDMl"> Continue_Ahead</a></span></span></p>   
+ <img src="http://www.drumsfam.monster/nitric-perilously/d146ys2p395r8D5g11M3Yff1jf81m36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkdoeK6k1go0t6pBwDLq" alt=""/></body>
 </html>
 
-------=_Part_184_602373594.1665695121246--
+------=_Part_520_1304273674.1665691778403--
 
