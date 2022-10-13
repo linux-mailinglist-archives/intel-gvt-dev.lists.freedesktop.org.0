@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0F305FDEC7
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 19:18:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E00095FE0F0
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 20:19:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5FF8D10E924;
-	Thu, 13 Oct 2022 17:18:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AF9DE10E329;
+	Thu, 13 Oct 2022 18:19:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Thu, 13 Oct 2022 17:18:08 UTC
-Received: from mail.famants.monster (unknown [77.90.188.75])
- by gabe.freedesktop.org (Postfix) with ESMTP id 89F5410E924
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Thu, 13 Oct 2022 18:18:54 UTC
+Received: from mail.milkfams.monster (unknown [209.142.103.152])
+ by gabe.freedesktop.org (Postfix) with ESMTP id ADA5010E329
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 13 Oct 2022 17:18:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=famants.monster; 
+ Thu, 13 Oct 2022 18:18:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=milkfams.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=amber_poulton@famants.monster; 
- bh=qjoFwBYeb6aMqD/eNeBAqZfh0aw=;
- b=hC6agmjNN1M9+eSA8LL45kyxZKOxatz4T/nwVXv6QZNJWfmVhOmJGD937+sxMwuSgByQ8prX/6U0
- Pmjdwb+eOLR2smOh4vw1pf4nyhIPBoDPPyTE/Bvx8KYFPBAeQwXXjhrCJQHn3wnSjmE+vtbx4SRy
- BB2qW79eL9P/sC5fOjs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=famants.monster;
- b=ffQSlsAeQMSCQzm0bp7yXtLdB2ja7vLrD5rNslIYVKwiLe/joOfyHfvVqbwxIHpzQrFWx1IBSogm
- BfocgZ8x5lvz53qyeVSX0y7T57YyBLMVAWFLpmB6yQqhnGeXF//wlwwS5Iieu/FqtRpQrDYBgcca
- cNyTbOwIsXYStcL4IFw=;
-Received: by mail.famants.monster id h914500001g9 for
+ i=davitt_maggie@milkfams.monster; 
+ bh=UyDuEnz9/MsqJ1R2RcbKawtO/Rk=;
+ b=Qqm0XgUeuuMVSgnjLAu2+CBc8HioqXPP12kPofEMJlG6HoZM6azmT0OK14/V5+A+5m8/CVlyJ5RA
+ pjB8l+HCcXdfxAVjiyMu1Zaltt9v08hGUILdFRMYZYN/IDXn3uC0vIMatpJPLO1ILLjV02n71aW0
+ 4MLaE3jFdku8coIEYbI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=milkfams.monster;
+ b=RFygZoAonblnaibPf+8Bqg6dCSUaiwHKAqTSOeYdVfCOSCnXv/DbJa+sRBKYTMBo1UhTz3SHOo/X
+ kTDAacDKV2H4wHTTtf9xX7rTgU2BvOQDAATVLe5K5i+VznIgAhcfZKmiu+aK8gaCGCvWRBgUOt9k
+ wJSk/oYR0ldhefd0JVg=;
+Received: by mail.milkfams.monster id h91b8s0001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 13 Oct 2022 13:09:13 -0400 (envelope-from
- <amber_poulton-intel+2Dgvt+2Ddev=lists.freedesktop.org@famants.monster>)
-Date: Thu, 13 Oct 2022 13:09:13 -0400
-From: Amber Poulton <amber_poulton@famants.monster>
+ Thu, 13 Oct 2022 14:08:04 -0400 (envelope-from
+ <davitt_maggie-intel+2Dgvt+2Ddev=lists.freedesktop.org@milkfams.monster>)
+Date: Thu, 13 Oct 2022 14:08:04 -0400
+From: Maggie Davitt <davitt_maggie@milkfams.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: No One Calling Back? Find Pre-Screened Remodelers
+Subject: Craftsman Riding Mower Giveaway sponsored by Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_730_671638060.1665680930035"
-Message-ID: <0.0.0.51.1D8DF26847569A8.569A09@mail.famants.monster>
+ boundary="----=_Part_670_769621139.1665684458822"
+Message-ID: <0.0.0.4A.1D8DF2EBD657476.57D396@mail.milkfams.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +54,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_730_671638060.1665680930035
+------=_Part_670_769621139.1665684458822
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-No One Calling Back? Find Pre-Screened Remodelers
+Craftsman Riding Mower Giveaway sponsored by Lowes  intel-gvt-dev@lists.freedesktop.org
 
-Tap Here to Get Quotes on Your Job Online~http://www.famants.monster/delights-Lockhart/3966g239Qt5M86_L12r3Mfwe1Uf7eZ36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQFdoeR7bDw1K0q6XXwPOD
-
-Contact Pros Then Get Estimates and Get You Project Underway Now. 
+Tap Here for the Lowes Survey Bonus,http://www.milkfams.monster/Salina-international/9905w2i395nNS8611N3fe5CSf7fz36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQrdoeS7uW10PIR6aMUwjD
 
 
 
 
-I2I6_ BR0ADWAY,  FL00R TWO, 
-NEWYORK, NY.  
-1OOO1-
-To modify your notification choices, Go-Over-Here~http://www.famants.monster/9716e239lr5U8j6x11L3fne2Df7eU36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQFdoeR6aFJh106hkkMwD/prematurity-likely
-This email was meant for intel-gvt-dev@lists.freedesktop.org
-2675058~65764848
 
-------=_Part_730_671638060.1665680930035
+No longer wish to receive email notifications?, Go Here Now,http://www.milkfams.monster/31d6lU23i95vNK8610B3fe7tf7fN36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQrdoeS7O1vFY0Q6PP3wDW/overshadows-teletypes
+
+Our e-mail was selected for intel-gvt-dev@lists.freedesktop.org
+
+96_ Mowat AVENUE, Toronto- Ontario M4K3KI Canada
+
+5096074,4575428
+
+------=_Part_670_769621139.1665684458822
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,21 +83,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><a href="http://www.famants.monster/8275zV2395SO86w10C3fe1nf7eS36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQFdoeR7lmi10Fn5zMkwD/gyroscope-mackerel" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Get Quotes on Your Job Online</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:795px;"><a href="http://www.famants.monster/8275zV2395SO86w10C3fe1nf7eS36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQFdoeR7lmi10Fn5zMkwD/gyroscope-mackerel"><img alt="Compare Angi's Project Pros to Save" src="http://www.famants.monster/42b6vyA2395W7TJa10r3fe3pf7ep36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQFdoeR6sZSB105q3wD0/Canaan-deferment" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 795px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Find a Pro Then Get Prices and Start your Project Soon.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.milkfams.monster/finesse-overriding/eb84D2395yt86T11M3fe5Rhf7fO36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQrdoeS5pt10x6JJwDzW" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="Take the 30-second Survey" src="http://www.milkfams.monster/overshadows-teletypes/c9c4L2395Q7aUr12V3QfeU6hf7fU36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQrdoeS5iXX106mpywND" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> 
   <br /> 
-  <br /> 
-  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.milkfams.monster/finesse-overriding/eb84D2395yt86T11M3fe5Rhf7fO36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQrdoeS5pt10x6JJwDzW" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes Survey Bonus</span></a></span></p> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I2I6- BROADWAY,&nbsp; Floor Two,<br /> New York City, NEW YORK 1OOO1.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your notification choices,<a href="http://www.famants.monster/progressive-seized/8285N23S95kK8N611j3fMe2Ff7eQ36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQFdoeR5R10pU5yzwlD"> Go-Over-Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2675058 65764848</span></span></p>   
- <img src="http://www.famants.monster/11f6p2k39O5uH8U512oD3Bfe4Sf7eQ36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQFdoeR5E1Ro05SX@wD/prematurity-likely" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive email notifications?, Go Here Now</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ Mowat_ AVENUE, T0R0NT0 Ontario M4K3KI CANADA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5096074 4575428</span></span></p>   
+ <img src="http://www.milkfams.monster/blizzards-perpetrates/6485z2C395t85yk10b3fe8nf7fF36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQrdoeS5P1Q0w5QlwDq" alt=""/></body>
 </html>
 
-------=_Part_730_671638060.1665680930035--
+------=_Part_670_769621139.1665684458822--
 
