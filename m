@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (unknown [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 532C15FD386
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 05:18:48 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 232ED5FD333
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Oct 2022 04:19:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 14CE810E3D4;
-	Thu, 13 Oct 2022 03:18:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5C0B010E3AC;
+	Thu, 13 Oct 2022 02:19:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Thu, 13 Oct 2022 03:18:21 UTC
-Received: from mail.neverfar.click (unknown [209.142.103.131])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9765C10E3D1
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 13 Oct 2022 02:19:01 UTC
+Received: from mail.farminks.click (unknown [213.209.129.196])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A7A3C10E3B1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 13 Oct 2022 03:18:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=neverfar.click; 
+ Thu, 13 Oct 2022 02:19:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=farminks.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=allison.badami@neverfar.click; 
- bh=7w+atDcBUNe36KiA8zEvqYD+6qk=;
- b=LFae7pVWcFL3z0wapxrIEXvlNH9dhoibTv1pE9awS6zmxKbwvVLV4/PrSGS7evlFQ2fKd67s652K
- 4t77UlTypFZ0Ou47oZk8umPVg96zCI03o10Dz04sVoEoAiKpAF2JqsfgP10IBNWFmgcSvgNKZ4OT
- mNxwS0Q8I8+KFrmHVQE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=neverfar.click;
- b=NKr7GwXXczL88UKshx/XHVnl4NUKT5t3feM0w3k/crr7MJ4vn6GITsGfiBgdCBCl0/I7IvzJdivg
- WXgCiN/SUr68aRMlGaya8rbT0R/5JCc/ucWg0lLLMX1KWZtB1WX3mdA5Cn06/jjWNA5Q5JPZkCAh
- +4yxeVN8wNMnFkcRBuQ=;
-Received: by mail.neverfar.click id h8u1nq0001gq for
+ i=cathy-salvio@farminks.click; 
+ bh=IDXuglW4g//4jQxDVp3223Qtvrw=;
+ b=ptGKwTYiTmvssBAJQbPoXjMlwtCBX/GoVAvwIp/62tqFeRpg63WH1rV6/9CK8CfDWyD0fCLAtmWl
+ u2zf0Kg4lTzOxNqdfKueRP78lMUZWUKdyVOoSlhRd9ZT3EsaBuQQBM6umaqsfXvIkax6ov7k8A3E
+ B3C3la4k1Z4XAvbeMiM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=farminks.click;
+ b=ZsoICRwh5ymyFkEoedyWlR/EsakWbxLdg0Dl7dmdhAD5h0aBjn6gVxL+maatUexkbSEsLgS2XNta
+ z/LW5dI5JNNqA3hSnBmOjGrFT6AXQWMv+9Z/yLsnOSsrzOGGQw3FLC5zBhdeWGpjsfqMcmEfUlua
+ aADlqak4n/z4M53XUL0=;
+Received: by mail.farminks.click id h8u59e0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 12 Oct 2022 23:07:23 -0400 (envelope-from
- <allison.badami-intel+2Dgvt+2Ddev=lists.freedesktop.org@neverfar.click>)
-Date: Wed, 12 Oct 2022 23:07:23 -0400
-From: Allison Badami <allison.badami@neverfar.click>
+ Wed, 12 Oct 2022 23:37:27 -0400 (envelope-from
+ <cathy-salvio-intel+2Dgvt+2Ddev=lists.freedesktop.org@farminks.click>)
+Date: Wed, 12 Oct 2022 23:37:27 -0400
+From: Cathy Salvio <cathy-salvio@farminks.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Here's your Reward up to $100 for being an Kroger Consumer
+Subject: Let us know your input about Sam's Club Up to $100 Bonus  5695031
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_517_2146047474.1665630424915"
-Message-ID: <0.0.0.39.1D8DEB0EA53871C.5DD8EA@mail.neverfar.click>
+ boundary="----=_Part_565_36138742.1665626851024"
+Message-ID: <0.0.0.3E.1D8DEB51D9F4DAA.129386@mail.farminks.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +53,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_517_2146047474.1665630424915
+------=_Part_565_36138742.1665626851024
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Here's your Reward up to $100 for being an Kroger Consumer
+Let us know your input about Sam's Club Up to $100 Bonus
 
-Start Here to take the survey & Claim a Reward~http://www.neverfar.click/8814B2395iBR8612P3IfwbaSf74l36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQadoSR5gH1s06mlWwDp/Allegheny-abnormally
+Start Here to Take our Opinion Survey-http://www.farminks.click/de56wJ239H5Boo8611EP3fb6If73L36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5doSQ5sr1l05Qk2wD/tenure-coax
+
+Shake a Leg! Discount Comes to an End in 2 Days.
 
 
 
 
-115 E.   23rd Street NEW YORK New York 10010 US.  
+I26- EAST  23RD Street NewYork New. York IooIo- United States 
+This communication was sent to intel-gvt-dev@lists.freedesktop.org
+To bring e-mail to an end, Click_Right_Here-http://www.farminks.click/possible-Stendhal/51c6z2C39R5z8p6Q10n3fb7Bf73r36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ5doSQ7g1DTGN06aTUwkD
+4682580-5695031
 
-To cut off communications, Click Here~http://www.neverfar.click/4a35nF2395z86Bh11R3fbzbkf74I36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQadoSR5D1MK05ljwXD/randomize-rudeness
-
-This email content was intended for intel-gvt-dev@lists.freedesktop.org
-
-1260706~4951021
-
-------=_Part_517_2146047474.1665630424915
+------=_Part_565_36138742.1665626851024
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,19 +80,24 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.neverfar.click/5396N2JH395a8I6S12AQ3fbagZf74K36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQadoSR5J1X0V5DpwDz/modem-viceroy" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to take the survey & Claim a Reward</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.neverfar.click/5396N2JH395a8I6S12AQ3fbagZf74K36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQadoSR5J1X0V5DpwDz/modem-viceroy" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:326px;"><img alt="Click Here to Take the Consumer Survey" src="http://www.neverfar.click/60b6MCh2395rjT7a12yp3fbcGDf74t36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQadoSR7SBTNF105qNOwD/suggestible-fanfold" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 326px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Quickly! Deal Runs Out in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><a href="http://www.farminks.click/tenure-coax/9905f23Z95hh86_11cC3fb6mf73G36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ5doSQ5Ww1n05fTwDX" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to Take our Opinion Survey</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><a href="http://www.farminks.click/tenure-coax/9905f23Z95hh86_11cC3fb6mf73G36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ5doSQ5Ww1n05fTwDX" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:555px;height:629px;"><img alt="Take the Sam's Survey for a Reward up to $100" src="http://www.farminks.click/4676k23L9p5I7kaG12lg3fb8vtf73z36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ5doSQ5C1z0M5pPTwD/rubble-repeals" style="margin-left: 0px; margin-top: 0px; width: 555px; height: 629px;" /></span></span></a></span></p> 
+  <div style="text-align: center;">
+   <br /> 
+   <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:18px;">Shake a Leg! Discount Comes to an End in 2 Days.</span></span>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">115' E.&nbsp; 23RD ST NewYork New York 10010. U.S.A.&nbsp;</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut off communications, </span><a href="http://www.neverfar.click/c054B2395N8w6Z12k3fbXTbZf74K36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQadoSR6PgzG106XPNwDN/constrict-directrices" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1260706~4951021</span></span></p>   
- <img src="http://www.neverfar.click/3594M2395U8OL510A3fbdxf74x36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQadoSR5W1A0W6BpBwDk/tissue-facsimiles" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l26. E&nbsp; Twenty-Third St New York NY. 10010 UNITED STATES&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <span style="font-variant-numeric: normal; font-variant-east-asian: normal; font-size: 11pt; font-family: Arial; vertical-align: baseline; white-space: pre-wrap;">To bring e-mail to an end, </span>
+  <a href="http://www.farminks.click/c055z2M395W_8L612lX3fb7Urf73P36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ5doSQ5sG10K5pX@wD/possible-Stendhal" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click_Right_Here</span></a>
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2106ad01-7fff-fa2b-4b6d-32d3879171f6"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4682580~5695031</span></span></p>   
+ <img src="http://www.farminks.click/b335D23L95d8y5N11z3jfb9rf73K36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5doSQ7an1gSL06r33ywD/fashionably-schoolmaster" alt=""/></body>
 </html>
 
-------=_Part_517_2146047474.1665630424915--
+------=_Part_565_36138742.1665626851024--
 
