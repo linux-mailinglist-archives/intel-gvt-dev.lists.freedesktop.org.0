@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 931EA5FF40A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 21:20:16 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CFC05FF484
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 22:25:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5358210E067;
-	Fri, 14 Oct 2022 19:20:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2B34610E0DB;
+	Fri, 14 Oct 2022 20:25:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 14 Oct 2022 19:20:10 UTC
-Received: from mail.yarnoils.monster (unknown [5.42.214.61])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3034110E09F
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Oct 2022 20:25:37 UTC
+Received: from mail.trailoils.monster (unknown [66.63.186.132])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9B0BD10E0F4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 19:20:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yarnoils.monster;
+ Fri, 14 Oct 2022 20:25:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=trailoils.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lenore-soppe@yarnoils.monster; 
- bh=IxxGNH2UpVbqpwm2COirA94KojQ=;
- b=LjHa1XnzShQW5KhRcHJC6pf2dz3oAFnG+okTNDq5+BaoKjOOasBGURrL2jeH+Y3s/+enCmsV0MJu
- qwxBBLB7arZ8TQyRU6XdihHCdCD+MEGdw+IKdZ3biL+PKDdyFNGjIAtvBY0lkGw7Ub0VBsXg/dj3
- /vI60Fjrk0m97KppfkM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yarnoils.monster;
- b=k4lFdEJRiDwixX7oE+vrV02g4RSwEVZYfrxSjSpZFENKs3hPyAZH5uAGQl5emdMTfCjBjwR1a5Xl
- tXIBalhQZ+kU8xPjHkhJXMd+foyEdE8VuFchulx7NF/QCrfcsNkILkmumnKW10U1Vm56HK1GzaWX
- 51dYoqmYfJhW2SztAqc=;
-Received: by mail.yarnoils.monster id h96r6k0001g6 for
+ i=manuela_metzga@trailoils.monster; 
+ bh=4menxIeVQBeeNhojHpazsoRWMoM=;
+ b=NIOivm7fmc/UPpquPc+XL9iC1GAskf4l6XQBCHAhGQtg9Z4Rq7OagPRy71FdeH6fDrpl6lM4JLNU
+ mpNBBYSOcjTNbRgxp0e1phQJ/vfFVtssqeuh9YRhxwO2dFRDNSK+frUvVOkksa1rslzCaRVmQXW5
+ NZMtzRIl6y725fdV2mM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=trailoils.monster; 
+ b=O9xhM0DaRqjT3pzSVJExo/xkOyBFnoaWdqeqfRgO/iBnL82/kH9bj8lOFB8NslbWNi5gPBcJQgpl
+ oCjHJHY3tQUYMxS7KnUWj0/Xey12Ii16zVGh98lyydlStpFtZfP1zcs3BU3rYTUj/FtrM/2QNLa2
+ aiYjbnqXUKys+Ms4cu8=;
+Received: by mail.trailoils.monster id h972s20001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 15:07:10 -0400 (envelope-from
- <lenore-soppe-intel+2Dgvt+2Ddev=lists.freedesktop.org@yarnoils.monster>)
-Date: Fri, 14 Oct 2022 15:07:10 -0400
-From: Lenore Soppe <lenore-soppe@yarnoils.monster>
+ Fri, 14 Oct 2022 16:08:09 -0400 (envelope-from
+ <manuela_metzga-intel+2Dgvt+2Ddev=lists.freedesktop.org@trailoils.monster>)
+Date: Fri, 14 Oct 2022 16:08:09 -0400
+From: Manuela Metzga <manuela_metzga@trailoils.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your Online Gutter Guard Choices
+Subject: T-Mobile Verification No.  4997990
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_397_1730512544.1665774417808"
-Message-ID: <0.0.0.2C.1D8E000297EB466.2E1772@mail.yarnoils.monster>
+ boundary="----=_Part_337_1990261195.1665778070199"
+Message-ID: <0.0.0.25.1D8E008AE5C6FA4.68B5A9@mail.trailoils.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,53 +53,148 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_397_1730512544.1665774417808
+------=_Part_337_1990261195.1665778070199
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-[mm_gutter_guard_subjects]
+T-Mobile Verification No.  1304304
 
-Visit Here to See Gutter Guards Online .  http://www.yarnoils.monster/Bridgewater-viewpoint/a8O5AS2395n8Q6s10v403bpf94p36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQTd9me5hi10C5FWwD2
-
-
-
-
-2222' MICHELSON DR STE.  222 _112, Irvine, Calif.  926l2_
-
-No longer wish to receive email notices from us?, Go.On.Here   http://www.yarnoils.monster/20f4N2395rL86x10t403czf94h36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQTd9me5p1Tp05QXpwD/Bridgewater-viewpoint
-This e-mail message was designated for intel-gvt-dev@lists.freedesktop.org
-
+Dear Consumer,
  
-2942279 7933896
+T-Mobile's mission statement says Redefining the way consumers and businesses buy wireless services through leading product and service innovation. 
+
+ In order for T-Mobile to persistently enrich our products & service, we would like your feedback. 
+
+ Complete the short survey about T-Mobile to select your promotional reward of up to $1OO. oo value. 
+
+Start Here for up to $1OO Reward for your input-http://www.trailoils.monster/51b6wl239u5n86sG11V4l03flf95Y36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJd9mK7H1FmVB05sNwJD/excerpted-crackled
+ 
+We appreciate your time and input. 
+
+Hurry Up! Offer Becomes Void in 3 Days.
 
 
 
 
+Our content was chosen for intel-gvt-dev@lists.freedesktop.org
+To update your message elections, Visit Right Here-http://www.trailoils.monster/b514K2395N8nG610C4040Hf95B36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQJd9mK6ai1Bl05N21wD/credited-PASCAL
+. 96 MOWAT.  Ave. , Toronto_ ONT.  M4K 3Kl CA
+2012965-4997990
 
-
-------=_Part_397_1730512544.1665774417808
+------=_Part_337_1990261195.1665778070199
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.yarnoils.monster/burner-intensifiers/cf66e239Fp5O8_6U10R403bGf94S36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQTd9me7c10ZmvW6wBwD0l" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to See Gutter Guards Online</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.yarnoils.monster/burner-intensifiers/cf66e239Fp5O8_6U10R403bGf94S36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQTd9me7c10ZmvW6wBwD0l"><img alt="Find Affordable Gutter Guards Here" src="http://www.yarnoils.monster/placid-muffles/eb86j2QN395Qy_7a11X403ldif94l36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQTd9me6S10Fwj6aBwDlk" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222' Michelson DR. STE. 222~112, lrvine, CALIFORNIA 92612-</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive email notices from us?, <a href="http://www.yarnoils.monster/e036I2XO395fV8L610g403cKf94C36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQTd9me5B10Dv5C0NwD/singleton-stammerer">Go.On.Here</a> </span></span>{{{http://www.yarnoils.monster/e036I2XO395fV8L610g403cKf94C36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQTd9me5B10Dv5C0NwD/singleton-stammerer</p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2942279~7933896</span></span></p>   
- <img src="http://www.yarnoils.monster/9356F23gQ95pP85G12N4Pt03eyf94h36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQTd9me7h1Qih0P6WjwD@l/Bridgewater-viewpoint" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 36pt; font-family: &quot;Courier New&quot;; color: r=
+gb(255, 255, 255); background-color: rgb(255, 0, 255); font-variant-numeric=
+: normal; font-variant-east-asian: normal; vertical-align: baseline; white-=
+space: pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=3D=
+"font-size: 36pt; font-family: Georgia; color: rgb(255, 255, 255); backgrou=
+nd-color: rgb(255, 0, 255); font-variant-numeric: normal; font-variant-east=
+-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-T-Mobile=
+</span><span style=3D"font-size: 36pt; font-family: &quot;Courier New&quot;=
+; color: rgb(255, 0, 255); background-color: rgb(255, 0, 255); font-variant=
+-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline=
+; white-space: pre-wrap;">xxxxxx</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">Dear Consumer,</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Georgia; color: rgb(32, 33, 36); =
+background-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeri=
+c: normal; font-variant-east-asian: normal; vertical-align: baseline; white=
+-space: pre-wrap;">T-Mobile's</span><span style=3D"font-size: 11pt; font-fa=
+mily: Arial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); =
+font-variant-numeric: normal; font-variant-east-asian: normal; vertical-ali=
+gn: baseline; white-space: pre-wrap;"> mission statement says Redefining th=
+e way consumers and businesses buy wireless services through leading produc=
+t and service innovation.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; color: rgb(32, 33, 36); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I=
+n order for </span><span style=3D"font-size: 11pt; font-family: Georgia; co=
+lor: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-weight: 70=
+0; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-=
+align: baseline; white-space: pre-wrap;">T-Mobile</span><span style=3D"font=
+-size: 11pt; font-family: Arial; color: rgb(32, 33, 36); background-color: =
+rgb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: =
+normal; vertical-align: baseline; white-space: pre-wrap;"> to constantly =
+innovate our customer service &amp; products, we would like your feedback.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">C=
+omplete the short survey about </span><span style=3D"font-size: 11pt; font-=
+family: Georgia; color: rgb(51, 51, 51); background-color: rgb(255, 255, 25=
+5); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian=
+: normal; vertical-align: baseline; white-space: pre-wrap;">T-Mobile</span>=
+<span style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51);=
+ background-color: rgb(255, 255, 255); font-variant-numeric: normal; font-v=
+ariant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;=
+"> to select your exclusive bonus of up to </span><span style=3D"font-size: 11pt; f=
+ont-family: Arial; color: rgb(51, 51, 51); background-color: rgb(255, 255, =
+255); font-weight: 700; font-variant-numeric: normal; font-variant-east-asi=
+an: normal; vertical-align: baseline; white-space: pre-wrap;">$100.00</spa=
+n><span style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51=
+); background-color: rgb(255, 255, 255); font-variant-numeric: normal; font=
+-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wra=
+p;"> value.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><a =
+href=3D"http://www.trailoils.monster/excerpted-crackled/1024M2395z8r6z12eW4o03fwf95t36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJd9mK5Hk1l05zPTwD" style=3D"text-decoration-line: none;"><span style=3D"fo=
+nt-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); background-colo=
+r: rgb(255, 255, 255); font-weight: 700; font-variant-numeric: normal; font=
+-variant-east-asian: normal; text-decoration-line: underline; text-decorati=
+on-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">=
+Start Here for up to $1OO Reward for your input</span></a></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; color: rgb(51, 51, 51); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">W=
+e appreciate your help and cooperation.</span></span></p>=20
+  <br />=20
+  <span style=3D"font-size:16px;"><span style=3D"font-family:arial,helvetic=
+a,sans-serif;">Hurry Up! Offer Becomes Void in 3 Days.</span></span>
+  <br /> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;">96' Mowat- Av., Toronto- Ont M4K 3KI CN</p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">Our content was chosen for intel-gvt-dev@lists.freedesktop.org</span></span>=
+</p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">To update your message elections, </span><a href=3D"http://www.trailoils.monster/excerpted-crackled/4fe6JX23P95gm86M10L4040If95w36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJd9mK6S1FCO05Y13wD" style=3D"text-decor=
+ation-line: none;"><span style=3D"font-size: 10pt; font-family: Arial; colo=
+r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
+ normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
+ertical-align: baseline; white-space: pre-wrap;">Visit Right Here</span></a></s=
+pan></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-d73c5059-7fff-cc74-84b5-c16599237551"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">1304304.4997990</span></span></p>  =20
+ <img src=3D"http://www.trailoils.monster/5755U2C395Bz85F11F4x041Of95D36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJd9mK5A10YY5tNwDL/stemming-battered" alt=3D""/></body>
 </html>
 
-------=_Part_397_1730512544.1665774417808--
+------=_Part_337_1990261195.1665778070199--
 
