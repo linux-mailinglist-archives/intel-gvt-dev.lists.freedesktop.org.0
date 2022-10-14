@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCE835FF039
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 16:23:33 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B64455FF2DB
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 19:18:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 75BC110EAFD;
-	Fri, 14 Oct 2022 14:23:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 654A110EB4E;
+	Fri, 14 Oct 2022 17:18:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 14 Oct 2022 14:23:28 UTC
-Received: from mail.lostoil.monster (unknown [213.209.129.242])
- by gabe.freedesktop.org (Postfix) with ESMTP id D2F8410EAFB
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Oct 2022 17:17:56 UTC
+Received: from mail.inviteoil.monster (unknown [213.209.129.157])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E725310EB4D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 14:23:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lostoil.monster; 
+ Fri, 14 Oct 2022 17:17:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=inviteoil.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=vassey-rachael@lostoil.monster; 
- bh=c2mmHNsgQf7UQnQuc7wO+ao1n4s=;
- b=RzqAL3IlLpRN02Tny/wYEiIlKXwUoZDgUMtB9VP1f3vf5Ie2ivGEBXdvMi4kdy9yIkct5BCYrY6f
- bE6mG6FiTtrKtn5k9++It0+bgpdTbPOg3x2oE0qydIz71J1837EFuYsrkR0YyehmT15GXpLA32mE
- VnAG2ljFZWUicPeaS2Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lostoil.monster;
- b=LyOJGhy2IMnvXpRnhFP4uy7EsyDJ6WG5ELPvmqUG+/49Y6lAebNvZpSZJPjQdBUOpuZYtFyp1LgK
- vpz8kehNBg070lCgPh5y4Pmeyq0ZjyKXbMcCyjQn/0cp2fGzDwb85dL0P6xbEmuKR0UUEaUQeqyf
- Yw8oECOBzT261WV7E7U=;
-Received: by mail.lostoil.monster id h95oe20001go for
+ i=alexandra-fahnestock@inviteoil.monster; 
+ bh=o4gH+F4tCp+j12yTxPDajIdaiIg=;
+ b=IRwL/2nXp+16y6OnxABroADcgAVpqQEWZNBxOIz5RzF4ml9UlKc4Q05gF1iENH/VS1hXtEpfwVdM
+ D7WdQuN5uR9RceGORZf5WrJvIMHxnxFl2rl/0AZdxwtxGcY47bSaC8QEfve+b+r8K72mNaVCs9tB
+ esrFuUmhZvfzyzk94YU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=inviteoil.monster; 
+ b=u5EFJElnxBRcC7eKmRX4uTHxNX6LISbkfHdQXBOFePzxAOWLYBg6QqKJTqd7TqrNrCp+6wdxrnHQ
+ NYxrb/TwOwyvt9m0yesWxFgycD5E+X+kAPRPv93d34cPljodX2QyBzkTCDLjxeRd9UvUg4XcJimo
+ zn5Ww/S79V0MqZdYqyk=;
+Received: by mail.inviteoil.monster id h96csa0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 10:05:19 -0400 (envelope-from
- <vassey-rachael-intel+2Dgvt+2Ddev=lists.freedesktop.org@lostoil.monster>)
-Date: Fri, 14 Oct 2022 10:05:19 -0400
-From: Rachael Vassey <vassey-rachael@lostoil.monster>
+ Fri, 14 Oct 2022 13:09:37 -0400 (envelope-from
+ <alexandra-fahnestock-intel+2Dgvt+2Ddev=lists.freedesktop.org@inviteoil.monster>)
+Date: Fri, 14 Oct 2022 13:09:37 -0400
+From: Alexandra Fahnestock <alexandra-fahnestock@inviteoil.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get Multiple Window Prices from Brand Name Windows
+Subject: Choose the best professional for your home project
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_22_155599386.1665756302786"
-Message-ID: <0.0.0.2.1D8DFD5FE7ED32E.110C6A@mail.lostoil.monster>
+ boundary="----=_Part_667_154057250.1665767355325"
+Message-ID: <0.0.0.4A.1D8DFEFBD2512F2.638251@mail.inviteoil.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_22_155599386.1665756302786
+------=_Part_667_154057250.1665767355325
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Choose the best professional for your home project
+
+Tap Here for Affordable Prices within Your Budget. http://www.inviteoil.monster/echelon-house/3d25SK2395C8sx612Ey40F33vf92u36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQsd9mR5M10tO6EywD0X
+
+Search for a Professional Then Get Prices and Get Your Project Started As Soon As Possible. 
+
+
+
+
+1216- BR0ADWAY,  FLOOR 2, 
+NEW YORK CITY, NEW YORK 
+10001. 
+No longer want to receive email information?, Start Here. http://www.inviteoil.monster/24b5v2X395A86uz12V4u0W34Af92X36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsd9mR5e10WV5XqXwD/baffled-stooge
+This notice was selected for intel-gvt-dev@lists.freedesktop.org
+65651134. 4157888
+
+------=_Part_667_154057250.1665767355325
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,22 +82,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><a href="http://www.lostoil.monster/8094W2395v8o6i11K4025KHf8fn36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQkd9m97gw1y0sl6iLMMwD/brutality-brig" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to get Window Quotes from Andersen & more</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.lostoil.monster/8094W2395v8o6i11K4025KHf8fn36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQkd9m97gw1y0sl6iLMMwD/brutality-brig"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1015px;"><img alt="Go here to get Affordable Window Quotes" src="http://www.lostoil.monster/diapers-unexpanded/5d05e2j395iO7ra10p4027Rf8fH36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQkd9m95z10JG5I0w2D" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1015px;" /></span></span></span></a></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><a href="http://www.inviteoil.monster/3b36lO239u5OZ8B610R4033zf92G36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsd9mR7v1MQ0Uo5WTywD/creasing-persons" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for Affordable Prices within Your Budget</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:795px;"><a href="http://www.inviteoil.monster/3b36lO239u5OZ8B610R4033zf92G36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsd9mR7v1MQ0Uo5WTywD/creasing-persons"><img alt="Compare Angi's Project Pros to Save" src="http://www.inviteoil.monster/7af5nq2395b7aAv11Q403k5uf92y36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQsd9mR6c10Dj_6Q@MlwD/creasing-persons" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 795px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Search for Pros Then Get Quotes and Get Your Project Started Soon.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your notification choices, </span><a href="http://www.lostoil.monster/sealed-optimize/cf66y23v9Z5l8D6M12HP4026jnf8fC36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkd9m96V1ox0X6EzJJwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go This Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">950. TOWER Lane, Foster., Calif 944O4- US.</span></span></p> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3280683-2951608</span></span></p>   
- <img src="http://www.lostoil.monster/collaborator-compost/9724z2395U85wj10k4028Qf8fk36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkd9m95Q10Xp6EXOwzD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1216- BR0ADWAY,&nbsp; FLOOR 2,<br /> NEW YORK, New.York 10001'</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email information?,<a href="http://www.inviteoil.monster/24b5z23R95W8Pw612Mm4s034Of92I36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQsd9mR7IMX1wV05yJJwD/victim-specifies"> Start Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-8237c7f7-7fff-7f17-d503-d2a3715d976b"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">65651134:4157888</span></span></p>   
+ <img src="http://www.inviteoil.monster/ceremonialness-purposely/6485oi2395b8v5U11X4036sif92i36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsd9mR7bxN1Vp06tMJwDX" alt=""/></body>
 </html>
 
-------=_Part_22_155599386.1665756302786--
+------=_Part_667_154057250.1665767355325--
 
