@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 804905FE6E6
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 04:22:04 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AB125FE77F
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 05:17:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 84FF810EA4A;
-	Fri, 14 Oct 2022 02:22:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0F4B010EA5F;
+	Fri, 14 Oct 2022 03:17:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 14 Oct 2022 02:21:56 UTC
-Received: from mail.famuntil.click (unknown [213.209.129.45])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5C87010EA4A
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Oct 2022 03:17:00 UTC
+Received: from mail.insertfam.click (unknown [173.244.43.98])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B981710EA5C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 02:21:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=famuntil.click; 
+ Fri, 14 Oct 2022 03:17:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=insertfam.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=angelia_solar@famuntil.click; 
- bh=ZWi60xhSItcSq9BVngOvIhsj1tQ=;
- b=Z6BQSZMYAFPLgeMKKat+TQ1vVmyKoSqx1m0rFjHOVnvhwi8eim/8gRqUB5YEGHbMAmlglZnT4Whz
- F4oNMS4Ultm1i+5sRFvXu37uSUb2Z08+afIx/W+C/33FGsna+60nxIqjIeJSxD22L5AcYSFPzQir
- NvHS/AcoPl04wCKYdtI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=famuntil.click;
- b=iCUz15YF1rVrEiMql2jYarMUAuum0o8RhBZSfMw0H7rxkssZBW1yai98oPc7bUOgFYbkAcL81/AD
- u0eMM/4sIgogfTHneTgcPY/EXNLtLflfkRoPwxGFc9AIhWDaF0lTBrDBA0j37nmCXwGzg40Y6lWv
- 35/2SLoOIX+cy1zu14I=;
-Received: by mail.famuntil.click id h933s80001gt for
+ i=gina-felcher@insertfam.click; 
+ bh=721O+E0I4KMjbx7R2WtdPWdaXvo=;
+ b=F1MU/5GHyhsO6b1wPHTfl4pVTB778AZcbVcQkZUk3SdAHOjD/fn7zeZQwZlP25F5TEHq/5pB9oaX
+ grtZBcr98md9HuPLAezNYBw1mq3coxS8st/YVdtrRWyDW/tIsxqW7L4l5kYC2BaMJtTr87WckPIJ
+ vQqMpnEsU/R1+hBmKo4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=insertfam.click;
+ b=gURjzt9JDmgfzY99C8B8cdckBs+o5EAsgOPpyu5NHHf1aZ4KMlx1a430v9+MY94CUGBw24gvShJB
+ D8Jo4cbaSPPKNCOS78XAH2ylCtBApvhzVKrdiAYtRDVSaIBJKnqw4nnLFgnqHbd4KLv2ibjg0UeE
+ K+JPqo9p8dZPQQE/RAA=;
+Received: by mail.insertfam.click id h93aao0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 13 Oct 2022 22:06:59 -0400 (envelope-from
- <angelia_solar-intel+2Dgvt+2Ddev=lists.freedesktop.org@famuntil.click>)
-Date: Thu, 13 Oct 2022 22:06:59 -0400
-From: Angelia Solar <angelia_solar@famuntil.click>
+ Thu, 13 Oct 2022 23:05:13 -0400 (envelope-from
+ <gina-felcher-intel+2Dgvt+2Ddev=lists.freedesktop.org@insertfam.click>)
+Date: Thu, 13 Oct 2022 23:05:13 -0400
+From: Gina Felcher <gina-felcher@insertfam.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Most companies offer "secret" senior discounts
+Subject: Take the Kroger Marketing Survey & Select your Bonus
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_373_312381606.1665713204018"
-Message-ID: <0.0.0.29.1D8DF71A49C6E0C.4FECFE@mail.famuntil.click>
+ boundary="----=_Part_157_334073161.1665716694855"
+Message-ID: <0.0.0.11.1D8DF79C72E83C6.276825@mail.insertfam.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,25 +53,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_373_312381606.1665713204018
+------=_Part_157_334073161.1665716694855
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Most companies offer "secret" senior discounts
+Take the Kroger Marketing Survey & Select your Bonus
 
-Start Here to Save at age 50+,http://www.famuntil.click/thwarts-Ephesus/1T25b2u395b8Rn610z4005Xf87o36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQudoKQ5R1IK06pNOwDl
-
-Hurry! Sale Ends in 2 Days.
+Click Here to Take the Feedback Survey,http://www.insertfam.click/dozing-Rigel/4686O23qR95s86PI10H4009Hf88X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQsdoKK6l10Zgh5VLwUD
 
 
 
-To pull the plug on email, Visit-Ahead-Here,http://www.famuntil.click/tiling-mustard/cd86c23Wv95D8N6g11O40F06uf87n36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQudoKQ5G1gL06c0wD@2
-3O2' Washington St.  # 150-7835', 
-SAN DIEGO, California 92IO3_
-Our communication was chosen for intel-gvt-dev@lists.freedesktop.org
-4393934,2321647
 
-------=_Part_373_312381606.1665713204018
+115.  East  23RD ST.  NewYork New York 10010- US.  
+
+To sever notices, Go_On_Here,http://www.insertfam.click/abb6rV239M5b86mU12yV40M0aof88x36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsdoKK7a10lUUy6hkpXwD/Kuala-splint
+
+This e-mail content was intended for intel-gvt-dev@lists.freedesktop.org
+
+1580052,7596195
+
+------=_Part_157_334073161.1665716694855
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,20 +81,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><a href="http://www.famuntil.click/89f6z2yT395W8Un610h4005wf87I36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQudoKQ7RrCm10k5Uq@wD/alert-localize" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to Save at age 50+</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><a href="http://www.famuntil.click/89f6z2yT395W8Un610h4005wf87I36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQudoKQ7RrCm10k5Uq@wD/alert-localize" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:559px;height:913px;"><img alt="Go Here for the 19 Best Senior Discount Offers" src="http://www.famuntil.click/vouching-steeply/eb86f23W9J5E7nal10t4007uf87y36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQudoKQ6cHW10s6zLwWPD" style="margin-left: 0px; margin-top: 0px; width: 559px; height: 913px;" /></span></span></a></span></p> &n
- bsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hurry! Sale Ends in 2 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.insertfam.click/7914R2395z8tQ612Q40C0Y9nf88i36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQsdoKK7k10rkmA6dywlDU/poker-municipal" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here to Take the Feedback Survey</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.insertfam.click/7914R2395z8tQ612Q40C0Y9nf88i36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQsdoKK7k10rkmA6dywlDU/poker-municipal" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:326px;"><img alt="Click Here to Take the Consumer Survey" src="http://www.insertfam.click/7914D2395ND7ah10D400btf88i36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQsdoKK6Q1Jz0g5PUwD@/fitters-scares" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 326px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hustle! Offer Is Over in 2 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To pull the plug on email, </span><a href="http://www.famuntil.click/thwarts-Ephesus/3f05Q239M5WW8k612A4n006iuf87s36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQudoKQ5Q1IN06NOl2wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit-Ahead-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">302. WASHINGT0N STREET STE. 150-7835,<br /> San-Diego, CA 92IO3</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our communication was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ee570be4-7fff-3762-47e4-6d81148d4c53"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4393934,2321647</span></span></p>   
- <img src="http://www.famuntil.click/tiling-mustard/d8c5t2B395zVk8511hq4008_f87H36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQudoKQ5BXN106JWUwlD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I15. EAST&nbsp; 23rd Street NEW YORK New-York 1OO1O. USA&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To sever notices, </span><a href="http://www.insertfam.click/Kuala-splint/cd86y23C9L5oT8t610B400aUf88v36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQsdoKK5sU10K5upwND" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go_On_Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail content was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1580052 7596195</span></span></p>   
+ <img src="http://www.insertfam.click/dozing-Rigel/bca4e2395H8tY510U400cxf88A36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQsdoKK5XDD105rMwMD" alt=""/></body>
 </html>
 
-------=_Part_373_312381606.1665713204018--
+------=_Part_157_334073161.1665716694855--
 
