@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF9D35FED38
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 13:34:18 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA2855FEEAC
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Oct 2022 15:31:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8C11110EAC9;
-	Fri, 14 Oct 2022 11:34:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7D4A010EAEB;
+	Fri, 14 Oct 2022 13:31:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Fri, 14 Oct 2022 11:34:14 UTC
-Received: from mail.howlsoil.monster (unknown [213.209.129.123])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5152410EAC8
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Oct 2022 13:31:54 UTC
+Received: from mail.killsoil.monster (unknown [213.209.129.231])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 28E4B10E973
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 11:34:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=howlsoil.monster;
+ Fri, 14 Oct 2022 13:31:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=killsoil.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sally_constancio@howlsoil.monster; 
- bh=fxHI5i5o5dZsmdFhCmXL3SNwQBc=;
- b=BFtKXHSreOMbgPGGacuAQZ+XF1VSwRhE9O1LQj8wIiAwF6TRPR6tBoqT5OAGmdlXe3y0jPOD3W2A
- lztNlsQqS0rjssqeMHPHpw7S3/M6uF5j0TptmuzLBNggMVjKAd11XPwjVTQJwEFKAiGr8ohsxrL4
- cGlWHQzzNkOtTqnE038=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=howlsoil.monster;
- b=N7jhBexpCQf8hg+O+trrQjrx7+iOLMS3dNZB7gSsEoqQJhS/Ru6mBVS+oMt+kO2kPJvU0yWbfmTR
- 08cN9DFKx294GAB6mC0NcorU9F6V9qHP1ifo7iZy7q0c+YBzTO8iA3QRbGo3yqVKKobOReazWJZK
- 0eMDs9NBteTCloi8KZ8=;
-Received: by mail.howlsoil.monster id h954jc0001gn for
+ i=meghan-sincebaugh@killsoil.monster; 
+ bh=fuXhutfuZyIe0U+6OshGMj/aMdc=;
+ b=BPWXwmZ+4mBPbgS3BhfXcRcrTZNLSAMIghmcJJqc/rPNRXtt0N2WndnAZP28iPynj999Pnw3NDU/
+ AT1imtzzNzHjgw4brLKaqRylkqucgUGudvUBzjhwlUzJBaAqd4zOvLczx7DBeviu+ZCAAO7F4Oew
+ f3Ndz8krE8oDXqIr5E4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=killsoil.monster;
+ b=XwYh7oH5l/zRJJ/tw0Fu0McHYKJ0PLQjjo7Y2GdAH4ksKxfbadB35+eRSfYQ56sFOq8Y0GD0YD73
+ IUJC6ZtdBzThh4Qcwi+U98y1idNE5tAXuMHDwQRWYxF9PtSFbb70r4aSw+/7yMYvh1hC9OCD8MlS
+ 4Qxx4Oa7cL6+hhKv/+A=;
+Received: by mail.killsoil.monster id h95ick0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 07:12:27 -0400 (envelope-from
- <sally_constancio-intel+2Dgvt+2Ddev=lists.freedesktop.org@howlsoil.monster>)
-Date: Fri, 14 Oct 2022 07:12:27 -0400
-From: Sally Constancio <sally_constancio@howlsoil.monster>
+ Fri, 14 Oct 2022 09:07:54 -0400 (envelope-from
+ <meghan-sincebaugh-intel+2Dgvt+2Ddev=lists.freedesktop.org@killsoil.monster>)
+Date: Fri, 14 Oct 2022 09:07:54 -0400
+From: Meghan Sincebaugh <meghan-sincebaugh@killsoil.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Here's your Reward up to $1OO for being an Ace Consumer  8441632
+Subject: You've been Selected by Lowes  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_220_1866813286.1665745932835"
-Message-ID: <0.0.0.18.1D8DFBDD7FFD850.2ACD6D@mail.howlsoil.monster>
+ boundary="----=_Part_400_204920650.1665752864525"
+Message-ID: <0.0.0.2C.1D8DFCDF8B0B000.4A6EF1@mail.killsoil.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,191 +53,48 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_220_1866813286.1665745932835
+------=_Part_400_204920650.1665752864525
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Here's your Reward up to $1OO for being an Ace Consumer  7969738
+You've been Selected by Lowes  intel-gvt-dev@lists.freedesktop.org
+
+Start Here for the Lowes Offer-http://www.killsoil.monster/packagers-thrusters/e405LP2395Oi86o10f4021nf8eM36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQVd9mo6Nw10AT5IWw3D
 
 
-Dear Customer intel-gvt-dev@lists.freedesktop.org ,
-
-ACE Hardware's vision is To be the best, most helpful hardware stores on the planet. 
-
-In order for ACE Hardware to continuously innovate our customer service & products, we would like your opinion. 
-
-Please complete the short survey about ACE Hardware then select your exclusive reward of up to $1OO. OO value. 
-
-Visit Here to Take our Feedback Survey-http://www.howlsoil.monster/underwrite-boasters/40e5U2Y395nzt8611u401nbOf8cK36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ4d9mm6h1C0KL5rUlwD
-
-Hurry! Deal Comes to an End in 3 Days.
-
- 
-We appreciate your time and contribution. 
-
- 
 
 
-Our notice was chosen for intel-gvt-dev@lists.freedesktop.org
-To bring notifications to an halt, Continue-Over-Here-http://www.howlsoil.monster/7194s2395W8q6x11wp401aKf8cS36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ4d9mm5UA1Y05N1TwD/underwrite-boasters
--96 MOWAT AVENUE, Toronto' ONT M4K 3Kl Canada
-8441632-
+96 MOWAT Ave, Toronto- Ontario M4K 3Kl CANADA
 
-------=_Part_220_1866813286.1665745932835
+To cut out email, Start This Way-http://www.killsoil.monster/d6d4J2395L8jx610n4022zf8eP36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQVd9mo5q1Mz06wPXwkD/packagers-thrusters
+
+Our email message was directed to intel-gvt-dev@lists.freedesktop.org
+
+8659408. 88080934
+
+------=_Part_400_204920650.1665752864525
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>
-  &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 36pt; font-family: Georgia; background-color: rgb(32=
-, 33, 36); font-variant-numeric: normal; font-variant-east-asian: normal; v=
-ertical-align: baseline; white-space: pre-wrap;">7969738</span><=
-span style=3D"font-size: 36pt; font-family: Georgia; color: rgb(32, 33, 36)=
-; background-color: rgb(32, 33, 36); font-variant-numeric: normal; font-var=
-iant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">=
-x</span><span style=3D"font-size: 36pt; font-family: &quot;Archivo Black&qu=
-ot;, sans-serif; color: rgb(255, 0, 0); background-color: rgb(32, 33, 36); =
-font-style: italic; font-variant-numeric: normal; font-variant-east-asian: =
-normal; vertical-align: baseline; white-space: pre-wrap;">ACE</span><span s=
-tyle=3D"font-size: 36pt; font-family: Georgia; color: rgb(32, 33, 36); back=
-ground-color: rgb(32, 33, 36); font-variant-numeric: normal; font-variant-e=
-ast-asian: normal; vertical-align: baseline; white-space: pre-wrap;">x=
-97010240</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">Dear Consumer,</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 12pt; font-family: Georgia; color: rgb(255, 0, 0); b=
-ackground-color: rgb(255, 255, 255); font-weight: 700; font-style: italic; =
-font-variant-numeric: normal; font-variant-east-asian: normal; vertical-ali=
-gn: baseline; white-space: pre-wrap;">ACE</span><span style=3D"font-size: 1=
-2pt; font-family: Arial; color: rgb(32, 33, 36); background-color: rgb(255,=
- 255, 255); font-weight: 700; font-style: italic; font-variant-numeric: nor=
-mal; font-variant-east-asian: normal; vertical-align: baseline; white-space=
-: pre-wrap;"> </span><span style=3D"font-size: 12pt; font-family: &quot;Fra=
-nklin Gothic&quot;, sans-serif; color: rgb(32, 33, 36); background-color: r=
-gb(255, 255, 255); font-weight: 700; font-style: italic; font-variant-numer=
-ic: normal; font-variant-east-asian: normal; vertical-align: baseline; whit=
-e-space: pre-wrap;">Hardware</span><span style=3D"font-size: 12pt; font-fam=
-ily: &quot;Franklin Gothic&quot;, sans-serif; color: rgb(32, 33, 36); backg=
-round-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant=
--east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'s v=
-ision is </span><span style=3D"font-size: 12pt; font-family: Roboto, sans-s=
-erif; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-we=
-ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
-ertical-align: baseline; white-space: pre-wrap;">To be the best, most helpf=
-ul hardware stores on the planet.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I=
-n order for </span><span style=3D"font-size: 12pt; font-family: Georgia; co=
-lor: rgb(255, 0, 0); background-color: rgb(255, 255, 255); font-weight: 700=
-; font-style: italic; font-variant-numeric: normal; font-variant-east-asian=
-: normal; vertical-align: baseline; white-space: pre-wrap;">ACE</span><span=
- style=3D"font-size: 12pt; font-family: Georgia; color: rgb(32, 33, 36); ba=
-ckground-color: rgb(255, 255, 255); font-weight: 700; font-style: italic; f=
-ont-variant-numeric: normal; font-variant-east-asian: normal; vertical-alig=
-n: baseline; white-space: pre-wrap;"> </span><span style=3D"font-size: 12pt=
-; font-family: &quot;Franklin Gothic&quot;, sans-serif; color: rgb(32, 33, =
-36); background-color: rgb(255, 255, 255); font-weight: 700; font-style: it=
-alic; font-variant-numeric: normal; font-variant-east-asian: normal; vertic=
-al-align: baseline; white-space: pre-wrap;">Hardware</span><span style=3D"f=
-ont-size: 12pt; font-family: &quot;Franklin Gothic&quot;, sans-serif; color=
-: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-variant-numer=
-ic: normal; font-variant-east-asian: normal; vertical-align: baseline; whit=
-e-space: pre-wrap;"> </span><span style=3D"font-size: 12pt; font-family: Ar=
-ial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-var=
-iant-numeric: normal; font-variant-east-asian: normal; vertical-align: base=
-line; white-space: pre-wrap;">to constantly innovate our customer service &amp; products, we would like=
- your comments.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); ba=
-ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P=
-lease complete the short survey about </span><span style=3D"font-size: 12pt=
-; font-family: Georgia; color: rgb(255, 0, 0); background-color: rgb(255, 2=
-55, 255); font-weight: 700; font-style: italic; font-variant-numeric: norma=
-l; font-variant-east-asian: normal; vertical-align: baseline; white-space: =
-pre-wrap;">ACE</span><span style=3D"font-size: 12pt; font-family: Arial; co=
-lor: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 70=
-0; font-style: italic; font-variant-numeric: normal; font-variant-east-asia=
-n: normal; vertical-align: baseline; white-space: pre-wrap;"> </span><span =
-style=3D"font-size: 12pt; font-family: &quot;Franklin Gothic&quot;, sans-se=
-rif; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-wei=
-ght: 700; font-style: italic; font-variant-numeric: normal; font-variant-ea=
-st-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hardwar=
-e</span><span style=3D"font-size: 12pt; font-family: &quot;Franklin Gothic&=
-quot;, sans-serif; color: rgb(51, 51, 51); background-color: rgb(255, 255, =
-255); font-variant-numeric: normal; font-variant-east-asian: normal; vertic=
-al-align: baseline; white-space: pre-wrap;"> </span><span style=3D"font-siz=
-e: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(=
-255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: norm=
-al; vertical-align: baseline; white-space: pre-wrap;">then select your =
-promotional reward of up to </span><span style=3D"font-size: 12pt; font-family: Arial; col=
-or: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 700=
-; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-a=
-lign: baseline; white-space: pre-wrap;">$100.oo</span><span style=3D"font-=
-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: r=
-gb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: n=
-ormal; vertical-align: baseline; white-space: pre-wrap;"> value.</span></sp=
-an></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><a =
-href=3D"http://www.howlsoil.monster/9ad5Vh2395W8WK612L401O9CNf8cq36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ4d9mm6EBsh106SLwDOl/rotated-contradicted" style=3D"text-decoration-line: none;"><span style=3D"fo=
-nt-size: 12pt; font-family: Arial; color: rgb(17, 85, 204); background-colo=
-r: rgb(255, 255, 255); font-weight: 700; font-variant-numeric: normal; font=
--variant-east-asian: normal; text-decoration-line: underline; text-decorati=
-on-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">=
-Visit Here to Take our Feedback Survey</span></a></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); ba=
-ckground-color: rgb(255, 255, 255); font-weight: 700; font-variant-numeric:=
- normal; font-variant-east-asian: normal; vertical-align: baseline; white-s=
-pace: pre-wrap;">Hurry! Deal Comes to an End in 3 Days.</span></span></p> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); ba=
-ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
-ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">=
-We appreciate your assistance and contribution.<br /> <br /> <br /> <br /> <span style=3D"font-size: 1=
-0pt;">Our notice was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></span=
-></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">To bring notifications to an halt, </span><a href=3D"http://www.howlsoil.monster/4c14s2395a86Qt12JD4I01aFf8ct36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ4d9mm6l_1zk06iUlWwD/hangover-courage" style=3D"text-decor=
-ation-line: none;"><span style=3D"font-size: 10pt; font-family: Arial; colo=
-r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
- normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
-ertical-align: baseline; white-space: pre-wrap;">Continue-Over-Here</span></a></s=
-pan></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">96 Mowat. AVE, TORONTO ONT. M4K 3KI CN<=
-/span></span></p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-d3721b0c-7fff-c6c2-457f-827900c7ee10"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">8441632:</span></span></p>  =20
- <img src=3D"http://www.howlsoil.monster/tearful-erasable/c246z23Jp95Lv85x10X401cpf8cV36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ4d9mm6gY1yg06EzwDX@" alt=3D""/></body>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.killsoil.monster/Ilyushin-alternation/8465I239z5QH86W11s402w1Xf8en36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVd9mo5r1uW05zl@wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Claim a Stanley Tool Kit from Lowes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><a href="http://www.killsoil.monster/Ilyushin-alternation/8465I239z5QH86W11s402w1Xf8en36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVd9mo5r1uW05zl@wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:465px;"><img alt="Start Here for the Lowes Offer" src="http://www.killsoil.monster/hijack-penance/5ee4D2395K7raQ11X40O23qf8eZ36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVd9mo7o1M0xVH6PyTLwD" style="margin-left: 0px; margin-top: 0px; width: 598px; height: 465px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Cracking! Deal Is Over in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 Mowat_ AV, TORONTO Ont. M4K3K1 CN</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut out email, <a href="http://www.killsoil.monster/2ff6u239vV5rM8_610l4022Wf8eH36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQVd9mo7Ul10lwt5z@@wD/alibi-aboveground">Start This Way</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c155573c-7fff-25bd-b394-2065d0dba66d"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4976940:88080934</span></span></p>   
+ <img src="http://www.killsoil.monster/2c36Q23Bs95F8U5h10C4024tf8em36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQVd9mo5zxF106dlzUwD/packagers-thrusters" alt=""/></body>
 </html>
 
-------=_Part_220_1866813286.1665745932835--
+------=_Part_400_204920650.1665752864525--
 
