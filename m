@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13AAC5FF8C0
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Oct 2022 08:24:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B27395FF96A
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Oct 2022 11:22:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C490A10E042;
-	Sat, 15 Oct 2022 06:24:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B361C10E45F;
+	Sat, 15 Oct 2022 09:22:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Sat, 15 Oct 2022 06:24:06 UTC
-Received: from mail.goutoils.click (unknown [77.90.188.37])
- by gabe.freedesktop.org (Postfix) with ESMTP id 53C6810E042
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 15 Oct 2022 09:22:02 UTC
+Received: from mail.oilpails.monster (unknown [66.63.186.49])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E904D10E417
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 15 Oct 2022 06:24:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=goutoils.click; 
+ Sat, 15 Oct 2022 09:22:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=oilpails.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=alvarez_francine@goutoils.click; 
- bh=ozpRroj6+DevI/UEMTx74Qy/mdY=;
- b=WH+CLqT3DYlU3bLIF8TZq/jIAzSeMB8pNiUsgJhY6MTYAMCqCT796AiG9E72B7guXyhEDW87OfhS
- KrDvm/u5Z9snqvCHJDi/ymDX5bPZVjAcojub1lfMGpj3IxmPo7+HPOv8veTNuxul70Sz5sargZOZ
- Jy/v1X77gi1qpCC0qRA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=goutoils.click;
- b=ScHKACdxSadx40VtLnrDs4MQmW4w8cFVFHhz8XpeBzMP3id7sGMFYbUcJ0e2NPCans3wvnSU0yM+
- QBVqL2dpZt1KfTQGVlNugnbHOs3Px4YxdfyQFQ4VI5z0ZuTdM/nCrlyp+9X+yteKsSwsOBAaRHXf
- kHZIPirw7c7yzOZ6PSo=;
-Received: by mail.goutoils.click id h99jg60001g5 for
+ i=dustin-rice@oilpails.monster; 
+ bh=dXdgUQiGdqyFLaW0Nv8qhVuSxj0=;
+ b=D8UEMcqH6lyAVMy4oZx36msaUz44/FrzHC7/IE+yNZK+jRspEz983DWY2r1yg3JEcu1yNDTuqBnc
+ /g5I5XlGPhUhliLTYOEK6DMkhyM1nYLwt3apanT3ZaUKsLxTGAUzY4pzjbzgMNAxjMN9gfj6c1RJ
+ r45Yyy0Vsmzn2F8566I=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=oilpails.monster;
+ b=MbGGFA/DzcGC8uCrk4BtygvzRseB4sU/dhbpz3XrZ3+hgfoD/rdf8iPTsHz19Q22UMFM9awwiT3H
+ DGPdlhmunxM0I6Pu40aQ/QNlez5MLawUAY2EtQfbYuOeRx0HU4m7nBMpS58H0Or2/bpKGyUXyEbn
+ 5A635G/BoHyQpqI3YjU=;
+Received: by mail.oilpails.monster id h99trk0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 15 Oct 2022 03:39:09 -0400 (envelope-from
- <alvarez_francine-intel+2Dgvt+2Ddev=lists.freedesktop.org@goutoils.click>)
-Date: Sat, 15 Oct 2022 03:39:09 -0400
-From: Francine Alvarez <alvarez_francine@goutoils.click>
+ Sat, 15 Oct 2022 05:11:49 -0400 (envelope-from
+ <dustin-rice-intel+2Dgvt+2Ddev=lists.freedesktop.org@oilpails.monster>)
+Date: Sat, 15 Oct 2022 05:11:49 -0400
+From: "Dustin Rice" <dustin-rice@oilpails.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations Lowes Shopper, Your New Stanley Tool Kit form Lowes
- intel-gvt-dev@lists.freedesktop.org
+Subject: Help Keep Your Home Safe. Plans starting at $7/week w/ 36 mo. agm't.
+ Term and install fees. Landline req'd.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_259_1973059426.1665814155734"
-Message-ID: <0.0.0.1B.1D8E069368168F2.16AE7F@mail.goutoils.click>
+ boundary="----=_Part_487_624400215.1665825042812"
+Message-ID: <0.0.0.35.1D8E076282A8380.AA261@mail.oilpails.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,47 +54,91 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_259_1973059426.1665814155734
+------=_Part_487_624400215.1665825042812
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-Congratulations Lowes Shopper,Your New Stanley Tool Kit form Lowes  intel-gvt-dev@lists.freedesktop.org
+Help Keep Your Home Safe. Plans starting at $7/week w/ 36 mo. agm't. Term and install fees. Landline req'd.=20
 
-Click Here for a Stanley Tool Kit from Lowes-http://www.goutoils.click/6476I2u3K95yRt8611uy4063Uf9fm36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2d9nK6Lg1N0V6bkzwLD/alternately-explorers
+Visit.Here.Now:http://www.oilpails.monster/section-expertness/33c5I23G95I86vt12i40UQ67Ffa0p36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQad9om5aR10I5DOWwD
 
 
 
-96_ Mowat Avenue, Toronto.  ONT.  M4K 3K1 CA
 
-To stop messages, Go Ahead Here-http://www.goutoils.click/interiors-eyesight/cba6d239OW5kw86h10O4064gf9fp36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ2d9nK6R10FPs6SOwpDl
 
-This e-mail was directed to intel-gvt-dev@lists.freedesktop.org
 
-7905931~9215914
+1501 Yamato Road, Boca~Raton, Fl.  3343I =C2=A92022 ADT LLC
 
-------=_Part_259_1973059426.1665814155734
+ Do you want to stop getting these emails? You can unsubscribe~ here=
+: http://www.oilpails.monster/d315O239l5E8_h611oN4068Zfa0M36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQad9om7Q1CHF0z5pPwDU/embellishes-Eris
+
+To view a fill list of licensing click~here: http://www.oilpails.monster/suffixed-night/ed64R2395W8X6F12HM4I069Yfa0y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQad9om5t10IV5ry@wD
+
+------=_Part_487_624400215.1665825042812
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.goutoils.click/dc75H2w395hU86C12QR4V063nf9fk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2d9nK6b10FqW6OUwDkl/interiors-eyesight" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click Here for a Stanley Tool Kit from Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.goutoils.click/dc75H2w395hU86C12QR4V063nf9fk36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2d9nK6b10FqW6OUwDkl/interiors-eyesight" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.goutoils.click/variations-financier/c244O2395z7_ya10S4065uf9fj36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ2d9nK7zIhFj106A2WlwD" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Exclusive Offer Comes To An End in 2 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT- AVENUE, Toronto- ON M4K3KI Canada</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To stop messages,<a href="http://www.goutoils.click/2695a23F95n8tK611z4064Wlf9fi36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ2d9nK6m1lFV06oAyzwD/trafficking-amateurish"> Go Ahead Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7905931-9215914</span></span></p>   
- <img src="http://www.goutoils.click/eels-aloes/cd85g239n5Ct85O12W4h0r66mf9fJ36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ2d9nK7u1F0hyU6EXwPJD" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>
+  &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea0=
+3-992624c68b7d"><span style=3D"font-size: 14pt; font-family: Arial; font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;"><span style=3D"border:none=
+;display:inline-block;overflow:hidden;width:435px;height:2048px;"><a href=
+=3D"http://www.oilpails.monster/eK35cD2395S8T6F11c406Q7ufa0P36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQad9om5P1kJ06IzwWDB/renunciation-educable"><img alt=3D"Go Here for ADT Security" src=3D"http://www.oilpails.monster/captors-doctor/9366g_2I395ITB7a10K406aDfa0n36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQad9om5Kz1B06nOAwMD" s=
+tyle=3D"margin-left: 0px; margin-top: 0px; width: 602px; height: 2831px;" /=
+></a></span></span></span></p>=20
+  <br />=20
+  <br /> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea0=
+3-992624c68b7d"><span style=3D"font-size: 11pt; font-family: Arial; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;"><span style=3D"border:none;display:inline-bl=
+ock;overflow:hidden;width:26px;height:26px;"><img height=3D"26" src=3D"=
+http://www.oilpails.monster/sa75z23I95l7aUu10e406bhfa0M36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQad9om6QH1Y0Q5zL0wD/sentential-pushers" style=3D"margin-left:0px;margin-top:0px;" width=3D"26" /></span></=
+span><span style=3D"font-size:12px;"><span style=3D"font-family: Arial; fon=
+t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
+ baseline; white-space: pre-wrap;"> </span></span></span><span style=3D"fon=
+t-size:12px;"><span style=3D"font-family:arial,helvetica,sans-serif;">=
+15O1. Yamato ROAD, Boca-Raton, Fla 3343I.</span></span><span><span style=
+=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font=
+-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wra=
+p;"> &copy;2022 ADT LLC</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea0=
+3-992624c68b7d"><span style=3D"font-size: 11pt; font-family: Arial; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;">&nbsp;</span></span><span id=3D"docs-interna=
+l-guid-9899b2db-7fff-5fa1-ea03-992624c68b7d"><span style=3D"font-size: 11pt=
+; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian=
+: normal; vertical-align: baseline; white-space: pre-wrap;">&nbsp;Do you wa=
+nt to stop getting these emails? You can </span></span><span id=3D"docs-int=
+ernal-guid-9ed07753-7fff-0bf6-7c11-c8a4b69ed52e"><a href=3D"http://www.oilpails.monster/9714b2395tqV8612u40oS68Ifa0k36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQad9om7LF1Vx0K5eykwD/suffixed-night" sty=
+le=3D"text-decoration-line: none;"><span style=3D"font-size: 11pt; font-fam=
+ily: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-var=
+iant-east-asian: normal; text-decoration-line: underline; text-decoration-s=
+kip-ink: none; vertical-align: baseline; white-space: pre-wrap;">unsubscrib=
+e. here</span></a></span></p>=20
+  <div style=3D"text-align: center;">
+   <span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea03-992624c68b7d"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">To view a fill list of licensing </span></span>
+   <span id=3D"docs-internal-guid-740e5a9f-7fff-da23-ee66-e0d479bf2a09"><a =
+href=3D"http://www.oilpails.monster/suffixed-night/6c04E2395EA8R612op40_69kfa0Y36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQad9om5U1LJ06dlwDUP" style=3D"text-decoration-line: none;"><span style=3D"fo=
+nt-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
+meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
+line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
+: pre-wrap;">click.here</span></a></span>
+  </div>  =20
+ <img src=3D"http://www.oilpails.monster/renunciation-educable/1b65U2P395o8J5o11jx406cDfa0C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQad9om5a1jT05glwDU" alt=3D""/></body>
 </html>
 
-------=_Part_259_1973059426.1665814155734--
+------=_Part_487_624400215.1665825042812--
 
