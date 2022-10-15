@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7BA2E5FF662
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Oct 2022 00:28:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CFFFD5FF6C3
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Oct 2022 01:21:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 93B0010E122;
-	Fri, 14 Oct 2022 22:28:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9970C10E1BC;
+	Fri, 14 Oct 2022 23:21:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 332 seconds by postgrey-1.36 at gabe;
- Fri, 14 Oct 2022 22:28:13 UTC
-Received: from mail.nailoils.click (unknown [173.244.43.14])
- by gabe.freedesktop.org (Postfix) with ESMTP id F1B0210E114
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Oct 2022 23:21:17 UTC
+Received: from mail.oilsbrine.click (unknown [209.142.103.129])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B6EA810E1B2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 22:28:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nailoils.click; 
+ Fri, 14 Oct 2022 23:21:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=oilsbrine.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jeannie.benchoff@nailoils.click; 
- bh=tSkh/INNI1qK7tUfNdr5mOzbREw=;
- b=Z4bJhQ6CEef2ASjGi34N81Vp6wQ7GUJCvjr1s0rLe8ICxPocf4dWNdCe324/JwJdCOEzYTQEfiKu
- fMxeS9WM5fNNWLOxUtoV75Q2sd3anMahvOsAytfwm+37rOF2iLC8X4mCdqRrErWz9TLVC7N0YmJ2
- yaMGFKPVdY8ELbEadNg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nailoils.click;
- b=ISCZTXCKUZRoLpfe3ua+6mnQ52kHQt514O6nriXGB6b5X4HbTmoiIBGyiEzbJVr2Hj/m9tndZLs7
- wkmiGbb9G69P0/el2M+HJdEPcV1thKqSOb2hwv4T6Vu2Fn7eRnLQjToG5jQicg1gP33PiSZdHHHT
- wa8ZMUEvrSIONZW272w=;
-Received: by mail.nailoils.click id h97h7s0001g4 for
+ i=robyn-scharff@oilsbrine.click; 
+ bh=sDPiwr5jtaWDFTE4P74HHzOu0mc=;
+ b=iuZfRwRlferVgmvAob1CORvOo5KZInfzy25/vAsKgBx2I7r6oLTD1OHGL7LDkDvRFTtCxbtN5qmG
+ 8I7myUpI5tngL0ygTC4px2t/Zn/P3/2xK1Y9yHzg70K9AjUj6e3rT0zeKCiS9D77IPegt9MXnkEp
+ 1f4GxxsrCbl5JtuKgOQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=oilsbrine.click;
+ b=8QXGR5kMRR+K7cxECE5nDuCv+J9J7JFymjQP0DMxQez7/SFkuId3XZQ2tDKAODmizE5H2eMHjAYL
+ PECG4c8jiPbPdnZJbPnAlqo01VfoXlGfgCXT8Phu1eNQbHF9iD33O7ld1jn/Axl/d8rIt/fWfMJn
+ PdjmWEZFWQwVKxeb+I0=;
+Received: by mail.oilsbrine.click id h981um0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Oct 2022 18:06:40 -0400 (envelope-from
- <jeannie.benchoff-intel+2Dgvt+2Ddev=lists.freedesktop.org@nailoils.click>)
-Date: Fri, 14 Oct 2022 18:06:40 -0400
-From: Jeannie Benchoff <jeannie.benchoff@nailoils.click>
+ Fri, 14 Oct 2022 20:35:39 -0400 (envelope-from
+ <robyn-scharff-intel+2Dgvt+2Ddev=lists.freedesktop.org@oilsbrine.click>)
+Date: Fri, 14 Oct 2022 20:35:39 -0400
+From: Robyn Scharff <robyn-scharff@oilsbrine.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Collect your Starbucks Bonus for your input
+Subject: Receive Up to $100 Reward for your opinion about Ace  46709650
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_103_763005836.1665785183114"
-Message-ID: <0.0.0.B.1D8E0193C8F0510.2167A4@mail.nailoils.click>
+ boundary="----=_Part_241_1928673285.1665788757937"
+Message-ID: <0.0.0.1A.1D8E02E0CE057D2.16BED7@mail.oilsbrine.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,53 +53,189 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_103_763005836.1665785183114
+------=_Part_241_1928673285.1665788757937
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Collect your Starbucks Bonus for your input
+Receive Up to $100 Reward for your opinion about Ace
 
-Go Here to give your feedback on Starbucks. http://www.nailoils.click/5936AJ23O95r_8g610b4046kf97i36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ1d9nn7BYvpJ105njwDL/freighting-recalculates
+Dear Client,
+ 
+ACE Hardware's vision is To be the best, most helpful hardware stores on the planet. 
+ 
+In order for ACE Hardware to continuously cultivate our customer service & products, we would like your comments. 
+ 
+Please complete the short survey about ACE Hardware then select your exclusive bonus of up to $100. 00 value. 
+
+Begin Here for your Ace vs Home Depot Reward.  http://www.oilsbrine.click/42b6n239pC5tCK8612V4v04ZaUf98W36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.d9no7D1KXm0q5cLwDN/Byronize-litigate
+
+Go! Offer Goes Away in 24 Hours.
+
+Thank you for your help and contribution. 
 
 
 
 
-To cut communications, Begin_Here. http://www.nailoils.click/5b15S239L5EO8p610r4047yf97M36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ1d9nn7n1Yo0Jm5m@JwD/relabelling-faintest
-Our message was chosen for intel-gvt-dev@lists.freedesktop.org
-2468086. 8252810
-96_ Mowat Av. , Toronto- ONT M4K 3K1 CN
 
-------=_Part_103_763005836.1665785183114
+I26 East  Twenty-Third STREET NewYork NY lOOlO.  US.  
+To put a stop to notices.  http://www.oilsbrine.click/displacements-distinguishes/c606k23qL95Sz86g11R404bwXf98Q36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ.d9no6q1r_0l5A@w0D
+This e-mail was meant for intel-gvt-dev@lists.freedesktop.org
+. 46709650
+
+------=_Part_241_1928673285.1665788757937
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><a href="http://www.nailoils.click/mitten-perennial/62a4r2395b8vo612G4w046ppf97I36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ1d9nn5Y1C0P6R2qwD0" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to give your feedback on Starbucks</span></a></span></p> 
-  <div style="text-align: center;">
-   &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><a href="http://www.nailoils.click/mitten-perennial/62a4r2395b8vo612G4w046ppf97I36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ1d9nn5Y1C0P6R2qwD0" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:889px;"><img alt="Start Here to earn a Starbucks Reward up to $100" src="http://www.nailoils.click/McGregor-optimized/aO86s2I3X95Y7NaA10C4048of97D36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ1d9nn7W1NRD0s5bWpwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 889px;" /></span></span></a></span></p> 
-  <div style="text-align: center;">
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Step On It! Deal Ends in 48 Hours.</span></span>
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp;
-  </div> 
-  <div>
-   <span style="font-size:10px;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut communications, </span><a href="http://www.nailoils.click/stormiest-handsomer/e5e5Sh2395Jk8V612cLh4047Rf97B36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ1d9nn5qB1i06nNwD23" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin_Here</span></a></span></span>
-  </div> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our message was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2468086,8252810</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-e48e199d-7fff-4f6d-dd86-d969ece92a90"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96_ MOWAT Av., Toronto_ ON M4K3K1 CN</span></span></span></p>   
- <img src="http://www.nailoils.click/enthusiasms-rodeo/40e6Sk23B95qV85M10X4049Ff97V36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1d9nn5zo10_5ilwDB" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 36pt; font-family: Georgia; background-color: rgb(32=
+, 33, 36); font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;">3021040</span><=
+span style=3D"font-size: 36pt; font-family: Georgia; color: rgb(32, 33, 36)=
+; background-color: rgb(32, 33, 36); font-variant-numeric: normal; font-var=
+iant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">=
+x</span><strong><span style=3D"font-size: 36pt; font-family: &quot;Archivo =
+Black&quot;, sans-serif; color: rgb(255, 0, 0); background-color: rgb(32, 3=
+3, 36); font-style: italic; font-variant-numeric: normal; font-variant-east=
+-asian: normal; vertical-align: baseline; white-space: pre-wrap;">ACE</span=
+></strong><span style=3D"font-size: 36pt; font-family: Georgia; color: rgb(=
+32, 33, 36); background-color: rgb(32, 33, 36); font-variant-numeric: norma=
+l; font-variant-east-asian: normal; vertical-align: baseline; white-space: =
+pre-wrap;">x7620162</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 12pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">Dear Consumer,</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 12pt; font-family: Georgia; color: rgb(255, 0, 0); b=
+ackground-color: rgb(255, 255, 255); font-weight: 700; font-style: italic; =
+font-variant-numeric: normal; font-variant-east-asian: normal; vertical-ali=
+gn: baseline; white-space: pre-wrap;">ACE</span><span style=3D"font-size: 1=
+2pt; font-family: Arial; color: rgb(32, 33, 36); background-color: rgb(255,=
+ 255, 255); font-weight: 700; font-style: italic; font-variant-numeric: nor=
+mal; font-variant-east-asian: normal; vertical-align: baseline; white-space=
+: pre-wrap;"> </span><span style=3D"font-size: 12pt; font-family: &quot;Fra=
+nklin Gothic&quot;, sans-serif; color: rgb(32, 33, 36); background-color: r=
+gb(255, 255, 255); font-weight: 700; font-style: italic; font-variant-numer=
+ic: normal; font-variant-east-asian: normal; vertical-align: baseline; whit=
+e-space: pre-wrap;">Hardware</span><span style=3D"font-size: 12pt; font-fam=
+ily: &quot;Franklin Gothic&quot;, sans-serif; color: rgb(32, 33, 36); backg=
+round-color: rgb(255, 255, 255); font-variant-numeric: normal; font-variant=
+-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">'s v=
+ision is </span><span style=3D"font-size: 12pt; font-family: Roboto, sans-s=
+erif; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;">To be the best, most helpf=
+ul hardware stores on the planet.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 12pt; font-family: Arial; color: rgb(32, 33, 36); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I=
+n order for </span><span style=3D"font-size: 12pt; font-family: Georgia; co=
+lor: rgb(255, 0, 0); background-color: rgb(255, 255, 255); font-weight: 700=
+; font-style: italic; font-variant-numeric: normal; font-variant-east-asian=
+: normal; vertical-align: baseline; white-space: pre-wrap;">ACE</span><span=
+ style=3D"font-size: 12pt; font-family: Georgia; color: rgb(32, 33, 36); ba=
+ckground-color: rgb(255, 255, 255); font-weight: 700; font-style: italic; f=
+ont-variant-numeric: normal; font-variant-east-asian: normal; vertical-alig=
+n: baseline; white-space: pre-wrap;"> </span><span style=3D"font-size: 12pt=
+; font-family: &quot;Franklin Gothic&quot;, sans-serif; color: rgb(32, 33, =
+36); background-color: rgb(255, 255, 255); font-weight: 700; font-style: it=
+alic; font-variant-numeric: normal; font-variant-east-asian: normal; vertic=
+al-align: baseline; white-space: pre-wrap;">Hardware</span><span style=3D"f=
+ont-size: 12pt; font-family: &quot;Franklin Gothic&quot;, sans-serif; color=
+: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-variant-numer=
+ic: normal; font-variant-east-asian: normal; vertical-align: baseline; whit=
+e-space: pre-wrap;"> </span><span style=3D"font-size: 12pt; font-family: Ar=
+ial; color: rgb(32, 33, 36); background-color: rgb(255, 255, 255); font-var=
+iant-numeric: normal; font-variant-east-asian: normal; vertical-align: base=
+line; white-space: pre-wrap;">to continuously improve our customer service &amp; products, we would like=
+ your opinion.</span></span></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 12pt; font-family: Arial; color: rgb(51, 51, 51); ba=
+ckground-color: rgb(255, 255, 255); font-variant-numeric: normal; font-vari=
+ant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">P=
+lease complete the short survey about </span><span style=3D"font-size: 12pt=
+; font-family: Georgia; color: rgb(255, 0, 0); background-color: rgb(255, 2=
+55, 255); font-weight: 700; font-style: italic; font-variant-numeric: norma=
+l; font-variant-east-asian: normal; vertical-align: baseline; white-space: =
+pre-wrap;">ACE</span><span style=3D"font-size: 12pt; font-family: Arial; co=
+lor: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 70=
+0; font-style: italic; font-variant-numeric: normal; font-variant-east-asia=
+n: normal; vertical-align: baseline; white-space: pre-wrap;"> </span><span =
+style=3D"font-size: 12pt; font-family: &quot;Franklin Gothic&quot;, sans-se=
+rif; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-wei=
+ght: 700; font-style: italic; font-variant-numeric: normal; font-variant-ea=
+st-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Hardwar=
+e</span><span style=3D"font-size: 12pt; font-family: &quot;Franklin Gothic&=
+quot;, sans-serif; color: rgb(51, 51, 51); background-color: rgb(255, 255, =
+255); font-variant-numeric: normal; font-variant-east-asian: normal; vertic=
+al-align: baseline; white-space: pre-wrap;"> </span><span style=3D"font-siz=
+e: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: rgb(=
+255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: norm=
+al; vertical-align: baseline; white-space: pre-wrap;">then select your =
+survey bonus of up to </span><span style=3D"font-size: 12pt; font-family: Arial; col=
+or: rgb(51, 51, 51); background-color: rgb(255, 255, 255); font-weight: 700=
+; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-a=
+lign: baseline; white-space: pre-wrap;">$100.oo</span><span style=3D"font-=
+size: 12pt; font-family: Arial; color: rgb(51, 51, 51); background-color: r=
+gb(255, 255, 255); font-variant-numeric: normal; font-variant-east-asian: n=
+ormal; vertical-align: baseline; white-space: pre-wrap;"> value.</span></sp=
+an></p> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><a href=3D"http://www.oilsbrine.click/Boswellize-consolidates/3966a239yn5j86kU11p404aXCf98m36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ.d9no6h1ttz05eNwDX"><span id=3D"docs-internal-guid-7da25c20-7fff-7823=
+-a9e8-5afcd9570f47"><span style=3D"font-size: 12pt; font-family: Arial; col=
+or: rgb(17, 85, 204); background-color: rgb(255, 255, 255); font-weight: 70=
+0; font-variant-numeric: normal; font-variant-east-asian: normal; text-deco=
+ration-line: underline; text-decoration-skip-ink: none; vertical-align: bas=
+eline; white-space: pre-wrap;">Begin Here for your Ace vs Home Depot Reward</span></span></a><br /> <br /> &nb=
+sp;</p>=20
+  <span style=3D"font-size:16px;"><span style=3D"font-family:arial,helvetic=
+a,sans-serif;">Go! Offer Goes Away in 24 Hours.</span></span>
+  <br />=20
+  <br />=20
+  <span style=3D"background-color: rgb(255, 255, 255); color: rgb(51, 51, 5=
+1); font-family: Arial; font-size: 12pt; white-space: pre-wrap;">We appreciate yo=
+ur time and contribution.</span>
+  <br /> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">This e-mail was meant for intel-gvt-dev@lists.freedesktop.org</span></span>=
+</p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">To put a stop to notices, </span><a href=3D"http://www.oilsbrine.click/3775u2z395ch86B12Kr40V4brf98h36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ.d9no6LUS10F5JMwTD/displacements-distinguishes" style=3D"text-decor=
+ation-line: none;"><span style=3D"font-size: 10pt; font-family: Arial; colo=
+r: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian:=
+ normal; text-decoration-line: underline; text-decoration-skip-ink: none; v=
+ertical-align: baseline; white-space: pre-wrap;">Visit_Here_Now</span></a></s=
+pan></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">I15- EAST&nbsp; TWENTY-THIRD St. New-York New York =
+10010. UNITED STATES&nbsp;</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
+;"><span id=3D"docs-internal-guid-7da25c20-7fff-7823-a9e8-5afcd9570f47"><sp=
+an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;"> 46709650</span></span></p>  =20
+ <img src=3D"http://www.oilsbrine.click/transferrers-abolition/8645r23U95GI85X10i404cof98r36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.d9no5rn10J6JzBJwD" alt=3D""/></body>
 </html>
 
-------=_Part_103_763005836.1665785183114--
+------=_Part_241_1928673285.1665788757937--
 
