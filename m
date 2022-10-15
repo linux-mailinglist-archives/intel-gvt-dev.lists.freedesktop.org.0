@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BF4A5FFBB9
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Oct 2022 21:18:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 36C6E5FFB9F
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 15 Oct 2022 20:19:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C684010E454;
-	Sat, 15 Oct 2022 19:18:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E63E610E311;
+	Sat, 15 Oct 2022 18:19:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sat, 15 Oct 2022 19:18:37 UTC
-Received: from mail.limespom.monster (unknown [213.209.129.226])
- by gabe.freedesktop.org (Postfix) with ESMTP id DE3DA10E451
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sat, 15 Oct 2022 18:19:05 UTC
+Received: from mail.pomskinks.monster (unknown [209.142.103.158])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 49C4B10E2E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 15 Oct 2022 19:18:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=limespom.monster;
+ Sat, 15 Oct 2022 18:19:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pomskinks.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=christy.benek@limespom.monster; 
- bh=v4rdSUEGPBMceTsPquAIMXmG5oA=;
- b=PjKmbN5xpdmB7vEXowNGqBNqkpCpBYgjn7HWs5fsldxo2CW/FgSambJm/MCXj5ndPhDcVRSaHSs+
- oyjVttPWCl4nIaVCutJ/FhWz9VawwNPVzilZEsxsvAkGlWXhjqrcnyE6AL5k/wO8eFxTJ4/PclV6
- +u2K0aCI9MJdNeAvTIU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=limespom.monster;
- b=ZkFuh2Ucq+3LjWou/W++rXcjD2QlpzyGBm7fVqm2WCGtqRCjjN8wXUljLJLX4IDO85dSVJE8mXp6
- LgY5giPKtDj3qRlzlTXUzRfatRDaKjJ9W3OvMNXSOTVsTcaMgFHegpOSpvDc+xvOxCzwCnDqm1Ut
- 2P10Z4mw5itwFbGAZeU=;
-Received: by mail.limespom.monster id h9c3os0001g2 for
+ i=louise.dominski@pomskinks.monster; 
+ bh=ySI0kyuZVs7jCDdj+8IIA4RtqFA=;
+ b=cufkgVpP1CxM+X9HQO4FD0lvYcQm/r3685b3vNW4XqFXkRbF7pMPZn3vfVUr/Tb/wwBt6kJ0kDB3
+ HVmsIuSyJast2Aq7ug5pLV3qItskJ6qcYswGe3CgLCZJDnkfnay/CyOc5ealJR32rt75JbawMbm7
+ e+17mQG85IHRCvpnU/s=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pomskinks.monster; 
+ b=fqEkFkCKG5JZ7Ho2/VMJEn7TGgVbgwarcbqpFLKZOO7JpX/PgWMEf439UnzJNFcCYJhzZORHGefg
+ aPslWZs7UALqIqdsrqj2bueF3WX7nSZ32ST6ShyozwAaYY348aI4N4uJeNdFkRw/kTV4H+LWaskR
+ RALbhbxDJ3mBpmI2s/A=;
+Received: by mail.pomskinks.monster id h9c79c0001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 15 Oct 2022 15:08:21 -0400 (envelope-from
- <christy.benek-intel+2Dgvt+2Ddev=lists.freedesktop.org@limespom.monster>)
-Date: Sat, 15 Oct 2022 15:08:21 -0400
-From: Christy Benek <christy.benek@limespom.monster>
+ Sat, 15 Oct 2022 15:37:20 -0400 (envelope-from
+ <louise.dominski-intel+2Dgvt+2Ddev=lists.freedesktop.org@pomskinks.monster>)
+Date: Sat, 15 Oct 2022 15:37:20 -0400
+From: Louise Dominski <louise.dominski@pomskinks.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Find Your Gutter Guard Choices Online
+Subject: TrueValue is giving away Craftsman generators
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_496_1758724388.1665860876180"
-Message-ID: <0.0.0.37.1D8E0C97E3F188C.697029@mail.limespom.monster>
+ boundary="----=_Part_610_265023243.1665857247263"
+Message-ID: <0.0.0.43.1D8E0CD8A82E61A.7ABB02@mail.pomskinks.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,31 +54,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_496_1758724388.1665860876180
+------=_Part_610_265023243.1665857247263
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-[mm_gutter_guard_subjects]
-
-Begin Here to Safely Keep Gutters Clean .  http://www.limespom.monster/d8b6v2Ps395wG86N12SG408vdPfa9p36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQHd9oK7wn1_OT05eOw@D/insinuations-furthered
+TrueValue is giving away Craftsman generators intel-gvt-dev@lists.freedesktop.org
 
 
-
-
-2222.  Michelson DR.  STE.  222-II2, IRVINE, CA.  926l2_
-
-To abandon communications, Start Here Now : http://www.limespom.monster/15b5J2G395s86Vu12N40J8eKifa9I36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQHd9oK5zK1y06uM0LwD/pleading-revamp
-This content was selected for intel-gvt-dev@lists.freedesktop.org
-
- 
-4957198:7049592
+Click Here to Answer a Few Questions about TrueValue_http://www.pomskinks.monster/3b36wSM2395hr86r10O4089lfa8X36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.d9oe7muw1n0T5NUw1D/comprehending-backwater
 
 
 
+To bring e-mail to an close, Continue.Here_http://www.pomskinks.monster/40d5g23M95M8qy611k408akRfa8R36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ.d9oe6NQ10Zz6DLlMwD/cuckoos-millennium
 
+Our email message was sent to intel-gvt-dev@lists.freedesktop.org
 
+96_ MOWAT- Avenue, Toronto.  ONTARIO M4K3Kl CANADA
 
-------=_Part_496_1758724388.1665860876180
+90149726. 7414540
+
+------=_Part_610_265023243.1665857247263
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -85,21 +81,22 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <title></title> 
  </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.limespom.monster/Cyclops-backspaces/e226U2j39z5ry86B10X408dmfa9s36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHd9oK5I1rX06qlkwpD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Safely Keep Gutters Clean</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.limespom.monster/Cyclops-backspaces/e226U2j39z5ry86B10X408dmfa9s36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHd9oK5I1rX06qlkwpD"><img alt="Find Affordable Gutter Guards Here" src="http://www.limespom.monster/b154d2395zI7au10t408fwfa9C36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQHd9oK5XWJ105vWJwD/Cyclops-backspaces" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
-  <br /> 
-  <br /> 
+ <body>
+  &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:309px;"><a href="http://www.pomskinks.monster/comprehending-backwater/8286y2P3D95B86hJ11w408l9Mfa8M36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.d9oe6Bg1J0K6NyOwDB"><img alt="Begin the 30-Second Survey Here" src="http://www.pomskinks.monster/9cb5U2I395S7hNa10V408bWfa8L36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.d9oe6zjL1F05RjPwD/shrank-lasers" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 309px;" /></a></span></span></span></p> &nbsp; 
+  <div style="text-align: center;">
+   <a href="http://www.pomskinks.monster/comprehending-backwater/8286y2P3D95B86hJ11w408l9Mfa8M36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.d9oe6Bg1J0K6NyOwDB"><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Click Here to Answer a Few Questions about TrueValue</span></span></a>
+  </div> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222_ MICHELS0N DRV. # 222~II2, lRVlNE, CALIFORNIA 926l2'</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To abandon communications, <a href="http://www.limespom.monster/witness-echoing/8fa5o239I5I8GA610m408eXfa9W36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQHd9oK7wp1Cq0P5JlpwD">Start Here Now</a> </span></span>{{{http://www.limespom.monster/witness-echoing/8fa5o239I5I8GA610m408eXfa9W36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQHd9oK7wp1Cq0P5JlpwD</p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This content was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">4957198.7049592</span></span></p>   
- <img src="http://www.limespom.monster/e995B239K5noT8510t4090kfa9I36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQHd9oK5yQ1F05NyMwD/strict-Benjamin" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To bring e-mail to an close, <a href="http://www.pomskinks.monster/dc74X2395Qk86y11uQ408aWfa8N36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ.d9oe6cNx10B5FUwkD/sloppiness-replaced">Continue.Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT- Avenue, Toronto ONT. M4K3KI Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ae9345f5-7fff-1147-3c11-626942169433"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">90149726:7414540</span></span></p>   
+ <img src="http://www.pomskinks.monster/2875E239A5k8PR510Q408crfa8t36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ.d9oe5X1S0n6SWTBwD/tuples-reciprocating" alt=""/></body>
 </html>
 
-------=_Part_496_1758724388.1665860876180--
+------=_Part_610_265023243.1665857247263--
 
