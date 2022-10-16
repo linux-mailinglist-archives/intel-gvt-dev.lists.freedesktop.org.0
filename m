@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6607D6002FC
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 16 Oct 2022 21:16:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3EAB6002D0
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 16 Oct 2022 20:20:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1635110EB1F;
-	Sun, 16 Oct 2022 19:16:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 75C4710E97D;
+	Sun, 16 Oct 2022 18:20:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 16 Oct 2022 19:16:42 UTC
-Received: from mail.vipframe.monster (unknown [66.63.186.11])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6F5C910EB1E
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sun, 16 Oct 2022 18:20:26 UTC
+Received: from mail.drakemot.monster (unknown [77.90.188.166])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7263010E97D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 16 Oct 2022 19:16:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vipframe.monster;
+ Sun, 16 Oct 2022 18:20:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=drakemot.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=mary.marson@vipframe.monster; 
- bh=nkFmo2JRhuhV1ukf4OQO5c+NJbs=;
- b=UEIhweGNyrg7KT5jaYKKMJyK9SDfidpOf2Zj/JdcP9bZsv5vVWQHMFYFgHsqhwXKwoeffM1HptOT
- b6dDbn+3Cra+lNRDXV+MfwdhmcwcWMOl4D51cEPn/g6SohQTUnppHmzOp0qzBNtmvKcg996nMr2V
- Qbb3s2NHpINMjXhG0RE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vipframe.monster;
- b=PtXELzHNa+dTNle+jP+7avThgB49F9SJzphAp+RYiWRVMyQqLV42//mF7R/m21fPEQTu7eS1Na7D
- TJPhy55XSERW2bPT2AFsMkTSb1VrHdaIoAjAVDZfLsdeB5Mvn+yJaJ+J+7I+Vypn3NcrcoyqgbOJ
- iz3xYcvDdvxbOUFQSP8=;
-Received: by mail.vipframe.monster id h9hc9k0001g9 for
+ i=alisa-guernsey@drakemot.monster; 
+ bh=M3nWYpxznbEz2hN9qnZ5pPvkXps=;
+ b=gIokXnLiZXNc9Ea/BU88FN4ejWXUU08cyxV1K68L7GEcm9VlWhTvARDRqpwqZIecUe4UAnP40tVh
+ zVBwjKg2oN9YsGm52x8i+DguFdNnAYg8kkuOdS8eAwzyRQr+0lf76oNmkYq99mVrYPlSpzymduQ3
+ l5Ni6q9sWSIq/NPcIgI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=drakemot.monster;
+ b=WhbYt/J92v76ErORgpNlk4oGbaAS5ATR8tNgTAzWoDRZr4wLW4hjptqkYaSjz+dW+Q7N29WU5KCK
+ xdtVp7XvZXtI2MpRCouD2xArl/k0SPN9wCvkmIXl+NCLKHfU13EmeDkxyjIqWcsYfHKJG/ONxJVX
+ sY3Yepj/EdrBG1UUszI=;
+Received: by mail.drakemot.monster id h9hg6a0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 16 Oct 2022 15:06:57 -0400 (envelope-from
- <mary.marson-intel+2Dgvt+2Ddev=lists.freedesktop.org@vipframe.monster>)
-Date: Sun, 16 Oct 2022 15:06:57 -0400
-From: Mary Marson <mary.marson@vipframe.monster>
+ Sun, 16 Oct 2022 15:36:59 -0400 (envelope-from
+ <alisa-guernsey-intel+2Dgvt+2Ddev=lists.freedesktop.org@drakemot.monster>)
+Date: Sun, 16 Oct 2022 15:36:59 -0400
+From: Alisa Guernsey <alisa-guernsey@drakemot.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Never Clean Your Gutters Again
+Subject: Your Petsmart Bonus Opportunity
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_328_1553877536.1665947201968"
-Message-ID: <0.0.0.24.1D8E192765C4A30.6011CC@mail.vipframe.monster>
+ boundary="----=_Part_250_1152822852.1665943626516"
+Message-ID: <0.0.0.1B.1D8E196A8B52F34.374FD@mail.drakemot.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,31 +53,24 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_328_1553877536.1665947201968
+------=_Part_250_1152822852.1665943626516
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-[mm_gutter_guard_subjects]
+Your Petsmart Bonus Opportunity
 
-Visit Here to Find the Best Gutter Guards Online _ http://www.vipframe.monster/interchanger-scaffoldings/42c6BY239l5pG86Y12F40Fyd9WfbcF36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQcd9dK5pO10U6lqwk3D
+Begin Here to earn your $50 Petsmart gift card,http://www.drakemot.monster/candler-demonstrate/26a6W2X39u5kl86_10l40d5zfbbh36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQXd9de6F1gXh06F1PqwD
 
-
-
-
-2222_ MlCHELSON DRV.  No.  222 _II2, lRVlNE, CALIFORNIA 926l2. 
-
-
-Our e-mail communication was meant for intel-gvt-dev@lists.freedesktop.org
-
- 
-6277598~80331688
+Move Faster! Deal Expires in 2 Days.
 
 
 
+No longer want to receive email communications from us?, Begin-Here-Now,http://www.drakemot.monster/11f4g2395q8V6F10q40d6nfbbA36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQXd9de7unsz1N05PpXwD/indeed-anticipations
+. 96 MOWAT Avenue, Toronto ONT M4K3Kl Canada
+This communication was designated for intel-gvt-dev@lists.freedesktop.org
+5540613,2757035
 
-
-
-------=_Part_328_1553877536.1665947201968
+------=_Part_250_1152822852.1665943626516
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -86,20 +79,18 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.vipframe.monster/d134f2395D86HL12z4z0d9rDfbcR36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQcd9dK5Iz10M6B3wBPD/agreeably-disbanding" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Find the Best Gutter Guards Online</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.vipframe.monster/d134f2395D86HL12z4z0d9rDfbcR36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQcd9dK5Iz10M6B3wBPD/agreeably-disbanding"><img alt="Find Affordable Gutter Guards Here" src="http://www.vipframe.monster/Klein-rephrases/4a46em23w95D7paR12P40_dbRufbcn36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcd9dK5L_10W5kO3wD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.drakemot.monster/d4f6h2gs395J86uY11W40dg5rfbbT36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQXd9de6E1I0gK6fOBwBD/scorpions-versions" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to earn your $50 Petsmart gift card</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.drakemot.monster/d4f6h2gs395J86uY11W40dg5rfbbT36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQXd9de6E1I0gK6fOBwBD/scorpions-versions" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:680px;"><img alt="Begin Here to qualify for a $50 Petsmart bonus" src="http://www.drakemot.monster/statesmanlike-bumptiousness/cba5I239C5M7aOP12ns40Nd7Xfbbw36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXd9de7km_JI106H3lPwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 680px;" /></span></s
+ pan></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 18pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Faster! Deal Expires in 2 Days.</span></span></p> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222' MICHELS0N DRIVE NO 222~II2, lRVlNE, CALIF 926l2</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To do away with e-mail, <a href="http://www.vipframe.monster/a434i2395Xv8Z611qw40dakfbcn36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQcd9dK6gTY1z06Vl@TwD/iciness-authoritatively">Visit-Ahead-Here</a> </span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail communication was meant for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">6277598-80331688</span></span></p>   
- <img src="http://www.vipframe.monster/agreeably-disbanding/cf66J2nz395QAj8511S40wdcAfbcu36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQcd9dK5s10sM5oOBwD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email communications from us?, </span><a href="http://www.drakemot.monster/3954E2395P8o6W10K40d6VfbbI36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXd9de5f1z0j6zBXLwD/attitude-trigram" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin-Here-Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96 MOWAT_ Ave., TORONTO ONTARIO M4K 3Kl Canada</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5540613.2757035</span></span></p>   
+ <img src="http://www.drakemot.monster/indeed-anticipations/4fe5ku2395DG85J10Q40d8TfbbR36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXd9de6d1hUW05h3wDk" alt=""/></body>
 </html>
 
-------=_Part_328_1553877536.1665947201968--
+------=_Part_250_1152822852.1665943626516--
 
