@@ -1,42 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41B8C5FFD04
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 16 Oct 2022 04:18:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA5AD5FFD21
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 16 Oct 2022 05:15:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 99DCD10E67E;
-	Sun, 16 Oct 2022 02:18:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A6ECC10E68F;
+	Sun, 16 Oct 2022 03:15:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sun, 16 Oct 2022 02:17:59 UTC
-Received: from mail.pomyums.click (unknown [209.142.103.171])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0197510E5B3
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sun, 16 Oct 2022 03:15:37 UTC
+Received: from mail.urgepom.click (unknown [66.63.186.144])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C263010E692
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 16 Oct 2022 02:17:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pomyums.click;
+ Sun, 16 Oct 2022 03:15:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=urgepom.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sophie-doose@pomyums.click; bh=Nzv5UuDP+63/5yFBnQmpmVeo6R4=;
- b=Lig0fKRKCoJkwNZpZaE9Xzizu1ctWSO9idEuIoK4VLK2MXV/r7/TmAMJbcn2w31Fe9J/zRZdX9Rx
- 79giWcfnm0nw2mJCSCHJV3Hew4tZoJEnjjDL4K0XfEu2l0TBVZPT3BcwThyHz4I7HhKTqsCtQHxy
- 1nUQ1OU1lcDZrQ5mfIs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pomyums.click;
- b=Suj847ZIe9YUAhwZfJ68IPBTDMfZKwd0+6b7gO5X6L6rebVDi7nnbI3NOSnjI+2fCP+y4kAIwMUu
- ul6lJTS77BKcZ7R8DL7dfoXdxtE43d1ix1MdNvfHvHajGgS6IKOuLowU4YywrS1NUAU9GcSknljs
- xCtPtdl1kFAN2u2UB8s=;
-Received: by mail.pomyums.click id h9dktg0001gt for
+ i=sheri-holmquest@urgepom.click; 
+ bh=XZkjiKEvNnDlOjPBvEZ14SuNQaw=;
+ b=nmah1Nmg7QzAVztsxyrO2dcgUDWHSPzBS5hb656YlLxqOyqJjyraNNzYOkPPUMp50vcDtSnm6ECy
+ ZUKgoL1AAxFG0y56G1DiImGg3sHecMmXU7FUXRbEbTx5uNjg3FobozDdJmRj2Etghi5jp7oAvfys
+ C4K1MCYrMDLAmxTSDcQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=urgepom.click;
+ b=g6Z5PlA0ThGMoaUdhoRBz6IUZN7SI69Dvk5dhxKEIEDe4Y47rWyklvs4X2K9li8H7xg41FUfn1q1
+ G1e7B+Z0Xp3s16OrKt9DipW4SqOdpl8sDeFkA+lm4bml9nkCPgT/yzGOApFdtdfkHnKRqn2SZ9Lv
+ OAI00GcrvsH0H0ISAx0=;
+Received: by mail.urgepom.click id h9drli0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 15 Oct 2022 22:07:31 -0400 (envelope-from
- <sophie-doose-intel+2Dgvt+2Ddev=lists.freedesktop.org@pomyums.click>)
-Date: Sat, 15 Oct 2022 22:07:31 -0400
-From: Sophie Doose <sophie-doose@pomyums.click>
+ Sat, 15 Oct 2022 23:06:54 -0400 (envelope-from
+ <sheri-holmquest-intel+2Dgvt+2Ddev=lists.freedesktop.org@urgepom.click>)
+Date: Sat, 15 Oct 2022 23:06:54 -0400
+From: Sheri Holmquest <sheri-holmquest@urgepom.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: WANTED: Renter, 3 beds, 2.5 bath, AllCredit OK
+Subject: Up to $1OO Bonus for Being a Home Depot Preferred Shopper
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_514_1672256640.1665886011369"
-Message-ID: <0.0.0.39.1D8E1040C6F5A56.5E1CC9@mail.pomyums.click>
+ boundary="----=_Part_424_1228736511.1665889595785"
+Message-ID: <0.0.0.30.1D8E10C582D22E0.640B99@mail.urgepom.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +54,30 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_514_1672256640.1665886011369
+------=_Part_424_1228736511.1665889595785
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Up to $1OO Bonus for Being a Home Depot Preferred Shopper  intel-gvt-dev@lists.freedesktop.org
+
+Visit Here For The Survey & Pick Your Reward. http://www.urgepom.click/conscript-loyally/1206z23S9w5X8NT610S40acAfb1m36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQcd99S7w10RSTO6fN22wD
+
+
+
+
+
+
+
+l26' EAST  Twenty-Third St NEW. YORK NEW YORK 
+1OO1O_ United States 
+
+Our e-mail was delivered to intel-gvt-dev@lists.freedesktop.org
+
+To modify your communication options, Do This Now. http://www.urgepom.click/communicated-definer/7b06QN23S95a8xx611m40AadLfb1u36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQcd99S6on10uo5dj1wD
+
+11397447. 6540932
+
+------=_Part_424_1228736511.1665889595785
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -61,30 +86,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, &quot;Trebuchet MS&quot;; font-size: 13px; line-height: 1.656; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 36px;"><strong><span style="color: rgb(51, 102, 102);">rent</span><span style="color: rgb(153, 255, 0);">to</span><span style="color: rgb(255, 255, 255);"><span style="background-color: rgb(51, 102, 102);">own</span>&nbsp;</span></strong></span><span style="font-size: 20px;">LISTINGZ</span></p> 
-  <div>
-   <br /> 
-   <br /> 
-   <span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"><span style="white-space: pre-wrap;">intel-gvt-dev@lists.freedesktop.org, </span></span></span>
-   <br /> 
-   <br /> 
-   <span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Why Rent when you can Rent-to-Own?</span></span>
-  </div> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.pomyums.click/nonogenarian-particulate/15c6D2n39D5p_86J10S40a9ifb0W36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQZd99R7cwyYR106WWP@wD"><b style="font-family: Arial; font-size: 18.6667px; white-space: pre-wrap;">Visit Here to Locate 1000s of Rent-to-Own Listings</b></a></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Madison C. rents to own a 2 Bed, 1 Bath, </span></span><span style="font-family: arial, helvetica, sans-serif; font-size: 18px;">1241</span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home </span></span><span style="font-size:18px;"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family:arial,helvetica,sans-serif;">for&nbsp;$</span></span><span style="font-family:arial,helvetica,sans-serif;">1065</span><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/month</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:18px;">Maximiliano C. is investing in a l3 Bed, 1.5 Bath, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1241</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;"> 1193</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">/month&nbsp;</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">Rocio S. has a zero down, 3 Bed, 2.5 Bath, </span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1346</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"> Sqft home for $</span></span><span style="font-size:18px;"><span style="font-family:arial,helvetica,sans-serif;">1339/</span></span><span><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">month</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.pomyums.click/nonogenarian-particulate/15c6D2n39D5p_86J10S40a9ifb0W36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQZd99R7cwyYR106WWP@wD"><font face="Arial"><span style="font-size: 18.6667px; white-space: pre-wrap;"><b>Begin Here to Own a Home</b></span></font></a></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><a href="http://www.urgepom.click/prisoner-resurrecting/1986I2TS395yi8M610A40acnfb1u36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQcd99S6oSSj106ITwDzX" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here For The Survey & Pick Your Reward</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><a href="http://www.urgepom.click/prisoner-resurrecting/1986I2TS395yi8M610A40acnfb1u36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQcd99S6oSSj106ITwDzX" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:393px;"><img height="393" src="http://www.urgepom.click/2a56r2V3N95Gm7aD12lC40aAeGfb1g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcd99S7wJCr10F5FUwTD/communicated-definer" style="margin-left:0px;margin-top:0px;" width="598" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Cracking! Promotion Runs Out in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p>&nbsp;</p> 
-  <p>&nbsp;</p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">PO Box' 4I20_ P0RTLAND Oregon 97208- 4I20_&nbsp;</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your message elections, </span><a href="http://www.pomyums.click/1974J2395X8k6K11t40aa_Jfb0O36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQZd99R7AG1j0Ig5f@wND/sustain-hatch" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit.Right.Here</span></a></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email communication was intended for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size:11px;"><span id="docs-internal-guid-29514aec-7fff-1812-1047-dd927cec213e"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8252810 9105651</span></span></span></p>   
- <img src="http://www.pomyums.click/bc96mB2_395zH85z11sF40abtfb0k36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQZd99R7DZ1uv0r5dO@wD/quantified-indoctrinated" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">126. E.&nbsp; 23rd ST New-York NY<br /> 1OO1O- United States&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your communication options, </span><a href="http://www.urgepom.click/e995r23i95c86mO12n4R0aBdFfb1Y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQcd99S6W1z0Zt5eqlwD/amphibiously-transformational" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Do This Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">11397447,6540932</span></span></p>   
+ <img src="http://www.urgepom.click/amphibiously-transformational/7745p2P395Voj8512Px40IafTfb1j36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQcd99S6P_10WF5q01wD" alt=""/></body>
 </html>
 
-------=_Part_514_1672256640.1665886011369--
+------=_Part_424_1228736511.1665889595785--
 
