@@ -2,43 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28C6F6005F4
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Oct 2022 06:18:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F892600636
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Oct 2022 07:19:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7D84510EC4B;
-	Mon, 17 Oct 2022 04:18:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 391B910EC60;
+	Mon, 17 Oct 2022 05:19:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 17 Oct 2022 04:18:14 UTC
-Received: from mail.vipminds.click (unknown [66.63.186.163])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6ED5910EC4B
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Mon, 17 Oct 2022 05:19:25 UTC
+Received: from mail.ninevips.click (unknown [66.63.186.77])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CD8FF10EC64
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Oct 2022 04:18:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vipminds.click; 
+ Mon, 17 Oct 2022 05:19:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ninevips.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=siliezar_nikki@vipminds.click; 
- bh=H0GkodbPtp42AN/gHFpe0qfCdjQ=;
- b=JuwoI/bxQLgvnJTXdDnaGrA36d7CJO0VGfWB33OB+GAtFpbf88o9eXoGC6lsz6mh+lzVM/z+fRQL
- aNfeTbVWyCF5kTb0PKKJ9mOxk3LI9iN/uUtLDfGjSe4m3BePt2Sm5QL4SUYMaOZ/OGElNDB+N2B6
- 4K83geQzjlvWkU6DmfY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vipminds.click;
- b=LIQ6p14B9OLm9HJBjEHUAUdhHHKrdUwqMWakKzKJe8yGoZp3qL9FlpfxSqfRgQwBH7CcAXN3BdVV
- UFRtk8hh3DkdzFlygJdWzXqGbVx59W/dyq8sOcITkhTFb8QGKiprDxJUbBCp/ahfsB3kpz1Ek38L
- pi0X3baNX80tdX9Eh9c=;
-Received: by mail.vipminds.click id h9jboc0001g5 for
+ i=dena_roode@ninevips.click; bh=9uJd+QPiiyZJk9CxkjXj66zW+t4=;
+ b=EvluxyBZYIkhicRztyAxcohyoNn1aed1ow7ujjmMNXZ8tEq2p92cpQiakyJ97xTDuxTCkkrSY8wp
+ 5Ur7IQeonOUAUCuxrUdVQqme82MZ7xNjBNVANldjRa0uHrVgB3F4o+C4aiGTccWffml+2899NyRD
+ Ai47g4J4IwvhnIiFVPU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ninevips.click;
+ b=qSW4xrYeufjyvyQy3YLRpXPGPuHgHyniD6nbGNrMtOiBsFaEzJuls2MrxxMNEj9sFqiZG6uS78Qz
+ eRhRe9+yCY1OWRzkqsSUSKoktU2z9IFvC3FZwXud03DCoOBkMFg23GAE6QY88SKGkvYi+e9wskvG
+ e1ZkNVNk9DqR/OL2XDc=;
+Received: by mail.ninevips.click id h9jtde0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Oct 2022 00:04:39 -0400 (envelope-from
- <siliezar_nikki-intel+2Dgvt+2Ddev=lists.freedesktop.org@vipminds.click>)
-Date: Mon, 17 Oct 2022 00:04:39 -0400
-From: Nikki Siliezar <siliezar_nikki@vipminds.click>
+ Mon, 17 Oct 2022 02:37:45 -0400 (envelope-from
+ <dena_roode-intel+2Dgvt+2Ddev=lists.freedesktop.org@ninevips.click>)
+Date: Mon, 17 Oct 2022 02:37:45 -0400
+From: Dena Roode <dena_roode@ninevips.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You can earn a Starbucks Bonus up to $1OO
- intel-gvt-dev@lists.freedesktop.org
+Subject: Southwest Verification No. #3174593
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_103_898780586.1665979455585"
-Message-ID: <0.0.0.B.1D8E1DD9407F94E.5B782@mail.vipminds.click>
+ boundary="----=_Part_160_1226947303.1665983282064"
+Message-ID: <0.0.0.11.1D8E1F2F70A901E.1F040E@mail.ninevips.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +52,24 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_103_898780586.1665979455585
+------=_Part_160_1226947303.1665983282064
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Southwest Verification No. #3174593
+
+Visit Here for up to $100 Bonus for your opinion-http://www.ninevips.click/persistently-reorganizations/z8a6r2uz395CXA8610P40ffAfc6T36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQbd9QK7n1sM0Tm5zWwlD
+
+
+
+
+To break off notifications, Visit.Here-http://www.ninevips.click/3d14U2395i8H6R10b4100wfc6K36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQbd9QK7U10SZHj6iWU@wD/tapping-descent
+
+This e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org
+
+I16 E  TWENTY-THIRD Street NewYork NY 1OO1O' UNITED STATES 
+
+------=_Part_160_1226947303.1665983282064
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,23 +78,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-351d7075-7fff-e698-20ea-1244fa9a54e9"><a href="http://www.vipminds.click/60b6K23P9z5sO8n611m40fIbLfc5A36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQzd9Qe7Sz1g0ML6hpMzwD/extinguisher-flutter" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for the Starbucks survey & Reward</span></a></span></p> 
-  <div style="text-align: center;">
-   &nbsp;
-  </div> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-351d7075-7fff-e698-20ea-1244fa9a54e9"><a href="http://www.vipminds.click/60b6K23P9z5sO8n611m40fIbLfc5A36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQzd9Qe7Sz1g0ML6hpMzwD/extinguisher-flutter" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:889px;"><img alt="Begin Here to receive a Starbucks Bonus up to $100" src="http://www.vipminds.click/Houston-authenticator/22e5p23v95b7kSa12ST40CfdNfc5U36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQzd9Qe6Ss1QS05SPwDq" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 889px;" /></span></span></a></span></
- p> 
-  <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; text-align: center;"><span id="docs-internal-guid-351d7075-7fff-e698-20ea-1244fa9a54e9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Snap It Up! Special Promotion Closes in 1 Days.</span></span></p> 
-  <div style="text-align: center;">
-   <br /> 
-   <br /> &nbsp;
-  </div> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-351d7075-7fff-e698-20ea-1244fa9a54e9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive communication from us?, </span><a href="http://www.vipminds.click/2c36u23AY95sp8v612Fv40_fcofc5u36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQzd9Qe5f1Z0U5ypwDO/extinguisher-flutter" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click_Here_Now</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-351d7075-7fff-e698-20ea-1244fa9a54e9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-351d7075-7fff-e698-20ea-1244fa9a54e9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">45550388-31321552</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-351d7075-7fff-e698-20ea-1244fa9a54e9"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I15' EAST&nbsp; 23RD ST. NewYork New.York<br /> 10010. US&nbsp;</span></span></p>   
- <img src="http://www.vipminds.click/pastime-milkiness/4a45r23M95K85sO11iu40feCfc5k36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQzd9Qe7mw1wI0h6lpwUD1" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><a href="http://www.ninevips.click/dc74S2395NAW8611i40ffGSfc6Z36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQbd9QK7B1j0IBt5CkwDz/appearer-generations" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for up to $100 Bonus for your opinion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><a href="http://www.ninevips.click/dc74S2395NAW8611i40ffGSfc6Z36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQbd9QK7B1j0IBt5CkwDz/appearer-generations" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:636px;"><img alt="Visit Here for up to $1OO Reward for your opinion" src="http://www.ninevips.click/d314X2395QL7na11k410m1lfc6z36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQbd9QK7D1I0XsB6BzWwDT/tapping-descent" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 636px;" /></span></span></a></span>
+ </p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Special Offer Ends in 5 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To break off notifications, </span><a href="http://www.ninevips.click/tapping-descent/71a5A23P95YZ86X10Y4100Kfc6z36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQbd9QK5M10Xl6XN2wUD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit.Here</span></a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l16' E&nbsp; Twenty-Third St. NEW YORK NEW YORK 1OO1O- US&nbsp;</span></span></span></p>   
+ <img src="http://www.ninevips.click/20f4B2395V8T5Y11I4102DWfc6U36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQbd9QK7FQ10phk6ePwzDk/legalizes-Tennessee" alt=""/></body>
 </html>
 
-------=_Part_103_898780586.1665979455585--
+------=_Part_160_1226947303.1665983282064--
 
