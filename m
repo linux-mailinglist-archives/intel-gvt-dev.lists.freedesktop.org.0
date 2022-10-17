@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F892600636
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Oct 2022 07:19:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 36E406006A5
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Oct 2022 08:22:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 391B910EC60;
-	Mon, 17 Oct 2022 05:19:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F08A210EC8E;
+	Mon, 17 Oct 2022 06:22:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 17 Oct 2022 05:19:25 UTC
-Received: from mail.ninevips.click (unknown [66.63.186.77])
- by gabe.freedesktop.org (Postfix) with ESMTP id CD8FF10EC64
+ Mon, 17 Oct 2022 06:22:24 UTC
+Received: from mail.barkvips.click (unknown [5.42.214.250])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EF16910EC8F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Oct 2022 05:19:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ninevips.click; 
+ Mon, 17 Oct 2022 06:22:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=barkvips.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=dena_roode@ninevips.click; bh=9uJd+QPiiyZJk9CxkjXj66zW+t4=;
- b=EvluxyBZYIkhicRztyAxcohyoNn1aed1ow7ujjmMNXZ8tEq2p92cpQiakyJ97xTDuxTCkkrSY8wp
- 5Ur7IQeonOUAUCuxrUdVQqme82MZ7xNjBNVANldjRa0uHrVgB3F4o+C4aiGTccWffml+2899NyRD
- Ai47g4J4IwvhnIiFVPU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ninevips.click;
- b=qSW4xrYeufjyvyQy3YLRpXPGPuHgHyniD6nbGNrMtOiBsFaEzJuls2MrxxMNEj9sFqiZG6uS78Qz
- eRhRe9+yCY1OWRzkqsSUSKoktU2z9IFvC3FZwXud03DCoOBkMFg23GAE6QY88SKGkvYi+e9wskvG
- e1ZkNVNk9DqR/OL2XDc=;
-Received: by mail.ninevips.click id h9jtde0001g4 for
+ i=laurel_schmidgall@barkvips.click; 
+ bh=3+D6fr7oMgNBhQHu29lZCOwx+90=;
+ b=gYsiOhY8Q4EYV/WCWEZ90ba8nuzR90TZV3JhknuFnYeiUT7RSXI82++RVaWXGWQck8Rq5r960sBD
+ YgXXosSySLSndWGgb9PYle9MM4DSMxBLNRrfrt7qPw+ZU2SWRMcDdPcsjIcz/7jSei4YO4qOkmGZ
+ i0pwYOlFObPwZY3Wzss=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=barkvips.click;
+ b=JrlDF72P+HPKbNz0nmvTGl+JzXzo6hktCiNQytszlLa+x1SZmkxGTQgauNoxn5Q5LDRH257cF0wz
+ xsNyXdGXF6kUdiV+JWOv5ho+gkuGuxmZ1FF5gYl/fTQ+6koe+hAct8hXBmXIGRck6pLRXFPmTgAn
+ BAAGSmVtQhbDQw0LBHU=;
+Received: by mail.barkvips.click id h9k4pk0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Oct 2022 02:37:45 -0400 (envelope-from
- <dena_roode-intel+2Dgvt+2Ddev=lists.freedesktop.org@ninevips.click>)
-Date: Mon, 17 Oct 2022 02:37:45 -0400
-From: Dena Roode <dena_roode@ninevips.click>
+ Mon, 17 Oct 2022 03:39:53 -0400 (envelope-from
+ <laurel_schmidgall-intel+2Dgvt+2Ddev=lists.freedesktop.org@barkvips.click>)
+Date: Mon, 17 Oct 2022 03:39:53 -0400
+From: Laurel Schmidgall <laurel_schmidgall@barkvips.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Southwest Verification No. #3174593
+Subject: Claim Your Stanley Tool Kit  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_160_1226947303.1665983282064"
-Message-ID: <0.0.0.11.1D8E1F2F70A901E.1F040E@mail.ninevips.click>
+ boundary="----=_Part_358_2140513669.1665987001997"
+Message-ID: <0.0.0.27.1D8E1FBA566E61E.5D3543@mail.barkvips.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,24 +53,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_160_1226947303.1665983282064
+------=_Part_358_2140513669.1665987001997
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Southwest Verification No. #3174593
+Claim Your Stanley Tool Kit  intel-gvt-dev@lists.freedesktop.org
 
-Visit Here for up to $100 Bonus for your opinion-http://www.ninevips.click/persistently-reorganizations/z8a6r2uz395CXA8610P40ffAfc6T36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQbd9QK7n1sM0Tm5zWwlD
-
-
+Tap Here for the Lowes Promotion:http://www.barkvips.click/dc76qk2x395Xjg8610f4103pfc7K36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQCd9Rm5Yz10J6v1qwDT/barefooted-scorpion
 
 
-To break off notifications, Visit.Here-http://www.ninevips.click/3d14U2395i8H6R10b4100wfc6K36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQbd9QK7U10SZHj6iWU@wD/tapping-descent
 
-This e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org
+96.  Mowat.  Av, Toronto_ ON M4 K3 K1 CANADA
 
-I16 E  TWENTY-THIRD Street NewYork NY 1OO1O' UNITED STATES 
+To cease email, Click_Here_Now:http://www.barkvips.click/abb5Y2_395IWg8611HJ4104jfc7z36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQCd9Rm5gF1C06A0wJlD/clenched-inconsiderate
 
-------=_Part_160_1226947303.1665983282064
+Our email communication was intended for intel-gvt-dev@lists.freedesktop.org
+
+2532303 4286006
+
+------=_Part_358_2140513669.1665987001997
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -78,20 +80,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><a href="http://www.ninevips.click/dc74S2395NAW8611i40ffGSfc6Z36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQbd9QK7B1j0IBt5CkwDz/appearer-generations" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for up to $100 Bonus for your opinion</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><a href="http://www.ninevips.click/dc74S2395NAW8611i40ffGSfc6Z36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQbd9QK7B1j0IBt5CkwDz/appearer-generations" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:636px;"><img alt="Visit Here for up to $1OO Reward for your opinion" src="http://www.ninevips.click/d314X2395QL7na11k410m1lfc6z36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQbd9QK7D1I0XsB6BzWwDT/tapping-descent" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 636px;" /></span></span></a></span>
- </p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Moving! Special Offer Ends in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.barkvips.click/9714L2395l8pu611d4D103Nfc7q36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQCd9Rm6h1SJ0j6CyT3wD/boxwood-investing" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here for the Lowes Promotion</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.barkvips.click/9714L2395l8pu611d4D103Nfc7q36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQCd9Rm6h1SJ0j6CyT3wD/boxwood-investing" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.barkvips.click/distiller-Greekize/8826QZ23u95v7RaG11g410U5ufc7G36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCd9Rm6CMHA106UAj0wD" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Special Offer Is Over in 2 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To break off notifications, </span><a href="http://www.ninevips.click/tapping-descent/71a5A23P95YZ86X10Y4100Kfc6z36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQbd9QK5M10Xl6XN2wUD" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit.Here</span></a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was designated for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-c32fef03-7fff-f76b-14f6-a781dfc1e629"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l16' E&nbsp; Twenty-Third St. NEW YORK NEW YORK 1OO1O- US&nbsp;</span></span></span></p>   
- <img src="http://www.ninevips.click/20f4B2395V8T5Y11I4102DWfc6U36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQbd9QK7FQ10phk6ePwzDk/legalizes-Tennessee" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat- Av., Toronto ONTARIO M4K3KI CA</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cease email,<a href="http://www.barkvips.click/c234Q2395d8OX611d4B104Ofc7U36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQCd9Rm7Q1OrR0F6skwDpy/grafting-Polyhymnia"> Click_Here_Now</a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was intended for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2532303.4286006</span></span></span></p>   
+ <img src="http://www.barkvips.click/b155R239j5cPR8510X4106ifc7o36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQCd9Rm7n1XgOu05HJPwD/distiller-Greekize" alt=""/></body>
 </html>
 
-------=_Part_160_1226947303.1665983282064--
+------=_Part_358_2140513669.1665987001997--
 
