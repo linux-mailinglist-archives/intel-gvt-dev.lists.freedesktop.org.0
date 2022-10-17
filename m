@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2EAE601625
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Oct 2022 20:20:28 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80F74601733
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Oct 2022 21:18:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B314010EC07;
-	Mon, 17 Oct 2022 18:20:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3C80C10E1C3;
+	Mon, 17 Oct 2022 19:18:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 437 seconds by postgrey-1.36 at gabe;
- Mon, 17 Oct 2022 18:20:21 UTC
-Received: from mail.litdrake.monster (unknown [173.244.43.169])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8DA5510EDEB
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Mon, 17 Oct 2022 19:18:17 UTC
+Received: from mail.greatslit.monster (unknown [213.209.129.183])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6810210E1B3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Oct 2022 18:20:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=litdrake.monster;
+ Mon, 17 Oct 2022 19:18:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=greatslit.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=frances-keeble@litdrake.monster; 
- bh=jA5LAt1UX5XGFxdaw5NNHIUp28k=;
- b=hNloKrVv9MUtrA0USTgOIT8h71RFaXmKyqET/3fkgHkG0D33RjrwKzttbkSwY4zj2msQVaQjeyq6
- MBU0BAyABwapGGRpkdfReg+U0bsRhlRqNam0G/UN7a8t+JQOMEl2jmIa600dXZaqXFRMIPXbSdUT
- 8fJku49srUyeRlCC2Bc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=litdrake.monster;
- b=P5ezjIang2iUG4ZCrn94EXBLrpXc5mcIqjik+OfPZBOq1+1APZzLmdlev6PM//g2NDGv9K737tmo
- +dZ5im0BprzkHxPIFS7KaISPQS3uZwUH8iJiYqGjKD2Q6kXvFWEVh6meYhN5c+Rc6bBzZ+9Lcd95
- 3pGWm+BD1+APvudcCdc=;
-Received: by mail.litdrake.monster id h9meea0001gl for
+ i=lynda-tyrol@greatslit.monster; 
+ bh=MT/lfWZgDEKlBTpTkJRBuPWZnKY=;
+ b=RycMMfe76fOip9XBrUeb/2mf3iR/LHvDSf8QpMqfPPIX4YfPMNI25fVCsqMlHBerp6jsq9vp9OPM
+ JNpwDzHBdSSCb6gAdPMKbTw5XrYSRQybGgdQ95faxrkn9Dss7odYc2TbdTE4/i+jammmSKOfp7J8
+ Imzpe22Q7WN5IbeW+v4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=greatslit.monster; 
+ b=rImrqi4UukGfYLkGQG0oevvB+4WC6kOgrZz+t8rGrGZncFj5G8o79P5rsF07Af8OPpCuQDf0ohan
+ 5Xa/QlmXJ3dMMUsNAph1+C07ri4eiBUaCb/ilobpPKwcD27CauwJOfC2UETDN2CEfyDYpfKSluoj
+ 0UwJC2+wZ/LMg6eyGPU=;
+Received: by mail.greatslit.monster id h9mvn40001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Oct 2022 14:05:03 -0400 (envelope-from
- <frances-keeble-intel+2Dgvt+2Ddev=lists.freedesktop.org@litdrake.monster>)
-Date: Mon, 17 Oct 2022 14:05:03 -0400
-From: Frances Keeble <frances-keeble@litdrake.monster>
+ Mon, 17 Oct 2022 16:36:39 -0400 (envelope-from
+ <lynda-tyrol-intel+2Dgvt+2Ddev=lists.freedesktop.org@greatslit.monster>)
+Date: Mon, 17 Oct 2022 16:36:39 -0400
+From: Lynda Tyrol <lynda-tyrol@greatslit.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Free Window Quotes from Andersen, Pella, Marvin  & more
+Subject: Eliminate the Need to Clean Out Your Gutters
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_184_1402369177.1666029887728"
-Message-ID: <0.0.0.14.1D8E252FAF5E6DC.BA262@mail.litdrake.monster>
+ boundary="----=_Part_349_1433592909.1666033604609"
+Message-ID: <0.0.0.26.1D8E268289BD988.3E4242@mail.greatslit.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,31 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_184_1402369177.1666029887728
+------=_Part_349_1433592909.1666033604609
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+[mm_gutter_guard_subjects]
+
+Begin Here for Your Gutter Guard Quotes _ http://www.greatslit.monster/u114J2395b86Y_11R412TbOfd1H36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQyd9Sm7lXp10Mp5r23wD/abrasions-holder
+
+
+
+
+2222' MlCHELSON Drv.  NO.  222:ll2, lrvine, Calif.  92612
+
+
+This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org
+
+ 
+3212058. 3615348
+
+
+
+
+
+
+------=_Part_349_1433592909.1666033604609
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,22 +86,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><a href="http://www.litdrake.monster/6296d23j9_5h8_I611F4127rIfd0Y36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.d9RK7W1XM0wl5LNXwD/handcuffed-criticize" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to get Window Estimates from Andersen & more</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><a href="http://www.litdrake.monster/6296d23j9_5h8_I611F4127rIfd0Y36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.d9RK7W1XM0wl5LNXwD/handcuffed-criticize"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1015px;"><img alt="Go here to get Affordable Window Quotes" src="http://www.litdrake.monster/quaintly-cloning/8Oa4R2395z7aUV11d412_9Rfd0C36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.d9RK5Or1C06QUwkDl" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1015px;" /></span></span></span></a></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><a href="http://www.greatslit.monster/d6d4q2395U8nI612mY412bLrfd1g36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQyd9Sm6aB1xV06bBlwDO/incur-fortnight" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here for Your Gutter Guard Quotes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:742px;"><a href="http://www.greatslit.monster/d6d4q2395U8nI612mY412bLrfd1g36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQyd9Sm6aB1xV06bBlwDO/incur-fortnight"><img alt="Find Affordable Gutter Guards Here" src="http://www.greatslit.monster/Christianson-bickering/8dc5Io2395P7xaC11s41M2dsfd1J36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQyd9Sm7W_S10IA6zNW1wD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 742px;" /></a></span></span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To withdraw from notices, </span><a href="http://www.litdrake.monster/shelling-languidly/1b65J2q395D8Lj610S4128zfd0n36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ.d9RK6Bm10MT5S23wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">ClickHere</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">950' Tower LN, Foster City, CA. 94404- US.</span></span></p> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-2faf5204-7fff-8c14-2477-6840978e3804"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1580052 8995312</span></span></p>   
- <img src="http://www.litdrake.monster/tardy-indicators/c064S2395qz85t10n412aqfd0t36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ.d9RK5U1A0Q5MOwPD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2222. MlCHELSON DRV # 222~II2, IRVINE, California 926l2'</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive notifications?, <a href="http://www.greatslit.monster/Durham-beta/6fc6dx2I395fk86p12E412cGmBfd1N36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQyd9Sm5GA10h5B1wzD">Begin_Ahead_Here</a> </span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f02711a7-7fff-0f2f-f168-3d84f6aaf327"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3212058 3615348</span></span></p>   
+ <img src="http://www.greatslit.monster/Keynes-Jordan/9365M239z5ohm8511Ks412eGfd1t36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQyd9Sm7j1lXRB06fz@wDA" alt=""/></body>
 </html>
 
-------=_Part_184_1402369177.1666029887728--
+------=_Part_349_1433592909.1666033604609--
 
