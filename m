@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D656A602A14
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Oct 2022 13:25:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88343602D1D
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Oct 2022 15:35:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9347110EC1E;
-	Tue, 18 Oct 2022 11:25:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3414210E67F;
+	Tue, 18 Oct 2022 13:35:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 18 Oct 2022 11:25:32 UTC
-Received: from mail.killdew.monster (unknown [173.244.43.160])
- by gabe.freedesktop.org (Postfix) with ESMTP id 04E6210EF0C
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 18 Oct 2022 13:35:40 UTC
+Received: from mail.trimdew.monster (unknown [66.63.186.216])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CF47F10E89E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 11:25:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=killdew.monster; 
+ Tue, 18 Oct 2022 13:35:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=trimdew.monster; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=carole_wegrzyn@killdew.monster; 
- bh=QPVcQ2u5qDYoJeTHHzcj6U4+GEI=;
- b=EUSeqoq5xSaqm+SCPgI2ynweo6zwvW2Gdz0mJikmWj/Jan27fidhzHQ4G82EdwZDHtWSHWt9k8Uu
- GKbTpumcmyub8JJwJSqqw9sMyQdPtr8XTxG2ldVI3vC6udhfls4TOkVuoF36o8cHZIsKBfJRz61V
- E72/WS4Cp2B/gGjfDTQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=killdew.monster;
- b=isyO4fPeUCc0z4ClH36fSKcVrh7nLW0LRQ+7NcjBvX32otfGRG4QMURcJfJ2wFCi8Ufhy2Gxh4+c
- n3FZwjEfQsHGM5TVwdyej5gilnXLQmlryWTT41Ml9+cIGkp6a4hOMRP25l+LpjYbN5um4TpExbhR
- 3Icnm1RYDKJeMHgElf0=;
-Received: by mail.killdew.monster id h9qh260001g6 for
+ i=melanie_frazier@trimdew.monster; 
+ bh=Kn+JzLzYoGNaGf8BQ/4NkmIGuIQ=;
+ b=eTDZr1YfmHKx+aLVsQG0VI8ZuAgUYiYpPrs0XoYSoFb6XuQH2MK/HMorADEdA+KpwDg79WtA1LZh
+ FAot/jeJDWSrMDefzYQdqnKCnlftBfObJRxDrbxf1x6Rdexn1jxrBQxuR47TMWfVR7zz5vOVPq/3
+ g7zcIcC/9Oicix+2Jbo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=trimdew.monster;
+ b=ZHC4k03D7IV7bUoL5XTtPTp7TPdtL8xUHwQPg23VmBtzJQ5lfid6XjLz9kgGRQvQKkd8JLrZcNJh
+ xgMPa2PwC7mQWAozgRoHf6HOBJfN/vfdY90leb/UVAMZiGlLFfkrYBzaVUlHTvD2s5h39XvXfn2y
+ DvjIekGokXa6GhhCnMk=;
+Received: by mail.trimdew.monster id h9qlqo0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 08:45:25 -0400 (envelope-from
- <carole_wegrzyn-intel+2Dgvt+2Ddev=lists.freedesktop.org@killdew.monster>)
-Date: Tue, 18 Oct 2022 08:45:25 -0400
-From: Carole Wegrzyn <carole_wegrzyn@killdew.monster>
+ Tue, 18 Oct 2022 09:26:08 -0400 (envelope-from
+ <melanie_frazier-intel+2Dgvt+2Ddev=lists.freedesktop.org@trimdew.monster>)
+Date: Tue, 18 Oct 2022 09:26:08 -0400
+From: "Melanie Frazier" <melanie_frazier@trimdew.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Enhance Your Space With Canvas Prints 86% Off
+Subject: Help Keep Your Home Safe starting at just $9 per week w/ 36 mo.
+ agm't. Term and install fees. Landline req'd.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_808_232596412.1666091690804"
-Message-ID: <0.0.0.59.1D8E2EF7E81347E.9EB2@mail.killdew.monster>
+ boundary="----=_Part_397_1874255686.1666099535435"
+Message-ID: <0.0.0.2C.1D8E2F52EE63ABC.1AC7EE@mail.trimdew.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,50 +54,93 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_808_232596412.1666091690804
+------=_Part_397_1874255686.1666099535435
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-Enhance Your Space With Canvas Prints 86% Off 
+Help Keep Your Home Safe starting at just $9 per week w/ 36 mo. agm't. Term and install fees. Landline req'd.=20
 
-Go here for 86% Off Canvas Prints~http://www.killdew.monster/loathly-Rheims/de66PX2X395zt8T610Y4160Qfdex36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQhd9e97wO1Tv0T5GpPwD
+Click Here Now:
+http://www.trimdew.monster/viruses-whitens/6c04V2395a8S6h12S4D168Kife0j36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQFd9eQ5Q10jH5KAwlD
 
 
 
 
-11525A- 
-STONEHOLLOW Dr No.  
-1OO. , Austin TEX.  78758 United States
-To stop notices, Go_On_Here
-Our email message was sent to intel-gvt-dev@lists.freedesktop.org
-8532683~8995312
 
-------=_Part_808_232596412.1666091690804
+
+1501.  Yamato ROAD, Boca. Raton, Fl 3343l.  =C2=A92022 ADT LLC
+
+ Do you want to stop getting these emails? You can unsubscribe.  here=
+: http://www.trimdew.monster/cf55Kg2395z8F6Q10z4169hfe0w36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQFd9eQ7FBBi1F06uA1wDO/expressive-gumming
+
+To view a fill list of licensing click. here:=20
+http://www.trimdew.monster/emptying-ideally/8be4V2395zz8Z611M41y6asfe0D36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQFd9eQ7Mx1Nv0Q6VqpNwD
+
+------=_Part_397_1874255686.1666099535435
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; ">&Acirc;&nbsp; </p> 
-  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-c1094282-7fff-58c5-74b0-ddc549c989b1"><a href="http://www.killdew.monster/a436t2MN395aO86V11A4J160KfdeY36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhd9e97UsG1xX06nX2wDy/goatees-muscled" style="text-decoration-line: none; "><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; ">Go here for 86% Off Canvas Prints</span></a></span></p> &Acirc;&nbsp; 
-  <p dir="ltr" style="line-height:1.38; text-align: center; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-c1094282-7fff-58c5-74b0-ddc549c989b1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; "><span style="border:none; display:inline-block; overflow:hidden; width:600px; height:812px; "><a href="http://www.killdew.monster/a436t2MN395aO86V11A4J160KfdeY36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhd9e97UsG1xX06nX2wDy/goatees-muscled"><img alt="Canvas Prints up to 93% off" src="http://www.killdew.monster/morass-possum/e406cQ239P5wM7la10z4162HfdeI36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQhd9e95K10UH6jpwDMA" style="width: 600px; height: 760px; " /></a></span></span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &Acirc;&nbsp; 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-c1094282-7fff-58c5-74b0-ddc549c989b1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">11525A-<br /> STONE-HOLLOW DR. SUlTE 100., AUSTlN TEX 78758_ </span></span><br /> USA</p> 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-c1094282-7fff-58c5-74b0-ddc549c989b1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">To stop notices, </span><a href="http://www.killdew.monster/incorporated-embassies/15c5qH2395mGX8612h4l161Ajfdeo36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQhd9e96Mw1G0k6mLBUwD" style="text-decoration-line: none; "><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap; ">Go_On_Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-c1094282-7fff-58c5-74b0-ddc549c989b1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">Our email message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38; margin-top:0pt; margin-bottom:0pt; "><span id="docs-internal-guid-c1094282-7fff-58c5-74b0-ddc549c989b1"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; ">8532683~8995312</span></span></p>   
- <img src="http://www.killdew.monster/morass-possum/53a6lJ23_95VW8y511e4163KYfdej36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQhd9e95PY10O5FMWwD" alt=""/></body>
+ <head>=20
+  <title></title>=20
+ </head>=20
+ <body>
+  &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea0=
+3-992624c68b7d"><span style=3D"font-size: 14pt; font-family: Arial; font-we=
+ight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; v=
+ertical-align: baseline; white-space: pre-wrap;"><span style=3D"border:none=
+;display:inline-block;overflow:hidden;width:435px;height:2048px;"><a href=
+=3D"http://www.trimdew.monster/viruses-whitens/2a65D239k5OO8J610s4168hfe0q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQFd9eQ5P1_0_6I@qzwD"><img alt=3D"Go Here for ADT Security" src=3D"http://www.trimdew.monster/5754D2395QgQ7a10s416bJfe0O36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQFd9eQ6s1R0wD5q2lwD/Plato-hexagons" s=
+tyle=3D"margin-left: 0px; margin-top: 0px; width: 602px; height: 2831px;" /=
+></a></span></span></span></p>=20
+  <br />=20
+  <br /> &nbsp;=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea0=
+3-992624c68b7d"><span style=3D"font-size: 11pt; font-family: Arial; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;"><span style=3D"border:none;display:inline-bl=
+ock;overflow:hidden;width:26px;height:26px;"><img height=3D"26" src=3D"=
+http://www.trimdew.monster/emptying-ideally/abc6Q2R39P5jJ7ha12h416cqlZfe0r36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQFd9eQ7S1oJ0Ai6WTwppD" style=3D"margin-left:0px;margin-top:0px;" width=3D"26" /></span></=
+span><span style=3D"font-size:12px;"><span style=3D"font-family: Arial; fon=
+t-variant-numeric: normal; font-variant-east-asian: normal; vertical-align:=
+ baseline; white-space: pre-wrap;"> </span></span></span><span style=3D"fon=
+t-size:12px;"><span style=3D"font-family:arial,helvetica,sans-serif;">=
+15O1. Yamato R0AD, Boca~Raton, Fl 3343l</span></span><span><span style=
+=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font=
+-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wra=
+p;"> &copy;2022 ADT LLC</span></span></p>=20
+  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
+t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea0=
+3-992624c68b7d"><span style=3D"font-size: 11pt; font-family: Arial; font-va=
+riant-numeric: normal; font-variant-east-asian: normal; vertical-align: bas=
+eline; white-space: pre-wrap;">&nbsp;</span></span><span id=3D"docs-interna=
+l-guid-9899b2db-7fff-5fa1-ea03-992624c68b7d"><span style=3D"font-size: 11pt=
+; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian=
+: normal; vertical-align: baseline; white-space: pre-wrap;">&nbsp;Do you wa=
+nt to stop getting these emails? You can </span></span><span id=3D"docs-int=
+ernal-guid-9ed07753-7fff-0bf6-7c11-c8a4b69ed52e"><a href=3D"http://www.trimdew.monster/emptying-ideally/44a4Q2395zn8p612g416M9ANfe0O36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQFd9eQ7jP10TXx5aJwDL" sty=
+le=3D"text-decoration-line: none;"><span style=3D"font-size: 11pt; font-fam=
+ily: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-var=
+iant-east-asian: normal; text-decoration-line: underline; text-decoration-s=
+kip-ink: none; vertical-align: baseline; white-space: pre-wrap;">unsubscrib=
+e- here</span></a></span></p>=20
+  <div style=3D"text-align: center;">
+   <span id=3D"docs-internal-guid-9899b2db-7fff-5fa1-ea03-992624c68b7d"><sp=
+an style=3D"font-size: 11pt; font-family: Arial; font-variant-numeric: norm=
+al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
+ pre-wrap;">To view a fill list of licensing </span></span>
+   <span id=3D"docs-internal-guid-740e5a9f-7fff-da23-ee66-e0d479bf2a09"><a =
+href=3D"http://www.trimdew.monster/4c14d2395t8t6o11U416aQAfe0C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFd9eQ6HIr10H5D3wDM/sacrificing-description" style=3D"text-decoration-line: none;"><span style=3D"fo=
+nt-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-nu=
+meric: normal; font-variant-east-asian: normal; text-decoration-line: under=
+line; text-decoration-skip-ink: none; vertical-align: baseline; white-space=
+: pre-wrap;">click-here</span></a></span>
+  </div>  =20
+ <img src=3D"http://www.trimdew.monster/5934U2395b8vT510F416dIfe0p36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQFd9eQ6EMw10C6iNXTwD/allegiance-fluctuates" alt=3D""/></body>
 </html>
 
-------=_Part_808_232596412.1666091690804--
+------=_Part_397_1874255686.1666099535435--
 
