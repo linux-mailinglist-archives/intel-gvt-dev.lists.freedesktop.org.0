@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6610C6033DC
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Oct 2022 22:20:54 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 291D86034CD
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Oct 2022 23:19:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2562F10F004;
-	Tue, 18 Oct 2022 20:20:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C7D4010E37F;
+	Tue, 18 Oct 2022 21:19:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 340 seconds by postgrey-1.36 at gabe;
- Tue, 18 Oct 2022 20:20:47 UTC
-Received: from mail.minedew.click (unknown [173.244.43.89])
- by gabe.freedesktop.org (Postfix) with ESMTP id 036B410F004
+X-Greylist: delayed 428 seconds by postgrey-1.36 at gabe;
+ Tue, 18 Oct 2022 21:18:59 UTC
+Received: from mail.aiddew.click (unknown [77.90.188.153])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 62F1E10E37F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 20:20:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=minedew.click;
+ Tue, 18 Oct 2022 21:18:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=aiddew.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=denise-soroka@minedew.click; 
- bh=4WzFCm30LTICdtoPzPXFr5o+beI=;
- b=g6zVb8Eei6Q4jxT+Y2vs5oE4zvVYIMrtPF8s8zuLLw2JrZLXZNDxiLJMPv3QpTS3YbO5Lu8mKcaw
- buyKP7iAfgJKgMv9KqJBXmPjaPO5KNdxifM5uhfIAFiLrhqUJRtwgLwXwfVlJuGcFfGWhco1J+FL
- ThFGoequf76h0egG5gQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=minedew.click;
- b=onwSYIDogA8n9JNzSSZWppwCL/GiIjor+QoCvbWtC55eCnqxsC0PXzl6I1E54BoYj9RJzVSEiYB+
- Fe/5o/v9FeB3JpjM9tvUYOv0lF/KLM0Np/RaPcbMywTqsSDoWAJYjVdCSwOwb4Ax5C9gnqr7W6xl
- lsCz2RTC6KoqsH8/hzw=;
-Received: by mail.minedew.click id h9s59u0001g7 for
+ i=marina.davisson@aiddew.click; 
+ bh=WwmN2D5xfjhfOyV+HfPFJ8VqQgk=;
+ b=h8QraAQPmkkCKRj0Lzx9igbuOLO1wMDI4Gv8wg3Zcxbse42rIDmjetJ3YG73/ojo3MpOXp4uzBbh
+ psiAGzrdHahesFRPYJ8LdEVit7fKWYuzau7g6AdcRXZ/smxmGaHWzMS7eliTKJ01C0/WziVLPNmn
+ KiOOuGkxdzmtLdI0Rh8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=aiddew.click;
+ b=tkzv5luoLuSKfyRKKlpxkCZInELfC19pL/LN44eX+6M9y8fHMjESymKqSJCjJ+XlEedGzLUZHw/V
+ Ghy5X26oL5MEePBt5x42+RmRsxBhGQqzMeodhugBt2K9g+BEhHNpqTwfQkn7NDXil1QAF7WmEkf7
+ r142KinYy8RI2iuaTa4=;
+Received: by mail.aiddew.click id h9sc460001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 16:06:28 -0400 (envelope-from
- <denise-soroka-intel+2Dgvt+2Ddev=lists.freedesktop.org@minedew.click>)
-Date: Tue, 18 Oct 2022 16:06:28 -0400
-From: Denise Soroka <denise-soroka@minedew.click>
+ Tue, 18 Oct 2022 17:05:09 -0400 (envelope-from
+ <marina.davisson-intel+2Dgvt+2Ddev=lists.freedesktop.org@aiddew.click>)
+Date: Tue, 18 Oct 2022 17:05:09 -0400
+From: Marina Davisson <marina.davisson@aiddew.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Give your Feedback about Lowes for a Stanley 170 pc. Tool Kit
- intel-gvt-dev@lists.freedesktop.org
+Subject: Check out Our List of the Best Gadgets Now
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_436_1766119954.1666123579285"
-Message-ID: <0.0.0.30.1D8E32D1B9921B2.5C7621@mail.minedew.click>
+ boundary="----=_Part_28_1870591004.1666127102738"
+Message-ID: <0.0.0.3.1D8E3354E9FF7CC.5EBFFB@mail.aiddew.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,25 +53,22 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_436_1766119954.1666123579285
+------=_Part_28_1870591004.1666127102738
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Give your Feedback about Lowes for a Stanley 170 pc. Tool Kit  intel-gvt-dev@lists.freedesktop.org
+Check out the List of Trending Gadgets Today
 
-Visit Here to Claim a Stanley Tool Kit from Lowes. http://www.minedew.click/eb74A2395a8DM610Y4186gfe7D36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCd9Ko7y1qh0pt6ujNMwD/bandwagon-necessary
+Check out Our List of the Best Gadgets Now~http://www.aiddew.click/b6f4q2395p8x6y11E41F8awfe8y36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQyd9K95D1i0o6SJwD2J/charmer-distress
 
 
+This e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org
 
-96_ MOWAT Av, Toronto.  ONT.  M4K 3KI CN
+18O34 Ventura' Boulevard NO.  169.  ENCINO CA.  91316, UNITED STATES
 
-To put an end to notices, Begin.Here. http://www.minedew.click/3775A23Y95f_u8612eS41P87Dfe7t36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCd9Ko6v1Gr0J5v3lwD/multiplication-administers
+3208534-8971182
 
-Our email communication was directed to intel-gvt-dev@lists.freedesktop.org
-
-29986256:24800817
-
-------=_Part_436_1766119954.1666123579285
+------=_Part_28_1870591004.1666127102738
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,20 +77,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.minedew.click/repellent-assimilate/3005z239t5Iz8_612X_41Q86ife7V36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQCd9Ko5eH10F5qOwD2" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Claim a Stanley Tool Kit from Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.minedew.click/repellent-assimilate/3005z239t5Iz8_612X_41Q86ife7V36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQCd9Ko5eH10F5qOwD2" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.minedew.click/shivers-phoning/33c4o2395RSg7a11I41j88Cfe7m36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCd9Ko5S1rV05zkOwD" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Promotion Comes to a Close in 5 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><a href="http://www.aiddew.click/strives-streams/c246rt239R5Xgi8611z418ZaCfe8y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQyd9K95R1y_05b1lwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Check out Our List of the Best Gadgets Now</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1315px;"><a href="http://www.aiddew.click/strives-streams/c246rt239R5Xgi8611z418ZaCfe8y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQyd9K95R1y_05b1lwD"><img alt="See the Top Rated Gadgets of 2022" src="http://www.aiddew.click/8816f23B9n5m7Aza10D418cjfe8K36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQyd9K95IC1g06QkW1wD/quenched-madras" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1315px;" /></a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; color: rgb(153, 0, 0); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Supplies are Limited.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 MOWAT. Avenue, Toronto. ONTARIO M4 K3 K1 CANADA</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put an end to notices,<a href="http://www.minedew.click/vexation-continually/b166gp239_5zj8M610e4187Pfe7_36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQCd9Ko6k1K0uB5v3BwD"> Begin.Here</a></span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email communication was directed to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">29986256~24800817</span></span></span></p>   
- <img src="http://www.minedew.click/a075S23Q95k85DZ10y4189mfe7Z36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCd9Ko6Iy1h0t6rL@w0D/multiplication-administers" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your communication preferences,<a href="http://www.aiddew.click/revolutionizer-turbulent/d324B2395N8L6q12z418gBbFfe8r36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQyd9K96c1Bu0t5zWwD@"> Visit_Ahead_Here</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18034_ VENTURA. BLVD Ste l69. ENClNO CALIFORNIA 91316_ U.S.A.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">84844544 8971182</span></span></p>   
+ <img src="http://www.aiddew.click/9714n2395D85kF10a418dNfe8R36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQyd9K97aFXM1Q06SllwAD/quenched-madras" alt=""/></body>
 </html>
 
-------=_Part_436_1766119954.1666123579285--
+------=_Part_28_1870591004.1666127102738--
 
