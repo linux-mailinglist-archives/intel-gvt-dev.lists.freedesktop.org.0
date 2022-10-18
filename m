@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 291D86034CD
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Oct 2022 23:19:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 383B66035CE
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 00:23:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C7D4010E37F;
-	Tue, 18 Oct 2022 21:19:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E050810F044;
+	Tue, 18 Oct 2022 22:23:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 428 seconds by postgrey-1.36 at gabe;
- Tue, 18 Oct 2022 21:18:59 UTC
-Received: from mail.aiddew.click (unknown [77.90.188.153])
- by gabe.freedesktop.org (Postfix) with ESMTP id 62F1E10E37F
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Tue, 18 Oct 2022 22:23:12 UTC
+Received: from mail.dewmind.click (unknown [213.209.129.162])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CFC7110F03E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 21:18:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=aiddew.click;
+ Tue, 18 Oct 2022 22:23:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dewmind.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=marina.davisson@aiddew.click; 
- bh=WwmN2D5xfjhfOyV+HfPFJ8VqQgk=;
- b=h8QraAQPmkkCKRj0Lzx9igbuOLO1wMDI4Gv8wg3Zcxbse42rIDmjetJ3YG73/ojo3MpOXp4uzBbh
- psiAGzrdHahesFRPYJ8LdEVit7fKWYuzau7g6AdcRXZ/smxmGaHWzMS7eliTKJ01C0/WziVLPNmn
- KiOOuGkxdzmtLdI0Rh8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=aiddew.click;
- b=tkzv5luoLuSKfyRKKlpxkCZInELfC19pL/LN44eX+6M9y8fHMjESymKqSJCjJ+XlEedGzLUZHw/V
- Ghy5X26oL5MEePBt5x42+RmRsxBhGQqzMeodhugBt2K9g+BEhHNpqTwfQkn7NDXil1QAF7WmEkf7
- r142KinYy8RI2iuaTa4=;
-Received: by mail.aiddew.click id h9sc460001gr for
+ i=deglanville_ericka@dewmind.click; 
+ bh=h6kxp59V2HkStUc1MYUh2nexmJw=;
+ b=zLHNbUOzkRrmSK9RMc+c8/ub2BkyxPjfFJHrzmPNQnda5ZBTxRY7Dsyh9+EKBrHfC0TTDAC3Oqh+
+ gAITxD2Vsa7pI/7+Cem3Rdov/rkVrIuxO6NPkvqGWl6SJMndeu4fctIHfPWKt1oRdOHBIKn2+7a9
+ +Chdg0ZuhcIfp1wcDaA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dewmind.click;
+ b=BflAgOEc9yY318z0m+v7IBaG0uJm28H0qY7Fny3SMZTn+goXpXrRUs4wmLZGd4Hp/f+x4+WkmsBi
+ Q27LcQvg+r8bjmvsUmvu+sMuSbYFoT3FxPMUu+1FULZxvobDdWlFve9fL2/+PlCtPshpsNcQWou2
+ vd2pz9m+lq+2wgxGgRw=;
+Received: by mail.dewmind.click id h9sjl20001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 17:05:09 -0400 (envelope-from
- <marina.davisson-intel+2Dgvt+2Ddev=lists.freedesktop.org@aiddew.click>)
-Date: Tue, 18 Oct 2022 17:05:09 -0400
-From: Marina Davisson <marina.davisson@aiddew.click>
+ Tue, 18 Oct 2022 18:10:17 -0400 (envelope-from
+ <deglanville_ericka-intel+2Dgvt+2Ddev=lists.freedesktop.org@dewmind.click>)
+Date: Tue, 18 Oct 2022 18:10:17 -0400
+From: Ericka Deglanville <deglanville_ericka@dewmind.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Check out Our List of the Best Gadgets Now
+Subject: Your Invitation No.  7231236
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_28_1870591004.1666127102738"
-Message-ID: <0.0.0.3.1D8E3354E9FF7CC.5EBFFB@mail.aiddew.click>
+ boundary="----=_Part_634_1591166013.1666131004078"
+Message-ID: <0.0.0.46.1D8E33E6796DB3E.4DBE20@mail.dewmind.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,22 +53,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_28_1870591004.1666127102738
+------=_Part_634_1591166013.1666131004078
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Check out the List of Trending Gadgets Today
-
-Check out Our List of the Best Gadgets Now~http://www.aiddew.click/b6f4q2395p8x6y11E41F8awfe8y36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQyd9K95D1i0o6SJwD2J/charmer-distress
+Your Invitation No.  3634009
 
 
-This e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org
+Start Here to Pick Up To $100 Bonus~http://www.dewmind.click/apologist-unsound/4865L23L95d8S6z11u41L8ePfe9j36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCd9Kd6VpqS106ulwNJD
 
-18O34 Ventura' Boulevard NO.  169.  ENCINO CA.  91316, UNITED STATES
 
-3208534-8971182
+This notice was sent to intel-gvt-dev@lists.freedesktop.org
+I26 East  23RD STREET New York New-York IOOIO.  US 
+To update your subscription options, Click-Ahead-Here~http://www.dewmind.click/c7d6R2vG395bg86S12s4mr18fwfe9F36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQCd9Kd6A1nmO06llplwD/jewelries-producer
 
-------=_Part_28_1870591004.1666127102738
+7918662~7231236
+
+------=_Part_634_1591166013.1666131004078
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -77,20 +78,14 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><a href="http://www.aiddew.click/strives-streams/c246rt239R5Xgi8611z418ZaCfe8y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQyd9K95R1y_05b1lwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Check out Our List of the Best Gadgets Now</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:1315px;"><a href="http://www.aiddew.click/strives-streams/c246rt239R5Xgi8611z418ZaCfe8y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQyd9K95R1y_05b1lwD"><img alt="See the Top Rated Gadgets of 2022" src="http://www.aiddew.click/8816f23B9n5m7Aza10D418cjfe8K36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQyd9K95IC1g06QkW1wD/quenched-madras" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 1315px;" /></a></span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 14pt; font-family: Arial; color: rgb(153, 0, 0); font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Supplies are Limited.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To change your communication preferences,<a href="http://www.aiddew.click/revolutionizer-turbulent/d324B2395N8L6q12z418gBbFfe8r36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQyd9K96c1Bu0t5zWwD@"> Visit_Ahead_Here</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">18034_ VENTURA. BLVD Ste l69. ENClNO CALIFORNIA 91316_ U.S.A.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-b41ac459-7fff-0f9a-2002-ce1109ddb89c"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">84844544 8971182</span></span></p>   
- <img src="http://www.aiddew.click/9714n2395D85kF10a418dNfe8R36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQyd9K97aFXM1Q06SllwAD/quenched-madras" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><a href="http://www.dewmind.click/fortieth-insubordinate/3006QR239A5Q86oG12LBZ418elfe9I36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQCd9Kd6ak_z105Fzw@D" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here to Pick Up To $100 Bonus</span></a></span><br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><a href="http://www.dewmind.click/fortieth-insubordinate/3006QR239A5Q86oG12LBZ418elfe9I36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQCd9Kd6ak_z105Fzw@D" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:663px;"><img height="663" src="http://www.dewmind.click/subjects-Canadian/7ec4M2395Fq7ma11S419W0Sfe9h36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQCd9Kd5f10sl6QB@wDP" style="margin-left:0px;margin-top:0px;" width="600" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">96- MOWAT- AVENUE, Toronto_ ONT. M4 K3 K1 CANADA</p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To update your subscription options, </span><a href="http://www.dewmind.click/5575A239_5k8D6N10I418fIfe9_36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQCd9Kd7l1XXO0Q5IJUwD/lambs-rinds" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Click-Ahead-Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3634009-7231236</span></span></p>   
+ <img src="http://www.dewmind.click/fortieth-insubordinate/bca4q2395BRF8511n419l1Ufe9u36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQCd9Kd6sZ10mw6kT3@wD" alt=""/></body>
 </html>
 
-------=_Part_28_1870591004.1666127102738--
+------=_Part_634_1591166013.1666131004078--
 
