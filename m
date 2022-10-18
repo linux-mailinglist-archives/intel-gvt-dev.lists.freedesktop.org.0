@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72505602F85
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Oct 2022 17:21:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D23C56030B2
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Oct 2022 18:22:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2757610ED4B;
-	Tue, 18 Oct 2022 15:21:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 91CA810EF8C;
+	Tue, 18 Oct 2022 16:22:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Tue, 18 Oct 2022 15:20:53 UTC
-Received: from mail.dewgrim.monster (unknown [213.209.129.116])
- by gabe.freedesktop.org (Postfix) with ESMTP id CB6CA10EB1F
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Tue, 18 Oct 2022 16:22:41 UTC
+Received: from mail.yeardew.monster (unknown [5.42.214.158])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4DC6110EF8A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 15:20:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dewgrim.monster; 
+ Tue, 18 Oct 2022 16:22:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yeardew.monster; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sherri-shigley@dewgrim.monster; 
- bh=fIP45YKqUyPCVtqNin6woJLZ2ME=;
- b=FjntYcA+MNhuQFcz8rpNNm3Obp7WUFNuGA7ElJ+dSvumfFANotunHq6n6VEwLcRcFHHvA0frN88Z
- /j69UB75uYRYfllJ8To9IO1dspF1vFhtQwHgaP8sk7/nfkOXRQ4EjUPttkYRSFdB9eIN53iENVNa
- 8o4Oqssq7MVjwDfozz4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dewgrim.monster;
- b=kh2MQdJwPeHfDGPWSw6NhWSUL0E/M5+I4+NmNdNyz0yyvo4y/PHP+hQd4iqjWQA+ptGzg7N0mnSE
- s6E5F9qG9eFIEyxMToHzbGeRUkSURabDPmR40K0gvmuk/4NofG+Ohl3AoVnB/iAQqExcgz2jSgMY
- buOMShPg7CvvMeslgS4=;
-Received: by mail.dewgrim.monster id h9r25a0001gv for
+ i=angeline-sabbatini@yeardew.monster; 
+ bh=8ZRX13/s013PEtwlCSR1uGY1Uwk=;
+ b=MGwksemYqyDx/ghndU1Ug9N/kM+/umat9lnn3U7M76fU094se4cGcjxTXS/CC9QyiXP/esWAkugj
+ fL9UspYLZ8R07TH++e+HSs6ArIOAL/ivBik/U88RnJdg266F2zQj7CdBx1M5VmmXTfAPbTUNx2Ao
+ cGOyt6f+/XivW9g/F8Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yeardew.monster;
+ b=K60McUG9ipn6YdPjYJMOX2kxBqjn2wansb2mI4pULDldRKVEHMWhAbaD6pUL/VtfAxGXq5PrlHZz
+ CjFP4ZEKND5cIcKI5ZcYKW+sZDB5oCzrFHMmFzb9h8o94Wgq52uvmpIPjje2jf6z2mYQofxSR5l3
+ 7VMoYkykC8wy5kCzHZA=;
+Received: by mail.yeardew.monster id h9r9d20001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 11:07:34 -0400 (envelope-from
- <sherri-shigley-intel+2Dgvt+2Ddev=lists.freedesktop.org@dewgrim.monster>)
-Date: Tue, 18 Oct 2022 11:07:34 -0400
-From: Sherri Shigley <sherri-shigley@dewgrim.monster>
+ Tue, 18 Oct 2022 12:08:32 -0400 (envelope-from
+ <angeline-sabbatini-intel+2Dgvt+2Ddev=lists.freedesktop.org@yeardew.monster>)
+Date: Tue, 18 Oct 2022 12:08:32 -0400
+From: Angeline Sabbatini <angeline-sabbatini@yeardew.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Stanley Tool Set Giveaway sponsored by Lowes
- intel-gvt-dev@lists.freedesktop.org
+Subject: No One Calling Back? Find #1 Rated Handymen
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_382_716680578.1666105627003"
-Message-ID: <0.0.0.2A.1D8E3035A57F308.39AB15@mail.dewgrim.monster>
+ boundary="----=_Part_607_889755445.1666109291850"
+Message-ID: <0.0.0.43.1D8E30BDE9D667C.3B82E6@mail.yeardew.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,25 +53,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_382_716680578.1666105627003
+------=_Part_607_889755445.1666109291850
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Stanley Tool Set Giveaway sponsored by Lowes  intel-gvt-dev@lists.freedesktop.org
+No One Calling Back? Find #1 Rated Handymen
 
-Visit Here for a 170 pc Stanley Tool Kit from Lowes:http://www.dewgrim.monster/sweating-violate/f124P2395Xj86v11u41j72Wfe2Q36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ.d9eS6i1mB0i5Q@wUD
+Begin Here to Find Out How Much Your Project Costs Here  http://www.yeardew.monster/Whatley-Romano/d504U2395Q86JB12hv41n76Cfe3F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQNd9ee6EW10Ir5k3jwD
+
+Don't Wait!  Search for a Professional Then Find Costs and Start your Project This Summer. 
 
 
 
-. 96 MOWAT Avenue, Toronto_ Ont.  M4K3K1 Canada
 
-To modify your communication preferences, Continue_Here:http://www.dewgrim.monster/9175l2z395P8p6Q11Q4O173Sfe2n36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.d9eS7MgO1W0V5ETwDP/portended-corollaries
+I2I6- Broadway,  FL00R 2, NEW YORK CITY, New York 1OOO1
+No longer want to receive email messages from us?, Start Here Now http://www.yeardew.monster/33b5w239J5r8P6k11s4177Vufe3N36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQNd9ee6jCF10U6VU@w@D/totters-moose
+This e-mail was delivered to intel-gvt-dev@lists.freedesktop.org
+8170985 6336931
 
-This e-mail message was designated for intel-gvt-dev@lists.freedesktop.org
-
-25369359. 80496891
-
-------=_Part_382_716680578.1666105627003
+------=_Part_607_889755445.1666109291850
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -81,20 +80,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.dewgrim.monster/idealizing-outset/e5e4o2395Kw8h611N4Z172xfe2q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ.d9eS7X1Jzu0g6e0z2wD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here for a 170 pc Stanley Tool Kit from Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.dewgrim.monster/idealizing-outset/e5e4o2395Kw8h611N4Z172xfe2q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ.d9eS7X1Jzu0g6e0z2wD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.dewgrim.monster/c415I2R395eRG7a12S4l1z74lfe2X36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ.d9eS7zvT1tD05Q@wDl/Io-restored" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Special Offer Ends in 2 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><a href="http://www.yeardew.monster/Poole-compression/ef44g2395OrS8612j4r1h76vfe3B36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQNd9ee7k1jpmB05tkw@D" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin Here to Find Out How Much Your Project Costs</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:604px;height:1429px;"><a href="http://www.yeardew.monster/Poole-compression/ef44g2395OrS8612j4r1h76vfe3B36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQNd9ee7k1jpmB05tkw@D"><img alt="Compare Project Pros to Save" src="http://www.yeardew.monster/Whatley-Romano/e404X2395VK7Ja11s417W8ife3v36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQNd9ee6AyC1L06EzwD@X" style="margin-left: 0px; margin-top: 0px; width: 604px; height: 1429px;" /></a></span></span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">&nbsp;Compare Professionals, Get Quotes and Get You Project Underway Today.</span></span></p> 
+  <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT' Av, Toronto ONT. M4K 3Kl CA</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your communication preferences,<a href="http://www.dewgrim.monster/Io-restored/5b25R239_5l86Oz10A4173Bfe2S36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ.d9eS6RI10Lk5fy2wD"> Continue_Here</a></span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was designated for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">25369359:80496891</span></span></span></p>   
- <img src="http://www.dewgrim.monster/eb75K239R5t8P5Z11e4_175Yfe2G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ.d9eS6j1O0F_6izUzwD/portended-corollaries" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">I2I6' Broadway,&nbsp; FL00R TWO, New York, NY 1OOO1</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email messages from us?, <a href="http://www.yeardew.monster/20f5Fz2395hv8X611V4177NAfe3P36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQNd9ee7r1Z0J_Z6aJwDkq/centralism-expedient">Start Here Now</a></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8170985-6336931</span></span></p>   
+ <img src="http://www.yeardew.monster/b8d4S2395p8Jg512V417pW9Kfe3A36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQNd9ee7z1Vs0xH6Qlw1WD/dramatically-erections" alt=""/></body>
 </html>
 
-------=_Part_382_716680578.1666105627003--
+------=_Part_607_889755445.1666109291850--
 
