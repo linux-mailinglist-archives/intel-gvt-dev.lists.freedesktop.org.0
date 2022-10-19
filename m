@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20051604F78
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 20:19:49 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CB2C60512A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 22:18:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DAA3910EB47;
-	Wed, 19 Oct 2022 18:19:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A648010EBB1;
+	Wed, 19 Oct 2022 20:18:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 19 Oct 2022 18:19:39 UTC
-Received: from mail.waitsbot.monster (unknown [66.63.186.196])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5AFCC10EB45
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Oct 2022 20:18:08 UTC
+Received: from mail.nailbot.click (unknown [173.244.43.198])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9E76010F091
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Oct 2022 18:19:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=waitsbot.monster;
+ Wed, 19 Oct 2022 20:18:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nailbot.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=crapse_alexandria@waitsbot.monster; 
- bh=ga1S9lD0HKX3v3NQK25/wifResA=;
- b=zOEnhvUDHvz6dFK/Zx5zR13Q7Xo9r1xWXdBLIpn130HaLM1q/n0+mf3kPqImSSAZhNf5RtnuGZ++
- n7FNLhhv09RtahezSWYTc0UFwhxGIe9297TaDyEDHD6jTeekDPUhAoKhOSTACICsxNI1zNeThyEY
- LsiU2yvUkPgIBS+rXS0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=waitsbot.monster;
- b=qYkYenZqbtdQrjSbABpPBiKRoQBua4SPj7duPJl5/C2wtG8cElbjIbGwn8UsD4Rfunzu1cT9a2BH
- 81l9tpbJfHRw50H7b4ezzB+xifu3KhMKpTfeUk1GWi2KIEZdH52yBm86G4J+Dhum/Fz48dwWJv7O
- a4jGip68LuBdAQiv/bg=;
-Received: by mail.waitsbot.monster id ha1ab00001ga for
+ i=lana_desutter@nailbot.click; 
+ bh=LqiLLqhQOarTRc8RU6JllspNb+w=;
+ b=keh8Z12YCHbc+8+kaP5j4Om8YP+edOLog7wCanErZhIGlCT0ZfwTFhnDTmM/jFPtQNeMq607fAfF
+ Unv7OK0vsdEc08vsBrgbdGLNrK3g3fi3EugHbKDl3dcOp9D7RXDuL1LWdK/LnC5EKMNav5cmdk/a
+ ZjE0vsWmLnVgePWpAU4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nailbot.click;
+ b=ALJCvNGK0AwHSA+4YSUwUL8YRRwUradM3kEesPtiCnRpo4onTvb8cj/Qnl88MH26Z9qxZyU69JpP
+ AMTRSrQlB+/PME25BtONybv25tGLWt1g3VZ2O9Ruuic3ru3HPxE8Kdv2PRWoeQLQUNkvt7qFGjDC
+ 7sxKtRPu7zV+vE2GF1U=;
+Received: by mail.nailbot.click id ha1do00001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Oct 2022 15:34:25 -0400 (envelope-from
- <crapse_alexandria-intel+2Dgvt+2Ddev=lists.freedesktop.org@waitsbot.monster>)
-Date: Wed, 19 Oct 2022 15:34:25 -0400
-From: Alexandria Crapse <crapse_alexandria@waitsbot.monster>
+ Wed, 19 Oct 2022 16:05:03 -0400 (envelope-from
+ <lana_desutter-intel+2Dgvt+2Ddev=lists.freedesktop.org@nailbot.click>)
+Date: Wed, 19 Oct 2022 16:05:03 -0400
+From: Lana Desutter <lana_desutter@nailbot.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Did Talcum Powder give you cancer?  File Today  Ref.4809285
+Subject: Claim your Stanley Tool Kit from Lowes
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_34_2054733637.1666202687352"
-Message-ID: <0.0.0.3.1D8E3F1CBEA736C.2CADA3@mail.waitsbot.monster>
+ boundary="----=_Part_163_864602023.1666209891293"
+Message-ID: <0.0.0.12.1D8E3F613B3E378.632176@mail.nailbot.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,25 +54,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_34_2054733637.1666202687352
+------=_Part_163_864602023.1666209891293
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Did Talcum Powder give you cancer?  File Today  Ref. 37737910
+Claim your Stanley Tool Kit from Lowes  intel-gvt-dev@lists.freedesktop.org
 
-Used Talcum Powder & Have Cancer?  Click Here http://www.waitsbot.monster/cf54v2395n8ix610z41d1mff9w36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQbddnm6r1MXS06f1wD@1/pitcher-hooking
-
-
+You've Been Chosen, Start Here~http://www.nailbot.click/reimbursed-misunderstander/e5e4U2395C8AS612y41dDJ9sffbJ36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQVddno5l1A0V6MlwUDP
 
 
 
+. 96 MOWAT' AVE, Toronto- Ont.  M4K3Kl CN
 
-73O NO.  Gould_ STREET STE.  N Sheridan_, WYO 82801
-To modify your message choices, Get-Started-Here http://www.waitsbot.monster/31d6Qr239H5oHS8612X4o1Id2Sff9u36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQbddnm6uy10qj5OllwD/jingled-theory
-This notification was chosen for intel-gvt-dev@lists.freedesktop.org
-9110993 4809285
+To cut off messages, Continue-Over-Here~http://www.nailbot.click/sightseeing-schooler/9cc6O2YS395Rr8V611A4O1daqffbq36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVddno6jxW1i05XJ0wD
 
-------=_Part_34_2054733637.1666202687352
+This communication was intended for intel-gvt-dev@lists.freedesktop.org
+
+2640406,4575428
+
+------=_Part_163_864602023.1666209891293
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,24 +81,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ba2587f2-7fff-3ec8-cf23-48dab4dd8569"><a href="http://www.waitsbot.monster/deformity-matings/3784j2395Uzt8611E41dF1Wff9F36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQbddnm7Nz1uTs06JWBwDX" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Used Talcum Powder & Have Cancer?  Click Here</span></a></span><br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ba2587f2-7fff-3ec8-cf23-48dab4dd8569"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:750px;"><a href="http://www.waitsbot.monster/deformity-matings/3784j2395Uzt8611E41dF1Wff9F36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQbddnm7Nz1uTs06JWBwDX"><img alt="File a Claim for Compensation Here" src="http://www.waitsbot.monster/4676SS23C95shN7a11Q41d3AOff9D36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQbddnm7KAx1u0G5lNwDp/inadequateness-Burgundy" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 750px;" /></a></span></span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.nailbot.click/cb94e2395b8i6R11n4l1d9gffbW36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVddno7gP10BOk5EjpwD/remedies-confusing" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">You've Been Chosen, Start Here</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.nailbot.click/cb94e2395b8i6R11n4l1d9gffbW36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVddno7gP10BOk5EjpwD/remedies-confusing" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.nailbot.click/quarantines-expunge/6fc6jU23Y95J7tJa10G41dbgffbI36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQVddno5wwD106vqwDWq" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Exclusive Offer Ends in 3 Days.</span></span></p> 
   <br /> 
   <br /> 
   <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ba2587f2-7fff-3ec8-cf23-48dab4dd8569"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">30 NORTH Gould_ STREET STE N SHERID', WYO 82801'</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ba2587f2-7fff-3ec8-cf23-48dab4dd8569"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your message choices, </span><a href="http://www.waitsbot.monster/pitilessly-tampered/53a6R2J39z5E8k6L11m41d2Xsff9k36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQbddnm6o1q0Q_5I2wDy" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Get-Started-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ba2587f2-7fff-3ec8-cf23-48dab4dd8569"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notification was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ba2587f2-7fff-3ec8-cf23-48dab4dd8569"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">37737910.4809285</span></span></p>   
- <img src="http://www.waitsbot.monster/e7b4W2395Si85_11sh41d4off9w36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQbddnm6YO10wA5j@@wD/pitcher-hooking" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat AVE, T0R0NT0 ONTARIO M4K3Kl CA</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To cut off messages,<a href="http://www.nailbot.click/meagerness-cataloged/40e5o239D5wkr8611S41draVffbv36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVddno5z1N0q5OlUwD"> Continue-Over-Here</a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was intended for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2640406,4575428</span></span></span></p>   
+ <img src="http://www.nailbot.click/d4f6HU239D5z8iJ510r41dcKffbz36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQVddno6M10tJq5JAMwD/sightseeing-schooler" alt=""/></body>
 </html>
 
-------=_Part_34_2054733637.1666202687352--
+------=_Part_163_864602023.1666209891293--
 
