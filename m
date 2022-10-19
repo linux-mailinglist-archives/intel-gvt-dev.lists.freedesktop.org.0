@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75C4D6051D2
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 23:16:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE81D6052F8
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Oct 2022 00:23:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1CDDE10E0BC;
-	Wed, 19 Oct 2022 21:16:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9EB5210E11C;
+	Wed, 19 Oct 2022 22:23:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Wed, 19 Oct 2022 21:16:18 UTC
-Received: from mail.finebot.click (unknown [213.209.129.92])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9F05C10E0AB
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Oct 2022 22:23:49 UTC
+Received: from mail.botgreat.click (unknown [77.90.188.74])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 551D810E0EB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Oct 2022 21:16:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=finebot.click;
+ Wed, 19 Oct 2022 22:23:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=botgreat.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kathy_corrente@finebot.click; 
- bh=4Hol6AgUxCHn3D5hJpG3ProNQqU=;
- b=CrCvQ5abJrEdhFSSiOEMmIcV7AYKeG9dj/3SQ4sdfc94YJ1OpYuGuT+OczLEKb9wd8AzqT/Kqe75
- 9kJs5ACvkEtzdHMmEfWwKUu+w2neMo0RLtWfPl9TrrwGtXMN8WqqOX/numms0pfQMuWEEPl3txik
- jEEEDb1b6jPb2IMo3KI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=finebot.click;
- b=BSC+RlPEPpEEvdEtSSPBIrI9fb+l+P4kb6MQ3Z2Ygs+3y6IY2gInRHcNKZjfVDUyZU3cNzX+0fqD
- fdpD+bwkUhju4yR8AP2Kk0LaoZmlwXConf701NjgMZthvqSYRMWkpyi62BYdUJ8rVUJjNgkO9jTb
- p/QzrlYhEiwABB14Xuw=;
-Received: by mail.finebot.click id ha1ki40001g9 for
+ i=raquel_wenciker@botgreat.click; 
+ bh=z3bvzxf0/N7EM6XILDXZBqUpcvQ=;
+ b=TWb1ftq4ayZKSjtcLCyygdpNlAO0ULZ1g3hMT85aTU33IO8OmxXTF4BhIvoHr4oGXbz/pfQfnrEv
+ XgBl3kGCW+iGDlqVp5KenxUAAZITaeQDtlh0xt39bvCeg2YdLmurON2RrBgSt/O3JMsLyYKXpYPE
+ Zd/XVWH1DJHyi1vlhOc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=botgreat.click;
+ b=a7hwmEmB6vj2nbgJ4+8OD9xSdozs53xqNDJI6YCe3U4ykF4gZu+cy7yP22WhvVKnWegi2BZb8Bpg
+ c4vwGaG3sG8Tolf6hDNi8HZt6TZXRc67WHdlGS9K1XfD+zZ9HlKr0qzg9eNw+pQsrO2TGjr2suxb
+ yICHM4yFGqfrF1AG5cY=;
+Received: by mail.botgreat.click id ha26uk0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Oct 2022 17:04:38 -0400 (envelope-from
- <kathy_corrente-intel+2Dgvt+2Ddev=lists.freedesktop.org@finebot.click>)
-Date: Wed, 19 Oct 2022 17:04:38 -0400
-From: Kathy Corrente <kathy_corrente@finebot.click>
+ Wed, 19 Oct 2022 19:36:50 -0400 (envelope-from
+ <raquel_wenciker-intel+2Dgvt+2Ddev=lists.freedesktop.org@botgreat.click>)
+Date: Wed, 19 Oct 2022 19:36:50 -0400
+From: Raquel Wenciker <raquel_wenciker@botgreat.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Save your old photos before its too late
+Subject: Your Bonus Code  9802136
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_28_466507520.1666213465754"
-Message-ID: <0.0.0.3.1D8E3FE661E6CC0.182D0F@mail.finebot.click>
+ boundary="----=_Part_97_1515184734.1666217222662"
+Message-ID: <0.0.0.A.1D8E413A9AEC7AE.3B0B52@mail.botgreat.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,84 +53,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_28_466507520.1666213465754
+------=_Part_97_1515184734.1666217222662
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Save your old photos before its too late. 
-http://www.finebot.click/8f94U2395q8F6R11p4F1dduffcv36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQIddn97iQXM1X06QLwP@D/sleeper-throngs
+Your Bonus Code  5226954
 
 
+Go Here to Take the Input Survey:http://www.botgreat.click/encoding-paintings/7ec6XHr2395J86_u11R41e1vmffdY36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQCddnd5wx1M06f1wWTD
 
 
+Our message was chosen for intel-gvt-dev@lists.freedesktop.org
+l26 EAST  TWENTY-THIRD St.  New-York New York 10010- US.  
+No longer wish to receive communications?, Start.Right.Here:http://www.botgreat.click/Manley-instincts/71a6ICA2395S86CT10p41e2Nffdv36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQCddnd5PO1P06S0OUwD
 
+3294389:9802136
 
-
-No longer want to receive email notifications from us?, Click_Right_Here . http://www.finebot.click/petty-coupling/2104j2395S8mi612GS41pdeFffcS36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQIddn95zi1B05glwDJ
-or write to us at: 16 No.  Oak St, VENTURA, CA.  93001 United States
-
-Our e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org
-
-2381269. 5718903
-
-------=_Part_28_466507520.1666213465754
+------=_Part_97_1515184734.1666217222662
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <html>
- <head>=20
-  <title></title>=20
- </head>=20
- <body>
-  &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;text-align: center;margin-top:0p=
-t;margin-bottom:0pt;"><span id=3D"docs-internal-guid-08fc1e50-7fff-ddea-82a=
-a-ed2ecd375163"><a href=3D"http://www.finebot.click/inspector-mutiny/2a65r2N395l86Hs12zP41dpd_ffck36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQIddn96t1hFO05g@wDp" style=3D"text-decoration-line: none;=
-"><span style=3D"font-size: 11pt; font-family: Arial; color: rgb(17, 85, 20=
-4); font-variant-numeric: normal; font-variant-east-asian: normal; text-dec=
-oration-line: underline; text-decoration-skip-ink: none; vertical-align: ba=
-seline; white-space: pre-wrap;"><span style=3D"border:none;display:inline-b=
-lock;overflow:hidden;width:600px;height:1100px;"><img alt=3D"Preserve Cheri=
-shed Memories Today" src=3D"http://www.finebot.click/causes-resuming/2c45r2_395QSK7a12UW41dfKKffcB36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQIddn97N1oNzx06VXlAwD" style=3D"margin-left: 0px; margin-=
-top: 0px; width: 600px; height: 1100px;" /></span></span></a></span></p>=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br /> &nbsp;=20
-  <p dir=3D"ltr" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
-: 0pt;"><span id=3D"docs-internal-guid-08fc1e50-7fff-ddea-82aa-ed2ecd375163=
-"><span style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric:=
- normal; font-variant-east-asian: normal; vertical-align: baseline; white-s=
-pace: pre-wrap;">No longer want to receive email notifications from us?</span><span style=3D"font-size: 10pt; font-fa=
-mily: Arial; color: rgb(33, 37, 41); background-color: rgb(255, 255, 255); =
-font-variant-numeric: normal; font-variant-east-asian: normal; vertical-ali=
-gn: baseline; white-space: pre-wrap;">, </span><a href=3D"http://www.finebot.click/c236ttz2395wl8v610l41dejffcm36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQIddn95Qo1Q05LqMwD/petty-coupling" style=
-=3D"text-decoration-line: none;"><span style=3D"font-size: 10pt; font-famil=
-y: Arial; color: rgb(17, 85, 204); background-color: rgb(255, 255, 255); fo=
-nt-variant-numeric: normal; font-variant-east-asian: normal; text-decoratio=
-n-line: underline; text-decoration-skip-ink: none; vertical-align: baseline=
-; white-space: pre-wrap;">Click_Right_Here</span></a><span style=3D"font-size: =
-10pt; font-family: Arial; color: rgb(33, 37, 41); background-color: rgb(255=
-, 255, 255); font-variant-numeric: normal; font-variant-east-asian: normal;=
- vertical-align: baseline; white-space: pre-wrap;"> or write to us at: =
-Sixteen No OAK ST, Ventura, Ca. 93001 UNITED STATES</span></span>=
-</p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-08fc1e50-7fff-ddea-82aa-ed2ecd375163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">Our e-mail communication was sent to intel-gvt-dev@lists.freedesktop.org</span></span>=
-</p>=20
-  <p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt=
-;"><span id=3D"docs-internal-guid-08fc1e50-7fff-ddea-82aa-ed2ecd375163"><sp=
-an style=3D"font-size: 10pt; font-family: Arial; font-variant-numeric: norm=
-al; font-variant-east-asian: normal; vertical-align: baseline; white-space:=
- pre-wrap;">2381269.5718903</span></span></p>  =20
- <img src=3D"http://www.finebot.click/petty-coupling/5766Y2K3G95QC8n511L41e0PhffcN36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQIddn96dwt1D06HppTwD" alt=3D""/></body>
+ <head> 
+  <title></title> 
+ </head> 
+ <body> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><a href="http://www.botgreat.click/da95E23F95V8kq610p41e1NffdD36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQCddnd5v1U0W6yzTwDL/salvaged-strikingly" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Take the Input Survey</span></a></span><br /> <br /> &nbsp;</p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><a href="http://www.botgreat.click/da95E23F95V8kq610p41e1NffdD36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQCddnd5v1U0W6yzTwDL/salvaged-strikingly" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:663px;"><img height="663" src="http://www.botgreat.click/ad94P2395mo7aN10i41e3Nffdt36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQCddnd6P1us0N5R0w0D/encoding-paintings" style="margin-left:0px;margin-top:0px;" width="600" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">_96 Mowat. AVE, Toronto- ON M4K3Kl CN</p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive communications?, </span><a href="http://www.botgreat.click/northwest-consolidation/26a6q239Ww5c8v6o11F41eI2Jffdt36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCddnd7ls1T0BI5YXwjD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start.Right.Here</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our message was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-99db3a47-7fff-9fc5-fa7b-9de080be323a"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5226954 9802136</span></span></p>   
+ <img src="http://www.botgreat.click/encoding-paintings/a9e4w2395c85Bm11K41e4gmffdG36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQCddnd6p1wO0B6QB0wDl" alt=""/></body>
 </html>
 
-------=_Part_28_466507520.1666213465754--
+------=_Part_97_1515184734.1666217222662--
 
