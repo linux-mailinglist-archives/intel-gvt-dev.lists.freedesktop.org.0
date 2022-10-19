@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E17FE6037F4
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 04:17:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF41060388A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 05:17:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 67CE710F0AD;
-	Wed, 19 Oct 2022 02:17:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8383810F0E4;
+	Wed, 19 Oct 2022 03:17:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 19 Oct 2022 02:17:50 UTC
-Received: from mail.saddew.click (unknown [66.63.186.204])
- by gabe.freedesktop.org (Postfix) with ESMTP id 45F9810F0A9
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Oct 2022 03:17:51 UTC
+Received: from mail.earndew.click (unknown [213.209.129.24])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C804310F0E5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Oct 2022 02:17:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=saddew.click;
+ Wed, 19 Oct 2022 03:17:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=earndew.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=darla-mcnew@saddew.click; bh=S8YtfHS+KDn74xKEE7MVZbm9NgQ=;
- b=cX2FQFydLnCCWT5m4rA7NDBhK07WfCeNju3QxTtMWum4X/tI39Hphk/MIg+SEAHCpvA7rNXy67WS
- zKB3aGuVm/gyjN9RDpQDVIij+FQEuYRkXfDWjT0nadPn6ZfXMRYuFP8Pyna46eYwaYxK6F+NpUG0
- zjRP/sIUMA/CyrPMLgQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=saddew.click;
- b=JwCNlE1kbVTMjOjpO/8h+dezMKzD5pEB/T7xRt7B9ou/8jH2SKLH/fu/G1zZYRCSHJPwBnVhIaNx
- WOrUNoQEL911ZCQfBnmoA7+BBxXQveGCYCs2Qm+jIwXcLEhT4OjbL/gm2g/YFR0pQsppkm7gVcX3
- T8q2Fc+sqcI8mdr2CCg=;
-Received: by mail.saddew.click id h9tf4s0001g3 for
+ i=didion-daisy@earndew.click; bh=AL7HyU5jtk+zODnaAP8Iw8pSkVQ=;
+ b=qRd1zfhgrvFZ2Y3+CHfxDwS/YOCJ2uKjTP1oUDYVlGk0NlgmQUr3J171biPoO44uv5bhN7b5q2Ac
+ TawJqTgGHBokG9z9FYPoduZ+iEEdsXAW74u7/tKa4C1R16i5X162FjkoL+BF97qnxLrFq38qzfzb
+ M/NZZ9sQgZj5K5gfm2g=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=earndew.click;
+ b=EOVaSPztaxK1nwb8Nyuz6gejDnNleiTV9yz1AZG1mK/a7AX/DZIrwAFbxFaPv5No2UemU6TKBpA0
+ 0IT0HJ+MsXLmU7cn1QredqNNY2i4uai48hmKdFnMA58L9V03aJF6e0Gdi9O+24BD2ANJjGtZI6Nu
+ xSInqL7NeMDDeaB+lzI=;
+Received: by mail.earndew.click id h9tm5u0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Oct 2022 22:05:00 -0400 (envelope-from
- <darla-mcnew-intel+2Dgvt+2Ddev=lists.freedesktop.org@saddew.click>)
-Date: Tue, 18 Oct 2022 22:05:00 -0400
-From: Darla Mcnew <darla-mcnew@saddew.click>
+ Tue, 18 Oct 2022 23:06:04 -0400 (envelope-from
+ <didion-daisy-intel+2Dgvt+2Ddev=lists.freedesktop.org@earndew.click>)
+Date: Tue, 18 Oct 2022 23:06:04 -0400
+From: Daisy Didion <didion-daisy@earndew.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congratulations, Claim Your Lowes Bonus
- intel-gvt-dev@lists.freedesktop.org
+Subject: Get Up to $100 Bonus for your input about Kroger
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_100_1514973352.1666145083098"
-Message-ID: <0.0.0.B.1D8E35F31B17562.4DD798@mail.saddew.click>
+ boundary="----=_Part_274_1131483021.1666148750429"
+Message-ID: <0.0.0.1D.1D8E367B9F1EA1C.91A6E@mail.earndew.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,27 +52,26 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_100_1514973352.1666145083098
+------=_Part_274_1131483021.1666148750429
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Congratulations, Claim Your Lowes Bonus  intel-gvt-dev@lists.freedesktop.org
+Get Up to $100 Bonus for your input about Kroger
 
-Go Here to Claim a Craftsman Riding Mower from Lowes,http://www.saddew.click/Imbrium-monotony/daa5p23u95p8Tq611A41va0rfedL36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQzd9Ke6pRDg105F@wDJ
-
-
+Go Here to provide your opinion & Claim a Reward-http://www.earndew.click/4675d239w5q86LB12C41pao4LfeeR36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQid9KK7DyxMx106DAwDJA/hideousness-twirled
 
 
 
-No longer want to receive email information?, Click_Ahead_Here,http://www.saddew.click/e3W6Q239Sp5z8O6L12Xp41a2Glfedj36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQzd9Ke6gR10Vh6fPwPDk/rampart-bewilders
 
-Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org
+l15- E.   TWENTY-THIRD Street NEW-YORK NY.  10010 US.  
 
-96.  MOWAT- Avenue, Toronto.  ONT M4K3Kl CN
+To break off e-mail, Visit Here Now-http://www.earndew.click/brothers-confident/3784f2395qp86j12q41lHa5nfeeF36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQid9KK6w10FLq6JMwDAB
 
-45040774,5566521
+This email message was selected for intel-gvt-dev@lists.freedesktop.org
 
-------=_Part_100_1514973352.1666145083098
+76360431-49067786
+
+------=_Part_274_1131483021.1666148750429
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -82,19 +80,19 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.saddew.click/someday-mediator/62a4t2395r8_X611h4h1a0Ffedq36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQzd9Ke7Y1XiKp06eljywD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:648px;"><img alt="Take the 30-second Survey" src="http://www.saddew.click/Westport-rowdy/a444p2395P7agg11c41Fa1yfedj36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQzd9Ke5n1r0g6lz2JwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 648px;" /></span></span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.earndew.click/aloft-Mediterraneanizations/bca6t2t3l95jl8m612FjM41a4nfeek36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQid9KK7wZ1J0GY5mzwD1" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to provide your opinion & Claim a Reward</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><a href="http://www.earndew.click/aloft-Mediterraneanizations/bca6t2t3l95jl8m612FjM41a4nfeek36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQid9KK7wZ1J0GY5mzwD1" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:326px;"><img alt="Click Here to Take the Consumer Survey" src="http://www.earndew.click/a075n239l5CB7aP10R41a6Lfeen36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQid9KK7BN10iYH5sNwDB/poisoning-Lausanne" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 326px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Move Fast! Promotion Is Over in 2 Days.</span></span></p> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><a href="http://www.saddew.click/someday-mediator/62a4t2395r8_X611h4h1a0Ffedq36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQzd9Ke7Y1XiKp06eljywD" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to Claim a Craftsman Riding Mower from Lowes</span></a></span></p> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email information?, Click_Ahead_Here</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail message was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">-96 MOWAT. Avenue, Toronto. ONTARIO M4 K3 K1 CN</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-f42bb65b-7fff-7d6d-3246-9b809ff78e4f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">45040774-5566521</span></span></p>   
- <img src="http://www.saddew.click/organizing-reviewed/4e06SM239R5KLo8510C41a3ofedz36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQzd9Ke7L10YOXY5Q2wDT" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">115- E&nbsp; TWENTY-THIRD St New York New-York 10010' US.&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To break off e-mail, </span><a href="http://www.earndew.click/brothers-confident/U4e4s2395S86qg10r41a5HfeeU36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQid9KK5zi10T5zywDq" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here Now</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This email message was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-37d43500-7fff-9dfe-c6c8-cf86189b4d9f"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">76360431,49067786</span></span></p>   
+ <img src="http://www.earndew.click/aloft-Mediterraneanizations/e044S2395b8DM510i41a7qfeeV36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQid9KK6iQ1RB05UBLwD" alt=""/></body>
 </html>
 
-------=_Part_100_1514973352.1666145083098--
+------=_Part_274_1131483021.1666148750429--
 
