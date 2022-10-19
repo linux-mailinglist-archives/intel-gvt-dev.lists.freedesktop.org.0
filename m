@@ -1,43 +1,91 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B986604D34
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 18:22:42 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACB9C604D2F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Oct 2022 18:22:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 958A510F288;
-	Wed, 19 Oct 2022 16:22:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 95FB210F28D;
+	Wed, 19 Oct 2022 16:22:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 19 Oct 2022 16:22:29 UTC
-Received: from mail.likesbot.monster (unknown [173.244.43.120])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2774110EB24
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Oct 2022 16:22:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=likesbot.monster;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cheri_ulsh@likesbot.monster; 
- bh=CERcEzrqYG3PJ285upSPeBE+OtY=;
- b=ecTdWXRr9+FzapqdzGk/pgtIeR9XzKEN1VGC7/v0ni+K8+ZdBxjnWiJ2/HoHFQp/2qHS+6ffpaYb
- D+Lyfrq4pCn+MUcLzo2LtjImFwunF3qq94QZUcjif1qUFjD6/XAc7+lZ15ZVH43tAwlT5dPHfFyh
- NT7hUfTWSV43Xq5J/aA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=likesbot.monster;
- b=m/lXgG30coc1fLItk4f/M6rq7oURLiy3eqS4Wjr93b5icQ5hfgdgXUmp37sGfjcfv6L7dVHpMphG
- hgnSObh4YQZPS3m7akDvzMQRcNHM6/8fEHgbnsEReFuDSaMhjPKG1m2k7kRM+/7ARNllFpJLY3WU
- 59SYKa6sD6FYHcJxueo=;
-Received: by mail.likesbot.monster id ha0i4a0001gm for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Oct 2022 12:12:39 -0400 (envelope-from
- <cheri_ulsh-intel+2Dgvt+2Ddev=lists.freedesktop.org@likesbot.monster>)
-Date: Wed, 19 Oct 2022 12:12:39 -0400
-From: Cheri Ulsh <cheri_ulsh@likesbot.monster>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Andersen_Renewal windows BOGO 4O% discount
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E319210E810;
+ Wed, 19 Oct 2022 16:21:50 +0000 (UTC)
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29JGC381014500;
+ Wed, 19 Oct 2022 16:21:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : content-transfer-encoding : mime-version; s=pp1;
+ bh=ueHhensO89tMZ5aZeuuWx+fIGWz1CSWGE0UZFzQ8/3k=;
+ b=mEVvrGRCJPg0Ad7IK0WXlo5/iBCR8zS8Tf6Z1Ir9mldutxVRRyYHJ5o2F0TM5+iRaQ7w
+ DGg4z/Q6tnucXy5yvQ57aOrPQJA7nN72j8/Yao+dX03yZQuwyBHMRY86BiRDxxonw+Hp
+ 9fp9j9x4HtP9yx8S0ZnnGnClEh7zMUVd/2xCRIk6UWD+VPElTTKqFPZq2vzNtVd81Yra
+ Stt7h4ZR9LlM/86msftcY7I5RiyyfbjrvFbHkzeOIVZU9SrpHBarfI7rRru9UnLpdTLR
+ mlgxgBT2GFya+aO8YVkup8ZOwkK9SfEG7jbjVTY0Hw0ZfYm+ofyZ0zHeRMotYDpCD3Gm ug== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kamhx0b9u-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 19 Oct 2022 16:21:48 +0000
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 29JGCDwx016440;
+ Wed, 19 Oct 2022 16:21:47 GMT
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.102])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kamhx0b65-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 19 Oct 2022 16:21:46 +0000
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+ by ppma06ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 29JGKFOV000526;
+ Wed, 19 Oct 2022 16:21:41 GMT
+Received: from b06avi18626390.portsmouth.uk.ibm.com
+ (b06avi18626390.portsmouth.uk.ibm.com [9.149.26.192])
+ by ppma06ams.nl.ibm.com with ESMTP id 3kajmrr62g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 19 Oct 2022 16:21:41 +0000
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 29JGGbVt41288134
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 19 Oct 2022 16:16:37 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 26420A4060;
+ Wed, 19 Oct 2022 16:21:38 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0F61AA405C;
+ Wed, 19 Oct 2022 16:21:38 +0000 (GMT)
+Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTPS;
+ Wed, 19 Oct 2022 16:21:38 +0000 (GMT)
+Received: by tuxmaker.boeblingen.de.ibm.com (Postfix, from userid 4958)
+ id C2ACAE023C; Wed, 19 Oct 2022 18:21:37 +0200 (CEST)
+From: Eric Farman <farman@linux.ibm.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Kevin Tian <kevin.tian@intel.com>, Yi Liu <yi.l.liu@intel.com>
+Subject: [PATCH v1 0/7] vfio-ccw parent rework
+Date: Wed, 19 Oct 2022 18:21:28 +0200
+Message-Id: <20221019162135.798901-1-farman@linux.ibm.com>
+X-Mailer: git-send-email 2.34.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: QVeqQa4fNXWqhRly__j8I7Qai_FQvnJM
+X-Proofpoint-GUID: tk4o-9iVTqbbG68tiiPnDNh-ZUS3ib5b
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_730_997740776.1666195955509"
-Message-ID: <0.0.0.51.1D8E3D59C12408C.81A780@mail.likesbot.monster>
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-10-19_09,2022-10-19_04,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 spamscore=0
+ impostorscore=0 mlxscore=0 clxscore=1015 adultscore=0 malwarescore=0
+ bulkscore=0 mlxlogscore=999 priorityscore=1501 phishscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2210190091
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,61 +98,97 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
+ linux-s390@vger.kernel.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_730_997740776.1666195955509
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Hi all,
 
-Andersen_Renewal windows BOGO 4O% discount 
+There have been discussions and attempts [1][2] to rework the vfio-ccw device
+lifecycle to better align with the needs/expectations of vfio and mdev.
+While those languished, commit cb9ff3f3b84c ("vfio: Add helpers for unifying
+vfio_device life cycle") implemented a couple of tricks that help vfio and the
+drivers that interact with it, while keeping vfio-ccw as-is. A handful of
+commits titled "vfio/xxx: Use the new device life cycle helpers" implemented
+those tricks for each of the drivers.
 
-Begin here to BOGO 40% Off Today-http://www.likesbot.monster/33b5q239x5R8Ur611m41co9tff7N36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQjddme6Q1nNW05Hl1wD/angstrom-complexes
+This series attempts to address the oddities/shortcomings of vfio-ccw, such
+that vfio-ccw can use the same helpers as everyone else, and the tricks that
+were implemented by the other drivers can be removed. It is built on 6.1-rc1,
+and thus includes the various changes [3][4] that have occurred in and around
+these parts.
 
+Patches 1-5 rework the behavior of the vfio-ccw driver's private struct.
+In summary, the mdev pieces are split out of vfio_ccw_private and into a
+new vfio_ccw_parent struct that will continue to follow today's lifecycle.
+The remainder (bulk) of the private struct moves to follow the mdev
+probe/remove pair. There's opportunity for further separation of the
+things in the private struct, which would simplify some of the vfio-ccw
+code, but it got too hairy as I started that. Once vfio-ccw is no longer
+considered unique, those cleanups can happen at our leisure. 
 
+Patch 6 removes the trickery where vfio-ccw uses vfio_init_device instead of
+vfio_alloc_device, and thus removes vfio_init_device from the outside world.
 
+Patch 7 removes vfio_free_device from vfio-ccw and the other drivers (hello,
+CC list!), letting it be handled by vfio_device_release directly.
 
+Looking forward to the feedback.
 
+Thanks,
+Eric
 
+[1] https://lore.kernel.org/kvm/0-v3-57c1502c62fd+2190-ccw_mdev_jgg@nvidia.com/
+[2] https://lore.kernel.org/kvm/20220602171948.2790690-1-farman@linux.ibm.com/
+[3] https://lore.kernel.org/kvm/20220923092652.100656-1-hch@lst.de/
+[4] https://lore.kernel.org/kvm/20220921104401.38898-1-kevin.tian@intel.com/
 
-2O4O- Merrick 
-Rd, Unit 4408.  Merrick, 
-New York II566_ 
-USA
+Eric Farman (7):
+  vfio/ccw: create a parent struct
+  vfio/ccw: remove private->sch
+  vfio/ccw: move private initialization to callback
+  vfio/ccw: move private to mdev lifecycle
+  vfio/ccw: remove release completion
+  vfio/ccw: replace vfio_init_device with _alloc_
+  vfio: Remove vfio_free_device
 
-No longer want to receive email notifications from us?, Continue-Over-Here-http://www.likesbot.monster/b515F23j95ixN8610K41cahff7I36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQjddme7r10tNCZ6rXwDl@/patriotism-Ahmadabad
-This notification was delivered to intel-gvt-dev@lists.freedesktop.org
+ drivers/gpu/drm/i915/gvt/kvmgt.c      |   1 -
+ drivers/s390/cio/vfio_ccw_chp.c       |   5 +-
+ drivers/s390/cio/vfio_ccw_drv.c       | 182 ++++++++++----------------
+ drivers/s390/cio/vfio_ccw_fsm.c       |  27 ++--
+ drivers/s390/cio/vfio_ccw_ops.c       | 108 ++++++++++-----
+ drivers/s390/cio/vfio_ccw_parent.h    |  28 ++++
+ drivers/s390/cio/vfio_ccw_private.h   |  22 ++--
+ drivers/s390/crypto/vfio_ap_ops.c     |   6 -
+ drivers/vfio/fsl-mc/vfio_fsl_mc.c     |   1 -
+ drivers/vfio/pci/vfio_pci_core.c      |   1 -
+ drivers/vfio/platform/vfio_amba.c     |   1 -
+ drivers/vfio/platform/vfio_platform.c |   1 -
+ drivers/vfio/vfio_main.c              |  25 +---
+ include/linux/vfio.h                  |   1 -
+ samples/vfio-mdev/mbochs.c            |   1 -
+ samples/vfio-mdev/mdpy.c              |   1 -
+ samples/vfio-mdev/mtty.c              |   1 -
+ 17 files changed, 204 insertions(+), 208 deletions(-)
+ create mode 100644 drivers/s390/cio/vfio_ccw_parent.h
 
-5020258~35422072
-
-------=_Part_730_997740776.1666195955509
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><a href="http://www.likesbot.monster/squirrels-logics/60c6C23Q9k5XL86n11zs41c8Jff7m36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQjddme5j10PL5y0MwD">Visit here for the BOGO 40% Off + $200 Today</a></span></span><br /> &nbsp;</p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><a href="http://www.likesbot.monster/Raytheon-bouquet/40e6n2o39K5U8lU611At41c9Wff7W36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQjddme7vQk10PA5QLTwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:475px;height:2048px;"><img alt="Affordable Renewal by Andersen Windows" src="http://www.likesbot.monster/quadratical-guidelines/1f25w23V95B7aGi11O41GcbTff7D36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQjddme5MX10r5D3PwD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 2589px;" title="Fall Window Special BOGO 40 + 200 " /></
- span></span></a></span></p> 
-  <div style="text-align: center;">
-   <br /> 
-   <br /> 
-   <a href="http://www.likesbot.monster/Raytheon-bouquet/40e6n2o39K5U8lU611At41c9Wff7W36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQjddme7vQk10PA5QLTwD" style="text-align: center; text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin here to BOGO 40% Off Today</span></a>
-  </div> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2O4O_ Merick<br /> ROAD', STE.<br /> 408_ Merick, New.York<br /> II566&nbsp;</span></span><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">UNITED STATES</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer want to receive email notifications from us?,</span><a href="http://www.likesbot.monster/7cd5E239t5Gs86T10a41cavff7J36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQjddme6I1o_0j5lMOwD/angstrom-complexes" style="text-decoration-line: none;"><span style="font-size: 10pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"> Continue-Over-Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notification was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-65515ce6-7fff-37cb-d4b6-b5711afa6beb"><span style="font-size: 10pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">5549700.35422072</span></span></p>   
- <img src="http://www.likesbot.monster/quadratical-guidelines/a806r23tP95t8J5j10k41ccyff7u36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQjddme5Aj10h6bLzwWD" alt=""/></body>
-</html>
-
-------=_Part_730_997740776.1666195955509--
+-- 
+2.34.1
 
