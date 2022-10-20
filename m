@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C10B2605649
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Oct 2022 06:26:11 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB8686056C2
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Oct 2022 07:27:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8AB7C10E34B;
-	Thu, 20 Oct 2022 04:26:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CC5CA10E362;
+	Thu, 20 Oct 2022 05:27:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Thu, 20 Oct 2022 04:26:03 UTC
-Received: from mail.botinsite.click (unknown [213.209.129.202])
- by gabe.freedesktop.org (Postfix) with ESMTP id 83F5210E34B
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Thu, 20 Oct 2022 05:27:03 UTC
+Received: from mail.veilbot.click (unknown [66.63.186.166])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BADA610E370
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Oct 2022 04:26:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=botinsite.click; 
+ Thu, 20 Oct 2022 05:27:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=veilbot.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=bridget-mccaddon@botinsite.click; 
- bh=M13HDSzIeUuEfda51rfqoSaqGSA=;
- b=tCzOwtS0i3dBOGASaWKjPSBngVlBCV0hhkryaBPkCJXxui9lU9Af6c0If7BDjPeYebHWsukTXDNg
- TH3Pkv7prANKDXy5QyaipUGrztu/zZeMbg3MpPFce8v+mS6hS7QD+I4GDZrQCd9lbVYI7R4rKd7d
- /5lTEuuUNfkfQIQtbGo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=botinsite.click;
- b=TyGG0ud2z0XHcJcVw1cPdC5i5Wniiviy5Bu5zVtIU8CMBS+rcMp1EqEy2jddCoHrZJM0IKRbrnho
- Tkxf/fBKpIslFEPJRI3JRc/8iztWwb+lR2dENXyPrZ9nCpui2p1gmYigebz3xnls60mPP+sFCfk0
- LO5N93NJrAjodRKm2C8=;
-Received: by mail.botinsite.click id ha36tm0001g4 for
+ i=nattress.eliza@veilbot.click; 
+ bh=YYP4tGW/T/J1t1Mc3RH6ZfA4ZOA=;
+ b=iswShz43FHtbDAK/pFBK74RI5TwUgCgpvrqQk/8fS6hpyGxlpzFu4o0n3IleeDWcAwFYY+bHuezD
+ yli9AJlG6tIZiCMP7eN5Q2JdAOWrmYxuPWTbI5CObChLw0jWXE3WpSeS90y5UeXPr17VOhnpPFLd
+ ZPdZD0EAlnoacUOSwNA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=veilbot.click;
+ b=tVMbaR/+cQUZo+TQ/9fqV5VjZ7pxzdXDANfRDocCTmF7RrpnSeuNoTqftBFxHr5FCUkYr2GQdGrG
+ f7CxhH+kyHFaal+3RaE9tGI2buhL+SMBYzEeO3CeUkw63oACwXvqUX2py1yS27nTT7ci4HujEYOF
+ erbyCGXWzyY8obMDNWw=;
+Received: by mail.veilbot.click id ha3oho0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Oct 2022 00:07:48 -0400 (envelope-from
- <bridget-mccaddon-intel+2Dgvt+2Ddev=lists.freedesktop.org@botinsite.click>)
-Date: Thu, 20 Oct 2022 00:07:48 -0400
-From: Bridget Mccaddon <bridget-mccaddon@botinsite.click>
+ Thu, 20 Oct 2022 02:41:32 -0400 (envelope-from
+ <nattress.eliza-intel+2Dgvt+2Ddev=lists.freedesktop.org@veilbot.click>)
+Date: Thu, 20 Oct 2022 02:41:32 -0400
+From: Eliza Nattress <nattress.eliza@veilbot.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We want your feedback on Petsmart. Up to $50 Bonus
+Subject: Lowes Shopper, Claim your Stanley 170 pc. Tool Kit
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_157_572671067.1666238854404"
-Message-ID: <0.0.0.11.1D8E43983D65EC2.5260DF@mail.botinsite.click>
+ boundary="----=_Part_628_500646213.1666242671610"
+Message-ID: <0.0.0.45.1D8E44EFD924A2C.63937A@mail.veilbot.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,24 +54,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_157_572671067.1666238854404
+------=_Part_628_500646213.1666242671610
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-We want your feedback on Petsmart. Up to $50 Bonus
+Lowes Shopper, Claim your Stanley 170 pc. Tool Kit  intel-gvt-dev@lists.freedesktop.org
 
-Visit Here to qualify for your Petsmart Gift Card~http://www.botinsite.click/cD55C23l95w8TQ613P4r1fVbs1003M36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCddom6NM1zP05aOOwD/botching-disambiguated
-
-Waste No Time! Offer Expires in 2 Days.
+Start Here for a 170 pc Stanley Tool Kit from Lowes:http://www.veilbot.click/enlarge-poetically/d506Jom2395MA86C12u41fNfk1004B36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQAddon6J10yAw6zlwDPA
 
 
 
-To suspend notifications, Start_Here~http://www.botinsite.click/detectable-ounces/p8a4i2395hN8z611U41fc_1003Y36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQCddom5Qy1G05JLwlD
-. 96 MOWAT' Av. , T0R0NT0 ON M4K 3KI CA
-Our message was directed to intel-gvt-dev@lists.freedesktop.org
-7106180~56949339
+'96 MOWAT- Av, Toronto.  Ontario M4 K3 K1 CA
 
-------=_Part_157_572671067.1666238854404
+To shut down email, Begin_Ahead_Here:http://www.veilbot.click/4df6v2KI395sl8i613Fg42v00M1004U36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQAddon7F1i0WAj5QPwWD/dressings-electrician
+
+Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org
+
+2843157~4922081
+
+------=_Part_628_500646213.1666242671610
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -79,18 +81,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.botinsite.click/8f95l23N95k86yJ12v41fYbg1003B36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQCddom5h10HQ6wBMkwD/dispatched-circulated" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to qualify for your Petsmart Gift Card</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.botinsite.click/8f95l23N95k86yJ12v41fYbg1003B36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQCddom5h10HQ6wBMkwD/dispatched-circulated" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:680px;"><img alt="Begin Here to qualify for a $50 Petsmart bonus" src="http://www.botinsite.click/Telefunken-silliest/c064B2395yx7aW12s41fdhV1003L36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQCddom7w1UoYn06i3w@UD" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 680px;" /></span></span></a><
- /span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 18pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Waste No Time! Offer Expires in 2 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.veilbot.click/owing-Joaquin/31e4P2395w86vT11U41ffx1004P36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQAddon6QgiN106H1MNwD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for a 170 pc Stanley Tool Kit from Lowes</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.veilbot.click/owing-Joaquin/31e4P2395w86vT11U41ffx1004P36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQAddon6QgiN106H1MNwD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.veilbot.click/3ef4D2395z7aAy11e4201V1004r36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQAddon6C10_RB6Vlw10D/observed-selecting" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Special Offer Expires in 3 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To suspend notifications, </span><a href="http://www.botinsite.click/underwent-flushing/4865h239B5YTp8612bF41fcp1003z36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQCddom5d1Ox05zUwJD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start_Here</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96' MOWAT_ Av., Toronto' ONTARIO M4K 3KI CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our message was directed to intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7106180.56949339</span></span></p>   
- <img src="http://www.botinsite.click/c9b4G2395r8G5u12k41fUeo1003q36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCddom5a10wA5yWBwD/botching-disambiguated" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 MOWAT' AVENUE, Toronto' ON M4K 3Kl CANADA</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To shut down email,<a href="http://www.veilbot.click/4495Qo2395t8qw613Wr4t200Y1004g36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQAddon7duY1iH06VywDNq/enlarge-poetically"> Begin_Ahead_Here</a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was chosen for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2843157.4922081</span></span></span></p>   
+ <img src="http://www.veilbot.click/24b4B2395oH85F11I4202S1004X36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQAddon7Emti1t06az@wD@/retracting-helplessly" alt=""/></body>
 </html>
 
-------=_Part_157_572671067.1666238854404--
+------=_Part_628_500646213.1666242671610--
 
