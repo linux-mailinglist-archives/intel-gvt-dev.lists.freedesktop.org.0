@@ -1,44 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 159B7606437
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Oct 2022 17:22:11 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62EE7606574
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Oct 2022 18:12:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BAD0410E4AF;
-	Thu, 20 Oct 2022 15:22:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2757E10E1FD;
+	Thu, 20 Oct 2022 16:12:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Thu, 20 Oct 2022 15:22:01 UTC
-Received: from mail.frieddim.monster (unknown [213.209.129.85])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9458510E7C5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Oct 2022 15:22:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=frieddim.monster;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=justine.voltin@frieddim.monster; 
- bh=GBZ9KJbgWKzMlz0sZUe/Mzj7uHA=;
- b=spaj+uI7dIQ3QISmz4n0AWOZEPwcMOvcrI0tk+pnX+5gN1ry9UpwB4g4Ho6ifvbNjShzFcfj2K+r
- bbG1G4c72gfdOS3pIalYThtmKFjgmwctt+gRrZRfJZYS74eQ6d8EZCzwfdGt+AF28Yak03HH0h/g
- KVw8cXQrwO7B6FzXN8Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=frieddim.monster;
- b=We21S0L2vP9nSyPL881kZufD7RNsEw+vqsNo8WVw3QMYNw9mJeQHaglJpXNkUtjcVnE9gncLL0pD
- JTqZmQUwZmXSHEZixJSUVTJNZetuzUA7tMb5LfVddFASPPWral00PrAbIB+nxam0MNM/dh/xIKRH
- FZsWpU5tBfp0lOeKX0M=;
-Received: by mail.frieddim.monster id ha5u8q0001g3 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Oct 2022 12:37:28 -0400 (envelope-from
- <justine.voltin-intel+2Dgvt+2Ddev=lists.freedesktop.org@frieddim.monster>)
-Date: Thu, 20 Oct 2022 12:37:28 -0400
-From: Justine Voltin <justine.voltin@frieddim.monster>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your New 170 pc Stanley Tool Set from Lowes
- intel-gvt-dev@lists.freedesktop.org
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 467BB10E1FD;
+ Thu, 20 Oct 2022 16:12:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1666282336; x=1697818336;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=e+g8eWaHmm8lmomVC++HUnHoR1ppSUnPPO8atDjLPoA=;
+ b=P0jtHU62Yac3uvM9j3JiLwGTF76fEhHqAJfiTmghE5rWK6nzJe2R5JBb
+ Mzy00V5LrVqyfdIzwLk8VmVEw92je+yZxmT11AQTr6WzSWrQZpbMBGxb4
+ sQZrOumuL5YyIdsxhDcTpzx9wvaMzrr4ZxPe25/ODjLD22cAO4DXRfiqk
+ pAS9RjhSh9Sncq+mho3nL8YvLx3nq1T3Q9MYL/bY3OEa0S3m5vtJ9BVwj
+ T8xNTvViumrWSV848bp3BgohyAXNRgLYHShoYaa/HOcZpXWHOA/XB3Eis
+ kD5Dgaex5uWHI9XsnSSVYVX1TiUaENLWwzToGhE0IlFPM9rIXcFIYW5Rh Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="287158488"
+X-IronPort-AV: E=Sophos;i="5.95,199,1661842800"; d="scan'208";a="287158488"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Oct 2022 09:09:35 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="719147223"
+X-IronPort-AV: E=Sophos;i="5.95,199,1661842800"; d="scan'208";a="719147223"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.191])
+ by FMSMGA003.fm.intel.com with SMTP; 20 Oct 2022 09:09:31 -0700
+Received: by stinkbox (sSMTP sendmail emulation);
+ Thu, 20 Oct 2022 19:09:30 +0300
+Date: Thu, 20 Oct 2022 19:09:30 +0300
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v7 0/9] dyndbg: drm.debug adaptation
+Message-ID: <Y1Fyuh12g/gt3Izn@intel.com>
+References: <20220912052852.1123868-1-jim.cromie@gmail.com>
+ <Yy7/6oTBW2lqVSK1@kroah.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_232_1965185304.1666278427183"
-Message-ID: <0.0.0.19.1D8E4A23E156CDE.55BF3F@mail.frieddim.monster>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <Yy7/6oTBW2lqVSK1@kroah.com>
+X-Patchwork-Hint: comment
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,50 +61,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Jim Cromie <jim.cromie@gmail.com>, daniel.vetter@ffwll.ch,
+ intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
+ linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, jbaron@akamai.com,
+ seanpaul@chromium.org, dri-devel@lists.freedesktop.org, joe@perches.com,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_232_1965185304.1666278427183
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+On Sat, Sep 24, 2022 at 03:02:34PM +0200, Greg KH wrote:
+> On Sun, Sep 11, 2022 at 11:28:43PM -0600, Jim Cromie wrote:
+> > hi Greg, Dan, Jason, DRM-folk,
+> > 
+> > heres follow-up to V6:
+> >   rebased on driver-core/driver-core-next for -v6 applied bits (thanks)
+> >   rework drm_debug_enabled{_raw,_instrumented,} per Dan.
+> > 
+> > It excludes:
+> >   nouveau parts (immature)
+> >   tracefs parts (I missed --to=Steve on v6)
+> >   split _ddebug_site and de-duplicate experiment (way unready)
+> > 
+> > IOW, its the remaining commits of V6 on which Dan gave his Reviewed-by.
+> > 
+> > If these are good to apply, I'll rebase and repost the rest separately.
+> 
+> All now queued up, thanks.
 
-Your New 170 pc Stanley Tool Set from Lowes  intel-gvt-dev@lists.freedesktop.org
+This stuff broke i915 debugs. When I first load i915 no debug prints are
+produced. If I then go fiddle around in /sys/module/drm/parameters/debug
+the debug prints start to suddenly work.
 
-Tap Here to Answer a Few Questions about Lowes_http://www.frieddim.monster/3d15U2j395qY8F611y4216m100aK36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQZddoS6z1jLm05dzkwD/entitles-turban
-
-
-
-96.  Mowat.  Ave. , Toronto_ Ont.  M4K3K1 CN
-
-No longer wish to receive notifications from us?, Visit Over Here_http://www.frieddim.monster/eb76B2nU395O86GK12YM4217N100aY36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZddoS6sv10gW6rNWkwD/demonstrable-arrangement
-
-This e-mail message was meant for intel-gvt-dev@lists.freedesktop.org
-
-3077975~94398949
-
-------=_Part_232_1965185304.1666278427183
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<html>
- <head> 
-  <title></title> 
- </head> 
- <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.frieddim.monster/f2f5y2W395p8v6h13A4Xh216g100au36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQZddoS6VG1BF05O@wDO/demonstrable-arrangement" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Tap Here to Answer a Few Questions about Lowes</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.frieddim.monster/f2f5y2W395p8v6h13A4Xh216g100au36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQZddoS6VG1BF05O@wDO/demonstrable-arrangement" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.frieddim.monster/unjustifiable-normalizing/1b64g2395XAi7a12C4H218n100aM36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQZddoS7BYV10kJ5eXLwD" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Exclusive Offer Closes in 3 Days.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- MOWAT_ AVE, T0R0NT0 ONTARIO M4K3KI CN</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">No longer wish to receive notifications from us?,<a href="http://www.frieddim.monster/admiralty-abolished/d324Y2395In86g13Y4q21Y7I100aG36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQZddoS6I10QKL6UlwTMD"> Visit Over Here</a></span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail message was meant for intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3077975-94398949</span></span></span></p>   
- <img src="http://www.frieddim.monster/swarms-maples/3d24P2395m8Fp513N42VI19l100a_36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQZddoS7i1Qw0GZ5fJ2wD" alt=""/></body>
-</html>
-
-------=_Part_232_1965185304.1666278427183--
-
+-- 
+Ville Syrjälä
+Intel
