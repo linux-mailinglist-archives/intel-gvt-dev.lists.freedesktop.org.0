@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD819607BE5
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Oct 2022 18:14:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EABE4607F0B
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Oct 2022 21:29:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7927A10E258;
-	Fri, 21 Oct 2022 16:14:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AC77310E0D0;
+	Fri, 21 Oct 2022 19:29:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 21 Oct 2022 16:14:42 UTC
-Received: from mail.savejar.monster (unknown [66.63.186.23])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4D7C610E258
+ Fri, 21 Oct 2022 19:28:51 UTC
+Received: from mail.nailjar.monster (unknown [66.63.186.131])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CC93910E677
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Oct 2022 16:14:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=savejar.monster; 
+ Fri, 21 Oct 2022 19:28:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nailjar.monster; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sylvia-zanayed@savejar.monster; 
- bh=dzfShX/Oip+AFoW4AZ4fWO2Xteo=;
- b=VmcwfoALbqIUsNEtf1pwJsMzNWJCbi1ofcw5S6+lAbNIkTFRyKo59MH0GR7nCQe1dGrhjVUioqDm
- sqnrcPilLVWQ8Ks7ji2LH+sfbtCj34augc8S9uOmcyS7v/1tZ5iPlfZ/rd9BQ1/k7zfLePMOB8OJ
- f1Zd0gm4uuJGb+Sffn4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=savejar.monster;
- b=g2R8pQfnS5YZrIP1UBzTgV6CQHD3pfmUnk+pVEtrY+vsJ5Q+ryI+f/AD7MetzZIDEZmt3PSKMKCV
- TGLkrf/Zr8tL9z+Jh5dRnBTzOkl6VaQE8DVSQeoKWrok8457L7LPVp1bziLKFl64zpnEWgHL0avz
- Z/r3y+XZYZreJetXAe0=;
-Received: by mail.savejar.monster id hab2n40001gg for
+ i=cheri.imgrund@nailjar.monster; 
+ bh=GvSNCxaYcqRzln4nujXs+9Ugc+0=;
+ b=mq98OAHtGnfxi4GcGVdxjbgZp68twoPX3/XQrvwl6s0oX0WrkGKA2e4x6u9OJL9U06K/OcvK7KuC
+ Mv/EtNZkHp9t3aKmRkRJQJf+CfUduFCoX8lrTLl37H5MFmximMIK4dFnTFagOcHwMzN1jk9oCLtE
+ aANa5sidY/StQODL5bM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nailjar.monster;
+ b=2/fMKnGBuoF0KywJZlqzBleFUib3psFcxzVUyyObZnszCV3FEvLftI8AFxI0IIU9MMhj5NKjtPOS
+ ItkdxBFyMnU+6cSuMLu9dpfNT/GD432OY8b8BsOdya1v7wPwfRSZ63E1iCg+JWmuPkQXTQvRQUAt
+ ZAU2H1M+Kqxm2WIyXnw=;
+Received: by mail.nailjar.monster id habpf60001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Oct 2022 12:05:54 -0400 (envelope-from
- <sylvia-zanayed-intel+2Dgvt+2Ddev=lists.freedesktop.org@savejar.monster>)
-Date: Fri, 21 Oct 2022 12:05:54 -0400
-From: Sylvia Zanayed <sylvia-zanayed@savejar.monster>
+ Fri, 21 Oct 2022 15:07:21 -0400 (envelope-from
+ <cheri.imgrund-intel+2Dgvt+2Ddev=lists.freedesktop.org@nailjar.monster>)
+Date: Fri, 21 Oct 2022 15:07:21 -0400
+From: Cheri Imgrund <cheri.imgrund@nailjar.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: No One Calling Back? Find #1 Ranked Project Pros
+Subject: Your input is requested by Petsmart
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_256_897573091.1666368329130"
-Message-ID: <0.0.0.1C.1D8E566FFB3B28C.3848DA@mail.savejar.monster>
+ boundary="----=_Part_274_833239459.1666379227540"
+Message-ID: <0.0.0.1E.1D8E580587E2C12.4CC694@mail.nailjar.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,25 +53,24 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_256_897573091.1666368329130
+------=_Part_274_833239459.1666379227540
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-No One Calling Back? Find #1 Ranked Project Pros
+Your input is requested by Petsmart
 
-Visit Here to Get Affordable Quotes on Your Project Here -http://www.savejar.monster/d4f5u2j395p8hw612l425i2i1018w36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJddde7j1TTiy05g1wDA/harper-intersects
+Go here for your Petsmart reward up to $50-http://www.nailjar.monster/criminal-tranquilly/1984J2395SAD8611e4256L1019x36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQzddQn5V1uM06nlqzwD
 
-Act Now!  Compare Pros Then Get Pricing and Get Your Project Started As Soon As Possible. 
-
-
+Go! Deal Expires in 3 Days.
 
 
-I2I6_ BR0ADWAY,  FL00R Two, NEW YORK, New York 10001_
-To put an end to e-mail, Click This-http://www.savejar.monster/crushes-undeleted/e045r2G395m8Sj611K4253w1018L36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQJddde6G1Cus06yPyMwD
-This e-mail communication was selected for intel-gvt-dev@lists.freedesktop.org
-7229655-9020377
 
-------=_Part_256_897573091.1666368329130
+To end your subscription, Visit This Way-http://www.nailjar.monster/sloppiness-buffs/b166zk239P5D8g6C13b4IT257A1019y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQzddQn7z10jTRT6kTwJBD
+96- MOWAT.  AVENUE, Toronto_ ONT M4K 3Kl CA
+Our email message was intended for intel-gvt-dev@lists.freedesktop.org
+3592343-5442933
+
+------=_Part_274_833239459.1666379227540
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -80,21 +79,18 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><a href="http://www.savejar.monster/harper-intersects/ef46F23I9_5MW86y12au4252N1018L36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQJddde5HID105J0w2D" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit Here to Get Affordable Quotes on Your Project</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:604px;height:1429px;"><a href="http://www.savejar.monster/harper-intersects/ef46F23I9_5MW86y12au4252N1018L36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQJddde5HID105J0w2D"><img alt="Compare Project Pros to Save" src="http://www.savejar.monster/evacuation-Keats/7b05P2n395Qm7aY12N4254qt1018A36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQJddde6QLs1k05VyPwD" style="margin-left: 0px; margin-top: 0px; width: 604px; height: 1429px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 14pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">&nbsp;Find a Pro, Get Pricing and Start your Project This Fall.</span></span></p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.nailjar.monster/Grumman-pleasure/e404h2395u86tX12LS4256Q1019Y36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQzddQn7RC10FUJ5t@wND" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go here for your Petsmart reward up to $50</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.nailjar.monster/Grumman-pleasure/e404h2395u86tX12LS4256Q1019Y36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQzddQn7RC10FUJ5t@wND" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:680px;"><img alt="Begin Here to qualify for a $50 Petsmart bonus" src="http://www.nailjar.monster/33b5cj2395s7aUV11w4258P1019v36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQzddQn7zP1P0KN6nNXPwD/wedlock-sureties" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 680px;" /></span></span></a></span></
+ p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 18pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Go! Deal Expires in 3 Days.</span></span></p> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">1216. BROADWAY,&nbsp; FLOOR Two, New York, NY 10001.</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To put an end to e-mail, <a href="http://www.savejar.monster/c416kzu2395O8px612d425T3D1018L36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQJddde6otV10I6R@wMpD/stagecoach-institutional">Click This</a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This e-mail communication was selected for intel-gvt-dev@lists.freedesktop.org</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-a91fc159-7fff-f52b-ee82-46f21a39c737"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7229655.9020377</span></span></p>   
- <img src="http://www.savejar.monster/9715V2G395fH85Z11C4255_1018k36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQJddde6I1Yp0I6O3@JwD/stagecoach-institutional" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To end your subscription, </span><a href="http://www.nailjar.monster/6476n2X39y5v86XR12vg4257x1019r36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQzddQn6hipV106E@BwjD/griped-manslaughter" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit This Way</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat- Av., T0R0NT0 Ontario M4 K3 K1 CA</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3592343 5442933</span></span></p>   
+ <img src="http://www.nailjar.monster/Grumman-pleasure/1d45U2g395j85oN13D4C2u59w1019z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQzddQn6EY10ZU5eOwDl" alt=""/></body>
 </html>
 
-------=_Part_256_897573091.1666368329130--
+------=_Part_274_833239459.1666379227540--
 
