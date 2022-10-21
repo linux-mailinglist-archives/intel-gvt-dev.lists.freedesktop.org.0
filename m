@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EABE4607F0B
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Oct 2022 21:29:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D047A607F91
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Oct 2022 22:14:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AC77310E0D0;
-	Fri, 21 Oct 2022 19:29:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9C59710E65F;
+	Fri, 21 Oct 2022 20:14:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 21 Oct 2022 19:28:51 UTC
-Received: from mail.nailjar.monster (unknown [66.63.186.131])
- by gabe.freedesktop.org (Postfix) with ESMTP id CC93910E677
+ Fri, 21 Oct 2022 20:14:51 UTC
+Received: from mail.wonjar.click (unknown [66.63.186.58])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4301A10E65F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Oct 2022 19:28:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nailjar.monster; 
+ Fri, 21 Oct 2022 20:14:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wonjar.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cheri.imgrund@nailjar.monster; 
- bh=GvSNCxaYcqRzln4nujXs+9Ugc+0=;
- b=mq98OAHtGnfxi4GcGVdxjbgZp68twoPX3/XQrvwl6s0oX0WrkGKA2e4x6u9OJL9U06K/OcvK7KuC
- Mv/EtNZkHp9t3aKmRkRJQJf+CfUduFCoX8lrTLl37H5MFmximMIK4dFnTFagOcHwMzN1jk9oCLtE
- aANa5sidY/StQODL5bM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nailjar.monster;
- b=2/fMKnGBuoF0KywJZlqzBleFUib3psFcxzVUyyObZnszCV3FEvLftI8AFxI0IIU9MMhj5NKjtPOS
- ItkdxBFyMnU+6cSuMLu9dpfNT/GD432OY8b8BsOdya1v7wPwfRSZ63E1iCg+JWmuPkQXTQvRQUAt
- ZAU2H1M+Kqxm2WIyXnw=;
-Received: by mail.nailjar.monster id habpf60001gh for
+ i=lisa_brock@wonjar.click; bh=afwxOGebCiaDDtJaiJ5RLefW1kw=;
+ b=I2khmnQDf2oFvg5gQmC5Mr67jhC+DMZ8YVSZDIwgBHs6wtbwUei+38+YDPu7PBGg4c+QHVMaPXAu
+ 9eB4sgr6+mDiGywFpodXvUvIzZcL2npf2NJv90M6kQtG2phpwapZ32LV7MpdnJcdvtV485pY7Ghm
+ p5P6mx938PMH19svOsM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wonjar.click;
+ b=PcGDCw8MHir3Em9UVP63xRUtT8mh2j3R1UaBKdw1teE0QKm0y3UuY/AF/yVlNFpT82cgMvRoQDSw
+ iUkkHUwclAZkUBms/sbn2UdrTpNUlcbR2R33VKATGVkTUlsFxt0eMUaeiVUDxOC0CX1xAkibgMnn
+ JpHlgY6m+MphYQ9nm5g=;
+Received: by mail.wonjar.click id haburm0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Oct 2022 15:07:21 -0400 (envelope-from
- <cheri.imgrund-intel+2Dgvt+2Ddev=lists.freedesktop.org@nailjar.monster>)
-Date: Fri, 21 Oct 2022 15:07:21 -0400
-From: Cheri Imgrund <cheri.imgrund@nailjar.monster>
+ Fri, 21 Oct 2022 16:05:49 -0400 (envelope-from
+ <lisa_brock-intel+2Dgvt+2Ddev=lists.freedesktop.org@wonjar.click>)
+Date: Fri, 21 Oct 2022 16:05:49 -0400
+From: Lisa Brock <lisa_brock@wonjar.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your input is requested by Petsmart
+Subject: Lowes wants you to have a 170 pc. Stanley Tool Kit
+ intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_274_833239459.1666379227540"
-Message-ID: <0.0.0.1E.1D8E580587E2C12.4CC694@mail.nailjar.monster>
+ boundary="----=_Part_298_670594560.1666382715631"
+Message-ID: <0.0.0.21.1D8E5888380AD88.425240@mail.wonjar.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,24 +53,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_274_833239459.1666379227540
+------=_Part_298_670594560.1666382715631
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Your input is requested by Petsmart
+Lowes wants you to have a 170 pc. Stanley Tool Kit  intel-gvt-dev@lists.freedesktop.org
 
-Go here for your Petsmart reward up to $50-http://www.nailjar.monster/criminal-tranquilly/1984J2395SAD8611e4256L1019x36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQzddQn5V1uM06nlqzwD
-
-Go! Deal Expires in 3 Days.
+Start Here for the Lowes Survey Reward-http://www.wonjar.click/2ff4r2395S86XO11U425aA101aN36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ1ddQo7GL1T0ZL5yAwDM/Rummel-lateral
 
 
 
-To end your subscription, Visit This Way-http://www.nailjar.monster/sloppiness-buffs/b166zk239P5D8g6C13b4IT257A1019y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQzddQn7z10jTRT6kTwJBD
-96- MOWAT.  AVENUE, Toronto_ ONT M4K 3Kl CA
-Our email message was intended for intel-gvt-dev@lists.freedesktop.org
-3592343-5442933
+96- MOWAT' Ave. , Toronto_ Ont.  M4K 3K1 CANADA
 
-------=_Part_274_833239459.1666379227540
+To modify your notification preferences, Visit-This-Way-http://www.wonjar.click/thirdly-schoolhouses/2a64M2395snC8613l425XObU101aM36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ1ddQo7soit1V06Yyw@1D
+
+This notice was directed to intel-gvt-dev@lists.freedesktop.org
+
+7599841. 78314741
+
+------=_Part_298_670594560.1666382715631
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -79,18 +80,20 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.nailjar.monster/Grumman-pleasure/e404h2395u86tX12LS4256Q1019Y36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQzddQn7RC10FUJ5t@wND" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go here for your Petsmart reward up to $50</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><a href="http://www.nailjar.monster/Grumman-pleasure/e404h2395u86tX12LS4256Q1019Y36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQzddQn7RC10FUJ5t@wND" style="text-decoration-line: none;"><span style="font-size: 14pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:680px;"><img alt="Begin Here to qualify for a $50 Petsmart bonus" src="http://www.nailjar.monster/33b5cj2395s7aUV11w4258P1019v36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQzddQn7zP1P0KN6nNXPwD/wedlock-sureties" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 680px;" /></span></span></a></span></
- p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 18pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Go! Deal Expires in 3 Days.</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.wonjar.click/thirdly-schoolhouses/b164y2395pk8i613i42D5WaT101aV36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1ddQo6y1h0jn5o2wD3" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Start Here for the Lowes Survey Reward</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><a href="http://www.wonjar.click/thirdly-schoolhouses/b164y2395pk8i613i42D5WaT101aV36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1ddQo6y1h0jn5o2wD3" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:599px;height:902px;"><img alt="Take the Lowes Survey Here" src="http://www.wonjar.click/capitalism-Kenosha/6845h2G395mT7ua13zY425Kcx101aL36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ1ddQo6o1qqH05dU@wD" style="margin-left: 0px; margin-top: 0px; width: 599px; height: 902px;" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Deal Comes to a Close in 5 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
   <br /> 
   <br /> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To end your subscription, </span><a href="http://www.nailjar.monster/6476n2X39y5v86XR12vg4257x1019r36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQzddQn6hipV106E@BwjD/griped-manslaughter" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Visit This Way</span></a></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">96- Mowat- Av., T0R0NT0 Ontario M4 K3 K1 CA</span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our email message was intended for intel-gvt-dev@lists.freedesktop.org</span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-5f41ee5d-7fff-ccb4-b831-7029f1467ae9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">3592343 5442933</span></span></p>   
- <img src="http://www.nailjar.monster/Grumman-pleasure/1d45U2g395j85oN13D4C2u59w1019z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQzddQn6EY10ZU5eOwDl" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">_96 Mowat_ AVENUE, Toronto_ ONT M4K3K1 Canada</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To modify your notification preferences,<a href="http://www.wonjar.click/c5f5aw2395UOQ8612e425kbY101aB36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ1ddQo7pZ1RL_06dkwND@/indexing-bestselling"> Visit-This-Way</a></span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This notice was directed to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-afd00b47-7fff-eb4a-8f62-e33350131db1"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">7599841:78314741</span></span></span></p>   
+ <img src="http://www.wonjar.click/13d6a239TA5q8mY511n425dn101aO36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ1ddQo6wjF10n5PlqwD/rebounding-touchier" alt=""/></body>
 </html>
 
-------=_Part_274_833239459.1666379227540--
+------=_Part_298_670594560.1666382715631--
 
