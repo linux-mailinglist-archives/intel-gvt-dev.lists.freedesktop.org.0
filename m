@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCCDB6082E9
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 22 Oct 2022 02:36:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAA546083C5
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 22 Oct 2022 05:16:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 478B410E0C3;
-	Sat, 22 Oct 2022 00:36:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6EF4D10E2CC;
+	Sat, 22 Oct 2022 03:16:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 345 seconds by postgrey-1.36 at gabe;
- Sat, 22 Oct 2022 00:36:07 UTC
-Received: from mail.yolkjar.click (unknown [5.42.214.104])
- by gabe.freedesktop.org (Postfix) with ESMTP id 854D710E687
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sat, 22 Oct 2022 03:16:00 UTC
+Received: from mail.owljars.click (unknown [66.63.186.228])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F3A3510E6B4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 22 Oct 2022 00:36:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=yolkjar.click;
+ Sat, 22 Oct 2022 03:16:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=owljars.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jan_voeller@yolkjar.click; bh=E8CM6Oe3NEFubdqb6iXayuGI9SI=;
- b=N7XUJgssj8SA6haJHV4nHdZlbXN+TEcKX/KxxJnie+6aBrkBQ6IuaedaN/irVDvjQgrA7+lpIyDH
- 0aWnJYZ8u0P4W0pfY4l63g1LcfK5kwZiBGE4xxh7RkV7UJvUUDJ8ys0OH/p3wDK1ZipJS3gB5BL+
- QcC0XlSQ7tBk88ttVZM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=yolkjar.click;
- b=DxDujQzU19RUCjmJB1QhiLMGc8eJKNS/AfMPTMWnUYkv6+eCaCBluIdLzqYDV29Njmwnk1WFg5q0
- rPyqykrzWfAJMZjYu2PLvCTTJyCBHnsZJTUDuAQXMVtkTst813SKNlBDdOqloZZqER/S/DcZAApK
- zQXmeA+c3SqneDShb3g=;
-Received: by mail.yolkjar.click id hactfe0001gq for
+ i=tiffany_minchow@owljars.click; 
+ bh=i1iGafPFwzNKRvYVLxERAtGRT1Q=;
+ b=n1VX368NIRQUF3bH8q5+j7lf56FxRVdAOFgUMboRjM2BHI4AsUq+gLlEViHWfsIqjEuPD4Lf8WAC
+ WEmMvOspvbIWMm+gz8xS7w5t++rUDIsMmvqsuTKmh985BafqAMSMvSMzaymaNT8uGhn52mdw5ayA
+ WjVuHngQhbHzOOmO9b0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=owljars.click;
+ b=q6dn5ayQ5KJoSiBcn39BP7shL+ao1taDRbOu7iCZsvj5wgeJNVYa/bZjEC07BW+7cWBthifgReHD
+ 16bOVo5j++ojp/Wr1Llwsx+O3gT/KyaI7CpYdgUy2ECBWl3W3Mgnn8NRcM5Tn9pvCBA5V3JiDx5d
+ xEySMWQUwJGisW9Drgs=;
+Received: by mail.owljars.click id hadqm20001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Oct 2022 20:07:07 -0400 (envelope-from
- <jan_voeller-intel+2Dgvt+2Ddev=lists.freedesktop.org@yolkjar.click>)
-Date: Fri, 21 Oct 2022 20:07:07 -0400
-From: Jan Voeller <jan_voeller@yolkjar.click>
+ Sat, 22 Oct 2022 00:36:10 -0400 (envelope-from
+ <tiffany_minchow-intel+2Dgvt+2Ddev=lists.freedesktop.org@owljars.click>)
+Date: Sat, 22 Oct 2022 00:36:10 -0400
+From: Tiffany Minchow <tiffany_minchow@owljars.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Receive up to $1OO Reward for your Feedback of Southwest 796062
+Subject: Authentication Number  intel-gvt-dev@lists.freedesktop.org
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_121_545248492.1666397192747"
-Message-ID: <0.0.0.E.1D8E5AA3972E5CC.94B7F@mail.yolkjar.click>
+ boundary="----=_Part_439_1595391222.1666407954016"
+Message-ID: <0.0.0.30.1D8E5CFCEFBE1F0.25215F@mail.owljars.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,23 +53,30 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_121_545248492.1666397192747
+------=_Part_439_1595391222.1666407954016
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Receive up to $1OO Reward for your Feedback of Southwest 796062
+Authentication Number  intel-gvt-dev@lists.freedesktop.org
 
-Go Here to give your feedback about Southwest:http://www.yolkjar.click/spinoff-livably/4e05c239T5h8p6B13zt426z2g101cL36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQiddQR5j1HJ06cLwzDU
-
-Make It Snappy! Discount is Over in 2 Days.
+Go Here For The Survey & Pick Your Bonus:http://www.owljars.click/woodpeckers-leads/9185VY2395sqQ8613or42t6cN101eU36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ4ddQK5iZu106Q1yBwD
 
 
-To abandon notices, Go Here Now:http://www.yolkjar.click/ed54s2395h8su611q4263J101cJ36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQiddQR5yj1X05z@zwD/energetic-forwards
-This communication was delivered to intel-gvt-dev@lists.freedesktop.org
-'96 MOWAT' Av, Toronto' ONT M4K 3KI CN
-2041987:2820512
 
-------=_Part_121_545248492.1666397192747
+
+
+
+
+I26.  E.   TWENTY-THIRD ST NewYork NY 
+10010' United States 
+
+Our e-mail content was sent to intel-gvt-dev@lists.freedesktop.org
+
+To get rid of communication, Begin_This_Way:http://www.owljars.click/6bf5L239S5PR86v11S426dh101ey36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ4ddQK6VC10PR6lAkjwD/greying-strike
+
+8075890:9210038
+
+------=_Part_439_1595391222.1666407954016
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -77,15 +85,21 @@ Content-Transfer-Encoding: 7bit
   <title></title> 
  </head> 
  <body> 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><a href="http://www.yolkjar.click/c7d6Sh239z5G86xg11O4262Z101ch36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQiddQR6nqKh105zyw@D/energetic-forwards" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here to give your feedback about Southwest</span></a></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:600px;height:636px;"><a href="http://www.yolkjar.click/c7d6Sh239z5G86xg11O4262Z101ch36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQiddQR6nqKh105zyw@D/energetic-forwards"><img alt="Visit here to take the Southwest survey &amp; claim your reward" src="http://www.yolkjar.click/7914Q2395FM7av12A42n64V101cG36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQiddQR6om10tK6rNwDj2/predefinition-distiller" style="margin-left: 0px; margin-top: 0px; width: 600px; height: 636px;" /></a></span></span></span></p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-size: 18pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Make It Snappy! Discount is Over in 2 Days.</span></span><br /> <br /> &nbsp;</p> &nbsp; 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To abandon notices, </span><a href="http://www.yolkjar.click/8bd6iCS2395z86Hh11Q4263F101c_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQiddQR7v1XQsK06eAWwTD/beatify-pentecostal" style="text-decoration-line: none;"><span style="font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here Now</span></a></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">This communication was delivered to intel-gvt-dev@lists.freedesktop.org</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">.96 MOWAT Ave, Toronto. ONT. M4K3K1 CA</span></span></span></p> 
-  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10px;"><span id="docs-internal-guid-ec62260f-7fff-6394-fc6a-5d28f7cdc9f9"><span style="font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">2041987 2820512</span></span></span></p>   
- <img src="http://www.yolkjar.click/spinoff-livably/d505I2w395k8iw513C426Z5_g101cA36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQiddQR5c1o0U6EXlwAD" alt=""/></body>
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><a href="http://www.owljars.click/dislikes-belittle/ada5mC2395v8t6Y11I426cK101eq36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ4ddQK5ak10L5EOwyD" style="text-decoration-line: none;"><span style="font-size: 18pt; font-family: Arial; color: rgb(17, 85, 204); font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Go Here For The Survey & Pick Your Bonus</span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><a href="http://www.owljars.click/dislikes-belittle/ada5mC2395v8t6Y11I426cK101eq36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ4ddQK5ak10L5EOwyD" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;"><span style="border:none;display:inline-block;overflow:hidden;width:598px;height:393px;"><img height="393" src="http://www.owljars.click/woodpeckers-leads/6c04d2395L7aVT12E42Y6eB101es36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ4ddQK5X1Nh05N1wUD" style="margin-left:0px;margin-top:0px;" width="598" /></span></span></a></span></p> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 14pt; font-family: Arial; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Get Going! LImited Offer Comes To An End in 4 Days.</span></span></p> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">l26. E.&nbsp; 23rd STREET New York New York<br /> 10010- U.S.A.&nbsp;</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Our e-mail content was sent to intel-gvt-dev@lists.freedesktop.org</span></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">To get rid of communication, </span><a href="http://www.owljars.click/4fd6m23n9n5uh8C612eM426dZ101eq36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ4ddQK5DCy105cp@wD/Schroedinger-gathered" style="text-decoration-line: none;"><span style="font-size: 11pt; font-family: Arial; color: rgb(17, 85, 204); font-variant-numeric: normal; font-variant-east-asian: normal; text-decoration-line: underline; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;">Begin_This_Way</span></a></span></p> 
+  <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-6c6a9089-7fff-5824-89a0-7e3f55775ad9"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">8075890:9210038</span></span></p>   
+ <img src="http://www.owljars.click/dislikes-belittle/e7c6Q23yP95L8gL511m426fw101es36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ4ddQK5tZ10A5D0wD0" alt=""/></body>
 </html>
 
-------=_Part_121_545248492.1666397192747--
+------=_Part_439_1595391222.1666407954016--
 
