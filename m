@@ -1,73 +1,72 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47C6D60EAC9
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Oct 2022 23:25:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE27160EAD5
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Oct 2022 23:31:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C689610E366;
-	Wed, 26 Oct 2022 21:25:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3240810E405;
+	Wed, 26 Oct 2022 21:31:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7EC5610E394
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D370810E41E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 26 Oct 2022 21:25:00 +0000 (UTC)
+ Wed, 26 Oct 2022 21:31:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1666819499;
+ s=mimecast20190719; t=1666819899;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2ys5yrKnSWNrdXyOIt/+2hibuD6RgZdYjr5anEvm87I=;
- b=LtqFzzp14WfeSnWvKxREB7Rx+aDjPwYGyCOQ+8appuHvB/PXNY6YJmRmxpYrV9xazC7dny
- lWIwFbZCM+bsz3/wfVN3CN36m/idrbseiz9c8JYwmovAUCYlPIwSTao6euShzbgLoUk+Ct
- 9ah2CYoTRHUHcmlyPL09O0zfaf5oGIg=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=kuFaUTxM7jN8IIcowYyyBSnYENOQWRsD3k/T0JWO9mA=;
+ b=BWfRrFw2zW7YjHCvZeTsXQlcDpdrwQhbzB8f1rogR2TNc7kOtMtEyCc13cQn4ruA3iRbiv
+ DJV/0FAHgK7aQvZXRh7lQ7s+/5NQgXioKjv9kLiyuNEeIfWhc/35Y7biaPJ86bxIKmION6
+ 5UhnyJAUHD4y/xxOTxmq3bdoi4n6jN4=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-648-GTjBlU46N7OBBHRlNKdBlw-1; Wed, 26 Oct 2022 17:24:57 -0400
-X-MC-Unique: GTjBlU46N7OBBHRlNKdBlw-1
-Received: by mail-il1-f199.google.com with SMTP id
- n14-20020a056e02100e00b002f9e283e850so14546978ilj.9
+ us-mta-522-L8hq9RDhOmCwEC1p3a5G-w-1; Wed, 26 Oct 2022 17:31:38 -0400
+X-MC-Unique: L8hq9RDhOmCwEC1p3a5G-w-1
+Received: by mail-il1-f200.google.com with SMTP id
+ f15-20020a056e020b4f00b002fa34db70f0so14433721ilu.2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 26 Oct 2022 14:24:57 -0700 (PDT)
+ Wed, 26 Oct 2022 14:31:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2ys5yrKnSWNrdXyOIt/+2hibuD6RgZdYjr5anEvm87I=;
- b=hrbmnrLlqWi1y3CgrtlR8rfLQE8kIjcleg6E3SjWj3KtMoivcNhzF8LgGAnIQieO5G
- 1DB/yNYvxblGC6aXsZ5Pi+4yw30v3BTmgAvxOcprtdeqyaZ7O/pQ7hXbBF0JzRNeXdnw
- dHukhgKNgXU1xniD8+kuCCG5h98I4PDxJlIj6Qj7uedr6wpzwAk1cdcBJHkeyabjRmpP
- 7s9vHeR+01UxAzKBgJeyJOyC6nCJK0Ul4tlYZZQocQ8ntoCCA5jzOm5oxV5OVDJlGzux
- t1oDCDZi4lvCcWcwB0rjXTqo0FOvHu1JgD6ZHUE6jOxPRRp8HR5Fyxi5L6Ej5bFKJzzn
- 6pqw==
-X-Gm-Message-State: ACrzQf30ete1cc4qNt2FOsPc6Ouy2jZo16jmfkUuvPwy7ypAjcPzTBe6
- 8YFMFH9HfcDKYKuT2VINc9NEmDxH6TuzV/qJ4IEWzhWHg8TovSauDtEeRQvm8z9LEBt8XGRRM+N
- g+BCLR9X85FDJBBqnKRfTTB5ze5IOoPLTHg==
-X-Received: by 2002:a05:6e02:1a6d:b0:2fa:cb68:b9f with SMTP id
- w13-20020a056e021a6d00b002facb680b9fmr29052089ilv.303.1666819496958; 
- Wed, 26 Oct 2022 14:24:56 -0700 (PDT)
-X-Google-Smtp-Source: AMsMyM78B1N1rhquL7I27LvLWaJii8bhooCw6yJ0rMTPt8axTAAIzjlyMmOikhzath1gqGNuTiEASg==
-X-Received: by 2002:a05:6e02:1b08:b0:2fc:4df6:e468 with SMTP id
- i8-20020a056e021b0800b002fc4df6e468mr27916129ilv.148.1666819486067; 
- Wed, 26 Oct 2022 14:24:46 -0700 (PDT)
+ bh=kuFaUTxM7jN8IIcowYyyBSnYENOQWRsD3k/T0JWO9mA=;
+ b=Alyr3wll2qLAXND/SNdUnDDQiYaww9eKeAbuRXQpVdKUtoOymJKLkROD4e4wRK+oYx
+ rC4EKcuLMkvoiq6YB69pMP6kkcn3PTzSGpAEtutOJzstKdtw943xI0J3aavfygYiOyjD
+ xzqHVm8nUZktMpRyJSiicZ60ULs6AP2R13Ovy4bQhuETI7Ocg7s15KUO9U+VrQd9JkOS
+ l73BFZa4NEhA7/2liIMaBbDeQuf2pl8fY7U5f7EMwjZH1bCifcVOLHpMEKk5PxRpnGWq
+ 2wHglRK0rX//GPB1tAgPqWRtYnWeshSP6gypZSeDdVw0HSeqGD5M1g15zggpJ5tfU+yl
+ qGfg==
+X-Gm-Message-State: ACrzQf0lV2U4tDkich0TGiO3bcRgb1jUtuYWGioy2CwnODv7ryu24TMY
+ hWzvt9MFZ/tC3r/GfAQwuv9o978bodCjT+mvQTqs8NtiONmvyZbRKNILc+uES9xnCrZgxU5xTu6
+ Xxnj4LF5WqjK4MqMOCt644eYgAyLXEemP1g==
+X-Received: by 2002:a05:6602:341c:b0:6bc:1c3d:836e with SMTP id
+ n28-20020a056602341c00b006bc1c3d836emr25364744ioz.24.1666819897611; 
+ Wed, 26 Oct 2022 14:31:37 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM7g0EslrnnS032hMCGhtH/3H9PcP3RsMN5qxVX8v5zeaewsUE7rw9P/VUiao60P3aqERhjABw==
+X-Received: by 2002:a05:6602:341c:b0:6bc:1c3d:836e with SMTP id
+ n28-20020a056602341c00b006bc1c3d836emr25364701ioz.24.1666819897311; 
+ Wed, 26 Oct 2022 14:31:37 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- x13-20020a02948d000000b0036c8a246f54sm2409348jah.142.2022.10.26.14.24.44
+ n31-20020a056602341f00b006bc3bf6e5b5sm2759668ioz.55.2022.10.26.14.31.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Oct 2022 14:24:45 -0700 (PDT)
-Date: Wed, 26 Oct 2022 15:24:42 -0600
+ Wed, 26 Oct 2022 14:31:36 -0700 (PDT)
+Date: Wed, 26 Oct 2022 15:31:33 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 04/10] vfio: Move storage of allow_unsafe_interrupts to
- vfio_main.c
-Message-ID: <20221026152442.4855c5de.alex.williamson@redhat.com>
-In-Reply-To: <4-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
+Subject: Re: [PATCH 10/10] iommufd: Allow iommufd to supply /dev/vfio/vfio
+Message-ID: <20221026153133.44dc05c8.alex.williamson@redhat.com>
+In-Reply-To: <10-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
 References: <0-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
- <4-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
+ <10-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -113,80 +112,135 @@ Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 25 Oct 2022 15:17:10 -0300
+On Tue, 25 Oct 2022 15:50:45 -0300
 Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-> This legacy module knob has become uAPI, when set on the vfio_iommu_type1
-> it disables some security protections in the iommu drivers. Move the
-> storage for this knob to vfio_main.c so that iommufd can access it too.
+> If the VFIO container is compiled out, give a kconfig option for iommufd
+> to provide the miscdev node with the same name and permissions as vfio
+> uses.
+> 
+> The compatibility node supports the same ioctls as VFIO and automatically
+> enables the VFIO compatible pinned page accounting mode.
 
-I don't really understand this, we're changing the behavior of the
-iommufd_device_attach() operation based on the modules options of
-vfio_iommu_type1, which may not be loaded or even compiled into the
-kernel.  Our compatibility story falls apart when VFIO_CONTAINER is not
-set, iommufd sneaks in to usurp /dev/vfio/vfio, and the user's module
-options for type1 go unprocessed.
-
-I hate to suggest that type1 becomes a module that does nothing more
-than maintain consistency of this variable when the full type1 isn't
-available, but is that what we need to do?  Thanks,
+I think I'd like to see some sort of breadcrumb when /dev/vfio/vfio is
+provided by something other than the vfio container code.  If we intend
+to include this before P2P is resolved, that breadcrumb (dmesg I'm
+guessing) might also list any known limitations of the compatibility to
+save time with debugging.  Thanks,
 
 Alex
 
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > ---
->  drivers/vfio/vfio.h             | 2 ++
->  drivers/vfio/vfio_iommu_type1.c | 5 ++---
->  drivers/vfio/vfio_main.c        | 3 +++
->  3 files changed, 7 insertions(+), 3 deletions(-)
+>  drivers/iommu/iommufd/Kconfig | 12 ++++++++++++
+>  drivers/iommu/iommufd/main.c  | 35 ++++++++++++++++++++++++++++++++---
+>  2 files changed, 44 insertions(+), 3 deletions(-)
 > 
-> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-> index f95f4925b83bbd..54e5a8e0834ccb 100644
-> --- a/drivers/vfio/vfio.h
-> +++ b/drivers/vfio/vfio.h
-> @@ -130,4 +130,6 @@ extern bool vfio_noiommu __read_mostly;
->  enum { vfio_noiommu = false };
->  #endif
+> diff --git a/drivers/iommu/iommufd/Kconfig b/drivers/iommu/iommufd/Kconfig
+> index f0a2012234fa09..afc83b7575cce6 100644
+> --- a/drivers/iommu/iommufd/Kconfig
+> +++ b/drivers/iommu/iommufd/Kconfig
+> @@ -14,6 +14,18 @@ config IOMMUFD
+>  	  If you don't know what to do here, say N.
 >  
-> +extern bool vfio_allow_unsafe_interrupts;
+>  if IOMMUFD
+> +config IOMMUFD_VFIO_CONTAINER
+> +	bool "IOMMUFD provides the VFIO container /dev/vfio/vfio"
+> +	depends on VFIO && !VFIO_CONTAINER
+> +	default VFIO && !VFIO_CONTAINER
+> +	help
+> +	  IOMMUFD will provide /dev/vfio/vfio instead of VFIO. This relies on
+> +	  IOMMUFD providing compatibility emulation to give the same ioctls.
+> +	  It provides an option to build a kernel with legacy VFIO components
+> +	  removed.
 > +
->  #endif
-> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-> index 23c24fe98c00d4..186e33a006d314 100644
-> --- a/drivers/vfio/vfio_iommu_type1.c
-> +++ b/drivers/vfio/vfio_iommu_type1.c
-> @@ -44,9 +44,8 @@
->  #define DRIVER_AUTHOR   "Alex Williamson <alex.williamson@redhat.com>"
->  #define DRIVER_DESC     "Type1 IOMMU driver for VFIO"
->  
-> -static bool allow_unsafe_interrupts;
->  module_param_named(allow_unsafe_interrupts,
-> -		   allow_unsafe_interrupts, bool, S_IRUGO | S_IWUSR);
-> +		   vfio_allow_unsafe_interrupts, bool, S_IRUGO | S_IWUSR);
->  MODULE_PARM_DESC(allow_unsafe_interrupts,
->  		 "Enable VFIO IOMMU support for on platforms without interrupt remapping support.");
->  
-> @@ -2282,7 +2281,7 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
->  		    iommu_group_for_each_dev(iommu_group, (void *)IOMMU_CAP_INTR_REMAP,
->  					     vfio_iommu_device_capable);
->  
-> -	if (!allow_unsafe_interrupts && !msi_remap) {
-> +	if (!vfio_allow_unsafe_interrupts && !msi_remap) {
->  		pr_warn("%s: No interrupt remapping support.  Use the module param \"allow_unsafe_interrupts\" to enable VFIO IOMMU support on this platform\n",
->  		       __func__);
->  		ret = -EPERM;
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index 8d809ecd982b39..1e414b2c48a511 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -51,6 +51,9 @@ static struct vfio {
->  	struct ida			device_ida;
->  } vfio;
->  
-> +bool vfio_allow_unsafe_interrupts;
-> +EXPORT_SYMBOL_GPL(vfio_allow_unsafe_interrupts);
+> +	  Unless testing IOMMUFD say N here.
 > +
->  static DEFINE_XARRAY(vfio_device_set_xa);
->  static const struct file_operations vfio_group_fops;
+>  config IOMMUFD_TEST
+>  	bool "IOMMU Userspace API Test support"
+>  	depends on RUNTIME_TESTING_MENU
+> diff --git a/drivers/iommu/iommufd/main.c b/drivers/iommu/iommufd/main.c
+> index 8a31c1a14cdd53..19db81fbf7f08f 100644
+> --- a/drivers/iommu/iommufd/main.c
+> +++ b/drivers/iommu/iommufd/main.c
+> @@ -24,6 +24,7 @@
+>  #include <uapi/linux/iommufd.h>
+>  #include <linux/iommufd.h>
 >  
+> +#include "io_pagetable.h"
+>  #include "iommufd_private.h"
+>  #include "iommufd_test.h"
+>  
+> @@ -31,6 +32,7 @@ struct iommufd_object_ops {
+>  	void (*destroy)(struct iommufd_object *obj);
+>  };
+>  static struct iommufd_object_ops iommufd_object_ops[];
+> +static struct miscdevice vfio_misc_dev;
+>  
+>  struct iommufd_object *_iommufd_object_alloc(struct iommufd_ctx *ictx,
+>  					     size_t size,
+> @@ -167,6 +169,13 @@ static int iommufd_fops_open(struct inode *inode, struct file *filp)
+>  	if (!ictx)
+>  		return -ENOMEM;
+>  
+> +	/*
+> +	 * For compatibility with VFIO when /dev/vfio/vfio is opened we default
+> +	 * to the same rlimit accounting as vfio uses.
+> +	 */
+> +	if (filp->private_data == &vfio_misc_dev)
+> +		ictx->account_mode = IOPT_PAGES_ACCOUNT_MM;
+> +
+>  	xa_init_flags(&ictx->objects, XA_FLAGS_ALLOC1 | XA_FLAGS_ACCOUNT);
+>  	ictx->file = filp;
+>  	filp->private_data = ictx;
+> @@ -392,26 +401,46 @@ static struct miscdevice iommu_misc_dev = {
+>  	.mode = 0660,
+>  };
+>  
+> +
+> +static struct miscdevice vfio_misc_dev = {
+> +	.minor = VFIO_MINOR,
+> +	.name = "vfio",
+> +	.fops = &iommufd_fops,
+> +	.nodename = "vfio/vfio",
+> +	.mode = 0666,
+> +};
+> +
+>  static int __init iommufd_init(void)
+>  {
+>  	int ret;
+>  
+>  	ret = misc_register(&iommu_misc_dev);
+> -	if (ret) {
+> -		pr_err("Failed to register misc device\n");
+> +	if (ret)
+>  		return ret;
+> -	}
+>  
+> +	if (IS_ENABLED(CONFIG_IOMMUFD_VFIO_CONTAINER)) {
+> +		ret = misc_register(&vfio_misc_dev);
+> +		if (ret)
+> +			goto err_misc;
+> +	}
+>  	return 0;
+> +err_misc:
+> +	misc_deregister(&iommu_misc_dev);
+> +	return ret;
+>  }
+>  
+>  static void __exit iommufd_exit(void)
+>  {
+> +	if (IS_ENABLED(CONFIG_IOMMUFD_VFIO_CONTAINER))
+> +		misc_deregister(&vfio_misc_dev);
+>  	misc_deregister(&iommu_misc_dev);
+>  }
+>  
+>  module_init(iommufd_init);
+>  module_exit(iommufd_exit);
+>  
+> +#if IS_ENABLED(CONFIG_IOMMUFD_VFIO_CONTAINER)
+> +MODULE_ALIAS_MISCDEV(VFIO_MINOR);
+> +#endif
+>  MODULE_DESCRIPTION("I/O Address Space Management for passthrough devices");
+>  MODULE_LICENSE("GPL");
 
