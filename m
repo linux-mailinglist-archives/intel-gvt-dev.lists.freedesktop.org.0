@@ -2,62 +2,83 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D64C60EF54
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Oct 2022 07:12:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E72A60FC06
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Oct 2022 17:32:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 70F4310E2CC;
-	Thu, 27 Oct 2022 05:12:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7796110E682;
+	Thu, 27 Oct 2022 15:32:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qt1-x82c.google.com (mail-qt1-x82c.google.com
- [IPv6:2607:f8b0:4864:20::82c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 21D0D10E2CC;
- Thu, 27 Oct 2022 05:12:44 +0000 (UTC)
-Received: by mail-qt1-x82c.google.com with SMTP id g16so414496qtu.2;
- Wed, 26 Oct 2022 22:12:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CmDiMYe/I0ri6Zj03hdpur3rJrgB7k+DhMOzSt5LxUI=;
- b=hM2tehQXR8rhpVF9g+WAkkYLHO2gza5eLp8A5C/rbyeAH+vIL+0k9xuLSF+aoysY0p
- IV1nDGd1W14gsvEe5BwPL4dUnIhQCffmmyoeMjIojAuiHXiHb+Ie5vwStIIBxDhNXewv
- /dltDWdPmrIJFQIVGWMHCocFEs0VnC/F9cURrfBBLE0LJlpgsCtACKSzUMBUYEZAI1sC
- 6gwir6oqL+FXUXdWdrErNn2TE/QivqIgFJNw3nTSb/oyj/nkLCBNgtRKdyOawG3jRc7P
- 3mpr8LC0Om5GHXwU7pticVUP/D2vnWd5uetBTwlf0SG8WY88g06v2iVV2BcZMezV/Ss5
- 34mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CmDiMYe/I0ri6Zj03hdpur3rJrgB7k+DhMOzSt5LxUI=;
- b=ygyob/Ww78DYLBJeQ+/2NxlcJqvaGOyViIve3tz/NgngFyFeXcjU6/yhkh010zc2IM
- jEmuh6MBU/haMWRmTF1HiaSVLRxueNQo1BQ+x8Oka7drJC7SWbAnaHjayFy0zW6vyMuY
- AOIDZn65ZzwDHnhgwlJBsfSz13q2av7XzhNmcW5bZbyAULTdS/UjMgyvIY3h1rm7TFed
- yJAh4Fy4EWhyXc6oIvb2m7nmZTS+t16dl2MmBSyv4V7Qv1NlbyOUcLZBKCFCEW1X6Dtd
- MRDQHoLQK/MiIfOy+PkiPtasDn8jnV6zFQa9JALzzrXN6RD9FlWybBcvugNR6u9sp3q7
- PwqQ==
-X-Gm-Message-State: ACrzQf3YPnqKSVt1Me7dPOn28U/yNaojjHj95halgLeCb80qct6BwsAs
- rDq8k2n5M8lRKZaL8KdRpoxxzbc1WgcPN+wbw94=
-X-Google-Smtp-Source: AMsMyM6aQPkWUzrcH5QcYJv7YBwmqFe1zX9SZ+R2FvqFrLBshlWiO4t1EvfUkMpXDGj/dS+trwAoMo7XaSKAjTAviUE=
-X-Received: by 2002:a05:622a:164f:b0:3a4:f141:92fa with SMTP id
- y15-20020a05622a164f00b003a4f14192famr4761116qtj.447.1666847563200; Wed, 26
- Oct 2022 22:12:43 -0700 (PDT)
+X-Greylist: delayed 1406 seconds by postgrey-1.36 at gabe;
+ Thu, 27 Oct 2022 15:32:42 UTC
+Received: from mx0a-00190b01.pphosted.com (mx0a-00190b01.pphosted.com
+ [IPv6:2620:100:9001:583::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2E28810E681;
+ Thu, 27 Oct 2022 15:32:42 +0000 (UTC)
+Received: from pps.filterd (m0050095.ppops.net [127.0.0.1])
+ by m0050095.ppops.net-00190b01. (8.17.1.5/8.17.1.5) with ESMTP id
+ 29REAqMV008104; Thu, 27 Oct 2022 16:08:20 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=jan2016.eng;
+ bh=h4lND8L7nF8jQSiuXHvwarM3PypjNGIv6eeSvOJK9Xc=;
+ b=WI1sr5VyksXvBeCZiuQvHynoUgIvJ8arwsnOScd2R1Cy8hD2FJjGzA2CbJctUmDI1aBt
+ Qk/eTkHTCLRbUgK6KW8gHgXZ2asZKdOCSMNbaIDldll4yl99Nr901x4zbS0hnbSxhoU4
+ 1rl3y+Ye4FoGzQ0CK2mI+Q8gTT3Kz5KW0v4YU7AOlfThbhg0PpPsXVaEiEgTpIlXbIgN
+ PBCyNVmLOiHqt8UCdPuiYECX4fVk0SXxYzmHtLTOrOZzdq1/KzaYrAuhpHTS/sd3vtJb
+ f3aF7AQ36RKi66wgEwZ2K8A+0LUh17YQ1A1kr5XY5HbF069FllZb7CFq4ULBXdIIWDhf pA== 
+Received: from prod-mail-ppoint7
+ (a72-247-45-33.deploy.static.akamaitechnologies.com [72.247.45.33] (may be
+ forged))
+ by m0050095.ppops.net-00190b01. (PPS) with ESMTPS id 3kfb8p84nx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 27 Oct 2022 16:08:19 +0100
+Received: from pps.filterd (prod-mail-ppoint7.akamai.com [127.0.0.1])
+ by prod-mail-ppoint7.akamai.com (8.17.1.5/8.17.1.5) with ESMTP id
+ 29RDDmRu005239; Thu, 27 Oct 2022 11:08:18 -0400
+Received: from prod-mail-relay19.dfw02.corp.akamai.com ([172.27.165.173])
+ by prod-mail-ppoint7.akamai.com (PPS) with ESMTP id 3kfaq1mk0q-1;
+ Thu, 27 Oct 2022 11:08:17 -0400
+Received: from [0.0.0.0] (prod-ssh-gw01.bos01.corp.akamai.com [172.27.119.138])
+ by prod-mail-relay19.dfw02.corp.akamai.com (Postfix) with ESMTP id E582360293; 
+ Thu, 27 Oct 2022 15:08:16 +0000 (GMT)
+Message-ID: <c1807585-f6c8-c05d-bc20-c6a540e59814@akamai.com>
+Date: Thu, 27 Oct 2022 11:08:16 -0400
 MIME-Version: 1.0
-References: <Yz8rIxV7bVCcfZb0@kroah.com>
- <20221007013708.1946061-1-zyytlz.wz@163.com>
- <CAPM=9ty0+ouf+rQWhM=9XSKFOA2zxKfa00MsNBvwrQGPQm2uPQ@mail.gmail.com>
- <CAJedcCwxioxr+4TBTdrEjAZh97J3oroSHSgax+bxSNRXCBvkRg@mail.gmail.com>
-In-Reply-To: <CAJedcCwxioxr+4TBTdrEjAZh97J3oroSHSgax+bxSNRXCBvkRg@mail.gmail.com>
-From: Dave Airlie <airlied@gmail.com>
-Date: Thu, 27 Oct 2022 15:12:31 +1000
-Message-ID: <CAPM=9twhAL+c8mOLmidY_tEhEKwCh-CTjfs5yryOk8oGjMxuug@mail.gmail.com>
-Subject: Re: [PATCH v3] drm/i915/gvt: fix double free bug in
- split_2MB_gtt_entry
-To: Zheng Hacker <hackerzheng666@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: [Intel-gfx] [PATCH v7 0/9] dyndbg: drm.debug adaptation
+Content-Language: en-US
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ Greg KH <gregkh@linuxfoundation.org>
+References: <20220912052852.1123868-1-jim.cromie@gmail.com>
+ <Yy7/6oTBW2lqVSK1@kroah.com> <Y1Fyuh12g/gt3Izn@intel.com>
+ <87a65pfsbq.fsf@intel.com>
+From: Jason Baron <jbaron@akamai.com>
+In-Reply-To: <87a65pfsbq.fsf@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-10-27_07,2022-10-27_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ phishscore=0 mlxscore=0
+ malwarescore=0 bulkscore=0 mlxlogscore=999 adultscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2210170000
+ definitions=main-2210270082
+X-Proofpoint-ORIG-GUID: JKKURTnn4jQ6E0EgMWxXuBHamgEYkVRY
+X-Proofpoint-GUID: JKKURTnn4jQ6E0EgMWxXuBHamgEYkVRY
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-10-27_07,2022-10-27_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 suspectscore=0
+ adultscore=0 bulkscore=0 priorityscore=1501 mlxscore=0 clxscore=1011
+ impostorscore=0 malwarescore=0 spamscore=0 mlxlogscore=999 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2210170000
+ definitions=main-2210270082
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,44 +91,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, alex000young@gmail.com,
- security@kernel.org, airlied@linux.ie, gregkh@linuxfoundation.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, 1002992920@qq.com,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zheng Wang <zyytlz.wz@163.com>,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Cc: Jim Cromie <jim.cromie@gmail.com>, daniel.vetter@ffwll.ch,
+ intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
+ linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ seanpaul@chromium.org, dri-devel@lists.freedesktop.org, joe@perches.com,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 27 Oct 2022 at 13:26, Zheng Hacker <hackerzheng666@gmail.com> wrote=
-:
->
-> Dave Airlie <airlied@gmail.com> =E4=BA=8E2022=E5=B9=B410=E6=9C=8827=E6=97=
-=A5=E5=91=A8=E5=9B=9B 08:01=E5=86=99=E9=81=93=EF=BC=9A
-> >
-> > On Fri, 7 Oct 2022 at 11:38, Zheng Wang <zyytlz.wz@163.com> wrote:
-> > >
-> > > If intel_gvt_dma_map_guest_page failed, it will call
-> > > ppgtt_invalidate_spt, which will finally free the spt.
-> > > But the caller does not notice that, it will free spt again in error =
-path.
-> > >
-> > > Fix this by spliting invalidate and free in ppgtt_invalidate_spt.
-> > > Only free spt when in good case.
-> > >
-> > > Reported-by: Zheng Wang <hackerzheng666@gmail.com>
-> > > Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
-> >
-> > Has this landed in a tree yet, since it's a possible CVE, might be
-> > good to merge it somewhere.
-> >
-> > Dave.
-> >
->
-> Hi Dave,
->
-> This patched hasn't been merged yet. Could you please help with this?
 
-I'll add some more people who can probably look at it.
 
-Dave.
+On 10/21/22 05:18, Jani Nikula wrote:
+> On Thu, 20 Oct 2022, Ville Syrjälä <ville.syrjala@linux.intel.com> wrote:
+>> On Sat, Sep 24, 2022 at 03:02:34PM +0200, Greg KH wrote:
+>>> On Sun, Sep 11, 2022 at 11:28:43PM -0600, Jim Cromie wrote:
+>>>> hi Greg, Dan, Jason, DRM-folk,
+>>>>
+>>>> heres follow-up to V6:
+>>>>   rebased on driver-core/driver-core-next for -v6 applied bits (thanks)
+>>>>   rework drm_debug_enabled{_raw,_instrumented,} per Dan.
+>>>>
+>>>> It excludes:
+>>>>   nouveau parts (immature)
+>>>>   tracefs parts (I missed --to=Steve on v6)
+>>>>   split _ddebug_site and de-duplicate experiment (way unready)
+>>>>
+>>>> IOW, its the remaining commits of V6 on which Dan gave his Reviewed-by.
+>>>>
+>>>> If these are good to apply, I'll rebase and repost the rest separately.
+>>>
+>>> All now queued up, thanks.
+>>
+>> This stuff broke i915 debugs. When I first load i915 no debug prints are
+>> produced. If I then go fiddle around in /sys/module/drm/parameters/debug
+>> the debug prints start to suddenly work.
+> 
+> Wait what? I always assumed the default behaviour would stay the same,
+> which is usually how we roll. It's a regression in my books. We've got a
+> CI farm that's not very helpful in terms of dmesg logging right now
+> because of this.
+> 
+> BR,
+> Jani.
+> 
+> 
+
+That doesn't sound good - so you are saying that prior to this change some
+of the drm debugs were default enabled. But now you have to manually enable
+them?
+
+Thanks,
+
+-Jason
