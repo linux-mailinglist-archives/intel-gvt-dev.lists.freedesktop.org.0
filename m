@@ -1,100 +1,68 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3CF6611E58
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Oct 2022 01:55:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9F7D612730
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 30 Oct 2022 04:36:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9253C10E211;
-	Fri, 28 Oct 2022 23:55:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8533210E07D;
+	Sun, 30 Oct 2022 03:36:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2079.outbound.protection.outlook.com [40.107.243.79])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1E0EE10E20D;
- Fri, 28 Oct 2022 23:55:04 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KOdTAKbvGO/F9clZvpEjrJ12aSk0iWTwbnQYKDHo5gUsasNm7oqKz3fMc/zYFDtFMW2ZDuVboZ9gwOwfI6anggFq0gJfo91/SfhpjzLenaNIal+t9xMXyxaS5Cjy+N/4NdaesKx5GmTFwO1tAnOa7bPc4+9ZiGFnWc8bR8rm+z/s9Pzmr0sPVSQnW9l0NKGr0oWWC1V8jWIbwFDytaGBGbl2pHf4V8/ziQ6kYJZ9/WYoI9wFfIfUQJbxcPoG39GGa3yM3/4Phv4si7TNNlt4nEutTj2cAM3dbwqO05WloGGT3sBtYLDjkS00W8kjYpJeSojI4E/kk9WtR8Fa6CYZEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PfUGmyKIfDbukXyo4BkEuQTuL+05ZIcIDdfWSjAbi3k=;
- b=ifNTKqOTpZ1Wq7z97lMuKaYy7NvsfUCrinFSGxFtq75Sve6JkhaEpYb/oN1TLP+azOimqX/7ILHi8egml2cGywXAFKrPRuxm/tuzp2lvWE+6NY4ozJp4DPjC0kLZHuWsPctoEU2HBu36n8h3KktBITtk0d8cs3UrVzGX7hdgn9F9CfKdkOTDnJj66Z079CReBYXGPBzkW5T1xttIRhdkjhBPtnKynO/NefT5FQ9I5Sg0U3MvEJv8dolDNsiCMbuqJnPsIb4J9qgsDTD9R04oZal5sCbkctPlK/D97ORN/mttZG0gk8oUs7OQAaYq8DhtO74TsMYbhD9A2FtChNgLdg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PfUGmyKIfDbukXyo4BkEuQTuL+05ZIcIDdfWSjAbi3k=;
- b=FK8pF5Nd37gJKmu68Ila1T8XD7QCBrEVfQcMEu37oJGHVCaJuiq23okLaxYdEOtBdD7bIXZDVZEwzk9BBlb5IQ4MSs7TyG9jIKI1m3U3AS6DlKuypYIndLvOGPoMoZSSz+esD134T2WVbXs25td8ddYNOjbE2tGMd6+vfFL52NF0EWNW8AcuOel6bOux8qADeFHXElrvg7YKgBP3prtCyOBSC6cfoG3H9e0ZBuXnTaSU65EEvi6htIriEy7aBRYvbxlOeRuZZjNkWbLXvoec58TL0JbuhA2+5q5yCr4ndG35JCdLcspgiQWEK5/PAglaWp5ABxvh31TKfP0TqAg/Jg==
-Received: from MW4P220CA0007.NAMP220.PROD.OUTLOOK.COM (2603:10b6:303:115::12)
- by CH2PR12MB4261.namprd12.prod.outlook.com (2603:10b6:610:a9::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.15; Fri, 28 Oct
- 2022 23:55:02 +0000
-Received: from CO1NAM11FT049.eop-nam11.prod.protection.outlook.com
- (2603:10b6:303:115:cafe::e2) by MW4P220CA0007.outlook.office365.com
- (2603:10b6:303:115::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.14 via Frontend
- Transport; Fri, 28 Oct 2022 23:55:01 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- CO1NAM11FT049.mail.protection.outlook.com (10.13.175.50) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5769.14 via Frontend Transport; Fri, 28 Oct 2022 23:55:01 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Fri, 28 Oct
- 2022 16:55:00 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.29; Fri, 28 Oct 2022 16:55:00 -0700
-Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29 via Frontend
- Transport; Fri, 28 Oct 2022 16:54:58 -0700
-Date: Fri, 28 Oct 2022 16:54:56 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH 00/10] Connect VFIO to IOMMUFD
-Message-ID: <Y1xr0IYUf8lx+hHl@Asurada-Nvidia>
-References: <0-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
- <Y1xrbbTEsaEEcU7O@Asurada-Nvidia>
+Received: from mail-pg1-x535.google.com (mail-pg1-x535.google.com
+ [IPv6:2607:f8b0:4864:20::535])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B20D210E078;
+ Sun, 30 Oct 2022 03:36:36 +0000 (UTC)
+Received: by mail-pg1-x535.google.com with SMTP id r18so8034976pgr.12;
+ Sat, 29 Oct 2022 20:36:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=2EewIqadtxsCyBiEyM/6JdLw3ehusmy2aS1aWjmcfQs=;
+ b=cggBeky7GhYnq/3rdW4Hn800u3zX6M4KE3uTeEt2FUME2R++pOC9+T1vyjQOZCxYuw
+ KeVkjml//POeGcWJmulbtWAkGxArfultufYaElCYfIMJsYqe/sTYXhtzx1uuwgekRnaG
+ yR7vg1t31pfVkrwPclCa9g4NaBywZ7BzrnXrjBL8+CwyxUkUbKMPVBC4SgPWSnL/X8wf
+ YprjHu8DqzdATZf5haEVQ2cM7C2CNODq80dM7/x1ewvn3NYgdnLZwX9kwcdAx+uWpb9O
+ cooWNpplbOWyHMG6eTFfCF1XLNI15mGKUO5L77gOvqUoN9TSFJbtQyd7sRhJ3AKEi4Sq
+ 7uHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2EewIqadtxsCyBiEyM/6JdLw3ehusmy2aS1aWjmcfQs=;
+ b=Hz8dCUpiac4XbblIBo6F+KUGi1YvASnm0cXkwSwW5jL8yzNhKcKgIF/b1v9w0ZLifD
+ VrpUNcizhxATM71fdf2oBOhasx7yvsKu25jFeL+5+7q7LqHb0fwDZ7ugM/ZHUeZv9Yg3
+ 6My6DUAnJTSnKP8i5tNPgm2GVG6SWL1fO3WbRyYVfig4VEbnnYRWugnQSgoabQxzQxLj
+ EEunQQ5HZlsZxoXmyEYAXUpi+VE429ZXBcf1kvH6t+ZB0eMwhx5WuTSvacApJmFsHY/4
+ rwETGx3Y2qEmI2cLphL1NbrL3M/JHE96eM/UUZnckaDbY4M4Y5Vs1O84qp4cLeE3RIfz
+ cCAA==
+X-Gm-Message-State: ACrzQf0fFhTdYCNaKE1vkDYkFcFsQPS9PAUJ9bkdD98bWT7zZfUal8Fi
+ CV7xmOPt2kOSPIhRC4JzRvI=
+X-Google-Smtp-Source: AMsMyM6cNkA47FxiGKt3aNBxsBNyMkBiMslykI+flo0fmq8e95cHyU0L/ofCAXEcRzPkwasDVdtWOw==
+X-Received: by 2002:a63:2215:0:b0:43b:e00f:7c7b with SMTP id
+ i21-20020a632215000000b0043be00f7c7bmr6561352pgi.511.1667100996044; 
+ Sat, 29 Oct 2022 20:36:36 -0700 (PDT)
+Received: from mail.google.com (122-58-209-93-fibre.sparkbb.co.nz.
+ [122.58.209.93]) by smtp.gmail.com with ESMTPSA id
+ 85-20020a621458000000b005613220346asm1841130pfu.205.2022.10.29.20.36.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 29 Oct 2022 20:36:35 -0700 (PDT)
+Date: Sun, 30 Oct 2022 16:36:28 +1300
+From: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org
+Subject: [PATCH] [next] i915/gvt: remove hardcoded value on crc32_start
+ calculation
+Message-ID: <20221030033628.GA279284@mail.google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y1xrbbTEsaEEcU7O@Asurada-Nvidia>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1NAM11FT049:EE_|CH2PR12MB4261:EE_
-X-MS-Office365-Filtering-Correlation-Id: 00187bf3-0bec-4e37-a4f1-08dab93fd417
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: qTGX5vS1HfJZP1F7FRu1w7+lAdHksmc0lLPpIZY/Oa78Z8PZZGHzkCiQxmxk5U3SvftpyPnWtiz62UHVZzUtOk4/aq3pBTNRadQ0bzz1XByKWLtZHlXBBf5ecNn8qTKzIOtTQ2l2dAnTyZFNiC3/iNlDKIJp4MsCFCtBF9BP3P4b7C4ujF+43HW0vnuS2tLJWn6GZHuMfj60Nha/trLi/JcfIG1qDo+0cV+KXK7zpWRuU3liUR0o4eb6XQ2gha0XhA5k9qOIv3U5c0ARy33jLRANL4mB5P4jgSxcvQydssSoCAO18D50aLY9FAFObvk3CaoFIJdOcqw5bMTwN3q3HI2xRXiX64bALqouF1QS3hb/MvUttV4h1oTcJKiRNLOd9TylAPDXJjaCCo1pjaFruGBubBr1EC2ciXKO3m1LwcVsw5DmESul+LWzvForOTVr5q1ks7MIKkDcngkCNCMmekp2DjVQD4udS2Wz+YLL/eua+pENTVEkum7h5cKryTlm3FWXHIlOhHxPuIVoG2cLMrg3iVYtqKn23M19+cnj+YipYOzIrONMlSWoGXyuXu8SpHf3m4I1q2nDsQjlM6rcdOnUTJCQMniQUtk7mRte8HcXkOM8s5cvj8hhGJ61j4KT/MnumtRkUQYNgBtnjw3EgKArIhl84capPdQZ7xulqs/FInmMJYyGa2OAtzca8c8eSNRKf78zVZx407DPsDuZMRpw4bY13lYQUzLFntqq27VeA873WoB4X5Wxs61GRODVwGoPwwy0gGC1tSLclcN9FWPMOfMn5/Q37f4tMytAGjL5rn9MsfuB7OjaqZID7mw+QAqAHggyCgkamvQiHHqSceghsdbnRqHodIfUUDjZYj9l5jtgyhiPAi0SiA5esAGg
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230022)(4636009)(39860400002)(396003)(376002)(136003)(346002)(451199015)(46966006)(40470700004)(36840700001)(426003)(7406005)(47076005)(83380400001)(40460700003)(86362001)(82740400003)(36860700001)(5660300002)(356005)(7636003)(2906002)(7416002)(70206006)(8676002)(4326008)(41300700001)(8936002)(33716001)(82310400005)(54906003)(6862004)(70586007)(26005)(336012)(186003)(9686003)(6636002)(316002)(966005)(478600001)(40480700001)(55016003)(67856001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Oct 2022 23:55:01.7806 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 00187bf3-0bec-4e37-a4f1-08dab93fd417
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT049.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4261
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,63 +75,40 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
- Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
- Longfang Liu <liulongfang@huawei.com>, linux-s390@vger.kernel.org,
- Yi Liu <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>, Halil
- Pasic <pasic@linux.ibm.com>, iommu@lists.linux.dev,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>, Jason
- Herne <jjherne@linux.ibm.com>, Eric
- Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo
- Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+Cc: paulo.miguel.almeida.rodenas@gmail.com, linux-kernel@vger.kernel.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Oct 28, 2022 at 04:53:21PM -0700, Nicolin Chen wrote:
-> On Tue, Oct 25, 2022 at 03:17:06PM -0300, Jason Gunthorpe wrote:
-> > This series provides an alternative container layer for VFIO implemented
-> > using iommufd. This is optional, if CONFIG_IOMMUFD is not set then it will
-> > not be compiled in.
-> > 
-> > At this point iommufd can be injected by passing in a iommfd FD to
-> > VFIO_GROUP_SET_CONTAINER which will use the VFIO compat layer in iommufd
-> > to obtain the compat IOAS and then connect up all the VFIO drivers as
-> > appropriate.
-> > 
-> > This is temporary stopping point, a following series will provide a way to
-> > directly open a VFIO device FD and directly connect it to IOMMUFD using
-> > native ioctls that can expose the IOMMUFD features like hwpt, future
-> > vPASID and dynamic attachment.
-> > 
-> > This series, in compat mode, has passed all the qemu tests we have
-> > available, including the test suites for the Intel GVT mdev. Aside from
-> > the temporary limitation with P2P memory this is belived to be fully
-> > compatible with VFIO.
-> > 
-> > This is on github: https://github.com/jgunthorpe/linux/commits/vfio_iommufd
-> 
-> Tested-by: Nicolin Chen <nicoleotsuka@nvidia.com>
+struct gvt_firmware_header has a crc32 member in which all members that
+come after the that field are used to calculate it. The previous
+implementation added the value '4' (crc32's u32 size) to calculate the
+crc32_start offset which came across as a bit cryptic until you take a
+deeper look at the struct.
 
-Sorry, wrong email -- should be:
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+This patch changes crc32_start offset to the 'version' member which is
+the first member of the struct gvt_firmware_header after crc32.
 
-> Tested this branch on ARM64+SMMUv3 with the iommufd selftest and
-> QEMU passthrough sanity using noiommu and virtio-iommu setups by
-> combining with both CONFIG_VFIO_CONTAINER=y and =n.
+It's worth mentioning that doing a build before/after this patch results
+in no binary output differences.
+
+Signed-off-by: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
+---
+ drivers/gpu/drm/i915/gvt/firmware.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/gvt/firmware.c
+index 54fe442238c6..a683c22d5b64 100644
+--- a/drivers/gpu/drm/i915/gvt/firmware.c
++++ b/drivers/gpu/drm/i915/gvt/firmware.c
+@@ -104,7 +104,7 @@ static int expose_firmware_sysfs(struct intel_gvt *gvt)
+ 
+ 	memcpy(p, gvt->firmware.mmio, info->mmio_size);
+ 
+-	crc32_start = offsetof(struct gvt_firmware_header, crc32) + 4;
++	crc32_start = offsetof(struct gvt_firmware_header, version);
+ 	h->crc32 = crc32_le(0, firmware + crc32_start, size - crc32_start);
+ 
+ 	firmware_attr.size = size;
+-- 
+2.25.4
+
