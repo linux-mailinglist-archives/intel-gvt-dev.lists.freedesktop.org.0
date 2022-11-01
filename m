@@ -1,62 +1,141 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93CB9614609
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Nov 2022 09:52:36 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D17A614648
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Nov 2022 10:08:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 00CA510E323;
-	Tue,  1 Nov 2022 08:52:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5B53710E33B;
+	Tue,  1 Nov 2022 09:08:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 73B2A10E323;
- Tue,  1 Nov 2022 08:52:32 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D734F10E339;
+ Tue,  1 Nov 2022 09:08:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667292752; x=1698828752;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=j0y/gU0N76hksTyR6uOy3Ksq4bC7H9H77jI0W5EJonU=;
- b=CWZyakall1Y2C935FeUvkWU4FOzlvvGP2QjgG18d91enk7hfnmxCJE0h
- ZAt0LgeIaTre/TKQ5j+InwkMITlgYHP1oKe0HOT3fineHjSxfvkvvpXsr
- eX15Y5FcuYs8CDC2dN+Klx2AG9ly0aoEC7frOA7gjaigk+JvV3FZlpU/v
- isCt8/1AQRtXZo6Hh5GKnwdHr3K5kOBeN2le9eeM3qfhhuiA573NJMgAQ
- x+ZUeVuKJtNUyBNGZaE1OF9Vqio0+yS7caA6Bs4w1IiJturfSq6LllQiS
- iXkXtDiKPR+Tyg1Y4+lwmJfWiWOm+CyM08KECTpBJSMKs4ReuzvudbgyB g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="307821406"
-X-IronPort-AV: E=Sophos;i="5.95,230,1661842800"; d="scan'208";a="307821406"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Nov 2022 01:52:31 -0700
+ t=1667293714; x=1698829714;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=0eurQJOh2+tav9bzg7CwG9mJP8nc38C9vsgOEMz6AU8=;
+ b=QqhbUF/vv6qabK9vBHy15LxuMIAhOumWOknXcrcsKuMpY+G6k0MrFGe1
+ 9LlnPkoLO2NhmfxQywGUHe7VrBuGaLO6+7W4xNXomGZwe+t/++Cct8eqN
+ m35w6nfOvOKWU7pAJWCbPwCjOz5zMy/FfxCAWaxTAxcmxXFMWcT2TEyp1
+ 5AAHV8X4znhvil6BfokBu6r+Kr0CmJSMHcvzva5i/xdehSnKYERpHPnpH
+ YjLaki5JLghsRA4SYg0xoYNFr6icd+hf3aSRAPv4AHpkQCln4MpZDt96p
+ aF99SOBiwDZnrnISHHruyrnl6t4D0xfaPzVfCMfQxv75Akod02uXK6DxP A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="289489264"
+X-IronPort-AV: E=Sophos;i="5.95,230,1661842800"; d="scan'208";a="289489264"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Nov 2022 02:08:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="667127094"
-X-IronPort-AV: E=Sophos;i="5.95,230,1661842800"; d="scan'208";a="667127094"
-Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.191])
- by orsmga001.jf.intel.com with SMTP; 01 Nov 2022 01:52:26 -0700
-Received: by stinkbox (sSMTP sendmail emulation);
- Tue, 01 Nov 2022 10:52:26 +0200
-Date: Tue, 1 Nov 2022 10:52:26 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Jason Baron <jbaron@akamai.com>
-Subject: Re: [Intel-gfx] [PATCH v7 0/9] dyndbg: drm.debug adaptation
-Message-ID: <Y2DeSlGI38fvzvED@intel.com>
-References: <87a65pfsbq.fsf@intel.com>
- <c1807585-f6c8-c05d-bc20-c6a540e59814@akamai.com>
- <CAJfuBxxWVBxL29sXS3XoE5Es9HTbVyFUi9bQFYNupJAERffAew@mail.gmail.com>
- <Y1qqurH/lG0u+3ky@intel.com>
- <CAJfuBxzpG+C1ARLs3c_znXECEU7Ldg8RhruLMUXA67w+DwcrOQ@mail.gmail.com>
- <Y1rllFeOnT9/PQVA@intel.com>
- <CAJfuBxw_YFvCtHMwVE0K0fa5GJbrZy4hTOSS9FebeDs6fxUUCA@mail.gmail.com>
- <Y1/In+ZBzNguVNoy@intel.com>
- <CAJfuBxxHNXHEWCEPXnPTh64dq4igaddnrU27NT=OHASmnxgudA@mail.gmail.com>
- <9ff84a99-e500-625e-ba9d-20cd752d7ff4@akamai.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="879033871"
+X-IronPort-AV: E=Sophos;i="5.95,230,1661842800"; d="scan'208";a="879033871"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga006.fm.intel.com with ESMTP; 01 Nov 2022 02:08:33 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Tue, 1 Nov 2022 02:08:32 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Tue, 1 Nov 2022 02:08:32 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Tue, 1 Nov 2022 02:08:18 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Nus4XVPLUzOyh3LJTS3B8+Vw85oMCj/z3nJgcZYV736l+wUrFjmq9yV/Isdg0R1h9ad055YV0PoSmQoM36Vb/XnvpQmts1NCyyYkveyDAnt/QaFvJsd0e6gm/+a7a0xCS8L0RT+PLn7KFM3DDCad9VgC9ugrweRHCTl1XY+85pLcFa98OJ24DqcC3CEjZroAxdjW1NoEcH/GBgM3vFhCTsQRu5f2KeKMNTtT4PRGgMJjsxQVeXmPEqM18Im0L/SryOh72Di08e/Veqi2OdnB+aBlhjV21k3N8//ntc27kTDGEZ/6XpyhkSCI639gCF5ItiJ2pM+l3ZhyVc4aKJ1ILQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=x/Zc9z8WwtsOiSWq+iM3Xyc9MJJI03QXx0ttK++R/x4=;
+ b=IXSKxFoNVeEJpESmKzkkhOMTs59vlN9E30u+HMAUz/9Zuuxmr3exHgsrowbeRotbIFbi6bnWkl62M2rVZWkLE9OK7i0O74m+iIBfsZrPenZGvYPkKtcEurZcDZTFfHikkGRIZw+GhtVj0b+xmeIEpxI5WOcjSAPA4f7sljkyt+nU5et3zmyqRQpQR3uUV0QPYHY1T+GsQ8ggJ7CdojjI8qiXmoZXJQV7Xa0H8CGUfnXefEQnyEQHYbQfpR0muGDoOtkGj1ErOF5ZMweVIPThuP909qr/0IgcGE3Keqeh5v6S9dZqM+LdV4/hmawZETKYwab4m7sC6UMJb5ND6YRasw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by SJ1PR11MB6252.namprd11.prod.outlook.com (2603:10b6:a03:457::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.16; Tue, 1 Nov
+ 2022 09:08:15 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::737e:211a:bb53:4cd7]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::737e:211a:bb53:4cd7%5]) with mapi id 15.20.5769.021; Tue, 1 Nov 2022
+ 09:08:14 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Eric Farman <farman@linux.ibm.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>, Alex Williamson <alex.williamson@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>, "Liu, Yi
+ L" <yi.l.liu@intel.com>
+Subject: RE: [PATCH v1 4/7] vfio/ccw: move private to mdev lifecycle
+Thread-Topic: [PATCH v1 4/7] vfio/ccw: move private to mdev lifecycle
+Thread-Index: AQHY49b8P2GI9FlBPkaHDp4x02LD3K4p2qDQ
+Date: Tue, 1 Nov 2022 09:08:14 +0000
+Message-ID: <BN9PR11MB527698B0A9E039268916AA018C369@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20221019162135.798901-1-farman@linux.ibm.com>
+ <20221019162135.798901-5-farman@linux.ibm.com>
+In-Reply-To: <20221019162135.798901-5-farman@linux.ibm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SJ1PR11MB6252:EE_
+x-ms-office365-filtering-correlation-id: ed20d7a2-91ff-4047-8a95-08dabbe89b85
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Sjt7AoerAT5tW38TV+GHx5Nf5/C2VUyU8q9oG9Ks0FCBmri/2++MUj8jlwYl5dxK/sFBIENGTPEUJuCiTh7YENLstcbdKu/u7r1/EH1eemHsh3apgKsQK66LsguK2fExb6dHmVuyNTRIar0u3gnlSlo9nKMi5HBGx7/DL7KbhnZ7FvP6eqNukKN51fk72JGMmllm+/8Y0GeBzYLJqYfwcAhNHgK4owpk8l7c6obaIAAhTAxE3XXFXPPQSloTWaSd5luc2POaIgNqYOLwJ73hTlv00tnTazYHkAyqtyMLRpQw8EWxwfa12dZuQfqwdgAmCcPe0ocA8sPABnzE7YpheMKtr9T+Zo0mX/rjZ8HkA4DI1B4TsxNOPcNr0iOZBqCeVW1Z3CngQVOVVRlm3bsGHQ9CHjgK3DP3PfsLJ+5Og2ovXZJzRgooTL/dekXXrttWGXU69tj6/UcEyGzE3+LPijeHCzjBWBv+CW1Oomcd0iZfmELeTnf6KMctL2gfkIB2PMAGEKdp1wMVRwZpihESSPBknaEarpZ7qVMh4GSiuWi7g4ArPNDJNCS8JXI1A0TVPg2rE0BHfizu0t7fhXVPCjth886x13ARH0nYrYnfKkewfFJexEX04PHK3lCmZ1JBltjAy8/z4Xj2mmPL2BJ7Xwy5YD9Jhy9HHdN/246NVD5P9cR/nBXiYPLFjIVnLQ0nQCr6xvJ92OHwAN9ozL+w+MfLC1VlBOelLIwaB0+wckkWCm8hHrTl2w+3DLiistHCWFWeVeyE9SbvULIivHvFlQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(366004)(136003)(396003)(376002)(346002)(39860400002)(451199015)(5660300002)(186003)(66446008)(7416002)(7696005)(4326008)(9686003)(76116006)(66556008)(66946007)(8936002)(64756008)(8676002)(2906002)(66476007)(6506007)(38100700002)(82960400001)(41300700001)(86362001)(38070700005)(33656002)(122000001)(26005)(55016003)(83380400001)(52536014)(7406005)(110136005)(316002)(54906003)(71200400001)(478600001)(6636002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?JaDtLy20ibVc0dykXdY1UloBw6hcVuxm5fG4/Ah7yLubqbO46bjBoHfHhdFo?=
+ =?us-ascii?Q?p58aq/BPzDq4zvhHJN1Y6YUjXPMD5zyPUKWJefv0dOGvWYqVFWCGuNtJbiQA?=
+ =?us-ascii?Q?cFsnopV8HjJn+eBjNMiI6PADT0iXjw81v/IyOAsivExnwNEYDfHaRw4e9y9z?=
+ =?us-ascii?Q?UzJ9/ozFP4ShxGoaIXgIJ8RNbF6NC279jlCHF7I+8ZGmBEkrpU2jDSg1mkQx?=
+ =?us-ascii?Q?2y0/AXS5/hehzhOsTjB+CjptkJHd2MipXOcRetuxP8V61bGzx/K6lf6oe637?=
+ =?us-ascii?Q?NXURxGjRDkRmHqy8wYx1c2oXL3xVtNRCJnCBtKix/nlKK3VmOTOnjP5k3DdU?=
+ =?us-ascii?Q?18rqWp+s0ruG5vSHVE1A6Z0UCBc90Jb4P//h31qG142fpHLCHVTd+tGUegsF?=
+ =?us-ascii?Q?akjzNQLE/pXRQvGvXAWSnaLBYVy2LCG4bRZwfgn7hOBIf+Noxm6XXgml6aK0?=
+ =?us-ascii?Q?uIkEKMXaqSlA4fjUSbFB5F/25I1cFjF+f15/9W5MBXvAhcbZVssjMeDfNBYn?=
+ =?us-ascii?Q?UAtMET+vI7xaGIs/07AGGiOQnbkshnruByUBCZJN30EhCQmQNOViDIw/mQqt?=
+ =?us-ascii?Q?+yGRe9vAwMy/Rc0WYJcGfdW8UHtQ+Vc3oqwhmVAaLdIvxu99LqoXGa1UtfqR?=
+ =?us-ascii?Q?av7X42kITw7/xIO0SUYlvPhTBSJzF97W7Mfczhr8skH5T8rhxY25ep7JIlbW?=
+ =?us-ascii?Q?m1jp9pHUKXWlpxibKNIVyhwmHgXYhkxTsmNjcWjbOFzVHJRH2vtIzu7dVRbz?=
+ =?us-ascii?Q?p4+MuK8aYICYCeQfTJnAq/JyKPfgASDzUSYbUmfQ9pCH54KKBj7lE/qlDnfl?=
+ =?us-ascii?Q?k+BxhIb0bAsHkP5EDQemjPibOGJxNOi2hE9NdMSH/8kcOgi532PZMi6DOlYC?=
+ =?us-ascii?Q?eqn2fYKS0kZj+Uofc2qPbXUyLfy4ONa3A8LKZjiLwtaTmZDrCWm2abLmQG5P?=
+ =?us-ascii?Q?LwAcWEjJGkrpzVnn0DwxgXBPFg3y2zRfqdqdATca6Q4nWCIdOI6TBDZlL3Rl?=
+ =?us-ascii?Q?+eYtgQCIavTZrdbtrQckJWU3t4y40jNSwKj3fIz0Ew9biPyIAYsIN5H62nJg?=
+ =?us-ascii?Q?4N9FoUqsftcj98ovcw5mqjDwMKLAFa3EKvJSciRu4a4Di/3oUSG5ZYj/H1cM?=
+ =?us-ascii?Q?Zj3a1LXhWu3PDkJr1Bw20xiygpOTid6MCzGH9za9fWt5+kdW8cJYh1qsj4Ei?=
+ =?us-ascii?Q?Nj+lukgZ5EroYZCM8/f8W+1Fo6y9Byk9XQr7OeUTsQlxyJb1VU5ryTiNDx4O?=
+ =?us-ascii?Q?sARdBxnmtVPkNPBMrZgadSf4DbFRwGuqb8JoOaJvnsRjfxZisOqhNe6dGmd1?=
+ =?us-ascii?Q?HJDXx33HcBtst58wBH33A7yWFOR+XTKRx2o2SPCJmwIx66q2m1JyNklzqSIL?=
+ =?us-ascii?Q?L6y7IFuukSMlXcOJveC18DQf5sjNmrwnETRBzEs0glbbMP1Vm1TW5VJ0PiiO?=
+ =?us-ascii?Q?fXybrOISCa44qdgoIky/m6f3ZGEK5RErms9Ti5Wc82uOf1unPXbH2wMc7E9X?=
+ =?us-ascii?Q?2PvP0w3Qi7HE+WqoIcxoGXYx7mRR+ypM78T6RKtgnW/KhpylwMoSD8/8d+Ia?=
+ =?us-ascii?Q?1nlMCHtwREEy1HUDHLlpct0WPGcyQfEQj1JwpTtL?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <9ff84a99-e500-625e-ba9d-20cd752d7ff4@akamai.com>
-X-Patchwork-Hint: comment
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed20d7a2-91ff-4047-8a95-08dabbe89b85
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Nov 2022 09:08:14.1748 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: i8AVMrweK8UHOGx6t1jpxcPvmdvRzonst8ys/I9Ce4dfq0OMg6vmjQd5jXT/2pvFw5BuRi671Gv2gFPoNBck0A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR11MB6252
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,181 +148,70 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: dri-devel@lists.freedesktop.org, jim.cromie@gmail.com,
- Greg KH <gregkh@linuxfoundation.org>, intel-gfx@lists.freedesktop.org,
- linux@rasmusvillemoes.dk, linux-kernel@vger.kernel.org,
- Jani Nikula <jani.nikula@linux.intel.com>, seanpaul@chromium.org,
- amd-gfx@lists.freedesktop.org, daniel.vetter@ffwll.ch, joe@perches.com,
- intel-gvt-dev@lists.freedesktop.org
+Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Joonas
+ Lahtinen <joonas.lahtinen@linux.intel.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, Halil
+ Pasic <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>, Jason Herne <jjherne@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, "Vivi,
+ Rodrigo" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Peter
+ Oberparleiter <oberpar@linux.ibm.com>, Sven Schnelle <svens@linux.ibm.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Oct 31, 2022 at 08:20:54PM -0400, Jason Baron wrote:
-> 
-> 
-> On 10/31/22 6:11 PM, jim.cromie@gmail.com wrote:
-> > On Mon, Oct 31, 2022 at 7:07 AM Ville Syrjälä
-> > <ville.syrjala@linux.intel.com> wrote:
-> >> On Sun, Oct 30, 2022 at 08:42:52AM -0600, jim.cromie@gmail.com wrote:
-> >>> On Thu, Oct 27, 2022 at 2:10 PM Ville Syrjälä
-> >>> <ville.syrjala@linux.intel.com> wrote:
-> >>>> On Thu, Oct 27, 2022 at 01:55:39PM -0600, jim.cromie@gmail.com wrote:
-> >>>>> On Thu, Oct 27, 2022 at 9:59 AM Ville Syrjälä
-> >>>>> <ville.syrjala@linux.intel.com> wrote:
-> >>>>>> On Thu, Oct 27, 2022 at 09:37:52AM -0600, jim.cromie@gmail.com wrote:
-> >>>>>>> On Thu, Oct 27, 2022 at 9:08 AM Jason Baron <jbaron@akamai.com> wrote:
-> >>>>>>>>
-> >>>>>>>>
-> >>>>>>>> On 10/21/22 05:18, Jani Nikula wrote:
-> >>>>>>>>> On Thu, 20 Oct 2022, Ville Syrjälä <ville.syrjala@linux.intel.com> wrote:
-> >>>>>>>>>> On Sat, Sep 24, 2022 at 03:02:34PM +0200, Greg KH wrote:
-> >>>>>>>>>>> On Sun, Sep 11, 2022 at 11:28:43PM -0600, Jim Cromie wrote:
-> >>>>>>>>>>>> hi Greg, Dan, Jason, DRM-folk,
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> heres follow-up to V6:
-> >>>>>>>>>>>>    rebased on driver-core/driver-core-next for -v6 applied bits (thanks)
-> >>>>>>>>>>>>    rework drm_debug_enabled{_raw,_instrumented,} per Dan.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> It excludes:
-> >>>>>>>>>>>>    nouveau parts (immature)
-> >>>>>>>>>>>>    tracefs parts (I missed --to=Steve on v6)
-> >>>>>>>>>>>>    split _ddebug_site and de-duplicate experiment (way unready)
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> IOW, its the remaining commits of V6 on which Dan gave his Reviewed-by.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> If these are good to apply, I'll rebase and repost the rest separately.
-> >>>>>>>>>>> All now queued up, thanks.
-> >>>>>>>>>> This stuff broke i915 debugs. When I first load i915 no debug prints are
-> >>>>>>>>>> produced. If I then go fiddle around in /sys/module/drm/parameters/debug
-> >>>>>>>>>> the debug prints start to suddenly work.
-> >>>>>>>>> Wait what? I always assumed the default behaviour would stay the same,
-> >>>>>>>>> which is usually how we roll. It's a regression in my books. We've got a
-> >>>>>>>>> CI farm that's not very helpful in terms of dmesg logging right now
-> >>>>>>>>> because of this.
-> >>>>>>>>>
-> >>>>>>>>> BR,
-> >>>>>>>>> Jani.
-> >>>>>>>>>
-> >>>>>>>>>
-> >>>>>>>> That doesn't sound good - so you are saying that prior to this change some
-> >>>>>>>> of the drm debugs were default enabled. But now you have to manually enable
-> >>>>>>>> them?
-> >>>>>>>>
-> >>>>>>>> Thanks,
-> >>>>>>>>
-> >>>>>>>> -Jason
-> >>>>>>>
-> >>>>>>> Im just seeing this now.
-> >>>>>>> Any new details ?
-> >>>>>> No. We just disabled it as BROKEN for now. I was just today thinking
-> >>>>>> about sending that patch out if no solutin is forthcoming soon since
-> >>>>>> we need this working before 6.1 is released.
-> >>>>>>
-> >>>>>> Pretty sure you should see the problem immediately with any driver
-> >>>>>> (at least if it's built as a module, didn't try builtin). Or at least
-> >>>>>> can't think what would make i915 any more special.
-> >>>>>>
-> >>>>> So, I should note -
-> >>>>> 99% of my time & energy on this dyndbg + drm patchset
-> >>>>> has been done using virtme,
-> >>>>> so my world-view (and dev-hack-test env) has been smaller, simpler
-> >>>>> maybe its been fatally simplistic.
-> >>>>>
-> >>>>> ive just rebuilt v6.0  (before the trouble)
-> >>>>> and run it thru my virtual home box,
-> >>>>> I didnt see any unfamiliar drm-debug output
-> >>>>> that I might have inadvertently altered somehow
-> >>>>>
-> >>>>> I have some real HW I can put a reference kernel on,0
-> >>>>> to look for the missing output, but its all gonna take some time,
-> >>>>> esp to tighten up my dev-test-env
-> >>>>>
-> >>>>> in the meantime, there is:
-> >>>>>
-> >>>>> config DRM_USE_DYNAMIC_DEBUG
-> >>>>> bool "use dynamic debug to implement drm.debug"
-> >>>>> default y
-> >>>>> depends on DRM
-> >>>>> depends on DYNAMIC_DEBUG || DYNAMIC_DEBUG_CORE
-> >>>>> depends on JUMP_LABEL
-> >>>>> help
-> >>>>>    Use dynamic-debug to avoid drm_debug_enabled() runtime overheads.
-> >>>>>    Due to callsite counts in DRM drivers (~4k in amdgpu) and 56
-> >>>>>    bytes per callsite, the .data costs can be substantial, and
-> >>>>>    are therefore configurable.
-> >>>>>
-> >>>>> Does changing the default fix things for i915 dmesg ?
-> >>>> I think we want to mark it BROKEN in addition to make sure no one
-> >>> Ok, I get the distinction now.
-> >>> youre spelling that
-> >>>    depends on BROKEN
-> >>>
-> >>> I have a notional explanation, and a conflating commit:
-> >>>
-> >>> can you eliminate
-> >>> git log -p ccc2b496324c13e917ef05f563626f4e7826bef1
-> >>>
-> >>> as the cause ?
-> >> Reverting that doesn't help.
-> >>
-> > thanks for eliminating it.
-> >
-> >>> I do need to clarify, I dont know exactly what debug/logging output
-> >>> is missing such that CI is failing
-> >> CI isn't failing. But any logs it produces are 100% useless,
-> >> as are any user reported logs.
-> >>
-> >> The debugs that are missing are anything not coming directly
-> >> from drm.ko.
-> >>
-> >> The stuff that I see being printed by i915.ko are drm_info()
-> >> and the drm_printer stuff from i915_welcome_messages(). That
-> >> also implies that drm_debug_enabled(DRM_UT_DRIVER) does at
-> >> least still work correctly.
-> >>
-> >> I suspect that the problem is just that the debug calls
-> >> aren't getting patched in when a module loads. And fiddling
-> >> with the modparam after the fact does trigger that somehow.
-> >>
-> > ok, heres the 'tape' of a virtme boot,
-> > then modprobe going wrong.
-> >
-> > [    1.785873] dyndbg:   2 debug prints in module intel_rapl_msr
-> > [    2.040598] virtme-init: udev is done
-> > virtme-init: console is ttyS0
-> >
-> >> load drm driver
-> > bash-5.2# modprobe i915
-> >
-> >> drm module is loaded 1st
-> > [    6.549451] dyndbg: add-module: drm.302 sites
-> > [    6.549991] dyndbg: class[0]: module:drm base:0 len:10 ty:0
-> > [    6.550647] dyndbg:  0: 0 DRM_UT_CORE
-> > [    6.551097] dyndbg:  1: 1 DRM_UT_DRIVER
-> > [    6.551531] dyndbg:  2: 2 DRM_UT_KMS
-> > [    6.551931] dyndbg:  3: 3 DRM_UT_PRIME
-> > [    6.552402] dyndbg:  4: 4 DRM_UT_ATOMIC
-> > [    6.552799] dyndbg:  5: 5 DRM_UT_VBL
-> > [    6.553270] dyndbg:  6: 6 DRM_UT_STATE
-> > [    6.553634] dyndbg:  7: 7 DRM_UT_LEASE
-> > [    6.554043] dyndbg:  8: 8 DRM_UT_DP
-> > [    6.554392] dyndbg:  9: 9 DRM_UT_DRMRES
-> > [    6.554776] dyndbg: module:drm attached 1 classes
-> > [    6.555241] dyndbg: 302 debug prints in module drm
-> >
-> >> here modprobe reads /etc/modprobe.d/drm-test.conf:
-> > options drm dyndbg="class DRM_UT_CORE +p; class DRM_UT_DRIVER +p"
-> > and dyndbg applies it
-> 
-> Hi,
-> 
-> I'm a bit confused with this. My understanding is that there
-> is a 'regression' here from how this used to work. But the
-> 'class' keyword is new - are we sure this is the command-line
-> we are trying to fix?
+> From: Eric Farman <farman@linux.ibm.com>
+> Sent: Thursday, October 20, 2022 12:22 AM
+>=20
+> @@ -101,15 +101,20 @@ static int vfio_ccw_mdev_probe(struct
+> mdev_device *mdev)
+>  {
+>  	struct subchannel *sch =3D to_subchannel(mdev->dev.parent);
+>  	struct vfio_ccw_parent *parent =3D dev_get_drvdata(&sch->dev);
+> -	struct vfio_ccw_private *private =3D dev_get_drvdata(&parent->dev);
+> +	struct vfio_ccw_private *private;
+>  	int ret;
+>=20
+> -	if (private->state =3D=3D VFIO_CCW_STATE_NOT_OPER)
+> -		return -ENODEV;
 
-The thing we need fixed is just the bog standard drm.debug=0xe etc.
+Not familiar with ccw but just want to double confirm this removal
+is intentional w/o side-effect?
 
--- 
-Ville Syrjälä
-Intel
+> +	private =3D vfio_ccw_alloc_private(sch);
+> +	if (!private)
+> +		return -ENOMEM;
+>=20
+>  	ret =3D vfio_init_device(&private->vdev, &mdev->dev,
+> &vfio_ccw_dev_ops);
+> -	if (ret)
+> +	if (ret) {
+> +		kfree(private);
+>  		return ret;
+> +	}
+> +
+> +	dev_set_drvdata(&parent->dev, private);
+>=20
+>  	VFIO_CCW_MSG_EVENT(2, "sch %x.%x.%04x: create\n",
+>  			   sch->schid.cssid,
+> @@ -123,6 +128,7 @@ static int vfio_ccw_mdev_probe(struct mdev_device
+> *mdev)
+>  	return 0;
+>=20
+>  err_put_vdev:
+> +	dev_set_drvdata(&parent->dev, NULL);
+
+No need to set drvdata to NULL, iiuc
