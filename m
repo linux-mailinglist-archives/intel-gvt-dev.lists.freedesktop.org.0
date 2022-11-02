@@ -1,56 +1,88 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69F2C6160CE
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 11:30:11 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0805C616590
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 16:02:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DBB9E10E149;
-	Wed,  2 Nov 2022 10:30:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D251610E4C9;
+	Wed,  2 Nov 2022 15:02:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ed1-x541.google.com (mail-ed1-x541.google.com
- [IPv6:2a00:1450:4864:20::541])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5D69010E46A
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  2 Nov 2022 10:30:05 +0000 (UTC)
-Received: by mail-ed1-x541.google.com with SMTP id u24so16492713edd.13
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 02 Nov 2022 03:30:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=7Ky+dbtIrITRG/XXLQmZRQZRmXG3u5PQnD5MxyT1tYc=;
- b=euRKhPaSWUBfQc/aD0qzLUGCrOZ94vU0dPnslkWjsfdvbED1EBoaG4tb/ZrMYs/7hL
- S2YAeC9x8O3CWVkxqGVWT0djyFxSQnuBKW8qCZVS0bVqrRzCSdO2iNiD98MU4ThFb/FC
- HWIHmnmubjdh/Q+yngE23F43w+pojPuz06vLSX0OxAL+E5ex1dnrFI5Z3A0yIZ05h99y
- 0hK2uLAavg6c3/BNwQzMAwk2T1HaY3qVQYLD0Kb4jj9do2ioACWE3NFaTV/0gp3Gr+BR
- +tYFHuPeYvxH/0RXFh9lXJnWEwdBB/z0PAXoKZyI/aFA6hxEjOt83L2C9hGdv+nH+nFs
- BROA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=7Ky+dbtIrITRG/XXLQmZRQZRmXG3u5PQnD5MxyT1tYc=;
- b=gIJPT9SZK5Ilc2gnD00mACa1yPrr1jZlremK+oFZ4aKmcWAmW1CFC5VymOnLWF3XpF
- ATwcBq+PpbCV3J307KSmUlKAzIB5avgirw19M53GeDl1bMyLkKFCT6GZhYEAMn6LrjIo
- wyCxQYRTNLA5VRXPzW/d00EpQPOMPJxnLtSS90+hZiuWbr+VYxxUgovSTWchUy0NErOh
- 7l8w6q5Law3iGtYDYTs8E89DXwedYtc0KWQX+4fI0sWbH763UdddRW4gq1xEQb8D1lpA
- Kr5D6p6Ds1/jRqMYYeOOz5dYwGqddUjCJSa1iHmYXIpBqY5S12BzeKXErtp7wunUfk0/
- GwWQ==
-X-Gm-Message-State: ACrzQf2v0vkYxJKf/NG6qXW/TorG99vbFJpxB6BJXfW/cqb0AoizQ2qX
- nwsunu3J7BGw3FsaSESDHo0UNYl8Cwg87rqsQ1w=
-X-Google-Smtp-Source: AMsMyM5hU+gOGrpIO+rCejE0gT+pE0KS+Bp72EasALj1RXSwdeePqhyaGggilrFCu8LTBYfFGK6YH/wfgBz7CIPVY5U=
-X-Received: by 2002:a50:fe99:0:b0:45c:329a:40f6 with SMTP id
- d25-20020a50fe99000000b0045c329a40f6mr23975415edt.425.1667385003237; Wed, 02
- Nov 2022 03:30:03 -0700 (PDT)
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0069510E4B5;
+ Wed,  2 Nov 2022 15:02:10 +0000 (UTC)
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2A2DnJ1C025757;
+ Wed, 2 Nov 2022 15:02:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : content-transfer-encoding : mime-version; s=pp1;
+ bh=UB/R2lgefHPHQSvdUiaAq3ILQiFWcLwsNx4+zmWhhIk=;
+ b=HEX9/r0SygZ8TgGETmJhlnB/H7l18W8JWWZbeZI5fR3gbjkBX0L4oDxMCVVVJ68n0ZTb
+ c7pNw5485XMaFKGhsSyo9QqM3P8HsubfzVJiWT97MsXQD3ORmkh7kZ4/5CLyMGZWTXMW
+ nJWBRFXSYDsqC/po6x+TfRNOImBIXRFIyG0vEoUIG3ycWtDFo5UWMbdvp+JLOrAPynCB
+ 55JSmYBekMDX5IgZX5XjCWGu1L7m7xp37Sj3fzIAQ3QcWwbZZfPAAA7/s6Ll/XfW5rVw
+ FKHs5YyEmUZPuJsbtkApbY+Nm7/gNRad0SHl4jiREAQyMiuewr2Q0C6m+mssrdb5qi6I aA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kkss6b9en-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 02 Nov 2022 15:02:02 +0000
+Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 2A2DnKsm025848;
+ Wed, 2 Nov 2022 15:02:02 GMT
+Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.99])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kkss6b9cr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 02 Nov 2022 15:02:01 +0000
+Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
+ by ppma04ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 2A2EosbR017404;
+ Wed, 2 Nov 2022 15:01:57 GMT
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+ (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+ by ppma04ams.nl.ibm.com with ESMTP id 3kgut9706a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 02 Nov 2022 15:01:57 +0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 2A2F1sXs25559570
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 2 Nov 2022 15:01:54 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 21EE152052;
+ Wed,  2 Nov 2022 15:01:54 +0000 (GMT)
+Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTPS id 0BD955204F;
+ Wed,  2 Nov 2022 15:01:54 +0000 (GMT)
+Received: by tuxmaker.boeblingen.de.ibm.com (Postfix, from userid 4958)
+ id C9E6BE01BC; Wed,  2 Nov 2022 16:01:53 +0100 (CET)
+From: Eric Farman <farman@linux.ibm.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Kevin Tian <kevin.tian@intel.com>, Yi Liu <yi.l.liu@intel.com>
+Subject: [PATCH v2 0/7] vfio-ccw parent rework
+Date: Wed,  2 Nov 2022 16:01:45 +0100
+Message-Id: <20221102150152.2521475-1-farman@linux.ibm.com>
+X-Mailer: git-send-email 2.34.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: giE1FvulF18FIx78kR1PLtIr11DWW1b8
+X-Proofpoint-ORIG-GUID: ld2AgWS6yzQppxgLjXXl59g3Tl71O3Gi
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-From: "Mrs. Johanna Maaly Bob" <johannamaalybob01@gmail.com>
-Date: Wed, 2 Nov 2022 10:29:42 +0000
-Message-ID: <CACU_cZ_iZHN+2e5j9=LYjFFhXMcpsX=L4YsRw271p5bk7713vg@mail.gmail.com>
-Subject: Hello Dear,
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000d2639105ec7a5235"
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-11-02_11,2022-11-02_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0
+ priorityscore=1501 mlxscore=0 clxscore=1015 impostorscore=0 bulkscore=0
+ lowpriorityscore=0 suspectscore=0 phishscore=0 malwarescore=0 adultscore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2210170000 definitions=main-2211020093
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,25 +95,104 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
+ linux-s390@vger.kernel.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000d2639105ec7a5235
-Content-Type: text/plain; charset="UTF-8"
+Hi all,
 
-Hello Dear, I was wondering if you received my email a couple of Days ago?
-I would like to have a personal discussion with you. Please give me a quick
-reply.
-Yours sincerely,
-Mrs. Johanna Maaly Bob,
+Here is an update to the vfio-ccw lifecycle changes that have been discussed
+in various forms over the past year [1][2] or so, and which I dusted off
+recently.
 
---000000000000d2639105ec7a5235
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Patches 1-5 rework the behavior of the vfio-ccw driver's private struct.
+In summary, the mdev pieces are split out of vfio_ccw_private and into a
+new vfio_ccw_parent struct that will continue to follow today's lifecycle.
+The remainder (bulk) of the private struct moves to follow the mdev
+probe/remove pair. There's opportunity for further separation of the
+things in the private struct, which would simplify some of the vfio-ccw
+code, but it got too hairy as I started that. Once vfio-ccw is no longer
+considered unique, those cleanups can happen at our leisure. 
 
-<div dir=3D"ltr">Hello Dear, I was wondering if you received my email a cou=
-ple of Days ago?=C2=A0 I would like to have a personal discussion with you.=
- Please give me a quick reply.<br>Yours sincerely,<br>Mrs. Johanna Maaly Bo=
-b,<br></div>
+Patch 6 removes the trickery where vfio-ccw uses vfio_init_device instead of
+vfio_alloc_device, and thus removes vfio_init_device from the outside world.
 
---000000000000d2639105ec7a5235--
+Patch 7 removes vfio_free_device from vfio-ccw and the other drivers (hello,
+CC list!), letting it be handled by vfio_device_release directly.
+
+Looking forward to the feedback.
+
+Thanks,
+Eric
+
+[1] https://lore.kernel.org/kvm/0-v3-57c1502c62fd+2190-ccw_mdev_jgg@nvidia.com/
+[2] https://lore.kernel.org/kvm/20220602171948.2790690-1-farman@linux.ibm.com/
+
+v1->v2:
+ - Rebase to 6.1-rc3
+ - Patch 1:
+   [EF] s/device_initialize/device_register/ and associated adjustments
+   [MR] Add WARN_ON(!private) in vfio_ccw_sch_quiesce()
+   [MR] Move struct vfio_ccw_parent to _private.h, instead of standalone file
+ - Patch 2:
+   [MR] Added r-b (Thank you!)
+ - Patch 3:
+   [MR] Update commit message to point to introduction of private->release_comp
+   [MR] Replace the remnants of vfio_ccw_alloc_private with a straight kzalloc
+   [MR] Added r-b (Thank you!)
+ - Patch 5:
+   [KT] Added r-b (Thank you!)
+ - Patch 6:
+   [JG] Make vfio_init_device static
+   [KT] Added r-b (Thank you!)
+ - Patch 7:
+   [JG, KT] Added r-b (Thank you!)
+v1: https://lore.kernel.org/kvm/20221019162135.798901-1-farman@linux.ibm.com/
+
+Eric Farman (7):
+  vfio/ccw: create a parent struct
+  vfio/ccw: remove private->sch
+  vfio/ccw: move private initialization to callback
+  vfio/ccw: move private to mdev lifecycle
+  vfio/ccw: remove release completion
+  vfio/ccw: replace vfio_init_device with _alloc_
+  vfio: Remove vfio_free_device
+
+ drivers/gpu/drm/i915/gvt/kvmgt.c      |   1 -
+ drivers/s390/cio/vfio_ccw_chp.c       |   5 +-
+ drivers/s390/cio/vfio_ccw_drv.c       | 174 +++++++++++---------------
+ drivers/s390/cio/vfio_ccw_fsm.c       |  27 ++--
+ drivers/s390/cio/vfio_ccw_ops.c       | 107 +++++++++++-----
+ drivers/s390/cio/vfio_ccw_private.h   |  37 ++++--
+ drivers/s390/crypto/vfio_ap_ops.c     |   6 -
+ drivers/vfio/fsl-mc/vfio_fsl_mc.c     |   1 -
+ drivers/vfio/pci/vfio_pci_core.c      |   1 -
+ drivers/vfio/platform/vfio_amba.c     |   1 -
+ drivers/vfio/platform/vfio_platform.c |   1 -
+ drivers/vfio/vfio_main.c              |  32 ++---
+ include/linux/vfio.h                  |   3 -
+ samples/vfio-mdev/mbochs.c            |   1 -
+ samples/vfio-mdev/mdpy.c              |   1 -
+ samples/vfio-mdev/mtty.c              |   1 -
+ 16 files changed, 197 insertions(+), 202 deletions(-)
+
+-- 
+2.34.1
+
