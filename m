@@ -2,57 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 924A761663D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 16:33:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9B36616847
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 17:19:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1CF4B10E49F;
-	Wed,  2 Nov 2022 15:33:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5D47A10E4FC;
+	Wed,  2 Nov 2022 16:19:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AB17510E4A9
+X-Greylist: delayed 602 seconds by postgrey-1.36 at gabe;
+ Wed, 02 Nov 2022 16:19:01 UTC
+Received: from ns.cqwrx.top (unknown [138.113.0.13])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2660810E4FC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  2 Nov 2022 15:33:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1667403227;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=OypQqLWai0VaMJwiQgOKKG3cobC5fKhMwKsuUswxphk=;
- b=U5sd106iKYbX6exfi7qSKweE4yH8smdLtVqFnFGytW3/RmqCnF4IFm4nUP7lW4eNwtNVdG
- fjYtH0wUzl4NzKg7wGQ8BStsp3MB+XahZhonfTS0Q4leJ2bWCbZRuJ1IVaLbyHWtwOOOCK
- RFXD1Yg0cNzGU+1YFWj6gZMf1L5e7oI=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-210-ywcGUWlbNua3SadPps_K9w-1; Wed, 02 Nov 2022 11:33:42 -0400
-X-MC-Unique: ywcGUWlbNua3SadPps_K9w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2C0D91C0A589;
- Wed,  2 Nov 2022 15:33:36 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 917E71121339;
- Wed,  2 Nov 2022 15:33:35 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Eric Farman <farman@linux.ibm.com>, Matthew Rosato
- <mjrosato@linux.ibm.com>, Alex Williamson <alex.williamson@redhat.com>,
- Jason Gunthorpe <jgg@nvidia.com>, Kevin Tian <kevin.tian@intel.com>, Yi
- Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v2 7/7] vfio: Remove vfio_free_device
-In-Reply-To: <20221102150152.2521475-8-farman@linux.ibm.com>
-Organization: Red Hat GmbH
-References: <20221102150152.2521475-1-farman@linux.ibm.com>
- <20221102150152.2521475-8-farman@linux.ibm.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Wed, 02 Nov 2022 16:33:34 +0100
-Message-ID: <87pme5s75d.fsf@redhat.com>
+ Wed,  2 Nov 2022 16:19:00 +0000 (UTC)
+Received: by ns.cqwrx.top for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 3 Nov 2022 00:08:55 +0800 (envelope-from <no-reply@cqwrx.top>)
+Date: Wed, 02 Nov 2022 16:08:55 GMT
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: "The Queen of?thanksgiving day?."
+From: "RB-USA® Outlets"<no-reply@cqwrx.top>
+Message-Id: <7d2759cc-63a9-4fbb-81d6-a241b11eff4f@cqwrx.top>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Content-Type: text/html; charset=UTF-8
+X-Priority: 2
+X-Spam-Score: 1
+ReturnReceipt: 1
+DKIM-Signature: v=DKIM1; k=rsa;
+ p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDKq7aHbW/OhhdfiTN6r3NpmX7FJhI2VQacWhdFp0ba9DvjoQZPi9qMVnvEu5yf/Aa67VdKjV3ogOybizutaw98rZjl33XIccfGqettSUy/yboc2m4j5yrZlUYfpRpPZcyxbULpebpfIfuVuEZd9poweiVlZ6xr3os5RvkX84AXwQIDAQAB
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,51 +41,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
- linux-s390@vger.kernel.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Nov 02 2022, Eric Farman <farman@linux.ibm.com> wrote:
-
-> With the "mess" sorted out, we should be able to inline the
-> vfio_free_device call introduced by commit cb9ff3f3b84c
-> ("vfio: Add helpers for unifying vfio_device life cycle")
-> and remove them from driver release callbacks.
->
-> Signed-off-by: Eric Farman <farman@linux.ibm.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> ---
->  drivers/gpu/drm/i915/gvt/kvmgt.c      |  1 -
->  drivers/s390/cio/vfio_ccw_ops.c       |  2 --
->  drivers/s390/crypto/vfio_ap_ops.c     |  6 ------
->  drivers/vfio/fsl-mc/vfio_fsl_mc.c     |  1 -
->  drivers/vfio/pci/vfio_pci_core.c      |  1 -
->  drivers/vfio/platform/vfio_amba.c     |  1 -
->  drivers/vfio/platform/vfio_platform.c |  1 -
->  drivers/vfio/vfio_main.c              | 22 ++++------------------
->  include/linux/vfio.h                  |  1 -
->  samples/vfio-mdev/mbochs.c            |  1 -
->  samples/vfio-mdev/mdpy.c              |  1 -
->  samples/vfio-mdev/mtty.c              |  1 -
->  12 files changed, 4 insertions(+), 35 deletions(-)
-
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>RayBan@Sunglasses</title>
+</head>
+<body>
+<table width="530" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Arial, Helvetica, sans-serif; border:1px solid #282F39;">
+  <tr>
+    <td bgcolor="#282F39" style="font-size:40px; padding:10px 20px; text-align:center; line-height:25px; letter-spacing:1px;">
+    <span style="display:block; font-size:14px; text-align:left; color:#DCC1A4; margin-bottom:15px;">
+        	Having trouble reading this email? <a style="color:#DCC1A4;" href="https://subscriber.ytliyuan.com/SubscribeClick?be=rb&xvy=intel-gvt-dev@lists.freedesktop.org&ux4aazr23=&usic p=jazz music playing in the back" target="_blank">View it in your browser</a>. <br>
+        	Not interested anymore? <a style="color:#DCC1A4;" href="https://subscriber.zjgyxtfl.com/Uns?be=rb&xvy=intel-gvt-dev@lists.freedesktop.org&ux4aazr23=&usic p=jazz music playing in the back" target="_blank">Unsubscribe instantly</a>. <a style="color:#000;" href="https://subscriber.xjnfr.com/Spam?name=rb&xvy=intel-gvt-dev@lists.freedesktop.org&ux4aazr23=&usic p=jazz music playing in the back" target="_blank"><font color="red">SPAM</font></a>
+        </span>
+    <a href="https://subscriber.ytliyuan.com/SubscribeClick?be=rb&xvy=intel-gvt-dev@lists.freedesktop.org&ux4aazr23=&usic p=jazz music playing in the back"  target="_blank" style="text-decoration:none;color:#EAD0B5;">RayBan@Sunglasses</a></td>
+  </tr>
+  <tr>
+    <td align="center" style=" border:20px solid #DCC1A4;"  bgcolor="#DCC1A4">
+    	<table width="445" border="0" align="center" cellpadding="0" cellspacing="5" style="display:block;border:7px solid #952C28;">
+          <tr>
+            <td colspan="2" bgcolor="#EAD0B5" align="center" style=" padding:10px 0; border:1px solid #282F39;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td bgcolor="#E9821B" align="center" style="font-size:50px; font-weight:bold; padding:10px 0; border:1px solid #282F39;color:#EAD0B5;-webkit-text-stroke:2px #E9821B; text-shadow:-4px 3px #EAD0B5;">Happy Halloween</td>
+            <td bgcolor="#E9821B" align="center" style="font-size:25px; padding:10px; border:1px solid #282F39; text-shadow:0 0 2px #EAD0B5;color:2C2825; letter-spacing:-3px; ">LIMITED TIME<br>SALE GOING<br>ON NOW!</td>
+          </tr>
+          <tr>
+            <td bgcolor="#E9821B" align="center" style="font-size:110px; font-weight:bold; letter-spacing:-5px; padding:10px 0; border:1px solid #282F39;color:#2C2825;-webkit-text-stroke:2px #E9821B; text-shadow:-4px 3px #2C2825;">SALE</td>
+            <td bgcolor="#E9821B" align="center" style="font-size:30px; font-weight:bold; padding:10px; border:1px solid #282F39;color:#EAD0B5;">UP TO<br><strong style="font-size:60px;-webkit-text-stroke:2px #E9821B; text-shadow:-4px 3px #EAD0B5;">90%</strong><br>OFF</td>
+          </tr>
+        </table>
+    </td>
+   </tr>
+  <tr>
+    <td bgcolor="#282F39" style="font-size:14px; color:#EAD0B5; padding:5px 0; text-align:center; line-height:25px; letter-spacing:1px;">
+<span style="display:block; width:100%; margin:5px auto 0; letter-spacing:1px;">Follow us for Exclusive Deals </span>
+            <span style="font-size:14px; line-height:25px; margin:10px 0; display:block; letter-spacing:1.5px;">Copyright @ 2022 <a href="https://subscriber.ytliyuan.com/SubscribeClick?be=rb&xvy=intel-gvt-dev@lists.freedesktop.org&ux4aazr23=&usic p=jazz music playing in the back" target="_blank" style="text-decoration:none; color:#EAD0B5;">RB-USA® Sunglasses</a>. All Rights Reserved.</span></td>
+  </tr>
+</table>
+<span style="width:0px;height:0px"><img src="https://subscriber.lndkhb.com/Subscribe?be=rb&xvy=intel-gvt-dev@lists.freedesktop.org&ux4aazr23=&ll=1aec96d9bf06874a0f0ddfef5b55a142" width="1" alt="" style="border:none"></span></body>
+</html>
