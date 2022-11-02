@@ -1,45 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBD5661684E
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 17:19:39 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 924A761663D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 16:33:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9DD6F10E4FC;
-	Wed,  2 Nov 2022 16:19:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1CF4B10E49F;
+	Wed,  2 Nov 2022 15:33:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3871 seconds by postgrey-1.36 at gabe;
- Wed, 02 Nov 2022 16:19:34 UTC
-Received: from jqyctkuu.bloodypenguin.com (jqyctkuu.bloodypenguin.com
- [85.217.145.140])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C4EB110E4FC;
- Wed,  2 Nov 2022 16:19:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=bloodypenguin.com; s=mail; h=Message-ID:Reply-To:From:Date:
- Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:To:Sender:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=voOWTzJZLUX8IUBZjqzoBr03FsXHpfHDHnW6vlUxzzk=; b=QZh1qDB3VDMhaD1Nysz2Ew1Km
- xm4/ezdwVq17pveLyeAoFMO6CZ25pnC+umPLVKwOjO7SVc35xxS0QXx8O2hdGuf8pTNCyg70Dq7yD
- VC0tE/tB7nF4ny969i8nZ8pasU7iaF4DJ9834tQobRrNlh55Z0XHsoEJvF0CWCzxGFrCo=;
-Received: from admin by jqyctkuu.bloodypenguin.com with local (Exim 4.92.3)
- (envelope-from <rhe.cra@bloodypenguin.com>)
- id 1oqFJK-000142-Eb; Wed, 02 Nov 2022 15:05:46 +0000
-To: undisclosed-recipients:;
-Subject: FROM IMF RECONCILIATION COMMITTEE
-X-PHP-Originating-Script: 0:rcube.php
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AB17510E4A9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  2 Nov 2022 15:33:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1667403227;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=OypQqLWai0VaMJwiQgOKKG3cobC5fKhMwKsuUswxphk=;
+ b=U5sd106iKYbX6exfi7qSKweE4yH8smdLtVqFnFGytW3/RmqCnF4IFm4nUP7lW4eNwtNVdG
+ fjYtH0wUzl4NzKg7wGQ8BStsp3MB+XahZhonfTS0Q4leJ2bWCbZRuJ1IVaLbyHWtwOOOCK
+ RFXD1Yg0cNzGU+1YFWj6gZMf1L5e7oI=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-210-ywcGUWlbNua3SadPps_K9w-1; Wed, 02 Nov 2022 11:33:42 -0400
+X-MC-Unique: ywcGUWlbNua3SadPps_K9w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2C0D91C0A589;
+ Wed,  2 Nov 2022 15:33:36 +0000 (UTC)
+Received: from localhost (unknown [10.39.194.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 917E71121339;
+ Wed,  2 Nov 2022 15:33:35 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Eric Farman <farman@linux.ibm.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>, Alex Williamson <alex.williamson@redhat.com>,
+ Jason Gunthorpe <jgg@nvidia.com>, Kevin Tian <kevin.tian@intel.com>, Yi
+ Liu <yi.l.liu@intel.com>
+Subject: Re: [PATCH v2 7/7] vfio: Remove vfio_free_device
+In-Reply-To: <20221102150152.2521475-8-farman@linux.ibm.com>
+Organization: Red Hat GmbH
+References: <20221102150152.2521475-1-farman@linux.ibm.com>
+ <20221102150152.2521475-8-farman@linux.ibm.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Wed, 02 Nov 2022 16:33:34 +0100
+Message-ID: <87pme5s75d.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Wed, 02 Nov 2022 16:05:46 +0100
-From: Steve Collins <rhe.cra@bloodypenguin.com>
-Mail-Reply-To: myprivamailsj301@gmail.com
-Message-ID: <52d0da268b36136092f854b219c2b223@bloodypenguin.com>
-X-Sender: rhe.cra@bloodypenguin.com
-User-Agent: Roundcube Webmail/1.0.12
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,36 +65,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: myprivamailsj301@gmail.com
+Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
+ linux-s390@vger.kernel.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Abhishek Sahu <abhsahu@nvidia.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+On Wed, Nov 02 2022, Eric Farman <farman@linux.ibm.com> wrote:
 
+> With the "mess" sorted out, we should be able to inline the
+> vfio_free_device call introduced by commit cb9ff3f3b84c
+> ("vfio: Add helpers for unifying vfio_device life cycle")
+> and remove them from driver release callbacks.
+>
+> Signed-off-by: Eric Farman <farman@linux.ibm.com>
+> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/kvmgt.c      |  1 -
+>  drivers/s390/cio/vfio_ccw_ops.c       |  2 --
+>  drivers/s390/crypto/vfio_ap_ops.c     |  6 ------
+>  drivers/vfio/fsl-mc/vfio_fsl_mc.c     |  1 -
+>  drivers/vfio/pci/vfio_pci_core.c      |  1 -
+>  drivers/vfio/platform/vfio_amba.c     |  1 -
+>  drivers/vfio/platform/vfio_platform.c |  1 -
+>  drivers/vfio/vfio_main.c              | 22 ++++------------------
+>  include/linux/vfio.h                  |  1 -
+>  samples/vfio-mdev/mbochs.c            |  1 -
+>  samples/vfio-mdev/mdpy.c              |  1 -
+>  samples/vfio-mdev/mtty.c              |  1 -
+>  12 files changed, 4 insertions(+), 35 deletions(-)
 
--- 
-IMF RECONCILIATION COMMITTEE
-FILE NUMBER: NBS/WH35140
-Our Ref: UN/ANT/UAL
-Your Ref: ING/IMF/807
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
-Attention: Beneficiary
-
-This is to officially notify you that the International Monetary Fund 
-(IMF) together with the US Federal Reserve is compensating all the scam 
-victims with the sum of US$1,000 000.00(One Million United States 
-Dollars) each and your email address was found among the scam victims 
-list that's why we are contacting you. We have deposited your fund at 
-the payment director/agent location where the investigation started.
-Reconfirm the below information to us to be sure of the person we are 
-paying and to update your files.
-Your full name:
-Address:
-Age:
-Occupation:
-Contact telephone number:
-Upon the receipt of the above information more details will be given to 
-you.
-Yours Sincerely.
-Steve Collins
-IMF Investigation Officer.
-Yuba City California USA.
