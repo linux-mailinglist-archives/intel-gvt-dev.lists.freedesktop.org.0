@@ -1,94 +1,91 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31D57616AEA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 18:38:22 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74A59616DD2
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  2 Nov 2022 20:29:23 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C83D410E530;
-	Wed,  2 Nov 2022 17:38:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6FA6010E5C8;
+	Wed,  2 Nov 2022 19:29:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
  [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E99D110E52D;
- Wed,  2 Nov 2022 17:38:15 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6C47210E5B6;
+ Wed,  2 Nov 2022 19:29:13 +0000 (UTC)
 Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2A2GkWwa016761;
- Wed, 2 Nov 2022 17:37:03 GMT
+ by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2A2InUjZ016746;
+ Wed, 2 Nov 2022 19:29:09 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=POyXG4IlPm7jFx0Q3uWwEGhl5QQ7jk6OxguwZ8ZA4tY=;
- b=s8a8jqhsF3HQPAMYsT7L5qFRWtZxgtttvcU6nISmwAZ5ayhpcZo8hVwaOQNTney41B5Y
- YyCt1Hgm88yPxMt25ksaZHtuD8BMpsS/vvuNGp6644VD2KOjqWwVdMn4zRl0MbUi2ofz
- fjh5xcvb4jktiesw/kRO1TYiw85+QQs9vLiy3Q0w7jgx4W9cEEY7BlhJ1SZesNkbK3kA
- beT4JGJr1vpKuJeM+SpEK6LYDor+goWr8CFIelH45vnE+yiLyxt61788GlUcYfnXHFOa
- SS67aRGGOLZ+vC66Nj1aVbxoaO/0IRIS7pspv7wa3V8RtOk2lTL9ZjrWBC1nRz7NTJqH 4Q== 
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=r6OtmaXLBdyHRPuL2RE6D7xoZYLlR5v/PGvxOOk7Z+Q=;
+ b=CePBDW5imyIcEstRzL/UhDSow6SvFMrZ9kWMqcmHB62Dzm9+0UbfzzdvPBT0cPKpeMrt
+ kQcf2RGwXUwQWNvShvHPGZynhvPvwhrCr7u1RkDSEBqyegOhn8kM6knckwib7jPEgYm7
+ Nal+PmPqe2V1VAh4i3yGeBlDpc+NxpaCIUwAHDYmdbAbpvKOB4p6q3CqtY8E9Y5LOr9A
+ KLi4HbEqRUseDK1WBkpJTDDWw81DE/uJChO6KMGEkMaDqg5OwbhqXicEbMns69SqvE/T
+ /0VQCd8ZO5iTsEFWf+HWr8myJAnlOdAkNBsFZgLxPAH1pT4T7ayve5wGcunn9nVasQIM AA== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kktn0dwgv-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kktn0hqp9-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 02 Nov 2022 17:37:03 +0000
+ Wed, 02 Nov 2022 19:29:08 +0000
 Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 2A2FijWj003373;
- Wed, 2 Nov 2022 17:37:02 GMT
-Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com
- [169.63.121.186])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kktn0dwfx-1
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 2A2HjJnI021116;
+ Wed, 2 Nov 2022 19:29:08 GMT
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.10])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3kktn0hqnv-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 02 Nov 2022 17:37:02 +0000
-Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
- by ppma03wdc.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 2A2HaOsU023671;
- Wed, 2 Nov 2022 17:37:00 GMT
-Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
- [9.57.198.23]) by ppma03wdc.us.ibm.com with ESMTP id 3kgut9v73u-1
+ Wed, 02 Nov 2022 19:29:08 +0000
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+ by ppma02dal.us.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 2A2JKpcY014583;
+ Wed, 2 Nov 2022 19:29:07 GMT
+Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
+ [9.57.198.29]) by ppma02dal.us.ibm.com with ESMTP id 3kgutaktys-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 02 Nov 2022 17:37:00 +0000
-Received: from smtpav06.wdc07v.mail.ibm.com ([9.208.128.115])
- by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 2A2HaxKn63767026
+ Wed, 02 Nov 2022 19:29:07 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com ([9.208.128.117])
+ by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 2A2JT5n710158610
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 2 Nov 2022 17:37:00 GMT
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 420F95803F;
- Wed,  2 Nov 2022 17:36:59 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7CFF858067;
- Wed,  2 Nov 2022 17:36:55 +0000 (GMT)
-Received: from [9.160.188.120] (unknown [9.160.188.120])
- by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Wed,  2 Nov 2022 17:36:55 +0000 (GMT)
-Message-ID: <4a39ccf9-4201-47eb-fb4a-94a9b8b29312@linux.ibm.com>
-Date: Wed, 2 Nov 2022 13:36:54 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 7/7] vfio: Remove vfio_free_device
-Content-Language: en-US
-To: Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Kevin Tian <kevin.tian@intel.com>, Yi Liu <yi.l.liu@intel.com>
+ Wed, 2 Nov 2022 19:29:05 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F288458067;
+ Wed,  2 Nov 2022 19:29:04 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B8C4658059;
+ Wed,  2 Nov 2022 19:29:00 +0000 (GMT)
+Received: from li-479af74c-31f9-11b2-a85c-e4ddee11713b.ibm.com (unknown
+ [9.65.225.56]) by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Wed,  2 Nov 2022 19:29:00 +0000 (GMT)
+Message-ID: <df037cd2e564acaa14c5a3358fd3386df29ad61e.camel@linux.ibm.com>
+Subject: Re: [PATCH v2 1/7] vfio/ccw: create a parent struct
+From: Eric Farman <farman@linux.ibm.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>, Alex Williamson
+ <alex.williamson@redhat.com>, Cornelia Huck <cohuck@redhat.com>, Jason
+ Gunthorpe <jgg@nvidia.com>, Kevin Tian <kevin.tian@intel.com>, Yi Liu
+ <yi.l.liu@intel.com>
+Date: Wed, 02 Nov 2022 15:29:00 -0400
+In-Reply-To: <20221102150152.2521475-2-farman@linux.ibm.com>
 References: <20221102150152.2521475-1-farman@linux.ibm.com>
- <20221102150152.2521475-8-farman@linux.ibm.com>
-From: Anthony Krowiak <akrowiak@linux.ibm.com>
-In-Reply-To: <20221102150152.2521475-8-farman@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <20221102150152.2521475-2-farman@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
+User-Agent: Evolution 3.44.4 (3.44.4-2.fc36) 
+MIME-Version: 1.0
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 5KNPJY1ojqecQcp7Ux1-t0mABaq5DMaH
-X-Proofpoint-ORIG-GUID: hHPReoa9HfHIQdJ1gnG2bgJ3zM36pog3
+X-Proofpoint-GUID: uSbHgNZHEcyWpzujA5U2nv8HniRj0Fyr
+X-Proofpoint-ORIG-GUID: 3u_YCbs69k0fm7PrFvbmLa8afEzcVnj1
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2022-11-02_13,2022-11-02_01,2022-06-22_01
+ definitions=2022-11-02_14,2022-11-02_01,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 clxscore=1011
+ impostorscore=0 clxscore=1015
  mlxscore=0 malwarescore=0 adultscore=0 mlxlogscore=999 phishscore=0
  suspectscore=0 lowpriorityscore=0 priorityscore=1501 spamscore=0
  bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2210170000 definitions=main-2211020114
+ engine=8.12.0-2210170000 definitions=main-2211020125
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,11 +106,12 @@ Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  linux-s390@vger.kernel.org, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Eric Auger <eric.auger@redhat.com>,
  Harald Freudenberger <freude@linux.ibm.com>,
  Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Jason Herne <jjherne@linux.ibm.com>,
+ intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
  Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
  Yishai Hadas <yishaih@nvidia.com>, Peter Oberparleiter <oberpar@linux.ibm.com>,
  Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
@@ -121,214 +119,229 @@ Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Reviewed-by: Tony Krowiak <akrowiak@linux.ibm.com> : vfio_ap part
+T24gV2VkLCAyMDIyLTExLTAyIGF0IDE2OjAxICswMTAwLCBFcmljIEZhcm1hbiB3cm90ZToKPiBN
+b3ZlIHRoZSBzdHVmZiBhc3NvY2lhdGVkIHdpdGggdGhlIG1kZXYgcGFyZW50IChhbmQgdGh1cyB0
+aGUKPiBzdWJjaGFubmVsIHN0cnVjdCkgaW50byBpdHMgb3duIHN0cnVjdCwgYW5kIGxlYXZlIHRo
+ZSByZXN0IGluCj4gdGhlIGV4aXN0aW5nIHByaXZhdGUgc3RydWN0dXJlLgo+IAo+IFRoZSBzdWJj
+aGFubmVsIHdpbGwgcG9pbnQgdG8gdGhlIHBhcmVudCwgYW5kIHRoZSBwYXJlbnQgd2lsbCBwb2lu
+dAo+IHRvIHRoZSBwcml2YXRlLCBmb3IgdGhlIGFyZWFzIHdoZXJlIG9uZSBvciBib3RoIGFyZSBu
+ZWVkZWQuIEZ1cnRoZXIKPiBzZXBhcmF0aW9uIG9mIHRoZXNlIHN0cnVjdHMgd2lsbCBmb2xsb3cu
+Cj4gCj4gU2lnbmVkLW9mZi1ieTogRXJpYyBGYXJtYW4gPGZhcm1hbkBsaW51eC5pYm0uY29tPgo+
+IC0tLQo+IMKgZHJpdmVycy9zMzkwL2Npby92ZmlvX2Njd19kcnYuY8KgwqDCoMKgIHwgOTYgKysr
+KysrKysrKysrKysrKysrKysrKysrLS0tCj4gLS0KPiDCoGRyaXZlcnMvczM5MC9jaW8vdmZpb19j
+Y3dfb3BzLmPCoMKgwqDCoCB8wqAgOCArKy0KPiDCoGRyaXZlcnMvczM5MC9jaW8vdmZpb19jY3df
+cHJpdmF0ZS5oIHwgMjAgKysrKy0tCj4gwqAzIGZpbGVzIGNoYW5nZWQsIDEwMCBpbnNlcnRpb25z
+KCspLCAyNCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zMzkwL2Npby92
+ZmlvX2Njd19kcnYuYwo+IGIvZHJpdmVycy9zMzkwL2Npby92ZmlvX2Njd19kcnYuYwo+IGluZGV4
+IDdmNTQwMmZlODU3YS4uMDYwMjJmYjM3YjlkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvczM5MC9j
+aW8vdmZpb19jY3dfZHJ2LmMKPiArKysgYi9kcml2ZXJzL3MzOTAvY2lvL3ZmaW9fY2N3X2Rydi5j
+Cj4gQEAgLTM2LDEwICszNiwxOSBAQCBkZWJ1Z19pbmZvX3QgKnZmaW9fY2N3X2RlYnVnX3RyYWNl
+X2lkOwo+IMKgICovCj4gwqBpbnQgdmZpb19jY3dfc2NoX3F1aWVzY2Uoc3RydWN0IHN1YmNoYW5u
+ZWwgKnNjaCkKPiDCoHsKPiAtwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19jY3dfcHJpdmF0ZSAq
+cHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YSgmc2NoLQo+ID5kZXYpOwo+ICvCoMKgwqDCoMKgwqDC
+oHN0cnVjdCB2ZmlvX2Njd19wYXJlbnQgKnBhcmVudCA9IGRldl9nZXRfZHJ2ZGF0YSgmc2NoLT5k
+ZXYpOwo+ICvCoMKgwqDCoMKgwqDCoHN0cnVjdCB2ZmlvX2Njd19wcml2YXRlICpwcml2YXRlID0g
+ZGV2X2dldF9kcnZkYXRhKCZwYXJlbnQtCj4gPmRldik7Cj4gwqDCoMKgwqDCoMKgwqDCoERFQ0xB
+UkVfQ09NUExFVElPTl9PTlNUQUNLKGNvbXBsZXRpb24pOwo+IMKgwqDCoMKgwqDCoMKgwqBpbnQg
+aXJldHJ5LCByZXQgPSAwOwo+IMKgCj4gK8KgwqDCoMKgwqDCoMKgLyoKPiArwqDCoMKgwqDCoMKg
+wqAgKiBQcm9iYWJseSBhbiBpbXBvc3NpYmxlIHNpdHVhdGlvbiwgYWZ0ZXIgYmVpbmcgY2FsbGVk
+Cj4gdGhyb3VnaAo+ICvCoMKgwqDCoMKgwqDCoCAqIEZTTSBjYWxsYmFja3MuIEJ1dCBpbiB0aGUg
+ZXZlbnQgaXQgZGlkLCByZWdpc3RlciBhIHdhcm5pbmcKPiArwqDCoMKgwqDCoMKgwqAgKiBhbmQg
+cmV0dXJuIGFzIGlmIHRoaW5ncyB3ZXJlIGZpbmUuCj4gK8KgwqDCoMKgwqDCoMKgICovCj4gK8Kg
+wqDCoMKgwqDCoMKgaWYgKFdBUk5fT04oIXByaXZhdGUpKQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqByZXR1cm4gMDsKPiArCj4gwqDCoMKgwqDCoMKgwqDCoGlyZXRyeSA9IDI1NTsK
+PiDCoMKgwqDCoMKgwqDCoMKgZG8gewo+IMKgCj4gQEAgLTEyMSw3ICsxMzAsMjIgQEAgc3RhdGlj
+IHZvaWQgdmZpb19jY3dfY3J3X3RvZG8oc3RydWN0IHdvcmtfc3RydWN0Cj4gKndvcmspCj4gwqAg
+Ki8KPiDCoHN0YXRpYyB2b2lkIHZmaW9fY2N3X3NjaF9pcnEoc3RydWN0IHN1YmNoYW5uZWwgKnNj
+aCkKPiDCoHsKPiAtwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19jY3dfcHJpdmF0ZSAqcHJpdmF0
+ZSA9IGRldl9nZXRfZHJ2ZGF0YSgmc2NoLQo+ID5kZXYpOwo+ICvCoMKgwqDCoMKgwqDCoHN0cnVj
+dCB2ZmlvX2Njd19wYXJlbnQgKnBhcmVudCA9IGRldl9nZXRfZHJ2ZGF0YSgmc2NoLT5kZXYpOwo+
+ICvCoMKgwqDCoMKgwqDCoHN0cnVjdCB2ZmlvX2Njd19wcml2YXRlICpwcml2YXRlID0gZGV2X2dl
+dF9kcnZkYXRhKCZwYXJlbnQtCj4gPmRldik7Cj4gKwo+ICvCoMKgwqDCoMKgwqDCoC8qCj4gK8Kg
+wqDCoMKgwqDCoMKgICogVGhlIHN1YmNoYW5uZWwgc2hvdWxkIHN0aWxsIGJlIGRpc2FibGVkIGF0
+IHRoaXMgcG9pbnQsCj4gK8KgwqDCoMKgwqDCoMKgICogc28gYW4gaW50ZXJydXB0IHdvdWxkIGJl
+IHF1aXRlIHN1cnByaXNpbmcuIEFzIHdpdGggYW4KPiArwqDCoMKgwqDCoMKgwqAgKiBpbnRlcnJ1
+cHQgd2hpbGUgdGhlIEZTTSBpcyBjbG9zZWQsIGxldCdzIGF0dGVtcHQgdG8KPiArwqDCoMKgwqDC
+oMKgwqAgKiBkaXNhYmxlIHRoZSBzdWJjaGFubmVsIGFnYWluLgo+ICvCoMKgwqDCoMKgwqDCoCAq
+Lwo+ICvCoMKgwqDCoMKgwqDCoGlmICghcHJpdmF0ZSkgewo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqBWRklPX0NDV19NU0dfRVZFTlQoMiwgInNjaCAleC4leC4lMDR4OiB1bmV4cGVj
+dGVkCj4gaW50ZXJydXB0XG4iLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgc2NoLT5zY2hpZC5jc3NpZCwgc2NoLT5zY2hpZC5zc2lkLCBzY2gtCj4gPnNj
+aGlkLnNjaF9ubyk7Cj4gKwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBjaW9fZGlz
+YWJsZV9zdWJjaGFubmVsKHNjaCk7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJl
+dHVybjsKPiArwqDCoMKgwqDCoMKgwqB9Cj4gwqAKPiDCoMKgwqDCoMKgwqDCoMKgaW5jX2lycV9z
+dGF0KElSUUlPX0NJTyk7Cj4gwqDCoMKgwqDCoMKgwqDCoHZmaW9fY2N3X2ZzbV9ldmVudChwcml2
+YXRlLCBWRklPX0NDV19FVkVOVF9JTlRFUlJVUFQpOwo+IEBAIC0yMDEsMTAgKzIyNSwxOSBAQCBz
+dGF0aWMgdm9pZCB2ZmlvX2Njd19mcmVlX3ByaXZhdGUoc3RydWN0Cj4gdmZpb19jY3dfcHJpdmF0
+ZSAqcHJpdmF0ZSkKPiDCoMKgwqDCoMKgwqDCoMKgbXV0ZXhfZGVzdHJveSgmcHJpdmF0ZS0+aW9f
+bXV0ZXgpOwo+IMKgwqDCoMKgwqDCoMKgwqBrZnJlZShwcml2YXRlKTsKPiDCoH0KPiArCj4gK3N0
+YXRpYyB2b2lkIHZmaW9fY2N3X2ZyZWVfcGFyZW50KHN0cnVjdCBkZXZpY2UgKmRldikKPiArewo+
+ICvCoMKgwqDCoMKgwqDCoHN0cnVjdCB2ZmlvX2Njd19wYXJlbnQgKnBhcmVudCA9IGNvbnRhaW5l
+cl9vZihkZXYsIHN0cnVjdAo+IHZmaW9fY2N3X3BhcmVudCwgZGV2KTsKPiArCj4gK8KgwqDCoMKg
+wqDCoMKga2ZyZWUocGFyZW50KTsKPiArfQo+ICsKPiDCoHN0YXRpYyBpbnQgdmZpb19jY3dfc2No
+X3Byb2JlKHN0cnVjdCBzdWJjaGFubmVsICpzY2gpCj4gwqB7Cj4gwqDCoMKgwqDCoMKgwqDCoHN0
+cnVjdCBwbWN3ICpwbWN3ID0gJnNjaC0+c2NoaWIucG1jdzsKPiDCoMKgwqDCoMKgwqDCoMKgc3Ry
+dWN0IHZmaW9fY2N3X3ByaXZhdGUgKnByaXZhdGU7Cj4gK8KgwqDCoMKgwqDCoMKgc3RydWN0IHZm
+aW9fY2N3X3BhcmVudCAqcGFyZW50Owo+IMKgwqDCoMKgwqDCoMKgwqBpbnQgcmV0ID0gLUVOT01F
+TTsKPiDCoAo+IMKgwqDCoMKgwqDCoMKgwqBpZiAocG1jdy0+cWYpIHsKPiBAQCAtMjEzLDQxICsy
+NDYsNjIgQEAgc3RhdGljIGludCB2ZmlvX2Njd19zY2hfcHJvYmUoc3RydWN0IHN1YmNoYW5uZWwK
+PiAqc2NoKQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuIC1FTk9ERVY7
+Cj4gwqDCoMKgwqDCoMKgwqDCoH0KPiDCoAo+ICvCoMKgwqDCoMKgwqDCoHBhcmVudCA9IGt6YWxs
+b2Moc2l6ZW9mKCpwYXJlbnQpLCBHRlBfS0VSTkVMKTsKPiArwqDCoMKgwqDCoMKgwqBpZiAoSVNf
+RVJSKHBhcmVudCkpCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJldHVybiBQVFJf
+RVJSKHBhcmVudCk7Cj4gKwo+ICvCoMKgwqDCoMKgwqDCoGRldl9zZXRfbmFtZSgmcGFyZW50LT5k
+ZXYsICJwYXJlbnQiKTsKPiArwqDCoMKgwqDCoMKgwqBwYXJlbnQtPmRldi5wYXJlbnQgPSAmc2No
+LT5kZXY7Cj4gK8KgwqDCoMKgwqDCoMKgcGFyZW50LT5kZXYucmVsZWFzZSA9ICZ2ZmlvX2Njd19m
+cmVlX3BhcmVudDsKPiArwqDCoMKgwqDCoMKgwqByZXQgPSBkZXZpY2VfcmVnaXN0ZXIoJnBhcmVu
+dC0+ZGV2KTsKPiArwqDCoMKgwqDCoMKgwqBpZiAocmV0KQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqBnb3RvIG91dF9mcmVlOwo+ICsKPiDCoMKgwqDCoMKgwqDCoMKgcHJpdmF0ZSA9
+IHZmaW9fY2N3X2FsbG9jX3ByaXZhdGUoc2NoKTsKPiAtwqDCoMKgwqDCoMKgwqBpZiAoSVNfRVJS
+KHByaXZhdGUpKQo+ICvCoMKgwqDCoMKgwqDCoGlmIChJU19FUlIocHJpdmF0ZSkpIHsKPiArwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcHV0X2RldmljZSgmcGFyZW50LT5kZXYpOwoKVGhp
+cyBzaG91bGQndmUgYmVlbiBkZXZpY2VfdW5yZWdpc3Rlci4gKEkgY291bGQgcmVhcnJhbmdlIHRo
+ZSBjb2RlIGEKYml0IHRvIGF2b2lkIHRoZSBtaXggb2YgcmV0dXJucy9nb3RvcyBhcm91bmQgaGVy
+ZSwgYnV0IHNpbmNlIHRoZSB3aG9sZQpzZXJpZXMgaXMgdHJ5aW5nIHRvIHNlcGFyYXRlIHRoZXNl
+IHR3byBzdHJ1Y3RzIHRoYXQgc2VlbXMgdW5uZWNlc3NhcnkuKQoKPiDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoHJldHVybiBQVFJfRVJSKHByaXZhdGUpOwo+ICvCoMKgwqDCoMKgwqDC
+oH0KPiDCoAo+IC3CoMKgwqDCoMKgwqDCoGRldl9zZXRfZHJ2ZGF0YSgmc2NoLT5kZXYsIHByaXZh
+dGUpOwo+ICvCoMKgwqDCoMKgwqDCoGRldl9zZXRfZHJ2ZGF0YSgmc2NoLT5kZXYsIHBhcmVudCk7
+Cj4gK8KgwqDCoMKgwqDCoMKgZGV2X3NldF9kcnZkYXRhKCZwYXJlbnQtPmRldiwgcHJpdmF0ZSk7
+Cj4gwqAKPiAtwqDCoMKgwqDCoMKgwqBwcml2YXRlLT5tZGV2X3R5cGUuc3lzZnNfbmFtZSA9ICJp
+byI7Cj4gLcKgwqDCoMKgwqDCoMKgcHJpdmF0ZS0+bWRldl90eXBlLnByZXR0eV9uYW1lID0gIkkv
+TyBzdWJjaGFubmVsIChOb24tUURJTykiOwo+IC3CoMKgwqDCoMKgwqDCoHByaXZhdGUtPm1kZXZf
+dHlwZXNbMF0gPSAmcHJpdmF0ZS0+bWRldl90eXBlOwo+IC3CoMKgwqDCoMKgwqDCoHJldCA9IG1k
+ZXZfcmVnaXN0ZXJfcGFyZW50KCZwcml2YXRlLT5wYXJlbnQsICZzY2gtPmRldiwKPiArwqDCoMKg
+wqDCoMKgwqBwYXJlbnQtPm1kZXZfdHlwZS5zeXNmc19uYW1lID0gImlvIjsKPiArwqDCoMKgwqDC
+oMKgwqBwYXJlbnQtPm1kZXZfdHlwZS5wcmV0dHlfbmFtZSA9ICJJL08gc3ViY2hhbm5lbCAoTm9u
+LVFESU8pIjsKPiArwqDCoMKgwqDCoMKgwqBwYXJlbnQtPm1kZXZfdHlwZXNbMF0gPSAmcGFyZW50
+LT5tZGV2X3R5cGU7Cj4gK8KgwqDCoMKgwqDCoMKgcmV0ID0gbWRldl9yZWdpc3Rlcl9wYXJlbnQo
+JnBhcmVudC0+cGFyZW50LCAmc2NoLT5kZXYsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgJnZmaW9fY2N3X21kZXZf
+ZHJpdmVyLAo+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgcHJpdmF0ZS0+bWRldl90eXBlcywgMSk7Cj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCBwYXJlbnQtPm1kZXZfdHlwZXMsIDEpOwo+IMKgwqDCoMKgwqDCoMKgwqBpZiAocmV0KQo+IC3C
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBnb3RvIG91dF9mcmVlOwo+ICvCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqBnb3RvIG91dF91bnJlZzsKPiDCoAo+IMKgwqDCoMKgwqDCoMKg
+wqBWRklPX0NDV19NU0dfRVZFTlQoNCwgImJvdW5kIHRvIHN1YmNoYW5uZWwgJXguJXguJTA0eFxu
+IiwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IHNjaC0+c2NoaWQuY3NzaWQsIHNjaC0+c2NoaWQuc3NpZCwKPiDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHNjaC0+c2NoaWQuc2NoX25vKTsKPiDC
+oMKgwqDCoMKgwqDCoMKgcmV0dXJuIDA7Cj4gwqAKPiArb3V0X3VucmVnOgo+ICvCoMKgwqDCoMKg
+wqDCoGRldmljZV91bnJlZ2lzdGVyKCZwYXJlbnQtPmRldik7Cj4gwqBvdXRfZnJlZToKPiArwqDC
+oMKgwqDCoMKgwqBkZXZfc2V0X2RydmRhdGEoJnBhcmVudC0+ZGV2LCBOVUxMKTsKPiDCoMKgwqDC
+oMKgwqDCoMKgZGV2X3NldF9kcnZkYXRhKCZzY2gtPmRldiwgTlVMTCk7Cj4gwqDCoMKgwqDCoMKg
+wqDCoHZmaW9fY2N3X2ZyZWVfcHJpdmF0ZShwcml2YXRlKTsKPiArwqDCoMKgwqDCoMKgwqBwdXRf
+ZGV2aWNlKCZwYXJlbnQtPmRldik7CgpXaGlsZSB0aGlzLi4uCgo+IMKgwqDCoMKgwqDCoMKgwqBy
+ZXR1cm4gcmV0Owo+IMKgfQo+IMKgCj4gwqBzdGF0aWMgdm9pZCB2ZmlvX2Njd19zY2hfcmVtb3Zl
+KHN0cnVjdCBzdWJjaGFubmVsICpzY2gpCj4gwqB7Cj4gLcKgwqDCoMKgwqDCoMKgc3RydWN0IHZm
+aW9fY2N3X3ByaXZhdGUgKnByaXZhdGUgPSBkZXZfZ2V0X2RydmRhdGEoJnNjaC0KPiA+ZGV2KTsK
+PiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19jY3dfcGFyZW50ICpwYXJlbnQgPSBkZXZfZ2V0
+X2RydmRhdGEoJnNjaC0+ZGV2KTsKPiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19jY3dfcHJp
+dmF0ZSAqcHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YSgmcGFyZW50LQo+ID5kZXYpOwo+IMKgCj4g
+LcKgwqDCoMKgwqDCoMKgbWRldl91bnJlZ2lzdGVyX3BhcmVudCgmcHJpdmF0ZS0+cGFyZW50KTsK
+PiArwqDCoMKgwqDCoMKgwqBtZGV2X3VucmVnaXN0ZXJfcGFyZW50KCZwYXJlbnQtPnBhcmVudCk7
+Cj4gwqAKPiArwqDCoMKgwqDCoMKgwqBkZXZpY2VfdW5yZWdpc3RlcigmcGFyZW50LT5kZXYpOwo+
+IMKgwqDCoMKgwqDCoMKgwqBkZXZfc2V0X2RydmRhdGEoJnNjaC0+ZGV2LCBOVUxMKTsKPiDCoAo+
+IMKgwqDCoMKgwqDCoMKgwqB2ZmlvX2Njd19mcmVlX3ByaXZhdGUocHJpdmF0ZSk7Cj4gK8KgwqDC
+oMKgwqDCoMKgcHV0X2RldmljZSgmcGFyZW50LT5kZXYpOwoKLi4uYW5kIHRoaXMgc2hvdWxkbid0
+IGV2ZW4gYmUgdGhlcmUuIFNvcnJ5IGZvciB0aGUgYnJhaW4gZm9nLgoKPiDCoAo+IMKgwqDCoMKg
+wqDCoMKgwqBWRklPX0NDV19NU0dfRVZFTlQoNCwgInVuYm91bmQgZnJvbSBzdWJjaGFubmVsICV4
+LiV4LiUwNHhcbiIsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoCBzY2gtPnNjaGlkLmNzc2lkLCBzY2gtPnNjaGlkLnNzaWQsCj4gQEAgLTI1Niw3
+ICszMTAsMTEgQEAgc3RhdGljIHZvaWQgdmZpb19jY3dfc2NoX3JlbW92ZShzdHJ1Y3QKPiBzdWJj
+aGFubmVsICpzY2gpCj4gwqAKPiDCoHN0YXRpYyB2b2lkIHZmaW9fY2N3X3NjaF9zaHV0ZG93bihz
+dHJ1Y3Qgc3ViY2hhbm5lbCAqc2NoKQo+IMKgewo+IC3CoMKgwqDCoMKgwqDCoHN0cnVjdCB2Zmlv
+X2Njd19wcml2YXRlICpwcml2YXRlID0gZGV2X2dldF9kcnZkYXRhKCZzY2gtCj4gPmRldik7Cj4g
+K8KgwqDCoMKgwqDCoMKgc3RydWN0IHZmaW9fY2N3X3BhcmVudCAqcGFyZW50ID0gZGV2X2dldF9k
+cnZkYXRhKCZzY2gtPmRldik7Cj4gK8KgwqDCoMKgwqDCoMKgc3RydWN0IHZmaW9fY2N3X3ByaXZh
+dGUgKnByaXZhdGUgPSBkZXZfZ2V0X2RydmRhdGEoJnBhcmVudC0KPiA+ZGV2KTsKPiArCj4gK8Kg
+wqDCoMKgwqDCoMKgaWYgKFdBUk5fT04oIXByaXZhdGUpKQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqByZXR1cm47Cj4gwqAKPiDCoMKgwqDCoMKgwqDCoMKgdmZpb19jY3dfZnNtX2V2
+ZW50KHByaXZhdGUsIFZGSU9fQ0NXX0VWRU5UX0NMT1NFKTsKPiDCoMKgwqDCoMKgwqDCoMKgdmZp
+b19jY3dfZnNtX2V2ZW50KHByaXZhdGUsIFZGSU9fQ0NXX0VWRU5UX05PVF9PUEVSKTsKPiBAQCAt
+Mjc0LDcgKzMzMiw4IEBAIHN0YXRpYyB2b2lkIHZmaW9fY2N3X3NjaF9zaHV0ZG93bihzdHJ1Y3QK
+PiBzdWJjaGFubmVsICpzY2gpCj4gwqAgKi8KPiDCoHN0YXRpYyBpbnQgdmZpb19jY3dfc2NoX2V2
+ZW50KHN0cnVjdCBzdWJjaGFubmVsICpzY2gsIGludCBwcm9jZXNzKQo+IMKgewo+IC3CoMKgwqDC
+oMKgwqDCoHN0cnVjdCB2ZmlvX2Njd19wcml2YXRlICpwcml2YXRlID0gZGV2X2dldF9kcnZkYXRh
+KCZzY2gtCj4gPmRldik7Cj4gK8KgwqDCoMKgwqDCoMKgc3RydWN0IHZmaW9fY2N3X3BhcmVudCAq
+cGFyZW50ID0gZGV2X2dldF9kcnZkYXRhKCZzY2gtPmRldik7Cj4gK8KgwqDCoMKgwqDCoMKgc3Ry
+dWN0IHZmaW9fY2N3X3ByaXZhdGUgKnByaXZhdGUgPSBkZXZfZ2V0X2RydmRhdGEoJnBhcmVudC0K
+PiA+ZGV2KTsKPiDCoMKgwqDCoMKgwqDCoMKgdW5zaWduZWQgbG9uZyBmbGFnczsKPiDCoMKgwqDC
+oMKgwqDCoMKgaW50IHJjID0gLUVBR0FJTjsKPiDCoAo+IEBAIC0yODcsOCArMzQ2LDEwIEBAIHN0
+YXRpYyBpbnQgdmZpb19jY3dfc2NoX2V2ZW50KHN0cnVjdCBzdWJjaGFubmVsCj4gKnNjaCwgaW50
+IHByb2Nlc3MpCj4gwqAKPiDCoMKgwqDCoMKgwqDCoMKgcmMgPSAwOwo+IMKgCj4gLcKgwqDCoMKg
+wqDCoMKgaWYgKGNpb191cGRhdGVfc2NoaWIoc2NoKSkKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgdmZpb19jY3dfZnNtX2V2ZW50KHByaXZhdGUsIFZGSU9fQ0NXX0VWRU5UX05PVF9P
+UEVSKTsKPiArwqDCoMKgwqDCoMKgwqBpZiAoY2lvX3VwZGF0ZV9zY2hpYihzY2gpKSB7Cj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGlmIChwcml2YXRlKQo+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdmZpb19jY3dfZnNtX2V2ZW50KHByaXZh
+dGUsCj4gVkZJT19DQ1dfRVZFTlRfTk9UX09QRVIpOwo+ICvCoMKgwqDCoMKgwqDCoH0KPiDCoAo+
+IMKgb3V0X3VubG9jazoKPiDCoMKgwqDCoMKgwqDCoMKgc3Bpbl91bmxvY2tfaXJxcmVzdG9yZShz
+Y2gtPmxvY2ssIGZsYWdzKTsKPiBAQCAtMzI2LDcgKzM4Nyw4IEBAIHN0YXRpYyB2b2lkIHZmaW9f
+Y2N3X3F1ZXVlX2NydyhzdHJ1Y3QKPiB2ZmlvX2Njd19wcml2YXRlICpwcml2YXRlLAo+IMKgc3Rh
+dGljIGludCB2ZmlvX2Njd19jaHBfZXZlbnQoc3RydWN0IHN1YmNoYW5uZWwgKnNjaCwKPiDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0
+cnVjdCBjaHBfbGluayAqbGluaywgaW50IGV2ZW50KQo+IMKgewo+IC3CoMKgwqDCoMKgwqDCoHN0
+cnVjdCB2ZmlvX2Njd19wcml2YXRlICpwcml2YXRlID0gZGV2X2dldF9kcnZkYXRhKCZzY2gtCj4g
+PmRldik7Cj4gK8KgwqDCoMKgwqDCoMKgc3RydWN0IHZmaW9fY2N3X3BhcmVudCAqcGFyZW50ID0g
+ZGV2X2dldF9kcnZkYXRhKCZzY2gtPmRldik7Cj4gK8KgwqDCoMKgwqDCoMKgc3RydWN0IHZmaW9f
+Y2N3X3ByaXZhdGUgKnByaXZhdGUgPSBkZXZfZ2V0X2RydmRhdGEoJnBhcmVudC0KPiA+ZGV2KTsK
+PiDCoMKgwqDCoMKgwqDCoMKgaW50IG1hc2sgPSBjaHBfc3NkX2dldF9tYXNrKCZzY2gtPnNzZF9p
+bmZvLCBsaW5rKTsKPiDCoMKgwqDCoMKgwqDCoMKgaW50IHJldHJ5ID0gMjU1Owo+IMKgCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvczM5MC9jaW8vdmZpb19jY3dfb3BzLmMKPiBiL2RyaXZlcnMvczM5
+MC9jaW8vdmZpb19jY3dfb3BzLmMKPiBpbmRleCA2YWU0ZDAxMmQ4MDAuLmRjMDg0ODgzZDg3MiAx
+MDA2NDQKPiAtLS0gYS9kcml2ZXJzL3MzOTAvY2lvL3ZmaW9fY2N3X29wcy5jCj4gKysrIGIvZHJp
+dmVycy9zMzkwL2Npby92ZmlvX2Njd19vcHMuYwo+IEBAIC01NSw3ICs1NSw5IEBAIHN0YXRpYyBp
+bnQgdmZpb19jY3dfbWRldl9pbml0X2RldihzdHJ1Y3QKPiB2ZmlvX2RldmljZSAqdmRldikKPiDC
+oAo+IMKgc3RhdGljIGludCB2ZmlvX2Njd19tZGV2X3Byb2JlKHN0cnVjdCBtZGV2X2RldmljZSAq
+bWRldikKPiDCoHsKPiAtwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19jY3dfcHJpdmF0ZSAqcHJp
+dmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YShtZGV2LQo+ID5kZXYucGFyZW50KTsKPiArwqDCoMKgwqDC
+oMKgwqBzdHJ1Y3Qgc3ViY2hhbm5lbCAqc2NoID0gdG9fc3ViY2hhbm5lbChtZGV2LT5kZXYucGFy
+ZW50KTsKPiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19jY3dfcGFyZW50ICpwYXJlbnQgPSBk
+ZXZfZ2V0X2RydmRhdGEoJnNjaC0+ZGV2KTsKPiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19j
+Y3dfcHJpdmF0ZSAqcHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YSgmcGFyZW50LQo+ID5kZXYpOwo+
+IMKgwqDCoMKgwqDCoMKgwqBpbnQgcmV0Owo+IMKgCj4gwqDCoMKgwqDCoMKgwqDCoGlmIChwcml2
+YXRlLT5zdGF0ZSA9PSBWRklPX0NDV19TVEFURV9OT1RfT1BFUikKPiBAQCAtMTAwLDcgKzEwMiw5
+IEBAIHN0YXRpYyB2b2lkIHZmaW9fY2N3X21kZXZfcmVsZWFzZV9kZXYoc3RydWN0Cj4gdmZpb19k
+ZXZpY2UgKnZkZXYpCj4gwqAKPiDCoHN0YXRpYyB2b2lkIHZmaW9fY2N3X21kZXZfcmVtb3ZlKHN0
+cnVjdCBtZGV2X2RldmljZSAqbWRldikKPiDCoHsKPiAtwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZp
+b19jY3dfcHJpdmF0ZSAqcHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YShtZGV2LQo+ID5kZXYucGFy
+ZW50KTsKPiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3Qgc3ViY2hhbm5lbCAqc2NoID0gdG9fc3ViY2hh
+bm5lbChtZGV2LT5kZXYucGFyZW50KTsKPiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmZpb19jY3df
+cGFyZW50ICpwYXJlbnQgPSBkZXZfZ2V0X2RydmRhdGEoJnNjaC0+ZGV2KTsKPiArwqDCoMKgwqDC
+oMKgwqBzdHJ1Y3QgdmZpb19jY3dfcHJpdmF0ZSAqcHJpdmF0ZSA9IGRldl9nZXRfZHJ2ZGF0YSgm
+cGFyZW50LQo+ID5kZXYpOwo+IMKgCj4gwqDCoMKgwqDCoMKgwqDCoFZGSU9fQ0NXX01TR19FVkVO
+VCgyLCAic2NoICV4LiV4LiUwNHg6IHJlbW92ZVxuIiwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHByaXZhdGUtPnNjaC0+c2NoaWQuY3NzaWQs
+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvczM5MC9jaW8vdmZpb19jY3dfcHJpdmF0ZS5oCj4gYi9k
+cml2ZXJzL3MzOTAvY2lvL3ZmaW9fY2N3X3ByaXZhdGUuaAo+IGluZGV4IGJkNWZiODE0NTZhZi4u
+MWY1OThkNThkOTY5IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvczM5MC9jaW8vdmZpb19jY3dfcHJp
+dmF0ZS5oCj4gKysrIGIvZHJpdmVycy9zMzkwL2Npby92ZmlvX2Njd19wcml2YXRlLmgKPiBAQCAt
+NjcsNiArNjcsMjEgQEAgc3RydWN0IHZmaW9fY2N3X2NydyB7Cj4gwqDCoMKgwqDCoMKgwqDCoHN0
+cnVjdCBjcnfCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY3J3Owo+IMKgfTsKPiDCoAo+ICsv
+KioKPiArICogc3RydWN0IHZmaW9fY2N3X3BhcmVudAo+ICsgKgo+ICsgKiBAZGV2OiBlbWJlZGRl
+ZCBkZXZpY2Ugc3RydWN0Cj4gKyAqIEBwYXJlbnQ6IHBhcmVudCBkYXRhIHN0cnVjdHVyZXMgZm9y
+IG1kZXZzIGNyZWF0ZWQKPiArICogQG1kZXZfdHlwZShzKTogaWRlbnRpZnlpbmcgaW5mb3JtYXRp
+b24gZm9yIG1kZXZzIGNyZWF0ZWQKPiArICovCj4gK3N0cnVjdCB2ZmlvX2Njd19wYXJlbnQgewo+
+ICvCoMKgwqDCoMKgwqDCoHN0cnVjdCBkZXZpY2XCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZGV2Owo+
+ICsKPiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgbWRldl9wYXJlbnTCoMKgwqDCoMKgwqBwYXJlbnQ7
+Cj4gK8KgwqDCoMKgwqDCoMKgc3RydWN0IG1kZXZfdHlwZcKgwqDCoMKgwqDCoMKgwqBtZGV2X3R5
+cGU7Cj4gK8KgwqDCoMKgwqDCoMKgc3RydWN0IG1kZXZfdHlwZcKgwqDCoMKgwqDCoMKgwqAqbWRl
+dl90eXBlc1sxXTsKPiArfTsKPiArCj4gwqAvKioKPiDCoCAqIHN0cnVjdCB2ZmlvX2Njd19wcml2
+YXRlCj4gwqAgKiBAdmRldjogRW1iZWRkZWQgVkZJTyBkZXZpY2UKPiBAQCAtODksNyArMTA0LDYg
+QEAgc3RydWN0IHZmaW9fY2N3X2NydyB7Cj4gwqAgKiBAaW9fd29yazogd29yayBmb3IgZGVmZXJy
+YWwgcHJvY2VzcyBvZiBJL08gaGFuZGxpbmcKPiDCoCAqIEBjcndfd29yazogd29yayBmb3IgZGVm
+ZXJyYWwgcHJvY2VzcyBvZiBDUlcgaGFuZGxpbmcKPiDCoCAqIEByZWxlYXNlX2NvbXA6IHN5bmNo
+cm9uaXphdGlvbiBoZWxwZXIgZm9yIHZmaW8gZGV2aWNlIHJlbGVhc2UKPiAtICogQHBhcmVudDog
+cGFyZW50IGRhdGEgc3RydWN0dXJlcyBmb3IgbWRldnMgY3JlYXRlZAo+IMKgICovCj4gwqBzdHJ1
+Y3QgdmZpb19jY3dfcHJpdmF0ZSB7Cj4gwqDCoMKgwqDCoMKgwqDCoHN0cnVjdCB2ZmlvX2Rldmlj
+ZSB2ZGV2Owo+IEBAIC0xMTYsMTAgKzEzMCw2IEBAIHN0cnVjdCB2ZmlvX2Njd19wcml2YXRlIHsK
+PiDCoMKgwqDCoMKgwqDCoMKgc3RydWN0IHdvcmtfc3RydWN0wqDCoMKgwqDCoMKgY3J3X3dvcms7
+Cj4gwqAKPiDCoMKgwqDCoMKgwqDCoMKgc3RydWN0IGNvbXBsZXRpb27CoMKgwqDCoMKgwqDCoHJl
+bGVhc2VfY29tcDsKPiAtCj4gLcKgwqDCoMKgwqDCoMKgc3RydWN0IG1kZXZfcGFyZW50wqDCoMKg
+wqDCoMKgcGFyZW50Owo+IC3CoMKgwqDCoMKgwqDCoHN0cnVjdCBtZGV2X3R5cGXCoMKgwqDCoMKg
+wqDCoMKgbWRldl90eXBlOwo+IC3CoMKgwqDCoMKgwqDCoHN0cnVjdCBtZGV2X3R5cGXCoMKgwqDC
+oMKgwqDCoMKgKm1kZXZfdHlwZXNbMV07Cj4gwqB9IF9fYWxpZ25lZCg4KTsKPiDCoAo+IMKgaW50
+IHZmaW9fY2N3X3NjaF9xdWllc2NlKHN0cnVjdCBzdWJjaGFubmVsICpzY2gpOwoK
 
-On 11/2/22 11:01 AM, Eric Farman wrote:
-> With the "mess" sorted out, we should be able to inline the
-> vfio_free_device call introduced by commit cb9ff3f3b84c
-> ("vfio: Add helpers for unifying vfio_device life cycle")
-> and remove them from driver release callbacks.
->
-> Signed-off-by: Eric Farman <farman@linux.ibm.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> ---
->   drivers/gpu/drm/i915/gvt/kvmgt.c      |  1 -
->   drivers/s390/cio/vfio_ccw_ops.c       |  2 --
->   drivers/s390/crypto/vfio_ap_ops.c     |  6 ------
->   drivers/vfio/fsl-mc/vfio_fsl_mc.c     |  1 -
->   drivers/vfio/pci/vfio_pci_core.c      |  1 -
->   drivers/vfio/platform/vfio_amba.c     |  1 -
->   drivers/vfio/platform/vfio_platform.c |  1 -
->   drivers/vfio/vfio_main.c              | 22 ++++------------------
->   include/linux/vfio.h                  |  1 -
->   samples/vfio-mdev/mbochs.c            |  1 -
->   samples/vfio-mdev/mdpy.c              |  1 -
->   samples/vfio-mdev/mtty.c              |  1 -
->   12 files changed, 4 insertions(+), 35 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> index 7a45e5360caf..eee6805e67de 100644
-> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -1461,7 +1461,6 @@ static void intel_vgpu_release_dev(struct vfio_device *vfio_dev)
->   	struct intel_vgpu *vgpu = vfio_dev_to_vgpu(vfio_dev);
->   
->   	intel_gvt_destroy_vgpu(vgpu);
-> -	vfio_free_device(vfio_dev);
->   }
->   
->   static const struct vfio_device_ops intel_vgpu_dev_ops = {
-> diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-> index 1155f8bcedd9..598a3814d428 100644
-> --- a/drivers/s390/cio/vfio_ccw_ops.c
-> +++ b/drivers/s390/cio/vfio_ccw_ops.c
-> @@ -143,8 +143,6 @@ static void vfio_ccw_mdev_release_dev(struct vfio_device *vdev)
->   	kmem_cache_free(vfio_ccw_io_region, private->io_region);
->   	kfree(private->cp.guest_cp);
->   	mutex_destroy(&private->io_mutex);
-> -
-> -	vfio_free_device(vdev);
->   }
->   
->   static void vfio_ccw_mdev_remove(struct mdev_device *mdev)
-> diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-> index 0b4cc8c597ae..f108c0f14712 100644
-> --- a/drivers/s390/crypto/vfio_ap_ops.c
-> +++ b/drivers/s390/crypto/vfio_ap_ops.c
-> @@ -765,11 +765,6 @@ static void vfio_ap_mdev_unlink_fr_queues(struct ap_matrix_mdev *matrix_mdev)
->   	}
->   }
->   
-> -static void vfio_ap_mdev_release_dev(struct vfio_device *vdev)
-> -{
-> -	vfio_free_device(vdev);
-> -}
-> -
->   static void vfio_ap_mdev_remove(struct mdev_device *mdev)
->   {
->   	struct ap_matrix_mdev *matrix_mdev = dev_get_drvdata(&mdev->dev);
-> @@ -1784,7 +1779,6 @@ static const struct attribute_group vfio_queue_attr_group = {
->   
->   static const struct vfio_device_ops vfio_ap_matrix_dev_ops = {
->   	.init = vfio_ap_mdev_init_dev,
-> -	.release = vfio_ap_mdev_release_dev,
->   	.open_device = vfio_ap_mdev_open_device,
->   	.close_device = vfio_ap_mdev_close_device,
->   	.ioctl = vfio_ap_mdev_ioctl,
-> diff --git a/drivers/vfio/fsl-mc/vfio_fsl_mc.c b/drivers/vfio/fsl-mc/vfio_fsl_mc.c
-> index b16874e913e4..7b8889f55007 100644
-> --- a/drivers/vfio/fsl-mc/vfio_fsl_mc.c
-> +++ b/drivers/vfio/fsl-mc/vfio_fsl_mc.c
-> @@ -568,7 +568,6 @@ static void vfio_fsl_mc_release_dev(struct vfio_device *core_vdev)
->   
->   	vfio_fsl_uninit_device(vdev);
->   	mutex_destroy(&vdev->igate);
-> -	vfio_free_device(core_vdev);
->   }
->   
->   static int vfio_fsl_mc_remove(struct fsl_mc_device *mc_dev)
-> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-> index badc9d828cac..9be2d5be5d95 100644
-> --- a/drivers/vfio/pci/vfio_pci_core.c
-> +++ b/drivers/vfio/pci/vfio_pci_core.c
-> @@ -2109,7 +2109,6 @@ void vfio_pci_core_release_dev(struct vfio_device *core_vdev)
->   	mutex_destroy(&vdev->vma_lock);
->   	kfree(vdev->region);
->   	kfree(vdev->pm_save);
-> -	vfio_free_device(core_vdev);
->   }
->   EXPORT_SYMBOL_GPL(vfio_pci_core_release_dev);
->   
-> diff --git a/drivers/vfio/platform/vfio_amba.c b/drivers/vfio/platform/vfio_amba.c
-> index eaea63e5294c..18faf2678b99 100644
-> --- a/drivers/vfio/platform/vfio_amba.c
-> +++ b/drivers/vfio/platform/vfio_amba.c
-> @@ -95,7 +95,6 @@ static void vfio_amba_release_dev(struct vfio_device *core_vdev)
->   
->   	vfio_platform_release_common(vdev);
->   	kfree(vdev->name);
-> -	vfio_free_device(core_vdev);
->   }
->   
->   static void vfio_amba_remove(struct amba_device *adev)
-> diff --git a/drivers/vfio/platform/vfio_platform.c b/drivers/vfio/platform/vfio_platform.c
-> index 82cedcebfd90..9910451dc341 100644
-> --- a/drivers/vfio/platform/vfio_platform.c
-> +++ b/drivers/vfio/platform/vfio_platform.c
-> @@ -83,7 +83,6 @@ static void vfio_platform_release_dev(struct vfio_device *core_vdev)
->   		container_of(core_vdev, struct vfio_platform_device, vdev);
->   
->   	vfio_platform_release_common(vdev);
-> -	vfio_free_device(core_vdev);
->   }
->   
->   static int vfio_platform_remove(struct platform_device *pdev)
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index 2901b8ad5be9..9835757e2bee 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -339,13 +339,10 @@ static void vfio_device_release(struct device *dev)
->   	vfio_release_device_set(device);
->   	ida_free(&vfio.device_ida, device->index);
->   
-> -	/*
-> -	 * kvfree() cannot be done here due to a life cycle mess in
-> -	 * vfio-ccw. Before the ccw part is fixed all drivers are
-> -	 * required to support @release and call vfio_free_device()
-> -	 * from there.
-> -	 */
-> -	device->ops->release(device);
-> +	if (device->ops->release)
-> +		device->ops->release(device);
-> +
-> +	kvfree(device);
->   }
->   
->   static int vfio_init_device(struct vfio_device *device, struct device *dev,
-> @@ -424,17 +421,6 @@ static int vfio_init_device(struct vfio_device *device, struct device *dev,
->   	return ret;
->   }
->   
-> -/*
-> - * The helper called by driver @release callback to free the device
-> - * structure. Drivers which don't have private data to clean can
-> - * simply use this helper as its @release.
-> - */
-> -void vfio_free_device(struct vfio_device *device)
-> -{
-> -	kvfree(device);
-> -}
-> -EXPORT_SYMBOL_GPL(vfio_free_device);
-> -
->   static struct vfio_group *vfio_noiommu_group_alloc(struct device *dev,
->   		enum vfio_group_type type)
->   {
-> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-> index ba809268a48e..e7480154825e 100644
-> --- a/include/linux/vfio.h
-> +++ b/include/linux/vfio.h
-> @@ -176,7 +176,6 @@ struct vfio_device *_vfio_alloc_device(size_t size, struct device *dev,
->   					dev, ops),				\
->   		     struct dev_struct, member)
->   
-> -void vfio_free_device(struct vfio_device *device);
->   static inline void vfio_put_device(struct vfio_device *device)
->   {
->   	put_device(&device->device);
-> diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-> index 117a8d799f71..8b5a3a778a25 100644
-> --- a/samples/vfio-mdev/mbochs.c
-> +++ b/samples/vfio-mdev/mbochs.c
-> @@ -594,7 +594,6 @@ static void mbochs_release_dev(struct vfio_device *vdev)
->   	atomic_add(mdev_state->type->mbytes, &mbochs_avail_mbytes);
->   	kfree(mdev_state->pages);
->   	kfree(mdev_state->vconfig);
-> -	vfio_free_device(vdev);
->   }
->   
->   static void mbochs_remove(struct mdev_device *mdev)
-> diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-> index 946e8cfde6fd..721fb06c6413 100644
-> --- a/samples/vfio-mdev/mdpy.c
-> +++ b/samples/vfio-mdev/mdpy.c
-> @@ -283,7 +283,6 @@ static void mdpy_release_dev(struct vfio_device *vdev)
->   
->   	vfree(mdev_state->memblk);
->   	kfree(mdev_state->vconfig);
-> -	vfio_free_device(vdev);
->   }
->   
->   static void mdpy_remove(struct mdev_device *mdev)
-> diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
-> index e72085fc1376..3c2a421b9b69 100644
-> --- a/samples/vfio-mdev/mtty.c
-> +++ b/samples/vfio-mdev/mtty.c
-> @@ -784,7 +784,6 @@ static void mtty_release_dev(struct vfio_device *vdev)
->   
->   	atomic_add(mdev_state->nr_ports, &mdev_avail_ports);
->   	kfree(mdev_state->vconfig);
-> -	vfio_free_device(vdev);
->   }
->   
->   static void mtty_remove(struct mdev_device *mdev)
