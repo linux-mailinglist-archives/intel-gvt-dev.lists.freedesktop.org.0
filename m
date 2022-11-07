@@ -2,109 +2,82 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B65B361F4B1
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Nov 2022 14:57:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 05FDF61F76E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Nov 2022 16:19:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7641310E1BE;
-	Mon,  7 Nov 2022 13:57:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C2F7810E3C8;
+	Mon,  7 Nov 2022 15:19:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2074.outbound.protection.outlook.com [40.107.94.74])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D9AC310E19F;
- Mon,  7 Nov 2022 13:57:46 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bTDF75lUZNeTe+uNLtwBt+mDJXP+PcYBe0G4/s/bBwukVoHDvsrpDW0hlJXuHOcxIi4xeR9+9L6u41UiKQa9SvtiDYPHG04SM+3qFQKKh019nRSoOyYfqqjxSgH8PZX8HAQAz2kn1teXT+J4PHnJHGyfQzFTwrqk2Z3DyKyTxWvEwjHLtHCKxSDb55cbxVRaKKKQUN3UZqhR+YTz99GHe9cE2lIGEcuSTTbsS36sCpHKJt14jR5Dnp25sYRbU/ZXhlI+UfsqhnbWj/FQKdfV2J5agmPPIX1m7Gsez2U0VDsPAKGsHseExRD1yOcwr+PSPQ8zMdzd5i4XdjESJkpBUA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tya8+SvfMvAXd9qxFtkwJC29M3FyM7z3cyGjpEOpxWw=;
- b=d2UO5ckJCImY3qbEyIPcBlcAywQJfzpcFiFaSdtJI0asZCbmICda+UEnZWCTJgHHob8CT3ww7lr54eWVPYf+xHFTiUlw21vq0jvGBlvO0A3RSS44XuyeDWcNK0yrBA0gb15xDfyt8635q3ICPbJ3DKsFlljKRXXCgiBRSsHn18oHQvGeBLe/dYobQQswGL4LW0kJvOVI2ZkYU0D3x2G4bVV9jWJf2aHANDSONh5EnF+CLZCQcqya99yiNu4zAp3SUIEj62+BcylcWwo2/dbsruaV2kKGfOAsyhvFV4BtGRQk4LBqBQoyu4cOIXp41rPQ5KbDg0vtZMdJpqHgQfiHag==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tya8+SvfMvAXd9qxFtkwJC29M3FyM7z3cyGjpEOpxWw=;
- b=qukudt3NJIelbLRc1BFw2FpZUq6JkAMep2MXNOtzjWiF8HEjujuScdSmy3JnDaw7ewR9LVw885hk1YZlIbcyHQoFu8w/SdAsPjxAIAdh7/yBBkj2K1wtf0d/zo99RTnRtPkPUXDxw28agXjdt9jaYo9404MuWW+XPbjuN7V5nQtAkfZomNw9XRgBl+ViXGjUhEt661Rt1XqazEog7RVoQNygA4cZ2ADBSznZHWNEE7Cgyno3fArkFiCtSyFFAbhujXBzWXDCI+Yzk+c3UolFv8XBw+5PTPb5kaWZLMNBC19U5ZUh5nhdkEBZ18/cFoPdbcOuZQCwGfYcEWDlXjwNoQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by IA1PR12MB6042.namprd12.prod.outlook.com (2603:10b6:208:3d6::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.26; Mon, 7 Nov
- 2022 13:57:43 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::7a81:a4e4:bb9c:d1de]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::7a81:a4e4:bb9c:d1de%6]) with mapi id 15.20.5791.026; Mon, 7 Nov 2022
- 13:57:43 +0000
-Date: Mon, 7 Nov 2022 09:57:42 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH 10/10] iommufd: Allow iommufd to supply /dev/vfio/vfio
-Message-ID: <Y2kO1njmu6sU55S0@nvidia.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 601E110E3C6
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  7 Nov 2022 15:18:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1667834338;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DPVWQ+YraXRChqzr4SQlG/qjPD1QpM0ZmFrgY+kvQEQ=;
+ b=gd6w2bMniN8FYHUZ7hlaIMIgidZplfIaZn7BE5XdlsCN1+xA2JNsUkP1TRyhTaZatmdg6F
+ jPYJFCXWfNrKunOLiOPadHHSrDVnJklWHgMECaJ1WJ02O79UYXR4xsduqb+SCuajUWwK2E
+ 0VWJoGTUUNuMxpdo2H+B9qpTHFxRu5A=
+Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
+ [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-574-16GePacTNRez3gfY0r_r7Q-1; Mon, 07 Nov 2022 10:18:57 -0500
+X-MC-Unique: 16GePacTNRez3gfY0r_r7Q-1
+Received: by mail-io1-f71.google.com with SMTP id
+ r197-20020a6b8fce000000b006c3fc33424dso7252975iod.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 07 Nov 2022 07:18:57 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=DPVWQ+YraXRChqzr4SQlG/qjPD1QpM0ZmFrgY+kvQEQ=;
+ b=ncRBBxRk0yY5yOkDDdnEJRkI6KqAy507gRkGjycqjlZgSIouWb1kG1kLbalL5ztX8c
+ UK0WNd8hz992T5DGQ1GvFvLXkRJoMjFr5wY46ehd9xd54IuH9lIry21rQyoDrzSvCOOX
+ 5hX8deG/BqnWPaOTUMxymz9cyxfJcBtNcxIlSmmvA+FynEJSLEb4k/gzHuOtDW/drGJR
+ P86nF20usU8YN7tC/gTpb88xZ1jKOKLMf85kpR+bhmcTFmJvU0YjiuTGxriytXCvAWm9
+ lv7JWoD+OVFyM6BRRBYob1nKYnBc97GOyv7cN/voQ4lQ8qX8MmqGvmRV/4E4SgL8EHMi
+ bnlw==
+X-Gm-Message-State: ACrzQf2/qP1HD7Pq2jd1n4FEsRoyER5unx+/kGBO02JxP1KlIMWU0QAw
+ ucE3KAYRud7lZigx9AqWGg5PGYFGna6V8pVC7sWOg4aG/D0HuUwlgYkk1SAnbiHBOi+WkiYaiwY
+ RvIV0G1lkPvm2CnTDPLbM6QQmKZmm+Yl7hg==
+X-Received: by 2002:a92:d74f:0:b0:300:ad95:35c5 with SMTP id
+ e15-20020a92d74f000000b00300ad9535c5mr25950912ilq.137.1667834336916; 
+ Mon, 07 Nov 2022 07:18:56 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM4lWUzVNR72O39IQE6LeiepbZvM9WXMUgdmYx2bv2/TRXid0tlwA/a3n4EvaTSlM1yrwXs6uQ==
+X-Received: by 2002:a92:d74f:0:b0:300:ad95:35c5 with SMTP id
+ e15-20020a92d74f000000b00300ad9535c5mr25950861ilq.137.1667834336637; 
+ Mon, 07 Nov 2022 07:18:56 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ z101-20020a0293ee000000b0037556012c63sm2771396jah.132.2022.11.07.07.18.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Nov 2022 07:18:55 -0800 (PST)
+Date: Mon, 7 Nov 2022 08:18:53 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH 04/10] vfio: Move storage of allow_unsafe_interrupts to
+ vfio_main.c
+Message-ID: <20221107081853.18727337.alex.williamson@redhat.com>
+In-Reply-To: <Y2kF75zVD581UeR2@nvidia.com>
 References: <0-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
- <10-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
- <20221026153133.44dc05c8.alex.williamson@redhat.com>
- <Y1wjFNxwPRm7S6yZ@nvidia.com>
- <20221031165311.0698e1ea.alex.williamson@redhat.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221031165311.0698e1ea.alex.williamson@redhat.com>
-X-ClientProxiedBy: MN2PR16CA0012.namprd16.prod.outlook.com
- (2603:10b6:208:134::25) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+ <4-v1-4991695894d8+211-vfio_iommufd_jgg@nvidia.com>
+ <20221026152442.4855c5de.alex.williamson@redhat.com>
+ <Y1wiCc33Jh5QY+1f@nvidia.com>
+ <20221031164526.0712e456.alex.williamson@redhat.com>
+ <Y2kF75zVD581UeR2@nvidia.com>
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|IA1PR12MB6042:EE_
-X-MS-Office365-Filtering-Correlation-Id: e4253e08-5b0a-4d12-ff21-08dac0c80aca
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: pLWpK5RTvTKtso2cPOgsl7sL6oNQgOkyo4NA83/AeOZDL/nvyv9GMJdpWU3aIVpyBGLobaB0+ScOWzOwPtW39hVOaQrQFMWrMdOUYpqRXHKZ/ipIj8Gzg6ZokMQ/3ejRlInrfk6TpIdCq+67Q8AA3OmBzBki2JeZ88k7dih2LCNYNNcG+iHhLFAOA3LFJxVV840ay8pJ4ndixIjqxqu5XOPB7AtvxdhFoL85Ulbxx+ZNp3FXx0OD+BWswlKrmRXHrvvF1DvfGid4CZlo4wvh4KNXeDAXCRuSTaNJlIG0OSG7LJbALv6IIgfRHzmjo/G3wPxx5GfAz3cVmw9jfI6LJj7qLSR1Wt2CSuQK3EpxnawtwNQrd1dd5SVQeQqDS2qD2oNMUJ4tnnc99WUEOe7F1D0Kn17iPFlHmtSpiHaJi1dDNk7nSXvj2engjISIS/sXhnFBKxMNDLx3AZkao9xKllXSsCKzAsoX8mQlvxJ2heneHzUWsL/+CWQtfMOwab/FqUHqDWAocliyexChTddKregpqD7PaO/jow+C26i6cmjEXUxfamHRsDsv8Kymf8GTnZHgSmOfTksMjMOAzyFJOSZr1KEAhR/HwAgeV/maV/S8gZpcaxkjaTkq+GUCBtSliNIKA4oyqHa4WfEYQW10Zv7OlVN+pGx0iT9LALgmOT50KJ6Pw0HXWRHYOZRV+tg+X90W0DG3Oqv8be4HzXp6QQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(4636009)(366004)(346002)(396003)(376002)(39860400002)(136003)(451199015)(186003)(6512007)(26005)(6506007)(2616005)(38100700002)(83380400001)(7406005)(5660300002)(7416002)(2906002)(6916009)(6486002)(8936002)(41300700001)(478600001)(4326008)(316002)(66556008)(8676002)(66946007)(66476007)(54906003)(36756003)(86362001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FhrspaPtonHLLLLfaJBGNlVKgf7AkSUqqyL4XFWI/z1at0LMdLjhQKv2uOFx?=
- =?us-ascii?Q?FUkoAoXN8BvafY/UzVCTSUnEh6WWlMxnuguFRd04s+OEwJB6chHJGZNAV7bA?=
- =?us-ascii?Q?vV5McKnnMX+FuSZAuxk6ToIYcaKFjaGyDrQy/ZueYC8YBfW6wWjaCkCdWt/g?=
- =?us-ascii?Q?8nUZZKVLvYniqwnHnGYTotshtKSgmlAIdXLBIWa298lI0FitrRdZc07sZ0Dv?=
- =?us-ascii?Q?EgXlVKkAWpD8PYT4bgkRrK5TGvxZ2jBHBgGZ1uvGajqAKbXM9nisFed8ZX3J?=
- =?us-ascii?Q?ac9/iQ1B8nGRzRMak0ybCg1TKvcK1wM4TpPq7mtz15lHAFLW4yW9GZjYhqjp?=
- =?us-ascii?Q?Mi+ld6RfqUnTFVGM62Ma+W0lNPDwStSSrxdQ5zbMrswg0et9S1izYAkubrkl?=
- =?us-ascii?Q?wSxwXDZVUJRIy8I/PCI0rza735+xepnavxD/r8xHqZvsbMPKbrcztCBXOqh4?=
- =?us-ascii?Q?tQNPj1/Hx1CAjEYQPQ1DlCMLWrWOhJvBSgWDWf0osHeLqGj5+ngn46AbmNMM?=
- =?us-ascii?Q?o4H6t+8NaZze1mYdqrfzlvCC2IZ6FYaDmNch3qqRvT4LMcXzIXdrYdsrp3uy?=
- =?us-ascii?Q?K4+CGTokQ3VoLFebstDXEg71HhlrkK7BP5xp7N68z9yCdP4pzmIlFOwtKS8t?=
- =?us-ascii?Q?etbPYY5o9u4+1f0dPYAAsrhUSLv71gpDxbdj0v52DHHUfwlK1Mqg7BWPQROn?=
- =?us-ascii?Q?Dmc2gtEs/KSJftNVk5Waa8VCDxXl5rwS5WkFKbAqJsiOpY6+4f57TIprSaw8?=
- =?us-ascii?Q?/kOe8CkFM4xE0j01AE2vXM3SqrJv/W6WDcsRa/CVn4WBDifyWbQ1+SaYGh/b?=
- =?us-ascii?Q?fHsBXabk2ERsU0pEB+5WMRq/t1cKpZ2yyWOl/YM6KJZotzTHxtFYOfBTdp59?=
- =?us-ascii?Q?NA4AwznCdVedHTy/ke2G8v4t0v6YAZBgSyJtLK9aeM1QHDNGuwsqwcJce3BL?=
- =?us-ascii?Q?fRBneilylG9hlP7atHccQEMKRgXp31/Pl75VQHM7zXy5EdfYfTlLVl4ayAGF?=
- =?us-ascii?Q?ElPP2zFqufxdzmGZ9s0NanIPrYsP4V1ygxX93JLhFEUZqtTjrWepJmFg2SB2?=
- =?us-ascii?Q?IWuhk0mnHXVHEkpWoBH27+EHCXwlaTfBVwHdXrk0IXmsu+uhaHme8afOmufb?=
- =?us-ascii?Q?NcDyJTaTVj5KKkGbrKWyTheJOYH/N0vTyG65nVEE95s1q5BC3ypYtdyORg6N?=
- =?us-ascii?Q?H22SAn9LTU7v3UYkb6zVITOOlkEcDBWLUHry4n9PdTa9OCbhJjpKu9GFe9ja?=
- =?us-ascii?Q?wAo9+mPb0Z0axGMzIKhfc9YctmvKPalyQEhYkBOA3PUqn/8OBQ97E58LK54L?=
- =?us-ascii?Q?7kNZdwMlFBk1DAi1nX6dOcbfO4FjsUi40g6uFZNs9Xwukv6Myy0lvr9Naj/G?=
- =?us-ascii?Q?NThle6C1MkOehG8dtcP3S766T7ZEcpgR6vuZ7WGeLvzz7tWuLRF2d88vlOxt?=
- =?us-ascii?Q?WxhKrzNo4xNpMLLxOGcY8fAUq29wx7x0TIPihqM/5ZXSX6zNREfk+4qukX2t?=
- =?us-ascii?Q?3XZOydj6slv0dyNtTfsiDlgS/3bZWxA6NfsNH0lqCMO62Ocv8AVBLok8KFs1?=
- =?us-ascii?Q?hovDRp2kGcMau3I+ewg=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e4253e08-5b0a-4d12-ff21-08dac0c80aca
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Nov 2022 13:57:43.6538 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: wxVWrO8NCsDj9oMUJo2GGb3Mz9lEP+fbHvCvwY4l/6dANepnFB1fhfrnVjmBGPK3
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6042
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,96 +90,86 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
- Vineeth Vijayan <vneethv@linux.ibm.com>,
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ dri-devel@lists.freedesktop.org, Vineeth Vijayan <vneethv@linux.ibm.com>,
  Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, Will Deacon <will@kernel.org>,
  Longfang Liu <liulongfang@huawei.com>, linux-s390@vger.kernel.org,
- Yi Liu <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Halil Pasic <pasic@linux.ibm.com>, iommu@lists.linux.dev,
- Nicolin Chen <nicolinc@nvidia.com>,
+ Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
+ Joerg Roedel <joro@8bytes.org>, Halil Pasic <pasic@linux.ibm.com>,
+ iommu@lists.linux.dev, Nicolin Chen <nicolinc@nvidia.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Heiko Carstens <hca@linux.ibm.com>, Zhi Wang <zhi.a.wang@intel.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Kevin Tian <kevin.tian@intel.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, intel-gfx@lists.freedesktop.org,
+ Eric Auger <eric.auger@redhat.com>,
  Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
+ Jason Herne <jjherne@linux.ibm.com>,
  Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
  Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
  Peter Oberparleiter <oberpar@linux.ibm.com>,
  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+ Sven Schnelle <svens@linux.ibm.com>, Robin Murphy <robin.murphy@arm.com>,
+ Lu Baolu <baolu.lu@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Oct 31, 2022 at 04:53:11PM -0600, Alex Williamson wrote:
-> On Fri, 28 Oct 2022 15:44:36 -0300
-> Jason Gunthorpe <jgg@nvidia.com> wrote:
+On Mon, 7 Nov 2022 09:19:43 -0400
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+
+> On Mon, Oct 31, 2022 at 04:45:26PM -0600, Alex Williamson wrote:
 > 
-> > On Wed, Oct 26, 2022 at 03:31:33PM -0600, Alex Williamson wrote:
-> > > On Tue, 25 Oct 2022 15:50:45 -0300
-> > > Jason Gunthorpe <jgg@nvidia.com> wrote:
-> > >   
-> > > > If the VFIO container is compiled out, give a kconfig option for iommufd
-> > > > to provide the miscdev node with the same name and permissions as vfio
-> > > > uses.
-> > > > 
-> > > > The compatibility node supports the same ioctls as VFIO and automatically
-> > > > enables the VFIO compatible pinned page accounting mode.  
+> > > It is one idea, it depends how literal you want to be on "module
+> > > parameters are ABI". IMHO it is a weak form of ABI and the need of
+> > > this paramter in particular is not that common in modern times, AFAIK.
 > > > 
-> > > I think I'd like to see some sort of breadcrumb when /dev/vfio/vfio is
-> > > provided by something other than the vfio container code.  If we intend
-> > > to include this before P2P is resolved, that breadcrumb   
+> > > So perhaps we just also expose it through vfio.ko and expect people to
+> > > migrate. That would give a window were both options are available.  
 > > 
-> > I don't belive I can get P2P done soon enough. I plan to do it after
-> > this is merged. Right now these two series are taking all my time.
-> > 
-> > > (dmesg I'm guessing) might also list any known limitations of the
-> > > compatibility to save time with debugging.  Thanks,  
-> > 
-> > Yes, that makes sense.
-> > 
-> > Do you want a dmesg at module load time, on every open, or a sysfs
-> > something? What seems like it would make it into a bug report?
+> > That might be best.  Ultimately this is an opt-out of a feature that
+> > has security implications, so I'd rather error on the side of requiring
+> > the user to re-assert that opt-out.  It seems the potential good in
+> > eliminating stale or unnecessary options outweighs any weak claims of
+> > preserving an ABI for a module that's no longer in service.  
 > 
-> I think dmesg at module load time should probably be ok, every open
-> seems like harassment and sysfs would require updated support in
-> various bug reporting tools.  Users are often terrible about reporting
-> full dmesg in bugs, but they do often filter it for "IOMMU" or "VFIO",
-> so keep that in mind when crafting the log message.  Thanks,
+> Ok, lets do this
+> 
+> --- a/drivers/vfio/vfio_main.c
+> +++ b/drivers/vfio/vfio_main.c
+> @@ -55,6 +55,11 @@ static struct vfio {
+>  bool vfio_allow_unsafe_interrupts;
+>  EXPORT_SYMBOL_GPL(vfio_allow_unsafe_interrupts);
+>  
+> +module_param_named(allow_unsafe_interrupts,
+> +                  vfio_allow_unsafe_interrupts, bool, S_IRUGO | S_IWUSR);
+> +MODULE_PARM_DESC(allow_unsafe_interrupts,
+> +                "Enable VFIO IOMMU support for on platforms without interrupt remapping support.");
+> +
+>  static DEFINE_XARRAY(vfio_device_set_xa);
+>  static const struct file_operations vfio_group_fops;
+> 
+> > However, I'd question whether vfio is the right place for that new
+> > module option.  As proposed, vfio is only passing it through to
+> > iommufd, where an error related to lack of the hardware feature is
+> > masked behind an -EPERM by the time it gets back to vfio, making any
+> > sort of advisory to the user about the module option convoluted.  It
+> > seems like iommufd should own the option to opt-out universally, not
+> > just through the vfio use case.  Thanks,  
+> 
+> My thinking is this option shouldn't exist at all in other iommufd
+> users. eg I don't see value in VDPA supporting it.
 
-This seems like the right approach, the message comes out once when it
-might be most useful:
+I disagree, the IOMMU interface is responsible for isolating the
+device, this option doesn't make any sense to live in vfio-main, which
+is the reason it was always a type1 option.  If vdpa doesn't allow full
+device access such that it can guarantee that a device cannot generate
+a DMA that can spoof MSI, then it sounds like the flag we pass when
+attaching a device to iommfd should to reflect this difference in usage.
+The driver either requires full isolation, default, or can indicate a
+form of restricted DMA programming that prevents interrupt spoofing.
+The policy whether to permit unsafe configurations should exist in one
+place, iommufd.  Thanks,
 
-@@ -176,8 +176,11 @@ static int iommufd_fops_open(struct inode *inode, struct file *filp)
-         * For compatibility with VFIO when /dev/vfio/vfio is opened we default
-         * to the same rlimit accounting as vfio uses.
-         */
--       if (filp->private_data == &vfio_misc_dev)
-+       if (IS_ENABLED(CONFIG_IOMMUFD_VFIO_CONTAINER) &&
-+           filp->private_data == &vfio_misc_dev) {
-                ictx->account_mode = IOPT_PAGES_ACCOUNT_MM;
-+               pr_info_once("IOMMUFD is providing /dev/vfio/vfio, not VFIO.\n");
-+       }
- 
-        xa_init_flags(&ictx->objects, XA_FLAGS_ALLOC1 | XA_FLAGS_ACCOUNT);
-        ictx->file = filp;
+Alex
 
-Also this is needed:
-
-@@ -446,6 +449,7 @@ module_exit(iommufd_exit);
- 
- #if IS_ENABLED(CONFIG_IOMMUFD_VFIO_CONTAINER)
- MODULE_ALIAS_MISCDEV(VFIO_MINOR);
-+MODULE_ALIAS("devname:vfio/vfio");
- #endif
- MODULE_DESCRIPTION("I/O Address Space Management for passthrough devices");
- MODULE_LICENSE("GPL");
-
-Thanks,
-Jason
