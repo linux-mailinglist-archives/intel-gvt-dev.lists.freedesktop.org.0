@@ -1,54 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DC4662099E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 07:39:51 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D1356209AE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 07:45:08 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 121F010E0F0;
-	Tue,  8 Nov 2022 06:39:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C05E710E20B;
+	Tue,  8 Nov 2022 06:45:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7B00310E0F0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Nov 2022 06:39:46 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 79A8E10E0F0;
+ Tue,  8 Nov 2022 06:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667889586; x=1699425586;
+ t=1667889900; x=1699425900;
  h=date:from:to:cc:subject:message-id:reply-to:references:
  mime-version:in-reply-to;
- bh=fk53m+pi6SFxU8n9j+oS9DeyQ/Em9ioEFA7IQJ8byR4=;
- b=KfeskFlslU8vAny+MHwd7pQCjYaNtV1qNctEGTYkMk+Jye8+qeff9kHl
- Ug/eaLVGyjE4fMjkeLZj3kjF9XqFb8YZFTUHyFE600gOygTWzmlgp2psK
- lRgKdzbdIgkPkvSpDhm5Ja4BFRiXWgau6HElcePLsRTdiH04p+pF47xwB
- 6RIa7Bj+jw+tEkmXUvhp3cHhrEZRP3ExyWs1bw4fIj2d9NGzPhuaDwG+7
- aFT/mesET/w8sXxTMd3GbWszRyrn9QzSTbmwrAwS00oapS9Mq2nMI10ia
- U1C+Q+CtoyCYrRTqSBabBjaRjrGmZLHcHrJW0UVuLSfhhisqWMJTXKAmr A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="309328034"
+ bh=AQcWoCcHM2weWRCMEOUkXBLqWa1s2gGh6x77ixq+6UA=;
+ b=kvMxr94GLRNNRiYxA/af3g3ID3TlUntyLI8bZC67qD58mSYIo3mpjfwf
+ T+IWAFPkXh5oFRi0EJjCVH1w3IsgbPE1orbVvx165wDlGRpI3XrA06RJv
+ mQgveM0ZRbs0lzJiVGgOQsXyvugWTtjEpH3fEX5Vcxr453+yY68+OFfIP
+ vtIEN+e9YLXcqKi7IA1oPtfNaSOcmGcoEJcQYEbw1+WBVRMjasMzQBb4Q
+ ZHW6VXwyIljpEVD4sS5kJGWfgusXAMOYXnrOI5Q4oi2A2nnoK63vsDSaC
+ ZBsMYf6vXAYZhpkooQjO+j2PRdFj3eG/KD2ZiBaQxFX/Y4iHT3jGkheB6 g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="293990107"
 X-IronPort-AV: E=Sophos;i="5.96,147,1665471600"; 
- d="asc'?scan'208";a="309328034"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Nov 2022 22:39:26 -0800
+ d="asc'?scan'208";a="293990107"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Nov 2022 22:44:40 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="699803041"
+X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="667476860"
 X-IronPort-AV: E=Sophos;i="5.96,147,1665471600"; 
- d="asc'?scan'208";a="699803041"
+ d="asc'?scan'208";a="667476860"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by fmsmga008.fm.intel.com with ESMTP; 07 Nov 2022 22:39:24 -0800
-Date: Tue, 8 Nov 2022 14:38:59 +0800
+ by orsmga008.jf.intel.com with ESMTP; 07 Nov 2022 22:44:37 -0800
+Date: Tue, 8 Nov 2022 14:44:12 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Zhi Wang <zhi.wang.linux2@gmail.com>
-Subject: Re: [PATCH 3/3] drm/i915/gvt: show the vGPU status in debugfs
-Message-ID: <20221108063859.GI30028@zhen-hp.sh.intel.com>
-References: <20221104145652.1570-1-zhi.a.wang@intel.com>
- <20221104145652.1570-3-zhi.a.wang@intel.com>
+To: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
+Subject: Re: [PATCH] [next] i915/gvt: remove hardcoded value on crc32_start
+ calculation
+Message-ID: <20221108064412.GJ30028@zhen-hp.sh.intel.com>
+References: <20221030033628.GA279284@mail.google.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="TiqCXmo5T1hvSQQg"
+ protocol="application/pgp-signature"; boundary="SFyWQ0h3ruR435lw"
 Content-Disposition: inline
-In-Reply-To: <20221104145652.1570-3-zhi.a.wang@intel.com>
+In-Reply-To: <20221030033628.GA279284@mail.google.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,88 +61,72 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Kevin Tian <kevin.tian@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Jason Gunthorpe <jgg@nvidia.com>
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@gmail.com>,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---TiqCXmo5T1hvSQQg
+--SFyWQ0h3ruR435lw
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2022.11.04 14:56:52 +0000, Zhi Wang wrote:
-> After using atomic operation to change the vGPU status, showing the vGPU
-> status in the debugfs requires to be updated. This patch adds back the
-> function of showing vGPU status in the debugfs.
+On 2022.10.30 16:36:28 +1300, Paulo Miguel Almeida wrote:
+> struct gvt_firmware_header has a crc32 member in which all members that
+> come after the that field are used to calculate it. The previous
+> implementation added the value '4' (crc32's u32 size) to calculate the
+> crc32_start offset which came across as a bit cryptic until you take a
+> deeper look at the struct.
 >=20
-> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Cc: Kevin Tian <kevin.tian@intel.com>
-> Cc: Jason Gunthorpe <jgg@nvidia.com>
-> Cc: intel-gvt-dev@lists.freedesktop.org
-> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+> This patch changes crc32_start offset to the 'version' member which is
+> the first member of the struct gvt_firmware_header after crc32.
+>=20
+> It's worth mentioning that doing a build before/after this patch results
+> in no binary output differences.
+>=20
+> Signed-off-by: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.c=
+om>
 > ---
->  drivers/gpu/drm/i915/gvt/debugfs.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
+>  drivers/gpu/drm/i915/gvt/firmware.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gv=
-t/debugfs.c
-> index bb301bc974a4..a930ba89ac86 100644
-> --- a/drivers/gpu/drm/i915/gvt/debugfs.c
-> +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
-> @@ -151,6 +151,20 @@ DEFINE_SIMPLE_ATTRIBUTE(vgpu_scan_nonprivbb_fops,
->  			vgpu_scan_nonprivbb_get, vgpu_scan_nonprivbb_set,
->  			"0x%llx\n");
+> diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/g=
+vt/firmware.c
+> index 54fe442238c6..a683c22d5b64 100644
+> --- a/drivers/gpu/drm/i915/gvt/firmware.c
+> +++ b/drivers/gpu/drm/i915/gvt/firmware.c
+> @@ -104,7 +104,7 @@ static int expose_firmware_sysfs(struct intel_gvt *gv=
+t)
 > =20
-> +static int vgpu_status_get(void *data, u64 *val)
-> +{
-> +	struct intel_vgpu *vgpu =3D (struct intel_vgpu *)data;
-> +
-
-Need *val =3D 0;
-
-> +	if (test_bit(INTEL_VGPU_STATUS_ATTACHED, vgpu->status))
-> +		*val |=3D (1 << INTEL_VGPU_STATUS_ATTACHED);
-> +	if (test_bit(INTEL_VGPU_STATUS_ACTIVE, vgpu->status))
-> +		*val |=3D (1 << INTEL_VGPU_STATUS_ACTIVE);
-> +
-> +	return 0;
-> +}
-> +
-> +DEFINE_SIMPLE_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx=
-\n");
-> +
->  /**
->   * intel_gvt_debugfs_add_vgpu - register debugfs entries for a vGPU
->   * @vgpu: a vGPU
-> @@ -166,6 +180,8 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vg=
-pu)
->  			    &vgpu_mmio_diff_fops);
->  	debugfs_create_file("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
->  			    &vgpu_scan_nonprivbb_fops);
-> +	debugfs_create_file("status", 0644, vgpu->debugfs, vgpu,
-> +			    &vgpu_status_fops);
->  }
+>  	memcpy(p, gvt->firmware.mmio, info->mmio_size);
 > =20
->  /**
+> -	crc32_start =3D offsetof(struct gvt_firmware_header, crc32) + 4;
+> +	crc32_start =3D offsetof(struct gvt_firmware_header, version);
+>  	h->crc32 =3D crc32_le(0, firmware + crc32_start, size - crc32_start);
+> =20
+>  	firmware_attr.size =3D size;
 > --=20
-> 2.25.1
+> 2.25.4
 >=20
-
-With above change.
 
 Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
---TiqCXmo5T1hvSQQg
+thanks!
+
+--SFyWQ0h3ruR435lw
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY2n5gwAKCRCxBBozTXgY
-JzaoAJ9djBdb2ZeGIQ4uJ1P3DsO1dlJyYwCfWipj8H6E1mNC3JBCevvK1N/BIiU=
-=+Da/
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY2n6vAAKCRCxBBozTXgY
+J9NOAJ90+/zrOO+G2J0btugVOX3Rka6vUQCgnzp1wLu+ynVS2gklxJ1YxffpPhc=
+=je3g
 -----END PGP SIGNATURE-----
 
---TiqCXmo5T1hvSQQg--
+--SFyWQ0h3ruR435lw--
