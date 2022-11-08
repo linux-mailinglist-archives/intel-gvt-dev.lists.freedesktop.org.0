@@ -1,52 +1,77 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB3B6621D99
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 21:25:07 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2137621F3C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 23:28:44 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D768010E22A;
-	Tue,  8 Nov 2022 20:25:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C5ED110E52E;
+	Tue,  8 Nov 2022 22:28:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6605F10E22A
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0AD8088DE5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  8 Nov 2022 20:25:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667939102; x=1699475102;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=wOrl4S85Zy0jil9X84ciFFiujoUBt77GnkdTvrL3968=;
- b=D+NEQoAzr1lgrrePUQ18hLVvY2KuJVywU0+c9xF0iyMYxzQP0ztWZOPE
- Up1j0tb9Ej33DynKRHzSmOropYBvrf+J74b4rkjHM8gQtBmDG1oCsCxf/
- 4ylj3oNh6jeHjZvMSgFaDwigLR5S3TS4EgehcgBN9Oy7B+C/g/WiDEbPU
- yOYLkovJZozigG/gImpYsI4plOBu3YQI/Ppc00+EW37+9ffEUpttDl6BJ
- 1saFGSa2f3+KQaEzvrrPkqAeXz7XsoBu6iGkfko5cMXbvHXq/ZlAflT2C
- Z4QAT6RmjLpnj5e80wkTEC5C3Zo0vFnWmuNNgO2EC7jTilv//qUj6smpL w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="291187819"
-X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; d="scan'208";a="291187819"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2022 12:25:01 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="742102609"
-X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; d="scan'208";a="742102609"
-Received: from lkp-server01.sh.intel.com (HELO e783503266e8) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 08 Nov 2022 12:25:00 -0800
-Received: from kbuild by e783503266e8 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1osV9X-0000aW-2Y;
- Tue, 08 Nov 2022 20:24:59 +0000
-Date: Wed, 09 Nov 2022 04:24:31 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt:gvt-next] BUILD SUCCESS
- 50468ca2e2e1ce882f060a8c263f678affe112db
-Message-ID: <636abaff.t+mH5DqSE40LF5/5%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ Tue,  8 Nov 2022 22:28:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1667946518;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pAwH+5JDvufKDL3NMoeBuf7w8Ln38eP9Ts8frUc7hNk=;
+ b=YUvGaK1Tyw/McKK6jwIM1IWR2zkZfxHnkJ3W1XM7GOgjOPs7v4ZWe1OwqedjczOkAbkB8h
+ EZWtdHHtGOXR+tXgbtkMJ6xNNyVIZPIym+oO4dncP52tAjnucKqqVki4Z3qoORF069j7Bn
+ JxC0wgeVxOE+tN7xv/DSNWSXskQehAQ=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-78-VElbgtW5M5SafbwwHcKIqg-1; Tue, 08 Nov 2022 17:28:37 -0500
+X-MC-Unique: VElbgtW5M5SafbwwHcKIqg-1
+Received: by mail-il1-f199.google.com with SMTP id
+ a15-20020a056e0208af00b00300806a52b6so12273023ilt.22
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 08 Nov 2022 14:28:37 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=pAwH+5JDvufKDL3NMoeBuf7w8Ln38eP9Ts8frUc7hNk=;
+ b=j5RQnThiam0o5oqCn5wNZZvULfikj2rD7hAOyE3MJrg3riMZJqi9zpAbGq5wQk8G0s
+ o40OmRe5EwY2gSiGHwyHeHND5YU78nLR7LUTEibR0EmZcYZ2q1BOfFICjBsly/Y82MoD
+ rEnjezK5HLgbelVUSp15hWXUAwG/IVAr1ZHUj9bIhxPJ/A7TpV9CLz7rvqO3MIxldaiB
+ GGYufGouDPYx9RTt0oZ7fQa/9m7V/yHJh/qfC7sc3KgLmmjEi6duZ/ZojoYxOHEVTiaV
+ NN2N3cEP0S0c1xh91gos8a6YaPsNBWtFkGH6VG8MCL7kHIUSLFDHXp/ViDy0hzo/+LET
+ RUog==
+X-Gm-Message-State: ACrzQf3SAg3T+szXKUAEDu8PaXI7X9Wvns6jJwWvk3hle9wQ+me7j4au
+ ZpYI9Xe4V54yWxYaL4Yl+Eu0t6o12jwUr6Yp58eCzo4iDMWlPctnp0l3ia2aod+X+d02jKYreb4
+ 18lkLzqHG6xY/vjtUjOfOhiX4xYsB56fIXQ==
+X-Received: by 2002:a05:6638:3e1b:b0:373:9526:ff23 with SMTP id
+ co27-20020a0566383e1b00b003739526ff23mr1059584jab.25.1667946515340; 
+ Tue, 08 Nov 2022 14:28:35 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM7qQUvxc2/UNOHomsJy1dPTa1Nkgqu6DzA5Et+Lrzoib29h+Bm9PbubEw1u6deu68awl9vxhQ==
+X-Received: by 2002:a05:6638:3e1b:b0:373:9526:ff23 with SMTP id
+ co27-20020a0566383e1b00b003739526ff23mr1059545jab.25.1667946515058; 
+ Tue, 08 Nov 2022 14:28:35 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ k9-20020a026609000000b003753b6452f9sm4039228jac.35.2022.11.08.14.28.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Nov 2022 14:28:34 -0800 (PST)
+Date: Tue, 8 Nov 2022 15:28:31 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v2 10/11] vfio: Make vfio_container optionally compiled
+Message-ID: <20221108152831.1a2ed3df.alex.williamson@redhat.com>
+In-Reply-To: <10-v2-65016290f146+33e-vfio_iommufd_jgg@nvidia.com>
+References: <0-v2-65016290f146+33e-vfio_iommufd_jgg@nvidia.com>
+ <10-v2-65016290f146+33e-vfio_iommufd_jgg@nvidia.com>
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -60,162 +85,108 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
+ Longfang Liu <liulongfang@huawei.com>, linux-s390@vger.kernel.org, "Liu,
+ Yi L" <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Halil Pasic <pasic@linux.ibm.com>, iommu@lists.linux.dev,
+ Nicolin Chen <nicolinc@nvidia.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Harald Freudenberger <freude@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Tony Krowiak <akrowiak@linux.ibm.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-next
-branch HEAD: 50468ca2e2e1ce882f060a8c263f678affe112db  drm/i915/gvt: Remove the unused function get_pt_type()
+On Mon,  7 Nov 2022 20:52:54 -0400
+Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-elapsed time: 727m
+> Add a kconfig CONFIG_VFIO_CONTAINER that controls compiling the container
+> code. If 'n' then only iommufd will provide the container service. All the
+> support for vfio iommu drivers, including type1, will not be built.
+> 
+> This allows a compilation check that no inappropriate dependencies between
+> the device/group and container have been created.
+> 
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/vfio/Kconfig  | 35 +++++++++++++++--------
+>  drivers/vfio/Makefile |  4 +--
+>  drivers/vfio/vfio.h   | 65 +++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 91 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/vfio/Kconfig b/drivers/vfio/Kconfig
+> index 1118d322eec97d..286c1663bd7564 100644
+> --- a/drivers/vfio/Kconfig
+> +++ b/drivers/vfio/Kconfig
+> @@ -3,8 +3,8 @@ menuconfig VFIO
+>  	tristate "VFIO Non-Privileged userspace driver framework"
+>  	select IOMMU_API
+>  	depends on IOMMUFD || !IOMMUFD
+> -	select VFIO_IOMMU_TYPE1 if MMU && (X86 || S390 || ARM || ARM64)
+>  	select INTERVAL_TREE
+> +	select VFIO_CONTAINER if IOMMUFD=n
+>  	help
+>  	  VFIO provides a framework for secure userspace device drivers.
+>  	  See Documentation/driver-api/vfio.rst for more details.
+> @@ -12,6 +12,18 @@ menuconfig VFIO
+>  	  If you don't know what to do here, say N.
+>  
+>  if VFIO
+> +config VFIO_CONTAINER
+> +	bool "Support for the VFIO container /dev/vfio/vfio"
+> +	select VFIO_IOMMU_TYPE1 if MMU && (X86 || S390 || ARM || ARM64)
+> +	default y
+> +	help
+> +	  The VFIO container is the classic interface to VFIO for establishing
+> +	  IOMMU mappings. If N is selected here then IOMMUFD must be used to
+> +	  manage the mappings.
+> +
+> +	  Unless testing IOMMUFD say Y here.
+> +
+> +if VFIO_CONTAINER
+>  config VFIO_IOMMU_TYPE1
+>  	tristate
+>  	default n
+> @@ -21,16 +33,6 @@ config VFIO_IOMMU_SPAPR_TCE
+>  	depends on SPAPR_TCE_IOMMU
+>  	default VFIO
+>  
+> -config VFIO_SPAPR_EEH
+> -	tristate
+> -	depends on EEH && VFIO_IOMMU_SPAPR_TCE
+> -	default VFIO
+> -
+> -config VFIO_VIRQFD
+> -	tristate
+> -	select EVENTFD
+> -	default n
+> -
+>  config VFIO_NOIOMMU
+>  	bool "VFIO No-IOMMU support"
+>  	help
 
-configs tested: 135
-configs skipped: 8
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Perhaps this should have been obvious, but I'm realizing that
+vfio-noiommu mode is completely missing without VFIO_CONTAINER, which
+seems a barrier to deprecating VFIO_CONTAINER and perhaps makes it a
+question whether IOMMUFD should really be taking over /dev/vfio/vfio.
+No-iommu mode has users.  Thanks,
 
-gcc tested configs:
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-x86_64                            allnoconfig
-x86_64                           rhel-8.3-kvm
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-m68k                             allyesconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-s390                                defconfig
-s390                             allmodconfig
-arc                                 defconfig
-alpha                               defconfig
-s390                             allyesconfig
-i386                             allyesconfig
-i386                                defconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-ia64                             allmodconfig
-powerpc                           allnoconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-sh                               allmodconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-arm                      footbridge_defconfig
-arm                           tegra_defconfig
-sh                           sh2007_defconfig
-arc                    vdk_hs38_smp_defconfig
-sparc                            alldefconfig
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                 randconfig-a001-20221107
-i386                 randconfig-a006-20221107
-i386                 randconfig-a003-20221107
-i386                 randconfig-a002-20221107
-i386                 randconfig-a005-20221107
-i386                 randconfig-a004-20221107
-powerpc                        warp_defconfig
-microblaze                          defconfig
-m68k                        stmark2_defconfig
-powerpc                      pasemi_defconfig
-x86_64               randconfig-a006-20221107
-x86_64               randconfig-a001-20221107
-x86_64               randconfig-a004-20221107
-x86_64               randconfig-a003-20221107
-x86_64               randconfig-a005-20221107
-x86_64               randconfig-a002-20221107
-x86_64                        randconfig-a011
-x86_64                        randconfig-a013
-x86_64                        randconfig-a015
-arm                             pxa_defconfig
-riscv                               defconfig
-sh                            titan_defconfig
-mips                  decstation_64_defconfig
-powerpc                mpc7448_hpc2_defconfig
-nios2                               defconfig
-powerpc                         ps3_defconfig
-arm                           viper_defconfig
-openrisc                    or1ksim_defconfig
-powerpc                      ppc40x_defconfig
-alpha                            alldefconfig
-mips                        vocore2_defconfig
-sh                             sh03_defconfig
-powerpc                     rainier_defconfig
-arm                           sama5_defconfig
-sh                     sh7710voipgw_defconfig
-sh                          rsk7203_defconfig
-powerpc                     asp8347_defconfig
-nios2                            alldefconfig
-powerpc                    sam440ep_defconfig
-arm                             ezx_defconfig
-sh                        edosk7705_defconfig
-i386                          randconfig-c001
-sh                           se7206_defconfig
-ia64                         bigsur_defconfig
-sh                          rsk7269_defconfig
-arm                        shmobile_defconfig
-arm                         at91_dt_defconfig
-mips                      loongson3_defconfig
-sh                  sh7785lcr_32bit_defconfig
-powerpc                     sequoia_defconfig
-powerpc                     mpc83xx_defconfig
-powerpc                       holly_defconfig
-i386                          debian-10.3-kvm
-i386                        debian-10.3-kunit
-i386                         debian-10.3-func
-arm                             rpc_defconfig
-arc                              alldefconfig
-sparc                       sparc32_defconfig
-arm                          exynos_defconfig
-mips                          rb532_defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-arm                        cerfcube_defconfig
-arm                       aspeed_g5_defconfig
-parisc                generic-32bit_defconfig
-mips                           xway_defconfig
-arm                        trizeps4_defconfig
-arm                           sunxi_defconfig
+Alex
 
-clang tested configs:
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-hexagon              randconfig-r041-20221108
-hexagon              randconfig-r045-20221108
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-i386                          randconfig-a011
-i386                          randconfig-a013
-i386                          randconfig-a015
-x86_64                        randconfig-k001
-powerpc                     tqm8560_defconfig
-arm                           omap1_defconfig
-mips                     cu1000-neo_defconfig
-arm64                            allyesconfig
-riscv                randconfig-r042-20221107
-hexagon              randconfig-r041-20221107
-hexagon              randconfig-r045-20221107
-s390                 randconfig-r044-20221107
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
