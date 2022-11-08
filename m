@@ -1,53 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D1356209AE
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 07:45:08 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39E7F6209E8
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 08:15:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C05E710E20B;
-	Tue,  8 Nov 2022 06:45:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ED87D10E20B;
+	Tue,  8 Nov 2022 07:15:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 79A8E10E0F0;
- Tue,  8 Nov 2022 06:45:00 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CE29F10E20B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  8 Nov 2022 07:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667889900; x=1699425900;
+ t=1667891743; x=1699427743;
  h=date:from:to:cc:subject:message-id:reply-to:references:
  mime-version:in-reply-to;
- bh=AQcWoCcHM2weWRCMEOUkXBLqWa1s2gGh6x77ixq+6UA=;
- b=kvMxr94GLRNNRiYxA/af3g3ID3TlUntyLI8bZC67qD58mSYIo3mpjfwf
- T+IWAFPkXh5oFRi0EJjCVH1w3IsgbPE1orbVvx165wDlGRpI3XrA06RJv
- mQgveM0ZRbs0lzJiVGgOQsXyvugWTtjEpH3fEX5Vcxr453+yY68+OFfIP
- vtIEN+e9YLXcqKi7IA1oPtfNaSOcmGcoEJcQYEbw1+WBVRMjasMzQBb4Q
- ZHW6VXwyIljpEVD4sS5kJGWfgusXAMOYXnrOI5Q4oi2A2nnoK63vsDSaC
- ZBsMYf6vXAYZhpkooQjO+j2PRdFj3eG/KD2ZiBaQxFX/Y4iHT3jGkheB6 g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="293990107"
+ bh=W6JK14ZIIXOl4qqMHN2iO99NeJsdlvf6fnL3g4SGVxc=;
+ b=eq8IwZZNDfJTmak55CFIUG6/NkZnMplg0Je8cFm740Y2rWPqCq83UFfI
+ vCStFdNM4FH5VCrjw5Zhu0zLvpwSWWyoIs0TVhE328K65v/48AR3rHL2f
+ K2cSLRxlqbA/Vi87SJQe5ZHNtnCp6tfqrvQoe07/Ju/n5KFHqi0fKz3f9
+ VZcUAdDRgJJxx90a8KhH084bZYTSBN/Hs9ozZ7N2/ea2k7PsRqZwRnxJF
+ h81cSKX/iAxhqo7ddSuSWe8VXfxI0Mvt6LYdrec+XjZMQIqpDD9GG2i6b
+ H99ydLpVdYGYSzC/aR3SQKgF+6rQWHATrnc6GqTrwKwtJsZI9gO5TS6JC A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="312416073"
 X-IronPort-AV: E=Sophos;i="5.96,147,1665471600"; 
- d="asc'?scan'208";a="293990107"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Nov 2022 22:44:40 -0800
+ d="asc'?scan'208";a="312416073"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Nov 2022 23:15:39 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="667476860"
+X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="614177851"
 X-IronPort-AV: E=Sophos;i="5.96,147,1665471600"; 
- d="asc'?scan'208";a="667476860"
+ d="asc'?scan'208";a="614177851"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by orsmga008.jf.intel.com with ESMTP; 07 Nov 2022 22:44:37 -0800
-Date: Tue, 8 Nov 2022 14:44:12 +0800
+ by orsmga006.jf.intel.com with ESMTP; 07 Nov 2022 23:15:37 -0800
+Date: Tue, 8 Nov 2022 15:15:12 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
-Subject: Re: [PATCH] [next] i915/gvt: remove hardcoded value on crc32_start
- calculation
-Message-ID: <20221108064412.GJ30028@zhen-hp.sh.intel.com>
-References: <20221030033628.GA279284@mail.google.com>
+To: Zhi Wang <zhi.a.wang@intel.com>
+Subject: Re: [PATCH 1/3] drm/i915/gvt: remove the vgpu->released and its
+ sanity check
+Message-ID: <20221108071512.GK30028@zhen-hp.sh.intel.com>
+References: <20221104145652.1570-1-zhi.a.wang@intel.com>
+ <20221108061957.GG30028@zhen-hp.sh.intel.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="SFyWQ0h3ruR435lw"
+ protocol="application/pgp-signature"; boundary="hwvH6HDNit2nSK4j"
 Content-Disposition: inline
-In-Reply-To: <20221030033628.GA279284@mail.google.com>
+In-Reply-To: <20221108061957.GG30028@zhen-hp.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,72 +63,99 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@gmail.com>,
+Cc: Kevin Tian <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Zhi Wang <zhi.wang.linux2@gmail.com>, intel-gvt-dev@lists.freedesktop.org,
  Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---SFyWQ0h3ruR435lw
+--hwvH6HDNit2nSK4j
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2022.10.30 16:36:28 +1300, Paulo Miguel Almeida wrote:
-> struct gvt_firmware_header has a crc32 member in which all members that
-> come after the that field are used to calculate it. The previous
-> implementation added the value '4' (crc32's u32 size) to calculate the
-> crc32_start offset which came across as a bit cryptic until you take a
-> deeper look at the struct.
+On 2022.11.08 14:19:57 +0800, Zhenyu Wang wrote:
+> On 2022.11.04 14:56:50 +0000, Zhi Wang wrote:
+> > The life cycle of a vGPU, which is represented by a vfio_device, has be=
+en
+> > managed by the VFIO core logic. Remove the vgpu->released, which was us=
+ed
+> > for a sanity check on the removal path of the vGPU instance. The sanity
+> > check has already been covered in the VFIO core logic.
+> >=20
+> > Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > Cc: Kevin Tian <kevin.tian@intel.com>
+> > Cc: Jason Gunthorpe <jgg@nvidia.com>
+> > Cc: intel-gvt-dev@lists.freedesktop.org
+> > Suggested-by: Alex Williamson <alex.williamson@redhat.com>
+> > Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+> > ---
+> >  drivers/gpu/drm/i915/gvt/gvt.h   | 2 --
+> >  drivers/gpu/drm/i915/gvt/kvmgt.c | 4 ----
+> >  2 files changed, 6 deletions(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/=
+gvt.h
+> > index dbf8d7470b2c..62823c0e13ab 100644
+> > --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> > +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> > @@ -227,8 +227,6 @@ struct intel_vgpu {
+> >  	unsigned long nr_cache_entries;
+> >  	struct mutex cache_lock;
+> > =20
+> > -	atomic_t released;
+> > -
+> >  	struct kvm_page_track_notifier_node track_node;
+> >  #define NR_BKT (1 << 18)
+> >  	struct hlist_head ptable[NR_BKT];
+> > diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gv=
+t/kvmgt.c
+> > index 7a45e5360caf..897b6fdbbaed 100644
+> > --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > @@ -684,7 +684,6 @@ static int intel_vgpu_open_device(struct vfio_devic=
+e *vfio_dev)
+> > =20
+> >  	intel_gvt_activate_vgpu(vgpu);
+> > =20
+> > -	atomic_set(&vgpu->released, 0);
+> >  	return 0;
+> >  }
+> > =20
+> > @@ -706,9 +705,6 @@ static void intel_vgpu_close_device(struct vfio_dev=
+ice *vfio_dev)
+> >  	if (!vgpu->attached)
+> >  		return;
+> > =20
+> > -	if (atomic_cmpxchg(&vgpu->released, 0, 1))
+> > -		return;
+> > -
+> >  	intel_gvt_release_vgpu(vgpu);
+> > =20
+> >  	debugfs_remove(debugfs_lookup(KVMGT_DEBUGFS_FILENAME, vgpu->debugfs));
+> > --=20
+> > 2.25.1
+> >=20
 >=20
-> This patch changes crc32_start offset to the 'version' member which is
-> the first member of the struct gvt_firmware_header after crc32.
->=20
-> It's worth mentioning that doing a build before/after this patch results
-> in no binary output differences.
->=20
-> Signed-off-by: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.c=
-om>
-> ---
->  drivers/gpu/drm/i915/gvt/firmware.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/g=
-vt/firmware.c
-> index 54fe442238c6..a683c22d5b64 100644
-> --- a/drivers/gpu/drm/i915/gvt/firmware.c
-> +++ b/drivers/gpu/drm/i915/gvt/firmware.c
-> @@ -104,7 +104,7 @@ static int expose_firmware_sysfs(struct intel_gvt *gv=
-t)
-> =20
->  	memcpy(p, gvt->firmware.mmio, info->mmio_size);
-> =20
-> -	crc32_start =3D offsetof(struct gvt_firmware_header, crc32) + 4;
-> +	crc32_start =3D offsetof(struct gvt_firmware_header, version);
->  	h->crc32 =3D crc32_le(0, firmware + crc32_start, size - crc32_start);
-> =20
->  	firmware_attr.size =3D size;
-> --=20
-> 2.25.4
->=20
+> Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+Note that I met issue of your author mail zhi.wang.linux2@gmail.com is not =
+the one
+in signed-off-by, I fixed this one by hand. Could you use proper mail in fo=
+llowing send?
 
-thanks!
+thanks
 
---SFyWQ0h3ruR435lw
+--hwvH6HDNit2nSK4j
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY2n6vAAKCRCxBBozTXgY
-J9NOAJ90+/zrOO+G2J0btugVOX3Rka6vUQCgnzp1wLu+ynVS2gklxJ1YxffpPhc=
-=je3g
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY2oB+wAKCRCxBBozTXgY
+J7MlAJ9zJ0hh6TL6tfu2SjyvHf2kpA0q+QCbBdL0/pKqTc2T3WMvB94GqggY3RM=
+=9sQ9
 -----END PGP SIGNATURE-----
 
---SFyWQ0h3ruR435lw--
+--hwvH6HDNit2nSK4j--
