@@ -2,100 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 752BB62095C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 07:11:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D1C63620983
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  8 Nov 2022 07:20:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 488AA10E208;
-	Tue,  8 Nov 2022 06:11:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 60FA810E1FB;
+	Tue,  8 Nov 2022 06:20:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2061.outbound.protection.outlook.com [40.107.92.61])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 52FC710E1FB;
- Tue,  8 Nov 2022 06:11:18 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mB77nHgcIwBe/gDrvOuxvZFGTq7XY2Yv2GdUWNBJfu50+beWoMKOW7CLGDuruZJi/zbCBr0yO+NmAhxVjoijWKfxlTOCQ1vYWjQaDQ7vr2j60BLPCNKD7gHOddlTPcVGBLtYRusR5s4sFw7cfAmOhoCqRtnmkz77+g6eTJAD5JzjebCq35yoshpuWj54Yy6nbadKkFPcx3etZFRTpX4LebgA09GdTmi/p68UrW5U4j6uumcLQt/UKbeJOQnXDFL+J+HifL6tBqSu75Vr7b8E8yNifoohjGXIjer2axue8OFudxlvrr+NNU+VvBzWjrM2//KEazAqAKPSCyEIQzGUNg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WnoioEVcetE6Yu2IPySjPOqBNWEAAW/hHxIXxOXLPow=;
- b=biqu/XT3gOcXP05wI/rItoYuZ9eSUXjndP0OI1sbN/2YsAkOLI6aCXluX5Zmy0TSTUVZpkQAJMJ6S0mww8TPM/CiWihBc8Ywi1LIAyNF7Z+sstvoZwtnkDgEET6pXliLdJ5cLIhmjOIBWg3f3rGhDOB5uplYlv5JdsDPbPeyNwErdJuiuEgzSx++AdJz24vellj0zbRjO/Q50uhG6cDp2YBqtZTDfphbOl2LyH5+bxJgvSWwhwXPE7kGZ0H7wObAuG22DN8sYRhV6t+Ld6JebakwbsyXeHhMc5t8c1kIuCfwVgQqBdrIlbPDcdDDEj8cs2ZM0p8V0MYiBscp+PQyRg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WnoioEVcetE6Yu2IPySjPOqBNWEAAW/hHxIXxOXLPow=;
- b=OQTdYViNzy2SXdnmQn79OYy2Wp1KHQjeWvzg+yRucidgTxeO5H3pS85ryTBxSNDTsFJ/9yIFpHLbCgRIMMGrARLqBeuXa80X0+0VdWhVDENlp0byB21off4IhyorIBPteX3RXAEY6yDavJno+GcWGO6iP33J3SonndIpbYq9rrO06cc++wivnHR68+feGoaoKo87RJCm8ii4wh6KrBPEkVBBpfB6sN0HIUn+cTcnfZ6DyU1vCn+ihC+g8BnP8F8dlD+cKaDqbk2PVt93k9Tu9teX7fG9m5yjC6GwetqTxEi1gGGAMDX4ql/MY0ULg4DZloba2O8jVsXgVEsU8gUgKA==
-Received: from BN9PR03CA0474.namprd03.prod.outlook.com (2603:10b6:408:139::29)
- by CY5PR12MB6623.namprd12.prod.outlook.com (2603:10b6:930:41::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.27; Tue, 8 Nov
- 2022 06:11:15 +0000
-Received: from BN8NAM11FT007.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:139:cafe::6b) by BN9PR03CA0474.outlook.office365.com
- (2603:10b6:408:139::29) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.26 via Frontend
- Transport; Tue, 8 Nov 2022 06:11:15 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BN8NAM11FT007.mail.protection.outlook.com (10.13.177.109) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5791.20 via Frontend Transport; Tue, 8 Nov 2022 06:11:15 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Mon, 7 Nov 2022
- 22:11:03 -0800
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29; Mon, 7 Nov 2022
- 22:11:03 -0800
-Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com (10.129.68.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29 via Frontend
- Transport; Mon, 7 Nov 2022 22:11:00 -0800
-Date: Mon, 7 Nov 2022 22:10:59 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v2 07/11] vfio-iommufd: Support iommufd for physical VFIO
- devices
-Message-ID: <Y2ny84qOFQhtYVPF@Asurada-Nvidia>
-References: <0-v2-65016290f146+33e-vfio_iommufd_jgg@nvidia.com>
- <7-v2-65016290f146+33e-vfio_iommufd_jgg@nvidia.com>
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0849E10E1FB
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  8 Nov 2022 06:20:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1667888432; x=1699424432;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=JtPtQveGJ8egC8PaYrVN7lFHsZd+HNlUQHks51bie4M=;
+ b=KtCzem7F83XzbuUiZO3S1Z/i8QXoyt+bS9nMy6K+uFkzo3pRm9zAqfVZ
+ m7oXaE/dG+2w1NF1xpWSdeDDZVRYa4fcZvexvsWfV88mEtDFCKcNgBtfF
+ ErmI12fFhmnFAU+nJNut4OLQp+QgVl4AD8YHYE6gYTX9mrJ9kqXvwLuUu
+ B4w7Gsge0g89zFUvjWjt7bkEPIUD6f574M/fB6k+RSjLUV1WSsVIlVMor
+ jkPi7Zmhb2tEq4mTRia9CBnMAkfeo3vqfL9RFZD22DIShz2O3QHtDPInc
+ rvuoTw4Dliebf2NKiEFML6QyEluwjI2r8Dl8SX2Jr5taOfzr1lPo4Gtc1 w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="312405711"
+X-IronPort-AV: E=Sophos;i="5.96,147,1665471600"; 
+ d="asc'?scan'208";a="312405711"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Nov 2022 22:20:24 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10524"; a="587257341"
+X-IronPort-AV: E=Sophos;i="5.96,147,1665471600"; 
+ d="asc'?scan'208";a="587257341"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
+ by orsmga003.jf.intel.com with ESMTP; 07 Nov 2022 22:20:22 -0800
+Date: Tue, 8 Nov 2022 14:19:57 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Zhi Wang <zhi.wang.linux2@gmail.com>
+Subject: Re: [PATCH 1/3] drm/i915/gvt: remove the vgpu->released and its
+ sanity check
+Message-ID: <20221108061957.GG30028@zhen-hp.sh.intel.com>
+References: <20221104145652.1570-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="FCuugMFkClbJLl1L"
 Content-Disposition: inline
-In-Reply-To: <7-v2-65016290f146+33e-vfio_iommufd_jgg@nvidia.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT007:EE_|CY5PR12MB6623:EE_
-X-MS-Office365-Filtering-Correlation-Id: d97beff8-2244-4707-e96b-08dac1500b2a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: eX/DR9d+WdmomNfqfq9LukMvFhRrxvqoBdlIzG396PRBPZiFVwezyg9OhmdoftZtaMoEnNiDQIuJSs5SiX/cf27tnnuI1xnPyyJh0vlBntzHq5lCyzYk67CJFDY1bzOolIth5MwGvz5Q5fa2E/OJNWjwsH5so5v2kwF6ZbCIISM7P8t6BLUYPiR+vtasm8vZ0M5YoTmjnUwEckKXKk4S9NfUW/6kcWtAAjbdOWgPjmoXMUxsNdEvN/OZpJR+vDZ1t/0Vd+348CKnI66sSFqdQPaR+sePlCY1u/xhLL/VZkpT618hxx8WKQBCzknlWvMnItgEhfrr+C6ZIaj1B+InL5FfAm91ZKwH/ZFOgAMPx7QE87xQg5WqKpYoNMA+27/pt/IiW05vvgoJOGqnak3qEBJN8HiPkho2uOM6SldQi6dTyH1n/6FrwHsJWCcvDtuMjU4jkOCsm/Jg99Hm/5pDGtoRi+QqahA3jZneoC1f1p1oobq5hXTpz+lSqWcKDRXnYqdeffnuH07YpCMk/miwMne4VD+H7mEEBnchz1QXyJQVVgAPoQ9wAaYQ9emhQVrWiuzEDPjxzLqBCs90/Bkz/FTrp9fhheTVjDP2Tp9nMFT14vXroDuCP/QmY/Grn915oe7ZpCSrjIozoFSyR8ngEveTzUrgONUp5mEP3KD+La+6unZlM4ZShQ6jatdEOa4IY3HNsvzYNIAnli0GhzokeS0wRqCVhQAUd9EU6cFHk4ma0M9fcW20qU8m4fsf9fXR3s7T4bjRwpOhCEGvUUKm1A==
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230022)(4636009)(376002)(346002)(136003)(39860400002)(396003)(451199015)(36840700001)(46966006)(40470700004)(82310400005)(36860700001)(83380400001)(33716001)(86362001)(82740400003)(7636003)(356005)(55016003)(478600001)(40480700001)(6862004)(8936002)(5660300002)(7406005)(7416002)(70586007)(70206006)(8676002)(4326008)(316002)(54906003)(6636002)(41300700001)(26005)(9686003)(186003)(426003)(47076005)(40460700003)(336012)(2906002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Nov 2022 06:11:15.3221 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d97beff8-2244-4707-e96b-08dac1500b2a
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT007.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6623
+In-Reply-To: <20221104145652.1570-1-zhi.a.wang@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,72 +61,89 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Kevin Tian <kevin.tian@intel.com>, dri-devel@lists.freedesktop.org,
- Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
- Longfang Liu <liulongfang@huawei.com>, linux-s390@vger.kernel.org, "Liu,
- Yi L" <yi.l.liu@intel.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>, Halil
- Pasic <pasic@linux.ibm.com>, iommu@lists.linux.dev,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>, Jason
- Herne <jjherne@linux.ibm.com>, Eric
- Farman <farman@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, Jani Nikula <jani.nikula@linux.intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Harald Freudenberger <freude@linux.ibm.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Rodrigo
- Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Yishai Hadas <yishaih@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Sven Schnelle <svens@linux.ibm.com>, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Kevin Tian <kevin.tian@intel.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Nov 07, 2022 at 08:52:51PM -0400, Jason Gunthorpe wrote:
 
-> @@ -795,6 +800,10 @@ static int vfio_device_first_open(struct vfio_device *device)
->  		ret = vfio_group_use_container(device->group);
->  		if (ret)
->  			goto err_module_put;
-> +	} else if (device->group->iommufd) {
-> +		ret = vfio_iommufd_bind(device, device->group->iommufd);
+--FCuugMFkClbJLl1L
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Here we check device->group->iommufd...
+On 2022.11.04 14:56:50 +0000, Zhi Wang wrote:
+> The life cycle of a vGPU, which is represented by a vfio_device, has been
+> managed by the VFIO core logic. Remove the vgpu->released, which was used
+> for a sanity check on the removal path of the vGPU instance. The sanity
+> check has already been covered in the VFIO core logic.
+>=20
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Cc: Kevin Tian <kevin.tian@intel.com>
+> Cc: Jason Gunthorpe <jgg@nvidia.com>
+> Cc: intel-gvt-dev@lists.freedesktop.org
+> Suggested-by: Alex Williamson <alex.williamson@redhat.com>
+> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/gvt.h   | 2 --
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 4 ----
+>  2 files changed, 6 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gv=
+t.h
+> index dbf8d7470b2c..62823c0e13ab 100644
+> --- a/drivers/gpu/drm/i915/gvt/gvt.h
+> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
+> @@ -227,8 +227,6 @@ struct intel_vgpu {
+>  	unsigned long nr_cache_entries;
+>  	struct mutex cache_lock;
+> =20
+> -	atomic_t released;
+> -
+>  	struct kvm_page_track_notifier_node track_node;
+>  #define NR_BKT (1 << 18)
+>  	struct hlist_head ptable[NR_BKT];
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
+kvmgt.c
+> index 7a45e5360caf..897b6fdbbaed 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -684,7 +684,6 @@ static int intel_vgpu_open_device(struct vfio_device =
+*vfio_dev)
+> =20
+>  	intel_gvt_activate_vgpu(vgpu);
+> =20
+> -	atomic_set(&vgpu->released, 0);
+>  	return 0;
+>  }
+> =20
+> @@ -706,9 +705,6 @@ static void intel_vgpu_close_device(struct vfio_devic=
+e *vfio_dev)
+>  	if (!vgpu->attached)
+>  		return;
+> =20
+> -	if (atomic_cmpxchg(&vgpu->released, 0, 1))
+> -		return;
+> -
+>  	intel_gvt_release_vgpu(vgpu);
+> =20
+>  	debugfs_remove(debugfs_lookup(KVMGT_DEBUGFS_FILENAME, vgpu->debugfs));
+> --=20
+> 2.25.1
+>=20
 
-> +		if (ret)
-> +			goto err_module_put;
->  	}
->  
->  	device->kvm = device->group->kvm;
-> @@ -812,6 +821,7 @@ static int vfio_device_first_open(struct vfio_device *device)
->  	device->kvm = NULL;
->  	if (device->group->container)
->  		vfio_group_unuse_container(device->group);
-> +	vfio_iommufd_unbind(device);
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-...yet, missing here, which could result in kernel oops.
+--FCuugMFkClbJLl1L
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Should probably add something similar:
-+	if (device->group->iommufd)
-+		vfio_iommufd_unbind(device);
+-----BEGIN PGP SIGNATURE-----
 
-Or should check !vdev->iommufd_device inside the ->unbind.
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY2n1BwAKCRCxBBozTXgY
+J0ZIAJwIo4jGGYL+v//KQKqgy7uHmaNtKQCfWaimhVSs6dKrcDYa/9qeAKVaH3c=
+=L7eS
+-----END PGP SIGNATURE-----
 
->  err_module_put:
->  	mutex_unlock(&device->group->group_lock);
->  	module_put(device->dev->driver->owner);
-> @@ -830,6 +840,7 @@ static void vfio_device_last_close(struct vfio_device *device)
->  	device->kvm = NULL;
->  	if (device->group->container)
->  		vfio_group_unuse_container(device->group);
-> +	vfio_iommufd_unbind(device);
-
-Ditto
+--FCuugMFkClbJLl1L--
