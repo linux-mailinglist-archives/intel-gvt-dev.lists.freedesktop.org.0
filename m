@@ -1,56 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15BED625336
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Nov 2022 06:51:24 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E2CF3625305
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Nov 2022 06:17:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 786B210E768;
-	Fri, 11 Nov 2022 05:51:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2B03410E202;
+	Fri, 11 Nov 2022 05:17:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 143160 seconds by postgrey-1.36 at gabe;
- Fri, 11 Nov 2022 05:51:15 UTC
-Received: from Server.Textcodesoftware.com (Server.Textcodesoftware.com
- [103.171.44.236])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 68A5E10E768;
- Fri, 11 Nov 2022 05:51:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=darshildentalcare.com; s=default; h=Reply-To:Date:From:To:Subject:
- Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type:
- Sender:Message-ID:Cc:Content-ID:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=vUaA40o6iq/rfeIvZxURZY2ncbXE5gnAsC91RYfcAsU=; b=f5Qj8ZZc2bfMFiGrY1iI00wPdF
- WT6l4UBz9G/hqsH1xRoZTN4r87b9VGhRasimaZrhcJ6Il6FUR54/qZA4OjSt9HHy0EWZTzqdSDFlU
- 9rZ1lKRZ7K9ENbI2irOn8GbUE3/xPFxFD1NIFPv6OUle/ue/YrigyWATKmW0F3m327/1Q2hzoS6HK
- 74pcteOX5SOjXIrf4HqEgfLtnmBaRIyUrj015ty10QTTOtaEzcALrmE0unL4amXypmqvaCOhwue/Q
- DNgf1ejElkjdQNAkRzSOQHK45aCy8F3PfZrjAIZ8BEom5/IWkxRYBsBB+Czn/+7X2pTbPt5sIAhVZ
- 1SXXp9QA==;
-Received: from [197.234.221.150] (port=45015 helo=[192.168.43.3])
- by server.textcodesoftware.com with esmtpa (Exim 4.95)
- (envelope-from <smtpfox-fv3l4@darshildentalcare.com>)
- id 1oslhT-0008Nb-Es; Wed, 09 Nov 2022 19:35:05 +0530
-Content-Type: text/plain; charset="iso-8859-1"
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 27B7010E009;
+ Fri, 11 Nov 2022 05:17:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1668143849; x=1699679849;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=ql328E2NG2zRXgk89uFvUx0p6YzxyXQHLwUbNDKXi8k=;
+ b=VEZLWH0HBb/Jvp9sFWcM5NbxxxNe+Z8Ck2pSMbo5z0d3bTE/MBM2AXUy
+ 8ov6M2IVT++vDWTcWU1WZ0epQAE6JCHcEtbQQiu7vi/xpCtTGTh2fZZZF
+ Ymd6IyjyGCXW9iYdTu5NOZg+qC5B9Obv71hhgHYWzwdIbPBDlJSZHkp1F
+ /Z7Or0ViGgqrQcbZo+BxWlAoiaKGKRdWgKxMVkq31vlbnv0fIXD2Uqx0J
+ yqIKUgGRYtw4a2l7jXy9KbkPVqqzH8EchBwwvR98MYu4Td30cH/AzHo6E
+ 9aeX/Ft9q5gMZz4w9jS4NpAk8pQAmmGKyXY8empMfZVkJ1lKlTl65MEgB Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10527"; a="311531050"
+X-IronPort-AV: E=Sophos;i="5.96,155,1665471600"; 
+ d="asc'?scan'208";a="311531050"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2022 21:17:28 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10527"; a="639894622"
+X-IronPort-AV: E=Sophos;i="5.96,155,1665471600"; 
+ d="asc'?scan'208";a="639894622"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
+ by fmsmga007.fm.intel.com with ESMTP; 10 Nov 2022 21:17:27 -0800
+Date: Fri, 11 Nov 2022 13:16:55 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Sean Christopherson <seanjc@google.com>
+Subject: Re: [PATCH 0/2] drm/i915/gvt: Fix for KVM refcounting bug
+Message-ID: <20221111051655.GO30028@zhen-hp.sh.intel.com>
+References: <20221111002225.2418386-1-seanjc@google.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: =?utf-8?q?Re=3A_Pyyd=C3=A4_korvaustasi?=
-To: Recipients <smtpfox-fv3l4@darshildentalcare.com>
-From: "Barrister. Steven" <smtpfox-fv3l4@darshildentalcare.com>
-Date: Wed, 09 Nov 2022 15:06:09 +0100
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server.textcodesoftware.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - darshildentalcare.com
-X-Get-Message-Sender-Via: server.textcodesoftware.com: authenticated_id:
- smtpfox-fv3l4@darshildentalcare.com
-X-Authenticated-Sender: server.textcodesoftware.com: smtpfox-fv3l4@darshildentalcare.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="Rmm1Stw9KgbdL9/H"
+Content-Disposition: inline
+In-Reply-To: <20221111002225.2418386-1-seanjc@google.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,15 +59,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: madis.scarl@terlera.it
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20221111055121.786B210E768@gabe.freedesktop.org>
 
-T=E4ll=E4 haluamme huomauttaa, ett=E4 kaikki pyrkimyksemme ottaa sinuun yht=
-eytt=E4
-t=E4m=E4n kautta s=E4hk=F6postiosoitteesi ep=E4onnistui. Ota yst=E4v=E4llis=
-esti yhteytt=E4 asianajajaan.
-Steven Mike { filesa076@gmail.com } yksityisess=E4 s=E4hk=F6postissaan korv=
-ausoikeutesi vaatimiseksi
-Huomautus: Sinun on maksettava toimitusmaksu.
+
+--Rmm1Stw9KgbdL9/H
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2022.11.11 00:22:23 +0000, Sean Christopherson wrote:
+> Bug fix and cleanup related to KVM refcounting.  Found by inspection while
+> attempting to clean up KVM's page-tracker APIs.
+>=20
+> Compile tested only!
+>=20
+> Sean Christopherson (2):
+>   drm/i915/gvt: Get reference to KVM iff attachment to VM is successful
+>   drm/i915/gvt: Unconditionally put reference to KVM when detaching vGPU
+>=20
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+>=20
+
+Thanks, Sean! and Kevin's review. Pushed this to fixes tree, will issue
+regression test before going upstream.
+
+--Rmm1Stw9KgbdL9/H
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY23awgAKCRCxBBozTXgY
+J2EMAKCa/3JJB5jBs4Y27kn2yBiYr6NLmgCfaefRrTdWjykmFApwicOZO21ZUQg=
+=/qdW
+-----END PGP SIGNATURE-----
+
+--Rmm1Stw9KgbdL9/H--
