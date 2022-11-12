@@ -2,67 +2,141 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C06162645C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 11 Nov 2022 23:17:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A7FD626601
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 12 Nov 2022 01:26:20 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A195C10E8D6;
-	Fri, 11 Nov 2022 22:17:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9E0DF10E1AF;
+	Sat, 12 Nov 2022 00:26:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-xd2e.google.com (mail-io1-xd2e.google.com
- [IPv6:2607:f8b0:4864:20::d2e])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 317E110E1D8;
- Fri, 11 Nov 2022 22:17:33 +0000 (UTC)
-Received: by mail-io1-xd2e.google.com with SMTP id r81so4554826iod.2;
- Fri, 11 Nov 2022 14:17:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=F1nnNzLyOQaNdQjTSelqCaCQVWgchkSOBQNAWoookCY=;
- b=R/dmMJSnvo3JvYhowpvogSf5QpEl7v8YF8JAaIjOpQTvTDoTOrApegwux3Yoq0y0n+
- 0gS++fqHKvaUSpqewyoQzZpzvaL+eyLTj5qAAGQIp3Z9Kbw+dowLRc43YwpLCD2QljKg
- +ZoWes4dlStEdNF9tZUDLaCmN56saFjWJsFsBdLh0tIaBJue3Q/lvB5ib2nRfXLCrnGr
- dwnd3tMfpkQp0GvWQoeqOvw1WwQAaQww9QNGuJDKXI28EqgJtsArYSTT4MKuQZSN8GYX
- LSDmpzv1cAypRKvlGUtFtpIyFe8/qf2sHahZdyP0A6lqzy+5cwizjBZ2RkCoVYSWRs0G
- /4lQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=F1nnNzLyOQaNdQjTSelqCaCQVWgchkSOBQNAWoookCY=;
- b=wCoiG9WEoPdk9J2DWeswyYfYRNQRUg0W9MhwuvO3TUPYJ0ZAV1f+KzjcQKdiL8ERD7
- kGtoKskWb/8BV2drSQoO3xrp/HtO/K02KsJ3F+iRcvXQ+HryxOOqiuEJN6EWV55tKyMH
- gKS02vA4rx3/w8lWzmnIzGZlQwzRY/V1COurMUT+NxUl0wJGG/6sJv2B7ntcO4ZHcFru
- nHULu4puL4z5BmMWzz5xhCgE9M/NJ6ePRG6P6vqJ49+tJGGUTqecJFwVFm09ICIhJbcZ
- IjNuUyX7Tp9MG8h9KwHIfU/ceOkdhmqZ2X1xK/QVCcRwsRBSJu0vv9bYosECJcojY+8C
- NH/Q==
-X-Gm-Message-State: ANoB5pmvv6YjJD9/FHGpDDYgZAVZ5gG9u34YyqGjoujGcx8ZpQ7KNLCd
- yg8aGedN3IElYkJiUfwFlE8=
-X-Google-Smtp-Source: AA0mqf7/uebvjHaXzOuR9KmBtqEyWpoBDGuBq7hNs4k6T6ENKCAlbBhTg518gBmwcglR002h5YjB0g==
-X-Received: by 2002:a05:6638:3e90:b0:370:a45d:f2e4 with SMTP id
- ch16-20020a0566383e9000b00370a45df2e4mr1701464jab.268.1668205052026; 
- Fri, 11 Nov 2022 14:17:32 -0800 (PST)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- c5-20020a928e05000000b002f611806ae9sm1113457ild.60.2022.11.11.14.17.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Nov 2022 14:17:31 -0800 (PST)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, gregkh@linuxfoundation.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 7/7] dyndbg: replace classmap list with a vector
-Date: Fri, 11 Nov 2022 15:17:15 -0700
-Message-Id: <20221111221715.563020-8-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221111221715.563020-1-jim.cromie@gmail.com>
-References: <20220912052852.1123868-1-jim.cromie@gmail.com>
- <20221111221715.563020-1-jim.cromie@gmail.com>
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1AD1510E00D;
+ Sat, 12 Nov 2022 00:26:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1668212773; x=1699748773;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ in-reply-to:mime-version;
+ bh=jyWt1ulDlk+u8wllfwU3czFKl+gWp1kuZ2fZm+D+6/w=;
+ b=Q7tcpSjbhsBS+XY4jrovKnWNNwdI6Hocyllgaf9/Je0bQIormRkuwJqP
+ IIxjB3tWxv7lhgv/UYECiu8G5itottp2bhUfnL2dfpnuo0DfKGuvH66sc
+ vP5SKNx6x/X9q3daSgbbs4xkjimwJuAluETbFdioUkVN3me4enq7Obkbd
+ 42RBihWjrn1dV99sI5z5PI6hLzqwKyU6Jt0YkpjFPgbB0GPOpd7FeZzUd
+ +if/iWWzD3gxEdhdPCdLyvFUBUEEOrDrtzaGCopDbnTWg70j4CWkwIUj2
+ qKDuyx1R1G10DZSvsYPd1By5qzxar9K9j9/dR6O8TJK/Z4SYY7HZGGukk w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10528"; a="338458066"
+X-IronPort-AV: E=Sophos;i="5.96,157,1665471600"; d="scan'208";a="338458066"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2022 16:26:12 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10528"; a="780319952"
+X-IronPort-AV: E=Sophos;i="5.96,157,1665471600"; d="scan'208";a="780319952"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga001.fm.intel.com with ESMTP; 11 Nov 2022 16:26:12 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Fri, 11 Nov 2022 16:26:12 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Fri, 11 Nov 2022 16:26:11 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Fri, 11 Nov 2022 16:26:11 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.177)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Fri, 11 Nov 2022 16:26:07 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WMHlQ//GXVdgLUw6TznYA+wB4O4tpD3H9KkgzB1t6uGrq5YvIXM2gX98KRZDQhxnWMeAS4vrQ/kDBVut07IoB9FwfbEPLwdm3+I74D5KwryX41soOHZjhUbcvLh89ztjtDnUGIvz8WjHErmHtxN74XhZPJrhQ9hShHg2ujZ/tY9yRqBJx4rHbcuKttqzC1BI18Kk4JsXmj2Y5CGv2E0EEhW1zlPV/7j/Ze9DzYN0mw1iyMmdnbVsPM/XvNHiy4C2hi4u8FJFB6PZiPD2x/qolwCU/wTAyk5cSrDC+XvLAySbaSe7sekxKdakWtXylI+XihloSnByvQ4msPYWwGyjQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=w12E4+oFcLakeM6M9q9mIrPG5Wq911Rjkv0eeW87txE=;
+ b=kwMFEXPwiTQfm/BDDNNZst9xDJdCTQOC1S2JnYGH94W8+PlWhZg7m6EDm+l6fGiPfDFchiWX4J574JehrbiU3f3RIGALeCz7Ej9tRQWVg0Qj2nIStd2IzA0Yda0ol/qteqzLMcnk87hiFY1GEbrQrQwmJNCZ8e9H9Cu/M3ybWn07HBtfD/mOlDFjUDLMmwYV1UFXx8i03W12Tq0CUx8030GZVo6oEnmFPEEigMlf0Kbz8d1VXC3OrEe666+WYBJQJfFb96VPuGVRex29UUN+yaD0rOVqjhZ8V1hoYpA2X/OPgiiOqJXBpu5EBFCmZTkNB2V/Uo03k7k0fzwhJsvWFA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
+ PH0PR11MB4869.namprd11.prod.outlook.com (2603:10b6:510:41::8) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5813.13; Sat, 12 Nov 2022 00:26:00 +0000
+Received: from DS7PR11MB5966.namprd11.prod.outlook.com
+ ([fe80::dc06:6d36:dc8a:fe7f]) by DS7PR11MB5966.namprd11.prod.outlook.com
+ ([fe80::dc06:6d36:dc8a:fe7f%7]) with mapi id 15.20.5813.016; Sat, 12 Nov 2022
+ 00:26:00 +0000
+Date: Sat, 12 Nov 2022 08:03:09 +0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: Sean Christopherson <seanjc@google.com>
+Subject: Re: [PATCH v2 1/3] KVM: x86: add a new page track hook
+ track_remove_slot
+Message-ID: <Y27ivXea5SjR5lat@yzhao56-desk.sh.intel.com>
+References: <20221111103247.22275-1-yan.y.zhao@intel.com>
+ <20221111103350.22326-1-yan.y.zhao@intel.com>
+ <Y26SI3uh8JV0vvO6@google.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <Y26SI3uh8JV0vvO6@google.com>
+X-ClientProxiedBy: SI2PR04CA0009.apcprd04.prod.outlook.com
+ (2603:1096:4:197::8) To DS7PR11MB5966.namprd11.prod.outlook.com
+ (2603:10b6:8:71::6)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|PH0PR11MB4869:EE_
+X-MS-Office365-Filtering-Correlation-Id: 475559e1-ff94-4697-a837-08dac4447951
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: DZzvC8EePnioNhE54psWYWWCXZ/eBMOWHsdTM47rM0zBE3s0cMSqUY6yZ3I3N5gjXz2ibhC4RF53Au1/f4gZ6U9cT/EmtdO2lbQdWEk502vQlHSRmJyg0y0Jzy+/k7DcSLDQ7SC9EkjbDwIWtZ52roeqMIncOayDW5ObOZ5Qjce3ifiP0+SSkWgAfSu4KT+fLVYVw4YMgAv4D4kZlKVPzvV7CB7o0HtqABCdoSJrw2vm/LkTBYrpuaqRuHVqrCDQ5n5kou9Zzw2lf1LSExKQIa/HDIUO2V5cUMCGzmLJbFn2JT11q4YLHrZ5rWUMfBgvl6cuPK6IFLzH72y0HbjO8+3aPZ9swzTtBUnS/NKitbXeElY2tZvONtdT4P3DeBWIaa+hW6HZ7sNZ4f7qMjUsHlOI1Gdenls0wWvlgR4hHpVOOot9vsc3y2oKNOFFp492sHkErA5Xua8wj4uKWFmiWV6uFBHhyC+CWzTCUkJAcQv+iBI9hhY6ZUJGmkCG/BKX7Bf1pV8YdWFjAnOond6o8HIQc3FoGpk36ey80kiil3XHgeOGsxj9m08hk6XD7QDpGBgbp7VypZXP4tE9i2gw+iprIz0mHmMbp024kfvmSSiRZUZrmQRjadhkUkV+cd1yCRSEzW0Hq+qyepsGf1cytO+4+fVcmKyCdJ1eOYVZzu3Ha0YQneWDMDNBWdZwk6Vdb7VFBU0MDTZxjQ9/GyMK/A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(346002)(396003)(136003)(366004)(376002)(39860400002)(451199015)(6512007)(26005)(8936002)(41300700001)(82960400001)(38100700002)(8676002)(3450700001)(83380400001)(186003)(6506007)(6916009)(66556008)(2906002)(66476007)(5660300002)(66946007)(4326008)(86362001)(478600001)(316002)(6486002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?B6CMspXKpgDzahmTNugRqxyfc44F30gIcTK+rewiLYXMF3l8ZLPJPp8WJaA5?=
+ =?us-ascii?Q?rg/sJUFLTFAN3/mZtzs8SypdpZU9uwHmQQJUcbLAjw9uKKDiMCAd1G5mPXrd?=
+ =?us-ascii?Q?6SNwSWW9Ql1k9gLoye5218q4jfWFBubi8R+9LSBlvTB1eJ6V2FujyhJNsZJG?=
+ =?us-ascii?Q?xe2qx7c0G3OSy+xRPFK9fWNt98ra5AixImY2EQy08huikDlFof/uTB85JUSB?=
+ =?us-ascii?Q?csUXTexFp6y8fgwRQ7FRG0xrzJZ+HEeQaQwJJCE//tf9L5tKTrRHth1vK0v1?=
+ =?us-ascii?Q?P+ZmiByMQ7SePx5Vcli45hILOnezeCSpYE76Wicz/nVX7pGsSn2/6CU/GKV6?=
+ =?us-ascii?Q?qDIgJLp7i699K/QPiBk3FInpU9Mdom9drBEyAG9O0uu+G8E25P+oBqL9ysIn?=
+ =?us-ascii?Q?WoHgQwnvJnziT/nuqcIuWwtUBFeDtSHLCbPHLqHp3OS8XTp16kgQwKQWwYLU?=
+ =?us-ascii?Q?OQI7BE2h39+noiZi33h/s8gdRpmACUefWjVl6BzwCEbQPnVE0aGlzeGXniUF?=
+ =?us-ascii?Q?QeZ4xRIH3n/XmHCuRFJRtvZl09VEdIBTNr9NTexSiRH2bI7beOUrZU6J/4cA?=
+ =?us-ascii?Q?nRCrcUvaFcL1IAKZcFcLDOIABUxPwWvay6tcxDU3ZmkPkzDli60f3NBSf3Xv?=
+ =?us-ascii?Q?36o0OFBcLMuI3LK0JY2pYOC1y2G0qORk4oUYHWiM2seUjWyIXcmixGMiv1Cy?=
+ =?us-ascii?Q?70IJbBEq2svnaPha17Mcgij3i3NOJu9rPs8xXwdOjzW/x9Vv/oAdkaaqw1AH?=
+ =?us-ascii?Q?gqLKWJTn9MvJ3bA28zD8kHZBY/gWOstGba1QipOOZQAApc7qorgwTphNwvse?=
+ =?us-ascii?Q?7cD5R3ZotJ+/v6TegAinU7qtS+u5BeGafGuMpuo8nw74zOrNaTXzVVjkToGQ?=
+ =?us-ascii?Q?YvZdxsAOzDAeozmu2B+yXxseRy8SujNRFjJNLBESAq+ECyznNLP7t31hHbb1?=
+ =?us-ascii?Q?gcpoPbKmLpagwuNDUa4K8TZ6etUQNg3/k+S+VZfKOJgCa3fNfULxwj+ocRUv?=
+ =?us-ascii?Q?ouyliOo8Ximh3vcFNaJinx6BhV2Nehs5KXBQ5A/uzTmUqCYtso1eZCq4ASTV?=
+ =?us-ascii?Q?NoRh3MTNgs7aZKV3jMnfjn/dinmdLrNf1uIyrZWULU0DrriExrJgDObB8KOo?=
+ =?us-ascii?Q?sJJx2scR/9XrEObOueoQIKd2BGK+N6UbZrQzDDjgOF5Z+yOOgkT3YXh5U+tl?=
+ =?us-ascii?Q?0Uj9M2ANxIik4L0Doz83OYd4GwzYyrhKxcSb1xWYwuDy+LF336rzK5H1D88p?=
+ =?us-ascii?Q?ZpbGi9Aji5bjYIAvrLBm/L4wIM4umWiDONlpOxWY40b1qV7rAiCXRSHx+NVy?=
+ =?us-ascii?Q?AL9ayn4H+RUQGEKw6FOYbaI0DRKlvfTKeT1l/ofZUoohuqLCnlR1EyPSh7fJ?=
+ =?us-ascii?Q?eWOnjjdIg4sxBj0Q5baY9sWRfcGLAAI1mxjQ81rijCjVqXGb0m3O7f1T+sUB?=
+ =?us-ascii?Q?QI5bo/FVcVWJ3taUTfq8McmBJZMR8x+EVwPBn9YvTtOv/KwqHrHSh5W5KJWJ?=
+ =?us-ascii?Q?KpDPikhj95GP/z4ACHjcYGEoVhhf8qRDEHomTOX7ZPs5JcaVLyAehhnKh/we?=
+ =?us-ascii?Q?xvYPuKXY9TmD9fLVpxX38XVADWDNtjTgn0Li6AMn?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 475559e1-ff94-4697-a837-08dac4447951
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2022 00:26:00.0123 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: TwoKAzmU68tb1AC2fyHG99n4/576C9dFXlQcOMr0TN6W/6kgVsOSC1Em4k6aMi6Zr/0CO+6HNcxYLzrpB8sCcA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4869
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,171 +149,88 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jim Cromie <jim.cromie@gmail.com>, daniel.vetter@ffwll.ch,
- linux@rasmusvillemoes.dk, robdclark@gmail.com, seanpaul@chromium.org,
- joe@perches.com
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com, pbonzini@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Classmaps are stored/linked in a section/array, but are each added to
-the module's ddebug_table.maps list-head.
+On Fri, Nov 11, 2022 at 06:19:15PM +0000, Sean Christopherson wrote:
+> TL;DR: I'm going to try to add more aggressive patches for this into my series to
+> clean up the KVM side of things, along with many more patches to clean up the page
+> track APIs.
+> 
+> I'll post patches next week if things go well (fingers crossed), and if not I'll
+> give an update 
+> 
+> On Fri, Nov 11, 2022, Yan Zhao wrote:
+> > Page track hook track_remove_slot is used to notify users that a slot
+> > has been removed and is called when a slot DELETE/MOVE is about to be
+> > completed.
+> 
+> Phrase this as a command, and explain _why_ the new hook is being added, e.g.
+> 
+>   Add a new page track hook, track_remove_slot(), that is called when a
+>   memslot DELETE/MOVE operation is about to be committed.  The "remove"
+>   hook will be used by KVMGT and will effectively replace the existing
+>   track_flush_slot() altogether now that KVM itself doesn't rely on the
+>   "flush" hook either.
+> 
+>   The "flush" hook is flawed as it's invoked before the memslot operation
+>   is guaranteed, i.e. KVM might ultimately keep the existing memslot without
+>   notifying external page track users, a.k.a. KVMGT.
+> 
+> > Users of this hook can drop write protections in the removed slot.
+> 
+> Hmm, actually, on second thought, after thinking about what KVGT is doing in
+> response to the memslot update, I think we should be more aggressive and actively
+> prevent MOVE if there are external page trackers, i.e. if KVMGT is attached.
+> 
+> Dropping write protections when a memslot is being deleted is a waste of cycles.
+> The memslot and thus gfn_track is literally being deleted immediately after invoking
+> the hook, updating gfn_track from KVMGT is completely unecessary.
 
-This is unnecessary; even when ddebug_attach_classmap() is handling
-the builtin section (with classmaps for multiple builtin modules), its
-contents are ordered, so a module's possibly multiple classmaps will
-be consecutive in the section, and could be treated as a vector/block,
-since both start-addy and subrange length are in the ddebug_info arg.
+> I.e. if we kill off the MOVE path, then KVMGT just needs to delete its hash table
+> entry.
+> 
+> Oooh!  Looking at this code again made me realize that the larger page track cleanup
+> that I want to do might actually work.  Long story short, I want to stop forcing
+> KVMGT to poke into KVM internals, but I thought there was a lock inversion problem.
+> 
+> But AFAICT, there is no such problem.  And the cleanup I want to do will actually
+> fix an existing KVMGT bug: kvmgt_page_track_write() invokes kvmgt_gfn_is_write_protected()
+> without holding mmu_lock, and thus could consume garbage when walking the hash
+> table.
+> 
+>   static void kvmgt_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa,
+> 		const u8 *val, int len,
+> 		struct kvm_page_track_notifier_node *node)
+>   {
+> 	struct intel_vgpu *info =
+> 		container_of(node, struct intel_vgpu, track_node);
+> 
+> 	if (kvmgt_gfn_is_write_protected(info, gpa_to_gfn(gpa)))
+> 		intel_vgpu_page_track_handler(info, gpa,
+> 						     (void *)val, len);
+>   }
+> 
+> Acquiring mmu_lock isn't an option as intel_vgpu_page_track_handler() might sleep,
+> e.g. when acquiring vgpu_lock.
+>
+I totally agree with you and actually had the same feeling as you when
+examined the code yesterday. But I thought I'd better send this series
+first and do the cleanup later :)
+And I'm also not sure if a slots_arch_lock is required for
+kvm_slot_page_track_add_page() and kvm_slot_page_track_remove_page().
+(Though it doesn't matter for a removing slot and we actually needn't to
+call kvm_slot_page_track_remove_page() in response to a slot removal,
+the two interfaces are still required elsewhere.)
 
-So this changes:
 
-struct ddebug_table gets: classes for the start-addy, num_classes for
-the length (placed to improve struct packing).
+> Let me see if the clean up I have in mind will actually work.  If it does, I think
+> the end result will be quite nice for both KVM and KVMGT.
+Yes, it would be great.
 
-The loading: in ddebug_attach_module_classes(), replace the
-for-the-modname list-add loop, with a forloop that finds the module's
-subrange (start,length) of matching classmaps within the possibly
-builtin classmaps vector, and saves those to the ddebug_table.
-
-The reading/using: change list-foreach loops in ddebug_class_name() &
-ddebug_find_valid_class() to walk the array from start to length.
-
-Also move #define __outvar up, above an added use in a fn-prototype.
-
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- lib/dynamic_debug.c | 61 ++++++++++++++++++++++++---------------------
- 1 file changed, 32 insertions(+), 29 deletions(-)
-
-diff --git a/lib/dynamic_debug.c b/lib/dynamic_debug.c
-index 48ca1387a409..fd5296dbb40f 100644
---- a/lib/dynamic_debug.c
-+++ b/lib/dynamic_debug.c
-@@ -45,10 +45,11 @@ extern struct ddebug_class_map __start___dyndbg_classes[];
- extern struct ddebug_class_map __stop___dyndbg_classes[];
- 
- struct ddebug_table {
--	struct list_head link, maps;
-+	struct list_head link;
- 	const char *mod_name;
--	unsigned int num_ddebugs;
- 	struct _ddebug *ddebugs;
-+	struct ddebug_class_map *classes;
-+	unsigned int num_ddebugs, num_classes;
- };
- 
- struct ddebug_query {
-@@ -146,13 +147,15 @@ static void vpr_info_dq(const struct ddebug_query *query, const char *msg)
- 		  query->first_lineno, query->last_lineno, query->class_string);
- }
- 
-+#define __outvar /* filled by callee */
- static struct ddebug_class_map *ddebug_find_valid_class(struct ddebug_table const *dt,
--							  const char *class_string, int *class_id)
-+							const char *class_string,
-+							__outvar int *class_id)
- {
- 	struct ddebug_class_map *map;
--	int idx;
-+	int i, idx;
- 
--	list_for_each_entry(map, &dt->maps, link) {
-+	for (map = dt->classes, i = 0; i < dt->num_classes; i++, map++) {
- 		idx = match_string(map->class_names, map->length, class_string);
- 		if (idx >= 0) {
- 			*class_id = idx + map->base;
-@@ -163,7 +166,6 @@ static struct ddebug_class_map *ddebug_find_valid_class(struct ddebug_table cons
- 	return NULL;
- }
- 
--#define __outvar /* filled by callee */
- /*
-  * Search the tables for _ddebug's which match the given `query' and
-  * apply the `flags' and `mask' to them.  Returns number of matching
-@@ -1109,9 +1111,10 @@ static void *ddebug_proc_next(struct seq_file *m, void *p, loff_t *pos)
- 
- static const char *ddebug_class_name(struct ddebug_iter *iter, struct _ddebug *dp)
- {
--	struct ddebug_class_map *map;
-+	struct ddebug_class_map *map = iter->table->classes;
-+	int i, nc = iter->table->num_classes;
- 
--	list_for_each_entry(map, &iter->table->maps, link)
-+	for (i = 0; i < nc; i++, map++)
- 		if (class_in_range(dp->class_id, map))
- 			return map->class_names[dp->class_id - map->base];
- 
-@@ -1195,30 +1198,31 @@ static const struct proc_ops proc_fops = {
- 	.proc_write = ddebug_proc_write
- };
- 
--static void ddebug_attach_module_classes(struct ddebug_table *dt,
--					 struct ddebug_class_map *classes,
--					 int num_classes)
-+static void ddebug_attach_module_classes(struct ddebug_table *dt, struct _ddebug_info *di)
- {
- 	struct ddebug_class_map *cm;
--	int i, j, ct = 0;
-+	int i, nc = 0;
- 
--	for (cm = classes, i = 0; i < num_classes; i++, cm++) {
-+	/*
-+	 * Find this module's classmaps in a subrange/wholerange of
-+	 * the builtin/modular classmap vector/section.  Save the start
-+	 * and length of the subrange at its edges.
-+	 */
-+	for (cm = di->classes, i = 0; i < di->num_classes; i++, cm++) {
- 
- 		if (!strcmp(cm->mod_name, dt->mod_name)) {
--
--			v2pr_info("class[%d]: module:%s base:%d len:%d ty:%d\n", i,
--				  cm->mod_name, cm->base, cm->length, cm->map_type);
--
--			for (j = 0; j < cm->length; j++)
--				v3pr_info(" %d: %d %s\n", j + cm->base, j,
--					  cm->class_names[j]);
--
--			list_add(&cm->link, &dt->maps);
--			ct++;
-+			if (!nc) {
-+				v2pr_info("start subrange, class[%d]: module:%s base:%d len:%d ty:%d\n",
-+					  i, cm->mod_name, cm->base, cm->length, cm->map_type);
-+				dt->classes = cm;
-+			}
-+			nc++;
- 		}
- 	}
--	if (ct)
--		vpr_info("module:%s attached %d classes\n", dt->mod_name, ct);
-+	if (nc) {
-+		dt->num_classes = nc;
-+		vpr_info("module:%s attached %d classes\n", dt->mod_name, nc);
-+	}
- }
- 
- /*
-@@ -1252,10 +1256,9 @@ static int __ddebug_add_module(struct _ddebug_info *di, unsigned int base,
- 	dt->num_ddebugs = di->num_descs;
- 
- 	INIT_LIST_HEAD(&dt->link);
--	INIT_LIST_HEAD(&dt->maps);
- 
- 	if (di->classes && di->num_classes)
--		ddebug_attach_module_classes(dt, di->classes, di->num_classes);
-+		ddebug_attach_module_classes(dt, di);
- 
- 	mutex_lock(&ddebug_lock);
- 	list_add_tail(&dt->link, &ddebug_tables);
-@@ -1344,8 +1347,8 @@ static void ddebug_remove_all_tables(void)
- 	mutex_lock(&ddebug_lock);
- 	while (!list_empty(&ddebug_tables)) {
- 		struct ddebug_table *dt = list_entry(ddebug_tables.next,
--						      struct ddebug_table,
--						      link);
-+						     struct ddebug_table,
-+						     link);
- 		ddebug_table_free(dt);
- 	}
- 	mutex_unlock(&ddebug_lock);
--- 
-2.38.1
-
+Thanks
+Yan
