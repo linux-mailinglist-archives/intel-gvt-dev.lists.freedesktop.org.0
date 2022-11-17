@@ -1,55 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6A8162D38D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Nov 2022 07:41:58 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD7E462DC43
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 17 Nov 2022 14:06:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8EBD610E544;
-	Thu, 17 Nov 2022 06:41:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F05510E5F5;
+	Thu, 17 Nov 2022 13:06:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 519F710E544;
- Thu, 17 Nov 2022 06:41:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668667314; x=1700203314;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- mime-version:in-reply-to;
- bh=fr8ELsOFIQZYDQYEMG5pwrAYYVpvTvmukwkblDdKLpk=;
- b=FNMR2Zm3iG8bzP5GAcalO+dzchGyr1sRIxBWx6URRZ+D0PzosdFWnv9Z
- V39uu9avBtJfJU5bJBYbZV3d2ebSBb+47bnJ9gs5/Hd6Favw+3w6KdGC8
- 8n4D3Gkeg5gOcEpZC7UiIhaFH8vmPk3/0zXfrS+KomjKUTJVVUFa5clE6
- pXLkCKSw39/EMnNJSnRo59Qu7ll/i/GZWi25LYq8TBmno/APlgN16cMqI
- mhnQ4+mCnc4JQZvmcratt1DwVyf7w42AgJlnvgzEofnhYLpI6UBqhwjMR
- 4XCgT+qpU3LeqcoV9MPcO84Cla1TJlfVBQBQySK3MMtXmkkhnT0bnOXFq Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10533"; a="313922077"
-X-IronPort-AV: E=Sophos;i="5.96,171,1665471600"; 
- d="asc'?scan'208";a="313922077"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2022 22:41:53 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10533"; a="641974214"
-X-IronPort-AV: E=Sophos;i="5.96,169,1665471600"; 
- d="asc'?scan'208";a="641974214"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by fmsmga007.fm.intel.com with ESMTP; 16 Nov 2022 22:41:51 -0800
-Date: Thu, 17 Nov 2022 14:41:06 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
-Subject: Re: [PULL] gvt-next
-Message-ID: <20221117064106.GT30028@zhen-hp.sh.intel.com>
-References: <20221111085903.GP30028@zhen-hp.sh.intel.com>
- <Y3OyGyJLhL7k8EV+@intel.com>
- <20221117030215.GR30028@zhen-hp.sh.intel.com>
- <6d9f565acb5bd57ee2df79fc5a9cf802724a3333.camel@intel.com>
+Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
+ [IPv6:2a00:1450:4864:20::430])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2CDF710E614
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 17 Nov 2022 13:06:29 +0000 (UTC)
+Received: by mail-wr1-x430.google.com with SMTP id g2so72807wrv.6
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 17 Nov 2022 05:06:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FNMEulldSXVMg7ulM6g1t35fIqQxm0B7A8BOWjbvtwM=;
+ b=H6NRC25yXdsqjiGEcHwtOOBe7Bxcaz1LaNdhV2AsHZHI2Bs1uSL8BoyFnbPhBImexr
+ GpWK5CXVlXUNVQFcfgeC1U2kj8uSSXlWIen+oxD3Fs2H0DM8qeTiYd3sfsua5sMFq3uB
+ 4JgrvSPjdqqJr+sHnPywd4I/rJbkfxopRaXAs8IoVCGjgm6taTqclgJWsJ8LusgP2P6S
+ wRTYBgs1L7BKkzCt6Y/aH62RqhuRiRoJU4TfUUryrTSOlOaJvZrsQD0xpVIcDclQVSc3
+ hJ5xWoSkr2cHQ45wAYrn3N1Fns8xj6SmZ/dV9n58SjKS7Dyr8kMrjPBdyjgbp1quO4uN
+ DDMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=FNMEulldSXVMg7ulM6g1t35fIqQxm0B7A8BOWjbvtwM=;
+ b=jKvWtBJmGaKizyJoOq2mr/cVgnqEWpt5rmk4tM50JWBhWggHOqOVunh6B4bBfKYm9H
+ 9Iq/YhbB894xygRen4tsp3Z09bndAWfY0l9yKacJWPd9rx5OUrstMlgu/LhcMbdNsnDB
+ 8PZ72o8TfHTaxJiX+OPsYWUoP7I/q0QHmwjCCsWmOM9cwT4AVP3GSQIBoRnsi0/eRECg
+ +ZoEJujpY5MSxH2zZg/Fih354/bJctnGnjML5o7CzewLChQWUjYijNVND2j2wMp1ObkM
+ /agC/kwkyusvQ42zUJjdUDl+ajyV8wfKuxFAr9m/dsbxfBl5yjawKGotrISUrYeKu2MD
+ rqGA==
+X-Gm-Message-State: ANoB5pl8jr6f3QPNsTHlvoLLm83xShNOyyi0n2HHHwO1RTGeI+otJEgQ
+ zJPBIZ5zJ1n+yC05JCpXke1f9adSjHF1pafvjz8=
+X-Google-Smtp-Source: AA0mqf404zbTEk5oL4MsfPWQlRXuAcjOmK8We/k7NJ5TAP4RsKZ67r9cySRw9BrSl/V8xWHa+e+laKA7EfZMYjTLuZA=
+X-Received: by 2002:a05:6000:1b86:b0:241:9606:1123 with SMTP id
+ r6-20020a0560001b8600b0024196061123mr1448324wru.537.1668690387017; Thu, 17
+ Nov 2022 05:06:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="vDEbda84Uy/oId5W"
-Content-Disposition: inline
-In-Reply-To: <6d9f565acb5bd57ee2df79fc5a9cf802724a3333.camel@intel.com>
+Received: by 2002:adf:8902:0:0:0:0:0 with HTTP; Thu, 17 Nov 2022 05:06:26
+ -0800 (PST)
+From: "MRS. ALICE BRYAN" <frankwaltersteinmeier487@gmail.com>
+Date: Thu, 17 Nov 2022 14:06:26 +0100
+Message-ID: <CAJDBV=ZjWW_hDEMtZ5RQBMNWQE6KUdRA8pXvF_bS5Y8d5Qqonw@mail.gmail.com>
+Subject: I am Mrs Alice Bryan, I am a USA citizen 48 years Old
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,120 +65,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>, "Nikula,
- Jani" <jani.nikula@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Wang, Zhi A" <zhi.a.wang@intel.com>
+Reply-To: officefile_0112@yahoo.co.jp
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+-- 
+Attn: My Dear,
 
---vDEbda84Uy/oId5W
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I am Mrs Alice Bryan, I am a USA citizen 48 years Old. I am from New
+York, i am thinking of relocating since I am now rich, I am one of
+those that took part in the Compensation in Nigeria many years ago and
+they refused to pay me, I had paid over $100,000 while in the United
+State trying to get my payment all to no avail.
 
-On 2022.11.17 03:37:17 +0000, Vivi, Rodrigo wrote:
-> On Thu, 2022-11-17 at 11:02 +0800, Zhenyu Wang wrote:
-> > On 2022.11.15 10:36:59 -0500, Rodrigo Vivi wrote:
-> > > On Fri, Nov 11, 2022 at 04:59:03PM +0800, Zhenyu Wang wrote:
-> > > > Hi,
-> > > >=20
-> > > > Here's current accumulated changes in gvt-next. Sorry that I
-> > > > delayed
-> > > > to refresh them on time for upstream...It contains mostly kernel
-> > > > doc,
-> > > > typo fixes and small code cleanups, as details below.
-> > > >=20
-> > > > btw, one gvt change for next
-> > > > https://patchwork.freedesktop.org/patch/511118/
-> > > > is still pending, I need a backmerge from linus tree e.g with
-> > > > recent vfio/mdev
-> > > > consolidate change with gvt and Jason's fix for destroy device,
-> > > > to apply Zhi's
-> > > > change cleanly. Pls help on that.
-> > > >=20
+So I decided to travel to WASHINGTON D.C with all my compensation
+documents, And I was directed by the ( F B I) Director to contact Mrs.
+Erelu Angela who is a representative of the ( FB I ) and a member of
+the COMPENSATION AWARD COMMITTEE in Republic of Benin and I contacted
+her, she explained everything to me. she said whoever is contacting us
+through emails are fake.
 
->=20
-> Based on what I could verify the commiter signature is really not
-> there. It looks like you later forced a rebase and while
-> rebasing you forgot to re-sign everything.
->=20
+She took me to the paying bank for the claim of my Compensation
+payment. Right now I am the most happiest woman on earth because I
+have received my compensation funds of $30 Million Us Dollars,
+Moreover, Mrs. Erelu Angela showed me the full information of those
+that are yet to receive their payment and I saw your email address as
+one of the beneficiaries,that is why I decided to email you to stop
+dealing with those people that are contacting you they are not with
+your fund, they are only making money out of you i will advise you to
+contact Mrs. Erelu Angela. You have to contact her directly on this
+information below.
 
-Hi, pls re-pull this one.
+COMPENSATION AWARD HOUSE
+Name: MRS. ERELU ANGELA
+Email: file.office99@aol.com
 
-thanks!
----
-The following changes since commit a6ebd538364b1e9e6048faaafbc0188172ed50c3:
+It is not in anyway with them they are only taking advantage of you
+and they will dry you up until you have nothing.The only money I paid
+after I met Mrs. Erelu Angela was just $400 for the paper works take
+note of that. Once again stop contacting those people, I will advise
+you to contact Mrs. Erelu Angela so that she can help you to Deliver
+your fund instead of dealing with those liars that will be turning you
+around asking for different kind of money to complete your
+transaction.
 
-  drm/i915/sdvo: Fix debug print (2022-10-28 14:46:21 +0300)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux.git tags/gvt-next-2022-11-17
-
-for you to fetch changes up to 04ec334e1a0381c3305da4d277cef9250769ca43:
-
-  drm/i915/gvt: Remove the unused function get_pt_type() (2022-11-17 14:07:=
-09 +0800)
-
-----------------------------------------------------------------
-gvt-next-2022-11-17
-
-- kernel doc fixes
-- remove vgpu->released sanity check
-- small clean up
-
-----------------------------------------------------------------
-Colin Ian King (1):
-      drm/i915/reg: Fix spelling mistake "Unsupport" -> "Unsupported"
-
-Jiapeng Chong (4):
-      drm/i915/gvt: Fix kernel-doc
-      drm/i915/gvt: Fix kernel-doc
-      drm/i915/gvt: Fix kernel-doc
-      drm/i915/gvt: Remove the unused function get_pt_type()
-
-Julia Lawall (1):
-      drm/i915/gvt: fix typo in comment
-
-Mauro Carvalho Chehab (1):
-      drm/i915: gvt: fix kernel-doc trivial warnings
-
-Paulo Miguel Almeida (1):
-      i915/gvt: remove hardcoded value on crc32_start calculation
-
-Zhi Wang (1):
-      drm/i915/gvt: remove the vgpu->released and its sanity check
-
-wangjianli (1):
-      drm/i915: fix repeated words in comments
-
- drivers/gpu/drm/i915/gvt/aperture_gm.c  | 4 ++--
- drivers/gpu/drm/i915/gvt/cfg_space.c    | 2 +-
- drivers/gpu/drm/i915/gvt/dmabuf.h       | 2 +-
- drivers/gpu/drm/i915/gvt/firmware.c     | 2 +-
- drivers/gpu/drm/i915/gvt/gtt.c          | 9 ++-------
- drivers/gpu/drm/i915/gvt/gvt.h          | 2 --
- drivers/gpu/drm/i915/gvt/handlers.c     | 4 ++--
- drivers/gpu/drm/i915/gvt/kvmgt.c        | 4 ----
- drivers/gpu/drm/i915/gvt/mmio_context.c | 2 +-
- drivers/gpu/drm/i915/gvt/page_track.c   | 2 +-
- drivers/gpu/drm/i915/gvt/vgpu.c         | 6 +++---
- 11 files changed, 14 insertions(+), 25 deletions(-)
-
---vDEbda84Uy/oId5W
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY3XXfQAKCRCxBBozTXgY
-JwWXAKCUXK3gO0z5Ls4vmLvLcygA3bPNKgCeMfx5MC5nZUrZgIcPDjG3qp4dSsw=
-=pTnh
------END PGP SIGNATURE-----
-
---vDEbda84Uy/oId5W--
+Regards,
+Mrs. Alice Bryan.
