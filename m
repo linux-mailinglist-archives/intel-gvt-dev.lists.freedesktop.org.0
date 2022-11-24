@@ -1,62 +1,33 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0E3A633C3B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 22 Nov 2022 13:15:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 20C7C63706E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 24 Nov 2022 03:28:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8515A10E3D0;
-	Tue, 22 Nov 2022 12:15:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9E79A10E67E;
+	Thu, 24 Nov 2022 02:28:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 418 seconds by postgrey-1.36 at gabe;
- Tue, 22 Nov 2022 12:15:26 UTC
-Received: from mxct.zte.com.cn (mxct.zte.com.cn [58.251.27.85])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9D72210E3D0;
- Tue, 22 Nov 2022 12:15:26 +0000 (UTC)
-Received: from mxde.zte.com.cn (unknown [10.35.20.121])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mxct.zte.com.cn (FangMail) with ESMTPS id 4NGjhT6Pr7zK8S;
- Tue, 22 Nov 2022 20:08:25 +0800 (CST)
-Received: from mxus.zte.com.cn (unknown [10.207.168.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mxde.zte.com.cn (FangMail) with ESMTPS id 4NGjhB49MfzBf6Lr;
- Tue, 22 Nov 2022 20:08:10 +0800 (CST)
-Received: from mxhk.zte.com.cn (unknown [192.168.250.138])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mxus.zte.com.cn (FangMail) with ESMTPS id 4NGjh66CBPzdmJQW;
- Tue, 22 Nov 2022 20:08:06 +0800 (CST)
-Received: from mse-fl2.zte.com.cn (unknown [10.5.228.133])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mxhk.zte.com.cn (FangMail) with ESMTPS id 4NGjh12Qybz5PkGj;
- Tue, 22 Nov 2022 20:08:01 +0800 (CST)
-Received: from szxlzmapp04.zte.com.cn ([10.5.231.166])
- by mse-fl2.zte.com.cn with SMTP id 2AMC7uCC005801;
- Tue, 22 Nov 2022 20:07:56 +0800 (+08)
- (envelope-from yang.yang29@zte.com.cn)
-Received: from mapi (szxlzmapp02[null]) by mapi (Zmail) with MAPI id mid14;
- Tue, 22 Nov 2022 20:07:59 +0800 (CST)
-Date: Tue, 22 Nov 2022 20:07:59 +0800 (CST)
-X-Zmail-TransId: 2b04637cbb9ffffffffffa0dfedf
-X-Mailer: Zmail v1.0
-Message-ID: <202211222007593082125@zte.com.cn>
-Mime-Version: 1.0
-From: <yang.yang29@zte.com.cn>
-To: <zhenyuw@linux.intel.com>
-Subject: =?UTF-8?B?W1BBVENIIGxpbnV4LW5leHRdIGRybS9pOTE1L2d2dDogdXNlIHN5c2ZzX3N0cmVxKCkgaW5zdGVhZCBvZiBzdHJuY21wKCk=?=
+X-Greylist: delayed 660 seconds by postgrey-1.36 at gabe;
+ Thu, 24 Nov 2022 02:28:49 UTC
+Received: from mail.mail03.zhanlingol.com (unknown [159.27.57.134])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B143688DA9;
+ Thu, 24 Nov 2022 02:28:49 +0000 (UTC)
+Received: from User (unknown [37.0.15.245])
+ by mail.mail03.zhanlingol.com (Postfix) with SMTP id 9372F114E112;
+ Thu, 24 Nov 2022 02:15:10 +0000 (UTC)
+From: "Dr. Ericsson Davies"<operations3@geyabus.com.tw>
+Subject: URGENT RESPONSE !!! 
+Date: Wed, 23 Nov 2022 18:15:28 -0800
+MIME-Version: 1.0
 Content-Type: text/plain;
-	charset="UTF-8"
-X-MAIL: mse-fl2.zte.com.cn 2AMC7uCC005801
-X-Fangmail-Gw-Spam-Type: 0
-X-FangMail-Miltered: at cgslv5.04-192.168.251.14.novalocal with ID
- 637CBBB8.002 by FangMail milter!
-X-FangMail-Envelope: 1669118906/4NGjhT6Pr7zK8S/637CBBB8.002/10.35.20.121/[10.35.20.121]/mxde.zte.com.cn/<yang.yang29@zte.com.cn>
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 637CBBB8.002/4NGjhT6Pr7zK8S
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,74 +40,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: tvrtko.ursulin@linux.intel.com, xu.panda@zte.com.cn,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
- jani.nikula@linux.intel.com, yang.yang29@zte.com.cn,
- dri-devel@lists.freedesktop.org, daniel@ffwll.ch, rodrigo.vivi@intel.com,
- airlied@gmail.com, zhi.a.wang@intel.com
+Reply-To: jovannyanderson001@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20221124022855.9E79A10E67E@gabe.freedesktop.org>
 
-From: Xu Panda <xu.panda@zte.com.cn>
+Dear Friend,
 
-Replace the open-code with sysfs_streq().
+How are you today?
 
-Signed-off-by: Xu Panda <xu.panda@zte.com.cn>
-Signed-off-by: Yang Yang <yang.yang29@zte.com>
----
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+I am using this opportunity to thank you for your great effort to our
+unfinished transfer of fund into your account due to one reason or the
+other best known to you.
 
-diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-index 0ebf5fbf0e39..7b9a5f7f5363 100644
---- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-+++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-@@ -917,8 +917,8 @@ static int cmd_reg_handler(struct parser_exec_state *s,
- 		return -EBADRQC;
- 	}
+But I want to inform you that I have successfully transferred the Cheque
+out of the company to someone else who was capable of assisting me in
+this great venture.
 
--	if (!strncmp(cmd, "srm", 3) ||
--			!strncmp(cmd, "lrm", 3)) {
-+	if (sysfs_streq(cmd, "srm") ||
-+			sysfs_streq(cmd, "lrm")) {
- 		if (offset == i915_mmio_reg_offset(GEN8_L3SQCREG4) ||
- 		    offset == 0x21f0 ||
- 		    (IS_BROADWELL(gvt->gt->i915) &&
-@@ -931,8 +931,8 @@ static int cmd_reg_handler(struct parser_exec_state *s,
- 		}
- 	}
+Due to your effort, sincerity, courage and trust worthiness you showed at
+the course of the transaction I want to compensate you and show my
+gratitude to you with the sum of 40,000.000.00(Forty Million United States
+Of American Dollars) in respect to your lottery winnings Compensation.
 
--	if (!strncmp(cmd, "lrr-src", 7) ||
--			!strncmp(cmd, "lrr-dst", 7)) {
-+	if (sysfs_streq(cmd, "lrr-src") ||
-+			sysfs_streq(cmd, "lrr-dst")) {
- 		if (IS_BROADWELL(gvt->gt->i915) && offset == 0x215c)
- 			return 0;
- 		else {
-@@ -941,12 +941,12 @@ static int cmd_reg_handler(struct parser_exec_state *s,
- 		}
- 	}
+I have authorised the finance house in the America where I deposited my money
+to issue you international certified bank draft cashable at your bank.
 
--	if (!strncmp(cmd, "pipe_ctrl", 9)) {
-+	if (sysfs_streq(cmd, "pipe_ctrl")) {
- 		/* TODO: add LRI POST logic here */
- 		return 0;
- 	}
+My dear friend I will like you to contact the finance house for the
+collection of this international certified bank draft. The name and
+contact address of the Person with your Cheque is as follows.
 
--	if (strncmp(cmd, "lri", 3))
-+	if (!sysfs_streq(cmd, "lri"))
- 		return -EPERM;
+CONTACT AGENT: Barr. Jovanny Anderson
+EMAIL: jovannyanderson001@gmail.com
 
- 	/* below are all lri handlers */
-@@ -1011,7 +1011,7 @@ static int cmd_reg_handler(struct parser_exec_state *s,
- 	 */
- 	if (GRAPHICS_VER(s->engine->i915) == 9 &&
- 	    intel_gvt_mmio_is_sr_in_ctx(gvt, offset) &&
--	    !strncmp(cmd, "lri", 3)) {
-+	    sysfs_streq(cmd, "lri")) {
- 		intel_gvt_read_gpa(s->vgpu,
- 			s->workload->ring_context_gpa + 12, &ctx_sr_ctl, 4);
- 		/* check inhibit context */
--- 
-2.15.2
+At the moment, I am very busy in Japan because of the investment projects
+which I and my new partner are having at hand.
+
+Finally, remember that I have forwarded instruction to the finance house
+on your behalf to send the bank draft to you as soon as you contact them
+without delay.
+
+Thanks and God bless you and your family. Hope to hear from you soon.
+
+Best Regards,
+Dr. Ericsson Davies
+Controller General
