@@ -1,51 +1,148 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F59663BE5F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Nov 2022 11:58:41 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42AD863BE81
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Nov 2022 12:01:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5AA2510E3B1;
-	Tue, 29 Nov 2022 10:58:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0373210E3AF;
+	Tue, 29 Nov 2022 11:01:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 229AA10E3AB
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8B41B10E3B1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 29 Nov 2022 10:58:36 +0000 (UTC)
+ Tue, 29 Nov 2022 11:01:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1669719516; x=1701255516;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=OvmWDaDi9uGrTzrbe0C8LLppSyam4Q1qg1lvl10sHdc=;
- b=WZx5RyBnjFVLksxn3WB+cRmckGkp/ntZSQnxKFasWFJYLUp1+18l1ARZ
- WQCtBiWRJqR272u7NHi7pr+7E/9jQm9EGqwLGMlE5qsMcHVVcXKrsS3yR
- PN+3IJktouhVPA3zH1OL0IkDJaFWX8GGub0Hcm0HkdAsoRn3CXev3Ejgi
- pejZVXBunAU5tjHQvLZfjY86b2Wn5wfu9SfU5VueE0EDXc6HHZxnBaTFk
- 6y03f5hezYP7gdMTB4CIL+M0hz6wvCjD6tPCneEadfVH14fa6KdvowIAv
- /hlIOEMyx9xr5DvQ/vdCW+HOgd+pwwuXw48+LA8vhB+P38Aqel/2Skn84 Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="295457263"
-X-IronPort-AV: E=Sophos;i="5.96,202,1665471600"; d="scan'208";a="295457263"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ t=1669719681; x=1701255681;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=P1rsohAXUDdXQXoysDqKPyeJaoekRF8TU1DIoU1mSOw=;
+ b=khRKx/Z6W7v2c6URI2JXe1YLkamW0f5Z+LFQrAyKDjVz+KG1LhS47Q4X
+ pWYBX9KT/eZ3V2irLIRqzRbj5jZ9kUQPk9yx7MwLhWyZ0SiMjoszXcZXa
+ 3dje+Q/UK263DV4HgYpzvrRushaOkUuT0urnzfS5/iFNyXBLzFxvIZGeo
+ wzG3O1LgMAfsLFJOwTnNFzP9cbO1XHvlDhoMt4ghv5y3gBZP7MYkRDBEB
+ 3sjNH0N60V+a2QEA0zuY6r4gaFSb/ekqK2eOcXxVZ0dSpe1vvhaIu04ws
+ df0hryCZhPn9pND/Zz7x9TyCGKRI23wtDOSGT4GBTm6iqE/fCZQ7oRXab w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="295458012"
+X-IronPort-AV: E=Sophos;i="5.96,202,1665471600"; d="scan'208";a="295458012"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Nov 2022 02:58:35 -0800
+ 29 Nov 2022 03:01:20 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="621411025"
-X-IronPort-AV: E=Sophos;i="5.96,202,1665471600"; d="scan'208";a="621411025"
-Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga006.jf.intel.com with ESMTP; 29 Nov 2022 02:58:35 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="785998399"
+X-IronPort-AV: E=Sophos;i="5.96,202,1665471600"; d="scan'208";a="785998399"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga001.fm.intel.com with ESMTP; 29 Nov 2022 03:01:19 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 29 Nov 2022 03:01:19 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Tue, 29 Nov 2022 03:01:19 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.171)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Tue, 29 Nov 2022 03:01:17 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cfb2fEizRivypNIdY9EhR7asHNrXeG1kPq0Cd0/KCImEHuXBE11FFuXJa87z/2S/Cc/62mCc2b4kZ9Z2+GCoNtIyA7pcdKmyaLmXzcqt4UKV0DJKFv/wTygrmNGIh96DrIEm193aX7lsftjufRpAH0ZzLUPK78Ub1Gt0AZz/Sr+gYjRfbto+y3ywFOWp6YJj1qFMeL7/lkvKe4Tf65p9zzlTeMf0gqvzd5wwx1tBR+cTDa7cKIXzee2wPIBNVg7CEraNCvEyv+BRFR1yxaYFDqBeZDvlrGnQSZ3vjF6OhA7FDpgZWrQAdqeIsshnM4PHj3HS/dnOGHa5S4LLRu7wAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=I8catvdf7N0yILFzA+1YZTURWsIn5D/VgnOyFhS4azc=;
+ b=emSTptd4D4MUpgoKzxfKmEzWdJ2dt9apVwaD2mhbPqb1105AzoCg4mOG/WVGDRxLBhgB1A97241DoVfuN8rNUiuNUZeSEjgSqgJchjqrOQDqw10IjboolO3MCYlCz50tkJTvc1tlzQxAZfRq+ijI9vzUSClC8lEPP8iDS4Wp5XIafB4y92F4ZURT21vOPHrfCZO6ZzQcPXcX3krpoyghlbFP+il8r/TGCBVr/XHzLdUZEGkr8aTE7bfMc7DGU7wykfFSvA48thfClKCUZEt13co35hBATeA60YYJ0HCA7CHf0bLYDlDD10qVff5ZfSxPHQTnvgBifNed4CJVSooTpA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by BN9PR11MB5557.namprd11.prod.outlook.com (2603:10b6:408:102::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.23; Tue, 29 Nov
+ 2022 11:01:10 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::61c3:c221:e785:ce13]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::61c3:c221:e785:ce13%7]) with mapi id 15.20.5857.020; Tue, 29 Nov 2022
+ 11:01:10 +0000
+Message-ID: <debb397f-916c-b5b5-2905-dc7159843c75@intel.com>
+Date: Tue, 29 Nov 2022 19:01:47 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.11.0
+Subject: Re: [iommufd PATCH v2 0/2] Make mdev driver dma_unmap callback
+ tolerant to unmaps come before device open
+Content-Language: en-US
+To: <jgg@nvidia.com>
+References: <20221129093535.359357-1-yi.l.liu@intel.com>
 From: Yi Liu <yi.l.liu@intel.com>
-To: jgg@nvidia.com
-Subject: [[RESEND] iommufd PATCH v2 2/2] vfio/ap: validate iova during
- dma_unmap and trigger irq disable
-Date: Tue, 29 Nov 2022 02:58:31 -0800
-Message-Id: <20221129105831.466954-3-yi.l.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20221129105831.466954-1-yi.l.liu@intel.com>
-References: <20221129105831.466954-1-yi.l.liu@intel.com>
+In-Reply-To: <20221129093535.359357-1-yi.l.liu@intel.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SI1PR02CA0003.apcprd02.prod.outlook.com
+ (2603:1096:4:1f7::20) To DS0PR11MB7529.namprd11.prod.outlook.com
+ (2603:10b6:8:141::20)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB7529:EE_|BN9PR11MB5557:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8f1867bd-d2aa-4d95-59b8-08dad1f905a8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 7Pw1Pn8ccKsKZA8NDdM97Ij/DDY9N0Uq+yvEhNUFOe6p0R4/UwYbtsuqCKOf3WSiCKyTSpdZ+0jwEPg4MFlDEMK9W1nojSzfNDl1S/2oGCqsr3WdzlRY1rdt6XpgFSm48DETquGJ7yRJsOee0jZk/hj7XA4QxblAMcVj4g8CcUl2dHeGH/D5Avx/DhFVGztYRCFIDleb4HmvQDMUjLi1/HzlBn9HsM7hTVdC6+xdAVzAwavX5Ttujiz6e6FNaOFb+OpPdV15YGiGmIB3V06QsqElnRZ8V1ksXvX930xi2bD4Sm/EusFXPTo+nhaldRbaQXaifovQpE4mHv+OcY4lfifyphQBe/8T9Hf3yExSLUmfx1Ca1wuftfISPV6IGQ7T0syGadv4IHO2E4pperdS68Tkz8sfWQ/6/KdZ9Zk8/pWvpyLAAWRBpktDRX1ypONRdVVVIAtUwzWXE5McjxTKFl+ZYub6ztHnmhNr+ZkZFv9URDIrUnIo353dDyo6HTmPzZd4EIqKvyr2/KvHKR6LXAzHbrpMNjgJrJQZTeqkcZqxWAcfeBrVypiqFBSzaT72+Iskla0/lrrcop8xDCHd/KW8HpoGbvi9oPVizgAkbT9aGVvhQKT3fDc2zoX79l2YiDLsujeMbloc5407QGGN3zb+b+G2HUo9/Gr4y7LnGvnVQbO/ogPBMJHSXZhAmpMpDvuqtjSkFMGoKSisTmPMI+v2q20yhsn3UQWG+bYU+zk2O4uu8AobK3y31efYAspKKIEpu4OUJVAE5QGThEv++sKXOcTwMiQJ30sQSV9OY4A=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(39860400002)(366004)(396003)(376002)(346002)(136003)(451199015)(31686004)(186003)(6506007)(31696002)(4326008)(26005)(53546011)(66476007)(8676002)(8936002)(41300700001)(86362001)(6916009)(6512007)(66556008)(6486002)(966005)(66946007)(2616005)(6666004)(478600001)(54906003)(316002)(82960400001)(38100700002)(7416002)(2906002)(83380400001)(5660300002)(36756003)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L2hCMVdrSDFkMWUvTnFmdTgvQ3lFMnkvNkkyTmdjRW1oR0plS1ZTcjNOZnlX?=
+ =?utf-8?B?Y0g2Y2ZUeXoxaEtiUDkvaGVaNDY0V1NTMTdVTk1uS0hBblFxM1h2a2M3UCtB?=
+ =?utf-8?B?YlRXclVlU2cxTGwxY09DNlZ6TkNXYmpVS1hObXd2ZXVnUFhCdThtRjhxZFFE?=
+ =?utf-8?B?NjllaVEvTGFEai9NOEZESFIxbG9MeEJVbEdWZm5OVFZyei81ZVo2WDZtTWpn?=
+ =?utf-8?B?ZG9rQmR0bU5BbjVXZTlSYTJhZmpxRjNaL0lNdzNkdXRVaTJRckxZREs1bGtO?=
+ =?utf-8?B?dU5qZi9vRUh0NDFBWGE2cytyMExVZWFtQ1I2ZDNkOHVuNlVjMUd3c2ZPbzJ5?=
+ =?utf-8?B?SThMUDRFeE10QW14ZUZGSXFndFJlZFhjbDZ0Yi9teEx6Y29JYkVOQzZYYkNJ?=
+ =?utf-8?B?R1F2OVRINlZiMVdkUG54T0U0SGZBTXM1Z3RZTjJqN2gyRDd3TDA1aFRnSXdL?=
+ =?utf-8?B?UXdnRTRNeEp2c1BhelkxTHZaWlIrTWp5cUtWOC95TjlBd3FnMFdXbENhb0FK?=
+ =?utf-8?B?RjcvNExPUzNEN2NvOWlCRGdFYWZ2RnJoMjJzR1ZHelJWajlObUtCNkdsM1U4?=
+ =?utf-8?B?cktjRlc4SC90UkVxTFFBZmRQbFVVNzJDRm5mc0x4TTlXYWU1ZFhJdGhBblYx?=
+ =?utf-8?B?RllCWFB2QUpzQlZtODBGUER0NXRDQ2JXa3JWTnc3RjNCSW00dUxqSzFLVG5w?=
+ =?utf-8?B?eGs2M0dyMncwTjY1YkNPYkJDY0o5WGFiZk9aZ3VnRW53L0Z1K2U0Y1Z3OFBL?=
+ =?utf-8?B?bGFucGZhc2M3ZEFmUFB3UnZ6OWdSRVFLUktCcW9vaVdaS2pYVzhVM2l3TTdM?=
+ =?utf-8?B?Y2RpMTkxVzV5YTRnbTNBSzRZWEwvZkpiM2JHRmJxQ0E3RmdEaFhrdEY3Umtu?=
+ =?utf-8?B?cUJzU2dOVFVBUkFTYzN2WmY3TTY5ekF4Slk0ajNuaFRyT0NuWCtpOTVBY2ta?=
+ =?utf-8?B?cnAvc3Y2dVRpU3pJTzBOYTc1WVJCbVFwTTBGajlzajVobkdvQUF0Qk1WbnVr?=
+ =?utf-8?B?NmVsR3dTTk9KamcxMTZkQTloNlVqNHdzZDJBWVp1U0VZNDN6R3REWmc1U3VN?=
+ =?utf-8?B?YzJ4ZDFQaGg5cDhuaE1aWVVBVlgzNUdDbUxDYXJVTHh2K2w1RUlhd2dPbXNL?=
+ =?utf-8?B?dGhQRDNuL3BVYUtaRGJNK3UxUU4rd1p3NDJhYlUyRDEybkxDTHdRMUlDUm5Y?=
+ =?utf-8?B?MWUzblB1YkRUMTlFS0VyZWVIL2hBYmI4VTFtRGJjcEN1em0yVmdqWmx6dEJS?=
+ =?utf-8?B?UUsxWmRMTFJUOTVLVU8xWE9vM0lWRWJtMFRqOVpubm1HZXBHOTMyTytqWmp5?=
+ =?utf-8?B?aGVBZFZCSWs4anlwVnFhOTBnODJJNEVISTBBSGhNOTRLclhKSUc1Mjh2dWR0?=
+ =?utf-8?B?RzBvOG93bUVGVVVxNXgrYVZwQUF0MFFvZ3AzSTkveHo0NVpGclRJdDlpSEpO?=
+ =?utf-8?B?d3dSL2VTZDk1dGVoTmR4ZEQ5TUM0d01QcE94RXRnRTFlSjM1RVE1MW9wUnl0?=
+ =?utf-8?B?MzJIYkx4Tlp4dUF3T2hsRWtyeGxvUlprM21RTHN2TmtsamtnTVBZdEQ4ZW9i?=
+ =?utf-8?B?Znd5ZmFBb21IRWJtMHlURkZ6ajNoc09MWk5IR0tPbC9uTUpPVzFjUW12RVpa?=
+ =?utf-8?B?WVFka0VyTEY1YnRaTjM2dDR1Y2J5alBBcm9CcDFmQmZqYXFIdVJBU1E3Wjdt?=
+ =?utf-8?B?TWJEM1BVNmpFaTd6RVN5VTZCa1dWVUN5c1RjU2I1VDFqeFllcWZadFRUNm1w?=
+ =?utf-8?B?bmM2Q2E2WHRBYTl4MXdzb0szaHdDOHNKamRJMUR5TmZ2ZjlQWGNrQm94anVM?=
+ =?utf-8?B?VWdtTEtyQXdXSjZiU1FIV0t1YTVNQTV6NnRZbjBJU0RhM0VadlJkdG9YZXlu?=
+ =?utf-8?B?cklJOWFBZjhxc2RXZnNSeWMrRkszZlJYZVRpRUJuTlFaZU1WWlRSdzlYbWp1?=
+ =?utf-8?B?clBaeWIxc0hOaFJwTjdUOVduOTRkbm9WZWxKaXNJZjhuK05jSG5ZdlM1RGNE?=
+ =?utf-8?B?bzY2N09KKzJSY3JiKzhjUmk1bmNkdUNkaWc0WUhBS0I1emdxay9BbDFBOUVO?=
+ =?utf-8?B?dTJTZW91RlJYdFdFZWRuMCtkdzhDM1crM0MxUmtaeFhHeC92N3hVY1pheit4?=
+ =?utf-8?Q?5BDfTftTUALynT+ncMqchi5p3?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8f1867bd-d2aa-4d95-59b8-08dad1f905a8
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Nov 2022 11:01:10.1451 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: m/vogz7v5To/U5I1c4ONcn51RPxgCduixlr1rVTu4SN2RA1EiANs1m1vV/HBh3sdt5cqpcdWNTtCelnIth8RIQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR11MB5557
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,70 +156,69 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: Tony Krowiak <akrowiak@linux.ibm.com>, linux-s390@vger.kernel.org,
- kevin.tian@intel.com, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
- mjrosato@linux.ibm.com, kvm@vger.kernel.org,
- Jason Herne <jjherne@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ kevin.tian@intel.com, yi.y.sun@linux.intel.com, mjrosato@linux.ibm.com,
+ kvm@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>, Jason
+ Herne <jjherne@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
  alex.williamson@redhat.com, chao.p.peng@linux.intel.com,
- intel-gvt-dev@lists.freedesktop.org
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-From: Matthew Rosato <mjrosato@linux.ibm.com>
+On 2022/11/29 17:35, Yi Liu wrote:
+> Jason's "Connect VFIO to IOMMUFD" introduces vfio iommufd compat mode. Under
+> this mode, vfio_iommufd_bind() creates an access which has an unmap callback,
+> which can be called immediately. This means mdev drivers may receive unmap
+> requests before the mdev is opened. For now, there are only three drivers
+> (gvt, vfio-ap and vfio-ccw) providing dma_unmap(). vfio-ccw is fine with
+> such requests. While gvt-g and vfio-ap may have potential problem with such
+> requests due to internal implementation. This series tries to enhance the two
+> drivers.
+> 
+> This series is based on Jason's below branch.
+> 
+> https://github.com/jgunthorpe/linux/tree/iommufd
+> 
+> (commit: 41973418f6c8c241ed5647d1408d5b917f24dfd8)
 
-Currently, each mapped iova is stashed in its associated vfio_ap_queue;
-when we get an unmap request, validate that it matches with one or more
-of these stashed values before attempting unpins.
+it's resent as below link. Please ignore this series.
 
-Each stashed iova represents IRQ that was enabled for a queue.  Therefore,
-if a match is found, trigger IRQ disable for this queue to ensure that
-underlying firmware will no longer try to use the associated pfn after
-the page is unpinned. IRQ disable will also handle the associated unpin.
+https://lore.kernel.org/kvm/20221129105831.466954-1-yi.l.liu@intel.com/
 
-Cc: Tony Krowiak <akrowiak@linux.ibm.com>
-Cc: Halil Pasic <pasic@linux.ibm.com>
-Cc: Jason Herne <jjherne@linux.ibm.com>
-Cc: linux-s390@vger.kernel.org
-Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
-Signed-off-by: Yi Liu <yi.l.liu@intel.com>
----
- drivers/s390/crypto/vfio_ap_ops.c | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
+> Change:
+> v2:
+>   - Refine the cover letter and commit message of patch 0001 (Kevin)
+>   - Rename patch 0001 to better fit the commit message
+>   - Add r-b from Zhi for patch 0001
+>   - tweak iova range test to assume page-aligned for patch 0002 (Jason)
+>   - Remove break so all queues within range are removed for patch 0002 (Kevin)
+> 
+> v1: https://lore.kernel.org/kvm/20221123134832.429589-1-yi.l.liu@intel.com/
+> 
+> Cc: Tony Krowiak <akrowiak@linux.ibm.com>
+> Cc: Halil Pasic <pasic@linux.ibm.com>
+> Cc: Jason Herne <jjherne@linux.ibm.com>
+> Cc: linux-s390@vger.kernel.org
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Cc: Zhi Wang <zhi.a.wang@intel.com>
+> Cc: Kevin Tian <kevin.tian@intel.com>
+> Cc: intel-gvt-dev@lists.freedesktop.org
+> 
+> Regards,
+> 	Yi Liu
+> 
+> Matthew Rosato (1):
+>    vfio/ap: validate iova during dma_unmap and trigger irq disable
+> 
+> Yi Liu (1):
+>    i915/gvt: Move gvt mapping cache initialization to vGPU creation
+> 
+>   drivers/gpu/drm/i915/gvt/gvt.h    |  2 ++
+>   drivers/gpu/drm/i915/gvt/kvmgt.c  |  7 ++-----
+>   drivers/gpu/drm/i915/gvt/vgpu.c   |  2 ++
+>   drivers/s390/crypto/vfio_ap_ops.c | 18 +++++++++++++++++-
+>   4 files changed, 23 insertions(+), 6 deletions(-)
+> 
 
-diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-index 0b4cc8c597ae..8bf353d46820 100644
---- a/drivers/s390/crypto/vfio_ap_ops.c
-+++ b/drivers/s390/crypto/vfio_ap_ops.c
-@@ -1535,13 +1535,29 @@ static int vfio_ap_mdev_set_kvm(struct ap_matrix_mdev *matrix_mdev,
- 	return 0;
- }
- 
-+static void unmap_iova(struct ap_matrix_mdev *matrix_mdev, u64 iova, u64 length)
-+{
-+	struct ap_queue_table *qtable = &matrix_mdev->qtable;
-+	struct vfio_ap_queue *q;
-+	int loop_cursor;
-+
-+	hash_for_each(qtable->queues, loop_cursor, q, mdev_qnode) {
-+		if (q->saved_iova >= iova && q->saved_iova < iova + length)
-+			vfio_ap_irq_disable(q);
-+	}
-+}
-+
- static void vfio_ap_mdev_dma_unmap(struct vfio_device *vdev, u64 iova,
- 				   u64 length)
- {
- 	struct ap_matrix_mdev *matrix_mdev =
- 		container_of(vdev, struct ap_matrix_mdev, vdev);
- 
--	vfio_unpin_pages(&matrix_mdev->vdev, iova, 1);
-+	mutex_lock(&matrix_dev->mdevs_lock);
-+
-+	unmap_iova(matrix_mdev, iova, length);
-+
-+	mutex_unlock(&matrix_dev->mdevs_lock);
- }
- 
- /**
 -- 
-2.34.1
-
+Regards,
+Yi Liu
